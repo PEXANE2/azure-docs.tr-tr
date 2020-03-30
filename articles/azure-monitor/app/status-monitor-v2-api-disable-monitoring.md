@@ -1,28 +1,28 @@
 ---
-title: Azure Application Insights Aracısı API başvurusu
-description: Aracı API başvurusunu Application Insights. Disable-ApplicationInsightsMonitoring. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: Azure Uygulama Öngörüleri AracıAP başvurusu
+description: Uygulama Öngörüleri Aracısı API başvurusu. Devre Dışı-UygulamaInsightsMonitoring. Web sitesini yeniden dağıtmadan web sitesinin performansını izleyin. Şirket içinde, VM'lerde veya Azure'da barındırılan ASP.NET web uygulamalarıyla çalışır.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 0678186012678a68fa80a23685f8b346c8c5b859
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671299"
 ---
-# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Application Insights aracı API 'SI: Disable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Uygulama Öngörüleri Aracısı API: Devre Dışı-UygulamaInsightsMonitoring
 
-Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
+Bu [makalede, Az.ApplicationMonitor PowerShell modülüüyesi](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)bir cmdlet açıklanır.
 
 ## <a name="description"></a>Açıklama
 
-Hedef bilgisayarda izlemeyi devre dışı bırakır.
-Bu cmdlet, IIS applicationHost. config ' deki düzenlemeleri kaldırır ve kayıt defteri anahtarlarını kaldırır.
+Hedef bilgisayardaki izlemeyi devre dışı kılabilir.
+Bu cmdlet IIS applicationHost.config ve kayıt defteri anahtarlarını kaldırmak için yapılan ları kaldırır.
 
 > [!IMPORTANT] 
-> Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
+> Bu cmdlet, Yönetici izinleri içeren bir PowerShell oturumu gerektirir.
 
 ## <a name="examples"></a>Örnekler
 
@@ -32,13 +32,13 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 
 ## <a name="parameters"></a>Parametreler 
 
-### <a name="-verbose"></a>-Ayrıntılı
-**Ortak parametre.** Ayrıntılı günlükleri göstermek için bu anahtarı kullanın.
+### <a name="-verbose"></a>-Verbose
+**Ortak parametre.** Ayrıntılı günlükleri görüntülemek için bu anahtarı kullanın.
 
 ## <a name="output"></a>Çıktı
 
 
-#### <a name="example-output-from-successfully-disabling-monitoring"></a>İzlemeyi başarıyla devre dışı bırakarak oluşan örnek çıkış
+#### <a name="example-output-from-successfully-disabling-monitoring"></a>İzlemeyi başarıyla devre dışı bırakmaktan örnek çıktı
 
 ```
 Initiating Disable Process
@@ -64,5 +64,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- Application Insights aracısıyla daha fazlasını yapın:
- - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ Application Insights Agent ile daha fazlasını yapın:
+ - Uygulama Öngörüleri [Aracısı'nın sorun giderme](status-monitor-v2-troubleshoot.md) kılavuzunu kullanın.

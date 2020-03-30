@@ -1,5 +1,5 @@
 ---
-title: ADAL & MSAL Apps (iOS/macOS) arasında SSO-Microsoft Identity platform | Mavisi
+title: ADAL & MSAL uygulamaları arasında SSO (iOS/macOS) - Microsoft kimlik platformu | Azure
 description: ''
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,45 +17,45 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 2fbb6e837ae898daf4bc78d5cccc75660463e8a7
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085407"
 ---
-# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta ADAL ve MSAL uygulamaları arasında SSO
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Nasıl yapilir: macOS ve iOS'ta ADAL ve MSAL uygulamaları arasında SSO
 
-İOS için Microsoft kimlik doğrulama kitaplığı (MSAL), uygulamalar arasında [adal hedefi-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) ile SSO durumunu paylaşabilir. Uygulamalarınızı kendi hızınızda MSAL geçirebilirsiniz, böylece kullanıcılarınızın, ADAL ve MSAL tabanlı uygulamalar karışımından bile, platformlar arası SSO 'dan yine de faydalanabilir.
+iOS için Microsoft Kimlik Doğrulama Kitaplığı (MSAL), Uygulamalar arasında SSO durumunu [ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) ile paylaşabilir. Uygulamalarınızı Kendi hızınızda MSAL'a geçirerek, kullanıcılarınızın ADAL ve MSAL tabanlı uygulamaların bir karışımıyla bile çapraz uygulama SSO'sundan yararlanmaya devam etmesini sağlayabilirsiniz.
 
-MSAL SDK kullanarak uygulamalar arasında SSO ayarlama kılavuzunu arıyorsanız, bkz. [birden çok uygulama arasında sessız SSO](single-sign-on-macos-ios.md#silent-sso-between-apps). Bu makale, ADAL ve MSAL arasında SSO 'ya odaklanır.
+MSAL SDK'yı kullanan uygulamalar arasında SSO kurma kılavuzu arıyorsanız, [birden çok uygulama arasında Silent SSO'ya](single-sign-on-macos-ios.md#silent-sso-between-apps)bakın. Bu makale, ADAL ve MSAL arasındaki SSO'ya odaklanır.
 
-SSO uygulayan ayrıntılar, kullanmakta olduğunuz ADAL sürümüne bağlıdır.
+SSO'yu uygulayan ayrıntılar, kullanmakta olduğunuz ADAL sürümüne bağlıdır.
 
-## <a name="adal-27x"></a>ADAL 2.7. x
+## <a name="adal-27x"></a>ADAL 2.7.x
 
-Bu bölüm MSAL ve ADAL 2.7. x arasındaki SSO farklarını anlatmaktadır
+Bu bölüm MSAL ve ADAL 2.7.x arasındaki SSO farklarını kapsamaktadır.
 
 ### <a name="cache-format"></a>Önbellek biçimi
 
-ADAL 2.7. x, MSAL önbellek biçimini okuyabilir. ADAL 2.7. x sürümü ile uygulamalar arası SSO için özel bir şey yapmanız gerekmez. Ancak, bu iki kitaplığı destekledikleri hesap tanımlayıcılarının farklarından haberdar olmanız gerekir.
+ADAL 2.7.x MSAL önbellek biçimini okuyabilir. ADAL 2.7.x sürümü ile çapraz uygulama SSO için özel bir şey yapmanızgerekmez. Ancak, bu iki kitaplığın desteklediği hesap tanımlayıcıları arasındaki farklılıkların farkında olmanız gerekir.
 
-### <a name="account-identifier-differences"></a>Hesap tanımlayıcı farklılıkları
+### <a name="account-identifier-differences"></a>Hesap tanımlayıcı farkları
 
-MSAL ve ADAL farklı hesap tanımlayıcıları kullanır. ADAL birincil hesap tanımlayıcısı olarak UPN kullanır. MSAL, bir nesne KIMLIĞI ve AAD hesapları için kiracı KIMLIĞI ve diğer hesap türleri için bir `sub` talebi temel alan, görüntülenebilen olmayan bir hesap tanımlayıcı kullanır.
+MSAL ve ADAL farklı hesap tanımlayıcıları kullanır. ADAL, birincil hesap tanımlayıcısı olarak UPN'yi kullanır. MSAL, nesne kimliği ve AAD hesapları için kiracı kimliği ve diğer hesap türleri için bir `sub` talep temel alan görüntülenebilir olmayan bir hesap tanımlayıcısı kullanır.
 
-MSAL sonucunda bir `MSALAccount` nesnesi aldığınızda, `identifier` özelliğinde bir hesap tanımlayıcısı içerir. Uygulama, sonraki sessiz istekler için bu tanımlayıcıyı kullanmalıdır.
+MSAL sonucu `MSALAccount` bir nesne aldığınızda, özellikte bir hesap tanımlayıcısı `identifier` içerir. Uygulama sonraki sessiz istekler için bu tanımlayıcıyı kullanmalıdır.
 
-`identifier`, `MSALAccount` nesne `username`adında görüntülenebilen bir tanımlayıcı içerir. Bu, ADAL içindeki `userId` dönüştürür. `username` benzersiz bir tanımlayıcı olarak kabul edilmez ve her zaman değişebilir, bu nedenle yalnızca ADAL ile geriye dönük uyumluluk senaryolarında kullanılmalıdır. MSAL, `username` veya `identifier`kullanarak önbellek sorgularını destekler, burada `identifier` tarafından sorgulama önerilir.
+Buna ek `identifier` `MSALAccount` olarak , nesne adlı `username`görüntülenebilir bir tanımlayıcı içerir. Bu ADAL'da `userId` tercüme edilir. `username`benzersiz bir tanımlayıcı olarak kabul edilmez ve her zaman değişebilir, bu nedenle yalnızca ADAL ile geriye dönük uyumluluk senaryoları için kullanılmalıdır. MSAL önbellek sorgularını, `username` `identifier`sorgulamanın tavsiye `identifier` edildiği veya tarafından sorgulanmasının önerildiği önbellek sorgularını destekler.
 
-Aşağıdaki tablo, ADAL ve MSAL arasındaki hesap tanımlayıcı farklarını özetler:
+Aşağıdaki tabloda ADAL ve MSAL arasındaki hesap tanımlayıcı farkları özetlenebilir:
 
-| Hesap tanımlayıcısı                | MSAL                                                         | ADAL 2.7. x      | Eski ADAL (ADAL 2.7. x) |
+| Hesap tanımlayıcısı                | MSAL                                                         | ADAL 2.7.x      | Eski ADAL (ADAL 2.7.x'ten önce) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
-| görüntülenebilen tanımlayıcı            | `username`                                                   | `userId`        | `userId`                       |
-| benzersiz, görüntülenebilen olmayan tanımlayıcı | `identifier`                                                 | `homeAccountId` | Yok                            |
-| Bilinen hesap kimliği yok               | Tüm hesapları `MSALPublicClientApplication` `allAccounts:` API aracılığıyla sorgula | Yok             | Yok                            |
+| görüntülenebilir tanımlayıcı            | `username`                                                   | `userId`        | `userId`                       |
+| benzersiz görüntülenebilir tanımlayıcı | `identifier`                                                 | `homeAccountId` | Yok                            |
+| Bilinen hesap kimliği yok               | Tüm hesapları `allAccounts:` API üzerinden sorgula`MSALPublicClientApplication` | Yok             | Yok                            |
 
-Bu tanımlayıcıları sağlayan `MSALAccount` arabirimidir:
+Bu tanımlayıcıları sağlayan `MSALAccount` arabirimdir:
 
 ```objc
 @protocol MSALAccount <NSObject>
@@ -86,30 +86,30 @@ Bu tanımlayıcıları sağlayan `MSALAccount` arabirimidir:
 @end
 ```
 
-### <a name="sso-from-msal-to-adal"></a>MSAL 'den ADAL 'ye SSO
+### <a name="sso-from-msal-to-adal"></a>MSAL'dan ADAL'a SSO
 
-Bir MSAL uygulamanız ve bir ADAL uygulamanız varsa ve Kullanıcı ilk olarak MSAL tabanlı uygulamada oturum açarsa, `username` `MSALAccount` nesnesinden kaydederek ve bunu `userId`olarak ADAL tabanlı uygulamanıza geçirerek ADAL uygulamasında SSO 'yu alabilirsiniz. ADAL daha sonra `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` API 'siyle birlikte hesap bilgilerini sessizce bulabilir.
+Bir MSAL uygulamanız ve Bir ADAL uygulamanız varsa ve kullanıcı MSAL tabanlı uygulamaya ilk olarak giriş yaparsa, `username` `MSALAccount` Nesneyi kaydedip ADAL tabanlı uygulamanıza `userId`aktararak SSO'yu ADAL uygulamasından alabilirsiniz. ADAL daha sonra API ile `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` sessizce hesap bilgilerini bulabilirsiniz.
 
-### <a name="sso-from-adal-to-msal"></a>ADAL 'den MSAL 'ye SSO
+### <a name="sso-from-adal-to-msal"></a>ADAL'dan MSAL'a SSO
 
-Bir MSAL uygulamanız ve bir ADAL uygulamanız varsa ve Kullanıcı ilk olarak ADAL tabanlı uygulamada oturum açarsa, MSAL 'de hesap aramaları için ADAL Kullanıcı tanımlayıcılarını kullanabilirsiniz. Bu, ADAL 'ten MSAL 'e geçiş yaparken de geçerlidir.
+Bir MSAL uygulamanız ve Bir ADAL uygulamanız varsa ve kullanıcı ADAL tabanlı uygulamaya ilk giriş yaparsa, MSAL'daki hesap aramaları için ADAL kullanıcı tanımlayıcılarını kullanabilirsiniz. Bu, ADAL'dan MSAL'a geçerken de geçerlidir.
 
-#### <a name="adals-homeaccountid"></a>ADAL 'ın Homeaccountıd
+#### <a name="adals-homeaccountid"></a>ADAL'ın ana hesabıAccountId
 
-ADAL 2.7. x, bu özellik aracılığıyla sonuç içindeki `ADUserInformation` nesnesindeki `homeAccountId` döndürür:
+ADAL 2.7.x `homeAccountId` bu `ADUserInformation` özellik aracılığıyla sonuç nesnedöner:
 
 ```objc
 /*! Unique AAD account identifier across tenants based on user's home OID/home tenantId. */
 @property (readonly) NSString *homeAccountId;
 ```
 
-ADAL ' deki `homeAccountId`, MSAL ' deki `identifier` eşdeğerdir. Bu tanımlayıcıyı, `accountForIdentifier:error:` API ile hesap aramaları için MSAL ' de kullanmak üzere kaydedebilirsiniz.
+`homeAccountId`ADAL'ın ki `identifier` MSAL'a eşdeğerdir. Bu `accountForIdentifier:error:` tanımlayıcıyı, API ile hesap aramaları için MSAL'da kullanmak üzere kaydedebilirsiniz.
 
-#### <a name="adals-userid"></a>ADAL `userId`
+#### <a name="adals-userid"></a>ADAL'ın`userId`
 
-`homeAccountId` yoksa veya yalnızca görüntülenebilen tanımlayıcı varsa, MSAL 'de hesabı aramak için ADAL 'ın `userId` kullanabilirsiniz.
+`homeAccountId` Kullanılamıyorsa veya yalnızca görüntülenebilir tanımlayıcınız varsa, MSAL'daki hesabı aramak `userId` için ADAL's'ı kullanabilirsiniz.
 
-MSAL ' de, önce `username` veya `identifier`göre bir hesap bulun. `identifier` sorgulamak için her zaman kullanın ve geri dönüş olarak `username` kullanın. Hesap bulunursa, `acquireTokenSilent` çağrılarında hesabı kullanın.
+MSAL'da, önce bir `username` hesaba `identifier`bakın veya . Her `identifier` zaman varsa sorgulama için kullanın ve `username` yalnızca bir geri dönüş olarak kullanın. Hesap bulunursa, `acquireTokenSilent` aramalardaki hesabı kullanın.
 
 Amaç-C:
 
@@ -138,7 +138,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-SWIFT
+Swift:
 
 ```swift
         
@@ -165,7 +165,7 @@ do {
 
 
 
-MSAL desteklenen hesap arama API 'Leri:
+MSAL desteklenen hesap arama API'leri:
 
 ```objc
 /*!
@@ -188,13 +188,13 @@ Returns account for for the given username (received from an account object retu
                               error:(NSError * __autoreleasing *)error;
 ```
 
-## <a name="adal-2x-266"></a>ADAL 2. x-2.6.6
+## <a name="adal-2x-266"></a>ADAL 2.x-2.6.6
 
-Bu bölüm MSAL ve ADAL 2. x-2.6.6 arasındaki SSO farklarını ele alır.
+Bu bölüm MSAL ve ADAL 2.x-2.6.6 arasındaki SSO farklarını kapsamaktadır.
 
-Eski ADAL sürümleri, MSAL önbellek biçimini yerel olarak desteklemez. Ancak, ADAL 'den MSAL 'e kesintisiz geçiş sağlamak için MSAL, Kullanıcı kimlik bilgilerini yeniden sormadan eski ADAL önbellek biçimini okuyabilir.
+Eski ADAL sürümleri msal önbellek biçimini yerel olarak desteklemez. Ancak, ADAL'dan MSAL'a sorunsuz geçiş sağlamak için, MSAL eski ADAL önbellek biçimini kullanıcı kimlik bilgilerini yeniden sormadan okuyabilir.
 
-`homeAccountId` eski ADAL sürümlerinde kullanılamadığından, `username`kullanarak hesapları aramanız gerekir:
+`homeAccountId` Eski ADAL sürümlerinde kullanılamadığından, aşağıdakileri kullanarak hesapları aramanız `username`gerekir:
 
 ```objc
 /*!
@@ -207,7 +207,7 @@ Eski ADAL sürümleri, MSAL önbellek biçimini yerel olarak desteklemez. Ancak,
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Örneğin:
+Örnek:
 
 Amaç-C:
 
@@ -218,7 +218,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 do {
@@ -235,7 +235,7 @@ do {
 
 
 
-Alternatif olarak, diğer tüm hesapları okuyabilir ve bu da ADAL 'den hesap bilgilerini okuyacaksınız:
+Alternatif olarak, ADAL'dan gelen hesap bilgilerini de okuyacak olan tüm hesapları okuyabilirsiniz:
 
 Amaç-C:
 
@@ -258,7 +258,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-SWIFT
+Swift:
 
 ```swift
       
@@ -288,4 +288,4 @@ do {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin
+[Kimlik Doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin

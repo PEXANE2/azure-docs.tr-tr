@@ -1,35 +1,35 @@
 ---
-title: Azure uygulama yapılandırma dayanıklılığı ve olağanüstü durum kurtarma
-description: Azure Uygulama yapılandırması ile dayanıklılık ve olağanüstü durum kurtarmayı nasıl uygulayacağınızı yalın yapın.
+title: Azure Uygulama Yapılandırma esnekliği ve olağanüstü durum kurtarma
+description: Azure Uygulama Yapılandırması ile esneklik ve olağanüstü durum kurtarma yı nasıl uygulayacağınıza yalınlık edin.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523773"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Dayanıklılık ve olağanüstü durum kurtarma
 
-Şu anda Azure Uygulama yapılandırması bölgesel bir hizmettir. Her yapılandırma deposu belirli bir Azure bölgesinde oluşturulur. Bölge genelinde kesinti, bu bölgedeki tüm depoları etkiler. Uygulama yapılandırması başka bir bölgeye otomatik yük devretme sunmaz. Bu makalede, uygulamanızın coğrafi dayanıklılığını artırmak için Azure bölgelerinde birden çok yapılandırma deposunu nasıl kullanabileceğiniz hakkında genel yönergeler sunulmaktadır.
+Şu anda Azure Uygulama Yapılandırması bölgesel bir hizmettir. Her yapılandırma deposu belirli bir Azure bölgesinde oluşturulur. Bölge genelinde ki kesinti, o bölgedeki tüm mağazaları etkiler. Uygulama Yapılandırması başka bir bölgeye otomatik arıza sunmaz. Bu makalede, uygulamanızın coğrafi esnekliğini artırmak için Azure bölgelerinde birden çok yapılandırma mağazasının nasıl kullanabileceğinize ilişkin genel kılavuz verilmektedir.
 
 ## <a name="high-availability-architecture"></a>Yüksek kullanılabilirlik mimarisi
 
-Bölgeler arası yedeklilik sağlamak için, farklı bölgelerde birden çok uygulama yapılandırma deposu oluşturmanız gerekir. Bu kurulumla, uygulamanızda birincil depo erişilemez hale gelirse geri dönecek en az bir ek yapılandırma deposu vardır. Aşağıdaki diyagramda, uygulamanız ve birincil ve ikincil yapılandırma depoları arasındaki topoloji gösterilmektedir:
+Bölgeler arası artıklığı gerçekleştirmek için farklı bölgelerde birden çok Uygulama Yapılandırma mağazası oluşturmanız gerekir. Bu kurulumla, birincil depoya erişilemiyorsa uygulamanızın geri dönmesi gereken en az bir ek yapılandırma deposu vardır. Aşağıdaki diyagram, uygulamanız ile birincil ve ikincil yapılandırma depoları arasındaki topolojiyi göstermektedir:
 
-![Coğrafi olarak yedekli depolar](./media/geo-redundant-app-configuration-stores.png)
+![Coğrafi yedekmağazalar](./media/geo-redundant-app-configuration-stores.png)
 
-Uygulamanız, yapılandırmasını hem birincil hem de ikincil depolardan paralel olarak yükler. Bunu yapmak, yapılandırma verilerini başarıyla alma olasılığını artırır. Verilerin her iki mağazasında da eşitlenmiş durumda tutulması sizin sorumluluğunuzdadır. Aşağıdaki bölümlerde, uygulamanıza nasıl coğrafi dayanıklılık oluşturabileceğiniz açıklanmaktadır.
+Uygulamanız yapılandırmasını hem birincil hem de ikincil mağazalardan paralel olarak yükler. Bunu yapmak, yapılandırma verilerini başarıyla alma şansını artırır. Her iki depodaki verileri eşit tutmaktan siz sorumlusunuz. Aşağıdaki bölümler, uygulamanızda coğrafi esneklik oluşturmayı açıklar.
 
-## <a name="failover-between-configuration-stores"></a>Yapılandırma depoları arasında yük devretme
+## <a name="failover-between-configuration-stores"></a>Yapılandırma mağazaları arasında failover
 
-Teknik olarak, uygulamanız yük devretme yürütmez. Aynı anda iki uygulama yapılandırma mağazasında aynı yapılandırma verisi kümesini almaya çalışıyor. Kodunuzu önce ikincil depodan, sonra da birincil mağazadan yüklenecek şekilde düzenleyin. Bu yaklaşım, birincil depodaki yapılandırma verilerinin kullanılabilir olduğunda öncelikli olmasını sağlar. Aşağıdaki kod parçacığı, bu düzenlemeyi .NET Core 'da nasıl uygulayabileceğinizi göstermektedir:
+Teknik olarak, uygulamanız bir hata yürütmüyor. Aynı anda iki Uygulama Yapılandırma deposundan aynı yapılandırma veri kümesini almaya çalışıyor. Kodunuzu, önce ikincil depodan sonra da birincil mağazadan yüklenir şekilde düzenleyin. Bu yaklaşım, birincil depodaki yapılandırma verilerinin kullanılabilir olduğunda öncelikli olmasını sağlar. Aşağıdaki kod snippet bu düzenlemeyi .NET Core'da nasıl uygulayabileceğinizi gösterir:
 
-#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Çekirdek 2.x](#tab/core2x)
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -44,7 +44,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     
 ```
 
-#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Çekirdek 3.x](#tab/core3x)
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -60,23 +60,23 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 ```
 ---
 
-`optional` parametreye `AddAzureAppConfiguration` işlevine geçtiğini unutmayın. `true`olarak ayarlandığında, bu parametre, işlevin yapılandırma verilerini yükleyememesi durumunda uygulamanın devam etmesini önler.
+İşlev `optional` içine geçen `AddAzureAppConfiguration` parametreye dikkat edin. `true`Ayarlandığında, bu parametre, işlev yapılandırma verilerini yükleyemezse uygulamanın devam etmesini önler.
 
 ## <a name="synchronization-between-configuration-stores"></a>Yapılandırma depoları arasında eşitleme
 
-Coğrafi olarak yedekli yapılandırma mağazalarınızın tümünün aynı veri kümesine sahip olması önemlidir. Birincil depodan verileri isteğe bağlı olarak kopyalamak için uygulama yapılandırmasındaki **dışarı aktarma** işlevini kullanabilirsiniz. Bu işlev hem Azure portal hem de CLı aracılığıyla kullanılabilir.
+Coğrafi yedekli yapılandırma depolarınızın hepsinin aynı veri kümesine sahip olması önemlidir. İsteğe bağlı olarak birincil mağazadan ikincil mağazaya verileri kopyalamak için App Configuration'daki **Dışa** Aktarma işlevini kullanabilirsiniz. Bu işlev hem Azure portalı hem de CLI aracılığıyla kullanılabilir.
 
-Azure portal, aşağıdaki adımları izleyerek başka bir yapılandırma deposuna bir değişikliği gönderebilirsiniz.
+Azure portalından, aşağıdaki adımları izleyerek başka bir yapılandırma deposunda değişiklik yapabilirsiniz.
 
-1. **İçeri/dışarı aktarma** sekmesine gidin ve > **uygulama yapılandırma** > **hedefi** > **bir kaynak seçin** **' i seçin** .
+1. **İçe/Aktar** sekmesine gidin ve**Dışa Aktarma Uygulaması Yapılandırma** > **hedefini** >  **seçin** > **bir kaynak seçin.**
 
-1. Açılan yeni dikey pencerede abonelik, kaynak grubu ve ikincil deponuzu kaynak adını belirtip **Uygula**' yı seçin.
+1. Açılan yeni bıçakta, ikincil mağazanızın aboneliğini, kaynak grubunu ve kaynak adını belirtin ve ardından **Uygula'yı**seçin.
 
-1. İkincil deponuza dışarı aktarmak istediğiniz yapılandırma verilerini seçebilmeniz için Kullanıcı arabirimi güncellenir. Varsayılan saat değerini olduğu gibi bırakabilir ve hem **etiketinden** hem de **etiketini** aynı değere ayarlayabilirsiniz. **Uygula**’yı seçin.
+1. UI, ikincil mağazanıza hangi yapılandırma verilerini aktarmak istediğinizi seçebilmeniz için güncelleştirilir. Varsayılan zaman değerini olduğu gibi bırakabilir ve hem **From etiketini** hem de **etiketi** aynı değere ayarlayabilirsiniz. **Uygula**’yı seçin.
 
-1. Tüm yapılandırma değişiklikleri için önceki adımları tekrarlayın.
+1. Tüm yapılandırma değişiklikleri için önceki adımları yineleyin.
 
-Bu dışarı aktarma işlemini otomatik hale getirmek için Azure CLı 'yi kullanın. Aşağıdaki komut, birincil depodan ikinciye tek bir yapılandırma değişikliğinin nasıl dışarı aktarılacağını göstermektedir:
+Bu dışa aktarma işlemini otomatikleştirmek için Azure CLI'yi kullanın. Aşağıdaki komut, birincil depodan ikincil mağazaya tek bir yapılandırma değişikliğinin nasıl dışa aktarılabildiğini gösterir:
 
 ```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
@@ -84,4 +84,4 @@ Bu dışarı aktarma işlemini otomatik hale getirmek için Azure CLı 'yi kulla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, uygulama yapılandırması için çalışma zamanı sırasında uygulamanızı coğrafi esnekliği elde etmek üzere nasıl geliştirecek öğrendiniz. Ayrıca derleme veya dağıtım zamanında uygulama yapılandırmasından yapılandırma verileri ekleyebilirsiniz. Daha fazla bilgi için bkz. [CI/CD işlem hattı Ile tümleştirme](./integrate-ci-cd-pipeline.md).
+Bu makalede, Uygulama Yapılandırması için çalışma süresi boyunca coğrafi esneklik elde etmek için uygulamanızı nasıl artırabileceğinizi öğrendiniz. Ayrıca, yapılandırma verilerini Uygulama Yapılandırması'ndan oluşturma veya dağıtım zamanında katıştırabilirsiniz. Daha fazla bilgi için [c/CD ardışık bir şekilde tümleştir'e](./integrate-ci-cd-pipeline.md)bakın.

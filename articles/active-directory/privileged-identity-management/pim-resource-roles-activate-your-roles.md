@@ -1,6 +1,6 @@
 ---
-title: PıM-Azure AD 'de Azure Kaynak rollerini etkinleştirme | Microsoft Docs
-description: Azure Kaynak rollerinizi Azure AD Privileged Identity Management (PıM) ' de nasıl etkinleştireceğinizi öğrenin.
+title: PIM'de Azure kaynak rollerini etkinleştirme - Azure AD | Microsoft Dokümanlar
+description: Azure Özel Kimlik Yönetimi'nde (PIM) Azure kaynak rollerinizi nasıl etkinleştirdiğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,123 +16,123 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74023144"
 ---
-# <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Azure Kaynak rollerimi Privileged Identity Management etkinleştir
+# <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rollerimi etkinleştirme
 
-Azure kaynakları için uygun rol üyelerinin, gelecekteki bir tarih ve saat için etkinleştirme zamanlamasını sağlamak üzere Privileged Identity Management (PıM) kullanın. Ayrıca, en fazla (yöneticiler tarafından yapılandırılan) belirli bir etkinleştirme süresi arasından seçim yapabilir.
+Azure kaynakları için uygun rol üyelerinin gelecekteki bir tarih ve saat için etkinleştirme zamanlamasına olanak sağlamak için Ayrıcalıklı Kimlik Yönetimi'ni (PIM) kullanın. Ayrıca, maksimum (yöneticiler tarafından yapılandırılan) içinde belirli bir etkinleştirme süresi seçebilirsiniz.
 
-Bu makale, Privileged Identity Management ' de Azure Kaynak rolünü etkinleştirmesi gereken üyelere yöneliktir.
+Bu makale, Azure kaynak rollerini Ayrıcalıklı Kimlik Yönetimi'nde etkinleştirmeleri gereken üyeler içindir.
 
-## <a name="activate-a-role"></a>Rol etkinleştirme
+## <a name="activate-a-role"></a>Bir rolü etkinleştirme
 
-Bir Azure Kaynak rolünü gerçekleştirmeniz gerektiğinde, Privileged Identity Management ' de **rollerim** gezinti seçeneğini kullanarak etkinleştirme isteğinde bulunabilir.
+Azure kaynak rolünü üstlenmeniz gerektiğinde, Ayrıcalıklı Kimlik Yönetimi'nde **Rollerim** gezinti seçeneğini kullanarak etkinleştirme isteğinde bulunabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 
-1. **Azure AD Privileged Identity Management**açın. Privileged Identity Management kutucuğunu panonuza ekleme hakkında daha fazla bilgi için bkz. [Privileged Identity Management kullanmaya başlama](pim-getting-started.md).
+1. **Azure AD Ayrıcalıklı Kimlik Yönetimi'ni**açın. Panonuza Ayrıcalıklı Kimlik Yönetimi döşemesinin nasıl eklenöğretilen hakkında bilgi [için](pim-getting-started.md)bkz.
 
 1. **Rollerimi**seçin.
 
-    ![Etkinleştirebilecekleri rolleri gösteren roller sayfası](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Etkinleştirebileceğiniz rolleri gösteren roller sayfam](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
-1. Uygun Azure Kaynak rollerinizin listesini görmek için **Azure Kaynak rolleri** ' ni seçin.
+1. Uygun Azure kaynak rollerinizin listesini görmek için **Azure kaynak rollerini** seçin.
 
-   ![Rollerim-Azure Kaynak rolleri sayfası](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
+   ![Rollerim - Azure kaynak rolleri sayfası](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
-1. **Azure Kaynak rolleri** listesinde, etkinleştirmek istediğiniz rolü bulun.
+1. Azure **kaynak rolleri** listesinde etkinleştirmek istediğiniz rolü bulun.
 
-    ![Azure Kaynak rolleri-uygun rollerim listesi](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
+    ![Azure kaynak rolleri - Uygun roller listem](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
-1. Etkinleştir bölmesini açmak için **Etkinleştir** ' i seçin.
+1. Etkinleştir bölmesini açmak için **Etkinleştir'i** seçin.
 
-1. Rolünüz çok faktörlü kimlik doğrulaması gerektiriyorsa, **devam etmeden önce kimliğinizi doğrula**' yı seçin. Her oturum için yalnızca bir kez kimlik doğrulaması yapmanız gerekir.
+1. Rolünüz çok faktörlü kimlik doğrulama gerektiriyorsa, **devam etmeden önce kimliğinizi doğrulayın'ı**seçin. Oturum başına yalnızca bir kez kimlik doğrulamanız gerekir.
 
-    ![Rol etkinleştirmeden önce MFA ile kimliğimi doğrula](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+    ![Rol etkinleştirmeden önce kimliğimi MFA ile doğrulayın](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
-1. **Kimliğimi doğrula** ' yı seçin ve ek güvenlik doğrulaması sağlamak için yönergeleri izleyin.
+1. **Kimliğimi doğrula'yı** seçin ve ek güvenlik doğrulaması sağlamak için yönergeleri izleyin.
 
-    ![PIN kodu gibi güvenlik doğrulaması sağlayan ekran](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+    ![PIN kodu gibi güvenlik doğrulaması sağlamak için ekran](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
-1. Azaltılmış bir kapsam belirtmek istiyorsanız **kapsam** ' ı seçerek kaynak filtresi bölmesini açın.
+1. Azaltılmış bir kapsam belirtmek istiyorsanız, Kaynak filtresi bölmesini açmak için **Kapsam'ı** seçin.
 
-    Yalnızca ihtiyacınız olan kaynaklara erişim istemek için en iyi uygulamadır. Kaynak filtre bölmesinde, erişmeniz gereken kaynak gruplarını veya kaynakları belirtebilirsiniz.
+    Yalnızca ihtiyacınız olan kaynaklara erişim istemek en iyi yöntemdir. Kaynak filtresi bölmesine, erişmeniz gereken kaynak gruplarını veya kaynakları belirtebilirsiniz.
 
-    ![Kapsam belirtmek için etkinleştir-kaynak filtre bölmesi](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
+    ![Etkinleştir - Kapsamı belirtmek için kaynak filtre bölmesi](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
 
-1. Gerekirse, özel bir etkinleştirme başlangıç saati belirtin. Üye, seçili saatten sonra etkinleştirilecektir.
+1. Gerekirse, özel bir etkinleştirme başlangıç saati belirtin. Üye, seçili süreden sonra etkinleştirilir.
 
-1. **Neden** kutusunda, etkinleştirme isteğinin nedenini girin.
+1. **Reason** kutusuna etkinleştirme isteğinin nedenini girin.
 
-    ![Kapsam, başlangıç zamanı, süre ve nedenle etkinleştirme bölmesi tamamlandı](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
+    ![Tamamlanmış Kapsam, başlangıç saati, süre ve neden ile bölmeyi etkinleştirme](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
-1. **Etkinleştir**' i seçin.
+1. **Etkinleştir'i**seçin.
 
-    Rol onay gerektirmiyorsa, etkinleştirilir ve etkin roller listesine eklenir. Rolünü kullanmak istiyorsanız sonraki bölümdeki adımları izleyin.
+    Rol onay gerektirmiyorsa, etkinleştirilir ve etkin roller listesine eklenir. Rolü kullanmak istiyorsanız, sonraki bölümdeki adımları izleyin.
 
-    Rol etkinleştirme için [onay gerektiriyorsa](pim-resource-roles-approval-workflow.md) , tarayıcınızın sağ üst köşesinde, isteğin onay beklendiğini bildiren bir bildirim görüntülenir.
+    Rol etkinleştirmek için [onay gerektiriyorsa,](pim-resource-roles-approval-workflow.md) tarayıcınızın sağ üst köşesinde isteğin onay beklemede olduğunu bildiren bir bildirim görüntülenir.
 
     ![Etkinleştirme isteği onay bildirimi bekliyor](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="use-a-role-immediately-after-activation"></a>Etkinleştirdikten hemen sonra bir rol kullan
+## <a name="use-a-role-immediately-after-activation"></a>Etkinleştirmeden hemen sonra bir rol kullanma
 
-Etkinleştirdikten sonra herhangi bir gecikme olması durumunda, Azure Kaynak rollerinizi hemen kullanmaya başladıktan sonra bu adımları izleyin.
+Etkinleştirmeden sonra herhangi bir gecikme durumunda, Azure kaynak rollerinizi hemen kullanmak için etkinleştirdikten sonra aşağıdaki adımları izleyin.
 
-1. Azure AD Privileged Identity Management açın.
+1. Azure AD Ayrıcalıklı Kimlik Yönetimi'ni açın.
 
-1. Uygun Azure AD rollerinizin ve Azure Kaynak rollerinin bir listesini görmek için **rollerimi** seçin.
+1. Uygun Azure REKLAM rollerinizin ve Azure kaynak rollerinizin listesini görmek için **rollerimi** seçin.
 
-1. **Azure Kaynak rolleri**' ni seçin.
+1. **Azure kaynak rollerini**seçin.
 
-1. **Etkin roller** sekmesini seçin.
+1. Etkin **roller** sekmesini seçin.
 
-1. Rol etkin olduktan sonra portalın oturumunu kapatın ve yeniden oturum açın.
+1. Rol etkin olduğunda, portaldan çıkış ve tekrar oturum açın.
 
-    Rol artık kullanılabilir olmalıdır.
+    Rolün artık kullanılmaması gerekir.
 
-## <a name="view-the-status-of-your-requests"></a>İsteklerinizin durumunu görüntüleyin
+## <a name="view-the-status-of-your-requests"></a>İsteklerinizin durumunu görüntüleme
 
-Etkinleştirme için bekleyen isteklerinizin durumunu görüntüleyebilirsiniz.
+Etkinleştirmek için bekleyen isteklerinizin durumunu görüntüleyebilirsiniz.
 
-1. Azure AD Privileged Identity Management açın.
+1. Azure AD Ayrıcalıklı Kimlik Yönetimi'ni açın.
 
-1. Azure AD rolünüzün ve Azure Kaynak rolü isteklerinizin listesini görmek için **isteklerim** ' i seçin.
+1. Azure REKLAM rolünüzün ve Azure kaynak rol isteklerinizin listesini görmek için **isteklerimi** seçin.
 
-    ![İsteklerim-bekleyen isteklerinizi gösteren Azure Kaynak sayfası](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![İsteklerim - Bekleyen isteklerinizi gösteren Azure kaynak sayfası](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
-1. **Istek durumu** sütununu görüntülemek için sağa kaydırın.
+1. **İstek Durumu** sütununa görüntülemek için sağa kaydırın.
 
-## <a name="cancel-a-pending-request"></a>Bekleyen bir isteği iptal etme
+## <a name="cancel-a-pending-request"></a>Bekleyen isteği iptal etme
 
-Onay gerektiren bir rolün etkinleştirilmesini gerektirmiyorsa, bekleyen bir isteği dilediğiniz zaman iptal edebilirsiniz.
+Onay gerektiren bir rolün etkinleştirilmesine gerek yoksa, bekleyen bir isteği istediğiniz zaman iptal edebilirsiniz.
 
-1. Azure AD Privileged Identity Management açın.
+1. Azure AD Ayrıcalıklı Kimlik Yönetimi'ni açın.
 
-1. **Isteklerim**' i seçin.
+1. **İsteklerimi**seçin.
 
-1. İptal etmek istediğiniz rol için **iptal** bağlantısını seçin.
+1. İptal etmek istediğiniz rol için **İptal** bağlantısını seçin.
 
-    Iptal ' i seçtiğinizde istek iptal edilir. Rolü yeniden etkinleştirmek için, etkinleştirme için yeni bir istek göndermeniz gerekir.
+    İptal'i seçtiğinizde, istek iptal edilir. Rolü yeniden etkinleştirmek için etkinleştirme için yeni bir istek göndermeniz gerekir.
 
-   ![Iptal eylemi vurgulanmış istek listem](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+   ![İptal eylemi vurgulanan istek listem](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Rol etkinleştirildikten sonra izinler verilmiyor
 
-Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme ayrıcalıklı rol gerektiren tüm portallara anında yaymayabilir. Bazı durumlarda değişiklik yayılsa bile portalda web önbelleği değişikliğin anında geçerlilik kazanmamasına yol açabilir. Etkinleştirme gecikirse, yapmanız gerekenler aşağıda verilmiştir.
+Ayrıcalıklı Kimlik Yönetimi'nde bir rolü etkinleştirdiğinizde, etkinleştirme ayrıcalıklı rol gerektiren tüm portallara anında yayılmayabilir. Bazı durumlarda değişiklik yayılsa bile portalda web önbelleği değişikliğin anında geçerlilik kazanmamasına yol açabilir. Etkinleştirme niz gecikirse, yapmanız gerekenler şunlardır.
 
 1. Azure portalında oturumunuzu kapatın ve sonra yeniden oturum açın.
 
-    Bir Azure Kaynak rolünü etkinleştirdiğinizde, etkinleştirme aşamalarını görürsünüz. Tüm aşamalar tamamlandıktan sonra bir **Oturumu kapat** bağlantısı görürsünüz. Oturumu kapatmak için bu bağlantıyı kullanabilirsiniz. Bu, etkinleştirme gecikmesi için çoğu durumu çöztirecek.
+    Bir Azure kaynak rolünü etkinleştirdiğinizde, etkinleştirme aşamanızı görürsünüz. Tüm aşamalar tamamlandıktan sonra bir **Oturumu kapat** bağlantısı görürsünüz. Oturum sonlarını kullanmak için bu bağlantıyı kullanabilirsiniz. Bu etkinleştirme gecikmesi için çoğu durumda çözecektir.
 
-1. Privileged Identity Management, rolün üyesi olarak listelendiğinizi doğrulayın.
+1. Ayrıcalıklı Kimlik Yönetimi'nde, rolün üyesi olarak listelendinizgini doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Privileged Identity Management Azure Kaynak rollerini genişletme veya yenileme](pim-resource-roles-renew-extend.md)
-- [Privileged Identity Management 'de Azure AD rollerimi etkinleştirin](pim-how-to-activate-role.md)
+- [Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rollerini genişletme veya yenileme](pim-resource-roles-renew-extend.md)
+- [Ayrıcalıklı Kimlik Yönetimi'ndeki Azure REKLAM rollerimi etkinleştirme](pim-how-to-activate-role.md)

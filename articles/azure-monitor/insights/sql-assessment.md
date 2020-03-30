@@ -1,92 +1,92 @@
 ---
-title: Azure Izleyici ile SQL Server ortamınızı iyileştirin | Microsoft Docs
-description: Azure Izleyici ile, düzenli aralıklarla ortamlarınızın riskini ve durumunu değerlendirmek için SQL sistem durumu denetimi çözümünü kullanabilirsiniz.
+title: Azure Monitor ile SQL Server ortamınızı optimize edin | Microsoft Dokümanlar
+description: Azure Monitor ile, ortamlarınızın risk ve sistem durumunu düzenli aralıklarla değerlendirmek için SQL Sistem Durumu Denetimi çözümünü kullanabilirsiniz.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
 ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77662493"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Izleyici 'de SQL Server sistem durumu denetimi çözümü ile SQL ortamınızı iyileştirin
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Monitor'daki SQL Server Health Check çözümüyle SQL ortamınızı optimize edin
 
-![SQL sistem durumu denetimi simgesi](./media/sql-assessment/sql-assessment-symbol.png)
+![SQL Sistem Durumu Denetimi simgesi](./media/sql-assessment/sql-assessment-symbol.png)
 
-Düzenli aralıklarla sunucu ortamlarınızın riskini ve sistem durumunu değerlendirmek için SQL sistem durumu denetimi çözümünü kullanabilirsiniz. Bu makale, olası sorunlar için düzeltici eylemler yapabilmeniz için çözümü yüklemenize yardımcı olur.
+Sunucu ortamlarınızın risk ve sistem durumunu düzenli aralıklarla değerlendirmek için SQL Sistem Durumu Denetimi çözümünü kullanabilirsiniz. Bu makalede, olası sorunlar için düzeltici eylemlerde bulunabilir, böylece çözüm yüklemenize yardımcı olacaktır.
 
-Bu çözüm, dağıtılan sunucu altyapınıza özgü önerilerin öncelikli bir listesini sağlar. Öneriler, riski hızla anlamanıza ve düzeltici eylem yapmanıza yardımcı olan altı odak alanı genelinde kategorize edilir.
+Bu çözüm, dağıtılmış sunucu altyapınıza özgü öncelikle öneriler listesi sağlar. Öneriler, riski hızlı bir şekilde anlamanıza ve düzeltici eylemde bulunmanıza yardımcı olan altı odak alanında sınıflandırılır.
 
-Yapılan öneriler, binlerce müşteri ziyaretinden Microsoft mühendisleri tarafından kazanılan bilgi ve deneyime dayanır. Her öneri, bir sorunun neden bir sorun ve önerilen değişikliklerin nasıl uygulanacağı hakkında rehberlik sağlar.
+Yapılan öneriler, Microsoft mühendislerinin binlerce müşteri ziyaretinden edindikleri bilgi ve deneyime dayanmaktadır. Her öneri, bir sorunun sizin için neden önemli olabileceği ve önerilen değişikliklerin nasıl uygulanacağı hakkında rehberlik sağlar.
 
-Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sağlıklı bir ortamı çalıştırmaya yönelik ilerlemenizi izleyebilirsiniz.
+Kuruluşunuz için en önemli olan odak alanlarını seçebilir ve risksiz ve sağlıklı bir ortam çalıştırma yolundaki ilerlemenizi izleyebilirsiniz.
 
-Çözümü ekledikten ve bir değerlendirme tamamlandıktan sonra, ortamınızdaki altyapının **SQL sistem durumu denetimi** panosunda odak alanlarının Özet bilgileri gösterilir. Aşağıdaki bölümlerde, SQL Server altyapınız için önerilen eylemleri görüntüleyip uygulayabileceğiniz **SQL sistem durumu denetimi** panosundaki bilgilerin nasıl kullanılacağı açıklanır.
+Çözümü ekledikten ve bir değerlendirme tamamlandıktan sonra, odak alanlarına ait özet bilgiler ortamınızdaki altyapı için **SQL Sistem Durumu Denetimi** panosunda gösterilir. Aşağıdaki bölümlerde, SQL Server altyapınız için önerilen eylemleri görüntüleyip sonra da yapabileceğiniz **SQL Sistem Durumu Denetimi** panosundaki bilgilerin nasıl kullanılacağı açıklanmıştır.
 
-![SQL sistem durumu denetimi kutucuğunun görüntüsü](./media/sql-assessment/sql-healthcheck-summary-tile.png)
+![SQL Health Check döşemesi görüntüsü](./media/sql-assessment/sql-healthcheck-summary-tile.png)
 
-![SQL sistem durumu denetimi panosunun görüntüsü](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
+![SQL Sistem Durumu Kontrol panosunun görüntüsü](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* SQL sistem durumu denetimi çözümü, Microsoft Monitoring Agent (MMA) yüklü her bilgisayarda desteklenen bir .NET Framework 4.6.2 sürümü gerektirir.  MMA Aracısı System Center 2016-Operations Manager ve Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.  
-* Çözüm 2012, 2014 ve 2016 SQL Server sürümünü destekler.
-* Azure portal Azure Marketi 'nden SQL sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı.  Çözümü yüklemek için Azure aboneliğinde bir yönetici veya katkıda bulunan olması gerekir.
+* SQL Sistem Durumu Denetimi çözümü, Microsoft İzleme Aracısı (MMA) yüklü olan her bilgisayarda yüklü olan .NET Framework 4.6.2'nin desteklenen bir sürümünü gerektirir.  MMA aracısı System Center 2016 - Operasyon Yöneticisi ve Operasyon Yöneticisi 2012 R2 ve Azure Monitor tarafından kullanılır.  
+* Çözüm, SQL Server sürüm 2012, 2014 ve 2016'yı destekler.
+* Azure portalındaki Azure pazar yerinden SQL Sistem Durumu Denetimi çözümlerini eklemek için bir Günlük Analizi çalışma alanı.  Çözümü yüklemek için Azure aboneliğinde yönetici veya katkıda bulunan kişi olmalısınız.
 
   > [!NOTE]
-  > Çözümü ekledikten sonra, danışmanlı Assessment. exe dosyası aracıları olan sunuculara eklenir. Yapılandırma verileri okuyup işlenmek üzere Bulutta Azure Izleyici 'ye gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder.
+  > Çözümü ekledikten sonra AdvisorAssessment.exe dosyası aracılı sunuculara eklenir. Yapılandırma verileri okunur ve işlenmek üzere buluttaki Azure Monitörü'ne gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder.
   >
   >
 
-SQL Server sunucularınızda sistem durumu denetimini gerçekleştirmek için, aşağıdaki desteklenen yöntemlerden birini kullanarak bir aracı ve Azure Izleyici bağlantısı gerekir:
+SQL Server sunucularınıza karşı sistem durumu denetimini gerçekleştirmek için, aşağıdaki desteklenen yöntemlerden birini kullanarak Azure Monitor'a bir aracı ve bağlantı gerektirir:
 
-1. Sunucu zaten System Center 2016-Operations Manager veya Operations Manager 2012 R2 tarafından izlenmediği takdirde, [Microsoft Monitoring Agent (MMA) ' i (MMA)](../../azure-monitor/platform/agent-windows.md) ' i (
-2. System Center 2016-Operations Manager veya Operations Manager 2012 R2 ile izleniyorsa ve yönetim grubu Azure Izleyici ile tümleştirilmediğinde, sunucu, veri toplamak ve hizmete iletmek ve yine de devam etmek için Log Analytics ile birden çok bilgisayarlı olabilir. Operations Manager tarafından izleniyor.  
-3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çalışma alanınızda çözümü etkinleştirdikten sonra [aracıyla yönetilen bilgisayarlar ekleme](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) bölümündeki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir.  
+1. Sunucu System Center 2016 - Operations Manager veya Operations Manager 2012 R2 tarafından zaten izlenmiyorsa [Microsoft İzleme Aracısını (MMA)](../../azure-monitor/platform/agent-windows.md) yükleyin.
+2. System Center 2016 ile izlenirse - Operations Manager veya Operations Manager 2012 R2 ve yönetim grubu Azure Monitor ile entegre değilse, sunucu veri toplamak ve hizmete iletmek için Log Analytics ile çok sayıda yuvaya sahip olabilir ve yine de Operasyon Müdürü tarafından izlenir.  
+3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle bütünleşmişse, çözüme olanak verdikten sonra iş yeriniz tarafından [yönetilen bilgisayarlar ekle](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) adımları altında nağmeler altında veri toplama için etki alanı denetleyicilerini eklemeniz gerekir.  
 
-SQL Server, Operations Manager bir yönetim grubuna rapor veren, verileri toplayan, atanan yönetim sunucusuna ileten ve daha sonra doğrudan bir yönetim sunucusundan Azure Izleyici 'ye gönderilen aracı.  Veriler Operations Manager veritabanlarına yazılmaz.  
+SQL Server'ınızdaki bir İşlem Yöneticisi yönetim grubuna rapor veren, veri toplayan, atanan yönetim sunucusuna ileten ve doğrudan bir yönetim sunucusundan Azure Monitor'a gönderilen aracı.  Veriler Operasyon Yöneticisi veritabanlarına yazılmadı.  
 
-SQL Server Operations Manager tarafından izleniyorsa, bir Operations Manager farklı çalıştır hesabı yapılandırmanız gerekir. Daha fazla bilgi için aşağıdaki [Azure izleyici Operations Manager farklı çalıştır hesaplarını](#operations-manager-run-as-accounts-for-log-analytics) inceleyin.
+SQL Server Operations Manager tarafından izleniyorsa, bir Operasyon Yöneticisi Run Hesabı olarak yapılandırmanız gerekir. Daha fazla bilgi için aşağıda [Azure Monitor için Operations Manager run-as hesaplarına](#operations-manager-run-as-accounts-for-log-analytics) bakın.
 
-## <a name="sql-health-check-data-collection-details"></a>SQL sistem durumu denetimi veri toplama ayrıntıları
-SQL sistem durumu denetimi, etkinleştirdiğiniz aracıyı kullanarak aşağıdaki kaynaklardan veri toplar:
+## <a name="sql-health-check-data-collection-details"></a>SQL Sistem Durumu Denetimi veri toplama ayrıntıları
+SQL Health Check, etkinleştirdiğiniz aracıyı kullanarak aşağıdaki kaynaklardan veri toplar:
 
 * Windows Yönetim Araçları (WMI)
 * Kayıt Defteri
 * Performans sayaçları
 * SQL Server dinamik yönetim görünümü sonuçları
 
-Veriler SQL Server toplanır ve her yedi günde bir Log Analytics iletilir.
+Veriler SQL Server'da toplanır ve her yedi günde bir Log Analytics'e iletilir.
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics için Operations Manager farklı çalıştır hesapları
-Log Analytics, verileri toplamak ve Log Analytics hizmetine göndermek için Operations Manager Aracısı ve yönetim grubunu kullanır. Log Analytics, değer ekleme hizmetleri sağlamak için iş yükleri için yönetim paketlerinden sonra oluşturulur. Her iş yükü, yönetim paketlerini bir etki alanı kullanıcı hesabı gibi farklı bir güvenlik bağlamında çalıştırmak için iş yüküne özgü ayrıcalıklar gerektirir. Operations Manager farklı çalıştır hesabını yapılandırarak kimlik bilgileri sağlamanız gerekir.
+Log Analytics, Log Analytics hizmetine veri toplamak ve göndermek için Operasyon Yöneticisi aracısını ve yönetim grubunu kullanır. Log Analytics, katma değerli hizmetler sağlamak için iş yükleri için yönetim paketleri üzerine inşa edin. Her iş yükü, yönetim paketlerini etki alanı kullanıcı hesabı gibi farklı bir güvenlik bağlamında çalıştırmak için iş yüküne özgü ayrıcalıklar gerektirir. Bir Operasyon Yöneticisi Run As hesabını yapılandırarak kimlik bilgisi sağlamanız gerekir.
 
-SQL sistem durumu denetimi için Operations Manager farklı çalıştır hesabını ayarlamak üzere aşağıdaki bilgileri kullanın.
+İşlemyöneticisi Run'ı SQL Sistem Durumu Denetimi için hesap olarak ayarlamak için aşağıdaki bilgileri kullanın.
 
-### <a name="set-the-run-as-account-for-sql-health-check"></a>SQL sistem durumu denetimi için farklı çalıştır hesabı ayarlama
- Zaten SQL Server yönetim paketini kullanıyorsanız, bu farklı çalıştır yapılandırmasını kullanmanız gerekir.
+### <a name="set-the-run-as-account-for-sql-health-check"></a>SQL Sistem Durumu Denetimi için Farklı Çalıştır hesabını ayarlama
+ SQL Server yönetim paketini zaten kullanıyorsanız, bu Çalıştır yapılandırmasını kullanmanız gerekir.
 
-#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>SQL farklı çalıştır hesabını Işletim konsolunda yapılandırmak için
+#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>İşlemler konsolunda SQL Run Hesabı'nı yapılandırmak için
 > [!NOTE]
-> Varsayılan olarak, yönetim paketindeki iş akışları yerel sistem hesabının güvenlik bağlamında çalışır. Doğrudan Operations Manager bir yönetim grubuna raporlama yerine hizmete doğrudan bağlı Microsoft Monitoring Agent kullanıyorsanız, aşağıdaki 1-5 adımları atlayın ve T-SQL veya PowerShell örneğini çalıştırın ve bu şekilde NT AUTHORITY\SYSTEM Kullanıcı adı.
+> Yönetim paketindeki varsayılan iş akışları Yerel Sistem hesabının güvenlik bağlamında çalışır. Bir İşlem Yöneticisi yönetim grubuna doğrudan rapor vermek yerine doğrudan hizmete bağlı Microsoft İzleme Aracısı kullanıyorsanız, aşağıdaki 1-5 adımını atlayın ve NT AUTHORITY\SYSTEM olarak belirterek T-SQL veya PowerShell örneğini çalıştırın kullanıcı adı.
 >
 >
 
-1. Operations Manager, Işletim konsolunu açın ve ardından **Yönetim**' e tıklayın.
-2. **Farklı Çalıştır Yapılandırması**altında, **profiller**' e tıklayın ve **Farklı Çalıştır profili SQL değerlendirmesi**açın.
-3. **Farklı Çalıştır hesapları** sayfasında **Ekle**' ye tıklayın.
-4. SQL Server için gereken kimlik bilgilerini içeren bir Windows farklı çalıştır hesabı seçin veya bir tane oluşturmak için **Yeni** ' ye tıklayın.
+1. Operations Manager'da, Operations konsolunu açın ve ardından **Yönetim'i**tıklatın.
+2. **Yapılandırma Olarak Çalıştır** **altında, Profiller'i**tıklatın ve SQL Assessment Run As **Profile'ı**açın.
+3. **Farklı Çalıştır Hesapları** sayfasında **Ekle**’ye tıklayın.
+4. SQL Server için gereken kimlik bilgilerini içeren bir Windows Çalıştır Hesabı seçin veya oluşturmak için **Yeni'yi** tıklatın.
 
    > [!NOTE]
-   > Farklı Çalıştır hesabı türü Windows olmalıdır. Farklı Çalıştır hesabı, SQL Server örnekleri barındıran tüm Windows sunucularında yerel Yöneticiler grubunun da parçası olmalıdır.
+   > Hesap Olarak Çalıştır türü Windows olmalıdır. Çalıştır Hesabı, SQL Server Örneklerini barındıran tüm Windows Sunucularında Yerel Yöneticiler grubunun bir parçası olmalıdır.
    >
    >
-5. **Kaydet**’e tıklayın.
-6. Farklı çalıştır hesabının sistem durumu denetimini gerçekleştirmesi için gereken en düşük izinleri vermek üzere her bir SQL Server örneğinde aşağıdaki T-SQL örneğini değiştirin ve yürütün. Ancak, bir farklı çalıştır hesabı zaten SQL Server örneklerine sysadmin sunucu rolünün bir parçasıysa bunu yapmanız gerekmez.
+5. **Kaydet**'e tıklayın.
+6. Sistem durumu denetimini gerçekleştirmek için Run As Hesabı için gereken minimum izinleri vermek için her SQL Server örneğinde aşağıdaki T-SQL örneğini değiştirin ve çalıştırın. Ancak, bir Run As Hesabı zaten SQL Server örneklerinde sysadmin sunucu rolünün bir parçası ise bunu yapmanız gerekmez.
 
 ```
     ---
@@ -107,8 +107,8 @@ SQL sistem durumu denetimi için Operations Manager farklı çalıştır hesabı
 
 ```
 
-#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Windows PowerShell 'i kullanarak SQL farklı çalıştır hesabını yapılandırmak için
-Bir PowerShell penceresi açın ve bilgilerinizi kullanarak güncelleştirdikten sonra aşağıdaki betiği çalıştırın:
+#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Windows PowerShell kullanarak SQL Run As hesabını yapılandırmak için
+Bir PowerShell penceresi açın ve bilgilerinizle güncelledikten sonra aşağıdaki komut dosyasını çalıştırın:
 
 ```
     import-module OperationsManager
@@ -119,84 +119,84 @@ Bir PowerShell penceresi açın ve bilgilerinizi kullanarak güncelleştirdikten
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Önerilerin nasıl önceliklendirildiğini anlama
-Yapılan her öneriye, önerinin göreli önemini tanımlayan bir ağırlık değeri verilir. Yalnızca en önemli on öneri gösterilmektedir.
+## <a name="understanding-how-recommendations-are-prioritized"></a>Önerilerin önceliklerini belirlemeyi anlama
+Yapılan her öneriye, önerinin göreli önemini tanımlayan bir ağırlık değeri verilir. Sadece en önemli on öneri gösterilir.
 
-### <a name="how-weights-are-calculated"></a>Ağırlıklar nasıl hesaplanır
-Ağırlıklı değerler üç ana etkene göre toplam değerlerdir:
+### <a name="how-weights-are-calculated"></a>Ağırlıklar nasıl hesaplanır?
+Ağırlıklandırmalar üç temel faktöre dayalı toplam değerlerdir:
 
-* Bir sorunun tanımlanabileceği *olasılık* sorunlara neden olur. Daha yüksek bir olasılık, öneriye ilişkin daha büyük bir genel puanı elde eden bir olasılıktır.
-* Soruna neden olursa sorunun kuruluşunuza *etkisi* . Daha yüksek bir etkisi, önerinin daha büyük bir genel puanı ile aynıdır.
-* Öneriyi uygulamak için gereken *çaba* . Daha yüksek bir çaba, önerinin daha küçük bir genel puanı ile aynıdır.
+* Tanımlanan bir sorunun sorunlara neden olma *olasılığı.* Daha yüksek bir olasılık, öneri için daha büyük bir genel puana eşittir.
+* Sorunun kuruluşunuz üzerindeki *etkisi,* bir soruna neden oluyorsa. Daha yüksek bir etki, tavsiye için daha büyük bir genel puana eşittir.
+* Tavsiyeyi uygulamak için gereken *çaba.* Daha yüksek bir çaba, tavsiye için daha küçük bir genel puana eşittir.
 
-Her öneri ağırlığı, her bir odak alanı için kullanılabilen toplam puanların yüzdesi olarak ifade edilir. Örneğin, güvenlik ve uyumluluk odağıyla ilgili bir önerinin %5 puanı varsa, bu öneriyi uygulamak genel güvenlik ve uyumluluk puanınızı %5 oranında artırır.
+Her öneriiçin ağırlıklandırma, her odak alanı için kullanılabilir toplam puanın yüzdesi olarak ifade edilir. Örneğin, Güvenlik ve Uyumluluk odak alanındaki bir öneri %5 puana sahipse, bu öneriyi uygulamak genel Güvenlik ve Uyumluluk puanınızı %5 artırır.
 
-### <a name="focus-areas"></a>Odak alanı
-**Güvenlik ve uyumluluk** -bu odak alanı, olası güvenlik tehditleri ve ihlal, kurumsal ilkeler ve teknik, yasal ve yasal uyumluluk gereksinimlerine yönelik öneriler gösterir.
+### <a name="focus-areas"></a>Odak alanları
+**Güvenlik ve Uyumluluk** - Bu odak alanı, potansiyel güvenlik tehditleri ve ihlalleri, şirket politikaları ve teknik, yasal ve mevzuata uygunluk gereklilikleri için öneriler gösterir.
 
-**Kullanılabilirlik ve Iş sürekliliği** -bu odak alanı hizmet kullanılabilirliği, altyapınızın esnekliği ve iş koruma önerilerini gösterir.
+**Kullanılabilirlik ve İş Sürekliliği** - Bu odak alanı, hizmet kullanılabilirliği, altyapınızın esnekliği ve iş koruması için öneriler gösterir.
 
-**Performans ve ölçeklenebilirlik** -bu odak alanı, kuruluşunuzun BT altyapısının BÜYÜMESI, BT ortamınızın geçerli performans gereksinimlerini karşıladığından emin olmak ve değişen altyapı ihtiyaçlarına yanıt verebilmeleri için öneriler gösterir.
+**Performans ve Ölçeklenebilirlik** - Bu odak alanı, kuruluşunuzun BT altyapısının büyümesine yardımcı olacak, BT ortamınızın geçerli performans gereksinimlerini karşıladığından ve değişen altyapı gereksinimlerine yanıt verebilmesini sağlayacak öneriler gösterir.
 
-**Yükseltme, geçiş ve dağıtım** -bu odak alanı, mevcut altyapınıza SQL Server yükseltmenize, geçirmenize ve dağıtmanıza yardımcı olacak öneriler gösterir.
+**Yükseltme, Geçiş ve Dağıtım** - Bu odak alanı, SQL Server'ı varolan altyapınıza yükseltmenize, geçiş inizi ve dağıtmanıza yardımcı olacak öneriler gösterir.
 
-**İşlemler ve izleme** -bu odak alanı, BT işlemlerinizi kolaylaştırmaya, önleyici bakım uygulamanıza ve performansı en üst düzeye çıkarmaya yardımcı olmaya yönelik öneriler gösterir.
+**İşlemler ve İzleme** - Bu odak alanı, BT operasyonlarınızı kolaylaştırmaya, önleyici bakımı uygulamaya ve performansı en üst düzeye çıkarmaya yardımcı olacak öneriler gösterir.
 
-**Değişiklik ve yapılandırma yönetimi** -bu odak alanı, günlük işlemleri korumaya yardımcı olma önerilerini gösterir, değişikliklerin altyapınızı olumsuz şekilde etkilememesini, değişiklik denetimi yordamlarını oluşturduğunuzdan ve sistem yapılandırmalarını izleyip denetlemelerini sağlar.
+**Değişim ve Yapılandırma Yönetimi** - Bu odak alanı, günlük operasyonların korunmasına yardımcı olacak, değişikliklerin altyapınızı olumsuz etkilememesini sağlamaya, değişiklik denetimi yordamlarını oluşturmaya ve sistem yapılandırmalarını izleme ve denetlemeye yardımcı olacak öneriler gösterir.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Her odak alanında %100 puan elde etmeniz gerekir mi?
-Gerekli değildir. Öneriler, binlerce müşteri ziyaretinde Microsoft mühendisleri tarafından kazanılan bilgi ve deneyimlere dayalıdır. Ancak, iki sunucu altyapısı aynı değildir ve belirli öneriler sizinle daha fazla veya daha az olabilir. Örneğin, sanal makineleriniz Internet 'e açık değilse bazı güvenlik önerileri daha az ilgili olabilir. Bazı kullanılabilirlik önerileri düşük öncelikli geçici veri toplama ve raporlama sağlayan hizmetlerle daha az ilgili olabilir. Yetişkin iş açısından önemli olan sorunlar, başlangıç için daha az önemli olabilir. Önceliklerinizin hangi odak alanlarından olduğunu belirlemek ve sonra puanlarınızın zaman içinde nasıl değişdiklerini görmek isteyebilirsiniz.
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Her odak alanında %100 puanı mı hedeflemeniz gerekiyor?
+Mutlaka. Öneriler, Microsoft mühendislerinin binlerce müşteri ziyaretinde edindikleri bilgi ve deneyimlere dayanmaktadır. Ancak, iki sunucu altyapısı aynı değildir ve belirli öneriler sizin için az çok alakalı olabilir. Örneğin, sanal makineleriniz Internet'e açık değilse, bazı güvenlik önerileri daha az alakalı olabilir. Bazı kullanılabilirlik önerileri, düşük öncelikli geçici veri toplama ve raporlama sağlayan hizmetler için daha az alakalı olabilir. Olgun bir işletme için önemli olan sorunlar, yeni kurulan bir işletme için daha az önemli olabilir. Önceliklerinizin hangi odak alanları olduğunu belirlemek ve puanlarınızın zaman içinde nasıl değiştiğine bakmak isteyebilirsiniz.
 
-Her öneri, neden önemli olduğuna ilişkin bir kılavuz içerir. BT hizmetlerinizin doğası ve kuruluşunuzun iş ihtiyaçları göz önüne alındığında, öneriyi uygulamanız için uygun olup olmadığını değerlendirmek için bu kılavuzu kullanmanız gerekir.
+Her öneri, neden önemli olduğu hakkında rehberlik içerir. BT hizmetlerinizin doğası ve kuruluşunuzun iş gereksinimleri göz önüne alındığında, önerinin uygulanmasının sizin için uygun olup olmadığını değerlendirmek için bu kılavuzu kullanmalısınız.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Sistem durumu denetimi odak alanı önerilerini kullan
-Bir değerlendirme çözümünü Azure Izleyici 'de kullanabilmeniz için önce çözümün yüklü olması gerekir.  Yüklendikten sonra, Azure portal Azure Izleyici için **genel bakış** sayfasında SQL sistem durumu denetimi kutucuğunu kullanarak önerilerin özetini görüntüleyebilirsiniz.
+## <a name="use-health-check-focus-area-recommendations"></a>Sistem Durumu Denetimi odak alanı önerilerini kullanma
+Azure Monitor'da bir değerlendirme çözümünü kullanamadan önce çözümün yüklü olması gerekir.  Yüklendikten sonra, Azure portalındaki Azure Monitörü için **Genel Bakış** sayfasındaki SQL Sistem Durumu Denetimi döşemesini kullanarak önerilerin özetini görüntüleyebilirsiniz.
 
-Altyapınız için özetlenen uyumluluk değerlendirmelerini görüntüleyin ve sonra öneriler ' e gidin.
+Altyapınız için özet uyumluluk değerlendirmelerini görüntüleyin ve ardından ayrıntılı önerilere sahip.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Bir odak alanı önerilerini görüntülemek ve düzeltici eylemi gerçekleştirmek için
-1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Odak alanı için önerileri görüntülemek ve düzeltici eylemde bulunmak için
+1. Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
 2. Azure portalının sol alt köşesinde bulunan **Diğer hizmetler**'e tıklayın. Kaynak listesinde **İzleyici** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **İzleyici**'yi seçin.
-3. Menünün **Öngörüler** bölümünde **diğer**' i seçin.  
-4. **Genel bakış** sayfasında **SQL sistem durumu denetim** kutucuğuna tıklayın.
-5. **Sistem durumu denetimi** sayfasında, odak alanı Dikey penceresinde bulunan Özet bilgilerini gözden geçirin ve ardından bu odak alanı önerilerini görüntülemek için bir tane tıklatın.
-6. Odak alanı sayfalarında, ortamınız için yapılan öncelikli önerileri görüntüleyebilirsiniz. Önerinin neden yapıldığına ilişkin ayrıntıları görüntülemek için **etkilenen nesneler** altında bir öneriye tıklayın.<br><br> SQL sistem durumu denetimi önerilerinin ![görüntüsü](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. **Önerilen eylemlerde**önerilen düzeltici eylemler gerçekleştirebilirsiniz. Öğe giderildiği zaman, daha sonra değerlendirmeler önerilen eylemlerin alındığını ve uyumluluk puanınız artar. Düzeltilen öğeler **geçirilmiş nesneler**olarak görünür.
+3. Menünün **Öngörüler** bölümünde Daha **Fazla'yı**seçin.  
+4. Genel **Bakış** sayfasında, **SQL Sistem Durumu Denetimi** döşemesini tıklatın.
+5. Sistem **Durumu Denetimi** sayfasında, odak alanı bıçaklarından birinde özet bilgileri gözden geçirin ve ardından bu odak alanı yla ilgili önerileri görüntülemek için bir tanesini tıklatın.
+6. Odak alanı sayfalarından herhangi birinde, ortamınız için yapılan öncelikli önerileri görüntüleyebilirsiniz. Önerinin neden yapıldığıyla ilgili ayrıntıları görüntülemek için **Etkilenen Nesneler** altında bir öneriyi tıklatın.<br><br> ![SQL Sağlık Kontrolü önerilerinin görüntüsü](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
+7. **Önerilen Eylemler'de**önerilen düzeltici eylemleri alabilirsiniz. Öğe ele alındığında, daha sonraki değerlendirmeler önerilen eylemlerin alındığını ve uyumluluk puanınızın artacağını kaydeder. Düzeltilen öğeler **Geçirilen Nesneler**olarak görünür.
 
-## <a name="ignore-recommendations"></a>Önerileri yoksay
-Yok saymak istediğiniz önerileriniz varsa, Azure Izleyici 'nin değerlendirme sonuçlarınızda görünmesini engellemek için kullanacağı bir metin dosyası oluşturabilirsiniz.
+## <a name="ignore-recommendations"></a>Önerileri yoksayma
+Göz ardı etmek istediğiniz önerileriniz varsa, Azure Monitor'un değerlendirme sonuçlarınızda önerilerin görünmesini önlemek için kullanacağı bir metin dosyası oluşturabilirsiniz.
 
-### <a name="to-identify-recommendations-that-you-will-ignore"></a>Yok sayılacak önerileri belirlemek için
-1. Azure Izleyici menüsünde **Günlükler**' e tıklayın.
+### <a name="to-identify-recommendations-that-you-will-ignore"></a>Yoksayacağınız önerileri tanımlamak için
+1. Azure Monitörü menüsünde **Günlükler'i**tıklatın.
 2. Ortamınızdaki bilgisayarlarda başarısız olan önerileri listelemek için aşağıdaki sorguyu kullanın.
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-    Günlük sorgusunun gösterildiği ekran görüntüsü aşağıda verilmiştir:<br><br> ![başarısız öneriler](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Burada günlük sorgusunu gösteren bir ekran görüntüsü var:<br><br> ![başarısız öneriler](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
-3. Yoksaymak istediğiniz önerileri seçin. Sonraki yordamda RecommendationId için değerleri kullanacaksınız.
+3. Yoksaymak istediğiniz önerileri seçin. Sonraki yordamda RecommendationId için değerleri kullanırsınız.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Bir ıgnorereyorum geçişleri. txt metin dosyası oluşturmak ve kullanmak için
-1. Ignorereyorumgeçişleri. txt adlı bir dosya oluşturun.
-2. Azure Izleyici 'nin ayrı bir satırda yok saymasını istediğiniz her öneri için her bir RecommendationId yapıştırın veya yazın, sonra dosyayı kaydedip kapatın.
-3. Azure Izleyici 'nin önerileri yoksaymasını istediğiniz her bilgisayarda dosyayı aşağıdaki klasöre yerleştirin.
-   * Microsoft Monitoring Agent olan bilgisayarlarda (doğrudan veya Operations Manager üzerinden bağlı)- *systemdrive*: \Program Files\Microsoft Monitoring Tors t\agent
-   * Operations Manager Management Server- *systemdrive*: \Program Files\Microsoft System Center 2012 R2\Operations manager\server
-   * Operations Manager 2016 yönetim sunucusu- *systemdrive*: \Program Files\Microsoft System Center 2016 \ Operations manager\server
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt metin dosyası oluşturmak ve kullanmak için
+1. IgnoreRecommendations.txt adlı bir dosya oluşturun.
+2. Azure Monitor'un ayrı bir satırda yoksaymasını istediğiniz her öneri için her Öneri'yi yapıştırın veya yazın ve ardından dosyayı kaydedip kapatın.
+3. Azure Monitor'un önerileri yok saymasını istediğiniz her bilgisayarda dosyayı aşağıdaki klasöre koyun.
+   * Microsoft Monitoring Agent (doğrudan veya Operations Manager üzerinden bağlı) ile bilgisayarlarda - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
+   * Operations Manager yönetim sunucusunda - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * Operations Manager 2016 yönetim sunucusunda - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Önerilerin yoksayıldığını doğrulamak için
-1. Zamanlanan bir sonraki değerlendirme çalıştıktan sonra, varsayılan olarak 7 günde bir, belirtilen öneriler yoksayıldı olarak işaretlenir ve değerlendirme panosu 'nda görünmez.
-2. Tüm yoksayılan önerileri listelemek için aşağıdaki günlük arama sorgularını kullanabilirsiniz.
+### <a name="to-verify-that-recommendations-are-ignored"></a>Önerilerin yoksayDığını doğrulamak için
+1. Bir sonraki zamanlanmış değerlendirme çalıştırıldıktan sonra, varsayılan olarak her 7 günde bir, belirtilen öneriler Yoksayıldı olarak işaretlenir ve değerlendirme panosunda görünmez.
+2. Göz ardı edilen tüm önerileri listelemek için aşağıdaki Günlük Arama sorgularını kullanabilirsiniz.
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-3. Daha sonra yoksayılan önerilere bakmak istediğinize karar verirseniz, tüm ıgnorereyorum. txt dosyalarını kaldırın veya RecommendationIDs kaldırabilir.
+3. Daha sonra yoksayan önerileri görmek istediğinize karar verirseniz, YokSayöneriler.txt dosyalarını kaldırın veya RecommendationsID'leri kaldırabilirsiniz.
 
-## <a name="sql-health-check-solution-faq"></a>SQL sistem durumu denetimi çözümü SSS
+## <a name="sql-health-check-solution-faq"></a>SQL Sistem Durumu Denetimi çözümü SSS
 
-*SQL Değerlendirmesi çözümü tarafından hangi denetimler gerçekleştirilir?*
+*SQL Assessment çözümü tarafından hangi denetimler gerçekleştirilir?*
 
 * Aşağıdaki sorgu, şu anda gerçekleştirilen tüm denetimlerin açıklamasını gösterir:
 
@@ -205,32 +205,32 @@ SQLAssessmentRecommendation
 | distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
 | sort by FocusArea,ActionArea, Recommendation
 ```
-Sonuçlar daha sonra daha fazla inceleme için Excel'e aktarılabilir.
+Sonuçlar daha sonra daha fazla gözden geçirilmek üzere Excel'e aktarılabilir.
 
 
-*Bir sistem durumu denetimi ne sıklıkta çalıştırılır?*
+*Sağlık kontrolü ne sıklıkta çalışır?*
 
-* Onay her yedi günde bir çalıştırılır.
+* Çek her yedi günde bir çalışır.
 
-*Çekin ne sıklıkta çalışacağını yapılandırmak için bir yol var mı?*
+*Denetimin ne sıklıkta çalıştığını yapılandırmanın bir yolu var mı?*
 
 * Şu anda değil.
 
-*SQL sistem durumu denetimi çözümünü ekledikten sonra başka bir sunucu bulunursa, kontrol edilecek mi?*
+*SQL Sistem Durumu Denetimi çözümlerini ekledikten sonra başka bir sunucu keşfedilirse, bu durum kontrol edilir mi?*
 
-* Evet, bu, her yedi günde bir üzerinde denetlenir.
+* Evet, bir kez o andan itibaren, her yedi günde bir kontrol edilir keşfedilir.
 
-*Sunucu kullanımdan çıkarılmışsa, sistem durumu denetiminden kaldırılır?*
+*Bir sunucu kullanımdan kaldırılırsa, sistem durumu denetiminden ne zaman kaldırılır?*
 
 * Bir sunucu 3 hafta boyunca veri göndermezse, kaldırılır.
 
-*Veri toplamayı yapan işlemin adı nedir?*
+*Veri toplama işleminin adı nedir?*
 
-* Danışmanorassessment. exe
+* AdvisorAssessment.exe
 
 *Verilerin toplanması ne kadar sürer?*
 
-* Sunucu üzerindeki gerçek veri koleksiyonu yaklaşık 1 saat sürer. Çok sayıda SQL örneğine veya veritabanına sahip sunucularda daha uzun sürebilir.
+* Sunucudaki gerçek veri toplama yaklaşık 1 saat sürer. Çok sayıda SQL örneği veya veritabanı olan sunucularda daha uzun sürebilir.
 
 *Ne tür veriler toplanır?*
 
@@ -240,21 +240,21 @@ Sonuçlar daha sonra daha fazla inceleme için Excel'e aktarılabilir.
   * Performans sayaçları
   * SQL dinamik yönetim görünümleri (DMV).
 
-*Verilerin toplanması sırasında yapılandırmak için bir yol var mı?*
+*Veriler toplandığında yapılandırmanın bir yolu var mı?*
 
 * Şu anda değil.
 
-*Neden farklı çalıştır hesabı yapılandırmam gerekir?*
+*Neden Bir Run As Hesabı'nı yapılandırmam gerekiyor?*
 
-* SQL Server için, az sayıda SQL sorgusu çalıştırılır. Bunların çalıştırılabilmesi için SQL 'de sunucu durumunu görüntüle izinlerine sahip bir farklı çalıştır hesabı kullanılmalıdır.  Ayrıca, WMI sorgulamak için yerel yönetici kimlik bilgileri gereklidir.
+* SQL Server için az sayıda SQL sorgusu çalıştırılır. Bunların çalışması için, SQL'e VIEW SERVER STATE izinleri olan Bir Run Hesabı kullanılmalıdır.  Buna ek olarak, WMI sorgusu için yerel yönetici kimlik bilgileri gereklidir.
 
-*Neden yalnızca ilk 10 öneriyi görüntülersin?*
+*Neden sadece en iyi 10 önerileri görüntüleniyor?*
 
-* Size ayrıntılı bir görev listesi vermek yerine öncelikle öncelikli önerileri gidermeye odaklanmanız önerilir. Bunları adresledikten sonra ek öneriler kullanılabilir hale gelir. Ayrıntılı listeyi görmeyi tercih ediyorsanız, Log Analytics günlük aramasını kullanarak tüm önerileri görüntüleyebilirsiniz.
+* Size kapsamlı ezici bir görev listesi vermek yerine, önce öncelik verilen önerileri ele almaya odaklanmanızı öneririz. Bunları ele aldıktan sonra, ek öneriler kullanılabilir olacaktır. Ayrıntılı listeyi görmek isterseniz, Log Analytics günlük aramasını kullanarak tüm önerileri görüntüleyebilirsiniz.
 
-*Öneriyi yoksaymak için bir yol var mı?*
+*Bir öneriyi yok saymanın bir yolu var mı?*
 
-* Evet, bkz. Yukarıdaki [önerileri yoksay](#ignore-recommendations) bölümü.
+* Evet, yukarıdaki [önerileri yoksay](#ignore-recommendations) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrıntılı SQL sistem durumu denetimi verilerini ve önerilerini çözümlemeyi öğrenmek için [sorguları günlüğe kaydedin](../log-query/log-query-overview.md) .
+* Ayrıntılı SQL Sistem Durumu Denetimi verilerini ve önerilerini nasıl analiz edeceğiz öğrenmek için [sorguları günlüğe](../log-query/log-query-overview.md) kaydedin.

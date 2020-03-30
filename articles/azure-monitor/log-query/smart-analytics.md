@@ -1,28 +1,28 @@
 ---
-title: Log Analytics akıllı analiz örnekleri | Microsoft Docs
-description: Kullanıcı etkinliğinin analizini gerçekleştirmek için Log Analytics akıllı analiz işlevlerini kullanan örnekler.
+title: Log Analytics akıllı analitik örnekleri | Microsoft Dokümanlar
+description: Kullanıcı etkinliğinin analizini gerçekleştirmek için Log Analytics'te akıllı analitik işlevlerini kullanan örnekler.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
 ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659841"
 ---
-# <a name="log-analytics-smart-analytics-examples"></a>Log Analytics akıllı analiz örnekleri
-Bu makale, Kullanıcı etkinliğinin analizini gerçekleştirmek üzere Log Analytics içindeki akıllı analiz işlevlerini kullanan örnekleri içerir. Bu örnekleri, Application Insights tarafından izlenen kendi uygulamalarınızı çözümlemek ya da diğer verilerde benzer analizler için bu sorguların kavramlarını kullanmak üzere kullanabilirsiniz. 
+# <a name="log-analytics-smart-analytics-examples"></a>Log Analytics akıllı analitik örnekleri
+Bu makalede, kullanıcı etkinliğinin analizini gerçekleştirmek için Log Analytics'te akıllı analitik işlevlerini kullanan örnekler yer almaktadır. Bu örnekleri, Application Insights tarafından izlenen kendi uygulamalarınızı çözümlemek için veya diğer veriler üzerinde benzer analizler için bu sorgularda bulunan kavramları kullanmak için kullanabilirsiniz. 
 
-Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](https://docs.microsoft.com/azure/kusto/query/) bakın. Log Analytics yeni başladıysanız [sorgu oluşturma konusunda bir derste](get-started-queries.md) ilerleyin.
+Bu örneklerde kullanılan farklı anahtar kelimelerle ilgili ayrıntılar için [Kusto dil referansına](https://docs.microsoft.com/azure/kusto/query/) bakın. Log [Analytics'te](get-started-queries.md) yeniyseniz sorgu oluşturma konusunda bir ders tenere gidin.
 
-## <a name="cohorts-analytics"></a>Cohorts Analizi
+## <a name="cohorts-analytics"></a>Kohort analizi
 
-Kohortu Analysis, cohorts olarak bilinen belirli kullanıcı gruplarının etkinliklerini izler. Kullanıcı döndürme oranını ölçerek bir hizmetin ne kadar çekici olduğunu ölçmeye çalışır. Kullanıcılar, hizmeti ilk olarak kullandıkları zamana göre gruplandırılır. Ortak hortlar çözümlenirken, ilk izlenen dönem boyunca etkinliğin bir azalmasını bulmayı bekliyoruz. Her bir kohortu, üyelerinin ilk kez gözlemlendiği hafta tarafından belirlenir.
+Kohort analizi, kohort olarak bilinen belirli kullanıcı gruplarının etkinliğini izler. Geri dönen kullanıcıların oranını ölçerek bir hizmetin ne kadar çekici olduğunu ölçmeye çalışır. Kullanıcılar, hizmeti ilk kez kullandıkları zamana göre gruplandırılır. Kohortları analiz ederken, ilk izlenen dönemlerde aktivitede bir azalma bulmayı bekliyoruz. Her kohort, üyelerinin ilk kez gözlemlendiği haftaya göre anılır.
 
-Aşağıdaki örnek, hizmetin ilk kullanımını takip eden 5 hafta boyunca kullanıcıların gerçekleştirdiği etkinliklerin sayısını analiz eder.
+Aşağıdaki örnek, kullanıcıların hizmeti ilk kullanımlarından sonra 5 hafta boyunca gerçekleştirettikleri etkinlik sayısını analiz eder.
 
 ```Kusto
 let startDate = startofweek(bin(datetime(2017-01-20T00:00:00Z), 1d));
@@ -83,12 +83,12 @@ week
           p4 = todouble(r4)/todouble(r0)*100 
 | sort by Cohort asc
 ```
-Bu örnek, aşağıdaki çıkışa neden olur.
+Bu örnek, aşağıdaki çıktıyla sonuçlanır.
 
-![Kohortu analiz çıkışı](media/smart-analytics/cohorts.png)
+![Kohort analizi çıktısı](media/smart-analytics/cohorts.png)
 
-## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Aylık etkin kullanıcılar ve Kullanıcı sürekliliği
-Aşağıdaki örnekler, [series_fir](/azure/kusto/query/series-firfunction) işlevi ile zaman serisi analizini kullanır ve bu da kayan pencere hesaplamaları gerçekleştirmenize olanak tanır. İzlenmekte olan örnek uygulama, kullanıcıların etkinliğini özel olaylar aracılığıyla izleyen bir çevrimiçi depodır. Sorgu iki tür Kullanıcı etkinliklerini izler, _AddToCart_ ve _checkout_ve belirli bir günde en az bir kez kullanıma açan _etkin kullanıcıları_ tanımlar.
+## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Aylık etkin kullanıcıları ve kullanıcı yapışkanlığını yuvarlama
+Aşağıdaki örnekler, kayar pencere hesaplamaları gerçekleştirmenize olanak tanıyan [series_fir](/azure/kusto/query/series-firfunction) işlevi ile zaman serisi çözümlemesi kullanır. İzlenen örnek uygulama, kullanıcıların etkinliklerini özel etkinlikler yoluyla izleyen çevrimiçi bir mağazadır. Sorgu, _addToCart_ ve _Checkout_olmak üzere iki tür kullanıcı aktivitesini izler ve _etkin kullanıcıları_ belirli bir günde en az bir kez kullanıma alan kullanıcılar olarak tanımlar.
 
 
 
@@ -131,11 +131,11 @@ customEvents
 | render timechart
 ```
 
-Bu örnek, aşağıdaki çıkışa neden olur.
+Bu örnek, aşağıdaki çıktıyla sonuçlanır.
 
-![Aylık Kullanıcı çıktısı alınıyor](media/smart-analytics/rolling-mau.png)
+![Aylık kullanıcı çıktısını kaydetme](media/smart-analytics/rolling-mau.png)
 
-Aşağıdaki örnek, yukarıdaki sorguyu yeniden kullanılabilir bir işleve dönüştürür ve bu işlemi, sıralı Kullanıcı sürekliliğini hesaplamak için kullanır. Bu sorgudaki etkin kullanıcılar yalnızca belirli bir günde en az bir kez kullanıma alma gerçekleştiren kullanıcılar olarak tanımlanmıştır.
+Aşağıdaki örneği, yukarıdaki sorguyu yeniden kullanılabilir bir işleve dönüştürür ve yuvarlanan kullanıcı yapışkanlığını hesaplamak için kullanır. Bu sorgudaki etkin kullanıcılar, yalnızca belirli bir günde en az bir kez check-out yapan kullanıcılar olarak tanımlanır.
 
 ``` Kusto
 let rollingDcount = (sliding_window_size: int, event_name:string)
@@ -173,17 +173,17 @@ on Timestamp
 | render timechart
 ```
 
-Bu örnek, aşağıdaki çıkışa neden olur.
+Bu örnek, aşağıdaki çıktıyla sonuçlanır.
 
-![Kullanıcı çıkış sürekliliği](media/smart-analytics/user-stickiness.png)
+![Kullanıcı yapışkanlığı çıktısı](media/smart-analytics/user-stickiness.png)
 
 ## <a name="regression-analysis"></a>Regresyon analizi
-Bu örnek, bir uygulamanın izleme günlüklerine özel olarak hizmet kesintileri için otomatik bir algılayıcı oluşturmayı gösterir. Algılayıcı, uygulamanın göreli olarak hata ve uyarı izlemelerinde olağan dışı ani artışlar arar.
+Bu örnek, yalnızca bir uygulamanın izleme günlüklerine dayalı olarak hizmet kesintileri için otomatik bir dedektörün nasıl oluşturulacak olduğunu gösterir. Dedektör, uygulamada göreceli hata ve uyarı izlerinde anormal ani artışlar arar.
 
-İzleme günlüğü verilerine göre hizmet durumunu değerlendirmek için iki teknik kullanılır:
+İzleme günlükleri verilerine göre hizmet durumunu değerlendirmek için iki teknik kullanılır:
 
-- Yarı yapılandırılmış metin izleme günlüklerini pozitif ve negatif izleme çizgileri arasındaki oranı temsil eden bir ölçüme dönüştürmek için [Oluştur-serisini](/azure/kusto/query/make-seriesoperator) kullanın.
-- 2 satırlık doğrusal regresyon ile zaman serisi analizini kullanarak gelişmiş adım sıçrama algılaması gerçekleştirmek için [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) ve [series_fit_line](/azure/kusto/query/series-fit-linefunction) kullanın.
+- Yarı yapılandırılmış metin izleme günlüklerini pozitif ve negatif izleme çizgileri arasındaki oranı temsil eden bir metretmeye dönüştürmek için [make-seri](/azure/kusto/query/make-seriesoperator) kullanın.
+- 2 satırlı doğrusal regresyon ile zaman serisi çözümlemesi kullanarak gelişmiş adım atlama algılama gerçekleştirmek için [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) ve [series_fit_line](/azure/kusto/query/series-fit-linefunction) kullanın.
 
 ``` Kusto
 let startDate = startofday(datetime("2017-02-01"));
@@ -214,5 +214,5 @@ traces
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Dil hakkındaki ayrıntılar için [Veri Gezgini Dil başvurusuna](/azure/kusto/query) bakın.
-- [Log Analytics sorguları yazma konusunda bir dersi](get-started-queries.md)adım adım inceleyin.
+- Dille ilgili ayrıntılar için [Veri Gezgini dil başvurusuna](/azure/kusto/query) bakın.
+- [Log Analytics'te sorgu yazma konusunda](get-started-queries.md)bir derste yürüyün.

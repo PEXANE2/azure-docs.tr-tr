@@ -1,6 +1,6 @@
 ---
-title: Şablon kullanarak Azure DS etki alanı Hizmetleri 'ni etkinleştirme | Microsoft Docs
-description: Azure Resource Manager şablonu kullanarak Azure Active Directory Domain Services yapılandırmayı ve etkinleştirmeyi öğrenin
+title: Şablon kullanarak Azure DS Etki Alanı Hizmetlerini etkinleştirme | Microsoft Dokümanlar
+description: Azure Kaynak Yöneticisi şablonu kullanarak Azure Etkin Dizin Etki Alanı Hizmetlerini nasıl yapılandırabileceğinizi ve etkinleştirmeyi öğrenin
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,73 +11,73 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: iainfou
 ms.openlocfilehash: 2daadb539bc08df37f15c187866b735e45309288
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77612782"
 ---
-# <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Active Directory Domain Services yönetilen etki alanı oluşturma
+# <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Azure Etkin Dizin Etki Alanı Hizmetleri yönetilen bir etki alanı oluşturma
 
-Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Directory ile tamamen uyumlu etki alanına katılması, Grup ilkesi, LDAP, Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Etki alanı denetleyicilerini kendiniz dağıtmadan, yönetmeden ve düzeltme eki uygulamadan bu etki alanı hizmetlerini kullanırsınız. Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullanıcıların kurumsal kimlik bilgilerini kullanarak oturum açmasını sağlar ve kaynaklara erişimi güvenli hale getirmek için mevcut grupları ve Kullanıcı hesaplarını kullanabilirsiniz.
+Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS), Windows Server Active Directory ile tam uyumlu etki alanı birleştirme, grup ilkesi, LDAP, Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı hizmetleri sağlar. Etki alanı denetleyicilerini dağıtmadan, yönetmeden ve düzeltmeden bu etki alanı hizmetlerini tüketirsiniz. Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullanıcıların şirket kimlik bilgilerini kullanarak oturum açmalarına olanak tanır ve kaynaklara erişimi güvence altına almak için varolan grupları ve kullanıcı hesaplarını kullanabilirsiniz.
 
-Bu makalede, Azure AD DS bir Azure Resource Manager şablonu kullanarak nasıl etkinleştirileceği gösterilmektedir. Destekleyici kaynaklar Azure PowerShell kullanılarak oluşturulur.
+Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure AD DS'yi nasıl etkinleştirdiğinizi gösterilmektedir. Destek kaynakları Azure PowerShell kullanılarak oluşturulur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
+Bu makaleyi tamamlamak için aşağıdaki kaynaklara ihtiyacınız var:
 
 * Azure PowerShell'i yükleyip yapılandırın.
-    * Gerekirse, [Azure PowerShell modülünü yüklemek ve Azure aboneliğinize bağlanmak](/powershell/azure/install-az-ps)için yönergeleri izleyin.
-    * [Connect-AzAccount][Connect-AzAccount] cmdlet 'Ini kullanarak Azure aboneliğinizde oturum açın.
-* Azure AD PowerShell 'i yükleyip yapılandırın.
-    * Gerekirse, [Azure AD PowerShell modülünü yüklemek ve Azure AD 'ye bağlanmak](/powershell/azure/active-directory/install-adv2)için yönergeleri izleyin.
-    * [Connect-AzureAD][Connect-AzureAD] cmdlet 'Ini kullanarak Azure AD kiracınızda oturum açarak emin olun.
-* Azure AD DS 'yi etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına sahip olmanız gerekir.
-* Gerekli Azure AD DS kaynaklarını oluşturmak için Azure aboneliğinizde *katılımcı* ayrıcalıklarına sahip olmanız gerekir.
+    * Gerekirse, [Azure PowerShell modülünü yüklemek ve Azure aboneliğinize bağlanmak için](/powershell/azure/install-az-ps)yönergeleri izleyin.
+    * [Connect-AzAccount][Connect-AzAccount] cmdlet'i kullanarak Azure aboneliğinizde oturum açtığınızdan emin olun.
+* Azure AD PowerShell'i yükleyin ve yapılandırın.
+    * Gerekirse, Azure AD [PowerShell modülünü yüklemek ve Azure AD'ye bağlanmak için](/powershell/azure/active-directory/install-adv2)yönergeleri izleyin.
+    * [Connect-AzureAD][Connect-AzureAD] cmdlet'ini kullanarak Azure AD kiracınızda oturum açtığınızdan emin olun.
+* Azure AD DS'yi etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına ihtiyacınız vardır.
+* Gerekli Azure AD DS kaynaklarını oluşturmak için Azure aboneliğinizde *Katılımcı* ayrıcalıklarına ihtiyacınız vardır.
 
 ## <a name="dns-naming-requirements"></a>DNS adlandırma gereksinimleri
 
-Azure AD DS örneği oluşturduğunuzda bir DNS adı belirlersiniz. Bu DNS adını seçerken bazı noktalar vardır:
+Bir Azure AD DS örneği oluşturduğunuzda, bir DNS adı belirtirsiniz. Bu DNS adını seçerken bazı hususlar vardır:
 
-* **Yerleşik etki alanı adı:** Varsayılan olarak, dizinin yerleşik etki alanı adı kullanılır (bir *. onmicrosoft.com* soneki). Yönetilen etki alanına internet üzerinden güvenli LDAP erişimini etkinleştirmek istiyorsanız, bu varsayılan etki alanı ile bağlantıyı güvenli hale getirmek için dijital bir sertifika oluşturamazsınız. Microsoft *. onmicrosoft.com* etki alanına sahip olduğundan, bir sertifika YETKILISI (CA) bir sertifika vermez.
-* **Özel etki alanı adları:** En yaygın yaklaşım, genellikle zaten sahip olduğunuz ve yönlendirilebilir olan özel bir etki alanı adı belirtmektir. Yönlendirilebilir, özel bir etki alanı kullandığınızda, uygulamalarınızı desteklemek için gereken şekilde trafik doğru şekilde akabilir.
-* **Yönlendirilemeyen etki alanı sonekleri:** Genellikle, *contoso. Local*gibi yönlendirilebilir olmayan bir etki alanı adı sonekini önlemenize tavsiye ederiz. *. Local* son eki yönlendirilebilir DEĞILDIR ve DNS çözümlenme sorunlarına neden olabilir.
+* **Yerleşik etki alanı adı:** Varsayılan olarak, dizinin yerleşik etki alanı adı kullanılır *(.onmicrosoft.com* soneki). Yönetilen etki alanına Internet üzerinden güvenli LDAP erişimi sağlamak istiyorsanız, bu varsayılan etki alanıyla bağlantıyı güvence altına almak için dijital bir sertifika oluşturamazsınız. Microsoft *.onmicrosoft.com* etki alanının sahibidir, bu nedenle Sertifika Yetkilisi (CA) sertifika vermez.
+* **Özel alan adları:** En yaygın yaklaşım, genellikle zaten sahip olduğunuz ve routable olan özel bir etki alanı adı belirtmektir. Bir routable, özel etki alanı kullandığınızda, trafik doğru uygulamalarınızı desteklemek için gerektiği gibi akabilir.
+* **Routable olmayan etki alanı sonekleri:** Genellikle *contoso.local*gibi routable olmayan bir etki alanı adı soneki nden kaçınmanızı öneririz. *.yerel* sonek çözülebilir değildir ve DNS çözümüyle ilgili sorunlara neden olabilir.
 
 > [!TIP]
-> Özel bir etki alanı adı oluşturursanız, mevcut DNS ad alanları ile ilgilenin. Mevcut bir Azure veya şirket içi DNS ad alanından ayrı bir etki alanı adı kullanılması önerilir.
+> Özel bir etki alanı adı oluşturursanız, varolan DNS ad alanlarına dikkat edin. Varolan herhangi bir Azure veya şirket içi DNS ad alanından ayrı bir etki alanı adı kullanılması önerilir.
 >
-> Örneğin, *contoso.com*ADLı bir DNS ad alanınız varsa, *aaddscontoso.com*özel etki alanı adıyla bir Azure AD DS yönetilen etki alanı oluşturun. Güvenli LDAP kullanmanız gerekiyorsa, gerekli sertifikaları oluşturmak için bu özel etki alanı adını kaydetmeniz ve sahip olmanız gerekir.
+> Örneğin, *contoso.com*varolan bir DNS ad alanınız varsa, *aaddscontoso.com*özel etki alanı adı içeren bir Azure AD DS yönetilen etki alanı oluşturun. Güvenli LDAP kullanmanız gerekiyorsa, gerekli sertifikaları oluşturmak için bu özel alan adını kaydetmeniz ve sahip olmanız gerekir.
 >
-> Ortamınızdaki diğer hizmetler için bazı ek DNS kayıtları veya ortamınızda var olan DNS adı alanları arasında koşullu DNS ileticileri oluşturmanız gerekebilir. Örneğin, kök DNS adını kullanarak bir siteyi barındıran bir Web sunucusu çalıştırırsanız, ek DNS girişleri gerektiren adlandırma çakışmaları olabilir.
+> Ortamınızdaki diğer hizmetler için bazı ek DNS kayıtları veya ortamınızdaki varolan DNS ad alanları arasında koşullu DNS iletmeleri oluşturmanız gerekebilir. Örneğin, kök DNS adını kullanarak bir siteyi barındıran bir web sunucusu çalıştırıyorsanız, ek DNS girişleri gerektiren ad çakışmaları olabilir.
 >
-> Bu öğreticiler ve nasıl yapılır makalelerinde, *aaddscontoso.com* özel etki alanı kısa bir örnek olarak kullanılır. Tüm komutlarda kendi etki alanı adınızı belirtin.
+> Bu öğreticilerde ve nasıl yapılır makalelerinde, *özel aaddscontoso.com* etki alanı kısa bir örnek olarak kullanılır. Tüm komutlarda kendi etki alanı adınızı belirtin.
 
-Aşağıdaki DNS adı kısıtlamaları da geçerlidir:
+Aşağıdaki DNS ad kısıtlamaları da geçerlidir:
 
-* **Etki alanı ön eki kısıtlamaları:** Ön eki 15 karakterden daha uzun olan yönetilen bir etki alanı oluşturamazsınız. Belirtilen etki alanı adınızın ön eki ( *aaddscontoso.com* etki alanı adında *aaddscontoso* gibi) 15 veya daha az karakter içermelidir.
-* **Ağ adı çakışmaları:** Yönetilen etki alanınız için DNS etki alanı adı, sanal ağda zaten mevcut olmamalıdır. Özellikle, bir ad çakışmasına yol açacak aşağıdaki senaryoları kontrol edin:
-    * Azure sanal ağında aynı DNS etki alanı adına sahip bir Active Directory etki alanınız zaten varsa.
-    * Yönetilen etki alanını etkinleştirmeyi planladığınız sanal ağın, şirket içi ağınızla bir VPN bağlantısı varsa. Bu senaryoda, şirket içi ağınızda aynı DNS etki alanı adına sahip bir etki alanı olmadığından emin olun.
-    * Azure sanal ağında bu adı taşıyan mevcut bir Azure bulut hizmetiniz varsa.
+* **Etki alanı öneki kısıtlamaları:** Önek 15 karakterden daha uzun olan yönetilen bir etki alanı oluşturamazsınız. Belirtilen etki alanı adınızın öneki *(aaddscontoso.com* etki alanı adındaki *aaddscontoso* gibi) 15 veya daha az karakter içermelidir.
+* **Ağ adı çakışmaları:** Yönetilen etki alanınızın DNS etki alanı adı sanal ağda zaten bulunmamalıdır. Özellikle, bir ad çakışması neden olacak aşağıdaki senaryoları denetleyin:
+    * Azure sanal ağında aynı DNS etki alanı adı olan bir Active Directory etki alanınız zaten varsa.
+    * Yönetilen etki alanını etkinleştirmeyi planladığınız sanal ağın şirket içi ağınızla VPN bağlantısı varsa. Bu senaryoda, şirket içi ağınızda aynı DNS etki alanı adı olan bir etki alanınız olmadığından emin olun.
+    * Azure sanal ağında bu ada sahip mevcut bir Azure bulut hizmetiniz varsa.
 
 ## <a name="create-required-azure-ad-resources"></a>Gerekli Azure AD kaynaklarını oluşturma
 
-Azure AD DS, bir hizmet sorumlusu ve bir Azure AD grubu gerektirir. Bu kaynaklar, Azure AD DS yönetilen etki alanının verileri eşitlemesini ve yönetilen etki alanında hangi kullanıcıların yönetim izinlerine sahip olduğunu tanımlamanızı sağlar.
+Azure AD DS bir hizmet sorumlusu ve bir Azure REKLAM grubu gerektirir. Bu kaynaklar, Azure AD DS yönetilen etki alanının verileri eşitlemasına ve yönetilen etki alanında hangi kullanıcıların yönetim izinlerine sahip olduğunu tanımlamasına izin verir.
 
-İlk olarak, [register-AzResourceProvider][Register-AzResourceProvider] cmdlet 'ini kullanarak Azure AD Domain Services kaynak sağlayıcısını kaydedin:
+İlk olarak, [Register-AzResourceProvider][Register-AzResourceProvider] cmdlet'ini kullanarak Azure AD Etki Alanı Hizmetleri kaynak sağlayıcısına kaydolun:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-Azure AD DS için [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 'ini kullanarak BIR Azure AD hizmet sorumlusu oluşturun ve kimliğini doğrulayın. Belirli bir uygulama KIMLIĞI, *2565bd9d-dad50-47d4-8B85-4c97f669dc36*kimliğine sahip *etki alanı denetleyicisi Hizmetleri* adında kullanılır. Bu uygulama KIMLIĞINI değiştirmeyin.
+İletişim kurmak ve kimliğini doğrulamak için Azure AD DS için [Yeni AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet'ini kullanarak bir Azure AD hizmet ilkesi oluşturun. Özel bir uygulama kimliği *2565bd9d-da50-47d4-8b85-4c97f669dc36*kimliği ile *Etki Alanı Denetleyici Hizmetleri* olarak adlandırılır. Bu uygulama kimliğini değiştirmeyin.
 
 ```powershell
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Şimdi [New-AzureADGroup][New-AzureADGroup] cmdlet 'Ini kullanarak *AAD DC yöneticileri* adlı bir Azure AD grubu oluşturun. Daha sonra bu gruba eklenen kullanıcılara Azure AD DS yönetilen etki alanında yönetim görevlerini gerçekleştirmek için izinler verilir.
+Şimdi [Yeni AzureADGroup][New-AzureADGroup] cmdlet'ini kullanarak *AAD DC Yöneticileri* adında bir Azure AD grubu oluşturun. Bu gruba eklenen kullanıcılara Azure AD DS yönetilen etki alanında yönetim görevlerini gerçekleştirme izni verilir.
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -86,9 +86,9 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
   -MailNickName "AADDCAdministrators"
 ```
 
-*AAD DC Administrators* grubu oluşturulduktan sonra [Add-AzureADGroupMember][Add-AzureADGroupMember] cmdlet 'ini kullanarak gruba bir kullanıcı ekleyin. Önce Get [-AzureADGroup][Get-AzureADGroup] cmdlet 'Ini kullanarak *AAD DC YÖNETICILERI* grubu nesne kimliği ' ni, sonra da [Get-AzureADUser][Get-AzureADUser] CMDLET 'ini kullanarak istenen kullanıcının nesne kimliğini alırsınız.
+Oluşturulan *AAD DC Yöneticileri* grubuyla, [Ekle-AzureADGroupMember][Add-AzureADGroupMember] cmdlet'ini kullanarak gruba bir kullanıcı ekleyin. *Önce AAD DC Yöneticileri* grup nesne kimliğini Get-AzureADGroup cmdlet'ini, ardından [Get-AzureADUser][Get-AzureADGroup] cmdlet'ini kullanarak istediğiniz kullanıcının nesne kimliğini alırsınız. [Get-AzureADUser][Get-AzureADUser]
 
-Aşağıdaki örnekte, `admin@aaddscontoso.onmicrosoft.com`UPN 'si olan hesabın kullanıcı nesne KIMLIĞI. Bu Kullanıcı hesabını *AAD DC Administrators* grubuna eklemek ISTEDIĞINIZ kullanıcının UPN 'si ile değiştirin:
+Aşağıdaki örnekte, bir UPN ile hesabın kullanıcı `admin@aaddscontoso.onmicrosoft.com`nesne kimliği . Bu kullanıcı hesabını *AAD DC Yöneticileri* grubuna eklemek istediğiniz kullanıcının UPN'iyle değiştirin:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -105,7 +105,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-Son olarak, [New-AzResourceGroup][New-AzResourceGroup] cmdlet 'ini kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnekte, kaynak grubu *Myresourcegroup* olarak adlandırılır ve *westus* bölgesinde oluşturulur. Kendi adınızı ve istediğiniz bölgeyi kullanın:
+Son olarak, [Yeni-AzResourceGroup][New-AzResourceGroup] cmdlet kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnekte, kaynak grubu *myResourceGroup* olarak adlandırılır ve *westus* bölgesinde oluşturulur. Kendi adınızı ve istediğiniz bölgeyi kullanın:
 
 ```powershell
 New-AzResourceGroup `
@@ -113,9 +113,9 @@ New-AzResourceGroup `
   -Location "WestUS"
 ```
 
-Kullanılabilirlik Alanları destekleyen bir bölge seçerseniz, Azure AD DS kaynakları daha fazla artıklık için bölgelere dağıtılır. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır.
+Kullanılabilirlik Bölgelerini destekleyen bir bölge seçerseniz, Azure AD DS kaynakları ek fazlalık için bölgeler e göre dağıtılır. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Esnekliği sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır.
 
-Azure AD DS bölgeler arasında dağıtılacak şekilde yapılandırmanız için bir şey yoktur. Azure platformu, kaynakların bölge dağılımını otomatik olarak işler. Daha fazla bilgi edinmek ve bölge kullanılabilirliğini görmek için bkz. [Azure 'da kullanılabilirlik alanları nedir?][availability-zones].
+Azure AD DS'nin bölgelere dağıtılması için yapılandırabileceğiniz hiçbir şey yoktur. Azure platformu, kaynakların bölge dağıtımını otomatik olarak işler. Daha fazla bilgi ve bölgenin kullanılabilirliğini görmek için [Azure'daki Kullanılabilirlik Bölgeleri nelerdir?][availability-zones]
 
 ## <a name="resource-definition-for-azure-ad-ds"></a>Azure AD DS için kaynak tanımı
 
@@ -123,12 +123,12 @@ Kaynak Yöneticisi kaynak tanımının bir parçası olarak, aşağıdaki yapıl
 
 | Parametre               | Değer |
 |-------------------------|---------|
-| Etki              | Yönetilen etki alanınız için DNS etki alanı adı, ön eklerin ve çakışmaların adlandırılmasında önceki noktaları dikkate alır. |
-| filteredSync            | Azure AD DS, Azure AD 'de bulunan *Tüm* kullanıcıları ve grupları ya da yalnızca belirli grupların *kapsamlı* bir eşitlemesini eşitlemenize olanak tanır. Tüm kullanıcıları ve grupları eşitlemeyi seçerseniz, daha sonra yalnızca kapsamlı bir eşitleme gerçekleştirmeyi tercih edebilirsiniz.<br /> Kapsamlı eşitleme hakkında daha fazla bilgi için bkz. [Azure AD Domain Services kapsamlı eşitleme][scoped-sync].|
-| notificationSettings    | Azure AD DS yönetilen etki alanında oluşturulan herhangi bir uyarı varsa, e-posta bildirimleri gönderilebilir. <br />Azure kiracının *genel yöneticileri* ve *AAD DC yöneticileri* grubunun üyeleri bu bildirimler için *etkinleştirilebilir* .<br /> İsterseniz, dikkat gerektiren uyarılar olduğunda bildirim için ek alıcılar ekleyebilirsiniz.|
-| domainConfigurationType | Varsayılan olarak, Azure AD DS yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Bir Kullanıcı Ormanı oluşturmak için bir *DomainConfiguration* değeri belirtmeniz gerekmez.<br /> *Kaynak* ormanı yalnızca doğrudan Azure AD 'de oluşturulan kullanıcıları ve grupları eşitler. Kaynak ormanları Şu anda önizleme aşamasındadır. Kaynak ormanı oluşturmak için değeri *Resourcetrusting* olarak ayarlayın.<br />*Kaynak* ormanları hakkında daha fazla bilgi için, bir tane kullanabilirsiniz ve şirket içi AD DS etki alanlarıyla orman güvenleri oluşturma hakkında daha fazla bilgi için bkz. [Azure AD DS kaynak ormanları genel bakış][resource-forests].|
+| Etkialanıadı              | Önekleri ve çakışmaları adlandırma önceki noktaları dikkate alarak yönetilen etki alanı için DNS etki alanı adı. |
+| filtrelenmişSync            | Azure AD DS, Azure AD'de kullanılabilen *tüm* kullanıcıları ve grupları veya yalnızca belirli grupların *kapsamlı* eşitlemesini eşitlemenize olanak tanır. Tüm kullanıcıları ve grupları eşitlemeyi seçerseniz, daha sonra yalnızca kapsamlı bir eşitleme gerçekleştirmeyi seçemezsiniz.<br /> Kapsamlı eşitleme hakkında daha fazla bilgi için [Azure AD Etki Alanı Hizmetleri kapsamlı eşitleme][scoped-sync]bilgisine bakın.|
+| bildirimAyarlar    | Azure AD DS yönetilen etki alanında oluşturulan herhangi bir uyarı varsa, e-posta bildirimleri gönderilebilir. <br />Bu bildirimler için Azure kiracısının *genel yöneticileri* ve *AAD DC Yöneticileri* grubunun üyeleri *etkinleştirilebilir.*<br /> İstenirse, dikkat gerektiren uyarılar olduğunda bildirimler için ek alıcılar ekleyebilirsiniz.|
+| domainConfigurationType | Varsayılan olarak, *Kullanıcı* ormanı olarak Azure AD DS yönetilen bir etki alanı oluşturulur. Bu tür orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD'deki tüm nesneleri eşitler. Bir kullanıcı ormanı oluşturmak için bir *etki alanı Yapılandırma* değeri belirtmeniz gerekmez.<br /> *Kaynak* ormanı yalnızca doğrudan Azure AD'de oluşturulan kullanıcıları ve grupları eşitler. Kaynak ormanları şu anda önizlemede. Kaynak ormanı oluşturmak için değeri *ResourceTrusting* olarak ayarlayın.<br />*Kaynak* ormanları hakkında daha fazla bilgi için, neden kullanabileceğiniz ve şirket içi AD DS etki alanlarında orman güvenlerinin nasıl oluşturulabileceği de dahil olmak üzere, [Azure AD DS kaynak ormanlarına genel bakış][resource-forests]alabilirsiniz.|
 
-Aşağıdaki sıkıştırılmış parametreler tanımı, bu değerlerin nasıl bildirildiği gösterilmektedir. *Aaddscontoso.com* adlı bir Kullanıcı ormanı, Azure AD 'den Azure AD DS tarafından yönetilen etki alanına eşitlenmiş tüm kullanıcılar ile oluşturulur:
+Aşağıdaki yoğunlaştırılmış parametreler tanımı, bu değerlerin nasıl beyan edildiğini gösterir. *Azure* AD'deki tüm kullanıcılar Azure AD DS yönetilen etki alanına senkronize edilmiş aaddscontoso.com adlı bir kullanıcı ormanı oluşturulur:
 
 ```json
 "parameters": {
@@ -149,7 +149,7 @@ Aşağıdaki sıkıştırılmış parametreler tanımı, bu değerlerin nasıl b
 }
 ```
 
-Aşağıdaki sıkıştırılmış Kaynak Yöneticisi şablonu kaynak türü, Azure AD DS yönetilen etki alanını tanımlamak ve oluşturmak için kullanılır. Bir Azure sanal ağı ve alt ağı zaten var olmalıdır veya Kaynak Yöneticisi şablonun bir parçası olarak oluşturulmalıdır. Azure AD DS yönetilen etki alanı bu alt ağa bağlanır.
+Ardından, Azure AD DS yönetilen etki alanını tanımlamak ve oluşturmak için aşağıdaki yoğunlaştırılmış Kaynak Yöneticisi şablonu kaynak türü kullanılır. Bir Azure sanal ağı ve alt ağı zaten mevcut olmalı veya Kaynak Yöneticisi şablonunun bir parçası olarak oluşturulmalıdır. Azure AD DS yönetilen etki alanı bu alt ağa bağlıdır.
 
 ```json
 "resources": [
@@ -172,11 +172,11 @@ Aşağıdaki sıkıştırılmış Kaynak Yöneticisi şablonu kaynak türü, Azu
 ]
 ```
 
-Bu parametreler ve kaynak türü, aşağıdaki bölümde gösterildiği gibi, yönetilen bir etki alanı dağıtmak için daha geniş bir Kaynak Yöneticisi şablonunun parçası olarak kullanılabilir.
+Bu parametreler ve kaynak türü, aşağıdaki bölümde gösterildiği gibi yönetilen bir etki alanını dağıtmak için daha geniş bir Kaynak Yöneticisi şablonunun parçası olarak kullanılabilir.
 
-## <a name="create-a-managed-domain-using-sample-template"></a>Örnek şablon kullanarak yönetilen etki alanı oluşturma
+## <a name="create-a-managed-domain-using-sample-template"></a>Örnek şablonu kullanarak yönetilen bir etki alanı oluşturma
 
-Aşağıdaki tüm Kaynak Yöneticisi örnek şablonu, Azure AD DS yönetilen bir etki alanı ve destekleyici sanal ağ, alt ağ ve ağ güvenlik grubu kuralları oluşturur. Ağ güvenlik grubu kuralları, yönetilen etki alanının güvenliğini sağlamak için gereklidir ve trafiğin doğru şekilde akabilir olmasını sağlar. *AADDSCONTOSO.com* DNS adına sahip bir Kullanıcı ormanı, tüm KULLANıCıLAR Azure AD 'den eşitlenmiş olarak oluşturulur:
+Aşağıdaki tam Kaynak Yöneticisi örnek şablonu, Azure AD DS yönetilen etki alanı ve desteklenen sanal ağ, alt ağ ve ağ güvenlik grubu kuralları oluşturur. Yönetilen etki alanını güvenli hale getirmek ve trafiğin doğru akmasını sağlamak için ağ güvenlik grubu kuralları gereklidir. *tüm* kullanıcılar Azure AD'den senkronize aaddscontoso.com DNS adını içeren bir kullanıcı ormanı oluşturulur:
 
 ```json
 {
@@ -319,23 +319,23 @@ Aşağıdaki tüm Kaynak Yöneticisi örnek şablonu, Azure AD DS yönetilen bir
 }
 ```
 
-Bu şablon, [Azure Portal][portal-deploy], [Azure PowerShell][powershell-deploy]veya CI/CD işlem hattı gibi tercih ettiğiniz dağıtım yöntemi kullanılarak dağıtılabilir. Aşağıdaki örnek [New-AzResourceGroupDeployment][New-AzResourceGroupDeployment] cmdlet 'ini kullanır. Kendi kaynak grubu adınızı ve şablon dosya adını belirtin:
+Bu şablon, [Azure portalı, Azure][portal-deploy] [PowerShell][powershell-deploy]veya CI/CD ardışık işlem yöntemi gibi tercih ettiğiniz dağıtım yöntemini kullanarak dağıtılabilir. Aşağıdaki örnekte [Yeni Kaynak GrubuDağıtım][New-AzResourceGroupDeployment] cmdlet kullanır. Kendi kaynak grubu adınızı ve şablon dosya adınızı belirtin:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile <path-to-template>
 ```
 
-Kaynağın oluşturulması ve denetimin PowerShell istemine döndürülmesi birkaç dakika sürer. Azure AD DS yönetilen etki alanı arka planda sağlanmaya devam eder ve dağıtımın tamamlanması bir saate kadar sürebilir. Azure portal Azure AD DS yönetilen etki alanınız için **genel bakış** sayfasında, bu dağıtım aşamasının tamamında geçerli durum gösterilir.
+Kaynağı oluşturmak ve denetimi PowerShell istemine döndürmek birkaç dakika sürer. Azure AD DS yönetilen etki alanı arka planda sağlanmaya devam eder ve dağıtımı tamamlamak bir saat kadar sürebilir. Azure portalında, Azure AD DS yönetilen etki alanınız için **Genel Bakış** sayfası, dağıtım aşaması boyunca geçerli durumu gösterir.
 
-Azure portal Azure AD DS yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteriyorsa, aşağıdaki görevlerin tamamlanması gerekir:
+Azure portalı Azure AD DS yönetilen etki alanının sağlanmasını tamamladığını gösterdiğinde, aşağıdaki görevlerin tamamlanması gerekir:
 
-* Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
-    * DNS 'yi yapılandırmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
-* Son kullanıcıların şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açmasını sağlamak [için parola eşitlemesini Azure AD Domain Services etkinleştirin](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) .
+* Sanal makinelerin etki alanı birleştirme veya kimlik doğrulama için yönetilen etki alanını bulabilmesi için sanal ağ için DNS ayarlarını güncelleştirin.
+    * DNS'yi yapılandırmak için portaldaki Azure AD DS yönetilen etki alanınızı seçin. Genel **Bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
+* Son kullanıcıların kurumsal kimlik bilgilerini kullanarak yönetilen etki alanında oturum açabilmesi [için Azure AD Etki Alanı Hizmetlerine parola eşitlemesini etkinleştirin.](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD DS yönetilen etki alanını işlem içinde görmek için [bir WINDOWS sanal makinesine etki alanına katılabilir][windows-join], [Güvenli LDAP yapılandırabilir][tutorial-ldaps]ve [Parola karması eşitlemesini yapılandırabilirsiniz][tutorial-phs].
+Azure AD DS yönetilen etki alanını iş başında görmek için, [bir Windows VM'ye katılabilir,][windows-join] [güvenli LDAP'yi yapılandırabilir][tutorial-ldaps]ve [parola karma eşitlemeyi yapılandırabilirsiniz.][tutorial-phs]
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

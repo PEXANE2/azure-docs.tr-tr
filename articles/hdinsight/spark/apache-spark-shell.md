@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta etkileşimli Spark kabuğu kullanma
-description: Etkileşimli bir Spark kabuğu, Spark komutlarının tek seferde çalıştırılması ve sonuçları görmek için bir okuma-yürütme-yazdırma işlemi sağlar.
+title: Azure HDInsight'ta Etkileşimli Kıvılcım Kabuğu Kullanma
+description: Etkileşimli Bir Spark Shell, Spark komutlarını teker teker çalıştırmak ve sonuçları görmek için bir okuma-yürütme-yazdırma işlemi sağlar.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162812"
 ---
-# <a name="run-apache-spark-from-the-spark-shell"></a>Spark kabuğu 'ndan Apache Spark çalıştırma
+# <a name="run-apache-spark-from-the-spark-shell"></a>Kıvılcım Kabuğundan Apache Kıvılcımı Çalıştır
 
-Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutlarının tek seferde çalıştırılması ve sonuçları görmesi IÇIN bir REPL (okuma-yürütme-yazdırma döngüsü) ortamı sağlar. Bu işlem, geliştirme ve hata ayıklama için kullanışlıdır. Spark, desteklenen dillerin her biri için bir kabuk sağlar: Scala, Python ve R.
+Etkileşimli [Apache Spark](https://spark.apache.org/) Shell, Spark komutlarını teker teker çalıştırmak ve sonuçları görmek için bir REPL (okuma-çalıştır-yazdırma döngüsü) ortamı sağlar. Bu işlem geliştirme ve hata ayıklama için yararlıdır. Spark desteklenen dillerin her biri için bir kabuk sağlar: Scala, Python ve R.
 
-## <a name="run-an-apache-spark-shell"></a>Apache Spark kabuğu çalıştırma
+## <a name="run-an-apache-spark-shell"></a>Bir Apache Spark Shell çalıştırın
 
-1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
+1. Kümenize bağlanmak için [ssh komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME'yi kümenizin adıyla değiştirerek aşağıdaki komutu düzenleme ve ardından komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Spark, Scala (Spark-Shell) ve Python (pyspark) için kabuklar sağlar. SSH oturumunda aşağıdaki komutlardan *birini* girin:
+1. Kıvılcım, Scala (kıvılcım kabuğu) ve Python (pyspark) için kabuksağlar. SSH oturumunuzda aşağıdaki komutlardan *birini* girin:
 
     ```bash
     spark-shell
@@ -43,9 +43,9 @@ Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutla
     # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
     ```
 
-    Herhangi bir isteğe bağlı yapılandırma kullanmayı düşünüyorsanız, [Apache Spark Için OutOfMemoryError özel durumunu](./apache-spark-troubleshoot-outofmemory.md)gözden geçirdiğinizden emin olun.
+    İsteğe bağlı yapılandırma yı kullanmak istiyorsanız, [öncelikle Apache Spark için OutOfMemoryError özel durumlarını](./apache-spark-troubleshoot-outofmemory.md)gözden geçirdiğinizden emin olun.
 
-1. Birkaç temel örnek komut. İlgili dili seçin:
+1. Birkaç temel örnek komutları. İlgili dili seçin:
 
     ```spark-shell
     val textFile = spark.read.textFile("/example/data/fruits.txt")
@@ -59,13 +59,13 @@ Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutla
     textFile.filter(textFile.value.contains("apple")).show()
     ```
 
-1. Bir CSV dosyasını sorgulayın. Aşağıdaki dilin `spark-shell` ve `pyspark`için çalışıp çalışmadığını aklınızda edin.
+1. CSV dosyasorgulama. Aşağıdaki dilin için `spark-shell` `pyspark`çalıştığını ve .
 
     ```scala
     spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
     ```
 
-1. Bir CSV dosyası sorgulama ve sonuçları şu değişkende depola:
+1. Bir CSV dosyasorgulama ve değişken sonuçları depolar:
 
     ```spark-shell
     var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
@@ -75,7 +75,7 @@ Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutla
     data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
     ```
 
-1. Sonuçları görüntüle:
+1. Görüntü sonuçları:
 
     ```spark-shell
     data.show()
@@ -97,25 +97,25 @@ Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutla
     exit()
     ```
 
-## <a name="sparksession-and-sparkcontext-instances"></a>Mini oturum ve mini bağlam örnekleri
+## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession ve SparkContext örnekleri
 
-Spark kabuğunu çalıştırdığınızda varsayılan olarak, sizin için otomatik olarak Mini oturum ve parlak bağlam örnekleri oluşturulur.
+Varsayılan olarak Spark Shell'i çalıştırdığınızda, SparkSession ve SparkContext örnekleri sizin için otomatik olarak anında alınır.
 
-Mini erişimli oturum örneğine erişmek için `spark`girin. Mini bağlam örneğine erişmek için `sc`girin.
+SparkSession örneğine erişmek `spark`için . SparkContext örneğine erişmek `sc`için .
 
 ## <a name="important-shell-parameters"></a>Önemli kabuk parametreleri
 
-Spark Shell komutu (`spark-shell`veya `pyspark`) birçok komut satırı parametresini destekler. Parametrelerin tam listesini görmek için Spark kabuğunu anahtar `--help`başlatın. Bu parametrelerden bazıları yalnızca Spark kabuğu 'nun sarmaladığı `spark-submit`için uygulanabilir.
+Kıvılcım Kabuğu komutu`spark-shell`( `pyspark`veya ) birçok komut satırı parametrelerini destekler. Parametrelerin tam listesini görmek için, Anahtarla `--help`Kıvılcım Kabuğunu başlatın. Bu parametrelerden bazıları yalnızca `spark-submit`Spark Shell'in sararolduğu için geçerli olabilir.
 
-| anahtarı | açıklama | Örnek |
+| switch | açıklama | örnek |
 | --- | --- | --- |
-| --Master MASTER_URL | Ana URL 'YI belirtir. HDInsight 'ta bu değer her zaman `yarn`. | `--master yarn`|
-| --jars JAR_LIST | Sürücü ve yürütücü Sınıfyoluna dahil etmek için yerel jar dosyaları dışındaki 'ın virgülle ayrılmış listesi. HDInsight 'ta, bu liste Azure Storage veya Data Lake Storage varsayılan dosya sistemine yönelik yollardan oluşur. | `--jars /path/to/examples.jar` |
-| --paketler MAVEN_COORDS | Sürücü ve yürütücü Sınıfyoluna dahil etmek için jar dosyaları dışındaki 'ın Maven koordinatlarının virgülle ayrılmış listesi. Yerel Maven depolarında, Maven Central, ardından `--repositories`ile belirtilen diğer uzak depolarda arama yapar. Koordinatlar için biçim *GroupID*:*ArtifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
-| --Kopyala-Dosyalar LISTESI | Yalnızca Python için, PYTHONPATH üzerine yerleştirilecek. zip,. yumurg veya. Kopyala dosyalarının virgülle ayrılmış bir listesi. | `--pyfiles "samples.py"` |
+| --usta MASTER_URL | Ana URL'yi belirtir. HDInsight'ta bu değer `yarn`her zaman . | `--master yarn`|
+| --kavanoz JAR_LIST | Sürücü ve uygulayıcı sınıf yollarına dahil edilebilmek için virgülle ayrılmış yerel kavanozların listesi. HDInsight'ta bu liste, Azure Depolama veya Veri Gölü Depolama'daki varsayılan dosya sistemine giden yollardan oluşur. | `--jars /path/to/examples.jar` |
+| --paketler MAVEN_COORDS | Sürücü ve uygulayıcı sınıf yollarına dahil etmek için kavanozların maven koordinatlarının virgülle ayrılmış listesi. Yerel maven repo arar, sonra maven merkezi, sonra herhangi bir `--repositories`ek uzak depoları ile belirtilir . Koordinatların biçimi *groupId*:*artifactId*:*sürüm*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| --py-files LİsteSİ | Yalnızca Python için, PYTHONPATH'e yerleştirilecek .zip, .egg veya .py dosyalarının virgülle ayrılmış bir listesi. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Genel bakış için bkz. [Azure HDInsight 'ta Apache Spark giriş](apache-spark-overview.md) .
-- Spark kümeleri ve parlak SQL ile çalışmak için bkz. [Azure HDInsight 'ta Apache Spark kümesi oluşturma](apache-spark-jupyter-spark-sql.md) .
-- Spark ile akış verilerini işleyen uygulamalar yazmak için bkz. [Apache Spark yapısal akışı nedir?](apache-spark-streaming-overview.md) .
+- Genel bakış için [Azure HDInsight'ta Apache Spark'a Giriş'e](apache-spark-overview.md) bakın.
+- Bkz. Spark kümeleri ve SparkSQL ile çalışmak için [Azure HDInsight'ta bir Apache Spark kümesi oluşturun.](apache-spark-jupyter-spark-sql.md)
+- Bkz. [Apache Spark Yapılandırılmış Akış nedir?](apache-spark-streaming-overview.md)

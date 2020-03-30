@@ -1,6 +1,6 @@
 ---
-title: PowerShell ile Azure Güvenlik Merkezi 'ne ekleme
-description: Bu belge, PowerShell cmdlet 'lerini kullanarak Azure Güvenlik Merkezi 'ni ekleme sürecinde size yol gösterir.
+title: PowerShell ile Azure Güvenlik Merkezi'ne dahil
+description: Bu belge, PowerShell cmdlets kullanarak Azure Güvenlik Merkezi'ne binme sürecinde size yol göstersin.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,83 +14,83 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603682"
 ---
-# <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell kullanarak Azure Güvenlik Merkezi 'Ni otomatik olarak ekleme
+# <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell'i kullanarak Azure Güvenlik Merkezi'ne binme otomatikleştirin
 
-Azure Güvenlik Merkezi PowerShell modülünü kullanarak Azure iş yüklerinizi programlama yoluyla güvenli hale getirebilirsiniz.
-PowerShell 'in kullanılması, görevleri otomatikleştirmenizi ve el ile görevlerde bulunan insan hatasından kaçınmanızı sağlar. Bu, özellikle yüzlerce ve binlerce kaynakla düzinelerce abonelik içeren büyük ölçekli dağıtımlarda faydalıdır; bunların hepsi başlangıçtan itibaren güvenli hale getirilmesi gerekir.
+Azure Güvenlik Merkezi PowerShell modüllerini kullanarak Azure iş yüklerinizi programlı bir şekilde güvene alabilirsiniz.
+PowerShell'i kullanmak, görevleri otomatikleştirmenize ve el ile görevlerin doğasında bulunan insan hatalarından kaçınmanıza olanak tanır. Bu, özellikle yüzlerce ve binlerce kaynağa sahip düzinelerce abonelik içeren büyük ölçekli dağıtımlarda yararlıdır ve bunların tümü en başından itibaren güvence altına alınmalıdır.
 
-PowerShell kullanarak Azure Güvenlik Merkezi 'ni ekleme, Azure kaynaklarınızın kolayca hazırlanması ve yönetimini otomatikleştirmenizi ve gerekli güvenlik denetimlerini eklemenizi sağlar.
+PowerShell'i kullanarak Azure Güvenlik Merkezi'ne binme, Azure kaynaklarınızın biniş ve yönetimini programlı bir şekilde otomatikleştirmenize ve gerekli güvenlik denetimlerini eklemenize olanak tanır.
 
-Bu makalede, aboneliklerinizde Güvenlik Merkezi 'ni kullanıma almak için ortamınızda değiştirilebilen ve kullanılabilecek örnek bir PowerShell betiği sunulmaktadır. 
+Bu makalede, güvenlik merkezini aboneliklerinizarasında kullanıma açmak için değiştirilebilen ve ortamınızda kullanılabilecek örnek bir PowerShell komut dosyası sağlar. 
 
-Bu örnekte, şu KIMLIĞE sahip bir abonelikte güvenlik merkezini etkinleştireceğiz ve Güvenlik Merkezi 'nin standart katmanını uygulayarak yüksek düzeyde koruma sağlayan önerilen ayarları uygulayacağız: Gelişmiş tehdit koruması ve algılama özellikleri:
+Bu örnekte, Güvenlik Merkezi'ni kimliği olan bir abonelik teetkinleştireceğiz: d07c0080-170c-4c24-861d-9c817742786c ve yüksek düzeyde koruma sağlayan önerilen ayarları uygulayarak, Güvenlik Merkezi'nin Standart katmanını uygulayarak gelişmiş tehdit koruma ve algılama yetenekleri:
 
-1. [Güvenlik Merkezi Standart koruma düzeyini](https://azure.microsoft.com/pricing/details/security-center/)ayarlayın. 
+1. Güvenlik [Merkezi standart koruma düzeyini](https://azure.microsoft.com/pricing/details/security-center/)ayarlayın. 
  
-2. Log Analytics çalışma alanını, Microsoft Monitoring Agent abonelikle ilişkili VM 'lerde topladığı verileri (Bu örnekte, var olan bir Kullanıcı tanımlı çalışma alanı (myWorkspace) olarak ayarlayın.
+2. Microsoft İzleme Aracısı'nın abonelikle ilişkili VM'lerde topladığı verileri göndereceği Log Analytics çalışma alanını ayarlayın – bu örnekte, mevcut bir kullanıcı tanımlı çalışma alanı (myWorkspace).
 
-3. Güvenlik Merkezi 'nin [Microsoft Monitoring Agent dağıtan](security-center-enable-data-collection.md#auto-provision-mma)otomatik aracı sağlamasını etkinleştirin.
+3. Güvenlik Merkezi'nin Microsoft İzleme [Aracısını dağıtan](security-center-enable-data-collection.md#auto-provision-mma)otomatik aracı sağlamasını etkinleştirin.
 
-5. [Güvenlik Merkezi uyarıları ve önemli olayları için kuruluşun CISO değerini güvenlik ilgili kişisi olarak](security-center-provide-security-contact-details.md)ayarlayın.
+5. [Güvenlik Merkezi uyarıları ve önemli olaylar için güvenlik iletişim itibat olarak](security-center-provide-security-contact-details.md)kuruluşun CISO ayarlayın.
 
-6. Güvenlik Merkezi 'nin [varsayılan güvenlik ilkelerini](tutorial-security-policy.md)atayın.
+6. Güvenlik Merkezi'nin [varsayılan güvenlik ilkelerini](tutorial-security-policy.md)atayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Güvenlik Merkezi cmdlet 'lerini çalıştırmadan önce Bu adımlar gerçekleştirilmelidir:
+Güvenlik Merkezi cmdlets çalıştırmadan önce bu adımlar yapılmalıdır:
 
-1.  PowerShell 'i yönetici olarak çalıştırın.
-2.  PowerShell 'de aşağıdaki komutları çalıştırın:
+1.  PowerShell'i yönetici olarak çalıştırın.
+2.  PowerShell'de aşağıdaki komutları çalıştırın:
       
         Set-ExecutionPolicy -ExecutionPolicy AllSigned
         Install-Module -Name Az.Security -Force
 
-## <a name="onboard-security-center-using-powershell"></a>PowerShell kullanarak güvenlik merkezi 'ni ekleme
+## <a name="onboard-security-center-using-powershell"></a>PowerShell'i kullanarak Yerleşik Güvenlik Merkezi
 
-1.  Aboneliklerinizi Güvenlik Merkezi kaynak sağlayıcısına kaydedin:
+1.  Aboneliklerinizi Güvenlik Merkezi Kaynak Sağlayıcısına kaydedin:
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  İsteğe bağlı: aboneliklerin kapsam düzeyini (Fiyatlandırma Katmanı) ayarlayın (tanımlı değilse, fiyatlandırma katmanı boş olarak ayarlanır):
+2.  İsteğe bağlı: Aboneliklerin kapsama düzeyini (fiyatlandırma katmanı) ayarlayın (Tanımlanmamışsa, fiyatlandırma katmanı Ücretsiz olarak ayarlanır):
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
 
-3.  Aracıların rapor alacak bir Log Analytics çalışma alanı yapılandırın. Zaten oluşturduğunuz bir Log Analytics çalışma alanınızın olması gerekir, aboneliğin VM 'lerinin rapor alınacaktır. Aynı çalışma alanına raporlamak için birden çok abonelik tanımlayabilirsiniz. Tanımlı değilse, varsayılan çalışma alanı kullanılacaktır.
+3.  Aracıların rapor edeceği bir Günlük Analizi çalışma alanını yapılandırın. Daha önce oluşturduğunuz ve aboneliğin VM'lerinin rapor edeceği bir Log Analytics çalışma alanına sahip olmalısınız. Aynı çalışma alanına rapor vermek için birden çok abonelik tanımlayabilirsiniz. Tanımlanmamışsa, varsayılan çalışma alanı kullanılır.
 
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  Azure VM 'lerinize Microsoft Monitoring Agent yüklemesini otomatik sağlama:
+4.  Azure VM'lerinizde Microsoft İzleme Aracısı'nın otomatik sağlama yüklemesi:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
         Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 
     > [!NOTE]
-    > Azure sanal makinelerinizin Azure Güvenlik Merkezi tarafından otomatik olarak korunduğundan emin olmak için otomatik sağlamayı etkinleştirmeniz önerilir.
+    > Azure sanal makinelerinizin Azure Güvenlik Merkezi tarafından otomatik olarak korunduğundan emin olmak için otomatik sağlamayı etkinleştirme önerilir.
     >
 
-5.  İsteğe bağlı: seçtiğiniz abonelikler için güvenlik iletişim ayrıntılarını tanımlamanız önerilir ve bu, Güvenlik Merkezi tarafından oluşturulan uyarıların ve bildirimlerin alıcıları olarak kullanılacaktır:
+5.  İsteğe bağlı: Güvenlik Merkezi tarafından oluşturulan uyarıların ve bildirimlerin alıcıları olarak kullanılacak olan, gemide bulunan aboneliklerin güvenlik iletişim bilgilerini tanımlamanız önerilir:
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 
-6.  Varsayılan güvenlik merkezi ilkesi girişim atamasını yapın:
+6.  Varsayılan Güvenlik Merkezi ilkesi girişimini atama:
 
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
         $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
         New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
-Artık Azure Güvenlik Merkezi 'Ni PowerShell ile başarıyla eklendi!
+PowerShell ile Azure Güvenlik Merkezi'ne başarılı bir şekilde binmişsiniz!
 
-Artık bu PowerShell cmdlet 'lerini, abonelikler ve kaynaklar arasında programlı bir şekilde yinelemek için Otomasyon betikleriyle kullanabilirsiniz. Bu, zamandan tasarruf eder ve insan hatası olasılığını azaltır. Bu [örnek betiği](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) başvuru olarak kullanabilirsiniz.
+Artık bu PowerShell cmdlets otomasyon komut dosyaları ile programlı abonelikler ve kaynaklar arasında yeniden kullanılabilir. Bu zaman kazandırır ve insan hatası olasılığını azaltır. Bu örnek [komut dosyalarını](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) başvuru olarak kullanabilirsiniz.
 
 
 
@@ -98,11 +98,11 @@ Artık bu PowerShell cmdlet 'lerini, abonelikler ve kaynaklar arasında programl
 
 
 ## <a name="see-also"></a>Ayrıca bkz.
-Güvenlik Merkezi 'ne ekleme işlemini otomatikleştirmek için PowerShell 'i nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın:
+PowerShell'i Güvenlik Merkezi'ne binmeyi otomatikleştirmek için nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın:
 
-* [Az. Security](https://docs.microsoft.com/powershell/module/az.security).
+* [Az.Güvenlik](https://docs.microsoft.com/powershell/module/az.security).
 
 Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın:
 
 * [Azure Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama](tutorial-security-policy.md) -- Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını yönetme ve yanıtla](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını nasıl yönetip yanıtlaştak yapılacağını öğrenin.

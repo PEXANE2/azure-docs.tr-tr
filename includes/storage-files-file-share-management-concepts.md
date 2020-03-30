@@ -9,16 +9,16 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a67ad4c5010cf93ff55123013a35c697ce5971f8
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597885"
 ---
-Azure dosya paylaşımları, paylaşılan bir depolama havuzunu temsil eden üst düzey nesneler olan *depolama hesaplarına*dağıtılır. Bu depolama havuzu, birden çok dosya paylaşımının yanı sıra blob kapsayıcıları, kuyrukları veya tabloları gibi diğer depolama kaynaklarını dağıtmak için kullanılabilir. Bir depolama hesabına dağıtılan tüm depolama kaynakları, bu depolama hesabı için uygulanan limitleri paylaşır. Bir depolama hesabının geçerli sınırlarını görmek için bkz. [Azure dosyaları ölçeklenebilirlik ve performans hedefleri](../articles/storage/files/storage-files-scale-targets.md).
+Azure dosya paylaşımları, paylaşılan bir depolama havuzunun temsil edildiği üst düzey nesneler olan *depolama hesaplarına*dağıtılır. Bu depolama havuzu, birden çok dosya paylaşımının yanı sıra blob kapsayıcıları, kuyruklar veya tablolar gibi diğer depolama kaynaklarını dağıtmak için kullanılabilir. Bir depolama hesabına dağıtılan tüm depolama kaynakları, bu depolama hesabı için geçerli olan sınırları paylaşır. Bir depolama hesabının geçerli sınırlarını görmek için [Azure Dosyaları ölçeklenebilirliği ve performans hedefleri'ne](../articles/storage/files/storage-files-scale-targets.md)bakın.
 
-Azure dosya dağıtımları için kullanacağınız iki ana depolama hesabı türü vardır: 
-- **Genel amaçlı sürüm 2 (GPv2) depolama hesapları**: GPv2 depolama hesapları, Azure dosya paylaşımlarını standart/sabit disk tabanlı (HDD tabanlı) donanımda dağıtmanıza olanak tanır. GPv2 depolama hesapları, Azure dosya paylaşımlarını depolamanın yanı sıra blob kapsayıcıları, kuyrukları veya tabloları gibi diğer depolama kaynaklarını da depolayabilirler. 
-- **FileStorage depolama hesapları**: FileStorage depolama hesapları, Azure dosya paylaşımlarını Premium/katı hal disk tabanlı (SSD tabanlı) donanımda dağıtmanıza olanak tanır. FileStorage hesapları yalnızca Azure dosya paylaşımlarını depolamak için kullanılabilir; başka depolama kaynakları (blob kapsayıcıları, kuyruklar, tablolar vb.) bir FileStorage hesabında dağıtılabilir.
+Azure Dosyaları dağıtımları için kullanacağınız iki ana depolama hesabı türü vardır: 
+- **Genel amaçlı sürüm 2 (GPv2) depolama hesapları : GPv2**depolama hesapları, Azure dosya paylaşımlarını standart/sabit disk tabanlı (HDD tabanlı) donanıma dağıtmanıza olanak tanır. GPv2 depolama hesapları, Azure dosya paylaşımlarını depolamanın yanı sıra blob kapsayıcıları, kuyruklar veya tablolar gibi diğer depolama kaynaklarını da depolayabilir. 
+- **FileStorage depolama hesapları**: FileStorage depolama hesapları, Azure dosya paylaşımlarını premium/solid-state disk tabanlı (SSD tabanlı) donanıma dağıtmanıza olanak tanır. FileStorage hesapları yalnızca Azure dosya paylaşımlarını depolamak için kullanılabilir; FileStorage hesabında başka depolama kaynakları (blob kapsayıcıları, kuyruklar, tablolar, vb.) dağıtılamaz.
 
-Azure portal, PowerShell veya CLı içinde karşılaşabileceğiniz birkaç farklı depolama hesabı türü vardır. İki depolama hesabı türü, BlockBlobStorage ve BlobStorage depolama hesapları Azure dosya paylaşımları içeremez. Görebileceğiniz diğer iki depolama hesabı türü, her ikisi de Azure dosya paylaşımları içerebilen genel amaçlı sürüm 1 (GPv1) ve klasik depolama hesaplarıdır. GPv1 ve klasik depolama hesaplarında Azure dosya paylaşımları bulunabilir, ancak Azure dosyalarının birçok yeni özelliği yalnızca GPv2 ve FileStorage depolama hesaplarında kullanılabilir. Bu nedenle, yalnızca Yeni dağıtımlar için GPv2 ve FileStorage depolama hesapları kullanmayı ve ortamınızda zaten varsa GPv1 ve klasik depolama hesaplarını yükseltmeyi öneririz.  
+Azure portalında, PowerShell'de veya CLI'de karşılaşabileceğiniz başka depolama hesabı türleri de vardır. İki depolama hesabı türü, BlockBlobStorage ve BlobStorage depolama hesapları, Azure dosya paylaşımları içeremez. Görebileceğiniz diğer iki depolama hesabı türü, her ikisi de Azure dosya paylaşımları içerebilen genel amaçlı sürüm 1 (GPv1) ve klasik depolama hesaplarıdır. GPv1 ve klasik depolama hesapları Azure dosya paylaşımları içerse de, Azure Dosyaları'nın yeni özelliklerinin çoğu yalnızca GPv2 ve FileStorage depolama hesaplarında kullanılabilir. Bu nedenle, yalnızca yeni dağıtımlar için GPv2 ve FileStorage depolama hesaplarını kullanmanızı ve ortamınızda zaten varsa GPv1 ve klasik depolama hesaplarını yükseltmenizi öneririz.  

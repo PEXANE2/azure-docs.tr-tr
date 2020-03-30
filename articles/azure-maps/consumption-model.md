@@ -1,6 +1,6 @@
 ---
-title: Yönlendirme için araç tüketim modelleri | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları 'nda yönlendirme için araç tüketim modelleri hakkında bilgi edineceksiniz.
+title: Yönlendirme için araç tüketim modelleri | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar'da yönlendirme için araç tüketim modelleri hakkında bilgi edineceksiniz.
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -9,63 +9,63 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190243"
 ---
 # <a name="consumption-model"></a>Tüketim modeli
 
-Yönlendirme hizmeti, araç açısından özel tüketim modelinin ayrıntılı açıklaması için bir parametre kümesi sağlar.
-**VehicleEngineType**değerine bağlı olarak, Iki ana tüketim modeli desteklenir: _combustion_ ve _elektrik_. Aynı istekteki farklı modellere ait olan parametreleri belirtmek yanlış. Ayrıca, tüketim modeli parametreleri aşağıdaki **Seyahatmodu** değerleriyle birlikte kullanılamaz: _Bisiklet_ ve _ayaklı bir_.
+Yönlendirme hizmeti, araca özgü Tüketim Modelinin ayrıntılı bir açıklaması için bir dizi parametre sağlar.
+**VehicleEngineType**değerine bağlı olarak, iki ana Tüketim Modelleri desteklenir: _Yanma_ ve _Elektrik_. Aynı istekte farklı modellere ait parametreleri belirtmek yanlış. Ayrıca, Tüketim Modeli parametreleri aşağıdaki **travelMode** değerleri ile kullanılamaz: _bisiklet_ ve _yaya._
 
 ## <a name="parameter-constraints-for-consumption-model"></a>Tüketim modeli için parametre kısıtlamaları
 
-Her iki tüketim modelinde de parametre belirtirken bazı bağımlılıklar vardır. Açıkça bazı parametrelerin belirtilme anlamına gelir. Aşağıda bilinmesi gerekolan bağımlılıklar verilmiştir:
+Her iki Tüketim Modelinde de parametreler belirtilirken bazı bağımlılıklar vardır. Yani, açıkça bazı parametrelerin belirtilmesi, diğer bazı parametrelerin belirtilmesi gerektirebilir. Dikkat edilmesi gereken bu bağımlılıklar şunlardır:
 
-* Tüm parametrelerin **constantSpeedConsumption** için Kullanıcı tarafından belirtilmesi gerekir. **ConstantSpeedConsumption** belirtilmemişse, başka bir tüketim modeli parametresi belirtmekte bir hatadır. **VehicleWeight** parametresi bu gereksinim için bir özel durumdur.
-* **ivationverimlilik** ve **yavaşlatma ationverimlilik** her zaman çift olarak belirtilmelidir (yani, veya None).
-* **İvationverimlilik** ve **yavaşlatma ationverimlilik** belirtilmişse, değerlerinin çarpımı 1 ' den büyük olmamalı (kalıcı hareketi engellemek için).
-* **uphillEfficiency** ve **downhillEfficiency** her zaman çift olarak belirtilmelidir (yani veya None).
-* **UphillEfficiency** ve **downhillEfficiency** belirtilirse, değerlerinin çarpımı 1 ' den büyük olmamalı (kalıcı hareketi engellemek için).
-* \*__verimlilik__ parametreleri Kullanıcı tarafından belirtilmişse, **vehicleWeight** de belirtilmelidir. **VehicleEngineType** , _combustion_olduğunda, **fuelenercaydensityınmjoulesperlitre** de belirtilmelidir.
-* **Maxchargeınkwh** ve **Currentchargeınkwh** her zaman çift olarak belirtilmelidir (yani veya None).
+* Tüm parametreler, kullanıcı tarafından **sürekli SpeedConsumption'in** belirtilmesi gerekir. **Sürekli SpeedConsumption** belirtilmemişse, başka bir tüketim modeli parametresi belirtmek bir hatadır. **AraçAğırlık** parametresi bu gereksinim için bir istisnadır.
+* **ivmeVerimlilik** ve **yavaşlamaVerimlilik** her zaman bir çift olarak belirtilmelidir (yani, her ikisi de veya hiçbiri).
+* **IvmeVerimlilik** ve **yavaşlamaVerimlilik** belirtilirse, değerlerinin çarpımı 1'den büyük olmamalıdır (sürekli hareketi önlemek için).
+* **uphillEfficiency** ve **downhillEfficiency** her zaman bir çift olarak belirtilmelidir (yani, her ikisi de ya da hiçbiri).
+* **Yokuş yukarı Verimlilik** ve yokuş aşağı **Verimlilik** belirtilirse, değerlerinin çarpımı 1'den büyük olmamalıdır (sürekli hareketi önlemek için).
+* \* __Verimlilik__ parametreleri kullanıcı tarafından belirtilirse, **araç Ağırlığı** da belirtilmelidir. **VehicleEngineType** _yanma_olduğunda, **fuelEnergyDensityInMJoulesPerLiter** de belirtilmelidir.
+* **maxChargeInkWh** ve **currentChargeInkWh** her zaman bir çift olarak belirtilmelidir (yani, her ikisi de veya hiçbiri).
 
 > [!NOTE]
-> Yalnızca **constantSpeedConsumption** belirtilirse, Slopes ve araç hızlandırma gibi başka bir tüketim yönü, tüketim hesaplamaları için hesaba alınmaz.
+> Yalnızca **sabitSpeedConsumption** belirtilmişse, tüketim hesaplamaları için eğimler ve araç ivmesi gibi başka tüketim yönleri dikkate alınmaz.
 
-## <a name="combustion-consumption-model"></a>Combustion tüketim modeli
+## <a name="combustion-consumption-model"></a>Yanma tüketim modeli
 
-**VehicleEngineType** , _combustion_olarak ayarlandığında, combustion tüketim modeli kullanılır.
-Bu modele ait parametrelerin listesi aşağıda verilmiştir. Ayrıntılı açıklama için parametreler bölümüne bakın.
+Yanma Tüketim Modeli **vehicleEngineType** _yanma_ayarlanır kullanılır.
+Bu modele ait parametrelerin listesi aşağıda verilmiştir. Ayrıntılı açıklama için Parametreler bölümüne bakın.
 
 * constantSpeedConsumptionInLitersPerHundredkm
-* vehicleWeight
-* Currentfuelinlinler
-* auxiliaryPowerInLitersPerHour
-* Fuelenercaydensityınmjoulesperlitre
-* Ivationverimlilik
-* Yavaşlatma verimliliği
+* araçAğırlık
+* geçerliFuelInLitres
+* yardımcıPowerInLitersPerHour
+* yakıtEnergyDensityInMJoulesPerLiter
+* ivmeVerimlilik
+* yavaşlamaVerimlilik
 * uphillEfficiency
-* downhillEfficiency
+* yokuş aşağıVerimlilik
 
 ## <a name="electric-consumption-model"></a>Elektrik tüketim modeli
 
-Elektrik tüketim modeli, **vehicleEngineType** _elektrik_olarak ayarlandığında kullanılır.
-Bu modele ait parametrelerin listesi aşağıda verilmiştir. Ayrıntılı açıklama için parametreler bölümüne bakın.
+Electric Consumption Model **vehicleEngineType** _elektrikli_olarak ayarlandığında kullanılır.
+Bu modele ait parametrelerin listesi aşağıda verilmiştir. Ayrıntılı açıklama için Parametreler bölümüne bakın.
 
 * constantSpeedConsumptionInkWhPerHundredkm
-* vehicleWeight
-* Currentchargeınkwh
-* Maxchargeınkwh
-* auxiliaryPowerInkW
-* Ivationverimlilik
-* Yavaşlatma verimliliği
+* araçAğırlık
+* akımChargeInkWh
+* maxChargeInkWh
+* yardımcıPowerInkW
+* ivmeVerimlilik
+* yavaşlamaVerimlilik
 * uphillEfficiency
-* downhillEfficiency
+* yokuş aşağıVerimlilik
 
-## <a name="sensible-values-of-consumption-parameters"></a>Tüketim parametrelerinin erişilebilir değerleri
+## <a name="sensible-values-of-consumption-parameters"></a>Tüketim parametrelerinin mantıklı değerleri
 
-Küme tüm açık gereksinimleri yerine getirebilse de, belirli bir tüketim parametreleri kümesi reddedilebilir. Belirli bir parametre değeri veya bazı parametrelerin değerlerinin bir birleşimi, tüketim değerlerinin makul olmayan magnitudes bir şekilde kabul edildiği zaman gerçekleşir. Bu durumda, büyük olasılıkla bir giriş hatası belirtilir ve bu, tüketim parametrelerinin tüm uygun değerlerini karşılamak için gerekli bir işlem yapılır. Belirli bir tüketim parametreleri kümesinin reddedilmesi durumunda, eşlik eden hata mesajı neden (s) için bir metinsel açıklama içerecektir.
-Parametrelerin ayrıntılı açıklamaları her iki model için de onaylanan değer örneklerine sahiptir.
+Belirli bir tüketim parametreleri kümesi, küme tüm açık gereksinimleri karşılayabilir olsa bile reddedilebilir. Belirli bir parametrenin değeri veya çeşitli parametrelerin değerlerinin bir birleşimi, tüketim değerlerinin makul olmayan büyüklüklerine yol açabileceği düşünüldüğünde gerçekleşir. Bu durumda, tüketim parametrelerinin tüm mantıklı değerlerini karşılamak için uygun özen alındığından, büyük olasılıkla bir giriş hatası gösterir. Belirli bir tüketim parametre kümesinin reddedilmesi durumunda, eşlik eden hata iletisi nedeni(ler) hakkında metinsel bir açıklama içerir.
+Parametrelerin ayrıntılı açıklamaları her iki model için de mantıklı değerlere örnekler içerir.

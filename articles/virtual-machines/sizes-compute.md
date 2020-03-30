@@ -1,6 +1,6 @@
 ---
-title: Azure VM boyutları-Işlem için iyileştirilmiş | Microsoft Docs
-description: Azure 'daki sanal makineler için kullanılabilen farklı işlem için iyileştirilmiş boyutları listeler. Bu serideki boyutlarda sanal CPU 'lar, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
+title: Azure VM boyutları - En iyi iletişimi en iyi duruma getirin | Microsoft Dokümanlar
+description: Azure'daki sanal makineler için kullanılabilen farklı bilgi işlem optimize boyutları listeler. VCPUs, veri diskleri ve NIC'lerin sayısı nın yanı sıra bu serideki boyutlar için depolama verime ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines
 documentationcenter: ''
 author: jonbeck7
@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
 ms.openlocfilehash: d709d621341ef14ec158ed5af1c2df4297d66b8b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77493637"
 ---
-# <a name="compute-optimized-virtual-machine-sizes"></a>İşlem için iyileştirilmiş sanal makine boyutları
+# <a name="compute-optimized-virtual-machine-sizes"></a>Optimize edilmiş sanal makine boyutlarını hesaplama
 
-İşlem için iyileştirilmiş VM boyutları yüksek CPU-bellek oranına sahiptir. Bu boyutlar orta trafikli web sunucuları, ağ gereçleri, toplu süreçler ve uygulama sunucuları için uygundur. Bu makale, vCPU sayısı, veri diskleri ve NIC 'ler hakkında bilgi sağlar. Ayrıca, bu gruplandırmadaki her bir boyut için depolama alanı işleme ve ağ bant genişliği hakkında bilgiler içerir.
+İşlem ekien VM boyutları, yüksek CPU-bellek oranına sahiptir. Bu boyutlar orta trafik web sunucuları, ağ cihazları, toplu işlem ve uygulama sunucuları için iyidir. Bu makalede, vCPUs, veri diskleri ve NIC'lerin sayısı hakkında bilgi sağlar. Ayrıca, bu gruplandırmadaki her boyut için depolama iş liği ve ağ bant genişliği hakkında bilgi içerir.
 
-[Fsv2 serisi](fsv2-series.md) , Intel® Xeon® Platinum 8168 işlemcisini temel alır. Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en yüksek çekirdekli Turbo 3,7 GHz sıklığına sahiptir. Intel® AVX-512 yönergeleri Intel Ölçeklenebilir Işlemcilerde yenidir. Bu yönergeler, tek ve çift duyarlıklı kayan nokta işlemlerinde vektör işleme iş yükleri için bir 2X performans artışı sağlar. Diğer bir deyişle, tüm hesaplama iş yükleri oldukça hızlıdır.
+[Fsv2 serisi](fsv2-series.md) Intel® Xeon® Platinum 8168 işlemcidayanmaktadır. Tüm çekirdekli Turbo saat hızı 3.4 GHz ve maksimum tek çekirdekli turbo frekansı 3.7 GHz'dir. Intel® AVX-512 talimatları Intel Ölçeklenebilir İşlemciler yeni. Bu yönergeler, hem tek hem de çift hassas kayan nokta işlemlerinde vektör işleme iş yüklerine 2 kata kadar performans artışı sağlar. Başka bir deyişle, herhangi bir hesaplama iş yükü için gerçekten hızlı.
 
-Daha düşük bir saatlik liste fiyatına göre, Fsv2-Series, vCPU başına Azure Işlem birimi (ACU) temelinde Azure portföyündeki fiyat performansı için en iyi değerdir.
+Fsv2 serisi, saat başına daha düşük bir liste fiyatıyla, vCPU başına Azure İşlem Birimi'ni (ACU) temel alan Azure portföyündeki fiyat performansı açısından en iyi değerdir.
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaçlı](sizes-general.md)
+- [Genel amaç](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
@@ -40,4 +40,4 @@ Daha düşük bir saatlik liste fiyatına göre, Fsv2-Series, vCPU başına Azur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
+Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.

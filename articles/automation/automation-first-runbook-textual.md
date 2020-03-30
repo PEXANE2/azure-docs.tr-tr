@@ -1,5 +1,5 @@
 ---
-title: Azure Automation 'da ilk PowerShell Iş akışı runbook 'um
+title: Azure Otomasyonundaki ilk PowerShell İş Akışı çalışma kitabım
 description: PowerShell İş Akışı kullanarak basit bir runbook oluşturma, test etme ve yayımlama adımlarını anlatan öğretici.
 keywords: powershell iş akışı, powershell iş akışı örnekleri, iş akışı powershell
 services: automation
@@ -7,52 +7,52 @@ ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
 ms.openlocfilehash: a5a1cad3179063f75a5d9a19567624180b5793a1
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367270"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>İlk PowerShell İş Akışı runbook uygulamam
 
 > [!div class="op_single_selector"]
 > * [Grafik](automation-first-runbook-graphical.md)
-> * [PowerShell](automation-first-runbook-textual-powershell.md)
+> * [Powershell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell İş Akışı](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 
-Bu öğretici, Azure Automation’da bir [PowerShell İş Akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks) oluşturulmasını adım adım göstermektedir. Runbook işinin durumunun nasıl izleneceğini öğrenirken test ve yayımladığınız basit bir runbook 'u kullanmaya başlayın. Ardından, bir Azure sanal makinesini başlatarak, runbook 'u Azure kaynaklarını yönetmek için değiştirin. Son olarak, runbook parametreleri ekleyerek runbook 'u daha sağlam hale getirin.
+Bu öğretici, Azure Automation’da bir [PowerShell İş Akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks) oluşturulmasını adım adım göstermektedir. Runbook işinin durumunu izlemeyi öğrenirken test ettiğiniz ve yayımladığınız basit bir runbook ile başlayın. Ardından, bir Azure sanal makinesi başlatarak gösterildiği gibi Azure kaynaklarını gerçekten yönetmek için runbook'u değiştirin. Son olarak, runbook parametreleri ekleyerek runbook'u daha sağlam hale getirin.
 
 >[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* Azure aboneliği. Henüz bir aboneliğiniz yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ya da [ücretsiz hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) için kaydolabilirsiniz.
+* Azure aboneliği. Henüz bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)kaydolabilirsiniz.
 * Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](automation-offering-get-started.md). Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
-* Azure sanal makinesi. Bu makineyi durdurup başlatabileceğinizden bu, bir üretim sanal makinesi olmamalıdır.
+* Azure sanal makinesi. Bu makineyi durup çalıştırdığınıza göre, bu bir üretim VM'si olmamalı.
 
-## <a name="step-1---create-new-runbook"></a>1\. Adım - Yeni runbook oluşturma
+## <a name="step-1---create-new-runbook"></a>1. Adım - Yeni runbook oluşturma
 
-`Hello World`metin çıkışı veren basit bir runbook oluşturarak başlayın.
+Metni `Hello World`çıktılayan basit bir runbook oluşturarak başlayın.
 
 1. Azure portalında, Otomasyon hesabınızı açın.
 
-   Automation hesabı sayfası size bu hesaptaki kaynakların hızlı bir görünümünü sağlar. Birkaç varlığınız zaten olmalıdır. Bu varlıkların çoğu, otomatik olarak yeni bir Otomasyon hesabına eklenen modüllerdir. Ayrıca, aboneliğinizle ilişkili kimlik bilgisi varlığını de bilmelisiniz.
+   Automation hesabı sayfası size bu hesaptaki kaynakların hızlı bir görünümünü sağlar. Birkaç varlığınız zaten olmalıdır. Bu varlıkların çoğu otomatik olarak yeni bir Otomasyon hesabına dahil modüllerdir. Aboneliğinizle ilişkili Kimlik Bilgisi kıymetine de sahip olmalısınız.
  
-1. Runbook 'ların listesini açmak için **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.
-1. **Runbook oluştur**' a tıklayarak yeni bir runbook oluşturun.
+1. Runbook listesini açmak için **Proses Otomasyonu** altındaki **Runbook'ları** seçin.
+1. **Runbook Oluştur'u**seçerek yeni bir runbook oluşturun.
 1. Runbook’a **MyFirstRunbook-Workflow** adını verin.
-1. Bu durumda, bir [PowerShell Iş akışı runbook 'u](automation-runbook-types.md#powershell-workflow-runbooks)oluşturacağız. **Runbook türü**Için **PowerShell iş akışını** seçin.
+1. Bu durumda, bir [PowerShell İş Akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks)oluşturmak için gidiyoruz. Runbook türü için **PowerShell İş** **Akışı'nı**seçin.
 1. Runbook’u oluşturmak için **Oluştur**’a tıklayın ve metin düzenleyicisini açın.
 
-## <a name="step-2---add-code-to-the-runbook"></a>2\. Adım - Runbook'a kod ekleme
+## <a name="step-2---add-code-to-the-runbook"></a>2. Adım - Runbook'a kod ekleme
 
-Kodu doğrudan runbook 'a yazabilir ya da kitaplık denetiminden cmdlet 'leri, runbook 'ları ve varlıkları seçebilir ve ilgili parametrelerle runbook 'lara ekleyebilirsiniz. Bu öğreticide doğrudan runbook 'a kod yazın.
+Kodu doğrudan runbook'a yazabilir veya Kitaplık denetiminden cmdlets, runbook ve varlıkları seçip ilgili parametrelerle birlikte runbook'a ekleyebilirsiniz. Bu öğretici için, kodu doğrudan runbook'a yazarsınız.
 
-1. Runbook 'larınız Şu anda yalnızca gerekli `Workflow` anahtar sözcüğü, runbook 'un adı ve tüm iş akışını gösteren küme ayraçları ile boştur.
+1. Runbook'unuz şu anda `Workflow` yalnızca gerekli anahtar kelime, runbook'un adı ve tüm iş akışını kaplayan ayraçlarla boş.
 
    ```powershell-interactive
    Workflow MyFirstRunbook-Workflow
@@ -60,7 +60,7 @@ Kodu doğrudan runbook 'a yazabilir ya da kitaplık denetiminden cmdlet 'leri, r
    }
    ```
 
-1. Küme ayraçları arasında `Write-Output "Hello World"` yazın.
+1. Ayraçlar arasında yazın. `Write-Output "Hello World"`
 
    ```powershell-interactive
    Workflow MyFirstRunbook-Workflow
@@ -71,70 +71,70 @@ Kodu doğrudan runbook 'a yazabilir ya da kitaplık denetiminden cmdlet 'leri, r
 
 1. **Kaydet**’e tıklayarak runbook’u kaydedin.
 
-## <a name="step-3---test-the-runbook"></a>3\. Adım - Runbook'u test etme
+## <a name="step-3---test-the-runbook"></a>3. Adım - Runbook'u test etme
 
-Runbook 'u üretimde kullanılabilir hale getirmek için yayımlamadan önce, düzgün çalıştığından emin olmak için test etmeniz gerekir. Bir runbook 'u test etmek taslak sürümünü çalıştırır ve çıktısını etkileşimli olarak görüntülemenizi sağlar.
+Üretimde kullanılabilir hale getirmek için runbook'u yayımlamadan önce, düzgün çalıştığından emin olmak için kitabı sınamalısınız. Bir runbook'u test etmek Taslak sürümünü çalıştırIr ve çıktısını etkileşimli olarak görüntülemenize olanak tanır.
 
-1. Test bölmesini açmak için **Test bölmesi** ' ni seçin.
-1. Sınamayı başlatmak için **Başlat** ' a tıklayın ve yalnızca etkin seçeneği test edin.
-1. [Runbook işinin](automation-runbook-execution.md) oluşturulduğunu ve durumunun bölmesinde görüntülendiğini unutmayın.
+1. Test bölmesini açmak için **Test bölmesini** seçin.
+1. Tek etkin seçeneği test etmekle testi başlatmak için **Başlat'ı** tıklatın.
+1. [Runbook işinin](automation-runbook-execution.md) oluşturulduğunu ve durumunun bölmede görüntülendiğini unutmayın.
 
-   İşin durumu `Queued`olarak başlar ve işin buluttaki bir runbook worker 'ın kullanılabilir hale gelmesini beklediğini belirtir. Bir çalışan işi talep ettiği zaman durum `Starting` olarak değişir. Son olarak, runbook aslında çalışmaya başladığında durum `Running` olur.
+   İş durumu , `Queued`işin buluttaki bir runbook çalışanının kullanılabilir olmasını beklediğini belirten olarak başlar. Durum, bir `Starting` işçinin işi talep etmesiyle değişir. Son olarak, `Running` durum runbook gerçekten çalıştırmaya başladığında olur.
 
-1. Runbook işi tamamlandığında, test bölmesi çıktısını görüntüler. Bu durumda `Hello World`görürsünüz.
+1. Runbook işi tamamlandığında, Test bölmesi çıktısını görüntüler. Bu durumda, görüyorsunuz `Hello World`.
 
    ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 
 1. Tuvale geri dönmek için Test bölmesini kapatın.
 
-## <a name="step-4---publish-and-start-the-runbook"></a>4\. Adım - Runbook’u yayımlama ve başlatma
+## <a name="step-4---publish-and-start-the-runbook"></a>4. Adım - Runbook’u yayımlama ve başlatma
 
-Oluşturduğunuz runbook hala taslak modunda. Üretim ortamında çalıştırmadan önce onu yayımlamanız gerekir. Bir runbook yayımladığınızda, Taslak sürümü mevcut Yayımlanmış sürümün üzerine yazarsınız. Örneğimizde, runbook’u henüz oluşturduğunuzdan, Yayımlanmış sürümünüz yok.
+Oluşturduğunuz runbook hala Taslak modundadır. Üretimde çalıştıramadan önce yayımlamalısınız. Bir runbook yayımladığınızda, Taslak sürümü mevcut Yayımlanmış sürümün üzerine yazarsınız. Örneğimizde, runbook’u henüz oluşturduğunuzdan, Yayımlanmış sürümünüz yok.
 
 1. Runbook’u yayımlamak için **Yayımla**’ya tıklayın ve sorulduğunda **Evet**’e tıklayın.
-1. Runbook 'u runbook **'lar** sayfasında görüntülemek için sola kaydırın ve **yazma durumu** alanının **yayımlandı**olarak ayarlandığını unutmayın.
-1. **Myfirstrunbook-Workflow**için sayfayı görüntülemek üzere sağa doğru kaydırın.
+1. **Runbook** sayfasındaki runbook'u görüntülemek için sola kaydırın ve **Yazar Durumu** alanının **Yayımlanmış**olarak ayarlandığına dikkat edin.
+1. **MyFirstRunbook-Workflow**için sayfayı görüntülemek için sağa geri kaydırın.
 
-   Üstteki seçenekler runbook 'u şimdi başlatabilmenizi, gelecekteki bir başlangıç zamanı zamanlamanıza veya Runbook 'un bir HTTP çağrısıyla başlatılabilmesi için [Web kancası](automation-webhooks.md) oluşturmanıza imkan tanır.
+   Üstteki seçenekler, runbook'u şimdi başlatmanızı, gelecekteki bir başlangıç saatini zamanlamanızı veya runbook'un http araması yoluyla başlatılabilmesi için bir [webhook](automation-webhooks.md) oluşturmanıza olanak sağlar.
 
-1. **Başlat** ' ı ve ardından runbook 'u başlatmak isteyip Istemediğiniz sorulduğunda **Evet** ' i seçin.
+1. **Runbook'u** başlatmak istendiğinde Başlat ve ardından **Evet'i** seçin.
 
    ![Runbook’u başlatma](media/automation-first-runbook-textual/automation-runbook-controls-start.png)
 
-1. Oluşturulan runbook işi için bir Iş bölmesi açılır. Bu durumda, işin ilerlemesini izlemek için bölmeyi açık bırakın.
+1. Oluşturulan runbook işi için bir İş bölmesi açılır. Bu durumda, işin ilerlemesini izleyebilmeniz için bölmeyi açık bırakın.
 
-1. İş durumunun **Iş özetinde**gösterildiğini unutmayın. Bu durum, runbook 'u test ederken gördüğünüz durumlardan eşleşir.
+1. İş durumunun **İş Özeti'nde**gösterildiğini unutmayın. Bu durum, runbook'u sınarken gördüğünüz durumla eşleşir.
 
    ![İş Özeti](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. Runbook durumu `Completed`gösteriyorsa, **Çıkış**' a tıklayın. `Hello World` iletinizi görebileceğiniz çıkış sayfası açılır.
+1. Runbook durumu gösterdiğinde `Completed` **Çıktı'yı**tıklatın. İletinizi `Hello World` görebileceğiniz Çıktı sayfası açılır.
 
    ![İş Özeti](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
-1. Çıkış sayfasını kapatın.
+1. Çıktı sayfasını kapatın.
 
-1. Runbook işine ait Akışlar bölmesini açmak için **Tüm Günlükler**’e tıklayın. Yalnızca çıkış akışında `Hello World` görmeniz gerekir. Akışlar bölmesinin, runbook 'a yazıyorsa ayrıntılı ve hata akışları gibi bir runbook işi için diğer akışları gösterebileceğini unutmayın.
+1. Runbook işine ait Akışlar bölmesini açmak için **Tüm Günlükler**’e tıklayın. Yalnızca çıkış `Hello World` akışında görmeniz gerekir. Runbook onlara yazıyorsa, Akışlar bölmesinin bir runbook işi için ayrıntılı ve hata akışları gibi diğer akışları gösterebileceğini unutmayın.
 
    ![İş Özeti](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. **Myfirstrunbook** sayfasına dönmek için akışlar bölmesini ve iş bölmesini kapatın.
-1. Bu runbook 'un Işler sayfasını açmak için **kaynaklar** altında **işler** ' e tıklayın. Bu sayfada runbook 'larınız tarafından oluşturulan tüm işler listelenir. İşi yalnızca bir kez çalıştırdığınız için yalnızca bir iş listelendiğini görmeniz gerekir.
+1. **MyFirstRunbook** sayfasına dönmek için Akışlar bölmesini ve İş bölmesini kapatın.
+1. Bu runbook'un İşler sayfasını açmak için **Kaynaklar** altında **İşler'i** tıklatın. Bu sayfa, runbook tarafından oluşturulan tüm işleri listeler. İşi yalnızca bir kez çalıştırdığınızdan, yalnızca bir iş listelenmiş olarak görmeniz gerekir.
 
    ![İşler](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
-1. Runbook 'u başlattığınızda görüntülediğiniz aynı Iş bölmesini açmak için iş adına tıklayın. Runbook için oluşturulan herhangi bir işin ayrıntılarını görüntülemek için bu bölmeyi kullanın.
+1. Runbook'u başlattığınızda görüntülediğiniz aynı İş bölmesini açmak için iş adını tıklatın. Runbook için oluşturulan herhangi bir işin ayrıntılarını görüntülemek için bu bölmeyi kullanın.
 
-## <a name="step-5---add-authentication-to-manage-azure-resources"></a>5\. Adım- Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme
+## <a name="step-5---add-authentication-to-manage-azure-resources"></a>5. Adım- Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme
 
-Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar faydalı bir şey yapmadı. Bu runbook’un Azure kaynaklarını yönetmesini istiyorsunuz. Bu, aboneliğin kimlik bilgilerini kullanarak kimlik doğrulaması yapamadığı takdirde bunu yapamıyor. Kimlik doğrulaması `Connect-AzAccount` cmdlet 'ini kullanır.
+Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar faydalı bir şey yapmadı. Bu runbook’un Azure kaynaklarını yönetmesini istiyorsunuz. Abonelik kimlik bilgilerini kullanarak kimlik doğrulaması yapmadıkça bunu yapamaz. Kimlik doğrulama `Connect-AzAccount` cmdlet kullanır.
 
 >[!NOTE]
->PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` `Connect-AzAccount`için diğer adlardır. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
+>PowerShell runbook'ları için `Add-AzAccount` ve `Add-AzureRMAccount` `Connect-AzAccount`diğer adlar . Bu cmdlets'i kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleyebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncellemeniz gerekebilir.
 
-1. **Myfirstrunbook-Workflow** sayfasına gidin ve **Düzenle**' ye tıklayarak metin düzenleyicisini açın.
-2. `Write-Output` satırını silin.
+1. **MyFirstRunbook-Workflow** sayfasına gidin ve **Düzenleme'yi**tıklatarak metin düzenleyicisini açın.
+2. `Write-Output` Satırı silin.
 3. İmleci ayraçlar arasında boş bir satıra getirin.
-4. Otomasyon farklı çalıştır hesabınızla kimlik doğrulamasını işleyen aşağıdaki kodu yazın veya kopyalayıp yapıştırın.
+4. Otomasyon Çalıştır hesabınızla kimlik doğrulamasını işleyen aşağıdaki kodu yazın veya kopyalayın ve yapıştırın.
 
    ```powershell-interactive
    # Ensures you do not inherit an AzContext in your runbook
@@ -147,17 +147,17 @@ Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar fayd
    $AzureContext = Select-AzSubscription -SubscriptionId $Conn.SubscriptionID
    ```
 
-1. Runbook 'u test edebilmeniz için **Test bölmesi** ' ne tıklayın.
-1. Testi başlatmak için **Başlat**’a tıklayın. Tamamlandıktan sonra, hesabınızdaki temel bilgileri görüntüleyen aşağıdakine benzer bir çıktı görmeniz gerekir. Bu eylem, kimlik bilgisinin geçerli olduğunu onaylar.
+1. Çalışma kitabını test etmek için **Test bölmesini** tıklatın.
+1. Testi başlatmak için **Başlat**’a tıklayın. Tamamlandıktan sonra, hesabınızdan temel bilgileri görüntüleyen aşağıdakilere benzer çıktıgörmeniz gerekir. Bu eylem, kimlik bilgisinin geçerli olduğunu doğrular.
 
    ![Kimlik doğrulaması](media/automation-first-runbook-textual/runbook-auth-output.png)
 
-## <a name="step-6---add-code-to-start-a-virtual-machine"></a>6\. Adım - Sanal makineyi başlatmak için kod ekleme
+## <a name="step-6---add-code-to-start-a-virtual-machine"></a>6. Adım - Sanal makineyi başlatmak için kod ekleme
 
-Runbook 'larınızın Azure aboneliğine kimlik doğrulaması yapdığına göre, kaynakları yönetebilirsiniz. Bir sanal makineyi başlatmak için bir komut ekleyelim. Azure aboneliğinizdeki herhangi bir VM 'yi seçebilirsiniz ve şu anda runbook 'ta bu adı kodlıyoruz. Kaynakları birden çok abonelik genelinde yönetiyorsanız, [Get-AzContext](/powershell/module/az.accounts/get-azcontext) cmdlet 'i ile `AzContext` parametresini kullanmanız gerekir.
+Runbook'unuzun Azure aboneliğine kimlik tonuyla geldiğini zedeleyen kaynakları yönetebilirsiniz. Sanal bir makine başlatmak için bir komut ekleyelim. Azure aboneliğinizde herhangi bir VM seçebilirsiniz ve şimdilik runbook'ta bu adı sabit şifrelersiniz. Kaynakları birden çok abonelik te yönetiyorsanız, `AzContext` [Get-AzContext](/powershell/module/az.accounts/get-azcontext) cmdlet ile parametreyi kullanmanız gerekir.
 
 1. Aşağıda gösterildiği gibi [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0
-) cmdlet 'ine bir çağrı girerek başlatılacak sanal makinenin adını ve kaynak grubu adını belirtin. 
+) cmdlet'e bir çağrı girerek başlamak için VM'nin adını ve kaynak grup adını sağlayın. 
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
@@ -174,14 +174,14 @@ Runbook 'larınızın Azure aboneliğine kimlik doğrulaması yapdığına göre
    }
    ```
 
-1. Runbook 'u kaydedin ve test **bölmesi** ' ne tıklayarak test edebilirsiniz.
-1. Testi başlatmak için **Başlat**’a tıklayın. Tamamlandıktan sonra VM 'nin başlatılmış olduğunu denetleyin.
+1. Runbook'u kaydedin ve test etmek için **Test bölmesini** tıklatın.
+1. Testi başlatmak için **Başlat**’a tıklayın. Tamamlandıktan sonra, VM'nin başlatıldığından kontrol edin.
 
-## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>7\. Adım - Runbook'a girdi parametresi ekleme
+## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>7. Adım - Runbook'a girdi parametresi ekleme
 
-Runbook 'larınız Şu anda runbook 'ta sabit kodlanmış sanal makineyi başlatır. Runbook başlatıldığında VM 'yi belirtebileceğiniz zaman daha yararlı olacaktır. Bu işlevi sağlamak için Runbook 'a giriş parametreleri ekleyelim.
+Runbook'unuzun çalışma defterinde kodladığınız VM'yi başlatması gerekir. Runbook başlatıldığında VM'yi belirtebilirseniz daha yararlı olacaktır. Bu işlevselliği sağlamak için runbook'a giriş parametreleri ekleyelim.
 
-1. Runbook 'a `VMName` ve `ResourceGroupName` parametreleri için değişkenler ekleyin ve değişkenleri aşağıda gösterildiği gibi `Start-AzVM` cmdlet 'iyle kullanın.
+1. Runbook'a `VMName` parametreler `ResourceGroupName` ve değişkenler için değişkenler ekleyin `Start-AzVM` ve aşağıda gösterildiği gibi cmdlet ile değişkenleri kullanın.
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
@@ -202,18 +202,18 @@ Runbook 'larınız Şu anda runbook 'ta sabit kodlanmış sanal makineyi başlat
 2. Runbook'u kaydedin ve Test bölmesini açın. Artık testteki iki giriş değişkeni için değerler sağlayabilirsiniz.
 3. Test bölmesini kapatın.
 4. Runbook’un yeni sürümünü yayımlamak için **Yayımla**’ya tıklayın.
-5. Başlattığınız VM 'yi durdurun.
+5. Başlattığınız VM'yi durdurun.
 6. Runbook'u başlatmak için **Başlat**’a tıklayın. 
-7. Başlayacaksanız kullanılacak VM için **VMName** ve **resourcegroupname** değerlerini yazın.
+7. Başlatacağınız VM için **VMNAME** ve **RESOURCEGROUPNAME** değerlerini yazın.
 
    ![Runbook’u Başlatma](media/automation-first-runbook-textual/automation-pass-params.png)
 
-8. Runbook tamamlandığında, VM 'nin başlatıldığını doğrulayın.
+8. Runbook tamamlandığında, VM'nin başladığını doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Dil başvurusu ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell belgelerine](https://docs.microsoft.com/powershell/scripting/overview)bakın.
-* Grafik runbook 'ları kullanmaya başlamak için bkz. [ilk grafik runbook 'Um](automation-first-runbook-graphical.md).
-* PowerShell runbook'ları kullanmaya başlamak için bkz. [İlk PowerShell runbook’um](automation-first-runbook-textual-powershell.md).
-* Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).
-* PowerShell betiği destek özellikleri hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda yerel PowerShell betiği desteği](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
+* Dil referansı ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell Dokümanları'na](https://docs.microsoft.com/powershell/scripting/overview)bakın.
+* Grafik çalışma kitaplarıyla başlamak için [ilk grafik çalışma kitabıma](automation-first-runbook-graphical.md)bakın.
+* PowerShell runbook'ları ile başlamak için [ilk PowerShell runbook'uma](automation-first-runbook-textual-powershell.md)bakın.
+* Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için [Azure Otomasyon runbook türlerine](automation-runbook-types.md)bakın.
+* PowerShell komut dosyası destek özellikleri hakkında daha fazla bilgi için [Azure Otomasyonu'nda Yerel PowerShell komut dosyası desteğine](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)bakın.

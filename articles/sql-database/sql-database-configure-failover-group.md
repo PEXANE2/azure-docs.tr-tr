@@ -1,6 +1,6 @@
 ---
-title: Yük devretme grubu yapılandırma
-description: Azure portal, az CLı ve PowerShell kullanarak Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek için otomatik yük devretme grubu yapılandırmayı öğrenin.
+title: Bir başarısız grubu yapılandırma
+description: Azure portalı, Az CLI ve PowerShell'i kullanarak Azure SQL Veritabanı tek veritabanı, elastik havuz ve yönetilen örnek için otomatik hata grubu nasıl yapılandırılabildiğini öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,49 +12,49 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
 ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461824"
 ---
-# <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
+# <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Veritabanı için bir başarısız grup yapılandırma
 
-Bu konu, bir Azure SQL veritabanı için bir [otomatik yük devretme grubu](sql-database-auto-failover-group.md) , Azure Portal veya PowerShell kullanarak tek veritabanı, elastik havuz ve yönetilen örnek için nasıl yapılandırılacağını öğretir. 
+Bu konu, Azure portalını veya PowerShell'i kullanarak bir Azure SQL Veritabanı tek veritabanı, elastik havuz ve yönetilen örnek için [otomatik hata grubunu](sql-database-auto-failover-group.md) nasıl yapılandırabileceğinizi öğretir. 
 
 ## <a name="single-database"></a>Tek veritabanı
-Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna tek bir veritabanı ekleyin.
+Azure portalını veya PowerShell'i kullanarak başarısız grup oluşturun ve veritabanına tek bir veritabanı ekleyin.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki önkoşulları göz önünde bulundurun:
+Aşağıdaki ön koşulları göz önünde bulundurun:
 
-- İkincil sunucu için sunucu oturumu açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir. 
+- İkincil sunucunun sunucu girişi ve güvenlik duvarı ayarları birincil sunucunuzunkiyle eşleşmelidir. 
 
-### <a name="create-failover-group"></a>Yük devretme grubu oluştur
+### <a name="create-failover-group"></a>Başarısız grup oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanınızı veritabanına ekleyin.
+Azure portalını kullanarak başarısız grubunuzu oluşturun ve tek veritabanınızı bu gruba ekleyin.
 
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
-1. Yük devretme grubuna eklemek istediğiniz tek veritabanını seçin. 
-1. Sunucu ayarlarını açmak için sunucu **adı** altında sunucunun adını seçin.
+1. [Azure portalının](https://portal.azure.com)sol menüsünde **Azure SQL'i** seçin. **Azure SQL** listede yoksa, **Tüm hizmetler'i**seçin ve ardından arama kutusuna Azure SQL yazın. (İsteğe bağlı) En beğenilebilmek için **Azure SQL'in** yanındaki yıldızı seçin ve sol gezintiye öğe olarak ekleyin. 
+1. Failover grubuna eklemek istediğiniz tek veritabanını seçin. 
+1. **Sunucunun** ayarlarını açmak için Sunucu adı altında sunucunun adını seçin.
 
-   ![Tek veritabanı için açık sunucu](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+   ![Tek db için açık sunucu](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve sonra yeni bir yük devretme grubu oluşturmak için **Grup Ekle** ' yi seçin. 
+1. **Ayarlar** bölmesinin altındaki **Failover gruplarını** seçin ve ardından yeni bir başarısız grup oluşturmak için **Grup Ekle'yi** seçin. 
 
-    ![Yeni Yük devretme grubu Ekle](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![Yeni başarısız grup ekleme](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. **Yük devretme grubu** sayfasında, gerekli değerleri girin veya seçin ve ardından **Oluştur**' u seçin.
+1. **Failover Grubu** sayfasında, gerekli değerleri girin veya seçin ve sonra **Oluştur'u**seçin.
 
-   - **Grup Içindeki veritabanları**: yük devretme grubunuza eklemek istediğiniz veritabanını seçin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
+   - **Grup içindeki veritabanları**: Failover grubuna eklemek istediğiniz veritabanını seçin. Veritabanının başarısız gruba eklenmesi, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
         
-    ![SQL DB 'yi yük devretme grubuna ekle](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![Başarısız gruba SQL DB ekleme](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınızı buna ekleyin. 
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+PowerShell'i kullanarak başarısız grubunuzu oluşturun ve tek veritabanınızı buna ekleyin. 
 
    ```powershell-interactive
    $subscriptionId = "<SubscriptionID>"
@@ -105,35 +105,35 @@ Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınız�
 
 ### <a name="test-failover"></a>Yük devretme testi 
 
-Azure portal veya PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
+Azure portalını veya PowerShell'i kullanarak başarısız grubunuzun başarısız olup bittiğini test edin. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin. 
+Azure portalını kullanarak başarısız grubunuzun başarısız olduğunu test edin. 
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
-1. Yük devretme grubuna eklemek istediğiniz tek veritabanını seçin. 
+1. [Azure portalının](https://portal.azure.com)sol menüsünde **Azure SQL'i** seçin. **Azure SQL** listede yoksa, **Tüm hizmetler'i**seçin ve ardından arama kutusuna Azure SQL yazın. (İsteğe bağlı) En beğenilebilmek için **Azure SQL'in** yanındaki yıldızı seçin ve sol gezintiye öğe olarak ekleyin. 
+1. Failover grubuna eklemek istediğiniz tek veritabanını seçin. 
 
-   ![Tek veritabanı için açık sunucu](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+   ![Tek db için açık sunucu](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve ardından yeni oluşturduğunuz yük devretme grubunu seçin. 
+1. **Ayarlar** bölmesinin altındaki **Failover gruplarını** seçin ve ardından yeni oluşturduğunuz başarısız grubu seçin. 
   
-   ![Portaldan yük devretme grubunu seçin](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
+   ![Portaldan başarısız grubu seçin](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
-1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. 
-1. Tek veritabanınızı içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin. 
-1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin. 
+1. Hangi sunucunun birincil ve hangi sunucunun ikincil olduğunu gözden geçirin. 
+1. Tek veritabanınızı içeren failover grubunuzun üzerinde başarısız olmak için görev bölmesinden **Failover'ı** seçin. 
+1. TDS oturumlarının bağlantısının kesilmeyeceğini size belirten uyarıda **Evet'i** seçin. 
 
-   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
+   ![SQL veritabanınızı içeren başarısız grubunuzun üzerinde başarısız olun](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
-1. Hangi sunucunun artık birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır. 
-1. Sunucuları ilk rollerine geri dönmek için **Yük devretmeyi** yeniden seçin. 
+1. Hangi sunucunun artık birincil ve hangi sunucunun ikincil olduğunu gözden geçirin. Failover başarılı olduysa, iki sunucu rolleri değiş tokuş etmiş olmalıdır. 
+1. Sunucuları asıl rollerine geri getirmek için **Failover'ı** yeniden seçin. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.  
+PowerShell'i kullanarak başarısız grubunuzun başarısız olduğunu test edin.  
 
-İkincil çoğaltmanın rolünü kontrol edin: 
+İkincil yinelemenin rolünü denetleyin: 
 
    ```powershell-interactive
    # Set variables
@@ -148,7 +148,7 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
       -ResourceGroupName $resourceGroupName `
       -ServerName $drServerName).ReplicationRole
    ```
-İkincil sunucuya Yük devret: 
+İkincil sunucuya başarısız olabilir: 
 
    ```powershell-interactive
    # Set variables
@@ -165,7 +165,7 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
    Write-host "Failed failover group to successfully to" $drServerName 
    ```
 
-Yük devretme grubunu birincil sunucuya geri çevir:
+Failover grubunu birincil sunucuya geri döndürün:
 
    ```powershell-interactive
    # Set variables
@@ -185,45 +185,45 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 ---
 
 > [!IMPORTANT]
-> İkincil veritabanını silmeniz gerekiyorsa, silmeden önce yük devretme grubundan kaldırın. İkincil bir veritabanının yük devretme grubundan kaldırılmadan önce silinmesi öngörülemeyen davranışlara neden olabilir. 
+> İkincil veritabanını silmeniz gerekiyorsa, silmeden önce veritabanını failover grubundan kaldırın. Başarısız gruptan kaldırılmadan önce ikincil bir veritabanının silinmesi öngörülemeyen davranışlara neden olabilir. 
 
 ## <a name="elastic-pool"></a>Elastik havuz
-Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna bir elastik havuz ekleyin.  
+Azure portalını veya PowerShell'i kullanarak başarısız grubu oluşturun ve ona elastik bir havuz ekleyin.  
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki önkoşulları göz önünde bulundurun:
+Aşağıdaki ön koşulları göz önünde bulundurun:
 
-- İkincil sunucu için sunucu oturumu açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir. 
+- İkincil sunucunun sunucu girişi ve güvenlik duvarı ayarları birincil sunucunuzunkiyle eşleşmelidir. 
 
-### <a name="create-the-failover-group"></a>Yük devretme grubu oluşturma 
+### <a name="create-the-failover-group"></a>Başarısız grup oluşturma 
 
-Azure portal veya PowerShell kullanarak elastik havuzunuz için yük devretme grubu oluşturun. 
+Azure portalını veya PowerShell'i kullanarak esnek havuzunuz için başarısız grup oluşturun. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Yük devretme grubunuzu oluşturun ve Azure portal kullanarak elastik havuzunuzu ekleyin.
+Azure portalını kullanarak başarısız grubunuzu oluşturun ve elastik havuzunuzu ekleyin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
-1. Yük devretme grubuna eklemek istediğiniz elastik havuzu seçin. 
-1. **Genel bakış** bölmesinde sunucu **adı** bölümünde sunucu adı ' nı seçerek sunucu ayarlarını açın.
+1. [Azure portalının](https://portal.azure.com)sol menüsünde **Azure SQL'i** seçin. **Azure SQL** listede yoksa, **Tüm hizmetler'i**seçin ve ardından arama kutusuna Azure SQL yazın. (İsteğe bağlı) En beğenilebilmek için **Azure SQL'in** yanındaki yıldızı seçin ve sol gezintiye öğe olarak ekleyin. 
+1. Başarısız gruba eklemek istediğiniz elastik havuzu seçin. 
+1. Genel **Bakış** bölmesindeki sunucunun ayarlarını açmak için Sunucu adı altında **sunucunun** adını seçin.
   
-    ![Elastik havuz için sunucu açma](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![Elastik havuz için açık sunucu](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve sonra yeni bir yük devretme grubu oluşturmak için **Grup Ekle** ' yi seçin. 
+1. **Ayarlar** bölmesinin altındaki **Failover gruplarını** seçin ve ardından yeni bir başarısız grup oluşturmak için **Grup Ekle'yi** seçin. 
 
-    ![Yeni Yük devretme grubu Ekle](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![Yeni başarısız grup ekleme](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. **Yük devretme grubu** sayfasında, gerekli değerleri girin veya seçin ve ardından **Oluştur**' u seçin. Yeni bir ikincil sunucu oluşturun ya da var olan bir ikincil sunucuyu seçin. 
+1. **Failover Grubu** sayfasında, gerekli değerleri girin veya seçin ve sonra **Oluştur'u**seçin. Yeni bir ikincil sunucu oluşturun veya varolan bir ikincil sunucu seçin. 
 
-1. **Grup Içindeki veritabanları** ' nı seçin ve ardından yük devretme grubuna eklemek istediğiniz elastik havuzu seçin. İkincil sunucuda zaten elastik bir havuz yoksa, ikincil sunucuda esnek havuz oluşturmanızı isteyen bir uyarı görüntülenir. Uyarıyı seçin ve ardından ikincil sunucuda elastik havuzu oluşturmak için **Tamam** ' ı seçin. 
+1. **Grup içindeki Veritabanları'nı** seçin ve ardından failover grubuna eklemek istediğiniz esnek havuzu seçin. İkincil sunucuda zaten elastik bir havuz yoksa, ikincil sunucuda elastik bir havuz oluşturmanızı isteyen bir uyarı görüntülenir. Uyarıyı seçin ve ardından ikincil sunucuda elastik havuz oluşturmak için **Tamam'ı** seçin. 
         
-    ![Esnek havuzu yük devretme grubuna ekle](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Başarısız gruba elastik havuz ekleme](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. Elastik havuz ayarlarınızı yük devretme grubuna uygulamak için **Seç** ' i seçin ve ardından yük devretme grubunuzu oluşturmak için **Oluştur** ' u seçin. Elastik havuzun yük devretme grubuna eklenmesi, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
+1. Elastik havuz ayarlarınızı başarısız gruba uygulamak için **Seç'i** seçin ve ardından başarısız grubunuzu oluşturmak için **Oluştur'u** seçin. Başarısız gruba elastik havuz eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Yük devretme grubunuzu oluşturun ve PowerShell kullanarak elastik havuzunuzu ekleyin. 
+PowerShell'i kullanarak başarısız grubunuzu oluşturun ve elastik havuzunuzu ekleyin. 
 
    ```powershell-interactive
    $subscriptionId = "<SubscriptionID>"
@@ -269,35 +269,35 @@ Yük devretme grubunuzu oluşturun ve PowerShell kullanarak elastik havuzunuzu e
 
 ### <a name="test-failover"></a>Yük devretme testi
 
-Azure portal veya PowerShell kullanarak elastik havuzunuzun yük devretmesini test edin. 
+Azure portalını veya PowerShell'i kullanarak elastik havuzunuzun başarısız olup olmamasını test edin. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Yük devretme grubunuzu ikincil sunucuya devreder ve Azure portal kullanarak yeniden devreder. 
+Başarısız grupunuzu ikincil sunucuya getirin ve Azure portalını kullanarak başarısız olun. 
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
-1. Yük devretme grubuna eklemek istediğiniz elastik havuzu seçin. 
-1. **Genel bakış** bölmesinde sunucu **adı** bölümünde sunucu adı ' nı seçerek sunucu ayarlarını açın.
+1. [Azure portalının](https://portal.azure.com)sol menüsünde **Azure SQL'i** seçin. **Azure SQL** listede yoksa, **Tüm hizmetler'i**seçin ve ardından arama kutusuna Azure SQL yazın. (İsteğe bağlı) En beğenilebilmek için **Azure SQL'in** yanındaki yıldızı seçin ve sol gezintiye öğe olarak ekleyin. 
+1. Başarısız gruba eklemek istediğiniz elastik havuzu seçin. 
+1. Genel **Bakış** bölmesindeki sunucunun ayarlarını açmak için Sunucu adı altında **sunucunun** adını seçin.
   
-    ![Elastik havuz için sunucu açma](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
-1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve ardından Bölüm 2 ' de oluşturduğunuz yük devretme grubunu seçin. 
+    ![Elastik havuz için açık sunucu](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+1. **Ayarlar** bölmesinin altındaki **Failover gruplarını** seçin ve ardından bölüm 2'de oluşturduğunuz başarısız grubu seçin. 
   
-   ![Portaldan yük devretme grubunu seçin](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
+   ![Portaldan başarısız grubu seçin](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
-1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. 
-1. Elastik havuzunuzu içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin. 
-1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin. 
+1. Hangi sunucunun birincil, hangi sunucunun ikincil olduğunu gözden geçirin. 
+1. Elastik havuzunuzu içeren failover grubunuzda başarısız olmak için görev bölmesinden **Failover'ı** seçin. 
+1. TDS oturumlarının bağlantısının kesilmeyeceğini size belirten uyarıda **Evet'i** seçin. 
 
-   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
+   ![SQL veritabanınızı içeren başarısız grubunuzun üzerinde başarısız olun](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
-1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır. 
-1. Yük devretme grubundan özgün ayarlara geri dönmek için **Yük devretmeyi** yeniden seçin. 
+1. Hangi sunucunun birincil, hangi sunucunun ikincil olduğunu gözden geçirin. Failover başarılı olduysa, iki sunucu rolleri değiş tokuş etmiş olmalıdır. 
+1. Failover grubunu orijinal ayarlara geri getirmek için **failover'ı** yeniden seçin. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
+PowerShell'i kullanarak başarısız grubunuzun başarısız olduğunu test edin.
 
-İkincil çoğaltmanın rolünü kontrol edin: 
+İkincil yinelemenin rolünü denetleyin: 
 
    ```powershell-interactive
    # Set variables
@@ -313,7 +313,7 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
       -ServerName $drServerName).ReplicationRole
    ```
 
-İkincil sunucuya Yük devret: 
+İkincil sunucuya başarısız olabilir: 
 
    ```powershell-interactive
    # Set variables
@@ -333,66 +333,66 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 ---
 
 > [!IMPORTANT]
-> İkincil veritabanını silmeniz gerekiyorsa, silmeden önce yük devretme grubundan kaldırın. İkincil bir veritabanının yük devretme grubundan kaldırılmadan önce silinmesi öngörülemeyen davranışlara neden olabilir. 
+> İkincil veritabanını silmeniz gerekiyorsa, silmeden önce veritabanını failover grubundan kaldırın. Başarısız gruptan kaldırılmadan önce ikincil bir veritabanının silinmesi öngörülemeyen davranışlara neden olabilir. 
 
 ## <a name="managed-instance"></a>Yönetilen örnek
 
-Azure portal veya PowerShell kullanarak iki yönetilen örnek arasında bir yük devretme grubu oluşturun. 
+Azure portalını veya PowerShell'i kullanarak yönetilen iki örnek arasında bir başarısız lık grubu oluşturun. 
 
-Her bir yönetilen örneğin sanal ağı için [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmanız veya ağ geçidi oluşturmanız gerekir, iki ağ geçidini birbirine bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir. 
+[ExpressRoute'u](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) yapılandırmanız veya yönetilen her örneğin sanal ağı için bir ağ geçidi oluşturmanız, iki ağ geçidini bağlamanız ve ardından başarısız grup oluşturmanız gerekir. 
 
-### <a name="prerequisites"></a>Önkoşullar
-Aşağıdaki önkoşulları göz önünde bulundurun:
+### <a name="prerequisites"></a>Ön koşullar
+Aşağıdaki ön koşulları göz önünde bulundurun:
 
 - İkincil yönetilen örnek boş olmalıdır.
-- İkincil sanal ağın alt ağ aralığı, birincil sanal ağın alt ağ aralığıyla çakışmamalıdır. 
-- İkincil örneğin harmanlama ve saat dilimi, birincil örnekteki ile aynı olmalıdır. 
-- İki ağ geçidini bağlarken, **paylaşılan anahtar** her iki bağlantı için de aynı olmalıdır. 
+- İkincil sanal ağ için alt ağ aralığı birincil sanal ağın alt ağ aralığıyla örtüşmemelidir. 
+- İkincil örneğin harmanlama ve saat dilimi birincil örneğinkiyle eşleşmelidir. 
+- İki ağ geçidini bağlarken, **Paylaşılan Anahtar** her iki bağlantı için de aynı olmalıdır. 
 
-### <a name="create-primary-virtual-network-gateway"></a>Birincil sanal ağ geçidi oluştur 
+### <a name="create-primary-virtual-network-gateway"></a>Birincil sanal ağ ağ geçidi oluşturma 
 
-[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)'u yapılandırmadıysanız Azure Portal veya PowerShell ile birincil sanal ağ geçidini oluşturabilirsiniz. 
+[ExpressRoute'u](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)yapılandırmadıysanız, Azure portalı veya PowerShell ile birincil sanal ağ ağ geçidini oluşturabilirsiniz. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak birincil sanal ağ geçidini oluşturun. 
+Azure portalını kullanarak birincil sanal ağ ağ ağ geçidini oluşturun. 
 
-1. [Azure Portal](https://portal.azure.com), kaynak grubunuza gidin ve birincil yönetilen örneğiniz için **sanal ağ** kaynağını seçin. 
-1. **Ayarlar** altında **alt ağlar** ' ı seçin ve ardından yeni bir **ağ geçidi alt ağı**eklemeyi seçin. Varsayılan değerleri bırakın. 
+1. Azure [portalında,](https://portal.azure.com)kaynak grubunuza gidin ve birincil yönetilen örneğiniz için **Sanal ağ** kaynağını seçin. 
+1. **Ayarlar'ın** altındaki **Alt Ağları** seçin ve ardından yeni bir Ağ Geçidi **alt ağı**eklemek için seçin. Varsayılan değerleri bırakın. 
 
-   ![Birincil yönetilen örnek için ağ geçidi ekle](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
+   ![Birincil yönetilen örnek için ağ geçidi ekleme](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve arama kutusuna `Virtual network gateway` yazın. **Microsoft**tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin. 
+1. Alt ağ geçidi oluşturulduktan sonra, sol gezinti bölmesinden kaynak `Virtual network gateway` **oluştur'u** seçin ve ardından arama kutusuna yazın. **Microsoft**tarafından yayınlanan **Sanal ağ ağ ağ** geçidi kaynağını seçin. 
 
-   ![Yeni bir sanal ağ geçidi oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
+   ![Yeni bir sanal ağ ağ geçidi oluşturma](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
-1. Birincil yönetilen örneğinizin ağ geçidini yapılandırmak için gerekli alanları doldurun. 
+1. Ağ geçidini yapılandırmak için gereken alanları birincil yönetilen örneğini doldurun. 
 
-   Aşağıdaki tabloda, birincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
+   Aşağıdaki tablo, birincil yönetilen örnek için ağ geçidi için gerekli değerleri gösterir:
  
     | **Alan** | Değer |
     | --- | --- |
-    | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
-    | **Ad** | Sanal ağ geçidinizin adı. | 
-    | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
-    | **Ağ Geçidi türü** | **VPN**' yi seçin. |
-    | **VPN türü** | **Rota tabanlı** seçin |
-    | **SKU**| `VpnGw1`varsayılan olarak bırakın. |
-    | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
+    | **Abonelik** |  Birincil yönetilen örneğinizin olduğu abonelik. |
+    | **Adı** | Sanal ağ ağ geçidinizin adı. | 
+    | **Bölge** | İkincil yönetilen örneğinizin olduğu bölge. |
+    | **Ağ geçidi türü** | **VPN'i**seçin. |
+    | **VPN Türü** | **Rota Tabanlı'yı** seçin |
+    | **Sku**| Varsayılan ı `VpnGw1`bırakın. |
+    | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın olduğu konum.   |
     | **Sanal ağ**| İkincil yönetilen örneğiniz için sanal ağı seçin. |
     | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
     | **Genel IP adresi adı**| IP adresiniz için bir ad girin. |
     | &nbsp; | &nbsp; |
 
-1. Diğer değerleri varsayılan olarak bırakın ve sonra sanal ağ geçidinizin ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
+1. Diğer değerleri varsayılan olarak bırakın ve ardından sanal ağ ağ ağ geçidinizin ayarlarını gözden geçirmek için **Gözden Geçir + oluştur'u** seçin.
 
    ![Birincil ağ geçidi ayarları](media/sql-database-managed-instance-failover-group-tutorial/settings-for-primary-gateway.png)
 
-1. Yeni sanal ağ geçidinizi oluşturmak için **Oluştur** ' u seçin. 
+1. Yeni sanal ağ ağ ağınızı oluşturmak için **Oluştur'u** seçin. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-PowerShell kullanarak birincil sanal ağ geçidini oluşturun. 
+PowerShell'i kullanarak birincil sanal ağ ağ ağ geçidini oluşturun. 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -422,34 +422,34 @@ PowerShell kullanarak birincil sanal ağ geçidini oluşturun.
 
 ---
 
-### <a name="create-secondary-virtual-network-gateway"></a>İkincil sanal ağ geçidi oluştur
+### <a name="create-secondary-virtual-network-gateway"></a>İkincil sanal ağ ağ geçidi oluşturma
 
-Azure portal veya PowerShell kullanarak ikincil sanal ağ geçidini oluşturun. 
+Azure portalını veya PowerShell'i kullanarak ikincil sanal ağ ağ ağ geçidini oluşturun. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-İkinci yönetilen örnek için sanal ağ alt ağını ve ağ geçidini oluşturmak üzere önceki bölümdeki adımları yineleyin. İkincil yönetilen örneğiniz için ağ geçidini yapılandırmak üzere gerekli alanları doldurun. 
+İkincil yönetilen örnek için sanal ağ alt ağı ve ağ geçidi oluşturmak için önceki bölümdeki adımları yineleyin. İkincil yönetilen örneğiniz için ağ geçidini yapılandırmak için gerekli alanları doldurun. 
 
-   Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
+   Aşağıdaki tablo, ikincil yönetilen örnek için ağ geçidi için gerekli değerleri gösterir:
 
    | **Alan** | Değer |
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
-   | **Ad** | `secondary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
-   | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
-   | **Ağ Geçidi türü** | **VPN**' yi seçin. |
-   | **VPN türü** | **Rota tabanlı** seçin |
-   | **SKU**| `VpnGw1`varsayılan olarak bırakın. |
-   | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
-   | **Sanal ağ**| Bölüm 2 ' de oluşturulan sanal ağı seçin, örneğin `vnet-sql-mi-secondary`. |
+   | **Adı** | Sanal ağ ağ ağ geçidinizin adı, örneğin. `secondary-mi-gateway` | 
+   | **Bölge** | İkincil yönetilen örneğinizin olduğu bölge. |
+   | **Ağ geçidi türü** | **VPN'i**seçin. |
+   | **VPN Türü** | **Rota Tabanlı'yı** seçin |
+   | **Sku**| Varsayılan ı `VpnGw1`bırakın. |
+   | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın olduğu konum.   |
+   | **Sanal ağ**| Bölüm 2'de oluşturulan sanal ağı seçin. `vnet-sql-mi-secondary` |
    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
-   | **Genel IP adresi adı**| IP adresiniz için `secondary-gateway-IP`gibi bir ad girin. |
+   | **Genel IP adresi adı**| IP adresiniz için bir ad `secondary-gateway-IP`girin, örneğin. |
    | &nbsp; | &nbsp; |
 
    ![İkincil ağ geçidi ayarları](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-PowerShell kullanarak ikincil sanal ağ geçidini oluşturun. 
+PowerShell'i kullanarak ikincil sanal ağ ağ ağ geçidini oluşturun. 
 
    ```powershell-interactive
    $secondaryResourceGroupName = "<Secondary-Resource-Group>"
@@ -482,37 +482,37 @@ PowerShell kullanarak ikincil sanal ağ geçidini oluşturun.
 
 
 ### <a name="connect-the-gateways"></a>Ağ geçitlerini bağlama 
-Azure portal veya PowerShell kullanarak iki ağ geçidi arasında bağlantı oluşturun. 
+Azure portalını veya PowerShell'i kullanarak iki ağ geçidi arasında bağlantılar oluşturun. 
 
-İki bağlantı oluşturulması gerekir-birincil ağ geçidinden ikincil ağ geçidine bağlantı ve sonra ikincil ağ geçidinden birincil ağ geçidine bağlantı. 
+İki bağlantı oluşturulması gerekir : birincil ağ geçidinden ikincil ağ geçidine bağlantı ve ardından ikincil ağ geçidinden birincil ağ geçidine bağlantı. 
 
 Her iki bağlantı için de kullanılan paylaşılan anahtar her bağlantı için aynı olmalıdır. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Azure portal kullanarak iki ağ geçidi arasında bağlantı oluşturun. 
+Azure portalını kullanarak iki ağ geçidi arasında bağlantılar oluşturun. 
 
-1. Azure portal **kaynak oluştur** ' u seçin [](https://portal.azure.com).
-1. Arama kutusuna `connection` yazın ve ardından arama yapmak için ENTER tuşuna basın ve Microsoft tarafından yayımlanan **bağlantı** kaynağına gidersiniz.
-1. Bağlantınızı oluşturmak için **Oluştur** ' u seçin. 
-1. **Temel bilgiler** sekmesinde, aşağıdaki değerleri seçip **Tamam**' ı seçin. 
-    1. **Bağlantı türü**için `VNet-to-VNet` seçin. 
+1. [Azure portalından](https://portal.azure.com) **kaynak oluştur'u** seçin.
+1. Arama `connection` kutusuna yazın ve ardından arama için enter tuşuna basın, bu da sizi Microsoft tarafından yayınlanan **Bağlantı** kaynağına götürür.
+1. Bağlantınızı oluşturmak için **Oluştur'u** seçin. 
+1. Temel **bilgiler** sekmesinde, aşağıdaki değerleri seçin ve sonra **Tamam'ı**seçin. 
+    1. Bağlantı `VNet-to-VNet` **türü**için seçin. 
     1. Açılan listeden aboneliğinizi seçin. 
-    1. Açılan kutuda yönetilen örneğiniz için kaynak grubunu seçin. 
-    1. Açılan listeden birincil yönetilen örneğinizin konumunu seçin 
-1. **Ayarlar** sekmesinde, aşağıdaki değerleri seçin veya girin ve sonra **Tamam**' ı seçin:
-    1. **İlk sanal ağ geçidi**için `Primary-Gateway`gibi birincil ağ geçidini seçin.  
-    1. **İkinci sanal ağ geçidi**için `Secondary-Gateway`gibi ikincil ağ geçidini seçin. 
-    1. **Çift yönlü bağlantı oluştur**' un yanındaki onay kutusunu işaretleyin. 
-    1. Varsayılan birincil bağlantı adını bırakın ya da seçtiğiniz bir değerle yeniden adlandırın. 
-    1. Bağlantı için `mi1m2psk`gibi bir **paylaşılan anahtar (PSK)** sağlayın. 
+    1. Açılan yolda yönetilen örneğiniz için kaynak grubunu seçin. 
+    1. Açılır noktadan birincil yönetilen örneğinizin konumunu seçin 
+1. **Ayarlar** sekmesinde aşağıdaki değerleri seçin veya girin ve sonra **Tamam'ı**seçin:
+    1. İlk sanal ağ ağ ağ geçidi için `Primary-Gateway`birincil ağ ağ ağ **geçidini**seçin (  
+    1. İkinci sanal ağ ağ geçidi için ikincil `Secondary-Gateway`ağ ağ ağ **geçidini**seçin ( 
+    1. Çift yönlü bağlantı **oluştur'un**yanındaki onay kutusunu seçin. 
+    1. Varsayılan birincil bağlantı adını bırakın veya seçtiğiniz bir değerle yeniden adlandırın. 
+    1. Bağlantı için paylaşılan bir **anahtar (PSK)** sağlayın, örneğin. `mi1m2psk` 
 
-   ![Ağ Geçidi bağlantısı oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
+   ![Ağ geçidi bağlantısı oluşturma](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. **Özet** sekmesinde, çift yönlü bağlantınızın ayarlarını gözden geçirin ve ardından bağlantıyı oluşturmak için **Tamam** ' ı seçin. 
+1. **Özet** sekmesinde, çift yönlü bağlantınızın ayarlarını gözden geçirin ve ardından bağlantınızı oluşturmak için **Tamam'ı** seçin. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-PowerShell kullanarak iki ağ geçidi arasında bağlantı oluşturun. 
+PowerShell'i kullanarak iki ağ geçidi arasında bağlantılar oluşturun. 
 
    ```powershell-interactive
    $vpnSharedKey = "mi1mi2psk"
@@ -543,28 +543,28 @@ PowerShell kullanarak iki ağ geçidi arasında bağlantı oluşturun.
 
 ---
 
-### <a name="create-the-failover-group"></a>Yük devretme grubu oluşturma 
-Azure portal veya PowerShell 'i kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturun. 
+### <a name="create-the-failover-group"></a>Başarısız grup oluşturma 
+Azure portalını veya PowerShell'i kullanarak yönetilen örnekleriniz için başarısız lık grubu oluşturun. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturun. 
+Azure portalını kullanarak yönetilen örnekleriniz için başarısız lık grubu oluşturun. 
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
-1. Yük devretme grubuna eklemek istediğiniz birincil yönetilen örneği seçin.  
-1. **Ayarlar**altında, **örnek yük devretme grupları** ' na gidin ve sonra **örnek yük devretme grubu** sayfasını açmak için **Grup Ekle** ' yi seçin. 
+1. [Azure portalının](https://portal.azure.com)sol menüsünde **Azure SQL'i** seçin. **Azure SQL** listede yoksa, **Tüm hizmetler'i**seçin ve ardından arama kutusuna Azure SQL yazın. (İsteğe bağlı) En beğenilebilmek için **Azure SQL'in** yanındaki yıldızı seçin ve sol gezintiye öğe olarak ekleyin. 
+1. Başarısız gruba eklemek istediğiniz birincil yönetilen örneği seçin.  
+1. **Ayarlar** **altında, Örnek Failover Grupları'na** gidin ve ardından **Örnek Failover Grubu** sayfasını açmak için grup **eklemeyi** seçin. 
 
-   ![Yük devretme grubu ekleme](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
+   ![Bir başarısız grup ekleme](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
 
-1. **Örnek yük devretme grubu** sayfasında, yük devretme grubunuzun adını yazın ve ardından açılan listeden ikincil yönetilen örneği seçin. Yük devretme grubunuzu oluşturmak için **Oluştur** ' u seçin. 
+1. Instance **Failover Group** sayfasında, başarısız grubunuzun adını yazın ve ardından açılan alttan ikincil yönetilen örneği seçin. Başarısız grupoluşturmak için **Oluştur'u** seçin. 
 
-   ![Yük devretme grubu oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-failover-group.png)
+   ![Başarısız grup oluşturma](media/sql-database-managed-instance-failover-group-tutorial/create-failover-group.png)
 
-1. Yük devretme grubu dağıtımı tamamlandıktan sonra, **Yük devretme grubu** sayfasına geri yönlendirilirsiniz. 
+1. Başarısız grup dağıtımı tamamlandıktan sonra **Failover grup** sayfasına geri götürülür. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-PowerShell kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturun. 
+PowerShell'i kullanarak yönetilen örnekleriniz için başarısız grup oluşturun. 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -586,27 +586,27 @@ PowerShell kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturu
 
 ### <a name="test-failover"></a>Yük devretme testi
 
-Azure portal veya PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
+Azure portalını veya PowerShell'i kullanarak başarısız grubunuzun başarısız olup bittiğini test edin. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin. 
+Azure portalını kullanarak başarısız grubunuzun başarısız olduğunu test edin. 
 
-1. [Azure Portal](https://portal.azure.com) içinde _İkincil_ yönetilen örneğinize gidin ve ayarlar altında **örnek yük devretme grupları** ' nı seçin. 
-1. Hangi yönetilen örnek birincil olduğunu ve hangi yönetilen örnek ikincil olduğunu gözden geçirin. 
-1. **Yük devretme** ' yı seçin ve sonra kesilmekte olan tds oturumlarının uyarısında **Evet** ' i seçin. 
+1. [Azure portalındaki](https://portal.azure.com) _ikincil_ yönetilen örneğinize gidin ve ayarlar altında **Örnek Failover Grupları'nı** seçin. 
+1. Yönetilen örneğin birincil, yönetilen örneğin ikincil olduğu gözden geçirin. 
+1. **Failover'ı** seçin ve ardından TDS oturumlarının bağlantısının kesildiğine dair uyarıda **Evet'i** seçin. 
 
-   ![Yük devretme grubu yükünü devreder](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
+   ![Başarısız grup üzerinde başarısız](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
 
-1. Hangi manşlı örneğin birincil olduğunu ve hangi örneğin ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa, iki örnek anahtarlamalı rollere sahip olmalıdır. 
+1. Hangi manged örneğin birincil ve hangi örnek ikincil olduğunu gözden geçirin. Başarısız başarılı olduysa, iki örnek rolleri değiştirmiş olmalıdır. 
 
-   ![Yönetilen örnekler, yük devretmeden sonra rolleri değiştirdi](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
+   ![Yönetilen örnekler, başarısız olduktan sonra rolleri değiştirdi](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Yeni _İkincil_ yönetilen örneğe gidin ve birincil örnek birincil role geri dönmek Için **Yük devretmeyi** bir kez daha seçin. 
+1. Yeni _ikincil_ yönetilen örneğe gidin ve birincil örneği birincil role geri başarısız olmak için **failover'ı** bir kez daha seçin. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
+PowerShell'i kullanarak başarısız grubunuzun başarısız olduğunu test edin. 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -644,24 +644,24 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
 ---
 
-## <a name="locate-listener-endpoint"></a>Dinleyici uç noktasını bul
+## <a name="locate-listener-endpoint"></a>Dinleyici bitiş noktasını bulma
 
-Yük devretme grubunuz yapılandırıldıktan sonra, uygulamanız için bağlantı dizesini dinleyici uç noktasına güncelleştirin. Bu işlem, uygulamanızı birincil veritabanı, elastik havuz veya yönetilen örnek yerine yük devretme grubu dinleyicisine bağlı tutar. Bu şekilde, Azure SQL veritabanı varlığınızın her seferinde bağlantı dizesini el ile güncelleştirmeniz gerekmez ve trafik şu anda birincil olan varlığa yönlendirilir. 
+Başarısız grubunuzun yapılandırılmasından sonra, uygulamanızın bağlantı dizesini dinleyici bitiş noktasına güncelleyin. Bu, uygulamanızı birincil veritabanı, elastik havuz veya yönetilen örnek yerine failover grubu dinleyicisine bağlı tutar. Bu şekilde, Azure SQL veritabanı varlığınız her başarısız olduğunda bağlantı dizesini el ile güncelleştirmeniz gerekemez ve trafik şu anda birincil olan varlık hangisine yönlendirilir. 
 
-Dinleyici uç noktası `fog-name.database.windows.net`biçimindedir ve Azure portal, yük devretme grubu görüntülenirken görünür:
+Dinleyici bitiş noktası `fog-name.database.windows.net`, ' şeklindedir ve başarısız grubu görüntülerken Azure portalında görülebilir:
 
-![Yük devretme grubu bağlantı dizesi](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
+![Failover grubu bağlantı dizesi](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Tek veya havuza alınmış bir veritabanının yük devretme grubunu kaldırmak çoğaltmayı durdurmaz ve çoğaltılan veritabanını silmez. Bir yük devretme grubuna kaldırıldıktan sonra tek veya havuza alınmış bir veritabanı eklemek istiyorsanız Coğrafi çoğaltmayı el ile durdurmanız ve veritabanını ikincil sunucudan silmeniz gerekir. Bunun yapılması, veritabanının yük devretme grubuna eklenmeye çalışıldığında `The operation cannot be performed due to multiple errors` benzer bir hata oluşmasına neden olabilir. 
+- Tek veya havuza girilen bir veritabanı için bir hata grubu kaldırmak çoğaltmayı durdurmaz ve çoğaltılan veritabanını silmez. Tek bir veya havuzlu veritabanıkaldırıldıktan sonra bir başarısız gruba geri eklemek istiyorsanız, coğrafi çoğaltmayı el ile durdurmanız ve veritabanını ikincil sunucudan silmeniz gerekir. Her iki şeyi de yapmamak, `The operation cannot be performed due to multiple errors` veritabanını başarısız gruba eklemeye çalışırken benzer bir hataya neden olabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yük devretme grubunu yapılandırma hakkında ayrıntılı adımlar için aşağıdaki öğreticilere bakın:
-- [Yük devretme grubuna tek bir veritabanı ekleme](sql-database-single-database-failover-group-tutorial.md)
-- [Bir yük devretme grubuna elastik havuz ekleme](sql-database-elastic-pool-failover-group-tutorial.md)
-- [Yönetilen örnekleri bir yük devretme grubuna ekle](sql-database-managed-instance-failover-group-tutorial.md)
+Bir başarısız grubu yapılandıran ayrıntılı adımlar için aşağıdaki öğreticilere bakın:
+- [Bir başarısız gruba tek bir veritabanı ekleme](sql-database-single-database-failover-group-tutorial.md)
+- [Yük devretme grubuna bir elastik havuz ekleme](sql-database-elastic-pool-failover-group-tutorial.md)
+- [Yönetilen örnekleri bir başarısız gruba ekleme](sql-database-managed-instance-failover-group-tutorial.md)
  
-Azure SQL veritabanı yüksek kullanılabilirlik seçeneklerine genel bakış için bkz. [coğrafi çoğaltma](sql-database-active-geo-replication.md) ve [otomatik yük devretme grupları](sql-database-auto-failover-group.md). 
+Azure SQL Veritabanı yüksek kullanılabilirlik seçeneklerine genel bakış [için, coğrafi çoğaltma](sql-database-active-geo-replication.md) ve [otomatik hata gruplarına](sql-database-auto-failover-group.md)bakın. 

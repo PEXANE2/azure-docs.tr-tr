@@ -1,50 +1,50 @@
 ---
-title: Azure Izleyici 'de basit Günlükler deneyimi (Önizleme) | Microsoft Docs
-description: Basit Günlükler deneyimi, Azure Izleyici 'de doğrudan KQL ile etkileşimde bulunmadan temel sorgular oluşturmanızı sağlar.
+title: Azure Monitör'de Basit Günlükler deneyimi (Önizleme) | Microsoft Dokümanlar
+description: Basit Günlükler deneyimi, KQL ile doğrudan etkileşimde kalmadan Azure Monitor'da temel sorgular oluşturmanıza olanak tanır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
 ms.openlocfilehash: 59bcb42edaf7d46498a3514b4f1c919c6e8cc0c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660266"
 ---
-# <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Izleyici 'de basit Günlükler deneyimi (Önizleme)
-Azure Izleyici, KQL dilini kullanarak [günlük sorguları](log-query-overview.md) oluşturmaya yönelik [zengin bir deneyim](get-started-portal.md) sağlar. KQL 'nin tam gücünden birini zorunlu kılabilir ve temel sorgu gereksinimleri için basitleştirilmiş bir deneyim tercih edebilirsiniz. Basit Günlükler deneyimi, doğrudan KQL ile etkileşimde bulunmadan temel sorgular oluşturmanızı sağlar. Daha karmaşık sorgular gerektirdiğinde, KQL için bir öğrenme aracı olarak basit Günlükler de kullanabilirsiniz.
+# <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Monitör'de Basit Günlükler deneyimi (Önizleme)
+Azure Monitor, KQL dilini kullanarak [günlük sorguları](log-query-overview.md) oluşturmak için zengin bir [deneyim](get-started-portal.md) sağlar. KQL'nin tam gücüne ihtiyaç duymayabilir ve temel sorgu gereksinimleri için basitleştirilmiş bir deneyimi tercih edebilirsiniz. Basit Günlükler deneyimi, KQL ile doğrudan etkileşime girmeden temel sorgular oluşturmanıza olanak tanır. Daha karmaşık sorgular gerektirdiğiniz için Basit Günlükleri KQL için bir öğrenme aracı olarak da kullanabilirsiniz.
 
 > [!NOTE]
-> Basit Günlükler Şu anda yalnızca Cosmos DB ve Anahtar kasaları için bir test olarak uygulanır. Lütfen bu özelliği genişletip serbest bırakmamız için lütfen deneyiminizi Microsoft ile [Kullanıcı sesiyle](https://feedback.azure.com/forums/913690-azure-monitor) paylaşabilirsiniz.
+> Basit Günlükler şu anda sadece Cosmos DB ve Key Vaults için bir test olarak uygulanmaktadır. Bu özelliği genişletip yayınlayamayacağımızı belirlememize yardımcı olmak için lütfen [Deneyiminizi Kullanıcı Sesi](https://feedback.azure.com/forums/913690-azure-monitor) aracılığıyla Microsoft ile paylaşın.
 
 
 ## <a name="scope"></a>Kapsam
-Basit Günlükler deneyimi, seçili kaynak için *AzureDiagnostics*, *AzureMetrics*ve *AzureActivity* tablosundan verileri alır. 
+Basit Günlükler deneyimi, seçilen kaynak için *AzureDiagnostics*, *AzureMetrics*ve *AzureActivity* tablosundan veri alır. 
 
-## <a name="using-simple-logs"></a>Basit günlükleri kullanma
-[Log Analytics çalışma alanında günlükleri toplamak için yapılandırılmış tanılama ayarlarıyla](../platform/resource-logs-collect-storage.md)Azure aboneliğinizdeki herhangi bir Cosmos DB veya Key Vault gidin. **İzleme** menüsünde **Günlükler** ' e tıklayarak basit Günlükler deneyimini açın.
+## <a name="using-simple-logs"></a>Basit Günlükleri Kullanma
+[Log Analytics çalışma alanında günlükleri toplamak üzere yapılandırılan tanı ayarlarıyla](../platform/resource-logs-collect-storage.md)Azure aboneliğinizdeki herhangi bir Cosmos DB veya Key Vault'a gidin. Basit **Günlükler** deneyimini açmak için **İzleme** menüsünde Günlükler'i tıklatın.
 
 ![Menü](media/simple-logs/menu.png)
 
-Bir **alan** ve **operatör** seçin ve karşılaştırma için bir **değer** belirtin. **+** ' a tıklayın ve ek ölçütler eklemek için **ve/veya** belirtin.
+Bir **Alan** ve **Operatör** seçin ve karşılaştırma için bir **Değer** belirtin. Ek **+** ölçütler eklemek için **Ve/Veya'yi** tıklatın ve belirtin.
 
 ![Ölçütler](media/simple-logs/criteria.png)
 
-Sorgu sonuçlarını görüntülemek için **Çalıştır** ' a tıklayın.
+Sorgu sonuçlarını görüntülemek için **Çalıştır'ı** tıklatın.
 
-## <a name="view-and-edit-kql"></a>KQL 'i görüntüleme ve düzenleme
-Tam Log Analytics deneyiminde basit Günlükler sorgusu tarafından oluşturulan KQL 'yi açmak için **sorgu Düzenleyicisi** ' ni seçin. 
+## <a name="view-and-edit-kql"></a>KQL'yi görüntüleme ve güncelleme
+Tam Log Analytics deneyiminde Basit Günlükler sorgusu tarafından oluşturulan KQL'yi açmak için **Sorgu düzenleyicisini** seçin. 
 
-![Sorgu Düzenleyicisi](media/simple-logs/query-editor.png)
+![Sorgu düzenleyicisi](media/simple-logs/query-editor.png)
 
-KQL 'i doğrudan düzenleyebilir ve sonuçlarınızı daha da belirginleştirmek için filtreler gibi Log Analytics diğer özellikleri kullanabilirsiniz.
+Sonuçlarınızı daha da hassaslaştırmak için KQL'yi doğrudan dinleyebilir ve Log Analytics'te filtreler gibi diğer özellikleri kullanabilirsiniz.
 
-![KQL 'yi Düzenle](media/simple-logs/edit-kql.png)
+![KQL'yi edit](media/simple-logs/edit-kql.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portal Log Analytics kullanma](get-started-portal.md)öğreticisini doldurun.
-- [Günlük sorguları yazma](get-started-portal.md)hakkında öğreticiyi doldurun.
+- [Azure portalında Log Analytics'i kullanma](get-started-portal.md)yla ilgili bir eğitimi tamamlayın.
+- [Günlük sorguları yazma](get-started-portal.md)bir öğretici tamamlayın.

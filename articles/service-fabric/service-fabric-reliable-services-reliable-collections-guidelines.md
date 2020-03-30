@@ -1,54 +1,54 @@
 ---
-title: Güvenilir koleksiyonlar için yönergeler
-description: Azure Service Fabric uygulamasında güvenilir Service Fabric koleksiyonları kullanmaya yönelik yönergeler ve öneriler.
+title: Güvenilir Koleksiyonlar Için Yönergeler
+description: Hizmet Kumaşı Güvenilir Koleksiyonları bir Azure Hizmet Kumaşı uygulamasında kullanma yönergeleri ve Önerileri.
 ms.topic: conceptual
 ms.date: 12/10/2017
 ms.openlocfilehash: 37c734205877f9e0cb98ef2834462691e8e483d9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645489"
 ---
-# <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric güvenilir koleksiyonlar için yönergeler ve öneriler
-Bu bölüm, güvenilir durum Yöneticisi ve güvenilir koleksiyonlar kullanımına ilişkin yönergeler sağlar. Amaç, kullanıcıların ortak bir şekilde kaçınmasına yardımcı olmaktır.
+# <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Hizmet Kumaşında Güvenilir Koleksiyonlar için yönergeler ve öneriler
+Bu bölümde, Güvenilir Devlet Yöneticisi ve Güvenilir Koleksiyonlar'ın kullanılmasına ilişkin yönergeler verilmektedir. Amaç, kullanıcıların yaygın tuzaklardan kaçınmalarına yardımcı olmaktır.
 
-Yönergeler *, koşullara göre*ön koşul sunan basit öneriler olarak düzenlenir, *göz önünde bulundurun*, *önleyin* ve *Not*edin.
+Kurallar, *Do*, *Göz at,* *Kaçın* ve *Yapma*" terimleri ile önceden belirlenmiş basit öneriler olarak düzenlenir.
 
-* Okuma işlemleri tarafından döndürülen özel türdeki bir nesneyi değiştirmeyin (örneğin, `TryPeekAsync` veya `TryGetValueAsync`). Eşzamanlı Koleksiyonlar gibi güvenilir koleksiyonlar, bir kopya değil, nesnelere bir başvuru döndürür.
-* Değişiklik yapmadan önce özel bir türün döndürülen nesnesini derin olarak kopyalayın. Yapılar ve yerleşik türler değere göre geçiş yaptığından, bunları değiştirmek istediğiniz başvuru türü alanları veya özellikleri içermedikleri takdirde, bunlarda derin bir kopya yapmanız gerekmez.
-* Zaman aşımları için `TimeSpan.MaxValue` kullanmayın. Kilitlenmeleri algılamak için zaman aşımları kullanılmalıdır.
-* İşlem kaydedildikten, durdurulduktan veya atıldıktan sonra bir işlem kullanmayın.
-* İçinde oluşturulduğu işlem kapsamı dışında bir numaralandırma kullanmayın.
-* Kilitlenmeleri neden olabileceğinden, başka bir işlemin `using` deyimindeki bir işlem oluşturmayın.
-* `IReliableStateManager.GetOrAddAsync` ile güvenilir durum oluşturmayın ve güvenilir durumu aynı işlem içinde kullanın. Bu, bir InvalidOperationException ile sonuçlanır.
-* `IComparable<TKey>` uygulamanızın doğru olduğundan emin olun. Sistem, denetim noktaları ve satırları birleştirmek için `IComparable<TKey>` bağımlılığı alır.
-* Belirli bir kilitlenme sınıfına engel olmak için bir öğeyi güncelleştirmek amacıyla bir öğe okurken güncelleştirme kilidi kullanın.
-* Bölüm başına güvenilir koleksiyonların sayısını 1000 ' den küçük olacak şekilde tutmayı göz önünde bulundurun. Daha az öğe ile daha güvenilir koleksiyonlar üzerinde daha fazla öğe ile güvenilir koleksiyonlar tercih edin.
-* Öğelerinizi (örneğin, güvenilir sözlük için TKey + TValue) aşağıdaki 80 Kbayt: daha az küçültün. Bu, büyük nesne yığın kullanımının yanı sıra disk ve ağ GÇ gereksinimlerinin miktarını azaltır. Genellikle, değerin yalnızca bir kısmı güncelleştirilirken yinelenen verilerin çoğaltılmasını azaltır. Bunu güvenilir sözlükte elde etmenin yaygın yolu, satırlarınızı birden çok satıra bölmek olur.
+* Okuma işlemleriyle döndürülen özel türdeki bir nesneyi değiştirmeyin (örneğin, `TryPeekAsync` veya). `TryGetValueAsync` Eşzamanlı Koleksiyonlar gibi Güvenilir Koleksiyonlar, bir kopya değil nesnelere bir başvuru döndürün.
+* Değiştirmeden önce özel bir türün döndürülen nesnesini derin kopyalayın. Yapı ve yerleşik türler geçiş değeri olduğundan, değiştirmek istediğiniz referans türüne sahip alanlar veya özellikler içermedikçe, bunlar üzerinde derin bir kopya yapmanız gerekmez.
+* Zaman zaman `TimeSpan.MaxValue` ları kullanmayın. Zaman aşımları kilitlenmeleri algılamak için kullanılmalıdır.
+* Bir hareketi işlendikten, iptal edildikten veya elden çıkarıldıktan sonra kullanmayın.
+* Oluşturulduğu işlem kapsamı nın dışında numaralandırma yapmayın.
+* Kilitlenmelere neden olabileceğinden, `using` başka bir işlemin ekstresi içinde bir hareket oluşturmayın.
+* Aynı işlemde güvenilir `IReliableStateManager.GetOrAddAsync` durum la güvenilir bir durum oluşturmayın ve güvenilir durumu kullanmayın. Bu, Bir Geçersiz Çalışma Özel Durum ile sonuçlanır.
+* Uygulamanızın `IComparable<TKey>` doğru olduğundan emin olun. Sistem, denetim noktalarını ve satırları birleştirmek `IComparable<TKey>` için bağımlılık alır.
+* Belirli bir açmazı önlemek için bir öğeyi güncelleştirmek amacıyla bir öğeyi okurken Güncelleştir kilidi kullanın.
+* Bölüm başına Güvenilir Koleksiyon sayısını 1000'den az tutmayı düşünün. Daha az öğeyle daha güvenilir koleksiyonlara göre daha fazla öğeiçeren Güvenilir Koleksiyonlar'ı tercih edin.
+* Öğelerinizi (örneğin, TKey + TValue for Reliable Dictionary) 80 KByte'un altında tutmayı düşünün: daha küçük türde. Bu, Büyük Nesne Yığını kullanımının yanı sıra disk ve ağ IO gereksinimlerini azaltır. Genellikle, değerin yalnızca küçük bir bölümü güncelleştirildiğinde yinelenen verileri çoğaltmayı azaltır. Güvenilir Sözlük'te bunu başarabilmek için ortak yol, satırlarınızı birden çok satıra ayırmaktır.
 * Olağanüstü durum kurtarma için yedekleme ve geri yükleme işlevlerini kullanmayı düşünün.
-* Tek bir varlık işlemlerini ve çoklu varlık işlemlerini (örn. `GetCountAsync`, `CreateEnumerableAsync`) farklı yalıtım düzeyleri nedeniyle aynı işlemde karıştırmaktan kaçının.
-* InvalidOperationException 'yi işleyin. Kullanıcı işlemleri, çeşitli nedenlerle sistem tarafından iptal edilebilir. Örneğin, güvenilir durum Yöneticisi rolünü birincil dışında değiştirirken veya uzun süre çalışan bir işlem işlem günlüğünün kesilmesinin engellendiği zaman. Bu gibi durumlarda, Kullanıcı işleminin zaten sonlandırıldığı belirten InvalidOperationException alabilir. Varsayıldığında, işlem sonlandırmasının Kullanıcı tarafından istenmediğini, bu özel durumu işlemenin en iyi yolu işlemi atmak, iptal belirtecinin sinyal (veya çoğaltmanın rolü değiştirilmiş) olup olmadığını kontrol etmek ve yeni bir oluşturma işlem ve yeniden deneme.  
+* Farklı yalıtım düzeyleri nedeniyle tek varlık işlemlerini ve `GetCountAsync` `CreateEnumerableAsync`çok varlıklı işlemleri (örn. ) aynı işlemde karıştırmaktan kaçının.
+* GeçersizOperasyonException'ı işleyin. Kullanıcı hareketleri çeşitli nedenlerle sistem tarafından iptal edilebilir. Örneğin, Güvenilir Durum Yöneticisi birincil rolünü değiştirirken veya uzun süren bir işlem işlem günlüğünün kesilmesini engelliyorsa. Bu gibi durumlarda, kullanıcı, işlemlerinin zaten sonlandırıldığını belirten Geçersiz Operasyon Özel Durum alabilir. İşlemin sonlandırılmasının kullanıcı tarafından talep edilmediğini varsayarsak, bu istisnayı işleetmenin en iyi yolu hareketi elden çıkmak, iptal belirteci sinyalinin alınıp sinyal alınmamasını kontrol etmek (veya yinelemenin rolü değiştirildi) ve yeni bir işlem ve yeniden deneme.  
 
-Göz önünde bulundurmanız gereken bazı şeyler aşağıda verilmiştir:
+Akılda tutulması gereken bazı şeyler şunlardır:
 
-* Varsayılan zaman aşımı, tüm güvenilir koleksiyon API 'Leri için dört saniyedir. Çoğu kullanıcının varsayılan zaman aşımını kullanması gerekir.
-* Varsayılan iptal belirteci, tüm güvenilir koleksiyonlar API 'Lerinde `CancellationToken.None`.
-* Güvenilir bir sözlük için anahtar türü parametresi (*TKey*) `GetHashCode()` ve `Equals()`doğru şekilde uygulamalıdır. Anahtarlar sabit olmalıdır.
-* Güvenilir koleksiyonlar için yüksek kullanılabilirlik elde etmek üzere her hizmetin en az bir hedefi ve en düşük çoğaltma kümesi boyutu 3 ' ü içermelidir.
-* İkincil üzerinde okuma işlemleri, çekirdek kaydedilmemiş sürümleri okuyabilir.
-  Bu, tek bir ikincil sunucudan okunan bir veri sürümünün yanlış ilerlemedi olabileceği anlamına gelir.
-  Birincili okuma her zaman kararlı değildir: hiçbir zaman yanlış ilerlemedi olamaz.
-* Güvenilir bir koleksiyonda uygulamanız tarafından kalıcı olan verilerin güvenlik/gizliliği, sizin kararınız ve depolama yönetimi tarafından sağlanmış olan korumalardan tabidir; Yani. İşletim sistemi disk şifrelemesi, verilerinizi bekleyen bir şekilde korumak için kullanılabilir.  
+* Varsayılan zaman-out tüm Güvenilir Toplama API'leri için dört saniyedir. Çoğu kullanıcı varsayılan zaman ayarı kullanmalıdır.
+* Varsayılan iptal belirteci tüm Güvenilir KoleksiyonAPI'lerindedir. `CancellationToken.None`
+* Güvenilir Sözlük için anahtar türü parametresi *(TKey)* doğru şekilde uygulanmalıdır `GetHashCode()` ve. `Equals()` Anahtarlar değişmez olmalı.
+* Güvenilir Koleksiyonlar için yüksek kullanılabilirlik elde etmek için, her hizmetin en az bir hedef ve en az çoğaltma kümesi boyutu 3 olmalıdır.
+* İkincil işlemler, çoğunluk taahhüdünde olmayan sürümleri okuyabilir.
+  Bu, tek bir ikincil den okunan verilerin bir sürümünün yanlış ilerletilmiş olabileceği anlamına gelir.
+  Birincil okumalar her zaman kararlıdır: yanlış ilerletilmiş asla.
+* Uygulamanızın güvenilir bir koleksiyonda ısrar ettiği verilerin güvenliği/Gizliliği sizin kararınızdır ve depolama yönetiminiz tarafından sağlanan korumalara tabidir; Yani. İşletim Sistemi disk şifrelemesi, verilerinizi istirahatte korumak için kullanılabilir.  
 
 ### <a name="next-steps"></a>Sonraki adımlar
 * [Güvenilir Koleksiyonlar ile çalışma](service-fabric-work-with-reliable-collections.md)
-* [İşlemler ve kilitler](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* Verileri yönetme
+* [İşlemler ve Kilitler](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+* Verileri Yönetme
   * [Yedekleme ve Geri Yükleme](service-fabric-reliable-services-backup-restore.md)
   * [Bildirimler](service-fabric-reliable-services-notifications.md)
-  * [Serileştirme ve yükseltme](service-fabric-application-upgrade-data-serialization.md)
-  * [Güvenilir durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
-* Diğerleri
-  * [Reliable Services hızlı başlangıç](service-fabric-reliable-services-quick-start.md)
-  * [Güvenilir koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Serileştirme ve Yükseltme](service-fabric-application-upgrade-data-serialization.md)
+  * [Güvenilir Durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
+* Diğer
+  * [Güvenilir Hizmetler hızlı başlangıç](service-fabric-reliable-services-quick-start.md)
+  * [Güvenilir Koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

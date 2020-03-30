@@ -1,6 +1,6 @@
 ---
-title: Haritaya Çizim araç çubuğu ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya Çizim araç çubuğu ekleme hakkında bilgi edineceksiniz.
+title: Haritaya çizim araç çubuğu ekleme | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar Web SDK'yı kullanarak haritaya çizim araç çubuğu eklemeyi öğreneceksiniz
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -9,80 +9,80 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198318"
 ---
 # <a name="drawing-tool-events"></a>Çizim aracı olayları
 
-Bir haritada çizim araçları kullanılırken, Kullanıcı haritada çizilirken belirli olaylara yanıt vermek yararlıdır. Bu tablo `DrawingManager` sınıfı tarafından desteklenen tüm olayları listeler.
+Haritaüzerinde çizim araçları kullanırken, kullanıcı haritaüzerinde çizerken belirli olaylara tepki vermek yararlıdır. Bu tablo, `DrawingManager` sınıf tarafından desteklenen tüm olayları listeler.
 
 | Olay | Açıklama |
 |-------|-------------|
-| `drawingchanged` | Bir şekildeki koordinat eklendiğinde veya değiştirildiğinde harekete geçirilir. | 
-| `drawingchanging` | Bir şekil için herhangi bir önizleme koordinatı görüntülenirken tetiklenir. Örneğin, bir koordinat sürüklenirken bu olay birden çok kez harekete geçmeyecektir. | 
-| `drawingcomplete` | Şekil, düzenleme modundan çekilmek veya kullanıma alınması bittiğinde tetiklenir. |
-| `drawingmodechanged` | Çizim modu değiştiğinde harekete geçirilir. Yeni çizim modu olay işleyicisine geçirilir. |
-| `drawingstarted` | Kullanıcı bir şekil çizmeye başladığında veya şekil düzenleme moduna geçirildiğinde tetiklenir.  |
+| `drawingchanged` | Bir şekle herhangi bir koordinat eklendiğinde veya değiştirildiğinde ateşlenir. | 
+| `drawingchanging` | Bir şeklin herhangi bir önizleme koordinatı görüntülendiğinde ateşlenir. Örneğin, bu olay bir koordinat sürüklendi olarak birden çok kez ateş edecektir. | 
+| `drawingcomplete` | Bir şekil çizilmeveya edit modundan çıkarıldığında ateşlenir. |
+| `drawingmodechanged` | Çizim modu değiştiğinde ateşlendi. Yeni çizim modu olay işleyicisine aktarılır. |
+| `drawingstarted` | Kullanıcı bir şekil çizmeye başladığında veya bir şekli edit moduna koyduğunda ateşlenir.  |
 
-Aşağıdaki kod, çizim araçları modülündeki olayların nasıl çalıştığını gösterir. Harita üzerinde şekiller çizin ve olayların tetikleneceği şekilde izleyin.
+Aşağıdaki kod, Çizim Araçları modülündeki olayların nasıl çalıştığını gösterir. Harita üzerinde şekiller çizin ve olaylar ateş olarak izleyin.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Çizim araçları olayları" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>çizimi araçları olaylarına</a> bakın.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Çizim araçları etkinlikleri" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a göre Kalem <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>Çizimi araçları etkinliklerine</a> bakın .<a href='https://codepen.io/azuremaps'>@azuremaps</a>
 </iframe>
 
 <br/>
 
 ## <a name="examples"></a>Örnekler
 
-Çizim araçları olaylarını kullanan bazı yaygın senaryolar görelim.
+Çizim araçları olaylarını kullanan bazı yaygın senaryoları görelim.
 
 ### <a name="select-points-in-polygon-area"></a>Çokgen alanında noktaları seçin
 
-Bu kod, Kullanıcı çizimi şekillerindeki bir olayın nasıl izleneceğini gösterir. Bu örnekte, kod çokgenler, dikdörtgenler ve dairelerin şekillerini izler. Ardından, haritadaki hangi veri noktalarının çizilen alanın içinde olduğunu belirler. `drawingcomplete` olayı, select mantığını tetiklemek için kullanılır. Select mantığındaki kod, haritadaki tüm veri noktalarında döngü yapılır. Noktanın ve çizilen şeklin alanının kesişimi olup olmadığını denetler. Bu örnek, uzamsal bir kesişim hesaplamayı gerçekleştirmek için açık kaynaklı [Turf. js](https://turfjs.org/) kitaplığını kullanır.
+Bu kod, bir kullanıcı çizim şekilleri olay nasıl izlenir gösterir. Bu örnekte, kod çokgenlerin, dikdörtgenlerin ve dairelerin şekillerini izler. Daha sonra, haritadaki hangi veri noktalarının çizilen alan içinde olduğunu belirler. Olay, `drawingcomplete` select mantığını tetiklemek için kullanılır. Seçme mantığında, kod haritadaki tüm veri noktaları arasında döngüler. Çizilen şeklin noktasının ve alanının kesişme noktasını kontrol eder. Bu örnek, uzamsal bir kesişim hesaplaması gerçekleştirmek için açık kaynak [Turf.js](https://turfjs.org/) kitaplığını kullanır.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Çizilmiş Çokgen alanındaki verileri seçme" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure haritalar (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/XWJdeja'>çizilen Çokgen alanındaki verileri seçme</a> kalemine bakın.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Çizilen çokgen alandaki verileri seçme" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen'de</a>Azure Haritalar (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/XWJdeja'>çizilen çokgen alandaki</a> Kalem Seç verilerine bakın.
 </iframe>
 
 <br/>
 
-### <a name="draw-and-search-in-polygon-area"></a>Çokgen alanında çizim ve arama
+### <a name="draw-and-search-in-polygon-area"></a>Çokgen alanda çizim ve arama
 
-Bu kod, Kullanıcı şekli çizmeyi tamamladıktan sonra bir şeklin alanındaki ilgi alanlarını arar. Çerçevenin sağ üst köşesindeki ' kod kalemlerini Düzenle ' seçeneğine tıklayarak kodu değiştirebilir ve yürütebilirsiniz. `drawingcomplete` olayı, arama mantığını tetiklemek için kullanılır. Kullanıcı bir dikdörtgen veya Çokgen çizdiğinde, geometri içinde bir arama gerçekleştirilir. Bir daire çizildiyse, bir faiz arama noktası gerçekleştirmek için yarıçap ve orta konum kullanılır. `drawingmodechanged` olayı, kullanıcının çizim moduna ne zaman geçiş yaptığında ve bu olayın çizim tuvalini temizleyeceğini tespit etmek için kullanılır.
+Bu kod, kullanıcı şekli çizmeyi bitirdikten sonra şeklin alanı içindeki ilgi alanlarını arar. Çerçevenin sağ üst köşesindeki 'Kod kaleminde Düzenleme'yi tıklatarak kodu değiştirebilir ve yürütebilirsiniz. Olay, `drawingcomplete` arama mantığını tetiklemek için kullanılır. Kullanıcı bir dikdörtgen veya çokgen çizerse, geometri içinde bir arama yapılır. Bir daire çizilirse, yarıçap ve merkez konumu ilgi alanı araması yapmak için kullanılır. Olay, `drawingmodechanged` kullanıcının çizim moduna ne zaman geçtiğini belirlemek için kullanılır ve bu olay çizim tuvalini temizler.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Çokgen alanında çizim ve arama" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bkz. kalemin <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>çizimi ve çokgen alanında</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io'>birlikte</a>arama.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Çokgen alanda çizim ve arama" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen'de</a>Azure Haritalar (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından çokgen alanda kalem çizin ve <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>arama yapın.</a>
 </iframe>
 
 <br/>
 
-### <a name="create-a-measuring-tool"></a>Ölçüm aracı oluşturma
+### <a name="create-a-measuring-tool"></a>Bir ölçme aracı oluşturma
 
-Aşağıdaki kod, bir ölçüm aracı oluşturmak için çizim olaylarının nasıl kullanılabileceğini gösterir. `drawingchanging`, şekli çizilmek üzere izlemek için kullanılır. Kullanıcı fareyi taşırken, şeklin boyutları hesaplanır. `drawingcomplete` olay, çizdikten sonra şeklin üzerinde son bir hesaplama yapmak için kullanılır. `drawingmodechanged` olayı, kullanıcının bir çizim moduna ne zaman geçiş yaparken olduğunu tespit etmek için kullanılır. Ayrıca, `drawingmodechanged` olay çizim tuvalini temizler ve eski ölçüm bilgilerini temizler.
+Aşağıdaki kod, çizim olaylarının bir ölçme aracı oluşturmak için nasıl kullanılabileceğini gösterir. Şekil `drawingchanging` çizilirken şekli izlemek için kullanılır. Kullanıcı fareyi hareket ettikçe şeklin boyutları hesaplanır. Olay `drawingcomplete` çizildikten sonra şekil üzerinde son bir hesaplama yapmak için kullanılır. Olay, `drawingmodechanged` kullanıcının çizim moduna ne zaman geçtiğini belirlemek için kullanılır. Ayrıca, `drawingmodechanged` olay çizim tuvali temizler ve eski ölçüm bilgilerini temizler.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Ölçüm Aracı" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>ölçme aracına</a> bakın.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Ölçüm aleti" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen'de</a>Azure Haritalar<a href='https://codepen.io/azuremaps'>@azuremaps</a>'a göre Kalem <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>Ölçme aracına</a> bakın .
 </iframe>
 
 <br/>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çizim araçları modülünün ek özelliklerini kullanmayı öğrenin:
+Çizim araçları modülünün ek özelliklerini nasıl kullanacağınızı öğrenin:
 
 > [!div class="nextstepaction"]
-> [Şekil verilerini al](map-get-shape-data.md)
+> [Şekil verilerini alma](map-get-shape-data.md)
 
 > [!div class="nextstepaction"]
 > [Etkileşim türleri ve klavye kısayolları](drawing-tools-interactions-keyboard-shortcuts.md)
@@ -92,7 +92,7 @@ Hizmetler modülü hakkında daha fazla bilgi edinin:
 > [!div class="nextstepaction"]
 > [Hizmetler modülü](how-to-use-services-module.md)
 
-Daha fazla kod örneği inceleyin:
+Daha fazla kod örneğine göz atın:
 
 > [!div class="nextstepaction"]
 > [Kod örnek sayfası](https://aka.ms/AzureMapsSamples)

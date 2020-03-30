@@ -1,6 +1,6 @@
 ---
-title: Azure AD Kimlik Koruması riskleri düzeltin ve kullanıcıların engellemesini kaldırın
-description: Etkin risk algılamalarını kapatan seçenekler hakkında bilgi edinin.
+title: Azure AD Kimlik Koruması'nda riskleri düzeltin ve kullanıcıların engelini kaldırın
+description: Yakın etkin risk algılamaseçenekleriniz hakkında bilgi edinin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,83 +12,83 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 350e7b37d36be70cea345db52cdfb639b2f1c1a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382110"
 ---
-# <a name="remediate-risks-and-unblock-users"></a>Riskleri düzeltin ve kullanıcıların engellemesini kaldırın
+# <a name="remediate-risks-and-unblock-users"></a>Riskleri düzeltin ve kullanıcıların engelini kaldırın
 
-[Araştırmanızı](howto-identity-protection-investigate-risk.md)tamamladıktan sonra, riski düzeltmek veya kullanıcıların engelini kaldırmak için işlem yapmanız gerekir. Kuruluşlar, [risk ilkelerini](howto-identity-protection-configure-risk-policies.md)kullanarak otomatik düzeltmeyi etkinleştirme seçeneğine de sahiptir. Kuruluşlar, sundukları tüm risk algılamalarını kuruluşunuzun rahat olduğu bir zaman diliminde kapatmayı denemelidir. Microsoft, risk altında çalışırken önemli bir süre olması nedeniyle olayları en kısa sürede kapatmayı öneriyor.
+[Araştırmanızı](howto-identity-protection-investigate-risk.md)tamamladıktan sonra, riski düzeltmek veya kullanıcıların engelini kaldırmak için harekete geçmek isteyeceksiniz. Kuruluşlar ayrıca [risk ilkelerini](howto-identity-protection-configure-risk-policies.md)kullanarak otomatik düzeltmeyi etkinleştirme seçeneğine de sahiptir. Kuruluşlar, kuruluşunuzun rahat olduğu bir zaman diliminde sunulan tüm risk tespitlerini kapatmaya çalışmalıdır. Microsoft, riskle çalışırken zaman önemli olduğundan olayları mümkün olan en kısa sürede kapatmanızı önerir.
 
 ## <a name="remediation"></a>Düzeltme
 
-Tüm etkin risk algılamaları, Kullanıcı risk düzeyi adlı bir değerin hesaplamasına katkıda bulunur. Kullanıcı risk düzeyi bir hesap güvenliğinin tehlikeye girdiği olasılığa karşı bir göstergedir (düşük, orta, yüksek). Yönetici olarak, etkilenen kullanıcıların artık risk altında olmaması için tüm risk algılamalarını kapalı olarak almak istersiniz.
+Tüm etkin risk algılamaları, kullanıcı risk düzeyi adı verilen bir değerin hesaplanmasına katkıda bulunur. Kullanıcı risk düzeyi, bir hesabın tehlikeye girme olasılığı için bir göstergedir (düşük, orta, yüksek). Yönetici olarak, etkilenen kullanıcıların artık risk altında olmaması için tüm risk algılamalarının kapatılmasını istersiniz.
 
-Bazı riskler algılamaları kimlik koruması tarafından "kapalı (sistem)" olarak işaretlenebilir, çünkü olaylar artık riskli olarak belirlenmemiştir.
+Bazı risk algılamaları Kimlik Koruması tarafından "Kapalı (sistem)" olarak işaretlenebilir, çünkü olayların artık riskli olduğu belirlenmemiştir.
 
-Yöneticiler aşağıdaki seçeneklere sahiptir:
+Yöneticiler, düzeltmek için aşağıdaki seçeneklere sahiptir:
 
-- Risk ilkesiyle kendi kendini düzeltme
-- El ile parola sıfırlama
-- Kullanıcı riskini kapat
+- Risk politikası ile kendi kendini düzeltme
+- Manuel parola sıfırlama
+- Kullanıcı riskini yok say
 - Bireysel risk algılamalarını el ile kapatın
 
-### <a name="self-remediation-with-risk-policy"></a>Risk ilkesiyle kendi kendini düzeltme
+### <a name="self-remediation-with-risk-policy"></a>Risk politikası ile kendi kendini düzeltme
 
-Kullanıcıların, risk ilkelerinizde Azure Multi-Factor Authentication (MFA) ve self servis parola sıfırlama (SSPR) ile kendi kendini düzelmesine izin verirseniz, risk algılandığında kendi engellemesini kaldırabilir. Bu algılamalar daha sonra kapalı olarak değerlendirilir. Risk algılandığında kullanabilmeniz için kullanıcıların daha önce Azure MFA ve SSPR için kayıtlı olmaları gerekir.
+Risk ilkelerinizde Azure Çok Faktörlü Kimlik Doğrulama (MFA) ve self servis parola sıfırlama (SSPR) ile kullanıcıların kendi kendini düzeltmesine izin verirseniz, risk algılandığında kendilerinin engelini kaldırabilirler. Bu algılamalar daha sonra kapalı olarak kabul edilir. Risk tespit edildiğinde kullanmak için kullanıcıların Azure MFA ve SSPR'ye daha önce kaydolmuş olması gerekir.
 
-Bazı algılamalar, Kullanıcı Kendini düzeltmenin gerekli olduğu, ancak yöneticilerin bu algılamaları yine de değerlendirmesi gereken düzeye kadar risk oluşturmaz. Yöneticiler, [konumlardan erişimi engellemeyi](../conditional-access/howto-conditional-access-policy-location.md) veya ilkelerine karşı kabul edilebilir riski azaltmak gibi ek ölçülerin gerekli olduğunu belirleyebilir.
+Bazı algılamalar, kullanıcının kendi kendini düzeltmesi gereken düzeye risk getirmeyebilir, ancak yöneticilerin bu algılamaları yine de değerlendirmesi gerekir. Yöneticiler, [konumlardan erişimi engellemek](../conditional-access/howto-conditional-access-policy-location.md) veya ilkelerindeki kabul edilebilir riski azaltmak gibi ek önlemlerin gerekli olduğunu belirleyebilir.
 
-### <a name="manual-password-reset"></a>El ile parola sıfırlama
+### <a name="manual-password-reset"></a>Manuel parola sıfırlama
 
-Bir Kullanıcı risk ilkesi kullanarak parola sıfırlamayı gerektirmek bir seçenek değilse, yöneticiler el ile parola sıfırlamasına sahip bir kullanıcının tüm risk algılamalarını kapatabilir.
+Kullanıcı risk ilkesi ni kullanarak parola sıfırlama gerektiren bir seçenek değilse, yöneticiler el ile parola sıfırlama ile bir kullanıcı için tüm risk algılamaları kapatabilirsiniz.
 
-Yöneticiler, kullanıcıları için bir parola sıfırlanırken iki seçenek sunulur:
+Yöneticilere kullanıcıları için parolayı sıfırlarken iki seçenek verilir:
 
-- **Geçici parola oluşturma** -geçici bir parola oluşturarak, bir kimliği hemen güvenli bir duruma getirebilirsiniz. Bu yöntem, geçici parolanın ne olduğunu bilmeleri gerektiğinden etkilenen kullanıcılara başvurmayı gerektirir. Parola geçici olduğundan, kullanıcıdan bir sonraki oturum açma işlemi sırasında parolayı yeni bir kullanıcı olarak değiştirmesi istenir.
+- **Geçici bir parola oluşturma** - Geçici bir parola oluşturarak, bir kimliği nizi hemen güvenli bir duruma geri getirebilirsiniz. Bu yöntem, geçici parolanın ne olduğunu bilmeleri gerektiğinden etkilenen kullanıcılarla iletişim kurmayı gerektirir. Parola geçici olduğundan, kullanıcıdan bir sonraki oturum açma sırasında parolayı yeni bir şeyle değiştirmesi istenir.
 
-- **Kullanıcının parolayı sıfırlamasını gerektir** -kullanıcıların parola sıfırlamasını sağlamak, yardım masası veya yönetici ile iletişim kurmadan kendinden kurtarmaya olanak sağlar. Bu yöntem yalnızca Azure MFA ve SSPR için kayıtlı kullanıcılar için geçerlidir. Kayıtlı olmayan kullanıcılar için bu seçenek kullanılamaz.
+- **Kullanıcının parolayı sıfırlamasını zorunlu** kılma - Kullanıcıların parolaları sıfırlamasını zorunlu kılmak, yardım masasına veya yöneticiye başvurmadan kendi kendine kurtarma sağlar. Bu yöntem yalnızca Azure MFA ve SSPR için kayıtlı kullanıcılar için geçerlidir. Kaydedilmemiş kullanıcılar için bu seçenek kullanılamıyor.
 
-### <a name="dismiss-user-risk"></a>Kullanıcı riskini kapat
+### <a name="dismiss-user-risk"></a>Kullanıcı riskini yok say
 
-Parola sıfırlama sizin için bir seçenek değilse, örneğin Kullanıcı silinmiş olduğu için, Kullanıcı risk algılamalarını kapatmak için seçeneğini belirleyebilirsiniz.
+Parola sıfırlama sizin için bir seçenek değilse, örneğin kullanıcı silindiğinden, kullanıcı risk algılamalarını reddetmeyi seçebilirsiniz.
 
-**Kullanıcı riskini kapat**' a tıkladığınızda, tüm olaylar kapatılır ve etkilenen Kullanıcı artık risk altında olmaz. Ancak, bu yöntemin var olan parola üzerinde bir etkisi olmadığından, ilgili kimliği güvenli bir duruma getirmez. 
+**Kullanıcı riskini Kapat'ı**tıklattığınızda, tüm olaylar kapatılır ve etkilenen kullanıcı artık risk altında değildir. Ancak, bu yöntemin varolan parola üzerinde bir etkisi olmadığından, ilgili kimliği güvenli bir duruma geri getirmez. 
 
 ### <a name="close-individual-risk-detections-manually"></a>Bireysel risk algılamalarını el ile kapatın
 
-Bireysel risk algılamalarını el ile kapatabilirsiniz. Risk algılamalarını el ile kapatarak, Kullanıcı risk düzeyini düşürebilirsiniz. Genellikle, risk algılamaları ilgili bir araştırmaya yanıt olarak el ile kapatılır. Örneğin, bir kullanıcıya konuşduğunda etkin bir risk algılamada artık gerekli değildir. 
+Tek tek risk algılamalarını el ile kapatabilirsiniz. Risk algılamalarını el ile kapatarak, kullanıcı risk düzeyini düşürebilirsiniz. Genellikle, risk algılamaları ilgili bir araştırmaya yanıt olarak el ile kapatılır. Örneğin, bir kullanıcıyla konuşurken, etkin bir risk algılama nın artık gerekli olmadığını ortaya koymaktadır. 
  
-Risk algılamalarını el ile kapatırken, risk algılamanın durumunu değiştirmek için aşağıdaki eylemlerden birini seçebilirsiniz:
+Risk algılamalarını el ile kapatırken, risk algılama durumunu değiştirmek için aşağıdaki eylemlerden herhangi birini almayı seçebilirsiniz:
 
-- Kullanıcının güvenliğinin aşıldığını Onayla
-- Kullanıcı riskini kapat
-- Oturum açmayı güvenli Onayla
-- Oturum açma güvenliğinin aşıldığını onaylayın
+- Kullanıcının gizliliğini zedeledim
+- Kullanıcı riskini yok say
+- Oturum açma güvenlionay
+- Oturum açma nın tehlikeye atAsını onaylama
 
-## <a name="unblocking-users"></a>Kullanıcıların engellemesini kaldırma
+## <a name="unblocking-users"></a>Kullanıcıların engelini kaldırma
 
-Bir yönetici, risk ilkesine veya araştırmalarına göre bir oturum açmayı engellemeyi tercih edebilir. Bir blok, oturum açma veya Kullanıcı riski temelinde gerçekleşebilir.
+Yönetici, risk ilkesine veya araştırmalarına göre oturum açma'yı engellemeyi seçebilir. Oturum açma veya kullanıcı riskine bağlı olarak bir blok oluşabilir.
 
-### <a name="unblocking-based-on-user-risk"></a>Kullanıcı riskine bağlı olarak engellemeyi kaldırma
+### <a name="unblocking-based-on-user-risk"></a>Kullanıcı riskine göre engellemeyi kaldırma
 
-Kullanıcı riski nedeniyle engellenen bir hesabın engelini kaldırmak için Yöneticiler aşağıdaki seçeneklere sahiptir:
+Kullanıcı riski nedeniyle engellenen bir hesabın engelini kaldırmak için yöneticilerin aşağıdaki seçeneklere sahip olması gerekir:
 
-1. **Parolayı sıfırlama** -kullanıcının parolasını sıfırlayabilirsiniz.
-1. **Kullanıcı riskini kapat** -Kullanıcı risk ilkesi, erişimi engellemek için yapılandırılmış Kullanıcı risk düzeyine ulaşıldığında kullanıcıyı engeller. Kullanıcının risk düzeyini, Kullanıcı riskini ortadan kaldırarak veya bildirilen risk algılamalarını el ile kapatarak azaltabilirsiniz.
-1. **Kullanıcıyı Ilkeden hariç tut** -oturum açma ilkenizin geçerli yapılandırmasının belirli kullanıcılar için sorunlara neden olduğunu düşünüyorsanız kullanıcıları bu bilgisayardan dışlayabilirsiniz. Daha fazla bilgi için bkz. [nasıl yapılır: risk Ilkeleri yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md#exclusions)makalesindeki bölüm dışlamaları.
-1. **Ilkeyi devre dışı bırak** -ilke yapılandırmanızın tüm kullanıcılarınız için sorunlara neden olduğunu düşünüyorsanız, ilkeyi devre dışı bırakabilirsiniz. Daha fazla bilgi için bkz. [nasıl yapılır: risk Ilkeleri yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md).
+1. **Parolayı sıfırla** - Kullanıcının parolasını sıfırlayabilirsiniz.
+1. **Kullanıcı riskini kapatma** - Erişimi engellemek için yapılandırılan kullanıcı risk düzeyine ulaşıldıysa, kullanıcı risk ilkesi kullanıcıyı engeller. Kullanıcı riskini reddederek veya bildirilen risk algılamalarını el ile kapatarak kullanıcının risk düzeyini azaltabilirsiniz.
+1. **Kullanıcıyı ilkeden hariç tut** - Oturum açma ilkenizin geçerli yapılandırmasının belirli kullanıcılar için sorunlara neden olduğunu düşünüyorsanız, kullanıcıları bu politikadan hariç tutabilirsiniz. Daha fazla bilgi için, makaledeki Dışlamalar bölümüne bakın [Nasıl Yapılandırılır: Risk ilkelerini yapılandırın ve etkinleştirin.](howto-identity-protection-configure-risk-policies.md#exclusions)
+1. **Devreyi devre dışı-** İlke yapılandırmanızın tüm kullanıcılarınız için sorunlara neden olduğunu düşünüyorsanız, ilkeyi devre dışı kullanabilirsiniz. Daha fazla bilgi için, nasıl yapılandırılabilen makaleye [bakın: Risk ilkelerini yapılandırın ve etkinleştirin.](howto-identity-protection-configure-risk-policies.md)
 
-### <a name="unblocking-based-on-sign-in-risk"></a>Oturum açma riskine bağlı olarak engellemeyi kaldırma
+### <a name="unblocking-based-on-sign-in-risk"></a>Oturum açma riskine göre engellemeyi kaldırma
 
-Yöneticiler, oturum açma riskini temel alarak bir hesabın engellemesini kaldırmak için aşağıdaki seçeneklere sahiptir:
+Oturum açma riskine dayalı bir hesabın engelini kaldırmak için yöneticilerin aşağıdaki seçeneklere sahip olması gerekir:
 
-1. **Tanıdık bir konumdan veya cihazdan oturum açma** -, engellenen şüpheli oturum açma işlemlerinin yaygın bir nedeni, bilmediğiniz konumlardan veya cihazlardan gelen oturum açma çabalarıdır. Kullanıcılarınız, bilinen bir konumdan veya cihazdan oturum açmaya çalışırken bu nedenin engelleme nedeni olup olmadığını hızlı bir şekilde tespit edebilir.
-1. **Kullanıcıyı Ilkeden hariç tut** -oturum açma ilkenizin geçerli yapılandırmasının belirli kullanıcılar için sorunlara neden olduğunu düşünüyorsanız kullanıcıları bu bilgisayardan dışlayabilirsiniz. Daha fazla bilgi için bkz. [nasıl yapılır: risk Ilkeleri yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md#exclusions)makalesindeki bölüm dışlamaları.
-1. **Ilkeyi devre dışı bırak** -ilke yapılandırmanızın tüm kullanıcılarınız için sorunlara neden olduğunu düşünüyorsanız, ilkeyi devre dışı bırakabilirsiniz. Daha fazla bilgi için bkz. [nasıl yapılır: risk Ilkeleri yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md).
+1. **Tanıdık bir konumdan veya cihazdan oturum açın** - Engellenen şüpheli oturum açmaların yaygın bir nedeni, yabancı konumlardan veya aygıtlardan gelen oturum açma girişimleridir. Kullanıcılarınız, tanıdık bir konumdan veya cihazdan oturum açmaya çalışarak bu nedenle engelleme nedeni olup olmadığını hızlı bir şekilde belirleyebilir.
+1. **Kullanıcıyı ilkeden hariç tut** - Oturum açma ilkenizin geçerli yapılandırmasının belirli kullanıcılar için sorunlara neden olduğunu düşünüyorsanız, kullanıcıları bu politikadan hariç tutabilirsiniz. Daha fazla bilgi için, makaledeki Dışlamalar bölümüne bakın [Nasıl Yapılandırılır: Risk ilkelerini yapılandırın ve etkinleştirin.](howto-identity-protection-configure-risk-policies.md#exclusions)
+1. **Devreyi devre dışı-** İlke yapılandırmanızın tüm kullanıcılarınız için sorunlara neden olduğunu düşünüyorsanız, ilkeyi devre dışı kullanabilirsiniz. Daha fazla bilgi için, nasıl yapılandırılabilen makaleye [bakın: Risk ilkelerini yapılandırın ve etkinleştirin.](howto-identity-protection-configure-risk-policies.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD Kimlik Koruması genel bakış almak için bkz. [Azure AD kimlik koruması genel bakış](overview-identity-protection.md).
+Azure AD Kimlik Koruması hakkında genel bir bakış elde etmek için [Azure AD Kimlik Koruması'na genel bakış](overview-identity-protection.md)bölümüne bakın.

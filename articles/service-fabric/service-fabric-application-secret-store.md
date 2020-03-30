@@ -1,20 +1,20 @@
 ---
-title: Azure Service Fabric merkezi gizli dizi deposu
-description: Bu makalede, Azure Service Fabric 'da merkezi gizlilikler deposunun nasıl kullanılacağı açıklanır.
+title: Azure Hizmet Kumaş Merkezi Secrets Mağaza
+description: Bu makalede, Azure Hizmet Dokusunda Merkezi Sırlar Mağazası'nın nasıl kullanılacağı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589173"
 ---
-# <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 'da merkezi gizlilikler Mağazası 
-Bu makalede, Service Fabric uygulamalarında gizli diziler oluşturmak için Azure Service Fabric 'da merkezi gizlilikler deposunun (CSS) nasıl kullanılacağı açıklanır. CSS, bir parola, belirteç ve anahtar gibi hassas verileri bellekte şifreli olarak tutan bir yerel gizli dizi deposu önbelleğidir.
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Hizmet Kumaşında Merkezi Sırlar Mağazası 
+Bu makalede, Hizmet Kumaşı uygulamalarında sır oluşturmak için Azure Hizmet Dokusu'nda Central Secrets Store'un (CSS) nasıl kullanılacağı açıklanmaktadır. CSS, parola, belirteçler ve anahtarlar gibi hassas verileri bellekte şifrelenmiş tutan yerel bir gizli depo önbelleğidir.
 
-## <a name="enable-central-secrets-store"></a>Merkezi gizli dizi deposunu etkinleştir
-CSS 'yi etkinleştirmek için `fabricSettings` altındaki küme yapılandırmanıza aşağıdaki betiği ekleyin. CSS için bir küme sertifikası dışında bir sertifika kullanmanızı öneririz. Şifreleme sertifikasının tüm düğümlerde yüklü olduğundan ve `NetworkService` sertifikanın özel anahtarı için okuma iznine sahip olduğundan emin olun.
+## <a name="enable-central-secrets-store"></a>Merkezi Sırlar Mağazasını Etkinleştir
+CSS'yi `fabricSettings` etkinleştirmek için aşağıdaki komut dosyasını küme yapılandırmanıza ekleyin. CSS için küme sertifikası dışında bir sertifika kullanmanızı öneririz. Şifreleme sertifikasının tüm düğümlere yüklü olduğundan ve `NetworkService` sertifikanın özel anahtarının okuma iznine sahip olduğundan emin olun.
   ```json
     "fabricSettings": 
     [
@@ -46,12 +46,12 @@ CSS 'yi etkinleştirmek için `fabricSettings` altındaki küme yapılandırman�
         ...
      ]
 ```
-## <a name="declare-a-secret-resource"></a>Gizli bir kaynak bildirin
-Azure Resource Manager şablonunu veya REST API kullanarak gizli bir kaynak oluşturabilirsiniz.
+## <a name="declare-a-secret-resource"></a>Gizli bir kaynak bildirme
+Azure Kaynak Yöneticisi şablonu veya REST API'sini kullanarak gizli bir kaynak oluşturabilirsiniz.
 
-### <a name="use-resource-manager"></a>Kaynak Yöneticisi kullan
+### <a name="use-resource-manager"></a>Kaynak Yöneticisi'ni Kullan
 
-Gizli kaynağı oluşturmak için Kaynak Yöneticisi kullanmak için aşağıdaki şablonu kullanın. Şablon, bir `supersecret` gizli kaynağı oluşturur, ancak gizli kaynak için henüz bir değer ayarlanmadı.
+Gizli kaynağı oluşturmak için Kaynak Yöneticisi'ni kullanmak için aşağıdaki şablonu kullanın. Şablon gizli bir `supersecret` kaynak oluşturur, ancak gizli kaynak için henüz bir değer ayarlı değildir.
 
 
 ```json
@@ -73,18 +73,18 @@ Gizli kaynağı oluşturmak için Kaynak Yöneticisi kullanmak için aşağıdak
 
 ### <a name="use-the-rest-api"></a>REST API kullanma
 
-REST API kullanarak `supersecret` gizli bir kaynak oluşturmak için `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`için bir PUT isteği yapın. Gizli bir kaynak oluşturmak için küme sertifikası veya yönetici istemci sertifikasına ihtiyacınız vardır.
+REST API'sini kullanarak gizli bir `supersecret` kaynak oluşturmak `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`için BIR PUT isteğinde bulunun. Gizli bir kaynak oluşturmak için küme sertifikasına veya yönetici istemci sertifikasına ihtiyacınız var.
 
 ```powershell
 $json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
 Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint> -Body $json
 ```
 
-## <a name="set-the-secret-value"></a>Gizli değeri ayarla
+## <a name="set-the-secret-value"></a>Gizli değeri ayarlama
 
 ### <a name="use-the-resource-manager-template"></a>Kaynak Yöneticisi şablonunu kullanma
 
-Gizli değeri oluşturmak ve ayarlamak için aşağıdaki Kaynak Yöneticisi şablonunu kullanın. Bu şablon, `supersecret` gizli kaynağı için gizli değeri sürüm `ver1`olarak ayarlar.
+Gizli değeri oluşturmak ve ayarlamak için aşağıdaki Kaynak Yöneticisi şablonunu kullanın. Bu şablon, `supersecret` `ver1`sürüm olarak gizli kaynak için gizli değeri ayarlar.
 ```json
   {
   "parameters": {
@@ -124,20 +124,20 @@ Gizli değeri oluşturmak ve ayarlamak için aşağıdaki Kaynak Yöneticisi şa
   ```
 ### <a name="use-the-rest-api"></a>REST API kullanma
 
-Gizli değeri ayarlamak için REST API kullanmak için aşağıdaki betiği kullanın.
+Gizli değeri ayarlamak için REST API'yi kullanmak için aşağıdaki komut dosyasını kullanın.
 ```powershell
 $Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-### <a name="examine-the-secret-value"></a>Gizli değeri inceleyin
+### <a name="examine-the-secret-value"></a>Gizli değeri inceleme
 ```powershell
 Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
-## <a name="use-the-secret-in-your-application"></a>Uygulamanızda gizli dizi kullanın
+## <a name="use-the-secret-in-your-application"></a>Uygulamanızdaki sırrı kullanın
 
-Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
+Service Fabric uygulamanızdaki sırrı kullanmak için aşağıdaki adımları izleyin.
 
-1. Aşağıdaki kod parçacığına sahip **Settings. xml** dosyasına bir bölüm ekleyin. Değerin {`secretname:version`} biçiminde olduğunu unutmayın.
+1. **Settings.xml** dosyasına aşağıdaki snippet ile bir bölüm ekleyin. Burada değerin {`secretname:version`} biçiminde olduğunu unutmayın.
 
    ```xml
      <Section Name="testsecrets">
@@ -145,7 +145,7 @@ Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
      </Section>
    ```
 
-1. **ApplicationManifest. xml**dosyasındaki bölümü içeri aktarın.
+1. **ApplicationManifest.xml**bölümünden alma .
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -158,12 +158,12 @@ Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
      </ServiceManifestImport>
    ```
 
-   Ortam değişkeni `SecretPath`, tüm parolaların depolandığı dizine işaret eder. `testsecrets` bölümü altında listelenen her bir parametre ayrı bir dosyada depolanır. Uygulama artık gizli anahtarı şu şekilde kullanabilir:
+   Ortam değişkeni, `SecretPath` tüm sırların depolandığı dizini gösterir. `testsecrets` Bölümün altında listelenen her parametre ayrı bir dosyada saklanır. Uygulama şimdi aşağıdaki gibi gizli kullanabilirsiniz:
    ```C#
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
-1. Gizli dizileri bir kapsayıcıya bağlayın. Bir bağlama noktası, kapsayıcının içinde kullanılabilir hale getirmek için gereken tek değişiklik `<ConfigPackage>`bir bağlama noktası `specify`.
-Aşağıdaki kod parçacığı, değiştirilen **ApplicationManifest. xml**' dir.  
+1. Sırları bir konteynıra monte edin. Konteyner içinde kullanılabilir sırları yapmak için gerekli `specify` tek değişiklik `<ConfigPackage>`bir montaj noktasına.
+Aşağıdaki snippet değiştirilmiş **ApplicationManifest.xml**olduğunu.  
 
    ```xml
    <ServiceManifestImport>
@@ -179,9 +179,9 @@ Aşağıdaki kod parçacığı, değiştirilen **ApplicationManifest. xml**' dir
        </Policies>
      </ServiceManifestImport>
    ```
-   Gizli dizileri, kapsayıcının içindeki bağlama noktası altında bulunur.
+   Sırlar konteyner içinde montaj noktası altında mevcuttur.
 
-1. `Type='SecretsStoreRef`belirterek bir gizli dizi öğesini bir işlem ortam değişkenine bağlayabilirsiniz. Aşağıdaki kod parçacığı, `supersecret` sürümü `ver1` **Servicemanifest. xml**' de `MySuperSecret` ortam değişkenine nasıl bağlayacağınız konusunda bir örnektir.
+1. Bir işlemi ortamı değişkenine bir sırrı `Type='SecretsStoreRef`' nı belirterek bağlayabilirsiniz. Aşağıdaki `supersecret` parçacık `ver1` **ServiceManifest.xml'deki**sürümü çevre değişkenine `MySuperSecret` nasıl bağlayacak nasıl bağlanabildiğini gösteren bir örnektir.
 
    ```xml
    <EnvironmentVariables>

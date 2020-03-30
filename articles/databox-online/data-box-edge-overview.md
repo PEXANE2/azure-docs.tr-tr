@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack kenara genel bakış | Microsoft Docs
-description: Azure 'a ağ tabanlı Aktarım için fiziksel bir cihaz kullanan bir depolama çözümü olan Azure Stack Edge açıklanmaktadır.
+title: Microsoft Azure Yığın Kenarı genel bakış | Microsoft Dokümanlar
+description: Azure'a ağ tabanlı aktarım için fiziksel bir aygıt kullanan bir depolama çözümü olan Azure Yığını Kenarı'nı açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,81 +9,81 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: f463e8883efd5e2dfc4d7fff80912c193665b850
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78399793"
 ---
 # <a name="what-is-azure-stack-edge"></a>Azure Stack Edge nedir?
 
 [!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
 
-Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir AI özellikli Edge bilgi işlem aygıtıdır. Bu makalede, Azure Stack Edge çözümüne, avantajlara, önemli yeteneklere ve bu cihazı dağıtabileceğiniz senaryolara ilişkin bir genel bakış sunulmaktadır.
+Azure Stack Edge, ağ veri aktarım özelliklerine sahip, AI etkin kenar bilgi işlem aygıtıdır. Bu makalede, Azure Yığını Kenarı çözümüne, avantajlara, anahtar özelliklerine ve bu aygıtı dağıtabileceğiniz senaryolara genel bir bakış sunulur.
 
-Azure Stack Edge, bir hizmet olarak donanım çözümüdür. Microsoft, hızlandırılmış AI-ınlili sağlayan ve bir ağ depolama ağ geçidi 'nin tüm özelliklerine sahip olan yerleşik bir alan programlanabilir geçit dizisi (FPGA) ile birlikte bulut tarafından yönetilen bir cihaz sunar.
+Azure Stack Edge, hizmet olarak donanım çözümüdür. Microsoft, hızlandırılmış AI-inferencing sağlayan ve bir ağ depolama ağ geçidinin tüm özelliklerine sahip yerleşik Alan Programlanabilir Kapı Dizisi (FPGA) ile bulut tarafından yönetilen bir aygıt göndermiştir.
 
 ## <a name="use-cases"></a>Uygulama alanları
 
-Azure Stack Edge 'in Edge 'de hızlı Machine Learning (ML) için kullanılabileceği ve verileri Azure 'a göndermeden önce ön işlemesi için kullanabileceğiniz çeşitli senaryolar aşağıda verilmiştir.
+Azure Stack Edge'in, azure'a göndermeden önce hızlı Makine Öğrenimi (ML) tarafından sınırda çıkarılan ve verileri önceden işleme de kullanılabildiği çeşitli senaryolar aşağıda verilmiştir.
 
-- **Azure Machine Learning Ile çıkarım** -Azure Stack Edge ile, veri buluta gönderilmeden önce üzerinde işlem yapılabilir hızlı sonuçlar almak için ml modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modellerinizi yeniden eğitmeye ve artırmaya devam etmek için isteğe bağlı olarak aktarılabilir. Azure Stack Edge cihazında Azure ML donanım hızlandırılmış modellerini kullanma hakkında daha fazla bilgi için bkz. [Azure Stack Edge üzerinde Azure ML Hardware hızlandırılmış modellerini dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Azure Machine Learning ile çıkarım** - Azure Stack Edge ile, veriler buluta gönderilmeden önce harekete geçilebilen hızlı sonuçlar elde etmek için ML modellerini çalıştırabilirsiniz. Ml modellerinizi yeniden eğitmek ve geliştirmek için tam veri seti isteğe bağlı olarak aktarılabilir. Azure Stack Edge aygıtındaki Azure ML donanım hızlandırılmış modellerinin nasıl kullanılacağı hakkında daha fazla bilgi için Azure [Stack Edge'deki Azure ML donanım hızlandırılmış modelleri dağıt'a](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)bakın.
 
-- **Önceden işlem** yapılabilir bir veri kümesi oluşturmak Için verileri Azure 'a göndermeden önce veri dönüştürme. Önceden işleme şu amaçlarla kullanılabilir: 
+- **İşlem öncesi veriler** - Daha işlem yapılabilir bir veri kümesi oluşturmak için verileri Azure'a göndermeden önce dönüştürün. Önceden işleme şu amaçlarla kullanılabilir: 
 
     - Verileri toplama.
-    - Verileri değiştirin, örneğin kişisel verileri kaldırmak için.
-    - Depolama ve bant genişliğini iyileştirmek veya daha fazla analiz için verileri alt kümele.
+    - Örneğin kişisel verileri kaldırmak için verileri değiştirin.
+    - Depolama ve bant genişliğini optimize etmek veya daha fazla analiz için verileri alt kümele.
     - IoT Olaylarını analiz etme ve bunlara yanıt verme. 
 
-- **Ağ üzerinden Azure 'a veri aktarma** -daha fazla bilgi işlem ve analiz sağlamak veya arşivleme amacıyla verileri kolayca ve hızlı bir şekilde Azure 'a aktarmak Için Azure Stack Edge kullanın. 
+- **Ağ üzerinden Azure'a veri aktarımı** - Daha fazla bilgi işlem ve analiz sağlamak veya arşivleme amacıyla verileri azure'a kolayca ve hızlı bir şekilde aktarmak için Azure Stack Edge'i kullanın. 
 
 ## <a name="key-capabilities"></a>Temel işlevler
 
-Azure Stack Edge aşağıdaki yeteneklere sahiptir:
+Azure Stack Edge aşağıdaki özelliklere sahiptir:
 
 |Özellik |Açıklama  |
 |---------|---------|
-|Hızlandırılmış AI ınkrii| Yerleşik FPGA tarafından etkinleştirildi.|
+|Hızlandırılmış AI inferencing| Dahili FPGA tarafından etkinleştirilir.|
 |Bilgi işlem       |Verilerin analizine, işlenmesine, filtrelenmesine olanak tanır.|
-|Yüksek performans | Yüksek performanslı işlem ve veri aktarımları.|
-|Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi. Cihazdaki yerel önbellek, en son kullanılan dosyalara hızlı erişim için kullanılır.|
-|Bulutta yönetilen     |Cihaz ve hizmet, Azure portal aracılığıyla yönetilir.  |
+|Yüksek performans | Yüksek performanslı bilgi işlem ve veri aktarımları.|
+|Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi. Aygıttaki yerel önbellek, en son kullanılan dosyalara hızlı erişim için kullanılır.|
+|Bulut yönetimi     |Cihaz ve hizmet Azure portalı üzerinden yönetilir.  |
 |Çevrimdışı karşıya yükleme     | Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
-|Desteklenen protokoller     | Veri alımında standart SMB ve NFS protokolleri için destek. <br> Desteklenen sürümler hakkında daha fazla bilgi için bkz. [Azure Stack Edge sistem gereksinimleri](data-box-edge-system-requirements.md).|
+|Desteklenen protokoller     | Veri alımında standart SMB ve NFS protokolleri için destek. <br> Desteklenen sürümler hakkında daha fazla bilgi için [Azure Yığını Kenarı sistem gereksinimlerine](data-box-edge-system-requirements.md)bakın.|
 |Veri yenileme     | Yerel dosyaları buluttaki en son sürümle yenileme olanağı.|
-|Şifreleme    | Verileri yerel olarak şifrelemek ve *https* üzerinden buluta veri aktarımının güvenliğini sağlamak için BitLocker desteği.|
-|Bant genişliği azaltma| Yoğun saatlerde bant genişliği kullanımını sınırlandırmaya kısıtlama.|
-|ExpressRoute | ExpressRoute aracılığıyla güvenlik eklendi. Yerel cihazlardan gelen trafiğin, ExpressRoute üzerinden dolaşmasına neden olan eşleme yapılandırmasını kullanın. Daha fazla bilgi için bkz. [ExpressRoute 'a genel bakış](../expressroute/expressroute-introduction.md).
+|Şifreleme    | Verileri yerel olarak şifrelemek ve *https*üzerinden buluta veri aktarımLarını güvenli hale getirmek için BitLocker desteği.|
+|Bant genişliği azaltma| Yoğun saatlerde bant genişliği kullanımını sınırlamak için gaz.|
+|ExpressRoute | ExpressRoute ile güvenlik eklendi. Yerel aygıtlardan bulut depolama bitiş noktalarına giden trafiğin ExpressRoute üzerinden geçtiği gözleme yapılandırmasını kullanın. Daha fazla bilgi için bkz. [ExpressRoute'a genel bakış](../expressroute/expressroute-introduction.md).
 
 ## <a name="components"></a>Bileşenler
 
-Azure Stack Edge çözümü, Azure Stack Edge kaynağı, Azure Stack Edge fiziksel cihazından ve yerel bir Web kullanıcı arabiriminden oluşur.
+The Azure Stack Edge solution comprises of Azure Stack Edge resource, Azure Stack Edge physical device, and a local web UI.
 
-* **Azure Stack Edge fiziksel cihaz** -Azure 'a veri gönderecek şekilde yapılandırılabilen, Microsoft tarafından sağlanan bir 1U takılabilir sunucu.
+* **Azure Stack Edge fiziksel aygıtı** - Microsoft tarafından sağlanan ve Azure'a veri gönderecek şekilde yapılandırılabilen 1U rafa monte edilmiş bir sunucu.
     
-* **Azure Stack Edge kaynağı** : bir Azure Stack Edge cihazını, farklı coğrafi konumlardan erişebileceğiniz bir web arabiriminden yönetmenizi sağlayan Azure Portal bir kaynaktır. Kaynak oluşturmak ve yönetmek, cihazları ve uyarıları görüntülemek ve yönetmek ve paylaşımları yönetmek için Azure Stack Edge kaynağını kullanın.  
+* **Azure Stack Edge kaynağı** – Azure portalında, farklı coğrafi konumlardan erişebileceğiniz bir web arabiriminden Azure Stack Edge aygıtını yönetmenize olanak tanıyan bir kaynaktır. Kaynakları oluşturmak ve yönetmek, aygıtları ve uyarıları görüntülemek ve yönetmek ve paylaşımları yönetmek için Azure Yığını Kenarı kaynağını kullanın.  
 
     <!--![The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    Daha fazla bilgi için [Azure Stack Edge cihazınız için sipariş oluşturma](data-box-edge-deploy-prep.md#create-a-new-resource)bölümüne gidin.
+    Daha fazla bilgi için [Azure Stack Edge aygıtınız için sipariş oluştur'a](data-box-edge-deploy-prep.md#create-a-new-resource)gidin.
 
-* **Azure Stack Edge Yerel Web Kullanıcı arabirimi** -tanılamayı çalıştırmak için yerel Web Kullanıcı arabirimini kullanın, Azure Stack Edge cihazını kapatıp yeniden başlatın, kopyalama günlüklerini görüntüleyin ve hizmet isteği dosyası için Microsoft desteği başvurun.
+* **Azure Stack Edge local web UI** - Use the local web UI to run diagnostics, shut down and restart the Azure Stack Edge device, view copy logs, and contact Microsoft Support to file a service request.
 
     <!--![The Azure Stack Edge local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
 
-    Web tabanlı kullanıcı arabirimini kullanma hakkında daha fazla bilgi için, [Azure Stack kenarını yönetmek üzere Web tabanlı kullanıcı arabirimini kullanma](data-box-edge-manage-access-power-connectivity-mode.md)bölümüne gidin.
+    Web tabanlı Kullanıcı Arabirimi'ni kullanma hakkında bilgi için [Azure Yığın Kenarı'nızı yönetmek için web tabanlı Kullanıcı](data-box-edge-manage-access-power-connectivity-mode.md)Arabirimi'ni kullanın'a gidin.
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Azure Stack Edge fiziksel cihazı, Azure kaynağı ve verileri aktardığınız hedef depolama hesabının hepsi aynı bölgede olmalıdır.
+Azure Yığını Kenarı fiziksel aygıtı, Azure kaynağı ve veri aktardığınız hedef depolama hesabının tümü aynı bölgede olmak zorunda değildir.
 
-- **Kaynak kullanılabilirliği** -Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Kaynak kullanılabilirliği** - Azure Yığını Kenarı kaynağının bulunduğu tüm bölgelerin listesi [için, bölgeye göre kullanılabilen Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)bakın. Azure Yığını Kenarı, Azure Kamu Bulutu'nda da dağıtılabilir. Daha fazla bilgi için azure [devlet nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
     
-- **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır. Depolama hesaplarının Azure Stack uç verilerini depolayan bölgeler, cihazın en iyi performans için bulunduğu yere yakın yerleştirilmelidir. Cihazdan uzağa konumlandırılan depolama hesabı uzun gecikme sürelerine ve daha yavaş bir performansa yol açar.
+- **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır. Depolama hesaplarının depoladığı bölgeler, optimum performans için aygıtın bulunduğu yere yakın olmalıdır. Cihazdan uzağa konumlandırılan depolama hesabı uzun gecikme sürelerine ve daha yavaş bir performansa yol açar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack Edge sistem gereksinimlerini](data-box-edge-system-requirements.md)gözden geçirin.
-- [Azure Stack Edge sınırlarını](data-box-edge-limits.md)anlayın.
-- [Azure Azure Stack Edge](data-box-edge-deploy-prep.md) 'i Azure portal olarak dağıtın.
+- Azure [Yığın Kenarı sistem gereksinimlerini](data-box-edge-system-requirements.md)gözden geçirin.
+- Azure [Yığın Kenarı sınırlarını](data-box-edge-limits.md)anlayın.
+- Azure portalında [Azure Azure Yığın Kenarı'nı](data-box-edge-deploy-prep.md) dağıtın.

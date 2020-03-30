@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SAP HANA mimarisi (büyük örnekler) | Microsoft Docs
-description: Azure 'da SAP HANA dağıtma mimarisi (büyük örnekler).
+title: AZURE'da SAP HANA Mimarisi (Büyük Örnekler) | Microsoft Dokümanlar
+description: SAP HANA'nın Azure'da (Büyük Örnekler) nasıl dağıtılanabildiğini anlatan mimari.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,51 +14,51 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 041da4198b0bdd040a4916008a1135aa2e2a5f7d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614530"
 ---
-# <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) mimarisi
+# <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure'da SAP HANA (Büyük Örnekler) mimarisi
 
-Yüksek düzeyde, Azure 'daki SAP HANA (büyük örnekler) çözümdeki VM 'lerde bulunan SAP uygulama katmanı vardır. Veritabanı katmanı, Azure IaaS 'ye bağlı aynı Azure bölgesindeki büyük bir örnek damgasında bulunan SAP TDı tarafından yapılandırılmış donanımlar üzerinde bulunur.
+Yüksek düzeyde, Azure'daki SAP HANA (Büyük Örnekler) çözümü, VM'lerde bulunan SAP uygulama katmanına sahiptir. Veritabanı katmanı, Azure IaaS'a bağlı aynı Azure bölgesinde Büyük Örnek damgasında bulunan SAP TDI yapılandırılmış donanımında bulunur.
 
 > [!NOTE]
-> SAP uygulama katmanını SAP DBMS katmanıyla aynı Azure bölgesine dağıtın. Bu kural, Azure 'daki SAP iş yükleri hakkında yayımlanan bilgiler bölümünde da belgelenmiştir. 
+> SAP uygulama katmanını SAP DBMS katmanıyla aynı Azure bölgesinde dağıtın. Bu kural, Azure'daki SAP iş yükleri hakkında yayımlanmış bilgilerde iyi belgelenmiştir. 
 
-Azure 'daki SAP HANA genel mimarisi (büyük örnekler), SAP HANA veritabanı için sanallaştırılmamış, çıplak ve yüksek performanslı bir sunucu olan SAP TDı sertifikalı bir donanım yapılandırması sağlar. Ayrıca, Azure 'un gereksinimlerinizi karşılamak üzere SAP uygulama katmanının kaynaklarını ölçeklendirmesine yönelik özellik ve esneklik sağlar.
+Azure'daki SAP HANA'nın (Büyük Örnekler) genel mimarisi, SAP HANA veritabanı için sanallaştırılmayan, çıplak metal, yüksek performanslı bir sunucu olan SAP TDI sertifikalı bir donanım yapılandırması sağlar. Ayrıca, Azure'un SAP uygulama katmanının kaynaklarını gereksinimlerinizi karşılamak üzere ölçeklendirme olanağı ve esnekliği de sağlar.
 
-![Azure 'da SAP HANA mimari genel bakış (büyük örnekler)](./media/hana-overview-architecture/image1-architecture.png)
+![Azure'da SAP HANA'ya mimari genel bakış (Büyük Örnekler)](./media/hana-overview-architecture/image1-architecture.png)
 
 Gösterilen mimari üç bölüme ayrılmıştır:
 
-- **Sağ**: son kullanıcıların sap gibi LOB uygulamalarına erişebilmeleri için veri merkezlerinde farklı uygulamalar çalıştıran bir şirket içi altyapıyı gösterir. İdeal olarak, bu şirket içi altyapı [ExpressRoute](https://azure.microsoft.com/services/expressroute/)ile Azure 'a bağlanır.
+- **Sağ**: Son kullanıcıların SAP gibi LOB uygulamalarına erişebilmeleri için veri merkezlerinde farklı uygulamalar çalıştıran şirket içi altyapıyı gösterir. İdeal olarak, bu şirket içi altyapı [ExpressRoute](https://azure.microsoft.com/services/expressroute/)ile Azure'a bağlıdır.
 
-- **Center**: Azure IaaS 'yi gösterir ve bu durumda, bir DBMS sistemi olarak SAP HANA kullanan SAP veya diğer uygulamaları barındırmak Için VM 'leri kullanın. VM 'Lerin sağladığı bellekle işlev gösteren daha küçük HANA örnekleri, uygulama katmanıyla birlikte VM 'lerde dağıtılır. Sanal makineler hakkında daha fazla bilgi için bkz. [sanal makineler](https://azure.microsoft.com/services/virtual-machines/).
+- **Merkez**: Azure IaaS'ı ve bu durumda SAP'yi veya SAP HANA'yı DBMS sistemi olarak kullanan diğer uygulamaları barındırmak için VM'leri kullanır. VM'lerin sağladığı bellekle çalışan daha küçük HANA örnekleri, uygulama katmanlarıyla birlikte VM'lerde dağıtılır. Sanal makineler hakkında daha fazla bilgi için [Sanal makinelere](https://azure.microsoft.com/services/virtual-machines/)bakın.
 
-   Azure Ağ Hizmetleri, SAP sistemlerini diğer uygulamalarla birlikte sanal ağlara gruplandırmak için kullanılır. Bu sanal ağlar, şirket içi sistemlere ve Azure 'daki SAP HANA (büyük örnekler) bağlanır.
+   Azure ağ hizmetleri, SAP sistemlerini diğer uygulamalarla sanal ağlarda gruplandırmak için kullanılır. Bu sanal ağlar şirket içi sistemlere ve Azure'daki SAP HANA'ya (Büyük Örnekler) bağlanır.
 
-   SAP NetWeaver uygulamaları ve Azure 'da çalışması desteklenen veritabanları için bkz. [sap destek notunun #1928533 – Azure 'DA SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri](https://launchpad.support.sap.com/#/notes/1928533). SAP çözümlerini Azure 'da dağıtmaya ilişkin belgeler için, bkz.:
+   Azure'da çalıştırılmak üzere desteklenen SAP NetWeaver uygulamaları ve veritabanları için [Azure'daki SAP Destek Notu #1928533 - Azure'daki SAP uygulamalarına bakın: Desteklenen ürünler ve Azure VM türleri.](https://launchpad.support.sap.com/#/notes/1928533) SAP çözümlerinin Azure'da nasıl dağıtılanabildiğini belgelemek için bkz:
 
-  -  [Windows sanal makinelerinde SAP kullanma](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-  -  [Azure sanal makineler 'de SAP çözümlerini kullanma](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [SAP'yi Windows sanal makinelerde kullanma](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [Azure sanal makinelerde SAP çözümlerini kullanma](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **Sol**: Azure büyük örnek damgasında SAP HANA TDI sertifikalı donanımı gösterir. HANA büyük örnek birimleri, Şirket içinden Azure 'a bağlantı ile aynı teknolojiyi kullanarak Azure aboneliğinizin sanal ağlarına bağlanır. 2019 Mayıs itibariyle, ExpressRoute ağ geçidi ile Azure VM 'Leri arasında iletişim kurmaya izin veren bir iyileştirme tanıtılmıştır. ExpressRoute hızlı yolu olarak adlandırılan bu iyileştirme, Bu mimaride görüntülenir (kırmızı çizgiler). 
+- **Sol**: Azure Büyük Örnek damgasında SAP HANA TDI sertifikalı donanımı gösterir. HANA Büyük Örnek birimleri, şirket içi Azure'a bağlantıyla aynı teknolojiyi kullanarak Azure aboneliğinizin sanal ağlarına bağlanır. Mayıs 2019 itibariyle, HANA Büyük Örnek birimleri ile Azure VM'leri arasında ExpressRoute Ağ Geçidi'nin katılımı olmadan iletişim kurmasına olanak tanıyan bir optimizasyon sunuldu. ExpressRoute Hızlı Yol adı verilen bu optimizasyon bu mimaride (kırmızı çizgiler) görüntülenir. 
 
-Azure büyük örnek damgası, aşağıdaki bileşenleri birleştirir:
+Azure Büyük Örnek damgası kendisi aşağıdaki bileşenleri birleştirir:
 
-- **Bilgi işlem**: gerekli bilgi işlem yeteneğini sağlayan, farklı nesil Intel Xeon işlemcileri temel alan sunucular ve SAP HANA sertifikalıdır.
-- **Ağ**: bilgi işlem, depolama ve LAN bileşenlerini birbirine bağlayan Birleşik yüksek hızlı bir ağ yapısı.
-- **Depolama**: Birleşik bir ağ dokusunda erişilen bir depolama altyapısı. Belirtilen belirli depolama kapasitesi, dağıtılan Azure (büyük örnekler) yapılandırmasındaki belirli SAP HANA bağlıdır. Ek bir aylık maliyette daha fazla depolama kapasitesi mevcuttur.
+- **Bilgi İşlem**: Gerekli bilgi işlem yeteneğini sağlayan ve SAP HANA sertifikalı farklı nesil Intel Xeon işlemcilerine dayanan sunucular.
+- **Ağ**: Bilgi işlem, depolama ve LAN bileşenlerini birbirine bağlayan birleşik yüksek hızlı ağ dokusu.
+- **Depolama**: Birleşik ağ dokusu üzerinden erişilen depolama altyapısı. Sağlanan belirli depolama kapasitesi, dağıtılan Azure (Büyük Örnekler) yapılandırmasına ilişkin belirli SAP HANA'ya bağlıdır. Daha fazla depolama kapasitesi ek bir aylık maliyetle kullanılabilir.
 
-Büyük örnek damgasının çok kiracılı altyapısı içinde, müşteriler yalıtılmış kiracılar olarak dağıtılır. Kiracının dağıtımında, Azure kaydınız içinde bir Azure aboneliği adı alırsınız. Bu Azure aboneliği, HANA büyük örneğinin faturalandırılacağımız biridir. Bu kiracıların Azure aboneliğiyle 1:1 ilişkisi vardır. Bir ağ için, farklı Azure aboneliklerine ait farklı sanal ağlardan tek bir Azure bölgesinde tek bir kiracıya dağıtılan bir HANA büyük örnek birimine erişmek mümkündür. Bu Azure abonelikleri aynı Azure kaydına ait olmalıdır. 
+Büyük Örnek damgasının çok kiracılı altyapısı nda, müşteriler yalıtılmış kiracı olarak dağıtılır. Kiracının dağıtımında, Azure kaydınızda bir Azure aboneliği adlarsınız. Bu Azure aboneliği, HANA Büyük Örneği'nin karşı faturalandırıldığıdır. Bu kiracıların Azure aboneliğiyle 1:1 ilişkisi vardır. Bir ağ için, farklı Azure aboneliklerine ait farklı sanal ağlardan bir Azure bölgesinde bir kiracıda dağıtılan bir HANA Büyük Örnek birimine erişmek mümkündür. Bu Azure abonelikleri aynı Azure kaydına ait olmalıdır. 
 
-VM 'Lerde olduğu gibi Azure 'daki SAP HANA (büyük örnekler) birden çok Azure bölgesinde sunulur. Olağanüstü durum kurtarma özellikleri sunmak için, kabul etme seçeneğini belirleyebilirsiniz. Tek bir coğrafi siyasi bölge içindeki farklı büyük örnek damgaları birbirlerine bağlanır. Örneğin, ABD Batı ve ABD Doğu içindeki HANA büyük örnek damgaları, olağanüstü durum kurtarma çoğaltması için özel bir ağ bağlantısı üzerinden bağlanır. 
+VM'lerde olduğu gibi, Azure'daki SAP HANA (Büyük Örnekler) birden çok Azure bölgesinde sunulur. Olağanüstü durum kurtarma özellikleri sunmak için, katılmayı seçebilirsiniz. Bir jeo-politik bölgede farklı Büyük Örnek pulları birbirine bağlıdır. Örneğin, ABD Batı ve ABD Doğu HANA Büyük Örnek Damgalar olağanüstü durum kurtarma çoğaltma için özel bir ağ bağlantısı üzerinden bağlanır. 
 
-Azure sanal makineler ile farklı VM türleri arasında seçim yapabileceğiniz gibi, farklı iş yükü türleri SAP HANA için özel farklı HANA büyük örnek SKU 'larından seçim yapabilirsiniz. SAP, Intel işlemci nesilleri temelinde değişen iş yükleri için bellek-işlemci yuvası oranlarını uygular. Aşağıdaki tabloda sunulan SKU türleri gösterilmektedir.
+Azure Sanal Makineleri ile farklı VM türleri arasında seçim yapabileceğiniz gibi, SAP HANA'nın farklı iş yükü türlerine göre uyarlanmış hana büyük örneğinin farklı STU'ları arasından seçim yapabilirsiniz. SAP, Intel işlemci nesillerine göre değişen iş yükleri için bellekten işlemciye-soket oranları uygular. Aşağıdaki tabloda sunulan SKU türleri gösterilmektedir.
 
-[HLI için kullanılabilir SKU 'lar için kullanılabilir SKU 'ları](hana-available-skus.md)bulabilirsiniz.
+[HLI için mevcut SKUs kullanılabilir SKUs](hana-available-skus.md)bulabilirsiniz.
 
 **Sonraki adımlar**
-- [SAP HANA (büyük örnekler) ağ mimarisine](hana-network-architecture.md) başvurun
+- [SAP HANA (Büyük Örnekler) ağ mimarisine](hana-network-architecture.md) bakın

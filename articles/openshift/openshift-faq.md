@@ -1,69 +1,69 @@
 ---
-title: Azure Red Hat OpenShift hakkında sık sorulan sorular
-description: Red Hat OpenShift Microsoft Azure hakkında sık sorulan soruların yanıtları aşağıda verilmiştir
+title: Azure Red Hat OpenShift için sık sorulan sorular
+description: İşte Microsoft Azure Red Hat OpenShift ile ilgili sık sorulan soruların yanıtları
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f468cb294d79c44f92ef95437c0d88639a78b9a1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619497"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
-Bu makalede, Microsoft Azure Red Hat OpenShift hakkında sık sorulan sorular (SSS) ele alınmaktadır.
+Bu makalede, Microsoft Azure Red Hat OpenShift hakkında sık sorulan sorular (SSS) giderilmiştir.
 
-## <a name="which-azure-regions-are-supported"></a>Hangi Azure bölgeleri destekleniyor?
+## <a name="which-azure-regions-are-supported"></a>Hangi Azure bölgeleri desteklenir?
 
-Azure Red Hat OpenShift 'in desteklendiği genel bölgelerin listesi için bkz. [desteklenen kaynaklar](supported-resources.md#azure-regions) .
+Azure Red Hat OpenShift'in desteklendiği küresel bölgelerin listesi için [desteklenen kaynaklara](supported-resources.md#azure-regions) bakın.
 
-## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Bir kümeyi var olan bir sanal ağa dağıtabilir miyim?
+## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Bir kümeyi varolan bir sanal ağa dağıtabilir miyim?
 
-Hayır. Ancak, eşleme yoluyla bir Azure Red Hat OpenShift kümesini mevcut bir VNET 'e bağlayabilirsiniz. Ayrıntılar için bkz. [bir kümenin sanal ağını mevcut bir sanal ağa bağlama](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) .
+Hayır. Ancak, bir Azure Red Hat OpenShift kümesini gözleyerek varolan bir VNET'e bağlayabilirsiniz. Bkz. Bir kümenin sanal ağını ayrıntılar için [varolan bir sanal ağa bağlayın.](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)
 
 ## <a name="what-cluster-operations-are-available"></a>Hangi küme işlemleri kullanılabilir?
 
-Yalnızca işlem düğümleri sayısını ölçeklendirebilir veya azaltabilirsiniz. Oluşturulduktan sonra `Microsoft.ContainerService/openShiftManagedClusters` kaynağına başka değişikliklere izin verilmez. En fazla işlem düğümü sayısı 20 ile sınırlıdır.
+Yalnızca işlem düğümlerinin sayısını ölçeklendirebilir veya küçültebilirsiniz. Oluşturulduktan sonra `Microsoft.ContainerService/openShiftManagedClusters` kaynağa başka değişiklik yapılmasına izin verilmez. En fazla işlem düğümü sayısı 20 ile sınırlıdır.
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>Hangi sanal makine boyutlarını kullanabilirim?
 
-Azure Red Hat OpenShift kümesiyle kullanabileceğiniz sanal makine boyutlarının listesi için bkz. [Azure Red Hat OpenShift sanal makine boyutları](supported-resources.md#virtual-machine-sizes) .
+Azure Red Hat OpenShift kümesiyle kullanabileceğiniz sanal makine boyutlarının listesi için [Azure Red Hat OpenShift sanal makine boyutlarına](supported-resources.md#virtual-machine-sizes) bakın.
 
-## <a name="is-data-on-my-cluster-encrypted"></a>Kümemdeki veriler şifrelendi mi?
+## <a name="is-data-on-my-cluster-encrypted"></a>Kümemdeki veriler şifrelenmiş mi?
 
-Varsayılan olarak, bekleyen şifreleme vardır. Azure Storage platformu, verileri kalıcı yapmadan otomatik olarak şifreler ve almadan önce verilerin şifresini çözer. Ayrıntılar için bkz. [bekleyen veri Için Azure depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) .
+Varsayılan olarak, istirahatte şifreleme vardır. Azure Depolama platformu, verilerinizi kalıcı hale gelmeden önce otomatik olarak şifreler ve almadan önce verilerin şifresini çözer. Ayrıntılar [için veriler için Azure Depolama Hizmeti Şifrelemesi'ne](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) bakın.
 
 ## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Uygulamalarımı izlemek için Prometheus/Grafana kullanabilir miyim?
 
-Evet, ad alanınız içinde Prometheus dağıtabilir ve ad uzayındaki uygulamaları izleyebilirsiniz.
+Evet, Prometheus'u ad alanınızda dağıtabilir ve uygulamaları ad alanınızda izleyebilirsiniz.
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Prometheus/Grafana kullanarak küme durumu ve kapasitesine ilişkin ölçümleri izleyebilir miyim?
+## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Küme durumu ve kapasitesiyle ilgili ölçümleri izlemek için Prometheus/Grafana kullanabilir miyim?
 
-Hayır, geçerli zamanda değil.
+Hayır, şu anda değil.
 
-## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Jenkins gibi araçları kullanabilmeniz için Docker kayıt defteri dışarıdan kullanılabilir mi?
+## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Docker kayıt defteri, Jenkins gibi araçları kullanabilmek için dışarıdan kullanılabilir mi?
 
-Docker kayıt defterinin `https://docker-registry.apps.<clustername>.<region>.azmosa.io/`, ancak güçlü bir depolama dayanıklılık garantisi sağlanmaz. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)de kullanabilirsiniz.
+Docker kayıt defteri ancak `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` kullanılabilir, güçlü bir depolama dayanıklılık garantisi sağlanmaz. Azure Kapsayıcı [Kayıt Defteri'ni](https://azure.microsoft.com/services/container-registry/)de kullanabilirsiniz.
 
-## <a name="is-cross-namespace-networking-supported"></a>Çapraz ad alanı ağı destekleniyor mu?
+## <a name="is-cross-namespace-networking-supported"></a>Çapraz ad alanı ağı desteklenir mi?
 
-Müşteri ve bireysel proje yöneticileri, `NetworkPolicy` nesneleri kullanarak her proje için çapraz ad alanı ağını (reddetme dahil) özelleştirebilir.
+Müşteri ve tek tek proje yöneticileri, nesneleri kullanarak `NetworkPolicy` proje bazında çapraz ad alanı ağ oluşturmayı (reddetme dahil) özelleştirebilir.
 
-## <a name="can-an-admin-manage-users-and-quotas"></a>Yönetici, kullanıcıları ve kotaları yönetebilir mi?
+## <a name="can-an-admin-manage-users-and-quotas"></a>Bir yönetici kullanıcıları ve kotaları yönetebilir mi?
 
-Evet. Azure Red Hat OpenShift Yöneticisi, Kullanıcı tarafından oluşturulan tüm projelere erişilmesine ek olarak kullanıcıları ve kotaları yönetebilir.
+Evet. Azure Red Hat OpenShift yöneticisi, kullanıcı tarafından oluşturulan tüm projelere erişmeye ek olarak kullanıcıları ve kotaları yönetebilir.
 
-## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Bir kümeyi yalnızca belirli Azure AD kullanıcılarıyla kısıtlayabilir miyim?
+## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Bir kümeyi yalnızca belirli Azure AD kullanıcılarıyla sınırlayabilir miyim?
 
-Evet. Azure AD uygulamasını yapılandırarak, hangi Azure AD kullanıcılarının bir kümede oturum açmasını kısıtlayabilirsiniz. Ayrıntılar için bkz [. nasıl yapılır: uygulamanızı bir Kullanıcı kümesiyle kısıtlama](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+Evet. Azure AD Uygulamasını yapılandırarak hangi Azure AD kullanıcılarının kümede oturum açabileceğini kısıtlayabilirsiniz. Ayrıntılar için [bkz: Uygulamanızı bir kullanıcı kümesiyle sınırlandırın](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
 
-## <a name="can-i-restrict-users-from-creating-projects"></a>Kullanıcıların proje oluşturmasını kısıtlayabilirim miyim?
+## <a name="can-i-restrict-users-from-creating-projects"></a>Kullanıcıların proje oluşturmalarını kısıtlayabilir miyim?
 
-Evet. Kümenizde Azure Red Hat OpenShift Yöneticisi olarak oturum açın ve şu komutu yürütün:
+Evet. Kümenizde Azure Red Hat OpenShift yöneticisi olarak oturum açın ve şu komutu uygulayın:
 
 ```
 oc adm policy \
@@ -71,138 +71,138 @@ oc adm policy \
     system:authenticated:oauth
 ```
 
-Daha fazla bilgi için bkz. [kendi kendine sağlamayı devre dışı bırakma](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)hakkında OpenShift belgeleri.
+Daha fazla bilgi için, kendi kendini sağlama devre dışı bırakma yla ilgili OpenShift [belgelerine](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)bakın.
 
-## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Bir kümenin birden fazla Azure bölgesinde işlem düğümleri olabilir mi?
+## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Bir kümenin birden çok Azure bölgesinde işlem düğümleri olabilir mi?
 
-Hayır. Bir Azure Red Hat OpenShift kümesindeki tüm düğümler aynı Azure bölgesinden kaynaklanmalıdır.
+Hayır. Azure Kırmızı Şapka OpenShift kümesindeki tüm düğümlerin aynı Azure bölgesinden kaynaklanması gerekir.
 
-## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Ana ve altyapı düğümleri Azure Kubernetes hizmeti (AKS) ile çalıştıkları için soyut mı?
+## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile olduğu gibi ana ve altyapı düğümleri soyutlandı mı?
 
-Hayır. Küme Yöneticisi de dahil olmak üzere tüm kaynaklar müşteri aboneliğinizde çalışır. Bu tür kaynaklar salt okunurdur bir kaynak grubuna yerleştirilir.
+Hayır. Küme yöneticisi de dahil olmak üzere tüm kaynaklar müşteri aboneliğinizde çalışır. Bu tür kaynaklar salt okunur kaynak grubuna konur.
 
-## <a name="is-open-service-broker-for-azure-osba-supported"></a>Azure için açık Hizmet Aracısı (OSBA) destekleniyor mu?
+## <a name="is-open-service-broker-for-azure-osba-supported"></a>Azure için Open Service Broker (OSBA) desteklendi mi?
 
-Evet. OSBA 'yi Azure Red Hat OpenShift ile birlikte kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure için hizmet Aracısı açma](https://github.com/Azure/open-service-broker-azure#openshift-project-template) .
+Evet. AZURE Red Hat OpenShift ile OSBA'yı kullanabilirsiniz. Daha fazla bilgi [için Azure için Açık Servis Aracı'na](https://github.com/Azure/open-service-broker-azure#openshift-project-template) bakın.
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Farklı bir abonelikte bir sanal ağa eşdüzey ve `Failed to get vnet CIDR` hatası alma girişimi yaşıyorum.
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Ben farklı bir abonelik sanal bir ağa peer `Failed to get vnet CIDR` çalışıyorum ama hata alıyorum.
 
-Sanal ağı olan abonelikte `Microsoft.ContainerService` sağlayıcısını `az provider register -n Microsoft.ContainerService --wait` ile kaydettiğinizden emin olun 
+Sanal ağa sahip abonelikte, `Microsoft.ContainerService` sağlayıcıyı`az provider register -n Microsoft.ContainerService --wait` 
 
 ## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Azure Red Hat OpenShift (ARO) bakım işlemi nedir?
 
-ARO: yükseltmeler, etcd verilerinin yedeklenmesi ve geri yüklenmesi ve bulut sağlayıcısının başlattığı bakım için üç tür bakım vardır.
+ARO için üç tür bakım vardır: yükseltmeler, etcd verilerinin yedeklenme ve geri yüklemesi ve bulut sağlayıcısı tarafından başlatılan bakım.
 
-+ Yükseltmeler yazılım yükseltmeleri ve Cvileri içerir. CVE düzeltmesi, `yum update` çalıştırılarak ve anında risk azaltma için sağlanarak oluşur.  Paralel olarak, gelecekteki küme oluşturmak için yeni bir görüntü derlemesi oluşturulacaktır.
++ Yükseltmeler yazılım yükseltmeleri ve CV'ler içerir. CVE düzeltme çalıştırArak başlangıç `yum update` oluşur ve hemen azaltma sağlar.  Paralel olarak yeni bir görüntü oluşturma gelecek küme oluşturur için oluşturulur.
 
-+ Etcd verilerinin yedeklenmesi ve yönetimi, eyleme bağlı olarak küme kapalı kalma süresi gerektirebilecek otomatikleştirilmiş bir işlemdir. Etcd veritabanı bir yedekten geri yüklenirse kapalı kalma süresi olacaktır. Etcd 'yi her saat yedekliyoruz ve son 6 saat yedeklemenin tutulması önerilir.
++ ETCD verilerinin yedeklemesi ve yönetimi, eyleme bağlı olarak küme kapalı kalma süresi gerektirebilecek otomatik bir işlemdir. ETCD veritabanı bir yedeklemeden geri yükleniyorsa, kapalı kalma süresi olacaktır. Biz etcd saatlik yedekleme ve yedekleri son 6 saat korumak.
 
-+ Bulut sağlayıcısı tarafından başlatılan bakımda ağ, depolama ve bölgesel kesintiler bulunur. Bakım, bulut sağlayıcısına bağımlıdır ve sağlayıcı tarafından sağlanan güncelleştirmelere dayanır.
++ Bulut sağlayıcısı tarafından başlatılan bakım, ağ, depolama ve bölgesel kesintileri içerir. Bakım bulut sağlayıcısına bağlıdır ve sağlayıcı tarafından sağlanan güncelleştirmeleri dayanır.
 
 ## <a name="what-is-the-general-upgrade-process"></a>Genel yükseltme işlemi nedir?
 
-Bir yükseltmenin çalıştırılması, çalıştırmak için güvenli bir işlem olmalıdır ve küme hizmetlerini kesintiye uğramamalıdır. SRE, yeni sürümler kullanılabilir olduğunda veya cele alırken yükseltme işlemini tetikleyebilirler.
+Yükseltme çalıştırmak, çalıştırmak için güvenli bir işlem olmalıdır ve küme hizmetlerini kesintiye uğratmamalıdır. SRE, yeni sürümler kullanılabilir olduğunda veya CV'ler olağanüstü olduğunda yükseltme işlemini tetikleyebilir.
 
-Kullanılabilir güncelleştirmeler bir aşama ortamında test edilir ve ardından üretim kümelerine uygulanır. Uygulandığında, yeni bir düğüm geçici olarak eklenir ve düğümler çoğaltma sayısını koruyacak şekilde bir döndürme olarak güncelleştirilir. Aşağıdaki en iyi yöntemler, kesinti olmaması için en az düzeyde güvence sağlanmasına yardımcı
+Kullanılabilir güncelleştirmeler bir aşama ortamında sınanır ve daha sonra üretim kümelerine uygulanır. Uygulandığında, yeni bir düğüm geçici olarak eklenir ve bölmelerin yineleme sayılarını koruyabilmesi için düğümler dönen bir şekilde güncelleştirilir. En iyi uygulamaları takip etmek, en az ve hiçbir kapalı kalma süresini sağlamaya yardımcı olur.
 
-Bekleyen yükseltmenin veya güncelleştirmenin önem derecesine bağlı olarak, işlemin hizmetin bir CVE 'ın etkilenme olasılığını azaltmak için hızlı bir şekilde uygulanabileceğini fark edebilirsiniz. Yeni bir görüntü, zaman uyumsuz, test edilmiş ve küme yükseltmesi olarak kullanıma alınmış olarak oluşturulur. Bunun dışında, acil durum ve planlı bakım arasında fark yoktur. Planlı bakım, müşteriyle birlikte önceden kullanılamaz.
+Bekleyen yükseltme veya güncelleştirmenin önem derecesine bağlı olarak, güncelleştirmelerin hizmetin CVE'ye maruz kalmasını azaltmak için hızlı bir şekilde uygulanabileceği nde işlem farklılık gösterebilir. Yeni bir görüntü eşzamanlı olarak oluşturulur, sınanacaktır ve küme yükseltmesi olarak kullanıma sunulacaktır. Bunun dışında, acil durum ve planlı bakım arasında hiçbir fark yoktur. Planlanan bakım müşteri ile önceden planlanmaz.
 
-Müşteri iletişimi gerekliyse, bildirimler ICM ve e-posta aracılığıyla gönderilebilir.
+Bildirimler, müşteriyle iletişim e-posta yoluyla gönderilebilir.
 
-## <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Acil durum ile planlanmış bakım pencereleri hakkında ne olacak?
+## <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Peki ya acil durum ve planlı bakım pencereleri?
 
-İki tür bakım arasında ayrım yapmıyoruz. Takımlarımız 24/7/365 kullanılabilir ve geleneksel olarak zamanlanan "saat dışı" bakım pencerelerini kullanmıyor.
+İki bakım türünü birbirinden ayırmıyoruz. Ekiplerimiz 7/24 mevcuttur ve geleneksel zamanlanmış "mesai dışı" bakım pencerelerini kullanmaz.
 
-## <a name="how-will-host-operating-system-and-openshift-software-be-updated"></a>İşletim sistemi ve OpenShift yazılımı nasıl güncelleştirilir?
+## <a name="how-will-host-operating-system-and-openshift-software-be-updated"></a>Barındırma işletim sistemi ve OpenShift yazılımı nasıl güncellenecek?
 
-Ana bilgisayar işletim sistemi ve OpenShift yazılımı, genel yükseltme ve görüntü oluşturma sürecimiz aracılığıyla güncelleştirilir.
+Ana bilgisayar işletim sistemi ve OpenShift yazılımı, genel yükseltme ve görüntü oluşturma sürecimiz aracılığıyla güncellenir.
 
 ## <a name="whats-the-process-to-reboot-the-updated-node"></a>Güncelleştirilmiş düğümü yeniden başlatma işlemi nedir?
 
-Bu, yükseltmenin bir parçası olarak işlenmelidir.
+Bu, yükseltmenin bir parçası olarak ele alınmalıdır.
 
-## <a name="is-data-stored-in-etcd-encrypted-on-aro"></a>Veriler, ARO 'da şifreli olarak depolanmış mı?
+## <a name="is-data-stored-in-etcd-encrypted-on-aro"></a>ARO'da veri depolanır mı?
 
-Etcd düzeyinde şifrelenmez. Etkinleştirme seçeneği şu anda desteklenmiyor. Openshıft bu özelliği destekler, ancak mühendislik çabalarının yol eşlemesinde olması gerekir. Veriler disk düzeyinde şifrelenir. Daha fazla bilgi için [veri deposu katmanındaki verileri şifreleme](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) bölümüne bakın.
+Etcd düzeyinde şifrelenmez. Açma seçeneği şu anda desteklenmiş. OpenShift bu özelliği destekler, ancak yol haritasıüzerinde yapmak için mühendislik çabaları gereklidir. Veriler disk düzeyinde şifrelenir. Daha fazla bilgi için [Datastore Katmanı'ndaki Verileri Şifreleme'ye](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) bakın.
 
-## <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>Temel alınan VM 'lerin günlükleri bir müşteri günlüğü analiz sistemine teslim edilebilir mi?
+## <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>Temel VM'lerin günlükleri müşteri günlüğü analiz sistemine aktarılabilir mi?
 
-Syslog, Docker günlükleri, Journal ve dmesg, yönetilen hizmet tarafından işlenir ve müşterilere gösterilmez.
+Syslog, docker günlükleri, günlük ve dmesg yönetilen hizmet tarafından işlenir ve müşterilere açık değildir.
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Bir müşteri, düğüm düzeyindeki CPU/bellek gibi ölçümlere nasıl erişim alabilir, bu da ölçeklendirme, hata ayıklama sorunları vb. için işlem gerçekleştirebilir. Bir ARO kümesinde `kubectl top` çalıştıramıyorum.
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Bir müşteri, ölçeklendirme, hata ayıklama sorunları vb. için harekete geçmek için düğüm düzeyinde CPU/bellek gibi ölçümlere nasıl erişebilir? Ben bir ARO kümesi üzerinde çalıştırmak `kubectl top` için görünmüyor olabilir.
 
-Müşteriler, komut `oc adm top nodes` veya müşteri-yönetici kümerolü ile `kubectl top nodes` kullanarak düğüm düzeyindeki CPU/bellek ölçümlerine erişebilirler.  Müşteriler Ayrıca, `pods` CPU/bellek ölçümlerine `oc adm top pods` veya komutla erişebilir `kubectl top pods`
+Müşteriler komutu `oc adm top nodes` kullanarak veya `kubectl top nodes` müşteri-yönetici kümelemesiyle cpu/bellek ölçümlerine düğüm düzeyinde erişebilir.  Müşteriler ayrıca CPU/Bellek ölçümlerine `pods` komutla `oc adm top pods` veya`kubectl top pods`
 
-## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO için varsayılan Pod Zamanlayıcı Yapılandırması nedir?
+## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO için varsayılan pod zamanlayıcı yapılandırması nedir?
 
-ARO, OpenShift 'te gelen varsayılan zamanlayıcıyı kullanır. ARO 'de desteklenmeyen birkaç ek mekanizma vardır. Daha fazla ayrıntı için [varsayılan Zamanlayıcı belgeleri](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) ve [ana Zamanlayıcı belgelerine](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) bakın.
+ARO, OpenShift'te bulunan varsayılan zamanlayıcıyı kullanır. ARO'da desteklenmeyen birkaç ek mekanizma vardır. Daha fazla ayrıntı için [varsayılan zamanlayıcı belgelerine](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) ve [ana zamanlayıcı belgelerine](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) bakın.
 
-Gelişmiş/özel zamanlama Şu anda desteklenmiyor. Daha fazla ayrıntı için [zamanlama belgelerine](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) bakın.
+Gelişmiş/Özel zamanlama şu anda desteklenmiş durumda. Daha fazla ayrıntı için [Zamanlama belgelerine](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) bakın.
 
-## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Dağıtımı ölçeklendirebiliyoruz, Azure hata etki alanları, bir hizmetin tüm yığınlarını tek bir hata etki alanındaki bir hata nedeniyle Alta almaz hale getirmek için pod yerleştirme ile nasıl eşlenir?
+## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Dağıtımı büyütürsek, bir hizmetin tüm bölmelerinin tek bir hata etki alanında bir hata tarafından nakavt edilmemesini sağlamak için Azure hata etki alanları pod yerleşimine nasıl eşlenir?
 
-Azure 'da sanal makine ölçek kümeleri kullanılırken varsayılan beş hata etki alanı vardır. Ölçek kümesindeki her bir sanal makine örneği, bu hata etki alanlarından birine yerleştirilir. Bu, bir kümedeki işlem düğümlerine dağıtılan uygulamaların ayrı hata etki alanlarına yerleştirilmelerini sağlar.
+Azure'da sanal makine ölçek kümeleri kullanırken varsayılan olarak beş hata etki alanı vardır. Bir ölçek kümesindeki her sanal makine örneği bu hata etki alanlarından birine yerleştirilir. Bu, kümedeki bilgi işlem düğümlerine dağıtılan uygulamaların ayrı hata etki alanlarında yerleştirilmesini sağlar.
 
-Daha ayrıntılı bilgi için [sanal makine ölçek kümesi için hata etki alanlarının doğru sayısını seçme](https://docs.microsoft.com//azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains) bölümüne bakın.
+Daha fazla ayrıntı [için sanal makine ölçeği kümesi için doğru sayıda hata etki alanı seçme](https://docs.microsoft.com//azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains) bölümüne bakın.
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>Pod yerleşimini yönetmenin bir yolu var mı?
 
-Müşteriler, düğüm alma ve etiketleri müşteri yöneticisi olarak görüntüleme imkanına sahiptir.  Bu, ölçek kümesindeki tüm VM 'leri hedeflemek için bir yol sağlar.
+Müşteriler düğüm alma ve etiketleri müşteri yöneticisi olarak görüntüleme olanağına sahiptir.  Bu, ölçek kümesindeki herhangi bir VM'yi hedeflemenin bir yolunu sağlar.
 
-Belirli Etiketler kullanılırken dikkatli olunmalıdır:
+Belirli etiketler kullanılırken dikkatli olunmalıdır:
 
-- Ana bilgisayar adı kullanılmamalıdır. Ana bilgisayar adı yükseltmeler ve güncelleştirmeler ile sık döndürülür ve değişiklik garanti edilir.
+- Ana bilgisayar adı kullanılmamalıdır. Ana bilgisayar adı genellikle yükseltmeleri ve güncellemeleri ile döndürülür ve değiştirmek için garanti edilir.
 
-- Müşterinin belirli Etiketler veya bir dağıtım stratejisi için bir isteği varsa, bu gerçekleştirilebilir ancak mühendislik çabalarına ihtiyaç duyar ve bugün desteklenmez.
+- Müşterinin belirli etiketler veya dağıtım stratejisi için bir isteği varsa, bu gerçekleştirilebilir, ancak mühendislik çabaları gerektirir ve bugün desteklenmez.
 
-## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Bir Aro kümesindeki maksimum sayıda Pod nedir?  ARO 'daki düğüm başına en fazla düğüm sayısı nedir?
+## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Bir ARO kümesindeki en fazla bölme sayısı nedir?ARO'da düğüm başına en fazla bölme sayısı nedir?
 
- Azure Red Hat OpenShift 3,11, [Aro 'nin 20 işlem düğüm sınırına](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)sahip olması için bir 50-Pod düğüm sınırına sahiptir, bu nedenle bir Aro kümesinde desteklenen maksimum sayıda Pod 'nin 50 * 20 = 1000 olması gerekir.
+ Azure Red Hat OpenShift 3.11, [ARO'nun 20 işlem düğümü sınırına sahip](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)olmasıyla düğüm başına 50 bölme sınırına sahiptir, böylece bir ARO kümesinde desteklenen maksimum bölme sayısını 50*20 = 1000'e kapsar.
 
-## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Özel VNET üzerinde dağıtım için IP aralıklarını belirtebilir, eşlendikten sonra diğer kurumsal VNET 'ler ile çakışıyor önleyebilirsiniz.
+## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Özel VNET'te dağıtım için IP aralıkları belirtebilir miyiz?
 
-Azure Red Hat OpenShift, VNET eşlemesini destekler ve müşterinin, OpenShift ağının çalışacağı VNET 'e ve sanal ağa VNET sağlamasına izin verir.
+Azure Red Hat OpenShift, VNET'in eşlemesine ve OpenShift ağının çalışacağı bir VNET'e olanak tanır.
 
-ARO tarafından oluşturulan VNET korunacaktır ve yapılandırma değişikliklerini kabul etmez. Eşlenen VNET müşteri tarafından denetlenir ve aboneliklerinde bulunur.
+ARO tarafından oluşturulan VNET korunacak ve yapılandırma değişikliklerini kabul etmeyecektir. Bakan VNET müşteri tarafından denetlenir ve aboneliklerinde bulunur.
 
-## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Küme bir müşteri aboneliğinde mı var? 
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Küme müşteri aboneliğinde mi yaşıyor? 
 
-Azure yönetilen uygulaması, bir kilitli kaynak grubunda Müşteri aboneliğiyle birlikte bulunur. Müşteri, söz konusu RG 'de nesneleri görüntüleyebilir ancak değiştiremez.
+Azure Yönetilen Uygulama, müşteri aboneliğiyle birlikte kilitli bir Kaynak Grubunda yaşar. Müşteri bu RG'deki nesneleri görüntüleyebilir, ancak değiştiremez.
 
 ## <a name="is-the-sdn-module-configurable"></a>SDN modülü yapılandırılabilir mi?
 
-SDN, OpenShift-OVS-networkpolicy ve yapılandırılamaz.
+SDN openshift-ovs-networkilkesidir ve yapılandırılamaz.
 
-## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Ana uygulamalar/Infra/uygulama düğümleri için hangi UNIX hakları (IaaS 'de) kullanılabilir?
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Masters/Infra/App Düğümleri için hangi UNIX hakları (IaaS'de) kullanılabilir?
 
-Bu teklif için geçerli değildir. Düğüm erişimi yasak.
+Bu teklif için geçerli değildir. Düğüm erişimi yasaktır.
 
-## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Hangi OCP haklarına sahip olduğumuz? Küme Yöneticisi? Proje-yönetici?
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Hangi OCP haklarına sahibiz? Küme yöneticisi mi? Proje yöneticisi mi?
 
-Ayrıntılar için bkz. Azure Red Hat OpenShift [küme yönetimine genel bakış](https://docs.openshift.com/aro/admin_guide/index.html).
+Ayrıntılar için Azure Red Hat OpenShift [küme yönetimine genel bakış](https://docs.openshift.com/aro/admin_guide/index.html)bölümüne bakın.
 
-## <a name="which-kind-of-federation-with-ldap"></a>LDAP ile hangi tür Federasyon?
+## <a name="which-kind-of-federation-with-ldap"></a>LDAP ile federasyon ne tür?
 
-Bu, Azure AD tümleştirmesi aracılığıyla elde edilir. 
+Bu, Azure AD tümleştirmesi ile elde edilebilir. 
 
-## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Diğer müşterilerle Paylaşılanlar içinde herhangi bir öğe var mı? Ya da her şey bağımsız mi?
+## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>ARO'da diğer müşterilerle paylaşılan herhangi bir öğe var mı? Yoksa her şey bağımsız mı?
 
-Her bir Azure Red Hat OpenShift kümesi, belirli bir müşteriye ayrılmıştır ve müşterinin aboneliği dahilinde bulunur. 
+Her Azure Red Hat OpenShift kümesi belirli bir müşteriye adanmıştır ve müşterinin aboneliği içinde yaşar. 
 
-## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>OCS gibi kalıcı depolama çözümlerini seçebilir miyim? 
+## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>OCS gibi kalıcı depolama çözümlerini seçebilir miyiz? 
 
-Seçebileceğiniz iki depolama sınıfı vardır: Azure disk ve Azure dosyası.
+İki depolama sınıfı arasından seçim yapmak için kullanılabilir: Azure Disk ve Azure Dosyası.
 
-## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Küme nasıl güncelleştirilir (güvenlik açıklarına bağlı olarak Majors ve sömürmeyi amaçlama dahil)?
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Bir küme nasıl güncelleştirilir (güvenlik açıkları nedeniyle büyükler ve reşit olmayanlar dahil)?
 
-Bkz [. genel yükseltme işlemi nedir?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
+Genel [yükseltme işlemi nedir?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
 
-## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>ARO tarafından hangi Azure yük dengeleyici kullanılır?  BT standart veya temel midir ve yapılandırılabilir mi?
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>ARO tarafından hangi Azure Yük dengeleyicisi kullanılır?Standart mı, Temel mi ve yapılandırılabilir mi?
 
-ARO standart Azure Load Balancer kullanır ve yapılandırılamaz.
+ARO Standart Azure Yük Dengeleyicisi kullanır ve yapılandırılamaz.
 
-## <a name="can-aro-use-netapp-based-storage"></a>ARO, NetApp tabanlı depolama kullanabilir mi?
+## <a name="can-aro-use-netapp-based-storage"></a>ARO NetApp tabanlı depolama yı kullanabilir mi?
 
-Şu anda yalnızca Azure disk ve Azure dosya depolama sınıfları desteklenen depolama seçenekleridir. 
+Şu anda desteklenen tek depolama seçeneği Azure Disk ve Azure Dosyası depolama sınıflarıdır. 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SAP HANA boyutlandırma (büyük örnekler) | Microsoft Docs
-description: Azure 'da SAP HANA boyutlandırma (büyük örnekler).
+title: SAP HANA'nın Azure'da Boyutlandırılması (Büyük Örnekler) | Microsoft Dokümanlar
+description: SAP HANA'nın Azure'da boyutlandırması (Büyük Örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,25 +14,25 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 404f8318816edcc2cfd1c50ca42304ff6ec93039
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616903"
 ---
 # <a name="sizing"></a>Boyutlandırma
 
-HANA büyük örneğinin boyutlandırılması, genel olarak HANA için boyutdan farklı değildir. Diğer RDBMS 'den HANA 'ya taşımak istediğiniz mevcut ve dağıtılan sistemler için SAP, mevcut SAP sistemlerinizde çalışan bir dizi rapor sağlar. Veritabanı HANA 'ya taşınırsa, bu raporlar verileri denetler ve HANA örneği için bellek gereksinimlerini hesaplar. Bu raporları çalıştırma ve en son düzeltme eklerini veya sürümlerini edinme hakkında daha fazla bilgi için aşağıdaki SAP notlarını okuyun:
+HANA Büyük Örnek için boyutlandırma genel olarak HANA için boyutlandırma farklı değildir. Sap, diğer RDBMS'den HANA'ya taşımak istediğiniz varolan ve dağıtılan sistemler için, varolan SAP sistemlerinizde çalışan bir dizi rapor sağlar. Veritabanı HANA'ya taşınırsa, bu raporlar verileri denetler ve HANA örneği için bellek gereksinimlerini hesaplar. Bu raporların nasıl çalıştırılacakları ve en son düzeltme ekleri veya sürümlerini nasıl elde edeceğimiz hakkında daha fazla bilgi için aşağıdaki SAP Notlarını okuyun:
 
-- [SAP Note #1793345-HANA 'da SAP Suite için boyutlandırma](https://launchpad.support.sap.com/#/notes/1793345)
-- [SAP Note #1872170 HANA ve S/4 HANA boyutlandırma raporunda Suite](https://launchpad.support.sap.com/#/notes/1872170)
-- [SAP Note #2121330-SSS: SAP BW HANA boyutlandırma raporunda](https://launchpad.support.sap.com/#/notes/2121330)
-- [SAP Note #1736976-HANA 'da siyah beyaz için boyutlandırma raporu](https://launchpad.support.sap.com/#/notes/1736976)
-- [SAP Note #2296290-bit GENIŞLIĞI için HANA 'da yeni boyutlandırma raporu](https://launchpad.support.sap.com/#/notes/2296290)
+- [SAP Note #1793345 - HANA'da SAP Suite için boyutlandırma](https://launchpad.support.sap.com/#/notes/1793345)
+- [SAP Note #1872170 - HANA ve S/4 HANA boyutlandırma raporunda süit](https://launchpad.support.sap.com/#/notes/1872170)
+- [SAP Not #2121330 - SSS: SAP BW HANA boyutlandırma raporu](https://launchpad.support.sap.com/#/notes/2121330)
+- [SAP Not #1736976 - HANA BW için boyutlandırma raporu](https://launchpad.support.sap.com/#/notes/1736976)
+- [SAP Not #2296290 - HANA BW için yeni boyutlandırma raporu](https://launchpad.support.sap.com/#/notes/2296290)
 
-Yeşil alan uygulamaları için SAP Quick sizer, HANA 'nın en üstünde SAP yazılımı uygulamasının bellek gereksinimlerini hesaplamak için kullanılabilir.
+Yeşil alan uygulamaları için, SAP Hızlı Boyutlayıcı HANA üstüne SAP yazılımının uygulanmasıbellek gereksinimlerini hesaplamak için kullanılabilir.
 
-Veri hacmi büyüdükçe, HANA için bellek gereksinimleri artırın. Gelecekte neler olduğunu tahmin etmenize yardımcı olması için geçerli bellek tüketiminizi göz önünde bulundurun. Bellek gereksinimlerine bağlı olarak, talep içeriğinizi HANA büyük örnek SKU 'larından birine eşleyebilirsiniz.
+Veri hacmi arttıkça HANA için bellek gereksinimleri artar. Gelecekte ne olacağını tahmin etmek için mevcut bellek tüketiminize dikkat edin. Bellek gereksinimlerine bağlı olarak, talebinizi HANA Büyük Örnek SUK'larından birine eşleyebilirsiniz.
 
 **Sonraki adımlar**
-- [Ekleme gereksinimlerini](hana-onboarding-requirements.md) inceleyin
+- [Onboarding gereksinimlerine](hana-onboarding-requirements.md) bakın

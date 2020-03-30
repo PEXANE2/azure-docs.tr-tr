@@ -1,6 +1,6 @@
 ---
-title: B2B için AS2 iletileri gönderme ve alma
-description: Enterprise Integration Pack ile Azure Logic Apps kullanarak B2B kurumsal tümleştirme senaryoları için Exchange AS2 iletileri
+title: B2B için AS2 mesajları gönderme ve alma
+description: Azure Logic Apps'ı Kurumsal Tümleştirme Paketi ile kullanarak B2B kurumsal tümleştirme senaryoları için AS2 iletilerini değiştirme
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,83 +9,83 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650580"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange AS2 iletileri
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps'ta Kurumsal Tümleştirme Paketi ile B2B kurumsal tümleştirme için AS2 iletilerini değiştirme
 
 > [!IMPORTANT]
-> Özgün AS2 Bağlayıcısı kullanım dışı bırakılıyor, bu nedenle bunun yerine **AS2 (v2)** bağlayıcısını kullandığınızdan emin olun. Bu sürüm özgün sürümle aynı özellikleri sağlar, Logic Apps çalışma zamanına göre yereldir ve aktarım hızı ve ileti boyutu açısından önemli performans iyileştirmeleri sağlar. Ayrıca, yerel v2 Bağlayıcısı tümleştirme hesabınıza bir bağlantı oluşturmanızı gerektirmez. Bunun yerine, Önkoşullar bölümünde açıklandığı gibi, tümleştirme hesabınızı bağlayıcıyı kullanmayı planladığınız Logic App 'e bağladığınızdan emin olun.
+> Orijinal AS2 konektörü amortismana sokuluyor, bu nedenle **as2 (v2)** konektörü kullandığınızdan emin olun. Bu sürüm orijinal sürümle aynı yetenekleri sağlar, Logic Apps çalışma süresine özgüdür ve iş oluşturma ve ileti boyutu açısından önemli performans iyileştirmeleri sağlar. Ayrıca, yerel v2 bağlayıcısı tümleştirme hesabınıza bir bağlantı oluşturmanızı gerektirmez. Bunun yerine, ön koşullarda açıklandığı gibi, entegrasyon hesabınızı bağlayıcıyı kullanmayı planladığınız mantık uygulamasına bağladığınızdan emin olun.
 
-Azure Logic Apps içinde AS2 iletilerle çalışmak için, AS2 iletişimini yönetmeye yönelik Tetikleyiciler ve eylemler sağlayan AS2 bağlayıcısını kullanabilirsiniz. Örneğin, iletileri aktarırken güvenlik ve güvenilirlik sağlamak için şu işlemleri kullanabilirsiniz:
+Azure Logic Apps'ta AS2 iletileriyle çalışmak için, AS2 iletişimini yönetmek için tetikleyiciler ve eylemler sağlayan AS2 bağlayıcısını kullanabilirsiniz. Örneğin, ileti leri iletirirken güvenlik ve güvenilirlik oluşturmak için şu eylemleri kullanabilirsiniz:
 
-* [ **AS2 kodlama** ](#encode) , dijital Imzalama ve ileti değerlendirme bildirimleri (MDN) aracılığıyla, geçiş dışı desteği sağlamaya yardımcı olan bir kodlama eylemi. Örneğin, bu eylem AS2/HTTP üstbilgilerini uygular ve yapılandırıldığında bu görevleri gerçekleştirir:
+* [ **AS2** ](#encode) İnkar etmemeyi desteklemeye yardımcı olan İleti Verme Bildirimleri (MDN) aracılığıyla şifreleme, dijital imzalama ve bildirimler sağlamak için eylemi kodlayın. Örneğin, bu eylem AS2/HTTP üstbilgilerini uygular ve yapılandırıldığınızda bu görevleri gerçekleştirir:
 
-  * Giden iletileri imzalar.
+  * Giden iletileri işaretler.
   * Giden iletileri şifreler.
   * İletiyi sıkıştırır.
-  * Dosya adını MIME üstbilgisinde iletir.
+  * MIME üstbilgisinde dosya adını iletir.
 
-* Ileti değerlendirmesi bildirimleri (MDN) aracılığıyla şifre çözme, dijital imzalama ve bildirim sağlamak için [ **AS2 kod çözme** eylemi](#decode) . Örneğin, bu eylem şu görevleri gerçekleştirir:
+* İleti Verme Bildirimleri (MDN) aracılığıyla şifre çözme, dijital imzalama ve bildirimler sağlamak için [ **AS2 Decode** eylemi.](#decode) Örneğin, bu eylem şu görevleri gerçekleştirir:
 
-  * AS2/HTTP üst bilgilerini işler.
-  * Uzlaştırdığı, özgün giden iletilerle MDNs aldı.
-  * Red olmayan veritabanındaki kayıtları güncelleştirir ve bunları karşılıklı olarak ilişkilendirir.
+  * AS2/HTTP üstbilgilerini işler.
+  * Uzlaştırmalar alınan MDN'ler ile özgün giden iletiler.
+  * Reddedilmeyen veritabanındaki kayıtları güncelleştirir ve ilişkilendirir.
   * AS2 durum raporlaması için kayıtlar yazar.
-  * Yük içeriğini Base64 kodlamalı olarak verir.
-  * MDNs gerekip gerekmediğini belirler. AS2 sözleşmesine bağlı olarak, MDNs 'nin zaman uyumlu veya zaman uyumsuz olup olmayacağını belirler.
-  * AS2 sözleşmesine göre zaman uyumlu veya zaman uyumsuz MDNs oluşturur.
-  * MDNs üzerindeki bağıntı belirteçlerini ve özellikleri ayarlar.
+  * Çıkışlar yük içeriği base64 kodlanmış olarak.
+  * MDN'lerin gerekli olup olmadığını belirler. AS2 anlaşmasına dayanarak, MDN'lerin senkron mu yoksa eşzamanlı mı olması gerektiğini belirler.
+  * AS2 anlaşmasına dayalı senkron veya eşzamanlı MdN'ler oluşturur.
+  * MDN'ler üzerindeki korelasyon belirteçlerini ve özelliklerini ayarlar.
 
-  Bu eylem, yapılandırıldığında da bu görevleri gerçekleştirir:
+  Bu eylem, yapılandırıldığınızda da bu görevleri gerçekleştirir:
 
   * İmzayı doğrular.
   * İletilerin şifresini çözer.
-  * İletiyi açar.
-  * İleti KIMLIĞI yinelemelerini denetleyin ve izin vermeyin.
+  * İletiyi sıkıştırır.
+  * İleti kimliği yinelenenleri denetleyin ve izin verin.
 
-Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygulamaya nasıl ekleneceği gösterilmektedir.
+Bu makalede, varolan bir mantık uygulamasına AS2 kodlama ve kod çözme eylemlerinin nasıl eklenilen bir şekilde eklenilen gösteriliyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa, [ücretsiz bir Azure hesabına kaydolun.](https://azure.microsoft.com/free/)
 
-* AS2 bağlayıcısını kullanmak istediğiniz mantıksal uygulama ve mantıksal uygulamanızın iş akışını başlatan bir tetikleyici. AS2 Bağlayıcısı, Tetikleyiciler değil yalnızca eylemler sağlar. Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin.
+* AS2 konektörünü kullanmak istediğiniz yerden gelen mantık uygulaması ve mantık uygulamanızın iş akışını başlatan bir tetikleyici. AS2 bağlayıcısı tetikleyiciler değil, yalnızca eylemler sağlar. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları ve](../logic-apps/logic-apps-overview.md) Quickstart nedir'yi inceleyin: İlk [mantık uygulamanızı oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Azure aboneliğinizle ilişkili ve AS2 bağlayıcısını kullanmayı planladığınız mantıksal uygulamaya bağlı olan bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) . Hem mantıksal uygulamanız hem de tümleştirme hesabınız aynı konumda veya Azure bölgesinde bulunmalıdır.
+* Azure aboneliğinizle ilişkili ve AS2 konektörünü kullanmayı planladığınız mantık uygulamasına bağlı bir [entegrasyon hesabı.](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) Hem mantık uygulamanız hem de tümleştirme hesabınız aynı konumda veya Azure bölgesinde bulunmalıdır.
 
-* AS2 Identity niteleyicisi kullanarak, tümleştirme hesabınızda zaten tanımlamış olduğunuz en az iki [ticari iş ortağı](../logic-apps/logic-apps-enterprise-integration-partners.md) .
+* AS2 kimlik niteleyicisini kullanarak entegrasyon hesabınızda zaten tanımladığınız en az iki [ticaret ortağı.](../logic-apps/logic-apps-enterprise-integration-partners.md)
 
-* AS2 bağlayıcısını kullanabilmeniz için, ticari iş ortaklarınız arasında bir AS2 [sözleşmesi](../logic-apps/logic-apps-enterprise-integration-agreements.md) oluşturmanız ve bu sözleşmeyi tümleştirme hesabınızda depolamanız gerekir.
+* AS2 konektörünü kullanamadan önce, ticaret ortaklarınız arasında bir AS2 [anlaşması](../logic-apps/logic-apps-enterprise-integration-agreements.md) oluşturmanız ve bu anlaşmayı entegrasyon hesabınızda saklamanız gerekir.
 
-* Sertifika yönetimi için [Azure Key Vault](../key-vault/key-vault-overview.md) kullanıyorsanız, kasa anahtarlarınızın **şifreleme** ve **şifre çözme** işlemlerine izin verdiğinden emin olun. Aksi takdirde, kodlama ve kod çözme eylemleri başarısız olur.
+* Sertifika yönetimi için [Azure Key Vault](../key-vault/key-vault-overview.md) kullanıyorsanız, kasa anahtarlarınızın **Şifreleme** ve **Şifre çözme** işlemlerine izin verdiğini kontrol edin. Aksi takdirde, kodlama ve kod çözme eylemleri başarısız olur.
 
-  Azure portal, anahtar kasasındaki anahtara gidin, anahtarın **Izin verilen işlemlerini**gözden geçirin ve **şifreleme** ve **şifre çözme** işlemlerinin seçili olduğunu onaylayın, örneğin:
+  Azure portalında, anahtar kasanızdaki anahtara gidin, anahtarınızın **İzin Verilen işlemlerini**gözden geçirin ve örneğin **Şifreleme** ve Şifre **Çözme** işlemlerinin seçildiğini onaylayın:
 
-  ![Kasa anahtarı işlemlerini denetleme](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
+  ![Kasa anahtar işlemlerini kontrol edin](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
-## <a name="encode-as2-messages"></a>AS2 iletilerini kodla
+## <a name="encode-as2-messages"></a>AS2 iletilerini kodlama
 
-1. Henüz yapmadıysanız, [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. Azure [portalında](https://portal.azure.com)henüz yapmadıysanız, mantık uygulamanızı Logic App Designer'da açın.
 
-1. Tasarımcıda mantıksal uygulamanıza yeni bir eylem ekleyin.
+1. Tasarımcıda, mantık uygulamanıza yeni bir eylem ekleyin.
 
-1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin. Arama kutusuna "AS2 encode" yazın ve AS2 (v2) eylemini seçtiğinizden emin olun: **As2 kodlama**
+1. Bir eylem ve arama kutusunu **seçin** **altında, Tümü'nü**seçin. Arama kutusuna "as2 kod" girin ve AS2 (v2) eylemini seçtiğinizden emin olun: **AS2 Encode**
 
-   !["AS2 encode" öğesini seçin](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
+   !["AS2 Encode" seçeneğini belirleyin](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-1. Şimdi şu özellikler için bilgi sağlayın:
+1. Şimdi bu özellikler için bilgi sağlayın:
 
    | Özellik | Açıklama |
    |----------|-------------|
-   | **Kodlanacak ileti** | İleti yükü |
-   | **AS2** | AS2 anlaşmanız tarafından belirtilen şekilde ileti göndericisinin tanımlayıcısı |
-   | **AS2** | İleti alıcısının AS2 anlaşmanız tarafından belirtilen tanımlayıcısı |
+   | **Kodlamak için ileti** | İleti yükü |
+   | **itibaren AS2** | AS2 sözleşmenizde belirtildiği şekilde ileti gönderenin tanımlayıcısı |
+   | **AS2 için** | AS2 sözleşmenizde belirtildiği şekilde ileti alıcısının tanımlayıcısı |
    |||
 
    Örnek:
@@ -93,36 +93,36 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
    ![İleti kodlama özellikleri](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
 > [!TIP]
-> İmzalı veya şifrelenmiş iletiler gönderirken sorunlarla karşılaşırsanız, farklı SHA256 algoritma biçimlerini denemeyi deneyin. AS2 belirtimi SHA256 biçimleri hakkında herhangi bir bilgi sağlamaz, bu nedenle her sağlayıcı kendi uygulamasını veya biçimini kullanır.
+> İmzalı veya şifreli iletigönderirken sorun yaşıyorsanız, farklı SHA256 algoritma biçimlerini denemeyi düşünün. AS2 belirtimi SHA256 biçimleri hakkında herhangi bir bilgi sağlamaz, bu nedenle her sağlayıcı kendi uygulama veya biçimini kullanır.
 
 <a name="decode"></a>
 
-## <a name="decode-as2-messages"></a>AS2 iletilerinin kodunu çözme
+## <a name="decode-as2-messages"></a>AS2 iletilerini çözme
 
-1. Henüz yapmadıysanız, [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. Azure [portalında](https://portal.azure.com)henüz yapmadıysanız, mantık uygulamanızı Logic App Designer'da açın.
 
-1. Tasarımcıda mantıksal uygulamanıza yeni bir eylem ekleyin.
+1. Tasarımcıda, mantık uygulamanıza yeni bir eylem ekleyin.
 
-1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin. Arama kutusuna "AS2 kodunu çöz" yazın ve AS2 (v2) eylemini seçtiğinizden emin olun: **As2 kod çözme**
+1. Bir eylem ve arama kutusunu **seçin** **altında, Tümü'nü**seçin. Arama kutusuna "as2 decode" girin ve AS2 (v2) eylemini seçtiğinizden emin olun: **AS2 Decode**
 
-   !["AS2 kodunu çöz" seçeneğini belirleyin](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
+   !["AS2 Kod Çözme" seçeneğini belirleyin](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-1. **Kodlanacak ileti** ve **ileti üstbilgileri** özellikleri için önceki tetikleyiciden veya eylem çıktılarından bu değerleri seçin.
+1. **İleti'nin kodlaması** ve **İleti üstbilgiözellikleri** için bu değerleri önceki tetikleyici veya eylem çıktılarından seçin.
 
-   Örneğin, mantıksal uygulamanızın iletileri bir Istek tetikleyicisi aracılığıyla aldığını varsayalım. Bu tetikleyiciden gelen çıktıları seçebilirsiniz.
+   Örneğin, mantık uygulamanızın bir İstek tetikleyicisi aracılığıyla ileti aldığını varsayalım. Bu tetikleyiciden çıktıları seçebilirsiniz.
 
-   ![Istek çıktılarından gövde ve üst bilgi seçin](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
+   ![İstek çıktılarından Gövde ve Üstbilgi seçin](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
 ## <a name="sample"></a>Örnek
 
-Tam işletimsel bir mantıksal uygulamayı ve örnek AS2 senaryosunu dağıtmaya çalışmak için [AS2 Logic App şablonu ve senaryosuna](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)bakın.
+Tam işlevsel bir mantık uygulaması dağıtmayı denemek ve AS2 senaryosunu örneklemek için [AS2 mantık uygulaması şablonuna ve senaryosuna](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)bakın.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan eylemler ve sınırlamalar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/as2/)bakın. 
+Bu bağlayıcı hakkında bağlayıcının Swagger dosyasında açıklandığı gibi eylemler ve sınırlar gibi daha fazla teknik ayrıntı için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/as2/)bakın. 
 
 > [!NOTE]
-> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının özgün Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
+> [Bir entegrasyon hizmeti ortamındaki (İmKB)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)mantık uygulamaları için, bu bağlayıcının orijinal İmKB etiketli sürümü bunun yerine [İmKB ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

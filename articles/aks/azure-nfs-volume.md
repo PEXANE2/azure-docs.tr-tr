@@ -1,37 +1,37 @@
 ---
-title: Azure Kubernetes Service (AKS) tarafından kullanılmak üzere bir NFS (ağ dosya sistemi) Ubuntu sunucusu oluşturun
-description: Azure Kubernetes Service (aks) içinde Pod ile kullanmak üzere bir NFS Ubuntu Linux sunucusu birimini el ile oluşturmayı öğrenin
+title: Azure Kubernetes Service (AKS) bölmeleri tarafından kullanılmak üzere bir NFS (Ağ Dosya Sistemi) Ubuntu Sunucusu oluşturun
+description: Azure Kubernetes Hizmetinde (AKS) bölmelerle kullanılmak üzere el ile nasıl bir NFS Ubuntu Linux Server hacmi oluşturabilirsiniz öğrenin
 services: container-service
 author: ozboms
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
 ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596632"
 ---
-# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir NFS (ağ dosya sistemi) Linux sunucu birimini el ile oluşturma ve kullanma
-Kapsayıcılar arasında veri paylaşımı, genellikle kapsayıcı tabanlı hizmet ve uygulamaların gerekli bir bileşenidir. Genellikle, bir dış kalıcı birimle aynı bilgilere erişmesi gereken çeşitli yığınlara sahip olursunuz.    
-Azure dosyaları bir seçenek olmakla çalışırken, bir Azure VM 'de NFS sunucusu oluşturmak kalıcı bir paylaşılan depolama biçimidir. 
+# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile nfs (Ağ Dosya Sistemi) Linux Server hacmini el ile oluşturun ve kullanın
+Verileri kapsayıcılar arasında paylaşmak genellikle kapsayıcı tabanlı hizmetlerin ve uygulamaların gerekli bir bileşenidir. Genellikle harici kalıcı birimde aynı bilgilere erişmeniz gereken çeşitli bölmelere sahipsiniz.    
+Azure dosyaları bir seçenek olsa da, Azure VM'de NFS Sunucusu oluşturmak, kalıcı paylaşılan depolamanın başka bir biçimidir. 
 
-Bu makalede, bir Ubuntu sanal makinesinde NFS sunucusu oluşturma gösterilmektedir. Ayrıca, AKS kapsayıcılarınızın bu paylaşılan dosya sistemine erişmesini sağlayın.
+Bu makalede, bir Ubuntu sanal makinede nasıl bir NFS Sunucusu oluşturacağınızı gösterecektir. Ayrıca AKS kapsayıcılarınıza bu paylaşılan dosya sistemine erişim hakkı verin.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
+Bu makalede, varolan bir AKS Kümeniz olduğunu varsayar. AKS Cluster'a ihtiyacınız varsa, Azure [CLI'yi veya Azure][aks-quickstart-cli] [portalını kullanarak][aks-quickstart-portal]AKS hızlı başlat'ına bakın.
 
-AKS kümenizin, NFS sunucusuyla aynı veya eşlenmiş sanal ağlarda canlı olması gerekir. Küme, VM 'niz ile aynı VNET olabilen mevcut bir VNET 'te oluşturulmalıdır.
+AKS Kümenizin NFS Sunucusuyla aynı veya eşlenen sanal ağlarda yaşaması gerekir. Küme, VM'inizle aynı VNET olabilecek varolan bir VNET'te oluşturulmalıdır.
 
-Mevcut bir VNET ile yapılandırma adımları belgelerde açıklanmaktadır: [mevcut VNET 'TE AKS kümesi oluşturma][aks-virtual-network] ve [sanal ağları VNET eşlemesi ile bağlama][peer-virtual-networks]
+Varolan bir VNET ile yapılandırma adımları belgelerde açıklanmıştır: [varolan VNET'te AKS Kümesi oluşturma][aks-virtual-network] ve [Sanal ağları VNET eşlemesiyle bağlama][peer-virtual-networks]
 
-Ayrıca, Ubuntu Linux bir sanal makine oluşturmuş olduğunuzu varsayar (örneğin, 18,04 LTS). Ayarlar ve boyut, sizin için kullanılabilir ve Azure üzerinden dağıtılabilir. Linux hızlı başlangıcı için bkz. [LINUX VM yönetimi][linux-create].
+Ayrıca bir Ubuntu Linux Sanal Makine (örneğin, 18,04 LTS) oluşturduğunuzvarsa. Ayarlar ve boyut beğendiğiniz olabilir ve Azure üzerinden dağıtılabilir. Linux quickstart için, [Linux VM yönetimine][linux-create]bakın.
 
-AKS kümenizi önce dağıtırsanız, Azure, Ubuntu makinenizi dağıtırken sanal ağ alanını otomatik olarak doldurur ve bunları aynı VNET içinde canlı hale getirir. Ancak, bunun yerine eşlenmiş ağlarla çalışmak istiyorsanız Yukarıdaki belgelere başvurun.
+Önce AKS Kümenizi dağıtırsanız, Azure Ubuntu makinenizi dağıtırken sanal ağ alanını otomatik olarak doldurarak aynı VNET içinde yaşamalarını sağlar. Ancak bunun yerine eşlenen ağlarla çalışmak istiyorsanız, yukarıdaki belgelere başvurun.
 
-## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>NFS sunucusunu bir sanal makineye dağıtma
-Ubuntu sanal makinenizde bir NFS sunucusu kurmak için betik aşağıda verilmiştir:
+## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>NFS Sunucusunu Sanal Makineye Dağıtma
+Ubuntu sanal makinenizde bir NFS Sunucusu kurmak için komut dosyası aşağıdaverevettir:
 ```bash
 #!/bin/bash
 
@@ -73,32 +73,32 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-Sunucu yeniden başlatılır (komut dosyası nedeniyle) ve NFS sunucusunu AKS 'e bağlayabilirsiniz.
+Sunucu yeniden başlatılacaktır (komut dosyası nedeniyle) ve AKS NFS Server monte edebilirsiniz.
 
 >[!IMPORTANT]  
->**AKS_SUBNET** kümenizdeki doğru bir ile değiştirdiğinizden emin olun, aksi takdirde "*", NFS sunucunuzu tüm bağlantı noktalarında ve bağlantılarda açacak.
+>**AKS_SUBNET** kümenizden doğru olanla değiştirdiğinizden emin olun yoksa NFS Server'ınızı tüm bağlantı noktalarına ve bağlantılara "*" açar.
 
-VM 'nizi oluşturduktan sonra, yukarıdaki betiği bir dosyaya kopyalayın. Daha sonra, bunu kullanarak yerel makinenizden veya betiğin bulunduğu yere taşıyabilirsiniz: 
+VM'nizi oluşturduktan sonra yukarıdaki komut dosyasını bir dosyaya kopyalayın. Ardından, yerel makinenizden veya komut dosyasının olduğu yerden VM'ye taşıyabilirsiniz: 
 ```console
 scp /path/to/script_file username@vm-ip-address:/home/{username}
 ```
-Betiğinizin sanal makinenizde olması durumunda VM 'de SSH oluşturabilir ve komutunu komut aracılığıyla yürütebilirsiniz:
+Komut dosyanız VM'nize girdikten sonra VM'ye girip komut la çalıştırabilirsiniz:
 ```console
 sudo ./nfs-server-setup.sh
 ```
-Bir izin reddedildi hatası nedeniyle yürütülmesi başarısız olursa, yürütme iznini komut aracılığıyla ayarlayın:
+İnfazı reddedilen bir izin hatası nedeniyle başarısız olursa, yürütme izni komutu ile ayarlayın:
 ```console
 chmod +x ~/nfs-server-setup.sh
 ```
 
-## <a name="connecting-aks-cluster-to-nfs-server"></a>AKS kümesini NFS sunucusuna bağlama
-Birime nasıl erişebileceğinizi belirten kalıcı bir birim ve kalıcı birim talebi sağlayarak, NFS sunucusunu kümenize bağlayabiliriz.
+## <a name="connecting-aks-cluster-to-nfs-server"></a>AKS Kümesini NFS Server'a Bağlama
+NFS Sunucusu'nu, toplua nasıl erişebileceğimizi belirten kalıcı bir hacim ve kalıcı hacim talebi sağlayarak kümemize bağlayabiliriz.
 
-Aynı veya eşlenmiş sanal ağlardaki iki hizmeti bağlamak gereklidir. Aynı VNET 'te küme ayarlamaya yönelik yönergeler şunlardır: [mevcut VNET 'TE AKS kümesi oluşturma][aks-virtual-network]
+İki hizmeti aynı veya eşlenen sanal ağlarda bağlamak gereklidir. Kümeyi aynı VNET'te ayarlama yönergeleri burada: [Varolan VNET'te AKS Kümesi Oluşturma][aks-virtual-network]
 
-Aynı sanal ağda (veya eşlenmiş) olduktan sonra, AKS kümenizde kalıcı bir birim ve kalıcı bir birim talebi sağlamanız gerekir. Kapsayıcılar daha sonra NFS sürücüsünü yerel dizinleriyle bağlayabilir.
+Aynı sanal ağa (veya bakıldı) bir kez geldiklerinde, AKS Kümenizde kalıcı bir birim ve kalıcı bir birim talebi sağlamanız gerekir. Konteynerler daha sonra NFS sürücüsünün yerel dizinine monte edilebilir.
 
-Kalıcı birim için örnek bir Kubernetes tanımı aşağıda verilmiştir (Bu tanım, kümenizin ve sanal makinenizin aynı VNET 'te olduğunu varsayar):
+Kalıcı hacim için örnek bir Kubernetes tanımı (Bu tanım kümenizi ve VM'nizin aynı VNET'te olduğunu varsayar):
 
 ```yaml
 apiVersion: v1
@@ -116,12 +116,12 @@ spec:
     server: <NFS_INTERNAL_IP>
     path: <NFS_EXPORT_FILE_PATH>
 ```
-**NFS_INTERNAL_IP**, **NFS_NAME** ve **NFS_EXPORT_FILE_PATH** NFS sunucu bilgileriyle değiştirin.
+nfs server bilgileri ile **NFS_INTERNAL_IP,** **NFS_NAME** ve **NFS_EXPORT_FILE_PATH** değiştirin.
 
-Ayrıca, kalıcı bir birim talep dosyası da gerekir. Şunları içerecek bir örnek aşağıda verilmiştir:
+Ayrıca kalıcı bir birim talep dosyası gerekir. Aşağıda, nelerin dahil ediletilene bir örneği verilmiştir:
 
 >[!IMPORTANT]  
->**"Storageclassname"** boş bir dize olmalıdır, aksi durumda talep çalışmaz.
+>**"storageClassName"** boş bir dize kalması gerekir veya iddia işe yaramaz.
 
 ```yaml
 apiVersion: v1
@@ -141,22 +141,22 @@ spec:
 ```
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Sunucuya bir kümeden bağlanamıyorsanız, bir sorun verilecek dizin ya da üst öğesi, sunucuya erişmek için yeterli izinlere sahip olmayabilir.
+Bir kümeden sunucuya bağlanamıyorsanız, bir sorun dışa aktarılan dizin veya üst öğesi olabilir, sunucuya erişmek için yeterli izine sahip değildir.
 
-Hem dışa aktarma dizininizin hem de onun üst dizininin 777 izni olup olmadığını denetleyin.
+Hem ihracat dizininizin hem de ana dizininizin 777 izni olduğundan kontrol edin.
 
-Aşağıdaki komutu çalıştırarak izinleri kontrol edebilirsiniz ve dizinler *' drwxrwxrwx '* izinlerine sahip olmalıdır:
+Aşağıdaki komutu çalıştırarak izinleri kontrol edebilirsiniz ve dizinlerde *'drwxrwxrwx'* izinleri olmalıdır:
 ```console
 ls -l
 ```
 
 ## <a name="more-information"></a>Daha fazla bilgi
-Tam bir anlatım almak veya NFS sunucusu kurulumunuzu hata ayıklamanıza yardımcı olmak için, aşağıda ayrıntılı bir öğretici verilmiştir:
-  - [NFS öğreticisi][nfs-tutorial]
+Tam bir izbin almak veya NFS Server kurulumunuzu hata ayıklamanıza yardımcı olmak için ayrıntılı bir öğretici aşağıda verebilirsiniz:
+  - [NFS Öğretici][nfs-tutorial]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlişkili en iyi uygulamalar için bkz. [AKS 'de depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage].
+İlişkili en iyi uygulamalar [için, AKS'deki depolama ve yedekleme ler için en iyi uygulamalara][operator-best-practices-storage]bakın.
 
 <!-- LINKS - external -->
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/

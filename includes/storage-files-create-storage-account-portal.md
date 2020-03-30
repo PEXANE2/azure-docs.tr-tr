@@ -9,22 +9,22 @@ ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: d4054760c77a7a70b7ed84a9f95b88a3bcf2bda3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76020949"
 ---
 Depolama hesabı, Azure dosya paylaşımını veya bloblar veya sorgular gibi diğer depolama kaynaklarını dağıtabileceğiniz, paylaşılan bir depolama havuzudur. Bir depolama hesabında sınırsız sayıda paylaşım olabilir. Bir paylaşım, depolama hesabının kapasite limitlerine kadar sınırsız sayıda dosyayı depolayabilir.
 
 Depolama hesabı oluşturmak için:
 
-1. Soldaki menüden **+** seçeneğini belirleyerek bir kaynak oluşturun.
+1. Sol menüde, **+** kaynak oluşturmak için seçin.
 2. Arama kutusuna **depolama hesabı** girin, **Depolama hesabı - blob, dosya, tablo, kuyruk** seçeneğini belirleyin ve **Oluştur**’u seçin.
     ![Kaynak araması iletişim kutusunda, depolama hesabı girişinin nasıl göründüğüne dair ekran görüntüsü](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 
 3. **Ad** alanına *mystorageacct* komutunu yazın ve benzersiz bir ad olduğunu belirten yeşil onay işareti görüntüleninceye kadar komutun sonuna birkaç rastgele sayı yazın. Depolama hesabı adı tamamen küçük harflerden oluşmalı ve genel olarak benzersiz olmalıdır. Depolama hesabınızın adını not edin. Daha sonra bu adı kullanacaksınız. 
-4. **Dağıtım modeli** alanında varsayılan **Kaynak Yöneticisi** değerini değiştirmeden bırakın. Azure Resource Manager ve klasik dağıtım modeli arasındaki farklılıklar hakkında daha fazla bilgi edinmek için bkz. [Dağıtım modellerini ve kaynaklarınızın durumunu anlama](../articles/azure-resource-manager/management/deployment-models.md).
+4. **Dağıtım modelinde,** **Kaynak Yöneticisi'nin**varsayılan değerini bırakın. Azure Resource Manager ve klasik dağıtım modeli arasındaki farklılıklar hakkında daha fazla bilgi edinmek için bkz. [Dağıtım modellerini ve kaynaklarınızın durumunu anlama](../articles/azure-resource-manager/management/deployment-models.md).
 5. **Hesap türü** bölümünde **StorageV2** seçeneğini belirleyin. Farklı türlerde depolama hesapları hakkında daha fazla bilgi edinmek için bkz. [Azure depolama hesaplarını anlama](../articles/storage/common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 6. **Performans** bölümünde, varsayılan **Standart depolama** değerini değiştirmeden bırakın. Azure Dosyaları şu anda yalnızca standart depolama alanını destekler; Azure Premium Depolama’yı seçseniz de dosya paylaşımınız standart depolama alanında depolanır.
 7. **Çoğaltma** bölümünde **Yerel olarak yedekli depolama (LRS)** seçeneğini belirleyin. 

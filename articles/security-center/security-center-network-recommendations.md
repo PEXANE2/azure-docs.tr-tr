@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde ağ kaynaklarınızı koruma
-description: Bu belge, Azure Güvenlik Merkezi 'nde Azure ağ kaynaklarınızı korumanıza ve güvenlik ilkeleriyle uyumlu kalmanıza yardımcı olan önerilere yöneliktir.
+title: Azure Güvenlik Merkezi'nde ağ kaynaklarınızı koruma
+description: Bu belge, Azure ağ kaynaklarınızı korumanıza ve güvenlik ilkeleriyle uyumlu kalmanıza yardımcı olan Azure Güvenlik Merkezi'ndeki önerilere yönelikdir.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,131 +14,131 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77431494"
 ---
 # <a name="protect-your-network-resources"></a>Ağ kaynaklarınızı koruyun
-Azure Güvenlik Merkezi, ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
+Azure Güvenlik Merkezi, ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını tanımladığında, kaynaklarınızı sertleştirmek ve korumak için gerekli denetimleri yapılandırma sürecinde size rehberlik eden öneriler oluşturur.
 
-Bu makalede Güvenlik Merkezi 'nin kaynak güvenliği bölümünün **ağ** sayfası açıklanır.
+Bu makalede, Güvenlik Merkezi'nin kaynak güvenliği bölümünün **Ağ** sayfası açıklanmaktadır.
 
-Ağ önerilerinin tam listesi için bkz. [ağ önerileri](recommendations-reference.md#recs-network).
+Ağ için önerilerin tam listesi için [Ağ önerilerine](recommendations-reference.md#recs-network)bakın.
 
-Bu makalede bir ağ güvenliği perspektifinden Azure kaynaklarınıza uygulanan öneriler ele alınmaktadır. Sonraki nesil güvenlik duvarları, ağ güvenlik grupları, JıT VM erişimi, aşırı izin veren gelen trafik kuralları ve daha fazlası etrafında ağ önerisi merkezi. Ağ önerileri ve düzeltme eylemlerinin bir listesi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md).
+Bu makalede, ağ güvenliği açısından Azure kaynaklarınız için geçerli olan öneriler ele alılmıştır. Ağ önerileri, yeni nesil güvenlik duvarları, Ağ Güvenlik Grupları, JIT VM erişimi, aşırı izin veren gelen trafik kuralları ve daha fazlasını merkeze almaktadır. Ağ önerileri ve düzeltme eylemlerinin listesi için Azure [Güvenlik Merkezi'nde güvenlik önerilerini yönetme bölümüne](security-center-recommendations.md)bakın.
 
 > [!NOTE]
-> Ağ **iletişimi** sayfası, bir ağ perspektifinden Azure Kaynak sistem durumu hakkında ayrıntılı bilgi almanızı sağlar. Ağ eşlemesi ve Uyarlamalı ağ denetimleri yalnızca Azure Güvenlik Merkezi Standart katmanı için kullanılabilir. [Ücretsiz katmanı kullanıyorsanız, **eski ağı görüntülemek** ve ağ kaynağı önerilerini almak için düğmeye tıklayabilirsiniz](#legacy-networking).
+> **Ağ** sayfası, ağ açısından Azure kaynak sağlığınıza derinlemesine dalmanızı sağlar. Ağ haritası ve Uyarlanabilir Ağ Denetimleri yalnızca Azure Güvenlik Merkezi standart katmanı için kullanılabilir. [Boş katmanı kullanıyorsanız, **eski ağ** ları görüntülemek için düğmeyi tıklatabilir ve ağ kaynak önerileri alabilirsiniz.](#legacy-networking)
 >
 
-Ağ **kaynakları** hakkında daha fazla bilgi edinmek için, ağ kaynaklarınızın sistem durumu hakkında daha fazla bilgi almak üzere ayrıntılı olarak kullanabileceğiniz bölümlere genel bir bakış sağlar:
+**Ağ** ağı kaynaklarınızın durumu hakkında daha fazla bilgi almak için, ağ sayfası derinlemesine dalıp yapabileceğiniz bölümlere genel bir bakış sağlar:
 
-- Ağ eşlemesi (yalnızca Azure Güvenlik Merkezi Standart katmanı)
+- Ağ haritası (yalnızca Azure Güvenlik Merkezi Standart katmanı)
 - Uyarlamalı Ağ Sağlamlaştırma
-- Ağ güvenlik önerileri.
-- Eski **ağ** dikey penceresi (önceki ağ dikey penceresi) 
+- Ağ güvenliği önerileri.
+- Eski **Ağ** bıçağı (önceki ağ bıçak) 
  
-[![ağ bölmesi](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
+[![Ağ bölmesi](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
-## <a name="network-map"></a>Ağ eşlemesi
-Etkileşimli ağ eşlemesi, ağ kaynaklarınızı sağlamlaştırma konusunda öneriler ve Öngörüler sağlayan güvenlik Yerpaylaşımları içeren grafik bir görünüm sağlar. Eşlemeyi kullanarak Azure iş yüklerinizin ağ topolojisini, sanal makineleriniz ile alt ağlarınızla bağlantıları ve haritalardan belirli kaynaklara detaya gitme özelliğini ve bu kaynaklara yönelik önerileri görebilirsiniz.
+## <a name="network-map"></a>Ağ haritası
+Etkileşimli ağ haritası, ağ kaynaklarınızı sertleştirmeniz için öneriler ve öngörüler sunan güvenlik bindirmeleriyle birlikte grafik bir görünüm sağlar. Haritayı kullanarak Azure iş yüklerinizin ağ topolojisini, sanal makineleriniz ve alt ağlarınız arasındaki bağlantıları ve haritadan belirli kaynaklara ve bu kaynaklara ilişkin önerilere kadar bilgi edinebilme yeteneğini görebilirsiniz.
 
 Ağ haritasını açmak için:
 
-1. Güvenlik Merkezi 'nde, kaynak güvenliği Hygiene altında **ağ**' ı seçin.
-2. **Ağ Haritası** altında **topolojiyi göster**' e tıklayın.
+1. Güvenlik Merkezi'nde, Kaynak Güvenlik Hijyeni altında **Ağ'ı**seçin.
+2. **Ağ haritası** altında **Bkz. topolojiyi görün.**
  
-Topoloji haritasının varsayılan görünümü şunu görüntüler:
+Topoloji haritasının varsayılan görünümü görüntüler:
 
-- Azure 'da seçtiğiniz abonelikler. Eşleme birden çok aboneliği destekler.
-- Kaynak Yöneticisi kaynak türünün VM 'Leri, alt ağları ve sanal ağları (klasik Azure kaynakları desteklenmez)
-- Eşlenen sanal ağlar
-- Yalnızca yüksek veya orta önem derecesine sahip [ağ önerilerine](security-center-recommendations.md) sahip kaynaklar  
-- Internet 'e yönelik kaynaklar
-- Eşleme, Azure 'da seçtiğiniz abonelikler için iyileştirilmiştir. Seçiminizi değiştirirseniz, eşleme yeniden hesaplanır ve yeni ayarlarınıza göre yeniden iyileştirilir.  
+- Azure'da seçtiğiniz abonelikler. Harita birden çok aboneliği destekler.
+- Kaynak Yöneticisi kaynak türünün VM'leri, alt ağları ve VNet'leri (Klasik Azure kaynakları desteklenmez)
+- Emsalli VNets
+- Yalnızca yüksek veya orta öneme sahip [ağ önerileri](security-center-recommendations.md) olan kaynaklar  
+- İnternete bakan kaynaklar
+- Harita, Azure'da seçtiğiniz abonelikler için optimize edecektir. Seçiminizi değiştirirseniz, harita yeni ayarlarınıza göre yeniden hesaplanır ve yeniden optimize edilir.  
 
-[![ağ topolojisi eşlemesi](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
+[![Ağ topoloji haritası](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
-## <a name="understanding-the-network-map"></a>Ağ eşlemesini anlama
+## <a name="understanding-the-network-map"></a>Ağ haritasını anlama
 
-Ağ eşlemesi, Azure kaynaklarınızı bir **topoloji** görünümünde ve **trafik** görünümünde gösterebilir. 
+Ağ haritası, Azure kaynaklarınızı **Topoloji** görünümünde ve **Trafik** görünümünde gösterebilir. 
 
 ### <a name="the-topology-view"></a>Topoloji görünümü
 
-Ağ eşlemesinin **topoloji** görünümünde, ağ kaynaklarınız hakkında aşağıdaki öngörüleri görüntüleyebilirsiniz:
+Ağ haritasının **Topoloji** görünümünde, ağ kaynaklarınız hakkında aşağıdaki öngörüleri görüntüleyebilirsiniz:
 
-- İç daire içinde, seçili aboneliklerinizde tüm VNET 'leri görebilirsiniz, sonraki daire tüm alt ağlardan, dış daire ise tüm sanal makinelerdir.
-- Eşlemdeki kaynakları bağlayan satırlar birbirleriyle hangi kaynakların ilişkilendirildiğini ve Azure ağınızın nasıl yapılandırıldığını bilmenizi sağlar. 
-- Hangi kaynakların güvenlik merkezi 'nden açık önerilere sahip olduğunu hızlıca almak için önem göstergelerini kullanın.
-- Kaynaklara gitmek ve bu kaynağın ayrıntılarını ve önerilerini doğrudan ve ağ haritası bağlamında görüntülemek için kaynakların herhangi birine tıklayabilirsiniz.  
-- Haritada çok fazla kaynak görüntüleniyorsa Azure Güvenlik Merkezi, kaynaklarınızı akıllı Kümelendirmek, en kritik durumdaki kaynakları vurgulamak ve en yüksek önem derecesine sahip olmak için kendi özel algoritmasını kullanır. 
+- İç dairede, seçtiğiniz abonelikler içindeki tüm Vnet'leri görebilirsiniz, bir sonraki daire tüm alt ağlar, dış daire tüm sanal makinelerdir.
+- Haritadaki kaynakları bağlayan satırlar, hangi kaynakların birbiriyle ilişkili olduğunu ve Azure ağınızın nasıl yapılandırılacağını bilmenizi sağlar. 
+- Güvenlik Merkezi'nden hangi kaynakların açık önerileri ne kadar önemli olduğunu hızlı bir şekilde görmek için önem göstergelerini kullanın.
+- Bunları ayrıntılı olarak inceleyebilir ve bu kaynağın ayrıntılarını ve önerilerini doğrudan ve Ağ haritası bağlamında görüntülemek için kaynaklardan herhangi birini tıklatabilirsiniz.  
+- Haritada çok fazla kaynak görüntüleniyorsa, Azure Güvenlik Merkezi kaynaklarınızı akıllı kümelemek için özel algoritmasını kullanır, en kritik durumdaki kaynakları vurgular ve en yüksek önem derecesi önerilerine sahip olur. 
 
-Harita etkileşimli ve dinamik olduğundan, her düğüm tıklatılabilir olur ve görünüm filtrelere göre değişebilir:
+Harita etkileşimli ve dinamik olduğundan, her düğüm tıklanabilir ve görünüm filtrelere göre değişebilir:
 
-1. En üstteki filtreleri kullanarak ağ eşlemesinde gördüklerinizi değiştirebilirsiniz. Haritayı temel alarak buraya odaklanırsınız:
+1. Üstteki filtreleri kullanarak ağ haritasında gördüklerinizi değiştirebilirsiniz. Haritayı aşağıdakilere göre odaklayabilirsiniz:
 
-   -  **Güvenlik durumu**: Haritayı Azure kaynaklarınızın önem derecesine (yüksek, orta, düşük) göre filtreleyebilirsiniz.
-   - **Öneriler**: bu kaynaklarda hangi önerilerin etkin olduğunu temel alarak hangi kaynakların görüntülendiğini seçebilirsiniz. Örneğin, yalnızca güvenlik merkezi 'nin ağ güvenlik gruplarını etkinleştirmenizi önerdiği kaynakları görüntüleyebilirsiniz.
-   - **Ağ bölgeleri**: varsayılan olarak, haritada yalnızca Internet 'e yönelik kaynaklar görüntülenir, Iç VM 'leri de seçebilirsiniz.
+   -  **Güvenlik durumu**: Azure kaynaklarınızın Önem Derecesine (Yüksek, Orta, Düşük) göre haritaya filtre uygulayabilirsiniz.
+   - **Öneriler**: Bu kaynaklarda hangi önerilerin etkin olduğuna bağlı olarak hangi kaynakların görüntüleneceğini seçebilirsiniz. Örneğin, yalnızca Güvenlik Merkezi'nin Ağ Güvenlik Grupları'nı etkinleştirmenizi önerdiği kaynakları görüntüleyebilirsiniz.
+   - **Ağ bölgeleri**: Varsayılan olarak, harita yalnızca Internet'e bakan kaynakları görüntüler, dahili VM'leri de seçebilirsiniz.
  
-2. Haritayı varsayılan durumuna döndürmek için herhangi bir zamanda sol üst köşede **Sıfırla** ' ya tıklayabilirsiniz.
+2. Haritayı varsayılan durumuna döndürmek için istediğiniz zaman sol üst köşede **Sıfırla'yı** tıklatabilirsiniz.
 
-Bir kaynağın detayına gitmek için:
+Bir kaynağa sondaj yapmak için:
 
-1. Haritada belirli bir kaynağı seçtiğinizde, sağ bölme açılır ve kaynak hakkında genel bilgiler, varsa bağlı güvenlik çözümleri ve kaynakla ilgili öneriler sağlar. Seçtiğiniz her kaynak türü için aynı davranış türü vardır. 
-2. Haritadaki bir düğümün üzerine geldiğinizde, kaynak hakkındaki abonelik, kaynak türü ve kaynak grubu dahil genel bilgileri görüntüleyebilirsiniz.
-3. Araç ipucunu yakınlaştırmak ve Haritayı ilgili düğüme yeniden odaklamak için bağlantıyı kullanın. 
-4. Haritayı belirli bir düğümden uzağa yeniden odaklamak için uzaklaştırın.
+1. Haritada belirli bir kaynak seçtiğinizde, sağ bölme açılır ve varsa kaynak, bağlı güvenlik çözümleri ve kaynakla ilgili öneriler hakkında genel bilgiler verir. Seçtiğiniz her kaynak türü için aynı davranış türüdür. 
+2. Haritadaki bir düğümün üzerinde gezinirken, abonelik, kaynak türü ve kaynak grubu da dahil olmak üzere kaynak la ilgili genel bilgileri görüntüleyebilirsiniz.
+3. Araç ucunu yakınlaştırmak ve haritayı belirli bir düğüme yeniden odaklamak için bağlantıyı kullanın. 
+4. Haritayı belirli bir düğümden uzaklaştırmak için uzaklaştırın.
 
 ### <a name="the-traffic-view"></a>Trafik görünümü
 
-**Trafik** görünümü, kaynaklarınız arasındaki tüm olası trafiğin haritasını sağlar. Bu, size hangi kaynakların hangi kaynaklara iletişim kurabildiğini tanımlayan, yapılandırdığınız tüm kuralların görsel haritasını sağlar. Bu, ağ güvenlik gruplarının var olan yapılandırmasını görmenizi ve iş yükleriniz dahilinde olası riskli yapılandırmaları hızlı bir şekilde tanımlamanızı sağlar.
+**Trafik** görünümü, kaynaklarınız arasındaki tüm olası trafiğin bir haritasını sağlar. Bu, hangi kaynakların kiminle iletişim kurabileceğini tanımlayan yapılandırdığınız tüm kuralların görsel bir eşlenimi sağlar. Bu, ağ güvenlik gruplarının varolan yapılandırmasını görmenizi ve iş yüklerinizdeki olası riskli yapılandırmaları hızla belirlemenizi sağlar.
 
-### <a name="uncover-unwanted-connections"></a>İstenmeyen bağlantıları kayma
+### <a name="uncover-unwanted-connections"></a>İstenmeyen bağlantıları ortaya çıkarmak
 
-Bu görünümün kuvveti, var olan güvenlik açıklarına sahip bu izin verilen bağlantıları size gösterme imkanına sahiptir. bu sayede, kaynaklarınız üzerinde gerekli sağlamlaştırma işlemini gerçekleştirmek için bu verilerin çapraz bölümünü kullanabilirsiniz. 
+Bu görünümün gücü, bu izin verilen bağlantıları varolan güvenlik açıklarıyla birlikte size gösterebilme yeteneğidir, böylece kaynaklarınız üzerinde gerekli sertleştirmeyi gerçekleştirmek için bu veri kesitini kullanabilirsiniz. 
 
-Örneğin, iletişim kurabildiğinizi fark edemeyen iki makineyi tespit edebilir ve iş yüklerini ve alt ağları daha iyi yalıtmanızı sağlar.
+Örneğin, farkında olmadığınız iki makinenin iletişim kurarak iş yüklerini ve alt ağlarını daha iyi yalıtmanızı sağlayabilirsiniz.
 
-### <a name="investigate-resources"></a>Kaynakları araştır
+### <a name="investigate-resources"></a>Kaynakları araştırma
 
-Bir kaynağın detayına gitmek için:
+Bir kaynağa sondaj yapmak için:
 
-1. Haritada belirli bir kaynağı seçtiğinizde, sağ bölme açılır ve kaynak hakkında genel bilgiler, varsa bağlı güvenlik çözümleri ve kaynakla ilgili öneriler sağlar. Seçtiğiniz her kaynak türü için aynı davranış türü vardır. 
-2. Kaynak üzerinde olası giden ve gelen trafik listesini görmek için **trafik** ' e tıklayın. Bu, kaynakla ve iletişim kurabildiği, hangi protokoller ve bağlantı noktalarıyla iletişim kurabildiğini gösteren kapsamlı bir listesidir. Örneğin, bir VM seçtiğinizde, iletişim kurabildiği tüm VM 'Ler gösterilir ve bir alt ağ seçtiğinizde, iletişim kurabildiği tüm alt ağlar gösterilir.
+1. Haritada belirli bir kaynak seçtiğinizde, sağ bölme açılır ve varsa kaynak, bağlı güvenlik çözümleri ve kaynakla ilgili öneriler hakkında genel bilgiler verir. Seçtiğiniz her kaynak türü için aynı davranış türüdür. 
+2. Kaynaktaki olası giden ve gelen trafiğin listesini görmek için **Trafik'i** tıklatın - bu, kaynakla kimlerin iletişim kurabileceğini ve kimlerle iletişim kurabileceğini ve hangi protokoller ve bağlantı noktaları aracılığıyla iletişim kurabileceğinin kapsamlı bir listesidir. Örneğin, bir VM seçtiğinizde, iletişim kurabileceği tüm VM'ler gösterilir ve bir alt ağ seçtiğinizde, iletişim kurabileceği tüm alt ağlar gösterilir.
 
-**Bu veriler ağ güvenlik gruplarının analizine ve çapraz nesnelerin ve etkileşimlerin anlaşılması için birden çok kuralı çözümleyen gelişmiş makine öğrenimi algoritmalarına dayanır.** 
+**Bu veriler, Ağ Güvenlik Gruplarının analizinin yanı sıra çapraz geçişlerini ve etkileşimlerini anlamak için birden çok kuralı analiz eden gelişmiş makine öğrenimi algoritmalarına dayanmaktadır.** 
 
-[![ağ trafiği Haritası](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+[![Ağ trafik haritası](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## Eski ağ<a name ="legacy-networking"></a>
+## <a name="legacy-networking"></a>Eski ağ<a name ="legacy-networking"></a>
 
-Güvenlik Merkezi Standart katmanınız yoksa, bu bölümde ücretsiz ağ önerilerini görüntüleme açıklanmaktadır.
+Güvenlik Merkezi Standart katmanınız yoksa, bu bölümde ücretsiz Ağ önerilerinasıl görüntüleneniz açıklanmaktadır.
 
-Bu bilgilere erişmek için, ağ dikey penceresinde **eski ağı görüntüle**' ye tıklayın. 
+Bu bilgilere erişmek için Ağ çubuğunda **eski ağ larını görüntüle'yi**tıklatın. 
 
-[Eski ağ ![](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
+[![Eski Ağ](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>İnternet'e yönelik uç noktalar bölümü
-**İnternet 'e yönelik uç noktalar** bölümünde, şu anda internet 'e yönelik bir uç noktayla yapılandırılmış sanal makineleri ve durumunu görebilirsiniz.
+**Internet'e bakan uç noktalar** bölümünde, şu anda Internet'e bakan uç nokta ve durumuyla yapılandırılan sanal makineleri görebilirsiniz.
 
-Bu tabloda uç nokta adı, Internet 'e yönelik IP adresi ve ağ güvenlik grubunun ve NGFW önerilerinin geçerli önem derecesi durumu bulunur. Tablo önem derecesine göre sıralanır.
+Bu tabloda bitiş noktası adı, IP adresine bakan Internet ve ağ güvenlik grubunun geçerli önem durumu ve NGFW önerileri vardır. Tablo önem derecesine göre sıralanır.
 
 ### <a name="networking-topology-section"></a>Ağ topolojisi bölümü
-**Ağ topolojisi** bölümünde kaynakların hiyerarşik bir görünümü bulunur.
+**Ağ topolojisi** bölümü kaynakların hiyerarşik bir görünümüne sahiptir.
 
 Bu tablo önem derecesine göre sıralanır (sanal makineler ve alt ağlar).
 
-Bu topoloji görünümünde, ilk düzey sanal ağları görüntüler. İkinci alt ağları görüntüler ve üçüncü düzey bu alt ağlara ait sanal makineleri görüntüler. Sağ sütunda bu kaynaklar için ağ güvenlik grubu önerilerinin geçerli durumu gösterilmektedir.
+Bu topoloji görünümünde, birinci düzey Vnets görüntüler. İkinci alt ağları görüntüler ve üçüncü düzey bu alt ağlara ait sanal makineleri görüntüler. Sağ sütun, bu kaynaklar için ağ güvenlik grubu önerilerinin geçerli durumunu gösterir.
 
-Üçüncü düzey, daha önce açıklananlara benzer olan sanal makineleri görüntüler. Daha fazla bilgi edinmek veya gerekli güvenlik denetimini veya yapılandırmayı uygulamak için herhangi bir kaynağa tıklayabilirsiniz.
+Üçüncü düzey, daha önce açıklanana benzer sanal makineleri görüntüler. Daha fazla bilgi edinmek veya gerekli güvenlik denetimini veya yapılandırmasını uygulamak için herhangi bir kaynağı tıklatabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer Azure kaynak türü için geçerli öneriler hakkında daha fazla bilgi için aşağıdakilere bakın:
+Diğer Azure kaynak türleri için geçerli olan öneriler hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
 
 * [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
-* [Azure Güvenlik Merkezi 'nde Azure SQL hizmetinizi koruma](security-center-sql-service-recommendations.md)
+* [Azure SQL hizmetinizi Azure Güvenlik Merkezi'nde koruma](security-center-sql-service-recommendations.md)

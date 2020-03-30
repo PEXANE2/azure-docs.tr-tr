@@ -1,18 +1,18 @@
 ---
-title: Azure Service Fabric kapsayıcı Hizmetleri için gMSA kurulumu
-description: Azure Service Fabric 'de çalışan bir kapsayıcı için Grup tarafından yönetilen hizmet hesapları (gMSA) kurulumunu hemen öğrenin.
+title: Azure Hizmet Kumaş ı konteyner hizmetleri için gMSA kurulumu
+description: Azure Hizmet Kumaşı'nda çalışan bir kapsayıcı için Yönetilen Hizmet Hesapları (gMSA) kurulum grubunu şimdi öğrenin.
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: 9873e2d7672412b0e1e22c6c2a774cf629fd728a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639216"
 ---
-# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Service Fabric üzerinde çalışan Windows kapsayıcıları için gMSA 'Yı ayarlama
+# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Service Fabric üzerinde çalışan Windows kapsayıcıları için gMSA'yı ayarlama
 
-GMSA 'yı (grup yönetilen hizmet hesapları) ayarlamak için, kümedeki tüm düğümlere bir kimlik bilgisi belirtim dosyası (`credspec`) yerleştirilir. Dosya, sanal makine uzantısı kullanılarak tüm düğümlere kopyalanabilir.  `credspec` dosyası gMSA hesap bilgilerini içermelidir. `credspec` dosyası hakkında daha fazla bilgi için bkz. [kimlik bilgisi belirtimi oluşturma](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Kimlik bilgisi belirtimi ve `Hostname` etiketi uygulama bildiriminde belirtilir. `Hostname` etiketinin, kapsayıcının çalıştığı gMSA hesap adıyla eşleşmesi gerekir.  `Hostname` etiketi, kapsayıcının Kerberos kimlik doğrulaması kullanarak etki alanındaki diğer hizmetlere kimliğini doğrulamasına izin verir.  `Hostname` belirtmeye yönelik bir örnek ve uygulama bildiriminde `credspec` aşağıdaki kod parçacığında gösterilmektedir:
+gMSA'yı (grup Yönetilen Hizmet Hesapları) ayarlamak için,`credspec`kümedeki tüm düğümlere bir kimlik bilgisi belirtimi dosyası yerleştirilir. Dosya bir VM uzantısı kullanılarak tüm düğümlerde kopyalanabilir.  Dosya `credspec` gMSA hesap bilgilerini içermelidir. `credspec` Dosya hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec) Kimlik bilgisi belirtimi ve `Hostname` etiket uygulama bildiriminde belirtilir. Etiket, `Hostname` kapsayıcının altında çalıştığı gMSA hesap adıile eşleşmelidir.  Etiket, `Hostname` kerberos kimlik doğrulamasını kullanarak kapsayıcının kendisini etki alanında bulunan diğer hizmetlere doğrulamasını sağlar.  Uygulama bildiriminde `Hostname` ve `credspec` içinde belirtilen bir örnek aşağıdaki parçacıkta gösterilir:
 
 ```xml
 <Policies>
@@ -21,7 +21,7 @@ GMSA 'yı (grup yönetilen hizmet hesapları) ayarlamak için, kümedeki tüm d�
   </ContainerHostPolicies>
 </Policies>
 ```
-Sonraki adım olarak, aşağıdaki makaleleri okuyun:
+Bir sonraki adım olarak, aşağıdaki makaleleri okuyun:
 
-* [Windows Server 2016 ' de Windows kapsayıcısını Service Fabric dağıtma](service-fabric-get-started-containers.md)
-* [Linux üzerinde Service Fabric bir Docker kapsayıcısı dağıtma](service-fabric-get-started-containers-linux.md)
+* [Windows Server 2016'da Service Fabric'e Windows kapsayıcısı dağıtma](service-fabric-get-started-containers.md)
+* [Linux'ta Service Fabric'e Docker konteyneri dağıtma](service-fabric-get-started-containers-linux.md)

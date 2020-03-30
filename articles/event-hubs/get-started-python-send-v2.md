@@ -1,6 +1,6 @@
 ---
-title: Python kullanarak Azure Event Hubs olay gönderme veya alma (en son)
-description: Bu makale, Azure Event Hubs en son Azure-eventhub sürüm 5 paketini kullanarak olayları gönderen/alan bir Python uygulaması oluşturmaya yönelik bir yol sağlar.
+title: Python kullanarak Azure Etkinlik Hub'larından etkinlik gönderme veya alma (en son)
+description: Bu makalede, en son azure-eventhub sürüm 5 paketini kullanarak Azure Event Hub'larına/azure Olay Hub'larına etkinlik gönderen/alan bir Python uygulaması oluşturmak için bir iz bilgililik sağlanmaktadır.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,46 +9,46 @@ ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77162982"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Python kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure-eventhub sürüm 5)
-Bu hızlı başlangıçta, **Azure-eventhub sürüm 5** Python paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilmektedir.
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Python kullanarak olay merkezlerine olay hub'larına olay gönderme veya alma (azure-eventhub sürüm 5)
+Bu hızlı başlangıç, **azure-eventhub sürüm 5** Python paketini kullanarak bir olay hub'ına olayları nasıl göndereceğinizi ve bir olay merkezinden nasıl alınarak alınabildiğini gösterir.
 
 > [!IMPORTANT]
-> Bu hızlı başlangıç, en son Azure-eventhub sürüm 5 paketini kullanır. Eski Azure-eventhub sürüm 1 paketini kullanan hızlı bir başlangıç için bkz. [Azure-eventhub sürüm 1 kullanarak olay gönderme ve alma](event-hubs-python-get-started-send.md). 
+> Bu quickstart en son azure-eventhub sürüm 5 paketini kullanır. Eski azure-eventhub sürüm 1 paketini kullanan hızlı bir başlangıç için, [azure-eventhub sürüm 1'i kullanarak olayları Gönder ve al'](event-hubs-python-get-started-send.md)a bakın. 
 
-## <a name="prerequisites"></a>Önkoşullar
-Azure Event Hubs 'yi yeni kullanıyorsanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
+## <a name="prerequisites"></a>Ön koşullar
+Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) bakın. 
 
-Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
+Bu hızlı başlangıcı tamamlamak için aşağıdaki ön koşullara ihtiyacınız vardır:
 
-- **Microsoft Azure aboneliği**. Azure Event Hubs dahil olmak üzere Azure hizmetlerini kullanmak için bir aboneliğiniz olması gerekir.  Mevcut bir Azure hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/free/) için kaydolabilir veya [BIR hesap oluştururken](https://azure.microsoft.com)MSDN abonesi avantajlarınızı kullanabilirsiniz.
-- PıP yüklü ve güncelleştirilmiş Python 2,7 veya 3,5 ya da üzeri.
-- Event Hubs için Python paketi. 
+- **Microsoft Azure aboneliği.** Azure Etkinlik Hub'ları da dahil olmak üzere Azure hizmetlerini kullanmak için bir aboneliğe ihtiyacınız vardır.  Varolan bir Azure hesabınız yoksa, [ücretsiz](https://azure.microsoft.com/free/) deneme sürümüne kaydolabilir veya [bir hesap oluştururken](https://azure.microsoft.com)MSDN abone avantajlarınızı kullanabilirsiniz.
+- Python 2.7 veya 3.5 veya daha sonra, PIP yüklü ve güncelleştirildi.
+- Olay Hub'ları için Python paketi. 
 
-    Paketi yüklemek için bu komutu, yolunda Python içeren bir komut isteminde çalıştırın:
+    Paketi yüklemek için, bu komutu Python'un yoluna çıkan bir komut isteminde çalıştırın:
 
     ```cmd
     pip install azure-eventhub
     ```
 
-    Denetim noktası deposu olarak Azure Blob depolamayı kullanarak olayları almak için aşağıdaki paketi yükleyeceksiniz:
+    Denetim noktası deposu olarak Azure Blob depolama sını kullanarak olayları almak için aşağıdaki paketi yükleyin:
 
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
-- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. Ardından, makalenin yönergelerini izleyerek **Event Hubs ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bağlantı dizesini daha sonra bu hızlı başlangıçta kullanacaksınız.
+- **Olay Hub'ları ad alanı ve olay hub'ı oluşturun.** İlk adım, Olay Hub türünden bir ad alanı oluşturmak ve uygulamanızın etkinlik merkeziyle iletişim kurmak için ihtiyaç duyduğu yönetim kimlik bilgilerini elde etmek için [Azure portalını](https://portal.azure.com) kullanmaktır. Ad alanı ve olay hub'ı oluşturmak için [bu makaledeki](event-hubs-create.md)yordamı izleyin. Ardından, makaledeki yönergeleri izleyerek **Olay Hub'ları ad alanının bağlantı dizesini** alın: [Bağlantı dizesini alın.](event-hubs-get-connection-string.md#get-connection-string-from-the-portal) Bağlantı dizesini daha sonra bu hızlı başlatmada kullanırsınız.
 
 ## <a name="send-events"></a>Olayları gönderme
-Bu bölümde, daha önce oluşturduğunuz Olay Hub 'ına olayları göndermek için bir Python betiği oluşturacaksınız.
+Bu bölümde, olayları daha önce oluşturduğunuz olay merkezine göndermek için bir Python komut dosyası oluşturursunuz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/)gibi en sevdiğiniz Python düzenleyicisini açın.
-2. *Send.py*adlı bir komut dosyası oluşturun. Bu betik, daha önce oluşturduğunuz Olay Hub 'ına bir olay toplu işi gönderir.
-3. Aşağıdaki kodu *Send.py*' ye yapıştırın:
+2. *send.py*adlı bir komut dosyası oluşturun. Bu komut dosyası, daha önce oluşturduğunuz olay hub'ına bir dizi olay gönderir.
+3. Aşağıdaki kodu *send.py*yapıştırın:
 
     ```python
     import asyncio
@@ -78,28 +78,28 @@ Bu bölümde, daha önce oluşturduğunuz Olay Hub 'ına olayları göndermek i�
     ```
 
     > [!NOTE]
-    > Bilgilendirici açıklamalar da dahil olmak üzere, tüm kaynak kodu için [GitHub send_async. Kopyala sayfasına](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py)gidin.
+    > Bilgilendirme yorumları da dahil olmak üzere tam kaynak kodu için [GitHub send_async.py sayfasına](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py)gidin.
 
 ## <a name="receive-events"></a>Olayları alma
-Bu hızlı başlangıç, bir denetim noktası deposu olarak Azure Blob depolamayı kullanır. Denetim noktası deposu, kontrol noktalarını kalıcı hale getirmek için kullanılır (yani, son okuma konumları).  
+Bu hızlı başlatma, Azure Blob depolama noktasını denetim noktası deposu olarak kullanır. Denetim noktası deposu denetim noktalarını (diğer bir şekilde son okuma konumlarını) sürdürmek için kullanılır.  
 
-### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure depolama hesabı ve BLOB kapsayıcısı oluşturma
-Aşağıdaki adımları uygulayarak bir Azure depolama hesabı ve içinde bir blob kapsayıcısı oluşturun:
+### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure depolama hesabı ve blob kapsayıcısı oluşturma
+Aşağıdaki adımları yaparak bir Azure depolama hesabı ve bir blob kapsayıcısı oluşturun:
 
-1. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal)
+1. [Azure Depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [Bağlantı dizesini depolama hesabına al](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [Bağlantı dizesini depolama hesabına alma](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-Alma kodunda daha sonra kullanmak için bağlantı dizesini ve kapsayıcı adını kaydettiğinizden emin olun.
+Daha sonra kullanım için bağlantı dizesini ve kapsayıcı adını alma koduna kaydettiğinden emin olun.
 
 
-### <a name="create-a-python-script-to-receive-events"></a>Olaylarını almak için bir Python betiği oluşturma
+### <a name="create-a-python-script-to-receive-events"></a>Olayları almak için Python komut dosyası oluşturma
 
-Bu bölümde, Olay Hub 'ınızdan olayları almak için bir Python betiği oluşturursunuz:
+Bu bölümde, olay merkezinizden olayları almak için bir Python komut dosyası oluşturursunuz:
 
 1. [Visual Studio Code](https://code.visualstudio.com/)gibi en sevdiğiniz Python düzenleyicisini açın.
-2. *Recv.py*adlı bir komut dosyası oluşturun.
-3. Aşağıdaki kodu *recv.py*' ye yapıştırın:
+2. *recv.py*adlı bir komut dosyası oluşturun.
+3. Aşağıdaki kodu *recv.py*yapıştırın:
 
     ```python
     import asyncio
@@ -132,12 +132,12 @@ Bu bölümde, Olay Hub 'ınızdan olayları almak için bir Python betiği oluş
     ```
 
     > [!NOTE]
-    > Ek bilgilendirme açıklamaları dahil olmak üzere, tüm kaynak kodu için [GitHub recv_with_checkpoint_store_async. Kopyala sayfasına](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/recv_with_checkpoint_store_async.py)gidin.
+    > Ek bilgi açıklamaları da dahil olmak üzere tam kaynak kodu için [GitHub recv_with_checkpoint_store_async.py sayfasına](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/recv_with_checkpoint_store_async.py)gidin.
 
 
 ### <a name="run-the-receiver-app"></a>Alıcı uygulamasını çalıştırma
 
-Betiği çalıştırmak için Python alt yolu olan bir komut istemi açın ve ardından bu komutu çalıştırın:
+Komut dosyasını çalıştırmak için, Python'un yoluna çıkan bir komut istemini açın ve ardından şu komutu çalıştırın:
 
 ```bash
 python recv.py
@@ -145,16 +145,16 @@ python recv.py
 
 ### <a name="run-the-sender-app"></a>Gönderen uygulamasını çalıştırma
 
-Betiği çalıştırmak için Python alt yolu olan bir komut istemi açın ve ardından bu komutu çalıştırın:
+Komut dosyasını çalıştırmak için, Python'un yoluna çıkan bir komut istemini açın ve ardından şu komutu çalıştırın:
 
 ```bash
 python send.py
 ```
 
-Alıcı penceresi, Olay Hub 'ına gönderilen iletileri görüntülemelidir.
+Alıcı penceresi olay hub'ına gönderilen iletileri görüntülemelidir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta olayları zaman uyumsuz olarak gönderdiniz ve aldınız. Olayları zaman uyumlu olarak gönderme ve alma hakkında bilgi edinmek için [GitHub sync_samples sayfasına](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples)gidin.
+Bu hızlı başlangıçta, olayları eşit bir şekilde gönderdiniz ve aldınız. Olayları eşzamanlı olarak nasıl göndereceğini ve alacağınızı öğrenmek için [GitHub sync_samples sayfasına](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples)gidin.
 
-GitHub 'da tüm örnekler (hem zaman uyumlu hem de zaman uyumsuz) için, [Python örnekleri Için Azure Event Hubs istemci kitaplığı](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)' na gidin.
+GitHub'daki tüm örnekler (hem senkron hem de eşzamanlı) [için Python örnekleri için Azure Event Hub istemci kitaplığına](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)gidin.

@@ -4,10 +4,10 @@ description: Application Insights ile Windows masaüstü uygulamanızın kullan�
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670840"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasik Windows Masaüstü uygulamalarında kullanımı ve performansı izleme
@@ -20,7 +20,7 @@ ms.locfileid: "77670840"
 3. Visual Studio’da uygulama projenizin NuGet paketlerini düzenleyin ve şunu ekleyin: Microsoft.ApplicationInsights.WindowsServer. (Alternatif olarak, standart telemetri toplama modülleri olmaksızın yalnızca API’nın kendisini istiyorsanız Microsoft.ApplicationInsights seçeneğini belirleyin.)
 4. İzleme anahtarını kodunuzda ayarlayın:
    
-    *anahtarınızı* `TelemetryConfiguration.Active.InstrumentationKey = "` `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "` *anahtarınız* `";`
    
     veya ApplicationInsights.config öğesinde ayarlayın (standart telemetri paketlerinden birini yüklediyseniz):
    
@@ -28,9 +28,9 @@ ms.locfileid: "77670840"
    
     ApplicationInsights.config dosyasını kullanırsanız, bunun özelliklerinin **Build Action = Content, Copy to Output Directory = Copy** olarak ayarlandığından emin olun.
 5. Telemetri göndermek için [API’yi kullanın](../../azure-monitor/app/api-custom-events-metrics.md).
-6. Uygulamanızı çalıştırın ve Azure portal oluşturduğunuz kaynakta Telemetriyi görüntüleyin.
+6. Uygulamanızı çalıştırın ve Azure portalında oluşturduğunuz kaynaktaki telemetriyi görün.
 
-## <a name="telemetry"></a>Örnek kod
+## <a name="example-code"></a><a name="telemetry"></a>Örnek kod
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -68,11 +68,11 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="override-storage-of-computer-name"></a>Bilgisayar adının depolanmasını geçersiz kıl
+## <a name="override-storage-of-computer-name"></a>Bilgisayar adının depolamayı geçersiz kılma
 
-Varsayılan olarak, bu SDK sistem yayma telemetrinin bilgisayar adını toplayıp depolar. Koleksiyonu geçersiz kılmak için bir telemetri Başlatıcısı kullanmanız gerekir:
+Varsayılan olarak bu SDK, telemetri yayan sistemin bilgisayar adını toplar ve saklar. Koleksiyonu geçersiz kılmak için bir telemetri Initializer kullanmanız gerekir:
 
-**Aşağıdaki gibi özel Telemetryınitializer yazın.**
+**Aşağıdaki gibi özel TelemetryInitializer yazın.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-İzleme anahtarını ayarlamak için aşağıdaki `Program.cs` `Main()` yöntemde başlatıcıyı oluşturun:
+Enstrümantasyon anahtarını `Program.cs` `Main()` ayarlayarak aşağıdaki yöntemde başharfi anında belirleyin:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

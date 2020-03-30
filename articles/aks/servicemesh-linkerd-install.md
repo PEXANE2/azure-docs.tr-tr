@@ -1,45 +1,45 @@
 ---
-title: Azure Kubernetes Service (AKS) içinde Linkerd 'yi kurma
-description: Azure Kubernetes Service (AKS) kümesinde hizmet ağı oluşturmak için Linkerd 'yi yüklemeyi ve kullanmayı öğrenin
+title: Azure Kubernetes Hizmetinde (AKS) Linkerd'i Yükleyin
+description: Azure Kubernetes Hizmeti (AKS) kümesinde hizmet ağı oluşturmak için Linkerd'i nasıl yükleyip kullanacağınızı öğrenin
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593759"
 ---
-# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde Linkerd 'yi kurma
+# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Linkerd'i Yükleyin
 
-[Linkerd][linkerd-github] , açık kaynaklı bir hizmet ağı ve [cncf ınubating projem][linkerd-cncf]. Linkerd, trafik yönetimi, hizmet kimliği ve güvenlik, güvenilirlik ve Observability dahil olmak üzere özellikler sağlayan bir ultralight hizmet ağı. Linkerd hakkında daha fazla bilgi için bkz. resmi [LINKERD SSS][linkerd-faq] ve [Linkerd mimari][linkerd-architecture] belgeleri.
+[Linkerd][linkerd-github] bir açık kaynak hizmet örgü ve [CNCF kuluçka projesidir.][linkerd-cncf] Linkerd, trafik yönetimi, hizmet kimliği ve güvenliği, güvenilirlik ve gözlemlenebilirlik gibi özellikler sağlayan ultra hafif bir servis kafesidir. Linkerd hakkında daha fazla bilgi için resmi [Linkerd SSS][linkerd-faq] ve [Linkerd Architecture][linkerd-architecture] belgelerine bakın.
 
-Bu makalede, Linkerd 'yi nasıl yükleyeceğiniz gösterilmektedir. Linkerd `linkerd` istemci ikilisi istemci makinenize yüklenir ve Linkerd bileşenleri AKS üzerinde bir Kubernetes kümesine yüklenir.
+Bu makalede, Linkerd nasıl yüklenir gösterir. Linkerd `linkerd` istemci ikilisi istemci makinenize yüklenir ve Linkerd bileşenleri AKS'deki bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Bu yönergeler, Linkerd sürümüne `stable-2.6.0`başvurur.
+> Bu talimatlar referans Linkerd sürümü `stable-2.6.0`.
 >
-> Linkerd `stable-2.6.x`, Kubernetes sürümleriyle `1.13+`çalıştırılabilir. [GitHub-Linkerd yayınlarına][linkerd-github-releases]ek kararlı ve kenar linkerd sürümlerini bulabilirsiniz.
+> Linkerd `stable-2.6.x` Kubernetes sürümleri `1.13+`karşı çalıştırılabilir. GitHub ek kararlı ve kenar Linkerd sürümleri bulabilirsiniz [- Linkerd Sürümleri][linkerd-github-releases].
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Linkerd linkerd istemci ikilisini indirin ve yükleyin
-> * AKS üzerinde Linkerd 'yi yükler
+> * İndirin ve Linkerd linkerd istemci ikili yükleyin
+> * Linkerd'i AKS'ye Yükleyin
 > * Linkerd yüklemesini doğrulama
-> * Panoya erişin
-> * AKS 'ten Linkerd 'yi kaldırma
+> * Panoya Erişin
+> * Aks'tan Linkerd'i Kaldır
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede açıklanan adımlarda, RBAC etkinleştirilmiş bir AKS kümesi (Kubernetes `1.13` ve üzeri) oluşturdunuz ve kümeyle `kubectl` bir bağlantı oluşturmuş olduğunuz varsayılır. Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın.
+Bu makalede ayrıntılı adımlar, bir AKS kümesi (Kubernetes `1.13` ve yukarıda, RBAC etkin) oluşturduğunuzve küme ile bir `kubectl` bağlantı kurduk varsayalım. Bu öğelerden herhangi biriyle ilgili yardıma ihtiyacınız varsa, [AKS quickstart'ına][aks-quickstart]bakın.
 
-Tüm Linkerd 'lerin Linux düğümlerinde çalışacak şekilde zamanlanması gerekir. Bu kurulum, aşağıda açıklanan yükleme yönteminde varsayılandır ve ek yapılandırma gerektirmez.
+Tüm Linkerd bölmeleri Linux düğümleri üzerinde çalışacak şekilde zamanlanmalıdır - bu kurulum aşağıda ayrıntılı yükleme yönteminde varsayılandır ve ek yapılandırma gerektirmez.
 
-Bu makale, Linkerd yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Sonuç, resmi Linkerd Başlarken [kılavuzundaki][linkerd-getting-started]yapıda aynıdır.
+Bu makalede, Linkerd yükleme kılavuzunu birkaç ayrı adıma ayırır. Sonuç resmi Linkerd [rehberlik][linkerd-getting-started]başlarken olarak yapı olarak aynıdır.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -59,15 +59,15 @@ Bu makale, Linkerd yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Sonu
 
 ::: zone-end
 
-## <a name="install-linkerd-on-aks"></a>AKS üzerinde Linkerd 'yi yükler
+## <a name="install-linkerd-on-aks"></a>Linkerd'i AKS'ye Yükleyin
 
-Linkerd 'yi yüklemeden önce, denetim düzlemi 'nin AKS kümenize yüklenip yüklenmediğini öğrenmek için yükleme öncesi denetimleri çalıştıracağız:
+Linkerd'i yüklemeden önce, denetim düzleminin AKS kümemize yüklenip yüklenmeyebileceğini belirlemek için ön yükleme denetimleri çalıştırırız:
 
 ```console
 linkerd check --pre
 ```
 
-AKS kümenizin Linkerd için geçerli bir yükleme hedefi olduğunu göstermek için aşağıdakine benzer bir şey görmeniz gerekir:
+AKS kümenizin Linkerd için geçerli bir yükleme hedefi olduğunu belirtmek için aşağıdaki gibi bir şey görmeniz gerekir:
 
 ```console
 kubernetes-api
@@ -117,26 +117,26 @@ linkerd-version
 Status check results are √
 ```
 
-Şimdi Linkerd bileşenlerini yüklemeye zaman atalım. AKS kümenize Linkerd bileşenlerini yüklemek için `linkerd` ve `kubectl` ikili dosyaları kullanın. `linkerd` bir ad alanı otomatik olarak oluşturulur ve bileşenler bu ad alanına yüklenir.
+Şimdi Linkerd bileşenlerini yükleme zamanı. Linkerd bileşenlerini `linkerd` AKS kümenize yüklemek için ikili ve `kubectl` ikili leri kullanın. Ad `linkerd` alanı otomatik olarak oluşturulur ve bileşenler bu ad alanına yüklenir.
 
 ```console
 linkerd install | kubectl apply -f -
 ```
 
-Linkerd, bir dizi nesneyi dağıtır. Yukarıdaki `linkerd install` komutu çıktısından listeyi görürsünüz. Linkerd bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak yaklaşık 1 dakika sürer.
+Linkerd bir dizi nesne dağıtıyor. Listeyi yukarıdaki komutunuzun `linkerd install` çıktısından görürsünüz. Bağlayıcı bileşenlerinin dağıtımının tamamlanması, küme ortamınıza bağlı olarak yaklaşık 1 dakika sürer.
 
-Bu noktada, AKS kümenize Linkerd 'yi dağıttık. Linkerd 'nin başarılı bir dağıtımına sahip olduğunuzdan emin olmak için, [linkerd yüklemesini doğrulamak](#validate-the-linkerd-installation)üzere bir sonraki bölüme geçeceğiz.
+Bu noktada, Linkerd'i AKS kümenize dağıttınız. Linkerd'in başarılı bir şekilde dağıtılmasını sağlamak için, [Linkerd yüklemesini doğrulamak](#validate-the-linkerd-installation)için bir sonraki bölüme geçelim.
 
 ## <a name="validate-the-linkerd-installation"></a>Linkerd yüklemesini doğrulama
 
-Kaynakların başarıyla oluşturulduğunu doğrulayın. [Kubectl Get svc][kubectl-get] ve [kubectl Get Pod][kubectl-get] komutlarını kullanarak, linkerd bileşenlerinin `linkerd install` komutu tarafından yüklendiği `linkerd` ad alanını sorgulayın:
+Kaynakların başarıyla oluşturulduğunu doğrulayın. Linkerd bileşenlerikomutu `linkerd` tarafından `linkerd install` yüklenen ad alanını sorgulamak için [kubectl get svc][kubectl-get] ve [kubectl get pod][kubectl-get] komutlarını kullanın:
 
 ```console
 kubectl get svc --namespace linkerd --output wide
 kubectl get pod --namespace linkerd --output wide
 ```
 
-Aşağıdaki örnek çıktı, şu anda çalışıyor olması gereken hizmetleri ve (Linux düğümlerinde zamanlanan) Hizmetleri gösterir:
+Aşağıdaki örnek çıktı, şu anda çalışıyor olması gereken hizmetleri ve bölmeleri (Linux düğümlerinde zamanlanmış) gösterir:
 
 ```console
 NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE  SELECTOR
@@ -163,13 +163,13 @@ linkerd-tap-5cd9fc566-ct988               2/2     Running   0          64s   10.
 linkerd-web-774c79b6d5-dhhwf              2/2     Running   0          65s   10.240.0.70   aks-linux-16165125-vmss000002   <none>           <none>
 ```
 
-Linkerd, Linkerd denetim düzlemi 'nin başarıyla yüklenip yapılandırıldığını doğrulamak için `linkerd` istemci ikili dosyası aracılığıyla bir komut sağlar.
+Linkerd, Bağlantı denetim `linkerd` düzleminin başarıyla yüklenmiş ve yapılandırıldığını doğrulamak için istemci ikilisi aracılığıyla bir komut sağlar.
 
 ```console
 linkerd check
 ```
 
-Yüklemenizin başarılı olduğunu belirtmek için aşağıdakine benzer bir şey görmeniz gerekir:
+Yüklemenizin başarılı olduğunu belirtmek için aşağıdaki gibi bir şey görmeniz gerekir:
 
 ```console
 kubernetes-api
@@ -226,13 +226,13 @@ Status check results are √
 
 ## <a name="access-the-dashboard"></a>Panoya erişin
 
-Linkerd, hizmet kafesi ve iş yüklerine ilişkin Öngörüler sağlayan bir panoyla birlikte gelir. Panoya erişmek için `linkerd dashboard` komutunu kullanın. Bu komut, [kubectl bağlantı noktasından][kubectl-port-forward] yararlanarak, istemci makineniz ile aks kümenizdeki ilgili Pod arasında güvenli bir bağlantı oluşturur. Daha sonra panoyu varsayılan tarayıcınızda otomatik olarak açar.
+Linkerd, hizmet örgüsü ve iş yükleri hakkında bilgi sağlayan bir panoyla birlikte gelir. Panoya erişmek için `linkerd dashboard` komutu kullanın. Bu komut, istemci makineniz ile AKS kümenizdeki ilgili bölmeler arasında güvenli bir bağlantı oluşturmak için [kubectl port ileriden][kubectl-port-forward] yararlanır. Daha sonra varsayılan tarayıcınızdaki panoyu otomatik olarak açar.
 
 ```console
 linkerd dashboard
 ```
 
-Bu komut ayrıca bir bağlantı noktası İleri oluşturacak ve Grafana panoları için bir bağlantı döndürüyor.
+Komut ayrıca bir bağlantı noktası oluşturacak ve Grafana panoları için bir bağlantı döndürür.
 
 ```console
 Linkerd dashboard available at:
@@ -242,14 +242,14 @@ http://127.0.0.1:50750/grafana
 Opening Linkerd dashboard in the default browser
 ```
 
-## <a name="uninstall-linkerd-from-aks"></a>AKS 'ten Linkerd 'yi kaldırma
+## <a name="uninstall-linkerd-from-aks"></a>Aks'tan Linkerd'i Kaldır
 
 > [!WARNING]
-> Çalışan bir sistemden Linkerd silme, hizmetleriniz arasında trafik ile ilgili sorunlar oluşmasına neden olabilir. Devam etmeden önce, sisteminizin Linkerd olmadan hala düzgün şekilde çalışmaya yönelik bir sağlama gerçekleştirdiğinizden emin olun.
+> Linkerd'in çalışan bir sistemden silinmesi, hizmetleriniz arasında trafikle ilgili sorunlara neden olabilir. İşleme devam etmeden önce Linkerd olmadan sisteminizin hala doğru çalışması için hükümler yaptığınızdan emin olun.
 
-İlk olarak, veri düzlemi proxy 'lerini kaldırmanız gerekecektir. İş yükü ad alanlarından otomatik ara sunucu ekleme [ek açıklamalarını][linkerd-automatic-proxy-injection] kaldırın ve iş yükü dağıtımlarınızı kullanıma alın. İş yükleriniz artık ilişkili hiçbir veri düzlemi bileşenine sahip olmamalıdır.
+Önce veri düzlemi vekilleri kaldırmanız gerekir. İş yükü ad alanlarından herhangi bir Otomatik Proxy Enjeksiyon [ek açıklamalarını][linkerd-automatic-proxy-injection] kaldırın ve iş yükü dağıtımlarınızı dağıtın. İş yüklerinizin artık ilişkili veri düzlemi bileşenleri olmamalıdır.
 
-Son olarak, denetim düzlemi 'ni aşağıdaki gibi kaldırın:
+Son olarak, kontrol düzlemini aşağıdaki gibi kaldırın:
 
 ```console
 linkerd install --ignore-cluster | kubectl delete -f -
@@ -257,15 +257,15 @@ linkerd install --ignore-cluster | kubectl delete -f -
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Linkerd için daha fazla yükleme ve yapılandırma seçeneği araştırmak için aşağıdaki resmi Linkerd yönergelerine bakın:
+Linkerd için daha fazla yükleme ve yapılandırma seçeneğini keşfetmek için aşağıdaki resmi Linkerd kılavuzuna bakın:
 
-- [Linkerd-Helm yüklemesi][linkerd-install-with-helm]
-- [Rol ayrıcalıkları için karşılamak 'ya linkerd-çok aşamalı yükleme][linkerd-multi-stage-installation]
+- [Linkerd - Miğfer kurulumu][linkerd-install-with-helm]
+- [Linkerd - Rol ayrıcalıklarını karşılamak için çok aşamalı kurulum][linkerd-multi-stage-installation]
 
-Ayrıca şunları kullanarak ek senaryolar izleyebilirsiniz:
+Ayrıca aşağıdakileri kullanarak ek senaryolar da izleyebilirsiniz:
 
-- [Linkerd emojivoto tanıtımı][linkerd-demo-emojivoto]
-- [Linkerd kitaplar tanıtımı][linkerd-demo-books]
+- [Linkerd emojivoto demo][linkerd-demo-emojivoto]
+- [Linkerd kitap demo][linkerd-demo-books]
 
 <!-- LINKS - external -->
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights Visual Studio 'da hata ayıklama
+title: Azure Uygulama Öngörüleri ile Visual Studio'da Hata Ayıklama
 description: Hata ayıklama ve üretim sırasında wen uygulaması performans analizi ve tanılama.
 ms.topic: conceptual
 author: NumberByColors
@@ -8,30 +8,30 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670891"
 ---
-# <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio 'da Azure Application Insights ile uygulamalarınızın hatalarını ayıklama
+# <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio'daki Azure Uygulama Öngörüleri ile uygulamalarınızı hata ayıklama
 Visual Studio’da (2015 ve sonraki sürümler) hem hata ayıklama hem de üretim sırasında [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)’tan alınan telemetri verilerini kullanarak, ASP.NET web uygulamanızdaki performansı çözümleyebilir ve sorunları tanılayabilirsiniz.
 
 ASP.NET web uygulamanızı Visual Studio 2017 veya sonraki bir sürümle oluşturduysanız, Application Insights SDK’sı zaten yüklüdür. Diğer sürümlerde, henüz yapmadıysanız [uygulamanıza Application Insights ekleyin](../../azure-monitor/app/asp-net.md).
 
-Uygulamanızı canlı üretim sırasında izlemek için, normalde uyarlar ayarlayıp güçlü izleme araçları uygulayabileceğiniz [Azure portaldaki](https://portal.azure.com) Application Insights telemetrisini görüntülersiniz. Ancak, hata ayıklama için ayrıca Visual Studio’da telemetriyi arayıp çözümleyebilirsiniz. Visual Studio 'Yu kullanarak hem üretim sitenizdeki hem de geliştirme makinenizdeki hata ayıklama çalıştırmalarının telemetrisini çözümleyebilirsiniz. İkinci durumda, SDK’yı henüz Azure portala telemetri gönderecek şekilde yapılandırmadıysanız bile hata ayıklama çalıştırmalarını çözümleyebilirsiniz. 
+Uygulamanızı canlı üretim sırasında izlemek için, normalde uyarlar ayarlayıp güçlü izleme araçları uygulayabileceğiniz [Azure portaldaki](https://portal.azure.com) Application Insights telemetrisini görüntülersiniz. Ancak, hata ayıklama için ayrıca Visual Studio’da telemetriyi arayıp çözümleyebilirsiniz. Visual Studio'yı hem üretim alanınızdan hem de geliştirme makinenizdeki hata ayıklama çalışmalarından telemetriyi analiz etmek için kullanabilirsiniz. İkinci durumda, SDK’yı henüz Azure portala telemetri gönderecek şekilde yapılandırmadıysanız bile hata ayıklama çalıştırmalarını çözümleyebilirsiniz. 
 
-## <a name="run"></a> Projenizin hatalarını ayıklama
+## <a name="debug-your-project"></a><a name="run"></a>Projenizi hata ayıklama
 F5 kullanarak web uygulamanızı yerel hata ayıklama modunda çalıştırın. Farklı sayfalar açarak telemetri verileri oluşturun.
 
-Visual Studio 'da, projenizdeki Application Insights modülü tarafından günlüğe kaydedilen olayların sayısını görürsünüz.
+Visual Studio'da, projenizde Application Insights modülü tarafından günlüğe kaydedilmiş olayların sayısını görürsünüz.
 
 ![Visual Studio'da, hata ayıklama sırasında Application Insights düğmesi gösterilir.](./media/visual-studio/appinsights-09eventcount.png)
 
 Telemetrinizde arama yapmak için bu düğmeye tıklayın. 
 
 ## <a name="application-insights-search"></a>Application Insights araması
-Application Insights Arama penceresi günlüğe kaydedilmiş olayları gösterir. (Application Insights ayarlarken Azure 'da oturum açtıysanız, Azure portal aynı olayları arayabilirsiniz.)
+Application Insights Arama penceresi günlüğe kaydedilmiş olayları gösterir. (Application Insights'ı ayarlarken Azure'da oturum açtıysanız, Azure portalında aynı etkinlikleri arayabilirsiniz.)
 
 ![Projeye sağ tıklayın ve Application Insights, Ara’yı seçin](./media/visual-studio/34.png)
 
@@ -59,7 +59,7 @@ Yığın izlemesi almak için bir özel duruma tıklayın. Visual Studio’da uy
 ![Özel durum yığın izlemesi](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>Koddaki istek ve özel durum özetlerini görüntüleme
-Her işleyici yönteminin üzerindeki kod lens satırında, son 24 h 'de Application Insights tarafından günlüğe kaydedilen isteklerin ve özel durumların sayısını görürsünüz.
+Her işleyici yönteminin üzerindeki Kod Lens satırında, application Insights tarafından son 24 saat içinde günlüğe kaydedilen istek ve özel durumların sayısını görürsünüz.
 
 ![Özel durum yığın izlemesi](./media/visual-studio/21.png)
 
@@ -81,21 +81,21 @@ Verilerinizdeki anormallikleri bulmak için "Görünüm Türü" açılır listes
 [Eğilimler hakkında daha fazla bilgi](../../azure-monitor/app/visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Yerel izleme
-(Visual Studio 2015 güncelleştirme 2 ' den) SDK 'Yı Application Insights portalına telemetri gönderecek şekilde yapılandırmadıysanız (ApplicationInsights. config dosyasında bir izleme anahtarı yoksa), tanılama penceresinde en son hata ayıklama oturumlarınızdan telemetri görüntülenir. 
+(Visual Studio 2015 Güncelleme 2) SDK'yı Uygulama Öngörüleri portalına telemetri gönderecek şekilde yapılandırmadıysanız (ApplicationInsights.config'de enstrümantasyon anahtarı olmaması için) tanılama penceresi en son hata ayıklama oturumunuzdaki telemetriyi görüntüler. 
 
 Daha önce uygulamanızın önceki bir sürümünü yayımladıysanız bu iyi bir şeydir. Hata ayıklama oturumlarınızdan alınan telemetrinin, yayımlanan uygulamanın Application Insights portalındaki telemetriyle karışmasını istemezsiniz.
 
 Telemetriyi portala göndermeden önce hatalarını ayıklamak istediğiniz [özel telemetri](../../azure-monitor/app/api-custom-events-metrics.md) verilerine sahip olmanız da yararlı olur.
 
-* *İlk olarak, portala telemetri göndermek için Application Insights tam olarak yapılandırdım. Ancak artık Telemetriyi yalnızca Visual Studio 'da görmek istiyorum.*
+* *İlk başta, portala telemetri göndermek için Uygulama Öngörüleri'ni tamamen yapılandırıldım. Ama şimdi telemetriyi sadece Visual Studio'da görmek istiyorum.*
   
   * Arama penceresinin Ayarlar bölümünde, uygulamanız portala telemetri gönderiyor olsa bile yerel tanılamalarda arama seçeneği vardır.
-  * Portalın portala gönderilmesini durdurmak için, ApplicationInsights. config dosyasından satır `<instrumentationkey>...` açıklama ekleyin. Yeniden Telemetriyi portala göndermeye hazırsanız, açıklamayı kaldırın.
+  * Telemetrinin portala gönderilmesini durdurmak için `<instrumentationkey>...` ApplicationInsights.config'den satırı kısayorum. Telemetriyi tekrar portala göndermeye hazır olduğunuzda, yorumyapmayı bırakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 |  |  |
 | --- | --- |
 | **[Daha fazla veri ekleme](../../azure-monitor/app/asp-net-more.md)**<br/>Kullanımı, kullanılabilirliği, bağımlılıkları, özel durumları izleyin. Günlük altyapılarından izlemeleri tümleştirin. Özel telemetri yazın. |![Visual studio](./media/visual-studio/64.png) |
-| **[Application Insights portalıyla çalışma](../../azure-monitor/app/overview-dashboard.md)**<br/>Panolar, güçlü tanılama ve analiz araçları, uyarılar, uygulamanızın canlı bağımlılık Haritası ve aktarılmış telemetri verilerini görüntüleyin. |![Visual studio](./media/visual-studio/62.png) |
+| **[Application Insights portalıyla çalışma](../../azure-monitor/app/overview-dashboard.md)**<br/>Panoları, güçlü tanılama ve analitik araçları, uyarıları, uygulamanızın canlı bağımlılık haritasını ve dışa aktarılan telemetri verilerini görüntüleyin. |![Visual studio](./media/visual-studio/62.png) |
 

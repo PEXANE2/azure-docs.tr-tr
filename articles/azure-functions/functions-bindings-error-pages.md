@@ -1,38 +1,38 @@
 ---
-title: Azure Işlevleri hata işleme Kılavuzu
-description: Azure Işlevlerinde belirli bağlama hatalarının bağlantılarıyla ilgili hataları işleme hakkında bilgi edinin.
+title: Azure İşlevler hata işleme kılavuzu
+description: Azure İşlevlerinde belirli bağlama hatalarına bağlantılariçeren hataları işlemeyi öğrenin.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
 ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586198"
 ---
-# <a name="azure-functions-error-handling"></a>Azure Işlevleri hata işleme
+# <a name="azure-functions-error-handling"></a>Azure Fonksiyonları hata işleme
 
-Azure Işlevlerinde hataları işleme, kayıp verilerin, unutulan olayların olmaması ve uygulamanızın durumunu izlemek için önemlidir.
+Azure İşlevlerinde hataları işlemek, kaybolan verileri, gözden kaçan olayları önlemek ve uygulamanızın durumunu izlemek için önemlidir.
 
-Bu makalede, bağlama özgü hataların bağlantılarıyla birlikte hata işleme için genel stratejiler açıklanmaktadır.
+Bu makalede, bağlamaya özgü hatalara bağlantılarla birlikte hata işleme için genel stratejiler açıklanmaktadır.
 
 ## <a name="handling-errors"></a>Hataları işleme
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-## <a name="binding-error-codes"></a>Bağlama hata kodları
+## <a name="binding-error-codes"></a>Hata kodlarını bağlama
 
-Azure hizmetleriyle tümleştirilirken, hatalar temeldeki hizmetlerin API 'Lerinden kaynaklanmayabilir. Bağlama özgü hatalarla ilgili bilgiler aşağıdaki makalelerin **özel durumlar ve dönüş kodları** bölümünde bulunabilir:
+Azure hizmetleriyle tümleştirme yaparken, hatalar temel hizmetlerin API'lerinden kaynaklanabilir. Bağlayıcıya özgü hatalarla ilgili bilgiler aşağıdaki makalelerin **İstisnalar ve iade kodları** bölümünde mevcuttur:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
 + [Blob depolama](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
 
-+ [Event Hubs](functions-bindings-event-hubs-output.md#exceptions-and-return-codes)
++ [Etkinlik Hub'ları](functions-bindings-event-hubs-output.md#exceptions-and-return-codes)
 
-+ [IoT Hub 'Ları](functions-bindings-event-iot-output.md#exceptions-and-return-codes)
++ [IoT Hub'ları](functions-bindings-event-iot-output.md#exceptions-and-return-codes)
 
 + [Notification Hubs](functions-bindings-notification-hubs.md#exceptions-and-return-codes)
 

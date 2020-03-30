@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161894"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Sanal ağ eşlemesi için VPN ağ geçidi aktarımını yapılandırma
@@ -48,7 +48,7 @@ Yönergeler için aşağıdaki belgelere bakın:
 2. [Aynı dağıtım modeli ile sanal ağ eşlemesi oluşturma](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [Farklı dağıtım modelleri ile sanal ağ eşlemesi oluşturma](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a>İzinler
+## <a name="permissions"></a><a name="permissions"></a>Izin
 
 Sanal ağ eşlemesi için kullandığınız hesaplar gerekli rol veya izinlere sahip olmalıdır. Aşağıdaki örnekte, Merkez-RM ve Uç-Klasik adlı iki sanal ağ eşliyorsanız hesabınız her sanal ağ için aşağıdaki rol veya izinlere sahip olmalıdır:
     

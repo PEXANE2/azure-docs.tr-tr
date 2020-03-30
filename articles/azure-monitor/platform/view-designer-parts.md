@@ -1,360 +1,360 @@
 ---
-title: Azure Izleyici 'de Görünüm Tasarımcısı bölümlerine yönelik başvuru kılavuzu | Microsoft Docs
-description: Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal görüntülenen ve Log Analytics çalışma alanındaki veriler üzerinde çeşitli görselleştirmeler içeren özel görünümler oluşturabilirsiniz. Bu makale, özel görünümlerinizdeki kullanılabilir görselleştirme bölümlerinin ayarlarına yönelik bir başvuru kılavuzudur.
+title: Azure Monitör'de Görünüm Tasarımcısı bölümleri için bir başvuru kılavuzu | Microsoft Dokümanlar
+description: Azure Monitörü'nde Görünüm Tasarımcısı'nı kullanarak, Azure portalında görüntülenen özel görünümler oluşturabilir ve Günlük Analizi çalışma alanındaki verilerle ilgili çeşitli görselleştirmeler içerebilir. Bu makale, özel görünümlerinizde kullanılabilen görselleştirme parçalarının ayarlarına yönelik bir başvuru kılavuzudur.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658566"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Izleyici 'de tasarımcı görselleştirme parçalarını görüntülemek için başvuru kılavuzu
-Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makale, özel görünümlerinizdeki kullanılabilir görselleştirme bölümlerinin ayarlarına yönelik bir başvuru kılavuzudur.
+# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor'da Tasarımcı görselleştirme parçalarını görüntüleme başvuru kılavuzu
+Azure Monitörü'nde Görünüm Tasarımcısı'nı kullanarak, Azure portalında Günlük Analizi çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makale, özel görünümlerinizde kullanılabilen görselleştirme parçalarının ayarlarına yönelik bir başvuru kılavuzudur.
 
-Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
+Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz:
 
-* [Görünüm Tasarımcısı](view-designer.md): özel görünümleri oluşturma ve düzenlemeyle Ilgili görünüm tasarımcısına ve yordamlarına genel bir bakış sağlar.
-* [Kutucuk başvurusu](view-designer-tiles.md): özel görünümlerinizin kullanılabilir her kutucuğun ayarlarına bir başvuru sağlar.
+* [Tasarımcıyı Görüntüle](view-designer.md): Görünüm Tasarımcısı'na ve özel görünümler oluşturma ve düzenleme yordamlarına genel bir bakış sağlar.
+* [Döşeme başvurusu](view-designer-tiles.md): Özel görünümlerinizde kullanılabilir her döşeme için ayarlara başvuru sağlar.
 
 
-Kullanılabilir görünüm Tasarımcısı kutucuk türleri aşağıdaki tabloda açıklanmıştır:
+Kullanılabilir Görünüm Tasarımcısı döşeme türleri aşağıdaki tabloda açıklanmıştır:
 
-| Görünüm türü | Açıklama |
+| Türü görüntüleme | Açıklama |
 |:--- |:--- |
-| [Sorgu listesi](#list-of-queries-part) |Günlük sorgularının bir listesini görüntüler. Sonuçlarını göstermek için her bir sorguyu seçebilirsiniz. |
-| [Sayı ve liste](#number-and-list-part) |Üst bilgi, bir günlük sorgusundan kayıt sayısını gösteren tek bir sayı görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |
-| [İki sayı ve liste](#two-numbers-and-list-part) |Üst bilgi, ayrı günlük sorgularından kayıt sayılarını gösteren iki sayı görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |
-| [Halka ve liste](#donut-and-list-part) |Üstbilgi, günlük sorgusunda bir değer sütununu özetleyen tek bir sayı görüntüler. Halka, üst üç kaydın sonuçlarını grafik olarak görüntüler. |
-| [İki zaman çizelgesi ve liste](#two-timelines-and-list-part) |Üst bilgi, bir günlük sorgusunda değer sütununu özetleyen tek bir sayı gösteren bir belirtme çizgisi ile zaman içindeki iki günlük sorgusunun sonuçlarını sütun grafikleri olarak görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |
-| [Bilgi](#information-part) |Üst bilgi, statik metin ve isteğe bağlı bir bağlantı görüntüler. Listede statik bir başlık ve metin içeren bir veya daha fazla öğe görüntülenir. |
-| [Çizgi grafik, belirtme çizgisi ve liste](#line-chart-callout-and-list-part) |Üst bilgi, zaman içinde günlük sorgusundan birden çok serinin bulunduğu bir çizgi grafiği ve özetlenen değere sahip bir belirtme çizgisi görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |
-| [Çizgi grafik ve liste](#line-chart-and-list-part) |Üst bilgi, zaman içinde günlük sorgusundan birden çok serinin bulunduğu bir çizgi grafik görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler. |
-| [Çizgi grafik parçaları bölümü](#stack-of-line-charts-part) |Zaman içinde günlük sorgusundan birden çok serinin bulunduğu üç ayrı çizgi grafik görüntüler. |
+| [Sorgu listesi](#list-of-queries-part) |Günlük sorgularının listesini görüntüler. Sonuçlarını görüntülemek için her sorguseçebilirsiniz. |
+| [Sayı ve liste](#number-and-list-part) |Üstbilgi, günlük sorgusundaki kayıt sayısını gösteren tek bir sayı görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler. |
+| [İki sayı ve liste](#two-numbers-and-list-part) |Üstbilgi, ayrı günlük sorgularından kayıt sayısını gösteren iki sayı görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler. |
+| [Donut ve listesi](#donut-and-list-part) |Üstbilgi, günlük sorgusunda değer sütunu özetleyen tek bir sayı görüntüler. Donut, ilk üç kaydın sonuçlarını grafiksel olarak görüntüler. |
+| [İki zaman çizelgesi ve liste](#two-timelines-and-list-part) |Üstbilgi, bir günlük sorgusunda değer sütunu özetleyen tek bir sayı görüntüleyen bir ek bilgiyle, zaman içinde iki günlük sorgusunun sonuçlarını sütun grafikleri olarak görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler. |
+| [Bilgi](#information-part) |Üstbilgi statik metin ve isteğe bağlı bir bağlantı görüntüler. Liste, statik bir başlık ve metin içeren bir veya daha fazla öğe görüntüler. |
+| [Satır grafiği, diğer arama ve liste](#line-chart-callout-and-list-part) |Üstbilgi, zaman içinde bir günlük sorgusundan birden çok seri ve özet değere sahip bir ek bilgi ile bir satır grafiği görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler. |
+| [Çizgi grafiği ve listesi](#line-chart-and-list-part) |Üstbilgi, zaman içinde bir günlük sorgusundan birden çok seri içeren bir satır grafiği görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler. |
+| [Satır grafikleri bölümü yığını](#stack-of-line-charts-part) |Zaman içinde bir günlük sorgusundan birden çok seri içeren üç ayrı çizgi grafiği görüntüler. |
 
-Sonraki bölümlerde, kutucuk türleri ve özellikleri ayrıntılı olarak açıklanır.
+Sonraki bölümlerde döşeme türleri ve özellikleri ayrıntılı olarak açıklayınız.
 
 > [!NOTE]
-> Görünümlerdeki parçalar Log Analytics çalışma alanınızdaki [günlük sorgularını](../log-query/log-query-overview.md) temel alır. Bunlar şu anda Application Insights verileri almak için [çapraz kaynak sorgularını](../log-query/cross-workspace-query.md) desteklemezler.
+> Görünümdeki parçalar, Log Analytics çalışma alanınızdaki [günlük sorgularına](../log-query/log-query-overview.md) dayanır. Şu anda Application Insights'tan veri almak için [çapraz kaynak sorgularını](../log-query/cross-workspace-query.md) desteklemez.
 
-## <a name="list-of-queries-part"></a>Sorgu listesi bölümü
-Sorgu listesi bölümü, günlük sorgularının bir listesini görüntüler. Sonuçlarını göstermek için her bir sorguyu seçebilirsiniz. Görünüm, varsayılan olarak tek bir sorgu içerir ve ek sorgular eklemek için **+ sorgu** seçeneğini belirleyebilirsiniz.
+## <a name="list-of-queries-part"></a>Sorgular bölümü listesi
+Sorgular bölümü listesi günlük sorgularının listesini görüntüler. Sonuçlarını görüntülemek için her sorguseçebilirsiniz. Görünüm varsayılan olarak tek bir sorgu içerir ve ek sorgular eklemek için **+ Sorgu'yu** seçebilirsiniz.
 
-![Sorgu görünümü listesi](media/view-designer-parts/view-list-queries.png)
+![Sorgular görünümü listesi](media/view-designer-parts/view-list-queries.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Başlık |Görünümün en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Önceden seçilmiş Filtreler |Bir sorgu seçerken sol Filtre bölmesine dahil edilecek özelliklerin virgülle ayrılmış listesi. |
-| Oluşturma modu |Sorgu seçildiğinde görüntülenen ilk görünüm. Sorguyu açtıktan sonra kullanılabilir görünümleri seçebilirsiniz. |
+| Başlık |Görünümün üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Önceden seçilmiş filtreler |Sorgu seçtiğinizde sol filtre bölmesine dahil ediletilecek virgüllü özelliklerin listesi. |
+| Render modu |Sorgu seçildiğinde görüntülenen ilk görünüm. Sorguyu açtıktan sonra kullanılabilir görünümleri seçebilirsiniz. |
 | **Sorgular** | |
-| Arama sorgusu |Çalıştırılacak sorgu. |
+| Arama sorgusu |Çalıştırılabilmek için sorgu. |
 | Kolay ad | Görüntülenen açıklayıcı ad. |
 
-## <a name="number-and-list-part"></a>Sayı ve liste bölümü
-Üst bilgi, bir günlük sorgusundan kayıt sayısını gösteren tek bir sayı görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler.
+## <a name="number-and-list-part"></a>Sayı ve liste kısmı
+Üstbilgi, günlük sorgusundaki kayıt sayısını gösteren tek bir sayı görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler.
 
-![Sorgu görünümü listesi](media/view-designer-parts/view-number-list.png)
+![Sorgular görünümü listesi](media/view-designer-parts/view-number-list.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Grup başlığı |Görünümün en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
-| Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
+| Grup başlığı |Görünümün üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Simge |Üstbilgide sonucun yanında görüntülenen resim dosyası. |
+| Simgeyi Kullan |Simgeyi görüntülemek için bu bağlantıyı seçin. |
 | **Başlık** | |
-| Deki |Üstbilginin üstünde görüntülenen metin. |
-| Sorgu |Üst bilgi için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
-| Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Listele** | |
-| Sorgu |Liste için çalıştırılacak sorgu. Sonuçlarda ilk on kaydın ilk iki özelliği görüntülenir. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Çubuklar sayısal sütunun göreli değerine göre otomatik olarak oluşturulur.<br><br>Listedeki kayıtları sıralamak için sorgudaki `Sort` komutunu kullanın. Sorguyu çalıştırmak ve tüm kayıtları döndürmek için **Tümünü görüntüle**' yi seçebilirsiniz. |
-| Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
-| Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Renk |Çubukların veya mini grafiklerin rengi. |
-| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Listele** |**> Sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
-| Değer |İkinci sütunun en üstünde görüntülenen metin. |
-| **Listele** |**> Eşikleri** |
-| Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
+| Açıklama |Üstbilginin üst kısmında görüntülenen metin. |
+| Sorgu |Üstbilgi için çalışacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
+| Tıklama navigasyonu | Üstbilgiyi tıklattığınızda alınan eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Liste** | |
+| Sorgu |Liste için çalıştırılabilmek için sorgu. Sonuçlardaki ilk on kaydın ilk iki özelliği görüntülenir. İlk özellik bir metin değeri, ikinci özellik sayısal bir değerdir. Çubuklar, sayısal sütunun göreli değerini temel alan otomatik olarak oluşturulur.<br><br>Listedeki `Sort` kayıtları sıralamak için sorgudaki komutu kullanın. Sorguyu çalıştırmak ve tüm kayıtları döndürmek için **Tümünü Gör'i**seçebilirsiniz. |
+| Grafiği gizle |Sayısal sütunun sağındaki grafiği devre dışı kalmak için bu bağlantıyı seçin. |
+| Sparklines etkinleştirme |Yatay bir çubuk yerine ışıltı lı bir çizgi görüntülemek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Renk |Çubukların veya ışıltıların rengi. |
+| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayırmak için kullanılacak tek karakterli sınırlayıcı. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Tıklama navigasyonu | Listedeki bir öğeyi tıklattığınızda gerçekleştirilen eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Liste** |**> Sütun başlıkları** |
+| Adı |İlk sütunun üst kısmında görüntülenen metin. |
+| Değer |İkinci sütunun üst kısmında görüntülenen metin. |
+| **Liste** |**> Eşikleri** |
+| Eşikleri Etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#thresholds)bakın. |
 
-## <a name="two-numbers-and-list-part"></a>İki sayı ve liste bölümü
-Üst bilgide ayrı günlük sorgularından kayıt sayısını görüntüleyen iki sayı vardır. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler.
+## <a name="two-numbers-and-list-part"></a>İki sayı ve liste parçası
+Üstbilgi, ayrı günlük sorgularından bir kayıt sayısı görüntüleyen iki sayıya sahiptir. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler.
 
-![Liste görünümü & iki sayı](media/view-designer-parts/view-two-numbers-list.png)
+![İki Sayı & liste görünümü](media/view-designer-parts/view-two-numbers-list.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Grup başlığı |Görünümün en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
-| Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
-| **Başlık gezintisi** | |
-| Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
+| Grup başlığı |Görünümün üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Simge |Üstbilgide sonucun yanında görüntülenen resim dosyası. |
+| Simgeyi Kullan |Simgeyi görüntülemek için bu bağlantıyı seçin. |
+| **Başlık Gezintisi** | |
+| Tıklama navigasyonu | Üstbilgiyi tıklattığınızda alınan eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
 | **Başlık** | |
-| Deki |Üstbilginin üstünde görüntülenen metin. |
-| Sorgu |Üst bilgi için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
-| **Listele** | |
-| Sorgu |Liste için çalıştırılacak sorgu. Sonuçlarda ilk on kaydın ilk iki özelliği görüntülenir. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Çubuklar sayısal sütunun göreli değerine göre otomatik olarak oluşturulur.<br><br>Listedeki kayıtları sıralamak için sorgudaki `Sort` komutunu kullanın. Sorguyu çalıştırmak ve tüm kayıtları döndürmek için **Tümünü görüntüle**' yi seçebilirsiniz. |
-| Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
-| Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Renk |Çubukların veya mini grafiklerin rengi. |
-| İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Listele** |**> Sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
-| Değer |İkinci sütunun en üstünde görüntülenen metin. |
-| **Listele** |**> Eşikleri** |
-| Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
+| Açıklama |Üstbilginin üst kısmında görüntülenen metin. |
+| Sorgu |Üstbilgi için çalışacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
+| **Liste** | |
+| Sorgu |Liste için çalıştırılabilmek için sorgu. Sonuçlardaki ilk on kaydın ilk iki özelliği görüntülenir. İlk özellik bir metin değeri, ikinci özellik sayısal bir değerdir. Çubuklar, sayısal sütunun göreli değerine göre otomatik olarak oluşturulur.<br><br>Listedeki `Sort` kayıtları sıralamak için sorgudaki komutu kullanın. Sorguyu çalıştırmak ve tüm kayıtları döndürmek için **Tümünü Gör'i**seçebilirsiniz. |
+| Grafiği gizle |Sayısal sütunun sağındaki grafiği devre dışı kalmak için bu bağlantıyı seçin. |
+| Sparklines etkinleştirme |Yatay bir çubuk yerine ışıltı lı bir çizgi görüntülemek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Renk |Çubukların veya ışıltıların rengi. |
+| İşlem |Sparkline için gerçekleştirecek işlem. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayırmak için kullanılacak tek karakterli sınırlayıcı. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Tıklama navigasyonu | Listedeki bir öğeyi tıklattığınızda gerçekleştirilen eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Liste** |**> Sütun başlıkları** |
+| Adı |İlk sütunun üst kısmında görüntülenen metin. |
+| Değer |İkinci sütunun üst kısmında görüntülenen metin. |
+| **Liste** |**> Eşikleri** |
+| Eşikleri Etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#thresholds)bakın. |
 
-## <a name="donut-and-list-part"></a>Halka ve liste bölümü
-Üstbilgi, günlük sorgusunda bir değer sütununu özetleyen tek bir sayı görüntüler. Halka, üst üç kaydın sonuçlarını grafik olarak görüntüler.
+## <a name="donut-and-list-part"></a>Donut ve liste parçası
+Üstbilgi, günlük sorgusunda değer sütunu özetleyen tek bir sayı görüntüler. Donut, ilk üç kaydın sonuçlarını grafiksel olarak görüntüler.
 
-![Halka ve liste görünümü](media/view-designer-parts/view-donut-list.png)
+![Donut ve liste görünümü](media/view-designer-parts/view-donut-list.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
-| Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
-| **Üst Bilgi** | |
-| Başlık |Üstbilginin üstünde görüntülenen metin. |
-| Konu |Üstbilginin en üstünde bulunan başlık altında görüntülenen metin. |
-| **Halka** | |
-| Sorgu |Halka için çalıştırılacak sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. |
-| Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Halka** |**> Merkezi** |
-| Metin |Halka içindeki değer altında görüntülenen metin. |
-| İşlem |Değer özelliğinde gerçekleştirilecek işlem, tek bir değer olarak özetlenir.<ul><li>Sum: tüm kayıtların değerlerini ekler.</li><li>Yüzde: **ortadaki işlemde kullanılan sonuç değerlerinde** değerler tarafından döndürülen kayıtların oranı, sorgudaki toplam kayda göre yapılır.</li></ul> |
-| Merkez işleminde kullanılan sonuç değerleri |İsteğe bağlı olarak, bir veya daha fazla değer eklemek için artı işaretini (+) seçin. Sorgunun sonuçları, belirttiğiniz özellik değerleriyle kayıtlarla sınırlıdır. Hiçbir değer eklenmediyse, tüm kayıtlar sorguya dahil edilir. |
+| Grup başlığı |Döşemenin üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Simge |Üstbilgide sonucun yanında görüntülenen resim dosyası. |
+| Simgeyi Kullan |Simgeyi görüntülemek için bu bağlantıyı seçin. |
+| **Üst bilgi** | |
+| Başlık |Üstbilginin üst kısmında görüntülenen metin. |
+| Alt başlık |Üstbilginin üst kısmında başlığın altında görüntülenen metin. |
+| **Çörek** | |
+| Sorgu |Donut için çalıştırmak için sorgu. İlk özellik bir metin değeri, ikinci özellik sayısal bir değerdir. |
+| Tıklama navigasyonu | Üstbilgiyi tıklattığınızda alınan eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Çörek** |**> Merkezi** |
+| Metin |Donutun içindeki değerin altında görüntülenen metin. |
+| İşlem |Değer özelliği üzerinde gerçekleştirmek için işlem tek bir değer olarak özetlemek için.<ul><li>Toplam: Tüm kayıtların değerlerini ekler.</li><li>Yüzde: **Merkez işleminde kullanılan Sonuç değerleri** yle döndürülen kayıtların sorgudaki toplam kayıtlara oranı.</li></ul> |
+| Merkez işleminde kullanılan sonuç değerleri |İsteğe bağlı olarak, bir veya daha fazla değer eklemek için artı işaretini (+) seçin. Sorgunun sonuçları, belirttiğiniz özellik değerleriyle olan kayıtlarla sınırlıdır. Değer eklenmezse, tüm kayıtlar sorguya dahil edilir. |
 | **Ek seçenekler** |**> Renkler** |
-| Renk 1<br>Renk 2<br>Renk 3 |Halka içinde görüntülenen değerlerin her biri için rengi seçin. |
+| Renk 1<br>Renk 2<br>Renk 3 |Donut'ta görüntülenen değerlerin her biri için rengi seçin. |
 | **Ek seçenekler** |**> Gelişmiş renk eşleme** |
-| Alan değeri |Halka içerisine dahil olursa farklı bir renk olarak göstermek için bir alanın adını yazın. |
+| Alan değeri |Donuta dahil edilmişse farklı bir renk olarak görüntülemek için bir alanın adını yazın. |
 | Renk |Benzersiz alanın rengini seçin. |
-| **Listele** | |
-| Sorgu |Liste için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
-| Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
-| Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Renk |Çubukların veya mini grafiklerin rengi. |
-| İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Listele** |**> Sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
-| Değer |İkinci sütunun en üstünde görüntülenen metin. |
-| **Listele** |**> Eşikleri** |
-| Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
+| **Liste** | |
+| Sorgu |Liste için çalıştırılabilmek için sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
+| Grafiği gizle |Sayısal sütunun sağındaki grafiği devre dışı kalmak için bu bağlantıyı seçin. |
+| Sparklines etkinleştirme |Yatay bir çubuk yerine ışıltı lı bir çizgi görüntülemek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Renk |Çubukların veya ışıltıların rengi. |
+| İşlem |Sparkline için gerçekleştirecek işlem. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayırmak için kullanılacak tek karakterli sınırlayıcı. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Tıklama navigasyonu | Listedeki bir öğeyi tıklattığınızda gerçekleştirilen eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Liste** |**> Sütun başlıkları** |
+| Adı |İlk sütunun üst kısmında görüntülenen metin. |
+| Değer |İkinci sütunun üst kısmında görüntülenen metin. |
+| **Liste** |**> Eşikleri** |
+| Eşikleri Etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#thresholds)bakın. |
 
-## <a name="two-timelines-and-list-part"></a>İki zaman çizelgesi ve liste bölümü
-Üst bilgi, bir günlük sorgusunda değer sütununu özetleyen tek bir sayı gösteren bir belirtme çizgisi ile zaman içindeki iki günlük sorgusunun sonuçlarını sütun grafikleri olarak görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler.
+## <a name="two-timelines-and-list-part"></a>İki zaman çizelgesi ve liste parçası
+Üstbilgi, bir günlük sorgusunda değer sütunu özetleyen tek bir sayı görüntüleyen bir ek bilgiyle, zaman içinde iki günlük sorgusunun sonuçlarını sütun grafikleri olarak görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler.
 
 ![İki zaman çizelgesi ve liste görünümü](media/view-designer-parts/view-two-timelines-list.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
-| Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
-| **Başlık gezintisi** | |
-| Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Birinci grafik<br>Ikinci grafik** | |
-| Deki |İlk serinin belirtme çizgisinin altında görüntülenen metin. |
+| Grup başlığı |Döşemenin üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Simge |Üstbilgide sonucun yanında görüntülenen resim dosyası. |
+| Simgeyi Kullan |Simgeyi görüntülemek için bu bağlantıyı seçin. |
+| **Başlık Gezintisi** | |
+| Tıklama navigasyonu | Üstbilgiyi tıklattığınızda alınan eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Birinci<br>grafik İkinci grafik** | |
+| Açıklama |İlk serinin çağrı dışında görüntülenen metin. |
 | Renk |Serideki sütunlar için kullanılacak renk. |
-| Sorgu |İlk seri için çalıştırılacak sorgu. Her zaman aralığı içindeki kayıt sayısı grafik sütunları tarafından temsil edilir. |
-| İşlem |Değer özelliğinde gerçekleştirilecek işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Sum: tüm kayıtlardaki değerlerin toplamı.</li><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Son örnek: grafiğe dahil edilen son aralıktan değer.</li><li>İlk örnek: grafiğe dahil olan ilk aralıktan değer.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li></ul> |
-| **Listele** | |
-| Sorgu |Liste için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
-| Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
-| Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Renk |Çubukların veya mini grafiklerin rengi. |
-| İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Listele** |**> Sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
-| Değer |İkinci sütunun en üstünde görüntülenen metin. |
-| **Listele** |**> Eşikleri** |
-| Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
+| Sorgu |İlk seri için çalıştırılabilmek için sorgu. Her zaman aralığındaki kayıtların sayısı grafik sütunları tarafından temsil edilir. |
+| İşlem |Ek bilgi için tek bir değer olarak özetlemek için değer özelliği üzerinde gerçekleştirmek için işlem.<ul><li>Toplam: Tüm kayıtlardaki değerlerin toplamı.</li><li>Ortalama: Tüm kayıtlardaki değerlerin ortalaması.</li><li>Son örnek: Grafikte yer alan son aralıktaki değer.</li><li>İlk örnek: Grafikte yer alan ilk aralıktaki değer.</li><li>Sayı: Sorgu tarafından döndürülen tüm kayıtların sayısı.</li></ul> |
+| **Liste** | |
+| Sorgu |Liste için çalıştırılabilmek için sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
+| Grafiği gizle |Sayısal sütunun sağındaki grafiği devre dışı kalmak için bu bağlantıyı seçin. |
+| Sparklines etkinleştirme |Yatay bir çubuk yerine ışıltı lı bir çizgi görüntülemek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Renk |Çubukların veya ışıltıların rengi. |
+| İşlem |Sparkline için gerçekleştirecek işlem. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Tıklama navigasyonu | Listedeki bir öğeyi tıklattığınızda gerçekleştirilen eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Liste** |**> Sütun başlıkları** |
+| Adı |İlk sütunun üst kısmında görüntülenen metin. |
+| Değer |İkinci sütunun üst kısmında görüntülenen metin. |
+| **Liste** |**> Eşikleri** |
+| Eşikleri Etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#thresholds)bakın. |
 
 ## <a name="information-part"></a>Bilgi bölümü
-Üst bilgi, statik metin ve isteğe bağlı bir bağlantı görüntüler. Listede statik bir başlık ve metin içeren bir veya daha fazla öğe görüntülenir.
+Üstbilgi statik metin ve isteğe bağlı bir bağlantı görüntüler. Liste, statik bir başlık ve metin içeren bir veya daha fazla öğe görüntüler.
 
 ![Bilgi görünümü](media/view-designer-parts/view-information.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Renk |Üst bilgi için arka plan rengi. |
-| **Üst Bilgi** | |
-| Görüntü |Üst bilgide görüntülenen resim dosyası. |
-| Etiketle |Üst bilgide görüntülenen metin. |
-| **Üst Bilgi** |**> Bağlantısı** |
+| Grup başlığı |Döşemenin üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Renk |Üstbilgi için arka plan rengi. |
+| **Üst bilgi** | |
+| Görüntü |Üstbilgide görüntülenen resim dosyası. |
+| Etiketle |Üstbilgide görüntülenen metin. |
+| **Üst bilgi** |**> Link** |
 | Etiketle |Bağlantı metni. |
-| Url |Bağlantının URL 'Si. |
+| Url |Bağlantının Url'si. |
 | **Bilgi öğeleri** | |
 | Başlık |Her öğenin başlığı için görüntülenen metin. |
 | İçerik |Her öğe için görüntülenen metin. |
 
-## <a name="line-chart-callout-and-list-part"></a>Çizgi grafik, belirtme çizgisi ve liste bölümü
-Üstbilgi, zaman içinde bir günlük sorgusundan birden çok serinin bulunduğu bir çizgi grafiği ve özetlenen değere sahip bir belirtme çizgisi görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler.
+## <a name="line-chart-callout-and-list-part"></a>Satır grafiği, diğer belirtme ve liste parçası
+Üstbilgi, zaman içinde bir günlük sorgusundan birden çok seri içeren bir satır grafiği ve özet değere sahip bir ek bilgi görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler.
 
-![Çizgi grafik, belirtme çizgisi ve liste görünümü](media/view-designer-parts/view-line-chart-callout-list.png)
+![Satır grafiği, diğer arama ve liste görünümü](media/view-designer-parts/view-line-chart-callout-list.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
-| Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
-| **Üst Bilgi** | |
-| Başlık |Üstbilginin üstünde görüntülenen metin. |
-| Konu |Üstbilginin en üstünde bulunan başlık altında görüntülenen metin. |
+| Grup başlığı |Döşemenin üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Simge |Üstbilgide sonucun yanında görüntülenen resim dosyası. |
+| Simgeyi Kullan |Simgeyi görüntülemek için bu bağlantıyı seçin. |
+| **Üst bilgi** | |
+| Başlık |Üstbilginin üst kısmında görüntülenen metin. |
+| Alt başlık |Üstbilginin üst kısmında başlığın altında görüntülenen metin. |
 | **Çizgi grafik** | |
-| Sorgu |Çizgi grafik için çalıştırılacak sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, grafiğin x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü içermiyorsa x ekseni saatlik aralıkları kullanır. |
-| Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Çizgi grafik** |**> Belirtme çizgisi** |
-| Belirtme çizgisi başlığı |Belirtme çizgisi değerinin üstünde görüntülenen metin. |
-| Seri adı |Belirtme çizgisi değeri için kullanılacak serinin Özellik değeri. Hiçbir seri sağlanmazsa, sorgudaki tüm kayıtlar kullanılır. |
-| İşlem |Değer özelliğinde gerçekleştirilecek işlem, belirtme çizgisi için tek bir değer olarak özetleme.<ul><li>Average: tüm kayıtlardaki değerlerin ortalaması.</li><li>Sayı: sorgu tarafından döndürülen tüm kayıtların sayısı.</li><li>Son örnek: grafiğe dahil edilen son aralıktan değer.</li><li>Max: grafiğe dahil edilen aralıkların en büyük değeri.</li><li>Min: grafiğe dahil edilen aralıkların en küçük değeri.</li><li>Sum: tüm kayıtlardaki değerlerin toplamı.</li></ul> |
+| Sorgu |Satır grafiği için çalıştırılabilmek için sorgu. İlk özellik bir metin değeri, ikinci özellik sayısal bir değerdir. Bu sorgu, normalde sonuçları özetlemek için *ölçü* anahtar sözcük kullanır. Sorgu *aralık* anahtar sözcüğü kullanıyorsa, grafiğin x ekseni bu zaman aralığını kullanır. Sorgu *aralık* anahtar sözcüğü içermiyorsa, x ekseni saatlik aralıkları kullanır. |
+| Tıklama navigasyonu | Üstbilgiyi tıklattığınızda alınan eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Çizgi grafik** |**> Çağrı** |
+| Çağrı başlığı |İlan değerinin üzerinde görüntülenen metin. |
+| Dizi Adı |Ara bilgi değeri için kullanılacak serinin özellik değeri. Seri sağlanmadıysa, sorgudaki tüm kayıtlar kullanılır. |
+| İşlem |Ek bilgi için tek bir değer olarak özetlemek için değer özelliği üzerinde gerçekleştirmek için işlem.<ul><li>Ortalama: Tüm kayıtlardaki değerlerin ortalaması.</li><li>Sayı: Sorgu tarafından döndürülen tüm kayıtların sayısı.</li><li>Son örnek: Grafikte yer alan son aralıktaki değer.</li><li>Max: Grafikte yer alan aralıklardan gelen maksimum değer.</li><li>Min: Grafikte yer alan aralıklardan gelen minimum değer.</li><li>Toplam: Tüm kayıtlardaki değerlerin toplamı.</li></ul> |
 | **Çizgi grafik** |**> Y ekseni** |
-| Logaritmik ölçek kullan |Y ekseni için Logaritmik ölçek kullanmak üzere bu bağlantıyı seçin. |
-| Birimler |Sorgu tarafından döndürülecek değerler için birimleri belirtin. Bu bilgiler, değer türlerini belirten ve isteğe bağlı olarak değerleri dönüştürmek için grafik etiketlerini göstermek için kullanılır. *Birim* türü birimin kategorisini belirtir ve kullanılabilir *geçerli birim* türü değerlerini tanımlar. *Dönüştür*' de bir değer seçerseniz, sayısal değerler *geçerli birim* türünden *dönüştürme* türüne dönüştürülür. |
-| Özel etiket |*Birim* türü etiketinin yanında y ekseni için görüntülenen metin. Hiçbir etiket belirtilmemişse, yalnızca *birim* türü görüntülenir. |
-| **Listele** | |
-| Sorgu |Liste için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
-| Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
-| Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Renk |Çubukların veya mini grafiklerin rengi. |
-| İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Listele** |**> Sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
-| Değer |İkinci sütunun en üstünde görüntülenen metin. |
-| **Listele** |**> Eşikleri** |
-| Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
+| Logaritmik Ölçeği kullan |Y ekseni için logaritmik ölçek kullanmak için bu bağlantıyı seçin. |
+| Birimler |Sorgu tarafından döndürülecek değerler için birimleri belirtin. Bu bilgiler, değer türlerini gösteren grafik etiketlerini görüntülemek ve isteğe bağlı olarak değerleri dönüştürmek için kullanılır. *Birim* türü, birimin kategorisini belirtir ve kullanılabilir *Geçerli Birim* türü değerlerini tanımlar. *Dönüştür'te*bir değer seçerseniz, sayısal değerler *Geçerli Birim* türünden Convert *to type'a* dönüştürülür. |
+| Özel etiket |*Birim* türü için etiketin yanındaki y ekseni için görüntülenen metin. Etiket belirtilmemişse, yalnızca *Birim* türü görüntülenir. |
+| **Liste** | |
+| Sorgu |Liste için çalıştırılabilmek için sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
+| Grafiği gizle |Sayısal sütunun sağındaki grafiği devre dışı kalmak için bu bağlantıyı seçin. |
+| Sparklines etkinleştirme |Yatay bir çubuk yerine ışıltı lı bir çizgi görüntülemek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Renk |Çubukların veya ışıltıların rengi. |
+| İşlem |Sparkline için gerçekleştirecek işlem. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayırmak için kullanılacak tek karakterli sınırlayıcı. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Tıklama navigasyonu | Listedeki bir öğeyi tıklattığınızda gerçekleştirilen eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Liste** |**> Sütun başlıkları** |
+| Adı |İlk sütunun üst kısmında görüntülenen metin. |
+| Değer |İkinci sütunun üst kısmında görüntülenen metin. |
+| **Liste** |**> Eşikleri** |
+| Eşikleri Etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#thresholds)bakın. |
 
-## <a name="line-chart-and-list-part"></a>Çizgi grafik ve liste bölümü
-Üstbilgi, zaman içinde günlük sorgusundan birden çok serinin bulunduğu bir çizgi grafiği görüntüler. Liste, bir sorgunun ilk on sonucunu, sayısal bir sütunun göreli değerini veya zaman içindeki değişikliğini gösteren bir grafiği görüntüler.
+## <a name="line-chart-and-list-part"></a>Çizgi grafiği ve liste parçası
+Üstbilgi, zaman içinde bir günlük sorgusundan birden çok seriiçeren bir çizgi grafiği görüntüler. Liste, sayısal bir sütunun göreli değerini veya zaman içinde değişimini gösteren bir grafikle bir sorgudan elde edilen ilk on sonucu görüntüler.
 
-![Çizgi grafik ve liste görünümü](media/view-designer-parts/view-line-chart-callout-list.png)
+![Çizgi grafiği ve liste görünümü](media/view-designer-parts/view-line-chart-callout-list.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
-| Simge kullan |Simgeyi göstermek için bu bağlantıyı seçin. |
-| **Üst Bilgi** | |
-| Başlık |Üstbilginin üstünde görüntülenen metin. |
-| Konu |Üstbilginin en üstünde bulunan başlık altında görüntülenen metin. |
+| Grup başlığı |Döşemenin üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Simge |Üstbilgide sonucun yanında görüntülenen resim dosyası. |
+| Simgeyi Kullan |Simgeyi görüntülemek için bu bağlantıyı seçin. |
+| **Üst bilgi** | |
+| Başlık |Üstbilginin üst kısmında görüntülenen metin. |
+| Alt başlık |Üstbilginin üst kısmında başlığın altında görüntülenen metin. |
 | **Çizgi grafik** | |
-| Sorgu |Çizgi grafik için çalıştırılacak sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, grafiğin x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü içermiyorsa x ekseni saatlik aralıkları kullanır. |
-| Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
+| Sorgu |Satır grafiği için çalıştırılabilmek için sorgu. İlk özellik bir metin değeri, ikinci özellik sayısal bir değerdir. Bu sorgu, normalde sonuçları özetlemek için *ölçü* anahtar sözcük kullanır. Sorgu *aralık* anahtar sözcüğü kullanıyorsa, grafiğin x ekseni bu zaman aralığını kullanır. Sorgu *aralık* anahtar sözcüğü içermiyorsa, x ekseni saatlik aralıkları kullanır. |
+| Tıklama navigasyonu | Üstbilgiyi tıklattığınızda alınan eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
 | **Çizgi grafik** |**> Y ekseni** |
-| Logaritmik ölçek kullan |Y ekseni için Logaritmik ölçek kullanmak üzere bu bağlantıyı seçin. |
-| Birimler |Sorgu tarafından döndürülecek değerler için birimleri belirtin. Bu bilgiler, değer türlerini belirten ve isteğe bağlı olarak değerleri dönüştürmek için grafik etiketlerini göstermek için kullanılır. *Birim* türü birimin kategorisini belirtir ve kullanılabilir *geçerli birim* türü değerlerini tanımlar. *Dönüştür*' de bir değer seçerseniz, sayısal değerler *geçerli birim* türünden *dönüştürme* türüne dönüştürülür. |
-| Özel etiket |*Birim* türü etiketinin yanında y ekseni için görüntülenen metin. Hiçbir etiket belirtilmemişse, yalnızca *birim* türü görüntülenir. |
-| **Listele** | |
-| Sorgu |Liste için çalıştırılacak sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
-| Grafiği gizle |Sayısal sütunun sağ tarafındaki grafiği devre dışı bırakmak için bu bağlantıyı seçin. |
-| Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Renk |Çubukların veya mini grafiklerin rengi. |
-| İşlem |Mini grafik için gerçekleştirilecek işlem. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayrıştırmak için kullanılacak tek karakterlik sınırlayıcı. Daha fazla bilgi için bkz. [ortak ayarlar](#sparklines). |
-| Tıklama gezintisi | Listedeki bir öğeye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
-| **Listele** |**> Sütun başlıkları** |
-| Adı |İlk sütunun en üstünde görüntülenen metin. |
-| Değer |İkinci sütunun en üstünde görüntülenen metin. |
-| **Listele** |**> Eşikleri** |
-| Eşikleri etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için bkz. [ortak ayarlar](#thresholds). |
+| Logaritmik Ölçeği kullan |Y ekseni için logaritmik ölçek kullanmak için bu bağlantıyı seçin. |
+| Birimler |Sorgu tarafından döndürülecek değerler için birimleri belirtin. Bu bilgiler, değer türlerini gösteren grafik etiketlerini görüntülemek ve isteğe bağlı olarak değerleri dönüştürmek için kullanılır. *Birim* türü, birimin kategorisini belirtir ve kullanılabilir *Geçerli Birim* türü değerlerini tanımlar. *Dönüştür'te*bir değer seçerseniz, sayısal değerler *Geçerli Birim* türünden Convert *to type'a* dönüştürülür. |
+| Özel etiket |*Birim* türü için etiketin yanındaki y ekseni için görüntülenen metin. Etiket belirtilmemişse, yalnızca *Birim* türü görüntülenir. |
+| **Liste** | |
+| Sorgu |Liste için çalıştırılabilmek için sorgu. Sorgu tarafından döndürülen kayıtların sayısı görüntülenir. |
+| Grafiği gizle |Sayısal sütunun sağındaki grafiği devre dışı kalmak için bu bağlantıyı seçin. |
+| Sparklines etkinleştirme |Yatay bir çubuk yerine ışıltı lı bir çizgi görüntülemek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Renk |Çubukların veya ışıltıların rengi. |
+| İşlem |Sparkline için gerçekleştirecek işlem. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Ad ve değer ayırıcısı |Metin özelliğini birden çok değere ayırmak için kullanılacak tek karakterli sınırlayıcı. Daha fazla bilgi için [Ortak Ayarlar'a](#sparklines)bakın. |
+| Tıklama navigasyonu | Listedeki bir öğeyi tıklattığınızda gerçekleştirilen eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
+| **Liste** |**> Sütun başlıkları** |
+| Adı |İlk sütunun üst kısmında görüntülenen metin. |
+| Değer |İkinci sütunun üst kısmında görüntülenen metin. |
+| **Liste** |**> Eşikleri** |
+| Eşikleri Etkinleştir |Eşikleri etkinleştirmek için bu bağlantıyı seçin. Daha fazla bilgi için [Ortak Ayarlar'a](#thresholds)bakın. |
 
-## <a name="stack-of-line-charts-part"></a>Çizgi grafik parçaları bölümü
-Çizgi grafik yığını, aşağıda gösterildiği gibi zaman içindeki bir günlük sorgusundan birden çok serinin bulunduğu üç ayrı çizgi grafik görüntüler:
+## <a name="stack-of-line-charts-part"></a>Satır grafikleri bölümü yığını
+Çizgi grafiği yığını, burada gösterildiği gibi, zaman içinde bir günlük sorgusundan birden fazla seri içeren üç ayrı çizgi grafiği görüntüler:
 
-![Çizgi grafik yığını](media/view-designer-parts/view-stack-line-charts.png)
+![Çizgi grafikleri yığını](media/view-designer-parts/view-stack-line-charts.png)
 
 | Ayar | Açıklama |
 |:--- |:--- |
 | **Genel** | |
-| Grup başlığı |Kutucuğun en üstünde görüntülenen metin. |
-| Yeni Grup |Görünümde geçerli görünümden başlayarak yeni bir grup oluşturmak için bu bağlantıyı seçin. |
-| Simge |Üst bilgisinde sonucun yanında görüntülenen resim dosyası. |
-| **Grafik 1<br>grafik 2<br>grafik 3** |**> Üst bilgisi** |
-| Başlık |Grafiğin üstünde görüntülenen metin. |
-| Konu |Grafiğin üst kısmında bulunan başlık altında görüntülenen metin. |
-| **Grafik 1<br>grafik 2<br>grafik 3** |**Çizgi grafik** |
-| Sorgu |Çizgi grafik için çalıştırılacak sorgu. İlk özellik bir metin değeridir ve ikinci özellik sayısal bir değerdir. Bu sorgu, sonuçları özetlemek için normalde *Measure* anahtar sözcüğünü kullanır. Sorgu *Interval* anahtar sözcüğünü kullanıyorsa, grafiğin x ekseni bu zaman aralığını kullanır. Sorgu *Interval* anahtar sözcüğünü içermiyorsa x ekseni saatlik aralıkları kullanır. |
-| Tıklama gezintisi | Üst bilgiye tıkladığınızda gerçekleştirilecek eylem.  Daha fazla bilgi için bkz. [ortak ayarlar](#click-through-navigation). |
+| Grup başlığı |Döşemenin üst kısmında görüntülenen metin. |
+| Yeni Grup |Geçerli görünümden başlayarak görünümde yeni bir grup oluşturmak için bu bağlantıyı seçin. |
+| Simge |Üstbilgide sonucun yanında görüntülenen resim dosyası. |
+| **Grafik<br>1<br>Grafik 2 Grafik 3** |**> Üstbilgi** |
+| Başlık |Grafiğin üst kısmında görüntülenen metin. |
+| Alt başlık |Grafiğin üst kısmında ki başlık altında görüntülenen metin. |
+| **Grafik<br>1<br>Grafik 2 Grafik 3** |**Çizgi grafik** |
+| Sorgu |Satır grafiği için çalıştırılabilmek için sorgu. İlk özellik bir metin değeri, ikinci özellik sayısal bir değerdir. Bu sorgu, normalde sonuçları özetlemek için *ölçü* anahtar sözcük kullanır. Sorgu *aralık* anahtar sözcüğü kullanıyorsa, grafiğin x ekseni bu zaman aralığını kullanır. Sorgu *aralık* anahtar sözcüğü içermiyorsa, x ekseni saatlik aralıkları kullanır. |
+| Tıklama navigasyonu | Üstbilgiyi tıklattığınızda alınan eylem.  Daha fazla bilgi için [Ortak Ayarlar'a](#click-through-navigation)bakın. |
 | **Grafik** |**> Y ekseni** |
-| Logaritmik ölçek kullan |Y ekseni için Logaritmik ölçek kullanmak üzere bu bağlantıyı seçin. |
-| Birimler |Sorgu tarafından döndürülecek değerler için birimleri belirtin. Bu bilgiler, değer türlerini belirten ve isteğe bağlı olarak değerleri dönüştürmek için grafik etiketlerini göstermek için kullanılır. *Birim* türü birimin kategorisini belirtir ve kullanılabilir *geçerli birim* türü değerlerini tanımlar. *Dönüştür*' de bir değer seçerseniz, sayısal değerler *geçerli birim* türünden *dönüştürme* türüne dönüştürülür. |
-| Özel etiket |*Birim* türü etiketinin yanında y ekseni için görüntülenen metin. Hiçbir etiket belirtilmemişse, yalnızca *birim* türü görüntülenir. |
+| Logaritmik Ölçeği kullan |Y ekseni için logaritmik ölçek kullanmak için bu bağlantıyı seçin. |
+| Birimler |Sorgu tarafından döndürülecek değerler için birimleri belirtin. Bu bilgiler, değer türlerini gösteren grafik etiketlerini görüntülemek ve isteğe bağlı olarak değerleri dönüştürmek için kullanılır. *Birim* türü, birimin kategorisini belirtir ve kullanılabilir *Geçerli Birim* türü değerlerini tanımlar. *Dönüştür'te*bir değer seçerseniz, sayısal değerler *Geçerli Birim* türünden Convert *to type'a* dönüştürülür. |
+| Özel etiket |*Birim* türü için etiketin yanındaki y ekseni için görüntülenen metin. Etiket belirtilmemişse, yalnızca *Birim* türü görüntülenir. |
 
 ## <a name="common-settings"></a>Ortak ayarlar
-Aşağıdaki bölümlerde, birkaç görselleştirme bölümünde ortak olan ayarlar açıklanır.
+Aşağıdaki bölümlerde, birkaç görselleştirme parçasında ortak olan ayarlar açıklanmaktadır.
 
-### <a name="name-value-separator"></a>Ad ve değer ayırıcısı
-Ad ve değer ayırıcısı, metin özelliğini bir liste sorgusundan birden çok değere ayrıştırmak için kullanılacak tek karakterli sınırlayıcıdır. Bir sınırlayıcı belirtirseniz, **ad** kutusunda aynı sınırlayıcıyla ayırarak her bir alan için adlar sağlayabilirsiniz.
+### <a name="name-and-value-separator"></a><a name="name-value-separator"></a>Ad ve değer ayırıcısı
+Ad ve değer ayırıcısı, metin özelliğini liste sorgusundan birden çok değere ayırmak için kullanılacak tek karakterli sınırlayıcıdır. Bir sınır layıcı belirtirseniz, **Ad** kutusunda aynı sınırlayıcıyla ayrılmış her alan için adlar sağlayabilirsiniz.
 
-Örneğin, *Redmond-building 41* ve *Bellevue-derleniyor*gibi değerleri içeren *konum* adlı bir özellik düşünün. Ad ve değer ayırıcısı ve ad için *şehir oluşturma* için bir tire (-) belirtebilirsiniz. Bu yaklaşım her değeri *City* ve *Building*adlı iki özelliğe ayrıştırır.
+Örneğin, *Redmond-Building 41* ve *Bellevue-Building 12*gibi değerleri içeren *Konum* adlı bir özelliği düşünün. Ad ve değer ayırıcısı için tire (-) ve ad için *Şehir Binası* belirtebilirsiniz. Bu yaklaşım, her değeri *Şehir* ve *Bina*olarak adlandırılan iki özelliğe ayrıştirır.
 
-### <a name="click-through-navigation"></a>Tıklama gezintisi
-Tıklama gezinmesi, bir görünümdeki üstbilgiye veya liste öğesine tıkladığınızda hangi eylemin yapılacağını tanımlar.  Bu, [Log Analytics](../../azure-monitor/log-query/portals.md) bir sorgu açar ya da başka bir görünüm başlatır.
+### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>Tıkla Navigasyon
+Tıklatma gezintisi, bir üstbilgiyi veya liste öğeyi görünümde tıklattığınızda hangi eylemin alınacağını tanımlar.  Bu, [Log Analytics'te](../../azure-monitor/log-query/portals.md) bir sorgu açar veya başka bir görünüm başlatacaktır.
 
-Aşağıdaki tabloda tıklama gezintisi için ayarlar açıklanmaktadır.
+Aşağıdaki tabloda tıkla navigasyon için ayarlar açıklanmaktadır.
 
 | Ayar           | Açıklama |
 |:--|:--|
-| Günlük araması (otomatik) | Bir üstbilgi öğesi seçtiğinizde çalıştırılacak günlük sorgusu.  Bu, öğenin temel aldığı günlük sorgusuna bağlıdır.
-| Günlük araması        | Listedeki bir öğeyi seçtiğinizde çalıştırılacak günlük sorgusu.  Sorguyu **Gezinti sorgu** kutusuna yazın.   Kullanıcının seçtiği öğenin söz dizimini eklemek için *{Selected Item}* kullanın.  Örneğin, sorguda *bilgisayar* adlı bir sütun varsa ve gezinti sorgusu *{Selected Item}* ise, bir bilgisayar seçtiğinizde *bilgisayar = "Bilgisayarım"* gibi bir sorgu çalıştırılır. Gezinti sorgusu *tür = olay {seçili öğe}* ise, sorgu *türü = olay bilgisayarı = "Bilgisayarım"* çalıştırılır. |
-| Görünüm              | Bir başlık öğesi veya listedeki bir öğe seçtiğinizde açılacak şekilde görüntüleyin.  **Görünüm adı** kutusunda çalışma alanınızda bir görünümün adını seçin. |
+| Günlük Arama (Otomatik) | Üstbilgi öğesi seçtiğinizde çalıştırmak için sorgu günlük.  Bu, öğenin temel aldığı aynı günlük sorgusudur.
+| Günlük araması        | Listedeki bir öğeyi seçtiğinizde çalıştırmak için sorgu günlükleyin.  Sorguyu Gezinti **sorgu** kutusuna yazın.   Kullanıcının seçtiği öğenin sözdizimini eklemek için *{seçili öğe}* kullanın.  Örneğin, sorguda *Bilgisayar* adında bir sütun varsa ve gezinti sorgusu *{selected item}* ise, bilgisayar seçtiğinizde *Computer="MyComputer"* gibi bir sorgu çalıştırılır. Gezinti sorgusu *Type=Event {selected item}* ise, sorgu *Türü=Olay Bilgisayarı="MyComputer"* çalıştırılır. |
+| Görünüm              | Üstbilgi öğesi veya listedeki bir öğeyi seçtiğinizde açmak için görüntüleyin.  **Görünüm Adı** kutusunda çalışma alanınızdaki görünümün adını seçin. |
 
 
 
-### <a name="sparklines"></a>Mini grafikler
-Mini grafik, zaman içinde liste girişinin değerini gösteren küçük bir çizgi grafiğidir. Bir liste içeren görselleştirme parçaları için, sayısal bir sütunun göreli değerini veya bir mini grafiğin görüntülenip zaman içinde değerini gösteren bir mini çizgi görüntülenmesini seçebilirsiniz.
+### <a name="sparklines"></a><a name="sparklines"></a>Sparklines
+Sparkline, liste girişinin zaman daki değerini gösteren küçük bir çizgi grafiğidir. Listeli görselleştirme parçaları için, sayısal bir sütunun göreli değerini veya zaman içinde değerini gösteren bir ışıltıyı gösteren yatay bir çubuk gösterip göstermeyeceğini seçebilirsiniz.
 
-Aşağıdaki tabloda, mini grafiklerin ayarları açıklanmaktadır:
+Aşağıdaki tabloda sparklines ayarları açıklanır:
 
 | Ayar | Açıklama |
 |:--- |:--- |
-| Mini grafikleri etkinleştir |Yatay çubuk yerine bir mini grafik göstermek için bu bağlantıyı seçin. |
-| İşlem |Mini grafikler etkinse, bu, Mini Grafiğin değerlerini hesaplamak için listedeki her bir özellikte gerçekleştirilecek işlemdir.<ul><li>Son örnek: serinin zaman aralığındaki son değeri.</li><li>Max: serinin zaman aralığındaki en büyük değeri.</li><li>Min: zaman aralığı boyunca serinin minimum değeri.</li><li>Sum: serinin zaman aralığındaki değerlerinin toplamı.</li><li>Özet: başlıktaki sorgu ile aynı `measure` komutunu kullanır.</li></ul> |
+| Sparklines etkinleştirme |Yatay bir çubuk yerine ışıltı lı bir çizgi görüntülemek için bu bağlantıyı seçin. |
+| İşlem |Sparklines etkinse, bu, sparkline değerlerini hesaplamak için listedeki her özellik üzerinde gerçekleştirmek için işlemdir.<ul><li>Son örnek: Zaman aralığındaki serinin son değeri.</li><li>Max: Zaman aralığında seri için maksimum değer.</li><li>Min: Zaman aralığında ki serinin minimum değeri.</li><li>Toplam: Zaman aralığındaki seri değerlerinin toplamı.</li><li>Özet: Üstbilgideki sorguyla aynı `measure` komutu kullanır.</li></ul> |
 
-### <a name="thresholds"></a>Leriyle
-Eşikleri kullanarak, listedeki her öğenin yanında renkli bir simge görüntüleyebilirsiniz. Eşikler, belirli bir değeri aşan veya belirli bir aralık dahilinde olan öğelerin hızlı bir görsel göstergesini sağlar. Örneğin, kabul edilebilir bir değere sahip öğeler için yeşil bir simge, değer bir uyarıyı belirten bir Aralık içindeyse sarı ve bir hata değerini aşarsa kırmızı bir simge görüntüleyebilirsiniz.
+### <a name="thresholds"></a><a name="thresholds"></a>Eşik
+Eşikleri kullanarak, bir listedeki her öğenin yanında renkli bir simge görüntüleyebilirsiniz. Eşikler, belirli bir değeri aşan veya belirli bir aralıkta bulunan öğelerin hızlı bir görsel göstergesini sağlar. Örneğin, kabul edilebilir değeri olan öğeler için yeşil bir simge, değer uyarıyı gösteren bir aralıkiçindeyse sarı ve hata değerini aşıyorsa kırmızı görüntüleyebilirsiniz.
 
-Bir bölüm için eşikleri etkinleştirdiğinizde bir veya daha fazla eşik belirtmeniz gerekir. Bir öğenin değeri bir eşik değerinden büyükse ve sonraki eşik değerinden düşükse, bu değerin rengi kullanılır. Öğe en yüksek eşik değerinden büyükse, başka bir renk kullanılır. 
+Bir parça için eşikleri etkinleştirdiğinizde, bir veya daha fazla eşik belirtmeniz gerekir. Bir maddenin değeri bir eşik değerinden büyükse ve bir sonraki eşik değerinden daha düşükse, bu değerin rengi kullanılır. Öğe en yüksek eşik değerinden büyükse, başka bir renk kullanılır. 
 
-Her eşik kümesi, **varsayılan**değeri olan bir eşiğe sahiptir. Bu, başka hiçbir değer aşılmadığı takdirde ayarlanmış olan renktir. **Ekle** (+) veya **Delete** (x) düğmesini seçerek eşikleri ekleyebilir veya kaldırabilirsiniz.
+Her eşik kümesinin **Varsayılan**değeri olan bir eşiği vardır. Bu, başka değerler aşılmazsa ayarlanan renktir. **Ekle** (+) veya **Sil** (x) düğmesini seçerek eşikleri ekleyebilir veya kaldırabilirsiniz.
 
 Aşağıdaki tabloda eşiklerin ayarları açıklanmaktadır:
 
 | Ayar | Açıklama |
 |:--- |:--- |
-| Eşikleri etkinleştir |Her bir değerin solunda bir renk simgesi göstermek için bu bağlantıyı seçin. Simge, belirtilen eşiklere göre değerin sistem durumunu gösterir. |
+| Eşikleri Etkinleştir |Her değerin solunda bir renk simgesi görüntülemek için bu bağlantıyı seçin. Simge, belirtilen eşiklere göre değerin sistem durumunu gösterir. |
 | Adı |Eşik değerinin adı. |
-| Eşik |Eşiğin değeri. Her bir liste öğesi için sistem durumu rengi, öğenin değeri tarafından aşılan en yüksek eşik değerinin rengine ayarlanır. Eşik değeri aşılmadığı takdirde, varsayılan bir renk kullanılır. |
+| Eşik |Eşiğin değeri. Her liste öğesinin sistem durumu rengi, öğenin değeri yle aşılmış en yüksek eşik değerinin rengine ayarlanır. Eşik değerleri aşıldığında, varsayılan renk kullanılır. |
 | Renk |Eşik değerini gösteren renk. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Görselleştirme kısımlarındaki sorguları destekleyecek [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
+* Görselleştirme bölümlerindeki sorguları desteklemek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.

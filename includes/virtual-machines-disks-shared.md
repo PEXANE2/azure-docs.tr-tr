@@ -9,21 +9,21 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a14ae76e15c1adb59917e61fbcbdaa34a7efa2d8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77472034"
 ---
-Azure paylaşılan diskler (Önizleme), Azure yönetilen diskleri için birden çok sanal makineye (VM 'Ler) aynı anda bir Azure yönetilen diski eklemeye olanak sağlayan yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar.
+Azure paylaşılan diskleri (önizleme), Azure yönetilen disklerin aynı anda birden çok sanal makineye (VM) eklenmesini sağlayan Azure yönetilen diskler için yeni bir özelliktir. Yönetilen bir diski birden çok VM'ye eklemek, yeni kümelenmiş uygulamaları dağıtabilir veya varolan kümelenmiş uygulamaları Azure'a geçirmenize olanak tanır.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Kümedeki VM 'Ler, [SCSI kalıcı ayırmaları](https://www.t10.org/members/w_spc3.htm) (SCSI PR) kullanılarak kümelenmiş uygulama tarafından seçilen ayırmayı temel alarak, bağlı diskinize okuyabilir veya yazabilir. SCSI PR, şirket içi depolama alanı ağı (SAN) üzerinde çalışan uygulamalar tarafından tanınmış bir sektör standardı yararlanılabilir. Yönetilen bir diskte SCSI PR 'nin etkinleştirilmesi, bu uygulamaları olduğu gibi Azure 'a geçirmenize olanak sağlar.
+Kümedeki [VM'ler, SCSI Kalıcı Rezervasyonları](https://www.t10.org/members/w_spc3.htm) (SCSI PR) kullanarak kümelenmiş uygulama tarafından seçilen rezervasyona göre ekli diskinize okuyabilir veya yazabilir. SCSI PR, Depolama Alanı Ağı (SAN) bünyesinde çalışan uygulamalar tarafından kaldıraçlı iyi bilinen bir endüstri standardıdır. SCSI PR'ı yönetilen bir diskte etkinleştirmek, bu uygulamaları olduğu gibi Azure'a geçirmenize olanak tanır.
 
-Paylaşılan diskler etkinleştirilmiş yönetilen diskler, birden çok VM tarafından erişilebilen paylaşılan blok depolama alanı sunar. Bu, mantıksal birim numaraları (LUN 'Lar) olarak sunulur. Daha sonra LUN 'Lar bir hedef (disk) üzerinden bir başlatıcıya (VM) sunulur. Bu LUN 'Lar, VM 'ye doğrudan bağlı depolama (DAS) veya yerel bir sürücü gibi görünür.
+Paylaşılan diskler etkin yönetilen diskler birden çok VM tarafından erişilebilen paylaşılan blok depolama sunar, bu mantıksal birim numaraları (LUNs) olarak ortaya çıkarır. LU'lar daha sonra bir hedeften (disk) başlatıcıya (VM) sunulur. Bu LU'lar doğrudan bağlı depolama (DAS) veya VM'ye yerel bir sürücü gibi görünür.
 
-Paylaşılan diskler etkinleştirilmiş yönetilen diskler, SMB/NFS kullanılarak erişilebilen tam olarak yönetilen bir dosya sistemi yerel olarak sunmaz. Küme düğümü iletişimini ve yazma kilitlemeyi işleyen Windows Server yük devretme kümesi (WSFC) veya Paceyapıcısı gibi bir küme yöneticisi kullanmanız gerekir.
+Paylaşılan diskler etkinleştirilmiş yönetilen diskler, SMB/NFS kullanılarak erişilebilen tam yönetilen bir dosya sistemi sunmaz. Windows Server Failover Cluster (WSFC) veya Pacemaker gibi küme düğüm iletişimini işleyen ve kilitleme yazma yı işleyen bir küme yöneticisi kullanmanız gerekir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -37,42 +37,42 @@ Paylaşılan diskler etkinleştirilmiş yönetilen diskler, SMB/NFS kullanılara
 
 ### <a name="windows"></a>Windows
 
-Küme düğümü iletişimi için tüm çekirdek altyapısını işleyen, WSFC üzerinde en çok Windows tabanlı kümeleme derlemesi, uygulamalarınızın paralel erişim desenlerinden yararlanmasını sağlar. WSFC, Windows Server sürümünüze bağlı olarak hem CSV hem de CSV olmayan seçeneklere izin vermez. Ayrıntılar için [Yük devretme kümesi oluşturma](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)bölümüne bakın.
+Windows tabanlı kümelemelerin çoğu, küme düğüm iletişimi için tüm temel altyapıyı işleyen ve uygulamalarınızın paralel erişim desenlerinden yararlanmasını sağlayan WSFC üzerine kurulur. WSFC, Windows Server sürümünüze bağlı olarak hem CSV hem de CSV tabanlı olmayan seçenekler sunar. Ayrıntılar için [bir failover kümesi oluştur'a](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)bakın.
 
 WSFC üzerinde çalışan bazı popüler uygulamalar şunlardır:
 
-- SQL Server yük devretme kümesi örnekleri (FCı)
-- Genişleme dosya sunucusu (SoFS)
-- Genel kullanım için dosya sunucusu (ıW iş yükü)
-- Uzak Masaüstü sunucusu kullanıcı profili diski (RDS UPD)
-- SAP YOKS/SCS
+- SQL Server Failover Küme Örnekleri (FCI)
+- Dosya Sunucusu (SoFS)
+- Genel Kullanım için Dosya Sunucusu (IW iş yükü)
+- Uzak Masaüstü Sunucu Kullanıcı Profili Diski (RDS UPD)
+- SAP ASCS/SCS
 
 ### <a name="linux"></a>Linux
 
-Linux kümeleri [pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)gibi küme yöneticileriyle yararlanabilir. Pacemaker, yüksek oranda kullanılabilir ortamlarda dağıtılan uygulamalar için küme iletişimini etkinleştirerek [Corosync](http://corosync.github.io/corosync/)üzerinde yapılar. Bazı yaygın kümelenmiş dosya sistemleri, [ocfs2](https://oss.oracle.com/projects/ocfs2/) ve [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2)' i içerir. [Fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) ve [sg_persist](https://linux.die.net/man/8/sg_persist)gibi yardımcı programları kullanarak ayırmaları ve kayıtları yönetebilirsiniz.
+Linux kümeleri [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)gibi küme yöneticilerinden yararlanabiliyor. Kalp pili, yüksek kullanılabilir ortamlarda dağıtılan uygulamalar için küme iletişimini sağlayan [Corosync](http://corosync.github.io/corosync/)üzerine inşa edilir. Bazı ortak kümelenmiş file systems [ocfs2](https://oss.oracle.com/projects/ocfs2/) ve [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2)içerir. [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) ve [sg_persist](https://linux.die.net/man/8/sg_persist)gibi yardımcı programları kullanarak rezervasyonları ve kayıtları manipüle edebilirsiniz.
 
-## <a name="persistent-reservation-flow"></a>Kalıcı rezervasyon akışı
+## <a name="persistent-reservation-flow"></a>Kalıcı Rezervasyon akışı
 
-Aşağıdaki diyagramda, bir düğümden diğerine yük devretmeyi etkinleştirmek için SCSI PR 'den yararlanan örnek 2 düğümlü kümelenmiş bir veritabanı uygulaması gösterilmektedir.
+Aşağıdaki diyagram, bir düğümden diğerine başarısız olmasını sağlamak için SCSI PR'dan yararlanan örnek 2 düğümlü kümelenmiş veritabanı uygulamasını göstermektedir.
 
-![İki düğümlü küme. Kümede çalışan bir uygulama, diske erişimi işliyor](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![İki düğüm kümesi. Kümeüzerinde çalışan bir uygulama diske erişimi ele alıyor](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
-Akış şu şekildedir:
+Akış aşağıdaki gibidir:
 
-1. Hem Azure VM1 hem de VM2 üzerinde çalışan kümelenmiş uygulama, diski okuma veya diske yazma amacını kaydeder.
-1. VM1 üzerindeki uygulama örneği daha sonra diske yazmak için dışlamalı ayırma alır.
-1. Bu rezervasyon, Azure diskinizde zorlanır ve veritabanı artık diske özel olarak yazılabilir. VM2 üzerindeki uygulama örneğinden yapılan herhangi bir yazma işlemi başarısız olur.
-1. VM1 üzerindeki uygulama örneği kapalıysa, VM2 üzerindeki örnek artık diskin bir yük devretmesini ve yükünü başlatabilir.
-1. Bu rezervasyon artık Azure diskinde zorlanır ve disk artık VM1 ' dan yazma işlemlerini kabul etmez. Yalnızca VM2 'deki yazmaları kabul eder.
-1. Kümelenmiş uygulama, veritabanı yük devretmesini tamamlayabilir ve istekleri VM2 ' dan sunabilir.
+1. Hem Azure VM1 hem de VM2'de çalışan kümelenmiş uygulama, diske okuma veya yazma niyetini kaydeder.
+1. VM1'deki uygulama örneği diske yazmak için özel rezervasyon alır.
+1. Bu rezervasyon Azure diskinizde uygulanır ve veritabanı artık yalnızca diske yazabilir. VM2 uygulama örneğinden herhangi bir yazma başarılı olmayacaktır.
+1. VM1'deki uygulama örneği düşerse, VM2'deki örnek artık bir veritabanı nın başarısız olup diskin devrini başlatabilir.
+1. Bu rezervasyon artık Azure diskinde uygulanır ve disk artık VM1'den gelen yazıları kabul etmez. Sadece VM2 gelen yazıyor kabul edecektir.
+1. Kümelenmiş uygulama veritabanı failover tamamlayabilir ve VM2 gelen istekleri hizmet.
 
-Aşağıdaki diyagramda, makine öğrenimi modellerinin eğitimi gibi paralel süreçler çalıştırmak için diskten veri okuyan birden çok düğümden oluşan başka bir ortak kümelenmiş iş yükü gösterilmektedir.
+Aşağıdaki diyagram, makine öğrenimi modellerinin eğitimi gibi paralel işlemler in çalıştırılmak üzere diskten birden çok düğüm okuma verilerinden oluşan başka bir ortak kümelenmiş iş yükünü göstermektedir.
 
-![Dört düğümlü VM kümesi, her düğüm yazma hedefini kaydeder, uygulama, yazma sonuçlarını düzgün bir şekilde işlemek için özel ayırma alır](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![Dört düğüm VM küme, her düğüm yazma niyeti kaydeder, uygulama düzgün yazma sonuçlarını işlemek için özel rezervasyon alır](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
-Akış şu şekildedir:
+Akış aşağıdaki gibidir:
 
-1. Tüm VM 'lerde çalışan kümelenmiş uygulama, diski okuma veya diske yazma amacını kaydeder.
-1. VM1 üzerindeki uygulama örneği, diğer VM 'lerden diske okuma açarken diske yazmak için özel bir ayırma alır.
-1. Bu rezervasyon, Azure diskinizde zorlanır.
-1. Kümedeki tüm düğümler artık diskten okuyabilir. Yalnızca bir düğüm, kümedeki tüm düğümler adına sonuçları diske geri yazar.
+1. Tüm VM'lerde çalışan kümelenmiş uygulama, diske okuma veya yazma niyetini kaydeder.
+1. VM1'deki uygulama örneği, diske yazmak için özel bir rezervasyon alır ve diğer VM'lerden diske okumalar açılır.
+1. Bu rezervasyon Azure diskinizde uygulanır.
+1. Kümedeki tüm düğümler artık diskten okunabilir. Kümedeki tüm düğümler adına diske yalnızca bir düğüm sonuçları yazar.

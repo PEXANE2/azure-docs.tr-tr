@@ -1,6 +1,6 @@
 ---
-title: Native client uygulamaları - Azure AD yayımlama | Microsoft Docs
-description: Yerel istemci uygulamaların, şirket içi uygulamalara güvenli uzaktan erişim sağlamak için Azure AD uygulama ara sunucusu Bağlayıcısı ile iletişim kurmasını sağlamak nasıl etkinleştireceğinizi de açıklar.
+title: Yerel istemci uygulamalarını yayımla - Azure AD | Microsoft Dokümanlar
+description: Yerel istemci uygulamalarının, şirket içi uygulamalarınıza güvenli uzaktan erişim sağlamak için Azure AD Application Proxy Bağlayıcısı ile nasıl iletişim kurmasını nasıl etkinleştirini kapsar.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,65 +17,65 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d2a2bb9dd543da7455a276075a829ef06032edb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159293"
 ---
-# <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama
+# <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesi nasıl etkinleştirilir?
 
-Web uygulamaları yayımlamak için Azure Active Directory (Azure AD) uygulama proxy 'Si kullanabilirsiniz, ancak Azure AD kimlik doğrulama kitaplığı (ADAL) ile yapılandırılmış yerel istemci uygulamalarını yayımlamak için de kullanılabilir. Yerel istemci uygulamaları bir cihaza yüklendiğinden, Web uygulamalarına bir tarayıcıdan erişildiği için Web Apps 'ten farklıdır.
+Web uygulamalarını yayımlamak için Azure Active Directory (Azure AD) Uygulama Proxy'sini kullanabilirsiniz, ancak Azure AD Kimlik Doğrulama Kitaplığı (ADAL) ile yapılandırılan yerel istemci uygulamalarını yayımlamak için de kullanılabilir. Yerel istemci uygulamaları, bir cihaza yüklendikleri için web uygulamalarından farklıdır, web uygulamalarına ise tarayıcı üzerinden erişilir.
 
-Yerel istemci uygulamalarını desteklemek için, uygulama proxy 'Si, üst bilgide gönderilen Azure AD tarafından verilen belirteçleri kabul eder. Uygulama proxy hizmeti, kullanıcıların kimlik doğrulamasını yapar. Bu çözüm, kimlik doğrulaması için uygulama belirteçlerini kullanmaz.
+Yerel istemci uygulamalarını desteklemek için Application Proxy, üstbilgide gönderilen Azure AD tarafından verilmiş belirteçleri kabul eder. Uygulama Proxy hizmeti kullanıcılar için kimlik doğrulaması yapar. Bu çözüm, kimlik doğrulama için uygulama belirteçleri kullanmaz.
 
-![Son kullanıcılar, Azure AD ve yayımlanan uygulamalar arasındaki ilişki](./media/application-proxy-configure-native-client-application/richclientflow.png)
+![Son kullanıcılar, Azure AD ve yayımlanmış uygulamalar arasındaki ilişki](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Yerel uygulamaları yayımlamak için, kimlik doğrulamasından geçen ve birçok istemci ortamını destekleyen Azure AD kimlik doğrulama kitaplığı 'nı kullanın. Uygulama proxy 'Si, [yerel uygulamaya Web API senaryosuna](../azuread-dev/native-app.md)uyar.
+Yerel uygulamaları yayımlamak için, kimlik doğrulamayla ilgili ve birçok istemci ortamını destekleyen Azure AD Kimlik Doğrulama Kitaplığını kullanın. Uygulama Proxy [Web API senaryosuna Yerel Uygulama](../azuread-dev/native-app.md)sığar.
 
-Bu makalede uygulama ara sunucusu ve Azure AD kimlik doğrulama kitaplığı ile yerel bir uygulamayı yayımlamak için dört adımlarında size kılavuzluk eder.
+Bu makale, Uygulama Proxy'si ve Azure AD Kimlik Doğrulama Kitaplığı içeren yerel bir uygulama yayımlamak için dört adımda size yol kat ediyor.
 
-## <a name="step-1-publish-your-proxy-application"></a>1\. Adım: proxy uygulamanızı yayımlama
+## <a name="step-1-publish-your-proxy-application"></a>Adım 1: Proxy başvurunuzu yayımlayın
 
-Diğer uygulamalarda olduğu gibi ara sunucu uygulamasını yayımlayın ve uygulamanıza erişmek için kullanıcı atama. Daha fazla bilgi için bkz. [uygulama proxy 'si Ile uygulama yayımlama](application-proxy-add-on-premises-application.md).
+Proxy uygulamanızı diğer uygulamalarda olduğu gibi yayımlayın ve kullanıcıları başvurunuza erişecek şekilde atayın. Daha fazla bilgi için [bkz.](application-proxy-add-on-premises-application.md)
 
-## <a name="step-2-register-your-native-application"></a>2\. Adım: yerel Uygulamanızı kaydetme
+## <a name="step-2-register-your-native-application"></a>Adım 2: Yerel başvurunuzu kaydedin
 
-Artık uygulamanızı şu şekilde Azure AD 'ye kaydetmeniz gerekir:
+Artık uygulamanızı Azure AD'ye kaydetmeniz gerekir:
 
-1. [Azure Active Directory portalında](https://aad.portal.azure.com/)oturum açın. **Azure Active Directory Yönetim Merkezi** **panosu** görüntülenir.
-1. Kenar çubuğunda **Azure Active Directory**' yi seçin. **Azure Active Directory** genel bakış sayfası görüntülenir.
-1. Azure AD Genel Bakış kenar çubuğunda **uygulama kayıtları**' yi seçin. Tüm uygulama kayıtlarının listesi görüntülenir.
-1. **Yeni kayıt**seçeneğini belirleyin. **Uygulama kaydetme** sayfası görüntülenir.
+1. Azure Active [Directory portalında](https://aad.portal.azure.com/)oturum açın. Azure Etkin **Dizin yönetici merkezi** için **Pano** görüntülenir.
+1. Kenar çubuğunda **Azure Etkin Dizin'i**seçin. **Azure Etkin Dizin** genel bakış sayfası görüntülenir.
+1. Azure AD genel bakış kenar çubuğunda **Uygulama kayıtlarını**seçin. Tüm uygulama kayıtlarının listesi görüntülenir.
+1. **Yeni kayıt**seçin. Bir uygulama sayfası **kaydol** görüntülenir.
 
-   ![Azure portal yeni bir uygulama kaydı oluşturun](./media/application-proxy-configure-native-client-application/create.png)
+   ![Azure portalında yeni bir uygulama kaydı oluşturma](./media/application-proxy-configure-native-client-application/create.png)
 
-1. **Ad** başlığında, uygulamanız için kullanıcıya dönük bir görünen ad belirtin.
-1. **Desteklenen hesap türleri** başlığı altında, aşağıdaki yönergeleri kullanarak bir erişim düzeyi seçin:
+1. **Ad** başlığında, uygulamanız için kullanıcıya bakan bir görüntü adı belirtin.
+1. Desteklenen **hesap türleri** başlığı altında, aşağıdaki yönergeleri kullanarak bir erişim düzeyi seçin:
 
-   - Yalnızca kuruluşunuz için dahili olan hesapları hedeflemek için **yalnızca bu kuruluş dizininde hesaplar**' ı seçin.
-   - Yalnızca iş veya Eğitim müşterilerini hedeflemek için **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
-   - En geniş Microsoft kimlikleri kümesini hedeflemek için **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
+   - Yalnızca kuruluşunuz için dahili hesapları hedeflemek **için, yalnızca bu kuruluş dizinindeki Hesapları**seçin.
+   - Yalnızca iş veya eğitim müşterilerini hedeflemek için, **herhangi bir kuruluş dizinindeki Hesapları**seçin.
+   - En geniş Microsoft kimlik kümesini hedeflemek için, **tüm kuruluş dizinindeki ve kişisel Microsoft hesaplarındaki Hesapları**seçin.
 
-1. **Yeniden yönlendirme URI 'si** başlığında **ortak istemci (mobil & Masaüstü)** öğesini seçin ve ardından uygulamanızın yeniden yönlendirme URI 'sini yazın.
-1. **Microsoft Platformu ilkelerini**seçin ve okuyun ve ardından **Kaydet**' i seçin. Yeni uygulama kaydı için bir genel bakış sayfası oluşturulur ve görüntülenir.
+1. **URI'yi Yeniden Yönlendirme** **başlığında, Ortak istemci (mobil & masaüstü)** seçeneğini belirleyin ve ardından uygulamanız için yeniden yönlendirme URI'yi yazın.
+1. Microsoft Platform **İlkeleri'ni**seçin ve okuyun ve ardından **Kaydol'u**seçin. Yeni uygulama kaydı için genel bir sayfa oluşturulur ve görüntülenir.
 
-Yeni bir uygulama kaydı oluşturma hakkında daha ayrıntılı bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../develop/quickstart-register-app.md).
+Yeni bir uygulama kaydı oluşturma hakkında daha ayrıntılı bilgi [için](../develop/quickstart-register-app.md)bkz.
 
-## <a name="step-3-grant-access-to-your-proxy-application"></a>3\. Adım: proxy uygulamanıza erişim Izni verme
+## <a name="step-3-grant-access-to-your-proxy-application"></a>Adım 3: Proxy başvurunuza erişim izni verme
 
-Yerel uygulamanızı kaydettirdiğiniz için, bu durumda ara sunucu uygulamasına erişmek üzere dizininizdeki diğer uygulamalara erişim izni verebilirsiniz. Yerel uygulamanın proxy uygulamasına gösterilmesini sağlamak için:
+Artık yerel uygulamanızı kaydettiğinize göre, proxy uygulamasına erişmek için bu durumda dizininizdeki diğer uygulamalara erişim sağlayabilirsiniz. Yerel uygulamanın proxy uygulamasına maruz kalması için:
 
-1. Yeni uygulama kaydı sayfasının kenar çubuğunda, **API izinleri**' ni seçin. Yeni uygulama kaydı için **API izinleri** sayfası görüntülenir.
-1. **Izin Ekle**' yi seçin. **İstek API 'si izinleri** sayfası görüntülenir.
-1. **BIR API seçin** ayarı altında **Kuruluşumun kullandığı API 'ler**' i seçin. Dizininizde API 'Leri kullanıma sunan uygulamaları içeren bir liste görüntülenir.
-1. [1. Adım: ara sunucu uygulamanızı yayımlama](#step-1-publish-your-proxy-application)bölümünde yayımladığınız proxy uygulamasını bulmak için arama kutusuna veya kaydırın, sonra da ara sunucu uygulamasını seçin.
-1. **Uygulamanızın ne tür izinler gerekiyor?** başlığına izin türünü seçin. Yerel uygulamanızın oturum açmış kullanıcı olarak proxy uygulama API 'sine erişmesi gerekiyorsa, **temsilci izinleri**' ni seçin.
-1. **Izinleri Seç** başlığında, istenen izni seçin ve **izin Ekle**' yi seçin. Yerel uygulamanız için **API izinleri** sayfası artık eklediğiniz proxy uygulamasını ve izin API 'sini gösterir.
+1. Yeni uygulama kayıt sayfasının kenar çubuğunda **API izinlerini**seçin. Yeni uygulama kaydı için **API izinleri** sayfası görüntülenir.
+1. **İzin ekle'yi**seçin. **İstek API izinleri** sayfası görüntülenir.
+1. **API Seç** ayarı altında, **kuruluşumun kullandığı API'leri**seçin. Dizininizdeki API'leri ortaya çıkaran uygulamaları içeren bir liste görüntülenir.
+1. Adım 1'de yayınladığınız proxy uygulamasını bulmak için arama kutusuna yazın veya [kaydırın: Proxy uygulamanızı yayımlayın](#step-1-publish-your-proxy-application)ve ardından proxy uygulamasını seçin.
+1. **Uygulamanız ne tür izinler gerektirir?** Yerel uygulamanızın oturum açmış kullanıcı olarak proxy uygulaması API'sine erişmesi gerekiyorsa, **Temsilci izinlerini**seçin.
+1. **İzinleri Seç** başlığında, istenen izni seçin ve **İzin Ekle'yi**seçin. Yerel uygulamanızın **API izinleri** sayfası artık eklediğiniz proxy uygulamasını ve izin API'sini gösterir.
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>4\. adım: Active Directory kimlik doğrulama kitaplığı Düzenle
+## <a name="step-4-edit-the-active-directory-authentication-library"></a>Adım 4: Etkin Dizin Kimlik Doğrulama Kitaplığını Edin
 
-Kimlik doğrulaması bağlamı, Active Directory Authentication Library (aşağıdaki metni eklemek için ADAL) yerel uygulama kodunda düzenleyin:
+Active Directory Authentication Library'nin (ADAL) kimlik doğrulama bağlamında yerel uygulama kodunu aşağıdaki metni içerecek şekilde edin:
 
 ```
 // Acquire Access Token from AAD for Proxy Application
@@ -91,20 +91,20 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
 ```
 
-Örnek kodda gerekli bilgiler, Azure AD portalında şu şekilde bulunabilir:
+Örnek koddaki gerekli bilgiler Azure AD portalında aşağıdaki gibi bulunabilir:
 
-| Bilgi gerekiyor | Azure AD portalında bulma |
+| Gerekli bilgi | Azure AD portalında nasıl bulabilirim? |
 | --- | --- |
-| \<kiracı KIMLIĞI > | **Azure Active Directory** > **ÖZELLIKLER** > **dizin kimliği** |
-| Proxy uygulamasının dış URL 'Sini \<> | **Kurumsal uygulamalar** > *proxy uygulamanızın* > **uygulama proxy** 'si > **dış URL** 'si |
-| Yerel uygulamanın \<uygulama KIMLIĞI > | **Kurumsal uygulamalar** > *Yerel uygulamanızı* > **Özellikler** > **uygulama kimliği** |
-| Yerel uygulamanın yeniden yönlendirme URI 'sini \<> | **Azure Active Directory** >  > uygulama kayıtları *Yerel uygulamanız* > **yeniden yönlendirme URI 'leri** |
-| Proxy uygulama API 'Si \<> | **Azure Active Directory** > **Uygulama kayıtları** *yerel uygulamanızı* > API **izinleri** > **API/izin adı** >  |
+| \<Kiracı Kimliği> | **Azure Etkin Dizin** > **Özellikleri** > **Dizin Kimliği** |
+| \<Proxy App> Harici Url | **Kurumsal uygulamalar** > *proxy uygulama* > **Uygulama proxy** > **Dış Url** |
+| \<Yerel uygulama nın uygulama kimliği> | **Kurumsal uygulamalar** > *yerel uygulama* > **Özellikleri** > Uygulama**Kimliği** |
+| \<Uri'yi Yerli Uygulama> Yönlendirme | **Azure Active Directory** > App yerel*uygulamanızı* > yeniden**yönlendirme URI'lerini** **kaydediyor** >  |
+| \<Proxy App API Url> | **Azure Active Directory** > **App yerel** > *uygulama* > **API izinleri** > **API / İzİnLER İsİm** kayıtları |
 
-ADAL 'yi bu parametrelerle düzenledikten sonra, kullanıcılarınız şirket ağının dışında olduklarında bile yerel istemci uygulamalarında kimlik doğrulaması yapabilir.
+ADAL'yi bu parametrelerle birlikte siz de yaptıktan sonra, kullanıcılarınız şirket ağının dışında olsalar bile yerel istemci uygulamalarına kimlik doğrulayabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yerel uygulama akışı hakkında daha fazla bilgi için, [Azure Active Directory Içindeki yerel uygulamalar](../azuread-dev/native-app.md)bölümüne bakın.
+Yerel uygulama akışı hakkında daha fazla bilgi için [Azure Etkin Dizini'ndeki yerel uygulamalara](../azuread-dev/native-app.md)bakın.
 
-[Azure Active Directory uygulamalarda çoklu oturum açmayı](what-is-single-sign-on.md#choosing-a-single-sign-on-method)ayarlama hakkında bilgi edinin.
+Azure Active [Directory'deki uygulamalarda tek oturum](what-is-single-sign-on.md#choosing-a-single-sign-on-method)açma ayarlama hakkında bilgi edinin.

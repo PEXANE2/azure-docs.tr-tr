@@ -1,6 +1,6 @@
 ---
-title: Web uygulaması güvenlik duvarı ilkesini mevcut bir Azure Application Gateway ilişkilendir
-description: Bir Web uygulaması güvenlik duvarı ilkesini mevcut bir Azure Application Gateway ilişkilendirmeyi öğrenin.
+title: Bir Web Uygulaması Güvenlik Duvarı ilkesini varolan bir Azure Uygulama Ağ Geçidi ile ilişkilendirme
+description: Bir Web Uygulaması Güvenlik Duvarı ilkesini varolan bir Azure Uygulama Ağ Geçidi ile nasıl ilişkilendireceklerini öğrenin.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,17 +8,17 @@ ms.service: web-application-firewall
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 1ed2e0cf8cc8cd841d8779462d62ba4852774a3a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083900"
 ---
-# <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>Bir WAF ilkesini mevcut bir Application Gateway ilişkilendir
+# <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>WAF ilkesini varolan bir Uygulama Ağ Geçidi ile ilişkilendirme
 
-Bir [WAF ilkesi oluşturmak](create-waf-policy-ag.md)için Azure PowerShell kullanabilirsiniz, ancak zaten bir Application Gateway olabilir ve yalnızca bir WAF ilkesini bununla ilişkilendirmek isteyebilirsiniz. Bu makalede, yalnızca bu; bir WAF Ilkesi oluşturup onu zaten var olan bir Application Gateway ilişkilendirirsiniz. 
+Bir [WAF İlkesi oluşturmak](create-waf-policy-ag.md)için Azure PowerShell'i kullanabilirsiniz, ancak zaten bir Uygulama Ağ Geçidiniz olabilir ve bir WAF İlkesi ile ilişkilendirmek isteyebilirsiniz. Bu makalede, sadece bunu; bir WAF İlkesi oluşturun ve zaten varolan bir Uygulama Ağ Geçidi ile ilişkilendirin. 
 
-1. Application Gateway ve güvenlik duvarı Ilkenizi alın. Mevcut bir güvenlik duvarı Ilkeniz yoksa, bkz. 2. adım. 
+1. Uygulama Ağ Geçidi ve Güvenlik Duvarı İlkenizi alın. Varolan bir Güvenlik Duvarı İlkeniz yoksa, bkz. 
 
    ```azurepowershell-interactive
       Connect-AzAccount
@@ -29,17 +29,17 @@ Bir [WAF ilkesi oluşturmak](create-waf-policy-ag.md)için Azure PowerShell kull
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
 
-2. Seçim Bir güvenlik duvarı Ilkesi oluşturun.
+2. (İsteğe bağlı) Güvenlik Duvarı İlkesi oluşturun.
 
    ```azurepowershell-interactive
       New-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>'
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
    > [!NOTE]
-   > Bu WAF Ilkesini bir WAF yapılandırmadan WAF Ilkesine geçiş için oluşturuyorsanız, Ilkenin eski yapılandırmasının tam bir kopyası olması gerekir. Bu, her dışlama, özel kural, devre dışı kural grubu, vb., WAF yapılandırmasında olduğu gibi tam olarak aynı olması gerektiği anlamına gelir.
-3. Seçim WAF ilkesini gereksinimlerinize uyacak şekilde yapılandırabilirsiniz. Bu özel kuralları içerir, kuralları/kural gruplarını devre dışı bırakır, dışlamaları, dosya yükleme sınırlarını ayarlar, vb. Bu adımı atlarsanız tüm varsayılanlar seçilir. 
+   > BIR WAF Config'den WAF Politikasına geçiş için bu WAF İlkesini oluşturuyorsanız, Politika'nın eski Config'inizin tam bir kopyası olması gerekir. Bu, her dışlama, özel kural, devre dışı kural grubu, vb WAF Config olduğu gibi tam olarak aynı olması gerektiği anlamına gelir.
+3. (İsteğe bağlı) WAF ilkesini ihtiyaçlarınıza göre yapılandırabilirsiniz. Buna özel kurallar, kuralları/kural gruplarını devre dışı bırakma, dışlamalar, dosya yükleme limitleri ayarlama vb. dahildir. Bu adımı atlarsanız, tüm varsayılanlar seçilir. 
    
-4. İlkeyi kaydedin ve Application Gateway ekleyin. 
+4. İlkeyi kaydedin ve Uygulama Ağ Geçidinize takın. 
    
    ```azurepowershell-interactive
       #Save the policy itself
@@ -53,4 +53,4 @@ Bir [WAF ilkesi oluşturmak](create-waf-policy-ag.md)için Azure PowerShell kull
    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Özel kurallar hakkında bilgi edinin.](configure-waf-custom-rules.md)
+[Özel Kurallar hakkında bilgi edinin.](configure-waf-custom-rules.md)

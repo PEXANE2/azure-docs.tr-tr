@@ -1,46 +1,46 @@
 ---
-title: Azure Application Insights Aracısı API başvurusu
-description: Aracı API başvurusunu Application Insights. Set-Applicationınsiısmonitoringconfig. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: Azure Uygulama Öngörüleri AracıAP başvurusu
+description: Uygulama Öngörüleri Aracısı API başvurusu. Set-ApplicationInsightsMonitoringConfig. Web sitesini yeniden dağıtmadan web sitesinin performansını izleyin. Şirket içinde, VM'lerde veya Azure'da barındırılan ASP.NET web uygulamalarıyla çalışır.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 1226b3e10adf786ed3335844a5d3f4e530911705
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671248"
 ---
-# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights aracı API 'SI: set-Applicationınsiısmonitoringconfig
+# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Uygulama Öngörüleri Aracısı API: Set-ApplicationInsightsMonitoringConfig
 
-Bu belgede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
+Bu belge, [Az.ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)bir üyesi olan bir cmdlet açıklar.
 
 ## <a name="description"></a>Açıklama
 
-Tam yeniden yükleme yapmadan yapılandırma dosyasını ayarlar.
-Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
+Config dosyasını tam yeniden yükleme yapmadan ayarlar.
+Değişikliklerinizin etkili olması için IIS'yi yeniden başlatın.
 
 > [!IMPORTANT] 
-> Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
+> Bu cmdlet, Yönetici izinleri içeren bir PowerShell oturumu gerektirir.
 
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="example-with-a-single-instrumentation-key"></a>Tek bir izleme anahtarına sahip örnek
-Bu örnekte, geçerli bilgisayardaki tüm uygulamalara tek bir izleme anahtarı atanacaktır.
+### <a name="example-with-a-single-instrumentation-key"></a>Tek bir enstrümantasyon tuşu ile örnek
+Bu örnekte, geçerli bilgisayardaki tüm uygulamalara tek bir enstrümantasyon anahtarı atanır.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
+### <a name="example-with-an-instrumentation-key-map"></a>Enstrümantasyon anahtar haritası ile örnek
 Bu örnekte:
-- `MachineFilter`, `'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
-- `AppFilter='WebAppExclude'`, `null` bir izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
-- `AppFilter='WebAppOne'` belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
-- `AppFilter='WebAppTwo'` belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
-- Son olarak `AppFilter` Ayrıca, önceki kurallarla eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için `'.*'` joker karakterini kullanır.
+- `MachineFilter`joker kartı kullanarak geçerli `'.*'` bilgisayarla eşleşir.
+- `AppFilter='WebAppExclude'`bir `null` enstrümantasyon anahtarı sağlar. Belirtilen uygulama enstrümanted olmayacaktır.
+- `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir enstrümantasyon anahtarı atar.
+- `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir enstrümantasyon anahtarı atar.
+- Son `AppFilter` olarak, `'.*'` joker kartı, önceki kurallarla eşleşmeyan tüm web uygulamalarını eşleştirmek ve varsayılan bir enstrümantasyon anahtarı atamak için de kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
 ```powershell
@@ -53,38 +53,38 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 ## <a name="parameters"></a>Parametreler
 
-### <a name="-instrumentationkey"></a>-Instrumentationkey
-**Gerekli.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir izleme anahtarı sağlamak için bu parametreyi kullanın.
+### <a name="-instrumentationkey"></a>-EnstrümantasyonAnahtar
+**Gerekli.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir enstrümantasyon anahtarı sağlamak için bu parametreyi kullanın.
 
-### <a name="-instrumentationkeymap"></a>-Instrumentationkeymap
-**Gerekli.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
-`MachineFilter`ayarlayarak, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
+### <a name="-instrumentationkeymap"></a>-EnstrümantasyonKeyMap
+**Gerekli.** Birden çok enstrümantasyon anahtarı ve her uygulama tarafından kullanılan enstrümantasyon anahtarlarının eşlemi sağlamak için bu parametreyi kullanın.
+Birkaç bilgisayar için tek bir yükleme `MachineFilter`komut dosyası ayarlayarak oluşturabilirsiniz.
 
 > [!IMPORTANT]
-> Uygulamalar kuralların sağlandığı sırada kurallarla eşleştirecektir. Bu nedenle, önce en özel kuralları ve en son genel kuralları belirtmeniz gerekir.
+> Uygulamalar, kuralların sağlandığı sırada kurallara göre eşleşir. Bu nedenle, önce en özel kuralları ve en genel kuralları en son belirtmelisiniz.
 
 #### <a name="schema"></a>Şema
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- **Machinefilter** BILGISAYARıN veya VM C# adının gerekli bir Regex.
-    - '. * ' tümü eşleşecek
-    - ' ComputerName ' yalnızca belirtilen ada sahip bilgisayarlarla eşleştirecektir.
-- **Appfilter** BILGISAYARıN veya VM C# adının gerekli bir Regex.
-    - '. * ' tümü eşleşecek
-    - ' ApplicationName ' yalnızca belirtilen ada sahip IIS uygulamalarıyla eşleştirecektir.
-- Önceki iki filtrelerle eşleşen uygulamaların izlenmesini etkinleştirmek için **ınstrumentationkey** gereklidir.
+- **MachineFilter,** bilgisayarın veya VM adının gerekli bir C# regex'idir.
+    - '.*' tüm maç olacak
+    - 'ComputerName' yalnızca belirtilen ada sahip bilgisayarlarla eşleşir.
+- **AppFilter,** bilgisayarın veya VM adının gerekli bir C# regex'idir.
+    - '.*' tüm maç olacak
+    - 'ApplicationName' belirtilen ada sahip yalnızca IIS uygulamalarıyla eşleşir.
+- **InstrumentationKey,** önceki iki filtreyle eşleşen uygulamaların izlenmesini etkinleştirmek için gereklidir.
     - İzlemeyi hariç tutmak için kurallar tanımlamak istiyorsanız bu değeri boş bırakın.
 
 
-### <a name="-verbose"></a>-Ayrıntılı
-**Ortak parametre.** Ayrıntılı günlükleri göstermek için bu anahtarı kullanın.
+### <a name="-verbose"></a>-Verbose
+**Ortak parametre.** Ayrıntılı günlükleri görüntülemek için bu anahtarı kullanın.
 
 
 ## <a name="output"></a>Çıktı
 
-Varsayılan olarak, çıkış yok.
+Varsayılan olarak, çıktı yok.
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>-Instrumentationkey aracılığıyla yapılandırma dosyasını ayarlamadan ayrıntılı çıkış örneği
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>-InstrumentationKey üzerinden config dosyasını ayarlamaktan örnek verbose çıktı
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -96,7 +96,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>-Instrumentationkeymap aracılığıyla yapılandırma dosyasını ayarlamadan ayrıntılı çıkış örneği
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>-InstrumentationKeyMap üzerinden config dosyasını ayarlamaktan örnek verbose çıktı
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -113,17 +113,17 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 ## <a name="next-steps"></a>Sonraki adımlar
 
   Telemetrinizi görüntüleyin:
- - Performansı ve kullanımı izlemek için [ölçümleri](../../azure-monitor/app/metrics-explorer.md) bulun.
-- Sorunları tanılamak için [olayları ve günlükleri arayın](../../azure-monitor/app/diagnostic-search.md) .
-- Daha gelişmiş sorgular için [analiz kullanın](../../azure-monitor/app/analytics.md) .
-- [Panolar oluşturun](../../azure-monitor/app/overview-dashboard.md).
+ - Performansı ve kullanımı izlemek için [ölçümleri keşfedin.](../../azure-monitor/app/metrics-explorer.md)
+- Sorunları tanılamak için [olayları ve günlükleri arayın.](../../azure-monitor/app/diagnostic-search.md)
+- Daha gelişmiş sorgular için [Analytics'i kullanın.](../../azure-monitor/app/analytics.md)
+- [Panolar oluşturun.](../../azure-monitor/app/overview-dashboard.md)
  
  Daha fazla telemetri ekleyin:
- - Sitenizin canlı kaldığından emin olmak için [Web testleri oluşturun](monitor-web-app-availability.md) .
-- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
-- İzleme ve günlük çağrısı ekleyebilmeniz için [Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md)
+ - Sitenizin canlı kalması için [web testleri oluşturun](monitor-web-app-availability.md).
+- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [web istemcisi telemetrisi ekleyin.](../../azure-monitor/app/javascript.md)
+- İzleme ve günlük aramaları ekleyebilmeniz [için Uygulama Öngörüleri SDK'yı kodunuza ekleyin](../../azure-monitor/app/asp-net.md)
  
- Application Insights aracısıyla daha fazlasını yapın:
- - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
- - Ayarlarınızın doğru kaydedildiğinden emin olmak için [yapılandırmayı alın](status-monitor-v2-api-get-config.md) .
- - İzlemeyi İnceleme [durumunu alın](status-monitor-v2-api-get-status.md) .
+ Application Insights Agent ile daha fazlasını yapın:
+ - Uygulama Öngörüleri [Aracısı'nın sorun giderme](status-monitor-v2-troubleshoot.md) kılavuzunu kullanın.
+ - Ayarlarınızın doğru kaydedildiğini doğrulamak için [config'i alın.](status-monitor-v2-api-get-config.md)
+ - İzlemeyi incelemek için [durumu alın.](status-monitor-v2-api-get-status.md)

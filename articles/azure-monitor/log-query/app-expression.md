@@ -1,47 +1,47 @@
 ---
-title: Azure Izleyici günlük sorgularındaki App () ifadesi | Microsoft Docs
-description: Uygulama ifadesi bir Azure Izleyici günlük sorgusunda aynı kaynak grubunda, başka bir kaynak grubunda veya başka bir abonelikte bulunan belirli bir Application Insights uygulamasından verileri almak için kullanılır.
+title: Azure Monitor günlük sorgularında uygulama() ifadesi | Microsoft Dokümanlar
+description: Uygulama ifadesi, aynı kaynak grubundaki, başka bir kaynak grubundaki veya başka bir abonelikteki belirli bir Uygulama Öngörüleri uygulamasından veri almak için bir Azure Monitor günlük sorgusunda kullanılır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
 ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670272"
 ---
-# <a name="app-expression-in-azure-monitor-query"></a>Azure Izleyici sorgusunda App () ifadesi
+# <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor sorgusunda uygulama() ifadesi
 
-`app` ifadesi bir Azure Izleyici sorgusunda aynı kaynak grubundaki belirli bir Application Insights uygulamasından, başka bir kaynak grubunda veya başka bir abonelikte veri almak için kullanılır. Bu, uygulama verilerini bir Azure Izleyici günlük sorgusuna eklemek ve bir Application Insights sorgusunda birden çok uygulama arasında veri sorgulamak için yararlıdır.
+İfade, `app` aynı kaynak grubundaki belirli bir Uygulama Öngörüleri uygulamasından, başka bir kaynak grubundan veya başka bir abonelikten veri almak için bir Azure Monitor sorgusunda kullanılır. Bu, uygulama verilerini bir Azure Monitor günlük sorgusuna eklemek ve bir Application Insights sorgusunda birden çok uygulama arasında verileri sorgulamak için yararlıdır.
 
 
 
 ## <a name="syntax"></a>Sözdizimi
 
-`app(`*tanımlayıcı*`)`
+`app(`*Tanımlayıcı*`)`
 
 
 ## <a name="arguments"></a>Bağımsız Değişkenler
 
-- *Tanımlayıcı*: aşağıdaki tablodaki biçimlerden birini kullanarak uygulamayı tanımlar.
+- *Tanımlayıcı*: Aşağıdaki tablodaki biçimlerden birini kullanarak uygulamayı tanımlar.
 
 | Tanımlayıcı | Açıklama | Örnek
 |:---|:---|:---|
-| Kaynak Adı | Uygulamanın okunabilir adı (DIĞER adıyla "bileşen adı") | uygulama ("fabrikamapp") |
-| Tam ad | Şu biçimdeki uygulamanın tam adı: "subscriptionName/resourceGroup/componentName" | uygulama (' AI-Prototype/fabrikam/fabrikamapp ') |
-| Kimlik | Uygulamanın GUID 'SI | uygulama ("988ba129-363e-4415-8fe7-8cbe5447518") |
-| Azure Kaynak KIMLIĞI | Azure kaynağı için tanımlayıcı |uygulama ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
+| Kaynak Adı | Uygulamanın okunabilir adı (AKA "bileşen adı") | uygulama("fabrikamapp") |
+| Nitelikli Ad | Formdaki uygulamanın tam adı: "subscriptionName/resourceGroup/componentName" | uygulama('AI-Prototype/Fabrikam/fabrikamapp') |
+| Kimlik | Uygulamanın GUID | uygulama ("988ba129-363e-4415-8fe7-8cbab5447518") |
+| Azure Kaynak Kimliği | Azure kaynağı için tanımlayıcı |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
 ## <a name="notes"></a>Notlar
 
-* Uygulamaya okuma erişiminizin olması gerekir.
-* Bir uygulamayı adına göre tanımlamak, tüm erişilebilir abonelikler genelinde benzersiz olduğunu varsayar. Belirtilen ada sahip birden çok uygulamanız varsa, belirsizlik nedeniyle sorgu başarısız olur. Bu durumda, diğer tanımlayıcılardan birini kullanmanız gerekir.
-* Log Analytics çalışma alanlarını sorgulamak için ilgili ifade [çalışma alanını](workspace-expression.md) kullanın.
-* Bir Application Insights uygulama, uyarı kuralı için kaynak olarak kullanılmadığı sürece, bir [özel günlük araması uyarı kuralı](../platform/alerts-log.md)oluşturmak için Azure Portal kullanılırken uygulama () ifadesi şu anda desteklenmiyor.
+* Uygulamaya erişimi okumuş olmalısınız.
+* Bir uygulamayı adıyla tanımlamak, uygulamanın tüm erişilebilir abonelikler arasında benzersiz olduğunu varsayar. Belirtilen ada sahip birden çok uygulamanız varsa, belirsizlik nedeniyle sorgu başarısız olur. Bu durumda, diğer tanımlayıcılardan birini kullanmanız gerekir.
+* Log Analytics çalışma alanlarında sorgu yapmak için ilgili ifade [çalışma alanını](workspace-expression.md) kullanın.
+* Uygulama Öngörüleri uygulaması uyarı kuralıiçin kaynak olarak kullanılmadığı sürece, özel bir [günlük arama uyarısı kuralı](../platform/alerts-log.md)oluşturmak için Azure portalını kullanırken uygulama() ifadesi şu anda arama sorgusunda desteklenmez.
 
 ## <a name="examples"></a>Örnekler
 
@@ -71,6 +71,6 @@ union
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. bir Log Analytics çalışma alanına başvurmak için [çalışma alanı ifadesi](workspace-expression.md) .
-- [Azure izleyici verilerinin](../../azure-monitor/log-query/log-query-overview.md) nasıl depolandığı hakkında bilgi edinin.
+- Günlük Analizi çalışma alanına başvurmak için [çalışma alanı ifadesine](workspace-expression.md) bakın.
+- [Azure Monitor verilerinin](../../azure-monitor/log-query/log-query-overview.md) nasıl depolandırıldığını okuyun.
 - [Kusto sorgu dili](/azure/kusto/query/)için tam belgelere erişin.

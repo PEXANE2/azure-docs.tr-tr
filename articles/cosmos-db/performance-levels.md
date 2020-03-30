@@ -1,106 +1,106 @@
 ---
-title: Azure Cosmos DB performans düzeyleri kullanımdan kaldırıldı
-description: Daha önce Azure Cosmos DB ' de bulunan S1, S2 ve S3 performans düzeyleri hakkında bilgi edinin.
+title: Emekli Azure Cosmos DB performans düzeyleri
+description: Azure Cosmos DB'de daha önce kullanılabilen S1, S2 ve S3 performans düzeyleri hakkında bilgi edinin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623337"
 ---
-# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1, S2 ve S3 performans düzeylerini devre dışı bırakma
+# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1, S2 ve S3 performans düzeyleri kullanımdan kaldırılıyor
 
 > [!IMPORTANT] 
-> Bu makalede ele alınan S1, S2 ve S3 performans düzeyleri kullanımdan kaldırılıyor ve yeni Azure Cosmos DB hesapları için artık kullanılamıyor.
+> Bu makalede tartışılan S1, S2 ve S3 performans düzeyleri kullanımdan kaldırılmakta ve artık yeni Azure Cosmos DB hesapları için kullanılamaz.
 >
 
-Bu makalede S1, S2 ve S3 performans düzeylerine genel bir bakış sağlanır ve bu performans düzeylerini kullanan koleksiyonların tek bölümlenmiş koleksiyonlara nasıl geçirilebileceği açıklanır. Bu makaleyi okuduktan sonra aşağıdaki soruları yanıtlamak mümkün olacaktır:
+Bu makalede, S1, S2 ve S3 performans düzeylerine genel bir bakış sağlar ve bu performans düzeylerini kullanan koleksiyonların tek bölümlü koleksiyonlara nasıl geçirilebileceği açıklanır. Bu makaleyi okuduktan sonra, aşağıdaki soruları yanıtlamak mümkün olacak:
 
-- [S1, S2 ve S3 performans düzeyleri neden kullanımdan kaldırılıyor?](#why-retired)
-- [Tek bölüm koleksiyonları ve bölümlenmiş koleksiyonlar S1, S2, S3 performans düzeyleri ile nasıl karşılaştırılır?](#compare)
-- [Verilerinize kesintisiz erişim sağlamak için ne yapmam gerekir?](#uninterrupted-access)
-- [Koleksiyonum geçişten sonra nasıl değiştirilir?](#collection-change)
-- [Tek bölüm koleksiyonlarına geçirildikten sonra faturalandırma değiştirmem nasıl olacak?](#billing-change)
-- [20 GB 'den fazla depolamaya ihtiyacım varsa ne yapmalıyım?](#more-storage-needed)
-- [Planlı geçişten önce S1, S2 ve S3 performans düzeyleri arasında değişiklik yapabilir miyim?](#change-before)
-- [S1, S2, S3 performans düzeyinden kendi kendine tek bölümlü koleksiyonlara geçiş Nasıl yaparım?.](#migrate-diy)
-- [EA müşteriysem ne etkilenir?](#ea-customer)
+- [S1, S2 ve S3 performans düzeyleri neden emekli yekpare?](#why-retired)
+- [Tek bölümlü koleksiyonlar ve bölümlenmiş koleksiyonlar S1, S2, S3 performans düzeyleriyle nasıl karşılaştırılır?](#compare)
+- [Verilerime kesintisiz erişim sağlamak için ne yapmam gerekir?](#uninterrupted-access)
+- [Geçişten sonra koleksiyonum nasıl değişecek?](#collection-change)
+- [Tek bölüm koleksiyonlarına geçtikten sonra faturam nasıl değişecek?](#billing-change)
+- [20 GB'dan fazla depolama alanına ihtiyacım olursa ne olur?](#more-storage-needed)
+- [Planlanan geçişten önce S1, S2 ve S3 performans düzeyleri arasında geçiş yapabilir miyim?](#change-before)
+- [S1, S2, S3 performans düzeylerinden tek bölüm koleksiyonlarına tek başıma nasıl geçiş yapabilirim?](#migrate-diy)
+- [EA müşterisi ysem nasıl etkilenirim?](#ea-customer)
 
 <a name="why-retired"></a>
 
-## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>S1, S2 ve S3 performans düzeyleri neden kullanımdan kaldırıldı?
+## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>S1, S2 ve S3 performans seviyeleri neden emekli oluyor?
 
-S1, S2 ve S3 performans düzeyleri, standart Azure Cosmos DB teklifinin sağladığı esnekliği sunmaz. S1, S2, S3 performans düzeylerinde, hem aktarım hızı hem de depolama kapasitesi önceden ayarlanmıştır ve esneklik sunmaz. Azure Cosmos DB, aktarım hızını ve depolamayı özelleştirme olanağı sunarak gereksinimleriniz değiştikçe ölçeklendirmeniz için çok daha fazla esneklik sunar.
+S1, S2 ve S3 performans düzeyleri, standart Azure Cosmos DB teklifinin sağladığı esnekliği sağlamaz. S1, S2, S3 performans seviyeleri ile hem iş hem de depolama kapasitesi önceden ayarlanmış ve elastikiyet sunmuyordu. Azure Cosmos DB artık iş ve depolama alanınızı özelleştirme olanağı sunarak, gereksinimleriniz değiştikçe ölçeklendirme yeteneğinizde çok daha fazla esneklik sunar.
 
 <a name="compare"></a>
 
-## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>Tek bölüm koleksiyonları ve bölümlenmiş koleksiyonlar S1, S2, S3 performans düzeyleri ile nasıl karşılaştırılır?
+## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>Tek bölümlü koleksiyonlar ve bölümlenmiş koleksiyonlar S1, S2, S3 performans düzeyleriyle nasıl karşılaştırılır?
 
-Aşağıdaki tabloda, tek bölüm koleksiyonlarında, bölümlenmiş koleksiyonlarda ve S1, S2, S3 performans düzeylerinde bulunan aktarım hızı ve depolama seçenekleri karşılaştırılmaktadır. ABD Doğu 2 bölge için bir örnek aşağıda verilmiştir:
+Aşağıdaki tablo, tek bölümlü koleksiyonlarda, bölümlenmiş koleksiyonlarda ve S1, S2, S3 performans düzeylerinde bulunan iş ve depolama seçeneklerini karşılaştırır. Burada ABD Doğu 2 bölgesi için bir örnektir:
 
-|   |Bölümlenmiş koleksiyon|Tek bölümlü toplama|S1|S2|S3|
+|   |Bölümlenmiş koleksiyon|Tek bölüm koleksiyonu|S1|S2|S3|
 |---|---|---|---|---|---|
-|En yüksek aktarım hızı|Sınırsız|10.000 RU/sn|250 RU/sn|1 K RU/sn|2,5 K RU/sn|
-|En düşük aktarım hızı|2,5 K RU/sn|400 RU/sn|250 RU/sn|1 K RU/sn|2,5 K RU/sn|
+|Aktarım hızı üst sınırı|Sınırsız|10K RU/s|250 RU/s|1 K RU/s|2.5 K RU/s|
+|Minimum iş elde|2.5 K RU/s|400 RU/sn|250 RU/s|1 K RU/s|2.5 K RU/s|
 |Maksimum depolama alanı|Sınırsız|20 GB|20 GB|20 GB|20 GB|
-|Fiyat (aylık)|Aktarım hızı: $6/100 RU/s<br><br>Depolama alanı: $0,25/GB|Aktarım hızı: $6/100 RU/s<br><br>Depolama alanı: $0,25/GB|$25 ABD DOLARı|$50 ABD DOLARı|$100 ABD DOLARı|
+|Fiyat (aylık)|Satış Tarihi: $6 / 100 RU/s<br><br>Depolama: $0.25/GB|Satış Tarihi: $6 / 100 RU/s<br><br>Depolama: $0.25/GB|25 $ ABD Doları|50 TL|100 TL|
 
-EA müşterisi misiniz? Öyleyse, [BIR EA Müşteriysem nasıl etkilenirim?](#ea-customer)
+EA müşterisi misiniz? Eğer öyleyse, [ea müşterisi ysem nasıl etkileneceğimi görün?](#ea-customer)
 
 <a name="uninterrupted-access"></a>
 
-## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Verilerinize kesintisiz erişim sağlamak için ne yapmam gerekir?
+## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Verilerime kesintisiz erişim sağlamak için ne yapmam gerekir?
 
-S1, S2 veya S3 koleksiyonunuz varsa, [.NET SDK 'yı kullanarak](#migrate-diy)koleksiyonu tek bir bölüm koleksiyonuna geçirmeniz gerekir. 
+S1, S2 veya S3 koleksiyonunuz varsa, [.NET SDK'yı kullanarak](#migrate-diy)koleksiyonu programlı olarak tek bir bölüm koleksiyonuna geçirmelisiniz. 
 
 <a name="collection-change"></a>
 
-## <a name="how-will-my-collection-change-after-the-migration"></a>Koleksiyonum geçişten sonra nasıl değiştirilir?
+## <a name="how-will-my-collection-change-after-the-migration"></a>Geçişten sonra koleksiyonum nasıl değişecek?
 
-S1 koleksiyonunuz varsa, bunları 400 RU/sn aktarım hızı ile tek bir bölüm koleksiyonuna geçirebilirsiniz. 400 RU/s, tek bölümlü koleksiyonlarla kullanılabilir en düşük aktarım hızı. Ancak, tek bir bölüm koleksiyonundaki 400 RU/sn maliyeti, S1 koleksiyonunuz ve 250 RU/s ile ödeirken yaklaşık olarak aynıdır. bu nedenle, size sunulan ekstra 150 RU/sn için ödeme yapmak zorunda değilsiniz.
+Bir S1 koleksiyonunuz varsa, bunları 400 RU/s iş bölümü içeren tek bir bölüm koleksiyonuna geçirebilirsiniz. 400 RU/s, tek bölümlü koleksiyonlarla kullanılabilen en düşük iş bölümüdür. Ancak, tek bir bölüm koleksiyonundaki 400 RU/s'nin maliyeti, S1 koleksiyonunuz ve 250 RU/s'inizle yaklaşık olarak aynıdır – bu nedenle size sunulan ekstra 150 RU/s için ödeme yapmazsınız.
 
-Bir S2 koleksiyonunuz varsa, bunları 1 K RU/sn ile tek bir bölüm koleksiyonuna geçirebilirsiniz. Aktarım hızı düzeyinize hiçbir değişiklik görmezsiniz.
+Bir S2 koleksiyonunuz varsa, bunları 1 K RU/s içeren tek bir bölüm koleksiyonuna geçirebilirsiniz. İş verme seviyenizde bir değişiklik göremezsiniz.
 
-S3 koleksiyonunuz varsa, bunları 2,5 K RU/s ile tek bir bölüm koleksiyonuna geçirebilirsiniz. Aktarım hızı düzeyinize hiçbir değişiklik görmezsiniz.
+Bir S3 koleksiyonunuz varsa, bunları 2,5 K RU/s ile tek bir bölüm koleksiyonuna geçirebilirsiniz. İş verme seviyenizde bir değişiklik göremezsiniz.
 
-Bu durumların her birinde, koleksiyonu geçirdikten sonra, verimlilik düzeyinizi özelleştirebilir veya kullanıcılarınıza düşük gecikme süreli erişim sağlamak için gerektiğinde ölçeği yukarı veya aşağı ölçeklendirebilirsiniz. 
+Bu durumların her birinde, koleksiyonu niçin geçirebildikten sonra, iş düzeyi düzeyinizi özelleştirebilir veya kullanıcılarınıza düşük gecikmeli erişim sağlamak için gerektiğinde yukarı ve aşağı ölçeklendirebilirsiniz. 
 
 <a name="billing-change"></a>
 
-## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Tek bölüm koleksiyonlarına geçirildikten sonra faturalandırma değiştirmem nasıl olacak?
+## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Tek bölüm koleksiyonlarına geçtikten sonra faturam nasıl değişecek?
 
-10 S1 koleksiyonunuz, her biri için 1 GB depolama alanı, ABD Doğu bölgesinde ve bu 10 S1 koleksiyonlarını, 400 RU/sn (en düşük düzeyde) konumundaki 10 tek bölüm koleksiyonuna geçiriyorsanız kabul edersiniz. 10 tek bölümlü koleksiyonları tam bir ay boyunca tutarsanız faturanız aşağıdaki gibi görünür:
+ABD Doğu bölgesinde 10 S1 koleksiyonunuz, her biri için 1 GB depolama alanınız olduğunu varsayarsak ve bu 10 S1 koleksiyonunu 400 RU/sn (minimum düzeyde) 10 tek bölüm koleksiyonuna geçirin. 10 tek bölüm koleksiyonunu tam bir ay boyunca tutarsanız faturanız aşağıdaki gibi görünecektir:
 
-![10 koleksiyonların S1 fiyatlandırması, tek bir bölüm koleksiyonu için fiyatlandırma kullanarak 10 koleksiyonla karşılaştırılır](./media/performance-levels/s1-vs-standard-pricing.png)
+![10 koleksiyon için S1 fiyatlandırması, tek bir bölüm koleksiyonu için fiyatlandırmayı kullanarak 10 koleksiyonla karşılaştırır](./media/performance-levels/s1-vs-standard-pricing.png)
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>20 GB 'den fazla depolamaya ihtiyacım varsa ne yapmalıyım?
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>20 GB'dan fazla depolama alanına ihtiyacım olursa ne olur?
 
-S1, S2 veya S3 performans düzeyine sahip bir koleksiyonunuz olsun ya da hepsi 20 GB depolama alanı bulunan tek bir bölüm koleksiyonuna sahipseniz, verilerinizi neredeyse bir bölümlenmiş koleksiyona geçirmek için Azure Cosmos DB veri geçiş aracı 'nı kullanabilirsiniz. Sınırsız depolama alanı. Bölümlenmiş bir koleksiyonun avantajları hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](sql-api-partition-data.md). 
+İster S1, S2 veya S3 performans düzeyine sahip bir koleksiyonunuz olsun, ister 20 GB depolama alanı bulunan tek bir bölüm koleksiyonunuz olsun, verilerinizi neredeyse bölümlere ayrılmıştır bir koleksiyona geçirmek için Azure Cosmos DB Veri Geçişi aracını kullanabilirsiniz sınırsız depolama. Bölümlenmiş koleksiyonun yararları hakkında daha fazla bilgi için [Azure Cosmos DB'de Bölümleme ve ölçekleme](sql-api-partition-data.md)bölümüne bakın. 
 
 <a name="change-before"></a>
 
-## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Planlı geçişten önce S1, S2 ve S3 performans düzeyleri arasında değişiklik yapabilir miyim?
+## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Planlanan geçişten önce S1, S2 ve S3 performans düzeyleri arasında geçiş yapabilir miyim?
 
-Yalnızca S1, S2 ve S3 performansına sahip mevcut hesaplar, [.NET SDK kullanılarak](#migrate-diy)programlı bir şekilde değiştirilebilir ve performans düzeyi katmanlarını değiştirebilir. S1, S3 veya S3 sürümünden tek bir bölüm koleksiyonuna geçiş yaparsanız S1, S2 veya S3 performans düzeylerine geri dönemezsiniz.
+Sadece S1, S2 ve S3 performansına sahip varolan hesaplar [.NET SDK kullanılarak](#migrate-diy)değiştirilebilir ve performans düzeyi katmanlarını programlı olarak değiştirebilir. S1, S3 veya S3'ten tek bir bölüm koleksiyonuna geçiş ederseniz, S1, S2 veya S3 performans düzeylerine geri dönemezsiniz.
 
 <a name="migrate-diy"></a>
 
-## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>S1, S2, S3 performans düzeyinden kendi kendine tek bölümlü koleksiyonlara geçiş Nasıl yaparım?.
+## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>S1, S2, S3 performans düzeylerinden tek bölüm koleksiyonlarına tek başıma nasıl geçiş yapabilirim?
 
-S1, S2 ve S3 performans düzeylerinden, [.NET SDK kullanarak](#migrate-diy)programlı bir şekilde tek bölümlü koleksiyonlara geçiş yapabilirsiniz. Bu seçeneği, planlı geçişten önce, tek bölümlü koleksiyonlarla kullanılabilen esnek aktarım hızı seçeneklerinden faydalanmak için kullanabilirsiniz.
+S1, S2 ve S3 performans düzeylerinden [.NET SDK'yı kullanarak](#migrate-diy)programlı olarak tek bölüm koleksiyonlarına geçiş yapabilirsiniz. Tek bölümlü koleksiyonlarla kullanılabilen esnek iş verme seçeneklerinden yararlanmak için, planlanan geçişten önce bunu kendi başına yapabilirsiniz.
 
-### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>.NET SDK kullanarak tek bölümlü koleksiyonlara geçirme
+### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>.NET SDK'yı kullanarak tek bölüm koleksiyonlarına geçiş
 
-Bu bölüm yalnızca [SQL .NET API 'si](sql-api-sdk-dotnet.md)kullanılarak bir koleksiyonun performans düzeyinin değiştirilmesini içerir, ancak Işlem diğer SDK 'larımız için benzerdir.
+Bu bölüm yalnızca [SQL .NET API'yi](sql-api-sdk-dotnet.md)kullanarak bir koleksiyonun performans düzeyini değiştirmeyi kapsar, ancak işlem diğer SDK'larımız için benzerdir.
 
-Saniye başına 5.000 istek birimi olarak koleksiyon aktarım hızını değiştirmek için bir kod parçacığı aşağıda verilmiştir:
+Burada, koleksiyon iş parçacığının saniyede 5.000 istek birimiyle değiştirilmesi için bir kod parçacığı verme vardır:
     
 ```csharp
     //Fetch the resource to be updated
@@ -116,22 +116,22 @@ Saniye başına 5.000 istek birimi olarak koleksiyon aktarım hızını değişt
     await client.ReplaceOfferAsync(offer);
 ```
 
-Ek örnekleri görüntülemek ve teklif yöntemlerimiz hakkında daha fazla bilgi edinmek için [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 'yi ziyaret edin:
+Ek örnekleri görüntülemek ve teklif yöntemlerimiz hakkında daha fazla bilgi edinmek için [MSDN'yi](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) ziyaret edin:
 
-* [**Readoffsilinebilir eşitleme**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
-* [**Readoffersfeedadsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
-* [**Replaceoffsilinebilir eşitleme**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
+* [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
+* [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
+* [**YerineOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
 * [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
 
 <a name="ea-customer"></a>
 
-## <a name="how-am-i-impacted-if-im-an-ea-customer"></a>EA müşteriysem ne etkilenir?
+## <a name="how-am-i-impacted-if-im-an-ea-customer"></a>EA müşterisi ysem nasıl etkilenirim?
 
-EA müşterileri, geçerli sözleşmesinin sonuna kadar fiyat korumalı olacaktır.
+EA müşterileri mevcut sözleşmelerinin sonuna kadar fiyat korumalı olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Cosmos DB, fiyatlandırma ve verileri yönetme hakkında daha fazla bilgi edinmek için şu kaynakları bulun:
+Azure Cosmos DB ile fiyatlandırma ve verileri yönetme hakkında daha fazla bilgi edinmek için şu kaynakları keşfedin:
 
-1.  [Cosmos DB verileri bölümleme](sql-api-partition-data.md). Tek bölümlü kapsayıcı ve bölümlenmiş kapsayıcılar arasındaki farkı anlayın ve sorunsuz ölçeklendirmek için bölümleme stratejisi uygulama ipuçları.
-2.  [Cosmos DB fiyatlandırması](https://azure.microsoft.com/pricing/details/cosmos-db/). Sağlama verimi ve depolama alanı kullanma maliyeti hakkında bilgi edinin.
-3.  [İstek birimleri](request-units.md). Örneğin okuma, yazma, sorgulama gibi farklı işlem türleri için üretilen iş kullanımını anlayın.
+1.  [Cosmos DB'de veri bölümleme.](sql-api-partition-data.md) Tek bölümlü kapsayıcı ve bölümlenmiş kapsayıcılar arasındaki farkı ve sorunsuz ölçeklendirmek için bir bölümleme stratejisi uygulama ipuçlarını anlayın.
+2.  [Cosmos DB fiyatlandırma](https://azure.microsoft.com/pricing/details/cosmos-db/). İş maliyeti sağlama nın ve depolamanın tüketme maliyeti hakkında bilgi edinin.
+3.  [İstek birimleri](request-units.md). Okuma, Yazma, Sorgula gibi farklı işlem türleri için iş elde edilen iş için iş elde tüketimini anlayın.

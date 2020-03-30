@@ -1,6 +1,6 @@
 ---
-title: Microsoft Graph API 'SI ile Azure AD yönetici rolleri atama | Microsoft Docs
-description: Azure Active Directory Graph API Azure AD yönetici rolleri atama ve kaldırma
+title: Microsoft Graph API ile Azure AD yönetici rollerini atama | Microsoft Dokümanlar
+description: Azure Etkin Dizini'nde Graph API ile Azure AD yöneticisi rollerini atama ve kaldırma
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,23 +14,23 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77559156"
 ---
-# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Active Directory Microsoft Graph API 'sini kullanarak özel yönetici rolleri atama 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Etkin Dizini'ndeki Microsoft Graph API'sini kullanarak özel yönetici rolleri atama 
 
-Microsoft Graph API kullanarak Kullanıcı hesaplarına roller atamayı otomatik hale getirebilirsiniz. Bu makalede Roleatamalarda GÖNDERI, GET ve DELETE işlemleri ele alınmaktadır.
+Microsoft Graph API'yi kullanarak kullanıcı hesaplarına nasıl rol atadığınızı otomatikleştirebilirsiniz. Bu makale, roleAssignments'taki POST, GET ve DELETE işlemlerini kapsar.
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Rolleri atamak veya kaldırmak için genel yönetici hesabı veya ayrıcalıklı Kimlik Yöneticisi kullanarak Azure AD kiracınıza bağlanın.
+Rolleri atamak veya kaldırmak için Bir Global yönetici hesabı veya Ayrıcalıklı Kimlik yöneticisi ni kullanarak Azure AD kiracınıza bağlanın.
 
-## <a name="post-operations-on-roleassignment"></a>Roleatama üzerinde POST Işlemleri
+## <a name="post-operations-on-roleassignment"></a>RoleAssignment POST İşlemleri
 
-Bir kullanıcı ile rol tanımı arasında rol ataması oluşturmak için HTTP isteği.
+BIR kullanıcı ve rol tanımı arasında rol ataması oluşturmak için HTTP isteği.
 
 POST
 
@@ -55,7 +55,7 @@ Yanıt
 HTTP/1.1 201 Created
 ```
 
-Sorumlu veya rol tanımının bulunmadığı bir rol ataması oluşturmak için HTTP isteği
+Http, asıl veya rol tanımının olmadığı bir rol ataması oluşturma isteği
 
 POST
 
@@ -79,10 +79,10 @@ Yanıt
 HTTP/1.1 404 Not Found
 ```
 
-Yerleşik rol tanımında tek bir kaynak kapsamlı rol ataması oluşturmak için HTTP isteği.
+HTTP, yerleşik bir rol tanımında tek bir kaynak kapsamlı rol ataması oluşturma isteğinde bulunun.
 
 > [!NOTE] 
-> Günümüzde yerleşik roller, yalnızca "/" kuruluş genelindeki kapsam veya "/AU/*" kapsamı kapsamında olabilecek bir sınırlamaya sahiptir. Tek kaynak kapsamı, yerleşik roller için çalışmaz, ancak özel roller için çalışır.
+> Yerleşik roller, günümüzde yalnızca "/" kuruluş genelindeki kapsamveya "/AU/*" kapsamına dahil edilebilen bir sınırlamaya sahiptir. Tek kaynak kapsam, yerleşik roller için çalışmaz, ancak özel roller için çalışır.
 
 POST
 
@@ -124,9 +124,9 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="get-operations-on-roleassignment"></a>Roleatama 'da Işlemleri al
+## <a name="get-operations-on-roleassignment"></a>RoleAssignment'da Get İşlemleri
 
-Belirli bir sorumlu için rol ataması almak için HTTP isteği
+Belirli bir müdür için rol ataması almak için HTTP isteği
 
 GET
 
@@ -152,7 +152,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-Belirli bir rol tanımı için rol ataması almak için HTTP isteği.
+HTTP belirli bir rol tanımı için bir rol ataması almak için istek.
 
 GET
 
@@ -172,7 +172,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-KIMLIĞE göre rol ataması almak için HTTP isteği.
+HTTP kimliğine göre bir rol ataması almak için istek.
 
 GET
 
@@ -192,9 +192,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="delete-operations-on-roleassignment"></a>Roleatamasında SILME Işlemleri
+## <a name="delete-operations-on-roleassignment"></a>RoleAssignment'da DELETE İşlemleri
 
-Bir kullanıcı ile rol tanımı arasında rol atamasını silmek için HTTP isteği.
+HTTP, kullanıcı ve rol tanımı arasındaki rol atamasını silme isteğinde bulunun.
 
 DELETE
 
@@ -207,7 +207,7 @@ Yanıt
 HTTP/1.1 204 No Content
 ```
 
-Artık mevcut olmayan bir rol atamasını silmek için HTTP isteği
+ARTıK var olmayan bir rol atamasını silme isteği HTTP
 
 DELETE
 
@@ -221,7 +221,7 @@ Yanıt
 HTTP/1.1 404 Not Found
 ```
 
-Self ve yerleşik rol tanımı arasında rol atamasını silmek için HTTP isteği
+HTTP isteği kendi ve yerleşik rol tanımı arasında bir rol atamasi silmek için
 
 DELETE
 
@@ -249,6 +249,6 @@ HTTP/1.1 400 Bad Request
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD Yönetim rolleri forumundan](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)bizimle paylaşabilirsiniz.
-* Roller ve yönetici rolü atama hakkında daha fazla bilgi için bkz. [yönetici rolleri atama](directory-assign-admin-roles.md).
-* Varsayılan Kullanıcı izinleri için bkz. [varsayılan Konuk ve üye Kullanıcı izinlerinin karşılaştırması](../fundamentals/users-default-permissions.md).
+* Azure AD yönetim rolleri [forumunda](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)bizimle paylaşmakta çekinmeyin.
+* Roller ve Yönetici rol ataması hakkında daha fazla şey için [yönetici rollerini atay'a](directory-assign-admin-roles.md)bakın.
+* Varsayılan kullanıcı izinleri için varsayılan [konuk ve üye kullanıcı izinlerinin karşılaştırılmasına](../fundamentals/users-default-permissions.md)bakın.

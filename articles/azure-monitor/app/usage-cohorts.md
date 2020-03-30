@@ -1,137 +1,137 @@
 ---
-title: Azure Application Insights kullanım katmanları | Microsoft Docs
-description: Farklı kümeleri veya kullanıcıları, oturumları, olayları veya ortak bir şeyi içeren işlemleri çözümleyin
+title: Azure Uygulama Öngörüleri kullanım kohortları | Microsoft Dokümanlar
+description: Ortak bir şeyi olan farklı kümeleri veya kullanıcıları, oturumları, olayları veya işlemleri analiz edin
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671095"
 ---
-# <a name="application-insights-cohorts"></a>Application Insights cohortaları
+# <a name="application-insights-cohorts"></a>Uygulama Öngörüleri kohortları
 
-Bir kohortu, bir dizi Kullanıcı, oturum, olay veya ortak bir şeyi içeren işlemlerdir. Azure Application Insights 'de, cohortalar bir analiz sorgusu tarafından tanımlanır. Belirli bir kullanıcı veya olay kümesini sürekli olarak analiz etmeniz gereken durumlarda, cohortalar, tam olarak ilgilendiğiniz kümeyi hızlı bir şekilde ifade etmek için size daha fazla esneklik sağlayabilir.
+Kohort, ortak bir şey olan bir kullanıcı, oturum, olay veya işlem kümesidir. Azure Uygulama Öngörüleri'nde kohortlar bir analiz sorgusu yla tanımlanır. Belirli bir kullanıcı kümesini veya olayı tekrar tekrar analiz etmeniz gereken durumlarda, kohortlar size ilgilendiğiniz seti tam olarak ifade etme esnekliği sağlayabilir.
 
-![Cohorts bölmesi](./media/usage-cohorts/001.png)
+![Kohortlar bölmesi](./media/usage-cohorts/001.png)
 
-## <a name="cohorts-versus-basic-filters"></a>Cohortalar ve temel filtreler
+## <a name="cohorts-versus-basic-filters"></a>Kohortlar temel filtrelere karşı
 
-Filtreler benzer yollarla birlikte kullanılır. Ancak, cohorts tanımları özel analiz sorgularından oluşturulmuştur, bu nedenle çok daha uyarlanabilir ve karmaşıktır. Filtrelerin aksine, daha sonra takımınızın diğer üyelerinin bunları yeniden kullanabilmesi için ortak hortları kaydedebilirsiniz.
+Kohortlar filtrelere benzer şekillerde kullanılır. Ancak kohortların tanımları özel analitik sorgularından oluşturulur, bu nedenle çok daha uyumlu ve karmaşıktırlar. Filtrelerden farklı olarak, ekibinizin diğer üyelerinin bunları yeniden kullanabilmesi için kohortları kaydedebilirsiniz.
 
-Uygulamanızda yeni bir özellik çalıştıran kullanıcılar için bir kohortu tanımlayabilirsiniz. Bu kohortu, Application Insights kaynağına kaydedebilirsiniz. Gelecekte bu kaydedilen belirli kullanıcıları çözümlemek kolaydır.
+Uygulamanızda yeni bir özellik deneyen bir kullanıcı kohortunu tanımlayabilirsiniz. Bu kohortu Application Insights kaynağınıza kaydedebilirsiniz. Gelecekte bu kayıtlı belirli kullanıcı grubunu analiz etmek kolaydır.
 
 > [!NOTE]
-> Oluşturulduktan sonra, kullanıcılar, oturumlar, olaylar ve Kullanıcı Akışları araçlarından birlikte kullanılabilir.
+> Oluşturulduktan sonra, kohortlar Kullanıcılar, Oturumlar, Etkinlikler ve Kullanıcı Akışları araçlarından edinilebilir.
 
-## <a name="example-engaged-users"></a>Örnek: bağlı kullanıcılar
+## <a name="example-engaged-users"></a>Örnek: Meşgul kullanıcılar
 
-Takımınız, belirli bir ayda uygulamanızı beş veya daha fazla kez kullanan herkes olarak bir kullanıcı tarafından tanımlanır. Bu bölümde, bu kullanıcı tanımlı kullanıcıların bir kohortu tanımlarsınız.
+Ekibiniz, ilgili bir kullanıcıyı belirli bir ay içinde uygulamanızı beş veya daha fazla kez kullanan herkes olarak tanımlar. Bu bölümde, bu meşgul kullanıcıların bir kohort tanımlar.
 
-1. Cohorts aracını açın.
+1. Kohortlar aracını açın.
 
-2. **Şablon Galerisi** sekmesini seçin. Çeşitli birlikte bir şablon koleksiyonu görürsünüz.
+2. Şablon **Galerisi** sekmesini seçin. Çeşitli kohortlar için şablonlar koleksiyonu görürsünüz.
 
-3. **Kullanılan kullanıcılar--güne göre**' ı seçin.
+3. **Kullanılan Günlere Göre Meşgul Kullanıcıları**Seçiniz.
 
-    Bu kohortu için üç parametre vardır:
-    * **Etkinlikler**, hangi olayların ve sayfa görünümlerinin "kullanım" olarak sayılmasını seçersiniz.
+    Bu kohort için üç parametre vardır:
+    * Hangi olayların ve sayfa görünümlerin "kullanım" olarak sayAcağını seçtiğiniz **etkinlikler.**
     * **Dönem**, bir ayın tanımı.
-    * **Usedatleastcustom**, kullanıcıların, bir dönemde bir süre içinde kullanıcı olarak saymak için kaç kez kullanması gerektiği.
+    * **UsedAtLeastCustom**, kullanıcıların meşgul olarak saymak için bir süre içinde bir şey kullanmak gerekir kaç kez.
 
-4. **Usedatleastcustom** değerini **5 + gün**olarak değiştirin ve **süresi** varsayılan 28 gün olarak bırakın.
+4. **UsedAtLeastCustom'ı** **5+ güne**değiştirin ve **Süreyi** 28 gün varsayılan olarak bırakın.
 
-    ![Bağlı kullanıcılar](./media/usage-cohorts/003.png)
+    ![Etkileşimde bulunan kullanıcılar](./media/usage-cohorts/003.png)
 
-    Artık bu kohortu, geçmiş 28 ' de 5 ayrı gün içinde herhangi bir özel olay veya sayfa görünümüyle gönderilen tüm Kullanıcı kimliklerini temsil eder.
+    Şimdi bu kohort, son 28 gün içinde 5 ayrı günde herhangi bir özel olay veya sayfa görünümüyle gönderilen tüm kullanıcı kodlarını temsil eder.
 
-5. **Kaydet**’i seçin.
+5. **Kaydet'i**seçin.
 
    > [!TIP]
-   > "Bağlı kullanıcılar (5 + gün)" gibi kohortu bir ad verin. Bu Application Insights kaynağına erişimi olan diğer kişilerin bu kohortu görmesini isteyip istemediğinize bağlı olarak, bu dosyayı "Raporlarım" veya "paylaşılan Raporlar" olarak kaydedin.
+   > Kohortunuza "Meşgul Kullanıcılar (5+ Gün)" gibi bir ad verin. Bu Uygulama Öngörüleri kaynağına erişimi olan diğer kişilerin bu kohortu görmesini isteyip istemediğinize bağlı olarak bu raporu "Raporlarım" veya "Paylaşılan raporlarım" olarak kaydedin.
 
-6. **Galeriye geri dön**seçeneğini belirleyin.
+6. **Galeriye Geri Dön'ün**
 
-### <a name="what-can-you-do-by-using-this-cohort"></a>Bu kohortu kullanarak ne yapabilirsiniz?
+### <a name="what-can-you-do-by-using-this-cohort"></a>Bu kohort kullanarak ne yapabilirsiniz?
 
-Kullanıcılar aracını açın. **Göster** açılan kutusunda, **ait kullanıcılar**altında oluşturduğunuz kohortu seçin.
+Kullanıcılar aracını açın. **Açılan** kutuda, Kullanıcılar altında oluşturduğunuz kohort'u seçin. **Users who belong to**
 
-Artık kullanıcılar aracı bu kohortu Kullanıcı adına filtrelenmiştir:
+Şimdi Kullanıcılar aracı bu kullanıcı kohortuna filtrelenir:
 
-![Belirli bir kohortu filtrelenmiş kullanıcılar bölmesi](./media/usage-cohorts/004.png)
+![Kullanıcılar bölmesi belirli bir kohort için filtre](./media/usage-cohorts/004.png)
 
-Dikkat etmeniz gereken birkaç önemli nokta:
+Dikkat etmesi gereken birkaç önemli şey:
 
-* Bu kümeyi normal filtreler aracılığıyla oluşturamazsınız. Tarih mantığı daha gelişmiş.
-* Kullanıcılar aracında normal filtreleri kullanarak bu kohortu daha fazla filtre uygulayabilirsiniz. Bu nedenle, kohortu 28 günlük Windows üzerinde tanımlanmış olsa da, kullanıcılar aracındaki zaman aralığını 30, 60 veya 90 gün olarak ayarlayabilirsiniz.
+* Bu kümeyi normal filtreler aracılığıyla oluşturamazsınız. Tarih mantığı daha gelişmiştir.
+* Kullanıcılar aracındaki normal filtreleri kullanarak bu kohorta daha fazla filtre uygulayabilirsiniz. Bu nedenle, kohort 28 günlük pencerelerde tanımlansa da, Kullanıcılar aracındaki zaman aralığını 30, 60 veya 90 gün olarak ayarlayabilirsiniz.
 
-Bu filtreler sorgu oluşturucu aracılığıyla hızlı bir şekilde ifade etmek imkansız olan daha karmaşık soruları destekler. _Son 28 gün içinde çalışan kişiler bir örnektir. Aynı kişiler son 60 gün boyunca nasıl davranır?_
+Bu filtreler sorgu oluşturucu aracılığıyla ifade etmek imkansız daha karmaşık soruları destekler. Buna bir örnek, _son 28 gün içinde meşgul olan kişilerdir. Son 60 günde aynı insanlar nasıl biri oldu?_
 
-## <a name="example-events-cohort"></a>Örnek: Event kohortu
+## <a name="example-events-cohort"></a>Örnek: Olaylar kohort
 
-Ayrıca, olayların birlikte da kullanılabilmesini sağlayabilirsiniz. Bu bölümde, olaylar ve sayfa görünümlerinin bir kohortu tanımlarsınız. Daha sonra bunları diğer araçlardan nasıl kullanacağınızı görürsünüz. Bu kohortu, takımınızın _etkin kullanımı_ düşündüğü bir olay kümesini veya belirli bir yeni özellikle ilgili bir kümeyi tanımlayabilir.
+Ayrıca olaylardan oluşan kohortlar da yapabilirsiniz. Bu bölümde, olaylar ve sayfa görünümleri bir kohort tanımlar. Sonra diğer araçlardan bunları nasıl kullanacağınızı görürsünüz. Bu kohort, ekibinizin _etkin kullanımı_ veya belirli bir yeni özellik ile ilgili bir küme olarak gördüğü bir dizi olay tanımlayabilir.
 
-1. Cohorts aracını açın.
+1. Kohortlar aracını açın.
 
-2. **Şablon Galerisi** sekmesini seçin. Çeşitli Tebrikler ilgili şablonlar koleksiyonu görürsünüz.
+2. Şablon **Galerisi** sekmesini seçin. Çeşitli kohortlar için şablonlar topluluğu görürsünüz.
 
-3. **Olay seçiciyi**seçin.
+3. **Etkinlikler Seçici'yi**seçin.
 
-    ![Olay seçicisinin ekran görüntüsü](./media/usage-cohorts/006.png)
+    ![Etkinlik seçicinin ekran görüntüsü](./media/usage-cohorts/006.png)
 
-4. **Etkinlikler** açılan kutusunda, kohortu içinde olmasını istediğiniz olayları seçin.
+4. **Etkinlikler** açılır kutusunda, kohortta olmak istediğiniz olayları seçin.
 
-5. Kohortu kaydedin ve bir ad verin.
+5. Kohort kaydedin ve ona bir isim verin.
 
-## <a name="example-active-users-where-you-modify-a-query"></a>Örnek: bir sorguyu değiştirdiğiniz etkin kullanıcılar
+## <a name="example-active-users-where-you-modify-a-query"></a>Örnek: Sorguyı değiştirdiğiniz etkin kullanıcılar
 
-Önceki iki cohortlar, açılan kutular kullanılarak tanımlandı. Ancak, toplam esneklik için analiz sorguları kullanarak da birlikte kohortalar tanımlayabilirsiniz. Nasıl yapılacağını görmek için, Birleşik Krallık 'tan bir kohortu kullanıcı oluşturun.
+Önceki iki kohort açılır kutular kullanılarak tanımlanmıştır. Ancak, toplam esneklik için analitik sorguları kullanarak kohortları da tanımlayabilirsiniz. Nasıl olduğunu görmek için, Birleşik Krallık'tan bir kullanıcı kohortu oluşturun.
 
-![Cohorts aracının kullanımıyla birlikte izlenecek animasyonlu görüntü](./media/usage-cohorts/cohorts0001.gif)
+![Cohorts aracının kullanımı ile yürürken animasyonlu görüntü](./media/usage-cohorts/cohorts0001.gif)
 
-1. Cohorts aracını açın, **Şablon Galerisi** sekmesini seçin ve **boş kullanıcılar kohortu**' ı seçin.
+1. Kohortlar aracını açın, **Şablon Galerisi** sekmesini seçin ve Boş Kullanıcılar **kohort'unu**seçin.
 
-    ![Boş kullanıcılar kohortu](./media/usage-cohorts/001.png)
+    ![Boş kullanıcılar kohort](./media/usage-cohorts/001.png)
 
     Üç bölüm vardır:
-   * Kohortu, takımınızda başkaları için daha ayrıntılı olarak betimleyen bir Markaşağı metin bölümü.
+   * Ekibinizdeki diğer kişiler için kohort'u daha ayrıntılı olarak tanımladığınız Bir Markdown metin bölümü.
 
-   * Önceki iki örnekten **Etkinlikler** ve diğer açılan kutular gibi kendi parametrelerinizi yaptığınız parametreler bölümü.
+   * Önceki iki örnekteki **Etkinlikler** ve diğer açılır kutular gibi kendi parametrelerinizi yaptığınız bir parametreler bölümü.
 
-   * Bir analiz sorgusu kullanarak kohortu tanımladığınız bir sorgu bölümü.
+   * Bir analitik sorgu kullanarak kohort tanımladığınız bir sorgu bölümü.
 
-     Sorgu bölümünde, [bir analiz sorgusu yazarsınız](/azure/kusto/query). Sorgu, tanımlamak istediğiniz kohortu tanımlayan belirli satır kümesini seçer. Cohorts aracı bundan sonra örtülü olarak bir "| sorguya user_Id "yan tümcesini özetleme. Bu veriler, bir tablodaki sorgunun altında önizlenmekte olduğundan, sorgunuzun sonuçları döndürdüğünü sağlayabilirsiniz.
+     Sorgu bölümünde, [bir analitik sorgu yazarsınız.](/azure/kusto/query) Sorgu, tanımlamak istediğiniz kohortaçıklayan belirli satır kümesini seçer. Kohortlar aracı sonra dolaylı bir "| sorguya user_Id" yan tümcesi ile özetleyin. Bu veriler, sorgunuzun sonuçları döndürdiğinden emin olmak için tablodaki sorgunun altında önizlemeedilir.
 
      > [!NOTE]
-     > Sorguyu görmüyorsanız, bölümü daha uzun hale getirmek ve sorguyu göstermek için yeniden boyutlandırmayı deneyin. Bu bölümün başındaki hareketli. gif, yeniden boyutlandırma davranışını gösterir.
+     > Sorguyu görmüyorsanız, daha uzun yapmak ve sorguyu göstermek için bölümü yeniden boyutlandırmayı deneyin. Bu bölümün başındaki animasyonlu .gif yeniden boyutlandırma davranışını gösterir.
 
-2. Aşağıdaki metni kopyalayıp sorgu düzenleyicisine yapıştırın:
+2. Aşağıdaki metni sorgu düzenleyicisine kopyalayıp yapıştırın:
 
     ```KQL
     union customEvents, pageViews
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. **Sorguyu Çalıştır**' ı seçin. Tabloda Kullanıcı kimlikleri görünmüyorsa, uygulamanızın kullanıcılara sahip olduğu bir ülkeye/bölgeye geçin.
+3. **Sorgu Çalıştır**'ı seçin. Tabloda kullanıcı işllerinin görülmediğini görüyorsanız, uygulamanızın kullanıcılarının olduğu bir ülke/bölgeye geçirin.
 
-4. Kohortu öğesini kaydedin ve adlandırın.
+4. Kohortun adını kaydet ve adlandır.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-_Belirli bir ülke/bölgeden bir kohortu Kullanıcı tanımladım. Kullanıcılar aracında bu kohortu karşılaştırdığımda, bu ülkede/bölgede yalnızca bir filtre ayarlamaya yönelik farklı sonuçlar görüyorum. Kaydol?_
+_Belirli bir ülkeden/bölgeden bir kullanıcı kohortu tanımladım. Kullanıcılar aracındaki bu kohortu, sadece o ülkeye/bölgeye bir filtre ayarlamakla karşılaştırdığımda, farklı sonuçlar görüyorum. Neden?_
 
-Cohortalar ve filtreler farklıdır. Birleşik Krallık 'tan (önceki örnekte olduğu gibi tanımlanmıştır) bir kohortu sahip olduğunuzu ve "Country veya Region = Birleşik Krallık" filtresini ayarlamaya ilişkin sonuçları karşılaştırdığınızı varsayalım.
+Kohortlar ve filtreler farklıdır. Birleşik Krallık'tan (önceki örnekgibi tanımlanmış) bir kullanıcı grubunuz olduğunu ve sonuçlarını "Ülke veya Bölge = Birleşik Krallık" filtresini ayarlamakla karşılaştırdığınızı varsayalım.
 
-* Kohortu sürümü, geçerli zaman aralığında Birleşik Krallık 'tan bir veya daha fazla olay gönderen kullanıcılardan gelen tüm olayları gösterir. Ülke veya bölgeye göre böldüğünüz takdirde, büyük olasılıkla birçok ülke ve bölge görürsünüz.
-* Filtreler sürümü yalnızca Birleşik Krallık 'un olaylarını gösterir. Ancak ülke veya bölgeye göre böldüğünüz takdirde yalnızca Birleşik Krallık ' u görürsünüz.
+* Kohort sürümü, geçerli zaman aralığında Birleşik Krallık'tan bir veya daha fazla etkinlik gönderen kullanıcıların tüm olaylarını gösterir. Ülkeye veya bölgeye göre bölünürseniz, büyük olasılıkla birçok ülke ve bölge görürsünüz.
+* Filtreler sürümü yalnızca Birleşik Krallık'tan gelen olayları gösterir. Ancak ülkeye veya bölgeye göre bölünürseniz, yalnızca Birleşik Krallık'ı görürsünüz.
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 * [Analytics sorgu dili](https://go.microsoft.com/fwlink/?linkid=856587)
-* [Kullanıcılar, oturumlar, olaylar](usage-segmentation.md)
+* [Kullanıcılar, oturumlar, etkinlikler](usage-segmentation.md)
 * [Kullanıcı akışları](usage-flows.md)
 * [Kullanıma genel bakış](usage-overview.md)

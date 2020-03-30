@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-Azure IoT Central sanal cihaz ekleme
-description: Bu hızlı başlangıçta bir cihaz şablonu oluşturma ve IoT Central uygulamanıza sanal cihaz ekleme işlemleri gösterilmektedir.
+title: Quickstart - Azure IoT Central'a benzetilen bir aygıt ekleme
+description: Bu hızlı başlatma, bir aygıt şablonu oluşturmanın ve IoT Merkezi uygulamanıza nasıl benzetimli bir aygıt ekleyeceğinigösterir.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
@@ -9,160 +9,160 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77169550"
 ---
-# <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Hızlı başlangıç: IoT Central uygulamanıza sanal cihaz ekleme
+# <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Hızlı başlatma: IoT Merkezi uygulamanıza simüle edilmiş bir aygıt ekleme
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-Bir cihaz şablonu, IoT Central uygulamanıza bağlanan bir cihazın yeteneklerini tanımlar. Özellikler cihaz gönderme, cihaz özellikleri ve bir cihazın yanıt verdiği komutları içerir. Bir cihaz şablonundan, bir Oluşturucu veya operatör bir uygulamaya hem gerçek hem de sanal cihaz ekleyebilir. Sanal cihazlar, gerçek cihazları bağlanmadan önce IoT Central uygulamanızın davranışını test etmek için kullanışlıdır.
+Aygıt şablonu, IoT Merkezi uygulamanıza bağlanan bir aygıtın özelliklerini tanımlar. Özellikler, aygıtın gönderdiği telemetriyi, aygıt özelliklerini ve aygıtın yanıt olarak yanıtlatmasını içerir. Aygıt şablonundan, oluşturucu veya operatör bir uygulamaya hem gerçek hem de simüle edilmiş aygıtlar ekleyebilir. Simüle edilmiş aygıtlar, gerçek aygıtları bağlamadan önce IoT Merkezi uygulamanızın davranışını sınarmak için yararlıdır.
 
-Bu hızlı başlangıçta, bir *Mxyonga IoT devkit* (devkit) panosu için bir cihaz şablonu eklersiniz ve sanal bir cihaz oluşturacaksınız. Bu hızlı başlangıcı tamamlayabilmeniz için gerçek bir cihaza ihtiyacınız yoktur, cihazın simülasyonu ile çalışırsınız. Bir DevKit cihazı:
+Bu hızlı başlatmada, *MXChip IoT DevKit* (DevKit) kartı için bir aygıt şablonu ekler ve simüle edilmiş bir aygıt oluşturursunuz. Bu hızlı başlatmayı tamamlamak için gerçek bir cihaza ihtiyacınız yoktur, aygıtın simülasyonu yla çalışırsınız. DevKit cihazı:
 
 * Sıcaklık gibi telemetri gönderir.
-* , Parlaklık düzeyi gibi cihaza özgü özellikleri raporlar.
+* Parlaklık düzeyi gibi aygıta özgü özellikleri raporlar.
 * Açma ve kapatma gibi komutlara yanıt verir.
-* Bellenim sürümü ve seri numarası gibi genel cihaz özelliklerini raporlar.
+* Firmware sürümü ve seri numarası gibi genel aygıt özelliklerini raporlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Özel uygulama **> özel uygulama** şablonunu kullanarak bir IoT Central uygulaması oluşturmak için [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md) hızlı başlangıcı ' nı doldurun.
+**Özel uygulama > Özel uygulama** şablonu kullanarak bir IoT Central uygulaması oluşturmak için Azure [IoT Central uygulamasını](./quick-deploy-iot-central.md) hızlı bir şekilde oluşturun'ı tamamlayın.
 
 ## <a name="create-a-template"></a>Şablon oluşturma
 
-Bir Oluşturucu olarak, IoT Central uygulamanızda cihaz şablonları oluşturabilir ve düzenleyebilirsiniz. Bir cihaz şablonu yayımladıktan sonra, cihaz şablonundan sanal cihaz oluşturabilir veya gerçek cihazları bağlayabilirsiniz. Sanal cihazlar, gerçek bir cihazı bağlanmadan önce uygulamanızın davranışını test etmenize olanak sağlar.
+Oluşturucu olarak, IoT Central uygulamanızda aygıt şablonları oluşturabilir ve edinebilirsiniz. Aygıt şablonu yayımladıktan sonra, simüle edilmiş aygıt oluşturabilir veya aygıt şablonundan gerçek aygıtlar bağlayabilirsiniz. Benzetimli aygıtlar, gerçek bir aygıtı bağlamadan önce uygulamanızın davranışını sınamamanızı sağlar.
 
-Uygulamanıza yeni bir cihaz şablonu eklemek için sol bölmedeki **cihaz şablonları** sekmesini seçin.
+Uygulamanıza yeni bir aygıt şablonu eklemek için sol bölmedeki **Aygıt Şablonları** sekmesini seçin.
 
-![Cihaz şablonları sayfası](./media/quick-create-pnp-device/devicedefinitions.png)
+![Aygıt Şablonları sayfası](./media/quick-create-pnp-device/devicedefinitions.png)
 
-Bir cihaz şablonu, cihazın gönderdiği Telemetriyi, cihaz özelliklerini ve cihazın yanıt verdiği komutları tanımlayan bir cihaz yetenek modeli içerir.
+Aygıt şablonu, aygıtın gönderdiği telemetriyi, aygıt özelliklerini ve aygıtın yanıt verdiği komutları tanımlayan bir aygıt yeteneği modeli içerir.
 
-### <a name="add-a-device-capability-model"></a>Cihaz yetenek modeli ekleme
+### <a name="add-a-device-capability-model"></a>Aygıt özelliği modeli ekleme
 
-IoT Central uygulamanıza cihaz yetenek modeli eklemek için çeşitli seçenekler vardır. Sıfırdan bir model oluşturabilir, bir dosyadan model aktarabilir veya cihaz kataloğundan bir cihaz seçebilirsiniz. IoT Central Ayrıca bir cihaz ilk kez bağlandığı zaman bir depodan bir modelden otomatik olarak bir model aktardığı bir *cihaz* yaklaşımını da destekler. Bu hızlı başlangıçta cihaz yetenek modelini içeri aktarmak için cihaz kataloğundan bir cihaz seçersiniz.
+IoT Central uygulamanıza aygıt yetenek modeli eklemek için çeşitli seçenekler vardır. Sıfırdan bir model oluşturabilir, bir dosyadan bir model içe aktarabilir veya aygıt kataloğundan bir aygıt seçebilirsiniz. IoT Central, bir aygıt ilk kez bağlandığında bir modeli depodan otomatik olarak içe aktarmayaptığı *aygıta yönelik ilk* yaklaşımı da destekler. Bu hızlı başlatmada, aygıt yetenek modelini almak için aygıt kataloğundan bir aygıt seçersiniz.
 
-Aşağıdaki adımlarda, bir **Mxyonga IoT DevKit** cihazı için yetenek modelini içeri aktarmak üzere cihaz kataloğunun nasıl kullanılacağı gösterilmektedir. Bu cihazlar, uygulamanıza sıcaklık gibi telemetri gönderir:
+Aşağıdaki adımlar, bir **MXChip IoT DevKit** aygıtının yetenek modelini almak için aygıt kataloğunu nasıl kullanacağınızı gösterir. Bu aygıtlar uygulamanıza sıcaklık gibi telemetri gönderir:
 
-1. Yeni bir cihaz şablonu eklemek için **cihaz şablonları** sayfasında **+** ' yi seçin.
+1. Yeni bir aygıt şablonu **+** eklemek için **Aygıt şablonları** sayfasından seçim yapmayı n için seçin.
 
-1. **Şablon türü seç** sayfasında, **Mxyongaıot devkit** kutucuğunu bulana kadar aşağı kaydırın.
+1. Şablon **türünü seç** sayfasında, **MXChip IoT DevKit** döşemesini bulana kadar aşağı kaydırın.
 
-1. **Mxyongaıot DevKit** kutucuğunu seçin ve ardından **İleri: Özelleştir**' i seçin.
+1. **MXChip IoT DevKit** döşemesini seçin ve ardından **İleri: Özelleştir'i**seçin.
 
-1. **İnceleme** sayfasında **Oluştur**' u seçin.
+1. Gözden **Geçir** sayfasında **Oluştur'u**seçin.
 
-1. Birkaç saniye sonra, yeni cihaz şablonunuzu görebilirsiniz:
+1. Birkaç saniye sonra yeni cihaz şablonunuzu görebilirsiniz:
 
-    ![Mxyongaıot DevKit cihaz şablonu](./media/quick-create-pnp-device/devkit-template.png)
+    ![MXChip IoT DevKit cihaz şablonu](./media/quick-create-pnp-device/devkit-template.png)
 
-    Mxyongaıot DevKit yetenek modeli, **mxchip_sensor**, **Mxchip_settings**ve **cihaz bilgileri**gibi arabirimleri içerir. Arabirimler bir Mxyongaıot DevKit cihazının yeteneklerini tanımlar. Özellikler, bir cihazın gönderdiği Telemetriyi, bir cihaz rapor özelliklerini ve bir cihazın yanıt verdiği komutları içerir.
+    MXChip IoT DevKit yetenek modeli **mxchip_sensor,** **mxchip_settings**ve **Aygıt Bilgileri**gibi arayüzleri içerir. Arayüzler, bir MXChip IoT DevKit aygıtının özelliklerini tanımlar. Özellikler arasında aygıtın gönderdiği telemetri, aygıtın bildirdiği özellikler ve aygıtın yanıt vermesi yer alıyor.
 
-### <a name="add-cloud-properties"></a>Bulut özellikleri ekle
+### <a name="add-cloud-properties"></a>Bulut özellikleri ekleme
 
-Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca IoT Central uygulamasında bulunur ve bir cihaza hiçbir şekilde gönderilmez veya buradan alınmaz.
+Aygıt şablonu bulut özelliklerini içerebilir. Bulut özellikleri yalnızca IoT Merkezi uygulamasında bulunur ve hiçbir zaman bir aygıta gönderilmez veya bir aygıttan alınmaz.
 
-1. **Bulut özellikleri** ' ni seçin ve **+ bulut özelliği Ekle**' ye tıklayın. Cihaz şablonunuza iki bulut özelliği eklemek için aşağıdaki tablodaki bilgileri kullanın:
+1. **Bulut Özellikleri'ni** seçin ve ardından **+ Bulut özelliği ekle.** Aygıt şablonunuza iki bulut özelliği eklemek için aşağıdaki tablodaki bilgileri kullanın:
 
-    | Görünen Ad      | Anlamsal tür | Şema |
+    | Görünen Ad      | Anlamsal Tip | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
-    | Müşteri adı     | Hiçbiri          | Dize |
+    | Son Hizmet Tarihi | None          | Tarih   |
+    | Müşteri Adı     | None          | Dize |
 
-1. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin:
+1. Değişikliklerinizi kaydetmek için **Kaydet'i** seçin:
 
     ![Bulut özellikleri](media/quick-create-pnp-device/cloudproperties.png)
 
 ## <a name="views"></a>Görünümler
 
-Bir Oluşturucu olarak, uygulamayı bir işlece cihazla ilgili bilgileri görüntüleyecek şekilde özelleştirebilirsiniz. Özelleştirmeleriniz, uygulamaya bağlı cihazları yönetmek için işlecini etkinleştirir. Cihazlarla etkileşim kurmak için kullanılacak bir operatör için iki tür görünüm oluşturabilirsiniz:
+Oluşturucu olarak, aygıtla ilgili bilgileri bir operatöre görüntülemek için uygulamayı özelleştirebilirsiniz. Özelleştirmeleriniz, operatörün uygulamaya bağlı aygıtları yönetmesini sağlar. Aygıtlarla etkileşimde kalmak için bir işleç için iki tür görünüm oluşturabilirsiniz:
 
-* Cihaz ve bulut özelliklerini görüntüleme ve düzenleme için formlar.
-* Aygıtları, gönderdikleri telemetri dahil olmak üzere görselleştirmeye yönelik panolar.
+* Aygıt ve bulut özelliklerini görüntülemek ve görüntülemek için formlar.
+* Gönderdikleri telemetri de dahil olmak üzere cihazları görselleştirmek için panolar.
 
 ### <a name="default-views"></a>Varsayılan görünümler
 
-Varsayılan görünümler, önemli cihaz bilgilerinizin görselleştirilmesi ile çalışmaya başlamanız için hızlı bir yoldur. Cihaz şablonunuz için en fazla üç varsayılan görünüm oluşturmuş olabilirsiniz:
+Varsayılan görünümler, önemli aygıt bilgilerinizi görselleştirmeye başlamanın hızlı bir yoludur. Aygıt şablonunuzun en fazla üç varsayılan görünümü oluşturulabilir:
 
-* **Komutlar** görünümü, operatörünüzün komutlarınıza erişmenizi sağlar.
-* **Genel bakış** görünümü cihaz telemetrisini görüntülemek için grafikleri ve ölçümleri kullanır.
-* **Hakkında** görünümü cihaz özelliklerini görüntüler.
+* **Komutlar** görünümü, operatörünüzün cihazınıza komutlar göndermesini sağlar.
+* **Genel Bakış** görünümü, aygıt telemetrisini görüntülemek için grafikleri ve ölçümleri kullanır.
+* **About** görünümü aygıt özelliklerini görüntüler.
 
-Cihaz şablonundaki **Görünümler** düğümünü seçin. IoT Central, şablonu eklediğinizde bir **genel bakış** ve **hakkında** bir görünüm üretdiğine bakabilirsiniz.
+Aygıt şablonundaki **Görünümler** düğümünü seçin. Şablonu eklediğinizde IoT Central'ın sizin için bir **Genel Bakış** ve **Bir About** görünümü oluşturduğunu görebilirsiniz.
 
-Bir işlecin cihazı yönetmek için kullanabileceği yeni bir **Cihaz yönet** formu eklemek için:
+Bir operatörün aygıtı yönetmek için kullanabileceği yeni bir **Yönet aygıtı** formu eklemek için:
 
-1. **Görünümler** düğümünü seçin ve ardından yeni bir görünüm eklemek için **cihazı ve bulut verilerini Düzenle** kutucuğunu seçin.
+1. **Görünümler** düğümünü seçin ve ardından yeni bir görünüm eklemek için **Düzenleme aygıtını ve bulut veri** döşemesini seçin.
 
-1. **Cihazı yönetmek**için form adını değiştirin.
+1. Aygıtı Yönet olarak form adını **değiştirin.**
 
-1. **Müşteri adı** ve **son hizmet tarihi** bulut özelliklerini ve **fan hızı** özelliğini seçin. Ardından **Bölüm Ekle**' yi seçin:
+1. Müşteri **Adı** ve **Son Hizmet Tarihi** bulut özelliklerini ve Fan **Speed** özelliğini seçin. Sonra **Ekle bölümünü**seçin:
 
-    ![Yeni form oluştur](media/quick-create-pnp-device/new-form.png)
+    ![Yeni form oluşturma](media/quick-create-pnp-device/new-form.png)
 
-1. Yeni formunuzu kaydetmek için **Kaydet** ' i seçin.
+1. Yeni formunuzu kaydetmek için **Kaydet'i** seçin.
 
-## <a name="publish-device-template"></a>Cihaz şablonunu Yayımla
+## <a name="publish-device-template"></a>Aygıt şablonu yayımlama
 
-Sanal bir cihaz oluşturmadan veya gerçek bir cihazı bağlayabilmeniz için önce cihaz şablonunuzu yayımlamanız gerekir. IoT Central şablonu ilk oluştururken yayımlamakla birlikte, güncelleştirilmiş sürümü yayımlamanız gerekir.
+Benzetimli bir aygıt oluşturmadan veya gerçek bir aygıta bağlanmadan önce aygıt şablonunuzu yayımlamanız gerekir. IoT Central şablonu ilk oluşturduğunuzda yayımlamasına rağmen, güncelleştirilmiş sürümü yayımlamanız gerekir.
 
-Bir cihaz şablonunu yayımlamak için:
+Aygıt şablonu yayımlamak için:
 
-1. Cihaz **şablonları** sayfasından cihaz şablonunuza gidin.
+1. **Aygıt Şablonları** sayfasından aygıt şablonunuza gidin.
 
-1. **Yayımla**' yı seçin:
+1. **Yayınla'yı**Seçin :
 
-    ![Yayımlanan model](media/quick-create-pnp-device/publishedmodel.png)
+    ![Yayınlanan model](media/quick-create-pnp-device/publishedmodel.png)
 
-1. **Bu cihaz şablonunu uygulama** iletişim **kutusunda Yayımla ' yı seçin.** 
+1. Bu **aygıt şablonunu uygulama** iletişim kutusuna yayımla'da **Yayımla'yı**seçin. 
 
-Bir cihaz şablonunu yayımladıktan sonra, **cihazlar** sayfasında görünür. Yayımlanmış bir cihaz şablonunda, yeni bir sürüm oluşturmadan bir cihaz yetenek modeli düzenleyemezsiniz. Ancak, bulut özellikleri, özelleştirmeler ve görünümlerde, sürüm oluşturmadan yayımlanmış bir cihaz şablonunda güncelleştirmeler yapabilirsiniz. Herhangi bir değişiklik yaptıktan sonra, bu değişiklikleri işletmenizin dışına göndermek için **Yayımla** ' yı seçin.
+Aygıt şablonu yayımladıktan sonra, **aygıtlar** sayfasında görünür. Yayımlanmış bir aygıt şablonunda, yeni bir sürüm oluşturmadan aygıt yetenek modelini düzenleme yapamazsınız. Ancak, sürüm oluşturmadan yayımlanmış bir aygıt şablonunda bulut özellikleri, özelleştirmeler ve görünümler güncelleştirmeleri yapabilirsiniz. Herhangi bir değişiklik **Publish** yaptıktan sonra, bu değişiklikleri operatörünüze iletmek için Yayımla'yı seçin.
 
 ## <a name="add-a-simulated-device"></a>Sanal cihaz ekleme
 
-Uygulamanıza sanal bir cihaz eklemek için, oluşturduğunuz **Mxyonga IoT DevKit** cihaz şablonunu kullanın.
+Uygulamanıza benzetilen bir aygıt eklemek için oluşturduğunuz **MXChip IoT DevKit** aygıt şablonunu kullanırsınız.
 
-1. Yeni bir cihazı operatör olarak eklemek için sol bölmedeki **cihazlar** ' ı seçin. **Cihazlar** sekmesinde **tüm cihazlar** ve **mxyonga IoT devkit** cihaz şablonu gösterilmektedir. **Mxyongaıot DevKit**' i seçin.
+1. Operatör olarak yeni bir aygıt eklemek için sol bölmedeki **Aygıtları** seçin. **Cihazlar** sekmesi **tüm aygıtları** ve **MXChip IoT DevKit** aygıt şablonu gösterir. **MXChip IoT DevKit'i**seçin.
 
-1. Sanal bir DevKit cihazı eklemek için **+** ' yi seçin. Önerilen **CIHAZ kimliğini** kullanın veya kendi küçük BIR **Cihaz Kimliğinizi**girin. Ayrıca, yeni cihazınız için bir ad girebilirsiniz. **Benzetimli** geçiş 'nin **Açık** olduğundan emin olun ve ardından **Oluştur**' u seçin.
+1. Benzetimli DevKit aygıtı eklemek **+** için . Önerilen **Aygıt Kimliğini** kullanın veya kendi küçük **Aygıt Kimliğinizi**girin. Ayrıca yeni cihazınız için bir ad da girebilirsiniz. **Benzetimli** geçişin **in de** olduğundan emin olun ve ardından **Oluştur'u**seçin.
 
     ![Sanal cihaz](./media/quick-create-pnp-device/simulated-device.png)
 
-Artık, benzetimli verileri kullanarak cihaz şablonu için Oluşturucu tarafından oluşturulan görünümlerle etkileşime geçebilirsiniz:
+Artık benzetimli verileri kullanarak aygıt şablonu için oluşturucu tarafından oluşturulan görünümlerle etkileşim kurabilirsiniz:
 
-1. **Cihazlar** sayfasında sanal cihazınızı seçin.
+1. **Cihazlar** sayfasında simüle edilmiş cihazınızı seçin.
 
-1. **Genel bakış** görünümünde, sanal Telemetriyi gösteren bir çizim gösterilmektedir:
+1. **Genel Bakış** görünümü, benzetimli telemetrinin bir çizimini gösterir:
 
     ![Genel bakış görünümü](./media/quick-create-pnp-device/simulated-telemetry.png)
 
-1. **Hakkında** görünümü, görünüme eklediğiniz bulut özellikleri de dahil olmak üzere özellik değerlerini gösterir.
+1. **About** görünümü, görünüme eklediğiniz bulut özellikleri de dahil olmak üzere özellik değerlerini gösterir.
 
-1. **Komutlar** görünümü, cihazda **yanıp sönme** gibi komutları çalıştırmanıza olanak sağlar.
+1. **Komutlar** görünümü, aygıtta **yanıp sönme** gibi komutları çalıştırmanızı sağlar.
 
-1. **Cihazları yönet** görünümü, cihazı yönetmek için işleci için oluşturduğunuz formdur.
+1. **Aygıtları Yönet** görünümü, operatörün aygıtı yönetmesi için oluşturduğunuz formdur.
 
-## <a name="use-a-simulated-device-to-improve-views"></a>Görünümleri geliştirmek için sanal cihaz kullanma
+## <a name="use-a-simulated-device-to-improve-views"></a>Görünümleri geliştirmek için benzetimli bir aygıt kullanma
 
-Yeni bir sanal cihaz oluşturduktan sonra, Oluşturucu bu cihazı kullanarak cihaz şablonunun görünümlerini iyileştirmeye ve oluşturmaya devam edebilir.
+Yeni bir benzetimli aygıt oluşturduktan sonra, oluşturucu bu aygıtı aygıt şablonu için görünümleri geliştirmeye ve geliştirmeye devam etmek için kullanabilir.
 
-1. Sol bölmedeki **cihaz şablonları** ' nı seçin ve **Mxyonga IoT devkit** şablonunu seçin.
+1. Sol bölmedeki **Aygıt şablonlarını** seçin ve **MXChip IoT DevKit** şablonunu seçin.
 
-1. Düzenlemek istediğiniz görünümlerden birini seçin veya yeni bir görünüm oluşturun. **Önizleme cihazını Yapılandır**' ı seçin ve ardından **çalışan bir cihazdan öğesini seçin**. Burada, bir önizleme cihazı, test için yapılandırılmış gerçek bir cihaz ya da IoT Central eklemiş olduğunuz mevcut bir cihaz yok seçeneklerinden birini belirleyebilirsiniz.
+1. Görüntülemek istediğiniz görünümlerden herhangi birini seçin veya yeni bir görünüm oluşturun. **Önizleme aygıtını Yapılandır'ı**seçin, ardından **çalışan bir aygıttan seçin.** Burada önizleme aygıtı, test için yapılandırılan gerçek bir aygıt veya IoT Central'a eklediğiniz varolan bir aygıtı seçebilirsiniz.
 
-1. Listeden sanal cihazınızı seçin. Ardından **Uygula**' yı seçin. Artık cihaz şablonu görünümlerini oluşturma deneyiminizdeki aynı sanal cihazı görebilirsiniz. Bu görünüm, grafikler ve diğer görselleştirmeler için kullanışlıdır.
+1. Listede simüle edilmiş cihazınızı seçin. Ardından **Uygula**'yı seçin. Artık aynı simüle edilmiş aygıtı cihazınızşablongörünümlerinde bina deneyimi görebilirsiniz. Bu görünüm grafikler ve diğer görseller için yararlıdır.
 
-    ![Önizleme cihazını Yapılandır](./media/quick-create-pnp-device/configure-preview.png)
+    ![Önizleme aygıtını yapılandırma](./media/quick-create-pnp-device/configure-preview.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir **Mxyonga IoT DevKit** cihaz şablonu oluşturmayı ve uygulamanıza sanal bir cihaz eklemeyi öğrendiniz.
+Bu hızlı başlatmada, bir **MXChip IoT DevKit** cihaz şablonu oluşturmayı ve uygulamanıza simüle edilmiş bir aygıt eklemeyi öğrendiniz.
 
-Uygulamanıza bağlı olan cihazları izleme hakkında daha fazla bilgi edinmek için hızlı başlangıç ile devam edin:
+Uygulamanıza bağlı izleme aygıtları hakkında daha fazla bilgi edinmek için hızlı bir şekilde çalışmaya devam edin:
 
 > [!div class="nextstepaction"]
 > [Kuralları ve eylemleri yapılandırma](./quick-configure-rules.md)

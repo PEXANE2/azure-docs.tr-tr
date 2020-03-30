@@ -1,6 +1,6 @@
 ---
-title: Azure spot VM 'Leri dağıtmak için portalı kullanma
-description: Maliyetlerden tasarruf etmek için spot VM 'Leri dağıtmak üzere Azure PowerShell nasıl kullanacağınızı öğrenin.
+title: Azure Spot VM'leri dağıtmak için portalı kullanın
+description: Maliyetlerden tasarruf etmek için Spot VM'leri dağıtmak için Azure PowerShell'i nasıl kullanacağınızı öğrenin.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -10,40 +10,40 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 8845d0f9277384c1cc32b31b5ea5151cd0668c79
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77158987"
 ---
-# <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Önizleme: Azure portal kullanarak spot VM 'Leri dağıtma
+# <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Önizleme: Azure portalını kullanarak Spot VM'leri dağıtma
 
-[Spot VM 'lerin](spot-vms.md) kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
+[Spot VM'leri](spot-vms.md) kullanmak, önemli bir maliyet tasarrufu nda kullanılmayan kapasitemizden yararlanmanızı sağlar. Azure'un kapasiteye geri ihtiyacı olduğu herhangi bir zamanda, Azure altyapısı Spot VM'leri boşaltacaktır. Bu nedenle, Spot VM'ler toplu iş işleri, geliştirme/test ortamları, büyük bilgi işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilir iş yükleri için idealdir.
 
-Nokta VM 'Leri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması. En yüksek fiyatı ayarlama hakkında daha fazla bilgi için bkz. [spot VM 'ler-fiyatlandırma](spot-vms.md#pricing).
+Spot VM'ler için fiyatlandırma, bölgeye ve SKU'ya göre değişkendir. Daha fazla bilgi için [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması için bkz. Maksimum fiyatı ayarlama hakkında daha fazla bilgi için [Spot VM'ler - Fiyatlandırma'ya](spot-vms.md#pricing)bakın.
 
-VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Bir spot VM 'nin en yüksek fiyatı, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin değer `0.05701`, saat başına $0,05701 ABD Doları olan en yüksek fiyat olacaktır. En büyük fiyatı `-1`olarak ayarlarsanız, VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır.
+VM için saat başına ödemek istediğiniz maksimum fiyatı belirleme seçeneğiniz vardır. Spot VM'nin maksimum fiyatı, 5 ondalık basamak kullanılarak ABD doları (USD) olarak ayarlanabilir. Örneğin, değeri `0.05701`saat başına 0,05701 USD maksimum fiyat olacaktır. Maksimum fiyatı olarak `-1`ayarlarsanız, VM fiyata göre tahliye olmaz. VM için fiyat spot veya standart bir VM için fiyat olacak, hangi hiç daha az, sürece kapasite ve kota mevcuttur.
 
 > [!IMPORTANT]
-> Nokta örnekleri şu anda genel önizlemededir.
-> Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Spot örnekleri şu anda genel önizlemede.
+> Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 >
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Spot VM 'Ler kullanan bir VM oluşturma işlemi [hızlı](quick-create-portal.md)başlangıçta ayrıntılıdır. Bir sanal makine dağıttığınızda, bir Azure spot örneği kullanmayı tercih edebilirsiniz.
+Spot VM kullanan bir VM oluşturma [işlemi, hızlı başlatmada](quick-create-portal.md)ayrıntılı olarak aynıdır. Bir VM dağıtırken, bir Azure spot örneğini kullanmayı seçebilirsiniz.
 
 
-**Temel bilgiler** sekmesinde, **örnek ayrıntıları** bölümünde, **Hayır** , Azure spot örneği kullanımı için varsayılan değer değildir.
+Temel **Bilgiler** sekmesinde, **Örnek ayrıntıları** bölümünde, **Hayır,** Azure spot örneğini kullanmak için varsayılan dır.
 
-![Hayır seçme için ekran yakalama, Azure spot örneği kullanma](media/spot-portal/no.png)
+![Hayır seçmek için ekran yakalama, Azure spot örneği kullanmayın](media/spot-portal/no.png)
 
-**Evet**' i seçtiğinizde, Bölüm genişletilir ve [çıkarma türü ve çıkarma ilkenizi](spot-vms.md#eviction-policy)seçebilirsiniz. 
+**Evet'i**seçerseniz, bölüm genişler ve [tahliye türünü ve tahliye politikanızı](spot-vms.md#eviction-policy)seçebilirsiniz. 
 
-![Ekran yakalama Evet seçme, Azure spot örneği kullanma](media/spot-portal/yes.png)
+![Evet seçmek için ekran yakalama, Azure spot örneğini kullanma](media/spot-portal/yes.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ayrıca, [PowerShell](spot-powershell.md)kullanarak spot VM 'ler oluşturabilirsiniz.
+PowerShell'i kullanarak Spot [PowerShell](spot-powershell.md)VM'ler de oluşturabilirsiniz.

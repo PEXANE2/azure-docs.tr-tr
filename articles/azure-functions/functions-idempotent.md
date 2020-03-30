@@ -1,45 +1,45 @@
 ---
-title: Azure Işlevlerini özdeş giriş için tasarlama
-description: Azure Işlevlerini ıdempotent olarak oluşturma
+title: Aynı giriş için Azure Işlevleri Tasarlama
+description: Idempotent olmak için Azure Işlevleri Oluşturma
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 9/12/2019
 ms.topic: article
 ms.openlocfilehash: 15af60ac5a862e6fb20e65ba6fbb92482420b7c0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226869"
 ---
-# <a name="designing-azure-functions-for-identical-input"></a>Azure Işlevlerini özdeş giriş için tasarlama
+# <a name="designing-azure-functions-for-identical-input"></a>Aynı giriş için Azure Işlevleri Tasarlama
 
-Olay odaklı ve ileti tabanlı mimarinin gerçekliği, veri bütünlüğünü ve sistem kararlılığını korurken özdeş istekleri kabul etme gereksinimini belirler.
+Olay odaklı ve ileti tabanlı mimarinin gerçekliği, veri bütünlüğünü ve sistem kararlılığını korurken aynı istekleri kabul etme gereksinimini belirler.
 
-Göstermek için bir Asansör çağrı düğmesine göz önünde bulundurun. Düğmeye bastığınızda ışıklar açılır ve bir Asansör, kata bir Asansör gönderilir. Birkaç dakika sonra, başka bir Kullanıcı lobide sizi birleştirdiğinde. Bu kişi sizi ve ikinci kez aydınlatılan düğmeye basar. Bir Asansör çağrısı yapılacak bir komutun ıdempotent olduğunu hatırlatıldığınızı hatırladığınızdan, kendinize doğru bir şekilde ilerleyin.
+Göstermek için, bir asansör arama düğmesi düşünün. Düğmeye bastığınızda yanar ve yere bir asansör gönderilir. Birkaç dakika sonra lobide başka biri size katılıyor. Bu kişi size gülümsüyor ve ışıklı düğmeye ikinci kez basıyor. Asansör çağırma emrinin iktidara geldiğini hatırladığın için gülümseyip kendine kıkırdarsın.
 
-Bir Asansör çağrı düğmesine basıldığında ikinci, üçüncü veya dördüncü bir kez nihai sonuç üzerinde hiçbir pul yoktur. Düğmeye bastığınızda, Asansör sayısı ne kadar olursa olsun, Asansör kata gönderilir. Asansör gibi ıdempotent sistemleri, aynı komutların kaç kez verildiğine bakılmaksızın aynı sonuca neden olacak.
+Asansör arama düğmesine ikinci, üçüncü veya dördüncü kez basıldığında nihai sonuç üzerinde hiçbir etkisi yoktur. Düğmeye bastığınızda, kaç kez olursa olsun, asansör katınıza gönderilir. Asansör gibi idempotent sistemler, aynı komutlar kaç kez aynı komutlar verilirse verilsin aynı sonucu doğurur.
 
-Uygulamalar oluşturmak için aşağıdaki senaryoları göz önünde bulundurun:
+Uygulama oluşturma söz konusu olduğunda, aşağıdaki senaryoları göz önünde bulundurun:
 
-- Envanter denetimi uygulamanız aynı ürünü birden çok kez silmeye çalışırsa ne olur?
-- Aynı kişi için bir çalışan kaydı oluşturmak için birden fazla istek varsa insan kaynakları uygulamanız nasıl davranır?
-- Bankacılık uygulamanız aynı çekme için 100 istek alırsa para ne olur?
+- Stok kontrol uygulamanız aynı ürünü birden fazla kez silmeye çalışırsa ne olur?
+- Aynı kişi için çalışan kaydı oluşturmak için birden fazla istek varsa, insan kaynakları uygulamanız nasıl çalışır?
+- Bankacılık uygulamanız aynı para çekme işlemini yapmak için 100 istek alırsa para nereye gider?
 
-Bir işlev isteklerinin aynı komutları alabileceği birçok bağlam vardır. Bazı durumlar şunlardır:
+Bir işleve gelen isteklerin aynı komutları alabileceği birçok bağlam vardır. Bazı durumlar şunlardır:
 
-- Aynı isteği birçok kez gönderen yeniden deneme ilkeleri
-- Önbelleğe alınmış komutlar uygulamaya yeniden yürütüldü
-- Birden çok özdeş istek gönderen uygulama hataları
+- Aynı isteği birçok kez gönderen ilkeleri yeniden deneyin
+- Önbelleğe alınmış komutlar uygulamaya yeniden oynattı
+- Birden çok aynı istek gönderen uygulama hataları
 
-Veri bütünlüğünü ve sistem durumunu korumak için, bir ıdempotent uygulaması aşağıdaki davranışları içerebilen mantığı içerir:
+Veri bütünlüğünü ve sistem durumunu korumak için, bir idempotent uygulama aşağıdaki davranışları içeren mantık içerir:
 
-- Silmeyi yürütmeye çalışmadan önce verilerin varlığını doğrulama
-- Oluşturma eylemi yürütülmeye çalışmadan önce verilerin zaten mevcut olup olmadığını denetleme
-- Verilerde nihai tutarlılık oluşturan mantığı mutabık kılma
+- Silme işlemini gerçekleştirmeye çalışmadan önce verilerin varlığını doğrulama
+- Oluşturma eylemi yürütmeye çalışmadan önce verilerin zaten var olup olmadığını denetleme
+- Verilerde nihai tutarlılık oluşturan mutabakat mantığı
 - Eşzamanlılık denetimleri
-- Çoğaltma algılaması
-- Veri yeniliği doğrulaması
-- Giriş verilerini doğrulamak için koruma mantığı
+- Çoğaltma algılama
+- Veri tazeliği doğrulaması
+- Giriş verilerini doğrulamak için tutma mantığı
 
-Son olarak, belirli bir eylemin mümkün olduğundan ve yalnızca bir kez yürütülene kadar her şey elde edilir.
+Sonuçta idempotency belirli bir eylem mümkün olduğundan emin olmak ve sadece bir kez yürütülür elde edilir.

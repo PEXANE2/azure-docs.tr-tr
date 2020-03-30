@@ -1,6 +1,6 @@
 ---
-title: Yerel Web Kullanıcı arabirimini kullanarak Azure Data Box/Azure Data Box Heavy yönetme
-description: Data Box ve Data Box Heavy cihazlarınızı yönetmek için yerel Web Kullanıcı arabirimini kullanmayı açıklar
+title: Yerel web Kullanıcı Arama Bilgi Niçin Azure Veri Kutusu/Azure Veri Kutusu Ağır'ı kullanma
+description: Veri Kutusu ve Veri Kutusu Ağır aygıtlarınızı yönetmek için yerel web UI'yi nasıl kullanacağınızı açıklar
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,29 +9,29 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560193"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Veri Kutunuzu ve Veri Kutusu Ağır'ınızı yönetmek için yerel web UI'sini kullanın
 
-Bu makalede Data Box ve Data Box Heavy cihazlarda gerçekleştirilebilecek yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Azure portal Kullanıcı arabirimi ve cihaz için yerel Web Kullanıcı arabirimi aracılığıyla Data Box ve Data Box Heavy cihazlarını yönetebilirsiniz. Bu makale, yerel web kullanıcı arabirimini kullanarak gerçekleştirebileceğiniz görevlere odaklanmaktadır.
+Bu makalede, Veri Kutusu ve Veri Kutusu Ağır aygıtlarında gerçekleştirilebilecek yapılandırma ve yönetim görevlerinden bazıları açıklanmaktadır. Veri Kutusu ve Veri Kutusu Ağır aygıtlarını Azure portal ui'si ve aygıt için yerel web ui üzerinden yönetebilirsiniz. Bu makale, yerel web kullanıcı arabirimini kullanarak gerçekleştirebileceğiniz görevlere odaklanmaktadır.
 
-Data Box için yerel Web Kullanıcı arabirimi ve Data Box Heavy cihazın ilk yapılandırması için kullanılır. Ayrıca, yerel Web Kullanıcı arabirimini kullanarak cihazı kapatabilir veya yeniden başlatabilir, tanılama testlerini çalıştırabilir, yazılımı güncelleştirebilir, kopyalama günlüklerini görüntüleyebilir ve Microsoft Desteği için bir günlük paketi oluşturabilirsiniz. İki bağımsız düğüm içeren bir Data Box Heavy cihazda, cihazın her bir düğümüne karşılık gelen iki ayrı yerel Web 'e erişebilirsiniz.
+Veri Kutusu ve Veri Kutusu Ağır için yerel web UI aygıtın ilk yapılandırması için kullanılır. Ayrıca aygıtı kapatmak veya yeniden başlatmak, tanılama testlerini çalıştırmak, yazılımı güncelleştirmek, kopyalama günlüklerini görüntülemek ve Microsoft Desteği için bir günlük paketi oluşturmak için yerel web kullanıcı arabirimi'ni de kullanabilirsiniz. İki bağımsız düğüme sahip bir Veri Kutusu Ağır aygıtında, aygıtın her düğümüne karşılık gelen iki ayrı yerel web UIs'e erişebilirsiniz.
 
 Bu makale aşağıdaki öğreticileri içerir:
 
 - Destek paketi oluşturma
 - Cihazınızı kapatma ya da yeniden başlatma
-- BOM veya manifest dosyalarını indirin
+- ÜRÜN SUNCısı veya manifest dosyalarını indir
 - Cihazın kullanılabilir kapasitesini görüntüleme
 - Sağlama toplamı doğrulamasını atlama
 
 ## <a name="generate-support-package"></a>Destek paketi oluşturma
 
-Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluşturabilirsiniz. Microsoft Destek sorunu gidermek için bu paketi kullanır. Bir destek paketi oluşturmak için aşağıdaki adımları uygulayın:
+Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluşturabilirsiniz. Microsoft Destek sorunu gidermek için bu paketi kullanır. Destek paketi oluşturmak için aşağıdaki adımları izleyin:
 
 1. Yerel web kullanıcı arabiriminde **Desteğe Başvur**'a gidin ve **Destek paketi oluştur**'a tıklayın.
 
@@ -52,9 +52,9 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluştu
 
 ## <a name="shut-down-or-restart-your-device"></a>Cihazınızı kapatma ya da yeniden başlatma
 
-Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu, veri bozulması olasılığını en aza indirir. Cihazı kapatırken devam eden bir veri kopyalama işlemi olmadığından emin olun.
+You can shut down or restart your device using the local web UI. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu, veri bozulması olasılığını en aza indirir. Cihazı kapatırken devam eden bir veri kopyalama işlemi olmadığından emin olun.
 
-Cihazınızı kapatmak için aşağıdaki adımları uygulayın.
+Cihazınızı kapatmak için aşağıdaki adımları izleyin.
 
 1. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
 2. **Kapat**'a tıklayın.
@@ -78,40 +78,40 @@ Data Box'ınızı yeniden başlatmak için aşağıdaki adımları gerçekleşti
 
    Cihaz kapatılır ve sonra yeniden başlatır.
 
-## <a name="download-bom-or-manifest-files"></a>BOM veya manifest dosyalarını indirin
+## <a name="download-bom-or-manifest-files"></a>ÜRÜN SUNCısı veya manifest dosyalarını indir
 
-Ürün reçetesi (BOM) veya bildirim dosyaları, Data Box veya Data Box Heavy kopyalanan dosyaların listesini içerir. Bu dosyalar, cihazı sevk edilecek şekilde hazırlarken oluşturulur.
+Malzeme Faturası (BOM) veya bildirim dosyaları, Veri Kutusu'na veya Veri Kutusu Ağır'a kopyalanan dosyaların listesini içerir. Bu dosyalar, aygıtı sevk ekine hazırladığınız zaman oluşturulur.
 
-Başlamadan önce, cihazınızın **göndermeye hazırlama** adımını tamamladığınızdan emin olun. BOM veya manifest dosyalarını indirmek için şu adımları izleyin:
+Başlamadan önce, cihazınızın **gönderi adımını hazırlamayı** tamamladığınızdan emin olun. ÜRÜN EKSB'yi veya bildirim dosyalarını indirmek için aşağıdaki adımları izleyin:
 
-1. Cihazınız için yerel Web Kullanıcı arabirimine gidin. Cihazın sevkiyat hazırlığı tamamlandığını görürsünüz. Cihaz hazırlığı tamamlandığında, cihazınızın durumu **Sevkiyat Için hazırlık**olarak görüntülenir.
+1. Cihazınız için yerel web web ui adresine gidin. Cihazın gemi hazırlıklarını tamamladığını göreceksiniz. Cihaz hazırlığı tamamlandığında, cihazınızın durumu **gönderiye hazır**olarak görüntülenir.
 
-    ![Cihaz sevk etmeye hazırlanıyor](media/data-box-portal-admin/ready-to-ship.png)
+    ![Cihaz sevke hazır](media/data-box-portal-admin/ready-to-ship.png)
 
-2. Data Box kopyalanan dosyaların listesini indirmek için **dosya listesini indir** ' e tıklayın.
+2. Veri **Kutunuza** kopyalanan dosyaların listesini indirmek için dosya indirme listesini tıklatın.
 
-    ![Dosya listesini Indir ' e tıklayın](media/data-box-portal-admin/download-list-of-files.png)
+    ![Dosyaları İndir meyesini tıklatın](media/data-box-portal-admin/download-list-of-files.png)
 
-3. Dosya Gezgini 'nde, cihaza bağlanmak için kullanılan protokole ve kullanılan Azure depolama türüne bağlı olarak ayrı dosya listesinin oluşturulduğunu görürsünüz.
+3. Dosya Gezgini'nde, aygıta bağlanmak için kullanılan protokole ve kullanılan Azure Depolama türüne bağlı olarak ayrı bir dosya listesi oluşturulduğunu görürsünüz.
 
-    ![Depolama türü ve bağlantı protokolü dosyaları](media/data-box-portal-admin/files-storage-connection-type.png)
+    ![Depolama türü ve bağlantı protokolü için dosyalar](media/data-box-portal-admin/files-storage-connection-type.png)
 
-   Aşağıdaki tabloda, dosya adları Azure depolama türü ve kullanılan bağlantı protokolü ile eşlenir.
+   Aşağıdaki tablo, dosya adlarını Azure Depolama türüve kullanılan bağlantı protokolüyle eşler.
 
-    |Dosya adı  |Azure depolama türü  |Kullanılan bağlantı protokolü |
+    |Dosya adı  |Azure Depolama türü  |Bağlantı protokolü kullanıldı |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob. txt     |Blok blobları         |SMB/NFS         |
-    |databoxe2etest_PageBlob. txt     |Sayfa blobları         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM. txt    |Azure Dosyaları         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM. txt     |Sayfa blobları         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM. txt    |Blok blobları         |REST         |
-    |mydbmdrg1_MDisk-BOM. txt    |Yönetilen Disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM. txt     |Yönetilen Disk         |SMB/NFS         |
+    |databoxe2etest_BlockBlob.txt     |Blok blobları         |Kobİ/NFS         |
+    |databoxe2etest_PageBlob.txt     |Sayfa blobları         |Kobİ/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Azure Dosyaları         |Kobİ/NFS         |
+    |databoxe2etest_PageBlock_Rest-BOM.txt     |Sayfa blobları         |REST        |
+    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blok blobları         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |Yönetilen Disk         |Kobİ/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Yönetilen Disk         |Kobİ/NFS         |
 
-Data Box Azure veri merkezine döndüğünde Azure Storage hesabına yüklenen dosyaları doğrulamak için bu listeyi kullanın. Örnek bir bildirim dosyası aşağıda gösterilmiştir.
+Veri Kutusu Azure veri merkezine döndükten sonra Azure Depolama hesabına yüklenen dosyaları doğrulamak için bu listeyi kullanırsınız. Örnek bir bildirim dosyası aşağıda gösterilmiştir.
 
 > [!NOTE]
-> Data Box Heavy, cihazdaki iki düğüme karşılık gelen dosya listesi (BOM dosyaları) kümesi vardır.
+> Veri Kutusu Ağır'da, aygıttaki iki düğüme karşılık gelen iki dosya listesi kümesi (BOM dosyaları) bulunur.
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -153,7 +153,7 @@ Data Box Azure veri merkezine döndüğünde Azure Storage hesabına yüklenen d
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-Bu dosya, Data Box veya Data Box Heavy kopyalanan tüm dosyaların listesini içerir. Bu dosyada, *crc64* değeri karşılık gelen dosya için oluşturulan sağlama toplamıyla ilgilidir.
+Bu dosya, Veri Kutusu veya Veri Kutusu Ağır kopyalanan tüm dosyaların listesini içerir. Bu dosyada, *crc64* değeri ilgili dosya için oluşturulan denetimler ile ilgilidir.
 
 ## <a name="view-available-capacity-of-the-device"></a>Cihazın kullanılabilir kapasitesini görüntüleme
 
@@ -166,18 +166,18 @@ Cihazın kullanılabilir ve kullanılan kapasitesini görüntülemek için cihaz
 
 ## <a name="skip-checksum-validation"></a>Sağlama toplamı doğrulamasını atlama
 
-Teslim için hazırlanırken, verileriniz için sağlama toplamı varsayılan olarak oluşturulur. Bazı ender durumlarda, veri türüne (küçük dosya boyutları) bağlı olarak performans yavaş olabilir. Bu gibi durumlarda sağlama toplamını atlayabilirsiniz.
+Gönderiye hazırlanırken, verileriniz için denetim ler oluşturulur. Bazı nadir durumlarda, veri türüne (küçük dosya boyutları) bağlı olarak performans yavaş olabilir. Bu gibi durumlarda sağlama toplamını atlayabilirsiniz.
 
 Performans ciddi şekilde etkilenmedikçe sağlama toplamını kesinlikle atlamamanızı öneririz.
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' a gidin.
+1. Cihazınızın yerel web ui'sinin sağ üst köşesinde **Ayarlar'a**gidin.
 
     ![Sağlama toplamını devre dışı bırakma](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. Sağlama toplamı doğrulamasını **Devre dışı bırakma**
-3. **Apply (Uygula)** düğmesine tıklayın.
+3. **Uygula**’ya tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal aracılığıyla Data Box ve Data Box Heavy yönetmeyi](data-box-portal-admin.md)öğrenin.
+- [Azure portalı üzerinden Veri Kutusu ve Veri Kutusu Ağır'ı nasıl yöneteceklerini](data-box-portal-admin.md)öğrenin.
 

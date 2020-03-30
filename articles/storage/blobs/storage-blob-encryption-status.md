@@ -1,6 +1,6 @@
 ---
-title: Blob 'un şifreleme durumunu denetleme-Azure depolama
-description: Belirli bir Blobun şifrelenip şifrelenmediğini denetlemek için Azure portal, PowerShell veya Azure CLı 'yı nasıl kullanacağınızı öğrenin. Blob şifrelenmemişse, blobu indirip yeniden karşıya yükleyerek şifrelemeyi zorlamak için AzCopy 'i nasıl kullanacağınızı öğrenin.
+title: Bir lekenin şifreleme durumunu kontrol edin - Azure Depolama
+description: Belirli bir lekenin şifrelenip şifrelenmediğini kontrol etmek için Azure portalı, PowerShell veya Azure CLI'yi nasıl kullanacağınızı öğrenin. Bir blob şifrelenmemişse, blob'u indirip yeniden yükleyerek şifrelemeyi zorlamak için AzCopy'yi nasıl kullanacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,36 +10,36 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707589"
 ---
-# <a name="check-the-encryption-status-of-a-blob"></a>Bir Blobun şifreleme durumunu denetleme
+# <a name="check-the-encryption-status-of-a-blob"></a>Bir lekenin şifreleme durumunu denetleme
 
-20 Ekim 2017 ' den sonra Azure depolama 'ya yazılan her Blok Blobu, ekleme Blobu veya Sayfa Blobu, Azure depolama şifrelemesi ile şifrelenir. Bu tarihten önce oluşturulan Bloblar, bir arka plan işlemi tarafından şifrelenmeye devam eder.
+20 Ekim 2017'den sonra Azure Depolama'ya yazılan her blok blob, ek blob veya sayfa blob'u Azure Depolama şifrelemesi ile şifrelenir. Bu tarihten önce oluşturulan blobs bir arka plan işlemi tarafından şifrelenmiş olmaya devam ediyor.
 
-Bu makalede, belirli bir Blobun şifrelenip şifrelenmediğini belirleme işlemi gösterilmektedir.
+Bu makalede, belirli bir blob şifrelenmiş olup olmadığını belirlemek için nasıl gösterilmektedir.
 
-## <a name="check-a-blobs-encryption-status"></a>Blobun şifreleme durumunu denetleme
+## <a name="check-a-blobs-encryption-status"></a>Blob'un şifreleme durumunu denetleme
 
-Blob 'un kod olmadan şifrelenip şifrelenmediğini anlamak için Azure portal, PowerShell veya Azure CLı kullanın.
+Bir blob'un kodsuz şifrelenip şifrelenmediğini belirlemek için Azure portalını, PowerShell'i veya Azure CLI'yi kullanın.
 
-### <a name="azure-portaltabportal"></a>[Azure portalda](#tab/portal)
+### <a name="azure-portal"></a>[Azure portalında](#tab/portal)
 
-Bir Blobun şifrelenip şifrelenmediğini denetlemek için Azure portal kullanmak için şu adımları izleyin:
+Bir blob'un şifrelenip şifrelenmediğini kontrol etmek için Azure portalını kullanmak için aşağıdaki adımları izleyin:
 
 1. Azure portalında depolama hesabınıza gidin.
-1. Hesaptaki kapsayıcıların listesine gitmek için **kapsayıcılar** ' ı seçin.
-1. Blobu bulun ve **genel bakış** sekmesini görüntüleyin.
-1. Sunucu tarafından **şifrelenen** özelliği görüntüleyin. **Doğru**ise, aşağıdaki görüntüde gösterildiği gibi BLOB şifrelenir. Blobun özelliklerinin, blob 'un oluşturulduğu tarih ve saati de içerdiğine dikkat edin.
+1. Hesaptaki kapsayıcılar listesine gitmek için **Kapsayıcılar'ı** seçin.
+1. Blob'u bulun ve **Genel Bakış** sekmesini görüntüleyin.
+1. Sunucu **Şifreli** özelliğini görüntüleyin. **True**ise , aşağıdaki resimde gösterildiği gibi, o zaman blob şifrelenir. Blob'un özelliklerinin, blob'un oluşturulduğu tarih ve saati de içerdiğine dikkat edin.
 
-    ![Azure portal 'da sunucu şifreli özelliğinin nasıl kontrol Leneceğini gösteren ekran görüntüsü](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
+    ![Azure portalında Sunucu Şifreli özelliğinin nasıl denetlenir olduğunu gösteren ekran görüntüsü](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
 
-### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+### <a name="powershell"></a>[Powershell](#tab/powershell)
 
-Blob 'un şifrelenip şifrelenmediğini denetlemek için PowerShell 'i kullanmak için blob 'un **ısserverşifrelenen** özelliğini kontrol edin. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Bir blob şifrelenmiş olup olmadığını kontrol etmek için PowerShell kullanmak için, blob **IsServerEncrypted** özelliğini kontrol edin. Açı parantezindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -50,15 +50,15 @@ $blob = Get-AzStorageBlob -Context $account.Context `
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-Blobun ne zaman oluşturulduğunu öğrenmek için **oluşturulan** özelliğin değerini kontrol edin:
+Blob'un ne zaman oluşturulduğunu belirlemek **için, Oluşturulan** özelliğin değerini denetleyin:
 
 ```powershell
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-### <a name="azure-clitabcli"></a>[Azure CLI](#tab/cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Blob 'un şifrelenip şifrelenmediğini denetlemek için Azure CLı 'yı kullanmak üzere blob 'un **ısserverşifrelenen** özelliğini denetleyin. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Bir blob'un şifrelenip şifrelenmediğini kontrol etmek için Azure CLI'yi kullanmak için blob'un **IsServerEncrypted** özelliğini denetleyin. Açı parantezindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
 az storage blob show \
@@ -68,13 +68,13 @@ az storage blob show \
     --query "properties.serverEncrypted"
 ```
 
-Blobun ne zaman oluşturulduğunu öğrenmek için **oluşturulan** özelliğin değerini denetleyin.
+Blob'un ne zaman oluşturulduğunu belirlemek **için, oluşturulan** özelliğin değerini denetleyin.
 
 ---
 
-## <a name="force-encryption-of-a-blob"></a>Blob şifrelemeyi zorlama
+## <a name="force-encryption-of-a-blob"></a>Bir lekenin kuvvet şifrelemesi
 
-20 Ekim 2017 ' den önce oluşturulan bir blob, arka plan işlemi tarafından henüz şifrelenmemişse, blobu indirip yeniden karşıya yükleyerek şifrelemeyi hemen gerçekleştirebilirsiniz. Bunu yapmanın basit bir yolu AzCopy kullanmaktır.
+20 Ekim 2017 tarihinden önce oluşturulmuş bir leke henüz arka plan işlemi tarafından şifrelenmemişse, blob'u indirip yeniden yükleyerek şifrelemeyi hemen oluşmaya zorlayabilirsiniz. Bunu yapmanın basit bir yolu AzCopy ile.
 
 AzCopy ile yerel dosya sisteminize bir blob indirmek için aşağıdaki sözdizimini kullanın:
 
@@ -85,7 +85,7 @@ Example:
 azcopy copy 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt' 'C:\temp\blob1.txt'
 ```
 
-Blob 'u AzCopy ile Azure depolama 'ya yeniden yüklemek için aşağıdaki sözdizimini kullanın:
+AzCopy ile blob'u Azure Depolama alanına yeniden yüklemek için aşağıdaki sözdizimini kullanın:
 
 ```
 azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'
@@ -94,8 +94,8 @@ Example:
 azcopy copy 'C:\temp\blob1.txt' 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt'
 ```
 
-Blob verilerini kopyalamak için AzCopy kullanma hakkında daha fazla bilgi için bkz. [AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-blobs.md).
+Blob verilerini kopyalamak için AzCopy kullanma hakkında daha fazla bilgi için [Bkz. AzCopy ve Blob depolama ile veri aktarımı.](../common/storage-use-azcopy-blobs.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bekleyen veriler için Azure depolama şifrelemesi](../common/storage-service-encryption.md)
+[Veriler için Azure Depolama şifrelemesi](../common/storage-service-encryption.md)

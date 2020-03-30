@@ -1,6 +1,6 @@
 ---
-title: AzCopy belgesi | Microsoft Docs
-description: Bu makale, AzCopy doc komutu için başvuru bilgileri sağlar.
+title: azcopy doc | Microsoft Dokümanlar
+description: Bu makalede, azcopy doc komutu için referans bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,21 +9,21 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d071517377053e8f4f22ad00966e2be688b0d486
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74029867"
 ---
 # <a name="azcopy-doc"></a>azcopy belge
 
-Markın biçimindeki araç için belgeler oluşturur.
+Araç için İşaretleme biçiminde belgeler oluşturur.
 
-## <a name="synopsis"></a>Özeti
+## <a name="synopsis"></a>Özet
 
-Markın biçimindeki araç için belgeler oluşturur ve bunları belirlenen konuma depolar.
+Araç için Markdown biçiminde belgeler oluşturur ve bunları belirlenen konumda saklar.
 
-Varsayılan olarak, dosyalar geçerli dizinin içinde ' Doc ' adlı bir klasörde depolanır.
+Varsayılan olarak, dosyalar geçerli dizinin içinde 'doc' adlı bir klasörde depolanır.
 
 ```azcopy
 azcopy doc [flags]
@@ -31,24 +31,24 @@ azcopy doc [flags]
 
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
-- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
-- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
+- [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve Blob depolama ile veri aktarımı](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarımı](storage-use-azcopy-files.md)
+- [AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Seçenekler
 
 |Seçenek|Açıklama|
 |--|--|
-|-h,--yardım|Belge komutu için yardım içeriğini gösterir.|
+|-h, --yardım|Doküman komutu için yardım içeriğini gösterir.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
 |Seçenek|Açıklama|
 |---|---|
-|--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
-|--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
+|--kap-mbps uint32|Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.|
+|--çıkış türü dize|Komutçıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer "metin"dir.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

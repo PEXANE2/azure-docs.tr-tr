@@ -1,51 +1,51 @@
 ---
-title: Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
-description: Bu belge, TimerTrigger işlevinde verilen yapılandırmaya göre düzenli olarak çalışacak TrackAvailability () ile bir Azure Işlevi oluşturmayı kapsar. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayabilir ve uyarılabileceğiniz Application Insights kaynağına gönderilir. Özelleştirilmiş testler, Portal Kullanıcı arabirimini kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET 'iniz içindeki bir uygulamayı izlemenizi, uç nokta adresini değiştirmenizi veya bölgenizde yoksa bir kullanılabilirlik testi oluşturmanızı sağlar.
+title: Azure İşlevlerini kullanarak özel kullanılabilirlik testleri oluşturun ve çalıştırın
+description: Bu doküman, TimerTrigger işlevinde verilen yapılandırmaya göre düzenli aralıklarla çalışacak TrackAvailability() ile bir Azure İşlevi'nin nasıl oluşturulacağını kapsayacaktır. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayıp uyarabileceğiniz Application Insights kaynağınıza gönderilir. Özelleştirilmiş testler, portal Kullanıcı Arabirimi'ni kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET'inizin içindeki bir uygulamayı izlemenizi, bitiş noktası adresini değiştirmenizi veya bölgenizde kullanılamıyorsa kullanılabilirlik testi oluşturmanıza olanak tanır.
 ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 11/22/2019
 ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665808"
 ---
-# <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
+# <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure İşlevlerini kullanarak özel kullanılabilirlik testleri oluşturun ve çalıştırın
 
-Bu makalede, kendi iş mantığınızla TimerTrigger işlevinde verilen yapılandırmaya göre düzenli aralıklarla çalışacak TrackAvailability () ile bir Azure Işlevi oluşturma işlemi ele alınacaktır. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayabilir ve uyarılabileceğiniz Application Insights kaynağına gönderilir. Bu, portalda [kullanılabilirlik izleme](../../azure-monitor/app/monitor-web-app-availability.md) aracılığıyla yapabileceklerinizle benzer özelleştirilmiş testler oluşturmanıza olanak sağlar. Özelleştirilmiş testler, Portal Kullanıcı arabirimini kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET 'iniz içindeki bir uygulamayı izlemenizi, uç nokta adresini değiştirmenizi veya bu özellik bölgenizde mevcut olmasa bile bir kullanılabilirlik testi oluşturmanızı sağlar.
+Bu makalede, kendi iş mantığınızla TimerTrigger işlevinde verilen yapılandırmaya göre periyodik olarak çalışacak TrackAvailability() ile bir Azure İşlevi nasıl oluşturulacağı ele alınacaktır. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayıp uyarabileceğiniz Application Insights kaynağınıza gönderilir. Bu, portaldaki [Kullanılabilirlik İzleme](../../azure-monitor/app/monitor-web-app-availability.md) yoluyla yapabileceklerine benzer özelleştirilmiş testler oluşturmanıza olanak tanır. Özelleştirilmiş testler, portal Kullanıcı Arabirimi'ni kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET'inizin içindeki bir uygulamayı izlemenizi, bitiş noktası adresini değiştirmenizi veya bu özellik bölgenizde kullanılamıyorsa bile kullanılabilirlik testi oluşturmanıza olanak tanır.
 
 > [!NOTE]
-> Bu örnek, yalnızca TrackAvailability () API çağrısının bir Azure Işlevi içinde nasıl çalıştığını gösteren bir mekanizması göstermek için tasarlanmıştır. Bunu tam işlevsel bir kullanılabilirlik testine dönüştürmek için gereken temel HTTP test kodu/iş mantığını yazma değil. Bu örnekte, varsayılan olarak, her zaman bir hata üretecek bir kullanılabilirlik testi oluşturacaksınız.
+> Bu örnek, yalnızca TrackAvailability() API çağrısının bir Azure İşlevi içinde nasıl çalıştığını niçin gösterdiğinigöstermek için tasarlanmıştır. Bunu tam işlevsel bir kullanılabilirlik testine dönüştürmek için gerekli olan temel HTTP Test kodu/iş mantığının nasıl yazılamayacağı değil. Varsayılan olarak, bu örnekte yürürseniz, her zaman bir hata oluşturacak bir kullanılabilirlik testi oluşturursunuz.
 
-## <a name="create-timer-triggered-function"></a>Süreölçer tetikleme işlevi oluştur
+## <a name="create-timer-triggered-function"></a>Zamanlayıcı tetikleme işlevi oluşturma
 
-- Bir Application Insights kaynağınız varsa:
-    - Varsayılan olarak Azure Işlevleri bir Application Insights kaynağı oluşturur, ancak önceden oluşturulmuş kaynaklarınızın birini kullanmak istiyorsanız oluşturma sırasında bunu belirtmeniz gerekir.
-    - Aşağıdaki seçimlerle [bir Azure işlevleri kaynağı oluşturma ve Zamanlayıcı ile tetiklenen işlev](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (temizlemeden önce durdurma) hakkındaki yönergeleri izleyin.
-        -  Üst taraftaki **izleme** sekmesini seçin.
+- Uygulama Öngörüleri Kaynağınız varsa:
+    - Varsayılan olarak Azure İşlevleri bir Uygulama Öngörüleri kaynağı oluşturur, ancak zaten oluşturulmuş kaynaklarınızdan birini kullanmak isterseniz, oluşturma sırasında bunu belirtmeniz gerekir.
+    - Aşağıdaki seçeneklerle [bir Azure İşlevleri kaynağı nın ve Timer tetikleme işlevinin](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (temizlemeden önce dur) nasıl oluşturulacağına ilişkin yönergeleri izleyin.
+        -  En üstteki **İzleme** sekmesini seçin.
 
-            ![ Kendi App Insights kaynağınız ile bir Azure Işlevleri uygulaması oluşturma](media/availability-azure-functions/create-function-app.png)
+            ![ Kendi App Insights kaynağınızla bir Azure İşlevler uygulaması oluşturun](media/availability-azure-functions/create-function-app.png)
 
-        - Application Insights açılan kutusunu seçin ve kaynağınızın adını yazın veya seçin.
+        - Application Insights açılır kutusunu seçin ve kaynağınızın adını yazın veya yazın.
 
-            ![Mevcut Application Insights kaynağı seçiliyor](media/availability-azure-functions/app-insights-resource.png)
+            ![Varolan Application Insights kaynağını seçme](media/availability-azure-functions/app-insights-resource.png)
 
-        - **Gözden geçir + oluştur** ' u seçin
-- Zamanlayıcı tarafından tetiklenen işleviniz için henüz oluşturulmuş bir Application Insights kaynağınız yoksa:
-    - Varsayılan olarak, Azure Işlevleri uygulamanızı oluştururken sizin için bir Application Insights kaynağı oluşturulur.
-    - [Azure işlevleri kaynağı oluşturma ve Zamanlayıcı tarafından tetiklenen işlev](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (temizlemeden önce durdurma) hakkındaki yönergeleri izleyin.
+        - **Gözden Geçir ' i** seçin + oluştur
+- Zamanlayıcı tetikleme işleviniz için henüz oluşturulmuş bir Uygulama Öngörüleri Kaynağınız yoksa:
+    - Varsayılan olarak Azure İşlevler uygulamanızı oluştururken sizin için bir Uygulama Öngörüleri kaynağı oluşturur.
+    - [Azure İşlevleri kaynağının ve Timer tetikleme işlevinin](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) nasıl oluşturulacağına ilişkin yönergeleri izleyin (temizlemeden önce durdurun).
 
 ## <a name="sample-code"></a>Örnek kod
 
-Aşağıdaki kodu Run. CSX dosyasına kopyalayın (Bu, önceden var olan kodun yerini alır). Bunu yapmak için Azure Işlevleri uygulamanıza gidin ve soldaki Zamanlayıcı tetikleyicisi işlevinizi seçin.
+Aşağıdaki kodu run.csx dosyasına kopyalayın (bu, önceden varolan kodun yerini alır). Bunu yapmak için Azure İşlevler uygulamanıza gidin ve soldaki zamanlayıcı tetikleyici işlevinizi seçin.
 
 >[!div class="mx-imgBorder"]
->![Azure işlevinin Run. CSX Azure portal](media/availability-azure-functions/runcsx.png)
+>![Azure portalında Azure işlevinin run.csx'i](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Kullanacağınız uç nokta adresi için: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Kaynağınız Azure Kamu veya Azure Çin gibi bir bölgede yer almadığı takdirde, bu durumda [varsayılan uç noktaları geçersiz kılma](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) ve bölgeniz Için uygun telemetri kanalı uç noktasını seçme konusunda bu makaleye başvurun.
+> Kullanacağınız Bitiş Noktası Adresi `EndpointAddress= https://dc.services.visualstudio.com/v2/track`için: . Kaynağınız Azure Kamu Veya Azure Çin gibi bir bölgede bulunmadığı sürece, bu durumda varsayılan uç noktaları geçersiz kılma konusunda bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) başvurun ve bölgeniz için uygun Telemetri Kanalı bitiş noktasını seçin.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -127,7 +127,7 @@ public async static Task Run(TimerInfo myTimer, ILogger log)
 
 ```
 
-Dosya görüntüle ' nin altında, **Ekle**' yi seçin. Aşağıdaki yapılandırmaya sahip New **. proj** dosyasını çağırın.
+Görünüm dosyalarının sağ tarafında **Ekle'yi**seçin. Aşağıdaki yapılandırma ile yeni dosya **işlevi.proj** arayın.
 
 ```C#
 <Project Sdk="Microsoft.NET.Sdk">
@@ -142,9 +142,9 @@ Dosya görüntüle ' nin altında, **Ekle**' yi seçin. Aşağıdaki yapılandı
 ```
 
 >[!div class="mx-imgBorder"]
->sağ Seç ' in ![ekleyin. Dosyayı function. proj](media/availability-azure-functions/addfile.png) olarak adlandırın
+>![Sağdaki seç, ekleyin. Dosya işlevini adlandırın.proj](media/availability-azure-functions/addfile.png)
 
-Dosya görüntüle ' nin altında, **Ekle**' yi seçin. Aşağıdaki yapılandırmayla **Runkullanılabilirliği Bilitytest. CSX** adlı yeni dosyayı çağırın.
+Görünüm dosyalarının sağ tarafında **Ekle'yi**seçin. Aşağıdaki yapılandırma ile yeni dosya **runAvailabilityTest.csx'i** arayın.
 
 ```C#
 public async static Task RunAvailbiltyTestAsync(ILogger log)
@@ -155,34 +155,34 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ```
 
-## <a name="check-availability"></a>Kullanılabilirliği Denetle
+## <a name="check-availability"></a>Kullanılabilirliği kontrol edin
 
-Her şeyin çalıştığından emin olmak için Application Insights kaynağınızın kullanılabilirlik sekmesinde grafiğe bakabilirsiniz.
+Her şeyin çalıştığından emin olmak için, Application Insights kaynağınızın Kullanılabilirlik sekmesindeki grafiğe bakabilirsiniz.
 
 > [!NOTE]
-> Runkullanılabilirliği Bilitytest. CSX içinde kendi iş mantığınızı uyguladıysanız, aşağıdaki ekran görüntülerinde olduğu gibi başarılı sonuçları görürsünüz. Bu durumda, başarısız sonuçları görürsünüz.
+> RunAvailabilityTest.csx'te kendi iş mantığınızı uyguladıysanız, aşağıdaki ekran görüntülerinde olduğu gibi başarılı sonuçlar görürsünüz, eğer yapmadıysanız başarısız sonuçlar görürsünüz.
 
 >[!div class="mx-imgBorder"]
->başarılı sonuçlarla kullanılabilirlik sekmesine ![](media/availability-azure-functions/availtab.png)
+>![Başarılı sonuçlarla kullanılabilirlik sekmesi](media/availability-azure-functions/availtab.png)
 
-Azure Işlevleri 'ni kullanarak testinizi ayarlarken, kullanılabilirlik sekmesinde **Test Ekle** ' yi kullanmaktan farklı olarak, testinizin adının görünmediğine ve bununla etkileşime giremeyeceksiniz. Sonuçlar görselleştirilir, ancak Portal aracılığıyla bir kullanılabilirlik testi oluştururken alacağınız ayrıntılı görünüm yerine bir Özet görünümü alırsınız.
+Testinizi Azure İşlevlerini kullanarak ayarladığınızda, Kullanılabilirlik sekmesinde **Test Ekle'yi** kullanmanın aksine testinizin adının görünmeyeceğini ve testle etkileşimkuramadığınızı fark edeceksiniz. Sonuçlar görselleştirilmiştir, ancak portal üzerinden bir kullanılabilirlik testi oluşturduğunuzda aldığınız aynı ayrıntılı görünüm yerine özet bir görünüm elde edersiniz.
 
-Uçtan uca işlem ayrıntılarını görmek için detaya git altında **başarılı** veya **başarısız** ' ı seçin ve ardından bir örnek seçin. Ayrıca, grafikteki bir veri noktasını seçerek uçtan uca işlem ayrıntılarına de ulaşabilirsiniz.
-
->[!div class="mx-imgBorder"]
->örnek bir kullanılabilirlik testi seçin ![](media/availability-azure-functions/sample.png)
+Uçuça işlem ayrıntılarını görmek için, alıştırma altında **Başarılı** veya **Başarısız'ı** seçin ve ardından bir örnek seçin. Ayrıca grafikte bir veri noktası seçerek uçuca işlem ayrıntılarına da ulaşabilirsiniz.
 
 >[!div class="mx-imgBorder"]
->Uçtan uca işlem ayrıntılarını ![](media/availability-azure-functions/end-to-end.png)
-
-Her şeyi olduğu gibi çalıştırdıysanız (iş mantığı eklemeden), testin başarısız olduğunu görürsünüz.
-
-## <a name="query-in-logs-analytics"></a>Günlüklerde sorgulama (Analiz)
-
-Kullanılabilirlik sonuçlarını, bağımlılıklarını ve daha fazlasını görüntülemek için günlükleri (Analiz) kullanabilirsiniz. Günlükler hakkında daha fazla bilgi edinmek için [günlük sorgusuna genel bakış](../../azure-monitor/log-query/log-query-overview.md)sayfasını ziyaret edin.
+>![Örnek kullanılabilirlik testi seçin](media/availability-azure-functions/sample.png)
 
 >[!div class="mx-imgBorder"]
->![kullanılabilirlik sonuçları](media/availability-azure-functions/availabilityresults.png)
+>![Uçuca işlem ayrıntıları](media/availability-azure-functions/end-to-end.png)
+
+Her şeyi olduğu gibi çalıştırırsanız (iş mantığı eklemeden), o zaman testin başarısız olduğunu görürsünüz.
+
+## <a name="query-in-logs-analytics"></a>Günlüklerde Sorgula (Analytics)
+
+Kullanılabilirlik sonuçlarını, bağımlılıkları ve daha fazlasını görüntülemek için Günlükler'i (analitik) kullanabilirsiniz. Günlükler hakkında daha fazla bilgi edinmek için [Günlük sorgusuna genel bakışı](../../azure-monitor/log-query/log-query-overview.md)ziyaret edin.
+
+>[!div class="mx-imgBorder"]
+>![Kullanılabilirlik sonuçları](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
 >![Bağımlılıklar](media/availability-azure-functions/dependencies.png)

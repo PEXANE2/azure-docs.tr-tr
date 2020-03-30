@@ -1,6 +1,6 @@
 ---
-title: IoT çözümü özelleştirme Kılavuzu için Azure Güvenlik Merkezi | Microsoft Docs
-description: Bu kılavuzda, IoT çözümü için Azure Güvenlik Merkezi 'nde ayarların nasıl özelleştirileceği açıklanmaktadır.
+title: IoT çözüm özelleştirme kılavuzu için Azure Güvenlik Merkezi| Microsoft Dokümanlar
+description: Bu şekilde, Azure Güvenlik Merkezi'ndeki IoT çözümünüzün ayarlarını nasıl özelleştireceğimize kılavuzluk edebilirsiniz.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,43 +16,43 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.openlocfilehash: c385be0c21e7a61f66eb274ec293f4aabd4208ba
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458894"
 ---
-# <a name="customize-your-azure-security-center-for-iot-solution"></a>IoT çözümü için Azure Güvenlik Merkezi 'Ni özelleştirme 
+# <a name="customize-your-azure-security-center-for-iot-solution"></a>IoT çözümü için Azure Güvenlik Merkezinizi özelleştirin 
 
-Bu kılavuzda, IoT için Azure Güvenlik Merkezi 'nde farklı Ayarları özelleştirmeyi öğrenin.  
+Bu kılavuzda, IoT için Azure Güvenlik Merkezi'nde farklı ayarları nasıl özelleştireceğimiz öğrenin.  
 
 > [!div class="checklist"]
 > * Çözüm önerilerini yapılandırma 
-> * Ayarları Değiştir 
+> * Ayarları değiştirme 
 
-## <a name="change-settings"></a>Ayarları Değiştir
+## <a name="change-settings"></a>Ayarları değiştirme
 
-IoT için Azure Güvenlik Merkezi 'Ni yönetme ayarı:
+IoT ayarını için Azure Güvenlik Merkezi'nizi yönetin:
 
-IoT Hub, sol üst köşedeki güvenlik genel bakış dikey penceresine gidin, bkz. "Ayarlar", IoT ayarları için Azure Güvenlik Merkezi 'nizi yapılandırmak Için şunları yapın:
+IoT Hub'ınızda sol üst köşedeki güvenliğe genel bakış bıçağına gidin, IoT ayarları için Azure Güvenlik Merkezinizi yapılandırmak için "ayarlar"a bakın, aşağıdakileri yapın:
 
-1. **IoT Hub** Azure Portal açın. 
-1. Sol taraftaki menüden **güvenlik**altında **genel bakış**' ı seçin ve açın.
-1. Ayarlar ' ın altında, değiştirmek istediğiniz çözüm ayarını seçin.   
-1. Ayar Değişiklerinizi kaydetmek için her zaman herhangi bir ayar ekranının en üstünde bulunan **Kaydet** ' e tıklaması gerektiğini unutmayın. 
+1. Azure portalında **IoT Hub'ınızı** açın. 
+1. **Güvenlik**altındaki sol menüden **Genel Bakış'ı**seçin ve açın.
+1. Ayarlar'ın altında, değiştirmek istediğiniz çözüm ayarını seçin.   
+1. Ayar değişikliklerinizi kaydetmek için herhangi bir ayar ekranının üst kısmında **kaydet'i** her zaman tıklatmayı unutmayın. 
 
 ## <a name="configure-solution-recommendations"></a>Çözüm önerilerini yapılandırma
 
-Azure Güvenlik Merkezi 'ni IoT çözüm önerileri için yapılandırmak için aşağıdakileri yapın:
+IoT çözüm önerileri için Azure Güvenlik Merkezinizi yapılandırmak için aşağıdakileri yapın:
 
-1. **IoT Hub** Azure Portal açın. 
-1. Sol taraftaki menüden **güvenlik** altında **genel bakış** ' ı seçin ve açın.
-1. Ayarlar ' ın altında, sol menüden **Önerilen yapılandırma** ' yı seçin. 
-1. Kuruluşunuz ve iş akışlarınızla ilgili çözüm önerilerini devre dışı bırakın/etkinleştirin. 
-1. Seçimlerinizi kaydetmek için ekranın üst kısmındaki **Kaydet** ' i seçin. 
+1. Azure portalında **IoT Hub'ınızı** açın. 
+1. Sol menüde **Güvenlik** altında **Genel Bakış'ı** seçin ve açın.
+1. Ayarlar'ın altında, sol menüden **Önerilen Yapılandırma'yı** seçin. 
+1. Kuruluşunuz ve iş akışlarınızla ilgili çözüm önerilerini devre dışı kılabilir/etkinleştirin. 
+1. Seçimlerinizi kaydetmek için ekranın üst kısmında **Kaydet'i** seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IoT hizmeti için Azure Güvenlik Merkezi ['Ne genel bakış](overview.md)
-- [Güvenlik verilerinize erişme](how-to-security-data-access.md) hakkında bilgi edinin
-- [Cihazı araştırma](how-to-investigate-device.md) hakkında daha fazla bilgi edinin
+- IoT hizmeti için Azure Güvenlik Merkezi [Genel Bakış](overview.md)
+- Güvenlik verilerinize nasıl [erişilenleri](how-to-security-data-access.md) öğrenin
+- [Bir aygıtı araştırma](how-to-investigate-device.md) hakkında daha fazla bilgi edinin

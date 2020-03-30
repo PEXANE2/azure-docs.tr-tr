@@ -1,6 +1,6 @@
 ---
-title: SharePoint kullanıcı profili hizmetini Azure AD DS etkinleştirme | Microsoft Docs
-description: Azure Active Directory Domain Services yönetilen bir etki alanını SharePoint Server için profil eşitlemesini destekleyecek şekilde yapılandırma hakkında bilgi edinin
+title: Azure AD DS ile SharePoint Kullanıcı Profili hizmetini etkinleştirin | Microsoft Dokümanlar
+description: SharePoint Server için profil eşitlemeyi desteklemek için Azure Active Directory Etki Alanı Hizmetleri yönetilen etki alanını nasıl yapılandırabileceğinizi öğrenin
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613858"
 ---
-# <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server için Kullanıcı profili eşitlemesini desteklemek üzere Azure Active Directory Domain Services yapılandırma
+# <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server için kullanıcı profili eşitlemesi desteklemek için Azure Active Directory Etki Alanı Hizmetlerini yapılandırın
 
-SharePoint Server, Kullanıcı profillerini eşitlemeye yönelik bir hizmet içerir. Bu özellik, Kullanıcı profillerinin merkezi bir konumda depolanmasına ve birden çok SharePoint sitesi ve çiftlerine erişilebilir olmasını sağlar. SharePoint Server Kullanıcı profili hizmetini yapılandırmak için, Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanında uygun izinlere sahip olmanız gerekir. Daha fazla bilgi için bkz. [SharePoint Server 'da Kullanıcı profili eşitleme](https://technet.microsoft.com/library/hh296982.aspx).
+SharePoint Server, kullanıcı profillerini eşitlemek için bir hizmet içerir. Bu özellik, kullanıcı profillerinin merkezi bir konumda depolanmasına ve birden çok SharePoint sitesi ve çiftliğinde erişilebilir olmasını sağlar. SharePoint Server kullanıcı profili hizmetini yapılandırmak için, uygun izinlerin Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS) yönetilen etki alanında verilmesi gerekir. Daha fazla bilgi için [SharePoint Server'da kullanıcı profili eşitleme](https://technet.microsoft.com/library/hh296982.aspx)konusuna bakın.
 
-Bu makalede, Azure AD DS 'nin SharePoint Server Kullanıcı profili eşitleme hizmeti 'ne izin vermek üzere nasıl yapılandırılacağı gösterilmektedir.
+Bu makalede, SharePoint Server kullanıcı profili eşitleme hizmetine izin verecek şekilde Azure AD DS'yi nasıl yapılandırabileceğiniz gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
+Bu makaleyi tamamlamak için aşağıdaki kaynaklara ve ayrıcalıklara ihtiyacınız vardır:
 
 * Etkin bir Azure aboneliği.
-    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
-    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
-* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, [Azure Active Directory Domain Services bir örnek oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
-* Azure AD DS yönetilen etki alanına katılmış bir Windows Server Yönetim sanal makinesi.
-    * Gerekirse, [bir yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticiyi izleyin.
-* Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Aboneliğinizle ilişkili bir Azure Etkin Dizin kiracısı, şirket içi bir dizini veya yalnızca bulut dizininizle eşitlenir.
+    * Gerekirse, [bir Azure Etkin Dizin kiracısı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin.][associate-azure-ad-tenant]
+* Azure Etkin Dizin Etki Alanı Hizmetleri, Azure AD kiracınızda etkin leştirilmiş ve yapılandırılan bir etki alanı yönetildi.
+    * Gerekirse, bir Azure [Active Directory Etki Alanı Hizmetleri örneği oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi tamamlayın.
+* Azure AD DS yönetilen etki alanına katılan bir Windows Server yönetimi VM'si.
+    * Gerekirse, bir yönetim [VM oluşturmak][tutorial-create-management-vm]için öğretici tamamlayın.
+* Azure AD kiracınızda *Azure AD DC yöneticileri* grubunun üyesi olan bir kullanıcı hesabı.
 * Kullanıcı profili eşitleme hizmeti için bir SharePoint hizmet hesabı.
-    * Gerekirse, bkz. [SharePoint Server 'da yönetim ve hizmet hesaplarını planlayın][sharepoint-service-account].
+    * Gerekirse, [SharePoint Server'daki yönetim ve hizmet hesapları için Plan'a][sharepoint-service-account]bakın.
 
 ## <a name="service-accounts-overview"></a>Hizmet hesaplarına genel bakış
 
-Azure AD DS yönetilen bir etki alanında, *Kullanıcılar* kuruluş BIRIMININ (OU) bir parçası olarak **AAD DC hizmet hesapları** adlı bir güvenlik grubu bulunur. Bu güvenlik grubunun üyelerine aşağıdaki ayrıcalıklar atanır:
+Azure AD DS yönetilen etki alanında, *Kullanıcılar* kuruluş biriminin (OU) bir parçası olarak **AAD DC Hizmet Hesapları** adında bir güvenlik grubu bulunur. Bu güvenlik grubunun üyelerine aşağıdaki ayrıcalıklar verilir:
 
-- Kök do 'da **Dizin değişikliklerini çoğaltma** ayrıcalığı.
-- *Yapılandırma* adlandırma bağlamında (`cn=configuration` kapsayıcısı) **Dizin değişikliklerini çoğaltma** ayrıcalığı.
+- DSE kökünde Dizin Değişiklikleri ayrıcalığını **çoğaltın.**
+- *Yapılandırma* adlandırma bağlamında`cn=configuration` **Dizin Değişiklikleri ayrıcalığını (kapsayıcı) çoğaltma.**
 
-**AAD DC hizmet hesapları** güvenlik grubu, yerleşik grup **öncesi Windows 2000 ile uyumlu erişim**'in de bir üyesidir.
+**AAD DC Service Accounts** güvenlik grubu da yerleşik grup **Pre-Windows 2000 Uyumlu Erişim**üyesidir.
 
-Bu güvenlik grubuna eklendiğinde, SharePoint Server Kullanıcı profili eşitleme hizmeti için hizmet hesabına, doğru çalışmak için gerekli ayrıcalıklar verilir.
+Bu güvenlik grubuna eklendiğinde, SharePoint Server kullanıcı profili eşitleme hizmetinin hizmet hesabına doğru çalışması için gerekli ayrıcalıklar verilir.
 
-## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>SharePoint Server Kullanıcı profili eşitleme desteğini etkinleştir
+## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>SharePoint Server kullanıcı profili eşitlemi için desteği etkinleştirme
 
-SharePoint Server hizmet hesabı, değişiklikleri dizine çoğaltmak ve SharePoint Server Kullanıcı profili eşitlemesini doğru şekilde sağlamak için yeterli ayrıcalıklara sahip olmalıdır. Bu ayrıcalıkları sağlamak için SharePoint kullanıcı profili eşitleme için kullanılan hizmet hesabını **AAD DC hizmet hesapları** grubuna ekleyin.
+SharePoint Server'ın hizmet hesabı, dizindeki değişiklikleri çoğaltmak ve SharePoint Server kullanıcı profilinin doğru çalışmasına izin vermek için yeterli ayrıcalıklara ihtiyaç duyar. Bu ayrıcalıkları sağlamak için, SharePoint kullanıcı profili eşitlemesi için kullanılan hizmet hesabını **AAD DC Hizmet Hesapları** grubuna ekleyin.
 
-Azure AD DS Yönetim sanal makinenizde aşağıdaki adımları izleyin:
+Azure AD DS yönetimi VM'nizden aşağıdaki adımları tamamlayın:
 
 > [!NOTE]
-> Azure AD DS yönetilen bir etki alanında Grup üyeliğini düzenlemek için *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabında oturum açmış olmanız gerekir.
+> Azure AD DS yönetilen bir etki alanında grup üyeliğini yeniden oluşturmak için, *AAD DC Yöneticileri* grubunun üyesi bir kullanıcı hesabında oturum açmanız gerekir.
 
-1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
-1. Grup üyeliğini yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
-1. Sol bölmede, *aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin. Mevcut OU 'ların ve kaynakların bir listesi gösterilir.
-1. **Kullanıcılar** OU 'sunu seçin, ardından *AAD DC hizmet hesapları* güvenlik grubunu seçin.
-1. **Üyeler**' i ve ardından **Ekle...** öğesini seçin.
-1. SharePoint hizmet hesabının adını girip **Tamam**' ı seçin. Aşağıdaki örnekte, SharePoint hizmet hesabının adı *SPAdmin*şeklindedir:
+1. Başlangıç ekranından **Yönetim Araçları'nı**seçin. Kullanılabilir yönetim araçlarının [listesi, bir yönetim VM oluşturmak][tutorial-create-management-vm]için öğreticiyüklü olarak gösterilmiştir.
+1. Grup üyeliğini yönetmek için, yönetim araçları listesinden **Active Directory Administrative Center'ı** seçin.
+1. Sol bölmede, *aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin. Varolan İŞ ve kaynakların listesi gösterilir.
+1. **Kullanıcılar** OU'yu seçin ve ardından *AAD DC Hizmet Hesapları* güvenlik grubunu seçin.
+1. **Üye**seçin, sonra **Ekle'yi seçin... seçeneğini belirleyin.**
+1. SharePoint hizmet hesabının adını girin ve **ardından Tamam'ı**seçin. Aşağıdaki örnekte, SharePoint hizmet hesabı *spadmin*adlı:
 
-    ![SharePoint hizmet hesabını AAD DC hizmet hesapları güvenlik grubuna ekleyin](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
+    ![SharePoint hizmet hesabını AAD DC Hizmet Hesapları güvenlik grubuna ekleme](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [SharePoint Server 'da profil eşitleme için Active Directory Domain Services Izinleri verme](https://technet.microsoft.com/library/hh296982.aspx)
+Daha fazla bilgi için [SharePoint Server'da profil eşitleme için Grant Active Directory Etki Alanı Hizmetleri izinlerine](https://technet.microsoft.com/library/hh296982.aspx) bakın
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

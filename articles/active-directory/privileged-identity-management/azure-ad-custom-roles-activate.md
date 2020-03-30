@@ -1,6 +1,6 @@
 ---
-title: Azure AD özel rolünü etkinleştirin-Privileged Identity Management (PıM)
-description: Atama Privileged Identity Management için Azure AD özel rolünü etkinleştirme (PıM)
+title: Azure AD özel rolünü etkinleştirme - Ayrıcalıklı Kimlik Yönetimi (PIM)
+description: Atama Ayrıcalıklı Kimlik Yönetimi (PIM) için Azure AD özel rolü etkinleştirme
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,54 +17,54 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbd60d1311bd84adb303a0d329ab4e42f4d61525
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77498726"
 ---
-# <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management bir Azure AD özel rolünü etkinleştirin
+# <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Ayrıcalıklı Kimlik Yönetimi'nde Azure AD özel rolünü etkinleştirme
 
-Azure Active Directory (Azure AD) Privileged Identity Management artık kimlik ve erişim yönetimi Yönetim deneyiminde uygulama yönetimi için oluşturulan özel rollere tam zamanında ve zamana bağlanacak Atamayı desteklemektedir. Azure AD 'de uygulama yönetimi için özel roller oluşturma hakkında daha fazla bilgi için, bkz. [Azure Active Directory (Önizleme) Içinde özel yönetici rolleri](../users-groups-roles/roles-custom-overview.md).
+Azure Etkin Dizininde (Azure AD)'de Ayrıcalıklı Kimlik Yönetimi, artık Kimlik ve Erişim Yönetimi yönetim deneyiminde Uygulama Yönetimi için oluşturulan özel rollere tam zamanında ve zamana bağlı atamayı destekler. Azure AD'de uygulama yönetimini devretmek için özel roller oluşturma hakkında daha fazla bilgi için Azure [Etkin Dizini'ndeki (önizleme) Özel yönetici rollerine](../users-groups-roles/roles-custom-overview.md)bakın.
 
 > [!NOTE]
-> Azure AD özel rolleri, önizleme sırasında yerleşik Dizin rolleriyle tümleştirilmiştir. Yetenek genel kullanıma sunulduğunda, rol yönetimi yerleşik roller deneyiminde gerçekleşmeyecektir. Aşağıdaki başlığı görürseniz, bu rollerin [yerleşik roller deneyiminde](pim-how-to-activate-role.md) yönetilmesi gerekir ve bu makale uygulanmaz:
+> Azure AD özel rolleri önizleme sırasında yerleşik dizin rolleri ile tümleşik değildir. Yetenek genel olarak kullanılabilir olduğunda, rol yönetimi yerleşik roller deneyiminde yer alacaktır. Aşağıdaki banner'ı görürseniz, bu roller [yerleşik roller deneyiminde](pim-how-to-activate-role.md) yönetilmelidir ve bu makale geçerli değildir:
 >
 > [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-## <a name="activate-a-role"></a>Rol etkinleştirme
+## <a name="activate-a-role"></a>Bir rolü etkinleştirme
 
-Bir Azure AD özel rolünü etkinleştirmeniz gerektiğinde, Privileged Identity Management ' de rollerim gezinti seçeneğini belirleyerek etkinleştirme isteyin.
+Azure AD özel rolünü etkinleştirmeniz gerektiğinde, Ayrıcalıklı Kimlik Yönetimi'nde Rollerim gezinti seçeneğini seçerek etkinleştirme isteğinde bulunun.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
-1. Azure AD [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Azure AD [Ayrıcalıklı Kimlik Yönetimi'ni](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)açın.
 
-1. Uygun Azure AD özel rol atamalarınızın listesini görmek için **Azure AD özel rolleri** ' ni seçin.
+1. Uygun Azure AD özel rol atamalarınızın listesini görmek için **Azure AD özel rollerini** seçin.
 
-   ![Uygun Azure AD özel rol atamalarının listesini görüntüleyin](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
+   ![Uygun Azure AD özel rol atamaları listesine bakın](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
 
 > [!Note] 
->  Rol atamadan önce bir rol oluşturmanız/yapılandırmanız gerekir. AAD özel rollerini yapılandırma hakkında daha fazla bilgi için bkz. [buraya] (https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure)
+>  Bir rol atamadan önce, bir rol oluşturmanız/yapılandırmanız gerekir. AAD Özel Rollerin yapılandırılması ile ilgili daha fazla bilgi için bkz.https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure)
 
-1. **Azure AD özel roller (Önizleme)** sayfasında, ihtiyacınız olan atamayı bulun.
-1. **Etkinleştir** sayfasını açmak için **rolünüzü etkinleştir** ' i seçin.
-1. Rolünüz çok faktörlü kimlik doğrulaması gerektiriyorsa, **devam etmeden önce kimliğinizi doğrula**' yı seçin. Oturum başına yalnızca bir kez kimlik doğrulaması yapmanız gerekir.
-1. **Kimliğimi doğrula** ' yı seçin ve ek güvenlik doğrulaması sağlamak için yönergeleri izleyin.
-1. Özel bir uygulama kapsamı belirtmek için **kapsam** ' ı seçerek filtre bölmesini açın. Gerekli en düşük kapsamda bir role erişim istemeniz gerekir. Atamanız bir uygulama kapsamınise, yalnızca o kapsamda etkinleştirebilirsiniz.
+1. Azure **AD özel roller (Önizleme)** sayfasında, gereksinim duyduğunuz atamayı bulun.
+1. **Etkinleştir** sayfasını açmak için **rolünüzü etkinleştir'i** seçin.
+1. Rolünüz çok faktörlü kimlik doğrulama gerektiriyorsa, **devam etmeden önce kimliğinizi doğrulayın'ı**seçin. Oturum başına yalnızca bir kez kimlik doğrulamanız gerekir.
+1. **Kimliğimi doğrula'yı** seçin ve ek güvenlik doğrulaması sağlamak için yönergeleri izleyin.
+1. Özel bir uygulama kapsamı belirtmek için filtre bölmesini açmak için **Kapsam'ı** seçin. Bir role gereken minimum kapsamda erişim istemeniz gerekir. Atamanız bir uygulama kapsamındaysa, yalnızca bu kapsamda etkinleştirebilirsiniz.
 
-   ![Rol atamasına bir Azure AD kaynak kapsamı atama](./media/azure-ad-custom-roles-activate/assign-scope.png)
+   ![Rol atamasına Azure AD kaynak kapsamı atama](./media/azure-ad-custom-roles-activate/assign-scope.png)
 
 1. Gerekirse, özel bir etkinleştirme başlangıç saati belirtin. Kullanıldığında, rol üyesi belirtilen zamanda etkinleştirilir.
-1. **Neden** kutusunda, etkinleştirme isteğinin nedenini girin. Bu, rol ayarında gerekli hale getirilebilir veya bu şekilde ayarlanamaz.
-1. **Etkinleştir**' i seçin.
+1. **Reason** kutusuna etkinleştirme isteğinin nedenini girin. Bunlar gerekli veya rol ayarı yapılabilir.
+1. **Etkinleştir'i**seçin.
 
-Rol onay gerektirmiyorsa, ayarlarınıza göre etkinleştirilir ve etkin roller listesine eklenir. Etkinleştirilen rolü kullanmak istiyorsanız, [Privileged Identity Management bir Azure AD özel rolü atama](azure-ad-custom-roles-assign.md)bölümündeki adımlarla başlayın.
+Rol onay gerektirmiyorsa, ayarlarınıza göre etkinleştirilir ve etkin roller listesine eklenir. Etkinleştirilen rolü kullanmak istiyorsanız, [Ayrıcalıklı Kimlik Yönetimi'nde Azure AD özel rolünü atayın](azure-ad-custom-roles-assign.md)adımlarıyla başlayın.
 
-Rolün etkinleştirilmesi için onay gerekiyorsa, isteğin onay bekliyor olduğunu bildiren bir Azure bildirimi alırsınız.
+Rol etkinleştirmek için onay gerektiriyorsa, isteğin onay beklemede olduğunu bildiren bir Azure bildirimi alırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD özel rolü atama](azure-ad-custom-roles-assign.md)
-- [Azure AD özel rol atamasını kaldırma veya güncelleştirme](azure-ad-custom-roles-update-remove.md)
+- [Azure AD özel rol ataması kaldırma veya güncelleştirme](azure-ad-custom-roles-update-remove.md)
 - [Azure AD özel rol ataması yapılandırma](azure-ad-custom-roles-configure.md)
-- [Azure AD 'de rol tanımları](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD'de rol tanımları](../users-groups-roles/directory-assign-admin-roles.md)
