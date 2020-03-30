@@ -1,6 +1,6 @@
 ---
-title: Azure özel bağlantı hizmeti nedir?
-description: Azure özel bağlantı hizmeti hakkında bilgi edinin.
+title: Azure Özel Bağlantı hizmeti nedir?
+description: Azure Özel Bağlantı hizmeti hakkında bilgi edinin.
 services: private-link
 author: sumeetmittal
 ms.service: private-link
@@ -8,119 +8,119 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
 ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280436"
 ---
-# <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
+# <a name="what-is-azure-private-link-service"></a>Azure Özel Bağlantı hizmeti nedir?
 
-Azure özel bağlantı hizmeti, Azure özel bağlantısı tarafından desteklenen kendi hizmetinize yapılan başvurudur. [Azure Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md) arkasında çalışan hizmetiniz, özel bağlantı erişimi için etkinleştirilebilir ve böylece hizmetinize ait tüketiciler kendi sanal ağlarına özel olarak erişebilir. Müşterileriniz, sanal ağı içinde özel bir uç nokta oluşturabilir ve bu hizmetle eşleşmekte olabilir. Bu makalede hizmet sağlayıcı tarafı ile ilgili kavramlar açıklanmaktadır. 
+Azure Private Link hizmeti, Azure Private Link tarafından desteklenen kendi hizmetinizin başvurusudur. Azure Standart Yük [Dengeleyicisi'nin](../load-balancer/load-balancer-standard-overview.md) arkasında çalışan hizmetiniz, özel bağlantı erişimi için etkinleştirilebilir, böylece hizmetinizdeki tüketiciler kendi VNet'lerinden özel olarak erişebilir. Müşterileriniz VNet'lerinin içinde özel bir bitiş noktası oluşturabilir ve bu hizmetle eşleyebilir. Bu makalede, servis sağlayıcı tarafı ile ilgili kavramlar açıklanmaktadır. 
 
 ## <a name="workflow"></a>İş akışı
 
-![Özel bağlantı hizmeti iş akışı](media/private-link-service-overview/private-link-service-workflow.png)
+![Private Link hizmet iş akışı](media/private-link-service-overview/private-link-service-workflow.png)
 
-### <a name="create-your-private-link-service"></a>Özel bağlantı hizmetinizi oluşturma
+### <a name="create-your-private-link-service"></a>Özel Bağlantı Hizmetinizi Oluşturun
 
-- Uygulamanızı sanal ağınızda standart yük dengeleyici arkasında çalışacak şekilde yapılandırın. Uygulamanız zaten standart yük dengeleyici 'nin arkasında yapılandırılmışsa, bu adımı atlayabilirsiniz.   
-- Yukarıdaki yük dengeleyiciye başvuran bir özel bağlantı hizmeti oluşturun. Yük dengeleyici seçim sürecinde, trafiği almak istediğiniz ön uç IP yapılandırmasını seçin. Özel bağlantı hizmeti için NAT IP adresleri için bir alt ağ seçin. Alt ağda en az sekiz NAT IP adresinin kullanılabilir olması önerilir. Tüm tüketici trafiği, bu özel IP adresi havuzundan hizmet sağlayıcısına geliyor gibi görünür. Özel bağlantı hizmeti için uygun özellikleri/ayarları seçin.    
+- Uygulamanızı sanal ağınızdaki standart bir yük dengeleyicinin arkasında çalışacak şekilde yapılandırın. Uygulamanız zaten standart bir yük dengeleyicisi arkasında yapılandırıldıysa, bu adımı atlayabilirsiniz.   
+- Yukarıdaki yük bakiyesini referans alan özel bağlantı hizmeti oluşturun. Yük dengeleyici seçim işleminde, trafiği almak istediğiniz ön uç IP yapılandırmasını seçin. Özel Bağlantı Hizmeti için NAT IP adresleri için bir alt ağ seçin. Alt ağda en az sekiz NAT IP adresi bulunması önerilir. Tüm tüketici trafiği, bu özel IP adresleri havuzundan hizmet sağlayıcısına ait gibi görünür. Özel Bağlantı Hizmeti için uygun özellikleri/ayarları seçin.    
 
     > [!NOTE]
-    > Azure özel bağlantı hizmeti yalnızca Standart Load Balancer desteklenir. 
+    > Azure Özel Bağlantı Hizmeti yalnızca Standart Yük Dengeleyicisi'nde desteklenir. 
     
-### <a name="share-your-service"></a>Hizmetinizi paylaşma
+### <a name="share-your-service"></a>Hizmetinizi paylaşın
 
-Özel bir bağlantı hizmeti oluşturduktan sonra Azure, hizmetiniz için sağladığınız adı temel alan "diğer ad" adlı bir genel benzersiz adlı bilinen ad oluşturur. Müşterilerinizin diğer adını veya Kaynak URI 'sini müşterilerinizle çevrimdışı olarak paylaşabilirsiniz. Tüketiciler, diğer adı veya Kaynak URI 'sini kullanarak bir özel bağlantı bağlantısı başlatabilir.
+Bir Özel Bağlantı hizmeti oluşturduktan sonra Azure, hizmetiniz için sağladığınız ada bağlı olarak genel olarak benzersiz adlandırılmış "takma ad" oluşturur. Hizmetinizin diğer adını veya kaynak URI'sini müşterilerinizle çevrimdışı olarak paylaşabilirsiniz. Tüketiciler, diğer adı veya KAYNAK URI'yi kullanarak Özel Bağlantı bağlantısı başlatabilir.
  
 ### <a name="manage-your-connection-requests"></a>Bağlantı isteklerinizi yönetme
 
-Bir tüketici bir bağlantıyı başlattıktan sonra, hizmet sağlayıcı bağlantı isteğini kabul edebilir veya reddedebilir. Tüm bağlantı istekleri özel bağlantı hizmetindeki **privateendpointconnections** özelliği altında listelenecektir.
+Bir tüketici bir bağlantı başlattıktan sonra, hizmet sağlayıcısı bağlantı isteğini kabul edebilir veya reddedebilir. Tüm bağlantı istekleri, Private Link hizmetindeki **privateendpointconnections** özelliği altında listelenir.
  
 ### <a name="delete-your-service"></a>Hizmetinizi silme
 
-Özel bağlantı hizmeti artık kullanımda değilse, bunu silebilirsiniz. Ancak, hizmeti silmeden önce kendisiyle ilişkili özel uç nokta bağlantısı olmadığından emin olun. Tüm bağlantıları reddedebilir ve hizmeti silebilirsiniz.
+Private Link hizmeti artık kullanılıyorsa, silebilirsiniz. Ancak, hizmeti silmeden önce, hizmetle ilişkili özel bitiş noktası bağlantısı olmadığından emin olun. Tüm bağlantıları reddedebilir ve hizmeti silebilirsiniz.
 
 ## <a name="properties"></a>Özellikler
 
-Özel bir bağlantı hizmeti aşağıdaki özellikleri belirtir: 
+Private Link hizmeti aşağıdaki özellikleri belirtir: 
 
 |Özellik |Açıklama  |
 |---------|---------|
-|Sağlama durumu (provisioningState)  |Özel bağlantı hizmeti için geçerli sağlama durumunu listeleyen salt okunurdur bir özellik. İlgili sağlama durumları şunlardır: "silme; Başaramadı Baarı Güncelleştiriliyor ". Sağlama durumu "başarılı" olduğunda, özel bağlantı hizmetinizi başarıyla sağlamış olursunuz.        |
-|Diğer ad (diğer ad)     | Diğer ad, hizmetiniz için genel olarak benzersiz bir salt okuma dizesidir. Hizmetiniz için müşteri verilerini maskelemenize yardımcı olur ve aynı zamanda hizmetiniz için kolay paylaşılan bir ad oluşturur. Özel bir bağlantı hizmeti oluşturduğunuzda, Azure hizmetinizin sizinle paylaşabileceğiniz diğer adını oluşturur. Müşterileriniz, hizmetinize bir bağlantı istemek için bu diğer adı kullanabilir.          |
-|Görünürlük (görünürlük)     | Görünürlük, özel bağlantı hizmetiniz için pozlama ayarlarını denetleyen özelliktir. Hizmet sağlayıcıları rol tabanlı erişim denetimi (RBAC) izinleri, kısıtlı bir abonelik kümesi veya tüm Azure abonelikleri ile hizmetleri ile olan Aboneliklerle ilgili pozlamayı tercih edebilir.          |
-|Otomatik onay (otomatik onay)    |   Otomatik onay, özel bağlantı hizmetine otomatik erişimi denetler. Otomatik onay listesinde belirtilen abonelikler, bu aboneliklerdeki özel uç noktalardan bir bağlantı istendiğinde otomatik olarak onaylanır.          |
-|Load Balancer ön uç IP yapılandırması (Loadbalancerfrontendıpconfigurations)    |    Özel bağlantı hizmeti bir Standart Load Balancer ön uç IP adresine bağlıdır. Hizmete yönelik tüm trafik, SLB 'nın ön ucunda iletişime geçecektir. Bu trafiği, uygulamalarınızın çalıştığı uygun arka uç havuzlarına yönlendirmek için SLB kurallarını yapılandırabilirsiniz. Yük dengeleyici ön uç IP yapılandırması NAT IP yapılandırmasından farklı.      |
-|NAT IP yapılandırması (ipConfigurations)    |    Bu özellik, özel bağlantı hizmeti için NAT (ağ adresi çevirisi) IP yapılandırmasını ifade eder. NAT IP 'si, bir hizmet sağlayıcısının sanal ağındaki herhangi bir alt ağdan seçilebilir. Özel bağlantı hizmeti, özel bağlantı trafiği üzerinde hedef tarafı NAT kullanır. Bu, kaynak (tüketici tarafı) ve hedef (hizmet sağlayıcı) adres alanı arasında bir IP çakışması olmamasını sağlar. Hedef tarafta (hizmet sağlayıcı tarafı), NAT IP adresi, hizmetiniz tarafından gönderilen tüm paketler için hizmetinize ve hedef IP 'niz tarafından alınan tüm paketlerin kaynak IP 'si olarak görünür.       |
-|Özel uç nokta bağlantıları (privateEndpointConnections)     |  Bu özellik, özel bağlantı hizmetine bağlanan özel uç noktaları listeler. Birden çok özel uç nokta aynı özel bağlantı hizmetine bağlanabilir ve hizmet sağlayıcısı tek özel uç noktaların durumunu denetleyebilir.        |
-|TCP proxy v2 (EnableProxyProtocol)     |  Bu özellik, hizmet sağlayıcısının hizmet tüketicisi hakkındaki bağlantı bilgilerini almak için TCP proxy v2 kullanmasına olanak sağlar. Hizmet sağlayıcısı, alıcı yapılandırmalarını, proxy protokolü v2 üst bilgisini ayrıştırabilecek şekilde ayarlamaktan sorumludur.        |
+|Devlet Sağlama (provisioningState)  |Özel Bağlantı hizmeti için geçerli sağlama durumunu listeleyen salt okunur özelliği. Yürürlükteki hüküm veren devletler şunlardır: "Silme; Başarısız oldu; Başarılı oldu; Güncelleme". Sağlama durumu "Başarılı" olduğunda, Private Link hizmetinizi başarıyla sağlamış olursunuz.        |
+|Diğer ad (diğer ad)     | Diğer ad, hizmetiniz için benzersiz bir salt okunur dizedir. Hizmetiniz için müşteri verilerini maskelemenize yardımcı olur ve aynı zamanda hizmetiniz için paylaşılaması kolay bir ad oluşturur. Bir Özel Bağlantı hizmeti oluşturduğunuzda, Azure hizmetinizin diğer adını müşterilerinizle paylaşabilir. Müşterileriniz bu diğer adı hizmetinize bağlantı istemek için kullanabilir.          |
+|Görünürlük (görünürlük)     | Görünürlük, Özel Bağlantı hizmetinizin pozlama ayarlarını kontrol eden özelliktir. Hizmet sağlayıcıları, rol tabanlı erişim denetimi (RBAC) izinleri, sınırlı abonelikler kümesi veya tüm Azure abonelikleri ile hizmetlerine maruz kalma süresini aboneliklerle sınırlamayı seçebilir.          |
+|Otomatik Onay (autoApproval)    |   Otomatik onay, Özel Bağlantı hizmetine otomatik erişimi denetler. Otomatik onay listesinde belirtilen abonelikler, bu aboneliklerde özel uç noktalardan bağlantı istendiğinde otomatik olarak onaylanır.          |
+|Yük Dengeleyici Frontend IP Konfigürasyonu (loadBalancerFrontendIpConfigurations)    |    Private Link hizmeti, Standart Yük Dengeleyicisinin ön uç IP adresine bağlıdır. Hizmet için mukadder tüm trafik SLB ön ucuna ulaşacaktır. SLB kurallarını, bu trafiği uygulamalarınızın çalıştığı uygun arka uç havuzlarına yönlendirecek şekilde yapılandırabilirsiniz. Yük dengeleyici frontend IP yapılandırmaları NAT IP yapılandırmalarından farklıdır.      |
+|NAT IP Yapılandırması (ipConfigurations)    |    Bu özellik, Özel Bağlantı hizmeti için NAT (Ağ Adresi Çevirisi) IP yapılandırmasına başvurur. NAT IP, bir hizmet sağlayıcısının sanal ağındaki herhangi bir alt ağdan seçilebilir. Private Link hizmeti, Özel Bağlantı trafiğinde hedef tarafı NAT-ing gerçekleştirir. Bu, kaynak (tüketici tarafı) ve hedef (servis sağlayıcı) adres alanı arasında IP çakışması olmamasını sağlar. Hedef tarafta (servis sağlayıcı tarafında), Hizmetiniz tarafından alınan tüm paketler için Kaynak IP olarak NAT IP adresi ve hizmetiniz tarafından gönderilen tüm paketler için hedef IP olarak gösterilecektir.       |
+|Özel bitiş noktası bağlantıları (privateEndpointConnections)     |  Bu özellik, Özel Bağlantı hizmetine bağlanan özel uç noktaları listeler. Birden çok özel uç nokta aynı Özel Bağlantı hizmetine bağlanabilir ve hizmet sağlayıcısı durumu tek tek özel uç noktalar için denetleyebilir.        |
+|TCP Proxy V2 (EnableProxyProtocol)     |  Bu özellik, hizmet sağlayıcısının hizmet tüketicisi hakkındaki bağlantı bilgilerini almak için tcp proxy v2 kullanmasına olanak tanır. Servis Sağlayıcı proxy protokolü v2 üstbilgi ayrıştırmak edebilmek için alıcı configs kurmakla sorumludur.        |
 |||
 
 
 ### <a name="details"></a>Ayrıntılar
 
-- Özel bağlantı hizmetine aynı bölgedeki onaylanan özel uç noktalardan erişilebilir. Özel uç noktaya, bölgesel olarak eşlenmiş VNET 'ler, genel olarak eşlenmiş sanal ağlar ve özel VPN veya ExpressRoute bağlantıları kullanan şirket içi sanal ağ üzerinden erişilebilir. 
+- Özel Bağlantı hizmetine aynı bölgedeki onaylı özel uç noktalardan erişilebilir. Özel bitiş noktasına aynı sanal ağdan, bölgesel olarak bakıldığında VNet'lerden, küresel olarak bakıldığında VNet'lerden ve özel VPN veya ExpressRoute bağlantıları kullanılarak şirket içinde ulaşılabilir. 
  
-- Özel bir bağlantı hizmeti oluştururken, kaynağın yaşam döngüsü için bir ağ arabirimi oluşturulur. Bu arabirim müşteri tarafından yönetilemez.
+- Özel Bağlantı Hizmeti oluşturulurken, kaynağın yaşam döngüsü için bir ağ arabirimi oluşturulur. Bu arabirim müşteri tarafından yönetilemez.
  
-- Özel bağlantı hizmetinin, sanal ağla aynı bölgede ve Standart Load Balancer dağıtılması gerekir.  
+- Özel Bağlantı Hizmeti, sanal ağ ve Standart Yük Dengeleyicisi ile aynı bölgede dağıtılmalıdır.  
  
-- Tek bir özel bağlantı hizmetine, farklı VNET 'ler, abonelikler ve/veya Active Directory kiracılarına ait birden çok özel uç noktasından erişilebilir. Bağlantı, bağlantı iş akışıyla oluşturulur. 
+- Tek bir Özel Bağlantı Hizmetine farklı VNet'lere, aboneliklere ve/veya Active Directory kiracılarına ait birden çok Özel Uç Noktadan erişilebilir. Bağlantı bir bağlantı iş akışı ile kurulur. 
  
-- Birden çok özel bağlantı hizmeti, farklı ön uç IP yapılandırması kullanılarak aynı Standart Load Balancer oluşturulabilir. Standart Load Balancer ve abonelik başına oluşturabileceğiniz özel bağlantı Hizmetleri sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Aynı Standart Yük Dengeleyicisi'nde farklı ön uç IP yapılandırmaları kullanılarak birden fazla Private Link hizmeti oluşturulabilir. Standart Yük Dengeleyicisi ve abonelik başına oluşturabileceğiniz Özel Bağlantı hizmetlerinin sayısının sınırları vardır. Ayrıntılar için [Azure sınırlarına](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)bakın.
  
-- Özel bağlantı hizmeti ile bağlantılı birden fazla NAT IP yapılandırması olabilir. Birden fazla NAT IP yapılandırması seçilmesi hizmet sağlayıcılarının ölçeklendirilmesine yardımcı olabilir. Günümüzde, hizmet sağlayıcıları özel bağlantı hizmeti başına en fazla sekiz NAT IP adresi atayabilir. Her NAT IP adresi ile TCP bağlantılarınız için daha fazla bağlantı noktası atayabilir ve böylece ölçeği değiştirebilirsiniz. Bir özel bağlantı hizmetine birden çok NAT IP adresi ekledikten sonra NAT IP adreslerini silemezsiniz. Bu, NAT IP adreslerini silerken etkin bağlantıların etkilenmemesini sağlamak için yapılır.
+- Private Link hizmetinde birden fazla NAT IP yapılandırması olabilir. Birden fazla NAT IP yapılandırması seçmek, servis sağlayıcılarının ölçeklendirmesine yardımcı olabilir. Bugün, hizmet sağlayıcılar Özel Bağlantı hizmeti başına en fazla sekiz NAT IP adresi atayabilir. Her NAT IP adresiyle, TCP bağlantılarınız için daha fazla bağlantı noktası atayabilir ve böylece ölçeklendirebilirsiniz. Özel Bağlantı hizmetine birden çok NAT IP adresi ekledikten sonra, NAT IP adreslerini silemezsiniz. Bu, NAT IP adreslerini silerken etkin bağlantıların etkilenmemesini sağlamak için yapılır.
 
 
 ## <a name="alias"></a>Diğer ad
 
-**Diğer ad** hizmetiniz için genel olarak benzersiz bir addır. Hizmetiniz için müşteri verilerini maskelemenize yardımcı olur ve aynı zamanda hizmetiniz için kolay paylaşılan bir ad oluşturur. Özel bir bağlantı hizmeti oluşturduğunuzda, Azure hizmetiniz için müşterilerinizle paylaşabileceğiniz bir diğer ad oluşturur. Müşterileriniz, hizmetinize bir bağlantı istemek için bu diğer adı kullanabilir.
+**Diğer ad,** hizmetiniz için benzersiz bir addır. Hizmetiniz için müşteri verilerini maskelemenize yardımcı olur ve aynı zamanda hizmetiniz için paylaşılaması kolay bir ad oluşturur. Bir Özel Bağlantı hizmeti oluşturduğunuzda, Azure hizmetinizin müşterilerinizle paylaşabileceği bir takma ad oluşturur. Müşterileriniz bu diğer adı hizmetinize bağlantı istemek için kullanabilir.
 
-Diğer ad üç bölümden oluşur: *ön ek*. *GUID*. *Son ek*
+Takma ad üç bölümden oluşur: *Önek*. *YOL GÖSTERICI*. *Sonek*
 
-- Ön ek, hizmet adıdır. Size ait ön ekinizi seçebilirsiniz. "Diğer ad" oluşturulduktan sonra, bunu değiştiremezsiniz, bu nedenle öneğinizi uygun şekilde seçin.  
-- GUID, platform tarafından sağlanacak. Bu, adın genel olarak benzersiz olmasına yardımcı olur. 
-- Son ek Azure: *Region*. Azure. privatelinkservice tarafından eklendi 
+- Önek hizmet adıdır. Kendi önek seçebilirsiniz. "Diğer Ad" oluşturulduktan sonra değiştiremezsiniz, bu nedenle önekinizi uygun şekilde seçin.  
+- GUID platformu tarafından sağlanacaktır. Bu, adın genel olarak benzersiz hale getirilen bir hale yardımcı olur. 
+- Sonek Azure tarafından eklenir: *region*.azure.privatelinkservice 
 
-Tüm diğer ad: *ön ek*. {GUıD}. *Region*. Azure. privatelinkservice  
+Tam takma ad: *Önek*. {GUID}. *bölge*.azure.privatelinkservice  
 
-## <a name="control-service-exposure"></a>Hizmet pozlamasını denetleme
+## <a name="control-service-exposure"></a>Kontrol hizmeti pozlama
 
-Özel bağlantı hizmeti, "görünürlük" ayarı aracılığıyla hizmetinizin görünürlüğünü denetlemeye yönelik seçenekler sağlar. Hizmeti, sahip olduğunuz farklı sanal ağlardan tüketim için özel hale getirebilirsiniz (yalnızca RBAC izinleri), güvendiğiniz sınırlı bir abonelik kümesiyle pozlamayı kısıtlayabilir veya tüm Azure aboneliklerinin özel bağlantı üzerinde bağlantı isteyebilmesi için ortak hale getirebilirsiniz hizmetle. Görünürlük ayarlarınızda, bir tüketicinin hizmetinize bağlanıp bağlanamacağına karar verirsiniz. 
+Private Link hizmeti, "Görünürlük" ayarı ile hizmetinizin maruz kalmasını kontrol etme seçenekleri sunar. Hizmeti sahip olduğunuz farklı VNet'lerden tüketim için özel hale getirebilir, güvendiğiniz sınırlı abonelikler kümesiyle pozlamayı kısıtlayabilir veya tüm Azure aboneliklerinin Özel Bağlantı'da bağlantı isteyebilmeleri için herkese açık hale getirebilirsiniz Hizmet. Görünürlük ayarlarınız, bir tüketicinin hizmetinize bağlanıp bağlanamayacağına karar verir. 
 
-## <a name="control-service-access"></a>Denetim hizmeti erişimi
+## <a name="control-service-access"></a>Hizmet erişimini kontrol edin
 
-Özel bağlantı hizmetinize pozlama (görünürlük ayarı denetimli) olan tüketiciler, sanal ağlarında özel bir uç nokta oluşturabilir ve özel bağlantı hizmetinize bağlantı isteğinde bulunabilir. Özel uç nokta bağlantısı özel bağlantı hizmeti nesnesi üzerinde "beklemede" durumunda oluşturulur. Hizmet sağlayıcısı, bağlantı isteğine göre davranmasından sorumludur. Bağlantıyı onaylayabilir, bağlantıyı reddedebilir veya bağlantıyı silebilirsiniz. Yalnızca onaylanan bağlantılar özel bağlantı hizmetine trafik gönderebilir.
+Özel Bağlantı hizmetinize maruz kalma (görünürlük ayarı tarafından kontrol edilen) tüketiciler, VNet'lerinde özel bir bitiş noktası oluşturabilir ve Özel Bağlantı hizmetinize bağlantı talep edebilir. Özel bitiş noktası bağlantısı, Özel Bağlantı hizmeti nesnesinde "Beklemede" durumunda oluşturulur. Servis sağlayıcı, bağlantı isteğine göre hareket etmekle yükümlüdür. Bağlantıyı onaylayabilir, bağlantıyı reddedebilir veya bağlantıyı silebilirsiniz. Yalnızca onaylanan bağlantılar, Özel Bağlantı hizmetine trafik gönderebilir.
 
-Bağlantıları onaylama eylemi, özel bağlantı hizmetindeki otomatik onaylama özelliği kullanılarak otomatikleştirilebilir. Otomatik onay, hizmet sağlayıcılarının, hizmetine otomatik erişim için bir abonelik kümesini önceden onaylamasını sağlar. Müşterilerin otomatik onay listesine eklemesi için aboneliklerini, hizmet sağlayıcılarının çevrimdışı olarak paylaşması gerekecektir. Otomatik onay, görünürlük dizisinin bir alt kümesidir. Görünürlük, pozlama ayarlarını denetler, ancak otomatik onay, hizmetinizin onay ayarlarını denetler. Bir müşteri otomatik onay listesindeki bir abonelikten bağlantı isterse bağlantı otomatik olarak onaylanır ve bağlantı oluşturulur. Hizmet sağlayıcılarının isteği artık el ile onaylaması gerekmez. Öte yandan, bir müşteri otomatik onaylama dizisinde değil görünürlük dizisindeki bir abonelikten bağlantı isterse, istek hizmet sağlayıcısına ulaşır, ancak hizmet sağlayıcının bağlantıları el ile onaylaması gerekir.
+Bağlantıları onaylama eylemi, Özel Bağlantı hizmetindeki otomatik onay özelliği kullanılarak otomatikleştirilmiş olabilir. Otomatik Onay, hizmet sağlayıcıların hizmetlerine otomatik erişim için bir abonelik kümesini önceden onaylama olanağıdır. Müşterilerin, servis sağlayıcılarının otomatik onay listesine eklemeleri için aboneliklerini çevrimdışı olarak paylaşmaları gerekir. Otomatik onay, görünürlük dizisinin bir alt kümesidir. Görünürlük pozlama ayarlarını kontrol ederken, otomatik onay hizmetinizin onay ayarlarını kontrol eder. Bir müşteri otomatik onay listesindeki bir abonelikten bağlantı isterse, bağlantı otomatik olarak onaylanır ve bağlantı kurulur. Hizmet sağlayıcıların artık isteği el ile onaylaması gerekmez. Diğer taraftan, bir müşteri otomatik onay dizisinde değil de görünürlük dizisindeki bir abonelikten bağlantı isterse, istek servis sağlayıcısına ulaşır, ancak servis sağlayıcısının bağlantıları el ile onaylaması gerekir.
 
-## <a name="getting-connection-information-using-tcp-proxy-v2"></a>TCP proxy v2 kullanarak bağlantı bilgilerini alma
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>TCP Proxy v2 kullanarak bağlantı Bilgileri alma
 
-Özel bağlantı hizmeti kullanılırken, Özel uç noktadan gelen paketlerin kaynak IP adresi, hizmet sağlayıcısı tarafında, sağlayıcının sanal ağından ayrılan NAT IP 'si kullanılarak ağ adresi çevirisi (NAT) olur. Bu nedenle, uygulamalar hizmet tüketicilerinin gerçek kaynak IP adresi yerine ayrılmış NAT IP adresini alır. Uygulamanızın Tüketici tarafında gerçek kaynak IP adresi gerekiyorsa, hizmetinize proxy protokolünü etkinleştirebilir ve proxy protokolü başlığından bilgileri alabilirsiniz. Kaynak IP adresine ek olarak, proxy protokol üstbilgisi de özel uç noktanın LinkId 'sini taşır. Kaynak IP adresi ve LinkId birleşimi, hizmet sağlayıcılarının tüketicilerini benzersiz bir şekilde belirlemesine yardımcı olabilir. Proxy protokolü hakkında daha fazla bilgi için [buraya](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)gidin. 
+Özel bağlantı hizmeti kullanırken, özel uç noktadan gelen paketlerin kaynak IP adresi, sağlayıcının sanal ağından ayrılan NAT IP'yi kullanarak servis sağlayıcı tarafında çevrilmiş ağ adresidir (NAT). Bu nedenle uygulamalar, hizmet tüketicilerinin gerçek kaynak IP adresi yerine ayrılan NAT IP adresini alır. Uygulamanızın tüketici tarafından gerçek kaynak IP adresine ihtiyacı varsa, hizmetinizde Proxy protokolünü etkinleştirebilir ve proxy protokolü üstbilgisinden bilgileri alabilirsiniz. Kaynak IP adresine ek olarak, proxy iletişim üstbilgisi de özel bitiş noktasının LinkID'sini taşır. Kaynak IP adresi ve LinkID kombinasyonu, hizmet sağlayıcıların tüketicilerini benzersiz bir şekilde tanımlamalarına yardımcı olabilir. Proxy Protokolü hakkında daha fazla bilgi için burayı ziyaret [edin.](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) 
 
-Bu bilgiler, özel bir tür uzunluğu-değer (TLV) vektörü kullanılarak aşağıdaki şekilde kodlanır:
+Bu bilgiler, özel bir Tür-Uzunluk-Değer (TLV) vektörü kullanılarak aşağıdaki gibi kodlanır:
 
-Özel TLV ayrıntıları:
+Özel TLV detayları:
 
-|Alan |Uzunluk (sekizli)  |Açıklama  |
+|Alan |Uzunluk (Sekizli)  |Açıklama  |
 |---------|---------|----------|
 |Tür  |1        |PP2_TYPE_AZURE (0xEE)|
 |Uzunluk  |2      |Değer uzunluğu|
 |Değer  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
-|  |4        |Özel uç noktanın LINKıD 'sini temsil eden UINT32 (4 bayt). Little endian biçiminde kodlandı.|
+|  |4        |Özel bitiş noktasının LINKID'sini temsil eden UINT32 (4 bayt). Küçük endian biçiminde kodlanmış.|
 
  > [!NOTE]
- > Hizmet sağlayıcı, standart yük dengeleyicinin arkasındaki hizmetin, proxy protokol üst bilgisini özel bağlantı hizmetinde etkin olduğunda [belirtime](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) göre, proxy protokol üstbilgisini ayrıştırmak üzere yapılandırıldığından emin olmak için sorumludur. Özel bağlantı hizmetinde ara protokol ayarı etkinse istek başarısız olur, ancak hizmet sağlayıcının hizmeti üstbilgiyi ayrıştırmak üzere yapılandırılmamıştır. Benzer şekilde, bu ayar özel bağlantı hizmetinde etkinleştirilmediğinde hizmet sağlayıcının hizmeti bir proxy protokol üstbilgisi bekliyorsanız istek başarısız olur. Proxy protokolü ayarı etkinleştirildikten sonra, üst bilgide istemci bilgisi olmasa bile, proxy protokol üstbilgisi konaktan arka uç sanal makinelere HTTP/TCP sistem durumu araştırmalarına dahil edilir. 
+ > Hizmet sağlayıcısı, standart yük dengeleyicisinin arkasındaki hizmetin, özel bağlantı hizmetinde proxy protokolü etkinleştirildiğinde [belirtime](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) göre proxy protokol üstbilgisini ayrıştıracak şekilde yapılandırıldığından emin olmakiçin sorumludur. Proxy protokolü ayarı özel bağlantı hizmetinde etkinleştirilirse, ancak servis sağlayıcının hizmeti üstbilgiyi ayrıştıracak şekilde yapılandırılmamışsa, istek başarısız olur. Benzer şekilde, servis sağlayıcının hizmeti bir proxy iletişim üstbilgisi beklerken, ayar özel bağlantı hizmetinde etkinleştirilmemişse, istek başarısız olur. Proxy protokolü ayarı etkinleştirildikten sonra, üstbilgide istemci bilgisi olmamasına rağmen proxy iletişim üstbilgisi ana bilgisayardan arka uç sanal makinelere kadar HTTP/TCP sistem durumu sondalarına da dahil edilecektir. 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Özel bağlantı hizmeti kullanılırken aşağıdakiler bilinen sınırlamalar aşağıda verilmiştir:
-- Yalnızca Standart Load Balancer destekleniyor 
+Özel Bağlantı hizmetini kullanırken bilinen sınırlamalar şunlardır:
+- Yalnızca Standart Yük Dengeleyicisi ile desteklenir 
 - Yalnızca IPv4 trafiğini destekler
 - Yalnızca TCP trafiğini destekler
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma](create-private-link-service-powershell.md)
-- [Azure CLı kullanarak özel bağlantı hizmeti oluşturma](create-private-link-service-cli.md)
+- [Azure PowerShell'i kullanarak özel bağlantı hizmeti oluşturma](create-private-link-service-powershell.md)
+- [Azure CLI'yi kullanarak özel bir bağlantı hizmeti oluşturma](create-private-link-service-cli.md)

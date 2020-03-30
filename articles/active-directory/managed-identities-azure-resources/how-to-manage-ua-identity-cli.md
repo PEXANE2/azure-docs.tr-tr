@@ -1,6 +1,6 @@
 ---
-title: Kullanıcı tarafından atanan yönetilen kimliği yönetme-Azure CLı-Azure AD
-description: Azure CLı kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme ve silme hakkında adım adım yönergeler.
+title: Kullanıcı tarafından atanan yönetilen kimliği yönetme - Azure CLI - Azure AD
+description: Azure CLI'yi kullanarak kullanıcı tarafından atanan yönetilen bir kimliğin nasıl oluşturulacağına, listelenene ve silinmeye ilişkin adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,71 +16,71 @@ ms.date: 10/15/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266591"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Azure CLı kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Azure CLI'yi kullanarak kullanıcı tarafından atanan yönetilen bir kimlik oluşturun, listelenin veya silin
 
 
-Azure kaynakları için Yönetilen kimlikler, Azure Active Directory bir yönetilen kimliğe sahip Azure hizmetleri sağlar. Kodunuzda kimlik bilgileri gerekmeden Azure AD kimlik doğrulamasını destekleyen hizmetlere kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz. 
+Azure kaynakları için yönetilen kimlikler Azure hizmetlerine Azure Etkin Dizini'nde yönetilen bir kimlik sağlar. Bu kimliği, kodunuzda kimlik bilgilerine gerek kalmadan Azure AD kimlik doğrulamasını destekleyen hizmetlere kimlik doğrulamak için kullanabilirsiniz. 
 
-Bu makalede, Azure CLı kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturmayı, listeleyeceğinizi ve silmeyi öğreneceksiniz.
+Bu makalede, Azure CLI kullanarak kullanıcı tarafından atanan yönetilen bir kimliği nasıl oluşturabileceğinizi, listeleyip silebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için yönetilen kimliklere aşina değilseniz, [genel bakış bölümüne](overview.md)göz atın. ** [Sistem tarafından atanan ve kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirin.**
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- CLI betiği örnekleri çalıştırmak için üç seçeneğiniz vardır:
-    - Azure portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın (sonraki bölüme bakın).
-    - Katıştırılmış Azure Cloud Shell aracılığıyla her kod bloğunun sağ üst köşesinde bulunan "Try It" düğmesini kullanın.
-    - Yerel bir CLı konsolu kullanmayı tercih ediyorsanız [Azure CLI 'nın en son sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 veya üzeri) yükleyebilirsiniz. Kullanıcı tarafından atanan yönetilen kimliği dağıtmak istediğiniz Azure aboneliğiyle ilişkili bir hesabı kullanarak Azure 'da `az login`kullanarak oturum açın.
+- CLI komut dosyası örneklerini çalıştırmak için üç seçeneğiniz var:
+    - Azure portalından [Azure Bulut Shell'i](../../cloud-shell/overview.md) kullanın (sonraki bölüme bakın).
+    - Her kod bloğunun sağ üst köşesinde bulunan "Try It" düğmesi aracılığıyla gömülü Azure Bulut Kabuğu'nu kullanın.
+    - Yerel bir CLI konsolu kullanmak isterseniz [Azure CLI'nin](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 veya sonraki) en son sürümünü yükleyin. Kullanıcı tarafından atanan `az login`yönetilen kimliği dağıtmak istediğiniz Azure aboneliğiyle ilişkili bir hesabı kullanarak Azure'da oturum açın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma 
 
-Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması gerekir.
+Kullanıcı tarafından atanan yönetilen bir kimlik oluşturmak için, hesabınızın [Yönetilen Kimlik Oluşturici](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol atamasına ihtiyacı vardır.
 
-Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için [az Identity Create](/cli/azure/identity#az-identity-create) komutunu kullanın. `-g` parametresi, Kullanıcı tarafından atanan yönetilen kimliğin oluşturulacağı kaynak grubunu belirtir ve `-n` parametresi adını belirtir. `<RESOURCE GROUP>` ve `<USER ASSIGNED IDENTITY NAME>` parametre değerlerini kendi değerlerinizle değiştirin:
+Kullanıcı tarafından atanan yönetilen bir kimlik oluşturmak için [az identity create](/cli/azure/identity#az-identity-create) komutunu kullanın. Parametre, `-g` kullanıcı tarafından atanan yönetilen kimliğin oluşturulacağı kaynak grubunu `-n` belirtir ve parametre adını belirtir. `<RESOURCE GROUP>` Ve `<USER ASSIGNED IDENTITY NAME>` parametre değerlerini kendi değerlerinizle değiştirin:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurecli-interactive
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-managed-identities"></a>Kullanıcı tarafından atanan yönetilen kimlikleri listeleme
+## <a name="list-user-assigned-managed-identities"></a>Kullanıcı tarafından atanan yönetilen kimlikleri listele
 
-Kullanıcı tarafından atanan yönetilen kimliği listelemek/okumak için hesabınızın [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) veya [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rolü ataması gerekir.
+Kullanıcı tarafından atanan yönetilen bir kimliği listelemek/okumak için hesabınızın [Yönetilen Kimlik Operatörü'ne](/azure/role-based-access-control/built-in-roles#managed-identity-operator) veya Yönetilen [Kimlik Katkıda Bulunan](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol atamasına ihtiyacı vardır.
 
-Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için [az Identity List](/cli/azure/identity#az-identity-list) komutunu kullanın. `<RESOURCE GROUP>` kendi değeri ile değiştirin:
+Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için [az kimlik listesi](/cli/azure/identity#az-identity-list) komutunu kullanın. Kendi `<RESOURCE GROUP>` değerinizle değiştirin:
 
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
 ```
-JSON yanıtında, Kullanıcı tarafından atanan yönetilen kimliklerin anahtar, `type`için döndürülen `"Microsoft.ManagedIdentity/userAssignedIdentities"` değeri vardır.
+json yanıtında, kullanıcı tarafından atanan `"Microsoft.ManagedIdentity/userAssignedIdentities"` yönetilen kimliklerin `type`değeri anahtar için döndürülür, .
 
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimliği silme
 
-Kullanıcı tarafından atanan bir yönetilen kimliği silmek için hesabınıza [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması gerekir.
+Kullanıcı tarafından atanan yönetilen bir kimliği silmek için, hesabınızın [Yönetilen Kimlik Katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol atamasına ihtiyacı vardır.
 
-Kullanıcı tarafından atanan bir yönetilen kimliği silmek için [az Identity Delete](/cli/azure/identity#az-identity-delete) komutunu kullanın.  -N parametresi adını belirtir ve-g parametresi, Kullanıcı tarafından atanan yönetilen kimliğin oluşturulduğu kaynak grubunu belirtir. `<USER ASSIGNED IDENTITY NAME>` ve `<RESOURCE GROUP>` parametreleri değerlerini kendi değerlerinizle değiştirin:
+Kullanıcı tarafından atanan yönetilen bir kimliği silmek için [az identity delete](/cli/azure/identity#az-identity-delete) komutunu kullanın.  -n parametresi adını belirtir ve -g parametresi kullanıcı tarafından atanan yönetilen kimliğin oluşturulduğu kaynak grubunu belirtir. `<USER ASSIGNED IDENTITY NAME>` Ve `<RESOURCE GROUP>` parametreler değerlerini kendi değerlerinizle değiştirin:
 
  ```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
 ```
 > [!NOTE]
-> Kullanıcı tarafından atanan bir yönetilen kimliğin silinmesi başvuruyu, atandığı herhangi bir kaynaktan kaldırmaz. Lütfen `az vm/vmss identity remove` komutunu kullanarak VM/VMSS 'den bunları kaldırın
+> Kullanıcı tarafından atanan yönetilen bir kimliğisiletmek, atandığı herhangi bir kaynaktan başvuruyu kaldırmaz. Lütfen komutu `az vm/vmss identity remove` kullanarak VM/VMSS'den kaldırın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLı kimlik komutlarının tam listesi için, bkz. [az Identity](/cli/azure/identity).
+Azure CLI kimlik komutlarının tam listesi için [az kimliğine](/cli/azure/identity)bakın.
 
-Azure VM 'ye Kullanıcı tarafından atanan yönetilen kimlik atama hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma](qs-configure-cli-windows-vm.md#user-assigned-managed-identity)
+Kullanıcı tarafından atanan yönetilen bir kimliği Azure VM'ye nasıl atayacağıma ilişkin bilgi için, [Azure CLI'yi kullanarak Azure VM'deki Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-cli-windows-vm.md#user-assigned-managed-identity)
 
 
  

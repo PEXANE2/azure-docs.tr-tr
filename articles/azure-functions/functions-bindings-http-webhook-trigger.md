@@ -1,37 +1,37 @@
 ---
-title: Azure Işlevleri HTTP tetikleyicisi
-description: HTTP aracılığıyla bir Azure Işlevi çağırmayı öğrenin.
+title: Azure Fonksiyonları HTTP tetikleyici
+description: HTTP aracılığıyla Azure İşlevi'ni nasıl çağıracaklarınızı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277602"
 ---
-# <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
+# <a name="azure-functions-http-trigger"></a>Azure Fonksiyonları HTTP tetikleyici
 
-HTTP tetikleyicisi, HTTP isteğiyle bir işlevi çağırmanıza olanak sağlar. HTTP tetikleyicisini kullanarak sunucusuz API 'Ler oluşturabilir ve Web kancalarına yanıt verebilirsiniz.
+HTTP tetikleyicisi, HTTP isteği olan bir işlevi çağırmanızı sağlar. Sunucusuz API'ler oluşturmak ve webhooks'a yanıt vermek için bir HTTP tetikleyicisi kullanabilirsiniz.
 
-HTTP ile tetiklenen bir işlev için varsayılan dönüş değeri:
+HTTP tarafından tetiklenen bir işlevin varsayılan getiri değeri:
 
-- 2\. x ve üzeri Işlevlerde boş bir gövdeye sahip `HTTP 204 No Content`
-- 1\. x Işlevlerinde boş bir gövdeye sahip `HTTP 200 OK`
+- `HTTP 204 No Content`Fonksiyonlar 2.x ve daha yüksek boş bir gövde ile
+- `HTTP 200 OK`Fonksiyonlar 1.x boş bir gövde ile
 
-HTTP yanıtını değiştirmek için bir [Çıkış bağlaması](./functions-bindings-http-webhook-output.md)yapılandırın.
+HTTP yanıtını değiştirmek için bir [çıktı bağlama](./functions-bindings-http-webhook-output.md)sını yapılandırın.
 
-HTTP bağlamaları hakkında daha fazla bilgi için bkz. [genel bakış](./functions-bindings-http-webhook.md) ve [Çıkış bağlama başvurusu](./functions-bindings-http-webhook-output.md).
+HTTP ciltlemeleri hakkında daha fazla bilgi için [genel bakış](./functions-bindings-http-webhook.md) ve çıktı [bağlayıcı referansına](./functions-bindings-http-webhook-output.md)bakın.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Aşağıdaki örnek, sorgu dizesinde veya http isteğinin gövdesinde `name` bir parametre gibi görünen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir. Dönüş değerinin çıkış bağlaması için kullanıldığını, ancak bir dönüş değeri özniteliğinin gerekli olmadığını unutmayın.
+Aşağıdaki örnekte, sorgu dizesinde `name` veya HTTP isteğinin gövdesinde bir parametre arayan bir [C# işlevi](functions-dotnet-class-library.md) gösterilmektedir. Çıktı bağlama için iade değerinin kullanıldığına, ancak iade değeri özniteliği nin gerekli olmadığına dikkat edin.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -53,11 +53,11 @@ public static async Task<IActionResult> Run(
 }
 ```
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi sorgu dizesinde veya HTTP isteğinin gövdesinde `name` bir parametre arar.
+Aşağıdaki örnek, bir *function.json* dosyasında tetikleyici bağlama ve bağlamayı kullanan bir [C# komut dosyası işlevini](functions-reference-csharp.md) gösterir. İşlev, sorgu `name` dizesinde veya HTTP isteğinin gövdesinde bir parametre arar.
 
-İşte *function. JSON* dosyası:
+Burada *function.json* dosyası:
 
 ```json
 {
@@ -82,9 +82,9 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlama
 }
 ```
 
-[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#configuration) bölümü bu özellikleri açıklar.
 
-`HttpRequest`bağlanan C# betik kodu aşağıda verilmiştir:
+İşte bağlanan C# komut dosyası `HttpRequest`kodu:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -110,7 +110,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-`HttpRequest`yerine özel bir nesneye bağlayabilirsiniz. Bu nesne, isteğin gövdesinden oluşturulur ve JSON olarak ayrıştırılır. Benzer şekilde, bir tür bir `200` durum kodu ile birlikte HTTP yanıt çıkış bağlamasına geçirilebilir ve yanıt gövdesi olarak geri döndürülebilecek.
+`HttpRequest`'yerine özel bir nesneye bağlanabilirsiniz Bu nesne istek gövdesinden oluşturulur ve JSON olarak ayrıştırılır. Benzer şekilde, bir tür HTTP yanıt çıktısı bağlama geçirilebilir ve bir `200` durum kodu ile birlikte yanıt gövdesi olarak döndürülebilir.
 
 ```csharp
 using System.Net;
@@ -129,11 +129,11 @@ public class Person {
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi sorgu dizesinde veya HTTP isteğinin gövdesinde `name` bir parametre arar.
+Aşağıdaki örnek, bir *function.json* dosyasında tetikleyici bağlama ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev, sorgu `name` dizesinde veya HTTP isteğinin gövdesinde bir parametre arar.
 
-İşte *function. JSON* dosyası:
+Burada *function.json* dosyası:
 
 ```json
 {
@@ -154,9 +154,9 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlama
 }
 ```
 
-[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#configuration) bölümü bu özellikleri açıklar.
 
-JavaScript kod aşağıdaki gibidir:
+İşte JavaScript kodu:
 
 ```javascript
 module.exports = function(context, req) {
@@ -180,9 +180,9 @@ module.exports = function(context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlevi sorgu dizesinde veya HTTP isteğinin gövdesinde `name` bir parametre arar.
+Aşağıdaki örnek, bir *function.json* dosyasında tetikleyici bağlama ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlev, sorgu `name` dizesinde veya HTTP isteğinin gövdesinde bir parametre arar.
 
-İşte *function. JSON* dosyası:
+Burada *function.json* dosyası:
 
 ```json
 {
@@ -204,9 +204,9 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlama
 }
 ```
 
-[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#configuration) bölümü bu özellikleri açıklar.
 
-Python kodu aşağıda verilmiştir:
+Python kodu aşağıdavelvere vermiştir:
 
 ```python
 import logging
@@ -236,16 +236,16 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-* [Sorgu dizesinden parametreyi oku](#read-parameter-from-the-query-string)
-* [POST isteğinden gövde oku](#read-body-from-a-post-request)
-* [Bir rotadaki parametreyi oku](#read-parameter-from-a-route)
-* [POST isteğinden POJO gövdesini okuyun](#read-pojo-body-from-a-post-request)
+* [Sorgu dizesinden parametreyi okuma](#read-parameter-from-the-query-string)
+* [Post isteğinden gövdeyi okuma](#read-body-from-a-post-request)
+* [Rotadan parametre okuma](#read-parameter-from-a-route)
+* [POSTA isteğinden POJO gövdesini okuyun](#read-pojo-body-from-a-post-request)
 
-Aşağıdaki örneklerde HTTP tetikleyicisi bağlama gösterilmektedir.
+Aşağıdaki örneklerDE HTTP tetikleyici bağlama gösterilmektedir.
 
-#### <a name="read-parameter-from-the-query-string"></a>Sorgu dizesinden parametreyi oku
+#### <a name="read-parameter-from-the-query-string"></a>Sorgu dizesinden parametreyi okuma
 
-Bu örnek, sorgu dizesinden `id`adlı bir parametreyi okur ve içerik türü `application/json`olan, istemciye döndürülen bir JSON belgesi oluşturmak için kullanır.
+Bu örnek, sorgu dizesinden adlı `id`bir parametre okur ve içerik türü `application/json`yle istemciye döndürülen bir JSON belgesi oluşturmak için kullanır.
 
 ```java
 @FunctionName("TriggerStringGet")
@@ -282,9 +282,9 @@ public HttpResponseMessage run(
 }
 ```
 
-#### <a name="read-body-from-a-post-request"></a>POST isteğinden gövde oku
+#### <a name="read-body-from-a-post-request"></a>Post isteğinden gövdeyi okuma
 
-Bu örnek, bir POST isteğinin gövdesini bir `String`olarak okur ve `application/json`içerik türü ile istemciye döndürülen bir JSON belgesi oluşturmak için kullanır.
+Bu örnek, `String`bir POST isteğinin gövdesini okur ve içerik türüyle `application/json`istemciye döndürülen bir JSON belgesi oluşturmak için kullanır.
 
 ```java
     @FunctionName("TriggerStringPost")
@@ -318,9 +318,9 @@ Bu örnek, bir POST isteğinin gövdesini bir `String`olarak okur ve `applicatio
     }
 ```
 
-#### <a name="read-parameter-from-a-route"></a>Bir rotadaki parametreyi oku
+#### <a name="read-parameter-from-a-route"></a>Rotadan parametre okuma
 
-Bu örnek, `id`adlı zorunlu bir parametreyi ve yol yolundan `name` isteğe bağlı bir parametreyi okur ve `application/json`içerik türü ile istemciye döndürülen bir JSON belgesi oluşturmak için bunları kullanır. T
+Bu örnek, kod adlı `id`zorunlu bir parametreyi ve rota yolundan isteğe bağlı bir parametreyi `name` okur `application/json`ve bunları içerik türüyle istemciye döndürülen bir JSON belgesi oluşturmak için kullanır. T
 
 ```java
 @FunctionName("TriggerStringRoute")
@@ -356,9 +356,9 @@ public HttpResponseMessage run(
 }
 ```
 
-#### <a name="read-pojo-body-from-a-post-request"></a>POST isteğinden POJO gövdesini okuyun
+#### <a name="read-pojo-body-from-a-post-request"></a>POSTA isteğinden POJO gövdesini okuyun
 
-Bu örnekte başvurulan `ToDoItem` sınıfının kodu aşağıda verilmiştir:
+Bu örnekte başvurulan `ToDoItem` sınıfın kodu aşağıdaverilmiştir:
 
 ```java
 
@@ -388,7 +388,7 @@ public class ToDoItem {
 
 ```
 
-Bu örnek, POST isteğinin gövdesini okur. İstek gövdesi bir `ToDoItem` nesnesine otomatik olarak serileştirilir ve `application/json`içerik türü ile istemciye döndürülür. `ToDoItem` parametresi, `HttpMessageResponse.Builder` sınıfının `body` özelliğine atandığı için Işlevler çalışma zamanı tarafından serileştirilir.
+Bu örnek, bir POST isteğinin gövdesini okur. İstek gövdesi otomatik olarak bir `ToDoItem` nesneye seri dışı hale getirilir ve `application/json`içerik türüyle istemciye döndürülür. Parametre, `ToDoItem` `body` `HttpMessageResponse.Builder` sınıfın özelliğine atandığı gibi Işlevler çalışma süresi tarafından seri hale getirilir.
 
 ```java
 @FunctionName("TriggerPojoPost")
@@ -424,13 +424,13 @@ public HttpResponseMessage run(
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md) ve Java 'da, işlevi yapılandırmak için `HttpTrigger` özniteliği kullanılabilir.
+[C# sınıfı kitaplıklarda](functions-dotnet-class-library.md) `HttpTrigger` ve Java'da, işlevi yapılandırmak için öznitelik kullanılabilir.
 
-Yetkilendirme düzeyini ve izin verilen HTTP yöntemlerini öznitelik Oluşturucu parametreleri, Web kancası türü ve bir yol şablonunda ayarlayabilirsiniz. Bu ayarlar hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration).
+Öznitelik oluşturucu parametreleri, webhook türü ve rota şablonu yetkilendirme düzeyini ve izin verilebilir HTTP yöntemlerini ayarlayabilirsiniz. Bu ayarlar hakkında daha fazla bilgi için [yapılandırmaya](#configuration)bakın.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Bu örnek, [Httptrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) özniteliğinin nasıl kullanılacağını gösterir.
+Bu örnek, [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) özniteliğinin nasıl kullanılacağını gösterir.
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -441,13 +441,13 @@ public static Task<IActionResult> Run(
 }
 ```
 
-Tüm bir örnek için bkz. [tetikleyici örneği](#example).
+Tam bir örnek için [tetikleyici örneğe](#example)bakın.
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+Öznitelikler C# Script tarafından desteklenmez.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
@@ -457,7 +457,7 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
-Bu örnek, [Httptrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) özniteliğinin nasıl kullanılacağını gösterir.
+Bu örnek, [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) özniteliğinin nasıl kullanılacağını gösterir.
 
 ```java
 @FunctionName("HttpTriggerJava")
@@ -471,35 +471,35 @@ public HttpResponseMessage<String> HttpTrigger(
 }
 ```
 
-Tüm bir örnek için bkz. [tetikleyici örneği](#example).
+Tam bir örnek için [tetikleyici örneğe](#example)bakın.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `HttpTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `HttpTrigger` yapılandırma özellikleri ve öznitelik açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.json özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **type** | yok| Gerekli-`httpTrigger`olarak ayarlanmalıdır. |
-| **direction** | yok| Gerekli-`in`olarak ayarlanmalıdır. |
-| **ada** | yok| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. |
-| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |, Varsa, işlevi çağırmak için istekte hangi anahtarların mevcut olması gerektiğini belirler. Yetkilendirme düzeyi aşağıdaki değerlerden biri olabilir: <ul><li><code>anonymous</code>&mdash;API anahtarı gerekli değildir.</li><li>işleve özgü bir API anahtarı &mdash;<code>function</code>gereklidir. Hiçbiri sağlanmazsa varsayılan değer budur.</li><li>Ana anahtar gerekli &mdash;<code>admin</code>.</li></ul> Daha fazla bilgi için [Yetkilendirme anahtarları](#authorization-keys)hakkında bölümüne bakın. |
-| **Yöntem** |**Yöntem** | İşlevin yanıt verdiği HTTP yöntemlerinin dizisi. Belirtilmemişse, işlev tüm HTTP yöntemlerine yanıt verir. Bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
-| **yolu** | **Yolu** | İşlevinizin hangi istek URL 'Lerine yanıt vereceğini denetleyen yol şablonunu tanımlar. Hiçbiri sağlanmadıysa varsayılan değer `<functionname>`. Daha fazla bilgi için bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
-| **Web kancası türü** | **Web kancası türü** | _Yalnızca sürüm 1. x çalışma zamanı için desteklenir._<br/><br/>HTTP tetikleyicisini, belirtilen sağlayıcı için bir [Web kancası](https://en.wikipedia.org/wiki/Webhook) alıcısı olarak davranacak şekilde yapılandırır. Bu özelliği ayarlarsanız `methods` özelliğini ayarlama. Web kancası türü aşağıdaki değerlerden biri olabilir:<ul><li><code>genericJson</code>, belirli bir sağlayıcı için mantık olmadan genel amaçlı bir Web kancası uç noktası &mdash;. Bu ayar, istekleri yalnızca HTTP POST kullanarak ve `application/json` içerik türüyle kısıtlar.</li><li>işlevin [GitHub Web kancalarına](https://developer.github.com/webhooks/)yanıt verdiği <code>github</code>&mdash;. _AUTHLEVEL_ özelliğini GitHub Web kancaları ile kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan GitHub Web kancaları bölümüne bakın.</li><li>işlevin [bolluk web kancalarına](https://api.slack.com/outgoing-webhooks)yanıt verdiği <code>slack</code>&mdash;. _AUTHLEVEL_ özelliğini bolluk web kancaları ile kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında yer alarak bolluk web kancaları bölümüne bakın.</li></ul>|
+| **Türü** | yok| Gerekli - `httpTrigger`ayarlanmalıdır. |
+| **Yön** | yok| Gerekli - `in`ayarlanmalıdır. |
+| **Adı** | yok| Gerekli - istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. |
+| <a name="http-auth"></a>**authSeviye** |  **AuthLevel** |İşlevçağırmak için istekte hangi anahtarların bulunması gerektiğini belirler. Yetkilendirme düzeyi aşağıdaki değerlerden biri olabilir: <ul><li><code>anonymous</code>&mdash;API anahtarı gerekmez.</li><li><code>function</code>&mdash;İşlevselme özgü BIR API anahtarı gereklidir. Hiçbiri sağlanmazsa, bu varsayılan değerdir.</li><li><code>admin</code>&mdash;Ana anahtar gereklidir.</li></ul> Daha fazla bilgi için [yetkilendirme anahtarları](#authorization-keys)hakkındaki bölüme bakın. |
+| **Yöntemler** |**Yöntemler** | İşlevin yanıtlandığı BIR dizi HTTP yöntemi. Belirtilmemişse, işlev tüm HTTP yöntemlerine yanıt verir. Bkz. [HTTP bitiş noktasını özelleştirin.](#customize-the-http-endpoint) |
+| **Rota** | **Rota** | İşlevinizin URL'lerinin yanıtladığı isteğe göre denetleyerek rota şablonunu tanımlar. Hiçbiri sağlanmadıysa varsayılan `<functionname>`değer. Daha fazla bilgi için [HTTP bitiş noktasını özelleştirin.](#customize-the-http-endpoint) |
+| **webHookType** | **WebHookType** | _Yalnızca sürüm 1.x çalışma süresi için desteklenir._<br/><br/>Belirtilen sağlayıcı için [bir webhook](https://en.wikipedia.org/wiki/Webhook) alıcısı olarak hareket etmek için HTTP tetikleyicisini yapılandırır. Bu özelliği ayarladıysanız `methods` özelliği ayarlamayın. Webhook türü aşağıdaki değerlerden biri olabilir:<ul><li><code>genericJson</code>&mdash;Belirli bir sağlayıcı için mantık olmadan genel amaçlı bir webhook bitiş noktası. Bu ayar, istekleri yalnızca HTTP POST kullananve içerik türüne `application/json` sahip olanlarla sınırlandırıyor.</li><li><code>github</code>&mdash;Fonksiyon [GitHub webhooks](https://developer.github.com/webhooks/)yanıt verir. GitHub webhooks ile _authLevel_ özelliğini kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen bölümlerinde GitHub webhooks bölümüne bakın.</li><li><code>slack</code>&mdash;Fonksiyon [Slack webhooks](https://api.slack.com/outgoing-webhooks)yanıt verir. Slack webhooks ile _authLevel_ özelliğikullanmayın. Daha fazla bilgi için, bu makalenin ilerleyen bölümlerinde Slack webhooks bölümüne bakın.</li></ul>|
 
-## <a name="payload"></a>Te
+## <a name="payload"></a>Yükü
 
-Tetikleyici giriş türü `HttpRequest` veya özel bir tür olarak bildirilmiştir. `HttpRequest`' yi seçerseniz, istek nesnesine tam erişim alırsınız. Özel bir tür için, çalışma zamanı nesne özelliklerini ayarlamak için JSON istek gövdesini ayrıştırmaya çalışır.
+Tetikleyici giriş türü ya da `HttpRequest` özel bir tür olarak bildirilir. Seçerseniz, `HttpRequest`istek nesnesine tam erişim elde elabilirsiniz. Özel bir tür için, çalışma zamanı nesne özelliklerini ayarlamak için JSON istek gövdesini ayrıştamayı dener.
 
-## <a name="customize-the-http-endpoint"></a>HTTP uç noktasını özelleştirme
+## <a name="customize-the-http-endpoint"></a>HTTP bitiş noktasını özelleştirin
 
-Varsayılan olarak, bir HTTP tetikleyicisi için bir işlev oluşturduğunuzda, işlev, formun bir yolu ile adreslenebilir:
+Varsayılan olarak bir HTTP tetikleyicisi için bir işlev oluşturduğunuzda, işlev formun bir rotası yla giderilebilir:
 
     http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 
-HTTP tetikleyicisinin giriş bağlamasında isteğe bağlı `route` özelliğini kullanarak bu yolu özelleştirebilirsiniz. Örnek olarak, aşağıdaki *function. JSON* dosyası bir http tetikleyicisi için `route` özelliğini tanımlar:
+BU rotayı, HTTP tetikleyicisinin giriş bağlamasındaki isteğe bağlı `route` özelliği kullanarak özelleştirebilirsiniz. Örnek olarak, aşağıdaki *function.json* dosyası `route` bir HTTP tetikleyicisi için bir özellik tanımlar:
 
 ```json
 {
@@ -520,17 +520,17 @@ HTTP tetikleyicisinin giriş bağlamasında isteğe bağlı `route` özelliğini
 }
 ```
 
-Bu yapılandırmayı kullanarak, işlev artık özgün yol yerine aşağıdaki rota ile adreslenebilir.
+Bu yapılandırmayı kullanarak, işlev artık özgün rota yerine aşağıdaki rota ile ele alınabiliyor.
 
 ```
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-Bu yapılandırma, işlev kodunun adreste, _kategoride_ ve _kimliğinde_iki parametreyi desteklemesini sağlar.
+Bu yapılandırma işlev kodunun adres, _kategori_ ve _id'de_iki parametreyi desteklemesine olanak tanır.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Parametrelerinizi kullanarak herhangi bir [Web API yolu kısıtlaması](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) kullanabilirsiniz. Aşağıdaki C# işlev kodu her iki parametrenin de kullanımını sağlar.
+Parametrelerinizle birlikte herhangi bir [Web API Rota Kısıtlaması](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) kullanabilirsiniz. Aşağıdaki C# fonksiyon kodu her iki parametreyi de kullanır.
 
 ```csharp
 using System.Net;
@@ -544,9 +544,9 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Parametrelerinizi kullanarak herhangi bir [Web API yolu kısıtlaması](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) kullanabilirsiniz. Aşağıdaki C# işlev kodu her iki parametrenin de kullanımını sağlar.
+Parametrelerinizle birlikte herhangi bir [Web API Rota Kısıtlaması](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) kullanabilirsiniz. Aşağıdaki C# fonksiyon kodu her iki parametreyi de kullanır.
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -562,11 +562,11 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Düğümünde, Işlevleri çalışma zamanı `context` nesnesinden istek gövdesini sağlar. Daha fazla bilgi için bkz. [JavaScript tetikleyici örneği](#example).
+Düğümde, İşlevler çalışma süresi nesneden `context` istek gövdesisağlar. Daha fazla bilgi için [JavaScript tetikleyici örneğine](#example)bakın.
 
-Aşağıdaki örnek, `context.bindingData`yönlendirme parametrelerinin nasıl okunacağını gösterir.
+Aşağıdaki örnekte, rota parametrelerinin `context.bindingData`nasıl okunduğu gösterilmektedir.
 
 ```javascript
 module.exports = function (context, req) {
@@ -585,9 +585,9 @@ module.exports = function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-İşlev yürütme bağlamı, `func.HttpRequest`olarak belirtilen bir parametre aracılığıyla sunulur. Bu örnek, bir işlevin veri yolu parametrelerine erişmesini, sorgu dizesi değerlerini ve HTTP yanıtlarını döndürmenize izin veren yöntemleri sağlar.
+İşlev yürütme bağlamı olarak `func.HttpRequest`bildirilen bir parametre ile ortaya çıkarır. Bu örnek, bir işlevin veri yolu parametrelerine, sorgu dize değerlerine ve HTTP yanıtlarını döndürmenize olanak tanıyan yöntemlere erişmesine izin verir.
 
-Tanımlandıktan sonra, yol parametreleri `route_params` yöntemi çağırarak işlev için kullanılabilir.
+Tanımlandıktan sonra, rota parametreleri `route_params` yöntemi çağırarak işlev için kullanılabilir.
 
 ```python
 import logging
@@ -605,9 +605,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-İşlev yürütme bağlamı, `HttpTrigger` özniteliğinde belirtilen özelliklerdir. Özniteliği yol parametreleri, yetkilendirme düzeyleri, HTTP fiilleri ve gelen istek örneğini tanımlamanızı sağlar.
+İşlev yürütme bağlamı öznitelik `HttpTrigger` tesniye olarak bildirilen özellikleridir. Öznitelik, rota parametrelerini, yetkilendirme düzeylerini, HTTP fiillerini ve gelen istek örneğini tanımlamanızı sağlar.
 
-Yol parametreleri `HttpTrigger` özniteliği aracılığıyla tanımlanır.
+Rota parametreleri `HttpTrigger` öznitelik üzerinden tanımlanır.
 
 ```java
 package com.function;
@@ -634,7 +634,7 @@ public class HttpTriggerJava {
 
 ---
 
-Varsayılan olarak, tüm işlev yollarına *API*ön eki eklenir. Ayrıca, [Host. JSON](functions-host-json.md) dosyanızdaki `http.routePrefix` özelliğini kullanarak ön eki özelleştirebilir veya kaldırabilirsiniz. Aşağıdaki örnek, *Host. JSON* dosyasındaki önek için boş bir dize kullanarak *API* yol önekini kaldırır.
+Varsayılan olarak, tüm işlev yolları *api*ile önceden belirlenmiştir. Ayrıca, [ana bilgisayar.json](functions-host-json.md) dosyanızdaki `http.routePrefix` özelliği kullanarak önek'i özelleştirebilir veya kaldırabilirsiniz. Aşağıdaki örnek, *ana bilgisayar.json* dosyasındaki önek için boş bir dize kullanarak *api* rota önekini kaldırır.
 
 ```json
 {
@@ -646,9 +646,9 @@ Varsayılan olarak, tüm işlev yollarına *API*ön eki eklenir. Ayrıca, [Host.
 
 ## <a name="using-route-parameters"></a>Rota parametrelerini kullanma
 
-Bir işlevin `route` modelini tanımlayan rota parametreleri her bağlamada kullanılabilir. Örneğin, `"route": "products/{id}"` olarak tanımlanmış bir yol varsa, tablo depolama bağlaması bağlama yapılandırmasındaki `{id}` parametresinin değerini kullanabilir.
+Bir `route` işlevin deseni tanımlayan rota parametreleri her bağlama için kullanılabilir. Örneğin, daha sonra tablo depolama `"route": "products/{id}"` bağlama olarak tanımlanan bir rota `{id}` varsa bağlama yapılandırmasında parametre değerini kullanabilirsiniz.
 
-Aşağıdaki yapılandırma `{id}` parametresinin bağlama `rowKey`nasıl geçtiğini gösterir.
+Aşağıdaki yapılandırma, parametrenin bağlamanın `{id}` . `rowKey`
 
 ```json
 {
@@ -663,13 +663,13 @@ Aşağıdaki yapılandırma `{id}` parametresinin bağlama `rowKey`nasıl geçti
 
 ## <a name="working-with-client-identities"></a>İstemci kimlikleriyle çalışma
 
-İşlev uygulamanız [App Service kimlik doğrulaması/yetkilendirme](../app-service/overview-authentication-authorization.md)kullanıyorsa, koddan kimliği doğrulanmış istemcilerle ilgili bilgileri görüntüleyebilirsiniz. Bu bilgiler, [platform tarafından eklenen istek üstbilgileri](../app-service/app-service-authentication-how-to.md#access-user-claims)olarak kullanılabilir. 
+İşlev uygulamanız [App Service Authentication / Authorization](../app-service/overview-authentication-authorization.md)kullanıyorsa, kimliği doğrulanmış istemciler hakkındaki bilgileri kodunuzdan görüntüleyebilirsiniz. Bu [bilgiler, platform tarafından enjekte edilen istek üstbilgileri](../app-service/app-service-authentication-how-to.md#access-user-claims)olarak kullanılabilir. 
 
-Ayrıca, bu bilgileri bağlama verilerinden okuyabilirsiniz. Bu özellik yalnızca 2. x ve üzeri Işlevleri çalışma zamanı için kullanılabilir. Bu, şu anda yalnızca .NET dilleri için de kullanılabilir.
+Bu bilgileri bağlayıcı verilerden de okuyabilirsiniz. Bu özellik yalnızca 2.x ve üzeri işlevler çalışma süresi için kullanılabilir. Ayrıca şu anda yalnızca .NET dilleri için kullanılabilir.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Kimliği doğrulanmış istemcilerle ilgili bilgiler bir [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)olarak sunulmaktadır. ClaimsPrincipal, aşağıdaki örnekte gösterildiği gibi istek bağlamının bir parçası olarak kullanılabilir:
+Kimlik doğrulaması yapılan istemcilere ilişkin [bilgiler, Talep Müdürü](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)olarak kullanılabilir. Talep Anabilim Dali, aşağıdaki örnekte gösterildiği gibi istek bağlamının bir parçası olarak kullanılabilir:
 
 ```csharp
 using System.Net;
@@ -699,9 +699,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Kimliği doğrulanmış istemcilerle ilgili bilgiler bir [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)olarak sunulmaktadır. ClaimsPrincipal, aşağıdaki örnekte gösterildiği gibi istek bağlamının bir parçası olarak kullanılabilir:
+Kimlik doğrulaması yapılan istemcilere ilişkin [bilgiler, Talep Müdürü](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal)olarak kullanılabilir. Talep Anabilim Dali, aşağıdaki örnekte gösterildiği gibi istek bağlamının bir parçası olarak kullanılabilir:
 
 ```csharp
 using System.Net;
@@ -733,112 +733,112 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Kimliği doğrulanmış kullanıcı [http üstbilgileri](../app-service/app-service-authentication-how-to.md#access-user-claims)aracılığıyla kullanılabilir.
+Kimlik doğrulaması kullanıcı [http üstbilgi](../app-service/app-service-authentication-how-to.md#access-user-claims)aracılığıyla kullanılabilir.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kimliği doğrulanmış kullanıcı [http üstbilgileri](../app-service/app-service-authentication-how-to.md#access-user-claims)aracılığıyla kullanılabilir.
+Kimlik doğrulaması kullanıcı [http üstbilgi](../app-service/app-service-authentication-how-to.md#access-user-claims)aracılığıyla kullanılabilir.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Kimliği doğrulanmış kullanıcı [http üstbilgileri](../app-service/app-service-authentication-how-to.md#access-user-claims)aracılığıyla kullanılabilir.
+Kimlik doğrulaması kullanıcı [http üstbilgi](../app-service/app-service-authentication-how-to.md#access-user-claims)aracılığıyla kullanılabilir.
 
 ---
 
 ## <a name="authorization-keys"></a>Yetkilendirme anahtarları
 
-İşlevler, geliştirme sırasında HTTP işlev uç noktalarınıza erişmeyi daha zor hale getirmek için anahtarları kullanmanıza olanak sağlar.  HTTP ile tetiklenen bir işlev üzerindeki HTTP Yetkilendirme düzeyi `anonymous`olarak ayarlanmadığı takdirde istekler istekte bir API anahtarı içermelidir. 
+İşlevler, geliştirme sırasında HTTP işlev uç noktalarınıza erişmenizi zorlaştırmak için tuşları kullanmanıza olanak tanır.  HTTP tetiklenen bir işlevdeki HTTP yetkilendirme `anonymous`düzeyi ayarlı değilse, isteklere isteğe bir API anahtarı da eklenmelidir. 
 
 > [!IMPORTANT]
-> Anahtarlar geliştirme sırasında HTTP uç noktalarınızı gizleme konusunda yardımcı olabilir, ancak üretimde bir HTTP tetikleyicisini güvenli hale getirmenin bir yolu olarak tasarlanmamıştır. Daha fazla bilgi edinmek için bkz. [üretimde BIR HTTP uç noktası güvenli hale getirme](#secure-an-http-endpoint-in-production).
+> Anahtarlar geliştirme sırasında HTTP uç noktalarınızın gizlenmenize yardımcı olsa da, üretimde bir HTTP tetikleyicisini güvence altına almak için bir yol olarak tasarlanmamıştır. Daha fazla bilgi için, [üretimde http uç noktasını güvenli](#secure-an-http-endpoint-in-production)olarak görün.
 
 > [!NOTE]
-> 1\. x çalışma zamanında, Web kancası sağlayıcıları, sağlayıcının neleri desteklediğine bağlı olarak çeşitli yollarla istekleri yetkilendirmek için anahtarlar kullanabilir. Bu, [Web kancaları ve anahtarları](#webhooks-and-keys)kapsamına alınmıştır. Sürüm 2. x ve üzeri içindeki Işlevler çalışma zamanı, Web kancası sağlayıcıları için yerleşik destek içermez.
+> İşlevler 1.x çalışma zamanında, webhook sağlayıcıları, sağlayıcının ne desteklediğine bağlı olarak istekleri çeşitli şekillerde yetkilendirmek için anahtarları kullanabilir. Bu [Webhooks ve anahtarları](#webhooks-and-keys)kaplıdır. Sürüm 2.x ve üzeri işlevler çalışma süresi webhook sağlayıcıları için yerleşik desteği içermez.
 
-#### <a name="authorization-scopes-function-level"></a>Yetkilendirme kapsamları (işlev düzeyi)
+#### <a name="authorization-scopes-function-level"></a>Yetkilendirme kapsamları (işlev düzeyinde)
 
-İşlev düzeyi anahtarlar için iki yetkilendirme kapsamı vardır:
+İşlev düzeyi anahtarları için iki yetkilendirme kapsamı vardır:
 
-* **İşlev**: Bu anahtarlar yalnızca tanımlandıkları belirli işlevler için geçerlidir. API anahtarı olarak kullanıldığında, bunlar yalnızca bu işleve erişime izin verir.
+* **Fonksiyon**: Bu tuşlar yalnızca tanımlandığı belirli işlevlere uygulanır. API anahtarı olarak kullanıldığında, bunlar yalnızca bu işleve erişime izin verir.
 
-* **Konak**: işlev uygulaması içindeki tüm işlevlere erişmek için konak kapsamına sahip anahtarlar kullanılabilir. API anahtarı olarak kullanıldığında, bu, işlev uygulaması içindeki herhangi bir işleve erişime izin verir. 
+* **Ana bilgisayar**: Ana bilgisayar kapsamına sahip anahtarlar, işlev uygulaması içindeki tüm işlevlere erişmek için kullanılabilir. API anahtarı olarak kullanıldığında, bunlar işlev uygulaması içindeki herhangi bir işleve erişim sağlar. 
 
-Her anahtar başvuru için adlandırılır ve işlev ve ana bilgisayar düzeyinde bir varsayılan anahtar ("varsayılan" olarak adlandırılır) vardır. İşlev anahtarları ana bilgisayar anahtarlarına göre önceliklidir. Aynı ada sahip iki anahtar tanımlandığında, işlev anahtarı her zaman kullanılır.
+Her anahtar başvuru için adlandırılır ve işlev ve ana bilgisayar düzeyinde varsayılan bir anahtar ("varsayılan" olarak adlandırılır) vardır. İşlev tuşları ana bilgisayar tuşlarına göre önceliklidir. İki anahtar aynı adla tanımlandığında, işlev anahtarı her zaman kullanılır.
 
-#### <a name="master-key-admin-level"></a>Ana anahtar (yönetici düzeyi) 
+#### <a name="master-key-admin-level"></a>Ana anahtar (yönetici düzeyinde) 
 
-Her işlev uygulamasının Ayrıca `_master`adlı bir yönetim düzeyi ana bilgisayar anahtarı vardır. Ana anahtar, uygulamadaki tüm işlevlere ana bilgisayar düzeyinde erişim sağlamaya ek olarak, çalışma zamanı REST API 'Lerine da yönetici erişimi sağlar. Bu anahtar iptal edilemez. `admin`bir Yetkilendirme düzeyi ayarladığınızda, isteklerin ana anahtarı kullanması gerekir; diğer herhangi bir anahtar, yetkilendirme hatasına neden olur.
+Her işlev uygulamasının aynı zamanda admin `_master`düzeyinde bir ana bilgisayar anahtarı vardır. Ana anahtar, uygulamadaki tüm işlevlere ana bilgisayar düzeyinde erişim sağlamanın yanı sıra, çalışma zamanı REST API'lerine de yönetim erişimi sağlar. Bu anahtar iptal edilemez. Bir yetkilendirme düzeyi `admin`ayarladığınızda, isteklerin ana anahtarı kullanması gerekir; yetkilendirme hatası ile diğer anahtar sonuçları.
 
 > [!CAUTION]  
-> Ana anahtar tarafından verilen işlev uygulamanızda yükseltilmiş izinler nedeniyle, bu anahtarı üçüncü taraflarla paylaşmamalıdır veya yerel istemci uygulamalarında dağıtmanız gerekir. Yönetici yetkilendirme düzeyini seçerken dikkatli olun.
+> Ana anahtar tarafından verilen işlev uygulamanızdaki yüksek izinler nedeniyle, bu anahtarı üçüncü taraflarla paylaşmamalı veya yerel istemci uygulamalarında dağıtmamalısınız. Yönetici yetkilendirme düzeyini seçerken dikkatli olun.
 
-## <a name="obtaining-keys"></a>Anahtarları edinme
+## <a name="obtaining-keys"></a>Anahtarları alma
 
-Anahtarlar, Azure 'daki işlev uygulamanızın bir parçası olarak depolanır ve bekleyen olarak şifrelenir. Anahtarlarınızı görüntülemek, yenilerini oluşturmak veya yeni değerlere anahtar almak için, [Azure Portal](https://portal.azure.com) http ile tetiklenen işlevlerinizin birine gidin ve **Yönet**' i seçin.
+Anahtarlar işlev uygulamanızın bir parçası olarak Azure'da saklanır ve istirahatte şifrelenir. Anahtarlarınızı görüntülemek, yenilerini oluşturmak veya yeni değerlere yuvarlama tuşları oluşturmak için [Azure portalında](https://portal.azure.com) HTTP tarafından tetiklenen işlevlerinizden birine gidin ve **Yönet'i**seçin.
 
-![Portalda işlev anahtarlarını yönetin.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+![Portaldaki işlev anahtarlarını yönetin.](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
-[Anahtar yönetimi API 'lerini](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)kullanarak işlev anahtarlarını programlama yoluyla elde edebilirsiniz.
+[Anahtar yönetimi API'lerini](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)kullanarak fonksiyon tuşlarını programlı olarak edinebilirsiniz.
 
-## <a name="api-key-authorization"></a>API anahtarı yetkilendirmesi
+## <a name="api-key-authorization"></a>API anahtar yetkilendirmesi
 
-HTTP tetikleyici şablonlarının çoğu istekte bir API anahtarı gerektirir. Bu nedenle, HTTP isteğiniz normalde aşağıdaki URL gibi görünür:
+ÇOĞU HTTP tetikleyici şablonu istekte bir API anahtarı gerektirir. Yani HTTP isteğiniz normalde aşağıdaki URL'ye benzer:
 
     https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
 
-Anahtar, yukarıdaki `code`adlı bir sorgu dizesi değişkenine dahil edilebilir. Ayrıca, bir `x-functions-key` HTTP başlığına da dahil edilebilir. Anahtarın değeri, işlev için tanımlanan herhangi bir işlev anahtarı veya herhangi bir konak anahtarı olabilir.
+Anahtar, yukarıdaki gibi adlı `code`bir sorgu dize değişkenine eklenebilir. Ayrıca bir `x-functions-key` HTTP üstbilgi dahil edilebilir. Anahtarın değeri işlev için tanımlanan herhangi bir işlev anahtarı veya herhangi bir ana bilgisayar anahtarı olabilir.
 
-Anahtar gerektirmeyen anonim isteklere izin verebilirsiniz. Ana anahtarın kullanılmasını da gerekli kılabilirsiniz. JSON bağlamasındaki `authLevel` özelliğini kullanarak varsayılan yetkilendirme düzeyini değiştirirsiniz. Daha fazla bilgi için bkz. [tetikleyici-yapılandırma](#configuration).
+Anahtar gerektirmeyen anonim isteklere izin verebilirsiniz. Ana anahtarın kullanılmasını da gerektirebilirsiniz. Bağlama JSON özelliğini kullanarak `authLevel` varsayılan yetkilendirme düzeyini değiştirirsiniz. Daha fazla bilgi için [Bkz. Tetikleyici - yapılandırma.](#configuration)
 
 > [!NOTE]
-> İşlevler yerel olarak çalıştırılırken, kimlik doğrulama, belirtilen Yetkilendirme düzeyi ayarından bağımsız olarak devre dışıdır. Azure 'da yayımladıktan sonra, tetikleyicinizdeki `authLevel` ayarı zorlanır. [Bir kapsayıcıda yerel olarak](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)çalıştırılırken Anahtarlar hala gereklidir.
+> İşlevleri yerel olarak çalıştırırken, belirtilen yetkilendirme düzeyi ayarına bakılmaksızın yetkilendirme devre dışı bırakılır. Azure'da yayımladıktan `authLevel` sonra tetikleyicinizdeki ayar zorlanır. Bir [kapsayıcıda yerel olarak](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)çalışırken anahtarlar hala gereklidir.
 
 
-## <a name="secure-an-http-endpoint-in-production"></a>Üretimde bir HTTP uç noktasının güvenliğini sağlama
+## <a name="secure-an-http-endpoint-in-production"></a>Üretimde bir HTTP uç noktasını güvenli hale
 
-İşlev uç noktalarınızı üretimde tam olarak güvenli hale getirmek için aşağıdaki işlev uygulama düzeyi güvenlik seçeneklerinden birini uygulamayı göz önünde bulundurmanız gerekir:
+Üretimdeki işlev uç noktalarınızı tam olarak güvence altına almak için aşağıdaki işlev uygulama düzeyinde güvenlik seçeneklerinden birini uygulamayı düşünmelisiniz:
 
-* İşlev uygulamanız için App Service kimlik doğrulaması/yetkilendirme 'yi açın. App Service platformu, istemcilerin kimliğini doğrulamak için Azure Active Directory (AAD) ve çeşitli üçüncü taraf kimlik sağlayıcılarını kullanmanıza olanak sağlar. İşlevleriniz için özel yetkilendirme kuralları uygulamak üzere bu stratejiyi kullanabilir ve işlev kodunuzda kullanıcı bilgileriyle çalışabilirsiniz. Daha fazla bilgi için bkz. [Azure App Service 'Da kimlik doğrulama ve yetkilendirme](../app-service/overview-authentication-authorization.md) ve [istemci kimlikleriyle çalışma](#working-with-client-identities).
+* İşlev uygulamanız için Uygulama Hizmeti Kimlik Doğrulaması / Yetkilendirme'yi açın. Uygulama Hizmeti platformu, müşterilerin kimliğini doğrulamak için Azure Active Directory (AAD) ve birkaç üçüncü taraf kimlik sağlayıcısını kullanmanıza olanak tanır. Bu stratejiyi, işlevleriniz için özel yetkilendirme kuralları uygulamak için kullanabilir ve işlev kodunuzdaki kullanıcı bilgileriyle çalışabilirsiniz. Daha fazla bilgi edinmek için [Azure Uygulama Hizmeti'nde kimlik doğrulama ve yetkilendirme](../app-service/overview-authentication-authorization.md) ve istemci [kimlikleriyle çalışma](#working-with-client-identities)'ya bakın.
 
-* İsteklerin kimliğini doğrulamak için Azure API Management (APıM) kullanın. APıM, gelen istekler için çeşitli API güvenliği seçenekleri sağlar. Daha fazla bilgi için bkz. [API Management kimlik doğrulama ilkeleri](../api-management/api-management-authentication-policies.md). APıM ile, işlev uygulamanızı yalnızca APıM örneğinizin IP adresinden gelen istekleri kabul edecek şekilde yapılandırabilirsiniz. Daha fazla bilgi için bkz. [IP adresi kısıtlamaları](ip-addresses.md#ip-address-restrictions).
+* İstekleri doğrulamak için Azure API Yönetimi'ni (APIM) kullanın. APIM, gelen istekler için çeşitli API güvenlik seçenekleri sağlar. Daha fazla bilgi edinmek için [API Yönetimi kimlik doğrulama ilkelerine](../api-management/api-management-authentication-policies.md)bakın. APIM yerinde olduğu için, işlev uygulamanızı yalnızca APIM örneğinizin IP adresinden istekleri kabul etmek üzere yapılandırabilirsiniz. Daha fazla bilgi için [IP adresi kısıtlamalarına](ip-addresses.md#ip-address-restrictions)bakın.
 
-* İşlev uygulamanızı bir Azure App Service Ortamı dağıtın (Ao). ATıCı, işlevlerinizin çalıştırılacağı adanmış bir barındırma ortamı sağlar. Ao, tüm gelen isteklerin kimliğini doğrulamak için kullanabileceğiniz tek bir ön uç ağ geçidi yapılandırmanıza olanak tanır. Daha fazla bilgi için bkz. [App Service ortamı Için Web uygulaması güvenlik duvarı (WAF) yapılandırma](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
+* İşlev uygulamanızı azure uygulama hizmet ortamına (ASE) dağıtın. ASE, işlevlerinizi çalıştırmak için özel bir barındırma ortamı sağlar. ASE, gelen tüm istekleri doğrulamak için kullanabileceğiniz tek bir ön uç ağ geçidini yapılandırmanızı sağlar. Daha fazla bilgi için, [Uygulama Hizmet Ortamı için Bir Web Uygulama Güvenlik Duvarı (WAF) Yapılandırma'ya](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)bakın.
 
-Bu işlev uygulama düzeyi güvenlik yöntemlerinden birini kullanırken, HTTP ile tetiklenen işlev yetkilendirme düzeyini `anonymous`olarak ayarlamanız gerekir.
+Bu işlev uygulama düzeyinde güvenlik yöntemlerinden birini kullanırken, HTTP tarafından tetiklenen işlev yetkilendirme düzeyini `anonymous`.
 
 ## <a name="webhooks"></a>Web Kancaları
 
 > [!NOTE]
-> Web kancası modu yalnızca Işlevler çalışma zamanının sürüm 1. x 'i için kullanılabilir. Bu değişiklik, sürüm 2. x ve üzeri HTTP tetikleyicilerinin performansını geliştirmek için yapılmıştır.
+> Webhook modu yalnızca Fonksiyonlar çalışma zamanının 1.x sürümü için kullanılabilir. Bu değişiklik, sürüm 2.x ve daha yüksek http tetikleyicilerin performansını artırmak için yapılmıştır.
 
-Sürüm 1. x içinde, Web kancası şablonları Web kancası yükleri için ek doğrulama sağlar. Sürüm 2. x ve üzeri sürümlerde, temel HTTP tetikleyicisi hala çalışıyor ve Web kancaları için önerilen yaklaşım. 
+Sürüm 1.x'te, webhook şablonları webhook yükleri için ek doğrulama sağlar. Sürüm 2.x ve daha yüksek, temel HTTP tetik hala çalışır ve webhooks için önerilen bir yaklaşımdır. 
 
-### <a name="github-webhooks"></a>GitHub Web kancaları
+### <a name="github-webhooks"></a>GitHub webhooks
 
-GitHub Web kancalarına yanıt vermek için, önce bir HTTP tetikleyicisiyle işlevinizi oluşturun ve **Web Kancatürü** özelliğini `github`olarak ayarlayın. Ardından, URL ve API anahtarını GitHub deponuzun **Web kancası Ekle** sayfasına kopyalayın. 
+GitHub webhooks yanıt vermek için, ilk bir HTTP Trigger ile işlevinizi `github`oluşturun ve **webHookType** özelliğini ayarlayın. Ardından URL ve API anahtarını GitHub deponuzun **webhook** ekle sayfasına kopyalayın. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
-### <a name="slack-webhooks"></a>Bolluk web kancaları
+### <a name="slack-webhooks"></a>Bolluk webhooks
 
-Bolluk Web kancası sizin belirtebilmenizi sağlamak yerine sizin için bir belirteç üretir. bu nedenle, bir işleve özgü anahtarı bolluk 'ten belirtece göre yapılandırmanız gerekir. Bkz. [Yetkilendirme anahtarları](#authorization-keys).
+Slack webhook, belirtmenize izin vermek yerine sizin için bir belirteç oluşturur, bu nedenle Slack'in belirteciyle işleve özgü bir anahtarı yapılandırmanız gerekir. Bkz. [Yetki anahtarları](#authorization-keys).
 
-## <a name="webhooks-and-keys"></a>Web kancaları ve anahtarları
+## <a name="webhooks-and-keys"></a>Webhooks ve tuşları
 
-Web kancası yetkilendirmesi, HTTP tetikleyicisinin bir parçası olan Web kancası alıcısı bileşeni tarafından işlenir ve mekanizma Web kancası türüne göre farklılık gösterir. Her mekanizma bir anahtara bağlıdır. Varsayılan olarak, "varsayılan" adlı işlev anahtarı kullanılır. Farklı bir anahtar kullanmak için, Web kancası sağlayıcısını aşağıdaki yollarla anahtar adını istekle birlikte gönderecek şekilde yapılandırın:
+Webhook yetkilendirmesi, HTTP tetikleyicisinin bir parçası olan webhook alıcı bileşeni tarafından işlenir ve mekanizma webhook türüne göre değişir. Her mekanizma bir anahtara güvenir. Varsayılan olarak, "varsayılan" adlı işlev anahtarı kullanılır. Farklı bir anahtar kullanmak için, webhook sağlayıcısını istekle birlikte anahtar adını aşağıdaki yollardan biriyle gönderecek şekilde yapılandırın:
 
-* **Sorgu dizesi**: sağlayıcı, `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`gibi `clientid` sorgu dizesi parametresinde anahtar adı geçirir.
-* **İstek üst bilgisi**: sağlayıcı, `x-functions-clientid` üst bilgisinde anahtar adını geçirir.
+* **Sorgu dizesi**: Sağlayıcı, `clientid` sorgu dize parametresinde anahtar adını geçer, örneğin. `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`
+* **İstek üstbilgi :** Sağlayıcı `x-functions-clientid` üstbilgide anahtar adı geçer.
 
 ## <a name="limits"></a>Sınırlar
 
-HTTP istek uzunluğu 100 MB (104.857.600 bayt) ile sınırlıdır ve URL uzunluğu 4 KB (4.096 bayt) ile sınırlıdır. Bu sınırlar, çalışma zamanının [Web. config dosyasının](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)`httpRuntime` öğesi tarafından belirtilir.
+HTTP istek uzunluğu 100 MB (104.857.600 bayt) ile ve URL uzunluğu 4 KB (4.096 bayt) ile sınırlıdır. Bu sınırlar, çalışma `httpRuntime` zamanının [Web.config dosyasının](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)öğesi tarafından belirtilir.
 
-HTTP tetikleyicisini kullanan bir işlev 230 saniye içinde tamamlanmazsa, [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) zaman aşımına uğrar ve bir HTTP 502 hatası döndürür. İşlev çalışmaya devam edecektir, ancak HTTP yanıtı dönemeyecektir. Uzun süre çalışan işlevlerde, zaman uyumsuz desenleri izlemenizi ve isteğin durumuna ping ekleyebileceğiniz bir konum döndürmenizi öneririz. Bir işlevin ne kadar süreyle çalıştırılabilmesini hakkında bilgi için bkz. [ölçek ve barındırma-tüketim planı](functions-scale.md#timeout).
+HTTP tetikleyicisini kullanan bir işlev 230 saniye içinde tamamlanmazsa, [Azure Yük Dengeleyicisi](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) zaman dolur ve bir HTTP 502 hatası döndürer. İşlev çalışmaya devam eder, ancak bir HTTP yanıtını döndüremez. Uzun süren işlevler için, async desenleri izlemenizi ve isteğin durumunu pingebileceğiniz bir konum döndürmenizi öneririz. Bir işlevin ne kadar süreyle çalıştırılabildiği hakkında bilgi için [Ölçek ve barındırma - Tüketim planına](functions-scale.md#timeout)bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir işlevden HTTP yanıtı döndürme](./functions-bindings-http-webhook-output.md)
+- [Bir işlevden bir HTTP yanıtı döndürme](./functions-bindings-http-webhook-output.md)

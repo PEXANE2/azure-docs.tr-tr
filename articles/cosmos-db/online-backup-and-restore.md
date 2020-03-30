@@ -1,96 +1,96 @@
 ---
-title: Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
-description: Bu makalede, Azure Cosmos DB ' de otomatik, çevrimiçi yedekleme ve isteğe bağlı veri geri yükleme işlemlerinin nasıl çalıştığı açıklanır.
+title: Azure Cosmos DB'de çevrimiçi yedekleme ve isteğe bağlı veri geri yüklemesi
+description: Bu makalede, Azure Cosmos DB'de otomatik, çevrimiçi yedekleme ve isteğe bağlı veri geri yüklemenin nasıl çalıştığı açıklanmaktadır.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4ca4fa8699d9bd4b35f26983f2f7004c63da180f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240428"
 ---
-# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB'de çevrimiçi yedekleme ve isteğe bağlı veri geri yüklemesi
 
-Azure Cosmos DB, düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır. Otomatik yedeklemeler, veritabanı işlemlerinin performansını veya kullanılabilirliğini etkilemeden alınır. Tüm yedeklemeler bir depolama hizmetinde ayrı olarak depolanır ve bu yedeklemeler, bölgesel felate karşı dayanıklılık açısından küresel olarak çoğaltılır. Azure Cosmos hesabınızı, veritabanınızı veya kapsayıcısını yanlışlıkla sildikten veya güncelleştirdiğinizde ve daha sonra veri kurtarmayı gerektirdiğinde, otomatik yedeklemeler senaryolarda yardımcı olur.
+Azure Cosmos DB, verilerinizin yedeklerini düzenli aralıklarla otomatik olarak alır. Otomatik yedeklemeler, veritabanı işlemlerinin performansını veya kullanılabilirliğini etkilemeden alınır. Tüm yedeklemeler bir depolama hizmetinde ayrı olarak depolanır ve bu yedeklemeler bölgesel felaketlere karşı dayanıklılık için küresel olarak çoğaltılır. Otomatik yedeklemeler, Azure Cosmos hesabınızı, veritabanınızı veya kapsayıcınızı yanlışlıkla sildiğinizde veya güncellediğinizde ve daha sonra veri kurtarmayı gerektiren senaryolarda yararlıdır.
 
 ## <a name="automatic-and-online-backups"></a>Otomatik ve çevrimiçi yedeklemeler
 
-Yalnızca verilerinizin değil, Azure Cosmos DB ile verilerinizin yedekleri çok fazla yedekli ve bölgesel felaketlere dayanıklı olabilir. Aşağıdaki adımlarda Azure Cosmos DB veri yedeklemesini nasıl gerçekleştirdiği gösterilmektedir:
+Azure Cosmos DB ile yalnızca verileriniz değil, verilerinizin yedekleri de son derece gereksiz dir ve bölgesel felaketlere karşı dayanıklıdır. Aşağıdaki adımlar Azure Cosmos DB'nin veri yedeklemeyi nasıl gerçekleştirdiğini gösterir:
 
 * Azure Cosmos DB her 4 saatte bir otomatik olarak veritabanınızın yedeğini alır ve herhangi bir anda yalnızca 2 yedekleme depolanır. Bununla birlikte kapsayıcı veya veritabanı silinirse Azure Cosmos DB bu kapsayıcı veya veritabanının mevcut anlık görüntülerini 30 gün boyunca saklar.
 
-* Azure Cosmos DB, bu yedeklemeleri Azure Blob depolamada depolar, ancak gerçek veriler yerel olarak Azure Cosmos DB içinde bulunur.
+* Azure Cosmos DB bu yedeklemeleri Azure Blob depolama alanında saklarken, gerçek veriler Azure Cosmos DB içinde yerel olarak bulunur.
 
-*  Düşük gecikme süresini garantilemek için, yedeğinizin anlık görüntüsü Azure Blob depolama alanında geçerli yazma bölgesiyle (veya çok yöneticili bir yapılandırmaya sahip olması durumunda, yazma bölgelerinden biri) Azure Cosmos veritabanı hesabınızın bulunduğu bölgede depolanır. Bölgesel olağanüstü duruma karşı dayanıklılık için, Azure Blob depolamada bulunan yedekleme verilerinin her bir anlık görüntüsü, coğrafi olarak yedekli depolama (GRS) aracılığıyla başka bir bölgeye çoğaltılır. Yedeklemenin çoğaltılacağı bölge, kaynak bölgeinizi ve kaynak bölgeyle ilişkili bölgesel çiftin temel alır. Daha fazla bilgi edinmek için [coğrafi olarak yedekli Azure bölgeleri çiftlerinin listesine](../best-practices-availability-paired-regions.md) bakın. Bu yedeklemeye doğrudan erişemezsiniz. Azure Cosmos DB, bu yedeklemeyi yalnızca bir yedekleme geri yüklemesi başlatılmışsa kullanacaktır.
+*  Düşük gecikme süresini garanti etmek için, yedeklemenizin anlık görüntüsü Azure Cosmos veritabanı hesabınızın geçerli yazma bölgesiyle (veya çok yapılı yapılandırmanız olması durumunda yazma bölgelerinden biriyle) aynı bölgede Azure Blob depolama alanında depolanır. Bölgesel felaketlere karşı dayanıklılık için, Azure Blob depolamasındaki yedekleme verilerinin her anlık görüntüsü, coğrafi yedek depolama (GRS) aracılığıyla yeniden başka bir bölgeye çoğaltılır. Yedeklemenin çoğaltıldığı bölge, kaynak bölgenize ve kaynak bölgeyle ilişkili bölgesel çifti temel almaktadır. Daha fazla bilgi edinmek için, [Azure bölgeleri makalesinin coğrafi yedekli çiftleri listesine](../best-practices-availability-paired-regions.md) bakın. Bu yedeklemeye doğrudan erişemezsiniz. Azure Cosmos DB bu yedeklemeyi yalnızca yedekleme geri yüklemesi başlatılırsa kullanır.
 
-* Yedeklemeler, uygulamanızın performansını veya kullanılabilirliğini etkilemeden alınır. Azure Cosmos DB, ek sağlanmış üretilen iş (ru) olmadan veya veritabanınızın performansını ve kullanılabilirliğini etkilemeden arka planda veri yedekleme gerçekleştirir.
+* Yedeklemeler, uygulamanızın performansını veya kullanılabilirliğini etkilemeden alınır. Azure Cosmos DB, ek bir veri veri (RUs) tüketmeden veya veritabanınızın performansını ve kullanılabilirliğini etkilemeden arka planda veri yedekleme gerçekleştirir.
 
-* Verilerinizi yanlışlıkla silmiş veya bozdıysanız, Azure Cosmos DB ekibin verileri yedeklerden geri yüklemenize yardımcı olması için, 8 saat içinde [Azure desteği](https://azure.microsoft.com/support/options/) 'ne başvurmalısınız.
+* Verilerinizi yanlışlıkla sildiyseniz veya bozduysanız, Azure Cosmos DB ekibinin yedeklemelerden verileri geri yüklemenize yardımcı olması için 8 saat içinde [Azure desteğine](https://azure.microsoft.com/support/options/) başvurmalısınız.
 
-Aşağıdaki görüntüde, Batı ABD ' deki üç birincil fiziksel bölüm içeren bir Azure Cosmos kapsayıcısının Batı ABD ' de uzak Azure Blob depolama hesabında nasıl yedeklenebileceği ve ardından Doğu ABD ' e nasıl çoğaltıldığı gösterilmektedir:
+Aşağıdaki resim, Batı ABD'deki üç ana fiziksel bölüme sahip bir Azure Cosmos kapsayıcısının Batı ABD'deki uzak bir Azure Blob Depolama hesabında nasıl yedeklenip Doğu ABD'ye çoğaltıldığını gösterir:
 
-![GRS Azure depolama alanındaki tüm Cosmos DB varlıkların düzenli aralıklarla tam yedeklemeleri](./media/online-backup-and-restore/automatic-backup.png)
+![GRS Azure Depolama'daki tüm Cosmos DB varlıklarının periyodik tam yedekleri](./media/online-backup-and-restore/automatic-backup.png)
 
 ## <a name="options-to-manage-your-own-backups"></a>Kendi yedeklemelerinizi yönetme seçenekleri
 
-SQL API hesaplarıyla Azure Cosmos DB, aşağıdaki yaklaşımlardan birini kullanarak kendi yedeklemelerinizi de koruyabilirsiniz:
+Azure Cosmos DB SQL API hesapları ile aşağıdaki yaklaşımlardan birini kullanarak kendi yedeklemelerinizi de koruyabilirsiniz:
 
-* Verileri düzenli aralıklarla seçtiğiniz bir depoya taşımak için [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) kullanın.
+* Verileri periyodik olarak seçtiğiniz bir depolama alanına taşımak için [Azure Veri Fabrikası'nı](../data-factory/connector-azure-cosmos-db.md) kullanın.
 
-* Tam yedeklemeler için verileri düzenli aralıklarla okumak için Azure Cosmos DB [değişiklik akışını](change-feed.md) , artımlı değişiklikler için de kullanın ve kendi depolama ortamınızda saklayın.
+* Verileri tam yedeklemelerin yanı sıra artımlı değişiklikler için düzenli aralıklarla okumak ve kendi depolama alanınızda depolamak için Azure Cosmos DB [değiştirme akışını](change-feed.md) kullanın.
 
 ## <a name="backup-retention-period"></a>Yedekleme bekletme süresi
 
-Azure Cosmos DB, verilerinizin her dört saatte bir anlık görüntüsünü alır. Belirli bir zamanda yalnızca son iki anlık görüntü tutulur. Bununla birlikte kapsayıcı veya veritabanı silinirse Azure Cosmos DB bu kapsayıcı veya veritabanının mevcut anlık görüntülerini 30 gün boyunca saklar.
+Azure Cosmos DB, verilerinizin anlık görüntülerini her dört saatte bir alır. Herhangi bir zamanda, yalnızca son iki anlık görüntü korunur. Bununla birlikte kapsayıcı veya veritabanı silinirse Azure Cosmos DB bu kapsayıcı veya veritabanının mevcut anlık görüntülerini 30 gün boyunca saklar.
 
-## <a name="restoring-data-from-online-backups"></a>Çevrimiçi yedeklemelerdeki verileri geri yükleme
+## <a name="restoring-data-from-online-backups"></a>Çevrimiçi yedeklemelerden gelen verileri geri alma
 
-Verileri yanlışlıkla silme veya değiştirme, aşağıdaki senaryolardan birinde oluşabilir:  
+Verilerin yanlışlıkla silinmesi veya değiştirilmesi aşağıdaki senaryolardan birinde gerçekleşebilir:  
 
-* Tüm Azure Cosmos hesabı silindi
+* Azure Cosmos hesabının tamamı silinir
 
-* Bir veya daha fazla Azure Cosmos veritabanı silindi
+* Bir veya daha fazla Azure Cosmos veritabanı silinir
 
-* Bir veya daha fazla Azure Cosmos kapsayıcısı silindi
+* Bir veya daha fazla Azure Cosmos kapsayıcısı silinir
 
-* Bir kapsayıcı içindeki Azure Cosmos öğeleri (örneğin, belgeler) silinir veya değiştirilir. Bu özel durum genellikle "veri bozulması" olarak adlandırılır.
+* Bir kapsayıcıdaki Azure Cosmos öğeleri (örneğin, belgeler) silinir veya değiştirilir. Bu özel durum genellikle "veri bozulması" olarak adlandırılır.
 
-* Paylaşılan bir teklif veritabanı içindeki paylaşılan bir teklif veritabanı veya kapsayıcılar silinir veya bozuktur
+* Paylaşılan teklif veritabanı veya paylaşılan teklif veritabanı içindeki kapsayıcılar silinir veya bozulur
 
-Azure Cosmos DB yukarıdaki tüm senaryolarda verileri geri yükleyebilir. Geri yükleme işlemi, geri yüklenen verileri barındırmak için her zaman yeni bir Azure Cosmos hesabı oluşturur. Yeni hesabın adı belirtilmemişse, `<Azure_Cosmos_account_original_name>-restored1`biçimine sahip olur. Birden fazla geri yükleme denendiğinde, son basamak artırılır. Önceden oluşturulmuş bir Azure Cosmos hesabına veri geri yükleme yapamazsınız.
+Azure Cosmos DB, yukarıdaki senaryoların tümlerinde verileri geri yükleyebilir. Geri yükleme işlemi, geri yüklenen verileri barındırmak için her zaman yeni bir Azure Cosmos hesabı oluşturur. Yeni hesabın adı belirtilmemişse, biçime `<Azure_Cosmos_account_original_name>-restored1`sahip olacaktır. Birden çok geri yükleme denenmişse, son basamak artımlı. Verileri önceden oluşturulmuş bir Azure Cosmos hesabına geri yükleyemezsiniz.
 
-Bir Azure Cosmos hesabı silindiğinde, hesap adının kullanımda olmaması kaydıyla, verileri aynı ada sahip bir hesaba geri yükleme işlemi yapılabilir. Bu gibi durumlarda, yalnızca geri yüklenen verilerin aynı adı kullanmasına engel olmadığından ve ayrıca geri yüklenecek doğru hesabı daha zor bir şekilde keşfettiğinden, silme işleminden sonra hesabı yeniden oluşturmanız önerilir. 
+Bir Azure Cosmos hesabı silindiğinde, hesap adının kullanılmaması koşuluyla verileri aynı ada sahip bir hesaba geri yükleyebiliriz. Bu gibi durumlarda, yalnızca geri yüklenen verilerin aynı adı kullanmasını engellemekle kalmaması, aynı zamanda daha zor bir şekilde geri yüklemek için doğru hesabı keşfetmeyi de zorlaştırdığından, silindikten sonra hesabı yeniden oluşturmamaönerilir. 
 
-Bir Azure Cosmos veritabanı silindiğinde, veritabanının tamamını veya bu veritabanı içindeki kapsayıcıların bir alt kümesini geri yüklemek mümkündür. Veritabanları genelinde kapsayıcı seçmek ve bunları geri yüklemek de mümkündür ve geri yüklenen tüm veriler yeni bir Azure Cosmos hesabına yerleştirilir.
+Bir Azure Cosmos veritabanı silindiğinde, veritabanının tamamını veya bu veritabanı içindeki kapsayıcıların bir alt kümesini geri yüklemek mümkündür. Veritabanları arasında kapsayıcıları seçmek ve bunları geri yüklemek de mümkündür ve geri yüklenen tüm veriler yeni bir Azure Cosmos hesabına yerleştirilir.
 
-Bir kapsayıcı içindeki bir veya daha fazla öğe yanlışlıkla silindiğinde veya değiştirildiğinde (veri bozulması durumu), geri yükleme zamanını belirtmeniz gerekecektir. Bu durum için saat özbir değer. Kapsayıcı canlı olduğundan, yedekleme hala çalışıyor, bu nedenle bekletme döneminin ötesine (varsayılan sekiz saat) kadar beklerseniz yedeklemelerin üzerine yazılır. Silme durumunda verileriniz artık yedekleme döngüsüyle üzerine yazılmayacağından depolanmaz. Silinen veritabanları veya kapsayıcılar için yedeklemeler 30 gün boyunca kaydedilir.
+Bir kapsayıcıdaki bir veya daha fazla öğe yanlışlıkla silindiğinde veya değiştirildiğinde (veri bozulması durumu), geri yükleme nin saatini belirtmeniz gerekir. Bu dava için zaman çok önemli. Kapsayıcı canlı olduğundan, yedekleme hala çalışıyor, bu nedenle bekletme süresinin ötesine beklerseniz (varsayılan değer sekiz saattir) yedeklemeler üzerine yazılır. Silme durumunda, verileriniz artık depolanmıyor, çünkü yedekleme döngüsü tarafından üzerine yazılmayacaklar. Silinen veritabanları veya kapsayıcılar için yedeklemeler 30 gün boyunca kaydedilir.
 
-Veritabanı düzeyinde aktarım hızı sağlarsanız (yani, bir kapsayıcı kümesi sağlanan aktarım hızını paylaşıyorsa), bu durumda yedekleme ve geri yükleme işlemi tüm veritabanı düzeyinde gerçekleşir ve tek tek kapsayıcılar düzeyinde değildir. Bu gibi durumlarda, geri yüklenecek kapsayıcıların bir alt kümesini seçmek bir seçenek değildir.
+Veri tabanı düzeyinde iş elde etme işlemi sağlarsanız (diğer bir deyişle, bir kapsayıcı kümesinin sağlanan iş girdisini paylaştığı durumlarda), bu durumda yedekleme ve geri yükleme işlemi tek tek kapsayıcılar düzeyinde değil, tüm veritabanı düzeyinde gerçekleşir. Bu gibi durumlarda, geri yüklemek için kapsayıcıların bir alt kümesini seçmek bir seçenek değildir.
 
 ## <a name="migrating-data-to-the-original-account"></a>Verileri özgün hesaba geçirme
 
-Veri geri yükleme 'nin birincil amacı, yanlışlıkla sildiğiniz veya değiştirdiğiniz verileri kurtarmak için bir yol sağlamaktır. Bu nedenle, önce beklediğiniz verileri içerdiğinden emin olmak için kurtarılan verilerin içeriğini incelemenizi öneririz. Ardından verileri birincil hesaba geri geçirmeye çalışın. Geri yüklenen hesabı canlı hesap olarak kullanmak mümkün olsa da, üretim iş yükleriniz varsa önerilen bir seçenek değildir.  
+Veri geri yüklemesinin birincil amacı, yanlışlıkla sildiğiniz veya değiştirdiğiniz verileri kurtarmak için bir yol sağlamaktır. Bu nedenle, öncelikle kurtarılan verilerin içeriğini inceleyerek beklediğiniz verileri içerdiğinden emin olmamızı öneririz. Ardından, verileri birincil hesaba geri geçirme üzerinde çalışın. Geri yüklenen hesabı canlı hesap olarak kullanmak mümkün olsa da, üretim iş yükleri varsa önerilen bir seçenek değildir.  
 
-Aşağıda, verileri özgün Azure Cosmos hesabına geri geçirmenin farklı yolları verilmiştir:
+Verileri özgün Azure Cosmos hesabına geçirmenin farklı yolları şunlardır:
 
-* [Cosmos DB veri geçiş aracını](import-data.md) kullanma
-* [Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md) kullanma
-* Azure Cosmos DB [değişiklik akışını](change-feed.md) kullanma 
+* [Cosmos DB Veri Geçiş Aracını](import-data.md) Kullanma
+* [Azure Veri Fabrikasını]( ../data-factory/connector-azure-cosmos-db.md) Kullanma
+* Azure Cosmos DB'de [değişiklik akışını](change-feed.md) kullanma 
 * Özel kod yazma
 
-Geri yüklenen hesapları, geçiş işlemi tamamlandıktan hemen sonra silin, çünkü bunlar devam eden ücretlere tabi olur.
+Geri yüklenen hesapları, devam eden ücretlere maruz kalacaklarından, geçiş ilerler bitmez silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha sonra, verileri bir Azure Cosmos hesabından geri yükleme veya Azure Cosmos hesabına nasıl veri geçirebileceğiniz hakkında bilgi edinebilirsiniz.
+Daha sonra bir Azure Cosmos hesabından verileri nasıl geri yükleyebileceğinizi veya verileri azure cosmos hesabına nasıl geçirebileceğinizi öğrenebilirsiniz
 
-* Geri yükleme isteği oluşturmak için Azure desteğine başvurun, [Azure Portal bir bilet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oluşturun
-* [Azure Cosmos hesabından verileri geri yükleme](how-to-backup-and-restore.md)
-* Verileri Azure Cosmos DB taşımak için [Cosmos DB değişiklik akışını kullanın](change-feed.md) .
-* Verileri Azure Cosmos DB taşımak için [Azure Data Factory kullanın](../data-factory/connector-azure-cosmos-db.md) .
+* Geri yükleme isteği nde bulunmak için Azure Desteği'ne başvurun ve [Azure portalından bilet gönderin](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [Azure Cosmos hesabındaki verileri geri yükleme](how-to-backup-and-restore.md)
+* Verileri Azure Cosmos DB'ye taşımak için [Cosmos DB değiştirme akışını kullanın.](change-feed.md)
+* Verileri Azure Cosmos DB'ye taşımak için [Azure Veri Fabrikası'nı kullanın.](../data-factory/connector-azure-cosmos-db.md)
 

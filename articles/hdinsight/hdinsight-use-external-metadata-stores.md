@@ -1,6 +1,6 @@
 ---
-title: Dış meta veri depoları kullanma-Azure HDInsight
-description: Azure HDInsight kümeleri ve en iyi uygulamalar ile dış meta veri depoları kullanın.
+title: Harici meta veri depolarını kullanma - Azure HDInsight
+description: Azure HDInsight kümeleri ve en iyi uygulamalarla harici meta veri depolarını kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,105 +9,105 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: edb2d256d3e5d98c52dbdff1162e0e030ebe2be3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272168"
 ---
-# <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight 'ta dış meta veri depoları kullanma
+# <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight’ta dış meta veri depolarını kullanma
 
-HDInsight, anahtar meta veri çözümlerini ve yönetim veritabanlarını dış veri depolarına dağıtarak veri ve meta verileri denetlemenize olanak tanır. Bu özellik şu anda [Apache Hive meta veri deposu](#custom-metastore), [Apache Oozie meta veri deposu](#apache-oozie-metastore) ve [Apache ambarı veritabanı](#custom-ambari-db)için kullanılabilir.
+HDInsight, önemli meta veri çözümlerini ve yönetim veritabanlarını harici veri depolarına dağıtarak verilerinizin ve meta verilerinizin denetimini ele geçirmenizi sağlar. Bu özellik şu anda [Apache Hive metastore,](#custom-metastore) [Apache Oozie metastore](#apache-oozie-metastore) ve [Apache Ambari veritabanı](#custom-ambari-db)için kullanılabilir.
 
-HDInsight 'ta Apache Hive meta veri, Apache Hadoop mimarisinin önemli bir parçasıdır. Meta veri deposu, Apache Spark, etkileşimli sorgu (LLAP), Presto veya Apache Pig gibi diğer büyük veri erişim araçları tarafından kullanılabilen merkezi şema deposudur. HDInsight, Hive meta veri deposu olarak bir Azure SQL veritabanı kullanır.
+HDInsight'taki Apache Hive metastore, Apache Hadoop mimarisinin önemli bir parçasıdır. Metastore, Apache Spark, Interactive Query (LLAP), Presto veya Apache Pig gibi diğer büyük veri erişim araçları tarafından kullanılabilen merkezi şema deposudur. HDInsight, Hive metastore olarak bir Azure SQL Veritabanı kullanır.
 
-![HDInsight Hive meta veri deposu mimarisi](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+![HDInsight Hive Metadata Store Mimarisi](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
-HDInsight kümeleriniz için bir meta veri deposu kurmak için kullanabileceğiniz iki yol vardır:
+HDInsight kümeleriniz için bir metastore ayarlamanın iki yolu vardır:
 
-* [Varsayılan meta veri deposu](#default-metastore)
-* [Özel meta veri deposu](#custom-metastore)
+* [Varsayılan metastore](#default-metastore)
+* [Özel metastore](#custom-metastore)
 
-## <a name="default-metastore"></a>Varsayılan meta veri deposu
+## <a name="default-metastore"></a>Varsayılan metastore
 
-Varsayılan olarak HDInsight, her küme türüyle bir meta veri deposu oluşturur. Bunun yerine, özel bir meta veri deposu belirtebilirsiniz. Varsayılan meta veri deposu aşağıdaki konuları içerir:
+Varsayılan olarak, HDInsight her küme türünde bir metastore oluşturur. Bunun yerine özel bir metastore belirtebilirsiniz. Varsayılan metastore aşağıdaki hususları içerir:
 
-* Ek maliyet yok. HDInsight herhangi bir ek ücret ödemeden her küme türüyle bir meta veri deposu oluşturur.
+* Ek ücret yok. HDInsight, size ek bir ücret ödemeden her küme türünde bir metastore oluşturur.
 
-* Her varsayılan meta veri deposu, küme yaşam döngüsünün bir parçasıdır. Bir kümeyi sildiğinizde, karşılık gelen meta veri deposu ve meta veriler de silinir.
+* Her varsayılan metastore küme yaşam döngüsünün bir parçasıdır. Bir kümeyi sildiğinizde, ilgili metastore ve meta veriler de silinir.
 
-* Varsayılan meta veri deposunu diğer kümelerle paylaşamazsınız.
+* Varsayılan metastore'u diğer kümelerle paylaşamaz.
 
-* Varsayılan meta veri deposu, beş DTU (veritabanı işlem birimi) sınırına sahip olan temel Azure SQL DB 'yi kullanır.
-Bu varsayılan meta veri deposu genellikle birden çok küme gerektirmeyen ve kümenin yaşam döngüsünün ötesinde meta verilerin korunması gerekmeyen görece basit iş yükleri için kullanılır.
+* Varsayılan metastore, beş DTU (veritabanı işlem birimi) sınırı olan temel Azure SQL DB'yi kullanır.
+Bu varsayılan metastore genellikle birden çok küme gerektirmeyen ve kümenin yaşam döngüsünün ötesinde korunmuş meta veriler gerektirmeyen görece basit iş yükleri için kullanılır.
 
-## <a name="custom-metastore"></a>Özel meta veri deposu
+## <a name="custom-metastore"></a>Özel metastore
 
-HDInsight, üretim kümeleri için önerilen özel meta tasmres 'i de destekler:
+HDInsight, üretim kümeleri için önerilen özel meta store'ları da destekler:
 
-* Kendi Azure SQL veritabanınızı, meta veri deposu olarak belirtirsiniz.
+* Metastore olarak kendi Azure SQL Veritabanınızı belirtirsiniz.
 
-* Meta veri deposu yaşam döngüsü bir küme yaşam döngüsüne bağlı değildir, bu nedenle meta verileri kaybetmeden kümeler oluşturabilir ve silebilirsiniz. HDInsight kümesini silip yeniden oluşturduktan sonra bile Hive şemalarınız gibi meta veriler de devam edecektir.
+* Metastore'un yaşam döngüsü kümelerin yaşam döngüsüne bağlı değildir, böylece meta verileri kaybetmeden kümeler oluşturabilir ve silebilirsiniz. Hive şemalarınız gibi meta veriler, HDInsight kümesini silip yeniden oluşturduktan sonra bile devam eder.
 
-* Özel bir meta veri deposu, bu meta veri deposu için birden çok küme ve küme türü eklemenize olanak tanır. Örneğin, tek bir meta veri deposu HDInsight 'ta etkileşimli sorgu, Hive ve Spark kümeleri arasında paylaşılabilir.
+* Özel bir metastore, bu metamağazaya birden çok küme ve küme türü eklemenize olanak tanır. Örneğin, TEK bir metastore HDInsight'ta Etkileşimli Sorgu, Hive ve Spark kümeleri arasında paylaşılabilir.
 
-* Seçtiğiniz performans düzeyine göre bir metasrasyonun (Azure SQL DB) maliyeti için ödeme yaparsınız.
+* Seçtiğiniz performans düzeyine göre bir metastore (Azure SQL DB) maliyetini ödler.
 
-* Gerektiğinde meta veri deposunu ölçeklendirebilirsiniz.
+* Gerektiğinde metastore'u ölçeklendirebilirsiniz.
 
-* Küme ve dış meta veri deposu aynı bölgede barındırılmalıdır.
+* Küme ve dış metastore aynı bölgede barındırılmalıdır.
 
-![HDInsight Hive meta veri deposu kullanım örneği](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+![HDInsight Hive Metadata Store Kullanım Örneği](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
-### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Özel meta veri deposu için Azure SQL veritabanı oluşturma ve yapılandırma
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Özel metastore için Azure SQL Veritabanı oluşturma ve config
 
-HDInsight kümesi için özel bir Hive meta veri deposu ayarlamadan önce mevcut bir Azure SQL veritabanı oluşturmanız veya sahip olmanız gerekir.  Daha fazla bilgi için bkz. [hızlı başlangıç: Azure SQL DB 'de tek bir veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+HDInsight kümesi için özel bir Hive metastore'u kurmadan önce varolan bir Azure SQL Veritabanı oluşturmanız veya sahip olmanız gerekir.  Daha fazla bilgi için [Bkz. Quickstart: Azure SQL DB'de tek bir veritabanı oluşturun.](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)
 
-HDInsight kümenizin bağlı Azure SQL veritabanına erişebildiğinizden emin olmak için Azure SQL veritabanı güvenlik duvarı kurallarını Azure hizmetleri ve kaynaklarının sunucuya erişmesine izin verecek şekilde yapılandırın.
+HDInsight kümenizin bağlı Azure SQL Veritabanı'na erişebilmesini sağlamak için Azure hizmetlerinin ve kaynaklarının sunucuya erişmesine izin verecek şekilde Azure SQL Veritabanı güvenlik duvarı kurallarını yapılandırın.
 
-**Sunucu güvenlik duvarını ayarla**' ya tıklayarak Azure Portal bu seçeneği etkinleştirebilir ve Azure SQL veritabanı sunucusu veya veritabanı için **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine izin ver ' e** tıklayabilirsiniz. Daha fazla bilgi için bkz. [IP güvenlik duvarı kuralları oluşturma ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+Bu seçeneği Azure portalında **Sunucu Güvenlik Duvarını Ayarla'yı**tıklatarak ve Azure hizmetlerine ve kaynaklarına izin vererek Azure SQL Veritabanı sunucusu veya veritabanı için **bu sunucuya erişmeye** hazırlayarak etkinleştirebilirsiniz. **ON** Daha fazla bilgi için IP [güvenlik duvarı kuralı oluştur ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
-![Sunucu güvenlik duvarı 'nı ayarla düğmesi](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+![sunucu güvenlik duvarı düğmesini ayarlama](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
-![Azure hizmetlerine erişime izin ver](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+![azure hizmetlerine erişime izin verme](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
 
-### <a name="select-a-custom-metastore-during-cluster-creation"></a>Küme oluşturma sırasında özel bir meta veri deposu seçin
+### <a name="select-a-custom-metastore-during-cluster-creation"></a>Küme oluşturma sırasında özel bir metastore seçin
 
-Küme oluşturma sırasında kümenizi önceden oluşturulmuş bir Azure SQL veritabanına işaret edebilir veya küme oluşturulduktan sonra SQL veritabanını yapılandırabilirsiniz. Bu seçenek, Azure portal yeni bir Hadoop, Spark veya etkileşimli Hive kümesi oluştururken **depolama > meta veri ayarları** ile belirtilir.
+Küme oluşturma sırasında kümenizi önceden oluşturulmuş bir Azure SQL Veritabanı'na yönlendirebilir veya küme oluşturulduktan sonra SQL Veritabanını yapılandırabilirsiniz. Bu seçenek, Azure portalından yeni bir Hadoop, Spark veya etkileşimli Hive kümesi oluştururken **Depolama > Metastore ayarlarıyla** belirtilir.
 
-![HDInsight Hive meta veri deposu Azure portal](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
+![HDInsight Hive Metadata Store Azure portalı](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
-## <a name="hive-metastore-best-practices"></a>En iyi Hive meta veri deposu uygulamalar
+## <a name="hive-metastore-best-practices"></a>Kovan metastore en iyi uygulamalar
 
-Aşağıda, bazı genel HDInsight Hive meta veri deposu en iyi yöntemler verilmiştir:
+Burada bazı genel HDInsight Hive metastore en iyi uygulamaları şunlardır:
 
-* İşlem kaynaklarını (çalışan kümeniz) ve meta verileri (meta veri deposu 'nda depolanır) ayırmaya yardımcı olmak için mümkün olduğunda özel bir meta veri deposu kullanın.
+* Ayrı bilgi işlem kaynakları (çalışan küme) ve meta verileri (meta deposunda depolanan) yardımcı olmak için mümkün olduğunca özel bir metastore kullanın.
 
-* 50 DTU ve 250 GB depolama sağlayan bir S2 katmanı ile başlayın. Bir performans sorunu görürseniz, veritabanını ölçeklendirdirebilirsiniz.
+* 50 DTU ve 250 GB depolama alanı sağlayan bir S2 katmanı yla başlayın. Bir darboğaz görürseniz, veritabanını ölçeklendirebilirsiniz.
 
-* Ayrı verilere erişmek için birden çok HDInsight kümesi düşünüyorsanız, her kümede meta veri deposu için ayrı bir veritabanı kullanın. Birden çok HDInsight kümesi arasında bir meta veri deposu paylaşırsanız, kümelerin aynı meta verileri ve temel alınan kullanıcı veri dosyalarını kullanması anlamına gelir.
+* Ayrı verilere erişmek için birden çok HDInsight kümesini planlıyorsanız, her kümedeki metastore için ayrı bir veritabanı kullanın. Bir metastore'u birden çok HDInsight kümesi nde paylaşıyorsanız, bu kümelerin aynı meta verileri ve altta yatan kullanıcı veri dosyalarını kullandığı anlamına gelir.
 
-* Düzenli aralıklarla özel meta veri deposunu yedekleyin. Azure SQL veritabanı yedeklemeleri otomatik olarak oluşturur, ancak yedekleme bekletme zaman dilimi değişir. Daha fazla bilgi için bkz. [OTOMATIK SQL veritabanı yedeklemeleri hakkında bilgi edinin](../sql-database/sql-database-automated-backups.md).
+* Özel metastore'unuzu düzenli olarak yedekleyin. Azure SQL Veritabanı otomatik olarak yedekleme ler oluşturur, ancak yedekleme bekletme zaman dilimi değişir. Daha fazla bilgi için bkz: [Otomatik SQL Veritabanı yedeklemeleri hakkında bilgi edinin.](../sql-database/sql-database-automated-backups.md)
 
-* En yüksek performans ve en düşük ağ çıkış ücretleri için, metasgeli ve HDInsight kümenizi aynı bölgede bulun.
+* En yüksek performans ve en düşük ağ çıkış ücretleri için metastore ve HDInsight kümenizi aynı bölgede bulun.
 
-* Azure portal veya Azure Izleyici günlükleri gibi Azure SQL veritabanı Izleme araçlarını kullanarak performans ve kullanılabilirlik için meta deponuz izleyin.
+* Azure portalı veya Azure Monitor günlükleri gibi Azure SQL Veritabanı İzleme araçlarını kullanarak metamağazanızı performans ve kullanılabilirlik açısından izleyin.
 
-* Mevcut bir özel meta veri deposu veritabanına yönelik yeni, daha yüksek bir Azure HDInsight sürümü oluşturulduğunda, sistem, veritabanını yedekten geri yüklemeden geri alınamaz olan meta veri deposu şemasını yükseltir.
+* Azure HDInsight'ın yeni ve daha yüksek bir sürümü varolan bir metastore veritabanına karşı oluşturulduğunda, sistem veritabanını yedeklemeden geri döndürülemez olan metastore şemasını yükseltir.
 
-* Birden çok küme arasında bir meta veri deposu paylaşırsanız, tüm kümelerin aynı HDInsight sürümü olduğundan emin olun. Farklı Hive sürümleri farklı meta veri deposu veritabanı şemaları kullanır. Örneğin, Hive 2,1 ve Hive 3,1 sürümlü kümeler arasında bir meta veri deposu paylaşamazsınız.
+* Birden çok küme arasında bir metastore paylaşıyorsanız, tüm kümelerin aynı HDInsight sürümü olduğundan emin olun. Farklı Hive sürümleri farklı metastore veritabanı şemaları kullanın. Örneğin, Hive 2.1 ve Hive 3.1 sürümlü kümeler arasında bir metastore paylaşamaz.
 
-* HDInsight 4,0 ' de Spark ve Hive, Mini SQL veya Hive tablolarına erişmek için bağımsız kataloglar kullanır. Spark tarafından oluşturulan bir tablo Spark kataloğunda bulunur. Hive tarafından oluşturulan bir tablo Hive kataloğunda bulunur. Bu, Hive ve Spark paylaşılan ortak kataloğunun HDInsight 3,6 sürümünden farklıdır. HDInsight 4,0 ' de Hive ve Spark tümleştirmesi Hive ambar Bağlayıcısı 'nı (HWC) kullanır. HWC, Spark ve Hive arasında bir köprü olarak çalışmaktadır. [Hive ambar Bağlayıcısı hakkında bilgi edinin](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+* HDInsight 4.0'da Spark ve Hive, SparkSQL veya Hive tablolarına erişmek için bağımsız kataloglar kullanır. Spark tarafından oluşturulan bir tablo Spark kataloğunda bulunur. Hive tarafından oluşturulan bir tablo Hive kataloğunda bulunur. Bu, Hive ve Spark'ın ortak kataloğu paylaştığı HDInsight 3.6'dan farklıdır. HDInsight 4.0'da Kovan ve Kıvılcım Tümleştirmesi Kovan Ambar Konektörüne (HWC) dayanır. HWC, Spark ve Hive arasında bir köprü olarak çalışıyor. [Kovan Depo Konektörü hakkında bilgi edinin.](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)
 
-## <a name="apache-oozie-metastore"></a>Apache Oozie meta veri deposu
+## <a name="apache-oozie-metastore"></a>Apache Oozie metastore
 
-Apache Oozie, Hadoop işlerini yöneten bir iş akışı koordinasyon sistemidir.  Oozie, Apache MapReduce, Pig, Hive ve diğerleri için Hadoop işlerini destekler.  Oozie, geçerli ve tamamlanan iş akışlarıyla ilgili ayrıntıları depolamak için bir meta veri deposu kullanır. Oozie kullanırken performansı artırmak için Azure SQL veritabanını özel bir meta veri deposu olarak kullanabilirsiniz. Meta veri deposu, kümenizi sildikten sonra Oozie iş verilerine erişim de verebilir.
+Apache Oozie, Hadoop işlerini yöneten bir iş akışı koordinasyon sistemidir.  Oozie Apache MapReduce, Pig, Hive ve diğerleri için Hadoop işleri destekler.  Oozie, geçerli ve tamamlanan iş akışlarıyla ilgili ayrıntıları depolamak için bir metastore kullanır. Oozie kullanırken performansı artırmak için Azure SQL Veritabanı'nı özel bir metastore olarak kullanabilirsiniz. Metastore, kümenizi sildikten sonra Oozie iş verilerine de erişim sağlayabilir.
 
-Azure SQL veritabanı ile bir Oozie meta oluşturma hakkında yönergeler için bkz. [iş akışları Için Apache Oozie kullanma](hdinsight-use-oozie-linux-mac.md).
+Azure SQL Veritabanı ile Bir Oozie metastore oluşturma yla ilgili talimatlar [için iş akışları için Apache Oozie'yi kullan'a](hdinsight-use-oozie-linux-mac.md)bakın.
 
 ## <a name="custom-ambari-db"></a>Özel Ambari DB
 
-HDInsight 'ta Apache ambarı ile kendi dış veritabanınızı kullanmak için bkz. [özel Apache ambarı veritabanı](hdinsight-custom-ambari-db.md).
+HDInsight'ta Apache Ambari ile kendi harici veritabanınızı kullanmak için [Özel Apache Ambari veritabanına](hdinsight-custom-ambari-db.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

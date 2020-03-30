@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault erişmek için sistem tarafından atanan yönetilen kimlik kullanma
-description: App Service uygulamalar için yönetilen bir kimlik oluşturmayı ve bunu nasıl kullanabileceğinizi öğrenin Azure Key Vault
+title: Azure Anahtar Kasası'na erişmek için sistem tarafından atanmış yönetilen bir kimlik kullanma
+description: Uygulama Hizmeti uygulamaları için yönetilen bir kimliği nasıl oluşturup Azure Anahtar Kasası'na erişmek için nasıl kullanacağınızı öğrenin
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,62 +11,62 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 36a4871339401629300eedd77b6441aed10aabf3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270959"
 ---
-# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama
+# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Yönetilen bir kimlikle Anahtar Kasa kimlik doğrulaması sağlama
 
-Azure Active Directory yönetilen bir kimlik, uygulamanızın diğer Azure AD korumalı kaynaklara kolayca erişmesini sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. Daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md). 
+Azure Active Directory'nin yönetilen kimliği, uygulamanızın Azure AD korumalı diğer kaynaklara kolayca erişmesine olanak tanır. Kimlik Azure platformu tarafından yönetilir ve herhangi bir sırrı sağlamanızı veya döndürmenizi gerektirmez. Daha fazla bilgi için Azure [kaynakları için Yönetilen kimlikler'e](../active-directory/managed-identities-azure-resources/overview.md)bakın. 
 
-Bu makalede, bir App Service uygulaması için yönetilen kimlik oluşturma ve Azure Key Vault erişmek için kullanma açıklanmaktadır. Azure VM 'lerinde barındırılan uygulamalar için bkz. [Azure Key Vault erişmek Için WINDOWS VM sistem tarafından atanan bir yönetilen kimlik kullanma](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md).
+Bu makalede, bir Uygulama Hizmeti uygulaması için yönetilen bir kimlik oluşturma ve Azure Anahtar Vault erişmek için kullanmak nasıl gösterir. Azure VM'lerinde barındırılan uygulamalar için bkz. [Azure Anahtar Kasası'na erişmek için Windows VM sistemine atanmış yönetilen kimlik kullanın.](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gerekir. 
+Bu kılavuzu tamamlamak için aşağıdaki kaynaklara sahip olmalısınız. 
 
-- Bir Anahtar Kasası. Mevcut bir anahtar kasasını kullanabilir veya şu hızlı başlangıçlardan birindeki adımları izleyerek yeni bir tane oluşturabilirsiniz:
-   - [Azure CLı ile Anahtar Kasası oluşturma](quick-create-cli.md)
-   - [Azure PowerShell ile bir Anahtar Kasası oluşturma](quick-create-powershell.md)
-   - [Azure Portal bir Anahtar Kasası oluşturun](quick-create-portal.md).
-- Anahtar Kasası erişimi verilecek mevcut bir App Service uygulaması. [App Service belgelerindeki](../app-service/overview.md)adımları izleyerek, hızlıca bir tane oluşturabilirsiniz.
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview). Alternatif olarak, [Azure Portal](https://portal.azure.com)de kullanabilirsiniz.
+- Anahtar kasası. Varolan bir anahtar kasası kullanabilir veya aşağıdaki hızlı başlangıçlardan birinde aşağıdaki adımları izleyerek yeni bir tane oluşturabilirsiniz:
+   - [Azure CLI ile önemli bir kasa oluşturun](quick-create-cli.md)
+   - [Azure PowerShell ile önemli bir kasa oluşturun](quick-create-powershell.md)
+   - [Azure portalı ile önemli bir kasa oluşturun.](quick-create-portal.md)
+- Anahtar kasaerişimi sağlamak için mevcut bir Uygulama Hizmeti uygulaması. [App Service belgelerindeki](../app-service/overview.md)adımları izleyerek hızlı bir şekilde bir tane oluşturabilirsiniz.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview). Alternatif olarak, Azure [portalını](https://portal.azure.com)kullanabilirsiniz.
 
 
-## <a name="adding-a-system-assigned-identity"></a>Sistem tarafından atanan kimlik ekleme 
+## <a name="adding-a-system-assigned-identity"></a>Sisteme atanmış kimlik ekleme 
 
-İlk olarak, bir uygulamaya sistem tarafından atanan bir kimlik eklemeniz gerekir. 
+İlk olarak, bir uygulamaya sistem tarafından atanmış bir kimlik eklemeniz gerekir. 
  
-### <a name="azure-portal"></a>Azure portalı 
+### <a name="azure-portal"></a>Azure portalında 
 
-Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygulama oluşturun ve ardından özelliği etkinleştirmeniz gerekir. 
+Portalda yönetilen bir kimlik ayarlamak için, önce normal bir uygulama oluşturacak ve ardından özelliği etkinleştireceksiniz. 
 
-1. Bir işlev uygulaması kullanıyorsanız, **platform özellikleri**' ne gidin. Diğer uygulama türleri için, sol gezinti bölmesinde **Ayarlar** grubuna gidin. 
+1. Bir işlev uygulaması kullanıyorsanız, **Platform özelliklerine**gidin. Diğer uygulama türleri için, sol navigasyondaki **Ayarlar** grubuna gidin. 
 
-1. **Yönetilen kimlik**' i seçin. 
+1. **Yönetilen kimliği**seçin. 
 
-1. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet** düğmesine tıklayın. 
+1. Atanan **Sistem** sekmesiiçinde, **Durum** Açık'a **On**geçin. **Kaydet**'e tıklayın. 
 
     ![](./media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Bu hızlı başlangıç, Azure CLı sürüm 2.0.4 veya üstünü gerektirir. Geçerli sürümünüzü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest). 
+Bu hızlı başlatma, Azure CLI sürümü 2.0.4 veya sonrası gerektirir. Geçerli sürümünüzü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
-Azure CLı ile oturum açmak için [az Login](/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanın:
+Azure CLI ile oturum açmak için [az giriş](/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanın:
 
 ```azurecli-interactive
 az login
 ```
 
-Azure CLı ile oturum açma seçenekleri hakkında daha fazla bilgi için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli?view=azure-cli-latest). 
+Azure CLI ile giriş seçenekleri hakkında daha fazla bilgi için [Azure CLI ile Oturum Aç'a](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)bakın. 
 
-Bu uygulamanın kimliğini oluşturmak için Azure CLı [az WebApp Identity Assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) komutunu veya [az functionapp Identity Assign](/cli/azure/functionapp/identity?view=azure-cli-latest#az-functionapp-identity-assign) komutunu kullanın:
+Bu uygulamaiçin kimlik oluşturmak için Azure CLI [az webapp identity atsign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) komutunu veya [az işlevli kimlik atama](/cli/azure/functionapp/identity?view=azure-cli-latest#az-functionapp-identity-assign) komutunu kullanın:
 
 
 ```azurecli-interactive
@@ -77,7 +77,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-Sonraki bölümde gerekli olacak `PrincipalId`bir yer yapın.
+Bir sonraki bölümde `PrincipalId`gerekli olacak , bir not alın.
 
 ```json
 {
@@ -86,25 +86,25 @@ Sonraki bölümde gerekli olacak `PrincipalId`bir yer yapın.
   "type": "SystemAssigned"
 }
 ```
-## <a name="grant-your-app-access-to-key-vault"></a>Uygulamanıza Key Vault erişim izni verin 
+## <a name="grant-your-app-access-to-key-vault"></a>Uygulamanızın Key Vault'a erişimini zedeleyin 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
 1.  Key Vault kaynağına gidin. 
 
-1.  **Erişim ilkeleri** ' ni seçin ve **erişim ilkesi Ekle**' ye tıklayın. 
+1.  **Access ilkelerini** seçin ve **Erişim İlkesi Ekle'yi**tıklatın. 
 
-1.  **Gizli izinler**' de **Al, Listele '** yi seçin. 
+1.  **Gizli izinlerde,** **Al, Liste'yi**seçin. 
 
-1.  **Sorumluyu Seç**' i seçin ve arama alanına uygulamanın adını girin.  Sonuç listesinden uygulamayı seçin ve **Seç**' e tıklayın. 
+1.  **Müdür Seç'i**seçin ve arama alanına uygulamanın adını girin.  Sonuç listesindeuygulamayı seçin ve **Seç'i**tıklatın. 
 
-1.  Yeni erişim ilkesini eklemeyi sona bırakmak için **Ekle** ' ye tıklayın.
+1.  Yeni erişim ilkesini eklemeyi bitirmek için **Ekle'yi** tıklatın.
 
     ![](./media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Uygulamanıza anahtar kasanıza erişim izni vermek için, yukarıda not ettiğiniz **PrincipalId** 'ye sahip **ObjectID** parametresini sağlayarak Azure CLI [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu kullanın.
+Başvurunuza anahtar kasanıza erişim izni vermek için Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu kullanarak **ObjectId** parametresini yukarıda belirttiğiniz **principalId** ile birlikte sağlayabilir.
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 
@@ -112,9 +112,9 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Key Vault güvenliği: kimlik ve erişim yönetimi](overview-security.md#identity-and-access-management)
-- [Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama](key-vault-group-permissions-for-apps.md)
-- [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-and-certificates.md)
-- [Anahtar kasanızın güvenliğini sağlayın](key-vault-secure-your-key-vault.md).
-- [Geliştirici Kılavuzu Azure Key Vault](key-vault-developers-guide.md)
-- [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault
+- [Azure Key Vault güvenliği: Kimlik ve erişim yönetimi](overview-security.md#identity-and-access-management)
+- [Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlayın](key-vault-group-permissions-for-apps.md)
+- [Anahtarlar, sırlar ve sertifikalar hakkında](about-keys-secrets-and-certificates.md)
+- [Anahtar kasanızı emniyete alalı.](key-vault-secure-your-key-vault.md)
+- [Azure Key Vault geliştirici kılavuzu](key-vault-developers-guide.md)
+- Azure Key Vault en iyi uygulamalarını gözden [geçirin](key-vault-best-practices.md)

@@ -1,6 +1,6 @@
 ---
-title: Veri işleme ve Kullanıcı tanımlı işlevler-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS ile veri işleme, eşleştiriciler ve Kullanıcı tanımlı işlevlere genel bakış.
+title: Veri işleme ve kullanıcı tanımlı işlevler - Azure Digital Twins| Microsoft Dokümanlar
+description: Azure Digital Twins ile veri işleme, eşleştiriciler ve kullanıcı tanımlı işlevlere genel bakış.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,42 +9,42 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265187"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Veri işleme ve kullanıcı tanımlı işlevleri
 
-Azure dijital TWINS, gelişmiş işlem özellikleri sunar. Geliştiriciler, önceden tanımlanmış uç noktalara olay göndermek için gelen telemetri iletilerine karşı özel işlevler tanımlayabilir ve çalıştırabilir.
+Azure Digital Twins gelişmiş işlem özellikleri sunar. Geliştiriciler, olayları önceden tanımlanmış uç noktalara göndermek için gelen telemetri iletilerine karşı özel işlevler tanımlayabilir ve çalıştırabilir.
 
 ## <a name="data-processing-flow"></a>Veri işleme akışı
 
-Cihazların Azure dijital TWINS 'e telemetri verileri gönderdikten sonra, geliştiriciler verileri dört aşamada işleyebilir: *doğrulama*, *eşleşme*, *işlem*ve *dağıtım*.
+Aygıtlar telemetri verilerini Azure Digital Twins'e gönderdikten sonra, geliştiriciler verileri dört aşamada işleyebilir: *doğrulama,* *eşleştirme,* *hesaplama*ve *gönderme.*
 
-[Azure dijital TWINS veri işleme akışını ![](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[![Azure Digital Twins veri işleme akışı](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
-1. Doğrulama aşaması, gelen telemetri iletisini, yaygın olarak anlaşılan bir [veri aktarımı nesne](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) biçimine dönüştürür. Bu aşama Ayrıca cihaz ve algılayıcı doğrulamasını yürütür.
-1. Eşleştirme aşaması, çalıştırılacak uygun Kullanıcı tanımlı işlevleri bulur. Önceden tanımlı eşleştiriciler, gelen telemetri iletisinden cihaz, algılayıcı ve alan bilgilerine göre Kullanıcı tanımlı işlevleri bulur.
-1. İşlem aşaması, önceki aşamada eşleşen kullanıcı tanımlı işlevleri çalıştırır. Bu işlevler, uzamsal grafik düğümlerinde hesaplanan değerleri okuyabilir ve güncelleştirebilir ve özel bildirimler yayabilir.
-1. Dağıtım aşaması, işlem aşamasından gelen özel bildirimleri grafikte tanımlanan uç noktalara yönlendirir.
+1. Doğrulama aşaması, gelen telemetri iletisini sık anlaşılan [veri aktarım nesnesi](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) biçimine dönüştürür. Bu aşama aynı zamanda aygıt ve sensör doğrulaması yürütür.
+1. Eşmatch aşaması, çalışacak uygun kullanıcı tanımlı işlevleri bulur. Önceden tanımlanmış eşleştirmeler, gelen telemetri iletisinden cihaz, sensör ve alan bilgilerine dayalı olarak kullanıcı tanımlı işlevleri bulur.
+1. İşlem aşaması, önceki aşamada eşleşen kullanıcı tanımlı işlevleri çalıştırın. Bu işlevler, uzamsal grafik düğümlerinde sayısal değerleri okuyabilir ve güncelleyebilir ve özel bildirimler yarayabilir.
+1. Gönderme aşaması, işlem aşamasındaki özel bildirimleri grafikte tanımlanan uç noktalara yönlendirir.
 
 ## <a name="data-processing-objects"></a>Veri işleme nesneleri
 
-Azure dijital TWINS 'de veri işleme üç nesne tanımlamayı içerir: *eşleştiriciler*, *Kullanıcı tanımlı işlevler*ve *rol atamaları*.
+Azure Digital Twins'te veri işleme üç nesne tanımlamadan oluşur: *eşleştirmeler,* *kullanıcı tanımlı işlevler*ve *rol atamaları.*
 
-[Azure dijital TWINS veri işleme nesneleri ![](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[![Azure Digital Twins veri işleme nesneleri](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
-### <a name="matchers"></a>Eşleştiriciler
+### <a name="matchers"></a>Eşleştirme
 
-Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerçekleşmekte olduğunu değerlendiren bir koşul kümesi tanımlar. Eşleşmeyi belirleme koşulları, sensörden, sensörün üst cihazından ve sensörün üst alanıyla eşleşen özellikler içerebilir. Koşullar, bu örnekte özetlenen bir [JSON yoluna](https://jsonpath.com/) yönelik karşılaştırmalar olarak ifade edilir:
+Eşleştirciler, gelen sensör telemetrisini temel alan hangi eylemlerin gerçekleştiğini değerlendiren bir dizi koşul tanımlar. Eşleşmeyi belirleme koşulları, sensörün ana aygıtından ve sensörün ana alanından gelen özellikleri içerebilir. Koşullar, bu örnekte belirtildiği gibi bir [JSON yolu](https://jsonpath.com/) karşı karşılaştırmalar olarak ifade edilir:
 
-- Kaçan dize değeri ile temsil edilen veri türü **sıcaklığının** tüm sensör `\"Temperature\"`
-- Bağlantı noktasında `01` olma
-- Genişletilmiş özellik anahtarı **üreticisine** sahip cihazlara ait olan, kaçan dize değeri olarak ayarlanmış olan cihazlara aittir `\"Contoso\"`
-- Kaçan dize tarafından belirtilen türdeki boşluklara ait olan `\"Venue\"`
-- Üst **Spaceıd** 'nin alt öğeleri olan `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- Kaçan String değeri ile temsil edilen veri tipi **Sıcaklık** tüm sensörleri`\"Temperature\"`
+- Limanlarında olması `01`
+- Kaçan String değerine **ayarlanmış** genişletilmiş özellik anahtarı üretici olan aygıtlara ait olan`\"Contoso\"`
+- Kaçan String tarafından belirtilen türdeki boşluklara ait olan`\"Venue\"`
+- Hangi ebeveyn **SpaceId** torunları vardır`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
@@ -86,42 +86,42 @@ Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerç
 ```
 
 > [!IMPORTANT]
-> - JSON yolları büyük/küçük harfe duyarlıdır.
-> - JSON yükü, tarafından döndürülen yük ile aynıdır:
->   - algılayıcı için `/sensors/{id}?includes=properties,types`.
->   - sensör üst cihazının `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`.
->   - sensör üst alanı için `/spaces/{id}?includes=properties,types,location,timezone`.
-> - Karşılaştırmalar büyük/küçük harfe duyarlıdır.
+> - JSON yolları vakaya duyarlıdır.
+> - JSON yükü, aşağıdakiler tarafından döndürülen yük ile aynıdır:
+>   - `/sensors/{id}?includes=properties,types`sensör için.
+>   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`sensörün ana cihazı için.
+>   - `/spaces/{id}?includes=properties,types,location,timezone`sensörün ana alanı için.
+> - Karşılaştırmalar büyük/küçük harf duyarsız.
 
 ### <a name="user-defined-functions"></a>Kullanıcı tanımlı işlevler
 
-Kullanıcı tanımlı bir işlev, yalıtılmış bir Azure dijital TWINS ortamı içinde yürütülen özel bir işlevdir. Kullanıcı tanımlı işlevlerin, alındığı için ham algılayıcı telemetri iletisine erişimi vardır. Kullanıcı tanımlı işlevlerin de uzamsal grafik ve dağıtıcı hizmetine erişimi vardır. Kullanıcı tanımlı işlev bir grafik içinde kaydedildikten sonra, işlevin ne zaman yürütüleceğini belirtmek için bir eşleştirici ( [yukarıya](#matchers)ayrıntılı) oluşturulmalıdır. Örneğin, Azure dijital TWINS, belirli bir sensörden yeni telemetri aldığında, eşleşen kullanıcı tanımlı işlev, son birkaç algılayıcı okumasının hareketli ortalamasını hesaplayabilir.
+Kullanıcı tanımlı işlev, yalıtılmış Bir Azure Dijital İkizler ortamında yürütülen özel bir işlevdir. Kullanıcı tanımlı işlevler, ham sensör telemetri iletisine alındıkça erişebilir. Kullanıcı tanımlı işlevler de uzamsal grafik ve sevk hizmetine erişebilir. Kullanıcı tanımlı işlev bir grafik içinde kaydedildikten sonra, işlevin ne zaman yürütüleceğini belirtmek için bir eşleştirme [(yukarıda](#matchers)ayrıntılı olarak) oluşturulmalıdır. Örneğin, Azure Digital Twins belirli bir sensörden yeni telemetri aldığında, eşleşen kullanıcı tanımlı işlev son birkaç sensör okumasının hareketli ortalamasını hesaplayabilir.
 
-Kullanıcı tanımlı işlevler JavaScript 'te yazılabilir. Yardımcı yöntemler Kullanıcı tanımlı yürütme ortamında grafikle etkileşime geçin. Geliştiriciler, algılayıcı telemetri iletilerine karşı özel kod parçacıkları yürütebilir. Örneklere şunlar dahildir:
+Kullanıcı tanımlı işlevler JavaScript'e yazılabilir. Yardımcı yöntemler, kullanıcı tanımlı yürütme ortamında grafikle etkileşime girmektedir. Geliştiriciler, sensör telemetri iletilerine karşı özel kod parçacıkları çalıştırabilir. Örneklere şunlar dahildir:
 
-- Algılayıcısı grafik içindeki algılayıcı nesnesine doğrudan okumayı ayarlayın.
-- Grafikteki bir boşluk içindeki farklı algılayıcı okumaları temelinde bir eylem gerçekleştirir.
-- Gelen algılayıcı okuma için belirli koşullar karşılandığında bir bildirim oluşturun.
-- Bir bildirim göndermeden önce algılayıcı okumaya grafik meta verileri ekleyin.
+- Sensör okumasını doğrudan grafikiçindeki sensör nesnesine ayarlayın.
+- Grafikteki bir boşluktaki farklı sensör okumalarına dayalı bir eylem gerçekleştirin.
+- Gelen sensör okuması için belirli koşullar yerine getirildiğinde bir bildirim oluşturun.
+- Bir bildirim göndermeden önce grafik meta verilerini sensör okumasına takın.
 
-Daha fazla bilgi için [Kullanıcı tanımlı Işlevlerin nasıl kullanılacağını](./how-to-user-defined-functions.md)okuyun.
+Daha fazla bilgi [için, kullanıcı tanımlı işlevlerinasıl](./how-to-user-defined-functions.md)kullanacağız'ı okuyun.
 
 #### <a name="examples"></a>Örnekler
 
-[Dijital TWINS C# örneği için GitHub deposu](https://github.com/Azure-Samples/digital-twins-samples-csharp/) , Kullanıcı tanımlı işlevlere birkaç örnek içerir:
-- [Bu işlev](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) , Aralık içinde bu değerlerle kullanılabilir bir oda olup olmadığını belirlemede karbon dioksit, hareket ve sıcaklık değerlerini arar. [Dijital TWINS öğreticileri](tutorial-facilities-udf.md) , daha ayrıntılı bilgi için bu işlevi keşfedebilir. 
-- [Bu işlev](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) , birden çok hareket sensörlerinden verileri arar ve hiçbir türlü hareketi algılamazsa alanın kullanılabilir olduğunu belirler. Dosyanın açıklamalar bölümünde bahsedilen değişiklikleri yaparak [hızlı](quickstart-view-occupancy-dotnet.md)başlangıçta veya [öğreticilerde](tutorial-facilities-setup.md)kullanılan Kullanıcı tanımlı işlevi kolayca değiştirebilirsiniz. 
+[Digital Twins C# örneği için GitHub repokullanıcı](https://github.com/Azure-Samples/digital-twins-samples-csharp/) tanımlı işlevlerin birkaç örneğini içerir:
+- [Bu işlev,](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) bir odanın aralıkta bu değerlerle kullanılabilir olup olmadığını belirlemek için karbondioksit, hareket ve sıcaklık değerlerini arar. [Dijital İkizler için öğreticiler](tutorial-facilities-udf.md) daha ayrıntılı olarak bu işlevi keşfetmek. 
+- [Bu işlev,](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) birden çok hareket sensöründen veri arar ve hiçbiri herhangi bir hareket algılamazsa alanın kullanılabilir olduğunu belirler. Dosyanın yorum bölümünde belirtilen değişiklikleri yaparak [hızlı başlatma](quickstart-view-occupancy-dotnet.md)veya [öğreticilerde](tutorial-facilities-setup.md)kullanılan kullanıcı tanımlı işlevi kolayca değiştirebilirsiniz. 
 
 ### <a name="role-assignment"></a>Rol ataması
 
-Kullanıcı tanımlı bir işlevin eylemleri, hizmet içindeki verilerin güvenliğini sağlamak için Azure dijital TWINS [rol tabanlı erişim denetimine](./security-role-based-access-control.md) tabidir. Rol atamaları, uzamsal grafikle ve varlıklarıyla etkileşimde bulunmak için hangi kullanıcı tanımlı işlevlerin uygun izinlere sahip olduğunu tanımlar. Örneğin, Kullanıcı tanımlı bir işlev, belirli bir alanda grafik verileri *oluşturma*, *okuma*, *güncelleştirme*veya *silme* özelliğine sahip olabilir. Kullanıcı tanımlı işlev grafiğe veri istediğinde veya bir eylemi denediğinde Kullanıcı tanımlı bir işlevin erişim düzeyi denetlenir. Daha fazla bilgi için [rol tabanlı erişim denetimi](./security-create-manage-role-assignments.md)makalesini okuyun.
+Kullanıcı tanımlı bir işlevin eylemleri, hizmet içindeki verileri güvenli hale getirmek için Azure Digital Twins [rol tabanlı erişim denetimine](./security-role-based-access-control.md) tabidir. Rol atamaları, hangi kullanıcı tanımlı işlevlerin uzamsal grafik ve varlıklarıyla etkileşim kurmak için uygun izinlere sahip olduğunu tanımlar. Örneğin, kullanıcı tanımlı bir işlev, belirli bir alan altında grafik verilerini *oluşturma,* *OKUMA,* *GÜNCELLEME*veya *DELETE* grafik verilerini oluşturma ve kullanma iznine sahip olabilir. Kullanıcı tanımlı işlev grafikten veri istediğinde veya bir eylem emelettiğinde, kullanıcı tarafından tanımlanan bir işlevin erişim düzeyi denetlenir. Daha fazla bilgi için [Rol tabanlı erişim denetimini](./security-create-manage-role-assignments.md)okuyun.
 
-Bir Eşleştirici, rol ataması olmayan kullanıcı tanımlı bir işlevin tetiklenmesi mümkündür. Bu durumda, Kullanıcı tanımlı işlev grafikten veri okuyamazsa.
+Bir eşleştirmenin rol ataması olmayan kullanıcı tanımlı bir işlevi tetikletmesi mümkündür. Bu durumda, kullanıcı tanımlı işlev grafikteki verileri okuyamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Diğer Azure hizmetlerine olay ve telemetri iletileri yönlendirme hakkında daha fazla bilgi edinmek için, [yönlendirme olaylarını ve iletilerini](./concepts-events-routing.md)okuyun.
+- Olayları ve telemetri iletilerini diğer Azure hizmetlerine nasıl yönlendirileri hakkında daha fazla bilgi edinmek için [Rota etkinliklerini ve iletileri](./concepts-events-routing.md)okuyun.
 
-- Eşleştiriciler, Kullanıcı tanımlı işlevler ve rol atamaları oluşturma hakkında daha fazla bilgi edinmek için [Kullanıcı tanımlı işlevleri kullanma kılavuzu](./how-to-user-defined-functions.md)' nu okuyun.
+- Eşleştirme, kullanıcı tanımlı işlevler ve rol atamaları hakkında daha fazla bilgi edinmek [için, kullanıcı tanımlı işlevleri kullanmak için Kılavuzu](./how-to-user-defined-functions.md)okuyun.
 
-- [Kullanıcı tanımlı işlev istemci kitaplığı başvuru belgelerini](./reference-user-defined-functions-client-library.md)gözden geçirin.
+- Kullanıcı [tanımlı işlev istemci kitaplığı başvuru belgelerini gözden geçirin.](./reference-user-defined-functions-client-library.md)

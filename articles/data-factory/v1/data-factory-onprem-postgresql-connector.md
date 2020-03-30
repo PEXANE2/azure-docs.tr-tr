@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak PostgreSQL 'Ten veri taşıma
-description: Azure Data Factory kullanarak PostgreSQL veritabanından veri taşıma hakkında bilgi edinin.
+title: Azure Veri Fabrikasını kullanarak verileri PostgreSQL'den taşıma
+description: Azure Veri Fabrikası'nı kullanarak PostgreSQL Veritabanı'ndan verileri nasıl taşıyabildiğini öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,120 +13,120 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281242"
 ---
-# <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL 'ten veri taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri PostgreSQL'den taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-onprem-postgresql-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-postgresql.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, [v2 'de PostgreSQL Bağlayıcısı](../connector-postgresql.md)' na bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki PostgreSQL konektörüne](../connector-postgresql.md)bakın.
 
 
-Bu makalede, verileri şirket içi PostgreSQL veritabanından taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
+Bu makalede, verileri şirket içi PostgreSQL veritabanından taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanmaktadır.
 
-Şirket içi bir PostgreSQL veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory Şu anda verileri bir PostgreSQL veritabanından diğer veri depolarına taşımayı destekler, ancak diğer veri depolarından verileri bir PostgreSQL veritabanına taşımaya yönelik değildir.
+Şirket içi PostgreSQL veri deposundaki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](data-factory-data-movement-activities.md#supported-data-stores-and-formats)bakın. Veri fabrikası şu anda verileri PostgreSQL veritabanından diğer veri depolarına taşımayı destekler, ancak verileri diğer veri depolarından PostgreSQL veritabanına taşımayı desteklemez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi PostgreSQL kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
+Veri Fabrikası hizmeti, Veri Yönetimi Ağ Geçidi'ni kullanarak şirket içi PostgreSQL kaynaklarına bağlanmayı destekler. Veri Yönetimi Ağ Geçidi ve ağ geçidini ayarlama yla ilgili adım adım talimatlar hakkında bilgi edinmek için [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında taşınan verileri görün.
 
-PostgreSQL veritabanı bir Azure IaaS VM 'sinde barındırıldığında bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı IaaS sanal makinesine veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
+PostgreSQL veritabanı bir Azure IaaS VM'de barındırılan olsa bile ağ geçidi gereklidir. Ağ geçidi veritabanına bağlanabildiği sürece ağ geçidini veri deposuyla aynı IaaS VM'ye veya farklı bir VM'ye yükleyebilirsiniz.
 
 > [!NOTE]
-> Bağlantı/ağ geçidi ile ilgili sorunları gidermeye yönelik ipuçları için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
+> Sorun giderme bağlantısı/ağ geçidi yle ilgili sorunlarla ilgili ipuçları için [sorun giderme ağ geçidi sorunlarına](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) bakın.
 
-## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
-PostgreSQL veritabanına bağlanmak üzere Veri Yönetimi ağ geçidinin, 2.0.12 ve 3.1.9 arasında sürümü ile [PostgreSQL Için Ngpsql veri sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=282716) 'Nı veri yönetimi ağ geçidi ile aynı sistemde yükleme yapın. PostgreSQL sürüm 7,4 ve üzeri desteklenir.
+## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve kurulum
+Veri Yönetimi Ağ Geçidi'nin PostgreSQL Veritabanı'na bağlanması için, Veri Yönetimi Ağ Geçidi ile aynı sistemde 2.0.12 ile 3.1.9 arasında sürüm içeren [PostgreSQL için Ngpsql veri sağlayıcısını](https://go.microsoft.com/fwlink/?linkid=282716) yükleyin. PostgreSQL sürüm 7.4 ve üzeri desteklenir.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API 'Ler kullanarak şirket içi PostgreSQL veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
+Farklı araçlar/API'ler kullanarak şirket içi PostgreSQL veri deposundan veri aktaran bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz.
 
-- İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz:
+- Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
+- Bir ardışık hatlar oluşturmak için aşağıdaki araçları da kullanabilirsiniz:
   - Visual Studio
   - Azure PowerShell
   - Azure Resource Manager şablonu
   - .NET API’si
   - REST API
 
-    Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+    Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın.
 
-Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun.
+1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.**
 
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız. Şirket içi bir PostgreSQL veri deposundan veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarının bulunduğu bir örnek için, bu makaledeki [JSON örneği: PostgreSQL 'Den Azure Blob 'a veri kopyalama](#json-example-copy-data-from-postgresql-to-azure-blob) bölümüne bakın.
+Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız. Şirket içi PostgreSQL veri deposundan verileri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek [için Bkz. JSON örneği: Bu makalenin PostgreSQL'den Azure Blob bölümüne verileri kopyalayın.](#json-example-copy-data-from-postgresql-to-azure-blob)
 
-Aşağıdaki bölümler, bir PostgreSQL veri deposuna özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümler, PostgreSQL veri deposuna özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
-Aşağıdaki tabloda, PostgreSQL bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+Aşağıdaki tablo, PostgreSQL bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesPostgreSql** olarak ayarlanmalıdır |Yes |
-| sunucu |PostgreSQL sunucusunun adı. |Yes |
-| database |PostgreSQL veritabanının adı. |Yes |
-| şema |Veritabanındaki şemanın adı. Şema adı büyük/küçük harfe duyarlıdır. |Hayır |
-| authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
-| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
-| gatewayName |Data Factory hizmetinin şirket içi PostgreSQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
+| type |Tür özelliği ayarlanmalıdır: **OnPremisesPostgreSql** |Evet |
+| sunucu |PostgreSQL sunucusunun adı. |Evet |
+| database |PostgreSQL veritabanının adı. |Evet |
+| Şema |Veritabanındaki şemanın adı. Şema adı büyük/küçük harf duyarlıdır. |Hayır |
+| authenticationType |PostgreSQL veritabanına bağlanmak için kullanılan kimlik doğrulama türü. Olası değerler şunlardır: Anonim, Temel ve Windows. |Evet |
+| kullanıcı adı |Temel veya Windows kimlik doğrulaması kullanıyorsanız kullanıcı adını belirtin. |Hayır |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. |Hayır |
+| ağ geçidiAdı |Veri Fabrikası hizmetinin şirket içi PostgreSQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri için benzerdir.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin & özelliklerin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri için benzerdir.
 
-TypeProperties bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable** türündeki (PostgreSQL veri kümesini içeren) veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir:
+typeProperties bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Tür İlişkisel Table** veri kümesi için typeProperties bölümü (PostgreSQL veri kümesini içerir) aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tableName |Bağlı hizmetin başvurduğu PostgreSQL veritabanı örneğindeki tablonun adı. TableName, büyük/küçük harfe duyarlıdır. |Hayır ( **Relationalsource** **sorgusu** belirtilmişse) |
+| tableName |Bağlı hizmetin başvurulması olan PostgreSQL Veritabanı örneğindeki tablonun adı. Tablo Adı büyük/küçük harf duyarlıdır. |Hayır **(RelationalSource** **sorgusu** belirtilirse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilke gibi özellikler, tüm etkinlik türleri için kullanılabilir.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin & özelliklerinin tam listesi [için, Kaynak Hatları Oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı tabloları ve ilke gibi özellikler tüm etkinlik türleri için kullanılabilir.
 
-Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
+Oysa, etkinliğin typeProperties bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişir.
 
-Kaynak, **Relationalsource** türünde olduğunda (PostgreSQL içeren), typeproperties bölümünde aşağıdaki özellikler mevcuttur:
+Kaynak **RelationalSource** türünden (PostgreSQL'i içerir) olduğunda, typeProperties bölümünde aşağıdaki özellikler kullanılabilir:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: `"query": "select * from \"MySchema\".\"MyTable\""`. |Hayır ( **veri kümesi** **TableName** belirtilmişse) |
+| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: `"query": "select * from \"MySchema\".\"MyTable\""`. |Hayır **(veri kümesinin** **tablo adı** belirtilirse) |
 
 > [!NOTE]
-> Şema ve tablo adları büyük/küçük harfe duyarlıdır. Onları sorguya `""` (çift tırnak) içine alın.
+> Şema ve masa adları büyük/küçük harf duyarlıdır. Sorguda `""` (çift tırnak) bunları içine alayın.
 
 **Örnek:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
-## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON örneği: PostgreSQL 'ten Azure Blob 'a veri kopyalama
-Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. PostgreSQL veritabanından Azure Blob depolama alanına nasıl veri kopyalanacağını gösterir. Ancak, veriler burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza kopyalanabilir.
+## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON örneği: PostgreSQL'den Azure Blob'a veri kopyalama
+Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir ardışık hat lar oluşturmak için kullanabileceğiniz örnek JSON tanımları sağlar. PostgreSQL veritabanından Azure Blob Depolama'ya verilerin nasıl kopyalanır olduğunu gösterirler. Ancak, veriler Azure Veri Fabrikası'ndaki Kopyalama Etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen lavabolardan herhangi biri için kopyalanabilir.
 
 > [!IMPORTANT]
-> Bu örnek, JSON parçacıkları sağlar. Veri Fabrikası oluşturmaya yönelik adım adım yönergeler içermez. Adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makalesi arasında verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
+> Bu örnek JSON parçacıkları sağlar. Veri fabrikası oluşturmak için adım adım yönergeler içermez. Adım adım yönergeler için [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında hareketli veri bakın.
 
-Örnek, aşağıdaki Data Factory varlıklarına sahiptir:
+Örnekte aşağıdaki veri fabrikası varlıkları vardır:
 
-1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-2. [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-3. [Relationaltable](data-factory-onprem-postgresql-connector.md#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
-5. [Relationalsource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) ve [Blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip işlem [hattı](data-factory-create-pipelines.md) .
+1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+3. [İlişkisel Tablo](data-factory-onprem-postgresql-connector.md#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
+5. [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan Copy Activity ile [boru hattı.](data-factory-create-pipelines.md)
 
-Örnek, PostgreSQL veritabanında bulunan bir sorgudan verileri her saat bir bloba kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
+Örnek, PostgreSQL veritabanındaki bir sorgu sonucundaki verileri her saat başı bir blob'a kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
 
-İlk adım olarak, veri yönetimi ağ geçidini ayarlayın. Yönergeler, [Şirket içi konumlar ve bulut makaleleri arasında hareketli verilerde](data-factory-move-data-between-onprem-and-cloud.md) yer alır.
+İlk adım olarak, veri yönetimi ağ geçidini ayarlayın. Yönergeler, [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasındaki hareketli verilerde dir.
 
-**PostgreSQL bağlı hizmeti:**
+**PostgreSQL bağlantılı hizmet:**
 
 ```json
 {
@@ -145,7 +145,7 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
     }
 }
 ```
-**Azure Blob depolama bağlı hizmeti:**
+**Azure Blob depolama bağlantılı hizmet:**
 
 ```json
 {
@@ -158,11 +158,11 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
     }
 }
 ```
-**PostgreSQL giriş veri kümesi:**
+**PostgreSQL giriş veri seti:**
 
-Örnek, PostgreSQL içinde bir "MyTable" tablosu oluşturduğunuzu ve zaman serisi verileri için "timestamp" adlı bir sütun içerdiğini varsayar.
+Örnek, PostgreSQL'de "MyTable" tablosu oluşturduğunuzu varsayar ve zaman serisi verileri için "zaman damgası" adı verilen bir sütun içerir.
 
-Ayar `"external": true`, veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Data Factory hizmetine bildirir.
+Ayar, `"external": true` Veri Fabrikası hizmetine veri kümesinin veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
 ```json
 {
@@ -187,9 +187,9 @@ Ayar `"external": true`, veri kümesinin veri fabrikasında dış olduğunu ve v
 }
 ```
 
-**Azure Blob çıktı veri kümesi:**
+**Azure Blob çıktı veri seti:**
 
-Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob için klasör yolu ve dosya adı, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
+Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu ve dosya adı, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
 
 ```json
 {
@@ -247,9 +247,9 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob iç
 }
 ```
 
-**Kopyalama etkinliği içeren işlem hattı:**
+**Kopyalama etkinliği olan Boru Hattı:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılan ve saatlik olarak çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, PostgreSQL veritabanındaki public. usstates tablosundan verileri seçer.
+Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve saatlik çalışacak şekilde zamanlanan bir Kopyalama Etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **RelationalSource** olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır. **Sorgu** özelliği için belirtilen SQL sorgusu, PostgreSQL veritabanındaki public.usstates tablosundaki verileri seçer.
 
 ```json
 {
@@ -295,61 +295,61 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob iç
 }
 ```
 ## <a name="type-mapping-for-postgresql"></a>PostgreSQL için tür eşleme
-[Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, kopyalama etkinliği, kaynak türlerinden aşağıdaki 2 adımlı yaklaşımla otomatik tür dönüştürmeleri gerçekleştirir:
+[Veri hareketi etkinliklerinde](data-factory-data-movement-activities.md) belirtildiği gibi makale Kopyalama etkinliği aşağıdaki 2 adımlı yaklaşımla kaynak türlerinden lavabo türlerine otomatik tür dönüştürmeleri gerçekleştirir:
 
-1. Yerel kaynak türlerinden .NET türüne Dönüştür
-2. .NET türünden yerel havuz türüne Dönüştür
+1. Yerel kaynak türlerinden .NET türüne dönüştürme
+2. .NET türünden yerel lavabo türüne dönüştürme
 
-Verileri PostgreSQL 'e taşırken, PostgreSQL türünden .NET türüne aşağıdaki eşlemeler kullanılır.
+Verileri PostgreSQL'e aktarırken, PostgreSQL türünden .NET türüne aşağıdaki eşlemeler kullanılır.
 
-| PostgreSQL veritabanı türü | PostgresSQL diğer adları | .NET Framework türü |
+| PostgreSQL Veritabanı türü | PostgresSQL takma adları | .NET Framework türü |
 | --- | --- | --- |
 | abstime | |Tarih saat |
 | bigint |int8 |Int64 |
-| bigserial |serial8 |Int64 |
-| bit [(n)] | |Byte [], dize |
-| bit farklı [(n)] |varbit |Byte [], dize |
+| bigserial |seri8 |Int64 |
+| bit [(n)] | |Bayt[], String |
+| bit değişen [ (n) ] |varbit |Bayt[], String |
 | boole |bool |Boole |
-| Kutudaki | |Byte [], dize |
-| bytea | |Byte [], dize |
-| karakter [(n)] |Char [(n)] |Dize |
-| karakter farklı [(n)] |varchar [(n)] |Dize |
-| CID | |Dize |
-| CIDR | |Dize |
-| üstünde | |Byte [], dize |
+| Kutusu | |Bayt[], String |
+| bytea | |Bayt[], String |
+| karakter [(n)] |char [(n)] |Dize |
+| karakter değişen [(n)] |varchar [(n)] |Dize |
+| Cid | |Dize |
+| cidr | |Dize |
+| daire | |Bayt[], String |
 | date | |Tarih saat |
-| daterange | |Dize |
-| çift duyarlık |float8 |çift |
-| inet | |Byte [], dize |
-| ıntarry | |Dize |
+| tarih aralığı | |Dize |
+| çift hassasiyet |float8 |Çift |
+| inet | |Bayt[], String |
+| intarry | |Dize |
 | int4range | |Dize |
 | int8range | |Dize |
 | integer |int, int4 |Int32 |
-| Aralık [Fields] [(p)] | |Timespan |
-| nesnesinde | |Dize |
-| jsonb | |Byte[] |
-| satır | |Byte [], dize |
-| lseg | |Byte [], dize |
-| macaddr | |Byte [], dize |
-| money | |Ondalık |
-| sayısal [(p, s)] |Decimal [(p, s)] |Ondalık |
+| aralık [alanlar] [(p)] | |Timespan |
+| json | |Dize |
+| jsonb | |Bayt[] |
+| line | |Bayt[], String |
+| lseg | |Bayt[], String |
+| macaddr | |Bayt[], String |
+| Para | |Ondalık |
+| sayısal [(p, s)] |ondalık [(p, s)] |Ondalık |
 | numrange | |Dize |
-| oid | |Int32 |
-| yol | |Byte [], dize |
+| Oıd | |Int32 |
+| yol | |Bayt[], String |
 | pg_lsn | |Int64 |
-| noktası | |Byte [], dize |
-| çokgen | |Byte [], dize |
-| real |float4 |Tek |
+| Nokta | |Bayt[], String |
+| Çokgen | |Bayt[], String |
+| gerçek |float4 |Tek |
 | smallint |int2 |Int16 |
-| smallserial |serial2 |Int16 |
-| ardışık |serial4 |Int32 |
+| smallserial |seri2 |Int16 |
+| Seri |seri4 |Int32 |
 | metin | |Dize |
 
-## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
-Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Sütunları batırmak için harita kaynağı
+Kaynak veri kümesindeki sütunları lavabo veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
 
-## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan yinelenebilir okuma
-İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçları önlemek için yinelenebilirlik aklınızda bulundurun. Azure Data Factory, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılması için bir veri kümesi için yeniden deneme ilkesi de yapılandırabilirsiniz. Bir dilim her iki şekilde yeniden çalıştırıldığında, bir dilimin kaç kez çalıştırıldıklarından bağımsız olarak aynı verilerin okunmasını sağlayın. Bkz. [ilişkisel kaynaklardan tekrarlanabilir okuma](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan tekrarlanabilir okuma
+İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçlardan kaçınmak için tekrarlanabilirliği aklınızda bulundurun. Azure Veri Fabrikası'nda, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılaması için bir veri kümesi için yeniden deneme ilkesini de yapılandırabilirsiniz. Bir dilim her iki şekilde de yeniden çalıştırıldığında, bir dilim kaç kez çalıştırılırsa çalıştırın aynı verilerin okunduğundan emin olmanız gerekir. Bkz. [İlişkisel kaynaklardan tekrarlanabilir okuma.](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
-## <a name="performance-and-tuning"></a>Performans ve ayarlama
-Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .
+## <a name="performance-and-tuning"></a>Performans ve Tuning
+Azure Veri Fabrikası'ndaki veri hareketinin performansını etkileyen önemli faktörler (Kopyalama Etkinliği) ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Etkinlik performansını & Tuning Kılavuzu'na](data-factory-copy-activity-performance.md) bakın.

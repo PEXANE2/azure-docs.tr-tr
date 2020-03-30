@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: 070e2108afb22539501c0e1808593c95a26b4576
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d0b7288d5232e296a36708a08ea2ad9f8df5ee1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79254111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531065"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ağ hizmeti
 
@@ -23,6 +23,7 @@ Bu makalede ele alınan özelliklerin tümünü Azure Resource Manager şablonla
 
 ## <a name="accelerated-networking"></a>Hızlandırılmış Ağ
 Azure Hızlandırılmış Ağ, sanal makineye tek kökte G/Ç sanallaştırmasına (SR-IV) olanak tanıyarak ağ performansını geliştirir. Hızlandırılmış ağ hakkında daha fazla bilgi edinmek için [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) veya [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) sanal makineler için Hızlandırılmış ağ sayfalarını inceleyin. Ölçek kümeleriyle hızlandırılmış ağ kullanmak için, ölçek kümenizin networkInterfaceConfigurations ayarlarında enableAcceleratedNetworking değerini **true** olarak ayarlayın. Örnek:
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -42,7 +43,8 @@ Azure Hızlandırılmış Ağ, sanal makineye tek kökte G/Ç sanallaştırması
 
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Mevcut Azure Load Balancer’a başvuran bir ölçek kümesi oluşturma
 Azure portalı kullanılarak ölçek kümesi oluşturulduğunda, yapılandırma seçeneklerinin çoğunda yeni bir yük dengeleyici oluşturulur. Mevcut yük dengeleyiciye başvurması gereken bir ölçek kümesi oluşturuyorsanız, bunu CLI kullanarak yapabilirsiniz. Aşağıdaki örnek betik bir yük dengeleyici ve ardından ona başvuran bir ölçek kümesi oluşturur:
-```bash
+
+```azurecli
 az network lb create \
     -g lbtest \
     -n mylb \
@@ -64,11 +66,13 @@ az vmss create \
     --lb mylb \
     --backend-pool-name mybackendpool
 ```
+
 >[!NOTE]
-> Ölçek kümesi oluşturulduktan sonra, yük dengeleyicinin bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemez. Bağlantı noktasını değiştirmek için Azure sanal makine ölçek kümesini güncelleştirerek sistem durumu araştırmasını kaldırabilir, bağlantı noktasını güncelleştirebilir ve ardından sistem durumu araştırmasını yeniden yapılandırabilirsiniz. 
+> Ölçek kümesi oluşturulduktan sonra, arka uç bağlantı noktası yük dengeleyicisinin sistem durumu sondası tarafından kullanılan bir yük dengeleme kuralı için değiştirilemez. Bağlantı noktasını değiştirmek için, Azure sanal makine ölçeği kümesini güncelleştirerek sistem durumu sondasını kaldırabilir, bağlantı noktasını güncelleyebilir ve sistem durumu sondasını yeniden yapılandırabilirsiniz. 
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Bir Application Gateway’e başvuran bir ölçek kümesi oluşturma
 Bir uygulama ağ geçidi kullanan bir ölçek kümesi oluşturmak için, bu ARM şablonu yapılandırmasında olduğu gibi ölçek kümenizin ipConfigurations bölümündeki uygulama ağ geçidinin arka uç adres havuzuna başvurun:
+
 ```json
 "ipConfigurations": [{
   "name": "{config-name}",
@@ -91,10 +95,13 @@ Varsayılan olarak, ölçek kümeleri içinde oluşturuldukları VNET ve alt ağ
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Yapılandırılabilir DNS sunucularıyla ölçek kümesi oluşturma
 Azure CLI kullanarak özel DNS yapılandırmasıyla bir ölçek kümesi oluşturmak için, **vmss create** komutuna sunucu ip adreslerini ayıran boşluktan sonra **--dns-servers** bağımsız değişkenini ekleyin. Örnek:
+
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
+
 Azure şablonunda özel DNS sunucularını yapılandırmak için, ölçek kümesinin networkInterfaceConfigurations bölümüne bir dnsSettings özelliği ekleyin. Örnek:
+
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -104,7 +111,7 @@ Azure şablonunda özel DNS sunucularını yapılandırmak için, ölçek kümes
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Yapılandırılabilir sanal makine etki alanı adlarıyla ölçek kümesi oluşturma
 CLI kullanarak sanal makineler için özel bir DNS adıyla bir ölçek kümesi oluşturmak için, **virtual machine scale set create** komutuna etki alanı adını temsil eden dizeden sonra **--vm-domain-name** bağımsız değişkenini ekleyin.
 
-Azure şablonunda etki alanı adını ayarlamak için, ölçek kümesinin **networkInterfaceConfigurations** bölümüne bir **dnsSettings** özelliği ekleyin. Örnek:
+Etki alanı adını Azure şablonuna ayarlamak için, ölçek kümesi **ağInterfaceConfigurations** bölümüne bir **dnsAyarlar** özelliği ekleyin. Örnek:
 
 ```json
 "networkProfile": {
@@ -136,8 +143,9 @@ Azure şablonunda etki alanı adını ayarlamak için, ölçek kümesinin **netw
 }
 ```
 
-Tek bir sanal makine dns adı için çıkış şu biçimde olabilir: 
-```
+Tek bir sanal makine dns adı için çıkış şu biçimde olabilir:
+
+```output
 <vm><vmindex>.<specifiedVmssDomainNameLabel>
 ```
 
@@ -149,7 +157,7 @@ Genel olarak, Azure ölçek kümesi sanal makinelerinin kendi genel IP adresleri
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Sanal makine başına bir genel IP ile ölçek kümesi oluşturma
 CLI ile her sanal makineye bir genel IP adresi atayan bir ölçek kümesi oluşturmak için, **vmss create** komutuna **--public-ip-per-vm** parametresini ekleyin. 
 
-Azure şablonu kullanarak ölçek kümesi oluşturmak için, Microsoft.Compute/virtualMachineScaleSets kaynağı API sürümünün en az **2017-03-30** olduğundan emin olun ve ölçek kümesinin ipConfigurations bölümüne **publicIpAddressConfiguration** JSON özelliği ekleyin. Örnek:
+Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft.Compute/virtualMachineScaleSets kaynağının API sürümünün en az **2017-03-30**olduğundan emin olun ve ölçek kümesi ipConfigurations bölümüne **bir publicIpAddressConfiguration** JSON özelliği ekleyin. Örnek:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -159,17 +167,20 @@ Azure şablonu kullanarak ölçek kümesi oluşturmak için, Microsoft.Compute/v
     }
 }
 ```
+
 Örnek şablon: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Ölçek kümesinde sanal makinelerin genel IP adreslerini sorgulama
 CLI kullanarak ölçek kümesi sanal makinelerine atanmış genel IP adreslerini listelemek için, **az vmss list-instance-public-ips** komutunu kullanın.
 
-PowerShell kullanarak ölçek kümesi genel IP adreslerini listelemek için _Get-Azpublicıpaddress_ komutunu kullanın. Örnek:
+PowerShell kullanarak ortak IP adreslerini ölçeklendirmek için _Get-AzPublicIpAddress_ komutunu kullanın. Örnek:
+
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 Doğrudan genel IP adresi yapılandırmasının kaynak kimliğine başvuruda bulunarak da genel IP adreslerini sorgulayabilirsiniz. Örnek:
+
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
@@ -195,6 +206,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 [Azure Kaynak Gezgini](https://resources.azure.com) ve Azure REST API'den örnek çıktı:
+
 ```json
 {
   "value": [
@@ -318,7 +330,8 @@ Ağ Güvenlik Grupları, ölçek kümesi sanal makine özelliklerinin ağ arabir
 
 Uygulama Güvenlik Grupları da ölçek kümesi sanal makine özelliklerinin ağ arabirimi IP yapılandırmaları bölümüne bir başvuru eklemek yoluyla doğrudan ölçek kümesine uygulanabilir.
 
-Örnek: 
+Örnek:
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -362,7 +375,7 @@ Uygulama Güvenlik Grupları da ölçek kümesi sanal makine özelliklerinin ağ
 
 Ağ Güvenlik Grubunuzun ölçek kümeniz ile ilişkilendirildiğini doğrulamak için `az vmss show` komutunu kullanın. Aşağıdaki örnekte sonuçları filtrelemek ve çıktının yalnızca ilgili bölümünü göstermek için `--query` kullanılmaktadır.
 
-```bash
+```azurecli
 az vmss show \
     -g myResourceGroup \
     -n myScaleSet \
@@ -378,7 +391,7 @@ az vmss show \
 
 Uygulama Güvenlik Grubunuzun ölçek kümeniz ile ilişkilendirildiğini doğrulamak için `az vmss show` komutunu kullanın. Aşağıdaki örnekte sonuçları filtrelemek ve çıktının yalnızca ilgili bölümünü göstermek için `--query` kullanılmaktadır.
 
-```bash
+```azurecli
 az vmss show \
     -g myResourceGroup \
     -n myScaleSet \

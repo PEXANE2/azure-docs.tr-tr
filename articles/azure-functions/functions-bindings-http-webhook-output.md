@@ -1,48 +1,48 @@
 ---
-title: Azure Işlevleri HTTP çıkış bağlamaları
-description: Azure Işlevleri 'nde HTTP yanıtlarını döndürme hakkında bilgi edinin.
+title: Azure İşlevler HTTP çıktı bağlamaları
+description: Azure İşlevleri'nde HTTP yanıtlarını nasıl döndüreceklerini öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277628"
 ---
-# <a name="azure-functions-http-output-bindings"></a>Azure Işlevleri HTTP çıkış bağlamaları
+# <a name="azure-functions-http-output-bindings"></a>Azure İşlevler HTTP çıktı bağlamaları
 
-Http istek göndericisine yanıt vermek için HTTP çıkış bağlamasını kullanın. Bu bağlama bir HTTP tetikleyicisi gerektirir ve tetikleyicinin isteğiyle ilişkili yanıtı özelleştirmenize olanak sağlar.
+HTTP isteği gönderene yanıt vermek için HTTP çıkış bağlamasını kullanın. Bu bağlama bir HTTP tetikleyici gerektirir ve tetikleyicinin isteğiyle ilişkilendirilen yanıtı özelleştirme imkanı sunar.
 
-HTTP ile tetiklenen bir işlev için varsayılan dönüş değeri:
+HTTP tarafından tetiklenen bir işlevin varsayılan getiri değeri:
 
-- 2\. x ve üzeri Işlevlerde boş bir gövdeye sahip `HTTP 204 No Content`
-- 1\. x Işlevlerinde boş bir gövdeye sahip `HTTP 200 OK`
+- `HTTP 204 No Content`Fonksiyonlar 2.x ve daha yüksek boş bir gövde ile
+- `HTTP 200 OK`Fonksiyonlar 1.x boş bir gövde ile
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır. Sınıf C# kitaplıkları için, bu *function. JSON* özelliklerine karşılık gelen bir öznitelik özelliği yok.
+Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır. C# sınıfı kitaplıklar için, bu *işlev.json* özelliklerine karşılık gelen hiçbir öznitelik özellikleri vardır.
 
 |Özellik  |Açıklama  |
 |---------|---------|
-| **type** |`http`olarak ayarlanmalıdır. |
-| **direction** | `out`olarak ayarlanmalıdır. |
-| **ada** | Yanıt için işlev kodunda kullanılan değişken adı veya dönüş değerini kullanmak için `$return`. |
+| **Türü** |Ayarlanmış `http`olmalı. |
+| **Yön** | Ayarlanmış `out`olmalı. |
+| **Adı** | Yanıt için işlev kodunda veya `$return` iade değerini kullanmak için kullanılan değişken adı. |
 
 ## <a name="usage"></a>Kullanım
 
-HTTP yanıtı göndermek için, dil standardı yanıt düzenlerini kullanın. Veya C# C# betik içinde, işlev dönüş türü `IActionResult` veya `Task<IActionResult>`. ' C#De, dönüş değeri özniteliği gerekli değildir.
+HTTP yanıtı göndermek için dil standardı yanıt modellerini kullanın. C# veya C# komut dosyasında, `IActionResult` `Task<IActionResult>`işlevin dönüş türünü veya . C#'da, iade değeri özniteliği gerekmez.
 
-Örneğin, bkz. [tetikleyici örneği](./functions-bindings-http-webhook-trigger.md#example).
+Örneğin yanıtlar, [tetikleyici örneğe](./functions-bindings-http-webhook-trigger.md#example)bakın.
 
-## <a name="hostjson-settings"></a>Host.JSON ayarları
+## <a name="hostjson-settings"></a>host.json ayarları
 
-Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2\. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](functions-host-json.md).
+Bu bölümde, bu bağlama için 2.x ve üstü sürümlerde kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek host.json dosyası, bu bağlama için yalnızca sürüm 2.x+ ayarlarını içerir. 2.x ve sonrası sürümlerde genel yapılandırma ayarları hakkında daha fazla bilgi için [Azure İşlevleri için host.json başvurusuna](functions-host-json.md)bakın.
 
 > [!NOTE]
-> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md#http).
+> Functions 1.x'teki host.json başvurusu [için Azure İşlevler 1.x için host.json başvurusuna](functions-host-json-v1.md#http)bakın.
 
 ```json
 {
@@ -66,13 +66,13 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-| customHeaders|yok|HTTP yanıtında özel üstbilgiler ayarlamanıza olanak sağlar. Önceki örnek, içerik türü algılaması olmaması için `X-Content-Type-Options` üst bilgisini yanıta ekler. |
-|dynamicThrottlesEnabled|doğru<sup>\*</sup>|Bu ayar etkinleştirildiğinde, istek işleme işlem hattının `connections/threads/processes/memory/cpu/etc` gibi sistem performans sayaçlarını düzenli olarak denetlemesini sağlar ve bu sayaçlardan herhangi biri yerleşik yüksek eşikten (%80%), sayaçlar normal düzeylere dönene kadar `429 "Too Busy"` bir Yanıt ile reddedilir.<br/><sup>\*</sup> Bir tüketim planında varsayılan değer `true`. Adanmış bir planda varsayılan değer `false`.|
-|HSTS|etkin değil|`isEnabled` `true`olarak ayarlandığında, [.NET Core 'un http katı taşıma güvenliği (HSTS) davranışı](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) [`HstsOptions` sınıfında](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)tanımlandığı gibi zorlanır. Yukarıdaki örnek ayrıca [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) özelliğini 10 gün olarak ayarlar. `hsts` desteklenen özellikleri şunlardır: <table><tr><th>Özellik</th><th>Açıklama</th></tr><tr><td>Excludedkonakları</td><td>HSTS üstbilgisinin eklendiği ana bilgisayar adlarının dize dizisi.</td></tr><tr><td>includeSubDomains</td><td>Strict-Transport-Security üstbilgisinin ıncludealt etki alanı parametresinin etkinleştirilip etkinleştirilmeyeceğini gösteren Boolean değer.</td></tr><tr><td>maxAge</td><td>Strict-Transport-Security üstbilgisinin Max-Age parametresini tanımlayan dize.</td></tr><tr><td>preload</td><td>Strict-Transport-Security üstbilgisinin preload parametresinin etkin olup olmadığını gösteren Boolean.</td></tr></table>|
-|maxConcurrentRequests|100<sup>\*</sup>|Paralel olarak yürütülen HTTP işlevlerinin maksimum sayısı. Bu değer, kaynak kullanımının yönetilmesine yardımcı olabilecek eşzamanlılık denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara yol açacağından çok sayıda sistem kaynağı (bellek/CPU/yuva) kullanan bir HTTP işleviniz olabilir. Ya da bir üçüncü taraf hizmetine giden istekleri yapan bir işleviniz olabilir ve bu çağrıların hız sınırlı olması gerekir. Bu durumlarda, burada bir kısıtlama uygulanması yardımcı olabilir. <br/><sup>*</sup> Tüketim planı için varsayılan değer 100 ' dir. Adanmış bir plan için varsayılan değer sınırsız (`-1`).|
-|maxOutstandingRequests|200<sup>\*</sup>|Belirli bir zamanda tutulan bekleyen istek sayısı üst sınırı. Bu sınır, kuyruğa alınmış ancak yürütmeyi başlatmayan isteklerin yanı sıra devam eden yürütmeler içerir. Bu sınırın üzerindeki tüm gelen istekler, 429 "çok meşgul" yanıtıyla reddedilir. Bu, çağıranların zamana dayalı yeniden deneme stratejileri kullanmasına izin verir ve ayrıca en fazla istek gecikme sürelerini denetlemenize yardımcı olur. Bu, yalnızca betik ana bilgisayar yürütme yolu içinde oluşan kuyruğu denetler. ASP.NET istek kuyruğu gibi diğer kuyruklar da etkin olmaya devam eder ve bu ayardan etkilenmez. <br/><sup>\*</sup> Tüketim planı için varsayılan değer 200 ' dir. Adanmış bir plan için varsayılan değer sınırsız (`-1`).|
-|routePrefix|API|Tüm yollar için geçerli olan rota öneki. Varsayılan ön eki kaldırmak için boş bir dize kullanın. |
+| özel Headers|yok|HTTP yanıtında özel üstbilgi ayarlamanızı sağlar. Önceki örnek, `X-Content-Type-Options` içerik türü koklamaönlemek için yanıtüstbilgi ekler. |
+|dynamicThrottlesEnabled|True<sup>\*</sup>|Etkinleştirildiğinde, bu ayar istek işleme ardışık ardışık ardışık sistem performans sayaçlarını düzenli olarak kontrol eder `connections/threads/processes/memory/cpu/etc` ve bu sayaçlardan herhangi `429 "Too Busy"` biri yerleşik yüksek eşiğin (%80) üzerindeyse, sayaç normal düzeylere dönene kadar istekler yanıtla birlikte reddedilir.<br/><sup>\*</sup>Tüketim planındaki varsayılan `true`değer. Adanmış bir plandaki `false`varsayılan değer.|
+|hsts|etkinleştirildi|Ne `isEnabled` zaman `true`ayarlanır , [http Sıkı Aktarım Güvenliği (HSTS) davranış .NET Core,](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) [ `HstsOptions` sınıfta](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)tanımlandığı gibi. Yukarıdaki örnekte de [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) özelliği 10 güne ayarlar. Desteklenen özellikleri `hsts` şunlardır: <table><tr><th>Özellik</th><th>Açıklama</th></tr><tr><td>hariçHosts</td><td>HSTS üstbilgisinin eklenmediği ana bilgisayar adları dizisi.</td></tr><tr><td>includeSubDomains</td><td>Katı Aktarım-Güvenlik üstbilgisinin includeSubDomain parametresinin etkin olup olmadığını gösteren boolean değeri.</td></tr><tr><td>Maxage</td><td>Sıkı Taşıma-Güvenlik üstbilgisinin maksimum yaş parametresini tanımlayan dize.</td></tr><tr><td>preload</td><td>Katı Aktarım-Güvenlik üstbilgisinin ön yük parametresinin etkin olup olmadığını gösteren boolean.</td></tr></table>|
+|maxConcurrentRequests|100<sup>\*</sup>|Paralel olarak yürütülen en fazla HTTP işlevi sayısı. Bu değer, kaynak kullanımını yönetmenize yardımcı olabilecek eşzamanlılığı denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara neden olacak şekilde çok sayıda sistem kaynağı (bellek/işlemci/soket) kullanan bir HTTP işleviniz olabilir. Veya bir üçüncü taraf hizmetine giden isteklerde bulunan bir işleviniz olabilir ve bu çağrıların oran sınırı olması gerekir. Bu gibi durumlarda, burada bir gaz uygulayarak yardımcı olabilir. <br/><sup>*</sup>Tüketim planı için varsayılan değer 100'dür. Adanmış bir plan için varsayılan sınırdışı (`-1`).|
+|maxOutstandingRequests|200<sup>\*</sup>|Herhangi bir zamanda tutulan en fazla bekleyen istek sayısı. Bu sınır, sıraya dizilen ancak yürütmeye başlamamış istekleri ve devam eden yürütmeleri içerir. Bu sınır üzerinden gelen tüm istekler 429 "Çok Meşgul" yanıtıyla reddedilir. Bu, arayanların zaman tabanlı yeniden deneme stratejilerini kullanmalarına olanak tanır ve aynı zamanda maksimum istek gecikmelerini denetlemenize yardımcı olur. Bu yalnızca komut dosyası ana bilgisayar yürütme yolu içinde oluşan sıraya denetler. ASP.NET istek sırası gibi diğer kuyruklar yine de etkin ve bu ayardan etkilenmez. <br/><sup>\*</sup>Tüketim planı için varsayılan değer 200'dür. Adanmış bir plan için varsayılan sınırdışı (`-1`).|
+|rotaÖnek|API|Tüm rotalar için geçerli olan rota öneki. Varsayılan önekikaldırmak için boş bir dize kullanın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HTTP isteğinden bir işlev çalıştırma](./functions-bindings-http-webhook-trigger.md)
+- [BIR HTTP isteğinden bir işlev çalıştırma](./functions-bindings-http-webhook-trigger.md)

@@ -1,179 +1,185 @@
 ---
-title: Azure Dosya Eşitleme 'e StorSimple 8000 serisi geçişi
-description: StorSimple 8100 veya 8600 gerecini Azure Dosya Eşitleme 'e geçirmeyi öğrenin.
+title: Azure Dosya Eşitlemi için StorSimple 8000 serisi geçiş
+description: StorSimple 8100 veya 8600 cihazını Azure Dosya Eşitleme'ye nasıl geçirebilirsiniz öğrenin.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 7e5f70d0323aa5c502491ab99db303fde31ade83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943598"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528634"
 ---
-# <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
+# <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Azure Dosya Eşitlemi için StorSimple 8100 ve 8600 geçişi
 
-StorSimple 8000 serisi, 8100 ya da 8600 fiziksel, şirket içi gereçlerden ve bulut hizmeti bileşenleriyle temsil edilir. Bu gereçlerden birindeki verileri bir Azure Dosya Eşitleme ortamına geçirmek mümkündür. Azure Dosya Eşitleme, StorSimple gereçlerinin geçirilebilmesi için varsayılan ve stratejik, uzun süreli Azure hizmetidir.
+StorSimple 8000 serisi, 8100 veya 8600 fiziksel, şirket içi cihazlar ve bulut hizmeti bileşenleri yle temsil edilir. Bu aygıtlardan herhangi birinden verileri Azure Dosya Eşitleme ortamına geçirmek mümkündür. Azure Dosya Eşitlemi, StorSimple cihazlarının geçirilebileceği varsayılan ve stratejik uzun vadeli Azure hizmetidir.
 
-StorSimple 8000 serisi, adım 2022 ' de [yaşam sonuna](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) ulaşacaktır. Geçişinizi mümkün olan en kısa sürede planlamaya başlamak önemlidir. Bu makalede, Azure Dosya Eşitleme başarılı bir geçiş için gereken arka plan bilgisi ve geçiş adımları sağlanmaktadır. 
+StorSimple 8000 serisi Aralık 2022'de ömrünü niçin [sona erdirecek.](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series) Geçişinizi mümkün olan en kısa sürede planlamaya başlamak önemlidir. Bu makalede, Azure Dosya Eşitlemi için başarılı bir geçiş için gerekli arka plan bilgisi ve geçiş adımları sağlar. 
 
 ## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 
 > [!IMPORTANT]
-> Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş bir geçiş planı için e-posta AzureFilesMigration@microsoft. com ve geçiş sırasında yardım.
+> Microsoft, müşterilerine geçişlerinde yardımcı olmayı taahhüt eder. Özelleştirilmiş bir geçiş planı nın yanı sıra geçiş sırasında yardım için .com adresine e-posta gönderin. AzureFilesMigration@microsoft
 
-Azure Dosya Eşitleme, iki ana bileşeni temel alan bir Microsoft bulut hizmetidir:
+Azure Dosya Eşitlemi, iki ana bileşene dayanan bir Microsoft bulut hizmetidir:
 
 * Dosya eşitleme ve bulut katmanlama.
-* Azure 'da, SMB ve dosya geri kalanı gibi birden çok protokol üzerinden erişilebilen yerel depolama olarak dosya paylaşımları. Azure dosya paylaşımının bir Windows Server üzerindeki dosya paylaşımıyla karşılaştırılabilen bir ağ sürücüsü olarak yerel olarak takabilirsiniz. Öznitelikler, izinler ve zaman damgaları gibi önemli dosya uygunluk yönlerini destekler. Azure dosya paylaşımları ile, artık bulutta depolanan dosya ve klasörleri yorumlamak için bir uygulama veya hizmet gereksinimi yoktur. Bunlara Windows Dosya Gezgini gibi tanıdık protokoller ve istemciler üzerinden yerel olarak erişebilirsiniz. Bu, Azure dosya 'yı ideal ve genel amaçlı dosya sunucusu verilerinin yanı sıra, bazı uygulama verilerini bulutta depolamak için en esnek yaklaşımdan daha geniş bir yaklaşım sağlar.
+* Dosya paylaşımları Azure'da yerel depolama alanı olarak paylaşArak SMB ve DOSYA REST gibi birden çok protokol üzerinden erişilebilir. Azure dosya paylaşımı, bir Windows Sunucusu'ndaki bir dosya paylaşımıyla karşılaştırılabilir ve bu dosyayı ağ sürücüsü olarak yerel olarak monte edebilirsiniz. Öznitelikler, izinler ve zaman damgaları gibi önemli dosya doğruluğu yönlerini destekler. Azure dosya paylaşımlarında, bulutta depolanan dosya ve klasörleri yorumlamak için artık bir uygulamaya veya hizmete gerek kalmaz. Bunları tanıdık protokoller ve Windows Dosya Gezgini gibi istemciler üzerinden yerel olarak erişebilirsiniz. Bu, Azure dosya paylaşımlarını genel amaçlı dosya sunucusu verilerinin yanı sıra bazı uygulama verilerini bulutta depolamak için ideal ve en esnek yaklaşım haline getirir.
 
-Bu makalede geçiş adımları ele alınmaktadır. Azure Dosya Eşitleme hakkında daha fazla bilgi edinmek istiyorsanız, aşağıdaki makaleleri öneririz:
+Bu makalede, geçiş adımları üzerinde duruluyor. Azure Dosya Eşitlemi hakkında daha fazla bilgi edinmek istiyorsanız, aşağıdaki makaleleri öneririz:
 
-* [Azure Dosya Eşitleme-genel bakış](https://aka.ms/AFS "Genel Bakış")
-* [Azure Dosya Eşitleme dağıtım kılavuzu](storage-sync-files-deployment-guide.md)
+* [Azure Dosya Eşitleme - genel bakış](https://aka.ms/AFS "Genel Bakış")
+* [Azure Dosya Eşitleme - dağıtım kılavuzu](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Geçiş hedefleri
 
-Amaç, üretim verilerinin bütünlüğünü güvence altına almak ve kullanılabilirliği güvence altına almak sağlamaktır. İkinci olarak, kapalı kalma süresinin en az bir süre içinde tutulması gerekir, böylece normal bakım pencereleri içine sığacak veya yalnızca biraz daha fazla olabilir.
+Amaç, üretim verilerinin bütünlüğünü garanti altına almak ve kullanılabilirliği garanti etmektir. İkincisi, normal bakım pencerelerine sığabilmesi veya sadece biraz aşabilmesi için kapalı kalma süresini en aza kadar tutmayı gerektirir.
 
 ## <a name="storsimple-8000-series-migration-path-to-azure-file-sync"></a>Azure Dosya Eşitleme için StorSimple 8000 serisi geçiş yolu
 
-Azure Dosya Eşitleme aracısını çalıştırmak için yerel bir Windows Server gereklidir. Windows Server en az bir 2012R2 sunucusu olabilir, ancak ideal bir Windows Server 2019 ' dir.
+Azure Dosya Eşitleme aracısını çalıştırmak için yerel bir Windows Sunucusu gereklidir. Windows Server en az bir 2012R2 sunucusu olabilir ama ideal bir Windows Server 2019 olduğunu.
 
-Birçok farklı geçiş yolu vardır ve bunların tümünü belgelemek ve bu makalede en iyi yöntem olarak önerdiğimiz yol üzerinde neden risk veya olumsuz yönleri oluşturduğunu göstermek için çok uzun bir makale oluşturur.
+Çok sayıda, alternatif geçiş yolları vardır ve bunların hepsini belgelemek ve bu makalede en iyi uygulama olarak önerdiğimiz yol üzerinde neden risk veya dezavantajlar taşıdığını göstermek için çok uzun bir makale oluşturur.
 
-![StorSimple 8000 serisi geçiş aşamaları genel bakış](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-overview.png "StorSimple 8000 serisi geçiş rotası Bu makalede aşağıdaki evreler hakkında genel bakış.")
+![StorSimple 8000 serisi geçiş aşamalarına genel bakış](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-overview.png "StorSimple 8000 serisi geçiş rotası bu makalede daha aşağıdaki aşamaları genel.")
 
-Önceki görüntüde, bu makaledeki bölümlere karşılık gelen aşamalar gösterilmektedir.
-Dosyaları yerel StorSimple gerecinize gereksiz şekilde geri çekmeyi önlemek için bulut tarafı geçişi kullanıyoruz. Bu yaklaşım, yerel önbelleğe alma davranışının veya ağ bant genişliği kullanımını etkileyerek, bunlardan biri de üretim iş yüklerinizi etkileyebilir.
-Bulut tarafında geçiş bir anlık görüntü (bir birim kopyası) üzerinde çalışıyor. Bu nedenle, geçiş işleminin sonunda, üretim verileriniz bu işlemden yalıtılarak kesilmez. Aslında bir yedekleme işlemi dışında çalışmak, geçişin güvenli ve kolayca tekrarlanabilir olmasını, herhangi bir zorluklara sahip olmanızı sağlar.
+Önceki resim, bu makaledeki bölümlere karşılık gelen aşamaları görüntüler.
+Yerel StorSimple cihazınıza gereksiz dosyaların geri çağrılmasını önlemek için bulut tarafı geçişi kullanırız. Bu yaklaşım, üretim iş yüklerinizi etkileyebilecek yerel önbelleğe alma davranışını veya ağ bant genişliği kullanımını etkilemeyi önler.
+Bulut tarafı geçişi, verilerinizin anlık görüntüsü (birim klonu) üzerinde çalışıyor. Yani üretim verileriniz bu işlemden izole edilir- geçişin sonunda kesintiye kadar. Temelde bir yedekleme ne kapalı çalışma, herhangi bir zorlukla karşı karşıya eğer geçiş güvenli ve kolayca tekrarlanabilir hale getirir.
 
-## <a name="considerations-around-existing-storsimple-backups"></a>Mevcut StorSimple yedeklemeleriyle ilgili konular
+## <a name="considerations-around-existing-storsimple-backups"></a>Varolan StorSimple yedeklemeleri ile ilgili dikkat edilecek noktalar
 
-StorSimple, birim klonları biçiminde yedeklemeleri almanıza olanak sağlar. Bu makalede, canlı dosyalarınızı geçirmek için yeni bir birim kopyası kullanılmaktadır.
-Canlı verilerinize ek olarak yedeklemeleri geçirmeniz gerekiyorsa, bu makaledeki tüm rehberlik yine de geçerlidir. Tek fark, yeni bir birim kopyalama ile başlamak yerine, geçirmeniz gereken en eski yedekleme birimi kopyası ile başlayacaksınız.
+StorSimple, ses klonları şeklinde yedekleme yapmanızı sağlar. Bu makalede, canlı dosyalarınızı geçirmek için yeni bir birim klon kullanır.
+Canlı verilerinize ek olarak yedeklemeleri geçirmeniz gerekiyorsa, bu makaledeki tüm kılavuzlar yine de geçerlidir. Tek fark, yeni bir birim klonla başlamak yerine, geçirmeniz gereken en eski yedek hacim klonunu başlatmanızdır.
 
-Sıra aşağıdaki gibidir:
+Dizi aşağıdaki gibidir:
 
-* Geçirmeniz gereken en düşük birim kopyaları kümesini belirleyin. Daha uzun bir süre önce geçiş işlemi yaptığınız için daha fazla yedekleme yapılacağından, bu listenin en az olması mümkün olursa en az bir değer tutmanız önerilir.
-* Geçiş işlemini ilerleyecekseniz, geçirmek istediğiniz en eski birim kopyasına ve sonraki bir geçişe başlayın, sonraki en eskileri kullanın.
-* Her birim kopyalama geçişi tamamlandığında, bir Azure dosya paylaşımının anlık görüntüsünü almalısınız. Azure [dosya paylaşımı anlık görüntüleri](storage-snapshots-files.md) , Azure dosya paylaşımlarınız için dosya ve klasör yapısının zaman içindeki yedeklemelerini nasıl tutacağınıza yöneliktir. Geçiş tamamlandıktan sonra, geçiş işlemi sırasında ilerleme yaptığınız her birim klonlarınızın korunan sürümlerini kullandığınızdan emin olmak için, geçiş tamamlandıktan sonra bu anlık görüntülere ihtiyacınız olacak.
-* Aynı StorSimple birimi tarafından sunulan tüm Azure dosya paylaşımları için Azure dosya paylaşımı anlık görüntülerini aldığınızdan emin olun. Birim klonları birim düzeyindedir; Azure dosya paylaşımının anlık görüntüleri, paylaşma düzeyindedir. Bir birim kopyasının geçirilmesi tamamlandıktan sonra bir paylaşılan anlık görüntü (her Azure dosya paylaşımında) almanız gerekir.
-* Bir birim kopyası için geçiş işlemini yineleyin ve canlı verilerin bir anlık görüntüsüne ulaşana kadar her birim Klondan sonra paylaşma anlık görüntülerini alın. Bir birim kopyasının geçirilmesi işlemi aşağıdaki aşamalarda açıklanmıştır. 
+* Geçirmeniz gereken en az birim klon kümesini belirleyin. Bu listeyi mümkünse en az da tutmanızı öneririz, çünkü ne kadar çok yedekleme olursa, genel geçiş işlemi o kadar uzun sürer.
+* Geçiş sürecinden geçerken, geçirmek istediğiniz en eski hacimli klonla başlayın ve sonraki her geçişte, sonraki en eski sini kullanın.
+* Her birim klon geçişi tamamlandığında, bir Azure dosya paylaşımı anlık görüntüsü almanız gerekir. [Azure dosya paylaşımı anlık görüntüleri,](storage-snapshots-files.md) Azure dosya paylaşımlarınız için dosya ve klasör yapısının zamanında yedeklemelerini nasıl saklarsınız. Geçiş te ilerledikçe birim klonlarınızın her birinin sürümlerini koruduğunuzdan emin olmak için, geçiş tamamlandıktan sonra bu anlık görüntülere ihtiyacınız olacaktır.
+* Aynı StorSimple birimi tarafından sunulan tüm Azure dosya paylaşımları için Azure dosya paylaşımı anlık görüntülerini aldığınızdan emin olun. Birim klonları ses düzeyinde, Azure dosya paylaşımı anlık görüntüleri paylaşım düzeyindedir. Bir birim klon geçişi bittikten sonra bir paylaşım anlık görüntüsü (her Azure dosya paylaşımında) almanız gerekir.
+* Bir birim klon için geçiş işlemini yineleyin ve canlı verilerin anlık görüntüsüne yakalanana kadar her birim klondan sonra paylaşım anlık görüntülerini alın. Bir hacim klon geçirme işlemi aşağıdaki aşamalarda açıklanmıştır. 
 
-Yedeklemeleri hiç taşımanız gerekmiyorsa ve yalnızca canlı verilerin geçişi yapıldıktan sonra Azure dosya paylaşımında yeni bir yedekleme zinciri başlatabilir, geçiş sırasında karmaşıklığı azaltmak ve geçişin yapılacağı süre miktarını azaltmak yararlı olur. Her bir birim için (her bir paylaşıma değil) StorSimple içinde yedeklerin taşınmasının ve taşınmayacağı kararı verebilirsiniz.
+Yedeklemeleri hiç taşımanız gerekmiyorsa ve yalnızca canlı verilerin geçişi yapıldıktan sonra Azure dosya paylaşım tarafında yeni bir yedekleme zinciri başlatabiliyorsanız, geçişteki karmaşıklığı ve geçişin alacağı süreyi azaltmak için yararlıdır. StorSimple'da yedeklemeleri taşıyıp taşımama ve her birim için kaç (her paylaşım değil) kaç tane olduğunu kararverebilirsiniz.
 
-## <a name="phase-1-get-ready"></a>1\. Aşama: hazırlanın
+## <a name="phase-1-get-ready"></a>Aşama 1: Hazır olun
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-1.png)
+        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan önceki genel bakış resminin bir bölümünü gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-1.png)
     :::column-end:::
     :::column:::
-        Geçişin temeli, StorSimple 8020 adlı bir birim kopyası ve sanal bulut gerecine yöneliktir.
-Bu aşama, Azure 'da bu kaynakların dağıtımına odaklanır.
+        Geçişin temeli, StorSimple 8020 adı verilen bir hacim klonu ve sanal bulut cihazıdır.
+Bu aşama, bu kaynakların Azure'da dağıtımına odaklanır.
     :::column-end:::
 :::row-end:::
 
-### <a name="deploy-a-storsimple-8020-virtual-appliance"></a>StorSimple 8020 Sanal Gereç dağıtma
+### <a name="deploy-a-storsimple-8020-virtual-appliance"></a>StorSimple 8020 sanal cihazı nı dağıtın
 
-Bulut gerecinin dağıtımı, güvenlik, ağ ve diğer birkaç dikkat gerektiren bir işlemdir.
-
-> [!IMPORTANT]
-> Aşağıdaki kılavuzda bazı gereksiz bölümler yer almaktadır. "Adım 3" tarihine kadar başlayan makaleyi okuyun ve takip edin. Ardından bu makaleye geri dönün. Şu anda "Adım 3" veya bu kılavuzun ötesinde herhangi bir şeyi gerçekleştirmeniz gerekmez.
-
-[StorSimple 8020 Sanal Gereç dağıtımı](../../storsimple/storsimple-8000-cloud-appliance-u2.md)
-
-### <a name="determine-a-volume-clone-to-use"></a>Kullanılacak birim klonu belirleme
-
-Geçişe başlamaya hazırsanız ilk adım, yedekleme için yaptığınız gibi, StorSimple bulut depolamanın geçerli durumunu yakalayan yeni bir birim kopyası hazırlanmalıdır. Sahip olduğunuz StorSimple birimlerinin her biri için bir kopya alın.
-Yedeklemeleri taşımaya ihtiyaç duyuyorsanız, kullandığınız ilk birim kopyası yeni oluşturulmuş bir kopya değildir ancak geçirmeniz gereken en eski birim kopyası (en eski yedekleme) değildir.
-Ayrıntılı rehberlik için ["mevcut StorSimple yedeklemelerine Ilişkin önemli noktalar"](#considerations-around-existing-storsimple-backups) bölümüne bakın.
+Bulut cihazı dağıtmak, güvenlik, ağ ve diğer birkaç husus gerektiren bir işlemdir.
 
 > [!IMPORTANT]
-> Aşağıdaki kılavuzda bazı gereksiz bölümler yer almaktadır. Yalnızca bağlantılı bölümde özetlenen adımları okuyun ve izleyin. Ardından bu makaleye geri dönün. "Sonraki adımlar" bölümünü izlemeniz gerekmez.
+> Aşağıdaki kılavuz bazı gereksiz bölümler içerir. Makaleyi baştan "Adım 3"e kadar okuyun ve izleyin. Sonra bu makaleye geri dönün. Şu anda, bu kılavuzda "Adım 3" ya da ötesinde bir şey tamamlamak gerekmez.
 
-[Birimin kopyasını oluşturma](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
+[StorSimple 8020 sanal cihazının dağıtımı](../../storsimple/storsimple-8000-cloud-appliance-u2.md)
 
-### <a name="use-the-volume-clone"></a>Birim klonu kullanma
+### <a name="determine-a-volume-clone-to-use"></a>Kullanılacak bir birim klon belirleme
 
-1\. aşamanın son aşaması, seçtiğiniz birim kopyasını Azure 'daki 8020 sanal gereci üzerinde kullanıma hazır hale getirmektir.
+Geçişe başlamaya hazır olduğunuzda, ilk adım, StorSimple bulut depolamanızın geçerli durumunu yakalayan yeni bir hacim klonu (tıpkı yedekleme için olduğu gibi) almaktır. Sahip olduğunuz StorSimple birimlerinin her biri için bir klon alın.
+Yedeklemeleri taşımanız gerekiyorsa, kullandığınız ilk birim klon yeni oluşturulan bir klon değil, geçirmeniz gereken en eski birim klondur (en eski yedekleme).
+Ayrıntılı kılavuz için ["Varolan StorSimple yedeklemeleri ile ilgili dikkat edilmesi gerekenler"](#considerations-around-existing-storsimple-backups) bölümüne bakın.
 
 > [!IMPORTANT]
-> Aşağıdaki kılavuzda, birimi biçimlendirmek için gereken adımlar ve ayrıca son bir yönerge yer almaktadır. **BIRIMI biçimlendirmeyin** "10" yönergesinden başlayarak, "10. Basit bir birimi biçimlendirmek için... "  Bu adımı takip etmeden önce durdurun ve bu makaleye geri dönün.
+> Aşağıdaki kılavuz bazı gereksiz bölümler içerir. Yalnızca bağlantılı bölümde özetlenen adımları okuyun ve izleyin. Sonra bu makaleye geri dönün. "Sonraki adımlar" bölümünü izlemeniz gerekmez.
 
-[Azure 'da 8020 sanal gerecine bir birim kopyası bağlama](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
+[Bir birim klon oluşturma](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
 
-### <a name="phase-1-summary"></a>Aşama 1 Özeti
+### <a name="use-the-volume-clone"></a>Ses klonunu kullanma
 
-1\. aşama tamamlandığınıza göre şunları tamamladınız:
+Aşama 1'in son aşaması, seçtiğiniz hacim klonunu Azure'daki 8020 sanal cihazda kullanılabilir hale getirmektir.
 
-* Azure 'da StorSimple 8020 sanal gereci dağıtıldı.
-* Hangi birim kopyasının geçişe başlayacağınızı belirler.
-* Birim kopyalarınızı (her canlı birim için bir tane) Azure 'daki StorSimple Sanal gerecine, verileri daha fazla kullanım için kullanılabilir olacak şekilde bağladı.
+> [!IMPORTANT]
+> Aşağıdaki kılavuz gerekli adımları içerir, aynı zamanda - sonunda - birim biçimlendirmek için bir yönerge. **SES DÜZEYINI BIÇIMLENDIRMEYIN** En başından talimata kadar bağlantılı "bölüm 7"yi okuyun ve izleyin: "10. Basit bir birim biçimlendirmek için..."  Bu adımı takip etmeden önce durdurun ve bu makaleye dönün.
 
-## <a name="phase-2-cloud-vm"></a>2\. Aşama: bulut VM 'si
+[Azure'daki 8020 sanal cihaza ses klonu takma](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
+
+### <a name="phase-1-summary"></a>Faz 1 özeti
+
+1. aşamayı tamamladığınızda aşağıdakileri yapmış olabilirsiniz:
+
+* Azure'da StorSimple 8020 sanal cihazı dağıtıldı.
+* Geçişe hangi hacim klonunu başlayacağınızı belirleyin.
+* Ses klonunuzu (her canlı birim için bir tane) Azure'daki StorSimple sanal cihazına monte edin ve verileri daha fazla kullanıma hazır hale getirilebilir.
+
+## <a name="phase-2-cloud-vm"></a>Aşama 2: Bulut VM
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
+        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan önceki genel bakış resminin bir bölümünü gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
     :::column-end:::
     :::column:::
-        Azure 'daki StorSimple 8020 sanal gereci üzerinde ilk kopyam kullanıma sunulduktan sonra, bir VM sağlama ve bu VM 'nin Iscsı üzerinden birim kopyasını (veya birden çok kez) kullanıma sunma süresi artık sürüyor.
+        İlk klonunuzu Azure'daki StorSimple 8020 sanal cihazında kullanıma sunulduktan sonra, artık bir VM sağlama ve ses klonunu (veya birden çok) iSCSI üzerinden bu VM'ye maruz bırakma nın zamanı geldi.
     :::column-end:::
 :::row-end:::
 
 ### <a name="deploy-an-azure-vm"></a>Azure VM dağıtma
 
-Azure 'daki Windows Server sanal makinesi, yalnızca geçiş sırasında gerekli olan geçici bir altyapı parçası olan StorSimple 8020 gibidir.
-Dağıttığınız VM 'nin yapılandırması, genellikle eşitlendirilecektir öğe sayısına (dosya ve klasör) göre değişir. Herhangi bir endişeniz varsa daha yüksek performans yapılandırması yapmanızı öneririz.
+Azure'daki Windows Server sanal makinesi, yalnızca geçiş sırasında gerekli olan geçici bir altyapı parçası olan StorSimple 8020 gibi.
+Dağıttığınız VM'nin yapılandırması çoğunlukla eşitlediğiniz öğe (dosya ve klasör) sayısına bağlıdır. Herhangi bir endişeniz varsa daha yüksek bir performans yapılandırması ile devam öneririz.
 
-Tek bir Windows Server, en fazla 30 Azure dosya paylaşımını eşitleyebilir.
-Her paylaşımın/yolun, StorSimple biriminin köküne göre veya öğelerin (dosyalar ve klasörler) sayısını kapsayacak şekilde seçim yapmanıza karar verirsiniz.
+Tek bir Windows Sunucusu en fazla 30 Azure dosya paylaşımını eşitleyebilir.
+Karar verdiğiniz özelliklerin her paylaşım/yolu veya StorSimple biriminin kökünü kapsaması ve öğeleri (dosya ve klasörler) sayması gerekir.
 
-Verilerin genel boyutu bir darboğazdan daha düşüktür; makine özelliklerini uyarlamak için gereken öğe sayısıdır.
+Verilerin genel boyutu bir darboğaz daha azdır - bu makine özellikleri terzi için gereken öğelerin sayısıdır.
 
-* [Eşitleme yapmanız gereken öğe sayısına (dosya ve klasör) göre bir Windows Server 'ın nasıl boyutlandıralınacağını öğrenin.](storage-sync-files-planning.md#recommended-system-resources)
-* [Windows Server VM 'yi dağıtmayı öğrenin.](../../virtual-machines/windows/quick-create-portal.md)
+* [Bir Windows Server'ı eşitlemeniz gereken öğe (dosya ve klasörler) sayısına göre nasıl boyutlandırabileceğinizi öğrenin.](storage-sync-files-planning.md#recommended-system-resources)
 
-> [!IMPORTANT]
-> VM 'nin StorSimple 8020 sanal gereci ile aynı Azure bölgesinde dağıtıldığından emin olun. Bu geçişin bir parçası olarak, bulut verilerinizin bölgesini bugün içinde depolandığı bölgeden değiştirmeniz de gerekir. bu işlemi Azure dosya paylaşımlarını sağladığınızda daha sonraki bir adımda yapabilirsiniz.
+    **Lütfen dikkat:** Daha önce bağlanan makale, sunucu belleği (RAM) için bir aralık içeren bir tablo sunar. Azure VM için büyük sayıya doğru yönlendirin. Şirket içi makineniz için daha küçük sayıya yönelebilirsiniz.
 
-### <a name="expose-the-storsimple-8020-volumes-to-the-vm"></a>StorSimple 8020 birimlerini VM 'de kullanıma sunma
-
-Bu aşamada, Iscsı üzerinden 8020 sanal gerecinden bir veya birkaç StorSimple birimini sağladığınız Windows Server VM 'sine bağlanıyorsunuz.
+* [Windows Sever VM'yi nasıl dağıtılayacağımı öğrenin.](../../virtual-machines/windows/quick-create-portal.md)
 
 > [!IMPORTANT]
-> Aşağıdaki makalelerde, **bulut gereci için yalnızca özel IP al** ' ı doldurun ve Iscsı bölümlerine **bağlanın** ve bu makaleye geri dönün.
+> VM'nin StorSimple 8020 sanal cihazla aynı Azure bölgesinde dağıtıldıkdığından emin olun. Bu geçişin bir parçası olarak, bulut verilerinizin bugün depolanan bölgeden bölgesini de değiştirmeniz gerekiyorsa, bunu Azure dosya paylaşımlarını sağlarken daha sonraki bir adımda yapabilirsiniz.
 
-1. [Bulut gereci için özel IP al](../../storsimple/storsimple-8000-cloud-appliance-u2.md#get-private-ip-for-the-cloud-appliance)
-2. [Iscsı üzerinden Bağlan](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
+> [!IMPORTANT]
+> Performans için optimize etmek için bulut VM'iniz için çok hızlı bir **işletim sistemi diski** dağıtın. Tüm veri birimleriniz için eşitleme veritabanını işletim sistemi diskinde saklarsınız. Ayrıca, büyük bir **işletim sistemi diski**oluşturduğunuzdan emin olun. StorSimple birimlerinizdeki öğelerin (dosya ve klasörler) sayısına bağlı olarak, işletim sistemi diskinin eşitleme veritabanını barındırmak için **birkaç yüz GiB** alanı gerekebilir.
 
-### <a name="phase-2-summary"></a>2\. aşama Özeti
+### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>StorSimple 8020 birimlerini Azure VM'ye maruz bırak
 
-2\. aşama 'u tamamladığınıza göre şunları yaptınız: 
+Bu aşamada, iSCSI üzerinden 8020 sanal cihazdan bir veya birkaç StorSimple cildini, sizin sağdığınız Windows Server VM'ye bağlarsınız.
 
-* 8020 sanal StorSimple gereci ile aynı bölgede bir Windows Server VM 'si sağlandı
-* 8020 ' dan tüm uygulanabilir birimler, Iscsı üzerinden Windows Server VM 'sine kullanıma sunuldu.
-* Artık bağlı birimlerdeki sunucu sanal makinesinde dosya Gezgini 'ni kullandığınızda dosya ve klasör içeriğini görmeniz gerekir.
+> [!IMPORTANT]
+> Aşağıdaki makaleler için yalnızca **bulut cihazı için özel IP Alın'ı** doldurun ve **iSCSI** bölümleri üzerinden bağlanın ve bu makaleye geri dönün.
 
-Yalnızca geçiş gerektiren tüm birimler için bu adımları tamamladığınızda 3. aşama 'e ilerleyin.
+1. [Bulut gereci özel IP alma](../../storsimple/storsimple-8000-cloud-appliance-u2.md#get-private-ip-for-the-cloud-appliance)
+2. [iSCSI üzerinden bağlanın](../../storsimple/storsimple-8000-deployment-walkthrough-u2.md#step-7-mount-initialize-and-format-a-volume)
 
-## <a name="phase-3-set-up-azure-file-shares-and-get-ready-for-azure-file-sync"></a>3\. Aşama: Azure dosya paylaşımlarını ayarlama ve Azure Dosya Eşitleme hazırlanın
+### <a name="phase-2-summary"></a>Aşama 2 özeti
+
+İkinci aşamayı tamamladığınızda, şunları var: 
+
+* 8020 sanal StorSimple cihazıyla aynı bölgede bir Windows Server VM'si
+* 8020'den Windows Server VM'ye iSCSI üzerinden tüm geçerli birimleri açığa çıkardı.
+* Artık, bağlı birimlerde Server VM'de Dosya Gezgini'ni kullandığınızda dosya ve klasör içeriğini görmeniz gerekir.
+
+Yalnızca geçiş gerektiren tüm birimler için bu adımları tamamladığınızda 3.
+
+## <a name="phase-3-set-up-azure-file-shares-and-get-ready-for-azure-file-sync"></a>Aşama 3: Azure dosya paylaşımlarını ayarlama ve Azure Dosya Eşitlemi için hazırlan
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
+        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan önceki genel bakış resminin bir bölümünü gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
     :::column-end:::
     :::column:::
-        Bu aşamada, bir dizi Azure dosya paylaşımı belirleyerek, şirket içinde bir StorSimple gereci değişikliği olarak bir Windows Server oluşturup bu sunucuyu Azure Dosya Eşitleme için yapılandıracaksınız. 
+        Bu aşamada, bir dizi Azure dosya paylaşımını belirleyecek ve bunları sağlayacak, StorSimple cihaz yerine bir Windows Server oluşturacak ve bu sunucuya Azure Dosya Eşitlemi için yapılandırılacak. 
     :::column-end:::
 :::row-end:::
 
-### <a name="map-your-existing-namespaces-to-azure-file-shares"></a>Mevcut ad alanlarınızı Azure dosya paylaşımlarına eşleyin
+### <a name="map-your-existing-namespaces-to-azure-file-shares"></a>Varolan ad alanlarınızı Azure dosya paylaşımlarına göre eşle
 
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
@@ -182,174 +188,174 @@ Yalnızca geçiş gerektiren tüm birimler için bu adımları tamamladığını
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
 > [!TIP]
-> Azure bölgesini StorSimple verilerinizin bulunduğu geçerli bölgeden değiştirmeniz gerekiyorsa, Azure dosya paylaşımlarını kullanmak istediğiniz yeni bölgede sağlayın. Azure dosya paylaşımlarınızı tutan depolama hesaplarını sağladığınızda bölgeyi seçerek belirlersiniz. Ayrıca, sağlayacağınız Azure Dosya Eşitleme kaynağının aynı, yeni bölge olduğundan emin olun.
+> Azure bölgesini StorSimple verilerinizin bulunduğu geçerli bölgeden değiştirmeniz gerekiyorsa, ardından kullanmak istediğiniz yeni bölgede Azure dosya paylaşımlarını sağlama. Azure dosya paylaşımlarınızı elinde bulunduran depolama hesaplarını sağlarken bölgeyi seçerek bölgeyi belirlersiniz. Aşağıda sağacağınız Azure Dosya Eşitleme kaynağının da aynı yeni bölgede olduğundan emin olun.
 
-### <a name="deploy-the-azure-file-sync-cloud-resource"></a>Azure Dosya Eşitleme bulut kaynağını dağıtma
+### <a name="deploy-the-azure-file-sync-cloud-resource"></a>Azure Dosya Eşitleme bulut u kaynağını dağıtma
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
 > [!TIP]
-> StorSimple verilerinizin bulunduğu geçerli bölgeden Azure bölgesini değiştirmeniz gerekiyorsa, yeni bölgedeki Azure dosya paylaşımlarınız için depolama hesapları sağlamış olursunuz. Bu depolama eşitleme hizmeti 'ni dağıtırken aynı bölgeyi seçtiğinizden emin olun.
+> Azure bölgesini StorSimple verilerinizin bulunduğu geçerli bölgeden değiştirmeniz gerekiyorsa, yeni bölgedeki Azure dosya paylaşımlarınızın depolama hesaplarını sağlamış sınız demektir. Bu Depolama Eşitleme Hizmetini dağıtırken aynı bölgeyi seçtiğinizden emin olun.
 
-### <a name="deploy-an-on-premises-windows-server"></a>Şirket içi Windows Server dağıtma
+### <a name="deploy-an-on-premises-windows-server"></a>Şirket içinde Windows Server dağıtma
 
-* Bir sanal makine veya fiziksel sunucu olarak en az 2012R2 ' de bir Windows Server 2019 oluşturun. Windows Server yük devretme kümesi de desteklenir. StorSimple 8100 veya 8600 ' den daha fazla işlem yapmış olabileceğiniz sunucuyu yeniden kullanmayın.
-* Doğrudan bağlı depolama alanı sağlayın veya ekleyin (desteklenmeyen bir şekilde, NAS ile karşılaştırıldığında).
+* Sanal makine veya fiziksel sunucu olarak en az 2012R2 olarak bir Windows Server 2019 oluşturun. Windows Server hata kümesi de desteklenir. StorSimple 8100 veya 8600'ün önünde sahip olabileceğiniz sunucuyu yeniden kullanmayın.
+* Doğrudan Bağlı Depolama (DESTEKLENMEYEn NAS ile karşılaştırıldığında DAS) sağlama veya ekleme.
 
-Yeni Windows Server 'a, StorSimple 8100 veya 8600 gerecinin önbelleğe alma için yerel olarak kullanılabilir olandan eşit veya daha büyük bir depolama miktarı vermesi en iyi uygulamadır. Windows Server 'ı StorSimple gerecini kullandığınız şekilde kullanırsınız. Bu, Gereç ile aynı miktarda depolama alanına sahipse, aynı değilse önbelleğe alma deneyiminin benzer olması gerekir.
-Windows Server 'dan ' de depolama ekleyebilir veya depolama alanını kaldırabilirsiniz. Bu, yerel birim boyutunuzu ve önbelleğe alma için kullanılabilir yerel depolama miktarını ölçeklendirmenizi sağlar.
+Yeni Windows Server'ınıza StorSimple 8100 veya 8600 cihazınızın önbelleğe almak için yerel olarak mevcut olduğundan eşit veya daha fazla depolama alanı vermek en iyi yöntemdir. Windows Server'ı StorSimple cihazını kullandığınız gibi kullanacaksınız, eğer cihazla aynı miktarda depolama alanına sahipse, önbelleğe alma deneyimi aynı olmasa da benzer olmalıdır.
+Istediğiniz zaman Windows Server'ınızdan depolama ekleyebilir veya kaldırabilirsiniz. Bu, yerel birim boyutunuzu ve önbelleğe almak için kullanılabilir yerel depolama miktarını ölçeklendirmenize olanak tanır.
 
-### <a name="prepare-the-windows-server-for-file-sync"></a>Windows Server 'ı dosya eşitleme için hazırlama
+### <a name="prepare-the-windows-server-for-file-sync"></a>Windows Server'ı dosya eşitleme için hazırlama
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-### <a name="configure-azure-file-sync-on-the-windows-server"></a>Windows Server 'da Azure Dosya Eşitleme yapılandırma
+### <a name="configure-azure-file-sync-on-the-windows-server"></a>Windows Sunucusunda Azure Dosya Eşitlemesini Yapılandırma
 
-Kayıtlı şirket içi Windows Server, bu işlem için önceden ve internet 'e bağlı olmalıdır.
+Kayıtlı şirket içi Windows Server'ınız bu işlem için hazır ve internete bağlı olmalıdır.
 
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
 > [!WARNING]
-> **Bulut katmanlaması 'nı etkinleştirdiğinizden emin olun!** Bulut katmanlaması, yerel sunucunun bulutta depolankıyasla daha az depolama kapasitesine sahip olmasına izin veren, ancak tam ad alanı kullanılabilir olan AFS özelliğidir. Yerel olarak ilginç veriler de hızlı, yerel erişim performansı için yerel olarak önbelleğe alınır. Bu adımda bulut katmanlamayı açmak için başka bir nedenden dolayı, bu aşamada dosya içeriğini eşitlemek istemiyorum, yalnızca ad alanı şu anda taşınıyor.
+> **Bulut katmanlamayı açtıktan emin olun!** Bulut katmanlama, yerel sunucunun bulutta depolanandan daha az depolama kapasitesine sahip olmasına ve ancak tam ad alanına sahip olmasına olanak tanıyan AFS özelliğidir. Yerel olarak ilginç veriler de hızlı, yerel erişim performansı için yerel olarak önbelleğe aledilir. Bu adımda bulut katmanlamayı açmak için başka bir neden, bu aşamada dosya içeriğini eşitlemek istemememizdir, yalnızca ad alanı şu anda hareket ediyor olmalıdır.
 
-## <a name="phase-4-configure-the-azure-vm-for-sync"></a>4\. Aşama: Azure VM 'yi eşitleme için yapılandırma
+## <a name="phase-4-configure-the-azure-vm-for-sync"></a>Aşama 4: Eşitleme için Azure VM'yi yapılandırın
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
+        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan önceki genel bakış resminin bir bölümünü gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
     :::column-end:::
     :::column:::
-        Bu aşama, Iscsı bağlı, ilk birim kopyalarıyla Azure VM 'niz ile ilgilidir. Bu aşamada, sanal makineyi Azure Dosya Eşitleme aracılığıyla bağlanır ve dosyaları StorSimple birim kopyalarınızın ilk bir turunda başlatın.
+        Bu aşama, Azure VM'nizi iSCSI monte edilmiş, ilk birim klon(lar) ile ilgilidir. Bu aşamada, VM'yi Azure Dosya Eşitlemi üzerinden bağlayacak ve StorSimple birim klonunuzdan dosyaların taşınmasının ilk turunu başlatın.
         
     :::column-end:::
 :::row-end:::
 
-Azure Dosya Eşitleme için StorSimple 8100 veya 8600 gerecinizi değiştirecek şirket içi sunucunuzu zaten yapılandırmış olmanız gerekir. 
+Azure Dosya Eşitlemi için StorSimple 8100 veya 8600 cihazınızın yerini alacak şirket içi sunucunuzu zaten yapılandırıldınız. 
 
-Azure VM 'nin yapılandırılması, tek bir ek adımla birlikte neredeyse özdeş bir işlemdir. Aşağıdaki adımlar süreç boyunca size yol gösterecektir.
-
-> [!IMPORTANT]
-> Azure VM 'nin **bulut katmanlaması etkinleştirilmiş olarak yapılandırılmamış** olması önemlidir! Bu sunucunun birimini geçiş boyunca daha yeni birim klonlarla değiş tokuş edersiniz. Bulut katmanlaması, CPU kullanımı için avantaj ve ek yük içermez.
-
-1. [AFS aracısını dağıtın. (önceki bölüme bakın)](#prepare-the-windows-server-for-file-sync)
-2. [Azure Dosya Eşitleme için VM hazırlanıyor.](#get-the-vm-ready-for-azure-file-sync)
-3. [Eşitlemeyi yapılandır](#configure-azure-file-sync-on-the-azure-vm)
-
-### <a name="get-the-vm-ready-for-azure-file-sync"></a>VM 'yi Azure Dosya Eşitleme için hazırlayın
-
-Azure Dosya Eşitleme, dosyaları bağlı Iscsı StorSimple birimlerinden hedef Azure dosya paylaşımlarına taşımak için kullanılır.
-Bu geçiş işlemi sırasında, VM 'nize aynı sürücü harfi altında birkaç birim klonu bağlayacaksınız. Azure Dosya Eşitleme, dosya ve klasörlerin daha yeni bir sürümü olarak bağladığınız bir sonraki birim kopyasını görmek ve Azure Dosya Eşitleme ile bağlantılı Azure dosya paylaşımlarını güncelleştirmek için yapılandırılmalıdır. 
+Azure VM'yi yapılandırmak, tek bir adımla hemen hemen aynı bir işlemdir. Aşağıdaki adımlar işlem boyunca size rehberlik edecektir.
 
 > [!IMPORTANT]
-> Bunun çalışması için Azure Dosya Eşitleme yapılandırılmadan önce sunucuda bir kayıt defteri anahtarı ayarlanmalıdır.
+> Azure VM'nin bulut **katmanlama etkinken yapılandırılmamanız önemlidir!** Bu sunucunun hacmini geçiş boyunca yeni hacim klonları ile değiştirirsiniz. Bulut katmanlamanın CPU kullanımında hiçbir yararı ve yükü yoktur.
 
-1. VM 'nin sistem sürücüsünde yeni bir dizin oluşturun. Azure Dosya Eşitleme bilgilerin bağlı birim klonları yerine bu şekilde kalıcı olması gerekir. Örneğin, `"C:\syncmetadata"`
-2. Regedit ' i açın ve aşağıdaki kayıt defteri kovanını bulun: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
-3. Dize türünde, ***Metadatarootpath*** adlı yeni bir anahtar oluşturun
-4. Sistem biriminde oluşturduğunuz dizinin tam yolunu ayarlayın, örneğin: `C:\syncmetadata"`
+1. [AFS aracısını dağıtın. (bkz. önceki bölüm)](#prepare-the-windows-server-for-file-sync)
+2. [VM'yi Azure Dosya Eşitlemi için hazırlama.](#get-the-vm-ready-for-azure-file-sync)
+3. [Eşitleme yapılandırma](#configure-azure-file-sync-on-the-azure-vm)
 
-### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure VM 'de Azure Dosya Eşitleme yapılandırma
+### <a name="get-the-vm-ready-for-azure-file-sync"></a>Azure Dosya Eşitlemi için VM'yi hazırlayın
 
-Bu adım, şirket içi sunucuda AFS 'yi nasıl yapılandıracağınızı ele alan önceki bölüme benzer.
-
-Farkı, bu sunucuda bulut katmanlamayı etkinleştirmemelidir ve doğru klasörlerin doğru Azure dosya paylaşımlarına bağlı olduğundan emin olmanız gerekir. Aksi takdirde, Azure dosya paylaşımlarınız ve veri içeriğiyle eşleşmemelidir ve eşitleme yeniden yapılandırmadan bulut kaynaklarını veya yerel klasörleri yeniden adlandırmanın bir yolu yoktur.
-
-[Windows Server 'da Azure dosya eşitleme yapılandırma hakkında önceki bölüme](#configure-azure-file-sync-on-the-windows-server)bakın.
-
-### <a name="step-4-summary"></a>4\. adım Özeti
-
-Bu noktada, Azure VM 'de Azure Dosya Eşitleme başarıyla yapılandırdığınıza sonra StorSimple birim kopyalarınızı Iscsı aracılığıyla bağlacaksınız.
-Veriler artık Azure VM 'den çeşitli Azure dosya paylaşımlarına akar ve şirket içi Windows Server 'da tam bir yorgun ad alanı görüntülenir.
+Azure Dosya Eşitlemi, dosyaları monte edilmiş iSCSI StorSimple birimlerinden hedef Azure dosya paylaşımlarına taşımak için kullanılır.
+Bu geçiş işlemi sırasında, aynı sürücü harfi nin altına VM'nize birkaç hacimklisi monte edeyim. Azure Dosya Eşitlemesi, dosya ve klasörlerin daha yeni bir sürümü olarak monte ettiğiniz bir sonraki birim klonunu görecek ve Azure Dosya Eşitlemesi ile bağlanan Azure dosya paylaşımlarını güncelleyecek şekilde yapılandırılmalıdır. 
 
 > [!IMPORTANT]
-> Şu anda Windows Server 'a yapılan hiçbir değişiklik veya Kullanıcı erişimi olmadığından emin olun.
+> Bunun işe yaraması için, Azure Dosya Eşitlemesi yapılandırılmadan önce sunucuda bir kayıt defteri anahtarının ayarlanması gerekir.
 
-Azure VM 'den Azure dosya paylaşımlarına taşınan ilk birim kopyalama verileri uzun sürebilir, potansiyel olarak hafta olabilir. Bu işlem için gereken süreyi tahmin etmek ve birçok faktöre bağlıdır. En yaygın olarak, Azure VM 'nin StorSimple birimlerindeki dosyalara erişme hızı ve eşitleme gerektiren dosya ve klasörleri Azure Dosya Eşitleme hızlı bir şekilde nasıl işleyebileceği gösterilmektedir. 
+1. VM'nin sistem sürücüsünde yeni bir dizin oluşturun. Azure Dosya Eşitleme bilgilerinin monte edilen ses klonları yerine burada kalıcı olması gerekir. Örneğin, `"C:\syncmetadata"`
+2. Regedit'i açın ve aşağıdaki kayıt kovanını bulun:`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
+3. Adı geçen yeni bir String türü Anahtar oluşturma: ***MetadataRootPath***
+4. Sistem hacminde oluşturduğunuz dizine tam yol ayarlayın, örneğin:`C:\syncmetadata"`
 
-Deneyimden itibaren bant genişliğinin bu nedenle gerçek veri boyutunun bir alt rolü yürüttüğünde olduğunu varsayabiliriz. Bu veya sonraki geçiş yuvarlaklığının çoğu zaman, saniye başına işlenebilecek öğe sayısına bağlıdır. Örneğin, 100.000 dosya ve klasör içeren 1 TiB, yalnızca 50.000 dosya ve klasörleriyle en büyük olasılıkla 1 TiB 'den daha yavaş bitecektir.
+### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure VM'de Azure Dosya Eşitlemesini Yapılandırma
 
-## <a name="phase-5-iterate-through-multiple-volume-clones"></a>5\. Aşama: birden çok birim klonlarını yineleme
+Bu adım, afs'yi şirket içi sunucuda nasıl yapılandırdığınızı anlatan önceki bölüme benzer.
+
+Aradaki fark, bu sunucuda bulut katmanlamayı etkinleştirmemeniz ve doğru klasörlerin doğru Azure dosya paylaşımlarına bağlı olduğundan emin olmanız gerektiğidir. Aksi takdirde Azure dosya paylaşımlarını ve veri içeriğini adlandırmanız eşleşmez ve eşitlemeyi yeniden yapılandırmadan bulut kaynaklarını veya yerel klasörleri yeniden adlandırmanın bir yolu yoktur.
+
+[Windows Server'da Azure Dosya Eşitlemeyi'nin nasıl yapılandırılabildiğini anlatan önceki bölüme](#configure-azure-file-sync-on-the-windows-server)bakın.
+
+### <a name="step-4-summary"></a>Adım 4 özeti
+
+Bu noktada, iSCSI üzerinden StorSimple birim klonunuzu (lar) monte ettiğiniz Azure VM'de Azure Dosya Eşitlemeyi'ni başarıyla yapılandırmış olabilirsiniz.
+Veriler artık Azure VM'den çeşitli Azure dosya paylaşımlarına akıyor ve buradan şirket içi Windows Server'ınızda tamamen yorgun bir ad alanı görünüyor.
+
+> [!IMPORTANT]
+> Şu anda Windows Server'da değişiklik yapılmadığından veya kullanıcı erişimi verilmedidiğinden emin olun.
+
+Azure VM'den Azure dosya paylaşımlarına taşınan ilk birim klon verileri uzun sürebilir, potansiyel olarak haftalar sürebilir. Bunun alacağı zamanı tahmin etmek zordur ve birçok faktöre bağlıdır. En önemlisi, Azure VM'nin StorSimple birimlerindeki dosyalara erişebildiği hız ve Azure Dosya Eşitlemesi'nin eşitlenmesi gereken dosya ve klasörleri ne kadar hızlı işleyebileceği. 
+
+Deneyimlerinden, bant genişliğinin - dolayısıyla gerçek veri boyutunun - alt rol oynadığını varsayabiliriz. Bu veya sonraki geçiş turunun alacağı süre, çoğunlukla saniyede işlenebilecek öğe sayısına bağlıdır. Yani örneğin 1 00.000 dosya ve klasörleri ile 1 TiB büyük olasılıkla sadece 50.000 dosya ve klasörleri ile 1 TiB daha yavaş bitirecektir.
+
+## <a name="phase-5-iterate-through-multiple-volume-clones"></a>Aşama 5: Birden çok hacimli klonlar aracılığıyla iterate
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
+        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan önceki genel bakış resminin bir bölümünü gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
     :::column-end:::
     :::column:::
-        Önceki aşamada anlatıldığı gibi, ilk eşitleme uzun zaman alabilir. Kullanıcılarınız ve uygulamalarınız hala şirket içi StorSimple 8100 veya 8600 gerecine erişiyor. Diğer bir deyişle, değişiklikler birikmekte ve her gün canlı veriler ile ilk birim kopyası arasında daha büyük bir Delta ile Şu anda geçişiniz, formlardır. Bu bölümde, birden fazla birim klonu kullanarak kapalı kalma süresini en aza indirme ve eşitlemenin ne zaman yapıldığını öğrenirsiniz.
+        Önceki aşamada tartışıldığı gibi, ilk eşitleme uzun zaman alabilir. Kullanıcılarınız ve uygulamalarınız hala şirket içi StorSimple 8100 veya 8600 cihazına erişmektedir. Bu, değişikliklerin biriktiği ve her gün canlı veriler le ilk birim klonarasında daha büyük bir delta nın bulunduğu anlamına gelir, şu anda geçiş yapıyorsunuz, formlar. Bu bölümde, birden çok birim klon kullanarak ve eşitlemenin ne zaman yapılacağını söyleyerek kapalı kalma süresini nasıl en aza indireceğinizi öğreneceksiniz.
     :::column-end:::
 :::row-end:::
 
-Ne yazık ki geçiş işlemi anında olmaz. Diğer bir deyişle, canlı veriler için belirtilen tüm Delta, kaçınılmaz bir sonucudur. İyi haber, yeni birim klonlarını bağlama işlemini tekrarlamanız olabilir. Her birim kopyasının Delta 'i giderek küçülecektir. Bu nedenle, son olarak, kullanıcıların ve uygulamaların şirket içi Windows Server 'ınızla kesilmesini sağlamak üzere çevrimdışı duruma alınması için kabul edilebilir bir süre içinde zaman uyumlu olacak.
+Ne yazık ki, geçiş süreci anlık değildir. Bu, canlı verilere yukarıda bahsedilen delta kaçınılmaz bir sonucu olduğu anlamına gelir. İyi haber, yeni hacim klonları montaj sürecini tekrarlayabilirsiniz. Her hacim klonunun deltası giderek daha küçük olacaktır. Bu nedenle, bir eşitleme, kullanıcıları ve uygulamaları şirket içi Windows sunucunuza kesmek için çevrimdışı hale getirmek için kabul edilebilir olduğunu düşündüğünüz bir süre içinde sona erecektir.
 
-Eşitleme, kullanıcıları ve uygulamaları çevrimdışına almak için yeterince hızlı bir süre tamamlanana kadar aşağıdaki adımları yineleyin:
+Kullanıcıları ve uygulamaları çevrimdışı naalarak kendinizi rahat hissedeceğiniz kadar hızlı bir süre içinde eşitleme tamamlanana kadar aşağıdaki adımları yineleyin:
 
-1. [Belirli bir birim kopyası için Eşitlemenin tamamlandığını belirleme.](#determine-when-sync-is-done)
-2. [Yeni bir birim klonları alın ve bunu 8020 sanal gerecine bağlayın.](#the-next-volume-clones)
-3. [Eşitlemenin ne zaman yapılacağını belirleme.](#determine-when-sync-is-done)
+1. [Belirli bir birim klon için eşitlemenin tamamlanın.](#determine-when-sync-is-done)
+2. [Yeni bir hacim klon(lar) alın ve 8020 sanal cihaza monte edin.](#the-next-volume-clones)
+3. [Eşitlemenin ne zaman yapılacağını belirleyin.](#determine-when-sync-is-done)
 4. [Kesme stratejisi](#cut-over-strategy)
 
-### <a name="the-next-volume-clones"></a>Sonraki birim klonları
+### <a name="the-next-volume-clones"></a>Bir sonraki birim klon(lar)
 
-Bu makalenin önceki kısımlarında bir birim klonları ele alınıyor.
+Biz bu makalede daha önce bir hacim klon(lar) alarak tartıştık.
 Bu aşamada iki eylem vardır:
 
-1. [Birim kopyası alma](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
-2. [Birim kopyasının bağlama (yukarıya bakın)](#use-the-volume-clone)
+1. [Hacimli bir klon alın](../../storsimple/storsimple-8000-clone-volume-u2.md#create-a-clone-of-a-volume)
+2. [Bu hacim klonunu monte edin (yukarıya bakın)](#use-the-volume-clone)
 
-### <a name="determine-when-sync-is-done"></a>Eşitlemenin ne zaman yapıldığını belirleme
+### <a name="determine-when-sync-is-done"></a>Eşitlemenin ne zaman yapılacağını belirleme
 
-Eşitleme tamamlandığında zaman ölçülerinizi durdurabilir ve bir birim kopyası alma ve bağlama sürecini yinelemenize gerek olup olmadığını veya son birim kopyalama ile geçen zaman eşitlemenin yeterince küçük olup olmadığını belirleyebilirsiniz.
+Eşitleme yapıldığında, zaman ölçümünüzü durdurabilir ve bir hacim klonunu alıp monte etme işlemini tekrarlamanız gerekip gerekmediğinizi veya son birim klonla yapılan zaman eşitlemenin yeterince küçük olup olmadığını belirleyebilirsiniz.
 
-Eşitlemenin tamamlandığını öğrenmek için:
+Eşitleme belirlemek için tamamlandı:
 
-1. Olay Görüntüleyicisi açın ve **uygulamalar ve hizmetler** ' e gidin
-2. **Microsoft\filesync\fik\telemetri** ' i gezin ve açın
-3. Tamamlanan bir eşitleme oturumuna karşılık gelen en son **olay 9102**' i arayın
-4. **Ayrıntılar** ' ı seçin ve **Syncdirection** değerinin **karşıya** yüklendiğini onaylayın
-5. **HRESULT** 'yi denetleyin ve **0**olduğunu onaylayın. Bu, eşitleme oturumunun başarılı olduğu anlamına gelir. HResult sıfır olmayan bir değer ise eşitleme sırasında bir hata oluştu. **Peritemerrorcount** değeri 0 ' dan büyükse, bazı dosyalar veya klasörler düzgün şekilde eşitlenmez. 0 ' dan büyük olan bir PerItemErrorCount değeri 0 ' dan büyük bir HResult olması mümkündür. Bu noktada, PerItemErrorCount için endişelenmeniz gerekmez. Bu dosyaları daha sonra yakalayacağız. Bu hata sayısı önemli, binlerce öğe ise müşteri desteğine başvurun ve en iyi, sonraki aşamalar hakkında doğrudan rehberlik için Azure Dosya Eşitleme ürün grubuna bağlanmasını isteyin.
-6. Bir satırda HResult 0 olan birden çok 9102 olayını görmek için işaretleyin. Bu, bu birim kopyası için Eşitlemenin tamamlandığını gösterir.
+1. Olay Görüntüleyicisi'ni açın ve **Uygulamalar ve Hizmetlere** gidin
+2. Gezinme ve **Microsoft\FileSync\Agent\Telemetri'yi** açın
+3. Tamamlanmış eşitleme oturumuna karşılık gelen en son **olay 9102'yi**arayın
+4. **Ayrıntılar'ı** seçin ve **SyncDirection** değerinin **Yükle** olduğunu onaylayın
+5. **HResult** kontrol edin ve **0**gösterir onaylayın. Bu, eşitleme oturumunun başarılı olduğu anlamına gelir. HResult sıfır olmayan bir değerse, eşitleme sırasında bir hata oluştu. **PerItemErrorCount** 0'dan büyükse, bazı dosya veya klasörler düzgün eşitlenmemiştir. 0'dan daha büyük bir PerItemErrorCount'a sahip olmak mümkündür. Bu noktada, PerItemErrorCount hakkında endişelenmenize gerek yok. Bu dosyaları daha sonra yakalayacağız. Bu hata sayısı önemliyse, binlerce öğe, müşteri desteğine başvurun ve en iyi, sonraki aşamalarda doğrudan rehberlik için Azure Dosya Eşitle misiniz ürün grubuna bağlanmayı isteyin.
+6. Art arda HResult 0 içeren birden fazla 9102 olayını görmek için denetleyin. Bu, bu birim klon için eşitlemenin tamamladığını gösterir.
 
 ### <a name="cut-over-strategy"></a>Kesme stratejisi
 
-1. Bir birim kopyasının eşitlemenin şimdi yeterince hızlı olup olmadığını belirleme. (Delta az, yeterince küçük.)
-2. StorSimple gerecini çevrimdışına alın.
-3. Son RoboCopy.
+1. Birim klonundan eşitlemenin artık yeterince hızlı olup olmadığını belirleyin. (Delta yeterince küçük.)
+2. StorSimple cihazını çevrimdışına alın.
+3. Son bir RoboCopy.
 
-Saati ölçün ve son birim Klondan eşitlemenin, bir zaman penceresinde, yeterince küçük bir süre biteceğini ve sisteminizde kapalı kalma süresi olarak uygun olup olmadığını saptayın.
+Zamanı ölçün ve son birim klondan eşitlemenin sisteminizde kesinti süresini karşılayabileceğikadar küçük bir zaman penceresi içinde bitirip bitirilemeyebileceğini belirleyin.
 
-Şimdi, StorSimple gerecine Kullanıcı erişimini devre dışı bırakmıştır. Başka değişiklik yok. Kapalı kalma süresi başladı.
-Gereci çevrimiçi bırakmanız ve bağlanmamanız gerekir, ancak şimdi üzerinde değişiklik yapılmasını önlemektir.
+Artık Kullanıcının StorSimple cihazına erişimini devre dışı bırakın. Daha fazla değişiklik yok. Kesinti başladı.
+Cihazı çevrimiçi ve bağlı bırakmanız gerekir, ancak artık cihazdaki değişiklikleri önlemeniz gerekir.
 
-6\. aşamada, son birim Klondan bu yana canlı verilerde herhangi bir değişikliği fark edersiniz.
+Faz 6'da son birim klondan beri canlı verilerdeki herhangi bir deltaya yetişeceksiniz.
 
-## <a name="phase-6-a-final-robocopy"></a>6\. Aşama: son RoboCopy
+## <a name="phase-6-a-final-robocopy"></a>Faz 6: Son Bir RoboCopy
 
-Bu noktada, şirket içi Windows Server ve StorSimple 8100 ya da 8600 gereci arasında iki fark vardır:
+Bu noktada, şirket içi Windows Server'ınız ile StorSimple 8100 veya 8600 cihazı arasında iki fark vardır:
 
-1. Eşitlenmemiş dosyalar olabilir (Yukarıdaki olay günlüğünden **Peritemerrors** konusuna bakın)
-2. StorSimple gereci, Windows Server 'ın Şu anda yerel olarak depolanan bir dosya adı olmayan bir ad alanı ile doldurulmuş bir önbellektir.
+1. Eşitlenmemiş dosyalar olabilir (yukarıdaki olay günlüğünden **PerItem Hataları'na** bakın)
+2. StorSimple cihazı, Windows Server'a karşı doldurulan bir önbelleğe sahiptir ve şu anda yerel olarak depolanan dosya içeriği olmayan bir ad alanı vardır.
 
-![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
+![Makalenin bu alt bölümüne odaklanmaya yardımcı olan önceki genel bakış resminin bir bölümünü gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
 
-Windows Server önbelleğini gerecin durumuna getirebilir ve son bir RoboCopy ile hiçbir dosya ayrılmadığımızda emin olabilirsiniz.
+Windows Server önbelleğini cihazın durumuna getirebilir ve son bir RoboCopy ile hiçbir dosyanın geride bırakılmamasını sağlayabiliriz.
 
 > [!CAUTION]
-> Takip ettiğiniz RoboCopy komutunun tam olarak aşağıda açıklandığı gibi olması zorunludur. Yalnızca yerel olan dosyaları ve birim kopyalama + eşitleme yaklaşımının önüne taşınmayan dosyaları kopyalamak istiyoruz. Geçiş tamamlandıktan sonra, daha sonra eşitlenmedikleri sorunları çözebiliriz. (Bkz. [Azure dosya eşitleme sorun giderme](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing). Dosya adlarında, silindiklerinde kaçırmayabilmeniz gereken en büyük olasılıkla yazdırılabilir karakterlerdir.)
+> Takip ettiğiniz RoboCopy komutunun tam olarak aşağıda açıklandığı gibi olması zorunludur. Yalnızca yerel dosyaları ve daha önce birim klon+eşitleme yaklaşımında hareket etmemiş dosyaları kopyalamak istiyoruz. Geçiş tamamlandıktan sonra neden senkronize olmadıkları sorunlarını çözebiliriz. (Bkz. [Azure Dosya Eşitleme sorun giderme.](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) Dosya adlarında büyük olasılıkla yazdırılamayan ve silindiğinde gözden kaçırmayacağınız karakterlerdir.)
 
 RoboCopy komutu:
 
 ```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-Arka plan
+Arka plan:
 
 :::row:::
    :::column span="1":::
       /MT
    :::column-end:::
    :::column span="1":::
-      RoboCopy 'nin çoklu iş parçacıklı çalıştırmasına izin verir. Varsayılan 8 ' dir, Max 128 ' dir.
+      RoboCopy'nin çok iş parçacığı çalışmasını sağlar. Varsayılan değer 8, en fazla 128.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -357,31 +363,39 @@ Arka plan
       /UNILOG:<file name>
    :::column-end:::
    :::column span="1":::
-      GÜNLÜK dosyasının durumunu UNICODE olarak çıkış (varolan günlüğün üzerine yaz).
+      UNICODE olarak LOG dosyasına durum çıktıları (varolan günlüğün üzerine yazar).
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /T
+      /TEE
    :::column-end:::
    :::column span="1":::
-      Konsol penceresine çıkış. Günlük dosyasına çıktılarla birlikte kullanılır.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MıR
-   :::column-end:::
-   :::column span="1":::
-      Robocopy 'nin yalnızca kaynak (StorSimple gereci) ve hedef (Windows Server dizini) arasında değişimleri 'yi kabul etmesine izin verir.
+      Konsol penceresine çıkan çıktılar. Bir günlük dosyasına çıktı ile birlikte kullanılır.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /COPY: copyflag [s]
+      /B
    :::column-end:::
    :::column span="1":::
-      dosya kopyasının doğruluğu (varsayılan:/COPY: DAT), kopya bayrakları: D = veri, A = öznitelikler, T = zaman damgaları, S = güvenlik = NTFS ACL 'Leri, O = sahip bilgileri, U = denetim bilgileri
+      RoboCopy'i yedek bir uygulamanın kullanacağı modda çalıştırır. RoboCopy'nin geçerli kullanıcının izinleri olmayan dosyaları taşımasına olanak tanır.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /MIR
+   :::column-end:::
+   :::column span="1":::
+      RoboCopy'nin yalnızca kaynak (StorSimple cihazı) ve hedef (Windows Server dizini) arasındaki deltaları dikkate almalarına olanak tanır.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /COPY:copyflag[s]
+   :::column-end:::
+   :::column span="1":::
+      dosya kopyasının doğruluğu (varsayılan /COPY:DAT' dır), kopya bayrakları: D=Data, A=Öznitelikler, T=Zaman damgaları, S=Security=NTFS AKLAR, O=Sahip bilgileri, U=aUditing bilgi
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -389,57 +403,57 @@ Arka plan
       /COPYALL
    :::column-end:::
    :::column span="1":::
-      Tüm dosya bilgilerini kopyala (/COPY: DATSOU ile eşdeğer)
+      TÜM dosya bilgilerini KOPYALA (/COPY:DATSOU'ya eşdeğer)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /DCOPY: copyflag [s]
+      /DCOPY:copyflag[s]
    :::column-end:::
    :::column span="1":::
-      dizinlerin kopyasına uygunluk (varsayılan:/DCOPY: DA), kopyalama bayrakları: D = veri, A = öznitelikler, T = zaman damgaları
+      dizinlerin kopyası için sadakat (varsayılan dır /DCOPY:DA), kopya bayrakları: D=Data, A=Öznitelikler, T=Zaman damgaları
    :::column-end:::
 :::row-end:::
 
-Bu RoboCopy komutunu, Windows Server üzerindeki her bir dizin için bir Azure dosyasına dosya eşitleme ile yapılandırdığınız bir hedef olarak çalıştırmalısınız.
+Windows Server'daki her dizin için bu RoboCopy komutunu, bir Azure dosyasıyla dosya eşitle'yle yapılandırdığınız bir hedef olarak çalıştırmalısınız.
 
-Bu komutların birden fazlasını paralel olarak çalıştırabilirsiniz.
-Bu RoboCopy adımı tamamlandıktan sonra kullanıcılarınızın ve uygulamalarınızın, daha önce StorSimple gereci gibi Windows Server 'a erişmesine izin verebilirsiniz.
+Bu komutların birden çoğunu paralel olarak çalıştırabilirsiniz.
+Bu RoboCopy adımı tamamlandıktan sonra, kullanıcılarınızın ve uygulamalarınızın Daha önce StorSimple cihazında olduğu gibi Windows Server'a erişmesine izin verebilirsiniz.
 
-Dosyaların gerisinde bırakılmış olup olmadığını görmek için Robocopy günlük dosyalarına başvurun. Sorunların mevcut olması gerekiyorsa, çoğu durumda geçiş tamamlandıktan sonra kullanıcılar ve uygulamalarınız Windows Server 'a yeniden bağlandıktan sonra bunları çözebilirsiniz. Herhangi bir sorunu çözmeniz gerekiyorsa, bu işlemi 7. aşamada yapın.
+Dosyaların geride bırakIlip bırakılmadığını görmek için robocopy günlük dosyasına(lar) başvurun. Sorunlar varsa, çoğu durumda geçiş tamamlandıktan ve kullanıcılarınız ve uygulamalarınız Windows Server'ınıza yeniden yerleştirildikten sonra bunları çözebilirsiniz. Herhangi bir sorunu çözmeniz gerekiyorsa, bunu 7.
 
-Daha önce StorSimple verilerinde bulunan Windows Server üzerinde SMB paylaşımlarının oluşturulması gerekir. Bu adımı önyükleyebilir ve daha önce zaman kaybetmezsiniz. bu noktadan önce, Windows Server 'da dosyalarda değişiklik olmamasını sağlamalısınız.
+Büyük olasılıkla Daha önce StorSimple verilerinde olan Windows Server'da SMB paylaşımlarını oluşturmak gerekir. Bu adımı önceden yükleyebilir ve burada zaman kaybetmemek için daha erken yükleyebilirsiniz, ancak bu noktadan önce Windows sunucusunda dosyalarda değişiklik yapılmadığından emin olmalısınız.
 
-Bir DFS-N dağıtımınız varsa, DFN-ad alanlarını yeni sunucu klasörü konumlarına işaret edebilirsiniz. Bir DFS-N dağıtımınız yoksa ve 8100 8600 gerecinizi bir Windows Server ile yerel olarak aldıysanız, bu sunucuyu etki alanı dışına alabilir ve etki alanına yeni Windows Server 'ı AFS ile etki alanına katabilirsiniz, eski sunucuyla aynı sunucu adına sahip olabilirsiniz ve aynı paylaşma adlarına sahip olacak şekilde, yeni sunucuya yönelik kesme, kullanıcılarınız, Grup ilkeniz veya betikleriniz için saydam kalır.
+DFS-N dağıtımınız varsa, DFN-Namespaces'i yeni sunucu klasörü konumlarına yönlendirebilirsiniz. DFS-N dağıtımınız yoksa ve 8100 8600 cihazınızı bir Windows Server ile yerel olarak ön plana çıkardıysanız, bu sunucuyu etki alanından alabilir ve etki alanınıza AFS ile yeni Windows Server'ınızı katabilir ve eski sunucuyla aynı sunucu adını verebilirsiniz ve aynı paylaşım adları, ardından yeni sunucuya kesme kullanıcılarınız, grup ilkeniz veya komut dosyaları için saydam kalır.
 
-## <a name="phase-7-deprovision"></a>7\. Aşama: sağlamayı kaldırma
+## <a name="phase-7-deprovision"></a>7. Aşama: Deprovision
 
-Son aşamada birden çok birim klonlarını tekrarlandırdınız ve sonunda StorSimple gereci çevrimdışı olduktan sonra yeni Windows Server 'a Kullanıcı erişimini kesebiliyordu.
+Son aşamada birden çok ses klonu aracılığıyla yinelendiniz ve sonunda StorSimple cihazını çevrimdışına aldıktan sonra kullanıcının yeni Windows Server'a erişimini kesmeyi başardınız.
 
-Artık gereksiz kaynakları sağlamayı başlayacaksınız.
-Başlamadan önce, bir bit için yeni Azure Dosya Eşitleme dağıtımınızı üretimde gözlemleyecek en iyi uygulamadır. Bu, karşılaşabileceğiniz sorunları gidermeye yönelik seçenekler sağlar.
+Artık gereksiz kaynakları yok etmeye başlayabilirsiniz.
+Başlamadan önce, yeni Azure Dosya Eşitleme dağıtımınızı üretimde bir süre gözlemlemek en iyi yöntemdir. Bu, karşılaşabileceğiniz sorunları gidermek için seçenekler sunar.
 
-Daha memnun olduktan sonra, AFS dağıtımınızı en az birkaç güne kadar gözlemledikten sonra kaynakları sağlamayı şu sırada yapmaya başlayabilirsiniz:
+Tatmin olduktan ve AFS dağıtımınızı en az birkaç gün gözlemledikten sonra, kaynakları şu sırayla deprovision'ı deprovision etmeye başlayabilirsiniz:
 
-1. Birim klonlarından verileri dosya eşitleme aracılığıyla Azure dosya paylaşımlarına taşımak için kullandığımız Azure VM 'yi kapatın.
-2. Azure 'daki depolama eşitleme hizmeti kaynağına gidin ve Azure VM kaydını silin. Bu, tüm eşitleme gruplarından kaldırır.
+1. Verileri birim klonlardan dosya eşitleme yoluyla Azure dosya paylaşımlarına taşımak için kullandığımız Azure VM'sini kapatın.
+2. Azure'daki Depolama Eşitleme Hizmeti kaynağınıza gidin ve Azure VM'nin kaydını silin. Bu tüm eşitleme gruplarından kaldırır.
 
     > [!WARNING]
-    > **Doğru makineyi seçtiğinizden emin olun.** Bulut sanal makinesini kapatmış oldunuz, yani kayıtlı sunucular listesinde tek bir çevrimdışı sunucu olarak gösterilmesi gerekir. Bu adımda şirket içi Windows Server 'ı seçmemelidir, bunu yapmanız bunun kaydını siler.
+    > **Doğru makineyi seçtiğinizden emin olun.** Bulut VM'yi kapattınız, bu da kayıtlı sunucular listesindeki tek çevrimdışı sunucu olarak gösterilmesi gerektiği anlamına gelir. Bu adımda şirket içi Windows Server'ı seçmemelisiniz, bunu yaptığınızda kayıt dışı olacaktır.
 
-3. Azure VM 'yi ve kaynaklarını silin.
-4. 8020 sanal StorSimple gerecini devre dışı bırakın.
-5. Azure 'daki tüm StorSimple kaynaklarının sağlamasını kaldırma.
-6. StorSimple fiziksel gerecini veri merkezinizden çıkarın.
+3. Azure VM'yi ve kaynaklarını silin.
+4. 8020 sanal StorSimple cihazını devre dışı bırakın.
+5. Azure'daki tüm StorSimple kaynaklarını deprovision.
+6. StorSimple fiziksel cihazını veri merkezinizden çıkarın.
 
-Geçişiniz tamamlanmıştır.
+Geçişin tamamlandı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dosya Eşitleme hakkında daha fazla bilgi edinin. Özellikle de bulut katmanlama ilkelerinin esnekliği vardır.
+Azure Dosya Eşitlemeyi'ni daha iyi taşkınlık edin. Özellikle bulut katmanlama politikalarının esnekliği yle.
 
-Azure portal veya önceki olaylarda, bazı dosyalar kalıcı olarak eşitlenmezse, bu sorunları çözmek için sorun giderme kılavuzunu gözden geçirin.
+Azure portalında veya önceki olaylardan bazı dosyaların kalıcı olarak eşitlenmediğini görürseniz, bu sorunları gidermeye yönelik adımlar için sorun giderme kılavuzunu gözden geçirin.
 
 * [Azure Dosya Eşitleme genel bakış: aka.ms/AFS](https://aka.ms/AFS)
-* [Bulut katmanlama](storage-sync-cloud-tiering.md) 
+* [Bulut katmanlaması](storage-sync-cloud-tiering.md) 
 * [Azure Dosya Eşitleme sorun giderme kılavuzu](storage-sync-files-troubleshoot.md)

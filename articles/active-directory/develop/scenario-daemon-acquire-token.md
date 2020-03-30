@@ -1,6 +1,6 @@
 ---
-title: Bir Web API 'SI çağırmak için belirteçler alma (daemon uygulaması)-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini çağıran bir Daemon uygulamasının nasıl oluşturulduğunu öğrenin (belirteçler alınıyor)
+title: Web API (daemon uygulaması) aramak için belirteçler edinin - Microsoft kimlik platformu | Azure
+description: Web API'lerini çağıran bir daemon uygulaması oluşturmayı öğrenin (jeton edinme)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,19 +16,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7f1010949a72f95ef2836c43666e6cea9281e04d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262652"
 ---
-# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran Daemon uygulaması-belirteç alma
+# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API'leri çağıran Daemon uygulaması - bir belirteç edinin
 
-Gizli bir istemci uygulaması oluşturduktan sonra, `AcquireTokenForClient`çağırarak, kapsamı geçirerek ve isteğe bağlı olarak belirtecin yenilenmesini zorlayarak uygulama için bir belirteç elde edebilirsiniz.
+Gizli bir istemci uygulaması yaptıktan sonra, arama `AcquireTokenForClient`yaparak, kapsamı geçerek ve isteğe bağlı olarak belirteçyenilemeyi zorlayarak uygulama için bir belirteç elde edebilirsiniz.
 
-## <a name="scopes-to-request"></a>İstek için kapsamlar
+## <a name="scopes-to-request"></a>İstenecek kapsamlar
 
-İstemci kimlik bilgisi akışı için istenen kapsam, kaynağın adı ve ardından `/.default`. Bu gösterim Azure Active Directory (Azure AD) uygulama kaydı sırasında statik olarak belirtilen *uygulama düzeyi izinleri* kullanmasını söyler. Ayrıca, bu API izinlerinin bir kiracı yöneticisi tarafından verilmesi gerekir.
+İstemci kimlik bilgisi akışı için talep edilen kapsam, izleyen `/.default`kaynağın adıdır. Bu gösterim, Azure Etkin Dizini'ne (Azure AD) uygulama kaydı sırasında statik olarak bildirilen *uygulama düzeyi izinlerini* kullanmasını söyler. Ayrıca, bu API izinleri bir kiracı yönetici tarafından verilmelidir.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -39,7 +39,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="python"></a>[Python](#tab/python)
 
-MSAL Python 'da, yapılandırma dosyası şu kod parçacığına benzer şekilde görünür:
+MSAL Python'da yapılandırma dosyası şu kod parçacığına benzer:
 
 ```Json
 {
@@ -55,17 +55,17 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ---
 
-### <a name="azure-ad-v10-resources"></a>Azure AD (v 1.0) kaynakları
+### <a name="azure-ad-v10-resources"></a>Azure AD (v1.0) kaynakları
 
-İstemci kimlik bilgileri için kullanılan kapsamın her zaman kaynak KIMLIĞI ve ardından `/.default`olması gerekir.
+İstemci kimlik bilgileri için kullanılan kapsam `/.default`her zaman kaynak kimliği olmalıdır.
 
 > [!IMPORTANT]
-> MSAL, sürüm 1,0 erişim belirtecini kabul eden bir kaynak için bir erişim belirteci istediğinde, Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır.
-> Bu nedenle, Azure SQL veritabanı (**https:\//Database.Windows.net**) gibi, kaynak bir eğik çizgi ile biten bir izleyiciyi bekler (Azure SQL veritabanı, `https://database.windows.net/`için), `https://database.windows.net//.default`kapsamını istemeniz gerekir. (Çift eğik çizgiye göz önünde edin.) Ayrıca bkz. MSAL.NET sorun [#747: kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden olur](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> MSAL sürüm 1.0 erişim belirteci kabul eden bir kaynak için bir erişim belirteci istediğinde, Azure AD, son eğik çizgiden önce her şeyi alarak ve kaynak tanımlayıcısı olarak kullanarak istenen hedef kitleyi istenen kapsamdan ayrıştırır.
+> Bu nedenle, Azure SQL Veritabanı gibi **(https:\//database.windows.net),** kaynak bir eğik çizgi `https://database.windows.net/`yle biten bir hedef kitle `https://database.windows.net//.default`bekliyorsa (Azure SQL Veritabanı için), bir kapsam istemeniz gerekir. (Çift eğik çizgiye dikkat edin.) Ayrıca MSAL.NET sorunu [#747 bakınız: Kaynak url's izleme eğik çizgi atlanır, hangi sql auth hatasına neden oldu.](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)
 
-## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API 'SI
+## <a name="acquiretokenforclient-api"></a>Satın AlmaTokenForClient API
 
-Uygulamanın bir belirtecini almak için platforma bağlı olarak `AcquireTokenForClient` veya eşdeğerini kullanacaksınız.
+Uygulama için bir belirteç elde etmek `AcquireTokenForClient` için, platforma bağlı olarak uygulamanın eşdeğerini veya eşdeğerini kullanırsınız.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -122,7 +122,7 @@ else:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Bu kod, [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)ayıklanır.
+Bu kod [MSAL Java geliştirme örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)ayıklanır.
 
 ```Java
 private static IAuthenticationResult acquireToken() throws Exception {
@@ -175,7 +175,7 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 Seçtiğiniz dil için henüz bir kitaplığınız yoksa, protokolü doğrudan kullanmak isteyebilirsiniz:
 
-#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>İlk durum: paylaşılan bir gizli dizi kullanarak belirteç isteğine erişin
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>İlk durum: Paylaşılan bir sırrı kullanarak belirteç isteğine erişin
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
@@ -188,7 +188,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>İkinci durum: bir sertifika kullanarak belirteç isteğine erişin
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>İkinci durum: Bir sertifika kullanarak belirteç isteğine erişin
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
@@ -202,22 +202,22 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-Daha fazla bilgi için bkz. protokol belgeleri: [Microsoft Identity platform ve OAuth 2,0 istemci kimlik bilgileri akışı](v2-oauth2-client-creds-grant-flow.md).
+Daha fazla bilgi için protokol belgelerine bakın: [Microsoft kimlik platformu ve OAuth 2.0 istemci kimlik bilgileri akışı.](v2-oauth2-client-creds-grant-flow.md)
 
-## <a name="application-token-cache"></a>Uygulama belirteci önbelleği
+## <a name="application-token-cache"></a>Uygulama belirteç önbelleği
 
-MSAL.NET ' de, `AcquireTokenForClient` uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken*xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullandığından, `AcquireTokenForClient`çağırmadan önce `AcquireTokenSilent` çağırmayın. `AcquireTokenForClient`, *uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
+MSAL.NET, `AcquireTokenForClient` uygulama belirteç önbelleğini kullanır. (Diğer tüm AcquireToken*XX* yöntemleri kullanıcı belirteç önbelleğini kullanır.) Kullanıcı *belirteç* önbelleğini `AcquireTokenSilent` kullandığından, aramadan `AcquireTokenSilent` `AcquireTokenForClient`önce aramayın. `AcquireTokenForClient`*uygulama* belirteç önbelleğinin kendisini denetler ve güncelleştirir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="did-you-use-the-resourcedefault-scope"></a>Resource/. Default kapsamını mı kullanıyorsunuz?
+### <a name="did-you-use-the-resourcedefault-scope"></a>Kaynak/.varsayılan kapsamı kullandınız mı?
 
-Geçersiz bir kapsam kullandığını söyleyen bir hata mesajı alırsanız, büyük olasılıkla `resource/.default` kapsamını kullanmadınız.
+Geçersiz bir kapsam kullandığınızı belirten bir hata iletisi `resource/.default` alırsanız, büyük olasılıkla kapsamı kullanmamışsınızdır.
 
-### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Yönetici onayı sağlamayı unuttunuz mu? Daemon uygulamalarında şunlar gerekir!
+### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Yönetici onayı vermeyi unuttun mu? Daemon uygulamaları gerekir!
 
-API 'yi çağırdığınızda **işlem hatasını tamamlamaya yetecek ayrıcalıklara** sahipseniz, kiracı yöneticisinin uygulamaya izin vermesi gerekir. Yukarıdaki istemci uygulamasını kaydettirme adım 6 ' ya bakın.
-Genellikle şu hata gibi görünen bir hata görürsünüz:
+API'yi aradiğinizde **işlem hatasını tamamlamak için yetersiz ayrıcalıklar** alırsanız, kiracı yöneticinin uygulamaya izin vermesi gerekir. Yukarıdaki istemci uygulamasını kaydedin adım 6'ya bakın.
+Genellikle bu hataya benzeyen bir hata görürsünüz:
 
 ```JSon
 Failed to call the web API: Forbidden
@@ -238,16 +238,16 @@ Content: {
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon uygulaması-bir Web API 'SI çağırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+> [Daemon uygulaması - bir web API arama](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon uygulaması-bir Web API 'SI çağırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+> [Daemon uygulaması - bir web API arama](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon uygulaması-bir Web API 'SI çağırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+> [Daemon uygulaması - bir web API arama](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
 
 ---

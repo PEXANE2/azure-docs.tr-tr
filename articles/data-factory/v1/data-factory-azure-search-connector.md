@@ -1,6 +1,6 @@
 ---
-title: Data Factory kullanarak arama dizinine veri gönderme
-description: Azure Data Factory kullanarak Azure Bilişsel Arama dizinine veri gönderme hakkında bilgi edinin.
+title: Veri Fabrikası'nı kullanarak verileri Arama dizinine itme
+description: Azure Veri Fabrikası'nı kullanarak verileri Azure Bilişsel Arama Dizini'ne nasıl taşıyabildiğini öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,116 +13,116 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281567"
 ---
-# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Azure Bilişsel Arama dizinine veri gönderme
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Azure Bilişsel Arama dizinine itme
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-azure-search-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-azure-search.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, [v2 'de Azure bilişsel Arama Bağlayıcısı](../connector-azure-search.md)' na bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki Azure Bilişsel Arama bağlayıcısı'na](../connector-azure-search.md)bakın.
 
-Bu makalede, desteklenen bir kaynak veri deposundan Azure Bilişsel Arama dizinine veri göndermek için kopyalama etkinliğinin nasıl kullanılacağı açıklanır. Desteklenen kaynak veri depoları, [desteklenen kaynaklar ve havuzlar](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosunun kaynak sütununda listelenir. Bu makale, kopyalama etkinliği ve desteklenen veri deposu birleşimleri ile veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanır.
+Bu makalede, desteklenen bir kaynak veri deposundan Azure Bilişsel Arama dizinine veri itmek için Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Desteklenen kaynak veri depoları desteklenen kaynaklar [ve lavabolar](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosunun Kaynak sütununda listelenir. Bu makalede, Kopya Etkinliği ve desteklenen veri deposu kombinasyonları ile veri hareketinin genel bir genel bakış sunan [veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesi üzerine bir temel oluşturur.
 
-## <a name="enabling-connectivity"></a>Bağlantı etkinleştiriliyor
-Data Factory hizmetinin şirket içi veri deposuna bağlanmasına izin vermek için, Veri Yönetimi ağ geçidini şirket içi ortamınıza yüklersiniz. Ağ geçidini, kaynak veri deposunu barındıran aynı makineye veya veri deposu ile kaynakların rekabeti önlemek için ayrı bir makineye yükleyebilirsiniz.
+## <a name="enabling-connectivity"></a>Bağlantı sağlama
+Veri Fabrikası hizmetinin şirket içi bir veri deposuna bağlanmasına izin vermek için, şirket içi ortamınıza Veri Yönetimi Ağ Geçidi yüklersiniz. Ağ geçidini, kaynak veri deposunu barındıran makineye veya veri deposuyla kaynaklar için rekabet etmeyi önlemek için ayrı bir makineye yükleyebilirsiniz.
 
-Veri Yönetimi ağ geçidi, şirket içi veri kaynaklarını bulut hizmetlerine güvenli ve yönetilen bir şekilde bağlar. Veri Yönetimi ağ geçidi hakkındaki ayrıntılar için bkz. Şirket [içi ve bulut hakkındaki verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
+Veri Yönetimi Ağ Geçidi, şirket içi veri kaynaklarını bulut hizmetlerine güvenli ve yönetilen bir şekilde bağlar. Veri Yönetimi Ağ Geçidi hakkında ayrıntılar için [verileri şirket içi ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında taşıyın.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API 'Ler kullanarak bir kaynak veri deposundan verileri bir arama dizinine gönderen kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
+Farklı araçlar/API'ler kullanarak verileri kaynak veri deposundan arama dizinine iten bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın.
 
-Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun.
+1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.**
 
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Verileri arama dizinine kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarına sahip bir örnek için, bkz. [JSON örneği: verileri şirket içi SQL Server kopyalama, bu makalenin Azure bilişsel arama dizini bölümüne kopyalama](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) .
+Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız.  Arama dizini için verileri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek için Bkz. [JSON örneği: Şirket içi SQL Server'dan](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) bu makalenin Azure Bilişsel Arama dizini bölümüne veri kopyalama.
 
-Aşağıdaki bölümler, bir arama dizinine özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümler, arama Dizinine özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-Aşağıdaki tabloda, Azure Bilişsel Arama bağlı hizmetine özgü JSON öğelerine yönelik açıklamalar sağlanmaktadır.
+Aşağıdaki tablo, Azure Bilişsel Arama bağlantılı hizmetine özgü JSON öğeleri için açıklamalar sağlar.
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| type | Type özelliği: **Azuresearch**olarak ayarlanmalıdır. | Yes |
-| url | Arama Hizmeti URL 'SI. | Yes |
-| anahtar | Arama hizmeti için yönetici anahtarı. | Yes |
+| type | Tür özelliği şu şekilde ayarlanmalıdır: **AzureSearch.** | Evet |
+| url | Arama hizmetinin URL'si. | Evet |
+| anahtar | Arama hizmeti için yönetici anahtarı. | Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri için benzerdir. **Typeproperties** bölümü her bir veri kümesi türü için farklıdır. **AzureSearchIndex** türündeki bir veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir:
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri için benzerdir. **typeProperties** bölümü her veri kümesi türü için farklıdır. **AzureSearchIndex** türündeki bir veri kümesinin typeProperties bölümü aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| type | Type özelliği **AzureSearchIndex**olarak ayarlanmalıdır.| Yes |
-| indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Yes |
+| type | Tür özelliği **AzureSearchIndex**olarak ayarlanmalıdır.| Evet |
+| indexName | Arama dizininin adı. Veri Fabrikası dizin oluşturmaz. Dizin Azure Bilişsel Arama'da bulunmalıdır. | Evet |
 
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve çeşitli ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir. Ancak, typeProperties bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, ardışık hatlar oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı tabloları ve çeşitli ilkeler gibi özellikler tüm etkinlik türleri için kullanılabilir. Oysa, typeProperties bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama Etkinliği için bunlar kaynak ve lavabo türlerine bağlı olarak değişir.
 
-Kopyalama etkinliği için, havuz **AzureSearchIndexSink**türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
+Copy Activity için, lavabo **AzureSearchIndexSink**türünden olduğunda, typeProperties bölümünde aşağıdaki özellikler kullanılabilir:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).| Birleştir (varsayılan)<br/>Karşıya Yükle| Hayır |
-| WriteBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri arama dizinine yükler. Ayrıntılar için bkz. [Writebatchsize özelliği](#writebatchsize-property) . | 1 ile 1.000 arasında. Varsayılan değer 1000 ' dir. | Hayır |
+| Yazma Davranışı | Diziniçinde zaten bir belge varken birleşip değiştirilmeyeceğini belirtir. [WriteBehavior özelliğine](#writebehavior-property)bakın.| Birleştirme (varsayılan)<br/>Karşıya Yükle| Hayır |
+| WriteBatchSize | Arabellek boyutu writeBatchSize'a ulaştığında verileri arama dizinine yükler. Ayrıntılar için [WriteBatchSize özelliğine](#writebatchsize-property) bakın. | 1'den 1000'e kadar. Varsayılan değer 1000'dir. | Hayır |
 
 ### <a name="writebehavior-property"></a>WriteBehavior özelliği
-Veri yazarken AzureSearchSink upları. Diğer bir deyişle, bir belge yazarken belge anahtarı arama dizininde zaten mevcutsa Azure Bilişsel Arama bir çakışma özel durumu oluşturmak yerine mevcut belgeyi güncelleştirir.
+AzureSearchSink veri yazarken ekler. Başka bir deyişle, belge yazarken, belge anahtarı arama dizininde zaten varsa, Azure Bilişsel Arama çakışma özel durumu oluşturmak yerine varolan belgeyi güncelleştirir.
 
-AzureSearchSink aşağıdaki iki yukarı yönlü davranışı sağlar (AzureSearch SDK kullanarak):
+AzureSearchSink aşağıdaki iki yükseltme davranışı sağlar (AzureSearch SDK kullanarak):
 
-- **Birleştir**: yeni belgedeki tüm sütunları mevcut bir belge ile birleştirin. Yeni belgede null değeri olan sütunlarda, var olan bir değer korunur.
-- **Karşıya yükle**: yeni belge var olanı yenisiyle değiştirir. Yeni belgede belirtilmeyen sütunlar için, varolan belgede null olmayan bir değer olup olmadığı için değer null olarak ayarlanır.
+- **Birleştirme**: Yeni belgedeki tüm sütunları varolan sütunla birleştirin. Yeni belgede null değeri olan sütunlar için, varolan sütundaki değer korunur.
+- **Upload**: Yeni belge varolanBelgenin yerini alır. Yeni belgede belirtilmeyen sütunlar için, değer varolan belgede null olmayan bir değer olup olmadığını geçersiz kılacak şekilde ayarlanır.
 
-Varsayılan davranış **birleştirilir**.
+Varsayılan davranış **Birleştirme'dir.**
 
-### <a name="writebatchsize-property"></a>WriteBatchSize özelliği
-Azure Bilişsel Arama hizmeti, toplu iş olarak belge yazmayı destekler. Batch, 1 ile 1.000 arasında eylem içerebilir. Bir eylem, karşıya yükleme/birleştirme işlemini gerçekleştirmek için bir belgeyi işler.
+### <a name="writebatchsize-property"></a>WriteBatchSize Özelliği
+Azure Bilişsel Arama hizmeti, belge toplu olarak yazmayı destekler. Bir toplu iş 1 ila 1.000 Eylem içerebilir. Eylem, yükleme/birleştirme işlemini gerçekleştirmek için bir belgeyi işler.
 
 ### <a name="data-type-support"></a>Veri türü desteği
-Aşağıdaki tabloda bir Azure Bilişsel Arama veri türünün desteklenip desteklenmediğini belirtir.
+Aşağıdaki tabloda, Azure Bilişsel Arama veri türünün desteklenip desteklenmediğini belirtin.
 
-| Azure Bilişsel Arama veri türü | Azure Bilişsel Arama havuzunda desteklenir |
+| Azure Bilişsel Arama veri türü | Azure Bilişsel Arama Lavabosu'nda desteklendi |
 | ---------------------- | ------------------------------ |
 | Dize | E |
 | Int32 | E |
 | Int64 | E |
-| çift | E |
+| Çift | E |
 | Boole | E |
-| Veri Timesapmayı | E |
-| String Array | N |
-| GeographyPoint | N |
+| DataTimeOffset | E |
+| Dize Dizisi | N |
+| Coğrafya Noktası | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON örneği: verileri şirket içi SQL Server Azure Bilişsel Arama dizinine kopyalama
+## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON örneği: Şirket içi SQL Server'dan Azure Bilişsel Arama dizinine veri kopyalama
 
-Aşağıdaki örnek şunu gösterir:
+Aşağıdaki örnek gösterir:
 
-1. [Azuresearch](#linked-service-properties)türünde bağlı bir hizmet.
-2. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-3. [Sqlservertable](data-factory-sqlserver-connector.md#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
-4. [AzureSearchIndex](#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
-4. [SQLSource](data-factory-sqlserver-connector.md#copy-activity-properties) ve [AzureSearchIndexSink](#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
+1. [AzureSearch](#linked-service-properties)türüne bağlı bir hizmet.
+2. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties)türünde bağlantılı bir hizmet.
+3. [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
+4. [AzureSearchIndex](#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
+4. [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) ve [AzureSearchIndexSink](#copy-activity-properties)kullanan kopyalama etkinliği içeren bir [ardışık kaynak.](data-factory-create-pipelines.md)
 
-Örnek, saat serisi verilerini şirket içi SQL Server veritabanından saatlik arama dizinine kopyalar. Bu örnekte kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
+Örnek, şirket içi bir SQL Server veritabanından saat başı arama dizini aramak için zaman serisi verilerini kopyalar. Bu örnekte kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
 
-İlk adım olarak, şirket içi makinenizde veri yönetimi ağ geçidini kurun. Yönergeler, [Şirket içi konumlar ve bulut makaleleri arasında hareketli verilerde](data-factory-move-data-between-onprem-and-cloud.md) yer alır.
+İlk adım olarak, şirket içi makinenizde veri yönetimi ağ geçidini kurun. Yönergeler, [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasındaki hareketli verilerde dir.
 
-**Azure Bilişsel Arama bağlı hizmeti:**
+**Azure Bilişsel Arama bağlantılı hizmet:**
 
 ```JSON
 {
@@ -137,7 +137,7 @@ Aşağıdaki örnek şunu gösterir:
 }
 ```
 
-**Bağlı hizmet SQL Server**
+**SQL Server bağlantılı hizmet**
 
 ```JSON
 {
@@ -152,11 +152,11 @@ Aşağıdaki örnek şunu gösterir:
 }
 ```
 
-**SQL Server girişi veri kümesi**
+**SQL Server giriş veri seti**
 
-Örnek, SQL Server bir "MyTable" tablosu oluşturduğunuzu ve zaman serisi verileri için "timestampcolumn" adlı bir sütun içerdiğini varsayar. Tek bir veri kümesi kullanarak aynı veritabanı içinde birden çok tablo üzerinde sorgulama yapabilirsiniz, ancak DataSet 'in tableName typeProperty için tek bir tablo kullanılmalıdır.
+Örnek, SQL Server'da "MyTable" tablosu oluşturduğunuzu varsayar ve zaman serisi verileri için "zaman damgası sütunu" adlı bir sütun içerir. Tek bir veri kümesini kullanarak aynı veritabanı içinde birden çok tablo üzerinde sorgu yapabilirsiniz, ancak veri kümesinin tableName typeProperty için tek bir tablo kullanılmalıdır.
 
-"External": "true" ayarı, veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir Data Factory.
+"Dış"ı ayarlamak: "true" veri kümesinin veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Veri Fabrikası hizmetine bildirir.
 
 ```JSON
 {
@@ -183,9 +183,9 @@ Aşağıdaki örnek şunu gösterir:
 }
 ```
 
-**Azure Bilişsel Arama çıkış veri kümesi:**
+**Azure Bilişsel Arama çıktı veri seti:**
 
-Örnek, verileri Azure **bilişsel arama adlı bir**dizine kopyalar. Data Factory dizini oluşturmaz. Örneği test etmek için bu ada sahip bir dizin oluşturun. Giriş veri kümesiyle aynı sayıda sütuna sahip arama dizini oluşturun. Yeni girişler her saat arama dizinine eklenir.
+Örnek, verileri Azure Bilişsel Arama dizinine **kopyalar.** Veri Fabrikası dizin oluşturmaz. Örneği sınamak için bu ada sahip bir dizin oluşturun. Giriş veri kümesindekiyle aynı sayıda sütuniçeren arama dizini oluşturun. Arama dizinine her saat başı yeni girişler eklenir.
 
 ```JSON
 {
@@ -204,9 +204,9 @@ Aşağıdaki örnek şunu gösterir:
 }
 ```
 
-**SQL kaynağı ve Azure Bilişsel Arama Dizin havuzu ile işlem hattındaki etkinliği kopyalama:**
+**SQL kaynağı ve Azure Bilişsel Arama Dizini olan bir ardışık ardışık ardışık ardışık alanda etkinliği kopyalama:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **SQLSource** olarak ayarlanır ve **Havuz** türü **AzureSearchIndexSink**olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
+Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir Kopyalama Etkinliği içerir. JSON ardışık hatlar **tanımında, kaynak** türü **SqlSource** olarak ayarlanır ve **lavabo** türü **AzureSearchIndexSink**olarak ayarlanır. **SqlReaderQuery** özelliği için belirtilen SQL sorgusu, kopyalanacak son bir saat içinde verileri seçer.
 
 ```JSON
 {
@@ -255,7 +255,7 @@ Aşağıdaki örnek şunu gösterir:
 }
 ```
 
-Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executionLocation` özelliği gereklidir. Aşağıdaki JSON kod parçacığı, örnek olarak kopyalama etkinliği altında gereken değişikliği gösterir `typeProperties`. Desteklenen değerler ve daha fazla ayrıntı için [bulut veri depoları arasında veri kopyalama](data-factory-data-movement-activities.md#global) bölümüne bakın.
+Bir bulut veri deposundan Azure Bilişsel Arama'ya `executionLocation` veri kopyalıyorsanız, özellik gereklidir. Aşağıdaki JSON snippet, Kopyalama Etkinliği `typeProperties` altında gereken değişikliği örnek olarak gösterir. Desteklenen değerler ve daha fazla ayrıntı için [bulut veri depoları](data-factory-data-movement-activities.md#global) bölümü arasındaki verileri kopyala'yı denetleyin.
 
 ```JSON
 "typeProperties": {
@@ -270,8 +270,8 @@ Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executi
 ```
 
 
-## <a name="copy-from-a-cloud-source"></a>Bulut kaynağından kopyalama
-Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executionLocation` özelliği gereklidir. Aşağıdaki JSON kod parçacığı, örnek olarak kopyalama etkinliği altında gereken değişikliği gösterir `typeProperties`. Desteklenen değerler ve daha fazla ayrıntı için [bulut veri depoları arasında veri kopyalama](data-factory-data-movement-activities.md#global) bölümüne bakın.
+## <a name="copy-from-a-cloud-source"></a>Bulut kaynağından kopyala
+Bir bulut veri deposundan Azure Bilişsel Arama'ya `executionLocation` veri kopyalıyorsanız, özellik gereklidir. Aşağıdaki JSON snippet, Kopyalama Etkinliği `typeProperties` altında gereken değişikliği örnek olarak gösterir. Desteklenen değerler ve daha fazla ayrıntı için [bulut veri depoları](data-factory-data-movement-activities.md#global) bölümü arasındaki verileri kopyala'yı denetleyin.
 
 ```JSON
 "typeProperties": {
@@ -285,12 +285,12 @@ Bir bulut veri deposundan Azure Bilişsel Arama veri kopyalıyorsanız, `executi
 }
 ```
 
-Ayrıca, kaynak veri kümesindeki sütunları, kopyalama etkinliği tanımındaki havuz veri kümesinden sütunlara eşleyebilirsiniz. Ayrıntılar için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+Ayrıca, kopya etkinliği tanımında kaynak veri kümesinden sütunlara, lavabo veri kümesinden sütunlara kadar sütunları eşleyebilirsiniz. Ayrıntılar için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)bilgisine bakın.
 
 ## <a name="performance-and-tuning"></a>Performans ve ayar
-Veri taşıma (kopyalama etkinliği) performansını ve bunu iyileştirmek için çeşitli yollar hakkında bilgi edinmek için [etkinlik performansını ve ayarlama kılavuzunu kopyalama](data-factory-copy-activity-performance.md) bölümüne bakın.
+Veri hareketinin performansını etkileyen önemli faktörler (Kopyalama Etkinliği) ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için Kopyalama Etkinliği performansı ve [atoks kılavuzuna](data-factory-copy-activity-performance.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-* Kopyalama etkinliği ile işlem hattı oluşturmaya yönelik adım adım yönergeler için [etkinlik öğreticisini kopyalayın](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+* Kopyalama Etkinliği ile bir ardışık hatlar oluşturmak için adım adım yönergeleri için [Etkinlik öğreticikopyalayın.](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

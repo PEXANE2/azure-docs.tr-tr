@@ -1,78 +1,78 @@
 ---
 title: Hizmet sağlayıcılarını görüntüleme ve yönetme
-description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcısı teklifleri ve Temsilcili kaynaklar hakkındaki bilgileri görüntülemek için Azure portal hizmet sağlayıcıları sayfasını kullanabilir.
+description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcı teklifleri ve devredilen kaynaklar hakkındaki bilgileri görüntülemek için Azure portalındaki Hizmet sağlayıcıları sayfasını kullanabilir.
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270634"
 ---
 # <a name="view-and-manage-service-providers"></a>Hizmet sağlayıcılarını görüntüleme ve yönetme
 
-Müşteriler, hizmet sağlayıcıları ve hizmet sağlayıcı teklifleri hakkındaki bilgileri görüntülemek, [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)aracılığıyla belirli kaynakları devretmek ve yeni hizmet sağlayıcısı teklifleri için alışveriş yapmak üzere [Azure Portal](https://portal.azure.com) **hizmet sağlayıcıları** sayfasını kullanabilir. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
+Müşteriler, hizmet sağlayıcılar ve hizmet sağlayıcı teklifleri hakkındaki bilgileri görüntülemek, [Azure temsilci kaynak yönetimi](../concepts/azure-delegated-resource-management.md)aracılığıyla belirli kaynakları devretmek ve yeni hizmet sağlayıcı teklifleri için alışveriş yapmak için Azure [portalındaki](https://portal.azure.com) **Hizmet sağlayıcıları** sayfasını kullanabilir. Burada hizmet sağlayıcılara ve müşterilere atıfta bulunsak da, birden çok kiracıyı yöneten işletmeler yönetim deneyimlerini pekiştirmek için aynı işlemi kullanabilir.
 
-Azure portal **hizmet sağlayıcıları** sayfasına erişmek için, müşteri **tüm hizmetleri**seçip **hizmet sağlayıcıları** arayabilir ve bunu seçebilirsiniz. Ayrıca, Azure portal üst kısmındaki arama kutusuna "hizmet sağlayıcıları" girerek da bulabilir.
+Azure portalındaki **Hizmet sağlayıcıları** sayfasına erişmek için müşteri **Tüm hizmetleri**seçebilir, ardından **Servis sağlayıcılarını** arayabilir ve seçebilir. Ayrıca, Azure portalının üst kısmındaki arama kutusuna "Hizmet sağlayıcıları" girerek de bulabilirler.
 
-**Hizmet sağlayıcılar** sayfasının yalnızca, Azure tarafından atanan kaynak yönetimi aracılığıyla Müşterinin aboneliklerine veya kaynak gruplarına erişimi olan hizmet sağlayıcılarıyla ilgili bilgileri gösterdiğini unutmayın. Müşteri, müşterinin kaynaklarına erişmek için Azure tarafından atanan kaynak yönetimini kullanmayan ek hizmet sağlayıcılarıyla çalışıyorsa, bu hizmet sağlayıcıları hakkındaki bilgiler burada gösterilmez.
-
-> [!NOTE]
-> Servis sağlayıcılar, Azure portal **müşterilerime** giderek müşterileri hakkındaki bilgileri görüntüleyebilir. Daha fazla bilgi için bkz. [müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme](view-manage-customers.md).
-
-## <a name="view-service-provider-details"></a>Hizmet sağlayıcı ayrıntılarını görüntüle
-
-Müşteri, hizmet sağlayıcıları hakkındaki bilgileri görüntülemek için **hizmet sağlayıcıları** sayfasının sol tarafında bulunan **sağlayıcı tekliflerini** seçebilir.
-
-Müşteri, her bir servis sağlayıcısı teklifi için hizmet sağlayıcının adını ve onunla ilişkili teklifi, ekleme işlemi sırasında müşterinin girdiği adı görür.
-
-**Temsilciler** sütununda, müşteri, bu teklif için hizmet sağlayıcısına kaç abonelik ve/veya kaynak grubu atanmış olduğunu görür. Hizmet sağlayıcısı, bu abonelikleri ve/veya kaynak gruplarını teklifte belirtilen erişim düzeylerine göre erişebilecek ve yönetebilecektir.
-
-## <a name="delegate-resources"></a>Kaynakları devretmek
-
-Bir hizmet sağlayıcının bir müşterinin kaynaklarına erişebilmesi ve bunları yönetebilmesi için önce bunların temsilci olarak oluşturulması gerekir. Bir müşteri bir teklifi kabul ettiğinde ancak henüz hiç kaynak temsilcisi yoksa, **sağlayıcı teklifleri** bölümünün en üstünde bir not görür. Bu, müşterinin, servis sağlayıcı müşterinin kaynaklarına erişmeden önce eylemde bulunan bir işlem yapması gerektiğini bilmesini sağlar.
-
-Abonelikler veya kaynak grupları atamak için:
-
-1. Hizmet sağlayıcı, teklif ve ad içeren satırın kutusunu işaretleyin. Ardından ekranın üst kısmındaki **kaynakları devretmek** ' ı seçin.
-1. **Kaynak temsilcisi** sayfasının **Teklif Ayrıntıları** bölümünde, hizmet sağlayıcısı ve teklifiyle ilgili ayrıntıları gözden geçirin. Teklifin rol atamalarını gözden geçirmek için, **Seçili teklifin ayrıntılarını görmek üzere buraya tıklayın ' ı**seçin.
-1. **Temsilci** bölümünde, **temsilci abonelikleri** veya **temsilci kaynak grupları**' nı seçin.
-1. Bu teklif için temsilci seçmek istediğiniz abonelikleri ve/veya kaynak gruplarını seçin ve ardından **Ekle**' yi seçin.
-1. Bu hizmet sağlayıcısına seçtiğiniz kaynaklara erişim izni vermek istediğinizi onaylamak için sayfanın altındaki onay kutusunu seçin ve ardından **temsilci**' i seçin.
-
-## <a name="add-or-remove-service-provider-offers"></a>Hizmet sağlayıcı tekliflerini ekleme veya kaldırma
-
-Müşteri, **teklif Ekle**' ye tıklayarak **sağlayıcı teklifleri** sayfasından yeni bir servis sağlayıcısı teklifi ekleyebilir. Hizmet sağlayıcısı bu müşteri için bir teklif yayımlamalıdır. Müşteri daha sonra **özel teklifler** ekranından bu teklifi seçip **Oluştur**' u seçin.
-
-Müşteri bir servis sağlayıcısı teklifini kaldırmak isterse, bu teklif için satırda çöp kutusu simgesini seçebilir. Silme işlemini onayladıktan sonra, söz konusu hizmet sağlayıcının artık bu teklif için daha önce atanmış olan müşteri kaynaklarına erişimi olmayacaktır.
-
-## <a name="update-service-provider-offers"></a>Hizmet sağlayıcı tekliflerini güncelleştirme
-
-Bir müşteri teklif ekledikten sonra, hizmet sağlayıcı aynı teklifin güncelleştirilmiş bir sürümünü Azure Marketi 'ne yayımlayabilir. Örneğin, yeni bir rol tanımı eklemek isteyebilir. Teklifin yeni bir sürümü yayımlandıysa, **sağlayıcı** teklif sayfasında bir "güncelleştirme" simgesi gösterir. Müşteri, teklifin geçerli sürümü ile yeni bir arasındaki farkları görmek için bu simgeyi seçebilir.
-
- ![Teklifi Güncelleştir simgesi](../media/update-offer.jpg)
-
-Değişiklikleri gözden geçirdikten sonra müşteri yeni sürüme güncelleştirmeyi tercih edebilir. Bu yapıldıktan sonra, yeni sürümde belirtilen yetkilendirmeler ve diğer ayarlar, bu teklif için temsilci atanmış abonelikler ve/veya kaynak grupları için de geçerlidir.
-
-## <a name="view-delegations"></a>Temsilcileri görüntüle
-
-Temsilci atama, bir müşterinin Temsilcili kaynaklar için hizmet sağlayıcısına izin veren rol atamalarını temsil eder. Bu bilgileri görüntülemek için, **hizmet sağlayıcıları** sayfasının sol tarafındaki **Temsilciler** ' ı seçin.
-
-Sayfanın üst kısmındaki filtreler, yetkilendirme bilgilerinizi sıralamanıza ve gruplandırmasına olanak tanır. Belirli müşterilere, tekliflere veya anahtar sözcüklere göre de filtre uygulayabilirsiniz.
+**Hizmet sağlayıcıları** sayfasının yalnızca Azure temsilci kaynak yönetimi aracılığıyla müşterinin aboneliklerine veya kaynak gruplarına erişimi olan hizmet sağlayıcıları hakkında bilgi gösterdiğini unutmayın. Bir müşteri, müşterinin kaynaklarına erişmek için Azure temsilci kaynak yönetimini kullanmayan ek hizmet sağlayıcılarla çalışıyorsa, bu hizmet sağlayıcıları hakkındaki bilgiler burada gösterilmez.
 
 > [!NOTE]
-> Müşteriler, Azure portal veya API 'Ler aracılığıyla [temsilci olan kapsamın rol atama bilgilerini görüntülerken](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) bu rol atamalarını veya hizmet sağlayıcı kiracısından gelen tüm kullanıcıları görmez.
+> Hizmet sağlayıcıları, Azure portalında **müşterilerim** için gezinerek müşterileri hakkındaki bilgileri görüntüleyebilir. Daha fazla bilgi için [bkz.](view-manage-customers.md)
 
-## <a name="audit-delegations-in-your-environment"></a>Ortamınızdaki denetim temsilcileri
+## <a name="view-service-provider-details"></a>Servis sağlayıcı ayrıntılarını görüntüleme
 
-Müşteriler, [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)için hizmet sağlayıcılarına temsilci atanmış abonelikler ve/veya kaynak grupları hakkında görünürlük elde etmek isteyebilir. Bu, özellikle çok sayıda aboneliğe sahip olan veya yönetim görevlerini gerçekleştiren çok sayıda kullanıcıya sahip olan müşteriler için yararlıdır.
+Müşteri, servis sağlayıcıları hakkındaki bilgileri görüntülemek için **Servis sağlayıcıları** sayfasının sol tarafındaki **Sağlayıcı tekliflerini** seçebilir.
 
-Bir yönetim kiracısına kapsamları temsilciliğini denetlemek için bir [Azure ilkesi yerleşik ilke tanımı](../../governance/policy/samples/built-in-policies.md#lighthouse) sağlıyoruz. Bu ilkeyi, denetlemek istediğiniz tüm abonelikleri içeren bir yönetim grubuna atayabilirsiniz. Bu ilkeyle uyumluluğu denetlediğinizde, tüm temsilci olan abonelikler ve/veya kaynak grupları (ilkenin atandığı yönetim grubu içinde) uyumlu olmayan bir durumda gösterilir. Daha sonra sonuçları gözden geçirebilir ve beklenmeyen temsilci yok olduğunu doğrulayabilirsiniz.
+Her hizmet sağlayıcı teklifi için müşteri, hizmet sağlayıcısının adını ve onunla ilişkili teklifi, müşterinin biniş işlemi sırasında girdiği adı görür.
 
-İlke atama ve uyumluluk durumu sonuçlarını görüntüleme hakkında daha fazla bilgi için bkz. [hızlı başlangıç: ilke ataması oluşturma](../../governance/policy/assign-policy-portal.md).
+**Temsilcilikler** sütununda müşteri, bu teklif için kaç abonelik ve/veya kaynak grubuna devredildiğini görür. Hizmet sağlayıcısı, bu aboneliklere ve/veya kaynak gruplarına teklifte belirtilen erişim düzeylerine göre erişebilir ve bunları yönetebilir.
+
+## <a name="delegate-resources"></a>Temsilci kaynakları
+
+Bir hizmet sağlayıcısının bir müşterinin kaynaklarına erişebilmeleri ve yönetmeden önce, bu kaynakların devredilmesi gerekir. Bir müşteri bir teklifi kabul etmiş ancak henüz herhangi bir kaynak temsilcisi görevlendirmemişse, **Sağlayıcı teklifleri** bölümünün üst kısmında bir not görür. Bu, müşterinin servis sağlayıcısının müşterinin kaynaklarından herhangi biri sine erişebilmesi için harekete geçmeleri gerektiğini bilmesini sağlar.
+
+Abonelikleri veya kaynak gruplarını devretmek için:
+
+1. Servis sağlayıcı, teklif ve adı içeren satırın kutusunu işaretleyin. Ardından ekranın üst **kısmındaki Temsilci kaynaklarını** seçin.
+1. **Temsilci kaynakları** sayfasının **Teklif ayrıntıları** bölümünde, hizmet sağlayıcısı ve teklif hakkındaki ayrıntıları gözden geçirin. Teklifin rol atamalarını incelemek **için, seçili teklifin ayrıntılarını görmek için buraya tıklayın'ı**seçin.
+1. **Temsilci** bölümünde, **Temsilci aboneliklerini** veya Temsilci kaynak **gruplarını**seçin.
+1. Bu teklif için temsilci vermek istediğiniz abonelikleri ve/veya kaynak gruplarını seçin ve ardından **Ekle'yi**seçin.
+1. Bu hizmet sağlayıcısına seçtiğiniz kaynaklara erişim izni vermek istediğinizi doğrulamak için sayfanın altındaki onay kutusunu seçin ve ardından **Temsilci'yi**seçin.
+
+## <a name="add-or-remove-service-provider-offers"></a>Servis sağlayıcı teklifleri ekleme veya kaldırma
+
+Müşteri, **Teklif Ekle'yi**seçerek **Sağlayıcı teklifleri** sayfasından yeni bir servis sağlayıcı teklifi ekleyebilir. Servis sağlayıcı bu müşteri için bir teklif yayımlamış olmalıdır. Müşteri daha sonra **özel teklifler** ekranından bu teklifi seçebilir ve sonra **Oluştur'u**seçebilir.
+
+Müşteri bir hizmet sağlayıcı teklifini kaldırmak isterse, söz leilgili satırdaki çöp kutusu simgesini seçebilir. Silme onaylandıktan sonra, bu hizmet sağlayıcısı artık bu teklif için daha önce görevlendirilen müşteri kaynaklarına erişemeyecektir.
+
+## <a name="update-service-provider-offers"></a>Servis sağlayıcı tekliflerini güncelleştir
+
+Bir müşteri teklif ekledikten sonra, bir hizmet sağlayıcısı aynı teklifin güncelleştirilmiş bir sürümünü Azure Marketi'nde yayımlayabilir. Örneğin, yeni bir rol tanımı eklemek isteyebilirler. Teklifin yeni bir sürümü yayımlanmışsa, **Sağlayıcı teklif** sayfasında bu teklif için satırda bir "güncelleştirme" simgesi gösterilir. Müşteri, teklifin geçerli sürümüyle yeni sürümü arasındaki farkları görmek için bu simgeyi seçebilir.
+
+ ![Teklif simgesini güncelleştir](../media/update-offer.jpg)
+
+Değişiklikleri gözden geçirdikten sonra, müşteri yeni sürüme güncelleştirmeyi seçebilir. Bunu yaptıktan sonra, yeni sürümde belirtilen yetkilendirmeler ve diğer ayarlar, bu teklif için devredilen abonelikler ve/veya kaynak grupları için geçerli olacaktır.
+
+## <a name="view-delegations"></a>Heyetleri görüntüleyin
+
+Delegasyonlar, müşterinin devrettiği kaynaklar için hizmet sağlayıcısına izin veren rol atamalarını temsil eder. Bu bilgileri görüntülemek **için, Servis sağlayıcıları** sayfasının sol tarafındaki **Temsilciler'i** seçin.
+
+Sayfanın üst kısmındaki filtreler, temsilci bilgilerinizi sıralamanızı ve gruplandırmanızı sağlar. Belirli müşterilere, tekliflere veya anahtar kelimelere göre de filtre uygulayabilirsiniz.
+
+> [!NOTE]
+> Müşteriler, Azure portalında veya API'ler aracılığıyla temsilci kapsamı [için rol atama bilgilerini görüntülerken](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) bu rol atamalarını veya bu rolleri alan hizmet sağlayıcı kiracıdan herhangi bir kullanıcı görmez.
+
+## <a name="audit-delegations-in-your-environment"></a>Ortamınızdaki denetim heyetleri
+
+Müşteriler, [Azure temsilci kaynak yönetimi](../concepts/azure-delegated-resource-management.md)için hizmet sağlayıcılarına devredilen abonelikler ve/veya kaynak gruplarında görünürlük elde etmek isteyebilir. Bu, özellikle çok sayıda aboneliği olan veya yönetim görevlerini gerçekleştiren çok sayıda kullanıcısı olan müşteriler için kullanışlıdır.
+
+Kapsamlar delegasyonunun yönetici kiracıya denetlenebilmek için yerleşik bir [ilke tanımı](../../governance/policy/samples/built-in-policies.md#lighthouse) sağlıyoruz. Bu ilkeyi, denetlemek istediğiniz tüm abonelikleri içeren bir yönetim grubuna atayabilirsiniz. Bu politikaya uygunluğu denetlediğinizde, devredilen abonelikler ve/veya kaynak grupları (ilkenin atandığı yönetim grubunda) uyumlu olmayan bir durumda gösterilir. Daha sonra sonuçları gözden geçirebilir ve beklenmeyen delegasyonlar olmadığını onaylayabilirsiniz.
+
+İlke atama ve uyumluluk durumu sonuçlarını görüntüleme hakkında daha fazla bilgi için [Bkz. Hızlı Başlangıç: İlke ataması oluşturun.](../../governance/policy/assign-policy-portal.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
  
-- [Azure ışıklı kullanım](../overview.md)hakkında daha fazla bilgi edinin.
-- Hizmet sağlayıcılarının **müşterilerime** Azure Portal müşterileri nasıl [görüntüleyip yönetebileceğini](view-manage-customers.md) öğrenin.
+- [Azure Deniz Feneri](../overview.md)hakkında daha fazla bilgi edinin.
+- Azure portalındaki **müşterilerime** giderek hizmet sağlayıcıların müşterileri nasıl [görüntüleyip yönetebileceğini](view-manage-customers.md) öğrenin.

@@ -1,20 +1,20 @@
 ---
-title: Sorgu performansı sorunlarını giderme-MariaDB için Azure veritabanı
-description: MariaDB için Azure veritabanı 'nda sorgu performansı sorunlarını gidermek için AÇıKLA ' yı nasıl kullanacağınızı öğrenin.
+title: Sorun giderme sorgu performansı - MariaDB için Azure Veritabanı
+description: MariaDB için Azure Veritabanı'nda sorgu performansını gidermek için EXPLAIN'ı nasıl kullanacağınızı öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 36571cc1ac4fbdcd5c0c6a4007a6c43858c97193
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: b06fe37b63494eb4ee0ca680733a801c26415d67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530062"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda sorgu performansını profil oluşturma hakkında açıklama kullanma
-**Açıkla** sorguları iyileştirmek için kullanışlı bir araçtır. AÇıKLA deyimi, SQL deyimlerinin nasıl yürütüldüğü hakkında bilgi almak için kullanılabilir. Aşağıdaki çıktıda bir açıklama ifadesinin yürütülmesi örneği gösterilmektedir.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'nda sorgu performansını profillemek için EXPLAIN nasıl kullanılır?
+**EXPLAIN** sorguları en iyi duruma getirmek için kullanışlı bir araçtır. EXPLAIN deyimi, SQL deyimlerinin nasıl yürütüldedildiği hakkında bilgi almak için kullanılabilir. Aşağıdaki çıktı, bir EXPLAIN deyiminin yürütülmesine bir örnek gösterir.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Bu örnekte görünebilirler, *anahtarın* değeri null olur. Bu çıktı, MariaDB 'nin sorgu için en iyi duruma getirilmiş dizinleri bulamadığı ve tam tablo taraması gerçekleştirdiği anlamına gelir. **Kimlik** sütununa bir dizin ekleyerek bu sorguyu iyileştirelim.
+Bu örnekten de görüleceği gibi, *anahtarın* değeri NULL'dur. Bu çıktı, MariaDB'nin sorgu için en iyi duruma getirilmiş dizinleri bulamadığı ve tam tablo taradığı anlamına gelir. Bu sorguyu **kimlik** sütununa bir dizin ekleyerek en iyi duruma getirelim.
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -53,10 +53,10 @@ possible_keys: id
         Extra: NULL
 ```
 
-Yeni AÇıKLA, MariaDB 'nin artık satır sayısını 1 olarak sınırlandırmak için bir dizin kullandığını gösterir; bu da arama süresini önemli ölçüde kısaltır.
+Yeni EXPLAIN, MariaDB'nin artık satır sayısını 1 ile sınırlamak için bir dizin kullandığını ve bunun da arama süresini önemli ölçüde kısaltdığını gösterir.
  
-## <a name="covering-index"></a>Kapsayan Dizin
-Kapsayan Dizin, veri tablolarından değer alımını azaltmak için dizindeki bir sorgunun tüm sütunlarından oluşur. Aşağıdaki **Group By** deyimindeki bir çizim aşağıda verilmiştir.
+## <a name="covering-index"></a>Kaplama dizini
+Kaplama dizini, veri tablolarından değer alınmasını azaltmak için dizindeki bir sorgunun tüm sütunlarından oluşur. Aşağıda, GROUP **BY** deyiminde bir örnek ve bir örnek verged.
  
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
@@ -75,9 +75,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Çıkışta görünebileceğinden, MariaDB hiçbir dizini kullanmaz çünkü uygun dizin yok. Ayrıca, *geçici kullanmayı da gösterir; Dosya sıralamayı kullanarak*, MariaDB, **Group By** yan tümcesini karşılamak için geçici bir tablo oluşturur.
+Çıktıdan da görüleceği gibi, Uygun dizinler bulunmadığından MariaDB herhangi bir dizin kullanmaz. Ayrıca *geçici kullanma gösterir; Dosya sıralamasını kullanarak,* MariaDB **GROUP BY** yan tümcesini karşılamak için geçici bir tablo oluşturur.
  
-Yalnızca **C2** sütununda bir dizin oluşturmak farklılık yapmaz ve MariaDB 'nin hala geçici bir tablo oluşturması gerekir:
+Tek başına **c2** sütununda dizin oluşturmak bir fark yaratmaz ve MariaDB'nin yine de geçici bir tablo oluşturması gerekir:
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Bu durumda, daha fazla veri aramasını ortadan kaldırmak için, **C1** ve **C2** ' de **Kapsanan bir dizin** oluşturulabilir ve bu değerin **C2**"değeri doğrudan dizinde eklenmesi
+Bu durumda, hem **c1** hem de **c2** üzerinde kapalı bir **dizin** oluşturulabilir ve böylece daha fazla veri aramasını ortadan kaldırmak için **c2**" değerini doğrudan dizin olarak ekler.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -117,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Yukarıdaki AÇıKLANMANıN gösterdiği gibi, MariaDB artık kapsanan dizini kullanmaktadır ve geçici bir tablo oluşturmaktan kaçınmaz. 
+Yukarıdaki EXPLAIN'ın da gösterdiği gibi, MariaDB artık kapsanan dizini kullanır ve geçici bir tablo oluşturmaktan kaçınır. 
 
-## <a name="combined-index"></a>Birleşik Dizin
-Birleşik bir dizin birden fazla sütundan değerler içerir ve dizine alınmış sütunların değerlerini birleştirerek sıralanan bir satır dizisi olarak kabul edilebilir. Bu yöntem **Group By** ifadesinde yararlı olabilir.
+## <a name="combined-index"></a>Birleşik dizin
+Birleşik dizin, birden çok sütundan gelen değerlerden oluşur ve dizinlenmiş sütunların birleştirilmiş değerlerine göre sıralanmış bir dizi satır olarak kabul edilebilir.Bu yöntem **GROUP BY** deyiminde yararlı olabilir.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MariaDB, özellikle de birçok satırı sıralamak gerektiğinde oldukça yavaş olan bir *Dosya sıralama* işlemi gerçekleştirir. Bu sorguyu iyileştirmek için, sıralanan her iki sütunda da birleştirilmiş bir dizin oluşturulabilir.
+MariaDB, özellikle çok sayıda satırı sıralamak zorunda kaldığında, oldukça yavaş bir *dosya sıralama* işlemi gerçekleştirir. Bu sorguen iyi duruma getirmek için, sıralanan her iki sütunda da birleştirilmiş dizin oluşturulabilir.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -159,11 +159,11 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-Şimdi AÇıKLA, MariaDB 'nin, dizin zaten sıralandığı için ek sıralama yapmaktan kaçınmak üzere Birleşik dizini kullanabildiğini gösterir.
+EXPLAIN şimdi MariaDB dizin zaten sıralanmış olduğundan ek sıralama önlemek için birleşik dizin kullanabilirsiniz gösterir.
  
 ## <a name="conclusion"></a>Sonuç
  
-AÇıKLA ve farklı türde dizinlerin kullanılması performansı önemli ölçüde artırabilir. Tabloda bir dizin olması, MariaDB 'nin sorgular için kullanabilmesi anlamına gelmez. Her zaman varsayımlarınızı doğrulayın ve dizinleri kullanarak sorgularınızı iyileştirin.
+EXPLAIN ve farklı türde Dizinler kullanmak performansı önemli ölçüde artırabilir. Tabloda bir dizin olması mutlaka MariaDB sorguları için kullanmak mümkün olacağı anlamına gelmez. EXPLAIN'ı kullanarak varsayımlarınızı her zaman doğrulayın ve dizinleri kullanarak sorgularınızı optimize edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- En çok ilgili sorularınızın eş yanıtlarını bulmak veya yeni bir soru/cevap göndermek için [MSDN Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)sitesini ziyaret edin.
+- En ilgili sorularınıza akran yanıtları bulmak veya yeni bir soru/yanıt göndermek için [MSDN forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) veya Stack Overflow'u ziyaret [edin.](https://stackoverflow.com/questions/tagged/azure-database-mariadb)
