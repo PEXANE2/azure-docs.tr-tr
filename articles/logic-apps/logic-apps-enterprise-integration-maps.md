@@ -1,6 +1,6 @@
 ---
-title: XSLT haritalar ile XML dönüştürme
-description: Enterprise Integration Pack ile Azure Logic Apps XML dönüştürmek için XSLT haritaları ekleme
+title: XSLT haritalarıyla XML'i dönüştürün
+description: Kurumsal Tümleştirme Paketi ile Azure Logic Apps'ta XML'i dönüştürmek için XSLT haritaları ekleyin
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,43 +9,43 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979402"
 ---
-# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps Maps ile XML dönüştürme
+# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te haritalarla XML’i dönüştürme
 
-Azure Logic Apps içindeki kurumsal tümleştirme senaryolarının biçimleri arasında XML verileri aktarmak için mantıksal uygulamanız haritaları veya daha özel olarak Genişletilebilir Stil sayfası dil dönüşümleri (XSLT) eşlemelerini kullanabilir. Eşleme, verileri bir XML belgesinden başka bir biçime dönüştürmeyi açıklayan bir XML belgesidir. 
+XML verilerini Azure Logic Apps'taki kurumsal tümleştirme senaryoları biçimleri arasında aktarmak için, mantık uygulamanız haritaları veya daha özel olarak Genişletilebilir Stil sayfası Dil Dönüşümleri (XSLT) eşlemlerini kullanabilir. Harita, XML belgesinden başka bir biçime nasıl veri dönüştürüldüğünü açıklayan bir XML belgesidir. 
 
-Örneğin, YYYMMDD tarih biçimini kullanan bir müşteriden düzenli olarak B2B siparişleri veya faturalar aldığınızı varsayalım. Ancak, kuruluşunuz MMDDYYY tarih biçimini kullanır. Sipariş veya fatura ayrıntılarını müşteri etkinlik veritabanınıza depolamadan önce YYYMMDD tarih biçimini MMDDYYY biçimine dönüştüren bir harita tanımlayabilir ve kullanabilirsiniz.
+Örneğin, YYYMMDD tarih biçimini kullanan bir müşteriden düzenli olarak B2B siparişleri veya faturaları aldığınızı varsayalım. Ancak, kuruluşunuz MMDDYYY tarih biçimini kullanır. Sipariş veya fatura ayrıntılarını müşteri etkinlik veritabanınızda depolamadan önce YYYMMDD tarih biçimini MMDDYYY biçimine dönüştüren bir harita tanımlayabilir ve kullanabilirsiniz.
 
-Haritalar gibi tümleştirme hesapları ve yapıtlarla ilgili sınırlar için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgileri](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+Tümleştirme hesapları ve haritalar gibi yapılarla ilgili sınırlar [için Azure Mantık Uygulamaları için Sınırlar ve yapılandırma bilgilerine](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Haritalar ve diğer yapıtları, kurumsal tümleştirme ve işletmeden işletmeye (B2B) çözümleri için depoladığınız bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) .
+* Kurumsal tümleştirme ve işletmeden işletmeye (B2B) çözümleri için haritalarınızı ve diğer yapılarınızı depoladığınız bir [entegrasyon hesabı.](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* Haritanız bir dış derlemeye başvuruyorsa, *hem derlemeyi hem de eşlemeyi* tümleştirme hesabınıza yüklemeniz gerekir. [*Önce derlemenizi karşıya*](#add-assembly)yüklediğinizden emin olun ve ardından derlemeye başvuran Haritayı karşıya yükleyin.
+* Haritanız harici bir derlemeye başvuruyorsa, *hem derlemeyi hem de haritayı* tümleştirme hesabınıza yüklemeniz gerekir. [*Önce assemblyinizi,*](#add-assembly)sonra da derlemeye atıfta bulunulan haritayı yüklediğinizden emin olun.
 
-  Derlemeniz 2 MB veya daha küçükse, derlemenizi *doğrudan* Azure Portal tümleştirme hesabınıza ekleyebilirsiniz. Ancak, derlemeniz veya haritanız 2 MB 'tan büyükse ancak [derlemeler ya da haritalar için boyut sınırından](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)büyük değilse, şu seçeneklere sahipsiniz:
+  Derlemeniz 2 MB veya daha küçükse, derlemenizi *doğrudan* Azure portalından entegrasyon hesabınıza ekleyebilirsiniz. Ancak, derlemeniz veya haritanız 2 MB'dan büyükse ancak [derlemeler veya haritalar için boyut sınırından](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)büyük değilse, şu seçeneklere sahipsiniz:
 
-  * Derlemeler için, derlemenizi ve kapsayıcının konumunu karşıya yükleyebileceğiniz bir Azure Blob kapsayıcısına ihtiyacınız vardır. Bu şekilde, derlemeyi tümleştirme hesabınıza eklediğinizde daha sonra bu konumu sağlayabilirsiniz. 
-  Bu görev için şu öğeler gereklidir:
+  * Derlemeler için, derlemenizi ve bu kapsayıcının konumunu yükleyebileceğiniz bir Azure blob kapsayıcısına ihtiyacınız vardır. Bu şekilde, derlemeyi tümleştirme hesabınıza eklediğinizde bu konumu daha sonra sağlayabilirsiniz. 
+  Bu görev için şu öğelere ihtiyacınız vardır:
 
     | Öğe | Açıklama |
     |------|-------------|
-    | [Azure depolama hesabı](../storage/common/storage-account-overview.md) | Bu hesapta, derlemeniz için bir Azure Blob kapsayıcısı oluşturun. [Depolama hesabı oluşturmayı](../storage/common/storage-account-create.md)öğrenin. |
-    | Blob kapsayıcı | Bu kapsayıcıda, derlemenizi karşıya yükleyebilirsiniz. Ayrıca, derlemeyi tümleştirme hesabınıza eklediğinizde bu kapsayıcının konumu da gerekir. [BLOB kapsayıcısı oluşturmayı](../storage/blobs/storage-quickstart-blobs-portal.md)öğrenin. |
-    | [Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Bu araç, depolama hesaplarını ve BLOB kapsayıcılarını daha kolay yönetmenize yardımcı olur. Depolama Gezgini kullanmak için [Azure Depolama Gezgini indirin ve yükleyin](https://www.storageexplorer.com/). Ardından, [Depolama Gezgini kullanmaya başlama](../vs-azure-tools-storage-manage-with-storage-explorer.md)bölümündeki adımları izleyerek Depolama Gezgini depolama hesabınıza bağlanın. Daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Depolama Gezgini ile nesne depolamada blob oluşturma](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Ya da Azure portal, depolama hesabınızı bulun ve seçin. Depolama hesabı menüsünden **Depolama Gezgini**' yi seçin. |
+    | [Azure depolama hesabı](../storage/common/storage-account-overview.md) | Bu hesapta, derlemeniz için bir Azure blob kapsayıcısı oluşturun. [Depolama hesabı oluşturmayı](../storage/common/storage-account-create.md)öğrenin. |
+    | Blob kapsayıcı | Bu kapsayıcıda, derlemenizi yükleyebilirsiniz. Derlemeyi tümleştirme hesabınıza eklediğinizde de bu kapsayıcının konumuna ihtiyacınız vardır. [Blob kapsayıcısı](../storage/blobs/storage-quickstart-blobs-portal.md)oluşturmayı öğrenin. |
+    | [Azure Storage Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Bu araç, depolama hesaplarını ve blob kaplarını daha kolay yönetmenize yardımcı olur. Depolama Gezgini'ni kullanmak için [Azure Depolama Gezgini'ni indirin ve yükleyin.](https://www.storageexplorer.com/) Ardından, [Depolama Gezgini ile başlayın'daki](../vs-azure-tools-storage-manage-with-storage-explorer.md)adımları izleyerek Depolama Gezgini'ni depolama hesabınıza bağlayın. Daha fazla bilgi için [Bkz. Hızlı Başlangıç: Azure Depolama Gezgini ile nesne depolama alanında bir leke oluşturun.](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) <p>Veya Azure portalında depolama hesabınızı bulun ve seçin. Depolama hesabı menüsünden **Storage Explorer'ı**seçin. |
     |||
 
-  * Haritalar için şu anda [Azure Logic Apps REST API haritaları](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanarak daha büyük haritalar ekleyebilirsiniz.
+  * Haritalar için, şu anda Azure [Logic Apps REST API - Haritalar'ı](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanarak daha büyük haritalar ekleyebilirsiniz.
 
-Haritalar oluştururken ve eklerken bir mantıksal uygulamaya ihtiyacınız yoktur. Ancak, bir eşleme kullanmak için mantıksal uygulamanız, bu eşlemeyi depoladığınız bir tümleştirme hesabına bağlanması gerekir. [Mantıksal uygulamaları tümleştirme hesaplarına bağlamayı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)öğrenin. Henüz bir Logic App yoksa [Logic Apps oluşturmayı](../logic-apps/quickstart-create-first-logic-app-workflow.md)öğrenin.
+Harita oluştururken ve eklerken bir mantık uygulamasına ihtiyacınız yoktur. Ancak, bir harita kullanmak için mantık uygulamanızın bu haritayı depoladığınız bir tümleştirme hesabına bağlanması gerekir. [Mantık uygulamalarını tümleştirme hesaplarına nasıl bağlayacaklarını](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)öğrenin. Henüz bir mantık uygulamanız yoksa, [mantık uygulamaları oluşturmayı](../logic-apps/quickstart-create-first-logic-app-workflow.md)öğrenin.
 
 <a name="add-assembly"></a>
 
@@ -53,174 +53,174 @@ Haritalar oluştururken ve eklerken bir mantıksal uygulamaya ihtiyacınız yokt
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Tümleştirme hesabınızı bulmak ve açmak için, ana Azure menüsünde **tüm hizmetler**' i seçin. 
-   Arama kutusuna "tümleştirme hesabı" yazın. 
-   **Tümleştirme hesapları**' nı seçin.
+1. Tümleştirme hesabınızı bulmak ve açmak için ana Azure menüsünde **Tüm hizmetler'i**seçin. 
+   Arama kutusuna "tümleştirme hesabı"nı girin. 
+   **Tümleştirme hesaplarını**seçin.
 
-   ![Tümleştirme hesabını bul](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+   ![Tümleştirme hesabını bulma](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
-1. Derlemenizi eklemek istediğiniz tümleştirme hesabını seçin, örneğin:
+1. Örneğin, derlemenizi eklemek istediğiniz tümleştirme hesabını seçin:
 
-   ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+   ![Entegrasyon hesabını seçin](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında **derlemeler** kutucuğunu seçin.
+1. Tümleştirme hesabınızın **Genel Bakış** sayfasında, **Bileşenler**altında, **Derlemeler** döşemesini seçin.
 
-   !["Derlemeler" ı seçin](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
+   !["Derlemeler"i seçin](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
-1. **Derlemeler** sayfası açıldıktan sonra **Ekle**' yi seçin.
+1. **Derlemeler** sayfası açıldıktan sonra **Ekle'yi**seçin.
 
-   !["Ekle" yi seçin](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   !["Ekle" seçeneğini belirleyin](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
-Derleme dosyanızın boyutuna bağlı olarak, [en fazla 2](#smaller-assembly) MB veya 2 MB 'a kadar [ancak 8 MB 'a kadar](#larger-assembly)olan bir derlemeyi karşıya yükleme adımlarını izleyin.
-Tümleştirme hesaplarındaki derleme miktarları sınırları için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
+Derleme dosyanızın boyutuna bağlı olarak, [2 MB'a veya 2 MB'dan fazla](#smaller-assembly) olan ancak yalnızca 8 [MB'a kadar](#larger-assembly)olan bir derlemeyi yüklemek için gereken adımları izleyin.
+Tümleştirme hesaplarındaki montaj miktarları üzerindeki sınırlar için Azure [Mantık Uygulamaları için Sınırlar ve yapılandırma bölümüne](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)bakın.
 
 > [!NOTE]
-> Derlemenizi değiştirirseniz haritada değişiklik olup olmadığı de eşlemenizi güncelleştirmeniz gerekir.
+> Derlemenizi değiştirirseniz, haritada değişiklik olup olmadığını da güncellemelisiniz.
 
 <a name="smaller-assembly"></a>
 
-### <a name="add-assemblies-up-to-2-mb"></a>2 MB 'a kadar derlemeler ekleyin
+### <a name="add-assemblies-up-to-2-mb"></a>2 MB'a kadar montajlar ekleme
 
-1. **Derleme Ekle**altında, derlemeniz için bir ad girin. **Küçük dosyayı** seçili tut. **Derleme** kutusunun yanındaki klasör simgesini seçin. Karşıya yüklediğiniz derlemeyi bulun ve seçin, örneğin:
+1. **Montaj Ekle**altında, derlemeniz için bir ad girin. **Küçük dosyayı** seçili tutun. **Derleme** kutusunun yanında klasör simgesini seçin. Örneğin, yüklediğiniz derlemeyi bulun ve seçin:
 
-   ![Daha küçük derlemeyi karşıya yükle](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
+   ![Daha küçük montaj yükleme](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
 
-   Bütünleştirilmiş kod **adı** özelliğinde, derlemeyi seçtikten sonra derlemenin dosya adı otomatik olarak görünür.
+   Derleme **Adı** özelliğinde, derlemeyi seçtikten sonra derlemenin dosya adı otomatik olarak görüntülenir.
 
-1. Hazırsanız **Tamam**' ı seçin.
+1. Hazır **olduğunuzda, Tamam'ı**seçin.
 
-   Derleme dosyanız karşıya yüklemeyi tamamladıktan sonra, derleme **derlemeler** listesinde görünür.
+   Derleme dosyanız yüklemeyi tamamladıktan sonra derleme **Derlemeler** listesinde görünür.
 
-   ![Karşıya yüklenen derlemeler listesi](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
+   ![Yüklenen derlemeler listesi](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
 
-   Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında, artık **yüklenen derlemelerin sayısını** gösterir, örneğin:
+   Tümleştirme hesabınızın **Genel Bakış** sayfasında, **Bileşenler**altında, **Derlemeler** döşemesi artık yüklenen derlemelerin sayısını gösterir, örneğin:
 
-   ![Karşıya yüklenen derlemeler](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
+   ![Yüklenen derlemeler](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
 
 <a name="larger-assembly"></a>
 
-### <a name="add-assemblies-more-than-2-mb"></a>2 MB 'tan fazla derleme Ekle
+### <a name="add-assemblies-more-than-2-mb"></a>2 MB'dan fazla derleme ekleme
 
-Daha büyük derlemeler eklemek için, derlemenizi Azure Storage hesabınızdaki bir Azure Blob kapsayıcısına yükleyebilirsiniz. Derlemeleri ekleme adımlarınız, blob kapsayıcının ortak okuma erişimine sahip olup olmadığına bağlı olarak farklılık gösterir. İlk olarak, aşağıdaki adımları izleyerek blob kabın genel okuma erişimine sahip olup olmadığını kontrol edin: [BLOB kapsayıcısı için genel erişim düzeyini ayarlama](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Daha büyük derlemeler eklemek için, derlemenizi Azure depolama hesabınızdaki bir Azure blob kapsayıcısına yükleyebilirsiniz. Derleme ekleme adımlarınız, blob kapsayıcınızın herkese açık okuma erişimine sahip olup olmadığına bağlı olarak farklılık gösterir. Bu nedenle, önce blob kapsayıcınızın genel okuma erişimi olup olmadığını şu adımları izleyerek kontrol edin: [Blob kapsayıcısı için genel erişim düzeyini ayarlayın](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
-#### <a name="check-container-access-level"></a>Kapsayıcı erişim düzeyini denetle
+#### <a name="check-container-access-level"></a>Kapsayıcı erişim düzeyini denetleme
 
-1. Azure Depolama Gezgini açın. Gezgin penceresinde, henüz genişletilmemişse Azure aboneliğinizi genişletin.
+1. Azure Depolama Gezgini'ni açın. Explorer penceresinde, azure aboneliğinizi zaten genişletilmediyse genişletin.
 
-1. **Depolama hesapları** > {*Storage-Account*} > **BLOB kapsayıcıları**' nı genişletin. Blob kapsayıcınızı seçin.
+1. Depolama > **Hesaplarını** genişlet{*depolama hesabınız*} **blob kapları**>. Blob kabınızı seçin.
 
-1. Blob kapsayıcının kısayol menüsünde, **ortak erişim düzeyini ayarla**' yı seçin.
+1. Blob kapsayıcınızın kısayol menüsünden **Genel Erişim Düzeyini Ayarla'yı**seçin.
 
-   * Blob kapsayıcıda en az ortak erişim varsa, **iptal**' i seçin ve bu sayfada daha sonra bu adımları izleyin: [ortak erişimle kapsayıcılara yükleme](#public-access-assemblies)
+   * Blob kapsayıcınız en az herkese açık erişime sahipse, **İptal'i**seçin ve bu sayfada aşağıdaki adımları izleyin: [Herkese açık olan kapsayıcılara yükleyin](#public-access-assemblies)
 
      ![Genel erişim](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Blob kabınızda ortak erişim yoksa, **iptal**' i seçin ve bu sayfada daha sonra bu adımları izleyin: [ortak erişim olmadan kapsayıcılara yükleme](#no-public-access-assemblies)
+   * Blob kapsayıcınızın herkese açık erişimi yoksa, **İptal'i**seçin ve bu sayfada aşağıdaki adımları izleyin: [Herkese açık erişim olmadan kapsayıcılara yükleyin](#no-public-access-assemblies)
 
-     ![Genel erişim yok](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+     ![Herkese açık erişim yok](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
 <a name="public-access-assemblies"></a>
 
-#### <a name="upload-to-containers-with-public-access"></a>Ortak erişimle kapsayıcılara yükleme
+#### <a name="upload-to-containers-with-public-access"></a>Herkese açık olan kapsayıcılara yükleme
 
 1. Derlemeyi depolama hesabınıza yükleyin. 
-   Sağ taraftaki pencerede **Yükle**' yi seçin.
+   Sağ pencerede **Yükle'yi**seçin.
 
-1. Karşıya yüklemeyi tamamladıktan sonra, karşıya yüklenen derlemenizi seçin. Araç çubuğunda, derlemenin URL 'sini kopyalamak için **URL 'Yi Kopyala** ' yı seçin.
+1. Yüklemeyi bitirdikten sonra, yüklenen derlemenizi seçin. Araç çubuğunda, derlemenin URL'sini kopyalamak için **URL Kopyala'yı** seçin.
 
-1. **Derleme Ekle** bölmesinin açık olduğu Azure Portal geri dönün. 
+1. **Montaj Ekle** bölmesinin açık olduğu Azure portalına dönün. 
    Derlemeniz için bir ad girin. 
-   **Büyük dosya (2 MB 'tan büyük)** seçeneğini belirleyin.
+   **Büyük dosyayı seçin (2 MB'dan büyük)**.
 
-   **İçerik URI 'si** kutusu artık **derleme** kutusu yerine görüntülenir.
+   **İçerik URI** kutusu artık **Derleme** kutusu yerine görünür.
 
-1. **IÇERIK URI** 'si kutusunda, DERLEMENIZIN URL 'sini yapıştırın. 
-   Derlemenizi ekleme işini sona erdirin.
+1. Content **URI** kutusuna, derlemenizin URL'sini yapıştırın. 
+   Montajınızı eklemeyi bitirin.
 
-Derlemeniz karşıya yüklemeyi tamamladıktan sonra, şema **derlemeler** listesinde görünür.
-Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** **altında, artık** karşıya yüklenen derlemelerin sayısını gösterir.
+Derlemeniz yüklemeyi tamamladıktan sonra, şema **Derlemeler** listesinde görünür.
+Tümleştirme hesabınızın **Genel Bakış** sayfasında, **Bileşenler**altında, **Derlemeler** döşemesi artık yüklenen derlemelerin sayısını gösterir.
 
 <a name="no-public-access-assemblies"></a>
 
-#### <a name="upload-to-containers-without-public-access"></a>Ortak erişim olmadan kapsayıcılara yükleme
+#### <a name="upload-to-containers-without-public-access"></a>Herkese açık olmayan kapsayıcılara yükleme
 
 1. Derlemeyi depolama hesabınıza yükleyin. 
-   Sağ taraftaki pencerede **Yükle**' yi seçin.
+   Sağ pencerede **Yükle'yi**seçin.
 
-1. Karşıya yüklemeyi tamamladıktan sonra, derlemenizin paylaşılan erişim imzasını (SAS) oluşturun. 
-   Derlemenin kısayol menüsünde, **paylaşılan erişim Imzası al**' ı seçin.
+1. Yüklemeyi tamamladıktan sonra, derlemeniz için paylaşılan bir erişim imzası (SAS) oluşturun. 
+   Derlemenizin kısayol menüsünden **Paylaşılan Erişim İmzası**Al'ı'yı seçin.
 
-1. **Paylaşılan erişim imzası** bölmesinde, Oluştur **kapsayıcı düzeyi paylaşılan erişim imzası URI 'si** > **Oluştur**' u seçin. 
-   SAS URL 'SI oluşturulduktan sonra, **URL** kutusunun yanındaki **Kopyala**' yı seçin.
+1. Paylaşılan **Erişim** İmzabayında, **kapsayıcı düzeyinde paylaşılan erişim imzası URI** > **Oluştur'u**oluştur'u seçin. 
+   SAS URL'si oluşturulduktan **sonra, URL** kutusunun yanında **Kopyala'yı**seçin.
 
-1. **Derleme Ekle** bölmesinin açık olduğu Azure Portal geri dönün. 
+1. **Montaj Ekle** bölmesinin açık olduğu Azure portalına dönün. 
    Derlemeniz için bir ad girin. 
-   **Büyük dosya (2 MB 'tan büyük)** seçeneğini belirleyin.
+   **Büyük dosyayı seçin (2 MB'dan büyük)**.
 
-   **İçerik URI 'si** kutusu artık **derleme** kutusu yerine görüntülenir.
+   **İçerik URI** kutusu artık **Derleme** kutusu yerine görünür.
 
-1. **İçerik URI 'si** kutusunda, daha önce oluşturmuş olduğunuz SAS URI 'sini yapıştırın. Derlemenizi ekleme işini sona erdirin.
+1. Content **URI** kutusuna, daha önce oluşturduğunuz SAS URI'yi yapıştırın. Montajınızı eklemeyi bitirin.
 
-Derlemeniz karşıya yüklemeyi tamamladıktan sonra, derleme **şemalar** listesinde görünür. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler** **altında, artık** karşıya yüklenen derlemelerin sayısını gösterir.
+Derlemeniz yüklemeyi tamamladıktan sonra, derleme **Şemalar** listesinde görünür. Tümleştirme hesabınızın **Genel Bakış** sayfasında, **Bileşenler**altında, **Derlemeler** döşemesi artık yüklenen derlemelerin sayısını gösterir.
 
-## <a name="create-maps"></a>Haritalar oluştur
+## <a name="create-maps"></a>Haritalar oluşturma
 
-Harita olarak kullanabileceğiniz bir XSLT belgesi oluşturmak için, [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)kullanarak bir BizTalk tümleştirme projesi oluşturmak Için Visual Studio 2015 kullanabilirsiniz. Bu projede, iki XML şema dosyası arasında öğeleri görsel olarak eşlemenizi sağlayan bir tümleştirme eşleme dosyası oluşturabilirsiniz. Bu projeyi derledikten sonra bir XSLT belgesi alırsınız.
-Tümleştirme hesaplarındaki eşleme miktarları sınırları için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). 
+Harita olarak kullanabileceğiniz bir XSLT belgesi oluşturmak için, [Kurumsal Entegrasyon Paketini](logic-apps-enterprise-integration-overview.md)kullanarak Bir BizTalk Tümleştirme projesi oluşturmak için Visual Studio 2015'i kullanabilirsiniz. Bu projede, iki XML şema dosyası arasındaki öğeleri görsel olarak eşlemenize olanak tanıyan bir tümleştirme eşleme dosyası oluşturabilirsiniz. Bu projeyi yaptıktan sonra bir XSLT belgesi alırsınız.
+Tümleştirme hesaplarındaki harita miktarları üzerindeki sınırlar [için Azure Mantık Uygulamaları için Sınırlar ve yapılandırma bölümüne](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)bakın. 
 
-## <a name="add-maps"></a>Haritalar Ekle
+## <a name="add-maps"></a>Haritalar ekleme
 
-Haritalarınızın başvurduğu derlemeleri karşıya yükledikten sonra, eşlemenizi karşıya yükleyebilirsiniz.
+Haritanızın referans olduğu derlemeleri yükledikten sonra, artık haritanızı yükleyebilirsiniz.
 
-1. Henüz oturum açmadıysanız Azure hesabı kimlik bilgilerinizle [Azure Portal](https://portal.azure.com) oturum açın. 
+1. Daha önce oturum açmadıysanız, Azure hesap kimlik bilgilerinizle [Azure portalında](https://portal.azure.com) oturum açın. 
 
-1. Tümleştirme hesabınız zaten açık değilse, ana Azure menüsünde **tüm hizmetler**' i seçin. 
-   Arama kutusuna "tümleştirme hesabı" yazın. 
-   **Tümleştirme hesapları**' nı seçin.
+1. Tümleştirme hesabınız zaten açık değilse, ana Azure menüsünde **Tüm hizmetler'i**seçin. 
+   Arama kutusuna "tümleştirme hesabı"nı girin. 
+   **Tümleştirme hesaplarını**seçin.
 
-   ![Tümleştirme hesabını bul](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
+   ![Tümleştirme hesabını bulma](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
-1. Eşlemenizi eklemek istediğiniz tümleştirme hesabını seçin, örneğin:
+1. Haritanızı eklemek istediğiniz tümleştirme hesabını seçin( örneğin:
 
-   ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
+   ![Entegrasyon hesabını seçin](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında **haritalar** kutucuğunu seçin.
+1. Entegrasyon hesabınızın **Genel Bakış** sayfasında, **Bileşenler**altında, **Haritalar** döşemesini seçin.
 
-   !["Haritalar" ı seçin](./media/logic-apps-enterprise-integration-maps/select-maps.png)
+   !["Haritalar" seçeneğini seçin](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
-1. **Haritalar** sayfası açıldıktan sonra **Ekle**' yi seçin.
+1. **Haritalar** sayfası açıldıktan sonra **Ekle'yi**seçin.
 
-   !["Ekle" yi seçin](./media/logic-apps-enterprise-integration-maps/add-map.png)  
+   !["Ekle" seçeneğini belirleyin](./media/logic-apps-enterprise-integration-maps/add-map.png)  
 
 <a name="smaller-map"></a>
 
-### <a name="add-maps-up-to-2-mb"></a>2 MB 'a kadar haritalar ekleyin
+### <a name="add-maps-up-to-2-mb"></a>2 MB'a kadar harita ekleme
 
-1. **Eşleme Ekle**' nin altında, haritanız için bir ad girin. 
+1. **Harita Ekle'nin**altında, haritanız için bir ad girin. 
 
-1. **Eşleme türü**altında, türü seçin, örneğin: **sıvı**, **XSLT**, **XSLT 2,0**veya **XSLT 3,0**.
+1. **Harita türü**altında, örneğin türü seçin: **Sıvı**, XSLT , **XSLT** **2.0**, veya **XSLT 3.0**.
 
-1. **Küçük dosyayı** seçili tut. **Harita** kutusunun yanındaki klasör simgesini seçin. Karşıya yüklediğiniz eşlemeyi bulun ve seçin, örneğin:
+1. **Küçük dosyayı** seçili tutun. **Harita** kutusunun yanında klasör simgesini seçin. Örneğin, yüklediğiniz haritayı bulun ve seçin:
 
-   ![Haritayı karşıya yükle](./media/logic-apps-enterprise-integration-maps/upload-map-file.png)
+   ![Haritayı yükle](./media/logic-apps-enterprise-integration-maps/upload-map-file.png)
 
-   **Name** özelliğini boş bıraktıysanız, eşleme dosyasını seçtikten sonra haritanın dosya adı otomatik olarak bu özellikte görüntülenir. 
-   Ancak, benzersiz bir ad kullanabilirsiniz.
+   **Ad** özelliğini boş bıraktıysanız, harita dosyasını seçtikten sonra haritanın dosya adı otomatik olarak o özellikte görünür. 
+   Ancak, herhangi bir benzersiz ad kullanabilirsiniz.
 
-1. Hazırsanız **Tamam**' ı seçin. 
-   Harita dosyanız karşıya yüklemeyi tamamladıktan sonra harita **haritalar** listesinde görünür.
+1. Hazır **olduğunuzda, Tamam'ı**seçin. 
+   Harita dosyanız yüklemeyi tamamladıktan sonra, harita **Haritalar** listesinde görünür.
 
-   ![Karşıya yüklenen haritalar listesi](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
+   ![Yüklenen haritalar listesi](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
 
-   Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında, **haritalar** kutucuğu artık yüklenen haritalar sayısını gösterir, örneğin:
+   Entegrasyon hesabınızın **Genel Bakış** sayfasında, **Bileşenler**altında, **Haritalar** döşemesi artık yüklenen haritaların sayısını gösterir, örneğin:
 
-   ![Haritalar karşıya yüklendi](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
+   ![Yüklenen haritalar](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
 
 <a name="larger-map"></a>
 
-### <a name="add-maps-more-than-2-mb"></a>2 MB 'tan fazla harita ekleme
+### <a name="add-maps-more-than-2-mb"></a>2 MB'dan fazla harita ekleme
 
-Şu anda, daha büyük haritalar eklemek için [Azure Logic Apps REST API haritaları](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanın.
+Şu anda, daha büyük haritalar eklemek için [Azure Logic Apps REST API - Haritalar'ı](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanın.
 
 <!--
 
@@ -308,44 +308,44 @@ the map appears in the **Maps** list.
 
 -->
 
-## <a name="edit-maps"></a>Haritaları Düzenle
+## <a name="edit-maps"></a>Haritaları düzenleme
 
-Mevcut bir eşlemeyi güncelleştirmek için, istediğiniz değişiklikleri içeren yeni bir eşleme dosyası yüklemeniz gerekir. Ancak, önce varolan Haritayı düzenlenmek üzere indirebilirsiniz.
+Varolan bir haritayı güncelleştirmek için, istediğiniz değişiklikleri içeren yeni bir harita dosyası yüklemeniz gerekir. Ancak, önce düzenleme için varolan haritayı indirebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com), henüz açık değilse, tümleştirme hesabınızı bulun ve açın.
+1. Azure [portalında,](https://portal.azure.com)zaten açık değilse tümleştirme hesabınızı bulun ve açın.
 
-1. Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna "tümleştirme hesabı" yazın. **Tümleştirme hesapları**' nı seçin.
+1. Ana Azure menüsünde **Tüm hizmetler'i**seçin. Arama kutusuna "tümleştirme hesabı"nı girin. **Tümleştirme hesaplarını**seçin.
 
-1. Eşlemenizi güncelleştirmek istediğiniz tümleştirme hesabını seçin.
+1. Haritanızı güncelleştirmek istediğiniz entegrasyon hesabını seçin.
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında **haritalar** kutucuğunu seçin.
+1. Entegrasyon hesabınızın **Genel Bakış** sayfasında, **Bileşenler**altında, **Haritalar** döşemesini seçin.
 
-1. **Haritalar** sayfası açıldıktan sonra haritalarınızı seçin. 
-   Önce Haritayı indirmek ve düzenlemek için **İndir**' i seçin ve Haritayı kaydedin.
+1. **Haritalar** sayfası açıldıktan sonra haritanızı seçin. 
+   Önce haritayı indirmek ve bunları yapmak için **İndir'i**seçin ve haritayı kaydedin.
 
-1. Güncelleştirilmiş Haritayı karşıya yüklemeye hazırsanız **haritalar** sayfasında, güncelleştirmek istediğiniz eşlemeyi seçin ve **Güncelleştir**' i seçin.
+1. Güncelleştirilmiş haritayı **Haritalar** sayfasına yüklemeye hazır olduğunuzda, güncelleştirmek istediğiniz haritayı seçin ve **Güncelleştir'i**seçin.
 
-1. Karşıya yüklemek istediğiniz güncelleştirilmiş eşlemeyi bulun ve seçin. 
-   Harita dosyanız karşıya yüklemeyi tamamladıktan sonra, güncelleştirilmiş harita **haritalar** listesinde görüntülenir.
+1. Yüklemek istediğiniz güncelleştirilmiş haritayı bulun ve seçin. 
+   Harita dosyanız yüklemeyi tamamladıktan sonra, güncelleştirilmiş harita **Haritalar** listesinde görünür.
 
-## <a name="delete-maps"></a>Haritaları Sil
+## <a name="delete-maps"></a>Haritaları silme
 
-1. [Azure Portal](https://portal.azure.com), henüz açık değilse, tümleştirme hesabınızı bulun ve açın.
+1. Azure [portalında,](https://portal.azure.com)zaten açık değilse tümleştirme hesabınızı bulun ve açın.
 
-1. Ana Azure menüsünde **tüm hizmetler**' i seçin. 
-   Arama kutusuna "tümleştirme hesabı" yazın. 
-   **Tümleştirme hesapları**' nı seçin.
+1. Ana Azure menüsünde **Tüm hizmetler'i**seçin. 
+   Arama kutusuna "tümleştirme hesabı"nı girin. 
+   **Tümleştirme hesaplarını**seçin.
 
-1. Eşlemenizi silmek istediğiniz tümleştirme hesabını seçin.
+1. Haritanızı silmek istediğiniz entegrasyon hesabını seçin.
 
-1. Tümleştirme hesabınızın **genel bakış** sayfasında, **Bileşenler**altında **haritalar** kutucuğunu seçin.
+1. Entegrasyon hesabınızın **Genel Bakış** sayfasında, **Bileşenler**altında, **Haritalar** döşemesini seçin.
 
-1. **Haritalar** sayfası açıldıktan sonra haritalarınızı seçin ve **Sil**' i seçin.
+1. **Haritalar** sayfası açıldıktan sonra haritanızı seçin ve **Sil'i**seçin.
 
-1. Haritayı silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. Haritayı silmek istediğinizi doğrulamak için **Evet'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Enterprise Integration Pack hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-overview.md)  
+* [Kurumsal Entegrasyon Paketi hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-overview.md)  
 * [Şemalar hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 * [Dönüşümler hakkında daha fazla bilgi edinin](../logic-apps/logic-apps-enterprise-integration-transform.md)

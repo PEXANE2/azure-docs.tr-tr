@@ -1,32 +1,32 @@
 ---
-title: Kapsayıcı Hizmetleri için ağ modlarını yapılandırma
-description: Azure Service Fabric tarafından desteklenen farklı ağ modlarını ayarlamayı öğrenin.
+title: Kapsayıcı hizmetleri için ağ modlarını yapılandırma
+description: Azure Hizmet Kumaşı tarafından desteklenen farklı ağ modlarını nasıl ayarladığınızı öğrenin.
 author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639811"
 ---
-# <a name="service-fabric-container-networking-modes"></a>Service Fabric kapsayıcı ağ modları
+# <a name="service-fabric-container-networking-modes"></a>Servis Kumaş konteyner ağ modları
 
-Kapsayıcı Hizmetleri için Azure Service Fabric kümesi varsayılan olarak **NAT** ağ modunu kullanır. Aynı bağlantı noktasında birden fazla kapsayıcı hizmeti dinlerken ve NAT modu kullanılırken, dağıtım hataları oluşabilir. Aynı bağlantı noktasında dinleme yapan birden çok kapsayıcı hizmetini desteklemek için, Service Fabric **Açık** ağ modu (sürüm 5,7 ve üzeri) sağlar. Açık modda, her kapsayıcı hizmetinde, aynı bağlantı noktasında dinleme yapan birden çok hizmeti destekleyen dahili ve dinamik olarak atanan bir IP adresi vardır.  
+Kapsayıcı hizmetleri için bir Azure Hizmet Kumaş ı kümesi varsayılan olarak **nat** ağ modunu kullanır. Aynı bağlantı noktasında birden fazla kapsayıcı hizmeti dinliyorsa ve nat modu kullanılıyorsa, dağıtım hataları oluşabilir. Aynı bağlantı noktasında dinleyen birden çok kapsayıcı hizmetini desteklemek için Service **Fabric, Açık** ağ modu (sürüm 5.7 ve sonrası) sunar. Açık modda, her kapsayıcı hizmeti, aynı bağlantı noktasında ndinleyen birden çok hizmeti destekleyen dahili, dinamik olarak atanmış bir IP adresine sahiptir.  
 
-Hizmet bildiriminizde bir statik uç noktaya sahip bir kapsayıcı hizmetiniz varsa, dağıtım hataları olmadan açma modunu kullanarak yeni hizmetler oluşturabilir ve silebilirsiniz. Aynı Docker-Compose. yıml dosyası aynı zamanda birden fazla hizmet oluşturmak için statik bağlantı noktası eşlemeleriyle birlikte kullanılabilir.
+Hizmet bildiriminizde statik bir bitiş noktası olan bir kapsayıcı hizmetiniz varsa, dağıtım hatası olmadan Açık modunu kullanarak yeni hizmetler oluşturabilir ve silebilirsiniz. Aynı docker-compose.yml dosyası, birden çok hizmet oluşturmak için statik bağlantı noktası eşlemeleriyle de kullanılabilir.
 
-Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir düğüme taşınırsa, IP adresi değişir. Bu nedenle, kapsayıcı Hizmetleri 'ni bulmaya yönelik dinamik olarak atanan IP adresini kullanmanızı önermiyoruz. Hizmet bulma için yalnızca Service Fabric Adlandırma Hizmeti veya DNS hizmeti kullanılmalıdır. 
+Bir kapsayıcı hizmeti kümedeki başka bir düğüme yeniden başlandığında veya başka bir düğüme geçtiğinde IP adresi değişir. Bu nedenle, konteyner hizmetlerini keşfetmek için dinamik olarak atanmış IP adresini kullanmanızı önermiyoruz. Hizmet bulma için yalnızca Hizmet Kumaş Adlandırma Hizmeti veya DNS Hizmeti kullanılmalıdır. 
 
 >[!WARNING]
->Azure, sanal ağ başına toplam 65.356 IP 'ye izin verir. Düğüm sayısının toplamı ve kapsayıcı hizmeti örneklerinin sayısı (Açık modu kullanılarak) bir sanal ağ içindeki 65.356 IP 'yi aşamaz. Yüksek yoğunluklu senaryolar için NAT ağ modunu öneririz. Ek olarak, yük dengeleyici gibi diğer bağımlılıkların göz önünde bulundurulması gereken diğer [sınırlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) olacaktır. Şu anda düğüm başına 50 IP 'ye kadar sınanmış ve kanıtlanmış kararlı durumda. 
+>Azure, sanal ağ başına toplam 65.356 IP sağlar. Düğüm sayısının ve kapsayıcı hizmet örneklerinin (Açık mod kullanan) toplamı sanal ağdaki 65.356 IP'yi geçemez. Yüksek yoğunluklu senaryolar için nat ağ modu öneririz. Buna ek olarak, yük dengeleyicisi gibi diğer bağımlılıkların göz önünde bulundurulması gereken başka [sınırlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) da olacaktır. Şu anda düğüm başına 50'ye kadar IP test edilmiş ve kararlı olduğu kanıtlanmıştır. 
 >
 
-## <a name="set-up-open-networking-mode"></a>Açık ağ modunu ayarlama
+## <a name="set-up-open-networking-mode"></a>Ağ modunu aç'ı ayarlama
 
-1. Azure Resource Manager şablonunu ayarlayın. Küme kaynağının **Fabricsettings** bölümünde DNS HIZMETINI ve IP sağlayıcısını etkinleştirin: 
+1. Azure Kaynak Yöneticisi şablonu ayarla. Küme kaynağının **kumaş Ayarları** bölümünde, DNS Hizmetini ve IP Sağlayıcısını etkinleştirin: 
 
     ```json
     "fabricSettings": [
@@ -60,9 +60,9 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
             ],
     ```
     
-2. Sanal makine ölçek kümesi kaynağının ağ profili bölümünü ayarlayın. Bu, kümenin her bir düğümünde birden çok IP adresinin yapılandırılmasını sağlar. Aşağıdaki örnek bir Windows/Linux Service Fabric kümesi için düğüm başına beş IP adresi ayarlar. Her düğümdeki bağlantı noktasını dinleyen beş hizmet örneği olabilir. Azure Load Balancer beş IP 'nin erişilebilir olması için, aşağıda gösterildiği gibi, beş IP 'yi Azure Load Balancer arka uç adres havuzuna kaydedin.  Değişkenleri, değişkenler bölümünde şablonunuzun en üstüne de eklemeniz gerekir.
+2. Sanal Makine Ölçeği Set kaynağının ağ profili bölümünü ayarlayın. Bu, kümenin her düğümünde birden çok IP adresinin yapılandırılmasına olanak tanır. Aşağıdaki örnekte, bir Windows/Linux Service Fabric kümesi için düğüm başına beş IP adresi ayarlanır. Her düğümde bağlantı noktasını dinleyerek beş hizmet örneği olabilir. Beş IP'ye Azure Yük Bakiyesi'nden erişilebilmek için, beş IP'yi aşağıda gösterildiği gibi Azure Yük Bakiyesi Arka Uç Adres Havuzuna kaydedin.  Değişkenler bölümündeki değişkenleri şablonunuzun en üstüne eklemeniz de gerekir.
 
-    Bu bölümü değişkenlere ekleyin:
+    Değişkenler için bu bölümü ekleyin:
 
     ```json
     "variables": {
@@ -83,7 +83,7 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
     }
     ```
     
-    Bu bölümü sanal makine ölçek kümesi kaynağına ekleyin:
+    Bu bölümü Sanal Makine Ölçeği Kümesi kaynağına ekleyin:
 
     ```json   
     "networkProfile": {
@@ -189,19 +189,19 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
               }
    ```
  
-3. Yalnızca Windows kümeleri için, sanal ağ için UDP/53 bağlantı noktasını aşağıdaki değerlerle açan bir Azure ağ güvenlik grubu (NSG) kuralı ayarlayın:
+3. Yalnızca Windows kümeleri için, aşağıdaki değerlere sahip sanal ağ için UDP/53 bağlantı noktasını açan bir Azure Ağ Güvenlik Grubu (NSG) kuralı ayarlayın:
 
    |Ayar |Değer | |
    | --- | --- | --- |
    |Öncelik |2000 | |
-   |Ad |Custom_Dns  | |
+   |Adı |Custom_Dns  | |
    |Kaynak |VirtualNetwork | |
    |Hedef | VirtualNetwork | |
    |Hizmet | DNS (UDP/53) | |
-   |Eylem | Allow  | |
+   |Eylem | İzin Ver  | |
    | | |
 
-4. Her hizmet için uygulama bildiriminde ağ modunu belirtin: `<NetworkConfig NetworkType="Open">`. **Açık** ağ modu, hizmette ayrılmış bir IP adresi elde eden sonuçlara neden olur. Bir mod belirtilmemişse, hizmet varsayılan olarak **NAT** moduna alır. Aşağıdaki bildirim örneğinde, `NodeContainerServicePackage1` ve `NodeContainerServicePackage2` hizmetleri her biri aynı bağlantı noktasını dinler (her iki hizmet de `Endpoint1`dinler). Açık ağ modu belirtildiğinde `PortBinding` yapılandırması belirtilemez.
+4. Her hizmet için uygulama bildiriminde ağ `<NetworkConfig NetworkType="Open">`modunu belirtin: . **Açık** ağ modu, hizmetin özel bir IP adresi almasıyla sonuçlanır. Bir mod belirtilmemişse, hizmet **varsayılan olarak nat** moduna geçer. Aşağıdaki bildirim örneğinde, `NodeContainerServicePackage1` `NodeContainerServicePackage2` ve hizmetlerin her biri aynı bağlantı noktasında `Endpoint1`dinlenebilir (her iki hizmet de dinliyor). Açık ağ modu belirtildiğinde, `PortBinding` yapılandırmalar belirtilemez.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -230,13 +230,13 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
     </ApplicationManifest>
     ```
 
-    Windows kümesi için bir uygulama içindeki hizmetler genelinde farklı ağ modlarını karıştırabilir ve eşleştirebilirsiniz. Bazı hizmetler, diğer kullanıcılar NAT modunu kullanırken açma modunu kullanabilir. Bir hizmet NAT modunu kullanacak şekilde yapılandırıldığında, hizmetin dinlediği bağlantı noktasının benzersiz olması gerekir.
+    Bir Windows kümesi için bir uygulama içindeki hizmetler arasında farklı ağ modlarını karıştırıp eşleştirebilirsiniz. Bazı hizmetler Açık modunu, diğerleri nat modunu kullanabilir. Bir hizmet nat modunu kullanacak şekilde yapılandırıldığında, hizmetin dinlediği bağlantı noktası benzersiz olmalıdır.
 
     >[!NOTE]
-    >Linux kümelerinde, farklı hizmetler için ağ modlarını karıştırma desteklenmez. 
+    >Linux kümelerinde, farklı hizmetler için ağ karıştırma modları desteklenmez. 
     >
 
-5. **Açık** mod seçildiğinde, hizmet bildiriminde yalnızca bir kod paketi olsa bile, hizmet bildirimindeki **uç nokta** tanımı, uç noktaya karşılık gelen kod paketine açıkça işaret etmelidir. 
+5. **Açık** modu seçildiğinde, hizmet bildirimindeki **Bitiş Noktası** tanımı, hizmet paketinde yalnızca bir kod paketi olsa bile, bitiş noktasına karşılık gelen kod paketini açıkça göstermelidir. 
    
    ```xml
    <Resources>
@@ -246,7 +246,7 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
    </Resources>
    ```
    
-6. Windows için, bir VM yeniden başlatması açık ağın yeniden oluşturulmasına neden olur. Bu, ağ yığınında temel bir sorunu azaltmaya yönelik olur. Varsayılan davranış, ağı yeniden oluşturmalıdır. Bu davranışın devre dışı olması gerekiyorsa, aşağıdaki yapılandırma ardından bir yapılandırma yükseltmesi tarafından kullanılabilir.
+6. Windows için, VM yeniden başlatma açık ağ yeniden oluşturulmasına neden olur. Bu, ağ yığınındaki temel bir sorunu azaltmak için kullanılır. Varsayılan davranış, ağı yeniden oluşturmaktır. Bu davranışın kapatılması gerekiyorsa, aşağıdaki yapılandırma bir config yükseltme si tarafından kullanılabilir.
 
 ```json
 "fabricSettings": [
@@ -264,6 +264,6 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
  
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Service Fabric uygulama modelini anlama](service-fabric-application-model.md)
-* [Service Fabric hizmeti bildirim kaynakları hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
-* [Windows Server 2016 ' de Windows kapsayıcısını Service Fabric dağıtma](service-fabric-get-started-containers.md)
-* [Linux üzerinde Service Fabric bir Docker kapsayıcısı dağıtma](service-fabric-get-started-containers-linux.md)
+* [Service Fabric hizmet bildirim kaynakları hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Windows Server 2016'da Service Fabric'e Windows kapsayıcısı dağıtma](service-fabric-get-started-containers.md)
+* [Linux'ta Service Fabric'e Docker konteyneri dağıtma](service-fabric-get-started-containers-linux.md)

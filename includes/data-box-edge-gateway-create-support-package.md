@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188830"
 ---
-Cihaz sorunları yaşarsanız, sistem günlüklerinden bir destek paketi oluşturabilirsiniz. Microsoft Support sorunlarını gidermek için bu paketi kullanır. Destek paketi oluşturmak için aşağıdaki adımları izleyin:
+Herhangi bir aygıt sorunuyla karşılaşırsanız, sistem günlüklerinden bir destek paketi oluşturabilirsiniz. Microsoft Destek sorunları gidermek için bu paketi kullanır. Destek paketi oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Cihazınızın PowerShell arabirimine bağlanma](#connect-to-the-powershell-interface).
-2. Kullanım `Get-HcsNodeSupportPackage` bir destek paketi oluşturmak için komutu. Kullanım cmdlet aşağıdaki gibidir:
+1. [Cihazınızın PowerShell arayüzüne bağlanın.](#connect-to-the-powershell-interface)
+2. Destek `Get-HcsNodeSupportPackage` paketi oluşturmak için komutu kullanın. Cmdlet kullanımı aşağıdaki gibidir:
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs
@@ -27,15 +27,15 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir destek paketi oluştu
             [-IncludeArchived] [-IncludePeriodicStats] [-Credential <pscredential>]  [<CommonParameters>]
     ```
 
-    Cmdlet, cihazınızın günlükleri toplar ve o günlüklerin bir belirtilen ağ veya yerel paylaşım için kopyalar.
+    Cmdlet, cihazınızdaki günlükleri toplar ve bu günlükleri belirli bir ağa veya yerel paylaşıma kopyalar.
 
     Kullanılan parametreler aşağıdaki gibidir:
 
-    - `-Path` -Ağ veya destek paketi kopyalamak için yerel yol belirtin. (gerekli)
-    - `-Credential` -Korumalı yola erişmek için kimlik bilgilerini belirtin.
-    - `-Zip` -Bir zip dosyası oluşturmak için belirtin.
-    - `-Include` -Destek paket içerisine dâhil bileşenleri dahil edileceğini belirtin. Belirtilmezse, `Default` varsayılır.
-    - `-IncludeArchived` -Arşivlenmiş günlükleri desteği paket içerisine dâhil etmek belirtin.
-    - `-IncludePeriodicStats` -Stat düzenli günlükleri desteği paket içerisine dâhil etmek belirtin.
+    - `-Path`- Destek paketini kopyalamak için ağı veya yerel yolu belirtin. (gerekli)
+    - `-Credential`- Korunan yola erişmek için kimlik bilgilerini belirtin.
+    - `-Zip`- Zip dosyası oluşturmak için belirtin.
+    - `-Include`- Destek paketine eklenecek bileşenleri içerecek şekilde belirtin. Belirtilmemişse, `Default` kabul edilir.
+    - `-IncludeArchived`- Destek paketine arşivlenmiş günlükleri eklemek için belirtin.
+    - `-IncludePeriodicStats`- Destek paketine periyodik stat günlüklerini eklemek için belirtin.
 
     

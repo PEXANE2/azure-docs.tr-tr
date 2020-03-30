@@ -8,303 +8,303 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474168"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80117082"
 ---
-Paylaşılan görüntü Galerisi, yönetilen görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
+Paylaşılan Resim Galerisi, yönetilen resimlerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan Resim Galerileri şunları sağlar:
 
-- Görüntülerin yönetilen genel çoğaltması.
-- Daha kolay yönetim için görüntülerin sürümü oluşturma ve gruplama.
-- Kullanılabilirlik Alanları destekleyen bölgelerde bölge yedekli depolama (ZRS) hesaplarıyla yüksek düzeyde kullanılabilir görüntüler. ZRS, ZGen hatalarıyla karşı daha iyi esnekliği sunar.
-- RBAC kullanarak abonelikler arasında ve hatta Active Directory (AD) kiracılar arasında paylaşım.
-- Her bölgedeki görüntü çoğaltmalarıyla dağıtımlarınızı ölçeklendirin.
+- Görüntülerin yönetilen küresel çoğaltma.
+- Daha kolay yönetim için görüntülerin sürümü ve gruplanması.
+- Kullanılabilirlik Bölgelerini destekleyen bölgelerdeki Bölge Yedekli Depolama (ZRS) hesaplarına sahip yüksek kullanılabilir görüntüler. ZRS, zonal arızalara karşı daha iyi esneklik sağlar.
+- RBAC'ı kullanarak abonelikler arasında ve hatta Active Directory (AD) kiracıları arasında paylaşım.
+- Dağıtımlarınızı her bölgedeki görüntü yinelemeleriyle ölçekleme.
 
-Paylaşılan görüntü galerisini kullanarak, görüntülerinizi kuruluşunuzdaki farklı kullanıcılara, hizmet sorumlularına veya AD gruplarına paylaşabilirsiniz. Paylaşılan görüntüler, dağıtımlarınızın daha hızlı ölçeklendirilmesi için birden çok bölgeye çoğaltılabilir.
+Paylaşılan Resim Galerisi'ni kullanarak resimlerinizi kuruluşunuzdaki farklı kullanıcılarla, hizmet müdürleriyle veya REKLAM gruplarına paylaşabilirsiniz. Paylaşılan görüntüler, dağıtımlarınızın daha hızlı ölçeklendirilmesi için birden çok bölgeye çoğaltılabilir.
 
-Yönetilen görüntü, görüntüyü oluşturma yönteminize bağlı olarak tam VM 'nin (bağlı veri diskleri dahil) veya yalnızca işletim sistemi diskinin bir kopyasıdır. Görüntüden bir VM oluşturduğunuzda, yeni VM 'nin disklerini oluşturmak için görüntüdeki VHD 'lerin bir kopyası kullanılır. Yönetilen görüntü depolamada kalır ve yeni VM 'Ler oluşturmak için tekrar tekrar kullanılabilir.
+Yönetilen görüntü, görüntüyü nasıl oluşturduğunuza bağlı olarak tam vm (ekli veri diskleri dahil) veya yalnızca işletim sistemi diskinin kopyasıdır. Görüntüden bir VM oluşturduğunuzda, yeni VM için diskler oluşturmak için görüntüdeki VH'lerin bir kopyası kullanılır. Yönetilen görüntü depolama da kalır ve yeni VM'ler oluşturmak için tekrar tekrar kullanılabilir.
 
-Korumanız gereken çok sayıda yönetilen görüntünüz varsa ve bunları şirketiniz genelinde kullanılabilir hale getirmek istiyorsanız, paylaşılan bir görüntü galerisini bir depo olarak kullanarak görüntülerinizi paylaşmayı kolaylaştırır. 
+Korumanız gereken çok sayıda yönetilen görseliniz varsa ve bunları şirketinizde kullanılabilir hale getirmek istiyorsanız, resimlerinizi paylaşmayı kolaylaştıran bir depo olarak Paylaşılan Resim Galerisi'ni kullanabilirsiniz. 
 
-Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir:
+Paylaşılan Resim Galerisi özelliğinin birden çok kaynak türü vardır:
 
 | Kaynak | Açıklama|
 |----------|------------|
-| **Yönetilen görüntü** | Tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntü. Yönetilen görüntüler [Genelleştirilmiş](#generalized-and-specialized-images) VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
-| **Görüntüye** | Bir VHD 'nin **görüntü sürümü**oluşturmak için kullanılabilecek bir kopyası. Anlık görüntüler [özelleştirilmiş](#generalized-and-specialized-images) bir VM 'den alınabilir (Genelleştirilmiş olmayan bir şekilde) ve özel bir görüntü sürümü oluşturmak için tek başına veya veri disklerinin anlık görüntüleriyle birlikte kullanılır.
-| **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
-| **Görüntü tanımı** | Görüntüler, bir galeri içinde tanımlanır ve bu görüntüyü kuruluşunuzda kullanmaya yönelik gereksinimler hakkında bilgi taşır. Görüntünün Genelleştirilmiş veya özel, işletim sistemi, minimum ve maksimum bellek gereksinimleri ve sürüm notları gibi bilgileri ekleyebilirsiniz. Bu, bir görüntü türünün tanımıdır. |
-| **Görüntü sürümü** | Bir **görüntü sürümü** , galerı kullanılırken VM oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, bir sanal makine oluşturmak için bir **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
+| **Yönetilen görüntü** | Tek başına kullanılabilen veya resim galerisinde **görüntü sürümü** oluşturmak için kullanılabilen temel bir resim. Yönetilen görüntüler [genelleştirilmiş](#generalized-and-specialized-images) VM'lerden oluşturulur. Yönetilen görüntü, birden çok VM yapmak için kullanılabilen ve şimdi paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
+| **Anlık Görüntü** | Bir **görüntü sürümü**yapmak için kullanılabilecek bir VHD kopyası. Anlık görüntüler, özel leştirilmiş bir görüntü sürümü oluşturmak için tek başına veya veri disklerinin anlık görüntüleriyle kullanılan [özel](#generalized-and-specialized-images) bir VM'den (genelleştirilmemiş bir) alınabilir.
+| **Resim galerisi** | Azure Marketi gibi, **resim galerisi** de görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimin erişimi olduğunu siz denetlersiniz. |
+| **Resim tanımı** | Görüntüler bir galeri içinde tanımlanır ve görüntü ve kuruluşunuz içinde kullanmak için gereksinimleri hakkında bilgi taşır. Görüntünün genelleştirilmiş veya özelleştirilmiş olup olmadığı, işletim sistemi, minimum ve maksimum bellek gereksinimleri ve sürüm notları gibi bilgileri ekleyebilirsiniz. Bu bir görüntü türünün tanımıdır. |
+| **Görüntü sürümü** | **Resim sürümü,** galeri kullanırken VM oluşturmak için kullandığınız sürümdür. Ortamınız için gerektiği gibi görüntünün birden çok sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, VM oluşturmak için bir **görüntü sürümü** kullandığınızda, görüntü sürümü VM için yeni diskler oluşturmak için kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
 
 <br>
 
-![Galerinizdeki bir görüntünün birden fazla sürümünü nasıl kullanabileceğinizi gösteren grafik](./media/shared-image-galleries/shared-image-gallery.png)
+![Galerinizde bir resmin birden çok sürümüne nasıl sahip olabileceğinizi gösteren grafik](./media/shared-image-galleries/shared-image-gallery.png)
 
-## <a name="image-definitions"></a>Görüntü tanımları
+## <a name="image-definitions"></a>Resim tanımları
 
-Görüntü tanımları bir görüntünün sürümleri için bir mantıksal gruplandırmadır. Görüntü tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri barındırır. Bir görüntü tanımı, belirli bir görüntü oluşturma ile ilgili tüm ayrıntılar için bir plan gibidir. Bir görüntü tanımından, ancak tanımdan oluşturulan görüntü sürümünden bir VM dağıtmazsınız.
+Görüntü tanımları, görüntünün sürümleri için mantıksal bir gruplandırmadır. Görüntü tanımı, görüntünün neden oluşturulduğu, işletim sistemi nin ne için olduğu ve görüntünün kullanımı hakkında bilgi içerir. Görüntü tanımı, belirli bir görüntü oluşturma yla ilgili tüm ayrıntılar için bir plan gibidir. Görüntü tanımından değil, tanımdan oluşturulan görüntü sürümünden vm dağıtın.
 
-Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**'da kullanılan üç parametre vardır. Bunlar, belirli bir görüntü tanımını bulmak için kullanılır. Üç değerden birini veya ikisini birden paylaşan görüntü sürümlerine sahip olabilirsiniz.  Örneğin, aşağıda üç görüntü tanımı ve değerleri verilmiştir:
+Her görüntü tanımı için birlikte kullanılan üç parametre vardır - **Publisher**, **Teklif** ve **SKU**. Bunlar, belirli bir görüntü tanımını bulmak için kullanılır. Bir veya iki değeri paylaşan, ancak üç değeri paylaşan görüntü sürümlerine sahip olabilirsiniz.  Örneğin, burada üç görüntü tanımları ve değerleri şunlardır:
 
 |Görüntü Tanımı|Yayımcı|Sunduğu|Sku|
 |---|---|---|---|
-|myImage1|Contoso|Finans|Sunucusundan|
+|myImage1|Contoso|Finans|Arka uç|
 |myImage2|Contoso|Finans|Ön uç|
-|myImage3|Test Etme|Finans|Ön uç|
+|myImage3|Sınama|Finans|Ön uç|
 
-Bunların üçü de benzersiz değer kümelerine sahiptir. Bu biçim, bir market görüntüsünün en son sürümünü almak için Azure PowerShell ' de [Azure Market görüntüleri](../articles/virtual-machines/windows/cli-ps-findimage.md) için yayımcı, TEKLIF ve SKU 'yu nasıl belirteceğinize benzer. Her görüntü tanımının bu değerlerin benzersiz bir kümesine sahip olması gerekir.
+Bunların üçünün de benzersiz değer kümeleri var. Biçim, Bir Market görüntüsünün en son sürümünü elde etmek için Azure PowerShell'deki [Azure Marketi görüntüleri](../articles/virtual-machines/windows/cli-ps-findimage.md) için yayımcı, teklif ve SKU'yu şu anda nasıl belirtebileceğinize benzer. Her görüntü tanımının bu değerlerden oluşan benzersiz bir kümeye sahip olması gerekir.
 
-Aşağıda, kaynaklarınızı daha kolay izleyebilmek için görüntü tanımınızda ayarlanabilme diğer parametreler verilmiştir:
+Kaynaklarınızı daha kolay izleyebilmeniz için görüntü tanımınızda ayarlanabilecek diğer parametreler şunlardır:
 
-* İşletim sistemi durumu-işletim sistemi durumunu [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images)olarak ayarlayabilirsiniz.
-* İşletim sistemi-Windows veya Linux olabilir.
-* Açıklama-görüntü tanımının neden mevcut olduğuna ilişkin daha ayrıntılı bilgi için açıklama kullanın. Örneğin, ön uç sunucunuz için uygulamanın önceden yüklenmiş olduğu bir görüntü tanımınız olabilir.
-* EULA-görüntü tanımına özgü bir son kullanıcı lisans anlaşmasını işaret etmek için kullanılabilir.
-* Gizlilik bildirimi ve sürüm notları-Azure Storage 'da sürüm notlarını ve gizlilik bildirimlerini depolayın ve görüntü tanımının bir parçası olarak bunlara erişmek için bir URI sağlayın.
-* Yaşam bitiş tarihi-eski görüntü tanımlarını silmek için Otomasyonu kullanabilmeniz için görüntü tanımınıza son kullanım tarihi ekleyin.
-* Etiket-görüntü tanımınızı oluştururken Etiketler ekleyebilirsiniz. Etiketler hakkında daha fazla bilgi için bkz. [kaynakları düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md)
-* En düşük ve en yüksek vCPU ve bellek önerileri-görüntünüz vCPU ve bellek önerileri içeriyorsa, bu bilgileri görüntü tanımınıza ekleyebilirsiniz.
-* İzin verilmeyen disk türleri-sanal makinenizin depolama gereksinimleriyle ilgili bilgiler sağlayabilirsiniz. Örneğin, görüntü standart HDD disklerine uygun değilse, bunları izin vermeme listesine eklersiniz.
+* İşletim sistemi durumu - İşletim sistemi durumunu [genelleştirilmiş veya özel](#generalized-and-specialized-images)olarak ayarlayabilirsiniz.
+* İşletim sistemi - Windows veya Linux olabilir.
+* Açıklama - resim tanımının neden var olduğu hakkında daha ayrıntılı bilgi vermek için açıklamayı kullanın. Örneğin, uygulama önceden yüklenmiş olan ön uç sunucunuz için bir görüntü tanımınız olabilir.
+* Eula - görüntü tanımına özgü bir son kullanıcı lisans sözleşmesine işaret etmek için kullanılabilir.
+* Gizlilik Bildirimi ve Sürüm notları - sürüm notlarını ve gizlilik bildirimlerini Azure depolama alanında saklayın ve resim tanımının bir parçası olarak bunlara erişmek için bir URI sağlayın.
+* Kullanım ömrü sona erme tarihi - eski görüntü tanımlarını silmek için otomasyonu kullanabilmek için görüntü tanımınıza kullanım tarihi nizi iliştirin.
+* Etiket - resim tanımınızı oluştururken etiket ekleyebilirsiniz. Etiketler hakkında daha fazla bilgi için [kaynaklarınızı düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md)
+* Minimum ve maksimum vCPU ve bellek önerileri - görüntünüzde vCPU ve bellek önerileri varsa, bu bilgileri görüntü tanımınıza ekleyebilirsiniz.
+* İzin verilmeyen disk türleri - VM'nizin depolama gereksinimleri hakkında bilgi verebilirsiniz. Örneğin, görüntü standart HDD diskler için uygun değilse, bunları izin verilenler listesine eklersiniz.
 
-## <a name="generalized-and-specialized-images"></a>Genelleştirilmiş ve özelleştirilmiş görüntüler
+## <a name="generalized-and-specialized-images"></a>Genelleştirilmiş ve özel leştirilmiş görüntüler
 
-Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi durumu vardır. Genellikle görüntüler, görüntüyü oluşturmak için kullanılan VM 'nin görüntü alınmadan önce Genelleştirilmiş olmasını gerektirir. Genelleştirme, VM 'den makine ve kullanıcıya özgü bilgileri kaldıran bir işlemdir. Windows için, Sysprep de kullanılır. Linux için [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` veya `-deprovision+user` parametrelerini kullanabilirsiniz.
+Paylaşılan Resim Galerisi tarafından desteklenen iki işletim sistemi durumları vardır. Genellikle görüntüler, görüntüyü oluşturmak için kullanılan VM'nin görüntüyü almadan önce genelleştirilmiş olmasını gerektirir. Genelleme, makine ve kullanıcıya özgü bilgileri VM'den kaldıran bir işlemdir. Windows için, Sysprep çok kullanılır. Linux için [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` veya `-deprovision+user` parametreleri kullanabilirsiniz.
 
-Özel VM 'Ler makineye özgü bilgileri ve hesapları kaldırma işlemi boyunca değil. Ayrıca, özelleştirilmiş görüntülerden oluşturulan VM 'lerle ilişkili bir `osProfile` yoktur. Bu, özelleştirilmiş görüntülerin bazı sınırlamalara sahip olacağı anlamına gelir.
+Özel Leştirilmiş VM'ler, makineye özgü bilgileri ve hesapları kaldırmak için bir işlem den geçmemiş. Ayrıca, özel leştirilmiş görüntülerden oluşturulan VM'lerin bunlarla ilişkili bir `osProfile` ilişkisi yoktur. Bu, özel leştirilmiş görüntülerin bazı sınırlamaları olacağı anlamına gelir.
 
-- VM 'de oturum açmak için kullanılabilecek hesaplar, bu VM 'den oluşturulan özelleştirilmiş görüntü kullanılarak oluşturulan herhangi bir VM 'de de kullanılabilir.
-- VM 'Ler, yansımanın alındığı VM 'nin **bilgisayar adına** sahip olur. Çakışmaları önlemek için bilgisayar adını değiştirmelisiniz.
-- `osProfile`, `secrets`kullanılarak sanal makineye bazı hassas bilgilerin iletilme yöntemi olur. Bu, Anahtar Kasası, WinRM ve `osProfile``secrets` kullanan diğer işlevleri kullanarak soruna neden olabilir. Bazı durumlarda, bu sınırlamalara geçici çözüm bulmak için yönetilen hizmet kimliklerini (MSI) kullanabilirsiniz.
+- VM'ye giriş yapmak için kullanılabilecek hesaplar, bu VM'den oluşturulan özel görüntü kullanılarak oluşturulan herhangi bir VM'de de kullanılabilir.
+- VM'ler, görüntünün alındığı VM'nin **Bilgisayar adını** kullanır. Çakışmaları önlemek için bilgisayar adını değiştirmeniz gerekir.
+- Bazı `osProfile` hassas bilgilerin VM'ye nasıl `secrets`iletildiğidir. Bu KeyVault, WinRM ve diğer işlevleri `secrets` kullanarak `osProfile`sorunlara neden olabilir. Bazı durumlarda, bu sınırlamaları aşmak için yönetilen hizmet kimliklerini (MSI) kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Özel görüntüler şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Özelleştirilmiş görüntüler şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 >
-> **Bilinen önizleme sınırlamaları** VM 'Ler yalnızca portal veya API kullanılarak özelleştirilmiş görüntülerden oluşturulabilir. , Önizleme için CLı veya PowerShell desteği yoktur.
+> **Bilinen önizleme sınırlamaları** VM'ler yalnızca portal veya API kullanılarak özel görüntülerden oluşturulabilir. Önizleme için CLI veya PowerShell desteği yoktur.
 
 
-## <a name="regional-support"></a>Bölgesel destek
+## <a name="regional-support"></a>Bölgesel Destek
 
-Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için aboneliğinizi beyaz listeye almanız gerekir. Beyaz liste istemek için şuraya gidin: https://azure.microsoft.com/global-infrastructure/australia/contact/
+Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hedef bölgeler olabilir, ancak Avustralya Merkez ve Avustralya Merkez 2'ye çoğaltmak için aboneliğinizin beyaz listeye alınması gerekir. Beyaz liste istemek için şu na gidin:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
 | Kaynak bölgeler        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
-| Orta Avustralya     | Çin Doğu        | Güney Hindistan        | Batı Avrupa        |
+| Orta Avustralya     | Doğu Çin        | Güney Hindistan        | Batı Avrupa        |
 | Orta Avustralya 2   | Çin Doğu 2      | Güneydoğu Asya     | Güney Birleşik Krallık           |
-| Doğu Avustralya        | Çin Kuzey       | Doğu Japonya         | Batı Birleşik Krallık            |
+| Doğu Avustralya        | Kuzey Çin       | Doğu Japonya         | Batı Birleşik Krallık            |
 | Güneydoğu Avustralya   | Çin Kuzey 2     | Batı Japonya         | Orta US DoD     |
 | Güney Brezilya          | Doğu Asya         | Güney Kore - Orta      | Doğu US DoD        |
 | Orta Kanada        | Doğu ABD           | Güney Kore - Güney        | US Gov Arizona     |
 | Doğu Kanada           | Doğu ABD 2         | Orta Kuzey ABD   | US Gov Texas       |
-| Orta Hindistan         | EUAP Doğu ABD 2    | Kuzey Avrupa       | US Gov Virginia    |
+| Orta Hindistan         | Doğu ABD 2 EUAP    | Kuzey Avrupa       | US Gov Virginia    |
 | Orta ABD            | Orta Fransa    | Orta Güney ABD   | Batı Hindistan         |
-| EUAP Orta ABD       | Güney Fransa      | Orta Batı ABD    | Batı ABD            |
+| ORTA ABD EUAP       | Güney Fransa      | Orta Batı ABD    | Batı ABD            |
 |                       |                   |                    | Batı ABD 2          |
 
 
 
 ## <a name="limits"></a>Sınırlar 
 
-Paylaşılan görüntü galerileri kullanarak kaynak dağıtmak için abonelik başına sınırlar vardır:
-- 100 paylaşılan görüntü galerileri, her bölge için abonelik başına
-- 1\.000 görüntü tanımları, her bölge için abonelik başına
-- 10.000 görüntü sürümü, her bölge için abonelik başına
-- Görüntüye bağlı herhangi bir disk, boyutu 1 TB 'tan küçük veya ona eşit olmalıdır
+Paylaşılan Resim Galerileri'ni kullanarak kaynakları dağıtmak için abonelik başına sınırlar vardır:
+- Her gün, abonelik başına 100 paylaşılan resim galerisi
+- Her bölge için abonelik başına 1.000 görüntü tanımı
+- Her gün abonelik başına 10.000 görüntü sürümü
+- Görüntüye iliştirilen herhangi bir disk boyutu 1 TB'den küçük veya eşit olmalıdır
 
-Daha fazla bilgi için bkz. geçerli kullanımınızı nasıl denetabileceğine ilişkin örnekler için [sınırlara karşı kaynak kullanımını denetleme](https://docs.microsoft.com/azure/networking/check-usage-against-limits) .
+Daha fazla bilgi için, geçerli kullanımınızı nasıl denetleyeceksiniz etütleri için [kaynak kullanımını sınırlara karşı](https://docs.microsoft.com/azure/networking/check-usage-against-limits) denetle'ye bakın.
  
 ## <a name="scaling"></a>Ölçeklendirme
-Paylaşılan görüntü Galerisi, Azure 'un görüntüleri tutmasını istediğiniz çoğaltma sayısını belirtmenize olanak tanır. Bu, sanal makine dağıtımları farklı çoğaltmalara yayılabilecek olduğundan, tek bir çoğaltmanın aşırı yüklemesi nedeniyle örnek oluşturma işleminin kısıtlanıyor olma olasılığını azaltmak için çoklu VM dağıtım senaryolarında yardımcı olur.
+Paylaşılan Resim Galerisi, Azure'un görüntülerin tutulmasını istediğiniz yineleme sayısını belirtmenize olanak tanır. Bu, VM dağıtımları farklı yinelemelere yayılabilirken, tek bir yinelemenin aşırı yüklenmesi nedeniyle örnek oluşturma işleminin daraltılması olasılığını azalttığı için çoklu VM dağıtım senaryolarında yardımcı olur.
 
-Paylaşılan görüntü Galerisi ile artık bir sanal makine ölçek kümesindeki bir 1.000 VM örneğine (yönetilen görüntülerle 600 ' den fazla) dağıtabilirsiniz. Görüntü çoğaltmaları daha iyi dağıtım performansı, güvenilirlik ve tutarlılık sağlar.  Bölgenin ölçek ihtiyaçlarına göre her bir hedef bölgede farklı bir çoğaltma sayısı ayarlayabilirsiniz. Her çoğaltma görüntünüzün derin bir kopyası olduğundan, bu, her bir ekstra çoğaltma ile dağıtımlarınızın ölçeğini daha erken ölçeklendirmenize yardımcı olur. İki görüntü veya bölgenin aynı olmadığını anladığımızda, bir bölgede çoğaltmaların nasıl kullanılacağına ilişkin genel kılavuzumuz aşağıda verilmiştir:
+Paylaşılan Resim Galerisi ile artık sanal makine ölçeğinde (yönetilen görüntülerle 600'den fazla) 1.000 VM'e kadar örnek dağıtabilirsiniz. Görüntü yinelemeleri daha iyi dağıtım performansı, güvenilirlik ve tutarlılık sağlar. Her hedef bölgede, bölgenin ölçek gereksinimlerine göre farklı bir yineleme sayısı ayarlayabilirsiniz. Her yineleme görüntünüzün derin bir kopyası olduğundan, bu, dağıtımlarınızı her ekstra yinelemeyle doğrusal olarak ölçeklendirmenize yardımcı olur. İki görüntü veya bölgenin aynı olmadığını anlamakla birlikte, bir bölgede yinelemelerin nasıl kullanılacağına ilişkin genel kılavuzumuz aşağıda veda edilebiştir:
 
-- Sanal olmayan makine ölçek kümesi (VMSS) dağıtımları için-eşzamanlı olarak oluşturduğunuz her 20 VM Için bir çoğaltma tutmanız önerilir. Örneğin, bir bölgedeki aynı görüntüyü kullanarak aynı anda 120 VM oluşturuyorsanız, resminizin en az 6 çoğaltmasını tutmanız önerilir. 
-- Sanal makine ölçek kümesi (VMSS) dağıtımları için-en çok 600 örneğe sahip her ölçek kümesi dağıtımı Için en az bir çoğaltma tutmanız önerilir. Örneğin, her biri tek bir bölgedeki aynı görüntüyü kullanan 600 VM örneğiyle aynı anda 5 ölçek kümesi oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanızı öneririz. 
+- Sanal Makine Ölçeği Kümesi (VMSS) Dağıtımları için - Aynı anda oluşturduğunuz her 20 VM için bir yineleme bulundurmanızı öneririz. Örneğin, bir bölgede aynı görüntüyü aynı anda kullanarak 120 VM oluşturuyorsanız, görüntünüzün en az 6 kopyasını saklamanızı öneririz. 
+- Sanal Makine Ölçeği Kümesi (VMSS) dağıtımları için - 600'e kadar örnekiçeren her ölçek kurulumu dağıtımı için en az bir yineleme bulundurmanızı öneririz. Örneğin, her biri tek bir bölgede aynı görüntüyü kullanan 600 VM örneği olan 5 ölçek kümesi oluşturuyorsanız, görüntünüzün en az 5 kopyasını saklamanızı öneririz. 
 
-Görüntü boyutu, içerik ve işletim sistemi türü gibi etkenlere bağlı olarak her zaman çoğaltma sayısını fazla temin etmenizi öneririz.
+Görüntü boyutu, içerik ve işletim sistemi türü gibi etkenler nedeniyle çoğaltma sayısını aşmanızı her zaman öneririz.
 
-![Görüntüleri nasıl ölçeklendirekullanabileceğinizi gösteren grafik](./media/shared-image-galleries/scaling.png)
+![Görüntüleri nasıl ölçeklendirebileceğinizi gösteren grafik](./media/shared-image-galleries/scaling.png)
 
-## <a name="make-your-images-highly-available"></a>Görüntülerinizi yüksek oranda kullanılabilir yapma
+## <a name="make-your-images-highly-available"></a>Resimlerinizi yüksek oranda kullanılabilir hale getirin
 
-[Azure bölgesel olarak yedekli depolama (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) , bölgedeki bir kullanılabilirlik bölgesi hatasına karşı esnekliği sağlar. Paylaşılan görüntü galerisinin genel kullanıma sunulmasıyla birlikte, görüntülerinizi Kullanılabilirlik Alanları bölgelerde ZRS hesaplarında depolamayı tercih edebilirsiniz. 
+[Azure Bölgesi Yedek Depolama (ZRS),](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) bölgedeki Kullanılabilirlik Bölgesi arızasına karşı esneklik sağlar. Paylaşılan Resim Galerisi'nin genel kullanılabilirliği sayesinde, resimlerinizi Kullanılabilirlik Bölgeleri olan bölgelerdeki ZRS hesaplarında saklamayı seçebilirsiniz. 
 
-Hedef bölgelerin her biri için hesap türünü de seçebilirsiniz. Varsayılan depolama hesabı türü Standard_LRS, ancak Kullanılabilirlik Alanları olan bölgeler için Standard_ZRS seçebilirsiniz. ZRS 'nin bölgesel kullanılabilirliğini [burada](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)denetleyin.
+Hedef bölgelerin her biri için hesap türünü de seçebilirsiniz. Varsayılan depolama hesabı türü Standard_LRS, ancak Kullanılabilirlik Bölgeleri olan bölgeler için Standard_ZRS seçebilirsiniz. ZRS'nin bölgesel kullanılabilirliğini buradan kontrol [edin.](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)
 
 ![ZRS gösteren grafik](./media/shared-image-galleries/zrs.png)
 
 ## <a name="replication"></a>Çoğaltma
-Paylaşılan görüntü Galerisi, görüntülerinizi diğer Azure bölgelerine otomatik olarak çoğaltmanıza da olanak tanır. Her paylaşılan görüntü sürümü, kuruluşunuz için anlamlı hale göre farklı bölgelere çoğaltılabilir. Bir örnek, tüm eski sürümler yalnızca 1 bölgede kullanılabilir durumdayken çok bölgeli en son görüntüyü her zaman çoğaltmalıdır. Bu, paylaşılan görüntü sürümleri için depolama maliyetlerinde tasarruf etmenize yardımcı olabilir. 
+Paylaşılan Resim Galerisi, resimlerinizi diğer Azure bölgelerine otomatik olarak çoğaltmanızı da sağlar. Paylaşılan Resim sürümüher kuruluşunuz için neyin anlamlı olduğu bağlı olarak farklı bölgelere çoğaltılabilir. Bir örnek, tüm eski sürümler yalnızca 1 bölgede kullanılabilirken, en son görüntüyü her zaman çok bölgelerde çoğaltmaktır. Bu, Paylaşılan Resim sürümlerinin depolama maliyetlerinde tasarruf sağlar. 
 
-Paylaşılan görüntü sürümünün çoğaltılacağı bölgeler, oluşturma zamanından sonra güncelleştirilebilirler. Farklı bölgelere çoğaltılmak için gereken süre, kopyalanan veri miktarına ve sürümün çoğaltılan bölge sayısına bağlıdır. Bu, bazı durumlarda birkaç saat sürebilir. Çoğaltma gerçekleşirken, her bölge için çoğaltmanın durumunu görüntüleyebilirsiniz. Bir bölgede görüntü çoğaltma tamamlandıktan sonra, bölgedeki bu görüntü sürümünü kullanarak bir VM veya ölçek kümesi dağıtabilirsiniz.
+Paylaşılan Resim sürümü çoğaltılacak şekilde çoğaltılan bölgeler oluşturma zamanından sonra güncelleştirilebilir. Farklı bölgelere çoğaltmak için gereken süre, kopyalanan veri miktarına ve sürümün çoğaltılan bölge sayısına bağlıdır. Bu bazı durumlarda birkaç saat sürebilir. Çoğaltma olurken, bölge başına çoğaltma durumunu görüntüleyebilirsiniz. Görüntü çoğaltma bir bölgede tamamlandıktan sonra, bölgedeki bu görüntü sürümünü kullanarak bir VM veya ölçek kümesi dağıtabilirsiniz.
 
-![Görüntüleri nasıl çoğaltacağınızı gösteren grafik](./media/shared-image-galleries/replication.png)
+![Görüntüleri nasıl kopyalayabildiğinizi gösteren grafik](./media/shared-image-galleries/replication.png)
 
 ## <a name="access"></a>Erişim
 
-Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü tüm kaynaklar olduğundan, yerleşik yerel Azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC kullanarak bu kaynakları diğer kullanıcılar, hizmet sorumluları ve gruplar ile paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı dışındaki bireylere erişim de paylaşabilirsiniz. Bir kullanıcının paylaşılan görüntü sürümüne erişimi olduktan sonra, bir VM veya bir sanal makine ölçek kümesi dağıtabilirler.  Kullanıcının ne erişimi olduğunu anlamanıza yardımcı olan paylaşım matrisi aşağıda verilmiştir:
+Paylaşılan Resim Galerisi, Resim Tanımı ve Resim sürümü tüm kaynaklar olduğundan, yerleşik azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC'ı kullanarak bu kaynakları diğer kullanıcılarla, hizmet ilkeleriyle ve gruplarla paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı nın dışındaki kişilere erişimi de paylaşabilirsiniz. Bir kullanıcı Paylaşılan Resim sürümüne eriştikten sonra, bir VM veya Sanal Makine Ölçeği Kümesi dağıtabilir.  Aşağıda, kullanıcının neye eriştiyi anlamanıza yardımcı olan paylaşım matrisi ve bu matris ve bu matris inanın ve erişimin
 
-| Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
+| Kullanıcı ile Paylaşılan     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
 | Paylaşılan Görüntü Galerisi | Evet                  | Evet          | Evet                  |
 | Görüntü Tanımı     | Hayır                   | Evet          | Evet                  |
 
-En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
+En iyi deneyim için Galeri düzeyinde paylaşmanızı öneririz. Tek tek görüntü sürümlerini paylaşmanızı önermiyoruz. RBAC hakkında daha fazla bilgi için [bkz.](../articles/role-based-access-control/role-assignments-portal.md)
 
-Görüntüler aynı zamanda çok kiracılı bir uygulama kaydı kullanan kiracılar arasında bile ölçeklenebilir şekilde paylaşılabilir. Kiracılar arasında görüntü paylaşma hakkında daha fazla bilgi için bkz. [Azure kiracılar genelinde galerı VM görüntülerini paylaşma](../articles/virtual-machines/linux/share-images-across-tenants.md).
+Görüntüler, çok kiracılı bir uygulama kaydı kullanarak kiracılar arasında bile ölçekte paylaşılabilir. Görüntüleri kiracılar arasında paylaşma hakkında daha fazla bilgi için, [Azure kiracılarında Galeri VM görüntülerini paylaş'a](../articles/virtual-machines/linux/share-images-across-tenants.md)bakın.
 
-## <a name="billing"></a>Faturalama
-Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alınmaz. Aşağıdaki kaynaklar için ücretlendirilirsiniz:
-- Paylaşılan görüntü sürümlerini depolamanın depolama maliyeti. Maliyet, görüntü sürümünün yineleme sayısına ve sürümün çoğaltılacağı bölge sayısına bağlıdır. Örneğin, 2 görüntünüz varsa ve her ikisi de 3 bölgeye çoğaltılırsa, boyutlarına göre 6 yönetilen disk üzerinden ücretlendirilirsiniz. Daha fazla bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
-- Kaynak bölgeden çoğaltılan bölgelere ilk görüntü sürümünün çoğaltılmasıyla ilgili ağ çıkış ücretleri. Sonraki çoğaltmalar bölge içinde işlenir, bu nedenle ek ücret alınmaz. 
+## <a name="billing"></a>Faturalandırma
+Paylaşılan Resim Galerisi hizmetini kullanmak için ek ücret alınmaz. Aşağıdaki kaynaklar için ücretlendirilirsiniz:
+- Paylaşılan Resim sürümlerini depolamanın depolama maliyetleri. Maliyet, görüntü sürümünün yineleme sayısına ve sürümün çoğaltılan bölge sayısına bağlıdır. Örneğin, 2 resminiz varsa ve her ikisi de 3 bölgeye çoğaltılırsa, boyutlarına bağlı olarak 6 yönetilen disk için ücretlendirilirsiniz. Daha fazla bilgi için Yönetilen [Diskler](https://azure.microsoft.com/pricing/details/managed-disks/)fiyatlandırması'na bakın.
+- Ağ çıkış ücretleri, ilk görüntü sürümünün kaynak bölgeden çoğaltılan bölgelere çoğaltılması için kopyalanıyor. Sonraki yinelemeler bölge içinde işlenir, bu nedenle ek ücret lendirme yapılmaz. 
 
 ## <a name="updating-resources"></a>Kaynakları güncelleştirme
 
-Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
+Oluşturulduktan sonra, resim galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlar aşağıdakiile sınırlıdır:
  
-Paylaşılan görüntü Galerisi:
+Paylaşılan resim galerisi:
 - Açıklama
 
-Görüntü tanımı:
-- Önerilen vCPU 'Lar
+Resim tanımı:
+- Önerilen vCPUs
 - Önerilen bellek
 - Açıklama
-- Yaşam tarihi sonu
+- Yaşam sonu tarihi
 
-Görüntü sürümü:
-- Bölgesel çoğaltma sayısı
+Resim sürümü:
+- Bölgesel yineleme sayısı
 - Hedef bölgeler
-- En son dışında tut
-- Yaşam tarihi sonu
+- En son sürümlerden hariç tutma
+- Yaşam sonu tarihi
 
 ## <a name="sdk-support"></a>SDK desteği
 
-Aşağıdaki SDK 'lar paylaşılan görüntü galerileri oluşturmayı destekler:
+Aşağıdaki SDK'lar Paylaşılan Resim Galerileri oluşturmayı destekler:
 
 - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 - [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/azure/go/)
+- [Git](https://docs.microsoft.com/azure/go/)
 
 ## <a name="templates"></a>Şablonlar
 
-Şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı oluşturabilirsiniz. Çeşitli Azure hızlı başlangıç şablonları mevcuttur: 
+Şablonları kullanarak Paylaşılan Resim Galerisi kaynağı oluşturabilirsiniz. Kullanılabilir birkaç Azure Quickstart Şablonu vardır: 
 
-- [Paylaşılan görüntü galerisi oluşturma](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Paylaşılan görüntü galerisinde görüntü tanımı oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Paylaşılan görüntü galerisinde görüntü sürümü oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Görüntü sürümünden VM oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Paylaşılan Resim Galerisi Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Paylaşılan Resim Galerisinde Resim Tanımı Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Paylaşılan Resim Galerisinde Resim Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Resim Sürümünden VM Oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular 
 
-* [Tüm paylaşılan görüntü Galerisi kaynaklarını abonelikler arasında nasıl listeleyebilirim?](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
-* [Var olan görüntümi paylaşılan görüntü galerisine taşıyabilir miyim?](#can-i-move-my-existing-image-to-the-shared-image-gallery)
+* [Tüm Paylaşılan Resim Galerisi kaynaklarını abonelikler arasında nasıl listeleyebilirim?](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
+* [Varolan resmimi paylaşılan resim galerisine taşıyabilir miyim?](#can-i-move-my-existing-image-to-the-shared-image-gallery)
 * [Özel bir diskten görüntü sürümü oluşturabilir miyim?](#can-i-create-an-image-version-from-a-specialized-disk)
-* [Paylaşılan görüntü Galerisi kaynağını oluşturulduktan sonra farklı bir aboneliğe taşıyabilir miyim?](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
-* [Resim sürümlerimi Azure Çin 21Vianet veya Azure Almanya ya da Azure Kamu bulutu gibi bulutlar arasında çoğaltabilir miyim?](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
-* [Görüntü sürümlerimi abonelikler arasında çoğaltabilir miyim?](#can-i-replicate-my-image-versions-across-subscriptions)
-* [Azure AD kiracılar arasında görüntü sürümlerini paylaşabilir miyim?](#can-i-share-image-versions-across-azure-ad-tenants)
-* [Hedef bölgeler arasında görüntü sürümlerini çoğaltmak ne kadar sürer?](#how-long-does-it-take-to-replicate-image-versions-across-the-target-regions)
-* [Kaynak bölgesi ve hedef bölge arasındaki fark nedir?](#what-is-the-difference-between-source-region-and-target-region)
-* [Görüntü sürümünü oluştururken kaynak bölgeyi belirtmek Nasıl yaparım? mı?](#how-do-i-specify-the-source-region-while-creating-the-image-version)
-* [Nasıl yaparım? her bölgede oluşturulacak görüntü sürümü çoğaltmalarının sayısını belirtin.](#how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region)
-* [Paylaşılan görüntü galerisini görüntü tanımı ve görüntü sürümü için olandan farklı bir konumda oluşturabilir miyim?](#can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
-* [Paylaşılan görüntü galerisini kullanma ücretleri nelerdir?](#what-are-the-charges-for-using-the-shared-image-gallery)
-* [Paylaşılan görüntü Galerisi ve görüntü tanımı ve görüntü sürümü oluşturmak için hangi API sürümünü kullanmalıyım?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
-* [Görüntü sürümünden paylaşılan VM veya sanal makine ölçek kümesi oluşturmak için hangi API sürümünü kullanmalıyım?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [Paylaşılan Resim Galerisi kaynağını oluşturulduktan sonra farklı bir aboneye taşıyabilir miyim?](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
+* [Görüntü sürümlerimi Azure China 21Vianet veya Azure Almanya veya Azure Resmi Bulut gibi bulutlar da çoğaltabilir miyim?](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
+* [Abonelikler arasında resim sürümlerimi çoğaltabilir miyim?](#can-i-replicate-my-image-versions-across-subscriptions)
+* [Azure AD kiracıları arasında resim sürümlerini paylaşabilir miyim?](#can-i-share-image-versions-across-azure-ad-tenants)
+* [Hedef bölgelerdeki görüntü sürümlerini çoğaltmak ne kadar sürer?](#how-long-does-it-take-to-replicate-image-versions-across-the-target-regions)
+* [Kaynak bölge ile hedef bölge arasındaki fark nedir?](#what-is-the-difference-between-source-region-and-target-region)
+* [Görüntü sürümünü oluştururken kaynak bölgeyi nasıl belirtebilirim?](#how-do-i-specify-the-source-region-while-creating-the-image-version)
+* [Her bölgede oluşturulacak görüntü sürümü yinelemelerinin sayısını nasıl belirtebilirim?](#how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region)
+* [Paylaşılan resim galerisini, resim tanımı ve resim sürümündekinden farklı bir konumda oluşturabilir miyim?](#can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
+* [Paylaşılan Resim Galerisi'ni kullanma ücretleri nelerdir?](#what-are-the-charges-for-using-the-shared-image-gallery)
+* [Paylaşılan Resim Galerisi ve Resim Tanımı ve Resim Sürümü oluşturmak için hangi API sürümünü kullanmalıyım?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
+* [Görüntü Sürümünden Ayarlanmış Paylaşılan VM veya Sanal Makine Ölçeği oluşturmak için hangi API sürümünü kullanmalıyım?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
 
-### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Tüm paylaşılan görüntü Galerisi kaynaklarını abonelikler arasında nasıl listeleyebilirim?
+### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Tüm Paylaşılan Resim Galerisi kaynaklarını abonelikler arasında nasıl listeleyebilirim?
 
-Azure portal erişiminiz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için aşağıdaki adımları izleyin:
+Azure portalında erişiminiz olan abonelikler arasında paylaşılan resim galerisi kaynaklarını listelemek için aşağıdaki adımları izleyin:
 
-1. [Azure portalını](https://portal.azure.com) açın.
-1. **Tüm kaynaklara**gidin.
+1. Azure [portalını](https://portal.azure.com)açın.
+1. Tüm **Kaynaklara**gidin.
 1. Tüm kaynakları listelemek istediğiniz tüm abonelikleri seçin.
-1. **Özel Galeri**türündeki kaynakları arayın.
+1. **Tür Özel galeri**kaynaklarını arayın.
  
-   Görüntü tanımlarını ve görüntü sürümlerini görmek için **gizli türleri göster**' i de seçmeniz gerekir.
+   Resim tanımlarını ve resim sürümlerini görmek için **gizli türleri göster'i**de seçmeniz gerekir.
  
-   İzinleriniz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için Azure CLı 'de aşağıdaki komutu kullanın:
+   İzinaldığınız abonelikler arasında paylaşılan resim galerisi kaynaklarını listelemek için Azure CLI'de aşağıdaki komutu kullanın:
 
-   ```bash
+   ```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
 
-### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Var olan görüntümi paylaşılan görüntü galerisine taşıyabilir miyim?
+### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Varolan resmimi paylaşılan resim galerisine taşıyabilir miyim?
  
-Evet. Sahip olduğunuz görüntü türlerine göre 3 senaryo vardır.
+Evet. Sahip olabileceğiniz görüntü türlerine göre 3 senaryo vardır.
 
- Senaryo 1: SıG ile aynı abonelikte yönetilen bir görüntünüz varsa, bundan sonra bir görüntü tanımı ve görüntü sürümü oluşturabilirsiniz.
+ Senaryo 1: SIG'inizle aynı abonelikte yönetilen bir görüntünüz varsa, ondan bir görüntü tanımı ve resim sürümü oluşturabilirsiniz.
 
- Senaryo 2: SıG ile aynı abonelikte yönetilmeyen bir görüntünüz varsa, bundan yönetilen bir görüntü oluşturabilir ve bundan sonra bundan sonra bir görüntü tanımı ve görüntü sürümü oluşturabilirsiniz. 
+ Senaryo 2: SIG'inizle aynı abonelikte yönetilmeyen bir görüntünüz varsa, ondan yönetilen bir görüntü oluşturabilir ve ondan bir görüntü tanımı ve resim sürümü oluşturabilirsiniz. 
 
- Senaryo 3: yerel dosya sisteminizde bir VHD 'niz varsa, VHD 'yi yönetilen bir görüntüye yüklemeniz gerekir, bundan sonra bir görüntü tanımı ve görüntü sürümü oluşturabilirsiniz.
+ Senaryo 3: Yerel dosya sisteminizde bir VHD varsa, VHD'yi yönetilen bir görüntüye yüklemeniz gerekir, ardından ondan bir görüntü tanımı ve resim sürümü oluşturabilirsiniz.
 
-- VHD bir Windows sanal makinesi ise bkz. [BIR VHD 'Yi karşıya yükleme](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
-- VHD bir Linux sanal makinesi için ise bkz. [BIR VHD 'Yi karşıya yükleme](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+- VHD Windows VM'dense, [vhd yükleyin'](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)e bakın.
+- VHD bir Linux VM içinise, [bkz.](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Özel bir diskten görüntü sürümü oluşturabilir miyim?
 
-Evet, görüntü olarak özelleştirilmiş diskler için destek önizleme aşamasındadır. Yalnızca Portal ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) veya [LINUX](../articles/virtual-machines/linux/shared-images-portal.md)) ve API 'yi kullanarak özelleştirilmiş görüntüden bir VM oluşturabilirsiniz. Önizleme için PowerShell desteği yok.
+Evet, görseller önizlemede olduğu için özel diskler desteği. Portalı[(Windows](../articles/virtual-machines/linux/shared-images-portal.md) veya [Linux)](../articles/virtual-machines/linux/shared-images-portal.md)ve API'yi kullanarak yalnızca özel leştirilmiş bir görüntüden bir VM oluşturabilirsiniz. Önizleme için PowerShell desteği yoktur.
 
-### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Paylaşılan görüntü Galerisi kaynağını oluşturulduktan sonra farklı bir aboneliğe taşıyabilir miyim?
+### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Paylaşılan Resim Galerisi kaynağını oluşturulduktan sonra farklı bir aboneye taşıyabilir miyim?
 
-Hayır, paylaşılan görüntü Galerisi kaynağını farklı bir aboneliğe taşıyamazsınız. Bununla birlikte, galerideki görüntü sürümlerini, gereken şekilde diğer bölgelere çoğaltabileceksiniz.
+Hayır, paylaşılan resim galerisi kaynağını farklı bir aboneye taşıyamazsınız. Ancak, galerideki resim sürümlerini gerektiğinde diğer bölgelere çoğaltabilirsiniz.
 
-### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Resim sürümlerimi Azure Çin 21Vianet veya Azure Almanya ya da Azure Kamu bulutu gibi bulutlar arasında çoğaltabilir miyim?
+### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Görüntü sürümlerimi Azure China 21Vianet veya Azure Almanya veya Azure Resmi Bulut gibi bulutlar da çoğaltabilir miyim?
 
-Hayır, bulut genelinde görüntü sürümlerini çoğaltamaz.
+Hayır, görüntü sürümlerini bulutlar arasında kopyalayamazsınız.
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Görüntü sürümlerimi abonelikler arasında çoğaltabilir miyim?
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Abonelikler arasında resim sürümlerimi çoğaltabilir miyim?
 
 Hayır, bir abonelikteki bölgeler arasında görüntü sürümlerini çoğaltabilir ve RBAC aracılığıyla diğer aboneliklerde kullanabilirsiniz.
 
-### <a name="can-i-share-image-versions-across-azure-ad-tenants"></a>Azure AD kiracılar arasında görüntü sürümlerini paylaşabilir miyim? 
+### <a name="can-i-share-image-versions-across-azure-ad-tenants"></a>Azure AD kiracıları arasında resim sürümlerini paylaşabilir miyim? 
 
-Evet, kiracılar genelinde bireyler paylaşmak için RBAC kullanabilirsiniz. Ancak, ölçekte paylaşmak için, [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) veya [CLI](../articles/virtual-machines/linux/share-images-across-tenants.md)kullanarak "Azure Kiracılarında Galeri görüntülerini paylaşma" konusuna bakın.
+Evet, rbac'ı kiracılar arasında bireylerle paylaşmak için kullanabilirsiniz. Ancak, ölçekte paylaşmak için [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) veya [CLI'yi](../articles/virtual-machines/linux/share-images-across-tenants.md)kullanarak "Galeri resimlerini Azure kiracıları arasında paylaşın" başlıklı ana bakın.
 
-### <a name="how-long-does-it-take-to-replicate-image-versions-across-the-target-regions"></a>Hedef bölgeler arasında görüntü sürümlerini çoğaltmak ne kadar sürer?
+### <a name="how-long-does-it-take-to-replicate-image-versions-across-the-target-regions"></a>Hedef bölgelerdeki görüntü sürümlerini çoğaltmak ne kadar sürer?
 
-Görüntü sürümü çoğaltma süresi, görüntünün boyutuna ve çoğaltılan bölge sayısına bağlıdır. Bununla birlikte, en iyi uygulama olarak, görüntüyü küçük tutmanız ve kaynak ve hedef bölgelerin en iyi sonuçlar için kapalı olması önerilir. -ReplicationStatus bayrağını kullanarak çoğaltmanın durumunu kontrol edebilirsiniz.
+Görüntü sürümü çoğaltma süresi tamamen görüntünün boyutuna ve çoğaltılan bölgelerin sayısına bağlıdır. Ancak, en iyi yöntem olarak, görüntüyü küçük tutmanız ve kaynak ve hedef bölgeleri en iyi sonuçlar için yakın tutmanız önerilir. -ReplicationStatus bayrağını kullanarak çoğaltma durumunu denetleyebilirsiniz.
 
-### <a name="what-is-the-difference-between-source-region-and-target-region"></a>Kaynak bölgesi ve hedef bölge arasındaki fark nedir?
+### <a name="what-is-the-difference-between-source-region-and-target-region"></a>Kaynak bölge ile hedef bölge arasındaki fark nedir?
 
-Kaynak bölge, görüntü sürümünüzün oluşturulacağı bölgedir ve hedef bölgeler, görüntü sürümünüzün bir kopyasının depolanacağı bölgelerdir. Her görüntü sürümü için yalnızca bir kaynak bölgeniz olabilir. Ayrıca, bir görüntü sürümü oluştururken kaynak bölge konumunu hedef bölgelerden biri olarak geçirdiğinizden emin olun.
+Kaynak bölge, resim sürümünüzün oluşturulacağı bölgedir ve hedef bölgeler, resim sürümünüzün bir kopyasının depolanacağı bölgelerdir. Her resim sürümü için yalnızca bir kaynak bölgeniz olabilir. Ayrıca, bir resim sürümü oluştururken kaynak bölge konumunu hedef bölgelerden biri olarak geçtiğinden emin olun.
 
-### <a name="how-do-i-specify-the-source-region-while-creating-the-image-version"></a>Görüntü sürümünü oluştururken kaynak bölgeyi belirtmek Nasıl yaparım? mı?
+### <a name="how-do-i-specify-the-source-region-while-creating-the-image-version"></a>Görüntü sürümünü oluştururken kaynak bölgeyi nasıl belirtebilirim?
 
-Görüntü sürümü oluştururken, kaynak bölgeyi belirtmek için PowerShell 'deki **--Location** etiketini ve **-Location** etiketini kullanabilirsiniz. Görüntü sürümünü oluşturmak için temel görüntü olarak kullandığınız yönetilen görüntünün, görüntü sürümünü oluşturmayı düşündüğünüz konumla aynı konumda olduğundan emin olun. Ayrıca, bir görüntü sürümü oluştururken kaynak bölge konumunu hedef bölgelerden biri olarak geçirdiğinizden emin olun.  
+Görüntü sürümü oluştururken, kaynak bölgeyi belirtmek için CLI'deki **konum** etiketini ve PowerShell'deki **Konum** etiketini kullanabilirsiniz. Lütfen görüntü sürümünü oluşturmak için temel görüntü olarak kullandığınız yönetilen görüntünün, görüntü sürümünü oluşturmak istediğiniz konumla aynı konumda olduğundan emin olun. Ayrıca, bir resim sürümü oluştururken kaynak bölge konumunu hedef bölgelerden biri olarak geçtiğinden emin olun.  
 
-### <a name="how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region"></a>Nasıl yaparım? her bölgede oluşturulacak görüntü sürümü çoğaltmalarının sayısını belirtin.
+### <a name="how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region"></a>Her bölgede oluşturulacak görüntü sürümü yinelemelerinin sayısını nasıl belirtebilirim?
 
-Her bölgede oluşturulacak görüntü sürümü çoğaltmalarının sayısını iki şekilde belirtebilirsiniz:
+Her bölgede oluşturulacak görüntü sürümü yinelemelerinin sayısını belirtmenin iki yolu vardır:
  
-1. Bölge başına oluşturmak istediğiniz çoğaltmaların sayısını belirten bölgesel çoğaltma sayısı. 
-2. Bölgesel çoğaltma sayısında bölge sayısı başına varsayılan olan ortak çoğaltma sayısı belirtilmemiş. 
+1. Bölge başına oluşturmak istediğiniz yineleme sayısını belirten bölgesel yineleme sayısı. 
+2. Bölgesel yineleme sayısı belirtilmemişse, bölge sayısı başına varsayılan olan ortak yineleme sayısı. 
 
-Bölgesel çoğaltma sayısını belirtmek için, konumu bu bölgede oluşturmak istediğiniz çoğaltmaların sayısıyla birlikte geçirin: "Orta Güney ABD = 2". 
+Bölgesel yineleme sayısını belirtmek için, konumu o bölgede oluşturmak istediğiniz yineleme sayısıyla birlikte geçirin: "Güney Orta ABD=2". 
 
-Bölgesel çoğaltma sayısı her konum ile belirtilmediyse, varsayılan çoğaltma sayısı belirttiğiniz ortak çoğaltma sayısı olacaktır. 
+Her konumla bölgesel yineleme sayısı belirtilmemişse, varsayılan yineleme sayısı belirttiğiniz ortak yineleme sayısı olacaktır. 
 
-CLı 'de ortak çoğaltma sayısını belirtmek için `az sig image-version create` komutunda **--Replica-Count** bağımsız değişkenini kullanın.
+CLI'de ortak yineleme sayısını belirtmek için, komuttaki `az sig image-version create` **--çoğaltma sayısı** bağımsız değişkenini kullanın.
 
-### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Paylaşılan görüntü galerisini görüntü tanımı ve görüntü sürümü için olandan farklı bir konumda oluşturabilir miyim?
+### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Paylaşılan resim galerisini, resim tanımı ve resim sürümündekinden farklı bir konumda oluşturabilir miyim?
 
-Evet, olabilir. Ancak, en iyi uygulama olarak, kaynak grubu, paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümünü aynı konumda tutmanız önerilir.
+Evet, olabilir. Ancak, en iyi uygulama olarak, kaynak grubunu, paylaşılan resim galerisini, resim tanımını ve resim sürümünü aynı konumda tutmanızı öneririz.
 
-### <a name="what-are-the-charges-for-using-the-shared-image-gallery"></a>Paylaşılan görüntü galerisini kullanma ücretleri nelerdir?
+### <a name="what-are-the-charges-for-using-the-shared-image-gallery"></a>Paylaşılan Resim Galerisi'ni kullanma ücretleri nelerdir?
 
-Görüntü sürümlerini depolama ücretleri ve kaynak bölgeden hedef bölgelere çoğaltma için ağ çıkış ücretleri dışında, paylaşılan görüntü Galerisi hizmeti kullanımı için herhangi bir ücret alınmaz.
+Görüntü sürümlerini depolamak için depolama ücretleri ve görüntü sürümlerini kaynak bölgeden hedef bölgelere çoğaltmak için ağ çıkış ücretleri dışında Paylaşılan Resim Galerisi hizmetini kullanmak için herhangi bir ücret yoktur.
 
-### <a name="what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version"></a>Paylaşılan görüntü Galerisi ve görüntü tanımı ve görüntü sürümü oluşturmak için hangi API sürümünü kullanmalıyım?
+### <a name="what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version"></a>Paylaşılan Resim Galerisi ve Resim Tanımı ve Resim Sürümü oluşturmak için hangi API sürümünü kullanmalıyım?
 
-Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürümleriyle çalışmak için API sürüm 2018-06-01 ' i kullanmanızı öneririz. Bölge yedekli depolama (ZRS) sürüm 2019-03-01 veya üstünü gerektirir.
+Paylaşılan resim galerileri, resim tanımları ve resim sürümleriyle çalışmak için API 2018-06-01 sürümünü kullanmanızı öneririz. Bölge Yedekli Depolama (ZRS) sürümü gerektirir 2019-03-01 veya daha sonra.
 
-### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Görüntü sürümünden paylaşılan VM veya sanal makine ölçek kümesi oluşturmak için hangi API sürümünü kullanmalıyım?
+### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Görüntü Sürümünden Ayarlanmış Paylaşılan VM veya Sanal Makine Ölçeği oluşturmak için hangi API sürümünü kullanmalıyım?
 
-Bir görüntü sürümü kullanan VM ve sanal makine ölçek kümesi dağıtımları için API sürüm 2018-04-01 veya üstünü kullanmanızı öneririz.
+VM ve Sanal Makine Ölçeği bir resim sürümünü kullanarak dağıtımları ayarlayın, API sürümünü 2018-04-01 veya daha yüksek kullanmanızı öneririz.

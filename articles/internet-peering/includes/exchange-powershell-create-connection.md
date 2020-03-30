@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 0014b67443797f45de51ec1bc459f71bde55cdc9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774438"
 ---
-Aşağıdaki örnek, Seattle 'da Internet Exchange 'e eşitlenmiş bir Exchange bağlantısı oluşturmayı gösterir. Farklı bir sağlayıcı ve farklı ayarlar kullanıyorsanız, bu bilgileri, isteğinde bulunduğunda değiştirin.
+Aşağıdaki örnek, Seattle'daki Equinix Internet Exchange'de exchange bağlantısının nasıl oluşturulabildiğini gösterir. Farklı bir sağlayıcı ve farklı ayarlar kullanıyorsanız, isteğinizi yaparken bu bilgileri değiştirin.
 
-Yeni eşleme isteği oluşturmak için kullanılacak PowerShell bağlantı nesneleri oluşturmak için **New-AzPeeringExchangeConnectionObject** PowerShell cmdlet 'ini kullanın:
+PowerShell cmdlet **New-AzPeeringExchangeConnectionObject'i** kullanarak powershell bağlantı nesnelerini yeni bir eşleme isteği oluşturmak için kullanılacaktır:
 
-Aşağıda bir Exchange bağlantısı oluşturmak için örnek verilmiştir:
+Aşağıda bir Exchange Bağlantısı oluşturmak için bir örnek:
 
 ```powershell
 $connection1 = New-AzPeeringExchangeConnectionObject `
@@ -30,7 +30,7 @@ $connection1 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-Belirtilen eşleme konumunda artıklık gerekli olduğunda başka bir bağlantı oluşturun:
+Belirli bir eşleme konumunda artıklığa ihtiyaç duymanız durumunda başka bir bağlantı oluşturun:
 
 ```powershell
 $connection2 = New-AzPeeringExchangeConnectionObject `
@@ -41,7 +41,7 @@ $connection2 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-Yeni bir Exchange eşlemesi oluşturmak için **New-Azeşleme** PowerShell cmdlet 'i kullanılabilir:
+PowerShell cmdlet **New-AzPeering** yeni bir Exchange bakan oluşturmak için kullanılabilir:
 
 ```powershell
 $asn = Get-AzPeerAsn
@@ -54,7 +54,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Aşağıda, istek bir bağlantı kullanılarak yürütüldüğünde örnek bir yanıt verilmiştir:
+Aşağıda, istek tek bir bağlantı kullanılarak yürütüldüğünde örnek bir yanıt verilmiştir:
 
 ```powershell
 
@@ -73,10 +73,10 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> Microsoft, istenen eşlemeyi sağlamaya başlayacak ve `ConnectionState` ilerlemeyi yansıtacaktır.
-> İlgili adımları sağlamak için [Exchange eşleme izlenecek yol](../walkthrough-exchange-all.md) belgesine bakın.
+> Microsoft, istenen eşlemi sağlamaya `ConnectionState` başlar ve bu ilerlemeyi yansıtır.
+> İlgili adımları sağlamak için [Exchange eşleme gözden geçirme](../walkthrough-exchange-all.md) belgesine bakın.
 
-ConnectionState ' i aşağıda gösterildiği gibi kontrol edebilirsiniz:
+Aşağıda gösterildiği gibi ConnectionState'i kontrol edebilirsiniz:
 
 ```powershell
 

@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta küme düğümünün disk alanı tükeniyor
-description: Azure HDInsight 'ta küme düğümü disk alanı sorunlarını giderme Apache Hadoop.
+title: Azure HDInsight'ta küme düğümünde disk alanı tükeniyor
+description: Azure HDInsight'ta Sorun Giderme Apache Hadoop küme düğümü disk alanı sorunları.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,42 +8,42 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894123"
 ---
-# <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Senaryo: küme düğümünde Azure HDInsight 'ta disk alanı tükeniyor
+# <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Senaryo: Azure HDInsight'ta küme düğümü disk alanı tükeniyor
 
-Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümeleriyle etkileşimde olurken sorun giderme adımları ve sorunlarla ilgili olası çözümler açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Bir iş şuna benzer bir hata iletisiyle başarısız olabilir: `/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
+Bir iş, şuna benzer hata iletisiyle başarısız olabilir:`/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
 
-Ya da şuna benzer Apache ambarı uyarısı alabilirsiniz: `local-dirs usable space is below configured utilization percentage`.
+Ya da benzer Apache Ambari `local-dirs usable space is below configured utilization percentage`uyarı alabilirsiniz: .
 
 ## <a name="cause"></a>Nedeni
 
-Apache YARN uygulama önbelleği, kullanılabilir tüm disk alanını tüketilebilir. Spark uygulamanız muhtemelen yeterince çalışıyor.
+Apache İplik uygulama önbelleği kullanılabilir tüm disk alanını tüketmiş olabilir. Kıvılcım uygulamanız büyük olasılıkla verimsiz çalışıyor.
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
-1. Hangi düğümün disk alanının tükençalıştığını anlamak için, ambarı Kullanıcı arabirimini kullanın.
+1. Hangi düğümün disk alanının tükendiğini belirlemek için Ambari UI'yi kullanın.
 
-1. Araba düğümündeki hangi klasörün disk alanının çoğuna katkıda bulunduğunu belirleme. Önce bir düğüme SSH, sonra tüm takar disk kullanımını listelemek için `df` çalıştırın. Genellikle, OSS tarafından kullanılan bir geçici disk olan `/mnt`. Bir klasöre girip, bir klasör altında özetlenen dosya boyutlarını göstermek için `sudo du -hs` yazın. `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`benzer bir klasör görürseniz, bu uygulamanın çalışmaya devam ettiği anlamına gelir. Bunun nedeni, RDD kalıcılığı veya ara karıştırma dosyalarından kaynaklanabilir.
+1. Rahatsız düğümdeki klasörün disk alanının çoğuna katkıda bulunabilen klasörü belirleyin. Önce düğüme SSH, sonra `df` tüm bağlar için disk kullanımını listelemek için çalıştırın. Genellikle OSS tarafından kullanılan geçici bir disktir. `/mnt` Bir klasöre girebilir, ardından `sudo du -hs` bir klasörün altında özetlenmiş dosya boyutlarını göstermek için yazabilirsiniz. Benzer bir klasör `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`görürseniz, bu uygulamanın hala çalışıyor olduğu anlamına gelir. Bunun nedeni RDD kalıcılığı veya ara karıştırma dosyaları olabilir.
 
-1. Sorunu azaltmak için, uygulamayı sonlandırın, bu uygulama tarafından kullanılan disk alanını serbest bırakacaktır.
+1. Sorunu azaltmak için, bu uygulama tarafından kullanılan disk alanı serbest bırakacaktır uygulama öldürmek.
 
-1. Sorunu en sonunda çözmek için uygulamanızı iyileştirin.
+1. Sonuçta sorunu gidermek için, uygulamanızı optimize edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği nin nasıl oluşturulabildiğini](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.

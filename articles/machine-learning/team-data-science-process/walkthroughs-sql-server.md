@@ -1,6 +1,6 @@
 ---
-title: SQL Server R, Python ve T-SQL - Team Data Science Process'i ile analiz
-description: Tahmine dayalı analiz yapmak için SQL Server 'de R, Python ve T-SQL kullanımını adım adım gösteren örnekler.
+title: R, Python ve T-SQL ile SQL Server'da Analitik - Takım Veri Bilimi Süreci
+description: Öngörülü analitik yapmak için SQL Server'da R, Python ve T-SQL'i kullanan örnekler.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,41 +12,41 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864103"
 ---
-# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>R, Python ve T-SQL kullanarak veri bilimi talimatları SQL Server
+# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>R, Python ve T-SQL kullanarak SQL Server veri bilimi gözden geçirmeleri
 
-Bu izlenecek yollar, Tahmine dayalı analiz yapmak için SQL Server, SQL Server R Services ve SQL Server Python Hizmetleri kullanın. R ve Python kodu saklı yordamlarda dağıtılır. Bunlar, Team Data Science Process içinde verilen adımları izleyin. Team Data Science Process genel bakış için bkz: [Data Science Process](overview.md). 
+Bu izbonlar, tahmine dayalı analizler yapmak için SQL Server, SQL Server R Services ve SQL Server Python Services'ı kullanır. R ve Python kodu depolanan yordamlarda dağıtılır. Ekip Veri Bilimi Sürecinde belirtilen adımları izlerler. Ekip Veri Bilimi Sürecine genel bir bakış için [bkz.](overview.md) 
 
-Team Data Science Process yürütme ek veri bilimi kılavuzları tarafından gruplanır **platform** kullandıkları. Bkz: [Team Data Science Process yürütme izlenecek yollar](walkthroughs.md) Bu örneklerde bir döküm için.
-
-
-## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Python ve SQL sorguları kullanarak SQL Server ile taksi bahşişlerini tahmin etme 
-
-[Kullanım SQL Server](sql-walkthrough.md) izlenecek yol, makine öğrenimi sınıflandırmasını ve gerileme modellerini nasıl oluşturup dağıtacağınızı gösterir.  Veriler herkese açık bir NYC taksi seyahat ve tarifeli havayolu veri kümesi.
+Ekip Veri Bilimi İşlemi'ni yürüten ek veri bilimi gözden geçirmeleri, kullandıkları **platforma** göre gruplandırılır. Bu örneklerin bir öğeleştirme için [Takım Veri Bilimi İşlemi'ni yürüten Walkthroughs'a](walkthroughs.md) bakın.
 
 
-## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Microsoft R kullanarak SQL Server ile taksi bahşişlerini tahmin etme 
+## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>SQL Server ile Python ve SQL sorgularını kullanarak taksi ipuçlarını tahmin etme 
 
-[Kullanım SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) izlenecek yol, bir R modelinin SQL Server için nasıl oluşturulacağını ve dağıtılacağını gösterir. İzlenecek yol, R Services (veritabanında) için R geliştiriciler tanıtmak için tasarlanmıştır.
-
-
-## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>SQL Server ile R, T-SQL veya saklı yordamları kullanma taksi bahşişlerini tahmin etme
-
-[R ve SQL Server için veri bilimi izlenecek](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) Transact-SQL ile Gelişmiş analiz çözümü geliştirme deneyimi olan SQL programcılar sağlayan R çözümünü kullanıma hazır hale getirmek için SQL Server R Services kullanarak. 
+[SQL Server'ı Kullan](sql-walkthrough.md) izbisi, makine öğrenimi sınıflandırması ve regresyon modellerini nasıl oluşturduğunuzu ve dağıtdığınızı gösterir.  Veriler halka açık bir NYC taksi gezisi ve ücret veri setivardır.
 
 
-## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>Python kullanarak SQL Server saklı yordamları taksi bahşişlerini tahmin etme
+## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>SQL Server ile Microsoft R'yi kullanarak taksi ipuçlarını tahmin etme 
 
-[Kullanım T-SQL ile SQL Server Python Hizmetleri](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) izlenecek yol, bir makine öğrenimi çözümünüzü SQL Server'da geliştirme deneyimi olan SQL programcılar sağlar. Bu saklı yordamlar için Python kod ekleyerek Python uygulamaya eklemenizi gösterilmektedir.
+[SQL Server R Services'ı kullan](https://msdn.microsoft.com/library/mt612857.aspx) izbisi, BIR R modelinin nasıl oluşturup SQL Server'a dağıtılakullanılacağını gösterir. İzleyici, R geliştiricilerini R Hizmetleri 'ne (Veritabanı İçi) tanıtmak için tasarlanmıştır.
+
+
+## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>T-SQL'den R kullanarak veya SQL Server ile depolanan yordamları kullanarak taksi ipuçlarını tahmin etme
+
+[R ve SQL Server için Veri bilimi İzni,](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) SQL programcılarına, Bir R çözümünü operasyonel hale getirmek için SQL Server R Services'ı kullanarak Transact-SQL ile gelişmiş bir analitik çözüm oluşturma deneyimi sağlar. 
+
+
+## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>SQL Server depolanan yordamlarda Python'u kullanarak taksi ipuçlarını tahmin etme
+
+SQL Server Python Services ile [T-SQL Kullanımı,](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) SQL programcılarını SQL Server'da bir makine öğrenme çözümü oluşturma deneyimi sağlar. Depolanan yordamlara Python kodu ekleyerek Python'un bir uygulamaya nasıl dahil edilebildiğini gösterir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Team Data Science Process oluşturan anahtar bileşenleri bir tartışma için bkz [Team Data Science Process genel bakış](overview.md).
+Ekip Veri Bilimi Süreci'ni oluşturan temel bileşenlerin tartışılması [için, Takım Veri Bilimi Süreci'ne genel bakış](overview.md)bölümüne bakın.
 
-Veri bilimi projelerinizi yapısı için kullanabileceğiniz Team Data Science Process yaşam döngüsü için bkz [Team Data Science Process yaşam döngüsü](lifecycle.md). Yaşam döngüsü, başlangıçtan bitişe kadar bunlar yürütüldüğünde projeleri genellikle izlemeniz adımlarını özetler. 
+Veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz Ekip Veri Bilimi Süreci yaşam döngüsünü tartışmak [için, Takım Veri Bilimi Süreci yaşam döngüsüne](lifecycle.md)bakın. Yaşam döngüsü, projelerin genellikle yürütüldüğünde takip ettiği adımları, başından sonuna kadar özetler. 

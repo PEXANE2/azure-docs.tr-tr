@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: mblythe
 ms.openlocfilehash: 9624856841ec7473543575c31928c6eefd1404c1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188112"
 ---
-Power BI Desktop'ta veri olduğuna göre bu verilere dayalı raporlar oluşturabilirsiniz. Gösterir durumuna göre zarar kırpma basit bir rapor ile sütun grafiği oluşturmayı öğreneceksiniz.
+Artık Power BI Desktop'da veriye sahip olduğunuza göre, bu verilere dayalı raporlar oluşturabilirsiniz. Kırpma hasarlarını duruma göre gösteren bir sütun grafiği içeren basit bir rapor oluşturursunuz.
 
 1. Ana Power BI penceresinin sol tarafında rapor görünümünü seçin.
 
@@ -25,12 +25,12 @@ Power BI Desktop'ta veri olduğuna göre bu verilere dayalı raporlar oluşturab
 
     ![Boş grafik](media/data-explorer-power-bi-visualize-basic/blank-chart.png)
 
-1. İçinde **alanları** listesinden **DamageCrops** ve **durumu**.
+1. **FIELDS** listesinde **DamageCrops** ve **State'i**seçin.
 
     ![Alanları seçme](media/data-explorer-power-bi-visualize-basic/select-fields.png)
 
-    Artık tabloda hasar ilk 1000 satırı için kırpar gösteren bir grafik vardır.
+    Şimdi tabloda üst 1000 satır için bitkileri zarar gösteren bir grafik var.
 
-    ![Kırpma zarar durumuna göre](media/data-explorer-power-bi-visualize-basic/damage-column-chart.png)
+    ![Eyalete göre mahsul hasarı](media/data-explorer-power-bi-visualize-basic/damage-column-chart.png)
 
 1. Raporu kaydedin.

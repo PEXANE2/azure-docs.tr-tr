@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde StringToBoolean
-description: Azure Cosmos DB 'de SQL sistem işlevi StringToBoolean hakkında bilgi edinin.
+description: Azure Cosmos DB'de SQL sistem fonksiyonu StringToBoolean hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296550"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
- Boole değerine çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
+ Boolean'a çevrilmiş ifadeyi döndürür. İfade çevrilemiyorsa, tanımsız döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,19 +26,19 @@ StringToBoolean(<str_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr*  
-   , Boole ifadesi olarak ayrıştırılacak bir dize ifadesidir.  
+   Boolean ifadesi olarak ayrıştırılması gereken bir dize ifadesidir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Boole ifadesi veya tanımsız döndürür.  
+  Boolean ifadesini veya tanımsız ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToBoolean` farklı türlerde nasıl davrandığını gösterir. 
+  Aşağıdaki örnek, `StringToBoolean` farklı türlerde nasıl nasıl bir şekilde nasıl hissettiğini gösterir. 
  
- Aşağıda, geçerli girişi olan örnekler verilmiştir.
+ Aşağıda geçerli girişli örnekler verilmiştir.
 
-Boşluğa yalnızca "true"/"false" ile önce veya sonra izin verilir.
+Whitespace'e yalnızca "true"/"false"dan önce veya sonra izin verilir.
 
 ```sql
 SELECT 
@@ -53,9 +53,9 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
-Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
+Aşağıda geçersiz girişli örnekler verilmiştir.
 
- Boole değerleri büyük küçük harfe duyarlıdır ve "true" ve "false" gibi tüm küçük karakterlerle yazılması gerekir.
+ Booleans büyük/küçük harf duyarlı ve tüm küçük karakterler yani "doğru" ve "yanlış" ile yazılmalıdır.
 
 ```sql
 SELECT 
@@ -69,7 +69,7 @@ Sonuç kümesini burada bulabilirsiniz.
 [{}]
 ``` 
 
-Geçirilen ifade Boole ifadesi olarak ayrıştırılacak; Bu girişler Boolean türü olarak değerlendirilmez ve tanımsız döndürür.
+Geçirilen ifade boolean ifadesi olarak ayrıştırılacaktır; bu girdiler Boolean yazımı değerlendirmez ve böylece tanımsız döner.
 
 ```sql
 SELECT 
@@ -88,10 +88,10 @@ Sonuç kümesini burada bulabilirsiniz.
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

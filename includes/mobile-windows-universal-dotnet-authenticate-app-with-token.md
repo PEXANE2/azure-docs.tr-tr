@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: d71d52257b6e8cfa243207c9bfdb5c7de7d3dd37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67189052"
 ---
-1. MainPage.xaml.cs proje dosyasında, aşağıdaki ekleyin **kullanarak** ifadeleri:
+1. MainPage.xaml.cs proje dosyasına aşağıdaki **ifadeleri** ekleyin:
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Değiştirin **AuthenticateAsync** yöntemini aşağıdaki kod ile:
+2. **AuthenticateAsync** yöntemini aşağıdaki kodla değiştirin:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -84,13 +84,13 @@ ms.locfileid: "67189052"
             return success;
         }
    
-    Bu sürümünde **AuthenticateAsync**, depolanan kimlik bilgilerini kullanmak uygulamayı çalışır **PasswordVault** hizmete erişmek için. Depolanan bir kimlik bilgisi olduğunda bir normal oturum açma da gerçekleştirilir.
+    **AuthenticateAsync'in**bu sürümünde, uygulama hizmete erişmek için **PasswordVault'ta** depolanan kimlik bilgilerini kullanmaya çalışır. Depolanmış kimlik bilgisi olmadığında düzenli oturum açma da gerçekleştirilir.
    
    > [!NOTE]
-   > Önbelleğe alınan belirteç süresi dolmuş olabilir ve uygulama kullanımda olduğunda belirteci süre sonu kimlik doğrulamasından sonra da meydana gelebilir. Belirtecin süresi olmadığını belirlemek öğrenmek için bkz. [denetlemek için süresi dolan kimlik doğrulama belirteci](https://aka.ms/jww5vp). Süresi dolan belirteçleri ile ilgili yetkilendirme hataları işleme için bir çözüm için gönderiye bakın [önbelleğe alma ve Azure Mobile Services belirteçlerin süresinin işleme yönetilen SDK](https://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > Önbelleğe alınmış bir belirteç süresi dolmuş olabilir ve uygulama kullanımdayken kimlik doğrulamadan sonra belirteç süresi de oluşabilir. Bir belirteç süresinin dolup dolmadığını belirlemek [için, süresi dolmuş kimlik doğrulama belirteçleri için](https://aka.ms/jww5vp)denetle'ye bakın. Süresi dolan belirteçlerle ilgili yetkilendirme hatalarını işlemeye yönelik bir çözüm için, [SDK yönetilen Azure Mobil Hizmetleri'nde önbelleğe alma ve işleme süresi dolan belirteçlere](https://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)bakın. 
    > 
    > 
 3. Uygulamayı iki kez yeniden başlatın.
    
-    İlk başlatma oturum açma sağlayıcısı ile yeniden gerekli olduğuna dikkat edin. Ancak, önbelleğe alınan kimlik bilgileri ikinci bir yeniden başlatma sırasında kullanılır ve oturum açma atlanır. 
+    İlk başlatmada sağlayıcıyla yeniden oturum açmanın gerekli olduğuna dikkat edin. Ancak, ikinci yeniden başlatılır kimlik bilgileri kullanılır ve oturum açma atlanır. 
 

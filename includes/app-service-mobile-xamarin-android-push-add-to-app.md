@@ -5,14 +5,14 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188878"
 ---
-1. Projenin adı verilen yeni bir sınıf oluşturun `ToDoBroadcastReceiver`.
-2. Aşağıdaki using deyimlerini **ToDoBroadcastReceiver** sınıfı:
+1. Projede yeni bir sınıf `ToDoBroadcastReceiver`oluşturun.
+2. **ToDoBroadcastReceiver** sınıfına aşağıdaki ifadeleri ekleyin:
 
     ```csharp
     using Gcm.Client;
@@ -20,7 +20,7 @@ ms.locfileid: "67188878"
     using Newtonsoft.Json.Linq;
     ```
 
-3. Arasına aşağıdaki izin isteklerini ekleyin **kullanarak** deyimleri ve **ad alanı** bildirimi:
+3. **Using** deyimleri ve **ad alanı** bildirimi arasında aşağıdaki izin isteklerini ekleyin:
 
     ```csharp
     [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -32,7 +32,7 @@ ms.locfileid: "67188878"
     [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
     ```
 
-4. Varolan **ToDoBroadcastReceiver** sınıf tanımını aşağıdakiyle:
+4. Varolan **ToDoBroadcastReceiver** sınıf tanımını aşağıdakilerle değiştirin:
 
     ```csharp
     [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
@@ -49,9 +49,9 @@ ms.locfileid: "67188878"
     }
     ```
 
-    Yukarıdaki kodda değiştirmeniz gerekir *`<PROJECT_NUMBER>`* Google developer Portal'daki uygulamanıza sağladığında, Google tarafından atanan proje numarası. 
+    Yukarıdaki kodda, uygulamanızı *`<PROJECT_NUMBER>`* Google geliştirici portalında sizlerle birlikte verirken Google tarafından atanan proje numarasını değiştirmeniz gerekir. 
 
-5. ToDoBroadcastReceiver.cs proje dosyasında tanımlayan aşağıdaki kodu ekleyin **PushHandlerService** sınıfı:
+5. proje ToDoBroadcastReceiver.cs, **PushHandlerService** sınıfını tanımlayan aşağıdaki kodu ekleyin:
 
     ```csharp
     // The ServiceAttribute must be applied to the class.
@@ -63,12 +63,12 @@ ms.locfileid: "67188878"
     }
     ```
 
-    Bu sınıfın türetildiği Not **GcmServiceBase** ve **hizmet** özniteliği bu sınıfa uygulanması gerekir.
+    Bu sınıfın **GcmServiceBase'den** türediğini ve **Hizmet** özniteliğinin bu sınıfa uygulanması gerektiğini unutmayın.
 
     > [!NOTE]
-    > **GcmServiceBase** sınıfının Implements **OnRegistered()** , **OnUnRegistered()** , **OnMessage()** ve  **OnError()** yöntemleri. Bu yöntemleri geçersiz kılmanız gerekir **PushHandlerService** sınıfı.
+    > **GcmServiceBase** sınıfı **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** ve **OnError()** yöntemlerini uygular. **PushHandlerService** sınıfında bu yöntemleri geçersiz kılmanız gerekir.
 
-6. Aşağıdaki kodu ekleyin **PushHandlerService** kılan sınıf **OnRegistered** olay işleyicisi.
+6. **Kayıtlı** olay işleyicisini geçersiz kılan **PushHandlerService** sınıfına aşağıdaki kodu ekleyin.
 
     ```csharp
     protected override void OnRegistered(Context context, string registrationId)
@@ -109,9 +109,9 @@ ms.locfileid: "67188878"
     }
     ```
 
-    Bu yöntem için anında iletme bildirimleri ile Azure kaydetmek için döndürülen GCM kayıt Kimliğini kullanır. Oluşturulduktan sonra etiketleri yalnızca kayıt için eklenebilir. Daha fazla bilgi için [nasıl yapılır: Anında iletme etiketleri etkinleştirmek için cihaz yüklemesi için etiketler ekleme](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+    Bu yöntem, anında iletme bildirimleri için Azure'a kaydolmak için döndürülen GCM kayıt kimliğini kullanır. Etiketler yalnızca oluşturulduktan sonra kayda eklenebilir. Daha fazla bilgi için [bkz: Etiketlere basmayı etkinleştirmek için aygıt yüklemesine etiket ekleme.](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)
 
-7. Geçersiz kılma **Onmessageoptions** yönteminde **PushHandlerService** aşağıdaki kod ile:
+7. **PushHandlerService'deki** **OnMessage** yöntemini aşağıdaki kodla geçersiz kılın:
 
     ```csharp
     protected override void OnMessage(Context context, Intent intent)
@@ -149,7 +149,7 @@ ms.locfileid: "67188878"
     }
     ```
 
-8. Geçersiz kılma **OnUnRegistered()** ve **OnError()** aşağıdaki kodla yöntemleri.
+8. **OnUnRegistered()** ve **OnError()** yöntemlerini aşağıdaki kodla geçersiz kılın.
 
     ```csharp
     protected override void OnUnRegistered(Context context, string registrationId)

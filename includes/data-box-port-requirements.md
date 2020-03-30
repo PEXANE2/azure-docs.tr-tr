@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: 4a3925752d1af5e43d5984b06c0a68aa9faa214b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67839756"
 ---
-| Bağlantı noktası yok.| Daraltma veya genişletme | Bağlantı noktası kapsamı| Gerekli| Notlar |   |
+| Liman no.| Veya dışarıda | Bağlantı noktası kapsamı| Gerekli| Notlar |   |
 |--------|-----|-----|-----------|----------|-----------|
-| TCP 80 (HTTP)|İçinde|LAN|Evet|Bu bağlantı noktası, HTTP üzerinden REST API'ler veri kutusu Blog depolama alanına bağlanmak için kullanılır. REST API'lere bağlanma değil, yerel web kullanıcı Arabirimine otomatik olarak tekrar 8443 yönlendirir. |
-| TCP 443 (HTTPS)|İçinde|LAN|Evet|Bu bağlantı noktasını, HTTPS üzerinden REST API'ler veri kutusu Blog depolama alanına bağlanmak için kullanılır. REST API'lere bağlanma değil, yerel web kullanıcı Arabirimine otomatik olarak tekrar 8443 yönlendirir. |
-| TCP 8443 (HTTPS-Alt)|İçinde|LAN|Evet|Bu, HTTPS için alternatif bir bağlantı noktası ve cihaz yönetimi için yerel web kullanıcı Arabirimi bağlanırken kullanılır. |
-| TCP 445 (SMB)|Giden/içinde|LAN|Bazı durumlarda<br>Notlara bakın|SMB bağlanıyorsanız Bu bağlantı noktası gereklidir. |
-| TCP 2049 (NFS)|Giden/içinde|LAN|Bazı durumlarda<br>Notlara bakın|NFS bağlanıyorsanız Bu bağlantı noktası gereklidir. |
-| TCP 111 (NFS)|Giden/içinde|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası rpcbind/bağlantı noktası eşleme için kullanılan ve NFS bağlanıyorsanız, yalnızca gerekli.  |
+| TCP 80 (HTTP)|İçindeki|LAN|Evet|Bu bağlantı noktası HTTP üzerinden Veri Kutusu Blog depolama REST API'lerine bağlanmak için kullanılır. REST API'lerine bağlanmıyorsanız, bu otomatik olarak 8443 üzerinden yerel web UI'ye yönlendirir. |
+| TCP 443 (HTTPS)|İçindeki|LAN|Evet|Bu bağlantı noktası, HTTPS üzerinden Data Box Blog depolama REST API'lerine bağlanmak için kullanılır. REST API'lerine bağlanmıyorsanız, bu otomatik olarak 8443 üzerinden yerel web UI'ye yönlendirir. |
+| TCP 8443 (HTTPS-Alt)|İçindeki|LAN|Evet|Bu, HTTPS için alternatif bir bağlantı noktasıdır ve aygıt yönetimi için yerel web Web Web'e bağlanırken kullanılır. |
+| TCP 445 (Kobİ)|Çıkış/İç|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası yalnızca SMB üzerinden bağlantı kuruyorsanız gereklidir. |
+| TCP 2049 (NFS)|Çıkış/İç|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası yalnızca NFS üzerinden bağlantı kuruyorsanız gereklidir. |
+| TCP 111 (NFS)|Çıkış/İç|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası rpcbind/port eşleme için kullanılır ve yalnızca NFS üzerinden bağlantı kuruyorsanız gereklidir.  |

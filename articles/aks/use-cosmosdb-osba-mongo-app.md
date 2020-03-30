@@ -1,52 +1,52 @@
 ---
-title: Mevcut MongoDB uygulamasını MongoDB için Azure Cosmos DB API ile tümleştirme ve Azure için Hizmet Aracısı açma (OSBA)
-description: Bu makalede, var olan bir Java ve MongoDB uygulamasını Azure için açık Hizmet Aracısı (OSBA) kullanarak MongoDB için Azure Cosmos DB API 'siyle nasıl tümleştirileceğini öğreneceksiniz.
+title: Varolan MongoDB uygulamasını MongoDB için Azure Cosmos DB API ve Azure için Açık Servis Aracısı (OSBA) ile tümleştirin
+description: Bu makalede, varolan bir Java ve MongoDB uygulamasını Azure için Açık Servis Aracısı (OSBA) kullanarak MongoDB için Azure Cosmos DB API ile nasıl entegre acağınızı öğreneceksiniz.
 author: zr-msft
 ms.service: azure-dev-spaces
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
-keywords: Cosmos DB, Hizmet Aracısı açın, Azure için Hizmet Aracısı açın
+keywords: Cosmos DB, Açık Servis Aracısı, Azure için Açık Servis Brokerı
 ms.openlocfilehash: ddaa3b9aa198bc142e1bcbcab6b7b1e028eff2aa
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78247929"
 ---
-# <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Mevcut MongoDB uygulamasını MongoDB için Azure Cosmos DB API ile tümleştirme ve Azure için Hizmet Aracısı açma (OSBA)
+# <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Varolan MongoDB uygulamasını MongoDB için Azure Cosmos DB API ve Azure için Açık Servis Aracısı (OSBA) ile tümleştirin
 
-Azure Cosmos DB global olarak dağıtılmış, çok modelli bir veritabanıdır. Ayrıca MongoDB gibi çeşitli NoSQL API 'lerle kablo protokol uyumluluğu sağlar. MongoDB için Cosmos DB API 'SI, uygulamanızın veritabanı sürücülerini veya uygulamasını değiştirmek zorunda kalmadan mevcut MongoDB uygulamanızla Cosmos DB kullanmanıza olanak sağlar. Ayrıca, Azure için açık Hizmet Aracısı kullanarak bir Cosmos DB hizmeti sağlayabilirsiniz.
+Azure Cosmos DB global olarak dağıtılmış, çok modelli bir veritabanıdır. Ayrıca MongoDB için de dahil olmak üzere birçok NoSQL API'si ile tel protokolü uyumluluğu sağlar. MongoDB için Cosmos DB API, uygulamanızın veritabanı sürücülerini veya uygulamasını değiştirmek zorunda kalmadan cosmos DB'yi mevcut MongoDB uygulamanızla birlikte kullanmanıza olanak tanır. Azure için Açık Servis Aracısı'nı kullanarak bir Cosmos DB hizmeti de sağlayabilirsiniz.
 
-Bu makalede, bir MongoDB veritabanı kullanan ve Azure için açık Hizmet Aracısı kullanarak bir Cosmos DB veritabanı kullanmak üzere güncelleştiren mevcut bir Java uygulaması alırsınız.
+Bu makalede, MongoDB veritabanı kullanan varolan bir Java uygulamasını alır ve Azure için Open Service Broker'ı kullanarak cosmos DB veritabanını kullanmak üzere güncelleştirmiş siniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Devam edebilmeniz için önce şunları yapmanız gerekir:
+Devam etmeden önce şunları yapmalısın:
     
-* Oluşturulmuş bir [Azure Kubernetes hizmeti kümesi](kubernetes-walkthrough.md) vardır.
-* [Azure Için açık hizmet Aracısı, AKS kümenizde yüklenmiş ve yapılandırılmış](integrate-azure.md)olmalıdır. 
-* [Hizmet kataloğu CLI](https://svc-cat.io/docs/install/) 'nın yüklü ve `svcat` komutlarını çalıştıracak şekilde yapılandırılmış olması gerekir.
-* Mevcut bir [MongoDB](https://www.mongodb.com/) veritabanına sahip. Örneğin, MongoDB 'yi [geliştirme makinenizde](https://docs.mongodb.com/manual/administration/install-community/) veya BIR [Azure VM](../virtual-machines/linux/install-mongodb.md)'de çalıştırıyor olabilirsiniz.
-* [Mongo kabuğu](https://docs.mongodb.com/manual/mongo/)gibi MongoDB veritabanına bağlanma ve sorgulama yapmanın bir yoludur.
+* Azure [Kubernetes Hizmet kümesi](kubernetes-walkthrough.md) oluşturuldu.
+* [Azure için Açık Servis Aracısı'nı AKS kümenizde yüklü ve yapılandırMış](integrate-azure.md)olun. 
+* Hizmet [Kataloğu CLI'yi](https://svc-cat.io/docs/install/) komutları çalıştırmak `svcat` için yüklü ve yapılandırın.
+* Varolan bir [MongoDB veritabanına](https://www.mongodb.com/) sahip olun. Örneğin, MongoDB'nin [geliştirme makinenizde](https://docs.mongodb.com/manual/administration/install-community/) veya bir [Azure VM'de](../virtual-machines/linux/install-mongodb.md)çalışmasını sağlayabilirsiniz.
+* [Mongo kabuk](https://docs.mongodb.com/manual/mongo/)gibi MongoDB veritabanına bağlanma nın ve sorgulamanın bir yolu vardır.
 
 ## <a name="get-application-code"></a>Uygulama kodunu alma
     
-Bu makalede, MongoDB veritabanı kullanan bir uygulamayı göstermek için [Cloud Foundry 'daki Spring Music örnek uygulamasını](https://github.com/cloudfoundry-samples/spring-music) kullanacaksınız.
+Bu makalede, MongoDB veritabanı kullanan bir uygulamayı göstermek için [Cloud Foundry'nin yay](https://github.com/cloudfoundry-samples/spring-music) müziği örnek uygulamasını kullanıyorsunuz.
     
-Uygulamayı GitHub 'dan kopyalayıp dizinine gidin:
+Uygulamayı GitHub'dan klonla ve dizinine gidin:
     
 ```cmd
 git clone https://github.com/cloudfoundry-samples/spring-music
 cd spring-music
 ```
 
-## <a name="prepare-the-application-to-use-your-mongodb-database"></a>MongoDB veritabanınızı kullanmak için uygulamayı hazırlama
+## <a name="prepare-the-application-to-use-your-mongodb-database"></a>Uygulamayı MongoDB veritabanınızı kullanmak üzere hazırlayın
 
-Spring Music örnek uygulaması, veri kaynakları için birçok seçenek sunar. Bu makalede, mevcut bir MongoDB veritabanını kullanacak şekilde yapılandırın. 
+Yay müziği örnek uygulaması veri kaynakları için birçok seçenek sağlar. Bu makalede, varolan bir MongoDB veritabanını kullanacak şekilde yapılandırırsınız. 
 
-*Src/Main/Resources/Application. yıml*sonuna aşağıdaki YAML 'yi ekleyin. Bu ek olarak, *MongoDB* adlı bir profil oluşturulur ve bir URI ve veritabanı adı yapılandırılır. URI değerini mevcut MongoDB veritabanınıza bağlantı bilgileriyle değiştirin. Bir Kullanıcı adı ve parola içeren URI 'nin eklenmesi **yalnızca geliştirme amaçlıdır** ve **sürüm denetimine hiçbir şekilde eklenmemelidir**.
+*src/main/resources/application.yml*sonuna aşağıdaki YAML'yi ekleyin. Bu ek, *mongodb* adlı bir profil oluşturur ve bir URI ve veritabanı adını yapılandırır. URI'yi mevcut MongoDB veritabanınıza bağlantı bilgileriyle değiştirin. Kullanıcı adı ve parola içeren URI'nin doğrudan bu dosyaya eklenmesi **yalnızca geliştirme kullanımı** içindir ve sürüm **denetimine hiçbir zaman eklenmemelidir.**
 
 ```yaml
 ---
@@ -60,9 +60,9 @@ spring:
 
 
 
-Uygulamanızı başlatıp *MongoDB* profilini kullanmayı söylemeniz durumunda, MongoDB veritabanınıza bağlanır ve uygulamanın verilerini depolamak için onu kullanın.
+Uygulamanızı başlattığınızda ve *mongodb* profilini kullanmasını söylediğinde, mongoDB veritabanınıza bağlanır ve uygulamanın verilerini depolamak için kullanır.
 
-Uygulamanızı derlemek için:
+Uygulamanızı oluşturmak için:
 
 ```cmd
 ./gradlew clean assemble
@@ -73,19 +73,19 @@ BUILD SUCCESSFUL in 10s
 4 actionable tasks: 4 executed
 ```
 
-Uygulamanızı başlatın ve *MongoDB* profilini kullanmayı söyleyin:
+Başvurunuzu başlatın ve *mongodb* profilini kullanmasını söyleyin:
 
 ```cmd
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Tarayıcınızda `http://localhost:8080` gidin.
+`http://localhost:8080` Tarayıcınızda gidin.
 
-![Varsayılan verilerle Spring Music uygulaması](media/music-app.png)
+![Varsayılan veri içeren Bahar Müzik uygulaması](media/music-app.png)
 
-Uygulamanın bazı [varsayılan verilerle](https://github.com/cloudfoundry-samples/spring-music/blob/master/src/main/resources/albums.json)doldurulduğuna dikkat edin. Var olan birkaç albümü silerek ve birkaç yeni tane oluşturarak etkileşime geçin.
+Uygulamanın bazı [varsayılan verilerle](https://github.com/cloudfoundry-samples/spring-music/blob/master/src/main/resources/albums.json)dolduruladığına dikkat edin. Birkaç varolan albümleri silerek ve birkaç yeni albüm oluşturarak onunla etkileşimkurun.
 
-Uygulamanızın MongoDB veritabanınızı kullanarak bu ağa bağlanarak ve *musicdb* veritabanını sorgulayarak bu veritabanını kullandığını doğrulayabilirsiniz:
+Uygulamanızın MongoDB veritabanınızı kullandığını doğrulayarak ona bağlanabilirsiniz ve *musicdb* veritabanını sorgulayabilirsiniz:
 
 ```cmd
 mongo serverAddress:port/musicdb -u user -p password
@@ -98,12 +98,12 @@ db.album.find()
 ...
 ```
 
-Önceki örnekte [Mongo kabuğu](https://docs.mongodb.com/manual/mongo/) , MongoDB veritabanına bağlanmak ve veritabanını sorgulamak için kullanılır. Ayrıca, uygulamanızı durdurup yeniden başlatarak ve tarayıcınıza geri giderek değişikliklerinizin kalıcı olduğunu doğrulayabilirsiniz. Yaptığınız değişikliklerin hala orada olduğuna dikkat edin.
+Önceki örnek, MongoDB veritabanına bağlanmak ve sorgulamak için [mongo kabuğunu](https://docs.mongodb.com/manual/mongo/) kullanır. Ayrıca, uygulamanızı durdurarak, yeniden başlatarak ve tarayıcınızda geri gezinerek değişikliklerinizin devam ettiğini de doğrulayabilirsiniz. Yaptığınız değişikliklerin hala orada olduğuna dikkat edin.
 
 
 ## <a name="create-a-cosmos-db-database"></a>Cosmos DB veritabanı oluşturma
 
-Azure 'da açık Hizmet Aracısı kullanarak bir Cosmos DB veritabanı oluşturmak için `svcat provision` komutunu kullanın:
+Açık Servis Aracısını kullanarak Azure'da bir Cosmos `svcat provision` DB veritabanı oluşturmak için aşağıdaki komutu kullanın:
 
 ```cmd
 svcat provision musicdb --class azure-cosmosdb-mongo-account --plan account  --params-json '{
@@ -115,9 +115,9 @@ svcat provision musicdb --class azure-cosmosdb-mongo-account --plan account  --p
 }'
 ```
 
-Yukarıdaki komut, *eastus* bölgesindeki *myresourcegroup* kaynak grubunda Azure 'da bir Cosmos DB veritabanı sağlar. *ResourceGroup*, *Location*ve DIĞER Azure 'a özgü JSON parametreleri hakkında daha fazla bilgi [Cosmos DB modülü başvuru belgelerinde](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/cosmosdb.md#provision-3)bulunabilir.
+Önceki komut, *Eastus* bölgesindeki *MyResourceGroup* kaynak grubunda Azure'da bir Cosmos DB veritabanını hükümler. *ResourceGroup,* *konum*ve diğer Azure'a özgü JSON parametreleri hakkında daha fazla bilgiyi [Cosmos DB modülü başvuru belgelerinde](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/cosmosdb.md#provision-3)edinilebilir.
 
-Veritabanınızın sağlamayı tamamladığınızı doğrulamak için `svcat get instance` komutunu kullanın:
+Veritabanınızın sağlanmasını tamamladığını doğrulamak `svcat get instance` için aşağıdaki komutu kullanın:
 
 ```cmd
 $ svcat get instance musicdb
@@ -127,9 +127,9 @@ $ svcat get instance musicdb
   musicdb   default     azure-cosmosdb-mongo-account   account   Ready
 ```
 
-*Durum durumu*' nun altında, *Veritabanınız hazırlanıyor.*
+STATUS *altında* *Hazır'a* bakınca veritabanınız hazırdır.
 
-Veritabanınızın sağlamayı tamamladıktan sonra, meta verilerini bir [Kubernetes gizli](https://kubernetes.io/docs/concepts/configuration/secret/)öğesine bağlamanız gerekir. Daha sonra diğer uygulamalar, bir gizli anahtar eklendikten sonra bu verilere erişebilir. Veritabanınızın meta verilerini gizli bir parolaya bağlamak için `svcat bind` komutunu kullanın:
+Veritabanınız sağlama yı tamamladıktan sonra, meta verilerini bir [Kubernetes sırrına](https://kubernetes.io/docs/concepts/configuration/secret/)bağlamanız gerekir. Diğer uygulamalar daha sonra bir gizli bağlı sonra bu verilere erişebilirsiniz. Veritabanınızın meta verilerini bir gizliye bağlamak için `svcat bind` aşağıdaki komutu kullanın:
 
 ```cmd
 $ svcat bind musicdb
@@ -145,9 +145,9 @@ Parameters:
 ```
 
 
-## <a name="use-the-cosmos-db-database-with-your-application"></a>Cosmos DB veritabanını uygulamanızla birlikte kullanma
+## <a name="use-the-cosmos-db-database-with-your-application"></a>Uygulamanızla Cosmos DB veritabanını kullanın
 
-Cosmos DB veritabanını uygulamanızla birlikte kullanmak için, bağlanılacak URI 'yi bilmeniz gerekir. Bu bilgileri almak için `kubectl get secret` komutunu kullanın:
+Uygulamanızla birlikte Cosmos DB veritabanını kullanmak için, uygulamaya bağlanmak için URI bilmeniz gerekir. Bu bilgileri almak için `kubectl get secret` aşağıdaki komutu kullanın:
 
 ```cmd
 $ kubectl get secret musicdb -o=jsonpath='{.data.uri}' | base64 --decode
@@ -155,9 +155,9 @@ $ kubectl get secret musicdb -o=jsonpath='{.data.uri}' | base64 --decode
 mongodb://12345678-90ab-cdef-1234-567890abcdef:aaaabbbbccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvv@098765432-aaaa-bbbb-cccc-1234567890ab.documents.azure.com:10255/?ssl=true&replicaSet=globaldb
 ```
 
-Yukarıdaki komut, *musicdb* gizliliğini alır ve yalnızca URI 'yi görüntüler. Parolalar Base64 biçiminde depolanır, bu nedenle yukarıdaki komut de bunun kodunu çözer.
+Önceki komut *musicdb* gizli alır ve sadece URI görüntüler. Sırlar base64 formatında depolanır, böylece önceki komut da şifreyi çözer.
 
-Cosmos DB veritabanının URI 'sini kullanarak, bunu kullanmak için *src/Main/Resources/Application. yml* 'yi güncelleştirin:
+Cosmos DB veritabanının URI'sini kullanarak *src/main/resources/application.yml'yi* kullanarak güncelleyin:
 
 ```yaml
 ...
@@ -170,9 +170,9 @@ spring:
       database: musicdb
 ```
 
-Bir Kullanıcı adı ve parola içeren URI 'yi güncelleştirme **yalnızca geliştirme amaçlıdır** ve **sürüm denetimine hiçbir şekilde eklenmemelidir**.
+Kullanıcı adı ve parola içeren URI'nin güncellenmesi, yalnızca **geliştirme kullanımı** içindir ve sürüm **denetimine hiçbir zaman eklenmemelidir.**
 
-Cosmos DB veritabanını kullanmaya başlamak için uygulamanızı yeniden derleyin ve başlatın:
+Cosmos DB veritabanını kullanmaya başlamak için uygulamanızı yeniden oluşturve başlatın:
 
 ```cmd
 ./gradlew clean assemble
@@ -180,29 +180,29 @@ Cosmos DB veritabanını kullanmaya başlamak için uygulamanızı yeniden derle
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Uygulamanız hala *MongoDB* profilini ve Cosmos db veritabanına bağlanmak için *MongoDB://* ile başlayan bir URI 'yi kullandığından emin olun. [MongoDB için Azure Cosmos DB API 'si](../cosmos-db/mongodb-introduction.md) bu uyumluluğu sağlar. Uygulamanızın MongoDB veritabanı kullanıyor gibi çalışmaya devam etmesine izin verir, ancak gerçekten Cosmos DB kullanıyor.
+Uygulamanızın hala *mongodb* profilini ve Cosmos DB veritabanına bağlanmak için *mongodb://* ile başlayan bir URI kullandığına dikkat edin. [MongoDB için Azure Cosmos DB API](../cosmos-db/mongodb-introduction.md) bu uyumluluğu sağlar. Uygulamanızın mongoDB veritabanı kullanıyormuş gibi çalışmaya devam etmesini sağlar, ancak aslında Cosmos DB kullanıyor.
 
-Tarayıcınızda `http://localhost:8080` gidin. Varsayılan verilerin geri yüklendiğini unutmayın. Var olan birkaç albümü silerek ve birkaç yeni tane oluşturarak etkileşime geçin. Uygulamanızı durdurup yeniden başlatarak ve tarayıcınıza geri giderek değişikliklerinizin kalıcı olduğunu doğrulayabilirsiniz. Yaptığınız değişikliklerin hala orada olduğuna dikkat edin. Değişiklikler, Azure için açık Hizmet Aracısı kullanarak oluşturduğunuz Cosmos DB kalıcı hale getirilir.
+`http://localhost:8080` Tarayıcınızda gidin. Varsayılan verilerin geri yüklendiğini fark edin. Birkaç varolan albümleri silerek ve birkaç yeni albüm oluşturarak onunla etkileşimkurun. Uygulamanızı durdurarak, yeniden başlatarak ve tarayıcınızda geri gezinerek değişikliklerinizin devam ettiğini doğrulayabilirsiniz. Yaptığınız değişikliklerin hala orada olduğuna dikkat edin. Değişiklikler, Azure için Açık Servis Aracısı kullanarak oluşturduğunuz Cosmos DB'de kalıcıdır.
 
 
-## <a name="run-your-application-on-your-aks-cluster"></a>Uygulamanızı AKS kümenizde çalıştırma
+## <a name="run-your-application-on-your-aks-cluster"></a>Uygulamanızı AKS kümenizde çalıştırın
 
-Uygulamayı AKS kümenize dağıtmak için [Azure dev Spaces](../dev-spaces/azure-dev-spaces.md) kullanabilirsiniz. Azure Dev Spaces, Dockerfiles ve HELI grafikleri gibi yapıtlar oluşturmanıza ve bir uygulamayı AKS 'de dağıtmanıza ve çalıştırmaya yardımcı olur.
+Uygulamayı AKS kümenize dağıtmak için [Azure Dev Spaces'i](../dev-spaces/azure-dev-spaces.md) kullanabilirsiniz. Azure Geliştirme Alanları, Dockerfiles ve Helm grafikleri gibi yapılar oluşturmanıza ve AKS'de bir uygulamayı dağıtmanıza ve çalıştırmanıza yardımcı olur.
 
-AKS kümenizdeki Azure Dev Spaces etkinleştirmek için:
+AKS kümenizde Azure Dev Alanları'nı etkinleştirmek için:
 
 ```azurecli
 az aks enable-addons --addons http_application_routing -g MyResourceGroup -n MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
 
-Uygulamanızı AKS 'de çalışacak şekilde hazırlamak için Azure Dev Spaces araçları 'nı kullanın:
+Uygulamanızı AKS'de çalışacak şekilde hazırlamak için Azure Geliştirme Alanları aracını kullanın:
 
 ```cmd
 azds prep --public
 ```
 
-Bu komut, projenin kökünde helk grafiğiniz olan bir *grafik/* klasör dahil olmak üzere çeşitli yapıtlar oluşturur. Bu komut, bu belirli proje için bir *Dockerfile* oluşturamaz, bu nedenle oluşturmanız gerekir.
+Bu komut, projenin kökünde Miğfer grafiğiniz olan bir *grafik/klasör* de dahil olmak üzere çeşitli yapılar oluşturur. Bu komut, bu belirli proje için bir *Dockerfile* oluşturamaz, bu nedenle onu oluşturmanız gerekir.
 
 Bu içerikle *Dockerfile* adlı projenizin kökünde bir dosya oluşturun:
 
@@ -214,7 +214,7 @@ COPY build/libs/spring-music-1.0.jar .
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=mongodb","-jar","/app/spring-music-1.0.jar"]
 ```
 
-Ayrıca, *azds. YAML* 'de *Configurations. Build* özelliğini *false*olarak güncelleştirmeniz gerekir:
+Buna ek olarak, yapılandırmaları güncellemeniz *gerekir.develop.build* özellik *in azds.yaml* *yanlış*:
 ```yaml
 ...
 configurations:
@@ -223,7 +223,7 @@ configurations:
       useGitIgnore: false
 ```
 
-Ayrıca, *Spring-Music/Templates/Deployment. YAML*Içindeki *containerport* özniteliğini de *8080* olarak güncelleştirmeniz gerekir:
+Ayrıca *charts / bahar-müzik / şablonlar / deployment.yaml* *8080* *containerPort* özniteliği güncellemeniz gerekir:
 
 ```yaml
 ...
@@ -242,7 +242,7 @@ spec:
               protocol: TCP
 ```
 
-Uygulamanızı AKS 'e dağıtmak için:
+Uygulamanızı AKS'ye dağıtmak için:
 
 ```cmd
 $ azds up
@@ -265,15 +265,15 @@ press Ctrl+C to detach
 ...
 ```
 
-Günlüklerde görüntülenecek URL 'ye gidin. Yukarıdaki örnekte *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* kullanırsınız. 
+Günlüklerde görüntülenen URL'ye gidin. Önceki örnekte, *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/*'. 
 
-Değişiklikleri yaptığınız değişikliklerle birlikte, uygulamayı gördiğinizi doğrulayın.
+Değişikliklerinizle birlikte uygulamayı gördüğünüzden doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, MongoDB için Cosmos DB API 'sini kullanarak mevcut bir uygulamayı MongoDB kullanarak güncelleştirme yöntemi açıklanmaktadır. Bu makalede ayrıca, Azure için açık Hizmet Aracısı kullanarak Cosmos DB bir hizmetin nasıl sağlanacağı ve bu uygulamanın Azure Dev Spaces ile AKS 'e dağıtılmasının ele alınmaktadır.
+Bu makalede, MongoDB'yi kullanmaktan MongoDB için Cosmos DB API'nin kullanılmasına kadar varolan bir uygulamanın nasıl güncelleştirileni açıklanmıştır. Bu makalede ayrıca, Azure için Açık Servis Aracısı'nı kullanarak bir Cosmos DB hizmetinin nasıl sağlandığı ve bu uygulamanın Azure Dev Spaces ile AKS'ye nasıl dağıtılacağı da ele alınmıştır.
 
-Cosmos DB hakkında daha fazla bilgi için Azure Hizmet Aracısı açın ve Azure Dev Spaces, bkz:
+Cosmos DB, Azure için Açık Servis Aracısı ve Azure Dev Alanları hakkında daha fazla bilgi için bkz:
 * [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)
-* [Azure için Hizmet Aracısı açın](https://osba.sh)
-* [Geliştirme alanları ile geliştirme](../dev-spaces/azure-dev-spaces.md)
+* [Azure için Açık Hizmet Aracısı](https://osba.sh)
+* [Dev Spaces ile geliştirme](../dev-spaces/azure-dev-spaces.md)

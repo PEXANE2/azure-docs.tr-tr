@@ -1,6 +1,6 @@
 ---
-title: Team Data Science Process proje planlama
-description: Yardımcı olan Microsoft Project ve Excel'in şablonları, planlama ve veri bilimi projeleri yönetin.
+title: Ekip Veri Bilimi Süreci proje planlaması
+description: Veri bilimi projelerini planlamanıza ve yönetmenize yardımcı olan Microsoft Project ve Excel şablonları.
 author: marktab
 manager: marktab
 editor: marktab
@@ -12,53 +12,53 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864239"
 ---
-# <a name="team-data-science-process-project-planning"></a>Team Data Science Process proje planlama
+# <a name="team-data-science-process-project-planning"></a>Ekip Veri Bilimi Süreci proje planlaması
 
-Team Data Science işlem (TDSP), veri bilimi proje geliştirme yapısı için bir yaşam döngüsü sağlar. Bu makale yardımcı olan Microsoft Project ve Excel'in şablonlarının bağlantılarını planlamak ve bu proje aşamalarını yönetmek sağlar.
+Ekip Veri Bilimi Süreci (TDSP), veri bilimi projelerinizin gelişimini yapılandırmak için bir yaşam döngüsü sağlar. Bu makalede, bu proje aşamalarını planlamanıza ve yönetmenize yardımcı olan Microsoft Project ve Excel şablonlarına bağlantılar sağlar.
 
-Yaşam döngüsü projeleri genellikle genellikle yinelemeli olarak yürütme, önemli aşamalar açıklanmaktadır:
+Yaşam döngüsü, projelerin genellikle yineleyici olarak yürüttüğü başlıca aşamaları özetler:
 
-- İşin Gereksinimlerini Anlama
-- Veri edinme ve anlama
+- İş Anlayışı
+- Veri Toplama ve Anlama
 - Modelleme
-- Kurulum
-- Müşteri kabulü
+- Dağıtım
+- Müşteri Kabulü
 
-Açıklamalar bu aşamaların her biri için bkz: [Team Data Science Process yaşam döngüsü](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
+Bu aşamaların her birinin açıklamaları [için, Takım Veri Bilimi Süreci yaşam döngüsüne](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle)bakın.
 
  
 ## <a name="microsoft-project-template"></a>Microsoft Project şablonu
 
-Team Data Science Process için Microsoft Project şablonuna buradan erişilebilir: [Microsoft Project şablonu](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+Ekip Veri Bilimi Süreci için Microsoft Project şablonuna buradan ulaşabilirsiniz: [Microsoft Project şablonu](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
-Plan açtığınızda, TDSP için en solundaki bağlantısına tıklayın. Adını ve açıklamasını değiştirin ve ardından gereken diğer tüm takım kaynaklarını içinde ekleyin. Tarihler, deneyiminden gerekli tahmin edin.
+Planı açtığınızda, TDSP için en soldaki bağlantıyı tıklatın. Adı ve açıklamayı değiştirin ve sonra ihtiyacınız olan diğer takım kaynaklarını ekleyin. Deneyiminizden gereken tarihleri tahmin edin.
 
 ![1](./media/team-data-science-process-project-templates/ms-project-templates.png)
 
-Her görevin Not vardır. Hangi kaynakların zaten sizin için oluşturulmuş görmek için bu görevleri açın.
+Her görevin bir notu vardır. Sizin için hangi kaynakların zaten oluşturulduğunu görmek için bu görevleri açın.
 
 ![2](./media/team-data-science-process-project-templates/ms-project-template-task.png)
 
 
 ## <a name="excel-template"></a>Excel şablonu
 
-Microsoft Project erişiminiz yoksa, aynı veriler bir Excel çalışma sayfasına da burada karşıdan yüklenebilir: [Excel şablonu](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) , bunu kullanmayı tercih sevdiğiniz araç için birleştirebilirsiniz.
+Microsoft Project'e erişiminiz yoksa, aynı verilere sahip bir Excel çalışma sayfası da buradan indirilebilir: [Excel şablonu](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) Kullanmak istediğiniz araca çekebilirsiniz.
 
-Bu şablonlar, kendi risk kullanın. [Normal bildirimler](https://www.gnu.org/licenses/gpl-3.0.en.html) uygulayın.
+Bu şablonları kendi riskiniz altında kullanın. [Her zamanki feragatnameler](https://www.gnu.org/licenses/gpl-3.0.en.html) geçerlidir.
 
 ## <a name="repository-template"></a>Depo şablonu
 
-Bunu kullanın [proje şablonu depo](https://github.com/Azure/Azure-TDSP-ProjectTemplate) verimli proje yürütme ve işbirliğini desteklemek için. Bu depo, kendi TDSP proje için kullanabileceğiniz bir standartlaştırılmış dizin yapısını ve belge şablonları sunar.
+Verimli proje yürütme ve işbirliğini desteklemek için bu [proje şablonu deposunu](https://github.com/Azure/Azure-TDSP-ProjectTemplate) kullanın. Bu depo, size kendi TDSP projeniz için kullanabileceğiniz standartlaştırılmış bir dizin yapısı ve belge şablonları sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Veri bilimi projelerinin çevik geliştirmesi](agile-development.md) Bu belgede bir veri bilimi projesi, ekip veri bilimi Işlemini kullanarak sistematik, sürüm denetimli ve işbirliğine dayalı bir şekilde açıklanmıştır.
+[Veri bilimi projelerinin çevik gelişimi](agile-development.md) Bu belge, Ekip Veri Bilimi Süreci'ni kullanarak sistematik, sürüm kontrollü ve işbirlikçi bir şekilde bir veri bilimi projesini açıklar.
 
-İşlem için tüm adımları gösteren talimatlara **belirli senaryoları** de sağlanır. Listelenen ve küçük resim açıklamasında ile bağlantılı [örnek izlenecek yollar](walkthroughs.md) makalesi. Bunlar, bulut, şirket içi araçları ve Hizmetleri, bir iş akışı veya akıllı bir uygulama oluşturmak için işlem hattı birleştirme işlemini göstermektedir. 
+**Belirli senaryolar** için işlemdeki tüm adımları gösteren İzler de sağlanır. Bunlar, [Örnek walkthroughs](walkthroughs.md) makalesinde küçük resim açıklamaları ile listelenir ve bunlarla bağlantılıdır. Bunlar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçlar ve hizmetleri iş akışı veya ardışık ardışık yollarla nasıl birleştirebileceklerini gösterir. 
 

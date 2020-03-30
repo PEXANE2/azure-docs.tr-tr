@@ -9,15 +9,15 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188251"
 ---
-Resource Manager dağıtım modeliyle çalışıyorsanız, yeni ağ geçidi SKU'ları değiştirebilirsiniz. Eski ağ geçidi SKU'sunu yeni bir SKU'ya değiştirdiğinizde, mevcut VPN ağ geçidini silin ve yeni bir VPN ağ geçidi oluşturun.
+Kaynak Yöneticisi dağıtım modeliyle çalışıyorsanız, yeni ağ geçidi STU'larına geçebilirsiniz. Eski bir ağ geçidi SKU'dan yeni bir SKU'ya geçiş yaptığınızda, varolan VPN ağ geçidini siler ve yeni bir VPN ağ geçidi oluşturursunuz.
 
-İş akışı:
+Iş akışı:
 
 1. Sanal ağ geçidine ilişkin tüm bağlantıları kesin.
 2. Eski VPN ağ geçidini silin.
@@ -29,7 +29,7 @@ Resource Manager dağıtım modeliyle çalışıyorsanız, yeni ağ geçidi SKU'
 
 Dikkat edilmesi gerekenler:
 
-* Yeni SKU'lara taşımak için VPN gateway'inizi Resource Manager dağıtım modelinde olmalıdır.
-* Klasik VPN ağ geçidi varsa, bu ağ geçidi için eski eski SKU'ları kullanarak devam etmeniz gerekir, ancak, eski SKU'ları arasında yeniden boyutlandırabilirsiniz. Yeni SKU'lara geçiş yapamazsınız.
-* Eski bir SKU'dan yeni bir SKU'ya değiştirdiğinizde, bağlantı kapalı kalma süresi gerekir.
-* Yeni bir ağ geçidi için SKU değiştirirken, VPN ağ geçidiniz için genel IP adresi değişir. Bu, daha önce kullandığınız aynı genel IP adresi nesnesi belirtseniz dahi gerçekleşir.
+* Yeni SNU'lara geçmek için VPN ağ geçidiniz Kaynak Yöneticisi dağıtım modelinde olmalıdır.
+* Klasik bir VPN ağ geçidiniz varsa, bu ağ geçidi için eski eski SNU'ları kullanmaya devam etmelisiniz, ancak eski SNU'lar arasında yeniden boyutlandırma yapabilirsiniz. Yeni SNU'lara geçemezsiniz.
+* Eski bir SKU'dan yeni bir SKU'ya geçiş yaptığınızda bağlantı kapalı kalma süreniz olur.
+* Yeni bir ağ geçidi SKU'ya geçerken, VPN ağ geçidinizin genel IP adresi değişecektir. Bu, daha önce kullandığınız aynı genel IP adresi nesnesini belirtseniz bile gerçekleşir.

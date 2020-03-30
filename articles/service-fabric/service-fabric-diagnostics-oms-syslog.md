@@ -1,38 +1,38 @@
 ---
-title: Azure Service Fabric Linux kümesi olaylarını izleme
-description: Service Fabric platform olaylarını Syslog 'a yazarak Service Fabric Linux kümesi olaylarını izlemeyi öğrenin.
+title: Azure Hizmet Dokusu'nda Linux küme olaylarını izleyin
+description: Service Fabric platform olaylarını Syslog'a yazarak Service Fabric Linux küme olaylarını nasıl izleyeceğizi öğrenin.
 author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645761"
 ---
-# <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 'da Linux kümesi olaylarını Service Fabric
+# <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog Hizmet Kumaş Linux küme olaylar
 
-Service Fabric kümenizdeki önemli etkinlikleri bilgilendirmek için bir platform olayları kümesini kullanıma sunar. Sunulan olayların tam listesi [burada](service-fabric-diagnostics-event-generation-operational.md)bulunabilir. Bu olayların tüketilebilmesi için kullanabileceğiniz çeşitli yollar vardır. Bu makalede, bu olayları Syslog 'a yazmak için Service Fabric nasıl yapılandıracağınızı tartışacağız.
+Service Fabric, kümenizdeki önemli etkinlikler hakkında sizi bilgilendirmek için bir dizi platform olayını ortaya çıkarır. Maruz kalan olayların tam [listesine buradan](service-fabric-diagnostics-event-generation-operational.md)ulaşabilirsiniz. Bu olayların tüketilmenin çeşitli yolları vardır. Bu makalede, Hizmet Kumaşı'nın bu olayları Syslog'a yazacak şekilde nasıl yapılandırılabildiğini tartışacağız.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
-6,4 sürümünde, SyslogConsumer, Service Fabric platform olaylarını Linux kümeleri için Syslog 'a göndermek üzere sunulmuştur. Etkinleştirildikten sonra olaylar, Log Analytics Aracısı tarafından toplanabilecek ve gönderilebilen Syslog 'a otomatik olarak akar.
+6.4 sürümünde, SyslogConsumer Linux kümeleri için Syslog Hizmet Kumaş ı platform etkinlikleri göndermek için tanıtıldı. Bir kez açık, olaylar otomatik olarak Syslog hangi toplanabilir ve Log Analytics Agent tarafından gönderilen akacak.
 
-Her Syslog olayında 4 bileşen vardır
+Her Syslog olayının 4 bileşeni vardır
 * Tesis
 * Kimlik
 * İleti
-* Önem Derecesi
+* Severity
 
-SyslogConsumer, Tesis `Local0`kullanarak tüm platform olaylarını yazar. Yapılandırma yapılandırmasını değiştirerek geçerli herhangi bir tesis için güncelleştirme yapabilirsiniz. Kullanılan kimlik `ServiceFabric`. Ileti alanı, JSON 'da serileştirilmiş tüm olayı içerir, böylece bu, çeşitli araçlarla sorgulanarak tüketilebilir. 
+SyslogConsumer Tesis `Local0`kullanarak tüm platform olayları yazar. Config config'i değiştirerek herhangi bir geçerli tesise güncelleyebilirsiniz. Kullanılan `ServiceFabric`kimlik. İleti alanı, çeşitli araçlar tarafından sorgulanabilmesi ve tüketilebilmek için JSON'da seri hale getirilebilen tüm olayı içerir. 
 
-## <a name="enable-syslogconsumer"></a>SyslogConsumer 'ı etkinleştir
+## <a name="enable-syslogconsumer"></a>SyslogConsumer etkinleştirin
 
-SyslogConsumer 'ı etkinleştirmek için, kümenizin bir yükseltmesini yapmanız gerekir. `fabricSettings` bölümünün aşağıdaki kodla güncelleştirilmesi gerekir. Bu kod yalnızca SyslogConsumer ile ilgili bölümleri içerir
+SyslogConsumer'ı etkinleştirmek için kümenizin yükseltmesini gerçekleştirmeniz gerekir. Bölümün `fabricSettings` aşağıdaki kodla güncelleştirilmesi gerekir. Bu kodun sadece SyslogConsumer ile ilgili bölümleri içerdiğini unutmayın
 
 ```json
     "fabricSettings": [
@@ -74,10 +74,10 @@ SyslogConsumer 'ı etkinleştirmek için, kümenizin bir yükseltmesini yapmanı
     ],
 ```
 
-Bu çağrı için değişiklikler aşağıda verilmiştir
-1. Ortak bölümde `LinuxStructuredTracesEnabled`adlı yeni bir parametre vardır. **Bu, syslog 'a gönderildiğinde Linux olaylarının yapılandırılmış ve serileştirilmesi için gereklidir.**
-2. Tanılama bölümünde yeni bir ConsumerInstance: SyslogConsumer eklenmiştir. Bu, platforma bir olay müşterisi olduğunu söyler. 
-3. Yeni bölüm SyslogConsumer 'ın `true`olarak `IsEnabled` olması gerekir. Local0 tesis otomatik olarak kullanılacak şekilde yapılandırılmıştır. Bunu, başka bir parametre ekleyerek geçersiz kılabilirsiniz.
+İşte dikkat çeki yle dikkat çeki
+1. Ortak bölümde, yeni bir parametre `LinuxStructuredTracesEnabled`denir. **Bu, Linux olaylarının Syslog'a gönderildiğinde yapılandırılmış ve seri hale getirilmiş olması için gereklidir.**
+2. Tanılama bölümünde, yeni bir ConsumerInstance: SyslogConsumer eklendi. Bu, platforma olayların başka bir tüketicisi olduğunu söyler. 
+3. Yeni bölüm SyslogConsumer olarak `IsEnabled` `true`olması gerekir . Local0 tesisini otomatik olarak kullanacak şekilde yapılandırılmıştır. Başka bir parametre ekleyerek bunu geçersiz kılabilirsiniz.
 
 ```json
     {
@@ -86,22 +86,22 @@ Bu çağrı için değişiklikler aşağıda verilmiştir
     }
 ```
 
-## <a name="azure-monitor-logs-integration"></a>Azure Izleyici günlük tümleştirmesi
-Bu Syslog olaylarını, Azure Izleyici günlükleri gibi bir izleme aracında okuyabilirsiniz. Azure Marketi 'ni kullanarak bu [yönergeleri] kullanarak bir Log Analytics çalışma alanı oluşturabilirsiniz. (.. /Azure-Monitor/Learn/Quick-Create-Workspace.MD) Ayrıca bu verileri toplamak ve çalışma alanına göndermek için Log Analytics aracısını kümenize eklemeniz gerekir. Bu, performans sayaçlarını toplamak için kullanılan aracıdır. 
+## <a name="azure-monitor-logs-integration"></a>Azure Monitor tümleştirmegünlüklerini kaydeder
+Bu Syslog olaylarını Azure Monitor günlükleri gibi bir izleme aracında okuyabilirsiniz. Azure Marketi'ni kullanarak bu [yönergeleri] kullanarak bir Günlük Analizi çalışma alanı oluşturabilirsiniz. (.. /azure-monitor/learn/quick-create-workspace.md) Bu verileri toplamak ve çalışma alanına göndermek için Log Analytics aracısını kümenize eklemeniz gerekir. Bu, performans sayaçlarını toplamak için kullanılan aracının aynısi. 
 
-1. `Advanced Settings` dikey penceresine gidin
+1. Bıçak için `Advanced Settings` gidin
 
     ![Çalışma Alanı Ayarları](media/service-fabric-diagnostics-oms-syslog/workspace-settings.png)
 
 2. Şuna tıklayın: `Data`
 3. Şuna tıklayın: `Syslog`
-4. Local0 'i izlemek üzere yapılandırın. FabricSettings içinde değiştirdiyseniz başka bir tesis ekleyebilirsiniz
+4. Local0'ı İzlemek için Tesis olarak yapılandırın. FabricSettings'te değiştirdiyseniz başka bir Tesis ekleyebilirsiniz
 
-    ![Syslog yapılandırma](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
-5. Sorgulama başlamak için çalışma alanı kaynağının menüsündeki `Logs` ' a tıklayarak sorgu Gezgini 'ne gidin
+    ![Syslog'u yapılandır](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
+5. Sorgulamabaşlatmak için çalışma alanı `Logs` kaynağının menüsünde tıklayarak sorgu gezginine gidin
 
     ![Çalışma alanı günlükleri](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
-6. ProcessName olarak `ServiceFabric` arayan `Syslog` tabloda sorgulama yapabilirsiniz. Aşağıdaki sorgu, olaydaki JSON 'ı ayrıştırmaya ve içeriğini görüntülemeye yönelik bir örnektir
+6. ProcessName olarak `Syslog` arayan `ServiceFabric` tabloya karşı sorgu yapabilirsiniz. Aşağıdaki sorgu, JSON'un olaydaki ayrıştırış ve içeriğini görüntülemenin bir örneğidir.
 
 ```kusto
     Syslog | where ProcessName == "ServiceFabric" | extend $payload = parse_json(SyslogMessage) | project $payload
@@ -109,10 +109,10 @@ Bu Syslog olaylarını, Azure Izleyici günlükleri gibi bir izleme aracında ok
 
 ![Syslog sorgusu](media/service-fabric-diagnostics-oms-syslog/syslog-query.png)
 
-Yukarıdaki örnek bir Nodebir olaydır. Olayların tam listesini [burada](service-fabric-diagnostics-event-generation-operational.md)görebilirsiniz.
+Yukarıdaki örnek bir NodeDown olayıdır. [Burada](service-fabric-diagnostics-event-generation-operational.md)olayların tam listesini görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Log Analytics aracısını dağıtmayı](service-fabric-diagnostics-oms-agent.md) üzerine düğümlerinizi performans sayaçları toplamak ve docker istatistikleri ve kapsayıcılarınızı için günlükleri toplamak için
-* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../log-analytics/log-analytics-log-searches.md) özellikleriyle familiarized alın
-* [Azure Izleyici günlüklerinde özel görünümler oluşturmak için görünüm tasarımcısını kullanma](../log-analytics/log-analytics-view-designer.md)
-* [Azure izleyici günlük tümleştirmesi Ile syslog ile tümleştirme](../log-analytics/log-analytics-data-sources-syslog.md)için başvuru.
+* Performans sayaçları toplamak ve konteynerleriniz için docker istatistikleri ve günlükleri toplamak için [Log Analytics aracısını](service-fabric-diagnostics-oms-agent.md) düğümlerinize dağıtın
+* Azure Monitor [günlüklerinin](../log-analytics/log-analytics-log-searches.md) bir parçası olarak sunulan günlük arama ve sorgulama özelliklerine aşina olun
+* [Azure Monitor günlüklerinde özel görünümler oluşturmak için Görünüm Tasarımcısı'nı kullanma](../log-analytics/log-analytics-view-designer.md)
+* Azure Monitor [syslog ile tümleştirme günlükleri](../log-analytics/log-analytics-data-sources-syslog.md)için başvuru .

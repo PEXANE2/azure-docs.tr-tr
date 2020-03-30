@@ -1,6 +1,6 @@
 ---
-title: Eski kullanarak MongoDB 'den veri kopyalama
-description: Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak Mongo DB 'den desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
+title: Eski yi kullanarak MongoDB'deki verileri kopyalama
+description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopyalama etkinliği kullanarak desteklenen lavabo veri depolarına Mongo DB'deki verileri nasıl kopyalaylayamamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,61 +13,61 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892565"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB 'den veri kopyalama
+# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Veri Fabrikasını kullanarak MongoDB'deki verileri kopyalama
 
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Geçerli sürüm](connector-mongodb.md)
 
-Bu makalede, bir MongoDB veritabanından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, MongoDB veritabanındaki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
 >[!IMPORTANT]
->ADF yayını bu ODBC tabanlı uygulamayla kıyaslanarak daha iyi yerel MongoDB desteği sağlayan yeni bir MongoDB Bağlayıcısı, Ayrıntılar için [MongoDB bağlayıcı](connector-mongodb.md) makalesine başvurun. Bu eski MongoDB Bağlayıcısı, yeni iş yükleri için olduğu gibi, geriye dönük olarak olduğu gibi desteklenir. lütfen yeni bağlayıcıyı kullanın.
+>ADF, bu ODBC tabanlı uygulama ile karşılaştırıldığında daha iyi yerli MongoDB desteği sağlayan yeni bir MongoDB bağlayıcısı yayımlayın, ayrıntılar la ilgili [MongoDB bağlayıcı](connector-mongodb.md) sı makaleye bakın. Bu eski MongoDB konektörü geriye dönük uyumluluk için olduğu gibi desteklenirken, yeni iş yükü için lütfen yeni bağlayıcıyı kullanın.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-MongoDB veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+MongoDB veritabanındaki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu MongoDB Bağlayıcısı şunları destekler:
+Özellikle, bu MongoDB bağlayıcı destekler:
 
-- MongoDB **sürümleri 2,4, 2,6, 3,0, 3,2, 3,4 ve 3,6**.
-- **Temel** veya **anonim** kimlik doğrulaması kullanarak verileri kopyalama.
+- MongoDB **sürümleri 2.4, 2.6, 3.0, 3.2, 3.4 ve 3.6**.
+- **Temel** veya **Anonim** kimlik doğrulamasını kullanarak verileri kopyalama.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Integration Runtime, yerleşik bir MongoDB sürücüsü sağlar, bu nedenle MongoDB 'den veri kopyalarken herhangi bir sürücüyü el ile yüklemeniz gerekmez.
+Tümleştirme Runtime yerleşik bir MongoDB sürücüsü sağlar, bu nedenle MongoDB verileri kopyalarken herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, MongoDB bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
+Aşağıdaki bölümlerde, MongoDB bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
+MongoDB bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type |Type özelliği: **MongoDB** olarak ayarlanmalıdır |Evet |
+| type |Tür özelliği ayarlanmalıdır: **MongoDb** |Evet |
 | sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
-| port |MongoDB sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır (varsayılan değer 27017) |
-| Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Evet |
-| authenticationType | MongoDB veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **Basic**ve **Anonymous**. |Evet |
-| kullanıcı adı |MongoDB 'ye erişmek için Kullanıcı hesabı. |Evet (temel kimlik doğrulaması kullanılıyorsa). |
-| parola |Kullanıcının parolası. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet (temel kimlik doğrulaması kullanılıyorsa). |
-| authSource |Kimlik doğrulaması için kimlik bilgilerinizi denetlemek üzere kullanmak istediğiniz MongoDB veritabanının adı. |Hayır. Temel kimlik doğrulaması için varsayılan olarak yönetici hesabı ve databaseName özelliği kullanılarak belirtilen veritabanı kullanılır. |
-| enableSsl | Sunucusuna bağlantılarda SSL kullanarak şifrelenip şifrelenmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| allowSelfSignedServerCert | Otomatik olarak imzalanan sertifikalar sunucudan izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| port |MongoDB sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır (varsayılan değer 27017'dir) |
+| Databasename |Erişmek istediğiniz MongoDB veritabanının adı. |Evet |
+| authenticationType | MongoDB veritabanına bağlanmak için kullanılan kimlik doğrulama türü.<br/>İzin verilen değerler şunlardır: **Temel**ve **Anonim**. |Evet |
+| kullanıcı adı |MongoDB'ye erişmek için kullanıcı hesabı. |Evet (temel kimlik doğrulama kullanılıyorsa). |
+| password |Kullanıcının parolası. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) |Evet (temel kimlik doğrulama kullanılıyorsa). |
+| authSource |Kimlik doğrulama için kimlik bilgilerinizi denetlemek için kullanmak istediğiniz MongoDB veritabanının adı. |Hayır. Temel kimlik doğrulama için varsayılan değer, yönetici hesabını ve databaseName özelliği kullanılarak belirtilen veritabanını kullanmaktır. |
+| sağlarSsl | Sunucuya bağlantıların SSL kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
+| izinSelfSignedServerCert | Sunucudan kendi imzalı sertifikalara izin verip vermemeyi belirtir. Varsayılan değer false'tur.  | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 
 **Örnek:**
 
@@ -96,12 +96,12 @@ MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikleri tam listesi için bkz: [veri kümeleri ve bağlı hizmetler](concepts-datasets-linked-services.md). MongoDB veri kümesi için aşağıdaki özellikler desteklenir:
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Bkz. Veri Kümeleri ve bağlantılı hizmetler.](concepts-datasets-linked-services.md) Aşağıdaki özellikler MongoDB veri kümesi için desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **Mongodbcollection** olarak ayarlanmalıdır | Evet |
-| collectionName |MongoDB veritabanındaki koleksiyonun adı. |Evet |
+| type | Veri kümesinin tür özelliği ayarlanmalıdır: **MongoDbCollection** | Evet |
+| Toplamaadı |MongoDB veritabanındaki koleksiyonun adı. |Evet |
 
 **Örnek:**
 
@@ -123,16 +123,16 @@ Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikler
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, MongoDB kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde MongoDB kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="mongodb-as-source"></a>Kaynak olarak MongoDB
 
-Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
+Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Mongodbsource** olarak ayarlanmalıdır | Evet |
-| sorgu |Verileri okumak için özel SQL-92 sorgusunu kullanın. Örneğin: select * from MyTable. |Hayır (veri kümesinde "collectionName" belirtilmişse) |
+| type | Kopyalama etkinlik kaynağının türü özelliği ayarlanmalıdır: **MongoDbSource** | Evet |
+| sorgu |Verileri okumak için özel SQL-92 sorgusunu kullanın. Örneğin: MyTable'dan * seçin. |Hayır (veri kümesinde "collectionName" belirtilirse) |
 
 **Örnek:**
 
@@ -167,74 +167,74 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 ```
 
 > [!TIP]
-> SQL sorgusunu belirttiğinizde, tarih saat biçimine dikkat edin. Örneğin: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` veya parametresini kullanmak için `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+> SQL sorgusunu belirtirken, DateTime biçimine dikkat edin. Örneğin: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` veya parametre kullanmak için`SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
 
-## <a name="schema-by-data-factory"></a>Veri fabrikası tarafından şeması
+## <a name="schema-by-data-factory"></a>Veri Fabrikası'na Göre Şema
 
-Azure Data Factory hizmet, koleksiyondaki **en son 100 belgeyi** kullanarak bir MongoDB koleksiyonundan şemayı hallederler. Bu 100 belgeler tam şema içermiyorsa, kopyalama işlemi sırasında bazı sütunlar yoksayılabilir.
+Azure Veri Fabrikası hizmeti, koleksiyondaki **en son 100 belgeyi** kullanarak bir MongoDB koleksiyonundan şema çıkar. Bu 100 belge tam şema içermiyorsa, kopyalama işlemi sırasında bazı sütunlar yoksayılabilir.
 
-## <a name="data-type-mapping-for-mongodb"></a>MongoDB için veri türü eşlemesi
+## <a name="data-type-mapping-for-mongodb"></a>MongoDB için veri türü eşleme
 
-MongoDB 'den veri kopyalarken aşağıdaki eşlemeler MongoDB veri türlerinden, geçici veri türlerini Azure Data Factory için kullanılır. Bkz: [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md) eşlemelerini nasıl yapar? kopyalama etkinliği kaynak şema ve veri türü için havuz hakkında bilgi edinmek için.
+MongoDB'den veri kopyalanırken, MongoDB veri türlerinden Azure Veri Fabrikası geçici veri türlerine aşağıdaki eşlemeler kullanılır. Kopya etkinliği kaynak şemasını ve veri türünü lavaboyla nasıl eşler hakkında bilgi edinmek için Şema ve [veri türü eşlemelerine](copy-activity-schema-and-type-mapping.md) bakın.
 
-| MongoDB veri türü | Veri Fabrikası geçici veri türü |
+| MongoDB veri türü | Veri fabrikası geçici veri türü |
 |:--- |:--- |
-| Binary |Byte[] |
+| İkili |Bayt[] |
 | Boole |Boole |
-| Tarih |Tarih Saat |
-| NumberDouble |Double |
-| Numberınt |Int32 |
-| NumberLong |Int64 |
+| Tarih |DateTime |
+| SayıÇift |Çift |
+| NumberInt |Int32 |
+| Sayı Uzun |Int64 |
 | ObjectID |Dize |
 | Dize |Dize |
-| EDIN |Guid |
-| Nesne |İç içe ayırıcı olarak "_" ile sütunları düzleştirmek için yeniden Renklendir |
+| Uuıd |Guid |
+| Nesne |İç içe ayırıcı olarak "_" ile düzleştirilmiş sütunlar halinde yeniden normalleştirildi |
 
 > [!NOTE]
-> Sanal tabloları kullanarak diziler için destek hakkında bilgi edinmek için [sanal tabloları kullanarak karmaşık türler Için destek](#support-for-complex-types-using-virtual-tables) bölümüne bakın.
+> Sanal tabloları kullanarak dizidesteği hakkında bilgi edinmek [için, sanal tablolar](#support-for-complex-types-using-virtual-tables) bölümünü kullanarak karmaşık türler için Destek bölümüne bakın.
 >
-> Şu anda şu MongoDB veri türleri desteklenmez: DBPointer, JavaScript, Max/Min anahtarı, normal Ifade, simge, zaman damgası, tanımsız.
+> Şu anda, aşağıdaki MongoDB veri türleri desteklenmez: DBPointer, JavaScript, Max/Min tuşu, Düzenli İfade, Sembol, Zaman Damgası, Tanımsız.
 
-## <a name="support-for-complex-types-using-virtual-tables"></a>Sanal tabloları kullanarak karmaşık türler için destek
+## <a name="support-for-complex-types-using-virtual-tables"></a>Sanal tabloları kullanarak karmaşık türleri için destek
 
-Azure Data Factory, MongoDB veritabanınıza bağlanmak ve veri kopyalamak için yerleşik bir ODBC sürücüsü kullanır. Belge genelinde farklı türlere sahip diziler veya nesneler gibi karmaşık türler için, sürücü verileri ilgili sanal tablolara yeniden normalleştirir. Özellikle, bir tablo bu tür sütunlar içeriyorsa, sürücü aşağıdaki sanal tabloları oluşturur:
+Azure Veri Fabrikası, MongoDB veritabanınızdaki verilere bağlanmak ve kopyalamak için yerleşik bir ODBC sürücüsü kullanır. Belgeler arasında farklı türlerde diziler veya nesneler gibi karmaşık türler için sürücü verileri karşılık gelen sanal tablolara yeniden normalleştirir. Özellikle, bir tablo bu tür sütunlar içeriyorsa, sürücü aşağıdaki sanal tabloları oluşturur:
 
-* Karmaşık tür sütunları hariç gerçek tabloyla aynı verileri içeren bir **temel tablo**. Temel tablo, temsil ettiği gerçek tabloyla aynı adı kullanır.
-* İç içe geçmiş verileri genişleten her karmaşık tür sütunu için bir **sanal tablo** . Sanal tablolar, gerçek tablonun adı, bir ayırıcı "_" ve dizi ya da nesnenin adı kullanılarak adlandırılır.
+* Karmaşık tür sütunları dışında gerçek tabloyla aynı verileri içeren **bir taban tablosu.** Taban tablo, temsil ettiği gerçek tabloyla aynı adı kullanır.
+* İç içe geçen verileri genişleten her karmaşık tür sütunu için sanal bir **tablo.** Sanal tablolar gerçek tablo, bir ayırıcı "_" ve dizi veya nesnenin adı kullanılarak adlandırılır.
 
-Sanal tablolar, gerçek tablodaki verilere başvurur ve bu da sürücünün, verilerin yoğun verilere erişmesine olanak tanır. Sanal tabloları sorgulama ve birleştirme yoluyla MongoDB dizilerinin içeriğine erişebilirsiniz.
+Sanal tablolar, sürücünün normalden arındırılmış verilere erişmesini sağlayarak gerçek tablodaki verilere başvurur. Sanal tabloları sorgulayarak ve birleştirerek MongoDB dizilerinin içeriğine erişebilirsiniz.
 
 ### <a name="example"></a>Örnek
 
-Örneğin, buradaki ExampleTable, her hücrede bir nesne dizisi olan bir sütun içeren bir MongoDB tablosu ve bir sütun skaler türler dizisi olan bir sütundan oluşur.
+Örneğin, ExampleTable burada her hücrede nesnelerin bir dizi ile bir sütun olan bir MongoDB tablo - Faturalar ve Skaler türleri bir dizi ile bir sütun - Ratings.
 
-| _id | Müşteri adı | Faturalar | Hizmet Düzeyi | Derecelendirmeler |
+| _id | Müşteri Adı | Faturalar | Hizmet Düzeyi | Derecelendirmeler |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", öğe: "Toaster", Price: "456", indirim: "0.2"}, {invoice_id: "124", öğe: "oven", Fiyat: "1235", indirim: "0,2"}] |Silver |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", öğe: "Fridge", Price: "12543", indirim: "0,0"}] |Gold |[1,2] |
+| 1111 |ABC |[{invoice_id:"123", item:"tost makinesi", fiyat:"456", indirimli:"0.2"}, {invoice_id:"124", öğe:"fırın", fiyat: "1235", indirim: "0.2"}] |Silver |[5,6] |
+| 2222 |XYZ |[{invoice_id:"135", item:"buzdolabı", fiyat: "12543", indirim: "0.0"}] |Gold |[1,2] |
 
-Bu tek tabloyu temsil eden sürücü birden çok sanal tablo oluşturur. İlk sanal tablo, örnekte gösterilen "ExampleTable" adlı temel tablodur. Temel tablo özgün tablonun tüm verilerini içerir, ancak dizilerdeki veriler atlanmıştır ve sanal tablolarda genişletilir.
+Sürücü, bu tek tabloyu temsil edecek birden çok sanal tablo oluşturur. İlk sanal tablo, örnekte gösterilen "ExampleTable" adlı taban tablodur. Temel tablo özgün tablonun tüm verilerini içerir, ancak dizilerden gelen veriler atlanmıştır ve sanal tablolarda genişletilir.
 
-| _id | Müşteri adı | Hizmet Düzeyi |
+| _id | Müşteri Adı | Hizmet Düzeyi |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Gold |
 
-Aşağıdaki tablolarda, örnekteki özgün dizileri temsil eden sanal tablolar gösterilmektedir. Bu tablolar şunları içerir:
+Aşağıdaki tablolar, örnekteki özgün dizileri temsil eden sanal tabloları gösterir. Bu tablolar aşağıdakileri içerir:
 
-* Özgün dizinin satırına karşılık gelen özgün birincil anahtar sütununa geri başvuru (_id sütunu aracılığıyla)
-* Verilerin orijinal dizi içinde konumunun bir göstergesi
-* Dizi içindeki her öğe için genişletilmiş veriler
+* Özgün dizinin satırına karşılık gelen özgün birincil anahtar sütununa (_id sütun üzerinden) geri gönderme
+* Orijinal dizi içindeki verilerin konumunun bir göstergesi
+* Dizi içindeki her öğe için genişletilmiş veri
 
-**"ExampleTable_Invoices" tablosu:**
+**Tablo "ExampleTable_Invoices":**
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | öğe | price | İndirim |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |Toaster |456 |0.2 |
-| 1111 |1 |124 |oven |1235 |0.2 |
-| 2222 |0 |135 |buzdolabı |12543 |0.0 |
+| 1111 |0 |123 |Tost makinesi |456 |0.2 |
+| 1111 |1 |124 |Fırın |1235 |0.2 |
+| 2222 |0 |135 |Buzdolabı |12543 |0,0 |
 
-**"ExampleTable_Ratings" tablosu:**
+**Tablo "ExampleTable_Ratings":**
 
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
@@ -244,4 +244,4 @@ Aşağıdaki tablolarda, örnekteki özgün dizileri temsil eden sanal tablolar 
 | 2222 |1 |2 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.

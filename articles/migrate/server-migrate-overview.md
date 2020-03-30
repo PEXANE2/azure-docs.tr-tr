@@ -1,63 +1,63 @@
 ---
-title: Azure geçişi sunucu geçişine sahip bir VMware geçiş seçeneği seçin | Microsoft Docs
-description: Azure geçişi sunucu geçişi ile VMware VM 'lerini Azure 'a geçirme seçeneklerine genel bakış sağlar
+title: Azure Geçiş Sunucusu Geçişi ile VMware geçiş seçeneği seçin | Microsoft Dokümanlar
+description: Azure Geçiş Sunucusu Geçişi ile VMware VM'leri Azure'a geçirme seçeneklerine genel bakış sağlar
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76028723"
 ---
-# <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği seçin
+# <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği ni seçin
 
-Azure geçişi sunucu geçiş aracını kullanarak VMware VM 'lerini Azure 'a geçirebilirsiniz. Bu araç, VMware VM geçişi için birkaç seçenek sunar:
+Azure Geçir Sunucu Geçişi aracını kullanarak VMware VM'leri Azure'a geçirebilirsiniz. Bu araç VMware VM geçişi için birkaç seçenek sunar:
 
-- Aracısız çoğaltma kullanılarak geçiş. VM 'Leri bunlara hiçbir şey yüklemeye gerek kalmadan geçirin.
-- Çoğaltma için bir aracı ile geçiş. Çoğaltma için VM 'ye bir aracı yükler.
-
-
+- Aracısız çoğaltma kullanarak geçiş. Üzerlerine bir şey yüklemenize gerek kalmadan VM'leri geçirin.
+- Çoğaltma için bir aracı ile geçiş. Çoğaltma için VM'ye bir aracı yükleyin.
 
 
-## <a name="compare-migration-methods"></a>Geçiş yöntemlerini karşılaştırma
 
-Hangi yöntemin kullanılacağına karar vermenize yardımcı olması için bu seçili karşılaştırmaları kullanın. Ayrıca, [aracısız](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) ve [aracı tabanlı](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) geçiş için tam destek gereksinimlerini inceleyebilirsiniz.
+
+## <a name="compare-migration-methods"></a>Geçiş yöntemlerini karşılaştırın
+
+Hangi yöntemi kullanacağınıza karar vermenize yardımcı olmak için bu seçili karşılaştırmaları kullanın. [Aracısız](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) ve [aracısız](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) geçiş için tam destek gereksinimlerini de gözden geçirebilirsiniz.
 
 **Ayar** | **Aracısız** | **Aracı tabanlı**
 --- | --- | ---
-**Azure izinleri** | Azure geçişi projesi oluşturma ve Azure geçiş gereci dağıtırken oluşturulan Azure AD uygulamalarını kaydetme izinlerine sahip olmanız gerekir. | Azure aboneliğinde katkıda bulunan izinlerine sahip olmanız gerekir. 
-**Eşzamanlı çoğaltma** | VCenter Server en fazla 100 VM aynı anda çoğaltılabilir.<br/> Geçiş için 50 ' den fazla VM varsa, birden çok VM toplu işi oluşturun.<br/> Tek seferde daha fazla çoğaltma performansı etkiler. | Yok
-**Gereç dağıtımı** | [Azure geçişi](migrate-appliance.md) gereci şirket içinde dağıtılır. | [Azure geçişi çoğaltma](migrate-replication-appliance.md) gereci şirket içinde dağıtılır.
-**Site Recovery uyumluluğu** | Uyumludur. | Site Recovery kullanarak bir makine için çoğaltma ayarladıysanız Azure geçişi sunucu geçişi ile çoğaltamaz.
-**Hedef disk** | Yönetilen Diskler | Yönetilen Diskler
-**Disk sınırları** | İşletim sistemi diski: 2 TB<br/><br/> Veri diski: 4 TB<br/><br/> En fazla disk: 60 | İşletim sistemi diski: 2 TB<br/><br/> Veri diski: 8 TB<br/><br/> En fazla disk: 63
-**Geçiş diskleri** | Desteklenmiyor | Desteklenen
-**UEFı önyüklemesi** | Desteklenmiyor | Azure 'daki geçirilmiş VM otomatik olarak bir BIOS önyükleme VM 'sine dönüştürülür.<br/><br/> İşletim sistemi diski en fazla dört bölüm içermelidir ve birimler NTFS ile biçimlendirilmelidir.
+**Azure izinleri** | Bir Azure Geçir projesi oluşturmak ve Azure Geçir cihazını dağıtırken oluşturulan Azure AD uygulamalarını kaydetmek için izinlere ihtiyacınız vardır. | Azure aboneliğinde Katılımcı izinlerine ihtiyacınız vardır. 
+**Eşzamanlı çoğaltma** | Bir vCenter Server'dan aynı anda en fazla 100 VM çoğaltılabilir.<br/> Geçiş için 50'den fazla VM'niz varsa, birden çok toplu VM oluşturun.<br/> Tek seferde daha fazla çoğaltma performansı etkileyecektir. | NA
+**Cihaz dağıtımı** | [Azure Geçiş cihazı](migrate-appliance.md) şirket içinde dağıtılır. | [Azure Geçir Çoğaltma cihazı](migrate-replication-appliance.md) şirket içinde dağıtılır.
+**Site Kurtarma uyumluluğu** | Uyumlu. | Site Kurtarma'yı kullanarak bir makine için çoğaltma ayarladıysanız Azure Geçir Sunucusu Geçişi ile çoğaltma yapamazsınız.
+**Hedef disk** | Yönetilen diskler | Yönetilen diskler
+**Disk sınırları** | İşletim sistemi: 2 TB<br/><br/> Veri diski: 4 TB<br/><br/> Maksimum disksayısı: 60 | İşletim sistemi: 2 TB<br/><br/> Veri diski: 8 TB<br/><br/> Maksimum disksayısı: 63
+**Geçiş diskleri** | Desteklenmiyor | Destekleniyor
+**UEFI önyükleme** | Desteklenmiyor | Azure'da geçirilen VM otomatik olarak BIOS önyükleme VM'sine dönüştürülür.<br/><br/> İşletim sistemi diskinde en fazla dört bölüm olmalı ve birimler NTFS ile biçimlendirilmelidir.
 
 
 ## <a name="deployment-steps-comparison"></a>Dağıtım adımları karşılaştırması
 
-Sınırlamaları inceledikten sonra, her bir çözümü dağıtmaya ilişkin adımları anlamak hangi seçenek arasından seçim yapmanıza yardımcı olur.
+Sınırlamaları gözden geçirdikten sonra, her çözümü dağıtmada yer alan adımları anlamak, hangi seçeneği seçeceğiniz konusunda karar vermenize yardımcı olabilir.
 
-**Görev** | **Ayrıntılar** |**Aracısız** | **Aracı tabanlı**
+**Görev** | **Şey** |**Aracısız** | **Aracı tabanlı**
 --- | --- | --- | ---
-**Değerlendirme** | Geçişten önce sunucuları değerlendirin.  Değerlendirme isteğe bağlıdır. Makineleri geçirmeden önce değerlendirmenizi öneririz, ancak şunları yapmanız gerekmez. <br/><br/> Değerlendirme için Azure geçişi, VM 'Leri keşfetmek ve değerlendirmek için bir hafif gereç kurar. | Değerlendirmede daha az bir geçiş çalıştırırsanız, aracısız geçiş için aynı Azure geçişi gereç ayarı kullanılır.  |  Değerlendirdikten sonra aracı tabanlı bir geçiş çalıştırırsanız, değerlendirme için ayarlanan gereç aracısız geçiş sırasında kullanılmaz. Daha fazla bulma ve değerlendirme yapmak istemiyorsanız, gereci yerinde bırakabilir veya kaldırabilirsiniz.
-**VMware sunucularını ve VM 'Leri geçiş için hazırlama** | VMware sunucularında ve VM 'lerde bir dizi ayarı yapılandırın. | Gereklidir | Gereklidir
-**Sunucu geçiş aracını ekleme** | Azure geçişi projesine Azure geçiş sunucusu geçiş aracı 'nı ekleyin. | Gereklidir | Gereklidir
-**Azure geçişi gereci dağıtma** | VM bulma ve değerlendirme için bir VMware VM 'de hafif gereç ayarlayın. | Gereklidir | Gerekli değildir.
-**VM 'Lere Mobility hizmetini yükler** | Çoğaltmak istediğiniz her VM 'ye Mobility hizmetini yükler | Gerekli değil | Gereklidir
-**Azure geçişi sunucu geçişi çoğaltma gereci dağıtma** | VM 'Leri öğrenmek için bir VMware VM üzerinde bir gereç ayarlama ve VM 'lerde çalışan Mobility hizmeti ile Azure sunucu geçişini geçirme arasında köprü oluşturma | Gerekli değil | Gereklidir
-**VM 'Leri çoğaltın**. VM çoğaltmasını etkinleştirin. | Çoğaltma ayarlarını yapılandırın ve çoğaltılacak VM 'Leri seçin | Gereklidir | Gereklidir
-**Test geçişi çalıştırma** | Her şeyin beklendiği gibi çalıştığından emin olmak için bir test geçişi çalıştırın. | Gereklidir | Gereklidir
-**Tam geçiş çalıştırma** | VM 'Leri geçirin. | Gereklidir | Gereklidir
+**Değerlendirme** | Geçiş öncesi sunucuları değerlendirin.  Değerlendirme isteğe bağlıdır. Makineleri geçirmeden önce değerlendirmenizi öneririz, ancak bunu yapmak zorunda değilsiniz. <br/><br/> Azure Geçir, değerlendirme için VM'leri keşfetmek ve değerlendirmek için hafif bir cihaz kurar. | Değerlendirmeden sonra aracısız geçiş çalıştırıyorsanız, değerlendirme için ayarlanan aynı Azure Geçiş cihazı aracısız geçiş için kullanılır.  |  Değerlendirmeden sonra aracı tabanlı bir geçiş çalıştırıyorsanız, değerlendirme için ayarlanan cihaz aracısız geçiş sırasında kullanılmaz. Cihazı yerinde bırakabilir veya daha fazla keşif ve değerlendirme yapmak istemiyorsanız kaldırabilirsiniz.
+**VMware sunucularını ve VM'leri geçiş için hazırlama** | VMware sunucularında ve VM'lerde bir dizi ayar yapılandırma. | Gerekli | Gerekli
+**Sunucu Geçişi aracını ekleme** | Azure Geçir projesine Azure Geçir Sunucusu Geçişi aracını ekleyin. | Gerekli | Gerekli
+**Azure Geçiş cihazını dağıtma** | VM keşif ve değerlendirme için vmware VM üzerinde hafif bir cihaz ayarlayın. | Gerekli | Gerek yok.
+**Mobilite hizmetini VM'lere yükleme** | Çoğaltmak istediğiniz her VM'ye Mobilite hizmetini yükleyin | Gerekli değil | Gerekli
+**Azure Geçir Sunucusu Geçişi çoğaltma cihazını dağıtma** | VM'leri keşfetmek için VMware VM'de bir cihaz ayarlayın ve VM'lerde çalışan Mobilite hizmeti ile Azure Geçiş Sunucusu Geçişi arasında köprü kurma | Gerekli değil | Gerekli
+**VM'leri çoğaltma**. VM çoğaltmayı etkinleştirin. | Çoğaltma ayarlarını yapılandırın ve çoğaltmak için VM'leri seçin | Gerekli | Gerekli
+**Geçiş testi çalıştırma** | Her şeyin beklendiği gibi çalıştığından emin olmak için bir test geçişi çalıştırın. | Gerekli | Gerekli
+**Tam geçiş çalıştırma** | VM'leri geçirin. | Gerekli | Gerekli
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[VMware VM](tutorial-migrate-vmware.md) 'lerini aracısız geçişe geçirin.
+[VMware VM'leri](tutorial-migrate-vmware.md) aracısız geçişle geçirin.
 
 
 

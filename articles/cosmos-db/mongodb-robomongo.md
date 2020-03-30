@@ -1,49 +1,50 @@
 ---
-title: Azure Cosmos DB'ye bağlanmak için robo 3t'yi kullanma
-description: Azure Cosmos DB MongoDB Robo 3T ve Azure Cosmos DB'nin API'sini kullanarak bağlanma hakkında bilgi edinin
+title: Azure Cosmos DB'ye bağlanmak için Robo 3T'yi kullanın
+description: Robo 3T ve Azure Cosmos DB'nin MongoDB için API'sini kullanarak Azure Cosmos DB'ye nasıl bağlanışlarınızı öğrenin
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
-ms.openlocfilehash: ab066fef4bffe35408fdc5f3ad6d66796b4d0818
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/23/2020
+author: timsander1
+ms.author: tisande
+ms.openlocfilehash: 120c8c45999e6d4071fc397d6e585d7d2f83aebc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61372564"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131427"
 ---
-# <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Robo 3T API'si ile Azure Cosmos DB'nin MongoDB için kullanın.
+# <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'siyle Robo 3T kullanma
 
-Robo 3T kullanma Cosmos hesabına bağlanmak için şunları yapmalısınız:
+Robo 3T'yi kullanarak Cosmos hesabına bağlanmak için şunları yapmamalısınız:
 
-* İndirme ve yükleme [Robo 3T](https://robomongo.org/)
-* Cosmos DB sahip [bağlantı dizesi](connect-mongodb-account.md) bilgileri
+* [Robo 3T'yi](https://robomongo.org/) indirin ve kurun
+* Cosmos DB [bağlantı dize](connect-mongodb-account.md) bilgilerinize sahip
 
-## <a name="connect-using-robo-3t"></a>Robo 3T kullanarak bağlan
-Robo 3T Bağlantı Yöneticisi için Cosmos hesabınızı eklemek için aşağıdaki adımları gerçekleştirin:
+## <a name="connect-using-robo-3t"></a>Robo 3T kullanarak bağlanma
 
-1. Yönergeleri kullanarak Azure Cosmos DB'nin API'sini MongoDB ile yapılandırılmış Cosmos hesabınız için bağlantı bilgilerini almak [burada](connect-mongodb-account.md).
+Cosmos hesabınızı Robo 3T bağlantı yöneticisine eklemek için aşağıdaki adımları gerçekleştirin:
 
-    ![Bağlantı dizesi dikey penceresinin ekran görüntüsü](./media/mongodb-robomongo/connectionstringblade.png)
-2. Çalıştırma *Robomongo.exe*
+1. Azure Cosmos DB'nin API MongoDB ile yapılandırılan Cosmos hesabınıza ait bağlantı bilgilerini [buradaki](connect-mongodb-account.md)yönergeleri kullanarak alın.
 
-3. Altından bağlantı düğmesini **dosya** bağlantılarınızı yönetme. ' A tıklayarak **Oluştur** içinde **MongoDB bağlantılarını** açılır penceresinde **bağlantı ayarlarını** penceresi.
+    ![Bağlantı string blade ekran görüntüsü](./media/mongodb-robomongo/connectionstringblade.png)
+2. *Robomongo.exe* çalıştırın
 
-4. İçinde **bağlantı ayarlarını** penceresinde, bir ad seçin. Ardından, bulma **konak** ve **bağlantı noktası** adım 1'den bağlantı bilgilerinizi ve girmeyi **adresi** ve **bağlantı noktası**sırasıyla.
+3. Bağlantılarınızı yönetmek için **Dosya'nın** altındaki bağlantı düğmesini tıklatın. Ardından, **Bağlantı Ayarları** penceresini açacak **Olan MongoDB Bağlantıları** penceresinde **Oluştur'u** tıklatın.
 
-    ![Robomongo'yu görüntüsü bağlantıları yönetme](./media/mongodb-robomongo/manageconnections.png)
-5. Üzerinde **kimlik doğrulaması** sekmesinde **gerçekleştirme kimlik doğrulaması**. Ardından, veritabanınızın girin (varsayılan değer *yönetici*), **kullanıcı adı** ve **parola**.
-Her ikisi de **kullanıcı adı** ve **parola** bağlantı bilgilerinizi adım 1'de bulunabilir.
+4. Bağlantı **Ayarları** penceresinde bir ad seçin. Ardından, Bağlantı **Noktası** ve **Bağlantı Noktası'nı** Adım 1'deki bağlantı bilgilerinizden bulun ve bunları sırasıyla **Adres** ve **Bağlantı Noktası'na**girin.
 
-    ![Robomongo'yu kimlik doğrulaması sekmesinin Ekran görüntüsü](./media/mongodb-robomongo/authentication.png)
-6. Üzerinde **SSL** sekmesinde, onay **kullanım SSL protokolü**, ardından değiştirme **kimlik doğrulama yöntemi** için **otomatik olarak imzalanan sertifika**.
+    ![Robomongo Bağlantılarını Yönet ekran görüntüsü](./media/mongodb-robomongo/manageconnections.png)
+5. Kimlik **Doğrulama** sekmesinde **kimlik doğrulamayı gerçekleştir'i**tıklatın. Daha sonra Veritabanınızı girin (varsayılan *yöneticidir),* **Kullanıcı Adı** ve **Şifre.**
+Hem **Kullanıcı Adı** hem de **Parola,** Adım 1'deki bağlantı bilgilerinizde bulunabilir.
 
-    ![Robomongo'yu SSL sekmesinin Ekran görüntüsü](./media/mongodb-robomongo/SSL.png)
-7. Son olarak, tıklayın **Test** bağlanın, ardından mümkün olduğunu doğrulamak için **Kaydet**.
+    ![Robomongo Kimlik Doğrulama Sekmesi ekran görüntüsü](./media/mongodb-robomongo/authentication.png)
+6. **SSL** sekmesinde, **SSL protokolünü kullan'ı**denetleyin, ardından **Kimlik Doğrulama Yöntemini** **Kendi İmzalanan Sertifika**olarak değiştirin.
+
+    ![Robomongo SSL Sekmesi ekran görüntüsü](./media/mongodb-robomongo/SSL.png)
+7. Son olarak, bağlanabildiğinizi doğrulamak için **Test'i** tıklatın ve ardından **Kaydet'i kaydedin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bilgi edinmek için nasıl [Studio 3T kullanma](mongodb-mongochef.md) Azure Cosmos DB'nin MongoDB API'si ile.
-- MongoDB keşfedin [örnekleri](mongodb-samples.md) Azure Cosmos DB'nin MongoDB API'si ile.
+- Azure Cosmos DB'nin MongoDB için API'si ile [Studio 3T'yi](mongodb-mongochef.md) nasıl kullanacağınızı öğrenin.
+- Azure Cosmos DB'nin MongoDB için API'si ile MongoDB [örneklerini](mongodb-samples.md) keşfedin.

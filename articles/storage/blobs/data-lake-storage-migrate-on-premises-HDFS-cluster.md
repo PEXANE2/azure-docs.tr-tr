@@ -1,6 +1,6 @@
 ---
-title: Şirket içi bir işlem mağazasından Azure Data Box ile Azure depolama 'ya geçiş
-description: Şirket içi bir, Azure depolama 'ya veri geçirme
+title: Azure Veri Kutusu ile ön m'deki HDFS deposundan Azure Depolama'ya geçiş yapın
+description: Şirket içi HDFS deposundan Azure Depolama'ya veri geçirme
 author: normesta
 ms.service: storage
 ms.date: 02/14/2019
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: c0c6a8637223727a9b0c88245d939605f6a8530e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302009"
 ---
-# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Şirket içi bir işlem mağazasından Azure Data Box ile Azure depolama 'ya geçiş
+# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Veri Kutusu ile ön m'deki HDFS deposundan Azure Depolama'ya geçiş yapın
 
-Bir Data Box cihaz kullanarak Hadoop kümenizin şirket içi bir sunucudan Azure Storage 'a (BLOB depolama veya Data Lake Storage 2.) veri geçirebilirsiniz. 80-TB Data Box veya 770-TB Data Box Heavy arasından seçim yapabilirsiniz.
+Bir Veri Kutusu aygıtı kullanarak, Hadoop kümenizin şirket içi BIR HDFS deposundan verileri Azure Depolamasına (blob depolama veya Veri Gölü Depolama Gen2) aktarabilirsiniz. Bir 80-TB Veri Kutusu veya 770-TB Veri Kutusu Ağır seçim yapabilirsiniz.
 
 Bu makale, bu görevleri tamamlamanıza yardımcı olur:
 
 > [!div class="checklist"]
-> * Verilerinizi geçirmeye hazırlanın.
-> * Verilerinizi bir Data Box veya Data Box Heavy cihazına kopyalayın.
-> * Cihazı Microsoft 'a geri gönderin.
-> * Dosyalara ve dizinlere erişim izinleri uygulama (yalnızca Data Lake Storage 2.)
+> * Verilerinizi geçirmenize hazırlanın.
+> * Verilerinizi bir Veri Kutusu'na veya Veri Kutusu Ağır aygıtına kopyalayın.
+> * Aygıtı Microsoft'a geri gönderin.
+> * Dosyalara ve dizinlere erişim izinleri uygulayın (yalnızca Veri Gölü Depolama Gen2)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Geçişi tamamlayabilmeniz için bu şeylere ihtiyacınız vardır.
+Göçü tamamlamak için bunlara ihtiyacın var.
 
 * Azure Depolama hesabı.
 
-* Kaynak verilerinizi içeren bir şirket içi Hadoop kümesi.
+* Kaynak verilerinizi içeren şirket içi Hadoop kümesi.
 
-* [Azure Data Box bir cihaz](https://azure.microsoft.com/services/storage/databox/).
+* Azure [Veri Kutusu aygıtı.](https://azure.microsoft.com/services/storage/databox/)
 
-  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) veya [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)sıralayın. 
+  * Veri Kutunuzu veya [Veri Kutunuzu Ağır](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered) [Sipariş Edin.](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) 
 
-  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) veya [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) şirket içi bir ağa bağlayın.
+  * [Veri Kutunuzu](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) veya [Veri Kutusu Ağır'ınızı](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) şirket içi bir ağa bağlayın ve bağlayın.
 
-Hazırsanız başlayalım.
+Hazırsan, başlayalım.
 
-## <a name="copy-your-data-to-a-data-box-device"></a>Verilerinizi bir Data Box cihazına kopyalayın
+## <a name="copy-your-data-to-a-data-box-device"></a>Verilerinizi bir Veri Kutusu aygıtına kopyalama
 
-Verileriniz tek bir Data Box cihazına sığıyorsa, verileri Data Box cihazına kopyalayacaksınız. 
+Verileriniz tek bir Veri Kutusu aygıtına uyuyorsa, verileri Veri Kutusu aygıtına kopyalarsınız. 
 
-Veri boyutunuz Data Box cihazının kapasitesini aşarsa, [verileri birden çok Data Box cihaz arasında ayırmak için isteğe bağlı prosedürü](#appendix-split-data-across-multiple-data-box-devices) kullanın ve ardından bu adımı gerçekleştirin. 
+Veri boyutunuz Veri Kutusu aygıtının kapasitesini aşıyorsa, [verileri birden çok Veri Kutusu aygıtına bölmek için isteğe bağlı yordamı](#appendix-split-data-across-multiple-data-box-devices) kullanın ve ardından bu adımı gerçekleştirin. 
 
-Şirket içi işlem deponuzdan verileri bir Data Box cihazına kopyalamak için, birkaç şey ayarlayacaksınız ve ardından [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) aracını kullanacaksınız.
+Şirket içi HDFS deponuzdaki verileri bir Veri Kutusu aygıtına kopyalamak için birkaç şey ayarlar sınız ve ardından [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) aracını kullanırsınız.
 
-Blob/nesne depolamanın REST API 'Leri aracılığıyla Data Box cihazınıza veri kopyalamak için aşağıdaki adımları izleyin. REST API arabirimi, cihazı kümenize bir bir bir bir bir bir bir işlem deposu olarak görünür hale getirir.
+Blob/Object depolamanın REST API'leri aracılığıyla Verileri Veri Kutusu aygıtınıza kopyalamak için aşağıdaki adımları izleyin. REST API arabirimi, aygıtın kümenizde bir HDFS deposu olarak görünmesini sağlar.
 
-1. Verileri REST aracılığıyla kopyalayabilmeniz için, Data Box veya Data Box Heavy REST arabirimine bağlanmak üzere güvenlik ve bağlantı temel öğelerini yapın. Data Box yerel Web Kullanıcı arabiriminde oturum açın ve **Bağlan ve Kopyala** sayfasına gidin. Cihazınız için Azure depolama hesabında, **erişim ayarları**' nın altında **rest**' i bulun ve seçin.
+1. Verileri REST aracılığıyla kopyalamadan önce, Veri Kutusu veya Veri Kutusu Ağır'daki REST arabirimine bağlanmak için güvenlik ve bağlantı ilkellerini tanımlayın. Veri Kutusu'nun yerel web ui'sinde oturum açın ve **Bağlan ve kopyala** sayfasına gidin. Cihazınızın Azure depolama hesabına karşı, **Access ayarları**altında, REST'i bulun ve **REST'i**seçin.
 
-    !["Bağlan ve Kopyala" sayfası](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
+    !["Bağlan ve kopyala" sayfası](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. Erişim depolama hesabı ve verileri karşıya yükle iletişim kutusunda, **BLOB hizmeti uç noktasını** ve **depolama hesabı anahtarını**kopyalayın. Blob hizmeti uç noktasından `https://` ve sondaki eğik çizgiyi atlayın.
+2. Access depolama hesabı ve yükleme veri iletişim kutusunda **Blob hizmet bitiş noktasını** ve **Depolama hesabı anahtarını**kopyalayın. Blob servisi bitiş noktasından, ve `https://` sondaki eğik çizgiat atla.
 
-    Bu durumda, uç nokta: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Kullanacağınız URI 'nin konak bölümü: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Bir örnek için bkz. [HTTP ÜZERINDEN Rest 'e bağlanma](/azure/databox/data-box-deploy-copy-data-via-rest). 
+    Bu durumda, bitiş noktası: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Uri'nin kullanacağınız ana bilgisayar bölümü: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Örneğin, http üzerinden [REST'e](/azure/databox/data-box-deploy-copy-data-via-rest)nasıl bağlanılabildiğini görün. 
 
-     !["Depolama hesabına erişin ve verileri karşıya yükleyin" iletişim kutusu](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
+     !["Depolama hesabına erişin ve veri yükleme" iletişim kutusu](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Her düğümdeki `/etc/hosts` bitiş noktasını ve Data Box veya Data Box Heavy düğüm IP adresini ekleyin.
+3. Her düğüme bitiş noktası ve Veri Kutusu veya `/etc/hosts` Veri Kutusu Ağır düğüm IP adresini ekleyin.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
     ```
 
-    DNS için başka bir mekanizma kullanıyorsanız, Data Box uç noktasının çözümlenebildiğinden emin olmalısınız.
+    DNS için başka bir mekanizma kullanıyorsanız, Veri Kutusu bitiş noktasının çözülebileceğinden emin olmalısınız.
 
-4. `azjars` Shell değişkenini `hadoop-azure` ve `azure-storage` jar dosyalarının konumuna ayarlayın. Bu dosyaları, Hadoop yükleme dizini altında bulabilirsiniz.
+4. Kabuk değişkenini `azjars` `hadoop-azure` ve `azure-storage` kavanoz dosyalarının konumuna ayarlayın. Bu dosyaları Hadoop yükleme dizininin altında bulabilirsiniz.
 
-    Bu dosyaların mevcut olup olmadığını öğrenmek için şu komutu kullanın: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`. `<hadoop_install_dir>` yer tutucusunu, Hadoop 'yi yüklediğiniz dizinin yoluyla değiştirin. Tam olarak nitelenmiş yollar kullandığınızdan emin olun.
+    Bu dosyaların var olup olmadığını belirlemek `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`için aşağıdaki komutu kullanın: . Hadoop'u `<hadoop_install_dir>` yüklediğiniz yer tutucuyu dizine giden yol ile değiştirin. Tam nitelikli yollar kullandığınızdan emin olun.
 
     Örnekler:
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
-5. Veri kopyalama için kullanmak istediğiniz depolama kapsayıcısını oluşturun. Ayrıca, bu komutun bir parçası olarak bir hedef dizin belirtmeniz gerekir. Bu noktada bu bir kukla hedef dizin olabilir.
+5. Veri kopyalama için kullanmak istediğiniz depolama kapsayıcısını oluşturun. Bu komutun bir parçası olarak bir hedef dizini de belirtmelisiniz. Bu noktada bir kukla hedef dizini olabilir.
 
     ```
     hadoop fs -libjars $azjars \
@@ -88,15 +88,15 @@ Blob/nesne depolamanın REST API 'Leri aracılığıyla Data Box cihazınıza ve
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * `<blob_service_endpoint>` yer tutucusunu blob hizmeti uç noktanızın adıyla değiştirin.
+    * Yer `<blob_service_endpoint>` tutucuyu blob servis bitiş noktanızın adı ile değiştirin.
 
-    * `<account_key>` yer tutucusunu hesabınızın erişim anahtarıyla değiştirin.
+    * Yer `<account_key>` tutucuyu hesabınızın erişim anahtarıyla değiştirin.
 
-    * `<container-name>` yer tutucusunu kapsayıcının adıyla değiştirin.
+    * Yer `<container-name>` tutucuyu kabınızın adı ile değiştirin.
 
-    * `<destination_directory>` yer tutucusunu, verilerinizi kopyalamak istediğiniz dizinin adıyla değiştirin.
+    * Yer `<destination_directory>` tutucuyu verilerinizi kopyalamak istediğiniz dizinin adı ile değiştirin.
 
-6. Kapsayıcının ve dizininizin oluşturulduğundan emin olmak için bir liste komutu çalıştırın.
+6. Kapsayıcınızın ve dizininizin oluşturulduğundan emin olmak için bir liste komutu çalıştırın.
 
     ```
     hadoop fs -libjars $azjars \
@@ -105,13 +105,13 @@ Blob/nesne depolamanın REST API 'Leri aracılığıyla Data Box cihazınıza ve
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * `<blob_service_endpoint>` yer tutucusunu blob hizmeti uç noktanızın adıyla değiştirin.
+   * Yer `<blob_service_endpoint>` tutucuyu blob servis bitiş noktanızın adı ile değiştirin.
 
-   * `<account_key>` yer tutucusunu hesabınızın erişim anahtarıyla değiştirin.
+   * Yer `<account_key>` tutucuyu hesabınızın erişim anahtarıyla değiştirin.
 
-   * `<container-name>` yer tutucusunu kapsayıcının adıyla değiştirin.
+   * Yer `<container-name>` tutucuyu kabınızın adı ile değiştirin.
 
-7. Hadoop, Data Box BLOB depolama alanından daha önce oluşturduğunuz kapsayıcıya verileri kopyalayın. Kopyaladığınız Dizin bulunamazsa, komut otomatik olarak oluşturur.
+7. Hadoop HDFS'den Data Box Blob depolama alanına, daha önce oluşturduğunuz kapsayıcıya verileri kopyalayın. Kopyaladığınız dizini bulunamazsa, komut otomatik olarak oluşturur.
 
     ```
     hadoop distcp \
@@ -123,21 +123,21 @@ Blob/nesne depolamanın REST API 'Leri aracılığıyla Data Box cihazınıza ve
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * `<blob_service_endpoint>` yer tutucusunu blob hizmeti uç noktanızın adıyla değiştirin.
+    * Yer `<blob_service_endpoint>` tutucuyu blob servis bitiş noktanızın adı ile değiştirin.
 
-    * `<account_key>` yer tutucusunu hesabınızın erişim anahtarıyla değiştirin.
+    * Yer `<account_key>` tutucuyu hesabınızın erişim anahtarıyla değiştirin.
 
-    * `<container-name>` yer tutucusunu kapsayıcının adıyla değiştirin.
+    * Yer `<container-name>` tutucuyu kabınızın adı ile değiştirin.
 
-    * `<exlusion_filelist_file>` yer tutucusunu, dosya dışlamaları listenizi içeren dosyanın adıyla değiştirin.
+    * Yer `<exlusion_filelist_file>` tutucuyu dosya hariç tutma listenizi içeren dosyanın adı ile değiştirin.
 
-    * `<source_directory>` yer tutucusunu, kopyalamak istediğiniz verileri içeren dizinin adıyla değiştirin.
+    * Yer `<source_directory>` tutucuyu, kopyalamak istediğiniz verileri içeren dizin adı ile değiştirin.
 
-    * `<destination_directory>` yer tutucusunu, verilerinizi kopyalamak istediğiniz dizinin adıyla değiştirin.
+    * Yer `<destination_directory>` tutucuyu verilerinizi kopyalamak istediğiniz dizinin adı ile değiştirin.
 
-    `-libjars` seçeneği, `hadoop-azure*.jar` ve bağımlı `azure-storage*.jar` dosyalarını `distcp`kullanılabilir hale getirmek için kullanılır. Bu, bazı kümeler için zaten oluşabilir.
+    Bu `-libjars` seçenek, bağımlı `hadoop-azure*.jar` `azure-storage*.jar` dosyaları kullanılabilir hale `distcp`getirmek için kullanılır. Bu zaten bazı kümeler için oluşabilir.
 
-    Aşağıdaki örnek, `distcp` komutunun verileri kopyalamak için nasıl kullanıldığını gösterir.
+    Aşağıdaki örnek, komutun `distcp` verileri kopyalamak için nasıl kullanıldığını gösterir.
 
     ```
      hadoop distcp \
@@ -151,46 +151,46 @@ Blob/nesne depolamanın REST API 'Leri aracılığıyla Data Box cihazınıza ve
   
     Kopyalama hızını artırmak için:
 
-    * Mapto sayısını değiştirmeyi deneyin. (Yukarıdaki örnekte `m` = 4 Map, kullanılır.)
+    * Haritaperlerin sayısını değiştirmeyi deneyin. (Yukarıdaki örnekte `m` = 4 mappers kullanır.)
 
-    * Birden çok `distcp` paralel olarak çalıştırmayı deneyin.
+    * Birden çok `distcp` paralel çalıştırmayı deneyin.
 
-    * Büyük dosyaların küçük dosyaları daha iyi gerçekleştireceğini unutmayın.
+    * Büyük dosyaların küçük dosyalardan daha iyi performans gösterdiğini unutmayın.
 
-## <a name="ship-the-data-box-to-microsoft"></a>Data Box Microsoft 'a gönderin
+## <a name="ship-the-data-box-to-microsoft"></a>Veri Kutusunu Microsoft'a gönder
 
-Data Box cihazını hazırlamak ve Microsoft 'a göndermek için aşağıdaki adımları izleyin.
+Veri Kutusu aygıtını hazırlamak ve Microsoft'a sevk etmek için aşağıdaki adımları izleyin.
 
-1. İlk olarak, [Data Box veya Data Box Heavy göndermeye hazırlama](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+1. İlk olarak, [Veri Kutusu veya Veri Kutusu Ağır gemi hazırlayın.](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)
 
-2. Cihaz hazırlama işlemi tamamlandıktan sonra, ürün reçetesi dosyalarını indirin. Bu ürün reçetesini veya bildirim dosyalarını daha sonra Azure 'a yüklenen verileri doğrulamak için kullanacaksınız.
+2. Cihaz hazırlığı tamamlandıktan sonra, ÜRÜN DOSYASI dosyalarını indirin. Azure'a yüklenen verileri doğrulamak için bu PROJE veya bildirim dosyalarını daha sonra kullanırsınız.
 
-3. Cihazı kapatın ve kabloları kaldırın.
+3. Cihazı kapatın ve kabloları çıkarın.
 
 4. UPS ile teslim alma zamanı planlayın.
 
-    * Data Box cihazlar için bkz. [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)gönderme.
+    * Veri Kutusu aygıtları için Bkz. [Veri Kutunuzu İkiyle.](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)
 
-    * Data Box Heavy cihazlar için bkz. [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)gönderme.
+    * Veri Kutusu Ağır cihazları için [bkz.](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)
 
-5. Microsoft cihazınızı aldıktan sonra veri merkezi ağına bağlanır ve veriler cihaz sırasını yerleştirdiğinizde belirttiğiniz depolama hesabına yüklenir. Tüm verilerinizin Azure 'a yüklendiğini, BOM dosyalarına karşı doğrulayın. 
+5. Microsoft aygıtınızı aldıktan sonra veri merkezi ağına bağlanır ve veriler aygıt siparişini verirken belirttiğiniz depolama hesabına yüklenir. Tüm verilerinizin Azure'a yüklendiğini BOM dosyalarına karşı doğrulayın. 
 
-## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>Dosyalara ve dizinlere erişim izinleri uygulama (yalnızca Data Lake Storage 2.)
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>Dosyalara ve dizinlere erişim izinleri uygulayın (yalnızca Veri Gölü Depolama Gen2)
 
-Azure depolama hesabınızda zaten verileriniz var. Artık dosyalara ve dizinlere erişim izinleri uygulayacaksınız.
+Azure Depolama hesabınızda zaten veri var. Şimdi dosyalara ve dizinlere erişim izinleri uygulayacaksınız.
 
 > [!NOTE]
-> Bu adım yalnızca veri depolama alanı olarak Azure Data Lake Storage 2. kullanıyorsanız gereklidir. Veri depeti için hiyerarşik ad alanı olmadan yalnızca bir BLOB depolama hesabı kullanıyorsanız, bu bölümü atlayabilirsiniz.
+> Bu adım, yalnızca veri deponuz olarak Azure Veri Gölü Depolama Gen2'yi kullanıyorsanız gereklidir. Veri deponuz olarak hiyerarşik ad alanı olmayan yalnızca bir blob depolama hesabı kullanıyorsanız, bu bölümü atlayabilirsiniz.
 
-### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage 2. hesabınız için bir hizmet sorumlusu oluşturma
+### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Azure Veri Gölü Depolama Gen2 hesabınız için bir hizmet ilkesi oluşturun
 
-Hizmet sorumlusu oluşturmak için, bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Bir hizmet ilkesi oluşturmak için [bkz: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet ilkesi oluşturmak için portalı kullanma.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
 
-* Makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) bölümünde bulunan adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
+* Uygulamanın bir [rol bölümüne atamasını](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) sağlarken, **Depolama Blob Veri Katılımcısı** rolünü hizmet ilkesine atadığından emin olun.
 
-* Makalenin [oturum açmak için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, uygulama kimliğini ve istemci gizli değerlerini bir metin dosyasına kaydedin. Bu kadar yakında ihtiyacınız olacak.
+* Makalenin bölümünde [imzalamak için Alma değerlerindeki](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) adımları gerçekleştirirken, uygulama kimliğini ve istemci gizli değerlerini bir metin dosyasına kaydedin. Yakında bunlara ihtiyacın olacak.
 
-### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Bir kopyalanan dosyalar listesini izinleriyle oluşturma
+### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>İzinleriyle kopyalanan dosyaların listesini oluşturma
 
 Şirket içi Hadoop kümesinden şu komutu çalıştırın:
 
@@ -199,14 +199,14 @@ Hizmet sorumlusu oluşturmak için, bkz. [nasıl yapılır: portalı kullanarak 
 sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 ```
 
-Bu komut, bir kopyalanan dosya listesini izinleriyle birlikte oluşturur.
+Bu komut, kendi izinleri ile kopyalanan dosyaların bir listesini oluşturur.
 
 > [!NOTE]
-> Bu komutun çalışması, bu komutun çalıştırılması uzun sürebilir.
+> HDFS'deki dosya sayısına bağlı olarak, bu komutun çalıştırılaması uzun sürebilir.
 
-### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Kimliklerin bir listesini oluşturun ve bunları Azure Active Directory (Ekle) kimliklere eşleyin
+### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Kimliklerin bir listesini oluşturun ve bunları Azure Etkin Dizini (ADD) kimliklerle eşleyin
 
-1. `copy-acls.py` betiğini indirin. Bu makalenin [yardımcı betiklerine bakın ve kenar düğümünüz tarafından çalıştırılacak şekilde ayarlama](#download-helper-scripts) bölümüne bakın.
+1. Komut `copy-acls.py` dosyasını indirin. İndir [yardımcı komut dosyalarını görün ve kenar düğümünüzü](#download-helper-scripts) bu makalenin bir bölümünü çalıştırmak için ayarlayın.
 
 2. Benzersiz kimliklerin bir listesini oluşturmak için bu komutu çalıştırın.
 
@@ -215,35 +215,35 @@ Bu komut, bir kopyalanan dosya listesini izinleriyle birlikte oluşturur.
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Bu betik, EKLENTI tabanlı kimliklere eşlemeniz gereken kimlikleri içeren `id_map.json` adlı bir dosya oluşturur.
+   Bu komut dosyası, `id_map.json` ADD tabanlı kimlikler için eşlenebilmeniz gereken kimlikleri içeren adlandırılmış bir dosya oluşturur.
 
-3. `id_map.json` dosyasını bir metin düzenleyicisinde açın.
+3. Dosyayı `id_map.json` metin düzenleyicisinde açın.
 
-4. Dosyada görüntülenen her JSON nesnesi için, uygun eşlenmiş kimlikle bir AAD Kullanıcı asıl adı (UPN) veya ObjectID (OID) `target` özniteliğini güncelleştirin. İşiniz bittiğinde dosyayı kaydedin. Sonraki adımda bu dosyaya ihtiyacınız olacaktır.
+4. Dosyada görünen her JSON nesnesi `target` için, uygun eşlenen kimlikle bir AAD Kullanıcı Adı (UPN) veya ObjectId (OID) özniteliğini güncelleştirin. Bitirdikten sonra dosyayı kaydedin. Bir sonraki adımda bu dosyaya ihtiyacınız olacak.
 
-### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Kopyalanan dosyalara izinler uygulama ve kimlik eşlemelerini uygulama
+### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Kopyalanan dosyalara izin uygulama ve kimlik eşlemeleri uygulama
 
-Data Lake Storage 2. hesabına kopyaladığınız verilere izinler uygulamak için bu komutu çalıştırın:
+Veri Gölü Depolama Gen2 hesabına kopyaladığınız verilere izin uygulamak için bu komutu çalıştırın:
 
 ```bash
 ./copy-acls.py -s ./filelist.json -i ./id_map.json  -A <storage-account-name> -C <container-name> --dest-spn-id <application-id>  --dest-spn-secret <client-secret>
 ```
 
-* `<storage-account-name>` yer tutucusunu depolama hesabınızın adıyla değiştirin.
+* Yer `<storage-account-name>` tutucuyu depolama hesabınızın adı ile değiştirin.
 
-* `<container-name>` yer tutucusunu kapsayıcının adıyla değiştirin.
+* Yer `<container-name>` tutucuyu kabınızın adı ile değiştirin.
 
-* `<application-id>` ve `<client-secret>` yer tutucuları, hizmet sorumlusunu oluştururken topladığınız uygulama KIMLIĞI ve istemci gizli anahtarı ile değiştirin.
+* Hizmet `<application-id>` ilkesini oluşturduğunuzda topladığınız uygulama kimliği ve istemci sırrıile yer `<client-secret>` tutucuları değiştirin.
 
-## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Ek: verileri birden çok Data Box cihazda bölme
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Ek: Verileri birden çok Veri Kutusu aygıtıarasında bölme
 
-Verilerinizi Data Box bir cihaza taşımadan önce bazı yardımcı betikleri indirmeniz, verilerinizin bir Data Box cihazına sığacak şekilde düzenlendiğinden emin olmanız ve gereksiz dosyaları dışarıda bırakmanız gerekir.
+Verilerinizi bir Veri Kutusu aygıtına taşımadan önce, bazı yardımcı komut dosyaları indirmeniz, verilerinizin bir Veri Kutusu aygıtına sığacak şekilde düzenlendiğinden emin olmanız ve gereksiz dosyaları hariç tutmanız gerekir.
 
 <a id="download-helper-scripts" />
 
-### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Yardımcı betikleri indirin ve kenar düğümünüz tarafından çalıştırılacak şekilde ayarlayın
+### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Yardımcı komut dosyalarını indirin ve kenar düğümünüzü çalıştıracak şekilde ayarlayın
 
-1. Şirket içi Hadoop kümenizin kenarından veya baş düğümünden şu komutu çalıştırın:
+1. Şirket içi Hadoop kümenizin kenar veya baş düğümünüzden şu komutu çalıştırın:
 
    ```bash
    
@@ -251,23 +251,23 @@ Verilerinizi Data Box bir cihaza taşımadan önce bazı yardımcı betikleri in
    cd databox-adls-loader
    ```
 
-   Bu komut, yardımcı betikleri içeren GitHub deposunu klonlar.
+   Bu komut, yardımcı komut ları içeren GitHub deposunu klonlar.
 
-2. Yerel bilgisayarınızda [JQ](https://stedolan.github.io/jq/) paketinin yüklü olduğundan emin olun.
+2. JQ paketinin [jq](https://stedolan.github.io/jq/) yerel bilgisayarınıza yüklendiğinden emin olun.
 
    ```bash
    
    sudo apt-get install jq
    ```
 
-3. [İstekler](https://2.python-requests.org/en/master/) Python paketini yükler.
+3. [İstekler](https://2.python-requests.org/en/master/) python paketini yükleyin.
 
    ```bash
    
    pip install requests
    ```
 
-4. Gerekli betiklerdeki yürütme izinlerini ayarlayın.
+4. Gerekli komut dosyaları üzerinde yürütme izinleri ayarlayın.
 
    ```bash
    
@@ -275,13 +275,13 @@ Verilerinizi Data Box bir cihaza taşımadan önce bazı yardımcı betikleri in
 
    ```
 
-### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>Verilerinizin Data Box bir cihaza sığacak şekilde düzenlendiğinden emin olun
+### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>Verilerinizin bir Veri Kutusu aygıtına sığacak şekilde düzenlendiğinden emin olun
 
-Verilerinizin boyutu tek bir Data Box cihazının boyutunu aşarsa, dosyaları birden çok Data Box cihazında depolayabilmeniz için gruplara ayırabilirsiniz.
+Verilerinizin boyutu tek bir Veri Kutusu aygıtının boyutunu aşıyorsa, dosyaları birden çok Veri Kutusu aygıtında depolayabildiğiniz gruplara bölebilirsiniz.
 
-Verileriniz bir tek Data Box cihazının boyutunu aşmazsa sonraki bölüme geçebilirsiniz.
+Verileriniz bir singe Veri Kutusu aygıtının boyutunu aşarsa, bir sonraki bölüme geçebilirsiniz.
 
-1. Yükseltilmiş izinlerle, önceki bölümde yer alan kılavuzu izleyerek indirdiğiniz `generate-file-list` betiğini çalıştırın.
+1. Yükseltilmiş izinlerle, önceki `generate-file-list` bölümdeki kılavuzu izleyerek indirdiğiniz komut dosyasını çalıştırın.
 
    Komut parametrelerinin açıklaması aşağıda verilmiştir:
 
@@ -311,17 +311,17 @@ Verileriniz bir tek Data Box cihazının boyutunu aşmazsa sonraki bölüme geç
                         Level of log information to output. Default is 'INFO'.
    ```
 
-2. Oluşturulan dosya listelerini, [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) işi tarafından erişilebilmeleri için, bu şekilde bir dosyaya kopyalayın.
+2. Oluşturulan dosya [listelerini, DIsCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) işi için erişilebilmeleri için HDFS'ye kopyalayın.
 
    ```
    hadoop fs -copyFromLocal {filelist_pattern} /[hdfs directory]
    ```
 
-### <a name="exclude-unnecessary-files"></a>Gereksiz dosyaları Dışla
+### <a name="exclude-unnecessary-files"></a>Gereksiz dosyaları hariç tutma
 
-DisCp işinden bazı dizinleri hariç bırakmanız gerekir. Örneğin, kümeyi çalıştıran durum bilgilerini içeren dizinleri hariç tutun.
+Bazı dizinleri DisCp işinden çıkarmanız gerekir. Örneğin, kümenin çalışmasını sağlayan durum bilgilerini içeren dizinleri hariç tutun.
 
-DistCp işini başlatmayı planladığınız şirket içi Hadoop kümesinde dışlamak istediğiniz dizinlerin listesini belirten bir dosya oluşturun.
+DistCp işini başlatmayı planladığınız şirket içi Hadoop kümesinde, hariç tutmak istediğiniz dizinlistesini belirten bir dosya oluşturun.
 
 Bir örneği aşağıda verilmiştir:
 
@@ -332,4 +332,4 @@ Bir örneği aşağıda verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Data Lake Storage 2. HDInsight kümeleri ile nasıl çalıştığını öğrenin. Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Data Lake Storage Gen2'nin HDInsight kümeleriyle nasıl çalıştığını öğrenin. Bkz. [Azure HDInsight kümeleriyle Azure Veri Gölü Depolama Gen2'yi kullanın.](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)

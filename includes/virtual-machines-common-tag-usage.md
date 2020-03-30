@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188309"
 ---
-## <a name="viewing-your-tags-in-the-usage-details"></a>Kullanım ayrıntılarında etiketlerinizi görüntüleme
-Kaynak Yöneticisi dağıtım modelindeki Işlem, ağ ve depolama kaynaklarına yerleştirilmiş Etiketler, [faturalandırma portalındaki](https://account.windowsazure.com/)kullanım ayrıntılarınızda doldurulacaktır.
+## <a name="viewing-your-tags-in-the-usage-details"></a>Etiketlerinizi kullanım ayrıntılarında görüntüleme
+Kaynak Yöneticisi dağıtım modelinde Bilgi İşlem, Ağ ve Depolama kaynaklarına yerleştirilen [etiketler, fatura portalındaki](https://account.windowsazure.com/)kullanım ayrıntılarınızda doldurulur.
 
-Aboneliğinizdeki kullanım ayrıntılarını görüntülemek için **kullanım ayrıntılarını yükle** ' ye tıklayın.
+Aboneliğinizdeki kullanım ayrıntılarını görüntülemek için **Kullanım Ayrıntılarını İndir'e** tıklayın.
 
-![Azure portal kullanım ayrıntıları](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Azure portalında kullanım ayrıntıları](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Faturalandırma deyiminizi ve **sürüm 2** kullanım ayrıntılarını seçin:
+Fatura ekstrenizi ve **Sürüm 2** kullanım ayrıntılarını seçin:
 
-![Sürüm 2 Önizleme kullanım ayrıntıları Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![Azure portalında Sürüm 2 Önizleme Kullanım Ayrıntıları](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-Kullanım ayrıntılarından, Etiketler sütunundaki tüm etiketleri görebilirsiniz:
+Kullanım ayrıntılarından Etiketler **sütunundaki** tüm etiketleri görebilirsiniz:
 
-![Azure portal Etiketler sütunu](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![Azure portalında etiketler sütunu](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-Bu Etiketler kullanım ile birlikte analiz edilirken kuruluşlar, tüketim verileri hakkında yeni Öngörüler elde edebilir.
+Kuruluşlar, bu etiketleri kullanımla birlikte analiz ederek tüketim verilerine yeni bilgiler edinebilecektir.
 

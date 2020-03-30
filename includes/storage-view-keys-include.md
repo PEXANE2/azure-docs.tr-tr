@@ -9,13 +9,13 @@ ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 9333bb36971fc28a23a443e50d191abeef05b758
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208173"
 ---
-Depolama hesabı erişim anahtarlarınızı veya Bağlantı dizenizi Azure portal görüntülemek ve kopyalamak için:
+Azure portalından depolama hesabı erişim anahtarlarınızı veya bağlantı dizenizi görüntülemek ve kopyalamak için:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
 2. Depolama hesabınızı bulun.
@@ -23,6 +23,6 @@ Depolama hesabı erişim anahtarlarınızı veya Bağlantı dizenizi Azure porta
 4. **key1** bölümünde **Anahtar** değerini bulun ve **Kopyala** düğmesine tıklayarak hesap anahtarını kopyalayın.
 5. Alternatif olarak, tüm bağlantı dizesini kopyalayabilirsiniz. **key1** bölümünde **Bağlantı dizesi** değerini bulun ve **Kopyala** düğmesine tıklayarak bağlantı dizesini kopyalayın.
 
-    ![Azure portal erişim tuşlarının nasıl görüntüleneceğini gösteren ekran görüntüsü](media/storage-view-keys-include/portal-connection-string.png)
+    ![Azure portalında erişim anahtarlarını nasıl görüntüleyinen ekran görüntüsü](media/storage-view-keys-include/portal-connection-string.png)
 
-Azure depolamaya erişmek için her iki anahtarı da kullanabilirsiniz, ancak genel olarak ilk anahtarı kullanmak iyi bir uygulamadır ve anahtarları döndürürken ikinci anahtarın kullanımını ayırabilirsiniz.
+Azure Depolama'ya erişmek için her iki anahtarı da kullanabilirsiniz, ancak genel olarak ilk anahtarı kullanmak ve anahtarları döndürürken ikinci anahtarın kullanımını ayırmak iyi bir uygulamadır.

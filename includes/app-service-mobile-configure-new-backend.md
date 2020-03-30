@@ -9,95 +9,95 @@ ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
 ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67440206"
 ---
-1. Aşağıdaki platformlar için SDK hızlı başlangıçları istemciyi indirin:
+1. Aşağıdaki platformlar için istemci SDK quickstarts indirin:
     
-    [iOS (Objective-C)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS)  
+    [iOS (Amaç-C)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS)  
     [iOS (Swift)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS-Swift)  
     [Android (Java)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/android)  
     [Xamarin.iOS](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.iOS)  
     [Xamarin.Android](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.android)  
     [Xamarin.Forms](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.forms)  
     [Cordova](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/cordova)  
-    [Windows (C#)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/windows-uwp-cs)  
+    [Pencereler (C#)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/windows-uwp-cs)  
 
     > [!NOTE]
-    > İOS projesi kullanıyorsanız indirmeniz gerekir "azuresdk-iOS -\*.zip" den [son GitHub sürüm](https://github.com/Azure/azure-mobile-apps-ios-client/releases/latest). Sıkıştırmasını açın ve eklemek `MicrosoftAzureMobile.framework` projenin kök dosya.
+    > iOS projesini kullanıyorsanız, [en son GitHub sürümünden](https://github.com/Azure/azure-mobile-apps-ios-client/releases/latest)\*"azuresdk-iOS- .zip" indirmeniz gerekir. Zip'i açın `MicrosoftAzureMobile.framework` ve dosyayı projenin köküne ekleyin.
     >
 
-2. Veritabanı bağlantısı eklemek veya mevcut bir bağlantısı gerekir. İlk olarak, bir veri deposu oluşturmak veya mevcut bir belirler.
+2. Bir veritabanı bağlantısı eklemeniz veya varolan bir bağlantıya bağlanmanız gerekir. İlk olarak, bir veri deposu oluşturup oluşturmayacağınızı veya varolan bir tane kullanıp kullanmayacağınıbelirleyin.
 
-    - **Yeni veri deposu Oluştur**: Bir veri deposu oluşturmak için kullanacaksanız, şu hızlı başlangıcı kullanın:
+    - **Yeni bir veri deposu oluşturun**: Bir veri deposu oluşturacaksanız, aşağıdaki hızlı başlatmayı kullanın:
 
-        [Hızlı Başlangıç: Azure SQL veritabanı'nda tek veritabanları ile çalışmaya başlama](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-quickstart-guide)
+        [Quickstart: Azure SQL Veritabanı'nda tek veritabanları yla başlarken](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-quickstart-guide)
 
-    - **Varolan bir veri kaynağına**: Varolan bir veritabanı bağlantısı kullanmak istiyorsanız aşağıdaki yönergeleri izleyin.
+    - **Varolan veri kaynağı**: Varolan bir veritabanı bağlantısını kullanmak istiyorsanız aşağıdaki yönergeleri izleyin
 
-        1. SQL veritabanı bağlantı dizesi biçimi- `Data Source=tcp:{your_SQLServer},{port};Initial Catalog={your_catalogue};User ID={your_username};Password={your_password}`
+        1. SQL Veritabanı Bağlantı String formatı -`Data Source=tcp:{your_SQLServer},{port};Initial Catalog={your_catalogue};User ID={your_username};Password={your_password}`
 
-           **{your_SQLServer}**  Ad sunucusunun bu veritabanınıza ilişkin genel bakış sayfasında bulunabilir ve genellikle "server_name.database.windows.net" biçiminde.
-            **{port}**  genellikle 1433.
-            **{your_catalogue}**  Veritabanının adı.
-            **{your_username}**  Veritabanınıza erişmek için kullanıcı adı.
-            **{your_password}**  Veritabanınıza erişmek için parola.
+           **{your_SQLServer}** Sunucunun adı, bu veritabanınız için genel bakış sayfasında bulunabilir ve genellikle "server_name.database.windows.net" şeklindedir.
+            **{port}** genellikle 1433.
+            **{your_catalogue}** Veritabanının adı.
+            **{your_username}** Veritabanınıza erişmek için kullanıcı adı.
+            **{your_password}** Veritabanınıza erişmek için parola.
 
-            [SQL bağlantı dizesi biçimi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings)
+            [SQL Connection String formatı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings)
 
-        2. Bağlantı dizesi ekleyin, **mobil uygulama** App Service'de yönetebileceğiniz bağlantı dizelerini uygulamanızın kullanarak **yapılandırma** menüsündeki seçeneği.
+        2. **Mobil uygulamanıza** bağlantı dizesini ekleyin Uygulama Hizmeti'nde, menüdeki **Yapılandırma** seçeneğini kullanarak uygulamanızın bağlantı dizelerini yönetebilirsiniz.
 
-            Bir bağlantı dizesi eklemek için:
+            Bağlantı dizesi eklemek için:
 
-            1. Tıklayarak **uygulama ayarları** sekmesi.
+            1. **Uygulama ayarları** sekmesine tıklayın.
 
-            2. Tıklayarak **[+] yeni bağlantı dizesi**.
+            2. **[+] Yeni bağlantı dizesi**tıklayın.
 
-            3. Sağlamanız gerekir **adı**, **değer** ve **türü** , bağlantı dizesi.
+            3. Bağlantı dizeniz için **Ad,** **Değer** ve **Tür** sağlamanız gerekir.
 
-            4. Tür **adı** olarak `MS_TableConnectionString`
+            4. **Tür Adı** olarak`MS_TableConnectionString`
 
-            5. Değer, önce adımda oluşturulmuş bağlantı dizesi olmalıdır.
+            5. Değer, daha önce adımda oluşturduğunuz bağlantı dizesi olmalıdır.
 
-            6. Bir SQL Azure veritabanına bir bağlantı dizesi ekliyorsanız seçin **SQLAzure** altında **türü**.
+            6. SQL Azure veritabanına bağlantı dizesi **ekliyorsanız, SQLAzure'u yazın**altında seçin. **SQLAzure**
 
-3. Azure Mobile Apps SDK'ları için .NET ve Node.js Arka Uçlara sahiptir.
+3. Azure Mobile Apps'ta .NET ve Node.js arka uçları için SDK'lar vardır.
 
-   - **Node.js arka ucu**
+   - **Düğüm.js arka uç**
     
-     Node.js hızlı başlangıç uygulamasını kullanacaksanız, aşağıdaki yönergeleri izleyin.
+     Node.js quickstart uygulamasını kullanacaksanız, aşağıdaki talimatları uygulayın.
 
-     1. Azure portalında Git **kolay tablolar**, bu ekranı görürsünüz.
+     1. Azure portalında Kolay **Tablolar'a**gidin, bu ekranı göreceksiniz.
       
-        ![Düğüm kolay tablolar](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
+        ![Düğüm Kolay Tablolar](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
 
-     2. Emin SQL bağlantı dizesi zaten eklenir **yapılandırma** sekmesi. Sonra da kutuyu işaretleyin **bu tüm site içeriğinin üzerine yazacağını kabul ediyorum** tıklatıp **Todoıtem tablosu oluştur** düğmesi.
+     2. SQL bağlantı dizesinin **Yapılandırma** sekmesine zaten eklenmiştir. Daha sonra **bunun tüm site içeriğinin üzerine yazacağını kabul ettiğim** kutusunu işaretleyin ve **TodoItem tablo oluştur** düğmesini tıklatın.
      
-        ![Düğüm kolay tablolar yapılandırma](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
+        ![Düğüm Kolay Tablolar Yapılandırması](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
 
-     3. İçinde **kolay tablolar**, tıklayın **+ Ekle** düğmesi.
+     3. **Kolay Tablolar'da** **+ Ekle** düğmesini tıklatın.
     
-        ![Kolay tablolar düğümü Ekle düğmesi](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
+        ![Düğüm Kolay Tablolar Ekle Düğmesi](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
 
-     4. Oluşturma bir `TodoItem` anonim erişimi olan tablo.
+     4. Anonim `TodoItem` erişimi olan bir tablo oluşturun.
       
-        ![Düğüm kolay tablolar tablo ekleme](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
+        ![Düğüm Kolay Tablolar Tablo Ekle](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
 
    - **.NET arka ucu**
     
-        .NET hızlı başlangıç uygulaması kullanacaksanız, aşağıdaki yönergeleri izleyin.
+        .NET quickstart uygulamasını kullanacaksanız, aşağıdaki talimatları uygulayın.
 
-        1. Azure Mobile Apps .NET sunucu projesinden indirmeniz [azure mobile apps quickstarts depo](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/dotnet/Quickstart).
+        1. Azure Mobil Uygulamalar .NET sunucu projesini [azure-mobile-apps-quickstarts deposundan](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/dotnet/Quickstart)indirin.
 
-        2. Visual Studio'da yerel olarak .NET sunucu projesi oluşturun.
+        2. .NET sunucu projesini Visual Studio'da yerel olarak oluşturun.
 
-        3. Visual Studio'da Çözüm Gezgini'ni açın, sağ `ZUMOAPPNAMEService` proje, tıklayın **Yayımla**, görürsünüz bir `Publish to App Service` penceresi. Mac üzerinde çalışıyorsanız, uygulamayı dağıtmak için diğer yöntemlere göz atın [burada](https://docs.microsoft.com/azure/app-service/deploy-local-git).
+        3. Visual Studio'da Çözüm Gezgini'ni `ZUMOAPPNAMEService` açın, projeye sağ tıklayın, **Yayımla'yı**tıklatın, bir `Publish to App Service` pencere göreceksiniz. Mac üzerinde çalışıyorsanız, uygulamayı [burada](https://docs.microsoft.com/azure/app-service/deploy-local-git)dağıtmanın diğer yollarına göz atın.
         
-           ![Visual studio yayımlama](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
+           ![Görsel stüdyo yayıncılığı](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
 
-        4. Seçin **App Service** hedef yayımlama gibi ardından **var olanı Seç**, ardından **Yayımla** pencerenin alt kısmındaki düğmesi.
+        4. Hedef olarak **Uygulama Hizmetini** seçin, ardından **Varolan'ı Seç'i**tıklatın ve pencerenin altındaki **Yayımla** düğmesini tıklatın.
 
-        5. Visual Studio ile ilk Azure aboneliğinizle oturum gerekecektir. Seçin `Subscription`, `Resource Group`ve ardından uygulamanızın adını seçin. Hazır olduğunuzda tıklayın **Tamam**, bu olan .NET sunucu projesini App Service arka uca yerel olarak dağıtır. Dağıtım tamamlandığında, yönlendirilecek `http://{zumoappname}.azurewebsites.net/` tarayıcıda.                   
+        5. Önce Azure aboneliğinizle Visual Studio'ya giriş yapmanız gerekir. 'yi `Subscription` `Resource Group`ve uygulamanızın adını seçin. Hazır olduğunuzda, **Tamam'ı**tıklatın, bu uygulama hizmeti arka ucuna yerel olarak sahip olduğunuz .NET sunucu projesini dağıtacaktır. Dağıtım bittiğinde, tarayıcıya `http://{zumoappname}.azurewebsites.net/` yönlendirilirsiniz.                   

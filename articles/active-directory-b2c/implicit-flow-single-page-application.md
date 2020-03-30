@@ -1,7 +1,7 @@
 ---
-title: Örtük akış kullanan tek sayfalı oturum açma
+title: Örtük akışı kullanarak tek sayfaoturum açma
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C ile OAuth 2,0 örtük akışını kullanarak tek sayfalı oturum açmayı nasıl ekleyeceğinizi öğrenin.
+description: Azure Active Directory B2C ile OAuth 2.0 örtülü akışını kullanarak tek sayfalı oturum açma eklemeyi öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,33 +12,33 @@ ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37b59c2a23a8f00e8376be2ac4a7b35a6d58aa28
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399009"
 ---
-# <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OAuth 2,0 örtük akışını kullanarak tek sayfalı oturum açma
+# <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'deki OAuth 2.0 örtük akışını kullanarak tek sayfaoturum açma
 
-Birçok modern uygulamanın, birincil olarak JavaScript 'te yazılmış tek sayfalı bir uygulama ön ucu vardır. Uygulama genellikle tepki, angular veya Vue. js gibi bir çerçeve kullanılarak yazılır. Birincil olarak bir tarayıcıda çalışan tek sayfalı uygulamalar ve diğer JavaScript uygulamaları, kimlik doğrulaması için bazı ek güçlüklere sahiptir:
+Birçok modern uygulama öncelikle JavaScript yazılmış bir tek sayfalı uygulama ön uç var. Genellikle, uygulama React, Angular veya Vue.js gibi bir çerçeve kullanılarak yazılır. Tek sayfalı uygulamalar ve öncelikle bir tarayıcıda çalışan diğer JavaScript uygulamaları nın kimlik doğrulama için bazı ek zorlukları vardır:
 
-- Bu uygulamaların güvenlik özellikleri geleneksel sunucu tabanlı Web uygulamalarından farklıdır.
-- Birçok yetkilendirme sunucusu ve kimlik sağlayıcısı, çıkış noktaları arası kaynak paylaşımı (CORS) isteklerini desteklemez.
-- Tam sayfa tarayıcı yeniden yönlendirmeleri, uygulamanın dışında yeniden yönlendirilir ve Kullanıcı deneyimine sahip olabilir.
+- Bu uygulamaların güvenlik özellikleri geleneksel sunucu tabanlı web uygulamalarından farklıdır.
+- Birçok yetkilendirme sunucusu ve kimlik sağlayıcısı, kökenler arası kaynak paylaşımı (CORS) isteklerini desteklemez.
+- Tam sayfa tarayıcı uygulamadan uzağa yönlendirir kullanıcı deneyimine invaziv olabilir.
 
-Bu uygulamaları desteklemek için Azure Active Directory B2C (Azure AD B2C) OAuth 2,0 örtük akışını kullanır. OAuth 2,0 yetkilendirmesi dolaylı verme akışı, [oauth 2,0 belirtiminin 4,2 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. Örtük akışta, uygulama herhangi bir sunucudan sunucuya Exchange olmadan belirteçleri doğrudan Azure Active Directory (Azure AD) yetkilendirme uç noktasından alır. Tüm kimlik doğrulama mantığı ve oturum işleme, tam olarak JavaScript istemcisinde veya bir sayfa yeniden yönlendirme ya da bir açılır kutu ile yapılır.
+Bu uygulamaları desteklemek için Azure Active Directory B2C (Azure AD B2C), OAuth 2.0 örtük akışını kullanır. OAuth 2.0 yetki örtülü hibe [akışı, OAuth 2.0 belirtiminin 4.2 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmıştır. Örtülü akışta, uygulama doğrudan Azure Active Directory 'den (Azure AD) herhangi bir sunucu-sunucu değişimi olmaksızın bitiş noktası yetkilendirmesinden belirteçler alır. Tüm kimlik doğrulama mantığı ve oturum işleme tamamen JavaScript istemcisinde bir sayfa yönlendirme veya açılır kutu ile yapılır.
 
-Azure AD B2C, standart OAuth 2,0 örtük akışını basit kimlik doğrulamasından ve yetkilendirmeye genişletir. Azure AD B2C, [ilke parametresini](user-flow-overview.md)tanıtır. İlke parametresiyle, uygulamanıza kaydolma, oturum açma ve profil yönetimi Kullanıcı akışları gibi ilkeler eklemek için OAuth 2,0 kullanabilirsiniz. Bu makaledeki örnek HTTP isteklerinde, **{Tenant}. onmicrosoft. com** örnek olarak kullanılır. `{tenant}`, varsa kiracınızın adıyla değiştirin ve ayrıca bir Kullanıcı akışı oluşturmuş olursunuz.
+Azure AD B2C, standart OAuth 2.0 örtük akışını basit kimlik doğrulama ve yetkilendirmeden daha fazlasına genişletir. Azure AD B2C [ilke parametresini](user-flow-overview.md)tanıtir. İlke parametresi ile, uygulamanıza kaydolma, kaydolma ve profil yönetimi kullanıcı akışları gibi ilkeler eklemek için OAuth 2.0'ı kullanabilirsiniz. Bu makaledeki HTTP istekleri örneğinde **, {tenant}.onmicrosoft.com** örnek olarak kullanılır. Varsa `{tenant}` ve aynı zamanda bir kullanıcı akışı oluşturduysanız kiracınızın adı ile değiştirin.
 
-Örtük oturum açma akışı aşağıdaki şekilde görünür. Her adım makalede daha sonra ayrıntılı olarak açıklanmaktadır.
+Örtük oturum açma akışı aşağıdaki şekilde bir şeye benzer. Her adım daha sonra makalede ayrıntılı olarak açıklanmıştır.
 
-![OpenID Connect örtük akışını gösteren kulvar stili diyagram](./media/implicit-flow-single-page-application/convergence_scenarios_implicit.png)
+![OpenID Connect örtük akışını gösteren şerit tarzı diyagram](./media/implicit-flow-single-page-application/convergence_scenarios_implicit.png)
 
-## <a name="send-authentication-requests"></a>Kimlik doğrulama isteklerini gönder
+## <a name="send-authentication-requests"></a>Kimlik doğrulama istekleri gönderme
 
-Web uygulamanızın kullanıcı kimliğini doğrulaması ve bir Kullanıcı akışı çalıştırması gerektiğinde, kullanıcıyı `/authorize` uç noktasına yönlendirebilir. Kullanıcı, Kullanıcı akışına bağlı olarak eylem gerçekleştirir.
+Web uygulamanızın kullanıcının kimliğini doğrulaması ve kullanıcı akışını çalıştırması gerektiğinde, `/authorize` kullanıcıyı bitiş noktasına yönlendirebilir. Kullanıcı akışına bağlı olarak harekete geçer.
 
-Bu istekte istemci, `scope` parametresindeki kullanıcıdan ve Kullanıcı akışının çalışması için gereken izinleri gösterir. İsteğin nasıl çalıştığına ilişkin bir fikir almak için, isteği bir tarayıcıya yapıştırmayı ve çalıştırmayı deneyin. `{tenant}`, Azure AD B2C kiracınızın adıyla değiştirin. `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`, daha önce kiracınızda kaydettiğiniz uygulamanın uygulama KIMLIĞIYLE değiştirin. `{policy}`, kiracınızda oluşturduğunuz bir ilkenin adıyla değiştirin, örneğin `b2c_1_sign_in`.
+Bu istekte, istemci `scope` parametrede kullanıcıdan alması gereken izinleri ve çalışacak kullanıcı akışını gösterir. İsteğin nasıl çalıştığı hakkında bilgi almak için, isteği bir tarayıcıya yapıştırmayı ve çalıştırmayı deneyin. Azure `{tenant}` AD B2C kiracınızın adıyla değiştirin. Kiracınızda daha önce kaydolduğunuz uygulamanın uygulama kimliğiyle değiştirin. `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` Örneğin, `{policy}` `b2c_1_sign_in`kiracınızda oluşturduğunuz bir ilkenin adı ile değiştirin.
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -53,23 +53,23 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parametre | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-|Kiracı| Yes | Azure AD B2C kiracınızın adı|
-|ilkesinin| Yes| Çalıştırılacak Kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz Kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in`, `b2c_1_sign_up`veya `b2c_1_edit_profile`. |
-| client_id | Yes | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
-| response_type | Yes | OpenID Connect oturum açma `id_token` içermelidir. Ayrıca `token`yanıt türünü de içerebilir. `token`kullanıyorsanız, uygulamanız yetkilendirme uç noktası için ikinci bir istek yapmadan yetkilendirme uç noktasından hemen bir erişim belirteci alabilir.  `token` yanıt türünü kullanırsanız, `scope` parametresi, belirtecinin hangi kaynağa verilmeyeceğini belirten bir kapsam içermelidir. |
-| redirect_uri | Hayır | Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
-| response_mode | Hayır | Elde edilen belirteci uygulamanıza geri göndermek için kullanılacak yöntemi belirtir.  Örtük akışlar için `fragment`kullanın. |
-| scope | Yes | Kapsamların boşlukla ayrılmış listesi. Tek bir kapsam değeri, Azure AD 'ye, İstenen izinlerin her ikisi de belirtir. `openid` kapsam, kullanıcıya oturum açma ve KIMLIK belirteçleri biçiminde kullanıcı hakkında veri edinme iznini gösterir. `offline_access` kapsamı Web Apps için isteğe bağlıdır. Uygulamanızın kaynaklara uzun süreli erişim için yenileme belirteci gerektiğini gösterir. |
-| durum | Hayır | İstekte, belirteç yanıtında döndürülen bir değer. Kullanmak istediğiniz herhangi bir içerik dizesi olabilir. Genellikle, siteler arası istek sahteciliği saldırıları engellemek için rastgele oluşturulan, benzersiz bir değer kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, açık oldukları sayfa gibi kimlik doğrulama isteği yapılmadan önce kodlamak için de kullanılır. |
-| nonce | Yes | İstek olarak ortaya çıkan KIMLIK belirtecine dahil edilen isteğe (uygulama tarafından oluşturulan) dahil bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Genellikle değer, isteğin kaynağını belirlemek için kullanılabilecek rastgele, benzersiz bir dizedir. |
-| isteme | Hayır | Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer `login`. Bu parametre, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar. Çoklu oturum açma etkili olmaz. |
+|{kiracı}| Evet | Azure AD B2C kiracınızın adı|
+|{ilke}| Evet| Çalıştırılacak kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in`, `b2c_1_sign_up`, `b2c_1_edit_profile`veya . |
+| client_id | Evet | [Azure portalının](https://portal.azure.com/) uygulamanıza atadığı uygulama kimliği. |
+| response_type | Evet | OpenID `id_token` Connect oturum açma için şunları içermelidir. Ayrıca yanıt türünü `token`de içerebilir. `token`Kullanırsanız, uygulamanız yetkili bitiş noktasına ikinci bir istekte bulunmadan hemen yetkili bitiş noktasından bir erişim belirteci alabilir.  `token` Yanıt türünü kullanırsanız, `scope` parametre nin belirteci için hangi kaynağı düzenleyecek kaynağı gösteren bir kapsam içermesi gerekir. |
+| redirect_uri | Hayır | Kimlik doğrulama yanıtlarının uygulamanız tarafından gönderilebileceği ve alınabildiği uygulamanızın URI'yi yönlendirmesi. URL kodlanmış olması dışında, portalda kaydettiğiniz yönlendirme URL'lerinden biriyle tam olarak eşleşmelidir. |
+| response_mode | Hayır | Ortaya çıkan belirteci uygulamanıza geri göndermek için kullanılacak yöntemi belirtir.  Örtük akışlar `fragment`için. |
+| scope | Evet | Alan ayrılmış kapsamlistesi. Tek bir kapsam değeri, istenen izinlerin her ikisini de Azure AD'ye gösterir. Kapsam, `openid` kullanıcıda oturum açma ve kullanıcı hakkında kimlik belirteçleri şeklinde veri alma iznini gösterir. Kapsam `offline_access` web uygulamaları için isteğe bağlıdır. Uygulamanızın kaynaklara uzun süreli erişim için yeni bir belirteci gerektiğini belirtir. |
+| durum | Hayır | Belirteç yanıtında da döndürülen isteğe dahil edilen bir değer. Kullanmak istediğiniz herhangi bir içerik dizisi olabilir. Genellikle, rasgele oluşturulan, benzersiz bir değer, çapraz site isteği sahtecilik saldırılarını önlemek için kullanılır. Durum, kimlik doğrulama isteği oluşmadan önce kullanıcının durumu yla ilgili bilgileri de uygulamada kodlamak için kullanılır. |
+| Nonce | Evet | Talepte (uygulama tarafından oluşturulan) yer alan ve talep olarak ortaya çıkan kimlik belirtecine dahil edilen bir değer. Uygulama daha sonra belirteç yeniden oynatma saldırılarını azaltmak için bu değeri doğrulayabilir. Genellikle, değer isteğin kaynağını tanımlamak için kullanılabilecek randomize, benzersiz bir dizedir. |
+| Istemi | Hayır | Gerekli kullanıcı etkileşimi türü. Şu anda, tek `login`geçerli değer . Bu parametre, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar. Tek oturum açma etkili olmaz. |
 
-Bu noktada, kullanıcıdan ilkenin iş akışını tamamlaması istenir. Kullanıcının Kullanıcı adı ve parolasını girmesi, bir sosyal kimlik ile oturum açması, dizin için kayıt veya başka birçok adım olması gerekebilir. Kullanıcı eylemleri, Kullanıcı akışının nasıl tanımlandığına bağlıdır.
+Bu noktada, kullanıcıdan ilkenin iş akışını tamamlaması istenir. Kullanıcının kullanıcı adını ve parolasını girmesi, sosyal kimlikle oturum açması, dizine kaydolması veya başka sayıda adım atması gerekebilir. Kullanıcı eylemleri, kullanıcı akışının nasıl tanımlandığına bağlıdır.
 
-Kullanıcı Kullanıcı akışını tamamladıktan sonra, Azure AD `redirect_uri`için kullandığınız değerde uygulamanıza bir yanıt döndürür. `response_mode` parametresinde belirtilen yöntemini kullanır. Yanıt, yürütülen Kullanıcı akışından bağımsız olarak her kullanıcı eylemi senaryosu için tam olarak aynıdır.
+Kullanıcı kullanıcı akışını tamamladıktan sonra, Azure AD uygulamanız için `redirect_uri`kullandığınız değerden bir yanıt döndürür. `response_mode` Parametrede belirtilen yöntemi kullanır. Yanıt, yürütülen kullanıcı akışından bağımsız olarak, her kullanıcı eylem senaryosu için tam olarak aynıdır.
 
 ### <a name="successful-response"></a>Başarılı yanıt
-`response_mode=fragment` ve `response_type=id_token+token` kullanan başarılı bir yanıt, okunabilirliği için satır sonları ile aşağıdaki gibi görünür:
+Okunabilirlik için `response_mode=fragment` satır `response_type=id_token+token` sonları ile aşağıdakileri kullanan ve görünen başarılı bir yanıt:
 
 ```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -84,14 +84,14 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | Parametre | Açıklama |
 | --------- | ----------- |
 | access_token | Uygulamanın istediği erişim belirteci. |
-| token_type | Belirteç türü değeri. Azure AD 'nin desteklediği tek tür taşıyıcı. |
-| expires_in | Erişim belirtecinin geçerli olduğu sürenin uzunluğu (saniye cinsinden). |
-| scope | Belirtecin geçerli olduğu kapsamlar. Ayrıca, daha sonra kullanmak üzere belirteçleri önbelleğe almak için kapsamları kullanabilirsiniz. |
-| id_token | Uygulamanın istediği KIMLIK belirteci. KIMLIK belirtecini, kullanıcının kimliğini doğrulamak ve kullanıcıyla oturum başlatmak için kullanabilirsiniz. KIMLIK belirteçleri ve içerikleri hakkında daha fazla bilgi için [Azure AD B2C belirteç başvurusuna](tokens-overview.md)bakın. |
-| durum | İsteğe bir `state` parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta `state` değerlerin özdeş olduğunu doğrulamalıdır. |
+| token_type | Belirteç türü değeri. Azure AD'nin desteklediği tek tür Taşıyıcı'dır. |
+| expires_in | Erişim belirtecinin geçerli olduğu süre uzunluğu (saniye cinsinden). |
+| scope | Belirteç için geçerli olan kapsamlar. Daha sonra kullanmak üzere belirteçleri önbelleğe almak için kapsamları da kullanabilirsiniz. |
+| id_token | Uygulamanın istediği kimlik belirteci. Kullanıcının kimliğini doğrulamak ve kullanıcıyla oturum başlatmak için kimlik belirtecinizi kullanabilirsiniz. Kimlik belirteçleri ve içerikleri hakkında daha fazla bilgi için [Azure AD B2C belirteç başvurusuna](tokens-overview.md)bakın. |
+| durum | İsteğe `state` bir parametre dahil edilirse, yanıtta aynı değer in görünmesi gerekir. Uygulama, istek ve `state` yanıttaki değerlerin aynı olduğunu doğrulamalıdır. |
 
 ### <a name="error-response"></a>Hata yanıtı
-Ayrıca, uygulamanın uygun şekilde işleyebilmesi için yeniden yönlendirme URI 'sine de hata yanıtları gönderilebilir:
+Hata yanıtları, uygulamanın bunları uygun şekilde işleyebilmeleri için uri yönlendirmesine de gönderilebilir:
 
 ```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -102,55 +102,55 @@ error=access_denied
 
 | Parametre | Açıklama |
 | --------- | ----------- |
-| error | Oluşan hata türlerini sınıflandırmak için kullanılan kod. |
+| error | Oluşan hata türlerini sınıflandırmak için kullanılan bir kod. |
 | error_description | Kimlik doğrulama hatasının temel nedenini belirlemenize yardımcı olabilecek belirli bir hata iletisi. |
-| durum | İsteğe bir `state` parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta `state` değerlerin özdeş olduğunu doğrulamalıdır.|
+| durum | İsteğe `state` bir parametre dahil edilirse, yanıtta aynı değer in görünmesi gerekir. Uygulama, istek ve `state` yanıttaki değerlerin aynı olduğunu doğrulamalıdır.|
 
-## <a name="validate-the-id-token"></a>KIMLIK belirtecini doğrulama
+## <a name="validate-the-id-token"></a>Kimlik belirteci doğrulama
 
-KIMLIK belirtecinin alınması, kullanıcının kimliğini doğrulamak için yeterli değil. KIMLIK belirtecinin imzasını doğrulayın ve uygulamanızın gereksinimlerine göre belirteçteki talepleri doğrulayın. Azure AD B2C, belirteçleri imzalamak ve bunların geçerli olduğunu doğrulamak için [JSON Web belirteçleri (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) ve ortak anahtar şifrelemesi kullanır.
+Kimlik belirteci almak, kullanıcının kimliğini doğrulamak için yeterli değildir. Kimlik belirteci nin imzasını doğrulayın ve uygulamanızın gereksinimlerine göre belirteçteki talepleri doğrulayın. Azure AD B2C, belirteçleri imzalamak ve geçerli olduklarını doğrulamak için [JSON Web Belirteçleri (JWT'ler)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) ve ortak anahtar şifrelemesini kullanır.
 
-Birçok açık kaynak kitaplığı, kullanmayı tercih ettiğiniz dile bağlı olarak JWTs 'yi doğrulamak için kullanılabilir. Kendi doğrulama mantığınızı uygulamak yerine, kullanılabilir açık kaynaklı kitaplıkları araştırmayı düşünün. Bu kitaplıkları düzgün bir şekilde kullanmayı öğrenmenize yardımcı olması için bu makaledeki bilgileri kullanabilirsiniz.
+Kullanmayı tercih ettiğiniz dile bağlı olarak, jwt'leri doğrulamak için birçok açık kaynak kitaplık kullanılabilir. Kendi doğrulama mantığınızı uygulamak yerine kullanılabilir açık kaynak kitaplıklarını keşfetmeyi düşünün. Bu kitaplıkları düzgün bir şekilde kullanmayı öğrenmenize yardımcı olmak için bu makaledeki bilgileri kullanabilirsiniz.
 
-Azure AD B2C bir OpenID Connect meta veri uç noktası vardır. Bir uygulama, çalışma zamanında Azure AD B2C hakkındaki bilgileri getirmek için uç noktayı kullanabilir. Bu bilgiler uç noktaları, belirteç içerikleri ve belirteç imzalama anahtarlarını içerir. Azure AD B2C kiracınızdaki her Kullanıcı akışı için bir JSON meta veri belgesi vardır. Örneğin, fabrikamb2c.onmicrosoft.com kiracısındaki b2c_1_sign_in Kullanıcı akışı için meta veri belgesi şurada bulunur:
+Azure AD B2C'nin OpenID Connect meta veri bitiş noktası vardır. Bir uygulama, çalışma zamanında Azure AD B2C hakkında bilgi almak için bitiş noktasını kullanabilir. Bu bilgiler uç noktaları, belirteç içeriğini ve belirteç imzalama anahtarlarını içerir. Azure AD B2C kiracınızdaki her kullanıcı akışı için bir JSON meta veri belgesi vardır. Örneğin, fabrikamb2c.onmicrosoft.com kiracıb2c_1_sign_in kullanıcı akışı için meta veri belgesi şu adreste bulunur:
 
 ```HTTP
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
 ```
 
-Bu yapılandırma belgesinin özelliklerinden biri `jwks_uri`. Aynı kullanıcı akışının değeri şöyle olacaktır:
+Bu yapılandırma belgesinin özelliklerinden `jwks_uri`biri. Aynı kullanıcı akışının değeri:
 
 ```HTTP
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
 ```
 
-Bir KIMLIK belirtecini imzalamak için kullanılan Kullanıcı akışının (ve meta verilerin nereden getirileceği) belirlenmesi için iki seçeneğiniz vardır. İlk olarak, Kullanıcı akış adı `id_token``acr` talebine dahil edilir. KIMLIK belirtecinden talepleri ayrıştırmaya ilişkin bilgi için [Azure AD B2C belirteç başvurusuna](tokens-overview.md)bakın. Diğer bir seçenek de, isteği keserken `state` parametresi değerindeki Kullanıcı akışını kodlayacaktır. Sonra, hangi Kullanıcı akışının kullanıldığını öğrenmek için `state` parametresinin kodunu çözün. Her iki yöntem de geçerlidir.
+Kimlik belirteci imzalamak için hangi kullanıcı akışının kullanıldığını (ve meta verileri nereden getireceğiniz) belirlemek için iki seçeneğiniz var. İlk olarak, kullanıcı akışı adı `acr` talep `id_token`dahil edilir. Bir kimlik belirtecindeki talepleri nasıl ayrışdırırsa ayrıştınız hakkında bilgi için [Azure AD B2C belirteci başvurusuna](tokens-overview.md)bakın. Diğer seçeneğiniz, isteği yaptığınızda kullanıcı akışını `state` parametrenin değerinde kodlamaktır. Ardından, hangi `state` kullanıcı akışının kullanıldığını belirlemek için parametreyi çözün. Her iki yöntem de geçerlidir.
 
-Meta veri belgesini OpenID Connect meta veri uç noktasından aldıktan sonra, KIMLIK belirtecinin imzasını doğrulamak için RSA-256 ortak anahtarlarını (bu uç noktada bulunur) kullanabilirsiniz. Bu uç noktada, her biri `kid`tarafından tanımlanan herhangi bir zamanda birden fazla anahtar listelenmiş olabilir. `id_token` üstbilgisi ayrıca bir `kid` talebi içerir. Bu, KIMLIK belirtecini imzalamak için bu anahtarların hangisinin kullanıldığını belirtir. [Belirteçleri doğrulama](tokens-overview.md)hakkında bilgi edinmek dahil daha fazla bilgi için [Azure AD B2C belirteç başvurusuna](tokens-overview.md)bakın.
+OpenID Connect meta veri bitiş noktasından meta veri belgesini aldıktan sonra, kimlik belirteci imzasını doğrulamak için RSA-256 ortak anahtarlarını (bu uç noktada bulunan) kullanabilirsiniz. Herhangi bir zamanda bu bitiş noktasında listelenen birden çok anahtar `kid`olabilir, her biri bir . Üstbilgi `id_token` de bir `kid` talep içerir. Bu anahtarlardan hangisinin kimlik belirteci imzalamak için kullanıldığını gösterir. [Belirteçleri doğrulama](tokens-overview.md)hakkında bilgi edinmek de dahil olmak üzere daha fazla bilgi için [Azure AD B2C belirteç başvurusuna](tokens-overview.md)bakın.
 <!--TODO: Improve the information on this-->
 
-KIMLIK belirtecinin imzasını doğruladıktan sonra, birkaç talep doğrulama gerektirir. Örnek:
+Kimlik belirteci imzasını doğruladıktan sonra, çeşitli talepler doğrulama gerektirir. Örnek:
 
-* Belirteç yeniden yürütme saldırılarını engellemek için `nonce` talebini doğrulayın. Değeri, oturum açma isteğinde belirtidikleriniz olmalıdır.
-* KIMLIK belirtecinin uygulamanız için verildiğinden emin olmak için `aud` talebini doğrulayın. Değeri uygulamanızın uygulama KIMLIĞI olmalıdır.
-* KIMLIK belirtecinin sona ermediğinden emin olmak için `iat` ve `exp` taleplerini doğrulayın.
+* Belirteç yeniden oynatma saldırılarını önlemek için `nonce` talebi doğrulayın. Değeri oturum açma isteğinde belirttiğiniz değer olmalıdır.
+* Uygulamanız `aud` için kimlik belirteci verildiğinden emin olmak için talebi doğrulayın. Değeri uygulamanızın uygulama kimliği olmalıdır.
+* Kimlik `iat` belirteci süresinin dolmadığından emin olmak için ve `exp` talepleri doğrulayın.
 
-Gerçekleştirmeniz gereken birkaç doğrulama daha vardır ve [OpenID Connect Core belirtiminde](https://openid.net/specs/openid-connect-core-1_0.html)ayrıntılı olarak açıklanmıştır. Senaryonuza bağlı olarak ek talepler de doğrulamak isteyebilirsiniz. Bazı ortak doğrulamalar şunları içerir:
+Gerçekleştirmeniz gereken birkaç doğrulama daha [OpenID Connect Core Spec'te](https://openid.net/specs/openid-connect-core-1_0.html)ayrıntılı olarak açıklanmıştır. Senaryonuza bağlı olarak ek talepleri doğrulamak da isteyebilirsiniz. Bazı yaygın doğrulamalar şunlardır:
 
-* Kullanıcı veya kuruluşun uygulamaya kaydolmasını sağlama.
-* Kullanıcının uygun yetkilendirme ve ayrıcalıklara sahip olduğundan emin olma.
-* Azure Multi-Factor Authentication kullanarak gibi belirli bir kimlik doğrulama gücünün meydana geldiğinden emin olma.
+* Kullanıcının veya kuruluşun uygulamaya kaydolmasını sağlamak.
+* Kullanıcının uygun yetkilendirme ve ayrıcalıklara sahip olmasını sağlamak.
+* Azure Çok Faktörlü Kimlik Doğrulaması'nı kullanmak gibi belirli bir kimlik doğrulama gücünün oluşmasını sağlamak.
 
-Bir KIMLIK belirtecindeki talepler hakkında daha fazla bilgi için [Azure AD B2C belirteç başvurusuna](tokens-overview.md)bakın.
+Kimlik belirtecindeki talepler hakkında daha fazla bilgi için [Azure AD B2C belirteci başvurusuna](tokens-overview.md)bakın.
 
-KIMLIK belirtecini doğruladıktan sonra kullanıcıyla bir oturum başlatabilirsiniz. Uygulamanızda, Kullanıcı hakkında bilgi edinmek için KIMLIK belirtecindeki talepleri kullanın. Bu bilgiler, görüntüleme, kayıtlar, yetkilendirme vb. için kullanılabilir.
+Kimlik belirteci doğruladıktan sonra, kullanıcıyla bir oturum başlatabilirsiniz. Uygulamanızda, kullanıcı hakkında bilgi almak için kimlik belirtecindeki talepleri kullanın. Bu bilgiler görüntüleme, kayıt, yetkilendirme ve benzeri için kullanılabilir.
 
-## <a name="get-access-tokens"></a>Erişim belirteçleri al
-Web uygulamalarınızın yapması gereken tek şey Kullanıcı akışlarını yürütmek ise, sonraki birkaç bölümü atlayabilirsiniz. Aşağıdaki bölümlerde yer alan bilgiler, yalnızca bir Web API 'sine kimliği doğrulanmış çağrılar yapması gereken ve Azure AD B2C tarafından korunan Web uygulamaları için geçerlidir.
+## <a name="get-access-tokens"></a>Erişim jetonları alın
+Web uygulamalarınızın yapması gereken tek şey kullanıcı akışlarını yürütmekse, sonraki birkaç bölümü atlayabilirsiniz. Aşağıdaki bölümlerdeki bilgiler yalnızca bir web API'sine doğrulanmış aramalar yapması gereken ve Azure AD B2C tarafından korunan web uygulamaları için geçerlidir.
 
-Kullanıcıyı tek sayfalı uygulamanıza imzaladığınıza göre, Azure AD tarafından güvenliği sağlanmış Web API 'Lerini çağırmaya yönelik erişim belirteçleri alabilirsiniz. `token` yanıt türünü kullanarak zaten bir belirteç almış olsanız bile, kullanıcıyı yeniden oturum açmadan ek kaynaklara yönelik belirteçleri almak için bu yöntemi kullanabilirsiniz.
+Kullanıcıyı tek sayfalı uygulamanızda oturum açtığınıza göre, Azure AD tarafından güvenli web API'lerini aramak için erişim belirteçleri alabilirsiniz. `token` Yanıt türünü kullanarak zaten bir belirteç almış olsanız bile, kullanıcıyı yeniden oturum açmaya yönlendirmeden ek kaynaklar için belirteçler elde etmek için bu yöntemi kullanabilirsiniz.
 
-Tipik bir Web uygulaması akışında `/token` uç noktasına bir istek yaparsınız. Ancak, uç nokta CORS isteklerini desteklemez, bu nedenle bir yenileme belirteci almak için AJAX çağrılarının yapılması bir seçenek değildir. Bunun yerine, diğer Web API 'Lerine yönelik yeni belirteçler almak için, bir gizli HTML iframe öğesinde örtük akışı kullanabilirsiniz. Aşağıda, okunabilirliği için satır sonları içeren bir örnek verilmiştir:
+Tipik bir web uygulaması akışında, `/token` bitiş noktasına bir istekte bulunabilirsiniz. Ancak, bitiş noktası CORS isteklerini desteklemez, bu nedenle yenileme belirteci almak için AJAX aramaları yapmak bir seçenek değildir. Bunun yerine, diğer web API'leri için yeni belirteçler almak için gizli bir HTML iframe öğesinde örtük akışı kullanabilirsiniz. Aşağıda, okunabilirlik için satır sonları ile ilgili bir örnek verilmiştir:
 
 ```HTTP
 https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -166,23 +166,23 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parametre | Gerekli mi? | Açıklama |
 | --- | --- | --- |
-|Kiracı| Gerekli | Azure AD B2C kiracınızın adı|
-ilkesinin| Gerekli| Çalıştırılacak Kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz Kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in`, `b2c_1_sign_up`veya `b2c_1_edit_profile`. |
-| client_id |Gerekli |[Azure Portal](https://portal.azure.com)uygulamanıza atanan uygulama kimliği. |
-| response_type |Gerekli |OpenID Connect oturum açma `id_token` içermelidir.  `token`yanıt türünü de içerebilir. Burada `token` kullanıyorsanız, uygulamanız yetkilendirme uç noktası için ikinci bir istek yapmadan yetkilendirme uç noktasından hemen bir erişim belirteci alabilir. `token` yanıt türünü kullanırsanız, `scope` parametresi, belirtecinin hangi kaynağa verilmeyeceğini belirten bir kapsam içermelidir. |
-| redirect_uri |Önerilen |Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalın, URL kodlamalı olması dışında, portala kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
-| scope |Gerekli |Kapsamların boşlukla ayrılmış listesi.  Belirteçleri almak için, istenen kaynak için ihtiyaç duyduğunuz tüm kapsamları dahil edin. |
-| response_mode |Önerilen |Elde edilen belirteci uygulamanıza geri göndermek için kullanılan yöntemi belirtir. Örtük akış için `fragment`kullanın. Diğer iki mod belirtilebilir, `query` ve `form_post`, ancak örtük akışta çalışmıyor. |
-| durum |Önerilen |Belirteç yanıtında döndürülen isteğe eklenen bir değer.  Kullanmak istediğiniz herhangi bir içerik dizesi olabilir.  Genellikle, siteler arası istek sahteciliği saldırıları engellemek için rastgele oluşturulan, benzersiz bir değer kullanılır.  Durum Ayrıca, kimlik doğrulama isteği gerçekleştirilmeden önce kullanıcının uygulamasındaki durumu hakkında bilgi kodlamak için de kullanılır. Örneğin, kullanıcının sayfası veya görünümü. |
-| nonce |Gerekli |Talep olarak elde edilen KIMLIK belirtecine dahil edilen, uygulama tarafından oluşturulan, isteğe dahil edilen bir değer.  Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Genellikle değer, isteğin kaynağını tanımlayan rastgele, benzersiz bir dizedir. |
-| isteme |Gerekli |Gizli bir IFRAME 'de belirteçleri yenilemek ve almak için, iframe 'nin oturum açma sayfasında takılı olmadığından emin olmak için `prompt=none` kullanın ve hemen geri döner. |
-| login_hint |Gerekli |Gizli bir iframe içindeki belirteçleri yenilemek ve almak için, kullanıcının belirli bir zamanda sahip olabileceği birden çok oturumu ayırt etmek için bu ipucuna kullanıcının Kullanıcı adını ekleyin. `preferred_username` talebini kullanarak daha önceki bir oturum açma işleminden Kullanıcı adını ayıklayabilirsiniz (`preferred_username` talebi almak için `profile` kapsamı gerekir). |
-| domain_hint |Gerekli |`consumers` veya `organizations` olabilir.  Gizli bir IFRAME içindeki belirteçleri yenilemek ve almak için, isteğe `domain_hint` değerini ekleyin.  Hangi değerin kullanılacağını (`tid` talebi almak için `profile` kapsamı gereklidir) öğrenmek için daha önceki bir oturum açma KIMLIK belirtecinden `tid` talebini ayıklayın. `tid` talep değeri `9188040d-6c67-4c5b-b112-36a304b66dad`, `domain_hint=consumers`kullanın.  Aksi takdirde `domain_hint=organizations`kullanın. |
+|{kiracı}| Gerekli | Azure AD B2C kiracınızın adı|
+{ilke}| Gerekli| Çalıştırılacak kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in`, `b2c_1_sign_up`, `b2c_1_edit_profile`veya . |
+| client_id |Gerekli |[Azure portalında](https://portal.azure.com)uygulamanız için atanan uygulama kimliği. |
+| response_type |Gerekli |OpenID `id_token` Connect oturum açma için şunları içermelidir.  Ayrıca yanıt türünü `token`de içerebilir. Burada kullanırsanız, `token` uygulamanız yetkili bitiş noktasına ikinci bir istekte bulunmadan hemen yetkili bitiş noktasından bir erişim belirteci alabilir. `token` Yanıt türünü kullanırsanız, `scope` parametre nin belirteci için hangi kaynağı düzenleyecek kaynağı gösteren bir kapsam içermesi gerekir. |
+| redirect_uri |Önerilen |Kimlik doğrulama yanıtlarının uygulamanız tarafından gönderilebileceği ve alınabildiği uygulamanızın URI'yi yönlendirmesi. URL kodlanmış olması dışında, portalda kaydettiğiniz yönlendirme URL'lerinden biriyle tam olarak eşleşmelidir. |
+| scope |Gerekli |Alan ayrılmış kapsamlistesi.  Belirteçleri almak için, amaçlanan kaynak için gereksinim duyduğunuz tüm kapsamları ekleyin. |
+| response_mode |Önerilen |Ortaya çıkan belirteci uygulamanıza geri göndermek için kullanılan yöntemi belirtir. Örtük akış `fragment`için, kullanın. Diğer iki mod belirtilebilir `query` `form_post`ve , ancak örtük akış çalışmıyor. |
+| durum |Önerilen |Belirteç yanıtında döndürülen isteğe dahil edilen bir değer.  Kullanmak istediğiniz herhangi bir içerik dizisi olabilir.  Genellikle, rasgele oluşturulan, benzersiz bir değer, çapraz site isteği sahtecilik saldırılarını önlemek için kullanılır.  Durum, kimlik doğrulama isteği oluşmadan önce kullanıcının durumu yla ilgili bilgileri uygulamada kodlamak için de kullanılır. Örneğin, kullanıcının üzerinde olduğu sayfa veya görünüm. |
+| Nonce |Gerekli |Talepte yer alan ve uygulama tarafından oluşturulan ve talep olarak ortaya çıkan kimlik belirtecine dahil edilen bir değer.  Uygulama daha sonra belirteç yeniden oynatma saldırılarını azaltmak için bu değeri doğrulayabilir. Genellikle, değer isteğin kaynağını tanımlayan rasgele, benzersiz bir dizedir. |
+| Istemi |Gerekli |Belirteçleri gizli bir iframe'de `prompt=none` yenilemek ve almak için, iframe'in oturum açma sayfasında takılıp kalmadığından ve hemen geri döndüğünden emin olmak için kullanın. |
+| login_hint |Gerekli |Gizli bir iframe'de belirteçleri yenilemek ve almak için, kullanıcının belirli bir anda sahip olabileceği birden çok oturumu ayırt etmek için bu ipucuna kullanıcı adını ekleyin. `preferred_username` Talebi kullanarak daha önceki bir oturum açmadan kullanıcı adını `profile` ayıklayabilirsiniz `preferred_username` (talebi almak için kapsam gereklidir). |
+| domain_hint |Gerekli |`consumers` veya `organizations` olabilir.  Gizli bir iframe'de belirteçleri yenilemek ve almak için istekteki `domain_hint` değeri ekleyin.  `tid` Hangi değerin kullanılacağını belirlemek için talebi daha önceki bir oturum `profile` açmanın kimlik belirtecinden ayıklayın `tid` (talebi almak için kapsam gereklidir). `tid` Talep değeri ise, `9188040d-6c67-4c5b-b112-36a304b66dad` `domain_hint=consumers`kullanın.  Aksi takdirde, kullanın. `domain_hint=organizations` |
 
-`prompt=none` parametresini ayarlayarak, bu istek hemen başarılı olur ya da başarısız olur ve uygulamanıza geri döner.  `response_mode` parametresinde belirtilen yöntemi kullanılarak, belirtilen yeniden yönlendirme URI 'sindeki uygulamanıza başarılı bir yanıt gönderilir.
+Parametreyi `prompt=none` ayarlayarak, bu istek hemen başarılı olur veya başarısız olur ve uygulamanıza geri döner.  `response_mode` Parametrede belirtilen yöntem kullanılarak belirtilen yeniden yönlendirme URI'de uygulamanıza başarılı bir yanıt gönderilir.
 
 ### <a name="successful-response"></a>Başarılı yanıt
-`response_mode=fragment` kullanarak başarılı bir yanıt Şu örneğe benzer şekilde görünür:
+Kullanarak `response_mode=fragment` başarılı bir yanıt şu örneğe benzer:
 
 ```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -196,13 +196,13 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | Parametre | Açıklama |
 | --- | --- |
 | access_token |Uygulamanın istediği belirteç. |
-| token_type |Belirteç türü her zaman taşıyıcı olur. |
-| durum |İsteğe bir `state` parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta `state` değerlerin özdeş olduğunu doğrulamalıdır. |
-| expires_in |Erişim belirtecinin geçerli olduğu süre (saniye cinsinden). |
-| scope |Erişim belirtecinin geçerli olduğu kapsamlar. |
+| token_type |Belirteç türü her zaman Bearer olacaktır. |
+| durum |İsteğe `state` bir parametre dahil edilirse, yanıtta aynı değer in görünmesi gerekir. Uygulama, istek ve `state` yanıttaki değerlerin aynı olduğunu doğrulamalıdır. |
+| expires_in |Erişim belirteci nin ne kadar süre geçerli olduğu (saniye cinsinden). |
+| scope |Erişim belirteci için geçerli olan kapsamlar. |
 
 ### <a name="error-response"></a>Hata yanıtı
-Ayrıca, uygulamanın uygun şekilde işleyebilmesi için yeniden yönlendirme URI 'sine de hata yanıtları gönderilebilir.  `prompt=none`için beklenen bir hata şu örneğe benzer şekilde görünür:
+Hata yanıtları, uygulamanın bunları uygun şekilde işleyebilmeleri için uri yönlendirmesine de gönderilebilir.  Için `prompt=none`, beklenen bir hata şu örnek gibi görünüyor:
 
 ```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -212,18 +212,18 @@ error=user_authentication_required
 
 | Parametre | Açıklama |
 | --- | --- |
-| error |Oluşan hata türlerini sınıflandırmak için kullanılabilen bir hata kodu dizesi. Ayrıca, hatalara yanıt vermek için dizesini de kullanabilirsiniz. |
+| error |Oluşan hata türlerini sınıflandırmak için kullanılabilecek bir hata kodu dizesi. Hataları tepkilemek için dizeyi de kullanabilirsiniz. |
 | error_description |Kimlik doğrulama hatasının temel nedenini belirlemenize yardımcı olabilecek belirli bir hata iletisi. |
 
-İframe isteğinde bu hatayı alırsanız, Kullanıcı yeni bir belirteci almak için etkileşimli olarak yeniden oturum açması gerekir.
+Bu hatayı iframe isteğinde alırsanız, yeni bir belirteç almak için kullanıcının etkileşimli olarak yeniden oturum açması gerekir.
 
-## <a name="refresh-tokens"></a>Belirteçleri Yenile
-KIMLIK belirteçleri ve erişim belirteçlerinin her ikisi de kısa bir süre sonra sona erer. Bu belirteçleri düzenli aralıklarla yenilemek için uygulamanızın hazırlanması gerekir.  Her iki tür belirteci yenilemek için, Azure AD adımlarını denetlemek üzere `prompt=none` parametresini kullanarak daha önceki bir örnekte kullandığımız aynı gizli iframe isteğini gerçekleştirin.  Yeni bir `id_token` değeri almak için `response_type=id_token` ve `scope=openid`ve bir `nonce` parametresi kullandığınızdan emin olun.
+## <a name="refresh-tokens"></a>Belirteçleri yenileyin
+Kimlik belirteçleri ve erişim belirteçleri kısa bir süre sonra sona erer. Uygulamanız bu belirteçleri düzenli olarak yenilemek için hazır olmalıdır.  Her iki belirteç türünü yenilemek için, Azure AD adımlarını denetlemek `prompt=none` için parametreyi kullanarak daha önceki bir örnekte kullandığımız gizli iframe isteğini gerçekleştirin.  Yeni `id_token` bir değer almak için, `response_type=id_token` `scope=openid`bir `nonce` parametre ve kullandığınızdan emin olun.
 
-## <a name="send-a-sign-out-request"></a>Oturum kapatma isteği gönder
-Kullanıcıyı uygulamadan dışarı imzalamak istediğinizde oturumu kapatmak için kullanıcıyı Azure AD 'ye yönlendirin. Kullanıcıyı yeniden yönlendirmezseniz, Azure AD ile geçerli bir çoklu oturum açma oturumu olduğundan, kimlik bilgilerini tekrar girmeden uygulamanıza yeniden kimlik doğrulaması yapabiliyor olabilirler.
+## <a name="send-a-sign-out-request"></a>Oturum açma isteği gönderme
+Kullanıcıyı uygulamadan çıkarmak istediğinizde, oturum u imzalamak için kullanıcıyı Azure AD'ye yönlendirin. Kullanıcıyı yeniden yönlendirmezseniz, Azure AD ile geçerli bir oturum açma oturumları olduğundan, kimlik bilgilerini tekrar girmeden uygulamanız için yeniden kimlik doğrulaması yapabilir.
 
-Kullanıcıyı [kimlik belirtecini doğrulama](#validate-the-id-token)bölümünde açıklanan OpenID Connect meta veri belgesinde listelenen `end_session_endpoint` yeniden yönlendirebilirsiniz. Örnek:
+Kullanıcıyı, `end_session_endpoint` [Kimliği Doğrula belirtecinde](#validate-the-id-token)açıklanan aynı OpenID Connect meta veri belgesinde listelenene yönlendirebilirsiniz. Örnek:
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -231,23 +231,23 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 | Parametre | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kiracı | Yes | Azure AD B2C kiracınızın adı |
-| ilkesinin | Yes | Kullanıcıyı uygulamanızda imzalamak için kullanmak istediğiniz kullanıcı akışı. |
-| post_logout_redirect_uri | Hayır | Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL. Dahil değilse, kullanıcıya genel bir ileti gösterir Azure AD B2C. |
-| durum | Hayır | İsteğe bir `state` parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta `state` değerlerin özdeş olduğunu doğrulamalıdır. |
+| {kiracı} | Evet | Azure AD B2C kiracınızın adı |
+| {ilke} | Evet | Kullanıcıyı uygulamanızdan çıkarmak için kullanmak istediğiniz kullanıcı akışı. |
+| post_logout_redirect_uri | Hayır | Başarılı bir şekilde oturum dışı attıktan sonra kullanıcının yönlendirilmesi gereken URL. Azure AD B2C, kullanıcıya genel bir ileti gösterir. |
+| durum | Hayır | İsteğe `state` bir parametre dahil edilirse, yanıtta aynı değer in görünmesi gerekir. Uygulama, istek ve `state` yanıttaki değerlerin aynı olduğunu doğrulamalıdır. |
 
 
 > [!NOTE]
-> Kullanıcıyı `end_session_endpoint` yönlendirerek kullanıcının çoklu oturum açma durumunu Azure AD B2C ile temizler. Ancak, kullanıcının Kullanıcı sosyal kimlik sağlayıcısı oturumundan oturum açmasını engellemez. Kullanıcı sonraki oturum açma sırasında aynı kimlik sağlayıcısını seçerse, kullanıcının kimlik bilgilerini girmeden yeniden kimlik doğrulaması yapılır. Bir Kullanıcı Azure AD B2C uygulamanızın oturumunu kapatmak isterse, örneğin Facebook hesabının oturumunu tamamen kapatmak istedikleri anlamına gelmez. Ancak, yerel hesaplar için kullanıcının oturumu doğru şekilde sona erer.
+> Kullanıcıyı Azure AD `end_session_endpoint` B2C ile kullanıcının tek oturum açma durumundan bazılarını temize çıkarmak. Ancak, kullanıcının sosyal kimlik sağlayıcı oturumunun dışına imza vermez. Kullanıcı sonraki oturum açma sırasında aynı kimlik sağlayıcısını seçerse, kullanıcı kimlik bilgilerini girmeden yeniden kimlik doğrulaması yapılır. Bir kullanıcı Azure AD B2C uygulamanızdan çıkış yapmak istiyorsa, bu, örneğin Facebook hesabından tamamen oturum unuzu imzalamak istediği anlamına gelmez. Ancak, yerel hesaplar için kullanıcının oturumu düzgün bir şekilde sonlanacaktır.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="code-sample-azure-ad-b2c-with-microsoft-authentication-library-for-javascript"></a>Kod örneği: JavaScript için Microsoft kimlik doğrulama kitaplığı ile Azure AD B2C
+### <a name="code-sample-azure-ad-b2c-with-microsoft-authentication-library-for-javascript"></a>Kod örneği: JavaScript için Microsoft Kimlik Doğrulama Kitaplığı ile Azure AD B2C
 
-[Azure AD B2C için msal. js ile oluşturulan tek sayfalı uygulama][github-msal-js-example] (GitHub)
+Azure AD B2C (GitHub) [için msal.js ile oluşturulmuş tek sayfalık uygulama][github-msal-js-example]
 
-GitHub 'daki Bu örnek, [msal. js][github-msal-js] ile oluşturulmuş basit bir Web uygulamasında ve açılır stil kimlik doğrulamasını kullanarak Azure AD B2C başlamanıza yardımcı olmaya yöneliktir.
+GitHub'daki bu örnek, [msal.js][github-msal-js] ile oluşturulmuş ve pop-up tarzı kimlik doğrulaması kullanarak oluşturulmuş basit bir web uygulamasında Azure AD B2C'ye başlamanıza yardımcı olmayı amaçlamaktadır.
 
 <!-- Links - EXTERNAL -->
 [github-msal-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp

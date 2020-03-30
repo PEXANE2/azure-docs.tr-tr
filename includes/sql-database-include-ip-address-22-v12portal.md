@@ -1,7 +1,7 @@
 ---
 title: Sunucu düzeyinde güvenlik duvarı kuralları
 description: Sunucu düzeyinde güvenlik duvarı kuralları
-keywords: SQL bağlantı dizesi
+keywords: sql bağlantısı,bağlantı dizesi
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,35 +11,35 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188450"
 ---
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 
-2. Sol taraftaki listeden seçin **tüm hizmetleri**.
+2. Soldaki listede, Tüm **hizmetleri**seçin.
 
-3. Kaydırın ve **SQL sunucuları**.
+3. Kaydırma ve **SQL sunucuları**seçin.
 
-    ![Portalda Azure SQL veritabanı sunucunuzun bulma][b21-FindServerInPortal]
-5. Filtre metin kutusuna sunucunuzun adını yazmaya başlayın. Bir satır görüntülenir.
+    ![Azure SQL Veritabanı sunucunuzu portalda bulun][b21-FindServerInPortal]
+5. Filtre metin kutusuna sunucunuzun adını yazmaya başlayın. Satırınız görüntülenir.
 
-6. Sunucunuz için bir satır seçin. Sunucunuz için bir dikey pencere görüntülenir.
+6. Sunucunuzun satırını seçin. Sunucunuz için bir bıçak görüntülenir.
 
-7. Sunucu dikey penceresinde, seçin **ayarları**.
+7. Sunucu bıçağınızda **Ayarlar'ı**seçin.
 
-8. Seçin **Güvenlik Duvarı**.
+8. **Güvenlik Duvarı'nı**seçin.
 
-    ![Ayarları seçin > Güvenlik Duvarı][b31-SettingsFirewallNavig]
-9. Seçin **istemci Ekle IP**. İlk metin kutusuna, yeni kural için bir ad yazın.
+    ![Güvenlik Duvarı > Ayarları'nı seçin][b31-SettingsFirewallNavig]
+9. **İstemci IP Ekle'yi**seçin. İlk metin kutusuna yeni kuralınız için bir ad yazın.
 
-10. Etkinleştirmek istediğiniz aralığı için düşük ve yüksek IP adresi değerleri yazın.
+10. Etkinleştirmek istediğiniz aralık için düşük ve yüksek IP adresi değerlerini yazın.
 
-    * Düşük değer end ile sağlamak için kullanışlı olabilir **.0** ve sonunda yüksek değerli **.255**.
+    * Düşük değerin **0,0** ve yüksek değer in **0,255**ile bitmek olması kullanışlı olabilir.
 
-11. **Kaydet**’i seçin.
+11. **Kaydet'i**seçin.
 
 <!-- Image references. -->
 

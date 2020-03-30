@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188831"
 ---
-1. [PowerShell arabirimine bağlanma](#connect-to-the-powershell-interface).
-2. Kullanım `Get-HcsApplianceInfo` cihazınız için bilgi almak için.
+1. [PowerShell arabirimine bağlanın.](#connect-to-the-powershell-interface)
+2. `Get-HcsApplianceInfo` Cihazınız için bilgi almak için kullanın.
 
     Aşağıdaki örnek, bu cmdlet kullanımını gösterir:
 
@@ -43,16 +43,16 @@ ms.locfileid: "67188831"
     IsRegistered                  : False
     ```
 
-    Bazı önemli cihaz bilgileri özetleyen bir tablo şu şekildedir:
+    Önemli aygıt bilgilerinden bazılarını özetleyen bir tablo aşağıda veda edebilirsiniz:
     
     | Parametre                             | Açıklama                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | Yerel web UI cihaz dağıtım sırasında yapılandırdığınız cihaz kolay adı. Varsayılan kolay adı, cihaz seri numarasını şeklindedir.  |   |
-    | seri numarası                   | Cihaz seri numarasını bir fabrikada atanmış benzersiz bir sayıdır.                                                                             |   |
-    | Model                          | Veri kutusu Edge ya da veri kutusu ağ geçidi cihazınız için model. Veri kutusu ağ geçidi için sanal ve fiziksel veri kutusu Edge için modelidir.                   |   |
-    | FriendlySoftwareVersion        | Cihaz yazılımı sürümüne karşılık gelen kolay dize. Preview çalıştıran bir sistem için kolay yazılım sürümü veri kutusu Edge 1902 olacaktır. |   |
-    | HcsVersion                     | HCS yazılım sürümü, cihaz üzerinde çalışan. Örneğin, veri kutusu Edge 1902 için karşılık gelen HCS yazılım 1.4.771.324 sürümüdür.            |   |
-    | LocalCapacityInMb              | Cihazın megabit cinsinden toplam yerel kapasite.                                                                                                        |   |
-    | IsRegistered                   | Bu değer, Cihazınızı hizmetiyle etkinleştirilip etkinleştirilmediğini gösterir.                                                                                         |   |
+    | Friendlyname                   | Aygıtın, aygıt dağıtımı sırasında yerel web Kullanıcı Arabirimi aracılığıyla yapılandırıldığı gibi, aygıtın dostu adı. Varsayılan dostu ad, aygıt seri numarasıdır.  |   |
+    | SerialNumber                   | Aygıt seri numarası fabrikada atanan benzersiz bir numaradır.                                                                             |   |
+    | Model                          | Veri Kutusu Kenar veya Veri Kutusu Ağ Geçidi aygıtınızın modeli. Model, Veri Kutusu Ağ Geçidi için sanal ve Data Box Edge için fizikseldir.                   |   |
+    | FriendlySoftwareVersion        | Aygıt yazılımı sürümüne karşılık gelen dostu dize. Önizleme çalışan bir sistem için, dostu yazılım sürümü Data Box Edge 1902 olacaktır. |   |
+    | HcsVersion                     | Cihazınızda çalışan HCS yazılım sürümü. Örneğin, Data Box Edge 1902'ye karşılık gelen HCS yazılım sürümü 1.4.771.324'dür.            |   |
+    | LocalCapacityInmb              | Megabit'teki cihazın toplam yerel kapasitesi.                                                                                                        |   |
+    | IsRegistered                   | Bu değer, cihazınızın hizmetle etkinleştirilip etkinleştirilmediğini gösterir.                                                                                         |   |
 
 

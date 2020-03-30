@@ -1,6 +1,6 @@
 ---
-title: Windows 'da Linux için Azure IoT Edge yüklemesi | Microsoft Docs
-description: Windows 10, Windows Server ve Windows IoT Core 'da Linux kapsayıcıları için yükleme yönergelerini Azure IoT Edge
+title: Windows'da Linux için Azure IoT Edge'i yükleyin | Microsoft Dokümanlar
+description: Windows 10, Windows Server ve Windows IoT Core'daki Linux kapsayıcıları için Azure IoT Edge yükleme yönergeleri
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
@@ -9,88 +9,88 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 40e6f850a00a8f77e846d9574caedc345aa94cef
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509997"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133172"
 ---
-# <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Linux kapsayıcılarını çalıştırmak için Windows üzerinde IoT Edge kullanma
+# <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Linux kapsayıcılarını çalıştırmak için Windows'da IoT Edge'i kullanma
 
-Windows Machine kullanan Linux cihazları için test IoT Edge modülleri.
+Windows makinesi ni kullanarak Linux aygıtları için IoT Edge modüllerini test edin.
 
-Bir üretim senaryosunda Windows cihazları yalnızca Windows kapsayıcıları çalıştırmalıdır. Ancak, yaygın bir geliştirme senaryosu, Linux cihazlarına yönelik IoT Edge modüller oluşturmak için bir Windows bilgisayarı kullanmaktır. Windows için IoT Edge çalışma zamanı, **test ve geliştirme** amaçlarıyla Linux kapsayıcıları çalıştırmanızı sağlar.
+Bir üretim senaryosunda, Windows aygıtları yalnızca Windows kapsayıcıları çalıştırmalıdır. Ancak, yaygın bir geliştirme senaryosu Linux aygıtları için IoT Edge modülleri oluşturmak için bir Windows bilgisayarı kullanmaktır. Windows için IoT Edge çalışma süresi, **test ve geliştirme** amacıyla Linux kapsayıcılarını çalıştırmanıza olanak tanır.
 
-Bu makalede, Windows x64 (AMD/Intel) sisteminizdeki Linux kapsayıcıları kullanılarak Azure IoT Edge çalışma zamanını yüklemek için gereken adımlar listelenmektedir. IoT Edge çalışma zamanı yükleyicisi hakkında daha fazla bilgi edinmek için, tüm yükleme parametreleriyle ilgili ayrıntılar dahil olmak üzere, bkz. [Windows 'da Azure IoT Edge çalışma zamanını yükleme](how-to-install-iot-edge-windows.md).
+Bu makalede, Windows x64 (AMD/Intel) sisteminizde Linux kapsayıcılarını kullanarak Azure IoT Edge çalışma süresini yükleme adımları listelenir. Tüm yükleme parametreleri hakkındaki ayrıntılar da dahil olmak üzere IoT Edge çalışma zamanı yükleyicisi hakkında daha fazla bilgi edinmek için [bkz.](how-to-install-iot-edge-windows.md)
+
+IoT Edge'in en son sürümünde nelerin yer aldığı hakkında bilgi için [Azure IoT Edge sürümlerine](https://github.com/Azure/azure-iotedge/releases)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Windows cihazınızın IoT Edge destekleyip desteklemediğini gözden geçirmek ve yüklemeden önce bir kapsayıcı altyapısı için hazırlamak üzere bu bölümü kullanın.
+Windows aygıtınızın IoT Edge'i destekleyip desteklemeyeceğini gözden geçirmek ve yüklemeden önce bir kapsayıcı altyapısına hazırlamak için bu bölümü kullanın.
 
 ### <a name="supported-windows-versions"></a>Desteklenen Windows sürümleri
 
-Linux kapsayıcılarıyla Azure IoT Edge, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) karşılayan herhangi bir Windows sürümünde çalıştırılabilir
+Linux kapsayıcıları ile Azure IoT [Edge, Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) karşılayan windows'un herhangi bir sürümünde çalıştırılabilir
 
-IoT Edge en son sürümüne nelerin dahil olduğu hakkında daha fazla bilgi için bkz. [Azure IoT Edge yayınlar](https://github.com/Azure/azure-iotedge/releases).
+IoT Edge'i sanal bir makineye yüklemek istiyorsanız, iç içe geçmiş sanallaştırmayı etkinleştirin ve en az 2 GB bellek ayırın. İç içe sanallaştırmayı nasıl etkinleştirdiğiniz, kullandığınız hipervizöre bağlı olarak değişir. Hyper-V için, nesil 2 sanal makineler varsayılan olarak etkinleştirilen sanallaştırma iç içe var. VMWare için, sanal makinenizde özelliği etkinleştirmek için bir geçiş vardır.
 
-Bir sanal makineye IoT Edge yüklemek istiyorsanız, iç içe sanallaştırmayı etkinleştirin ve en az 2 GB bellek ayırın. İç içe sanallaştırmayı etkinleştirme, kullandığınız hiper yöneticiye bağlı olarak farklılık gösteren bir değer. Hyper-V için 2. nesil sanal makinelerde varsayılan olarak etkinleştirilmiş iç içe sanallaştırma vardır. VMWare için, sanal makinenizde özelliği etkinleştirmek üzere bir geçiş düğmesi vardır.
+### <a name="prepare-the-container-engine"></a>Konteyner motorini hazırlayın
 
-### <a name="prepare-the-container-engine"></a>Kapsayıcı altyapısını hazırlama
+Azure IoT Edge, [OCI uyumlu](https://www.opencontainers.org/) bir kapsayıcı motoruna dayanır. Windows makinesinde Windows ve Linux kapsayıcılarını çalıştırmak arasındaki en büyük yapılandırma farkı, IoT Edge yüklemesinin bir Windows kapsayıcı çalışma süresi içerolmasıdır, ancak IoT Edge'i yüklemeden önce Linux kapsayıcıları için kendi çalışma sürenizi sağlamanız gerekir.
 
-Azure IoT Edge, [OCI uyumlu](https://www.opencontainers.org/) bir kapsayıcı altyapısına bağlıdır. Bir Windows makinesinde çalışan Windows ve Linux kapsayıcıları arasındaki en büyük yapılandırma farkı, IoT Edge yüklemesinde Windows kapsayıcı çalışma zamanı dahil değildir ancak IoT Edge yüklemeden önce Linux kapsayıcıları için kendi çalışma zamanını sağlamanız gerekir.
+Linux aygıtları için kapsayıcılar geliştirmek ve test etmek için bir Windows makinesi kurmak için [Docker Desktop'ı](https://www.docker.com/docker-windows) konteyner motoru olarak kullanabilirsiniz. Docker'ı yüklemeniz ve IoT Edge'i yüklemeden önce [Linux kapsayıcılarını kullanacak](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) şekilde yapılandırmanız gerekir.  
 
-Linux cihazları için kapsayıcılar geliştirmek ve test etmek üzere bir Windows makinesi ayarlamak için, kapsayıcı altyapınız olarak [Docker Desktop](https://www.docker.com/docker-windows) ' ı kullanabilirsiniz. IoT Edge yüklemeden önce Docker 'ı yüklemeniz ve [Linux kapsayıcıları kullanacak](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) şekilde yapılandırmanız gerekir.  
+IoT Edge aygıtınız bir Windows bilgisayarıysa, Hyper-V için [sistem gereksinimlerini](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) karşılayıp karşılamadığını denetleyin.
 
-IoT Edge cihazınız bir Windows bilgisayar ise, Hyper-V için [sistem gereksinimlerini](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) karşıladığından emin olun.
-
-## <a name="install-iot-edge-on-a-new-device"></a>Yeni bir cihaza IoT Edge yüklemesi
+## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge'i yeni bir cihaza yükleme
 
 >[!NOTE]
->Azure IOT Edge yazılım paketlerini (lisans dizininde) paketleri bulunan lisans koşullarına tabidir. Paket kullanarak önce lisans koşullarını okuyun. Bu koşulları kabul etmeniz, yükleme ve kullanım paket oluşturur. Lisans koşullarını kabul etmiyorsanız, paket kullanmayın.
+>Azure IoT Edge yazılım paketleri, paketlerde (LICENSE dizininde) bulunan lisans koşullarına tabidir. Lütfen paketi kullanmadan önce lisans koşullarını okuyun. Paketi yüklemeniz ve kullanmanız bu koşulları kabul etmek anlamına dalır. Lisans koşullarını kabul etmiyorsanız, paketi kullanmayın.
 
-Bir PowerShell betiği, Azure IoT Edge güvenlik cini indirir ve yükler. Güvenlik cini daha sonra, diğer modüllerin uzak dağıtımlarını sağlayan IoT Edge Aracısı olan iki çalışma zamanı modülünün ilki başlatılır.
+PowerShell komut dosyası Azure IoT Edge güvenlik daemon'u indirir ve yükler. Güvenlik daemon sonra diğer modüllerin uzaktan dağıtımsağlayan iki çalışma zamanı modülleri, IoT Edge aracısı, ilk başlar.
 
-IoT Edge çalışma zamanını bir cihaza ilk kez yüklediğinizde, cihazı IoT Hub 'ından bir kimlikle sağlamanız gerekir. Tek bir IoT Edge cihaz, IoT Hub 'ınız tarafından sağlanan bir cihaz bağlantı dizesi kullanılarak el ile sağlanabilir. Ya da cihaz sağlama hizmeti 'ni kullanarak cihazları otomatik olarak temin edebilir, bu da birçok cihaza sahip olduğunuzda yararlı olur.
+IoT Edge çalışma saatini ilk kez bir aygıta yüklediğinizde, aygıtı bir IoT hub'ından bir kimlik le sağlamanız gerekir. Tek bir IoT Edge aygıtı, IoT hub'ınız tarafından sağlanan aygıt bağlantıları dizesi kullanılarak el ile kullanılabilir. Veya, cihazları otomatik olarak sağlamak için Aygıt Sağlama Hizmetini kullanabilirsiniz, bu da ayarlayabileceğiniz çok sayıda aygıtınız olduğunda yararlıdır.
 
-[Windows 'a Azure IoT Edge çalışma zamanını yükleme](how-to-install-iot-edge-windows.md)makalesindeki farklı yükleme seçenekleri ve parametreleri hakkında daha fazla bilgi edinebilirsiniz. Docker Desktop 'ı yükledikten ve Linux kapsayıcıları için yapılandırıldıktan sonra, ana yükleme farkı Linux 'u **-containeros** parametresiyle bildiriyor. Örneğin:
+Farklı yükleme seçenekleri ve parametreleri hakkında daha fazla bilgi makalede [Windows'da Azure IoT Edge çalışma süresini yükleyin.](how-to-install-iot-edge-windows.md) Docker Desktop'ı Linux kapları için yükledikten ve yapılandırdıktan sonra, temel kurulum farkı Linux'u **-ContainerOs** parametresi ile bildirmektir. Örnek:
 
-1. Henüz yapmadıysanız, yeni bir IoT Edge cihazı kaydedin ve cihaz bağlantı dizesini alın. Bu bölümün ilerleyen kısımlarında kullanılacak bağlantı dizesini kopyalayın. Aşağıdaki araçları kullanarak bu adımı tamamlayabilirsiniz:
+1. Henüz yapmadıysanız, yeni bir IoT Edge aygıtı kaydedin ve aygıt bağlantı dizesini alın. Daha sonra bu bölümde kullanmak üzere bağlantı dizesini kopyalayın. Aşağıdaki araçları kullanarak bu adımı tamamlayabilirsiniz:
 
-   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure portalında](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. PowerShell'i yönetici olarak çalıştırın.
 
    >[!NOTE]
-   >PowerShell (x86) değil IoT Edge yüklemek için PowerShell 'in AMD64 oturumunu kullanın. Hangi oturum türünü kullandığınızdan emin değilseniz, aşağıdaki komutu çalıştırın:
+   >IoT Edge'i yüklemek için POWERShell'in AMD64 oturumunu kullanın, PowerShell'i (x86) değil. Hangi oturum türünü kullandığınızdan emin değilseniz aşağıdaki komutu çalıştırın:
    >
    >```powershell
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. **Deploy-ıotedge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve ardından Moby çalışma zamanını (Linux kapsayıcıları için kullanılmayan) ve IoT Edge çalışma zamanını indirir. Komutu Windows kapsayıcılarına varsayılan olarak, bu nedenle Linux 'u istenen kapsayıcı işletim sistemi olarak bildirin.
+3. **Deploy-IoTEdge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve moby çalışma süresini (Linux kapsayıcıları için kullanılmaz) ve IoT Edge çalışma süresini indirir. Komut Windows kapsayıcılarına varsayılan olarak gelir, bu nedenle Linux'u istenen kapsayıcı işletim sistemi olarak bildirin.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-4. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
+4. Bu noktada, IoT Core aygıtları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server aygıtları yeniden başlatmanızı isteyebilir. Öyleyse, cihazınızı şimdi yeniden başlatın. Cihazınız hazır olduğunda PowerShell'i yeniden yönetici olarak çalıştırın.
 
-5. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, bir cihaz bağlantı dizesiyle el ile sağlamayı varsayılan olarak belirler. Linux 'u istenen kapsayıcı işletim sistemi olarak yeniden bildirin.
+5. **Initialize-IoTEdge komutu,** Makinenizdeki IoT Edge çalışma süresini yapılandırır. Komut, aygıt bağlantı dizesiyle el ile sağlama için varsayılandır. Linux'u tekrar istenilen konteyner işletim sistemi olarak bildirin.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Linux
    ```
 
-6. İstendiğinde, 1. adımda aldığınız cihaz bağlantı dizesini belirtin. Cihaz bağlantı dizesi, fiziksel cihazı IoT Hub bir cihaz KIMLIĞIYLE ilişkilendirir.
+6. İstendiğinde, adım 1'de aldığınız aygıt bağlantı dizesini sağlayın. Aygıt bağlantı dizesi, fiziksel aygıtı IoT Hub'ındaki bir aygıt kimliğiyle ilişkilendirer.
 
-   Cihaz bağlantı dizesi aşağıdaki biçimi alır ve tırnak işaretleri içermemelidir: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Aygıt bağlantı dizesi aşağıdaki biçimi alır ve tırnak işaretleri içermemelidir:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulamak
+## <a name="verify-successful-installation"></a>Başarılı yüklemeyi doğrulama
 
 IoT Edge hizmetinin durumunu kontrol edin:
 
@@ -98,19 +98,19 @@ IoT Edge hizmetinin durumunu kontrol edin:
 Get-Service iotedge
 ```
 
-Son 5 dakikadan hizmet günlüklerini inceleyin:
+Son 5 dakikadaki servis günlüklerini inceleyin:
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-En yaygın yapılandırma ve ağ hataları için otomatik bir denetim çalıştırın:
+En yaygın yapılandırma ve ağ hataları için otomatik denetim çalıştırın:
 
 ```powershell
 iotedge check
 ```
 
-Çalışan modülleri listeleyin. Yeni bir yüklemeden sonra, çalıştırmayı görmeniz gereken tek modül **Edgeagent**' dir. [IoT Edge modüllerini](how-to-deploy-modules-portal.md) ilk kez dağıttıktan sonra, diğer sistem modülü, **edgehub**, cihazda da başlatılır.
+Çalışan modülleri listele. Yeni bir yüklemeden sonra, çalışan görmeniz gereken tek modül **edgeAgent**olduğunu. [IoT Edge modüllerini](how-to-deploy-modules-portal.md) ilk kez dağıttıktan sonra, **edgeHub**adındaki diğer sistem modülü de cihazda başlayacaktır.
 
 ```powershell
 iotedge list
@@ -118,8 +118,8 @@ iotedge list
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüklü olan çalışma zamanı ile sağlanan bir IOT Edge cihazına sahip olduğunuza göre şunları yapabilirsiniz [IOT Edge modüllerini dağıtmak](how-to-deploy-modules-portal.md).
+Artık çalışma zamanı yüklü bir IoT Edge aygıtınız olduğuna göre, [IoT Edge modüllerini dağıtabilirsiniz.](how-to-deploy-modules-portal.md)
 
-Yükleme IoT Edge düzgün şekilde yüklerken [sorun yaşıyorsanız sorun giderme](troubleshoot.md) sayfasına göz atın.
+IoT Edge'in düzgün bir şekilde yüklenmesinde sorun yaşıyorsanız, [sorun giderme](troubleshoot.md) sayfasına göz atın.
 
-Mevcut bir yüklemeyi en yeni IoT Edge sürümüne güncelleştirmek için bkz. [IoT Edge güvenlik cini ve çalışma zamanını güncelleştirme](how-to-update-iot-edge.md).
+Varolan bir yüklemeyi IoT Edge'in en yeni sürümüne güncelleştirmek için [bkz.](how-to-update-iot-edge.md)

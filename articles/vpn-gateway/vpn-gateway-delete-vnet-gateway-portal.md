@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN Gateway: ağ geçidini silme: Portal'
-description: Kaynak Yöneticisi dağıtım modelindeki Azure portal kullanarak bir sanal ağ geçidini silin.
+title: 'Azure VPN Ağ Geçidi: Bir ağ geçidini silme: portal'
+description: Kaynak Yöneticisi dağıtım modelindeki Azure portalını kullanarak sanal ağ ağ ağ geçidini silin.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,57 +8,57 @@ ms.date: 10/23/2018
 ms.author: cherylmc
 ms.topic: conceptual
 ms.openlocfilehash: fba213be2de3b747d3ba962674a03c0bc7df3ed5
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75863674"
 ---
-# <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Portalı kullanarak bir sanal ağ geçidini silme
+# <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Portalı kullanarak sanal ağ ağ geçidini silme
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-> * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+> * [Azure portalında](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Powershell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klasik)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
-Bu makalede, Kaynak Yöneticisi dağıtım modeli kullanılarak dağıtılan bir Azure VPN ağ geçitlerini silme yönergeleri sunulmaktadır. VPN ağ geçidi yapılandırması için bir sanal ağ geçidini silmek istediğinizde uygulayabileceğiniz birkaç farklı yaklaşım vardır.
+Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak dağıtılan bir Azure VPN ağ geçitlerini silme yönergeleri verilmektedir. VPN ağ geçidi yapılandırması için sanal ağ ağ ağ geçidini silmek istediğinizde kullanabileceğiniz birkaç farklı yaklaşım vardır.
 
-- Her şeyi silmek ve baştan başlamak istiyorsanız, bir test ortamı durumunda olduğu gibi, kaynak grubunu silebilirsiniz. Bir kaynak grubunu sildiğinizde, Grup içindeki tüm kaynakları siler. Bu yöntem yalnızca kaynak grubundaki kaynakları tutmak istemiyorsanız önerilir. Bu yaklaşımı kullanarak yalnızca birkaç kaynağı seçmeli olarak silemezsiniz.
+- Her şeyi silmek ve baştan başlamak istiyorsanız, bir test ortamında olduğu gibi, kaynak grubunu silebilirsiniz. Bir kaynak grubunu sildiğinizde, grup içindeki tüm kaynakları siler. Bu yöntem yalnızca kaynak grubundaki kaynaklardan herhangi birini tutmak istemiyorsanız önerilir. Bu yaklaşımı kullanarak yalnızca birkaç kaynağı seçarak silemezsiniz.
 
-- Kaynak grubunuzdaki bazı kaynakları korumak istiyorsanız, bir sanal ağ geçidini silmek biraz daha karmaşık hale gelir. Sanal ağ geçidini silebilmeniz için önce ağ geçidine bağlı olan tüm kaynakları silmeniz gerekir. İzleyeceğiniz adımlar, oluşturduğunuz bağlantı türüne ve her bağlantı için bağımlı kaynaklara bağlıdır.
+- Kaynak grubunuzdaki bazı kaynakları tutmak istiyorsanız, sanal ağ ağ ağ geçidini silerseniz biraz daha karmaşık hale gelir. Sanal ağ ağ ağ geçidini silmeden önce ağ geçidine bağlı olan kaynakları silmeniz gerekir. İzlediğiniz adımlar, oluşturduğunuz bağlantı türüne ve her bağlantı için bağımlı kaynaklara bağlıdır.
 
 > [!IMPORTANT]
-> Aşağıdaki yönergeler Kaynak Yöneticisi dağıtım modeli kullanılarak dağıtılan Azure VPN ağ geçitlerinin nasıl silineceğini açıklamaktadır. Klasik dağıtım modeli kullanılarak dağıtılan bir VPN ağ geçidini silmek için lütfen [burada](vpn-gateway-delete-vnet-gateway-classic-powershell.md)açıklandığı gibi Azure PowerShell kullanın.
+> Aşağıdaki yönergelerde, Kaynak Yöneticisi dağıtım modelini kullanarak dağıtılan Azure VPN ağ geçitlerinin nasıl silinir. Klasik dağıtım modelini kullanarak dağıtılan bir VPN ağ geçidini silmek için lütfen [burada](vpn-gateway-delete-vnet-gateway-classic-powershell.md)açıklandığı gibi Azure PowerShell'i kullanın.
 
 
 ## <a name="delete-a-vpn-gateway"></a>VPN ağ geçidi silme
 
-Bir sanal ağ geçidini silmek için, önce sanal ağ geçidi ile ilgili olan her kaynağı silmeniz gerekir. Bağımlılıklar nedeniyle kaynakların belirli bir sırada silinmesi gerekir.
+Sanal ağ ağ ağ geçidini silmek için öncelikle sanal ağ ağ ağ geçidiyle ilgili her kaynağı silmeniz gerekir. Kaynaklar, bağımlılıklar nedeniyle belirli bir sırada silinmelidir.
 
 [!INCLUDE [delete gateway](../../includes/vpn-gateway-delete-vnet-gateway-portal-include.md)]
 
-Bu noktada, sanal ağ geçidi silinir. Sonraki adımlar artık kullanılmayan kaynakları silmenizi yardımcı olur.
+Bu noktada, sanal ağ ağ geçidi silinir. Sonraki adımlar, artık kullanılmayan kaynakları silmenize yardımcı olur.
 
-### <a name="to-delete-the-local-network-gateway"></a>Yerel ağ geçidini silmek için
+### <a name="to-delete-the-local-network-gateway"></a>Yerel ağ ağ ağ geçidini silmek için
 
-1. **Tüm kaynaklarda**, her bağlantıyla ilişkili yerel ağ geçitlerini bulun.
-2. Yerel ağ geçidinin **genel bakış** dikey penceresinde **Sil**' e tıklayın.
+1. **Tüm kaynaklarda,** her bağlantıyla ilişkili yerel ağ ağ geçitlerini bulun.
+2. Yerel ağ ağ geçidiiçin **Genel Bakış** bıyığında **Sil'i**tıklatın.
 
-### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>Ağ geçidinin genel IP adresi kaynağını silmek için
+### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>Ağ geçidinin Genel IP adresi kaynağını silmek için
 
-1. **Tüm kaynaklar**' da, ağ geçidiyle ILIŞKILI genel IP adresi kaynağını bulun. Sanal ağ geçidi etkin-etkin ise, iki genel IP adresi görürsünüz. 
-2. Genel IP adresinin **genel bakış** sayfasında **Sil**' e tıklayın ve ardından onaylamak için **Evet** ' i tıklatın.
+1. **Tüm kaynaklarda,** ağ geçidiyle ilişkili Genel IP adresi kaynağını bulun. Sanal ağ ağ ağ geçidi etkinse, iki Genel IP adresi görürsünüz. 
+2. Genel IP adresine **genel bakış** sayfasında, onaylamak için **Sil'** i ve **ardından Evet'i** tıklatın.
 
-### <a name="to-delete-the-gateway-subnet"></a>Ağ geçidi alt ağını silmek için
+### <a name="to-delete-the-gateway-subnet"></a>Ağ geçidi alt netini silmek için
 
-1. **Tüm kaynaklarda**, sanal ağı bulun. 
-2. **Alt ağlar** dikey penceresinde, **Gatewaysubnet**ve ardından **Sil**' e tıklayın. 
-3. Ağ geçidi alt ağını silmek istediğinizi onaylamak için **Evet** ' e tıklayın.
+1. **Tüm kaynaklarda,** sanal ağı bulun. 
+2. **Subnets** bıçağında **GatewaySubnet'i**tıklatın, ardından **Sil'i**tıklatın. 
+3. Ağ geçidi alt netini silmek istediğinizi doğrulamak için **Evet'i** tıklatın.
 
-## <a name="deleterg"></a>Kaynak grubunu silerek VPN ağ geçidini silme
+## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="deleterg"></a>Kaynak grubunu silerek VPN ağ geçidini silme
 
-Kaynak grubunda kaynaklarınızdan herhangi birini tutmanın endişeniz yoksa ve yalnızca baştan başlamak istiyorsanız, bir kaynak grubunun tamamını silebilirsiniz. Bu, her şeyi kaldırmanın hızlı bir yoludur. Aşağıdaki adımlar yalnızca Kaynak Yöneticisi dağıtım modeli için geçerlidir.
+Kaynaklarınızdan herhangi birini kaynak grubunda tutmakla ilgilenmiyorsanız ve baştan başlamak istiyorsanız, tüm kaynak grubunu silebilirsiniz. Bu her şeyi kaldırmak için hızlı bir yoldur. Aşağıdaki adımlar yalnızca Kaynak Yöneticisi dağıtım modeli için geçerlidir.
 
-1. **Tüm kaynaklarda**, kaynak grubunu bulun ve dikey pencereyi açmak için tıklayın.
-2. **Sil**'e tıklayın. Sil dikey penceresinde etkilenen kaynakları görüntüleyin. Tüm bu kaynakları silmek istediğinizden emin olun. Aksi takdirde, bu makalenin üst kısmındaki VPN Gateway 'i silme bölümündeki adımları kullanın.
-3. Devam etmek için, silmek istediğiniz kaynak grubunun adını yazın ve **Sil**' e tıklayın.
+1. **Tüm kaynaklarda,** kaynak grubunu bulun ve bıçağı açmak için tıklatın.
+2. **Sil'i**tıklatın. Sil bıyıküzerinde, etkilenen kaynakları görüntüleyin. Tüm bu kaynakları silmek istediğinizden emin olun. Değilse, bu makalenin üst kısmındaki VPN ağ geçidini sil adımlarını kullanın.
+3. Devam etmek için, silmek istediğiniz kaynak grubunun adını yazın ve sonra **Sil'i**tıklatın.

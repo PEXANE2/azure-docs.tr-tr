@@ -1,6 +1,6 @@
 ---
-title: Eşleme veri akışında değişiklik satırı dönüşümü
-description: Eşleme veri akışındaki alter Row dönüşümünü kullanarak veritabanı hedefini güncelleştirme
+title: Veri akışını eşlemede satır dönüştürmeyi değiştirme
+description: Veri akışını eşlemede alter row dönüşümlerini kullanarak veritabanı hedefini güncelleştirme
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: 0798a3f9ab45ce68086681e7aea96deeb9639f94
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834534"
 ---
-# <a name="alter-row-transformation-in-mapping-data-flow"></a>Eşleme veri akışında değişiklik satırı dönüşümü
+# <a name="alter-row-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede satır dönüştürmeyi değiştirme
 
-Satırlarda INSERT, DELETE, Update ve upsert ilkeleri ayarlamak için alter Row dönüşümünü kullanın. Tek-çok koşullarını ifade olarak ekleyebilirsiniz. Her satır, ilk eşleşen ifadeye karşılık gelen ilkeyle işaretlendiği için bu koşulların öncelik sırasına göre belirtilmesi gerekir. Bu koşulların her biri, eklenen, güncellenen, silinmekte veya toplanmakta olan bir satırın (veya satırların) oluşmasına neden olabilir. Alter Row, veritabanınıza göre hem DDL & DML eylemleri üretebilir.
+Satırlara ekleme, silme, güncelleştirme ve yükseltme ilkeleri ayarlamak için Alter Row dönüşümünü kullanın. İfadeler olarak bir-çok koşul ekleyebilirsiniz. Her satır ilk eşleşen ifadeye karşılık gelen ilkeile işaretlenecektir gibi, bu koşullar öncelik sırasına göre belirtilmelidir. Bu koşulların her biri bir satırın (veya satırların) eklenmesine, güncelleştirilmesine, silinmelerine veya eklenmesine neden olabilir. Alter Row, veritabanınıza karşı hem DDL & DML eylemleri üretebilir.
 
-![Satır ayarlarını değiştir](media/data-flow/alter-row1.png "Satır ayarlarını değiştir")
+![Satır ayarlarını değiştirme](media/data-flow/alter-row1.png "Satır Ayarlarını Değiştir")
 
-Değişiklik satırı dönüşümleri, yalnızca veri akışınızda veritabanı veya CosmosDB havuzları üzerinde çalışır. Satırlara atadığınız eylemler (INSERT, Update, DELETE, upsert) hata ayıklama oturumlarında gerçekleşmeyecek. Veritabanı tablolarınızda alter Row ilkelerini uygulamak için bir işlem hattındaki veri akışı yürütme etkinliğini çalıştırın.
+Alter Row dönüşümleri yalnızca veri tabanında veya Veri Akışınızda CosmosDB lavabolarında çalışır. Satırlara atadığınız eylemler (ekleme, güncelleme, silme, yukarı ekleme) hata ayıklama oturumları sırasında oluşmaz. Veritabanı tablolarınızdaki alter row ilkelerini yürürlüğe koymak için bir veri akışı nda Yürüt veri akışı etkinliğini çalıştırın.
 
-## <a name="specify-a-default-row-policy"></a>Varsayılan bir satır ilkesi belirtin
+## <a name="specify-a-default-row-policy"></a>Varsayılan satır ilkesi belirtin
 
-Alter Row dönüşümü oluşturun ve `true()`koşulu ile bir satır ilkesi belirtin. Önceden tanımlanmış ifadelerden hiçbiriyle eşleşmeyen her satır, belirtilen satır ilkesi için işaretlenir. Varsayılan olarak, herhangi bir koşullu ifadeyle eşleşmeyen her satır, `Insert`için işaretlenir.
+Alter Row dönüşümü oluşturun ve '' koşulu `true()`olan bir satır ilkesi belirtin. Daha önce tanımlanan ifadelerin hiçbirine uymayan her satır, belirtilen satır ilkesi için işaretlenir. Varsayılan olarak, koşullu ifadeyle eşleşmeyen her satır `Insert`için işaretlenir.
 
-![Satır değiştirme ilkesi](media/data-flow/alter-row4.png "Satır değiştirme ilkesi")
-
-> [!NOTE]
-> Tüm satırları tek bir ilkeyle işaretlemek için, bu ilke için bir koşul oluşturup `true()`koşulu belirtebilirsiniz.
-
-## <a name="view-policies-in-data-preview"></a>Veri önizlemede ilkeleri görüntüleme
-
-Değişiklik satırı ilkelerinizin sonuçlarını veri önizleme bölmesinde görüntülemek için [hata ayıklama modu](concepts-data-flow-debug-mode.md) ' nu kullanın. Bir alter Row dönüşümünün veri önizlemesi, hedeflemenize karşı DDL veya DML eylemleri üretmeyecektir.
-
-![Satır ilkelerini Değiştir](media/data-flow/alter-row3.png "Satır Ilkelerini Değiştir")
-
-Her alter Row ilkesi, bir INSERT, Update, upsert veya Deleted eyleminin gerçekleşeceğini belirten bir simgeyle temsil edilir. Üst başlıkta, Önizlemedeki her ilkeden kaç satır etkileniyor gösterilmektedir.
-
-## <a name="allow-alter-row-policies-in-sink"></a>Havuzda alter Row ilkelerine izin ver
-
-Alter Row ilkelerinin çalışması için veri akışının bir veritabanına veya Cosmos havuzuna yazması gerekir. Havuzinizdeki **Ayarlar** sekmesinde, bu havuz için hangi alter Row ilkelerine izin verileceğini etkinleştirin.
-
-![Satır havuzunu Değiştir](media/data-flow/alter-row2.png "Satır havuzunu Değiştir")
-
- Varsayılan davranış yalnızca eklemeleri izin veriçindir. Güncelleştirmelere, üst ve Siliye izin vermek için, bu koşula karşılık gelen havuzda kutuyu işaretleyin. Güncelleştirmeler, uplar veya silme etkinse, havuzdaki hangi anahtar sütunlarının eşleşeceğini belirtmeniz gerekir.
+![Satır ilkesini değiştir](media/data-flow/alter-row4.png "Satır ilkesini değiştir")
 
 > [!NOTE]
-> Ekleme, güncelleştirme veya ön ekler, havuzdaki hedef tablonun şemasını değiştirmezse veri akışı başarısız olur. Veritabanınızdaki hedef şemayı değiştirmek için tabloyu Tablo eylemi olarak **yeniden oluştur** ' u seçin. Bu, yeni şema tanımıyla tablonuzu bırakıp yeniden oluşturacak.
+> Tüm satırları tek bir ilkeyle işaretlemek için, bu ilke `true()`için bir koşul oluşturabilir ve koşulu . olarak belirtebilirsiniz.
+
+## <a name="view-policies-in-data-preview"></a>Veri önizlemesinde ilkeleri görüntüleme
+
+Veri önizleme bölmesinde alter row ilkelerinizin sonuçlarını görüntülemek için [hata ayıklama modunu](concepts-data-flow-debug-mode.md) kullanın. İkinci sıra dönüşümünün veri önizlemesi, hedefinize karşı DDL veya DML eylemleri oluşturmaz.
+
+![Satır ilkelerini değiştirme](media/data-flow/alter-row3.png "Satır İlkelerini Değiştir")
+
+Her alter row ilkesi, ekleme, güncelleştirme, yükseltme veya silinmiş eylemin gerçekleşip gerçekleşmeyeceğini gösteren bir simgeyle gösterilir. Üstteki üstbilgi, önizlemedeki her ilkeden kaç satırın etkilendiğini gösterir.
+
+## <a name="allow-alter-row-policies-in-sink"></a>Batarken satır değişikliği ilkelerine izin verme
+
+Alter row ilkelerinin çalışması için veri akışının bir veritabanına veya Cosmos lavabosuna yazması gerekir. Lavabonuzdaki **Ayarlar** sekmesinde, bu lavabo için hangi değişiklik satır ilkelerine izin verilebilmesini etkinleştirin.
+
+![Alter satır lavabosu](media/data-flow/alter-row2.png "Alter Satır Lavabosu")
+
+ Varsayılan davranış yalnızca eklere izin vermektir. Güncelleştirmelere, yükseltmelere veya silmelere izin vermek için, lavaboda bu duruma karşılık gelen kutuyu işaretleyin. Güncelleştirmeler, yükseltmeler veya silmeler etkinse, lavaboda hangi anahtar sütunların eşleşip eşleşecek lerini belirtmeniz gerekir.
+
+> [!NOTE]
+> Eklerin, güncelleştirmeleriniz veya yükseltmeleriniz lavabodaki hedef tablonun şemasını değiştirirse, veri akışı başarısız olur. Veritabanınızdaki hedef şemasını değiştirmek için tablo eylemi olarak **tabloyu yeniden oluşturma'yı** seçin. Bu, yeni şema tanımıyla tablonuzu düşürür ve yeniden oluşturur.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -67,13 +67,13 @@ Alter Row ilkelerinin çalışması için veri akışının bir veritabanına ve
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akış `SpecifyUpsertConditions` alan ve üç alter Row koşulu oluşturan `CleanData` adlı alter Row dönüşümünün bir örneğidir. Önceki dönüşümde, bir satırın veritabanına eklenip eklenmeyeceğini, güncelleştirileceğini veya silindiğini belirleyen `alterRowCondition` adlı bir sütun hesaplanır. Sütunun değeri alter Row kuralıyla eşleşen bir dize değeri içeriyorsa, bu ilke atanır.
+Aşağıdaki örnek, gelen akışı `CleanData` alan `SpecifyUpsertConditions` ve üç alter row koşulu oluşturan bir alter row dönüştürmedir. Önceki dönüştürmede, veritabanına `alterRowCondition` bir satırın eklenip eklenmediğini, güncelleştirilip silinmediğini belirleyen bir sütun hesaplanır. Sütunun değeri alter row kuralıyla eşleşen bir dize değerine sahipse, bu ilke atanır.
 
-Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
+Veri Fabrikası UX,bu dönüşüm aşağıdaki resim gibi görünür:
 
-![Satır değiştirme örneği](media/data-flow/alter-row4.png "Satır değiştirme örneği")
+![Satır ı değiştir](media/data-flow/alter-row4.png "Satır ı değiştir")
 
-Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
+Bu dönüşüm için veri akışı komut dosyası aşağıdaki snippet bulunmaktadır:
 
 ```
 SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
@@ -83,4 +83,4 @@ SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Alter Row dönüşümünde, [verilerinizi bir hedef veri deposuna havuza](data-flow-sink.md)almak isteyebilirsiniz.
+Alter Row dönüşümünden sonra, [verilerinizi bir hedef veri deposuna batırmak isteyebilirsiniz.](data-flow-sink.md)

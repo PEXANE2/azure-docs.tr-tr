@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 0d47137e3149563903d4adcaaf34e72ddad043f7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188820"
 ---
-Cihaz olayı görüntülemek için Azure portalında aşağıdaki adımları uygulayın.
+Bir aygıt olayını görüntülemek için Azure portalında aşağıdaki adımları izleyin.
 
-1. Azure portalında Data Box Ucunuzdaki Git / veri kutusu ağ geçidi kaynağı ve ardından Git **İzleme > cihaz olaylarını**.
-2. Bir olay seçin ve uyarı ayrıntılarını görüntüleyin. Uyarı durumu düzeltmek için ilgili eylemleri gerçekleştirin.
+1. Azure portalında, Veri Kutusu Kenarı/ Veri Kutusu Ağ Geçidi kaynağınıza gidin ve ardından Aygıt **olaylarını izleme >** gidin.
+2. Bir olay seçin ve uyarı ayrıntılarını görüntüleyin. Uyarı koşulunu gidermek için uygun eylemi gerçekleştirin.
 
-    ![Olay ve görünümü ayrıntıları](media/data-box-edge-gateway-view-device-events/view-device-events.png)
+    ![Etkinlik ve görünüm ayrıntılarını seçin](media/data-box-edge-gateway-view-device-events/view-device-events.png)

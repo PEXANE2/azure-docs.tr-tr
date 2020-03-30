@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.custom: include file
 ms.openlocfilehash: ee105969282dd41b4b56abb50e06f9fa219388ae
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75901906"
 ---
-Bu makalede, Azure Digital TWINS yönetim API 'Lerinde kimlik doğrulamaya ilişkin bazı benzerlik varsayılmaktadır.
+Bu makalede, Azure Dijital İkizler Yönetimi API'lerinize kimlik doğrulama konusunda bazı aşinalıklar varsayar.
 
-* Yönetim API 'lerinizle kimlik doğrulama hakkında daha fazla bilgi edinmek için [Azure Digital TWINS API 'leri Ile kimlik doğrulamayı](../articles/digital-twins/security-authenticating-apis.md)okuyun.
-* Postman REST istemcisini kullanarak yönetim API 'lerinizle kimlik doğrulaması yapmak için [Postman yapılandırma](../articles/digital-twins/how-to-configure-postman.md)makalesini okuyun.
+* Yönetim API'leri ile kimlik doğrulama hakkında daha fazla bilgi edinmek için [Azure Digital Twins API'leriyle Kimlik Doğrulama'yı](../articles/digital-twins/security-authenticating-apis.md)okuyun.
+* Postacı REST istemcisini kullanarak Yönetim API'lerinizle kimlik doğrulaması yapmak [için Postacı'yı nasıl yapılandırılatır'](../articles/digital-twins/how-to-configure-postman.md)ı okuyun.

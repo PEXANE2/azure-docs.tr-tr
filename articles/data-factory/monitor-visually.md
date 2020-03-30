@@ -1,6 +1,6 @@
 ---
-title: Görsel olarak izleme Azure Data Factory
-description: Azure veri fabrikalarını görsel olarak izlemeyi öğrenin
+title: Azure Veri Fabrikası'nı görsel olarak izleyin
+description: Azure veri fabrikalarını görsel olarak nasıl izleyeceğinizi öğrenin
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,175 +11,175 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75690919"
 ---
-# <a name="visually-monitor-azure-data-factory"></a>Görsel olarak izleme Azure Data Factory
+# <a name="visually-monitor-azure-data-factory"></a>Azure Veri Fabrikası'nı görsel olarak izleyin
 
-Azure Data Factory bir işlem hattı oluşturup yayımladıktan sonra, bir tetikleyici ile ilişkilendirebilir veya bir geçici çalıştırmayı el ile başlatabilirsiniz. Azure Data Factory kullanıcı deneyiminde tüm işlem hattı çalıştırmalarının yerel olarak izlenmesini sağlayabilirsiniz. İzleme deneyimini açmak için [Azure Portal](https://portal.azure.com/)Veri Fabrikası dikey penceresinde **izleyici & Yönet** kutucuğunu seçin. Zaten ADF UX kullanıyorsanız sol kenar çubuğundaki **izleyici** simgesine tıklayın.
+Azure Veri Fabrikası'nda bir ardışık hatlar oluşturup yayımladıktan sonra, bir tetikleyiciyle ilişkilendirebilir veya geçici bir çalıştırmabaşlatabilirsiniz. Tüm ardışık hatlar çalışırınızı Azure Veri Fabrikası kullanıcı deneyiminde yerel olarak izleyebilirsiniz. İzleme deneyimini açmak için, [Azure portalının](https://portal.azure.com/)veri fabrikası bıçaklarında **Monitör & Yönet** döşemesini seçin. Zaten ADF UX'deyseniz, sol kenar çubuğundaki **Monitör** simgesine tıklayın.
 
-Tüm Data Factory çalıştırmaları tarayıcının yerel saat diliminde görüntülenir. Saat dilimini değiştirirseniz, tüm tarih/saat alanları seçtiğiniz bir öğesine yastur.
+Tüm veri fabrikası çalıştırmaları tarayıcının yerel saat diliminde görüntülenir. Saat dilimini değiştirirseniz, tüm tarih/saat alanları seçtiğiniz alana yapışıyor.
 
 ## <a name="monitor-pipeline-runs"></a>İşlem hattı çalıştırmalarını izleme
 
-Varsayılan izleme görünümü, seçilen dönemdeki işlem hattı çalıştırmaları listesidir. Aşağıdaki sütunlar görüntülenir:
+Varsayılan izleme görünümü, seçili zaman dilimindeki ardışık ardışık iştinlerin listesidir. Aşağıdaki sütunlar görüntülenir:
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
-| İşlem hattı adı | İşlem hattının adı |
-| Eylemler | Etkinlik ayrıntılarını görüntülemenizi, iptal etmenizi veya işlem hattını yeniden çalıştırmayı sağlayan simgeler |
-| Çalıştırma başlangıç | İşlem hattı çalışmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
-| Süre | Çalıştırma süresi (SS: DD: SS) |
-| Tetikleyen | İşlem hattını Başlatan tetikleyicinin adı |
-| Durum | **Başarısız**, **başarılı**, **devam ediyor**, **iptal edildi**veya **sıraya alındı** |
-| Ek Açıklamalar | İşlem hattı ile ilişkili filtrelenebilir Etiketler  |
-| Parametreler | İşlem hattı çalıştırması için parametreler (ad/değer çiftleri) |
-| Hata | İşlem hattı başarısız olursa, çalıştırma hatası |
-| Çalışma Kimliği | İşlem hattı çalıştırmasının KIMLIĞI |
+| Boru Hattı Adı | Boru hattının adı |
+| Eylemler | Etkinlik ayrıntılarını görüntülemenize, iptal etmenize veya ardışık hattı yeniden çalıştırmanıza olanak tanıyan simgeler |
+| Çalıştır Başlangıç | Boru hattı nın çalıştırılışı için başlangıç tarihi ve saati (MM/DD/YYYY, HH:MM:SS AM/PM) |
+| Süre | Çalıştırma süresi (HH:MM:SS) |
+| Tarafından Tetiklenen | Boru hattını başlatan tetikleyicinin adı |
+| Durum | **Başarısız**, **Başarılı**, **Devam Eden**, **İptal Edilen**veya **Sıralanan** |
+| Ek Açıklamalar | Bir ardışık boru hattıyla ilişkili filtrelenebilir etiketler  |
+| Parametreler | Ardışık hatlar çalışması için parametreler (ad/değer çiftleri) |
+| Hata | Ardışık iş tonu başarısız olduysa, çalıştırma hatası |
+| Çalıştırma kimliği | Boru hattı nın çalışma kimliği |
 
-![İzleme işlem hattı çalıştırmaları için liste görünümü](media/monitor-visually/pipeline-runs.png)
+![Boru hattı çalıştırmalarını izlemek için liste görünümü](media/monitor-visually/pipeline-runs.png)
 
-İşlem hattı ve etkinlik çalıştırmaları listesini yenilemek için **Yenile** düğmesini el ile seçmeniz gerekir. Oto yenileme şu anda desteklenmiyor.
+Boru hattı ve etkinlik çalışır listesini yenilemek için **Yenile** düğmesini el ile seçmeniz gerekir. Autorefresh şu anda desteklenmiyor.
 
 ![Yenile düğmesi](media/monitor-visually/refresh.png)
 
 ## <a name="monitor-activity-runs"></a>Etkinlik çalıştırmalarını izleme
 
-Her Işlem hattı çalıştırması için etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütununun altındaki **etkinlik çalıştırmalarını görüntüle** simgesini seçin. Liste görünümü her bir işlem hattı çalıştırmasına karşılık gelen etkinlik çalıştırmalarını gösterir.
+Her bir dizi işlem için etkinlik çalışır görüntülemek **için, Eylemler** sütunun altında **Görüntüle etkinliği çalışır** simgesini seçin. Liste görünümü, her ardışık hat çalışmasına karşılık gelen etkinlik çalıştırmalarını gösterir.
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
-| Etkinlik Adı | İşlem hattının içindeki etkinliğin adı |
-| Etkinlik Türü | Etkinliğin türü; örneğin **Copy**, **executedataflow**veya **AzureMLExecutePipeline** |
-| Eylemler | JSON giriş bilgilerini, JSON çıktı bilgilerini veya ayrıntılı etkinliğe özgü izleme deneyimlerini görmenizi sağlayan simgeler | 
-| Çalıştırma başlangıç | Etkinlik çalıştırmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
-| Süre | Çalıştırma süresi (SS: DD: SS) |
-| Durum | **Başarısız**, **başarılı**, **devam ediyor**veya **iptal edildi** |
-| Integration Runtime | Etkinliğin çalıştırıldığı Integration Runtime |
-| Kullanıcı Özellikleri | Etkinliğin Kullanıcı tanımlı özellikleri |
-| Hata | Etkinlik başarısız olursa, çalıştırma hatası |
-| Çalışma Kimliği | Etkinlik çalıştırmasının KIMLIĞI |
+| Etkinlik Adı | Boru hattı içindeki etkinliğin adı |
+| Etkinlik Türü | **Copy**, **ExecuteDataFlow**veya **AzureMLExecutePipeline** gibi etkinlik türü |
+| Eylemler | JSON giriş bilgilerini, JSON çıktı bilgilerini veya etkinliklere özel ayrıntılı izleme deneyimlerini görmenizi sağlayan simgeler | 
+| Çalıştır Başlangıç | Faaliyetin çalıştırılışı için başlangıç tarihi ve saati (MM/DD/YYYY, HH:MM:SS AM/PM) |
+| Süre | Çalıştırma süresi (HH:MM:SS) |
+| Durum | **Başarısız**, **Başarılı**, **Devam Eden**veya **İptal Edilen** |
+| Tümleştirme Çalışma Süresi | Etkinliğin çalıştırıldığı Tümleştirme Runtime'ı |
+| Kullanıcı Özellikleri | Etkinliğin kullanıcı tanımlı özellikleri |
+| Hata | Etkinlik başarısız olduysa, çalıştırma hatası |
+| Çalıştırma kimliği | Etkinlik çalışmasının kimliği |
 
 ![İzleme etkinliği çalıştırmaları için liste görünümü](media/monitor-visually/activity-runs.png)
 
-### <a name="promote-user-properties-to-monitor"></a>Kullanıcı özelliklerini izlemeye yükselt
+### <a name="promote-user-properties-to-monitor"></a>İzlemek için kullanıcı özelliklerini tanıtın
 
-Herhangi bir işlem hattı etkinlik özelliğini Kullanıcı özelliği olarak yükselterek izlediğiniz bir varlık haline gelir. Örneğin, işlem hattınızdaki kopyalama etkinliğinin **kaynak** ve **hedef** özelliklerini Kullanıcı özellikleri olarak yükseltebilirsiniz. Bir kopyalama etkinliğinin **kaynak** ve **hedef** Kullanıcı özelliklerini oluşturmak için **Otomatik oluştur** ' u seçin.
+İzlediğiniz bir varlık haline gelmesi için herhangi bir boru hattı etkinlik özelliğini kullanıcı özelliği olarak tanıtın. Örneğin, ardışık ardışık alandaki kopyalama etkinliğinin **Kaynak** ve **Hedef** özelliklerini kullanıcı özellikleri olarak tanıtabilirsiniz. Kopyalama etkinliği için **Kaynak** ve **Hedef** kullanıcı özelliklerini oluşturmak için **Otomatik Oluştur'u** seçin.
 
-![Kullanıcı Özellikleri oluştur](media/monitor-visually/monitor-user-properties-image1.png)
+![Kullanıcı özellikleri oluşturma](media/monitor-visually/monitor-user-properties-image1.png)
 
 > [!NOTE]
-> Yalnızca Kullanıcı özellikleri olarak en fazla beş ardışık düzen etkinliği özelliği yükseltebilirsiniz.
+> Kullanıcı özellikleri olarak en fazla beş ardışık ardışık etkinlik özelliğini tanıtabilirsiniz.
 
-Kullanıcı özelliklerini oluşturduktan sonra bunları izleme listesi görünümlerinde izleyebilirsiniz. Kopyalama etkinliğinin kaynağı bir tablo adı ise, kaynak tablo adını etkinlik çalıştırmaları için liste görünümünde bir sütun olarak izleyebilirsiniz.
+Kullanıcı özelliklerini oluşturduktan sonra, bunları izleme listesi görünümlerinde izleyebilirsiniz. Kopyalama etkinliğinin kaynağı bir tablo adıysa, etkinlik çalışır için liste görünümünde kaynak tablo adını sütun olarak izleyebilirsiniz.
 
-![Kullanıcı özellikleri olmadan etkinlik çalıştırmaları listesi](media/monitor-visually/monitor-user-properties-image2.png)
+![Etkinlik, kullanıcı özellikleri olmadan listeyi çalıştırDı](media/monitor-visually/monitor-user-properties-image2.png)
 
-![Etkinlik çalıştırmaları listesine kullanıcı özellikleri için sütun ekleme](media/monitor-visually/monitor-user-properties-image3.png)
+![Etkinlik çalışır listesine kullanıcı özellikleri için sütun ekleme](media/monitor-visually/monitor-user-properties-image3.png)
 
-![Kullanıcı özellikleri için sütunları olan etkinlik çalıştırmaları listesi](media/monitor-visually/monitor-user-properties-image4.png)
+![Etkinlik, kullanıcı özellikleri için sütunlu listeyi çalıştırDı](media/monitor-visually/monitor-user-properties-image4.png)
 
 ## <a name="configure-the-list-view"></a>Liste görünümünü yapılandırma
 
-### <a name="order-and-filter"></a>Sırala ve filtrele
+### <a name="order-and-filter"></a>Sipariş ve filtre
 
-İşlem hattının çalışmasının, çalışma başlangıç zamanına göre azalan veya artan şekilde olacağını değiştirin. Aşağıdaki sütunları kullanarak filtre işlem hattı çalıştırmaları:
+Ardışık hatlar çalışır çalışan başlangıç saatine göre azalan veya artan olup olmayacağını geçiş. Filtre ardışık hattı aşağıdaki sütunları kullanarak çalışır:
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
-| İşlem hattı adı | İşlem hattının adına göre filtreleyin. |
-| Çalıştırma başlangıç |  Gösterilecek işlem hattı çalıştırmalarının zaman aralığını belirleme. Seçenekler, **son 24 saat**, **son hafta**ve **son 30 gün** için hızlı filtreler içerir veya özel bir tarih ve saat seçer. |
-| Çalışma durumu | **Şu**durum ile filtre çalıştırmaları: **başarılı**, başarısız, **sıraya alınmış**, **iptal edildi**veya **devam ediyor**. |
-| Ek Açıklamalar | Her bir ardışık düzene uygulanan etiketlere göre filtrele |
-| Çalıştırmalar | İşlem hatlarını yeniden yönlendirme görmek isteyip istemediğinizi filtreleyin |
+| Boru Hattı Adı | Boru hattının adına göre filtreuygulayın. |
+| Çalıştır Başlangıç |  Görüntülenen ardışık hatlar çalışır zaman aralığını belirleyin. Seçenekler arasında Son **24 saat**, **Geçen hafta**ve **Son 30 gün** için veya özel bir tarih ve saat seçmek için hızlı filtreler yer alıyor. |
+| Çalışma Durumu | Filtre duruma göre çalışır: **Başarılı**, **Başarısız**, **Sıraya ,** İptal **edilen**veya **Devam Ediyor**. |
+| Ek Açıklamalar | Her ardışık ardışık boru hattına uygulanan etiketlere göre filtreleme |
+| Çalıştırmalar | Reran ardışık hatlarını görmek isteyip istemediğiniz ifiltreedin |
 
 ![Filtreleme seçenekleri](media/monitor-visually/filter.png)
 
 ### <a name="add-or-remove-columns"></a>Sütun ekleme veya kaldırma
-Liste görünümü başlığına sağ tıklayın ve liste görünümünde görünmesini istediğiniz sütunları seçin.
+Liste görünümü üstbilgisini sağ tıklatın ve liste görünümünde görünmesini istediğiniz sütunları seçin.
 
 ![Sütun seçenekleri](media/monitor-visually/columns.png)
 
-### <a name="adjust-column-widths"></a>Sütun genişliklerini ayarla
-Sütun üst bilgisinin üzerine gelerek liste görünümündeki sütun genişliklerini artırın ve azaltın.
+### <a name="adjust-column-widths"></a>Sütun genişliklerini ayarlama
+Sütun üstbilgisinin üzerine gezinerek liste görünümündeki sütun genişliklerini artırın ve azaltın.
 
-## <a name="rerun-activities-inside-a-pipeline"></a>Etkinlikleri bir işlem hattı içinde yeniden çalıştırma
+## <a name="rerun-activities-inside-a-pipeline"></a>Bir boru hattı içindeki etkinlikleri yeniden çalıştırma
 
-Etkinlikleri bir işlem hattı içinde yeniden çalıştırabilirsiniz. **Etkinlik çalıştırmalarını görüntüle**' yi seçin ve ardından işlem hattınızda etkinlik hattınızı yeniden çalıştırmak istediğiniz noktayı seçin.
+Bir ardışık boru hattı içinde etkinlikleri yeniden çalıştırabilirsiniz. **Etkinlik çalışır görüntüle'yi**seçin ve ardından ardışık hattınızı yeniden çalıştırmak istediğiniz noktadan gelen etkinliği seçin.
 
 ![Etkinlik çalıştırmalarını görüntüleme](media/monitor-visually/rerun-activities-image1.png)
 
-![Etkinlik çalıştırması seçin](media/monitor-visually/rerun-activities-image2.png)
+![Etkinlik çalıştır'ı seçme](media/monitor-visually/rerun-activities-image2.png)
 
-### <a name="rerun-from-failed-activity"></a>Başarısız etkinlikten yeniden çalıştır
+### <a name="rerun-from-failed-activity"></a>Başarısız olan etkinlikten yeniden çalıştırma
 
-Bir etkinlik başarısız olursa, zaman aşımına uğrar veya iptal edilirse, **başarısız etkinlikten yeniden çalıştır**' ı seçerek bu başarısız etkinlikten ardışık düzeni yeniden çalıştırabilirsiniz.
+Bir etkinlik başarısız olursa, kez geri lanırsa veya iptal edilirse, başarısız olan **etkinlikten Yeniden Çalıştır'ı**seçerek bu başarısız etkinlikten ardışık ardışık alanı yeniden çalıştırabilirsiniz.
 
-![Başarısız etkinliği yeniden çalıştır](media/monitor-visually/rerun-failed-activity.png)
+![Başarısız etkinliği yeniden çalıştırma](media/monitor-visually/rerun-failed-activity.png)
 
-### <a name="view-rerun-history"></a>Yeniden çalıştırma geçmişini görüntüle
+### <a name="view-rerun-history"></a>Yeniden çalıştırma geçmişini görüntüleme
 
-Liste görünümündeki tüm işlem hattı çalıştırmaları için yeniden çalıştırma geçmişini görüntüleyebilirsiniz.
+Liste görünümünde tüm ardışık ardışık çalışır için yeniden çalışma geçmişini görüntüleyebilirsiniz.
 
 ![Geçmişi görüntüleme](media/monitor-visually/rerun-history-image1.png)
 
-Ayrıca, belirli bir işlem hattı çalıştırması için yeniden çalıştırma geçmişini görüntüleyebilirsiniz.
+Ayrıca, belirli bir ardışık hat çalışması için yeniden çalışma geçmişini görüntüleyebilirsiniz.
 
-![İşlem hattı çalıştırmasının geçmişini görüntüleme](media/monitor-visually/rerun-history-image2.png)
+![Bir ardışık hat çalışması için geçmişi görüntüleme](media/monitor-visually/rerun-history-image2.png)
 
 ## <a name="gantt-views"></a>Gantt görünümleri
 
-Ardışık düzenleri ve etkinlik çalıştırmalarını hızlıca görselleştirmek için Gantt görünümlerini kullanın.
+Boru hatlarınızı ve etkinlik çalışanlarınızı hızlı bir şekilde görselleştirmek için Gantt görünümlerini kullanın.
 
-![Gantt grafiğinin örneği](media/monitor-visually/gantt1.png)
+![Gantt grafiği örneği](media/monitor-visually/gantt1.png)
 
-İşlem hatlarında oluşturduğunuz ek açıklamaların/etiketlerin başına, ardışık düzen veya grup için Gantt görünümüne bakabilirsiniz.
+Ardışık hatlarınızda oluşturduğunuz ek açıklamalara/etiketlere göre ardışık alan başına Gantt görünümüne veya grup görünümüne bakabilirsiniz.
 
-![Gantt grafiği ek açıklamaları](media/monitor-visually/gantt2.png)
+![Gantt grafik ek açıklamaları](media/monitor-visually/gantt2.png)
 
-Çubuğun uzunluğu, işlem hattının süresini bilgilendirir. Daha fazla ayrıntı görmek için çubuğu da seçebilirsiniz.
+Çubuğun uzunluğu boru hattının süresini bildirir. Daha fazla ayrıntı görmek için çubuğu da seçebilirsiniz.
 
-![Gantt grafiği süresi](media/monitor-visually/gantt3.png)
+![Gantt grafik süresi](media/monitor-visually/gantt3.png)
 
-## <a name="guided-tours"></a>Kılavuzlu Turlar
-Sol alt köşedeki **bilgi** simgesini seçin. Ardından, işlem hattınızı ve etkinlik çalıştırmalarını nasıl izleyecağınız hakkında adım adım yönergeleri almak için **Kılavuzlu Turları** seçin.
+## <a name="guided-tours"></a>Rehberli turlar
+Sol alttaki **Bilgi** simgesini seçin. Ardından, boru hattınızı ve etkinlik çalışanlarınızı nasıl izleyeceğiniz hakkında adım adım talimatlar almak için **Rehberli** Turlar'ı seçin.
 
-![Kılavuzlu Turlar](media/monitor-visually/guided-tours.png)
+![Rehberli turlar](media/monitor-visually/guided-tours.png)
 
 ## <a name="alerts"></a>Uyarılar
 
-Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak için **Data Factory izleme sayfasında > ** **uyarıları & ölçümleri** ' ni seçin.
+Veri Fabrikası'nda desteklenen ölçümlerle ilgili uyarıları yükseltebilirsiniz. Başlamak için Veri Fabrikası izleme sayfasındaki &**Ölçümleri** **İzle'yi** > seçin.
 
-![Data Factory Izleyici sayfası](media/monitor-visually/alerts01.png)
+![Veri fabrikası Monitör sayfası](media/monitor-visually/alerts01.png)
 
-Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki videoyu izleyin:
+Yedi dakikalık bir tanıtım ve bu özelliğin tanıtımı için aşağıdaki videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Monitor-your-Azure-Data-Factory-pipelines-proactively-with-alerts/player]
 
 ### <a name="create-alerts"></a>Uyarı oluşturma
 
-1.  Yeni bir uyarı oluşturmak için **Yeni uyarı kuralı** ' nı seçin.
+1.  Yeni bir uyarı oluşturmak için **Yeni Uyarı Kuralı'nı** seçin.
 
-    ![Yeni uyarı kuralı düğmesi](media/monitor-visually/alerts02.png)
+    ![Yeni Uyarı Kuralı düğmesi](media/monitor-visually/alerts02.png)
 
-1.  Kural adını belirtin ve uyarı önem derecesini seçin.
+1.  Kural adını belirtin ve uyarı nın önem derecesini seçin.
 
     ![Kural adı ve önem derecesi için kutular](media/monitor-visually/alerts03.png)
 
 1.  Uyarı ölçütlerini seçin.
 
-    ![Hedef ölçütü kutusu](media/monitor-visually/alerts04.png)
+    ![Hedef ölçütler için kutu](media/monitor-visually/alerts04.png)
 
-    ![Ölçüt listesi](media/monitor-visually/alerts05.png)
+    ![Ölçütler listesi](media/monitor-visually/alerts05.png)
 
-1.  Uyarı mantığını yapılandırın. Tüm işlem hatları ve ilgili etkinlikler için seçili ölçüm için bir uyarı oluşturabilirsiniz. Ayrıca belirli bir etkinlik türünü, etkinlik adını, işlem hattı adını veya hata türünü de seçebilirsiniz.
+1.  Uyarı mantığını yapılandırın. Tüm ardışık hatlar ve ilgili etkinlikler için seçili metrik için bir uyarı oluşturabilirsiniz. Belirli bir etkinlik türünü, etkinlik adını, ardışık adveya hata türünü de seçebilirsiniz.
 
     ![Uyarı mantığını yapılandırma seçenekleri](media/monitor-visually/alerts06.png)
 
-1.  Uyarı için e-posta, SMS, push ve sesli bildirimleri yapılandırın. Uyarı bildirimleri için bir eylem grubu oluşturun veya mevcut olanı seçin.
+1.  Uyarı için e-posta, SMS, itme ve sesli bildirimleri yapılandırın. Uyarı bildirimleri için bir eylem grubu oluşturun veya varolan bir grup seçin.
 
     ![Bildirimleri yapılandırma seçenekleri](media/monitor-visually/alerts07.png)
 
@@ -191,4 +191,4 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlem hatlarını izleme ve yönetme hakkında bilgi edinmek için işlem [hatlarını programlama yoluyla izleme ve yönetme](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) makalesine bakın.
+Boru hatlarını izleme ve yönetme hakkında bilgi edinmek için Monitör'e bakın [ve ardışık olarak boru hatları makalesini yönetin.](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)

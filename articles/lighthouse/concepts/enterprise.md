@@ -1,62 +1,62 @@
 ---
 title: Kurumsal senaryolarda Azure Lighthouse
-description: Azure açık Thouse özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için kullanılabilir.
+description: Azure Deniz Feneri'nin özellikleri, birden çok Azure AD kiracısı kullanan bir kuruluştaki kiracılar arası yönetimi basitleştirmek için kullanılabilir.
 ms.date: 09/25/2019
 ms.topic: conceptual
 ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749214"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Kurumsal senaryolarda Azure Lighthouse
 
-[Azure ışıklı kullanım](../overview.md) için en yaygın senaryo, müşterilerinin ' Azure Active Directory (Azure AD) kiracılarındaki kaynakları yöneten bir hizmet sağlayıcıdır. Ancak, Azure ışıklı kullanım özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için de kullanılabilir.
+[Azure Deniz Feneri](../overview.md) için en yaygın senaryo, müşterilerinin Azure Etkin Dizin (Azure AD) kiracılarında kaynakları yöneten bir hizmet sağlayıcısıdır. Ancak, Azure Deniz Feneri'nin özellikleri, birden çok Azure AD kiracısı kullanan bir kuruluştaki kiracılar arası yönetimi basitleştirmek için de kullanılabilir.
 
 ## <a name="single-vs-multiple-tenants"></a>Tek ve birden çok kiracı
 
-Çoğu kuruluş için, yönetim tek bir Azure AD kiracısıyla daha kolay olur. Tek bir kiracının içindeki tüm kaynakların olması, bu Kiracıdaki kullanıcılara, Kullanıcı gruplarına veya hizmet sorumlularına göre yönetim görevlerinin merkezileşmeyi sağlar. Mümkün olduğunda kuruluşunuz için bir kiracı kullanmanızı öneririz.
+Çoğu kuruluş için yönetim, tek bir Azure AD kiracısıyla daha kolaydır. Tüm kaynakların tek bir kiracı içinde olması, yönetim görevlerinin, bu kiracı içindeki atanmış kullanıcılar, kullanıcı grupları veya hizmet ilkeleri tarafından merkezileştirilmesine olanak tanır. Kuruluşunuz için mümkün olduğunca tek bir kiracı kullanmanızı öneririz.
 
-Aynı zamanda, bir kuruluşun birden çok Azure AD kiracının bakımını gerektirebileceği durumlar vardır. Bazı durumlarda bu geçici bir durum olabilir. Bu durumda, alımlar gerçekleştiği sırada ve uzun süreli bir kiracı birleştirme stratejisinin tanımlanması zaman alabilir. Kuruluşun aynı zamanda birden fazla kiracının devam edebilmesi için (tamamen bağımsız bağlı kuruluşlar, coğrafi veya yasal gereksinimler vb.). Çok kiracılı bir mimarinin gerekli olduğu durumlarda, yönetim işlemlerini merkezileştirmek ve kolaylaştırmak için Azure tarafından atanan kaynak yönetimi kullanılabilir. Birden çok kiracıdan abonelikler, Azure tarafından atanan [kaynak yönetimi](azure-delegated-resource-management.md)için eklendi olabilir. Bu, bir yönetim kiracısındaki belirlenen kullanıcıların, merkezi ve ölçeklenebilir bir şekilde [platformlar arası yönetim işlevleri](cross-tenant-management-experience.md) gerçekleştirmesini sağlar.
+Aynı zamanda, bir kuruluşun birden çok Azure AD kiracısını korumasını gerektirebilecek durumlar da vardır. Bazı durumlarda, satın almalar gerçekleştiği ve uzun vadeli kiracı konsolidasyon stratejisinin tanımlanması biraz zaman alacağı için bu geçici bir durum olabilir. Bir kuruluşun sürekli olarak birden fazla kiracı tutması da gerekebilir (tamamen bağımsız yan kuruluşlar, coğrafi veya yasal gereksinimler vb. nedeniyle). Çok kiracılı mimarinin gerekli olduğu durumlarda, Azure temsilcikaynak yönetimi, yönetim işlemlerini merkezileştirmek ve kolaylaştırmak için kullanılabilir. Birden çok kiracıdan gelen abonelikler, [Azure'un devraldığı kaynak yönetimi](azure-delegated-resource-management.md)için kullanılabilir ve yönetici kiracıdaki atanmış kullanıcıların çapraz kiracı yönetim [işlevlerini](cross-tenant-management-experience.md) merkezi ve ölçeklenebilir bir şekilde gerçekleştirmesine olanak tanır.
 
-## <a name="tenant-management-architecture"></a>Kiracı Yönetimi mimarisi
+## <a name="tenant-management-architecture"></a>Kiracı yönetim mimarisi
 
-Birden çok kiracının yönetim işlemlerini merkezileştirirken, diğer kiracılara yönelik yönetim işlemlerini gerçekleştiren kullanıcıların hangi kiracının dahil edileceğini belirlemeniz gerekir. Diğer bir deyişle, diğer kiracılar için hangi kiracının yönetim kiracısı olacağını belirlemeniz gerekir.
+Yönetim işlemlerini birden çok kiracı arasında merkezileştirdiğinizde, hangi kiracının diğer kiracılar için yönetim işlemleri gerçekleştiren kullanıcıları içereceğini belirlemeniz gerekir. Başka bir deyişle, diğer kiracılar için yönetici kiracı olacak hangi kiracı belirlemek gerekir.
 
-Örneğin, kuruluşunuzun *kiracı a*'yı çağıracağımız tek bir kiracıya sahip olduğunu varsayalım. Daha sonra kuruluşunuz iki ek kiracı, *kiracı B* ve *kiracı C*alır ve bunları ayrı kiracılar olarak tutmanızı gerektiren iş nedenleriniz vardır.
+Örneğin, kuruluşunuzun *Kiracı A*adını vereceğimiz tek bir kiracısı olduğunu varsayabiliriz. Kuruluşunuz daha sonra iki ek kiracı, *Kiracı B* ve *Kiracı C*satın aldı ve bunları ayrı kiracı olarak korumanızı gerektiren iş nedenleriniz vardır.
 
-Kuruluşunuz, tüm kiracıların tamamında aynı ilke tanımlarını, yedekleme uygulamalarını ve güvenlik süreçlerini kullanmak istiyor. Kiracı A içinde bu görevleri gerçekleştirmekten sorumlu olan kullanıcılarınız (Kullanıcı grupları ve hizmet sorumluları dahil) zaten mevcut olduğundan, Kiracıdaki aynı kullanıcıların bu işlemleri gerçekleştirmesini sağlamak için kiracı B ve kiracı C içindeki tüm abonelikleri ekleyebilirsiniz. görevlerinize.
+Kuruluşunuz tüm kiracılar arasında aynı ilke tanımlarını, yedekleme uygulamalarını ve güvenlik işlemlerini kullanmak istiyor. Kiracı A'da bu görevleri gerçekleştirmekten sorumlu kullanıcılar (kullanıcı grupları ve hizmet ilkeleri dahil) olduğundan, Kiracı A'daki aynı kullanıcıların bunları gerçekleştirebilmeleri için Kiracı B ve Kiracı C içindeki tüm abonelikleri Görev.
 
-![Kiracıdaki kullanıcılar kiracı B ve kiracı C 'de kaynakları yönetme](../media/enterprise-azure-lighthouse.jpg)
+![Kiracı A'daki kullanıcılar Kiracı B ve Kiracı C'deki kaynakları yönetiyor](../media/enterprise-azure-lighthouse.jpg)
 
 ## <a name="security-and-access-considerations"></a>Güvenlik ve erişim konuları
 
-Çoğu kurumsal senaryoda, bir abonelik içinde yalnızca belirli kaynak gruplarını temsil edebilir, ancak Azure tarafından atanan kaynak yönetimi için tam bir abonelik atamak isteyeceksiniz.
+Çoğu kurumsal senaryoda, bir abonelik içinde yalnızca belirli kaynak gruplarını da devredebilirsiniz, ancak Azure temsilci kaynak yönetimi için tam bir abonelik vermek isteyebilirsiniz.
 
-Her iki durumda da, [kaynaklara hangi kullanıcıların erişebileceğini tanımlarken en az ayrıcalık ilkesini izlediğinizden](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)emin olun. Bunun yapılması, kullanıcıların yalnızca gerekli görevleri gerçekleştirmek için gerekli izinlere sahip olmasını sağlamaya yardımcı olur ve yanlışlıkla hata olasılığını azaltır.
+Her iki şekilde de, [hangi kullanıcıların kaynaklara erişeceğini tanımlarken en az ayrıcalık ilkesine uymayı](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)unutmayın. Bunu yapmak, kullanıcıların yalnızca gerekli görevleri gerçekleştirmek için gereken izinlere sahip olmasını sağlamaya yardımcı olur ve yanlışlıkla hata yapma olasılığını azaltır.
 
-Azure Mathouse ve Azure Temsilcili kaynak yönetimi, verileri veya kaynakları fiziksel olarak taşımak yerine yalnızca bir kiracı ve yönetilen kiracılar arasında mantıksal bağlantılar sağlar. Ayrıca erişim, yönetim kiracısından yönetilen kiracılar 'a her zaman tek bir yönde gider.  Yönetim kiracısındaki kullanıcılar ve gruplar, yönetilen kiracı kaynaklarında yönetim işlemlerini gerçekleştirirken Multi-Factor Authentication kullanmaya devam etmelidir.
+Azure Deniz Feneri ve Azure temsilci kaynak yönetimi, verileri veya kaynakları fiziksel olarak taşımak yerine yalnızca yönetici kiracı ile yönetilen kiracılar arasında mantıksal bağlantılar sağlar. Ayrıca, erişim her zaman yönetici kiracıdan yönetilen kiracılara kadar tek bir yöne gider.  Yönetici kiracıdaki kullanıcılar ve gruplar, yönetilen kiracı kaynakları üzerinde yönetim işlemleri gerçekleştirirken çok faktörlü kimlik doğrulaması kullanmaya devam etmelidir.
 
-İç veya dış idare ve uyumluluk guardları olan kuruluşlar, saydamlık gereksinimlerini karşılamak için [Azure etkinlik günlüklerini](../../azure-monitor/platform/platform-logs-overview.md) kullanabilir. Kurumsal kiracılar yönetim ve yönetilen kiracı ilişkileri oluştururken, her Kiracıdaki kullanıcılar günlüğe kaydedilen etkinliği görüntüleyerek diğer Kiracıdaki kullanıcılar tarafından gerçekleştirilen eylemleri izleyebilir ve görünürlük elde edebilir.
+Dahili veya harici yönetişim ve uyumluluk korkuluklarına sahip işletmeler, şeffaflık gereksinimlerini karşılamak için [Azure Etkinlik günlüklerini](../../azure-monitor/platform/platform-logs-overview.md) kullanabilir. Kurumsal kiracılar yönetici ve yönetilen kiracı ilişkilerini kurduğunda, her kiracıdaki kullanıcılar günlüğe kaydedilmiş etkinliği görüntüleyerek diğer kiracıdaki kullanıcılar tarafından gerçekleştirilen eylemleri izleyebilir ve görünürlük kazanabilir.
 
-## <a name="onboarding-process-considerations"></a>Ekleme süreci konuları
+## <a name="onboarding-process-considerations"></a>Onboarding süreci hususlar
 
-Abonelikler (veya bir abonelik içindeki kaynak grupları), Azure Resource Manager şablonları dağıtarak veya Azure Marketi 'nde yayınlanan yönetilen hizmet teklifleri aracılığıyla veya özel olarak ya da Hazırlayan.
+Abonelikler (veya abonelik içindeki kaynak grupları), Azure Kaynak Yöneticisi şablonlarını dağıtarak veya Azure Marketi'nde yayınlanan Yönetilen Hizmetler teklifleri aracılığıyla Azure'a devredilen kaynak yönetimine dahil edilebilir Halka.
 
-Kurumsal kullanıcılar normalde kuruluşun kiracılarına doğrudan erişim elde edebilecekler ve bir yönetim teklifini pazarlamaya veya yükseltmeye gerek duymadığından, genellikle Azure Resource Manager şablonlarıyla doğrudan daha hızlı ve daha basit hale gelir. [Ekleme](../how-to/onboard-customer.md)kılavuzundaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz sürece kuruluşlar aynı işlemlerin aynısını kullanabilir.
+Kurumsal kullanıcılar normalde işletmenin kiracılarına doğrudan erişim elde edebileceklerinden ve bir yönetim teklifini pazarlamaya veya tanıtmaya gerek olmadığından, genellikle Azure Kaynak Yöneticisi şablonlarıyla doğrudan dağıtmak daha hızlı ve daha kolaydır. Biz [onboarding rehberlik](../how-to/onboard-customer.md)hizmet sağlayıcılar ve müşteriler bakın iken, işletmeler aynı süreçleri kullanabilirsiniz.
 
-İsterseniz, bir kuruluştaki kiracılar [Azure Market 'e yönetilen bir hizmet teklifi yayımlayarak](../how-to/publish-managed-services-offers.md)eklendi olabilir. Teklifin yalnızca uygun kiracılar için kullanılabilir olduğundan emin olmak için, planlarınızın özel olarak işaretlendiğinden emin olun. Özel bir plan sayesinde, sunmayı planladığınız her kiracı için abonelik kimliklerini sağlayabilir ve teklifinizi başka hiç kimse sağlayamayacak.
+İsterseniz, bir kuruluştaki kiracılar, [Yönetilen Hizmetler teklifini Azure Marketi'nde yayımlayarak](../how-to/publish-managed-services-offers.md)gemiye binebilir. Teklifin yalnızca uygun kiracılar tarafından kullanılabildiğinden emin olmak için, planlarınızın özel olarak işaretli olduğundan emin olun. Özel bir planla, gemide yapmayı planladığınız her kiracı için abonelik eklerini sağlayabilirsiniz ve başka hiç kimse teklifinizi alamaz.
 
 ## <a name="terminology-notes"></a>Terminoloji notları
 
-Kuruluştaki çapraz Kiracı Yönetimi için, Azure açık belgeleri belgelerindeki hizmet sağlayıcılarına yapılan başvurular, bir kuruluşta yönetim kiracısına (yani, kaynakları yönetecek kullanıcıları içeren kiracı) uygulanabilir. Azure tarafından atanan kaynak yönetimi aracılığıyla diğer kiracılarda. Benzer şekilde, müşterilere yapılan başvurular, yönetim kiracısındaki kullanıcılar aracılığıyla yönetilecek kaynak temsilcisi olan kiracılar için de kullanılabilir.
+Kuruluş içinde çapraz kiracı yönetimi için, Azure Deniz Feneri belgelerindeki hizmet sağlayıcılarına yapılan atıfların, bir kuruluş taki yönetici kiracıya, yani kaynakları yönetecek kullanıcıları içeren kiracıya geçerli olduğu anlaşılabilir Azure temsilci kaynak yönetimi aracılığıyla diğer kiracılarda. Benzer şekilde, müşterilere yapılan başvuruların, yönetici kiracıdaki kullanıcılar aracılığıyla yönetilecek kaynakları devredeleyen kiracılara da geçerli olduğu anlaşılabilir.
 
-Örneğin, yukarıda açıklanan örnekte, kiracı A, hizmet sağlayıcı kiracısı (yöneten kiracı) ve B kiracısı ile kiracı C 'nin müşteri kiracıları olarak düşünülebilir.
+Örneğin, yukarıda açıklanan örnekte, Kiracı A servis sağlayıcı kiracı (yönetici kiracı) ve Kiracı B ve Kiracı C müşteri kiracı olarak düşünülebilir.
 
-Bu örnekte, uygun izinlere sahip bir Kullanıcı kiracıya, Azure portal **müşteriler** sayfasında, [temsilci kaynakları görüntüleyebilir ve yönetebilir](../how-to/view-manage-customers.md) . Benzer şekilde, B ve uygun izinlere sahip kiracı C kullanıcıları, Azure portal **hizmet sağlayıcıları** sayfasında kiracıya [atanmış kaynakları görüntüleyebilir ve yönetebilir](../how-to/view-manage-service-providers.md) .
+Bu örnekte, Uygun izinlere sahip Kiracı A kullanıcıları, Azure portalının **müşterilerim** sayfasında [temsilci kaynakları görüntüleyebilir ve yönetebilir.](../how-to/view-manage-customers.md) Benzer şekilde, uygun izinlere sahip Kiracı B ve Kiracı C kullanıcıları, Azure portalının **Hizmet sağlayıcıları** sayfasında Kiracı A'ya [devredilen kaynakları görüntüleyebilir ve yönetebilir.](../how-to/view-manage-service-providers.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
+- Kiracılar [arası yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
 - [Azure tarafından atanan temsilcinin kaynak yönetimi](azure-delegated-resource-management.md) hakkında bilgi edinin.

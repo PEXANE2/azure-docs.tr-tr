@@ -5,61 +5,61 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188411"
 ---
 > [!NOTE]
-> SharePoint KKY yapılandırması için StorSimple bağdaştırıcısı değişiklikler yaparken, Domain Admins grubuna ait bir kullanıcı hesabıyla oturum. Ayrıca, merkezi yönetim olarak aynı konakta çalışan bir tarayıcıdan yapılandırma sayfasında erişmeniz gerekir.
+> SharePoint RBS yapılandırması için StorSimple Adaptöründe değişiklik yaparken, Etki Alanı Yöneticileri grubuna ait bir kullanıcı hesabıyla oturum açmanız gerekir. Ayrıca, yapılandırma sayfasına Merkezi Yönetim ile aynı ana bilgisayarda çalışan bir tarayıcıdan erişmeniz gerekir.
 > 
 > 
 
-#### <a name="to-configure-rbs"></a>KKY yapılandırmak için
-1. SharePoint Merkezi Yönetim sayfasını açın ve gidin **sistem ayarlarını**. 
-2. İçinde **Azure StorSimple** bölümünde **StorSimple bağdaştırıcısını yapılandırın**.
+#### <a name="to-configure-rbs"></a>RBS yapılandırmak için
+1. SharePoint Merkezi Yönetim sayfasını açın ve **Sistem Ayarları'na**göz atın. 
+2. Azure **StorSimple** bölümünde, **StorSimple Adapter'ı Yapılandır'ı**tıklatın.
    
-    ![StorSimple bağdaştırıcısını yapılandırın](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. Üzerinde **StorSimple bağdaştırıcısını yapılandırın** sayfası:
+    ![StorSimple Adaptörü yapılandırın](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
+3. **StorSimple Adaptör'u Yapılandır:**
    
-   1. Emin olun **düzenleme yolunu etkinleştirmek** onay kutusu seçilidir.
-   2. Metin kutusuna BLOB deposuna Evrensel Adlandırma Kuralı (UNC) yolunu yazın.
+   1. Düzenleme yolunu **etkinleştir** onay kutusunun seçildiğinden emin olun.
+   2. Metin kutusuna, BLOB deposunun Evrensel Adlandırma Sözleşmesi (UNC) yolunu yazın.
       
       > [!NOTE]
-      > BLOB Depolama Birimi, StorSimple cihazında bir iSCSI birimi üzerinde barındırılması gerekir.
+      > BLOB depo hacmi, StorSimple aygıtında yapılandırılan bir iSCSI hacminde barındırılmalıdır.
 
-   3. Tıklayın **etkinleştirme** uzak depolama için yapılandırmak istediğiniz içerik veritabanlarının her biri aşağıda düğmesi.
+   3. Uzak depolama için yapılandırmak istediğiniz içerik veritabanlarının her birinin altındaki **Etkinleştir** düğmesini tıklatın.
       
       > [!NOTE]
-      > BLOB Depolama tüm web ön uç (WFE) sunucular tarafından paylaşılan ve erişilebilir olmalıdır ve SharePoint sunucu grubu için yapılandırılmış kullanıcı hesabının bu paylaşıma erişiminiz olmalıdır.
+      > BLOB deposu tüm web ön uç (WFE) sunucuları tarafından paylaşılmalı ve erişilebilir olmalıdır ve SharePoint sunucu çiftliği için yapılandırılan kullanıcı hesabı nın paylaşıma erişimi olmalıdır.
       
-      ![KKY sağlayıcısını etkinleştirin](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
+      ![RBS sağlayıcısını etkinleştirme](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
       
-      Etkinleştirdiğinizde veya KKY devre dışı bıraktığınızda, şu iletiyi görürsünüz.
+      RBS'yi etkinleştirdiğinizde veya devre dışı bettiğinizde, aşağıdaki iletiyi de görürsünüz.
       
-      ![StorSimple bağdaştırıcısı etkinleştirme devre dışı bırakma yapılandırma](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
+      ![StorSimple Adaptör'u Yapılandırın Devre Dışı](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. Tıklayın **güncelleştirme** yapılandırmayı uygulamak için düğme. Tıkladığınızda **güncelleştirme** düğmesi tüm WFE sunucuları üzerinde KKY yapılandırma durumu güncelleştirilir ve tüm Grup KKY etkin olacaktır. Aşağıdaki ileti görüntülenir.
+   4. Yapılandırmayı uygulamak için **Güncelleştir** düğmesini tıklatın. **Güncelleştirme** düğmesini tıklattığınızda, RbS yapılandırma durumu tüm WFE sunucularında güncelleştirilir ve tüm çiftlik RbS etkin olur. Aşağıdaki ileti görüntülenir.
       
       ![Bağdaştırıcı yapılandırma iletisi](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > Çok büyük sayıda (200 ' büyük) veritabanları bir SharePoint çiftliği için KKY yapılandırıyorsanız SharePoint Yönetim Merkezi web sayfası zaman aşımına uğrayabilir. Bu meydana gelirse, sayfayı yenileyin. Bu yapılandırma işlemini etkilemez.
+      > Çok sayıda veritabanı (200'den büyük) olan bir SharePoint çiftliği için RBS yapılandırıyorsanız, SharePoint Merkezi Yönetim web sayfası zaman alabilir. Bu durumda, sayfayı yenileyin. Bu yapılandırma işlemini etkilemez.
 
 4. Yapılandırmayı doğrulayın:
    
-   1. SharePoint Merkezi Yönetim Web sitesine oturum açın ve gidin **StorSimple bağdaştırıcısını yapılandırın** sayfası.
-   2. Girdiğiniz ayarları eşleştiğinden emin olmak için yapılandırma ayrıntılarını kontrol edin. 
-5. KKY düzgün çalıştığını doğrulayın:
+   1. SharePoint Merkezi Yönetim web sitesinde oturum açın ve **StorSimple Adaptör'u Yapılandır' ı** sayfasına göz atın.
+   2. Girdiğiniz ayarlarla eşleştiklerine emin olmak için yapılandırma ayrıntılarını denetleyin. 
+5. RBS'nin doğru çalıştığından doğrulayın:
    
-   1. Bir belge SharePoint'e yükle. 
-   2. Yapılandırdığınız UNC yolu belirtin. KKY dizin yapısı oluşturulduğunu ve karşıya yüklenen nesnesi içerdiğinden emin olun.
-6. (İsteğe bağlı) Microsoft RBS kullanabileceğiniz `Migrate()` StorSimple cihazına mevcut BLOB içeriği taşımak için SharePoint dahil olanlar PowerShell cmdlet'i. Daha fazla bilgi için [içine veya dışına SharePoint 2013'te KKY İçerik Geçişi] [ 6] veya [içine veya dışına KKY (SharePoint Foundation 2010) İçerik Geçişi] [7].
-7. (İsteğe bağlı) Test yüklemelerinde Blobları gibi içerik veritabanından taşınan doğrulayabilirsiniz: 
+   1. Belgeyi SharePoint'e yükleyin. 
+   2. Yapılandırdığınız UNC yoluna göz atın. RBS dizin yapısının oluşturulduğundan ve yüklenen nesneyi içerdiğinden emin olun.
+6. (İsteğe bağlı) Varolan BLOB içeriğini `Migrate()` StorSimple aygıtına geçirmek için SharePoint ile birlikte verilen Microsoft RBS PowerShell cmdlet'ini kullanabilirsiniz. Daha fazla bilgi için bkz: [SharePoint 2013'te Içeriği RBS'ye][6] veya Bunların dışına geçir veya [Içeriği RBS'ye veya RbS'ye geçir (SharePoint Foundation 2010)][7].
+7. (İsteğe bağlı) Test yüklemelerinde, BLOB'ların içerik veritabanından taşındığını aşağıdaki gibi doğrulayabilirsiniz: 
    
-   1. SQL Management Studio'yu başlatın.
-   2. Listblobsındb_2010.SQL veya Listblobsındb_2013.SQL sorgu şu şekilde çalıştırın.
+   1. SQL Management Studio'u başlatın.
+   2. ListBlobsInDB_2010.sql veya ListBlobsInDB_2013.sql sorgusunu aşağıdaki gibi çalıştırın.
       
       ```
       **ListBlobsInDB_2013.sql**
@@ -102,18 +102,18 @@ ms.locfileid: "67188411"
         GO
       ```
       
-      KKY doğru şekilde yapılandırıldıysa, bir NULL değer karşıya ve başarıyla ile KKY te dış herhangi bir nesne SizeOfContentInDB Sütun görüntülenmelidir.
-8. (İsteğe bağlı) KKY yapılandırmak ve StorSimple cihazına tüm BLOB içeriğini taşımak sonra cihaza içerik veritabanını taşıyabilirsiniz. İçerik veritabanını taşımak isterseniz, cihazdaki birincil bir birim olarak içerik veritabanını depolama yapılandırmanızı öneririz. Ardından, SQL Server en iyi yöntemler için StorSimple cihazı içerik veritabanını geçirmek için yerleşik. 
+      RBS doğru yapılandırılmışsa, yüklenen ve RBS ile başarıyla dışsallaştırılan herhangi bir nesne için SizeOfContentInDB sütununda null değeri görünmelidir.
+8. (İsteğe bağlı) RBS'yi yapılandırDıktan ve tüm BLOB içeriğini StorSimple aygıtına taşıdıktan sonra, içerik veritabanını aygıta taşıyabilirsiniz. İçerik veritabanını taşımayı seçerseniz, aygıttaki içerik veritabanı depolama alanını birincil birim olarak yapılandırmanızı öneririz. Ardından, içerik veritabanını StorSimple aygıtına geçirmek için yerleşik SQL Server en iyi uygulamalarını kullanın. 
    
    > [!NOTE]
-   > Cihaza içerik veritabanını taşıma (Bu 5000 veya 7000 Serisi için desteklenmez) StorSimple 8000 serisi için yalnızca desteklenir.
+   > İçerik veritabanının aygıta taşınması yalnızca StorSimple 8000 serisi için desteklenir (5000 veya 7000 serisi için desteklenmez).
    
-   StorSimple cihazında ayrı birimlerdeki Blobları ve içerik veritabanını depoluyorsanız bunları aynı birim kapsayıcısında yapılandırmanızı öneririz. Bu, bunlar birlikte yedeklenir, sağlar.
+   BLOB'ları ve içerik veritabanını StorSimple aygıtında ayrı birimlerde saklarsanız, bunları aynı birim kapsayıcıda yapılandırmanızı öneririz. Bu, birlikte yedekleneceklerini sağlar.
    
    > [!WARNING]
-   > KKY etkinleştirmediyseniz, StorSimple cihazı için içerik veritabanını taşıma önerilmez. Bu test edilmemiş bir yapılandırmadır.
+   > RbS'yi etkinleştirmediyseniz, içerik veritabanını StorSimple aygıtına taşımanızı önermiyoruz. Bu test edilmemiş bir yapılandırmadır.
    
-9. Sonraki adıma gidin: [Çöp toplamayı yapılandır](#configure-garbage-collection).
+9. Bir sonraki adıma geçin: [Çöp toplamayı yapılandırın.](#configure-garbage-collection)
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx

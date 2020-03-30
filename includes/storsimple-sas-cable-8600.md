@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188405"
 ---
-#### <a name="to-attach-the-sas-cables"></a>SAS kablolu jbod'lere eklemek için
-1. Birincil ve ebod belirleyin. İki kasaları ilgili kendi arka düzlem bakarak tanımlanabilir. Yönergeler için aşağıdaki resme bakın. 
+#### <a name="to-attach-the-sas-cables"></a>SAS kablolarını takmak için
+1. Birincil ve EBOD muhafazalarını tanımlayın. İki muhafaza, kendi arka düzlemlerine bakarak tanımlanabilir. Rehberlik için aşağıdaki resme bakın. 
    
-    ![Düzlem birincil ve ebod](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
+    ![Birincil ve EBOD muhafazalarının arka düzlemi](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
    
-    **Birincil ve ebod görünümü geri**
+    **Birincil ve EBOD muhafazalarının geri görünümü**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    |:--- |:--- |
-   | 1 |Birincil |
+   | 1 |Birincil muhafaza |
    | 2 |EBOD muhafazası |
-2. Birincil ve ebod seri numaraları bulun. Seri numarası etikette her kutu geri ümünü Temizle için yapıştırılır. Seri numaralarını iki kasaları üzerinde aynı olmalıdır. [Microsoft Support başvurun](../articles/storsimple/storsimple-contact-microsoft-support.md) hemen seri numaralarını eşleşmiyorsa. Seri numaralarını bulmak için aşağıdaki çizime bakın.
+2. Birincil ve EBOD muhafazalarında seri numaralarını bulun. Seri numarası etiketi her kasanın arka kulağına yapıştırılır. Seri numaraları her iki kasada da aynı olmalıdır. Seri numaraları eşleşmiyorsa hemen [Microsoft Destek'e başvurun.](../articles/storsimple/storsimple-contact-microsoft-support.md) Seri numaralarını bulmak için aşağıdaki resme bakın.
    
-    ![Seri numarası etiketinin arka görünümü](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
+    ![Seri numarasını gösteren kasanın arka görünümü](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
-    **Seri numarası konumu**
+    **Seri numarası etiketinin konumu**
    
-   | Etiket | Açıklama |
+   | Etiketle | Açıklama |
    |:--- |:--- |
-   | 1 |Kutu, ümünü Temizle |
-3. EBOD muhafazası birincil kasası için şu şekilde bağlanmak için sağlanan SAS kablolu jbod'lere kullanın:
+   | 1 |Kasanın kulağı |
+3. EBOD kasasını birincil kasaya aşağıdaki şekilde bağlamak için sağlanan SAS kablolarını kullanın:
    
-   1. Muhafaza birincil ve EBOD muhafazası üzerindeki dört SAS bağlantı noktaları belirleyin. SAS bağlantı noktasını birincil muhafaza EBOD etiketlenir ve EBOD muhafazası A bağlantı noktası için aşağıdaki çizimde, kablolama SAS gösterildiği karşılık gelir.
-   2. Sağlanan SAS kablolu jbod'lere EBOD bağlantı noktası için bağlantı noktası a bağlanın.
-   3. EBOD Denetleyicisi 0 bağlantı noktasını EBOD Denetleyicisi 0 bağlantı noktası A bağlanması gerekir. EBOD denetleyicisi 1 üzerinde bağlantı noktası bir denetleyici 1 EBOD noktasından bağlanması gerekir. Yönergeler için aşağıdaki çizime bakın. 
+   1. Birincil kasa ve EBOD muhafazası üzerindeki dört SAS bağlantı noktasını tanımlayın. SAS bağlantı noktaları birincil kasada EBOD olarak etiketlenir ve aşağıdaki SAS kablolama çiziminde gösterildiği gibi EBOD kasasındaki A bağlantı noktasına karşılık gelir.
+   2. EBOD bağlantı noktasını A limanına bağlamak için sağlanan SAS kablolarını kullanın.
+   3. Denetleyici 0'daki EBOD bağlantı noktası, EBOD denetleyicisi 0'daki A bağlantı noktasına bağlanmalıdır. Denetleyici 1'deki EBOD bağlantı noktası, EBOD denetleyici 1'deki A bağlantı noktasına bağlanmalıdır. Kılavuz için aşağıdaki resme bakın. 
       
-      ![Cihazınız için SAS kabloları](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
+      ![Cihazınız için SAS kablolama](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
       
-      **SAS kabloları**
+      **SAS kablolama**
       
-      | Etiket | Açıklama |
+      | Etiketle | Açıklama |
       |:--- |:--- |
-      | A |Birincil |
+      | A |Birincil muhafaza |
       | B |EBOD muhafazası |
       | 1 |Denetleyici 0 |
       | 2 |Denetleyici 1 |
-      | 3 |EBOD Denetleyicisi 0 |
-      | 4 |EBOD denetleyicisi 1 |
-      | 5, 6 |SAS bağlantı noktalarını birincil kutu (EBOD etiketli) |
-      | 7, 8 |SAS bağlantı noktalarını EBOD muhafazası (A bağlantı noktası) |
+      | 3 |EBOD Denetleyici 0 |
+      | 4 |EBOD Denetleyici 1 |
+      | 5, 6 |Birincil kasadaki SAS bağlantı noktaları (EBOD etiketli) |
+      | 7, 8 |EBOD kasası üzerindeki SAS bağlantı noktaları (Port A) |
 

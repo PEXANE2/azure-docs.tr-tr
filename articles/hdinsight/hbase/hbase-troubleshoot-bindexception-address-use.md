@@ -1,6 +1,6 @@
 ---
-title: BindException-adres Azure HDInsight 'ta zaten kullanılıyor
-description: BindException-adres Azure HDInsight 'ta zaten kullanılıyor
+title: BindException - Azure HDInsight'ta halihazırda kullanılmakta olan adres
+description: BindException - Azure HDInsight'ta halihazırda kullanılmakta olan adres
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 80f984643d6d8be88b381881c6fc1cb1cb5f1815
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887351"
 ---
-# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Senaryo: BindException-adres Azure HDInsight 'ta zaten kullanılıyor
+# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Senaryo: BindException - Azure HDInsight'ta halihazırda kullanılmakta olan adres
 
-Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümeleriyle etkileşimde olurken sorun giderme adımları ve sorunlarla ilgili olası çözümler açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Apache HBase bölge sunucusu üzerinde yeniden başlatma işlemi tamamlanamadı. Bölge sunucusunun başlayacağı çalışan düğümlerinde `/var/log/hbase` dizinindeki `region-server.log`, aşağıdakine benzer bir hata iletisi görebilirsiniz:
+Apache HBase Region Server'daki yeniden başlatma işlemi tamamlayamadı. `region-server.log` Bölge sunucusunun başarısız olduğu alt düğümler üzerindeki `/var/log/hbase` dizinde aşağıdaki gibi benzer bir hata iletisi görebilirsiniz:
 
 ```
 Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
@@ -32,23 +32,23 @@ Caused by: java.net.BindException: Address already in use
 
 ## <a name="cause"></a>Nedeni
 
-Ağır iş yükü etkinliği sırasında Apache HBase bölge sunucuları yeniden başlatılıyor. Bir Kullanıcı, HBase bölge sunucusunda Apache ambarı kullanıcı arabiriminden yeniden başlatma işlemini başlattığında, arka planda bu durum aşağıda verilmiştir:
+Ağır iş yükü etkinliği sırasında Apache HBase Bölge Sunucularını yeniden başlatma. Aşağıda, bir kullanıcı Apache Ambari UI'den HBase bölge sunucusunda yeniden başlatma işlemini başlattığında arka planda neler olduğu aşağıda verilmiştir:
 
-1. Ambarı Aracısı bölge sunucusuna bir durdurma isteği gönderir.
+1. Ambari aracısı bölge sunucusuna bir durdurma isteği gönderir.
 
-1. Ambarı Aracısı bölge sunucusunun düzgün şekilde kapanması için 30 saniye bekler
+1. Ambari aracısı bölge sunucusunun zarif bir şekilde kapanması için 30 saniye bekler
 
-1. Uygulamanız bölge sunucusuna bağlanmaya devam ederse, sunucu hemen kapatılmaz. 30 saniyelik zaman aşımı, kapatmadan önce sona erer.
+1. Uygulamanız bölge sunucusuna bağlanmaya devam ederse, sunucu hemen kapanmaz. Kapatma gerçekleşmeden önce 30 saniyelik zaman aşımı süresi doluyor.
 
-1. 30 saniye sonra, ambarı Aracısı bölge sunucusuna bir zorla-KILL (`kill -9`) komutu gönderir.
+1. 30 saniye sonra Ambari ajanı bölge sunucusuna bir kuvvet öldürme ()`kill -9`komutu gönderir.
 
-1. Bu ani kapatmayla kapatılmış olsa da, bölge sunucusu işlemi sonlandırısa da işlemle ilişkili bağlantı noktası yayımlanmayabilir, sonuçta `AddressBindException`.
+1. Bu ani kapatma nedeniyle, bölge sunucu işlemi öldürülse de, işlemle ilişkili bağlantı `AddressBindException`noktası serbest bırakılmayabilir ve bu da sonunda .
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
-Yeniden başlatma başlatmadan önce HBase bölge sunucularındaki yükü azaltın. Ayrıca, ilk olarak tüm tabloları temizlemek iyi bir fikirdir. Tabloları temizleme hakkında bir başvuru için bkz. [HDInsight HBase: tabloları yeniden seçerek Apache HBase kümesini geliştirme süresi](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Yeniden başlatmayı başlatmadan önce HBase bölge sunucularında yükü azaltın. Ayrıca, önce tüm tabloları sifonu çekmek iyi bir fikirdir. Tabloların nasıl temizlenirle ilgili bir başvuru için [HDInsight HBase: Tabloları yıkarak Apache HBase küme yeniden başlatma süresini nasıl iyileştireceğiniz.](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)
 
-Alternatif olarak, aşağıdaki komutları kullanarak çalışan düğümlerinde bölge sunucularını el ile yeniden başlatmayı deneyin:
+Alternatif olarak, aşağıdaki komutları kullanarak alt düğümlerde bölge sunucularını el ile yeniden başlatmayı deneyin:
 
 ```bash
 sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
@@ -57,10 +57,10 @@ sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh star
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın. Azure topluluğunu doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)yı gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.

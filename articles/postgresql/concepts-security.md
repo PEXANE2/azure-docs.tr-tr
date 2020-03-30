@@ -1,60 +1,60 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda güvenlik-tek sunucu
-description: PostgreSQL için Azure veritabanı 'nın güvenlik özelliklerine genel bakış-tek sunucu.
+title: PostgreSQL için Azure Veritabanında Güvenlik - Tek Sunucu
+description: PostgreSQL - Single Server için Azure Veritabanı'ndaki güvenlik özelliklerine genel bakış.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972596"
 ---
-# <a name="security-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda güvenlik-tek sunucu
+# <a name="security-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanında Güvenlik - Tek Sunucu
 
-PostgreSQL için Azure veritabanı sunucunuzdaki verileri korumak için kullanılabilen birden çok güvenlik katmanı vardır. Bu makalede bu güvenlik seçenekleri özetlenmektedir.
+PostgreSQL sunucusu için Azure Veritabanınızdaki verileri korumak için kullanılabilen birden çok güvenlik katmanı vardır. Bu makalede, bu güvenlik seçenekleri özetleri.
 
-## <a name="information-protection-and-encryption"></a>Bilgi koruması ve şifreleme
+## <a name="information-protection-and-encryption"></a>Bilgi koruma ve şifreleme
 
-### <a name="in-transit"></a>Aktarım yerinde
-PostgreSQL için Azure veritabanı, Aktarım Katmanı Güvenliği ile verileri aktarım sırasında şifreleyerek veri güvenliğini sağlar. Şifreleme (SSL/TLS) varsayılan olarak zorlanır.
+### <a name="in-transit"></a>Transit
+PostgreSQL için Azure Veritabanı, Aktarım Katmanı Güvenliği ile aktarım sırasında verilerinizi şifreleyerek verilerinizi güvence altına alar. Şifreleme (SSL/TLS) varsayılan olarak uygulanır.
 
-### <a name="at-rest"></a>REST
-PostgreSQL için Azure veritabanı hizmeti, bekleyen verilerin depolama şifrelemesi için FIPS 140-2 tarafından doğrulanan şifreleme modülünü kullanır. Yedeklemeler de dahil olmak üzere veriler, sorgular çalıştırılırken oluşturulan geçici dosyalar hariç olmak üzere diskte şifrelenir. Hizmet, Azure depolama şifrelemesi 'ne dahil olan AES 256 bitlik şifrelemeyi kullanır ve anahtarlar sistem tarafından yönetilir. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
+### <a name="at-rest"></a>Istirahat
+PostgreSQL için Azure Veritabanı hizmeti, fips 140-2 onaylı şifreleme modüllerini kullanarak verilerin depolanması nda kullanılır. Yedeklemeler de dahil olmak üzere veriler, sorguları çalıştırırken oluşturulan geçici dosyalar dışında diskte şifrelenir. Hizmet, Azure depolama şifrelemesinde yer alan AES 256 bit şifresini kullanır ve anahtarlar sistem tarafından yönetilir. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
 
 
 ## <a name="network-security"></a>Ağ güvenliği
-PostgreSQL için Azure veritabanı sunucusuna yapılan bağlantılar ilk olarak bölgesel ağ geçidiyle yönlendirilir. Ağ geçidinin genel olarak erişilebilir bir IP 'si vardır, ancak sunucu IP adresleri korunur. Ağ Geçidi hakkında daha fazla bilgi için, [bağlantı mimarisi makalesini](concepts-connectivity-architecture.md)ziyaret edin.  
+PostgreSQL sunucusu için Bir Azure Veritabanına bağlantılar ilk olarak bölgesel bir ağ geçidiüzerinden yönlendirilir. Ağ geçidinde herkese açık bir IP vardır, sunucu IP adresleri ise korunur. Ağ geçidi hakkında daha fazla bilgi için [bağlantı mimarisi makalesini](concepts-connectivity-architecture.md)ziyaret edin.  
 
-PostgreSQL için yeni oluşturulan Azure veritabanı sunucusuna tüm dış bağlantıları engelleyen bir güvenlik duvarı vardır. Ağ geçidine ulaştıkları halde sunucuya bağlanmasına izin verilmez. 
+PostgreSQL için yeni oluşturulan Azure Veritabanı'nda tüm dış bağlantıları engelleyen bir güvenlik duvarı vardır. Ağ geçidine erişseler de sunucuya bağlanmalarına izin verilmez. 
 
 ### <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
-IP güvenlik duvarı kuralları, her isteğin kaynak IP adresini temel alarak sunuculara erişim izni verir. Daha fazla bilgi için [güvenlik duvarı kurallarına genel bakış](concepts-firewall-rules.md) bölümüne bakın.
+IP güvenlik duvarı kuralları, her isteğin menşeli IP adresine dayalı olarak sunuculara erişim sağlar. Daha fazla bilgi için [güvenlik duvarı kurallarına genel bakışa](concepts-firewall-rules.md) bakın.
 
 ### <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
-Sanal ağ hizmeti uç noktaları, sanal ağ bağlantınızı Azure omurgası üzerinden genişletmelidir. Sanal ağ kurallarını kullanarak, PostgreSQL için Azure veritabanınızı, bir sanal ağdaki seçili alt ağlardan gelen bağlantılara izin verecek şekilde etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktasına genel bakış](concepts-data-access-and-security-vnet.md).
+Sanal ağ hizmeti bitiş noktaları, sanal ağ bağlantınızı Azure omurgası üzerinden genişletir. Sanal ağ kurallarını kullanarak PostgreSQL için Azure Veritabanınızın sanal ağdaki seçili alt ağlardan bağlantılara izin vermesini sağlayabilirsiniz. Daha fazla bilgi için [sanal ağ hizmeti bitiş noktasına genel bakış](concepts-data-access-and-security-vnet.md)abakın.
 
 ### <a name="private-ip"></a>Özel IP
-Özel bağlantı, özel bir uç nokta aracılığıyla Azure 'daki PostgreSQL için Azure veritabanı 'na bağlanmanızı sağlar. Azure özel bağlantısı temel olarak Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. PaaS kaynaklarına, sanal ağ üzerindeki diğer kaynaklar gibi özel IP adresi kullanılarak erişilebilir. Daha fazla bilgi için bkz. [özel bağlantıya genel bakış](concepts-data-access-and-security-private-link.md)
+Private Link, Azure'daki PostgreSQL Tek sunucu için Azure Veritabanınıza özel bir bitiş noktası üzerinden bağlanmanızı sağlar. Azure Özel Bağlantı, Azure hizmetlerini aslında özel Sanal Ağınıza (VNet) getirir. PaaS kaynaklarına, VNet'teki diğer kaynaklar gibi özel IP adresi kullanılarak erişilebilir. Daha fazla bilgi için [özel bağlantıya genel bakış](concepts-data-access-and-security-private-link.md)
 
 
 ## <a name="access-management"></a>Erişim yönetimi
 
-PostgreSQL için Azure veritabanı sunucusu oluştururken, bir yönetici rolü için kimlik bilgileri sağlarsınız. Bu yönetici rolü, ek [PostgreSQL rolleri](https://www.postgresql.org/docs/current/user-manag.html)oluşturmak için kullanılabilir.
+PostgreSQL sunucusu için Azure Veritabanı oluştururken, yönetici rolü için kimlik bilgileri sağlarsınız. Bu yönetici rolü ek [PostgreSQL rolleri](https://www.postgresql.org/docs/current/user-manag.html)oluşturmak için kullanılabilir.
 
-Sunucuya [Azure Active Directory (AAD) kimlik doğrulaması](concepts-aad-authentication.md)kullanarak da bağlanabilirsiniz.
+[Azure Active Directory (AAD) kimlik doğrulaması](concepts-aad-authentication.md)kullanarak sunucuya da bağlanabilirsiniz.
 
 
 ## <a name="threat-protection"></a>Tehdit koruması
 
-Sunucu erişimine yönelik olağan dışı ve zararlı olabilecek girişimleri belirten anormal etkinlikleri algılayan [Gelişmiş tehdit koruması](concepts-data-access-and-security-threat-protection.md) 'nı tercih edebilirsiniz.
+Sunuculara erişmek veya sunuculardan yararlanmak için olağandışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılayan [Gelişmiş Tehdit Koruması'nı](concepts-data-access-and-security-threat-protection.md) tercih edebilirsiniz.
 
-Veritabanında etkinlik izlemek için [Denetim günlüğü](concepts-audit.md) kullanılabilir. 
+[Denetim günlüğü](concepts-audit.md) veritabanlarınızdaki etkinliği izlemek için kullanılabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [IP](concepts-firewall-rules.md) veya [sanal ağlar](concepts-data-access-and-security-vnet.md) için güvenlik duvarı kurallarını etkinleştirme
-- PostgreSQL için Azure veritabanı 'nda [Azure Active Directory kimlik doğrulaması](concepts-aad-authentication.md) hakkında bilgi edinin
+- [IP'ler](concepts-firewall-rules.md) veya sanal ağlar için güvenlik duvarı kurallarını [etkinleştirme](concepts-data-access-and-security-vnet.md)
+- PostgreSQL için Azure Veritabanı'nda [Azure Active Directory kimlik doğrulaması](concepts-aad-authentication.md) hakkında bilgi edinin

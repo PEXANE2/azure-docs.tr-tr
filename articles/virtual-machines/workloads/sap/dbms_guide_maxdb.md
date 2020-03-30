@@ -1,6 +1,6 @@
 ---
-title: Azure VM 'lerinde SAP MaxDB, liveCache ve Content Server dağıtımı | Microsoft Docs
-description: Azure 'da SAP MaxDB, liveCache ve Content Server dağıtımı
+title: Azure VM'lerde SAP MaxDB, liveCache ve Content Server dağıtımı | Microsoft Dokümanlar
+description: AZURE'da SAP MaxDB, liveCache ve Content Server dağıtımı
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,22 +16,22 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 90de49ae3137735683bae6a18b5f7c8951b021ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645880"
 ---
-# <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 'lerinde SAP MaxDB, liveCache ve Content Server dağıtımı
+# <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM'lerde SAP MaxDB, liveCache ve Content Server dağıtımı
 
-[767598]: https://launchpad.support.sap.com/#/notes/767598
+[767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]: https://launchpad.support.sap.com/#/notes/826037
+[826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]: https://launchpad.support.sap.com/#/notes/1139904
-[1173395]: https://launchpad.support.sap.com/#/notes/1173395
+[1139904]:https://launchpad.support.sap.com/#/notes/1139904
+[1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
 [1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
@@ -41,7 +41,7 @@ ms.locfileid: "75645880"
 [1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]: https://launchpad.support.sap.com/#/notes/1619726
+[1619726]:https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
 [1752266]:https://launchpad.support.sap.com/#/notes/1752266
@@ -54,7 +54,7 @@ ms.locfileid: "75645880"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
@@ -309,166 +309,166 @@ ms.locfileid: "75645880"
 
 
 
-Bu belge, Azure IaaS 'de MaxDB, liveCache ve Content Server dağıtımında dikkate alınması gereken birkaç farklı alanı ele alır. Bu belgenin bir önkoşulu olarak, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) ve [Azure belgelerindeki SAP iş yükündeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)diğer kılavuzlar hakkında belge konularını okuduğunuzdan de okumalısınız. 
+Bu belge, Azure IaaS'da MaxDB, liveCache ve Content Server dağıtılırken göz önünde bulundurulması gereken birkaç farklı alanı kapsar. Bu belgenin ön koşulu olarak, SAP [iş yükü için Azure Sanal Makineler DBMS dağıtımı için gereken hususları](dbms_guide_general.md) ve [Azure belgelerindeki SAP iş yükündeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)diğer kılavuzları okumuş olmalısınız. 
 
-## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Windows üzerinde SAP MaxDB dağıtımları için Ayrıntılar
-### <a name="sap-maxdb-version-support-on-azure"></a>Azure 'da SAP MaxDB sürüm desteği
-SAP, Azure 'da SAP NetWeaver tabanlı ürünlerle birlikte kullanılmak üzere SAP MaxDB sürüm 7,9 veya üstünü desteklemektedir. SAP NetWeaver tabanlı ürünlerle birlikte kullanılacak SAP MaxDB Server için tüm güncelleştirmeler veya JDBC ve ODBC sürücüleri yalnızca <https://support.sap.com/swdc>adresindeki SAP hizmeti Marketi aracılığıyla sağlanır.
-SAP NetWeaver ile ilgili genel bilgiler, SAP MaxDB üzerinde <https://www.sap.com/community/topic/maxdb.html>adresinde bulunabilir.
+## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Windows'daki SAP MaxDB dağıtımlarının özellikleri
+### <a name="sap-maxdb-version-support-on-azure"></a>Azure'da SAP MaxDB Sürüm Desteği
+SAP şu anda AZURE'da SAP NetWeaver tabanlı ürünlerle kullanılmak üzere SAP MaxDB sürüm 7.9 veya üzeri destekler. SAP MaxDB sunucusu veya SAP NetWeaver tabanlı ürünlerle kullanılacak JDBC ve ODBC sürücüleri için tüm <https://support.sap.com/swdc>güncellemeler yalnızca SAP Service Marketplace üzerinden sağlanmaktadır.
+SAP MaxDB'de <https://www.sap.com/community/topic/maxdb.html>SAP NetWeaver'ın çalıştırılması hakkında genel bilgilere .
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>SAP MaxDB DBMS için desteklenen Microsoft Windows sürümleri ve Azure VM türleri
-Azure 'da SAP MaxDB DBMS için desteklenen Microsoft Windows sürümünü bulmak için bkz.:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>SAP MaxDB DBMS için desteklenen Microsoft Windows Sürümleri ve Azure VM türleri
+AZURE'da SAP MaxDB DBMS için desteklenen Microsoft Windows sürümünü bulmak için bkz:
 
-* [SAP ürün kullanılabilirliği matrisi (PAM)][sap-pam]
-* SAP Note [1928533]
+* [SAP Ürün Kullanılabilirlik Matrisi (PAM)][sap-pam]
+* SAP Not [1928533]
 
-Microsoft Windows 2016 ' deki en yeni işletim sistemi Microsoft Windows sürümünün kullanılması kesinlikle önerilir.
+Microsoft Windows 2016 olan işletim sistemi Microsoft Windows'un en yeni sürümünü kullanmanız önerilir.
 
-### <a name="available-sap-maxdb-documentation-for-maxdb"></a>MaxDB için kullanılabilir SAP MaxDB belgeleri
-SAP MaxDB belgelerinin güncelleştirilmiş listesini şu SAP notunda bulabilirsiniz [767598]
+### <a name="available-sap-maxdb-documentation-for-maxdb"></a>MaxDB için kullanılabilir SAP MaxDB Belgeleri
+SAP MaxDB belgelerinin güncelleştirilmiş listesini aşağıdaki SAP Note [767598'de] bulabilirsiniz
 
-### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için SAP MaxDB yapılandırma yönergeleri
-#### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Depolama yapılandırması
-SAP MaxDB için Azure Storage en iyi uygulamaları, [RDBMS dağıtımları için bir sanal makinenin Bölüm depolama yapısında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)bahsedilen genel önerileri izler.
+### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM'lerde SAP Yüklemeleri için SAP MaxDB Yapılandırma Yönergeleri
+#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Depolama yapılandırması
+SAP MaxDB için Azure depolama en iyi [uygulamaları, RDBMS Dağıtımları için bir VM'nin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)bölüm Depolama yapısında belirtilen genel önerileri izleyin.
 
 > [!IMPORTANT]
-> Diğer veritabanları gibi SAP MaxDB de veri ve günlük dosyaları içerir. Ancak, SAP MaxDB terimlerinde doğru terim "Volume" ("dosya" değil) olarak ayarlanır. Örneğin, SAP MaxDB veri birimleri ve günlük birimleri vardır. Bunları işletim sistemi disk birimleriyle karıştırmayın. 
+> Diğer veritabanları gibi SAP MaxDB'de de veri ve günlük dosyaları vardır. Ancak, SAP MaxDB terminolojisinde doğru terim "hacim" ("dosya" değil) dir. Örneğin, SAP MaxDB veri birimleri ve günlük birimleri vardır. Bunları işletim sistemi disk birimleriyle karıştırmayın. 
 > 
 > 
 
-Kısa bir süre içinde şunları yapmanız gerekir:
+Kısacası var:
 
-* Azure depolama hesapları kullanıyorsanız, SAP MaxDB verilerini ve günlük birimlerini (veri ve günlük dosyaları) tutan Azure Depolama hesabını, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı hakkında önemli noktalar](dbms_guide_general.md)bölümünde belirtildiği gibi **Yerel yedekli depolama (LRS)** olarak ayarlayın.
-* SAP MaxDB veri birimleri (veri dosyaları) için GÇ yolunu, günlük birimleri (günlük dosyaları) için GÇ yolundan ayırın. SAP MaxDB veri birimlerinin (veri dosyaları) bir mantıksal sürücüde yüklü olması ve SAP MaxDB günlük birimlerinin (günlük dosyaları) başka bir mantıksal sürücüde yüklü olması gerektiği anlamına gelir.
-* SAP MaxDB verileri veya günlük birimleri (veri ve günlük dosyaları) için kullanıp kullanmayacağınızı ve Azure Standard ya da Azure Premium depolamayı kullanıp kullanmayacağınızı, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı hakkında önemli noktalar](dbms_guide_general.md)bölümünde açıklandığı gibi, her bir disk için uygun önbelleğe alma türünü ayarlayın.
-* Her disk için geçerli ıOPS kotası gereksinimleri karşılıyorsa, tüm veri birimlerinin tek bir bağlı diskte depolanması ve ayrıca tüm veritabanı günlük hacimlerini tek bir bağlı diskte depolamak mümkündür.
-* Daha fazla ıOPS ve/veya Space gerekliyse, birden çok bağlı disk üzerinde bir büyük mantıksal cihaz oluşturmak için Microsoft pencere depolama havuzlarını (yalnızca Microsoft Windows Server 2012 ve üzeri sürümlerde bulunur) kullanmanız önerilir. Daha ayrıntılı bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında konular](dbms_guide_general.md). Bu yaklaşım, disk alanını yönetmek için yönetim yükünü basitleştirir ve dosyaları birden çok bağlı diskte el ile dağıtmanın çabasını önler.
-* MaxDB dağıtımları için Azure Premium Storage kullanılması önemle önerilir. 
+* Azure Depolama hesapları kullanıyorsanız, SAP MaxDB verilerini ve günlük birimlerini (veri ve günlük dosyaları) tutan Azure depolama hesabını, [SAP iş yükü için Azure Sanal Makineler DBMS dağıtımıiçin Dikkate Alınması](dbms_guide_general.md)gerekenler'de belirtildiği şekilde Yerel **Yedekli Depolama (LRS)** olarak ayarlayın.
+* SAP MaxDB veri hacimleri (veri dosyaları) için IO yolunu günlük birimleri (günlük dosyaları) için IO yolundan ayırın. Sap MaxDB veri hacimleri (veri dosyaları) tek bir mantıksal sürücüye ve SAP MaxDB günlük hacimleri (günlük dosyaları) başka bir mantıksal sürücüye yüklenmesi gerektiği anlamına gelir.
+* SAP MaxDB verileri veya günlük birimleri (veri ve günlük dosyaları) için kullanıp kullanmadığınıza ve [SAP iş yükü için Azure Sanal Makineler DBMS dağıtımıiçin Dikkate Alınması'nda](dbms_guide_general.md)açıklandığı gibi Azure Standardı veya Azure Premium Depolama'yı kullanıp kullanmadığınıza bağlı olarak, her disk için uygun önbelleğe alma türünü ayarlayın.
+* Disk başına geçerli IOPS kotası gereksinimleri karşılattırken, tüm veri hacimlerini tek bir bağlı diskte depolamak ve tüm veritabanı günlük hacimlerini başka bir tek monte diskte depolamak mümkündür.
+* Daha fazla IOPS ve/veya alan gerekiyorsa, birden çok monte edilmiş disküzerinde büyük bir mantıksal aygıt oluşturmak için Microsoft Pencere Depolama Havuzları'nın (yalnızca Microsoft Windows Server 2012 ve üzeri) kullanılması önerilir. Daha fazla ayrıntı için, [SAP iş yükü için Azure Sanal Makineler DBMS dağıtımıiçin dikkat edilmesi](dbms_guide_general.md)gerekenler e bakın. Bu yaklaşım, disk alanını yönetmek için yönetim yükü basitleştirir ve birden çok monte diskarasında dosyaları el ile dağıtma çabasını önler.
+* MaxDB dağıtımları için Azure Premium Depolama'nın kullanılması önerilir. 
 
-![SAP MaxDB DBMS için Azure IaaS VM 'sinin başvuru yapılandırması](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
+![SAP MaxDB DBMS için Azure IaaS VM Başvuru Yapılandırması](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Yedekleme ve geri yükleme
-SAP MaxDB 'yi Azure 'a dağıttığınızda, yedekleme yöntemlerinizi gözden geçirmeniz gerekir. Sistem, bir üretken sistem olmasa bile SAP MaxDB tarafından barındırılan SAP veritabanının düzenli aralıklarla yedeklenmesi gerekir. Azure depolama üç görüntü koruduğundan, artık sisteminizi depolama hatalarına karşı korumak ve daha önemli işlemler veya yönetim hataları bakımından bir yedekleme daha az önemlidir. Doğru bir yedekleme ve geri yükleme planının korunmasının birincil nedeni, bir noktadan noktaya kurtarma özelliği sağlayarak mantıksal veya el ile hatalar için telafi sağlayabilmenizi sağlamaktır. Böylece hedef, veritabanını belirli bir noktaya geri yüklemek ya da mevcut veritabanını kopyalayarak başka bir sistemi temel almak için Azure 'daki yedeklemeleri kullanmak üzere yedeklemeleri kullanmaktır. 
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Yedekleme ve Geri Yükleme
+SAP MaxDB'yi Azure'a dağıtırken yedekleme metodolojinizi gözden geçirmeniz gerekir. Sistem üretken bir sistem olmasa bile, SAP MaxDB tarafından barındırılan SAP veritabanının düzenli aralıklarla yedeklenmiş olması gerekir. Azure Depolama üç görüntü sakladığından, yedekleme sisteminizi depolama hatasına ve daha önemli operasyonel veya yönetim hatalarına karşı koruma açısından artık daha az önemlidir. Uygun bir yedekleme ve geri yükleme planı nın birincil nedeni, zaman içinde zaman içinde kurtarma özellikleri sağlayarak mantıksal veya el ile hataları telafi edebilmenizdir. Bu nedenle amaç, veritabanını belirli bir noktaya geri yüklemek için yedeklemeleri kullanmak veya varolan veritabanını kopyalayarak başka bir sistemi tohumlamak için Azure'daki yedeklemeleri kullanmaktır. 
 
-Azure 'da bir veritabanını yedekleme ve geri yükleme, şirket içi sistemler için yaptığı gibi çalışır. böylece, SAP Note [767598]' de listelenen SAP MaxDB belge belgelerinden birinde AÇıKLANAN standart sap MaxDB yedekleme/geri yükleme araçları kullanabilirsiniz. 
+Azure'da bir veritabanını yedekleme kullanabilirsiniz ve geri yüklemek şirket içi sistemlerde olduğu gibi çalışır, böylece SAP Note [767598'de]listelenen SAP MaxDB dokümantasyon belgelerinden birinde açıklanan standart SAP MaxDB yedekleme/geri yükleme araçlarını kullanabilirsiniz. 
 
-#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Yedekleme ve geri yükleme için performans konuları
-Çıplak dağıtımlarda olduğu gibi, yedekleme ve geri yükleme performansı, kaç birimin paralel olarak okunmayacağına ve bu birimlerin üretilen iş hızına bağlıdır. Bu nedenle, biri şunları varsayabilir:
+#### <a name="performance-considerations-for-backup-and-restore"></a><a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Yedekleme ve Geri Yükleme için Performans Hususları
+Çıplak metal dağıtımlarda olduğu gibi, yedekleme ve geri yükleme performansı, paralel olarak kaç cildin okunabildiği ve bu birimlerin iş hacmine bağlıdır. Bu nedenle, bir varsayabiliriz:
 
-* Veritabanı cihazlarını depolamak için kullanılan disk sayısı ne kadar az olursa, genel okuma performansı düşüktür
-* Yedeklemenin yazılacağı daha az hedef (dizili dizinler, diskler), aktarım hızı düşük
+* Veritabanı aygıtlarını depolamak için kullanılan disk sayısı ne kadar azsa, genel okuma iş verimi o kadar düşük
+* Yedeklemeyi yazmak için ne kadar az hedef (Şerit Dizinleri, diskler) ne kadar azsa, iş çıktısı o kadar düşük olur
 
-Yazılacak hedef sayısını artırmak için, gereksinimlerinize bağlı olarak, büyük olasılıkla birlikte kullanabileceğiniz iki seçenek vardır:
+Yazacağınız hedef sayısını artırmak için, gereksinimlerinize bağlı olarak, muhtemelen birlikte kullanabileceğiniz iki seçenek vardır:
 
-* Yedekleme için ayrı birimleri ayırma
-* Bu şeritli disk biriminde ıOPS verimini artırmak için birden çok bağlı disk üzerinde yedekleme hedefi birimini şeritli şekilde sıralama
-* İçin ayrı ayrılmış mantıksal disk cihazları vardır:
+* Yedekleme için ayrı birimler ayırma
+* Bu çizgili disk hacmindeki IOPS iş hacmini iyileştirmek için yedekleme hedef hacmini birden çok monte edilmiş disk üzerinde şeritleme
+* Aşağıdakiler için ayrı özel mantıksal disk aygıtları olması:
   * SAP MaxDB yedekleme birimleri (örn. dosyalar)
-  * SAP MaxDB veri birimleri (örn. dosyalar)
-  * SAP MaxDB günlük birimleri (örn. dosyalar)
+  * SAP MaxDB veri hacimleri (örn. dosyalar)
+  * SAP MaxDB günlük hacimleri (örn. dosyalar)
 
-Birden çok bağlı disk üzerinde bir birimin şeridi oluşturma, daha önce [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı açısından önemli](dbms_guide_general.md)bir şekilde ele alınmıştır. 
+Birden çok monte edilmiş disk üzerinde bir birim şeritleme daha önce [SAP iş yükü için Azure Sanal Makineler DBMS dağıtım için Hususlar](dbms_guide_general.md)tartışıldı. 
 
-#### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Diğer konular
-Azure kullanılabilirlik kümeleri veya SAP izleme gibi diğer tüm genel alanlarda Ayrıca, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında önemli noktalar](dbms_guide_general.md)açıklanmaktadır.  SAP MaxDB veritabanına sahip VM dağıtımları için.
-Diğer SAP MaxDB 'ye özgü ayarlar Azure VM 'lerine saydamdır ve SAP Note [767598] ve bu SAP notlarında listelenen farklı belgelerde açıklanmıştır:
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Diğer konular
+Azure Kullanılabilirlik Kümeleri veya SAP izleme gibi diğer tüm genel alanlar, [SAP iş yükü için Azure Sanal Makineler DBMS dağıtımıiçin göz önünde bulundurulması](dbms_guide_general.md)gereken ler de açıklandığı gibi geçerlidir.  SAP MaxDB veritabanı ile VM'lerin dağıtımı için.
+Diğer SAP MaxDB özel ayarları Azure VM'ler için saydamdır ve SAP Note [767598'de] listelenen farklı belgelerde ve bu SAP Notlarında açıklanmıştır:
 
 * [826037] 
 * [1139904]
 * [1173395]
 
-## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>Windows üzerinde SAP liveCache dağıtımları için Ayrıntılar
-### <a name="sap-livecache-version-support"></a>SAP liveCache sürüm desteği
-Azure sanal makinelerinde desteklenen SAP liveCache 'in en düşük sürümü SAP **LC/LCAPPS 10,0 SP 25** ve **livecache 7.9.08.31** ve **LCA-Build 25**, sap scm 7,0 ve üzeri sürümler için **EHP 2** ' de kullanıma sunuldu.
+## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>Windows'daki SAP liveCache dağıtımları için ayrıntılar
+### <a name="sap-livecache-version-support"></a>SAP liveCache Sürüm Desteği
+Azure Sanal Makinelerde desteklenen SAP liveCache'nin minimal sürümü, SAP **SCM 7.0** ve sonraki sürümler için EhP 2 için yayımlanan **liveCache 7.9.08.31** ve **LCA-Build 25**dahil olmak üzere **SAP LC/LCAPPS 10.0 SP 25'tir.**
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>SAP liveCache DBMS için desteklenen Microsoft Windows sürümleri ve Azure VM türleri
-Azure 'da SAP liveCache için desteklenen Microsoft Windows sürümünü bulmak için, bkz.:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>SAP liveCache DBMS için desteklenen Microsoft Windows Sürümleri ve Azure VM türleri
+Azure'da SAP liveCache için desteklenen Microsoft Windows sürümünü bulmak için bkz:
 
-* [SAP ürün kullanılabilirliği matrisi (PAM)][sap-pam]
-* SAP Note [1928533]
+* [SAP Ürün Kullanılabilirlik Matrisi (PAM)][sap-pam]
+* SAP Not [1928533]
 
-İşletim sisteminin Microsoft Windows Server 'ın en yeni sürümünü kullanmanız önemle önerilir. 
+Microsoft Windows Server işletim sisteminin en yeni sürümünü kullanmanız önerilir. 
 
-### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için SAP liveCache yapılandırma yönergeleri
-#### <a name="recommended-azure-vm-types-for-livecache"></a>LiveCache için önerilen Azure VM türleri
-SAP liveCache çok büyük hesaplamalar gerçekleştiren bir uygulama olduğundan, RAM ve CPU 'nun miktarı ve hızı SAP liveCache performansı üzerinde önemli bir etki içerir. 
+### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM'lerde SAP Yüklemeleri için SAP liveCache Yapılandırma Yönergeleri
+#### <a name="recommended-azure-vm-types-for-livecache"></a>LiveCache için Önerilen Azure VM Türleri
+SAP liveCache büyük hesaplamalar gerçekleştiren bir uygulama olduğundan, RAM ve CPU miktarı ve hızı SAP liveCache performansı üzerinde büyük bir etkisi vardır. 
 
-SAP tarafından desteklenen Azure VM türleri için (SAP Note [1928533]), VM 'ye ayrılan tüm sanal CPU kaynakları hiper yöneticinin ADANMıŞ fiziksel CPU kaynakları tarafından desteklenir. Aşırı sağlama yok (ve bu nedenle CPU kaynakları için yarışma yok).
+SAP (SAP Note [1928533)]tarafından desteklenen Azure VM türleri için, VM'ye ayrılan tüm sanal CPU kaynakları hipervizörün özel fiziksel Işlemci kaynakları yla desteklenir. Hiçbir aşırı sağlama (ve bu nedenle CPU kaynakları için hiçbir rekabet) gerçekleşir.
 
-Benzer şekilde, SAP tarafından desteklenen tüm Azure VM örnek türleri için VM belleği, %100, örneğin, kaynak üzerinde sağlama (daha fazla taahhüt) ile fiziksel belleğe eşlendi.
+Benzer şekilde, SAP tarafından desteklenen tüm Azure VM örnek türleri için, VM belleği fiziksel belleğe %100 eşlenir - örneğin aşırı sağlama (aşırı taahhüt) kullanılmaz.
 
-Bu perspektiften en son dv2, Dv3, Ev3 ve d serisi VM 'Lerin kullanılması kesinlikle önerilir. Farklı VM türlerinin seçimi, liveCache ve ihtiyacınız olan CPU kaynakları için gereken belleğe bağlıdır. Diğer tüm DBMS dağıtımlarında olduğu gibi, performans açısından kritik birimlerde Azure Premium Storage 'ın kullanılması önerilir.
+Bu açıdan bakıldığında, en son Dv2, Dv3, Ev3 ve M serisi VM'lerin kullanılması önerilir. Farklı VM türlerinin seçimi, liveCache için gereksinim duyduğunuz belleğe ve gereksinim duyduğunuz CPU kaynaklarına bağlıdır. Diğer tüm DBMS dağıtımlarında olduğu gibi, performans açısından kritik hacimler için Azure Premium Depolama'dan yararlanmanız tavsiye edilir.
 
-#### <a name="storage-configuration-for-livecache-in-azure"></a>Azure 'da liveCache için depolama yapılandırması
-SAP liveCache SAP MaxDB teknolojisini temel aldığı için, bu belgede açıklanan SAP MaxDB için belirtilen tüm Azure depolama en iyi yöntem önerileri SAP liveCache için de geçerlidir. 
+#### <a name="storage-configuration-for-livecache-in-azure"></a>Azure'da liveCache için Depolama Yapılandırması
+SAP liveCache SAP MaxDB teknolojisini temel aldığı için, bu belgede açıklanan SAP MaxDB için belirtilen tüm Azure depolama en iyi uygulama önerileri SAP liveCache için de geçerlidir. 
 
-#### <a name="dedicated-azure-vm-for-livecache-scenario"></a>LiveCache için adanmış Azure VM senaryosu
-SAP liveCache yoğun bir şekilde hesaplama gücü kullandığından, üretken bir kullanım için adanmış bir Azure sanal makinesine dağıtılması önemle önerilir. 
+#### <a name="dedicated-azure-vm-for-livecache-scenario"></a>LiveCache senaryosu için özel Azure VM
+SAP liveCache yoğun olarak hesaplama gücünü kullandığından, verimli kullanım için özel bir Azure Sanal Makine'de dağıtılması önerilir. 
 
-![Üretken kullanım durumu için liveCache için adanmış Azure VM](./media/dbms_maxdb_deployment_guide/700-livecach-prod.PNG)
+![Verimli kullanım örneği için liveCache için özel Azure VM](./media/dbms_maxdb_deployment_guide/700-livecach-prod.PNG)
 
 
-#### <a name="backup-and-restore-for-livecache-in-azure"></a>Azure 'da liveCache için yedekleme ve geri yükleme
-performans konuları da dahil olmak üzere yedekleme ve geri yükleme bu belgedeki ilgili SAP MaxDB bölümünde zaten açıklanmıştır. 
+#### <a name="backup-and-restore-for-livecache-in-azure"></a>Azure'da liveCache için Yedekleme ve Geri Yükleme
+performans değerlendirmeleri de dahil olmak üzere yedekleme ve geri yükleme, bu belgedeki ilgili SAP MaxDB bölümlerinde zaten açıklanmıştır. 
 
 #### <a name="other-considerations"></a>Diğer konular
-Diğer tüm genel bölgeler, ilgili SAP MaxDB bölümünde zaten açıklanmıştır. 
+Diğer tüm genel alanlar ilgili SAP MaxDB bölümünde zaten açıklanmıştır. 
 
-## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Azure 'da Windows üzerinde SAP Içerik sunucusu dağıtımının özellikleri
-SAP Içerik sunucusu, elektronik belgeler gibi içeriği farklı biçimlerde depolamak için ayrı, sunucu tabanlı bir bileşendir. SAP Içerik sunucusu teknoloji geliştirmesi tarafından sağlanır ve tüm SAP uygulamaları için çapraz uygulama kullanılır. Ayrı bir sisteme yüklenir. Tipik içerik, bilgi ambarı veya mySAP PLM belge yönetim sisteminden kaynaklanan teknik çizimlerden alınan eğitim malzemeleridir. 
+## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Azure'da Windows'da SAP İçerik Sunucusu dağıtımına ilişkin ayrıntılar
+SAP Content Server, elektronik belgeler gibi içerikleri farklı biçimlerde depolamak için ayrı, sunucu tabanlı bir bileşendir. SAP İçerik Sunucusu teknolojinin geliştirilmesi ile sağlanır ve herhangi bir SAP uygulamaları için çapraz uygulama kullanılacaktır. Ayrı bir sisteme yüklenir. Tipik içerik, Bilgi Ambarı'ndan veya mySAP PLM Belge Yönetim Sistemi'nden kaynaklanan teknik çizimlerden alınan eğitim materyalleri ve belgeleridir. 
 
-### <a name="sap-content-server-version-support-for-azure-vms"></a>Azure VM 'Ler için SAP Content Server sürüm desteği
-SAP Şu anda şunları destekler:
+### <a name="sap-content-server-version-support-for-azure-vms"></a>Azure VM'ler için SAP İçerik Sunucusu Sürüm Desteği
+SAP şu anda şunları destekler:
 
-* Sürüm **6,50 (ve üzeri)** Ile **SAP içerik sunucusu**
-* **SAP MaxDB sürüm 7,9**
-* **Microsoft IIS (Internet Information Server) sürüm 8,0 (ve üzeri)**
+* **SÜRÜM** **6.50 (ve üzeri)** sap İçerik Sunucusu
+* **SAP MaxDB sürüm 7.9**
+* **Microsoft IIS (Internet Information Server) sürüm 8.0 (ve üstü)**
 
-En yeni SAP Içerik sunucusu sürümünün ve en yeni **MICROSOFT IIS**sürümünün kullanılması önemle önerilir. 
+SAP Content Server'ın en yeni sürümünü nve Microsoft **IIS'nin**en yeni sürümünü kullanmanız önerilir. 
 
-SAP [ürün kullanılabilirliği matrisinde (Pam)][sap-pam]SAP içerik sunucusu ve Microsoft IIS 'nin desteklenen son sürümlerini denetleyin.
+[SAP Ürün Kullanılabilirlik Matrisi'nde (PAM)][sap-pam]SAP Content Server ve Microsoft IIS'nin en son desteklenen sürümlerini kontrol edin.
 
-### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>SAP Içerik sunucusu için desteklenen Microsoft Windows ve Azure VM türleri
-Azure 'da SAP Içerik sunucusu için desteklenen Windows sürümü hakkında bilgi edinmek için bkz.:
+### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>SAP Content Server için desteklenen Microsoft Windows ve Azure VM türleri
+Azure'da SAP Content Server için desteklenen Windows sürümünü öğrenmek için bkz:
 
-* [SAP ürün kullanılabilirliği matrisi (PAM)][sap-pam]
-* SAP Note [1928533]
+* [SAP Ürün Kullanılabilirlik Matrisi (PAM)][sap-pam]
+* SAP Not [1928533]
 
-En yeni Microsoft Windows Server sürümünü kullanmanız önemle önerilir.
+Microsoft Windows Server'ın en yeni sürümünü kullanmanız önerilir.
 
-### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için SAP Içerik sunucusu yapılandırma yönergeleri
-#### <a name="storage-configuration-for-content-server-in-azure"></a>Azure 'da Içerik sunucusu için depolama yapılandırması
-SAP Içerik sunucusunu dosyaları SAP MaxDB veritabanında depolamak üzere yapılandırırsanız, bu belgede SAP MaxDB için belirtilen tüm Azure depolama en iyi yöntemler önerisi de SAP Içerik sunucusu senaryosu için geçerlidir. 
+### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM'lerde SAP Yüklemeleri için SAP İçerik Sunucusu Yapılandırma Yönergeleri
+#### <a name="storage-configuration-for-content-server-in-azure"></a>Azure'da İçerik Sunucusu için Depolama Yapılandırması
+SAP Content Server'ı SAP MaxDB veritabanında dosyaları depolamak üzere yapılandırırsanız, bu belgede SAP MaxDB için belirtilen tüm Azure depolama en iyi uygulamaları önerisi SAP İçerik Sunucusu senaryosu için de geçerlidir. 
 
-Dosya sistemindeki dosyaları depolamak için SAP Içerik sunucusunu yapılandırırsanız, ayrılmış bir mantıksal sürücü kullanmanız önerilir. Windows depolama alanları 'nın kullanılması, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı hakkında konular](dbms_guide_general.md)bölümünde açıklandığı gibi mantıksal disk boyutunu ve IOPS verimini de artırmanıza olanak sağlar. 
+SAP Content Server'ı dosyaları dosya sisteminde depolamak üzere yapılandıracak şekilde yapılandırırsanız, özel bir mantıksal sürücü kullanmanız önerilir. Windows Depolama Alanları'nı kullanmak, [SAP iş yükü için Azure Sanal Makineler DBMS dağıtımıiçin dikkate alınması](dbms_guide_general.md)nda açıklandığı gibi mantıksal disk boyutunu ve IOPS iş buzunu da artırmanızı sağlar. 
 
-#### <a name="sap-content-server-location"></a>SAP Içerik sunucusu konumu
-SAP Içerik sunucusunun, SAP sisteminin dağıtıldığı aynı Azure bölgesinde ve Azure VNET 'te dağıtılması gereklidir. SAP Içerik sunucusu bileşenlerini adanmış bir Azure VM 'de veya SAP sisteminin çalıştığı sanal makinede dağıtmak isteyip istemediğinize karar verebilirsiniz. 
+#### <a name="sap-content-server-location"></a>SAP İçerik Sunucu Konumu
+SAP Content Server'ın aynı Azure bölgesinde ve SAP sisteminin dağıtıldığı Azure VNET'te dağıtılması gerekir. SAP İçerik Sunucusu bileşenlerini özel bir Azure VM'de mi yoksa SAP sisteminin çalıştığı aynı VM'de mi dağıtmak istediğinize karar vermekte özgürdür. 
 
-![SAP Içerik sunucusu için adanmış Azure VM](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
+![SAP İçerik Sunucusu için özel Azure VM](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
 
 
-#### <a name="sap-cache-server-location"></a>SAP önbellek sunucusu konumu
-SAP önbellek sunucusu, (önbelleğe alınmış) belgelere yerel olarak erişim sağlamak için ek bir sunucu tabanlı bileşendir. SAP önbellek sunucusu, SAP Içerik sunucusunun belgelerini önbelleğe alır. Bu, belgelerin farklı konumlardan birden çok kez alınması gerekiyorsa ağ trafiğini iyileştirmelidir. Genel kural SAP önbellek sunucusunun SAP önbellek sunucusuna erişen istemciye fiziksel olarak yakın olması gereken bir uygulamadır. 
+#### <a name="sap-cache-server-location"></a>SAP Önbellek Sunucu Konumu
+SAP Önbellek Sunucusu, yerel olarak belgelere erişim (önbelleğe alınmış) sağlamak için sunucu tabanlı ek bir bileşendir. SAP Önbellek Sunucusu, bir SAP İçerik Sunucusunun belgelerini önbelleğe dardırır. Bu, belgelerin farklı konumlardan birden fazla kez alınması gerekiyorsa ağ trafiğini en iyi duruma getirmek içindir. Genel kural, SAP Önbellek Sunucusu'nun SAP Önbellek Sunucusu'na erişen istemciye fiziksel olarak yakın olması gerektiğidir. 
 
-Burada iki seçeneğiniz vardır:
+Burada iki seçeneğiniz var:
 
-1. **İstemci bir arka uç SAP sistemidir** SAP Içerik sunucusuna erişmek için bir arka uç SAP sistemi yapılandırılmışsa, bu SAP sistemi bir istemcdir. Hem SAP sistemi hem de SAP Içerik sunucusu aynı Azure bölgesinde dağıtıldığından aynı Azure veri merkezinde aynı Azure bölgesinde dağıtılır. Bunlar birbirlerine fiziksel olarak yakınlardır. Bu nedenle, adanmış bir SAP önbellek sunucusuna sahip olmanız gerekmez. SAP kullanıcı arabirimi istemcileri (SAP GUI veya Web tarayıcısı) SAP sistemine doğrudan erişir ve SAP sistemi, belgeleri SAP Içerik sunucusundan alır.
-2. **İstemci, şirket içi bir web tarayıcısıdır** SAP Içerik sunucusuna Web tarayıcısı tarafından doğrudan erişilecek şekilde yapılandırılabilir. Bu durumda, şirket içinde çalışan bir Web tarayıcısı SAP Içerik sunucusunun bir istemcsahiptir. Şirket içi veri merkezi ve Azure veri merkezi, farklı fiziksel konumlara yerleştirilir (ideal olarak birbirlerine yakın). Şirket içi veri merkeziniz, Azure 'dan siteye VPN veya ExpressRoute aracılığıyla Azure 'a bağlanır. Her iki seçenek de Azure 'a güvenli VPN ağı bağlantısı sunmakla birlikte, siteden siteye ağ bağlantısı, şirket içi veri merkezi ve Azure veri merkezi arasında bir ağ bant genişliği ve gecikme SLA sunmamaktadır. Belgelere erişimi hızlandırmak için aşağıdakilerden birini yapabilirsiniz:
-   1. SAP önbellek sunucusunu şirket içinde yükler, şirket içi Web tarayıcısına kapatın (aşağıdaki şekilde seçeneğe gidin)
-   2. Şirket içi veri merkezi ve Azure veri merkezi arasında yüksek hızlı ve düşük gecikmeli bir ayrılmış ağ bağlantısı sunan Azure ExpressRoute 'u yapılandırın.
+1. **İstemci bir arka uç SAP sistemidir** Bir arka uç SAP sistemi SAP Content Server'a erişmek için yapılandırılırsa, bu SAP sistemi bir istemcidir. Hem SAP sistemi hem de SAP İçerik Sunucusu aynı Azure bölgesinde, aynı Azure veri merkezinde dağıtıldıksa, fiziksel olarak birbirlerine yakındırlar. Bu nedenle, özel bir SAP Önbellek Sunucusuna gerek yoktur. SAP Kullanıcı Arabirimi istemcileri (SAP GUI veya web tarayıcısı) SAP sistemine doğrudan erişir ve SAP sistemi BELGELERI SAP İçerik Sunucusu'ndan alır.
+2. **İstemci şirket içi bir web tarayıcısıdır** SAP İçerik Sunucusu doğrudan web tarayıcısı tarafından erişilecek şekilde yapılandırılabilir. Bu durumda, şirket içinde çalışan bir web tarayıcısı SAP İçerik Sunucusu'nun istemcisidir. Şirket içi veri merkezi ve Azure veri merkezi farklı fiziksel konumlara yerleştirilir (ideal olarak birbirine yakındır). Şirket içi veri merkeziniz Azure Siteden Siteye VPN veya ExpressRoute üzerinden Azure'a bağlanır. Her iki seçenek de Azure'a güvenli VPN ağ bağlantısı sunsa da, siteden siteye ağ bağlantısı, şirket içi veri merkezi ve Azure veri merkezi arasında ağ bant genişliği ve gecikme sla'sı sunmaz. Belgelere erişimi hızlandırmak için aşağıdakilerden birini yapabilirsiniz:
+   1. SAP Önbellek Sunucusu'nu şirket içinde, şirket içi web tarayıcısına yakın olarak yükleyin (aşağıdaki şekildeki seçenek)
+   2. Şirket içi veri merkezi ve Azure veri merkezi arasında yüksek hızlı ve düşük gecikmeli ağ bağlantısı sunan Azure ExpressRoute'u yapılandırın.
 
-Şirket içi SAP önbelleği sunucusu yüklemek için ![seçeneği](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
+![SAP Cache Server'ı şirket içinde yükleme seçeneği](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Yedekleme / Geri Yükleme
-SAP Içerik sunucusunu, dosyaları SAP MaxDB veritabanında depolayacak şekilde yapılandırırsanız, yedekleme/geri yükleme yordamı ve performans konuları bu belgenin SAP MaxDB bölümleri bölümünde zaten açıklanmıştır. 
+SAP Content Server'ı dosyaları SAP MaxDB veritabanında depolamak üzere yapılandırırsanız, yedekleme/geri yükleme yordamı ve performans konuları bu belgenin SAP MaxDB bölümlerinde zaten açıklanmıştır. 
 
-Dosya sistemindeki dosyaları depolamak için SAP Içerik sunucusunu yapılandırırsanız, tek bir seçenek, belgelerin bulunduğu tüm dosya yapısının el ile yedeklenmesini/geri yüklenmesini yürütmaktır. SAP MaxDB yedekleme/geri yükleme işlemine benzer şekilde, yedekleme amacı için özel bir disk biriminiz olması önerilir. 
+SAP Content Server'ı dosya sisteminde ki dosyaları depolamak üzere yapılandıracak şekilde yapılandıracak olursak, seçeneklerden biri, belgelerin bulunduğu tüm dosya yapısının el ile yedekleme/geri yüklemesini yürütmektir. SAP MaxDB yedekleme/geri yüklemesine benzer şekilde, yedekleme amacıyla özel bir disk hacmine sahip olması önerilir. 
 
 #### <a name="other"></a>Diğer
-Diğer SAP Içerik sunucusuna özgü ayarlar Azure VM 'lerine saydamdır ve çeşitli belgelerde ve SAP notlarında açıklanmıştır:
+Diğer SAP İçerik Sunucusuna özgü ayarlar Azure VM'leri için saydamdır ve çeşitli belgelerde ve SAP Notlarında açıklanmıştır:
 
 * <https://service.sap.com/contentserver> 
-* SAP Note [1619726]  
+* SAP Not [1619726]  

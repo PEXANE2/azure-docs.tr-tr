@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 37d4c295fe8a89a8b32364f42e8fb4c5a4caf777
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188894"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure portalı aracılığıyla güncelleştirmeleri yüklemek için
@@ -33,7 +33,7 @@ ms.locfileid: "67188894"
 
     ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
 
-5. **Yeni güncelleştirmeler** dikey penceresinde güncelleştirmeler indirildikten sonra bilgileri gözden geçirin; yüklemeyi onaylamanız gerekir. **Tamam** düğmesine tıklayın.
+5. **Yeni güncelleştirmeler** dikey penceresinde güncelleştirmeler indirildikten sonra bilgileri gözden geçirin; yüklemeyi onaylamanız gerekir. **Tamam**'a tıklayın.
 
     ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
 
@@ -61,6 +61,6 @@ ms.locfileid: "67188894"
 
     ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 
-9. Güncelleştirmeler başarıyla yüklendikten sonra cihaz güncelleştirmeleri dikey penceresinde bu etkili olması için bir ileti görürsünüz. Yazılım sürümü de değişikliklerini **10.0.10288.0**. 
+9. Güncelleştirmeler başarıyla yüklendikten sonra Cihaz güncelleştirmeleri dikey penceresinde bununla ilgili bir ileti görürsünüz. Yazılım sürümü de **10.0.10288.0**değişir. 
 
     ![cihaz güncelleştirme](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)

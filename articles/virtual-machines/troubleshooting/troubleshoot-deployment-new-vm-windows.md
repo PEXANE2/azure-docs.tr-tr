@@ -1,6 +1,6 @@
 ---
-title: Azure 'da Windows VM dağıtımı sorunlarını giderme | Microsoft Docs
-description: Azure 'da yeni bir Windows sanal makinesi oluştururken Kaynak Yöneticisi dağıtım sorunlarını giderme
+title: Azure'da Windows VM dağıtımında sorun giderme | Microsoft Dokümanlar
+description: Azure'da yeni bir Windows sanal makinesi oluşturduğunuzda Kaynak Yöneticisi dağıtım sorunlarını giderin
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -16,13 +16,13 @@ ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981398"
 ---
-# <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure 'da yeni bir Windows VM oluştururken dağıtım sorunlarını giderme
+# <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure'da yeni bir Windows VM oluştururken dağıtım sorunlarını giderme
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
@@ -30,10 +30,10 @@ ms.locfileid: "75981398"
 ## <a name="top-issues"></a>En önemli sorunlar
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
-Diğer VM dağıtım sorunları ve soruları için bkz. [Azure 'Da Windows sanal makine sorunlarını giderme](troubleshoot-deploy-vm-windows.md).
+Diğer VM dağıtım sorunları ve soruları için, [Azure'da Windows sanal makine sorunlarını dağıtan Sorun Giderme](troubleshoot-deploy-vm-windows.md)konusuna bakın.
 
-## <a name="collect-activity-logs"></a>Etkinlik günlüklerini topla
-Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etkinlik günlüklerini toplayın. Aşağıdaki bağlantılar, izlenecek işlemle ilgili ayrıntılı bilgiler içerir.
+## <a name="collect-activity-logs"></a>Etkinlik günlüklerini toplama
+Sorun giderme başlatmak için, sorunla ilişkili hatayı tanımlamak için etkinlik günlüklerini toplayın. Aşağıdaki bağlantılar, izlenme süreci hakkında ayrıntılı bilgi içerir.
 
 [Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/templates/deployment-history.md)
 
@@ -43,52 +43,52 @@ Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etk
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** İşletim sistemi Windows genelleştirilemez ve bu, yüklenip/veya Genelleştirilmiş ayarla yakalandıysa, herhangi bir hata olmayacaktır. Benzer şekilde, işletim sistemi Windows özelleştirilmiştir ve bu, yüklenip/veya özel ayar ile yakalandıysa, herhangi bir hata olmayacaktır.
+**Y:** İşletim sistemi Windows genelleştirilmişse ve genelleştirilmiş ayarla yüklenir ve/veya yakalanırsa, herhangi bir hata olmaz. Benzer şekilde, işletim sistemi Windows özel ve / veya özel ayarı ile yakalanan ve yüklenir, o zaman herhangi bir hata olmayacaktır.
 
-**Karşıya yükleme hataları:**
+**Yükleme Hataları:**
 
-**N<sup>1</sup>:** İşletim sistemi Windows genelleştirilir ve özelleştirilmiş olarak karşıya yüklenirse, VM ile OOBE ekranında takılı bir sağlama zaman aşımı hatası alırsınız.
+**N<sup>1</sup>:** Os Windows genelleştirilmiş ise ve özel olarak yüklenir, VM OOBE ekranında sıkışmış bir sağlama zaman aşması hatası alırsınız.
 
-**N<sup>2</sup>:** İşletim sistemi Windows özel ise ve genelleştirilemez olarak yüklenirse, yeni VM özgün bilgisayar adı, Kullanıcı adı ve parolasıyla çalıştığı için, VM 'nin OOBE ekranına takılmış bir sağlama hatası hatası alırsınız.
+**N<sup>2</sup>:** Os Windows özel ve genelleştirilmiş olarak yüklenir, yeni VM orijinal bilgisayar adı, kullanıcı adı ve parola ile çalışıyor, çünkü OOBE ekranında sıkışmış VM ile bir sağlama hatası hatası alırsınız.
 
-**Çözümleme**
+**Çözünürlük**
 
-Bu hataları çözmek için, şirket içinde kullanılabilir olan özgün VHD 'yi, işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarla birlikte [karşıya yüklemek Için Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)kullanın. Genelleştirilmiş olarak karşıya yüklemek için önce Sysprep 'i çalıştırmayı unutmayın.
+Bu hataların her ikisini de gidermek için, işletim sistemi (genelleştirilmiş/özelleştirilmiş) ile aynı ayara sahip, şirket içinde bulunan orijinal VHD'yi yüklemek için [Add-AzVhd'yi](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)kullanın. Genelleştirilmiş olarak yüklemek için önce sysprep çalıştırmayı unutmayın.
 
-**Yakalama hataları:**
+**Yakalama Hataları:**
 
-**N<sup>3</sup>:** İşletim sistemi Windows genelleştirilir ve özel olarak yakalandıysa, orijinal VM Genelleştirilmiş olarak işaretlendiğinden kullanılabilir olmadığı için bir sağlama zaman aşımı hatası alırsınız.
+**N<sup>3</sup>:** İşletim sistemi Windows genelleştirilmişse ve özel olarak yakalanırsa, özgün VM genelleştirilmiş olarak işaretlendirildiği için kullanılabilir olmadığından bir zaman acısı hatası alırsınız.
 
-**N<sup>4</sup>:** İşletim sistemi Windows özel ise ve genelleştirilmiş olarak yakalandıysa, yeni VM özgün bilgisayar adı, Kullanıcı adı ve parolasıyla çalıştığı için bir sağlama hatası hatası alırsınız. Ayrıca, özgün VM özelleştirilmiş olarak işaretlendiğinden kullanılabilir değildir.
+**N<sup>4</sup>:** İşletim sistemi Windows özelleştirilmişse ve genelleştirilmiş olarak yakalanırsa, yeni VM özgün bilgisayar adı, kullanıcı adı ve parolayla çalıştığı için bir sağlama hatası alırsınız. Ayrıca, özel olarak işaretlenmiştir, çünkü orijinal VM kullanılabilir değildir.
 
-**Çözümleme**
+**Çözünürlük**
 
-Bu hataları gidermek için, portaldan geçerli görüntüyü silin ve [geçerli VHD 'lerden](../windows/create-vm-specialized.md) , işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarı kullanarak yeniden yakalayın.
+Bu hataların her ikisini de gidermek için, geçerli görüntüyü portaldan silin ve işletim sistemi (genelleştirilmiş/özelleştirilmiş) ile aynı ayarda [geçerli VHD'lerden yeniden yakalayın.](../windows/create-vm-specialized.md)
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Sorun: özel/galeri/Market görüntüsü; ayırma hatası
-Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitlendiğinde veya isteğe uygun boş alana sahip olmadığında ortaya çıkar.
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Sorun: Özel/galeri/pazar yeri görüntüsü; ayırma hatası
+Bu hata, yeni VM isteğinin istenen VM boyutunu destekleyemeyen veya isteği karşılamak için boş alana sahip olmayan bir kümeye sabitlendiğinde ortaya çıkar.
 
-**Neden 1:** Küme, istenen VM boyutunu desteklemez.
+**Neden 1:** Küme istenen VM boyutunu destekleyemez.
 
-**Çözüm 1:**
+**1. Çözüm:**
 
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
-* İstenen VM 'nin boyutu değiştirilenemez:
-  * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
-    Kaynak **grupları** > *kaynak*grupları > 'natıklayın*kullanılabilirlik kümesi* **sanal makineleriniz**sanal makineniz >  >  > *Durdur.*  > 
-  * Tüm VM 'Ler durduktan sonra, istenen boyutta yeni VM 'yi oluşturun.
-  * Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip **Başlat**' a tıklayın.
+* İstenen VM'nin boyutu değiştirilemiyorsa:
+  * Kullanılabilirlik kümesindeki tüm VM'leri durdurun.
+    **Kaynak gruplarını** > tıklatın*Kaynak grubu* > **Kaynakları** > *kullanılabilirlik ayarsanal* > **makine** > *sanal makine* > **Durdur**.
+  * Tüm VM'ler durduktan sonra, yeni VM'yi istenilen boyutta oluşturun.
+  * Önce yeni VM'yi başlatın ve ardından durdurulan VM'lerin her birini seçin ve **Başlat'ı**tıklatın.
 
-**Neden 2:** Kümede boş kaynak yok.
+**Neden 2:** Kümenin boş kaynakları yok.
 
-**Çözüm 2:**
+**2. Çözüm:**
 
-* İsteği daha sonra yeniden deneyin.
-* Yeni VM farklı bir kullanılabilirlik kümesinin parçası olabilir
+* İsteğini daha sonra yeniden deneyin.
+* Yeni VM farklı bir kullanılabilirlik kümesinin parçası olabilirse
   * Farklı bir kullanılabilirlik kümesinde (aynı bölgede) yeni bir VM oluşturun.
-  * Yeni VM 'yi aynı sanal ağa ekleyin.
+  * Yeni VM'yi aynı sanal ağa ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Durdurulmuş bir Windows sanal makinesini başlattığınızda veya Azure 'da var olan bir Windows VM 'yi yeniden boyutlandırdığınızda sorunlarla karşılaşırsanız bkz. [Azure 'da var olan bir Windows sanal makinesini yeniden başlatma veya yeniden boyutlandırma ile ilgili dağıtım sorunlarını giderme Kaynak Yöneticisi](restart-resize-error-troubleshooting.md).
+Durmuş bir Windows VM'yi başlattığınızda veya Azure'da varolan bir Windows VM'yi yeniden boyutlandırDığınızda sorunlarla karşılaşırsanız, [Azure'da varolan bir Windows Sanal Makineyi yeniden başlatma veya yeniden boyutlandırma ile ilgili Sorun Gideri Kaynak Yöneticisi dağıtım sorunlarına](restart-resize-error-troubleshooting.md)bakın.
 
 

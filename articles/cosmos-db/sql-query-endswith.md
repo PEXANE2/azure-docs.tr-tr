@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ENDSWITH
-description: İlk dize ifadesinin ikinci ile bitip bitmediğini gösteren bir Boole değeri döndürmek için Azure Cosmos DB içindeki ENDSWITH SQL System işlevi hakkında bilgi edinin
+description: Azure Cosmos DB'deki ENDSWITH SQL sistem işlevi hakkında bilgi edinin ve ilk dize ifadesinin ikinci yle bitip bitmediğini belirten bir Boolean döndürün
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 37c5a8b3c44c5ac46b837e4d851d22f85aeaf39c
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299457"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
- Boole döndürüp döndüremeyeceğini belirten döndürür ilk dize ifade olup olmadığını ve ikinci sona erer.  
+ İlk dize ifadesinin ikinciyle bitip bitmediğini belirten bir Boolean döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -29,15 +29,15 @@ ENDSWITH(<str_expr1>, <str_expr2>)
    Bir dize ifadesidir.  
   
 *str_expr2*  
-   *Str_expr1*sonuna kıyasla bir dize ifadesi.  
+   *str_expr1*sonuna göre karşılaştırılması gereken bir dize ifadesidir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir Boolean ifadesi döndürür.  
+  Boolean ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, "abc", "b" ve "bc" ile biten döndürür.  
+  Aşağıdaki örnekte "abc" "b" ve "bc" ile biter.  
   
 ```sql
 SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
@@ -51,10 +51,10 @@ SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 638cc7fa92224dd7de1b7a703d442c54595807eb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188799"
 ---
-Azure DevTest labs'deki bir formül, bir sanal makine (VM) oluşturmak için kullanılan varsayılan özellik değerleri listesidir. Bir formülle bir VM oluştururken, varsayılan değerleri olarak kullanılamaz- ya da değiştirilmiş. Gibi [özel görüntüleri](../articles/lab-services/devtest-lab-create-template.md) ve [Market görüntüleri](../articles/lab-services/devtest-lab-configure-marketplace-images.md), formülleri hızlı VM sağlama için bir mekanizma sağlar. Benzer şekilde [özel görüntüleri](../articles/lab-services/devtest-lab-create-template.md), formülleri temel görüntüyü bir VHD dosyasından oluşturmak etkinleştirin. Temel görüntü daha sonra yeni bir sanal makine sağlamak için kullanılabilir. Hangi belirli ortamınız için doğru olduğuna karar vermenize yardımcı olmak için makaleye bakın [özel görüntüleri ve formülleri DevTest labs'deki karşılaştırma](../articles/lab-services/devtest-lab-comparing-vm-base-image-types.md).
+Azure DevTest Labs'daki formül, sanal makine (VM) oluşturmak için kullanılan varsayılan özellik değerlerinin bir listesidir. Formülden VM oluştururken, varsayılan değerler olduğu gibi kullanılabilir veya değiştirilebilir. [Özel görüntüler](../articles/lab-services/devtest-lab-create-template.md) ve [Market görüntüleri](../articles/lab-services/devtest-lab-configure-marketplace-images.md)gibi formüller de hızlı VM sağlama için bir mekanizma sağlar. Özel [görüntülere](../articles/lab-services/devtest-lab-create-template.md)benzer şekilde, formüller bir VHD dosyasından temel görüntü oluşturmanıza olanak tanır. Temel görüntü daha sonra yeni bir VM sağlamak için kullanılabilir. Belirli bir ortam için hangisinin doğru olduğuna karar vermenize yardımcı olmak için, [DevTest Labs'daki özel görüntüleri ve formülleri karşılaştırarak](../articles/lab-services/devtest-lab-comparing-vm-base-image-types.md)makaleye bakın.

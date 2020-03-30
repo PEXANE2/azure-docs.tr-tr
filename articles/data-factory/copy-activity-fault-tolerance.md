@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory’de kopyalama etkinliğinin hataya dayanıklılığı
-description: Uyumsuz satırları atlayarak Azure Data Factory etkinliği kopyalamak için hataya dayanıklılık ekleme hakkında bilgi edinin.
+description: Uyumsuz satırları atlayarak Azure Veri Fabrikası'ndaki kopyalama etkinliğine hata toleransı ekleme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,44 +12,44 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
 ms.openlocfilehash: 42c637839172dab09a8721a93a67785a748afd2f
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75708911"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory’de kopyalama etkinliğinin hataya dayanıklılığı
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Geçerli sürüm](copy-activity-fault-tolerance.md)
 
-Azure Data Factory kopyalama etkinliği, verileri kaynak ve havuz veri depoları arasında kopyalarken uyumsuz satırları işlemek için kullanabileceğiniz iki yol sunar:
+Azure Veri Fabrikası'ndaki kopyalama etkinliği, kaynak ve lavabo veri depoları arasında veri kopyalarken uyumsuz satırları işlemeniz için iki yol sunar:
 
-- Uyumsuz verilerle karşılaşıldığında kopyalama etkinliğini durdurabilir ve başarısız yapabilirsiniz (varsayılan davranış).
-- Hata toleransı ekleyerek ve uyumsuz veri satırlarını atlayarak tüm verileri kopyalamaya devam edebilirsiniz. Ayrıca, Azure Blob depolamada veya Azure Data Lake Store uyumsuz satırları günlüğe kaydedebilirsiniz. Sonra hatanın nedenini öğrenmek, veri kaynağındaki verileri onarmak ve kopyalama etkinliğini yeniden denemek için günlüğü inceleyebilirsiniz.
+- Uyumsuz verilerle (varsayılan davranış) karşılaşıldığında kopyalama etkinliğini iptal edebilir ve başarısız olabilirsiniz.
+- Hata toleransı ekleyerek ve uyumsuz veri satırlarını atlayarak tüm verileri kopyalamaya devam edebilirsiniz. Ayrıca, uyumsuz satırları Azure Blob depolama veya Azure Veri Gölü Deposu'nda da günlüğe kaydedebilirsiniz. Daha sonra hatanın nedenini öğrenmek, veri kaynağındaki verileri düzeltmek ve kopyalama etkinliğini yeniden denemek için günlüğü inceleyebilirsiniz.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
-Kopyalama etkinliği, uyumsuz verileri saptamak, atlamak ve günlüğe kaydetmek için üç senaryoyu destekler:
+Kopyalama Etkinliği, uyumsuz verileri algılama, atlama ve günlüğe kaydetme için üç senaryoyu destekler:
 
-- **Kaynak veri türü ile havuz yerel türü arasında uyumsuzluk**. 
+- **Kaynak veri türü ile lavabo yerel türü arasındaki uyumsuzluk.** 
 
-    Örneğin: BLOB depolama alanındaki bir CSV dosyasından, üç INT tür sütunu içeren bir şema tanımına sahip bir SQL veritabanına veri kopyalama. 123.456.789 gibi sayısal veriler içeren CSV dosyası satırları havuz deposuna başarıyla kopyalanır. Ancak, 123.456, ABC gibi sayısal olmayan değerler içeren satırlar uyumsuz olarak algılanır ve atlanır.
+    Örneğin: Blob depolamasındaki bir CSV dosyasındaki verileri üç INT türü sütun içeren şema tanımına sahip bir SQL veritabanına kopyalayın. 123.456.789 gibi sayısal veri içeren CSV dosya satırları başarılı bir şekilde lavabo deposuna kopyalanır. Ancak, 123.456, abc gibi sayısal olmayan değerler içeren satırlar uyumsuz olarak algılanır ve atlanır.
 
-- **Kaynak ve havuz arasındaki sütun sayısında uyuşmazlık var**.
+- **Kaynak ve lavabo arasındaki sütun sayısında uyuşmazlık**.
 
-    Örneğin: BLOB depolama alanındaki bir CSV dosyasından, altı sütun içeren bir şema tanımına sahip bir SQL veritabanına veri kopyalama. Altı sütun içeren CSV dosyası satırları havuz deposuna başarıyla kopyalanır. Altıdan fazla sütun içeren CSV dosyası satırları uyumsuz olarak algılanır ve atlanır.
+    Örneğin: Blob depolamasındaki bir CSV dosyasındaki verileri altı sütun içeren şema tanımına sahip bir SQL veritabanına kopyalayın. Altı sütun içeren CSV dosya satırları lavabo deposuna başarıyla kopyalanır. Altıdan fazla sütun içeren CSV dosya satırları uyumsuz olarak algılanır ve atlanır.
 
-- **SQL Server/Azure SQL veritabanı/Azure Cosmos DB yazılırken birincil anahtar ihlali**.
+- **SQL Server/Azure SQL Database/Azure Cosmos DB adresine yazarken birincil anahtar ihlali.**
 
-    Örneğin: bir SQL Server 'dan SQL veritabanı 'na veri kopyalama. Birincil anahtar, havuz SQL veritabanında tanımlanmıştır, ancak kaynak SQL Server 'da böyle bir birincil anahtar tanımlanmamıştır. Kaynakta bulunan yinelenen satırlar havuza kopyalanamıyor. Kopyalama etkinliği yalnızca kaynak verilerin ilk satırını havuza kopyalar. Yinelenen birincil anahtar değerini içeren sonraki kaynak satırlar uyumsuz olarak algılanır ve atlanır.
+    Örneğin: Verileri BIR SQL sunucusundan SQL veritabanına kopyalayın. Birincil anahtar lavabo SQL veritabanında tanımlanır, ancak kaynak SQL sunucusunda böyle bir birincil anahtar tanımlanmamıştır. Kaynakta bulunan yinelenen satırlar lavaboya kopyalanamaz. Etkinlik kopyalarını yalnızca kaynak verilerin ilk satırını lavaboya kopyalar. Yinelenen birincil anahtar değerini içeren sonraki kaynak satırları uyumsuz olarak algılanır ve atlanır.
 
 >[!NOTE]
->- PolyBase kullanarak SQL veri ambarı 'na veri yüklemek için, kopyalama etkinliğinde "[Polybasesettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" aracılığıyla reddetme Ilkelerini belirterek PolyBase 'in yerel hata toleransı ayarlarını yapılandırın. Aynı zamanda, PolyBase uyumsuz satırları blob veya ADLS 'e aşağıda gösterildiği gibi normal şekilde yeniden yönlendirmeyi etkinleştirebilirsiniz.
->- Copy etkinliği [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)komutunu çağırmak üzere yapılandırıldığında bu özellik uygulanmaz.
->- Kopyalama etkinliği [BIR SQL havuzundan saklı yordam](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)çağırmak üzere yapılandırıldığında bu özellik uygulanmaz.
+>- PolyBase kullanarak SQL Veri Ambarı'na veri yüklemek için, kopyalama etkinliğinde "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" üzerinden reddetme ilkeleri belirterek PolyBase'in yerel hata toleransı ayarlarını yapılandırın. Yine de, PolyBase uyumsuz satırlarının aşağıda gösterildiği gibi normal şekilde Blob veya ADLS'e yönlendirilmesini etkinleştirebilirsiniz.
+>- Bu özellik, kopyalama etkinliği [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)çağırmak için yapılandırıldığınızda geçerli değildir.
+>- Bu özellik, kopyalama etkinliği [SQL lavabosundan depolanan](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)yordamı çağırmak için yapılandırıldığı zaman geçerli değildir.
 
 ## <a name="configuration"></a>Yapılandırma
-Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapılandırmak için bir JSON tanımı sağlar:
+Aşağıdaki örnek, Kopyalama Etkinliği'ndeki uyumsuz satırları atlayarak yapılandırmak için bir JSON tanımı sağlar:
 
 ```json
 "typeProperties": {
@@ -70,15 +70,15 @@ Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapı
 }
 ```
 
-Özellik | Açıklama | İzin verilen değerler | Gereklidir
+Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | -------- 
-enableskipıncompatiblerow | Kopya sırasında uyumsuz satırların atlanıp atlanmayacağını belirtir. | Doğru<br/>False (varsayılan) | Hayır
-redirectıncompatiblerowsettings | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır
-linkedServiceName | Atlanan satırları içeren günlüğü depolamak için [Azure depolama](connector-azure-blob-storage.md#linked-service-properties) 'nın bağlı hizmeti veya [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) . | Günlük dosyasını depolamak için kullanmak istediğiniz örneğe başvuran bir `AzureStorage` veya `AzureDataLakeStore` türü bağlı hizmetin adı. | Hayır
+etkinleştirinSkipIncompatibleRow | Kopya sırasında uyumsuz satırları atlayıp atlamayacağımı belirtir. | True<br/>False (varsayılan) | Hayır
+yeniden YönlendirmeUyumsuzSatır Ayarları | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilebilen özellikler grubu. | &nbsp; | Hayır
+linkedServiceName | Atlanan satırları içeren günlüğü depolamak için [Azure Depolama](connector-azure-blob-storage.md#linked-service-properties) veya Azure Veri [Gölü Deposu'nun](connector-azure-data-lake-store.md#linked-service-properties) bağlantılı hizmeti. | Günlük dosyasını `AzureStorage` `AzureDataLakeStore` depolamak için kullanmak istediğiniz örneğe başvuran bir veya türbağlantılı hizmetin adı. | Hayır
 yol | Atlanan satırları içeren günlük dosyasının yolu. | Uyumsuz verileri günlüğe kaydetmek için kullanmak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
 
-## <a name="monitor-skipped-rows"></a>Atlanan satırları izle
-Kopyalama etkinliği çalıştırıldıktan sonra kopyalama etkinliğinin çıkışında atlanan satır sayısını görebilirsiniz:
+## <a name="monitor-skipped-rows"></a>Atlanan satırları izleme
+Kopyalama etkinliği tamamlandıktan sonra, kopya etkinliği çıktısında atlanan satır sayısını görebilirsiniz:
 
 ```json
 "output": {
@@ -93,11 +93,11 @@ Kopyalama etkinliği çalıştırıldıktan sonra kopyalama etkinliğinin çık�
         },
 
 ```
-' I uyumsuz satırları günlüğe kaydetmek üzere yapılandırırsanız, günlük dosyasını şu yolda bulabilirsiniz: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`. 
+Uyumsuz satırları günlüğe kaydetmek için yapılandırAcak şekilde yapılandırAcak `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`şekilde yapılandıracak şekilde, günlük dosyasını bu yolda bulabilirsiniz: . 
 
-Günlük dosyaları yalnızca CSV dosyaları olabilir. Atlanan özgün veriler, gerekirse sütun sınırlayıcısı olarak virgülle kaydedilir. Günlük dosyasındaki özgün kaynak verilerine ek olarak "ErrorCode" ve "ErrorMessage" olmak üzere iki sütun daha ekler. Bu, uyumsuzluğun kök nedenini görebileceğiniz yerdir. ErrorCode ve ErrorMessage, çift tırnak ile alıntılanacaktır. 
+Günlük dosyaları sadece csv dosyaları olabilir. Atlanan orijinal veriler gerekirse sütun sınırlayıcı olarak virgülle günlüğe kaydedilir. Uyumsuzluğun temel nedenini görebileceğiniz günlük dosyasındaki orijinal kaynak verilere ek olarak iki sütun daha "ErrorCode" ve "ErrorMessage" ekliyoruz. ErrorCode ve ErrorMessage çift tırnak ile alıntı olacaktır. 
 
-Günlük dosyası içeriğine bir örnek aşağıdaki gibidir:
+Günlük dosyası içeriğinin bir örneği aşağıdaki gibidir:
 
 ```
 data1, data2, data3, "UserErrorInvalidDataValue", "Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'."
@@ -105,9 +105,9 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir kopyalama etkinliği makalelere bakın:
+Diğer Kopyalama Etkinliği makalelerini görün:
 
-- [Kopyalama etkinliği'ne genel bakış](copy-activity-overview.md)
-- [Etkinlik performansını Kopyala](copy-activity-performance.md)
+- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
+- [Etkinlik performansını kopyalama](copy-activity-performance.md)
 
 

@@ -1,150 +1,154 @@
 ---
-title: Azure IoT Edge Windows 'a yükler | Microsoft Docs
-description: Windows 10, Windows Server ve Windows IoT Core 'daki yükleme yönergelerini Azure IoT Edge
+title: Azure IoT Edge'i Windows'a yükleme | Microsoft Dokümanlar
+description: Windows 10, Windows Server ve Windows IoT Core'da Azure IoT Edge yükleme yönergeleri
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 03/12/2020
 ms.author: kgremban
-ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 80ce962ac6977fcce2455c8e2ef29af448a44075
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79285064"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133152"
 ---
-# <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Azure IoT Edge çalışma zamanını Windows 'a yükler
+# <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows'a Azure IoT Edge çalışma zamanını yükleme
 
-Azure IOT Edge çalışma zamanı, ne bir cihaz ile IOT Edge cihazı kapatır ' dir. Çalışma zamanı, cihaz olarak endüstriyel sunucusu olarak büyük veya küçük bir Raspberry Pi üzerinde dağıtılabilir. Bir cihaz IOT Edge çalışma zamanı ile yapılandırıldıktan sonra iş mantığı buluttan dağıttıktan başlayabilirsiniz.
+Azure IoT Edge çalışma zamanı, aygıtı IoT Edge aygıtına dönüştüren şeydir. Çalışma süresi Raspberry Pi kadar küçük veya endüstriyel sunucu kadar büyük aygıtlarda dağıtılabilir. Bir aygıt IoT Edge çalışma zamanı ile yapılandırıldıktan sonra, buluttan iş mantığı dağıtmaya başlayabilirsiniz.
 
-IoT Edge çalışma zamanı hakkında daha fazla bilgi için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
+IoT Edge çalışma zamanı hakkında daha fazla bilgi edinmek için Azure [IoT Edge çalışma süresini ve mimarisini anlayın.](iot-edge-runtime.md)
 
-Bu makalede, Windows kapsayıcıları kullanarak Windows x64 (AMD/Intel) sisteminizde Azure IoT Edge çalışma zamanını yüklemek için gereken adımlar listelenmektedir.
+Bu makalede, Windows kapsayıcılarını kullanarak Windows x64 (AMD/Intel) sisteminizde Azure IoT Edge çalışma süresini yükleme adımları listelenir.
 
 > [!NOTE]
-> Bilinen bir Windows işletim sistemi sorunu, IoT Edge modüller (işlem yalıtılmış Windows nano sunucu kapsayıcıları) çalışırken uyku ve hazırda bekleme güç durumlarına geçiş yapılmasını önler. Bu sorun, cihazdaki pil ömrünü etkiler.
+> Bilinen bir Windows işletim sistemi sorunu, IoT Edge modülleri (işlemya yalıtılmış Windows Nano Server kapsayıcıları) çalışırken uyku ve hazırda bekleme güç durumları geçişini engeller. Bu sorun cihazdaki pil ömrünü etkiler.
 >
-> Geçici bir çözüm olarak, bu güç durumlarını kullanmadan önce çalışan IoT Edge modüllerini durdurmak için `Stop-Service iotedge` komutunu kullanın.
+> Geçici çözüm olarak, bu `Stop-Service iotedge` güç durumlarını kullanmadan önce çalışan IoT Edge modüllerini durdurmak için komutu kullanın.
 
-Windows sistemlerinde Linux kapsayıcıları kullanmak, Azure IoT Edge için önerilen veya desteklenen bir üretim yapılandırması değildir. Ancak, geliştirme ve test amacıyla kullanılabilir. Daha fazla bilgi için bkz. [Linux kapsayıcılarını çalıştırmak Için Windows 'ta IoT Edge kullanma](how-to-install-iot-edge-windows-with-linux.md).
+Windows sistemlerinde Linux kapsayıcıları kullanmak Azure IoT Edge için önerilen veya desteklenen bir üretim yapılandırması değildir. Ancak, geliştirme ve test amacıyla kullanılabilir. Daha fazla bilgi için Linux [kapsayıcılarını çalıştırmak için Windows'da IoT Edge kullanın'a](how-to-install-iot-edge-windows-with-linux.md)bakın.
 
-En son IoT Edge sürümüne nelerin dahil olduğu hakkında bilgi için, bkz. [Azure IoT Edge sürümler](https://github.com/Azure/azure-iotedge/releases).
+IoT Edge'in en son sürümünde nelerin yer aldığı hakkında bilgi için [Azure IoT Edge sürümlerine](https://github.com/Azure/azure-iotedge/releases)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Windows cihazınızın IoT Edge destekleyip desteklemediğini gözden geçirmek ve yüklemeden önce bir kapsayıcı altyapısı için hazırlamak üzere bu bölümü kullanın.
+Windows aygıtınızın IoT Edge'i destekleyip desteklemeyeceğini gözden geçirmek ve yüklemeden önce bir kapsayıcı altyapısına hazırlamak için bu bölümü kullanın.
 
 ### <a name="supported-windows-versions"></a>Desteklenen Windows sürümleri
 
-Geliştirme ve test senaryoları için Windows kapsayıcılarına sahip Azure IoT Edge, Windows 10 ' un veya Windows Server 2019 (derleme 17763) ' nin kapsayıcılar özelliğini destekleyen herhangi bir sürümüne yüklenebilir. Şu anda üretim senaryolarında hangi işletim sistemlerinin desteklendiği hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md#operating-systems).
+Windows için IoT Edge Windows sürümü 1809/build 17763, en son [Windows uzun vadeli destek oluşturmak](https://docs.microsoft.com/windows/release-information/)gerektirir. Windows SKU desteği için, üretim senaryolarına mı yoksa geliştirme ve test senaryolarına mı hazırlandığınıza bağlı olarak nelerin desteklenmeyene bakın:
 
-IoT çekirdek cihazları, IoT Edge çalışma zamanını desteklemek için IoT Core-Windows kapsayıcıları isteğe bağlı özelliğini içermelidir. Windows kapsayıcıları 'nın cihazınızda desteklenip desteklenmediğini denetlemek için [uzak bir PowerShell oturumunda](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) aşağıdaki komutu kullanın:
+* **Üretim**: Üretim senaryoları için şu anda hangi işletim sistemlerinin desteklendiğine ilişkin en son bilgiler için [Azure IoT Edge desteklenen sistemlere](support.md#operating-systems)bakın.
+* **Geliştirme ve sınama**: Geliştirme ve test senaryoları için, Windows kapsayıcılı Azure IoT Edge, kapsayıcıözelliğini destekleyen Windows 10 veya Windows Server 2019'un herhangi bir sürümüne yüklenebilir.
+
+IoT Core aygıtları, IoT Edge çalışma süresini desteklemek için Isteğe bağlı Özelliği IoT Core Windows Containers içermelidir. Windows kapsayıcılarının cihazınızda destekleniyi kontrol etmek için uzak bir [PowerShell oturumunda](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) aşağıdaki komutu kullanın:
 
 ```powershell
 Get-Service vmcompute
 ```
 
-Hizmet mevcutsa, **çalışıyor**olarak listelenen hizmet durumu ile başarılı bir yanıt almanız gerekir. Vmcompute hizmeti bulunamazsa, cihazınız IoT Edge gereksinimlerini karşılamaz. Bu özellik için destek almak üzere donanım sağlayıcınızla iletişim kurun.
+Hizmet varsa, **çalışan**olarak listelenen hizmet durumu ile başarılı bir yanıt almalısınız. `vmcompute` Hizmet bulunamazsa, aygıtınız IoT Edge gereksinimlerini karşılamaz. Bu özellik için destek hakkında soru sormak için donanım sağlayıcınıza başvurun.
 
-### <a name="prepare-for-a-container-engine"></a>Kapsayıcı altyapısı için hazırlanma
+### <a name="prepare-for-a-container-engine"></a>Konteyner motoruna hazırlanın
 
-Azure IoT Edge, [OCI uyumlu](https://www.opencontainers.org/) bir kapsayıcı altyapısına bağlıdır. Üretim senaryoları için, Windows cihazınızda Windows kapsayıcıları çalıştırmak üzere yükleme betiğine eklenen Moby altyapısını kullanın.
+Azure IoT Edge, [OCI uyumlu](https://www.opencontainers.org/) bir kapsayıcı motoruna dayanır. Üretim senaryoları için, Windows aygıtınızda Windows kapsayıcılarını çalıştırmak için yükleme komut dosyasına dahil olan Moby altyapısını kullanın.
 
-## <a name="install-iot-edge-on-a-new-device"></a>Yeni bir cihaza IoT Edge yüklemesi
+## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge'i yeni bir cihaza yükleme
 
 >[!NOTE]
->Azure IOT Edge yazılım paketlerini (lisans dizininde) paketleri bulunan lisans koşullarına tabidir. Paket kullanarak önce lisans koşullarını okuyun. Bu koşulları kabul etmeniz, yükleme ve kullanım paket oluşturur. Lisans koşullarını kabul etmiyorsanız, paket kullanmayın.
+>Azure IoT Edge yazılım paketleri, paketlerde (LICENSE dizininde) bulunan lisans koşullarına tabidir. Lütfen paketi kullanmadan önce lisans koşullarını okuyun. Paketi yüklemeniz ve kullanmanız bu koşulları kabul etmek anlamına dalır. Lisans koşullarını kabul etmiyorsanız, paketi kullanmayın.
 
-Bir PowerShell betiği, Azure IoT Edge güvenlik cini indirir ve yükler. Güvenlik cini daha sonra, diğer modüllerin uzak dağıtımlarını sağlayan IoT Edge Aracısı olan iki çalışma zamanı modülünün ilki başlatılır.
+PowerShell komut dosyası Azure IoT Edge güvenlik daemon'u indirir ve yükler. Güvenlik daemon sonra diğer modüllerin uzaktan dağıtımsağlayan iki çalışma zamanı modülleri, IoT Edge aracısı, ilk başlar.
 
 >[!TIP]
->IoT çekirdek cihazları için, bir RemotePowerShell oturumu kullanarak yükleme komutlarının çalıştırılmasını öneririz. Daha fazla bilgi için bkz. [Windows IoT Için PowerShell kullanma](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell).
+>IoT Core aygıtları için, yükleme komutlarını RemotePowerShell oturumunu kullanarak çalıştırmanızı öneririz. Daha fazla bilgi için [Windows IoT için PowerShell kullanma'ya](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)bakın.
 
-IoT Edge çalışma zamanını bir cihaza ilk kez yüklediğinizde, cihazı IoT Hub 'ından bir kimlikle sağlamanız gerekir. Tek bir IoT Edge cihaz, IoT Hub tarafından sağlanan bir cihaz bağlantı dizesi kullanılarak el ile sağlanabilir. Ya da cihaz sağlama hizmeti 'ni (DPS), cihazları otomatik olarak sağlamak için kullanabilirsiniz. Bu, ayarlanacak birçok cihazınız olduğunda yararlı olur. Sağlama seçiminize bağlı olarak, uygun yükleme komut dosyasını seçin.
+IoT Edge çalışma saatini ilk kez bir aygıta yüklediğinizde, aygıtı bir IoT hub'ından bir kimlik le sağlamanız gerekir. Tek bir IoT Edge aygıtı, IoT Hub tarafından sağlanan bir aygıt bağlantı dizesi kullanılarak el ile kullanılabilir. Veya, cihazları otomatik olarak sağlamak için Aygıt Sağlama Hizmeti'ni (DPS) kullanabilirsiniz, bu da ayarlayabileceğiniz çok sayıda aygıtınız olduğunda yararlıdır. Sağlama tercihinize bağlı olarak, uygun yükleme komut dosyasını seçin.
 
-Aşağıdaki bölümlerde, yeni bir cihazdaki IoT Edge yükleme betiği için ortak kullanım durumları ve parametreleri açıklanır.
+Aşağıdaki bölümlerde, yeni bir aygıttaki IoT Edge yükleme komut dosyası nın ortak kullanım örnekleri ve parametreleri açıklayınız.
 
-### <a name="option-1-install-and-manually-provision"></a>1\. seçenek: Yükleme ve el ile sağlama
+### <a name="option-1-install-and-manually-provision"></a>Seçenek 1: Yükleme ve el ile sağlama
 
-Bu ilk seçenekte, cihazı sağlamak için IoT Hub tarafından oluşturulan bir **Cihaz bağlantı dizesi** sağlarsınız.
+Bu ilk seçenekte, aygıtı sağlamak için IoT Hub tarafından oluşturulan bir **aygıt bağlantı dizesi** sağlarsınız.
 
-Bu örnekte, Windows kapsayıcılarıyla el ile yükleme gösterilmektedir:
+Bu örnek, Windows kapsayıcıları ile el ile yükleme gösterir:
 
-1. Henüz yapmadıysanız, yeni bir IoT Edge cihazı kaydedin ve **Cihaz bağlantı dizesini**alın. Bu bölümün ilerleyen kısımlarında kullanılacak bağlantı dizesini kopyalayın. Aşağıdaki araçları kullanarak bu adımı tamamlayabilirsiniz:
+1. Henüz yapmadıysanız, yeni bir IoT Edge aygıtı kaydettirin ve **aygıt bağlantı dizesini**alın. Daha sonra bu bölümde kullanmak üzere bağlantı dizesini kopyalayın. Aşağıdaki araçları kullanarak bu adımı tamamlayabilirsiniz:
 
    * [Azure portalında](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
-2. PowerShell 'i yönetici olarak çalıştırın.
+2. PowerShell'i yönetici olarak çalıştırın.
 
    >[!NOTE]
-   >PowerShell (x86) değil IoT Edge yüklemek için PowerShell 'in AMD64 oturumunu kullanın. Hangi oturum türünü kullandığınızdan emin değilseniz, aşağıdaki komutu çalıştırın:
+   >IoT Edge'i yüklemek için POWERShell'in AMD64 oturumunu kullanın, PowerShell'i (x86) değil. Hangi oturum türünü kullandığınızdan emin değilseniz aşağıdaki komutu çalıştırın:
    >
    >```powershell
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. **Deploy-ıotedge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve ardından Moby çalışma zamanını ve IoT Edge çalışma zamanını indirir. Komut varsayılan olarak Windows kapsayıcıları ' nı kullanmaktır.
+3. **Deploy-IoTEdge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve moby çalışma süresini ve IoT Edge çalışma süresini karşıdan yüklez. Komut, Windows kapsayıcılarını kullanmayı varsayılan olarak kullanır.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-4. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
+4. Bu noktada, IoT Core aygıtları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server aygıtları yeniden başlatmanızı isteyebilir. Öyleyse, cihazınızı şimdi yeniden başlatın. Cihazınız hazır olduğunda PowerShell'i yeniden yönetici olarak çalıştırın.
 
-5. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler.
+5. **Initialize-IoTEdge komutu,** Makinenizdeki IoT Edge çalışma süresini yapılandırır. Komut, Windows kapsayıcılarıyla el ile sağlama için varsayılandır.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge
    ```
 
-6. İstendiğinde, 1. adımda aldığınız cihaz bağlantı dizesini belirtin. Cihaz bağlantı dizesi, fiziksel cihazı IoT Hub bir cihaz KIMLIĞIYLE ilişkilendirir.
+6. İstendiğinde, adım 1'de aldığınız aygıt bağlantı dizesini sağlayın. Aygıt bağlantı dizesi, fiziksel aygıtı IoT Hub'ındaki bir aygıt kimliğiyle ilişkilendirer.
 
-   Cihaz bağlantı dizesi aşağıdaki biçimi alır ve tırnak işaretleri içermemelidir: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Aygıt bağlantı dizesi aşağıdaki biçimi alır ve tırnak işaretleri içermemelidir:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-7. Cihazınızdaki IoT Edge durumunu denetlemek için [başarılı yüklemeyi doğrulama](#verify-successful-installation) bölümündeki adımları kullanın.
+7. Aygıtınızdaki IoT Edge'in durumunu kontrol etmek için [Başarılı yüklemeyi Doğrula'daki](#verify-successful-installation) adımları kullanın.
 
-Bir cihazı el ile yüklerken ve sağladığınızda yüklemeyi değiştirmek için ek parametreleri kullanabilirsiniz:
+Bir aygıtı el ile yüklediğinizde ve tedarik ettiğinizde, aşağıdakiler de dahil olmak üzere yüklemeyi değiştirmek için ek parametreler kullanabilirsiniz:
 
-* Bir proxy sunucusundan gelen trafiği doğrudan gönder
-* Yükleyiciyi çevrimdışı bir dizine işaret edin
-* Belirli bir aracı kapsayıcı görüntüsü bildirin ve özel bir kayıt defterinde yer alıyorsa kimlik bilgilerini sağlayın
+* Proxy sunucusundan geçmek için doğrudan trafik
+* Yükleyiciyi çevrimdışı dizine yönlendirin
+* Belirli bir aracı kapsayıcı görüntüsünü bildirin ve özel bir kayıt defterindeyse kimlik bilgileri sağlayın
 
-Bu yükleme seçenekleri hakkında daha fazla bilgi için, [tüm yükleme parametreleri](#all-installation-parameters)hakkında bilgi edinmek üzere ileri atlayın.
+Bu yükleme seçenekleri hakkında daha fazla bilgi için, [tüm yükleme parametreleri](#all-installation-parameters)hakkında bilgi edinmek için ileri ye atlayın.
 
-### <a name="option-2-install-and-automatically-provision"></a>2\. seçenek: Yükleme ve otomatik olarak sağlama
+### <a name="option-2-install-and-automatically-provision"></a>Seçenek 2: Yükleme ve otomatik olarak sağlama
 
-Bu ikinci seçenekte, cihazı IoT Hub cihaz sağlama hizmetini kullanarak sağlayacaksınız. Bir cihaz sağlama hizmeti örneğindeki **kapsam kimliğini** tercih ettiğiniz [kanıtlama mekanizmanıza](../iot-dps/concepts-security.md#attestation-mechanism)özgü diğer bilgilerle birlikte sağlayın:
+Bu ikinci seçenekte, aygıtı IoT Hub Aygıt Sağlama Hizmeti'ni kullanarak sağlarsınız. Bir Aygıt Sağlama Hizmeti örneğinden **Kapsam Kimliğini** ve tercih ettiğiniz [attestation mekanizmasına](../iot-dps/concepts-security.md#attestation-mechanism)özel diğer bilgileri sağlayın:
 
-* [Windows üzerinde sanal TPM ile sanal bir IoT Edge cihaz oluşturma ve sağlama](how-to-auto-provision-simulated-device-windows.md)
-* [Simetrik anahtar kanıtlama kullanarak bir IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-symmetric-keys.md)
+* [Windows'da sanal TPM içeren simüle edilmiş bir IoT Edge aygıtı oluşturma ve sağlama](how-to-auto-provision-simulated-device-windows.md)
+* [X.509 sertifikalarını kullanarak simüle edilmiş bir IoT Edge aygıtı oluşturma ve sağlama](how-to-auto-provision-x509-certs.md)
+* [Simetrik anahtar attestation kullanarak bir IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-symmetric-keys.md)
 
-Bir cihazı otomatik olarak yükleyip sağladığınızda, yüklemeyi değiştirmek için ek parametreleri kullanabilirsiniz:
+Bir aygıtı otomatik olarak yüklediğinizde ve tedarik ettiğinizde, aşağıdakiler de dahil olmak üzere yüklemeyi değiştirmek için ek parametrelerk kullanabilirsiniz:
 
-* Bir proxy sunucusundan gelen trafiği doğrudan gönder
-* Yükleyiciyi çevrimdışı bir dizine işaret edin
-* Belirli bir aracı kapsayıcı görüntüsü bildirin ve özel bir kayıt defterinde yer alıyorsa kimlik bilgilerini sağlayın
+* Proxy sunucusundan geçmek için doğrudan trafik
+* Yükleyiciyi çevrimdışı dizine yönlendirin
+* Belirli bir aracı kapsayıcı görüntüsünü bildirin ve özel bir kayıt defterindeyse kimlik bilgileri sağlayın
 
-Bu yükleme seçenekleri hakkında daha fazla bilgi için bu makaleyi okumaya devam edin veya [tüm yükleme parametreleri](#all-installation-parameters)hakkında bilgi edinmek için atlayın.
+Bu yükleme seçenekleri hakkında daha fazla bilgi için, bu makaleyi okumaya devam edin veya [tüm yükleme parametreleri](#all-installation-parameters)hakkında bilgi edinmek için atlayın.
 
-## <a name="offline-or-specific-version-installation"></a>Çevrimdışı veya belirli sürümü yükleme
+## <a name="offline-or-specific-version-installation"></a>Çevrimdışı veya belirli sürüm yüklemesi
 
 Yükleme sırasında iki dosya indirilir:
 
-* IoT Edge güvenlik cini (ıotedşlı), Moby kapsayıcı altyapısını ve Moby CLı 'yi içeren IoT Edge cab Microsoft Azure.
+* IoT Edge güvenlik daemon (iotedged), Moby konteyner motoru ve Moby CLI içeren Microsoft Azure IoT Edge kabin.
 * Visual C++ yeniden dağıtılabilir paket (VC çalışma zamanı) MSI
 
-Cihazınız yükleme sırasında çevrimdışı kalırsa veya IoT Edge belirli bir sürümünü yüklemek istiyorsanız, bu dosyaların bir veya her ikisini de cihaza daha güncel bir şekilde indirebilirsiniz. Yükleme zamanı olduğunda, yükleme betiğini indirilen dosyaları içeren dizine işaret edin. Yükleyici önce bu dizini denetler ve sonra yalnızca bulunamayan bileşenleri indirir. Tüm dosyalar çevrimdışı kullanılabilir ise, internet bağlantısı olmadan yükleyebilirsiniz.
+Cihazınız yükleme sırasında çevrimdışı olacaksa veya IoT Edge'in belirli bir sürümünü yüklemek istiyorsanız, bu dosyalardan birini veya her ikisini de önceden aygıta indirebilirsiniz. Yükleme zamanı geldiğinde, yükleme komut dosyasını indirilen dosyaları içeren dizine yönlendirin. Yükleyici önce bu dizini denetler ve sonra yalnızca bulunamayan bileşenleri karşıdan yükler. Tüm dosyalar çevrimdışı olarak kullanılabilse, internet bağlantısı olmadan yükleyebilirsiniz.
 
-Önceki sürümlerle birlikte en son IoT Edge yükleme dosyaları için bkz. [Azure IoT Edge yayınlar](https://github.com/Azure/azure-iotedge/releases).
+Önceki sürümlerle birlikte en son IoT Edge yükleme dosyaları için [Azure IoT Edge sürümlerine](https://github.com/Azure/azure-iotedge/releases)bakın.
 
-Çevrimdışı bileşenlerle yüklemek için, Deploy-ıotedge komutunun bir parçası olarak `-OfflineInstallationPath` parametresini kullanın ve dosya dizinine mutlak yolu sağlayın. Örneğin,
+Çevrimdışı bileşenlerle yüklemek için, `-OfflineInstallationPath` parametreyi Deploy-IoTEdge komutunun bir parçası olarak kullanın ve dosya dizinine mutlak yolu sağlayın. Örneğin,
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -152,26 +156,26 @@ Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
 >[!NOTE]
->`-OfflineInstallationPath` parametresi, belirtilen dizinde **Microsoft-Azure-IoTEdge. cab** adlı bir dosya arar. IoT Edge Version 1.0.9-RC4 ile başlayarak, biri AMD64 cihaz ve diğeri ARM32 için kullanılabilecek iki. cab dosyası vardır. Cihazınız için doğru dosyayı indirin ve ardından mimari sonekini kaldırmak için dosyayı yeniden adlandırın.
+>Parametre, `-OfflineInstallationPath` sağlanan dizinde **Microsoft-Azure-IoTEdge.cab** adlı bir dosya arar. IoT Edge sürüm 1.0.9-rc4 ile başlayarak, biri AMD64 aygıtları ve diğeri ARM32 için olmak üzere iki adet .cab dosyası kullanılabilir. Aygıtınız için doğru dosyayı indirin ve ardından mimari soneki kaldırmak için dosyayı yeniden adlandırın.
 
-`Deploy-IoTEdge` komutu IoT Edge bileşenlerini yükledikten sonra cihazı IoT Hub cihaz KIMLIĞI ve bağlantısıyla sağlamak için `Initialize-IoTEdge` komutuna devam etmeniz gerekir. Komutu doğrudan çalıştırın ve IoT Hub bir bağlantı dizesi sağlayın ya da cihaz sağlama hizmeti ile cihazları otomatik olarak sağlamayı öğrenmek için önceki bölümdeki bağlantılardan birini kullanın.
+Komut `Deploy-IoTEdge` IoT Edge bileşenlerini yükler ve ardından aygıtı `Initialize-IoTEdge` IoT Hub aygıt kimliği ve bağlantısıyla sağlamak için komuta devam etmeniz gerekir. Komutu doğrudan çalıştırın ve IoT Hub'dan bir bağlantı dizesi sağlayın veya Aygıt Sağlama Hizmeti ile aygıtları otomatik olarak nasıl sağlayabileceğinizi öğrenmek için önceki bölümdeki bağlantılardan birini kullanın.
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Initialize-IoTEdge
 ```
 
-Update-ıotedge komutuyla çevrimdışı yükleme yolu parametresini de kullanabilirsiniz.
+Ayrıca Update-IoTEdge komutu ile çevrimdışı yükleme yolu parametresini de kullanabilirsiniz.
 
-## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulamak
+## <a name="verify-successful-installation"></a>Başarılı yüklemeyi doğrulama
 
-IoT Edge hizmetinin durumunu kontrol edin. Çalışıyor olarak listelenmelidir.  
+IoT Edge hizmetinin durumunu kontrol edin. Çalışan olarak listelenmelidir.  
 
 ```powershell
 Get-Service iotedge
 ```
 
-Son 5 dakika Hizmeti günlüklerini inceleyin. IoT Edge çalışma zamanını yüklemeyi tamamladıysanız, çalıştırılan **dağıtım-ıotedge** ve **Initialize-ıotedge**arasındaki zamandan oluşan hataların bir listesini görebilirsiniz. Hizmetin yapılandırmadan önce başlatılmaya çalıştığı için bu hatalar beklenmektedir.
+Son 5 dakikadaki servis kayıtlarını inceleyin. IoT Edge çalışma süresini yüklemeyi yeni bitirdiyseniz, **Deploy-IoTEdge ve Initialize-IoTEdge'i** çalıştırma arasındaki zamana ait hataların bir listesini görebilirsiniz. **Initialize-IoTEdge** Hizmet yapılandırmadan önce başlamaya çalıştığından, bu hatalar beklenmektedir.
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -183,106 +187,120 @@ En yaygın yapılandırma ve ağ hataları için otomatik bir denetim çalışt�
 iotedge check
 ```
 
-Çalışan modülleri listeleyin. Yeni bir yüklemeden sonra, çalıştırmayı görmeniz gereken tek modül **Edgeagent**' dir. [IoT Edge modüllerini](how-to-deploy-modules-portal.md) ilk kez dağıttıktan sonra, diğer sistem modülü, **edgehub**, cihazda da başlatılır.
+Çalışan modülleri listele. Yeni bir yüklemeden sonra, çalışan görmeniz gereken tek modül **edgeAgent**olduğunu. [IoT Edge modüllerini](how-to-deploy-modules-portal.md) ilk kez dağıttıktan sonra, **edgeHub**adındaki diğer sistem modülü de cihazda başlayacaktır.
 
 ```powershell
 iotedge list
 ```
 
-## <a name="manage-module-containers"></a>Modül kapsayıcılarını yönetme
+## <a name="manage-module-containers"></a>Modül konteynerlerini yönetme
 
-IoT Edge hizmeti cihazınızda çalışan bir kapsayıcı altyapısı gerektirir. Bir cihaza modül dağıttığınızda, IoT Edge çalışma zamanı, kapsayıcı altyapısını buluttaki bir kayıt defterinden çekmek için kapsayıcı altyapısını kullanır. IoT Edge hizmeti modüllerinizle etkileşime geçerek günlükleri almanızı sağlar, ancak bazen kapsayıcı altyapısını kapsayıcının kendisiyle etkileşim kurmak için kullanmak isteyebilirsiniz.
+IoT Edge hizmeti için cihazınızda çalışan bir konteyner motoru gerekir. Bir aygıta bir modül dağıttığınızda, IoT Edge çalışma zamanı, buluttaki bir kayıt defterinden kapsayıcı görüntüsünü çekmek için kapsayıcı altyapısını kullanır. IoT Edge hizmeti, modüllerinizle etkileşimkurmanızı ve günlükleri almanızı sağlar, ancak bazen kapsayıcının kendisiyle etkileşim kurmak için konteyner motorunu kullanmak isteyebilirsiniz.
 
-Modül kavramları hakkında daha fazla bilgi için bkz. [Azure IoT Edge modüllerini anlama](iot-edge-modules.md).
+Modül kavramları hakkında daha fazla bilgi için [bkz.](iot-edge-modules.md)
 
-Windows IoT Edge cihazınızda Windows kapsayıcıları çalıştırıyorsanız, IoT Edge yüklemesi Moby kapsayıcı altyapısını içerir. Moby motoru Docker ile aynı standartlara dayalıdır ve Docker Desktop ile aynı makinede paralel olarak çalışacak şekilde tasarlanmıştır. Bu nedenle, Moby altyapısı tarafından yönetilen kapsayıcıları hedeflemek istiyorsanız Docker yerine bu altyapıyı özellikle hedeflemek gerekir.
+Windows IoT Edge aygıtınızda Windows kapsayıcıları çalıştırıyorsanız, IoT Edge yüklemesi Moby kapsayıcı motorunu içerir. Moby motoru Docker ile aynı standartlara dayanıyordu ve Docker Desktop ile aynı makinede çalışacak şekilde tasarlandı. Bu nedenle, Moby motoru tarafından yönetilen konteynerleri hedeflemek istiyorsanız, docker yerine özellikle o motoru hedeflemeniz gerekir.
 
-Örneğin, tüm Docker görüntülerini listelemek için aşağıdaki komutu kullanın:
+Örneğin, tüm Docker resimlerini listelemek için aşağıdaki komutu kullanın:
 
 ```powershell
 docker images
 ```
 
-Tüm Moby görüntülerini listelemek için, aynı komutu Moby altyapısına yönelik bir işaretçi ile değiştirin:
+Tüm Moby görüntülerini listelemek için, aynı komutu Moby motoruna işaretçiyle değiştirin:
 
 ```powershell
 docker -H npipe:////./pipe/iotedge_moby_engine images
 ```
 
-Altyapı URI 'SI, yükleme komut dosyasının çıktısında listelenir veya bunu config. YAML dosyasının kapsayıcı çalışma zamanı ayarları bölümünde bulabilirsiniz.
+Motor URI yükleme komut dosyasının çıktısında listelenir veya config.yaml dosyası için konteyner çalışma zamanı ayarları bölümünde bulabilirsiniz.
 
-![config. YAML içinde moby_runtime URI 'si](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
+![moby_runtime in config.yaml içinde uri](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
 
-Cihazınızda çalışan kapsayıcılarla ve görüntülerle etkileşim kurmak için kullanabileceğiniz komutlar hakkında daha fazla bilgi için bkz. [Docker komut satırı arabirimleri](https://docs.docker.com/engine/reference/commandline/docker/).
+Cihazınızda çalışan kapsayıcılar ve görüntülerle etkileşimde kalmak için kullanabileceğiniz komutlar hakkında daha fazla bilgi için [Docker komut satırı arabirimlerine](https://docs.docker.com/engine/reference/commandline/docker/)bakın.
 
-## <a name="uninstall-iot-edge"></a>IoT Edge kaldır
+## <a name="uninstall-iot-edge"></a>IoT Edge'i kaldır
 
-IoT Edge yüklemesini Windows cihazınızdan kaldırmak istiyorsanız, bir yönetim PowerShell penceresinden aşağıdaki komutu kullanın. Bu komut, IoT Edge çalışma zamanını, mevcut yapılandırmanızla ve Moby motoru verileriyle birlikte kaldırır.
+IoT Edge yüklemesini Windows aygıtınızdan kaldırmak istiyorsanız, yönetimdeki PowerShell penceresinden aşağıdaki komutu kullanın. Bu komut, mevcut yapılandırmanız ve Moby motor verilerinizle birlikte IoT Edge çalışma süresini kaldırır.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
 
-Uninstall-ıotedge komutu Windows IoT Core üzerinde çalışmıyor. Windows IoT çekirdek cihazlarından IoT Edge kaldırmak için Windows IoT çekirdek görüntünüzü yeniden dağıtmanız gerekir.
+Kaldır-IoTEdge komutu Windows IoT Core'da çalışmaz. IoT Edge'i Windows IoT Core aygıtlarından kaldırmak için Windows IoT Core görüntünüze yeniden dağıtmanız gerekir.
 
-Kaldırma seçenekleri hakkında daha fazla bilgi için `Get-Help Uninstall-IoTEdge -full`komutunu kullanın.
+Yüklemeyi kaldırma seçenekleri hakkında daha `Get-Help Uninstall-IoTEdge -full`fazla bilgi için, komutu kullanın.
 
-## <a name="all-installation-parameters"></a>Tüm yükleme parametreleri
+## <a name="verify-installation-script"></a>Yükleme komut dosyalarını doğrulama
 
-Önceki bölümlerde, yükleme betiğini değiştirmek için parametrelerin nasıl kullanılacağına ilişkin örneklerle birlikte yaygın yükleme senaryoları tanıtılmıştır. Bu bölümde IoT Edge yüklemek, güncelleştirmek veya kaldırmak için kullanılan ortak parametrelerin başvuru tabloları sağlanmaktadır.
+Bu makalede sağlanan yükleme komutları, yükleme komutunu ' dan istemek `aka.ms/iotedge-win`için Invoke-WebRequest cmdlet'i kullanır. Bu bağlantı,`IoTEdgeSecurityDaemon.ps1` en son [IoT Edge sürümünden](https://github.com/Azure/azure-iotedge/releases)komut dosyasına işaret. IoT Edge aygıtınızdaki yükleme komutlarını çalıştırmak için bu komut dosyasını veya komut dosyasının bir sürümünü belirli bir sürümden de indirebilirsiniz.
 
-### <a name="deploy-iotedge"></a>Dağıtım-ıotedge
+Sağlanan komut dosyası güvenliği artırmak için imzalanır. Komut dosyasını cihazınıza indirerek ve ardından aşağıdaki PowerShell komutunu çalıştırarak imzayı doğrulayabilirsiniz:
 
-Deploy-ıotedge komutu, IoT Edge güvenlik cini ve bağımlılıklarını indirir ve dağıtır. Dağıtım komutu, diğerleri arasında bu ortak parametreleri kabul eder. Tam liste için `Get-Help Deploy-IoTEdge -full`komutunu kullanın.  
+```powershell
+Get-AuthenticodeSignature "C:\<path>\IotEdgeSecurityDaemon.ps1"
+```
 
-| Parametre | Kabul edilen değerler | Yorumlar |
-| --------- | --------------- | -------- |
-| **ContainerOs** | **Windows** veya **Linux** | Bir kapsayıcı işletim sistemi belirtilmemişse, Windows varsayılan değerdir.<br><br>Windows kapsayıcıları için IoT Edge, yüklemeye dahil edilen Moby kapsayıcı altyapısını kullanır. Linux kapsayıcıları için yüklemeyi başlatmadan önce bir kapsayıcı altyapısı yüklemeniz gerekir. |
-| **Proxy** | Proxy URL 'SI | Cihazınızın internet 'e erişmek için bir proxy sunucusu üzerinden gitmesi gerekiyorsa bu parametreyi ekleyin. Daha fazla bilgi için bkz. [bir IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](how-to-configure-proxy-support.md). |
-| **Offlineınstallationpath** | Dizin yolu | Bu parametre dahil ise, yükleyici, yükleme için gereken IoT Edge cab ve VC çalışma zamanı MSI dosyaları için listelenen dizini kontrol eder. Dizinde bulunmayan tüm dosyalar indirilir. Her iki dosya da dizinde ise, internet bağlantısı olmadan IoT Edge yükleyebilirsiniz. Belirli bir sürümü kullanmak için bu parametreyi de kullanabilirsiniz. |
-| **Invokewebrequestparameters** | Parametrelerin ve değerlerin Hashtable 'ı | Yükleme sırasında bazı Web istekleri yapılır. Bu Web isteklerinin parametrelerini ayarlamak için bu alanı kullanın. Bu parametre, proxy sunucuları için kimlik bilgilerini yapılandırmak için yararlıdır. Daha fazla bilgi için bkz. [bir IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](how-to-configure-proxy-support.md). |
-| **Restartifgerekliyse** | yok | Bu bayrak dağıtım betiğinin, gerekirse, makineyi sormadan yeniden başlatmasını sağlar. |
+İmza doğrulanırsa çıktı durumu **geçerlidir.**
 
-### <a name="initialize-iotedge"></a>Initialize-ıotedge
+## <a name="all-installation-parameters"></a>Tüm kurulum parametreleri
 
-Initialize-ıotedge komutu, IoT Edge cihaz bağlantı dizeniz ve işletimsel ayrıntılarla yapılandırır. Bu komutla oluşturulan bilgilerin çoğu daha sonra ıotedge\config.exe dosyasında depolanır. Başlatma komutu, diğerleri arasında bu ortak parametreleri kabul eder. Tam liste için `Get-Help Initialize-IoTEdge -full`komutunu kullanın.
+Önceki bölümlerde, yükleme komut dosyasını değiştirmek için parametrelerin nasıl kullanılacağına örnekler içeren ortak yükleme senaryoları sunulmuştur. Bu bölüm, IoT Edge'i yüklemek, güncelleştirmek veya kaldırmak için kullanılan yaygın parametrelerin başvuru tablolarını sağlar.
 
-| Parametre | Kabul edilen değerler | Yorumlar |
-| --------- | --------------- | -------- |
-| **El ile** | Yok | **Anahtar parametresi**. Hiçbir sağlama türü belirtilmemişse, el ile varsayılan değerdir.<br><br>Cihazı el ile sağlamak için bir cihaz bağlantı dizesi sağlayacağınızı bildirir |
-| **DPS** | Yok | **Anahtar parametresi**. Hiçbir sağlama türü belirtilmemişse, el ile varsayılan değerdir.<br><br>Bir cihaz sağlama hizmeti (DPS) kapsam KIMLIĞI ve bu cihazın, DPS aracılığıyla sağlamak üzere cihazınızın kayıt KIMLIĞI sağlayacağınızı bildirir.  |
-| **DeviceConnectionString** | Tek tırnak içinde bir IoT Hub kayıtlı IoT Edge cihazdan bağlantı dizesi | El ile yükleme için **gereklidir** . Betik parametrelerinde bir bağlantı dizesi sağlamazsanız, yükleme sırasında sizden bir tane istenir. |
-| **KML** | IoT Hub ilişkili cihaz sağlama hizmeti örneğinden bir kapsam KIMLIĞI. | DPS yüklemesi için **gereklidir** . Betik parametrelerinde kapsam KIMLIĞI sağlamazsanız, yükleme sırasında sizden bir tane istenir. |
-| **RegistrationId** | Cihazınız tarafından oluşturulan bir kayıt KIMLIĞI | TPM veya simetrik anahtar kanıtlama kullanılıyorsa, DPS yüklemesi için **gereklidir** . |
-| **SymmetricKey** | DPS kullanılırken IoT Edge cihaz kimliğini sağlamak için kullanılan simetrik anahtar | Simetrik anahtar kanıtlama kullanılıyorsa, DPS yüklemesi için **gereklidir** . |
-| **ContainerOs** | **Windows** veya **Linux** | Bir kapsayıcı işletim sistemi belirtilmemişse, Windows varsayılan değerdir.<br><br>Windows kapsayıcıları için IoT Edge, yüklemeye dahil edilen Moby kapsayıcı altyapısını kullanır. Linux kapsayıcıları için yüklemeyi başlatmadan önce bir kapsayıcı altyapısı yüklemeniz gerekir. |
-| **Invokewebrequestparameters** | Parametrelerin ve değerlerin Hashtable 'ı | Yükleme sırasında bazı Web istekleri yapılır. Bu Web isteklerinin parametrelerini ayarlamak için bu alanı kullanın. Bu parametre, proxy sunucuları için kimlik bilgilerini yapılandırmak için yararlıdır. Daha fazla bilgi için bkz. [bir IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](how-to-configure-proxy-support.md). |
-| **Dil** | IoT Edge aracı görüntüsü URI 'SI | Varsayılan olarak, yeni bir IoT Edge yüklemesi IoT Edge Aracısı görüntüsü için en son kayan etiketi kullanır. Görüntü sürümü için belirli bir etiket ayarlamak veya kendi aracı görüntünüzü sağlamak için bu parametreyi kullanın. Daha fazla bilgi için bkz. [IoT Edge etiketlerini anlama](how-to-update-iot-edge.md#understand-iot-edge-tags). |
-| **Kullanıcı Adı** | Kapsayıcı kayıt defteri Kullanıcı adı | Bu parametreyi yalnızca,-Tımage parametresini özel bir kayıt defterindeki bir kapsayıcıya ayarlarsanız kullanın. Kayıt defterine erişimi olan bir Kullanıcı adı belirtin. |
-| **Parola** | Güvenli parola dizesi | Bu parametreyi yalnızca,-Tımage parametresini özel bir kayıt defterindeki bir kapsayıcıya ayarlarsanız kullanın. Kayıt defterine erişmek için parolayı girin. |
+### <a name="deploy-iotedge"></a>Dağıtma-IoTEdge
 
-### <a name="update-iotedge"></a>Güncelleştirme-ıotedge
+Deploy-IoTEdge komutu, IoT Edge Güvenlik Daemon'unu ve bağımlılıklarını karşıdan yükler ve dağıtır. Dağıtım komutu, diğerlerinin yanı sıra bu ortak parametreleri kabul eder. Tam liste için, komutu `Get-Help Deploy-IoTEdge -full`kullanın.  
 
 | Parametre | Kabul edilen değerler | Yorumlar |
 | --------- | --------------- | -------- |
-| **ContainerOs** | **Windows** veya **Linux** | Bir kapsayıcı işletim sistemi belirtilmemişse, Windows varsayılan değerdir. Windows kapsayıcıları için, yüklemeye bir kapsayıcı altyapısı dahil edilir. Linux kapsayıcıları için yüklemeyi başlatmadan önce bir kapsayıcı altyapısı yüklemeniz gerekir. |
-| **Proxy** | Proxy URL 'SI | Cihazınızın internet 'e erişmek için bir proxy sunucusu üzerinden gitmesi gerekiyorsa bu parametreyi ekleyin. Daha fazla bilgi için bkz. [bir IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](how-to-configure-proxy-support.md). |
-| **Invokewebrequestparameters** | Parametrelerin ve değerlerin Hashtable 'ı | Yükleme sırasında bazı Web istekleri yapılır. Bu Web isteklerinin parametrelerini ayarlamak için bu alanı kullanın. Bu parametre, proxy sunucuları için kimlik bilgilerini yapılandırmak için yararlıdır. Daha fazla bilgi için bkz. [bir IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](how-to-configure-proxy-support.md). |
-| **Offlineınstallationpath** | Dizin yolu | Bu parametre dahil ise, yükleyici, yükleme için gereken IoT Edge cab ve VC çalışma zamanı MSI dosyaları için listelenen dizini kontrol eder. Dizinde bulunmayan tüm dosyalar indirilir. Her iki dosya da dizinde ise, internet bağlantısı olmadan IoT Edge yükleyebilirsiniz. Belirli bir sürümü kullanmak için bu parametreyi de kullanabilirsiniz. |
-| **Restartifgerekliyse** | yok | Bu bayrak dağıtım betiğinin, gerekirse, makineyi sormadan yeniden başlatmasını sağlar. |
+| **Konteyner Otoları** | **Windows** veya **Linux** | Kapsayıcı işletim sistemi belirtilmemişse, Windows varsayılan değerdir.<br><br>Windows kapsayıcıları için IoT Edge, yüklemede yer alan moby kapsayıcı motorunu kullanır. Linux kapsayıcıları için yüklemeyi başlatmadan önce bir kapsayıcı motoru yüklemeniz gerekir. |
+| **Proxy** | Proxy URL | Cihazınızın internete ulaşmak için bir proxy sunucusundan geçmesi gerekiyorsa bu parametreyi ekleyin. Daha fazla bilgi için, [proxy sunucusu üzerinden iletişim kurmak için bir IoT Edge aygıtını yapılandırın'](how-to-configure-proxy-support.md)a bakın. |
+| **ÇevrimdışıYüklemeYolu** | Dizin yolu | Bu parametre de dahil edilirse, yükleyici yükleme için gereken IoT Edge kabini ve VC Runtime MSI dosyaları için listelenen dizini denetler. Dizinde bulunmayan dosyalar indirilir. Her iki dosya da dizindeyse, Internet bağlantısı olmadan IoT Edge'i yükleyebilirsiniz. Bu parametreyi belirli bir sürümü kullanmak için de kullanabilirsiniz. |
+| **InvokeWebRequestParametreleri** | Parametrelerin ve değerlerin karma tablosu | Yükleme sırasında, çeşitli web istekleri yapılır. Bu web istekleri için parametreleri ayarlamak için bu alanı kullanın. Bu parametre proxy sunucuları için kimlik bilgilerini yapılandırmak için yararlıdır. Daha fazla bilgi için, [proxy sunucusu üzerinden iletişim kurmak için bir IoT Edge aygıtını yapılandırın'](how-to-configure-proxy-support.md)a bakın. |
+| **Yeniden BaşlatIfGerekli** | yok | Bu bayrak, dağıtım komut dosyasının gerekirse istenmeden makineyi yeniden başlatmasına olanak tanır. |
 
-### <a name="uninstall-iotedge"></a>Uninstall-ıotedge
+### <a name="initialize-iotedge"></a>Initialize-IoTEdge
+
+Initialize-IoTEdge komutu, IoT Edge'i aygıt bağlantı dizenizle ve işletim ayrıntılarınızla yapılandırır. Bu komut tarafından oluşturulan bilgilerin çoğu daha sonra iotedge\config.yaml dosyasında depolanır. Başlatma komutu, diğerlerinin yanı sıra bu ortak parametreleri kabul eder. Tam liste için, komutu `Get-Help Initialize-IoTEdge -full`kullanın.
 
 | Parametre | Kabul edilen değerler | Yorumlar |
 | --------- | --------------- | -------- |
-| **Zorla** | yok | Bu bayrak, önceki kaldırma girişimi başarısız olursa kaldırma işlemini zorlar.
-| **Restartifgerekliyse** | yok | Bu bayrak, gerekirse, kaldırma komut dosyasının makineyi sormadan yeniden başlatmasını sağlar. |
+| **El ile** | None | **Geçiş parametresi**. Hiçbir sağlama türü belirtilmemişse, el kitabı varsayılan değerdir.<br><br>Aygıtı el ile sağlamak için bir aygıt bağlantı dizesi sağlayacağınızı bildirir |
+| **Dps** | None | **Geçiş parametresi**. Hiçbir sağlama türü belirtilmemişse, el kitabı varsayılan değerdir.<br><br>DPS üzerinden sağlamak için bir Cihaz Sağlama Hizmeti (DPS) kapsam kimliği ve cihazınızın Kayıt Kimliği sağlayacağını beyan eder.  |
+| **AygıtBağlantısı String** | Bir IoT Hub'ında kayıtlı bir IoT Edge aygıtından tek tırnak içinde bağlantı dizesi | Manuel sağlama için **gereklidir.** Komut dosyası parametrelerinde bir bağlantı dizesi sağlamazsanız, bir bağlantı için istenir. |
+| **Scopeıd** | IoT Hub'ınızla ilişkili Aygıt Sağlama Hizmeti örneğinden bir kapsam kimliği. | DPS sağlanması için **gereklidir.** Komut dosyası parametrelerinde bir kapsam kimliği sağlamazsanız, sizden bir tane istenir. |
+| **RegistrationId** | Cihazınız tarafından oluşturulan bir kayıt kimliği | TPM veya simetrik anahtar attestation kullanıyorsanız DPS sağlanması için **gereklidir.** X.509 sertifikası kullanıyorsanız **isteğe bağlıdır.** |
+| **X509Kimlik Sertifikası** | Cihazdaki X.509 aygıt kimlik sertifikasına uri yolu. | X.509 sertifikası attestation kullanıyorsanız DPS sağlama için **gereklidir.** |
+| **X509IdentityPrivateKey** | Uri yolu, aygıttaki X.509 aygıt kimlik sertifikası anahtarına. | X.509 sertifikası attestation kullanıyorsanız DPS sağlama için **gereklidir.** |
+| **Simetrik Anahtar** | DPS kullanırken IoT Edge aygıt kimliğini sağlamak için kullanılan simetrik anahtar | Simetrik anahtar attestation kullanıyorsanız DPS sağlanması için **gereklidir.** |
+| **Konteyner Otoları** | **Windows** veya **Linux** | Kapsayıcı işletim sistemi belirtilmemişse, Windows varsayılan değerdir.<br><br>Windows kapsayıcıları için IoT Edge, yüklemede yer alan moby kapsayıcı motorunu kullanır. Linux kapsayıcıları için yüklemeyi başlatmadan önce bir kapsayıcı motoru yüklemeniz gerekir. |
+| **InvokeWebRequestParametreleri** | Parametrelerin ve değerlerin karma tablosu | Yükleme sırasında, çeşitli web istekleri yapılır. Bu web istekleri için parametreleri ayarlamak için bu alanı kullanın. Bu parametre proxy sunucuları için kimlik bilgilerini yapılandırmak için yararlıdır. Daha fazla bilgi için, [proxy sunucusu üzerinden iletişim kurmak için bir IoT Edge aygıtını yapılandırın'](how-to-configure-proxy-support.md)a bakın. |
+| **AgentImage** | IoT Edge aracı sıyrık görüntüsü URI | Varsayılan olarak, yeni bir IoT Edge yüklemesi IoT Edge aracısı görüntüsü için en son yuvarlanma etiketini kullanır. Görüntü sürümü için belirli bir etiket ayarlamak veya kendi aracı resminizi sağlamak için bu parametreyi kullanın. Daha fazla bilgi için [Bkz. IoT Edge etiketlerini anlayın.](how-to-update-iot-edge.md#understand-iot-edge-tags) |
+| **Username** | Konteyner kayıt defteri kullanıcı adı | Bu parametreyi yalnızca -AgentImage parametresini özel bir kayıt defterindeki bir kapsayıcıya ayarlarsanız kullanın. Kayıt defterine erişimi olan bir kullanıcı adı sağlayın. |
+| **Parola** | Güvenli parola dizesi | Bu parametreyi yalnızca -AgentImage parametresini özel bir kayıt defterindeki bir kapsayıcıya ayarlarsanız kullanın. Kayıt defterine erişmek için parolayı girin. |
+
+### <a name="update-iotedge"></a>Güncelleme-IoTEdge
+
+| Parametre | Kabul edilen değerler | Yorumlar |
+| --------- | --------------- | -------- |
+| **Konteyner Otoları** | **Windows** veya **Linux** | Kapsayıcı işletim sistemi belirtilmemişse, Windows varsayılan değerdir. Windows kapsayıcıları için yüklemeye bir kapsayıcı motoru dahil edilir. Linux kapsayıcıları için yüklemeyi başlatmadan önce bir kapsayıcı motoru yüklemeniz gerekir. |
+| **Proxy** | Proxy URL | Cihazınızın internete ulaşmak için bir proxy sunucusundan geçmesi gerekiyorsa bu parametreyi ekleyin. Daha fazla bilgi için, [proxy sunucusu üzerinden iletişim kurmak için bir IoT Edge aygıtını yapılandırın'](how-to-configure-proxy-support.md)a bakın. |
+| **InvokeWebRequestParametreleri** | Parametrelerin ve değerlerin karma tablosu | Yükleme sırasında, çeşitli web istekleri yapılır. Bu web istekleri için parametreleri ayarlamak için bu alanı kullanın. Bu parametre proxy sunucuları için kimlik bilgilerini yapılandırmak için yararlıdır. Daha fazla bilgi için, [proxy sunucusu üzerinden iletişim kurmak için bir IoT Edge aygıtını yapılandırın'](how-to-configure-proxy-support.md)a bakın. |
+| **ÇevrimdışıYüklemeYolu** | Dizin yolu | Bu parametre de dahil edilirse, yükleyici yükleme için gereken IoT Edge kabini ve VC Runtime MSI dosyaları için listelenen dizini denetler. Dizinde bulunmayan dosyalar indirilir. Her iki dosya da dizindeyse, Internet bağlantısı olmadan IoT Edge'i yükleyebilirsiniz. Bu parametreyi belirli bir sürümü kullanmak için de kullanabilirsiniz. |
+| **Yeniden BaşlatIfGerekli** | yok | Bu bayrak, dağıtım komut dosyasının gerekirse istenmeden makineyi yeniden başlatmasına olanak tanır. |
+
+### <a name="uninstall-iotedge"></a>Kaldır-IoTEdge
+
+| Parametre | Kabul edilen değerler | Yorumlar |
+| --------- | --------------- | -------- |
+| **Kuvvet** | yok | Bu bayrak, önceki kaldırma girişiminin başarısız olması durumunda yüklemeyi kaldırmayı zorlar.
+| **Yeniden BaşlatIfGerekli** | yok | Bu bayrak, gerekirse komut dosyasının kaldırmasını istenmeden makineyi yeniden başlatmasına olanak tanır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çalışma zamanının yüklü olduğu bir IoT Edge cihazınıza sahip olduğunuza göre, [IoT Edge modülleri dağıtabilirsiniz](how-to-deploy-modules-portal.md).
+Artık çalışma zamanı yüklü bir IoT Edge aygıtınız olduğuna göre, [IoT Edge modüllerini dağıtabilirsiniz.](how-to-deploy-modules-portal.md)
 
-Yükleme IoT Edge düzgün şekilde yüklerken [sorun yaşıyorsanız sorun giderme](troubleshoot.md) sayfasına göz atın.
+IoT Edge'in düzgün bir şekilde yüklenmesinde sorun yaşıyorsanız, [sorun giderme](troubleshoot.md) sayfasına göz atın.
 
-Mevcut bir yüklemeyi en yeni IoT Edge sürümüne güncelleştirmek için bkz. [IoT Edge güvenlik cini ve çalışma zamanını güncelleştirme](how-to-update-iot-edge.md).
+Varolan bir yüklemeyi IoT Edge'in en yeni sürümüne güncelleştirmek için [bkz.](how-to-update-iot-edge.md)

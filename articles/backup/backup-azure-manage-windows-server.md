@@ -1,146 +1,146 @@
 ---
-title: Azure kurtarma hizmetleri kasalarını ve sunucularını yönetme
-description: Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurtarma hizmetleri Kasası genel bakış panosunu nasıl kullanacağınızı öğrenin.
+title: Azure Kurtarma Hizmetleri kasalarını ve sunucularını yönetme
+description: Bu makalede, Kurtarma Hizmetleri kasalarınızı izlemek ve yönetmek için Kurtarma Hizmetleri kasasına Genel Bakış panosunu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: b57d6eff5f5dfa2163962a47eee079d7e26257b5
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136965"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131969"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
-Bu makalede, kurtarma hizmetleri kasalarınızı izlemek ve yönetmek için kurtarma hizmetleri Kasası **genel bakış** panosunun nasıl kullanılacağı açıklanmaktadır. Listeden bir kurtarma hizmetleri Kasası açtığınızda, seçili kasa için **genel bakış** panosu açılır. Pano, kasa hakkında çeşitli ayrıntılar sağlar. Şunları gösteren *Kutucuklar* vardır: kritik ve uyarı uyarılarının, devam eden ve başarısız yedekleme işlerinin durumu ve kullanılan yerel olarak yedekli depolama (LRS) ve coğrafi olarak yedekli depolama (GRS) miktarı. Azure VM 'lerini kasaya yedeklebiliyorsanız, [ **yedekleme ön denetim durumu** kutucuğunda tüm kritik veya uyarı öğeleri görüntülenir](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/). Aşağıdaki görüntü, **contoso Kasası**Için **genel bakış** panosuyla bulunur. **Yedekleme öğeleri** kutucuğu, kasaya kayıtlı dokuz öğe olduğunu gösterir.
+Bu makalede, Kurtarma Hizmetleri kasalarınızı izlemek ve yönetmek için Kurtarma Hizmetleri kasasına **Genel Bakış** panosunun nasıl kullanılacağı açıklanmaktadır. Listeden bir Kurtarma Hizmetleri kasası açtığınızda, seçili kasanın **Genel Bakış** panosu açılır. Pano kasa hakkında çeşitli ayrıntılar sağlar. Gösteren *kutucuklar* vardır: kritik ve uyarı uyarılarının durumu, devam eden ve başarısız yedekleme işleri ve kullanılan yerel yedekdepolama (LRS) ve coğrafi yedekli depolama (GRS) miktarı. Azure VM'leri kasaya yedeklerseniz, [ **Yedek Ön Denetim Durumu** döşemesi kritik veya uyarı öğelerini görüntüler.](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status) Aşağıdaki resim **Contoso-vault**için **Genel Bakış** panosudur. **Yedek Öğeler** döşemesi kasaya kayıtlı dokuz öğe olduğunu gösterir.
 
-![Kurtarma Hizmetleri Kasası panosu](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
+![kurtarma hizmetleri kasa panosu](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
-Bu makaleye yönelik önkoşullar: bir Azure aboneliği, bir kurtarma hizmetleri kasası ve kasa için yapılandırılmış en az bir yedekleme öğesi vardır.
+Bu makalenin ön koşulları şunlardır: Bir Azure aboneliği, Kurtarma Hizmetleri kasası ve kasa için yapılandırılan en az bir yedek öğe vardır.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="open-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasını açma
+## <a name="open-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası açma
 
-Uyarıları izlemek veya bir kurtarma hizmetleri kasasıyla ilgili yönetim verilerini görüntülemek için kasayı açın.
+Uyarıları izlemek veya Kurtarma Hizmetleri kasası hakkındaki yönetim verilerini görüntülemek için kasayı açın.
 
-1. Azure aboneliğinizi kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Azure aboneliğinizi kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. Portalda **tüm hizmetler**' e tıklayın.
+2. Portalda Tüm **hizmetler'i**tıklatın.
 
-   ![Kurtarma Hizmetleri kasalarının listesini açın 1. adım](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
+   ![Kurtarma Hizmetleri tonozları adım 1 açık listesi](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
-3. **Tüm hizmetler** Iletişim kutusunda **Kurtarma Hizmetleri**yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Kurtarma Hizmetleri kasaları** seçeneği göründüğünde, aboneliğinizdeki kurtarma hizmetleri kasalarının listesini açmak için tıklayın.
+3. Tüm **hizmetler** iletişim kutusunda Kurtarma **Hizmetleri**yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. Kurtarma **Hizmetleri kasaları** seçeneği göründüğünde, aboneliğinizdeki Kurtarma Hizmetleri kasalarının listesini açmak için bu seçeneği tıklatın.
 
     ![Kurtarma Hizmetleri Kasası oluşturma 1. adım](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. Kasaların listesinden, **genel bakış** panosunu açmak için bir kasaya tıklayın.
+4. Kasa listesinden, **Genel Bakış** panosunu açmak için bir kasaya tıklayın.
 
-    ![Kurtarma Hizmetleri Kasası panosu](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
+    ![kurtarma hizmetleri kasa panosu](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
-    Genel Bakış Panosu, uyarılar ve yedekleme işi verileri sağlamak için kutucukları kullanır.
+    Genel Bakış panosu, uyarıları ve yedekleme iş verilerini sağlamak için kutucukları kullanır.
 
-## <a name="monitor-backup-jobs-and-alerts"></a>Yedekleme işlerini ve uyarılarını izleme
+## <a name="monitor-backup-jobs-and-alerts"></a>Yedekleme işlerini ve uyarıları izleme
 
-Kurtarma Hizmetleri Kasası **genel bakış** panosu, Izleme ve kullanım bilgileri için kutucuk sağlar. Izleme bölümündeki kutucuklar kritik ve uyarı uyarılarını, devam eden ve başarısız işleri görüntüler. Bu iş veya uyarı için filtrelenmiş yedekleme uyarıları veya yedekleme Işleri menüsünü açmak için belirli bir uyarıya veya işe tıklayın.
+Kurtarma Hizmetleri kasasına **Genel Bakış** panosu, İzleme ve Kullanım bilgileri için kutucuklar sağlar. İzleme bölümündeki kutucuklar Kritik ve Uyarı uyarılarını görüntüler ve devam eden ve başarısız olan işlerde. Bu iş veya uyarı için filtre uygulanmış Yedekleme Uyarıları veya Yedek İşler menüsünü açmak için belirli bir uyarıyı veya işi tıklatın.
 
 ![Yedekleme panosu görevleri](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
 
-Izleme bölümünde, önceden tanımlanmış **yedekleme uyarıları** ve **yedekleme işleri** sorgularının sonuçları gösterilmektedir. Izleme kutucukları hakkında güncel bilgiler sağlar:
+İzleme bölümü önceden tanımlanmış Yedekleme **Uyarıları** ve **Yedekleme İşleri** sorgularının sonuçlarını gösterir. İzleme kutucukları aşağıdakiler hakkında güncel bilgiler sağlar:
 
-* Yedekleme işleri için kritik ve uyarı uyarıları (son 24 saat)
-* Azure VM 'lerinin ön denetim durumu. Ön denetim durumu hakkında tam bilgi için bkz. [yedekleme ön denetim durumu](#backup-pre-check-status).
-* Devam eden yedekleme işleri ve başarısız olan işler (son 24 saat içinde).
+* Yedekleme işleri için kritik ve Uyarı uyarıları (son 24 saat içinde)
+* Azure VM'leri için ön kontrol durumu. Ön kontrol durumu hakkında tam bilgi için [Yedek Ön Kontrol Durumu'na](#backup-pre-check-status)bakın.
+* Yedekleme işleri devam ediyor ve başarısız olan işler (son 24 saat içinde).
 
 Kullanım kutucukları şunları sağlar:
 
-* Kasa için yapılandırılmış yedekleme öğelerinin sayısı.
-* Kasa tarafından tüketilen Azure depolama (LRS ve GRS ile ayrılmış).
+* Kasa için yapılandırılan Yedekleme öğelerinin sayısı.
+* Kasa tarafından tüketilen Azure depolama (LRS ve GRS ile ayrılmıştır).
 
-İlişkili menüyü açmak için kutucuklara (yedekleme depolaması hariç) tıklayın. Yukarıdaki görüntüde, yedekleme uyarıları kutucuğunda üç kritik uyarı gösterilmektedir. Yedekleme uyarıları kutucuğunda kritik uyarılar satırına tıkladığınızda kritik uyarılar için filtrelenmiş yedekleme uyarıları açılır.
+İlişkili menüyü açmak için kutucukları (Yedek Depolama hariç) tıklatın. Yukarıdaki resimde, Yedekleme Uyarıları döşemesi üç Kritik uyarı gösterir. Yedekleme Uyarıları döşemesinde Kritik uyarılar satırını tıklattığınızda, Kritik uyarılar için filtre uygulanmış Yedekleme Uyarıları açılır.
 
-![Kritik uyarılar için filtrelenmiş yedekleme uyarıları menüsü](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
+![Kritik uyarılar için filtreuygulanmış yedekleme uyarıları menüsü](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-Yukarıdaki görüntüde bulunan yedekleme uyarıları menüsü, şu şekilde filtrelenmiştir: durum etkindir, önem derecesi kritik ve zaman, önceki 24 saattir.
+Yukarıdaki resimde Yedek Uyarılar menüsü şu şekilde filtrelenir: Durum Etkin, Önem Önemli ve zaman önceki 24 saattir.
 
-### <a name="backup-pre-check-status"></a>Yedekleme ön denetim durumu
+### <a name="backup-pre-check-status"></a>Yedekleme Ön Kontrol Durumu
 
-Yedekleme ön denetimleri, yedeklemeleri olumsuz etkileyebilecek sorunlar için sanal makinelerinizin yapılandırmasını denetler. Bu bilgileri, doğrudan kurtarma hizmetleri Kasası panosundan görüntüleyebilmeniz ve dosya tutarlı veya uygulamayla tutarlı yedeklemelerin başarılı olmasını sağlamak için düzeltici ölçümlere yönelik öneriler sağlayabilmeniz için toplar. Altyapı gerektirmez ve hiçbir ek ücret vermez.  
+Yedek Ön Denetimler, yedeklemeleri olumsuz etkileyebilecek sorunlar için VM'lerinizin yapılandırmalarını denetler. Bu bilgileri, doğrudan Kurtarma Hizmetleri Vault panosundan görüntüleyebilmeniz ve başarılı dosya tutarlısı veya uygulama tutarlı yedeklemeler sağlamak için düzeltici önlemler için öneriler sunabilmeniz için toplarlar. Altyapı gerektirmezler ve ek bir maliyeti yoktur.  
 
-Yedekleme ön denetimleri, Azure VM 'leriniz için zamanlanmış yedekleme işlemlerinin bir parçası olarak çalışır. Aşağıdaki durumlardan biriyle sonuçlarlar:
+Yedekleme Ön Denetimleri, Azure VM'leriniz için zamanlanmış yedekleme işlemlerinin bir parçası olarak çalıştırın. Aşağıdaki devletlerden biriyle sonuçlandırırlar:
 
-* **Başarılı**: Bu durum, sanal makinenizin yapılandırmasının başarılı yedeklemelere neden olması gerektiğini ve bir düzeltici eylem yapılması gerektiğini gösterir.
-* **Uyarı**: Bu durum, VM yapılandırmasındaki yedekleme *hatalarına yol açabilecek* bir veya daha fazla sorunu gösterir. Başarılı yedeklemeler sağlamak için *Önerilen* adımları sağlar. Örneğin, en son VM aracısının yüklü olmaması, yedeklemelerin aralıklı olarak başarısız olmasına neden olabilir. Bu durum, bir uyarı durumu sağlar.
-* **Kritik**: Bu durum, VM yapılandırmasında yedekleme hatalarına yol *açacak* ve başarılı yedeklemeler sağlamak için *gerekli* adımları sağlayan bir veya daha fazla kritik sorunu belirtir. Örneğin, bir VM 'nin NSG kurallarına neden olan bir ağ sorunu, sanal makinenin Azure Backup hizmetiyle iletişim kurmasını önlediği için yedeklemelerin başarısız olmasına neden olur. Bu durum kritik bir durum sağlar.
+* **Geçti**: Bu durum, VM yapılandırmanızın başarılı yedeklemelere yol açması gerektiğini ve düzeltici eylemin yapılması gerekmediğini gösterir.
+* **Uyarı**: Bu durum, VM yapılandırmasında yedekleme hatalarına *yol* açabilecek bir veya daha fazla sorunu gösterir. Başarılı yedeklemeler sağlamak için *önerilen* adımları sağlar. Örneğin, en son VM Aracısının yüklü olmaması yedeklemelerin zaman zaman başarısız olmasına neden olabilir. Bu durum bir uyarı durumu sağlayacaktır.
+* **Kritik**: Bu durum, VM yapılandırmasında yedekleme hatalarına yol *açacak* ve başarılı yedeklemeler sağlamak için *gerekli* adımları sağlayacak bir veya daha fazla kritik sorunları gösterir. Örneğin, bir VM'nin NSG kurallarına yapılan bir güncelleştirmeden kaynaklanan bir ağ sorunu, VM'nin Azure Yedekleme hizmetiyle iletişim kurmasını engellediği için yedeklemelerin başarısız olmasına neden olur. Bu durum kritik bir durum sağlayacaktır.
 
-Kurtarma Hizmetleri kasasında VM yedeklemeleri için yedekleme ön denetimleri tarafından bildirilen tüm sorunları çözmeye başlamak için aşağıdaki adımları izleyin.
+Kurtarma Hizmetleri Kasası'nızdaki VM yedeklemeleri için Yedekleme Ön Denetimleri tarafından bildirilen sorunları çözmeye başlamak için aşağıdaki adımları izleyin.
 
-* Kurtarma Hizmetleri Kasası panosunda **yedekleme ön denetim durumu (Azure VM 'ler)** kutucuğunu seçin.
-* Yedekleme ön denetim durumu **kritik** veya **Uyarı**olan herhangi bir VM 'yi seçin. Bu eylem **VM ayrıntıları** bölmesini açar.
-* Yapılandırma sorunu açıklaması ve düzeltme adımlarını göstermek için bölmenin üst kısmındaki bölme bildirimini seçin.
+* Kurtarma Hizmetleri Kasası panosunda **Yedek Ön Kontrol Durumu (Azure VM' ler)** döşemesini seçin.
+* **Kritik** veya **Uyarı**yedekleme ön kontrol durumuna sahip herhangi bir VM seçin. Bu eylem **VM ayrıntıları** bölmesini açar.
+* Yapılandırma sorunu açıklamasını ve düzeltici adımları ortaya çıkarmak için bölmenin üst kısmındaki bölme bildirimini seçin.
 
 ## <a name="manage-backup-alerts"></a>Yedekleme uyarılarını yönetme
 
-Yedekleme uyarıları menüsüne erişmek için, kurtarma hizmetleri Kasası menüsünde **yedekleme uyarıları**' na tıklayın.
+Yedekleme Uyarıları menüsüne erişmek için, Kurtarma Hizmetleri kasası menüsünde **Yedek Uyarıları'nı**tıklatın.
 
 ![Yedekleme uyarıları](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-Yedekleme uyarıları raporu, kasadaki uyarıları listeler.
+Yedekleme Uyarıları raporu kasa için uyarıları listeler.
 
 ![Yedekleme uyarıları](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 ### <a name="alerts"></a>Uyarılar
 
-Yedekleme uyarıları listesi, filtrelenmiş uyarılarla ilgili seçili bilgileri görüntüler. Yedekleme uyarıları menüsünde, kritik veya uyarı uyarıları için filtre uygulayabilirsiniz.
+Yedek Uyarılar listesi, filtre uygulanmış uyarılar için seçili bilgileri görüntüler. Yedekleme Uyarıları menüsünde Kritik veya Uyarı uyarılarına filtre uygulayabilirsiniz.
 
-| Uyarı Düzeyi | Uyarı üreten olaylar |
+| Uyarı Düzeyi | Uyarı oluşturan olaylar |
 | ----------- | ----------- |
-| Kritik | Yedekleme işleri başarısız olduğunda, kurtarma işleri başarısız olduğunda ve bir sunucuda korumayı durdurduğunuzda ancak verileri koruduğunuz zaman kritik uyarılar alırsınız.|
-| Uyarı | Şu durumlarda uyarı uyarısı alırsınız: yedekleme işleri uyarılarla tamamlandı, örneğin, bozulma sorunları nedeniyle 100 'den az dosya yedeklenmemişse veya 1.000.000 ' den fazla dosya başarıyla yedekleniyorsa). |
-| Bilgilendirici | Şu anda, hiçbir bilgilendirme uyarısı kullanımda değil. |
+| Kritik | Kritik uyarıları alırsınız: Yedekleme işleri başarısız oldu, kurtarma işleri başarısız oldu ve sunucudaki korumayı durdurduğunuzda, ancak verileri korudunuz.|
+| Uyarı | Uyarı uyarıları alırsınız: Örneğin, yolsuzluk sorunları nedeniyle 100'den az dosya yedeklenmediğinde veya 1.000.000'den fazla dosya başarıyla yedeklendiğinde uyarılarla birlikte yedekleme işleri alırsınız). |
+| Bilgilendirici | şu anda, hiçbir bilgilendirme uyarıları kullanımdadır. |
 
 ### <a name="viewing-alert-details"></a>Uyarı ayrıntılarını görüntüleme
 
-Yedekleme uyarıları raporu her uyarı hakkındaki sekiz ayrıntıyı izler. Rapordaki ayrıntıları düzenlemek için **sütun Seç** düğmesini kullanın.
+Yedekleme Uyarıları raporu, her bir uyarıyla ilgili sekiz ayrıntıyı izler. Rapordaki ayrıntıları sıralamak için **sütunları seç** düğmesini kullanın.
 
 ![Yedekleme uyarıları](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-Varsayılan olarak, **en son oluşum süresi**dışında tüm ayrıntılar raporda görüntülenir.
+Varsayılan olarak, Son **Oluşum Süresi**dışındaki tüm ayrıntılar raporda görünür.
 
 * Uyarı
-* Yedekleme öğesi
-* Korumalı sunucu
+* Yedek Öğe
+* Korumalı Sunucu
 * Severity
 * Süre
-* Oluşturma zamanı
+* Yaratılış Zamanı
 * Durum
-* En son oluşum zamanı
+* En Son Oluşum Zamanı
 
 ### <a name="change-the-details-in-alerts-report"></a>Uyarılar raporundaki ayrıntıları değiştirme
 
-1. Rapor bilgilerini değiştirmek için, **yedekleme uyarıları** menüsünde **Sütunları Seç**' e tıklayın.
+1. Rapor bilgilerini değiştirmek için **Yedekleme Uyarıları** menüsünde **sütunları seç'i**tıklatın.
 
    ![Yedekleme uyarıları](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
-   **Sütunları seçin** menüsü açılır.
+   **Sütunları Seç** menüsü açılır.
 
-2. **Sütunları seçin** menüsünde, raporda görünmesini istediğiniz ayrıntıları seçin.
+2. **Sütunları Seç** menüsünde, raporda görünmesini istediğiniz ayrıntıları seçin.
 
-    ![Sütunları seçin menüsü](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
+    ![Sütunlar menüsünü seçin](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
 
-3. Değişikliklerinizi kaydetmek için **bitti** ' ye tıklayın ve sütunları Seç menüsünü kapatın.
+3. Değişikliklerinizi kaydetmek ve sütunları seç menüsünü kapatmak için **Bitti'yi** tıklatın.
 
-   Değişiklik yaparsanız ancak değişiklikleri tutmak istemiyorsanız, seçili son yapılandırmaya dönmek için **Sıfırla** ' ya tıklayın.
+   Değişiklik yapar, ancak değişiklikleri tutmak istemezseniz, seçili yapılandırmayı son kaydedilen yapılandırmaya döndürmek için **Sıfırla'yı** tıklatın.
 
-### <a name="change-the-filter-in-alerts-report"></a>Uyarılar raporundaki filtreyi değiştirme
+### <a name="change-the-filter-in-alerts-report"></a>Uyarılar raporundafiltreyi değiştirme
 
-Uyarıların önem derecesini, durumunu, başlangıç saatini ve bitiş saatini değiştirmek için **filtre** menüsünü kullanın.
+Uyarıların Önem, Durum, Başlangıç saati ve Bitiş saatini değiştirmek için **Filtre** menüsünü kullanın.
 
 > [!NOTE]
-> Yedekleme uyarıları filtresinin düzenlenebilmesi, kasa genel bakış panosundaki kritik veya uyarı uyarılarını değiştirmez.
+> Yedekleme Uyarıları filtresinin düzenlenmesi, kasa genel bakış panosundaki Kritik veya Uyarı uyarılarını değiştirmez.
 >  
 
-1. Yedekleme uyarıları filtresini değiştirmek için, yedekleme uyarıları menüsünde **filtre**' ye tıklayın.
+1. Yedekleme Uyarıları filtresini değiştirmek için, Yedekleme Uyarıları menüsünde **Filtre'yi**tıklatın.
 
    ![Filtre menüsünü seçin](./media/backup-azure-manage-windows-server/alerts-menu-choose-filter.png)
 
@@ -148,101 +148,101 @@ Uyarıların önem derecesini, durumunu, başlangıç saatini ve bitiş saatini 
 
    ![Filtre menüsünü seçin](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
 
-2. Önem derecesini, durumu, başlangıç saatini veya bitiş saatini düzenleyin ve yaptığınız değişiklikleri kaydetmek için **bitti** ' ye tıklayın.
+2. Önem, Durum, Başlangıç zamanı veya Bitiş saatini edin ve değişikliklerinizi kaydetmek için **Bitti'yi** tıklatın.
 
 ## <a name="configuring-notifications-for-alerts"></a>Uyarılar için bildirimleri yapılandırma
 
-Uyarı veya kritik bir uyarı oluştuğunda e-posta oluşturmak için bildirimleri yapılandırın. Her saat veya belirli bir uyarı oluştuğunda e-posta uyarıları gönderebilirsiniz.
+Uyarı veya Kritik uyarı oluştuğunda bildirimleri e-posta oluşturacak şekilde yapılandırın. Her saat veya belirli bir uyarı oluştuğunda e-posta uyarıları gönderebilirsiniz.
 
-   ![Uyarıları filtrele](./media/backup-azure-manage-windows-server/configure-notification.png)
+   ![Filtre uyarıları](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-Varsayılan olarak, e-posta bildirimleri **Açık**. E-posta bildirimlerini durdurmak için **Kapat** ' a tıklayın.
+Varsayılan olarak, E-posta bildirimleri **Açıktır.** E-posta bildirimlerini durdurmak için **Kapat'ı** tıklatın.
 
-**Bildirim** denetiminde, gruplandırma istemiyorsanız veya uyarı oluşturabilen birçok öğe yoksa **Uyarı başına** ' yı seçin. Her uyarı tek bir bildirimde (varsayılan ayar) ve bir çözümleme e-postası anında gönderilir.
+**Bildirim** denetiminde, gruplandırma istemiyorsanız veya uyarı oluşturabilecek çok sayıda öğeniz yoksa **Uyarı Başına'yı** seçin. Her uyarı bir bildirimle (varsayılan ayar) sonuçlanır ve hemen bir çözüm e-postası gönderilir.
 
-**Saatlik Özet**' i seçerseniz, son bir saat içinde oluşturulan çözümlenmemiş uyarıları açıklayan alıcılara bir e-posta gönderilir. Saatin sonunda bir çözüm e-postası gönderilir.
+**Saatlik Özet'i**seçerseniz, alıcılara son bir saat içinde oluşturulan çözülmemiş uyarıları açıklayan bir e-posta gönderilir. Bir çözüm e-postası saatin sonunda gönderilir.
 
-E-posta oluşturmak için kullanılan uyarı önem derecesini (kritik veya uyarı) seçin. Şu anda hiç bilgi uyarısı yok.
+E-posta oluşturmak için kullanılan uyarı önem derecesini (Kritik veya Uyarı) seçin. Şu anda bilgi uyarısı yok.
 
 ## <a name="manage-backup-items"></a>Yedekleme öğelerini yönetme
 
-Kurtarma Hizmetleri Kasası birçok yedekleme verisi türünü tutar. Neleri yedekleyebileceğiniz hakkında [daha fazla bilgi edinin](backup-overview.md#what-can-i-back-up) . Çeşitli sunucuları, bilgisayarları, veritabanlarını ve iş yüklerini yönetmek için, kasanın içeriğini görüntülemek için **yedekleme öğeleri** kutucuğuna tıklayın.
+Kurtarma Hizmetleri kasası birçok yedekleme verisi türüne sahiptir. Neleri yedekleyebilirsiniz hakkında [daha fazla bilgi edinin.](backup-overview.md#what-can-i-back-up) Çeşitli sunucuları, bilgisayarları, veritabanlarını ve iş yüklerini yönetmek için kasanın içeriğini görüntülemek için **Yedek Öğeler** döşemesini tıklatın.
 
-![Yedekleme öğeleri kutucuğu](./media/backup-azure-manage-windows-server/backup-items.png)
+![Yedek öğeler döşemesi](./media/backup-azure-manage-windows-server/backup-items.png)
 
-Yedekleme yönetim türüne göre düzenlenen yedekleme öğelerinin listesi açılır.
+Yedekleme Yönetimi Türü tarafından düzenlenen Yedekleme Öğeleri listesi açılır.
 
-![Yedekleme öğelerinin listesi](./media/backup-azure-manage-windows-server/list-backup-items.png)
+![Yedekleme öğeleri listesi](./media/backup-azure-manage-windows-server/list-backup-items.png)
 
-Belirli bir korumalı örnek türünü araştırmak için yedekleme yönetimi türü sütunundaki öğeye tıklayın. Örneğin, yukarıdaki görüntüde, bu kasada korunan iki Azure sanal makinesi vardır. **Azure sanal makinesi**' ne tıklayarak bu kasadaki korumalı sanal makinelerin listesini açar.
+Belirli bir korumalı örnek türünü keşfetmek için Yedekleme Yönetimi Türü sütunundaki öğeyi tıklatın. Örneğin, yukarıdaki resimde, bu kasada korunan iki Azure sanal makinesi vardır. Azure **Sanal Makine'yi**tıklattığınızda, bu kasada korumalı sanal makinelerin listesini açar.
 
 ![Yedekleme türü listesi](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-Sanal makinelerin listesi yardımcı verilere sahiptir: ilişkili kaynak grubu, önceki [Yedekleme öncesi denetim](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/), son yedekleme durumu ve en son geri yükleme noktası tarihi. Son sütundaki üç nokta, ortak görevleri tetiklemek için menüyü açar. Sütunlarda belirtilen faydalı veriler her yedekleme türü için farklıdır.
+Sanal makinelerin listesi yararlı verilere sahiptir: ilişkili Kaynak Grubu, önceki [Yedekleme Ön Denetimi,](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)Son Yedekleme Durumu ve en son Geri Yükleme Noktası'nın tarihi. Elipsler, son sütunda, ortak görevleri tetiklemek için menüyü açar. Sütunlarda sağlanan yararlı veriler, her yedekleme türü için farklıdır.
 
 ![Yedekleme türü listesi](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
 ## <a name="manage-backup-jobs"></a>Yedekleme işlerini yönetme
 
-Kasa panosundaki **yedekleme işleri** kutucuğu, son 24 saat içinde sürmekte olan veya başarısız olan işlerin sayısını gösterir. Kutucuk, yedekleme Işleri menüsüne bir göz atmak sağlar.
+Kasa panosundaki **Yedekleme İşleri** döşemesi, son 24 saat içinde devam eden veya başarısız olan iş sayısını gösterir. Döşeme, Yedekleme İşleri menüsüne bir bakış sağlar.
 
-![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+![Ayarlardan öğeleri yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
-İşlerle ilgili ek ayrıntıları görmek için **devam** ' a tıklayın veya bu durum Için filtrelenmiş yedekleme işleri **menüsünü açamadı.**
+İşler le ilgili ek ayrıntıları görmek için Devam **Eden** veya Bu durum için filtre uygulanmış Yedek İşler menüsünü açmak için **Başarısız'ı** tıklatın.
 
-### <a name="backup-jobs-menu"></a>Yedekleme işleri menüsü
+### <a name="backup-jobs-menu"></a>Yedek işler menüsü
 
-**Yedekleme işleri** menüsünde öğe türü, Işlem, durum, başlangıç zamanı ve süre hakkında bilgiler görüntülenir.  
+**Yedek İşler** menüsü, Madde türü, Çalışma, Durum, Başlangıç Saati ve Süre hakkındaki bilgileri görüntüler.  
 
-Yedekleme Işleri menüsünü açmak için kasanın ana menüsünde **yedekleme işleri**' ne tıklayın.
+Yedek İşler menüsünü açmak için kasanın ana menüsünde **Yedek İşler'i**tıklatın.
 
-![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+![Ayarlardan öğeleri yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
 Yedekleme işlerinin listesi açılır.
 
-![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+![Ayarlardan öğeleri yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
-Yedekleme Işleri menüsü, son 24 saat için tüm yedekleme türlerinde tüm işlemlerin durumunu gösterir. Filtreleri değiştirmek için **filtreyi** kullanın. Filtreler aşağıdaki bölümlerde açıklanmıştır.
+Yedek İşler menüsü, son 24 saat için tüm yedekleme türlerinde tüm işlemlerin durumunu gösterir. Filtreleri değiştirmek için **Filtre'yi** kullanın. Filtreler aşağıdaki bölümlerde açıklanmıştır.
 
 Filtreleri değiştirmek için:
 
-1. Kasa yedekleme Işleri menüsünde **filtre**' ye tıklayın.
+1. Kasa Yedek İşler menüsünde **Filtre'yi**tıklatın.
 
-   ![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+   ![Ayarlardan öğeleri yedekleme](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
     Filtre menüsü açılır.
 
-   ![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+   ![Ayarlardan öğeleri yedekleme](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
-2. Filtre ayarlarını seçin ve **bitti**' ye tıklayın. Filtrelenmiş liste, yeni ayarlara göre yenilenir.
+2. Filtre ayarlarını seçin ve **Bitti'yi**tıklatın. Filtre uygulanmış liste yeni ayarlara göre yenilenir.
 
-#### <a name="item-type"></a>Öğe türü
+#### <a name="item-type"></a>Madde türü
 
-Öğe türü, korunan örneğin yedekleme yönetim türüdür. Dört tür vardır; aşağıdaki listeye bakın. Tüm öğe türlerini veya bir öğe türünü görüntüleyebilirsiniz. İki veya üç öğe türü seçemezsiniz. Kullanılabilir öğe türleri şunlardır:
+Madde türü, korumalı örneğin yedekleme yönetim türüdür. Dört türü vardır; aşağıdaki listeye bakın. Tüm madde türlerini veya bir öğe türünü görüntüleyebilirsiniz. İki veya üç öğe türü seçemezsiniz. Kullanılabilir Madde türleri şunlardır:
 
-* Tüm öğe türleri
-* Azure sanal makinesi
+* Tüm madde türleri
+* Azure sanal makine
 * Dosyalar ve klasörler
 * Azure Storage
 * Azure iş yükü
 
 #### <a name="operation"></a>İşlem
 
-Bir işlemi veya tüm işlemleri görüntüleyebilirsiniz. İki veya üç işlem seçemezsiniz. Kullanılabilir Işlemler şunlardır:
+Bir işlemi veya tüm işlemleri görüntüleyebilirsiniz. İki veya üç işlem seçemezsiniz. Kullanılabilir İşlemler şunlardır:
 
 * Tüm İşlemler
-* Kaydolma
+* Kaydettir
 * Yedeklemeyi yapılandırma
 * Backup
 * Geri Yükleme
-* Yedeklemeyi devre dışı bırak
+* Yedeklemeyi devre dışı
 * Yedekleme verilerini silme
 
 #### <a name="status"></a>Durum
 
-Tüm durumu veya birini görüntüleyebilirsiniz. İki veya üç durumu seçemezsiniz. Kullanılabilir durumlar şunlardır:
+Tüm Durum veya bir görüntüleyebilirsiniz. İki veya üç durum seçemezsiniz. Kullanılabilir durumlar şunlardır:
 
-* Tüm durum
+* Tüm Durum
 * Tamamlandı
 * Devam ediyor
 * Başarısız
@@ -251,40 +251,40 @@ Tüm durumu veya birini görüntüleyebilirsiniz. İki veya üç durumu seçemez
 
 #### <a name="start-time"></a>Başlangıç saati
 
-Sorgunun başladığı gün ve saat. Varsayılan değer 24 saattir.
+Sorgunun başladığı gün ve saat. Varsayılan değer 24 saatlik bir dönemdir.
 
 #### <a name="end-time"></a>Bitiş saati
 
-Sorgunun bittiği gün ve saat.
+Sorgunun sona erdince gün ve saat.
 
-### <a name="export-jobs"></a>İşleri dışarı aktar
+### <a name="export-jobs"></a>Dışa aktarma işleri
 
-Tüm Işler menü bilgilerini içeren bir elektronik tablo oluşturmak için **Işleri dışarı aktar** ' ı kullanın. Elektronik tabloda, tüm işlerin özetini içeren bir sayfa ve her iş için ayrı sayfalar bulunur.
+Tüm İşler menüsü bilgilerini içeren bir elektronik tablo oluşturmak için **Dışa** Aktarma işlerini kullanın. Elektronik tablo, tüm işlerin bir özetini ve her iş için tek tek sayfaları tutan bir sayfaya sahiptir.
 
-İş bilgilerini bir elektronik tabloya aktarmak için **Işleri dışarı aktar**' a tıklayın. Hizmet, kasanın ve tarihin adını kullanarak bir elektronik tablo oluşturur, ancak adı değiştirebilirsiniz.
+İş bilgilerini elektronik tabloya aktarmak **için, işleri dışa**aktarma'yı tıklatın. Hizmet kasa ve tarih adını kullanarak bir elektronik tablo oluşturur, ancak adı değiştirebilirsiniz.
 
-## <a name="monitor-backup-usage"></a>Yedekleme kullanımını izle
+## <a name="monitor-backup-usage"></a>Yedekleme kullanımını izleyin
 
-Panodaki yedekleme depolama kutucuğu, Azure 'da tüketilen depolamayı gösterir. İçin depolama kullanımı sağlanır:
+Panodaki Yedek Depolama döşemesi, Azure'da tüketilen depolama alanını gösterir. Depolama alanı kullanımı için sağlanır:
 
-* Kasayla ilişkili bulut LRS depolama kullanımı
-* Kasayla ilişkili bulut GRS depolama alanı kullanımı
+* Kasayla ilişkili Bulut LRS depolama alanı kullanımı
+* Kasa ile ilişkili Cloud GRS depolama alanı kullanımı
 
-## <a name="troubleshooting-monitoring-issues"></a>İzleme sorunlarını giderme
+## <a name="troubleshooting-monitoring-issues"></a>Sorun giderme izleme sorunları
 
-**Sorun:** Azure Backup aracısındaki işler ve/veya uyarılar portalda görünmez.
+**Sorun:** Azure Yedekleme aracısının işleri ve/veya uyarıları portalda görünmez.
 
-**Sorun giderme adımları:** ```OBRecoveryServicesManagementAgent```işlem, Azure Backup hizmetine iş ve uyarı verilerini gönderir. Bazen bu işlem, takılmış veya kapalı hale gelebilir.
+**Sorun giderme adımları:** İşlem, ```OBRecoveryServicesManagementAgent```işi gönderir ve verileri Azure Yedekleme hizmetine uyarır. Bazen bu işlem sıkışmış veya kapatma olabilir.
 
-1. İşlemin çalışmadığını doğrulamak için, **Görev Yöneticisi**'ni açın ve ```OBRecoveryServicesManagementAgent``` çalışıp çalışmadığını denetleyin.
+1. İşlemin çalışmadığını doğrulamak için **Görev Yöneticisi'ni**açın ve denetim ```OBRecoveryServicesManagementAgent``` çalışıyor.
 
-2. İşlem çalışmıyorsa, **Denetim Masası**'nı açın ve hizmetler listesine gözatamazsınız. **Microsoft Azure Kurtarma Hizmetleri yönetim aracısını**başlatın veya yeniden başlatın.
+2. İşlem çalışmıyorsa, Denetim **Masası'nı**açın ve hizmet listesine göz atın. Microsoft Azure **Kurtarma Hizmetleri Yönetim**Aracısı'nı başlatın veya yeniden başlatın.
 
-    Daha fazla bilgi için şu adreste günlüklere gözatamazsınız:<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` örneğin:<br/>
+    Daha fazla bilgi için günlüklere şu şekilde göz atın:<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`Örneğin:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Windows Server veya Windows Istemcisini Azure 'dan geri yükleme](backup-azure-restore-windows-server.md)
-* Azure Backup hakkında daha fazla bilgi edinmek için bkz. [Azure Backup genel bakış](backup-introduction-to-azure-backup.md)
+* [Azure'dan Windows Server veya Windows İstemci Geri Yükleme](backup-azure-restore-windows-server.md)
+* Azure Yedekleme hakkında daha fazla bilgi edinmek için Azure [Yedekleme genel bakış](backup-introduction-to-azure-backup.md)

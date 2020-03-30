@@ -1,35 +1,35 @@
 ---
-title: Azure Red Hat Openshıft 3,11 ile özel küme oluşturma | Microsoft Docs
-description: Azure Red Hat OpenShift 3,11 ile özel bir küme oluşturma
+title: Azure Red Hat OpenShift 3.11 | Microsoft Dokümanlar
+description: Azure Red Hat OpenShift 3.11 ile özel küme oluşturma
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/02/2020
-keywords: Aro, OpenShift, özel küme, Red Hat
+keywords: aro, openshift, özel küme, kırmızı şapka
 ms.openlocfilehash: b34b5d622527742447847102526eba9ee6ca220d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399425"
 ---
-# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Azure Red Hat OpenShift 3,11 ile özel bir küme oluşturma
+# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Azure Red Hat OpenShift 3.11 ile özel küme oluşturma
 
 > [!IMPORTANT]
-> Azure Red Hat OpenShift (ARO) özel kümeleri Şu anda yalnızca Doğu ABD 2 özel önizlemede kullanılabilir. Özel Önizleme kabulü yalnızca davet tarafından yapılır. Lütfen bu özelliği etkinleştirmeyi denemeden önce aboneliğinizi kaydettiğinizden emin olun.
+> Azure Red Hat OpenShift (ARO) özel kümeleri şu anda yalnızca Doğu ABD 2'de özel önizlemede kullanılabilir. Özel önizleme kabul sadece davetiye ile. Lütfen bu özelliği etkinleştirmeye çalışmadan önce aboneliğinizi kaydettiğinizden emin olun.
 
 Özel kümeler aşağıdaki avantajları sağlar:
 
-* Özel kümeler, genel bir IP adresindeki küme denetim düzlemi bileşenlerini (API sunucuları gibi) kullanıma sunmaz.
-* Özel bir kümenin sanal ağı, müşteriler tarafından yapılandırılabilir ve ExpressRoute ortamları dahil diğer sanal ağlarla eşlemeye izin vermek için ağ ayarlamanıza olanak sağlar. Ayrıca, iç hizmetlerle tümleştirilecek şekilde sanal ağda özel DNS yapılandırabilirsiniz.
+* Özel kümeler, genel bir IP adresinde küme denetim düzlemi bileşenlerini (API sunucuları gibi) açığa çıkarmaz.
+* Özel bir kümenin sanal ağı müşteriler tarafından yapılandırılabilir ve ExpressRoute ortamları da dahil olmak üzere diğer sanal ağlarla eşleme olanağı sağlayacak ağ kurmanıza olanak tanır. Ayrıca, sanal ağdaki özel DNS'yi dahili hizmetlerle tümleştirmek için yapılandırabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 > [!NOTE]
-> Bu özellik, ARO HTTP API 'sinin sürüm 2019-10-27-önizleme sürümünü gerektirir. Henüz Azure CLı 'da desteklenmemektedir.
+> Bu özellik, ARO HTTP API sürümü 2019-10-27-önizleme gerektirir. Azure CLI'de henüz desteklenmez.
 
-Aşağıdaki yapılandırma kod parçacığında yer alan alanlar yenidir ve küme yapılandırmanıza eklenmelidir. `managementSubnetCidr` küme sanal ağı dahilinde olmalıdır ve Azure tarafından kümeyi yönetmek için kullanılır.
+Aşağıdaki yapılandırma snippet alanları yenidir ve küme yapılandırmanıza dahil edilmelidir. `managementSubnetCidr`küme sanal ağ içinde olmalıdır ve kümeyi yönetmek için Azure tarafından kullanılır.
 
 ```json
 properties:
@@ -40,22 +40,22 @@ properties:
      privateApiServer: true
 ```
 
-Özel bir küme aşağıda belirtilen örnek betikler kullanılarak dağıtılabilir. Küme dağıtıldıktan sonra, `cluster get` komutunu yürütün ve OpenShift API sunucusunun özel IP adresini öğrenmek için `properties.FQDN` özelliğini görüntüleyin.
+Özel bir küme, aşağıda sağlanan örnek komut dosyaları kullanılarak dağıtılabilir. Küme dağıtıldıktan sonra, openshift API sunucusunun özel IP adresini belirlemek için komutu çalıştırın `cluster get` ve `properties.FQDN` özelliği görüntüleyin.
 
-Küme sanal ağı, değişiklik yapabilmeniz için izinlerle oluşturulur. Daha sonra, gereksinimlerinize göre gereken sanal ağa (ExpressRoute, VPN, sanal ağ eşlemesi) erişmek için ağ ayarlayabilirsiniz.
+Küme sanal ağ, değiştirebilmeniz için izinlerle oluşturulmuş olur. Daha sonra ihtiyaçlarınız için gerekli sanal ağa (ExpressRoute, VPN, sanal ağ izleme) erişmek için ağ ayarlayabilirsiniz.
 
-Küme sanal ağındaki DNS kullanır ' ı değiştirirseniz, VM 'lerin yeniden hazırlanabilmesi için `properties.RefreshCluster` özelliği `true` olarak ayarlanmış şekilde kümede bir güncelleştirme yapmanız gerekir. Bu güncelleştirme, yeni nameservers 'ın seçmesine izin verir.
+Küme sanal ağındaki DNS ad sunucularını değiştirirseniz, VM'lerin yeniden görüntülenebilmeleri `true` için kümeüzerinde `properties.RefreshCluster` özellik ayarlanmış bir güncelleştirme düzenlemeniz gerekir. Bu güncelleştirme, yeni ad sunucularını almalarına olanak sağlar.
 
-## <a name="sample-configuration-scripts"></a>Örnek yapılandırma betikleri
+## <a name="sample-configuration-scripts"></a>Örnek yapılandırma komut dosyaları
 
-Özel kümenizi ayarlamak ve dağıtmak için bu bölümdeki örnek betikleri kullanın.
+Özel kümenizi kurmak ve dağıtmak için bu bölümdeki örnek komut dosyalarını kullanın.
 
 ### <a name="environment"></a>Ortam
 
-Aşağıdaki ortam değişkenlerini kendi değerlerinizi kullanarak girin.
+Kendi değerlerinizi kullanarak aşağıdaki ortam değişkenlerini doldurun.
 
 > [!NOTE]
-> Bu, şu anda özel kümeler için desteklenen konum olduğundan, konumun `eastus2` olarak ayarlanması gerekir.
+> Bu, şu anda özel kümeler için desteklenen tek konum olduğundan, konum ayarlanmalıdır. `eastus2`
 
 ``` bash
 export CLUSTER_NAME=
@@ -68,9 +68,9 @@ export CLIENT_ID=
 export SECRET=
 ```
 
-### <a name="private-clusterjson"></a>Private-Cluster. JSON
+### <a name="private-clusterjson"></a>özel cluster.json
 
-Yukarıda tanımlanan ortam değişkenlerini kullanarak, özel küme etkin bir örnek küme yapılandırması aşağıda verilmiştir.
+Yukarıda tanımlanan ortam değişkenlerini kullanarak, özel küme etkin leştirilmiş bir örnek küme yapılandırması aşağıda veda edebilirsiniz.
 
 ```json
 {
@@ -135,7 +135,7 @@ Yukarıda tanımlanan ortam değişkenlerini kullanarak, özel küme etkin bir �
 
 ## <a name="deploy-a-private-cluster"></a>Özel küme dağıtma
 
-Özel kümenizi yukarıdaki örnek betiklerle yapılandırdıktan sonra, özel kümenizi dağıtmak için aşağıdaki komutu çalıştırın.
+Özel kümenizi yukarıdaki örnek komut dosyalarıyla yapılandırdıktan sonra, özel kümenizi dağıtmak için aşağıdaki komutu çalıştırın.
 
 ``` bash
 az group create --name $CLUSTER_NAME --location $LOCATION
@@ -147,4 +147,4 @@ cat private-cluster.json | envsubst | curl -v -X PUT \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OpenShift konsoluna erişme hakkında bilgi edinmek için bkz. [Web Konsolu](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html)Kılavuzu.
+OpenShift konsoluna nasıl erişilacağı hakkında bilgi edinmek için [Web Konsolu Walkthrough'a](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html)bakın.

@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188833"
 ---
-İstemci işletim sistemine bağlı olarak cihaza uzaktan bağlanmak için yordamlar farklıdır.
+İstemcinin işletim sistemine bağlı olarak, aygıta uzaktan bağlanma yordamları farklıdır.
 
-### <a name="remotely-connect-from-a-windows-client"></a>Bir Windows istemcisinde uzaktan bağlanma
+### <a name="remotely-connect-from-a-windows-client"></a>Windows istemcisinden uzaktan bağlanma
 
-Başlamadan önce Windows İstemcisi Windows PowerShell 5.0 veya üzeri çalıştırıldığından emin olun.
+Başlamadan önce, Windows istemcinizin Windows PowerShell 5.0 veya daha sonra çalıştırdığından emin olun.
 
 Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izleyin.
 
-1. Bir Windows PowerShell oturumu yönetici olarak çalıştırın.
-2. Windows Uzaktan Yönetim hizmeti, istemci üzerinde çalıştığından emin olun. Komut istemine şunları yazın:
+1. Bir Windows PowerShell oturumunu yönetici olarak çalıştırın.
+2. Windows Uzaktan Yönetim hizmetinin istemcinizde olduğundan emin olun. Komut istemine şunları yazın:
 
     `winrm quickconfig`
 
-3. Bir değişken için cihazı IP adresi atayın.
+3. Aygıt IP adresine bir değişken atayın.
 
-    $ip = "< device_ip >"
+    $ip = "<device_ip>"
 
-    Değiştirin `<device_ip>` cihazınızın IP adresine sahip.
+    Cihazınızın IP adresiyle değiştirin. `<device_ip>`
 
-4. Cihazınızın IP adresini istemcinin güvenilir konak listesine eklemek için aşağıdaki komutu yazın:
+4. Cihazınızın IP adresini istemcinin güvenilen ana bilgisayarlar listesine eklemek için aşağıdaki komutu yazın:
 
     `Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force`
 
-5. Cihazda bir Windows PowerShell oturumu başlatın:
+5. Aygıtta bir Windows PowerShell oturumu başlatın:
 
     `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
 
-6. İstendiğinde parolayı belirtin. Yerel web kullanıcı Arabirimi ile imzalamak için kullanılan aynı şifreyi kullanın. Varsayılan yerel web kullanıcı Arabirimi parola *Password1*. Uzak PowerShell kullanarak cihaza başarıyla bağlandığınızda, şu örnek çıktıyı görürsünüz:  
+6. İstendiğinde parolayı sağlayın. Yerel web Web UI'da oturum açmaiçin kullanılan parolayı kullanın. Varsayılan yerel web UI parolası *Password1'dir.* Uzaktan PowerShell kullanarak aygıta başarıyla bağlandığınızda, aşağıdaki örnek çıktıyı görürsünüz:  
 
     ```
     Windows PowerShell
@@ -56,25 +56,25 @@ Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izley
 
 ### <a name="remotely-connect-from-a-linux-client"></a>Bir Linux istemcisinden uzaktan bağlanma
 
-Bağlanmak için kullandığınız Linux istemcide:
+Bağlanmak için kullanacağınız Linux istemcisi üzerinde:
 
-- [Linux için en son PowerShell Core yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) SSH uzaktan iletişim özelliğini Al github'dan. 
-- [Yalnızca yükleme `gss-ntlmssp` NTLM modülü paketinden](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu istemciler için aşağıdaki komutu kullanın:
+- SSH remoting özelliğini almak [için GitHub'dan Linux için en son PowerShell Core'u yükleyin.](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) 
+- [Paketi yalnızca `gss-ntlmssp` NTLM modülünden yükleyin.](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md) Ubuntu istemcileri için aşağıdaki komutu kullanın:
     - `sudo apt-get install gss-ntlmssp`
 
-Daha fazla bilgi için Git [SSH üzerinden PowerShell uzaktan iletişimi](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
+Daha fazla bilgi için [PowerShell'in SSH üzerinden remoting'e](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)gidin.
 
-Uzaktan bir NFS istemcisinden bağlanmak için aşağıdaki adımları izleyin.
+Bir NFS istemcisinden uzaktan bağlanmak için aşağıdaki adımları izleyin.
 
-1. PowerShell oturumu açmak için şunu yazın:
+1. PowerShell oturumunu açmak için şunları yazın:
 
     `sudo pwsh`
  
-2. Uzak istemci kullanarak bağlanmak için aşağıdakileri yazın:
+2. Uzak istemciyi kullanarak bağlanmak için şunları yazın:
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    İstendiğinde, cihazınızın içine imzalamak için kullanılan parolayı belirtin.
+    İstendiğinde, cihazınızda oturum açmada kullanılan parolayı sağlayın.
  
 > [!NOTE]
-> Bu yordam, Mac işletim sisteminde çalışmaz.
+> Bu yordam Mac OS üzerinde çalışmıyor.

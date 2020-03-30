@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188324"
 ---
-Azure'da bir kullanılabilirlik grubu dinleyicisi yapılandırmanın iki yolu olduğunu bilmeniz önemlidir. Yolu, dinleyici oluştururken kullandığınız Azure load balancer'ın türleri farklı. Aşağıdaki tabloda farklar açıklanmaktadır:
+Azure'da kullanılabilirlik grubu dinleyicisini yapılandırmanın iki yolu olduğunu fark etmek önemlidir. Dinleyiciyi oluştururken kullandığınız Azure yük bakiyesi türünde yollar farklıdır. Aşağıdaki tablofarklılıkları açıklar:
 
-| Yük Dengeleyici türü | Uygulama | Şu durumlarda kullanın: |
+| Yük dengeleyici türü | Uygulama | Şu durumlarda kullanın: |
 | --- | --- | --- |
-| **Dış** |Kullanan *genel sanal IP adresi* sanal makineleri (VM'ler) barındıran bulut hizmetinin. |Internet'ten de dahil olmak üzere sanal ağın dışında dinleyicisinden erişmeniz gerekir. |
-| **İç** |Kullanan bir *iç yük dengeleyici* dinleyici için özel bir adresi. |Aynı sanal ağda yalnızca bir dinleyici erişebilirsiniz. Bu erişim, siteden siteye VPN karma senaryolar içerir. |
+| **Dış** |Sanal makineleri (VM) barındıran bulut hizmetinin *genel sanal IP adresini* kullanır. |Dinleyiciye Internet de dahil olmak üzere sanal ağın dışından erişmeniz gerekir. |
+| **Iç** |Dinleyici için özel bir adresi olan bir *dahili yük dengeleyicisi* kullanır. |Dinleyiciye yalnızca aynı sanal ağ içinden erişebilirsiniz. Bu erişim, karma senaryolarda siteden siteye VPN içerir. |
 
 > [!IMPORTANT]
-> Bulut hizmetinin genel VIP (Dış yük dengeleyici) istemci olarak uzun kullanan bir dinleyici için dinleyici ve veritabanları aynı Azure bölgesinde, çıkış ücreti alınmayacaktır. Aksi takdirde dinleyicisi döndürülen verileri, çıkış olarak kabul edilir ve normal veri aktarımı ücretlerine göre ücretlendirilir. 
+> İstemci, dinleyici ve veritabanları aynı Azure bölgesinde olduğu sürece bulut hizmetinin genel VIP'sini (dış yük bakiyesi) kullanan bir dinleyici için çıkış ücreti ödemezsiniz. Aksi takdirde, dinleyici aracılığıyla döndürülen veriler çıkış olarak kabul edilir ve normal veri aktarım hızlarında ücretlendirilir. 
 > 
 > 
 
-Bir ILB yalnızca sanal ağların bölgesel bir kapsamla yapılandırılabilir. Bir benzeşim grubu için yapılandırılmış mevcut sanal ağlarınızı, ILB kullanamazsınız. Daha fazla bilgi için [iç yük dengeleyiciye genel bakış](../articles/load-balancer/load-balancer-internal-overview.md).
+ILB yalnızca bölgesel kapsama sahip sanal ağlarda yapılandırılabilir. Yakınlık grubu için yapılandırılan varolan sanal ağlar ILB kullanamaz. Daha fazla bilgi için [İç yük dengeleyicisi genel bakış](../articles/load-balancer/load-balancer-internal-overview.md)bakın.
 

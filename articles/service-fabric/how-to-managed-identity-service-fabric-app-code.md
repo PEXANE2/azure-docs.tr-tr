@@ -1,47 +1,47 @@
 ---
-title: Yönetilen kimliği bir uygulamayla kullanma
-description: Azure hizmetlerine erişmek için Azure Service Fabric uygulama kodunda yönetilen kimlikler kullanma. Bu özellik genel önizleme aşamasındadır.
+title: Bir uygulamayla yönetilen kimliği kullanma
+description: Azure Hizmetleri'ne erişmek için Azure Hizmet Dokusu uygulama kodunda yönetilen kimlikler nasıl kullanılır? Bu özellik genel önizleme aşamasındadır.
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610327"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinden yararlanma (Önizleme)
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinasıl kullanılır (önizleme)
 
-Service Fabric uygulamalar, Azure Active Directory tabanlı kimlik doğrulamasını destekleyen diğer Azure kaynaklarına erişmek için yönetilen kimliklerden yararlanabilir. Bir uygulama, kimliğini temsil eden, sistem tarafından atanan veya Kullanıcı tarafından atanan bir [erişim belirteci](../active-directory/develop/developer-glossary.md#access-token) alabilir ve kendisini, [korunan kaynak sunucu](../active-directory/develop/developer-glossary.md#resource-server)olarak da bilinen başka bir hizmete doğrulamak için bir ' taşıyıcı ' belirteci olarak kullanabilir. Belirteç Service Fabric uygulamasına atanan kimliği temsil eder ve yalnızca bu kimliği paylaşan Azure kaynaklarına (SF uygulamaları dahil) verilmeyecektir. Yönetilen kimliklerin ayrıntılı bir açıklaması ve sistem tarafından atanan ve Kullanıcı tarafından atanan kimlikler arasındaki ayrım için [yönetilen kimliğe genel bakış](../active-directory/managed-identities-azure-resources/overview.md) belgelerine bakın. Bu makalede, yönetilen kimlik özellikli bir Service Fabric uygulamasına [istemci uygulaması](../active-directory/develop/developer-glossary.md#client-application) olarak başvuracağız.
-
-> [!IMPORTANT]
-> Yönetilen bir kimlik, kaynağı içeren abonelikle ilişkili olan ilgili Azure AD kiracısında bir Azure kaynağı ile hizmet sorumlusu arasındaki ilişkiyi temsil eder. Bu nedenle, Service Fabric bağlamında yönetilen kimlikler yalnızca Azure kaynakları olarak dağıtılan uygulamalar için desteklenir. 
+Service Fabric uygulamaları, Azure Etkin Dizin tabanlı kimlik doğrulamasını destekleyen diğer Azure kaynaklarına erişmek için yönetilen kimliklerden yararlanabilir. Bir uygulama, sistem tarafından atanmış veya kullanıcı tarafından atanmış olabilecek kimliğini temsil eden bir [erişim belirteci](../active-directory/develop/developer-glossary.md#access-token) alabilir ve kendisini başka bir hizmete doğrulamak için 'taşıyıcı' belirteci olarak kullanabilir - [korumalı kaynak sunucusu](../active-directory/develop/developer-glossary.md#resource-server)olarak da bilinir. Belirteç, Hizmet Dokusu uygulamasına atanan kimliği temsil eder ve yalnızca bu kimliği paylaşan Azure kaynaklarına (SF uygulamaları dahil) verilir. Yönetilen kimliklerin ayrıntılı bir açıklamasının yanı sıra sistem tarafından atanan ve kullanıcı tarafından atanan kimlikler arasındaki ayrım için [yönetilen kimliğe genel bakış](../active-directory/managed-identities-azure-resources/overview.md) belgelerine bakın. Bu makale boyunca yönetilen kimlik etkinleştirilmiş Hizmet Dokusu uygulamasını [istemci uygulaması](../active-directory/develop/developer-glossary.md#client-application) olarak adlandıracağız.
 
 > [!IMPORTANT]
-> Service Fabric uygulamasının yönetilen kimliğini kullanmadan önce, istemci uygulamasına korunan kaynağa erişim verilmesi gerekir. Lütfen desteği denetlemek için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) listesine ve ardından ilgili hizmetin ilgilendiğiniz kaynaklara yönelik bir kimlik erişimi sağlamak için ilgili hizmetin belgelerine bakın. 
+> Yönetilen kimlik, kaynağı içeren abonelikle ilişkili ilgili Azure AD kiracısında bir Azure kaynağı ile hizmet sorumlusu arasındaki ilişkiyi temsil eder. Bu nedenle, Hizmet Dokusu bağlamında yönetilen kimlikler yalnızca Azure kaynağı olarak dağıtılan uygulamalar için desteklenir. 
 
-## <a name="acquiring-an-access-token-using-rest-api"></a>REST API kullanarak erişim belirteci edinme
-Yönetilen kimlik için etkinleştirilmiş kümeler ' de Service Fabric çalışma zamanı, uygulamaların erişim belirteçlerini almak için kullanabileceği bir localhost uç noktasını kullanıma sunar. Uç nokta, kümenin her düğümünde kullanılabilir ve bu düğümdeki tüm varlıklar için erişilebilir. Yetkili çağıranlar, bu uç noktayı çağırarak ve bir kimlik doğrulama kodu sunarak erişim belirteçleri elde edebilir. kod, her ayrı hizmet kodu paketi etkinleştirmesi için Service Fabric çalışma zamanı tarafından oluşturulur ve bu hizmet kodu paketini barındıran işlemin ömrüne bağlanır.
+> [!IMPORTANT]
+> Hizmet Kumaşı uygulamasının yönetilen kimliğini kullanmadan önce, istemci uygulamasına korumalı kaynağa erişim izni verilmelidir. Destek için denetim yapmak için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) listesine ve ilgi çekici kaynaklara kimlik erişimi sağlamak için belirli adımlar için ilgili hizmetin belgelerine bakın. 
 
-Özellikle, yönetilen kimlik özellikli Service Fabric hizmetinin ortamı aşağıdaki değişkenlerle birlikte sunulacaktır:
-- ' MSI_ENDPOINT ': localhost uç noktası, yol, API sürümü ve bu hizmetin yönetilen kimliğine karşılık gelen parametrelerle birlikte tamamlanır
-- ' MSI_SECRET ': bir donuk dize olan ve geçerli düğümdeki hizmeti benzersiz olarak temsil eden bir kimlik doğrulama kodu
+## <a name="acquiring-an-access-token-using-rest-api"></a>REST API'yi kullanarak erişim belirteci edinme
+Yönetilen kimlik için etkinleştirilen kümelerde, Hizmet Dokusu çalışma süresi, uygulamaların erişim belirteçleri elde etmek için kullanabileceği yerel bir ana bilgisayar bitiş noktasını ortaya çıkarır. Bitiş noktası kümenin her düğümünde kullanılabilir ve bu düğümdeki tüm varlıklar tarafından erişilebilir. Yetkili arayanlar bu bitiş noktasını arayarak ve bir kimlik doğrulama kodu sunarak erişim belirteçleri edinebilirler; kod, her farklı hizmet kodu paketi etkinleştirme için Hizmet Dokusu tarafından oluşturulur ve bu hizmet kodu paketini barındıran işlemin ömrüne bağlıdır.
+
+Özellikle, yönetilen kimlik etkin Hizmet Kumaşı hizmetinin ortamı aşağıdaki değişkenlerle tohumlanacaktır:
+- 'MSI_ENDPOINT': yol, API sürümü ve bu hizmetin yönetilen kimliğine karşılık gelen parametrelerle birlikte localhost bitiş noktası
+- 'MSI_SECRET': opak bir dize olan ve geçerli düğümdeki hizmeti benzersiz bir şekilde temsil eden bir kimlik doğrulama kodu
 
 > [!NOTE]
-> ' MSI_ENDPOINT ' ve ' MSI_SECRET ' adları, yönetilen kimliklerin ("Yönetilen Hizmet Kimliği") önceki atamasını ifade eder ve artık kullanım dışıdır. Adlar Ayrıca, yönetilen kimlikleri destekleyen diğer Azure hizmetleri tarafından kullanılan eşdeğer ortam değişkeni adlarıyla de tutarlıdır.
+> 'MSI_ENDPOINT' ve 'MSI_SECRET' adları, yönetilen kimliklerin önceki atamasını ("Yönetilen Hizmet Kimliği") ifade eder ve şimdi de amortismana uyrabilir. Adlar, yönetilen kimlikleri destekleyen diğer Azure hizmetleri tarafından kullanılan eşdeğer ortam değişken adları ile de tutarlıdır.
 
 > [!IMPORTANT]
-> Uygulama kodu, ' MSI_SECRET ' ortam değişkeninin değerini hassas veriler olarak kabul etmelidir; bunların günlüğe kaydedilmeyeceğini veya başka bir şekilde dağıtımını kaldırmamalıdır. Kimlik doğrulama kodu, yerel düğümün dışında bir değere sahip değildir veya hizmeti barındıran işlem sonlandıktan sonra, Service Fabric hizmetin kimliğini temsil eder ve bu nedenle erişim belirtecinin kendisi ile aynı önlemler ile değerlendirilmelidir.
+> Uygulama kodu 'MSI_SECRET' ortam değişkeninin değerini hassas veriler olarak dikkate almalıdır - günlüğe kaydedilmemeli veya başka bir şekilde dağıtılmamalıdır. Kimlik doğrulama kodunun yerel düğüm dışında veya hizmeti barındıran işlem sona erdikten sonra bir değeri yoktur, ancak Hizmet Kumaşı hizmetinin kimliğini temsil eder ve bu nedenle erişim belirteciyle aynı önlemlerle tedavi edilmelidir.
 
-İstemci, bir belirteç almak için aşağıdaki adımları gerçekleştirir:
-- API sürümü ve belirteç için gereken kaynak (hedef kitle) ile yönetilen kimlik uç noktası (MSI_ENDPOINT değeri) birleştirerek bir URI oluşturur
-- Belirtilen URI için bir GET http isteği oluşturur
-- kimlik doğrulama kodunu (MSI_SECRET değeri) isteğe bir başlık olarak ekler
+Bir belirteç elde etmek için istemci aşağıdaki adımları gerçekleştirir:
+- yönetilen kimlik bitiş noktasını (MSI_ENDPOINT değeri) API sürümü ve belirteç için gerekli olan kaynak (hedef kitle) ile bir araya getirmek tarafından bir URI oluşturur
+- belirtilen URI için get http isteği oluşturur
+- istek için üstbilgi olarak kimlik doğrulama kodunu (MSI_SECRET değeri) ekler
 - isteği gönderir
 
-Başarılı bir yanıt, elde edilen erişim belirtecini temsil eden bir JSON yükünün yanı sıra bunu tanımlayan meta verileri içerir. Başarısız bir yanıt hatanın açıklamasını da içerecektir. Hata işleme hakkında daha fazla bilgi için aşağıya bakın.
+Başarılı bir yanıt, ortaya çıkan erişim belirteci temsil eden bir JSON yükü yanı sıra onu açıklayan meta veri içerir. Başarısız bir yanıt da hata bir açıklama içerecektir. Hata işleme ile ilgili ek ayrıntılar için aşağıya bakın.
 
-Erişim belirteçleri çeşitli düzeylerde (düğüm, küme, kaynak sağlayıcısı hizmeti) Service Fabric önbelleğe alınır, bu nedenle başarılı bir yanıt, belirtecin Kullanıcı uygulamasının isteğine yanıt olarak doğrudan verildiğini göstermez. Belirteçler yaşam sürelerinden daha az olacak şekilde önbelleğe alınır ve bu nedenle bir uygulamanın geçerli bir belirteç almasına garanti edilir. Uygulama kodunun kendi sahip olduğu tüm erişim belirteçlerini önbelleğe alması önerilir; önbelleğe alma anahtarı, hedef kitleyi (bir türevi) içermelidir. 
+Erişim belirteçleri Çeşitli düzeylerde (düğüm, küme, kaynak sağlayıcı hizmeti) Service Fabric tarafından önbelleğe alınacaktır, bu nedenle başarılı bir yanıt, belirteci kullanıcı uygulamasının isteğine yanıt olarak doğrudan verildiği anlamına gelmez. Belirteçler kullanım ömürlerinden daha kısa bir süre için önbelleğe alınacaktır ve böylece geçerli bir jeton alacağı garanti edilir. Uygulama kodunun kendisine edindığı herhangi bir erişim belirteçlerini önbelleğe alması önerilir; önbelleğe alma anahtarı izleyiciyi içermelidir (bir türetme). 
 
 
 Örnek istek:
@@ -52,11 +52,11 @@ burada:
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | MSI_ENDPOINT ortam değişkeni aracılığıyla sunulan Service Fabric uygulamalar için yönetilen kimlik uç noktası. |
-| `api-version` | Yönetilen kimlik belirteci hizmetinin API sürümünü belirten bir sorgu dizesi parametresi; Şu anda kabul edilen tek değer `2019-07-01-preview`ve değişikliğe tabidir. |
-| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Bu, verilen belirtecin `aud` (hedef kitle) talebi olarak yansıtılacaktır. Bu örnek, bir uygulama KIMLIĞI URI 'SI https olan Azure Key Vault erişmek için bir belirteç ister:\//keyvault.azure.com/. |
-| `Secret` | Çağıranın kimliğini doğrulamak için Service Fabric Hizmetleri için Service Fabric yönetilen kimlik belirteci hizmeti için gerekli olan bir HTTP istek üst bilgisi alanı. Bu değer, MSI_SECRET ortam değişkeni aracılığıyla SF çalışma zamanı tarafından sağlanır. |
+| `GET` | Son noktadan veri almak istediğinizi belirten HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
+| `http://localhost:2377/metadata/identity/oauth2/token` | MSI_ENDPOINT ortam değişkeni üzerinden sağlanan Service Fabric uygulamaları için yönetilen kimlik bitiş noktası. |
+| `api-version` | Yönetilen Kimlik Belirteç Hizmeti'nin API sürümünü belirten bir sorgu dize parametresi; şu anda kabul `2019-07-01-preview`edilen tek değerdir ve değiştirilebilir. |
+| `resource` | Hedef kaynağın App ID URI'sini gösteren bir sorgu dize parametresi. Bu, verilen belirteci `aud` (hedef kitle) iddiası olarak yansıtılacaktır. Bu örnek, App ID URI https olan Azure Key Vault'a erişmek için bir belirteç talep ediyor:\//keyvault.azure.com/. |
+| `Secret` | Arayan kişinin kimliğini doğrulamak için Hizmet Kumaşı Yönetilen Kimlik Belirteci Hizmeti tarafından gerekli olan BIR HTTP istek üstbilgi alanı. Bu değer, sf çalışma süresi tarafından MSI_SECRET ortam değişkeni üzerinden sağlanır. |
 
 
 Örnek yanıt:
@@ -74,14 +74,14 @@ burada:
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| `token_type` | Belirtecin türü; Bu durumda, bu belirtecin sunucu (' taşıyıcı ') belirtecin amaçlanan konusu olduğu anlamına gelen bir "taşıyıcı" erişim belirteci. |
-| `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç, `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
-| `expires_on` | Erişim belirtecinin süre sonu zaman damgası; "1970-01-01T0:0: 0Z UTC" değerinden saniye sayısı olarak gösterilir ve belirtecin `exp` talebine karşılık gelir. Bu durumda, belirtecin süresi 2019 ' de dolar-08-08T06:10:11 + 00:00 (RFC 3339 ' de)|
-| `resource` | İsteğin `resource` sorgu dizesi parametresi aracılığıyla belirtilen erişim belirtecinin verildiği kaynak; belirtecin ' AUD ' talebine karşılık gelir. |
+| `token_type` | Belirteç türü; Bu durumda, bu belirteç sunucu ('taşıyıcı') anlamına gelir bir "Taşıyıcı" erişim belirteci, belirteci amaçlanan konudur. |
+| `access_token` | İstenen erişim jetonu. Güvenli bir REST API'yi ararken, belirteç `Authorization` istek üstbilgi alanına "taşıyıcı" belirteci olarak katıştırılmış ve API'nin arayanın kimliğini doğrulaması sağlar. | 
+| `expires_on` | Erişim belirteci sona erdirme zaman damgası; "1970-01-01T0:0:0Z UTC" saniye sayısı olarak temsil edilir ve belirteç `exp` iddiasına karşılık gelir. Bu durumda belirteç 2019-08-08T06:10:11+00:00 tarihinde sona erer (RFC 3339' da)|
+| `resource` | Erişim belirteci verilen kaynak, isteğin `resource` sorgu dize parametresi ile belirtilir; belirteci 'aud' iddiasına karşılık gelir. |
 
 
-## <a name="acquiring-an-access-token-using-c"></a>Kullanarak erişim belirteci almaC#
-Yukarıdaki ' de yer C#alır:
+## <a name="acquiring-an-access-token-using-c"></a>C kullanarak bir erişim belirteci edinme #
+Yukarıdaki olur, C#:
 
 ```C#
 namespace Azure.ServiceFabric.ManagedIdentity.Samples
@@ -161,8 +161,8 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
     } // class AccessTokenAcquirer
 } // namespace Azure.ServiceFabric.ManagedIdentity.Samples
 ```
-## <a name="accessing-key-vault-from-a-service-fabric-application-using-managed-identity"></a>Yönetilen kimlik kullanarak Service Fabric uygulamadan Key Vault erişme
-Bu örnek, yönetilen kimlik kullanılarak Key Vault depolanan bir gizli dizi ile ilgili olarak bir gizli dizi erişimini göstermek için yukarıdaki ' a
+## <a name="accessing-key-vault-from-a-service-fabric-application-using-managed-identity"></a>Yönetilen Kimlik Kullanarak Servis Kumaşı uygulamasından Anahtar Kasasına Erişim
+Bu örnek, yönetilen kimlik kullanarak Bir Key Vault'ta depolanan bir gizliye erişimi göstermek için yukarıdaki örnek üzerine inşa edin.
 
 ```C#
         /// <summary>
@@ -310,59 +310,59 @@ Bu örnek, yönetilen kimlik kullanılarak Key Vault depolanan bir gizli dizi il
 ```
 
 ## <a name="error-handling"></a>Hata işleme
-HTTP yanıt üst bilgisinin ' durum kodu ' alanı, isteğin başarı durumunu belirtir; ' 200 OK ' durumu başarıyı gösterir ve yanıt yukarıda açıklanan erişim belirtecini içerecektir. Olası hata yanıtlarının kısa bir listesi aşağıda verilmiştir.
+HTTP yanıt üstbilgisinin 'durum kodu' alanı isteğin başarı durumunu gösterir; '200 Tamam' durumu başarıyı gösterir ve yanıt yukarıda açıklandığı gibi erişim belirteci içerir. Aşağıda olası hata yanıtlarının kısa bir numaralandırma vardır.
 
-| Durum Kodu | Hata nedeni | Nasıl Idare edilecek |
+| Durum Kodu | Hata Nedeni | Nasıl Başa Çıkılabilen |
 | ----------- | ------------ | ------------- |
-| 404 bulunamadı. | Bilinmeyen kimlik doğrulama kodu veya uygulamaya yönetilen bir kimlik atanmadı. | Uygulama kurulumunu veya belirteç alma kodunu yeniden yapın. |
-| 429 çok fazla istek. |  AAD veya SF tarafından uygulanan kısıtlama sınırına ulaşıldı. | Üstel geri alma ile yeniden deneyin. Aşağıdaki rehbere bakın. |
-| istekte 4xx hatası. | İstek parametrelerinden biri veya daha fazlası hatalıydı. | Yeniden denemeyin.  Daha fazla bilgi için hata ayrıntılarını inceleyin.  4 xx hata tasarım zamanı hatalardır.|
-| hizmetten 5xx hatası. | Yönetilen kimlik alt sistemi veya Azure Active Directory geçici bir hata döndürdü. | Kısa bir süre sonra yeniden denemek güvenlidir. Yeniden denemeden sonra bir azaltma koşuluna (429) ulaşırsınız.|
+| 404 Bulunamadı. | Bilinmeyen kimlik doğrulama kodu veya uygulama yönetilen bir kimlik atanmadı. | Uygulama kurulumveya belirteç edinme kodunu düzeltin. |
+| 429 Çok fazla istek. |  AAD veya SF tarafından uygulanan gaz sınırına ulaşıldı. | Üstel Backoff ile yeniden deneyin. Aşağıdaki kılavuza bakın. |
+| Istekte 4xx Hata. | İstek parametrelerinden biri veya birkaçı yanlıştı. | Tekrar denemeyin.  Daha fazla bilgi için hata ayrıntılarını inceleyin.  4xx hataları tasarım zamanı hatalarıdır.|
+| Hizmetten 5xx Hata. | Yönetilen kimlik alt sistemi veya Azure Etkin Dizin geçici bir hata döndürdü. | Kısa bir süre sonra yeniden denemek güvenlidir. Yeniden denedikten sonra bir daralma durumuna (429) çarpabilirsiniz.|
 
-Bir hata oluşursa, karşılık gelen HTTP yanıt gövdesi hata ayrıntılarına sahip bir JSON nesnesi içerir:
+Bir hata oluşursa, ilgili HTTP yanıt gövdesi hata ayrıntıları içeren bir JSON nesnesi içerir:
 
 | Öğe | Açıklama |
 | ------- | ----------- |
 | kod | Hata kodu. |
-| correlationId | Hata ayıklama için kullanılabilen bir bağıntı KIMLIĞI. |
-| message | Hatanın ayrıntılı açıklaması. **Hata açıklamaları herhangi bir zamanda değişebilir. Hata iletisinin kendisine bağlı değildir.**|
+| correlationId | Hata ayıklama için kullanılabilecek bir korelasyon kimliği. |
+| message | Hata nın ayrıntılı açıklaması. **Hata açıklamaları herhangi bir zamanda değişebilir. Hata iletisinin kendisine bağlı değil.**|
 
 Örnek hata:
 ```json
 {"error":{"correlationId":"7f30f4d3-0f3a-41e0-a417-527f21b3848f","code":"SecretHeaderNotFound","message":"Secret is not found in the request headers."}}
 ```
 
-Yönetilen kimliklere özgü tipik Service Fabric hatalarının listesi aşağıda verilmiştir:
+Yönetilen kimliklere özgü tipik Hizmet Dokusu hatalarının bir listesi aşağıda verilmiştir:
 
-| Kodlayın | İleti | Açıklama | 
+| Kod | İleti | Açıklama | 
 | ----------- | ----- | ----------------- |
-| SecretHeaderNotFound | Gizli dizi, istek üst bilgilerinde bulunamadı. | İstek ile kimlik doğrulama kodu sağlanmadı. | 
-| Managedıdentitynotfound | Belirtilen uygulama konağı için yönetilen kimlik bulunamadı. | Uygulamanın kimliği yok veya kimlik doğrulama kodu bilinmiyor. |
-| ArgumentNullOrEmpty | ' Resource ' parametresi null veya boş dize olmamalıdır. | İstekte kaynak (hedef kitle) sağlanmadı. |
-| InvalidApiVersion | ' ' Api sürümü desteklenmiyor. Desteklenen sürüm ' 2019-07-01-Preview '. | İstek URI 'sinde belirtilen eksik veya desteklenmeyen API sürümü. |
-| Dahili sunucu hatası | Bir hata oluşmuştur. | Yönetilen kimlik alt sisteminde, muhtemelen Service Fabric yığının dışında bir hatayla karşılaşıldı. Büyük olasılıkla kaynak için geçersiz bir değer belirtilmiş olabilir (sonda '/' denetimi için denetim) | 
+| SecretHeaderNotFound | Gizli istek üstbilgisinde bulunmaz. | Kimlik doğrulama kodu istekle birlikte sağlanmadı. | 
+| Yönetilen IdentityNotFound | Belirtilen uygulama ana bilgisayarı için yönetilen kimlik bulunamadı. | Uygulamanın kimliği yoktur veya kimlik doğrulama kodu bilinmiyor. |
+| ArgumentNullOrEmpty | Parametre 'kaynak' null veya boş dize olmamalıdır. | Kaynak (hedef kitle) istekte sağlanmadı. |
+| GeçersizApiVersion | Api sürümü '' desteklenmez. Desteklenen sürüm '2019-07-01-önizleme'. | İstek URI'de belirtilen eksik veya desteklenmeyen API sürümü. |
+| InternalServerError | Bir hata oluşmuştur. | Yönetilen kimlik alt sisteminde, büyük olasılıkla Hizmet Kumaşı yığınının dışında bir hatayla karşılaşıldı. Büyük olasılıkla kaynak için belirtilen yanlış bir değerdir ('/'??) | 
 
-## <a name="retry-guidance"></a>Yeniden deneme Kılavuzu 
+## <a name="retry-guidance"></a>Kılavuzu yeniden deneyin 
 
-Genellikle yeniden denenebilir hata kodu 429 ' dir (çok fazla Istek); iç sunucu hataları/5xx hata kodları yeniden denenebilir, ancak nedeni kalıcı olabilir. 
+Genellikle yeniden deneyilebilir tek hata kodu 429 (Çok Fazla İstek); iç sunucu hataları/5xx hata kodları yeniden denilebilir, ancak nedeni kalıcı olabilir. 
 
-Azaltma sınırları, yönetilen kimlik alt sistemine yapılan çağrı sayısı için geçerlidir-özellikle ' yukarı akış ' bağımlılıkları (yönetilen kimlik Azure hizmeti veya güvenli belirteç hizmeti). Service Fabric, işlem hattındaki çeşitli düzeylerde bulunan belirteçleri önbelleğe alır, ancak ilgili bileşenlerin dağıtılmış doğası verildiğinde, çağıran tutarsız azaltma yanıtları (örn. aynı kimlik için bir belirteç istenirken, farklı bir düğümde değil, bir uygulamanın bir düğümünde veya örneğinde olmamak üzere). Daraltma koşulu ayarlandığında, aynı uygulamadan gelen sonraki istekler, koşul temizlenene kadar HTTP durum kodu 429 (çok fazla Istek) ile başarısız olabilir.  
+Azaltma sınırları, yönetilen kimlik alt sistemine yapılan arama ların sayısına (özellikle 'yukarı akış' bağımlılıkları (Yönetilen Kimlik Azure hizmeti veya güvenli belirteç hizmeti) için geçerlidir. Service Fabric, söz konusu bileşenlerin çeşitli düzeylerde belirteçleri önbelleğe alır, ancak ilgili bileşenlerin dağıtılmış yapısı göz önüne alındığında, arayan tutarsız azaltma yanıtları yaşayabilir (yani bir uygulamanın bir düğüm/örneğinde daraltılabilir, ancak aynı kimlik için bir belirteç talep ederken farklı bir düğümüzerinde değil.) Azaltma koşulu ayarlandığında, koşul temizlenene kadar aynı uygulamadan sonraki istekler HTTP durum kodu 429 (Çok Fazla İstek) ile başarısız olabilir.  
 
-Azaltma nedeniyle başarısız olan isteklerin üstel geri alma ile yeniden denenmesi önerilir, örneğin: 
+Azaltma nedeniyle başarısız olan isteklerin üstel bir geri leme ile yeniden denenmesi önerilir: 
 
 | Çağrı dizini | 429 alma eylemi | 
 | --- | --- | 
 | 1 | 1 saniye bekleyin ve yeniden deneyin |
-| 2 | 2 saniye bekleyip yeniden deneyin |
+| 2 | 2 saniye bekleyin ve yeniden deneyin |
 | 3 | 4 saniye bekleyin ve yeniden deneyin |
 | 4 | 8 saniye bekleyin ve yeniden deneyin |
 | 4 | 8 saniye bekleyin ve yeniden deneyin |
-| 5 | 16 saniye bekleyip yeniden deneyin |
+| 5 | 16 saniye bekleyin ve yeniden deneyin |
 
-## <a name="resource-ids-for-azure-services"></a>Azure hizmetleri için kaynak kimlikleri
-Bkz. Azure AD [kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-msi.md) destekleyen Azure Hizmetleri, Azure AD 'yi destekleyen kaynakların listesi ve bunların Ilgili kaynak kimlikleri.
+## <a name="resource-ids-for-azure-services"></a>Azure hizmetleri için kaynak it'leri
+Azure AD'yi ve ilgili kaynak kimliklerini destekleyen kaynakların listesi için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetlerine](../active-directory/managed-identities-azure-resources/services-support-msi.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Sistem tarafından atanan yönetilen kimlik ile Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [Kullanıcı tarafından atanan yönetilen kimlik ile bir Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Azure Service Fabric uygulamasına diğer Azure kaynaklarına erişim izni verme](./how-to-grant-access-other-resources.md)
+* [Sistem tarafından atanmış yönetilen bir kimliğe sahip bir Azure Hizmet Kumaşı uygulamasını dağıtma](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [Kullanıcı tarafından atanan yönetilen bir kimliğe sahip bir Azure Hizmet Kumaşı uygulaması dağıtma](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [Azure Hizmet Kumaşı uygulamasına diğer Azure kaynaklarına erişim hakkı verme](./how-to-grant-access-other-resources.md)

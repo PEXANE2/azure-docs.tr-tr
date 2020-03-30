@@ -1,6 +1,6 @@
 ---
 title: Gelişmiş Tehdit Koruması
-description: Gelişmiş tehdit koruması, Azure SQL veritabanı 'nda olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
+description: Gelişmiş Tehdit Koruması, Azure SQL Veritabanı'ndaki olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,33 +12,33 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 473c58fa5097c4f4e318543c59ad1cf3a3899594
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 17ca8cbb7a55e9c0d44af099f4884f71b1cd457a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194096"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124766"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Veritabanı için Gelişmiş Tehdit Koruması
 
-[Azure SQL veritabanı](sql-database-technical-overview.md) ve [Azure SYNAPSE Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için Gelişmiş tehdit koruması, veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar.
+Azure SQL [Veritabanı](sql-database-technical-overview.md) ve [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) için Gelişmiş Tehdit Koruması, veritabanlarına erişmek veya veritabanlarından yararlanmak için alışılmadık ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar.
 
-Gelişmiş tehdit koruması, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](sql-database-advanced-data-security.md) (ADS) sunumunun bir parçasıdır. Gelişmiş tehdit korumasına, merkezi SQL ADS portalı aracılığıyla erişilebilir ve yönetilebilir.
+Gelişmiş Tehdit Koruması, gelişmiş SQL güvenlik yetenekleri için birleşik bir paket olan [Gelişmiş veri güvenliği](sql-database-advanced-data-security.md) (ADS) teklifinin bir parçasıdır. Gelişmiş Tehdit Koruması'na merkezi SQL ADS portalı yoluyla erişilebilir ve yönetilebilir.
 
 > [!NOTE]
-> Bu konu, Azure SQL Server ve Azure SQL Server 'da oluşturulan hem SQL veritabanı hem de Azure SYNAPSE için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE 'a başvurulduğunda kullanılır.
+> Bu konu Azure SQL sunucusu ve Azure SQL sunucusunda oluşturulan SQL Veritabanı ve Azure Synapse için geçerlidir. Basitlik için, SQL Veritabanı hem SQL Veritabanı hem de Azure Synapse'ye atıfta bulunularak kullanılır.
 
-## <a name="what-is-advanced-threat-protection"></a>Gelişmiş tehdit koruması nedir?
+## <a name="what-is-advanced-threat-protection"></a>Gelişmiş Tehdit Koruması Nedir
 
- Gelişmiş tehdit koruması, müşterilerin anormal etkinliklerde güvenlik uyarıları sunarak meydana gelebilecek olası tehditleri algılamasına ve yanıt vermesine olanak tanıyan yeni bir güvenlik katmanı sağlar. Kullanıcılar şüpheli veritabanı etkinlikleri, olası güvenlik açıkları ve SQL ekleme saldırılarına ve anormal veritabanı erişimi ve sorgu desenleri üzerine bir uyarı alırlar. Gelişmiş tehdit koruması uyarıları [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleştirir, bu da şüpheli etkinliklerin ayrıntılarını içerir ve tehdidi araştırmak ve hafifletmek için eyleme önerilir. Gelişmiş tehdit koruması, bir güvenlik uzmanı veya gelişmiş güvenlik izleme sistemlerini yönetmek zorunda kalmadan, olası tehditleri veritabanına yönelik olarak ele almanızı kolaylaştırır.
+ Gelişmiş Tehdit Koruması, müşterilerin anormal etkinliklerde güvenlik uyarıları sağlayarak olası tehditleri algılamalarını ve bunlara yanıt vermelerini sağlayan yeni bir güvenlik katmanı sağlar. Kullanıcılar şüpheli veritabanı etkinlikleri, olası güvenlik açıkları ve SQL enjeksiyon saldırılarının yanı sıra anormal veritabanı erişimi ve sorgu desenleri hakkında bir uyarı alır. Gelişmiş Tehdit Koruması, uyarıları, şüpheli etkinliğin ayrıntılarını içeren ve tehdidin nasıl araştırılabildiğini ve azaltılaması konusunda eylem öneren [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile bütünleştirir. Gelişmiş Tehdit Koruması, bir güvenlik uzmanı olmaya veya gelişmiş güvenlik izleme sistemlerini yönetmeye gerek kalmadan veritabanına yönelik olası tehditleri ele almamayı kolaylaştırır.
 
-Tam araştırma deneyimi için, Azure Depolama hesabınızdaki bir denetim günlüğüne veritabanı olayları yazan [SQL veritabanı denetimini](sql-database-auditing.md)etkinleştirmeniz önerilir.  
+Tam bir araştırma deneyimi için, azure depolama hesabınızdaki bir denetim günlüğüne veritabanı olayları yazan [SQL Veritabanı Denetimi'ni](sql-database-auditing.md)etkinleştirmeniz önerilir.  
 
-## <a name="advanced-threat-protection-alerts"></a>Gelişmiş tehdit koruması uyarıları
+## <a name="advanced-threat-protection-alerts"></a>Gelişmiş Tehdit Koruması uyarıları
 
-Azure SQL veritabanı için Gelişmiş tehdit koruması, veritabanları için olağandışı ve potansiyel olarak zararlı olan girişimleri gösteren anormal etkinlikleri algılar ve aşağıdaki uyarıları tetikleyebilir:
+Azure SQL Veritabanı için Gelişmiş Tehdit Koruması, veritabanlarına erişmek veya bu veritabanından yararlanmak için olağandışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar ve aşağıdaki uyarıları tetikleyebilir:
 
-- **SQL ekleme güvenlik açığı**: Bu uyarı, bir uygulama veritabanında hatalı bir SQL açıklaması oluşturduğunda tetiklenir. Bu uyarı, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Hatalı deyim oluşturulmasının iki olası nedeni vardır:
+- **SQL enjeksiyonuna karşı güvenlik açığı**: Bir uygulama veritabanında hatalı bir SQL deyimi oluşturduğunda bu uyarı tetiklenir. Bu uyarı, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Hatalı deyim oluşturulmasının iki olası nedeni vardır:
 
   - Hatalı SQL deyimini oluşturan uygulama kodunda hata
   - Uygulama kodu veya depolanan yordamlar, hatalı SQL deyimi yapılandırılırken kullanıcı girişini temizlemez ve SQL Ekleme sırasında bu açıktan yararlanılabilir
@@ -49,37 +49,37 @@ Azure SQL veritabanı için Gelişmiş tehdit koruması, veritabanları için ol
 - **Zararlı olabilecek bir uygulamadan erişim**: Bu uyarı, zararlı olabilecek bir uygulama veritabanına erişmeye çalıştığında tetiklenir. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, yarı yaygın saldırı araçlarının kullandığı saldırıları algılar.
 - **SQL kimlik bilgilerine deneme yanılma saldırısı**: Bu uyarı, farklı kimlik bilgileri kullanılarak sıra dışı sayıda başarısız oturum açma denemesi olduğunda tetiklenir. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı deneme yanılma saldırılarını algılar.
 
-## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Şüpheli bir olayın algılanması halinde anormal veritabanı etkinliklerini keşfet
+## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Şüpheli bir olayın algılanması üzerine anormal veritabanı etkinliklerini keşfedin
 
-Anormal veritabanı etkinliklerinin algılanmasıyla bir e-posta bildirimi alırsınız. E-posta, anormal etkinlikler, veritabanı adı, sunucu adı, uygulama adı ve olay saatinin doğası dahil şüpheli güvenlik olayı hakkında bilgi sağlar. Buna ek olarak, e-posta olası nedenler ve veritabanı için olası tehdidi araştırmak ve azaltmak için önerilen eylemler hakkında bilgi sağlar.
+Anormal veritabanı etkinliklerinin algılanması üzerine bir e-posta bildirimi alırsınız. E-posta, anormal etkinliklerin niteliği, veritabanı adı, sunucu adı, uygulama adı ve olay saati gibi şüpheli güvenlik olayı hakkında bilgi sağlar. Buna ek olarak, e-posta, veritabanına yönelik olası tehdidi araştırmak ve azaltmak için olası nedenler ve önerilen eylemler hakkında bilgi sağlar.
 
-![Anormal etkinlik raporu](./media/sql-database-threat-detection/anomalous_activity_report.png)
+![Anormal faaliyet raporu](./media/sql-database-threat-detection/anomalous_activity_report.png)
 
-1. Azure portal başlatmak ve SQL veritabanında algılanan etkin tehditlere genel bir bakış sağlayan Azure Güvenlik Merkezi uyarıları sayfasını görüntülemek için e-postadaki **son SQL uyarılarını görüntüle** bağlantısına tıklayın.
+1. Azure portalını başlatmak ve SQL veritabanında algılanan etkin tehditlere genel bir bakış sağlayan Azure Güvenlik Merkezi uyarıları sayfasını göstermek için e-postadaki **son SQL uyarılarını görüntüle** bağlantısını tıklatın.
 
    ![Etkinlik tehditleri](./media/sql-database-threat-detection/active_threats.png)
 
-2. Bu tehdidi araştırmaya ve gelecekteki tehditleri incelemeye yönelik ek ayrıntılar ve eylemler almak için belirli bir uyarıya tıklayın.
+2. Bu tehdidi araştırmak ve gelecekteki tehditleri düzeltmek için ek ayrıntılar ve eylemler almak için belirli bir uyarıyı tıklatın.
 
-   Örneğin, SQL ekleme, Internet 'teki veri odaklı uygulamalara saldırmak için kullanılan en yaygın web uygulaması güvenlik sorunlarından biridir. Saldırganlar, uygulama giriş alanlarına kötü amaçlı SQL deyimleri eklemek, veritabanındaki verileri ihlal etmek veya değiştirmek için uygulama güvenlik açıklarından faydalanabilir. SQL ekleme uyarıları için, uyarının ayrıntıları, güvenlik açığı bulunan SQL bildirisini içerir.
+   Örneğin, SQL enjeksiyonu, Internet'te veri tabanlı uygulamalara saldırmak için kullanılan en yaygın Web uygulaması güvenlik sorunlarından biridir. Saldırganlar, uygulama giriş alanlarına kötü amaçlı SQL deyimleri enjekte etmek, veritabanındaki verileri ihlal etmek veya değiştirmek için uygulama açıklarından yararlanır. SQL Injection uyarıları için, uyarının ayrıntıları, yararlanılan güvenlik açığı olan SQL deyimini içerir.
 
-   ![Özel uyarı](./media/sql-database-threat-detection/specific_alert.png)
+   ![Belirli uyarı](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Azure portal veritabanı için Gelişmiş tehdit koruması uyarılarını keşfet
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Azure portalında veritabanınız için Gelişmiş Tehdit Koruması uyarılarını keşfedin
 
-Gelişmiş tehdit koruması, uyarılarını [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleştirir. Veritabanı ve SQL REKLAMLARı dikey penceresinde canlı SQL Gelişmiş tehdit koruması kutucukları, etkin tehditler durumunu izlemek Azure portal.
+Gelişmiş Tehdit Koruması, uyarılarını [Azure güvenlik merkeziyle](https://azure.microsoft.com/services/security-center/)bütünleştirir. Veritabanıiçindeki Canlı SQL Gelişmiş Tehdit Koruması kutucukları ve Azure portalındaki SQL ADS bıçakları etkin tehditlerin durumunu izler.
 
-**Gelişmiş tehdit koruması uyarısı** ' na tıklayarak Azure Güvenlik Merkezi uyarıları sayfasını başlatın ve veritabanında ALGıLANAN etkin SQL tehditleri hakkında genel bir bakış alın.
+Azure Güvenlik Merkezi uyarıları sayfasını başlatmak ve veritabanında algılanan etkin SQL tehditlerine genel bir bakış almak için **Gelişmiş Tehdit Koruması uyarısını** tıklatın.
 
-   ![Gelişmiş tehdit koruması uyarısı](./media/sql-database-threat-detection/threat_detection_alert.png)
+   ![Gelişmiş Tehdit Koruması uyarısı](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![Gelişmiş tehdit koruması alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Gelişmiş Tehdit Koruması uyarısı2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Tek ve havuza alınmış veritabanlarında Gelişmiş tehdit koruması](sql-database-threat-detection.md)hakkında daha fazla bilgi edinin.
-- [Yönetilen örnekteki Gelişmiş tehdit koruması](sql-database-managed-instance-threat-detection.md)hakkında daha fazla bilgi edinin.
+- [Tek ve havuzlu veritabanlarında Gelişmiş Tehdit Koruması](sql-database-threat-detection.md)hakkında daha fazla bilgi edinin.
+- [Yönetilen örnekte Gelişmiş Tehdit Koruması](sql-database-managed-instance-threat-detection.md)hakkında daha fazla bilgi edinin.
 - [Gelişmiş veri güvenliği](sql-database-advanced-data-security.md)hakkında daha fazla bilgi edinin.
-- [Azure SQL veritabanı denetimi](sql-database-auditing.md) hakkında daha fazla bilgi edinin
-- [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
-- Fiyatlandırma hakkında daha fazla bilgi için bkz. [SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/)  
+- [Azure SQL Veritabanı denetimi](sql-database-auditing.md) hakkında daha fazla bilgi edinin
+- [Azure güvenlik merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
+- Fiyatlandırma hakkında daha fazla bilgi için [SQL Veritabanı fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/sql-database/) bakın  

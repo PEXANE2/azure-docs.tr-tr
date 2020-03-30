@@ -1,6 +1,6 @@
 ---
-title: Microsoft Threat Modeling Tool genel bakış-Azure
-description: Tehdit modelleme işlemi dahil olmak üzere araçla çalışmaya başlama hakkında bilgi içeren Microsoft Threat Modeling Tool genel bakış.
+title: Microsoft Tehdit Modelleme Aracına genel bakış - Azure
+description: Tehdit Modelleme işlemi de dahil olmak üzere, araçla işe başlamayla ilgili bilgiler içeren Microsoft Tehdit Modelleme Aracına genel bakış.
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -8,51 +8,51 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
 ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75548758"
 ---
-# <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
+# <a name="microsoft-threat-modeling-tool"></a>Microsoft Tehdit Modelleme Aracı
 
-Threat Modeling Tool, Microsoft Security Development Lifecycle (SDL) temel öğesidir. Yazılım mimarlarının olası güvenlik sorunlarını daha erken belirlemesine ve hafifletmesine ve bu sorunların çözülmesi için yüksek maliyetli olmasına olanak sağlar. Sonuç olarak, toplam geliştirme maliyetini büyük ölçüde azaltır. Ayrıca, tehdidi güvenlik dışı uzmanlar ile tasarlıyoruz, tehdit modellerini oluşturma ve çözümleme konusunda açık yönergeler sunarak tüm geliştiriciler için tehdit modellemesini kolaylaştırın. 
+Tehdit Modelleme Aracı, Microsoft Güvenlik Geliştirme Yaşam Döngüsü'nün (SDL) temel bir öğesidir. Yazılım mimarlarının, çözümlenebilmek için nispeten kolay ve uygun maliyetli olduklarında olası güvenlik sorunlarını erkenden tanımlamasına ve azaltmasına olanak tanır. Sonuç olarak, büyük ölçüde geliştirme toplam maliyetini azaltır. Ayrıca, tehdit modelleri oluşturma ve analiz etme konusunda net rehberlik sağlayarak tehdit modellemeyi tüm geliştiriciler için daha kolay hale getirerek aracı güvenlik dışı uzmanları göz önünde bulundurarak tasarladık. 
 
-Araç şunları yapmasını sağlar:
+Araç, herkesin aşağıdakileri yapabilmesini sağlar:
 
 * Sistemlerinin güvenlik tasarımı hakkında iletişim kurun
-* Kanıtlanmış bir metodolojiyi kullanarak olası güvenlik sorunları için bu tasarımları çözümleyin
-* Güvenlik sorunları için azaltıcı etkenleri önerin ve yönetin
+* Kanıtlanmış bir metodoloji kullanarak olası güvenlik sorunları için bu tasarımları analiz edin
+* Güvenlik sorunları için azaltıcı etkenler önerme ve yönetme
 
-İşte birkaç araç ve yenilikler aşağıda verilmiştir:
+Burada bazı takım yetenekleri ve yenilikler, sadece birkaç isim şunlardır:
 
-* **Otomasyon:** Model çizilirken kılavuz ve geri bildirim
-* **Öğe başına ilerleme:** Tehditler ve azaltmaları Kılavuzlu analizler
-* **Raporlama:** Doğrulama aşamasında güvenlik etkinlikleri ve test etme
-* **Benzersiz metodolojisi:** Kullanıcıların tehditleri daha iyi görselleştirmesini ve anlamasını sağlar
-* **Geliştiriciler Için tasarlanan ve yazılımda ortalanmış:** birçok yaklaşım, varlıklar veya saldırganlar üzerinde ortalanır. Yazılımda ortalıyoruz. Tüm yazılım geliştiricilerinin ve mimarlarının, yazılım mimarisine yönelik resim çizme gibi tüm yazılım geliştiricileri ve mimarlarının tanıdık olduğu etkinlikler üzerinde oluşturacağız
-* **Tasarım analizine odaklanın:** "Tehdit modellemesi" terimi, bir gereksinimlere veya tasarım analizi tekniine başvurabilir. Bazen, ikisinin karmaşık bir Blend anlamına gelir. Tehdit modellemeye Microsoft SDL yaklaşımı, odaklanmış bir tasarım analizi tekniğidir
+* **Otomasyon:** Bir model çiziminde rehberlik ve geri bildirim
+* **Eleman başına STRIDE:** Tehditlerin ve azaltımların güdümlü analizi
+* **Raporlama:** Doğrulama aşamasında güvenlik faaliyetleri ve testler
+* **Benzersiz Metodoloji:** Kullanıcıların tehditleri daha iyi görselleştirmesini ve anlamasını sağlar
+* **Geliştiriciler için tasarlanmış ve Yazılım merkezli:** birçok yaklaşım varlıklar veya saldırganlar üzerinde ortalanır. Biz yazılım merkezli. Tüm yazılım geliştiricilerin ve mimarların aşina olduğu etkinlikler üzerine inşa ediyoruz -- örneğin yazılım mimarileri için resim çizmek gibi.
+* **Tasarım Analizine Odaklanmış:** "Tehdit modelleme" terimi gereksinimlere veya tasarım çözümleme tekniğine atıfta bulunabilir. Bazen, bu iki karmaşık bir karışımı anlamına gelir. Tehdit modellemeye Microsoft SDL yaklaşımı odaklı bir tasarım analizi tekniğidir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki tabloda Threat Modeling Tool kullanmaya başlamanızı sağlamak için önemli bağlantılar yer almaktadır:
+Aşağıdaki tablo, Tehdit Modelleme Aracı ile başlamak için önemli bağlantılar içerir:
 
 | Adım  | Açıklama                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
-| **1** | [Threat Modeling Tool indirin](https://aka.ms/threatmodelingtool)                                |
-| **2** | [Başlarken kılavuzumuzu okuyun](threat-modeling-tool-getting-started.md)    |
-| **3** | [Özelliklerle ilgili bilgi edinin](threat-modeling-tool-feature-overview.md)   |
+| **1** | [Tehdit Modelleme Aracını İndirin](https://aka.ms/threatmodelingtool)                                |
+| **2** | [Başlangıç kılavuzumuzu okuyun](threat-modeling-tool-getting-started.md)    |
+| **3** | [Özellikleri tanıma](threat-modeling-tool-feature-overview.md)   |
 | **4** | [Oluşturulan tehdit kategorileri hakkında bilgi edinin](threat-modeling-tool-threats.md)   |
-| **5** | [Oluşturulan tehditlere yönelik azaltmaları bulun](threat-modeling-tool-mitigations.md) |
+| **5** | [Oluşturulan tehditlere yönelik azaltıcı etkenleri bulma](threat-modeling-tool-mitigations.md) |
 
 ## <a name="resources"></a>Kaynaklar
 
-Günümüzde tehdit modellemesi ile ilgili olan birkaç eski makale aşağıda verilmiştir:
+Burada hala tehdit modelleme bugün ilgili birkaç eski makaleler şunlardır:
 
-* [Tehdit modellemesinin önemi hakkında makale](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
-* [Güvenilir bilgi Işlem tarafından yayımlanan Eğitim](https://www.microsoft.com/download/details.aspx?id=16420)
+* [Tehdit Modellemenin Önemi Hakkında Makale](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
+* [Eğitim Trustworthy Computing tarafından yayınlandı](https://www.microsoft.com/download/details.aspx?id=16420)
 
-Threat Modeling Tool uzmanların ne yaptığını inceleyin:
+Birkaç Tehdit Modelleme Aracı uzmanlarının neler yaptığına göz atın:
 
 * [Tehditler Yöneticisi](https://simoneonsecurity.com/threatsmanagersetup-v1-5-10/)
-* [Simone Curzi güvenlik blogu](https://simoneonsecurity.com/)
+* [Simone Curzi Güvenlik Blog](https://simoneonsecurity.com/)

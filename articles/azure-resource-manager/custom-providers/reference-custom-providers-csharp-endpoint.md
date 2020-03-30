@@ -1,24 +1,24 @@
 ---
-title: Özel sağlayıcı C# yeniden bitiş noktası başvurusu
-description: Azure özel sağlayıcılarının C# geri noktası için temel başvuru sağlar. Uç nokta, bir Azure işlev uygulaması aracılığıyla sağlanır.
+title: Özel sağlayıcı C# RESTful endpoint referans
+description: Azure Özel Sağlayıcıları C# RESTful bitiş noktası için temel başvuru sağlar. Bitiş noktası bir Azure işlev uygulaması aracılığıyla sağlanır.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651182"
 ---
-# <a name="custom-provider-c-restful-endpoint-reference"></a>Özel sağlayıcı C# yeniden bitiş noktası başvurusu
+# <a name="custom-provider-c-restful-endpoint-reference"></a>Özel sağlayıcı C# RESTful endpoint referans
 
-Bu makale, özel bir sağlayıcının C# yeniden deneme uç noktası için temel bir başvurudur. Azure özel sağlayıcıları hakkında bilginiz varsa bkz. [özel kaynak sağlayıcılarına genel bakış](overview.md).
+Bu makale, özel bir sağlayıcı C# RESTful bitiş noktası için temel bir başvurudur. Azure Özel Sağlayıcıları'nı bilmiyorsanız, [özel kaynak sağlayıcılarına genel bakışa](overview.md)bakın.
 
-## <a name="azure-function-app-restful-endpoint"></a>Azure işlevi uygulaması yeniden gelme uç noktası
+## <a name="azure-function-app-restful-endpoint"></a>Azure işlev uygulaması RESTful bitiş noktası
 
-Aşağıdaki kod bir Azure işlevi uygulamasıyla çalışır. Azure işlevi uygulamasını Azure özel sağlayıcılarıyla çalışacak şekilde ayarlamayı öğrenmek için Azure [özel sağlayıcıları Için Azure işlevleri ayarlama hakkında öğreticiye](./tutorial-custom-providers-function-setup.md)bakın.
+Aşağıdaki kod bir Azure işlev uygulamasıyla çalışır. Azure Özel Sağlayıcılarıyla çalışmak üzere bir Azure işlevi uygulaması nasıl ayarlayabilirsiniz öğrenmek [için, Azure Özel Sağlayıcıları için Azure İşlevlerini ayarlama öğreticisine](./tutorial-custom-providers-function-setup.md)bakın.
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -255,7 +255,7 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure özel kaynak sağlayıcılarına genel bakış](overview.md)
-- [Öğretici: Azure özel kaynak sağlayıcısı oluşturma ve özel kaynaklar dağıtma](./create-custom-provider.md)
-- [Nasıl yapılır: Azure REST API özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
-- [Başvuru: özel kaynak önbellek başvurusu](proxy-cache-resource-endpoint-reference.md)
+- [Azure Özel Kaynak Sağlayıcılarına Genel Bakış](overview.md)
+- [Öğretici: Azure özel kaynak sağlayıcısı oluşturun ve özel kaynakları dağıtın](./create-custom-provider.md)
+- [Nasıl yapilir: Azure REST API'sine özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
+- [Başvuru: Özel kaynak önbelleği başvurusu](proxy-cache-resource-endpoint-reference.md)

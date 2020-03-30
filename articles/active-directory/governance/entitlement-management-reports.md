@@ -1,9 +1,9 @@
 ---
-title: Yetkilendirme yönetiminde raporları & günlükleri görüntüleme-Azure AD
-description: Azure Active Directory yetkilendirme yönetiminde Kullanıcı atamaları raporu ve denetim günlüklerini görüntülemeyi öğrenin.
+title: Yetkilendirme yönetiminde raporları & günlükleri görüntüleme - Azure AD
+description: Azure Active Directory yetkilendirme yönetiminde kullanıcı atamaları raporunu ve denetim günlerini nasıl görüntüleyebilirsiniz öğrenin.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
@@ -12,103 +12,103 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/28/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c98a583e2aa8ac679842e16d1c0cc36811db90de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79261742"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128429"
 ---
-# <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde raporları ve günlükleri görüntüleme
+# <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde raporları ve günlükleri görüntüleme
 
-Azure AD Yetkilendirme Yönetimi raporları ve Azure AD denetim günlüğü, kullanıcıların erişebileceği kaynakları hakkında ek ayrıntılar sağlar. Yönetici olarak, bir kullanıcı için erişim paketlerini ve kaynak atamalarını görüntüleyebilir, denetim amaçlarıyla istek günlüklerini görüntüleyebilir veya bir kullanıcının isteğinin durumunu belirleyebilirsiniz. Bu makalede, Yetkilendirme Yönetimi raporlarının ve Azure AD denetim günlüklerinin nasıl kullanılacağı açıklanır.
+Azure AD yetkilendirme yönetimi raporları ve Azure AD denetim günlüğü, kullanıcıların hangi kaynaklara erişebildikleri hakkında ek ayrıntılar sağlar. Yönetici olarak, bir kullanıcıiçin erişim paketlerini ve kaynak atamalarını görüntüleyebilir ve denetim amacıyla veya kullanıcının isteğinin durumunu belirlemek için istek günlüklerini görüntüleyebilirsiniz. Bu makalede, yetkilendirme yönetimi raporlarının ve Azure AD denetim günlüklerinin nasıl kullanılacağı açıklanmaktadır.
 
-Kullanıcılara Yetkilendirme Yönetimi 'nde hangi kaynakların erişimi olduğunu görüntüleme hakkında bilgi edinmek için aşağıdaki videoyu izleyin:
+Yetkilendirme yönetiminde kullanıcıların hangi kaynaklara erişebildiğini görmek için aşağıdaki videoyu izleyin:
 
 >[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-access-packages-for-a-user"></a>Bir kullanıcı için erişim paketlerini görüntüleme
 
-Bu rapor, bir kullanıcının isteyebilmesini ve kullanıcıya şu anda atanmış olan erişim paketlerini listelemenize olanak sağlar.
+Bu rapor, bir kullanıcının isteyebileceği tüm erişim paketlerini ve şu anda kullanıcıya atanan erişim paketlerini listelemenizi sağlar.
 
-**Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
+**Önkoşul rolü:** Genel yönetici veya Kullanıcı yöneticisi
 
-1. **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. **Azure Etkin Dizini'ni** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
 
-1. Sol taraftaki menüden **raporlar**' a tıklayın.
+1. Sol menüde **Raporlar'ı**tıklatın.
 
-1. **Bir Kullanıcı Için erişim paketlerine**tıklayın.
+1. **Bir kullanıcı için Access paketlerine**tıklayın.
 
-1. Kullanıcıları Seç bölmesini açmak için **Kullanıcıları Seç** ' e tıklayın.
+1. Kullanıcıları Seç bölmesini açmak için **kullanıcıları seç'i** tıklatın.
 
-1. Listeden kullanıcıyı bulun ve ardından **Seç**' e tıklayın.
+1. Listedeki kullanıcıyı bulun ve sonra **Seç'i**tıklatın.
 
-    **İstek** sekmesi, kullanıcının isteyeceği erişim paketlerinin bir listesini görüntüler. Bu liste, erişim paketleri için tanımlanan [istek ilkelerine](entitlement-management-access-package-request-policy.md#for-users-in-your-directory) göre belirlenir. 
+    **Can isteği** sekmesi, kullanıcının isteyebileceği erişim paketlerinin listesini görüntüler. Bu liste, erişim paketleri için tanımlanan [istek ilkeleri](entitlement-management-access-package-request-policy.md#for-users-in-your-directory) tarafından belirlenir. 
 
-    ![Bir kullanıcı için paketlere erişim](./media/entitlement-management-reports/access-packages-report.png)
+    ![Bir kullanıcı için erişim paketleri](./media/entitlement-management-reports/access-packages-report.png)
 
-1. Bir erişim paketi için birden fazla kaynak rolü veya ilkesi varsa, seçim ayrıntılarını görmek için kaynak rolleri veya ilkeler girdisine tıklayın.
+1. Bir erişim paketi için birden fazla kaynak rolü veya ilke varsa, seçim ayrıntılarını görmek için kaynak rollerini veya ilke girişini tıklatın.
 
-1. Kullanıcıya şu anda atanmış olan erişim paketlerinin listesini görmek için **atanan** sekmesine tıklayın. Bir kullanıcıya erişim paketi atandığında, kullanıcının erişim paketindeki tüm kaynak rollerine erişimi olduğu anlamına gelir.
+1. Kullanıcıya **Assigned** atanan erişim paketlerinin listesini görmek için Atananseksekmesi'ni tıklatın. Bir erişim paketi bir kullanıcıya atandığında, bu kullanıcının erişim paketindeki tüm kaynak rollerine erişebildiğim anlamına gelir.
 
 ## <a name="view-resource-assignments-for-a-user"></a>Bir kullanıcı için kaynak atamalarını görüntüleme
 
-Bu rapor, Yetkilendirme Yönetimi 'nde bir kullanıcıya şu anda atanmış olan kaynakları listelemenize olanak sağlar. Bu raporun, yetkilendirme yönetimiyle yönetilen kaynaklara yönelik olduğunu unutmayın. Kullanıcının, dizininizdeki diğer kaynaklara yetkilendirme yönetimi dışında erişimi olabilir.
+Bu rapor, yetkilendirme yönetiminde bir kullanıcıya atanan kaynakları listelemenizi sağlar. Bu raporun yetkilendirme yönetimiyle yönetilen kaynaklar için olduğunu unutmayın. Kullanıcı, yetkilendirme yönetimi dışında dizininizdeki diğer kaynaklara erişebilir.
 
-**Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
+**Önkoşul rolü:** Genel yönetici veya Kullanıcı yöneticisi
 
-1. **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. **Azure Etkin Dizini'ni** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
 
-1. Sol taraftaki menüden **raporlar**' a tıklayın.
+1. Sol menüde **Raporlar'ı**tıklatın.
 
-1. **Bir Kullanıcı Için kaynak atamaları**' na tıklayın.
+1. **Bir kullanıcı için Kaynak atamaları'nı**tıklatın.
 
-1. Kullanıcıları Seç bölmesini açmak için **Kullanıcıları Seç** ' e tıklayın.
+1. Kullanıcıları Seç bölmesini açmak için **kullanıcıları seç'i** tıklatın.
 
-1. Listeden kullanıcıyı bulun ve ardından **Seç**' e tıklayın.
+1. Listedeki kullanıcıyı bulun ve sonra **Seç'i**tıklatın.
 
-    Kullanıcıya şu anda atanmış kaynakların bir listesi görüntülenir. Listede Ayrıca, erişim için başlangıç ve bitiş tarihi ile birlikte kaynak rolünü aldıkları erişim paketi ve ilke de gösterilir.
+    Şu anda kullanıcıya atanan kaynakların listesi görüntülenir. Liste ayrıca, erişim için başlangıç ve bitiş tarihiyle birlikte kaynak rolünü aldıkları erişim paketini ve ilkesini de gösterir.
     
-    Bir Kullanıcı iki veya daha fazla pakette aynı kaynağa erişim içeriyorsa, her bir paketi ve ilkeyi görmek için bir oka tıklayabilirsiniz.
+    Bir kullanıcı iki veya daha fazla pakette aynı kaynağa erişebiliyorsa, her paketi ve ilkeyi görmek için bir oku tıklatabilirsiniz.
 
     ![Bir kullanıcı için kaynak atamaları](./media/entitlement-management-reports/resource-assignments-report.png)
 
-## <a name="determine-the-status-of-a-users-request"></a>Kullanıcının isteğinin durumunu belirleme
+## <a name="determine-the-status-of-a-users-request"></a>Kullanıcı isteğinin durumunu belirleme
 
-Bir kullanıcının erişim paketine erişim isteği ve erişimi alma hakkında daha fazla bilgi edinmek için Azure AD denetim günlüğünü kullanabilirsiniz. Özellikle, her istek için işleme adımlarıyla ilgili ek ayrıntılar almak üzere `EntitlementManagement` ve `UserManagement` kategorilerindeki günlük kayıtlarını kullanabilirsiniz.  
+Bir kullanıcının bir erişim paketini nasıl istekte aldığı ve bu pakete nasıl eriştüğü hakkında ek bilgi almak için Azure AD denetim günlüğünü kullanabilirsiniz. Özellikle, her istek için işleme `EntitlementManagement` adımları `UserManagement` hakkında ek ayrıntılar almak için günlük kayıtlarını ve kategorilerini kullanabilirsiniz.  
 
-1. **Azure Active Directory** ' a ve sonra **Denetim günlükleri**' ne tıklayın.
+1. **Azure Etkin Dizini'ni** tıklatın ve ardından **Denetim günlüklerini**tıklatın.
 
-1. En üstte, aradığınız denetim kaydına bağlı olarak **kategoriyi** `EntitlementManagement` ya da `UserManagement`olarak değiştirin.  
+1. En üstte, Aradığınız denetim `EntitlementManagement` `UserManagement`kaydına bağlı olarak **Kategoriyi** ya da  
 
-1. **Apply (Uygula)** düğmesine tıklayın.
+1. **Uygula**’ya tıklayın.
 
-1. Günlükleri indirmek için **İndir**' e tıklayın.
+1. Günlükleri indirmek için **İndir'i**tıklatın.
 
-Azure AD yeni bir istek aldığında, **kategorinin** `EntitlementManagement` ve **etkinliğin** genellikle `User requests access package assignment`olduğu bir denetim kaydı yazar.  Azure portal doğrudan atama durumunda, denetim kaydının **etkinlik** alanı `Administrator directly assigns user to access package`ve atamayı gerçekleştiren kullanıcı **actoruserprincipalname**tarafından tanımlanır.
+Azure AD yeni bir istek aldığında, **Kategori'nin** olduğu `EntitlementManagement` ve **Etkinliğin** genellikle `User requests access package assignment`olduğu bir denetim kaydı yazar.  Azure portalında oluşturulan doğrudan bir atama durumunda, denetim kaydının `Administrator directly assigns user to access package` **Etkinlik** alanı dır ve atamayı gerçekleştiren kullanıcı **ActorUserPrincipalName**tarafından tanımlanır.
 
-Azure AD, istek sürerken aşağıdakiler de dahil olmak üzere ek denetim kayıtları yazacak:
+Azure AD, istek devam ederken aşağıdakiler de dahil olmak üzere ek denetim kayıtları yazar:
 
 | Kategori | Etkinlik | İstek durumu |
 | :---- | :------------ | :------------ |
-| `EntitlementManagement` | `Auto approve access package assignment request` | İstek onay gerektirmiyor |
-| `UserManagement` | `Create request approval` | İstek onay gerektiriyor |
-| `UserManagement` | `Add approver to request approval` | İstek onay gerektiriyor |
+| `EntitlementManagement` | `Auto approve access package assignment request` | İstek onay gerektirmez |
+| `UserManagement` | `Create request approval` | İstek onay gerektirir |
+| `UserManagement` | `Add approver to request approval` | İstek onay gerektirir |
 | `EntitlementManagement` | `Approve access package assignment request` | İstek onaylandı |
-| `EntitlementManagement` | `Ready to fulfill access package assignment request` |İstek onaylandı veya onay gerektirmiyor |
+| `EntitlementManagement` | `Ready to fulfill access package assignment request` |İstek onaylandı veya onay gerektirmez |
 
-Bir kullanıcıya erişim atandığında Azure AD, **etkinlik** `Fulfill access package assignment``EntitlementManagement` kategorisi için bir denetim kaydı yazar.  Erişimi alan Kullanıcı **Actoruserprincipalname** alanı tarafından tanımlanır.
+Bir kullanıcıya erişim atandığında, Azure AD `EntitlementManagement` **Etkinlik** `Fulfill access package assignment`kategorisi için bir denetim kaydı yazar.  Erişimi alan kullanıcı **ActorUserPrincipalName** alanı tarafından tanımlanır.
 
-Erişim atanmamışsa Azure AD, `EntitlementManagement` kategorisi için `Deny access package assignment request`, istek bir onaylayan tarafından reddedildiyse veya `Access package assignment request timed out (no approver action taken)`, istek bir onaylayanın onaylanmadan önce zaman aşımına uğradığından bir denetim kaydı yazar.
+Erişim atanmamışsa, Azure AD, isteğin `EntitlementManagement` bir onaylayıcı `Deny access package assignment request` `Access package assignment request timed out (no approver action taken)`tarafından reddedilmesi veya bir onaylayıcının onaylayabilmesi için istek zaman dolduysa, **Etkinlik** içeren kategori için bir denetim kaydı yazar.
 
-Kullanıcının erişim paketi atamasının süresi dolarsa, Kullanıcı tarafından iptal edilir veya bir yönetici tarafından kaldırıldıktan sonra Azure AD, `EntitlementManagement` kategorisi için `Remove access package assignment`**etkinliğiyle** bir denetim kaydı yazar.
+Kullanıcının erişim paketi atamasının süresi dolduğunda, kullanıcı tarafından iptal edildiğinde veya bir yönetici tarafından kaldırıldığında, Azure `Remove access package assignment`AD etkinliği **olan** `EntitlementManagement` kategori için bir denetim kaydı yazar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Raporları ve günlükleri Arşivle](entitlement-management-logs-and-reporting.md)
-- [Azure AD yetkilendirme yönetimi sorunlarını giderme](entitlement-management-troubleshoot.md)
-- [Yaygın senaryolar](entitlement-management-scenarios.md)
+- [Arşiv raporları ve Günlükler](entitlement-management-logs-and-reporting.md)
+- [Azure AD yetkilendirme yönetimiyle ilgili sorun giderme](entitlement-management-troubleshoot.md)
+- [Genel senaryolar](entitlement-management-scenarios.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 REST API ile Filtreler oluşturma
-description: Bu konuda, istemci akışı için bir stream'ın belirli bölümlerine kullanabilmesi için filtreler oluşturmayı açıklar. Media Services, bu seçmeli akış elde etmek için olan dinamik bildirimler oluşturur.
+title: Azure Media Services v3 REST API ile filtre oluşturma
+description: Bu konu, istemcinizin bir akışın belirli bölümlerini akışı için bunları kullanabilmesi için filtrelerin nasıl oluşturulabileceğini açıklar. Medya Hizmetleri, bu seçici akışı elde etmek için dinamik bildirimler oluşturur.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,35 +14,35 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780343"
 ---
-# <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API'si ile filtre oluşturma
+# <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API ile filtre oluşturma
 
-İçeriğinizi müşterilere (Canlı etkinlik veya isteğe bağlı Video akışı) sunarken istemcinizi varsayılan varlığın bildirim dosyasında tanımlanan değerinden daha fazla esneklik gerekebilir. Azure Media Services hesap filtreleri ve içeriğiniz için varlık filtrelerini tanımlamanızı sağlar. 
+İçeriğinizi müşterilere teslim ederken (Canlı etkinlikler veya Talep Üzerine Video akışı) müşterinizin varsayılan varlığın bildirim dosyasında açıklanandan daha fazla esnekliğe ihtiyacı olabilir. Azure Medya Hizmetleri, içeriğiniz için hesap filtreleri ve varlık filtreleri tanımlamanıza olanak tanır. 
 
-Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
+Bu özelliğin ayrıntılı açıklaması ve kullanıldığı [senaryolar](filters-concept.md)için [Dinamik Bildirimler](filters-dynamic-manifest-overview.md) ve Filtreler bölümüne bakın.
 
-Bu konuda bir Video isteğe bağlı varlık için bir filtre tanımlar ve oluşturmak için REST API'lerini kullanma işlemi gösterilmektedir [hesap filtreleri](https://docs.microsoft.com/rest/api/media/accountfilters) ve [varlık filtreleri](https://docs.microsoft.com/rest/api/media/assetfilters). 
+Bu konu, Talep Üzerine Video varlığı için bir filtrenin nasıl tanımlandığını ve [Hesap Filtreleri](https://docs.microsoft.com/rest/api/media/accountfilters) ve [Varlık Filtreleri](https://docs.microsoft.com/rest/api/media/assetfilters)oluşturmak için REST API'lerini nasıl kullanacağımı gösterir. 
 
 > [!NOTE]
-> [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
+> Sunuyu gözden geçirdiğinden emin [olunTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-Bu konu başlığı altında açıklanan adımları tamamlamak için için gerekenler:
+Bu konuda açıklanan adımları tamamlamak için şunları yapmak zorundasınız:
 
-- Gözden geçirme [filtreleri ve dinamik bildirimlere](filters-dynamic-manifest-overview.md).
-- [Azure Media Services REST API çağrıları için Postman yapılandırma](media-rest-apis-with-postman.md).
+- [Filtreleri ve dinamik bildirimleri gözden geçirin.](filters-dynamic-manifest-overview.md)
+- [Azure Medya Hizmetleri REST API çağrıları için Postacı yapılandırın.](media-rest-apis-with-postman.md)
 
-    [Azure AD belirtecini al](media-rest-apis-with-postman.md#get-azure-ad-token)konusunun son adımını izlediğinizden emin olun. 
+    [Azure AD Belirteci'ni alın'](media-rest-apis-with-postman.md#get-azure-ad-token)ın son adımını takip edin. 
 
-## <a name="define-a-filter"></a>Bir filtre tanımlar  
+## <a name="define-a-filter"></a>Filtre tanımlama  
 
-Aşağıdaki **istek gövdesi** bildirimine eklenmesini izleme seçimi koşullarını tanımlayan örnek. Bu filtre, EC-3 olan tüm ses izlerini ve 0-1000000 aralığında bit hızına sahip video izlemelerini içerir.
+Aşağıda, bildirime eklenen parça seçim koşullarını tanımlayan **İstek gövdesi** örneği verilmiştir. Bu filtre, EC-3 olan tüm ses parçalarını ve 0-1000000 aralığında bit hızına sahip tüm video parçalarını içerir.
 
 ```json
 {
@@ -83,51 +83,51 @@ Aşağıdaki **istek gövdesi** bildirimine eklenmesini izleme seçimi koşullar
 
 ## <a name="create-account-filters"></a>Hesap filtreleri oluşturma
 
-İndirdiğiniz Postman'ın koleksiyonda seçin **hesap filtreleri**->**oluşturma veya güncelleştirme Hesap Filtresi**.
+İndirdiğiniz Postacı koleksiyonunda **Hesap Filtreleri**->**Oluştur'u seçin veya Hesap Filtresini güncelleştirin.**
 
-**PUT** HTTP istek yöntemine benzerdir:
+**PUT** HTTP istek yöntemi aşağıdakilere benzer:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
 ```
 
-Seçin **gövdesi** sekmesi ve Yapıştır json kodunu [daha önce tanımlanan](#define-a-filter).
+**Gövde** sekmesini seçin ve [daha önce tanımladığınız](#define-a-filter)json kodunu yapıştırın.
 
 **Gönder**’i seçin. 
 
 Filtre oluşturuldu.
 
-Daha fazla bilgi için [oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Ayrıca bkz [filtreleri için JSON örnekler](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Daha fazla bilgi için [bkz.](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate) Ayrıca, [filtreler için JSON örneklerine](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)bakın.
 
-## <a name="create-asset-filters"></a>Varlık filtre oluşturma  
+## <a name="create-asset-filters"></a>Varlık filtreleri oluşturma  
 
-İndirdiğiniz "Media Services v3" Postman koleksiyonunda,->**varlıklar** ' ı seçerek **varlık Filtresi Oluştur veya Güncelleştir**' i seçin.
+İndirdiğiniz "Medya Hizmetleri v3" Postacı koleksiyonunda **Varlık**->**Oluştur veya Güncelleştir'i**seçin.
 
-**PUT** HTTP istek yöntemine benzerdir:
+**PUT** HTTP istek yöntemi aşağıdakilere benzer:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
 ```
 
-Seçin **gövdesi** sekmesi ve Yapıştır json kodunu [daha önce tanımlanan](#define-a-filter).
+**Gövde** sekmesini seçin ve [daha önce tanımladığınız](#define-a-filter)json kodunu yapıştırın.
 
 **Gönder**’i seçin. 
 
-Varlık filtre oluşturuldu.
+Varlık filtresi oluşturuldu.
 
-Oluşturulacak veya güncelleştirilecek varlık filtreleri hakkında ayrıntılı bilgi için bkz. [oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Ayrıca bkz [filtreleri için JSON örnekler](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
+Varlık filtrelerinin nasıl oluşturulacağı veya güncelleştirilenhakkında ayrıntılı bilgi [için](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)bkz. Ayrıca, [filtreler için JSON örneklerine](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)bakın. 
 
-## <a name="associate-filters-with-streaming-locator"></a>Filtreleri akış bulucu ile ilişkilendir
+## <a name="associate-filters-with-streaming-locator"></a>Filtreleri Akış Bulucu ile ilişkilendirin
 
-Akış Konumlayıcı için uygulanabilecek varlık veya hesap filtrelerinin bir listesini belirtebilirsiniz. [Dinamik Paketleyici (akış uç noktası)](dynamic-packaging-overview.md) , bu filtre listesini ISTEMCINIZDEKI URL 'de belirttiği değişikliklerle birlikte uygular. Bu bileşim, akış Bulucu üzerinde belirlediğiniz URL + filtrelerdeki filtreleri temel alan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak, ancak URL 'de filtre adlarını göstermek istemiyorsanız bu özelliği kullanmanızı öneririz.
+Akış Lı'nız için geçerli olacak varlık veya hesap filtrelerinin listesini belirtebilirsiniz. [Dinamik Paketleyici (Streaming Endpoint),](dynamic-packaging-overview.md) bu filtre listesini istemcinizin URL'de belirttiği filtrelerle birlikte uygular. Bu kombinasyon, Akış Lı Buluc'ta belirttiğiniz URL + filtrelerdeki filtrelere dayanan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak istiyorsanız ancak URL'deki filtre adlarını ortaya çıkarmak istemiyorsanız bu özelliği kullanmanızı öneririz.
 
-REST kullanarak bir akış bulucu ile filtreler oluşturup ilişkilendirmek için, [akış Konumlandırıcı-API oluştur](https://docs.microsoft.com/rest/api/media/streaminglocators/create) ' u kullanın ve [istek gövdesinde](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)`properties.filters` belirtin.
+REST kullanarak bir Akış Bulucu ile filtreler oluşturmak ve ilişkilendirmek [için, Akış Lı Konum belirleyiciler](https://docs.microsoft.com/rest/api/media/streaminglocators/create) kullanın - API oluştur ve İstek `properties.filters` [Gövdesi'nde](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)belirtin.
                                 
 ## <a name="stream-using-filters"></a>Filtreleri kullanarak akış
 
-Filtreleri tanımladıktan sonra, istemcileriniz bunları akış URL 'sinde kullanabilir. Filtreler, uyarlamalı bit hızı akış protokollerine uygulanabilir: Apple HTTP Canlı Akışı (HLS), MPEG-DASH ve Kesintisiz Akış.
+Filtreleri tanımladıktan sonra, istemcileriniz bunları akış URL'sinde kullanabilir. Filtreler uyarlanabilir bitrate akış protokollerine uygulanabilir: Apple HTTP Live Streaming (HLS), MPEG-DASH ve Smooth Streaming.
 
-Aşağıdaki tabloda, filtre içeren URL 'lerin bazı örnekleri gösterilmektedir:
+Aşağıdaki tablo, filtreli URL'lerin bazı örneklerini gösterir:
 
 |Protokol|Örnek|
 |---|---|
@@ -137,4 +137,4 @@ Aşağıdaki tabloda, filtre içeren URL 'lerin bazı örnekleri gösterilmekted
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Stream videoları](stream-files-tutorial-with-rest.md) 
+[Videoları akış](stream-files-tutorial-with-rest.md) 

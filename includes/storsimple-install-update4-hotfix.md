@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188570"
 ---
 #### <a name="to-download-hotfixes"></a>Düzeltmeleri indirmek için
 
 Microsoft Update Kataloğu'ndan yazılım güncelleştirmesi indirmek için aşağıdaki adımları uygulayın.
 
-1. Internet Explorer'ı başlatın ve gidin [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Internet Explorer'ı [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)başlatın ve ''ye gidin.
 2. Microsoft Update Kataloğu’nu bu bilgisayarda ilk kez kullanıyorsanız, sorulduğunda **Yükle**’ye tıklayarak Microsoft Update Kataloğu eklentisini yükleyin.
 
     ![Katalog yükleme](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -26,20 +26,20 @@ Microsoft Update Kataloğu'ndan yazılım güncelleştirmesi indirmek için aşa
    
     ![Katalogda arama](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. **İndir**'e tıklayın. İndirilen öğelerin görünmesini istediğiniz yerel konumu belirtin veya **Gözat** seçeneğiyle konumu bulun. Dosya belirtilen konuma ve klasöre yüklemek için tıklayın. Klasör, cihazdan erişilebilen bir ağ paylaşımına da kopyalanabilir.
-5. Diğer düzeltmeleri arayın, yukarıdaki tabloda listelenen (**4011841**) ve yukarıdaki tabloda listelenen karşılık gelen dosyalar belirli klasörlere yükleyin.
+4. **İndir'i**tıklatın. İndirilen öğelerin görünmesini istediğiniz yerel konumu belirtin veya **Gözat** seçeneğiyle konumu bulun. Belirtilen konuma ve klasöre indirmek için dosyaları tıklatın. Klasör, cihazdan erişilebilen bir ağ paylaşımına da kopyalanabilir.
+5. Yukarıdaki tabloda listelenen ek düzeltmeleri arayın **(4011841),** ve ilgili dosyaları önceki tabloda listelenen belirli klasörlere indirin.
 
 > [!NOTE]
-> Düzeltmeleri eş denetleyicisinden hata iletilerinin algılamak için her iki denetleyicilerinin erişilebilir olması gerekir.
+> Eş denetleyiciden gelen olası hata iletilerini algılamak için düzeltmelere her iki denetleyiciden de erişilebilmelidir.
 >
-> Düzeltmeler 3 ayrı klasöre kopyalanmalıdır. Örneğin, cihaz CIS/software/AVH Aracısı güncelleştirmesi içinde kopyalanabilir _FirstOrderUpdate_ klasörü, tüm diğer kesintiye uğratmayan güncelleştirmelerin kopyalanmalıdır _SecondOrderUpdate_ klasöründe ve Bakım modu güncelleştirmeleri, kopyalanan _ThirdOrderUpdate_ klasör.
+> Düzeltmeler 3 ayrı klasöre kopyalanmalıdır. Örneğin, aygıt yazılımı/Cis/MDS aracısı güncelleştirmesi _FirstOrderUpdate_ klasöründe kopyalanabilir, diğer kesintisiz güncelleştirmeler _SecondOrderUpdate_ klasöründe kopyalanabilir ve bakım modu güncelleştirmeleri _ThirdOrderUpdate_ klasöründe kopyalanabilir.
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Normal mod düzeltmelerini yüklemek ve doğrulamak için
 
 Normal mod düzeltmelerini yüklemek ve doğrulamak için aşağıdaki adımları gerçekleştirin. Bu düzeltmeleri klasik Azure portalını kullanarak yüklediyseniz, [bakım modu düzeltmelerini yükleme ve doğrulama](#to-install-and-verify-maintenance-mode-hotfixes) bölümüne atlayın.
 
 1. Düzeltmeleri yüklemek için StorSimple cihazı seri konsolunuzdaki Windows PowerShell arabirimine erişin. [Seri konsola bağlanmak için PuTTy kullanma](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console) bölümündeki ayrıntılı yönergeleri izleyin. Komut isteminde **Enter** tuşuna basın.
-2. 1 seçeneğini **tam erişimle oturum açmak**. Düzeltmeyi ilk olarak edilgen denetleyiciye yüklemeniz önerilir.
+2. Seçenek 1'i seçin, **tam erişimle giriş yapın.** Düzeltmeyi ilk olarak edilgen denetleyiciye yüklemeniz önerilir.
 3. Düzeltmeyi yüklemek için komut istemine şunu yazın:
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -50,7 +50,7 @@ Normal mod düzeltmelerini yüklemek ve doğrulamak için aşağıdaki adımlar�
    
     İstendiğinde parolayı belirtin.
    
-    Birinci sipariş güncelleştirmelerini yüklemeye ilişkin örnek çıktı aşağıda gösterilmiştir. İlk sırada güncelleştirmesi için belirli bir dosyaya işaret edecek şekilde gerekir.
+    Birinci sipariş güncelleştirmelerini yüklemeye ilişkin örnek çıktı aşağıda gösterilmiştir. İlk sipariş güncelleştirmesi için belirli bir dosyayı işaret etmeniz gerekir.
    
         ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -104,10 +104,10 @@ Normal mod düzeltmelerini yüklemek ve doğrulamak için aşağıdaki adımlar�
      Güncelleştirme uygulandıktan sonra sürüm numarası değişmezse, düzeltmenin uygulanamadığı anlamına gelir. Bunu görmeniz durumunda daha fazla yardım için lütfen [Microsoft Desteği](../articles/storsimple/storsimple-contact-microsoft-support.md)’ne başvurun.
      
      > [!IMPORTANT]
-     > Etkin denetleyiciyi aracılığıyla yeniden başlatmalısınız `Restart-HcsController` İleri güncelleştirmeyi uygulamadan önce cmdlet'i.
+     > Bir sonraki güncelleştirmeyi uygulamadan `Restart-HcsController` önce cmdlet üzerinden etkin denetleyiciyi yeniden başlatmanız gerekir.
      
-7. İndirilen için CI/AVH aracıyı yüklemek için 3-5 arasındaki adımları yineleyin, _FirstOrderUpdate_ klasör. 
-8. İkinci sipariş güncelleştirmelerini yüklemek için 3-5 aralığındaki adımları yineleyin. **İkinci sipariş güncelleştirmelerini yalnızca çalıştırarak birden fazla güncelleştirme yüklenebilir `Start-HcsHotfix cmdlet` ve ikinci sipariş güncelleştirmelerini yerleştirildiği klasör işaret. Cmdlet, klasörde tüm güncelleştirmeleri yürütülür.** Bir güncelleştirme zaten yüklüyse, güncelleştirme mantığı bunu saptar ve ilgili güncelleştirmeyi uygulamaz. 
+7. _FirstOrderUpdate_ klasörünüze indirilen Cis/MDS aracısını yüklemek için 3-5 adımlarını yineleyin. 
+8. İkinci sipariş güncelleştirmelerini yüklemek için 3-5 aralığındaki adımları yineleyin. **İkinci sipariş güncelleştirmeleri için, yalnızca çalıştırArak `Start-HcsHotfix cmdlet` ve ikinci sipariş güncelleştirmelerinin bulunduğu klasöre işaret ederek birden çok güncelleştirme yüklenebilir. Cmdlet klasörde bulunan tüm güncelleştirmeleri yürütecektir.** Bir güncelleştirme zaten yüklüyse, güncelleştirme mantığı bunu saptar ve ilgili güncelleştirmeyi uygulamaz. 
 
 Tüm düzeltmeler yüklendikten sonra `Get-HcsSystem` cmdlet'ini kullanın. Sürümler şunlar olmalıdır:
 
@@ -123,7 +123,7 @@ Disk üretici yazılımınız zaten güncelse bu güncelleştirmeleri yüklemeni
 
 Disk üretici yazılımı güncelleştirmelerini yüklemek için aşağıdaki yönergeleri izleyin.
 
-1. Cihazı bakım moduna alın. **Bakım modunda bir cihaza bağlanırken Windows PowerShell uzaktan iletişimini kullanmamanız gerekir. Bunun yerine, cihaz seri konsolu üzerinden bağlanırken bu cmdlet’i cihaz denetleyicisinde çalıştırın.** Şunu yazın:
+1. Cihazı bakım moduna alın. **Bakım modunda bir aygıta bağlanırken Windows PowerShell remoting'i kullanmamanız gerektiğini unutmayın. Bunun yerine cihaz seri konsolu üzerinden bağlandığında bu cmdlet'i aygıt kumandasına çalıştırın.** Şunu yazın:
    
     `Enter-HcsMaintenanceMode`
    
@@ -164,7 +164,7 @@ Disk üretici yazılımı güncelleştirmelerini yüklemek için aşağıdaki y�
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. `Get-HcsUpdateStatus` komutunu kullanarak yükleme ilerleme durumunu izleyin. `RunInProgress` değeri `False` olarak değiştiğinde güncelleştirme tamamlanır.
-4. Yükleme tamamlandıktan sonra, bakım modu düzeltmesinin yüklendiği denetleyici yeniden başlatılır. Seçenek 1, buna oturum **tam erişimle oturum açmak**ve disk üretici yazılımı sürümünü doğrulayın. Şunu yazın:
+4. Yükleme tamamlandıktan sonra, bakım modu düzeltmesinin yüklendiği denetleyici yeniden başlatılır. Seçenek 1 olarak oturum açın, **tam erişimle oturum açın**ve disk firmware sürümünü doğrulayın. Şunu yazın:
    
    `Get-HcsFirmwareVersion`
    

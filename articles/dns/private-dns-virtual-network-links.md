@@ -1,6 +1,6 @@
 ---
-title: Azure DNS özel bölgelerin sanal ağ bağlantısı alt kaynağı nedir?
-description: Azure DNS özel bölgesine sanal ağ bağlantısı alt kaynağına genel bakış
+title: Azure DNS özel bölgelerinin sanal ağ bağlantısı alt kaynağı nedir
+description: Sanal ağ bağlantısı alt kaynağına genel bakış bir Azure DNS özel bölgesi
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,51 +8,51 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646770"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Sanal ağ bağlantısı nedir?
 
-Azure 'da özel bir DNS bölgesi oluşturduktan sonra herhangi bir sanal ağdan hemen erişilemez. Bu ağda barındırılan bir VM 'nin özel DNS bölgesine erişebilmesi için onu bir sanal ağa bağlamanız gerekir.
-Özel bir DNS bölgesini bir sanal ağla bağlamak için özel DNS bölgesi altında bir sanal ağ bağlantısı oluşturmanız gerekir. Her özel DNS bölgesi, bir sanal ağ bağlantısı alt kaynakları koleksiyonuna sahiptir. Bu kaynakların her biri, bir sanal ağ bağlantısını temsil eder.
+Azure'da özel bir DNS bölgesi oluşturduktan sonra, herhangi bir sanal ağdan hemen erişilemez. Bu ağda barındırılan bir VM özel DNS bölgesine erişebilmek için sanal ağa bağlamanız gerekir.
+Özel bir DNS bölgesini sanal ağa bağlamak için, özel DNS bölgesi altında bir sanal ağ bağlantısı oluşturmanız gerekir. Her özel DNS bölgesi, sanal ağ bağlantısı alt kaynakları koleksiyonuna sahiptir. Bu kaynakların her biri sanal ağa bir bağlantı temsil eder.
 
-Bir sanal ağı, bir kayıt sanal ağı veya bir çözümleme sanal ağı olarak özel bir DNS bölgesine bağlayabilirsiniz.
+Sanal ağı kayıt sanal ağı olarak veya çözümlü sanal ağ olarak özel bir DNS bölgesine bağlayabilirsiniz.
 
-## <a name="registration-virtual-network"></a>Kayıt sanal ağı
+## <a name="registration-virtual-network"></a>Kayıt sanal ağ
 
-Özel bir DNS bölgesi ve bir sanal ağ arasında [bağlantı oluşturduğunuzda](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) , sanal MAKINELER için DNS kayıtlarının yeniden [kaydedilmesini](./private-dns-autoregistration.md) açma seçeneğiniz vardır. Bu seçeneği belirlerseniz, sanal ağ özel DNS bölgesi için bir kayıt sanal ağı olur. Ağda dağıttığınız sanal makineler için bir DNS kaydı otomatik olarak oluşturulur. Sanal ağda zaten dağıttığınız sanal makineler için DNS kayıtları oluşturulur. Sanal ağ perspektifinden, özel DNS bölgesi söz konusu sanal ağın kayıt bölgesi olur.
-Bir özel DNS bölgesinin birden çok kayıt sanal ağı olabilir, ancak her sanal ağın kendisiyle ilişkili tam olarak bir kayıt bölgesi olabilir.
+Özel bir DNS bölgesi ile sanal ağ arasında [bir bağlantı oluşturduğunuzda,](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) sanal makineler için DNS kayıtlarının otomatik [kaydını](./private-dns-autoregistration.md) açma seçeneğiniz vardır. Bu seçeneği seçerseniz, sanal ağ özel DNS bölgesi için bir kayıt sanal ağ olur. Ağda dağıttığınız sanal makineler için otomatik olarak bir DNS kaydı oluşturulur. DNS kayıtları, sanal ağda zaten dağıttığınız sanal makineler için oluşturulur. Sanal ağ açısından bakıldığında, özel DNS bölgesi bu sanal ağ için kayıt bölgesi olur.
+Bir özel DNS bölgesi birden çok kayıt sanal ağına sahip olabilir, ancak her sanal ağ onunla ilişkili tam olarak bir kayıt bölgesine sahip olabilir.
 
-## <a name="resolution-virtual-network"></a>Çözümleme sanal ağı
+## <a name="resolution-virtual-network"></a>Çözünürlük sanal ağ
 
-Özel bir DNS bölgesi altında bir sanal ağ bağlantısı oluşturduğunuzda ve DNS kaydı oto kaydını etkinleştirmemelidir seçeneğini belirlediğinizde, sanal ağ yalnızca bir sanal ağ olarak değerlendirilir. Bu tür ağlarda dağıtılan sanal makineler için DNS kayıtları, bağlantılı özel DNS bölgesinde otomatik olarak oluşturulmaz. Ancak, bu tür bir ağda dağıtılan sanal makineler DNS kayıtlarını özel DNS bölgesinden başarıyla sorgulayabilir. Bu kayıtlar sizin tarafınızdan el ile oluşturulabilir veya özel DNS bölgesi ile kayıt ağları olarak bağlanmış diğer sanal ağlardan doldurulabilir.
-Bir özel DNS bölgesinin birden çok çözünürlükte sanal ağı olabilir ve bir sanal ağ ile ilişkili birden fazla çözümleme bölgesi olabilir.
+Özel bir DNS bölgesi altında sanal ağ bağlantısı oluşturduğunuzda ve DNS kaydı otomatik kaydını etkinleştirmemeyi seçtiğinizde, sanal ağ yalnızca bir çözünürlük yalnızca sanal ağ olarak kabul edilir. Bu tür ağlarda dağıtılan sanal makinelerin DNS kayıtları, bağlantılı özel DNS bölgesinde otomatik olarak oluşturulmaz. Ancak, böyle bir ağda dağıtılan sanal makineler, özel DNS bölgesinden DNS kayıtlarını başarıyla sorgulayabilir. Bu kayıtlar sizin tarafından el ile oluşturulabilir veya özel DNS bölgesine kayıt ağı olarak bağlanan diğer sanal ağlardan doldurulabilir.
+Bir özel DNS bölgesi birden çok çözünürlüklü sanal ağa sahip olabilir ve sanal ağ da ilişkili birden çok çözüm bölgesi ne olabilir.
 
 ## <a name="limits"></a>Sınırlar
 
-Kaç tane kayıt ve çözüm ağı olduğunu anlamak için özel DNS bölgelerine nasıl bağlayabileceğinizi [Azure DNS sınırlara](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) bakın
+Kaç kayıt ve çözüm ağı olduğunu anlamak için [Azure DNS Sınırları'nı](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) görebilirsiniz: özel DNS bölgelerine bağlanabilirsiniz
 
 ## <a name="other-considerations"></a>Diğer konular
 
 * Klasik dağıtım modeli kullanılarak dağıtılan sanal ağlar desteklenmez.
 
-* Özel bir DNS bölgesi ve bir sanal ağ arasında yalnızca bir bağlantı oluşturabilirsiniz.
+* Özel bir DNS bölgesi ile sanal ağ arasında yalnızca bir bağlantı oluşturabilirsiniz.
 
-* Özel bir DNS bölgesi altındaki her sanal ağ bağlantısı, özel DNS bölgesinin bağlamı içinde benzersiz bir ada sahip olmalıdır. Farklı özel DNS bölgelerinde aynı ada sahip bağlantılara sahip olabilirsiniz.
+* Özel bir DNS bölgesi altındaki her sanal ağ bağlantısı, özel DNS bölgesi bağlamında benzersiz bir ada sahip olmalıdır. Farklı özel DNS bölgelerinde aynı ada bağlantılar alabilirsiniz.
 
-* Bir sanal ağ bağlantısı oluşturduktan sonra, sanal ağ bağlantısı kaynağının "bağlantı durumu" alanını denetleyin. Sanal ağın boyutuna bağlı olarak, bağlantının işlem yapılmadan ve bağlantı durumunun *tamamlandı*olarak değiştiği birkaç dakika sürebilir.
+* Sanal ağ bağlantısı oluşturduktan sonra, sanal ağ bağlantısı kaynağının "Bağlantı Durumu" alanını kontrol edin. Sanal ağın boyutuna bağlı olarak, bağlantının çalışması ve Bağlantı *Durumu'nun Tamamlandı'ya*değiştirilmesi birkaç dakika sürebilir.
 
-* Bir sanal ağı sildiğinizde, farklı özel DNS bölgelerinde onunla ilişkili tüm sanal ağ bağlantıları ve otomatik kaydedilmiş DNS kayıtları otomatik olarak silinir.
+* Bir sanal ağı sildiğinizde, farklı özel DNS bölgelerinde onunla ilişkili tüm sanal ağ bağlantıları ve otomatik olarak kaydedilmiş DNS kayıtları otomatik olarak silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Portal](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) kullanarak bir sanal ağı özel bir DNS bölgesine bağlamayı öğrenin
+* [Azure portalLarını](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) kullanarak sanal ağı özel bir DNS bölgesine nasıl bağlayacaklarınız öğrenin
 
-* [Azure PowerShell](./private-dns-getstarted-powershell.md) veya [Azure CLI](./private-dns-getstarted-cli.md)kullanarak Azure DNS bir özel bölge oluşturmayı öğrenin.
+* [Azure PowerShell](./private-dns-getstarted-powershell.md) veya [Azure CLI'yi](./private-dns-getstarted-cli.md)kullanarak Azure DNS'de nasıl özel bir bölge oluşturabilirsiniz öğrenin.
 
-* Azure DNS özel bölgelerle gerçekleştirilen bazı yaygın [özel bölge senaryoları](./private-dns-scenarios.md) hakkında bilgi edinin.
+* Azure DNS'deki özel bölgelerle gerçekleştirilebilecek bazı yaygın [özel bölge senaryoları](./private-dns-scenarios.md) hakkında bilgi edinin.
 
-* Belirli işlemler için bekleneceğiniz belirli davranış dahil olmak üzere Azure DNS özel bölgeler hakkında sık sorulan sorular ve yanıtlar için, bkz. [özel DNS SSS](./dns-faq-private.md).
+* Belirli işlem türleri için bekleyebileceğiniz belirli davranışlar da dahil olmak üzere Azure DNS'deki özel bölgelerle ilgili sık sorulan sorular ve yanıtlar için [Bkz.](./dns-faq-private.md)

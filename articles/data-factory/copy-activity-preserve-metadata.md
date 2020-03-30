@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kopyalama etkinliğini kullanarak meta verileri ve ACL 'Leri koruma
-description: Azure Data Factory kopyalama etkinliğini kullanarak kopyalama sırasında meta verileri ve ACL 'Leri koruma hakkında bilgi edinin.
+title: Azure Veri Fabrikası'nda kopyalama etkinliğini kullanarak meta verileri ve AM'leri koruyun
+description: Azure Veri Fabrikası'ndaki kopyalama etkinliğini kullanarak kopyalama sırasında meta verileri ve ABM'leri nasıl koruyacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,38 +9,38 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/24/2020
 ms.author: jingwang
-ms.openlocfilehash: 056909f5fd5838e5ae50fb84bd3535029d862acf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b73cd73a18d286f221c7be2c624719e1d23d7c06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79260845"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153837"
 ---
-#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Data Factory kopyalama etkinliğini kullanarak meta verileri ve ACL 'Leri koruma
+#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda kopyalama etkinliğini kullanarak meta verileri ve AM'leri koruyun
 
-Verileri kaynaktan havuza kopyalamak için Azure Data Factory kopyalama etkinliğini kullandığınızda, aşağıdaki senaryolarda meta verileri ve ACL 'Leri de koruyabilirsiniz.
+Verileri kaynaktan batmaya kopyalamak için Azure Veri Fabrikası kopyalama etkinliğini kullandığınızda, aşağıdaki senaryolarda meta verileri ve ALA'ları da koruyabilirsiniz.
 
-## <a name="preserve-metadata"></a>Lake geçişi için meta verileri koruma
+## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a>Göl geçişi için meta verileri koruma
 
-Bir Data Lake 'tan [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md)ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md)dahil olmak üzere başka bir veri geçirdiğinizde, dosya meta verilerini verilerle birlikte korumayı seçebilirsiniz.
+Verileri bir veri gölünden Diğerine Amazon [S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md)ve [Azure Veri Gölü Depolama Gen2](connector-azure-data-lake-storage.md)gibi aktardığınızda, dosya meta verilerini verilerle birlikte korumayı seçebilirsiniz.
 
-Kopyalama etkinliği, veri kopyalama sırasında aşağıdaki özniteliklerin korunması destekler:
+Kopyalama etkinliği, veri kopyalama sırasında aşağıdaki özniteliklerin korunmasını destekler:
 
-- **Müşterinin belirttiği tüm meta veriler** 
-- Ve aşağıdaki **beş veri deposu yerleşik sistem özellikleri**: `contentType`, `contentLanguage` (Amazon S3 hariç), `contentEncoding`, `contentDisposition`, `cacheControl`.
+- **Tüm müşteri belirtilen meta veri** 
+- Ve aşağıdaki beş veri deposu yerleşik `contentType`sistem `contentLanguage` **özellikleri:**, (Amazon `contentDisposition` `cacheControl`S3 hariç), `contentEncoding`, , .
 
-Dosyaları Amazon S3/Azure Data Lake Storage 2./Azure blobundan ikili biçimdeki Azure Data Lake Storage 2./Azure Blobuna kopyalamak için, **koruma** seçeneğini, etkinlik yazma için **etkinlik** > **ayarları** sekmesine veya veri kopyalama aracındaki **Ayarlar** sayfasına bulabilirsiniz.
+Dosyaları Amazon S3/Azure Veri Gölü Depolama Gen2/Azure Blob'dan Azure Veri Gölü Depolama Gen2/Azure Blob'a ikili biçimle kopyalarken, etkinlik yazma için > Etkinlik**Ayarlarını** **Kopyala**sekmesinde veya Veri Kopyalama Aracı'ndaki **Ayarlar** sayfasında **Koruma** seçeneğini bulabilirsiniz.
 
-![Kopyalama etkinliği meta verilerini koru](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
+![Kopyalama etkinliği meta verileri koruma](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
-Kopyalama etkinliği JSON yapılandırmasına bir örnek aşağıda verilmiştir (bkz. `preserve`): 
+Burada kopya etkinliği JSON yapılandırma bir `preserve`örnek (bakınız): 
 
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveMetadata",
         "type": "Copy",
         "typeProperties": {
             "source": {
@@ -76,34 +76,34 @@ Kopyalama etkinliği JSON yapılandırmasına bir örnek aşağıda verilmiştir
 ]
 ```
 
-## <a name="preserve-acls"></a>Data Lake Storage 1. ACL 'Leri koruma ile Gen2
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a>Data Lake Storage Gen1/Gen2'den Gen2'ye ATL'leri Koruyun
 
-Azure Data Lake Storage 1. 'den Gen2 'e yükselttiğinizde, POSIX erişim denetim listelerini (ACL 'Ler) veri dosyalarıyla birlikte korumayı seçebilirsiniz. Access Control hakkında daha fazla bilgi için Azure Data Lake Storage 2. Azure Data Lake Storage 1. ve [erişim denetimi](../storage/blobs/data-lake-storage-access-control.md) [' nde erişim denetimi](../data-lake-store/data-lake-store-access-control.md) ' ne bakın.
+Azure Veri Gölü Depolama Gen1'den Gen2'ye yükselttiğinde veya ADLS Gen2 arasındaki verileri kopyalarken, veri dosyalarıyla birlikte POSIX erişim denetim listelerini (ACD'ler) korumayı seçebilirsiniz. Erişim denetimi hakkında daha fazla bilgi için Azure [Veri Gölü Depolama Gen1'de Erişim denetimine](../data-lake-store/data-lake-store-access-control.md) ve [Azure Veri Gölü Depolama Gen2'de Erişim denetimine](../storage/blobs/data-lake-storage-access-control.md)bakın.
 
-Kopyalama etkinliği, veri kopyalama sırasında aşağıdaki ACL türlerinin korunması destekler. Bir veya daha fazla tür seçebilirsiniz:
+Kopyalama etkinliği, veri kopyalama sırasında aşağıdaki ALA türlerinin korunmasını destekler. Bir veya daha fazla tür seçebilirsiniz:
 
-- **ACL**: dosya ve dizinlerde POSIX erişim denetim listelerini kopyalayın ve koruyun. Var olan tüm ACL 'Leri kaynaktan havuza kopyalar. 
-- **Sahip**: dosya ve dizinlerin sahip olduğu kullanıcıyı kopyalayın ve koruyun. Data Lake Storage 2. havuza Süper Kullanıcı erişimi gerekiyor.
-- **Grup**: sahip olan dosya ve dizinlerin grubunu kopyalayın ve koruyun. Havuz Data Lake Storage 2. veya sahip olan kullanıcıya yönelik süper kullanıcı erişimi (sahip olan kullanıcı aynı zamanda hedef grubun üyesiyse) gerekli.
+- **ACL**: Dosyalar ve dizinler üzerindeki POSIX erişim kontrol listelerini kopyalayın ve koruyun. Varolan aPARAtların tamamını kaynaktan lavaboya kopyalar. 
+- **Sahibi**: Dosya ve dizin sahibi kullanıcıyı kopyalayın ve saklayın. Veri Gölü Depolama Gen2 lavabo süper kullanıcı erişimi gereklidir.
+- **Grup**: Sahip olduğu dosya ve dizin grubunu kopyalayın ve saklayın. Veri Gölü Depolama Gen2'ye veya sahibi kullanıcıya (sahibi kullanıcı da hedef grubun bir üyesiyse) süper kullanıcı erişimi gereklidir.
 
-Bir klasörden kopyalamayı belirtirseniz Data Factory, bu klasör için ACL 'Leri ve `recursive` doğru olarak ayarlandıysa, altındaki dosyaları ve dizinleri çoğaltır. Tek bir dosyadan kopyalamayı belirtirseniz, bu dosyadaki ACL 'Ler kopyalanır.
+Bir klasörden kopyalamayı belirtirseniz, Veri Fabrikası o klasörün ALA'larını ve altında yer `recursive` alan dosyaları ve dizinleri doğru olarak ayarlanmışsa çoğaltır. Tek bir dosyadan kopyalamayı belirtirseniz, o dosyadaki ALA'lar kopyalanır.
 
 >[!NOTE]
->Data Lake Storage 1. ACL 'Leri Gen2 ile korumak için ADF kullandığınızda, buna karşılık gelen klasöre/dosyalara yönelik var olan ACL 'Lerin üzerine yazılır.
+>Data Lake Storage Gen1/Gen2'den Gen2'ye kadar ATL'leri korumak için ADF kullandığınızda, lavabo Gen2'nin ilgili klasör/dosyalarındaki mevcut ACD'ler üzerine yazılır.
 
 >[!IMPORTANT]
->ACL 'Leri korumayı seçtiğinizde, Data Factory havuz Data Lake Storage 2. hesabınızda çalışması için yeterince yüksek izinler verdiğinizden emin olun. Örneğin, hesap anahtarı kimlik doğrulamasını kullanın veya Depolama Blobu veri sahibi rolünü hizmet sorumlusu veya yönetilen kimliğe atayın.
+>ALA'ları korumayı seçtiğinizde, Veri Fabrikası'nın lavabo Veri Gölü Depolama Gen2 hesabınıza karşı çalışması için yeterince yüksek izin ler verdiğinizden emin olun. Örneğin, hesap anahtarı kimlik doğrulamasını kullanın veya Depolama Blob Veri Sahibi rolünü hizmet sorumlusuna veya yönetilen kimliğe atayın.
 
-Kaynağı ikili biçimi veya ikili kopya seçeneğini içeren Data Lake Storage 1. olarak, ikili biçimi veya ikili kopya seçeneğiyle Data Lake Storage 2. olarak yeniden yapılandırdığınızda, Veri Kopyalama aracındaki **Ayarlar** sayfasında veya etkinlik yazma Için **etkinliği Kopyala** > **Ayarlar** sekmesinde **koru** seçeneğini bulabilirsiniz.
+Kaynağı Ikili biçim veya ikili kopyalama seçeneğiyle Veri Gölü Depolama Gen1/Gen2 olarak yapılandırdığınızda ve ikili biçimli veya ikili kopyalama seçeneğiyle Veri Gölü Depolama Gen2 olarak battığınızda, Veri Aracı'nda **Ayarlar** sayfasında veya etkinlik yazma için **Etkinlik** > **Ayarları** sekmesinde **Koruma** seçeneğini bulabilirsiniz.
 
-![ACL 'yi korumak için Data Lake Storage 1. Gen2](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+![Veri Gölü Depolama Gen1/Gen2 Gen2 Preserve ACL için](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
-Kopyalama etkinliği JSON yapılandırmasına bir örnek aşağıda verilmiştir (bkz. `preserve`): 
+Burada kopya etkinliği JSON yapılandırma bir `preserve`örnek (bakınız): 
 
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveACLs",
         "type": "Copy",
         "typeProperties": {
             "source": {
@@ -127,7 +127,7 @@ Kopyalama etkinliği JSON yapılandırmasına bir örnek aşağıda verilmiştir
         },
         "inputs": [
             {
-                "referenceName": "<Binary dataset name for Azure Data Lake Storage Gen1 source>",
+                "referenceName": "<Binary dataset name for Azure Data Lake Storage Gen1/Gen2 source>",
                 "type": "DatasetReference"
             }
         ],
@@ -143,7 +143,7 @@ Kopyalama etkinliği JSON yapılandırmasına bir örnek aşağıda verilmiştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir kopyalama etkinliği makalelere bakın:
+Diğer Kopyalama Etkinliği makalelerini görün:
 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
-- [Etkinlik performansını Kopyala](copy-activity-performance.md)
+- [Etkinlik performansını kopyalama](copy-activity-performance.md)

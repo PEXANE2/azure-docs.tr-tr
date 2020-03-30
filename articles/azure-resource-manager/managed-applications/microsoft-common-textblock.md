@@ -1,20 +1,20 @@
 ---
-title: TextBlock Kullanıcı arabirimi öğesi
-description: Azure portal için Microsoft. Common. TextBlock Kullanıcı arabirimi öğesini açıklar. Arabirime metin eklemek için kullanın.
+title: TextBlock UI öğesi
+description: Azure portalı için Microsoft.Common.TextBlock UI öğesini açıklar. Arabirime metin eklemek için kullanın.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 418056cb149f4441bac49db839a0dba40c2bb42d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652222"
 ---
-# <a name="microsoftcommontextblock-ui-element"></a>Microsoft. Common. TextBlock Kullanıcı arabirimi öğesi
+# <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock Kullanıcı Bireb öğesi
 
-Portal arabirimine metin eklemek için kullanılabilen bir denetim.
+Portal arabirimine metin eklemek için kullanılabilecek bir denetim.
 
 ## <a name="ui-sample"></a>UI örneği
 
@@ -45,5 +45,5 @@ Portal arabirimine metin eklemek için kullanılabilen bir denetim.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
-* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).
+* UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
+* UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.

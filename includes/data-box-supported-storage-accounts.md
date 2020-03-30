@@ -6,24 +6,24 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: bc156b8c18f46cccf6fc775b82f76383b8c43861
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66242204"
 ---
-Desteklenen depolama hesapları ve Data Box cihaz için depolama türleri listesi aşağıda verilmiştir. Depolama hesapları ve bunların tüm özelliklerini tüm farklı türlerinin tam listesi için bkz. [türlerde depolama hesapları](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
+Aşağıda desteklenen depolama hesaplarının ve Veri Kutusu aygıtının depolama türlerinin bir listesi verilmiştir. Tüm farklı depolama hesapları ve bunların tam yeteneklerinin tam listesi için [bkz.](/azure/storage/common/storage-account-overview#types-of-storage-accounts)
 
-| **Depolama hesabı / desteklenen depolama türleri** | **Blok blobu** |**Sayfa blobu*** |**Azure dosyaları** |**Notlar**|
+| **Depolama hesabı / Desteklenen depolama türleri** | **Blok blobu** |**Sayfa blob*** |**Azure dosyaları** |**Notlar**|
 | --- | --- | -- | -- | -- |
-| Klasik standart | E | E | E |
-| Genel amaçlı v1 standart  | E | E | E | Sık ve seyrek erişimli desteklenir.|
+| Klasik Standart | E | E | E |
+| Genel amaçlı v1 Standardı  | E | E | E | Hem sıcak hem de serin desteklenir.|
 | Genel amaçlı v1 Premium  |  | E| | |
-| Genel amaçlı v2 standart  | E | E | E | Sık ve seyrek erişimli desteklenir.|
+| Genel amaçlı v2 Standardı  | E | E | E | Hem sıcak hem de serin desteklenir.|
 | Genel amaçlı v2 Premium  |  |E | | |
-| BLOB Depolama standart |E | | |Sık ve seyrek erişimli desteklenir. |
+| Blob depolama Standardı |E | | |Hem sıcak hem de serin desteklenir. |
 
-\* *-Verileri sayfa blobları karşıya 512 bayt VHD'ler gibi hizalı olmalıdır.*
+\**- Sayfa bloblarına yüklenen veriler VHD'ler gibi hizalanmış 512 bayt olmalıdır.*
 
 >[!NOTE]
-> Azure Data Lake depolama Gen 2 hesapları desteklenmez.
+> Azure Data Lake Storage 2. Nesil hesapları desteklenmez.

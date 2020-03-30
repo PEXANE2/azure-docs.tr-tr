@@ -1,30 +1,30 @@
 ---
 title: Bir .NET uygulamasından günlük olayları oluşturma
-description: Azure kümesinde veya tek başına kümede barındırılan .NET Service Fabric uygulamanıza günlük ekleme hakkında bilgi edinin.
+description: Bir Azure kümesinde veya tek başına kümede barındırılan .NET Service Fabric uygulamanıza günlük ekleme hakkında bilgi edinin.
 author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614375"
 ---
-# <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric uygulamanıza günlük ekleme
+# <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric uygulamanıza günlük kaydı ekleme
 
-Uygulamanız, sorun ortaya çıktığında bu sorunu gidermek için yeterli bilgi sağlamalıdır. Günlüğe kaydetme, Service Fabric uygulamanıza ekleyebileceğiniz en önemli işlemlerden biridir. Bir hata oluştuğunda, iyi günlüğe kaydetme, hataları araştırmak için bir yol sağlayabilir. Günlük düzenlerini çözümleyerek uygulamanızın performansını veya tasarımını geliştirmenin yollarını bulabilirsiniz. Bu belgede birkaç farklı günlüğe kaydetme seçeneği gösterilmektedir.
+Başvurunuz, sorunlar ortaya çıktığında adli olarak hata ayıklamak için yeterli bilgi sağlamalıdır. Günlük, Servis Kumaşı uygulamanıza ekleyebileceğiniz en önemli şeylerden biridir. Bir hata oluştuğunda, iyi günlüğe kaydetme hataları araştırmak için bir yol verebilir. Günlük desenlerini analiz ederek, uygulamanızın performansını veya tasarımını geliştirmenin yollarını bulabilirsiniz. Bu belge birkaç farklı günlüğe kaydetme seçeneğini gösterir.
 
-## <a name="eventflow"></a>EventFlow
+## <a name="eventflow"></a>Olay Akışı
 
-[EventFlow Library](https://github.com/Azure/diagnostics-eventflow) Suite, uygulamaların hangi tanılama verilerini toplayacağınızı, hangilerinin de nereye yapılacağını tanımlamasına olanak tanır. Tanılama verileri performans sayaçlarından uygulama izlemelerinden herhangi bir şey olabilir. Uygulama ile aynı işlemde çalışır, bu nedenle iletişim yükü en aza indirilir. EventFlow ve Service Fabric hakkında daha fazla bilgi için, [EventFlow Ile Azure Service Fabric olay toplama](service-fabric-diagnostics-event-aggregation-eventflow.md)konusuna bakın.
+[EventFlow kitaplık](https://github.com/Azure/diagnostics-eventflow) paketi, uygulamaların hangi tanılama verilerinin toplandığını ve bunların nereden çıkarılanacağını tanımlamasına olanak tanır. Tanılama verileri performans sayaçlarından uygulama izlemelerine kadar her şey olabilir. Uygulamayla aynı işlemde çalıştığından, iletişim yükü en aza indirilir. EventFlow ve Hizmet Kumaşı hakkında daha fazla bilgi [için, EventFlow ile Azure Hizmet Kumaşı Olay Toplama](service-fabric-diagnostics-event-aggregation-eventflow.md)konusuna bakın.
 
 ### <a name="using-structured-eventsource-events"></a>Yapılandırılmış EventSource olaylarını kullanma
 
-İleti olaylarının kullanım örneğine göre tanımlanması, olay ile ilgili verileri olay bağlamında paketlemenize olanak sağlar. Belirtilen olay özelliklerinin adlarına veya değerlerine göre daha kolay arama ve filtreleme yapabilirsiniz. İzleme çıkışını yapılandırmak, okumayı kolaylaştırır, ancak her kullanım örneği için bir olay tanımlamak için daha fazla düşünce ve zaman gerektirir. 
+İleti olaylarını kullanım örneğine göre tanımlamak, olay bağlamında olayla ilgili verileri paketlemenize olanak tanır. Belirtilen olay özelliklerinin adlarını veya değerlerini temel alınarak daha kolay arama yapabilir ve filtreleyebilirsiniz. Enstrümantasyon çıktısının yapılandırılması okunmasını kolaylaştırır, ancak her kullanım örneği için bir olayı tanımlamak için daha fazla düşünce ve zaman gerektirir. 
 
-Bazı olay tanımları tüm uygulama genelinde paylaşılabilir. Örneğin, bir yöntem başlatma veya durdurma olayı, bir uygulama içindeki birçok hizmet arasında yeniden kullanılabilir. Bir sipariş sistemi gibi, etki alanına özgü bir hizmetin kendi benzersiz olayına sahip bir **CreateOrder** olayı olabilir. Bu yaklaşım çok sayıda olay oluşturabilir ve potansiyel olarak proje ekiplerinde tanımlayıcıların koordine edilmesini gerektirebilir. 
+Bazı olay tanımları tüm uygulama boyunca paylaşılabilir. Örneğin, bir yöntem başlatma veya durdurma olayı, bir uygulama içindeki birçok hizmette yeniden kullanılır. Sipariş sistemi gibi etki alanına özgü bir hizmetin, kendine özgü bir etkinliği olan bir **CreateOrder** etkinliği olabilir. Bu yaklaşım birçok olay oluşturabilir ve proje ekipleri arasında tanımlayıcıların eşgüdümlenmesini gerektirebilir. 
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -57,9 +57,9 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-### <a name="using-eventsource-generically"></a>EventSource kullanarak
+### <a name="using-eventsource-generically"></a>EventSource'u genel olarak kullanma
 
-Belirli olayların tanımlanması zor olabileceğinden, çoğu kişi genellikle bilgilerini bir dize olarak izleyen ortak bir parametre kümesiyle birkaç olay tanımlar. Yapılandırılmış en büyük değer kaybolur ve sonuçları aramak ve filtrelemek daha zordur. Bu yaklaşımda, genellikle günlük düzeylerine karşılık gelen birkaç olay tanımlanmıştır. Aşağıdaki kod parçacığı hata ayıklama ve hata iletisini tanımlar:
+Belirli olayları tanımlamak zor olabileceğinden, birçok kişi genellikle bilgilerini bir dize olarak çıktı parametreleri ortak bir dizi ile birkaç olay tanımlar. Yapılandırılmış yönün çoğu kaybolur ve sonuçları aramak ve filtrelemek daha zordur. Bu yaklaşımda, genellikle günlük düzeylerine karşılık gelen birkaç olay tanımlanır. Aşağıdaki snippet hata ayıklama ve hata iletisi tanımlar:
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -90,27 +90,27 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-Yapılandırılmış ve genel bir izleme karma bir şekilde kullanılması iyi bir şekilde çalışabilir. Yapılandırılmış izleme hataları ve ölçümleri raporlamak için kullanılır. Genel olaylar, sorun giderme için mühendisler tarafından tüketilen ayrıntılı günlük kaydı için kullanılabilir.
+Yapılandırılmış ve jenerik enstrümantasyon bir melez kullanarak da iyi çalışabilir. Yapılandırılmış enstrümantasyon hataları ve ölçümleri raporlamak için kullanılır. Genel olaylar, mühendisler tarafından sorun giderme için tüketilen ayrıntılı günlüğe kaydetme için kullanılabilir.
 
-## <a name="microsoftextensionslogging"></a>Microsoft. Extensions. Logging
+## <a name="microsoftextensionslogging"></a>Microsoft.Extensions.Logging
 
-ASP.NET Core günlüğü ([Microsoft. Extensions. Logging NuGet paketi](https://www.nuget.org/packages/Microsoft.Extensions.Logging)), uygulamanız için standart bir günlüğe kaydetme API 'si sağlayan bir günlük çerçevesidir. Diğer günlük arka uçları için destek, ASP.NET Core günlüğe takılabilir. Bu, çok sayıda kodu değiştirmek zorunda kalmadan, uygulamanızda günlüğe kaydetme için çok çeşitli destek sağlar.
+ASP.NET Core günlük[(Microsoft.Extensions.Logging NuGet paketi),](https://www.nuget.org/packages/Microsoft.Extensions.Logging)uygulamanız için standart bir günlük API'sı sağlayan bir günlük çerçevesidir. Diğer günlük arka uçları için destek ASP.NET Core günlük takılabilir. Bu, çok fazla kod değiştirmek zorunda kalmadan, uygulamanızda günlüğe kaydetme nin işlendiği için çok çeşitli destek sağlar.
 
-1. İşaretlemek istediğiniz projeye **Microsoft. Extensions. Logging** NuGet paketini ekleyin. Ayrıca, tüm sağlayıcı paketlerini ekleyin. Daha fazla bilgi için bkz. [oturum açma ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
-2. Hizmet dosyanıza **Microsoft. Extensions. Logging** için bir **using** yönergesi ekleyin.
-3. Hizmet sınıfınız içinde özel bir değişken tanımlayın.
+1. **Microsoft.Extensions.Logging** NuGet paketini enstrüman istediğiniz projeye ekleyin. Ayrıca, herhangi bir sağlayıcı paketleri ekleyin. Daha fazla bilgi için ASP.NET [Core'da Günlüğe Kaydetme'ye](https://docs.microsoft.com/aspnet/core/fundamentals/logging)bakın.
+2. **Microsoft.Extensions.Logging** için hizmet dosyanıza **bir kullanım** yönergesi ekleyin.
+3. Hizmet sınıfınızda özel bir değişken tanımlayın.
 
    ```csharp
    private ILogger _logger = null;
    ```
 
-4. Hizmet sınıfınızın oluşturucusunda şu kodu ekleyin:
+4. Hizmet sınıfınızın oluşturucusuna şu kodu ekleyin:
 
    ```csharp
    _logger = new LoggerFactory().CreateLogger<Stateless>();
    ```
 
-5. Yöntemlerinizin içindeki kodunuzu işaretleme ile başlayın. İşte birkaç örnek:
+5. Kodunuzu yöntemlerinizde enstrümanting başlayın. İşte birkaç örnek:
 
    ```csharp
    _logger.LogDebug("Debug-level event from Microsoft.Logging");
@@ -123,22 +123,22 @@ ASP.NET Core günlüğü ([Microsoft. Extensions. Logging NuGet paketi](https://
 
 ### <a name="using-other-logging-providers"></a>Diğer günlük sağlayıcılarını kullanma
 
-Bazı üçüncü taraf sağlayıcılar, [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/)ve [loggr](https://github.com/imobile3/Loggr.Extensions.Logging)gibi önceki bölümde açıklanan yaklaşımı kullanır. Bunların her birini ASP.NET Core günlüğe ekleyebilir veya bunları ayrı ayrı kullanabilirsiniz. Serilog, bir günlükçü tarafından gönderilen tüm iletileri zenginleştirir. Bu özellik, hizmet adı, tür ve bölüm bilgilerinin çıktısı için yararlı olabilir. ASP.NET Core altyapısında bu özelliği kullanmak için şu adımları uygulayın:
+Bazı üçüncü taraf [sağlayıcılar, Serilog,](https://serilog.net/) [NLog](https://nlog-project.org/)ve [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)dahil olmak üzere önceki bölümde açıklanan yaklaşımı kullanır. Bunların her birini ASP.NET Core günlüğe takabilir veya ayrı ayrı kullanabilirsiniz. Serilog' un bir logger' dan gönderilen tüm iletileri zenginleyen bir özelliği vardır. Bu özellik, hizmet adı, türü ve bölüm bilgilerini çıktıalmak için yararlı olabilir. Bu özelliği ASP.NET Çekirdek altyapısında kullanmak için aşağıdaki adımları yapın:
 
-1. **Serilog**, **Serilog. Extensions. Logging**, **Serilog. havuzlar. Literate**ve **Serilog. havuzlar. Observable** NuGet paketlerini projeye ekleyin. 
-2. `LoggerConfiguration` ve günlükçü örneği oluşturun.
+1. **Serilog**ekleyin , **Serilog.Extensions.Logging**, **Serilog.Sinks.Literate**, ve **Serilog.Sinks.Observable** NuGet paketleri projeye. 
+2. Bir `LoggerConfiguration` ve logger örneği oluşturun.
 
    ```csharp
    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
    ```
 
-3. Service yapıcısına bir `Serilog.ILogger` bağımsız değişkeni ekleyin ve yeni oluşturulan günlükçü 'yi geçirin.
+3. Hizmet `Serilog.ILogger` oluşturucuya bir bağımsız değişken ekleyin ve yeni oluşturulan kaydediciyi geçirin.
 
    ```csharp
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. Hizmet oluşturucusunda, **ServiceTypeName**, **ServiceName**, **PartitionID**ve **InstanceId**için özellik zenginler oluşturur.
+4. Hizmet oluşturucu olarak, **ServiceTypeName**, **ServiceName**, **PartitionId**ve **InstanceId**için özellik zenginleştirme oluşturur.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
@@ -158,15 +158,15 @@ Bazı üçüncü taraf sağlayıcılar, [Serilog](https://serilog.net/), [NLog](
    }
    ```
 
-5. Kodu, Serilog olmadan kullanırken ASP.NET Core.
+5. Kodu, Serilog'suz ASP.NET Core kullanıyormuş gibi enstrümanlayın.
 
    >[!NOTE]
-   >Statik `Log.Logger` önceki örnekle kullanmanıza *gerek kalmaz* . Service Fabric, tek bir işlem içinde aynı hizmet türünün birden çok örneğini barındırabilir. Statik `Log.Logger`kullanıyorsanız, özelliğin enzenginleştiricileri 'nin son yazarı, çalıştıran tüm örneklerin değerlerini gösterir. Bu, _logger değişkeninin hizmet sınıfının özel bir üye değişkeni olmasının bir nedenidir. Ayrıca, hizmetler genelinde kullanılabilecek `_logger` ortak kod için kullanılabilir yapmalısınız.
+   >Statik cihazı önceki `Log.Logger` örnekte *kullanmamanızı* öneririz. Service Fabric, tek bir işlem içinde aynı hizmet türünden birden çok örneği barındırabilir. Statik `Log.Logger`kullanırsanız, özellik zenginleştiricilerin son yazarı çalışan tüm örnekler için değerleri gösterir. Bu, _logger değişkeninin hizmet sınıfının özel bir üye değişkeni olmasının nedenlerinden biridir. Ayrıca, hizmetler arasında `_logger` kullanılabilecek ortak kod için kullanılabilir hale getirmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Service Fabric 'de uygulama izleme](service-fabric-diagnostics-event-generation-app.md)hakkında daha fazla bilgi edinin.
-- [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) ve [Windows Azure tanılama](service-fabric-diagnostics-event-aggregation-wad.md)ile günlüğe kaydetme hakkında bilgi edinin.
+- [Service Fabric'de uygulama izleme](service-fabric-diagnostics-event-generation-app.md)hakkında daha fazla bilgi edinin.
+- [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) ve Windows [Azure Tanılama](service-fabric-diagnostics-event-aggregation-wad.md)ile günlüğe kaydetme hakkında bilgi edinin.
 
 
 
