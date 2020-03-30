@@ -1,49 +1,49 @@
 ---
-title: Öğretici-ACR görevi zamanlama
-description: Bu öğreticide, bir veya daha fazla Zamanlayıcı tetikleyicisi ayarlayarak tanımlı bir zamanlamaya göre Azure Container Registry görevinin nasıl çalıştırılacağını öğrenin
+title: Öğretici - ACR görevi zamanlama
+description: Bu öğreticide, bir veya daha fazla zamanlayıcı tetikleyicisi ayarlayarak belirli bir zamanlamada Azure Kapsayıcı Kayıt Defteri Görevi'ni nasıl çalıştırılayarılabilirsiniz
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402870"
 ---
-# <a name="run-an-acr-task-on-a-defined-schedule"></a>Tanımlı bir zamanlamaya göre bir ACR görevi çalıştırma
+# <a name="run-an-acr-task-on-a-defined-schedule"></a>Tanımlı bir zamanlamada bir ACR görevi çalıştırma
 
-Bu öğreticide bir [ACR görevinin](container-registry-tasks-overview.md) bir zamanlamaya göre nasıl çalıştırılacağı gösterilmektedir. Bir veya daha fazla *Zamanlayıcı tetikleyicisi*ayarlayarak bir görev zamanlayın. Zamanlayıcı Tetikleyicileri tek başına veya diğer görev tetikleyicilerle birlikte kullanılabilir.
+Bu öğretici, bir Zamanlama'da Bir [ACR Görevi'ni](container-registry-tasks-overview.md) nasıl çalıştırabileceğinizi gösterir. Bir veya daha fazla *zamanlayıcı tetikleyicisini*ayarlayarak bir görev zamanlayın. Zamanlayıcı tetikleyicileri tek başına veya diğer görev tetikleyicileriyle birlikte kullanılabilir.
 
-Bu öğreticide, görevleri planlama ve zamanlama hakkında bilgi edinin:
+Bu eğitimde, görevleri zamanlama ve:
 
 > [!div class="checklist"]
-> * Zamanlayıcı tetikleyicisiyle görev oluşturma
+> * Zamanlayıcı tetikleyicisi ile görev oluşturma
 > * Zamanlayıcı tetikleyicilerini yönetme
 
-Bir görevin zamanlanması aşağıdakiler gibi senaryolar için yararlıdır:
+Görev zamanlama aşağıdaki gibi senaryolar için yararlıdır:
 
-* Zamanlanan bakım işlemleri için bir kapsayıcı iş yükü çalıştırın. Örneğin, kayıt defterinizin gereksiz görüntülerini kaldırmak için kapsayıcılı bir uygulama çalıştırın.
-* Canlı site izlemenin bir parçası olarak Workday sırasında bir üretim görüntüsünde bir test kümesi çalıştırın.
+* Zamanlanmış bakım işlemleri için bir kapsayıcı iş yükü çalıştırın. Örneğin, kayıt defterinizden gereksiz görüntüleri kaldırmak için kapsayıcıbir uygulama çalıştırın.
+* Canlı site izlemenizin bir parçası olarak iş günü boyunca bir üretim görüntüsü üzerinde bir dizi test çalıştırın.
 
-Bu makaledeki örnekleri çalıştırmak için Azure CLı 'nın Azure Cloud Shell veya yerel bir yüklemesini kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.68 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+Bu makaledeki örnekleri çalıştırmak için Azure Bulut Kabuğu'nu veya Azure CLI'nin yerel yüklemesini kullanabilirsiniz. Yerel olarak kullanmak isterseniz, sürüm 2.0.68 veya daha sonra gereklidir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 
 ## <a name="about-scheduling-a-task"></a>Görev zamanlama hakkında
 
-* **Cron Ifadesiyle Tetikle** -bir görevin zamanlayıcı tetikleyicisi bir *cron ifadesi*kullanır. İfade, görevin tetiklenmesi için dakika, saat, gün, ay ve haftanın gününü belirten beş alanı olan bir dizedir. Dakikada bir defa kadar olan sıklık desteklenir.
+* **Cron ifadesi ile tetikleme** - Görev için zamanlayıcı tetikleyici bir *cron ifadesi*kullanır. İfade, görevi tetiklemek için dakikayı, saati, günü, ayı ve haftanın gününü belirten beş alana sahip bir dizedir. Dakikada bir kereye kadar frekanslar desteklenir.
 
-  Örneğin, ifade `"0 12 * * Mon-Fri"` her hafta içinde gece UTC tarihinde bir görevi tetikler. Bu makalenin ilerleyen kısımlarında [ayrıntılara](#cron-expressions) bakın.
-* **Birden çok süreölçer tetikleyicisi** -zamanlamalar farklı olduğu sürece bir göreve birden fazla Zamanlayıcı ekleme izni verilir.
-    * Görevi oluştururken birden fazla Zamanlayıcı tetikleyicisi belirtin veya daha sonra ekleyin.
-    * İsteğe bağlı olarak daha kolay yönetim için Tetikleyicileri adlandırın veya ACR görevleri varsayılan tetikleyici adlarını sağlar.
-    * Zamanlayıcı zamanlamaları aynı anda çakışırsa ACR görevleri her Zamanlayıcı için zamanlanmış saatte görevi tetikler.
-* **Diğer görev Tetikleyicileri** -Zamanlayıcı tarafından tetiklenen bir görevde, Tetikleyicileri [kaynak kodu işlemeye](container-registry-tutorial-build-task.md) veya [temel görüntü güncelleştirmelerine](container-registry-tutorial-base-image-update.md)göre de etkinleştirebilirsiniz. Diğer ACR görevleri gibi, zamanlanmış bir görevi de [el ile tetikleyebilirsiniz][az-acr-task-run] .
+  Örneğin, ifade `"0 12 * * Mon-Fri"` hafta içi her gün UTC'de öğlen bir görevi tetikler. Bu makalenin [ilerleyen](#cron-expressions) bilgilerine bakın.
+* **Birden çok zamanlayıcı tetikleyicisi** - Zamanlamalar farklı olduğu sürece göreve birden çok zamanlayıcı eklenmesine izin verilir.
+    * Görevi oluştururken birden çok zamanlayıcı tetikleyicisi belirtin veya daha sonra ekleyin.
+    * İsteğe bağlı olarak daha kolay yönetim için tetikleyicileri adlandırır veya ACR Görevleri varsayılan tetikleyici adları sağlar.
+    * Zamanlayıcı zamanlamaları aynı anda çakışıyorsa, ACR Görevleri görevi her zamanlayıcı için zamanlanan zamanda tetikler.
+* **Diğer görev tetikleyicileri** - Zamanlayıcı tarafından tetiklenen bir görevde, [kaynak kodu işleme](container-registry-tutorial-build-task.md) veya [temel görüntü güncelleştirmelerini](container-registry-tutorial-base-image-update.md)temel alan tetikleyicileri de etkinleştirebilirsiniz. Diğer ACR görevleri gibi, zamanlanmış bir görevi [de el ile tetikleyebilirsiniz.][az-acr-task-run]
 
-## <a name="create-a-task-with-a-timer-trigger"></a>Zamanlayıcı tetikleyicisiyle görev oluşturma
+## <a name="create-a-task-with-a-timer-trigger"></a>Zamanlayıcı tetikleyicisi ile görev oluşturma
 
-[Az ACR Task Create][az-acr-task-create] komutuyla bir görev oluşturduğunuzda, isteğe bağlı olarak bir Zamanlayıcı tetikleyicisi ekleyebilirsiniz. `--schedule` parametresini ekleyin ve Zamanlayıcı için bir cron ifadesi geçirin.
+[Az acr görev oluşturma][az-acr-task-create] komutu ile bir görev oluşturduğunuzda, isteğe bağlı olarak bir zamanlayıcı tetikleyici sekleyebilirsiniz. Parametre `--schedule` ekleyin ve zamanlayıcı için cron ifadesini geçirin.
 
-Basit bir örnek olarak aşağıdaki komut, `hello-world` görüntüsünü Docker Hub 'dan her gün 21:00 UTC 'den çalıştırmayı tetikler. Görev, kaynak kodu bağlamı olmadan çalışır.
+Basit bir örnek olarak, aşağıdaki komut, `hello-world` görüntüyü her gün saat 21:00 UTC'de Docker Hub'dan çalıştırmayı tetikler. Görev kaynak kodu bağlamı olmadan çalışır.
 
 ```azurecli
 az acr task create \
@@ -54,7 +54,7 @@ az acr task create \
   --context /dev/null
 ```
 
-Süreölçer tetikleyicisinin yapılandırıldığını görmek için [az ACR Task Show][az-acr-task-show] komutunu çalıştırın. Varsayılan olarak, temel görüntü güncelleştirme tetikleyicisi de etkinleştirilir.
+Zamanlayıcı tetikleyicisinin yapılandırıldığını görmek için [az acr görev göster][az-acr-task-show] komutunu çalıştırın. Varsayılan olarak, temel görüntü güncelleştirme tetikleyicisi de etkinleştirilir.
 
 ```azurecli
 az acr task show --name mytask --registry registry --output table
@@ -66,13 +66,13 @@ NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
 ```
 
-Doğru ayarlandığından emin olmak için [az ACR görev çalıştırması][az-acr-task-run] ile görevi el ile tetikleyin:
+Düzgün ayarlandığından emin olmak için [az acr görev çalıştırılayla][az-acr-task-run] görevi el ile tetikle:
 
 ```azurecli
 az acr task run --name mytask --registry myregistry
 ```
 
-Kapsayıcı başarıyla çalışırsa, çıkış aşağıdakine benzer:
+Kapsayıcı başarılı bir şekilde çalışıyorsa, çıktı aşağıdakilere benzer:
 
 ```output
 Queued a run with ID: cf2a
@@ -87,13 +87,13 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-Zamanlanan zamandan sonra, zamanlayıcının görevi beklendiği gibi tetiklediğini doğrulamak için [az ACR görev listesi-çalıştırmaları][az-acr-task-list-runs] komutunu çalıştırın:
+Zamanlanan süreden sonra, zamanlayıcının görevi beklendiği gibi tetiklediğini doğrulamak için [az acr görev listesi çalıştır Komutunu][az-acr-task-list-runs] çalıştırın:
 
 ```azurecli
 az acr task list-runs --name mytask --registry myregistry --output table
 ```
 
-Süreölçer başarılı olduğunda, çıkış aşağıdakine benzer:
+Zamanlayıcı başarılı olduğunda, çıktı aşağıdakilere benzer:
 
 ```output
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
@@ -105,11 +105,11 @@ cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00
 
 ## <a name="manage-timer-triggers"></a>Zamanlayıcı tetikleyicilerini yönetme
 
-ACR görevinin Zamanlayıcı tetikleyicilerini yönetmek için [az ACR Görev Zamanlayıcı][az-acr-task-timer] komutlarını kullanın.
+ACR görevi için zamanlayıcı tetikleyicilerini yönetmek için [az acr görev zamanlayıcısı][az-acr-task-timer] komutlarını kullanın.
 
-### <a name="add-or-update-a-timer-trigger"></a>Zamanlayıcı tetikleyicisi ekleme veya güncelleştirme
+### <a name="add-or-update-a-timer-trigger"></a>Zamanlayıcı tetikleyicisi ekleme veya güncelleme
 
-Bir görev oluşturulduktan sonra, isteğe bağlı olarak [az ACR görev süreölçeri Add][az-acr-task-timer-add] komutunu kullanarak bir Zamanlayıcı tetikleyicisi ekleyin. Aşağıdaki örnek, daha önce oluşturulan *MyTask* öğesine *Timer2* bir Zamanlayıcı tetikleyicisi adı ekler. Bu süreölçer, görevi her gün 10:30 UTC 'de tetikler.
+Görev oluşturulduktan sonra, [az acr görev zamanlayıcısı ekle][az-acr-task-timer-add] komutunu kullanarak isteğe bağlı olarak bir zamanlayıcı tetikleyicisi ekleyin. Aşağıdaki örnek, daha önce oluşturulan *mytask'a* bir zamanlayıcı tetikleyici adı *timer2* ekler. Bu zamanlayıcı görevi her gün 10:30 UTC'de tetikler.
 
 ```azurecli
 az acr task timer add \
@@ -119,7 +119,7 @@ az acr task timer add \
   --schedule "30 10 * * *"
 ```
 
-[Az ACR Task Timer Update][az-acr-task-timer-update] komutunu kullanarak var olan bir tetikleyicinin zamanlamasını güncelleştirin veya durumunu değiştirin. Örneğin, *Timer2* adlı tetikleyiciyi, GÖREVI 11:30 UTC 'de tetikleyecek şekilde güncelleştirin:
+[Az acr görev zamanlayıcısı güncelleştirme][az-acr-task-timer-update] komutunu kullanarak varolan bir tetikleyicinin zamanlamasını güncelleştirin veya durumunu değiştirin. Örneğin, görevi 11:30 UTC'de tetiklemek için *timer2* adlı tetikleyiciyi güncelleştirin:
 
 ```azurecli
 az acr task timer update \
@@ -131,7 +131,7 @@ az acr task timer update \
 
 ### <a name="list-timer-triggers"></a>Zamanlayıcı tetikleyicilerini listeleme
 
-[Az ACR Görev Zamanlayıcı listesi][az-acr-task-timer-list] komutu, bir görev için ayarlanan Zamanlayıcı tetikleyicilerini gösterir:
+[az acr görev zamanlayıcı listesi][az-acr-task-timer-list] komutu, görev için ayarlanan zamanlayıcı tetikleyicilerini gösterir:
 
 ```azurecli
 az acr task timer list --name mytask --registry myregistry
@@ -154,9 +154,9 @@ az acr task timer list --name mytask --registry myregistry
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Zamanlayıcı tetikleyicisini kaldır
+### <a name="remove-a-timer-trigger"></a>Zamanlayıcı tetikleyicisi kaldırma
 
-Bir görevden bir Zamanlayıcı tetikleyicisini kaldırmak için [az ACR Task Timer Remove][az-acr-task-timer-remove] komutunu kullanın. Aşağıdaki örnek *MyTask* *Timer2* tetikleyicisini kaldırır:
+Görevden bir zamanlayıcı tetikleyicisini kaldırmak için [az acr görev zamanlayıcısı kaldır][az-acr-task-timer-remove] komutunu kullanın. Aşağıdaki örnek, *zamanlayıcı2* tetikleyicisini *mytask'tan*kaldırır:
 
 ```azurecli
 az acr task timer remove \
@@ -167,24 +167,24 @@ az acr task timer remove \
 
 ## <a name="cron-expressions"></a>Cron ifadeleri
 
-ACR görevleri cron ifadelerini yorumlamak için [Ncrontab](https://github.com/atifaziz/NCrontab) kitaplığını kullanır. ACR görevlerinde desteklenen ifadeler, boşluk ile ayrılmış beş gerekli alana sahiptir:
+ACR Görevleri cron ifadelerini yorumlamak için [NCronTab](https://github.com/atifaziz/NCrontab) kitaplığını kullanır. ACR Görevleri'nde desteklenen ifadelerin beyaz alanla ayrılmış beş gerekli alanı vardır:
 
 `{minute} {hour} {day} {month} {day-of-week}`
 
-Cron ifadeleriyle kullanılan saat dilimi Eşgüdümlü Evrensel Saat (UTC). Saatler 24 saat biçimindedir.
+Cron ifadeleri ile kullanılan saat dilimi Eşgüdümlü Evrensel Saat (UTC) idi. Saatler 24 saat biçimindedir.
 
 > [!NOTE]
-> ACR görevleri cron ifadelerinde `{second}` veya `{year}` alanını desteklemez. Başka bir sistemde kullanılan bir cron ifadesini kopyalarsanız, kullanıldıkları takdirde bu alanları kaldırdığınızdan emin olun.
+> ACR Görevleri cron `{second}` `{year}` ifadelerinde veya alanı desteklemez. Başka bir sistemde kullanılan bir cron ifadesini kopyalarsanız, kullanılıyorsa bu alanları kaldırdığınızdan emin olun.
 
 Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 |Tür  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
-|Belirli bir değer |<nobr>`"5 * * * *"`</nobr>|saatte 5 dakikada bir saat geçti|
-|Tüm değerler (`*`)|<nobr>`"* 5 * * *"`</nobr>|saatin her dakikası, 5:00 UTC (günde 60 kez)|
-|Bir Aralık (`-` işleci)|<nobr>`"0 1-3 * * *"`</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|
-|Bir değerler kümesi (`,` işleci)|<nobr>`"20,30,40 * * * *"`</nobr>|saatte 3 kez, 20 dakika, 30 dakika ve 40 dakika geçmiş|
-|Aralık değeri (`/` işleci)|<nobr>`"*/10 * * * *"`</nobr>|Saat başına 6 kez, 10 dakika, 20 dakika, vb. saat geçti
+|Belirli bir değer |<nobr>`"5 * * * *"`</nobr>|saat 5 dakika geçerken her saat|
+|Tüm değerler`*`( )|<nobr>`"* 5 * * *"`</nobr>|05:00 UTC başlayan saatin her dakikası (günde 60 kez)|
+|Bir aralık`-` (operatör)|<nobr>`"0 1-3 * * *"`</nobr>|Günde 3 kez, 1:00, 2:00 ve 3:00 UTC|
+|Bir değer kümesi`,` (işleç)|<nobr>`"20,30,40 * * * *"`</nobr>|Saatte 3 kez, 20 dakika, 30 dakika ve saati 40 dakika geçe|
+|Bir aralık`/` değeri (işleç)|<nobr>`"*/10 * * * *"`</nobr>|Saatte 6 kez, 10 dakika, 20 dakika, ve saire, saati geçti
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -192,17 +192,17 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 |Örnek|Tetiklendiğinde  |
 |---------|---------|
-|`"*/5 * * * *"`|Beş dakikada bir|
-|`"0 * * * *"`|her saatin üstünde bir kez|
-|`"0 */2 * * *"`|Her iki saatte bir|
-|`"0 9-17 * * *"`|9:00 ile 17:00 UTC arasındaki her saat|
-|`"30 9 * * *"`|Her gün saat 9:30 UTC|
-|`"30 9 * * 1-5"`|Her gün 9:30 UTC|
-|`"30 9 * Jan Mon"`|Ocak ayında her Pazartesi 9:30 UTC|
+|`"*/5 * * * *"`|her beş dakikada bir|
+|`"0 * * * *"`|her saatin başında bir kez|
+|`"0 */2 * * *"`|her iki saatte bir|
+|`"0 9-17 * * *"`|9:00-17:00 UTC arasında her saat bir kez|
+|`"30 9 * * *"`|9:30 UTC her gün|
+|`"30 9 * * 1-5"`|hafta içi her gün 9:30 UTC'de|
+|`"30 9 * Jan Mon"`|9:30 UTC Ocak ayında her Pazartesi|
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğretici serisinde, kapsayıcı kayıt defteri veya kayıt defterleri, kapsayıcı örneği, anahtar kasası ve hizmet sorumlusu dahil oluşturduğunuz tüm kaynakları kaldırmak için aşağıdaki komutları verin:
+Konteyner kayıt defteri veya kayıt defterleri, konteyner örneği, anahtar kasası ve hizmet sorumlusu da dahil olmak üzere bu öğretici seride oluşturduğunuz tüm kaynakları kaldırmak için aşağıdaki komutları sorun:
 
 ```azurecli
 az group delete --resource-group $RES_GROUP
@@ -211,11 +211,11 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Zamanlayıcı tarafından otomatik olarak tetiklenen Azure Container Registry görevlerinin nasıl oluşturulacağını öğrendiniz. 
+Bu eğitimde, bir zamanlayıcı tarafından otomatik olarak tetiklenen Azure Kapsayıcı Kayıt Defteri görevlerininasıl oluşturabileceğinizi öğrendiniz. 
 
-Bir kayıt defterindeki depoları temizlemek için zamanlanmış bir görev kullanmanın bir örneği için bkz. [Azure Container Registry 'den görüntüleri otomatik olarak temizleme](container-registry-auto-purge.md).
+Kayıt defterindeki depoları temizlemek için zamanlanmış bir görev kullanma örneği için, [bkz.](container-registry-auto-purge.md)
 
-Kaynak kodu işlemeleri veya temel görüntü güncelleştirmeleri tarafından tetiklenen görev örnekleri için [ACR Tasks öğreticisi serisinde](container-registry-tutorial-quick-task.md)diğer makalelere bakın.
+Kaynak kodu taahhütleri veya temel görüntü güncelleştirmeleri tarafından tetiklenen görevlerin örnekleri için, [ACR Görevler öğretici serisindeki](container-registry-tutorial-quick-task.md)diğer makalelere bakın.
 
 
 

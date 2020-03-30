@@ -1,45 +1,45 @@
 ---
-title: Şirket içindeki veri kaynaklarına erişin
-description: Azure şirket içi veri ağ geçidi kaynağı oluşturarak Azure Logic Apps şirket içi veri kaynaklarına bağlanma
+title: Şirket içinde veri kaynaklarına erişin
+description: Azure şirket içi veri ağ geçidi kaynağı oluşturarak Azure Logic Apps'tan şirket içi veri kaynaklarına bağlanma
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
 ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456581"
 ---
-# <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
+# <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps'ten şirket içi veri kaynaklarına bağlanma
 
-Mantıksal uygulamalarınızdan şirket içi veri kaynaklarına erişebilmek için önce [yerel bir bilgisayara Şirket *içi veri ağ geçidini* ](../logic-apps/logic-apps-gateway-install.md)yükledikten sonra bir Azure kaynağı oluşturmanız gerekir. Daha sonra mantıksal uygulamalarınız bu Azure ağ geçidi kaynağını, Azure Logic Apps için mevcut olan [Şirket içi bağlayıcılar](../connectors/apis-list.md#on-premises-connectors) tarafından sağlanan Tetikleyiciler ve eylemlerde kullanır.
+Mantıksal uygulamalarınızdan şirket içi veri kaynaklarına erişebilmeniz için, [şirket içi veri ağ *geçidini* yerel bir bilgisayara yükledikten](../logic-apps/logic-apps-gateway-install.md)sonra bir Azure kaynağı oluşturmanız gerekir. Daha sonra mantıksal uygulamalarınız bu Azure ağ geçidi kaynağını, Azure Mantık Uygulamaları için kullanılabilen [şirket içi bağlayıcılar](../connectors/apis-list.md#on-premises-connectors) tarafından sağlanan tetikleyicilerde ve eylemlerde kullanır.
 
-Bu makalede, [yerel bilgisayarınızda daha önce yüklenmiş bir ağ geçidi](../logic-apps/logic-apps-gateway-install.md)için Azure Gateway kaynağınızın nasıl oluşturulacağı gösterilmektedir. Ağ Geçidi hakkında daha fazla bilgi için bkz. [ağ geçidinin nasıl çalıştığı](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
+Bu makalede, yerel bilgisayarınızda daha önce yüklenmiş bir ağ geçidi için Azure ağ geçidi [kaynağıoluşturmak](../logic-apps/logic-apps-gateway-install.md)için nasıl gösterir. Ağ geçidi hakkında daha fazla bilgi için [ağ geçidinin nasıl çalıştığını](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)görün.
 
 > [!TIP]
 > Azure sanal ağlarına bağlanmak için bunun yerine bir [*tümleştirme hizmeti ortamı*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturmayı düşünün. 
 
-Ağ geçidini diğer hizmetlerle kullanma hakkında daha fazla bilgi için şu makalelere bakın:
+Ağ geçidinin diğer hizmetlerle nasıl kullanılacağı hakkında bilgi için aşağıdaki makalelere bakın:
 
-* [Microsoft Power otomatikleştirir şirket içi veri ağ geçidi](/power-automate/gateway-reference)
+* [Microsoft Power Şirket içi veri ağ geçidini otomatikleştir](/power-automate/gateway-reference)
 * [Microsoft Power BI şirket içi veri ağ geçidi](/power-bi/service-gateway-onprem)
 * [Microsoft Power Apps şirket içi veri ağ geçidi](/powerapps/maker/canvas-apps/gateway-reference)
-* [Şirket içi veri ağ geçidini Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
+* [Azure Analiz Hizmetleri şirket içi veri ağ geçidi](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>
 
 ## <a name="supported-data-sources"></a>Desteklenen veri kaynakları
 
-Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirket [içi bağlayıcıları](../connectors/apis-list.md#on-premises-connectors) destekler:
+Azure Logic Apps'ta şirket içi veri ağ geçidi, bu veri kaynakları için [şirket içi bağlayıcıları](../connectors/apis-list.md#on-premises-connectors) destekler:
 
 * BizTalk Server 2016
 * Dosya Sistemi
 * IBM DB2  
 * IBM Informix
-* ıBM MQ
+* IBM MQ
 * MySQL
 * Oracle Veritabanı
 * PostgreSQL
@@ -48,31 +48,31 @@ Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirk
 * SQL Server
 * Teradata
 
-Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
+Azure Logic Apps, veri ağ geçidi üzerinden okuma ve yazma işlemlerini destekler. Ancak, bu [işlemlerin yük boyutu nda sınırlamaları](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır. Ağ geçidinin kendisi ek maliyetlere tabi olmasa da, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps'taki diğer işlemler için geçerlidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Şirket [içi veri ağ geçidini zaten yerel bir bilgisayara yüklediniz](../logic-apps/logic-apps-gateway-install.md).
+* Şirket [içi veri ağ geçidini zaten yerel bir bilgisayara yüklediniz.](../logic-apps/logic-apps-gateway-install.md)
 
-* Bu veri ağ geçidini yüklerken kullanılan [Azure hesabı ve aboneliğini](../logic-apps/logic-apps-gateway-install.md#requirements) kullanıyorsunuz. Bu Azure hesabı tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır.
+* Bu veri ağ geçidini yüklerken kullanılan [aynı Azure hesabını ve aboneliğini](../logic-apps/logic-apps-gateway-install.md#requirements) kullanıyorsunuz. Bu Azure hesabı tek bir [Azure Etkin Dizin (Azure AD) kiracısına veya dizinine](../active-directory/fundamentals/active-directory-whatis.md#terminology)ait olmalıdır.
 
-* Ağ Geçidi yüklemeniz zaten kayıtlı değil ve başka bir Azure ağ geçidi kaynağı tarafından talep edildi.
+* Ağ geçidi yüklemeniz başka bir Azure ağ geçidi kaynağı tarafından zaten kaydedilmemiş ve talep edilmemiş.
 
-  Azure portal bir ağ geçidi kaynağı oluşturduğunuzda, ağ geçidi kaynağına ve yalnızca o ağ geçidi kaynağına bağlanan bir ağ geçidi yüklemesi seçersiniz. Azure Logic Apps, şirket içi Tetikleyiciler ve Eylemler ' de şirket içi veri kaynaklarına bağlanmak için ağ geçidi kaynağını kullanır. Bu Tetikleyiciler ve Eylemler ' de, kullanmak istediğiniz Azure aboneliğinizi ve ilişkili ağ geçidi kaynağını seçersiniz. Her ağ geçidi kaynağı yalnızca bir Azure hesabına bağlanan yalnızca bir ağ geçidi yüklemesine bağlanır.
+  Azure portalında bir ağ geçidi kaynağı oluşturduğunuzda, ağ geçidi kaynağınıza ve yalnızca bu ağ geçidi kaynağına bağlantı veren bir ağ geçidi yüklemesi seçersiniz. Azure Logic Apps'ta şirket içi tetikleyiciler ve eylemler, şirket içi veri kaynaklarına bağlanmak için ağ geçidi kaynağını kullanır. Bu tetikleyiciler ve eylemlerde, Azure aboneliğinizi ve kullanmak istediğiniz ilişkili ağ geçidi kaynağını seçersiniz. Her ağ geçidi kaynağı yalnızca bir Azure hesabına bağlanan tek bir ağ geçidi yüklemesine bağlanır.
 
 <a name="create-gateway-resource"></a>
 
 ## <a name="create-azure-gateway-resource"></a>Azure ağ geçidi kaynağı oluşturma
 
-Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azure kaynağı oluşturun.
+Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azure kaynağını oluşturun.
 
-1. Ağ geçidini yüklemek için kullanılan aynı Azure hesabıyla [Azure Portal](https://portal.azure.com) oturum açın.
+1. Ağ geçidini yüklemek için kullanılan aynı Azure hesabıyla [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure portal arama kutusuna "Şirket içi veri ağ geçidi" girin ve şirket **Içi veri ağ geçitleri**' ni seçin.
+1. Azure portalı arama kutusuna "şirket içi veri ağ geçidi" girin ve **şirket içi Veri Ağ Geçitleri'ni**seçin.
 
-   !["Şirket içi veri ağ geçidi" ni bulun](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
+   !["Şirket içi veri ağ geçidini" bulma](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
-1. **Şirket Içi veri ağ geçitleri**altında **Ekle**' yi seçin.
+1. **Şirket Içi Veri Ağ Geçitleri**altında **Ekle'yi**seçin.
 
    ![Veri ağ geçidi için yeni Azure kaynağı ekleme](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
@@ -80,96 +80,96 @@ Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azu
 
    | Özellik | Açıklama |
    |----------|-------------|
-   | **Kaynak Adı** | Ağ Geçidi kaynağınız için yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) veya nokta (`.`) içeren bir ad sağlayın. |
+   | **Kaynak Adı** | Ağ geçidi kaynağınız için yalnızca harfler, sayılar, tireler (`-``_`), alt tümleçler ( ), parantez (`(`, `)`), ()`.`veya dönemleri içeren bir ad sağlayın. |
    | **Abonelik** | Ağ geçidi yüklemesi için kullanılan Azure hesabı için Azure aboneliğini seçin. Varsayılan abonelik, oturum açmak için kullandığınız Azure hesabını temel alır. |
-   | **Kaynak grubu** | Kullanmak istediğiniz [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) |
-   | **Konum** | Ağ [geçidi yüklemesi](../logic-apps/logic-apps-gateway-install.md)sırasında ağ geçidi bulutu hizmeti için seçilen bölge veya konum. Aksi takdirde, ağ geçidi yüklemeniz **yükleme adı** listesinde görünmez. Mantıksal uygulama konumunuz, ağ geçidi kaynak konumunuzda farklılık gösterebilir. |
-   | **Yükleme adı** | Listede yalnızca bu koşullar karşılandığında görüntülenen bir ağ geçidi yüklemesi seçin: <p><p>-Ağ geçidi yüklemesi, oluşturmak istediğiniz ağ geçidi kaynağıyla aynı bölgeyi kullanır. <br>-Ağ geçidi yüklemesi başka bir Azure ağ geçidi kaynağıyla bağlantılı değildir. <br>-Ağ geçidi yüklemesi, ağ geçidi kaynağını oluşturmak için kullandığınız Azure hesabıyla bağlantılıdır. <br>-Azure hesabınız tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology) aittir ve ağ geçidi yüklemesi için kullanılan hesaptır. <p><p>Daha fazla bilgi için [sık sorulan sorular](#faq) bölümüne bakın. |
+   | **Kaynak grubu** | Kullanmak istediğiniz [Azure kaynak grubu](../azure-resource-manager/management/overview.md) |
+   | **Konum** | [Ağ geçidi yüklemesi](../logic-apps/logic-apps-gateway-install.md)sırasında ağ geçidi bulut hizmeti için seçilen aynı bölge veya konum. Aksi takdirde, ağ geçidi yüklemeniz **Yükleme Adı** listesinde görünmez. Mantık uygulama konumunuz ağ geçidi kaynak konumunuzdan farklı olabilir. |
+   | **Kurulum Adı** | Yalnızca bu koşullar karşılandığında listede görünen bir ağ geçidi yüklemesi seçin: <p><p>- Ağ geçidi yüklemesi, oluşturmak istediğiniz ağ geçidi kaynağıyla aynı bölgeyi kullanır. <br>- Ağ geçidi yüklemesi başka bir Azure ağ geçidi kaynağına bağlı değildir. <br>- Ağ geçidi yüklemesi, ağ geçidi kaynağını oluşturmak için kullandığınız aynı Azure hesabına bağlıdır. <br>- Azure hesabınız tek bir [Azure Etkin Dizin (Azure AD) kiracısına veya dizinine](../active-directory/fundamentals/active-directory-whatis.md#terminology) aittir ve ağ geçidi yüklemesi için kullanılan hesapla aynıdır. <p><p>Daha fazla bilgi için sık [sorulan sorular](#faq) bölümüne bakın. |
    |||
 
-   Ağ Geçidi kaynağınız ile aynı bölgede olan ve aynı Azure hesabına bağlanan bir ağ geçidi yüklemesi gösteren bir örnek aşağıda verilmiştir:
+   Ağ geçidi kaynağınızla aynı bölgede bulunan ve aynı Azure hesabına bağlı bir ağ geçidi yüklemesini gösteren bir örnek aşağıda verilmiştir:
 
-   ![Veri ağ geçidi kaynağı oluşturma ayrıntılarını sağlayın](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
+   ![Veri ağ geçidi kaynağı oluşturmak için ayrıntılar sağlama](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
-## <a name="connect-to-on-premises-data"></a>Şirket içi verilere bağlanın
+## <a name="connect-to-on-premises-data"></a>Şirket içi verilere bağlanma
 
-Ağ Geçidi kaynağınızı oluşturduktan ve Azure aboneliğinizi bu kaynakla ilişkilendirdikten sonra, ağ geçidini kullanarak mantıksal uygulamanız ve şirket içi veri kaynağınız arasında bir bağlantı oluşturabilirsiniz.
+Ağ geçidi kaynağınızı oluşturduktan ve Azure aboneliğinizi bu kaynakla ilişkilendirdikten sonra, artık ağ geçidini kullanarak mantık uygulamanız ile şirket içi veri kaynağınız arasında bir bağlantı oluşturabilirsiniz.
 
-1. Azure portal mantıksal uygulama tasarımcısında mantıksal uygulamanızı oluşturun veya açın.
+1. Azure portalında Mantık Uygulama Tasarımcısı'nda mantık uygulamanızı oluşturun veya açın.
 
-1. Şirket içi bağlantıları destekleyen bir bağlayıcı ekleyin, örneğin **SQL Server**.
+1. Sql **Server**gibi şirket içi bağlantıları destekleyen bir bağlayıcı ekleyin.
 
-1. Şirket **içi veri ağ geçidi üzerinden Bağlan '** ı seçin.
+1. **Şirket içi veri ağ geçidi üzerinden Bağlan'ı**seçin.
 
-1. **Ağ geçitleri**altında, **abonelikler** listesinden istediğiniz ağ geçidi kaynağına sahip Azure aboneliğinizi seçin.
+1. **Ağ Geçitleri**altında , **Abonelikler** listesinden, istediğiniz ağ geçidi kaynağına sahip Azure aboneliğinizi seçin.
 
-1. Seçili aboneliğinizdeki kullanılabilir ağ geçidi kaynaklarını gösteren **bağlantı ağ geçidi** listesinden istediğiniz ağ geçidi kaynağını seçin. Her ağ geçidi kaynağı, tek bir ağ geçidi yüklemesine bağlanır.
+1. Seçili aboneliğinizdeki kullanılabilir ağ geçidi kaynaklarını gösteren **Bağlantı Ağ Geçidi** listesinden, istediğiniz ağ geçidi kaynağını seçin. Her ağ geçidi kaynağı tek bir ağ geçidi yüklemesine bağlıdır.
 
    > [!NOTE]
-   > Mantıksal uygulamanızın konumu ağ geçidi kaynağınızın konumundan farklı olabileceğinden, ağ geçitleri listesi diğer bölgelerdeki ağ geçidi kaynaklarını içerir. 
+   > Ağ geçidi listesi, mantık uygulamanızın konumu ağ geçidi kaynağınızın konumundan farklı olabileceğinden, diğer bölgelerdeki ağ geçidi kaynaklarını içerir. 
 
-1. Benzersiz bir bağlantı adı ve oluşturmak istediğiniz bağlantıya bağlı diğer gerekli bilgileri sağlayın.
+1. Oluşturmak istediğiniz bağlantıya bağlı olarak benzersiz bir bağlantı adı ve diğer gerekli bilgiler sağlayın.
 
-   Benzersiz bir bağlantı adı, özellikle birden çok bağlantı oluşturuyorsanız bu bağlantıyı daha sonra kolayca bulmanıza yardımcı olur. Uygulanabiliyorsa, Kullanıcı adınız için tam etki alanını da dahil edin.
+   Benzersiz bir bağlantı adı, özellikle birden çok bağlantı oluşturuyorsanız, bu bağlantıyı daha sonra kolayca bulmanıza yardımcı olur. Mümkünse, kullanıcı adınız için nitelikli etki alanını da ekleyin.
 
    Örnek aşağıda verilmiştir:
 
-   ![Mantıksal uygulama ve veri ağ geçidi arasında bağlantı oluşturma](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
+   ![Mantık uygulaması ve veri ağ geçidi arasında bağlantı oluşturma](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
 1. İşiniz bittiğinde **Oluştur**’u seçin.
 
-Ağ Geçidi bağlantınız artık mantıksal uygulamanızın kullanması için hazırdır.
+Ağ geçidi bağlantınız artık mantık uygulamanızın kullanımına hazır.
 
-## <a name="edit-connection"></a>Bağlantıyı Düzenle
+## <a name="edit-connection"></a>Bağlantıyı ede
 
-Bir ağ geçidi bağlantısının ayarlarını güncelleştirmek için bağlantınızı düzenleyebilirsiniz.
+Ağ geçidi bağlantısı ayarlarını güncelleştirmek için bağlantınızı değiştirebilirsiniz.
 
-1. Yalnızca mantıksal uygulamanız için tüm API bağlantılarını bulmak için, mantıksal uygulamanızın menüsünde, **geliştirme araçları**' nın altında **API bağlantıları**' nı seçin.
+1. Sadece mantık uygulamanız için tüm API bağlantılarını, mantık uygulamanızın menüsünde, **Geliştirme Araçları**altında, **API bağlantılarını**seçin.
 
-   ![Mantıksal uygulama menünüzde "API bağlantıları" nı seçin](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
+   ![Mantık uygulaması menüsünde "API Bağlantıları" seçeneğini belirleyin](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
-1. İstediğiniz ağ geçidi bağlantısını seçin ve ardından **API bağlantısını Düzenle**' yi seçin.
+1. İstediğiniz ağ geçidi bağlantısını seçin ve ardından **API bağlantısını edit'i**seçin.
 
    > [!TIP]
-   > Güncelleştirmelerinizin etkisi yoksa ağ geçidi yüklemeniz için [ağ geçidi Windows hizmeti hesabını durdurup yeniden başlatmayı](../logic-apps/logic-apps-gateway-install.md#restart-gateway) deneyin.
+   > Güncelleştirmeleriniz etkin değilse, ağ geçidi yüklemeniz için [windows hizmet hesabını durdurmayı ve yeniden başlatmayı](../logic-apps/logic-apps-gateway-install.md#restart-gateway) deneyin.
 
 Azure aboneliğinizle ilişkili tüm API bağlantılarını bulmak için:
 
-* Azure portal menüsünde, **tüm hizmetler** > **Web** > **API bağlantıları**' nı seçin.
-* Ya da Azure portal menüsünde **tüm kaynaklar**' ı seçin. **Tür** filtresini **API bağlantısı**olarak ayarlayın.
+* Azure portalı menüsünden **Tüm hizmetler** > **Web** > **API Bağlantıları'nı**seçin.
+* Veya Azure portalı menüsünden **Tüm kaynakları**seçin. **Tür** filtresini **API Bağlantısıolarak**ayarlayın.
 
 <a name="change-delete-gateway-resource"></a>
 
-## <a name="delete-gateway-resource"></a>Ağ Geçidi kaynağını Sil
+## <a name="delete-gateway-resource"></a>Ağ geçidi kaynağını silme
 
-Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı bir ağ geçidi kaynağına bağlamak veya ağ geçidi kaynağını kaldırmak için ağ geçidi yüklemesini etkilemeden ağ geçidi kaynağını silebilirsiniz.
+Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı bir ağ geçidi kaynağına bağlamak veya ağ geçidi kaynağını kaldırmak için ağ geçidi kaynağını etkilemeden ağ geçidi kaynağını silebilirsiniz.
 
-1. Azure portal menüsünden **tüm kaynaklar**' ı seçin veya herhangi bir sayfadan **tüm kaynakları** arayıp seçin. Ağ Geçidi kaynağınızı bulun ve seçin.
+1. Azure portalı menüsünden **Tüm kaynakları**seçin veya herhangi bir sayfadaki **Tüm kaynakları** arayın ve seçin. Ağ geçidi kaynağınızı bulun ve seçin.
 
-1. Henüz seçili değilse, ağ geçidi kaynak menüsünde Şirket **Içi veri ağ geçidi**' ni seçin. Ağ Geçidi kaynağı araç çubuğunda **Sil**' i seçin.
+1. Ağ geçidi kaynak menüsünde zaten seçilmemişse, **şirket içi Veri Ağ Geçidi'ni**seçin. Ağ geçidi kaynak araç çubuğunda **Sil'i**seçin.
 
-   Örneğin:
+   Örnek:
 
-   ![Azure 'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
+   ![Azure'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**S**: Azure 'da ağ geçidi kaynağı oluşturdığımda ağ geçidi yüklemem neden görünmüyor? <br/>
-Y **: Bu**sorun şu nedenlerden kaynaklanabilir:
+**S**: Azure'da ağ geçidi kaynağımı oluştururken ağ geçidi yüklemem neden görünmüyor? <br/>
+**C**: Bu sorun şu nedenlerle olabilir:
 
-* Azure hesabınız, yerel bilgisayardaki ağ geçidi yüklemesiyle bağlantılı olan hesapla aynı olmalıdır. Ağ Geçidi yüklemesiyle bağlantılı aynı kimliğe sahip Azure portal oturum açtığınızdan emin olun. Ayrıca, Azure hesabınızın tek bir [Azure AD kiracısı veya dizinine](../active-directory/fundamentals/active-directory-whatis.md#terminology) ait olduğundan ve ağ geçidi yüklemesi sırasında kullanılan aynı Azure AD kiracısı veya dizinine ayarlandığından emin olun.
+* Azure hesabınız, yerel bilgisayardaki ağ geçidi yüklemesine bağlı olan hesapla aynı olmalıdır. Azure portalında ağ geçidi yüklemesiyle bağlantılı aynı kimliğe sahip oturum açıp olmadığınızı kontrol edin. Ayrıca, Azure hesabınızın tek bir [Azure AD kiracısına veya dizinine](../active-directory/fundamentals/active-directory-whatis.md#terminology) ait olduğundan ve ağ geçidi yüklemesi sırasında kullanılan aynı Azure AD kiracısına veya dizinine ayarlandığını unutmayın.
 
-* Ağ Geçidi kaynağınız ve ağ geçidi yüklemenizin aynı bölgeyi kullanması gerekir. Ancak, mantıksal uygulama konumunuz ağ geçidi kaynağı konumınızdan farklı olabilir.
+* Ağ geçidi kaynağınız ve ağ geçidi yüklemeniz aynı bölgeyi kullanmak zorunda. Ancak, mantık uygulama konumunuz ağ geçidi kaynak konumunuzdan farklı olabilir.
 
-* Ağ Geçidi yüklemeniz zaten kayıtlı ve başka bir ağ geçidi kaynağı tarafından talep edildi. Bu yüklemeler **yükleme adı** listesinde görünmez. Azure portal ağ geçidi kayıtlarınızı gözden geçirmek için *Tüm* Azure aboneliklerinizde **Şirket Içi veri ağ geçitleri** türüne sahip tüm Azure kaynaklarınızı bulun. Ağ Geçidi yüklemesinin diğer ağ geçidi kaynağıyla bağlantısını kaldırmak için bkz. [ağ geçidi kaynağını silme](#change-delete-gateway-resource).
+* Ağ geçidi yüklemeniz zaten kaydedilmiş ve başka bir ağ geçidi kaynağı tarafından talep edilebistir. Bu yüklemeler **Yükleme Adı** listesinde görünmez. Azure portalındaki ağ geçidi kayıtlarınızı incelemek için, *tüm* Azure aboneliklerinizde **şirket içi Veri Ağ Geçitleri** türüne sahip tüm Azure kaynaklarınızı bulun. Ağ geçidi yüklemesini diğer ağ geçidi kaynağından çıkarmak için [bkz.](#change-delete-gateway-resource)
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Mantıksal uygulamanızı güvenli hale getirme](./logic-apps-securing-a-logic-app.md)
-* [Logic Apps için ortak örnekler ve senaryolar](./logic-apps-examples-and-scenarios.md)
+* [Mantık uygulamaları için yaygın örnekler ve senaryolar](./logic-apps-examples-and-scenarios.md)

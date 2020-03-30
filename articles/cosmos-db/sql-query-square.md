@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde kare
-description: Azure Cosmos DB 'de SQL sistem işlevi KARESI hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde KARE
+description: Azure Cosmos DB'de SQL sistem fonksiyonu SQUARE hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a22c4daaf9df889f2256bc78f2175c966d4841f7
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303452"
 ---
 # <a name="square-azure-cosmos-db"></a>KARE (Azure Cosmos DB)
- Belirtilen bir sayısal değer karesini döndürür.  
+ Belirtilen sayısal değerin karesini verir.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,13 +28,13 @@ SQUARE(<numeric_expr>)
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Sayısal bir ifade döndürür.  
+  Sayısal bir ifade verir.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, 1-3 sayıların kareler döndürür.  
+  Aşağıdaki örnek, 1-3 sayıların karelerini döndürür.  
   
 ```sql
 SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3  
@@ -48,10 +48,10 @@ SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

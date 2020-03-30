@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde StringToObject
-description: Azure Cosmos DB SQL sistem işlevi StringToObject hakkında bilgi edinin.
+description: Azure Cosmos DB'de SQL sistem fonksiyonu StringToObject hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296390"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
- Nesneye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
+ Nesneye çevrilmiş ifadeyi döndürür. İfade çevrilemiyorsa, tanımsız döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,17 +26,17 @@ StringToObject(<str_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr*  
-   , JSON nesnesi ifadesi olarak ayrıştırılacak bir dize ifadesidir. İç içe geçmiş dize değerlerinin geçerli olması için çift tırnaklarla yazılması gerektiğini unutmayın. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/)  
+   JSON nesnesi ifadesi olarak ayrıştırılması gereken bir dize ifadesidir. İç içe geçmediz değerlerinin geçerli olması için çift tırnak işaretleriyle yazılması gerektiğini unutmayın. JSON formatı hakkında ayrıntılı bilgi için [json.org](https://json.org/)  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir nesne ifadesi veya tanımsız döndürür.  
+  Nesne ifadesini veya tanımsız bir ifadeyi döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToObject` farklı türlerde nasıl davrandığını gösterir. 
+  Aşağıdaki örnek, `StringToObject` farklı türlerde nasıl nasıl bir şekilde nasıl hissettiğini gösterir. 
   
- Aşağıda, geçerli girişi olan örnekler verilmiştir.
+ Aşağıda geçerli girişli örnekler verilmiştir.
 
 ```sql
 SELECT 
@@ -55,10 +55,10 @@ Sonuç kümesini burada bulabilirsiniz.
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
 
- Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
-Bir sorgu içinde geçerli olsalar bile, geçerli nesnelere ayrıştırılamaz. Nesne dizesindeki dizeler "{\\" bir\\":\\" Str\\"}" ya da çevreleyen teklifin tek bir ' {"a": "Str"} ' olması gerekir.
+ Aşağıda geçersiz girişli örnekler verilmiştir.
+Sorgu içinde geçerli olsalar bile, geçerli nesnelerle ayrıştırıkları bir şey değildir. Nesne dizesindeki dizeleri ya\\"{\\"a\\\\": "str "}" veya çevreleyen alıntı tek "{"a": "str"}' olmalıdır.
 
-Özellik adları çevreleyen tek tırnak geçerli bir JSON değil.
+Özellik adlarını çevreleyen tek tırnak json geçerli değildir.
 
 ```sql
 SELECT 
@@ -71,7 +71,7 @@ Sonuç kümesini burada bulabilirsiniz.
 [{}]
 ```  
 
-Çevreleyen tırnak işaretleri olmadan Özellik adları geçerli bir JSON değil.
+Çevreleyen tırnak işaretleri olmayan özellik adları JSON geçerli değildir.
 
 ```sql
 SELECT 
@@ -84,9 +84,9 @@ Sonuç kümesini burada bulabilirsiniz.
 [{}]
 ``` 
 
-Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
+Aşağıda geçersiz girişli örnekler verilmiştir.
 
- Geçirilen ifade bir JSON nesnesi olarak ayrıştırılacak; Bu girişler nesne türüne göre değerlendirilmez ve tanımsız döndürülür.
+ Geçirilen ifade bir JSON nesnesi olarak ayrıştırılır; bu girişler nesneyi yazmaya değerlendirmez ve böylece tanımsız olarak döndürülmez.
 
 ```sql
 SELECT 
@@ -106,10 +106,10 @@ SELECT
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory güvenlik Varsayılanları
-description: Kuruluşların yaygın saldırılara karşı korunmasına yardımcı olan güvenlik varsayılan ilkeleri
+title: Azure Etkin Dizin güvenlik varsayılanları
+description: Kuruluşların sık karşılaşılan saldırılara karşı korunmasına yardımcı olan güvenlik varsayılan ilkeleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,151 +12,151 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78248856"
 ---
-# <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
+# <a name="what-are-security-defaults"></a>Güvenlik varsayılanları nelerdir?
 
-Kimlik ile ilgili yaygın saldırılar daha fazla ve popüler olduğunda güvenliği yönetmek zor olabilir. Bu saldırılar parola spreyi, yeniden oynama ve kimlik avı içerir.
+Ortak kimlikle ilgili saldırılar giderek daha popüler hale geldiğinde güvenliği yönetmek zor olabilir. Bu saldırılar parola püskürtme, yeniden oynatma ve kimlik avı içerir.
 
-Azure Active Directory (Azure AD) içindeki güvenlik Varsayılanları, güvenli olmasını ve kuruluşunuzu korumanıza yardımcı olmasını kolaylaştırır. Güvenlik Varsayılanları, yaygın saldırılar için önceden yapılandırılmış güvenlik ayarlarını içerir. 
+Azure Etkin Dizini'ndeki (Azure AD) güvenlik varsayılanları, güvenli olmayı kolaylaştırır ve kuruluşunuzun korunmasına yardımcı olur. Güvenlik varsayılanları, sık yapılan saldırılar için önceden yapılandırılmış güvenlik ayarları içerir. 
 
-Microsoft, güvenlik varsayılanlarını herkes için kullanılabilir hale yapıyor. Amaç, tüm kuruluşların hiçbir ek maliyet olmadan etkin bir temel güvenlik düzeyi olmasını sağlamaktır. Azure portal güvenlik varsayılanlarını açın.
+Microsoft, güvenlik varsayılanlarını herkes tarafından kullanılabilir hale getiriyor. Amaç, tüm kuruluşların hiçbir ek ücret ödemeden etkin leştirilmiş temel bir güvenlik düzeyine sahip olmasını sağlamaktır. Azure portalında güvenlik varsayılanlarını açarsınız.
 
-![Güvenlik varsayılanlarını etkinleştirmek için geçiş ile birlikte Azure portal ekran görüntüsü](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
+![Güvenlik varsayılanlarını etkinleştirmek için geçişle Azure portalının ekran görüntüsü](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
 > [!TIP]
-> Kiracınız 22nd, 2019 Ekim 'de veya sonrasında oluşturulduysa, yeni, varsayılan olarak güvenli olan davranışı ve kiracınızda zaten güvenlik Varsayılanları etkinleştirilmiş olması mümkündür. Tüm kullanıcılarınızı korumak için, güvenlik Varsayılanları oluşturulan tüm yeni kiracılar için kullanıma alınıyor.
+> Kiracınız 22 Ekim 2019 tarihinde veya sonrasında oluşturulduysa, yeni güvenli ve varsayılan davranışı yaşıyor olabilirsiniz ve kiracınızda zaten güvenlik varsayılanları etkinleştirildi. Tüm kullanıcılarımızı korumak amacıyla, güvenlik varsayılanları oluşturulan tüm yeni kiracılara dağıtılıyor.
 
-Güvenlik varsayılanlarını neden kullanılabilir hale getirdiğinizle ilgili daha fazla ayrıntı, [güvenlik varsayılanlarını sunarak](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414)Alex Weinert 'ın blog gönderisine bulunabilir.
+Güvenlik varsayılanlarının neden kullanıma sunulduğuna ilişkin daha fazla ayrıntı Alex Weinert'in blog gönderisinde bulunabilir, [güvenlik varsayılanlarını tanıtın.](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414)
 
-## <a name="unified-multi-factor-authentication-registration"></a>Birleşik Multi-Factor Authentication kaydı
+## <a name="unified-multi-factor-authentication-registration"></a>Birleşik Çok Faktörlü Kimlik Doğrulama kaydı
 
-Kiracınızdaki tüm kullanıcıların, Azure Multi-Factor Authentication hizmeti biçiminde Multi-Factor Authentication (MFA) için kaydolmalıdır. Kullanıcıların, Microsoft Authenticator uygulamasını kullanarak Multi-Factor Authentication için kaydolmak üzere 14 gün vardır. 14 gün geçtikten sonra, Multi-Factor Authentication kaydı tamamlanana kadar Kullanıcı oturum açamaz.
+Kiracınızdaki tüm kullanıcıların Azure Çok Faktörlü Kimlik Doğrulama hizmeti biçiminde çok faktörlü kimlik doğrulama (MFA) için kaydolması gerekir. Kullanıcıların Microsoft Authenticator uygulamasını kullanarak Çoklu Faktör Kimlik Doğrulama'ya kaydolmak için 14 günleri vardır. 14 gün geçtikten sonra, kullanıcı Çok Faktörlü Kimlik Doğrulama kaydı tamamlanana kadar oturum açamaz.
 
-Bazı kullanıcıların Office dışı olabileceğini veya güvenlik varsayılanlarını etkinleştirdikten hemen sonra 14 gün boyunca oturum açmasını anladık. Her kullanıcının Multi-Factor Authentication için yeterli zamana sahip olduğundan emin olmak için, her kullanıcı için 14 günlük süre benzersizdir. Kullanıcının 14 günlük süresi, güvenlik varsayılanlarını etkinleştirdikten sonra, ilk başarılı etkileşimli oturum açma işleminden sonra başlar.
+Bazı kullanıcıların güvenlik varsayılanlarını etkinleştirdikten hemen sonra 14 gün boyunca ofis dışında olabileceğini veya oturum açamayacağını anlıyoruz. Her kullanıcının Çok Faktörlü Kimlik Doğrulama'ya kaydolmak için yeterli zamanı olduğundan emin olmak için, 14 günlük süre her kullanıcı için benzersizdir. Bir kullanıcının 14 günlük dönemi, güvenlik varsayılanlarını etkinleştirdikten sonra ilk başarılı etkileşimli oturum açmalarından sonra başlar.
 
-## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication zorlama
+## <a name="multi-factor-authentication-enforcement"></a>Çok Faktörlü Kimlik Doğrulama uygulaması
 
-### <a name="protecting-administrators"></a>Yöneticileri koruma
+### <a name="protecting-administrators"></a>Yöneticilerin korunması
 
-Ayrıcalıklı hesaplara erişimi olan kullanıcıların ortamınıza erişimi artar. Bu hesapların gücüyle ilgili olan güç nedeniyle, onlara özel bir dikkatli davranmanız gerekir. Ayrıcalıklı hesapların korunmasını artırmanın yaygın bir yöntemi, oturum açma için daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Azure AD 'de Multi-Factor Authentication isteyerek daha güçlü bir hesap doğrulaması edinebilirsiniz.
+Ayrıcalıklı hesaplara erişimi olan kullanıcılar ortamınıza erişimi artırmıştır. Bu hesapların sahip olduğu güç nedeniyle, onlara özel bir özenle davranmalısınız. Ayrıcalıklı hesapların korunmasını iyileştirmek için yaygın yöntemlerden biri, oturum açma için daha güçlü bir hesap doğrulama biçimi gerektirmektir. Azure AD'de, Çok Faktörlü Kimlik Doğrulama'yı gerektirerek daha güçlü bir hesap doğrulaması elde edebilirsiniz.
 
-Multi-Factor Authentication kaydı tamamlandıktan sonra, her oturum açtıklarında ek kimlik doğrulaması gerçekleştirmek için aşağıdaki dokuz Azure AD yönetici rolü gerekecektir:
+Çok Faktörlü Kimlik Doğrulama kaydı tamamlandıktan sonra, her oturum açtıklarında ek kimlik doğrulaması gerçekleştirmek için aşağıdaki dokuz Azure AD yöneticisi rolü gerekir:
 
 - Genel yönetici
 - SharePoint yöneticisi
-- Exchange Yöneticisi
-- Koşullu Erişim Yöneticisi
+- Exchange yöneticisi
+- Koşullu Erişim yöneticisi
 - Güvenlik yöneticisi
-- Yardım Masası yönetici veya parola Yöneticisi
+- Yardım Masası yöneticisi veya parola yöneticisi
 - Faturalama yöneticisi
-- Kullanıcı Yöneticisi
-- Kimlik doğrulama Yöneticisi
+- Kullanıcı yöneticisi
+- Kimlik doğrulama yöneticisi
 
 ### <a name="protecting-all-users"></a>Tüm kullanıcıları koruma
 
-Yönetici hesaplarının, çok fazla kimlik doğrulama katmanı gerektiren tek hesaplar olduğunu düşündük. Yöneticiler hassas bilgilere geniş erişime sahiptir ve abonelik genelindeki ayarlarda değişiklik yapabilir. Ancak saldırganlar, son kullanıcıları hedefleyecek şekilde eğilimlidir. 
+Yönetici hesaplarının, fazladan kimlik doğrulama katmanlarıgerektiren tek hesap olduğunu düşünme eğilimindeyiz. Yöneticiler hassas bilgilere geniş erişime sahiptir ve abonelik genelindeki ayarlarda değişiklik yapabilir. Ancak saldırganlar son kullanıcıları hedefleme eğilimindedir. 
 
-Bu saldırganlar erişim kazandıktan sonra, özgün hesap sahibi adına ayrıcalıklı bilgilere erişim talep edebilir. Hatta tüm kuruluşunuzda kimlik avı saldırısı gerçekleştirmek için tüm dizini indirebilir. 
+Bu saldırganlar erişim sağladıktan sonra, orijinal hesap sahibi adına ayrıcalıklı bilgilere erişim talebinde bulunabilirler. Hatta tüm kuruluşunuz üzerinde kimlik avı saldırısı gerçekleştirmek için tüm dizini indirebilirler. 
 
-Tüm kullanıcılar için korumayı geliştirmenin yaygın bir yöntemi, herkes için Multi-Factor Authentication gibi daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Kullanıcılar Multi-Factor Authentication kaydı tamamladıktan sonra gerektiğinde ek kimlik doğrulaması istenir.
+Tüm kullanıcılar için korumayı geliştirmek için yaygın yöntemlerden biri, herkes için Çok Faktörlü Kimlik Doğrulama gibi daha güçlü bir hesap doğrulama biçimine ihtiyaç duymanızdır. Kullanıcılar Çok Faktörlü Kimlik Doğrulama kaydını tamamladıktan sonra, gerektiğinde ek kimlik doğrulamaları istenir.
 
-### <a name="blocking-legacy-authentication"></a>Eski kimlik doğrulaması engelleniyor
+### <a name="blocking-legacy-authentication"></a>Eski kimlik doğrulamayı engelleme
 
-Kullanıcılarınıza bulut uygulamalarınıza kolay erişim sağlamak için Azure AD, eski kimlik doğrulaması dahil olmak üzere çeşitli kimlik doğrulama protokollerini destekler. *Eski kimlik doğrulaması* , tarafından yapılan bir kimlik doğrulama isteğine başvuran bir terimdir:
+Azure AD, kullanıcılarınıza bulut uygulamalarınıza kolay erişim sağlamak için eski kimlik doğrulama dahil olmak üzere çeşitli kimlik doğrulama protokollerini destekler. *Eski kimlik doğrulaması,* şu lar tarafından yapılan bir kimlik doğrulama isteğini ifade eden bir terimdir:
 
 - Modern kimlik doğrulaması kullanmayan istemciler (örneğin, bir Office 2010 istemcisi).
 - IMAP, SMTP veya POP3 gibi eski posta protokollerini kullanan tüm istemciler.
 
-Günümüzde, oturum açma girişimlerinin çoğu eski kimlik doğrulamasından geliyor. Eski kimlik doğrulama Multi-Factor Authentication desteklemez. Dizininizde etkinleştirilmiş bir Multi-Factor Authentication ilkeniz olsa da, bir saldırgan eski bir protokolü kullanarak kimlik doğrulaması yapabilir ve Multi-Factor Authentication atlayabilirsiniz. 
+Bugün, ödün veren oturum açma girişimlerinin çoğu eski kimlik doğrulamasından gelir. Eski kimlik doğrulaması Çok Faktörlü Kimlik Doğrulaması'nı desteklemez. Dizininizde etkin leştirilmiş bir Çok Faktörlü Kimlik Doğrulama ilkesi olsa bile, saldırgan eski bir protokol kullanarak kimlik doğrulaması yapabilir ve Çok Faktörlü Kimlik Doğrulama'yı atlayabilir. 
 
-Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir protokol tarafından yapılan tüm kimlik doğrulama istekleri engellenir. Güvenlik Varsayılanları Exchange Active Sync temel kimlik doğrulamasını engeller.
+Kiracınızda güvenlik varsayılanları etkinleştirildikten sonra, eski bir protokol tarafından yapılan tüm kimlik doğrulama istekleri engellenir. Güvenlik varsayılanları Exchange Active Sync temel kimlik doğrulamasını engeller.
 
 > [!WARNING]
-> Güvenlik varsayılanlarını etkinleştirmeden önce, yöneticileriniz tarafından daha eski kimlik doğrulama protokolleri kullanmıyor olduğundan emin olun. Daha fazla bilgi için bkz. [eski kimlik doğrulamasından nasıl uzaklaşın](concept-fundamentals-block-legacy-authentication.md).
+> Güvenlik varsayılanlarını etkinleştirmeden önce, yöneticilerinizin eski kimlik doğrulama protokollerini kullanmadığından emin olun. Daha fazla bilgi için eski [kimlik doğrulamasından nasıl uzaklaşılabildiğini](concept-fundamentals-block-legacy-authentication.md)öğrenin.
 
 ### <a name="protecting-privileged-actions"></a>Ayrıcalıklı eylemleri koruma
 
-Kuruluşlar, aşağıdakiler dahil olmak üzere Azure Resource Manager API 'SI aracılığıyla yönetilen çeşitli Azure hizmetleri kullanır:
+Kuruluşlar, Aşağıdakiler de dahil olmak üzere Azure Kaynak Yöneticisi API'si aracılığıyla yönetilen çeşitli Azure hizmetlerini kullanır:
 
-- Azure portalı 
+- Azure portalında 
 - Azure PowerShell 
 - Azure CLI
 
-Hizmetlerinizi yönetmek için Azure Resource Manager kullanmak, yüksek ayrıcalıklı bir işlemdir. Azure Resource Manager, hizmet ayarları ve abonelik faturalandırması gibi kiracı genelinde yapılandırmaların üzerinde değişiklik yapabilir. Tek faktörlü kimlik doğrulaması, kimlik avı ve parola spreyi gibi çeşitli saldırılara açıktır. 
+Hizmetlerinizi yönetmek için Azure Kaynak Yöneticisi'ni kullanmak son derece ayrıcalıklı bir eylemdir. Azure Kaynak Yöneticisi, hizmet ayarları ve abonelik faturalandırması gibi kiracı çapındaki yapılandırmaları değiştirebilir. Tek faktörlü kimlik doğrulama, kimlik avı ve parola spreyi gibi çeşitli saldırılara karşı savunmasızdır. 
 
-Azure Resource Manager erişmek ve yapılandırmaya güncelleştirmek isteyen kullanıcıların kimliğini doğrulamak önemlidir. Erişim izni vermeden önce ek kimlik doğrulaması gerektirerek kimliklerini doğrularsınız.
+Azure Kaynak Yöneticisi'ne erişmek ve yapılandırmaları güncelleştirmek isteyen kullanıcıların kimliğini doğrulamak önemlidir. Erişime izin vermeden önce ek kimlik doğrulaması gerektirerek kimliklerini doğrularsınız.
 
-Kiracınızda güvenlik varsayılanlarını etkinleştirdikten sonra, Azure portal, Azure PowerShell veya Azure CLı 'ye erişen tüm kullanıcıların ek kimlik doğrulamasını tamamlaması gerekir. Bu ilke, yönetici veya Kullanıcı olup olmadıkları gibi Azure Resource Manager erişen tüm kullanıcılar için geçerlidir. 
+Kiracınızdaki güvenlik varsayılanlarını etkinleştirdikten sonra, Azure portalına, Azure PowerShell'e veya Azure CLI'sine erişen tüm kullanıcının ek kimlik doğrulamasını tamamlaması gerekir. Bu ilke, ister yönetici ister kullanıcı olsun, Azure Kaynak Yöneticisi'ne erişen tüm kullanıcılar için geçerlidir. 
 
-Kullanıcı Multi-Factor Authentication için kayıtlı değilse, kullanıcının devam edebilmesi için Microsoft Authenticator uygulamasını kullanarak kaydetmesi gerekecektir. 14 günlük Multi-Factor Authentication kayıt süresi sağlanmaz.
-
-> [!NOTE]
-> 2017 öncesi Exchange Online kiracılarında modern kimlik doğrulaması varsayılan olarak devre dışıdır. Bu kiracılar aracılığıyla kimlik doğrulaması yaparken bir oturum açma döngüsü olasılığını önlemek için [modern kimlik doğrulamayı etkinleştirmeniz](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)gerekir.
+Kullanıcı Çok Faktörlü Kimlik Doğrulama için kayıtlı değilse, devam etmek için Microsoft Authenticator uygulamasını kullanarak kullanıcının kaydolması gerekir. 14 günlük Çok Faktörlü Kimlik Doğrulama kayıt dönemi sağlanacaktır.
 
 > [!NOTE]
-> Azure AD Connect eşitleme hesabı güvenlik varsayılanlarını dışarıda bırakılır ve Multi-Factor Authentication 'ı kaydetmesi veya gerçekleştirmesi istenmez. Kuruluşlar bu hesabı başka amaçlar için kullanmamalıdır.
+> 2017 Öncesi Exchange Online kiracılar, varsayılan olarak modern kimlik doğrulamayı devre dışı bıraktı. Bu kiracılar aracılığıyla kimlik doğrulaması yaparken bir giriş döngüsü olasılığını önlemek için, [modern kimlik doğrulama etkinleştirmelisiniz.](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)
+
+> [!NOTE]
+> Azure AD Connect eşitleme hesabı güvenlik varsayılanlarının dışında dır ve çok faktörlü kimlik doğrulamasına kaydolması veya gerçekleştirmesi istenmez. Kuruluşlar bu hesabı başka amaçlarla kullanmamalıdır.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-Aşağıdaki ek konular kiracınızın güvenlik varsayılanlarını dağıtma ile ilgilidir.
+Aşağıdaki ek hususlar kiracınız için güvenlik varsayılanlarının dağıtımıyla ilgilidir.
 
 ### <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
-Güvenlik Varsayılanları **yalnızca bildirimleri kullanarak Microsoft Authenticator uygulamasını kullanarak**Azure Multi-Factor Authentication 'nin kaydedilmesine ve kullanımına izin verir. Koşullu erişim, yöneticinin etkinleştirmek üzere seçtiği herhangi bir kimlik doğrulama yönteminin kullanılmasına izin verir.
+Güvenlik varsayılanları, **yalnızca bildirimleri kullanarak yalnızca Microsoft Authenticator uygulamasını kullanarak**Azure Çok Faktörlü Kimlik Doğrulama'nın kaydedilmesine ve kullanılmasına izin verir. Koşullu Erişim, yöneticinin etkinleştirmeyi seçtiği herhangi bir kimlik doğrulama yönteminin kullanılmasına izin verir.
 
 |   | Güvenlik varsayılanları | Koşullu Erişim |
 | --- | --- | --- |
-| Mobil uygulama aracılığıyla bildirim | X | X |
-| Mobil uygulama veya donanım belirtecinden doğrulama kodu |   | X |
+| Mobil uygulama üzerinden bildirim | X | X |
+| Mobil uygulama veya donanım belirteci doğrulama kodu |   | X |
 | Telefona kısa mesaj |   | X |
-| Telefon çağrısı |   | X |
-| Uygulama parolaları |   | X * * |
+| Telefona çağrı |   | X |
+| Uygulama parolaları |   | X** |
 
-\* * Uygulama parolaları yalnızca yöneticiler tarafından etkinleştirildiyse eski kimlik doğrulama senaryolarıyla Kullanıcı başına MFA 'da kullanılabilir.
+** Uygulama parolaları yalnızca eski kimlik doğrulama senaryoları yalnızca yöneticiler tarafından etkinleştirildiğinde kullanıcı başına MFA'da kullanılabilir.
 
 ### <a name="conditional-access"></a>Koşullu Erişim
 
-Güvenlik varsayılanlarına benzer ilkeleri yapılandırmak için koşullu erişimi kullanabilirsiniz, ancak güvenlik Varsayılanları ' nda kullanılamayan Kullanıcı dışlamaları dahil daha fazla ayrıntı düzeyi vardır. Koşullu erişim kullanıyorsanız ve ortamınızda koşullu erişim ilkeleri etkinleştirilmişse, güvenlik Varsayılanları sizin için kullanılamaz. Koşullu erişim sağlayan ancak ortamınızda hiç koşullu erişim ilkesi etkinleştirilmemiş bir lisansınız varsa, koşullu erişim ilkelerini etkinleştirene kadar güvenlik varsayılanlarını kullanmaya hoş geldiniz. Azure AD Lisansı hakkında daha fazla bilgi için [Azure AD fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/active-directory/)bulabilirsiniz.
+Koşullu Erişim'i, güvenlik varsayılanlarına benzer, ancak güvenlik varsayılanlarında bulunmayan kullanıcı dışlamaları da dahil olmak üzere daha ayrıntılı lıkla yapılandırılabilir. Koşullu Erişim kullanıyorsanız ve ortamınızda Koşullu Erişim ilkeleri etkinleştirildiyse, güvenlik varsayılanları sizin kullanımınıza sunulmaz. Koşullu Erişim sağlayan ancak ortamınızda koşullu erişim ilkeleri etkin olmayan bir lisansınız varsa, Koşullu Erişim ilkelerini etkinleştirene kadar güvenlik varsayılanlarını kullanabilirsiniz. Azure AD lisanslama hakkında daha fazla bilgiyi [Azure AD fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/active-directory/)bulabilirsiniz.
 
-![Uyarı iletisi yalnızca güvenlik varsayılanlarına veya koşullu erişime sahip olabilirsiniz](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
+![Güvenlik varsayılanlarına sahip olabileceğiniz uyarı iletisi veya Koşullu Erişim her ikisine de sahip olamaz](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-Eşdeğer ilkeleri yapılandırmak için koşullu erişimi nasıl kullanabileceğinizi gösteren adım adım kılavuzlar aşağıda verilmiştir:
+Eşdeğer ilkeleri yapılandırmak için Koşullu Erişim'i nasıl kullanabileceğinize ilişkin adım adım kılavuzlar aşağıda verebilirsiniz:
 
-- [Yöneticiler için MFA gerektir](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
-- [Azure yönetimi için MFA gerektir](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Eski kimlik doğrulamasını engelle](../conditional-access/howto-conditional-access-policy-block-legacy.md)
-- [Tüm kullanıcılar için MFA gerektir](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Azure MFA kaydı gerektir](../identity-protection/howto-identity-protection-configure-mfa-policy.md) -Azure AD kimlik koruması gerekir
+- [Yöneticiler için MFA gerektirme](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [Azure yönetimi için MFA gerektirme](../conditional-access/howto-conditional-access-policy-azure-management.md)
+- [Eski kimlik doğrulamasını engelleme](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Tüm kullanıcılar için MFA gerektirme](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
+- [Azure MFA kaydı gerektirir](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Azure AD Kimlik Koruması Gerektirir
 
 ## <a name="enabling-security-defaults"></a>Güvenlik varsayılanlarını etkinleştirme
 
 Dizininizde güvenlik varsayılanlarını etkinleştirmek için:
 
-1.  [Azure portal](https://portal.azure.com) bir güvenlik yöneticisi, koşullu erişim Yöneticisi veya genel yönetici olarak oturum açın.
-1.  **Azure Active Directory** > **özelliklerine**gidin.
-1. **Güvenlik varsayılanlarını Yönet**' i seçin.
-1. **Güvenlik varsayılanlarını etkinleştir** ayarını **Evet**olarak ayarlayın.
-1. **Kaydet**’i seçin.
+1.  [Azure portalında](https://portal.azure.com) güvenlik yöneticisi, Koşullu Erişim yöneticisi veya genel yönetici olarak oturum açın.
+1.  **Azure Etkin Dizin** > **Özelliklerine**göz atın.
+1. **Güvenlik varsayılanlarını yönet'i**seçin.
+1. Güvenlik **varsayılanlarını Etkinleştir'i** **Evet'e**ayarlama.
+1. **Kaydet'i**seçin.
 
 ## <a name="disabling-security-defaults"></a>Güvenlik varsayılanlarını devre dışı bırakma
 
-Güvenlik varsayılanlarını değiştirecek koşullu erişim ilkelerini uygulamayı tercih eden kuruluşlar, güvenlik varsayılanlarını devre dışı bırakmalıdır. 
+Güvenlik varsayılanlarını değiştiren Koşullu Erişim ilkelerini uygulamayı seçen kuruluşlar, güvenlik varsayılanlarını devre dışı bırakmayı zorunlu durmalıdır. 
 
-![Uyarı iletisi koşullu erişimi etkinleştirmek için güvenlik varsayılanlarını devre dışı bırak](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
+![Koşullu Erişimi etkinleştirmek için uyarı iletisi güvenlik varsayılanlarını devre dışı](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
 
-Dizininizde güvenlik varsayılanlarını devre dışı bırakmak için:
+Dizininizdeki güvenlik varsayılanlarını devre dışı kınık için:
 
-1.  [Azure portal](https://portal.azure.com) bir güvenlik yöneticisi, koşullu erişim Yöneticisi veya genel yönetici olarak oturum açın.
-1.  **Azure Active Directory** > **özelliklerine**gidin.
-1. **Güvenlik varsayılanlarını Yönet**' i seçin.
-1. **Güvenlik varsayılanlarını etkinleştir** ' i ayarla **Hayır**olarak ayarlayın.
-1. **Kaydet**’i seçin.
+1.  [Azure portalında](https://portal.azure.com) güvenlik yöneticisi, Koşullu Erişim yöneticisi veya genel yönetici olarak oturum açın.
+1.  **Azure Etkin Dizin** > **Özelliklerine**göz atın.
+1. **Güvenlik varsayılanlarını yönet'i**seçin.
+1. Güvenlik **varsayılanlarını** etkinleştirme'yi **No'ya**ayarlama
+1. **Kaydet'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ortak koşullu erişim ilkeleri](../conditional-access/concept-conditional-access-policy-common.md)
+[Sık kullanılan Koşullu Erişim İlkeleri](../conditional-access/concept-conditional-access-policy-common.md)

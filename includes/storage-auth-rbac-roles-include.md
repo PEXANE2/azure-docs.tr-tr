@@ -9,25 +9,25 @@ ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 4b10955a1d3b85acbcae109836bebc03ec04c72c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76279368"
 ---
 Azure, Azure AD ve OAuth kullanarak blob ve kuyruk verilerine erişim yetkisi vermek için aşağıdaki yerleşik RBAC rollerini sağlar:
 
-- [Depolama Blobu veri sahibi](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Azure Data Lake Storage 2. için sahipliği ayarlamak ve POSIX erişim denetimini yönetmek için kullanın. Daha fazla bilgi için [Azure Data Lake Storage 2. erişim denetimi](../articles/storage/blobs/data-lake-storage-access-control.md)bölümüne bakın.
-- [Depolama Blobu veri katılımcısı](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): BLOB depolama kaynaklarına okuma/yazma/silme izinleri vermek için kullanın.
-- [Depolama Blobu veri okuyucusu](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-reader): BLOB depolama kaynaklarına salt okuma izinleri vermek için kullanın.
-- [Depolama kuyruğu verileri katılımcısı](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Azure kuyrukları için okuma/yazma/silme izinleri vermek üzere kullanın.
-- [Depolama kuyruğu veri okuyucusu](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader): Azure kuyruklara yönelik salt okuma izinleri vermek için kullanın.
-- [Depolama kuyruğu veri Iletisi işlemcisi](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Azure depolama sıralarındaki iletilere göz atma, alma ve silme izinleri vermek için kullanın.
-- [Depolama kuyruğu veri Iletisi gönderici](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Azure depolama sıralarındaki iletilere izin ekleme izni vermek için kullanın.
+- [Depolama Blob Veri Sahibi](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Azure Veri Gölü Depolama Gen2 için sahiplik ayarlamak ve POSIX erişim denetimini yönetmek için kullanın. Daha fazla bilgi için Azure [Veri Gölü Depolama Gen2'deki Access denetimine](../articles/storage/blobs/data-lake-storage-access-control.md)bakın.
+- [Depolama Blob Veri Katılımcısı](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Blob depolama kaynaklarına okuma/yazma/silme izinleri vermek için kullanın.
+- [Depolama Blob Veri Okuyucu :](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-reader)Blob depolama kaynaklarına salt okunur izinleri vermek için kullanın.
+- [Depolama Sırası Veri Katılımcısı](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Azure kuyruklarına okuma/yazma/silme izinleri vermek için kullanın.
+- [Depolama Sırası Veri Okuyucu :](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader)Azure kuyruklarına salt okunur izinleri vermek için kullanın.
+- [Depolama Sırası Veri İletiSi İşlemcisi](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Azure Depolama kuyruklarında bulunan iletilere gözetleme, alma ve silme izinleri vermek için kullanın.
+- [Depolama Sırası Veri İletisi Gönderen :](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)Azure Depolama kuyruklarında iletilere izin ekleme izni vermek için kullanın.
 
 > [!NOTE]
-> RBAC rol atamalarının yayılması beş dakikaya kadar sürebilir.
+> RBAC rol atamalarının yayılması beş dakika kadar sürebilir.
 >
-> Yalnızca veri erişimi için açıkça tanımlanmış roller, bir güvenlik sorumlusunun blob veya kuyruk verilerine erişmesine izin verir. **Sahip**, **katkıda bulunan**ve **depolama hesabı katılımcısı** gibi roller, bir güvenlik sorumlusuna bir depolama hesabını yönetmesine izin verir, ancak bu hesapta blob veya kuyruk verilerine erişim sağlamaz.
+> Yalnızca veri erişimi için açıkça tanımlanan roller, bir güvenlik sorumlusunun blob veya sıra verilerine erişmesine izin verir. **Sahip,** **Katılımcı**ve **Depolama Hesabı Katılımcısı** gibi roller, bir güvenlik sorumlusunun bir depolama hesabını yönetmesine izin verir, ancak bu hesaptaki blob veya sıra verilerine erişim sağlamaz.
 >
-> Azure portal blob veya kuyruk verilerine erişim, Azure AD hesabınız veya depolama hesabı erişim anahtarı kullanılarak yetkilendirilenebilir. Daha fazla bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure Portal kullanma](../articles/storage/common/storage-access-blobs-queues-portal.md).
+> Azure portalındaki blob veya sıra verilerine erişim, Azure REKLAM hesabınız veya depolama hesabı erişim anahtarıkullanılarak yetkilendirilebilir. Daha fazla bilgi için [bkz.](../articles/storage/common/storage-access-blobs-queues-portal.md)

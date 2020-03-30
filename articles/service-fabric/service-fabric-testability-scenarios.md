@@ -1,52 +1,52 @@
 ---
-title: Azure Service Fabric için Chaos ve yük devretme testleri oluşturma
-description: Service Fabric Chaos test ve yük devretme testi senaryolarını, bu hatalara ve hizmetlerinizin güvenilirliğini doğrulamaya yönelik olarak kullanma.
+title: Azure Hizmet Kumaşı için kaos ve başarısız testler oluşturun
+description: Hataları tetiklemek ve hizmetlerinizin güvenilirliğini doğrulamak için Service Fabric kaos testi ve başarısız test senaryolarını kullanma.
 author: motanv
 ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465542"
 ---
 # <a name="testability-scenarios"></a>Test edilebilirlik senaryoları
-Bulut altyapıları gibi büyük dağıtılmış sistemler, doğal olarak güvenilir değildir. Azure Service Fabric, geliştiricilere güvenilir olmayan altyapıların üstünde çalışacak hizmetler yazma olanağı sağlar. Yüksek kaliteli hizmetleri yazmak için geliştiricilerin, hizmetlerinin kararlılığını test etmek üzere bu güvenilir olmayan altyapıya gelebilmesi gerekir.
+Bulut altyapıları gibi büyük dağıtılmış sistemler doğal olarak güvenilmezdir. Azure Hizmet Kumaşı, geliştiricilere güvenilmez altyapıların üzerinde çalışacak hizmet yazma olanağı sağlar. Yüksek kaliteli hizmetler yazmak için, geliştiricilerin hizmetlerinin istikrarını test etmek için bu kadar güvenilmez bir altyapıyı teşvik edebilmeleri gerekir.
 
-Hata Analizi hizmeti, geliştiricilere hata durumunda test hizmetleri için hata eylemleri getirme yeteneği sağlar. Ancak, hedeflenen benzetimli hatalar size yalnızca şu ana kadar bir tane olur. Testi daha fazla yapmak için, Service Fabric: bir Chaos testi ve bir yük devretme testi olan test senaryolarını kullanabilirsiniz. Bu senaryolar, sürekli olarak araya eklemeli hataların, küme genelinde uzun süre boyunca düzgün şekilde ve düzgün bir şekilde benzetiminin benzetimini yapar. Bir test, hata oranı ve türüyle yapılandırıldıktan sonra, kümede ve hizmetinizde hata oluşturmak için C# API 'Ler veya PowerShell aracılığıyla başlatılabilir.
+Hata Çözümleme Hizmeti, geliştiricilere hataların varlığında hizmetleri test etmek için hata eylemleri neden olma olanağı sağlar. Ancak, hedeflenen simüle hatalar sadece şimdiye kadar alırsınız. Testi daha da ileri götürmek için Service Fabric:bir kaos testi ve bir başarısızlık testinde test senaryolarını kullanabilirsiniz. Bu senaryolar, küme boyunca uzun süreler boyunca hem zarif hem de zarif olmayan, sürekli ara sıra edilmiş hataları simüle eder. Bir test, hata oranı ve türüyle yapılandırıldıktan sonra, kümede ve hizmetinizde hata oluşturmak için C# API'leri veya PowerShell üzerinden başlatılabilir.
 
 > [!WARNING]
-> ChaosTestScenario, daha esnek, hizmet tabanlı bir Chaos tarafından değiştiriliyor. Daha fazla ayrıntı için lütfen bkz. [denetlenen Chaos](service-fabric-controlled-chaos.md) makalesine başvurun.
+> ChaosTestScenario daha esnek, hizmet tabanlı Chaos ile değiştiriliyor. Daha fazla bilgi için lütfen yeni makale [Controlled Chaos](service-fabric-controlled-chaos.md) bakın.
 > 
 > 
 
-## <a name="chaos-test"></a>Chaos testi
-Chaos senaryosu tüm Service Fabric kümesi genelinde hata üretir. Senaryo, genellikle aylar veya yıllar içinde görülen hataları birkaç saat sıkıştırır. Yüksek hata oranı ile araya eklemeli hataların birleşimi, aksi takdirde eksik olan köşe durumlarını bulur. Bu, hizmetin kod kalitesindeki önemli bir Gelişe yol açar.
+## <a name="chaos-test"></a>Kaos testi
+Kaos senaryosu tüm Service Fabric kümesinde hatalar oluşturur. Senaryo genellikle aylar veya yıllar içinde birkaç saat e kadar görülen hataları sıkıştırır. Yüksek hata oranı ile ara sıra hataların birleşimi aksi takdirde cevapsız köşe durumlarda bulur. Bu, hizmetin kod kalitesinde önemli bir iyileşmeye yol açar.
 
-### <a name="faults-simulated-in-the-chaos-test"></a>Chaos testinde sanal hatalar
-* Bir düğümü yeniden başlatma
-* Dağıtılan bir kod paketini yeniden başlatma
-* Bir çoğaltmayı kaldırma
-* Çoğaltmayı yeniden başlatma
-* Birincil çoğaltmayı taşıma (isteğe bağlı)
-* İkincil çoğaltmayı taşıma (isteğe bağlı)
+### <a name="faults-simulated-in-the-chaos-test"></a>Kaos testinde simüle edilen hatalar
+* Düğümü yeniden başlat
+* Dağıtılan kod paketini yeniden başlatma
+* Yinelemeyi kaldırma
+* Yinelemeyi yeniden başlatma
+* Birincil yinelemeyi taşıma (isteğe bağlı)
+* İkincil yinelemeyi taşıma (isteğe bağlı)
 
-Chaos testi, belirli bir süre boyunca hata ve küme doğrulamaları için birden çok yineleme çalıştırır. Kümenin sabitlenemez ve doğrulamanın başarılı olması için harcanan süre de yapılandırılabilir. Küme doğrulamasında tek bir hata oluştuğunda senaryo başarısız olur.
+Kaos testi, belirtilen süre boyunca hataların ve küme doğrulamalarının birden çok yinelemesini çalıştırAr. Kümenin stabilize edilmesi ve doğrulamanın başarılı olması için harcanan süre de yapılandırılabilir. Küme doğrulamada tek bir hata yaptığınızda senaryo başarısız olur.
 
-Örneğin, en fazla üç eşzamanlı hata ile bir saat boyunca çalışacak bir test kümesi düşünün. Test üç hatayı alacak ve ardından Küme durumunu doğrulayacaktır. Test, küme sağlıksız veya bir saat geçtiğinde önceki adımda yinelenir. Küme herhangi bir yinelemede sağlıksız hale gelirse, yani yapılandırılmış bir süre içinde sabitlemez, test bir özel durumla başarısız olur. Bu özel durum bir şeyin yanlış geçmiş olduğunu ve daha fazla araştırma gerektiğini gösterir.
+Örneğin, en fazla üç eşzamanlı hatayla bir saat çalışacak bir test kümesi düşünün. Test üç hata neden olur ve sonra küme durumunu doğrular. Test, küme sağlıksız hale gelene veya bir saat geçene kadar önceki adımda yinelenir. Küme herhangi bir yinelemede sağlıksız hale gelirse, yani yapılandırılmış bir süre içinde sabitlenmez, test bir istisna dışında başarısız olur. Bu istisna, bir şeylerin yanlış gittiğini ve daha fazla araştırma gerektiğini gösterir.
 
-Geçerli formunda, Chaos testinde hata oluşturma altyapısı yalnızca güvenli hatalara sahiptir. Bu, dış hataların yokluğu, bir çekirdeğin veya veri kaybının hiçbir şekilde gerçekleşmeyeceği anlamına gelir.
+Mevcut haliyle, kaos testindeki fay üretim motoru sadece güvenli arızalara neden olur. Bu, dış hatalar yokluğunda, bir çoğunluk veya veri kaybı asla meydana asla anlamına gelir.
 
 ### <a name="important-configuration-options"></a>Önemli yapılandırma seçenekleri
-* **Timetorun**: testin başarılı olmadan bitmeden önce çalışacağı toplam süre. Sınama, doğrulama hatası yerine daha önce bitebilirler.
-* **Maxclustersabitlemesi zaman aşımı**: test başarısız olmadan önce kümenin sağlıklı olması için beklenecek en uzun süre. Gerçekleştirilen denetimler, küme durumunun Tamam, hizmet durumu Tamam, hedef çoğaltma kümesi boyutu hizmet bölümü için sağlanır ve hiçbir InBuild çoğaltması yok.
-* **Maxconcurrentfaults**: her yinelemede en fazla sayıda eş zamanlı hata oluşturuldu. Sayı arttıkça, test daha karmatı, bu nedenle daha karmaşık yük devretme ve geçiş birleşimleri elde edilir. Sınama, bu yapılandırmanın ne kadar yüksek olduğunu fark etmeksizin, dış hataların yokluğunda bir çekirdek veya veri kaybı olmayacaktır.
-* **Enablemovereperepfaults**: birincil veya ikincil çoğaltmaların taşınmasına neden olan hataları etkinleştirilir veya devre dışı bırakır. Bu hatalar varsayılan olarak devre dışıdır.
-* **Waittimebetweenyinelemelerde**: bir hata ve karşılık gelen doğrulama sonrasında yinelemeler arasında beklenecek süre.
+* **TimeToRun**: Testin başarı ile bitirmeden önce çalışacağı toplam süre. Doğrulama hatası yerine test daha erken bitirilebilir.
+* **MaxClusterStabilizationTimeout**: Testten geçemeden kümenin sağlıklı olmasını beklemek için maksimum süre. Gerçekleştirilen denetimler küme durumu Tamam olup olmadığı, hizmet durumu Tamam olup olmadığı, hedef yineleme kümesi boyutu hizmet bölümü için elde edilir ve hiçbir InBuild yinelemeleri vardır.
+* **MaxConcurrentFaults**: Her yinelemede indüklenen maksimum eşzamanlı hata sayısı. Sayı ne kadar yüksekse, test o kadar agresif olur ve bu da daha karmaşık arızalar ve geçiş kombinasyonları ile sonuçlanır. Test, dış hata lar olmadığında, bu yapılandırmanın ne kadar yüksek olduğuna bakılmaksızın bir çoğunluk veya veri kaybı olmayacağını garanti eder.
+* **EnableMoveReplicaFaults**: Birincil veya ikincil yinelemelerin taşınmasına neden olan hataları etkinleştirer veya devre dışı eder. Bu hatalar varsayılan olarak devre dışı bırakılır.
+* **WaitTimeBetweenIterations**: Yinelemeler arasında bekleme süresi, yani bir hata turundan ve ilgili doğrulamadan sonra.
 
-### <a name="how-to-run-the-chaos-test"></a>Chaos testini çalıştırma
+### <a name="how-to-run-the-chaos-test"></a>Kaos testi nasıl çalıştırılır?
 C# örneği
 
 ```csharp
@@ -124,7 +124,7 @@ class Test
 
 PowerShell
 
-Service Fabric PowerShell modülü, bir Chaos senaryosunu başlatmak için iki yol içerir. `Invoke-ServiceFabricChaosTestScenario` istemci tabanlıdır ve istemci makinenin testi üzerinden kapatması durumunda daha fazla hata alınmaz. Alternatif olarak, makineyi makinenin kapatılmasını durumunda çalıştırmaya devam eden bir komut kümesi vardır. `Start-ServiceFabricChaos`, FaultAnalysisService adlı bir durum bilgisi olan ve güvenilir bir sistem hizmeti kullanır ve bu işlem, TimeToRun tamamlanana kadar hataların ortaya çıkmamasını sağlar. `Stop-ServiceFabricChaos`, senaryoyu el ile durdurmak için kullanılabilir ve `Get-ServiceFabricChaosReport` bir rapor elde eder. Daha fazla bilgi için bkz. [Azure Service Fabric PowerShell Başvurusu](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) ve [Service Fabric kümelerinde denetlenen Chaos](service-fabric-controlled-chaos.md)'ı alma.
+Service Fabric Powershell modülü bir kaos senaryosu başlatmak için iki yol içerir. `Invoke-ServiceFabricChaosTestScenario`istemci tabanlıdır ve istemci makine testin ortasında kapatılırsa, başka hata getirilmeyecektir. Alternatif olarak, makinenin kapatılması durumunda testin çalışmasını sağlamak için bir dizi komut vardır. `Start-ServiceFabricChaos`FaultAnalysisService adı verilen, ZamanToRun bitene kadar hataların devam etmesini sağlayan, devlete ait ve güvenilir bir sistem hizmeti kullanır. `Stop-ServiceFabricChaos`senaryoyu el ile durdurmak için `Get-ServiceFabricChaosReport` kullanılabilir ve bir rapor elde edecektir. Daha fazla bilgi için [Azure Service Fabric Powershell başvurusu](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) na bakın ve Service Fabric [kümelerinde kontrollü kaos uyguluyor.](service-fabric-controlled-chaos.md)
 
 ```powershell
 $connection = "localhost:19000"
@@ -139,27 +139,27 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 ```
 
 
-## <a name="failover-test"></a>Yük devretme testi
-Yük devretme testi senaryosu, belirli bir hizmet bölümünü hedefleyen bir Chaos test senaryosu sürümüdür. Diğer hizmetleri etkilemeden, belirli bir hizmet bölümünde yük devretme etkisini sınar. Hedef bölüm bilgileri ve diğer parametrelerle yapılandırıldıktan sonra, hizmet bölümü için hata oluşturmak üzere C# API 'Leri veya PowerShell kullanan bir istemci tarafı araç olarak çalışır. Senaryo, iş mantığınızın bir iş yükü sağlamak üzere tarafında çalıştığı bir dizi sanal hata ve hizmet doğrulaması boyunca yinelenir. Hizmet doğrulamasında bir hata, daha fazla araştırma gerektiren bir sorunu gösterir.
+## <a name="failover-test"></a>Başarısız test
+Başarısız test senaryosu, belirli bir hizmet bölümü hedefleyen kaos testi senaryosunun bir sürümüdür. Diğer hizmetleri etkilenmeden bırakırken, belirli bir hizmet bölümü üzerinde failover etkisini sınar. Hedef bölüm bilgileri ve diğer parametrelerle yapılandırıldıktan sonra, bir hizmet bölümü için hata oluşturmak için C# API'leri veya PowerShell'i kullanan istemci tarafı aracı olarak çalışır. Senaryo, iş yükünü sağlamak için yan tarafta çalışırken, simüle edilmiş hatalar ve hizmet doğrulama dizisi ile yineler. Hizmet doğrulamasındaki bir hata, daha fazla araştırma yapılması gereken bir sorunu gösterir.
 
-### <a name="faults-simulated-in-the-failover-test"></a>Yük devretme testinde benzetilmiş hata
-* Bölümün barındırıldığı dağıtılan bir kod paketini yeniden başlatın
-* Birincil/ikincil çoğaltma veya durum bilgisi olmayan örneği kaldırma
-* Birincil ikincil çoğaltmayı yeniden başlatın (kalıcı bir hizmet varsa)
-* Birincil çoğaltmayı taşıma
-* İkincil bir çoğaltmayı taşıma
+### <a name="faults-simulated-in-the-failover-test"></a>Başarısız testte simüle edilen hatalar
+* Bölümün barındırıldığı dağıtılmış kod paketini yeniden başlatma
+* Birincil/ikincil yinelemeyi veya durum bilgisisiz örneği kaldırma
+* Birincil ikincil yinelemeyi yeniden başlatın (kalıcı bir hizmet varsa)
+* Birincil yinelemeyi taşıma
+* İkincil yinelemeyi taşıma
 * Bölümü yeniden başlatın
 
-Yük devretme testi seçili bir hata alır ve daha sonra kararlılığını sağlamak için hizmette doğrulama çalıştırır. Yük devretme testi, tek seferde yalnızca bir hata olduğunu ve Chaos testinde olası birden çok hata olduğunu belirtir. Hizmet bölümü her bir hata sonrasında yapılandırılan zaman aşımı süresi içinde sabitlemezse, test başarısız olur. Test yalnızca güvenli hatalara sahiptir. Bu, dış hataların yokluğu, bir çekirdeğin veya veri kaybının gerçekleşmeyeceği anlamına gelir.
+Failover testi seçilen bir hatayı neden olur ve daha sonra kararlılığını sağlamak için hizmet üzerinde doğrulama çalışır. Başarısızlık testi, kaos testindeki olası birden fazla hatanın aksine, aynı anda yalnızca bir hataya neden olur. Hizmet bölümü, her hatadan sonra yapılandırılan zaman arızası içinde sabitlenmezse, test başarısız olur. Test sadece güvenli hatalara neden olur. Bu, dış hatalar olmadığı nda, bir çoğunluk veya veri kaybı nın meydana gelmeyeceğini zedler.
 
 ### <a name="important-configuration-options"></a>Önemli yapılandırma seçenekleri
-* **Partitionselector**: hedeflenmesi gereken bölümü belirten Seçici nesne.
-* **Timetorun**: testin bitmeden önce çalışacağı toplam süre.
-* **Maxservicestabilizationtimeout**: test başarısız olmadan önce kümenin sağlıklı olması için beklenecek en uzun süre. Gerçekleştirilen denetimler, hizmet sistem durumunun tamam olup olmadığı, tüm bölümler için hedef çoğaltma kümesi boyutunun elde edilip edilmeyeceğini ve hiçbir InBuild çoğaltması yok.
-* **Waittimebetweenfaults**: her hata ve doğrulama çevrimi arasında beklenecek süre.
+* **PartitionSelector**: Hedef alınması gereken bölümü belirten seçici nesne.
+* **TimeToRun**: Testin bitmeden önce çalışacağı toplam süre.
+* **MaxServiceStabilizationTimeout**: Testten geçemeden kümenin sağlıklı olmasını beklemek için maksimum süre. Gerçekleştirilen denetimler hizmet durumu Tamam olup olmadığı, hedef çoğaltma kümesi boyutu tüm bölümler için elde edilir ve hiçbir InBuild yinelemeleri vardır.
+* **WaitTimeBetweenFaults**: Her hata ve doğrulama döngüsü arasında bekleme süresi.
 
-### <a name="how-to-run-the-failover-test"></a>Yük devretme testini çalıştırma
-**C#**
+### <a name="how-to-run-the-failover-test"></a>Başarısızlık testi nasıl çalıştırılır?
+**C #**
 
 ```csharp
 using System;
@@ -234,7 +234,7 @@ class Test
 ```
 
 
-**PowerShell**
+**Powershell**
 
 ```powershell
 $connection = "localhost:19000"

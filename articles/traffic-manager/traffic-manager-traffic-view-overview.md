@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Manager Trafik Görünümü
-description: Bu giriş bölümünde Traffic Manager trafik görünümünün nasıl çalıştığı hakkında bilgi edinin.
+title: Azure Trafik Yöneticisi'nde Trafik Görünümü
+description: Bu girişte, Trafik yöneticisi Trafik görünümünün nasıl çalıştığını öğrenin.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -13,88 +13,88 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938350"
 ---
-# <a name="traffic-manager-traffic-view"></a>Traffic Manager Trafik Görünümü
+# <a name="traffic-manager-traffic-view"></a>Trafik Yöneticisi Trafik Görünümü
 
-Traffic Manager, son kullanıcılarınızın profili oluştururken belirtilen yönlendirme yöntemine bağlı olarak sağlıklı uç noktalara yönlendirilmeleri için DNS düzeyinde yönlendirme sağlar. Trafik Görünümü, Kullanıcı tabanlarınızın (bir DNS çözümleyici ayrıntı düzeyi düzeyinde) ve bunların trafik deseninin bir görünümü ile Traffic Manager sağlar. Trafik Görünümü etkinleştirdiğinizde bu bilgiler, eyleme dönüştürülebilir içgörüler sağlamak üzere işlenir. 
+Trafik Yöneticisi, profili oluşturduğunuzda belirtilen yönlendirme yöntemine göre son kullanıcılarınızın sağlıklı uç noktalara yönlendirilmesi için DNS düzeyi yönlendirmesağlar. Trafik Görünümü, Trafik Yöneticisi'ne kullanıcı üslerinizin (DNS çözümleyici parçalı) ve bunların trafik deseni görünümünü sağlar. Trafik Görünümü'ni etkinleştirdiğinizde, bu bilgiler size işlem uygulanabilir öngörüler sağlamak için işlenir. 
 
-Trafik Görünümü kullanarak şunları yapabilirsiniz:
-- Kullanıcı temellerinizin nerede olduğunu anlayın (yerel bir DNS çözümleyici düzeyi ayrıntı düzeyine kadar).
-- Bu bölgelerden kaynaklanan trafik hacmini (Azure Traffic Manager tarafından işlenen DNS sorguları olarak gözlemlendi) görüntüleyin.
-- Bu kullanıcılar tarafından karşılaşılan temsilci gecikme süresi hakkında öngörüler elde edin.
-- uç noktalarınız olan Azure bölgelerine bu kullanıcı temellerinden gelen belirli trafik desenlerine derinlemesine bakış. 
+Trafik Görünümü'ni kullanarak şunları yapabilirsiniz:
+- kullanıcı üslerinizin nerede bulunduğunu (yerel Bir DNS çözümleyici düzeyine kadar parçalı) anlayın.
+- bu bölgelerden kaynaklanan trafik hacmini (Azure Trafik Yöneticisi tarafından işlenen DNS sorguları olarak gözlenen) görüntüleyin.
+- bu kullanıcıların yaşadığı temsili gecikme nin ne olduğuna dair bilgiler edinin.
+- bu kullanıcı tabanlarının her birinden bitiş noktalarının olduğu Azure bölgelerine kadar belirli trafik desenlerine derin denin. 
 
-Örneğin, hangi bölgelerin çok sayıda trafiğe sahip olduğunu, ancak daha yüksek gecikme sürelerinin ne olduğunu anlamak için Trafik Görünümü kullanabilirsiniz. Daha sonra bu bilgileri kullanarak, bu kullanıcıların daha düşük gecikme süresine sahip olması için parmak izinizi yeni Azure bölgelerine göre planlamanız için kullanabilirsiniz.
+Örneğin, hangi bölgelerin çok sayıda trafiğe sahip olduğunu ancak daha yüksek gecikme sürelerinden muzdarip olduğunu anlamak için Trafik Görünümü'ni kullanabilirsiniz. Ardından, bu bilgileri, bu kullanıcıların daha düşük bir gecikme sonu deneyimi yaşamaları için yeni Azure bölgelerine ayak izi genişletmenizi planlamak için kullanabilirsiniz.
 
-## <a name="how-traffic-view-works"></a>Trafik Görünümü nasıl kullanılır?
+## <a name="how-traffic-view-works"></a>Trafik Görünümü nasıl çalışır?
 
-Trafik Görünümü, bu özelliğin etkin olduğu bir profilde son yedi gün içinde alınan gelen sorgulara Traffic Manager bakarak işe yarar. Gelen sorgular bilgilerden Trafik Görünümü, kullanıcıların konumunun temsili olarak kullanılan DNS Çözümleyicisinin kaynak IP 'sini ayıklar. Bunlar daha sonra, Traffic Manager tarafından tutulan IP adreslerinin coğrafi bilgilerini kullanarak Kullanıcı temel bölgeleri oluşturmak için bir DNS çözümleyici düzeyi ayrıntı düzeyinde birlikte gruplandırılır. Traffic Manager, sorgunun yönlendirildiği Azure bölgelerine bakar ve bu bölgelerdeki kullanıcılar için bir trafik akışı haritası oluşturur.  
-Sonraki adımda Traffic Manager, Kullanıcı temel bölgesini farklı Son Kullanıcı ağları için sakladığı ağ zekası gecikme tablolarıyla Azure bölge eşleme ile eşleyerek, bu bölgelerden kullanıcılar tarafından karşılaşılan ortalama gecikme süresini anlamak için Azure bölgelerine bağlanma. Bu hesaplamaların tamamı, size sunulmadan önce yerel DNS çözümleyici IP düzeyinde birleştirilir. Bilgileri çeşitli yollarla kullanabilirsiniz.
+Trafik Görünümü, Trafik Yöneticisi'nin bu özelliği etkin olan bir profile karşı son yedi gün içinde alınan gelen sorguları görüntülemesini sağlayarak çalışır. Gelen sorgu bilgilerinden Traffic View, kullanıcıların konumunun gösterimi olarak kullanılan DNS çözümleyicisinin kaynak IP'sini ayıklar. Bunlar daha sonra Trafik Yöneticisi tarafından tutulan IP adreslerinin coğrafi bilgilerini kullanarak kullanıcı tabanı bölgeleri oluşturmak için DNS çözümleyici düzeyinde bir dizi nde gruplandırılır. Trafik Yöneticisi daha sonra sorgunun yönlendirildiği Azure bölgelerine bakar ve bu bölgelerdeki kullanıcılar için bir trafik akışı eşlemi oluşturur.  
+Bir sonraki adımda, Trafik Yöneticisi, kullanıcı tabanı bölgesini Azure bölgesi eşlemesiyle, bu bölgelerdeki kullanıcıların yaşadığı ortalama gecikme süresini anlamak için farklı son kullanıcı ağları için koruduğu ağ zekası gecikme tablolarıyla ilişkilendirir Azure bölgelerine bağlanma. Tüm bu hesaplamalar, size sunulmadan önce yerel DNS çözümleyicisi IP düzeyinde birleştirilir. Bilgileri çeşitli şekillerde tüketebilirsiniz.
 
-Trafik görünümü veri güncelleştirme sıklığı, birden çok iç hizmet değişkenine bağlıdır. Ancak, veriler genellikle her 24 saatte bir güncelleştirilir.
+Trafik görünümü veri güncelleştirmesinin sıklığı birden çok dahili hizmet değişkenine bağlıdır. Ancak, veriler genellikle her 24 saatte bir güncelleştirilir.
 
 >[!NOTE]
->Trafik Görünümü açıklanan gecikme süresi, son kullanıcı ile bağlı oldukları Azure bölgeleri arasında temsili bir gecikme süresi ve DNS arama gecikmesi değildir. Trafik Görünümü, yerel DNS çözümleyici ile sorgunun yönlendirildiği Azure bölgesi arasındaki gecikme süresini en iyi şekilde tahmin etmek için yeterli veri yoksa, döndürülen gecikme null olur. 
+>Traffic View'da açıklanan gecikme sonu, son kullanıcı ile bağlı oldukları Azure bölgeleri arasında temsili bir gecikme dir ve DNS arama gecikmesi değildir. Trafik Görünümü, yerel DNS çözümleyicisi ile sorgunun yönlendirilen Azure bölgesi arasındaki gecikme gecikmesi hakkında en iyi çabayı gösterir, kullanılabilir veri yoksa döndürülen gecikme null olacaktır. 
 
-## <a name="visual-overview"></a>Görsel genel bakış
+## <a name="visual-overview"></a>Görsel bakış
 
-Traffic Manager sayfanızdaki **trafik görünümü** bölümüne gittiğinizde, trafik görünümü öngörülerinin yer aldığı bir coğrafi harita sunulur. Eşleme, Traffic Manager profilinizin kullanıcı tabanı ve uç noktaları hakkında bilgi sağlar.
+Trafik Yöneticisi sayfanızdaki **Trafik Görünümü** bölümüne gidince, Trafik Görünümü istatistiklerinin bir bindirmesini içeren bir coğrafi harita sunulur. Harita, Trafik Yöneticisi profiliniz için kullanıcı tabanı ve uç noktaları hakkında bilgi sağlar.
 
-![Traffic Manager Trafik Görünümü coğrafi görünüm][1]
+![Trafik Yöneticisi Trafik Görünümü Coğrafi görünüm][1]
 
 ### <a name="user-base-information"></a>Kullanıcı temel bilgileri
 
-Konum bilgilerinin kullanılabildiği yerel DNS çözümleyiciler için, haritada gösterilir. DNS Çözümleyicisinin rengi, Traffic Manager sorguları için bu DNS çözümleyicisini kullanan son kullanıcıların yaşadığı ortalama gecikme süresini gösterir.
+Konum bilgilerinin bulunduğu yerel DNS çözümleyicileri için haritada gösterilirler. DNS çözümleyicisinin rengi, Trafik Yöneticisi sorguları için bu DNS çözümleyicisini kullanan son kullanıcıların yaşadığı ortalama gecikmeyi gösterir.
 
-Haritada bir DNS çözümleyici konumunun üzerine geldiğinizde şunu gösterir:
-- DNS Çözümleyicisinin IP adresi
-- Traffic Manager tarafından görülen DNS sorgu trafiği hacmi
-- uç nokta ve DNS Çözümleyicisi arasında bir çizgi olarak DNS çözümleyicisinden gelen trafiğin yönlendirildiği uç noktalar 
-- Bu konumdan, birbirine bağlanan çizginin rengi olarak temsil edilen ortalama gecikme bitiş noktası
+Haritada bir DNS çözümleyici konumunun üzerinde gezinirseniz, şunları gösterir:
+- DNS çözümleyicisinin IP adresi
+- Trafik Müdürü tarafından görülen DNS sorgu trafiğinin hacmi
+- bitiş noktası ile DNS çözümleyicisi arasındaki bir çizgi olarak DNS çözümleyicisinden gelen trafiğin yönlendirildiği uç noktalar 
+- onları bağlayan hattın rengi olarak temsil edilen, o konumdan bitiş noktasına kadar olan ortalama gecikme
 
-### <a name="endpoint-information"></a>Uç nokta bilgileri
+### <a name="endpoint-information"></a>Bitiş noktası bilgileri
 
-Uç noktaların bulunduğu Azure bölgeleri, haritada mavi noktalar olarak gösterilir. Uç noktanız dış ise ve kendisine eşlenmiş bir Azure bölgesi yoksa, eşlemenin en üstünde gösterilir. Trafiğin bu uç noktaya yönlendirildiği farklı konumları (kullanılan DNS Çözümleyicisi temelinde) görmek için herhangi bir uç noktaya tıklayın. Bağlantılar, uç nokta ve DNS çözümleyici konumu arasında bir çizgi olarak gösterilir ve bu çift arasındaki temsilci gecikmesine göre renklendirilir. Ayrıca, uç noktanın adını, çalıştığı Azure bölgesini ve bu Traffic Manager profili tarafından kendisine yönlendirilen isteklerin toplam hacmini görebilirsiniz.
+Uç noktaların bulunduğu Azure bölgeleri haritada mavi noktalar olarak gösterilir. Bitiş noktanız dış noktaysa ve üzerinde eşlenmiş bir Azure bölgesi yoksa, haritanın üst kısmında gösterilir. Trafiğin o bitiş noktasına yönlendirildiği farklı konumları (kullanılan DNS çözümleyicisine göre) görmek için herhangi bir bitiş noktasına tıklayın. Bağlantılar bitiş noktası ile DNS çözümleyici konumu arasında bir çizgi olarak gösterilir ve bu çift arasındaki temsili gecikme ye göre renklenir. Ayrıca, bitiş noktasının adını, çalıştığı Azure bölgesini ve bu Trafik Yöneticisi profili tarafından ona yönlendirilen isteklerin toplam hacmini görebilirsiniz.
 
 
-## <a name="tabular-listing-and-raw-data-download"></a>Tablosal listeleme ve ham veri yükleme
+## <a name="tabular-listing-and-raw-data-download"></a>Tabular liste ve ham veri indir
 
-Trafik Görünümü verilerini Azure portal tablo biçiminde görüntüleyebilirsiniz. DNS Çözümleyicisinin IP adresini, uç noktanın bulunduğu Azure bölgesinin adı ve coğrafi konumunu (varsa), bu DNS çözümleyici ile ilişkili isteklerin hacmini ve ilgili DNS ile ilgili temsilci gecikmesini (varsa) kullanan her DNS çözümleyici IP/uç noktası çifti için bir giriş vardır. Trafik Görünümü verilerini, tercih ettiğiniz analiz iş akışının bir parçası olarak kullanılabilecek bir CSV dosyası olarak da indirebilirsiniz.
+Trafik Görünümü verilerini Azure portalında bir tabular biçiminde görüntüleyebilirsiniz. Her DNS çözümleyicisi IP / uç nokta çifti için, DNS çözümleyicisinin IP adresini, bitiş noktasının bulunduğu Azure bölgesinin adını ve coğrafi konumunu (varsa), bu DNS çözümleyicisiyle ilişkili isteklerin hacmini ve bu DNS'yi kullanan son kullanıcılarla ilişkili temsilci gecikmesini (varsa) gösteren bir giriş vardır. Trafik Görünümü verilerini, seçtiğiniz bir analitik iş akışının bir parçası olarak kullanılabilecek bir CSV dosyası olarak da indirebilirsiniz.
 
 ## <a name="billing"></a>Faturalandırma
 
-Trafik Görünümü kullandığınızda, sunulan öngörüleri oluşturmak için kullanılan veri noktası sayısına göre faturalandırılırsınız. Şu anda kullanılan tek veri noktası türü Traffic Manager profilinize göre alınan sorgulardır. Fiyatlandırma hakkında daha fazla bilgi için [Traffic Manager fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/traffic-manager/)ziyaret edin.
+Trafik Görünümü'ni kullandığınızda, sunulan öngörüleri oluşturmak için kullanılan veri noktalarının sayısına göre faturalandırılırsınız. Şu anda, kullanılan tek veri noktası türü Trafik Yöneticisi profilinize karşı alınan sorgulardır. Fiyatlandırma hakkında daha fazla bilgi için [Trafik Yöneticisi fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/traffic-manager/)ziyaret edin.
 
 ## <a name="faqs"></a>SSS
 
-* [Trafik Görünümü ne yapar?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+* [Trafik Görünümü ne işe yarar?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
 
-* [Trafik Görünümü kullanmanın avantajlarından faydalanabilirsiniz.](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+* [Trafik Görünümü'nden nasıl yararlanabilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
 
-* [Azure izleyici aracılığıyla kullanılabilen Traffic Manager ölçümlerinden farklı Trafik Görünümü nedir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+* [Trafik Görünümü, Azure monitörü aracılığıyla kullanılabilen Trafik Yöneticisi ölçümlerinden nasıl farklı?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [Trafik Görünümü EDNS Istemci alt ağ bilgilerini kullanır mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+* [Trafik Görünümü EDNS İstemci Alt net bilgilerini kullanıyor mu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
 
-* [Kaç gün veri Trafik Görünümü kullanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+* [Trafik Görünümü kaç günlük veri kullanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
 
 * [Trafik Görünümü dış uç noktaları nasıl işler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
 
-* [Aboneliğimde her profil için Trafik Görünümü etkinleştirmem gerekir mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+* [Aboneliğimdeki her profil için Trafik Görünümü'ni etkinleştirmem gerekiyor mu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
 
-* [Trafik Görünümü nasıl kapatırım?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+* [Trafik Görünümü'ni nasıl kapatabilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
 
-* [Trafik Görünümü Faturalandırma nasıl çalışır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+* [Trafik Görünümü faturalandırma nasıl çalışır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Traffic Manager nasıl çalıştığını](traffic-manager-overview.md) öğrenin
-- Traffic Manager tarafından desteklenen [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) hakkında daha fazla bilgi edinin
-- [Traffic Manager profili oluşturmayı](traffic-manager-create-profile.md) öğrenin
+- [Trafik Yöneticisi'nin nasıl çalıştığını](traffic-manager-overview.md) öğrenin
+- Trafik Yöneticisi tarafından desteklenen [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) hakkında daha fazla bilgi edinin
+- Trafik Yöneticisi profilini nasıl [oluşturabilirsiniz](traffic-manager-create-profile.md) öğrenin
 
 <!--Image references-->
 [1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

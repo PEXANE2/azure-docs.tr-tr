@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Rollbar yapılandırma | Microsoft Docs'
-description: Kullanıcı hesaplarını Rollbar 'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Rollbar'ı yapılandırın | Microsoft Dokümanlar"
+description: Azure Active Directory'yi rollbar'a otomatik olarak sağlama ve kullanıcı hesaplarını sağlama ve sağlamadan çıkarma için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,80 +16,80 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 27a26a0c8378f34794afd87cf11b6bb878f7b53c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78248414"
 ---
-# <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Rollbar yapılandırma
+# <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Rollbar'ı yapılandır
 
-Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Rollbar hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak kullanıcıları ve grupları otomatik olarak [temin etmek için](https://rollbar.com/pricing/) sağlar ve hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
+Bu öğretici, otomatik kullanıcı sağlama yapılandırmak için hem Rollbar hem de Azure Etkin Dizin (Azure AD) gerçekleştirmeniz gereken adımları açıklar. Azure AD, yapılandırıldığınızda, Azure REKLAM Sağlama hizmetini kullanarak kullanıcıları ve grupları otomatik olarak [Rollbar'a](https://rollbar.com/pricing/) karşı hükümler ve hükümlerden arındırma sağlar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../manage-apps/user-provisioning.md)bkz. 
 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
-> * Rollbar 'te Kullanıcı oluşturma
-> * Artık erişim gerektirdiklerinde Rollbar içindeki kullanıcıları kaldırın
-> * Kullanıcı özniteliklerinin Azure AD ile Rollbar arasında eşitlenmiş olmasını sağlama
-> * Rollbar 'te grupları ve grup üyeliklerini sağlama
-> * Rollbar için [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/rollbar-tutorial) (önerilir)
+> * Rollbar'da kullanıcı oluşturma
+> * Artık erişim gerektirmeyen kullanıcıları Rollbar'dan kaldırma
+> * Kullanıcı özniteliklerini Azure AD ve Rollbar arasında eşitlenmiş tutma
+> * Rollbar'da tedarik grupları ve grup üyelikleri
+> * Rollbar'a [tek oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/rollbar-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
-* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
-* Kurumsal plana sahip [bir Rollbar kiracısı](https://rollbar.com/pricing/) .
-* Yönetim izinlerine sahip Rollbar içindeki bir kullanıcı hesabı.
+* [Azure AD kiracı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Sağlama yapılandırma [izniyle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Azure AD'deki bir kullanıcı hesabı (örn. Uygulama Yöneticisi, Bulut Uygulama yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Kurumsal Planı olan bir [Rollbar kiracısı.](https://rollbar.com/pricing/)
+* Rollbar'da Yönetici izinleri olan bir kullanıcı hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1\. Adım. Sağlama dağıtımınızı planlayın
-1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
-3. [Azure AD Ile Rollbar arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+1. Sağlama [hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Kimler in provizyon kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)alınacağını belirleyin.
+3. Azure AD [ve Rollbar arasında hangi](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)verilerin eşlenere kaydedilen. 
 
-## <a name="step-2-configure-rollbar-to-support-provisioning-with-azure-ad"></a>2\. Adım Azure AD ile sağlamayı desteklemek için Rollbar 'ı yapılandırın
+## <a name="step-2-configure-rollbar-to-support-provisioning-with-azure-ad"></a>2. Adım Rollbar'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırın
 
-Azure AD ile otomatik Kullanıcı sağlama için Rollbar 'i yapılandırmadan önce, Rollbar üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
+Rollbar'ı Azure AD ile otomatik kullanıcı sağlama için yapılandırmadan önce, Rollbar'da SCIM sağlamayı etkinleştirmeniz gerekir.
 
-1. [Rollbar yönetici konsolunda](https://rollbar.com/login/)oturum açın. **Hesap ayarları**' na tıklayın.
+1. [Rollbar Yönetici Konsolunuzda](https://rollbar.com/login/)oturum açın. Hesap **Ayarları'na**tıklayın.
 
     ![Rollbar Yönetici Konsolu](media/rollbar-provisioning-tutorial/image00.png)
 
-2. **Kimlik sağlayıcınıza > Rollbar kiracı adı**' na gidin.
+2. **Rollbar Kiracı Adınız > Kimlik Sağlayıcınıza**gidin.
 
-    ![Rollbar kimlik sağlayıcısı](media/rollbar-provisioning-tutorial/idp.png)
+    ![Rollbar Kimlik Sağlayıcısı](media/rollbar-provisioning-tutorial/idp.png)
 
-3. **Sağlama seçeneklerine**aşağı kaydırın. Erişim belirtecini kopyalayın. Bu değer, Azure portal Rollbar uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir. **Kullanıcı ve ekip sağlamayı etkinleştir** onay kutusunu seçin ve **Kaydet**' e tıklayın.
+3. Sağlama Seçenekleri'ne aşağı **kaydırın.** Erişim jetonunu kopyalayın. Bu değer, Azure portalındaki Rollbar uygulamanızın sağlama sekmesinde **Gizli Belirteç** alanına girilir. Kullanıcı **ve takım sağlama** onay kutusunu etkinleştir'i seçin ve **Kaydet'e**tıklayın.
 
-    ![Rollbar erişim belirteci](media/rollbar-provisioning-tutorial/token.png)
-
-
-## <a name="step-3-add-rollbar-from-the-azure-ad-application-gallery"></a>3\. Adım Azure AD uygulama galerisinden Rollbar ekleme
-
-Azure AD uygulama galerisinden Rollbar ' i, hazırlama çubuğunu sağlamayı yönetmeye başlayacak şekilde ekleyin. Önceden SSO için Rollbar 'u ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
-
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4\. Adım. Sağlama kapsamında kim olacağını tanımlama 
-
-Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
-
-* Kullanıcı ve grupları Rollbar 'e atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
-
-* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+    ![Rollbar Erişim Belirteci](media/rollbar-provisioning-tutorial/token.png)
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-rollbar"></a>5\. Adım. Otomatik Kullanıcı sağlamasını Rollbar 'e yapılandırma 
+## <a name="step-3-add-rollbar-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Rollbar ekleme
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
+Rollbar'a sağlama yı yönetmeye başlamak için Azure AD uygulama galerisinden Rollbar ekleyin. Daha önce SSO için Rollbar kurulumu varsa, aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. [Burada](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)galeriden bir uygulama ekleme hakkında daha fazla bilgi edinin. 
 
-### <a name="to-configure-automatic-user-provisioning-for-rollbar-in-azure-ad"></a>Azure AD 'de Rollbar için otomatik Kullanıcı sağlamayı yapılandırmak için:
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Tedarik kapsamına kimlerde olacağını tanımlama 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+Azure AD sağlama hizmeti, uygulamaya yapılan atamaya ve kullanıcının/ grubun özniteliklerine göre kimin sağlanacak kapsamını kapsamanızı sağlar. Atamaya göre uygulamanız için kimlerin sağlanacak kapsamını seçerseniz, uygulamayı zedelektirler ve kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcı nın veya grubun özelliklerine göre kimlerin sağlanacak kapsamını seçerseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+* Kullanıcıları ve grupları Rollbar'a atarken, **Varsayılan Erişim**dışında bir rol seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur ve sağlama günlüklerinde etkin bir şekilde hak sahibi olmadığı şeklinde işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolüyse, ek roller eklemek için [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) güncelleştirebilirsiniz. 
 
-2. Uygulamalar listesinde **Rollbar**' ı seçin.
+* Küçük başla. Herkese kullanıma başlamadan önce küçük bir kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanmış kullanıcılara ve gruplara ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar için ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+
+
+## <a name="step-5-configure-automatic-user-provisioning-to-rollbar"></a>5. Adım. Otomatik kullanıcı sağlamayı Rollbar olarak yapılandırma 
+
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TestApp'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+
+### <a name="to-configure-automatic-user-provisioning-for-rollbar-in-azure-ad"></a>Azure AD'de Rollbar için otomatik kullanıcı sağlama yapılandırmak için:
+
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+
+2. Uygulamalar listesinde **Rollbar'ı**seçin.
 
     ![Uygulamalar listesindeki Rollbar bağlantısı](common/all-applications.png)
 
@@ -97,36 +97,36 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, daha önce **gizli bir belirteçte**alınan erişim belirteci değerini girin. Azure AD 'nin Rollbar 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Rollbar hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici **Kimlik Bilgileri** bölümü altında, **Gizli Belirteç'te**daha önce alınan erişim belirteci değerini girin. Azure AD'nin Rollbar'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Rollbar hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Sağlama](./media/rollbar-provisioning-tutorial/admin.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
+6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** seçin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet'i**seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Rollbar olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Rollbar'a Senkronize Et'i**seçin.
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'Den Rollbar 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Rollbar içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, ROLLBAR API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. Azure AD'den Rollbar'a eşitlenen kullanıcı özniteliklerini **Öznitelik-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Rollbar'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. [Eşleşen hedef özniteliği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Rollbar API'sinin bu özniteliğe göre kullanıcıları filtrelemeyi desteklediğinden emin olmanız gerekir. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
    |Öznitelik|Tür|
    |---|---|
-   |userName adı|Dize|
+   |userName|Dize|
    |externalId|Dize|
-   |etkin|Boole|
+   |Etkin|Boole|
    |name.familyName|Dize|
    |name.givenName|Dize|
-   |e-postalar [tür EQ "iş"]|Dize|
+   |e-postalar[eq "iş yazın"]|Dize|
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Rollbar olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde, **Rollbar'a Azure Etkin Dizin Gruplarını Eşitle'yi**seçin.
 
-11. **Öznitelik eşleme** bölümünde Azure AD 'Den Rollbar 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Rollbar içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. Azure AD'den Rollbar'a eşitlenen grup özniteliklerini **Öznitelik-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Rollbar'daki gruplarla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
       |Öznitelik|Tür|
       |---|---|
@@ -134,34 +134,34 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
       |externalId|Dize|
       |üyeler|Başvuru|
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-13. Rollbar için Azure AD sağlama hizmeti 'ni etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+13. Rollbar için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Rollbar 'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Rollbar'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve grupların ilk eşitleme döngüsünü başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki döngülere göre ilk çevrimin gerçekleşmesi daha uzun sürer. 
 
-## <a name="step-6-monitor-your-deployment"></a>6\. Adım. Dağıtımınızı izleme
+## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-1. Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
-2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
-3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
+1. Hangi kullanıcıların başarılı veya başarısız bir şekilde sağlandığını belirlemek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanma
+2. Sağlama döngüsünün durumunu ve tamamlanmasına ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin
+3. Sağlama yapılandırması sağlıksız bir durumda gibi görünüyorsa, uygulama karantinaya alınır. Karantina durumları hakkında daha fazla bilgi [için burada.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../manage-apps/check-status-user-account-provisioning.md)

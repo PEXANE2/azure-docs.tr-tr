@@ -1,7 +1,7 @@
 ---
-title: Örnek API yönetimi ilkesi-yanıt önbelleği süresini ayarlama
+title: Örnek API yönetim ilkesi - Yanıt önbelleği süresini ayarlama
 titleSuffix: Azure API Management
-description: Azure API Management ilkesi örneği-yanıt önbelleği süresinin, arka uç tarafından gönderilen Cache-Control üstbilgisinde maxAge değeri kullanılarak nasıl ayarlanacağını gösterir.
+description: Azure API yönetim ilkesi örneği - Arka uç tarafından gönderilen Önbellek Denetimi üstbilgisinde maksimum Yat değerini kullanarak yanıt önbelleği süresinin nasıl ayarlanacağını gösterir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 3101c5695272e8fa6b577ad313897cbc1fa29629
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442390"
 ---
-# <a name="set-response-cache-duration"></a>Yanıt önbelleği süresini ayarlama
+# <a name="set-response-cache-duration"></a>Yanıt önbellek süresini ayarlama
 
-Bu makalede, yanıt önbelleği süresinin, arka uç tarafından gönderilen Cache-Control üstbilgisinde maxAge değeri kullanılarak nasıl ayarlanacağı gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, arka uç tarafından gönderilen Önbellek Denetimi üstbilgisinde maksimum Yat değerini kullanarak yanıt önbelleği süresinin nasıl ayarlanacağını gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. İlke kodunu ayarlamak veya ayarlamak için, Ayarla'da açıklanan adımları izleyin [veya bir ilkeyi ayarlayın.](../set-edit-policies.md) Diğer örnekleri görmek için [ilke örneklerine](../policy-samples.md)bakın.
 
 ## <a name="policy"></a>İlke
 
-Kodu **gelen** bloğa yapıştırın.
+Kodu **gelen** bloğa yapıştır.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Set cache duration using response cache control header.policy.xml)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-APıM ilkeleri hakkında daha fazla bilgi edinin:
+APIM politikaları hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
 + [İlke örnekleri](../policy-samples.md)

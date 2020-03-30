@@ -1,33 +1,33 @@
 ---
-title: Hızlı başlangıç-olayları Event Grid gönder
-description: Bu hızlı başlangıçta, kapsayıcı kayıt defteriniz için Event Grid olaylarını etkinleştirir, ardından kapsayıcı görüntüsü gönderme ve olay silme olaylarını örnek bir uygulamaya gönderirsiniz.
+title: Quickstart - Olay Izgara'sına etkinlik gönderme
+description: Bu hızlı başlatmada, kapsayıcı kayıt defteriniz için Olay Izgara olaylarını etkinleştirirsiniz, ardından kapsayıcı görüntüsü itme ve olayları örnek bir uygulamaya silme gönderirsiniz.
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78403231"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Hızlı başlangıç: özel kapsayıcı kayıt defterinden olayları Event Grid gönder
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Hızlı başlatma: Olayları özel kapsayıcı kayıt defterinden Olay Izgarasına gönderme
 
-Azure Event Grid, yayımlama-abonelik modeli kullanarak Tekdüzen olay tüketimi sağlayan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Bu hızlı başlangıçta, Azure CLı kullanarak bir kapsayıcı kayıt defteri oluşturabilir, kayıt defteri olaylarına abone olur ve olayları almak için örnek bir Web uygulaması dağıtabilirsiniz. Son olarak, kapsayıcı görüntüsünü `push` ve olayları `delete` ve olay yükünü örnek uygulamada görüntüleyebilirsiniz.
+Azure Olay Ağıt, bir yayımlama-abone etme modelini kullanarak tek tip olay tüketimi sağlayan tam olarak yönetilen bir olay yönlendirme hizmetidir. Bu hızlı başlangıçta, bir kapsayıcı kayıt defteri oluşturmak, kayıt defteri olaylarına abone olmak ve olayları almak için örnek bir web uygulaması dağıtmak için Azure CLI'yi kullanırsınız. Son olarak, kapsayıcı `push` `delete` görüntüsünü ve olaylarını tetikler ve örnek uygulamada olay yükünü görüntülersiniz.
 
-Bu makaledeki adımları tamamladıktan sonra, kapsayıcı Kayıt defterinizden Event Grid için gönderilen olaylar örnek Web uygulamasında görünür:
+Bu makaledeki adımları tamamladıktan sonra, konteyner kayıt defterinizden Olay Izgara'ya gönderilen olaylar örnek web uygulamasında görünür:
 
-![Üç alınan olayla örnek Web uygulamasını işleme Web tarayıcısı][sample-app-01]
+![Alınan üç etkinlikle örnek web uygulamasını işleyen web tarayıcısı][sample-app-01]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account] oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz][azure-account] bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bu makaledeki Azure CLı komutları **Bash** kabuğu için biçimlendirilir. PowerShell veya komut Istemi gibi farklı bir kabuk kullanıyorsanız, satır devamlılık karakterlerini veya değişken atama satırlarını uygun şekilde ayarlamanız gerekebilir. Bu makale, gerekli komut düzenlemesini en aza indirmek için değişkenleri kullanır.
+Bu makaledeki Azure CLI komutları **Bash** kabuğu için biçimlendirilir. PowerShell veya Command Prompt gibi farklı bir kabuk kullanıyorsanız, satır devam karakterlerini veya değişken atama satırlarını buna göre ayarlamanız gerekebilir. Bu makalede, gerekli komut düzenleme miktarını en aza indirmek için değişkenler kullanır.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, `RESOURCE_GROUP_NAME` farklı bir değere ayarlayın.
+Azure kaynak grubu, Azure kaynaklarınızı dağıtıp yönettiğiniz mantıksal bir kapsayıcıdır. Aşağıdaki [az grup oluşturma][az-group-create] komutu *eastus* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak `RESOURCE_GROUP_NAME` istiyorsanız, farklı bir değerayarlayın.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -37,7 +37,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-Ardından, aşağıdaki komutlarla bir kapsayıcı kayıt defteri 'ni kaynak grubuna dağıtın. [Az ACR Create][az-acr-create] komutunu çalıştırmadan önce kayıt defteriniz için bir ada `ACR_NAME` ayarlayın. Ad, Azure içinde benzersiz olmalıdır ve 5-50 alfasayısal karakterlerle kısıtlıdır.
+Ardından, aşağıdaki komutları içeren kaynak grubuna bir kapsayıcı kayıt defteri dağıtın. [Az acr oluşturma][az-acr-create] komutunu çalıştırmadan önce, kayıt defteriniz için bir ada ayarlayın. `ACR_NAME` Ad Azure içinde benzersiz olmalıdır ve 5-50 alfanümerik karakterle sınırlıdır.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -45,7 +45,7 @@ ACR_NAME=<acrName>
 az acr create --resource-group $RESOURCE_GROUP_NAME --name $ACR_NAME --sku Basic
 ```
 
-Kayıt defteri oluşturulduktan sonra Azure CLı, aşağıdakine benzer bir çıktı döndürür:
+Kayıt defteri oluşturulduktan sonra, Azure CLI çıktısını aşağıdakilere benzer şekilde döndürür:
 
 ```json
 {
@@ -69,11 +69,11 @@ Kayıt defteri oluşturulduktan sonra Azure CLı, aşağıdakine benzer bir çı
 
 ```
 
-## <a name="create-an-event-endpoint"></a>Olay uç noktası oluşturma
+## <a name="create-an-event-endpoint"></a>Olay bitiş noktası oluşturma
 
-Bu bölümde, önceden oluşturulmuş örnek bir Web uygulamasını Azure App Service dağıtmak için GitHub deposunda bulunan Kaynak Yöneticisi şablonunu kullanırsınız. Daha sonra, kayıt defterinizin Event Grid olaylarına abone olur ve bu uygulamayı olayların gönderildiği uç nokta olarak belirtirsiniz.
+Bu bölümde, Önceden oluşturulmuş bir örnek web uygulamasını Azure Uygulama Hizmeti'ne dağıtmak için GitHub deposunda bulunan bir Kaynak Yöneticisi şablonu kullanırsınız. Daha sonra, kayıt defterinizin Olay Idamı olaylarına abone olun ve bu uygulamayı olayların gönderildiği bitiş noktası olarak belirtirsiniz.
 
-Örnek uygulamayı dağıtmak için, `SITE_NAME` Web uygulamanız için benzersiz bir ad olarak ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
+Örnek uygulamayı dağıtmak için `SITE_NAME` web uygulamanız için benzersiz bir ada ayarlayın ve aşağıdaki komutları uygulayın. Web uygulamasının tam nitelikli alan adının (FQDN) bir parçasını oluşturduğundan, site adı Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir web tarayıcısında uygulamanın FQDN'sine gidin.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -84,19 +84,19 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Dağıtım başarılı olduktan sonra (birkaç dakika sürebilir), bir tarayıcı açın ve çalıştığından emin olmak için Web uygulamanıza gidin:
+Dağıtım başarılı olduktan sonra (birkaç dakika sürebilir), bir tarayıcı açın ve çalışırken olduğundan emin olmak için web uygulamanıza gidin:
 
 `http://<your-site-name>.azurewebsites.net`
 
-Örnek uygulamanın, hiçbir olay iletisi görüntülenmediğinde görüntülendiğini görmeniz gerekir:
+Olay iletileri görüntülenmeden işlenen örnek uygulamayı görmelisiniz:
 
-![Olay görüntülenmeden örnek Web uygulamasını gösteren Web tarayıcısı][sample-app-02]
+![Hiçbir etkinlik görüntülenmeden örnek web uygulamasını gösteren web tarayıcısı][sample-app-02]
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-registry-events"></a>Kayıt defteri olaylarına abone olma
+## <a name="subscribe-to-registry-events"></a>Kayıt etkinliklerine abone olun
 
-Event Grid, izlemek istediğiniz olayları ve nereden gönderileceğini söylemek için bir *konuya* abone olursunuz. Aşağıdaki [az eventgrid olay-abonelik oluştur][az-eventgrid-event-subscription-create] komutu oluşturduğunuz kapsayıcı kayıt defterine abone olur ve Web uygulamanızın URL 'sini, olayları göndereceği uç nokta olarak belirtir. Önceki bölümlerde doldurmuş olduğunuz ortam değişkenleri burada yeniden kullanılır, bu nedenle hiçbir düzenleme gerekmez.
+Olay Izgara'sında, hangi olayları izlemek istediğinizi ve bunları nereye göndereceğinizi söylemek için bir *konuya* abone olursunuz. Aşağıdaki [az eventgrid olay-abonelik oluşturma][az-eventgrid-event-subscription-create] komutu oluşturduğunuz konteyner kayıt defterine abone olur ve web uygulamanızın URL'sini olayları göndermesi gereken bitiş noktası olarak belirtir. Önceki bölümlerde dolduran çevre değişkenleri burada yeniden kullanıldığından, hiçbir düzenlemesi gerekmez.
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -108,7 +108,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-Abonelik tamamlandığında aşağıdakine benzer bir çıktı görmeniz gerekir:
+Abonelik tamamlandığında, aşağıdakilere benzer çıktı görmeniz gerekir:
 
 ```json
 {
@@ -137,17 +137,17 @@ Abonelik tamamlandığında aşağıdakine benzer bir çıktı görmeniz gerekir
 
 ## <a name="trigger-registry-events"></a>Kayıt defteri olaylarını tetikleme
 
-Örnek uygulama çalışır duruma gelmiştir ve Event Grid Kayıt defterinize abone olduğunuza göre, bazı olaylar oluşturmaya hazırsınız demektir. Bu bölümde, Kayıt defterinize bir kapsayıcı görüntüsü derlemek ve göndermek için ACR görevlerini kullanırsınız. ACR görevleri, yerel makinenizde Docker altyapısının yüklü olması gerekmeden bulutta kapsayıcı görüntüleri oluşturmanıza olanak sağlayan bir Azure Container Registry özelliğidir.
+Artık örnek uygulama çalışır durumda ve Olay Grid ile kayıt defterinize abone olduğunuza göre, bazı etkinlikler oluşturmaya hazırsınız. Bu bölümde, bir kapsayıcı resmi oluşturmak ve kayıt defterinize itmek için ACR Görevleri'ni kullanırsınız. ACR Görevleri, Azure Konteyner Kayıt Defteri'nin yerel makinenize yüklenmiş Docker Engine'e gerek kalmadan bulutta kapsayıcı görüntüleri oluşturmanıza olanak tanıyan bir özelliğidir.
 
-### <a name="build-and-push-image"></a>Görüntü oluşturma ve gönderme
+### <a name="build-and-push-image"></a>Görüntü oluşturma ve itme
 
-GitHub deposunun içeriğinden bir kapsayıcı görüntüsü oluşturmak için aşağıdaki Azure CLı komutunu yürütün. Varsayılan olarak, ACR görevleri, `ImagePushed` olayı üreten, başarıyla oluşturulmuş bir görüntüyü Kayıt defterinize otomatik olarak gönderir.
+GitHub deposunun içeriğinden bir kapsayıcı görüntüsü oluşturmak için aşağıdaki Azure CLI komutunu uygulayın. Varsayılan olarak, ACR Görevleri başarıyla oluşturulmuş bir görüntüyü kayıt defterinize `ImagePushed` otomatik olarak iter ve bu da olayı oluşturur.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-ACR görevleri görüntünüzü oluşturup daha sonra iletirken aşağıdakine benzer bir çıktı görmeniz gerekir. Aşağıdaki örnek çıktı, breçekimi için kesildi.
+ACR Görevleri oluşturur ken ve sonra görüntüitiniter zaman aşağıdakine benzer çıktı görmelisiniz. Aşağıdaki örnek çıktı kısalık için kesildi.
 
 ```output
 Sending build context to ACR...
@@ -163,13 +163,13 @@ Step 1/5 : FROM node:9-alpine
 ...
 ```
 
-Oluşturulan görüntünün kayıt defterinizde olduğunu doğrulamak için, "MyImage" deposundaki etiketleri görüntülemek için aşağıdaki komutu yürütün:
+Yerleşik görüntünün kayıt defterinizde olduğunu doğrulamak için, "myimage" deposundaki etiketleri görüntülemek için aşağıdaki komutu uygulayın:
 
 ```azurecli-interactive
 az acr repository show-tags --name $ACR_NAME --repository myimage
 ```
 
-Oluşturduğunuz görüntünün "v1" etiketinin çıktıda görünmesi gerekir, aşağıdakine benzer:
+Oluşturduğun görüntünün "v1" etiketi, aşağıdakilere benzer şekilde çıktıda görünmelidir:
 
 ```output
 [
@@ -177,15 +177,15 @@ Oluşturduğunuz görüntünün "v1" etiketinin çıktıda görünmesi gerekir, 
 ]
 ```
 
-### <a name="delete-the-image"></a>Görüntüyü silme
+### <a name="delete-the-image"></a>Resmi silme
 
-Şimdi, [az ACR Repository Delete][az-acr-repository-delete] komutuyla görüntüyü silerek `ImageDeleted` bir olay oluşturun:
+Şimdi, az `ImageDeleted` [acr deposu silme][az-acr-repository-delete] komutu ile görüntüyü silerek bir olay oluşturun:
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1
 ```
 
-Aşağıdakine benzer bir çıktı görmeniz ve bildirimi ve ilişkili görüntüleri silmeyi onaylamanız istenir:
+Aşağıdakilere benzer çıktılar görmelisiniz, manifesto ve ilişkili görüntüleri silmek için onay istemeniz gerekir:
 
 ```output
 This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a54fac9c682196721e294b2bc20ab23a1b' and all the following images: 'myimage:v1'.
@@ -194,36 +194,36 @@ Are you sure you want to continue? (y/n):
 
 ## <a name="view-registry-events"></a>Kayıt defteri olaylarını görüntüleme
 
-Şimdi Kayıt defterinize bir görüntü gönderdi ve sonra dosyayı silmiş oldunuz. Event Grid Viewer Web uygulamanıza gidin ve hem `ImageDeleted` hem de `ImagePushed` olaylarını görmeniz gerekir. Ayrıca, [kayıt defteri olaylarına abone ol](#subscribe-to-registry-events) bölümünde komutunu yürüterek oluşturulan bir abonelik doğrulama olayı da görebilirsiniz.
+Şimdi bir resmi kayıt defterinize itmiş ve sonra silmişsiniz. Olay Izgara Görüntüleyici web uygulamanıza `ImageDeleted` gidin `ImagePushed` ve hem olayları hem de olayları görmeniz gerekir. Ayrıca, [kayıt defteri olaylarına abone](#subscribe-to-registry-events) ol bölümündeki komutu çalıştırarak oluşturulan bir abonelik doğrulama olayı da görebilirsiniz.
 
-Aşağıdaki ekran görüntüsünde, üç olayla örnek uygulama gösterilmektedir ve `ImageDeleted` olayı, ayrıntılarını göstermek üzere genişletilir.
+Aşağıdaki ekran görüntüsü, üç olayla birlikte örnek `ImageDeleted` uygulamayı gösterir ve olay ayrıntılarını göstermek üzere genişletilir.
 
-![Imageitilmiş ve ımagedeleted olayları ile örnek uygulamayı gösteren Web tarayıcısı][sample-app-03]
+![ImagePushed ve ImageDeleted olayları ile örnek uygulamayı gösteren web tarayıcısı][sample-app-03]
 
-Tebrikler! `ImagePushed` ve `ImageDeleted` olaylarını görürseniz, kayıt defteriniz Event Grid olayları gönderir ve Event Grid bu olayları Web uygulaması uç noktanıza iletmektedir.
+Tebrikler! Olayları `ImagePushed` ve `ImageDeleted` olayları görürseniz, kayıt defteriniz Olayları Olay Izgara'sına gönderiyor ve Olay Grid bu olayları web uygulama bitiş noktanıza gönderiyor.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıçta oluşturduğunuz kaynaklarla işiniz bittiğinde, bunları aşağıdaki Azure CLı komutuyla silebilirsiniz. Bir kaynak grubunu sildiğinizde, içerdiği tüm kaynaklar kalıcı olarak silinir.
+Bu hızlı başlangıçta oluşturduğunuz kaynaklarla işimiz bittiğinde, aşağıdaki Azure CLI komutuyla bunların hepsini silebilirsiniz. Bir kaynak grubunu sildiğinizde, içerdiği tüm kaynaklar kalıcı olarak silinir.
 
-**Uyarı**: Bu işlem geri alınamaz. Komutu çalıştırmadan önce gruptaki herhangi bir kaynağa artık ihtiyacınız olmadığından emin olun.
+**UYARI**: Bu işlem geri alınamaz. Komutu çalıştırmadan önce gruptaki kaynaklardan hiçbirine artık ihtiyacınız olmadığından emin olun.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
 ```
 
-## <a name="event-grid-event-schema"></a>Event Grid olay şeması
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
 
-Azure Container Registry olay iletisi şeması başvurusunu Event Grid belgelerinde bulabilirsiniz:
+Olay Kılavuzu belgelerinde Azure Kapsayıcı Kayıt Defteri olay iletisi şema referansını bulabilirsiniz:
 
-[Container Registry için Azure Event Grid olay şeması](../event-grid/event-schema-container-registry.md)
+[Konteyner Kayıt Defteri için Azure Olay Izgara olay şeması](../event-grid/event-schema-container-registry.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir kapsayıcı kayıt defteri dağıttığınızda, ACR görevleri ile bir görüntü oluşturup, silmiş ve kayıt defterinizin olaylarını örnek bir uygulamayla Event Grid kullandınız. Ardından, bulutta kapsayıcı görüntüleri oluşturma hakkında daha fazla bilgi edinmek için ACR görevleri öğreticisine geçin ve temel görüntü güncelleştirmesinde otomatik derlemeler de dahildir:
+Bu hızlı başlangıçta, bir kapsayıcı kayıt defteri dağıttınız, ACR Görevleri içeren bir resim oluşturmuşsunuz, sildiniz ve örnek bir uygulamayla Olay Grid'inizdeki kayıt defterinizin olaylarını tüketmişsiniz. Ardından, temel görüntü güncelleştirmesinde otomatik yapılar da dahil olmak üzere bulutta kapsayıcı görüntüleri oluşturma hakkında daha fazla bilgi edinmek için ACR Görevleri öğreticisine geçin:
 
 > [!div class="nextstepaction"]
-> [ACR görevlerle bulutta kapsayıcı görüntüleri oluşturun](container-registry-tutorial-quick-task.md)
+> [ACR Görevleri ile bulutta kapsayıcı görüntüleri oluşturun](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

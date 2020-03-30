@@ -1,6 +1,6 @@
 ---
-title: Azure Web uygulaması güvenlik duvarı (WAF) Geomatch özel kuralları
-description: Bu makalede, Azure Application Gateway 'de Web uygulaması güvenlik duvarı (WAF) geomatch özel kurallarına genel bir bakış sunulmaktadır.
+title: Azure Web Uygulama Güvenlik Duvarı (WAF) Geomatch özel kuralları
+description: Bu makale, Azure Uygulama Ağ Geçidi'ndeki Web Uygulaması Güvenlik Duvarı (WAF) geomatch özel kurallarına genel bir bakıştır.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,24 +8,24 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961094"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (Önizleme)
+# <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (önizleme)
 
-Özel kurallar, uygulamalarınızın ve Güvenlik ilkelerinizin tam ihtiyaçlarını karşılamak için özel kurallar oluşturmanıza olanak sağlar. Şimdi, Web uygulamalarınıza olan erişimi ülkeye/bölgeye göre kısıtlayabilirsiniz. Tüm özel kurallarda olduğu gibi, bu mantık uygulamanızın ihtiyaçlarını karşılamak için diğer kurallarla birlikte iade edilebilir.
+Özel kurallar, uygulamalarınızın ve güvenlik ilkelerinizin tam gereksinimlerine uygun özel kurallar oluşturmanıza olanak sağlar. Artık web uygulamalarınıza erişimi ülkeye/bölgeye göre kısıtlayabilirsiniz. Tüm özel kurallarda olduğu gibi, bu mantık uygulamanızın gereksinimlerine uygun diğer kurallarla birleştirilebilir.
 
-Coğrafi filtreleme özel kuralı oluşturmak için, eşleşme türü olarak *coğrafi konum* ' u seçmeniz yeterlidir ve sonra uygulamanızda izin vermek/engellemek istediğiniz ülkeyi veya ülkeleri seçin. Daha fazla bilgi için bkz. [PowerShell 'de özel kurallar oluşturma](configure-waf-custom-rules.md) ve daha fazla özel kural örnekleri (Create-Custom-WAF-Rules.MD).
+Coğrafi filtreleme özel kuralı oluşturmak için, Maç Türü olarak *Coğrafi konum'u* seçin ve ardından uygulamanızdan izin vermek/engellemek istediğiniz ülkeyi veya ülkeleri seçin. Daha fazla bilgi [için Powershell'de özel kuralların ve](configure-waf-custom-rules.md) daha fazla özel kural örneğinin (create-custom-waf-rules.md) nasıl oluşturulabildiğini görün.
 
 > [!IMPORTANT]
 > Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="country-codes"></a>Ülke kodları
 
-Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke kodlarından herhangi biri olabilir. 
+Geomatch işleci kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke kodlarından biri olabilir. 
 
 |Ülke kodu | Ülke adı |
 | ----- | ----- |
@@ -41,7 +41,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | AT | Avusturya|
 | AU | Avustralya|
 | AZ | Azerbaycan|
-| BA | Bosna - Hersek|
+| BA | Bosna Hersek|
 | BB | Barbados|
 | BD | Bangladeş|
 | BE | Belçika|
@@ -50,7 +50,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | BH | Bahreyn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Saint Barthélimy|
+| BL | Aziz Barthélemy|
 | BN | Barış Yurdu Brunei Devleti|
 | BO | Bolivya|
 | BR | Brezilya|
@@ -58,12 +58,12 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | BT | Butan|
 | BW | Botsvana|
 | BY | Belarus|
-| BZ | Belize|
+| BZ | Beliz|
 | CA | Kanada|
-| CD | Kongo Demokratik Cumhuriyeti|
+| CD | Demokratik Kongo Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
 | CH | İsviçre|
-| CI | Fildişi Sahili (Côte d’Ivoire)|
+| CI | Fildişi Kıyısı|
 | CL | Şili|
 | CM | Kamerun|
 | CN | Çin|
@@ -95,9 +95,9 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong SAR|
+| HK | Hong Kong ÖİB|
 | HN | Honduras|
-| İK | Hırvatistan|
+| HR | Hırvatistan|
 | HT | Haiti|
 | HU | Macaristan|
 | Kimlik | Endonezya|
@@ -119,11 +119,11 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | KP | Kore Demokratik Halk Cumhuriyeti|
 | KR | Kore Cumhuriyeti|
 | KW | Kuveyt|
-| KY | Cayman Adaları|
+| KY | Kayman Adaları|
 | KZ | Kazakistan|
 | LA | Laos Demokratik Halk Cumhuriyeti|
 | LB | Lübnan|
-| LI | Liechtenstein|
+| LI | Lihtenştayn|
 | LK | Sri Lanka|
 | LR | Liberya|
 | LS | Lesoto|
@@ -147,7 +147,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | MX | Meksika|
 | MY | Malezya|
 | MZ | Mozambik|
-| Yok | Namibya|
+| NA | Namibya|
 | NE | Nijer|
 | NG | Nijerya|
 | NI | Nikaragua|
@@ -171,7 +171,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | RO | Romanya|
 | RS | Sırbistan|
 | RU | Rusya Federasyonu|
-| RW | Ruanda|
+| RW | Rwanda|
 | SA | Suudi Arabistan|
 | SD | Sudan|
 | SE | İsveç|
@@ -195,7 +195,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | TZ | Tanzanya Birleşik Cumhuriyeti|
 | UA | Ukrayna|
 | UG | Uganda|
-| US | Birleşik Devletler|
+| ABD | Amerika Birleşik Devletleri|
 | UY | Uruguay|
 | UZ | Özbekistan|
 | VC | Saint Vincent ve Grenadinler|
@@ -209,4 +209,4 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel kurallar hakkında bilgi aldıktan sonra [kendi özel kurallarınızı oluşturun](create-custom-waf-rules.md).
+Özel kuralları öğrendikten [sonra, kendi özel kurallarınızı oluşturun.](create-custom-waf-rules.md)

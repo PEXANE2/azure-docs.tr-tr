@@ -1,40 +1,40 @@
 ---
-title: Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
-description: Dayanıklı İşlevler için otomatik Azure Event Grid yayımlamayı yapılandırmayı öğrenin.
+title: Azure Etkinlik Izgarasına Yayımlananması Dayanıklı İşlevler (önizleme)
+description: Dayanıklı Işlevler için otomatik Azure Olay Izgara yayımlamasını nasıl yapılandırıyarıştırmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249755"
 ---
-# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid yayımlama Dayanıklı İşlevler (Önizleme)
+# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Etkinlik Izgarasına Yayımlananması Dayanıklı İşlevler (önizleme)
 
-Bu makalede, düzenleme yaşam döngüsü olaylarını (oluşturma, tamamlanan ve başarısız gibi) özel bir [Azure Event Grid konusuna](https://docs.microsoft.com/azure/event-grid/overview)yayımlamak için dayanıklı işlevler ayarlama işlemi gösterilmektedir.
+Bu makalede, özel bir [Azure Olay Izgara Konusu'nda](https://docs.microsoft.com/azure/event-grid/overview)düzenleme yaşam döngüsü olaylarını (oluşturulmuş, tamamlanmış ve başarısız) yayımlayacak Dayanıklı İşlevler nasıl ayarlanacağını gösterilmektedir.
 
-Bu özelliğin yararlı olduğu bazı senaryolar aşağıda verilmiştir:
+Bu özelliğin yararlı olduğu bazı senaryolar şunlardır:
 
-* **Mavi/yeşil dağıtımlar gibi DevOps senaryoları**: [yan yana dağıtım stratejisini](durable-functions-versioning.md#side-by-side-deployments)uygulamadan önce herhangi bir görevin çalışıp çalışmadığını bilmeniz gerekebilir.
+* **Mavi/yeşil dağıtımlar gibi DevOps senaryoları**: Yan yana dağıtım stratejisini uygulamadan önce herhangi bir görevin çalışır olup olmadığını bilmek [isteyebilirsiniz.](durable-functions-versioning.md#side-by-side-deployments)
 
-* **Gelişmiş izleme ve tanılama desteği**: düzenleme durum BILGILERINI Azure SQL veritabanı veya Azure Cosmos DB gibi sorgular için iyileştirilmiş bir dış depoda izleyebilirsiniz.
+* **Gelişmiş izleme ve tanılama desteği**: Azure SQL Veritabanı veya Azure Cosmos DB gibi sorgular için en iyi duruma getirilmiş harici bir mağazada düzenleme durumu bilgilerini izleyebilirsiniz.
 
-* **Uzun süre çalışan arka plan etkinliği**: uzun süre çalışan bir arka plan etkinliği için dayanıklı işlevler kullanıyorsanız, bu özellik geçerli durumu bilmenize yardımcı olur.
+* **Uzun süren arka plan etkinliği**: Uzun süren bir arka plan etkinliği için Dayanıklı İşlevler kullanıyorsanız, bu özellik geçerli durumu bilmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Dayanıklı İşlevler projenize [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 'ı yükler.
-* [Azure depolama öykünücüsünü](../../storage/common/storage-use-emulator.md) (yalnızca Windows) veya mevcut bir Azure Depolama hesabını kullanın.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 'yı yükleyip [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın
+* Dayanıklı İşlevler projenizde [Microsoft.Azure.WebJobs.Extensions.DurableTask'ı](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) yükleyin.
+* [Azure Depolama Emülatörü'ni](../../storage/common/storage-use-emulator.md) (yalnızca Windows) yükleyin veya varolan bir Azure Depolama hesabı kullanın.
+* [Azure CLI'yi](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) yükleme veya [Azure Bulut Bulutu'nu](../../cloud-shell/overview.md) kullanma
 
-## <a name="create-a-custom-event-grid-topic"></a>Özel bir Event Grid konusu oluşturma
+## <a name="create-a-custom-event-grid-topic"></a>Özel bir Olay Izgara konusu oluşturma
 
-Dayanıklı İşlevler olayları göndermek için bir Event Grid konu başlığı oluşturun. Aşağıdaki yönergelerde, Azure CLı kullanılarak nasıl konu oluşturulacağı gösterilmektedir. Bunu, [PowerShell kullanarak](../../event-grid/custom-event-quickstart-powershell.md) veya [Azure Portal kullanarak](../../event-grid/custom-event-quickstart-portal.md)da yapabilirsiniz.
+Dayanıklı İşlevlerden olay göndermek için bir Olay Izgara sı oluştur. Aşağıdaki yönergeler, Azure CLI'yi kullanarak bir konunun nasıl oluşturulacağını gösterir. Bunu [PowerShell'i kullanarak](../../event-grid/custom-event-quickstart-powershell.md) veya [Azure portalını kullanarak](../../event-grid/custom-event-quickstart-portal.md)da yapabilirsiniz.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-`az group create` komutuyla bir kaynak grubu oluşturun. Şu anda Azure Event Grid tüm bölgeleri desteklemez. Hangi bölgelerin desteklendiği hakkında daha fazla bilgi için [Azure Event Grid genel bakış](../../event-grid/overview.md)bölümüne bakın.
+`az group create` komutuyla bir kaynak grubu oluşturun. Şu anda Azure Olay Ağıtı tüm bölgeleri desteklemez. Hangi bölgelerin desteklendiği hakkında bilgi için [Azure Olay Ağı'na genel bakış'a](../../event-grid/overview.md)bakın.
 
 ```azurecli
 az group create --name eventResourceGroup --location westus2
@@ -42,33 +42,33 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>Özel konu oluşturma
 
-Event Grid konusu, olaylarınızı naklettiğiniz Kullanıcı tanımlı bir uç nokta sağlar. `<topic_name>` değerini konunuz için benzersiz bir adla değiştirin. Konu adı bir DNS girdisi haline geldiği için benzersiz olmalıdır.
+Olay Izgara konusu, etkinliğinizi yayınladığınız kullanıcı tanımlı bir bitiş noktası sağlar. `<topic_name>` değerini konunuz için benzersiz bir adla değiştirin. DNS girişi olduğundan konu adı benzersiz olmalıdır.
 
 ```azurecli
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
-## <a name="get-the-endpoint-and-key"></a>Uç noktasını ve anahtarı al
+## <a name="get-the-endpoint-and-key"></a>Bitiş noktasını ve anahtarı alın
 
-Konunun uç noktasını alın. `<topic_name>`, seçtiğiniz adla değiştirin.
+Konunun bitiş noktasını alın. Seçtiğiniz `<topic_name>` adla değiştirin.
 
 ```azurecli
 az eventgrid topic show --name <topic_name> -g eventResourceGroup --query "endpoint" --output tsv
 ```
 
-Konu anahtarını alın. `<topic_name>`, seçtiğiniz adla değiştirin.
+Konu anahtarını alın. Seçtiğiniz `<topic_name>` adla değiştirin.
 
 ```azurecli
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
 ```
 
-Artık etkinlikleri konuya gönderebilirsiniz.
+Artık konuya etkinlik gönderebilirsiniz.
 
-## <a name="configure-event-grid-publishing"></a>Event Grid yayımlamayı yapılandırma
+## <a name="configure-event-grid-publishing"></a>Olay Izgara yayımlama yapılandırma
 
-Dayanıklı İşlevler projenizde `host.json` dosyasını bulun.
+Dayanıklı Işlevler projenizde `host.json` dosyayı bulun.
 
-`durableTask` özelliğinde `eventGridTopicEndpoint` ve `eventGridKeySettingName` ekleyin.
+Bir `eventGridTopicEndpoint` `eventGridKeySettingName` `durableTask` özellik ekleyin ve.
 
 ```json
 {
@@ -79,9 +79,9 @@ Dayanıklı İşlevler projenizde `host.json` dosyasını bulun.
 }
 ```
 
-Olası Azure Event Grid yapılandırma özellikleri [Host. JSON belgelerinde](../functions-host-json.md#durabletask)bulunabilir. `host.json` dosyasını yapılandırdıktan sonra, işlev uygulamanız yaşam döngüsü olaylarını Event Grid konusuna gönderir. Bu, işlev uygulamanızı yerel olarak ve Azure 'da çalıştırdığınızda çalışır.
+Olası Azure Olay Ağı yapılandırma özellikleri [ana bilgisayar.json belgelerinde](../functions-host-json.md#durabletask)bulunabilir. Dosyayı `host.json` yapılandırdıktan sonra, işlev uygulamanız Olay Izgara konusuna yaşam döngüsü olayları gönderir. Bu, işlev uygulamanızı hem yerel hem de Azure'da çalıştırdığınızda çalışır.
 
-İşlev Uygulaması ve `local.settings.json`konu anahtarı için uygulama ayarını ayarlayın. Aşağıdaki JSON, yerel hata ayıklama `local.settings.json` bir örneğidir. `<topic_key>` konu anahtarıyla değiştirin.  
+İşlev Uygulamasında ki konu anahtarı için `local.settings.json`uygulama ayarını ayarlayın ve . Aşağıdaki JSON yerel hata `local.settings.json` ayıklama için bir örnektir. Konu `<topic_key>` anahtarıyla değiştirin.  
 
 ```json
 {
@@ -94,31 +94,31 @@ Olası Azure Event Grid yapılandırma özellikleri [Host. JSON belgelerinde](..
 }
 ```
 
-[Depolama öykünücüsünü](../../storage/common/storage-use-emulator.md) (yalnızca Windows) kullanıyorsanız, çalıştığından emin olun. Yürütmeden önce `AzureStorageEmulator.exe clear all` komutunu çalıştırmak iyi bir fikirdir.
+[Depolama Emülatörü](../../storage/common/storage-use-emulator.md) 'ni (yalnızca Windows) kullanıyorsanız, çalıştığından emin olun. Yürütmeden önce komutu `AzureStorageEmulator.exe clear all` çalıştırmak iyi bir fikirdir.
 
-Mevcut bir Azure depolama hesabı kullanıyorsanız, `local.settings.json` `UseDevelopmentStorage=true` değerini bağlantı dizesiyle değiştirin.
+Varolan bir Azure Depolama hesabı `UseDevelopmentStorage=true` kullanıyorsanız, bağlantı dizesiyle değiştirin. `local.settings.json`
 
 ## <a name="create-functions-that-listen-for-events"></a>Olayları dinleyen işlevler oluşturma
 
-Azure portal kullanarak, Dayanıklı İşlevler uygulamanız tarafından yayımlanan olayları dinlemek için başka bir işlev uygulaması oluşturun. Event Grid konusuyla aynı bölgede bulmak en iyisidir.
+Azure portalını kullanarak, Dayanıklı İşlevler uygulamanız tarafından yayınlanan etkinlikleri dinlemek için başka bir işlev uygulaması oluşturun. Olay Izgara sıbaşlığıyla aynı bölgede bulmak en iyisidir.
 
-### <a name="create-an-event-grid-trigger-function"></a>Event Grid tetikleyici işlevi oluşturma
+### <a name="create-an-event-grid-trigger-function"></a>Olay Izgara tetikleyici işlevi oluşturma
 
-Yaşam döngüsü olaylarını almak için bir işlev oluşturun. **Özel işlev**seçin.
+Yaşam döngüsü olaylarını almak için bir işlev oluşturun. **Özel İşlev'i**seçin.
 
-![Özel bir işlev oluştur ' u seçin.](./media/durable-functions-event-publishing/functions-portal.png)
+![Özel bir işlev oluştur'u seçin.](./media/durable-functions-event-publishing/functions-portal.png)
 
-Event Grid tetikleyiciyi seçin ve bir dil seçin.
+Olay Izgara Tetikleyici'yi seçin ve bir dil seçin.
 
-![Event Grid tetikleyiciyi seçin.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+![Olay Izgara Tetikleyicisini seçin.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
 
-İşlevin adını girip `Create`' ı seçin.
+İşlevin adını girin ve `Create`sonra .
 
-![Event Grid tetikleyiciyi oluşturun.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+![Olay Izgara Tetikleyicisi oluşturun.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-Aşağıdaki koda sahip bir işlev oluşturuldu:
+Aşağıdaki koda sahip bir işlev oluşturulur:
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -132,7 +132,7 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 module.exports = async function(context, eventGridEvent) {
@@ -143,19 +143,19 @@ module.exports = async function(context, eventGridEvent) {
 
 ---
 
-`Add Event Grid Subscription` öğesini seçin. Bu işlem, oluşturduğunuz Event Grid konu için bir Event Grid aboneliği ekler. Daha fazla bilgi için bkz. [Azure Event Grid kavramları](https://docs.microsoft.com/azure/event-grid/concepts)
+`Add Event Grid Subscription` öğesini seçin. Bu işlem, oluşturduğunuz Olay Izgara sıcağı için bir Olay Izgara aboneliği ekler. Daha fazla bilgi için Azure [Etkinlik Kılavuz'undaki Kavramlar'a](https://docs.microsoft.com/azure/event-grid/concepts) bakın
 
-![Event Grid tetikleyici bağlantısını seçin.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+![Olay Izgara Tetikleyici bağlantısını seçin.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-**Konu türü**için `Event Grid Topics` seçin. Event Grid konusu için oluşturduğunuz kaynak grubunu seçin. Sonra Event Grid konusunun örneğini seçin. `Create`tuşuna basın.
+Konu `Event Grid Topics` **Türü**için seçin. Olay Izgarası konusu için oluşturduğunuz kaynak grubunu seçin. Ardından Olay Izgara sıcağı konusunun örneğini seçin. Basın `Create`.
 
 ![Event Grid aboneliği oluşturun.](./media/durable-functions-event-publishing/eventsubscription.png)
 
-Artık yaşam döngüsü olaylarını almaya hazır olursunuz.
+Artık yaşam döngüsü etkinliklerialmaya hazırsınız.
 
-## <a name="run-durable-functions-app-to-send-the-events"></a>Olayları göndermek için Dayanıklı İşlevler uygulaması çalıştırma
+## <a name="run-durable-functions-app-to-send-the-events"></a>Olayları göndermek için Dayanıklı Fonksiyonlar uygulamasını çalıştırın
 
-Daha önce yapılandırdığınız Dayanıklı İşlevler projesinde, yerel makinenizde hata ayıklamayı başlatın ve bir düzenleme başlatın. Uygulama, Event Grid için Dayanıklı İşlevler yaşam döngüsü olaylarını yayımlar. Event Grid, Azure portal günlüklerini denetleyerek oluşturduğunuz dinleyici işlevini tetikleyeceğini doğrulayın.
+Daha önce yapılandırdığınız Dayanıklı İşlevler projesinde, yerel makinenizde hata ayıklamaya başlayın ve bir orkestrasyon başlatın. Uygulama, Etkin İşlevler yaşam döngüsü olaylarını Event Grid'e yayınlar. Olay Izgara'sının, Azure portalındaki günlüklerini denetleyerek oluşturduğunuz dinleyici işlevini tetiklediğini doğrulayın.
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -197,32 +197,32 @@ Daha önce yapılandırdığınız Dayanıklı İşlevler projesinde, yerel maki
 2019-04-20T09:28:37.098 [Info] Function completed (Success, Id=36fadea5-198b-4345-bb8e-2837febb89a2, Duration=0ms)
 ```
 
-## <a name="event-schema"></a>Olay şeması
+## <a name="event-schema"></a>Olay Şeması
 
-Aşağıdaki listede yaşam döngüsü olayları şeması açıklanmaktadır:
+Aşağıdaki liste yaşam döngüsü olayları şema açıklar:
 
-* **`id`** : Event Grid olayı için benzersiz tanımlayıcı.
-* **`subject`** : olay konusunun yolu. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` `Running`, `Completed`, `Failed`ve `Terminated`olacaktır.  
-* **`data`** : belirli parametreleri dayanıklı işlevler.
-  * **`hubName`** : [taskhub](durable-functions-task-hubs.md) adı.
-  * **`functionName`** : Orchestrator işlev adı.
-  * **`instanceId`** : dayanıklı işlevler InstanceId.
-  * **`reason`** : izleme olayı ile ilişkili ek veriler. Daha fazla bilgi için bkz. [dayanıklı işlevler 'de tanılama (Azure işlevleri)](durable-functions-diagnostics.md)
-  * **`runtimeStatus`** : Orchestration çalışma zamanı durumu. Çalışıyor, tamamlandı, başarısız, Iptal edildi.
-* **`eventType`** : "Orchestratorevent"
-* **`eventTime`** : olay saatı (UTC).
-* **`dataVersion`** : yaşam döngüsü olay şemasının sürümü.
-* **`metadataVersion`** : meta verilerin sürümü.
-* **`topic`** : olay Kılavuzu konu kaynağı.
+* **`id`**: Olay Izgara olayı için benzersiz tanımlayıcı.
+* **`subject`**: Olay konusuna giden yol. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`olacak `Running`, `Completed` `Failed`, `Terminated`, ve .  
+* **`data`**: Dayanıklı Fonksiyonlar Belirli Parametreler.
+  * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) adı.
+  * **`functionName`**: Orchestrator fonksiyon adı.
+  * **`instanceId`**: Dayanıklı Fonksiyonlar instanceId.
+  * **`reason`**: İzleme olayıyla ilişkili ek veriler. Daha fazla bilgi için [Bkz. Dayanıklı İşlevler Tanılama (Azure İşlevleri)](durable-functions-diagnostics.md)
+  * **`runtimeStatus`**: Orkestrasyon Çalışma Süresi Durumu. Çalışan, Tamamlandı, Başarısız, İptal Edildi.
+* **`eventType`**: "orchestratorEvent"
+* **`eventTime`**: Olay zamanı (UTC).
+* **`dataVersion`**: Yaşam döngüsü olay şeması nın sürümü.
+* **`metadataVersion`**: Meta verilerin sürümü.
+* **`topic`**: Olay ızgarası konu kaynağı.
 
-## <a name="how-to-test-locally"></a>Yerel olarak test etme
+## <a name="how-to-test-locally"></a>Yerel olarak nasıl test edile
 
-Yerel olarak test etmek için [Azure işlevini okuyun Event Grid yerel hata ayıklamayı tetikleyin](../functions-debug-event-grid-trigger-local.md).
+Yerel olarak test etmek için [Azure İşi Olay Izgara tetikleyici Yerel Hata Ayıklama'yı](../functions-debug-event-grid-trigger-local.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dayanıklı İşlevler 'de örnek yönetimini öğrenin](durable-functions-instance-management.md)
+> [Dayanıklı İşlevler'de örnek yönetimini öğrenin](durable-functions-instance-management.md)
 
 > [!div class="nextstepaction"]
-> [Dayanıklı İşlevler sürüm oluşturmayı öğrenin](durable-functions-versioning.md)
+> [Dayanıklı Işlevler sürümü öğrenin](durable-functions-versioning.md)

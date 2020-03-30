@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services için Widevine lisansları teslim etmek üzere Axinom kullanma | Microsoft Docs
-description: Bu makalede, AMS tarafından hem PlayReady hem de Widevine DRMs ile dinamik olarak şifrelenen bir akış teslim etmek için Azure Media Services (AMS) ' nin nasıl kullanılacağı açıklanır. PlayReady lisansı Media Services PlayReady lisans sunucusundan gelir ve Widevine lisansı, Axınom lisans sunucusu tarafından dağıtılır.
+title: Azure Medya Hizmetlerine Widevine lisansları sunmak için Axinom'u kullanma | Microsoft Dokümanlar
+description: Bu makalede, Hem PlayReady hem de Widevine DRM'lerle AMS tarafından dinamik olarak şifrelenmiş bir akış sunmak için Azure Medya Hizmetleri'ni (AMS) nasıl kullanabileceğiniz açıklanmaktadır. PlayReady lisansı Media Services PlayReady lisans sunucusundan gelir ve Widevine lisansı Axinom lisans sunucusu tarafından teslim edilir.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
 ms.openlocfilehash: 2ec3276b9b02c29b80d46e5fd31298c909857182
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197173"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için Axinom kullanma 
@@ -30,53 +30,53 @@ ms.locfileid: "78197173"
 > 
 
 ## <a name="overview"></a>Genel Bakış
-Azure Media Services (AMS), Google Widevine dinamik koruma ekledi (Ayrıntılar için bkz. [Mingfeı blogumu](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) ). Ayrıca, Azure Media Player (AMP) Widevine desteğini de ekledi (Ayrıntılar için bkz. [amp belgesi](https://amp.azure.net/libs/amp/latest/docs/) ). Bu, hem MSE hem de EME ile donatılmış modern tarayıcılarda çok örnekli-DRM (PlayReady ve Widevine) ile CENC tarafından korunan akış DASH içeriği için önemli bir amadır.
+Azure Medya Hizmetleri (AMS), Google Widevine dinamik koruması ekledi (ayrıntılar için [Mingfei'nin bloguna](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) bakın). Buna ek olarak, Azure Media Player (AMP) ayrıca Widevine desteği ekledi (ayrıntılar için [AMP belgesine](https://amp.azure.net/libs/amp/latest/docs/) bakın). Bu, MSE ve EME ile donatılmış modern tarayıcılarda çok yerel DRM (PlayReady ve Widevine) ile CENC tarafından korunan DASH içeriğiakışında büyük bir başarıdır.
 
-Media Services .NET SDK sürümü Media Services 3.5.2 ile başlayarak Widevine lisans şablonunu yapılandırmanıza ve Widevine lisanslarını almanıza olanak sağlar. Widevine lisansları teslim etmenize yardımcı olması için şu AMS ortaklarını da kullanabilirsiniz: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
+Medya Hizmetleri .NET SDK sürüm 3.5.2 ile başlayarak, Medya Hizmetleri Widevine lisans şablonu yapılandırmak ve Widevine lisansları almak sağlar. Widevine lisansları teslim etmenize yardımcı olması için şu AMS ortaklarını da kullanabilirsiniz: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
-Bu makalede, Axinom tarafından yönetilen Widevine lisans sunucusunu tümleştirme ve test etme işlemleri açıklanmaktadır. Özellikle şunları ele almaktadır:  
+Bu makalede, Axinom tarafından yönetilen Widevine lisans sunucusunun nasıl tümleştirilen ve test edilebilen açıklanmaktadır. Özellikle, kapsar:  
 
-* Multi-DRM (PlayReady ve Widevine) ile dinamik Common Encryption, karşılık gelen lisans alımı URL 'Leri ile yapılandırma;
-* Lisans sunucusu gereksinimlerini karşılamak için bir JWT belirteci oluşturma;
-* JWT belirteci kimlik doğrulamasıyla lisans alımı işleyen Azure Media Player uygulama geliştirme;
+* Dinamik Ortak Şifrelemeyi multi-DRM (PlayReady ve Widevine) ile ilgili lisans satın alma URL'leri ile yapılandırmak;
+* Lisans sunucusu gereksinimlerini karşılamak için JWT belirteci oluşturma;
+* JWT belirteç kimlik doğrulaması ile lisans edinimi işleyen Azure Media Player uygulamasını geliştirme;
 
-Tüm sistem ve içerik anahtarı, anahtar KIMLIĞI, anahtar çekirdek, JTW belirteci ve talepleri, aşağıdaki diyagram tarafından en iyi şekilde açıklanabilir:
+Tam sistem ve içerik anahtarı, anahtar kimliği, anahtar tohumu, JTW belirteci ve iddiaları akışı en iyi aşağıdaki diyagram ile açıklanabilir:
 
 ![DASH ve CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
 ## <a name="content-protection"></a>Content Protection
-Dinamik koruma ve anahtar teslim ilkesini yapılandırmak için lütfen bkz. Mingfeı 'nin blogu: [Widevine paketlemeyi Azure Media Services ile yapılandırma](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services).
+Dinamik koruma ve anahtar teslim ilkesini yapılandırmak için lütfen Mingfei'nin bloguna bakın: [Widevine ambalajını Azure Medya Hizmetleri ile nasıl yapılandırAbilirsiniz.](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
 
-Her ikisine de sahip olan DASH akışı için çoklu DRM ile dinamik CENC korumasını yapılandırabilirsiniz:
+Aşağıdakilerden her ikisine sahip DASH akışı için çoklu DRM ile dinamik CENC korumasını yapılandırabilirsiniz:
 
-1. Bir belirteç yetkilendirme kısıtlamasına sahip olabilecek Microsoft Edge ve ıE11 için PlayReady koruması. Belirteç kısıtlı ilkesi, Azure Active Directory gibi bir güvenli belirteç hizmeti (STS) tarafından verilmiş bir belirteç ile birlikte kullanılmalıdır.
+1. Microsoft Edge ve IE11 için PlayReady koruması, bir belirteç yetkilendirme kısıtlaması olabilir. Belirteç kısıtlı ilkesine, Azure Etkin Dizini gibi Güvenli Belirteç Hizmeti (STS) tarafından verilmiş bir belirteç eşlik etmelidir;
 2. Chrome için Widevine koruması, başka bir STS tarafından verilen belirteç ile belirteç kimlik doğrulaması gerektirebilir. 
 
-Neden Azure Active Directory Axinom 'ın Widevine lisans sunucusu için STS olarak kullanılamayacağını öğrenmek için [JWT belirteci oluşturma](media-services-axinom-integration.md#jwt-token-generation) bölümüne bakın.
+Azure Active Directory'nin Axinom'un Widevine lisans sunucusu için neden STS olarak kullanılamadığına dair [JWT Belirteç Oluşturma](media-services-axinom-integration.md#jwt-token-generation) bölümüne bakın.
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
-1. Anahtar teslim hizmetini yapılandırmaya yönelik içerik anahtarını oluşturmak için, Axınom belirtilen anahtar kaynağı (8888000000000000000000000000000000000000) ve oluşturulan ya da seçtiğiniz anahtar KIMLIĞINI kullanmanız gerekir. Axinom lisans sunucusu, hem test hem de üretim için geçerli olan aynı anahtar Seed 'e dayalı içerik anahtarları içeren tüm lisansları yayınlar.
-2. Test için Widevine lisans alma URL 'SI: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense). Hem HTTP hem de ıSıTLARA izin verilir.
+1. Anahtar teslim hizmetini yapılandırmak için içerik anahtarını oluşturmak için Axinom belirtilen anahtar tohumunu (8888000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000) ve oluşturulan veya seçilen anahtar kimliğini kullanarak anahtar teslim hizmetini yapılandırmak için içerik anahtarını oluşturmalısınız. Aksinom lisans sunucusu, hem test hem de üretim için geçerli olan aynı anahtar tohumuna dayalı içerik anahtarları içeren tüm lisansları yayınlar.
+2. Test için Widevine lisans [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense)edinme URL'si: . Hem HTTP hem de HTTS'ye izin verilir.
 
-## <a name="azure-media-player-preparation"></a>Azure Media Player hazırlığı
-AMP v 1.4.0, hem PlayReady hem de Widevine DRM ile dinamik olarak paketlenmiş AMS içeriğinin oynatılmasını destekler.
-Widevine lisans sunucusu belirteç kimlik doğrulaması gerektirmiyorsa, Widevine tarafından korunan bir DASH içeriğini test etmek için yapmanız gereken ek bir şey yoktur. Örneğin, AMP ekibi, Widevine ile PlayReady ve Chrome ile Microsoft Edge ve ıE11 'de çalıştığını görebileceğiniz basit bir [örnek](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html)sağlar.
-Axinom tarafından sunulan Widevine lisans sunucusu, JWT belirteci kimlik doğrulamasını gerektirir. JWT belirtecinin, "X-AxDRM-Message" HTTP üstbilgisiyle lisans isteğiyle gönderilmesi gerekir. Bu amaçla, kaynağı ayarlamadan önce AMP 'yı barındıran Web sayfasına aşağıdaki JavaScript eklemeniz gerekir:
+## <a name="azure-media-player-preparation"></a>Azure Media Player Hazırlama
+AMP v1.4.0, hem PlayReady hem de Widevine DRM ile dinamik olarak paketlenmiş AMS içeriğinin oynatıltını destekler.
+Widevine lisans sunucusu belirteç kimlik doğrulaması gerektirmiyorsa, Widevine tarafından korunan bir DASH içeriğini sınamak için yapmanız gereken ek bir şey yoktur. Örneğin, AMP ekibi, Widevine ile PlayReady ve Chrome ile Microsoft Edge ve IE11'de çalıştığını görebileceğiniz basit bir [örnek](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html)sağlar.
+Axinom tarafından sağlanan Widevine lisans sunucusu JWT belirteç kimlik doğrulaması gerektirir. JWT belirteci bir HTTP başlık "X-AxDRM-Message" üzerinden lisans isteği ile gönderilmesi gerekir. Bu amaçla, kaynağı ayarlamadan önce AMP barındırma web sayfasına aşağıdaki javascript eklemeniz gerekir:
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
 
-AMP kodunun geri kalanı, AMP belgesinde olduğu gibi standart AMP API 'sidir [.](https://amp.azure.net/libs/amp/latest/docs/)
+AMP kodunun geri [kalanı, amp](https://amp.azure.net/libs/amp/latest/docs/)belgesinde olduğu gibi standart AMP API'dir.
 
-Özel yetkilendirme üst bilgisini ayarlamaya yönelik yukarıdaki JavaScript, AMP 'daki uzun vadeli yaklaşımdan önce kısa vadeli bir yaklaşım olmaya devam etmektedir.
+Amp resmi uzun vadeli yaklaşım yayımlanmadan önce özel yetkilendirme üstbilgi ayarı için yukarıdaki javascript hala kısa vadeli bir yaklaşımdır.
 
-## <a name="jwt-token-generation"></a>JWT belirteci oluşturma
-Test için axınom Widevine lisans sunucusu, JWT belirteci kimlik doğrulamasını gerektirir. Ayrıca, JWT belirtecindeki taleplerden biri basit veri türü yerine karmaşık nesne türüdür.
+## <a name="jwt-token-generation"></a>JWT Belirteç Üretimi
+Test için Axinom Widevine lisans sunucusu JWT belirteç kimlik doğrulaması gerektirir. Buna ek olarak, JWT belirtecindeki iddialardan biri, ilkel veri türü yerine karmaşık bir nesne türüne aittir.
 
-Ne yazık ki Azure AD yalnızca temel türler içeren JWT belirteçleri verebilir. Benzer şekilde, .NET Framework API (System. IdentityModel. Tokens. SecurityTokenHandler ve JwtPayload) yalnızca karmaşık nesne türünü talep olarak girmenize olanak sağlar. Ancak talepler yine de dize olarak serileştirilir. Bu nedenle, Widevine lisans isteği için JWT belirtecini oluşturmak üzere iki ' un hiçbirini kullanmıyoruz.
+Ne yazık ki, Azure AD yalnızca ilkel türleri ile JWT belirteçleri verebilir. Benzer şekilde, .NET Framework API (System.IdentityModel.Tokens.SecurityTokenHandler ve JwtPayload) yalnızca karmaşık nesne türünü talep olarak giriş yapmanızı sağlar. Ancak, iddialar hala dize olarak serihale edilir. Bu nedenle, Widevine lisans isteği için JWT belirteci oluşturmak için ikisini kullanamayız.
 
-John Sheehan 'ın [JWT NuGet paketi](https://www.nuget.org/packages/JWT) , bu NuGet paketini kullanacağız.
+John Sheehan'ın [JWT NuGet paketi](https://www.nuget.org/packages/JWT) ihtiyaçları karşılar, bu yüzden bu NuGet paketini kullanacağız.
 
-Aşağıda, test için Axınom Widevine lisans sunucusu için gerekli talepler ile JWT belirteci oluşturma kodu verilmiştir:
+Aşağıda test etmek için Axinom Widevine lisans sunucusu tarafından gerekli olduğu gibi gerekli iddiaları ile JWT belirteci oluşturmak için kod:
 
     using System;
     using System.Collections.Generic;
@@ -129,7 +129,7 @@ Aşağıda, test için Axınom Widevine lisans sunucusu için gerekli talepler i
 
     }  
 
-Axınom Widevine lisans sunucusu
+Axinom Widevine lisans sunucusu
 
     <add key="ax:laurl" value="https://drm-widevine-licensing.axtest.net/AcquireLicense" />
     <add key="ax:com_key_id" value="69e54088-e9e0-4530-8c1a-1eb6dcd0d14e" />
@@ -137,13 +137,13 @@ Axınom Widevine lisans sunucusu
     <add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
-1. AMS PlayReady lisans teslimi hizmeti bir kimlik doğrulama belirtecinden önce "taşıyıcı =" gerektirse de, Axınom Widevine lisans sunucusu bunu kullanmaz.
-2. Axınom iletişim anahtarı imzalama anahtarı olarak kullanılır. Anahtar onaltılık bir dizedir, ancak kodlama sırasında dize olmayan bir dizi bayt olarak değerlendirilmelidir. Bu, ConvertHexStringToByteArray yöntemi tarafından gerçekleştirilir.
+1. AMS PlayReady lisans teslim hizmeti kimlik doğrulama belirtecinden önce "Taşıyıcı=" gerektirmesine rağmen, Axinom Widevine lisans sunucusu bunu kullanmaz.
+2. Axinom iletişim anahtarı imza anahtarı olarak kullanılır. Anahtar bir hex dizesi, ancak kodlama bir dize değil bayt bir dizi olarak kabul edilmelidir. Bu yöntem ConvertHexStringToByteArray tarafından elde edilir.
 
-## <a name="retrieving-key-id"></a>Anahtar KIMLIĞI alınıyor
-Bir JWT belirteci oluşturma kodunda, anahtar KIMLIĞI ' nin gerekli olduğunu fark etmiş olabilirsiniz. JWT belirtecinin, AMP Player yüklenmeden önce hazır olması gerektiğinden, JWT belirteci oluşturmak için anahtar KIMLIĞI 'nin alınması gerekir.
+## <a name="retrieving-key-id"></a>Anahtar Kimliğini Alma
+Bir JWT belirteci oluşturmak için kod, anahtar kimliği gerekli olduğunu fark etmiş olabilirsiniz. JWT belirteci AMP oynatıcı yüklemeden önce hazır olması gerektiğinden, JWT belirteci oluşturmak için anahtar kimliğinin alınması gerekir.
 
-Kuşkusuz, anahtar KIMLIĞINI tutan birçok yol vardır. Örneğin, biri bir veritabanında içerik meta verileriyle birlikte anahtar KIMLIĞINI de saklayabilir. Ya da DASH MPD (medya sunum açıklaması) dosyasından anahtar KIMLIĞI alabilirsiniz. Aşağıdaki kod ikincisi için verilmiştir.
+Tabii ki, anahtar kimliği ele almak için birden fazla yolu vardır. Örneğin, bir veritabanında içerik meta verileri ile birlikte anahtar kimliği depolar. Veya DASH MPD (Medya Sunu açıklaması) dosyasından anahtar kimliği alabilirsiniz. Aşağıdaki kod ikincisi içindir.
 
     //get key_id from DASH MPD
     public static string GetKeyID(string dashUrl)
@@ -178,33 +178,33 @@ Kuşkusuz, anahtar KIMLIĞINI tutan birçok yol vardır. Örneğin, biri bir ver
 
 ## <a name="summary"></a>Özet
 
-Azure Media Services Content Protection ve Azure Media Player her ikisinde de Widevine desteğinin en son eklenmesiyle birlikte, AMS ve Widevine lisansında hem PlayReady lisans hizmeti hem de DASH + Multi-Native-DRM (PlayReady + Widevine) akışını uygulayabiliriz Aşağıdaki modern tarayıcılar için Axinom 'dan sunucu:
+Hem Azure Medya Hizmetleri İçerik Koruması hem de Azure Media Player'da Widevine desteğinin en son eklenmesiyle, AMS ve Widevine lisansında hem PlayReady lisans hizmeti yle DASH + Multi-native-DRM (PlayReady + Widevine) akışını uygulayabiliyoruz aşağıdaki modern tarayıcılar için Axinom sunucu:
 
 * Chrome
-* Windows 10 ' da Microsoft Edge
-* Windows 8.1 ve Windows 10 ' da IE 11
-* Hem Firefox hem de Mac üzerinde Safari (iOS değil), Silverlight ve Azure Media Player ile aynı URL ile de desteklenir
+* Windows 10'da Microsoft Edge
+* Windows 8.1 ve Windows 10'da IE 11
+* Mac'teki Firefox (Desktop) ve Safari (iOS değil) silverlight ve Azure Media Player ile aynı URL üzerinden de desteklenir
 
-Aşağıdaki parametreler, Axınom Widevine lisans sunucusu kullanan mini çözümde gereklidir. Anahtar KIMLIĞI dışında, parametrelerin geri kalanı Wıdevine sunucu kurulumuna göre Axınom tarafından sağlanır.
+Axinom Widevine lisans sunucusundan yararlanan mini çözeltide aşağıdaki parametreler gereklidir. Anahtar kimliği dışında, parametrelerin geri kalanı Widevine sunucu kurulumuna göre Axinom tarafından sağlanır.
 
-| Parametre | Nasıl kullanılır |
+| Parametre | Nasıl kullanılır? |
 | --- | --- |
-| İletişim anahtarı KIMLIĞI |JWT belirtecinde "com_key_id" talebinin değeri olarak eklenmelidir ( [Bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
-| İletişim anahtarı |JWT belirtecinin imzalama anahtarı olarak kullanılması gerekir ( [Bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
-| Anahtar tohum |Verilen içerik anahtarı KIMLIĞIYLE içerik anahtarı oluşturmak için kullanılmalıdır ( [Bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
-| Widevine lisans alma URL 'SI |DASH akışı için varlık teslim ilkesini yapılandırırken kullanılması gerekir ( [Bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
-| İçerik anahtarı KIMLIĞI |JWT belirtecinin yetkilendirme Iletisi talebinin değerinin bir parçası olarak eklenmelidir ( [Bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
+| İletişim anahtarı kimliği |JWT belirtecindeki "com_key_id" iddiasının değeri olarak eklenmelidir [(bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
+| İletişim anahtarı |JWT belirteci imza anahtarı olarak kullanılmalıdır [(bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
+| Anahtar tohumu |Herhangi bir içerik anahtarı kimliğiyle içerik anahtarı oluşturmak için kullanılmalıdır [(bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
+| Widevine Lisans edinme URL'si |DASH akışı için varlık teslim ilkesini yapılandırmada kullanılmalıdır [(bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
+| İçerik Anahtar Kimliği |JWT belirteci Nin Yetki Lendirme İletisi talebinin değerinin bir parçası olarak dahil edilmelidir [(bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
 
-## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Bilgilendirme
-Bu belgeyi oluşturmak için katkıda bulunan şu kişileri bildirmek istiyoruz: Kristjan Jõgi of Axinom, Mingfei yan ve Amit Esjput.
+### <a name="acknowledgments"></a>İlgili kaynaklar
+Biz bu belgenin oluşturulmasına katkıda bulunan aşağıdaki insanlar kabul etmek istiyorum: Kristjan Jõgi Axinom, Mingfei Yan ve Amit Rajput.
 

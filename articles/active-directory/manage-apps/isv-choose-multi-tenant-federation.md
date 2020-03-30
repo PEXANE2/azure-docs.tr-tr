@@ -1,6 +1,6 @@
 ---
-title: Çok kiracılı uygulama için sağ Federasyon protokolünü seçin
-description: Azure Active Directory tümleştirilirken bağımsız yazılım satıcıları için rehberlik
+title: Çok kiracılı uygulama için doğru federasyon protokolünü seçin
+description: Azure Active Directory ile tümleştirme konusunda bağımsız yazılım satıcıları için kılavuz
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,54 +13,54 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443386"
 ---
-# <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için doğru Federasyon protokolünü seçin
+# <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için doğru federasyon protokolünü seçin
 
-Hizmet olarak yazılım (SaaS) uygulaması geliştirirken, ve müşterilerinizin ihtiyaçlarını en iyi karşılayan Federasyon protokolünü seçmeniz gerekir. Bu karar, geliştirme platformunuzu temel alır ve müşterilerinizin Office 365 ve Azure AD ekosistemi dahilinde bulunan verilerle tümleştirme yapmanız gerekir.
+Yazılımınızı bir hizmet (SaaS) uygulaması olarak geliştirdiğinizde, sizin ve müşterilerinizin ihtiyaçlarını en iyi şekilde karşılayan federasyon protokolünü seçmeniz gerekir. Bu karar, geliştirme platformunuza ve müşterilerinizin Office 365 ve Azure AD ekosisteminde bulunan verilerle tümleştirme isteğinize bağlıdır.
 
-Azure Active Directory [SSO tümleştirmeleri için kullanılabilen protokollerin](what-is-single-sign-on.md) tüm listesine bakın.
-Aşağıdaki tabloda karşılaştırılmaktadır 
-* Açık kimlik doğrulaması 2,0 (OAuth 2,0)
-* Açık KIMLIK bağlantısı (OıDC)
-* Security Assertion Markup Language (SAML)
-* Web Hizmetleri Federasyonu (Wsbeslenir)
+Azure Active Directory ile [SSO tümleştirmeleri için kullanılabilen protokollerin](what-is-single-sign-on.md) tam listesine bakın.
+Aşağıdaki tablo karşılaştırır 
+* Açık Kimlik Doğrulama 2.0 (OAuth 2.0)
+* Açık Kimlik Bağlantısı (OIDC)
+* Güvenlik İddiası Biçimlendirme Dili (SAML)
+* Web Hizmetleri Federasyonu (WSFed)
 
-| Özellik| OAuth/OıDC| SAML/wsbes |
+| Özellik| OAuth / OIDC| SAML / WSFed |
 | - |-|-|
-| Web tabanlı çoklu oturum açma| √| √ |
-| Web tabanlı çoklu oturum kapatma| √| √ |
-| Mobil tabanlı çoklu oturum açma| √| √ |
-| Mobil tabanlı çoklu oturum açma| √| √ |
-| Mobil uygulamalar için koşullu erişim ilkeleri| √| X |
+| Web tabanlı Tek oturum açma| √| √ |
+| Web tabanlı Tek oturum açma| √| √ |
+| Mobil tabanlı Tek oturum açma| √| √* |
+| Mobil tabanlı Tek oturum açma| √| √* |
+| Mobil uygulamalar için Koşullu Erişim ilkeleri| √| X |
 | Mobil uygulamalar için sorunsuz MFA deneyimi| √| X |
-| Erişim Microsoft Graph| √| X |
+| Microsoft Grafiğine Erişin| √| X |
 
-\* Olası, ancak Microsoft örnek veya rehberlik sağlamıyor.
+*Mümkün, ancak Microsoft örnek veya kılavuz sağlamaz.
 
-## <a name="oauth-20-and-open-id-connect"></a>OAuth 2,0 ve açık KIMLIK Connect
+## <a name="oauth-20-and-open-id-connect"></a>OAuth 2.0 ve Açık Kimlik Bağlantısı
 
-OAuth 2,0, yetkilendirme için [sektör standardı](https://oauth.net/2/) bir protokoldür. OıDC (OpenID Connect), OAuth 2,0 protokolünün üstünde oluşturulmuş bir [sektör standart](https://openid.net/connect/) kimlik doğrulama katmanıdır.
+OAuth 2.0 yetkilendirme için [endüstri standardı](https://oauth.net/2/) bir protokoldür. OIDC (OpenID Connect), OAuth 2.0 protokolünün üzerine inşa edilmiş bir [endüstri standardı](https://openid.net/connect/) kimlik kimlik doğrulama katmanıdır.
 
 ### <a name="benefits"></a>Avantajlar
 
-Microsoft, protokollerde yerleşik olarak bulunan kimlik doğrulaması ve yetkilendirmeler için OıDC/OAuth 2,0 kullanılmasını önerir. SAML ile ayrıca yetkilendirme uygulamanız gerekir.
+Microsoft, iletişim protokollerinde yerleşik kimlik doğrulama ve yetkilendirmeye sahip olduklarından OIDC/OAuth 2.0'ı kullanmanızı önerir. SAML ile yetkilendirmeyi de uygulamanız gerekir.
 
-Bu protokollerde bulunan yetkilendirme, uygulamanızın Microsoft Graph API aracılığıyla zengin Kullanıcı ve kurumsal verilere erişmesini ve bunları tümleştirmesini sağlar.
+Bu protokollerin doğasında bulunan yetkilendirme, uygulamanızın Microsoft Graph API aracılığıyla zengin kullanıcı ve kuruluş verilerine erişmesini ve bunlarla tümleştirmesini sağlar.
 
-OAuth 2,0 ve OıDC kullanmak, uygulamanız için SSO 'yu benimsediği zaman müşterilerinizin Son Kullanıcı deneyimini basitleştirir. Gerekli olan izin kümelerini kolayca tanımlayabilir, bu, yönetici veya son kullanıcı tarafından otomatik olarak temsil edilir.
+OAuth 2.0 ve OIDC'yi kullanmak, uygulamanız için SSO'yu benimserken müşterilerinizin son kullanıcı deneyimini kolaylaştırır. Gerekli izin kümelerini, daha sonra yöneticiye veya son kullanıcı onaylayan adada otomatik olarak temsil edilen kolayca tanımlayabilirsiniz.
 
-Ayrıca, bu protokollerin kullanılması, müşterilerinizin uygulamalara erişimi denetlemek için koşullu erişim ve MFA ilkelerini kullanmasına olanak sağlar. Microsoft, geliştirmeye yardımcı olmak için [birden çok teknoloji platformunda kitaplıklar ve kod örnekleri](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) sunar.  
+Ayrıca, bu protokolleri kullanmak, müşterilerinizin uygulamalara erişimi denetlemek için Koşullu Erişim ve MFA ilkelerini kullanmasına olanak tanır. Microsoft, geliştirmenize yardımcı olmak için [birden çok teknoloji platformunda](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) kitaplıklar ve kod örnekleri sağlar.  
 
 ### <a name="implementation"></a>Uygulama
 
-Uygulamanızı bir OAuth 2,0 sağlayıcısı olan Microsoft Identity ile kaydedersiniz. Ayrıca, OAuth 2,0 tabanlı uygulamanızı, tümleştirmek istediğiniz diğer kimlik sağlayıcıları ile de kaydedebilirsiniz. 
+Başvurunuzu, OAuth 2.0 sağlayıcısı olan Microsoft Identity'e kaydedebilirsiniz. Daha sonra, OAuth 2.0 tabanlı uygulamanızı entegre etmek istediğiniz başka bir Kimlik Sağlayıcısı'na da kaydedebilirsiniz. 
 
-Uygulamanızı kaydetme ve Web uygulamalarına SSO için bu protokolleri uygulama hakkında daha fazla bilgi için bkz. [OpenID Connect ve Azure Active Directory kullanarak Web uygulamalarına erişim yetkisi verme](../develop/sample-v2-code.md).  Bu protokollerin mobil uygulamalarda SSO için nasıl uygulanacağı hakkında daha fazla bilgi için aşağıdakilere bakın: 
+Uygulamanızı nasıl kaydacağınız ve SSO için bu protokolleri web uygulamalarına nasıl uygulayacağınız hakkında bilgi için [OpenID Connect ve Azure Active Directory'yi kullanarak web uygulamalarına erişim yetkisi](../develop/sample-v2-code.md)ne rendeleyin.  Mobil uygulamalarda SSO için bu protokollerin nasıl uygulanacağı hakkında bilgi için aşağıdakilere bakın: 
 
 * [Android](../develop/quickstart-v2-android.md)
 
@@ -68,34 +68,34 @@ Uygulamanızı kaydetme ve Web uygulamalarına SSO için bu protokolleri uygulam
 
 * [Evrensel Windows Platformu](../develop/quickstart-v2-uwp.md)
 
-## <a name="saml-20-and-wsfed"></a>SAML 2,0 ve wsbes
+## <a name="saml-20-and-wsfed"></a>SAML 2.0 ve WSFed
 
-Security Assertion Markup Language (SAML) genellikle Web uygulamaları için kullanılır. Azure 'un genel bakış için [SAML protokolünü nasıl kullandığını](../develop/active-directory-saml-protocol-reference.md) görün. 
+Güvenlik İddiası Biçimlendirme Dili (SAML) genellikle web uygulamaları için kullanılır. Azure'un genel bakış için [SAML protokolünü nasıl kullandığını](../develop/active-directory-saml-protocol-reference.md) görün. 
 
-Web Hizmetleri Federasyonu (Wsbeslenir), .NET platformu kullanılarak geliştirilen Web uygulamaları için genellikle kullanılan bir [sektör standardıdır](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) .
+Web Hizmetleri Federasyonu (WSFed), genellikle .Net platformu kullanılarak geliştirilen web uygulamaları için kullanılan bir [endüstri standardıdır.](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html)
 
 ### <a name="benefits"></a>Avantajlar
 
-SAML 2,0, yetişkinlere yönelik bir standarttır ve çoğu teknoloji platformu SAML 2,0 için açık kaynaklı kitaplıkları destekler. Müşterilerinizin SAML SSO 'yu yapılandırmak için bir yönetim arabirimi sağlayabilirsiniz. Microsoft Azure AD için SAML SSO ve SAML 2 ' yi destekleyen diğer kimlik sağlayıcıları yapılandırabilir
+SAML 2.0 olgun bir standarttır ve çoğu teknoloji platformu SAML 2.0 için açık kaynak kitaplıklarını destekler. Müşterilerinize SAML SSO'u yapılandırmak için bir yönetim arabirimi sağlayabilirsiniz. Microsoft Azure AD ve SAML 2'yi destekleyen diğer kimlik sağlayıcılar için SAML SSO'su yapılandırabilirler
 
 ### <a name="trade-offs"></a>Dengelemeler
 
-Mobil uygulamalar için SAML 2,0 veya Wsbesli protokoller kullanırken, çok faktörlü kimlik doğrulaması (MFA) dahil olmak üzere bazı koşullu erişim ilkelerinin düzeyi düşürülmüş bir deneyimle karşılaşacaktır. Ayrıca, Microsoft Graph erişmek istiyorsanız, gerekli belirteçleri oluşturmak için OAuth 2,0 aracılığıyla yetkilendirmeyi uygulamanız gerekir. 
+Mobil uygulamalar için SAML 2.0 veya WSFed protokolleri kullanırken, Çok Faktörlü Kimlik Doğrulama (MFA) dahil olmak üzere belirli Koşullu Erişim ilkeleri bozulmuş bir deneyime sahip olacaktır. Ayrıca, Microsoft Graph'a erişmek istiyorsanız, gerekli belirteçleri oluşturmak için OAuth 2.0 üzerinden yetkilendirme uygulamanız gerekir. 
 
 ### <a name="implementation"></a>Uygulama
 
-Microsoft, SAML uygulamasına yönelik kitaplıklar sağlamaz veya belirli kitaplıkları önermez. Kullanılabilir çok sayıda açık kaynak kitaplığı vardır.
+Microsoft, SAML uygulaması için kitaplıklar sağlamaz veya belirli kitaplıklar önerir. Birçok açık kaynak kitaplık ları mevcuttur.
 
-## <a name="sso-and-using-microsoft-graph-rest-api"></a>SSO ve Microsoft Graph REST API 'SI kullanma 
+## <a name="sso-and-using-microsoft-graph-rest-api"></a>SSO ve Microsoft Graph Rest API kullanma 
 
-Microsoft Graph, Office 365, Windows 10 ve Enterprise Mobility ve Security gibi tüm Microsoft 365 ve Dynamics 365 gibi ek ürünleri kapsayan veri dokudır. Bu, Kullanıcı üretkenliğini hedefleyen kullanıcılar, gruplar, takvim, posta, dosyalar ve daha fazlası gibi varlıkların temel şemalarını içerir. Microsoft Graph geliştiricilere, geliştiricilerin kendi verilerini Microsoft Graph eklemesine izin veren bir REST tabanlı API, Microsoft Graph veri bağlantısı ve bağlayıcılar için üç arabirim sunar.  
+Microsoft Graph, Office 365, Windows 10 ve Enterprise Mobility and Security dahil olmak üzere tüm Microsoft 365'teki veri dokusu ve Dynamics 365 gibi ek ürünlerdir. Bu, kullanıcı üretkenliğini artıran Kullanıcılar, Gruplar, Takvim, Posta, Dosyalar ve daha fazlası gibi varlıkların temel şemalarını içerir. Microsoft Graph, geliştiriciler için REST tabanlı API, Microsoft Graph veri bağlantısı ve geliştiricilerin Microsoft Graph'a kendi verilerini eklemelerine olanak tanıyan bağlayıcılar için üç arabirim sunar.  
 
-SSO için yukarıdaki protokollerden herhangi birini kullanmak, uygulamanızın Microsoft Graph REST API aracılığıyla erişilebilen zengin verilere erişmesini sağlar. Bu, müşterilerinizin Microsoft 365 yatırımlarından daha fazla değer almasını sağlar. Örneğin, uygulamanız, müşterilerinizin Office 365 örneği ve Surface Microsoft Office kullanıcıları tarafından uygulamanızdaki SharePoint öğeleriyle tümleştirilebilen Microsoft Graph API 'sini çağırabilir. 
+SSO için yukarıdaki protokollerden herhangi birini kullanmak, uygulamanızın Microsoft Graph REST API aracılığıyla kullanılabilen zengin verilere erişmesini sağlar. Bu, müşterilerinizin Microsoft 365'e yaptıkları yatırımdan daha fazla değer elde etmelerini sağlar. Örneğin, uygulamanız, müşterilerinizin Office 365 örneğiyle tümleştirmek ve uygulamanızdaki kullanıcıların Microsoft Office ve SharePoint öğelerini yüzeye çıkarmak için Microsoft Graph API'yi arayabilir. 
 
-Kimlik doğrulamak için açık KIMLIK bağlantısı kullanıyorsanız, OAuth2 kullanabilmeniz için geliştirme deneyiminizi sorunsuz bir şekilde kullanabilirsiniz. Bu durumda, belirteçleri almak için açık KIMLIK Connect Foundation Microsoft Graph API 'Leri çağırmak için kullanılabilir. Uygulamanız SAML veya Wsbeslenir kullanıyorsa, Microsoft Graph API 'Leri çağırmak için gereken belirteçleri elde etmek üzere bu OAuth2 almak için uygulamanız içine ek kod eklemeniz gerekir. 
+Kimlik doğrulaması için Open ID Connect kullanıyorsanız, Microsoft Graph API'lerini çağırmak için belirteçler elde etmek için Open ID Connect'in temeli olan OAuth2'yi kullanacağınız için geliştirme deneyiminiz sorunsuzdur. Uygulamanız SAML veya WSFed kullanıyorsa, Microsoft Graph API'lerini çağırmak için gereken belirteçleri elde etmek için bu OAuth2'yi almak için uygulamanız içinde ek kod eklemeniz gerekir. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[Çok kiracılı uygulamanız için SSO 'yu etkinleştirme](isv-sso-content.md)
+[Çok kiracılı uygulamanız için SSO’yu etkinleştirme](isv-sso-content.md)
 
-[Çok kiracılı uygulamanız için belge oluşturma](isv-create-sso-documentation.md)
+[Çok kiracılı uygulamanız için belgeler oluşturma](isv-create-sso-documentation.md)

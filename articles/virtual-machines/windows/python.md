@@ -1,6 +1,6 @@
 ---
-title: Python kullanarak Azure 'da Windows VM oluşturma ve yönetme
-description: Azure 'da bir Windows sanal makinesi oluşturmak ve yönetmek için Python kullanmayı öğrenin.
+title: Python'u kullanarak Azure'da bir Windows VM oluşturma ve yönetme
+description: Azure'da bir Windows VM oluşturmak ve yönetmek için Python'u kullanmayı öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,52 +15,52 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461084"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
+# <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python'u kullanarak Azure'da Windows VM'leri oluşturma ve yönetme
 
-[Azure sanal makinesi](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) birkaç destekleyici Azure kaynağı gerektirir. Bu makalede, Python kullanarak VM kaynaklarını oluşturma, yönetme ve silme konuları ele alınmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+[Azure Sanal Makine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) birkaç destekleyici Azure kaynağına ihtiyaç duyar. Bu makalede, Python kullanarak VM kaynakları oluşturma, yönetme ve silme kapsar. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Visual Studio projesi oluşturma
 > * Paketleri yükleme
-> * Kimlik bilgileri oluştur
+> * Kimlik bilgileri oluşturma
 > * Kaynak oluşturma
 > * Yönetim görevlerini gerçekleştirme
 > * Kaynakları silme
 > * Uygulamayı çalıştırma
 
-Bu adımların uygulanması yaklaşık 20 dakika sürer.
+Bu adımları yapmak yaklaşık 20 dakika sürer.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
-1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **Python geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özette, **Python 3 64-bit (3.6.0)** ' in sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak Python iş yükünü ekleyebilirsiniz.
-2. Visual Studio 'Yu yükleyip başlattıktan sonra **dosya** > **Yeni** > **projesi**' ne tıklayın.
-3. **Şablonlar** > **Python** > **Python uygulaması**' na tıklayın, projenin adı Için *mypyıthonproject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
+1. Henüz yapmadıysanız Visual [Studio'yı](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyin. İş Yükleri sayfasında **Python geliştirme'yi** seçin ve sonra **Yükle'yi**tıklatın. Özette, Python 3 **64 bit (3.6.0)** tarafından otomatik olarak seçildiğini görebilirsiniz. Visual Studio'yu zaten yüklediyseniz, Visual Studio Başlatıcısı'nı kullanarak Python iş yükünü ekleyebilirsiniz.
+2. Visual Studio'yı yükledikten ve kurduktan sonra **Dosya** > **Yeni** > **Projesi'ni**tıklatın.
+3. **Templates** > **Python** > **Python Application'ı**tıklatın, projenin adı için *myPythonProject'e* girin, projenin konumunu seçin ve ardından **Tamam'ı**tıklatın.
 
 ## <a name="install-packages"></a>Paketleri yükleme
 
-1. Çözüm Gezgini, *Mypyıthonproject*altında, **Python ortamları**' na sağ tıklayın ve ardından **sanal ortam ekle**' yi seçin.
-2. Sanal ortam ekle ekranında, varsayılan *env*adını kabul edin, temel yorumlayıcı için *Python 3,6 (64-bit)* ' in seçildiğinden emin olun ve ardından **Oluştur**' a tıklayın.
-3. Oluşturduğunuz *env* ortamına sağ tıklayın, **Python paketini yükler**' e tıklayın, arama kutusuna *Azure* girin ve ardından ENTER tuşuna basın.
+1. Solution Explorer'da, *myPythonProject*altında **Python Ortamları'na**sağ tıklayın ve ardından **sanal ortam ekle'yi**seçin.
+2. Sanal Ortam Ekle *ekranında, env*varsayılan adını kabul , *Python 3.6 (64-bit)* temel yorumlayıcı için seçili olduğundan emin olun ve sonra **Oluştur'u**tıklatın .
+3. Oluşturduğunuz *env* ortamına sağ tıklayın, **Python Paketini Yükle'yi**tıklatın, arama kutusuna *azure* girin ve sonra Enter tuşuna basın.
 
-Çıkış penceresinde Azure paketlerinin başarıyla yüklendiğini görmeniz gerekir. 
+Çıkış pencerelerinde azure paketlerinin başarıyla yüklenmiş olduğunu görmeniz gerekir. 
 
-## <a name="create-credentials"></a>Kimlik bilgileri oluştur
+## <a name="create-credentials"></a>Kimlik bilgileri oluşturma
 
-Bu adıma başlamadan önce bir [Active Directory Hizmet sorumlusuna](../../active-directory/develop/howto-create-service-principal-portal.md)sahip olduğunuzdan emin olun. Ayrıca, daha sonraki bir adımda ihtiyacınız olan uygulama KIMLIĞI, kimlik doğrulama anahtarı ve kiracı KIMLIĞINI de kaydetmeniz gerekir.
+Bu adımı başlatmadan önce, etkin [dizin hizmet yöneticisi](../../active-directory/develop/howto-create-service-principal-portal.md)olduğundan emin olun. Ayrıca uygulama kimliğini, kimlik doğrulama anahtarını ve daha sonraki bir adımda gereksinim duyduğunuz kiracı kimliğini de kaydetmeniz gerekir.
 
-1. Oluşturulan *myPythonProject.py* dosyasını açın ve ardından uygulamanızın çalışmasını sağlamak için bu kodu ekleyin:
+1. Oluşturulan *myPythonProject.py* dosyayı açın ve uygulamanızın çalışmasını sağlamak için bu kodu ekleyin:
 
     ```python
     if __name__ == "__main__":
     ```
 
-2. Gerekli kodu içeri aktarmak için, bu deyimleri. Kopyala dosyasının en üstüne ekleyin:
+2. Gerekli kodu almak için bu ifadeleri .py dosyasının üstüne ekleyin:
 
     ```python
     from azure.common.credentials import ServicePrincipalCredentials
@@ -70,7 +70,7 @@ Bu adıma başlamadan önce bir [Active Directory Hizmet sorumlusuna](../../acti
     from azure.mgmt.compute.models import DiskCreateOption
     ```
 
-3. . Kopyala dosyasında, kodda kullanılan ortak değerleri belirtmek için import deyimlerinden sonra değişkenler ekleyin:
+3. .py dosyasında sonraki, kodda kullanılan ortak değerleri belirtmek için alma deyimlerinden sonra değişkenler ekleyin:
    
     ```
     SUBSCRIPTION_ID = 'subscription-id'
@@ -79,9 +79,9 @@ Bu adıma başlamadan önce bir [Active Directory Hizmet sorumlusuna](../../acti
     VM_NAME = 'myVM'
     ```
 
-    **Abonelik kimliğini** abonelik tanımlayıcın ile değiştirin.
+    **Abonelik kimliğinizi** abonelik tanımlayıcınızla değiştirin.
 
-4. İstek yapmak için ihtiyaç duyduğunuz Active Directory kimlik bilgilerini oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+4. İstekte bulunmanız gereken Active Directory kimlik bilgilerini oluşturmak için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def get_credentials():
@@ -94,9 +94,9 @@ Bu adıma başlamadan önce bir [Active Directory Hizmet sorumlusuna](../../acti
         return credentials
     ```
 
-    **Uygulama kimliği**, **kimlik doğrulama anahtarı**ve **kiracı kimliği** ' ni, Azure Active Directory hizmet sorumlunuzu oluştururken daha önce topladığınız değerlerle değiştirin.
+    **Uygulama kimliği,** **kimlik doğrulama anahtarı**ve kiracı **kimliği'ni** Azure Active Directory hizmet yöneticiliği yöneticinizi oluşturduğunuzda daha önce topladığınız değerlerle değiştirin.
 
-5. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+5. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     credentials = get_credentials()
@@ -104,9 +104,9 @@ Bu adıma başlamadan önce bir [Active Directory Hizmet sorumlusuna](../../acti
 
 ## <a name="create-resources"></a>Kaynak oluşturma
  
-### <a name="initialize-management-clients"></a>Yönetim istemcilerini Başlat
+### <a name="initialize-management-clients"></a>Yönetim istemcilerini başlatma
 
-Yönetim istemcilerinin Azure 'da Python SDK 'sını kullanarak kaynak oluşturup yönetmesi gerekir. Yönetim istemcilerini oluşturmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+Azure'da Python SDK'yı kullanarak kaynak oluşturmak ve yönetmek için yönetim istemcileri gereklidir. Yönetim istemcilerini oluşturmak için, .py dosyasının sonundaki **if** deyiminin altına bu kodu ekleyin:
 
 ```python
 resource_group_client = ResourceManagementClient(
@@ -123,11 +123,11 @@ compute_client = ComputeManagementClient(
 )
 ```
 
-### <a name="create-the-vm-and-supporting-resources"></a>VM ve destekleyici kaynakları oluşturma
+### <a name="create-the-vm-and-supporting-resources"></a>VM ve destekleyici kaynaklar oluşturma
 
-Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/overview.md)bulunmalıdır.
+Tüm kaynaklar bir [Kaynak grubunda](../../azure-resource-manager/management/overview.md)yer almalıdır.
 
-1. Bir kaynak grubu oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Bir kaynak grubu oluşturmak için,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def create_resource_group(resource_group_client):
@@ -138,16 +138,16 @@ Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/ove
         )
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     create_resource_group(resource_group_client)
     input('Resource group created. Press enter to continue...')
     ```
 
-[Kullanılabilirlik kümeleri](tutorial-availability-sets.md) , uygulamanız tarafından kullanılan sanal makineleri korumanıza daha kolay hale getirir.
+[Kullanılabilirlik kümeleri,](tutorial-availability-sets.md) uygulamanız tarafından kullanılan sanal makineleri korumanızı kolaylaştırır.
 
-1. Bir kullanılabilirlik kümesi oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Kullanılabilirlik kümesi oluşturmak için,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
    
     ```python
     def create_availability_set(compute_client):
@@ -163,7 +163,7 @@ Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/ove
         )
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     create_availability_set(compute_client)
@@ -171,9 +171,9 @@ Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/ove
     input('Availability set created. Press enter to continue...')
     ```
 
-Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) gerekir.
+Sanal makineyle iletişim kurmak için [genel bir IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) gereklidir.
 
-1. Sanal makine için genel bir IP adresi oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Sanal makine için genel bir IP adresi oluşturmak için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def create_public_ip_address(network_client):
@@ -190,7 +190,7 @@ Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-netwo
         return creation_result.result()
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     creation_result = create_public_ip_address(network_client)
@@ -199,9 +199,9 @@ Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-netwo
     input('Press enter to continue...')
     ```
 
-Bir sanal makinenin bir [sanal ağın](../../virtual-network/virtual-networks-overview.md)alt ağında olması gerekir.
+Sanal bir makine, [Sanal ağın](../../virtual-network/virtual-networks-overview.md)alt ağında olmalıdır.
 
-1. Bir sanal ağ oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Sanal ağ oluşturmak için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def create_vnet(network_client):
@@ -219,7 +219,7 @@ Bir sanal makinenin bir [sanal ağın](../../virtual-network/virtual-networks-ov
         return creation_result.result()
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
    
     ```python
     creation_result = create_vnet(network_client)
@@ -228,7 +228,7 @@ Bir sanal makinenin bir [sanal ağın](../../virtual-network/virtual-networks-ov
     input('Press enter to continue...')
     ```
 
-3. Sanal ağa bir alt ağ eklemek için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+3. Sanal ağa bir alt ağ eklemek için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
     
     ```python
     def create_subnet(network_client):
@@ -245,7 +245,7 @@ Bir sanal makinenin bir [sanal ağın](../../virtual-network/virtual-networks-ov
         return creation_result.result()
     ```
         
-4. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+4. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
    
     ```python
     creation_result = create_subnet(network_client)
@@ -254,9 +254,9 @@ Bir sanal makinenin bir [sanal ağın](../../virtual-network/virtual-networks-ov
     input('Press enter to continue...')
     ```
 
-Sanal bir makine, sanal ağ üzerinde iletişim kurmak için bir ağ arabirimine ihtiyaç duyuyor.
+Sanal makinenin sanal ağda iletişim kurabilmesi için ağ arabirimine ihtiyacı vardır.
 
-1. Bir ağ arabirimi oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Ağ arabirimi oluşturmak için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def create_nic(network_client):
@@ -288,7 +288,7 @@ Sanal bir makine, sanal ağ üzerinde iletişim kurmak için bir ağ arabirimine
         return creation_result.result()
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     creation_result = create_nic(network_client)
@@ -297,9 +297,9 @@ Sanal bir makine, sanal ağ üzerinde iletişim kurmak için bir ağ arabirimine
     input('Press enter to continue...')
     ```
 
-Tüm destekleyici kaynakları oluşturduğunuza göre, bir sanal makine oluşturabilirsiniz.
+Artık tüm destekleyici kaynakları oluşturduğunuziçin, sanal bir makine oluşturabilirsiniz.
 
-1. Sanal makineyi oluşturmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Sanal makineyi oluşturmak için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
    
     ```python
     def create_vm(network_client, compute_client):  
@@ -348,11 +348,11 @@ Tüm destekleyici kaynakları oluşturduğunuza göre, bir sanal makine oluştur
     ```
 
     > [!NOTE]
-    > Bu öğretici, Windows Server işletim sisteminin bir sürümünü çalıştıran bir sanal makine oluşturur. Diğer görüntüleri seçme hakkında daha fazla bilgi edinmek için bkz. [Windows PowerShell ve Azure CLI Ile Azure sanal makine görüntülerini gezinme ve seçme](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > Bu öğretici, Windows Server işletim sisteminin bir sürümünü çalıştıran sanal bir makine oluşturur. Diğer resimleri seçme hakkında daha fazla bilgi edinmek için [Windows PowerShell ve Azure CLI ile Gezin ve Azure sanal makine resimlerini seçin.](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
     > 
     > 
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     creation_result = create_vm(network_client, compute_client)
@@ -365,9 +365,9 @@ Tüm destekleyici kaynakları oluşturduğunuza göre, bir sanal makine oluştur
 
 Bir sanal makinenin yaşam döngüsü boyunca, sanal makineyi başlatmak, durdurmak veya silmek gibi yönetim görevleri gerçekleştirmek isteyebilirsiniz. Ayrıca, yinelenen veya karmaşık görevleri otomatikleştirmek için kod oluşturmak isteyebilirsiniz.
 
-### <a name="get-information-about-the-vm"></a>VM hakkında bilgi edinme
+### <a name="get-information-about-the-vm"></a>VM hakkında bilgi alın
 
-1. Sanal makine hakkında bilgi almak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Sanal makine hakkında bilgi almak için .py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def get_vm(compute_client):
@@ -420,7 +420,7 @@ Bir sanal makinenin yaşam döngüsü boyunca, sanal makineyi başlatmak, durdur
             print("  code: ", stat.code)
             print("  displayStatus: ", stat.display_status)
     ```
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     get_vm(compute_client)
@@ -430,22 +430,22 @@ Bir sanal makinenin yaşam döngüsü boyunca, sanal makineyi başlatmak, durdur
 
 ### <a name="stop-the-vm"></a>VM’yi durdurma
 
-Bir sanal makineyi durdurabilir ve tüm ayarlarını tutabilir, ancak ücretlendirmeye devam edebilir veya bir sanal makineyi durdurup serbest bırakabilirsiniz. Bir sanal makine serbest bırakıldığında, onunla ilişkili tüm kaynaklar da serbest bırakılır ve faturalandırılır.
+Sanal bir makineyi durdurabilir ve tüm ayarlarını saklayabilirsiniz, ancak bunun için ücretlendirilmeye devam edebilir veya sanal bir makineyi durdurup yerini saptayabilirsiniz. Sanal bir makine devre dışı edildiğinde, onunla ilişkili tüm kaynaklar da ayrılır ve faturalandırma sona erer.
 
-1. Sanal makineyi ayırmayı kaldırmadan durdurmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Sanal makineyi ayırmadan durdurmak için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def stop_vm(compute_client):
         compute_client.virtual_machines.power_off(GROUP_NAME, VM_NAME)
     ```
 
-    Sanal makineyi serbest bırakmak istiyorsanız power_off çağrısı bu kodla değiştirin:
+    Sanal makineyi bulmak istiyorsanız, power_off aramayı bu kodla değiştirin:
 
     ```python
     compute_client.virtual_machines.deallocate(GROUP_NAME, VM_NAME)
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     stop_vm(compute_client)
@@ -454,25 +454,25 @@ Bir sanal makineyi durdurabilir ve tüm ayarlarını tutabilir, ancak ücretlend
 
 ### <a name="start-the-vm"></a>VM’yi başlatma
 
-1. Sanal makineyi başlatmak için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Sanal makineyi başlatmak için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def start_vm(compute_client):
         compute_client.virtual_machines.start(GROUP_NAME, VM_NAME)
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     start_vm(compute_client)
     input('Press enter to continue...')
     ```
 
-### <a name="resize-the-vm"></a>VM 'yi yeniden boyutlandırma
+### <a name="resize-the-vm"></a>VM'yi yeniden boyutlandırın
 
-Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken göz önünde bulundurulmalıdır. Daha fazla bilgi için bkz. [VM boyutları](sizes.md).
+Sanal makineniz için bir boyut alırken dağıtımın birçok yönü göz önünde bulundurulmalıdır. Daha fazla bilgi için [VM boyutlarına](sizes.md)bakın.
 
-1. Sanal makinenin boyutunu değiştirmek için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Sanal makinenin boyutunu değiştirmek için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
 
     ```python
     def update_vm(compute_client):
@@ -487,7 +487,7 @@ Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken g�
     return update_result.result()
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     update_result = update_vm(compute_client)
@@ -500,7 +500,7 @@ Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken g�
 
 Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) olabilir.
 
-1. Sanal makineye bir veri diski eklemek için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin: 
+1. Sanal makineye bir veri diski eklemek için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin: 
 
     ```python
     def add_datadisk(compute_client):
@@ -533,7 +533,7 @@ Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](managed-
         return add_result.result()
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
 
     ```python
     add_result = add_datadisk(compute_client)
@@ -544,34 +544,34 @@ Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](managed-
 
 ## <a name="delete-resources"></a>Kaynakları silme
 
-Azure 'da kullanılan kaynaklar için ücretlendirildiğiniz için, artık gerekli olmayan kaynakları silmek her zaman iyi bir uygulamadır. Sanal makineleri ve tüm destekleyici kaynakları silmek istiyorsanız, tüm yapmanız gerekirse kaynak grubunu silmez.
+Azure'da kullanılan kaynaklar için ücretlendirildiğiniz için, artık ihtiyaç duyulmamış kaynakları silmek her zaman iyi bir uygulamadır. Sanal makineleri ve tüm destekleyici kaynakları silmek istiyorsanız, tek yapmanız gereken kaynak grubunu silmektir.
 
-1. Kaynak grubunu ve tüm kaynakları silmek için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
+1. Kaynak grubunu ve tüm kaynakları silmek için ,.py dosyasındaki değişkenlerden sonra bu işlevi ekleyin:
    
     ```python
     def delete_resources(resource_group_client):
         resource_group_client.resource_groups.delete(GROUP_NAME)
     ```
 
-2. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
+2. Daha önce eklediğiniz işlevi aramak için bu kodu .py dosyasının sonundaki **if** deyiminin altına ekleyin:
    
     ```python
     delete_resources(resource_group_client)
     ```
 
-3. *MyPythonProject.py*Kaydet.
+3. *myPythonProject.py*kaydedin.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-1. Konsol uygulamasını çalıştırmak için, Visual Studio 'da **Başlat** ' a tıklayın.
+1. Konsol uygulamasını çalıştırmak için Visual Studio'da **Başlat'ı** tıklatın.
 
-2. Her bir kaynağın durumu döndürüldüğünde **ENTER** tuşuna basın. Durum bilgilerinde, **başarılı** bir sağlama durumu görmeniz gerekir. Sanal makine oluşturulduktan sonra, oluşturduğunuz tüm kaynakları silme fırsatına sahip olursunuz. Kaynakları silmeye başlamak için **ENTER** tuşuna basmadan önce Azure Portal oluşturulmasını doğrulamanız birkaç dakika sürebilir. Azure portal açıksa, yeni kaynakları görmek için dikey pencereyi yenilemeniz gerekebilir.  
+2. Her kaynağın durumu döndürülürkten sonra **Enter** tuşuna basın. Durum bilgilerinde, **Başarılı** bir sağlama durumu görmeniz gerekir. Sanal makine oluşturulduktan sonra, oluşturduğunuz tüm kaynakları silme fırsatına sahipsiniz. Kaynakları silmeye başlamak için **Enter** tuşuna basmadan önce, bunların Azure portalında oluşturulmasını doğrulamak birkaç dakikanızı alabilir. Azure portalı açıksa, yeni kaynakları görmek için bıçağı yenilemeniz gerekebilir.  
 
-    Bu konsol uygulamasının başlangıçtan sonuna kadar tam olarak çalıştırılması yaklaşık beş dakika sürer. Tüm kaynaklar ve kaynak grubu silinmeden önce uygulamanın tamamlanmasının birkaç dakika sürebilir.
+    Bu konsol uygulamasının baştan sona tamamen çalışması yaklaşık beş dakika sürer. Tüm kaynaklar ve kaynak grubu silinmeden önce uygulama nın tamamlanması birkaç dakika sürebilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Dağıtım ile ilgili sorunlar varsa, bir sonraki adım [Azure portalındaki kaynak grubu dağıtımı sorunlarını giderme](../../resource-manager-troubleshoot-deployments-portal.md)’ye bakmak için olacaktır
-- [Azure Python kitaplığı](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python) hakkında daha fazla bilgi edinin
+- Dağıtımla ilgili sorunlar varsa, bir sonraki [adım, Azure portalı ile Sorun Giderme kaynak grubu dağıtımlarına](../../resource-manager-troubleshoot-deployments-portal.md) bakmak olacaktır
+- Azure Python [Kitaplığı](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python) hakkında daha fazla bilgi edinin
 

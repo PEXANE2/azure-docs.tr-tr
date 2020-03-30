@@ -1,6 +1,6 @@
 ---
-title: IoT için Azure Güvenlik Merkezi 'ne güvenlik iletilerinizi gönderin | Microsoft Docs
-description: IoT için Azure Güvenlik Merkezi 'ni kullanarak güvenlik iletilerinizi gönderme hakkında bilgi edinin.
+title: Güvenlik iletilerinizi IoT için Azure Güvenlik Merkezi'ne gönderin| Microsoft Dokümanlar
+description: IoT için Azure Güvenlik Merkezi'ni kullanarak güvenlik iletilerinizi nasıl göndereceğinizi öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,50 +16,50 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963827"
 ---
-# <a name="send-security-messages-sdk"></a>Güvenlik iletileri SDK 'Sı gönder
+# <a name="send-security-messages-sdk"></a>Güvenlik mesajları Gönder SDK
 
-Bu nasıl yapılır kılavuzunda, IoT Aracısı için Azure Güvenlik Merkezi 'ni kullanmadan cihaz güvenlik iletilerinizi toplayıp göndermenizi ve bunun nasıl yapılacağını anlatan IoT hizmeti özelliklerine yönelik Azure Güvenlik Merkezi açıklanır.  
+Bu nasıl yapılacak kılavuzu, ioT aracısı için bir Azure Güvenlik Merkezi kullanmadan cihazınızın güvenlik iletilerini toplamayı ve göndermeyi seçtiğinizde Azure Güvenlik Merkezi IoT hizmet özelliklerini açıklar ve nasıl yapılacağını açıklar.  
 
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz: 
 > [!div class="checklist"]
-> * Azure IoT C SDK 'sını kullanarak güvenlik iletileri gönderme
-> * Azure IoT C# SDK kullanarak güvenlik iletileri gönderme
-> * Azure IoT Python SDK 'sını kullanarak güvenlik iletileri gönderme
-> * Azure IoT Node. js SDK 'sını kullanarak güvenlik iletileri gönderme
-> * Azure IoT Java SDK 'sını kullanarak güvenlik iletileri gönderme
+> * Azure IoT C SDK'yı kullanarak güvenlik iletileri gönderme
+> * Azure IoT C# SDK'yı kullanarak güvenlik iletileri gönderme
+> * Azure IoT Python SDK'yı kullanarak güvenlik iletileri gönderme
+> * Azure IoT Düğümü.js SDK'yı kullanarak güvenlik iletileri gönderme
+> * Azure IoT Java SDK'yı kullanarak güvenlik iletileri gönderme
 
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>IoT özellikleri için Azure Güvenlik Merkezi
 
-IoT için Azure Güvenlik Merkezi, gönderilen veriler [IoT şeması Için Azure Güvenlik Merkezi](https://aka.ms/iot-security-schemas) 'ne uygun olduğu ve ileti güvenlik iletisi olarak ayarlandığı sürece her türlü güvenlik iletisi verilerini işleyebilir ve analiz edebilir.
+Azure Güvenlik Merkezi IoT, gönderilen veriler [Azure Güvenlik Merkezi IoT şemasına](https://aka.ms/iot-security-schemas) uygun olduğu ve iletinin bir güvenlik iletisi olarak ayarlanması sürece her türlü güvenlik iletisi verilerini işleyebilir ve çözümleyebilir.
 
 ## <a name="security-message"></a>Güvenlik iletisi
 
-IoT için Azure Güvenlik Merkezi, aşağıdaki ölçütleri kullanarak bir güvenlik iletisi tanımlar:
+Azure Güvenlik Merkezi IoT için aşağıdaki ölçütleri kullanarak bir güvenlik iletisi tanımlar:
 - İleti Azure IoT SDK ile gönderildiyse
-- İleti [güvenlik iletisi şemasına](https://aka.ms/iot-security-schemas) uygunsa
-- İleti gönderilmeden önce bir güvenlik iletisi olarak ayarlandıysa
+- İleti [güvenlik iletisi şemasına uyuyorsa](https://aka.ms/iot-security-schemas)
+- İleti göndermeden önce bir güvenlik iletisi olarak ayarlanmışsa
 
-Her güvenlik iletisi, gönderenin meta verilerini `AgentId`, `AgentVersion`, `MessageSchemaVersion` ve güvenlik olaylarının bir listesini içerir.
-Şema, olay türleri dahil olmak üzere güvenlik iletisinin geçerli ve gerekli özelliklerini tanımlar.
-
->[!Note]
-> Şemayla uyumlu olmayan gönderilen iletiler yok sayılır. Yoksayılan iletiler Şu anda depolanmadığından, verileri göndermeyi başlatmadan önce şemayı doğrulamaya dikkat edin. 
+Her güvenlik iletisi, gönderenin , `AgentId` `AgentVersion`, `MessageSchemaVersion` ve güvenlik olaylarının listesini içeren meta verileri içerir.
+Şema, etkinlik türlerini de içeren güvenlik iletisinin geçerli ve gerekli özelliklerini tanımlar.
 
 >[!Note]
-> Azure IoT SDK kullanılarak bir güvenlik iletisi olarak ayarlanmamış iletiler, IoT işlem hattı için Azure Güvenlik Merkezi 'ne yönlendirilmeyecektir.
+> Şemaya uymayan gönderilen iletiler yoksayılır. Göz ardı edilen iletiler şu anda depolanmadığından veri göndermeişlemini başlatmadan önce şemayı doğruladığından emin olun. 
+
+>[!Note]
+> Azure IoT SDK kullanılarak güvenlik iletisi olarak ayarlanamayan iletiler, IoT için Azure Güvenlik Merkezi'ne yönlendirilmez.
 
 ## <a name="valid-message-example"></a>Geçerli ileti örneği
 
-Aşağıdaki örnekte geçerli bir güvenlik iletisi nesnesi gösterilmektedir. Örnek, ileti meta verilerini ve bir `ProcessCreate` güvenlik olayını içerir.
+Aşağıdaki örnekte geçerli bir güvenlik iletisi nesnesi gösterilmektedir. Örnek, ileti meta verilerini `ProcessCreate` ve bir güvenlik olayını içerir.
 
-Bir güvenlik iletisi olarak ayarladıktan ve gönderildikten sonra, bu ileti IoT için Azure Güvenlik Merkezi tarafından işlenir.
+Güvenlik iletisi olarak ayarlanıp gönderildikten sonra, bu ileti IoT için Azure Güvenlik Merkezi tarafından işlenir.
 
 ```json
 "AgentVersion": "0.0.1",
@@ -89,19 +89,19 @@ Bir güvenlik iletisi olarak ayarladıktan ve gönderildikten sonra, bu ileti Io
 ]
 ```
 
-## <a name="send-security-messages"></a>Güvenlik iletilerini gönder 
+## <a name="send-security-messages"></a>Güvenlik iletileri gönderme 
 
-[Azure IoT C cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [ C# Azure IoT cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node)'Sı, [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)veya [Azure IoT Java SDK 'sını](https://github.com/Azure/azure-iot-sdk-java)kullanarak IoT Aracısı için Azure Güvenlik Merkezi *'ni kullanmadan güvenlik iletileri gönderin* .
+Azure [IoT C aygıtı SDK,](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) [Azure IoT C# cihazı SDK,](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)Azure [IoT Düğümü.js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)veya [Azure IoT Java SDK'yı](https://github.com/Azure/azure-iot-sdk-java)kullanarak, IoT aracısı için Azure Güvenlik Merkezi'ni *kullanmadan* güvenlik iletileri gönderin.
 
-IoT için Azure Güvenlik Merkezi 'Nde cihazlarınızdan cihaz verilerini işlenmek üzere göndermek için aşağıdaki API 'lerden birini kullanarak IoT işleme işlem hattı için Azure Güvenlik Merkezi 'ne doğru yönlendirme iletileri işaretleyin. 
+IoT için Azure Güvenlik Merkezi tarafından işlenmek üzere aygıtlarınızdan gelen aygıt verilerini göndermek için, ioT işleme ardışık için Azure Güvenlik Merkezi'ne doğru yönlendirme için iletileri işaretlemek için aşağıdaki API'lerden birini kullanın. 
 
-Doğru üst bilgiyle işaretlenmiş olsa bile gönderilen tüm veriler, [IoT ileti şeması Için Azure Güvenlik Merkezi](https://aka.ms/iot-security-schemas)ile de uyumlu olmalıdır. 
+Doğru üstbilgiyle işaretlenmiş olsa bile gönderilen tüm veriler, [IoT ileti](https://aka.ms/iot-security-schemas)şeması için Azure Güvenlik Merkezi'ne de uygun olmalıdır. 
 
-### <a name="send-security-message-api"></a>Güvenlik iletisi API 'SI gönder 
+### <a name="send-security-message-api"></a>Güvenlik iletisi API gönder 
 
-**Güvenlik Iletileri gönderme** API 'si Şu anda C ve C#, Python, Node. js ve Java 'da kullanılabilir.  
+**Güvenlik iletileri GÖNDER** API'si şu anda C ve C#, Python, Node.js ve Java'da kullanılabilir.  
 
-#### <a name="c-api"></a>C APı 'SI
+#### <a name="c-api"></a>C API
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
@@ -157,7 +157,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
     await client.SendEventAsync(securityMessage);
 }
 ```
-#### <a name="nodejs-api"></a>Node. js API 'SI
+#### <a name="nodejs-api"></a>Düğüm.js API
 
 ```typescript
 var Protocol = require('azure-iot-device-mqtt').Mqtt
@@ -192,9 +192,9 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Python API
 
-Python API 'sini kullanmak için, [Azure-IoT-Device](https://pypi.org/project/azure-iot-device/)paketini yüklemeniz gerekir.
+Python API'sini kullanmak için [azure-iot-device](https://pypi.org/project/azure-iot-device/)paketini yüklemeniz gerekir.
 
-Python API 'sini kullanırken, güvenlik iletisini modül aracılığıyla veya benzersiz cihaz ya da modül bağlantı dizesini kullanarak cihaz aracılığıyla gönderebilirsiniz. Aşağıdaki Python betik örneğini kullanırken, bir cihazla, **Iothubdeviceclient**' i kullanın ve bir modülle **Iothubmoduleclient**' ı kullanın. 
+Python API'sını kullanırken, benzersiz aygıtı veya modül bağlantı dizesini kullanarak güvenlik iletisini modül veya aygıt aracılığıyla gönderebilirsiniz. Aşağıdaki Python komut dosyası örneğini bir aygıtla kullanırken, **IoTHubDeviceClient'ı**ve bir modülle **IoTHubModuleClient'ı**kullanın. 
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -226,10 +226,10 @@ public void SendSecurityMessage(string message)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- IoT hizmetine [genel bakış](overview.md) Için Azure Güvenlik Merkezi 'ni okuyun
-- IoT [mimarisi](architecture.md) Için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
+- IoT hizmetine [Genel Bakış](overview.md) için Azure Güvenlik Merkezi'ni okuyun
+- IoT [Mimarisi](architecture.md) için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
 - [Hizmeti](quickstart-onboard-iot-hub.md) etkinleştirme
-- [SSS](resources-frequently-asked-questions.md) 'yi okuyun
-- [Ham güvenlik verilerine](how-to-security-data-access.md) erişme hakkında bilgi edinin
+- [SSS'yi](resources-frequently-asked-questions.md) okuyun
+- Ham güvenlik [verilerine](how-to-security-data-access.md) nasıl erişin gerektiğini öğrenin
 - [Önerileri](concept-recommendations.md) anlama
 - [Uyarıları](concept-security-alerts.md) anlama

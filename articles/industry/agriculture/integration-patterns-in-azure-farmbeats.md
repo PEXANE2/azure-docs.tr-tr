@@ -1,35 +1,35 @@
 ---
-title: Azure Farmtts mimarisi
-description: Azure Farmtts mimarisini açıklar
+title: Azure FarmBeats Mimarisi
+description: Azure FarmBeats mimarisini açıklar
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: d64c2175072d9979cfda2ea5f75beb34d3ad0d6b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75482380"
 ---
 # <a name="integration-patterns"></a>Tümleştirme desenleri
 
-Azure Farm, Azure Marketi 'nde bulunan işletmeden işletmeye yönelik bir tekliftir. Farmtler, veri kümelerini kullanarak fımlama tarafından yapay zeka (AI) veya Machine Learning (ML) modelleri oluşturarak sağlayıcıları genelinde belirsiz veri kümelerinin toplanmasının yanı sıra eyleme dönüştürülebilir içgörüler oluşturulmasına olanak tanıyor.
+Azure FarmBeats, Azure Marketi'nde kullanılabilen bir işletmeden işletmeye bir tekliftir. FarmBeats, veri kümelerini eriterek Yapay Zeka (AI) veya Machine Learning (ML) modellerini oluşturarak, sağlayıcılar arasında tarım veri kümelerinin toplanmasını ve işlem uygulanabilir öngörüler oluşturulmasını sağlar.
 
-![Proje grubu ları](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
+![Proje Çiftlik Beats](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
-Aşağıdaki bölümlerde Azure Farmtts için tümleştirme deseninin açıklaması verilmiştir.
+Aşağıdaki bölümlerde Azure FarmBeats için tümleştirme deseni açıklanmaktadır.
 
-## <a name="why-integrate-with-azure-farmbeats"></a>Neden Azure Farmile tümleştirmektedir?
+## <a name="why-integrate-with-azure-farmbeats"></a>Neden Azure FarmBeats ile entegre?
 
-Bu bölüm, veri sistemlerini (algılayıcılar, Drones, hava durumu istasyonları gibi) Azure Farmtörlerine bütünleştirmek isteyen iş ortaklarına odaklanır.
+Bu bölüm, veri sistemlerini (sensörler, drone'lar, hava istasyonları gibi) Azure FarmBeats'e entegre etmek isteyen iş ortaklarına odaklanmaktadır.
 
-Azure Farm, agtürel işletmelerin farklı geçmiş ve gerçek zamanlı agricultürel veri kümelerini tek bir platforma eklemesini sağlayan genişletilebilir bir tekliftir. Azure Farmders, bir grup bağlamında verileri normalleştirerek, kümeleştirerek ve toplamaya yardımcı olur.
+Azure FarmBeats, tarım işletmelerinin farklı tarihsel ve gerçek zamanlı tarımsal veri kümelerini tek bir platforma eklemelerine olanak tanıyan genişletilebilir bir tekliftir. Azure FarmBeats, bir tarım işletmesinin verilerini bir çiftlik bağlamında normalleştirmesine, bağlamsallaştırmasına ve toplamasına yardımcı olur.
 
-Azure Farmtleriyle bir veri ortağı haline gelyerek, sistemlerinizi daha fazla benimseme ve veri tekliflerinizle daha fazla müşteriye ulaşma konusunda daha fazla bilgi edinmek için açabilirsiniz. Azure Farmınts, cihazlarınızdaki verileri sistematik bir şekilde ve standartlaştırılmış bir şemaya almanıza yardımcı olan veri hub 'ı adlı genişletilebilir bir API katmanı sağlar.
+Azure FarmBeats ile veri ortağı olarak, sistemlerinizi daha geniş bir benimsemeye açabilir ve veri teklifleriile daha fazla müşteriye ulaşabilirsiniz. Azure FarmBeats, aygıtlarınızdan sistematik olarak ve standart bir şemaya veri almanıza yardımcı olan Datahub adı verilen genişletilebilir bir API katmanı sağlar.
 
-Verileriniz, müşterilerinizin Azure Farmtts örneğinde kullanılabilir olduğunda, müşterileriniz verilerinizin üzerine daha zengin analiz ve araçlar oluşturabilir.
+Veriler müşterilerinizin Azure FarmBeats örneğinde kullanılabilir olduğunda, müşterileriniz verilerinizin üzerine daha zengin analizler ve araçlar oluşturabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Algılayıcı veri tümleştirmesi hakkında daha fazla bilgi için bkz. [algılayıcı veri tümleştirmesi](sensor-partner-integration-in-azure-farmbeats.md) ve Imagery iş ortağı tümleştirmesi için bkz. [Imagery iş ortağı tümleştirmesi](imagery-partner-integration-in-azure-farmbeats.md).
+Sensör veri tümleştirmesi hakkında daha fazla bilgi için sensör [veri tümleştirmesi](sensor-partner-integration-in-azure-farmbeats.md) ve görüntü ortağı tümleştirmesi için [görüntü ortağı tümleştirmesi](imagery-partner-integration-in-azure-farmbeats.md)için bkz.

@@ -1,7 +1,7 @@
 ---
-title: Örnek API yönetimi ilkesi-bağıntı kimliği içeren bir üst bilgi ekleyin
+title: Örnek API yönetim ilkesi - Korelasyon kimliği içeren bir üstbilgi ekleme
 titleSuffix: Azure API Management
-description: Azure API Management ilkesi örneği-gelen istek için bağıntı kimliği içeren bir üstbilginin nasıl ekleneceğini gösterir.
+description: Azure API yönetim ilkesi örneği - Gelen istekle korelasyon kimliği içeren bir üstbilginin nasıl ekleyeceğini gösterir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 79910aa60602a80cbe79c4ce9899f6ff73fbfde9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422246"
 ---
-# <a name="add-a-header-containing-a-correlation-id"></a>Bağıntı kimliği içeren bir üst bilgi ekleyin
+# <a name="add-a-header-containing-a-correlation-id"></a>Bağıntı kimliği içeren bir üst bilgi ekleme
 
-Bu makalede, gelen istek için bağıntı kimliği içeren bir üst bilginin nasıl ekleneceğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, gelen istek için bir korelasyon kimliği içeren bir üstbilgi nasıl ekleyeceğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. İlke kodunu ayarlamak veya ayarlamak için, Ayarla'da açıklanan adımları izleyin [veya bir ilkeyi ayarlayın.](../set-edit-policies.md) Diğer örnekleri görmek için [ilke örneklerine](../policy-samples.md)bakın.
 
 ## <a name="policy"></a>İlke
 
-Kodu **gelen** bloğa yapıştırın.
+Kodu **gelen** bloğa yapıştır.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Add correlation id to inbound request.policy.xml)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-APıM ilkeleri hakkında daha fazla bilgi edinin:
+APIM politikaları hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
 + [İlke örnekleri](../policy-samples.md)

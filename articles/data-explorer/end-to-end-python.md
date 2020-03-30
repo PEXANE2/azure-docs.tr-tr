@@ -1,6 +1,6 @@
 ---
-title: Python aracılığıyla Azure Veri Gezgini ile uçtan uca blob alma
-description: Bu makalede, Python kullanan bir uçtan uca örnekle Azure Veri Gezgini blob 'ları nasıl alabileceğinizi öğreneceksiniz.
+title: Python aracılığıyla Azure Veri Gezgini'ne uçtan uca blob alma
+description: Bu makalede, Python kullanan uçtan uca bir örnekle Azure Veri Gezgini'ne blobs nasıl sindirilir öğrenirsiniz.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,22 +8,22 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 61864c51c2ab99e5266e39f2c9a7344aaf7413c1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964318"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Python aracılığıyla Azure Veri Gezgini ile uçtan uca blob alma
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Python aracılığıyla Azure Veri Gezgini'ne uçtan uca blob alma
 
 > [!div class="op_single_selector"]
-> * [C#](end-to-end-csharp.md)
+> * [C #](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve ölçeklenebilir bir veri araştırma hizmetidir. Bu makalede, Azure Blob depolama 'dan Azure Veri Gezgini veri alma hakkında uçtan uca bir örnek sunulmaktadır. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve ölçeklenebilir bir veri arama hizmetidir. Bu makalede, Azure Blob depolamadan Azure Veri Gezgini'ne nasıl veri sindirilene ilgili uçtan uca bir örnek verilmiştir. 
 
-Programlı olarak bir kaynak grubu, depolama hesabı ve kapsayıcı, Olay Hub 'ı ve Azure Veri Gezgini kümesi ve veritabanı oluşturma hakkında bilgi edineceksiniz. Ayrıca, yeni depolama hesabından verileri almak için Azure Veri Gezgini aracılığıyla nasıl yapılandırılacağınızı öğreneceksiniz.
+Bir kaynak grubu, depolama hesabı ve kapsayıcısı, olay hub'ı ve Azure Veri Gezgini kümesi ve veritabanını programlı bir şekilde nasıl oluşturacağınız öğrenilir. Ayrıca, azure veri gezginini yeni depolama hesabından veri almak için programlı bir şekilde nasıl yapılandıracağınızı da öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 ## <a name="install-the-python-package"></a>Python paketi yükleme
 
-Azure Veri Gezgini Python paketini yüklemek için (kusto), yolunda Python içeren bir komut istemi açın. Şu komutları çalıştırın:
+Azure Veri Gezgini (Kusto) için Python paketini yüklemek için, Python'un yoluna çıkan bir komut istemini açın. Şu komutları çalıştırın:
 
 ```
 pip install azure-common
@@ -47,9 +47,9 @@ pip install azure-storage-blob
 
 ## <a name="code-example"></a>Kod örneği 
 
-Aşağıdaki kod örneği, Azure Veri Gezgini veri alımı ile sonuçlanan adım adım bir işlem sağlar. 
+Aşağıdaki kod örneği, Azure Veri Gezgini'ne veri alınmasıyla sonuçlanan adım adım bir işlem sağlar. 
 
-İlk olarak bir kaynak grubu oluşturun. Ayrıca, depolama hesabı ve kapsayıcı, Olay Hub 'ı ve Azure Veri Gezgini kümesi ve veritabanı gibi Azure kaynakları da oluşturursunuz ve sorumluları eklersiniz. Daha sonra, Azure Veri Gezgini veritabanında tablo ve sütun eşleme ile birlikte Azure Event Grid bir abonelik oluşturursunuz. Son olarak, yeni depolama hesabından verileri almak üzere Azure Veri Gezgini 'yi yapılandırmak için veri bağlantısı oluşturursunuz.
+Önce bir kaynak grubu oluşturursunuz. Ayrıca depolama hesabı ve kapsayıcı, olay merkezi ve Azure Veri Gezgini kümesi ve veritabanı gibi Azure kaynakları oluşturur ve ilkeler eklersiniz. Daha sonra Azure Veri Gezgini veritabanında bir tablo ve sütun eşlemeyle birlikte bir Azure Olay Ağı aboneliği oluşturursunuz. Son olarak, Azure Veri Gezgini'ni yeni depolama hesabından veri almak üzere yapılandırmak için veri bağlantısı oluşturursunuz.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials
@@ -192,12 +192,12 @@ poller.wait()
 ```
 |**Ayar** | **Alan açıklaması**|
 |---|---|---|
-| tenant_id | Kiracı KIMLIĞINIZ. Dizin KIMLIĞI olarak da bilinir.|
-| subscription_id | Kaynak oluşturma için kullandığınız abonelik KIMLIĞI.|
-| client_id | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci KIMLIĞI.|
-| client_secret | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci gizli anahtarı. |
+| tenant_id | Kiracı kimliğiniz. Dizin kimliği olarak da bilinir.|
+| subscription_id | Kaynak oluşturma için kullandığınız abonelik kimliği.|
+| client_id | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci kimliği.|
+| client_secret | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci sırrı. |
 
-## <a name="test-the-code-example"></a>Kod örneğini test etme
+## <a name="test-the-code-example"></a>Kod örneğini test edin
 
 1. Depolama hesabına bir dosya yükleyin.
 
@@ -213,7 +213,7 @@ poller.wait()
     |---|---|---|
     | account_key | Programlı olarak oluşturulan depolama hesabının erişim anahtarı.|
 
-2. Azure Veri Gezgini 'de bir test sorgusu çalıştırın.
+2. Azure Veri Gezgini'nde bir test sorgusu çalıştırın.
 
     ```python
     kusto_uri = "https://{}.{}.kusto.windows.net".format(kusto_cluster_name, location_small_case)
@@ -236,7 +236,7 @@ poller.wait()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-*  Bir küme ve veritabanı oluşturmanın diğer yolları hakkında bilgi edinmek için bkz. [Azure Veri Gezgini kümesi ve veritabanı oluşturma](create-cluster-database-python.md).
-* Alma yöntemleri hakkında daha fazla bilgi edinmek için bkz. [Azure Veri Gezgini veri](ingest-data-overview.md)alımı.
-* Web uygulaması hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Veri Gezgini Web Kullanıcı arabirimindeki verileri sorgulama](web-query-data.md).
-* [Sorguları](write-queries.md) kusto sorgu diliyle yazın.
+*  Küme ve veritabanı oluşturmanın diğer yolları hakkında bilgi edinmek için [bkz.](create-cluster-database-python.md)
+* Yutma yöntemleri hakkında daha fazla bilgi edinmek için [Azure Veri Gezgini veri alımına](ingest-data-overview.md)bakın.
+* Web uygulaması hakkında bilgi edinmek [için, Azure Veri Gezgini web Kullanıcı Arabirimi'nde Hızlı Başlangıç: Verileri sorgula.](web-query-data.md)
+* Kusto Query Language ile [sorgu yazın.](write-queries.md)

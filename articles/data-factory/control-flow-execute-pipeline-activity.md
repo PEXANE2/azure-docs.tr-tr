@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory içinde işlem hattı etkinliğini yürütme
-description: Başka bir Data Factory işlem hattından bir Data Factory işlem hattını çağırmak için ardışık düzen yürütme etkinliğini nasıl kullanabileceğinizi öğrenin.
+title: Azure Veri Fabrikası'nda Boru Hattı Etkinliğini Yürütme
+description: Başka bir Veri Fabrikası ardışık hattından bir Veri Fabrikası ardışık hattını çağırmak için YürütEngel Hattı Etkinliğini nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440433"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory içinde işlem hattı etkinliğini yürütme
-İşlem hattını Çalıştır etkinliği, bir Data Factory işlem hattının başka bir işlem hattını çağırmasına izin verir.
+# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Boru Hattı etkinliğini yürütme
+İşlem Hattı Yürütme etkinliği bir Data Factory işlem hattının başka bir işlem hattını çağırmasını sağlar.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -59,21 +59,21 @@ ms.locfileid: "75440433"
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | İzin verilen değerler | Gereklidir
+Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | İşlem hattının yürütülmesi etkinliğinin adı. | Dize | Evet
-type | : **Executepipeline**olarak ayarlanmalıdır. | Dize | Evet
-konfigüre | Bu işlem hattının çağırdığı bağımlı işlem hattına işlem hattı başvurusu. İşlem hattı başvuru nesnesi iki özelliğe sahiptir: **ReferenceName** ve **Type**. ReferenceName özelliği, başvuru işlem hattının adını belirtir. Type özelliği PipelineReference olarak ayarlanmalıdır. | PipelineReference | Evet
-parametreler | Çağrılan işlem hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | Hayır
-waitOnCompletion | Etkinlik yürütmenin bağımlı işlem hattı yürütmenin bitmesini bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | Hayır
+ad | Yürütme boru hattı etkinliğinin adı. | Dize | Evet
+type | Ayarlanmalıdır: **ExecutePipeline**. | Dize | Evet
+Boru hattı | Bu ardışık ardışık ardışık ardışık çağrıldığı bağımlı boru hattı için boru hattı başvurusu. Bir ardışık kaynak başvuru nesnesinin iki özelliği vardır: **referenceName** ve **türü**. ReferenceName özelliği, başvuru ardışık adının belirtin. Tür özelliği PipelineReference olarak ayarlanmalıdır. | Boru HattıReferans | Evet
+parametreler | Çağrılan boru hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | Hayır
+waitOnCompletion | Etkinlik yürütmesinin bağımlı ardışık hatlar yürütmesinin tamamlanmasını bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | Hayır
 
 ## <a name="sample"></a>Örnek
-Bu senaryonun iki işlem hattı vardır:
+Bu senaryonun iki ardışık etkisi vardır:
 
-- **Ana** işlem hattı-bu işlem hattı çağrılan işlem hattını çağıran bir yürütme işlem hattı etkinliğine sahiptir. Ana işlem hattı iki parametre alır: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
-- **Çağrılan işlem hattı** -bu işlem hattı, verileri bir Azure Blob kaynağından Azure Blob havuzuna kopyalayan bir kopyalama etkinliğine sahiptir. Çağrılan işlem hattı iki parametre alır: `sourceBlobContainer`, `sinkBlobContainer`.
+- **Ana ardışık hat lar** - Bu ardışık işlem, çağrılan ardışık çağrıyapan bir Execute Pipeline etkinliği vardır. Ana boru hattı iki `masterSourceBlobContainer` `masterSinkBlobContainer`parametre alır: , .
+- **Çağrılan ardışık işlem adı** - Bu ardışık işlem, bir Azure Blob kaynağından Azure Blob lavabosu verilerini kopyalayan bir Kopyalama etkinliği vardır. Çağrılan ardışık işlem iki `sourceBlobContainer` `sinkBlobContainer`parametre alır: , .
 
-### <a name="master-pipeline-definition"></a>Ana işlem hattı tanımı
+### <a name="master-pipeline-definition"></a>Ana boru hattı tanımı
 
 ```json
 {
@@ -115,7 +115,7 @@ Bu senaryonun iki işlem hattı vardır:
 
 ```
 
-### <a name="invoked-pipeline-definition"></a>Çağrılan işlem hattı tanımı
+### <a name="invoked-pipeline-definition"></a>Çağrılan boru hattı tanımı
 
 ```json
 {
@@ -215,9 +215,9 @@ Bu senaryonun iki işlem hattı vardır:
 }
 ```
 
-### <a name="running-the-pipeline"></a>İşlem hattını çalıştırma
+### <a name="running-the-pipeline"></a>Boru hattını çalıştırma
 
-Ana işlem hattını Bu örnekte çalıştırmak için, masterSourceBlobContainer ve masterSinkBlobContainer parametreleri için aşağıdaki değerler geçirilir: 
+Bu örnekte ana ardışık hattı çalıştırmak için, masterSourceBlobContainer ve masterSinkBlobContainer parametreleri için aşağıdaki değerler geçirilir: 
 
 ```json
 {
@@ -226,7 +226,7 @@ Ana işlem hattını Bu örnekte çalıştırmak için, masterSourceBlobContaine
 }
 ```
 
-Ana işlem hattı, aşağıdaki örnekte gösterildiği gibi, bu değerleri çağrılan işlem hattına iletir: 
+Ana ardışık kaynak, bu değerleri aşağıdaki örnekte gösterildiği gibi çağrılan ardışık taşabına iletilir: 
 
 ```json
 {
@@ -252,9 +252,9 @@ Ana işlem hattı, aşağıdaki örnekte gösterildiği gibi, bu değerleri ça�
 
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
+Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
 
-- [Her etkinlik için](control-flow-for-each-activity.md)
+- [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
 - [Arama Etkinliği](control-flow-lookup-activity.md)
-- [Web etkinliği](control-flow-web-activity.md)
+- [Web Etkinliği](control-flow-web-activity.md)

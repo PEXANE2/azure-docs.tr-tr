@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.custom: sfrev
 ms.openlocfilehash: f08c6b0675475b4e15ce6db3a9dbe0e2863b9ddb
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252760"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
@@ -21,9 +21,9 @@ ms.locfileid: "78252760"
 >
 >
 
-Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek ve çalıştırmak için, Service Fabric çalışma ZAMANıNı, SDK 'yı ve Araçları ' nı yüklemelisiniz. Ayrıca, SDK'da bulunan [Windows PowerShell betiklerinin çalıştırılmasını da etkinleştirmeniz](#enable-powershell-script-execution) gerekir.
+Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek ve çalıştırmak için Service Fabric çalışma zamanını, SDK'yı ve araçları yükleyin. Ayrıca, SDK'da yer alan [Windows PowerShell komut dosyalarının yürütülmesini etkinleştirmeniz](#enable-powershell-script-execution) gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="supported-operating-system-versions"></a>Desteklenen işletim sistemi sürümleri
 
@@ -37,19 +37,19 @@ Geliştirme için şu işletim sistemi sürümleri desteklenir:
 
 > [!NOTE]
 > Windows 7 desteği:
-> - Windows 7 varsayılan olarak yalnızca Windows PowerShell 2.0 içerir. Service Fabric PowerShell cmdlet’leri PowerShell 3.0 veya üzerini gerektirir. [Windows PowerShell 5,1][powershell5-download] ' i Microsoft İndirme Merkezi ' nden indirebilirsiniz.
+> - Windows 7 varsayılan olarak yalnızca Windows PowerShell 2.0 içerir. Service Fabric PowerShell cmdlet’leri PowerShell 3.0 veya üzerini gerektirir. Windows [PowerShell 5.1'i][powershell5-download] Microsoft Download Center'dan indirebilirsiniz.
 > - Windows 7'de Service Fabric Ters Proxy kullanılamaz.
 
 ## <a name="install-the-sdk-and-tools"></a>SDK'yı ve araçları yükleme
 
-Web Platformu Yükleyicisi (WebPI), SDK ve araçları yüklemek için önerilen yoldur. WebPI kullanarak çalışma zamanı hataları alırsanız, belirli bir Service Fabric sürümü için sürüm notlarında yükleyicilerin doğrudan bağlantılarını da bulabilirsiniz. Sürüm notları, [Service Fabric ekip blogundan](https://blogs.msdn.microsoft.com/azureservicefabric/)çeşitli sürüm bildirilerinde bulunabilir.
+Web Platform Installer (WebPI) SDK ve araçları yüklemek için önerilen yoldur. WebPI kullanarak çalışma zamanı hataları alırsanız, belirli bir Hizmet Kumaşı sürümü için sürüm notlarında yükleyicilere doğrudan bağlantılar da bulabilirsiniz. Sürüm notları [Service Fabric takım blogunda](https://blogs.msdn.microsoft.com/azureservicefabric/)çeşitli sürüm duyurular bulunabilir.
 
 > [!NOTE]
-> Yerel Service Fabric geliştirme kümesi yükseltmeleri desteklenmez.
+> Yerel Hizmet Kumaş geliştirme küme yükseltmeleri desteklenmez.
 
-### <a name="to-use-visual-studio-2017-or-2019"></a>Visual Studio 2017 veya 2019 kullanmak için
+### <a name="to-use-visual-studio-2017-or-2019"></a>Visual Studio 2017 veya 2019'u kullanmak için
 
-Service Fabric Araçları, Visual Studio 2017 ve 2019 ' deki Azure geliştirme iş yükünün parçasıdır. Bu iş yükünü Visual Studio yüklemenizin bir parçası olarak etkinleştirin.
+Service Fabric Tools, Visual Studio 2017 ve 2019'daki Azure Geliştirme iş yükünün bir parçasıdır. Bu iş yükünü Visual Studio yüklemenizin bir parçası olarak etkinleştirin.
 Ayrıca Web Platformu Yükleyicisini kullanarak Microsoft Azure Service Fabric SDK'sını da yüklemeniz gerekir.
 
 * [Microsoft Azure Service Fabric SDK'sını yükleyin][core-sdk]
@@ -58,7 +58,7 @@ Ayrıca Web Platformu Yükleyicisini kullanarak Microsoft Azure Service Fabric S
 
 Visual Studio 2015 için Service Fabric araçları Web Platformu Yükleyicisi kullanılarak SDK ile birlikte yüklenir:
 
-* [Microsoft Azure Service Fabric SDK ve araçlarını yükler][full-bundle-vs2015]
+* [Microsoft Azure Hizmet Kumaşı SDK ve Araçlarını Yükleme][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Yalnızca SDK'yı yükleme
 
@@ -68,13 +68,13 @@ Yalnızca SDK'yı yüklemeniz gerekiyorsa bu paketi yükleyebilirsiniz:
 
 Geçerli sürümler şunlardır:
 
-* Service Fabric SDK ve araçlar 4.0.470
-* Service Fabric Runtime 7.0.470
+* Servis Kumaş ı SDK ve Aletler 4.0.470
+* Servis Kumaş çalışma süresi 7.0.470
 
-Desteklenen sürümlerin listesi için bkz. [Service Fabric sürümleri](service-fabric-versions.md)
+Desteklenen sürümlerin listesi için [Service Fabric sürümlerine](service-fabric-versions.md) bakın
 
 > [!NOTE]
-> Tek makine kümeleri (OneBox) uygulama veya küme yükseltmeleri için desteklenmez; bir küme yükseltmesi gerçekleştirmeniz veya bir uygulama yükseltmesi gerçekleştirmede herhangi bir sorun olması gerekiyorsa, OneBox kümesini silin ve yeniden oluşturun. 
+> Uygulama veya Küme yükseltmeleri için tek makine kümeleri (OneBox) desteklenmez; Bir Küme yükseltmesi gerçekleştirmeniz gerekiyorsa veya Uygulama yükseltmesi yaparken herhangi bir sorun varsa OneBox kümesini silin ve yeniden oluşturun. 
 
 ## <a name="enable-powershell-script-execution"></a>PowerShell betik yürütmesini etkinleştirme
 
@@ -84,15 +84,15 @@ Service Fabric, yerel geliştirme merkezi oluşturmak ve Visual Studio'dan uygul
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## <a name="install-docker-optional"></a>Docker 'ı (isteğe bağlı) yükler
+## <a name="install-docker-optional"></a>Docker'ı yükleyin (isteğe bağlı)
 
-Service Fabric, mikro hizmetleri bir makine kümesi genelinde dağıtmaya yönelik [bir kapsayıcı Orchestrator](service-fabric-containers-overview.md) . Windows kapsayıcı uygulamalarını yerel geliştirme kümenizde çalıştırmak için, önce Docker for Windows yüklemeniz gerekir. [Docker CE for Windows (kararlı)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)alın. Docker’ı yükleyip başlattıktan sonra tepsi simgesine sağ tıklayıp **Windows kapsayıcılarına geç** öğesini seçin. Bu adım, Windows temelinde Docker görüntülerini çalıştırmak için gereklidir.
+[Service Fabric,](service-fabric-containers-overview.md) mikro hizmetleri bir makine kümesine dağıtmak için kullanılan bir konteyner orkestratördür. Windows kapsayıcı uygulamalarını yerel geliştirme kümenizde çalıştırmak için önce Windows için Docker'ı yüklemeniz gerekir. [Windows için Docker CE alın (kararlı)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Docker’ı yükleyip başlattıktan sonra tepsi simgesine sağ tıklayıp **Windows kapsayıcılarına geç** öğesini seçin. Bu adım, Windows temelinde Docker görüntülerini çalıştırmak için gereklidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık geliştirme ortamınızı ayarlamayı tamamladığınıza göre, uygulama derlemeye ve çalıştırmaya başlayın.
 
-* [Uygulama oluşturmayı, dağıtmayı ve yönetmeyi öğrenin](service-fabric-tutorial-create-dotnet-app.md)
+* [Uygulamaları nasıl oluşturup dağıtacak ve yöneteceklerini öğrenin](service-fabric-tutorial-create-dotnet-app.md)
 * [Programlama modelleri hakkında bilgi edinin: Reliable Services ve Reliable Actors](service-fabric-choose-framework.md)
 * [GitHub'da Service Fabric kod örneklerine bakın](https://aka.ms/servicefabricsamples)
 * [Service Fabric Explorer kullanarak kümenizi görselleştirme](service-fabric-visualizing-your-cluster.md)
@@ -100,7 +100,7 @@ Artık geliştirme ortamınızı ayarlamayı tamamladığınıza göre, uygulama
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric kampanya sayfası"
 [2]: https://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI bağlantısı"
-[full-bundle-dev15]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI bağlantısı"
-[core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI bağlantısı"
+[full-bundle-vs2015]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI bağlantısı"
+[full-bundle-dev15]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI bağlantısı"
+[core-sdk]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI bağlantısı"
 [powershell5-download]:https://www.microsoft.com/download/details.aspx?id=54616

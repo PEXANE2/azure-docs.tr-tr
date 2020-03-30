@@ -1,6 +1,6 @@
 ---
-title: Azure 'da özel uç noktalar için ağ ilkelerini devre dışı bırakma
-description: Özel uç noktalar için ağ ilkelerini devre dışı bırakmayı öğrenin.
+title: Azure'da özel uç noktalar için ağ ilkelerini devre dışı
+description: Özel uç noktalar için ağ ilkelerini nasıl devre dışı kağıda tizleöğreneceğini öğrenin.
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: b5ab62e7ab57d32a11a45713519633034deb6a5b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453010"
 ---
-# <a name="disable-network-policies-for-private-endpoints"></a>Özel uç noktalar için ağ ilkelerini devre dışı bırak
+# <a name="disable-network-policies-for-private-endpoints"></a>Özel uç noktalar için ağ ilkelerini devre dışı
 
-Ağ güvenlik grupları (NSG) gibi ağ ilkeleri özel uç noktalar için desteklenmez. Belirli bir alt ağda özel bir uç nokta dağıtmak için bu alt ağda açık devre dışı bırakma ayarı gereklidir. Bu ayar yalnızca özel uç nokta için geçerlidir. Alt ağdaki diğer kaynaklar için, erişim ağ güvenlik grupları (NSG) güvenlik kuralları tanımına göre denetlenir. 
+Ağ güvenlik grupları (NSG) gibi ağ ilkeleri özel uç noktalar için desteklenmez. Belirli bir alt ağa Özel Bitiş Noktası dağıtmak için, bu alt ağda açık bir devre dışı alma ayarı gereklidir. Bu ayar yalnızca Özel Bitiş Noktası için geçerlidir. Alt ağdaki diğer kaynaklar için erişim, Ağ Güvenlik Grupları (NSG) güvenlik kuralları tanımına göre denetlenir. 
  
-Özel bir uç nokta oluşturmak için Portal kullanıldığında, bu ayar oluşturma sürecinin bir parçası olarak otomatik olarak devre dışıdır. Diğer istemcileri kullanarak dağıtım, bu ayarı değiştirmek için ek bir adım gerektirir. Cloud Shell 'i Azure portal veya Azure PowerShell, Azure CLı 'nin yerel yüklemelerinden veya Azure Resource Manager şablonları kullanarak ayarı devre dışı bırakabilirsiniz.  
+Özel bir bitiş noktası oluşturmak için portalı kullanırken, bu ayar oluşturma işleminin bir parçası olarak otomatik olarak devre dışı bırakılır. Diğer istemcileri kullanarak dağıtım, bu ayarı değiştirmek için ek bir adım gerektirir. Azure portalından bulut bulutu veya Azure PowerShell, Azure CLI'nin yerel yüklemelerini kullanarak ayarı devre dışı kalabilir veya Azure Kaynak Yöneticisi şablonlarını kullanabilirsiniz.  
  
-Aşağıdaki örneklerde, *myVirtualNetwork* adlı bir sanal ağ için `PrivateEndpointNetworkPolicies`, *myresourcegroup*adlı bir kaynak grubunda barındırılan bir *varsayılan* alt ağ ile nasıl devre dışı bırakılacağı açıklanır.
+Aşağıdaki örnekler, *myResourceGroup* `PrivateEndpointNetworkPolicies` adlı bir kaynak grubunda barındırılan *varsayılan* bir alt ağ ile *myVirtualNetwork* adlı sanal bir ağ için devre dışı nasıl açıklanır.
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
-Bu bölüm, Azure PowerShell kullanarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağını açıklar.
+Bu bölümde, Azure PowerShell kullanarak özel uç nokta ilkelerinin nasıl devre dışı atılabildiği açıklanmaktadır.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Azure CLI’yı kullanma
-Bu bölümde, Azure CLı kullanılarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağı açıklanır.
+Bu bölümde, Azure CLI kullanarak alt nokta ilkeleri nasıl devre dışı kığına açıklanmaktadır.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -44,7 +44,7 @@ az network vnet subnet update \
   --disable-private-endpoint-network-policies true
 ```
 ## <a name="using-a-template"></a>Şablon kullanma
-Bu bölümde, Azure Resource Manager şablonu kullanılarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağı açıklanmaktadır.
+Bu bölümde, Azure Kaynak Yöneticisi Şablonu'nun uyrması kullanılarak özel uç nokta ilkeleri nasıl devre dışı kağıda çıkarılabildiği açıklanmaktadır.
 ```json
 { 
           "name": "myVirtualNetwork", 
@@ -70,5 +70,5 @@ Bu bölümde, Azure Resource Manager şablonu kullanılarak alt ağ özel uç no
 } 
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure özel uç noktası](private-endpoint-overview.md) hakkında daha fazla bilgi edinin
+- [Azure özel bitiş noktası](private-endpoint-overview.md) hakkında daha fazla bilgi edinin
  

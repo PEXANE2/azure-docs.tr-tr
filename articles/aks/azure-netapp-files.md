@@ -1,55 +1,55 @@
 ---
-title: Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
-description: Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme hakkında bilgi edinin
+title: Azure NetApp Dosyalarını Azure Kubernetes Hizmetiyle Tümleştir
+description: Azure NetApp Dosyalarını Azure Kubernetes Hizmeti ile nasıl entegre edebilirsiniz öğrenin
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
 ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273745"
 ---
-# <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
+# <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Dosyalarını Azure Kubernetes Hizmetiyle Tümleştir
 
-[Azure NetApp Files][anf] , Azure üzerinde çalışan kurumsal sınıf, yüksek performanslı ve tarifeli bir dosya depolama hizmetidir. Bu makalede Azure NetApp Files Azure Kubernetes Service (AKS) ile nasıl tümleştirileceği gösterilmektedir.
+[Azure NetApp Files,][anf] Azure'da çalışan kurumsal sınıf, yüksek performanslı, ölçülü bir dosya depolama hizmetidir. Bu makalede, Azure NetApp Dosyalarının Azure Kubernetes Hizmeti (AKS) ile nasıl entegre edilebildiğiniz gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
+Bu makalede, varolan bir AKS kümesi var sayıyor. AKS kümesine ihtiyacınız varsa, [Azure CLI'yi veya][aks-quickstart-cli] [Azure portalını kullanarak][aks-quickstart-portal]AKS hızlı başlat'ına bakın.
 
 > [!IMPORTANT]
-> AKS kümeniz de [Azure NetApp Files destekleyen bir bölgede][anf-regions]olmalıdır.
+> AKS kümeniz de [Azure NetApp Dosyalarını destekleyen bir bölgede][anf-regions]olmalıdır.
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLI sürüm 2.0.59 veya daha sonra yüklenmiş ve yapılandırılmış gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
 
 ### <a name="limitations"></a>Sınırlamalar
 
-Azure NetApp Files kullandığınızda aşağıdaki sınırlamalar geçerlidir:
+Azure NetApp Dosyalarını kullandığınızda aşağıdaki sınırlamalar geçerlidir:
 
-* Azure NetApp Files yalnızca [Seçili Azure bölgelerinde][anf-regions]kullanılabilir.
-* Azure NetApp Files kullanabilmeniz için, Azure NetApp Files hizmetine erişim verilmesi gerekir. Erişim için uygulamak üzere [Azure NetApp Files eklenebileceğinizi gönderim formunu][anf-waitlist]kullanabilirsiniz. Azure NetApp Files ekibinden resmi onay e-postasını yapana kadar Azure NetApp Files hizmetine erişemezsiniz.
-* Azure NetApp Files hizmetinizin AKS kümeniz ile aynı sanal ağda oluşturulması gerekir.
-* Bir AKS kümesinin ilk dağıtımından sonra, yalnızca Azure NetApp Files statik sağlama desteklenir.
-* Azure NetApp Files ile dinamik sağlamayı kullanmak için [NetApp Trident](https://netapp-trident.readthedocs.io/) sürüm 19,07 veya üstünü yükleyip yapılandırın.
+* Azure NetApp Dosyaları yalnızca [belirli Azure bölgelerinde][anf-regions]kullanılabilir.
+* Azure NetApp Dosyalarını kullanabilmek için önce Azure NetApp Dosyaları hizmetine erişebilirsiniz. Erişim başvurusunda bulunmak için [Azure NetApp Dosyaları bekleme listesi gönderme formunu][anf-waitlist]kullanabilirsiniz. Azure NetApp Files ekibinden resmi onay e-postasını alana kadar Azure NetApp Files hizmetine erişemezsiniz.
+* Azure NetApp Files hizmetiniz AKS kümenizle aynı sanal ağda oluşturulmalıdır.
+* Bir AKS kümesinin ilk dağıtımından sonra, Azure NetApp Dosyaları için yalnızca statik sağlama desteklenir.
+* Azure NetApp Files ile dinamik sağlama yı kullanmak için [NetApp Trident](https://netapp-trident.readthedocs.io/) sürümünü 19.07 veya sonraki sürümde yükleyin ve yapılandırdı.
 
-## <a name="configure-azure-netapp-files"></a>Azure NetApp Files Yapılandır
+## <a name="configure-azure-netapp-files"></a>Azure NetApp Dosyalarını Yapılandırma
 
 > [!IMPORTANT]
-> *Microsoft. NetApp* kaynak sağlayıcısını kaydedebilmeniz için, aboneliğiniz için [Azure NetApp Files eklenebileceğinizi gönderim formunu][anf-waitlist] doldurmanız gerekir. Azure NetApp Files ekibinden resmi onay e-postasını yapana kadar kaynağı kaydedemezsiniz.
+> *Microsoft.NetApp* kaynak sağlayıcısını kaydettirebilmeniz için aboneliğiniz için [Azure NetApp Dosyaları bekleme listesi gönderme formunu][anf-waitlist] doldurmanız gerekir. Azure NetApp Files ekibinden resmi onay e-postasını alana kadar kaynak sağlama yı kaydedemezsiniz.
 
-*Microsoft. NetApp* kaynak sağlayıcısını kaydedin:
+*Microsoft.NetApp* kaynak sağlayıcısına kaydolun:
 
 ```azurecli
 az provider register --namespace Microsoft.NetApp --wait
 ```
 
 > [!NOTE]
-> Bu işlem biraz zaman alabilir.
+> Bu tamamlamak için biraz zaman alabilir.
 
-AKS ile kullanılmak üzere bir Azure NetApp hesabı oluşturduğunuzda, hesabı **düğüm** kaynak grubunda oluşturmanız gerekir. İlk olarak, [az aks Show][az-aks-show] komutuyla kaynak grubu adını alın ve `--query nodeResourceGroup` sorgu parametresini ekleyin. Aşağıdaki örnek, *Myresourcegroup*kaynak grubu adında *Myakscluster* adlı aks kümesi için düğüm kaynak grubunu alır:
+AKS ile kullanılmak üzere bir Azure NetApp hesabı oluşturduğunuzda, düğüm **kaynak** grubunda hesap oluşturmanız gerekir. İlk olarak, [az aks show][az-aks-show] komutu ile `--query nodeResourceGroup` kaynak grup adını alın ve sorgu parametresi ekleyin. Aşağıdaki örnek, *myResourceGroup*kaynak grubu adında *myAKSCluster* adlı AKS kümesi için düğüm kaynak grubunu alır:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -59,7 +59,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-[Az netappfiles hesap Create][az-netappfiles-account-create]kullanarak aks kümeniz ile aynı bölgede, **düğüm** kaynak grubunda bir Azure NetApp Files hesabı oluşturun. Aşağıdaki örnek, *MC_myResourceGroup_myAKSCluster_eastus* kaynak grubunda ve *eastus* bölgesinde *myaccount1* adlı bir hesap oluşturur:
+[Az netappfiles hesabını][az-netappfiles-account-create]kullanarak **düğüm** kaynak grubunda ve AKS kümenizle aynı bölgede bir Azure NetApp Files hesabı oluşturun. Aşağıdaki örnek, *MC_myResourceGroup_myAKSCluster_eastus* kaynak grubunda ve *eastus* bölgesinde *myaccount1* adlı bir hesap oluşturur:
 
 ```azurecli
 az netappfiles account create \
@@ -68,7 +68,7 @@ az netappfiles account create \
     --account-name myaccount1
 ```
 
-[Az netappfiles Havuz oluştur][az-netappfiles-pool-create]kullanarak yeni bir kapasite havuzu oluşturun. Aşağıdaki örnek, boyut ve *Premium* hizmet DÜZEYINDE 4 TB ile *mypool1* adlı yeni bir kapasite havuzu oluşturur:
+[Az netappfiles havuzu oluşturarak][az-netappfiles-pool-create]yeni bir kapasite havuzu oluşturun. Aşağıdaki örnek, 4 TB boyutu ve *Premium* hizmet düzeyi ile *mypool1* adlı yeni bir kapasite havuzu oluşturur:
 
 ```azurecli
 az netappfiles pool create \
@@ -80,7 +80,7 @@ az netappfiles pool create \
     --service-level Premium
 ```
 
-[Az Network VNET subnet Create][az-network-vnet-subnet-create]kullanarak [Azure NetApp Files temsilci seçmek][anf-delegate-subnet] için bir alt ağ oluşturun. *Bu alt ağ, AKS kümeniz ile aynı sanal ağda olmalıdır.*
+[Az network vnet subnet oluşturarak][az-network-vnet-subnet-create] [Azure NetApp Dosyalarına devretmek için][anf-delegate-subnet] bir alt ağ oluşturun. *Bu alt ağ, AKS kümenizle aynı sanal ağda olmalıdır.*
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
@@ -124,9 +124,9 @@ az netappfiles volume create \
     --protocol-types "NFSv3"
 ```
 
-## <a name="create-the-persistentvolume"></a>PersistentVolume oluşturma
+## <a name="create-the-persistentvolume"></a>Kalıcı Hacim oluşturma
 
-[Az netappfiles birim Show][az-netappfiles-volume-show] kullanarak biriminizin ayrıntılarını listeleyin
+[Az netappfiles ses gösterisini][az-netappfiles-volume-show] kullanarak hacminizin ayrıntılarını listeleyin
 
 ```azurecli
 az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
@@ -148,7 +148,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Bir PersistentVolume tanımlayan `pv-nfs.yaml` oluşturun. `path` *Creationtoken* ile değiştirin ve önceki komuttan *IPAddress* ile `server`. Örnek:
+Kalıcı `pv-nfs.yaml` Birim tanımlayan bir sayı oluşturun. *OluşturmaToken* ve `server` önceki komuttan *ipAddress* ile değiştirin. `path` Örnek:
 
 ```yaml
 ---
@@ -166,13 +166,13 @@ spec:
     path: /myfilepath2
 ```
 
-Önceki adımda oluşturduğunuz NFS (ağ dosya sistemi) hacminin *sunucu* ve *yolunu* güncelleştirin. [Kubectl Apply][kubectl-apply] komutuyla PersistentVolume oluşturun:
+*Sunucuyu* ve *yolu* önceki adımda oluşturduğunuz NFS (Ağ Dosya Sistemi) biriminizin değerlerine güncelleştirin. [Kubectl uygula][kubectl-apply] komutu ile PersistentVolume oluşturun:
 
 ```console
 kubectl apply -f pv-nfs.yaml
 ```
 
-[Kubectl açıkla][kubectl-describe] komutunu kullanarak PersistentVolume *durumunun* *kullanılabilir* olduğunu doğrulayın:
+Kalıcı Birimin *Durumunu* doğrulayın [kubectl açıklama][kubectl-describe] komutunu kullanarak *kullanılabilir:*
 
 ```console
 kubectl describe pv pv-nfs
@@ -180,7 +180,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>PersistentVolumeClaim oluşturma
 
-Bir PersistentVolume tanımlayan `pvc-nfs.yaml` oluşturun. Örnek:
+Kalıcı `pvc-nfs.yaml` Birim tanımlayan bir sayı oluşturun. Örnek:
 
 ```yaml
 apiVersion: v1
@@ -196,21 +196,21 @@ spec:
       storage: 1Gi
 ```
 
-[Kubectl Apply][kubectl-apply] komutuyla PersistentVolumeClaim oluşturun:
+[Kubectl uygula][kubectl-apply] komutu ile PersistentVolumeClaim oluşturun:
 
 ```console
 kubectl apply -f pvc-nfs.yaml
 ```
 
-PersistentVolumeClaim *durumunun* , [kubectl açıkla][kubectl-describe] komutunu kullanarak *bağlandığını* doğrulayın:
+Kalıcı *Status* VolumeClaim durumunu doğrulayın [kubectl açıklama][kubectl-describe] komutunu kullanarak *Bound:*
 
 ```console
 kubectl describe pvc pvc-nfs
 ```
 
-## <a name="mount-with-a-pod"></a>Pod ile bağlama
+## <a name="mount-with-a-pod"></a>Pod ile montaj
 
-PersistentVolumeClaim kullanan bir pod tanımlayan `nginx-nfs.yaml` oluşturun. Örnek:
+PersistentVolumeClaim'i kullanan tanımlayıcı bir `nginx-nfs.yaml` bölme oluşturun. Örnek:
 
 ```yaml
 kind: Pod
@@ -234,19 +234,19 @@ spec:
       claimName: pvc-nfs
 ```
 
-[Kubectl Apply][kubectl-apply] komutuyla Pod oluşturun:
+[Kubectl uygula][kubectl-apply] komutu ile pod oluşturun:
 
 ```console
 kubectl apply -f nginx-nfs.yaml
 ```
 
-[Kubectl açıkla][kubectl-describe] komutunu kullanarak Pod 'un *çalıştığını* doğrulayın:
+[Kubectl açıklama][kubectl-describe] komutunu kullanarak bölmenin *çalıştığını* doğrulayın:
 
 ```console
 kubectl describe pod nginx-nfs
 ```
 
-[Kubectl exec][kubectl-exec] kullanarak Pod 'a bağlanıp daha `df -h` sonra birimin bağlanıp bağlanmayacağını denetlemek için, biriminizin Pod 'a bağlandığından emin olun.
+Bölmeye bağlanmak için [kubectl exec][kubectl-exec] kullanarak ses biriminizin bölmeye monte edildiğini doğrulayın ve `df -h` ses inin monte edilip edilemediğini kontrol edin.
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash
@@ -262,7 +262,7 @@ Filesystem             Size  Used Avail Use% Mounted on
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure NetApp Files hakkında daha fazla bilgi için bkz. [Azure NetApp Files nedir][anf]. AKS ile NFS kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (aks) Ile El Ile NFS (ağ dosya sistemi) Linux sunucu birimi oluşturma ve kullanma][aks-nfs].
+Azure NetApp Dosyaları hakkında daha fazla bilgi için [Azure NetApp Dosyaları nedir'e][anf]bakın. AKS ile NFS kullanma hakkında daha fazla bilgi için, [Azure Kubernetes Hizmeti (AKS) ile Bir NFS (Ağ Dosya Sistemi) Linux Server hacmini El ile oluşturun ve kullanın.][aks-nfs]
 
 
 [aks-quickstart-cli]: kubernetes-walkthrough.md

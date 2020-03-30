@@ -1,6 +1,6 @@
 ---
-title: Sayfadaki bağlantılar uygulama proxy 'Si uygulaması için çalışmıyor
-description: Azure AD ile tümleştirmiş olduğunuz uygulama proxy 'Si uygulamalarındaki kopuk bağlantılarla ilgili sorunları giderme
+title: Sayfadaki bağlantılar Bir Uygulama Proxy uygulaması için çalışmıyor
+description: Azure AD ile tümleştirdiğiniz Application Proxy uygulamalarında bozuk bağlantılarla ilgili sorunları giderme
 services: active-directory
 author: msmimart
 ms.service: active-directory
@@ -12,39 +12,39 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca782b5a190704911472d70c414d12afa7e558f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430237"
 ---
-# <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Sayfadaki bağlantılar uygulama proxy 'Si uygulaması için çalışmıyor
+# <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Sayfadaki bağlantılar Bir Uygulama Proxy uygulaması için çalışmıyor
 
-Bu makale, Azure Active Directory Uygulama Ara Sunucusu uygulamanızdaki bağlantıların neden düzgün şekilde çalışmadığını gidermenize yardımcı olur.
+Bu makale, Azure Etkin Dizin Uygulaması Proxy uygulamanızdaki bağlantıların neden düzgün çalışmadığını gidermenize yardımcı olur.
 
 ## <a name="overview"></a>Genel Bakış 
-Uygulama proxy 'SI uygulamasını yayımladıktan sonra, uygulamada varsayılan olarak çalışan tek bağlantılar, yayımlanan kök URL içinde bulunan hedeflere yönelik bağlantılardır. Uygulamalar içindeki bağlantılar çalışmıyor, uygulamanın iç URL 'SI büyük olasılıkla uygulamanın içindeki bağlantıların tüm hedeflerini içermez.
+Bir Uygulama Proxy uygulaması yayımlandıktan sonra, uygulamada varsayılan olarak çalışan tek bağlantılar, yayınlanan kök URL'de bulunan hedeflere bağlantılardır. Uygulamalar içindeki bağlantılar çalışmıyor, uygulamanın iç URL'si büyük olasılıkla uygulama içindeki bağlantıların tüm hedeflerini içermiyor.
 
-**Bunun nedeni nedir?** Uygulama proxy 'si uygulamadaki bir bağlantıya tıkladığınızda, URL 'yi aynı uygulamadaki iç URL ya da harici olarak kullanılabilir bir URL olarak çözümlemeye çalışır. Bağlantı, aynı uygulama içinde olmayan bir iç URL 'ye işaret ediyorsa, bu demetlerden birine ait değildir ve bulunamayan bir hataya yol açabilir.
+**Bu neden oluyor?** Uygulamadaki bir bağlantıyı tıklattığınızda, Uygulama Proxy'si URL'yi aynı uygulama içinde dahili URL veya harici olarak kullanılabilen bir URL olarak çözmeye çalışır. Bağlantı, aynı uygulama içinde olmayan bir dahili URL'yi işaret ediyorsa, bu kovalardan birine ait değildir ve bulunamadı bir hataya neden olur.
 
-## <a name="ways-you-can-resolve-broken-links"></a>Kopuk bağlantıları çözebilmeniz için yollar
+## <a name="ways-you-can-resolve-broken-links"></a>Bozuk bağlantıları çözmenin yolları
 
-Bu sorunu çözmek için üç yol vardır. Aşağıdaki seçimler artan karmaşıklıkta listelenmiştir.
+Bu sorunu çözmenin üç yolu vardır. Aşağıdaki seçenekler artan karmaşıklık listelenmiştir.
 
-1.  İç URL 'nin uygulama için ilgili tüm bağlantıları içeren bir kök olduğundan emin olun. Bu, tüm bağlantıların aynı uygulama içinde yayımlanan içerik olarak çözümlenme olanağı sağlar.
+1.  Dahili URL'nin uygulama yla ilgili tüm bağlantıları içeren bir kök olduğundan emin olun. Bu, tüm bağlantıların aynı uygulama içinde yayınlanan içerik olarak çözülmesini sağlar.
 
-    İç URL 'YI değiştirir ancak kullanıcıların giriş sayfasını değiştirmek istemiyorsanız, giriş sayfası URL 'sini önceden yayımlanmış iç URL ile değiştirin. Bu işlem, "Azure Active Directory"&gt; uygulama kayıtlarına gidip&gt; uygulama&gt; markalamasını seçmek üzere yapılabilir. Marka bölümünde, istenen giriş sayfası olarak ayarlayabileceğiniz "giriş sayfası URL 'SI" alanını görürsünüz. Eski Uygulama kayıtları deneyimini kullanmaya devam ediyorsanız Özellikler sekmesinde "giriş sayfası URL 'SI" ayrıntıları gösterilir. 
+    Dahili URL'yi değiştirir, ancak kullanıcılar için açılış sayfasını değiştirmek istemiyorsanız, Giriş sayfası NıN URL'sini daha önce yayınlanmış dahili URL olarak değiştirin. Bu "Azure Active Directory" - Uygulama&gt; Kayıtları -&gt; uygulama seçin&gt; - Markaing giderek yapılabilir. Marka bölümünde, istediğiniz açılış sayfası olarak ayarlayabildiğiniz "Giriş Sayfası URL'si" alanını görürsünüz. Eski Uygulama kayıtlarını hala kullanıyorsanız, özellikler sekmesinde "Ana Sayfa URL" ayrıntıları gösterilir. 
     
     > [!IMPORTANT]
-    > Yukarıdaki değişiklikleri yapmak için Azure AD 'de uygulama nesnelerini değiştirme haklarınızın olması gerekir. Kullanıcıya, Kullanıcı için Azure AD 'de uygulama modificaion hakları veren [Uygulama Yöneticisi](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) rolü atanması gerekir.
+    > Yukarıdaki değişiklikleri yapmak için Azure AD'deki uygulama nesnelerini değiştirme haklarına ihtiyacınız vardır. Kullanıcıya, Azure AD'deki uygulama değiştirme haklarını kullanıcıya veren [Uygulama Yöneticisi](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) rolü atanması gerekir.
     >
 
-2.  Uygulamalarınız tam etki alanı adları (FQDN) kullanıyorsa, uygulamalarınızı yayımlamak için [özel etki alanlarını](application-proxy-configure-custom-domain.md) kullanın. Bu özellik hem dahili hem de harici olarak aynı URL 'nin kullanılmasına izin verir.
+2.  Uygulamalarınız tam nitelikli alan adları (FQDNs) kullanıyorsa, uygulamalarınızı yayınlamak için [özel alan adlarını](application-proxy-configure-custom-domain.md) kullanın. Bu özellik, aynı URL'nin hem dahili hem de harici olarak kullanılmasını sağlar.
 
-    Bu seçenek, uygulamadaki bağlantıların iç URL 'Lerle aynı zamanda dışarıdan tanındığından, uygulamanızdaki bağlantıların uygulama proxy 'Si aracılığıyla dışarıdan erişilebilir olmasını sağlar. Tüm bağlantıların hala yayımlanmış bir uygulamaya ait olması gerekir. Ancak, bu seçenekle bağlantıların aynı uygulamaya ait olması gerekmez ve birden çok uygulamaya ait olabilir.
+    Bu seçenek, uygulama içindeki iç URL'lere bağlantılar da dışarıdan tanındığından, uygulamanızdaki bağlantılara Application Proxy aracılığıyla harici olarak erişilebilir olmasını sağlar. Tüm bağlantıların yine de yayınlanmış bir uygulamaya ait olması gerekir. Ancak, bu seçenekle bağlantıların aynı uygulamaya ait olması gerekmez ve birden çok uygulamaya ait olabilir.
 
-3.  Bu seçeneklerden hiçbiri uygun değilse, satır içi bağlantı çevirisini etkinleştirmeye yönelik birden çok seçenek vardır. Bu seçenekler Intune Managed Browser, Uygulamalarım uzantısını veya uygulamanızdaki bağlantı çevirisi ayarını kullanmayı içerir. Bu seçeneklerin her biri ve nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirme](application-proxy-configure-hard-coded-link-translation.md).
+3.  Bu seçeneklerden hiçbiri uygun değilse, satır ara bağlantı çevirisini etkinleştirmek için birden çok seçenek vardır. Bu seçenekler arasında Intune Yönetilen Tarayıcı, Uygulamalarım uzantısı veya uygulamanızdaki bağlantı çeviri ayarını kullanmak yer almaktadır. Bu seçeneklerin her biri ve bunları nasıl etkinleştireceklerini öğrenmek [için Azure AD Application Proxy ile yayınlanan uygulamalar için yeniden yönlendir kodlu bağlantılara](application-proxy-configure-hard-coded-link-translation.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Mevcut şirket içi proxy sunucuları ile çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
+[Varolan şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
 

@@ -1,52 +1,52 @@
 ---
-title: Kapsayıcılar için Azure İzleyici gidermek için nasıl | Microsoft Docs
-description: Bu makalede, sorun giderme ve kapsayıcılar için Azure İzleyici ile ilgili sorunları giderme nasıl açıklanmaktadır.
+title: Kapsayıcılar için Azure Monitör'ün Sorun Giderme Sorunu | Microsoft Dokümanlar
+description: Bu makalede, kapsayıcılar için Azure Monitor ile sorunları nasıl giderebileceğiniz ve çözebileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 17a2817b320599b2aa2c331c354d316b9d864a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75403375"
 ---
-# <a name="troubleshooting-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici sorunlarını giderme
+# <a name="troubleshooting-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Monitörü Sorun Giderme
 
-Azure Kubernetes Service (AKS) kümenizi kapsayıcılar için Azure İzleyici ile izleme yapılandırdığınızda veri toplama işlemini engelliyor veya durum raporlama bir sorunla karşılaşabilirsiniz. Bu makalede bazı yaygın sorunlar ve sorun giderme adımları ayrıntılı olarak açıklanmaktadır.
+Azure Kubernetes Hizmet (AKS) kümenizin denetimini kapsayıcılar için Azure Monitor ile yapılandırdığınızda, veri toplamayı veya raporlama durumunu engelleyen bir sorunla karşılaşabilirsiniz. Bu makalede, bazı sık karşılaşılan sorunlar ve sorun giderme adımları ayrıntıları.
 
-## <a name="authorization-error-during-onboarding-or-update-operation"></a>Ekleme veya güncelleştirme işlemi sırasında yetkilendirme hatası
-Kapsayıcılar için Azure Izleyicisini etkinleştirirken veya bir kümeyi ölçüm toplamayı destekleyecek şekilde güncelleştirirken, aşağıdaki gibi bir hata alabilirsiniz. *< kullanıcının kimliği > ' < kullanıcının objectıd > ', kapsam üzerinde ' Microsoft. Authorization/Roleatamalar/Write ' işlemini gerçekleştirme yetkisi* yok
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>Onboarding veya güncelleştirme işlemi sırasında yetkilendirme hatası
+Kapsayıcılar için Azure Monitor'u etkinleştirirken veya bir kümeyi ölçüm toplamayı desteklemek üzere güncellerken, aşağıdakilere benzer bir hata alabilirsiniz - *Kullanıcı <kimlik>' nesne kimliği ile '<kullanıcının objectId>' kapsamında 'Microsoft.Authorization/roleAssignments/write' eylemini gerçekleştirme yetkisi yoktur*
 
-Ekleme veya güncelleştirme işlemi sırasında, küme kaynağında **Izleme ölçümleri yayımcı** rolü atamasının verilmesi denenir. Kapsayıcılar için Azure Izleyicisini etkinleştirme işlemini başlatan kullanıcı veya ölçüm koleksiyonunu destekleyen güncelleştirme, AKS kümesi kaynak kapsamında **Microsoft. Authorization/Roleatamalar/Write** iznine sahip olmalıdır. Yalnızca **sahip** ve **Kullanıcı erişimi Yöneticisi** yerleşik rollerinin üyelerine bu izne erişim verilir. Güvenlik ilkeleriniz parçalı düzey izinler atanmasını gerektiriyorsa, [özel rolleri](../../role-based-access-control/custom-roles.md) görüntülemenizi ve bunu gerektiren kullanıcılara atamanızı öneririz. 
+Onboarding veya güncelleştirme işlemi sırasında, Küme kaynağıüzerinde **İzleme Ölçümleri Yayımcısı** rol ataması verilir. Kapsayıcılar için Azure Monitor'u etkinleştirmek için işlemi başlatan veya ölçümlerin toplanmasını desteklemek için güncelleştirmeyi başlatan kullanıcının, AKS küme kaynak kapsamında **Microsoft.Authorization/roleAssignments/write** iznine erişimi olmalıdır. Yalnızca **Sahip** ve **Kullanıcı Erişimi Yöneticisi** yerleşik rolleri üyelerine bu izne erişim izni verilir. Güvenlik ilkeleriniz parçalı düzey izinleri atamasını gerektiriyorsa, [özel rolleri](../../role-based-access-control/custom-roles.md) görüntülemenizi ve bunu isteyen kullanıcılara atamanızı öneririz. 
 
-Ayrıca, aşağıdaki adımları uygulayarak bu rolü Azure portal el ile de verebilirsiniz:
+Ayrıca, aşağıdaki adımları gerçekleştirerek bu rolü Azure portalından el ile verebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
-2. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Kubernetes**yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Azure Kubernetes**' i seçin.
-3. Kubernetes kümeleri listesinde, listeden bir tane seçin.
-2. Sol taraftaki menüden **erişim denetimi (IAM)** öğesine tıklayın.
-3. Bir rol ataması eklemek için **+ Ekle** ' yi seçin ve **izleme ölçümleri yayımcısı** rolünü seçin ve yalnızca abonelikte tanımlanan kümeler hizmet sorumluları ' nda sonuçları filtrelemek Için **Seç** kutusu tür **aks** ' i seçin. Bu kümeye özgü listeden birini seçin.
-4. Seçin **Kaydet** rol atama tamamlanması. 
+1. [Azure portalında](https://portal.azure.com)oturum açın. 
+2. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynaklar listesinde **Kubernetes**yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Azure Kubernetes'i**seçin.
+3. Kubernetes kümeleri listesinde, listeden birini seçin.
+2. Sol menüden **Access denetimi'ni (IAM)** tıklatın.
+3. Rol ataması eklemek için **+ Ekle'yi** seçin ve abonelikte tanımlanan kümeler hizmet ilkelerindeki sonuçları filtrelemek için **İzleme Ölçümleri Yayımcısı** rolünü ve **Select** kutusu türü **AKS'nin** altında n'yi seçin. Bu kümeye özgü listeden birini seçin.
+4. Rolü atamayı bitirmek için **Kaydet'i** seçin. 
 
-## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Kapsayıcılar için Azure İzleyici herhangi bir bilgi bildirmeyen ancak etkin
-Kapsayıcılar için Azure Izleyici başarıyla etkinleştirilip yapılandırılmışsa, ancak durum bilgilerini görüntüleyemez veya bir günlük sorgusundan hiçbir sonuç döndürülmezse, bu adımları izleyerek sorunu tanılayabilirsiniz: 
+## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Kapsayıcılar için Azure Monitörü etkindir, ancak herhangi bir bilgi bildirmiyor
+Kapsayıcılar için Azure Monitor başarıyla etkinleştirilmiş ve yapılandırılan, ancak durum bilgilerini görüntüleyemiyorsanız veya günlük sorgusundan hiçbir sonuç döndürülemiyorsa, aşağıdaki adımları izleyerek sorunu tanılarsınız: 
 
-1. Komutunu çalıştırarak aracının durumunu denetleyin: 
+1. Komutu çalıştırarak aracının durumunu kontrol edin: 
 
     `kubectl get ds omsagent --namespace=kube-system`
 
-    Doğru şekilde dağıtıldığını gösteren aşağıdaki çıktıya benzemelidir:
+    Çıktı, düzgün dağıtıldığını gösteren aşağıdakilere benzemelidir:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```  
-2. Aracı sürümü ile dağıtım durumunu denetlemek *06072018* veya daha sonra komutunu kullanarak:
+2. Aracı sürümü *06072018* veya daha sonra komutu kullanarak dağıtım durumunu kontrol edin:
 
     `kubectl get deployment omsagent-rs -n=kube-system`
 
-    Doğru şekilde dağıtıldığını gösterir aşağıdaki örnek çıktıya benzemelidir:
+    Çıktı, düzgün dağıtıldığını gösteren aşağıdaki örneğe benzemelidir:
 
     ```
     User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -54,9 +54,9 @@ Kapsayıcılar için Azure Izleyici başarıyla etkinleştirilip yapılandırıl
     omsagent   1         1         1            1            3h
     ```
 
-3. Komutunu kullanarak çalıştığını doğrulamak için pod durumunu kontrol edin: `kubectl get pods --namespace=kube-system`
+3. Komutu kullanarak çalıştığını doğrulamak için bölmenin durumunu denetleyin:`kubectl get pods --namespace=kube-system`
 
-    Çıkış durumu aşağıdaki örneğe benzemelidir *çalıştıran* omsagent için:
+    Çıktı, omsagent için *Çalışan* durumu ile aşağıdaki örnek benzer olmalıdır:
 
     ```
     User@aksuser:~$ kubectl get pods --namespace=kube-system 
@@ -68,11 +68,11 @@ Kapsayıcılar için Azure Izleyici başarıyla etkinleştirilip yapılandırıl
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-4. Aracı günlüklerini denetleyin. Kapsayıcı Aracısı dağıtıldığında OMI komutları çalıştırarak hızlı bir denetim çalıştırır ve sağlayıcı ve aracı sürümünü gösterir. 
+4. Aracı kayıtlarını kontrol et. Kapsayıcı aracı dağıtıldığında, OMI komutlarını çalıştırarak hızlı bir denetim çalıştırır ve aracı ve sağlayıcının sürümünü görüntüler. 
 
-5. Aracının başarıyla dağıtıldığını doğrulamak için şu komutu çalıştırın: `kubectl logs omsagent-484hw --namespace=kube-system`
+5. Aracının başarıyla dağıtıldığını doğrulamak için komutu çalıştırın:`kubectl logs omsagent-484hw --namespace=kube-system`
 
-    Durum, aşağıdaki örneğe benzemelidir:
+    Durum aşağıdaki örneğe benzemelidir:
 
     ```
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
@@ -97,19 +97,19 @@ Kapsayıcılar için Azure Izleyici başarıyla etkinleştirilip yapılandırıl
 
 ## <a name="error-messages"></a>Hata iletileri
 
-Kapsayıcılar için Azure İzleyicisi'ni kullanırken karşılaşabileceğiniz bilinen hatalar aşağıdaki tabloda özetlenmiştir.
+Aşağıdaki tablo, kapsayıcılar için Azure Monitor kullanırken karşılaşabileceğiniz bilinen hataları özetleyebilir.
 
 | Hata iletileri  | Eylem |  
 | ---- | --- |  
-| Hata iletisi `No data for selected filters`  | Bu, yeni oluşturulan kümeleri için izleme veri akışı oluşturmak için biraz zaman alabilir. Kümenizde verilerin görünmesi için en az 10 ila 15 dakika bekleyin. |   
-| Hata iletisi `Error retrieving data` | Azure Kubernetes hizmet kümesi sistem durumu ve performans izleme için ayarlanırken, küme ve Azure Log Analytics çalışma alanı arasında bir bağlantı oluşturulur. Bir Log Analytics çalışma alanı, kümeniz için tüm izleme verilerini depolamak için kullanılır. Bu hata, Log Analytics çalışma alanınız silindiğinde oluşabilir. Çalışma alanının silinip silinmediğini ve olup olmadığını denetleyin, Kapsayıcınız için Azure Izleyici ile kümenizi izlemeyi yeniden etkinleştirmeniz ve var olan veya yeni bir çalışma alanı oluşturmanız gerekir. Yeniden etkinleştirmek için, küme için izlemeyi [devre dışı bırakmanız](container-insights-optout.md) ve kapsayıcılar Için Azure izleyicisini yeniden [etkinleştirmeniz](container-insights-enable-new-cluster.md) gerekir. |  
-| `Error retrieving data` az aks CLI aracılığıyla kapsayıcılar için Azure İzleyici ekledikten sonra | `az aks cli`kullanarak izlemeyi etkinleştirdiğinizde, kapsayıcılar için Azure Izleyici düzgün şekilde dağıtılamaz. Çözümün dağıtılıp dağıtılmadığını denetleyin. Bunu yapmak için Log Analytics çalışma alanınıza gidin ve seçerek çözüm kullanılabilir olup olmadığını **çözümleri** sol tarafındaki bölmeden. Bu sorunu çözmek için çözüm yönergeleri izleyerek tekrar dağıtmanız gerekecektir [kapsayıcılar için Azure İzleyici dağıtma](container-insights-onboard.md) |  
+| Hata İletisi`No data for selected filters`  | Yeni oluşturulan kümelerin veri akışını izlemek için bir süre beklemeniz gerekebilir. Kümeniz için verilerin görünmesi için en az 10 ila 15 dakika bekleyin. |   
+| Hata İletisi`Error retrieving data` | Azure Kubernetes Hizmet kümesi sistem durumu ve performans izleme için ayarlanırken, küme ile Azure Log Analytics çalışma alanı arasında bir bağlantı kurulur. Log Analytics çalışma alanı, kümeniz için tüm izleme verilerini depolamak için kullanılır. Bu hata, Günlük Analizi çalışma alanınız silindiğinde oluşabilir. Çalışma alanının silinip silinip silinmediğinden ve silinip silinmeyeceğini kontrol edin, kapsayıcılar için Azure Monitor ile kümenizin izlenmesini yeniden etkinleştirmeniz ve varolan bir çalışma alanı belirtmeniz veya yeni bir çalışma alanı oluşturmanız gerekir. Yeniden etkinleştirmek için kümenin izlemeyi [devre dışı bırakıp](container-insights-optout.md) kapsayıcılar için Azure [Monitor'u](container-insights-enable-new-cluster.md) yeniden etkinleştirmeniz gerekir. |  
+| `Error retrieving data`az aks cli aracılığıyla kapsayıcılar için Azure Monitor ekledikten sonra | İzlemeyi etkinleştirildiğinde, `az aks cli`kapsayıcılar için Azure Monitörü düzgün dağıtılamayabilir. Çözümün dağıtılıp dağıtılmadığını denetleyin. Bunu yapmak için Log Analytics çalışma alanınıza gidin ve sol taraftaki bölmeden **Çözümler** seçilerek çözümün kullanılabilir olup olmadığını görün. Bu sorunu gidermek [için, kapsayıcılar için Azure Monitörü'nün nasıl dağıtılanacacağına](container-insights-onboard.md) ilişkin yönergeleri izleyerek çözümü yeniden dağıtmanız gerekir |  
 
-Sorunun tanılanmasına yardımcı olmak için kullanılabilir bir sorun giderme betik sağladık [burada](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script).
+Sorunu tanılamaya yardımcı olmak [için, burada](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)kullanılabilen bir sorun giderme komut dosyası sağladık.
 
-## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Kapsayıcılar için Azure Izleyici aracı ReplicaSet pods, Azure olmayan Kubernetes kümesinde zamanlanmadı
+## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Kapsayıcılar için Azure Monitörü aracısı ReplicaSet Pods, Azure Olmayan Kubernetes kümesinde zamanlanmıyor
 
-Kapsayıcılar için Azure Izleyici aracı ReplicaSet pods, zamanlamaya ait çalışan (veya aracı) düğümlerinde aşağıdaki düğüm seçicilerini içeren bir bağımlılığa sahiptir:
+Kapsayıcılar aracısı ReplicaSet Pods için Azure Monitor, zamanlama için alt (veya aracı) düğümlerinde aşağıdaki düğüm seçicilerine bağımlıdır:
 
 ```
 nodeSelector:
@@ -117,16 +117,16 @@ nodeSelector:
   kubernetes.io/role: agent
 ```
 
-Çalışan düğümlerinizde düğüm etiketleri ekli değilse, aracı ReplicaSet pods zamanlanmaz. Etiketi nasıl bağlayacağınız hakkında yönergeler için [Kubernetes etiket seçicileri atama](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) bölümüne bakın.
+İşçi düğümlerinizde düğüm etiketleri yoksa, aracı ReplicaSet Pods zamanlanmaz. Kubernetes'e bakın, etiketin nasıl eklendiğinizle ilgili talimatlar için [etiket seçicileri atayın.](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/)
 
-## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>Performans grafikleri, Azure olmayan bir kümede CPU veya düğüm ve kapsayıcıların belleğini göstermez
+## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>Performans grafikleri, Azure olmayan bir kümede CPU veya düğüm lerin ve kapsayıcıların belleği göstermez
 
-Kapsayıcılar için Azure Izleyici aracı pods, performans ölçümlerini toplamak için düğüm aracısında Cadvizörü uç noktasını kullanır. Düğüm üzerindeki Kapsayıcılı aracının, performans ölçümlerini toplamak için kümedeki tüm düğümlerde `cAdvisor port: 10255` açılmasına izin verecek şekilde yapılandırıldığını doğrulayın.
+Kapsayıcılar için Azure Monitor aracısı Pods, performans ölçümlerini toplamak için düğüm aracısı üzerindeki cAdvisor bitiş noktasını kullanır. Performans ölçümlerini toplamak için kümedeki tüm `cAdvisor port: 10255` düğümlerde açılmasına izin verecek şekilde yapılandırılan düğümdeki kapsayıcı aracının doğrulandığını doğrulayın.
 
-## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Azure olmayan Kubernetes kümesi kapsayıcılar için Azure Izleyici 'de gösterilmiyor
+## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Azure Olmayan Kubernetes kümesi kapsayıcılar için Azure Monitörü'nde görünmüyor
 
-Kapsayıcılar için Azure Izleyici 'de Azure Kubernetes kümesini görüntülemek için, bu Öngörüyi destekleyen Log Analytics çalışma alanında ve kapsayıcı öngörüleri çözüm kaynak **containerınsights (*çalışma alanı*)** üzerinde okuma erişimi gereklidir.
+Kapsayıcılar için Azure Monitor'da Azure Olmayan Kubernetes kümesini görüntülemek için, Bu Öngörüyü destekleyen Log Analytics çalışma alanında ve Container Insights çözüm kaynağı **ContainerInsights'da *(çalışma alanı)*** Azure Kubernetes olmayan kümeyi görüntülemek için erişim gereklidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AKS kümesi düğümlerin ve pod'ları için sistem durumu ölçümleri yakalamak için etkinleştirilmiş izleme ile bu sistem durumu ölçümleri Azure portalında kullanılabilir. Kapsayıcılar için Azure İzleyicisi'ni kullanma konusunda bilgi almak için bkz: [görünümü Azure Kubernetes hizmeti sistem durumu](container-insights-analyze.md).
+Hem AKS küme düğümleri hem de bölmeler için sistem durumu ölçümlerini yakalama özelliğine sahip izleme sayesinde, bu sistem durumu ölçümleri Azure portalında kullanılabilir. Kapsayıcılar için Azure Monitörünü nasıl kullanacağınızı öğrenmek için [bkz.](container-insights-analyze.md)

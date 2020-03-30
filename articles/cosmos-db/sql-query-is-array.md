@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde IS_ARRAY
-description: Azure Cosmos DB IS_ARRAY SQL sistem işlevi hakkında bilgi edinin.
+description: Azure Cosmos DB'de sql sistem işlevi IS_ARRAY hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: f5867850db6eb3d6552bc129cca3708ef7747072
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303894"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY (Azure Cosmos DB)
- Belirtilen ifade türü bir dizi olup olmadığını gösteren bir Boole değeri döndürür.  
+ Belirtilen ifade nin türü bir dizi olup olmadığını belirten bir Boolean değeri döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -25,16 +25,16 @@ IS_ARRAY(<expr>)
   
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
-*ifadeyi*  
-   Herhangi bir ifadedir.  
+*expr*  
+   Herhangi bir ifade dir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir Boolean ifadesi döndürür.  
+  Boolean ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `IS_ARRAY` işlevini kullanarak JSON Boole, sayı, dize, null, nesne, dizi ve tanımsız türlerin nesnelerini denetler.  
+  Aşağıdaki örnek, `IS_ARRAY` json Boolean, sayı, dize, null, nesne, dizi ve tanımlanmamış türlerin nesneleri işlevi kullanarak denetler.  
   
 ```sql
 SELECT   
@@ -55,10 +55,10 @@ SELECT
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
+Bu sistem işlevi bir [aralık dizini](index-policy.md#includeexclude-strategy)yararlanacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Tür denetimi işlevleri Azure Cosmos DB](sql-query-type-checking-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

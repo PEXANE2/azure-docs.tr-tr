@@ -9,17 +9,17 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: aec1faa4de1149f08fb6fbc1cc5bf3aa2ab6becd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75371794"
 ---
-Paylaşılan erişim imzası (SAS) Depolama hesabınızdaki kapsayıcılara ve bloblara sınırlı erişim sağlamanıza olanak sağlar. SAS oluşturduğunuzda, bir istemcinin hangi Azure depolama kaynakları erişimine izin verileceğini, bu kaynaklarda sahip oldukları izinleri ve SAS 'ın ne kadar süreyle geçerli olduğunu de içeren kısıtlamalarını belirtirsiniz.
+Paylaşılan erişim imzası (SAS), depolama hesabınızdaki kapsayıcılara ve lekelere sınırlı erişim izni vermenizi sağlar. Bir SAS oluşturduğunuzda, istemcinin hangi Azure Depolama kaynaklarına erişmesine izin verildiği, bu kaynaklarda hangi izinlere sahip oldukları ve SAS'ın ne kadar süreyle geçerli olduğu gibi kısıtlamalarını belirtirsiniz.
 
-Her SAS bir anahtarla imzalanır. SAS 'yi iki şekilde imzalayabilirsiniz:
+Her SAS bir anahtar la imzalanır. SAS'yi iki şekilde imzalayabilirsiniz:
 
-- Azure Active Directory (Azure AD) kimlik bilgileri kullanılarak oluşturulmuş bir anahtarla oluşturulur. Azure AD kimlik bilgileriyle imzalanmış bir SAS, *Kullanıcı temsili* SAS 'dir.
-- Depolama hesabı anahtarıyla. Depolama hesabı anahtarıyla bir *HIZMET SAS* ve *Hesap SAS* 'si imzalanır.
+- Azure Etkin Dizin (Azure AD) kimlik bilgileri kullanılarak oluşturulan bir anahtarla. Azure AD kimlik bilgileriyle imzalanmış bir *SAS, kullanıcı delegasyonu* SAS'tır.
+- Depolama hesabı anahtarıyla. Hem *hizmet SAS* hem de *bir hesap SAS* depolama hesabı anahtarı ile imzalanır.
 
-Bir Kullanıcı temsili SAS, depolama hesabı anahtarıyla imzalanmış bir SAS için üstün güvenlik sağlar. Microsoft, mümkün olduğunda bir Kullanıcı temsili SAS kullanılmasını önerir. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) ile verilere sınırlı erişim verme](../articles/storage/common/storage-sas-overview.md).
+Bir kullanıcı delegasyonu SAS, depolama hesabı anahtarıyla imzalanan bir SAS'a üstün güvenlik sunar. Microsoft, mümkün olduğunda bir kullanıcı delegasyonu SAS kullanmanızı önerir. Daha fazla bilgi için bkz: [Paylaşılan erişim imzaları (SAS) ile verilere sınırlı erişim izni.](../articles/storage/common/storage-sas-overview.md)

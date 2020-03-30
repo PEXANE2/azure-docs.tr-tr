@@ -1,86 +1,86 @@
 ---
-title: Visual Studio Code kullanarak örnek verilerle Azure Stream Analytics işi yerel olarak test etme
-description: Bu makalede, Visual Studio Code için Azure Stream Analytics araçları kullanılarak sorguların yerel olarak nasıl test edileceğini açıklar.
+title: Visual Studio Code'u kullanarak örnek verilerle azure akışı analizi işini yerel olarak test edin
+description: Bu makalede, Visual Studio Code için Azure Akış Analizi Araçları'nı kullanarak örnek verilerle sorguların yerel olarak nasıl test edilecek olduğu açıklanmaktadır.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: conceptual
 ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75486475"
 ---
-# <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Visual Studio Code kullanarak örnek verilerle yerel olarak Stream Analytics sorguları test edin
+# <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Visual Studio Code kullanarak örnek verilerle test Akışı Analizi sorguları
 
-Visual Studio Code için Azure Stream Analytics araçları kullanarak, örnek verilerle Stream Analytics işlerinizi yerel olarak test edebilirsiniz. Sorgu sonuçlarını projenizin **Localrunçıktılar** klasöründe JSON dosyalarında bulabilirsiniz.
+Visual Studio Code için Azure Akış Analizi araçlarını kullanarak Stream Analytics işlerinizi örnek verilerle yerel olarak test edebilirsiniz. Sorgu sonuçlarını JSON dosyalarında projenizin **LocalRunOutputs** klasöründe bulabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [.NET Core SDK 'sını](https://dotnet.microsoft.com/download) yükleyip Visual Studio Code yeniden başlatın.
+* [.NET çekirdek SDK'yı](https://dotnet.microsoft.com/download) yükleyin ve Visual Studio Code'u yeniden başlatın.
 
-* Visual Studio Code kullanarak Stream Analytics işi oluşturmayı öğrenmek için bu [hızlı](quick-create-vs-code.md) başlangıcı kullanın.
+* Visual Studio Code'u kullanarak Bir Akış Analizi işi oluşturmayı öğrenmek için bu [hızlı başlangıcı](quick-create-vs-code.md) kullanın.
 
 ## <a name="prepare-sample-data"></a>Örnek verileri hazırlama
 
-Önce örnek giriş veri dosyalarını hazırlamanız gerekir. Makinenizde zaten bir örnek veri dosyası varsa, bu adımı atlayabilir ve bir sonraki adıma geçebilirsiniz.
+Önce örnek giriş veri dosyaları hazırlamanız gerekir. Makinenizde zaten bazı örnek veri dosyaları varsa, bu adımı atlayabilir ve bir sonrakine geçebilirsiniz.
 
-1. En üstteki satırdaki giriş yapılandırma dosyanızda bulunan **Verileri Önizle** ' ye tıklayın. Bazı giriş verileri IoT Hub alınır ve önizleme penceresinde gösterilir. Bu işlem biraz zaman alabilir.
+1. Giriş yapılandırma dosyanızdaki verileri en üst satırdan **Önizleme'yi** tıklatın. Bazı giriş verileri IoT Hub'ından getirilir ve önizleme penceresinde gösterilir. Bunun biraz zaman alabileceğini unutmayın.
 
-2. Veriler gösterildiğinde, verileri yerel bir dosyaya kaydetmek için **farklı kaydet** ' e tıklayın.
+2. Veriler gösterildikten sonra, verileri yerel bir dosyaya kaydetmek için **Kaydet'i** tıklatın.
 
- ![Canlı giriş önizlemesi](./media/quick-create-vs-code/preview-live-input.png)
+ ![Canlı girişi önizleme](./media/quick-create-vs-code/preview-live-input.png)
 
-## <a name="define-a-local-input"></a>Yerel giriş tanımlama
+## <a name="define-a-local-input"></a>Yerel bir giriş tanımlama
 
-1. Stream Analytics projenizdeki girişler klasörü altında **input. JSON** öğesine tıklayın. Ardından en üstteki satırdan **yerel giriş Ekle** ' yi seçin.
+1. Akış Analizi projenizde Girişler klasörü altında **input.json'ı** tıklatın. Ardından üst hattan **yerel giriş ekle'yi** seçin.
 
-    ![Projeden yerel giriş Ekle](./media/quick-create-vs-code/add-input-from-project.png)
+    ![Projeden yerel giriş ekleme](./media/quick-create-vs-code/add-input-from-project.png)
 
-    Ayrıca, **CTRL + SHIFT + P** tuşlarını kullanarak komut paletini açabilir ve **asa: giriş Ekle**' ye girebilirsiniz.
+    Komut paletini açmak ve ASA girmek için **Ctrl+Shift+P'yi** de **kullanabilirsiniz: Giriş Ekle.**
 
-   ![VS Code Stream Analytics girişi ekleme](./media/quick-create-vs-code/add-input.png)
+   ![VS Koduna Akış Analizi girişi ekleme](./media/quick-create-vs-code/add-input.png)
 
-2. **Yerel giriş**' i seçin.
+2. **Yerel Giriş'i**seçin.
 
-    ![Visual Studio Code 'a ASA yerel girişi ekleme](./media/vscode-local-run/add-local-input.png)
+    ![Visual Studio koduna ASA yerel girişi ekleme](./media/vscode-local-run/add-local-input.png)
 
-3. **+ Yeni yerel giriş**' i seçin.
+3. Seçin **+ Yeni Yerel Giriş**.
 
-    ![Visual Studio Code 'da yeni bir ASA yerel girişi ekleme](./media/vscode-local-run/add-new-local-input.png)
+    ![Visual Studio koduna yeni bir ASA yerel girişi ekleme](./media/vscode-local-run/add-new-local-input.png)
 
-4. Sorgunuzda kullandığınız giriş diğer adını girin.
+4. Sorgunuzda kullandığınız giriş takma adını girin.
 
-    ![Yeni bir ASA yerel giriş diğer adı ekleme](./media/vscode-local-run/new-local-input-alias.png)
+    ![Yeni bir ASA yerel giriş takma adı ekleme](./media/vscode-local-run/new-local-input-alias.png)
 
-5. Yeni oluşturulan **LocalInput_Input. JSON** dosyasında, yerel veri dosyanızın bulunduğu dosya yolunu girin.
+5. Yeni oluşturulan **LocalInput_Input.json** dosyasında, yerel veri dosyanızın bulunduğu dosya yolunu girin.
 
-    ![Visual Studio 'da yerel dosya yolunu girin](./media/vscode-local-run/local-file-path.png)
+    ![Visual Studio'da yerel dosya yolunu girin](./media/vscode-local-run/local-file-path.png)
 
-6. Giriş verilerinin önizlemesini görüntülemek için **Verileri Önizle** ' yi seçin. Verileriniz için serileştirme türü, JSON veya CSV olursa otomatik olarak algılanır. Verilerinizi **tablo** veya **Ham** biçimde görüntülemek için seçiciyi kullanın. Aşağıdaki tablo, **tablo biçimindeki**verilerin bir örneğidir:
+6. Giriş verilerini önizlemek için **Verileri Önizleme'yi** seçin. Verileriniz için serileştirme türü, JSON veya CSV'si varsa otomatik olarak algılanır. Verilerinizi **Tablo** veya **Ham** formatında görüntülemek için seçiciyi kullanın. Aşağıdaki tablo **Tablo biçiminde**veri bir örnektir:
 
-     ![Tablo biçiminde yerel verileri Önizle](./media/vscode-local-run/local-file-preview-table.png)
+     ![Yerel verileri tablo biçiminde önizleme](./media/vscode-local-run/local-file-preview-table.png)
 
-    Aşağıdaki tablo, **Ham biçimdeki**verilerin bir örneğidir:
+    Aşağıdaki tablo **Raw biçiminde**veri bir örnektir:
 
-    ![Yerel verileri ham biçimde Önizle](./media/vscode-local-run/local-file-preview-raw.png)
+    ![Yerel verileri ham formatta önizleme](./media/vscode-local-run/local-file-preview-raw.png)
 
-## <a name="run-queries-locally"></a>Sorguları yerel olarak çalıştır
+## <a name="run-queries-locally"></a>Sorguları yerel olarak çalıştırma
 
-Sorgu düzenleyicinize dönün ve **yerel olarak çalıştır**' ı seçin. Ardından açılan listeden **Yerel girişi kullan** ' ı seçin.
+Sorgu düzenleyicinize dönün ve **yerel olarak Çalıştır'ı**seçin. Ardından açılır listeden **yerel girişi kullan'ı** seçin.
 
-![Sorgu düzenleyicisinde yerel olarak Çalıştır ' ı seçin](./media/vscode-local-run/run-locally.png)
+![Sorgu düzenleyicisinde yerel olarak çalıştır'ı seçin](./media/vscode-local-run/run-locally.png)
 
-![Yerel giriş kullan](./media/vscode-local-run/run-locally-use-local-input.png)
+![Yerel girişi kullanma](./media/vscode-local-run/run-locally-use-local-input.png)
 
-Sonuç doğru pencerede gösterilir. Test etmek için **Çalıştır** ' a tıklayabilirsiniz. Ayrıca, dosya Gezgini 'nde sonuç dosyalarını görmek ve bunları diğer araçlarla açmak için **klasörü aç** ' ı da seçebilirsiniz. Sonuç dosyalarının yalnızca JSON biçiminde kullanılabilir olduğunu unutmayın.
+Sonuç sağ pencerede gösterilir. Yeniden test etmek için **Çalıştır'ı** tıklatabilirsiniz. Ayrıca, sonuç dosyalarını dosya gezgininde görmek ve diğer araçlarla daha fazla açmak için **klasörde Aç'ı** da seçebilirsiniz. Sonuç dosyalarının yalnızca JSON biçiminde kullanılabildiğini unutmayın.
 
-![Yerel çalıştırma sonucunu görüntüle](./media/vscode-local-run/run-locally-result.png)
+![Yerel çalışma sonucunu görüntüleme](./media/vscode-local-run/run-locally-result.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Visual Studio Code kullanarak canlı giriş ile Azure Stream Analytics işleri yerel olarak test etme](visual-studio-code-local-run-live-input.md)
+* [Visual Studio Code kullanarak azure akış analizi işlerini canlı girişle yerel olarak test edin](visual-studio-code-local-run-live-input.md)
 
-* [Visual Studio Code Azure Stream Analytics işleri keşfet (Önizleme)](visual-studio-code-explore-jobs.md)
+* [Visual Studio Code (Önizleme) ile Azure Akış Analizi işlerini keşfedin](visual-studio-code-explore-jobs.md)

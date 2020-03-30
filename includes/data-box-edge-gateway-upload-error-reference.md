@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 05673885336dbfb9a70843bd0ccc4e700091ad7e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67189040"
 ---
 |     Hata kodu     |      Hata açıklaması     |
@@ -34,8 +34,8 @@ ms.locfileid: "67189040"
 |    2006            | Hesap veya paylaşım devre dışı olduğundan hesaba veri yüklenemedi.|
 |    2007            | Hesap izinleri yanlış olduğundan veya güncel olmadığından kapsayıcı bağlantısı kurulamadı. Erişiminizi kontrol edin.|
 |    2008            | Kapsayıcı dolu olduğundan yeni veri eklenemedi. Türe göre desteklenen kapsayıcı boyutları için Azure özelliklerine bakın. Örneğin Azure Dosyaları en fazla 5 TB büyüklüğündeki dosyaları kabul eder.|
-|    2009            | Veri paylaşımı ile ilişkili olan kapsayıcıya mevcut olmadığından karşıya yükleyemedik.|    
-|    2997            | Beklenmeyen bir hata oluştu. Kendi geçici bir hatadır.|
+|    2009            | Paylaşımla ilişkili kapsayıcı olmadığı için veri yüklenememiş.|    
+|    2997            | Beklenmeyen bir hata oluştu. Bu kendi kendine çözecek geçici bir hatadır.|
 |    2998            | Beklenmeyen bir hata oluştu. Bu hata kendiliğinden çözülebilir ancak 24 saatten uzun bir süre devam ederse Microsoft Desteği ile iletişim kurun.|
 |    16000           | Bu dosya indirilemedi.|
 |    16001           | Yerel sisteminizde mevcut olduğundan bu dosya indirilemedi.|

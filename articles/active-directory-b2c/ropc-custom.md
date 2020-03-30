@@ -1,7 +1,7 @@
 ---
-title: Kaynak sahibi parola kimlik bilgileri akışını özel ilkelerle yapılandırma
+title: Kaynak sahibi nin parola kimlik bilgilerini özel ilkelerle yapılandırma
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C ' de özel ilkeler kullanarak kaynak sahibi parola kimlik bilgileri (ROPC) akışını yapılandırmayı öğrenin.
+description: Azure Active Directory B2C'de özel ilkeler kullanarak kaynak sahibi parola kimlik bilgilerini (ROPC) akışını nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187024"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Özel bir ilke kullanarak Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Azure Active Directory B2C'deki kaynak sahibi parola kimlik bilgilerini özel bir ilke kullanarak yapılandırma
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilgileri (ROPC) akışı, bir OAuth standart kimlik doğrulama akışsıdır. Bu akışta, bağlı olan taraf olarak da bilinen bir uygulama, belirteçler için geçerli kimlik bilgilerini değiş tokuş eder. Kimlik bilgileri bir kullanıcı KIMLIĞI ve parola içerir. Döndürülen belirteçler bir KIMLIK belirteci, erişim belirteci ve yenileme belirteci.
+Azure Etkin Dizin B2C'de (Azure AD B2C) kaynak sahibi parola kimlik bilgileri (ROPC) akışı, OAuth standart kimlik doğrulama akışıdır. Bu akışta, güvenen taraf olarak da bilinen bir uygulama, belirteçler için geçerli kimlik bilgilerini değiştirir. Kimlik bilgileri bir kullanıcı kimliği ve parola içerir. Döndürülen belirteçler bir kimlik belirteci, erişim belirteci ve yenileme belirtecidir.
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-[Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
+Azure Active [Directory B2C'deki özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın.
 
 ## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
@@ -36,8 +36,8 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
 
 ##  <a name="create-a-resource-owner-policy"></a>Kaynak sahibi ilkesi oluşturma
 
-1. *TrustFrameworkExtensions. xml* dosyasını açın.
-2. Zaten mevcut değilse, **Buildingblocks** öğesi altındaki ilk öğe olarak bir **Claimsschema** öğesi ve onun alt öğelerini ekleyin:
+1. *TrustFrameworkExtensions.xml* dosyasını açın.
+2. Zaten yoksa, **BuildingBlocks** öğesi altında ilk öğe olarak bir **ClaimsSchema** öğesi ve alt öğeleri ekleyin:
 
     ```XML
     <ClaimsSchema>
@@ -60,7 +60,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
     </ClaimsSchema>
     ```
 
-3. **Claimsschema**'dan sonra, **buildingblocks** öğesine bir **claimstransformations** öğesi ve onun alt öğelerini ekleyin:
+3. **ClaimsSchema**sonra , **BuildingBlocks** öğesine bir **ClaimsTransformations** öğesi ve alt öğeleri ekleyin:
 
     ```XML
     <ClaimsTransformations>
@@ -86,7 +86,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
     </ClaimsTransformations>
     ```
 
-4. `Local Account SignIn` **DisplayName** olan **ClaimsProvider** öğesini bulun ve aşağıdaki teknik profili ekleyin:
+4. **DisplayName'ye** sahip `Local Account SignIn` **ClaimsProvider** öğesini bulun ve aşağıdaki teknik profili ekleyin:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -124,9 +124,9 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
     </TechnicalProfile>
     ```
 
-    **Client_id** **DefaultValue** değerini, önkoşul öğreticisinde oluşturduğunuz ProxyIdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin. Ardından, önkoşul öğreticisinde oluşturduğunuz IdentityExperienceFramework uygulamasının uygulama KIMLIĞIYLE **Resource_id** **DefaultValue** değerini değiştirin.
+    **client_id** **Varsayılan Değerini,** ön koşul öğreticisinde oluşturduğunuz ProxyIdentityExperienceFramework uygulamasının Uygulama Kimliği ile değiştirin. Daha sonra **resource_id** **Varsayılan Değeri'ni,** ön koşul öğreticisinde oluşturduğunuz IdentityExperienceFramework uygulamasının Uygulama Kimliği ile değiştirin.
 
-5. Aşağıdaki **ClaimsProvider** öğelerini, **claimsproviders** öğesine teknik profilleriyle birlikte ekleyin:
+5. Teknik profilleriyle birlikte Aşağıdaki **ClaimsProvider** öğelerini **ClaimsProviders** öğesine ekleyin:
 
     ```XML
     <ClaimsProvider>
@@ -180,7 +180,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
     </ClaimsProvider>
     ```
 
-6. **TrustFrameworkPolicy** öğesine bir **Userbir neys** öğesi ve onun alt öğelerini ekleyin:
+6. **TrustFrameworkPolicy** öğesine **userJourneys** öğesi ve alt öğeleri ekleyin:
 
     ```XML
     <UserJourney Id="ResourceOwnerPasswordCredentials">
@@ -217,18 +217,18 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
     </UserJourney>
     ```
 
-7. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-8. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve ardından *TrustFrameworkExtensions. xml* dosyasına gidip seçin.
+7. Azure AD B2C kiracınızdaki **Özel İlkeler** sayfasında **Yükle İlkesi'ni**seçin.
+8. **Varsa politikanın Üzerine Yaz'ı**etkinleştirin ve *ardından TrustFrameworkExtensions.xml* dosyasına göz atın ve seçin.
 9. **Karşıya Yükle**'ye tıklayın.
 
-## <a name="create-a-relying-party-file"></a>Bağlı olan taraf dosyası oluşturma
+## <a name="create-a-relying-party-file"></a>Güvenilen bir parti dosyası oluşturma
 
-Sonra, oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf dosyasını güncelleştirin:
+Ardından, oluşturduğunuz kullanıcı yolculuğunu başlatan güvenen parti dosyasını güncelleştirin:
 
-1. Çalışma dizininizde *Signuporsignın. xml* dosyasının bir kopyasını oluşturun ve onu *ROPC_Auth. xml*olarak yeniden adlandırın.
-2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değere değiştirin. İlke KIMLIĞI, ilkenizin adıdır. Örneğin, **B2C_1A_ROPC_Auth**.
-3. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini `ResourceOwnerPasswordCredentials`olarak değiştirin.
-4. **Outputclaim** öğesini yalnızca aşağıdaki talepleri içerecek şekilde değiştirin:
+1. Çalışma dizininizde *SignUpOrSignin.xml* dosyasının bir kopyasını yapın ve *ROPC_Auth.xml*olarak yeniden adlandırın.
+2. Yeni dosyayı açın ve **TrustFrameworkPolicy** için **PolicyId** özniteliğinin değerini benzersiz bir değerle değiştirin. İlke kimliği, ilkenizin adıdır. Örneğin, **B2C_1A_ROPC_Auth**.
+3. **DefaultUserJourney'deki** **ReferenceId** özniteliğinin değerini `ResourceOwnerPasswordCredentials`' olarak değiştirin.
+4. Çıktılar **Talepleri** öğesini yalnızca aşağıdaki talepleri içerecek şekilde değiştirin:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
@@ -238,34 +238,34 @@ Sonra, oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf do
     <OutputClaim ClaimTypeReferenceId="surname" DefaultValue="" />
     ```
 
-5. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-6. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *ROPC_Auth. xml* dosyasına gidip seçin.
+5. Azure AD B2C kiracınızdaki **Özel İlkeler** sayfasında **Yükle İlkesi'ni**seçin.
+6. **Varsa epolitikasın Üzerine Yaz'ı**etkinleştirin ve *ardından ROPC_Auth.xml* dosyasına göz atın ve seçin.
 7. **Karşıya Yükle**'ye tıklayın.
 
 ## <a name="test-the-policy"></a>İlkeyi test etme
 
-Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanızı kullanın ve ilkenizde hata ayıklama yanıtı ' nı gözden geçirin. POST isteğinin gövdesi olarak aşağıdaki bilgilerle bu örnek gibi bir çağrı oluşturun:
+Bir API çağrısı oluşturmak için sık kullandığınız API geliştirme uygulamasını kullanın ve ilkenizin hata ayıklama yanıtını gözden geçirin. POST isteğinin gövdesi olarak aşağıdaki bilgileri içeren bu örnek gibi bir çağrı oluştur:
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- `your-tenant-name`, Azure AD B2C kiracınızın adıyla değiştirin.
-- `B2C_1A_ROPC_Auth`, kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
+- Azure `your-tenant-name` AD B2C kiracınızın adıyla değiştirin.
+- Kaynak `B2C_1A_ROPC_Auth` sahibi parola kimlik bilgileri ilkesinin tam adı ile değiştirin.
 
 | Anahtar | Değer |
 | --- | ----- |
 | kullanıcı adı | `user-account` |
 | password | `password1` |
 | grant_type | password |
-| scope | OpenID `application-id` offline_access |
+| scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | belirteç id_token |
 
-- `user-account`, kiracınızdaki bir kullanıcı hesabının adıyla değiştirin.
-- `password1`, Kullanıcı hesabının parolasıyla değiştirin.
-- `application-id` *ROPC_Auth_app* KAYDıNDAN uygulama kimliğiyle değiştirin.
-- Yenileme belirteci almak istiyorsanız *Offline_access* isteğe bağlıdır.
+- Kiracınızdaki kullanıcı hesabının adıyla değiştirin. `user-account`
+- Kullanıcı `password1` hesabının parolasıyla değiştirin.
+- ROPC_Auth_app `application-id` kayıttan Başvuru *ROPC_Auth_app* Kimliği ile değiştirin.
+- *Offline_access* bir yenileme belirteci almak istiyorsanız isteğe bağlıdır.
 
-Gerçek GÖNDERI isteği aşağıdaki örneğe benzer şekilde görünür:
+Gerçek POST isteği aşağıdaki örnek gibi görünür:
 
 ```HTTPS
 POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
@@ -275,7 +275,7 @@ Content-Type: application/x-www-form-urlencoded
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
-Çevrimdışı erişime sahip başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
+Çevrimdışı erişimle başarılı bir yanıt aşağıdaki örnek gibi görünür:
 
 ```JSON
 {
@@ -289,25 +289,25 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 ## <a name="redeem-a-refresh-token"></a>Yenileme belirteci kullanma
 
-Burada gösterilenler gibi bir GÖNDERI çağrısı oluşturun. İsteğin gövdesi olarak aşağıdaki tablodaki bilgileri kullanın:
+Burada gösterilen gibi bir POST çağrısı oluştur. Aşağıdaki tablodaki bilgileri isteğin gövdesi olarak kullanın:
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- `your-tenant-name`, Azure AD B2C kiracınızın adıyla değiştirin.
-- `B2C_1A_ROPC_Auth`, kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
+- Azure `your-tenant-name` AD B2C kiracınızın adıyla değiştirin.
+- Kaynak `B2C_1A_ROPC_Auth` sahibi parola kimlik bilgileri ilkesinin tam adı ile değiştirin.
 
 | Anahtar | Değer |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| resource | `application-id` |
+| kaynak | `application-id` |
 | refresh_token | `refresh-token` |
 
-- `application-id` *ROPC_Auth_app* KAYDıNDAN uygulama kimliğiyle değiştirin.
-- `refresh-token`, önceki yanıtta geri gönderilen **refresh_token** ile değiştirin.
+- ROPC_Auth_app `application-id` kayıttan Başvuru *ROPC_Auth_app* Kimliği ile değiştirin.
+- Önceki `refresh-token` yanıtta geri gönderilen **refresh_token** değiştirin.
 
-Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
+Başarılı bir yanıt aşağıdaki örnek gibi görünür:
 
 ```JSON
 {
@@ -325,11 +325,11 @@ Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
 }
 ```
 
-## <a name="use-a-native-sdk-or-app-auth"></a>Yerel SDK veya uygulama kimlik doğrulaması kullanma
+## <a name="use-a-native-sdk-or-app-auth"></a>Yerel bir SDK veya App-Auth kullanma
 
-Azure AD B2C, genel istemci kaynak sahibi parola kimlik bilgileri için OAuth 2,0 standartlarını karşılar ve çoğu istemci SDK 'Sı ile uyumlu olmalıdır. En son bilgiler için bkz. [OAuth Için yerel uygulama SDK 'sı 2,0 ve OpenID Connect modern en iyi uygulamaları uygulama](https://appauth.io/).
+Azure AD B2C, kamu istemcisi kaynak sahibi parola kimlik bilgileri için OAuth 2.0 standartlarını karşılar ve çoğu istemci SDK'sıyla uyumlu olmalıdır. En son bilgiler [için, OAuth 2.0 için Native App SDK ve modern en iyi uygulamaları uygulayan OpenID Connect'e](https://appauth.io/)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory B2C özel ilke başlangıç paketindeki](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)bu senaryonun tam bir örneğine bakın.
+- [Azure Etkin Dizin Ii B2C özel ilke başlangıç paketinde](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)bu senaryonun tam bir örneğine bakın.
 - [Belirteç başvurusunda](tokens-overview.md)Azure Active Directory B2C tarafından kullanılan belirteçler hakkında daha fazla bilgi edinin.

@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault azaltma kılavuzu
-description: Key Vault azaltma, kaynakların aşırı kullanımını önlemek için eş zamanlı çağrılar sayısını sınırlar.
+title: Azure Anahtar Kasası azaltma kılavuzu
+description: Anahtar Vault azaltma, kaynakların aşırı kullanımını önlemek için eşzamanlı arama ların sayısını sınırlar.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,60 +10,60 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6c4923e86f8678458d6301503043413fb8a5629b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197377"
 ---
-# <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault azaltma kılavuzu
+# <a name="azure-key-vault-throttling-guidance"></a>Azure Anahtar Kasası azaltma kılavuzu
 
-Azaltma, kaynakların aşırı kullanımını önlemek için bir Azure hizmetine eş zamanlı çağrı sayısını sınırlayan başlatma bir işlemdir. Azure Key Vault (AKV) büyük hacimde istekleri işlemek için tasarlanmıştır. Büyük bir istek sayısı ortaya çıkarsa, istemcinin istekleri azaltma en iyi performans ve güvenilirlik AKV hizmetinin korumasına yardımcı olur.
+Azaltma, kaynakların aşırı kullanımını önlemek için Azure hizmetine yapılan eşzamanlı çağrı sayısını sınırlayan bir işlemdir. Azure Anahtar Kasası (AKV), yüksek sayıdaki istekleri işlemek üzere tasarlanmıştır. Çok sayıda istek oluşursa, müşterinizin isteklerini daraltma, AKV hizmetinin en iyi performansını ve güvenilirliğini korumaya yardımcı olur.
 
-Azaltma sınırları senaryoya bağlı olarak değişiklik gösterir. Örneğin, büyük hacimli yazma gerçekleştiriyorsanız için azaltma olanağı, yalnızca okuma işlemi yapıyorsanız daha yüksek olur.
+Azaltma sınırları senaryoya göre değişir. Örneğin, büyük miktarda yazma yapıyorsanız, azaltma olasılığı yalnızca okuma ları gerçekleştirmenize göre daha yüksektir.
 
-## <a name="how-does-key-vault-handle-its-limits"></a>Key Vault, kendi sınırlarına nasıl işliyor?
+## <a name="how-does-key-vault-handle-its-limits"></a>Key Vault sınırlarını nasıl karşılar?
 
-Key Vault hizmet limitleri, kaynakların kötüye kullanımını engeller ve tüm Key Vault istemcileri için hizmet kalitesini güvence altına aldığınızdan emin olun. Bir hizmet eşiği aşıldığında, bu istemciden bir süre için diğer istekleri sınırlar Key Vault, HTTP durum kodu 429 (çok fazla istek) döndürür ve istek başarısız olur. Key Vault tarafından izlenen kısıtlama sınırlarına doğru 429 sayısı döndüren başarısız istekler. 
+Key Vault'taki hizmet limitleri kaynakların kötüye kullanılmasını önler ve Key Vault'un tüm müşterileri için hizmet kalitesini sağlar. Bir hizmet eşiği aşıldığında, Key Vault bu istemciden gelen diğer istekleri bir süre için sınırlar, HTTP durum kodu 429 'u döndürür (Çok fazla istek) ve istek başarısız olur. Key Vault tarafından izlenen gaz limitlerine doğru 429 sayısı döndüren başarısız istekler. 
 
-Key Vault ilk olarak, dağıtım zamanında sırlarınızı depolamak ve almak için kullanılmak üzere tasarlanmıştır.  Dünya gelişmiştir ve gizli dizileri depolamak ve almak için çalışma zamanında kullanılıyor Key Vault ve genellikle uygulama ve hizmetler bir veritabanı gibi Key Vault kullanmak ister.  Geçerli sınırlar yüksek verimlilik hızlarını desteklemez.
+Key Vault aslında dağıtım zamanında sırlarınızı depolamak ve almak için kullanılmak üzere tasarlanmıştır.  Dünya gelişti ve Key Vault sırları depolamak ve almak için çalışma zamanında kullanılıyor ve genellikle uygulamalar ve hizmetler Key Vault'u veritabanı gibi kullanmak istiyor.  Geçerli limitler yüksek iş yapma oranlarını desteklemez.
 
-Key Vault ilk olarak [Azure Key Vault hizmet sınırlarında](key-vault-service-limits.md)belirtilen limitlerle oluşturulmuştur.  Key Vault, koyma ücretleri üzerinden en üst düzeye çıkarmak için, aktarım hızını en üst düzeye çıkarmak için önerilen bazı yönergeler/en iyi uygulamalar şunlardır
-1. Azaltma yapıldığından emin olun.  İstemci, 429 ' un üstel geri dönüş ilkelerini kabul etmelidir ve aşağıdaki kılavuza göre yeniden denemeler yapmakta olduğunuzdan emin olmalıdır.
-1. Key Vault trafiğinizi birden çok kasa ve farklı bölgeler arasında bölün.   Her güvenlik/kullanılabilirlik etki alanı için ayrı bir kasa kullanın.   Her biri iki bölgede beş uygulamanız varsa, her biri uygulama ve bölgeye özgü gizli dizileri içeren 10 kasalar öneririz.  Tüm işlem türleri için abonelik genelinde sınır, tek bir Anahtar Kasası sınırının beş katından fazla olur. Örneğin, HSM-abonelik başına diğer işlemler, abonelik başına 10 saniye içinde 5.000 işlem ile sınırlıdır. Ayrıca, RPS 'yi doğrudan Anahtar Kasası 'na düşürmek ve/veya veri bloğu tabanlı trafiği işlemek için hizmet veya uygulamanızdaki gizli anahtarı önbelleğe almayı düşünün.  Ayrıca, gecikme süresini en aza indirmek ve farklı bir abonelik/kasa kullanmak için trafiğinizi farklı bölgeler arasında ayırabilirsiniz.  Tek bir Azure bölgesindeki Key Vault hizmetine daha fazla abonelik sınırı göndermeyin.
-1. Bellekte Azure Key Vault aldığınız gizli dizileri önbelleğe alın ve mümkün olan her durumda bellekten yeniden kullanın.  Yalnızca önbelleğe alınmış kopya çalışmayı durdurduğu zaman Azure Key Vault yeniden oku (örneğin, kaynakta döndürülmüştür). 
-1. Key Vault kendi hizmet sırlarınız için tasarlanmıştır.   Müşterilerinizin gizli dizilerini depoluyorsanız (özellikle yüksek işlem hacmi olan anahtar depolama senaryoları için), anahtarları bir veritabanına veya depolama hesabına şifrelemeye koymak ve Azure Key Vault yalnızca ana anahtarı depolamak için göz önünde bulundurun.
-1. Genel anahtar işlemlerini şifreleme, sarın ve doğrulama, azaltma riskini azalmayan, ancak aynı zamanda güvenilirliği artıran (ortak anahtar malzemesini doğru şekilde önbelleğe aldığınız sürece) Key Vault erişim olmadan gerçekleştirilebilir.
-1. Bir hizmet için kimlik bilgilerini depolamak üzere Key Vault kullanıyorsanız, bu hizmetin doğrudan kimlik doğrulamak için AAD kimlik doğrulamasını destekleyip desteklemediğini denetleyin. Bu, Key Vault yükünü azaltır, güvenilirliği geliştirir ve Key Vault artık AAD belirtecini kullanabilmesi için kodunuzu basitleştirir.  Birçok hizmet AAD kimlik doğrulaması kullanılarak taşınmıştır.  [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)kısmındaki geçerli listeye bakın.
-1. Geçerli RPS limitlerinin altında kalmak için yük/dağıtımınızı daha uzun bir süre boyunca kademelendirme değerlendirin.
-1. Uygulamanız aynı gizli dizi (ler) i okuması gereken birden çok düğüm içeriyorsa, bir varlığın Key Vault gizli dizi ve tüm düğümlere giden fanları okuduğu bir fan çıkış deseninin kullanılmasını düşünün.   Alınan gizli dizileri yalnızca bellekte önbelleğe al.
-Yukarıdakilerden hala gereksinimlerinizi karşılamadığını fark ediyorsanız, lütfen aşağıdaki tabloyu doldurun ve hangi ek kapasitenin eklenebileceklerini öğrenmek için bizimle iletişim kurun (yalnızca tanım amaçları için aşağıda verilmiştir).
+Key Vault başlangıçta [Azure Key Vault hizmet limitlerinde](key-vault-service-limits.md)belirtilen limitler ile oluşturuldu.  Anahtar Kasanızı koyma oranları yla en üst düzeye çıkarmak için, iş lerinizi en üst düzeye çıkarmak için önerilen bazı kılavuz ilkeler/en iyi uygulamalar aşağıda verilmiştir:
+1. Yerinde azaltma olduğundan emin olun.  Müşteri 429's için üstel geri dönüş politikalarına uymalı ve aşağıdaki kılavuza göre yeniden deneme yaptığınızdan emin olmalıdır.
+1. Key Vault trafiğinizi birden fazla kasa ve farklı bölgeler arasında bölün.   Her güvenlik/kullanılabilirlik etki alanı için ayrı bir kasa kullanın.   Her biri iki bölgede olmak üzere beş uygulamanız varsa, her biri uygulama ve bölgeye özgü sırları içeren 10 kasa öneririz.  Tüm işlem türleri için abonelik genelindeki sınır, tek tek anahtar kasa sınırının beş katıdır. Örneğin, abonelik başına HSM-diğer işlemler abonelik başına 10 saniye içinde 5.000 işlemle sınırlıdır. RPS'yi doğrudan anahtar kasasına ve/veya işleme patlaması tabanlı trafiğe düşürmek için hizmetiniz veya uygulamanızdaki sırrı önbelleğe almayı düşünün.  Gecikmeyi en aza indirmek ve farklı bir abonelik/kasa kullanmak için trafiğinizi farklı bölgelere bölebilirsiniz.  Tek bir Azure bölgesinde Key Vault hizmetine abonelik sınırından daha fazlasını göndermeyin.
+1. Azure Key Vault'tan aldığınız sırları bellekte önbelleğe alın ve mümkün olduğunca bellekten yeniden kullanın.  Azure Key Vault'tan yalnızca önbelleğe alınan kopya çalışmayı durdurduğunda (örn. kaynakta döndürüldeği için) yeniden okuyun. 
+1. Key Vault kendi hizmet sırları için tasarlanmıştır.   Müşterilerinizin sırlarını saklıyorsanız (özellikle yüksek iş sahibi anahtar depolama senaryoları için), anahtarları şifreleme içeren bir veritabanına veya depolama hesabına koymayı ve azure Key Vault'ta sadece ana anahtarı depolamayı düşünün.
+1. Ortak anahtar işlemlerini, yalnızca azaltma riskini azaltır, aynı zamanda güvenilirliği artırır (ortak anahtar malzemeyi düzgün bir şekilde önbelleğe aldığınız sürece) anahtar kasasına erişmeden gerçekleştirilebilir.
+1. Bir hizmetin kimlik bilgilerini depolamak için Key Vault kullanıyorsanız, bu hizmetin doğrudan kimlik doğrulaması için AAD Kimlik Doğrulamasını destekleyip desteklemediğini denetleyin. Bu, Key Vault üzerindeki yükü azaltır, güvenilirliği artırır ve Key Vault artık AAD belirteci kullanabilirsiniz beri kodunuzu kolaylaştırır.  Birçok hizmet AAD Auth kullanarak taşındı.  [Azure kaynakları için yönetilen kimlikleri destekleyen Hizmetler'deki](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)geçerli listeye bakın.
+1. Mevcut RPS sınırlarının altında kalmak için yükünüzü/dağıtımınızı daha uzun bir süre boyunca sarsmayı düşünün.
+1. Uygulamanız aynı gizli (ler) okumak için gereken birden fazla düğümden oluşuyorsa, bir varlığın Key Vault'tan sırrı okuduğu ve tüm düğümlere hayran olduğu bir fan çıkış deseni kullanmayı düşünün.   Alınan sırları yalnızca bellekte önbelleğe alın.
+Yukarıdakilerin hala ihtiyaçlarınızı karşılamadığını fark ederseniz, lütfen aşağıdaki tabloyu doldurun ve ek kapasitenin eklenebilir olduğunu belirlemek için bizimle iletişime geçin (yalnızca açıklayıcı amaçlar için aşağıda belirtilen örnek).
 
-| Kasa adı | Kasa bölgesi | Nesne türü (gizli, anahtar veya sertifika) | İşlemler * | Anahtar türü | Anahtar uzunluğu veya eğrisi | HSM anahtarı?| Sabit durum RPS gerekli | Gerekli en yüksek RPS |
+| Kasa adı | Vault Bölgesi | Nesne türü (Gizli, Anahtar veya Cert) | İşlem(ler)* | Anahtar Türü | Anahtar Uzunluğu veya Eğrisi | HSM anahtarı mı?| Sabit durum RPS gerekli | Tepe RPS gerekli |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Anahtar | İmzalayabilirsiniz | EC | P-256 | Hayır | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | Hayır | 200 | 1000 |
 
-olası değerlerin tam listesi Için \* bkz. [Azure Key Vault işlemler](/rest/api/keyvault/key-operations).
+\*Olası değerlerin tam listesi için [Azure Anahtar Kasası işlemlerine](/rest/api/keyvault/key-operations)bakın.
 
-Ek kapasite onaylanırsa, kapasitenin sonucu arttıkça lütfen aşağıdakileri unutmayın:
-1. Veri tutarlılığı modeli değişiklikleri. Kasa, ek aktarım hızı kapasitesine izin vertikten sonra, Key Vault Service veri tutarlılığı garantisi (temeldeki Azure depolama hizmeti devam edemediğinden daha yüksek hacimli RPS 'yi karşılamak için gereklidir).  Bir Nutshell 'de:
-  1. **Listeye izin verme olmadan**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda hemen (ör. SecretGet, KeySign).
-  1. **İzin verilenler listesi ile**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda 60 saniye içinde (örn. SecretGet, KeySign).
-1. İstemci kodu, 429 yeniden deneme için geri dönüş ilkesini kabul etmelidir. Key Vault hizmetini çağıran istemci kodu, 429 yanıt kodu aldığında istekleri Key Vault anında yeniden denememelidir.  Burada yayımlanan Azure Key Vault daraltma Kılavuzu, 429 http yanıt kodu alınırken üstel geri alma uygulanmasını önerir.
+Ek kapasite onaylanırsa, kapasite artışları sonucunda aşağıdakileri dikkate alın:
+1. Veri tutarlılığı modeli değişir. Bir kasaya ek iş hacmi kapasitesiyle izin verilenden, Key Vault hizmeti veri tutarlılığı değişiklikleri garanti eder (temel Azure Depolama hizmeti devam edemediği için daha yüksek hacimli RPS'yi karşılamak için gereklidir).  Kısaca:
+  1. **İzin siz giriş**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtacaktır (örneğin. SecretSet, CreateKey) hemen sonraki aramalarda (örneğin. SecretGet, KeySign).
+  1. **İzin girişi ile**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtacaktır (örneğin. SecretSet, CreateKey) sonraki aramalarda 60 saniye içinde (örneğin. SecretGet, KeySign).
+1. İstemci kodu, 429 yeniden deneme için geri tepme ilkesine uymalıdır. Key Vault hizmetini çağıran istemci kodu, 429 yanıt kodu aldığında Key Vault isteklerini hemen yeniden denememelidir.  Burada yayınlanan Azure Key Vault azaltma kılavuzu, 429 Http yanıt kodu alırken üstel geri leme uygulamanızı önerir.
 
-İşle ilgili geçerli durum azaltma sınırları için varsa, lütfen bizimle iletişime geçin.
+Daha yüksek gaz limitleri için geçerli bir iş durumunuz varsa, lütfen bize ulaşın.
 
-## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Nasıl kısıtlanacağını uygulamanızın yanıt olarak hizmet sınırları
+## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Hizmet limitlerine yanıt olarak uygulamanızı azaltma
 
-Aşağıda, hizmetiniz kısıtlandığınızda uygulamanız gereken **en iyi yöntemler** verilmiştir:
-- İstek başına işlemlerin sayısını azaltın.
-- İstekleri sıklığını azaltın.
-- Hemen yeniden deneme kaçının. 
-    - Tüm istekler, kullanım sınırlarını karşı tahakkuk eder.
+Hizmetiniz daraltıldığında uygulamanız gereken **en iyi uygulamalar** şunlardır:
+- İsteme başına işlem sayısını azaltın.
+- İsteklerin sıklığını azaltın.
+- Hemen yeniden denemelerden kaçının. 
+    - Tüm istekler kullanım sınırlarınıza göre tahakkuk ettirilen.
 
-Uygulamanızın hata işleme uygularken, istemci tarafı azaltma ihtiyacına algılamak için HTTP hata kodu 429 kullanın. İstek yine bir HTTP 429 hata koduyla başarısız olursa, bir Azure hizmeti sınırını hala karşılaşıyoruz. Önerilen yöntem azaltma, başarılı olana kadar istek yeniden deneniyor taraflı kullanmaya devam edin.
+Uygulamanızın hata işlemesini uyguladığınızda, istemci tarafı azaltma gereksinimini algılamak için HTTP hata kodu 429'u kullanın. İstek BIR HTTP 429 hata koduyla yine başarısız olursa, yine bir Azure hizmet sınırıyla karşılaşabilirsiniz. İstemi başarılı olana kadar yeniden deneyerek önerilen istemci tarafı azaltma yöntemini kullanmaya devam edin.
 
-Üstel geri alma uygulayan kodu aşağıda gösterilmiştir. 
+Üstel geri tepme uygulayan kod aşağıda gösterilmiştir. 
 ```
 SecretClientOptions options = new SecretClientOptions()
     {
@@ -82,21 +82,21 @@ SecretClientOptions options = new SecretClientOptions()
 ```
 
 
-Bu kodun bir istemci C# uygulamasında kullanılması basittir. 
+Bu kodu bir istemci C# uygulamasında kullanmak kolaydır. 
 
-### <a name="recommended-client-side-throttling-method"></a>Önerilen istemci-tarafı azaltma yöntemi
+### <a name="recommended-client-side-throttling-method"></a>Önerilen istemci tarafı azaltma yöntemi
 
-HTTP hata kodu 429 üzerinde bir üstel geri alma yaklaşımı kullanarak istemci azaltma başlayın:
+HTTP hata kodu 429'da, üstel bir geri dönüş yaklaşımı kullanarak istemcinizi daraltmaya başlayın:
 
-1. 1 saniye, yeniden deneme isteği bekleyin
-2. Yine de 2 saniye bekleyin kısıtlanan, isteği yeniden deneyin.
-3. Yine de 4 saniye bekleyin kısıtlanan, isteği yeniden deneyin.
-4. Yine de 8 saniye bekleyin kısıtlanan, isteği yeniden deneyin.
-5. Hala 16 saniye bekleyin kısıtlanan, isteği yeniden deneyin.
+1. 1 saniye bekleyin, isteği yeniden deneyin
+2. Hala daraltılmışsa bekleme 2 saniye, yeniden deneme isteği
+3. Hala daraltılmışsa bekleme 4 saniye, yeniden deneme isteği
+4. Hala daraltılmışsa 8 saniye bekleyin, isteği yeniden deneyin
+5. 16 saniye bekleyin, hala daraltılmışsa, isteği yeniden deneyin
 
-Bu noktada, HTTP 429 yanıtı kodları alamıyorsanız.
+Bu noktada, HTTP 429 yanıt kodları almamalısınız.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Microsoft Bulut azaltma daha derin bir yönü için bkz. [daraltma kriteri](https://docs.microsoft.com/azure/architecture/patterns/throttling).
+Microsoft Cloud'da azaltmanın daha derin bir yönü için [Azaltma Deseni'ne](https://docs.microsoft.com/azure/architecture/patterns/throttling)bakın.
 

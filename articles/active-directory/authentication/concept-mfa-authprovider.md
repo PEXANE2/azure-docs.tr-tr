@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor auth sağlayıcıları-Azure Active Directory
-description: Azure MFA ile bir kimlik doğrulama sağlayıcısı ne zaman kullanılmalıdır?
+title: Azure Çok Faktörlü Auth Sağlayıcıları - Azure Etkin Dizini
+description: Azure MFA'lı bir Auth Sağlayıcısı'nı ne zaman kullanmalısınız?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,65 +12,65 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78269377"
 ---
-# <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication sağlayıcısı ne zaman kullanılır?
+# <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Çok Faktörlü Kimlik Doğrulama Sağlayıcısı ne zaman kullanılır?
 
 İki adımlı doğrulama, Azure Active Directory’ye sahip genel yöneticiler ve Office 365 kullanıcıları için varsayılan olarak kullanılabilir durumdadır. Ancak, [gelişmiş özelliklerden](howto-mfa-mfasettings.md) yararlanmak isterseniz Azure Multi-Factor Authentication’ın (MFA) tam sürümünü satın almanız gerekir.
 
-Azure Multi-Factor auth sağlayıcısı, **lisanslarına sahip olmayan**kullanıcılar için Azure Multi-Factor Authentication tarafından belirtilen özelliklerden faydalanmak için kullanılır.
+Azure Çok Faktörlü Auth Sağlayıcısı, **lisansı olmayan**kullanıcılar için Azure Çok Faktörlü Kimlik Doğrulama tarafından sağlanan özelliklerden yararlanmak için kullanılır.
 
 > [!NOTE]
-> 1 Eylül 2018 ' den itibaren geçerli olan yeni kimlik doğrulama sağlayıcıları artık oluşturulmayabilir. Mevcut kimlik doğrulama sağlayıcıları çalışmaya ve güncelleştirilmesine devam edebilir, ancak geçiş artık mümkün değildir. Multi-Factor Authentication, Azure AD Premium lisanlarında bir özellik olarak kullanılabilir olmaya devam edecektir.
+> 1 Eylül 2018 tarihinden itibaren yeni auth sağlayıcıları oluşturulamaz. Varolan auth sağlayıcıları kullanılmaya ve güncelliğe devam edebilir, ancak geçiş artık mümkün değildir. Çok faktörlü kimlik doğrulama, Azure AD Premium lisanslarında bir özellik olarak kullanılabilir durumda olmaya devam edecektir.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Azure MFA SDK ile ilgili uyarılar
 
-SDK kullanım dışı bırakılmıştır ve yalnızca 14 Kasım 2018 ' e kadar çalışmaya devam eder. O tarihten sonra SDK çağrıları başarısız olacaktır.
+SDK'nın amortismana alındığını ve sadece 14 Kasım 2018 tarihine kadar çalışmaya devam edeceğini unutmayın. O tarihten sonra SDK çağrıları başarısız olacaktır.
 
 ## <a name="what-is-an-mfa-provider"></a>MFA Sağlayıcısı nedir?
 
-İki tür kimlik doğrulama sağlayıcısı vardır ve bu ayrım, Azure aboneliğinizin ücretlendirildiği yerlerdir. Kimlik doğrulaması başına seçeneğinde, kiracınızda bir ay içinde gerçekleştirilen kimlik doğrulaması sayısı hesaplanır. Bu, yalnızca gereken durumlarda kimlik doğrulamasını kullanan birkaç kullanıcınızın olması halinde en iyi seçenektir. Kullanıcı başına seçeneğinde, kiracınızda bir ayda iki aşamalı doğrulama gerçekleştiren kişi sayısı hesaplanır. Bu, lisansı bulunan bazı kullanıcılarınızın olması ancak MFA'yı, lisanslama sınırlarınızı aşacak sayıda kullanıcıya genişletmeniz gereken durumlarda en iyi seçenektir.
+İki tür Auth sağlayıcısı vardır ve bu ayrım Azure aboneliğinizin nasıl ücretlendirildiğini içerir. Kimlik doğrulaması başına seçeneğinde, kiracınızda bir ay içinde gerçekleştirilen kimlik doğrulaması sayısı hesaplanır. Bu, yalnızca gereken durumlarda kimlik doğrulamasını kullanan birkaç kullanıcınızın olması halinde en iyi seçenektir. Kullanıcı başına seçeneğinde, kiracınızda bir ayda iki aşamalı doğrulama gerçekleştiren kişi sayısı hesaplanır. Bu, lisansı bulunan bazı kullanıcılarınızın olması ancak MFA'yı, lisanslama sınırlarınızı aşacak sayıda kullanıcıya genişletmeniz gereken durumlarda en iyi seçenektir.
 
 ## <a name="manage-your-mfa-provider"></a>MFA Sağlayıcınızı yönetme
 
 Bir MFA sağlayıcısı oluşturulduktan sonra kullanım modelini (etkin kullanıcı başına veya kimlik doğrulaması başına) değiştiremezsiniz.
 
-MFA için etkinleştirilen tüm kullanıcıları kapsayacak sayıda lisans satın aldıysanız, MFA sağlayıcısını tamamen silebilirsiniz.
+MFA için etkinleştirilen tüm kullanıcıları kapsayacak kadar lisans satın aldıysanız, MFA sağlayıcısını tamamen silebilirsiniz.
 
-MFA sağlayıcınız bir Azure AD kiracısına bağlı değilse veya yeni MFA sağlayıcısını farklı bir Azure AD kiracısına bağlarsanız, kullanıcı ayarları ve yapılandırma seçenekleri aktarılmaz. Ayrıca, mevcut Azure MFA sunucularının MFA sağlayıcısı aracılığıyla oluşturulan etkinleştirme kimlik bilgileri kullanılarak yeniden etkinleştirilmesi gerekir.
+MFA sağlayıcınız bir Azure AD kiracısına bağlı değilse veya yeni MFA sağlayıcısını farklı bir Azure AD kiracısına bağlarsanız, kullanıcı ayarları ve yapılandırma seçenekleri aktarılmaz. Ayrıca, varolan Azure MFA Sunucuları'nın MFA Sağlayıcısı tarafından oluşturulan etkinleştirme kimlik bilgilerini kullanarak yeniden etkinleştirilmesi gerekir.
 
 ### <a name="removing-an-authentication-provider"></a>Kimlik doğrulama sağlayıcısını kaldırma
 
 > [!CAUTION]
-> Bir kimlik doğrulama sağlayıcısı silinirken hiçbir onay yok. **Sil** seçildiğinde kalıcı bir işlemdir.
+> Kimlik doğrulama sağlayıcısı nı silerken onay yoktur. **Sil'i** seçmek kalıcı bir işlemdir.
 
-Kimlik doğrulama sağlayıcıları **Azure portal** > **Azure Active Directory** > **güvenlik** > **MFA** > **sağlayıcıları**'nda bulunabilir. Söz konusu sağlayıcıyla ilişkili ayrıntıları ve konfigürasyonları görmek için listelenen sağlayıcılar ' a tıklayın.
+Kimlik doğrulama sağlayıcıları Azure **portalı** > **Azure Active Directory** > **Security** > **MFA** > **Sağlayıcıları'nda**bulunabilir. Bu sağlayıcıyla ilişkili ayrıntıları ve yapılandırmaları görmek için listelenen sağlayıcıları tıklatın.
 
-Bir kimlik doğrulama sağlayıcısını kaldırmadan önce, sağlayıcınızda yapılandırılmış tüm özelleştirilmiş ayarları göz önüne alın. Sağlayıcınızdan hangi ayarların genel MFA ayarlarına geçirilmesi gerektiğine ve bu ayarların geçişini tamamlamaya karar verin. 
+Kimlik doğrulama sağlayıcısını kaldırmadan önce, sağlayıcınızda yapılandırılan özelleştirilmiş ayarları dikkate alın. Sağlayıcınızdan genel MFA ayarlarına hangi ayarların geçirilmesi gerektiğine karar verin ve bu ayarların geçişini tamamlayın. 
 
-Sağlayıcılara bağlı Azure MFA sunucularının, **Azure portal** > altında oluşturulan kimlik bilgileri kullanılarak **Azure Active Directory** > **güvenlik** > **MFA** > **sunucu ayarları**kullanılarak yeniden etkinleştirilmesi gerekir. Yeniden etkinleştirmeden önce, aşağıdaki dosyaların ortamınızdaki Azure MFA sunucularındaki `\Program Files\Multi-Factor Authentication Server\Data\` dizininden silinmesi gerekir:
+Sağlayıcılara bağlı Azure MFA Sunucuları'nın Azure **portalı** > **Azure Active Directory** > **Security** > **MFA** > **Server ayarları**altında oluşturulan kimlik bilgilerini kullanarak yeniden etkinleştirilmesi gerekir. Reavating önce, aşağıdaki dosyaları ortamınızda `\Program Files\Multi-Factor Authentication Server\Data\` Azure MFA Sunucular dizini silinmelidir:
 
 - caCert
-- CERT
+- cert
 - groupCACert
-- groupKey
-- adýdýr
-- licenseKey
-- PKEY
+- grupKey
+- grupAdı
+- lisansAnahtar
+- Pkey
 
-![Azure portal bir kimlik doğrulama sağlayıcısını silme](./media/concept-mfa-authprovider/authentication-provider-removal.png)
+![Azure portalından bir auth sağlayıcısını silme](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Tüm ayarların geçirildiğini onayladığınızda, **Azure portal** > **Azure Active Directory** > **güvenlik** > **MFA** > **sağlayıcıları** ' na gidebilir ve üç nokta **...** simgesini seçip **Sil**' i seçebilirsiniz.
+Tüm ayarların geçirildiğini doğruladığınızda, **Azure portalı** > **Azure Active Directory** > **Security** > **MFA** > **Sağlayıcıları'na** göz atabilir ve elipsleri seçebilir ve **Sil'i**seçebilirsiniz. **...**
 
 > [!WARNING]
-> Bir kimlik doğrulama sağlayıcısı silindiğinde, bu sağlayıcı ile ilişkili tüm raporlama bilgileri silinir. Sağlayıcınızı silmeden önce etkinlik raporlarını kaydetmek isteyebilirsiniz.
+> Kimlik doğrulama sağlayıcısının silinmesiyle ilgili raporlama bilgileri bu sağlayıcıyla ilişkili tüm bilgileri siler. Sağlayıcınızı silmeden önce etkinlik raporlarını kaydetmek isteyebilirsiniz.
 
 > [!NOTE]
-> Microsoft Authenticator uygulamasının ve Azure MFA sunucusu 'nun eski sürümlerine sahip olan kullanıcıların, uygulamalarını yeniden kaydetmesi gerekebilir.
+> Microsoft Authenticator uygulamasının ve Azure MFA Server'ın eski sürümlerine sahip kullanıcıların uygulamalarını yeniden kaydetmeleri gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

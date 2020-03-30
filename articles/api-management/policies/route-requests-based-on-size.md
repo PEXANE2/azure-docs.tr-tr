@@ -1,7 +1,7 @@
 ---
-title: Örnek API yönetimi ilkesi-ileti gövdesinin boyutunu temel alan yol isteği
+title: Örnek API yönetim ilkesi - İleti gövdesinin boyutuna göre rota isteği
 titleSuffix: Azure API Management
-description: Azure API Management ilkesi örneği-isteklerin, gövdelerinin boyutuna bağlı olarak nasıl yönlendirileceğini gösterir.
+description: Azure API yönetim ilkesi örneği - İsteklerin gövdelerinin boyutuna göre nasıl yönlendirilir olduğunu gösterir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 8cee2c13386a076f0321619754468cfc1e9fb31c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442423"
 ---
-# <a name="route-the-request-based-on-the-size-of-its-body"></a>İsteği gövde boyutuna göre yönlendirin
+# <a name="route-the-request-based-on-the-size-of-its-body"></a>İsteği, gövdesinin boyutu temelinde yönlendirme
 
-Bu makalede, bunların gövdelerinin boyutuna bağlı olarak isteklerin nasıl yönlendirildiğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
+Bu makalede, istekleri gövdelerinin boyutuna göre nasıl yönlendireceklerini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. İlke kodunu ayarlamak veya ayarlamak için, Ayarla'da açıklanan adımları izleyin [veya bir ilkeyi ayarlayın.](../set-edit-policies.md) Diğer örnekleri görmek için [ilke örneklerine](../policy-samples.md)bakın.
 
 ## <a name="policy"></a>İlke
 
-Kodu **gelen** bloğa yapıştırın.
+Kodu **gelen** bloğa yapıştır.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Route requests based on size.policy.xml)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-APıM ilkeleri hakkında daha fazla bilgi edinin:
+APIM politikaları hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
 + [İlke örnekleri](../policy-samples.md)

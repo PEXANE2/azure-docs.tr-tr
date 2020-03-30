@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication veri yerleşimi
-description: Azure Multi-Factor Authentication kişisel ve kurumsal verileri, siz ve kullanıcılarınız hakkında, kaynak ülke dahilinde hangi verilerin kaldığını öğrenin.
+title: Azure Çok Faktörlü Kimlik Doğrulama veri ihtisası
+description: Azure Çok Faktörlü Kimlik Doğrulama'nın siz ve kullanıcılarınız hakkında hangi kişisel ve kurumsal verileri saklar ve hangi verilerin menşe ülke içinde kaldığını öğrenin.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,99 +12,99 @@ manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c4556ece7faaacb8657a1012344f2263ee84214
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75480144"
 ---
-# <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication veri yerleşimi ve müşteri verileri
+# <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Çok Faktörlü Kimlik Doğrulama için veri ihtisas ve müşteri verileri
 
-Müşteri verileri, Azure AD tarafından, Office 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Müşteri verilerinizin depolandığı hakkında daha fazla bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde kullanabilirsiniz.
+Müşteri verileri Azure AD tarafından kuruluşunuzun Office 365 ve Azure gibi bir Microsoft Çevrimiçi hizmetine abone olurken sağladığı adrese dayalı coğrafi bir konumda depolanır. Müşteri verilerinizin nerede depolandığı hakkında bilgi almak [için, verilerinizin nerede bulunduğu?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünü kullanabilirsiniz.
 
-Bulut tabanlı Azure Multi-Factor Authentication ve Azure Multi-Factor Authentication Sunucusu işleme ve bazı kişisel verileri ve kurumsal verileri depolama. Bu makalede, verilerin depolandığı ve nerede saklandığı özetlenmektedir.
+Bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulama ve Azure Çok Faktörlü Kimlik Doğrulama Sunucusu işlemi ve bir miktar kişisel veri ve kuruluş verilerini depolama. Bu makalede, verilerin nerede ve nereler depolandığı özetlenir.
 
-Aşağıdaki Multi-Factor Authentication etkinlikleri Şu anda yukarıda belirtilenler dışında ABD veri merkezlerinden kaynaklanmakta:
+Aşağıdaki Çok Faktörlü Kimlik Doğrulama etkinlikleri şu anda belirtilmedikçe ABD veri merkezlerinden kaynaklanmaktadır:
 
-* Telefon çağrılarını veya SMS 'yi kullanan iki öğeli kimlik doğrulama genellikle ABD veri merkezlerinden kaynaklanarak küresel sağlayıcılar tarafından yönlendirilir.
-    * Avrupa veya Avustralya gibi diğer bölgelerden gelen genel amaçlı kullanıcı kimlik doğrulama istekleri şu anda ilgili bölgedeki veri merkezleri tarafından işlenir. Self servis parola sıfırlama, Azure B2C olayları ya da NPS uzantısı veya AD FS bağdaştırıcısı kullanan Karma senaryolar gibi diğer olaylar şu anda ABD veri merkezleri tarafından işlenir.
-* Microsoft Authenticator uygulamasını kullanarak anında iletme bildirimleri ABD veri merkezlerinden kaynaklarından geliyor. Buna ek olarak, cihaz satıcısına özgü hizmetler de farklı bölgelerden oynatabilir.
-* OATH kodları genellikle ABD 'de Şu anda onaylanır
-    * Bu durumda, Avrupa veya Avustralya gibi diğer bölgelerde yer alan genel amaçlı kullanıcı kimlik doğrulama olayları da söz konusu bölgedeki veri merkezleri tarafından işlenir. Diğer olaylar şu anda ABD veri merkezleri tarafından işlenir.
+* Telefon aramaları veya SMS kullanarak iki faktörlü kimlik doğrulama genellikle ABD veri merkezlerinden kaynaklanır ve küresel sağlayıcılar tarafından yönlendirilir.
+    * Avrupa veya Avustralya gibi diğer bölgelerden gelen genel amaçlı kullanıcı kimlik doğrulama istekleri şu anda o bölgedeki veri merkezleri tarafından işlenir. Self servis parola sıfırlama, Azure B2C olayları veya NPS Uzantıveya AD FS bağdaştırıcısı kullanan karma senaryolar gibi diğer olayların tümü şu anda ABD veri merkezleri tarafından işlenmektedir.
+* Microsoft Authenticator uygulamasını kullanarak anında iletme bildirimleri ABD veri merkezlerinden kaynaklanır. Buna ek olarak, aygıt satıcısına özel hizmetler de farklı bölgelerden devreye girebilir.
+* OATH kodları genellikle şu anda ABD'de doğrulanır.
+    * Yine, Avrupa veya Avustralya gibi diğer bölgelerden kaynaklanan genel amaçlı kullanıcı kimlik doğrulama olayları, o bölgedeki veri merkezleri tarafından işlenir. Ek olaylar şu anda ABD veri merkezleri tarafından işlenir.
 
-## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication tarafından depolanan kişisel veriler
+## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure Çok Faktörlü Kimlik Doğrulama tarafından depolanan kişisel veriler
 
-Kişisel veriler, belirli bir kişiyle ilişkili kullanıcı düzeyi bilgiler. Aşağıdaki veri depoları kişisel bilgiler içerir:
+Kişisel veriler, belirli bir kişiyle ilişkili kullanıcı düzeyinde bilgilerdir. Aşağıdaki veri depoları kişisel bilgiler içerir:
 
 * Engellenen kullanıcılar
-* Atlanan kullanıcılar
-* Microsoft Authenticator cihaz belirteci değişiklik istekleri
-* Etkinlik raporları Multi-Factor Authentication
+* Atlalı kullanıcılar
+* Microsoft Authenticator aygıt belirteç değişikliği istekleri
+* Çok Faktörlü Kimlik Doğrulama faaliyet raporları
 * Microsoft Authenticator etkinleştirmeleri
 
-Bu bilgiler 90 gün boyunca tutulur.
+Bu bilgiler 90 gün boyunca saklanır.
 
-Azure Multi-Factor Authentication, Kullanıcı adı, telefon numarası veya IP adresi gibi kişisel verileri günlüğe kaydetmez, ancak kullanıcılara Multi-Factor Authentication girişimlerini tanımlayan bir *Userobjectıd* vardır. Günlük verileri 30 gün boyunca depolanır.
+Azure Çok Faktörlü Kimlik Doğrulama, kullanıcı adı, telefon numarası veya IP adresi gibi kişisel verileri kaydetmez, ancak kullanıcılara yönelik Çok Faktörlü Kimlik Doğrulama girişimlerini tanımlayan bir *UserObjectId* vardır. Günlük verileri 30 gün boyunca saklanır.
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-Azure B2C kimlik doğrulaması, NPS uzantısı ve Windows Server 2016 ya da 2019 AD FS bağdaştırıcısı dışında Azure genel bulutları için aşağıdaki kişisel veriler depolanır:
+Azure B2C kimlik doğrulaması, NPS Uzantı ve Windows Server 2016 veya 2019 AD FS Bağdaştırıcısı hariç olmak üzere Azure genel bulutları için aşağıdaki kişisel veriler depolanır:
 
 | Olay türü                           | Veri deposu türü |
 |--------------------------------------|-----------------|
-| OATH belirteci                           | Multi-Factor Authentication günlüklerde     |
-| Tek yönlü SMS                          | Multi-Factor Authentication günlüklerde     |
-| Sesli çağrı                           | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu<br />Sahtekarlık bildiriliyorsa engellenen kullanıcılar |
-| Microsoft Authenticator bildirimi | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu<br />Sahtekarlık bildiriliyorsa engellenen kullanıcılar<br />Microsoft Authenticator cihaz belirteci değiştiğinde istekleri değiştirme |
+| OATH belirteci                           | Çok Faktörlü Kimlik Doğrulama günlüklerinde     |
+| Tek yönlü SMS                          | Çok Faktörlü Kimlik Doğrulama günlüklerinde     |
+| Sesli arama                           | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu<br />Sahtekarlık rapor edilirse engellenen kullanıcılar |
+| Microsoft Authenticator bildirimi | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu<br />Sahtekarlık rapor edilirse engellenen kullanıcılar<br />Microsoft Authenticator aygıt belirteci değiştiğinde istekleri değiştirme |
 
 > [!NOTE]
-> Multi-Factor Authentication etkinlik raporu veri deposu, kimlik doğrulama isteğini işleyen bölgeden bağımsız olarak tüm bulutlara yönelik Birleşik Devletler depolanır. Microsoft Azure Almanya, 21Vianet tarafından çalıştırılan Microsoft Azure ve Microsoft kamu bulutu, genel bulut bölgesi veri depolarından ayrı olarak kendi bağımsız veri depolarına sahiptir, ancak bu veriler her zaman Birleşik Devletler depolanır.
+> Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu, kimlik doğrulama isteğini işleyen bölgeden bağımsız olarak tüm bulutlar için ABD'de depolanır. Microsoft Azure Almanya, Microsoft Azure Tarafından Işletilen 21Vianet ve Microsoft Public Cloud'un genel bulut bölgesi veri depolarından ayrı kendi bağımsız veri depoları vardır, ancak bu veriler her zaman ABD'de depolanır.
 
-Microsoft Azure Kamu, Microsoft Azure Almanya, 21Vianet tarafından çalıştırılan Microsoft Azure, Azure B2C kimlik doğrulaması, NPS uzantısı ve Windows Server 2016 ya da 2019 AD FS bağdaştırıcısı için aşağıdaki kişisel veriler depolanır:
+Microsoft Azure Hükümeti, Microsoft Azure Almanya, Microsoft Azure Tarafından Işletilen 21Vianet, Azure B2C kimlik doğrulaması, NPS Uzantı ve Windows Server 2016 veya 2019 AD FS Bağdaştırıcısı için aşağıdaki kişisel veriler depolanır:
 
 | Olay türü                           | Veri deposu türü |
 |--------------------------------------|-----------------|
-| OATH belirteci                           | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu |
-| Tek yönlü SMS                          | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu |
-| Sesli çağrı                           | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu<br />Sahtekarlık bildiriliyorsa engellenen kullanıcılar |
-| Microsoft Authenticator bildirimi | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu<br />Sahtekarlık bildiriliyorsa engellenen kullanıcılar<br />Microsoft Authenticator cihaz belirteci değiştiğinde istekleri değiştirme |
+| OATH belirteci                           | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu |
+| Tek yönlü SMS                          | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu |
+| Sesli arama                           | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu<br />Sahtekarlık rapor edilirse engellenen kullanıcılar |
+| Microsoft Authenticator bildirimi | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu<br />Sahtekarlık rapor edilirse engellenen kullanıcılar<br />Microsoft Authenticator aygıt belirteci değiştiğinde istekleri değiştirme |
 
 ### <a name="multi-factor-authentication-server"></a>Multi-Factor Authentication Sunucusu
 
-Azure Multi-Factor Authentication Sunucusu dağıtıp çalıştırırsanız, aşağıdaki kişisel veriler depolanır:
+Azure Çok Faktörlü Kimlik Doğrulama Sunucusu'nu dağıtıp çalıştırıyorsanız, aşağıdaki kişisel veriler depolanır:
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için Multi-Factor Authentication Sunucusu sunmayacaktır. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. 1 Temmuz 'dan önce Multi-Factor Authentication Sunucusu etkinleştiren mevcut müşteriler en son sürümü, gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
+> 1 Temmuz 2019 itibariyle Microsoft, yeni dağıtımlar için Artık Çok Faktörlü Kimlik Doğrulama Sunucusu sunmayacak. Kullanıcılarından çok faktörlü kimlik doğrulaması isteyen yeni müşteriler bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulaması'nı kullanmalıdır. 1 Temmuz'dan önce Çok Faktörlü Kimlik Doğrulama Sunucusu'nu etkinleştirmiş olan mevcut müşteriler, en son sürümü, gelecekteki güncelleştirmeleri karşıdan yükleyebilecek ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilecek.
 
 | Olay türü                           | Veri deposu türü |
 |--------------------------------------|-----------------|
-| OATH belirteci                           | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu |
-| Tek yönlü SMS                          | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu |
-| Sesli çağrı                           | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu<br />Sahtekarlık bildiriliyorsa engellenen kullanıcılar |
-| Microsoft Authenticator bildirimi | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu<br />Sahtekarlık bildiriliyorsa engellenen kullanıcılar<br />Microsoft Authenticator cihaz belirteci değiştiğinde istekleri değiştirme |
+| OATH belirteci                           | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu |
+| Tek yönlü SMS                          | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu |
+| Sesli arama                           | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu<br />Sahtekarlık rapor edilirse engellenen kullanıcılar |
+| Microsoft Authenticator bildirimi | Çok Faktörlü Kimlik Doğrulama günlüklerinde<br />Çok Faktörlü Kimlik Doğrulama faaliyet raporu veri deposu<br />Sahtekarlık rapor edilirse engellenen kullanıcılar<br />Microsoft Authenticator aygıt belirteci değiştiğinde istekleri değiştirme |
 
-## <a name="organizational-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication tarafından depolanan Kurumsal veriler
+## <a name="organizational-data-stored-by-azure-multi-factor-authentication"></a>Azure Çok Faktörlü Kimlik Doğrulaması tarafından depolanan kuruluş verileri
 
-Kuruluş verileri, yapılandırma veya ortam kurulumunu açığa çıkaran kiracı düzeyindeki bir bilgi. Aşağıdaki Azure portal Multi-Factor Authentication sayfalardaki kiracı ayarları, gelen telefon kimlik doğrulama istekleri için kilitleme eşikleri veya arayan KIMLIĞI bilgileri gibi kuruluş verilerini saklayabilir:
+Kuruluş verileri, yapılandırma yı veya ortam kurulumlarını ortaya çıkarabilecek kiracı düzeyindebilgidir. Aşağıdaki Azure portalı Çok Faktörlü Kimlik Doğrulama sayfalarındaki kiracı ayarları, gelen telefon kimlik doğrulama istekleri için kilitleme eşikleri veya arayan kimliği bilgileri gibi kuruluş verilerini depolayabilir:
 
 * Hesap kilitleme
 * Sahtekarlık uyarısı
 * Bildirimler
 * Telefon görüşmesi ayarları
 
-Azure Multi-Factor Authentication Sunucusu için aşağıdaki Azure portal sayfaları kuruluş verilerini içerebilir:
+Azure Çok Faktörlü Kimlik Doğrulama Sunucusu için aşağıdaki Azure portal sayfaları kuruluş verileri içerebilir:
 
-* Sunucu ayarları
-* Bir kerelik geçiş
+* Sunucu ayarlar
+* Tek seferlik baypas
 * Önbelleğe alma kuralları
-* Multi-Factor Authentication Sunucusu durumu
+* Çok Faktörlü Kimlik Doğrulama Sunucusu durumu
 
 ## <a name="log-data-location"></a>Günlük veri konumu
 
-Günlük bilgilerinin depolandığı yer, içinde işlendiği bölgeye bağlıdır. Çoğu geographıes yerel Azure Multi-Factor Authentication özelliklerine sahiptir, bu nedenle günlük verileri Multi-Factor Authentication isteğini işleyen bölgede depolanır. Yerel Azure Multi-Factor Authentication desteği olmadan coğrafi olarak, Birleşik Devletler veya Avrupa coğrafi ve günlük verileri Multi-Factor Authentication isteğini işleyen bölgede depolanır.
+Günlük bilgilerinin depolandığı yer, hangi bölgede işlendiğine bağlıdır. Çoğu coğrafyanın yerel Azure Çok Faktörlü Kimlik Doğrulama yetenekleri vardır, bu nedenle günlük verileri Çok Faktörlü Kimlik Doğrulama isteğini işleyen aynı bölgede depolanır. Yerel Azure Çok Faktörlü Kimlik Doğrulama desteği olmayan coğrafyalarda, bunlara ABD veya Avrupa coğrafyaları tarafından hizmet verilir ve günlük verileri Çok Faktörlü Kimlik Doğrulama isteğini işleyen aynı bölgede depolanır.
 
-Bazı çekirdek kimlik doğrulama günlüğü verileri yalnızca Birleşik Devletler depolanır. 21Vianet tarafından çalıştırılan Microsoft Azure Almanya ve Microsoft Azure her zaman ilgili bulutta depolanır. Microsoft kamu bulutu günlük verileri her zaman Birleşik Devletler depolanır.
+Bazı temel kimlik doğrulama günlüğü verileri yalnızca ABD'de depolanır. Microsoft Azure Almanya ve Microsoft Azure Tarafından Çalıştırılan 21Vianet her zaman kendi bulutlarında depolanır. Microsoft Government Cloud günlük verileri her zaman ABD'de depolanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bulut tabanlı Azure Multi-Factor Authentication ve Azure Multi-Factor Authentication Sunucusu tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](howto-mfa-reporting-datacollection.md).
+Bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulama ve Azure Çok Faktörlü Kimlik Doğrulama Sunucusu tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için Azure [Çok Faktörlü Kimlik Doğrulama kullanıcı veri koleksiyonuna](howto-mfa-reporting-datacollection.md)bakın.

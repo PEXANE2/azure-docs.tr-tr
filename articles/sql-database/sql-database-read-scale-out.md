@@ -1,6 +1,6 @@
 ---
-title: Çoğaltmalarda sorguları okuyun
-description: Azure SQL veritabanı, salt okunurdur okuma-genişletme adlı salt okuma çoğaltmalarının kapasitesini kullanarak salt okunurdur.
+title: Yinelemelerle ilgili sorguları okuma
+description: Azure SQL Veritabanı, salt okunur çoğaltma ların kapasitesini kullanarak salt okunur iş yüklerini yükleme olanağı sağlar - Ölçeklendirme oku adı verilir.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,49 +12,49 @@ ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
 ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206954"
 ---
-# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Salt okunurdur ve salt okunurdur sorgu iş yüklerinin yükünü dengelemek için salt okuma çoğaltmaları kullanın
+# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Salt okunur sorgu iş yüklerinde yük dengelemesi için salt okurun çoğaltmaları kullanma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Yüksek kullanılabilirlik mimarisinin](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)bir parçası olarak, Premium ve iş açısından kritik hizmet katmanındaki her bir veritabanı, birincil çoğaltma ve birkaç ikincil çoğaltmayla otomatik olarak sağlanır. İkincil çoğaltmalar, birincil çoğaltmayla aynı işlem boyutuyla sağlanır. Okuma **ölçeği genişletme** özelliği, okuma-yazma çoğaltmasını paylaşmak yerine salt okuma Çoğaltmalarından birinin KAPASITESINI kullanarak SQL veritabanı salt okuma iş yüklerini yük dengelemenize olanak tanır. Bu şekilde salt okunur iş yükü ana okuma-yazma iş yükünden yalıtılır ve bu iş yükünün performansını etkilemez. Özelliği, analiz gibi mantıksal olarak ayrılmış salt okunurdur iş yüklerini içeren uygulamalara yöneliktir. Premium ve İş Açısından Kritik hizmet katmanlarında uygulamalar, ek ücret ödemeden bu ek kapasiteyi kullanarak performans avantajları elde edebilir.
+[Yüksek Kullanılabilirlik mimarisinin](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)bir parçası olarak, Premium ve İş Açısından Kritik hizmet katmanındaki her veritabanı otomatik olarak birincil yineleme ve birkaç ikincil yinelemeyle birlikte verilir. İkincil yinelemeler birincil yinelemeyle aynı işlem boyutuyla birlikte verilir. **Okuma Ölçeği-Out** özelliği, oku-yazma yinelemesini paylaşmak yerine yalnızca okundu yinelemelerinden birinin kapasitesini kullanarak SQL Veritabanı salt okunur iş yüklerini yüklemenize olanak tanır. Bu şekilde salt okunur iş yükü ana okuma-yazma iş yükünden yalıtılır ve bu iş yükünün performansını etkilemez. Bu özellik, analitik gibi mantıksal olarak ayrılmış salt okunur iş yüklerini içeren uygulamalar için tasarlanmıştır. Premium ve İş Açısından Kritik hizmet katmanlarında, uygulamalar bu ek kapasiteyi hiçbir ek ücret ödemeden kullanarak performans avantajları ndan kazanç sağlayabilir.
 
-En az bir ikincil çoğaltma oluşturulduğunda, hiper ölçek hizmeti katmanında **okuma ölçeği** genişletme özelliği de kullanılabilir. Salt okuma iş yükleri, bir ikincil çoğaltmada kullanılabilir olandan daha fazla kaynak gerektiriyorsa birden çok ikincil çoğaltma kullanılabilir. Temel, standart ve Genel Amaçlı hizmet katmanlarının yüksek kullanılabilirlik mimarisi herhangi bir çoğaltma içermez. Bu hizmet katmanlarında **okuma ölçeği genişletme** özelliği kullanılamaz.
+En az bir ikincil yineleme **oluşturulduğunda, Okuma Ölçeği-Out** özelliği Hyperscale hizmet katmanında da kullanılabilir. Salt okunur iş yükleri bir ikincil yinelemede kullanılabilirden daha fazla kaynak gerektiriyorsa, birden çok ikincil yineleme kullanılabilir. Temel, Standart ve Genel Amaçlı hizmet katmanlarının Yüksek Kullanılabilirlik mimarisinde yinelemeler yer almaz. Bu hizmet katmanlarında **Okuma Ölçeği-Out** özelliği kullanılamaz.
 
-Aşağıdaki diyagramda bir İş Açısından Kritik veritabanı kullanılarak gösterilmektedir.
+Aşağıdaki diyagram, bir İş Açısından Kritik veritabanı nı kullanarak bunu göstermektedir.
 
-![Salt okunur çoğaltmalar](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
+![Yalnızca yinelemeleri okuma](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-Yeni Premium, İş Açısından Kritik ve hiper ölçekli veritabanlarında, okuma ölçeği genişletme özelliği varsayılan olarak etkindir. Hiper ölçek için, varsayılan olarak yeni veritabanları için bir ikincil çoğaltma oluşturulur. SQL bağlantı dizeniz `ApplicationIntent=ReadOnly`ile yapılandırıldıysa, uygulama ağ geçidi tarafından bu veritabanının salt okunurdur. `ApplicationIntent` özelliğini kullanma hakkında daha fazla bilgi için bkz. [uygulama hedefini belirtme](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+Yeni Premium, Business Critical ve Hyperscale veritabanlarında Varsayılan olarak Ölçeklendirme Oku özelliği etkinleştirilir. Hyperscale için, yeni veritabanları için varsayılan olarak ikincil bir yineleme oluşturulur. SQL bağlantı dizeniz ile `ApplicationIntent=ReadOnly`yapılandırılırsa, uygulama ağ geçidi tarafından bu veritabanının salt okunur yinelemesine yönlendirilir. `ApplicationIntent` Özelliğin nasıl kullanılacağı hakkında bilgi için [bkz.](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)
 
-Uygulamanın SQL bağlantı dizesindeki `ApplicationIntent` ayarından bağımsız olarak birincil çoğaltmaya bağlanmasını sağlamak istiyorsanız, veritabanını oluştururken veya yapılandırmasını değiştirmeksizin, okuma ölçeğini açıkça devre dışı bırakmanız gerekir. Örneğin, veritabanınızı standart veya Genel Amaçlı katmanından Premium, İş Açısından Kritik veya hiper ölçekli katmana yükseltirsiniz ve tüm bağlantılarınızın birincil çoğaltmaya gitmeye devam etmesini sağlamak istiyorsanız, okuma ölçeğini devre dışı bırakın. Devre dışı bırakma hakkında daha fazla bilgi için bkz. [okuma ölçeğini etkinleştirme ve devre dışı bırakma](#enable-and-disable-read-scale-out).
+Uygulamanın SQL bağlantı dizesindeki `ApplicationIntent` ayarı ne olursa olsun birincil yinelemeye bağlanmasını sağlamak istiyorsanız, veritabanını oluştururken veya yapılandırmasını değiştirirken okuma ölçeğini açıkça devre dışı bmelisiniz. Örneğin, veritabanınızı Standart veya Genel Amaçlı katmandan Premium, İş Açısından Kritik veya Hiper ölçekli katmana yükseltiyorsanız ve tüm bağlantılarınızın birincil yinelemeye gitmeye devam etmesini istiyorsanız, Okuma Ölçeği'ni devre dışı bırakın. Nasıl devre dışı atılanın, [Oku Ölçeğini Etkinleştir ve devre dışı etme](#enable-and-disable-read-scale-out)bilgisi için bkz.
 
 > [!NOTE]
-> Sorgu veri deposu, genişletilmiş olaylar ve SQL Profiler özellikleri salt okunurdur çoğaltmalar üzerinde desteklenmez.
+> Sorgu Veri Deposu, Genişletilmiş Olaylar ve SQL Profiler özellikleri salt okunur yinelemelerde desteklenmez.
 
 ## <a name="data-consistency"></a>Veri tutarlılığı
 
-Çoğaltmaların avantajlarından biri, çoğaltmaların her zaman işlemsel olarak tutarlı durumda olması, ancak farklı noktalarda, farklı çoğaltmalar arasında bazı küçük bir gecikme süresi olabilir. Okuma ölçeği genişletme, oturum düzeyi tutarlılığını destekler. Bu, salt okuma oturumu, çoğaltma kullanım dışı olmasından kaynaklanan bir bağlantı hatasından sonra yeniden bağlanırsa, okuma-yazma çoğaltmasındaki %100 güncel olmayan bir çoğaltmaya yönlendirilebilir. Benzer şekilde, bir uygulama bir okuma-yazma oturumu kullanarak veri yazarsa ve salt okunur bir oturum kullanarak bunu hemen okuduğunda, en son güncelleştirmelerin çoğaltmada hemen görünür olmaması mümkündür. Gecikme süresi, zaman uyumsuz bir işlem günlüğü yineleme işlemi nedeniyle oluşur.
+Yinelemelerin avantajlarından biri, yinelemelerin her zaman işlem açısından tutarlı durumda olmasıdır, ancak zaman içinde farklı noktalarda farklı yinelemeler arasında küçük bir gecikme olabilir. Read Scale-Out oturum düzeyinde tutarlılığı destekler. Bunun anlamı, yineleme kullanılabilirliğinden kaynaklanan bir bağlantı hatasından sonra salt okunur oturumu yeniden bağlanırsa, okuma yazma yinelemesiyle %100 güncel olmayan bir yinelemeye yönlendirilebilir. Aynı şekilde, bir uygulama bir okuma-yazma oturumu kullanarak veri yazar ve hemen salt okunur oturumu kullanarak okursa, en son güncelleştirmelerin yinelemede hemen görünmemesi mümkündür. Gecikme, eşzamanlı işlem günlüğü yeniden işlem den kaynaklanır.
 
 > [!NOTE]
-> Bölge içindeki çoğaltma gecikmeleri düşüktür ve bu durum nadir olarak belirlenir.
+> Bölge içindeki çoğaltma gecikmeleri düşüktür ve bu durum nadirdir.
 
-## <a name="connect-to-a-read-only-replica"></a>Salt okunurdur bir çoğaltmaya bağlanma
+## <a name="connect-to-a-read-only-replica"></a>Salt okunur yinelemeye bağlanma
 
-Bir veritabanı için okuma ölçeğini etkinleştirdiğinizde, istemci tarafından belirtilen bağlantı dizesindeki `ApplicationIntent` seçeneği bağlantının yazma çoğaltmasına mı yoksa salt bir salt bir kopyaya mı yönlendirildiğini belirler. Özellikle, `ApplicationIntent` değeri `ReadWrite` (varsayılan değer), bağlantı veritabanının okuma/yazma çoğaltmasına yönlendirilir. Bu, varolan davranışla aynıdır. `ApplicationIntent` değeri `ReadOnly`, bağlantı salt bir çoğaltma çoğaltması olarak yönlendirilir.
+Bir veritabanı için Oku Ölçeklendirme'yi `ApplicationIntent` etkinleştirdiğinizde, istemci tarafından sağlanan bağlantı dizesinde seçenek, bağlantının yazma yinelemesine mi yoksa yalnızca okunur yinelemeye mi yönlendirildiğini belirler. Özellikle, `ApplicationIntent` değer (varsayılan değer) ise, `ReadWrite` bağlantı veritabanının okuma yazma yinelemesine yönlendirilir. Bu, varolan davranışla aynıdır. `ApplicationIntent` Değer ise, `ReadOnly`bağlantı salt okunur yinelemeye yönlendirilir.
 
-Örneğin, aşağıdaki bağlantı dizesi istemciyi salt bir salt bir kopyaya bağlar (açılı ayraçlar içindeki öğeleri, ortamınız için doğru değerlerle değiştirerek ve açılı ayraçları bırakarak):
+Örneğin, aşağıdaki bağlantı dizesi istemciyi salt okunur yinelemeye bağlar (açı parantezindeki öğeleri ortamınız için doğru değerlerle değiştirme ve açı braketlerini düşürme):
 
 ```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
-Aşağıdaki bağlantı dizelerinden biri, istemciyi bir okuma-yazma çoğaltmasına bağlar (açılı ayraçlar içindeki öğeleri, ortamınız için doğru değerlerle değiştirerek ve açılı ayraçları bırakarak):
+Aşağıdaki bağlantı dizelerinden biri istemciyi okuma-yazma yinelemesine bağlar (açı parantezindeki öğeleri ortamınız için doğru değerlerle değiştirme ve açı braketlerini düşürme):
 
 ```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
@@ -62,59 +62,59 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
-## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Bir bağlantının salt bir çoğaltma çoğaltması olduğunu doğrulama
+## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Bağlantının salt okunur yinelemeye ait olduğunu doğrulama
 
-Aşağıdaki sorguyu çalıştırarak salt tanımlı bir çoğaltmaya bağlanıp bağlanmadığını doğrulayabilirsiniz. Salt okunurdur bir kopyaya bağlandığında READ_ONLY döndürür.
+Aşağıdaki sorguyu çalıştırarak salt okunur yinelemeye bağlanıp bağlanmadığınızı doğrulayabilirsiniz. Salt okunur bir yinelemeye bağlandığında READ_ONLY döndürecek.
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
 > [!NOTE]
-> Belirli bir zamanda yalnızca bir AlwaysON Çoğaltmalarından birine salt okunur oturumlar erişebilir.
+> Herhangi bir zamanda, ReadOnly oturumları tarafından yalnızca bir AlwaysON yinelemesi erişilebilir.
 
-## <a name="monitoring-and-troubleshooting-read-only-replica"></a>Salt okuma çoğaltması izleme ve sorunlarını giderme
+## <a name="monitoring-and-troubleshooting-read-only-replica"></a>Yalnızca okunan yinelemeyi izleme ve sorun giderme
 
-Bir salt okuma çoğaltmasına bağlanıldığında, `sys.dm_db_resource_stats` DMV kullanarak performans ölçümlerine erişebilirsiniz. Sorgu planı istatistiklerine erişmek için `sys.dm_exec_query_stats`, `sys.dm_exec_query_plan` ve `sys.dm_exec_sql_text` DMVs 'leri kullanın.
-
-> [!NOTE]
-> Mantıksal ana veritabanındaki DMV `sys.resource_stats`, birincil çoğaltmanın CPU kullanımını ve depolama verilerini döndürür.
-
-## <a name="enable-and-disable-read-scale-out"></a>Okuma ölçeğini etkinleştirme ve devre dışı bırakma
-
-Okuma ölçeği genişletme, Premium, İş Açısından Kritik ve hiper ölçek hizmeti katmanlarında varsayılan olarak etkindir. Okuma ölçeği genişletme, temel, standart veya Genel Amaçlı Hizmet katmanlarında etkinleştirilemez. Okuma ölçeği genişletme, 0 çoğaltmalarıyla yapılandırılmış hiper ölçekli veritabanlarında otomatik olarak devre dışıdır.
-
-Aşağıdaki yöntemleri kullanarak, Premium veya İş Açısından Kritik hizmet katmanındaki tek veritabanlarında ve esnek havuz veritabanlarında okuma ölçeğini devre dışı bırakıp yeniden etkinleştirebilirsiniz.
+Salt okunur yinelemeye bağlandığınızda, `sys.dm_db_resource_stats` DMV'yi kullanarak performans ölçümlerine erişebilirsiniz. Sorgu planı istatistiklerine erişmek `sys.dm_exec_query_stats` `sys.dm_exec_query_plan` için, ve `sys.dm_exec_sql_text` DMV'leri kullanın.
 
 > [!NOTE]
-> Okuma ölçeğini devre dışı bırakma özelliği, geriye dönük uyumluluk için sağlanır.
+> Mantıksal ana `sys.resource_stats` veritabanındaki DMV, birincil yinelemenin CPU kullanımını ve depolama verilerini döndürür.
 
-### <a name="azure-portal"></a>Azure portalı
+## <a name="enable-and-disable-read-scale-out"></a>Okuma Ölçeğini Etkinleştirme ve Devre Dışı
 
-Veritabanı **yapılandırma** dikey penceresinde okuma ölçeği genişletme ayarını yönetebilirsiniz.
+Premium, Business Critical ve Hyperscale hizmet katmanlarında Varsayılan olarak Ölçeklendirme Oku etkinleştirilir. Temel, Standart veya Genel Amaçlı hizmet katmanlarında Ölçeklendirme Okuma etkinleştirilemez. Read Scale-Out, 0 çoğaltmayla yapılandırılan Hiper ölçekli veritabanlarında otomatik olarak devre dışı bırakılır.
+
+Aşağıdaki yöntemleri kullanarak Premium veya Business Critical hizmet katmanındaki tek veritabanlarında ve esnek havuz veritabanlarında Okuma Ölçeğini devre dışı bırakıp yeniden etkinleştirebilirsiniz.
+
+> [!NOTE]
+> Read Scale-Out'u devre dışı etme olanağı geriye dönük uyumluluk için sağlanır.
+
+### <a name="azure-portal"></a>Azure portalında
+
+**Yapılandırılan** veritabanı bıçaklarında Okuma Ölçeği-out ayarını yönetebilirsiniz.
 
 ### <a name="powershell"></a>PowerShell
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager (RM) modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
+> PowerShell Azure Kaynak Yöneticisi (RM) modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirmeler Az.Sql modülü içindir. AzureRM modülü en az Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecektir.  Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumlulukları hakkında daha fazla bilgi için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az)
 
-Azure PowerShell 'de okuma ölçeğini yönetme, Aralık 2016 Azure PowerShell yayını veya daha yenisini gerektirir. En yeni PowerShell sürümü için bkz. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Azure PowerShell'de Okuma Ölçeğini yönetme için Aralık 2016 Azure PowerShell sürümü veya daha yeni sürümü gerekiyor. En yeni PowerShell sürümü için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)bölümüne bakın.
 
-[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) cmdlet 'ini çağırarak ve `-ReadScale` parametresi için istenen değer – `Enabled` veya `Disabled`--geçirerek Azure PowerShell okuma ölçeğini devre dışı bırakabilir veya yeniden etkinleştirebilirsiniz.
+[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) cmdlet'i çağırarak ve parametre için istenen değerde (veya) `Enabled` geçerek Azure PowerShell'de Okuma Ölçeğini `Disabled` `-ReadScale` devre dışı bırakabilir veya yeniden etkinleştirebilirsiniz.
 
-Var olan bir veritabanında okuma ölçeğini devre dışı bırakmak için (açılı ayraçlar içindeki öğeleri, ortamınız için doğru değerlerle değiştirerek ve açılı ayraçları bırakarak):
+Varolan bir veritabanında okuma ölçeğini devre dışı bırakmak için (açı parantezindeki öğeleri ortamınız için doğru değerlerle değiştirme ve açı braketlerini düşürme):
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled
 ```
 
-Yeni bir veritabanında okuma ölçeğini devre dışı bırakmak için (açılı ayraçlar içindeki öğeleri, ortamınız için doğru değerlerle değiştirerek ve açılı ayraçları bırakarak):
+Yeni bir veritabanında okuma ölçeğini devre dışı bırakmak için (açı parantezindeki öğeleri ortamınız için doğru değerlerle değiştirme ve açı braketlerini düşürme):
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled -Edition Premium
 ```
 
-Var olan bir veritabanında okuma ölçeğini yeniden etkinleştirmek için (açılı ayraçlar içindeki öğeleri, ortamınız için doğru değerlerle değiştirerek ve açılı ayraçları bırakarak):
+Varolan bir veritabanında okuma ölçeğini yeniden etkinleştirmek için (açı parantezindeki öğeleri ortamınız için doğru değerlerle değiştirme ve açı braketlerini düşürme):
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
@@ -122,7 +122,7 @@ Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName
 
 ### <a name="rest-api"></a>REST API
 
-Okuma ölçeği genişletme devre dışı bırakılmış bir veritabanı oluşturmak veya var olan bir veritabanının ayarını değiştirmek için aşağıdaki yöntemi `readScale` özelliği `Enabled` veya aşağıdaki örnek istekteki gibi `Disabled` olarak kullanın.
+Okuma ölçeklendirme devre dışı bırakılmış bir veritabanı oluşturmak veya varolan bir veritabanının `readScale` ayarını `Enabled` değiştirmek `Disabled` için aşağıdaki yöntemi aşağıdaki örnek istekte ayarlanan özellikle birlikte kullanın.
 
 ```rest
 Method: PUT
@@ -134,19 +134,19 @@ Body: {
 }
 ```
 
-Daha fazla bilgi için bkz. [veritabanları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+Daha fazla bilgi için [Bkz. Veritabanları - Oluştur veya Güncelleştir.](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
 
-## <a name="using-tempdb-on-read-only-replica"></a>Salt okuma çoğaltmasında TempDB kullanma
+## <a name="using-tempdb-on-read-only-replica"></a>TempDB'yi salt okunur yinelemede kullanma
 
-TempDB veritabanı salt okunurdur çoğaltmalara çoğaltılmaz. Her çoğaltmanın, çoğaltma oluşturulduğunda oluşturulan kendi TempDB veritabanı sürümü vardır. TempDB 'nin güncelleştirilebilir olmasını ve sorgu yürütme sırasında değiştirilmesini sağlar. Salt okuma iş yükünüz TempDB nesnelerini kullanmaya bağımlıysa, bu nesneleri sorgu betiğinizin bir parçası olarak oluşturmanız gerekir.
+TempDB veritabanı salt okunur yinelemelere çoğaltılamaz. Her yineleme, yineleme oluşturulduğunda oluşturulan TempDB veritabanının kendi sürümüne sahiptir. TempDB'nin güncelleştirilmesini ve sorgu yürütmeniz sırasında değiştirilebilmesini sağlar. Salt okunur iş yükünüz TempDB nesnelerini kullanmaya bağlıysa, sorgu komut dosyanızın bir parçası olarak bu nesneleri oluşturmanız gerekir.
 
-## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Coğrafi olarak çoğaltılan veritabanları ile okuma ölçeğini kullanma
+## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Coğrafi olarak çoğaltılan veritabanlarıyla Okuma Ölçeğini Kullanma
 
-Coğrafi olarak çoğaltılan bir veritabanında (örneğin, bir yük devretme grubunun üyesi olarak) salt okuma iş yüklerini yük dengelemesi için okuma ölçeğini kullanıyorsanız, hem birincil hem de coğrafi olarak çoğaltılan ikincil veritabanlarında okuma ölçeği 'nin etkinleştirildiğinden emin olun. Bu yapılandırma, uygulamanız yük devretmeden sonra yeni birincil ağa bağlanırsa aynı yük dengeleme deneyiminin devam etmesini sağlar. Coğrafi olarak çoğaltılan ikincil veritabanına okuma ölçeğinde bir şekilde bağlanıyorsanız, `ApplicationIntent=ReadOnly` olan oturumlarınız, birincil veritabanında bağlantıları yönlendirdiğimiz şekilde çoğaltmalardan birine yönlendirilir.  `ApplicationIntent=ReadOnly` olmayan oturumlar, coğrafi olarak çoğaltılan ikincil kopyanın birincil çoğaltmasına yönlendirilir ve bu da salt okunurdur. Coğrafi olarak çoğaltılan ikincil veritabanının birincil veritabanından farklı bir uç noktası olduğundan, ikincil veritabanına erişmek için geçmişte `ApplicationIntent=ReadOnly`ayarlanması gerekmedi. Geriye dönük uyumluluk sağlamak için `sys.geo_replication_links` DMV `secondary_allow_connections=2` gösterir (herhangi bir istemci bağlantısına izin verilir).
+Coğrafi olarak çoğaltılmış bir veritabanında salt okunur iş yüklerini yüklemek için Oku Ölçeği-Out kullanıyorsanız (örneğin, bir başarısız grubun üyesi olarak), hem birincil hem de coğrafi olarak çoğaltılan ikincil veritabanlarında okuma ölçeklendirmesinin etkin olduğundan emin olun. Bu yapılandırma, uygulamanız başarısız olduktan sonra yeni birincil ebağlandığında aynı yük dengeleme deneyiminin devam etmesini sağlar. Okuma ölçeği etkinleştirilmiş coğrafi çoğaltılan ikincil veritabanına bağlanıyorsanız, `ApplicationIntent=ReadOnly` oturumlarınız birincil veritabanındaki bağlantıları yönlendirdiğimiz şekilde yinelemelerden birine yönlendirilir.  Olmayan `ApplicationIntent=ReadOnly` oturumlar, yalnızca okunur olan coğrafi çoğaltılan ikincil sekonderin birincil kopyasına yönlendirilir. Coğrafi olarak çoğaltılan ikincil veritabanı birincil veritabanından farklı bir bitiş noktasına sahip olduğundan, tarihsel `ApplicationIntent=ReadOnly`olarak ikincil veritabanına erişmek için ayarlamak için gerekli değildi. Geriye dönük uyumluluk `sys.geo_replication_links` sağlamak için `secondary_allow_connections=2` DMV gösterir (herhangi bir istemci bağlantısına izin verilir).
 
 > [!NOTE]
-> Hepsini bir kez deneme veya ikincil veritabanının yerel çoğaltmaları arasındaki diğer yük dengeli yönlendirme desteklenmez.
+> İkincil veritabanının yerel yinelemeleri arasında round-robin veya başka bir yük dengeli yönlendirme desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SQL veritabanı hiper ölçek teklifi hakkında bilgi için bkz. [hyperscale hizmet katmanı](./sql-database-service-tier-hyperscale.md).
+- SQL Veritabanı Hiperölçek teklifi hakkında daha fazla bilgi [için, Bkz. Hyperscale hizmet katmanı.](./sql-database-service-tier-hyperscale.md)

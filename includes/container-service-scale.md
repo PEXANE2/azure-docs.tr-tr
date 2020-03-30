@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66814856"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 [Azure Container Service kümesini dağıttıktan](../articles/container-service/dcos-swarm/container-service-deployment.md) sonra aracı düğüm sayısını değiştirmeniz gerekebilir. Örneğin, daha fazla kapsayıcı uygulaması veya örneği çalıştırmak için daha fazla aracı gerekebilir. 
 
-Azure portalında veya Azure CLI kullanarak bir DC/OS, Docker Swarm veya Kubernetes kümesindeki Aracısı düğüm sayısını değiştirebilirsiniz. 
+Azure portalını veya Azure CLI'yi kullanarak DC/OS, Docker Swarm veya Kubernetes kümesindeki aracı düğümü sayısını değiştirebilirsiniz. 
 
 ## <a name="scale-with-the-azure-portal"></a>Azure Portal’da ölçeklendirme
 
@@ -27,9 +27,9 @@ Azure portalında veya Azure CLI kullanarak bir DC/OS, Docker Swarm veya Kuberne
 
 4. Yapılandırmayı kaydetmek için **Kaydet**’e tıklayın.
 
-## <a name="scale-with-the-azure-cli"></a>Azure CLI ile ölçeklendirme
+## <a name="scale-with-the-azure-cli"></a>Azure CLI ile ölçeklendirin
 
-[Azure CLI'yı yükleme](/cli/azure/install-azure-cli) ve ile bir Azure hesabında oturum açma `az login`.
+[Azure CLI'yi yükleyin](/cli/azure/install-azure-cli) ve bir `az login`Azure hesabında oturum açın.
 
 ### <a name="see-the-current-agent-count"></a>Geçerli aracı sayısını görme
 Şu anda kümedeki aracıları sayısını görmek için `az acs show` komutunu çalıştırın. Bunu yaptığınızda küme yapılandırması gösterilir. Örneğin, aşağıdaki komut `myResourceGroup` kaynak grubundaki `containerservice-myACSName` adlı kapsayıcı hizmetinin yapılandırmasını gösterir:
@@ -65,6 +65,6 @@ Daha fazla komut seçeneği için `az acs scale --help` komutunu çalıştırın
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bkz: [daha fazla örnek](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) Azure Container Service ile Azure CLI komutlarını kullanma.
+* Azure Kapsayıcı Hizmeti ile Azure CLI komutlarını kullanmanın [diğer örneklerine](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) bakın.
 * Azure Container Service’de [DC/OS aracı havuzları](../articles/container-service/dcos-swarm/container-service-dcos-agents.md) hakkında daha fazla bilgi edinin.
 

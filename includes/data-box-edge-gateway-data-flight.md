@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: acf1195616d45b155445604ef0204528e5f7ca03
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67189008"
 ---
 Uçuş verileri için:
 
-- Standart TLS 1.2 cihaz ve Azure arasında geçen verileri için kullanılır. TLS 1.1 ve önceki sürümleri geri dönüş yoktur. Aracı iletişimi, TLS 1.2 desteklenmiyorsa engellenir. TLS 1.2 portal ve SDK yönetimi için de gereklidir.
-- İstemciler, cihazınızın yerel web kullanıcı Arabiriminde bir tarayıcı eriştiğinizde, standart TLS 1.2 varsayılan güvenli protokol olarak kullanılır.
+- Standart TLS 1.2, aygıt ve Azure arasında seyahat eden veriler için kullanılır. TLS 1.1 ve daha önceki bir geri dönüş yoktur. TLS 1.2 desteklenmezse aracı iletişimi engellenir. PORTAL ve SDK yönetimi için TLS 1.2 de gereklidir.
+- İstemciler cihazınıza bir tarayıcının yerel web ui üzerinden eriştisinse, standart TLS 1.2 varsayılan güvenli protokol olarak kullanılır.
 
-    - TLS 1.2 kullanmak için tarayıcınızı yapılandırmak için en iyi yöntem olacaktır.
-    - TLS 1.2 tarayıcı desteklemiyorsa, TLS 1.1 veya TLS 1.0 kullanabilirsiniz.
-- Veri sunucularınızdan kopyalarken verilerini korumak için şifreleme ile SMB 3.0 kullanmanızı öneririz.
+    - En iyi uygulama, tarayıcınızı TLS 1.2 kullanacak şekilde yapılandırmaktır.
+    - Tarayıcı TLS 1.2'yi desteklemiyorsa, TLS 1.1 veya TLS 1.0 kullanabilirsiniz.
+- Verileri veri sunucularınızdan kopyalarken korumak için SMB 3.0'ı şifreleme ile kullanmanızı öneririz.

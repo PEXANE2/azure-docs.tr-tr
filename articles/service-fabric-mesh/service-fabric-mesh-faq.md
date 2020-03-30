@@ -1,48 +1,48 @@
 ---
-title: Azure Service Fabric ağı için sık sorulan sorular
-description: Azure Service Fabric ağı hakkında sık sorulan sorular ve yanıtlar hakkında bilgi edinin.
+title: Azure Hizmet Kumaş Örgü için sık sorulan sorular
+description: Azure Service Fabric Mesh için sık sorulan sorular ve yanıtlar hakkında bilgi edinin.
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252504"
 ---
-# <a name="commonly-asked-service-fabric-mesh-questions"></a>Sık sorulan Service Fabric kafes soruları
+# <a name="commonly-asked-service-fabric-mesh-questions"></a>Sık sorulan Servis Kumaş Örgü soruları
 
-Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir. Bu makalede, sık sorulan soruların yanıtları bulunur.
+Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir. Bu makalede, sık sorulan soruların yanıtları vardır.
 
-## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Nasıl yaparım? bir sorun bildirin veya soru sorun musunuz?
+## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Bir sorunu nasıl bildirebilirim veya soru sorarım?
 
-Soru sorun, Microsoft mühendislerinden yanıt alın ve [Service-Fabric-kafes-Preview GitHub](https://aka.ms/sfmeshissues)depolarında sorun bildirin.
+Sorular sorun, Microsoft mühendislerinden yanıtlar alın ve [hizmet-kumaş-örgü-önizleme GitHub repo'sundaki](https://aka.ms/sfmeshissues)sorunları bildirin.
 
-## <a name="quota-and-cost"></a>Kota ve maliyet
+## <a name="quota-and-cost"></a>Kota ve Maliyet
 
-### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Önizlemeye katılma maliyeti nedir?
+### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Önizlemeye katılmanın maliyeti nedir?
 
-Şu anda ağ önizlemesine uygulama veya kapsayıcılar dağıtmaya yönelik ücret alınmaz. Faturalandırma için etkinleştirme için lütfen ' de güncelleştirmeler ' i izleyin. Ancak, dağıttığınız kaynakları silmenizi ve bunları etkin bir şekilde test etmediğiniz müddetçe çalışır durumda bırakmanızı öneririz.
+Şu anda Mesh önizlemesine uygulamaları veya kapsayıcıları dağıtmak için herhangi bir ücret yok. Faturalandırma için etkinleştirme için Mayıs ayındaki güncellemeleri izleyin. Ancak, dağıttığınız kaynakları silmenizi ve bunları etkin olarak test etmediğiniz sürece çalışır durumda bırakmamanızı öneririz.
 
-### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Çekirdek ve RAM sayısı için kota sınırı var mı?
+### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Çekirdek ve RAM sayısının kota sınırı var mı?
 
 Evet. Her abonelik için kotalar şunlardır:
 
-- Uygulama sayısı: 5
+- Başvuru sayısı: 5
 - Uygulama başına çekirdek sayısı: 12
 - Uygulama başına toplam RAM: 48 GB
-- Ağ ve giriş bitiş noktaları: 5
-- İliştirebilmeniz gereken Azure birimleri: 10
-- Hizmet çoğaltmaları sayısı: 3
-- Dağıtabileceğiniz en büyük kapsayıcı 4 çekirdek ve 16GB RAM ile sınırlıdır.
-- Kapsayıcılarınıza kısmi çekirdekleri, en fazla 6 çekirdeğe kadar 0,5 çekirdekli artışlarla ayırabilirsiniz.
+- Ağ ve Giriş bitiş noktaları: 5
+- Ekebileceğiniz Azure Birimleri: 10
+- Hizmet yineleme sayısı: 3
+- Dağıtabileceğiniz en büyük konteyner 4 çekirdek ve 16 GB RAM ile sınırlıdır.
+- Konteynerlerinize en fazla 6 çekirdek lik 0,5 çekirdeklik artışlarla kısmi çekirdek ayırabilirsiniz.
 
-### <a name="how-long-can-i-leave-my-application-deployed"></a>Uygulamamın ne kadar süreyle dağıtıldığını nasıl bırakırım?
+### <a name="how-long-can-i-leave-my-application-deployed"></a>Başvurumu daha ne kadar süreyle dağıtabilirim?
 
-Şu anda bir uygulamanın yaşam süresini iki güne sınırlandırdık. Bu, önizlemeye ayrılan ücretsiz çekirdekler kullanımını en üst düzeye çıkarmak için kullanılır. Sonuç olarak, belirli bir dağıtımı yalnızca 48 saat boyunca sürekli olarak çalıştırmaya izin verilir ve bu süre sonra kapatılacak.
+Şu anda bir uygulamanın kullanım ömrünü iki günle sınırlandırdık. Bu, önizlemeye ayrılan boş çekirdeklerin kullanımını en üst düzeye çıkarmak içindir. Sonuç olarak, belirli bir dağıtımı yalnızca 48 saat boyunca sürekli olarak çalıştırabilirsiniz ve bu süre sonra kapatılacaktır.
 
-Bu durumla karşılaşırsanız, Azure CLı 'de `az mesh app show` komutunu çalıştırarak sistemin bunu kapatmasını doğrulayabilirsiniz. `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` döndürdüğünden emin olun 
+Bunun gerçekleştiğini görürseniz, Azure CLI'deki komutu `az mesh app show` çalıştırarak sistemin kapatıldığını doğrulayabilirsiniz. İade edip etmeyişeyecek lerini denetle`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Örnek: 
 
@@ -73,87 +73,87 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 }
 ```
 
-Kaynak grubunu silmek için `az group delete <nameOfResourceGroup>` komutunu kullanın.
+Kaynak grubunu silmek için `az group delete <nameOfResourceGroup>` komutu kullanın.
 
 ## <a name="deployments"></a>Dağıtımlar
 
-### <a name="what-container-images-are-supported"></a>Hangi kapsayıcı görüntüleri destekleniyor?
+### <a name="what-container-images-are-supported"></a>Hangi kapsayıcı görüntüleri desteklenir?
 
-Windows Fall Creators Update (sürüm 1709) makinesi üzerinde geliştiriyorsanız, yalnızca Windows sürümü 1709 Docker görüntülerini kullanabilirsiniz.
+Windows Fall Creators Update (sürüm 1709) makinesinde geliştiriyorsanız, yalnızca Windows sürüm 1709 docker görüntülerini kullanabilirsiniz.
 
-Windows 10 Nisan 2018 Güncelleştirmesi (sürüm 1803) makinesinde geliştiriyorsanız, Windows sürüm 1709 veya Windows sürümü 1803 Docker görüntülerini kullanabilirsiniz.
+Windows 10 Nisan 2018 güncelleştirmesi (sürüm 1803) makinesinde geliştiriyorsanız, Windows sürüm 1709 veya Windows sürüm 1803 docker görüntülerini kullanabilirsiniz.
 
-Aşağıdaki kapsayıcı işletim sistemi görüntüleri hizmetleri dağıtmak için kullanılabilir:
-- Windows-windowsservercore ve nanoserver
+Hizmetleri dağıtmak için aşağıdaki kapsayıcı işletim sistemi görüntüleri kullanılabilir:
+- Windows - windowsservercore ve nanoserver
     - Windows Server 1709
     - Windows Server 1803
     - Windows Server 1809
     - Windows Server 2019 LTSC
 - Linux
-    - Bilinen kısıtlama yok
+    - Bilinen sınırlama yok
 
 > [!NOTE]
-> Ağ için Visual Studio Araçları, Windows Server 2019 ve 1809 kapsayıcılarına dağıtımı henüz desteklememektedir.
+> Mesh için Visual Studio araçlama henüz Windows Server 2019 ve 1809 kapsayıcılarına dağıtım ı desteklemez.
 
-### <a name="what-types-of-applications-can-i-deploy"></a>Hangi tür uygulamaları dağıtabilirim? 
+### <a name="what-types-of-applications-can-i-deploy"></a>Ne tür uygulamalar dağıtabilirim? 
 
-Bir uygulama kaynağına yerleştirilmiş kısıtlamalara uyan kapsayıcılar içinde çalışan her şeyi dağıtabilirsiniz (kotalar hakkında daha fazla bilgi için yukarıdaki bölümüne bakın). Geçersiz iş yüklerini çalıştırmak veya sistemi (örneğin, araştırma) kullanmak için ağ kullandığınızı tespit ediyorsanız, dağıtımlarınızı sonlandırma ve abonelik listenizi hizmette çalışmaya sonlandırma hakkını saklı tutarız. Belirli bir iş yükünü çalıştırmaya ilişkin sorularınız varsa lütfen bize ulaşın. 
+Bir uygulama kaynağına yerleştirilen kısıtlamalara uyan kapsayıcılarda çalışan her şeyi dağıtabilirsiniz (kotalar hakkında daha fazla bilgi için yukarıya bakın). Mesh'i yasadışı iş yüklerini çalıştırmak veya sistemi kötüye kullanmak için kullandığınızı tespit edersek (örn. madencilik), dağıtımlarınızı sonlandırma ve aboneliğinizi hizmette çalışmasını engelleme hakkını saklı tutuyoruz. Belirli bir iş yükünü çalıştırmakla ilgili sorularınız varsa lütfen bize ulaşın. 
 
 ## <a name="developer-experience-issues"></a>Geliştirici deneyimi sorunları
 
-### <a name="dns-resolution-from-a-container-doesnt-work"></a>Bir kapsayıcıdan DNS çözümlemesi çalışmıyor
+### <a name="dns-resolution-from-a-container-doesnt-work"></a>Bir kapsayıcıdan Gelen DNS çözünürlüğü çalışmıyor
 
-Bir kapsayıcıdan Service Fabric DNS hizmetine giden DNS sorguları bazı koşullarda başarısız olabilir. Bu araştırılmakta. Azaltmak için:
+Bir kapsayıcıdan Hizmet Kumaşı DNS hizmetine giden DNS sorguları belirli koşullar altında başarısız olabilir. Bu soruşturuluyor. Azaltmak için:
 
-- Temel kapsayıcı görüntünüz olarak Windows Fall Creators Update (sürüm 1709) veya üstünü kullanın.
-- Hizmet adı tek başına işe yaramazsa, tam adı şu şekilde deneyin: ServiceName. ApplicationName.
-- Hizmetiniz için Docker dosyasında, bağlantı noktasının hizmetinizi kullanıma sunuyoruz bağlantı noktası olduğu `EXPOSE <port>` ekleyin. Örnek:
+- Windows Fall Creators güncelleştirme (sürüm 1709) veya temel kapsayıcı görüntü olarak daha yüksek kullanın.
+- Hizmet adı tek başına çalışmıyorsa, tam nitelikli adı deneyin: ServiceName.ApplicationName.
+- Hizmetinizin Docker dosyasında, `EXPOSE <port>` hizmetinizi açığa çıkardığınız bağlantı noktasının nerede olduğunu ekleyin. Örnek:
 
 ```Dockerfile
 EXPOSE 80
 ```
 
-### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>DNS Service Fabric geliştirme kümeleri ve ağ içinde olduğu gibi çalışmaz
+### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>DNS, Service Fabric geliştirme kümelerinde ve Mesh'te olduğu gibi çalışmaz
 
-Hizmetleri yerel geliştirme kümenizde Azure ağı 'ndan farklı şekilde başvuru yapmanız gerekebilir.
+Yerel geliştirme kümenizde hizmetlere Azure Mesh'ten farklı şekilde başvurmanız gerekebilir.
 
-Yerel geliştirme kümenizde `{serviceName}.{applicationName}`kullanın. Azure Service Fabric ağı 'nda `{servicename}`kullanın. 
+Yerel geliştirme kümenizde `{serviceName}.{applicationName}`. Azure Hizmet Kumaş Örgü'de. `{servicename}` 
 
-Azure ağı, şu anda uygulamalar genelinde DNS çözümlemesini desteklemez.
+Azure Mesh şu anda uygulamalar arasında DNS çözünürlüğünü desteklememektedir.
 
-Windows 10 ' da Service Fabric geliştirme kümesi çalıştırmaya yönelik diğer bilinen DNS sorunları için bkz. [Windows kapsayıcılarında hata ayıklama](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) ve [bilinen DNS sorunları](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Windows 10'da Bir Hizmet Kumaşı geliştirme kümesini çalıştırmayla ilgili bilinen diğer DNS sorunları için bkz: [Hata ayıklama Windows kapsayıcıları](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) ve [bilinen DNS sorunları.](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)
 
-### <a name="networking"></a>Ağ
+### <a name="networking"></a>Ağ Oluşturma
 
-Service Fabric ağ NAT, uygulamanızı yerel makinenizde çalıştırmak kullanılırken kaybolabilir. Bunun yapılıp yapılmayacağını tanılamak için komut isteminden aşağıdaki komutu çalıştırın:
+ServiceFabric ağı NAT, uygulamanızı yerel makinenizde çalıştırırken kaybolabilir. Bunun olup olmadığını tanılamak için, aşağıdakileri bir komut isteminden çalıştırın:
 
-`docker network ls` ve `servicefabric_nat` listelenmiş olup olmadığını aklınızda edin.  Aksi takdirde, şu komutu çalıştırın: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls`ve listelenip listelenmediğine `servicefabric_nat` dikkat edin.  Değilse, aşağıdaki komutu çalıştırın:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
-Bu, uygulama zaten yerel olarak dağıtılmış ve sağlıksız bir durumda olsa bile sorunu ele alacak.
+Bu, uygulama zaten yerel olarak ve sağlıksız bir durumda dağıtılmış olsa bile sorunu giderecektir.
 
-### <a name="issues-running-multiple-apps"></a>Birden çok uygulama çalıştıran sorunlar
+### <a name="issues-running-multiple-apps"></a>Birden çok uygulamanın çalıştırıladaki sorunları
 
-CPU kullanılabilirliği ve limitlerin tüm uygulamalarda düzeltilmesi ile karşılaşabilirsiniz. Azaltmak için:
-- Beş düğümlü bir küme oluşturun.
-- Dağıtılan uygulama genelinde hizmetlerde CPU kullanımını azaltın. Örneğin, hizmetinizin Service. YAML dosyasında `cpu: 1.0` değiştirin `cpu: 0.5`
+Tüm uygulamalarda CPU kullanılabilirliği ve sınırlarının sabitlendiğini görebilirsiniz. Azaltmak için:
+- Beş düğüm kümesi oluşturun.
+- Dağıtılan uygulama genelindeki hizmetlerdeki CPU kullanımını azaltın. Örneğin, hizmetinizin hizmetinde.yaml dosyasında, `cpu: 1.0``cpu: 0.5`
 
-Birden çok uygulama tek düğümlü bir kümeye dağıtılamaz. Azaltmak için:
-- Birden çok uygulamayı yerel bir kümeye dağıttığınızda beş düğümlü bir küme kullanın.
-- Test etmekte olduğunuz uygulamaları kaldırın.
+Tek düğümlü kümeye birden çok uygulama dağıtılamaz. Azaltmak için:
+- Yerel bir kümeye birden çok uygulama dağıtırken beş düğüm kümesi kullanın.
+- Şu anda test etmediğiniz uygulamaları kaldırın.
 
 ### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS Tooling, Windows kapsayıcıları için sınırlı desteğe sahiptir
 
-Visual Studio Araçları yalnızca Windows Server 1709 ve 1803 ' nin temel işletim sistemi sürümüne sahip Windows kapsayıcıları 'nın dağıtılmasını destekler. 
+Visual Studio araç lama, windows containers'ın bugün yalnızca temel işletim sistemi sürümüyle dağıtılmasını destekler. 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>Özellik boşlukları ve bilinen diğer sorunlar
 
-### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Uygulamamı dağıttıktan sonra, onunla ilişkili ağ kaynağının bir IP adresi yok
+### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Uygulamamı dağıttıktan sonra, uygulamayla ilişkili ağ kaynağının IP adresi yok
 
-IP adresinin hemen kullanılamadığı bilinen bir sorun vardır. İlişkili IP adresini görmek için birkaç dakika içinde ağ kaynağının durumunu denetleyin.
+IP adresinin hemen kullanılmadığı bilinen bir sorun vardır. İlişkili IP adresini görmek için ağ kaynağının durumunu birkaç dakika içinde denetleyin.
 
-### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Uygulamamın doğru ağ/birim kaynağına erişimi başarısız oldu
+### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Uygulamam doğru ağa/birim kaynağa erişemedi
 
-Uygulama modelinizde, ilişkili kaynağa erişebilmek için ağların ve birimlerin tam kaynak KIMLIĞINI kullanın. Hızlı başlangıç örneğinden bir örnek aşağıda verilmiştir:
+Uygulama modelinizde, ilişkili kaynağa erişebilmek için ağlar ve birimler için tam kaynak kimliğini kullanın. Aşağıda hızlı başlangıç örneğinden bir örnek verilmiştir:
 
 ```json
 "networkRefs": [
@@ -163,10 +163,10 @@ Uygulama modelinizde, ilişkili kaynağa erişebilmek için ağların ve birimle
 ]
 ```
 
-### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Ölçeği ölçeklendirdiğimde, çalışma alanım da dahil olmak üzere tüm kapsayıcılarım etkilendi
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Ölçeklendirdiğimde, çalışan kaplar da dahil olmak üzere tüm kaplarım etkilenir.
 
-Bu bir hatadır ve bir düzelme uygulanmaktadır.
+Bu bir hatadır ve bir düzeltme uygulanmaktadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Fabric ağ hakkında daha fazla bilgi edinmek için [genel bakış](service-fabric-mesh-overview.md)makalesini okuyun.
+Service Fabric Mesh hakkında daha fazla bilgi edinmek için [genel bakışı](service-fabric-mesh-overview.md)okuyun.

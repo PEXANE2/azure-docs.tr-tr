@@ -1,6 +1,6 @@
 ---
-title: Windows için Azure Notification Hubs güvenli gönderimi
-description: Azure 'da güvenli anında iletme bildirimleri göndermeyi öğrenin. .NET API kullanarak C# dilinde yazılan kod örnekleri.
+title: Azure Bildirim Hub'ları Windows için Güvenli Push
+description: Azure'da güvenli anında iletme bildirimleri gönderme yi öğrenin. .NET API kullanarak C# dilinde yazılan kod örnekleri.
 documentationcenter: windows
 author: sethmanheim
 manager: femila
@@ -17,13 +17,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75530740"
 ---
-# <a name="securely-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs bildirimleri güvenli bir şekilde gönderin
+# <a name="securely-push-notifications-from-azure-notification-hubs"></a>Azure Bildirim Hub'larından güvenli bir şekilde anında iletme bildirimleri
 
 > [!div class="op_single_selector"]
 > * [Windows Evrensel](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -32,37 +32,37 @@ ms.locfileid: "75530740"
 
 ## <a name="overview"></a>Genel Bakış
 
-Microsoft Azure anında iletme bildirimi desteği, mobil için hem tüketici hem de kurumsal uygulamalar için anında iletme bildirimlerinin uygulanmasını büyük ölçüde kolaylaştıran kullanımı kolay, çok platformlu, ölçeği genişletilmiş bir gönderim altyapısına erişmenizi sağlar. Platform.
+Microsoft Azure'da anında bildirim desteği, mobil cihazlar için hem tüketici hem de kurumsal uygulamalar için anında iletme bildirimlerinin uygulanmasını büyük ölçüde kolaylaştıran, kullanımı kolay, çok platformlu, ölçeklenmiş bir anında iletme altyapısına erişmenizi sağlar Platform.
 
-Yasal düzenlemeler veya güvenlik kısıtlamaları nedeniyle, bazen bir uygulama, bildirime standart anında iletme bildirimi altyapısı üzerinden aktarılamayan bir şey eklemek isteyebilir. Bu öğreticide, istemci aygıtı ile uygulama arka ucu arasında güvenli, kimliği doğrulanmış bir bağlantıyla gizli bilgiler göndererek aynı deneyimin nasıl elde edileceğini açıklanmaktadır.
+Düzenleyici veya güvenlik kısıtlamaları nedeniyle, bazen bir uygulama bildirime standart anında iletme bildirimi altyapısı aracılığıyla aktarılamayan bir şey eklemek isteyebilir. Bu öğretici, istemci aygıtı ve uygulama arka ucu arasında güvenli, kimlik doğrulaması yla bağlantı yoluyla hassas bilgileri göndererek aynı deneyimi nasıl elde edilebiz açıklanır.
 
-Yüksek düzeyde, akış şu şekildedir:
+Yüksek bir düzeyde, akış aşağıdaki gibidir:
 
-1. Uygulama arka ucu:
-   * Güvenli yükü arka uç veritabanında depolar.
-   * Bu bildirimin KIMLIĞINI cihaza gönderir (güvenli bilgi gönderilmez).
+1. Uygulama arka uç:
+   * Güvenli yükü arka uç veritabanında saklar.
+   * Bu bildirimin kimliğini aygıta gönderir (güvenli bilgi gönderilmez).
 2. Bildirim alırken cihazdaki uygulama:
-   * Cihaz, güvenli yük isteyen arka uca iletişim kurar.
+   * Aygıt, güvenli yükü isteyen arka uçla bağlantı kurur.
    * Uygulama, yükü cihazda bir bildirim olarak gösterebilir.
 
-Önceki akışta (ve bu öğreticide), Kullanıcı oturum açtıktan sonra cihazın yerel depolamada bir kimlik doğrulama belirteci depoladığını varsaytık. Bu, cihazın bu belirteci kullanarak bildirimin güvenli yükünü alabilmesi için tamamen sorunsuz bir deneyim sağlar. Uygulamanız, kimlik doğrulama belirteçlerini cihazda depolamaz veya bu belirteçlerin kullanım tarihi dolmuşsa, bildirim alındıktan sonra cihaz uygulaması, kullanıcıdan uygulamayı başlatması istenmeden ilgili genel bir bildirim görüntülemelidir. Uygulama daha sonra kullanıcının kimliğini doğrular ve bildirim yükünü gösterir.
+Önceki akışta (ve bu öğreticide) aygıtın, kullanıcı oturum açtıktan sonra yerel depolama alanında bir kimlik doğrulama belirteci depoladığını varsaymak önemlidir. Bu, aygıt bu belirteci kullanarak bildirimin güvenli yükünü alabildiği için tamamen sorunsuz bir deneyim garanti eder. Uygulamanız cihazda kimlik doğrulama belirteçleri depolamazveya bu belirteçlerin süresi dolmuşsa, bildirimin alınmasından sonra cihaz uygulaması kullanıcıdan uygulamayı başlatmasını isteyen genel bir bildirim görüntülemelidir. Uygulama daha sonra kullanıcının kimliğini doğrular ve bildirim yükünü gösterir.
 
-Bu güvenli gönderim öğreticisinde güvenli bir anında iletme bildirimi gönderme gösterilmektedir. Öğretici [kullanıcılara bildirme](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) öğreticisini oluşturur, bu nedenle öncelikle bu öğreticideki adımları tamamlamalısınız.
+Bu Güvenli Push öğreticisi, anında iletme bildiriminin güvenli bir şekilde nasıl gönderilebildiğini gösterir. Öğretici, [Kullanıcıları Bildir](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) öğreticisine göre inşa eder, bu nedenle önce bu öğreticideki adımları tamamlamanız gerekir.
 
 > [!NOTE]
-> Bu öğreticide, Bildirim Hub 'ınızı [Notification Hubs (Windows Mağazası) Ile çalışmaya](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)başlama bölümünde açıklandığı gibi oluşturduğunuzu ve yapılandırdığınızı varsaymaktadır.
-> Ayrıca, Windows Phone 8,1 ' nin Windows (Windows Phone değil) kimlik bilgilerini gerektirdiğini ve arka plan görevlerinin Windows Phone 8,0 veya Silverlight 8,1 üzerinde çalışmadığına de unutmayın. Windows Mağazası uygulamaları için, yalnızca uygulama kilit ekranı etkinse bir arka plan görevi aracılığıyla bildirim alabilirsiniz (AppManifest 'teki onay kutusuna tıklayın).
+> Bu öğretici, bildirim hub'ınızı [Bildirim Hub'larıyla Başlarken'de (Windows Mağazası)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)açıklandığı şekilde oluşturduğunuzu ve yapılandırdığınızı varsayar.
+> Ayrıca, Windows Phone 8.1'in Windows (Windows Phone değil) kimlik bilgileri gerektirdiğini ve arka plan görevlerinin Windows Phone 8.0 veya Silverlight 8.1'de çalışmadığını unutmayın. Windows Mağazası uygulamaları için, yalnızca uygulama kilit ekranı etkinse (Appmanifest'teki onay kutusunu tıklatın) arka plan görevi aracılığıyla bildirim alabilirsiniz.
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-windows-phone-project"></a>Windows Phone projesini değiştirme
+## <a name="modify-the-windows-phone-project"></a>Windows Phone Projesini Değiştirme
 
-1. **NotifyUserWindowsPhone** projesinde, anında iletme arka plan görevini kaydetmek için App.xaml.cs öğesine aşağıdaki kodu ekleyin. `OnLaunched()` yönteminin sonuna aşağıdaki kod satırını ekleyin:
+1. **NotifyUserWindowsPhone** projesinde, itme arka planı görevini kaydetmek için App.xaml.cs için aşağıdaki kodu ekleyin. `OnLaunched()` yönteminin sonuna aşağıdaki kod satırını ekleyin:
 
     ```csharp
     RegisterBackgroundTask();
     ```
-2. Hala App.xaml.cs içinde, `OnLaunched()` yönteminden hemen sonra aşağıdaki kodu ekleyin:
+2. Hala App.xaml.cs, `OnLaunched()` yöntemden hemen sonra aşağıdaki kodu ekleyin:
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -79,7 +79,7 @@ Bu güvenli gönderim öğreticisinde güvenli bir anında iletme bildirimi gön
         }
     }
     ```
-3. Aşağıdaki `using` deyimlerini App.xaml.cs dosyasının üst kısmına ekleyin:
+3. App.xaml.cs dosyasının üst kısmında aşağıdaki `using` ifadeleri ekleyin:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -87,16 +87,16 @@ Bu güvenli gönderim öğreticisinde güvenli bir anında iletme bildirimi gön
     ```
 4. Visual Studio'daki **Dosya** menüsünde **Tümünü Kaydet**'e tıklayın.
 
-## <a name="create-the-push-background-component"></a>Anında Iletme arka plan bileşeni oluşturma
+## <a name="create-the-push-background-component"></a>Push Arka Plan Bileşenini Oluşturma
 
-Sonraki adım, anında iletme arka plan bileşeni oluşturmaktır.
+Bir sonraki adım itme arka plan bileşeni ni oluşturmaktır.
 
-1. Çözüm Gezgini, çözümün en üst düzey düğümüne (Bu durumda**çözüm SecurePush** ) sağ tıklayın ve ardından **Ekle**' ye ve ardından **Yeni proje**' ye tıklayın.
-2. **Mağaza uygulamaları**' nı genişletin ve ardından **Windows Phone Uygulamalar**' a ve ardından **Windows çalışma zamanı bileşen (Windows Phone)** seçeneğine tıklayın. Projeyi **Pushbackgroundcomponent**olarak adlandırın ve ardından projeyi oluşturmak için **Tamam** ' a tıklayın.
+1. Çözüm Gezgini'nde, çözümün üst düzey düğümüne sağ tıklayın (Bu durumda**Solution SecurePush),** sonra **Ekle'yi**tıklatın, ardından **Yeni Proje'yi**tıklatın.
+2. **Mağaza Uygulamalarını**Genişletin, ardından Windows **Phone Apps'ı**tıklatın, ardından **Windows Runtime Bileşeni'ni (Windows Phone)** tıklatın. Projeye **PushBackgroundComponent**adını ver ve projeyi oluşturmak için **Tamam'ı** tıklatın.
 
     ![][12]
-3. Çözüm Gezgini, **Pushbackgroundcomponent (Windows Phone 8,1)** projesine sağ tıklayın ve ardından **Ekle**' ye ve ardından **sınıf**' a tıklayın. Yeni sınıfı `PushBackgroundTask.cs`adlandırın. Sınıfı oluşturmak için **Ekle** ' ye tıklayın.
-4. `PushBackgroundComponent` ad alanı tanımının tüm içeriğini aşağıdaki kodla değiştirin ve yer tutucu `{back-end endpoint}` arka ucun dağıtımı sırasında elde edilen arka uç uç noktasıyla birlikte yerine koyun:
+3. Solution Explorer'da **PushBackgroundComponent (Windows Phone 8.1)** projesine sağ tıklayın, ardından **Ekle'yi**tıklatın, ardından **Sınıf'ı**tıklatın. Yeni sınıfı `PushBackgroundTask.cs`adlandırın. Sınıfı oluşturmak için **Ekle'yi** tıklatın.
+4. Ad alanı tanımının `PushBackgroundComponent` tüm içeriğini aşağıdaki kodla değiştirin ve `{back-end endpoint}` arka uçunuzu dağıtırken yer tutucuyu elde edilen arka uç ucuyla değiştirin:
 
     ```csharp
     public sealed class Notification
@@ -142,12 +142,12 @@ Sonraki adım, anında iletme arka plan bileşeni oluşturmaktır.
             }
         }
     ```
-5. Çözüm Gezgini, **Pushbackgroundcomponent (Windows Phone 8,1)** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın.
+5. Solution Explorer'da **PushBackgroundComponent (Windows Phone 8.1)** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet'i**tıklatın.
 6. Sol taraftaki **Çevrimiçi** öğesine tıklayın.
 7. **Arama** kutusuna **Http İstemcisi** yazın.
-8. Sonuçlar listesinde, **MICROSOFT http Istemci kitaplıkları**' nı ve ardından, ardından **Install**' ı tıklatın. Yüklemeyi tamamlayın.
-9. NuGet **Arama** kutusuna **Json.net** yazın. **JSON.net** paketini yükledikten sonra NuGet Paket Yöneticisi penceresini kapatın.
-10. Aşağıdaki `using` deyimlerini `PushBackgroundTask.cs` dosyasının üst kısmına ekleyin:
+8. Sonuç listesinde Microsoft **HTTP İstemci Kitaplıkları'nı**tıklatın ve sonra **Yükle'yi**tıklatın. Yüklemeyi tamamlayın.
+9. NuGet **Arama** kutusuna **Json.net** yazın. **Json.NET** paketi yükleyin ve NuGet Paket Yöneticisi penceresini kapatın.
+10. Dosyanın `using` üst kısmında aşağıdaki ifadeleri ekleyin: `PushBackgroundTask.cs`
 
     ```csharp
     using Windows.ApplicationModel.Background;
@@ -159,25 +159,25 @@ Sonraki adım, anında iletme arka plan bileşeni oluşturmaktır.
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
-11. Çözüm Gezgini, **NotifyUserWindowsPhone (Windows Phone 8,1)** projesinde, **Başvurular**' a sağ tıklayın ve ardından **Başvuru Ekle...** öğesine tıklayın. Başvuru Yöneticisi iletişim kutusunda **Pushbackgroundcomponent**' un yanındaki kutuyu işaretleyin ve ardından **Tamam**' a tıklayın.
-12. Çözüm Gezgini ' de, **NotifyUserWindowsPhone (Windows Phone 8,1)** projesinde **Package. appxmanifest** öğesine çift tıklayın. **Bildirimler**' in altında, **bildirim** ' ı **Evet**olarak ayarlayın.
+11. Solution Explorer'da, **NotifyUserWindowsPhone (Windows Phone 8.1)** projesinde, **Başvurular'a**sağ tıklayın, ardından **Başvuru Ekle'yi tıklatın...**. Başvuru Yöneticisi iletişim kutusunda, **PushBackgroundComponent'un**yanındaki kutuyu işaretleyin ve ardından **Tamam'ı**tıklatın.
+12. Solution Explorer'da, **NotifyUserWindowsPhone (Windows Phone 8.1)** projesinde **Package.appxmanifest'e** çift tıklayın. **Bildirimler**altında , **Tost** **Evet için yetenekli** ayarlayın.
 
     ![][3]
-13. Hala **Package. appxbildiriminde**, üstteki **Bildirimler** menüsüne tıklayın. **Kullanılabilir bildirimler** açılır listesinde, **arka plan görevleri**' ne ve ardından **Ekle**' ye tıklayın.
-14. **Package. appxmanifest**Içinde, **Özellikler**altında **anında iletme bildirimi**' ni işaretleyin.
-15. **Package. appxmanifest**Içinde, **uygulama ayarları**altında, **giriş noktası** alanına **pushbackgroundcomponent. pushbackgroundtask** yazın.
+13. Hala **Package.appxmanifest**, üst yakınındaki **Bildirimler** menüsüne tıklayın. Kullanılabilir **Bildirimler** açılır açılır durumda, **Arka Plan Görevleri'ni**tıklatın ve sonra **Ekle'yi**tıklatın.
+14. **Package.appxmanifest'** de , **Özellikler**altında, Push bildirimini kontrol **edin.**
+15. **Package.appxmanifest'de,** **Uygulama Ayarları** **altında, Giriş Noktası** alanına **PushBackgroundComponent yazın.**
 
     ![][13]
 16. **Dosya** menüsünden **Tümünü Kaydet**'e tıklayın.
 
-## <a name="run-the-application"></a>Uygulamayı çalıştırma
+## <a name="run-the-application"></a>Uygulamayı Çalıştır
 
-Uygulamayı çalıştırmak için şunları yapın:
+Uygulamayı çalıştırmak için aşağıdakileri yapın:
 
-1. Visual Studio 'da **Apparka uç** Web API uygulamasını çalıştırın. Bir ASP.NET Web sayfası görüntülenir.
-2. Visual Studio 'da **NotifyUserWindowsPhone (Windows Phone 8,1)** Windows Phone uygulamasını çalıştırın. Windows Phone öykünücü çalışır ve uygulamayı otomatik olarak yükler.
-3. **NotifyUserWindowsPhone** uygulama kullanıcı arabiriminde, bir Kullanıcı adı ve parola girin. Bunlar herhangi bir dize olabilir, ancak aynı değer olmalıdır.
-4. **NotifyUserWindowsPhone** uygulama kullanıcı arabiriminde, **oturum aç ve Kaydet**' e tıklayın. Sonra **gönderme gönder**' e tıklayın.
+1. Visual Studio'da **AppBackend** Web API uygulamasını çalıştırın. ASP.NET bir web sayfası görüntülenir.
+2. Visual Studio'da **NotifyUserWindowsPhone (Windows Phone 8.1)** Windows Phone uygulamasını çalıştırın. Windows Phone emülatörü uygulamayı otomatik olarak çalıştırır ve yükler.
+3. **NotifyUserWindowsPhone** uygulaması Kullanıcı Arabirimi'ne bir kullanıcı adı ve parola girin. Bunlar herhangi bir dize olabilir, ancak aynı değerolmalıdır.
+4. **NotifyUserWindowsPhone** uygulaması Kullanıcı Arabirimi'nde **Giriş Yap'ı tıklatın ve kaydolun.** Ardından **Gönder tuşuna**bas.
 
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png

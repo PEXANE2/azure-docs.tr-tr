@@ -1,42 +1,42 @@
 ---
-title: Ortak FabricClient özel durumları oluşturuldu
-description: Uygulama ve küme yönetim işlemlerini gerçekleştirirken FabricClient API 'Leri tarafından oluşturulabilecek ortak özel durumları ve hataları açıklar.
+title: Ortak FabricClient özel durumlar atıldı
+description: Uygulama ve küme yönetimi işlemleri gerçekleştirirken FabricClient API'leri tarafından atılabilir ortak özel durumlar ve hataları açıklar.
 author: oanapl
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: oanapl
 ms.openlocfilehash: 9ad3097a490d4728e05ea90652c17c24b79cac2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457926"
 ---
-# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>FabricClient API 'Leriyle çalışırken ortak özel durumlar ve hatalar
-[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API 'leri, küme ve uygulama yöneticilerinin bir Service Fabric uygulama, hizmet veya küme üzerinde yönetim görevleri gerçekleştirmesini sağlar. Örneğin, uygulama dağıtımı, yükseltme ve kaldırma, bir kümenin sistem durumunu denetleme veya bir hizmeti test etme. Uygulama geliştiricileri ve küme yöneticileri, Service Fabric kümesini ve uygulamalarını yönetmek için Araçlar geliştirmek üzere FabricClient API 'Lerini kullanabilir.
+# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>FabricClient API'leriyle çalışırken sık karşılaşılan özel durumlar ve hatalar
+[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API'leri küme ve uygulama yöneticilerinin Bir Hizmet Kumaşı uygulamasında, hizmetinde veya kümede yönetim görevlerini gerçekleştirmesini sağlar. Örneğin, uygulama dağıtımı, yükseltme ve kaldırma, sistem durumu kümesini denetleme veya bir hizmeti sınaması. Uygulama geliştiricileri ve küme yöneticileri, Service Fabric kümesini ve uygulamaları yönetmek için araçlar geliştirmek için FabricClient API'lerini kullanabilir.
 
-FabricClient kullanılarak gerçekleştirilebilecek birçok farklı türde işlem vardır.  Her yöntem hatalı giriş, çalışma zamanı hataları veya geçici altyapı sorunları nedeniyle hatalar için özel durumlar oluşturabilir.  Belirli bir yöntem tarafından hangi özel durumların oluşturulduğu hakkında bilgi edinmek için API başvuru belgelerine bakın. Ancak, birçok farklı [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API 'si tarafından oluşturulabilecek bazı özel durumlar vardır. Aşağıdaki tabloda, FabricClient API 'Leri genelinde ortak olan özel durumlar listelenmektedir.
+FabricClient kullanılarak gerçekleştirilebilecek birçok farklı işlem türü vardır.  Her yöntem, yanlış giriş, çalışma zamanı hataları veya geçici altyapı sorunları nedeniyle hatalar için özel durumlar atabilir.  Belirli bir yöntemle hangi özel durumların atıldığını bulmak için API başvuru belgelerine bakın. Ancak, birçok farklı [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API'leri tarafından atılabilir bazı istisnalar vardır. Aşağıdaki tabloda FabricClient API'lerinde yaygın olan özel durumlar listelenir.
 
-| Özel durum | Oluşturulduğu zaman |
+| Özel durum | Atılan zaman |
 | --- |:--- |
-| [System. Fabric. FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) nesnesi kapalı durumda. Kullanmakta olduğunuz [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) nesnesini atın ve yeni bir [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) nesnesi örneği oluşturun. |
-| [System. TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |İşlem zaman aşımına uğradı. İşlemin tamamlanmasını MaxOperationTimeout 'den fazla sürerse [OperationTimeout](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) döndürülür. |
-| [System. UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |İşlem için erişim denetimi başarısız oldu. E_ACCESSDENIED döndürülür. |
-| [System. Fabric. FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |İşlem gerçekleştirilirken bir çalışma zamanı hatası oluştu. FabricClient metotlarından herhangi biri, [Fabricexception](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)oluşturabilir, [hata kodu](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception.ErrorCode) özelliği özel durumun tam nedenini gösterir. Hata kodları [Fabricerrorcode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) numaralandırması içinde tanımlanmıştır. |
-| [System. Fabric. Fabricgeçişli Entexception](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception) |İşlem, bazı tür geçici bir hata durumu nedeniyle başarısız oldu. Örneğin, bir çoğaltma çekirdeğini geçici olarak erişilemediğinden bir işlem başarısız olabilir. Geçici özel durumlar, yeniden denenebilecek başarısız işlemlere karşılık gelir. |
+| [System.Fabric.FabricObjectKapalı İstisna](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) nesnesi kapalı durumdadır. Kullandığınız [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) nesnesini atın ve yeni bir [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) nesnesini anında atın. |
+| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |Operasyon zaman doldu. [OperationTimedOut,](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) işlemin tamamlanması MaxOperationTimeout'tan daha fazla zaman aldığında döndürülür. |
+| [System.Yetkisiz ErişimÖzel Durum](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |İşlemin erişim denetimi başarısız oldu. E_ACCESSDENIED iade edilir. |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |İşlemicra sırasında çalışma zamanı hatası oluştu. FabricClient yöntemlerinden herhangi biri [FabricException'ı](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)potansiyel olarak atabilir, [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception.ErrorCode) özelliği özel durum nedenini gösterir. [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) numaralandırmasında hata kodları tanımlanır. |
+| [System.Fabric.FabricGeçici İstisna](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception) |İşlem, bir tür geçici hata durumu nedeniyle başarısız oldu. Örneğin, çoğaltma sayısı geçici olarak erişilemedığından bir işlem başarısız olabilir. Geçici özel durumlar, yeniden denenebilecek başarısız işlemlere karşılık gelir. |
 
-Bir [Fabricexception](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)içinde döndürülebilecek bazı yaygın [fabricerrorcode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) hataları:
+Bir [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)döndürülebilir bazı yaygın [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) hataları:
 
 | Hata | Koşul |
 | --- |:--- |
-| CommunicationError |Bir iletişim hatası işlemin başarısız olmasına neden oldu, işlemi yeniden deneyin. |
-| Invalidcredentialtype |Kimlik bilgisi türü geçersiz. |
-| InvalidX509FindType |X509FindType geçersiz. |
-| InvalidX509StoreLocation |X509 depolama konumu geçersiz. |
-| InvalidX509StoreName |X509 Mağazası adı geçersiz. |
-| InvalidX509Thumbprint |X509 sertifikası parmak izi dizesi geçersiz. |
-| Invalidprotectionlevel |Koruma düzeyi geçersiz. |
-| InvalidX509Store |X509 sertifika deposu açılamıyor. |
-| Invalidsubjectname |Konu adı geçersiz. |
-| Invalidallodilimcommonnamelist |Ortak ad listesi dizesinin biçimi geçersiz. Bu, virgülle ayrılmış bir liste olmalıdır. |
+| İletişim Hatası |Bir iletişim hatası işlemin başarısız olması, işlemi yeniden denemesi neden oldu. |
+| GeçersizCredentialType |Kimlik bilgisi türü geçersizdir. |
+| GeçersizX509FindType |X509FindType geçersizdir. |
+| GeçersizX509MağazaKonum |X509 mağaza konumu geçersizdir. |
+| GeçersizX509StoreName |X509 mağaza adı geçersizdir. |
+| GeçersizX509Thumbprint |X509 sertifikası parmak izi dizesi geçersizdir. |
+| GeçersizKoruma Düzeyi |Koruma düzeyi geçersizdir. |
+| GeçersizX509Mağaza |X509 sertifika deposu açılamaz. |
+| GeçersizKonu Adı |Özne adı geçersizdir. |
+| GeçersizİzinOrtak NameList |Ortak ad listesi dize biçimi geçersizdir. Virgülden ayrılmış bir liste olmalı. |
 

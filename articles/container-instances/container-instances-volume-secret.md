@@ -1,27 +1,27 @@
 ---
-title: Gizli birimi kapsayıcı grubuna bağla
-description: Gizli bilgileri kapsayıcı örneklerinizin erişimine yönelik olarak depolamak üzere nasıl bağlayacağınızı öğrenin
+title: Gizli hacmi konteyner grubuna monte etme
+description: Konteyner örneklerinize erişmek için hassas bilgileri depolamak için gizli bir birimi nasıl monte edebilirsiniz öğrenin
 ms.topic: article
 ms.date: 07/19/2018
 ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249946"
 ---
-# <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Container Instances bir gizli birimi bağlama
+# <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Kapsayıcı Örneklerinde gizli bir ses birimi takma
 
-Bir kapsayıcı grubundaki kapsayıcılara hassas bilgiler sağlamak için *gizli* bir birim kullanın. *Gizli* birim, saklama grubundaki kapsayıcılar tarafından erişilebilen, gizli dizilerinizi birim içindeki dosyalarda depolar. *Gizli dizileri gizli* bir birimde depolayarak, uygulama kodunuza SSH anahtarları veya veritabanı kimlik bilgileri gibi hassas veriler eklemekten kaçınabilirsiniz.
+Bir kapsayıcı grubundaki kapsayıcılara hassas bilgiler sağlamak için *gizli* bir birim kullanın. *Gizli* birim, sırlarınızı kapsayıcı grubundaki kapsayıcılar tarafından erişilebilen birim içindeki dosyalarda saklar. Sırları *gizli* bir birimde depolayarak, uygulama kodunuza SSH anahtarları veya veritabanı kimlik bilgileri gibi hassas veriler eklemekten kaçınabilirsiniz.
 
-Tüm *gizli* BIRIMLER, RAM ile desteklenen bir dosya sistemi olan [tmpfs][tmpfs]tarafından desteklenir; içerikleri hiçbir şekilde geçici olmayan depolamaya yazılmaz.
+Tüm *gizli* birimler [tmpfs][tmpfs]tarafından desteklenen , RAM destekli dosya sistemi; içerikleri hiçbir zaman geçici olmayan depolamaya yazılmaz.
 
 > [!NOTE]
-> *Gizli* birimler Şu anda Linux kapsayıcılarıyla kısıtlıdır. [Ortam değişkenlerini ayarla](container-instances-environment-variables.md)bölümünde hem Windows hem de Linux kapsayıcıları için güvenli ortam değişkenlerini nasıl geçirebileceğinizi öğrenin. Tüm özellikleri Windows kapsayıcılarına getirmek için çalışıyoruz, ancak geçerli platform farklarını [genel bakışta](container-instances-overview.md#linux-and-windows-containers)bulabilirsiniz.
+> *Gizli* birimler şu anda Linux kapsayıcıları ile sınırlıdır. [Set ortamı değişkenlerinde](container-instances-environment-variables.md)hem Windows hem de Linux kapsayıcıları için güvenli ortam değişkenlerini nasıl geçeceğimi öğrenin. Tüm özellikleri Windows kapsayıcılarına getirmek için çalışırken, güncel platform farklılıklarını [genel bakışta](container-instances-overview.md#linux-and-windows-containers)bulabilirsiniz.
 
-## <a name="mount-secret-volume---azure-cli"></a>Bağlama gizli birimi-Azure CLı
+## <a name="mount-secret-volume---azure-cli"></a>Gizli ses ekibini aşma - Azure CLI
 
-Azure CLı kullanarak bir veya daha fazla gizli dizi ile bir kapsayıcı dağıtmak için, [az Container Create][az-container-create] komutuna `--secrets` ve `--secrets-mount-path` parametrelerini dahil edin. Bu örnek, `/mnt/secrets`konumundaki "mysecret1" ve "mysecret2" olmak üzere iki gizli dizi içeren *gizli* bir birimi bağlar:
+Azure CLI'yi kullanarak bir veya daha fazla sır `--secrets` `--secrets-mount-path` içeren bir kapsayıcıdağıtmak [için, az kapsayıcı oluşturma][az-container-create] komutuna ve parametrelere ekleyin. Bu örnek, *secret* "mysecret1" ve "mysecret2" olmak üzere iki `/mnt/secrets`sırdan oluşan gizli bir cilt tir:
 
 ```azurecli-interactive
 az container create \
@@ -32,7 +32,7 @@ az container create \
     --secrets-mount-path /mnt/secrets
 ```
 
-Aşağıdaki [az Container exec][az-container-exec] çıkışı, çalışan kapsayıcıda bir kabuğu açmayı, gizli birimde dosyaları listelemeyi ve sonra içeriklerini görüntülemeyi gösterir:
+Aşağıdaki [az kapsayıcı exec][az-container-exec] çıkışı, çalışan kapsayıcıda bir kabuk açarak, gizli birim içindeki dosyaları listeleyerek ve içeriğini gösterir:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
@@ -50,13 +50,13 @@ My second secret BAR
 Bye.
 ```
 
-## <a name="mount-secret-volume---yaml"></a>Bağlama gizli birimi-YAML
+## <a name="mount-secret-volume---yaml"></a>Montaj gizli hacim - YAML
 
-Ayrıca, Azure CLı ve bir [YAML şablonuyla](container-instances-multi-container-yaml.md)kapsayıcı grupları da dağıtabilirsiniz. YAML şablonuna göre dağıtmak, birden çok kapsayıcıdan oluşan kapsayıcı grupları dağıtıldığında tercih edilen yöntemdir.
+Ayrıca Azure CLI ve [YAML şablonu](container-instances-multi-container-yaml.md)ile kapsayıcı grupları dağıtabilirsiniz. YAML şablonu tarafından dağıtılama, birden çok kapsayıcıdan oluşan kapsayıcı gruplarını dağıtırken tercih edilen yöntemdir.
 
-Bir YAML şablonuyla dağıtırken, gizli değerlerin şablonda **Base64 kodlamalı** olması gerekir. Ancak, gizli değerler kapsayıcıdaki dosyalar içinde düz metin olarak görünür.
+Bir YAML şablonuyla dağıtırken, gizli değerler şablonda **Base64 kodlanmış** olmalıdır. Ancak, gizli değerler kapsayıcıdaki dosyalar içinde düz metin olarak görünür.
 
-Aşağıdaki YAML şablonu, `/mnt/secrets`bir *gizli* birimi bağlayan bir kapsayıcı grubunu tanımlar. Gizli birimin iki parolası vardır, "mysecret1" ve "mysecret2."
+Aşağıdaki YAML şablonu, *gizli* bir birimde `/mnt/secrets`bir kapsayıcıya sahip bir kapsayıcı grubunu tanımlar. Gizli cildin iki sırrı var, "mysecret1" ve "mysecret2."
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -87,27 +87,27 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-YAML şablonuyla dağıtmak için, önceki YAML 'yi `deploy-aci.yaml`adlı bir dosyaya kaydedin ve ardından `--file` parametresiyle [az Container Create][az-container-create] komutunu yürütün:
+YAML şablonuyla dağıtmak için, önceki YAML'yi `deploy-aci.yaml`adlı bir dosyaya kaydedin , ardından [az kapsayıcı oluşturma][az-container-create] komutunu `--file` parametreyle çalıştırın:
 
 ```azurecli-interactive
 # Deploy with YAML template
 az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
 
-## <a name="mount-secret-volume---resource-manager"></a>Bağlama gizli birimi-Kaynak Yöneticisi
+## <a name="mount-secret-volume---resource-manager"></a>Gizli hacim montajı - Kaynak Yöneticisi
 
-CLı ve YAML dağıtımına ek olarak, bir Azure [Kaynak Yöneticisi şablonu](/azure/templates/microsoft.containerinstance/containergroups)kullanarak bir kapsayıcı grubu dağıtabilirsiniz.
+CLI ve YAML dağıtımına ek olarak, Azure [Kaynak Yöneticisi şablonu](/azure/templates/microsoft.containerinstance/containergroups)kullanarak bir kapsayıcı grubu dağıtabilirsiniz.
 
-İlk olarak, `volumes` diziyi şablonun kapsayıcı grubu `properties` bölümünde doldurun. Bir Kaynak Yöneticisi şablonuyla dağıtırken, gizli değerler şablonda **Base64 kodlamalı** olmalıdır. Ancak, gizli değerler kapsayıcıdaki dosyalar içinde düz metin olarak görünür.
+İlk olarak, `volumes` diziyi şablonun `properties` kapsayıcı grubu bölümünde doldurun. Kaynak Yöneticisi şablonuyla dağıtırken, gizli değerler şablonda **Base64 kodlanmış** olmalıdır. Ancak, gizli değerler kapsayıcıdaki dosyalar içinde düz metin olarak görünür.
 
-Ardından, kapsayıcı grubundaki, *gizli* birimi bağlamak istediğiniz her bir kapsayıcı için, kapsayıcı tanımının `properties` bölümünde `volumeMounts` diziyi doldurun.
+Ardından, *gizli* birimi monte etmek istediğiniz kapsayıcı grubundaki her kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun.
 
-Aşağıdaki Kaynak Yöneticisi şablonu, `/mnt/secrets`bir *gizli* birimi bağlayan bir kapsayıcı grubunu tanımlar. Gizli birimin iki parolası vardır, "mysecret1" ve "mysecret2."
+Aşağıdaki Kaynak Yöneticisi şablonu, gizli bir birimde `/mnt/secrets` *bir kapsayıcıya* sahip bir kapsayıcı grubunu tanımlar. Gizli cildin iki sırrı var, "mysecret1" ve "mysecret2."
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Kaynak Yöneticisi şablonuyla dağıtmak için önceki JSON 'ı `deploy-aci.json`adlı bir dosyaya kaydedin, sonra [az Group Deployment Create][az-group-deployment-create] komutunu `--template-file` parametresiyle yürütün:
+Kaynak Yöneticisi şablonuyla dağıtmak için, önceki JSON'u adlı `deploy-aci.json`bir dosyaya kaydedin , ardından az grubu dağıtım ını `--template-file` parametreyle birlikte [komutu çalıştırın:][az-group-deployment-create]
 
 ```azurecli-interactive
 # Deploy with Resource Manager template
@@ -118,15 +118,15 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ### <a name="volumes"></a>Birimler
 
-Azure Container Instances diğer birim türlerini nasıl bağlayacağınızı öğrenin:
+Azure Kapsayıcı Örnekleri'nde diğer birim türlerini nasıl monte edebilirsiniz öğrenin:
 
 * [Azure Container Instances'ta Azure dosya paylaşımı bağlama](container-instances-volume-azure-files.md)
-* [Azure Container Instances bir emptyDir birimi bağlama](container-instances-volume-emptydir.md)
-* [Azure Container Instances bir gitRepo birimi bağlama](container-instances-volume-gitrepo.md)
+* [Azure Kapsayıcı Örneklerinde boşdir hacmini takma](container-instances-volume-emptydir.md)
+* [Azure Kapsayıcı Örneklerinde gitRepo hacmini takma](container-instances-volume-gitrepo.md)
 
 ### <a name="secure-environment-variables"></a>Güvenli ortam değişkenleri
 
-Kapsayıcılara hassas bilgiler sağlamaya yönelik başka bir Yöntem (Windows kapsayıcıları dahil), [Güvenli ortam değişkenlerinin](container-instances-environment-variables.md#secure-values)kullanımı üzerinden yapılır.
+Kapsayıcılara (Windows kapsayıcıları dahil) hassas bilgiler sağlamanın bir diğer yöntemi de [güvenli ortam değişkenlerinin](container-instances-environment-variables.md#secure-values)kullanılmasıdır.
 
 <!-- LINKS - External -->
 [tmpfs]: https://wikipedia.org/wiki/Tmpfs
