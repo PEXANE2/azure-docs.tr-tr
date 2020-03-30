@@ -1,104 +1,104 @@
 ---
-title: Kapsayıcı gruplarına giriş
-description: Azure Container Instances içinde kapsayıcı grupları hakkında bilgi edinin, bir yaşam döngüsü ve depolama ve ağ gibi kaynakları paylaşan bir örnek koleksiyonu
+title: Konteyner gruplarına giriş
+description: Bir yaşam döngüsünü ve depolama ve ağ gibi kaynakları paylaşan bir örnek koleksiyonu olan Azure Kapsayıcı Örnekleri'ndeki kapsayıcı grupları hakkında bilgi edinin
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247221"
 ---
-# <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances kapsayıcı grupları
+# <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcı grupları
 
-Azure Container Instances en üst düzey kaynak *kapsayıcı grubudur*. Bu makalede, kapsayıcı gruplarının ne olduğu ve etkinleştirildikleri senaryo türleri açıklanmaktadır.
+Azure Kapsayıcı Örnekleri'ndeki üst düzey kaynak *kapsayıcı grubudur.* Bu makalede, kapsayıcı gruplarının ne olduğu ve etkinleştirdikleri senaryo türleri açıklanmaktadır.
 
-## <a name="what-is-a-container-group"></a>Kapsayıcı grubu nedir?
+## <a name="what-is-a-container-group"></a>Konteyner grubu nedir?
 
-Kapsayıcı grubu, aynı konak makinesinde zamanlanmış bir kapsayıcı koleksiyonudur. Bir kapsayıcı grubundaki kapsayıcılar bir yaşam döngüsü, kaynak, yerel ağ ve depolama birimi paylaşır. Prototip, [Kubernetes][kubernetes-pod]'te *Pod* ile benzerdir.
+Kapsayıcı grubu, aynı ana bilgisayar makinesinde zamanlanan kapsayıcılar topluluğudur. Kapsayıcı grubundaki kapsayıcılar yaşam döngüsünü, kaynakları, yerel ağı ve depolama birimlerini paylaşır. [Kubernetes'teki][kubernetes-pod]bir *pod'a* benzer.
 
-Aşağıdaki diyagramda birden çok kapsayıcı içeren bir kapsayıcı grubu örneği gösterilmektedir:
+Aşağıdaki diyagram, birden çok kapsayıcı içeren bir kapsayıcı grubunun bir örneğini gösterir:
 
-![Kapsayıcı grupları diyagramı][container-groups-example]
+![Konteyner grupları diyagramı][container-groups-example]
 
 Bu örnek kapsayıcı grubu:
 
-* Tek bir konak makinesinde zamanlanır.
+* Tek bir ana bilgisayar makinesinde zamanlanır.
 * Bir DNS ad etiketi atanır.
-* Tek bir genel IP adresini, kullanıma sunulan tek bir bağlantı noktasıyla birlikte sunar.
-* İki kapsayıcıdan oluşur. Bir kapsayıcı 80 numaralı bağlantı noktasını dinler, diğer bir deyişle bağlantı noktası 5000 ' de dinleme yapılır.
-* , Birim bağlama olarak iki Azure dosya paylaşımı içerir ve her kapsayıcı paylaşımların birini yerel olarak takar.
+* Tek bir ortak IP adresi, tek bir açık bağlantı noktası ile ortaya çıkarır.
+* İki kapsayıcıdan oluşur. Bir konteyner port 80 dinler, diğer port 5000 dinler.
+* Birim bağlar olarak iki Azure dosya paylaşımı içerir ve her kapsayıcı yerel paylaşımlardan birini bağlar.
 
 > [!NOTE]
-> Çoklu kapsayıcı grupları Şu anda yalnızca Linux kapsayıcılarını destekliyor. Windows kapsayıcıları için Azure Container Instances yalnızca tek bir kapsayıcı örneğinin dağıtımını destekler. Tüm özellikleri Windows kapsayıcılarına getirmek için çalıştık, ancak geçerli platform farklılıklarını hizmete [genel bakış](container-instances-overview.md#linux-and-windows-containers)bölümünde bulabilirsiniz.
+> Çoklu kapsayıcı grupları şu anda yalnızca Linux kapsayıcılarını desteklememektedir. Windows kapsayıcıları için Azure Kapsayıcı Örnekleri yalnızca tek bir kapsayıcı örneğinin dağıtımını destekler. Tüm özellikleri Windows kapsayıcılarına getirmek için çalışırken, [hizmete Genel Bakış'ta](container-instances-overview.md#linux-and-windows-containers)güncel platform farklılıklarını bulabilirsiniz.
 
 ## <a name="deployment"></a>Dağıtım
 
-Çok kapsayıcılı bir grubu dağıtmanın iki yaygın yolu aşağıda verilmiştir: bir [Kaynak Yöneticisi şablonu][resource-manager template] veya [YAML dosyası][yaml-file]kullanın. Kapsayıcı örneklerini dağıtırken ek Azure hizmet kaynakları (örneğin, bir [Azure dosyaları paylaşma][azure-files]) dağıtmanız gerektiğinde, bir kaynak yöneticisi şablonu önerilir. YAML biçiminin daha kısa olmasından dolayı, dağıtımınız yalnızca kapsayıcı örnekleri içerdiğinde YAML dosyası önerilir. Ayarlayabileceğiniz özelliklerle ilgili ayrıntılar için [Kaynak Yöneticisi Şablon başvurusu](/azure/templates/microsoft.containerinstance/containergroups) veya [YAML başvuru](container-instances-reference-yaml.md) belgelerine bakın.
+Çoklu kapsayıcı grubunu dağıtmanın iki yaygın yolu vardır: [Kaynak Yöneticisi şablonu][resource-manager template] veya [YAML dosyası][yaml-file]kullanın. Kapsayıcı örneklerini dağıttığınızda ek Azure hizmet kaynaklarını (örneğin, [Azure Dosyaları paylaşımı)][azure-files]dağıtmanız gerektiğinde Kaynak Yöneticisi şablonu önerilir. YAML biçiminin daha özlü yapısı nedeniyle, dağıtımınızda yalnızca kapsayıcı örnekleri bulunduğunda bir YAML dosyası önerilir. Ayarlayabildiğiniz özelliklerle ilgili ayrıntılar için [Kaynak Yöneticisi şablon başvurusuna](/azure/templates/microsoft.containerinstance/containergroups) veya [YAML başvuru belgelerine](container-instances-reference-yaml.md) bakın.
 
-Bir kapsayıcı grubunun yapılandırmasını korumak için, [az kapsayıcı dışarı aktarma][az-container-export]Azure CLI komutunu kullanarak bir YAML dosyasına yapılandırmayı dışarı aktarabilirsiniz. Dışarı aktarma, kapsayıcı grubu yapılandırmalarını "kod olarak yapılandırma" için sürüm denetiminde depolamanıza olanak tanır. Ya da, YAML 'de yeni bir yapılandırma geliştirirken, bir başlangıç noktası olarak, dışarıya aktarılmış dosyayı kullanın.
+Bir kapsayıcı grubunun yapılandırmasını korumak için, Azure CLI [komutaz kapsayıcı dışa aktarma][az-container-export]yı kullanarak yapılandırmayı BIR YAML dosyasına dışa aktarabilirsiniz. Dışa aktarma, kapsayıcı grup yapılandırmalarınızı "kod olarak yapılandırma" için sürüm denetiminde depolamanıza olanak tanır. Veya, YAML'de yeni bir yapılandırma geliştirirken dışa aktarılan dosyayı başlangıç noktası olarak kullanın.
 
 
 
 ## <a name="resource-allocation"></a>Kaynak ayırma
 
-Azure Container Instances, gruptaki örneklerin [kaynak isteklerini][resource-requests] ekleyerek CPU, bellek ve Isteğe bağlı [GPU 'lar][gpus] (Önizleme) gibi kaynakları çok kapsayıcılı bir gruba ayırır. CPU kaynaklarını örnek olarak alma Örneğin, her biri 1 CPU isteyen iki kapsayıcı örneğiyle bir kapsayıcı grubu oluşturursanız, kapsayıcı grubuna 2 CPU tahsis edilir.
+Azure Kapsayıcı Örnekleri, gruptaki örneklerin [kaynak isteklerini][resource-requests] ekleyerek, CPU'lar, bellek ve isteğe bağlı [GPU'lar][gpus] (önizleme) gibi kaynakları çok kapsayıcılı bir gruba ayırır. Örnek olarak CPU kaynaklarını ele alırsak, her biri 1 CPU isteyen iki kapsayıcı örneği içeren bir kapsayıcı grubu oluşturursanız, kapsayıcı grubu 2 CPU ayrılır.
 
 ### <a name="resource-usage-by-container-instances"></a>Kapsayıcı örneklerine göre kaynak kullanımı
 
-Bir gruptaki her kapsayıcı örneği, kaynak isteğinde belirtilen kaynakları tahsis edilir. Ancak, bir gruptaki kapsayıcı örneği tarafından kullanılan en fazla kaynak, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini yapılandırırsanız farklı olabilir. Bir kapsayıcı örneğinin kaynak sınırı, zorunlu [kaynak isteği][resource-requests] özelliğinden büyük veya buna eşit olmalıdır.
+Bir gruptaki her kapsayıcı örneği, kaynak isteğinde belirtilen kaynaklara tahsis edilir. Ancak, bir gruptaki kapsayıcı örneği tarafından kullanılan en büyük kaynaklar, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini yapılandırırsanız farklı olabilir. Kapsayıcı örneğinin kaynak sınırı, zorunlu [kaynak isteği][resource-requests] özelliğinden büyük veya eşit olmalıdır.
 
-* Kaynak sınırı belirtmezseniz, kapsayıcı örneğinin en yüksek kaynak kullanımı kaynak isteğiyle aynıdır.
+* Bir kaynak sınırı belirtmezseniz, kapsayıcı örneğinin en büyük kaynak kullanımı kaynak isteğiyle aynıdır.
 
-* Bir kapsayıcı örneği için bir sınır belirtirseniz, örneğin en büyük kullanım süresi istekten daha büyük olabilir ve bu, ayarladığınız sınıra kadar büyüktür. Karşılık gelen, gruptaki diğer kapsayıcı örnekleri tarafından kaynak kullanımı azalabilir. Bir kapsayıcı örneği için ayarlayabileceğiniz maksimum kaynak sınırı, gruba ayrılan toplam kaynaktır.
+* Bir kapsayıcı örneği için bir sınır belirtirseniz, örneğin en büyük kullanımı, belirlediğiniz sınıra kadar istekten daha büyük olabilir. Buna bağlı olarak, gruptaki diğer kapsayıcı örnekleri tarafından kaynak kullanımı azalabilir. Kapsayıcı örneği için ayarlayabildiğiniz maksimum kaynak sınırı, gruba ayrılan toplam kaynaktır.
     
-Örneğin, her biri 1 CPU isteyen iki kapsayıcı örneği olan bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektiren bir iş yükü çalıştırabilir.
+Örneğin, her biri 1 CPU isteyen iki kapsayıcı örneği olan bir grupta, kapsayıcılarınızdan biri diğerinden daha fazla CPU'nun çalıştırılması nı gerektiren bir iş yükü çalıştırabilir.
 
-Bu senaryoda, kapsayıcı örneği için 2 CPU kaynak sınırı ayarlayabilirsiniz. Bu yapılandırma, kapsayıcı örneğinin varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
+Bu senaryoda, kapsayıcı örneği için 2 CPU kaynak sınırı ayarlayabilirsiniz. Bu yapılandırma, kapsayıcı örneğinin varsa tam 2 CPU'yu kullanmasına olanak tanır.
 
-### <a name="minimum-and-maximum-allocation"></a>En düşük ve en yüksek ayırma
+### <a name="minimum-and-maximum-allocation"></a>Minimum ve maksimum ayırma
 
-* Bir kapsayıcı grubuna **en az** 1 CPU ve 1 GB bellek ayırın. Bir grup içindeki bağımsız kapsayıcı örnekleri 1 ' den az CPU ve 1 GB bellek ile sağlanabilir. 
+* Bir kapsayıcı grubuna **en az** 1 CPU ve 1 GB bellek ayırın. Bir grup içindeki tek tek kapsayıcı örnekleri 1 CPU'dan az ve 1 GB bellekle sağlanabilir. 
 
-* Bir kapsayıcı grubundaki **en fazla** kaynak için, dağıtım bölgesindeki Azure Container Instances [kaynak kullanılabilirliğine][region-availability] bakın.
+* Kapsayıcı grubundaki **maksimum** kaynaklar için dağıtım bölgesindeki Azure Kapsayıcı Örnekleri için [kaynak kullanılabilirliğine][region-availability] bakın.
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Ağ Oluşturma
 
-Kapsayıcı grupları, bir dış IP adresini, bu IP adresinde bir veya daha fazla bağlantı noktasını ve tam etki alanı adı (FQDN) olan bir DNS etiketini paylaşabilir. Dış istemcilerin Grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan kullanıma sunmalısınız. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşleştirmesi desteklenmez. Kapsayıcı grubu silindiğinde kapsayıcı grubunun IP adresi ve FQDN serbest bırakılır. 
+Kapsayıcı grupları, harici bir IP adresini, bu IP adresinde bir veya daha fazla bağlantı noktasını ve tam nitelikli etki alanı adı (FQDN) olan bir DNS etiketini paylaşabilir. Dış istemcilerin grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan çıkarmanız gerekir. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşlemi desteklenmez. Kapsayıcı grubu silindiğinde bir kapsayıcı grubunun IP adresi ve FQDN serbest bırakılır. 
 
-Kapsayıcı grubu içinde, kapsayıcı örnekleri, bu bağlantı noktaları grubun IP adresinde veya kapsayıcıdan dışarıdan sunulmasa bile, herhangi bir bağlantı noktasında localhost aracılığıyla birbirlerine ulaşabilir.
+Bir kapsayıcı grubunda, bu bağlantı noktaları grubun IP adresinde veya kapsayıcıdan dışarıdan açıklanmasa bile, kapsayıcı örnekleri herhangi bir bağlantı noktasında yerel barındırma aracılığıyla birbirlerine ulaşabilir.
 
-Kapsayıcıların sanal ağdaki diğer kaynaklarla güvenli bir şekilde iletişim kurmasına izin vermek için, isteğe bağlı olarak kapsayıcı gruplarını bir [Azure sanal ağına][virtual-network] dağıtın.
+Kapsayıcıların sanal [ağdaki][virtual-network] diğer kaynaklarla güvenli bir şekilde iletişim kurabilmesi için kapsayıcı gruplarını isteğe bağlı olarak Azure sanal ağına dağıtın.
 
 ## <a name="storage"></a>Depolama
 
-Bir kapsayıcı grubuna bağlamak için dış birimler belirtebilirsiniz. Desteklenen birimler şunlardır:
+Bir kapsayıcı grubuna monte etmek için dış hacimleri belirtebilirsiniz. Desteklenen birimler şunlardır:
 * [Azure dosya paylaşımı][azure-files]
 * [Gizli dizi][secret]
-* [Boş Dizin][empty-directory]
-* [Kopyalanmış git deposu][volume-gitrepo]
+* [Boş dizin][empty-directory]
+* [Klonlanmış git repo][volume-gitrepo]
 
-Bu birimleri bir gruptaki tek kapsayıcılar içindeki belirli yollarla eşleyebilirsiniz. 
+Bu birimleri bir gruptaki tek tek kapsayıcılar içindeki belirli yollara eşleyebilirsiniz. 
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 
-Çok Kapsayıcılı gruplar, tek bir işlevsel görevi az sayıda kapsayıcı görüntülerine bölmek istediğiniz durumlarda faydalıdır. Bu görüntüler daha sonra farklı takımlar tarafından teslim edilebilir ve ayrı kaynak gereksinimlerine sahip olabilir.
+Çok kapsayıcılı gruplar, tek bir işlevsel görevi az sayıda kapsayıcı görüntüsüne bölmek istediğiniz durumlarda yararlıdır. Bu görüntüler daha sonra farklı ekipler tarafından teslim edilebilir ve ayrı kaynak gereksinimleri vardır.
 
 Örnek kullanım şunları içerebilir:
 
-* Bir Web uygulamasına hizmet veren bir kapsayıcı ve bir kapsayıcı, kaynak denetiminden en son içeriği çekiliyor.
-* Uygulama kapsayıcısı ve günlüğe kaydetme kapsayıcısı. Günlüğe kaydetme kapsayıcısı, ana uygulamanın günlüklerini ve ölçüm çıkışını toplar ve bunları uzun süreli depolamaya yazar.
-* Uygulama kapsayıcısı ve izleme kapsayıcısı. İzleme kapsayıcısı düzenli aralıklarla, çalıştığından ve doğru şekilde yanıt verdiğinden emin olmak için uygulamaya bir istek yapar ve değilse bir uyarı oluşturur.
-* Ön uç kapsayıcısı ve arka uç kapsayıcısı. Ön uç, arka uç ile verileri almak için bir hizmet çalıştıran bir Web uygulaması sunabilir. 
+* Bir web uygulaması sunan bir konteyner ve kaynak denetiminden en son içeriği çeken bir konteyner.
+* Uygulama kapsayıcısı ve günlük kapsayıcısı. Günlük konteyneri, günlükleri ve ölçümler çıktısını ana uygulama tarafından toplar ve bunları uzun süreli depolamaalanına yazar.
+* Bir uygulama kapsayıcısı ve bir izleme konteyneri. İzleme kabı, düzgün çalışmasını ve yanıt verdiğinden emin olmak için uygulama için düzenli aralıklarla bir istekte bulunmaz ve değilse bir uyarı yükseltir.
+* Bir ön uç konteyner ve bir arka uç konteyner. Ön uç, arka uç veri almak için bir hizmet çalışan bir web uygulaması hizmet verebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Resource Manager şablonuyla çok kapsayıcılı bir kapsayıcı grubunu dağıtmayı öğrenin:
+Azure Kaynak Yöneticisi şablonu yla çok kapsayıcı kapsayıcı grubunu nasıl dağıtılayacağız öğrenin:
 
 > [!div class="nextstepaction"]
-> [Kapsayıcı grubu dağıtma][resource-manager template]
+> [Bir kapsayıcı grubu dağıtma][resource-manager template]
 
 <!-- IMAGES -->
 [container-groups-example]: ./media/container-instances-container-groups/container-groups-example.png

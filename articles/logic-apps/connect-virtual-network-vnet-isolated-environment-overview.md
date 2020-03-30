@@ -1,135 +1,135 @@
 ---
 title: Azure sanal ağlarına erişim
-description: Tümleştirme hizmeti ortamlarının (sesleri) yardım Logic Apps 'in Azure sanal ağlarına (VNet 'ler) erişme konusunda genel bakış
+description: Entegrasyon hizmeti ortamlarının (ISEs) mantık uygulamalarının Azure sanal ağlarına (VNETs) erişmelerine nasıl yardımcı olduğuna genel bakış
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/12/2020
 ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127256"
 ---
-# <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
+# <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmet ortamlarını (ISEs) kullanarak Azure Logic Apps'tan Azure Sanal Ağ kaynaklarına erişim
 
-Bazen mantıksal uygulamalarınızın sanal makineler (VM) ve diğer sistemler veya hizmetler gibi bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md)içindeki güvenli kaynaklara erişmesi gerekir. Bu erişimi ayarlamak için [bir *tümleştirme hizmeti ortamı* (ISE) oluşturabilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE, adanmış kaynakları kullanan ve "küresel" çok kiracılı Logic Apps hizmetinden ayrı olarak çalıştırılan Logic Apps hizmetinin yalıtılmış bir örneğidir.
+Bazen, mantıksal uygulamalarınızın azure [sanal ağının](../virtual-network/virtual-networks-overview.md)içinde bulunan sanal makineler (VM'ler) ve diğer sistemler veya hizmetler gibi güvenli kaynaklara erişmeye ihtiyacı vardır. Bu erişimi ayarlamak için [bir *tümleştirme hizmeti ortamı* (Ise) oluşturabilirsiniz.](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) İmKB, özel kaynakları kullanan ve "genel" çok kiracılı Logic Apps hizmetinden ayrı çalışan Logic Apps hizmetinin yalıtılmış bir örneğidir.
 
-Mantıksal uygulamaları kendi ayrı yalıtılmış Örneğinizde çalıştırmak, diğer Azure kiracılarının ["gürültülü komşular" etkisi](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)olarak da bilinen uygulamalarınızın performansı üzerinde sahip olabileceği etkiyi azaltmaya yardımcı olur. ISE Ayrıca bu avantajları sağlar:
+Kendi ayrı yalıtılmış örneğinizde mantık uygulamaları çalıştırmak, diğer Azure kiracılarının uygulamalarınızın performansı üzerindeki etkisini azaltmaya yardımcı olur( [ayrıca "gürültülü komşular" etkisi](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)olarak da bilinir. Bir İmKB da şu avantajları sağlar:
 
-* Çoklu kiracı hizmetindeki Logic Apps tarafından paylaşılan statik IP adreslerinden ayrı olan kendi statik IP adresleriniz. Hedef sistemlerle iletişim kurmak için tek bir genel, statik ve öngörülebilir giden IP adresi de ayarlayabilirsiniz. Bu şekilde, her bir ıSE için bu hedef sistemlerde ek güvenlik duvarı açılışlarını ayarlamanız gerekmez.
+* Çok kiracılı hizmetteki mantık uygulamaları tarafından paylaşılan statik IP adreslerinden ayrı olan kendi statik IP adresleriniz. Ayrıca, hedef sistemlerle iletişim kurmak için tek bir genel, statik ve öngörülebilir giden IP adresi ayarlayabilirsiniz. Bu şekilde, her ise için bu hedef sistemlerde ek güvenlik duvarı açıklıkları ayarlamanız gerekmez.
 
-* Çalışma süresi, depolama tutma, aktarım hızı, HTTP isteği ve yanıt zaman aşımları, ileti boyutları ve özel bağlayıcı istekleri için artan sınırlar. Daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](logic-apps-limits-and-config.md).
+* Çalışma süresi, depolama bekletme, iş ortası, HTTP isteği ve yanıt zaman zaman ları, ileti boyutları ve özel bağlayıcı isteklerinde artırılmış sınırlar. Daha fazla bilgi için [Azure Mantık Uygulamaları için Sınırlar ve yapılandırma ya](logic-apps-limits-and-config.md)da yapılandırma ya da
 
 > [!NOTE]
-> Azure depolama, Azure Cosmos DB veya Azure SQL veritabanı, iş ortağı hizmetleri veya Azure 'da barındırılan müşteri hizmetleri gibi Azure PaaS hizmetlerine erişim sağlamak için bazı Azure sanal ağları özel uç noktalar ([Azure özel bağlantı](../private-link/private-link-overview.md)) kullanır. Mantıksal uygulamalarınızın özel uç noktaları kullanan sanal ağlara erişmesi gerekiyorsa, bu mantık uygulamalarını bir ıSE içinde oluşturmanız, dağıtmanız ve çalıştırmanız gerekir.
+> Bazı Azure sanal ağları, Azure Depolama, Azure Cosmos DB veya Azure SQL Veritabanı, iş ortağı hizmetleri veya Azure'da barındırılan müşteri hizmetleri gibi Azure PaaS hizmetlerine erişim sağlamak için özel uç noktaları[(Azure Özel Bağlantı)](../private-link/private-link-overview.md)kullanır. Mantık uygulamalarınızın özel uç noktaları kullanan sanal ağlara erişmesi gerekiyorsa, bu mantık uygulamalarını bir İmKB içinde oluşturmanız, dağıtmanız ve çalıştırmanız gerekir.
 
-Bir ıSE oluşturduğunuzda, Azure bu ıSE 'yi Azure sanal ağınıza *çıkartır* veya dağıtır. Daha sonra bu ıSE 'yi, erişmesi gereken Logic Apps ve tümleştirme hesaplarının konumu olarak kullanabilirsiniz.
+Bir İmKB oluşturduğunuzda, Azure, O İmKB'yi Azure sanal ağınıza *enjekte eder* veya dağıtır. Daha sonra bu İmKB'yi, erişılması gereken mantık uygulamaları ve tümleştirme hesapları için konum olarak kullanabilirsiniz.
 
-![Tümleştirme hizmeti ortamını seçin](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
+![Entegrasyon hizmeti ortamını seçin](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-Logic Apps, mantıksal uygulamalarınızla aynı ıSE çalıştıran bu öğeleri kullanarak sanal ağınıza ait veya bağlı olan kaynaklara erişebilir:
+Mantık uygulamaları, mantık uygulamalarınızla aynı İmKB'de çalışan bu öğeleri kullanarak sanal ağınızın içindeki veya bağlı kaynaklara erişebilir:
 
-* HTTP tetikleyicisi veya eylemi gibi **çekirdek**etiketli bir yerleşik tetikleyici veya eylem
-* Bu sistem veya hizmet için **Ise**etiketli bağlayıcı
-* Özel bağlayıcı
+* HTTP tetikleyicisi veya eylem gibi **CORE**etiketli yerleşik tetikleyici veya eylem
+* Bu sistem veya hizmet için **İmKB**etiketli bağlayıcı
+* Özel bir bağlayıcı
 
-Ayrıca, ıSE 'de Logic Apps ile **çekirdek** veya **Ise** etiketi olmayan bağlayıcılar da kullanabilirsiniz. Bu bağlayıcılar bunun yerine çok kiracılı Logic Apps hizmetinde çalışır. Daha fazla bilgi için aşağıdaki bölümlere bakın:
+CORE **veya** **ISE** etiketine sahip olmayan konektörleri, İmKB'nizdeki mantık uygulamalarıyla birlikte kullanmaya devam edebilirsiniz. Bu bağlayıcılar bunun yerine çok kiracılı Logic Apps hizmetinde çalışır. Daha fazla bilgi için şu bölümlere bakın:
 
-* [Yalıtılmış ve çok kiracılı](#difference)
-* [Tümleştirme hizmeti ortamından Bağlan](../connectors/apis-list.md#integration-service-environment)
-* [ISE bağlayıcıları](../connectors/apis-list.md#ise-connectors)
+* [Çok kiracıya karşı yalıtılmış](#difference)
+* [Entegrasyon hizmeti ortamından bağlanma](../connectors/apis-list.md#integration-service-environment)
+* [İmKB konektörleri](../connectors/apis-list.md#ise-connectors)
 
 > [!IMPORTANT]
-> Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#fixed-pricing). Fiyatlandırma ayrıntıları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
+> Logic uygulamaları, yerleşik tetikleyiciler, yerleşik eylemler ve İmKB'nizde çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Daha fazla bilgi için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma ayrıntıları için [Logic Apps fiyatlandırması'na](../logic-apps/logic-apps-pricing.md)bakın.
 
-Bu genel bakışta, bir ıSE 'nin Logic Apps 'in Azure sanal ağınıza doğrudan erişimine nasıl verdiği hakkında daha fazla bilgi açıklanmakta ve bir ıSE ile çok kiracılı Logic Apps hizmeti arasındaki farkları karşılaştırılmaktadır.
+Bu genel bakış, Birİm'in mantıksal uygulamalarınıza Azure sanal ağınıza nasıl doğrudan erişim sağladığı hakkında daha fazla bilgiyi açıklar ve Bir İmKB ile çok kiracılı Logic Apps hizmeti arasındaki farkları karşılaştırır.
 
 <a name="difference"></a>
 
-## <a name="isolated-versus-multi-tenant"></a>Yalıtılmış ve çok kiracılı
+## <a name="isolated-versus-multi-tenant"></a>Çok kiracıya karşı yalıtılmış
 
-Bir ıSE 'de Logic Apps oluşturup çalıştırdığınızda, aynı kullanıcı deneyimlerini ve çok kiracılı Logic Apps hizmetiyle benzer özellikleri alırsınız. Çok kiracılı Logic Apps hizmetinde bulunan tüm yerleşik Tetikleyicileri, eylemleri ve yönetilen bağlayıcıları kullanabilirsiniz. Bazı yönetilen bağlayıcılar ek ıSE sürümlerini sunar. Ise bağlayıcılar ve ıSE olmayan bağlayıcılar arasındaki fark, çalıştırıldıkları yerde ve bir ıSE içinde çalışırken Logic App Designer 'da sahip oldukları Etiketler arasında bulunur.
+Bir İmKB'de mantık uygulamaları oluşturup çalıştırdığınızda, çok kiracılı Logic Apps hizmetiyle aynı kullanıcı deneyimlerine ve benzer özelliklere sahip olursunuz. Çok kiracılı Logic Apps hizmetinde kullanılabilen aynı yerleşik tetikleyicileri, eylemleri ve yönetilen bağlayıcıları kullanabilirsiniz. Bazı yönetilen konektörler ek ISE sürümleri sunar. İmKB konektörleri ile İmKB olmayan konektörler arasındaki fark, çalıştıkları yerde ve Bir İmKB içinde çalışırken Mantık Uygulama Tasarımcısı'nda bulunan etiketlerde bulunur.
 
-![ISE 'de etiketleri olan ve olmayan bağlayıcılar](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
+![İmKB'de etiketli ve etiketsiz bağlayıcılar](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
-* Yerleşik Tetikleyiciler ve eylemler **temel** etiketi görüntüler. Bunlar her zaman mantıksal uygulamanız ile aynı ıSE çalıştırırlar. **Ise** etiketini görüntüleyen yönetilen bağlayıcılar, mantıksal UYGULAMANıZLA aynı Ise içinde de çalışır.
+* Yerleşik tetikleyiciler ve eylemler **CORE** etiketini görüntüler. Her zaman mantık uygulamanızla aynı İmKB'de çalışırlar. **İmKB** etiketini görüntüleyen yönetilen konektörler de mantık uygulamanızla aynı İmKB'de çalışır.
 
-  Örneğin, ıSE sürümlerini sunan bazı bağlayıcılar aşağıda verilmiştir:
+  Örneğin, İmKB sürümleri sunan bazı konektörler şunlardır:
 
-  * Azure Blob depolama, dosya depolama ve tablo depolama
-  * Azure kuyrukları, Azure Service Bus, Azure Event Hubs ve IBM MQ
+  * Azure Blob Depolama, Dosya Depolama ve Tablo Depolama
+  * Azure Kuyrukları, Azure Hizmet Veri Önü, Azure Etkinlik Hub'ları ve IBM MQ
   * FTP ve SFTP-SSH
-  * SQL Server, Azure SQL veri ambarı Azure Cosmos DB
-  * AS2, x12 ve EDIOLGU
+  * SQL Server, Azure SQL Veri Ambarı, Azure Cosmos DB
+  * AS2, X12 ve EDIFACT
 
-* Her zaman çok kiracılı Logic Apps hizmetinde herhangi bir ek etiket görüntülememe yönetilen bağlayıcılar, ancak bu bağlayıcıları ıSE barındırılan bir mantıksal uygulamada kullanmaya devam edebilirsiniz.
+* Ek etiket görüntülemeyen yönetilen bağlayıcılar her zaman çok kiracılı Logic Apps hizmetinde çalışır, ancak bu bağlayıcıları İmKB tarafından barındırılan bir mantık uygulamasında kullanmaya devam edebilirsiniz.
 
 <a name="on-premises"></a>
 
 ### <a name="access-to-on-premises-systems"></a>Şirket içi sistemlere erişim
 
-Bir Azure sanal ağına bağlı şirket içi sistemlere veya veri kaynaklarına erişmek için, bir ıSE içindeki Logic Apps şu öğeleri kullanabilir:
+Bir Azure sanal ağına bağlı şirket içi sistemlere veya veri kaynaklarına erişmek için, Bir İmKB'deki mantık uygulamaları bu öğeleri kullanabilir:
 
-* HTTP eylemi
+* HTTP eylem
 
-* O sistem için ıSE etiketli bağlayıcı
+* Bu sistem için İmKB etiketli konektör
 
   > [!NOTE]
-  > Windows kimlik doğrulamasını bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)SQL Server Bağlayıcısı ile kullanmak için, Şirket [içi veri ağ geçidiyle](../logic-apps/logic-apps-gateway-install.md)bağlayıcının Ise sürümünü kullanın. ISE etiketli sürüm Windows kimlik doğrulamasını desteklemez.
+  > [Bir entegrasyon hizmeti ortamında (Ise)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)SQL Server bağlayıcısı ile Windows kimlik doğrulamasını kullanmak için, konektörün Ise olmayan sürümünü şirket içi veri ağ [geçidiyle](../logic-apps/logic-apps-gateway-install.md)kullanın. İmKB etiketli sürüm Windows kimlik doğrulamasını desteklemez.
 
 * Özel bağlayıcı
 
-  * Şirket içi veri ağ geçidini gerektiren özel bağlayıcılarınız varsa ve bu bağlayıcıları bir ıSE dışında oluşturduysanız, bir ıSE içindeki Logic Apps de bu bağlayıcıları kullanabilir.
+  * Şirket içi veri ağ geçidi gerektiren özel bağlayıcılarınız varsa ve bu bağlayıcıları Bir İmKB dışında oluşturduysanız, İmKB'deki mantıksal uygulamalar da bu bağlayıcıları kullanabilir.
 
-  * Bir ıSE içinde oluşturulan özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Ancak, bu bağlayıcılar, ıSE 'yi barındıran sanal ağa bağlı şirket içi veri kaynaklarına doğrudan erişebilir. Bu nedenle, bir ıSE içindeki Logic Apps, bu kaynaklarla iletişim kurarken veri ağ geçidine ihtiyaç duymamasından kaynaklanıyor olabilir.
+  * İmKB'de oluşturulan özel konektörler şirket içi veri ağ geçidiyle çalışmaz. Ancak, bu bağlayıcılar İmKB'yi barındıran sanal ağa bağlı şirket içi veri kaynaklarına doğrudan erişebilir. Bu nedenle, Bir İmKB'deki mantık uygulamaları büyük olasılıkla bu kaynaklarla iletişim kurarken veri ağ geçidine ihtiyaç duymaz.
 
-Bir sanal ağa bağlı olmayan veya ıSE etiketli bağlayıcılar bulunmayan şirket içi sistemler için, mantıksal uygulamalarınızın bu sistemlere bağlanabilmesi için önce şirket [içi veri ağ geçidini ayarlamanız](../logic-apps/logic-apps-gateway-install.md) gerekir.
+Sanal ağa bağlı olmayan veya İmKB etiketli bağlayıcıları olmayan şirket içi sistemlerde, mantık uygulamalarınız bu sistemlere bağlanabilmesi için önce [şirket içi veri ağ geçidini kurmanız](../logic-apps/logic-apps-gateway-install.md) gerekir.
 
 <a name="ise-level"></a>
 
-## <a name="ise-skus"></a>ISE SKU 'Ları
+## <a name="ise-skus"></a>İmKB SKUs
 
-ISE 'yi oluşturduğunuzda, geliştirici SKU 'SU veya Premium SKU 'YU seçebilirsiniz. Bu SKU 'Lar arasındaki farklar şunlardır:
+İmKB'nizi oluşturduğunuzda, Geliştirici SKU veya Premium SKU'yu seçebilirsiniz. Bu SK'ler arasındaki farklar şunlardır:
 
 * **Geliştirici**
 
-  Deneme, geliştirme ve test için kullanabileceğiniz, ancak üretim ya da performans testi için kullanabileceğiniz düşük maliyetli bir ıSE sağlar. Geliştirici SKU 'SU, sabit bir aylık fiyat için yerleşik Tetikleyiciler ve Eylemler, standart bağlayıcılar, kurumsal bağlayıcılar ve tek bir [ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı içerir. Ancak, bu SKU herhangi bir hizmet düzeyi sözleşmesi (SLA), kapasite ölçekleme seçenekleri veya geri dönüştürme sırasında, gecikme veya kapalı kalma süresi yaşayabileceğiniz anlamına gelir.
+  Deneme, geliştirme ve sınama için kullanabileceğiniz, ancak üretim veya performans testi için kullanamadığınız daha düşük maliyetli bir Ise sağlar. Geliştirici SKU yerleşik tetikleyiciler ve eylemler, Standart bağlayıcılar, Kurumsal bağlayıcılar ve sabit bir aylık fiyat için tek bir [Serbest katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı içerir. Ancak, bu SKU herhangi bir hizmet düzeyi sözleşmesi (SLA), kapasiteyi artırmak için seçenekler veya geri dönüşüm sırasında fazlalık içermez, bu da gecikmeler veya kapalı kalma süreleri karşılaşabileceğiniz anlamına gelir.
 
 * **Premium**
 
-  Üretim için kullanabileceğiniz ve SLA desteği, yerleşik Tetikleyiciler ve Eylemler, standart bağlayıcılar, kurumsal bağlayıcılar, tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı, kapasiteyi ölçeklendirmeye yönelik seçenekler ve sabit bir aylık fiyat için geri dönüştürme sırasında yedeklilik dahil olmak üzere bir Ise sağlar.
+  Üretim için kullanabileceğiniz bir İmKB sağlar ve SLA desteği, yerleşik tetikleyiciler ve eylemler, Standart bağlayıcılar, Kurumsal bağlayıcılar, tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı, kapasiteyi yükseltme seçenekleri ve sabit bir aylık fiyat karşılığında geri dönüşüm sırasında artıklık içerir.
 
 > [!IMPORTANT]
-> SKU seçeneği yalnızca ıSE oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez.
+> SKU seçeneği yalnızca İmKB oluşturmada kullanılabilir ve daha sonra değiştirilemez.
 
-Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/). Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın.
+Fiyatlandırma oranları için [Logic Apps fiyatlandırması'na](https://azure.microsoft.com/pricing/details/logic-apps/)bakın. ISE'ler için fiyatlandırma ve faturalandırmanın nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın.
 
 <a name="endpoint-access"></a>
 
-## <a name="ise-endpoint-access"></a>ISE uç noktası erişimi
+## <a name="ise-endpoint-access"></a>İmKB uç nokta erişimi
 
-ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Seçiminiz, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp alamayacağını belirler.
+İmKB'nizi oluşturduğunuzda, dahili veya harici erişim uç noktalarını kullanmayı seçebilirsiniz. Seçiminiz, İmKB'nizdeki mantık uygulamalarındaki istek veya webhook tetikleyicilerinin sanal ağınızın dışından çağrı alıp alamayabileceğini belirler.
 
-Bu uç noktalar Ayrıca Logic Apps çalıştırma geçmişinizdeki girişlere ve çıkışlara erişme yöntemini de etkiler.
+Bu uç noktalar, mantık uygulamalarınızın çalışma geçmişindeki giriş ve çıktılara erişme şeklinizi de etkiler.
 
-* **İç**: işinizdeki Logic Apps çağrılarına izin veren özel uç noktalar, çalışma geçmişinde *yalnızca sanal ağınızın* içinden Logic Apps girişlerini ve çıktılarını görüntüleyebilir ve bunlara erişebilirsiniz
+* **Dahili**: İmKB'inizdeki mantık uygulamalarına yapılan aramalara izin veren ve mantık uygulamalarınızın giriş ve çıktılarını *yalnızca sanal ağınızın içinden* çalıştıran geçmişolarak görüntüleyebileceğiniz ve erişebileceğiniz özel uç noktalar
 
-* **Dış**: işinizdeki Logic Apps çağrılarına izin veren genel uç noktalar, *sanal ağınızın dışından*çalıştırma geçmişinde Logic Apps girişlerini ve çıktılarını görüntüleyebilir ve bunlara erişebilirsiniz. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+* **Harici**: Sanal *ağınızın dışından*çalışma geçmişindeki mantık uygulamalarınızın giriş ve çıkışlarını görüntüleyip erişebileceğiniz İmKB'inizdeki mantık uygulamalarına çağrılara izin veren genel uç noktalar. Ağ güvenlik grupları (NSGs) kullanıyorsanız, çalışma geçmişinin giriş ve çıktılarına erişimsağlamak için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi [Enable access for ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)için bk.
 
 > [!IMPORTANT]
-> Erişim uç noktası seçeneği yalnızca ıSE oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez.
+> Erişim bitiş noktası seçeneği yalnızca Ise oluşturmada kullanılabilir ve daha sonra değiştirilemez.
 
 <a name="create-integration-account-environment"></a>
 
-## <a name="integration-accounts-with-ise"></a>ISE ile tümleştirme hesapları
+## <a name="integration-accounts-with-ise"></a>İmKB ile entegrasyon hesapları
 
-Tümleştirme hesaplarını bir tümleştirme hizmeti ortamı (ıSE) içinde Logic Apps ile kullanabilirsiniz. Ancak, bu tümleştirme hesaplarının bağlı Logic Apps ile *aynı Ise* kullanması gerekir. Bir ıSE içindeki Logic Apps yalnızca aynı ıSE içindeki tümleştirme hesaplarına başvurabilir. Bir tümleştirme hesabı oluşturduğunuzda, çalışma hesabınızı tümleştirme hesabınızın konumu olarak seçebilirsiniz. Fiyatlandırma ve faturalandırma 'nin bir ıSE ile tümleştirme hesaplarında nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/).
+Entegrasyon hizmeti ortamı (İmKB) içinde mantık uygulamaları olan tümleştirme hesaplarını kullanabilirsiniz. Ancak, bu tümleştirme hesapları bağlantılı mantık uygulamaları *ile aynı İmKB'yi* kullanmalıdır. İmKB'deki mantık uygulamaları yalnızca aynı İmKB'deki tümleştirme hesaplarına başvurur. Bir entegrasyon hesabı oluşturduğunuzda, Bİm'inizi entegrasyon hesabınızın konumu olarak seçebilirsiniz. Bir İmKB'li entegrasyon hesapları için fiyatlandırma ve faturalandırmanın nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma oranları için [Logic Apps fiyatlandırması'na](https://azure.microsoft.com/pricing/details/logic-apps/)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
-* [Azure sanal ağ](../virtual-network/virtual-networks-overview.md) hakkında daha fazla bilgi edinin
-* [Azure hizmetleri için sanal ağ tümleştirmesi](../virtual-network/virtual-network-for-azure-services.md) hakkında bilgi edinin
+* [Azure Logic Apps'tan Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [Azure Sanal Ağı](../virtual-network/virtual-networks-overview.md) hakkında daha fazla bilgi edinin
+* Azure [hizmetleri için sanal ağ tümleştirmesi](../virtual-network/virtual-network-for-azure-services.md) hakkında bilgi edinin

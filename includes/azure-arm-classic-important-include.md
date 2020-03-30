@@ -2,14 +2,14 @@
 author: genlin
 ms.service: virtual-network
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 02/14/2020
 ms.author: genli
-ms.openlocfilehash: 096f46e22c87e609e875e5e44943e5d1c2ccb0ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 855ab5fba4bf763313030af894bfe0f9142bf8df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188279"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80116909"
 ---
 > [!IMPORTANT]
-> Azure kaynaklarıyla çalışmadan önce Azure'da şu anda iki dağıtım modeli olduğunu anlamak önemlidir: Azure Resource Manager ve klasik. Azure kaynaklarıyla çalışmadan önce [dağıtım modellerini ve araçlarlarını](../articles/azure-classic-rm.md) iyice anladığınızdan emin olun. Bu makalenin en üstündeki sekmelere tıklayarak farklı araçlarla ilgili belgeleri görüntüleyebilirsiniz.
+> Azure'un şu anda iki dağıtım modeli vardır: Azure Kaynak Yöneticisi ve klasik. Azure kaynaklarıyla çalışmadan önce [dağıtım modellerini ve araçlarlarını](../articles/azure-resource-manager/management/deployment-models.md) iyice anladığınızdan emin olun. Farklı araçlar için belgeleri görüntülemek için, bu makalenin başındasekleri seçin.

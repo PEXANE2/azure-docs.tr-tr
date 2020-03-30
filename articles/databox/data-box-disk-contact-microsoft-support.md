@@ -1,88 +1,88 @@
 ---
-title: Destek bileti oturum veya çalışması için Azure Data Box açın | Microsoft Docs
-description: Günlük desteği isteği, Data Box veya Data Box Disk sipariş ilgili sorunlar hakkında bilgi edinin.
+title: Azure Veri Kutusu için destek biletini veya açık kılıfı nı günlüğe kaydet | Microsoft Dokümanlar
+description: Veri Kutusu veya Veri Kutusu Disk siparişinizle ilgili sorunlar için destek isteğini nasıl günlüğe kaydedin.
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: ''
+ms.subservice: disk
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: acba9d2c87d2fb23e48ac24cec22388044702bac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 000659793707c860de881f150e6ce07e4506c602
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064965"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box için bir destek bileti açın 
+# <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Veri Kutusu için destek bileti açma 
 
-Bu makale, Azure Data Box, Azure veri kutusu yoğun ve her biri Azure Data Box hizmeti tarafından yönetilen Azure Data Box Disk için geçerlidir. Azure Data Box hizmetiniz ile herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Bu makalede açıklanmaktadır:
+Bu makale, tümü Azure Veri Kutusu hizmeti tarafından yönetilen Azure Veri Kutusu, Azure Veri Kutusu Ağır ve Azure Veri Kutusu Diski için geçerlidir. Azure Veri Kutusu hizmetinizde herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Bu makale size yol vereb:
 
-* Bir destek isteği oluşturma
-* Nasıl bir destek isteği döngüsü portalında yönetilir.
+* Destek isteği oluşturma.
+* Portal içinden bir destek isteği yaşam döngüsünü nasıl yönetebilirsiniz.
 
 ## <a name="create-a-support-request"></a>Destek isteği oluşturma
 
-Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
+Destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
-1. Data Box veya Data Box Disk Siparişiniz gidin. Gidin **destek + sorun giderme** bölümüne ve ardından **yeni destek isteği**.
+1. Veri Kutusu veya Veri Kutusu Disk siparişinize gidin. DESTEK **+ SORUN GIDERME** bölümüne gidin ve ardından **Yeni destek isteğini**tıklatın.
      
     ![Yeni destek isteği](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
    
-2. İçinde **yeni destek isteği**seçin **Temelleri**. İçinde **Temelleri**, aşağıdaki adımları uygulayın:
+2. **Yeni destek isteğinde** **Temeller'i**seçin. **Temel bilgilerde**aşağıdaki adımları yapın:
     
-    1. Gelen **sorun türü** açılan listesinden **teknik**.
-    2. **Aboneliğinizi** seçin.
-    3. Altında **hizmet**, kontrol **tüm hizmetleri**. Açılır listeden seçin **Data Box**. 
-    4. Belirtin, **destek planı**.
-    5. **İleri**’ye tıklayın.
+    1. Sorun **türü** açılır listesinden **Teknik'i**seçin.
+    2. **Aboneliğinizi**seçin.
+    3. **Hizmet**altında , Tüm Hizmetleri kontrol **edin.** Açılan listeden Veri **Kutusu'nu**seçin. 
+    4. Destek **planınızı**belirtin.
+    5. **İleri**'ye tıklayın.
 
         ![Temel Bilgiler](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
-3. İçinde **yeni destek isteği**seçin **adım 2 sorun**. İçinde **sorun**, aşağıdaki adımları uygulayın:
+3. **Yeni destek isteğinde,** Adım **2 Sorunu'nü**seçin. **Sorun'da,** aşağıdaki adımları yapın:
     
-    1. Seçin **önem derecesi** olarak **C - minimum etki**. Destek gerekirse güncelleştirir.
-    2. Seçin **sorun türü** aşağı açılan listeden.
-    3. Seçtiğiniz sorunun türüne göre karşılık gelen seçin **kategori**.
-    4. Sağlayan bir **başlık** sorunu ve daha fazlası için **ayrıntıları**.
-    5. Başlangıç tarihi ve saati sorun için sağlar.
-    6. İçinde **karşıya dosya yükleme**, karşıya yüklemek istediğiniz diğer tüm dosyalara göz atmak için klasör simgesine tıklayın.
-    7. Denetleme **tanılama bilgilerini paylaşmak**.
-    8. **İleri**’ye tıklayın.
+    1. C - **Minimal etki**olarak **Önem Derecesi'ni** seçin. Gerekirse destek güncellenir.
+    2. Açılan listeden **Sorun türünü** seçin.
+    3. Seçtiğiniz sorun türüne bağlı olarak, ilgili **bir Kategori**seçin.
+    4. Sorun için bir **Başlık** ve daha fazla **Ayrıntı**sağlayın.
+    5. Sorunun başlangıç tarihini ve saatini sağlayın.
+    6. Dosya **yüklemesinde,** yüklemek istediğiniz diğer dosyalara göz atmak için klasör simgesini tıklatın.
+    7. **Tanı bilgilerini paylaş'ı**denetleyin.
+    8. **İleri**'ye tıklayın.
 
        ![Sorun](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 
-4. İçinde **yeni destek isteği**, tıklayın **adım 3 irtibat bilgileri**. İçinde **iletişim bilgilerini**, aşağıdaki adımları uygulayın:
+4. **Yeni destek isteğinde,** Adım 3 **İletişim bilgilerini**tıklatın. **İletişim bilgileri,** aşağıdaki adımları yapmak:
 
-   1. İçinde **başvurun seçenekleri**, tercih ettiğiniz iletişim yöntemi (telefon veya e-posta) ve dil sağlar. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
-   2. İçinde **iletişim bilgilerini**, adı, e-posta, isteğe bağlı bir kişi ve ülke/bölge. Seçin **Kaydet kişi değişikliklerini gelecekteki destek istekleri**.
-   3. **Oluştur**’a tıklayın.
+   1. İletişim **seçeneklerinde,** tercih ettiğiniz iletişim yöntemini (telefon veya e-posta) ve dili sağlayın. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
+   2. İletişim **bilgileri,** adınızı, e-posta, isteğe bağlı kişi, ülke / bölge sağlayın. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet'i**seçin.
+   3. **Oluştur'u**tıklatın.
    
        ![İletişim bilgileri](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
-      Microsoft Support daha fazla bilgi, tanılama ve çözümleme için size ulaşmak için bu bilgileri kullanır.
-      İsteğinizi gönderdikten sonra bir destek mühendisi olabildiğince çabuk isteğinizle birlikte ilerlemek için sizinle iletişime geçecektir.
+      Microsoft Destek bu bilgileri daha fazla bilgi, tanı ve çözüm için size ulaşmak için kullanır.
+      Talebinizi gönderdikten sonra, bir Destek mühendisi isteğinize devam etmek için en kısa sürede sizinle irtibata geçecektir.
 
-## <a name="manage-a-support-request"></a>Destek isteğini yönetin
+## <a name="manage-a-support-request"></a>Destek isteğini yönetme
 
 Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döngüsünü yönetebilirsiniz.
 
-#### <a name="to-manage-your-support-requests"></a>Destek Taleplerinizi yönetme
+#### <a name="to-manage-your-support-requests"></a>Destek isteklerinizi yönetmek için
 
-1. Yardım ve Destek sayfasına ulaşmak için gidin **Gözat > Yardım + Destek**.
+1. Yardım ve destek sayfasına ulaşmak için **Gözat > Yardım + desteğe**gidin.
 
-    ![Destek isteklerini yönetin](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)   
+    ![Destek isteklerini yönetme](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)   
 
-2. Bir tablosal **son destek istekleri** görüntülenen **Yardım + Destek**.
+2. **Son destek isteklerinin** bir tabular listesi **Yardım + destek'te**görüntülenir.
 
-    ![Destek isteklerini yönetin](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png) 
+    ![Destek isteklerini yönetme](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png) 
 
-3. Seçin ve bir destek isteği tıklayın. Durum ve bu istek için ayrıntılarını görüntüleyebilirsiniz. Tıklayın **+ yeni ileti** bu istekte izlemek istiyorsanız.
+3. Bir destek isteğini seçin ve tıklatın. Bu isteğin durumunu ve ayrıntılarını görüntüleyebilirsiniz. Bu isteği takip etmek istiyorsanız **+ Yeni iletiyi** tıklatın.
 
    
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [Data Box Disk için ilgili sorunları giderme](data-box-disk-troubleshoot.md).
-Bilgi edinmek için nasıl [Data Box ilgili sorunları giderme](data-box-troubleshoot.md).
-Bilgi edinmek için nasıl [veri kutusu Blob depolama alanına ilgili sorunları giderme](data-box-troubleshoot-rest.md).
+[Veri Kutusu Diski ile ilgili sorunları](data-box-disk-troubleshoot.md)nasıl gidereceklerini öğrenin.
+Veri Kutusu ile ilgili sorunları nasıl [gidereceklerini](data-box-troubleshoot.md)öğrenin.
+[Veri Kutusu Blob depolama ile ilgili sorunları](data-box-troubleshoot-rest.md)nasıl gidereceklerini öğrenin.

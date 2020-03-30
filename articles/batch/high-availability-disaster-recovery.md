@@ -1,6 +1,6 @@
 ---
-title: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma-Azure Batch
-description: Toplu uygulamanızı bölgesel bir kesinti için nasıl tasarlayacağınızı öğrenin. İş yükleri başka bir bölgeye yük devretmeli veya iki veya daha fazla bölge arasında bölünmelidir.
+title: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma - Azure Toplu İş
+description: Toplu İşlem uygulamanızı bölgesel bir kesinti için nasıl tasarlayın öğrenin. İş yükleri başka bir bölgeye devredilmeli veya iki veya daha fazla bölge arasında bölünmelidir.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -14,40 +14,40 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: labrenne
 ms.openlocfilehash: 84b0cce9557b4ae05586579f175cd0f5db14fdfc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77026090"
 ---
 # <a name="design-your-application-for-high-availability"></a>Uygulamanızı yüksek kullanılabilirlik için tasarlama
 
-Azure Batch bölgesel bir hizmettir. Toplu işlem tüm Azure bölgelerinde kullanılabilir, ancak bir Batch hesabı oluşturulduğunda bir bölgeyle ilişkilendirilmesi gerekir. Daha sonra Batch hesabına yönelik tüm işlemler bu bölge için geçerlidir. Örneğin, havuzlar ve ilişkili sanal makineler (VM 'Ler) Batch hesabıyla aynı bölgede oluşturulur.
+Azure Toplu İşlem bölgesel bir hizmettir. Toplu iş tüm Azure bölgelerinde kullanılabilir, ancak toplu iş hesabı oluşturulduğunda bir bölgeyle ilişkilendirilmesi gerekir. Toplu İşlem hesabı için tüm işlemler daha sonra bu bölgeye uygulanır. Örneğin, havuzlar ve ilişkili sanal makineler (VM'ler) Toplu İşlem hesabıyla aynı bölgede oluşturulur.
 
-Batch kullanan bir uygulama tasarlarken, toplu Iş olasılığını bir bölgede kullanılamayan şekilde düşünmeniz gerekir. Bölgenin tamamı, bölgedeki tüm Batch hizmeti veya özel Batch hesabınızla ilgili bir sorun olduğu nadir bir durumla karşılaşmanız mümkündür.
+Toplu Iş kullanan bir uygulama tasarlarken, Toplu İşlem'in bir bölgede kullanılamaması olasılığını göz önünde bulundurmanız gerekir. Bölge yle ilgili bir sorun, bölgedeki tüm Toplu İşlem hizmeti veya belirli Toplu İşlem hesabınızla ilgili bir sorun olduğu nadir bir durumla karşılaşmak mümkündür.
 
-Batch 'i kullanan uygulama veya çözümün her zaman kullanılabilir olması gerekiyorsa, başka bir bölgeye yük devretmek veya her zaman iş yükünün iki veya daha fazla bölge arasında bölünmesini sağlamak üzere tasarlanmalıdır. Her iki yaklaşım da, her hesap farklı bir bölgede bulunan en az iki Batch hesabı gerektirir.
+Toplu İşlem'i kullanan uygulama veya çözümün her zaman kullanılabilir olması gerekiyorsa, başka bir bölgeye geçemeyecek veya iş yükünün her zaman iki veya daha fazla bölge arasında bölünmesi için tasarlanmalıdır. Her iki yaklaşım da, her hesap farklı bir bölgede bulunan en az iki Toplu Işlem hesabı gerektirir.
 
-## <a name="multiple-batch-accounts-in-multiple-regions"></a>Birden çok bölgede birden çok Batch hesabı
+## <a name="multiple-batch-accounts-in-multiple-regions"></a>Birden çok bölgede birden çok Toplu Işlem hesabı
 
-Çeşitli bölgelerde birden çok Batch hesabı kullanılması, başka bir bölgedeki Batch hesabı kullanılamaz hale gelirse uygulamanızın çalışmaya devam etmesine olanak sağlar. Uygulamanızın yüksek oranda kullanılabilir olması gerekiyorsa, birden çok hesap kullanmak özellikle önemlidir.
+Çeşitli bölgelerde birden çok Toplu İşlem hesabı kullanmak, başka bir bölgedeki toplu iş hesabı kullanılamıyorsa uygulamanızın çalışmaya devam etmesini sağlar. Uygulamanızın çok kullanılabilir olması gerekiyorsa, birden çok hesap kullanmak özellikle önemlidir.
 
-Bazı durumlarda, bir uygulama her zaman iki veya daha fazla bölge kullanacak şekilde tasarlanabilir. Örneğin, çok sayıda kapasiteye ihtiyaç duyduğunuzda, büyük ölçekli bir uygulamayı veya gelecekteki büyüme için karşılamak 'ı işlemek için birden fazla bölgenin kullanılması gerekebilir.
+Bazı durumlarda, bir uygulama her zaman iki veya daha fazla bölge kullanmak üzere tasarlanmış olabilir. Örneğin, önemli miktarda kapasiteye ihtiyacınız olduğunda, büyük ölçekli bir uygulamayı işlemek veya gelecekteki büyümeyi karşılamak için birden çok bölge kullanmak gerekebilir.
 
-## <a name="design-considerations-for-providing-failover"></a>Yük devretme sağlamaya yönelik tasarım konuları
+## <a name="design-considerations-for-providing-failover"></a>Başarısız lık sağlamak için tasarım konuları
 
-Alternatif bir bölgeye yük devretme yeteneği sağlarken göz önünde bulundurmanız gereken bir anahtar noktası, bir Çözümdeki tüm bileşenlerin göz önünde bulundurulmalıdır; yalnızca ikinci bir Batch hesabına sahip olmak yeterli değildir. Örneğin, çoğu Batch uygulamasında, depolama hesabı ve Batch hesabı, kabul edilebilir performans için aynı bölgede olması gereken bir Azure depolama hesabı gereklidir.
+Alternatif bir bölgeye başarısız olma olanağı sağlarken göz önünde bulundurulması gereken önemli bir nokta, bir çözümdeki tüm bileşenlerin dikkate alınması gerektiğidir; sadece ikinci bir Toplu hesap olması yeterli değildir. Örneğin, çoğu Toplu İşlem uygulamasında, depolama hesabı ve Toplu Iş hesabının kabul edilebilir performans için aynı bölgede olması gereken bir Azure depolama hesabı gereklidir.
 
-Yük devredebileceğiniz bir çözüm tasarlarken aşağıdaki noktaları göz önünde bulundurun:
+Başarısız olabilecek bir çözüm tasarlarken aşağıdaki noktaları göz önünde bulundurun:
 
-- Her bölgede tüm gerekli hesapları (Batch hesabı ve depolama hesabı gibi) önceden oluşturun. Yalnızca depolanan veriler olduğunda veya hesap kullanıldığında, hesapların oluşturulması için genellikle herhangi bir ücret alınmaz.
-- Kotaların zaman içinde ayarlanmış olduğundan emin olun, böylece Batch hesabını kullanarak gereken sayıda çekirdek ayırabilirsiniz.
-- Uygulamanın bir bölgede dağıtımını otomatikleştirmek için şablonları ve/veya betikleri kullanın.
-- Tüm bölgelerde uygulama ikili dosyalarını ve başvuru verilerini güncel tutun. Güncel kalmak, bölgenin karşıya yükleme ve dağıtım için beklemek zorunda kalmadan bölgenin çevrimiçi olarak kolayca yapılabildiğini güvence altına alabilir. Örneğin, havuz düğümlerine yüklenecek bir özel uygulama toplu uygulama paketleri kullanılarak depolanıyorsa ve başvurulduğundan, uygulamanın yeni bir sürümü üretildiğinde, her bir Batch hesabına yüklenmelidir ve havuz yapılandırması tarafından başvurulmalıdır (veya yeni sürümü varsayılan sürüm yapın).
-- Toplu Işlem, depolama ve diğer Hizmetleri çağıran uygulamada, istemcileri veya farklı bölgeye yük kolayca geçiş yapın.
-- Yük devretme işleminin başarılı olabilmesi için en iyi yöntem, normal işlemin bir parçası olarak bir alternatif bölgeye sık sık geçiş sağlamaktır. Örneğin, ayrı bölgelerde iki dağıtım ile her ay alternatif bölgeye geçiş yapın.
+- Toplu Iş hesabı ve depolama hesabı gibi her bölgedeki gerekli tüm hesapları önceden oluşturun. Hesapların oluşturulması için genellikle herhangi bir ücret alınmaz, yalnızca depolanan veriler olduğunda veya hesap kullanıldığında.
+- Kotaların hesaplarda önceden ayarlandığınızdan emin olun, böylece Toplu İş hesabını kullanarak gerekli çekirdek sayısını ayırabilirsiniz.
+- Uygulamanın bir bölgede dağıtımını otomatikleştirmek için şablonları ve/veya komut dosyalarını kullanın.
+- Uygulama ikililerini ve başvuru verilerini tüm bölgelerde güncel tutun. Güncel kalmak, dosyaların yüklenmesini ve dağıtılmasını beklemek zorunda kalmadan bölgenin hızlı bir şekilde çevrimiçi olmasını sağlayacaktır. Örneğin, havuz düğümlerine yüklenecek özel bir uygulama Toplu uygulama paketleri kullanılarak depolanır ve başvurulursa, uygulamanın yeni bir sürümü üretildiğinde, her Toplu Işlem hesabına yüklenmeli ve havuz yapılandırması tarafından başvurulmalıdır (veya yeni sürümü varsayılan sürüm yapın).
+- Toplu Iş, depolama ve diğer hizmetleri çağıran uygulamada, istemciler veya farklı bölgeye yük kolayca geçiş.
+- Bir başarısızlık başarılı olmasını sağlamak için en iyi uygulama, normal işlemin bir parçası olarak sık sık alternatif bir bölgeye geçmektir. Örneğin, ayrı bölgelerde ki iki dağıtımla, her ay alternatif bölgeye geçiş yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal](batch-account-create-portal.md), [Azure CLI](cli-samples.md), [PowerShell](batch-powershell-cmdlets-get-started.md)veya [Batch yönetim API 'si](batch-management-dotnet.md)ile Batch hesapları oluşturma hakkında daha fazla bilgi edinin.
-- Varsayılan kotalar bir Batch hesabıyla ilişkilendirilir; [Bu makale](batch-quota-limit.md) , varsayılan kota değerlerini ayrıntılandırmakta ve kotaların nasıl arttırılabileceğinizi anlatmaktadır.
+- [Azure portalı, Azure](batch-account-create-portal.md) [CLI,](cli-samples.md) [PowerShell](batch-powershell-cmdlets-get-started.md)veya [Toplu İşlem yönetimi API'si](batch-management-dotnet.md)ile Toplu Iş hesapları oluşturma hakkında daha fazla bilgi edinin.
+- Varsayılan kotalar bir Toplu Iş hesabıyla ilişkilidir; [Bu makalede](batch-quota-limit.md) varsayılan kota değerleri ayrıntılı olarak açıklanır ve kotaların nasıl artırılabildiği açıklanır.

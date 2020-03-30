@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs kayıtlarını toplu olarak içeri ve dışarı aktarma | Microsoft Docs
-description: Bir Bildirim Hub 'ında çok sayıda işlem gerçekleştirmek veya tüm kayıtları dışarı aktarmak için Notification Hubs toplu destek kullanmayı öğrenin.
+title: Azure Bildirim Hub'ları kayıtlarını toplu olarak dışa aktarma ve alma | Microsoft Dokümanlar
+description: Bildirim Hub'ları toplu desteğini, bir bildirim hub'ında çok sayıda işlem gerçekleştirmek veya tüm kayıtları dışa aktarmak için nasıl kullanacağınızı öğrenin.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -15,31 +15,31 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71212391"
 ---
-# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs kayıtlarını toplu olarak içeri ve dışarı aktarma
-Bir Bildirim Hub 'ında çok sayıda kayıt oluşturmak veya değiştirmek için gerekli senaryolar vardır. Bu senaryolardan bazıları, toplu hesaplamalar sonrasında etiket güncelleştirmeleridir veya mevcut bir gönderme uygulamasını Notification Hubs kullanmak üzere geçirmektedir.
+# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Bildirim Hub'ları kayıtlarını toplu olarak dışa aktarma ve alma
+Bir bildirim hub'ında çok sayıda kayıt oluşturmak veya değiştirmek için gereken senaryolar vardır. Bu senaryolardan bazıları, toplu iş hesaplamalarını izleyen veya Bildirim Hub'larını kullanmak için varolan bir itme uygulamasını geçirmek için etiket güncelleştirmeleridir.
 
-Bu makalede, bir Bildirim Hub 'ında çok sayıda işlemin nasıl gerçekleştirileceği veya tüm kayıtların toplu olarak dışarı aktarılması açıklanmaktadır.
+Bu makalede, bir bildirim hub'ında çok sayıda işlem nasıl gerçekleştirildirilen veya tüm kayıtları toplu olarak dışa aktarmak için nasıl açıklanmaktadır.
 
 ## <a name="high-level-flow"></a>Üst düzey akış
-Batch desteği milyonlarca kayıt içeren uzun süreli işleri destekleyecek şekilde tasarlanmıştır. Toplu destek, bu ölçeğe ulaşmak için iş ayrıntılarını ve çıktıyı depolamak üzere Azure Storage kullanır. Toplu güncelleştirme işlemleri için, kullanıcının içerik kayıt güncelleştirme işlemleri listesi olan bir blob kapsayıcısında bir dosya oluşturması gerekir. Kullanıcı başlatıldığında, bir çıkış dizinine (aynı zamanda bir blob kapsayıcısında) bir URL ile birlikte giriş blobuna bir URL sağlar. İş başladıktan sonra, Kullanıcı, işin başlangıcında belirtilen bir URL konumunu sorgulayarak durumu denetleyebilir. Belirli bir iş yalnızca belirli bir türdeki (oluşturma, güncelleştirme veya silme) işlemleri gerçekleştirebilir. Dışarı aktarma işlemleri, anormal olarak gerçekleştirilir.
+Toplu iş desteği, milyonlarca kaydı içeren uzun süreli işleri desteklemek üzere tasarlanmıştır. Bu ölçek elde etmek için toplu destek, iş ayrıntılarını ve çıktıyı depolamak için Azure Depolama'yı kullanır. Toplu güncelleştirme işlemleri için, kullanıcının, içeriği kayıt güncelleştirme işlemlerinin listesi olan blob kapsayıcısında bir dosya oluşturması gerekir. İşe başlarken, kullanıcı giriş blob'una bir URL ve çıktı dizinine (ayrıca blob kapsayıcısında) bir URL sağlar. İş başladıktan sonra, kullanıcı işin başında sağlanan bir URL konumunu sorgulayarak durumu denetleyebilir. Belirli bir iş yalnızca belirli bir tür (oluşturur, güncelleştirmeler veya siler) işlemleri gerçekleştirebilir. Dışa aktarma işlemleri benzer şekilde gerçekleştirilir.
 
 ## <a name="import"></a>İçeri Aktarma
 
-### <a name="set-up"></a>Ayarlama
+### <a name="set-up"></a>Ayarla
 Bu bölüm, aşağıdaki varlıklara sahip olduğunuzu varsayar:
 
-- Sağlanan bir Bildirim Hub 'ı.
-- Bir Azure Depolama Blobu kapsayıcısı.
-- [Azure depolama NuGet paketine](https://www.nuget.org/packages/windowsazure.storage/) ve [Notification Hubs NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)başvurur.
+- Sağlanan bir bildirim merkezi.
+- Azure Depolama blob kapsayıcısı.
+- [Azure Depolama NuGet paketine](https://www.nuget.org/packages/windowsazure.storage/) ve Bildirim Hub'larına yapılan başvurular [NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-### <a name="create-input-file-and-store-it-in-a-blob"></a>Giriş dosyası oluşturma ve bir blob 'da depolama
-Bir giriş dosyası, satır başına bir tane olmak üzere XML 'de serileştirilmiş kayıtların bir listesini içerir. Aşağıdaki kod örneği, Azure SDK 'sını kullanarak kayıtların serileştirilme ve BLOB kapsayıcısına nasıl yükleneceği gösterilmektedir.
+### <a name="create-input-file-and-store-it-in-a-blob"></a>Giriş dosyası oluşturma ve bir blob'da saklama
+Giriş dosyası, XML'de serihale getirilen, satır başına bir kayıt listesi içerir. Azure SDK'yı kullanarak, aşağıdaki kod örneği, kayıtların nasıl serileştirilebildiğini ve blob kapsayıcısına nasıl yükleyirileni gösterir.
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -59,10 +59,10 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 ```
 
 > [!IMPORTANT]
-> Yukarıdaki kod, kayıtları bellekte seri hale getirir ve sonra akışın tamamını bir blob 'a yükler. Yalnızca birkaç megabayttan daha fazla bir dosya yüklediyseniz, bu adımları nasıl gerçekleştireceğiniz hakkında bilgi için bkz. Azure Blob Kılavuzu. Örneğin, [blok Blobları](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
+> Önceki kod bellekteki kayıtları serileştirir ve tüm akışı bir blob'a yükler. Birkaç megabayttan daha fazla dosya yüklediyseniz, bu adımların nasıl gerçekleştirilebildiğini anlatan Azure blob kılavuzuna bakın; örneğin, [blok lekeler](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
-### <a name="create-url-tokens"></a>URL belirteçleri oluştur
-Giriş dosyanız karşıya yüklendikten sonra, hem giriş dosyası hem de çıkış dizini için Bildirim Hub 'ına sağlanacak URL 'Leri oluşturun. Giriş ve çıkış için iki farklı blob kapsayıcı kullanabilirsiniz.
+### <a name="create-url-tokens"></a>URL belirteçleri oluşturma
+Giriş dosyanız yüklendikten sonra, hem giriş dosyası hem de çıktı dizini için bildirim merkezinize sağlamak için URL'ler oluşturun. Giriş ve çıkış için iki farklı blob kapsayıcısı kullanabilirsiniz.
 
 ```csharp
 static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
@@ -90,7 +90,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>İşi gönderme
-İki giriş ve çıkış URL 'Si ile, artık toplu işi başlatabilirsiniz.
+İki giriş ve çıktı URL'si ile artık toplu iş başlatabilirsiniz.
 
 ```csharp
 NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
@@ -115,23 +115,23 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-Bu örnek, giriş ve çıkış URL 'lerine ek olarak, aşağıdaki türlerden `NotificationHubJob` biri olabilecek bir `JobType` nesnesi içeren bir nesne oluşturur:
+Giriş ve çıkış URL'lerine ek olarak, bu `NotificationHubJob` örnek, aşağıdaki `JobType` türlerden biri olabilecek bir nesne içeren bir nesne oluşturur:
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-Çağrı tamamlandıktan sonra, iş Bildirim Hub 'ı tarafından devam eder ve [Getnotificationhubjobasync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet)çağrısı ile durumunu kontrol edebilirsiniz.
+Arama tamamlandıktan sonra, iş bildirim merkezi tarafından devam edilir ve [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet)için arama ile durumunu kontrol edebilirsiniz.
 
-İş tamamlandığında, çıkış dizininizde aşağıdaki dosyalara bakarak sonuçları inceleyebilirsiniz:
+İş tamamlandığında, çıktı dizininizdeki aşağıdaki dosyalara bakarak sonuçları inceleyebilirsiniz:
 
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-Bu dosyalar, toplu işleminizden başarılı ve başarısız işlemlerin listesini içerir. Dosya biçimi, her `.cvs`satırda orijinal giriş dosyasının satır numarası ve işlemin çıkışı (genellikle oluşturulan veya güncelleştirilmiş kayıt açıklaması) ile aynıdır.
+Bu dosyalar, toplu iş toplu iş başarılı ve başarısız işlemlerin listesini içerir. Dosya biçimi, `.cvs`her satırda özgün giriş dosyasının satır numarasına ve işlemin çıktısının (genellikle oluşturulan veya güncelleştirilen kayıt açıklaması) bulunduğu biçimdir.
 
-### <a name="full-sample-code"></a>Tam örnek kod
-Aşağıdaki örnek kod kayıtları bir Bildirim Hub 'ına aktarır.
+### <a name="full-sample-code"></a>Tam örnek kodu
+Aşağıdaki örnek kod kayıtları bir bildirim merkezine içeri girer.
 
 ```csharp
 using Microsoft.Azure.NotificationHubs;
@@ -262,13 +262,13 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>Dışarı Aktarma
-Kayıt verme, aşağıdaki farklılıklar ile içeri aktarmaya benzer:
+Kayıt dışa aktarma, aşağıdaki farklılıklarla, içe aktarma benzer:
 
-- Yalnızca çıkış URL 'sine ihtiyacınız vardır.
-- Exportkayıtları türünde bir NotificationHubJob oluşturursunuz.
+- Yalnızca çıktı URL'si gerekir.
+- Dışa Aktarma Kayıtları türünden bir BildirimHubJob oluşturursunuz.
 
-### <a name="sample-code-snippet"></a>Örnek kod parçacığı
-Java 'da kayıtları dışarı aktarmaya yönelik örnek kod parçacığı aşağıda verilmiştir:
+### <a name="sample-code-snippet"></a>Örnek kod snippet
+Java'da kayıt aktarmak için örnek kod parçacığı aşağıda veda edebilirsiniz:
 
 ```java
 // submit an export job
@@ -291,5 +291,5 @@ while(true){
 Kayıtlar hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Kayıt yönetimi](notification-hubs-push-notification-registration-management.md)
-- [Kayıtlar için Etiketler](notification-hubs-tags-segment-push-message.md)
+- [Kayıtlar için etiketler](notification-hubs-tags-segment-push-message.md)
 - [Şablon kayıtları](notification-hubs-templates-cross-platform-push-messages.md)

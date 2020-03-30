@@ -1,87 +1,87 @@
 ---
-title: Azure IoT Central uygulamalarınız için cihaz şablonu sürüm oluşturmayı anlama | Microsoft Docs
-description: Yeni sürümler oluşturarak ve canlı bağlı cihazlarınızı etkilemeden cihaz şablonlarınızda yineleme yapın
+title: Azure IoT Central uygulamalarınız için cihaz şablonu sürümünü anlama | Microsoft Dokümanlar
+description: Yeni sürümler oluşturarak ve canlı bağlı cihazlarınızı etkilemeden cihaz şablonlarınız üzerinde yeniden düzenleme
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 12/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 530208ed82c95187fac2173aa763ef5507f56b0b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018219"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157577"
 ---
-# <a name="create-a-new-device-template-version"></a>Yeni bir cihaz şablonu sürümü oluştur
+# <a name="create-a-new-device-template-version"></a>Yeni bir aygıt şablonu sürümü oluşturma
 
 
 
-Azure IoT Central IoT uygulamalarının hızla geliştirilmesini sağlar. Cihaz özelliklerini, görünümleri ve özelleştirmeleri ekleyerek, düzenleyerek veya silerek cihaz şablonu tasarımlarınız üzerinde hızlıca yineleme yapabilirsiniz. Cihaz şablonunuzu yayımladıktan sonra cihaz yeteneği modeli, modelin yanında kilit simgeleri ile **yayımlandı** olarak gösterilir. Cihaz yetenek modelinde değişiklik yapabilmek için cihaz şablonunun yeni bir sürümünü oluşturmanız gerekir. Bu arada, bulut özellikleri, özelleştirmeler ve görünümler, cihaz şablonunun sürümü gerekmeden herhangi bir zamanda düzenlenebilirler. Bu değişikliklerden birini kaydettikten sonra, işlecin Device Explorer içinde görüntülemesi için en son değişiklikleri kullanılabilir hale getirmek üzere cihaz şablonunu yayımlayabilirsiniz.
+Azure IoT Central, IoT Uygulamaları'nın hızlı bir şekilde geliştirilmesine olanak tanır. Aygıt özelliklerini, görünümlerini ve özelleştirmelerini ekleyerek, düzenleyerek veya silerek cihaz şablon tasarımlarınızı hızlı bir şekilde yineleyebilirsiniz. Aygıt şablonunuzu yayımladıktan sonra, aygıt yeteneği modeli modelin yanındaki kilit simgeleriyle **Yayımlanmış** olarak gösterilir. Aygıt yeteneği modelinde değişiklik yapmak için aygıt şablonunun yeni bir sürümünü oluşturmanız gerekir. Bu arada bulut özellikleri, özelleştirmeler ve görünümler, aygıt şablonu sürümü gerek kalmadan herhangi bir zamanda düzenlenebilir. Bu değişikliklerden herhangi birini kaydettikten sonra, işleç için en son değişiklikleri Aygıt Gezgini'nde görüntülemek için kullanılabilir hale getirmek için aygıt şablonuna yayımlayabilirsiniz.
 
 > [!NOTE]
-> Cihaz şablonu oluşturma hakkında daha fazla bilgi edinmek için bkz. [cihaz şablonu ayarlama ve yönetme](howto-set-up-template.md)
+> Aygıt şablonu oluşturma hakkında daha fazla bilgi edinmek için [bkz.](howto-set-up-template.md)
 
-## <a name="add-customizations-to-the-device-template-without-versioning"></a>Sürüm oluşturma olmadan cihaz şablonuna özelleştirmeler ekleme
+## <a name="add-customizations-to-the-device-template-without-versioning"></a>Sürüm olmadan aygıt şablonuna özelleştirmeekleme
 
-Cihaz olanaklarınızın belirli öğeleri, cihaz şablonu ve arabirimlerinizin sürümü gerekmeden düzenlenebilir. Örneğin, bu alanlardan bazıları görünen adı, anlam türünü, minimum değeri, en büyük değer, ondalık basamak, renk, birim, görüntü birimi, açıklama ve açıklama içerir. Şu özelleştirmelere birini eklemek için:
+Aygıt yeteneklerinizin belirli öğeleri, aygıt şablonunuzu ve arayüzlerinizi sürüm oluşturmanıza gerek kalmadan düzenlenebilir. Örneğin, bu alanlardan bazıları görüntü adı, anlamsal türü, minimum değer, maksimum değer, ondalık basamaklar, renk, birim, görüntü birimi, yorum ve açıklama içerir. Bu özelleştirmelerden birini eklemek için:
 
-1. **Cihaz şablonları** sayfasına gidin.
-1. Özelleştirmek istediğiniz cihaz şablonunu seçin.
+1. **Aygıt Şablonları** sayfasına gidin.
+1. Özelleştirmek istediğiniz aygıt şablonuna seçin.
 1. **Özelleştir** sekmesini seçin.
-1. Cihaz yetenek modelinizde tanımlanan tüm yetenekler burada listelenir. Burada düzenleyebileceğiniz tüm alanlar, cihaz şablonunuzun sürümü gerekmeden uygulamanız genelinde kaydedilebilir ve kullanılabilir. Salt okunurdur düzenlemek istediğiniz alanlar varsa, bunları değiştirmek için cihaz şablonunuzu yüklemeniz gerekir. Düzenlemek istediğiniz bir alanı seçin ve yeni değerleri girin.
-1. **Save (Kaydet)** düğmesine tıklayın. Bu değerler, başlangıçta cihaz şablonunuzda kaydedilen ve uygulama genelinde kullanılacak olan her şeyi geçersiz kılacak.
+1. Cihaz yetenek modelinizde tanımlanan tüm özellikler burada listelenir. Burada oluşturabileceğiniz tüm alanlar, cihazınızŞablonunuzu sürümüne gerek kalmadan cihazınızın her yerinde kaydedilebilir ve kullanılabilir. Yalnızca okunan bir şekilde değiştirmek istediğiniz alanlar varsa, bunları değiştirmek için aygıt şablonunuzu sürümoluşturmanız gerekir. Başka bir değerde yeniden yapmak ve girmek istediğiniz bir alan seçin.
+1. **Kaydet**'e tıklayın. Artık bu değerler, başlangıçta aygıt şablonunuzda kaydedilen ve uygulama genelinde kullanılacak olan her şeyi geçersiz kılar.
 
-## <a name="versioning-a-device-template"></a>Cihaz şablonu sürümü oluşturma
+## <a name="versioning-a-device-template"></a>Aygıt şablonu sürüm oluşturma
 
-Cihaz şablonunuzun yeni bir sürümünü oluşturmak, cihaz yetenek modelinin düzenlenebildiği şablonun taslak bir sürümünü oluşturur. Yayımlanan tüm arabirimler tek tek sürümleyene kadar yayımlanmaya devam eder. Yayımlanmış bir arabirimi değiştirmek için, önce yeni bir cihaz şablonu sürümü oluşturmanız gerekir.
+Aygıt şablonunuzun yeni bir sürümünü oluşturmak, şablonun aygıt yetenek modelinin düzenlenebileceği taslak bir sürümünü oluşturur. Yayımlanmış arabirimler, tek tek sürümlendirilene kadar yayımlanmamış olarak kalır. Yayımlanmış bir arabirimi değiştirmek için önce yeni bir aygıt şablonu sürümü oluşturmanız gerekir.
 
-Cihaz şablonu, cihaz şablonunun özelleştirmeler bölümünde düzenleyebileceğiniz cihaz yetenek modelinin bir parçasını düzenlemeye çalışırken yalnızca sürümlük edilmelidir. 
+Aygıt şablonu yalnızca aygıt şablonunun özelleştirmeler bölümünde düzenlemeyi başaramadığınızda aygıt yeteneği modelinin bir bölümünü düzenlemeye çalıştığınızda sürülmelidir. 
 
-Bir cihaz şablonunun sürümü için:
+Aygıt şablonu sürümü için:
 
-1. **Cihaz şablonları** sayfasına gidin.
-1. Sürüm oluşturmaya çalıştığınız cihaz şablonunu seçin.
-1. Sayfanın üst kısmındaki **Sürüm** düğmesine tıklayın ve şablona yeni bir ad verin. Sizin için düzenlenebilecek yeni bir ad önerdi.
-1. **Oluştur**’a tıklayın.
-1. Artık cihaz şablonunuz taslak modunda. Arabirimlerinizin hala kilitli olduğunu ve düzenlenebilmesi için ayrı ayrı sürüm oluşturulması gerektiğini görürsünüz. 
+1. **Aygıt Şablonları** sayfasına gidin.
+1. Sürüm oluşturmaya çalıştığınız aygıt şablonunu seçin.
+1. Sayfanın üst kısmındaki **Sürüm** düğmesini tıklatın ve şablona yeni bir ad verin. Sizin için düzenlenebilecek yeni bir isim önerdik.
+1. **Oluştur'u**tıklatın.
+1. Artık aygıt şablonunuzun taslak modunda olduğu görülüyor. Arabirimlerinizin hala kilitli olduğunu ve düzenlenebilmek için tek tek sürümlendirilmeniz gerektiğini görürsünüz. 
 
-### <a name="versioning-an-interface"></a>Arabirim sürümü oluşturma
+### <a name="versioning-an-interface"></a>Arabirimi sürümleme
 
-Bir arabirimin sürümü oluşturma, önceden oluşturduğunuz arabirim içindeki özellikleri eklemenize, güncelleştirmenize ve kaldırmanıza olanak sağlar. 
+Arabirimi sürüm oluşturma, zaten oluşturduğunuz arabirim içindeki yetenekleri eklemenize, güncelleştirmenize ve kaldırmanıza olanak tanır. 
 
-Bir arabirimin sürümü için:
+Bir arabirimi sürümlemek için:
 
-1. **Cihaz şablonları** sayfasına gidin.
-1. Taslak modunda olan cihaz şablonunu seçin.
-1. Sürüm ve düzenleme yapmak istediğiniz yayımlanmış modda olan arabirimi seçin.
-1. Arabirim sayfasının en üstündeki **Sürüm** düğmesine tıklayın. 
-1. **Oluştur**’a tıklayın.
-1. Artık arabiriminiz taslak modunda. Mevcut özelleştirmeleri ve görünümleri bozmadan arabiriminize özellikler ekleyebilir veya bu özellikleri düzenleyebilirsiniz. 
-
-> [!NOTE]
-> Azure IoT tarafından yayınlanan standart arabirimlerin sürümü oluşturulamıyor veya düzenlenemiyor. Bu standart arabirimler cihaz sertifikası için kullanılır.
+1. **Aygıt Şablonları** sayfasına gidin.
+1. Taslak modunda sahip olduğunuz aygıt şablonunu seçin.
+1. Sürümünü ve yeniden biçimdedini yapmak istediğiniz yayımlanmış modda olan arabirimi seçin.
+1. Arayüz sayfasının üst kısmındaki **Sürüm** düğmesini tıklatın. 
+1. **Oluştur'u**tıklatın.
+1. Şimdi arabiriminiz taslak modunda. Varolan özelleştirmeleri ve görünümleri bozmadan arabiriminize özellikler ekleyebilir veya bunları edebilirsiniz. 
 
 > [!NOTE]
-> Arabirim yayımlandıktan sonra, bir taslak modunda bile bu özellikleri silemezsiniz. Yetenekler yalnızca taslak modundaki arabirime düzenlenebilir veya eklenebilir.
+> Azure IoT tarafından yayınlanan standart arabirimler sürülenemez veya düzenlenemez. Bu standart arabirimler aygıt sertifikası için kullanılır.
+
+> [!NOTE]
+> Arayüz yayımlandıktan sonra, taslak modunda bile bu özelliklerin hiçbirini silemezsiniz. Özellikler yalnızca taslak modunda düzenlenebilir veya arabirime eklenebilir.
 
 
-## <a name="migrate-a-device-across-device-template-versions"></a>Cihazı cihaz şablonu sürümleri arasında geçirme
+## <a name="migrate-a-device-across-device-template-versions"></a>Aygıtı aygıt şablonu sürümlerine geçirme
 
-Cihaz şablonunun birden çok sürümünü oluşturabilirsiniz. Zaman içinde, bu cihaz şablonlarını kullanan birden fazla bağlı cihazınız olacaktır. Cihazları, cihaz şablonunuzun bir sürümünden başka bir sürümüne geçirebilirsiniz. Aşağıdaki adımlarda bir cihazın nasıl geçirileceği açıklanır:
+Aygıt şablonunun birden çok sürümü oluşturabilirsiniz. Zamanla, bu aygıt şablonlarını kullanarak birden çok bağlı aygıtınız olacaktır. Aygıtları aygıt şablonunuzun bir sürümünden diğerine geçirebilirsiniz. Aşağıdaki adımlar, bir aygıtın nasıl geçirilen açıklanmıştır:
 
-1. **Device Explorer** sayfasına gidin.
-1. Başka bir sürüme geçirmeniz gereken cihazı seçin.
-1. **Geçir**' i seçin.
-1. Cihazı geçirmek istediğiniz sürüm numarasına sahip cihaz şablonunu seçin ve **geçir**' i seçin.
+1. **Aygıt Gezgini** sayfasına gidin.
+1. Başka bir sürüme geçirmek için gereken aygıtı seçin.
+1. **Geçir'i**seçin.
+1. Aygıtı geçirmek istediğiniz sürüm numarasını içeren aygıt şablonunu seçin ve **Geçir'i**seçin.
 
-![Cihaz geçirme](media/howto-version-device-template/pick-version.png)
+![Aygıt nasıl geçirilir?](media/howto-version-device-template/pick-version.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Azure IoT Central uygulamanızda cihaz şablonu sürümlerini kullanmayı öğrendiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
+Azure IoT Central uygulamanızda aygıt şablonu sürümlerini kullanmayı öğrendiğinize göre, önerilen bir sonraki adım şudur:
 
 > [!div class="nextstepaction"]
-> [Telemetri kuralları oluşturma](tutorial-create-telemetry-rules.md)
+> [Telemetri kuralları nasıl oluşturulur?](tutorial-create-telemetry-rules.md)

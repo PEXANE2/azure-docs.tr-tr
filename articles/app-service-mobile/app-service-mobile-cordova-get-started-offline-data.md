@@ -1,47 +1,47 @@
 ---
-title: Çevrimdışı eşitlemeyi etkinleştir (Cordova)
-description: App Service mobil uygulamayı kullanarak Cordova uygulamanızdaki çevrimdışı verileri önbelleğe alma ve eşitleme hakkında bilgi edinin.
+title: Çevrimdışı eşitleme (Cordova) etkinleştirme
+description: Cordova uygulamanızda çevrimdışı verileri önbelleğe almak ve senkronize etmek için App Service Mobile App'ı nasıl kullanacağınızı öğrenin.
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
 ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 5a2d5ec8da5c1a317039e656f6df884a10efe7c3
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459427"
 ---
-# <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Cordova mobil uygulamanız için çevrimdışı eşitlemeyi etkinleştirme
+# <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Cordova mobil uygulamanız için çevrimdışı eşitleme yi etkinleştirme
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu öğreticide, Cordova için Azure Mobile Apps çevrimdışı eşitleme özelliği tanıtılmıştır. Çevrimdışı eşitleme son kullanıcıların bir mobil uygulamayla etkileşime geçmesini sağlar ve ağ bağlantısı olmasa bile veri&mdash;görüntüleme, ekleme veya değiştirme&mdash;. Değişiklikler yerel bir veritabanında depolanır.  Cihaz yeniden çevrimiçi olduktan sonra, bu değişiklikler uzak hizmetle eşitlenir.
+Bu öğretici, Cordova için Azure Mobil Uygulamaları'nın çevrimdışı eşitleme özelliğini sunar. Çevrimdışı eşitleme, ağ bağlantısı olmasa&mdash;&mdash;bile son kullanıcıların bir mobil uygulamayı görüntüleme, ekleme veya değiştirme ile etkileşimkurmasına olanak tanır. Değişiklikler yerel bir veritabanında depolanır.  Aygıt yeniden çevrimiçi olduğunda, bu değişiklikler uzak hizmetle eşitlenir.
 
-Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığınızda oluşturduğunuz Mobile Apps için Cordova hızlı başlangıç çözümünü temel alır. Bu öğreticide, Azure Mobile Apps çevrimdışı özellikleri eklemek için hızlı başlangıç çözümünü güncelleşolursunuz.  Ayrıca, uygulamadaki çevrimdışı özel kodu vurgularız.
+Bu öğretici, [Apache Cordova]hızlı başlangıç eğitimini tamamladığınızda oluşturduğunuz Mobil Uygulamalar için Cordova quickstart çözümüne dayanmaktadır. Bu eğitimde, Azure Mobil Uygulamaları'nın çevrimdışı özelliklerini eklemek için hızlı başlangıç çözümünün güncellenir.  Ayrıca uygulamada çevrimdışıözel kodu da vurgularız.
 
-Çevrimdışı eşitleme özelliği hakkında daha fazla bilgi edinmek için [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme]konusuna bakın. API kullanımının ayrıntıları için [API belgelerine](https://azure.github.io/azure-mobile-apps-js-client)bakın.
+Çevrimdışı eşitleme özelliği hakkında daha fazla bilgi edinmek için [Azure Mobil Uygulamalarında Çevrimdışı Veri Eşitleme]konusuna bakın. API kullanımıyla ilgili ayrıntılar için [API belgelerine](https://azure.github.io/azure-mobile-apps-js-client)bakın.
 
-## <a name="add-offline-sync-to-the-quickstart-solution"></a>Hızlı başlangıç çözümüne çevrimdışı eşitleme ekleme
-Çevrimdışı eşitleme kodu uygulamaya eklenmelidir. Çevrimdışı eşitleme, projede Azure Mobile Apps eklentisi dahil edildiğinde otomatik olarak uygulamanıza eklenen Cordova-SQLite-Storage eklentisini gerektirir. Hızlı başlangıç projesi bu eklentilerin her ikisini de içerir.
+## <a name="add-offline-sync-to-the-quickstart-solution"></a>Hızlı başlatma çözümüne çevrimdışı eşitleme ekleme
+Çevrimdışı eşitleme kodu uygulamaya eklenmelidir. Çevrimdışı eşitleme, Azure Mobil Uygulamalar eklentisi projeye dahil edildiğinde otomatik olarak uygulamanıza eklenen cordova-sqlite-depolama eklentisini gerektirir. Quickstart projesi bu eklentilerin her ikisini de içerir.
 
-1. Visual Studio 'nun Çözüm Gezgini, index. js ' yi açın ve aşağıdaki kodu değiştirin
+1. Visual Studio'nun Solution Explorer'ında index.js'yi açın ve aşağıdaki kodu değiştirin
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable;      // Reference to a table endpoint on backend
 
-    Bu kod ile:
+    bu kod ile:
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable,      // Reference to a table endpoint on backend
            syncContext;        // Reference to offline data sync context
 
-2. Sonra, aşağıdaki kodu değiştirin:
+2. Ardından, aşağıdaki kodu değiştirin:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
 
-    Bu kod ile:
+    bu kod ile:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
         var store = new WindowsAzure.MobileServiceSqliteStore('store.db');
@@ -59,17 +59,17 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    Yukarıdaki kod eklemeleri yerel depoyu başlatır ve Azure arka uçta kullanılan sütun değerleriyle eşleşen bir yerel tablo tanımlar. (Bu kodda tüm sütun değerlerini eklemeniz gerekmez.)  `version` alanı, mobil arka uç tarafından korunur ve çakışma çözümü için kullanılır.
+    Önceki kod eklemeleri yerel mağazanın başlatılmasını sağlar ve Azure arka uçunuzda kullanılan sütun değerleriyle eşleşen yerel bir tablo tanımlar. (Tüm sütun değerlerini bu koda eklemeniz gerekmez.)  Alan `version` mobil arka uç tarafından korunur ve çakışma çözümü için kullanılır.
 
-    **Getsynccontext**'i çağırarak eşitleme bağlamına bir başvuru alırsınız. Eşitleme bağlamı, `.push()` çağrıldığında bir istemci uygulamasının değiştirdiği tüm tablolardaki değişiklikleri izleyerek ve ileterek Tablo ilişkilerinin korunmasına yardımcı olur.
+    **getSyncContext'ı**arayarak eşitleme bağlamına bir başvuru alırsınız. Eşitleme bağlamı, istemci uygulaması çağrıldığında `.push()` değiştirdiği tüm tablolardaki değişiklikleri izleyerek ve iterek tablo ilişkilerini korumaya yardımcı olur.
 
-3. Uygulama URL 'sini mobil uygulama uygulamanızın URL 'niz olarak güncelleştirin.
+3. Uygulama URL'sini Mobil Uygulama uygulama URL'nize güncelleyin.
 
-4. Sonra şu kodu değiştirin:
+4. Ardından, bu kodu değiştirin:
 
         todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
-    Bu kod ile:
+    bu kod ile:
 
         // Initialize the sync context with the store
         syncContext.initialize(store).then(function () {
@@ -101,13 +101,13 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
         $('#add-item').submit(addItemHandler);
         $('#refresh').on('click', refreshDisplay);
 
-    Yukarıdaki kod, eşitleme bağlamını başlatır ve ardından yerel tabloya bir başvuru almak için getSyncTable (getTable yerine) öğesini çağırır.
+    Önceki kod eşitleme bağlamını başolarak alır ve ardından yerel tabloya başvuruda bulunmak için GetSyncTable 'ı (getTable yerine) çağırır.
 
     Bu kod, tüm oluşturma, okuma, güncelleştirme ve silme (CRUD) tablo işlemleri için yerel veritabanını kullanır.
 
-    Bu örnek, eşitleme çakışmaları üzerinde basit hata işleme gerçekleştirir. Gerçek bir uygulama, ağ koşulları, sunucu çakışmaları ve diğerleri gibi çeşitli hataları işleyebilir. Kod örnekleri için bkz. [Çevrimdışı eşitleme örneğinde].
+    Bu örnek eşitleme çakışmaları üzerinde basit hata işleme gerçekleştirir. Gerçek bir uygulama ağ koşulları, sunucu çakışmaları ve diğerleri gibi çeşitli hataları işler. Kod örnekleri için çevrimdışı [eşitleme örneğine]bakın.
 
-5. Sonra, gerçek eşitlemeyi gerçekleştirmek için bu işlevi ekleyin.
+5. Ardından, gerçek eşitleme gerçekleştirmek için bu işlevi ekleyin.
 
         function syncBackend() {
 
@@ -121,19 +121,19 @@ Bu öğretici, [Apache Cordova hızlı başlangıç]öğreticiyi tamamladığın
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    **SyncContext. push ()** öğesini çağırarak, mobil uygulama arka ucuna ne zaman değişiklik gönderileceğine karar verirsiniz. Örneğin, eşitleme düğmesine bağlı bir düğme olay işleyicisinde **Syncarka uç** çağırabilirsiniz.
+    **SyncContext.push()** numaralı telefonu arayarak Mobil Uygulama arka uçta değişiklikleri ne zaman iteceğine siz karar verirsiniz. Örneğin, eşitleme düğmesine bağlı bir düğme olay işleyicisinde **syncBackend'i** arayabilirsiniz.
 
-## <a name="offline-sync-considerations"></a>Çevrimdışı eşitleme konuları
+## <a name="offline-sync-considerations"></a>Çevrimdışı eşitleme hususları
 
-Örnekte, **syncContext** **Push** yöntemi yalnızca oturum açma için geri çağırma işlevindeki uygulama başlangıcında çağırılır.  Gerçek dünyada bir uygulamada, bu eşitleme işlevselliğinin el ile tetiklenmesi veya ağ durumunun ne zaman değiştiği de yapabilirsiniz.
+Örnekte, **eşitleme bağlamı** **itme** yöntemi yalnızca giriş için geri arama işlevinde uygulama başlatma olarak adlandırılır.  Gerçek bir uygulamada, bu eşitleme işlevini el ile veya ağ durumu değiştiğinde de tetikleebilirsiniz.
 
-Bir çekme, bağlam tarafından izlenen bekleyen yerel güncelleştirmeleri olan bir tabloya karşı yürütüldüğünde, bu çekme işlemi otomatik olarak bir gönderim tetikler. Bu örnekteki öğeleri yenilerken, eklerken ve tamamlarken açık bir **gönderme** çağrısını atlayabilirsiniz, çünkü gereksiz olabilir.
+Bir çekme, bağlam tarafından izlenen yerel güncelleştirmeleri bekleyen bir tabloya karşı yürütüldüğünde, bu çekme işlemi otomatik olarak bir itme tetikler. Bu örnekteki öğeleri yenilerken, eklerken ve tamamlarken, gereksiz olabileceğinden açık **itme** çağrısını atlayabilirsiniz.
 
-Belirtilen kodda, uzak TodoItem tablosundaki tüm kayıtlar sorgulanır, ancak bir sorgu kimliği ve sorguyu **Push**'e geçirerek kayıtları filtrelemek de mümkündür. Daha fazla bilgi için bkz. [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme] *artımlı eşitleme* bölümü.
+Sağlanan kodda, uzak todoItem tablosundaki tüm kayıtlar sorgulanır, ancak bir sorgu id ve sorgu itmek için geçerek kayıtları filtrelemek de **mümkündür.** Daha fazla bilgi için Azure Mobil [Uygulamalarında Çevrimdışı Veri Eşitleme bölümünde] *artımlı eşitleme* bölümüne bakın.
 
-## <a name="optional-disable-authentication"></a>Seçim Kimlik doğrulamasını devre dışı bırak
+## <a name="optional-disable-authentication"></a>(İsteğe bağlı) Kimlik doğrulamayı devre dışı bırakma
 
-Çevrimdışı eşitlemeyi test etmeden önce kimlik doğrulaması yapmak istemiyorsanız, oturum açma için geri çağırma işlevini açıklama olarak ayarlayın, ancak kodu geri çağırma işlevinin içinde yorumişaretini kaldırın.  Oturum açma satırları yorum yapıldıktan sonra kod aşağıdaki gibidir:
+Çevrimdışı eşitlemeyi test etmeden önce kimlik doğrulamasını ayarlamak istemiyorsanız, oturum açmak için geri arama işlevini yorumlayın, ancak kodu geri arama işlevinin içinde yorum yapmadan bırakın.  Giriş satırlarını yorumladıktan sonra, kod aşağıdaki gibidir:
 
       // Login to the service.
       // client.login('twitter')
@@ -144,48 +144,48 @@ Belirtilen kodda, uzak TodoItem tablosundaki tüm kayıtlar sorgulanır, ancak b
         });
       // }, handleError);
 
-Artık uygulamayı çalıştırdığınızda uygulama Azure arka ucu ile eşitlenir.
+Şimdi, uygulamayı çalıştırdığınızda uygulama Azure arka uçile eşitler.
 
 ## <a name="run-the-client-app"></a>İstemci uygulamasını çalıştırma
-Çevrimdışı eşitleme özelliği etkinken, yerel mağaza veritabanını doldurmak için her platformda istemci uygulamasını en az bir kez çalıştırabilirsiniz. Daha sonra, çevrimdışı bir senaryonun benzetimini yapın ve uygulama çevrimdışıyken yerel depodaki verileri değiştirin.
+Çevrimdışı eşitleme şimdi etkinken, istemci uygulamasını her platformda en az bir kez çalıştırarak yerel mağaza veritabanını doldurabilirsiniz. Daha sonra, çevrimdışı bir senaryoyu simüle edin ve uygulama çevrimdışıyken yerel mağazadaki verileri değiştirin.
 
-## <a name="optional-test-the-sync-behavior"></a>Seçim Eşitleme davranışını test etme
-Bu bölümde, arka ucunuz için geçersiz bir uygulama URL 'SI kullanarak bir çevrimdışı senaryonun benzetimini yapmak üzere istemci projesini değiştirirsiniz. Veri öğelerini eklediğinizde veya değiştirirken, bu değişiklikler yerel depoda tutulur, ancak bağlantı yeniden oluşturulana kadar arka uç veri deposuyla eşitlenmez.
+## <a name="optional-test-the-sync-behavior"></a>(İsteğe bağlı) Eşitleme davranışını test edin
+Bu bölümde, arka uç için geçersiz bir uygulama URL'si kullanarak çevrimdışı bir senaryo simüle etmek için istemci projesini değiştirirsiniz. Veri öğeleri eklediğinizde veya değiştirdiğinizde, bu değişiklikler yerel mağazada tutulur, ancak bağlantı yeniden kurulana kadar arka uç veri deposuyla eşitlenmez.
 
-1. Çözüm Gezgini, index. js proje dosyasını açın ve uygulama URL 'sini aşağıdaki kod gibi geçersiz bir URL 'ye işaret etmek üzere değiştirin:
+1. Çözüm Gezgini'nde index.js proje dosyasını açın ve uygulama URL'sini aşağıdaki kod gibi geçersiz bir URL'ye işaret etmek üzere değiştirin:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net-fail');
 
-2. İndex. html ' de, CSP `<meta>` öğesini aynı geçersiz URL ile güncelleştirin.
+2. index.html'de, CSP `<meta>` öğesini aynı geçersiz URL ile güncelleştirin.
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.azurewebsites.net-fail; style-src 'self'; media-src *">
 
-3. İstemci uygulamasını derleyin ve çalıştırın ve uygulama oturum açtıktan sonra arka uca eşitlemeye çalıştığında konsolda bir özel durum günlüğe kaydedilir. Eklediğiniz her yeni öğe, mobil arka uca gönderilene kadar yalnızca yerel depoda bulunur. İstemci uygulaması arka uca bağlı gibi davranır.
+3. İstemci uygulamasını oluşturun ve çalıştırın ve uygulama oturum açtıktan sonra arka uçla eşitlemeye çalıştığında konsolda bir özel durum günlüğe kaydedildiğini fark edin. Eklediğiniz yeni öğeler, mobil arka uça itilene kadar yalnızca yerel mağazada bulunur. İstemci uygulaması arka uca bağlı gibi olur.
 
-4. Uygulamayı kapatın ve oluşturduğunuz yeni öğelerin yerel depoda kalıcı olduğunu doğrulamak için yeniden başlatın.
+4. Uygulamayı kapatın ve oluşturduğunuz yeni öğelerin yerel mağazada kalıcı olduğunu doğrulamak için uygulamayı yeniden başlatın.
 
-5. Seçim Arka uç veritabanındaki verilerin değiştirilmediğini görmek üzere Azure SQL veritabanı tablonuzu görüntülemek için Visual Studio 'Yu kullanın.
+5. (İsteğe bağlı) Arka uç veritabanındaki verilerin değişmediğini görmek için Azure SQL Veritabanı tablonuzu görüntülemek için Visual Studio'yu kullanın.
 
-    Visual Studio 'da **Sunucu Gezgini**açın. **Azure**->**SQL veritabanlarında**veritabanınıza gidin. Veritabanınıza sağ tıklayın ve **SQL Server Nesne Gezgini aç**' ı seçin. Artık SQL veritabanı tablonuza ve içindekilere gidebilirsiniz.
+    Visual Studio'da **Sunucu Gezgini'ni**açın. **Azure**->**SQL Veritabanları'nda**veritabanınıza gidin. Veritabanınıza sağ tıklayın ve **SQL Server Object Explorer'da Aç'ı**seçin. Artık SQL veritabanı tablonuza ve içeriğine göz atabilirsiniz.
 
-## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>Seçim Mobil arka ucunuza yeniden bağlanmayı test etme
+## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>(İsteğe bağlı) Mobil arka uçunuza yeniden bağlantı nızı test edin
 
-Bu bölümde, uygulamanın çevrimiçi duruma geri geldiğini taklit eden mobil arka uca yeniden bağlayaöğreneceksiniz. Oturum açtığınızda, veriler mobil arka ucunuza eşitlenir.
+Bu bölümde, uygulamayı mobil arka uça yeniden bağlarsınız, bu da uygulamanın çevrimiçi bir duruma geri gelmesini taklit eder. Oturum açtığınızda, veriler mobil arka uçunuzla senkronize edilir.
 
-1. İndex. js ' ye yeniden açın ve uygulama URL 'sini geri yükleyin.
-2. Index. html dosyasını yeniden açın ve CSP `<meta>` öğesinde uygulama URL 'sini düzeltin.
-3. İstemci uygulamasını yeniden derleyin ve çalıştırın. Uygulama, oturum açtıktan sonra mobil uygulama arka ucuna eşitlemeye çalışır. Hata ayıklama konsolunda hiçbir özel durum günlüğe kaydedilmeyeceğini doğrulayın.
-4. Seçim SQL Server Nesne Gezgini veya Fiddler gibi bir REST aracını kullanarak güncelleştirilmiş verileri görüntüleyin. Arka uç veritabanı ve yerel depo arasında verilerin eşitlendiğini fark edin.
+1. index.js'yi yeniden açın ve uygulama URL'sini geri yükleyin.
+2. index.html'i yeniden açın ve CSP `<meta>` öğesindeki uygulama URL'sini düzeltin.
+3. İstemci uygulamasını yeniden oluşturve çalıştırın. Uygulama, oturum açtıktan sonra mobil uygulama arka ucuyla eşitlemeye çalışır. Hata ayıklama konsolunda hiçbir özel durum günlüğe kaydolmadığını doğrulayın.
+4. (İsteğe bağlı) GÜNCELLENMİş veriyi SQL Server Object Explorer veya Fiddler gibi bir REST aracını kullanarak görüntüleyin. Verilerin arka uç veritabanı ile yerel mağaza arasında senkronize edildiğine dikkat edin.
 
-    Verilerin veritabanı ile yerel depo arasında eşitlendiğini ve uygulamanızın bağlantısı kesildiğinde eklediğiniz öğeleri içerdiğini unutmayın.
+    Verilerin veritabanı ve yerel mağaza arasında senkronize edildiğine ve uygulamanızın bağlantısı kesilirken eklediğiniz öğeleri içerdiğine dikkat edin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 * [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme]
 * [Apache Cordova için Visual Studio Araçları]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Çevrimdışı eşitleme örneğinde] çakışma çözümü gibi gelişmiş çevrimdışı eşitleme özelliklerini gözden geçirin
-* [API belgelerindeki](https://azure.github.io/azure-mobile-apps-js-client)ÇEVRIMDıŞı eşitleme API başvurusunu gözden geçirin.
+* [Çevrimdışı eşitleme örneğinde] çakışma çözümü gibi daha gelişmiş çevrimdışı eşitleme özelliklerini gözden geçirme
+* [API belgelerinde](https://azure.github.io/azure-mobile-apps-js-client)çevrimdışı eşitleme API başvurugözden geçirin.
 
 <!-- ##Summary -->
 
@@ -193,7 +193,7 @@ Bu bölümde, uygulamanın çevrimiçi duruma geri geldiğini taklit eden mobil 
 
 <!-- URLs. -->
 [Apache Cordova hızlı başlangıç]: app-service-mobile-cordova-get-started.md
-[Çevrimdışı eşitleme örneğinde]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
+[çevrimdışı eşitleme örneği]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
 [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme]: app-service-mobile-offline-data-sync.md
 [Cloud Cover: Offline Sync in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Adding Authentication]: app-service-mobile-cordova-get-started-users.md

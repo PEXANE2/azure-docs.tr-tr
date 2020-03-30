@@ -1,6 +1,6 @@
 ---
-title: Microsoft Authenticator uygulamasına Microsoft dışı hesapları ekleme-Azure AD
-description: İki öğeli doğrulama kullanırken kimliğinizi doğrulamak için Google veya Facebook gibi Microsoft olmayan hesapları Microsoft Authenticator uygulamasına ekleyin.
+title: Microsoft Authenticator uygulamasına Microsoft olmayan hesaplar ekleme - Azure AD
+description: İki faktörlü doğrulama kullanırken kimliğinizi doğrulamak için Google veya Facebook gibi Microsoft dışı hesapları Microsoft Authenticator uygulamasına ekleyin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,189 +12,189 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063960"
 ---
-# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına Microsoft dışı hesapları ekleme
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına Microsoft olmayan hesaplar ekleme
 
-Google, Facebook veya GitHub gibi Microsoft dışı hesaplarınızı iki öğeli doğrulama için Microsoft Authenticator uygulamasına ekleyin. Microsoft Authenticator uygulaması, iki öğeli doğrulama kullanan tüm uygulamalar ve zaman tabanlı bir kerelik parola (TOTP) standartlarını destekleyen herhangi bir hesap ile birlikte kullanılabilir.
+İki faktörlü doğrulama için Google, Facebook veya GitHub gibi Microsoft dışı hesaplarınızı Microsoft Authenticator uygulamasına ekleyin. Microsoft Authenticator uygulaması, iki faktörlü doğrulama kullanan herhangi bir uygulama ve zaman tabanlı tek seferlik parola (TOTP) standartlarını destekleyen tüm hesaplarla çalışır.
 
 >[!Important]
->Hesabınızı ekleyebilmeniz için önce Microsoft Authenticator uygulamasını indirmeniz ve kurmanız gerekir. Henüz yapmadıysanız, [uygulamayı indirme ve yükleme](user-help-auth-app-download-install.md) makalesindeki adımları izleyin.
+>Hesabınızı eklemeden önce Microsoft Authenticator uygulamasını indirmeniz ve yüklemeniz gerekir. Bunu henüz yapmadıysanız, İndir'deki adımları izleyin [ve uygulama makalesini yükleyin.](user-help-auth-app-download-install.md)
 
-## <a name="add-personal-accounts"></a>Kişisel hesaplar ekleme
+## <a name="add-personal-accounts"></a>Kişisel hesap ekleme
 
-Genellikle, tüm kişisel hesaplarınız için şunları yapmanız gerekir:
+Genel olarak, tüm kişisel hesaplarınız için şunları
 
-1. Hesabınızda oturum açın ve cihazınızı ya da bilgisayarınızı kullanarak iki öğeli doğrulamayı açın.
+1. Hesabınızda oturum açın ve ardından cihazınızı veya bilgisayarınızı kullanarak iki faktörlü doğrulamayı açın.
 
-2. Microsoft Authenticator uygulamasına hesabı ekleyin. Bu işlemin bir parçası olarak bir QR kodu taramak isteyip istemediğiniz sorulabilir.
+2. Hesabı Microsoft Authenticator uygulamasına ekleyin. Bu işlemin bir parçası olarak bir QR kodunu tarayabilir.
 
     >[!Note]
-    >Microsoft Authenticator uygulamasını ilk kez ayarlıyorsanız, uygulamanın kameranıza erişmesine izin verip vermeyeceğinizi (iOS) veya uygulamanın resim almasına ve video (Android) kaydetmesine izin verip vermeyeceğinizi soran bir istem alabilirsiniz. Bir sonraki adımda QR kodunun bir resmini almak için, kimlik doğrulayıcı uygulamasının kameranıza erişebilmesi için **Izin ver** ' i seçmeniz gerekir. Kameraya izin vermezseniz, kimlik doğrulayıcı uygulamasını ayarlamaya devam edebilirsiniz, ancak kod bilgilerini el ile eklemeniz gerekir. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
+    >Microsoft Authenticator uygulamasını ilk kez bu kez kuruyorsanız, uygulamanın kameranıza (iOS) erişmesine izin mi yoksa uygulamanın fotoğraf çekmesine ve video (Android) kaydetmesine izin verip vermemenizi isteyen bir istem alabilirsiniz. Kimlik doğrulayıcı uygulamasının bir sonraki adımda QR kodunun fotoğrafını çekmek için kameranıza erişebilmesi için **İzin Ver'i** seçmeniz gerekir. Kameraya izin vermezseniz, kimlik doğrulayıcı uygulamasını ayarlamaya devam edebilirsiniz, ancak kod bilgilerini el ile eklemeniz gerekir. Kodu el ile nasıl ekleyeceğiniz hakkında bilgi için [bkz.](user-help-auth-app-add-account-manual.md)
 
-Facebook, Google, GitHub ve Amazon hesaplarınız için bu işlemi burada sunuyoruz, ancak bu işlem, sistem durumu, Netflix veya Adobe gibi diğer uygulamalar için de aynıdır.
+İşlemi Facebook, Google, GitHub ve Amazon hesaplarınız için burada sağlıyoruz, ancak bu işlem Instagram, Netflix veya Adobe gibi diğer tüm uygulama için aynıdır.
 
 ## <a name="add-your-google-account"></a>Google hesabınızı ekleyin
 
-İki öğeli doğrulamayı açıp daha sonra hesabı uygulamaya ekleyerek Google hesabınızı ekleyin.
+İki faktörlü doğrulamayı açıp hesabı uygulamaya ekleyerek Google hesabınızı ekleyin.
 
-### <a name="turn-on-two-factor-verification"></a>İki öğeli doğrulamayı açma
+### <a name="turn-on-two-factor-verification"></a>İki faktörlü doğrulamayı açma
 
-1. Bilgisayarınızda https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome' a gidin, **kullanmaya**başlayın ' ı seçin ve sonra kimliğinizi doğrulayın.
+1. Bilgisayarınızda https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, **Başlangıç Al'ı**seçin ve ardından kimliğinizi doğrulayın.
 
-2. Kişisel Google hesabınız için iki aşamalı doğrulamayı açmak üzere sayfa üzerindeki adımları izleyin.
+2. Kişisel Google hesabınız için iki aşamalı doğrulamayı açmak için sayfadaki adımları izleyin.
 
-### <a name="add-your-google-account-to-the-app"></a>Google hesabınızı uygulamaya ekleyin
+### <a name="add-your-google-account-to-the-app"></a>Google hesabınızı uygulamaya ekleme
 
-1. Bilgisayarınızdaki Google sayfasında, **Alternatif ikinci ikinci adımı ayarlama** bölümüne gidin, **Authenticator uygulaması** bölümünden **Ayarla** ' yı seçin.
+1. Bilgisayarınızdaki Google sayfasında alternatif ikinci **adım ayarla** bölümüne gidin, **Authenticator uygulaması** bölümünden **Ayarla'yı** seçin.
 
-2. **Doğrulayıcı uygulamasındaki kodları al** sayfasında, telefon türüne göre **Android** veya **iPhone** ' ı seçin ve ardından **İleri**' yi seçin.
+2. **Authenticator uygulama sayfasından kodları** al'da, telefon türüne göre **Android** veya **iPhone'u** seçin ve ardından **İleri'yi**seçin.
 
-    Hesabınızı Microsoft Authenticator uygulamayla otomatik olarak ilişkilendirmek için kullanabileceğiniz bir QR kodu vermiş olursunuz. Bu pencereyi kapatmayın.
+    Hesabınızı Otomatik olarak Microsoft Authenticator uygulamasıyla ilişkilendirmek için kullanabileceğiniz bir QR kodu verilir. Bu pencereyi kapatma.
 
-3. Microsoft Authenticator uygulamasını açın, sağ üstteki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin ve ardından **diğer hesap (Google, Facebook vb.)** seçeneğini belirleyin.
+3. Microsoft Authenticator uygulamasını açın, sağ üstteki **Özelleştir ve kontrol** simgesinden **hesap ekle'yi** seçin ve ardından Diğer **Hesabı (Google, Facebook, vb.)** seçin.
 
-4. Bilgisayarınızdaki **kimlik doğrulayıcı ayarla** sayfasından QR kodunu taramak için cihazınızın kamerasını kullanın.
+4. Bilgisayarınızdaki **Kimlik Doğrulayıcı** Ayarla sayfasından QR kodunu tarayan cihazınızın kamerasını kullanın.
 
     >[!Note]
-    >Kameranız düzgün çalışmıyorsa, QR kodunu ve URL 'YI el ile girebilirsiniz.
+    >Kameranız düzgün çalışmıyorsa, QR kodunu ve URL'sini el ile girebilirsiniz.
 
-5. Hesap bilgilerinizin doğru olduğundan ve altı basamaklı bir doğrulama kodu olduğundan emin olmak için cihazınızdaki Microsoft Authenticator uygulamasının **hesaplar** sayfasını gözden geçirin.
+5. Hesap bilgilerinizin doğru olduğundan ve ilişkili altı basamaklı bir doğrulama kodu olduğundan emin olmak için cihazınızdaki Microsoft Authenticator uygulamasının **Hesaplar** sayfasını inceleyin.
 
-    Ek güvenlik için, doğrulama kodu her 30 saniyede bir kullanıcının kodu birden çok kez kullanmasını önler.
+    Ek güvenlik için doğrulama kodu her 30 saniyede bir değişir ve birinin kodu birden çok kez kullanmasını engeller.
 
-6. Bilgisayarınızdaki **kimlik doğrulayıcı 'Yı ayarla** sayfasında **İleri** ' yi seçin, Google hesabınız için uygulamada belirtilen altı basamaklı doğrulama kodunu yazın ve ardından **Doğrula**' yı seçin.
+6. Bilgisayarınızdaki **Kimlik Doğrulayıcı** Yı kur sayfasında **İleri'yi** seçin, Google hesabınız için uygulamada sağlanan altı basamaklı doğrulama kodunu yazın ve ardından **Doğrula'yı**seçin.
 
-7. Hesabınız doğrulanır ve **kimlik doğrulayıcı 'Yı ayarla** sayfasını kapatmak için **bitti** ' yi seçebilirsiniz.
+7. Hesabınız doğrulandı ve **Kimlik Doğrulaması Ayarla** sayfasını kapatmak için **Bitti'yi** seçebilirsiniz.
 
     >[!NOTE]
-    >İki öğeli doğrulama ve Google hesabınız hakkında daha fazla bilgi için bkz. [2 basamaklı doğrulamayı etkinleştirme](https://support.google.com/accounts/answer/185839) ve [2 adımlı doğrulama hakkında daha fazla bilgi edinin](https://www.google.com/landing/2step/help.html).
+    >İki faktörlü doğrulama ve Google hesabınız hakkında daha fazla bilgi için 2 [Adımlı Doğrulamayı Aç](https://support.google.com/accounts/answer/185839) ve [2 Adımlı Doğrulama hakkında daha fazla bilgi edinin.](https://www.google.com/landing/2step/help.html)
 
 ## <a name="add-your-facebook-account"></a>Facebook hesabınızı ekleyin
 
-İki öğeli doğrulamayı açıp daha sonra hesabı uygulamaya ekleyerek Facebook hesabınızı ekleyin.
+İki faktörlü doğrulamayı açıp uygulamayı ekleyerek Facebook hesabınızı ekleyin.
 
-### <a name="turn-on-two-factor-verification"></a>İki öğeli doğrulamayı açma
+### <a name="turn-on-two-factor-verification"></a>İki faktörlü doğrulamayı açma
 
-1. Bilgisayarınızda Facebook ' u açın, sağ üst köşedeki açılan menüyü seçin ve ardından **ayarlar** > **güvenlik ve oturum açma**' ya gidin.
+1. Bilgisayarınızda Facebook'u açın, sağ üst köşedeki açılır menüyü seçin ve ardından **Ayarlar** > **Güvenliği ve Giriş'e**gidin.
 
-    **Güvenlik ve oturum açma** sayfası görüntülenir.
+    **Güvenlik ve Giriş** sayfası görüntülenir.
 
-2. **Iki öğeli kimlik doğrulama** bölümünde **iki öğeli kimlik doğrulaması kullan** seçeneğine gidin ve ardından **Düzenle**' yi seçin.
+2. **İki Faktörlü Kimlik Doğrulama** bölümünde iki **faktörlü kimlik doğrulama seçeneğikullan** seçeneğine gidin ve ardından **Edit'i**seçin.
 
-    **Iki öğeli kimlik doğrulama** sayfası görüntülenir.
+    **İki Faktörlü Kimlik Doğrulama** sayfası görüntülenir.
 
-3. **Aç '** ı seçin.
+3. **Aç'ı**seçin.
 
-### <a name="add-your-facebook-account-to-the-app"></a>Facebook hesabınızı uygulamaya ekleyin
+### <a name="add-your-facebook-account-to-the-app"></a>Facebook hesabınızı uygulamaya ekleme
 
-1. Bilgisayarınızdaki Facebook sayfasında, **yedekleme ekleme** bölümüne gidin ve ardından **kimlik doğrulama uygulaması** alanından **Kurulum** ' u seçin.
+1. Bilgisayarınızdaki Facebook sayfasında, **yedekleme ekle** bölümüne gidin ve ardından Kimlik **Doğrulama uygulaması** alanından **Kurulum'u** seçin.
 
-    Hesabınızı Microsoft Authenticator uygulamayla otomatik olarak ilişkilendirmek için kullanabileceğiniz bir QR kodu vermiş olursunuz. Bu pencereyi kapatmayın.
+    Hesabınızı Otomatik olarak Microsoft Authenticator uygulamasıyla ilişkilendirmek için kullanabileceğiniz bir QR kodu verilir. Bu pencereyi kapatma.
 
-2. Microsoft Authenticator uygulamasını açın, sağ üstteki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin ve ardından **diğer hesap (Google, Facebook vb.)** seçeneğini belirleyin.
+2. Microsoft Authenticator uygulamasını açın, sağ üstteki **Özelleştir ve kontrol** simgesinden **hesap ekle'yi** seçin ve ardından Diğer **Hesabı (Google, Facebook, vb.)** seçin.
 
-3. Bilgisayarınızdaki **iki öğeli kimlik doğrulama** sayfasından QR kodunu taramak için cihazınızın kamerasını kullanın.
+3. Bilgisayarınızdaki **İki faktörlü kimlik doğrulama** sayfasından QR kodunu tarayan cihazınızın kamerasını kullanın.
 
     >[!Note]
-    >Kameranız düzgün çalışmıyorsa, QR kodunu ve URL 'YI el ile girebilirsiniz.
+    >Kameranız düzgün çalışmıyorsa, QR kodunu ve URL'sini el ile girebilirsiniz.
 
-4. Hesap bilgilerinizin doğru olduğundan ve altı basamaklı bir doğrulama kodu olduğundan emin olmak için cihazınızdaki Microsoft Authenticator uygulamasının **hesaplar** sayfasını gözden geçirin.
+4. Hesap bilgilerinizin doğru olduğundan ve ilişkili altı basamaklı bir doğrulama kodu olduğundan emin olmak için cihazınızdaki Microsoft Authenticator uygulamasının **Hesaplar** sayfasını inceleyin.
 
-    Ek güvenlik için, doğrulama kodu her 30 saniyede bir kullanıcının kodu birden çok kez kullanmasını önler.
+    Ek güvenlik için doğrulama kodu her 30 saniyede bir değişir ve birinin kodu birden çok kez kullanmasını engeller.
 
-5. Bilgisayarınızda **iki öğeli kimlik doğrulama** sayfasında **İleri** ' yi seçin ve ardından Facebook hesabınız için uygulamada belirtilen altı basamaklı doğrulama kodunu yazın.
+5. Bilgisayarınızdaki **İki faktörlü kimlik doğrulama** sayfasında **İleri'yi** seçin ve ardından Facebook hesabınız için uygulamada sağlanan altı basamaklı doğrulama kodunu yazın.
 
-    Hesabınız doğrulanır ve artık hesabınızı doğrulamak için uygulamayı kullanabilirsiniz.
+    Hesabınız doğrulandı ve artık hesabınızı doğrulamak için uygulamayı kullanabilirsiniz.
 
     >[!NOTE]
-    >İki öğeli doğrulama ve Facebook hesabınız hakkında daha fazla bilgi için bkz. [iki öğeli kimlik doğrulaması nedir ve nasıl çalışır?](https://www.facebook.com/help/148233965247823).
+    >İki faktörlü doğrulama ve Facebook hesabınız hakkında daha fazla bilgi [için](https://www.facebook.com/help/148233965247823)bkz.
 
 ## <a name="add-your-github-account"></a>GitHub hesabınızı ekleyin
 
-İki öğeli doğrulamayı açıp hesabı uygulamaya ekleyerek GitHub hesabınızı ekleyin.
+İki faktörlü doğrulamayı açıp uygulamayı ekleyerek GitHub hesabınızı ekleyin.
 
-### <a name="turn-on-two-factor-verification"></a>İki öğeli doğrulamayı açma
+### <a name="turn-on-two-factor-verification"></a>İki faktörlü doğrulamayı açma
 
-1. Bilgisayarınızda GitHub ' ı açın, sağ üst köşeden görüntünüzü seçin ve ardından **Ayarlar**' ı seçin.
+1. Bilgisayarınızda GitHub'ı açın, sağ üst köşeden resminizi seçin ve ardından **Ayarlar'ı**seçin.
 
-    **İki öğeli kimlik doğrulama** sayfası görüntülenir.
+    **İki faktörlü kimlik doğrulama** sayfası görüntülenir.
 
-2. **Kişisel ayarlar** kenar çubuğundan **güvenlik** ' i seçin ve **iki öğeli kimlik** doğrulama alanından **iki öğeli kimlik doğrulamayı etkinleştir** ' i seçin.
+2. **Kişisel ayarlar** kenar çubuğundan **Güvenlik'i** seçin ve ardından İki faktörlü kimlik doğrulama alanından **iki faktörlü kimlik doğrulamasını etkinleştir'i** seçin. **Two-factor authentication**
 
 ### <a name="add-your-github-account-to-the-app"></a>GitHub hesabınızı uygulamaya ekleme
 
-1. Bilgisayarınızdaki **iki öğeli kimlik doğrulama** sayfasında, **uygulama kullanarak ayarla**' yı seçin.
+1. Bilgisayarınızdaki **İki faktörlü kimlik doğrulama** **sayfasında, bir uygulamayı kullanarak ayarla'yı**seçin.
 
-2. Erişiminizi kaybederseniz ve sonra **İleri**' yi seçerek hesabınıza geri dönmek için kurtarma kodlarınızı kaydedin. 
+2. Erişiminizi kaybederseniz hesabınıza geri dönebilmeniz için kurtarma kodlarınızı kaydedin ve **ardından İleri'yi**seçin. 
 
-    Kodlarınızı cihazınıza indirerek, sabit bir kopya yazdırarak veya bir parola Yöneticisi aracına kopyalayarak kaydedebilirsiniz.
+    Kodlarınızı cihazınıza indirerek, basılı bir kopyasını yazdırarak veya parola yöneticisi aracına kopyalayarak kaydedebilirsiniz.
 
-3. **İki öğeli kimlik doğrulama** sayfasında, **uygulama kullanarak ayarla**' yı seçin.
+3. İki **faktörlü kimlik doğrulama** sayfasında, **bir uygulamayı kullanarak ayarla'yı**seçin.
 
-    Sayfa, bir QR kodu gösterecek şekilde değişir. Bu sayfayı kapatmayın.
+    Sayfa, size bir QR kodu göstermek için değişir. Bu sayfayı kapatmayın.
 
-4. Microsoft Authenticator uygulamasını açın, sağ üst köşedeki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin, **diğer hesap (Google, Facebook vb.)** öğesini seçin ve ardından sayfanın en üstündeki metinden **Bu metin kodunu girin** ' i seçin.
+4. Microsoft Authenticator uygulamasını açın, sağ üstteki **Özelleştir ve kontrol** simgesinden **hesap ekle'yi** seçin, Diğer **hesabı (Google, Facebook, vb.)** seçin ve sayfanın üst kısmındaki metinden **bu metin kodunu girin'i** seçin.
 
-    Microsoft Authenticator uygulama QR kodunu tarayamıyor, bu yüzden kodu el ile girmeniz gerekir.
+    Microsoft Authenticator uygulaması QR kodunu tayamıyor, bu nedenle kodu el ile girmeniz gerekir.
 
-5. Bir **Hesap adı** girin (örneğin, GitHub) ve 4. adımda **gizli anahtarı** yazın ve **son**' u seçin.
+5. Bir **Hesap adı** girin (örneğin, GitHub) ve Adım 4'ten **Gizli tuşu** yazın ve ardından **Finish'i**seçin.
 
-6. Bilgisayarınızdaki **iki öğeli kimlik doğrulayıcı** sayfasında, Github hesabınız için uygulamada belirtilen altı basamaklı doğrulama kodunu yazın ve **Etkinleştir**' i seçin.
+6. Bilgisayarınızdaki **İki faktörlü kimlik doğrulayıcı** sayfasında, GitHub hesabınız için uygulamada sağlanan altı basamaklı doğrulama kodunu yazın ve ardından **Etkinleştir'i**seçin.
 
-    Uygulamanın **hesaplar** sayfasında hesap adınızı ve altı basamaklı bir doğrulama kodu görüntülenir. Ek güvenlik için, doğrulama kodu her 30 saniyede bir kullanıcının kodu birden çok kez kullanmasını önler.
+    Uygulamanın **Hesaplar** sayfası size hesap adınızı ve altı basamaklı doğrulama kodunuzu gösterir. Ek güvenlik için doğrulama kodu her 30 saniyede bir değişir ve birinin kodu birden çok kez kullanmasını engeller.
 
     >[!NOTE]
-    >İki öğeli doğrulama ve GitHub hesabınız hakkında daha fazla bilgi için bkz. [iki öğeli kimlik doğrulama hakkında](https://help.github.com/articles/about-two-factor-authentication/).
+    >İki faktörlü doğrulama ve GitHub hesabınız hakkında daha fazla bilgi için [bkz.](https://help.github.com/articles/about-two-factor-authentication/)
 
 ## <a name="add-your-amazon-account"></a>Amazon hesabınızı ekleyin
 
-İki öğeli doğrulamayı açıp daha sonra hesabı uygulamaya ekleyerek Amazon hesabınızı ekleyin.
+İki faktörlü doğrulamayı açıp hesabı uygulamaya ekleyerek Amazon hesabınızı ekleyin.
 
-### <a name="turn-on-two-factor-verification"></a>İki öğeli doğrulamayı açma
+### <a name="turn-on-two-factor-verification"></a>İki faktörlü doğrulamayı açma
 
-1. Bilgisayarınızda, Amazon ' i açın, **hesap & listeleri** açılır menüsünü seçin ve ardından **Hesabınızı**seçin.
+1. Bilgisayarınızda Amazon'u açın, **Hesap & Listeleri** açılır menüsünü seçin ve ardından **Hesabınızı**seçin.
 
-2. **Oturum aç & güvenlik**' i seçin, Amazon hesabınızda oturum açın ve ardından **Gelişmiş güvenlik ayarları** alanında **Düzenle** ' yi seçin.
+2. **Güvenlik & Giriş'i**seçin, Amazon hesabınızda oturum açın ve ardından Gelişmiş **Güvenlik Ayarları** alanında **Edit'i** seçin.
 
-    **Gelişmiş güvenlik ayarları** sayfası görüntülenir.
+    **Gelişmiş Güvenlik Ayarları** sayfası görüntülenir.
 
-3. **Kullanmaya**başlayın ' ı seçin.
+3. **Başlat'ı**seçin.
 
-4. **Kodu nasıl alacağınızı** seçin sayfasında **Authenticator uygulaması** ' nı seçin.
+4. **Kodları nasıl alacağınızı seç** **sayfasından Kimlik Doğrulayıcı Uygulamasını** seçin.
 
-    Sayfa, bir QR kodu gösterecek şekilde değişir. Bu sayfayı kapatmayın.
+    Sayfa, size bir QR kodu göstermek için değişir. Bu sayfayı kapatmayın.
 
-5. Microsoft Authenticator uygulamasını açın, sağ üstteki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin ve ardından **diğer hesap (Google, Facebook vb.)** seçeneğini belirleyin.
+5. Microsoft Authenticator uygulamasını açın, sağ üstteki **Özelleştir ve kontrol** simgesinden **hesap ekle'yi** seçin ve ardından Diğer **Hesabı (Google, Facebook, vb.)** seçin.
 
-6. Bilgisayarınızda kod **alma yöntemini seçin** sayfasında QR kodunu taramak için cihazınızın kamerasını kullanın.
+6. Bilgisayarınızdaki **kodları nasıl alacağınız** sayfasından QR kodunu tetmek için cihazınızın kamerasını kullanın.
 
     >[!Note]
-    >Kameranız düzgün çalışmıyorsa, QR kodunu ve URL 'YI el ile girebilirsiniz.
+    >Kameranız düzgün çalışmıyorsa, QR kodunu ve URL'sini el ile girebilirsiniz.
 
-7. Hesap bilgilerinizin doğru olduğundan ve altı basamaklı bir doğrulama kodu olduğundan emin olmak için cihazınızdaki Microsoft Authenticator uygulamasının **hesaplar** sayfasını gözden geçirin.
+7. Hesap bilgilerinizin doğru olduğundan ve ilişkili altı basamaklı bir doğrulama kodu olduğundan emin olmak için cihazınızdaki Microsoft Authenticator uygulamasının **Hesaplar** sayfasını inceleyin.
 
-    Ek güvenlik için, doğrulama kodu her 30 saniyede bir kullanıcının kodu birden çok kez kullanmasını önler.
+    Ek güvenlik için doğrulama kodu her 30 saniyede bir değişir ve birinin kodu birden çok kez kullanmasını engeller.
 
-8. Bilgisayarınızda **nasıl kod alacağınızı seçin** sayfasında, Amazon hesabınız için uygulamada belirtilen altı basamaklı doğrulama kodunu yazın ve ardından **kodu doğrula ve devam et**' i seçin.
+8. Bilgisayarınızdaki **kodları nasıl alacağınızı seç** sayfasında, Amazon hesabınız için uygulamada sağlanan altı basamaklı doğrulama kodunu yazın ve ardından kodu **doğrula'yı**seçin ve devam edin.
 
-9. Metin iletisi gibi bir yedekleme doğrulama yöntemi ekleme ve ardından **kodu gönder**' i içeren kaydolma işleminin geri kalanını tamamlayın.
+9. Kısa mesaj gibi bir yedekleme doğrulama yöntemi eklemek de dahil olmak üzere kayıt işleminin geri kalanını tamamlayın ve ardından **kod gönder'i**seçin.
 
-10. Bilgisayarınızda **bir yedekleme doğrulama yöntemi ekleme** sayfasında, Amazon hesabınız için yedekleme doğrulama yönteminiz tarafından belirtilen altı basamaklı doğrulama kodunu yazın ve ardından **kodu doğrula ve devam et**' i seçin.
+10. Bilgisayarınızdaki **yedek doğrulama yöntemi** ekle sayfasında, Amazon hesabınız için yedekleme doğrulama yönteminiz tarafından sağlanan altı basamaklı doğrulama kodunu yazın ve ardından kodu **doğrula'yı**seçin ve devam edin.
 
-11. **Neredeyse bitti** sayfasında, bilgisayarınızı güvenilir bir cihaz yapıp yapmayacağınıza karar verin ve ardından alındı ' ı seçin **. Iki aşamalı doğrulamayı açın**.
+11. Neredeyse **yapılı** sayfada, bilgisayarınızı güvenilir bir aygıt yapıp yapmadığınıza karar verin ve ardından **Aldım'ı seçin. İki Adımlı Doğrulamayı açın.**
 
-    Güncelleştirilmiş iki öğeli doğrulama ayrıntılarınızın gösterildiği **Gelişmiş güvenlik ayarları** sayfası görüntülenir.
+    **Gelişmiş Güvenlik Ayarları** sayfası görünür ve güncelleştirilmiş iki faktörlü doğrulama ayrıntılarınızı gösterir.
 
     >[!NOTE]
-    >İki öğeli doğrulama ve Amazon hesabınız hakkında daha fazla bilgi için bkz. iki adımlı doğrulama hakkında ve [Iki adımlı doğrulamayla oturum açma](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440) [hakkında](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) .
+    >İki faktörlü doğrulama ve Amazon hesabınız hakkında daha fazla bilgi için İki Adımlı Doğrulama ve [İki Adımlı Doğrulama ile Oturum Açma](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440) [Hakkında'ya](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hesaplarınızı uygulamaya ekledikten sonra, cihazınızda kimlik doğrulayıcı uygulamasını kullanarak oturum açabilirsiniz. Daha fazla bilgi için bkz. [uygulamayı kullanarak oturum açma](user-help-auth-app-sign-in.md).
+- Hesaplarınızı uygulamaya ekledikten sonra cihazınızdaki Authenticator uygulamasını kullanarak oturum açabilirsiniz. Daha fazla bilgi için [uygulamayı kullanarak Oturum Aç'a](user-help-auth-app-sign-in.md)bakın.
 
-- İOS çalıştıran cihazlarda, hesap kimlik bilgilerinizi ve hesaplarınızın sırası gibi ilgili uygulama ayarlarınızı buluta da yedekleyebilirsiniz. Daha fazla bilgi için bkz. [Microsoft Authenticator App Ile yedekleme ve kurtarma](user-help-auth-app-backup-recovery.md).
+- iOS çalıştıran aygıtlar için, hesap kimlik bilgilerinizi ve hesaplarınızın sırası gibi ilgili uygulama ayarlarını da buluta yedekleyebilirsiniz. Daha fazla bilgi için [Yedekleme'ye bakın ve Microsoft Authenticator uygulamasıyla kurtarın.](user-help-auth-app-backup-recovery.md)

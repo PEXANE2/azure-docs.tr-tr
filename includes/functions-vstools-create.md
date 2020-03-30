@@ -5,39 +5,37 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/05/2019
+ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3d93d3aa3e4e646f8e054f96f17bbe4a011d422d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211422"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056631"
 ---
-Visual Studio'daki Azure İşlevleri proje şablonu, Azure'daki bir işlev uygulamasında yayımlanabilen bir proje oluşturur. İşlevleri, kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için mantıksal birim olarak gruplamak üzere bir işlev uygulaması kullanabilirsiniz.
+Visual Studio'daki Azure İşlevler proje şablonu, Azure'daki bir işlev uygulamasında yayınlayabileceğiniz bir proje oluşturur. Daha kolay yönetim, dağıtım, ölçekleme ve kaynakların paylaşımı için işlevleri mantıksal bir birim olarak gruplandırmak için bir işlev uygulaması kullanabilirsiniz.
 
-1. Visual Studio 'da, **Dosya** menüsünde **Yeni** > **projesi**' ni seçin.
+1. Visual Studio'da Dosya **menüsünde** **Yeni** > **Proje'yi**seçin.
 
-1. **Yeni proje oluştur** iletişim kutusunda `functions`arayın, **Azure işlevleri** şablonunu seçin ve **İleri**' yi seçin.
+1. **Yeni bir proje oluştur'da,** arama kutusuna *işlevleri* girin ve ardından **Azure İşlevler** şablonunu seçin.
 
-1. Projeniz için bir ad girin ve **Oluştur**' u seçin. İşlev uygulamasının adı, bir C# ad alanı olarak geçerli olmalıdır; bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan herhangi bir karakter kullanmayın.
+1. **Yeni projenizi Yapılandır'da,** projeniz için bir **Proje adı** girin ve ardından **Oluştur'u**seçin. İşlev uygulamasının adı, bir C# ad alanı olarak geçerli olmalıdır; bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan herhangi bir karakter kullanmayın.
 
-1. **Yeni bir Azure işlevleri uygulaması oluştur**bölümünde aşağıdaki seçenekleri kullanın:
+1. Proje **adı &lt;&gt; ayarlarınız olan Yeni Proje** için aşağıdaki tablodaki değerleri kullanın:
 
-    + **Azure Işlevleri v2 (.NET Core)**
-    + **HTTP tetikleyicisi**
-    + **Depolama hesabı**: **depolama öykünücüsü**
-    + **Yetkilendirme düzeyi**: **anonim** 
-
-    | Seçenek      | Önerilen değer  | Açıklama                      |
+    | Ayar      | Değer  | Açıklama                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **İşlevler çalışma zamanı** | **Azure Işlevleri 2. x <br />(.NET Core)** | Bu ayar, .NET Core 'u destekleyen Azure Işlevlerinin sürüm 2. x çalışma zamanını kullanan bir işlev projesi oluşturur. Azure İşlevleri 1.x, .NET Framework’ü destekler. Daha fazla bilgi için bkz. [hedef Azure işlevleri çalışma zamanı sürümü](../articles/azure-functions/functions-versions.md).   |
-    | **İşlev şablonu** | **HTTP tetikleyicisi** | Bu ayar, bir HTTP isteği tarafından tetiklenen bir işlev oluşturur. |
-    | **Depolama Hesabı**  | **Depolama öykünücüsü** | HTTP tetikleyicisi, Azure depolama hesabı bağlantısını kullanmaz. Diğer tüm tetikleyici türleri için geçerli bir Depolama hesabı bağlantı dizesi gerekir. Işlevler bir depolama hesabı gerektirdiğinden, projenizi Azure 'da yayımladığınızda bir tane atanır veya oluşturulur. |
-    | **Yetkilendirme düzeyi** | **Deðeri** | Oluşturulan işlev, anahtar gerektirmeden herhangi bir istemci tarafından tetiklenebilir. Bu yetkilendirme ayarı yeni işlevinizi test etmenizi kolaylaştırır. Anahtarlar ve yetkilendirme hakkında daha fazla bilgi için, [HTTP ve web kancası bağlamaları](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) altında [Yetkilendirme anahtarları](../articles/azure-functions/functions-bindings-http-webhook.md) bölümüne bakın. |
+    | **İşlevler çalışma zamanı** | **Azure Fonksiyonları <br />v2 (.NET Core)** | Bu değer, .NET Core'u destekleyen Azure İşlevlerinin 2.x çalışma saatini kullanan bir işlev projesi oluşturur. Azure İşlevleri 1.x, .NET Framework’ü destekler. Daha fazla bilgi için Azure [İşlevleri çalışma zamanı sürümlerine genel bakış](../articles/azure-functions/functions-versions.md)bakın.   |
+    | **İşlev şablonu** | **HTTP tetikleyicisi** | Bu değer, bir HTTP isteği tarafından tetiklenen bir işlev oluşturur. |
+    | **Depolama Hesabı**  | **Depolama Öykünücüsü** | Azure İşlevi bir depolama hesabı gerektirdiğinden, projenizi Azure'da yayımladığınızda bir tane atanır veya oluşturulur. BIR HTTP tetikleyicisi Azure Depolama hesabı bağlantı dizesini kullanmaz; diğer tüm tetikleyici türleri geçerli bir Azure Depolama hesabı bağlantı dizesi gerektirir.  |
+    | **Erişim hakları** | **Anonim** | Oluşturulan işlev, anahtar gerektirmeden herhangi bir istemci tarafından tetiklenebilir. Bu yetkilendirme ayarı yeni işlevinizi test etmenizi kolaylaştırır. Anahtarlar ve yetkilendirme hakkında daha fazla bilgi için [Yetkilendirme tuşlarına](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) ve [HTTP ve webhook bağlamalarına](../articles/azure-functions/functions-bindings-http-webhook.md)bakın. |
     
-    > [!NOTE]
-    > **Yetkilendirme düzeyini** `Anonymous`olarak ayarladığınızdan emin olun. Varsayılan `Function`düzeyini seçerseniz, işlev uç noktanıza erişmek için isteklerde [işlev anahtarı](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) sunmak gerekir.
+
     
-4. İşlev projesi ve HTTP ile tetiklenen işlev oluşturmak için **Oluştur** ' u seçin.
+    ![Azure Fonksiyonları proje ayarları](./media/functions-vs-tools-create/functions-project-settings.png)
+
+    **Erişim haklarını** **Anonymous**olarak ayarladığınızdan emin olun. **Varsayılan Işlev**düzeyini seçerseniz, işlev bitiş noktanıza erişmek için isteklerde [işlev anahtarını](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) sunmanız gerekir.
+
+1. İşlev projesini ve HTTP tetiklenen işlevi oluşturmak için **Tamam'ı** seçin.

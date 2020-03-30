@@ -1,7 +1,7 @@
 ---
 title: Bildirimleri ve e-posta şablonlarını yapılandırma
 titleSuffix: Azure API Management
-description: Azure API Management bildirimleri ve e-posta şablonlarını yapılandırmayı öğrenin.
+description: Azure API Yönetimi'nde bildirimleri ve e-posta şablonlarını nasıl yapılandırılamayı öğrenin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,81 +14,81 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244075"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Azure API Management’te bildirimleri ve e-posta şablonlarını yapılandırma
 
-API Management belirli olaylara yönelik bildirimleri yapılandırma ve bir API Management örneğinin yöneticileri ve geliştiricileri ile iletişim kurmak için kullanılan e-posta şablonlarını yapılandırma olanağı sağlar. Bu makalede, kullanılabilir olaylar için bildirimlerin nasıl yapılandırılacağı gösterilir ve bu olaylar için kullanılan e-posta şablonlarını yapılandırmaya genel bir bakış sağlanır.
+API Yönetimi, bildirimleri belirli olaylar için yapılandırma ve bir API Yönetimi örneğinin yöneticileri ve geliştiricileri ile iletişim kurmak için kullanılan e-posta şablonlarını yapılandırma olanağı sağlar. Bu makalede, kullanılabilir olaylar için bildirimlerin nasıl yapılandırılakullanılacağı gösterilmektedir ve bu olaylar için kullanılan e-posta şablonlarını yapılandırmaya genel bir bakış sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bir API Management hizmet örneğiniz yoksa, aşağıdaki hızlı başlangıcı izleyin: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
+Bir API Yönetimi hizmet örneğiniz yoksa, aşağıdaki hızlı başlatmayı tamamlayın: [Azure API Yönetimi örneği oluşturun.](get-started-create-service-instance.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="publisher-notifications"> </a>Bildirimleri Yapılandır
+## <a name="configure-notifications"></a><a name="publisher-notifications"> </a>Bildirimleri yapılandırma
 
-1.  **API Management** örneğinizi seçin.
-2.  Kullanılabilir bildirimleri görüntülemek için **Bildirimler** ' e tıklayın.
+1.  **API YÖNETİmİ** örneğini seçin.
+2.  Kullanılabilir bildirimleri görüntülemek için **Bildirimler'i** tıklatın.
 
     ![Yayımcı bildirimleri][api-management-publisher-notifications]
 
     Aşağıdaki olaylar listesi bildirimler için yapılandırılabilir.
 
-    -   **Abonelik istekleri (onay gerektiren)** -belirtilen e-posta alıcıları ve kullanıcılar onay gerektiren API ürünleri için abonelik istekleri hakkında e-posta bildirimleri alır.
-    -   **Yeni abonelikler** -belirtilen e-posta alıcıları ve KULLANıCıLAR yeni API ürün abonelikleri hakkında e-posta bildirimleri alacaktır.
-    -   **Uygulama Galerisi istekleri** -belirtilen e-posta alıcıları ve kullanıcılar, uygulama galerisine yeni uygulamalar gönderildiğinde e-posta bildirimleri alır.
-    -   **Gizli** -belirtilen e-posta alıcıları ve kullanıcılar, geliştiricilere gönderilen tüm e-postaların e-posta tarafından gizli kopyalarını alırlar.
-    -   **Yeni sorun veya açıklama** -Geliştirici Portalında yeni bir sorun veya yorum gönderildiğinde, belirtilen e-posta alıcıları ve kullanıcılar e-posta bildirimleri alır.
-    -   **Hesap Iletisini kapat** -belirtilen e-posta alıcıları ve kullanıcılar bir hesap kapatıldığında e-posta bildirimleri alır.
-    -   **Abonelik kotası sınırına yaklaşırken** , abonelik kullanımı kullanım kotasına yaklaşdığında aşağıdaki e-posta alıcıları ve kullanıcılar e-posta bildirimleri alır.
+    -   **Abonelik istekleri (onay gerektiren)** - Belirtilen e-posta alıcıları ve kullanıcılar, onay gerektiren API ürünleri için abonelik istekleri hakkında e-posta bildirimleri alır.
+    -   **Yeni abonelikler** - Belirtilen e-posta alıcıları ve kullanıcılar yeni API ürün abonelikleri hakkında e-posta bildirimleri alır.
+    -   **Uygulama galerisi istekleri** - Belirtilen e-posta alıcıları ve kullanıcılar, yeni başvurular uygulama galerisine gönderildiğinde e-posta bildirimleri alır.
+    -   **BCC** - Belirtilen e-posta alıcıları ve kullanıcılar geliştiricilere gönderilen tüm e-postaların e-posta kör karbon kopyalarını alırsınız.
+    -   **Yeni sorun veya yorum** - Geliştirici portalına yeni bir sorun veya yorum gönderildiğinde belirtilen e-posta alıcıları ve kullanıcılar e-posta bildirimleri alır.
+    -   **Hesap iletisini kapat** - Belirtilen e-posta alıcıları ve kullanıcılar, bir hesap kapatıldığında e-posta bildirimleri alır.
+    -   **Yaklaşan abonelik kotası sınırı** - Abonelik kullanımı kullanım kotasına yaklaştığında aşağıdaki e-posta alıcıları ve kullanıcılar e-posta bildirimleri alır.
 
         > [!NOTE]
-        > Bildirimler yalnızca [abonelik ilkesiyle kota](api-management-access-restriction-policies.md#SetUsageQuota) tarafından tetiklenir. [Anahtar ilkesine göre kota](api-management-access-restriction-policies.md#SetUsageQuotaByKey) bildirim oluşturmaz.
+        > Bildirimler [yalnızca abonelik](api-management-access-restriction-policies.md#SetUsageQuota) ilkesi tarafından kota tarafından tetiklenir. [Anahtar ilkesine göre kota](api-management-access-restriction-policies.md#SetUsageQuotaByKey) bildirimler oluşturmaz.
 
-    Her olay için e-posta adresi metin kutusunu kullanarak e-posta alıcıları belirtebilir veya listeden Kullanıcı seçebilirsiniz.
+    Her olay için, e-posta adresi metin kutusunu kullanarak e-posta alıcıları belirtebilir veya bir listeden kullanıcıları seçebilirsiniz.
 
-3.  Bildirilecek e-posta adreslerini belirtmek için, e-posta adresi metin kutusuna bunları girin. Birden çok e-posta adresiniz varsa, bunları virgül kullanarak ayırın.
+3.  Bildirilecek e-posta adreslerini belirtmek için bunları e-posta adresi metin kutusuna girin. Birden çok e-posta adresiniz varsa, virgül kullanarak ayırın.
 
     ![Bildirim alıcıları][api-management-email-addresses]
 
 4.  **Ekle**’ye basın.
 
-## <a name="email-templates"> </a>Bildirim şablonlarını yapılandırma
+## <a name="configure-notification-templates"></a><a name="email-templates"> </a>Bildirim şablonlarını yapılandırma
 
-API Management, hizmeti yönetme ve kullanma konusunda gönderilen e-posta iletileri için bildirim şablonları sağlar. Aşağıdaki e-posta şablonları verilmiştir.
+API Yönetimi, hizmeti yönetme ve kullanma süresince gönderilen e-posta iletileri için bildirim şablonları sağlar. Aşağıdaki e-posta şablonları sağlanır.
 
--   Uygulama Galerisi gönderimi onaylandı
--   Geliştirici Farewell harfi
--   Geliştirici kota sınırı bildirimle yaklaşılıyor
+-   Başvuru galerisi gönderimi onaylandı
+-   Geliştirici veda mektubu
+-   Geliştirici kota sınırı bildirimi yaklaşıyor
 -   Kullanıcıyı davet et
--   Bir soruna yeni açıklama eklendi
--   Yeni sorun alındı
+-   Bir soruna yeni yorum eklendi
+-   Yeni sayı alındı
 -   Yeni abonelik etkinleştirildi
--   Abonelik yenilendi onayı
--   Abonelik isteği reddederse
+-   Abonelik yenilenen onay
+-   Abonelik isteği reddediyor
 -   Abonelik isteği alındı
 
-Bu şablonlar istenen şekilde değiştirilebilir.
+Bu şablonlar istenenildiği gibi değiştirilebilir.
 
-API Management örneğiniz için e-posta şablonlarını görüntülemek ve yapılandırmak için, **Bildirimler şablonlar**' a tıklayın.
+API Yönetimi örneğiniz için e-posta şablonlarını görüntülemek ve yapılandırmak için **Bildirimler şablonlarını**tıklatın.
 
 ![E-posta şablonları][api-management-email-templates]
 
-Her e-posta şablonunun bir konusu düz metin ve HTML biçiminde bir gövde tanımı vardır. Her öğe istenildiği gibi özelleştirilebilir.
+Her e-posta şablonunda düz metinde bir konu ve HTML biçiminde bir gövde tanımı vardır. Her öğe islenebildiği gibi özelleştirilebilir.
 
-![E-posta şablonu Düzenleyicisi][api-management-email-template]
+![E-posta şablonu düzenleyicisi][api-management-email-template]
 
-**Parametreler** listesi, e-posta gönderildiğinde belirlenen değerin yerine, konuya veya gövdeye eklendiğinde parametre listesini içerir. Bir parametre eklemek için, imleci istediğiniz yere yerleştirip parametre adının solundaki oka tıklayın.
+**Parametreler** listesi, konu veya gövdeye eklendiğinde, e-posta gönderildiğinde belirlenen değerin değiştirileceğinigösteren parametrelerin bir listesini içerir. Bir parametre eklemek için imleci parametrenin gitmesini istediğiniz yere yerleştirin ve parametre adının solundaki oku tıklatın.
 
 > [!NOTE]
-> Bir testi önizlemede veya gönderirken parametreler gerçek değerlerle değiştirilmez.
+> Parametreler, bir testi önizleme veya gönderirken gerçek değerlerle değiştirilmez.
 
-E-posta şablonunda yapılan değişiklikleri kaydetmek için **Kaydet**' e tıklayın veya değişiklikleri iptal etmek için **at**' a tıklayın.
+Değişiklikleri e-posta şablonuna kaydetmek için **Kaydet'i**tıklatın veya değişiklikleri iptal etmek için **At'ı**tıklatın.
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
 [api-management-publisher-notifications]: ./media/api-management-howto-configure-notifications/api-management-publisher-notifications.png

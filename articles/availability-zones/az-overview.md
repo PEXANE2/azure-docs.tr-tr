@@ -1,39 +1,39 @@
 ---
-title: Azure Kullanılabilirlik Alanları nedir?
-description: Azure 'da yüksek oranda kullanılabilir ve dayanıklı uygulamalar oluşturmak için, kaynaklarınızı çalıştırmak için kullanabileceğiniz fiziksel olarak ayrı konumlar sağlayın Kullanılabilirlik Alanları.
+title: Azure Kullanılabilirlik Bölgeleri nelerdir?
+description: Kullanılabilirlik Bölgeleri, Azure'da yüksek oranda kullanılabilir ve esnek uygulamalar oluşturmak için kaynaklarınızı çalıştırmak için kullanabileceğiniz fiziksel olarak ayrı konumlar sağlar.
 author: cynthn
 ms.service: azure
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: c9f4a418ac05b2618b4641c857e182e73c35d34c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.custom: fasttrack-edit, mvc
+ms.openlocfilehash: 9f1b0f1885019c75252a4c5b8333f342660fac0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79253474"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80057277"
 ---
-# <a name="what-are-availability-zones-in-azure"></a>Azure 'da Kullanılabilirlik Alanları nedir?
-Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun. Azure, Kullanılabilirlik Alanları sayesinde sektörün en iyi% 99,99 VM çalışma süresi SLA 'sını sunmaktadır. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
+# <a name="what-are-availability-zones-in-azure"></a>Azure'daki Kullanılabilirlik Bölgeleri nelerdir?
+Kullanılabilirlik Bölgeleri, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirlik teklifidir. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılığı güvence altına almak için etkinleştirilmiş tüm bölgelerde en az üç ayrı alan vardır. Kullanılabilirlik Bölgelerinin bir bölge içindeki fiziksel olarak ayrılması, uygulamaları ve verileri veri merkezi hatalarından korur. Bölge yedekli hizmetler, tek hata noktalarından korunmak için uygulamalarınızı ve verilerinizi Kullanılabilirlik Bölgeleri arasında çoğaltır. Kullanılabilirlik Bölgeleri ile Azure, endüstrinin en iyi %99,99'luk VM çalışma süresi SLA'sını sunar. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
 
-Bir Azure bölgesindeki kullanılabilirlik bölgesi bir hata etki alanının ve bir güncelleştirme etki alanının birleşimidir. Örneğin, bir Azure bölgesindeki üç bölgede üç veya daha fazla VM oluşturursanız, VM 'niz üç hata etki alanına ve üç güncelleştirme etki alanına etkili bir şekilde dağıtılır. Azure platformu, farklı bölgelerdeki VM 'Lerin aynı anda güncelleştirildiğinden emin olmak için bu dağıtımı güncelleştirme etki alanları genelinde tanır.
+Azure bölgesindeki Kullanılabilirlik Bölgesi, hata etki alanı ve güncelleştirme etki alanının birleşimidir. Örneğin, bir Azure bölgesinde üç bölgede üç veya daha fazla VM oluşturursanız, VM'leriniz üç hata etki alanına ve üç güncelleştirme etki alanına etkili bir şekilde dağıtılır. Azure platformu, farklı bölgelerdeki VM'lerin aynı anda güncelleştirilemediğinden emin olmak için bu dağıtımı güncelleştirme etki alanlarında tanır.
 
-Bir bölgedeki işlem, depolama, ağ ve veri kaynaklarınızı birlikte bularak ve diğer bölgelerde çoğaltarak uygulama mimarinizde yüksek kullanılabilirlik oluşturun. Kullanılabilirlik Alanları destekleyen Azure hizmetleri iki kategoride yer almalıdır:
+İşleminizi, depolamanızı, ağınızı ve veri kaynaklarınızı bir bölge içinde birlikte bularak ve diğer bölgelerde çoğaltarak uygulama mimarinizde yüksek kullanılabilirlik oluşturun. Kullanılabilirlik Alanlarını destekleyen Azure hizmetleri iki kategoriye ayrılır:
 
-- **Zonal Hizmetleri** : kaynağı belirli bir bölgeye (örneğin, sanal makineler, yönetilen diskler, standart IP adresleri) sabitleyebilir veya
-- Bölgesel olarak **yedekli hizmetler** – platform bölgeler arasında otomatik olarak çoğaltılır (örneğin, bölgesel olarak yedekli depolama, SQL veritabanı).
+- **Zonal hizmetler** – kaynağı belirli bir bölgeye (örneğin, sanal makineler, yönetilen diskler, Standart IP adresleri) sabitlersiniz veya
+- **Alanlar arası yedekli hizmetler**: Platform alanlar arasında otomatik olarak çoğaltılır (alanlar arası yedekli depolama, SQL Veritabanı gibi).
 
-Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle Kullanılabilirlik Alanları birleşimini kullanarak uygulama mimarinizi geliştirin. Uygulamalarınızı ve verilerinizi Azure bölgesindeki Kullanılabilirlik Alanları kullanarak yüksek kullanılabilirlik ve olağanüstü durum kurtarma koruması için Azure bölgelerinde zaman uyumsuz olarak çoğaltma yapabilirsiniz.
+Azure'da kapsamlı iş sürekliliği elde etmek için, Kullanılabilirlik Bölgeleri ile Azure bölge çiftleri birleşimini kullanarak uygulama mimarinizi oluşturun. Yüksek kullanılabilirlik için bir Azure bölgesindeki Kullanılabilirlik Bölgeleri'ni kullanarak uygulamalarınızı ve verilerinizi senkronize olarak çoğaltabilir ve olağanüstü durum kurtarma koruması için Azure bölgelerinde eşzamanlı olarak çoğaltabilirsiniz.
  
-![bölgede aşağı doğru bir bölgenin kavramsal görünümü](./media/az-overview/az-graphic-two.png)
+![bir bölgede aşağı inen bir bölgenin kavramsal görünümü](./media/az-overview/az-graphic-two.png)
 
 > [!IMPORTANT]
-> Kullanılabilirlik alanı tanımlayıcıları (yukarıdaki resimde 1, 2 ve 3 sayıları), her aboneliğin bağımsız olarak gerçek fiziksel bölgelere mantıksal olarak eşlenir. Bu, belirli bir abonelikteki kullanılabilirlik Bölge 1 farklı bir abonelikte kullanılabilirlik Bölge 1 farklı bir fiziksel bölgeye başvurabileceği anlamına gelir. Sonuç olarak, sanal makine yerleştirmesi için farklı aboneliklerde kullanılabilirlik bölgesi kimliklerinin olmaması önerilir.
+> Kullanılabilirlik Bölgesi tanımlayıcıları (yukarıdaki resimdeki 1, 2 ve 3 sayıları) mantıksal olarak her abonelik için gerçek fiziksel bölgelere bağımsız olarak eşlenir. Bu, belirli bir abonelikteki Kullanılabilirlik Bölgesi 1'in, farklı bir abonelikteki Kullanılabilirlik Bölgesi 1'den farklı bir fiziksel bölgeye atıfta bulunabileceği anlamına gelir. Sonuç olarak, sanal makine yerleşimi için farklı abonelikler arasında Kullanılabilirlik Bölgesi adlarına güvenmemeönerilir.
 
 ## <a name="services-support-by-region"></a>Bölgeye göre hizmet desteği
 
-Kullanılabilirlik Alanları destekleyen Azure hizmetleri ve bölgelerinin birleşimleri şunlardır:
+Kullanılabilirlik Bölgelerini destekleyen Azure hizmetlerinin ve bölgelerinbirleşimleri şunlardır:
 
 
 |                                 |Kuzey ve Güney Amerika |              |           |           | Avrupa |              |          |              | Asya Pasifik |                 |
@@ -43,53 +43,54 @@ Kullanılabilirlik Alanları destekleyen Azure hizmetleri ve bölgelerinin birle
 | Linux Sanal Makineleri          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Windows Sanal Makineleri        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Sanal Makine Ölçek Kümeleri      | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| Azure App Service ortamları ıLB | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Azure Uygulama Hizmet Ortamları ILB | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Azure Kubernetes Service        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | **Depolama**   |            |              |           |           |                |              |          |             |            |                |
 | Yönetilen Diskler                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| Bölgesel olarak yedekli depolama          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| **Ağ**                     |            |              |           |           |                |              |          |             |            |                |
-| Standart IP adresi        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| Standart Load Balancer     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Bölge yedekli Depolama          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| **Ağ Oluşturma**                     |            |              |           |           |                |              |          |             |            |                |
+| Standart IP Adresi        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Standart Yük Dengeleyici     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | VPN Gateway            | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
-| ExpressRoute ağ geçidi   | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
-| Application Gateway (v2)    | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
+| ExpressRoute Ağ Geçidi   | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
+| Uygulama Ağ Geçidi(V2)    | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
 | Azure Güvenlik Duvarı           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
-| **Veritabanları**                     |            |              |           |           |                |              |          |             |            |                |
+| **Veritaban -ları**                     |            |              |           |           |                |              |          |             |            |                |
 | Azure Veri Gezgini                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |
-| SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;Önizle      | &#10003;       |
+| SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003; (Önizleme)      | &#10003;       |
 | Redis için Azure Önbelleği           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
 | Azure Cosmos DB                    | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       |     | &#10003; |  &#10003;   |            | &#10003;       |
-| **Analizler**                       |            |              |           |           |                |              |          |             |            |                |
+| **Analiz**                       |            |              |           |           |                |              |          |             |            |                |
 | Event Hubs                      | &#10003;   |   &#10003; | &#10003;  | &#10003;  | &#10003; | &#10003; | &#10003; | &#10003; | &#10003; | &#10003;       |
 | **Tümleştirme**                     |            |              |           |           |                |              |          |             |            |                |
-| Service Bus (yalnızca Premium katman) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
+| Servis Otobüsü (Sadece Premium Tier) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 | Event Grid | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 | **Kimlik**                     |            |              |           |           |                |              |          |             |            |                |
 | Azure AD Domain Services | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 
-## <a name="services-resiliency"></a>Hizmet dayanıklılığı
-Tüm Azure Yönetim Hizmetleri bölge düzeyindeki hatalardan dayanıklı olacak şekilde tasarlanmıştır. Başarısızlık kapsamında, bir bölgedeki bir veya daha fazla kullanılabilirlik bölgesi hatası, tüm bölge arızasına kıyasla daha küçük bir hata Radius içermelidir. Azure, bölgedeki veya başka bir Azure bölgesindeki yönetim hizmetlerinden oluşan bölge düzeyindeki bir hatadan kurtuya ait olabilir. Azure, bir bölgedeki Kullanılabilirlik Alanları arasında dağıtılan müşteri kaynaklarını etkileyen tüm sorunları engellemek için bir bölge içinde tek seferde kritik bakım gerçekleştirir.
+## <a name="services-resiliency"></a>Hizmet esnekliği
+Tüm Azure yönetim hizmetleri, bölge düzeyindeki hatalardan esnek olacak şekilde tasarlanır. Hata spektrumunda, bir bölge içindeki bir veya daha fazla Kullanılabilirlik Bölgesi hatası, tüm bölge hatasıyla karşılaştırıldığında daha küçük bir hata yarıçapına sahiptir. Azure, bölge içindeki veya başka bir Azure bölgesinde yönetim hizmetlerinin bölge düzeyinde ki başarısızlığından kurtarabilir. Azure, bir bölge içindeki Kullanılabilirlik Bölgeleri arasında dağıtılan müşteri kaynaklarını etkileyen hataları önlemek için, bir bölge içinde her seferinde kritik bakım gerçekleştirir.
 
 ## <a name="pricing"></a>Fiyatlandırma
-Bir kullanılabilirlik bölgesinde dağıtılan sanal makineler için ek ücret yoktur. % 99,99 VM çalışma süresi SLA 'Sı, iki veya daha fazla VM bir Azure bölgesi içinde iki veya daha fazla Kullanılabilirlik Alanları dağıtıldığında sunulur. Ek kullanılabilirlik alanı VM 'leri-VM veri aktarımı ücretleri olacaktır. Daha fazla bilgi için [bant genişliği fiyatlandırma](https://azure.microsoft.com/pricing/details/bandwidth/) sayfasını gözden geçirin.
+Kullanılabilirlik Bölgesinde dağıtılan sanal makineler için ek bir ücret yoktur. Bir Azure bölgesinde iki veya daha fazla Kullanılabilirlik Bölgesi'nde iki veya daha fazla VM dağıtıldığında %99,99 VM çalışma süresi SLA sunulur. İlave Stoklar Arası Bölge VM-vM veri aktarım ücretleri olacaktır. Daha fazla bilgi için [Bant Genişliği fiyatlandırma](https://azure.microsoft.com/pricing/details/bandwidth/) sayfasını inceleyin.
 
 
-## <a name="get-started-with-availability-zones"></a>Kullanılabilirlik Alanları kullanmaya başlayın
-- [Sanal makine oluşturun](../virtual-machines/windows/create-portal-availability-zone.md)
-- [PowerShell kullanarak yönetilen disk ekleme](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [Bölge yedekli sanal makine ölçek kümesi oluşturma](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Bölgesel olarak yedekli bir ön uç ile bir Standart Load Balancer kullanarak VM 'lerde Yük Dengeleme](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Bir bölge içindeki VM 'leri, bölgesel ön ucu ile standart Load Balancer kullanarak yük dengeleme](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [Alanlar arası yedekli depolama](../storage/common/storage-redundancy-zrs.md)
-- [SQL Veritabanı](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
+## <a name="get-started-with-availability-zones"></a>Kullanılabilirlik Bölgeleri ile başlayın
+- [Sanal bir makine oluşturma](../virtual-machines/windows/create-portal-availability-zone.md)
+- [PowerShell kullanarak Yönetilen Disk Ekleme](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [Bölge gereksiz sanal makine ölçek kümesi oluşturma](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+- [Bölge yedekli ön uça sahip standart yük dengeleyicisi kullanarak bölgeler arasında yük dengesi VM'leri](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Bölge ön ucuna sahip standart yük dengeleyicisi kullanarak bölge içindeki yük dengesi VM'leri](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Alanlar arası yedekli depolama
+](../storage/common/storage-redundancy-zrs.md)
+- [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 - [Event Hubs coğrafi olağanüstü durum kurtarma](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus coğrafi olağanüstü durum kurtarma](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Alanlar arası yedekli sanal ağ geçidi oluşturma](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [Azure Cosmos DB için bölge yedekli bölgesi ekleme](../cosmos-db/high-availability.md#availability-zone-support)
-- [Redsıs için Azure önbelleği Başlarken Kullanılabilirlik Alanları](https://aka.ms/redis/az/getstarted)
+- [Azure Cosmos DB için bölge gereksiz bölge ekleme](../cosmos-db/high-availability.md#availability-zone-support)
+- [Redis Kullanılabilirlik Bölgeleri için Azure Önbelleğine Başlarken](https://aka.ms/redis/az/getstarted)
 - [Azure Active Directory Domain Services örneği oluşturma](../active-directory-domain-services/tutorial-create-instance.md)
-- [Kullanılabilirlik Alanları kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma](../aks/availability-zones.md)
+- [Kullanılabilirlik Bölgeleri kullanan bir Azure Kubernetes Hizmeti (AKS) kümesi oluşturma](../aks/availability-zones.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Hızlı Başlangıç şablonları](https://aka.ms/azqs)
+- [Hızlı başlangıç şablonları](https://aka.ms/azqs)

@@ -1,5 +1,5 @@
 ---
-title: Azure VM 'de Konuk işletim sisteminde bir güvenlik duvarı kuralını etkinleştirme veya devre dışı bırakma | Microsoft Docs
+title: Azure VM'de konuk işletim sistemi üzerinde bir güvenlik duvarı kuralını etkinleştirme veya devre dışı kılma | Microsoft Dokümanlar
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,27 +15,27 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71086445"
 ---
-# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Azure VM Konuk işletim sisteminde bir güvenlik duvarı kuralını etkinleştirme veya devre dışı bırakma
+# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Azure VM konuk işletim sisteminde güvenlik duvarı kuralını etkinleştirin veya devre dışı bırakın
 
-Bu makalede, Konuk işletim sistemi güvenlik duvarının bir sanal makinede (VM) kısmi trafiği filtrelerken şüphelendiğiniz bir durum sorunlarını gidermeye yönelik bir başvuru sağlanmaktadır. Bu, aşağıdaki nedenlerden dolayı yararlı olabilir:
+Bu makalede, konuk işletim sistemi güvenlik duvarının sanal bir makinedeki (VM) kısmi trafiği filtrelediğinden şüphelendiğiniz bir durumu giderme sorunu giderme için bir başvuru sağlar. Bu, aşağıdaki nedenlerden dolayı yararlı olabilir:
 
-*   Güvenlik duvarında RDP bağlantılarının başarısız olmasına neden olan bir değişiklik daha önce yapılmışsa, Özel Betik uzantısı özelliğinin kullanılması sorunu çözebilir.
+*   RDP bağlantılarının başarısız olması yla ilgili güvenlik duvarında kasıtlı olarak bir değişiklik yapıldıysa, Özel Komut Dosyası Uzantısı özelliğini kullanmak sorunu çözebilir.
 
-*   Tüm güvenlik duvarı profillerinin devre dışı bırakılması, RDP 'ye özgü güvenlik duvarı kuralını ayarlamaktan farklı sorun gidermeye yönelik daha fazla kanıt yoludur.
+*   Tüm güvenlik duvarı profillerini devre dışı bırakmak, RDP'ye özgü güvenlik duvarı kuralını ayarlamaktan daha kusursuz bir sorun giderme yoludur.
 
 ## <a name="solution"></a>Çözüm
 
-Güvenlik duvarı kurallarını yapılandırma, gereken sanal makineye erişim düzeyine bağlıdır. Aşağıdaki örnekler RDP kurallarını kullanır. Bununla birlikte, doğru kayıt defteri anahtarına işaret ederek aynı yöntemler diğer tür trafiğe de uygulanabilir.
+Güvenlik duvarı kurallarını nasıl yapılandırdığınız, gerekli VM'ye erişim düzeyine bağlıdır. Aşağıdaki örneklerDE RDP kuralları kullanılır. Ancak, aynı yöntemler doğru kayıt defteri anahtarıişaret ederek trafik başka tür uygulanabilir.
 
 ### <a name="online-troubleshooting"></a>Çevrimiçi sorun giderme 
 
-#### <a name="mitigation-1-custom-script-extension"></a>Risk azaltma 1: Özel Betik Uzantısı
+#### <a name="mitigation-1-custom-script-extension"></a>Azaltma 1: Özel Komut Dosyası Uzantısı
 
 1.  Aşağıdaki şablonu kullanarak komut dosyanızı oluşturun.
 
@@ -44,18 +44,18 @@ Güvenlik duvarı kurallarını yapılandırma, gereken sanal makineye erişim d
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=yes
         ```
 
-    *   Bir kuralı devre dışı bırakmak için:
+    *   Bir kuralı devre dışı kalmak için:
         ```cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-2.  [Özel Betik uzantısı](../extensions/custom-script-windows.md) özelliğini kullanarak bu betiği Azure Portal yükleyin. 
+2.  Bu komut dosyasını Özel [Komut Dosyası Uzantısı](../extensions/custom-script-windows.md) özelliğini kullanarak Azure portalına yükleyin. 
 
-#### <a name="mitigation-2-remote-powershell"></a>Risk azaltma 2: Uzak PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Azaltma 2: Uzaktan PowerShell
 
-VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyorsa, diğer VM 'yi kullanarak takip azaltıcı etkenleri yapabilirsiniz.
+VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM'den erişebiliyorsa, diğer VM'yi kullanarak takip azaltmalarını yapabilirsiniz.
 
-1.  Sorun giderme VM 'sinde bir PowerShell konsol penceresi açın.
+1.  Sorun giderme VM'de bir PowerShell konsol penceresi açın.
 
 2.  Aşağıdaki komutları uygun şekilde çalıştırın.
 
@@ -66,20 +66,20 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
         exit
         ```
 
-    *   Bir kuralı devre dışı bırakmak için:
+    *   Bir kuralı devre dışı kalmak için:
         ```powershell
         Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
         Disable-NetFirewallRule -DisplayName  "RemoteDesktop-UserMode-In-TCP"
         exit
         ```
 
-#### <a name="mitigation-3-pstools-commands"></a>Risk azaltma 3: Padstools komutları
+#### <a name="mitigation-3-pstools-commands"></a>Azaltma 3: PSTools komutları
 
-VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyorsa, diğer VM 'yi kullanarak takip azaltıcı etkenleri yapabilirsiniz.
+VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM'den erişebiliyorsa, diğer VM'yi kullanarak takip azaltmalarını yapabilirsiniz.
 
-1.  Sorun giderme sanal makinesinde [PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools)'u indirin.
+1.  Sorun giderme VM, [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)indirin.
 
-2.  Bir CMD örneği açın ve VM 'ye Iç IP (DIP) üzerinden erişin. 
+2.  CmD örneğini açın ve İç IP 'si (DIP) aracılığıyla VM'ye erişin. 
 
     * Bir kuralı etkinleştirmek için:
         ```cmd
@@ -87,85 +87,85 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=yes
         ```
 
-    *   Bir kuralı devre dışı bırakmak için:
+    *   Bir kuralı devre dışı kalmak için:
         ```cmd
         psexec \\<DIP> -u <username> cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-4-remote-registry"></a>Risk azaltma 4: Uzak kayıt defteri
+#### <a name="mitigation-4-remote-registry"></a>Azaltma 4: Uzaktan Kayıt Defteri
 
-VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyorsa, diğer VM 'de [Uzak kayıt defteri](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) kullanabilirsiniz.
+VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM'den erişebiliyorsa, diğer VM'de [Uzaktan Kayıt Defteri'ni](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) kullanabilirsiniz.
 
-1.  Sorun giderme VM 'sinde, kayıt defteri Düzenleyicisi 'ni (Regedit. exe) başlatın ve ardından **Dosya** > **Connect ağ kayıt defteri**' ni seçin.
+1.  Sorun giderme VM'de Kayıt Defteri Düzenleyicisi'ni (regedit.exe) başlatın ve ardından **Dosya** > **Bağlan Ağ Kayıt Defteri'ni**seçin.
 
-2.  *Hedef makine*\System dalını açın ve ardından aşağıdaki değerleri belirtin:
+2.  TARGET *MACHINE*\SYSTEM dalını açın ve ardından aşağıdaki değerleri belirtin:
 
     * Bir kuralı etkinleştirmek için aşağıdaki kayıt defteri değerini açın:
     
-        *Hedef makine*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-usermode-ın-TCP
+        *HEDEF MAKİnE*\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
     
-        Ardından, dizedeki **etkin = FALSE değerini** **etkin = true** olarak değiştirin:
+        Daha **sonra, Active=FALSE'u** **Active=TRUE** dizesinde değiştirin:
 
-        **v 2.22 | Eylem = Izin ver | Etkin = TRUE | Dır = | Protokol = 6 | Profil = etki alanı | Profil = özel | Profil = genel | LPort = 3389 | Uygulama =%SystemRoot%\system32\svchost.exe | Svc = TermService | Ad =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | Embedctxt =\@FirewallAPI. dll,-28752 |**
+        **v2.22| Eylem=İzin Ver| Etkin=TRUE| dir=In| Protokol=6| Profil=Etki Alanı| Profil=Özel| Profil=Genel| LPort=3389| App=%SystemRoot%\system32\svchost.exe| Svc=termservice| Adı=\@FirewallAPI.dll,-28775| Desc=\@FirewallAPI.dll,-28756| EmbedCtxt=\@FirewallAPI.dll,-28752|**
     
-    * Bir kuralı devre dışı bırakmak için aşağıdaki kayıt defteri değerini açın:
+    * Bir kuralı devre dışı düşürmek için aşağıdaki kayıt defteri değerini açın:
     
-        *Hedef makine*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-usermode-ın-TCP
+        *HEDEF MAKİnE*\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        Ardından, **etkin = TRUE değerini** **etkin = false**olarak değiştirin:
+        Sonra, **Active =TRUE** to **Active=FALSE'u**değiştirin :
         
-        **v 2.22 | Eylem = Izin ver | Etkin = yanlış | Dır = | Protokol = 6 | Profil = etki alanı | Profil = özel | Profil = genel | LPort = 3389 | Uygulama =%SystemRoot%\system32\svchost.exe | Svc = TermService | Ad =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | Embedctxt =\@FirewallAPI. dll,-28752 |**
+        **v2.22| Eylem=İzin Ver| Etkin=YANLIŞ| dir=In| Protokol=6| Profil=Etki Alanı| Profil=Özel| Profil=Genel| LPort=3389| App=%SystemRoot%\system32\svchost.exe| Svc=termservice| Adı=\@FirewallAPI.dll,-28775| Desc=\@FirewallAPI.dll,-28756| EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
-3.  Değişiklikleri uygulamak için VM 'yi yeniden başlatın.
+3.  Değişiklikleri uygulamak için VM'yi yeniden başlatın.
 
 ### <a name="offline-troubleshooting"></a>Çevrimdışı sorun giderme 
 
-VM 'ye herhangi bir yöntemle erişemiyorsanız, Özel Betik uzantısının kullanılması başarısız olur ve doğrudan sistem diski aracılığıyla çalışarak ÇEVRIMDıŞı modda çalışmanız gerekir.
+VM'ye herhangi bir yöntemle erişemiyorsanız, Özel Komut Dosyası Uzantısı'nı kullanmak başarısız olur ve doğrudan sistem diski üzerinden çalışarak ÇEVRIMDıŞı modda çalışmanız gerekir.
 
-Bu adımları gerçekleştirmeden önce sistem diski etkilenen sanal makinenin anlık görüntüsünü yedekleyin. Daha fazla bilgi için [bir diskin anlık görüntüsünü alma](../windows/snapshot-copy-managed-disk.md).
+Bu adımları izlemeden önce, yedek olarak etkilenen VM'nin sistem diskinin anlık görüntüsünü alın. Daha fazla bilgi için [bir diskanlık anlık görüntüsüne](../windows/snapshot-copy-managed-disk.md)bakın.
 
-1.  [Bir kurtarma VM'si sistem diski](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Sistem diskini kurtarma VM'ine takın.](troubleshoot-recovery-disks-portal-windows.md)
 
-2.  Kurtarma VM'sini bir Uzak Masaüstü Bağlantısı'nı başlatın.
+2.  Kurtarma VM'sine Uzak Masaüstü bağlantısı başlatın.
 
-3.  Disk olarak işaretlenmiş olduğundan emin olun **çevrimiçi** Disk Yönetimi Konsolu'nda. Eklenmiş sistem diskine atanan sürücü harfinin olduğunu unutmayın.
+3.  Diskin Disk Yönetimi konsolunda **Çevrimiçi** olarak işaretlendiğini unutmayın. Ekli sistem diskine atanan sürücü mektubunun.
 
-4.  Değişiklik yapmadan önce, değişikliklerin geri alınması gerekli olduğunda \Windows\System32\Config klasörünün bir kopyasını oluşturun.
+4.  Herhangi bir değişiklik yapmadan önce, değişikliklerin geri alınması nın gerekli olması durumunda \windows\system32\config klasörünün bir kopyasını oluşturun.
 
-5.  Sorun giderme VM 'sinde, kayıt defteri Düzenleyicisi 'ni (Regedit. exe) başlatın.
+5.  Sorun giderme VM'de Kayıt Defteri Düzenleyicisi'ni (regedit.exe) başlatın.
 
-6.  **HKEY_LOCAL_MACHINE** anahtarını vurgulayın ve menüden **Dosya** > **yükleme Hive** ' yi seçin.
+6.  **HKEY_LOCAL_MACHINE** tuşunu vurgulayın ve menüden **Dosya** > **Yük Kovanı'nı** seçin.
 
-    ![B](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
+    ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
-7.  \Windows\system32\config\SYSTEM dosyasını bulun ve açın. 
+7.  \windows\system32\config\SYSTEM dosyasını bulun ve açın. 
 
     > [!Note]
-    > Sizden bir ad girmeniz istenir. **Brokensystem**girin ve ardından **HKEY_LOCAL_MACHINE**' i genişletin. Şimdi, **brokensystem**adlı ek bir anahtar görürsünüz. Bu sorun giderme için, bu sorun kovanlarını **brokensystem**olarak oluşturacağız.
+    > Bir ad için istenir. **BROKENSYSTEM'i**girin ve **ardından HKEY_LOCAL_MACHINE**genişletin. Şimdi **BROKENSYSTEM**adlı ek bir anahtar göreceksiniz. Bu sorun giderme için, bu sorun kovanlarını **BROKENSYSTEM**olarak monte ediyoruz.
 
 8.  BROKENSYSTEM dalında aşağıdaki değişiklikleri yapın:
 
-    1.  VM 'nin başladığı **CONTROLSET** kayıt defteri anahtarını denetleyin. Anahtar numarasını, Hklm\brokensystem\select\currentkonumunda görürsünüz.
+    1.  VM'nin hangi **ControlSet** kayıt defteri anahtarından başladığını denetleyin. HkLM\BROKENSYSTEM\Select\Current'da anahtar numarasını göreceksiniz.
 
     2.  Bir kuralı etkinleştirmek için aşağıdaki kayıt defteri değerini açın:
     
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
         
-        Ardından, **etkin = FALSE değerini** **etkin = true**olarak değiştirin.
+        Daha sonra **Active=FALSE'u** **Active=True**olarak değiştirin.
         
-        **v 2.22 | Eylem = Izin ver | Etkin = TRUE | Dır = | Protokol = 6 | Profil = etki alanı | Profil = özel | Profil = genel | LPort = 3389 | Uygulama =%SystemRoot%\system32\svchost.exe | Svc = TermService | Ad =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | Embedctxt =\@FirewallAPI. dll,-28752 |**
+        **v2.22| Eylem=İzin Ver| Etkin=TRUE| dir=In| Protokol=6| Profil=Etki Alanı| Profil=Özel| Profil=Genel| LPort=3389| App=%SystemRoot%\system32\svchost.exe| Svc=termservice| Adı=\@FirewallAPI.dll,-28775| Desc=\@FirewallAPI.dll,-28756| EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
-    3.  Bir kuralı devre dışı bırakmak için aşağıdaki kayıt defteri anahtarını açın:
+    3.  Bir kuralı devre dışı kardırmak için şeşeşit anahtarını aç
 
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        Ardından, **etkin = true değerini** **etkin = false**olarak değiştirin.
+        Sonra, **Active=True** to **Active=FALSE**'u değiştirin.
         
-        **v 2.22 | Eylem = Izin ver | Etkin = yanlış | Dır = | Protokol = 6 | Profil = etki alanı | Profil = özel | Profil = genel | LPort = 3389 | Uygulama =%SystemRoot%\system32\svchost.exe | Svc = TermService | Ad =\@FirewallAPI. dll,-28775 | DESC =\@FirewallAPI. dll,-28756 | Embedctxt =\@FirewallAPI. dll,-28752 |**
+        **v2.22| Eylem=İzin Ver| Etkin=YANLIŞ| dir=In| Protokol=6| Profil=Etki Alanı| Profil=Özel| Profil=Genel| LPort=3389| App=%SystemRoot%\system32\svchost.exe| Svc=termservice| Adı=\@FirewallAPI.dll,-28775| Desc=\@FirewallAPI.dll,-28756| EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
-9.  **Brokensystem**öğesini vurgulayın ve sonra menüden **Dosya** > **Kaldır Hive** öğesini seçin.
+9.  **BROKENSYSTEM'i**vurgulayın ve ardından menüden **Dosya** > **Boşaltma Kovanı'nı** seçin.
 
-10. [VM yeniden oluşturma ve sistem diskini](troubleshoot-recovery-disks-portal-windows.md).
+10. [Sistem diskini ayırın ve VM'yi yeniden oluşturun.](troubleshoot-recovery-disks-portal-windows.md)
 
 11. Sorunun çözülüp çözülmediğini denetleyin.

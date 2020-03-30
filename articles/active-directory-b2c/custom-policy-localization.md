@@ -1,6 +1,6 @@
 ---
-title: Özel ilkeyle uygulamanızın kullanıcı arabirimini yerelleştirin
-description: Azure Active Directory B2C ' de özel bir ilke kullanarak bir kullanıcı arabirimini yerelleştirme hakkında bilgi edinin.
+title: Uygulamanızın kullanıcı arabirimini özel bir ilke yle yerelleştirin
+description: Azure Active Directory B2C'de özel bir ilke kullanarak bir kullanıcı arabiriminin yerelleştirilmesi hakkında bilgi edinin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,26 +11,26 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126783"
 ---
-# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini yerelleştirin
+# <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini yerelleştirin
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) dil özelleştirmesi, müşterinizin ihtiyaçlarını karşılamak için farklı dillere sahip etmenize olanak tanır. Microsoft, 36 dil için Çeviriler sağlar, ancak herhangi bir dil için kendi çevirilerinizi de sağlayabilirsiniz. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile, sayfalardaki tüm metinleri özelleştirebilirsiniz. 
+Azure Active Directory B2C'de (Azure AD B2C) dil özelleştirme, farklı dilleri müşterinizin ihtiyaçlarına göre barındırmanıza olanak tanır. Microsoft 36 dil için çeviri sağlar, ancak herhangi bir dil için kendi çevirilerinizi de sağlayabilirsiniz. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile, sayfalardaki herhangi bir metni özelleştirebilirsiniz. 
 
-Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı veya dili nasıl destekleyeceği gösterilmektedir. Yerelleştirme üç adım gerektirir: desteklenen dillerin açık listesini ayarlayın, dile özgü dizeler ve koleksiyonlar sağlayın ve sayfanın [içerik tanımını](contentdefinitions.md) düzenleyin. 
+Bu makalede, kullanıcı yolculukları için ilkedeki birden çok yerel alanı veya dili nasıl destekleyeceğiniz gösterilmektedir. Yerelleştirme üç adım gerektirir: desteklenen dillerin açık listesini ayarlayın, dile özgü dizeleri ve koleksiyonları sağlayın ve sayfanın [içerik tanımını](contentdefinitions.md) güncelleyin. 
 
 ## <a name="set-up-the-list-of-supported-languages"></a>Desteklenen dillerin listesini ayarlama
 
-İlkenizin uzantıları dosyasını açın. Örneğin, <em> **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`</em>.
+İlkinizin uzantılar dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
 
-1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
-1. `Localization` öğesini desteklenen dillerle ekleyin: İngilizce (varsayılan) ve Ispanyolca.  
+1. [BuildingBlocks](buildingblocks.md) öğesini arayın. Öğe yoksa, ekleyin.
+1. Öğeyi `Localization` desteklenen dillerle ekleyin: İngilizce (varsayılan) ve İspanyolca.  
 
 
 ```XML
@@ -42,14 +42,14 @@ Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı v
 </Localization>
 ```
 
-## <a name="provide-language-specific-labels"></a>Dile özgü Etiketler sağlama
+## <a name="provide-language-specific-labels"></a>Dile özel etiketler sağlama
 
-`Localization` öğesinin [Localizedkaynakları](localization.md#localizedresources) yerelleştirilmiş dizelerin listesini içerir. Yerelleştirilmiş kaynaklar öğesi yerelleştirilmiş kaynakları benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcıya sahiptir. Bu tanımlayıcı, [İçerik tanımı](contentdefinitions.md) öğesinde daha sonra kullanılır.
+Öğenin `Localization` [Yerelleştirilmiş Kaynakları](localization.md#localizedresources) yerelleştirilmiş dizeleri listesini içerir. Yerelleştirilmiş kaynaklar öğesi, yerelleştirilmiş kaynakları benzersiz olarak tanımlamak için kullanılan bir tanımlayıcıya sahiptir. Bu identifer daha sonra [içerik tanımı](contentdefinitions.md) öğesinde kullanılır.
 
-İçerik tanımı ve desteklemek istediğiniz herhangi bir dil için yerelleştirilmiş kaynaklar öğelerini yapılandırırsınız. Ingilizce ve Ispanyolca Birleşik kaydolma veya oturum açma sayfalarını özelleştirmek için, `</SupportedLanguages>` öğesinin kapandıktan sonra aşağıdaki `LocalizedResources` öğelerini eklersiniz.
+İçerik tanımı ve desteklemek istediğiniz dil için yerelleştirilmiş kaynak öğelerini yapılandırırsınız. İngilizce ve İspanyolca için birleşik kaydolma veya oturum açma sayfalarını `LocalizedResources` özelleştirmek için `</SupportedLanguages>` öğenin kapatılmasından sonra aşağıdaki öğeleri eklersiniz.
 
 > [!NOTE]
-> Aşağıdaki örnekte, her satırın başlangıcında sterlin `#` sembolünü ekledik, böylece, ekranda yerelleştirilmiş Etiketler bulabilirsiniz.
+> Aşağıdaki örnekte, her `#` satırın dibine pound sembolü ekledik, böylece ekranda yerelleştirilmiş etiketleri easly bulabilirsiniz.
 
 ```XML
 <!--Local account sign-up or sign-in page English-->
@@ -212,11 +212,11 @@ Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı v
 </LocalizedResources>
 ```
 
-## <a name="edit-the-content-definition-with-the-localization"></a>Yerelleştirme ile içerik tanımını düzenleme
+## <a name="edit-the-content-definition-with-the-localization"></a>Yerelleştirme ile içerik tanımını yeniden
 
-BuildingBlocks öğesinin bir alt öğesi olarak kopyaladığınız ContentDefinitions öğesinin tüm içeriğini yapıştırın.
+BuildingBlocks öğesinin alt öğesi olarak kopyaladığınız ContentDefinitions öğesinin tüm içeriğini yapıştırın.
 
-Aşağıdaki örnekte, kayıt veya oturum açma sayfasına ve yerel hesap kaydolma sayfasına Ingilizce (en) ve Ispanyolca (es) özel dizeler eklenir. Her bir **Localizedresourcesreference** Için **Localizedresourcesreferenceıd** , kendi yerel ayarlarıyla aynıdır, ancak tanımlayıcı olarak herhangi bir dize kullanabilirsiniz. Her dil ve sayfa birleşimi için, daha önce oluşturduğunuz ilgili **Localizedresources** üzerine gelin.
+Aşağıdaki örnekte, Kaydolma veya kaydolma sayfasına ve yerel hesap kayıt sayfasına İngilizce (en) ve İspanyolca (es) özel dizeleri eklenir. Her **LocalizedResourcesReference için LocalizedResourcesReference** kendi yerelleriyle aynıdır, ancak tanımlayıcı olarak herhangi bir dize kullanabilirsiniz. **LocalizedResourcesReferenceId** Her dil ve sayfa birleşimi için, daha önce oluşturduğunuz ilgili **Yerelleştirilmiş Kaynakları** işaret esiniz.
 
 ```XML
 <ContentDefinitions>
@@ -236,23 +236,23 @@ Aşağıdaki örnekte, kayıt veya oturum açma sayfasına ve yerel hesap kaydol
 </ContentDefinitions>
 ```
 
-##  <a name="upload-and-test-your-updated-custom-policy"></a>Güncelleştirilmiş özel ilkenizi karşıya yükleme ve test etme
+##  <a name="upload-and-test-your-updated-custom-policy"></a>Güncelleştirilmiş özel politikanızı yükleme ve test edin
 
-### <a name="upload-the-custom-policy"></a>Özel ilkeyi karşıya yükle
+### <a name="upload-the-custom-policy"></a>Özel ilkeyi yükleyin
 
-1. Uzantı dosyasını kaydedin.
-1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Arama yapın ve **Azure AD B2C**seçin.
-1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
-1. **Özel Ilkeyi karşıya yükle**' yi seçin.
-1. Daha önce değiştirdiğiniz uzantıları dosyasını karşıya yükleyin.
+1. Uzantılar dosyasını kaydedin.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve kiracınızı içeren dizin seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure AD **B2C'yi**arayın ve seçin.
+1. **İlkeler**altında Kimlik **Deneyimi Çerçevesi'ni**seçin.
+1. **Özel politika yükle'yi**seçin.
+1. Daha önce değiştirdiğiniz uzantılar dosyasını yükleyin.
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>**Şimdi Çalıştır** 'ı kullanarak özel ilkeyi test etme
+### <a name="test-the-custom-policy-by-using-run-now"></a>Şimdi Çalıştır'ı kullanarak özel ilkeyi test **edin**
 
-1. Karşıya yüklediğiniz ilkeyi seçin ve **Şimdi Çalıştır**' ı seçin.
+1. Yüklediğiniz ilkeyi seçin ve ardından **Şimdi Çalıştır'ı**seçin.
 1. Yerelleştirilmiş kaydolma veya oturum açma sayfasını görebilmelisiniz.
-1. Kaydolma bağlantısına tıklayın ve yerelleştirilmiş kaydolma sayfasını görmeniz gerekir.)
-1. Tarayıcınızın varsayılan dilini Ispanyolca olarak değiştirin. Ya da, yetkilendirme isteğine `ui_locales` sorgu dizesi parametresini ekleyebilirsiniz. Örneğin: 
+1. Kaydolma bağlantısını tıkladığınızda, yerelleştirilmiş kayıt sayfasını görebilirsiniz.
+1. Tarayıcınızın varsayılan dilini İspanyolca'ya çevirin. Veya yetkilendirme `ui_locales` isteğine sorgu dizesi parametresini ekleyebilirsiniz. Örnek: 
 
 ```http
 https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
@@ -260,6 +260,6 @@ https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IEF başvurusunda [Yerelleştirme](localization.md) öğesi hakkında daha fazla bilgi edinin.
-- Azure AD B2C bulunan [Yerelleştirme dize kimliklerinin](localization-string-ids.md) listesine bakın.
+- IEF başvurusundaki [yerelleştirme](localization.md) öğesi hakkında daha fazla bilgi edinin.
+- Azure AD B2C'de bulunan [yerelleştirme dizelerinin](localization-string-ids.md) listesine bakın.
 

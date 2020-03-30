@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde Çoğalt
-description: Azure Cosmos DB 'de SQL sistem işlevi çoğaltma hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde ÇOĞALTMA
+description: Azure Cosmos DB'de SQL sistem fonksiyonu ÇOĞALTMA hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302194"
 ---
-# <a name="replicate-azure-cosmos-db"></a>Çoğalt (Azure Cosmos DB)
- Bir dize değeri, belirtilen sayıda yineler.
+# <a name="replicate-azure-cosmos-db"></a>ÇOĞALTMA (Azure Cosmos DB)
+ Bir dize değerini belirli sayıda yineler.
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -29,18 +29,18 @@ REPLICATE(<str_expr>, <num_expr>)
    Bir dize ifadesidir.
   
 *num_expr*  
-   Sayısal bir ifadedir. *Num_expr* negatif veya sonlu olmayan bir değer ise, sonuç tanımsızdır.
+   Sayısal bir ifadedir. *num_expr* negatif veya sonlu değilse, sonuç tanımsızdır.
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir dize ifadesi döndürür.
+  Dize ifadesini döndürür.
   
 ## <a name="remarks"></a>Açıklamalar
-  Sonucun uzunluk üst sınırı 10.000 karakterdir (length (*str_expr*) * *num_expr*) < = 10.000.
+  Sonucun maksimum uzunluğu 10.000 karakter yani (uzunluk(str_expr*str_expr*) * *num_expr*) <= 10.000'dir.
 
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `REPLICATE` bir sorguda nasıl kullanılacağını gösterir.
+  Aşağıdaki örnekte, sorguda nasıl kullanılacağı `REPLICATE` gösterilmektedir.
   
 ```sql
 SELECT REPLICATE("a", 3) AS replicate
@@ -54,10 +54,10 @@ SELECT REPLICATE("a", 3) AS replicate
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

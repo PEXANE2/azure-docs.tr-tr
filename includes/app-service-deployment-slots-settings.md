@@ -5,41 +5,41 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
 ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71129685"
 ---
-Yapılandırmayı başka bir dağıtım yuvasından kopyaladığınızda, kopyalanmış yapılandırma düzenlenebilir olur. Bazı yapılandırma öğeleri bir takas (yuvaya özgü değil) içindeki içeriği izler, ancak diğer yapılandırma öğeleri bir değiştirme sonrasında aynı yuvada kalır (yuvaya özgü). Aşağıdaki listeler, yuvaları takas yaparken değişen ayarları gösterir.
+Yapılandırmayı başka bir dağıtım yuvasından klonladiğinizde, klonlanan yapılandırma değiştirilebilir. Bazı yapılandırma öğeleri bir takas boyunca içeriği takip eder (yuvaya özgü değildir), diğer yapılandırma öğeleri ise bir takastan sonra aynı yuvada kalır (yuvaya özgü). Aşağıdaki listeler, yuvaları değiştirdiğinizde değişen ayarları gösterir.
 
-**Takas edilen ayarlar**:
+**Değiştirilen ayarlar:**
 
-* Çerçeve sürümü, 32/64 bit, Web Yuvaları gibi genel ayarlar
-* Uygulama ayarları (bir yuvayı kontrol etmek için yapılandırılabilir)
-* Bağlantı dizeleri (bir yuvayı kontrol etmek için yapılandırılabilir)
-* İşleyici eşlemeleri
+* Çerçeve sürümü, 32/64-bit, web soketleri gibi genel ayarlar
+* Uygulama ayarları (yuvaya yapışacak şekilde yapılandırılabilir)
+* Bağlantı dizeleri (yuvaya yapışacak şekilde yapılandırılabilir)
+* Işleyici eşlemeleri
 * Ortak sertifikalar
 * WebJobs içeriği
 * Karma bağlantılar *
-* Sanal Ağ tümleştirmesi *
-* Hizmet uç noktaları *
-* Azure Content Delivery Network *
+* Sanal ağ entegrasyonu *
+* Hizmet bitiş noktaları *
+* Azure İçerik Dağıtım Ağı *
 
-Yıldız işareti (*) ile işaretlenen özellikler, takas edilmemiş olarak planlanmaktadır. 
+Yıldız işaretiyle işaretlenmiş özellikler (*) değiştirilmeden planlanır. 
 
-**Takas olmayan ayarlar**:
+**Değiştirilen olmayan ayarlar:**
 
-* Yayımlama uç noktaları
+* Son noktaları yayımlama
 * Özel etki alanı adları
-* Genel olmayan sertifikalar ve TLS/SSL ayarları
+* Halka açık olmayan sertifikalar ve TLS/SSL ayarları
 * Ölçek ayarları
-* WebJobs zamanlayıcılar
+* Webİşler zamanlayıcıları
 * IP kısıtlamaları
-* Her Zaman Açık
+* Her Zaman Anın
 * Tanılama günlüğü ayarları
-* Çıkış noktaları arası kaynak paylaşımı (CORS)
+* Orijinler arası kaynak paylaşımı (CORS)
 
 > [!NOTE]
-> Takas edilmemiş ayarlara uygulanan bazı uygulama ayarları da takas edilmez. Örneğin, tanılama günlüğü ayarları değiştirilmediğinden, `WEBSITE_HTTPLOGGING_RETENTION_DAYS` ve `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` gibi ilgili uygulama ayarları da, yuva ayarı olarak gösterilmese bile yer değiştirmemelidir.
+> Değiştirilmemiş ayarlariçin geçerli olan bazı uygulama ayarları da değiştirilmemiştir. Örneğin, tanılama günlüğü ayarları değiştirilemediğinden, `WEBSITE_HTTPLOGGING_RETENTION_DAYS` yuva `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` ayarları olarak görünmeseler bile ilgili uygulama ayarları gibi ve aynı zamanda değiştirilmeyecektir.
 >

@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs Windows anında bildirim hizmeti 'ni yapılandırma | Microsoft Docs
-description: Bir Azure Notification Hub 'ı için Windows anında bildirim hizmeti ayarlarını yapılandırmayı öğrenin.
+title: Azure Bildirim Hub'larında Windows Anında Bildirim Hizmetini Yapılandırma | Microsoft Dokümanlar
+description: Azure bildirim merkezi için Windows Anında Bildirim Hizmeti ayarlarını nasıl yapılandırıyarınız gerektiğini öğrenin.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -12,30 +12,31 @@ ms.date: 03/25/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: a7f7734d97cd67c133ff0cedc3ef2376967bcdf4
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 73304e191242725c80204efb132c26aede9ce7e9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212416"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127318"
 ---
-# <a name="configure-windows-push-notification-service-wns-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal bir Bildirim Hub 'ı için Windows anında bildirim hizmeti (WNS) ayarlarını yapılandırma
-Bu makalede, Azure portal kullanarak bir Azure Notification Hub 'ı için Windows Notification hizmeti (WNS) ayarlarının nasıl yapılandırılacağı gösterilmektedir.  
+# <a name="configure-windows-push-notification-service-settings-in-the-azure-portal"></a>Azure portalında Windows Anında Bildirim Hizmeti ayarlarını yapılandırma
 
-## <a name="prerequisites"></a>Önkoşullar
-Henüz bir Bildirim Hub 'ı oluşturmadıysanız, şimdi bir tane oluşturun. Daha fazla bilgi için [Azure Portal Azure Notification Hub 'ı oluşturma](create-notification-hub-portal.md)konusuna bakın. 
+Bu makalede, Azure portalını kullanarak bir Azure bildirim merkezi için Windows Bildirim Hizmeti (WNS) ayarlarını nasıl yapılandırabileceğiniz gösterilmektedir.  
 
-## <a name="configure-windows-push-notification-service-wns"></a>Windows anında Iletme Bildirimi hizmetini yapılandırma (WNS)
+## <a name="prerequisites"></a>Ön koşullar
+Daha önce bir bildirim hub'ı oluşturmadıysanız, şimdi bir bildirim hub'ı oluşturun. Daha fazla bilgi için [bkz.](create-notification-hub-portal.md) 
 
-Aşağıdaki yordam bir Bildirim Hub 'ı için Windows anında bildirim hizmeti (WNS) ayarlarını yapılandırma adımları sunar: 
+## <a name="configure-windows-push-notification-service-wns"></a>Windows Anında İtme Bildirim Hizmeti (WNS) yapılandırma
 
-1. Azure portal, **Bildirim Hub** 'ı sayfasında, sol taraftaki menüden **Windows (WNS)** seçeneğini belirleyin.
-2. **Paket SID 'si** ve **güvenlik anahtarı**için değerler girin.
-3. **Kaydet**’i seçin.
+Aşağıdaki yordam, bir bildirim hub'ı için Windows Anında İtme Bildirim Hizmeti (WNS) ayarlarını yapılandırmanız için adımlar verir: 
 
-   ![Paket SID ve güvenlik anahtarı kutularını gösteren ekran görüntüsü](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+1. Azure portalında, **Bildirim Merkezi** sayfasında sol menüde **Windows (WNS)** seçeneğini belirleyin.
+2. **Paket SID** ve **Güvenlik Anahtarı**için değerleri girin.
+3. **Kaydet'i**seçin.
+
+   ![Paket SID ve Güvenlik Anahtarı kutularını gösteren ekran görüntüsü](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Notification Hubs ve Windows anında bildirim hizmeti 'ni (WNS) kullanarak Evrensel Windows Platformu uygulamalara bildirim göndermeye yönelik adım adım yönergeler için, bkz. [Azure Notification kullanarak UWP uygulamalarına bildirim gönderme Hub 'lar](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+Azure Bildirim Hub'ları ve Windows Anında Iletme Bildirim Hizmeti (WNS) kullanarak Evrensel Windows Platformu uygulamalarına bildirimleri iletme için adım adım yönergeleri olan bir öğretici için, [Azure Bildirim Hub'larını kullanarak UWP uygulamalarına bildirim gönder'e](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)bakın.
 
 

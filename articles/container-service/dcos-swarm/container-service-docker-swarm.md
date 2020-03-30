@@ -1,6 +1,6 @@
 ---
-title: Kullanım DıŞı Azure Sısınma kümesini Docker API 'siyle yönetme
-description: Kapsayıcıları Azure Container Service bir Docker Sısınma kümesine dağıtma
+title: (AmortismanA Uğradı) Docker API ile Azure Sürüsü kümesini yönetme
+description: Azure Kapsayıcı Hizmeti'nde kapsayıcıları Docker Swarm kümesine dağıtma
 services: container-service
 author: rgardler
 manager: madhana
@@ -10,13 +10,13 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136236"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>Kullanım DıŞı Docker Sısınma ile kapsayıcı yönetimi
+# <a name="deprecated-container-management-with-docker-swarm"></a>(AmortismanA Uğradı) Docker Swarm ile konteyner yönetimi
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -69,7 +69,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Docker Compose kullanarak kapsayıcıları dağıtma
 Birden çok kapsayıcının dağıtımını ve yapılandırmasını otomatik hale getirmek için Docker Compose’u kullanabilirsiniz. Bunu yapmak için, bir Secure Shell (SSH) tüneli oluşturulduğundan ve DOCKER_HOST değişkeninin ayarlandığından emin olun (yukarıdaki önkoşullara bakın).
 
-Yerel sisteminizde docker-compose.yml dosyası oluşturun. Bunu yapmak için şu örneği kullanın:
+Yerel sisteminizde docker-compose.yml dosyası oluşturun. Bunu yapmak için bu örneği kullanın:
 
 ```dockerfile
 web:
@@ -110,7 +110,7 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 040efc0ea937        adtd/rest:0.1       "catalina.sh run"      3 minutes ago       Up 2 minutes        10.0.0.4:8080->8080/tcp   swarm-agent-3B7093B8-0/compose_rest_1
 ```
 
-Doğal olarak, yalnızca `docker-compose ps` dosyanızda tanımlanan kapsayıcıları incelemek için `compose.yml` kullanabilirsiniz.
+Doğal olarak, yalnızca `compose.yml` dosyanızda tanımlanan kapsayıcıları incelemek için `docker-compose ps` kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Docker Swarm hakkında daha fazla bilgi edinme](https://docs.docker.com/swarm/)

@@ -1,6 +1,6 @@
 ---
 title: Bulut veritabanlarında dağıtılmış işlemler
-description: Azure SQL veritabanı ile elastik veritabanı Işlemlerine genel bakış
+description: Azure SQL Veritabanı ile Esnek Veritabanı İşlemlerine Genel Bakış
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,42 +12,42 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68568290"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Bulut veritabanlarında dağıtılmış işlemler
 
-Azure SQL veritabanı için elastik veritabanı işlemleri (SQL DB), SQL DB 'de çeşitli veritabanlarına yayılan işlemler çalıştırmanızı sağlar. SQL VERITABANı için elastik veritabanı işlemleri, ADO .NET kullanan .NET uygulamalarında kullanılabilir ve [System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) sınıflarını kullanarak tanıdık programlama deneyimiyle tümleştirilir. Kitaplığı almak için, bkz. [.NET Framework 4.6.1 (Web Yükleyicisi)](https://www.microsoft.com/download/details.aspx?id=49981).
+Azure SQL Veritabanı (SQL DB) için esnek veritabanı hareketleri, SQL DB'de çeşitli veritabanlarına yayılan işlemleri çalıştırmanızı sağlar. SQL DB için elastik veritabanı işlemleri ADO .NET kullanarak .NET uygulamaları için kullanılabilir ve [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) sınıflarını kullanarak tanıdık programlama deneyimi ile tümleştirebilirsiniz. Kitaplığı almak için [.NET Framework 4.6.1 (Web Installer)](https://www.microsoft.com/download/details.aspx?id=49981)adresine bakın.
 
-Şirket içinde, genellikle Microsoft Dağıtılmış İşlem Düzenleyicisi (MSDTC) çalıştırması gereken bir senaryo. MSDTC, Azure 'da hizmet olarak platform uygulaması için kullanılamadığından, dağıtılmış işlemleri koordine etme özelliği artık SQL DB ile doğrudan tümleşiktir. Uygulamalar dağıtılmış işlemleri başlatmak için herhangi bir SQL veritabanına bağlanabilir ve veritabanlarından biri, aşağıdaki şekilde gösterildiği gibi, dağıtılmış işlemi saydam şekilde koordine eder. 
+Şirket içinde, böyle bir senaryo genellikle Microsoft Distributed Transaction Koordinatörü (MSDTC) çalıştırılması gerekir. MSDTC Azure'da Hizmet Olarak Platform uygulaması için kullanılamadığından, dağıtılmış işlemleri koordine etme özelliği artık doğrudan SQL DB'ye entegre edilmiştir. Uygulamalar dağıtılmış hareketleri başlatmak için herhangi bir SQL Veritabanına bağlanabilir ve veritabanlarından biri aşağıdaki şekilde gösterildiği gibi dağıtılmış hareketi saydam bir şekilde koordine eder. 
 
-  ![Elastik veritabanı işlemlerini kullanarak Azure SQL veritabanı ile dağıtılmış işlemler ][1]
+  ![Elastik veritabanı hareketlerini kullanarak Azure SQL Veritabanı ile dağıtılmış işlemler ][1]
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 
-SQL DB için elastik veritabanı işlemleri, uygulamaların birçok farklı SQL veritabanında depolanan verilerde atomik değişiklikler yapmasını sağlar. Önizleme, ve .NET içindeki C# istemci tarafı geliştirme deneyimlerine odaklanmaktadır. T-SQL kullanan sunucu tarafı deneyimi daha sonra planlanmaktadır.  
-Elastik veritabanı işlemleri aşağıdaki senaryoları hedefler:
+SQL DB için elastik veritabanı hareketleri, uygulamaların birkaç farklı SQL Veritabanında depolanan verilerde atomik değişiklikler yapılmasını sağlar. Önizleme, C# ve .NET'teki istemci tarafındaki geliştirme deneyimlerine odaklanır. T-SQL kullanarak sunucu tarafı deneyimi daha sonra planlanır.  
+Esnek veritabanı hareketleri aşağıdaki senaryoları hedefler:
 
-* Azure 'da çoklu veritabanı uygulamaları: Bu senaryoyla, veriler farklı veritabanlarında farklı türlerdeki verilerin bulunduğu gibi SQL DB 'deki çeşitli veritabanlarına dikey olarak bölümlenmiştir. Bazı işlemler, iki veya daha fazla veritabanında tutulan verilerde değişiklik yapılmasını gerektirir. Uygulama, değişiklikleri veritabanları genelinde koordine etmek ve Atomicity sağlamak için elastik veritabanı işlemlerini kullanır.
-* Azure 'da parçalı veritabanı uygulamaları: Bu senaryoyla veri katmanı, verileri SQL VERITABANı 'ndaki birçok veritabanı arasında yatay olarak bölümlemek için [elastik veritabanı istemci kitaplığını](sql-database-elastic-database-client-library.md) veya kendi kendine parçalı veritabanını kullanır. Büyük bir kullanım durumu, kiracıların yayılmış bir çok kiracılı uygulama için atomik değişiklikler gerçekleştirme gereksinimdir. Tek bir kiracının, her ikisi de farklı veritabanlarında bulunan bir aktarım örneğini düşünün. İkinci bir durumda, genellikle bazı atomik işlemlerin aynı kiracı için kullanılan çeşitli veritabanlarını uzatması gerektiğini belirten büyük bir kiracı için kapasite gereksinimlerini karşılamak üzere ince ayar yapılır. Üçüncü bir durum, veritabanları arasında çoğaltılan verileri başvuru verilerine yönelik atomik güncelleştirmelerdir. Atomik, işlem temelli, bu satırlardaki işlemler artık önizleme kullanılarak birkaç veritabanı arasında koordine edilebilir.
-  Elastik veritabanı işlemleri, veritabanları genelinde işlem kararlılığını sağlamak için iki aşamalı tamamlama kullanır. Tek bir işlem içinde 100 ' den az veritabanı içeren işlemlere uygun bir işlemdir. Bu sınırlar zorlanmaz, ancak bir tane, elastik veritabanı işlemleri için bu sınırları aşmadığında performans ve başarı oranları beklemelisiniz.
+* Azure'daki çoklu veritabanı uygulamaları: Bu senaryoyla, veriler SQL DB'deki çeşitli veritabanlarıarasında farklı veri türlerinde farklı veritabanlarında bulunan dikey olarak bölümlere ayrılmıştır. Bazı işlemler, iki veya daha fazla veritabanında tutulan verilerde değişiklik yapılmasını gerektirir. Uygulama, veritabanları ndaki değişiklikleri koordine etmek ve atomikliği sağlamak için elastik veritabanı hareketlerini kullanır.
+* Azure'da parçalanmış veritabanı uygulamaları: Bu senaryoda veri katmanı, SQL DB'deki birçok veritabanında verileri yatay olarak bölmek için [Elastik Veritabanı istemci kitaplığını](sql-database-elastic-database-client-library.md) veya kendi kendini parçalamayı kullanır. Önemli kullanım örneklerinden biri, değişiklikler kiracıları kapsadığında, parçalanmış çok kiracılı bir uygulama için atomik değişiklikler gerçekleştirme gereksinimidir. Her ikisi de farklı veritabanlarında bulunan bir kiracıdan diğerine aktarım örneğini düşünün. İkinci bir durum, büyük bir kiracının kapasite gereksinimlerini karşılamak için ince taneli parçalamadır ve bu da genellikle bazı atomik işlemlerin aynı kiracı için kullanılan çeşitli veritabanlarına yayılması gerektiğini ima eder. Üçüncü bir durum, veritabanları arasında çoğaltılan referans verileri atomik güncelleştirmeleridir. Atomik, işlem, bu doğrultuda ki işlemler artık önizleme kullanılarak çeşitli veritabanları arasında koordine edilebilir.
+  Elastik veritabanı hareketleri veritabanları arasında işlem atomikliğini sağlamak için iki aşamalı taahhüt kullanır. Tek bir işlem içinde aynı anda 100'den az veritabanları içeren hareketler için uygundur. Bu sınırlar uygulanmaz, ancak bu sınırları aştığında elastik veritabanı işlemleri için performans ve başarı oranları beklenmelidir.
 
-## <a name="installation-and-migration"></a>Yükleme ve geçiş
+## <a name="installation-and-migration"></a>Kurulum ve geçiş
 
-SQL DB 'de elastik veritabanı işlemlerine yönelik yetenekler, .NET kitaplıkları System. Data. dll ve System. Transactions. dll güncelleştirmeleri aracılığıyla sağlanır. Dll 'Ler, kararlılık sağlamak için gerektiğinde iki aşamalı yürütmenin kullanılmasını sağlar. Elastik veritabanı işlemlerini kullanarak uygulama geliştirmeye başlamak için [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) veya sonraki bir sürümü yüklemek. .NET Framework 'ün önceki bir sürümünde çalışırken, işlemler dağıtılmış bir işleme yükseltilmeyecektir ve bir özel durum oluşur.
+SQL DB'deki esnek veritabanı işlemlerinin yetenekleri .NET kitaplıklar System.Data.dll ve System.Transactions.dll güncellemeleri ile sağlanır. DL'ler, atomikliği sağlamak için gerektiğinde iki fazlı adak kullanılmasını sağlar. Esnek veritabanı hareketlerini kullanarak uygulama geliştirmeye başlamak için [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) veya daha sonraki bir sürümü yükleyin. .NET çerçevesinin önceki bir sürümünde çalışırken, hareketler dağıtılmış bir hareketi tanıtamaz ve bir özel durum yükseltilir.
 
-Yükleme sonrasında, System. Transactions içindeki dağıtılmış işlem API 'Lerini SQL DB bağlantısı ile birlikte kullanabilirsiniz. Bu API 'Leri kullanarak mevcut MSDTC uygulamalarınız varsa, 4.6.1 çerçevesini yükledikten sonra, .NET 4,6 için mevcut uygulamalarınızı yeniden oluşturmanız yeterlidir. Projeleriniz .NET 4,6 ' i hedeflerse, yeni çerçeve sürümünden güncelleştirilmiş dll 'Leri otomatik olarak kullanır ve SQL DB bağlantıları ile birlikte dağıtılmış işlem API çağrıları artık başarılı olur.
+Kurulumdan sonra, SQL DB'ye bağlantı içeren System.Transactions'da dağıtılmış hareket API'lerini kullanabilirsiniz. Bu API'leri kullanarak mevcut MSDTC uygulamalarınız varsa, 4.6.1 Çerçevesini yükledikten sonra .NET 4.6 için mevcut uygulamalarınızı yeniden oluşturmanız yeterlidir. Projeleriniz .NET 4.6'yı hedefliyorsa, yeni Framework sürümünden güncelleştirilmiş DL'leri otomatik olarak kullanır lar ve sql DB bağlantılarıyla birlikte dağıtılan işlem API çağrıları artık başarılı olur.
 
-Elastik veritabanı işlemlerinin MSDTC yüklemesi gerektirmediğini unutmayın. Bunun yerine, elastik veritabanı işlemleri SQL DB içinde ve tarafından doğrudan yönetilir. Bu, bir MSDTC dağıtımının SQL DB ile dağıtılmış işlemleri kullanması gerekmediğinden, bulut senaryolarını önemli ölçüde basitleştirir. Bölüm 4 ' te, elastik veritabanı işlemlerini ve gerekli .NET Framework 'ü bulut uygulamalarınızla birlikte Azure 'a dağıtma hakkında daha ayrıntılı bilgi verilmektedir.
+Elastik veritabanı hareketlerinin MSDTC yüklemesi gerektirmediğini unutmayın. Bunun yerine, elastik veritabanı hareketleri doğrudan ve SQL DB içinde yönetilir. Bu, SQL DB ile dağıtılmış hareketleri kullanmak için MSDTC dağıtımı gerekli olmadığından bulut senaryolarını önemli ölçüde basitleştirir. Bölüm 4, elastik veritabanı hareketlerini niçin dağıtılanın ve bulut uygulamalarınız ile birlikte gerekli .NET çerçevesini Azure'a nasıl dağıtılayabildiğini daha ayrıntılı olarak açıklar.
 
 ## <a name="development-experience"></a>Geliştirme deneyimi
 
 ### <a name="multi-database-applications"></a>Çoklu veritabanı uygulamaları
 
-Aşağıdaki örnek kod, .NET System. Transactions ile tanıdık programlama deneyimini kullanır. TransactionScope sınıfı .NET 'te bir ortam işlemi oluşturur. ("Çevresel işlem" geçerli iş parçacığında bulunan bir işlemdir.) TransactionScope içinde açılan tüm bağlantılar işleme katılır. Farklı veritabanları katılılırsa, işlem otomatik olarak dağıtılmış bir işleme yükseltilir. İşlemin sonucu, bir yürütmeyi göstermek için kapsamın tamamlanacağı şekilde ayarlanarak denetlenir.
+Aşağıdaki örnek kod .NET System.Transactions ile tanıdık programlama deneyimini kullanır. TransactionScope sınıfı .NET'te bir ortam hareketi kurar. (Bir "ortam hareketi" geçerli iş parçacığı yaşayan biridir.) TransactionScope içinde açılan tüm bağlantılar işlemle katılır. Farklı veritabanları katılırsa, hareket otomatik olarak dağıtılmış bir hareket e yükseltilir. İşlemin sonucu, bir commit'i belirtmek için kapsamı tamamlayabilmek üzere ayarlayarak denetlenir.
 
     using (var scope = new TransactionScope())
     {
@@ -70,9 +70,9 @@ Aşağıdaki örnek kod, .NET System. Transactions ile tanıdık programlama den
         scope.Complete();
     }
 
-### <a name="sharded-database-applications"></a>Parçalı veritabanı uygulamaları
+### <a name="sharded-database-applications"></a>Parçalanmış veritabanı uygulamaları
 
-SQL DB için elastik veritabanı işlemleri Ayrıca, Genişletilebilir veritabanı istemci kitaplığının OpenConnectionForKey yöntemini kullandığınız ve genişletilmiş bir veri katmanına yönelik bağlantıları açmak için kullandığınız dağıtılmış işlemleri koordine etme desteğini destekler. Birçok farklı parçalı anahtar değeri arasındaki değişiklikler için işlem tutarlılığını garanti etmeniz gereken durumları göz önünde bulundurun. Farklı parçalama anahtar değerlerini barındıran parçaların bağlantıları OpenConnectionForKey kullanılarak aracılı yapılır. Genel durumda, bağlantı, işlem garantilerinin dağıtılmış bir işlem gerektirdiğini sağlayan farklı parçalar olabilir. Aşağıdaki kod örneğinde bu yaklaşım gösterilmektedir. Bu, shardmap adlı bir değişkenin, elastik veritabanı istemci kitaplığından parça haritasını temsil etmek için kullanıldığını varsayar:
+SQL DB için esnek veritabanı hareketleri, ölçeklenmiş bir veri katmanı için bağlantıları açmak için esnek veritabanı istemci kitaplığı OpenConnectionForKey yöntemini kullandığınız dağıtılmış hareketleri koordine etmeyi de destekler. Birkaç farklı parçalama anahtar değeri arasında değişiklikler için işlem tutarlılığı garanti etmek için gereken durumları düşünün. Farklı parçalama anahtar değerlerini barındıran kırıklara bağlantılar OpenConnectionForKey kullanılarak aracılık edilir. Genel durumda, bağlantılar işlem garantilerinin sağlanması için dağıtılmış bir işlem gerektiren farklı kırıklara olabilir. Aşağıdaki kod örneği bu yaklaşımı göstermektedir. Elastik veritabanı istemci kitaplığından bir parça eşlemi temsil etmek için shardmap adlı bir değişkenin kullanıldığını varsayar:
 
     using (var scope = new TransactionScope())
     {
@@ -96,13 +96,13 @@ SQL DB için elastik veritabanı işlemleri Ayrıca, Genişletilebilir veritaban
     }
 
 
-## <a name="net-installation-for-azure-cloud-services"></a>Azure Cloud Services için .NET yüklemesi
+## <a name="net-installation-for-azure-cloud-services"></a>.Azure Bulut Hizmetleri için NET yüklemesi
 
-Azure, .NET uygulamalarını barındırmak için çeşitli teklifler sağlar. Farklı tekliflerin karşılaştırması [Azure App Service, Cloud Services ve sanal makine karşılaştırmasına](/azure/architecture/guide/technology-choices/compute-decision-tree)göre sunulmaktadır. Teklifin Konuk işletim sistemi elastik işlemler için gerekli .NET 4.6.1 'den küçükse Konuk işletim sistemini 4.6.1 'e yükseltmeniz gerekir. 
+Azure, .NET uygulamalarını barındırmak için çeşitli teklifler sunar. Azure [Uygulama Hizmeti, Bulut Hizmetleri ve Sanal Makineler karşılaştırmasında](/azure/architecture/guide/technology-choices/compute-decision-tree)farklı tekliflerin karşılaştırılması mevcuttur. Teklifin konuk işletim sistemi elastik işlemler için gereken .NET 4.6.1'den küçükse, konuk işletim sistemi 4.6.1'e yükseltmeniz gerekir. 
 
-Azure Uygulama Hizmetleri için, Konuk işletim sistemine yükseltmeler Şu anda desteklenmiyor. Azure sanal makineler için, VM 'de oturum açıp en son .NET Framework için yükleyiciyi çalıştırmanız yeterlidir. Azure Cloud Services için, dağıtımınızın başlangıç görevlerine daha yeni bir .NET sürümünün yüklenmesini eklemeniz gerekir. Kavramlar ve adımlar, [.net 'i bir bulut hizmeti rolü üzerine yüklemiştir](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
+Azure Uygulama Hizmetleri için konuk işletim sistemi yükseltmeleri şu anda desteklenmez. Azure Sanal Makineler için VM'ye giriş yapmanız ve en son .NET çerçevesi için yükleyiciyi çalıştırmanız yeterlidir. Azure Bulut Hizmetleri için, dağıtımınızın başlangıç görevlerine daha yeni bir .NET sürümünün yüklenmesini eklemeniz gerekir. Kavramlar ve adımlar Bulut [Hizmeti Rolüne Yükle .NET'te](../cloud-services/cloud-services-dotnet-install-dotnet.md)belgelenmiştir.  
 
-.NET 4.6.1 yükleyicisinin, .NET 4,6 için yükleyiciden farklı olarak Azure Cloud Services 'ta önyükleme işlemi sırasında daha fazla geçici depolama gerektirebileceğini unutmayın. Yüklemenin başarılı olmasını sağlamak için, aşağıdaki örnekte gösterildiği gibi, LocalResources bölümündeki ServiceDefinition. csdef dosyanızdaki Azure bulut hizmetinizin geçici depolama alanını ve başlangıç göreviniz ortam ayarlarını artırmanız gerekir:
+.NET 4.6.1'in yükleyicisinin Azure bulut hizmetlerinde önyükleme işlemi sırasında .NET 4.6'nın yükleyicisinden daha fazla geçici depolama alanı gerektirebileceğini unutmayın. Başarılı bir yükleme sağlamak için, Yerel Kaynaklar bölümündeki ServiceDefinition.csdef dosyanızda ve başlangıç görevinizin ortam ayarlarında aşağıdaki örnekte gösterildiği gibi Azure bulut hizmetiniz için geçici depolama alanını artırmanız gerekir:
 
     <LocalResources>
     ...
@@ -123,41 +123,41 @@ Azure Uygulama Hizmetleri için, Konuk işletim sistemine yükseltmeler Şu anda
         </Task>
     </Startup>
 
-## <a name="transactions-across-multiple-servers"></a>Birden çok sunucu arasında işlem
+## <a name="transactions-across-multiple-servers"></a>Birden çok sunucudaki hareketler
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Kaynak Yöneticisi modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirme az.sql modülü içindir. Bu cmdlets için [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın. Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-Esnek veritabanı işlemleri, Azure SQL veritabanı 'nda farklı SQL veritabanı sunucuları arasında desteklenir. SQL veritabanı sunucu sınırları arası işlemler olduğunda, katılım sunucularının ilk olarak karşılıklı iletişim ilişkisine girilmesi gerekir. İletişim ilişkisi kurulduktan sonra, iki sunucudan herhangi bir veritabanı diğer sunucudaki veritabanları ile elastik işlemlere katılabilir. İkiden fazla SQL veritabanı sunucusunu kapsayan işlemler sayesinde, her türlü SQL veritabanı sunucusu için bir iletişim ilişkisinin yerinde olması gerekir.
+Esnek veritabanı işlemleri Azure SQL Veritabanı'ndaki farklı SQL Veritabanı sunucularında desteklenir. İşlemler SQL Veritabanı sunucu sınırlarını aştığında, katılımcı sunucuların öncelikle karşılıklı iletişim ilişkisine girilmesi gerekir. İletişim ilişkisi kurulduktan sonra, iki sunucudan herhangi birinde bulunan herhangi bir veritabanı, diğer sunucudaki veritabanlarıyla esnek işlemlere katılabilir. İkiden fazla SQL Veritabanı sunucusuna yayılan işlemlerde, herhangi bir SQL Veritabanı sunucusu çifti için bir iletişim ilişkisinin olması gerekir.
 
-Elastik veritabanı işlemleri için çapraz sunucu iletişim ilişkilerini yönetmek üzere aşağıdaki PowerShell cmdlet 'lerini kullanın:
+Esnek veritabanı işlemleri için sunucular arası iletişim ilişkilerini yönetmek için aşağıdaki PowerShell cmdlets'i kullanın:
 
-* **New-AzSqlServerCommunicationLink**: Azure SQL veritabanı 'nda iki SQL veritabanı sunucusu arasında yeni bir iletişim ilişkisi oluşturmak için bu cmdlet 'i kullanın. İlişki, her iki sunucunun da diğer sunucu ile işlem başlatabileceği anlamına gelir.
-* **Get-AzSqlServerCommunicationLink**: Varolan iletişim ilişkilerini ve bunların özelliklerini almak için bu cmdlet 'i kullanın.
-* **Remove-AzSqlServerCommunicationLink**: Var olan bir iletişim ilişkisini kaldırmak için bu cmdlet 'i kullanın. 
+* **New-AzSqlServerCommunicationLink**: Azure SQL Veritabanı'ndaki iki SQL Veritabanı sunucusu arasında yeni bir iletişim ilişkisi oluşturmak için bu cmdlet'i kullanın. İlişki simetriktir, bu da her iki sunucunun da diğer sunucuyla işlem başlatabileceği anlamına gelir.
+* **Get-AzSqlServerCommunicationLink**: Varolan iletişim ilişkilerini ve özelliklerini almak için bu cmdlet'i kullanın.
+* **Remove-AzSqlServerCommunicationLink**: Varolan bir iletişim ilişkisini kaldırmak için bu cmdlet'i kullanın. 
 
-## <a name="monitoring-transaction-status"></a>İşlem durumunu izleme
+## <a name="monitoring-transaction-status"></a>Hareket durumunu izleme
 
-Devam eden elastik veritabanı işlemlerinizin durumunu ve ilerlemesini izlemek için SQL DB 'de dinamik yönetim görünümlerini (DMVs) kullanın. İşlemler ile ilgili tüm DMVs 'ler SQL DB 'de dağıtılmış işlemler için geçerlidir. Bunlara karşılık gelen DMVs listesini buraya bulabilirsiniz: [Işlemle Ilgili dinamik yönetim görünümleri ve işlevleri (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Devam eden esnek veritabanı işlemlerinizin durumunu ve ilerlemesini izlemek için SQL DB'de Dinamik Yönetim Görünümleri 'ni (DMV) kullanın. İşlemler ile ilgili tüm DMV'ler SQL DB'deki dağıtılmış işlemlerle ilgilidir. Burada DMVs ilgili listesini bulabilirsiniz: [İşlem İlgili Dinamik Yönetim Görünümleri ve Fonksiyonları (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
 
-Bu DMVs 'ler özellikle yararlıdır:
+Bu DMV'ler özellikle yararlıdır:
 
-* **sys.DM\_Tran\_etkinİşlemler\_** : Şu anda etkin olan işlemleri ve bunların durumlarını listeler. UOW (Iş birimi) sütunu, aynı dağıtılmış işleme ait farklı alt işlemleri tanımlayabilir. Aynı dağıtılmış işlem içindeki tüm işlemler aynı UOW değerini taşır. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms174302.aspx) .
-* **sys.DM\_Tran\_veritabanıişlemleri\_** : İşlem hakkında, işlemin günlüğe yerleştirilmesi gibi ek bilgiler sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms186957.aspx) .
-* **sys.DM\_Tran\_kilitleri**: Devam eden işlemler tarafından şu anda tutulan kilitler hakkında bilgi sağlar. Daha fazla bilgi için bkz. [DMV belgeleri](https://msdn.microsoft.com/library/ms190345.aspx) .
+* **sys.dm\_\_tran\_etkin hareketleri**: Şu anda etkin hareketleri ve durumlarını listeler. UOW (Birim İş) sütunu, aynı dağıtılmış işlemiçin farklı alt hareketleri tanımlayabilir. Aynı dağıtılmış işlemdeki tüm işlemler aynı UOW değerini taşır. Daha fazla bilgi için [DMV belgelerine](https://msdn.microsoft.com/library/ms174302.aspx) bakın.
+* **sys.dm\_\_tran\_veritabanı işlemleri**: İşlemin günlükte yerleştirilmesi gibi hareketler hakkında ek bilgiler sağlar. Daha fazla bilgi için [DMV belgelerine](https://msdn.microsoft.com/library/ms186957.aspx) bakın.
+* **sys.dm\_tran\_kilitleri**: Şu anda devam eden işlemler tarafından tutulan kilitler hakkında bilgi sağlar. Daha fazla bilgi için [DMV belgelerine](https://msdn.microsoft.com/library/ms190345.aspx) bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Aşağıdaki sınırlamalar şu anda SQL DB 'de elastik veritabanı işlemleri için geçerlidir:
+Aşağıdaki sınırlamalar şu anda SQL DB'deki esnek veritabanı işlemleri için geçerlidir:
 
-* Yalnızca SQL DB 'deki veritabanları arasındaki işlemler desteklenir. Diğer [X/açık XA](https://en.wikipedia.org/wiki/X/Open_XA) kaynak SAĞLAYıCıLARı ve SQL DB dışındaki veritabanları elastik veritabanı işlemlerine katılamaz. Diğer bir deyişle, elastik veritabanı işlemlerinin şirket içi SQL Server ve Azure SQL veritabanı arasında genişlemeyeceği anlamına gelir. Şirket içi dağıtılmış işlemler için MSDTC kullanmaya devam edin. 
-* Yalnızca bir .NET uygulamasından alınan istemci ile eşgüdümlü işlemler desteklenir. BAŞLANGıÇ DAĞıTıM IŞLEMI gibi T-SQL için sunucu tarafı desteği planlanmaktadır, ancak henüz kullanılamamaktadır. 
-* WCF hizmetleri arasında işlem desteklenmez. Örneğin, bir işlemi yürüten bir WCF hizmeti yönteminiz vardır. Çağrıyı bir işlem kapsamı içinde kapsayan bir [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)olarak başarısız olur.
+* Yalnızca SQL DB'deki veritabanları ndaki hareketler desteklenir. SQL DB dışındaki diğer [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) kaynak sağlayıcıları ve veritabanları elastik veritabanı işlemlerine katılamaz. Bu, esnek veritabanı işlemlerinin şirket içinde SQL Server ve Azure SQL Veritabanı'na kadar uzanamayacağı anlamına gelir. Şirket içinde dağıtılmış işlemler için MSDTC kullanmaya devam edin. 
+* Bir .NET uygulamasından yalnızca istemci eşgüdümlü hareketler desteklenir. BEGIN DISTRIBUTED TRANSACTION gibi T-SQL için sunucu tarafı desteği planlanır, ancak henüz kullanılamaz. 
+* WCF hizmetleri genelindeki hareketler desteklenmez. Örneğin, bir hareketi yürüten bir WCF hizmet yönteminiz vardır. Bir işlem kapsamı içinde arama çevreleyen bir [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)olarak başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorularınız için lütfen [SQL veritabanı forumundan](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) bize ulaşın ve özellik istekleri için lütfen bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
+Sorularınız için lütfen [SQL Veritabanı forumunda](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) bize ulaşın ve özellik istekleri için lütfen bunları [SQL Veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

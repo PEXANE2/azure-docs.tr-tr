@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Velpıc yapılandırma | Microsoft Docs'
-description: Kullanıcı hesaplarını Velpıc 'e otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Velpic'i yapılandırma | Microsoft Dokümanlar"
+description: Azure Active Directory'yi, kullanıcı hesaplarını Velpic'e otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -17,87 +17,87 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064130"
 ---
-# <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Velpıc yapılandırma
+# <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı Sağlama için Velpic Yapılandırma
 
-Bu öğreticinin amacı, Azure AD 'den Velpıc 'e Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Velpıc ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
+Bu öğreticinin amacı, Azure AD'den Velpic'e kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamadan sağlamak için Velpic ve Azure AD'de gerçekleştirmeniz gereken adımları size göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, zaten aşağıdaki öğelere sahip olduğunuzu varsayar:
 
 * Azure Active Directory kiracısı
-* [Kurumsal plan](https://www.velpic.com/pricing.html) veya daha iyi etkinleştirilmiş bir velpıc kiracısı
-* Yönetici izinleriyle Velpıc 'de bir kullanıcı hesabı
+* [Kurumsal planı](https://www.velpic.com/pricing.html) olan veya daha iyi etkin leştirilmiş bir Velpic kiracı
+* Yönetici izinleri olan Velpic'te bir kullanıcı hesabı
 
-## <a name="assigning-users-to-velpic"></a>Kullanıcıları Velpıc 'e atama
+## <a name="assigning-users-to-velpic"></a>Velpic'e kullanıcı atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir. 
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için "atamalar" adlı bir kavram kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya "atanmış" kullanıcılar ve gruplar eşitlenir. 
 
-Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcı ve/veya grupların Velpıc uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Velpıc uygulamanıza atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki kullanıcıların ve/veya grupların Velpic uygulamanıza erişilmesi gereken kullanıcıları temsil edeceğine karar vermeniz gerekir. Karar verildikten sonra, bu kullanıcıları buradaki talimatları izleyerek Velpic uygulamanıza atayabilirsiniz:
 
-[Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+[Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-velpic"></a>Velpıc 'e Kullanıcı atamaya yönelik önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-velpic"></a>Velpic'e kullanıcı atamak için önemli ipuçları
 
-* Sağlama yapılandırmasını test etmek için Velpıc 'e tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Sağlama yapılandırmasını sınamak için Tek bir Azure AD kullanıcısının Velpic'e atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı Velpıc 'e atarken, atama iletişim kutusunda **Kullanıcı** rolünü veya geçerli uygulamaya özgü bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolünün sağlama için çalışmadığına ve bu kullanıcıların atlanacağını unutmayın.
+* Velpic'e bir kullanıcı atarken, atama iletişim kutusunda **Kullanıcı** rolünü veya uygulamaya özgü başka bir geçerli rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolünün sağlama için çalışmadığını ve bu kullanıcıların atlanacağını unutmayın.
 
-## <a name="configuring-user-provisioning-to-velpic"></a>Velpıc 'e Kullanıcı hazırlama yapılandırma
+## <a name="configuring-user-provisioning-to-velpic"></a>Kullanıcı sağlamayı Velpic'e yapılandırma
 
-Bu bölümde, Azure AD 'nizi Velpıc 'nin Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alan Velpıc 'de atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
+Bu bölüm, Azure REKLAM'ınızı Velpic'in kullanıcı hesabı sağlama API'sine bağlamanız ve sağlama hizmetini Azure AD'deki kullanıcı ve grup atamasına göre Velpic'te atanmış kullanıcı hesapları oluşturacak, güncelleştirecek ve devre dışı edecek şekilde yapılandırmanız konusunda size rehberlik eder.
 
 > [!TIP]
-> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek velpıc için SAML tabanlı çoklu oturum açmayı da tercih edebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> [Azure portalında](https://portal.azure.com)sağlanan yönergeleri izleyerek Velpic için SAML tabanlı Tek Oturum Açma özelliğini de etkinleştirmeyi seçebilirsiniz. Tek oturum açma, otomatik sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Azure AD 'de Velpıc 'e otomatik Kullanıcı hesabı sağlamayı yapılandırmak için:
+### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Azure AD'de Otomatik kullanıcı hesabı sağlamayı Velpic'e yapılandırmak için:
 
-1. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
+1. Azure [portalında,](https://portal.azure.com)Tüm uygulamalar > **Azure Active Directory > Enterprise Apps'a** göz atın.
 
-2. Zaten çoklu oturum açma için Velpıc yapılandırdıysanız arama alanını kullanarak Velpıc örneğinizi arayın. Aksi takdirde, **Ekle** ' yi seçin ve uygulama galerisinde **velpic** için arama yapın. Arama sonuçlarından Velpic ' ı seçin ve uygulama listenize ekleyin.
+2. Velpic'i tek oturum açma için zaten yapılandırıldıysanız, arama alanını kullanarak Velpic örneğini arayın. Aksi takdirde, uygulama galerisinde **Velpic'i** **ekle** ve arama'yı seçin. Arama sonuçlarından Velpic'i seçin ve uygulama listenize ekleyin.
 
-3. Velpic örneğinizi seçin, sonra **sağlama** sekmesini seçin.
+3. Velpic örneğini seçin ve ardından **Sağlama** sekmesini seçin.
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
-    ![Velpıc sağlama](./media/velpic-provisioning-tutorial/Velpic1.png)
+    ![Velpic Provizyon](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, bir Velpıc 'Nin **gizli belirteç & kiracı URL 'sini** girin. (Bu değerleri, Velpıc hesabınız altında bulabilirsiniz: **Manage** > **ıntegration** > **Plugin** > **SCIM**)
+5. Yönetici **Kimlik Bilgileri** bölümüne, Kiracı URL'si **&Velpic Gizli Belirteci'ni** girdi. (Bu değerleri Velpic hesabınızaltında bulabilirsiniz: > **Tümleştirme** > **Eklentisini** >  **YÖNET)****SCIM**
 
-    ![Yetkilendirme değerleri](./media/velpic-provisioning-tutorial/Velpic2.png)
+    ![Yetki Değerleri](./media/velpic-provisioning-tutorial/Velpic2.png)
 
-6. Azure portal, Azure AD 'nin Velpıc uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Velpıc hesabınızın yönetici izinlerine sahip olduğundan emin olun ve 5. adımı yeniden deneyin.
+6. Azure portalında, Azure AD'nin Velpic uygulamanıza bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Velpic hesabınızda Yönetici izinleri olduğundan emin olun ve 5.
 
-7. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
+7. **Bildirim E-posta** alanında ödeme hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
 
-8. **Kaydet** düğmesine tıklayın.
+8. **Kaydet**'e tıklayın.
 
-9. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları Velpıc olarak eşitler**' ı seçin.
+9. Eşlemeler bölümünde, **Azure Etkin Dizin Kullanıcılarını Velpic'e Senkronize Et'i**seçin.
 
-10. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den velpıc 'e eşitlenecek Kullanıcı özniteliklerini gözden geçirin. Güncelleştirme işlemleri için, **eşleşen** özellikler olarak seçilen özniteliklerin, velpıc içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılacağını unutmayın. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+10. **Öznitelik Eşlemeleri** bölümünde, Azure AD'den Velpic'e eşitlenecek kullanıcı özniteliklerini gözden geçirin. **Eşleşme** özellikleri olarak seçilen özniteliklerin, güncelleştirme işlümi şuandırıları için Velpic' teki kullanıcı hesaplarıyla çalışmak için kullanıla Herhangi bir değişiklik yapmak için Kaydet düğmesini seçin.
 
-11. Velpıc için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
+11. Velpic için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı'nda**
 
-12. **Kaydet** düğmesine tıklayın.
+12. **Kaydet**'e tıklayın.
 
-Bu, kullanıcılar ve Gruplar bölümünde Velpıc 'e atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen sonraki eşitlemeler yerine daha uzun süreceğini unutmayın. İlerleme durumunu izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik raporlarını sağlamak için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
+Bu, Kullanıcılar ve Gruplar bölümünde Velpic'e atanan kullanıcıların ve/veya grupların ilk senkronizasyonunu başlatır. İlk eşitlemenin, hizmet çalışırken yaklaşık her 40 dakikada bir oluşan sonraki eşitlemelerden daha uzun süreceğini unutmayın. İlerlemeyi izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporlarının bağlantılarını izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)

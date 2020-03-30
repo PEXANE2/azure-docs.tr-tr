@@ -1,42 +1,42 @@
 ---
-title: Azure Işlevleri için süreölçer tetikleyicisi
-description: Azure Işlevleri 'nde Zamanlayıcı Tetikleyicileri kullanmayı anlayın.
+title: Azure İşlevler için zamanlayıcı tetikleyicisi
+description: Azure İşlevlerinde zamanlayıcı tetikleyicilerinin nasıl kullanılacağını öğrenin.
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 566d6ccf43024692e19bcd6639fe5cfbbba0660d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79277160"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056405"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
+# <a name="timer-trigger-for-azure-functions"></a>Azure İşlevler için zamanlayıcı tetikleyicisi 
 
-Bu makalede, Azure Işlevlerinde süreölçer tetikleyicilerle nasıl çalışılacağı açıklanmaktadır. Zamanlayıcı tetikleyicisi bir zamanlamaya göre bir işlevi çalıştırmanızı sağlar. 
+Bu makalede, Azure İşlevlerinde zamanlayıcı tetikleyicileriyle nasıl çalışılalış lar açıklanmaktadır. Zamanlayıcı tetikleyicisi, bir işlevi zamanlamada çalıştırmanızı sağlar. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
+## <a name="packages---functions-1x"></a>Paketler - Fonksiyonlar 1.x
 
-Zamanlayıcı tetikleyicisi [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm 2. x ' te sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub deposunda bulunur.
+Zamanlayıcı tetikleyicisi [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi sürüm 2.x'te sağlanır. Paketin kaynak kodu [azure-webjobs-sdk uzantıları](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub deposundadır.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
+## <a name="packages---functions-2x-and-higher"></a>Paketler - Fonksiyonlar 2.x ve üzeri
 
-Zamanlayıcı tetikleyicisi [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm 3. x ' te sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub deposunda bulunur.
+Zamanlayıcı tetikleyicisi [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketinde, sürüm 3.x'te sağlanır. Paketin kaynak kodu [azure-webjobs-sdk uzantıları](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub deposundadır.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Aşağıdaki örnek, dakikada beş ile bölünebilen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir (örneğin, işlev 18:57:00 ' de başlıyorsa, sonraki performans 19:00:00 ' de olur). [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) nesnesi işlevine geçirilir.
+Aşağıdaki örnek, dakikaların beşe bölünebilen bir değeri olduğunda çalıştırılan bir [C# işlevini](functions-dotnet-class-library.md) gösterir (örneğin işlev 18:57:00'de başlarsa, bir sonraki performans 19:00:00'da olacaktır). Nesne [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) işleve aktarılır.
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -50,11 +50,11 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Zamanlayıcı tetikleyicisi bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlev, bu işlev çağrısının kaçırılmış bir zamanlama oluşumu olup olmadığını gösteren bir günlük yazar. [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) nesnesi işlevine geçirilir.
+Aşağıdaki örnek, *bir function.json* dosyasında bir zamanlayıcı tetikleyicisi bağlamave bağlamayı kullanan bir [C# komut dosyası işlevini](functions-reference-csharp.md) gösterir. İşlev, bu işlev çağırmasının cevapsız bir zamanlama oluşumundan kaynaklanıp kaynaklanmasından kaynaklanıp kaynaklanmasına neden olduğunu belirten bir günlük yazar. Nesne [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) işleve aktarılır.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
 ```json
 {
@@ -65,7 +65,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-C# betik kodunu şu şekildedir:
+İşte C# komut dosyası kodu:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -78,11 +78,11 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Zamanlayıcı tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev, bu işlev çağrısının kaçırılmış bir zamanlama oluşumu olup olmadığını gösteren bir günlük yazar. İşleve bir [Zamanlayıcı nesnesi](#usage) geçirilir.
+Aşağıdaki örnek, *bir function.json* dosyasında bir zamanlayıcı tetikleyicisi bağlamayı ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev, bu işlev çağırmasının cevapsız bir zamanlama oluşumundan kaynaklanıp kaynaklanmasından kaynaklanıp kaynaklanmasına neden olduğunu belirten bir günlük yazar. Bir [zamanlayıcı nesne](#usage) işlevine geçirilir.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
 ```json
 {
@@ -93,7 +93,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-JavaScript kod aşağıdaki gibidir:
+İşte JavaScript kodu:
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -111,9 +111,9 @@ module.exports = function (context, myTimer) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir yapılandırma *function. JSON* dosyasında açıklanan bir Zamanlayıcı tetikleyicisi bağlamayı kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md)  *__init__. Kopyala* dosyasında açıklanmıştır. İşleve geçirilen nesne, [Azure. Functions. TimerRequest nesnesi](/python/api/azure-functions/azure.functions.timerrequest)türündedir. İşlev mantığı, geçerli çağrının kaçırılmış bir zamanlama oluşumunda olup olmadığını gösteren günlüklere yazar. 
+Aşağıdaki örnek, *işlevi.json* dosyasında yapılandırması açıklanan bir zamanlayıcı tetikleyici bağlama kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md) * __init__.py* dosyasında açıklanmıştır. İşlev içine geçirilen nesne türü [azure.functions.TimerRequest nesnesidir.](/python/api/azure-functions/azure.functions.timerrequest) İşlev mantığı, geçerli çağırmanın cevapsız zamanlama oluşumundan kaynaklanıp kaynaklanması gerektiğini belirten günlüklere yazar. 
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
 ```json
 {
@@ -124,7 +124,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-Python kodu aşağıda verilmiştir:
+Python kodu aşağıdavelvere vermiştir:
 
 ```python
 import datetime
@@ -145,7 +145,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki örnek işlev her beş dakikada bir tetiklenir ve yürütülür. İşlevindeki `@TimerTrigger` ek açıklaması, [cron ifadeleriyle](https://en.wikipedia.org/wiki/Cron#CRON_expression)aynı dize biçimini kullanarak zamanlamayı tanımlar.
+Aşağıdaki örnek işlev her beş dakikada bir tetikler ve yürütür. `@TimerTrigger` İşlev üzerindeki ek açıklama [CRON ifadeleri](https://en.wikipedia.org/wiki/Cron#CRON_expression)ile aynı dize biçimini kullanarak zamanlama tanımlar.
 
 ```java
 @FunctionName("keepAlive")
@@ -162,13 +162,13 @@ public void keepAlive(
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [timertriggerattribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)' u kullanın.
+[C# sınıfı kitaplıklarında](functions-dotnet-class-library.md) [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)kullanın.
 
-Özniteliğin Oluşturucusu bir CRON ifadesi veya `TimeSpan`alır. Yalnızca işlev uygulaması bir App Service planı üzerinde çalışıyorsa `TimeSpan` kullanabilirsiniz. `TimeSpan`, tüketim veya elastik Premium Işlevleri için desteklenmez.
+Özniteliğin oluşturucusu cron ifadesi veya `TimeSpan`bir . Yalnızca işlev `TimeSpan` uygulaması bir Uygulama Hizmeti planında çalışıyorsa kullanabilirsiniz. `TimeSpan`Tüketim veya Elastik Premium Fonksiyonlar için desteklenmez.
 
-Aşağıdaki örnek bir CRON ifadesini gösterir:
+Aşağıdaki örnekte CRON ifadesi gösterilmektedir:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -182,11 +182,11 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+Öznitelikler C# Script tarafından desteklenmez.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
@@ -196,7 +196,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 # <a name="java"></a>[Java](#tab/java)
 
-İşlevindeki `@TimerTrigger` ek açıklaması, [cron ifadeleriyle](https://en.wikipedia.org/wiki/Cron#CRON_expression)aynı dize biçimini kullanarak zamanlamayı tanımlar.
+`@TimerTrigger` İşlev üzerindeki ek açıklama [CRON ifadeleri](https://en.wikipedia.org/wiki/Cron#CRON_expression)ile aynı dize biçimini kullanarak zamanlama tanımlar.
 
 ```java
 @FunctionName("keepAlive")
@@ -213,25 +213,25 @@ public void keepAlive(
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `TimerTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `TimerTrigger` yapılandırma özellikleri ve öznitelik açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.json özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**direction** | yok | "İçin" ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**ada** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
-|**schedule**|**ScheduleExpression**|Bir [cron ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. `TimeSpan`, yalnızca bir App Service planı üzerinde çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına yerleştirebilir ve bu özelliği şu örnekte gösterildiği gibi **%** işaretlere Sarmalanan uygulama ayarı adı olarak ayarlayabilirsiniz: "% ScheduleAppSetting%". |
-|**runOnStartup**|**RunOnStartup**|`true`, çalışma zamanı başlatıldığında işlev çağrılır. Örneğin, çalışma zamanı, işlev uygulaması eylemsizlik nedeniyle boşta kaldıktan sonra uyandığında başlatılır. işlev değişiklikleri nedeniyle uygulama yeniden başlatıldığında ve işlev uygulaması ölçeklenirken. Bu nedenle **runOnStartup** , özellikle üretimde `true`olarak ayarlandıysa nadiren gerekir. |
-|**useMonitor**|**UseMonitor**|Zamanlamanın izlenmesi gerekip gerekmediğini belirtmek için `true` veya `false` olarak ayarlayın. Zamanlamayı zamanla, işlev uygulama örnekleri yeniden başlatıldığında bile zamanlamanın doğru bir şekilde tutulmasını sağlamaya yardımcı olmak için zamanlama oluşumları devam ettirir. Açıkça ayarlanmamışsa varsayılan değer 1 dakikadan büyük veya eşit bir yinelenme aralığına sahip zamanlamalar için `true`. Dakikada birden çok kez tetikleyen zamanlamalar için varsayılan değer `false`.
+|**Türü** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**Yön** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**Adı** | yok | İşlev kodundaki zamanlayıcı nesnesini temsil eden değişkenin adı. | 
+|**Zamanlama**|**Zamanlamaİfade**|[CRON ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. A `TimeSpan` yalnızca Bir Uygulama Hizmet Planı üzerinde çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına koyup bu özelliği, aşağıdaki **%** örnekte olduğu gibi, "%ScheduleAppSetting%". |
+|**runOnStartup**|**RunonStartup**|Çalışma `true`zamanı başladığında işlev çağrılır. Örneğin, çalışma süresi, işlev uygulaması hareketsizlik nedeniyle boşta kaldıktan sonra uyandığında başlar. işlev değişiklikleri nedeniyle işlev uygulaması yeniden başlatıldığında ve işlev uygulaması ölçeklendiğinde. Yani **runOnStartup** nadiren hiç `true`ayarlanmış olmalıdır , özellikle üretim. |
+|**useMonitor**|**UseMonitor**|`true` Zamanlamanın `false` izlenip izlenmemesi gerektiğini belirtmek için ayarlayın. Zamanlama izleme, işlev uygulaması örnekleri yeniden başlatılsa bile zamanlamanın doğru şekilde tutulmasını sağlamaya yardımcı olmak için zamanlama oluşumlarını sürdürür. Açıkça ayarlanmazsa, `true` varsayılan değer, yineleme aralığı 1 dakikadan büyük veya eşit olan zamanlamalar içindir. Dakikada birden fazla tetikleyen zamanlamalar için `false`varsayılan değer.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> Üretimde `true` için **runOnStartup** ayarlamayı öneririz. Bu ayarın kullanılması, kodun son derece öngörülemeyen zamanlarda yürütülmesine neden olur. Bazı üretim ayarlarında, bu ek yürütmeler, tüketim planlarında barındırılan uygulamalar için önemli ölçüde daha yüksek maliyetlere neden olabilir. Örneğin, **runOnStartup** etkin olduğunda tetikleyici, işlev uygulamanız her ölçeklendirildiğinde çağrılır. **RunOnStartup** etkinleştirilmeden önce işlevlerinizin üretim davranışını tam olarak anladığınızdan emin olun.   
+> **RunOnStartup'ı** `true` üretimde ayarlamanızı öneririz. Bu ayarı kullanmak, kodun son derece öngörülemeyen zamanlarda yürütülmesini sağlar. Belirli üretim ayarlarında, bu ekstra yürütmeler Tüketim planlarında barındırılan uygulamalar için önemli ölçüde daha yüksek maliyetlere neden olabilir. Örneğin, **runOnStartup** etkin olduğunda, işlev uygulamanız ölçeklendiğinde tetikleyici çağrılır. Üretimde **runOnStartup'ı** etkinleştirmeden önce işlevlerinizin üretim davranışını tam olarak anladığınızdan emin olun.   
 
 ## <a name="usage"></a>Kullanım
 
-Bir Zamanlayıcı tetikleyicisi işlevi çağrıldığında, işleve bir Zamanlayıcı nesnesi geçirilir. Aşağıdaki JSON, Timer nesnesinin örnek bir gösterimidir.
+Zamanlayıcı tetikleyici işlevi çağrıldığızaman, bir zamanlayıcı nesnesi işleve aktarılır. Aşağıdaki JSON zamanlayıcı nesnesinin örnek bir gösterimidir.
 
 ```json
 {
@@ -246,11 +246,11 @@ Bir Zamanlayıcı tetikleyicisi işlevi çağrıldığında, işleve bir Zamanla
 }
 ```
 
-`IsPastDue` özelliği, geçerli işlev çağırma zamanlanmadan daha sonra olduğunda `true`. Örneğin, bir işlev uygulamasının yeniden başlatılması, çağrının kaçırılmasını sağlayabilir.
+Özellik, `IsPastDue` `true` geçerli işlev çağırmasının zamanlanandan daha geç olmasıdır. Örneğin, bir işlev uygulaması yeniden başlatma bir çağrının kaçırılmasına neden olabilir.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB ifadeleri 
 
-Azure Işlevleri, NCRONTAB ifadelerini yorumlamak için [ncrontab](https://github.com/atifaziz/NCrontab) kitaplığını kullanır. Bir NCRONTAB ifadesi, bir CRON ifadesine benzer ve saniyeler içinde zaman duyarlığı için kullanılmak üzere ek bir altıncı alan içerir:
+Azure İşlevleri, NCRONTAB ifadelerini yorumlamak için [NCronTab](https://github.com/atifaziz/NCrontab) kitaplığını kullanır. NCRONTAB ifadesi CRON ifadesine benzer, ancak başlangıçta saniyeler içinde zaman hassasiyeti için kullanmak üzere ek bir altıncı alan içerir:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -258,96 +258,96 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 |Tür  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
-|Belirli bir değer |<nobr>"0 5 * * * *"</nobr>|ss: 05:00, SS her saat (saat)|
-|Tüm değerler (`*`)|<nobr>"0 * 5 * * *"</nobr>|5: AA: 00 ' da her gün, DD 'nin saatte bir dakikası (günde 60 kez)|
-|Bir Aralık (`-` işleci)|<nobr>"5-7 * * * * *"</nobr>|ss: DD: 05, ss: DD: 06, ve hh: mm: 07 saat|
-|Bir değerler kümesi (`,` işleci)|<nobr>"5, 8, 10 * * * * *"</nobr>|ss: DD: 05, ss: DD: 08 ve hh: mm: 10 burada ss: DD her saatin dakikada bir (3 kez bir dakika)|
-|Aralık değeri (`/` işleci)|<nobr>"0 */5 * * * *"</nobr>|ss: 00:00, ss: 05:00, ss: 10:00 ve bu şekilde ss: 00|
+|Belirli bir değer |<nobr>"0 5 * * * *"</nobr>|hh:05:00 de hh her saat (saatte bir kez)|
+|Tüm değerler`*`( )|<nobr>"0 * 5 * * *"</nobr>|her gün 5:mm:00'da, mm saatin her dakikası (günde 60 kez)|
+|Bir aralık`-` (operatör)|<nobr>"5-7 * * * * *"</nobr>|hh:mm:05,hh:mm:06 ve hh:mm:07 her saatin her dakikası (dakikada 3 kez)|
+|Bir değer kümesi`,` (işleç)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05,hh:mm:08 ve hh:mm:10 her saatin her dakikası (dakikada 3 kez)|
+|Bir aralık`/` değeri (işleç)|<nobr>"0 */5 * * * *"</nobr>|hh:00:00, hh:05:00, hh:10:00, ve benzeri hh:55:00 ile nerede hh her saat (12 kez bir saat)|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
 ### <a name="ncrontab-examples"></a>NCRONTAB örnekleri
 
-Azure Işlevlerinde süreölçer tetikleyicisi için kullanabileceğiniz bazı NCRONTAB ifadeleri örnekleri aşağıda verilmiştir.
+Azure İşlevlerinde zamanlayıcı tetikleyicisi için kullanabileceğiniz NCRONTAB ifadelerine bazı örnekler aşağıda verilmiştir.
 
 |Örnek|Tetiklendiğinde  |
 |---------|---------|
-|`"0 */5 * * * *"`|Beş dakikada bir|
-|`"0 0 * * * *"`|her saatin üstünde bir kez|
-|`"0 0 */2 * * *"`|Her iki saatte bir|
-|`"0 0 9-17 * * *"`|her saat 9 ' dan 5 ' e kadar|
-|`"0 30 9 * * *"`|Her gün 9:30 saat|
-|`"0 30 9 * * 1-5"`|Her gün 9:30 saat|
-|`"0 30 9 * Jan Mon"`|Ocak 9:30 ' de her Pazartesi|
+|`"0 */5 * * * *"`|her beş dakikada bir|
+|`"0 0 * * * *"`|her saatin başında bir kez|
+|`"0 0 */2 * * *"`|her iki saatte bir|
+|`"0 0 9-17 * * *"`|09:00-17:00 arasında her saat bir kez|
+|`"0 30 9 * * *"`|Her gün 09:30'da|
+|`"0 30 9 * * 1-5"`|Hafta içi her gün sabah 9:30'da|
+|`"0 30 9 * Jan Mon"`|Ocak ayının her Pazartesi günü 09:30'da|
 
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB saat dilimleri
 
-Bir CRON ifadesindeki sayılar, zaman aralığı değil, bir saat ve tarihe başvurur. Örneğin, `hour` alanındaki 5 saat, 5 saatte bir değil 5:00 ' e başvurur.
+CRON ifadesindeki sayılar, zaman aralığına değil, bir zaman ve tarihe başvurur. Örneğin, alandaki `hour` 5, her 5 saatte bir değil, 5:00'yi ifade eder.
 
-CRON ifadeleriyle kullanılan varsayılan saat dilimi Eşgüdümlü Evrensel Saat (UTC) ' dir. CRON ifadenizi başka bir saat dilimine göre oluşturmak için, `WEBSITE_TIME_ZONE`adlı işlev uygulamanız için bir uygulama ayarı oluşturun. Değeri, [Microsoft saat dilimi dizininde](https://technet.microsoft.com/library/cc749073)gösterildiği gibi istenen saat diliminin adı olarak ayarlayın.
+CRON ifadeleri ile kullanılan varsayılan saat dilimi Eşgüdümlü Evrensel Saat (UTC) idi. CRON ifadenizin başka bir saat dilimini temel alması `WEBSITE_TIME_ZONE`için, işlev uygulamanız için bir uygulama ayarı oluşturun. [Microsoft Saat Dilimi Dizini'nde](https://technet.microsoft.com/library/cc749073)gösterildiği gibi istenen saat diliminin adına değeri ayarlayın.
 
   > [!NOTE]
-  > `WEBSITE_TIME_ZONE`, Linux tüketim planında Şu anda desteklenmiyor.
+  > `WEBSITE_TIME_ZONE`şu anda Linux Tüketim planında desteklenmez.
 
-Örneğin, *Doğu Standart saatı* UTC-05:00 ' dir. Zamanlayıcı tetikleyicinizin her gün 10:00 ' de tetiklenmesi için, UTC saat dilimi hesaplarının aşağıdaki NCRONTAB ifadesini kullanın:
+Örneğin, *Doğu Standart Saati* UTC-05:00'dir. Zamanlayıcınızın her gün SAAT 10:00 EST'de ateş itetiklemesi için UTC saat dilimini oluşturan aşağıdaki NCRONTAB ifadesini kullanın:
 
 ```
 "0 0 15 * * *"
 ``` 
 
-Veya işlev uygulamanız için `WEBSITE_TIME_ZONE` adlı bir uygulama ayarı oluşturun ve değeri **Doğu Standart Saati**olarak ayarlayın.  Ardından aşağıdaki NCRONTAB ifadesini kullanır: 
+Veya adlandırılmış `WEBSITE_TIME_ZONE` işlev uygulamanız için bir uygulama ayarı oluşturun ve değeri **Doğu Standart Saati**olarak ayarlayın.  Sonra aşağıdaki NCRONTAB ifadesini kullanır: 
 
 ```
 "0 0 10 * * *"
 ``` 
 
-`WEBSITE_TIME_ZONE`kullandığınızda, saat, belirli bir saat dilimlerinde gün ışığından yararlanma saati gibi zaman değişikliği için ayarlanır. 
+Kullandığınızda, `WEBSITE_TIME_ZONE`saat, gün ışığından yararlanma saati gibi belirli saat dilimindeki saat değişiklikleri için ayarlanır. 
 
 ## <a name="timespan"></a>TimeSpan
 
- `TimeSpan`, yalnızca bir App Service planı üzerinde çalışan bir işlev uygulaması için kullanılabilir.
+ A `TimeSpan` yalnızca Bir Uygulama Hizmet Planı üzerinde çalışan bir işlev uygulaması için kullanılabilir.
 
-Bir CRON ifadesinin aksine, bir `TimeSpan` değeri her bir işlev çağrısı arasındaki zaman aralığını belirtir. Bir işlev, belirtilen aralıktan daha uzun çalıştıktan sonra tamamlandığında, süreölçer işlevi hemen yeniden çağırır.
+CRON ifadesinin aksine, bir `TimeSpan` değer her işlev çağırması arasındaki zaman aralığını belirtir. Bir işlev belirtilen aralıktan daha uzun süre çalıştırdıktan sonra tamamlandığında, zamanlayıcı işlevi hemen yeniden çağırır.
 
-Dize olarak ifade edildiğinde, `hh` 24 ' ten az olduğunda `TimeSpan` biçimi `hh:mm:ss`. İlk iki basamak 24 veya daha büyükse, biçim `dd:hh:mm`. İşte bazı örnekler:
+Bir dize olarak `TimeSpan` ifade `hh:mm:ss` `hh` edilen biçim, 24'ten küçük olduğunda dır. İlk iki basamak 24 veya daha büyük `dd:hh:mm`olduğunda, biçim . İşte bazı örnekler:
 
 |Örnek |Tetiklendiğinde  |
 |---------|---------|
 |"01:00:00" | her saat        |
 |"00:01:00"|her dakika         |
-|"24:00:00" | 24 saatte bir        |
-|"1,00:00:00" | Her gün        |
+|"24:00:00" | her 24 günde bir        |
+|"1.00:00:00" | Her gün        |
 
-## <a name="scale-out"></a>Genişleme
+## <a name="scale-out"></a>Ölçeği genişletme
 
-Bir işlev uygulaması birden çok örneğe ölçekleniyorsa, tüm örneklerde yalnızca bir Zamanlayıcı tetiklenen işlevin tek bir örneği çalıştırılır.
+Bir işlev uygulaması birden çok örneğe ölçeklenirse, zamanlayıcı tarafından tetiklenen işlevin yalnızca tek bir örneği tüm örneklerde çalıştırılır.
 
-## <a name="function-apps-sharing-storage"></a>İşlev uygulamaları paylaşım depolaması
+## <a name="function-apps-sharing-storage"></a>Depolamayı paylaşan işlev uygulamaları
 
-App Service 'e dağıtılmamış işlev uygulamalarında depolama hesaplarını paylaşıyorsanız, her uygulamaya açıkça ana bilgisayar KIMLIĞI atamanız gerekebilir.
+Uygulama hizmetine dağıtılmayan işlev uygulamaları arasında depolama hesapları paylaşıyorsanız, her uygulamaya açıkça ana bilgisayar kimliği atamanız gerekebilir.
 
-| İşlevler sürümü | Ayar                                              |
+| Fonksiyonlar sürümü | Ayar                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2. x (ve üzeri)  | `AzureFunctionsWebHost__hostid` ortam değişkeni |
-| 'in               | *Host. JSON* içinde `id`                                  |
+| 2.x (ve daha yüksek)  | `AzureFunctionsWebHost__hostid`çevre değişkeni |
+| 1.x               | `id`in *host.json*                                  |
 
-Tanımlayıcı değeri atlayabilir veya her bir işlev uygulamasının tanımlayıcı yapılandırmasını farklı bir değere el ile ayarlayabilirsiniz.
+Tanımlayıcı değeri atlayabilir veya her işlev uygulamasının tanımlayıcı yapılandırmasını el ile farklı bir değere ayarlayabilirsiniz.
 
-Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklenirken yalnızca bir zamanlayıcı örneği olduğundan emin olmak için bir depolama kilidi kullanır. İki işlev uygulaması aynı tanımlayıcı yapılandırmayı paylaşıyorsa ve her biri bir Zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir Zamanlayıcı çalışır.
+Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklendiğinde yalnızca bir zamanlayıcı örneği olduğundan emin olmak için bir depolama kilidi kullanır. İki işlev uygulaması aynı tanımlayıcı yapılandırmayı paylaşıyorsa ve her biri bir zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir zamanlayıcı çalışır.
 
-## <a name="retry-behavior"></a>Yeniden deneme davranışı
+## <a name="retry-behavior"></a>Davranışı yeniden deneyin
 
-Sıra tetikleyicisinden farklı olarak, bir işlev başarısız olduktan sonra Zamanlayıcı tetikleyicisi yeniden denenmez. Bir işlev başarısız olduğunda, zamanlamaya bir sonraki sefer kadar bir kez çağrılmaz.
+Sıra tetikleyicisinin aksine, zamanlayıcı tetikleyicisi bir işlev başarısız olduktan sonra yeniden denmez. Bir işlev başarısız olduğunda, zamanlamada bir sonraki zamana kadar yeniden çağrılmaz.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Zamanlayıcı tetikleyicisi beklendiği gibi çalışmazsa yapılacaklar hakkında daha fazla bilgi için, bkz. [Zamanlayıcı tarafından tetiklenen işlevlerle ilgili sorunları araştırma ve raporlama](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
+Zamanlayıcı tetikleyicisi beklendiği gibi çalışmadığında ne yapmanız gerekenler hakkında bilgi [için](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing)bkz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Zamanlayıcı tetikleyicisi kullanan bir hızlı başlangıca git](functions-create-scheduled-function.md)
+> [Zamanlayıcı tetikleyicisi kullanan hızlı bir başlatmaya gitme](functions-create-scheduled-function.md)
 
 > [!div class="nextstepaction"]
-> [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)
+> [Azure işlevleri tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)

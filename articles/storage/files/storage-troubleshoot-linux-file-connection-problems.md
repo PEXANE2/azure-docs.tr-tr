@@ -1,62 +1,62 @@
 ---
-title: Linux 'ta Azure dosyaları sorunlarını giderme | Microsoft Docs
-description: Linux 'ta Azure dosyaları sorunlarını giderme
+title: Linux'taki Azure Dosyaları sorunlarını giderme | Microsoft Dokümanlar
+description: Linux'ta Azure Dosyaları sorunlarını giderme
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79255034"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159498"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
+# <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux'taki Azure Dosyaları sorunlarını giderme
 
-Bu makalede, Linux istemcilerinden bağlandığınızda Azure dosyalarıyla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. 
+Bu makalede, Linux istemcilerinden bağlandığınızda Azure Dosyaları ile ilgili sık karşılaşılan sorunlar listelenir. Ayrıca, bu sorunlar için olası nedenleri ve çözümleri sağlar. 
 
-Bu makaledeki sorun giderme adımlarına ek olarak, Linux istemcisinin doğru önkoşullara sahip olduğundan emin olmak için [Azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) 'i kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunun algılanmasını otomatikleştirir. En iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Ayrıca, bu bilgileri [Azure dosya paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)bulabilirsiniz. Sorun giderici, Azure dosya paylaşımlarını bağlama, eşleme ve bağlama ile ilgili sorunları gidermenize yardımcı olacak adımları sağlar.
+Bu makaledeki sorun giderme adımlarına ek olarak, Linux istemcisinin doğru ön koşullara sahip olduğundan emin olmak için [AzFileDiagnostics'i](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) kullanabilirsiniz. AzFileDiagnostics, bu makalede belirtilen belirtilerin çoğunun algılanmasını otomatikleştirir. En iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure Files [paylaşımlarında sorun gidericide](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)de bulabilirsiniz. Sorun giderici, Azure Dosyaları paylaşımlarına bağlanma, eşleme ve montaj sorunları konusunda size yardımcı olacak adımlar sağlar.
 
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure dosya paylaşımında bağlantı veya bağlama yapılamaz
+## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure dosyası paylaşımına bağlanamıyor veya bağlayamıyor
 
 ### <a name="cause"></a>Nedeni
 
 Bu sorunun yaygın nedenleri şunlardır:
 
-- Uyumsuz bir Linux dağıtım istemcisi kullanıyorsunuz. Azure dosya paylaşımında bağlantı kurmak için aşağıdaki Linux dağıtımlarını kullanmanızı öneririz:
+- Uyumsuz bir Linux dağıtım istemcisi kullanıyorsunuz. Azure dosya paylaşımına bağlanmak için aşağıdaki Linux dağıtımlarını kullanmanızı öneririz:
 
-|   | SMB 2.1 <br>(Aynı Azure bölgesi içindeki VM 'lerde takar) | SMB 3.0 <br>(Şirket içi ve çapraz bölgeden takar) |
+|   | SMB 2.1 <br>(Aynı Azure bölgesindeki VM'lere bağlanır) | SMB 3.0 <br>(Tesis içi ve çapraz bölgeden gelen bağlar) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7.5+ |
-| CentOS | 7 + |  7.5+ |
+| Ubuntu Server | 14,04+ | 16,04+ |
+| RHEL | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
 | Debian | 8+ |   |
-| openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| openSUSE | 13.2+ | 42.3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
-- CIFS yardımcı programları (CIFS-utils) istemcide yüklü değil.
-- İstemcide en düşük SMB/CIFS sürümü (2,1) yüklü değil.
-- SMB 3,0 şifrelemesi istemcide desteklenmiyor. Yukarıdaki tabloda, şifrelemeyi kullanarak şirket içi ve çapraz bölgeden bağlamayı destekleyen Linux dağıtımların bir listesi verilmiştir. Diğer dağıtımlar için çekirdek 4.11 ve üstü sürümler gerekir.
-- TCP bağlantı noktası 445 üzerinden bir depolama hesabına bağlanmaya çalışıyorsunuz, bu desteklenmez.
-- Azure VM 'den bir Azure dosya paylaşımıyla bağlantı kurmaya çalışıyorsunuz ve VM depolama hesabı ile aynı bölgede değil.
-- Depolama hesabında [Güvenli aktarım gerekli]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarı etkinse, Azure dosyaları yalnızca ŞIFRELEME ile SMB 3,0 kullanan bağlantılara izin verir.
+- CIFS yardımcı programları (cifs-utils) istemciye yüklenmez.
+- İstemcide minimum SMB/CIFS sürümü, 2.1 yüklü değildir.
+- SMB 3.0 şifreleme istemciüzerinde desteklenmez. Önceki tablo, şifreleme kullanarak şirket içi ve bölgeler arası montajı destekleyen Linux dağıtımlarının bir listesini sağlar. Diğer dağıtımlar için çekirdek 4.11 ve üstü sürümler gerekir.
+- TCP bağlantı noktası 445 üzerinden desteklenmeyen bir depolama hesabına bağlanmaya çalışıyorsunuz.
+- Bir Azure VM'den bir Azure dosya paylaşımına bağlanmaya çalışıyorsunuz ve VM depolama hesabıyla aynı bölgede değil.
+- Depolama hesabında [Güvenli aktarım gerekli]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarı etkinleştirilirse, Azure Files yalnızca Şifreleme ile SMB 3.0 kullanan bağlantılara izin verir.
 
 ### <a name="solution"></a>Çözüm
 
-Sorunu gidermek için, [Linux 'Ta Azure dosyaları bağlama hataları için sorun giderme aracını](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)kullanın. Bu araç:
+Sorunu çözmek [için, Azure Dosyaları'nın Linux'ta hata lar eklemesi için sorun giderme aracını](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)kullanın. Bu araç:
 
-* Ortamı çalıştıran istemciyi doğrulamanıza yardımcı olur.
-* Azure dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını algılar.
-* Kendi kendine düzeltme konusunda öngörülü kılavuzluk sağlar.
-* Tanılama izlemelerini toplar.
+* İstemci çalışma ortamını doğrulamanıza yardımcı olur.
+* Azure Dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını algılar.
+* Kendi kendini sabitleme konusunda ön yazı rehberlik sağlar.
+* Teşhis izlerini toplar.
 
 <a id="mounterror13"></a>
-## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Bağlama hatası (13): bir Azure dosya paylaşımından bağlama sırasında Izin verilmedi"
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Montaj hatası(13): Azure dosya paylaşımı nı monte ettiğinizde izin reddedildi"
 
-### <a name="cause-1-unencrypted-communication-channel"></a>Neden 1: şifrelenmemiş iletişim kanalı
+### <a name="cause-1-unencrypted-communication-channel"></a>Neden 1: Şifresiz iletişim kanalı
 
 Güvenlik nedeniyle, iletişim kanalı şifrelenmemişse ve bağlantı girişimi Azure dosya paylaşımlarının bulunduğu veri merkezinden yapılmıyorsa Azure dosya paylaşımlarına bağlantılar engellenir. Depolama hesabında [Güvenli aktarım gerekli](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarı etkinleştirildiyse aynı veri merkezi içinde şifrelenmemiş bağlantılar da engellenebilir. Şifrelenmiş bir iletişim kanalının sağlanabilmesi için kullanıcının istemcisi SMB şifrelemesini desteklemelidir.
 
@@ -64,10 +64,10 @@ Daha fazla bilgi edinmek için bkz. [Linux ve cifs-utils paketiyle Azure dosya p
 
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
-1. SMB şifrelemesini destekleyen bir istemciden bağlanın veya aynı veri merkezindeki bir sanal makineden Azure dosya paylaşımında kullanılan Azure depolama hesabıyla bağlanın.
-2. İstemci SMB şifrelemesini desteklemiyorsa, depolama hesabında [Güvenli aktarım gerekli](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarının devre dışı olduğunu doğrulayın.
+1. Kobİ şifrelemesini destekleyen bir istemciden bağlanın veya Azure dosya paylaşımı için kullanılan Azure depolama hesabıyla aynı veri merkezindeki sanal makineden bağlanın.
+2. İstemci Kobİ şifrelemesini desteklemiyorsa, [güvenli aktarım gerekli](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarı depolama hesabında devre dışı bırakıldığını doğrulayın.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 2: depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkin 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 2: Depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkinleştirilir 
 
 Depolama hesabında sanal ağ (VNET) ve güvenlik duvarı kuralları yapılandırıldıysa, istemci IP adresine veya sanal ağa erişim izni verilmediği sürece ağ trafiğinin erişimi reddedilir.
 
@@ -76,49 +76,49 @@ Depolama hesabında sanal ağ (VNET) ve güvenlik duvarı kuralları yapılandı
 Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapılandırıldığını doğrulayın. Sanal ağ veya güvenlik duvarı kurallarının soruna neden olup olmadığını test etmek için depolama hesabında **Tüm ağlardan erişime izin ver** ayarını geçici olarak değiştirin. Daha fazla bilgi edinmek için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 <a id="permissiondenied"></a>
-## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"[izin reddedildi] disk kotası aşıldı" bir dosyayı açmaya çalıştığınızda
+## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"[izin reddedildi] Disk kotası aşıldı" bir dosyayı açmaya çalıştığınızda
 
-Linux 'ta aşağıdakine benzer bir hata iletisi alırsınız:
+Linux'ta, aşağıdakilere benzeyen bir hata iletisi alırsınız:
 
-**\<dosya adı > [izin reddedildi] disk kotası aşıldı**
+**\<dosya adı> [izin reddedildi] Disk kotası aşıldı**
 
 ### <a name="cause"></a>Nedeni
 
-Bir dosya için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştınız.
+Bir dosya için izin verilen eşzamanlı açık tutamaçların üst sınırına ulaştınız.
 
-Tek bir dosyada 2.000 açık tanıtıcı kotası vardır. 2\.000 açık tutamacı varsa, kotanın ulaşılmadığını belirten bir hata iletisi görüntülenir.
+Tek bir dosyada 2.000 açık tutamaç kotası vardır. 2.000 açık tanıtıcınız olduğunda, kotaya ulaşıldığını belirten bir hata iletisi görüntülenir.
 
 ### <a name="solution"></a>Çözüm
 
-Bazı tutamaçları kapatarak eşzamanlı açık tanıtıcı sayısını azaltın ve işlemi yeniden deneyin.
+Bazı tutamaçları kapatarak eşzamanlı açık tutamaçların sayısını azaltın ve işlemi yeniden deneyin.
 
-Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını görüntülemek için [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.  
+Bir dosya paylaşımı, dizin veya dosya için açık tutamaçları görüntülemek için [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet'i kullanın.  
 
-Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını kapatmak için, [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.
+Dosya paylaşımı, dizin veya dosya için açık tutamaçları kapatmak için [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet'i kullanın.
 
 > [!Note]  
-> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module sürüm 2,4 veya üzeri sürümlerde bulunur. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlets Az PowerShell modül sürüm 2.4 veya daha sonra dahildir. En son Az PowerShell modüllerini yüklemek için Azure [PowerShell modüllerini yükleyin.](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
 <a id="slowfilecopying"></a>
-## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux 'ta Azure dosyalarından yavaş dosya kopyalama
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux'taki Azure Dosyalarına ve Azure Dosyalarından yavaş dosya kopyalama
 
-- Belirli bir en düşük g/ç boyutu gereksiniminize sahip değilseniz en iyi performans için g/ç boyutu olarak 1 MIB kullanmanızı öneririz.
+- Belirli bir minimum G/Ç boyutu gereksiniminiz yoksa, optimum performans için 1 MiB'i G/Ç boyutu olarak kullanmanızı öneririz.
 - Doğru kopyalama yöntemini kullanın:
-    - İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
-    - CP veya DD 'yi paralel olarak kullanmak kopyalama hızını iyileştirebilir, iş parçacıklarının sayısı kullanım örneğine ve iş yüküne bağlıdır. Aşağıdaki örneklerde altı kullanılır: 
-    - CP örneği (CP dosya sisteminin varsayılan blok boyutunu öbek boyutu olarak kullanır): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
-    - dd örneği (Bu komut, öbek boyutunu açıkça 1 MiB olarak belirler): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
-    - Açık kaynak üçüncü taraf araçları:
-        - [GNU paralel](https://www.gnu.org/software/parallel/).
-        - [Fpart](https://github.com/martymac/fpart) -dosyaları sıralar ve onları bölümler halinde paketler.
-        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -src_dir verileri dst_url geçirilecek birden çok örnek atamak Için fpart ve bir kopyalama aracı kullanır.
-        - GNU coreutils tabanlı [Çoklu](https://github.com/pkolano/mutil) iş parçacıklı CP ve md5sum.
-- Dosya boyutunu önceden ayarlamak, her yazma için bir genişletme yazma yapmak yerine dosya boyutunun bilinen senaryolarda kopyalama hızını artırmaya yardımcı olur. Yazmaları genişletmeyi önlenebilir olması gerekiyorsa, `truncate - size <size><file>` komutuyla bir hedef dosya boyutu belirleyebilirsiniz. Bundan sonra, `dd if=<source> of=<target> bs=1M conv=notrunc`komutu, hedef dosyanın boyutunu sürekli olarak güncelleştirmek zorunda kalmadan bir kaynak dosyayı kopyalayacaktır. Örneğin, kopyalamak istediğiniz her dosya için hedef dosya boyutunu ayarlayabilirsiniz (bir paylaşımın/mnt/Share altında bağlanmış olduğunu varsayın):
+    - İki dosya paylaşımı arasında herhangi bir aktarım için [AzCopy'yi](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
+    - Paralel cp veya dd kullanmak kopyalama hızını artırabilir, iş parçacığı sayısı kullanım durumunuza ve iş yükünüze bağlıdır. Aşağıdaki örneklerde altı tane kullanılır: 
+    - cp örneği (cp, dosya sisteminin varsayılan blok boyutunu yığın `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`boyutu olarak kullanır): .
+    - dd örnek (bu komut açıkça 1 MiB için yığın boyutu ayarlar):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - Açık kaynak üçüncü taraf araçları gibi:
+        - [GNU Paralel](https://www.gnu.org/software/parallel/).
+        - [Fpart](https://github.com/martymac/fpart) - Dosyaları sıralar ve bölümlere paketler.
+        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) - src_dir'den dst_url'a veri geçirmek için birden çok örnek ortaya çıkarmak için Fpart ve bir kopyalama aracı kullanır.
+        - [Çok](https://github.com/pkolano/mutil) - GNU coreutils dayalı çok dişli cp ve md5sum.
+- Dosya boyutunu önceden ayarlamak, her yazıyı genişletme yazmayapmak yerine, dosya boyutunun bilindiği senaryolarda kopyalama hızını artırmaya yardımcı olur. Yazma genişletme kaçınılması gerekiyorsa, komutile `truncate - size <size><file>` bir hedef dosya boyutu ayarlayabilirsiniz. Bundan sonra, `dd if=<source> of=<target> bs=1M conv=notrunc`komut, hedef dosyanın boyutunu tekrar tekrar güncelleştirmek zorunda kalmadan bir kaynak dosyayı kopyalar. Örneğin, kopyalamak istediğiniz her dosya için hedef dosya boyutunu ayarlayabilirsiniz (/mnt/share altında bir paylaşım monte edilmiş varsayalım):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - sonra, dosyaları paralel olarak genişletmeksizin Kopyala: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - ve sonra - paralel olarak yazıyor genişletmeden dosyaları kopyalamak:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Bağlama hatası (115): Azure dosyalarını SMB 3,0 kullanarak bağladığınızda Işlem şimdi devam ediyor.
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>SMB 3.0 kullanarak Azure Dosyalarını monte ettiğinizde "Montaj hatası(115): İşlem şimdi devam ediyor"
 
 ### <a name="cause"></a>Nedeni
 
@@ -126,18 +126,18 @@ Bazı Linux dağıtımları henüz SMB 3.0'daki şifreleme özelliklerini destek
 
 ### <a name="solution"></a>Çözüm
 
-Linux için SMB 3.0'ın şifreleme özelliği 4.11 çekirdeğinde kullanıma sunuldu. Bu özellik Azure dosya paylaşımını şirket içinden veya farklı bir Azure bölgesinden bağlamaya olanak tanır. Bazı Linux dağıtımları, 4,11 çekirdekten, korudukları Linux çekirdeğinin eski sürümlerine yönelik geri alınan değişikliklere sahip olabilir. Linux sürümünüzün şifreleme ile SMB 3,0 ' i destekleyip desteklemediğini belirlemeye yardımcı olmak için, [Linux Ile Azure dosyaları kullanma](storage-how-to-use-files-linux.md)bölümüne başvurun. 
+Linux için SMB 3.0'ın şifreleme özelliği 4.11 çekirdeğinde kullanıma sunuldu. Bu özellik Azure dosya paylaşımını şirket içinden veya farklı bir Azure bölgesinden bağlamaya olanak tanır. Bazı Linux dağıtımları, 4.11 çekirdeğinden linux çekirdeğinin eski sürümlerine kadar olan ve korudukları değişiklikleri desteklenmiş olabilir. Linux sürümünüzün SMB 3.0'ı şifrelemeyle destekleyip desteklememenize yardımcı olmak için [Linux ile Azure Dosyalarını Kullan'a](storage-how-to-use-files-linux.md)başvurun. 
 
 Linux SMB istemciniz şifrelemeyi desteklemiyorsa, Azure Dosyalar'ı bağlamak için dosya paylaşımıyla aynı veri merkezinde bulunan bir Azure Linux VM'sinden SMB 2.1'i kullanın. Depolama hesabında [Güvenli aktarım gerekli]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarının devre dışı bırakıldığını doğrulayın. 
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Bir Azure dosya paylaşımından erişmeye veya silmeye çalıştığınızda "erişim yok" hatası  
-Portalda bir Azure dosya paylaşımından erişmeye veya silmeye çalıştığınızda şu hatayı alabilirsiniz:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Azure Dosya Paylaşımına erişmeye veya silmeye çalıştığınızda "Erişim yok" hatası  
+Portaldaki bir Azure dosya paylaşımına erişmeye veya silmeye çalıştığınızda aşağıdaki hatayı alabilirsiniz:
 
 Erişim yok  
 Hata kodu: 403 
 
-### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 1: depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkin
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 1: Depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkinleştirilir
 
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
@@ -147,66 +147,66 @@ Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapı
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
-Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [rol tabanlı Access Control (RBAC) ile depolama hesabınızın güvenliğini sağlama](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
+Azure dosya paylaşımının bulunduğu depolama hesabına göz atın, **Access denetimine (IAM)** tıklayın ve kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek [için, Rol Tabanlı Erişim Denetimi (RBAC) ile depolama hesabınızı nasıl güvene](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)alabildiğini öğrenin.
 
 <a id="open-handles"></a>
-## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure dosya paylaşımındaki bir dosya veya dizin silinemiyor
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure dosya paylaşımında dosya veya dizin silinemiyor
 
 ### <a name="cause"></a>Nedeni
-Bu sorun genellikle dosya veya dizinde açık bir tanıtıcı varsa oluşur. 
+Bu sorun genellikle dosya veya dizin açık bir tanıtıcı varsa oluşur. 
 
 ### <a name="solution"></a>Çözüm
 
-SMB istemcileri tüm açık tutamaçları kapatmışsa ve sorun oluşmaya devam ederse, şunları yapın:
+Kobİ istemcileri tüm açık tutamaçları kapattıysa ve sorun oluşmaya devam ederse, aşağıdakileri gerçekleştirin:
 
-- Açık tutamaçları görüntülemek için [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.
+- Açık tutamaçları görüntülemek için [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet'i kullanın.
 
-- Açık tutamaçları kapatmak için [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın. 
+- Açık kolları kapatmak için [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet'i kullanın. 
 
 > [!Note]  
-> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module sürüm 2,4 veya üzeri sürümlerde bulunur. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlets Az PowerShell modül sürüm 2.4 veya daha sonra dahildir. En son Az PowerShell modüllerini yüklemek için Azure [PowerShell modüllerini yükleyin.](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
 <a id="slowperformance"></a>
-## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM 'ye bağlanmış bir Azure dosya paylaşımında yavaş performans
+## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux sanal makinesine bağlanmış Azure dosya paylaşımında yavaş performans
 
-### <a name="cause-1-caching"></a>Neden 1: önbelleğe alma
+### <a name="cause-1-caching"></a>Neden 1: Önbelleğe alma
 
-Yavaş performansın olası bir nedeni önbelleğe alma işlemini devre dışı bırakmış. Önbelleğe alma, bir dosyaya sürekli olarak erişiyorsanız yararlı olabilir, aksi takdirde bir ek yük olabilir. Devre dışı bırakmadan önce önbelleği kullanıp kullankullandığınızı denetleyin.
+Yavaş performansın olası bir nedeni devre dışı bırakmadır. Önbelleğe alma, bir dosyaya tekrar tekrar erişiyorsanız yararlı olabilir, aksi takdirde ek bir ek olabilir. Devre dışı bırakmadan önce önbelleği kullanıp kullanmadığınızı kontrol edin.
 
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
-Önbelleğe almanın devre dışı olup olmadığını denetlemek için **Cache =** entry ' i arayın.
+Önbelleğe alma devre dışı olup olmadığını kontrol etmek için **önbellek=** girişini arayın.
 
-**Cache = None** , önbelleğe almanın devre dışı olduğunu gösterir. Varsayılan Mount komutunu kullanarak veya varsayılan önbelleğe alma veya "katı" önbelleğe alma modunun etkinleştirildiğinden emin olmak için Mount komutuna **Cache = Strict** seçeneğini açıkça ekleyerek, paylaşıma yeniden bağlayın.
+**Önbellek=hiçbiri** önbelleğe almanın devre dışı bırakıldığını gösterir. Varsayılan önbelleğe alma veya "katı" önbelleğe alma modunun etkin olduğundan emin olmak için varsayılan montaj komutunu kullanarak veya **önbelleği açıkça** takma komutuna ekleyerek payı yeniden bağla.
 
-Bazı senaryolarda, **serverino** bağlama seçeneği **ls** komutunun her dizin girdisinde stat çalıştırmasına neden olabilir. Bu davranış, büyük bir dizin listelenirken performans düşüşüne neden olur. **/Etc/fstab** girişinizdeki bağlama seçeneklerini kontrol edebilirsiniz:
+Bazı senaryolarda, **serverino** montaj seçeneği **lS** komutu her dizin girişine karşı stat çalıştırmak için neden olabilir. Bu davranış, büyük bir dizin listelediğinizde performans düşüşüne neden olabilir. **/etc/fstab** girişinizdeki montaj seçeneklerini kontrol edebilirsiniz:
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-Ayrıca, **sudo Mount | grep CIFS** komutunu çalıştırarak ve çıktısını denetleyerek doğru seçeneklerin kullanılıp kullanılmadığını kontrol edebilirsiniz. Örnek çıkış aşağıda verilmiştir:
+Ayrıca **sudo montaj | grep cifs** komutu çalıştırarak ve çıktısını kontrol ederek doğru seçeneklerin kullanılıp kullanılmadığını da kontrol edebilirsiniz. Aşağıdaki örnek çıktı:
 
 ```
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-**Cache = Strict** veya **serverino** seçeneği mevcut değilse, [belgelerden](../storage-how-to-use-files-linux.md)Mount komutunu çalıştırarak Azure dosyalarını yeniden çıkarın ve bağlayın. Sonra, **/etc/fstab** girişinin doğru seçeneklere sahip olduğunu denetleyin.
+**Önbellek=katı** veya **serverino** seçeneği yoksa, montaj komutunu [belgelerden](../storage-how-to-use-files-linux.md)çalıştırarak Azure Dosyalarını yeniden kaldırın ve monte edin. Daha sonra/ **etc/fstab** girişinin doğru seçeneklere sahip olup olmadığını yeniden kontrol edin.
 
-### <a name="cause-2-throttling"></a>Neden 2: daraltma
+### <a name="cause-2-throttling"></a>Neden 2: Azaltma
 
-Azaltma ve istekleriniz bir kuyruğa gönderiliyor olabilir. Bunu, Azure [izleyici 'de Azure depolama ölçümlerini](../common/storage-metrics-in-azure-monitor.md)kullanarak doğrulayabilirsiniz.
+Azaltma yaşıyor olabilirsiniz ve istekleriniz bir kuyruğa gönderiliyor. [Azure Depolama ölçümlerinden](../common/storage-metrics-in-azure-monitor.md)yararlanarak bunu doğrulayabilirsiniz.
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
-Uygulamanızın [Azure dosya ölçek hedefleri](storage-files-scale-targets.md#azure-files-scale-targets)içinde olduğundan emin olun.
+Uygulamanızın [Azure Dosyaları ölçeği hedefleri](storage-files-scale-targets.md#azure-files-scale-targets)içinde olduğundan emin olun.
 
 <a id="timestampslost"></a>
-## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Windows 'dan Linux 'a dosya kopyalama sırasında zaman damgaları kayboldu
+## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Windows'dan Linux'a dosya kopyalamada zaman damgaları kayboldu
 
-Linux/UNIX platformlarında, farklı kullanıcılar dosya 1 ' i ve dosya 2 ' yi kullanıyorsa, **CP-p** komutu başarısız olur.
+Linux/Unix platformlarında, farklı kullanıcıların kendi dosya 1 ve dosya 2'si varsa **cp -p** komutu başarısız olur.
 
 ### <a name="cause"></a>Nedeni
 
-COPYFILE içindeki **zorla** bayrağı, UNIX üzerinde **CP-p-f** ' y i çalıştırmaya neden olur. Bu komut, sahip olmadığınız dosyanın zaman damgasını da koruyamaz.
+COPYFILE'daki kuvvet bayrağı **f,** Unix'te **cp -p -f'nin** yürütülmesiyle sonuçlanır. Bu komut, sahibi olmadığınız dosyanın zaman damgasını da koruyamaz.
 
 ### <a name="workaround"></a>Geçici çözüm
 
@@ -217,50 +217,50 @@ Dosyaları kopyalamak için depolama hesabı kullanıcısını kullanın:
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: '&lt;Path&gt;' öğesine erişilemiyor: giriş/çıkış hatası
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: '&lt;yol&gt;': Giriş/çıkış hatası erişemiyorum
 
-Bir Azure dosya paylaşımındaki dosyaları ls komutunu kullanarak listelemeyi denediğinizde, komut dosyaları listelenirken askıda kalır. Şu hatayı alırsınız:
+LS komutunu kullanarak bir Azure dosya paylaşımındaki dosyaları listelemeye çalıştığınızda, dosyaları listelerken komut askıda kalır. Aşağıdaki hatayı alırsınız:
 
-**ls: '&lt;Path&gt;' öğesine erişilemiyor: giriş/çıkış hatası**
+**ls:&lt;erişemiyorum'&gt;yolu ': Giriş/çıkış hatası**
 
 
 ### <a name="solution"></a>Çözüm
-Linux çekirdeğini bu sorun için bir düzeltmesine sahip olan aşağıdaki sürümlere yükseltin:
+Linux çekirdeğini, bu soruna yönelik bir çözümü olan aşağıdaki sürümlere yükseltin:
 
 - 4.4.87+
 - 4.9.48+
 - 4.12.11+
-- 4,13 ' den büyük veya buna eşit olan tüm sürümler
+- 4,13'ten büyük veya eşit olan tüm sürümler
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Sembolik bağlantılar oluşturulamıyor-ln: sembolik bağlantı oluşturulamadı 't ': Işlem desteklenmiyor
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Sembolik bağlantılar oluşturamazsınız - ln: sembolik bağlantı 't' oluşturmak için başarısız: İşlem desteklenmiyor
 
 ### <a name="cause"></a>Nedeni
-Varsayılan olarak, CIFS kullanarak Azure dosya paylaşımlarını Linux 'a bağlamak sembolik bağlantılar (symlinks) için desteği etkinleştirmez. Şöyle bir hata görürsünüz:
+Varsayılan olarak, CIFS kullanarak Linux'ta Azure dosya paylaşımları oluşturmak sembolik bağlantılar (symlinks) desteğine olanak sağlamaz. Böyle bir hata görürsünüz:
 ```
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
 ### <a name="solution"></a>Çözüm
-Linux CIFS istemcisi, SMB 2 veya 3 protokolü üzerinden Windows stili sembolik bağlantıların oluşturulmasını desteklemez. Şu anda Linux istemcisi, oluşturma ve izleme işlemleri için [mini + Fransız çözümlemeyin](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) adlı başka bir sembolik bağlantı stilini destekler. Sembolik bağlantılara ihtiyacı olan müşteriler "mfsymlinks" bağlama seçeneğini kullanabilir. Mac 'in kullandığı biçim olduğundan "mfsymlinks" önerilir.
+Linux CIFS istemcisi, Kobİ 2 veya 3 protokolü üzerinde Windows tarzı sembolik bağlantıların oluşturulmasını desteklemez. Şu anda, Linux istemcisi hem oluşturmak ve işlemleri takip etmek için [Minshall + Fransızca symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) denilen sembolik bağlantıların başka bir stil destekler. Sembolik bağlantılara ihtiyaç duyan müşteriler "mfsymlinks" montaj seçeneğini kullanabilirler. Mac'lerin kullandığı biçim olduğu için "mfsymlinks" öneririz.
 
-Symlinks 'i kullanmak için, CIFS Mount komutunuz sonuna aşağıdakini ekleyin:
+Symlinks kullanmak için, CIFS montaj komutunun sonuna aşağıdakileri ekleyin:
 
 ```
 ,mfsymlinks
 ```
 
-Bu nedenle komut aşağıdaki gibi görünür:
+Yani komut gibi bir şey görünüyor:
 
 ```
 sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsymlinks
 ```
 
-Daha sonra [wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers)'de önerildiği şekilde çözümlemeyin oluşturabilirsiniz.
+Daha sonra [wiki'de](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers)önerildiği gibi symlinks oluşturabilirsiniz.
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 <a id="error112"></a>
-## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Bağlama hatası (112): bir yeniden bağlantı zaman aşımı nedeniyle ana bilgisayar çalışmıyor
+## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Montaj hatası(112): Ana bilgisayar düştü" çünkü yeniden bağlantı zaman aşımı
 
 Linux istemcisi uzun süre boşta kaldığında istemcide "112" bağlama hatası oluşur. Uzun bir boşta kalma süresinden sonra istemcinin bağlantısı kesilir ve bağlantı zaman aşımına uğrar.  
 
@@ -277,10 +277,10 @@ Linux çekirdeğindeki bu yeniden bağlantı sorunu artık aşağıdaki değişi
 
 - [Yuva yeniden bağlantısından sonra smb3 oturumunun yeniden bağlantısını geciktirmemek için yeniden bağlantı düzeltildi](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [Yuva yeniden bağlantısından hemen sonra yankı hizmeti çağrısı](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: yeniden bağlanma sırasında olası bir bellek bozulmasını düzeltir](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
-- [CIFS: yeniden bağlantı sırasında karşılıklı mutex 'in olası bir çift kilitlemeyi düzeltir (çekirdek v 4.9 ve üzeri için)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
+- [CIFS: Yeniden bağlanma sırasında olası bir bellek bozulmasını düzeltme](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: Yeniden bağlanma sırasında mutex olası bir çift kilitleme düzeltmek (çekirdek v4.9 ve sonrası için)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Öte yandan bu değişiklikler henüz tüm Linux dağıtımlarına taşınmamış olabilir. Popüler bir Linux dağıtımı kullanıyorsanız, hangi dağıtımlarınızın hangi sürümünün gerekli çekirdek değişikliklerine sahip olduğunu görmek için [Azure dosyalarını Linux Ile kullanma](storage-how-to-use-files-linux.md) bölümüne bakabilirsiniz.
+Öte yandan bu değişiklikler henüz tüm Linux dağıtımlarına taşınmamış olabilir. Popüler bir Linux dağıtımı kullanıyorsanız, dağıtımınızın hangi sürümünde gerekli çekirdek değişikliklerine sahip olduğunu görmek için [Linux ile Azure Dosyalarını Kullan'ı](storage-how-to-use-files-linux.md) denetleyebilirsiniz.
 
 ### <a name="workaround"></a>Geçici çözüm
 
@@ -288,6 +288,14 @@ Bu soruna geçici bir çözüm olarak donanım yoluyla bağlamayı belirtebilirs
 
 En son çekirdek sürümlerine yükseltemiyorsanız Azure dosya paylaşımında bir dosya tutup her 30 saniyede bir (veya daha sık) bu dosyaya yazarak bu soruna geçici bir çözüm getirebilirsiniz. Bunun, dosyaya oluşturma veya değiştirme tarihini yeniden yazma gibi bir yazma işlemi olması gerekir. Aksi takdirde önbelleğe alınan sonuçlar elde edebilirsiniz ve işleminiz yeniden bağlantıyı tetiklemeyebilir.
 
+## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>SMB 3.0 kullanarak Bir Azure dosya paylaşımını monte ettiğinizde "CIFS VFS: arabirim listesini almak için ioctl'de hata -22"
+
+### <a name="cause"></a>Nedeni
+Azure Dosyaları [şu anda Kobİ çok kanallı'yı desteklemediği](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service)için bu hata günlüğe kaydedilir.
+
+### <a name="solution"></a>Çözüm
+Bu hata yoksayılabilir.
+
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 
-Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
+Hala yardıma ihtiyacınız varsa, sorunuzun hızla çözülmesi için [desteğe başvurun.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

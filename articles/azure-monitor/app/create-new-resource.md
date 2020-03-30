@@ -1,63 +1,63 @@
 ---
-title: Yeni bir Azure Application Insights kaynağı oluşturma | Microsoft Docs
-description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile ayarlayın.
+title: Yeni bir Azure Uygulama Öngörüleri kaynağı oluşturun | Microsoft Dokümanlar
+description: Yeni bir canlı uygulama için Uygulama Öngörüleri izlemeyi el ile ayarlayın.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 090c983dcca101557f8dec479d1267275d24908b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c1b3a6920723ad59b714cce4bd69e1b95fe1995f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276055"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132416"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
-Azure Application Insights, uygulamanız hakkındaki verileri bir Microsoft Azure *kaynağında*görüntüler. Bu nedenle yeni bir kaynak oluşturmak, [Yeni bir uygulamayı izlemek için Application Insights ayarlamanın][start]bir parçasıdır. Yeni kaynağınızı oluşturduktan sonra, izleme anahtarını alabilir ve Application Insights SDK 'sını yapılandırmak için kullanabilirsiniz. İzleme anahtarı, telemetrinizi kaynağa bağlar.
+Azure Uygulama Öngörüleri, uygulamanızla ilgili verileri bir Microsoft Azure *kaynağında*görüntüler. Bu nedenle, yeni bir kaynak oluşturmak, [yeni bir uygulamayı izlemek için Uygulama Öngörüleri'ni ayarlamanın bir][start]parçasıdır. Yeni kaynağınızı oluşturduktan sonra enstrümantasyon anahtarını alabilir ve Bunu Application Insights SDK'yı yapılandırmak için kullanabilirsiniz. Enstrümantasyon anahtarı telemetrinizi kaynağa bağlar.
 
-## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure oturum açın
+## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure'da oturum açın
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
-[Azure Portal](https://portal.azure.com)oturum açın ve bir Application Insights kaynağı oluşturun:
+[Azure portalında](https://portal.azure.com)oturum açın ve bir Application Insights kaynağı oluşturun:
 
-![Sol üst köşedeki ' + ' işaretine tıklayın. Geliştirici Araçları sonra Application Insights ' yi seçin](./media/create-new-resource/new-app-insights.png)
+![Sol üst köşedeki '+' işaretini tıklatın. Uygulama Öngörüleri'ni izleyen Geliştirici Araçlarını seçin](./media/create-new-resource/new-app-insights.png)
 
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Ad**      | Benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
-   | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni veya mevcut kaynak grubunun adı. |
-   | **Konum** | Doğu ABD | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
+   | **Adı**      | Benzersiz değer | İzlediğiniz uygulamayı tanımlayan ad. |
+   | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni veya varolan kaynak grubunun adı. |
+   | **Konum** | Doğu ABD | Yakınınızda veya uygulamanızın barındırıldığı yere yakın bir konum seçin. |
 
 > [!NOTE]
-> Aynı kaynak adını farklı kaynak grupları arasında kullanabilmeniz mümkün olsa da, genel olarak benzersiz bir ad kullanılması yararlı olabilir. Bu, gerekli sözdizimini basitleştirdiği için [çapraz kaynak sorguları gerçekleştirmeyi](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) planlıyorsanız yararlı olabilir.
+> Aynı kaynak adını farklı kaynak gruplarında kullanabiliyor olsanız da, genel olarak benzersiz bir ad kullanmak yararlı olabilir. Bu, gerekli sözdizimini basitleştirirken [çapraz kaynak sorguları gerçekleştirmeyi](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) planlıyorsanız yararlı olabilir.
 
-Gerekli alanlara uygun değerleri girin ve ardından **gözden geçir + oluştur**' u seçin.
+Gerekli alanlara uygun değerleri girin ve sonra **Gözden Geçir + oluştur'u**seçin.
 
-![Gerekli alanlara değerler girin ve ardından "gözden geçir + oluştur" u seçin.](./media/create-new-resource/review-create.png)
+![Gerekli alanlara değerleri girin ve ardından "gözden geçir + oluştur" seçeneğini belirleyin.](./media/create-new-resource/review-create.png)
 
-Uygulamanız oluşturulduğunda yeni bir bölme açılır. Bu bölme, izlenen uygulamanızla ilgili performans ve kullanım verilerini görebileceğiniz yerdir. 
+Uygulamanız oluşturulduğunda, yeni bir bölme açılır. Bu bölme, izlenen uygulamanızla ilgili performans ve kullanım verilerini gördüğünüz yerdir. 
 
-## <a name="copy-the-instrumentation-key"></a>İzleme anahtarını kopyalama
+## <a name="copy-the-instrumentation-key"></a>Enstrümantasyon anahtarını kopyalama
 
-İzleme anahtarı, telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. İzleme anahtarını uygulamanızın koduna eklemek için kopyaya ihtiyacınız olacak.
+Enstrümantasyon anahtarı, telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Enstrümantasyon anahtarını kopyalamanız ve uygulamanızın koduna eklemeniz gerekir.
 
-![İzleme anahtarını tıklayın ve kopyalayın](./media/create-new-resource/instrumentation-key.png)
+![Enstrümantasyon tuşunu tıklatın ve kopyalayın](./media/create-new-resource/instrumentation-key.png)
 
-## <a name="install-the-sdk-in-your-app"></a>Uygulamanıza SDK 'Yı yükler
+## <a name="install-the-sdk-in-your-app"></a>Uygulamanızda SDK'yı yükleyin
 
-Application Insights SDK 'sını uygulamanıza yükler. Bu adım büyük ölçüde uygulamanızın türüne bağlıdır.
+Uygulama Öngörüleri SDK'yı uygulamanızda yükleyin. Bu adım, uygulamanızın türüne bağlıdır.
 
-[Uygulamanıza yüklediğiniz SDK 'yı][start]yapılandırmak için izleme anahtarını kullanın.
+[Uygulamanızda yüklediğiniz SDK'yı][start]yapılandırmak için enstrümantasyon anahtarını kullanın.
 
-SDK, ek kod yazmak zorunda kalmadan telemetri gönderen Standart modüller içerir. Kullanıcı eylemlerini izlemek veya sorunları daha ayrıntılı olarak tanılamak için [API 'yi kullanarak][api] kendi telemetrinizi gönderin.
+SDK herhangi bir ek kod yazmak zorunda kalmadan telemetri göndermek standart modülleri içerir. Kullanıcı eylemlerini izlemek veya sorunları daha ayrıntılı olarak tanılamak için kendi telemetrinizi göndermek için [API'yi kullanın.][api]
 
 ## <a name="creating-a-resource-automatically"></a>Otomatik olarak kaynak oluşturma
 
 ### <a name="powershell"></a>PowerShell
 
-Yeni bir Application Insights kaynağı oluşturma
+Yeni bir Uygulama Öngörüleri kaynağı oluşturma
 
 ```powershell
 New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Kind <String>]
@@ -92,19 +92,19 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-Bu cmdlet 'in tam PowerShell belgeleri için ve izleme anahtarını alma hakkında bilgi edinmek için [Azure PowerShell belgelerine](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)danışın.
+Bu cmdlet için tam PowerShell belgeleri ve enstrümantasyon anahtarını nasıl alabildiğini öğrenmek için [Azure PowerShell belgelerine](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)başvurun.
 
-### <a name="azure-cli-preview"></a>Azure CLı (Önizleme)
+### <a name="azure-cli-preview"></a>Azure CLI (önizleme)
 
-Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle şunu çalıştırmanız gerekir:
+Önizleme Uygulama Öngörüleri Azure CLI komutlarına erişmek için öncelikle çalıştırmanız gerekir:
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-`az extension add` komutunu çalıştırmazsanız, şu durumu belirten bir hata iletisi görürsünüz: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Komutu `az extension add` çalıştırmazsanız, aşağıdakileri belirten bir hata iletisi görürsünüz:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
-Artık Application Insights kaynağınız oluşturmak için aşağıdakileri çalıştırabilirsiniz:
+Artık Application Insights kaynağınızı oluşturmak için aşağıdakileri çalıştırabilirsiniz:
 
 ```azurecli
 az monitor app-insights component create --app
@@ -149,7 +149,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Bu komutla ilgili tam Azure CLı belgeleri için ve izleme anahtarını alma hakkında bilgi edinmek için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+Bu komut için tam Azure CLI belgeleri ve enstrümantasyon anahtarını nasıl alabildiğini öğrenmek için [Azure CLI belgelerine](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Tanılama Araması](../../azure-monitor/app/diagnostic-search.md)

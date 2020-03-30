@@ -1,6 +1,6 @@
 ---
-title: Uzak Masaüstü istemcisi Windows sanal masaüstü-Azure sorunlarını giderme
-description: Windows sanal masaüstü kiracı ortamında istemci bağlantılarını ayarlarken oluşan sorunları çözme.
+title: Sorun Giderme Uzak Masaüstü istemcisi Windows Sanal Masaüstü - Azure
+description: Windows Sanal Masaüstü kiracı ortamında istemci bağlantıları ayarlarken sorunları nasıl giderebilirsiniz.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,19 +9,19 @@ ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127497"
 ---
-# <a name="troubleshoot-the-remote-desktop-client"></a>Uzak masaüstü istemcisinde sorun giderme
+# <a name="troubleshoot-the-remote-desktop-client"></a>Uzak Masaüstü istemcisini giderme
 
-Bu makalede, uzak masaüstü istemcisiyle ilgili yaygın sorunlar ve bunların nasıl düzeltileceğini açıklar.
+Bu makalede, Uzak Masaüstü istemcisi ile ortak sorunları ve bunları nasıl düzeltmek için açıklanmaktadır.
 
-## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi yanıt vermeyi durduruyor veya açılamıyor
+## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi yanıt vermeyi durdurur veya açılamaz
 
-Bant dışı (OOB) istemci kayıt defterlerini temizlemek için aşağıdaki PowerShell cmdlet 'lerini kullanın.
+Bant dışı (OOB) istemci kayıt larını temizlemek için aşağıdaki PowerShell cmdlets'i kullanın.
 
 ```PowerShell
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
@@ -33,61 +33,61 @@ Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
 Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 ```
 
-**%AppData%\RdClientRadc** adresine gidin ve tüm içeriği silin.
+**%AppData%\RdClientRadc'a** gidin ve tüm içeriği silin.
 
-Windows 7 ve Windows 10 için uzak masaüstü istemcisini kaldırın ve yeniden yükleyin.
+Windows 7 ve Windows 10 için Uzak Masaüstü istemcisi kaldırın ve yeniden yükleyin.
 
-## <a name="web-client-wont-open"></a>Web istemcisi açılmaz
+## <a name="web-client-wont-open"></a>Web istemcisi açılmıyor
 
-İlk olarak, tarayıcınızda başka bir Web sitesi açarak internet bağlantınızı test edin; Örneğin, [www.Bing.com](https://www.bing.com).
+İlk olarak, tarayıcınızda başka bir web sitesi açarak internet bağlantınızı test edin; örneğin, [www.bing.com](https://www.bing.com).
 
-DNS 'in FQDN 'yi çözediğini onaylamak için **nslookup** kullanın:
+DNS'nin FQDN'yi çözebileceğini doğrulamak için **nslookup'u** kullanın:
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
 ```
 
-Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi gibi başka bir istemciyle bağlanmayı deneyin ve Web istemcisini açıp açmediğinizi denetleyin.
+Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi gibi başka bir istemciyle bağlanmayı deneyin ve web istemcisini açıp açamayacağınızı kontrol edin.
 
-### <a name="opening-another-site-fails"></a>Başka bir site açma başarısız
+### <a name="opening-another-site-fails"></a>Başka bir site açma başarısız olur
 
-Bu, genellikle ağ bağlantısı sorunlarından veya bir ağ kesintisi nedeniyle oluşur. Ağ desteğiyle iletişim kurmanız önerilir.
+Bu genellikle ağ bağlantısı sorunları veya ağ kesintisi neden olur. Ağ desteğiyle iletişim kurmanızı öneririz.
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup adı çözümleyemiyor
+### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup adı çözemez
 
-Bu, genellikle ağ bağlantısı sorunlarından veya bir ağ kesintisi nedeniyle oluşur. Ağ desteğiyle iletişim kurmanız önerilir.
+Bu genellikle ağ bağlantısı sorunları veya ağ kesintisi neden olur. Ağ desteğiyle iletişim kurmanızı öneririz.
 
-### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>İstemciniz bağlanamaz, ancak ağınızdaki diğer istemciler bağlanabilir
+### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>Müşteriniz bağ kuramıyor, ancak ağınızdaki diğer istemciler bağlanabilir
 
-Web istemcisini kullanırken tarayıcınızın çalışmaya başlaması veya çalışmayı durdurması durumunda sorun gidermek için aşağıdaki yönergeleri izleyin:
+Tarayıcınız web istemcisini kullanırken çalışmaya başlarsa veya çalışmayı durdurursa, sorun giderme için aşağıdaki yönergeleri izleyin:
 
 1. Tarayıcıyı yeniden başlatın.
-2. Tarayıcı tanımlama bilgilerini temizleyin. Bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Tarayıcı önbelleğini temizleyin. [Tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU)bölümüne bakın.
-4. Tarayıcıyı özel modda açın.
+2. Tarayıcı çerezlerini temizleyin. [Bkz. Internet Explorer'daki çerez dosyaları nasıl silinir.](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)
+3. Tarayıcı önbelleğini temizleyin. [Tarayıcınız için net tarayıcı önbelleğine](https://binged.it/2RKyfdU)bakın.
+4. Özel modda tarayıcıyı açın.
 
-## <a name="web-client-stops-responding-or-disconnects"></a>Web istemcisi yanıt vermeyi durduruyor veya bağlantıyı keser
+## <a name="web-client-stops-responding-or-disconnects"></a>Web istemcisi yanıt vermeyi durdurur veya bağlantıyı keser
 
 Başka bir tarayıcı veya istemci kullanarak bağlanmayı deneyin.
 
-### <a name="other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Diğer tarayıcılar ve istemciler de hatalı veya açılmayabilir
+### <a name="other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Diğer tarayıcılar ve istemciler de arıza veya açmak için başarısız
 
-Tarayıcıları değiştirdikten sonra bile sorunlar devam ederse, sorun tarayıcınızla, ancak ağınızla birlikte olmayabilir. Ağ desteğiyle iletişim kurmanız önerilir.
+Tarayıcıları değiştirdikten sonra bile sorunlar devam ederse, sorun tarayıcınızda değil, ağınızla ilgili olabilir. Ağ desteğiyle iletişim kurmanızı öneririz.
 
-## <a name="web-client-keeps-prompting-for-credentials"></a>Web istemcisi kimlik bilgileri istemini tutar
+## <a name="web-client-keeps-prompting-for-credentials"></a>Web istemcisi kimlik bilgileri için istekte tutar
 
-Web istemcisi kimlik bilgileri isteyip istemediğini devam ederse, şu yönergeleri izleyin:
+Web istemcisi kimlik bilgilerini sormaya devam ederse, aşağıdaki yönergeleri izleyin:
 
-1. Web istemcisi URL 'sinin doğru olduğundan emin olun.
-2. Kullandığınız kimlik bilgilerinin, URL 'ye bağlı Windows sanal masaüstü ortamı için olduğunu doğrulayın.
-3. Tarayıcı tanımlama bilgilerini temizleyin. Daha ayrıntılı bilgi için bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Tarayıcı önbelleğini temizleyin. Daha ayrıntılı bilgi için bkz. [tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU).
-5. Tarayıcınızı özel modda açın.
+1. Web istemcisi URL'sinin doğru olduğunu onaylayın.
+2. Kullandığınız kimlik bilgilerinin URL'ye bağlı Windows Sanal Masaüstü ortamı için olduğunu doğrulayın.
+3. Tarayıcı çerezlerini temizleyin. Daha fazla bilgi için [Internet Explorer'daki çerez dosyalarının nasıl silinine](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)bakın.
+4. Tarayıcı önbelleğini temizleyin. Daha fazla bilgi için [tarayıcınız için tarayıcı önbelleğini temizle'ye](https://binged.it/2RKyfdU)bakın.
+5. Tarayıcınızı Özel modda açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
-- Bir Windows sanal masaüstü ortamında kiracı ve konak havuzu oluştururken oluşan sorunları gidermek için bkz. [kiracı ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
-- Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
-- Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
-- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Windows Sanal Masaüstü sorun giderme ve yükseltme parçalarına genel bakış için [Sorun Giderme genel bakışı, geri bildirim ve desteğe](troubleshoot-set-up-overview.md)bakın.
+- Windows Sanal Masaüstü ortamında kiracı ve ana bilgisayar havuzu oluştururken sorunları gidermek için [Bkz. Kiracı ve ana bilgisayar havuzu oluşturma.](troubleshoot-set-up-issues.md)
+- Windows Sanal Masaüstü'nde sanal makine (VM) yapılandırırken sorunları gidermek için [Oturum ana bilgisayar sanal makine yapılandırmasına](troubleshoot-vm-configuration.md)bakın.
+- Windows Virtual Desktop ile PowerShell kullanırken sorunları gidermek için [Windows Virtual Desktop PowerShell'e](troubleshoot-powershell.md)bakın.
+- Bir sorun giderme öğreticisine geçmek için [Bkz. Öğretici: Kaynak Yöneticisi şablonu dağıtımları.](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)

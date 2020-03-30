@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
 ms.openlocfilehash: 3572c308310c49eed48ccb25dfa7cb0fb161515f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70164504"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Azure Data Lake Analytics nedir?
@@ -42,10 +42,10 @@ Data Lake Analytics, büyük veri iş yüklerini çalıştırmaya yönelik uygun
     
 ### <a name="works-with-all-your-azure-data"></a>Tüm Azure verilerinizle çalışır
   
-Data Lake Analytics en yüksek performans, aktarım hızı ve paralelleştirme için Azure Data Lake Storage ve Azure depolama Blobları, Azure SQL veritabanı, Azure ambarı ile birlikte kullanılabilir.
+Data Lake Analytics, en yüksek performans, iş ortası ve paralelleştirme için Azure Veri Gölü Depolama ile çalışır ve Azure Depolama lekeleri, Azure SQL Veritabanı, Azure Ambarı ile çalışır.
 
 ### <a name="next-steps"></a>Sonraki adımlar
  
-  * [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli.md) kullanarak Data Lake Analytics ile çalışmaya başlama
-  * [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md) kullanarak Azure Data Lake Analytics'i yönetme
+  * [Azure portalı](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI'yi](data-lake-analytics-get-started-cli.md) kullanarak Veri Gölü Analitiği ile başlayın
+  * [Azure portalı](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Düğümü.js](data-lake-analytics-manage-use-nodejs.md) kullanarak Azure Veri Gölü Analizi'ni yönetme
   * [Data Lake Analytics ile maliyetleri denetleme ve tasarruf etme](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

@@ -1,6 +1,6 @@
 ---
-title: Etkin-Etkin S2S Azure VPN Gateway bağlantılarını yapılandırma
-description: Bu makalede, Azure Resource Manager ve PowerShell kullanarak Azure VPN ağ geçitleri ile etkin-etkin bağlantıları yapılandırma işlemi adım adım açıklanmaktadır.
+title: Etkin S2S Azure VPN Ağ Geçidi bağlantılarını yapılandırma
+description: Bu makale, Azure Kaynak Yöneticisi ve PowerShell kullanarak Azure VPN Ağ Geçitleri ile etkin olan bağlantıları yapılandırmanız için size yardımcı olur.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -9,52 +9,52 @@ ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
 ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244647"
 ---
-# <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ağ geçitleri ile etkin-etkin S2S VPN bağlantılarını yapılandırma
+# <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Etkin S2S VPN bağlantılarını Azure VPN Ağ Geçitleri ile yapılandırma
 
-Bu makale, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak etkin-etkin şirketler arası ve VNet-VNet bağlantıları oluşturma adımlarında size kılavuzluk eder.
+Bu makalede, Kaynak Yöneticisi dağıtım modelini ve PowerShell'i kullanarak etkin-etkin binalar arası ve VNet'ten VNet'e bağlantılar oluşturmak için gereken adımlara rehberlik eder.
 
 
 
-## <a name="about-highly-available-cross-premises-connections"></a>Yüksek oranda kullanılabilir şirket içi bağlantılar hakkında
-Şirketler arası ve VNet 'ten VNet 'e bağlantı için yüksek kullanılabilirlik elde etmek üzere, birden fazla VPN ağ geçidi dağıtmanız ve ağlarınız ile Azure arasında birden çok paralel bağlantı oluşturmanız gerekir. Bağlantı seçeneklerine ve topolojisine genel bir bakış için bkz. [yüksek oranda kullanılabilir şirket içi ve VNET 'Ten VNET 'e bağlantı](vpn-gateway-highlyavailable.md) .
+## <a name="about-highly-available-cross-premises-connections"></a>Yüksek kullanılabilir binalar arası bağlantılar hakkında
+Tesisler arası ve VNet'e VNet bağlantısı için yüksek kullanılabilirlik elde etmek için, birden çok VPN ağ geçidi dağıtmanız ve ağlarınızla Azure arasında birden çok paralel bağlantı kurmanız gerekir. Bağlantı seçenekleri ve topolojiye genel bir bakış için [Yüksek Kullanılabilirlik Binaları ve VNet'e VNet Bağlantısı](vpn-gateway-highlyavailable.md) bölümüne bakın.
 
-Bu makalede, etkin-etkin bir çapraz şirket içi VPN bağlantısı ve iki sanal ağ arasında etkin-etkin bağlantı ayarlama yönergeleri sağlanmaktadır.
+Bu makalede, etkin-etkin çapraz-premises VPN bağlantısı ve iki sanal ağ arasında etkin-etkin bağlantı kurmak için yönergeler sağlar.
 
-* [1. Bölüm-Azure VPN ağ geçidinizi etkin-etkin modda oluşturma ve yapılandırma](#aagateway)
-* [Bölüm 2-etkin-etkin şirketler arası bağlantılar oluşturma](#aacrossprem)
-* [3. kısım-etkin-sanal VNet-VNet bağlantıları oluşturma](#aav2v)
+* [Bölüm 1 - Azure VPN ağ geçidinizi etkin-etkin modda oluşturun ve yapılandırın](#aagateway)
+* [Bölüm 2 - Aktif-etkin çapraz tesis bağlantıları kurun](#aacrossprem)
+* [Bölüm 3 - Aktif VNet-vNet bağlantıları kurun](#aav2v)
 
-Zaten bir VPN ağ geçidiniz varsa şunları yapabilirsiniz:
-* [Mevcut bir VPN ağ geçidini etkin-bekleme modundan etkin-etkin olarak güncelleştirme veya tam tersi](#aaupdate)
+Zaten bir VPN ağ geçidiniz varsa, şunları yapabilirsiniz:
+* [Varolan bir VPN ağ geçidini etkin beklemeden etkin etkine veya tam tersi güncelleştirme](#aaupdate)
 
-Gereksinimlerinizi karşılayan daha karmaşık, yüksek oranda kullanılabilir bir ağ topolojisi oluşturmak için bunları birlikte birleştirebilirsiniz.
+İhtiyaçlarınızı karşılayan daha karmaşık ve yüksek kullanılabilir bir ağ topolojisi oluşturmak için bunları bir araya getirebilirsiniz.
 
 > [!IMPORTANT]
-> Etkin-etkin mod yalnızca aşağıdaki SKU 'Ları kullanır: 
+> Etkin-etkin modda yalnızca aşağıdaki SUS'lar kullanır: 
 >   * VpnGw1, VpnGw2, VpnGw3
->   * HighPerformance (eski eski SKU 'Lar için)
+>   * HighPerformance (eski eski SUS'lar için)
 
-## <a name ="aagateway"></a>1. bölüm-etkin-etkin VPN ağ geçitleri oluşturma ve yapılandırma
-Aşağıdaki adımlar, Azure VPN ağ geçidinizi etkin-etkin modlarda yapılandırır. Etkin-etkin ve etkin bekleme geçitleri arasındaki temel farklılıklar:
+## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>Bölüm 1 - Etkin-etkin VPN ağ geçitleri oluşturma ve yapılandırma
+Aşağıdaki adımlar, Azure VPN ağ geçidinizi etkin etkin modlarda yapılandıracaktır. Etkin-etkin ve etkin bekleme ağ geçitleri arasındaki temel farklar:
 
-* İki genel IP adresi ile iki ağ geçidi IP yapılandırması oluşturmanız gerekir
-* EnableActiveActiveFeature bayrağını ayarlamanız gerekiyor
-* Ağ Geçidi SKU 'SU VpnGw1, VpnGw2, VpnGw3 veya HighPerformance (eski SKU) olmalıdır.
+* İki genel IP adresine sahip iki Ağ Geçidi IP yapılandırması oluşturmanız gerekir
+* EnableActiveActiveFeature bayrağını ayarlamanız gerekir
+* Ağ geçidi SKU VpnGw1, VpnGw2, VpnGw3 veya HighPerformance (eski SKU) olmalıdır.
 
-Diğer özellikler, etkin olmayan etkin ağ geçitleriyle aynıdır. 
+Diğer özellikler etkin olmayan etkin ağ geçitleri ile aynıdır. 
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 * Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
-* Azure Resource Manager PowerShell cmdlet’lerini yüklemelisiniz. PowerShell cmdlet 'lerini yükleme hakkında daha fazla bilgi için bkz. [Azure PowerShell genel bakış](/powershell/azure/overview) .
+* Azure Resource Manager PowerShell cmdlet’lerini yüklemelisiniz. PowerShell cmdlets'i yükleme hakkında daha fazla bilgi için [Azure PowerShell'e Genel Bakış'a](/powershell/azure/overview) bakın.
 
-### <a name="step-1---create-and-configure-vnet1"></a>1\. adım-VNet1 oluşturma ve yapılandırma
-#### <a name="1-declare-your-variables"></a>1. değişkenlerinizi bildirin
+### <a name="step-1---create-and-configure-vnet1"></a>Adım 1 - VNet1 oluşturma ve yapılandırma
+#### <a name="1-declare-your-variables"></a>1. Değişkenlerinizi bildirin
 Bu alıştırmaya değişkenlerimizi bildirerek başlayacağız. Aşağıdaki örnekte bu alıştırmada kullanılan değişkenler bildirilmektedir. Üretim için yapılandırma sırasında bu değerleri kendi değerlerinizle değiştirdiğinizden emin olun. Bu tür yapılandırmaları tanımaya başlamak için adımları gözden geçiriyorsanız bu değişkenleri kullanabilirsiniz. Değişkenleri değiştirin, daha sonra kopyalayın ve PowerShell konsolunuza yapıştırın.
 
 ```powershell
@@ -82,7 +82,7 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. aboneliğinize bağlanın ve yeni bir kaynak grubu oluşturun
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Aboneliğinize bağlanın ve yeni bir kaynak grubu oluşturun
 Resource Manager cmdlet’lerini kullanmak için PowerShell moduna geçtiğinizden emin olun. Daha fazla bilgi için [Windows PowerShell’i Resource Manager ile kullanma](../powershell-azure-resource-manager.md) konusuna bakın.
 
 PowerShell konsolunuzu açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
@@ -93,7 +93,7 @@ Select-AzSubscription -SubscriptionName $Sub1
 New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
 
-#### <a name="3-create-testvnet1"></a>3. TestVNet1 oluşturma
+#### <a name="3-create-testvnet1"></a>3. TestVNet1 oluştur
 Aşağıdaki örnekte TestVNet1 adlı bir sanal ağ ve üç alt ağ oluşturulmaktadır. Biri GatewaySubnet, biri FrontEnd, diğeri BackEnd’dir. Kendi değerlerinizi yerleştirirken ağ geçidi alt ağınızı özellikle GatewaySubnet olarak adlandırmanız önem taşır. Başka bir ad kullanırsanız ağ geçidi oluşturma işleminiz başarısız olur.
 
 ```powershell
@@ -104,9 +104,9 @@ $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWS
 New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>2\. adım-etkin-etkin mod ile TestVNet1 için VPN ağ geçidini oluşturma
-#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. genel IP adreslerini ve ağ geçidi IP yapılandırmasını oluşturma
-Sanal ağınız için oluşturacağınız ağ geçidine ayrılacak iki genel IP adresi isteyin. Ayrıca, gereken alt ağı ve IP yapılandırmasını da tanımlayacaksınız.
+### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>Adım 2 - Etkin modda TestVNet1 için VPN ağ geçidi oluşturun
+#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. Ortak IP adreslerini ve ağ geçidi IP yapılandırmalarını oluşturun
+VNet'iniz için oluşturacağınız ağ geçidine tahsis edilecek iki genel IP adresi isteyin. Ayrıca gerekli alt ağ ve IP yapılandırmalarını da tanımlarsınız.
 
 ```powershell
 $gw1pip1 = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
@@ -118,15 +118,15 @@ $gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $sub
 $gw1ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $subnet1 -PublicIpAddress $gw1pip2
 ```
 
-#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. etkin-etkin yapılandırmayla VPN Gateway oluşturma
-TestVNet1 için sanal ağ geçidini oluşturun. İki GatewayIpConfig girişi olduğunu ve EnableActiveActiveFeature bayrağının ayarlandığını unutmayın. Bir ağ geçidini oluşturmak biraz zaman alabilir (tamamlanması 45 dakika ya da daha fazla sürer).
+#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. Aktif-etkin yapılandırma ile VPN ağ geçidi oluşturma
+TestVNet1 için sanal ağ geçidini oluşturun. İki Ağ GeçidiConfig girişi olduğunu ve EnableActiveActiveFeature bayrağının ayarladığını unutmayın. Bir ağ geçidini oluşturmak biraz zaman alabilir (tamamlanması 45 dakika ya da daha fazla sürer).
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
-#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. Ağ Geçidi genel IP adreslerini ve BGP eşi IP adresini edinin
-Ağ Geçidi oluşturulduktan sonra, Azure VPN Gateway BGP eşi IP adresini edinmeniz gerekecektir. Bu adres, Azure VPN Gateway şirket içi VPN cihazlarınız için BGP eşi olarak yapılandırmak için gereklidir.
+#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. Ağ geçidi ortak IP adreslerini ve BGP Peer IP adresini edinin
+Ağ geçidi oluşturulduktan sonra, Azure VPN Ağ Geçidi'ndeki BGP Peer IP adresini almanız gerekir. Bu adres, şirket içi VPN aygıtlarınız için Azure VPN Ağ Geçidi'ni BGP Eş olarak yapılandırmak için gereklidir.
 
 ```powershell
 $gw1pip1 = Get-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1
@@ -134,7 +134,7 @@ $gw1pip2 = Get-AzPublicIpAddress -Name $GW1IPName2 -ResourceGroupName $RG1
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 ```
 
-VPN Gateway 'niz için ayrılan iki genel IP adresini ve her bir ağ geçidi örneği için karşılık gelen BGP eşi IP adreslerini göstermek için aşağıdaki cmdlet 'leri kullanın:
+VPN ağ geçidiniz için ayrılan iki genel IP adresini ve her ağ geçidi örneği için karşılık gelen BGP Peer IP adreslerini göstermek için aşağıdaki cmdlets'i kullanın:
 
 ```powershell
 PS D:\> $gw1pip1.IpAddress
@@ -151,20 +151,20 @@ PS D:\> $vnet1gw.BgpSettingsText
 }
 ```
 
-Ağ Geçidi örnekleri ve karşılık gelen BGP eşleme adresleri için genel IP adreslerinin sırası aynıdır. Bu örnekte, 40.112.190.5 genel IP 'si olan ağ geçidi VM 'si BGP eşleme adresi olarak 10.12.255.4 kullanır ve 138.91.156.129 ile ağ geçidi 10.12.255.5 kullanır. Bu bilgiler, etkin-etkin ağ geçidine bağlanan şirket içi VPN cihazlarınızı ayarlarken gereklidir. Ağ Geçidi, tüm adreslerle aşağıdaki diyagramda gösterilir:
+Ağ geçidi örnekleri için ortak IP adreslerinin sırası ve ilgili BGP Peering Adresleri aynıdır. Bu örnekte, 40.112.190.5 genel IP'li ağ geçidi VM, BGP Peering Adresi olarak 10.12.255.4, 138.91.156.129'lu ağ geçidi ise 10.12.255.5'i kullanacaktır. Bu bilgiler, etkin ağ geçidine bağlanan şirket içi VPN aygıtlarınızı ayarlarken gereklidir. Ağ geçidi aşağıdaki diyagramda tüm adresleri içeren olarak gösterilir:
 
-![etkin-etkin ağ geçidi](./media/vpn-gateway-activeactive-rm-powershell/active-active-gw.png)
+![etkin ağ geçidi](./media/vpn-gateway-activeactive-rm-powershell/active-active-gw.png)
 
-Ağ Geçidi oluşturulduktan sonra, etkin-etkin şirketler arası veya VNet-VNet bağlantısı kurmak için bu ağ geçidini kullanabilirsiniz. Aşağıdaki bölümler, Alıştırmayı tamamlamaya yönelik adımları adım adım göstermektedir.
+Ağ geçidi oluşturulduktan sonra, etkin olan binalar arası veya VNet'ten VNet bağlantısına bağlantı kurmak için bu ağ geçidini kullanabilirsiniz. Aşağıdaki bölümler de egzersizi tamamlamak için basamaklardan geçer.
 
-## <a name ="aacrossprem"></a>2. bölüm-etkin-etkin şirketler arası bağlantı kurma
-Şirketler arası bağlantı kurmak için şirket içi VPN cihazınızı temsil eden bir yerel ağ geçidi oluşturmanız ve Azure VPN ağ geçidini yerel ağ geçidine bağlamak için bir bağlantı oluşturmanız gerekir. Bu örnekte, Azure VPN Gateway etkin-etkin modunda. Sonuç olarak, yalnızca bir şirket içi VPN cihazı (yerel ağ geçidi) ve bir bağlantı kaynağı olsa da, her iki Azure VPN ağ geçidi örneği de şirket içi cihazla S2S VPN tünellerini kurar.
+## <a name="part-2---establish-an-active-active-cross-premises-connection"></a><a name ="aacrossprem"></a>Bölüm 2 - Aktif-etkin bir tesis içi bağlantısı kurun
+Binalar arası bağlantı kurmak için, şirket içi VPN aygıtınızı temsil edecek bir Yerel Ağ Ağ Ağ Geçidi ve Azure VPN ağ geçidini yerel ağ ağ geçidine bağlamak için bir Bağlantı oluşturmanız gerekir. Bu örnekte, Azure VPN ağ geçidi etkin-etkin moddadır. Sonuç olarak, yalnızca bir şirket içi VPN aygıtı (yerel ağ ağ geçidi) ve bir bağlantı kaynağı olmasına rağmen, her iki Azure VPN ağ geçidi örneği de şirket içi aygıtla S2S VPN tünelleri kurar.
 
-Devam etmeden önce lütfen bu alıştırmanın 1. [kısmını](#aagateway) tamamladığınızdan emin olun.
+Devam etmeden önce, lütfen bu alıştırmanın [Bölüm 1'ini](#aagateway) tamamladığınızdan emin olun.
 
-### <a name="step-1---create-and-configure-the-local-network-gateway"></a>1\. adım-yerel ağ geçidini oluşturma ve yapılandırma
-#### <a name="1-declare-your-variables"></a>1. değişkenlerinizi bildirin
-Bu alıştırma diyagramda gösterilen yapılandırmayı oluşturmaya devam edecektir. Değerleri, yapılandırma için kullanmak istediğiniz değerlerle değiştirdiğinizden emin olun.
+### <a name="step-1---create-and-configure-the-local-network-gateway"></a>Adım 1 - Yerel ağ ağ geçidioluşturma ve yapılandırma
+#### <a name="1-declare-your-variables"></a>1. Değişkenlerinizi bildirin
+Bu alıştırma, diyagramda gösterilen yapılandırmayı oluşturmaya devam edecektir. Değerleri, yapılandırma için kullanmak istediğiniz değerlerle değiştirdiğinizden emin olun.
 
 ```powershell
 $RG5 = "TestAARG5"
@@ -176,38 +176,38 @@ $LNGASN5 = 65050
 $BGPPeerIP51 = "10.52.255.253"
 ```
 
-Yerel ağ geçidi parametreleriyle ilgili dikkat edilmesi gereken birkaç şey:
+Yerel ağ ağ geçidi parametreleri ile ilgili dikkat edilmesi gereken birkaç şey:
 
-* Yerel ağ geçidi, VPN ağ geçidiyle aynı veya farklı bir konum ve kaynak grubunda olabilir. Bu örnek, bunları farklı kaynak gruplarında, ancak aynı Azure konumunda gösterir.
-* Yukarıda gösterildiği gibi yalnızca bir şirket içi VPN cihazı varsa, etkin-etkin bağlantı BGP protokolüyle veya olmadan çalışabilir. Bu örnek, şirket içi bağlantı için BGP kullanır.
-* BGP etkinse, yerel ağ geçidi için bildirmeniz gereken önek, VPN cihazınızdaki BGP eşi IP adresinizin ana bilgisayar adresidir. Bu durumda, "10.52.255.253/32" öğesinin bir/32 ön eki olur.
-* Bir anımsatıcı olarak, şirket içi ağlarınız ve Azure VNet arasında farklı BGP 'ler kullanmanız gerekir. Aynı ise, şirket içi VPN cihazınız zaten diğer BGP komşuları ile ASN 'yi kullanıyorsa VNet ASN 'nizi değiştirmeniz gerekir.
+* Yerel ağ ağ geçidi VPN ağ geçidi yle aynı veya farklı konum ve kaynak grubunda olabilir. Bu örnek, bunları farklı kaynak gruplarında ancak aynı Azure konumunda gösterir.
+* Yukarıda gösterildiği gibi şirket içinde yalnızca bir VPN aygıtı varsa, etkin-etkin bağlantı BGP protokolü ile veya olmadan çalışabilir. Bu örnek, binalar arası bağlantı için BGP kullanır.
+* BGP etkinse, yerel ağ ağ geçidi için bildirmeniz gereken önek, VPN aygıtınızdaki BGP Peer IP adresinizin ana bilgisayar adresidir. Bu durumda, "10.52.255.253/32" bir /32 öneki's.
+* Anımsatıcı olarak, şirket içi ağlarınız ve Azure VNet'iniz arasında farklı BGP ASN'ler kullanmanız gerekir. Bunlar aynıysa, şirket içi VPN aygıtınız diğer BGP komşularıyla eşlemek için ASN'yi zaten kullanıyorsa VNet ASN'nizi değiştirmeniz gerekir.
 
-#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. site5 için yerel ağ geçidi oluşturma
-Devam etmeden önce lütfen 1. Abonelik’e hala bağlı olduğunuzdan emin olun. Henüz oluşturulmadıysa kaynak grubunu oluşturun.
+#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Site5 için yerel ağ ağ geçidi oluşturma
+Devam etmeden önce lütfen 1. Abonelik’e hala bağlı olduğunuzdan emin olun. Henüz oluşturulamazsa kaynak grubunu oluşturun.
 
 ```powershell
 New-AzResourceGroup -Name $RG5 -Location $Location5
 New-AzLocalNetworkGateway -Name $LNGName51 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP51 -AddressPrefix $LNGPrefix51 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP51
 ```
 
-### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>2\. adım-VNet ağ geçidini ve yerel ağ geçidini bağlama
-#### <a name="1-get-the-two-gateways"></a>1. iki ağ geçidini alın
+### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Adım 2 - VNet ağ geçidini ve yerel ağ ağ geçidini bağlayın
+#### <a name="1-get-the-two-gateways"></a>1. İki ağ geçidini alın
 
 ```powershell
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw1 = Get-AzLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. TestVNet1 to site5 Connection 'ı oluşturun
-Bu adımda, TestVNet1 ' dan "EnableBGP" $True olarak ayarlanan Site5_1 bağlantısını oluşturacaksınız.
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. TestVNet1'den Site5 bağlantısına bağlantı oluşturun
+Bu adımda, testvnet1'den Site5_1'a $True ayarlanmış "EnableBGP" ile bağlantı oluşturursunuz.
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3. Şirket içi VPN cihazınız için VPN ve BGP parametreleri
-Aşağıdaki örnekte, bu alıştırma için şirket içi VPN cihazınızda BGP yapılandırması bölümüne gireceğiniz parametreler listelenmektedir:
+#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3. Şirket içi VPN aygıtınız için VPN ve BGP parametreleri
+Aşağıdaki örnekte, bu alıştırma için şirket içi VPN cihazınızdaki BGP yapılandırma bölümüne gireceğiniz parametreler listelenir:
 
 ```
 - Site5 ASN            : 65050
@@ -221,15 +221,15 @@ Aşağıdaki örnekte, bu alıştırma için şirket içi VPN cihazınızda BGP 
 - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 ```
 
-Bağlantı birkaç dakika sonra oluşturulmalıdır ve IPSec bağlantısı kurulduktan sonra BGP eşleme oturumu başlatılır. Bu örnek şu ana kadar tek bir şirket içi VPN cihazını yapılandırmıştır ve bu nedenle aşağıda gösterildiği gibi diyagramda sonuç verilmiştir:
+Bağlantı birkaç dakika sonra kurulmalıdır ve IPsec bağlantısı kurulduktan sonra BGP eşleme oturumu başlar. Bu örnek şimdiye kadar yalnızca bir şirket içi VPN aygıtını yapılandırarak aşağıda gösterilen diyagramla sonuçlanmıştır:
 
-![etkin-etkin-çapraz spkal](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
+![aktif-aktif-çapraz prem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
-### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>3\. adım-şirket içi VPN cihazlarını etkin-etkin VPN ağ geçidine bağlama
-Aynı şirket içi ağda iki VPN aygıtınız varsa, Azure VPN ağ geçidini ikinci VPN cihazına bağlayarak çift artıklık elde edebilirsiniz.
+### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>Adım 3 - İki şirket içi VPN aygıtını aktif-etkin VPN ağ geçidine bağlayın
+Aynı şirket içi ağda iki VPN aygıtınız varsa, Azure VPN ağ geçidini ikinci VPN aygıtına bağlayarak çift fazlalık elde edebilirsiniz.
 
-#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. site5 için ikinci yerel ağ geçidini oluşturun
-İkinci yerel ağ geçidi için ağ geçidi IP adresi, adres ön eki ve BGP eşleme adresi, aynı şirket içi ağ için önceki yerel ağ geçidi ile çakışmamalıdır.
+#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. Site5 için ikinci yerel ağ ağ geçidi ni oluşturma
+İkinci yerel ağ ağ geçidinin ağ geçidi IP adresi, adres öneki ve BGP eşleme adresi, aynı şirket içi ağ için önceki yerel ağ ağ ağ geçidiyle çakışmamalıdır.
 
 ```powershell
 $LNGName52 = "Site5_2"
@@ -242,8 +242,8 @@ $BGPPeerIP52 = "10.52.255.254"
 New-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
-#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. VNet ağ geçidini ve ikinci yerel ağ geçidini bağlayın
-"EnableBGP" olarak ayarlanan $True Site5_2 için bağlantıyı oluşturma
+#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. VNet ağ geçidini ve ikinci yerel ağ ağ geçidini bağlayın
+TestVNet1'den Site5_2'a "EnableBGP" ayarlı bağlantıyı $True
 
 ```powershell
 $lng5gw2 = Get-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
@@ -253,8 +253,8 @@ $lng5gw2 = Get-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
 New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw2 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3. ikinci şirket içi VPN cihazınız için VPN ve BGP parametreleri
-Benzer şekilde, aşağıdaki ikinci VPN cihazına gireceğiniz parametreleri listeler:
+#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3. İkinci şirket içi VPN aygıtınız için VPN ve BGP parametreleri
+Benzer şekilde, aşağıda ikinci VPN cihazına gireceğiniz parametreler listelenir:
 
 ```
 - Site5 ASN            : 65050
@@ -268,21 +268,21 @@ Benzer şekilde, aşağıdaki ikinci VPN cihazına gireceğiniz parametreleri li
 - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 ```
 
-Bağlantı (tüneller) kurulduktan sonra, şirket içi ağınızı ve Azure 'u bağlayan çift yedekli VPN cihazlarından ve tünellere sahip olursunuz:
+Bağlantı (tüneller) kurulduktan sonra, şirket içi ağınızı ve Azure'unuzu bağlayan çift gereksiz VPN aygıtınız ve tüneliniz olacaktır:
 
-![Çift yedeklilik-çapraz eğri](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
+![çift fazlalık-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
-## <a name ="aav2v"></a>3. kısım-etkin-etkin VNet-VNet bağlantısı oluşturma
-Bu bölümde BGP ile etkin bir VNet-VNet bağlantısı oluşturulur. 
+## <a name="part-3---establish-an-active-active-vnet-to-vnet-connection"></a><a name ="aav2v"></a>Bölüm 3 - Etkin-etkin VNet-to-VNet bağlantısı kurun
+Bu bölüm, BGP ile etkin vnet-to-VNet bağlantısı oluşturur. 
 
-Aşağıdaki yönergeler, yukarıda listelenen geçmiş adımların devamı niteliğindedir. TestVNet1 ve BGP ile VPN Gateway oluşturmak ve yapılandırmak için [Bölüm 1](#aagateway) ' i tamamlamalısınız. 
+Aşağıdaki yönergeler, yukarıda listelenen geçmiş adımların devamı niteliğindedir. TestVNet1 ve BGP ile VPN Ağ Geçidi oluşturmak ve yapılandırmak için [Bölüm 1'i](#aagateway) tamamlamanız gerekir. 
 
-### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>1\. adım-TestVNet2 ve VPN Gateway oluşturma
-Yeni sanal ağın TestVNet2, IP adresi alanının VNet aralıklarından hiçbiriyle çakışmadığından emin olmak önemlidir.
+### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>Adım 1 - TestVNet2 ve VPN ağ geçidi oluşturun
+Yeni sanal ağın IP adres alanı TestVNet2'nin VNet aralıklarınızın hiçbiriyle örtüşmediğinden emin olmak önemlidir.
 
-Bu örnekte, sanal ağlar aynı aboneliğe aittir. Farklı abonelikler arasında VNet-VNet bağlantıları ayarlayabilirsiniz; daha fazla bilgi edinmek için lütfen [VNET 'Ten VNET 'e bağlantı yapılandırma](vpn-gateway-vnet-vnet-rm-ps.md) bölümüne bakın. BGP 'yi etkinleştirmek için bağlantıları oluştururken "-EnableBgp $True" öğesini eklediğinizden emin olun.
+Bu örnekte, sanal ağlar aynı aboneye aittir. Farklı abonelikler arasında VNet-vNet bağlantıları ayarlayabilirsiniz; daha fazla ayrıntı edinmek için lütfen [VNet'ten VNet'e bağlantı yapılat'a](vpn-gateway-vnet-vnet-rm-ps.md) bakın. BGP'yi etkinleştirmek için bağlantıları oluştururken "-EnableBgp $True" eklediğinizden emin olun.
 
-#### <a name="1-declare-your-variables"></a>1. değişkenlerinizi bildirin
+#### <a name="1-declare-your-variables"></a>1. Değişkenlerinizi bildirin
 Değerleri, yapılandırma için kullanmak istediğiniz değerlerle değiştirdiğinizden emin olun.
 
 ```powershell
@@ -308,7 +308,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. yeni kaynak grubunda TestVNet2 oluşturun
+#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. Yeni kaynak grubunda TestVNet2 oluşturma
 
 ```powershell
 New-AzResourceGroup -Name $RG2 -Location $Location2
@@ -320,8 +320,8 @@ $gwsub2 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix $GWS
 New-AzVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. TestVNet2 için etkin-etkin VPN Gateway oluşturma
-Sanal ağınız için oluşturacağınız ağ geçidine ayrılacak iki genel IP adresi isteyin. Ayrıca, gereken alt ağı ve IP yapılandırmasını da tanımlayacaksınız.
+#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. TestVNet2 için aktif-aktif VPN ağ geçidi oluşturun
+VNet'iniz için oluşturacağınız ağ geçidine tahsis edilecek iki genel IP adresi isteyin. Ayrıca gerekli alt ağ ve IP yapılandırmalarını da tanımlarsınız.
 
 ```powershell
 $gw2pip1 = New-AzPublicIpAddress -Name $GW2IPName1 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
@@ -333,16 +333,16 @@ $gw2ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW2IPconf1 -Subnet $sub
 $gw2ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW2IPconf2 -Subnet $subnet2 -PublicIpAddress $gw2pip2
 ```
 
-AS numarası ve "EnableActiveActiveFeature" bayrağıyla VPN ağ geçidini oluşturun. Azure VPN ağ geçitlerinizin varsayılan ASN 'yi geçersiz kılmalısınız. Bağlı VNET 'ler için ASNs BGP ve geçiş yönlendirmeyi etkinleştirmek üzere farklı olmalıdır.
+AS numarası ve "EnableActiveActiveFeature" bayrağıyla VPN ağ geçidini oluşturun. Azure VPN ağ geçitlerinizde varsayılan ASN'yi geçersiz kılmanız gerektiğini unutmayın. BGP ve transit yönlendirmeyi etkinleştirmek için bağlı VNet'lerin ASN'leri farklı olmalıdır.
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1,$gw2ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet2ASN -EnableActiveActiveFeature
 ```
 
-### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>2\. adım-TestVNet1 ve TestVNet2 ağ geçitlerini bağlama
-Bu örnekte her iki ağ geçidi de aynı abonelikte bulunur. Bu adımı aynı PowerShell oturumunda tamamlayabilirsiniz.
+### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Adım 2 - TestVNet1 ve TestVNet2 ağ geçitlerini bağlayın
+Bu örnekte, her iki ağ geçidi de aynı aboneliktedir. Bu adımı aynı PowerShell oturumunda tamamlayabilirsiniz.
 
-#### <a name="1-get-both-gateways"></a>1. her iki ağ geçidini al
+#### <a name="1-get-both-gateways"></a>1. Her iki ağ geçidi ni alın
 1 Abonelikle oturum açıp bağlandığınızdan emin olun.
 
 ```powershell
@@ -350,8 +350,8 @@ $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet2gw = Get-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
 
-#### <a name="2-create-both-connections"></a>2. her iki bağlantı oluştur
-Bu adımda, TestVNet1 ile TestVNet2 arasında bağlantı ve TestVNet2 'den TestVNet1 'e bağlantı oluşturacaksınız.
+#### <a name="2-create-both-connections"></a>2. Her iki bağlantıyı da oluşturun
+Bu adımda, TestVNet1'den TestVNet2'ye, TestVNet2'den TestVNet1'e bağlantı oluşturacaksınız.
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name $Connection12 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet2gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3' -EnableBgp $True
@@ -360,25 +360,25 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 ```
 
 > [!IMPORTANT]
-> HER IKI bağlantı için BGP 'yi etkinleştirmeyi unutmayın.
+> Her iki bağlantı için BGP'yi etkinleştirdiğinden emin olun.
 > 
 > 
 
-Bu adımları tamamladıktan sonra, bağlantı birkaç dakika içinde oluşturulur ve sanal ağdan VNet bağlantısı çift yedeklilik ile tamamlandığında BGP eşleme oturumu çalışır:
+Bu adımları tamamladıktan sonra, bağlantı birkaç dakika içinde kurulacak ve VNet-to-VNet bağlantısı çift artıklıkla tamamlandığında BGP eşleme oturumu açılacaktır:
 
-![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
+![aktif-aktif-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
-## <a name ="aaupdate"></a>Mevcut bir VPN ağ geçidini güncelleştirme
+## <a name="update-an-existing-vpn-gateway"></a><a name ="aaupdate"></a>Varolan bir VPN ağ geçidini güncelleştirme
 
-Bu bölüm, var olan bir Azure VPN ağ geçidini etkin-bekleme modundan etkin-etkin moda değiştirmenize yardımcı olur veya tam tersi de geçerlidir.
+Bu bölüm, varolan bir Azure VPN ağ geçidini etkin bekleme modundan etkin etkin moduna veya tam tersi olarak değiştirmenize yardımcı olur.
 
-### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>Etkin bekleme ağ geçidini etkin-etkin bir ağ geçidine değiştirme
+### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>Etkin standby ağ geçidini etkin etkin ağ geçidine değiştirme
 
-Aşağıdaki örnek etkin bir bekleme ağ geçidini etkin-etkin bir ağ geçidine dönüştürür. Etkin bekleme bir ağ geçidini etkin-etkin olarak değiştirdiğinizde, başka bir genel IP adresi oluşturun ve ardından ikinci bir ağ geçidi IP yapılandırması ekleyin.
+Aşağıdaki örnek, etkin bir bekleme ağ geçidini etkin etkin bir ağ geçidine dönüştürür. Etkin bekleme ağ geçidini etkin etkin olarak değiştirdiğinizde, başka bir genel IP adresi oluşturursunuz ve ardından ikinci bir Ağ Geçidi IP yapılandırması eklersiniz.
 
-#### <a name="1-declare-your-variables"></a>1. değişkenlerinizi bildirin
+#### <a name="1-declare-your-variables"></a>1. Değişkenlerinizi bildirin
 
-Örnekler için kullanılan aşağıdaki parametreleri kendi yapılandırmanız için gerekli olan ayarlarla değiştirin, ardından bu değişkenleri bildirin.
+Örnekler için kullanılan aşağıdaki parametreleri kendi yapılandırmanız için gereksinim duyduğunuz ayarlarla değiştirin ve bu değişkenleri bildirin.
 
 ```powershell
 $GWName = "TestVNetAA1GW"
@@ -388,7 +388,7 @@ $GWIPName2 = "gwpip2"
 $GWIPconf2 = "gw1ipconf2"
 ```
 
-Değişkenleri bildirdikten sonra bu örneği PowerShell konsolunuza kopyalayabilir ve yapıştırabilirsiniz.
+Değişkenleri açıkladıktan sonra, bu örneği PowerShell konsolunuza kopyalayıp yapıştırabilirsiniz.
 
 ```powershell
 $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
@@ -397,54 +397,54 @@ $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $location = $gw.Location
 ```
 
-#### <a name="2-create-the-public-ip-address-then-add-the-second-gateway-ip-configuration"></a>2. genel IP adresini oluşturun, sonra ikinci ağ geçidi IP yapılandırmasını ekleyin
+#### <a name="2-create-the-public-ip-address-then-add-the-second-gateway-ip-configuration"></a>2. Ortak IP adresini oluşturun, ardından ikinci ağ geçidi IP yapılandırmasını ekleyin
 
 ```powershell
 $gwpip2 = New-AzPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG -Location $location -AllocationMethod Dynamic
 Add-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name $GWIPconf2 -Subnet $subnet -PublicIpAddress $gwpip2
 ```
 
-#### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3. etkin-etkin modu etkinleştirme ve ağ geçidini güncelleştirme
+#### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3. Etkin modu etkinleştirin ve ağ geçidini güncelleştirin
 
-Bu adımda, etkin-etkin modu etkinleştirir ve ağ geçidini güncelleştirebilirsiniz. Örnekte, VPN Gateway Şu anda eski bir standart SKU kullanıyor. Ancak etkin-etkin, standart SKU 'YU desteklemez. Eski SKU 'YU desteklenmiş bir şekilde yeniden boyutlandırmak için (Bu durumda, HighPerformance), yalnızca kullanmak istediğiniz desteklenen eski SKU 'YU belirtirsiniz.
+Bu adımda, etkin modu etkinleştirin ve ağ geçidini güncelleştirin. Örnekte, VPN ağ geçidi şu anda eski bir Standart SKU kullanıyor. Ancak, etkin-etkin Standart SKU'yu desteklemez. Eski SKU'yu desteklenen bir sku olarak yeniden boyutlandırmak için (bu durumda, HighPerformance), yalnızca kullanmak istediğiniz desteklenen eski SKU'yu belirtmeniz yeterlidir.
 
-* Bu adımı kullanarak eski SKU 'YU yeni SKU 'Lardan birine değiştiremezsiniz. Eski bir SKU 'yu yalnızca, desteklenen başka bir eski SKU için yeniden boyutlandırabilirsiniz. Örneğin, standart bir eski SKU olduğundan ve VpnGw1 geçerli bir SKU olduğundan, SKU 'YU standart olarak VpnGw1 (VpnGw1 etkin-etkin için desteklenir) olarak değiştiremezsiniz. SKU 'Ları boyutlandırma ve geçirme hakkında daha fazla bilgi için bkz. [ağ geçidi SKU 'ları](vpn-gateway-about-vpngateways.md#gwsku).
+* Bu adımı kullanarak eski bir SKU'yu yeni SKU'lardan birine değiştiremezsiniz. Bir mirası yalnızca desteklenen başka bir eski SKU'ya yeniden boyutlandırabilirsiniz. Örneğin, Standart eski bir SKU ve VpnGw1 geçerli bir SKU olduğundan (VpnGw1 aktif-aktif için desteklenmiş olsa bile) Standart VpnGw1 SKU değiştiremezsiniz. SK'leri yeniden boyutlandırma ve geçirme hakkında daha fazla bilgi için [Ağ Geçidi SK'lerine](vpn-gateway-about-vpngateways.md#gwsku)bakın.
 
-* Geçerli bir SKU 'yu yeniden boyutlandırmak istiyorsanız, örneğin VpnGw1 to VpnGw3, SKU 'Lar aynı SKU ailesinden olduğundan bu adımı kullanabilirsiniz. Bunu yapmak için şu değeri kullanırsınız: ```-GatewaySku VpnGw3```
+* Mevcut bir SKU yeniden boyutlandırmak istiyorsanız, örneğin VpnGw1 VpnGw3 için, SKU aynı SKU ailesinde olduğu için bu adımı kullanarak yapabilirsiniz. Bunu yapmak için, değeri kullanırsınız:```-GatewaySku VpnGw3```
 
-Bunu ortamınızda kullanırken, ağ geçidini yeniden boyutlandırmanıza gerek yoksa-GatewaySku belirtmeniz gerekmez. Bu adımda, PowerShell 'de ağ geçidi nesnesini gerçek güncelleştirmeyi tetikleyecek şekilde ayarlamanız gerektiğini unutmayın. Bu güncelleştirme, ağ geçidinizi yeniden boyutlandırsanız bile 30 ila 45 dakika sürebilir.
+Bunu ortamınızda kullanırken, ağ geçidini yeniden boyutlandırmanız gerekmiyorsa, -GatewaySku'yu belirtmeniz gerekmez. Bu adımda, powershell'deki ağ geçidi nesnesini gerçek güncelleştirmeyi tetiklemek için ayarlamanız gerektiğine dikkat edin. Bu güncelleştirme, ağ geçidinizi yeniden boyutlandırmasanız bile 30 ila 45 dakika sürebilir.
 
 ```powershell
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeature -GatewaySku HighPerformance
 ```
 
-### <a name="change-an-active-active-gateway-to-an-active-standby-gateway"></a>Etkin-etkin bir ağ geçidini etkin-bekleme ağ geçidine değiştirme
-#### <a name="1-declare-your-variables"></a>1. değişkenlerinizi bildirin
+### <a name="change-an-active-active-gateway-to-an-active-standby-gateway"></a>Etkin ağ geçidini etkin bekleme ağ geçidine değiştirme
+#### <a name="1-declare-your-variables"></a>1. Değişkenlerinizi bildirin
 
-Örnekler için kullanılan aşağıdaki parametreleri kendi yapılandırmanız için gerekli olan ayarlarla değiştirin, ardından bu değişkenleri bildirin.
+Örnekler için kullanılan aşağıdaki parametreleri kendi yapılandırmanız için gereksinim duyduğunuz ayarlarla değiştirin ve bu değişkenleri bildirin.
 
 ```powershell
 $GWName = "TestVNetAA1GW"
 $RG = "TestVPNActiveActive01"
 ```
 
-Değişkenleri bildirdikten sonra, kaldırmak istediğiniz IP yapılandırmasının adını alın.
+Değişkenleri açıkladıktan sonra kaldırmak istediğiniz IP yapılandırmasının adını alın.
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $ipconfname = $gw.IpConfigurations[1].Name
 ```
 
-#### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. ağ geçidi IP yapılandırmasını kaldırın ve etkin-etkin modunu devre dışı bırakın
+#### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. Ağ geçidi IP yapılandırmasını kaldırın ve etkin modu devre dışı
 
-Ağ geçidi IP yapılandırmasını kaldırmak ve etkin-etkin modunu devre dışı bırakmak için bu örneği kullanın. Gerçek güncelleştirmeyi tetiklemek için PowerShell 'de ağ geçidi nesnesini ayarlamanız gerektiğini unutmayın.
+Ağ geçidi IP yapılandırmasını kaldırmak ve etkin etkin modu devre dışı kaldırmak için bu örneği kullanın. Gerçek güncelleştirmeyi tetiklemek için PowerShell'deki ağ geçidi nesnesini ayarlamanız gerektiğine dikkat edin.
 
 ```powershell
 Remove-AzVirtualNetworkGatewayIpConfig -Name $ipconfname -VirtualNetworkGateway $gw
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActiveFeature
 ```
 
-Bu güncelleştirme 30 ila 45 dakikaya kadar sürebilir.
+Bu güncelleştirme 30 ila 45 dakika kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Adımlar için bkz. [Sanal Makine Oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

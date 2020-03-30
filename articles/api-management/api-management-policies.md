@@ -1,5 +1,5 @@
 ---
-title: Azure API Management ilkeleri | Microsoft Docs
+title: Azure API Yönetimi ilkeleri | Microsoft Dokümanlar
 description: Azure API Management'ta kullanılabilecek ilkeler hakkında bilgi edinin.
 services: api-management
 documentationcenter: ''
@@ -13,76 +13,76 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71219477"
 ---
 # <a name="api-management-policies"></a>API Management ilkeleri
-Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](api-management-howto-policies.md).  
+Bu bölümde, aşağıdaki API Yönetimi ilkeleri için bir başvuru sağlar. İlkeler ekleme ve yapılandırma hakkında bilgi için [API Yönetimi'ndeki İlkeler'e](api-management-howto-policies.md)bakın.  
   
- İlkeler, yayımcının API 'nin davranışını yapılandırma yoluyla değiştirmesine olanak tanıyan güçlü bir yetenektir. İlkeler, bir API 'nin isteği veya yanıtı üzerinde sırayla yürütülen deyimler koleksiyonudur. Popüler deyimler, XML 'den JSON 'a biçim dönüştürmeyi ve bir geliştiriciden gelen çağrıların miktarını kısıtlamak için çağrı hızı sınırını içerir. Birçok daha fazla ilke, kutudan daha fazla kullanılabilir.  
+ İlkeler, yayımcının yapılandırma yoluyla API'nin davranışını değiştirmesine olanak tanıyan güçlü bir sistem yeteneğidir. İlkeler, bir API'nin isteği veya yanıtı üzerine sırayla yürütülen deyimler topluluğu. Popüler Deyimler, XML'den JSON'a biçim dönüştürme ve geliştiriciden gelen arama miktarını kısıtlamak için sınırlayıcı arama oranını içerir. Kutunun dışında çok daha fazla ilke kullanılabilir.  
   
  İlke ifadeleri herhangi bir API Management ilkesinde, ilke aksini belirtmedikçe, öznitelik değerleri ya da metin değerleri olarak kullanılabilir. [Akışı denetle](api-management-advanced-policies.md#choose) ve [Değişken ayarla](api-management-advanced-policies.md#set-variable) gibi bazı ilkeler ilke ifadelerini temel alır. Daha fazla bilgi için bkz. [Gelişmiş ilkeler](api-management-advanced-policies.md#AdvancedPolicies) ve [İlke ifadeleri](api-management-policy-expressions.md).  
   
-##  <a name="ProxyPolicies"></a>Elerindeki  
+##  <a name="policies"></a><a name="ProxyPolicies"></a> İlkeler  
   
 -   [Erişimi kısıtlama ilkeleri](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
-    -   [Http üstbilgisini denetle](api-management-access-restriction-policies.md#CheckHTTPHeader) -http üstbilgisinin varlığını ve/veya değerini uygular.  
-    -   [Abonelik ile çağrı hızını sınırla](api-management-access-restriction-policies.md#LimitCallRate) -çağrı hızını her abonelik IÇIN sınırlayarak API kullanım artışlarını engeller.  
-    -   [Anahtara göre çağrı hızını sınırla](api-management-access-restriction-policies.md#LimitCallRateByKey) -çağrı hızını anahtar TEMELINDE sınırlayarak API kullanım artışlarını engeller.  
-    -   Belirli IP adreslerinden ve/veya adres aralıklarından çağrı [IP 'leri filtrelerini kısıtla](api-management-access-restriction-policies.md#RestrictCallerIPs) (izin verir/reddeder).  
-    -   [Kullanım kotasını aboneliğe göre ayarla](api-management-access-restriction-policies.md#SetUsageQuota) -yenilenebilir bir veya yaşam süresi araması hacmi ve/veya bant genişliği kotasını abonelik başına temelinde zorlamanıza olanak sağlar.  
-    -   [Anahtar temelinde kullanım kotasını ayarlama](api-management-access-restriction-policies.md#SetUsageQuotaByKey) -bir yenilenebilir veya yaşam süresi çağrı hacmi ve/veya bant genişliği kotasını anahtar başına temelinde zorlamanıza olanak sağlar.  
-    -   [JWT 'Yi doğrula](api-management-access-restriction-policies.md#ValidateJWT) -BELIRTILEN bir http üst bilgisinden veya belirtilen sorgu parametresinden AYıKLANAN bir JWT 'ın varlığını ve geçerliliğini zorlar.  
+    -   [HTTP üstbilgisini denetleyin](api-management-access-restriction-policies.md#CheckHTTPHeader) - BIR HTTP Üstbilginin varlığını ve/veya değerini zorlar.  
+    -   [Çağrı oranını aboneye göre sınırlandırın](api-management-access-restriction-policies.md#LimitCallRate) - Abonelik başına çağrı oranını sınırlayarak API kullanım artışlarını önler.  
+    -   [Arama oranını anahtara göre sınırlandırın](api-management-access-restriction-policies.md#LimitCallRateByKey) - Her anahtar bazında çağrı hızını sınırlayarak API kullanım artışlarını önler.  
+    -   [Arayan IP'lerini kısıtlayın](api-management-access-restriction-policies.md#RestrictCallerIPs) - Belirli IP adreslerinden ve/veya adres aralıklarından gelen filtreler (izin verir/reddeder).  
+    -   [Kullanım kotasını aboneliğe göre ayarlama](api-management-access-restriction-policies.md#SetUsageQuota) - Abonelik başına yenilenebilir veya ömür boyu çağrı hacmi ve/veya bant genişliği kotası uygulamanızı sağlar.  
+    -   [Kullanım kotasını anahtara göre ayarlayın](api-management-access-restriction-policies.md#SetUsageQuotaByKey) - Yenilenebilir veya ömür boyu çağrı hacmini ve/veya bant genişliği kotasını anahtar bazında uygulamanızı sağlar.  
+    -   [JWT'yi doğrulayın](api-management-access-restriction-policies.md#ValidateJWT) - Belirli bir HTTP Üstbilgisinden veya belirli bir sorgu parametresinden çıkarılan bir JWT'nin varlığını ve geçerliliğini zorlar.  
 -   [Gelişmiş ilkeler](api-management-advanced-policies.md#AdvancedPolicies)  
-    -   [Denetim akışı](api-management-advanced-policies.md#choose) -Koşullu ifadeler değerlendirmesi temelinde ilke deyimlerini koşullu olarak uygular.  
-    -   [İlet isteği](api-management-advanced-policies.md#ForwardRequest) -isteği arka uç hizmetine iletir.
-    -   [Eşzamanlılık sınırı](api-management-advanced-policies.md#LimitConcurrency) -geçen ilkelerin aynı anda belirtilen sayıda istekten daha fazla tarafından yürütülmesini önler.
-    -   [Olay Hub 'ında günlüğe kaydet](api-management-advanced-policies.md#log-to-eventhub) -belirtilen biçimdeki Iletileri bir günlükçü varlığı tarafından tanımlanan bir ileti hedefine gönderir.
-    -   [Sahte yanıt](api-management-advanced-policies.md#mock-response) -işlem hattı yürütmesini iptal eder ve doğrudan çağırana bir yanıt döndürür.
-    -   [Yeniden dene](api-management-advanced-policies.md#Retry) -koşul karşılanana kadar, ekteki ilke deyimlerinin yürütülmesini yeniden dener. Yürütme belirtilen zaman aralıklarıyla ve belirtilen yeniden deneme sayısına kadar yinelenir.  
-    -   [Dönüş yanıtı](api-management-advanced-policies.md#ReturnResponse) -işlem hattı yürütmesini iptal eder ve belirtilen yanıtı doğrudan çağırana döndürür.  
-    -   [Tek yönlü gönderme isteği](api-management-advanced-policies.md#SendOneWayRequest) -bir yanıtı beklemeden belirtilen URL 'ye bir istek gönderir.  
-    -   [Istek gönder](api-management-advanced-policies.md#SendRequest) -belirtilen URL 'ye bir istek gönderir.
-    -   [Http proxy 'Yi ayarlama](api-management-advanced-policies.md#SetHttpProxy) -iletilen ISTEKLERI bir http proxy 'si aracılığıyla yönlendirmenize olanak tanır.
-    -   [Set değişkeni](api-management-advanced-policies.md#set-variable) -daha sonra erişim için adlandırılmış bağlam değişkeninde bir değeri kalıcı hale getirin.  
-    -   [Set Request Yöntemi](api-management-advanced-policies.md#SetRequestMethod) -bir Istek için http yöntemini değiştirmenize izin verir.  
-    -   [Durum kodu ayarla](api-management-advanced-policies.md#SetStatus) -http durum kodunu belirtilen değere dönüştürür.  
-    -   [Trace](api-management-advanced-policies.md#Trace) - [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına, Application Insights Telemetriler ve tanılama günlüklerine özel izlemeler ekler.  
-    -   [Bekleme](api-management-advanced-policies.md#Wait) -devam etmeden önce, kapalı [gönderme isteği](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)veya [Denetim akışı](api-management-advanced-policies.md#choose) ilkelerinin tamamlanmasını bekler.  
+    -   [Kontrol akışı](api-management-advanced-policies.md#choose) - Boolean ifadelerinin değerlendirilmesi temel alınca koşullu olarak ilke deyimleri uygular.  
+    -   [İleri isteği](api-management-advanced-policies.md#ForwardRequest) - İsteği arka uç hizmetine iletin.
+    -   [Eşzamanlılığı sınırlayın](api-management-advanced-policies.md#LimitConcurrency) - Kapalı ilkelerin bir seferde belirtilen sayıdan daha fazla istekle yürütülmesini engeller.
+    -   [Olay Hub'ına Giriş](api-management-advanced-policies.md#log-to-eventhub) - Logger varlığı tarafından tanımlanan ileti hedefine belirtilen biçimde ileti gönderir.
+    -   [Mock yanıt](api-management-advanced-policies.md#mock-response) - Ardışık hatlar yürütmea aborts ve doğrudan arayan bir mocked yanıt döndürür.
+    -   [Yeniden Deneme](api-management-advanced-policies.md#Retry) - Koşul yerine getirile kadar ekteki ilke deyimlerinin yürütülmesini yeniden dener. Yürütme, belirtilen zaman aralıklarında ve belirtilen yeniden deneme sayısına kadar yinelenecektir.  
+    -   [İade yanıtı](api-management-advanced-policies.md#ReturnResponse) - Ardışık hatlar yürütmesini iptal eder ve belirtilen yanıtı doğrudan arayana döndürür.  
+    -   [Tek yönlü istek gönder](api-management-advanced-policies.md#SendOneWayRequest) - Yanıt beklemeden belirtilen URL'ye istek gönderir.  
+    -   [İstek gönder](api-management-advanced-policies.md#SendRequest) - Belirtilen URL'ye istek gönderir.
+    -   [HTTP proxy'yi ayarlayın](api-management-advanced-policies.md#SetHttpProxy) - İlegönderilen istekleri http proxy üzerinden yönlendirmenizi sağlar.
+    -   [Değişkeni Ayarla](api-management-advanced-policies.md#set-variable) - Daha sonraki erişim için adlandırılmış bağlam değişkeninde bir değer devam edin.  
+    -   [İstek yöntemini ayarla](api-management-advanced-policies.md#SetRequestMethod) - İstek için HTTP yöntemini değiştirmenizi sağlar.  
+    -   [Durum kodunu ayarla](api-management-advanced-policies.md#SetStatus) - HTTP durum kodunu belirtilen değerle değiştirir.  
+    -   [İzleme](api-management-advanced-policies.md#Trace) - [API Denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına, Uygulama Öngörüleri telemelerine ve Tanıgünlüklerine özel izlemeler ekler.  
+    -   [Bekle](api-management-advanced-policies.md#Wait) - Kapalı [Gönder isteği](api-management-advanced-policies.md#SendRequest)için bekler, [önbellekten değer alın](api-management-caching-policies.md#GetFromCacheByKey)veya devam etmeden önce tamamlanması gereken akış ilkelerini [denetle.](api-management-advanced-policies.md#choose)  
 -   [Kimlik doğrulama ilkeleri](api-management-authentication-policies.md#AuthenticationPolicies)  
-    -   Temel kimlik doğrulaması kullanarak arka uç hizmeti ile temel kimlik doğrulaması [Ile kimlik](api-management-authentication-policies.md#Basic) doğrulaması yapın.  
-    -   [İstemci sertifikası Ile kimlik doğrulama](api-management-authentication-policies.md#ClientCertificate) -istemci sertifikaları kullanarak arka uç hizmetiyle kimlik doğrulaması yapın.  
-    -   Yönetilen [kimlik Ile kimlik doğrulama](api-management-authentication-policies.md#ManagedIdentity) - [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)kullanarak arka uç hizmetiyle kimlik doğrulaması yapın.  
+    -   Temel kimlik doğrulaması kullanarak bir arka uç hizmetiyle [Kimlik Doğrulaması](api-management-authentication-policies.md#Basic) - Temel ile kimlik doğrulaması.  
+    -   [İstemci sertifikası ile kimlik doğrulaması](api-management-authentication-policies.md#ClientCertificate) - İstemci sertifikalarını kullanarak bir arka uç hizmetiyle kimlik doğrulaması.  
+    -   [Yönetilen kimlikle kimlik doğrulaması](api-management-authentication-policies.md#ManagedIdentity) - Yönetilen bir [kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)kullanarak arka uç hizmetiyle kimlik doğrulaması.  
 -   [Önbelleğe alma ilkeleri](api-management-caching-policies.md#CachingPolicies)  
-    -   [Önbellekten al](api-management-caching-policies.md#GetFromCache) -önbellek araması yapın ve kullanılabilir olduğunda geçerli bir önbelleğe alınmış yanıt döndürür.  
-    -   [Önbellekte depola](api-management-caching-policies.md#StoreToCache) -belirtilen önbellek denetimi yapılandırmasına göre yanıtı önbelleğe alır.  
-    -   [Önbellekten değer al](api-management-caching-policies.md#GetFromCacheByKey) -önbelleğe alınmış bir öğeyi anahtara göre alır.  
-    -   [Önbellekte depolama değeri](api-management-caching-policies.md#StoreToCacheByKey) -bir öğeyi bir anahtarla önbelleğe saklayın.  
-    -   [Önbellekten değer kaldır](api-management-caching-policies.md#RemoveCacheByKey) -önbellekteki bir öğeyi anahtarla kaldırın.  
+    -   [Önbellekten alın](api-management-caching-policies.md#GetFromCache) - Önbellek görünümünü gerçekleştirin ve kullanılabilir olduğunda geçerli bir önbelleğe alınmış yanıtı döndürün.  
+    -   [Depodan önbelleğe](api-management-caching-policies.md#StoreToCache) depolayın - Belirtilen önbellek denetim yapılandırmasına göre yanıt önbelleğe alındı.  
+    -   [Önbellekten değer alın](api-management-caching-policies.md#GetFromCacheByKey) - Önbelleğe alınmış bir öğeyi anahtarla alın.  
+    -   [Önbellekte depo değeri](api-management-caching-policies.md#StoreToCacheByKey) - Bir öğeyi önbellekte anahtarla saklayın.  
+    -   [Önbellekten değeri kaldırın](api-management-caching-policies.md#RemoveCacheByKey) - Önbellekteki bir öğeyi anahtarla kaldırın.  
 -   [Çapraz etki alanı ilkeleri](api-management-cross-domain-policies.md#CrossDomainPolicies)  
-    -   [Etki alanları arası çağrılara Izin ver](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -API 'Yi Adobe Flash ve Microsoft Silverlight tarayıcı tabanlı istemcilerden erişilebilir hale getirir.  
-    -   [CORS](api-management-cross-domain-policies.md#CORS) -tarayıcı tabanlı istemcilerden etki alanları arası çağrılara izin vermek için bir işleme veya bir API 'ye çıkış noktaları arası kaynak PAYLAŞıMı (CORS) desteği ekler.  
-    -   [JSONP](api-management-cross-domain-policies.md#JSONP) -JavaScript tarayıcı tabanlı istemcilerden etki alanları arası çağrılara izin vermek için, doldurma (JSONP) desteğiyle birlikte bir Işleme veya API 'yi ekler.  
+    -   [Etki alanları arası çağrılara izin ver](api-management-cross-domain-policies.md#AllowCrossDomainCalls) - API'yi Adobe Flash ve Microsoft Silverlight tarayıcı tabanlı istemcilerden erişilebilir hale getirir.  
+    -   [CORS](api-management-cross-domain-policies.md#CORS) - Tarayıcı tabanlı istemcilerden gelen etki alanları arası çağrılara izin vermek için bir operasyona veya API'ye başlangıç lar arası kaynak paylaşımı (CORS) desteği ekler.  
+    -   [JSONP](api-management-cross-domain-policies.md#JSONP) - JavaScript tarayıcı tabanlı istemcilerden çapraz etki alanı çağrılarına izin vermek için bir operasyona veya API'ye dolgu (JSONP) desteği yle JSON ekler.  
 -   [Dönüştürme ilkeleri](api-management-transformation-policies.md#TransformationPolicies)  
-    -   [JSON 'ı XML 'e Dönüştür](api-management-transformation-policies.md#ConvertJSONtoXML) -JSON 'dan XML 'e istek veya Yanıt gövdesini dönüştürür.  
-    -   [XML 'YI JSON 'A Dönüştür](api-management-transformation-policies.md#ConvertXMLtoJSON) -istek veya Yanıt gövdesini XML 'den JSON 'a dönüştürür.  
-    -   [Gövdede dize bul ve Değiştir](api-management-transformation-policies.md#Findandreplacestringinbody) -bir istek veya Yanıt alt dizesini bulur ve farklı bir alt dizeyle değiştirir.  
-    -   Yanıt gövdesindeki içerik-yazma (maske) bağlantılarında [bulunan URL 'leri](api-management-transformation-policies.md#MaskURLSContent) , ağ geçidi aracılığıyla eşdeğer bağlantıya işaret eden şekilde maskelerle.  
-    -   [Arka uç hizmetini ayarlama](api-management-transformation-policies.md#SetBackendService) -gelen istek için arka uç hizmetini değiştirir.  
-    -   [Gövde ayarla](api-management-transformation-policies.md#SetBody) -ileti gövdesini gelen ve giden istekler için ayarlar.  
-    -   [Http üstbilgisini ayarla](api-management-transformation-policies.md#SetHTTPheader) -mevcut bir yanıt ve/veya istek üstbilgisine bir değer atar veya yeni bir yanıt ve/veya istek üst bilgisi ekler.  
-    -   [Sorgu dizesi parametresini ayarla](api-management-transformation-policies.md#SetQueryStringParameter) -ekler, değerini değiştirir veya istek sorgu dizesi parametresini siler.  
-    -   [Yeniden yazma URL 'si](api-management-transformation-policies.md#RewriteURL) -BIR istek URL 'sini ortak formdan Web hizmeti tarafından beklenen biçime dönüştürür.  
-    -   [XSLT kullanarak XML dönüştürme](api-management-transformation-policies.md#XSLTransform) -istek veya yanıt gövdesinde XML 'e bir XSL dönüştürmesi uygular.  
+    -   [JSON'u XML'e dönüştürün](api-management-transformation-policies.md#ConvertJSONtoXML) - İstek veya yanıt gövdesini JSON'dan XML'e dönüştürür.  
+    -   [XML'i JSON'a dönüştürün](api-management-transformation-policies.md#ConvertXMLtoJSON) - İstek veya yanıt gövdesini XML'den JSON'a dönüştürür.  
+    -   [Gövdedeki dizeyi bul ve değiştir](api-management-transformation-policies.md#Findandreplacestringinbody) - Bir istek veya yanıt alt dizesi bulur ve farklı bir alt dize ile değiştirir.  
+    -   [İçerikteki URL'leri maskeleyin](api-management-transformation-policies.md#MaskURLSContent) - Yanıt gövdesindeki bağlantıları yeniden yazar (maskeler) böylece ağ geçidi üzerinden eşdeğer bağlantıyı işaret ederler.  
+    -   [Arka uç hizmetini ayarlama](api-management-transformation-policies.md#SetBackendService) - Gelen bir istek için arka uç hizmetini değiştirir.  
+    -   [Gövdeyi ayarla](api-management-transformation-policies.md#SetBody) - Gelen ve giden istekler için ileti gövdesini ayarlar.  
+    -   [HTTP üstbilgi sini ayarlayın](api-management-transformation-policies.md#SetHTTPheader) - Varolan bir yanıta ve/veya istek üstbilgisine bir değer atar veya yeni bir yanıt ve/veya istek üstbilgisi ekler.  
+    -   [Sorgu dize parametresini ayarlayın](api-management-transformation-policies.md#SetQueryStringParameter) - İstek sorgusu dize parametresinin değerini ekler, değiştirir veya siler.  
+    -   [URL'yi Yeniden Yazma](api-management-transformation-policies.md#RewriteURL) - İstek URL'sini genel formundan web hizmetinin beklediği forma dönüştürür.  
+    -   [XSLT kullanarak XML'i dönüştürün](api-management-transformation-policies.md#XSLTransform) - İstek veya yanıt gövdesinde XML'ye XSL dönüşümü uygular.  
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-İlkelerle çalışma hakkında daha fazla bilgi için bkz.
+İlkelerle çalışan daha fazla bilgi için bkz:
 
-+ [API Management ilkeler](api-management-howto-policies.md)
-+ [API dönüştürme](transform-api.md)
++ [API Yönetiminde İlkeler](api-management-howto-policies.md)
++ [API'leri Dönüştür](transform-api.md)
 + [İlke örnekleri](policy-samples.md)   

@@ -1,6 +1,6 @@
 ---
-title: Tehditler-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
-description: Sunulan tüm oluşturulan tehditler için kategoriler içeren Microsoft Threat Modeling Tool için tehdit kategorisi sayfası.
+title: Tehditler - Microsoft Tehdit Modelleme Aracı - Azure | Microsoft Dokümanlar
+description: Microsoft Tehdit Modelleme Aracı için tehdit kategorisi sayfası, tüm maruz kalan tehditler için kategoriler içeren.
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,37 +16,37 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727842"
 ---
-# <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool tehditler
+# <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Tehdit Modelleme Aracı tehditleri
 
-Threat Modeling Tool, Microsoft güvenlik geliştirme yaşam döngüsü 'nin (SDL) temel bir öğesidir. Yazılım mimarlarının olası güvenlik sorunlarını daha erken belirlemesine ve hafifletmesine ve bu sorunların çözülmesi için yüksek maliyetli olmasına olanak sağlar. Sonuç olarak, toplam geliştirme maliyetini büyük ölçüde azaltır. Ayrıca, tehdidi güvenlik dışı uzmanlar ile tasarlıyoruz, tehdit modellerini oluşturma ve çözümleme konusunda açık yönergeler sunarak tüm geliştiriciler için tehdit modellemesini kolaylaştırın.
+Tehdit Modelleme Aracı, Microsoft Güvenlik Geliştirme Yaşam Döngüsü'nün (SDL) temel bir öğesidir. Yazılım mimarlarının, çözümlenebilmek için nispeten kolay ve uygun maliyetli olduklarında olası güvenlik sorunlarını erkenden tanımlamasına ve azaltmasına olanak tanır. Sonuç olarak, büyük ölçüde geliştirme toplam maliyetini azaltır. Ayrıca, tehdit modelleri oluşturma ve analiz etme konusunda net rehberlik sağlayarak tehdit modellemeyi tüm geliştiriciler için daha kolay hale getirerek aracı güvenlik dışı uzmanları göz önünde bulundurarak tasarladık.
 
-> Kullanmaya başlamak için **[Threat Modeling Tool](threat-modeling-tool.md)** ziyaret edin!
+> Bugün başlamak için **[Tehdit Modelleme Aracı'nı](threat-modeling-tool.md)** ziyaret edin!
 
-Threat Modeling Tool, aşağıdaki gibi belirli soruları cevaplamanıza yardımcı olur:
+Tehdit Modelleme Aracı, aşağıdakiler gibi belirli soruları yanıtlamanıza yardımcı olur:
 
 * Bir saldırgan kimlik doğrulama verilerini nasıl değiştirebilir?
-* Bir saldırgan Kullanıcı profili verilerini okuyabilolursa etkisi nedir?
+* Bir saldırgan kullanıcı profil verilerini okuyabiliyorsa bunun etkisi nedir?
 * Kullanıcı profili veritabanına erişim reddedilirse ne olur?
 
-## <a name="stride-model"></a>Ilerleme modeli
+## <a name="stride-model"></a>STRIDE modeli
 
-Microsoft bu tür kapsamlı soruları düzenlemenize yardımcı olmak için, farklı türlerde tehditleri kategorilere ayırır ve genel güvenlik konuşmalarını basitleştiren gelişmiş bir model kullanır.
+Bu tür işaretli soruları formüle etmeye daha iyi yardımcı olmak için Microsoft, farklı tehdit türlerini kategorilere ayıran ve genel güvenlik konuşmalarını basitleştiren STRIDE modelini kullanır.
 
-| Category | Açıklama |
+| Kategori | Açıklama |
 | -------- | ----------- |
-| **Sızdır** | Kullanıcı adı ve parola gibi başka bir kullanıcının kimlik doğrulama bilgilerini geçersiz şekilde erişimi ve daha sonra kullanmayı içerir |
-| **Oynan** | Kötü amaçlı veri değişikliğini içerir. Örnek olarak, bir veritabanında tutulan gibi kalıcı verilere yapılan yetkisiz değişiklikler ve Internet gibi açık bir ağ üzerinden iki bilgisayar arasında akar. veri değişikliği dahil değildir. |
-| **Kar** | Başka taraflar olmadan bir eylemi gerçekleştirmeyi reddeden kullanıcılarla ilişkili, aksi takdirde (örneğin, bir Kullanıcı yasaklanmış işlemleri izleme yeteneğine sahip olmayan bir sistemde geçersiz bir işlem gerçekleştirir). Red olmayan bir sistem, bir sistemin, Red tehditleri sayacı anlamına gelir. Örneğin, bir öğeyi satın alan bir kullanıcının, alındıktan sonra öğe için imzalaması gerekebilir. Satıcı daha sonra, kullanıcının paketi aldığı kanıt olarak imzalı alındı bilgisini kullanabilir |
-| **Bilgilerin açığa çıkması** | , Erişimi olmayan kişilere yönelik bilgilerin açıklanmasını içerir — örneğin, kullanıcıların erişim izni verilmeyen bir dosyayı okumaları veya iki bilgisayar arasındaki geçişte verileri okuma yeteneği. |
-| **Hizmet reddi** | Hizmet reddi (DoS) saldırıları, örneğin bir Web sunucusunu geçici olarak kullanılamaz veya kullanılamaz hale getirerek geçerli kullanıcılara hizmeti reddeder. Sistem kullanılabilirliğini ve güvenilirliği geliştirmek için bazı DoS tehditleri türlerine karşı korumanız gerekir |
-| **Ayrıcalık yükselmesi** | Ayrıcalıksız bir kullanıcı ayrıcalıklı erişim kazanmıştır ve bu nedenle sistemin tamamını aşmak veya yok etmek için yeterli erişime sahip değildir. Ayrıcalıkların yükseltilmesi, bir saldırganın tüm sistem savunmalarına etkili bir şekilde sızma ve güvenilen sistemin bir parçası olduğu durumlarda, gerçekten de tehlikeli bir durumdur |
+| **Kandırma** | Kullanıcı adı ve parola gibi başka bir kullanıcının kimlik doğrulama bilgilerine yasa dışı olarak erişmeve ardından kullanılmasını içerir |
+| **İzinsiz Değişiklik** | Verilerin kötü amaçlı modifikasyoniçerir. Bunlara örnek olarak, veritabanında tutulan kalıcı verilerde yapılan yetkisiz değişiklikler ve Internet gibi açık bir ağ üzerinden iki bilgisayar arasında akarken verilerin değiştirilmesi verilebilir |
+| **Tanımadığı** | Diğer tarafların aksini kanıtlaması için herhangi bir yolu olmadan bir eylem gerçekleştirmeyi reddeden kullanıcılarla ilişkili olarak, örneğin, bir kullanıcı yasaklı işlemleri izleme yeteneğine sahip olmayan bir sistemde yasadışı bir işlem gerçekleştirir. Reddetme, bir sistemin reddetme tehditlerine karşı koyabilme yeteneğini ifade eder. Örneğin, bir öğeyi satın alan bir kullanıcının, alındıktan sonra öğeyi imzalaması gerekebilir. Satıcı daha sonra imzalanmış makbuzu kullanıcının paketi aldığının kanıtı olarak kullanabilir |
+| **Bilgileri Açıklama** | Bu bilgilere erişimi olmaması gereken kişilere bilgi maruziyeti içerir (örneğin, kullanıcıların erişim izni verilmeyen bir dosyayı okuma yeteneği veya bir davetsiz misafirin iki bilgisayar arasında geçiş sırasında verileri okuyabilme yeteneği |
+| **Hizmet Reddi** | Hizmet reddi (DoS) saldırıları, bir Web sunucusunun geçici olarak kullanılamaz veya kullanılamaz hale getirilmesi gibi geçerli kullanıcılara hizmet reddedilir. Sistemin kullanılabilirliğini ve güvenilirliğini artırmak için belirli DoS tehditlerine karşı koruma nız gerekir |
+| **Ayrıcalıkların Yükseltilmesi** | Ayrıcalıksız bir kullanıcı ayrıcalıklı erişim elde eder ve bu şekilde tüm sistemi tehlikeye atmak veya yok etmek için yeterli erişime sahiptir. Ayrıcalık tehditlerinin yükselmesi, saldırganın tüm sistem savunmalarına etkin bir şekilde sızdığı ve güvenilir sistemin bir parçası haline geldiği durumları içerir, gerçekten de tehlikeli bir durum |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure ile bu tehditleri hafifletmenin farklı yollarını öğrenmek için **[Threat Modeling Tool azaltmalarını](threat-modeling-tool-mitigations.md)** izleyin.
+Azure ile bu tehditleri azaltmanın farklı yollarını öğrenmek için **[Tehdit Modelleme Aracı Azaltımlarına](threat-modeling-tool-mitigations.md)** devam edin.

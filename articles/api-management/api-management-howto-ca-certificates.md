@@ -1,6 +1,6 @@
 ---
-title: Özel CA sertifikası ekleme-Azure API Management | Microsoft Docs
-description: Azure API Management özel bir CA sertifikası eklemeyi öğrenin.
+title: Özel BIR CA sertifikası ekleme - Azure API Yönetimi | Microsoft Dokümanlar
+description: Azure API Yönetimi'nde özel bir CA sertifikasını nasıl ekleyeceğinizi öğrenin.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,50 +13,50 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70073599"
 ---
-# <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Azure API Management özel CA sertifikası ekleme
+# <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Azure API Yönetimi'nde özel BIR CA sertifikası ekleme
 
-Azure API Management, CA sertifikalarının güvenilen kök ve ara sertifika depoları içindeki makineye yüklenmesini sağlar. Hizmetleriniz özel bir CA sertifikası gerektiriyorsa bu işlev kullanılmalıdır.
+Azure API Yönetimi, güvenilir kök ve ara sertifika depolarının içindeki makineye CA sertifikaları yüklemeye olanak tanır. Hizmetleriniz özel bir CA sertifikası gerektiriyorsa, bu işlevsellik kullanılmalıdır.
 
-Makalede, Azure portal bir Azure API Management hizmet örneğinin CA sertifikalarının nasıl yönetileceği gösterilmektedir.
+Makale, Azure portalında bir Azure API Yönetimi hizmeti örneğinin CA sertifikalarının nasıl yönetileceğinizi gösterir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>CA sertifikasını karşıya yükleme
+## <a name="upload-a-ca-certificate"></a><a name="step1"> </a>CA sertifikası yükleme
 
 ![CA sertifikaları ekleme](media/api-management-howto-ca-certificates/00.png)
 
-Yeni bir CA sertifikasını karşıya yüklemek için aşağıdaki adımları izleyin. Henüz bir API Management hizmet örneği oluşturmadıysanız, [API Management hizmet örneği oluşturma](get-started-create-service-instance.md)öğreticisine bakın.
+Yeni bir CA sertifikası yüklemek için aşağıdaki adımları izleyin. Henüz bir API Yönetimi hizmeti örneği oluşturmadıysanız, bir [API Yönetimi hizmeti örneği oluştur](get-started-create-service-instance.md)öğreticiye bakın.
 
-1. Azure portal Azure API Management hizmet örneğinize gidin.
+1. Azure portalındaki Azure API Yönetimi hizmet örneğinize gidin.
 
-2. Menüden **CA sertifikaları** ' nı seçin.
+2. Menüden **CA sertifikalarını** seçin.
 
 3. **+ Ekle** düğmesine tıklayın.  
 
     ![CA sertifikaları ekleme](media/api-management-howto-ca-certificates/01.png)  
 
-4. Sertifikaya gözatıp sertifika deposuna karar verin. Yalnızca ortak anahtar gereklidir, bu nedenle parola gerekli değildir.
+4. Sertifikaya göz atın ve sertifika deposuna karar verin. Yalnızca ortak anahtar gereklidir, bu nedenle parola gerekli değildir.
 
     ![CA sertifikaları ekleme](media/api-management-howto-ca-certificates/02.png)  
 
-5. **Kaydet**’e tıklayın. Bu işlem birkaç dakika sürebilir.
+5. **Kaydet**'e tıklayın. Bu işlem birkaç dakika sürebilir.
 
     ![CA sertifikaları ekleme](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
-> `New-AzApiManagementSystemCertificate` PowerShell komutunu kullanarak bir CA sertifikasını karşıya yükleyebilirsiniz.
+> Powershell komutunu kullanarak `New-AzApiManagementSystemCertificate` CA sertifikası yükleyebilirsiniz.
 
-## <a name="step1a"> </a>İstemci sertifikasını silme
+## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>İstemci sertifikasını silme
 
-Bir sertifikayı silmek için bağlam menüsü **...** öğesine tıklayın ve sertifikanın yanındaki **Sil** ' i seçin.
+Bir sertifikayı silmek için bağlam **menüsünü** ... tıklatın ve sertifikanın yanındaki **Sil'i** seçin.
 
 ![CA sertifikalarını silme](media/api-management-howto-ca-certificates/04.png)  
 

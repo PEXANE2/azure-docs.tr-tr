@@ -1,7 +1,7 @@
 ---
 title: Deneme yinelemelerini yönetme
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (klasik) ' de deneme yinelemelerini yönetme. Önceki çalıştırmaları, denemelerinizi meydan okuyun, yeniden ziyaret, sonuçta onaylayın veya önceki varsayımlar daraltmak için herhangi bir zamanda gözden geçirebilirsiniz.
+description: Azure Machine Learning Studio'da (klasik) deneme yinelemelerini yönetme. Önceki varsayımları onaylamak veya iyileştirmek için önceki denemelerinizin önceki çalıştırmalarını istediğiniz zaman gözden geçirebilirsiniz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,71 +11,71 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
 ms.openlocfilehash: 5c8a278f09fdb3b605020e4c2fcf7aa2776906e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204316"
 ---
-# <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio deneme yinelemelerini yönetme (klasik)
+# <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio'da deneme yinelemelerini yönetme (klasik)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Tahmine dayalı analiz modeli geliştirmek olduğu bir süreçtir - çeşitli işlevleri ve denemenizi parametrelerini değiştirirken, memnun ana kadar sonuçlarınız yakınsanır eğitilmiş ve verimli bir model vardır. Bu işlem için anahtar deneme parametreleri ve yapılandırmaları çeşitli yinelemeler izlemektir.
+Öngörülü bir analiz modeli geliştirmek yinelemeli bir işlemdir - denemenizin çeşitli işlevlerini ve parametrelerini değiştirirken, eğitimli ve etkili bir modele sahip olduğunuzdan emin olana kadar sonuçlarınız birleşir. Bu işlemin anahtarı, deneme parametrelerinizin ve yapılandırmalarınızın çeşitli yinelemelerini izlemektir.
 
 
 
-Önceki çalıştırmaları, denemelerinizi meydan okuyun, yeniden ziyaret, sonuçta onaylayın veya önceki varsayımlar daraltmak için herhangi bir zamanda gözden geçirebilirsiniz. Bir deneme çalıştırdığınızda Machine Learning Studio (klasik), veri kümesi, modül ve bağlantı noktası bağlantıları ve parametreleri de dahil olmak üzere, çalıştırmanın bir geçmişini tutar. Bu geçmiş, ayrıca sonuçları, başlatma ve durdurma zamanları, günlük iletilerini ve yürütme durumu gibi çalışma zamanı bilgileri yakalar. Bu çalıştırmaları birini deneyin ve Ara sonuçlar uygulanmasına geçmişi gözden geçirmek istediğiniz zaman geri bakabilirsiniz. Yoldaki basit, karmaşık veya hatta topluluğu modelleme çözümleri oluşturmak için yeni bir sorgu ve bulma aşaması başlatmak için denemenizi önceki bir çalıştırmada bile kullanabilirsiniz.
+Önceki varsayımları onaylamak veya iyileştirmek için önceki denemelerinizin önceki çalıştırmalarını istediğiniz zaman gözden geçirebilirsiniz. Bir deneme çalıştırdığınızda, Machine Learning Studio (klasik) veri seti, modül ve bağlantı noktası bağlantıları ve parametreleri de dahil olmak üzere bir çalışma geçmişini tutar. Bu geçmiş aynı zamanda sonuçları, başlangıç ve durdurma saatleri, günlük iletileri ve yürütme durumu gibi çalışma zamanı bilgilerini de yakalar. Denemenizin ve ara sonuçlarınızın kronolojisini incelemek için istediğiniz zaman bu çalıştırmalardan herhangi birini geriye bakabilirsiniz. Hatta basit, karmaşık, hatta topluluk modelleme çözümleri oluşturma yolunda soruşturma ve keşif yeni bir aşamaya başlatmak için deneme önceki bir çalışma kullanabilirsiniz.
 
 > [!NOTE]
-> Bir deney önceki bir çalıştırmada görüntülediğinizde, deneme sürümünün kilitli ve düzenlenemez. Bununla birlikte, **farklı kaydet** ' i tıklayarak ve kopya için yeni bir ad sağlayarak bir kopyasını kaydedebilirsiniz. Machine Learning Studio (klasik), daha sonra düzenleyebileceğiniz ve çalıştırabileceğiniz yeni kopyayı açar. Denemenizin bu kopyası, **denemeleri** listesinde tüm diğer denemeleri ile birlikte kullanılabilir.
+> Bir denemenin önceki çalışmasını görüntülediğinizde, denemenin bu sürümü kilitlidir ve düzenlenemez. Ancak, **KAYDET'i** tıklatarak ve kopya için yeni bir ad sağlayarak bir kopyasını kaydedebilirsiniz. Machine Learning Studio (klasik) daha sonra edinebilir ve çalıştırabilirsiniz yeni kopyasını açar. Denemenizin bu kopyası, diğer tüm denemelerinizle birlikte **DENEYLER** listesinde bulunur.
 > 
 > 
 
-## <a name="viewing-the-prior-run"></a>Önceki çalıştırma görüntüleme
-En az bir kez çalıştırdığınız denemenizin bulunduğu bir deneyiniz varsa, Özellikler bölmesinde **önceki Çalıştır** ' a tıklayarak deneme sürümünün önceki çalıştırmasını görüntüleyebilirsiniz.
+## <a name="viewing-the-prior-run"></a>Önceki Çalıştırmayı Görüntüleme
+En az bir kez çalıştırdığınız bir deneme açık olduğunda, özellikler bölmesinde Önceki **Çalıştır'ı** tıklatarak denemenin önceki çalışmasını görüntüleyebilirsiniz.
 
-Örneğin, bir deneme oluşturmak ve 11: 23'te bu sürümlerini çalıştıran varsayalım 11:42 ve 11:55. Deneme sürümü (11:55) öğesini açıp **önceki çalıştırma**' ya tıkladığınızda, 11:42 ' de çalıştırdığınız sürüm açılır.
+Örneğin, bir deneme oluşturduğunuzu ve sürümlerini 11:23, 11:42 ve 11:55'te çalıştırdığınızı varsayalım. Denemenin son çalışmasını açar sanız (11:55) ve **Önceki Çalıştır'ı**tıklattığınızda, 11:42'de çalıştırdığınız sürüm açılır.
 
-## <a name="viewing-the-run-history"></a>Çalıştırma geçmişini görüntüleme
-Bir deneyin önceki çalıştırmalarını, açık bir deneyime göre **Çalıştır geçmişini görüntüle** ' ye tıklayarak görüntüleyebilirsiniz.
+## <a name="viewing-the-run-history"></a>Çalışma Geçmişini Görüntüleme
+Açık bir denemede **Çalıştır Geçmişini Görüntüle'yi** tıklatarak bir denemenin önceki tüm çalıştırmalarını görüntüleyebilirsiniz.
 
-Örneğin, [Doğrusal regresyon][linear-regression] modülüyle bir deneme oluşturduğunuzu ve deneme sonuçlarınızda **öğrenme oranının** değerini değiştirmenin etkisini gözlemlemek istediğinizi varsayalım. Denemeyi birden çok kez bu parametre için farklı değerlerle şu şekilde çalıştırın:
+Örneğin, [Doğrusal Regresyon][linear-regression] modülüyle bir deneme oluşturduğunuzu ve **Öğrenme oranının** değerini deneme sonuçlarınız üzerindeki değerini değiştirmenin etkisini gözlemlemek istediğinizi varsayalım. Denemeyi bu parametre için farklı değerlerle birden çok kez çalıştırın:
 
-| Öğrenme oranı değeri | Çalıştırma başlangıç zamanı |
+| Öğrenme Oranı değeri | Başlangıç saatini çalıştırın |
 | --- | --- |
-| 0.1 |9/11/2014 4:18:58 pm |
-| 0.2 |9/11/2014 4:24:33 pm |
-| 0,4 |9/11/2014 4:28:36 pm |
-| 0,5 |9/11/2014 4:33:31 pm |
+| 0.1 |11.09.2014 16:18:58 |
+| 0.2 |11.09.2014 16:24:33 |
+| 0,4 |11.09.2014 16:28:36 |
+| 0,5 |11.09.2014 16:33:31 |
 
-**Çalışma geçmişini görüntüle**' ye tıklarsanız, tüm bu çalıştırmaların bir listesini görürsünüz:
+**VIEW RUN HISTORY'yi**tıklattığınızda, tüm bu çalıştırmaların bir listesini görürsünüz:
 
-![Örneği çalıştırma geçmişi](./media/manage-experiment-iterations/viewrunhistory.jpg)
+![Örnek çalışma geçmişi](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
-Herhangi bir anlık görüntü deneyde, çalıştırdığınız zaman görüntülemek için bu çalışır birine tıklayın. Yapılandırma, parametre değerleri, açıklamaları ve sonuçları tüm bu çalıştırmanın denemenizin eksiksiz bir kaydı size korunur.
+Bu çalıştırmalardan herhangi birini tıklattığınızda denemenin anlık görüntüsünü görüntüleyin. Yapılandırma, parametre değerleri, açıklamalar ve sonuçlar, denemenizin çalışmasını tam olarak kaydetmek için korunur.
 
 > [!TIP]
-> Deneme yinelemelerinizi belgelemek için, her çalıştırdığınızda başlığı değiştirebilirsiniz, Özellikler bölmesinde deneyinin **özetini** güncelleştirebilir ve yaptığınız değişiklikleri kaydetmek için bağımsız modüllerde yorum ekleyebilir veya güncelleştirebilirsiniz. Başlık, Özet, modül açıklamaları deneme ile her bir çalıştırmanın kaydedilir.
+> Denemenin yinelemelerinizi belgelemek için, başlığı her çalıştırdığınızda değiştirebilir, özellikler bölmesinde denemenin **Özetini** güncelleyebilir ve değişikliklerinizi kaydetmek için tek tek modüllere yorum ekleyebilir veya güncelleyebilirsiniz. Başlık, özet ve modül yorumları denemenin her çalışmasında kaydedilir.
 > 
 > 
 
-Machine Learning Studio (klasik) içindeki **denemeleri** sekmesinde bulunan denemeleri listesi her zaman bir denemenin en son sürümünü görüntüler. Deneme sürümü ' nü (önceki **çalıştırma** veya **Görünüm çalıştırma geçmişi**kullanarak) açarsanız, **çalışma geçmişini görüntüle** ' ye tıklayarak ve **düzenlenebilir** **durumuna** sahip yinelemeyi seçerek Taslak sürümüne dönebilirsiniz.
+Machine Learning Studio'daki **(klasik) DENEYLER** sekmesindeki deneylerin listesi her zaman bir deneyin en son sürümünü görüntüler. Denemenin önceki bir çalışmasını açarsanız **(Önceki Çalıştır** veya **GÖRÜNÜM KAÇIŞ Tarİhİ'ni**kullanarak), **VIEW RUN HISTORY'yi** tıklatarak **STATE** ve **Düzenleme durumu**olan yinelemeyi seçerek taslak sürüme dönebilirsiniz.
 
-## <a name="iterating-on-a-previous-run"></a>Önceki bir çalıştırmada yineleme
-Önceki **çalıştırma** veya **Görünüm çalıştırma geçmişi** ' ne tıkladığınızda ve önceki bir çalıştırmayı açtığınızda, tamamlanmış bir denemeyi salt okuma modunda görüntüleyebilirsiniz.
+## <a name="iterating-on-a-previous-run"></a>Önceki Çalıştırmada Yinele
+**Önceki Çalıştır** veya **RUN HISTORY'yi** tıklatTığınızda ve önceki bir çalıştırmayı açtığınızda, tamamlanmış bir denemeyi salt okunur modunda görüntüleyebilirsiniz.
 
-Denemenizin bir yinelemesini önceki bir çalıştırma için yapılandırdığınız şekilde kullanmaya başlamak istiyorsanız, çalıştırmayı açıp **farklı kaydet**' e tıklayarak bunu yapabilirsiniz. Bu yeni bir deneme çalıştırma geçmişi, boş bir yeni başlık oluşturur ve tüm bileşenleri ve parametre değerlerini önceki çalıştırın. Bu yeni deneme Machine Learning Studio (klasik) giriş sayfasındaki **denemeleri** sekmesinde listelenir ve bu denemenizin bu yinelemesi için yeni bir çalıştırma geçmişi başlatarak onu değiştirebilir ve çalıştırabilirsiniz. 
+Denemenizin yinelemesini önceki bir çalışma için yapılandırma şeklinizle başlamak istiyorsanız, çalıştırmayı açıp **KAYDET AS'yi**tıklatarak bunu yapabilirsiniz. Bu, yeni bir başlık, boş bir çalıştırma geçmişi ve önceki çalıştırmanın tüm bileşenleri ve parametre değerleriyle yeni bir deneme oluşturur. Bu yeni deneme, Machine Learning Studio (klasik) ana sayfasındaki **DENEYLER** sekmesinde listelenir ve denemenizin bu yinelemesi için yeni bir çalışma geçmişi başlatarak bunu değiştirebilir ve çalıştırabilirsiniz. 
 
-Örneğin, denemeyi çalıştırma geçmişi önceki bölümde gösterilen olduğunu varsayalım. **Öğrenme oranı** parametresini 0,4 olarak ayarladığınızda ne olacağını gözlemlemek ve **eğitim dönemleri sayısı** için farklı değerler denemeniz gerekir.
+Örneğin, önceki bölümde gösterilen deneme çalıştırma geçmişine sahip olduğunuzu varsayalım. **Öğrenme oranı** parametresini 0,4 olarak ayarladığınızda neler olduğunu gözlemlemek ve **eğitim çağı** sayısı parametresi için farklı değerler denemek istiyorsunuz.
 
-1. **Çalışma geçmişini görüntüle** ' ye tıklayın ve 4:28:36 PM 'de çalıştırdığınız denemenin yinelemesini açın (içinde parametre değerini 0,4 olarak ayarlarsınız).
-2. **Farklı kaydet**' e tıklayın.
-3. Yeni bir başlık girin ve **Tamam** onay işaretine tıklayın. Denemeyi yeni bir kopyası oluşturulur.
-4. **Eğitim dönemleri numarasını** değiştirin.
-5. **Çalıştır**' a tıklayın.
+1. **VIEW RUN HISTORY'yi** tıklatın ve saat 16:28:36'da çalıştırdığınız (parametre değerini 0,4 olarak ayarladığınız) denemenin yinelemesini açın.
+2. **KAYDET'i**tıklatın.
+3. Yeni bir başlık girin ve **Tamam** onay işaretini tıklatın. Denemenin yeni bir kopyası oluşturulur.
+4. Eğitim **çağı parametresini değiştirin.**
+5. **ÇALıŞTıR'ı**tıklatın.
 
-Artık bu sürümünü denemenizi, çalıştırmak ve değiştirmek çalışmanızı kaydetmek için yeni bir çalıştırma geçmişi oluşturmaya devam edebilirsiniz.
+Artık denemenizin bu sürümünü değiştirmeye ve çalıştırmaya devam ederek çalışmanızı kaydetmek için yeni bir çalışma geçmişi oluşturarak devam edebilirsiniz.
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

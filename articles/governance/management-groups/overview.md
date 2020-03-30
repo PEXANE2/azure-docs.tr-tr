@@ -1,14 +1,14 @@
 ---
-title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
+title: Kaynaklarınızı yönetim gruplarıyla düzenleme - Azure Yönetimi
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
 ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240943"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Kaynaklarınızı Azure yönetim gruplarıyla düzenleme
@@ -23,7 +23,7 @@ Birleşik ilke ve erişim yönetimi için kaynaklarınızı bir hiyerarşi altı
 
 ![Yönetim grubu hiyerarşi ağacı örneği](./media/tree.png)
 
-İlke uygulayan bir hiyerarşi oluşturabilirsiniz. Örneğin bu, “Üretim” adlı grupta VM konumlarını ABD Batı Bölgesiyle sınırlayan bir ilke olabilir. Bu ilke, bu yönetim grubunun alt öğeleri olan tüm Kurumsal Anlaşma (EA) aboneliklerine devralınır ve bu abonelikler altındaki tüm sanal makinelere uygulanır. Bu güvenlik ilkesi kaynak veya abonelik sahibi tarafından değiştirilemez ve bu da idarenin geliştirilmesine olanak tanır.
+İlke uygulayan bir hiyerarşi oluşturabilirsiniz. Örneğin bu, “Üretim” adlı grupta VM konumlarını ABD Batı Bölgesiyle sınırlayan bir ilke olabilir. Bu politika, bu yönetim grubunun soyundan gelen tüm Kurumsal Sözleşme (EA) aboneliklerine devredilecek ve bu abonelikler kapsamındaki tüm VM'ler için geçerli olacaktır. Bu güvenlik ilkesi kaynak veya abonelik sahibi tarafından değiştirilemez ve bu da idarenin geliştirilmesine olanak tanır.
 
 Yönetim gruplarını kullanacağınız başka bir senaryo ise birden fazla aboneliğe kullanıcı erişimi sağlamaktır. Birden çok aboneliği söz konusu yönetim grubu altına taşıyarak, yönetim grubu üzerinde tüm aboneliklere erişimi devralacak bir [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) (RBAC) ataması oluşturabilirsiniz.
 Yönetim grubunda bir atama olması, farklı abonelikler üzerinde RBAC komut dosyası kullanmak yerine kullanıcıların ihtiyaç duydukları her şeye erişmesini sağlayabilir.
@@ -45,7 +45,7 @@ Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu
 ### <a name="important-facts-about-the-root-management-group"></a>Kök yönetim grubu hakkında önemli bilgiler
 
 - Varsayılan olarak kök yönetim grubunun görünen adı, **Kiracı kök grubu**’dur. Kimlik, Azure Active Directory Kimliği’dir.
-- Görünen adı değiştirmek için hesabınızın, kök yönetim grubunun Sahip veya Katkıda Bulunan rolüne atanması gerekir. Bir yönetim grubunun adını güncelleştirmek için [bir yönetim grubunun adını değiştirme](manage.md#change-the-name-of-a-management-group) konusuna bakın.
+- Görünen adı değiştirmek için hesabınızın, kök yönetim grubunun Sahip veya Katkıda Bulunan rolüne atanması gerekir. Bkz. Bir yönetim grubunun adını güncelleştirmek için [bir yönetim grubunun adını değiştir.](manage.md#change-the-name-of-a-management-group)
 - Diğer yönetim gruplarının aksine kök yönetim grubu taşınamaz veya silinemez.  
 - Tüm abonelikler ve yönetim grupları, dizinin içindeki bir kök yönetim grubu altında birleşir.
   - Dizindeki tüm kaynaklar, genel yönetim için kök yönetim grubu altında birleşir.
@@ -98,16 +98,16 @@ Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eyle
 |Kullanıcı Erişimi Yöneticisi   |        |        |        |        | X             | X             |       |
 
 *: MG Katılımcısı ve MG Okuyucusu, kullanıcıların bu eylemleri yalnızca yönetim grubu kapsamında gerçekleştirmesine izin verir.  
-\* *: Kök yönetim grubundaki rol atamaları, bir aboneliği veya yönetim grubunu bu gruba taşımak için gerekli değildir.  Hiyerarşi içindeki öğeleri taşımayla ilgili ayrıntılar için bkz. [Kaynaklarınızı yönetim gruplarıyla yönetme](manage.md).
+**: Root yönetim grubundaki rol atamalarının bir abonelik veya yönetim grubunu bu gruba taşıması gerekmez.  Hiyerarşi içindeki öğeleri taşımayla ilgili ayrıntılar için bkz. [Kaynaklarınızı yönetim gruplarıyla yönetme](manage.md).
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>Özel RBAC rol tanımı ve ataması
+## <a name="custom-rbac-role-definition-and-assignment"></a>Özel RBAC rol tanımı ve atama
 
-Yönetim grupları için özel RBAC rol desteği şu anda bazı [kısıtlamalarla önizlemededir](#limitations).  Rol Tanımının atanabilir kapsamında yönetim grubu kapsamını tanımlayabilirsiniz.  Ardından bu özel RBAC Rolü söz konusu yönetim grubunda ve onun altında yer alan tüm yönetim grupları, abonelikler, kaynak grupları veya kaynaklarda atama için kullanılabilir. Bu özel rol, herhangi bir yerleşik rol gibi hiyerarşide aşağıya doğru devralınır.    
+Yönetim grupları için özel RBAC rol desteği şu anda bazı [sınırlamalarla](#limitations)önizlemededir.  Rol Tanımının atanabilir kapsamında yönetim grubu kapsamını tanımlayabilirsiniz.  Ardından bu özel RBAC Rolü söz konusu yönetim grubunda ve onun altında yer alan tüm yönetim grupları, abonelikler, kaynak grupları veya kaynaklarda atama için kullanılabilir. Bu özel rol, herhangi bir yerleşik rol gibi hiyerarşide aşağıya doğru devralınır.    
 
 ### <a name="example-definition"></a>Örnek tanım
-[Özel bir rol tanımlama ve oluşturma](../../role-based-access-control/custom-roles.md) , yönetim gruplarının eklenmesine göre değişmez. Yönetim grubu **/providers/Microsoft.Management/managementgroups/{GroupID}** tanımlamak için tam yolu kullanın. 
+[Özel bir rol tanımlamak ve oluşturmak,](../../role-based-access-control/custom-roles.md) yönetim gruplarının eklenmesiyle değişmez. Yönetim grubunu **/sağlayıcıları/Microsoft.Management/managementgroups/{groupId}** tanımlamak için tam yolu kullanın. 
 
-Yönetim grubunun görünen adını değil, yönetim grubunun KIMLIĞINI kullanın. Bu ortak hata, her ikisi de bir yönetim grubu oluştururken özel tanımlanmış alanlar olduğundan oluşur. 
+Yönetim grubunun görüntü adını değil, yönetim grubunun kimliğini kullanın. Bu yaygın hata, her ikisi de bir yönetim grubu oluştururken özel tanımlanmış alanlar olduğundan olur. 
 
 ```json
 ...
@@ -140,46 +140,46 @@ Yönetim grubunun görünen adını değil, yönetim grubunun KIMLIĞINI kullan�
 ...
 ```
 
-### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Rol tanımı ve atama hiyerarşisi yolunu bozan sorunlar
-Rol tanımları, yönetim grubu hiyerarşisi içinde herhangi bir yerde atanabilir kapsamdadır. Alt abonelikte gerçek rol ataması varken, bir üst yönetim grubunda rol tanımı tanımlanabilir. İki öğe arasında bir ilişki olduğundan, atamayı tanımdan ayırmaya çalışırken bir hata alacaksınız. 
+### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Rol tanımı ve atama hiyerarşisi yolunun kırılmasıyla ilgili sorunlar
+Rol tanımları, yönetim grubu hiyerarşisi içinde herhangi bir yerde atanabilir kapsamdır. Alt abonelikte gerçek rol ataması varken, bir üst yönetim grubunda rol tanımı tanımlanabilir. İki öğe arasında bir ilişki olduğundan, atamayı tanımından ayırmaya çalışırken bir hata alırsınız. 
 
-Örneğin: bir görselin hiyerarşinin küçük bir bölümüne bakalım. 
+Örneğin: Görsel için hiyerarşinin küçük bir bölümüne bakalım. 
 
 ![alt ağaç](./media/subtree.png)
 
-Pazarlama Yönetimi grubunda tanımlanmış özel bir rol olduğunu varsayalım. Bu özel rol daha sonra iki ücretsiz deneme aboneliğine atanır.  
+Pazarlama yönetim grubunda tanımlanmış özel bir rol olduğunu varsayalım. Bu özel rol daha sonra iki ücretsiz deneme aboneliğine atanır.  
 
-Bu aboneliklerden birini üretim yönetim grubunun bir alt öğesi olacak şekilde taşımaya çalışırsam, bu taşıma, abonelik rolü atamasından pazarlama yönetim grubu rolü tanımına kadar olan yolu keser. Bu senaryoda, bu ilişkiyi bozduğundan beri taşımaya izin verilmediğini belirten bir hata alırsınız.  
+Bu aboneliklerden birini Üretim yönetimi grubunun çocuğu olarak taşımaya çalışırsak, bu hareket abonelik rol atamasından Pazarlama yönetimi grubu rol tanımına giden yolu kırar. Bu senaryoda, bu ilişkiyi keseceği için taşımaya izin verilmediğini belirten bir hata alırsınız.  
 
-Bu senaryoyu gidermeye yönelik birkaç farklı seçenek vardır:
-- Aboneliği yeni bir üst MG öğesine taşımadan önce abonelikten rol atamasını kaldırın.
-- Aboneliği rol tanımının atanabilir kapsamına ekleyin.
-- Rol tanımı içindeki atanabilir kapsamı değiştirin. Yukarıdaki örnekte, bir şekilde atanabilir kapsamları, hiyerarşinin her iki dalı tarafından ulaşılabilmesi için, bir pazarlama üzerinden kök yönetim grubuna güncelleştirebilirsiniz.   
-- Diğer dalda tanımlanacak ek bir özel rol oluşturun.  Bu yeni rol, rol atamasının abonelik üzerinde de değiştirilmesini gerektirir.  
+Bu senaryoyu düzeltmek için birkaç farklı seçenek vardır:
+- Aboneliği yeni bir üst MG'ye taşımadan önce rol atamasını abonelikten kaldırın.
+- Aboneliği Rol Tanımı'nın devredilebilir kapsamına ekleyin.
+- Rol tanımı içinde devratılabilir kapsamı değiştirin. Yukarıdaki örnekte, tanım hiyerarşinin her iki dalı tarafından ulaşılabilmesi için devratılabilir kapsamları Pazarlama'dan Kök Yönetim Grubu'na güncelleştirebilirsiniz.   
+- Diğer dalda tanımlanacak ek bir Özel Rol oluşturun.  Bu yeni rol, rol atamasının abonelikte de değiştirilmesini gerektirir.  
 
 ### <a name="limitations"></a>Sınırlamalar  
-Yönetim gruplarında özel roller kullanılırken var olan sınırlamalar vardır. 
+Yönetim gruplarında özel roller kullanırken var olan sınırlamalar vardır. 
 
- - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz.  Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır.  Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşındığında gerçekleşir.   
- - RBAC veri düzlemi eylemlerinin yönetim grubu özel rollerinde tanımlanmasına izin verilmez.  Bu kısıtlama, veri düzlemi kaynak sağlayıcılarını güncelleştirmede RBAC eylemleriyle ilgili bir gecikme sorunu olduğu için gerçekleştirilir. Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
- - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz.  Bir yazım hatası veya yanlış bir yönetim grubu kimliği listeleniyorsa, rol tanımı yine de oluşturulur.   
+ - Yeni bir rolün devredilebilir kapsamlarında yalnızca bir yönetim grubu tanımlayabilirsiniz.  Bu sınırlama, rol tanımlarının ve rol atamalarının kesildiği durumların sayısını azaltmak için yapılır.  Bu, rol ataması olan bir abonelik veya yönetim grubu rol tanımı olmayan farklı bir üst öğeye taşındığında gerçekleşir.   
+ - RBAC Veri Düzlemi eylemlerinin yönetim grubu özel rollerinde tanımlanmasına izin verilmez.  Veri düzlemi kaynak sağlayıcılarını güncelleştirmek için RBAC eylemleriyle ilgili bir gecikme sorunu olduğu için bu kısıtlama uygulanır. Bu gecikme sorunu üzerinde çalışılmaktadır ve bu eylemler herhangi bir riski azaltmak için rol tanımıdevre dışı bırakılır.
+ - Azure Kaynak Yöneticisi, rol tanımının devredilebilir kapsamında yönetim grubunun varlığını doğrulamaz.  Bir yazım hatası veya yanlış bir yönetim grubu kimliği listelenirse, rol tanımı yine de oluşturulur.   
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Yönetim gruplarını ve abonelikleri taşıma 
 
-Bir yönetim grubuna veya aboneliğine başka bir yönetim grubunun alt öğesi olacak şekilde, üç kuralın da doğru olarak değerlendirilmesi gerekir.
+Bir yönetim grubunun veya aboneliğin başka bir yönetim grubunun çocuğu olması için üç kuralın doğru olarak değerlendirilmesi gerekir.
 
-Taşıma eylemini gerçekleştiriyorsanız şunlar gerekir: 
+Taşıma eylemini yapıyorsanız, şunları yapmanız gerekir: 
 
--  Alt abonelik veya yönetim grubundaki yönetim grubu yazma ve rol atama yazma izinleri.
-   - Yerleşik rol örneği **sahibi**
-- Hedef üst yönetim grubunda yönetim grubu yazma erişimi.
-   - Yerleşik rol örneği: **sahip**, **katkıda bulunan**, **Yönetim grubu katılımcısı**
-- Yönetim grubu var olan üst yönetim grubu üzerinde yazma erişimi.
-   - Yerleşik rol örneği: **sahip**, **katkıda bulunan**, **Yönetim grubu katılımcısı**
+-  Yönetim grubu yazma ve Rol Atama çocuk abonelik veya yönetim grubu üzerinde izinleri yazmak.
+   - Yerleşik rol örneği **Sahibi**
+- Yönetim grubu hedef üst yönetim grubuna erişim yazar.
+   - Yerleşik rol örneği: **Sahibi**, **Katılımcısı**, **Yönetim Grubu Katılımcısı**
+- Yönetim grubu, varolan üst yönetim grubuna erişim yazar.
+   - Yerleşik rol örneği: **Sahibi**, **Katılımcısı**, **Yönetim Grubu Katılımcısı**
 
-**Özel durum**: hedef veya var olan üst yönetim grubu kök yönetim grubinise, izin gereksinimleri geçerli değildir. Kök yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan giriş noktası olduğundan, bir öğeyi taşımak için üzerinde izinleriniz olması gerekmez.
+**Özel Durum**: Hedef veya varolan üst yönetim grubu Root yönetim grubuysa, izin gereksinimleri geçerli değildir. Root yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan iniş noktası olduğundan, bir öğeyi taşımak için izinlere ihtiyacınız yoktur.
 
-Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik için (yönetim grubundan devralınmaz) sahip rolüne doğrudan atandıysanız, katılımcısı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz. 
+Abonelikteki Sahip rolü geçerli yönetim grubundan devralılırsa, hareket hedefleriniz sınırlıdır. Aboneliği yalnızca Sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceğiniz için katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik için Doğrudan Sahip rolüne atandıysanız (yönetim grubundan devralınmadı), bu görevi katkıda bulunan olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz. 
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Etkinlik günlüklerini kullanarak yönetim gruplarını denetleme
 

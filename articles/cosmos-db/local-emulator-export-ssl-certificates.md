@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB öykünücüsü'nü sertifikaları verme
+title: Azure Cosmos DB Öykünücüsü sertifikalarını dışarı aktarma
 description: Windows Sertifika Deposu’nu kullanmayan dil ve çalışma zamanlarında geliştirirken, SSL sertifikalarını dışarı aktarmanız ve yönetmeniz gerekir. Bu gönderi adım adım yönergeler verir.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: a398c10511fdd3891a2c429f0ef46869dcc48922
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 623837b30038ef8524aef1e87aeb5933204925a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244444"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156030"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Azure Cosmos DB Öykünücü sertifikalarını Java, Python ve Node.js ile kullanmak için dışarı aktarma
 
@@ -70,7 +70,7 @@ Azure Cosmos DB Yerel Öykünücüsündeki sertifikalar öykünücü ilk kez ça
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Java içinde sertifika kullanma
 
-Java uygulamalarını veya Java istemci kullanan MongoDB uygulamaları çalıştırırken geçirme daha Java varsayılan sertifika deposuna sertifika yüklemek daha kolay `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` bayrakları. Örneğn dahil edilen [Java Demo uygulaması](https://localhost:8081/_explorer/index.html) varsayılan sertifika deposuna bağlıdır.
+Java uygulamalarını veya Java istemcisini kullanan MongoDB uygulamalarını çalıştırırken, sertifikayı Java varsayılan sertifika deposuna yüklemek `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` bayrakları geçmekten daha kolaydır. Örneğn dahil edilen [Java Demo uygulaması](https://localhost:8081/_explorer/index.html) varsayılan sertifika deposuna bağlıdır.
 
 X.509 sertifikasını varsayılan Java sertifika deposuna içeri aktarmak için, [Java CA Sertifika Deposuna Sertifika Ekleme](https://docs.microsoft.com/azure/java-add-certificate-ca-store) bölümündeki yönergeleri izleyin. Anahtar aracını çalıştırırken %JAVA_HOME% dizininde çalışacağınıza dikkat edin.
 

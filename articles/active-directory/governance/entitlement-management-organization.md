@@ -1,9 +1,9 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'ne bağlı bir kuruluş ekleme-Azure Active Directory
-description: Kuruluşunuz dışındaki kişilerin, projelerde işbirliği yapabilmeniz için erişim paketleri istemesine nasıl izin vereceğinizi öğrenin.
+title: Azure AD yetkilendirme yönetiminde bağlı bir kuruluş ekleme - Azure Etkin Dizin
+description: Projelerde işbirliği yapabilmeniz için kuruluşunuz dışındaki kişilerin erişim paketleri istemesine nasıl izin verebileceğinizi öğrenin.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,125 +12,127 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/22/2020
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ee370bc9c381eb11ae7cae53b31d0c987c52733c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483865"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128602"
 ---
-# <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
+# <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bağlı bir kuruluş ekleme
 
-Azure AD Yetkilendirme Yönetimi, kuruluşunuzun dışındaki kişilerle işbirliği yapmanızı sağlar. Bir dış Azure AD dizini veya etki alanındaki kullanıcılarla sık sık işbirliği yaptıysanız, bunları bağlı bir kuruluş olarak ekleyebilirsiniz. Bu makalede, kuruluşunuzun dışındaki kullanıcıların dizininizde kaynak istemesine izin vermek için bağlı bir kuruluşun nasıl ekleneceği açıklanmaktadır.
+Azure Etkin Dizin (Azure AD) yetkilendirme yönetimi yle kuruluşunuz dışındaki kişilerle işbirliği yapabilirsiniz. Harici bir Azure REKLAM dizininde veya etki alanında kullanıcılarla sık sık işbirliği yaparsa, bunları bağlı bir kuruluş olarak ekleyebilirsiniz. Bu makalede, kuruluşunuz dışındaki kullanıcıların dizininizde kaynak istemesine izin vermek için bağlı bir kuruluşun nasıl ekleyeceğiniz açıklanmaktadır.
 
 ## <a name="what-is-a-connected-organization"></a>Bağlı kuruluş nedir?
 
-Bağlı bir kuruluş, ile ilişkiniz olan bir dış Azure AD dizini veya etki alanıdır.
+Bağlı kuruluş, ilişki içinde olduğunuz harici bir Azure REKLAM dizini veya etki alanıdır.
 
-Örneğin, Woodgrove Bank 'ta çalıştığınızı ve iki harici kurum ile işbirliği yapmak istediğinizi varsayalım. Bu iki kuruluş farklı yapılandırmalara sahiptir:
+Örneğin, Woodgrove Bank'ta çalıştığınızı ve iki dış kuruluşla işbirliği yapmak istediğinizi varsayalım. Bu iki kuruluşun farklı yapılandırmaları vardır:
 
-- Grafik tasarımı Enstitüsü, Azure AD kullanır ve kullanıcıların `graphicdesigninstitute.com` ile biten bir Kullanıcı asıl adı vardır
-- Contoso henüz Azure AD kullanmıyor. Contoso kullanıcıları `contoso.com`ile biten bir Kullanıcı asıl adına sahiptir.
+- Grafik Tasarım Enstitüsü Azure AD kullanır ve kullanıcılarının *graphicdesigninstitute.com*ile biten bir kullanıcı ana adı vardır.
+- Contoso henüz Azure AD kullanmıyor. Contoso kullanıcıları *nın contoso.com*ile biten bir kullanıcı ana adı vardır.
 
-Bu durumda, iki bağlı kuruluş yapılandırabilirsiniz. Grafik Tasarım Enstitüsü için bir bağlı kuruluş ve contoso için bir tane oluşturabilirsiniz. Daha sonra bu iki bağlı kuruluşu bir ilkeye eklerseniz, her kuruluştan Kullanıcı asıl adı ilkeyle eşleşen kullanıcılar erişim paketleri isteyebilir. Graphicdesigninstitute.com etki alanına sahip bir Kullanıcı asıl adına sahip olan kullanıcılar, grafik tasarımı Enstitüsü bağlı kuruluşla eşleşir ve bir etki alanına sahip olan Kullanıcı asıl adına sahip kullanıcılar da eşleşirken istek göndermesine izin verilir Contoso bağlantılı kuruluşun ve ayrıca paket istemesine izin verilir. Ayrıca, grafik tasarımı Enstitüsü Azure AD ' yi kullandığından, bir asıl adına sahip olan ve graphicdesignınstitute gibi kiracılarına eklenen [doğrulanmış bir etki alanıyla](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) eşleşen tüm kullanıcılar. Örneğin, aynı ilkeyi kullanarak erişim paketleri de isteyebilecektir.
+Bu durumda, iki bağlı kuruluş yapılandırabilirsiniz. Grafik Tasarım Enstitüsü için bir bağlı kuruluş ve Contoso için bir tane oluşturursunuz. Daha sonra bağlı iki kuruluşu bir ilkeye eklerseniz, ilkeyle eşleşen bir kullanıcı adı olan her kuruluştan kullanıcılar erişim paketleri isteyebilir. *graphicdesigninstitute.com* etki alanına sahip bir kullanıcı ana adı olan kullanıcılar, Grafik Tasarım Enstitüsü'ne bağlı kuruluşla eşleşir ve istek göndermesine izin verilir. *Contoso.com* etki alanına sahip bir kullanıcı ana adı olan kullanıcılar Contoso'ya bağlı kuruluşla eşleşir ve paket istemelerine de izin verilir. Grafik Tasarım Enstitüsü Azure AD kullandığından, yalnızca bir ana adla eşleşen ve *yalnızca grafik tasarım enstitüsü.example*gibi doğrulanmış bir etki [alanıyla](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) eşleşen kullanıcılar da aynı ilkeyi kullanarak erişim paketleri isteyebilir.
 
 ![Bağlı kuruluş örneği](./media/entitlement-management-organization/connected-organization-example.png)
 
-Azure AD dizininden veya etki alanından kullanıcıların kimlik doğrulaması, kimlik doğrulama türüne bağlıdır. Bağlı kuruluşların kimlik doğrulama türleri şunlardır:
+Azure AD dizinindeki veya etki alanı kimliği doğrulaması olan kullanıcıların kimlik doğrulama türüne nasıl bağlıdır. Bağlı kuruluşlar için kimlik doğrulama türleri şunlardır:
 
 - Azure AD
-- [Doğrudan Federasyon](../b2b/direct-federation.md)
-- [Bir kerelik geçiş kodu](../b2b/one-time-passcode.md) (etki alanı)
+- [Doğrudan federasyon](../b2b/direct-federation.md)
+- [Tek seferlik geçiş kodu](../b2b/one-time-passcode.md) (etki alanı)
 
-Bağlı bir kuruluşun nasıl ekleneceğini gösteren bir gösterim için aşağıdaki videoyu izleyin:
+Bağlı bir kuruluşun nasıl ekleyeceğinigöstermek için aşağıdaki videoyu izleyin:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4dskS]
 
 ## <a name="add-a-connected-organization"></a>Bağlı kuruluş ekleme
 
-Bağlı bir kuruluş olarak dış bir Azure AD dizini veya etki alanı eklemek için bu adımları izleyin.
+Bağlı kuruluş olarak harici bir Azure REKLAM dizini veya etki alanı eklemek için bu bölümdeki yönergeleri izleyin.
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya Konuk davetci
+**Önkoşul rolü**: *Global yönetici*, Kullanıcı *yöneticisi*veya Konuk *davetli*
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portalında **Azure Etkin Dizin'i**seçin ve ardından **Kimlik Yönetimi'ni**seçin.
 
-1. Sol menüde **bağlı kuruluşlar** ' a ve ardından **bağlı kuruluş Ekle**' ye tıklayın.
+1. Sol bölmede, **Bağlı kuruluşlar'ı**seçin ve ardından **bağlı kuruluş ekle'yi**seçin.
 
-    ![Kimlik yönetimi bağlı kuruluşlar-bağlı kuruluş ekleme](./media/entitlement-management-organization/connected-organization.png)
+    !["Bağlı kuruluş ekle" düğmesi](./media/entitlement-management-organization/connected-organization.png)
 
-1. **Temel bilgiler** sekmesinde, kuruluş için bir görünen ad ve açıklama girin.
+1. Temel **Bilgiler** sekmesini seçin ve ardından kuruluş için bir görüntü adı ve açıklama girin.
 
-    ![Bağlı kuruluş Ekle-temel bilgiler sekmesi](./media/entitlement-management-organization/organization-basics.png)
+    !["Bağlı kuruluş ekle" Temelleri bölmesi](./media/entitlement-management-organization/organization-basics.png)
 
-1. **Dizin + etki** alanı sekmesinde **Dizin Ekle + etki alanı** ' na tıklayarak dizinler ve etki alanları seçin bölmesini açın.
+1. **Dizin + etki alanı** sekmesini seçin ve ardından **Dizin Ekle + etki alanı'nı**seçin.
 
-1. Azure AD dizinini veya etki alanını aramak için bir etki alanı adı yazın. Tüm etki alanı adını yazmanız gerekir.
+    **Seç dizinleri + etki alanları** bölmesi açılır.
 
-1. Belirtilen ad ve kimlik doğrulama türü tarafından doğru kuruluş olduğunu doğrulayın. Kullanıcıların oturum açması, kimlik doğrulama türüne bağlıdır.
+1. Arama kutusuna, Azure AD dizinini veya etki alanını aramak için bir etki alanı adı girin. Tüm etki alanı adını girdiğimden emin olun.
 
-    ![Bağlı kuruluş ekleme-dizinler + etki alanları seçin](./media/entitlement-management-organization/organization-select-directories-domains.png)
+1. Kuruluş adının ve kimlik doğrulama türünün doğru olduğunu doğrulayın. Kullanıcıların nasıl oturum açmaları kimlik doğrulama türüne bağlıdır.
 
-1. Azure AD dizinini veya etki alanını eklemek için **Ekle** ' ye tıklayın. Şu anda, bağlı kuruluşa göre yalnızca bir Azure AD dizini veya etki alanı ekleyebilirsiniz.
+    !["Dizinseçinler + etki alanları seç" bölmesi](./media/entitlement-management-organization/organization-select-directories-domains.png)
+
+1. Azure AD dizinini veya etki alanını eklemek için **Ekle'yi** seçin. Şu anda, bağlı kuruluş başına yalnızca bir Azure REKLAM dizini veya etki alanı ekleyebilirsiniz.
 
     > [!NOTE]
-    > Azure AD dizini veya etki alanındaki tüm kullanıcılar bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya engellenenler listesi tarafından engellenmediği durumlar dışında, dizinle ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../b2b/allow-deny-list.md).
+    > Azure AD dizinindeki veya etki alanından tüm kullanıcılar bu erişim paketini talep edebilecektir. Bu, bu etki alanları Azure AD işletmesi tarafından engellenmedikçe (B2B) listeye izin verdiği veya reddetmediği sürece, dizinle ilişkili tüm alt etki alanlarından Azure AD'deki kullanıcıları içerir. Daha fazla bilgi için [bkz.](../b2b/allow-deny-list.md)
 
-1. Azure AD dizinini veya etki alanını ekledikten sonra **Seç**' e tıklayın.
+1. Azure AD dizinini veya etki alanını ekledikten sonra **Seç'i**seçin.
 
-    Kuruluş listede görüntülenir.
+    Kuruluş listede görünür.
 
-    ![Bağlı kuruluş-dizinler sekmesi ekleme](./media/entitlement-management-organization/organization-directory-domain.png)
+    !["Dizin + etki alanı" bölmesi](./media/entitlement-management-organization/organization-directory-domain.png)
 
-1. **Sponsorlar** sekmesinde, bu bağlı kuruluş için isteğe bağlı sponsorlar ekleyin.
+1. **Sponsorlar** sekmesini seçin ve ardından bu bağlı kuruluş için isteğe bağlı sponsorlar ekleyin.
 
-    Sponsorlar, dizininizde bulunan ve bu bağlı kuruluşla ilişki için iletişim noktası olan iç veya dış kullanıcılardır. İç sponsorlar, dizininizdeki üye kullanıcılardır. Dış sponsorlar, daha önce davet edilmiş ve dizininizde zaten olan bağlı kuruluştan Konuk kullanıcılardır. Bu bağlı kuruluştaki kullanıcılar bu erişim paketine erişim isteğinde bulunduğunda, sponsorlar olarak kullanılabilir. Bir konuk kullanıcıyı dizininize davet etme hakkında daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../b2b/add-users-administrator.md).
+    Sponsorlar, bu bağlı kuruluşla ilişki için temas noktası olan dizininizde zaten iç veya dış kullanıcılardır. Dahili sponsorlar dizininizdeki üye kullanıcılardır. Dış sponsorlar, daha önce davet edilen ve zaten dizininizde olan bağlı kuruluştan konuk kullanıcılardır. Bu bağlı kuruluştaki kullanıcılar bu erişim paketine erişim istediğinde sponsorlar onaylayıcı olarak kullanılabilir. Konuk kullanıcıyı dizininize nasıl davet edeceğihakkında bilgi için Azure [portalındaki Azure Etkin Dizin B2B işbirliği kullanıcıları ekle'ye](../b2b/add-users-administrator.md)bakın.
 
-    **Ekle/Kaldır**' a tıkladığınızda, iç veya dış sponsorları seçmek için bir bölme belirir. Bölmesinde, dizininizdeki kullanıcıların ve grupların filtrelenmemiş bir listesi görüntülenir.
+    **Ekle/Kaldır'ı**seçtiğinizde, iç veya dış sponsorları seçebileceğiniz bir bölme açılır. Bölme, dizininizde filtre uygulanmamış bir kullanıcı ve grup listesini görüntüler.
 
-    ![Erişim paketi-Ilke-bağlı kuruluş ekleme-sponsorlar sekmesi](./media/entitlement-management-organization/organization-sponsors.png)
+    ![Sponsorlar bölmesi](./media/entitlement-management-organization/organization-sponsors.png)
 
-1. **Gözden geçir + oluştur** sekmesinde kuruluş ayarlarınızı gözden geçirin ve ardından **Oluştur**' a tıklayın.
+1. Gözden **Geçir + oluştur** sekmesini seçin, kuruluş ayarlarınızı gözden geçirin ve sonra **Oluştur'u**seçin.
 
-    ![Erişim paketi-Ilke-bağlı kuruluş ekleme-gözden geçirme + Oluştur sekmesi](./media/entitlement-management-organization/organization-review-create.png)
+    !["Gözden Geçirme + oluştur" bölmesi](./media/entitlement-management-organization/organization-review-create.png)
 
 ## <a name="update-a-connected-organization"></a>Bağlı bir kuruluşu güncelleştirme 
 
-Bağlı kuruluş farklı bir etki alanına değişirse, bu kuruluş için yeni bir adınız varsa veya sponsorları değiştirmek istiyorsanız bağlı kuruluşu güncelleştirebilirsiniz.
+Bağlı kuruluş farklı bir etki alanına değişirse, kuruluşun adı değişirse veya sponsorları değiştirmek isterseniz, bu bölümdeki yönergeleri izleyerek bağlı kuruluşu güncelleştirebilirsiniz.
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya Konuk davetci
+**Önkoşul rolü**: *Global yönetici*, Kullanıcı *yöneticisi*veya Konuk *davetli*
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portalında **Azure Etkin Dizin'i**seçin ve ardından **Kimlik Yönetimi'ni**seçin.
 
-1. Sol menüde **bağlı kuruluşlar** ' a ve ardından bağlı kuruluşu açmak için ' ye tıklayın.
+1. Sol bölmede, **Bağlı kuruluşlar'ı**seçin ve ardından açmak için bağlı kuruluşu seçin.
 
-1. Genel Bakış sayfasında, kuruluş adını veya açıklamasını değiştirmek için **Düzenle** ' ye tıklayın.  
+1. Bağlı kuruluşun genel bakış bölmesinde, kuruluş adını veya açıklamasını değiştirmek için **Düzenleme'yi** seçin.  
 
-1. Dizin + etki alanı sayfasında, farklı bir dizin veya etki alanına geçmek için **dizin + etki alanını güncelleştir** ' e tıklayın.
+1. **Dizin + etki alanı** bölmesinde, farklı bir dizin veya etki alanına değiştirmek için **Dizin + etki alanını güncelleştir'i** seçin.
 
-1. Sponsorlar sayfasında, **dahili sponsorlar Ekle** ' ye tıklayın veya **Harici sponsorlar ekleyerek** bir kullanıcıyı sponsor olarak ekleyin.  Bir sponsor kaldırmak için, sponsor öğesine tıklayın ve sağ taraftaki menüden **Sil**' e tıklayın.
+1. **Sponsorlar** bölmesinde, bir kullanıcıyı sponsor olarak eklemek için **dahili sponsor ekle** veya **dış sponsor ekle'yi** seçin. Sponsoru kaldırmak için sponsoru seçin ve sağ bölmede **Sil'i**seçin.
 
 
 ## <a name="delete-a-connected-organization"></a>Bağlı bir kuruluşu silme
 
-Artık dış Azure AD dizini veya etki alanı ile bir ilişkiniz yoksa bağlı kuruluşu silebilirsiniz.
+Harici bir Azure REKLAM dizini veya etki alanıyla artık bir ilişkiniz yoksa, bağlı kuruluşu silebilirsiniz.
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya Konuk davetci
+**Önkoşul rolü**: *Global yönetici*, Kullanıcı *yöneticisi*veya Konuk *davetli*
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portalında **Azure Etkin Dizin'i**seçin ve ardından **Kimlik Yönetimi'ni**seçin.
 
-1. Sol menüde **bağlı kuruluşlar** ' a ve ardından bağlı kuruluşu açmak için ' ye tıklayın.
+1. Sol bölmede, **Bağlı kuruluşlar'ı**seçin ve ardından açmak için bağlı kuruluşu seçin.
 
-1. Bağlı kuruluşu silmek için genel bakış sayfasında **Sil** ' e tıklayın.
+1. Bağlı kuruluşun genel bakış bölmesinde, silmek için **Sil'i** seçin.
 
-    Şu anda bağlı bir kuruluşu yalnızca bağlı kullanıcı yoksa silebilirsiniz.
+    Şu anda, bağlı bir kuruluşu yalnızca bağlı kullanıcı yoksa silebilirsiniz.
 
-    ![Kimlik yönetimi bağlı kuruluşlar-bağlı kuruluşu silme](./media/entitlement-management-organization/organization-delete.png)
+    ![Bağlı kuruluş Sil düğmesi](./media/entitlement-management-organization/organization-delete.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dış kullanıcılar için erişimi yönetir](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
-- [Dizininizde bulunmayan kullanıcılar için](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
+- [Dış kullanıcılara yönelik idare erişimi](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
+- [Dizininizde olmayan kullanıcılar için erişimi yönetme](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

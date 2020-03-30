@@ -10,30 +10,30 @@ ms.topic: include
 ms.date: 02/07/2020
 ms.custom: include file
 ms.openlocfilehash: 0e7cb7e4aaa9862a2b4af51593c29793ea54dd14
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77111210"
 ---
 > [!NOTE]
 > Çok parçalı istekler genellikle üç parça gerektirir:
-> * Bir **Content-Type** üst bilgisi:
+> * **İçerik Türü** üstbilgi:
 >   * `application/json; charset=utf-8`
 >   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * Bir **içerik-değerlendirme**:
+> * Bir **İçerik-Disposition**:
 >   * `form-data; name="metadata"`
-> * Karşıya yüklenecek dosya içeriği
+> * Yüklenmesi gereken dosya içeriği
 >
-> **Içerik türü** ve **Content-Disposition** , kullanım senaryosuna göre değişir.
+> **İçerik Türü** ve **İçerik-Disposition** kullanım senaryosuna bağlı olarak değişir.
 
-Çok parçalı istekler, bir REST istemcisi veya C# [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#make-a-multipart-post-request)gibi bir araç aracılığıyla programlı bir şekilde yapılabilir. REST istemci araçları karmaşık çok parçalı istekler için farklı destek düzeylerine sahip olabilir. Yapılandırma ayarları ayrıca araç ve araç arasında biraz farklılık gösterebilir. İhtiyaçlarınıza en uygun aracı doğrulayın.
+Çok parçalı istekler programlı (C# yoluyla), bir REST istemcisi veya [Postacı](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#make-a-multipart-post-request)gibi bir araç aracılığıyla yapılabilir. REST istemci araçları, karmaşık çok parçalı istekler için farklı düzeyde destek düzeyine sahip olabilir. Yapılandırma ayarları da aletten araca biraz farklılık gösterebilir. İhtiyaçlarınıza en uygun aracı doğrulayın.
 
 > [!IMPORTANT]
-> Azure Digital TWINS yönetim API 'Lerine yapılan çok parçalı isteklerin genellikle iki bölümü vardır:
-> * **Content-Type** ve/veya **Content-Disposition** tarafından belirtilen blob meta verileri (ÖRNEĞIN, ilişkili bir MIME türü)
-> * Karşıya yüklenecek bir dosyanın yapılandırılmamış içeriğini içeren blob içeriği
+> Azure Dijital İkizler Yönetimi API'lerine yapılan çok parçalı isteklerin genellikle iki bölümü vardır:
+> * İçerik Türü ve/veya **İçerik-Disposition** tarafından bildirilen blob **Content-Type** meta verileri (ilişkili MIME türü gibi)
+> * Yüklenecek bir dosyanın yapılandırılmamış içeriğini içeren blob içeriği
 >
-> **Düzeltme Eki** istekleri için iki bölümden hiçbiri gerekli değildir. **Post** veya Create işlemleri için her ikisi de gereklidir.
+> **Patch** istekleri için iki parçadan hiçbiri gerekmez. Her ikisi de **POST** veya oluşturma işlemleri için gereklidir.
 
-[Doluluk hızlı başlangıç kaynak kodu](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) , Azure C# Digital TWINS yönetim API 'lerinde çok parçalı isteklerin nasıl yapılacağını gösteren tüm örnekleri içerir.
+[Doluluk Hızlı Başlatma kaynak kodu,](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) Azure Dijital İkizler Yönetimi API'lerine karşı çok parçalı isteklerin nasıl yapılacağını gösteren eksiksiz C# örnekleri içerir.

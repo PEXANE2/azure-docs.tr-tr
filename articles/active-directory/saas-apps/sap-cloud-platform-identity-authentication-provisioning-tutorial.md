@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için SAP bulut platformu kimlik doğrulamasını yapılandırma | Microsoft Docs'
-description: SAP bulut platformu kimlik doğrulaması için Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak üzere Azure Active Directory yapılandırmayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için SAP Bulut Platformu Kimlik Kimlik Doğrulaması'nı yapılandırın | Microsoft Dokümanlar"
+description: Azure Active Directory'yi otomatik olarak sağlama ve kullanıcı hesaplarını SAP Bulut Platformu Kimlik Doğrulaması'na sağlama ve sağlamadan çıkarma için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,151 +16,151 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77060489"
 ---
-# <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için SAP bulut platformu kimlik doğrulamasını yapılandırma
+# <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için SAP Bulut Platformu Kimlik Kimlik Doğrulaması'nı yapılandırın
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları SAP bulut platformu kimlik doğrulamasına göre otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için SAP Cloud Platform kimlik kimlik doğrulaması ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları SAP Bulut Platformu Kimlik Doğrulaması'na otomatik olarak sağlama ve azaltma için yapılandırmak için SAP Bulut Platformu Kimlik Kimlik Doğrulaması ve Azure Etkin Dizini 'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
-* Bir Azure AD kiracısı
-* [SAP bulut platformu kimlik doğrulama kiracısı](https://cloudplatform.sap.com/pricing.html)
-* SAP Cloud Platform kimliği kimlik doğrulamasında yönetici izinleriyle bir kullanıcı hesabı.
+* Azure AD kiracı
+* [SAP Bulut Platformu Kimlik Kimlik Doğrulaması kiracı](https://cloudplatform.sap.com/pricing.html)
+* Yönetici izinleri ile SAP Bulut Platformu Kimlik Kimlik Doğrulaması'ndaki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>SAP bulut platformu kimlik doğrulaması 'na Kullanıcı atama
+## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>Kullanıcıları SAP Bulut Platformu Kimlik Kimlik Doğrulaması'na atama
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların SAP Cloud Platform Identity Authentication 'a erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları SAP bulut platformu kimliği kimlik doğrulamasına atayabilirsiniz:
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların SAP Bulut Platformu Kimlik Doğrulaması'na erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki yönergeleri izleyerek SAP Bulut Platformu Kimlik Kimlik Doğrulaması'na atayabilirsiniz:
+* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-sap-cloud-platform-identity-authentication"></a>SAP bulut platformu kimlik doğrulaması için Kullanıcı atamaya yönelik önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-sap-cloud-platform-identity-authentication"></a>SAP Bulut Platformu Kimlik Doğrulaması'na kullanıcı atamak için önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için SAP bulut platformu kimlik kimlik doğrulamasına tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik kullanıcı sağlama yapılandırmasını sınamak için SAP Bulut Platformu Kimlik Doğrulaması'na tek bir Azure AD kullanıcısıatanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* SAP Cloud Platform Identity Authentication 'a bir Kullanıcı atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bir kullanıcıyı SAP Bulut Platformu Kimlik Doğrulaması'na atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
 
-## <a name="setup-sap-cloud-platform-identity-authentication-for-provisioning"></a>Sağlama için SAP Cloud Platform kimlik doğrulamasını ayarlama
+## <a name="setup-sap-cloud-platform-identity-authentication-for-provisioning"></a>Kurulum SAP Bulut Platformu Kimlik Kimlik Doğrulaması sağlama
 
-1. [SAP Cloud Platform kimliği kimlik doğrulama yönetici konsolunda](https://sapmsftintegration.accounts.ondemand.com/admin)oturum açın. **Yöneticiler > & yetkilendirmelerini kullanıcılara**gidin.
+1. SAP Cloud [Platform Kimlik Doğrulama Yönetici Konsolunuzda](https://sapmsftintegration.accounts.ondemand.com/admin)oturum açın. **Kullanıcılara & Yetkilendirmeleri > Yöneticilere**gidin.
 
-    ![SAP bulut platformu kimlik doğrulama Yönetici Konsolu](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
+    ![SAP Bulut Platformu Kimlik Doğrulama Yönetici Konsolu](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Yönetici kullanıcı oluşturun ve kullanıcıyı seçin.  
+2.  Bir Yönetici Kullanıcısı oluşturun ve kullanıcıyı seçin.  
 
-3.  Yetkilendirmeleri Yapılandır altında, **kullanıcıları yönetme** ve **grupları yönetme**için iki durumlu düğmeye geçiş yapın.
+3.  Yetkilendirmeleri Yapılandırın altında, **Kullanıcıları Yönet** ve **Grupları Yönet'e**karşı geçiş düğmesini açın.
 
-    ![SAP Cloud Platform kimlik doğrulaması SCıM ekleme](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/configurationauth.png)
+    ![SAP Bulut Platformu Kimlik Kimlik Doğrulama Ekle SCIM](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/configurationauth.png)
 
-4. Hesabınızı etkinleştirmek ve **SAP bulut platformu kimlik doğrulama hizmeti**için bir parola ayarlamak üzere bir e-posta gönderilir.
+4. Hesabınızı etkinleştirmek ve **SAP Bulut Platformu Kimlik Doğrulama Hizmeti**için bir parola ayarlamak için bir e-posta alacaksınız.
 
-4.  **Kullanıcı kimliğini** ve **parolasını**kopyalayın. Bu değerler, Azure portal SAP bulut platformu kimlik doğrulama uygulamanızın sağlama sekmesinde sırasıyla Yönetici Kullanıcı adı ve yönetici parolası alanlarına girilir.
+4.  Kullanıcı **Kimliği** ve **Şifresini**kopyalayın. Bu değerler, Azure portalındaki SAP Bulut Platformu Kimlik Kimlik Doğrulama uygulamanızın Sağlama sekmesine sırasıyla Yönetici Kullanıcı Adı ve Yönetici Parolası alanlarına girilir.
 
-## <a name="add-sap-cloud-platform-identity-authentication-from-the-gallery"></a>Galeriden SAP bulut platformu kimlik doğrulaması ekleme
+## <a name="add-sap-cloud-platform-identity-authentication-from-the-gallery"></a>Galeriden SAP Bulut Platformu Kimlik Doğrulaması ekleme
 
-Azure AD ile otomatik Kullanıcı sağlama için SAP Cloud Platform kimlik kimlik doğrulamasını yapılandırmadan önce, Azure AD uygulama galerisindeki SAP Cloud Platform kimlik kimlik doğrulamasını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD ile otomatik kullanıcı sağlama için SAP Bulut Platformu Kimlik Doğrulaması'nı yapılandırmadan önce, Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize SAP Bulut Platformu Kimlik Doğrulaması eklemeniz gerekir.
 
-**SAP Cloud Platform kimliği kimlik doğrulamasını Azure AD Uygulama Galerisi 'nden eklemek için aşağıdaki adımları uygulayın:**
+**Azure AD uygulama galerisinden SAP Bulut Platformu Kimlik Doğrulaması eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **SAP Cloud Platform kimlik doğrulaması**' nı girin, sonuçlar panelinde **SAP Cloud Platform kimliği kimlik doğrulaması** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **SAP Bulut Platformu Kimlik Kimlik Doğrulaması'nı**girin, sonuç paneline SAP Bulut Platformu Kimlik Kimlik **Doğrulaması'nı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-    ![SAP bulut platformu kimlik doğrulaması sonuçlar listesinde](common/search-new-app.png)
+    ![Sap Bulut Platformu Kimlik Doğrulama sonuç listesinde](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-sap-cloud-platform-identity-authentication"></a>SAP bulut platformu kimlik doğrulaması için otomatik Kullanıcı sağlamayı yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-sap-cloud-platform-identity-authentication"></a>Otomatik kullanıcı sağlamayı SAP Bulut Platformu Kimlik Doğrulaması'na yapılandırma 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak SAP bulut platformu kimlik doğrulama içindeki kullanıcıları ve/veya grupları Azure AD 'de Kullanıcı ve/veya grup atamalarına göre oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı OLARAK SAP Bulut Platformu Kimlik Kimlik Doğrulaması'ndaki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size rehberlik eder.
 
 > [!TIP]
-> SAP bulut platformu kimlik [doğrulaması çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial)belirtilen YÖNERGELERI Izleyerek SAP bulut platformu kimlik doğrulaması için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
+> SAP Bulut Platformu Kimlik Kimlik Doğrulaması için SAML tabanlı tek oturum açmayı, [SAP Bulut Platformu Kimlik Kimlik Doğrulama tek oturum](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial)açma öğreticisinde verilen yönergeleri izleyerek etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini birbiriyle dışa
 
-### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>SAP bulut platformu kimlik doğrulaması için Azure AD 'de otomatik Kullanıcı sağlamayı yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>Azure AD'de SAP Bulut Platformu Kimlik Doğrulaması için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **SAP Cloud Platform kimlik doğrulaması**' nı seçin.
+2. Uygulamalar listesinde **SAP Bulut Platformu Kimlik Doğrulaması'nı**seçin.
 
-    ![Uygulamalar listesindeki SAP bulut platformu kimlik doğrulama bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki SAP Bulut Platformu Kimlik Kimlik Doğrulama bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://<tenantID>.accounts.ondemand.com/service/scim ` girin. Daha önce **Yönetici Kullanıcı adı** ve **yönetici parolası** ' nda alınan **Kullanıcı kimliği** ve **parola** değerlerini girin. Azure AD 'nin SAP bulut platformu kimliği kimlik doğrulamasına bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, SAP bulut platformu kimlik doğrulama hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici **Kimlik Bilgileri** bölümü `https://<tenantID>.accounts.ondemand.com/service/scim ` altında, **Kiracı URL'ye**giriş . Daha önce alınan **Kullanıcı Kimliği** ve **Parola** değerlerini sırasıyla Yönetici **Kullanıcı Adı** ve **Yönetici Şifresi'ne** girin. Azure AD'nin SAP Bulut Platformu Kimlik Doğrulaması'na bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, SAP Bulut Platformu Kimlik Kimlik Doğrulama hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL 'SI + belirteç](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
+    ![Kiracı URL + Belirteç](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Kaydet**'e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Kullanıcı Azure Active Directory Kullanıcıları SAP bulut platformu kimlik doğrulaması ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını SAP Bulut Platformu Kimlik Doğrulaması için Senkronize Et'i**seçin.
 
-    ![SAP Cloud Platform kimlik doğrulama Kullanıcı eşlemeleri](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/mapping.png)
+    ![SAP Bulut Platformu Kimlik Kimlik Doğrulama Kullanıcı Eşlemeleri](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/mapping.png)
 
-9. **Öznitelik eşleme** bölümünde, Azure AD 'Den SAP bulut platformu kimlik doğrulaması ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme IŞLEMLERI Için SAP bulut platformu kimlik doğrulama 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. Azure AD'den SAP Bulut Platformu Kimlik Doğrulaması'na eşitlenen kullanıcı özniteliklerini **Öznitelik Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için SAP Bulut Platformu Kimlik Kimlik Doğrulaması'ndaki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![SAP Cloud Platform kimlik doğrulama Kullanıcı öznitelikleri](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
+    ![SAP Bulut Platformu Kimlik Kimlik Doğrulama Kullanıcı Öznitelikleri](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-11. SAP bulut platformu kimlik doğrulaması için Azure AD sağlama hizmeti 'ni etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+11. SAP Bulut Platformu Kimlik Kimlik Doğrulaması için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **kapsam** IÇINDE Istenen değerleri seçerek SAP bulut platformu kimlik doğrulaması için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek SAP Bulut Platformu Kimlik Kimlik Doğrulaması'na sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. SAP bulut platformu kimlik doğrulaması üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Sap Bulut Platformu Kimlik Kimlik Doğrulaması'nda Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemeyi izlemek ve sağlama etkinlik raporuna olan bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
-## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
+## <a name="connector-limitations"></a>Konektör sınırlamaları
 
-* SAP Cloud Platform kimliği kimlik doğrulamasının SCıM uç noktası, belirli özniteliklerin belirli biçimde olmasını gerektirir. Bu öznitelikler ve bunlara [özgü biçim hakkında](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#)daha fazla bilgi edinebilirsiniz.
+* SAP Bulut Platformu Kimlik Kimlik Doğrulama'nın SCIM bitiş noktası, belirli niteliklerin belirli biçimde olmasını gerektirir. Burada bu öznitelikleri ve özel [biçimi](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#)hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 

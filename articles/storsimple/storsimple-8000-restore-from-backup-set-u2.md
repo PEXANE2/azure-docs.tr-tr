@@ -1,6 +1,6 @@
 ---
-title: Bir birim bir StorSimple 8000 serisi bir yedekleme geri yükleme | Microsoft Docs
-description: Bir yedekleme kümesinden StorSimple birimini geri yüklemek için StorSimple cihaz Yöneticisi hizmeti yedekleme kataloğunu kullanmayı açıklar.
+title: StorSimple 8000 serisinde yedeklemeden ses düzeyini geri yükleme | Microsoft Dokümanlar
+description: StorSimple birimsini yedekleme kümesinden geri yüklemek için StorSimple Device Manager hizmeti Yedekleme Kataloğu'nun nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,132 +15,132 @@ ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60723399"
 ---
-# <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Bir yedekleme kümesinden StorSimple birimini geri yükleme
+# <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Yedekleme kümesinden StorSimple birimini geri yükleme
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, mevcut bir yedekleme kümesi kullanarak StorSimple 8000 serisi cihaz üzerinde gerçekleştirilen geri yükleme işlemi açıklanmaktadır. Kullanım **yedekleme kataloğu** geri yüklemek bir birimden yerel veya Bulut yedekleme dikey penceresinde. **Yedekleme kataloğu** dikey penceresinde el ile veya otomatik yedeklemeler alındığında, oluşturulan tüm yedekleme kümelerini görüntüler. Bir yedekleme kümesinden geri yükleme işlemi hemen veri arka planda yüklenirken birimi çevrimiçi duruma getirir.
+Bu öğretici, varolan bir yedekleme kümesini kullanarak StorSimple 8000 serisi bir aygıtta gerçekleştirilen geri yükleme işlemini açıklar. Yerel veya bulut yedeklemesinden bir birim geri yüklemek için **Yedekleme kataloğu** bıçak kullanın. **Yedek katalog** bıçağı, manuel veya otomatik yedekleme alındığında oluşturulan tüm yedekleme kümelerini görüntüler. Yedekleme kümesinden geri yükleme işlemi, veriler arka planda karşıdan yüklenirken sesi hemen çevrimiçi duruma getirir.
 
-Gitmek için geri yüklemeyi başlatmak için alternatif bir yöntem olan **cihazlar > [Cihazınızı] > birimleri**. İçinde **birimleri** dikey penceresinde bir birimi seçin, sağ tıklayın bağlam menüsünü açmak ve ardından **geri**.
+Geri yüklemeyi başlatmak için alternatif bir yöntem, **Aygıtlar > [Cihazınız] > Birimleri'ne**gitmektir. **Birimler** bıçak, bir birim seçin, bağlam menüsünü çağırmak için sağ tıklatın ve sonra **Geri yükle'yi**seçin.
 
 ## <a name="before-you-restore"></a>Geri yüklemeden önce
 
-Bir geri yükleme başlamadan önce aşağıdakilere dikkat ederek gözden geçirin:
+Geri yüklemeye başlamadan önce aşağıdaki uyarıları gözden geçirin:
 
-* **Birimi çevrimdışı duruma** – birimi hem konak hem de cihaz çevrimdışı geri yükleme işlemini başlatmadan önce yararlanın. Geri yükleme işlemi birimi çevrimiçi cihazda otomatik olarak getirir. ancak, el ile cihaz çevrimiçi konakta getirmeniz gerekir. Cihazda birim çevrimiçidir hemen sonra birimi çevrimiçi konakta getirebilirsiniz. (Geri yükleme işlemi tamamlanana kadar beklemenize gerek yok.) Yordamlar için Git [bir birimi çevrimdışı duruma](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
+* **Ses düzeyini çevrimdışına almanız gerekir** – Geri yükleme işlemini başlatmadan önce hem ana bilgisayarda hem de aygıtta ses düzeyini çevrimdışına alın. Geri yükleme işlemi aygıtın sesini otomatik olarak çevrimiçi duruma getirse de, aygıtı ana bilgisayarda el ile çevrimiçi duruma getirmeniz gerekir. Ses aygıtında çevrimiçi olur olmaz, ses düzeyini ana bilgisayarda çevrimiçi duruma getirebilirsiniz. (Geri yükleme işlemi tamamlanana kadar beklemeniz gerekmez.) Yordamlar [için, bir birimi çevrimdışı olarak alın'](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)a gidin.
 
-* **Birim türü geri yükleme sonrasında** : silinen birimler geri yüklenir anlık görüntüdeki türüne göre; diğer bir deyişle, yerel olarak sabitlenmiş birimler yerel olarak sabitlenmiş birimler geri yüklenir ve katmanlı birimler olarak katmanlı birimler geri yüklenir.
+* **Geri yüklemeden sonra ses türü** – Silinen birimler anlık görüntüdeki türe bağlı olarak geri yüklenir; diğer bir diğer adıyla, yerel olarak sabitlenen birimler, yerel olarak sabitlenmiş birimler olarak geri yüklenir ve katmanlı birimler olarak geri yüklenir.
 
-    Var olan birimler için geçerli kullanım türü birimin anlık görüntüde depolanan tür geçersiz kılar. Örneğin, bir birim birim türünü katmanlı ve birim türü artık yerel olarak (gerçekleştirilen bir dönüştürme işlemi nedeniyle) sabitlenir alınmış bir anlık görüntüden geri yüklerseniz, birimin yerel olarak sabitlenmiş bir birim kurulacaktır. Benzer şekilde, var olan bir yerel olarak sabitlenmiş birim genişletilmiş ve daha sonra birim daha küçük gerçekleştirilen eski bir anlık görüntüden geri, geri yüklenen birimin geçerli genişletilmiş boyutu korur.
+    Varolan birimler için, birimin geçerli kullanım türü anlık görüntüde depolanan türü geçersiz kılar. Örneğin, birim türü katmanlı olduğunda alınan anlık görüntüden bir birim geri yüklenirseniz ve bu birim türü artık yerel olarak sabitlenirse (gerçekleştirilen bir dönüşüm işlemi nedeniyle), birim yerel olarak sabitlenmiş bir birim olarak geri yüklenir. Benzer şekilde, varolan yerel olarak sabitlenmiş bir birim genişletildiyse ve daha sonra ses daha küçük olduğunda çekilen eski bir anlık görüntüden geri yüklenirse, geri yüklenen birim geçerli genişletilmiş boyutu korur.
 
-    Toplu geri yüklenirken bir birim için yerel olarak sabitlenmiş bir birim katmanlı birim veya yerel olarak sabitlenmiş bir birim için katmanlı birim dönüştürülemiyor. Geri yükleme işlemi tamamlandı ve ardından birimin başka bir türüne dönüştürebilir kadar bekleyin. Bir birim dönüştürme hakkında daha fazla bilgi için Git [birim türünü değiştirmek](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
+    Bir birim, katmanlı bir birimden yerel olarak sabitlenmiş bir birime veya yerel olarak sabitlenmiş bir birimden, birim geri yüklenirken katmanlı bir birime dönüştüremezsiniz. Geri yükleme işlemi tamamlanana kadar bekleyin ve sonra ses düzeyini başka bir türe dönüştürebilirsiniz. Birim dönüştürme hakkında bilgi için [birim türünü değiştir'e](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)gidin. 
 
-* **Birim boyutu geri yüklenen birimin yansıtılır** – (yerel olarak sabitlenmiş birimler tam olarak sağlandığından dolayı), silinmiş olan bir yerel olarak sabitlenmiş birim geri yüklüyorsanız bu önemli bir noktadır. Daha önce silinmiş olan bir yerel olarak sabitlenmiş birim geri yükleme girişiminde bulunmadan önce yeterli alana sahip olduğunuzdan emin olun.
+* **Ses düzeyi geri yüklenen birimde yansıtılır** – Silinmiş yerel olarak sabitlenmiş bir birimi geri yükleniyorsanız (yerel olarak sabitlenmiş birimler tam olarak sağlandığı için) bu önemli bir husustur. Daha önce silinmiş yerel olarak sabitlenmiş bir birimi geri yüklemeye çalışmadan önce yeterli alana sahip olduğundan emin olun.
 
-* **Bu geri yüklenirken bir birim genişletilemiyor** – Birim genişletme girişiminde bulunmadan önce geri yükleme işlemi tamamlanana kadar bekleyin. Bir birim genişletme hakkında daha fazla bilgi için Git [bir birimi değiştirme](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
+* **Geri yüklenirken bir birimi genişletemezsiniz** – Sesi genişletmeye çalışmadan önce geri yükleme işlemi bitene kadar bekleyin. Bir birimi genişletme hakkında bilgi [için, birimi değiştir'e](storsimple-8000-manage-volumes-u2.md#modify-a-volume)gidin.
 
-* **Yerel bir birime geri yükleme sırasında bir yedek gerçekleştirebileceğiniz** – yordamları için şu adrese gidin [yedekleme ilkelerini yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md).
+* **Yerel bir birimi geri yüklerken yedekleme gerçekleştirebilirsiniz** – Yordamlar için yedekleme ilkelerini yönetmek için [StorSimple Device Manager hizmetini kullanın.](storsimple-8000-manage-backup-policies-u2.md)
 
-* **Geri yükleme işlemi iptal edebilirsiniz** : birimi geri yükleme işlemini başlattığınız önce bunu durumu geri alınacak sonra geri yükleme işi iptal ederseniz. Yordamlar için Git [bir işi iptal](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
+* **Geri yükleme işlemini iptal edebilirsiniz** – Geri yükleme işini iptal ederseniz, ses düzeyi geri yükleme işlemini başlatmadan önce olduğu duruma geri alınır. Yordamlar [için, bir işi iptal](storsimple-8000-manage-jobs-u2.md#cancel-a-job)etme'ye gidin.
 
-## <a name="how-does-restore-work"></a>Nasıl iş geri yükleme
+## <a name="how-does-restore-work"></a>Geri yükleme nasıl çalışır?
 
-Güncelleştirme 4 veya üstünü çalıştıran cihazlarda bir ısı Haritası tabanlı geri yükleme uygulanır. Ana bilgisayar ister gibi cihaz verilere erişmek, bu istekleri izlenir ve yoğunluk Haritası yoluyla oluşturulur. Alt istek hızı düşük ısı ile öbeklere çevirir ise yüksek istek hızı veri öbekleri daha yüksek ısı ile sonuçlanır. Olarak işaretlenmiş olması en az iki kere veri erişim _sık erişimli_. Değiştirilen bir dosya da olarak işaretlenmiş _sık erişimli_. Geri yüklemeyi başlatmak sonra veri proaktif hidrasyonu ısı Haritası göre gerçekleşir. Sürümleri için veri erişimini yalnızca geri yükleme işlemi sırasında güncelleştirme 4'den önceki indirilir.
+Güncelleştirme 4 veya daha sonra çalıştıran aygıtlar için ısı haritası tabanlı bir geri yükleme uygulanır. Ana bilgisayar, verilere erişim istekleri aygıta eriştikçe, bu istekler izlenir ve bir ısı haritası oluşturulur. Yüksek istek oranı, daha yüksek ısıya sahip veri yığınlarıyla sonuçlanırken, daha düşük istek oranı daha düşük ısılı parçalara çevirir. _Sıcak_olarak işaretlenecek verilere en az iki kez erişmelisiniz. Değiştirilen bir dosya da _sıcak_olarak işaretlenir. Geri yüklemeyi başlattıktan sonra, ısı haritasına dayalı olarak verilerin proaktif olarak hidrasyonu gerçekleşir. Güncelleştirme 4'ten önceki sürümler için veriler yalnızca erişime dayalı olarak geri yükleme sırasında indirilir.
 
-Aşağıdaki uyarılar ısı Haritası tabanlı geri yüklemeler için geçerlidir:
+Aşağıdaki uyarılar ısı haritası tabanlı geri yüklemeler için geçerlidir:
 
-* Isı Haritası izleme yalnızca katmanlı birimleri için etkindir ve yerel olarak sabitlenmiş birimler desteklenmez.
+* Isı haritası izleme yalnızca katmanlı birimler için etkinleştirilir ve yerel olarak sabitlenmiş birimler desteklenmez.
 
-* Isı Haritası tabanlı geri yükleme, bir birim başka bir cihaz için kopyalama desteklenmiyor. 
+* Isı haritası tabanlı geri yükleme, bir ses düzeyini başka bir aygıta klonlarken desteklenmez. 
 
-* (Veri zaten yerel olarak kullanılabilir olduğu gibi) varsa bir yerinde geri yükle ve yerel anlık görüntü geri yüklenmesi birimi için cihazda mevcut ardından biz yeniden doldurma değil. 
+* Aygıtta bir yerinde geri yükleme varsa ve geri yüklenecek birim için yerel bir anlık görüntü varsa, o zaman yeniden su landırmayız (veriler yerel olarak zaten mevcut olduğundan). 
 
-* Geri yüklediğinizde, varsayılan olarak, yeniden doldurma işleri, ısı Haritası üzerinde göre verileri proaktif bir şekilde yeniden doldurma başlatılır. 
+* Varsayılan olarak, geri yüklediğinizde, rehidrasyon işleri ısı haritasına dayalı verileri proaktif olarak yeniden sulandırın. 
 
-Güncelleştirme 4'te çalışan yeniden doldurma işleri sorgulamak, yeniden doldurma işi iptal ve yeniden doldurma işi durumunu almak için Windows PowerShell cmdlet'leri kullanılabilir.
+Güncelleme 4'te, Windows PowerShell cmdlets rehidrasyon işleri çalışan sorgulamak için kullanılabilir, bir rehidrasyon iş iptal, ve rehidrasyon iş durumunu almak.
 
-* `Get-HcsRehydrationJob` -Bu cmdlet, yeniden doldurma işinin durumunu alır. Tek bir birim için bir tek yeniden doldurma işi tetiklenir.
+* `Get-HcsRehydrationJob`- Bu cmdlet rehidrasyon iş durumunu alır. Tek bir rehidrasyon işi tek bir cilt için tetiklenir.
 
-* `Set-HcsRehydrationJob` -Bu cmdlet, duraklatmak, durdurmak, yeniden doldurma işlemi sürdüğünden yeniden doldurma işlemi sürdürme olanak tanır.
+* `Set-HcsRehydrationJob`- Bu cmdlet, rehidrasyon devam ederken rehidrasyon işi, duraklatmak, durdurmak, rehidrasyon iş devam etmenizi sağlar.
 
-Yeniden doldurma cmdlet'leri hakkında daha fazla bilgi için Git [StorSimple için Windows PowerShell cmdlet başvurusu](https://technet.microsoft.com/library/dn688168.aspx).
+Rehidrasyon cmdlets hakkında daha fazla bilgi için, [StorSimple için Windows PowerShell cmdlet referans](https://technet.microsoft.com/library/dn688168.aspx)gidin.
 
-Otomatik yeniden doldurma ile genellikle yüksek geçici okuma performansı bekleniyor. Gerçek geliştirmeler büyüklüğünü erişim düzeni, veri değişim sıklığı ve veri türü gibi çeşitli faktörlere bağlıdır. 
+Otomatik rehidrasyon ile, genellikle daha yüksek geçici okuma performansı beklenmektedir. İyileştirmelerin gerçek büyüklüğü erişim deseni, veri karmaşası ve veri türü gibi çeşitli etkenlere bağlıdır. 
 
-Yeniden doldurma işi iptal etmek için PowerShell cmdlet'ini kullanabilirsiniz. Tüm gelecek geri yükler, işleri yeniden doldurma kalıcı olarak devre dışı bırakmak isterseniz [Microsoft Support başvurun](storsimple-8000-contact-microsoft-support.md).
+Rehidrasyon işini iptal etmek için PowerShell cmdlet'i kullanabilirsiniz. Gelecekteki tüm geri yüklemeler için rehidrasyon işlerini kalıcı olarak devre dışı kılmış olmak istiyorsanız, [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
 
-## <a name="how-to-use-the-backup-catalog"></a>Yedekleme kataloğunu kullanma
+## <a name="how-to-use-the-backup-catalog"></a>Yedekleme kataloğu nasıl kullanılır?
 
-**Yedekleme kataloğunu** dikey pencere, yedekleme daraltmak için yardımcı olan bir sorgu kümesi seçimi sağlar. Aşağıdaki parametreleri temel alarak alınır yedekleme kümelerini filtreleyebilirsiniz:
+**Yedek Katalog** bıçağı, yedek set seçiminizi daraltmanıza yardımcı olan bir sorgu sağlar. Aşağıdaki parametrelere göre alınan yedekleme kümelerine filtre uygulayabilirsiniz:
 
-* **Zaman aralığı** – yedekleme kümesi oluşturulduğunda tarih ve saat aralığı.
-* **Cihaz** – cihaz yedekleme kümesi oluşturuldu.
-* **Yedekleme İlkesi** veya **birim** – Bu yedekleme kümesiyle ilişkili birim ve yedekleme ilkesi.
+* **Zaman aralığı** – Yedekleme kümesinin oluşturulduğu tarih ve saat aralığı.
+* **Aygıt** – Yedekleme kümesinin oluşturulduğu aygıt.
+* **Yedekleme ilkesi** veya **Birim** - Bu yedekleme kümesiyle ilişkili yedekleme ilkesi veya birim.
 
-Filtrelenmiş yedek kümelerini, ardından aşağıdaki özniteliklere bağlı tabloda verilmiştir:
+Filtre uygulanmış yedekleme kümeleri aşağıdaki özniteliklere göre tablolanır:
 
-* **Adı** – yedekleme kümesiyle ilişkili birim ve yedekleme ilkesi adı.
-* **Tür** – kümeleri yedekleme yerel anlık görüntüler olması veya Bulut anlık görüntüleri. Birim verilerinin bulutta bulunan bir bulut anlık görüntüsünü başvuruyor ancak bir yedeğini cihaz üzerinde yerel olarak depolanan tüm birim verilerinizi yerel anlık görüntüsüdür. Veri dayanıklılığı için bulut anlık görüntüleri seçilir ancak yerel anlık görüntüleri daha hızlı erişim sağlar.
-* **Boyutu** – yedekleme kümesi gerçek boyutu.
-* **Oluşturulma tarihi** – yedeklemelerin ne zaman oluşturulduğu tarih ve saat. 
-* **Birimleri** -yedekleme kümesiyle ilişkili birim sayısı.
-* **Başlatılan** – yedeklemeleri otomatik olarak bir zamanlamaya göre veya el ile bir kullanıcı tarafından başlatılabilir. (Bir yedekleme İlkesi yedeklemeleri zamanlamak için kullanabilirsiniz. Alternatif olarak, **yedek Al** seçeneği etkileşimli veya isteğe bağlı bir yedekleme yapın.)
+* **Ad** – Yedekleme kümesiyle ilişkili yedekleme ilkesinin veya biriminin adı.
+* **Tür** - Yedekleme kümeleri yerel anlık görüntüler veya bulut anlık görüntüleri olabilir. Yerel anlık görüntü, aygıtta yerel olarak depolanan tüm birim verilerinizin yedeği olurken, bulut anlık görüntüsü bulutta bulunan birim verilerinin yedeğini ifade eder. Yerel anlık görüntüler daha hızlı erişim sağlarken, veri esnekliği için bulut anlık görüntüleri seçilir.
+* **Boyut** – Yedekleme kümesinin gerçek boyutu.
+* **Oluşturuldu** – Yedeklemelerin oluşturulduğu tarih ve saat. 
+* **Birimler** - Yedekleme kümesiyle ilişkili birim sayısı.
+* **Başlatılmış** – Yedeklemeler bir programa göre veya kullanıcı tarafından el ile otomatik olarak başlatılabilir. (Yedeklemeleri zamanlamak için bir yedekleme ilkesi kullanabilirsiniz. Alternatif olarak, etkileşimli veya isteğe bağlı yedekleme almak için **Yedeklemeyi Al** seçeneğini kullanabilirsiniz.)
 
-## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>StorSimple toplu bir yedekten geri yükleme
+## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>StorSimple ses düzeyinibir yedeklemeden geri yükleme
 
-Kullanabileceğiniz **yedekleme kataloğunu** StorSimple toplu belirli bir yedekten geri yükleme dikey penceresi. Ancak unutmayın, bir birim, geri yükleme, birimin alındığı duruma geri döner. Sonra yedekleme işlemi eklenmiş olan tüm veriler kaybolur.
+StorSimple ses inizi belirli bir yedeklemeden geri yüklemek için **Yedek Katalog** bıçağını kullanabilirsiniz. Ancak, bir birim geri yedekleme alındığında olduğu duruma ses geri olacağını unutmayın. Yedekleme işleminden sonra eklenen tüm veriler kaybolur.
 
 > [!WARNING]
-> Bir yedekten geri yükleme yedeği var olan birimler yerini alır. Bu, yedekleme alındıktan sonra yazılan veri kaybına neden olabilir.
+> Yedeklemeden geri geri alma, yedeklemeden varolan birimleri değiştirir. Bu, yedekleme alındıktan sonra yazılan verilerin kaybolmasına neden olabilir.
 
 
-### <a name="to-restore-your-volume"></a>Toplu geri yüklemek için
-1. StorSimple cihaz Yöneticisi hizmetinize gidin ve ardından **yedekleme kataloğu**.
+### <a name="to-restore-your-volume"></a>Ses inizi geri yüklemek için
+1. StorSimple Device Manager hizmetinize gidin ve ardından **Yedekleme kataloğunu**tıklatın.
 
-2. Bir yedekleme kümesi şu şekilde seçin:
+2. Aşağıdaki gibi bir yedekleme kümesi seçin:
    
    1. Zaman aralığını belirtin.
-   2. Uygun bir cihaz seçin.
-   3. Aşağı açılan listeden, birim veya yedekleme ilkesi seçmek için istediğiniz yedekleme için seçin.
-   4. Tıklayın **Uygula** bu sorguyu yürütmek için.
+   2. Uygun aygıtı seçin.
+   3. Açılan listede, seçmek istediğiniz yedeklemenin ses düzeyini veya yedekleme ilkesini seçin.
+   4. Bu sorguyu yürütmek için **Uygula'yı** tıklatın.
 
-      Yedeklemeleri seçili birimle ilişkilendirilen veya yedekleme İlkesi yedekleme ayarları listesinde görüntülenmelidir.
+      Seçili birim veya yedekleme ilkesiyle ilişkili yedeklemeler yedekleme kümeleri listesinde görünmelidir.
    
-      ![Yedekleme kümesi listesi](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![Yedek ayar listesi](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
-3. İlişkili birimleri görüntülemek için yedekleme kümesini genişletin. Geri yüklemeden önce bu birimleri ana bilgisayar ve cihaz çevrimdışına alınması gerekir. Birimleri erişim **birimleri** dikey penceresinde, cihazınızın ve sonra adımları [bir birimi çevrimdışı duruma](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) çevrimdışı duruma getirmek için.
+3. İlişkili birimleri görüntülemek için yedekleme kümesini genişletin. Bu birimleri geri yüklemeden önce ana bilgisayar ve aygıtta çevrimdışı olarak alınmalıdır. Cihazınızın **Birimler** bıçak larındaki birimlere erişin ve bunları çevrimdışı hale getirmek için [bir birim çevrimdışı alın'daki](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) adımları izleyin.
    
    > [!IMPORTANT]
-   > Cihazda birimleri çevrimdışı duruma önce birimleri konakta çevrimdışı ilk olarak, gerçekleştirdiğinizden emin olun. Konakta birimleri çevrimdışı duruma değil, olası veri bozulmasına neden.
+   > Aygıttaki birimleri çevrimdışına almadan önce, önce ana bilgisayardaki birimleri çevrimdışına aldığınızdan emin olun. Ana bilgisayardaki birimleri çevrimdışına almazsanız, bu işlem veri bozulmasına neden olabilir.
    
-4. Geri gidin **yedekleme kataloğunu** sekme ve bir yedek kümesi seçin. Sağ tıklayın ve ardından bağlam menüsünden **geri**.
+4. **Yedek Katalog** sekmesine geri gidin ve bir yedekleme kümesi seçin. Sağ tıklatın ve ardından bağlam menüsünden **Geri Yükle'yi**seçin.
 
-    ![Yedekleme kümesi listesi](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Yedek ayar listesi](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
-5. Onaylamanız istenir. Geri yükleme bilgileri gözden geçirin ve ardından onay onay kutusunu seçin.
+5. Onayınız istenir. Geri yükleme bilgilerini gözden geçirin ve onay onay kutusunu seçin.
    
     ![Onay sayfası](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7. Tıklayın **geri**. Bu erişerek görüntüleyebileceğiniz bir geri yükleme işi başlatan **işleri** sayfası.
+7. **Geri Yükle'yi**tıklatın. Bu, **İşler** sayfasına erişerek görüntülediğiniz bir geri yükleme işini başlatır.
 
    ![Onay sayfası](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
-8. Geri yükleme tamamlandıktan sonra birimlerinizi içeriğini yedekleme birimlerden tarafından değiştirilmiş olduğunu doğrulayın.
+8. Geri yükleme tamamlandıktan sonra, birimlerinizin içeriğinin yedekteki birimlerle değiştirilmelerini doğrulayın.
 
 
 ## <a name="if-the-restore-fails"></a>Geri yükleme başarısız olursa
 
-Geri yükleme işlemi için herhangi bir nedenle başarısız olursa bir uyarı alırsınız. Bu meydana gelirse, yedeğin hala geçerli olduğunu doğrulamak için yedek listesini yenileyin. Ardından yedeğinin geçerli olduğundan ve buluttan geri yüklediğiniz, bağlantı sorunlarını soruna neden.
+Geri yükleme işlemi herhangi bir nedenle başarısız olursa bir uyarı alırsınız. Bu durumda, yedeklemenin hala geçerli olduğunu doğrulamak için yedekleme listesini yenileyin. Yedekleme geçerliyse ve buluttan geri alıyorsanız, bağlantı sorunları soruna neden olabilir.
 
-Geri yükleme işlemini tamamlamak için konakta birimi çevrimdışı olması ve geri yükleme işlemini yeniden deneyin. Herhangi bir değişiklik geri yükleme işlemi sırasında gerçekleştirilen toplu veri kaybı olmayacağını unutmayın.
+Geri yükleme işlemini tamamlamak için, ses düzeyini ana bilgisayarda çevrimdışı na alın ve geri yükleme işlemini yeniden deneyin. Geri yükleme işlemi sırasında gerçekleştirilen birim verilerinde yapılan değişikliklerin kaybolacağını unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bilgi edinmek için nasıl [yönetme StorSimple birimlerini](storsimple-8000-manage-volumes-u2.md).
-* Bilgi edinmek için nasıl [StorSimple Cihazınızı yönetmek için StorSimple cihaz Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md).
+* [StorSimple birimlerini nasıl yöneteceklerini](storsimple-8000-manage-volumes-u2.md)öğrenin.
+* [StorSimple cihazınızı yönetmek için StorSimple Device Manager hizmetini](storsimple-8000-manager-service-administration.md)nasıl kullanacağınızı öğrenin.
 

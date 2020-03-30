@@ -1,6 +1,6 @@
 ---
-title: Azure VPN Gateway için güvenlik denetimleri
-description: Azure VPN Gateway değerlendirmek için güvenlik denetimlerinin denetim listesi
+title: Azure VPN Ağ Geçidi için güvenlik denetimleri
+description: Azure VPN Ağ Geçidi'ni değerlendirmek için güvenlik denetimleri listesi
 services: sql-database
 author: msmbaldwin
 manager: rkarlin
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972289"
 ---
-# <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN Gateway için güvenlik denetimleri
+# <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN Ağ Geçidi için güvenlik denetimleri
 
-Bu makale, Azure VPN Gateway yerleşik olarak bulunan güvenlik denetimlerini belgeler.
+Bu makalede, Azure VPN Ağ Geçidi'nde yerleşik güvenlik denetimleri belgeleilmiştir.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet uç noktası desteği| Yok | |
-| VNet ekleme desteği| Yok | |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | VPN ağ geçitleri her müşteri sanal ağı için ayrılmış sanal makine örnekleridir  |
-| Zorlamalı tünel desteği| Evet |  |
+| Hizmet bitiş noktası desteği| Yok | |
+| VNet enjeksiyon desteği| Yok | |
+| Ağ Yalıtımı ve Güvenlik Duvarı desteği| Evet | VPN ağ geçitleri her müşteri sanal ağ için özel VM örnekleridir  |
+| Zorunlu tünel desteği| Evet |  |
 
-## <a name="monitoring--logging"></a>& Günlüğü izleme
+## <a name="monitoring--logging"></a>İzleme & günlüğe kaydetme
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Bkz. [Azure Izleyici tanılama günlükleri/uyarı](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure izleyici ölçümleri/uyarısı](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Etkinlik günlüğünü Azure Resource Manager. |
-| Veri düzlemi günlüğü ve denetimi | Evet | Azure, VPN bağlantısı günlüğü ve denetimi için [tanılama günlüklerini izler](../azure-resource-manager/management/view-activity-logs.md) . |
+| Azure izleme desteği (Log analitiği, Uygulama öngörüleri, vb.)| Evet | Bkz. [Azure MonitörÜ Tanılama Günlükleri/uyarı](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitör Ölçümleri/uyarısı.](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)  |
+| Kontrol ve yönetim düzlemi günlüğü ve denetimi| Evet | Azure Kaynak Yöneticisi Etkinlik Günlüğü. |
+| Veri düzlemi günlüğü ve denetimi | Evet | VPN bağlantısı günlüğü ve denetimi için [Azure Monitör Tanı Günlükleri.](../azure-resource-manager/management/view-activity-logs.md) |
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | Hizmeti yönetmek ve Azure VPN ağ geçidini yapılandırmak için [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) . |
-| Yetkilendirme| Evet | [RBAC](../role-based-access-control/overview.md)aracılığıyla yetkilendirmeyi destekler. |
+| Kimlik doğrulaması| Evet | Hizmeti yönetmek ve Azure VPN ağ geçidini yapılandırmak için [Azure Active Directory.](../active-directory/fundamentals/active-directory-whatis.md) |
+| Yetkilendirme| Evet | RBAC üzerinden Destek [Yetkilendirmesi.](../role-based-access-control/overview.md) |
 
-## <a name="data-protection"></a>Veri koruması
+## <a name="data-protection"></a>Veri koruma
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yok | VPN Gateway transit müşteri verileri, müşteri verilerini depolamaz |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | VPN Gateway, Azure VPN ağ geçitleri ile müşteri şirket içi VPN cihazları (S2S) veya VPN istemcileri (P2S) arasında müşteri paketlerini şifreleyin. VPN ağ geçitleri Ayrıca VNet 'ten VNet 'e şifrelemeyi destekler. |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Müşteri tarafından belirtilen önceden paylaşılan anahtarlar bekleyen olarak şifrelenir; Ancak henüz CMK ile tümleştirmemelidir. |
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
-| Şifrelenmiş API çağrıları| Evet | [Azure Resource Manager](../azure-resource-manager/index.yml) ve https üzerinden  |
+| Sunucu tarafında şifreleme istirahat: Microsoft tarafından yönetilen anahtarlar | Yok | VPN ağ geçidi geçiş müşteri verileri, değil müşteri verileri depolamak |
+| Aktarım sırasında şifreleme (ExpressRoute şifreleme, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | VPN ağ geçidi, Azure VPN ağ geçitleri ile müşteri şirket içi VPN aygıtları (S2S) veya VPN istemcileri (P2S) arasındaki müşteri paketlerini şifreler. VPN ağ geçitleri VNet-to-VNet şifrelemesini de destekler. |
+| Sunucu tarafında şifreleme istirahat: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Müşteri tarafından önceden paylaşılan anahtarlar istirahatte şifrelenir; ancak henüz CMK ile entegre değil. |
+| Sütun düzeyi şifreleme (Azure Veri Hizmetleri)| Yok | |
+| API şifreli aramalar| Evet | [Azure Kaynak Yöneticisi](../azure-resource-manager/index.yml) ve HTTPS aracılığıyla  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | Yönetim işlemleri için bir Azure VPN ağ geçidi yapılandırmasının durumu, zaman içinde bir Azure Resource Manager şablonu ve sürümü oluşturulmuş olarak aktarılabilir. |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü, vb.)| Evet | Yönetim işlemleri için, Azure VPN ağ geçidi yapılandırmasının durumu Azure Kaynak Yöneticisi şablonu olarak dışa aktarılabilir ve zaman içinde sürümlendirilebilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- [Azure hizmetlerinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

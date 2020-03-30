@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault müşteri verileri özellikleri-Azure Key Vault | Microsoft Docs
-description: Key Vault müşteri verileri hakkında bilgi edinin
+title: Azure Key Vault müşteri veri özellikleri - Azure Key Vault | Microsoft Dokümanlar
+description: Key Vault'ta müşteri verileri hakkında bilgi edinin
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,56 +10,56 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 67e1aeab4211249075b51bd0138d7875756a3483
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70883327"
 ---
-# <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault müşteri verileri özellikleri
+# <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault müşteri veri özellikleri
 
-Azure Key Vault, kasaların, anahtarların, parolaların, sertifikaların ve yönetilen depolama hesaplarının oluşturulması veya güncelleştirilmesi sırasında müşteri verilerini alır. Bu müşteri verileri doğrudan Azure portal ve REST API üzerinden görünür. Verileri içeren nesne güncelleştirilerek veya silinerek müşteri verileri düzenlenebilir veya silinebilir.
+Azure Key Vault kasalar, anahtarlar, sırlar, sertifikalar ve yönetilen depolama hesaplarının oluşturulması veya güncellemi sırasında müşteri verilerini alır. Bu Müşteri verileri Doğrudan Azure portalında ve REST API'sinde görülebilir. Müşteri verileri, verileri içeren nesneyi güncelleştirerek veya silerek düzenlenebilir veya silinebilir.
 
-Sistem erişim günlükleri, bir kullanıcı veya uygulama Key Vault eriştiğinde oluşturulur. Ayrıntılı erişim günlükleri, Azure Insights kullanan müşteriler tarafından kullanılabilir.
+Bir kullanıcı veya uygulama Key Vault'a eriştığında sistem erişim günlükleri oluşturulur. Azure Öngörüleri'ni kullanan müşteriler için ayrıntılı erişim günlükleri kullanılabilir.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="identifying-customer-data"></a>Müşteri verilerini tanımlama
+## <a name="identifying-customer-data"></a>Müşteri verilerinin tanımlanması
 
 Aşağıdaki bilgiler Azure Key Vault içindeki müşteri verilerini tanımlar:
 
-- Azure Key Vault erişim ilkeleri, kullanıcıları, grupları veya uygulamaları temsil eden nesne kimliklerini içerir
-- Sertifika konuları e-posta adresleri veya diğer Kullanıcı veya kuruluş tanımlayıcıları içerebilir
+- Azure Anahtar Atlamasına yönelik erişim ilkeleri, kullanıcıları, grupları veya uygulamaları temsil eden nesne-iT'ler içerir
+- Sertifika konuları e-posta adreslerini veya diğer kullanıcı veya kuruluş tanımlayıcılarını içerebilir
 - Sertifika kişileri kullanıcı e-posta adreslerini, adlarını veya telefon numaralarını içerebilir
-- Sertifika verenler e-posta adresleri, adlar, telefon numaraları, hesap kimlik bilgileri ve kuruluş ayrıntıları içerebilir
-- Azure Key Vault içindeki nesnelere rastgele Etiketler uygulanabilir. Bu nesneler kasa, anahtar, gizli dizi, sertifika ve depolama hesapları içerir. Kullanılan Etiketler kişisel veri içeriyor olabilir
-- Azure Key Vault erişim günlükleri her bir REST API çağrısının nesne kimliklerini, [UPN](../active-directory/hybrid/plan-connect-userprincipalname.md)'LERINI ve IP adreslerini içerir
-- Azure Key Vault tanılama günlükleri, REST API çağrılar için nesne kimlikleri ve IP adresleri içerebilir
+- Sertifika yı düzenleyenler e-posta adresleri, adlar, telefon numaraları, hesap kimlik bilgileri ve kuruluş bilgileri içerebilir
+- Azure Anahtar Kasası'ndaki Nesnelere rasgele etiketler uygulanabilir. Bu nesneler kasaları, anahtarları, sırları, sertifikaları ve depolama hesaplarını içerir. Kullanılan etiketler kişisel veriler içerebilir
+- Azure Key Vault erişim günlükleri, her REST API çağrısı için nesne-iD'ler, [UPN'ler](../active-directory/hybrid/plan-connect-userprincipalname.md)ve IP adresleri içerir
+- Azure Key Vault tanı günlükleri REST API aramaları için nesne-iD'ler ve IP adresleri içerebilir
 
-## <a name="deleting-customer-data"></a>Müşteri verileri silme
+## <a name="deleting-customer-data"></a>Müşteri verilerini silme
 
-Kasalar, anahtarlar, gizlilikler, sertifikalar ve yönetilen depolama hesapları oluşturmak için kullanılan REST API 'Leri, Portal deneyimi ve SDK 'Lar, bu nesneleri güncelleştirebilir ve silebilir.
+Kasalar, anahtarlar, sırlar, sertifikalar ve yönetilen depolama hesapları oluşturmak için kullanılan aynı REST API'leri, Portal deneyimi ve SDK'lar da bu nesneleri güncelleyebilir ve silebilir.
 
-Geçici silme, silme işleminden sonra 90 gün boyunca silinen verileri kurtarmanızı sağlar. Geçici silme kullanılırken, veriler temizleme süresi dolmadan 90 gün önce kalıcı olarak silinebilir. Kasa veya abonelik temizleme işlemlerini engelleyecek şekilde yapılandırıldıysa, zamanlanan Bekletme dönemi geçene kadar verileri kalıcı olarak silmek mümkün değildir.
+Yumuşak silme, silinen verileri silindikten sonra 90 gün boyunca kurtarmanızı sağlar. Yumuşak silme kullanırken, 90 günlük saklama süresi bir temizleme işlemi gerçekleştirerek sona ermeden önce veriler kalıcı olarak silinebilir. Kasa veya abonelik temizleme işlemlerini engelleyecek şekilde yapılandırıldıysa, zamanlanan bekletme süresi geçene kadar verileri kalıcı olarak silmek mümkün değildir.
 
-## <a name="exporting-customer-data"></a>Müşteri verilerini dışarı aktarma
+## <a name="exporting-customer-data"></a>Müşteri verilerini dışa aktarma
 
-Kasalar, anahtarlar, gizlilikler, sertifikalar ve yönetilen depolama hesapları oluşturmak için kullanılan REST API 'Leri, Portal deneyimi ve SDK 'Lar, bu nesneleri görüntülemenize ve dışa aktarmaya da imkan tanır.
+Kasalar, anahtarlar, sırlar, sertifikalar ve yönetilen depolama hesapları oluşturmak için kullanılan aynı REST API'leri, portal deneyimi ve SDK'lar da bu nesneleri görüntülemenize ve dışa aktarmanıza olanak sağlar.
 
-Azure Key Vault erişim günlüğü, her REST API çağrısı için günlük oluşturmak üzere açık olan isteğe bağlı bir özelliktir. Bu Günlükler, kuruluşunuzun gereksinimlerini karşılayan bekletme ilkesini uyguladığınız aboneliğinizdeki bir depolama hesabına aktarılır.
+Azure Key Vault erişim günlüğü, her REST API çağrısı için günlük oluşturmak için açılabilir isteğe bağlı bir özelliktir. Bu günlükler, kuruluşunuzun gereksinimlerini karşılayan bekletme ilkesini uyguladığınız aboneliğinizdeki bir depolama hesabına aktarılır.
 
-Kişisel verileri içeren Azure Key Vault tanılama günlükleri, Kullanıcı Gizlilik portalında dışarı aktarma isteği yapılarak alınabilir. Bu isteğin kiracı yöneticisi tarafından yapılması gerekir.
+Kişisel verileri içeren Azure Key Vault tanı günlükleri, Kullanıcı Gizliliği portalında bir dışa aktarma isteği nde bulunarak alınabilir. Bu istek kiracı yönetici tarafından yapılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Anahtar Kasası Günlüğü](key-vault-logging.md)
 
-- [Azure Key Vault geçici genel bakış](key-vault-soft-delete-cli.md)
+- [Azure Key Vault geçici silmeye genel bakış](key-vault-soft-delete-cli.md)
 
 - [Azure Key Vault anahtar işlemleri](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
-- [Azure Key Vault gizli işlemler](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Azure Key Vault gizli işlemleri](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
-- [Sertifikaları ve ilkeleri Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Azure Anahtar Kasası sertifikaları ve ilkeleri](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
 
-- [Depolama hesabı işlemlerini Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Azure Key Vault depolama hesabı işlemleri](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

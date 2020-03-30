@@ -1,6 +1,6 @@
 ---
-title: Şirket içi Always on kullanılabilirlik gruplarını Azure 'a genişletin | Microsoft Docs
-description: Bu öğretici, klasik dağıtım modeliyle oluşturulan kaynakları kullanır ve Azure 'da her zaman açık kullanılabilirlik grubu çoğaltması eklemek için SQL Server Management Studio (SSMS) içinde çoğaltma ekleme Sihirbazı 'nın nasıl kullanılacağını açıklar.
+title: Şirket içi Her Zaman Kullanılabilirlik Gruplarını Azure'a genişletin | Microsoft Dokümanlar
+description: Bu öğretici, klasik dağıtım modeliyle oluşturulan kaynakları kullanır ve Azure'da Her Zaman Kullanılabilirlik Grubu yinelemesi eklemek için SQL Server Management Studio'da (SSMS) Çoğaltma Ekle sihirbazını nasıl kullanacağımı açıklar.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,82 +15,82 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978041"
 ---
-# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Şirket içi Always on kullanılabilirlik gruplarını Azure 'a genişletme
-Her zaman açık kullanılabilirlik grupları, ikincil çoğaltmalar ekleyerek veritabanı grupları için yüksek kullanılabilirlik sağlar. Bu çoğaltmalar hata durumunda veritabanlarının yük devretmesini sağlar. Bunlara ek olarak, okuma iş yüklerini veya yedekleme görevlerini boşaltmak için de kullanılabilir.
+# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Şirket içi AlwaysOn Kullanılabilirlik Grupları’nı Azure’a Genişletme
+Her Zaman Kullanılabilirlik Grupları ikincil yinelemeler ekleyerek veritabanı grupları için yüksek kullanılabilirlik sağlar. Bu yinelemeler, bir hata durumunda veritabanları üzerinde başarısız lığa izin verir. Ayrıca, okuma iş yüklerini veya yedekleme görevlerini boşaltmak için de kullanılabilirler.
 
-SQL Server sahip bir veya daha fazla Azure sanal makinesi sağlayarak ve bunları şirket içi kullanılabilirlik gruplarınızı çoğaltmalar olarak ekleyerek, şirket içi kullanılabilirlik gruplarını Microsoft Azure için genişletebilirsiniz.
+Bir veya daha fazla Azure VM'sini SQL Server'a vererek ve bunları şirket içi Kullanılabilirlik Gruplarınıza yineleme olarak ekleyerek şirket içi Kullanılabilirlik Gruplarını Microsoft Azure'a genişletebilirsiniz.
 
-Bu öğreticide size şunlar varsayılmaktadır:
+Bu öğretici, aşağıdakilere sahip olduğunuzu varsayar:
 
-* Etkin bir Azure aboneliği. [Ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
-* Şirket içinde mevcut bir Always on kullanılabilirlik grubu. Kullanılabilirlik grupları hakkında daha fazla bilgi için bkz. [Always on kullanılabilirlik grupları](https://msdn.microsoft.com/library/hh510230.aspx).
-* Şirket içi ağ ve Azure sanal ağınız arasındaki bağlantı. Bu sanal ağı oluşturma hakkında daha fazla bilgi için bkz. [Azure Portal (klasik) kullanarak siteden siteye bağlantı oluşturma](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
+* Etkin bir Azure aboneliği. Ücretsiz [deneme sürümü için kaydolabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/)
+* Varolan Her Zaman Kullanılabilirlik Grubu şirket içinde. Kullanılabilirlik Grupları hakkında daha fazla bilgi için her [zaman kullanılabilirlik gruplarına](https://msdn.microsoft.com/library/hh510230.aspx)bakın.
+* Şirket içi ağ ile Azure sanal ağınız arasındaki bağlantı. Bu sanal ağı oluşturma hakkında daha fazla bilgi için Azure [portalını (klasik) kullanarak Siteden Siteye bağlantı oluşturma](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)'ya bakın.
 
 > [!IMPORTANT] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
+> Azure'un kaynakları oluşturmak ve onlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve Klasik.](../../../azure-resource-manager/management/deployment-models.md) Bu makalede, Klasik dağıtım modeli kullanılarak kapsar. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
 
-## <a name="add-azure-replica-wizard"></a>Azure çoğaltma Sihirbazı ekleme
-Bu bölümde, Azure **çoğaltması Ekleme Sihirbazı 'nı** kullanarak her zaman açık kullanılabilirlik grubu çözümünüzü Azure çoğaltmaları içerecek şekilde nasıl genişletebileceğinizi gösterir.
+## <a name="add-azure-replica-wizard"></a>Azure Çoğaltma Sihirbazı Ekle
+Bu bölümde, Her Zaman Kullanılabilirlik Grubu çözümünüzü Azure yinelemelerini içerecek şekilde genişletmek için **Azure Çoğaltma Ekle Sihirbazı'nı** nasıl kullanacağınızı gösterir.
 
 > [!IMPORTANT]
-> **Azure çoğaltma ekleme Sihirbazı** yalnızca klasik dağıtım modeliyle oluşturulan sanal makineleri destekler. Yeni VM dağıtımları, daha yeni Kaynak Yöneticisi modelini kullanmalıdır. Kaynak Yöneticisi sahip VM 'Leri kullanıyorsanız, Transact-SQL komutlarını kullanarak ikincil Azure çoğaltmasını el ile eklemeniz gerekir (burada gösterilmez). Bu sihirbaz Kaynak Yöneticisi senaryosunda çalışmayacaktır.
+> **Azure Çoğaltma Ekle Sihirbazı** yalnızca Klasik dağıtım modeliyle oluşturulan sanal makineleri destekler. Yeni VM dağıtımları yeni Kaynak Yöneticisi modelini kullanmalıdır. Kaynak Yöneticisi ile VM kullanıyorsanız, Transact-SQL komutlarını kullanarak ikincil Azure yinelemesini el ile eklemeniz gerekir (burada gösterilmez). Bu sihirbaz Kaynak Yöneticisi senaryosunda çalışmaz.
 
-1. SQL Server Management Studio içinde, **her zaman yüksek kullanılabilirlik** > **kullanılabilirlik grupları** ' nı >  **[kullanılabilirlik grubunuzun adı]** ' nı genişletin.
-2. **Kullanılabilirlik çoğaltmaları**' na sağ tıklayın ve ardından **çoğaltma ekle**' ye tıklayın.
-3. Varsayılan olarak, **kullanılabilirlik grubuna çoğaltma Ekle Sihirbazı** görüntülenir. **İleri**’ye tıklayın.  Bu sihirbazın önceki bir kez başlatılması sırasında sayfanın altındaki **Bu sayfayı bir daha gösterme** seçeneğini belirlediyseniz bu ekran görüntülenmez.
+1. SQL Server Management Studio içinden, Her Zaman Yüksek**Kullanılabilirlik Kullanılabilirlik Grupları** > [Kullanılabilirlik **Always On High Availability** > **Grubunuzun Adı] genişletin.**
+2. Sağ tıklatın **Kullanılabilirlik Yinelemeler,** sonra **Çoğaltma Ekle'yi**tıklatın.
+3. Varsayılan olarak, **Kullanılabilirlik Grubu Sihirbazı'na Yineleme Ekle** görüntülenir. **İleri**'ye tıklayın.  Bu sihirbazın önceki lansmanı sırasında sayfanın alt kısmında **bu sayfayı tekrar gösterme** seçeneğini seçtiyseniz, bu ekran görüntülenmez.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
-4. Var olan tüm ikincil çoğaltmalara bağlanmanız gerekecektir. Bağlan ' a tıklayabilirsiniz **...** Her bir kopyanın yanında ya da **Tümünü bağla...** seçeneğine tıklayabilirsiniz. ekranın alt kısmında. Kimlik doğrulamasından sonra İleri **' ye tıklayarak sonraki ekrana** ilerleyin.
-5. **Çoğaltmaları belirtin** sayfasında, en üstteki: **çoğaltmalar**, **uç noktalar**, **Yedekleme tercihleri**ve **dinleyici**arasında birden çok sekme listelenir. **Çoğaltmalar** sekmesinden **Azure çoğaltma Ekle ' ye tıklayın...** Azure çoğaltma ekleme Sihirbazı 'Nı başlatmak için.
+4. Varolan tüm ikincil yinelemelere bağlanmanız gerekir. Bağlan'a **tıklayabilirsiniz...** her çoğaltma yanında veya **Tümünü Bağla'yı tıklatabilirsiniz...** ekranın alt kısmında. Kimlik doğrulamadan sonra, bir sonraki ekrana ilerlemek için **İleri'yi** tıklatın.
+5. **Yinelemeleri Belirt** sayfasında, üstte birden çok sekme listelenir: **Yinelemeler,** **Uç Noktalar,** **Yedekleme Tercihleri**ve **Dinleyici.** **Yinelemeler** sekmesinden **Azure Yineleme Ekle'yi tıklatın...** Azure Çoğaltma Sihirbazı Ekle'yi başlatmak için.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
-6. Daha önce yüklediyseniz, yerel Windows sertifika deposundan var olan bir Azure Yönetim sertifikası seçin. Daha önce kullandıysanız bir Azure aboneliğinin kimliğini seçin veya girin. Bir Azure Yönetim sertifikası indirip yüklemek ve Azure hesabı kullanarak Aboneliklerin listesini indirmek için Indir ' e tıklayabilirsiniz.
+6. Daha önce yüklediyseniz, yerel Windows sertifika mağazasından varolan bir Azure Yönetim Sertifikası'nı seçin. Daha önce kullandıysanız Azure aboneliğinin kimliğini seçin veya girin. Azure Yönetim Sertifikası'nı indirmek ve yüklemek için İndir'i tıklatabilir ve bir Azure hesabı kullanarak abonelik listesini indirebilirsiniz.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
-7. Sayfadaki her alanı, çoğaltmayı barındıracak Azure sanal makinesini (VM) oluşturmak için kullanılacak değerlerle dolduracaksınız.
+7. Sayfadaki her alanı, yinelemeyi barındıracak Azure Sanal Makinesini (VM) oluşturmak için kullanılacak değerlerle doldurursunuz.
    
    | Ayar | Açıklama |
    | --- | --- |
-   | **Görüntü** |İstenen işletim sistemi ve SQL Server birleşimini seçin |
-   | **VM boyutu** |İş gereksinimlerinize en uygun VM 'nin boyutunu seçin |
-   | **VM adı** |Yeni VM için benzersiz bir ad belirtin. Ad 3 ila 15 karakter arasında olmalıdır, yalnızca harf, rakam ve kısa çizgi içerebilir ve bir harfle başlamalı ve bir harf ya da sayı ile bitmelidir. |
-   | **VM Kullanıcı adı** |VM 'de yönetici hesabı olacak bir Kullanıcı adı belirtin |
-   | **VM yönetici parolası** |Yeni hesap için bir parola belirtin |
-   | **Parolayı Onayla** |Yeni hesabın parolasını onaylayın |
-   | **Sanal Ağ** |Yeni VM 'nin kullanması gereken Azure sanal ağını belirtin. Sanal ağlar hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](../../../virtual-network/virtual-networks-overview.md). |
-   | **Sanal ağ alt ağı** |Yeni VM 'nin kullanması gereken sanal ağ alt ağını belirtin |
-   | **Etki alanı** |Etki alanı için önceden doldurulan değerin doğru olduğunu onaylayın |
-   | **Etki alanı Kullanıcı adı** |Yerel küme düğümlerinde yerel Yöneticiler grubunda bir hesap belirtin |
-   | **Parola** |Etki alanı Kullanıcı adı için parola belirtin |
-8. Dağıtım ayarlarını doğrulamak için **Tamam** ' ı tıklatın.
-9. Geçerli terimler ileri görüntülenir. Bu koşulları kabul ediyorsanız Tamam ' ı okuyun ve **Tamam** ' ı tıklatın.
-10. **Çoğaltmaları belirtin** sayfası yeniden görüntülenir. **Çoğaltmalar**, **uç noktalar**ve **Yedekleme tercihleri** sekmelerinde yeni Azure çoğaltmasının ayarlarını doğrulayın. Ayarları, iş gereksinimlerinizi karşılayacak şekilde değiştirin.  Bu sekmelerde bulunan parametreler hakkında daha fazla bilgi için bkz. [çoğaltmaları belirtme sayfası (yeni kullanılabilirlik Grubu Sihirbazı/çoğaltma ekleme Sihirbazı)](https://msdn.microsoft.com/library/hh213088.aspx). Azure çoğaltmaları içeren kullanılabilirlik grupları için dinleyici sekmesi kullanılarak dinleyicileri oluşturutamayacağını unutmayın. Ayrıca, sihirbazı başlatmadan önce bir dinleyici zaten oluşturulduysa, Azure 'da desteklenmediğini belirten bir ileti alırsınız. **Kullanılabilirlik grubu dinleyicisi oluşturma** bölümünde dinleyicileri oluşturma bölümüne bakacağız.
+   | **Görüntü** |OS ve SQL Server'ın istenilen birleşimini seçin |
+   | **VM Boyutu** |İş gereksinimlerinize en uygun VM boyutunu seçin |
+   | **VM Adı** |Yeni VM için benzersiz bir ad belirtin. Ad 3 ile 15 karakter arasında olmalıdır, yalnızca harfler, sayılar ve tireler içermeli ve bir harfle başlayıp bir harf le veya sayıyla bitmelidir. |
+   | **VM Kullanıcı Adı** |VM'de yönetici hesabı olacak bir kullanıcı adı belirtin |
+   | **VM Yönetici Şifresi** |Yeni hesap için parola belirtin |
+   | **Parolayı Onayla** |Yeni hesabın parolasını onaylama |
+   | **Sanal Ağ** |Yeni VM'nin kullanması gereken Azure sanal ağını belirtin. Sanal ağlar hakkında daha fazla bilgi için [Sanal Ağa Genel Bakış'a](../../../virtual-network/virtual-networks-overview.md)bakın. |
+   | **Sanal Ağ Subnet** |Yeni VM'nin kullanması gereken sanal ağ alt netini belirtin |
+   | **Domain** |Etki alanı için önceden doldurulmuş değerin doğru olduğunu doğrulayın |
+   | **Etki Alanı Kullanıcı Adı** |Yerel küme düğümlerinde yerel yöneticiler grubunda bulunan bir hesap belirtin |
+   | **Parola** |Etki alanı kullanıcı adının parolasını belirtin |
+8. Dağıtım ayarlarını doğrulamak için **Tamam'ı** tıklatın.
+9. Sonraki yasal terimler görüntülenir. Bu koşulları kabul ederseniz **Tamam'ı** okuyun ve tıklatın.
+10. **Yinelemeleri Belirt** sayfası yeniden görüntülenir. **Yinelemeler,** **Uç Noktalar**ve **Yedekleme Tercihleri** sekmelerinde yeni Azure yinelemesinin ayarlarını doğrulayın. İş gereksinimlerinizi karşılayacak şekilde ayarları değiştirin.  Bu sekmelerde yer alan parametreler hakkında daha fazla bilgi için [bkz.](https://msdn.microsoft.com/library/hh213088.aspx) Dinleyicilerin Azure yinelemeleri içeren Kullanılabilirlik Grupları için Dinleyici sekmesini kullanarak oluşturulamayacağını unutmayın. Ayrıca, Sihirbazı başlatmadan önce bir dinleyici zaten oluşturulduysa, Azure'da desteklenmediğini belirten bir ileti alırsınız. **Kullanılabilirlik Grubu Dinleyicisi Oluştur** bölümünde dinleyicilerin nasıl oluşturulacağını inceleyeceğiz.
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
-11. **İleri**’ye tıklayın.
-12. **Ilk veri eşitlemesini Seç** sayfasında kullanmak istediğiniz veri eşitleme yöntemini seçin ve **İleri**' ye tıklayın. Çoğu senaryo için **tam veri eşitleme**' yi seçin. Veri eşitleme yöntemleri hakkında daha fazla bilgi için bkz. [Ilk veri eşitlemesini seçme sayfası (Always on kullanılabilirlik grubu sihirbazları)](https://msdn.microsoft.com/library/hh231021.aspx).
-13. **Doğrulama** sayfasında sonuçları gözden geçirin. Bekleyen sorunları düzeltin ve gerekirse doğrulamayı yeniden çalıştırın. **İleri**’ye tıklayın.
+11. **İleri**'ye tıklayın.
+12. **İlk Veri Eşitlemesi** seç sayfasında kullanmak istediğiniz veri eşitleme yöntemini seçin ve **İleri'yi**tıklatın. Çoğu senaryoiçin **Tam Veri Eşitleme'yi**seçin. Veri eşitleme yöntemleri hakkında daha fazla bilgi için [bkz.](https://msdn.microsoft.com/library/hh231021.aspx)
+13. Sonuçları **Doğrulama** sayfasında inceleyin. Bekleyen sorunları düzeltin ve gerekirse doğrulamayı yeniden çalıştırın. **İleri**'ye tıklayın.
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
-14. **Özet** sayfasında ayarları gözden geçirin ve ardından **son**' a tıklayın.
-15. Sağlama işlemi başlar. Sihirbaz başarıyla tamamlandığında, sihirbazdan çıkmak için **Kapat** ' a tıklayın.
+14. **Özet** sayfasındaki ayarları gözden geçirin ve **ardından Bitir'i**tıklatın.
+15. Sağlama süreci başlar. Sihirbaz başarıyla tamamlandığında, sihirbazdan çıkmak için **Kapat'ı** tıklatın.
 
 > [!NOTE]
-> Azure çoğaltma ekleme Sihirbazı, Users\User \ Appdata\local\sql Server\addreplicawizardyolunda bir günlük dosyası oluşturur. Bu günlük dosyası, başarısız olan Azure çoğaltma dağıtımlarının sorunlarını gidermek için kullanılabilir. Sihirbaz herhangi bir eylemi yürütürken başarısız olursa, sağlanan VM 'yi silme dahil olmak üzere önceki tüm işlemler geri alınır.
+> Azure Çoğaltma Ekle Sihirbazı, Kullanıcılar\Kullanıcı Adı\AppData\Local\SQL Server\AddReplicaWizard'da bir günlük dosyası oluşturur. Bu günlük dosyası, başarısız Azure çoğaltma dağıtımlarını gidermek için kullanılabilir. Sihirbaz herhangi bir eylemi yürütmezse, sağlanan VM'yi silmesi de dahil olmak üzere önceki tüm işlemler geri alınır.
 > 
 > 
 
 ## <a name="create-an-availability-group-listener"></a>Kullanılabilirlik grubu dinleyicisi oluşturma
-Kullanılabilirlik grubu oluşturulduktan sonra, istemcilerin çoğaltmalara bağlanması için bir dinleyici oluşturmalısınız. Dinleyiciler, birincil veya salt okunurdur ikincil çoğaltmaya doğrudan gelen bağlantılar sağlar. Dinleyiciler hakkında daha fazla bilgi için bkz. [Azure 'Da Always on kullanılabilirlik grupları için BIR ıLB dinleyicisi yapılandırma](../classic/ps-sql-int-listener.md).
+Kullanılabilirlik grubu oluşturulduktan sonra, istemcilerin yinelemelere bağlanması için bir dinleyici oluşturmanız gerekir. Dinleyiciler gelen bağlantıları birincil veya salt okunur ikincil yinelemeye yönlendirir. Dinleyiciler hakkında daha fazla bilgi için, [Azure'daki Her Zaman Kullanılabilirlik Grupları için Bir ILB dinleyicisini Yapılandır' a](../classic/ps-sql-int-listener.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Her zaman açık kullanılabilirlik grubunuzu Azure 'a genişletmek için **Azure çoğaltma ekleme Sihirbazı 'nı** kullanmanın yanı sıra, bazı SQL Server Iş yüklerini Azure 'a tamamen de taşıyabilirsiniz. Başlamak için bkz. [Azure 'da SQL Server sanal makinesi sağlama](../sql/virtual-machines-windows-portal-sql-server-provision.md).
+Her Zaman Kullanılabilirlik Grubunuzu Azure'a genişletmek için **Azure Çoğaltma Ekle Sihirbazı'nı** kullanmanın yanı sıra, bazı SQL Server iş yüklerini tamamen Azure'a taşıyabilirsiniz. Başlamak için [Azure'da SQL Server Virtual Machine Sağlama](../sql/virtual-machines-windows-portal-sql-server-provision.md)konusuna bakın.
 
-Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer konular için bkz. [Azure sanal makinelerinde SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Azure VM'lerde SQL Server'ı çalıştırmakla ilgili diğer konular için [Azure Sanal Makineler'deki SQL Server'a](../sql/virtual-machines-windows-sql-server-iaas-overview.md)bakın.
 

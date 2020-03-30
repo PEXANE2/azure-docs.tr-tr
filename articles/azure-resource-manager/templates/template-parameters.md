@@ -1,24 +1,24 @@
 ---
-title: Şablonlardaki parametreler
-description: Azure Resource Manager şablonunda parametrelerin nasıl tanımlanacağını açıklar.
+title: Şablonlarda parametreler
+description: Azure Kaynak Yöneticisi şablonundaki parametrelerin nasıl tanımlandığını açıklar.
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122432"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarındaki parametreler
+# <a name="parameters-in-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonlarında parametreler
 
-Bu makalede Azure Resource Manager şablonunuzda parametrelerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Parametreler için farklı değerler sunarak, farklı ortamlar için bir şablonu yeniden kullanabilirsiniz.
+Bu makalede, Azure Kaynak Yöneticisi şablonunuzda parametrelerin nasıl tanımlanılı ve kullanılacağı açıklanmaktadır. Parametreler için farklı değerler sağlayarak, farklı ortamlar için bir şablonu yeniden kullanabilirsiniz.
 
-Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce parametre değerlerini çözer. Parametrenin şablonda kullanıldığı her yerde, Kaynak Yöneticisi çözümlenme değeriyle değiştirilir.
+Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce parametre değerlerini çözer. Şablonda parametre nin kullanıldığı her yerde, Kaynak Yöneticisi onu çözümlenen değerle değiştirir.
 
-## <a name="define-parameter"></a>Parametre tanımla
+## <a name="define-parameter"></a>Parametre tanımlama
 
-Aşağıdaki örnek bir basit parametre tanımını gösterir. **Storagesku**adlı bir parametre tanımlar. Parametresi bir dize değeridir ve yalnızca amaçlanan kullanımı için geçerli olan değerleri kabul eder. Dağıtım sırasında hiçbir değer sağlanmamışsa parametre varsayılan değeri kullanır.
+Aşağıdaki örnekbasit bir parametre tanımı gösterir. **DepolamaSKU**adlı bir parametre tanımlar. Parametre bir dize değeridir ve yalnızca kullanım amacı için geçerli olan değerleri kabul eder. Parametre, dağıtım sırasında değer sağlanmadığında varsayılan bir değer kullanır.
 
 ```json
 "parameters": {
@@ -39,9 +39,9 @@ Aşağıdaki örnek bir basit parametre tanımını gösterir. **Storagesku**adl
 }
 ```
 
-## <a name="use-parameter"></a>Parametre kullan
+## <a name="use-parameter"></a>Parametre kullanın
 
-Şablonda [Parametreler](template-functions-deployment.md#parameters) işlevini kullanarak parametrenin değerine başvurarak. Aşağıdaki örnekte, depolama hesabı için SKU ayarlamak üzere parametre değeri kullanılır.
+Şablonda, [parametre](template-functions-deployment.md#parameters) işlevini kullanarak parametrenin değerine başvurursunuz. Aşağıdaki örnekte, parametre değeri depolama hesabı için SKU ayarlamak için kullanılır.
 
 ```json
 "resources": [
@@ -57,7 +57,7 @@ Aşağıdaki örnek bir basit parametre tanımını gösterir. **Storagesku**adl
 
 ## <a name="template-functions"></a>Şablon işlevleri
 
-Bir parametre için varsayılan değeri belirtirken, çoğu şablon işlevini kullanabilirsiniz. Varsayılan bir değer oluşturmak için başka bir parametre değeri de kullanabilirsiniz. Aşağıdaki şablon, varsayılan değer içindeki işlevlerin kullanımını gösterir. Site için bir ad sağlanmamışsa, benzersiz bir dize değeri oluşturur ve **siteye**ekler. Konak planı için bir ad sağlanmamışsa, site için değeri alır **ve ekler.**
+Bir parametre için varsayılan değeri belirtirken, çoğu şablon işlevlerini kullanabilirsiniz. Varsayılan değer oluşturmak için başka bir parametre değeri kullanabilirsiniz. Aşağıdaki şablon, işlevlerin varsayılan değerde kullanımını gösterir. Site için ad verilmediğinde, benzersiz bir dize değeri oluşturur ve **siteye**ekler. Ana bilgisayar planı için ad verilmediğinde, sitenin değerini alır ve ekler **-plan.**
 
 ```json
 "parameters": {
@@ -78,13 +78,13 @@ Bir parametre için varsayılan değeri belirtirken, çoğu şablon işlevini ku
 }
 ```
 
-Parameters bölümünde [başvuru](template-functions-resource.md#reference) işlevini veya [liste](template-functions-resource.md#list) işlevlerinden herhangi birini kullanamazsınız. Bu işlevler, bir kaynağın çalışma zamanı durumunu alır ve parametreler çözümlendiğinde dağıtımdan önce yürütülemez.
+Parametreler bölümünde ki [başvuru](template-functions-resource.md#reference) işlevini veya [liste](template-functions-resource.md#list) işlevlerinden herhangi birini kullanamazsınız. Bu işlevler kaynağın çalışma zamanı durumunu alır ve parametreler çözüldüğünde dağıtımdan önce yürütülemez.
 
-## <a name="objects-as-parameters"></a>Parametre olarak nesneler
+## <a name="objects-as-parameters"></a>Parametreler olarak nesneler
 
-İlgili değerleri bir nesne olarak geçirerek düzenlemek daha kolay olabilir. Bu yaklaşım ayrıca şablondaki parametre sayısını azaltır.
+İlgili değerleri nesne olarak geçirerek düzenlemek daha kolay olabilir. Bu yaklaşım, şablondaki parametre sayısını da azaltır.
 
-Aşağıdaki örnek bir nesnesi olan bir parametresini gösterir. Varsayılan değer, nesne için beklenen özellikleri gösterir.
+Aşağıdaki örnekte bir nesne olan bir parametre gösterilmektedir. Varsayılan değer nesne için beklenen özellikleri gösterir.
 
 ```json
 "parameters": {
@@ -114,7 +114,7 @@ Aşağıdaki örnek bir nesnesi olan bir parametresini gösterir. Varsayılan de
 },
 ```
 
-Nokta işlecini kullanarak nesnesinin özelliklerine başvurun.
+Nokta işleci kullanarak nesnenin özelliklerine başvurursunuz.
 
 ```json
 "resources": [
@@ -148,18 +148,18 @@ Nokta işlecini kullanarak nesnesinin özelliklerine başvurun.
 ]
 ```
 
-## <a name="example-templates"></a>Örnek şablonları
+## <a name="example-templates"></a>Örnek şablonlar
 
-Aşağıdaki örneklerde, parametreleri kullanmaya yönelik senaryolar gösterilmektedir.
+Aşağıdaki örneklerde parametreleri kullanmak için senaryolar gösterilmektedir.
 
 |Şablon  |Açıklama  |
 |---------|---------|
-|[Varsayılan değerler için işlevlere sahip parametreler](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Parametreler için varsayılan değerleri tanımlarken şablon işlevlerinin nasıl kullanılacağını gösterir. Şablon hiçbir kaynak dağıtmaz. Parametre değerlerini oluşturur ve bu değerleri döndürür. |
-|[Parameter nesnesi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Bir parametre için bir nesne kullanmayı gösterir. Şablon hiçbir kaynak dağıtmaz. Parametre değerlerini oluşturur ve bu değerleri döndürür. |
+|[varsayılan değerler için fonksiyonlu parametreler](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Parametreler için varsayılan değerleri tanımlarken şablon işlevlerinin nasıl kullanılacağını gösterir. Şablon herhangi bir kaynak dağıtmaz. Parametre değerlerini inşa eder ve bu değerleri döndürür. |
+|[parametre nesnesi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Bir parametre için bir nesne kullanarak gösterir. Şablon herhangi bir kaynak dağıtmaz. Parametre değerlerini inşa eder ve bu değerleri döndürür. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Parametrelerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-* Parametre değerlerini bir dosya olarak geçirme hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](parameter-files.md).
-* Parametreleri oluşturma hakkında öneriler için bkz. [en iyi yöntemler-parametreler](template-best-practices.md#parameters).
+* Parametreler için kullanılabilir özellikler hakkında bilgi edinmek için [bkz.](template-syntax.md)
+* Parametre değerlerini dosya olarak geçirme hakkında bilgi edinmek için kaynak [yöneticisi parametre dosyası oluştur'a](parameter-files.md)bakın.
+* Parametreler oluşturma yla ilgili öneriler için en [iyi uygulamalar - parametrelere](template-best-practices.md#parameters)bakın.

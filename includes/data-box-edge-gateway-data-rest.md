@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: eb55d993ad8960f821c2b72f0a53602166b7cc7e
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900594"
 ---
-Bekleyen veriler için:
+Veri için istirahat:
 
-- Paylaşımlardaki depolanan verilere erişim kısıtlıdır.
+- Paylaşımlarda depolanan verilere erişim kısıtlanır.
 
-    - Paylaşma verilerine erişen SMB istemcilerinin, paylaşımda ilişkili kullanıcı kimlik bilgileri olması gerekir. Bu kimlik bilgileri, paylaşma oluşturulduğunda tanımlanmıştır.
-    - Bir paylaşıma erişen NFS istemcilerinin IP adresleri, paylaşma oluşturulduğunda eklenmelidir.
+    - Paylaşım verilerine erişen SMB istemcileri, paylaşımla ilişkili kullanıcı kimlik bilgilerine ihtiyaç duyar. Bu kimlik bilgileri, paylaşım oluşturulduğunda tanımlanır.
+    - Paylaşıma erişen NFS istemcilerinin IP adresleri, paylaşım oluşturulduğunda eklenmesi gerekir.

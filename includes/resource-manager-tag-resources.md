@@ -5,61 +5,62 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 01/03/2020
+ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 6d8f29e9272f3e05bb585c032240cce67c37d2bf
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665165"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132250"
 ---
-1. Bir kaynağın veya kaynak grubunun etiketlerini görüntülemek için genel bakışta var olan etiketleri bulun. Daha önce etiket uygulamadıysanız liste boştur.
-   
-     ![Kaynak veya kaynak grubu için etiketleri görüntüle](./media/resource-manager-tag-resources/view-tags.png)
-1. Etiket eklemek için, **etiketleri eklemek üzere buraya tıklayın ' ı**seçin.
+Bir kullanıcı etiketleri uygulamak için gerekli erişime sahip değilse, **Etiket Katılımcısı** rolünü kullanıcıya atayabilirsiniz. Daha fazla bilgi için [Bkz. Öğretici: RBAC ve Azure portalını kullanarak kullanıcıya Azure kaynaklarına erişim hakkı tanıyın.](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)
 
-1. Bir ad ve değer belirtin. Etiketi eklemek için **+** seçin.
-   
-     ![Etiket ekle](./media/resource-manager-tag-resources/add-tag.png)
-1. Gerektiğinde Etiketler eklemeye devam edin. İşiniz bittiğinde **Kaydet**’i seçin.
-   
-     ![Etiketleri Kaydet](./media/resource-manager-tag-resources/save-tags.png)
+1. Kaynak veya kaynak grubunun etiketlerini görüntülemek için genel bakışta varolan etiketlere bakın. Daha önce etiket uygulamadıysanız liste boştur.
+
+   ![Kaynak veya kaynak grubu için etiketleri görüntüleme](./media/resource-manager-tag-resources/view-tags.png)
+
+1. Etiket eklemek **için, etiket eklemek için buraya tıklayın'ı**seçin.
+
+1. Bir ad ve değer sağlayın.
+
+   ![Etiket ekle](./media/resource-manager-tag-resources/add-tag.png)
+
+1. Gerektiğinde etiket eklemeye devam edin. İşiniz bittiğinde **Kaydet**’i seçin.
+
+   ![Etiketleri kaydet](./media/resource-manager-tag-resources/save-tags.png)
+
 1. Etiketler artık genel bakışta görüntülenir.
-   
-     ![Etiketleri göster](./media/resource-manager-tag-resources/view-new-tags.png)
-1. Etiket eklemek veya silmek için **Değiştir**' i seçin.
-   
-1. Bir etiketi silmek için çöp kutusu simgesini seçin. Ardından **Kaydet**’i seçin.
 
-     ![Etiketi Sil](./media/resource-manager-tag-resources/delete-tag.png)
+   ![Etiketleri göster](./media/resource-manager-tag-resources/view-new-tags.png)
 
+1. Etiket eklemek veya silmek için **değiştir'i**seçin.
 
-Birden çok kaynağa etiketleri toplu atamak için:
+1. Etiketi silmek için çöp kutusu simgesini seçin. Ardından **Kaydet**’i seçin.
 
-1. Herhangi bir kaynak listesinden etiketi atamak istediğiniz kaynakların onay kutusunu seçin.
+   ![Etiketi silme](./media/resource-manager-tag-resources/delete-tag.png)
 
-     ![Birden çok kaynak seçin](./media/resource-manager-tag-resources/select-multiple-resources.png)
+Etiketleri birden çok kaynağa toplu atamak için:
 
-1. **Etiket ata** ' yı seçin
+1. Herhangi bir kaynak listesinden, etiketi atamak istediğiniz kaynakların onay kutusunu seçin. Ardından, **etiketleri atay'ı**seçin.
 
-     ![Etiket atama](./media/resource-manager-tag-resources/assign-tags.png)
+   ![Birden çok kaynak seçin](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Her ad ve değerden sonra **+** ' yi seçin. İşiniz bittiğinde **ata**' yı seçin.
+1. Adlar ve değerler ekleyin. İşiniz bittiğinde **Kaydet**’i seçin.
 
-     ![Ata seçin](./media/resource-manager-tag-resources/select-assign.png)
+   ![Atama'yı seçin](./media/resource-manager-tag-resources/select-assign.png)
 
-Etiketi olan tüm kaynakları görüntülemek için:
+Etiketli tüm kaynakları görüntülemek için:
 
-1. Azure portal menüsünde **tüm hizmetler**' i seçin. **Genel**' i ve ardından **Etiketler**' i seçin.
+1. Azure portalı menüsünde **etiketleri**arayın. Kullanılabilir seçeneklerarasından seçin.
 
-     ![Etikete göre bul](./media/resource-manager-tag-resources/find-tags-general.png)
+   ![Etikete göre bul](./media/resource-manager-tag-resources/find-tags-general.png)
 
 1. Kaynakları görüntülemek için etiketi seçin.
 
-     ![Etiket Seç](./media/resource-manager-tag-resources/select-tag.png)
+   ![Etiketi seçin](./media/resource-manager-tag-resources/select-tag.png)
 
 1. Bu etikete sahip tüm kaynaklar görüntülenir.
 
-     ![Kaynakları etikete göre görüntüle](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+   ![Kaynakları etikete göre görüntüleme](./media/resource-manager-tag-resources/view-resources-by-tag.png)

@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services filtreleri tanımlama
-description: Bu konuda, istemci akışı için bir stream'ın belirli bölümlerine kullanabilmesi için filtreler oluşturmayı açıklar. Media Services, bu seçmeli akış elde etmek için olan dinamik bildirimler oluşturur.
+title: Azure Medya Hizmetleri'nde filtreleri tanımlama
+description: Bu konu, istemcinizin bir akışın belirli bölümlerini akışı için bunları kullanabilmesi için filtrelerin nasıl oluşturulabileceğini açıklar. Medya Hizmetleri, bu seçici akışı elde etmek için dinamik bildirimler oluşturur.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,75 +14,75 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251472"
 ---
 # <a name="filters"></a>Filtreler
 
-İçeriğinizi müşterilere sunarken (canlı akış olayları veya Isteğe bağlı video), istemciniz varsayılan varlığın bildirim dosyasında açıklananlardan daha fazla esneklik gerektirebilir. Azure Media Services, önceden tanımlanmış filtreleri temel alarak [dinamik bildirimler](filters-dynamic-manifest-overview.md) sunmaktadır. 
+İçeriğinizi müşterilere teslim ederken (Canlı Akış etkinlikleri veya Talep Üzerine Video) müşterinizin varsayılan varlığın bildirim dosyasında açıklanandan daha fazla esnekliğe ihtiyacı olabilir. Azure Medya Hizmetleri, önceden tanımlanmış filtrelere dayalı [Dinamik Bildirimler](filters-dynamic-manifest-overview.md) sunar. 
 
-Filtreler, müşterilerinizin şu gibi işlemler yapmasına izin veren sunucu tarafı kurallarıdır: 
+Filtreler, müşterilerinizin şu gibi şeyler yapmasına olanak tanıyan sunucu tarafı kurallarıdır: 
 
-- Videonun yalnızca bir bölümünü kayıttan yürütün (videonun tamamını çalmak yerine). Örnek:
-  - Canlı bir etkinliğin alt klibini ("alt klip filtrelemesi") göstermek için bildirimi azaltın veya
-  - Videonun başlangıcını kırpın ("video kırpma").
-- İçeriği kayıttan yürütmek için kullanılan cihaz tarafından desteklenen yalnızca belirtilen çevirileri ve/veya belirtilen dil izlerini sunun ("yorumlama filtrelemesi"). 
-- Player 'da ("sunum penceresini ayarlama"), DVR penceresinde sınırlı bir uzunluk sağlamak için sunum penceresini (DVR) ayarlayın.
+- Videonun yalnızca bir bölümünü oynatın (videonun tamamını oynatmak yerine). Örnek:
+  - Canlı bir olayın bir alt klibini ("alt klip filtresi") göstermek için bildirimi azaltın veya
+  - Bir videonun başlangıcını kırpın ("videoyu kırpma").
+- Yalnızca içeriği oynatmak için kullanılan aygıt tarafından desteklenen belirtilen yorumlamaları ve/veya belirtilen dil parçalarını ("yorumlama filtresi") sunun. 
+- Oyuncudaki DVR penceresinin sınırlı bir uzunluğunu sağlamak için Sunu Penceresini (DVR) ayarlayın ("sunu penceresini ayarlama").
 
-Media Services, içeriğiniz için **hesap filtreleri** ve **varlık filtreleri** oluşturmanıza olanak sağlar. Ayrıca, önceden oluşturulmuş filtrelerinizi bir **akış Bulucu**ile ilişkilendirebilirsiniz.
+Medya Hizmetleri, içeriğiniz için **Hesap filtreleri** ve **Varlık filtreleri** oluşturmanıza olanak tanır. Buna ek olarak, önceden oluşturulmuş filtrelerinizi bir **Akış Bulucuile**ilişkilendirebilirsiniz.
 
 ## <a name="defining-filters"></a>Filtreleri tanımlama
 
 İki tür filtre vardır: 
 
-* [Hesap filtreleri](https://docs.microsoft.com/rest/api/media/accountfilters) (Global)-Azure Media Services hesabındaki herhangi bir varlığa uygulanabilir, hesabın kullanım ömrü vardır.
-* [Varlık filtreleri](https://docs.microsoft.com/rest/api/media/assetfilters) (yerel)-yalnızca, oluşturulduktan sonra filtrenin ilişkilendirildiği bir varlığa uygulanabilir, varlığın kullanım ömrü vardır. 
+* [Hesap Filtreleri](https://docs.microsoft.com/rest/api/media/accountfilters) (genel) - Azure Medya Hizmetleri hesabındaki herhangi bir varlığa uygulanabilir, hesabın ömrü dolabilir.
+* [Varlık Filtreleri](https://docs.microsoft.com/rest/api/media/assetfilters) (yerel) - yalnızca filtrenin oluşturulduktan sonra ilişkili olduğu, varlığın ömrü ne kadar olduğu bir varlığa uygulanabilir. 
 
-**Hesap filtreleri** ve **varlık filtreleri** türleri, filtre tanımlamak/açıklamak için tam olarak aynı özelliklere sahiptir. **Varlık filtresi**oluşturma dışında, filtre ilişkilendirmek istediğiniz varlık adını belirtmeniz gerekir.
+**Hesap Filtreleri** ve **Varlık Filtreleri** türleri, filtreyi tanımlamak/açıklamak için tam olarak aynı özelliklere sahiptir. **Varlık Filtresi**oluştururken dışında, filtreyi ilişkilendirmek istediğiniz varlık adını belirtmeniz gerekir.
 
-Senaryonuza bağlı olarak, hangi tür bir filtrenin daha uygun olduğuna karar verirsiniz (varlık filtresi veya hesap filtresi). Hesap filtreleri, belirli bir varlığı kırpmak için varlık filtrelerinin kullanılabileceği cihaz profilleri (işleme filtrelemesi) için uygundur.
+Senaryonuza bağlı olarak, hangi filtre türünün daha uygun olduğuna (Varlık Filtresi veya Hesap Filtresi) karar verirsiniz. Hesap Filtreleri, Varlık Filtreleri'nin belirli bir varlığı kırpmak için kullanılabildiği aygıt profilleri (yorumlama filtreleme) için uygundur.
 
-Filtreleri anlatmak için aşağıdaki özellikleri kullanabilirsiniz. 
-
-|Adı|Açıklama|
-|---|---|
-|firstQuality|Filtrenin ilk kalite bit hızı.|
-|presentationTimeRange|Sunum zaman aralığı. Bu özellik bildirim başlangıç/bitiş noktaları, sunum penceresi uzunluğu ve canlı başlangıç konumunu filtrelemek için kullanılır. <br/>Daha fazla bilgi için bkz. [Presentationtimerange](#presentationtimerange).|
-|İzler|Seçim koşullarını izler. Daha fazla bilgi için bkz. [parçalar](#tracks)|
-
-### <a name="presentationtimerange"></a>presentationTimeRange
-
-Bu özelliği **varlık filtreleriyle**kullanın. Özelliği **Hesap filtreleriyle**ayarlamanız önerilmez.
+Filtreleri açıklamak için aşağıdaki özellikleri kullanırsınız. 
 
 |Adı|Açıklama|
 |---|---|
-|**endTimestamp**|Isteğe bağlı video (VoD) için geçerlidir.<br/>Canlı akış sunusu için sessizce yok sayılır ve sunu sona erdiğinde ve akış VoD olduğunda uygulanır.<br/>Bu, sununun mutlak bitiş noktasını temsil eden, en yakın bir sonraki GOP başlangıcına yuvarlanan uzun bir değerdir. Birim zaman ölçeğdir, bu nedenle bir endTimestamp 1800000000 3 dakika olur.<br/>Şarkı listesinde olacak parçaları kırpmak için startTimestamp ve endTimestamp kullanın (manifest).<br/>Örneğin, varsayılan zaman ölçeğini kullanan startTimestamp = 40000000 ve endTimestamp = 100000000, VoD sunusunun 4 saniye ve 10 saniyelik parçalarını içeren bir çalma listesi oluşturur. Bir parça sınır ayırır, tüm parçalar bildirime dahil edilir.|
-|**forceEndTimestamp**|Yalnızca canlı akış için geçerlidir.<br/>EndTimestamp özelliğinin mevcut olup olmadığını gösterir. True ise endTimestamp belirtilmelidir veya hatalı bir istek kodu döndürülür.<br/>İzin verilen değerler: false, true.|
-|**Livebackoff süresi**|Yalnızca canlı akış için geçerlidir.<br/> Bu değer, bir istemcinin arayabileceğini en son canlı konumu tanımlar.<br/>Bu özelliği kullanarak, canlı kayıttan yürütme konumunu erteleyebilir ve oyuncular için sunucu tarafı arabelleği oluşturabilirsiniz.<br/>Bu özelliğin birimi zaman ölçeğinde (aşağıya bakın).<br/>Maksimum etkin geri kullanım süresi 300 saniyedir (3000000000).<br/>Örneğin, 2000000000 değeri, en son kullanılabilir içeriğin gerçek canlı kenarından 20 saniye gecikildiği anlamına gelir.|
-|**presentationWindowDuration**|Yalnızca canlı akış için geçerlidir.<br/>Bir çalma listesine dahil edilecek parçaların kayan bir penceresini uygulamak için presentationWindowDuration ' i kullanın.<br/>Bu özelliğin birimi zaman ölçeğinde (aşağıya bakın).<br/>Örneğin, presentationWindowDuration = 1200000000 öğesini iki dakikalık bir kayan pencere uygulamak için ayarlayın. Canlı kenardan 2 dakikalık medya, çalma listesine dahil edilir. Bir parça sınır ayırır, tüm parça çalma listesine dahil edilir. En düşük sunu penceresi süresi 60 saniyedir.|
-|**startTimestamp**|Isteğe bağlı video (VoD) veya canlı akış için geçerlidir.<br/>Bu, akışın mutlak başlangıç noktasını temsil eden uzun bir değerdir. Değer, en yakın sonraki GOP başlangıcına yuvarlanır. Birim zaman ölçeğinde bir Start150000000 timestamp 15 saniye olur.<br/>Şarkı listesinde olacak parçaları kırpmak için startTimestamp ve endTimestampp kullanın (manifest).<br/>Örneğin, varsayılan zaman ölçeğini kullanan startTimestamp = 40000000 ve endTimestamp = 100000000, VoD sunusunun 4 saniye ve 10 saniyelik parçalarını içeren bir çalma listesi oluşturur. Bir parça sınır ayırır, tüm parçalar bildirime dahil edilir.|
-|**zaman**|Bir saniye içindeki Artımlar sayısı olarak belirtilen bir sunum zaman aralığındaki tüm zaman damgaları ve süreler için geçerlidir.<br/>Varsayılan değer 10000000-10.000.000 ' dir; burada her bir artış 100.<br/>Örneğin, 30 saniye içinde bir startTimestamp ayarlamak istiyorsanız varsayılan zaman ölçeğini kullanırken 300000000 değerini kullanırsınız.|
+|firstQuality|Filtrenin ilk kalite bithızı.|
+|sunumTimeRange|Sunum süresi aralığı. Bu özellik, bildirim başlangıç/bitiş noktalarını, sunu penceresi uzunluğunu ve canlı başlangıç konumunu filtreleme için kullanılır. <br/>Daha fazla bilgi için [PresentationTimeRange'e](#presentationtimerange)bakın.|
+|Parça|Parça seçim koşulları. Daha fazla bilgi için [parçalara](#tracks) bakın|
 
-### <a name="tracks"></a>İzler
+### <a name="presentationtimerange"></a>sunumTimeRange
 
-Stream 'in (canlı akış veya video Isteğe bağlı) dinamik olarak oluşturulmuş bildirime dahil olması gereken bir filtre izleme özelliği koşulları (FilterTrackPropertyConditions) listesini belirtirsiniz. Filtreler, mantıksal bir **and** ve **or** işlemi kullanılarak birleştirilir.
-
-Filtre izleme özellik koşulları, izleme türlerini, değerleri (aşağıdaki tabloda açıklanan) ve işlemleri (eşittir, NotEqual) anlatmaktadır. 
+**Varlık Filtreleri**ile bu özelliği kullanın. **Özelliği Hesap Filtreleri**ile ayarlamak önerilmez.
 
 |Adı|Açıklama|
 |---|---|
-|**Bit hızı**|Filtreleme için izlemenin bit hızını kullanın.<br/><br/>Önerilen değer bit/saniye cinsinden bir bit hızı aralığıdır. Örneğin, "0-2427000".<br/><br/>Not: 250000 (bit/saniye) gibi belirli bir bit hızı değeri kullanabileceğiniz sürece, tam bit hızları bir varlıktan diğerine doğru dalgalanmasına rağmen bu yaklaşım önerilmez.|
-|**FourCC**|Filtreleme için parçanın FourCC değerini kullanın.<br/><br/>Değer, [RFC 6381](https://tools.ietf.org/html/rfc6381)' de belirtildiği gibi codec biçiminin ilk öğesidir. Şu anda aşağıdaki codec bileşenleri desteklenir: <br/>Video için: "avc1", "hev1", "hvc1"<br/>Ses için: "MP4A", "EC-3"<br/><br/>Bir varlık içindeki izlemelere ait FourCC değerlerini öğrenmek için bildirim dosyasını alın ve inceleyin.|
-|**Dil**|Filtreleme için izleme dilini kullanın.<br/><br/>Değer, RFC 5646 ' de belirtildiği gibi, dahil etmek istediğiniz dilin etikettir. Örneğin, "en".|
-|**Ad**|Filtreleme için izleme adını kullanın.|
-|**Tür**|Filtreleme için izleme türünü kullanın.<br/><br/>Şu değerlere izin verilir: "video", "ses" veya "metin".|
+|**endTimestamp**|İsteğe Bağlı Video (VoD) için geçerlidir.<br/>Canlı Akış sunusu için, sunu sona erdiğinde ve akış VoD olduğunda sessizce yoksayılır ve uygulanır.<br/>Bu, sununun mutlak bitiş noktasını temsil eden ve en yakın sonraki GOP başlangıcına yuvarlanan uzun bir değerdir. Birim zaman ölçeği, bu nedenle 1800000000 bir endTimestamp 3 dakika olacaktır.<br/>Çalma listesinde (bildirim) yer alacak parçaları kırpmak için startTimestamp ve endTimestamp'ı kullanın.<br/>Örneğin, varsayılan zaman ölçeğini kullanarak startTimestamp=40000000 ve endTimestamp=10000000, VoD sununun 4 saniye ile 10 saniye arasında parça içeren bir çalma listesi oluşturur. Bir parça sınıra kendize olursa, tüm parça bildirime dahil edilir.|
+|**forceEndTimestamp**|Yalnızca Canlı Akış için geçerlidir.<br/>EndTimestamp özelliğinin bulunması gerekip gerekmediğini gösterir. Doğruysa, endTimestamp belirtilmelidir veya kötü bir istek kodu döndürülür.<br/>İzin verilen değerler: yanlış, doğru.|
+|**liveBackoffSüre**|Yalnızca Canlı Akış için geçerlidir.<br/> Bu değer, istemcinin isteyebileceği en son canlı konumu tanımlar.<br/>Bu özelliği kullanarak, canlı oynatma konumunu geciktirebilir ve oyuncular için sunucu tarafı arabelleği oluşturabilirsiniz.<br/>Bu özelliğin birimi zaman ölçeğidir (aşağıya bakın).<br/>Maksimum canlı geri dönüş süresi 300 saniyedir (3000000000).<br/>Örneğin, 2000000000 değeri, kullanılabilir en son içeriğin gerçek canlı kenardan 20 saniye geciktiği anlamına gelir.|
+|**sunumPencereSüresi**|Yalnızca Canlı Akış için geçerlidir.<br/>Çalma listesine eklemek üzere kayan bir parça penceresini uygulamak için sunuyuKullanınWindow süresini kullanın.<br/>Bu özelliğin birimi zaman ölçeğidir (aşağıya bakın).<br/>Örneğin, iki dakikalık bir sürgülü pencere uygulamak için sunuyu ayarlayınWindowDuration=1200000000. Canlı kenardan 2 dakika içinde medya çalma listesine dahil edilecektir. Bir parça sınıra kendize olursa, tüm parça çalma listesine eklenir. Minimum sunu penceresi süresi 60 saniyedir.|
+|**başlangıçTimestamp**|İsteğe Bağlı Video (VoD) veya Canlı Akış için geçerlidir.<br/>Bu, akışın mutlak başlangıç noktasını temsil eden uzun bir değerdir. Değer, en yakın sonraki GOP başlangıcına yuvarlanır. Birim zaman ölçeğidir, bu nedenle 150000000'lik bir startTimestamp 15 saniye olacaktır.<br/>Çalma listesinde (bildirim) yer alacak parçaları kırpmak için startTimestamp ve endTimestampp'ı kullanın.<br/>Örneğin, varsayılan zaman ölçeğini kullanarak startTimestamp=40000000 ve endTimestamp=10000000, VoD sununun 4 saniye ile 10 saniye arasında parça içeren bir çalma listesi oluşturur. Bir parça sınıra kendize olursa, tüm parça bildirime dahil edilir.|
+|**Zaman ölçeği**|Sunu Zaman Aralığındaki tüm zaman damgaları ve süreler için geçerlidir, bir saniyedeki artış sayısı olarak belirtilir.<br/>Varsayılan değer 10000000 - her artış 100 nanosaniye uzunluğunda olacağını bir saniyede on milyon artışvardır.<br/>Örneğin, bir başlangıç Zaman Damgası'nı 30 saniye olarak ayarlamak istiyorsanız, varsayılan zaman ölçeğini kullanırken 300000000 değerini kullanırsınız.|
+
+### <a name="tracks"></a>Parça
+
+Akışınızın (Canlı Akış veya İsteğe Bağlı Video) parçalarının dinamik olarak oluşturulan bildirime dahil edilmesi gereken filtre izleme özellik koşullarının (FilterTrackPropertyConditions) listesini belirtirsiniz. Filtreler mantıksal **VE** ve **OR** işlemi kullanılarak birleştirilir.
+
+Filtre izleme özelliği koşulları parça türlerini, değerleri (aşağıdaki tabloda açıklanan) ve işlemleri (Eşit, Eşit olmayan) açıklar. 
+
+|Adı|Açıklama|
+|---|---|
+|**Bitrate**|Filtreleme için parçanın bithızını kullanın.<br/><br/>Önerilen değer, saniyede bit olarak bir bit aralığıdır. Örneğin, "0-2427000".<br/><br/>Not: 250000 (saniyede bit) gibi belirli bir bit hızı değeri kullanabiliyor olsanız da, tam bitoranları bir Varlık'tan diğerine dalgalandırabildiği için bu yaklaşım önerilmez.|
+|**Fourcc**|Filtreleme için parçanın FourCC değerini kullanın.<br/><br/>Değer, [RFC 6381'de](https://tools.ietf.org/html/rfc6381)belirtildiği gibi codec biçiminin ilk öğesidir. Şu anda, aşağıdaki codec'ler desteklenir: <br/>Video için: "avc1", "hev1", "hvc1"<br/>Ses için: "mp4a", "ec-3"<br/><br/>Bir Varlıktaki parçalar için FourCC değerlerini belirlemek için, bildirim dosyasını alın ve inceleyin.|
+|**Dil**|Filtreleme için parçanın dilini kullanın.<br/><br/>Değer, RFC 5646'da belirtildiği gibi eklemek istediğiniz dilin etiketidir. Örneğin, "en".|
+|**Adı**|Filtreleme için parçanın adını kullanın.|
+|**Tür**|Filtreleme için parçanın türünü kullanın.<br/><br/>Aşağıdaki değerlere izin verilir: "video", "ses" veya "metin".|
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek bir canlı akış filtresi tanımlar: 
+Aşağıdaki örnekte Canlı Akış filtresi tanımlanır: 
 
 ```json
 {
@@ -137,28 +137,28 @@ Aşağıdaki örnek bir canlı akış filtresi tanımlar:
 }
 ```
 
-## <a name="associating-filters-with-streaming-locator"></a>Akış bulucu ile filtreleri ilişkilendirme
+## <a name="associating-filters-with-streaming-locator"></a>Akış Lı Bulucu ile filtreleri ilişkilendirme
 
-[Akış bulucusinizdeki](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body) [varlık veya hesap filtrelerinin](filters-concept.md) listesini belirtebilirsiniz. [Dinamik Paketleyici](dynamic-packaging-overview.md) , bu filtre listesini ISTEMCINIZDEKI URL 'de belirttiği değişikliklerle birlikte uygular. Bu bileşim, akış bulucunun üzerinde belirlediğiniz URL + filtrelerdeki filtreleri temel alan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. 
+[Akış Lı Bulucunuzda](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body) [varlık veya hesap filtrelerinin](filters-concept.md) listesini belirtebilirsiniz. [Dinamik Paketleyici,](dynamic-packaging-overview.md) bu filtre listesini istemcinizin URL'de belirttiği filtrelerle birlikte uygular. Bu kombinasyon, Akış Bulucu'da belirttiğiniz URL + filtrelerdeki filtrelere dayanan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. 
 
 Aşağıdaki örneklere bakın:
 
-* [Filtreleri akış bulucu ile ilişkilendir-.NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [Filtreleri akış bulucu ile ilişkilendir-CLı](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [Filtreleri Akış Lı Bulucu ile ilişkilendir - .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [Filtreleri Akış Lı Bulucu ile ilişkilendirin - CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
-## <a name="updating-filters"></a>Filtreler güncelleştiriliyor
+## <a name="updating-filters"></a>Filtreleri güncelleme
  
-Filtreler güncelleştiriyorsa, **akış Konumlandırıcı** güncelleştirilemez. 
+**Akış Konum belirleyicileri** güncelleştirilmese de güncellenebilir değildir. 
 
-Özellikle CDN etkinleştirildiğinde, etkin olarak yayımlanmış bir **akış bulucula**ilişkili filtrelerin tanımını güncelleştirmeniz önerilmez. Akış sunucuları ve CDNs, eski önbelleğe alınmış verilerin döndürülmesine neden olabilecek iç önbelleklere sahip olabilir. 
+Etkin olarak yayınlanan **Bir Akış Bulucu**ile ilişkili filtrelerin tanımını güncelleştirmek için tavsiye edilmez , özellikle CDN etkin olduğunda. Akış sunucuları ve CDN'leri, eski önbelleğe alınmış verilerin döndürülmesine neden olabilecek dahili önbelleklere sahip olabilir. 
 
-Filtre tanımının değiştirilmesi gerekiyorsa, yeni bir filtre oluşturmayı ve **akış Bulucu** URL 'sine eklemeyi veya doğrudan filtreye başvuran yeni bir **akış Bulucu** yayımlamayı düşünün.
+Filtre tanımının değiştirilmesi gerekiyorsa, yeni bir filtre oluşturmayı ve **Akışlı Konum belirleyici** URL'ye eklemeyi veya filtreye doğrudan başvuran yeni bir **Akışlı Bulucu** yayımlamayı düşünün.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde, programlı olarak filtrelerin nasıl oluşturulacağı gösterilmektedir.  
+Aşağıdaki makaleler, filtrelerin programlı olarak nasıl oluşturulacak larını gösterir.  
 
-- [REST API 'Leri ile filtre oluşturma](filters-dynamic-manifest-rest-howto.md)
+- [REST API'leri ile filtreler oluşturma](filters-dynamic-manifest-rest-howto.md)
 - [.NET ile filtre oluşturma](filters-dynamic-manifest-dotnet-howto.md)
-- [CLı ile filtre oluşturma](filters-dynamic-manifest-cli-howto.md)
+- [CLI ile filtre oluşturma](filters-dynamic-manifest-cli-howto.md)
 

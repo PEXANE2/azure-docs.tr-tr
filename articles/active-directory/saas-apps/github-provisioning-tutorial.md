@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: GitHub için Kullanıcı hazırlama-Azure AD'
-description: Kullanıcı hesaplarını GitHub 'a otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: GitHub için kullanıcı sağlama - Azure AD'
+description: Azure Active Directory'yi, kullanıcı hesaplarını GitHub'a otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,92 +16,92 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057660"
 ---
-# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GitHub 'ı yapılandırma
+# <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için GitHub'ı yapılandır
 
-Bu öğreticinin amacı, Azure AD 'den GitHub ' dan Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için GitHub ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
+Bu öğreticinin amacı, Azure AD'den GitHub'a kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamadan çıkarmak için GitHub ve Azure AD'de gerçekleştirmeniz gereken adımları size göstermektir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, zaten aşağıdaki öğelere sahip olduğunuzu varsayar:
 
-* Azure Active Directory kiracısı
-* GitHub Enterprise [Cloud](https://help.github.com/articles/github-s-products/#github-enterprise)'da oluşturulmuş GitHub [Enterprise faturalandırma planını](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) gerektiren bir GitHub kuruluşu
-* Kuruluş için yönetici izinlerine sahip GitHub 'da bir kullanıcı hesabı
-* [Burada](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) açıklandığı gibi, kuruluşunuz için OAuth erişiminin sağlandığından emin olun
+* Azure Etkin dizin kiracı
+* [GitHub Enterprise Cloud'da](https://help.github.com/articles/github-s-products/#github-enterprise)oluşturulan ve [GitHub Kurumsal faturalandırma planını](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) gerektiren bir GitHub kuruluşu
+* Yönetici nin kuruluşa verdiği izinlere sahip GitHub'daki kullanıcı hesabı
+* [Burada](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) açıklandığı gibi kuruluşunuz için OAuth erişiminin sağlandığından emin olun
 
 > [!NOTE]
-> Azure AD sağlama tümleştirmesi, GitHub Enterprise [faturalandırma planındaki](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)GitHub [Kurumsal bulut](https://help.github.com/articles/github-s-products/#github-enterprise) müşterileri tarafından KULLANıLABILEN [GitHub SCIM API](https://developer.github.com/v3/scim/)'sini kullanır.
+> Azure AD sağlama tümleştirmesi, GitHub [Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) müşterilerinin [GitHub Enterprise faturalandırma planında](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)kullanabileceği [GitHub SCIM API'sine](https://developer.github.com/v3/scim/)dayanır.
 
-## <a name="assigning-users-to-github"></a>GitHub 'a Kullanıcı atama
+## <a name="assigning-users-to-github"></a>Kullanıcıları GitHub'a atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir. 
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için "atamalar" adlı bir kavram kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya "atanmış" kullanıcılar ve gruplar eşitlenir. 
 
-Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcı ve/veya grupların GitHub uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları GitHub uygulamanıza atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki kullanıcıların ve/veya grupların GitHub uygulamanıza erişilmesi gereken kullanıcıları temsil edeceğine karar vermeniz gerekir. Karar verildikten sonra, bu kullanıcıları github uygulamanıza aşağıdaki talimatları izleyerek atayabilirsiniz:
 
-[Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+[Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-github"></a>GitHub 'a Kullanıcı atamaya yönelik önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-github"></a>Kullanıcıları GitHub'a atamak için önemli ipuçları
 
-* Sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının GitHub 'a atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Sağlama yapılandırmasını sınamak için GitHub'a tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* GitHub 'a bir Kullanıcı atarken, atama iletişim kutusunda **Kullanıcı** rolünü veya geçerli uygulamaya özgü bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolü sağlama için çalışmaz ve bu kullanıcılar atlanır.
+* Bir kullanıcıyı GitHub'a atarken, atama iletişim kutusunda **Kullanıcı** rolünü veya uygulamaya özgü başka bir geçerli rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolü sağlama için çalışmaz ve bu kullanıcılar atlanır.
 
-## <a name="configuring-user-provisioning-to-github"></a>GitHub 'da Kullanıcı sağlamayı yapılandırma
+## <a name="configuring-user-provisioning-to-github"></a>Kullanıcı sağlamayı GitHub'a yapılandırma
 
-Bu bölümde, Azure AD 'nizi GitHub 'ın Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni Azure AD 'de Kullanıcı ve grup atamasını temel alan GitHub 'da atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
+Bu bölüm, Azure REKLAM'ınızı GitHub'ın kullanıcı hesabı sağlama API'sine bağlamanız ve sağlama hizmetini Azure AD'deki kullanıcı ve grup atamasına göre GitHub'da atanmış kullanıcı hesapları oluşturacak, güncelleştirecek ve devre dışı edecek şekilde yapılandırmak için size rehberlik eder.
 
 > [!TIP]
-> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri izleyerek GITHUB için SAML tabanlı çoklu oturum açmayı da seçebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> [Azure portalında](https://portal.azure.com)sağlanan yönergeleri izleyerek GitHub için SAML tabanlı Tek Oturum Açma özelliğini de etkinleştirmeyi seçebilirsiniz. Tek oturum açma, otomatik sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
 
-### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı hesabı sağlamayı GitHub 'a yapılandırma
+### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Azure AD'de GitHub'a otomatik kullanıcı hesabı sağlama yapılandırma
 
-1. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
+1. Azure [portalında,](https://portal.azure.com)Tüm uygulamalar > **Azure Active Directory > Enterprise Apps'a** göz atın.
 
-2. Çoklu oturum açma için GitHub 'ı zaten yapılandırdıysanız arama alanını kullanarak GitHub örneğinizi arayın. Aksi takdirde, **Ekle** ' yi seçin ve uygulama galerisinde **GitHub** için arama yapın. Arama sonuçlarından GitHub ' ı seçin ve uygulama listenize ekleyin.
+2. Tek oturum açma için GitHub'ı zaten yapılandırmışsanız, arama alanını kullanarak GitHub örneğinizi arayın. Aksi takdirde, uygulama galerisinde **GitHub'ı** **ekle** ve arama'yı seçin. Arama sonuçlarından GitHub'ı seçin ve uygulama listenize ekleyin.
 
-3. GitHub örneğinizi seçin, sonra **sağlama** sekmesini seçin.
+3. GitHub örneğini seçin ve ardından **Sağlama** sekmesini seçin.
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
-    ![GitHub sağlama](./media/github-provisioning-tutorial/GitHub1.png)
+    ![GitHub Sağlama](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde **Yetkilendir**' e tıklayın. Bu işlem yeni bir tarayıcı penceresinde bir GitHub yetkilendirme iletişim kutusu açar. Erişim yetkisi verme konusunda onaylantığınızdan emin olmanız gerektiğini unutmayın. [Burada](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)açıklanan yönergeleri izleyin.
+5. Yönetici **Kimlik Bilgileri** bölümünde **Yetkiver'i**tıklatın. Bu işlem, yeni bir tarayıcı penceresinde bir GitHub yetkilendirme iletişim kutusunu açar. Erişim yetkisi için onayaldığınızdan emin olmanız gerektiğini unutmayın. [Burada](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)açıklanan yönergeleri izleyin.
 
-6. Yeni pencerede, yönetici hesabınızı kullanarak GitHub 'da oturum açın. Elde edilen yetkilendirme iletişim kutusunda, sağlamayı etkinleştirmek istediğiniz GitHub ekibini seçin ve sonra **Yetkilendir**' i seçin. Tamamlandıktan sonra sağlama yapılandırmasını gerçekleştirmek için Azure portal döndürün.
+6. Yeni pencerede, Yönetici hesabınızı kullanarak GitHub'da oturum açın. Elde edilen yetkilendirme iletişim kutusunda, sağlama sağlamak istediğiniz GitHub ekibini seçin ve ardından **Yetkilendirme'yi**seçin. Tamamlandıktan sonra, sağlama yapılandırmasını tamamlamak için Azure portalına dönün.
 
-    ![Yetkilendirme Iletişim kutusu](./media/github-provisioning-tutorial/GitHub2.png)
+    ![Yetkilendirme İletişim Kutusu](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Azure portal, **kiracı URL 'sini** girin ve Azure AD 'nin GitHub uygulamanıza bağlanabildiğinden emin olmak Için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, GitHub hesabınızın yönetici izinlerine sahip olduğundan ve **kiracı URl 'sinin** doğru şekilde yazıldığından emin olun, sonra da "Yetkilendir" adımını tekrar deneyin ( **kiracı URL 'sini** kurala göre oluşturabilirsiniz: `https://api.github.com/scim/v2/organizations/<Organization_name>`, kuruluşlarınızı Github hesabınız altında bulabilirsiniz: **Ayarlar** > **kuruluşlar**).
+7. Azure portalında, Azure AD'nin GitHub uygulamanıza bağlanabilmesini sağlamak için **Kiracı URL'sini** ve **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, GitHub hesabınızın Yönetici izinlerine sahip olduğundan ve **Kiracı URl'un** doğru girişi olduğundan emin olun, ardından `https://api.github.com/scim/v2/organizations/<Organization_name>`"Yetki" adımını yeniden deneyin (kurala göre Kiracı **URL'si** oluşturabilirsiniz: , Organizasyonlarınızı GitHub hesabınız altında bulabilirsiniz: **Ayarlar** > **Kuruluşları).**
 
-    ![Yetkilendirme Iletişim kutusu](./media/github-provisioning-tutorial/GitHub3.png)
+    ![Yetkilendirme İletişim Kutusu](./media/github-provisioning-tutorial/GitHub3.png)
 
-8. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve "bir hata oluştuğunda e-posta bildirimi gönder" onay kutusunu işaretleyin.
+8. **Bildirim E-posta** alanında ödeme hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin "Bir hata oluştuğunda e-posta bildirimi gönderin."
 
-9. **Kaydet** düğmesine tıklayın.
+9. **Kaydet**'e tıklayın.
 
-10. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları GitHub**' a eşitler ' ı seçin.
+10. Eşlemeler bölümünde, **Azure Etkin Dizin Kullanıcılarını GitHub'a Senkronize Et'i**seçin.
 
-11. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den GitHub 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için GitHub 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+11. **Öznitelik Eşlemeleri** bölümünde, Azure AD'den GitHub'a eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için GitHub'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için Kaydet düğmesini seçin.
 
-12. GitHub için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
+12. GitHub için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Açık** olarak değiştirin
 
-13. **Kaydet** düğmesine tıklayın.
+13. **Kaydet**'e tıklayın.
 
-Bu işlem, kullanıcılar ve Gruplar bölümünde GitHub 'a atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitleme hizmeti çalışıyor sürece yaklaşık 40 dakikada oluşan sonraki eşitlemeler uzun sürer. İlerleme durumunu izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, Kullanıcılar ve Gruplar bölümünde GitHub'a atanan kullanıcıların ve/veya grupların ilk eşitlemibaşlar. İlk eşitlemenin gerçekleştirilemi, hizmet yürütülürken yaklaşık her 40 dakikada bir meydana gelen sonraki eşitlemelerden daha uzun sürüyor. İlerlemeyi izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinlik günlüklerine olan bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)

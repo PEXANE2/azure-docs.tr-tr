@@ -1,7 +1,7 @@
 ---
-title: Modeli dağıtım için hazırla
+title: Dağıtım için model hazırlama
 titleSuffix: ML Studio (classic) - Azure
-description: Machine Learning Studio (klasik) eğitim denemenizi tahmine dayalı bir deneyle dönüştürerek, eğitilen modelinizi Web hizmeti olarak dağıtıma hazırlama.
+description: Machine Learning Studio (klasik) eğitim deneyiminizi tahmine dayalı bir denemeye dönüştürerek eğitimli modelinizi web hizmeti olarak dağıtıma nasıl hazırlayacağınızı.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,112 +10,112 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/28/2017
 ms.openlocfilehash: 061c340f8c4952d5a0f2a3873f7475e4f733c290
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204520"
 ---
-# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) dağıtım için modelinizi hazırlama
+# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio'da (klasik) dağıtım için modelinizi hazırlama
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Azure Machine Learning Studio (klasik), tahmine dayalı bir analiz modeli geliştirmek için ihtiyacınız olan araçları sağlar ve Azure Web hizmeti olarak dağıtarak onu çalıştırabilirsiniz.
+Azure Machine Learning Studio (klasik), bir tahmine dayalı analiz modeli geliştirmek ve azure web hizmeti olarak dağıtarak bu modeli operasyonel hale getirmek için ihtiyacınız olan araçları sağlar.
 
-Bunu yapmak için Studio 'Yu (klasik) kullanarak, modelinizi eğitebileceğiniz, puanlayıp düzenlediğiniz *eğitim deney* adı verilir. Memnun olduktan sonra, eğitim denemenizi, Kullanıcı verilerini Puanlama için yapılandırılmış bir tahmine *dayalı deneye* dönüştürerek modelinizi dağıtıma hazırlıyoruz.
+Bunu yapmak için, modelinizi eğittiğinizi, puanladığınız ve düzenlemeyaptığınız bir *eğitim deneyi* olarak adlandırılan bir deney oluşturmak için Studio 'yı (klasik) kullanırsınız. Tatmin olduktan sonra, eğitim denemenizi kullanıcı verilerini puanlamak üzere yapılandırılmış bir *tahmine dayalı denemeye* dönüştürerek modelinizi dağıtmaya hazır olursunuz.
 
-Bu işleme örnek olarak [öğretici 1: kredi riskini tahmin](tutorial-part1-credit-risk.md)edin ' de bakabilirsiniz.
+Bu sürecin bir örneğini [Tutorial 1: Predict credit risk'te](tutorial-part1-credit-risk.md)görebilirsiniz.
 
-Bu makalede bir yakından eğitim denemesini öngörücü bir denemeye nasıl dönüştürüldüğünü ve bu Tahmine dayalı denemeye nasıl dağıtıldığını ayrıntılarını alır. Bu ayrıntılar anlayarak, dağıtılan modelinizin daha verimli hale getirmek için yapılandırma konusunda bilgi edinebilirsiniz.
+Bu makalede, bir eğitim deneyinin nasıl öngörülü bir deneye dönüştürüldüğü ve bu tahmine dayalı deneyin nasıl dağıtılan olduğu hakkında ayrıntılı bilgi yer almaktadır. Bu ayrıntıları anlayarak, dağıtılan modelinizi daha etkili hale getirmek için nasıl yapılandırabileceğinizi öğrenebilirsiniz.
 
 
 
 ## <a name="overview"></a>Genel Bakış 
 
-Eğitim denemesini öngörücü bir denemeye dönüştürme işlemi üç adımdan oluşur:
+Bir eğitim denemesini tahmine dayalı bir deneye dönüştürme işlemi üç adım içerir:
 
-1. Makine öğrenimi algoritması, eğitilen model modüllerle değiştirin.
-2. Denemeyi Puanlama için gerekli olan modüller için kesim. Eğitim denemesini eğitim için gerekli olan ancak modeli eğitilir sonra gerekli olmayan modüller içerir.
-3. Modelinizi web hizmeti kullanıcı verileri kabul nasıl ve hangi verilerin döndürülecek tanımlayın.
+1. Makine öğrenimi algoritma modüllerini eğitimli modelinizle değiştirin.
+2. Denemeyi yalnızca puanlama için gerekli olan modüllere kırpın. Bir eğitim deneyi, eğitim için gerekli olan ancak model eğitildikten sonra gerekli olmayan bir dizi modül içerir.
+3. Modelinizin web hizmeti kullanıcısından verileri nasıl kabul edeceğini ve hangi verilerin döndürüleceğini tanımlayın.
 
 > [!TIP]
-> Eğitim denemenizi eğitim ve puanlama kendi verilerinizi kullanarak modelinizi endişe başardım. Ancak uygulama dağıtıldıktan sonra kullanıcılar modelinize yeni veri göndermek ve tahmin sonuçlarını döndürür. Dağıtım için hazır almak için öngörücü bir denemeye eğitim denemenizi Dönüştür gibi bu nedenle, nasıl modelin başkaları tarafından kullanılacak göz önünde bulundurun.
+> Eğitim denemenizde, kendi verilerinizi kullanarak modelinizi eğitmek ve puanlamak la ilgileniyorsunuz. Ancak dağıtıldıktan sonra, kullanıcılar modelinize yeni veriler gönderir ve tahmin sonuçlarını döndürecektir. Bu nedenle, eğitim denemenizi dağıtıma hazır hale getirmek için tahmine dayalı bir denemeye dönüştürürken, modelin başkaları tarafından nasıl kullanılacağını aklınızda bulundurun.
 > 
 > 
 
-## <a name="set-up-web-service-button"></a>Web hizmetini Ayarla düğmesi
-Denemenizi çalıştırdıktan sonra (deneme tuvalinin alt kısmındaki **Çalıştır** ' a tıklayın), **Web hizmeti ayarla** düğmesine tıklayın (tahmine **dayalı Web hizmeti** seçeneğini belirleyin). **Web hizmeti** 'ni, eğitim denemenizi bir tahmine dayalı deneyle dönüştürmenin üç adımı sizin için gerçekleştirir:
+## <a name="set-up-web-service-button"></a>Web Hizmeti düğmesini ayarlama
+Denemenizi çalıştırdıktan sonra (deneme tuvalinin altındaki **ÇALıŞTıR'ı** tıklatın) **Web Hizmeti Ayarla** düğmesini tıklatın **(Tahmine Dayalı Web Hizmeti** seçeneğini belirleyin). **Web Hizmeti'ni ayarlama,** eğitim denemenizi tahmine dayalı bir denemeye dönüştürmenin üç adımını sizin için gerçekleştirir:
 
-1. Eğitilen modelinizi modül paleti (deneme tuvalinin sol tarafında) **eğitilen modeller** bölümüne kaydeder. Ardından makine öğrenimi algoritmasını değiştirir ve model modüllerini kaydedilen eğitilen modelle [eğitme][train-model] .
-2. Denemenizi analiz eder ve yalnızca eğitim için açıkça kullanılmış ve artık gerekmeyen modülleri kaldırır.
-3. _Web hizmeti giriş_ ve _Çıkış_ modüllerini denemenizin varsayılan konumlarına ekler (Bu modüller Kullanıcı verilerini kabul eder ve döndürür).
+1. Modül paletinin Eğitimli **Modeller** bölümünde (deneme tuvalinin solunda) eğitimli modelinizi kaydeder. Daha sonra makine öğrenme algoritması ve [Tren Modeli][train-model] modülleri kaydedilmiş eğitimli modeli ile değiştirir.
+2. Denemenizi analiz eder ve açıkça yalnızca eğitim için kullanılan ve artık ihtiyaç duyulmamış modülleri kaldırır.
+3. Denemenizde Varsayılan konumlara _Web hizmeti giriş_ ve _çıktı_ modülleri ekler (bu modüller kullanıcı verilerini kabul eder ve döndürür).
 
-Örneğin, aşağıdaki denemenin örnek görselleştirmenizdeki verilerin kullanarak iki sınıflı artırmalı karar ağacı modeli eğitir:
+Örneğin, aşağıdaki deneme, örnek sayım verilerini kullanarak iki sınıf artırılmış karar ağacı modelini eğitir:
 
-![Eğitim denemesini](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
+![Eğitim deneyi](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
-Bu deneyde modülleri temelde dört farklı işlevleri gerçekleştirir:
+Bu deneydeki modüller temelde dört farklı işlevi yerine getirir:
 
-![Modül işlevleri](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
+![Modül fonksiyonları](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
-Bu eğitim denemesini öngörücü bir denemeye dönüştürme yaptığınızda, bazı bu modüllerin artık gerekli olmayan veya artık farklı bir amaç sağladıkları:
+Bu eğitim denemesini tahmine dayalı bir denemeye dönüştürdüğünüzde, bu modüllerden bazılarına artık ihtiyaç duyulmamaktadır veya artık farklı bir amaca hizmet ederler:
 
-* **Veri** -Bu örnek veri kümesindeki veriler Puanlama sırasında kullanılmaz; Web hizmeti kullanıcısı puanlanmayacak verileri sağlar. Ancak, veri türleri gibi bu veri kümesi meta verileri, eğitilen model tarafından kullanılır. Bu nedenle bu meta veriler sağlayabilmesi veri kümesi Tahmine dayalı denemeye tutmanız gerekir.
+* **Veriler** - Bu örnek veri kümesindeki veriler puanlama sırasında kullanılmaz - web hizmetinin kullanıcısı puanlanacak verileri sağlar. Ancak, bu veri kümesinden veri türleri gibi meta veriler, eğitilen model tarafından kullanılır. Bu nedenle veri kümesini tahmin edilebilir deneyde tutmanız gerekir, böylece bu meta verileri sağlayabilir.
 
-* **Prep** -Puanlama için gönderilecek kullanıcı verilerine bağlı olarak, bu modüller gelen verileri işlemek için gerekli olmayabilir veya olmayabilir. **Web hizmeti ayarlama** düğmesine dokunmaz. bunları nasıl işlemek istediğinize karar vermeniz gerekir.
+* **Hazırlık** - Puanlama için gönderilecek kullanıcı verilerine bağlı olarak, bu modüller gelen verileri işlemek için gerekli olabilir veya olmayabilir. **Web Hizmeti Ayarla** düğmesi bunlara dokunmuyor - bunları nasıl işlemek istediğinize karar vermeniz gerekir.
   
-    Örneğin, bu örnekte örnek veri kümesinde eksik değerler olabilir, bu nedenle bunlarla başa çıkmak için bir [Temizleme eksik veri][clean-missing-data] modülü eklenmiştir. Ayrıca, örnek veri kümesi modeli eğitmek için gerekli olmayan sütunları içerir. Bu nedenle, veri akışından bu ek sütunları hariç tutmak için DataSet modülünde bir [Select sütunları][select-columns] eklenmiştir. Puanlama için Web hizmeti üzerinden gönderilecek verilerin eksik değerlere sahip olmadığını biliyorsanız, [eksik veri modülünü Temizleme][clean-missing-data] seçeneğini kaldırabilirsiniz. Ancak, [veri kümesi modülündeki sütunları seç][select-columns] , eğitilen modelin beklediği veri sütunlarını tanımlamaya yardımcı olduğundan, Bu modülün kalması gerekir.
+    Örneğin, bu örnek veri kümesinde eksik değerler olabilir, bu nedenle bunlarla başa çıkmak için [Bir Temiz Eksik Veri][clean-missing-data] modülü eklenmiştir. Ayrıca, örnek veri kümesi modeli eğitmek için gerekli olmayan sütunlar içerir. Bu nedenle, bu ekstra sütunları veri akışından çıkarmak için [Dataset modülündeki Sütunları Seç][select-columns] eklenmiştir. Web hizmeti üzerinden puanlama için gönderilecek verilerin eksik değerlere sahip olmayacağını biliyorsanız, [Temiz Eksik Veri][clean-missing-data] modüllerini kaldırabilirsiniz. Ancak, [Dataset modülündeki Sütunları Seç,][select-columns] eğitilmiş modelin beklediği veri sütunlarını tanımlamaya yardımcı olduğundan, modülün kalması gerekir.
 
-* **Eğitme** -bu modüller modeli eğiteiçin kullanılır. **Web hizmeti ayarla**' ya tıkladığınızda, bu modüller, eğitilen modeli içeren tek bir modülle değiştirilmiştir. Bu yeni modül, modül paleti 'nin **eğitilen modeller** bölümüne kaydedilir.
+* **Tren** - Bu modüller modeli eğitmek için kullanılır. **Web Hizmeti Ayarla'yı**tıklattığınızda, bu modüller eğittiğiniz modeli içeren tek bir modülle değiştirilir. Bu yeni modül, modül paletinin **Eğitilmiş Modeller** bölümüne kaydedilir.
 
-* **Puan** -Bu örnekte, veri akışını test verilerine ve eğitim verilerine bölmek Için [bölünmüş veri][split] modülü kullanılır. Tahmine dayalı deneyde artık eğitim duymuyoruz, bu nedenle [bölünmüş veriler][split] kaldırılabilir. Benzer şekilde, ikinci [puan modeli][score-model] modülü ve [modeli değerlendir][evaluate-model] modülü, sonuçları test verileriyle karşılaştırmak için kullanılır; bu nedenle, bu modüller tahmine dayalı deneyde gerekli değildir. Ancak, kalan [puan modeli][score-model] modülü, Web hizmeti aracılığıyla bir puan sonucu döndürmek için gereklidir.
+* **Puan** - Bu örnekte, [Veri Bölme][split] modülü veri akışını test verilerine ve eğitim verilerine bölmek için kullanılır. Tahmine dayalı deneyde artık eğitim vermiyoruz, bu yüzden [Split Data][split] kaldırılabilir. Benzer şekilde, test verilerinden elde edilen sonuçları karşılaştırmak için ikinci [Puan Modeli][score-model] modülü ve [Model'i Değerlendir][evaluate-model] modülü kullanılır, bu nedenle bu modüller tahmine dayalı deneyde gerekli değildir. Ancak, kalan [Puan Modeli][score-model] modülü, web hizmeti üzerinden bir puan sonucu döndürmek için gereklidir.
 
-Aşağıda, **Web hizmeti ayarla**' yı tıkladıktan sonra örneğimiz şöyle görünür:
+**Web Hizmetini Ayarla'yı**tıklattıktan sonra örneğimiz şu şekilde görünür:
 
-![Tahmine dayalı denemeye dönüştürüldü](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
+![Dönüştürülmüş tahmine dayalı deney](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
-**Web hizmeti ayarlama** tarafından gerçekleştirilen iş, denemenizi bir Web hizmeti olarak dağıtılacak şekilde hazırlamak yeterli olabilir. Ancak, bazı ek işleri denemenizi için belirli yapmak isteyebilirsiniz.
+Web Hizmetini **Ayarla** tarafından yapılan iş, denemenizi bir web hizmeti olarak dağıtılmak üzere hazırlamak için yeterli olabilir. Ancak, denemenize özgü bazı ek işler yapmak isteyebilirsiniz.
 
-### <a name="adjust-input-and-output-modules"></a>Giriş ve çıkış modülleri ayarlama
-Eğitim denemenizi bir eğitim veri kümesi kullanılan ve daha sonra machine learning algoritmasını gerektiği ndaki bir forma veri almak için bazı işleme vermedi. Web hizmeti üzerinden almak istediğiniz verilerin bu işleme ihtiyacı yoksa, bu işlemi atlayabilirsiniz: **Web Hizmeti Giriş modülünün** çıkışını denemenizin farklı bir modülüne bağlama. Kullanıcı verileri, artık bu konumda modelinde ulaşırsınız.
+### <a name="adjust-input-and-output-modules"></a>Giriş ve çıkış modüllerini ayarlama
+Eğitim denemenizde, bir dizi eğitim verisi kullandınız ve sonra verileri makine öğrenme algoritmasının ihtiyaç duyduğu bir biçimde elde etmek için bazı işlemler yaptınız. Web hizmeti aracılığıyla almayı beklediğiniz verilerin bu işleme ihtiyacı yoksa, bunu atlayabilirsiniz: **Web hizmeti giriş modülüçıktısını** denemenizdeki farklı bir modüle bağlayın. Kullanıcının verileri artık modele bu konumda gelecektir.
 
-Örneğin, varsayılan olarak, Web **hizmeti kurulumu** , yukarıdaki şekilde gösterildiği gibi, **Web hizmeti giriş** modülünü veri akışınızı en üst kısmına koyar. Ancak, **Web hizmeti girişini** veri işleme modüllerinden geçmiş olarak el ile konumlandırabiliriz:
+Örneğin, varsayılan olarak **Web Hizmetini Ayarla,** **web hizmeti giriş** modülünü yukarıdaki şekilde gösterildiği gibi veri akışınızın en üstüne koyar. Ancak **Web hizmeti girdisini** veri işleme modüllerinin ötesine el ile konumlandırabiliriz:
 
 ![Web hizmeti girişini taşıma](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
-Tüm ön işleme olmadan web hizmeti aracılığıyla sağlanan giriş verilerini artık doğrudan Score Model modüle geçirin.
+Web hizmeti aracılığıyla sağlanan giriş verileri artık herhangi bir ön işleme gerek kalmadan doğrudan Puan Modeli modülüne geçecektir.
 
-Benzer şekilde, varsayılan olarak, Web **hizmeti kurulumu** , Web hizmeti çıkış modülünü veri akışınız altına koyar. Bu örnekte, Web hizmeti, tüm giriş verisi vektörünü ve Puanlama sonuçlarını içeren, kullanıcıya [puan modeli][score-model] modülünün çıktısını döndürür.
-Ancak, farklı bir şey döndürmeyi tercih ediyorsanız, **Web hizmeti çıkış** modülünden önce ek modüller ekleyebilirsiniz. 
+Benzer şekilde, varsayılan olarak **Web Hizmetini Ayarla,** Web hizmeti çıktı modüllerini veri akışınızın en altına koyar. Bu örnekte, web hizmeti kullanıcıya, tam giriş veri vektörü artı puanlama sonuçlarını içeren [Puan Modeli][score-model] modülünün çıktısını geri verecektir.
+Ancak, farklı bir şey döndürmek isterseniz, **Web hizmeti çıktı** modülünden önce ek modüller ekleyebilirsiniz. 
 
-Örneğin, tüm giriş verileri vektörünü değil yalnızca Puanlama sonuçlarını döndürmek için, Puanlama sonuçları hariç tüm sütunları hariç tutmak için DataSet modülüne bir [Select sütunları][select-columns] ekleyin. Daha sonra **Web hizmeti çıkış** modülünü [veri kümesi modülündeki sütunları seçme][select-columns] modülüne taşıyın. Denemeyi şöyle görünür:
+Örneğin, giriş verilerinin tüm vektörünü değil, yalnızca puanlama sonuçlarını döndürmek için, veri kümesi modülüne puanlama sonuçları dışındaki tüm sütunları hariç tutmak için [Sütunları Seç'i][select-columns] ekleyin. Ardından **Web hizmeti çıktı** modülünü [Dataset modülündeki Sütunları Seç'in][select-columns] çıktısına taşıyın. Deney şuna benzer:
 
-![Web hizmeti çıkış taşıma](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
+![Web hizmeti çıktısını taşıma](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
-### <a name="add-or-remove-additional-data-processing-modules"></a>Ek veri işleme modülleri Ekle Kaldır
-Puanlama sırasında ihtiyaç bildiğiniz denemenizi daha fazla modülleri varsa bunlar kaldırılabilir. Örneğin, **Web hizmeti giriş** modülünü veri işleme modüllerinden sonra bir noktaya taşıdığımızda, [eksik veri][clean-missing-data] modülünü tahmine dayalı deneyden kaldırabiliriz.
+### <a name="add-or-remove-additional-data-processing-modules"></a>Ek veri işleme modülleri ekleme veya kaldırma
+Denemenizde puanlama sırasında gerekli olmayacağını bildiğiniz daha fazla modül varsa, bunlar kaldırılabilir. Örneğin, Web hizmeti **giriş** modüllerini veri işleme modüllerinden sonra bir noktaya taşıdığımız için, [Temiz Eksik Veri][clean-missing-data] modüllerini tahmin edilebilir deneyden kaldırabiliriz.
 
-Bizim Tahmine dayalı denemeye artık şöyle görünür:
+Tahmine dayalı deneyimiz şuna benziyor:
 
-![Ek modülü kaldırılıyor](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
+![Ek modülü kaldırma](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
-### <a name="add-optional-web-service-parameters"></a>İsteğe bağlı Web hizmeti parametrelerini Ekle
-Bazı durumlarda, kullanıcının web hizmetinizin hizmet erişildiğinde modülleri davranışını değiştirmesine izin ver isteyebilirsiniz. *Web hizmeti parametreleri* bunu yapmanıza olanak sağlar.
+### <a name="add-optional-web-service-parameters"></a>İsteğe bağlı Web Hizmeti Parametreleri Ekleme
+Bazı durumlarda, web hizmetinizin kullanıcısının hizmete erişildiğinde modüllerin davranışını değiştirmesine izin vermek isteyebilirsiniz. *Web Hizmeti Parametreleri* bunu yapmanıza olanak sağlar.
 
-Ortak bir örnek, bir [Içeri aktarma verileri][import-data] modülü, dağıtılmış Web hizmeti kullanıcısının Web hizmetine erişildiğinde farklı bir veri kaynağı belirtmesini sağlayacak şekilde ayarlıyor. Veya [dışarı aktarma veri][export-data] modülünü farklı bir hedef belirtime için yapılandırma.
+Yaygın bir örnek, dağıtılan web hizmetinin kullanıcısının web hizmetine erişildiğinde farklı bir veri kaynağı belirtebilmeleri için [Bir İçe Aktarma Veri][import-data] modülü ayarlamaktır. Veya farklı bir hedef belirtilen bir [Dışa Aktarma Verileri][export-data] modülü yapılandırma.
 
-Web hizmeti parametrelerini tanımlayın ve bunları bir veya daha fazla modül parametrelerini ile ilişkilendirin ve bunlar gerekli veya isteğe bağlı olup olmadığını belirtebilirsiniz. Web hizmeti kullanıcı hizmete erişme ve modül işlemleri uygun şekilde değiştirilir Bu parametreler için değerler sağlar.
+Web Hizmeti Parametrelerini tanımlayabilir ve bunları bir veya daha fazla modül parametresiyle ilişkilendirebilir ve bunların gerekli mi yoksa isteğe bağlı mı olduğunu belirtebilirsiniz. Web hizmetinin kullanıcısı, hizmete erişildiğinde bu parametreler için değerler sağlar ve modül eylemleri buna göre değiştirilir.
 
-Web hizmeti parametrelerinin ne olduğu ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti parametrelerini kullanma][webserviceparameters].
+Web Hizmeti Parametrelerinin ne olduğu ve bunların nasıl kullanılacağı hakkında daha fazla bilgi için Azure [Machine Learning Web Service Parametrelerini kullanma][webserviceparameters]bilgisine bakın.
 
 [webserviceparameters]: web-service-parameters.md
 
 
-## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Tahmine dayalı denemeye bir web hizmeti olarak dağıtma
-Tahmine dayalı denemeye yeterince hazırlandığından, bir Azure web hizmeti olarak dağıtabilirsiniz. Web hizmetini kullanarak, kullanıcılar, modelinize veri gönderebilir ve modeli, Öngörüler döndürür.
+## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Tahmine dayalı denemeyi bir web hizmeti olarak dağıtma
+Tahmin etütyeterincehazırlanmış olduğundan, bunu bir Azure web hizmeti olarak dağıtabilirsiniz. Web hizmetini kullanarak, kullanıcılar modelinize veri gönderebilir ve model tahminlerini döndürecektir.
 
-Dağıtım işlemi hakkında daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti dağıtma][deploy]
+Dağıtım sürecinin tamamı hakkında daha fazla bilgi için [bkz.][deploy]
 
 [deploy]: deploy-a-machine-learning-web-service.md
 

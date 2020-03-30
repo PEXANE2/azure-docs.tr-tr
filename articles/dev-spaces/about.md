@@ -1,51 +1,51 @@
 ---
-title: Azure Dev Spaces giriş
+title: Azure Dev Alanlarına Giriş
 services: azure-dev-spaces
 ms.date: 05/07/2019
 ms.topic: overview
-description: Azure Dev Spaces Azure Kubernetes hizmet kümelerinde takımlar için hızlı ve yinelemeli bir Kubernetes geliştirme deneyimi sağlar
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, kubectl, k8s
+description: Azure Geliştirme Alanları'nın Azure Kubernetes Hizmet kümelerinde ekipler için nasıl hızlı, yinelemeli Kubernetes geliştirme deneyimi sağladığını öğrenin
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 586b19070ec36517add21f7aac86ddf15121be2d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240705"
 ---
-# <a name="introduction-to-azure-dev-spaces"></a>Azure Dev Spaces giriş
+# <a name="introduction-to-azure-dev-spaces"></a>Azure Dev Alanlarına Giriş
 
-Azure Dev Spaces, Azure Kubernetes Service (AKS) kümelerinde takımlar için hızlı ve yinelemeli bir Kubernetes geliştirme deneyimi sağlar. Azure Dev Spaces Ayrıca, bağımlılıklarda uygulamanızın tüm bileşenlerinin hatalarını ayıklamanıza ve test etmenize gerek kalmadan, en az geliştirme makinesi kurulumuyla test etmenizi sağlar.
+Azure Dev Spaces, Azure Kubernetes Service (AKS) kümelerinde bulunan ekipler için hızlı, yinelemeli Kubernetes geliştirme deneyimi sağlar. Azure Dev Spaces ayrıca, uygulamanızın tüm bileşenlerini aks'ta en az geliştirme makinesi kurulumuyla, bağımlılıkları çoğaltmadan veya alay etmeden ayıklamanıza ve test etmenizi sağlar.
 
 ![](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>Azure Dev Spaces’in Kubernetes geliştirmeyi kolaylaştırması
 
-Azure Dev Spaces, takımların mikro hizmet uygulamalarının geliştirilmesine ve hızlı yinelemesine odaklanarak ekiplerin, AKS 'de çalışan tüm mikro hizmetler mimarisi veya uygulamaları ile doğrudan çalışmasına yardımcı olur. Azure Dev Spaces, mikro hizmetler mimarinizin bölümlerini, AKS kümesinin veya diğer geliştiricilerin geri kalanını etkilemeden yalıtımsız olarak güncelleştirmek için bir yol da sağlar. Azure Dev Spaces, düşük düzey geliştirme ve test ortamlarında geliştirme ve test amaçlıdır ve üretim AKS kümelerinde çalıştırılmak üzere tasarlanmamıştır.
+Azure Dev Spaces, ekiplerin aks'te çalışan tüm mikro hizmet mimarisi veya uygulamalarıyla doğrudan çalışmalarına izin vererek ekiplerin mikro hizmet uygulamalarının geliştirilmesine ve hızlı bir şekilde yinelenmesine odaklanmalarına yardımcı olur. Azure Dev Spaces, aks kümesinin geri kalanını veya diğer geliştiricileri etkilemeden mikrohizmetler mimarinizin bölümlerini bağımsız olarak bağımsız olarak güncelleştirmenin bir yolunu da sağlar. Azure Dev Alanları, alt düzey geliştirme ve test ortamlarında geliştirme ve sınama içindir ve üretim AKS kümelerinde çalıştırılması amaçlanmamıştır.
 
-Takımlar tüm uygulamayla çalışarak ve doğrudan AKS 'de işbirliği yapabileceğinizden Azure Dev Spaces:
+Ekipler tüm uygulamayla çalışabildiği ve doğrudan AKS'de işbirliği yapabildiği için Azure Geliştirme Alanları:
 
-* Yerel makine kurulumunu en aza indirir
-* Ekipte yeni geliştiriciler için kurulum süresini düşürür
-* Ekibin hızını daha hızlı yineleme ile artırır
-* Ekip üyelerinin bir kümeyi paylaştığından bu yana gereksiz geliştirme ve tümleştirme ortamları sayısını azaltır
-* Bağımlılıkları çoğaltma veya artırma gereksinimini ortadan kaldırır
-* , Geliştirme ekiplerinin yanı sıra çalıştıkları ekipler ve DevOps takımları gibi işbirliğini geliştirir
+* Yerel makine kurulumını en aza indirir
+* Takımdaki yeni geliştiricilerin kurulum süresini kısaltıyor
+* Daha hızlı yineleme yoluyla takımın hızını artırır
+* Ekip üyeleri bir kümeyi paylaşabildiği için gereksiz geliştirme ve tümleştirme ortamlarının sayısını azaltır
+* Bağımlılıkları çoğaltma veya alay etme gereksinimini ortadan kaldırır
+* DevOps ekipleri gibi geliştirme ekiplerinin yanı sıra birlikte çalıştıkları ekipler arasında işbirliğini geliştirir
 
-Azure Dev Spaces, projelerinize yönelik Docker ve Kubernetes varlıkları oluşturmak için araç sağlar. Bu araç, hem geliştirme alanı hem de diğer AKS kümelerine kolayca yeni ve mevcut uygulamaları eklemenize olanak tanır.
+Azure Dev Spaces, projeleriniz için Docker ve Kubernetes varlıkları oluşturmak için araç sağlar. Bu takım, hem dev alana hem de diğer AKS kümelerine kolayca yeni ve varolan uygulamalar eklemenize olanak tanır.
 
-Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Azure dev Spaces nasıl çalıştığını ve nasıl yapılandırıldığını][how-dev-spaces-works]öğrenin.
+Azure Geliştirme Alanları'nın nasıl çalıştığı hakkında daha fazla bilgi için Azure [Dev Alanları'nın nasıl çalıştığı ve nasıl yapılandırıldığı][how-dev-spaces-works]nabakını öğrenin.
 
-## <a name="supported-regions-and-configurations"></a>Desteklenen bölgeler ve Konfigürasyonlar
+## <a name="supported-regions-and-configurations"></a>Desteklenen bölgeler ve yapılandırmalar
 
-Azure Dev Spaces yalnızca [bazı bölgelerde][supported-regions]aks kümeleri tarafından desteklenir. Azure Dev Spaces, AKS üzerinde uygulamalarınızı derleyip çalıştırmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Visual Studio Code](https://code.visualstudio.com/download) ile birlikte Linux, MacOS veya Windows 8 ya da sonraki sürümlerde yüklü [Azure Dev Spaces uzantısının](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) kullanılmasını gerektirir. Ayrıca, Windows 8 veya üzeri bir sürümü yüklü [Visual Studio 'yu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) kullanmayı da destekler. Visual Studio 2019 için Azure geliştirme iş yüküne ihtiyacınız olacak. Visual Studio 2017 için Web geliştirme iş yüküne ve [Kubernetes için Visual Studio Araçları](https://aka.ms/get-vsk8stools)ihtiyacınız olacaktır.
+Azure Dev Spaces yalnızca [bazı bölgelerdeki][supported-regions]AKS kümeleri tarafından desteklenir. Azure Dev Spaces, AKS üzerinde uygulamalarınızı derleyip çalıştırmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Visual Studio Code](https://code.visualstudio.com/download) ile birlikte Linux, MacOS veya Windows 8 ya da sonraki sürümlerde yüklü [Azure Dev Spaces uzantısının](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) kullanılmasını gerektirir. Ayrıca, Windows 8 veya daha büyük bir yerde yüklü [olan Visual Studio'nun](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) kullanılmasını da destekler. Visual Studio 2019 için Azure Geliştirme iş yükünün gerekir. Visual Studio 2017 [için Kubernetes için](https://aka.ms/get-vsk8stools)Web Geliştirme iş yüküne ve Visual Studio Araçlarına ihtiyacınız olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Takım geliştirme hızlı başlangıç ile Azure Dev Spaces sahip takımlar için hızlı, yinelemeli geliştirme hakkında daha fazla bilgi edinin.
+Azure Dev Spaces'e sahip ekipler için hızlı ve yinelemeli geliştirme hakkında daha fazla bilgi edinin ve ekip geliştirme hızlı bir şekilde başlayın.
 
 > [!div class="nextstepaction"]
-> [Takım geliştirme hızlı başlangıç](quickstart-team-development.md)
+> [Takım Geliştirme hızlı başlat](quickstart-team-development.md)
 
 
 [how-dev-spaces-works]: how-dev-spaces-works.md

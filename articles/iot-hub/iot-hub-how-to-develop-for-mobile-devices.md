@@ -1,6 +1,6 @@
 ---
-title: Azure IoT SDK 'larını kullanarak mobil cihazlar için geliştirme | Microsoft Docs
-description: Geliştirici Kılavuzu-Azure IoT Hub SDK 'Ları kullanarak mobil cihazlar için geliştirme hakkında bilgi edinin.
+title: Azure IoT SDK'ları kullanan mobil cihazlar için geliştirme | Microsoft Dokümanlar
+description: Geliştirici kılavuzu - Azure IoT Hub SDK'larını kullanarak mobil cihazlarda nasıl geliştirileceğimiz hakkında bilgi edinin.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,47 +8,47 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
 ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883089"
 ---
-# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK 'larını kullanarak mobil cihazlar için geliştirme
+# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK'ları kullanan mobil cihazlar için geliştirme
 
-Nesnelerin İnterneti işlemler, farklı yetenek: sensörler, mikro denetleyiciler, akıllı cihazlar, endüstriyel ağ geçitleri ve hatta mobil cihazlar içeren çok çeşitli cihazlara başvurabilir.  Mobil cihaz, cihazdan buluta telemetri gönderen ve bulut tarafından yönetilen bir IoT cihazı olabilir.  Ayrıca, diğer IoT cihazlarını yöneten bir arka uç hizmeti uygulaması çalıştıran cihaz olabilir.  Her iki durumda da, mobil cihazlar için çalışan uygulamalar geliştirmek üzere [Azure IoT Hub SDK 'ları](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) kullanılabilir.  
+Nesnelerin İnterneti'ndeki şeyler, sensörler, mikrodenetleyiciler, akıllı cihazlar, endüstriyel ağ geçitleri ve hatta mobil cihazlar gibi farklı yeteneklere sahip çok çeşitli aygıtlara atıfta bulunabilir.  Mobil aygıt, aygıtdan buluta telemetri gönderdiği ve bulut tarafından yönetildiği bir IoT aygıtı olabilir.  Ayrıca, diğer IoT aygıtlarını yöneten bir arka uç servis uygulaması çalıştıran aygıt da olabilir.  Her iki durumda [da, Azure IoT Hub SDK'ları](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) mobil cihazlariçin çalışan uygulamalar geliştirmek için kullanılabilir.  
 
-## <a name="develop-for-native-ios-platform"></a>Yerel iOS platformu için geliştirme
+## <a name="develop-for-native-ios-platform"></a>Yerel iOS platformu için geliştirin
 
-Azure IoT Hub SDK 'Ları, Azure IoT Hub C SDK 'Sı aracılığıyla Yerel iOS platformu desteği sağlar.  Bunu, Swift veya amaç C XCode projenizde birleştirebilmeniz için bir iOS SDK 'Sı olarak düşünebilirsiniz.  İOS üzerinde C SDK 'Yı kullanmanın iki yolu vardır:
+Azure IoT Hub SDK'ları, Azure IoT Hub C SDK aracılığıyla yerel iOS platform desteği sağlar.  Swift veya Objective C XCode projenize dahil olabileceğiniz bir iOS SDK olarak düşünebilirsiniz.  iOS'ta C SDK'yı kullanmanın iki yolu vardır:
 
 * XCode projesindeki CocoaPod kitaplıklarını doğrudan kullanın.  
-* MacOS için [derleme yönergesini](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) izleyerek C SDK 'sı için kaynak kodu ve iOS platformu için derleme ' yı indirin.  
+* C SDK'nın kaynak kodunu indirin ve MacOS için [yapı talimatını](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) takiben iOS platformu için oluşturun.  
 
-Azure IoT Hub C SDK, çeşitli platformlara en fazla taşınabilirlik için C99 dilinde yazılmıştır.  Taşıma işlemi, platforma özgü bileşenlere yönelik bir ince benimseme katmanı yazmayı içerir ve burada [iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx)için burada bulabilirsiniz.  C SDK 'sindeki özellikler, desteklenen Azure IoT Hub temel özellikleri ve ağ güvenilirliği için yeniden deneme İlkesi gibi SDK 'ya özgü özellikler dahil olmak üzere iOS platformunda yararlanılabilir olabilir.  İOS SDK arabirimi, Azure IoT Hub C SDK arabirimine de benzer.  
+Azure IoT Hub C SDK, çeşitli platformlarda maksimum taşınabilirlik için C99'da yazılmıştır.  Taşıma işlemi, [iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx)için burada bulunabilen platforma özgü bileşenler için ince bir benimseme katmanı yazmayı içerir.  C SDK'daki özellikler, desteklenen Azure IoT Hub ilkelleri ve ağ güvenilirliği için yeniden deneme ilkesi gibi SDK'ya özgü özellikler de dahil olmak üzere iOS platformunda kullanılabilir.  iOS SDK arabirimi, Azure IoT Hub C SDK arabirimine de benzer.  
 
-Bu belgemalar, bir iOS cihazında cihaz uygulaması veya hizmet uygulaması geliştirmeyi adım adım göstermektedir:
+Bu belgeler, bir iOS aygıtında bir aygıt uygulaması veya hizmet uygulamasının nasıl geliştirilebildiğini gözden geçirir:
 
-* [Hızlı Başlangıç: Bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-ios.md)  
-* [IoT Hub ile buluttan cihaza ileti gönderme](iot-hub-ios-swift-c2d.md) 
+* [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-ios.md)  
+* [IoT hub'ı ile buluttan cihazınıza ileti gönderme](iot-hub-ios-swift-c2d.md) 
 
-### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Azure IoT Hub CocoaPod kitaplıklarıyla geliştirme
+### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Azure IoT Hub CocoaPod kitaplıkları ile geliştirme
 
-Azure IoT Hub SDK 'Ları, iOS geliştirmesi için bir dizi amaç-C CocoaPod kitaplıklarını yayınlar.  CocoaPod kitaplıklarının en son listesini görmek için bkz. [Cocoapods IoT for Microsoft Azure](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md).  İlgili kitaplıklar XCode projenize eklendikten sonra, IoT Hub ilgili kodu yazmanın iki yolu vardır:
+Azure IoT Hub SDK'ları, iOS geliştirme için bir dizi Objective-C CocoaPod kitaplığı yayımlar.  CocoaPod kitaplıklarının en son listesini görmek [için Microsoft Azure IoT için CocoaPods'a](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md)bakın.  İlgili kitaplıklar XCode projenize dahil edildikten sonra, IoT Hub ile ilgili kodu yazmanın iki yolu vardır:
 
-* Amaç C işlevi: Projeniz hedef C 'de yazılmışsa, API 'Leri doğrudan Azure IoT Hub C SDK 'dan çağırabilirsiniz.  Projeniz Swift 'ta yazılmışsa, işlevinizi oluşturmadan önce ' yi `@objc func` çağırabilir ve c veya amaç-c kodu kullanarak Azure IoT Hub ile ilgili tüm Logics yazılmasına devam edebilirsiniz.  [Örnek depoda](https://github.com/Azure-Samples/azure-iot-samples-ios), her ikisini de gösteren bir örnek kümesi.  
+* Amaç C işlevi: Projeniz Objective-C ile yazılmışsa, Doğrudan Azure IoT Hub C SDK'dan API'leri arayabilirsiniz.  Projeniz Swift ile yazılmışsa, `@objc func` işlevinizi oluşturmadan önce arayabilir ve C veya Objective-C kodunu kullanarak Azure IoT Hub ile ilgili tüm mantıkları yazmaya devam edebilirsiniz.  Her ikisini de gösteren bir dizi [örnek örnek deposunda](https://github.com/Azure-Samples/azure-iot-samples-ios)bulunabilir.  
 
-* C örneklerini dahil edin: Bir C cihaz uygulaması yazdıysanız, bunu doğrudan XCode projenizde başvurabilirsiniz:
-    * Xcode ' dan Xcode projenize Sample. c dosyasını ekleyin.  
-    * Üst bilgi dosyasını bağımlılığına ekleyin.  Örnek olarak [örnek depoya](https://github.com/Azure-Samples/azure-iot-samples-ios) bir üstbilgi dosyası dahildir. Daha fazla bilgi için lütfen [hedef-C](https://developer.apple.com/documentation/objectivec)için Apple 'ın belge sayfasını ziyaret edin.
+* C örneklerini birleştirin: Bir C cihazı uygulaması yazdıysanız, doğrudan XCode projenizde başvuruda bulunabilirsiniz:
+    * XCode'dan xcode projenize örnek.c dosyasını ekleyin.  
+    * Üstbilgi dosyasını bağımlılığınıza ekleyin.  Bir üstbilgi dosyası [örnek](https://github.com/Azure-Samples/azure-iot-samples-ios) deposuna örnek olarak dahil edilir. Daha fazla bilgi için lütfen [Objective-C](https://developer.apple.com/documentation/objectivec)için Apple'ın dokümantasyon sayfasını ziyaret edin.
 
-## <a name="develop-for-android-platform"></a>Android platformu için geliştirme
-Azure IoT Hub Java SDK 'Sı Android platformunu destekler.  Test edilen belirli API sürümü için lütfen en son güncelleştirme için [Platform desteği](iot-hub-device-sdk-platform-support.md) sayfamızı ziyaret edin.
+## <a name="develop-for-android-platform"></a>Android platformu için geliştirin
+Azure IoT Hub Java SDK Android platformlarını destekler.  Test edilen özel API sürümü için lütfen en son güncelleme için [platform destek sayfamızı](iot-hub-device-sdk-platform-support.md) ziyaret edin.
 
-Bu belge, Gradle ve Android Studio kullanarak bir Android cihazında cihaz uygulaması veya hizmet uygulaması geliştirmeyi adım adım göstermektedir:
+Bu dokümantasyon, Gradle ve Android Studio kullanarak bir Android cihazda bir cihaz uygulaması veya hizmet uygulaması geliştirmek için nasıl yürür:
 
-* [Hızlı Başlangıç: Bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-android.md)  
-* [Hızlı Başlangıç: Bir cihazı denetleme](quickstart-control-device-android.md) 
+* [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-android.md)  
+* [Quickstart: Aygıtı denetleme](quickstart-control-device-android.md) 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure API Management örneğinin otomatik olarak otomatik ölçeğini yapılandırma | Microsoft Docs
-description: Bu konuda, bir Azure API Management örneği için otomatik ölçeklendirme davranışının nasıl ayarlanacağı açıklanır.
+title: Azure API Yönetimi örneğinin otomatik ölçeğini yapılandırma | Microsoft Dokümanlar
+description: Bu konu, Bir Azure API Yönetimi örneği için otomatik ölçeklendirme davranışının nasıl ayarlanır olduğunu açıklar.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,122 +12,122 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70018280"
 ---
-# <a name="automatically-scale-an-azure-api-management-instance"></a>Azure API Management örneğini otomatik olarak ölçeklendirme  
+# <a name="automatically-scale-an-azure-api-management-instance"></a>Bir Azure API Management örneğini otomatik olarak ölçeklendirme  
 
-Azure API Management hizmet örneği, bir dizi kurala göre otomatik olarak ölçeklendirebilir. Bu davranış, Azure Izleyici aracılığıyla etkinleştirilebilir ve yapılandırılabilir ve yalnızca Azure API Management hizmetinin **Standart** ve **Premium** katmanlarında desteklenir.
+Azure API Yönetimi hizmet örneği, bir dizi kurala göre otomatik olarak ölçeklenebilir. Bu davranış Azure Monitor aracılığıyla etkinleştirilebilir ve yapılandırılabilir ve yalnızca Azure API Yönetimi hizmetinin **Standart** ve **Premium** katmanlarında desteklenebilir.
 
-Makale, otomatik ölçeklendirmeyi yapılandırma sürecini adım adım yönlendirir ve otomatik ölçeklendirme kurallarının en iyi yapılandırmasını önerir.
+Makale, otomatik ölçek yapılandırma sürecinde yürür ve otomatik ölçek kurallarının en iyi yapılandırmaönerir.
 
 > [!NOTE]
-> **Tüketim** katmanındaki API Management hizmeti, herhangi bir ek yapılandırma gerekmeden, trafiğe göre otomatik olarak ölçeklendirilir.
+> **Tüketim** katmanındaki API Yönetimi hizmeti, herhangi bir ek yapılandırma gerekmeden trafiğe göre otomatik olarak ölçeklendirilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları izleyerek şunları yapmanız gerekir:
+Bu makaledeki adımları izlemek için şunları
 
-+ Etkin bir Azure aboneliğiniz olmalıdır.
-+ Azure API Management örneğine sahip olmanız gerekir. Daha fazla bilgi için bkz. [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
-+ [Azure API Management örneğinin kapasite](api-management-capacity.md)kavramını anlayın.
-+ Maliyet sonuçları dahil olmak üzere [bir Azure API Management örneğinin el ile ölçeklendirilmesini](upgrade-and-scale.md)anlayın.
++ Etkin bir Azure aboneliğine sahip olun.
++ Azure API Yönetimi örneğine sahip olun. Daha fazla bilgi için [bkz.](get-started-create-service-instance.md)
++ [Azure API Yönetimi örneğinin Kapasite](api-management-capacity.md)kavramını anlayın.
++ Maliyet sonuçları da dahil olmak üzere [bir Azure API Yönetimi örneğinin el ile ölçekleme işlemini](upgrade-and-scale.md)anlayın.
 
 [!INCLUDE [premium-standard.md](../../includes/api-management-availability-premium-standard.md)]
 
-## <a name="azure-api-management-autoscale-limitations"></a>Azure API Management otomatik ölçeklendirme sınırlamaları
+## <a name="azure-api-management-autoscale-limitations"></a>Azure API Yönetimi otomatik ölçeklendirme sınırlamaları
 
-Ölçek kararlarının belirli sınırlamaları ve sonuçlarının otomatik ölçeklendirme davranışı yapılandırılmadan önce değerlendirilmesi gerekir.
+Otomatik ölçeklendirme davranışını yapılandırmadan önce ölçeklendirme kararlarının belirli sınırlamaları ve sonuçlarının göz önünde bulundurulması gerekir.
 
-+ Otomatik ölçeklendirme, yalnızca Azure API Management hizmetinin **Standart** ve **Premium** katmanlarında etkinleştirilebilir.
++ Otomatik ölçeklendirme yalnızca Azure API Yönetimi hizmetinin **Standart** ve **Premium** katmanları için etkinleştirilebilir.
 + Fiyatlandırma katmanları, bir hizmet örneği için en fazla birim sayısını da belirtir.
-+ Ölçeklendirme işlemi en az 20 dakika sürer.
-+ Hizmet başka bir işlem tarafından kilitliyse, ölçeklendirme isteği başarısız olur ve otomatik olarak yeniden dener.
-+ Çoklu bölgesel dağıtımlara sahip bir hizmet olması durumunda yalnızca **birincil konumdaki** birimler ölçeklendirilebilir. Diğer konumlardaki birimler ölçeklendirilemez.
++ Ölçekleme işlemi en az 20 dakika sürer.
++ Hizmet başka bir işlem tarafından kilitlenirse, ölçekleme isteği başarısız olur ve otomatik olarak yeniden dener.
++ Çok bölgesel dağıtımlara sahip bir hizmet olması durumunda, yalnızca **Birincil konumdaki** birimler ölçeklenebilir. Diğer konumlardaki birimler ölçeklendirilemiyor.
 
-## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Azure API Management hizmeti için otomatik ölçeklendirmeyi etkinleştirme ve yapılandırma
+## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Azure API Yönetimi hizmeti için otomatik ölçeklendirmeyi etkinleştirme ve yapılandırma
 
-Bir Azure API Management hizmeti için otomatik ölçeklendirmeyi yapılandırmak için aşağıdaki adımları izleyin:
+Azure API Yönetimi hizmeti için otomatik ölçeklendirmeyi yapılandırmak için aşağıdaki adımları izleyin:
 
-1. Azure portal **izleme** örneğine gidin.
+1. Azure portalındaki **Örnek'i İzle'ye** gidin.
 
     ![Azure İzleyici](media/api-management-howto-autoscale/01.png)
 
-2. Soldaki menüden **Otomatik ölçek** ' i seçin.
+2. Soldaki menüden **Otomatik Ölçek'i** seçin.
 
-    ![Azure Izleyici otomatik ölçeklendirme kaynağı](media/api-management-howto-autoscale/02.png)
+    ![Azure Monitör otomatik ölçeklendirme kaynağı](media/api-management-howto-autoscale/02.png)
 
-3. Açılan menülerde filtreleri temel alarak Azure API Management hizmetinizi bulun.
-4. İstediğiniz Azure API Management hizmet örneğini seçin.
-5. Yeni açılan bölümünde **Otomatik ölçeklendirmeyi etkinleştir** düğmesine tıklayın.
+3. Açılan menüdeki filtrelere göre Azure API Yönetimi hizmetinizi bulun.
+4. İstenilen Azure API Yönetimi hizmet örneğini seçin.
+5. Yeni açılan bölümde, **otomatik ölçeklendir** düğmesini etkinleştir'i tıklatın.
 
-    ![Azure Izleyici otomatik ölçeklendirme etkin](media/api-management-howto-autoscale/03.png)
+    ![Azure Monitör otomatik ölçeklendirme etkinleştirme](media/api-management-howto-autoscale/03.png)
 
-6. **Kurallar** bölümünde **+ Kural Ekle**' ye tıklayın.
+6. **Kurallar** bölümünde , **+ Kural ekle'yi**tıklatın.
 
-    ![Azure Izleyici otomatik ölçeklendirme kuralı ekle](media/api-management-howto-autoscale/04.png)
+    ![Azure Monitör otomatik ölçek ekleme kuralı](media/api-management-howto-autoscale/04.png)
 
-7. Yeni bir ölçek genişletme kuralı tanımlayın.
+7. Yeni bir ölçek çıkış kuralı tanımlayın.
 
-   Örneğin, bir ölçek genişletme kuralı, son 30 dakikalık ortalama kapasite ölçümü% 80 ' ü aştığında bir Azure API Management biriminin eklenmesini tetikleyebilir. Aşağıdaki tablo böyle bir kural için yapılandırma sağlar.
+   Örneğin, bir ölçeklendirme kuralı, son 30 dakikadaki ortalama kapasite ölçümü %80'i aştığında bir Azure API Yönetimi biriminin eklenmesini tetikleyebilir. Aşağıdaki tabloda böyle bir kural için yapılandırma sağlar.
 
-    | Parametre             | Value             | Notlar                                                                                                                                                                                                                                                                           |
+    | Parametre             | Değer             | Notlar                                                                                                                                                                                                                                                                           |
     |-----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Ölçüm kaynağı         | Geçerli kaynak  | Geçerli Azure API Management kaynak ölçümlerine göre kuralı tanımlayın.                                                                                                                                                                                                     |
+    | Ölçüm kaynağı         | Geçerli kaynak  | Geçerli Azure API Yönetimi kaynak ölçümlerini temel alan kuralı tanımlayın.                                                                                                                                                                                                     |
     | *Ölçütler*            |                   |                                                                                                                                                                                                                                                                                 |
-    | Zaman toplama      | Average           |                                                                                                                                                                                                                                                                                 |
-    | Ölçüm adı           | Kapasite          | Kapasite ölçümü, bir Azure API Management örneğinin kaynaklarının kullanımını yansıtan bir Azure API Management ölçümdür.                                                                                                                                                            |
-    | Zaman dilimi istatistiği  | Average           |                                                                                                                                                                                                                                                                                 |
-    | Operator              | Büyüktür      |                                                                                                                                                                                                                                                                                 |
-    | Eşik             | %80               | Ortalama kapasite ölçümü eşiği.                                                                                                                                                                                                                                 |
-    | Süre (dakika cinsinden) | 30                | Kapasite ölçüsünün ortalama olarak kullanım desenlerine özgü değeri. Zaman döneminin ne kadar uzun olduğu, yeniden işlemin aralıklı olarak ne kadar iyi olması, ölçek genişletme kararına göre daha az etkiye sahip olacaktır. Ancak, ölçek genişletme tetikleyicisini de erteleyecektir. |
+    | Toplam süre      | Ortalama           |                                                                                                                                                                                                                                                                                 |
+    | Ölçüm adı           | Kapasite          | Kapasite ölçümü, bir Azure API Yönetimi örneğinin kaynaklarının kullanımını yansıtan bir Azure API Yönetimi ölçüsüdür.                                                                                                                                                            |
+    | Zaman dilimi istatistiği  | Ortalama           |                                                                                                                                                                                                                                                                                 |
+    | İşleç              | Büyüktür      |                                                                                                                                                                                                                                                                                 |
+    | Eşik             | %80               | Ortalama kapasite ölçümü için eşik.                                                                                                                                                                                                                                 |
+    | Süre (dakika) | 30                | Kapasite ölçümünün ortalamasına göre zaman alameti kullanım kalıplarına özgüdür. Süre ne kadar uzun olursa, reaksiyon o kadar yumuşak olur - aralıklı ani artışlar ölçeklendirme kararı üzerinde daha az etkiye sahip olacaktır. Ancak, aynı zamanda ölçeklendirme tetikleyici geciktirecektir. |
     | *Eylem*              |                   |                                                                                                                                                                                                                                                                                 |
-    | Çalışma             | Sayıyı şu kadar artır: |                                                                                                                                                                                                                                                                                 |
-    | Örnek sayısı        | 1\.                 | Azure API Management örneğini 1 birim olarak ölçeklendirin.                                                                                                                                                                                                                          |
-    | Seyrek Erişimli (dakika)   | 60                | Azure API Management hizmetinin ölçeği genişletmek için en az 20 dakika sürer. Çoğu durumda, 60 dakikalık seyrek erişimli süre çok sayıda ölçeği tetiklemeyi engeller.                                                                                                  |
+    | İşlem             | Sayıyı şu kadar artır |                                                                                                                                                                                                                                                                                 |
+    | Örnek sayısı        | 1                 | Azure API Yönetimi örneğini 1 birim olarak ölçeklendirin.                                                                                                                                                                                                                          |
+    | Soğuma (dakika)   | 60                | Azure API Yönetimi hizmetinin ölçeklendirmesi en az 20 dakika sürer. Çoğu durumda, 60 dakikalık soğuma süresi birçok ölçek çıkışını tetiklemesini önler.                                                                                                  |
 
-8. Kuralı kaydetmek için **Ekle** ' ye tıklayın.
+8. Kuralı kaydetmek için **Ekle'yi** tıklatın.
 
-    ![Azure Izleyici genişleme kuralı](media/api-management-howto-autoscale/05.png)
+    ![Azure Monitörü ölçeği kuralı](media/api-management-howto-autoscale/05.png)
 
-9. **+ Kural Ekle**' ye tıklayın.
+9. + **Kural ekle'ye**tekrar tıklayın.
 
-    Bu kez, kuraldaki bir ölçeğin tanımlanması gerekir. API 'lerin kullanımı azaldıkça kaynakların harcanmadığından emin olur.
+    Bu kez, kural bir ölçek tanımlanması gerekir. API kullanımı azaldığında kaynakların boşa harcanmasını sağlayacaktır.
 
 10. Kuralda yeni bir ölçek tanımlayın.
 
-    Örneğin, bir kuralda ölçek, son 30 dakikalık ortalama kapasite ölçümü% 35 ' dan düşük olduğunda bir Azure API Management birimini kaldırmayı tetikleyebilir. Aşağıdaki tablo böyle bir kural için yapılandırma sağlar.
+    Örneğin, kurallı bir ölçek, son 30 dakikadaki ortalama kapasite ölçümü %35'in altında olduğunda, bir Azure API Yönetimi biriminin kaldırılmasını tetikleyebilir. Aşağıdaki tabloda böyle bir kural için yapılandırma sağlar.
 
-    | Parametre             | Value             | Notlar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | Parametre             | Değer             | Notlar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
     |-----------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Ölçüm kaynağı         | Geçerli kaynak  | Geçerli Azure API Management kaynak ölçümlerine göre kuralı tanımlayın.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | Ölçüm kaynağı         | Geçerli kaynak  | Geçerli Azure API Yönetimi kaynak ölçümlerini temel alan kuralı tanımlayın.                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *Ölçütler*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Zaman toplama      | Average           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Ölçüm adı           | Kapasite          | Ölçek genişletme kuralı için kullanılan ölçüm ile aynı ölçüm.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-    | Zaman dilimi istatistiği  | Average           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operator              | Küçüktür         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Eşik             | % 35               | Aynı şekilde, ölçek genişletme kuralına benzer şekilde, bu değer Azure API Management kullanım desenlerine göre büyük ölçüde değişir. |
-    | Süre (dakika cinsinden) | 30                | Ölçek genişletme kuralı için kullanılan değerle aynı değer.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Toplam süre      | Ortalama           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Ölçüm adı           | Kapasite          | Ölçek dışı kuralı için kullanılan metrikle aynı.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | Zaman dilimi istatistiği  | Ortalama           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | İşleç              | Küçüktür         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Eşik             | %35               | Ölçek dışı etme kuralına benzer şekilde, bu değer büyük ölçüde Azure API Yönetimi'nin kullanım kalıplarına bağlıdır. |
+    | Süre (dakika) | 30                | Ölçek dışı kuralı için kullanılan değerle aynı değer.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Eylem*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Çalışma             | Sayıyı şu kadar azalt: | Ölçek genişletme kuralı için kullanılmış olan ' ın tersi.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | Örnek sayısı        | 1\.                 | Ölçek genişletme kuralı için kullanılan değerle aynı değer.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Seyrek Erişimli (dakika)   | 90                | Ölçek ölçeği bir ölçeğe göre daha pasif olmalıdır, bu nedenle seyrek erişimli dönemin daha uzun olması gerekir.                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | İşlem             | Sayıyı şu kadar azalt | Ölçek dışı kural için kullanılan ın tam tersi.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | Örnek sayısı        | 1                 | Ölçek dışı kuralı için kullanılan değerle aynı değer.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Soğuma (dakika)   | 90                | Ölçek bir ölçek daha muhafazakar olmalıdır, bu nedenle soğuma süresi daha uzun olmalıdır.                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-11. Kuralı kaydetmek için **Ekle** ' ye tıklayın.
+11. Kuralı kaydetmek için **Ekle'yi** tıklatın.
 
-    ![Kuralda Azure Izleyici ölçeği](media/api-management-howto-autoscale/06.png)
+    ![Kuralda Azure Monitör ölçeği](media/api-management-howto-autoscale/06.png)
 
-12. **Maksimum** Azure API Management birimi sayısını ayarlayın.
+12. En **fazla** Azure API Yönetimi birimi sayısını ayarlayın.
 
     > [!NOTE]
-    > Azure API Management, bir örneğin ölçeklenebilen bir birim sınırı içerir. Sınır, bir hizmet katmanına bağlıdır.
+    > Azure API Yönetimi'nin bir örnek için ölçeklendirebileceği birimlerin bir sınırı vardır. Sınır bir hizmet katmanına bağlıdır.
 
-    ![Kuralda Azure Izleyici ölçeği](media/api-management-howto-autoscale/07.png)
+    ![Kuralda Azure Monitör ölçeği](media/api-management-howto-autoscale/07.png)
 
-13. **Kaydet**’e tıklayın. Otomatik ölçeklendirme yapılandırılmış.
+13. **Kaydet**'e tıklayın. Otomatik ölçekyapılandırılmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

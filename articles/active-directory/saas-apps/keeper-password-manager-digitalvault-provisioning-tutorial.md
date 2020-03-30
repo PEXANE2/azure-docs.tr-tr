@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için bir dijital kasa & Man Password Manager 'ı yapılandırın | Microsoft Docs"
-description: Azure Active Directory yapılandırma hakkında bilgi edinmek için, Kullanıcı hesaplarını el ile parola Yöneticisi & dijital kasaya sağlamak ve devre dışı bırakmak üzere nasıl yapılandıracağınızı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Keeper Password Manager & Digital Vault'u yapılandırın | Microsoft Dokümanlar"
+description: Azure Active Directory'yi, kullanıcı hesaplarını Otomatik olarak sağlama ve sağlamadan alma işlemlerini Keeper Password Manager & Digital Vault'a nasıl yapılandıracak şekilde yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,163 +16,163 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 236527a9889879f872ef8c3867a7ec3c1b1ba0a3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057550"
 ---
-# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için bir dijital kasa & Man parola yöneticisini yapılandırma
+# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Keeper Password Manager & Digital Vault'u yapılandırın
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları bir Man Password Manager & dijital kasaya otomatik olarak sağlamak ve devre dışı bırakmak üzere, Azure AD 'yi yapılandırmak için, anahtar parola Yöneticisi & dijital kasa ve Azure Active Directory (Azure AD) ' de gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Keeper Password Manager & Digital Vault'a otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Keeper Password Manager & Digital Vault ve Azure Active Directory (Azure AD) & gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
-* Bir Azure AD kiracısı
-* [Bir Man parola Yöneticisi & dijital kasa kiracısı](https://keepersecurity.com/pricing.html?t=e)
-* Man Password Manager 'daki bir kullanıcı hesabı, yönetici izinleriyle dijital kasa &.
+* Azure AD kiracı
+* [Bir Keeper Şifre Yöneticisi & Dijital Vault kiracı](https://keepersecurity.com/pricing.html?t=e)
+* Yönetici izinleri ile Digital Vault & Keeper Password Manager'daki bir kullanıcı hesabı.
 
-## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Galeriden bir dijital kasa & Man parola Yöneticisi ekleme
+## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Galeriden Keeper Password Manager & Digital Vault ekle
 
-Azure AD ile otomatik Kullanıcı sağlama için, Man Password Manager & dijital kasasını yapılandırmadan önce, Azure AD uygulama galerisindeki bir Man parola Yöneticisi & dijital kasasını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Keeper Password Manager & Digital Vault'u Azure AD ile otomatik kullanıcı sağlama için yapılandırmadan önce, Azure AD uygulama galerisinden Keeper Password Manager & Digital Vault'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD Uygulama Galerisi 'nden bir Man parola Yöneticisi & dijital kasasını eklemek için aşağıdaki adımları uygulayın:**
+**Azure AD uygulama galerisinden Keeper Password Manager & Digital Vault eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Man Password manager & dijital kasa**girin, sonuçlar panelinde bir **man parola Yöneticisi & dijital kasa** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna, **Keeper Password Manager & Digital Vault'u**girin , sonuç panelinde **Keeper Password Manager & Digital Vault'u** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-    ![Man parola Yöneticisi, sonuçlar listesinde dijital kasa &](common/search-new-app.png)
+    ![Keeper Password Manager & Dijital Kasa sonuç listesinde](common/search-new-app.png)
 
-## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Kullanıcıları, Man Password Manager & dijital kasaya atama
+## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Kullanıcıları Keeper Password Manager & Digital Vault'a atama
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların, Man parola Yöneticisi 'ne & dijital kasaya erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları% & dijital kasalarına atayabilirsiniz:
+Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Keeper Password Manager & Digital Vault'a erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları, buradaki talimatları izleyerek Keeper Password Manager & Digital Vault'a atayabilirsiniz:
 
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-keeper-password-manager--digital-vault"></a>Kullanıcıları, Man parola Yöneticisi 'ne & dijital kasaya atamaya yönelik önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-keeper-password-manager--digital-vault"></a>Kullanıcıları Keeper Password Manager & Digital Vault'a atamak için önemli ipuçları
 
-* Tek bir Azure AD kullanıcısının, otomatik Kullanıcı sağlama yapılandırmasını test etmek için, bir Azure AD kullanıcısına & dijital kasasına atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik kullanıcı sağlama yapılandırmasını test etmek için Tek bir Azure AD kullanıcısının Keeper Password Manager & Digital Vault'a atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı Man parola Yöneticisi 'ne & dijital kasa 'ya atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bir kullanıcıyı Keeper Password Manager & Digital Vault'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
 
-## <a name="configuring-automatic-user-provisioning-to-keeper-password-manager--digital-vault"></a>Dijital kasa & Man parola Yöneticisi 'ne otomatik Kullanıcı sağlamayı yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-keeper-password-manager--digital-vault"></a>Otomatik kullanıcı sağlamanın Keeper Password Manager & Digital Vault'a yapılandırılması 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir dijital kasa& daki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için adım adım kılavuzluk eder.
+Bu bölüm, Azure AD sağlama hizmetini, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Keeper Password Manager & Digital Vault'taki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı etmek için yapılandırma adımları boyunca size rehberlik eder.
 
 > [!TIP]
-> Ayrıca, [Man Password manager & dijital kasa çoklu oturum açma öğreticisinde](keeperpasswordmanager-tutorial.md)sunulan yönergeleri Izleyerek, Man password Manager & dijital KASASıNDA SAML tabanlı çoklu oturum açmayı etkinleştirmeyi tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Ayrıca, Keeper Password Manager & Digital Vault tek oturum açma [öğreticisinde](keeperpasswordmanager-tutorial.md)verilen talimatları izleyerek, Keeper Password Manager & Digital Vault için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
 
-### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Azure AD 'de, Man Password Manager & dijital kasasında otomatik Kullanıcı sağlamasını yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Azure AD'de Keeper Password Manager & Digital Vault için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Man Password Manager & dijital kasa**' yı seçin.
+2. Uygulama **listesinde, Keeper Password Manager & Digital Vault'u**seçin.
 
-    ![Uygulamalar listesinde Man parola Yöneticisi & dijital kasa bağlantısı](common/all-applications.png)
+    ![Keeper Password Manager & Uygulamalar listesinde Dijital Vault bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, 5. adımda açıklandığı gibi, dijital kasaınızın hesabı &, **kiracı URL 'sini** ve **gizli** anahtarını girin.
+5. Yönetici **Kimlik Bilgileri** bölümü ne si bölümünde, Keeper Password Manager'ın **Kiracı URL'sini** ve **Gizli Jetonunu,** Adım 6'da açıklandığı şekilde Digital Vault hesabını & girin.
 
-6. [Man Yönetici konsolunuza](https://keepersecurity.com/console/#login)oturum açın. **Yönetici** ' ye tıklayın ve var olan bir düğümü seçin ya da yeni bir tane oluşturun. **Sağlama** sekmesine gidin ve **Yöntem Ekle**' yi seçin.
+6. Keeper Admin [Konsolunuzda](https://keepersecurity.com/console/#login)oturum açın. **Yönetici'yi** tıklatın ve varolan bir düğüm seçin veya yeni bir düğüm oluşturun. **Sağlama** sekmesine gidin ve **Yöntem Ekle'yi**seçin.
 
-    ![Man Yönetici Konsolu](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Keeper Yönetici Konsolu](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
-    **SCIM (etki alanları arası kimlik yönetimi Için sistem**) seçeneğini belirleyin.
+    **SCIM (Etki Alanı Arası Kimlik Yönetimi Sistemi)** seçeneğini belirleyin.
 
-    ![Man, SCıM Ekle](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Kaleci SCIM ekle](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
-    **Sağlama belirteci oluştur**' a tıklayın.
+    **Sağlama Belirteci Oluştur'u**tıklatın.
 
-    ![Man uç noktası oluştur](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Kaleci Bitiş Noktası Oluştur](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
-    **URL** ve **belirteç** DEğERLERINI kopyalayın ve Azure AD 'de **kiracı URL 'sine** ve **gizli belirtece** yapıştırın. Daha açık sağlama kurulumunu gerçekleştirmek için **Kaydet** ' e tıklayın.
+    **URL** ve **Token** değerlerini kopyalayın ve Azure AD'de **Kiracı URL'sine** ve **Gizli Belirteç'e** yapıştırın. Keeper'daki sağlama kurulumlarını tamamlamak için **Kaydet'i** tıklatın.
 
-    ![Man oluşturma belirteci](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Kaleci Oluştur Belirteci](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
-7. 5\. adımda gösterilen alanları doldurarak Azure AD 'nin bir Man Password Manager & dijital kasaya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Man parola Yöneticisi & dijital kasa hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+7. Adım 5'te gösterilen alanları doldurarak, Azure AD'nin Keeper Password Manager & Digital Vault'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Keeper Password Manager & Digital Vault hesabınızın Yönetici izinleri olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+8. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet** düğmesine tıklayın.
+9. **Kaydet**'e tıklayın.
 
-10. **Eşlemeler** bölümünde, **Kullanıcı Azure Active Directory Kullanıcıları, dijital kasa olarak &**
+10. **Eşlemeler** bölümünde, **Azure Active Directory Kullanıcılarını Dijital Kasa & Parola Yöneticisine Senkronize**Et'i seçin.
 
-    ![Man Kullanıcı eşlemeleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Keeper Kullanıcı Eşlemeleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
-11. **Öznitelik eşleme** bölümünde dijital kasa &AMP; Azure AD 'Den Man Password Manager ' a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için dijital kasadaki kullanıcı hesaplarını & eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. Azure AD'den Keeper Password Manager & Digital Vault'a **öznitelik eşleme** bölümünde senkronize edilen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Keeper Password Manager & Digital Vault'taki kullanıcı hesaplarıyla eşleşecek şekilde kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![Man Kullanıcı öznitelikleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Keeper Kullanıcı Öznitelikleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
-12. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını, anahtar parola Yöneticisi & dijital kasa olarak eşitler**' ı seçin.
+12. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Password Manager & Digital Vault'a Senkronize Et'i**seçin.
 
-    ![Man grubu eşlemeleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Kaleci Grubu Haritalamaları](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
-13. **Öznitelik eşleme** bölümünde dijital kasa &AMP; Azure AD 'Den Man Password Manager ' a eşitlenmiş grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için dijital kasa & Man Password Manager 'daki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+13. Azure AD'den Keeper Password Manager & Digital Vault'a **Öznitelik Eşleme** bölümünde senkronize edilen grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Keeper Password Manager & Digital Vault'taki grupları eşleştirmek için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![Man grubu öznitelikleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Kaleci Grubu Öznitelikleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
-14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+14. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-15. Azure AD sağlama hizmeti ' ni Man Password Manager & dijital kasa için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+15. Keeper Password Manager & Digital Vault için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Ki Sağlama Durumunu** **Ayarı** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-16. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek, daha fazla Man Password Manager & dijital kasasında sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+16. **Ayarlar** bölümünde **Kapsam'da** istenen değerleri seçerek, Keeper Password Manager & Digital Vault'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-17. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+17. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü izlemek ve bakım parolası Yöneticisi & dijital kasasında Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporunu izlemek için kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Kaydetme **Ayrıntıları** bölümünü, kaydedilen ilerlemeyi izlemek ve Azure AD sağlama hizmeti tarafından Keeper Password Manager & Digital Vault'ta gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
-## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
+## <a name="connector-limitations"></a>Bağlayıcı Sınırlamaları
 
-* Man Password Manager & dijital kasa **e-posta** ve **Kullanıcı adının** aynı kaynak değerine sahip olmasını gerektirir, ancak her iki öznitelik için de herhangi bir güncelleştirme diğer değeri değiştirir.
-* Man parola Yöneticisi & dijital kasa Kullanıcı silmeleri desteklemez, yalnızca devre dışı bırakın. Devre dışı bırakılan kullanıcılar, Man yönetici konsolu Kullanıcı arabiriminde kilitli olarak görünür.
+* Keeper Password Manager & Digital **Vault, e-postaların** ve **kullanıcı Adının** aynı kaynak değerine sahip olmasını gerektirir, çünkü her iki öznitelikteki herhangi bir güncelleştirme diğer değeri değiştirir.
+* Keeper Password Manager & Digital Vault kullanıcı silmeleri desteklemez, yalnızca devre dışı kalır. Devre dışı bırakılan kullanıcılar Keeper Admin Console UI'da kilitli olarak görünür.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 

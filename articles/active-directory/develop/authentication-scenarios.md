@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platformunda kimlik doğrulaması | Mavisi
-description: Microsoft Identity platformunda (v 2.0) kimlik doğrulamasının temelleri hakkında bilgi edinin.
+title: Microsoft kimlik platformunda kimlik doğrulama | Azure
+description: Microsoft kimlik platformunda (v2.0) kimlik doğrulamanın temelleri hakkında bilgi edinin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,166 +13,183 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 3ec965318da1361454b4a6bb78ed7147562b5fea
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: f8f5ab99086ee38e2f56247ce31f8ac0e7affc81
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79138527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128998"
 ---
 # <a name="authentication-basics"></a>Kimlik doğrulaması temel bilgileri
 
-## <a name="what-is-authentication"></a>Kimlik doğrulaması nedir?
+## <a name="what-is-authentication"></a>Kimlik doğrulama nedir
 
-Bu makalede, korunan Web uygulamaları, Web API 'Leri veya korumalı Web API 'Lerini çağıran uygulamalar oluşturmak için anlamanız gereken birçok kimlik doğrulama kavramı yer almaktadır. Bildiğiniz bir terimi görürseniz, temel kavramları kapsayan [Sözlüğümüzü](developer-glossary.md) veya [Microsoft Identity platform videolarımızı](identity-videos.md) deneyin.
+Bu makalede, korumalı web uygulamaları, web API'leri veya korumalı Web API'lerini çağıran uygulamalar oluşturmak için anlamanız gereken kimlik doğrulama kavramlarının birçoğunu kapsar. Bilmediğiniz bir terim görürseniz, temel kavramları kapsayan [sözlüğümüzünü](developer-glossary.md) veya [Microsoft kimlik platformu videolarımızı](identity-videos.md) deneyin.
 
-**Kimlik doğrulama** , sizin olduğunu söylediğinizde sizin olduğunu kanıtlama işlemidir. Kimlik doğrulaması bazen AuthN şeklinde kısaltılabilir.
+**Kimlik doğrulama,** söylediğiniz kişi olduğunuzu kanıtlama işlemidir. Kimlik doğrulaması bazen AuthN şeklinde kısaltılabilir.
 
-**Yetkilendirme** , kimliği doğrulanmış bir tarafın bir şeyi yapmak için izin verme işlemidir. Hangi verilerin erişebileceğini ve bu verilerle yapabileceklerinizi belirtir. Yetkilendirme bazen AuthZ şeklinde kısaltılabilir.
+**Yetkilendirme,** bir şey yapmak için doğrulanmış bir tarafa izin verme eylemidir. Hangi verilere erişebileceğinizi ve bu verilerle neler yapabileceğinizi belirtir. Yetkilendirme bazen AuthZ şeklinde kısaltılabilir.
 
-Her birinin kendi Kullanıcı adı ve parola bilgilerini korumalarına veya birden çok uygulama arasında Kullanıcı eklemeniz veya kaldırmanız gerektiğinde yüksek bir yönetim yükü sunan uygulamalar oluşturmak yerine, uygulamalar bu sorumluluğu merkezi bir kimlik sağlayıcısına devredebilir.
+Uygulamalar, birden çok uygulama üzerinden kullanıcı eklemeniz veya kaldırmanız gerektiğinde yüksek bir yönetim yükü oluşturan, her birinin kendi kullanıcı adı ve parola bilgilerini saklayan uygulamalar oluşturmak yerine, bu sorumluluğu merkezi bir kimlik sağlayıcısına devredebilir.
 
-Azure Active Directory (Azure AD), bulutta merkezi bir kimlik sağlayıcıdır. Kimlik doğrulama ve yetkilendirmeyi yetkilendirme, bir kullanıcının belirli bir konumda olmasını gerektiren koşullu erişim ilkeleri, çok faktörlü kimlik doğrulamasının kullanılması ve bir kullanıcının bir kez oturum açmasını ve sonra otomatik olarak kullanılabilmesini sağlar. aynı merkezi dizini paylaşan tüm Web uygulamalarında oturum açıldı. Bu yetenek, çoklu oturum açma (SSO) olarak adlandırılır.
+Azure Etkin Dizin (Azure AD), bulutta merkezi bir kimlik sağlayıcısıdır. Kimlik doğrulaması ve yetkilendirmesini devretmek, kullanıcının belirli bir konumda olmasını gerektiren Koşullu Erişim ilkeleri, çok faktörlü kimlik doğrulamakullanımı gibi senaryoların yanı sıra bir kullanıcının oturum açmasını ve ardından otomatik olarak oturum açmasını sağlar aynı merkezi dizini paylaşan tüm web uygulamalarında oturum açın. Bu özellik, Tek İşaret Açma (SSO) olarak adlandırılır.
 
-Merkezi bir kimlik sağlayıcısı, dünyanın her yerindeki kullanıcıların, kuruluşun ağından oturum açması gerekmeyen uygulamalar için daha da önemlidir. Azure AD, kullanıcıların kimliğini doğrular ve erişim belirteçleri sağlar. [Erişim belirteci](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) , bir yetkilendirme sunucusu tarafından verilen bir güvenlik belirtecidir. Kullanıcının ve belirtecin hedeflenen uygulamayla ilgili bilgiler içerir; Web API 'Lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir.
+Merkezi bir kimlik sağlayıcısı, dünyanın dört bir yanında bulunan ve kuruluşun ağında oturum açmamış olan uygulamalar için daha da önemlidir. Azure AD, kullanıcıların kimliğini doğrular ve erişim belirteçleri sağlar. [Erişim belirteci,](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) yetkilendirme sunucusu tarafından verilen bir güvenlik belirtecidir. Kullanıcı ve belirteç amaçlandığı uygulama hakkında bilgi içerir; Web API'lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir.
 
-Microsoft Identity platformu, [OAuth 2,0](https://oauth.net/2/) ve [OpenID Connect](https://openid.net/connect/)gibi endüstri standardı protokoller desteğiyle, ve kodlamaya hızlı bir şekilde başlamanıza yardımcı olması için farklı platformlar için açık kaynak kitaplıkların yanı sıra, uygulama geliştiricileri için kimlik doğrulamasını basitleştirir. Geliştiricilerin tüm Microsoft kimliklerinden oturum açmasını, [Microsoft Graph](https://developer.microsoft.com/graph/), diğer Microsoft API 'lerini veya geliştiricilerin oluşturduğu API 'leri çağıracağınız belirteçler almasını sağlar. Daha fazla bilgi için bkz. [Microsoft Identity platform 'un gelişi](about-microsoft-identity-platform.md).
+Microsoft kimlik platformu, [OAuth 2.0](https://oauth.net/2/) ve [OpenID Connect](https://openid.net/connect/)gibi endüstri standardı protokollerin yanı sıra hızlı bir şekilde kodlamaya başlamanıza yardımcı olacak farklı platformlar için açık kaynak kitaplıkları desteğiyle, hizmet olarak kimlik sağlayarak uygulama geliştiricileri için kimlik doğrulamayı kolaylaştırır. Geliştiricilerin tüm Microsoft kimliklerini oturum açan uygulamalar oluşturmasına, Microsoft [Graph'ı,](https://developer.microsoft.com/graph/)diğer Microsoft API'lerini veya geliştiricilerin oluşturduğu API'leri arama belirteçlerini almalarına olanak tanır. Daha fazla bilgi için Microsoft [kimlik platformunun Evrimi'ne](about-microsoft-identity-platform.md)bakın.
 
 ### <a name="tenants"></a>Kiracılar
 
-Bulut kimlik sağlayıcısı birçok kuruluşa hizmet eder. Kullanıcıları farklı kuruluşlardan ayrı tutmak için, Azure AD kiracılar halinde bölümlenmiştir ve kuruluşa göre tek bir kiracı olur.
+Bulut kimlik sağlayıcısı birçok kuruluşa hizmet vermektedir. Azure AD, farklı kuruluşlardan kullanıcıları ayrı tutmak için, kuruluş başına bir kiracıyla birlikte kiracı olarak bölümlere ayrılır.
 
-Kiracılar kullanıcıları ve bunlarla ilişkili uygulamaları izler. Microsoft Identity platformu, kişisel Microsoft hesaplarıyla oturum açarken kullanılan kullanıcıları da destekler.
+Kiracılar kullanıcıları ve ilişkili uygulamalarını izler. Microsoft kimlik platformu, kişisel Microsoft hesaplarıyla oturum açan kullanıcıları da destekler.
 
-Azure AD Ayrıca, kuruluşların kullanıcılara, genellikle Google hesabı gibi sosyal kimlikler kullanarak oturum açmalarına olanak tanıyan Azure Active Directory B2C de sağlar. Daha fazla bilgi için bkz. [Azure Active Directory B2C belgeleri](https://docs.microsoft.com/azure/active-directory-b2c) .
+Azure AD ayrıca, kuruluşların google hesabı gibi sosyal kimlikleri kullanarak kullanıcılarda, genellikle müşterilerde oturum açabilmesi için Azure Active Directory B2C de sağlar. Daha fazla bilgi için Azure [Active Directory B2C belgelerine](https://docs.microsoft.com/azure/active-directory-b2c) bakın.
 
 ### <a name="security-tokens"></a>Güvenlik belirteçleri
 
-Güvenlik belirteçleri, kullanıcılar ve uygulamalar hakkında bilgi içerir. Azure AD, talepler içeren JSON tabanlı belirteçleri (JWTs) kullanır.
+Güvenlik belirteçleri kullanıcılar ve uygulamalar hakkında bilgi içerir. Azure AD, talep içeren JSON tabanlı belirteçleri (JWTs) kullanır.
 
-Bir talep, bir [istemci uygulaması](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) veya [kaynak sahibi](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)gibi bir varlık hakkında, [kaynak sunucusu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)gibi başka bir varlığa onay verir.
+Talep, [bir istemci uygulaması](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) veya kaynak [sahibi](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)gibi bir varlık la ilgili iddiaları [kaynak sunucusu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)gibi başka bir varlığa sağlar.
 
-Talepler, belirteç konusuyla ilgili olgu geçişi yapan ad/değer çiftleridir. Örneğin, bir talep [yetkilendirme sunucusu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server)tarafından kimliği doğrulanan güvenlik sorumlusu hakkında olgu içerebilir. Belirli bir belirteçte mevcut talepler, belirteç türü, konunun kimliğini doğrulamak için kullanılan kimlik bilgisi türü, uygulama yapılandırması vb. dahil olmak üzere birçok konuya bağlıdır.
+Talepler, belirteç konusuyla ilgili gerçekleri aktaran ad/değer çiftleridir. Örneğin, bir [talep, yetkilendirme sunucusu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server)tarafından kimlik doğrulaması yapılan güvenlik ilkesiyle ilgili gerçekleri içerebilir. Belirli bir belirteçte bulunan talepler, belirteç türü, öznenin kimliğini doğrulamak için kullanılan kimlik bilgisi türü, uygulama yapılandırması ve benzeri birçok şeye bağlıdır.
 
-Uygulamalar, şu gibi çeşitli görevler için talepler kullanabilir:
+Uygulamalar gibi çeşitli görevler için talep kullanabilirsiniz:
 
-* Belirteç doğrulanıyor
-* Belirteç konusunun kiracısı tanımlanıyor
+* Belirteci doğrulama
+* Belirteç öznesinin kiracısını tanımlama
 * Kullanıcı bilgilerini görüntüleme
-* Konunun yetkilendirmesini belirleme
+* Öznenin yetkilendirmesinin belirlenmesi
 
-Bir talep, şu gibi bilgiler sağlayan anahtar-değer çiftlerinden oluşur:
+Bir talep, aşağıdakiler gibi bilgiler sağlayan anahtar değer çiftlerinden oluşur:
 
-* Belirteci oluşturan güvenlik belirteci sunucusu
-* Belirtecin oluşturulduğu tarih
-* Konu (Kullanıcı--Daemon 'ları dışında)
-* Belirtecin oluşturulduğu uygulama olan hedef kitle
-* Belirteç için istenen uygulama (istemci). Web uygulamaları söz konusu olduğunda, bu, hedef kitle ile aynı olabilir
+* Belirteci oluşturan Güvenlik Belirteci Sunucusu
+* Belirteci oluşturulduğu tarih
+* Konu (kullanıcı gibi--daemons hariç)
+* Belirteç oluşturulduğu uygulama olan hedef kitle
+* Belirteci isteyen uygulama (istemci). Web uygulamaları söz konusu olduğunda, bu hedef kitle ile aynı olabilir
 
-Daha ayrıntılı talep bilgileri için bkz. [erişim belirteçleri](access-tokens.md) ve [Kimlik belirteçleri](id-tokens.md).
+Daha ayrıntılı talep bilgileri için [erişim belirteçleri](access-tokens.md) ve [kimlik belirteçleri](id-tokens.md)bakın.
 
-Belirteç doğrulamak için, belirtecin oluşturulduğu uygulamaya, kullanıcının oturum açmış olduğu Web uygulamasına veya Web API 'sinin çağrılmakta olduğu uygulamaya kadar olur. Belirteç, güvenlik belirteci sunucusu (STS) tarafından özel anahtarla imzalanır. STS ilgili ortak anahtarı yayımlar. Bir belirteci doğrulamak için, uygulama, imzayı özel anahtar kullanılarak oluşturulduğunu doğrulamak üzere STS ortak anahtarını kullanarak imzayı doğrular.
+Belirteci oluşturulan uygulamaya, kullanıcıda oturum açan web uygulamasına veya belirteci doğrulamak için Web API'sinin çağrılması gereken uygulamaya kalmış. Belirteç, Güvenlik Belirteci Sunucusu (STS) tarafından özel bir anahtarla imzalanır. STS ilgili ortak anahtarı yayımlar. Bir belirteci doğrulamak için uygulama, imzanın özel anahtar kullanılarak oluşturulduğunu doğrulamak için STS ortak anahtarını kullanarak imzayı doğrular.
 
-Belirteçler yalnızca sınırlı bir süre için geçerlidir. STS, genellikle bir dizi belirteç sağlar: uygulamaya veya korunan kaynağa erişmek için bir erişim belirteci ve erişim belirtecinin süresi dolmak üzere kapatıldığında erişim belirtecini yenilemek için kullanılan yenileme belirteci.
+Belirteçler yalnızca sınırlı bir süre için geçerlidir. Genellikle STS bir çift belirteç sağlar: uygulamaya veya korumalı kaynağa erişmek için bir erişim belirteci ve erişim belirteci sona ermek üzereyken erişim belirteci yenilemek için kullanılan bir yenileme belirteci.
 
-Erişim belirteçleri, `Authorization` üst bilgisinde taşıyıcı belirteci olarak bir Web API 'sine geçirilir. Bir uygulama STS 'ye yenileme belirteci sağlayabilir ve uygulamaya yönelik kullanıcı erişimi iptal edilmediği takdirde, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. Bu, kuruluşa ayrılmaya yönelik senaryonun işlenme yönteminden oluşur. STS yenileme belirtecini aldığında, Kullanıcı artık yetkilendirilmezse başka bir geçerli erişim belirteci vermez.
+Erişim belirteçleri, üstbilgideki taşıyıcı belirteci olarak `Authorization` bir Web API'sine aktarılır. Bir uygulama STS'ye yeni bir belirteç sağlayabilir ve kullanıcının uygulamaya erişimi iptal edilmediyse, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. İşletmeden ayrılan birinin senaryosu bu şekilde işlenir. STS yenileme belirteci aldığında, kullanıcı artık yetkili değilse başka bir geçerli erişim belirteci vermez.
+
+### <a name="how-each-flow-emits-tokens-and-codes"></a>Her akış nasıl belirteçleri ve kodları yayır
+
+İstemcinizin nasıl oluşturulabildiğine bağlı olarak, Azure AD tarafından desteklenen kimlik doğrulama akışlarından birini (veya birkaçını) kullanabilir. Bu akışlar, yetkilendirme kodlarının yanı sıra çeşitli belirteçler (id_tokens, yenileme belirteçleri, erişim belirteçleri) üretebilir ve bunları çalışması için farklı belirteçler gerektirebilir. Bu grafik genel bir bakış sağlar:
+
+|Akış | Gerektirir | id_token | erişim belirteci | belirteci yenileme | yetkilendirme kodu | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[Yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Örtük akış](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[Hibrid OIDC akışı](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Belirteç itfasını yenile](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | belirteci yenileme | x | x | x| |
+|[On-behalf-of akışı](v2-oauth2-on-behalf-of-flow.md) | erişim belirteci| x| x| x| |
+|[İstemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md) | | | x (yalnızca uygulama)| | |
+
+Örtük mod üzerinden verilen belirteçler, URL üzerinden tarayıcıya geri aktarılması `response_mode` `query` nedeniyle `fragment`bir uzunluk sınırlamasına sahiptir (nerede veya).  Bazı tarayıcıların, tarayıcı çubuğuna konulabilecek ve çok uzun olduğunda başarısız olabilecek URL boyutuyla ilgili bir sınırı vardır.  Bu nedenle, bu belirteçleri yok `groups` veya `wids` iddiaları yok. 
+
+Artık temel bilgilere genel bir bakışa sahip olduğunuza göre, kimlik uygulaması modelini ve API'yi anlamak için okumaya devam edin, Azure AD'de sağlamanın nasıl çalıştığını öğrenin ve Azure AD'nin desteklediği yaygın senaryolar hakkında ayrıntılı bilgilere bağlantılar edinin.
 
 ## <a name="application-model"></a>Uygulama modeli
 
-Uygulamalar, kullanıcıların kendilerine oturum açmasını veya bir kimlik sağlayıcısı için oturum açma yetkisini devredebilir. Azure AD tarafından desteklenen oturum açma senaryoları hakkında bilgi edinmek için bkz. [kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) .
+Uygulamalar, kullanıcıların kendilerini oturum açabilir veya oturum açabilir. Azure AD tarafından desteklenen oturum açma senaryoları hakkında bilgi edinmek için [Kimlik Doğrulama akışlarına ve uygulama senaryolarına](authentication-flows-app-scenarios.md) bakın.
 
-Bir kimlik sağlayıcısının bir kullanıcının belirli bir uygulamaya erişimi olduğunu bilmesini sağlamak için, hem Kullanıcı hem de uygulamanın kimlik sağlayıcısına kayıtlı olması gerekir. Uygulamanızı Azure AD 'ye kaydettiğinizde, uygulamanız için Azure AD ile tümleşmesini sağlayan bir kimlik yapılandırması sağladığınızda. Uygulamayı kaydetmek şunları da sağlar:
+Bir kimlik sağlayıcısının bir kullanıcının belirli bir uygulamaya erişimi olduğunu bilmesi için hem kullanıcının hem de uygulamanın kimlik sağlayıcısına kayıtlı olması gerekir. Uygulamanızı Azure AD'ye kaydettiğinizde, uygulamanız için Azure AD ile tümleştirmesine olanak tanıyan bir kimlik yapılandırması sağlarsınız. Uygulamayı kaydetmek aynı zamanda şunları yapmanızı sağlar:
 
-* Oturum açma iletişim kutusunda uygulamanızın markasını özelleştirin. Bu, bir kullanıcının uygulamanız için sahip olacağı ilk deneyim olduğu için önemlidir.
-* Kullanıcıların yalnızca kuruluşunuza ait olmaları durumunda oturum açmalarına izin vermek istediğinize karar verin. Bu tek kiracılı bir uygulamadır. Ya da kullanıcıların herhangi bir iş veya okul hesabını kullanarak oturum açmalarına izin verin. Bu, çok kiracılı bir uygulamadır. Ayrıca, kişisel Microsoft hesaplarına veya bir sosyal hesaba LinkedIn, Google, vb. izin verebilirsiniz.
-* Kapsam izinleri iste. Örneğin, oturum açmış kullanıcının profilini okuma izni veren "User. Read" kapsamını isteyebilirsiniz.
-* Web API 'nize erişimi tanımlayan kapsamları tanımlayın. Genellikle, bir uygulama API 'nize erişmek istediğinde tanımladığınız kapsamlar için izin istemesi gerekecektir.
-* Azure AD ile bir gizli anahtar paylaşarak, uygulamanın kimliğini Azure AD 'ye kanıtlar.  Bu, uygulamanın gizli bir istemci uygulaması olduğu durum ile ilgilidir. Gizli bir istemci uygulaması, kimlik bilgilerini güvenli bir şekilde tutan bir uygulamadır. Kimlik bilgilerini depolamak için güvenilir bir arka uç sunucusu gerekir.
+* Oturum açma iletişim kutusunda uygulamanızın markasını özelleştirin. Bu önemlidir, çünkü bu bir kullanıcının uygulamanızla yaşayacağı ilk deneyimdir.
+* Kullanıcıların yalnızca kuruluşunuza aitse oturum açmalarına izin vermek isteyip istemediğinize karar verin. Bu tek bir kiracı uygulamasıdır. Veya kullanıcıların herhangi bir iş veya okul hesabını kullanarak oturum açmalarına izin verin. Bu çok kiracılı bir uygulamadır. Ayrıca kişisel Microsoft hesaplarına veya LinkedIn, Google ve benzeri ülkelerden bir sosyal hesaba da izin verebilirsiniz.
+* Kapsam izinleri isteyin. Örneğin, oturum açmış kullanıcının profilini okuma izni veren "user.read" kapsamını isteyebilirsiniz.
+* Web API'nıza erişimi tanımlayan kapsamları tanımlayın. Genellikle, bir uygulama API'nize erişmek istediğinde, tanımladığınız kapsamlar için izin istemesi gerekir.
+* Uygulamanın kimliğini Azure AD ile kanıtlayan bir sırrı Azure AD ile paylaşın.  Bu, uygulamanın gizli bir istemci uygulaması olduğu durumlarda geçerlidir. Gizli istemci uygulaması, kimlik bilgilerini güvenli bir şekilde tutabilen bir uygulamadır. Kimlik bilgilerini depolamak için güvenilir bir arka uç sunucusu gerektirirler.
 
-Kaydolduktan sonra uygulamaya, belirteç istediğinde uygulamanın Azure AD ile paylaştığı benzersiz bir tanımlayıcı verilir. Uygulama [gizli bir istemci uygulaması](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application)ise, sertifikaların veya gizli anahtarların kullanıldığına bağlı olarak gizli anahtar veya ortak anahtarı da paylaşır.
+Kaydolduktan sonra, uygulama, belirteçleri istediğinde uygulamanın Azure AD ile paylaştığı benzersiz bir tanımlayıcı verilir. Uygulama gizli bir [istemci uygulamasıysa,](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application)sertifikaların veya sırların kullanılıp kullanılmadığına bağlı olarak gizli veya ortak anahtarı da paylaşır.
 
-Microsoft Identity platform iki ana işlevi yerine getiren bir modeli kullanarak uygulamaları temsil eder:
+Microsoft kimlik platformu, iki ana işlevi yerine getiren bir modeli kullanarak uygulamaları temsil eder:
 
-* Uygulamayı desteklediği kimlik doğrulama protokollerine göre tanımla
-* Kimlik doğrulaması için gereken tüm tanımlayıcıları, URL 'Leri, gizli dizileri ve ilgili bilgileri sağlayın
+* Uygulamayı desteklediği kimlik doğrulama protokollerine göre tanımlama
+* Kimlik doğrulaması için gerekli olan tüm tanımlayıcıları, URL'leri, sırları ve ilgili bilgileri sağlayın
 
-Microsoft Identity platformu:
+Microsoft kimlik platformu:
 
 * Çalışma zamanında kimlik doğrulamasını desteklemek için gereken tüm verileri tutar
-* Bir uygulamanın erişmesi gerekebilecek kaynakları ve belirli bir isteğin yerine getirilmesi gereken koşulları belirlemek için tüm verileri tutar
-* Uygulama geliştiricisinin kiracısında ve diğer Azure AD kiracılarında uygulama sağlamayı uygulamak için altyapı sağlar
-* Belirteç istek süresi boyunca Kullanıcı onayını işler ve kiracılar genelinde uygulamaların dinamik sağlamasını kolaylaştırır
+* Bir uygulamanın hangi kaynaklara erişebileceğine ve belirli bir isteğin hangi koşullar altında yerine getirilmesi gerektiğine karar vermek için tüm verileri tutar
+* Uygulama geliştiricisinin kiracısı içinde ve diğer Azure AD kiracılarına uygulama sağlama için altyapı sağlar
+* Belirteç isteği süresi sırasında kullanıcı onayını işler ve uygulamaların kiracılar arasında dinamik olarak sağlanmasını kolaylaştırır
 
-Onay, bir istemci uygulamanın, kaynak sahibi adına belirli izinler altında korumalı kaynaklara erişmesi için bir kaynak sahibi verme yetkilendirmesi işlemidir. Microsoft Identity platformu:
+İzin, bir kaynak sahibinin, kaynak sahibi adına belirli izinler altında korunan kaynaklara erişmek için istemci başvurusu için yetki verme işlemidir. Microsoft kimlik platformu:
 
 * Kullanıcıların ve yöneticilerin uygulamanın kendileri adına kaynaklara erişmesine dinamik olarak onay vermesini veya reddetmesini sağlar.
 * Yöneticilerin uygulamaların gerçekleştirebilecekleri işlemler, belirli uygulamalara erişebilecek kullanıcılar ve erişilen dizin kaynakları hakkında son kararı vermesini sağlar.
 
-Microsoft Identity platformunda bir [uygulama nesnesi](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-object) bir uygulamayı açıklar. Dağıtım zamanında, Microsoft Identity platform bir dizin veya kiracı içindeki bir uygulamanın somut örneğini temsil eden bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#service-principal-object)oluşturmak için uygulama nesnesini bir şema olarak kullanır. Hizmet sorumlusu, uygulamanın belirli bir hedef dizinde gerçekten ne yapabileceğini, bunu kullanabilecek kaynakları, hangi kaynakların erişebileceğini ve bu şekilde olduğunu tanımlar. Microsoft Identity platformu, bir uygulama nesnesinden **onay**aracılığıyla bir hizmet sorumlusu oluşturur.
+Microsoft kimlik platformunda, bir [uygulama nesnesi](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-object) bir uygulamayı açıklar. Dağıtım sırasında, Microsoft kimlik platformu bir dizin veya kiracı içinde bir uygulamanın somut bir örneği temsil eden bir [hizmet anabilim](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#service-principal-object)oluşturmak için bir plan olarak uygulama nesnesi kullanır. Hizmet sorumlusu, uygulamanın belirli bir hedef dizinde gerçekte neler yapabileceğini, kimlerin kullanabileceğini, hangi kaynaklara erişebileceğini ve benzeri ni tanımlar. Microsoft kimlik **platformu, onay**yoluyla bir uygulama nesnesinden bir hizmet ilkesi oluşturur.
 
-Aşağıdaki diyagramda, izin tarafından yönetilen basitleştirilmiş bir Microsoft Identity platformu sağlama akışı gösterilmektedir. İki kiracı gösterir: A ve B. kiracı, uygulamanın sahibi. B kiracısı, bir hizmet sorumlusu aracılığıyla uygulamayı örnekleniyor.  
+Aşağıdaki diyagram, rıza ile yönlendirilen basitleştirilmiş bir Microsoft kimlik platformu sağlama akışını gösterir. İki kiracı gösterir: A ve B. Kiracı A uygulama sahibi. Kiracı B, bir servis müdürü aracılığıyla başvuruyu anında gerçekletir.  
 
 ![Onay temelli basitleştirilmiş sağlama akışı](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
 Bu sağlama akışında:
 
-1. B kiracısından bir kullanıcı uygulamayla oturum açmaya çalışır, yetkilendirme uç noktası uygulama için bir belirteç ister.
-1. Kimlik doğrulaması için Kullanıcı kimlik bilgileri alındı ve doğrulanır.
-1. Kullanıcıdan, B kiracısına erişim kazanmak için uygulamanın onayını sağlaması istenir.
-1. Microsoft Identity platformu, B kiracısında bir hizmet sorumlusu oluşturmak için bir şema olarak kiracı 'daki uygulama nesnesini kullanır.
+1. Kiracı B'den bir kullanıcı uygulamayla oturum açmaya çalışırsa, yetkilendirme bitiş noktası uygulama için bir belirteç ister.
+1. Kullanıcı kimlik bilgileri kimlik doğrulaması için elde edilir ve doğrulanır.
+1. Kullanıcıdan, uygulamanın kiracı B'ye erişebilmesi için onay vermesi istenir.
+1. Microsoft kimlik platformu, kiracı B'de bir hizmet ilkesi oluşturmak için kiracı A'daki uygulama nesnesini bir plan olarak kullanır.
 1. Kullanıcı istenen belirteci alır.
 
-Bu işlemi, ek kiracılar için yineleyebilirsiniz. Kiracı A, uygulama için şemayı saklar (uygulama nesnesi). Uygulamanın izin verdiği tüm diğer kiracıların kullanıcıları ve yöneticileri, uygulamanın her Kiracıdaki ilgili hizmet sorumlusu nesnesi aracılığıyla ne yapmasına izin verileceğini kontrol edin. Daha fazla bilgi için bkz. [Microsoft Identity platformunda uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
+Ek kiracılar için bu işlemi yineleyebilirsiniz. Kiracı A, uygulamanın (uygulama nesnesi) planını korur. Uygulamanın onay landığı diğer tüm kiracıların kullanıcıları ve yöneticileri, uygulamanın her kiracıdaki ilgili hizmet ana nesnesi aracılığıyla ne yapmasına izin verileceğini kontrol eder. Daha fazla bilgi için [Microsoft kimlik platformundaki Uygulama ve hizmet ana nesnelerine](app-objects-and-service-principals.md)bakın.
 
 ## <a name="web-app-sign-in-flow-with-azure-ad"></a>Azure AD ile Web uygulaması oturum açma akışı
 
-Bir kullanıcı tarayıcıda bir Web uygulamasına gittiğinde aşağıdakiler olur:
+Bir kullanıcı tarayıcıda bir web uygulamasına gittiğinde aşağıdaki gibi olur:
 
-* Web uygulaması, kullanıcının kimlik doğrulamasının yapılıp yapılmayacağını belirler.
-* Kullanıcının kimliği doğrulanmadıysa, Web uygulaması Kullanıcı oturumu açmak için Azure AD 'ye temsilciler atar. Bu oturum açma, kuruluşun ilkesiyle uyumlu olacaktır. Bu, kullanıcıdan çok faktörlü kimlik doğrulaması kullanarak veya bir parola (örneğin, Windows Hello kullanarak) kullanarak kimlik bilgilerini girmesini isteyebilir.
-* Kullanıcıdan, istemci uygulamasına gereken erişimi onaylaması istenir. Bu nedenle, Azure AD 'nin Kullanıcı tarafından onaylanan erişimi temsil eden belirteçleri sunabilmesi için istemci uygulamalarının Azure AD 'ye kaydedilmesi gerekir.
+* Web uygulaması, kullanıcının kimliğinin doğrulanıp doğrulanmayacağını belirler.
+* Kullanıcının kimliği doğrulanmıyorsa, web uygulaması kullanıcıda oturum açmaları için Azure AD'ye devreder. Bu oturum açma, kullanıcıdan kimlik bilgilerini girmesini istemek, çok faktörlü kimlik doğrulaması kullanmak veya parola kullanmamak (örneğin Windows Hello'yu kullanmak) anlamına gelen kuruluşun ilkesiyle uyumlu olacaktır.
+* Kullanıcıdan, istemci uygulamasının ihtiyaç duyduğu erişimi kabul etmesi istenir. Bu nedenle istemci uygulamaların Azure AD'ye kaydedilmesi gerekir, böylece Azure AD kullanıcının onay verdiği erişimi temsil eden belirteçler sunabilir.
 
-Kullanıcının kimliği başarıyla doğrulandı:
+Kullanıcı başarılı bir şekilde doğrulandığında:
 
-* Azure AD, Web uygulamasına bir belirteç gönderir.
-* Kullanıcının tarayıcı tanımlama bilgisi jar içindeki kimliğini içeren Azure AD 'nin etki alanı ile ilişkili bir tanımlama bilgisi kaydedilir. Bir uygulama Azure AD yetkilendirme uç noktasına gitmek için tarayıcıyı bir dahaki sefer kullandığında, tarayıcı tanımlama bilgisini Kullanıcı yeniden oturum açmak zorunda kalmayacak şekilde gösterir. Bu, SSO 'nun elde edilmesi için de bir yoldur. Tanımlama bilgisi Azure AD tarafından üretilir ve yalnızca Azure AD tarafından anlaşılabilirler.
-* Web uygulaması, belirteci doğrular. Doğrulama başarılı olursa, Web uygulaması korumalı sayfayı görüntüler ve tarayıcının tanımlama bilgisi jar 'e bir oturum tanımlama bilgisi kaydeder. Kullanıcı başka bir sayfaya gittiğinde, Web uygulaması, oturum tanımlama bilgisine göre kullanıcının kimliğinin doğrulandığını bilir.
+* Azure AD, web uygulamasına bir belirteç gönderir.
+* Azure AD'nin etki alanıyla ilişkili ve tarayıcının çerez kavanozundaki kullanıcının kimliğini içeren bir çerez kaydedilir. Bir uygulama Azure AD yetkilendirme bitiş noktasına gitmek için tarayıcıyı bir sonraki kez kullandığında, kullanıcının yeniden oturum açmaması için tarayıcı çerezi sunar. SSO'ya da bu şekilde ulaşılıyor. Çerez Azure AD tarafından üretilir ve yalnızca Azure AD tarafından anlaşılabilir.
+* Web uygulaması daha sonra belirteci doğrular. Doğrulama başarılı olursa, web uygulaması korunan sayfayı görüntüler ve tarayıcının çerez kavanozuna bir oturum çerezi kaydeder. Kullanıcı başka bir sayfaya gittiğinde, web uygulaması kullanıcının oturum çerezine göre kimlik doğrusu olduğunu bilir.
 
-Aşağıdaki sıra diyagramı bu etkileşimi özetler:
+Aşağıdaki sıralı diyagrambu etkileşimi özetler:
 
-![Web uygulaması kimlik doğrulama işlemi](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![web uygulaması kimlik doğrulama işlemi](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
 
-### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Web uygulaması, kullanıcının kimliğinin doğrulanmadığını nasıl belirler
+### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Bir web uygulaması kullanıcının kimlik doğrulaması olup olmadığını nasıl belirler?
 
-Web uygulaması geliştiricileri, kimlik doğrulaması gerektirdiğini veya yalnızca belirli sayfaların olduğunu belirtebilir. Örneğin, ASP.NET/ASP.NET Core 'da, denetleyici eylemlerine `[Authorize]` özniteliği eklenerek yapılır. 
+Web uygulaması geliştiricileri, belirli sayfaların tamamının veya yalnızca kimlik doğrulaması gerekip gerekmediğini gösterebilir. Örneğin, ASP.NET/ASP.NET Core'da, bu denetleyici `[Authorize]` eylemlerine öznitelik eklenerek yapılır. 
 
-Bu öznitelik, ASP.NET Kullanıcı kimliğini içeren bir oturum tanımlama bilgisinin varlığını denetlamasına neden olur. Bir tanımlama bilgisi yoksa, ASP.NET kimlik doğrulamasını belirtilen kimlik sağlayıcısına yönlendirir. Kimlik sağlayıcısı Azure AD ise, Web uygulaması, kimlik doğrulamasını `https://login.microsoftonline.com`olarak yeniden yönlendirir ve bu da bir oturum açma iletişim kutusu görüntüler.
+Bu öznitelik, ASP.NET kullanıcının kimliğini içeren bir oturum çerezinin varlığını denetlemesine neden olur. Çerez yoksa, ASP.NET kimlik doğrulamasını belirtilen kimlik sağlayıcısına yönlendirir. Kimlik sağlayıcısı Azure AD ise, web uygulaması kimlik `https://login.microsoftonline.com`doğrulamayı oturum açma iletişim kutusunu görüntüleyen 'e yönlendirir.
 
-### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Bir Web uygulamasının Azure AD 'de oturum açması ve bir belirteç alacağı
+### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Bir web uygulaması Azure AD'de oturum açma ve belirteç edinme
 
-Tarayıcı aracılığıyla Kullanıcı kimlik doğrulaması gerçekleşir. OpenID Protokolü standart HTTP protokol iletilerini kullanır.
-* Web uygulaması, Azure AD 'yi kullanmak için tarayıcıya bir HTTP 302 (Redirect) gönderir.
-* Kullanıcının kimliği doğrulandığında Azure AD, tarayıcıyı kullanarak bir yeniden yönlendirme kullanarak belirteci Web uygulamasına gönderir.
-* Yeniden yönlendirme, Web uygulaması tarafından yeniden yönlendirme URI 'SI biçiminde sağlanır. Bu yeniden yönlendirme URI 'SI, Azure AD uygulama nesnesi ile kaydedilir. Uygulama çeşitli URL 'Lerde dağıtılabilmesi için birkaç yeniden yönlendirme URI 'si olabilir. Bu nedenle, Web uygulamasının kullanılacak yeniden yönlendirme URI 'sini belirtmesi de gerekecektir.
-* Azure AD, Web uygulaması tarafından gönderilen yeniden yönlendirme URI 'sinin, uygulamanın kayıtlı yeniden yönlendirme URI 'lerinden biri olduğunu doğrular.
+Kullanıcı kimlik doğrulaması tarayıcı üzerinden gerçekleşir. OpenID protokolü standart HTTP iletişim kuralı iletilerini kullanır.
+* Web uygulaması, Azure AD'yi kullanmak için tarayıcıya bir HTTP 302 (yönlendirme) gönderir.
+* Kullanıcının kimliği doğrulandığında, Azure AD tarayıcı üzerinden yönlendirme kullanarak belirteci web uygulamasına gönderir.
+* Yönlendirme, web uygulaması tarafından yeniden yönlendirme URI şeklinde sağlanır. Bu yeniden yönlendirme URI, Azure AD uygulama nesnesi ile kaydedilir. Uygulama birkaç URL'de dağıtılabileceğinden, birkaç yeniden yönlendirme URI'sı olabilir. Yani web uygulaması da kullanmak için uri yönlendirme belirtmek gerekir.
+* Azure AD, web uygulaması tarafından gönderilen yeniden yönlendirme URI'nin uygulama için kayıtlı yönlendirme URI'lerinden biri olduğunu doğrular.
 
 ## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Azure AD ile masaüstü ve mobil uygulama oturum açma akışı
 
-Yukarıda açıklanan akış, küçük farklılıklar ile masaüstü ve mobil uygulamalar için geçerlidir.
+Yukarıda açıklanan akış, hafif farklılıklarla masaüstü ve mobil uygulamalariçin geçerlidir.
 
-Masaüstü ve mobil uygulamalar, kimlik doğrulaması için katıştırılmış bir Web denetimi veya bir sistem tarayıcısı kullanabilir. Aşağıdaki diyagramda, bir masaüstü veya mobil uygulamanın, erişim belirteçleri almak ve Web API 'Lerini çağırmak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) nasıl kullandığı gösterilmektedir.
+Masaüstü ve mobil uygulamalar kimlik doğrulaması için katıştırılmış bir Web denetimi veya sistem tarayıcısı kullanabilir. Aşağıdaki diyagram, bir Masaüstü veya mobil uygulamanın erişim belirteçleri edinmek ve web API'lerini aramak için Microsoft kimlik doğrulama kitaplığını (MSAL) nasıl kullandığını gösterir.
 
-![Masaüstü uygulaması nasıl görünür](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
+![Masaüstü uygulaması nasıl göründüğü](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
-MSAL belirteçleri almak için bir tarayıcı kullanır. Web uygulamalarında olduğu gibi, kimlik doğrulaması da Azure AD 'ye atanmış olur.
+MSAL belirteçleri almak için bir tarayıcı kullanır. Web uygulamalarında olduğu gibi, kimlik doğrulaması Azure AD'ye devredilir.
 
-Azure AD, Web Apps için olduğu gibi tarayıcıda aynı kimlik tanımlama bilgisini kaydettiği için, yerel veya mobil uygulama sistem tarayıcısını kullanıyorsa, karşılık gelen Web uygulamasıyla SSO 'yu hemen alır.
+Azure AD, tarayıcıda web uygulamalarında olduğu gibi aynı kimlik çerezini kaydettiği için, yerel veya mobil uygulama sistem tarayıcısını kullanıyorsa, ilgili web uygulamasıyla hemen SSO'yu alır.
 
-Varsayılan olarak, MSAL sistem tarayıcısını kullanır. Bu özel durum, daha tümleşik bir kullanıcı deneyimi sağlamak için gömülü bir denetimin kullanıldığı masaüstü uygulamalarının .NET Framework.
+Varsayılan olarak, MSAL sistem tarayıcısını kullanır. Bunun istisnası, daha entegre bir kullanıcı deneyimi sağlamak için katıştırılmış denetimin kullanıldığı .NET Framework masaüstü uygulamalarıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ortak koşulları öğrenmek için [Microsoft Identity Platform geliştirici sözlüğü](developer-glossary.md) ' ne bakın.
-* Microsoft Identity platform tarafından desteklenen kullanıcıların kimliğini doğrulamak için diğer senaryolar hakkında daha fazla bilgi edinmek için bkz. [kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) .
-* Microsoft hesapları, Azure AD hesapları ve Azure AD B2C kullanıcıları tek ve kolaylaştırılmış bir programlama modelinde çalışan uygulamalar geliştirmenize yardımcı olan Microsoft kitaplıkları hakkında bilgi edinmek için bkz. [msal kitaplıkları](msal-overview.md) .
-* App Service uygulamanızın kimlik doğrulamasını nasıl yapılandıracağınızı öğrenmek için bkz. [Microsoft Identity platformu ile App Service tümleştirme](/azure/app-service/configure-authentication-provider-aad) .
+* Ortak terimleri tanımak için [Microsoft kimlik platformu geliştirici sözlüğüne](developer-glossary.md) bakın.
+* Microsoft kimlik platformu tarafından desteklenen kullanıcıların kimlik doğrulamasına yönelik diğer senaryolar hakkında daha fazla bilgi edinmek için [Kimlik Doğrulama akışlarına ve uygulama senaryolarına](authentication-flows-app-scenarios.md) bakın.
+* Microsoft Hesapları, Azure AD hesapları ve Azure AD B2C kullanıcılarıyla çalışan uygulamaları tek ve kolay bir programlama modelinde geliştirmenize yardımcı olan Microsoft kitaplıkları hakkında bilgi edinmek için [MSAL kitaplıklarına](msal-overview.md) bakın.
+* Uygulama Hizmeti uygulamanız için kimlik doğrulamayı nasıl yapılandıracağınızı öğrenmek için [Uygulama Hizmetini Microsoft kimlik platformuyla tümleştir'e](/azure/app-service/configure-authentication-provider-aad) bakın.

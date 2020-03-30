@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB .NET SDK kullanırken sorunları tanılama ve giderme
-description: .NET SDK kullanırken Azure Cosmos DB sorunları tanımlamak, tanılamak ve sorunlarını gidermek için istemci tarafı günlüğe kaydetme gibi özellikleri ve diğer üçüncü taraf araçları kullanın.
+title: Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
+description: .NET SDK kullanırken Azure Cosmos DB sorunlarını tanımlamak, tanılamak ve sorun gidermek için istemci tarafı günlüğü ve diğer üçüncü taraf araçları gibi özellikleri kullanın.
 author: j82w
 ms.service: cosmos-db
 ms.date: 03/11/2020
@@ -9,102 +9,102 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137963"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK kullanırken sorunları tanılama ve giderme
-Bu makalede, Azure Cosmos DB SQL API hesaplarıyla [.NET SDK](sql-api-sdk-dotnet.md) kullandığınızda yaygın sorunlar, geçici çözümler, Tanılama adımları ve araçlar ele alınmaktadır.
-.NET SDK, Azure Cosmos DB SQL API 'sine erişmek için istemci tarafı mantıksal temsili sağlar. Bu makalede, sorunla karşılaştığınızda size yardımcı olacak araçlar ve yaklaşımlar açıklanır.
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
+Bu makalede, Azure Cosmos DB SQL API hesaplarıyla [.NET SDK'yı](sql-api-sdk-dotnet.md) kullandığınızda sık karşılaşılan sorunlar, geçici çözüm adımları ve araçlar ele alılmıştır.
+.NET SDK, Azure Cosmos DB SQL API'sine erişmek için istemci tarafı mantıksal gösterimi sağlar. Bu makalede, sorunla karşılaştığınızda size yardımcı olacak araçlar ve yaklaşımlar açıklanır.
 
 ## <a name="checklist-for-troubleshooting-issues"></a>Sorun giderme sorunları için denetim listesi:
-Uygulamanızı üretime taşımadan önce aşağıdaki denetim listesini göz önünde bulundurun. Denetim listesinin kullanılması, görebileceğiniz bazı yaygın sorunları engeller. Ayrıca bir sorun oluştuğunda hızlı bir şekilde tanılama yapabilirsiniz:
+Uygulamanızı üretime taşımadan önce aşağıdaki denetim listesini göz önünde bulundurun. Denetim listesini kullanmak, görebileceğiniz birkaç yaygın sorunu önler. Bir sorun oluştuğunda da hızlı bir şekilde tanılayabilirsiniz:
 
-*    En son [SDK 'yı](sql-api-sdk-dotnet-standard.md)kullanın. Önizleme SDK 'Ları üretim için kullanılmamalıdır. Bu, zaten düzeltilen bilinen sorunların vurmasını engeller.
-*    [Performans ipuçlarını](performance-tips.md)gözden geçirin ve önerilen uygulamaları izleyin. Bu, ölçeklendirmeyi, gecikmeyi ve diğer performans sorunlarını önlemeye yardımcı olur.
-*    Bir sorunu gidermenize yardımcı olması için SDK günlüğünü etkinleştirin. Günlüğe kaydetme işleminin etkinleştirilmesi performansı etkileyebilir, bu sayede yalnızca sorun giderme sırasında etkinleştirmek en iyisidir. Aşağıdaki günlükleri etkinleştirebilirsiniz:
-    *    Azure portal kullanarak [ölçümleri günlüğe kaydedin](monitor-accounts.md) . Portal ölçümleri, sorunun Azure Cosmos DB veya istemci tarafından olup olmadığını belirlemede faydalı olan Azure Cosmos DB Telemetriyi gösterir.
-    *    [Tanılama dizesini](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) v2 SDK 'Sında veya v3 SDK 'daki [tanılamalardan](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) gelen işlem yanıtlarından günlüğe kaydedin.
-    *    Tüm Sorgu yanıtlarından [SQL sorgu ölçümlerini](sql-api-query-metrics.md) günlüğe kaydet 
-    *    [SDK günlüğü]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) kurulumunu izleyin
+*    En son [SDK'yı](sql-api-sdk-dotnet-standard.md)kullanın. Önizleme SDK'ları üretim için kullanılmamalıdır. Bu, zaten düzeltilen bilinen sorunları vurmayı önler.
+*    Performans [ipuçlarını](performance-tips.md)gözden geçirin ve önerilen uygulamaları izleyin. Bu, ölçekleme, gecikme ve diğer performans sorunlarını önlemeye yardımcı olur.
+*    Sorunları gidermenize yardımcı olması için SDK günlüğe kaydetmeyi etkinleştirin. Günlüğe kaydetmeyi etkinleştirmek performansı etkileyebilir, bu nedenle yalnızca sorun giderme sorunları olduğunda etkinleştirmek en iyisidir. Aşağıdaki günlükleri etkinleştirebilirsiniz:
+    *    Azure portalını kullanarak [ölçümleri günlüğe](monitor-accounts.md) kaydedin. Portal ölçümleri, sorunun Azure Cosmos DB'ye karşılık olup olmadığını veya istemci tarafından mı olduğunu belirlemek için yararlı olan Azure Cosmos DB telemetrisini gösterir.
+    *    Nokta operasyon yanıtlarından V2 SDK'daki [tanılama dizesini](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) veya V3 SDK'daki [tanılamayı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) kaydedin.
+    *    Tüm sorgu yanıtlarından [SQL Sorgu Ölçümlerini](sql-api-query-metrics.md) günlüğe kaydetme 
+    *    [SDK günlüğe kaydetme]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) kurulumlarını takip edin
 
-Bu makaledeki [yaygın sorunlar ve geçici çözümler](#common-issues-workarounds) bölümüne göz atın.
+Bu makaledeki [Ortak sorunlar ve geçici çözüm ler](#common-issues-workarounds) bölümüne bir göz atın.
 
-Etkin olarak izlenen [GitHub sorunları bölümüne](https://github.com/Azure/azure-cosmos-dotnet-v2/issues) bakın. Geçici bir çözüm ile benzer bir sorun olup olmadığını denetleyin. Bir çözüm bulamıyorsanız bir GitHub sorunu verirsiniz. Acil sorunlar için bir destek çizgisi açabilirsiniz.
+Etkin olarak izlenen [GitHub sorunları bölümünü](https://github.com/Azure/azure-cosmos-dotnet-v2/issues) kontrol edin. Geçici çözümle ilgili benzer bir sorunun dosyalanmış olup olmadığını denetleyin. Bir çözüm bulamadıysanız, github sorunu dosyalayın. Acil sorunlar için bir destek işareti açabilirsiniz.
 
 
-## <a name="common-issues-workarounds"></a>Yaygın sorunlar ve geçici çözümler
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Yaygın sorunlar ve geçici çözümler
 
 ### <a name="general-suggestions"></a>Genel öneriler
-* Uygulamanızı, mümkün olduğunda Azure Cosmos DB hesabınızla aynı Azure bölgesinde çalıştırın. 
-* İstemci makinenizde kaynak olmaması nedeniyle bağlantı/kullanılabilirlik sorunlarıyla karşılaşabilirsiniz. Azure Cosmos DB istemcisini çalıştıran düğümlerde CPU kullanımınızı izlemenizi ve yüksek yük üzerinde çalışıyorsa ölçeği büyütmeyi/dışarı izlemeyi öneririz.
+* Uygulamanızı mümkün olduğunca Azure Cosmos DB hesabınızla aynı Azure bölgesinde çalıştırın. 
+* İstemci makinenizde kaynak yetersizliğinden dolayı bağlantı/kullanılabilirlik sorunlarıyla karşılaşabilirsiniz. CPU kullanımınızı Azure Cosmos DB istemcisini çalıştıran düğümlerde izlemenizi ve yüksek yükte çalışıyorlarsa ölçeklendirmenizi/çıkarmanızı öneririz.
 
-### <a name="check-the-portal-metrics"></a>Portal ölçümlerini denetleyin
-[Portal ölçümlerinin](monitor-accounts.md) denetlenmesi, istemci tarafı bir sorun olup olmadığını veya hizmette bir sorun olup olmadığını belirlemenize yardımcı olur. Örneğin, ölçümler yüksek bir hız sınırlı istek (HTTP durum kodu 429) içeriyorsa, isteğin azaltıldı, [istek hızı çok büyük] bölümünü kontrol edin. 
+### <a name="check-the-portal-metrics"></a>Portal ölçümlerini kontrol edin
+Portal [ölçümlerinin](monitor-accounts.md) denetlenen, istemci tarafı bir sorun olup olmadığını veya hizmetle ilgili bir sorun olup olmadığını belirlemede yardımcı olur. Örneğin, ölçümler yüksek oranda oran sınırlı istek içeriyorsa (HTTP durum kodu 429) bu da isteğin daraldığı anlamına geliyorsa, [Istek oranını çok büyük] bir bölümdenetleyin. 
 
-### <a name="request-timeouts"></a>İstek zaman aşımları
-RequestTimeout genellikle doğrudan/TCP kullanılırken gerçekleşir, ancak ağ geçidi modunda gerçekleşebilir. Bu hatalar yaygın olarak bilinen nedenlerdir ve sorunun nasıl düzeltileceğini gösteren önerilerdir.
+### <a name="requests-timeouts"></a><a name="request-timeouts"></a>Zaman zaman larını istekleri
+RequestTimeout genellikle Doğrudan/TCP kullanırken olur, ancak Ağ Geçidi modunda gerçekleşebilir. Bu hatalar, bilinen yaygın nedenler ve sorunun nasıl düzeltilenle ilgili önerilerdir.
 
-* CPU kullanımı yüksek, gecikme süresi ve/veya istek zaman aşımına neden olur. Müşteri, daha fazla kaynak vermek için konak makinenin ölçeğini değiştirebilir veya yük daha fazla makineye dağıtılabilir.
-* Yuva/bağlantı noktası kullanılabilirliği düşük olabilir. Azure 'da çalışırken, .NET SDK kullanan istemciler Azure SNAT (PAT) bağlantı noktası tükenmesi ile aynı olabilir. Bu sorunu verme olasılığını azaltmak için .NET SDK 'sının en son sürüm 2. x veya 3. x sürümünü kullanın. Bu, en son SDK sürümünü her zaman çalıştırmanın nasıl önerildiğini bir örnektir.
-* Birden çok DocumentClient örneği oluşturmak bağlantı çekişmesine ve zaman aşımı sorunlarına yol açabilir. [Performans ipuçlarını](performance-tips.md)izleyin ve bir işlemin tamamında tek bir documentclient örneği kullanın.
-* Koleksiyonları bazen yükseltilmiş gecikme süresi veya istek zaman aşımları görebilir, çünkü koleksiyonları yeterince, arka uç kısıtlar ve istemci yeniden denemeler yapılır. [Portal ölçümlerini](monitor-accounts.md)denetleyin.
-* Azure Cosmos DB, genel olarak sağlanan üretilen işi fiziksel bölümler arasında eşit olarak dağıtır. İş yükünün bir sıcak [bölüm anahtarıyla](partition-data.md)karşılaşmaya yönelik olup olmadığını görmek için Portal ölçümlerini denetleyin. Bu, toplam tüketilen üretilen iş üretiminin (RU/s), sağlanan RUs kapsamında görünmesine neden olur, ancak tek bölümlü tüketilen üretilen iş hacmi (RU/s), sağlanan aktarım hızını aşacak. 
-* Ayrıca, 2,0 SDK, kanal semantiğini doğrudan/TCP bağlantılarına ekler. Aynı anda birden çok istek için bir TCP bağlantısı kullanılır. Bu, belirli durumlarda iki soruna neden olabilir:
-    * Yüksek derecede eşzamanlılık, kanalda çekişmeye neden olabilir.
-    * Büyük istekler veya yanıtlar, görece düşük eşzamanlılık derecesine sahip olan kanal ve exacerbate çekişmesi üzerinde satır başı engellemeye yol açabilir.
-    * Örnek, bu iki kategorinin herhangi birine denk geliyorsa (veya yüksek CPU kullanımı şüpheli ise), bunlar olası azaltmalar olur:
-        * Uygulamayı ölçeklendirmeye/dışarı ölçeklendirmeye çalışın.
-        * Ayrıca, daha fazla ayrıntı edinmek için SDK günlükleri [Izleme dinleyicisi](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) aracılığıyla yakalanabilir.
+* CPU kullanımı yüksektir, bu da gecikmeye ve/veya istek zaman adabına neden olur. Müşteri daha fazla kaynak sağlamak için ana makineyi ölçeklendirebilir veya yük daha fazla makineye dağıtılabilir.
+* Soket / Bağlantı noktası kullanılabilirliği düşük olabilir. Azure'da çalışırken,.NET SDK'yı kullanan istemciler Azure SNAT (PAT) bağlantı noktası tükenmesini engelleyebilir. Bu soruna çarpma olasılığını azaltmak için .NET SDK'nın 2.x veya 3.x en son sürümünü kullanın. Bu, her zaman en son SDK sürümünü çalıştırmak için tavsiye edilir neden bir örnektir.
+* Birden çok DocumentClient örneği oluşturmak bağlantı çekişmesine ve zaman adabına neden olabilir. Performans [ipuçlarını](performance-tips.md)izleyin ve tüm işlem boyunca tek bir DocumentClient örneğini kullanın.
+* Kullanıcılar bazen yüksek gecikme süresi veya istek zaman zaman ları görür, çünkü koleksiyonları yetersiz olarak karşılanır, arka uç isteklerini daraltır ve istemci dahili olarak yeniden çalışır. Portal [ölçümlerini](monitor-accounts.md)kontrol edin.
+* Azure Cosmos DB, sağlanan genel iş ortasını fiziksel bölümler arasında eşit olarak dağıtır. İş yükünün sıcak bir [bölüm anahtarıyla](partition-data.md)karşılaşıyor mu diye portal ölçümlerini denetleyin. Bu, tüketilen toplam iş buzun (RU/s) sağlanan RUs'lar altında görünmesine neden olur, ancak tüketilen tek bir bölüm iş girdisi (RU/s) sağlanan iş buzunu aşacaktır. 
+* Ayrıca, 2.0 SDK doğrudan/TCP bağlantılarına kanal semantikleri ekler. Aynı anda birden çok istek için bir TCP bağlantısı kullanılır. Bu, belirli durumlarda iki soruna yol açabilir:
+    * Yüksek miktarda eşzamanlılık kanalda çekişmeye yol açabilir.
+    * Büyük istekler veya yanıtlar, kanalda satır başı engellemesine yol açabilir ve nispeten düşük bir eşzamanlılık derecesine rağmen çekişmeyi şiddetlendirebilir.
+    * Bu iki kategoriden herhangi birinde durum düşüyorsa (veya yüksek CPU kullanımından şüpheleniliyorsa), bunlar olası azaltıcı etkenlerdir:
+        * Uygulamayı yukarı/dışarı ölçeklendirmeye çalışın.
+        * Ayrıca, SDK günlükleri daha fazla bilgi almak için [Trace Listener](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) aracılığıyla yakalanabilir.
 
-### <a name="high-network-latency"></a>Yüksek ağ gecikmesi
-Yüksek ağ gecikmesi, v2 SDK 'sindeki [Tanılama dizesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) veya v3 SDK 'daki [Tanılamalar](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) kullanılarak belirlenebilir.
+### <a name="high-network-latency"></a><a name="high-network-latency"></a>Yüksek ağ gecikmesi
+Yüksek ağ gecikmesi V2 SDK'daki [tanılama dizesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) veya V3 SDK'daki [tanılama](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) kullanılarak tanımlanabilir.
 
-Herhangi bir [zaman aşımı](#request-timeouts) yoksa ve Tanılamalar, yüksek gecikme süresinin `ResponseTime` ve `RequestStartTime`arasındaki farka göre (Bu örnekte 300 > milisaniye) açık olduğu tek istekleri gösterir.
+Zaman [sonu](#request-timeouts) yoksa ve tanılama, yüksek gecikme süresinin, aşağıdaki gibi (bu `ResponseTime` `RequestStartTime`örnekte 300 milisaniye >) arasındaki farkta belirgin olduğu tek istekleri gösterir:
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
 
-Bu gecikme süresinin birden çok nedeni olabilir:
+Bu gecikmenin birden çok nedeni olabilir:
 
 * Uygulamanız Azure Cosmos DB hesabınızla aynı bölgede çalışmıyor.
-* [Preferredlocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) veya [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) yapılandırmanız yanlıştır ve uygulamanızın çalışmakta olduğu konuma farklı bir bölgeye bağlanmaya çalışıyor.
-* Yüksek trafikle ilgili olarak ağ arabiriminde bir performans sorunu olabilir. Uygulama Azure sanal makinelerinde çalışıyorsa olası geçici çözümler vardır:
-    * [Hızlandırılmış ağ etkin bir sanal makine](../virtual-network/create-vm-accelerated-networking-powershell.md)kullanmayı düşünün.
-    * [Mevcut bir sanal makinede hızlandırılmış ağı](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)etkinleştirin.
-    * [Daha yüksek bir uç sanal makine](../virtual-machines/windows/sizes.md)kullanmayı düşünün.
+* [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) veya [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) yapılandırmanız yanlıştır ve uygulamanızın şu anda çalışmakta olduğu farklı bir bölgeye bağlanmaya çalışır.
+* Yüksek trafik nedeniyle Ağ arabiriminde bir darboğaz olabilir. Uygulama Azure Sanal Makineler'de çalışıyorsa, olası geçici geçici çözüm vardır:
+    * [Hızlandırılmış Ağ etkin](../virtual-network/create-vm-accelerated-networking-powershell.md)leştirilmiş bir Sanal Makine kullanmayı düşünün.
+    * [Varolan bir Sanal Makinede Hızlandırılmış Ağ'ı](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)etkinleştirin.
+    * Daha yüksek bir [uç Sanal Makine](../virtual-machines/windows/sizes.md)kullanmayı düşünün.
 
-### <a name="snat"></a>Azure SNAT (PAT) bağlantı noktası tükenmesi
+### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) bağlantı noktası tükenmesi
 
-Uygulamanız [Azure sanal makinelerinde genel IP adresi olmadan](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)dağıtılmışsa, varsayılan olarak [Azure SNAT bağlantı noktaları](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) , sanal makinenizin dışındaki herhangi bir uç noktaya bağlantı kurar. VM 'den Azure Cosmos DB uç noktasına izin verilen bağlantı sayısı [Azure SNAT yapılandırması](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)ile sınırlıdır. Bu durum bağlantının azaltılmasına, bağlantı kapanışına veya yukarıda belirtilen [istek zaman aşımlarına](#request-timeouts)yol açabilir.
+Uygulamanız herkese açık [bir IP adresi olmayan Azure Sanal Makinelerde](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)dağıtılıyorsa, varsayılan olarak [Azure SNAT bağlantı noktaları](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) VM'nizin dışındaki herhangi bir uç noktaya bağlantılar kurar. VM'den Azure Cosmos DB bitiş noktasına izin verilen bağlantı sayısı [Azure SNAT yapılandırması](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)ile sınırlıdır. Bu durum bağlantı azaltma, bağlantı kapatma veya yukarıda belirtilen [İstek zaman zaman zaman ları](#request-timeouts)yol açabilir.
 
- Azure SNAT bağlantı noktaları, yalnızca sanal makinenizin özel bir IP adresi genel bir IP adresine bağlandığında kullanılır. Azure SNAT sınırlamasından kaçınmak için iki geçici çözüm vardır (önceden uygulamanın tamamında tek bir istemci örneği kullanıyor olmanız gerekir):
+ Azure SNAT bağlantı noktaları yalnızca VM'nizin özel bir IP adresi ortak bir IP adresine bağlandığında kullanılır. Azure SNAT sınırlamasını önlemek için iki geçici çözüm vardır (uygulamanın tamamında zaten tek bir istemci örneği kullanıyorsanız):
 
-* Azure Cosmos DB hizmeti uç noktanızı Azure sanal makineler sanal ağınızın alt ağına ekleyin. Daha fazla bilgi için bkz. [Azure sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md). 
+* Azure Cosmos DB hizmet bitiş noktanızı Azure Sanal Makineler sanal ağınızın alt ağına ekleyin. Daha fazla bilgi için Azure [Sanal Ağ hizmeti bitiş noktalarına](../virtual-network/virtual-network-service-endpoints-overview.md)bakın. 
 
-    Hizmet uç noktası etkinleştirildiğinde, istekler artık genel bir IP Azure Cosmos DB ' e gönderilmez. Bunun yerine, sanal ağ ve alt ağ kimliği gönderilir. Yalnızca genel IP 'Lere izin veriliyorsa bu değişiklik güvenlik duvarı düşceye neden olabilir. Bir güvenlik duvarı kullanıyorsanız, hizmet uç noktasını etkinleştirdiğinizde, [sanal ağ ACL 'lerini](../virtual-network/virtual-networks-acl.md)kullanarak güvenlik duvarına bir alt ağ ekleyin.
-* [Azure sanal makinenize genel IP](../load-balancer/load-balancer-outbound-connections.md#assignilpip)atayın.
+    Hizmet bitiş noktası etkinleştirildiğinde, istekler artık ortak bir IP'den Azure Cosmos DB'ye gönderilmez. Bunun yerine, sanal ağ ve alt ağ kimliği gönderilir. Bu değişiklik, yalnızca genel IP'lere izin verilirse güvenlik duvarının düşmesine neden olabilir. Bir güvenlik duvarı kullanıyorsanız, hizmet bitiş noktasını etkinleştirdiğinizde, [Sanal Ağ ALA'larını](../virtual-network/virtual-networks-acl.md)kullanarak güvenlik duvarına bir alt ağ ekleyin.
+* [Azure VM'nize ortak](../load-balancer/load-balancer-outbound-connections.md#assignilpip)bir IP atayın.
 
-### <a name="http-proxy"></a>HTTP proxy 'si
-Bir HTTP proxy kullanıyorsanız, bunun SDK `ConnectionPolicy`yapılandırılan bağlantı sayısını destekleyebileceğini doğrulayın.
-Aksi halde bağlantı sorunlarıyla karşılaşın.
+### <a name="http-proxy"></a>HTTP proxy
+BIR HTTP proxy kullanıyorsanız, SDK'da `ConnectionPolicy`yapılandırılan bağlantı sayısını desteklediğinden emin olun.
+Aksi takdirde, bağlantı sorunlarıyla karşı karşıya kaldığınız da olur.
 
-### <a name="request-rate-too-large"></a>İstek hızı çok büyük
-' İstek hızı çok büyük ' veya 429 hata kodu hatası, tüketilen üretilen iş (RU/s) [sağlanan aktarım hızını](set-throughput.md)aştığından isteklerin kısıtlandığını gösterir. SDK, belirtilen [yeniden deneme ilkesine](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet)göre istekleri otomatik olarak yeniden dener. Bu hatayla sık sık karşılaşırsanız, koleksiyondaki aktarım hızını artırmayı düşünün. 429 hatası olup olmadığınızı görmek için [portalın ölçümlerini](use-metrics.md) denetleyin. Depolama ve istek hacminin eşit bir şekilde dağıtımına neden olduğundan emin olmak için [bölüm anahtarınızı](partitioning-overview.md#choose-partitionkey) gözden geçirin. 
+### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>İstek oranı çok büyük
+'İstek oranı çok büyük' veya hata kodu 429, tüketilen iş batışı (RU/s) [sağlanan iş bürünmüş](set-throughput.md)olduğundan isteklerinizin azaltıldığını gösterir. SDK, belirtilen [yeniden deneme ilkesine](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet)göre istekleri otomatik olarak yeniden deneecektir. Bu hatayı sık sık alırsanız, koleksiyondaki iş bilgili liği artırmayı düşünün. 429 hata alıyorsanız görmek için [portalın ölçümlerini](use-metrics.md) kontrol edin. Depolama ve talep hacminin eşit bir şekilde dağıtılmasıyla sonuçlanmasını sağlamak için [bölüm anahtarınızı](partitioning-overview.md#choose-partitionkey) gözden geçirin. 
 
 ### <a name="slow-query-performance"></a>Yavaş sorgu performansı
-Sorgu [ölçümleri](sql-api-query-metrics.md) , sorgunun en fazla zaman harcamanın nerede olduğunu belirlemenize yardımcı olur. Sorgu ölçümlerinde, istemcinin arka ucunda ne kadarının harcandığını görebilirsiniz.
-* Arka uç sorgusu hızlı bir şekilde döndürürse ve istemci üzerinde büyük bir zaman harcadıysanız makinedeki yükü kontrol edin. Yeterli miktarda kaynak olmaması ve SDK 'nın yanıtı işlemek için kaynakların kullanılabilir olmasını bekliyor olması olasıdır.
-* Arka uç sorgusu yavaşsa, [sorguyu iyileştirmeyi](optimize-cost-queries.md) ve geçerli [Dizin oluşturma ilkesine](index-overview.md) bakmaya çalışın 
+[Sorgu ölçümleri,](sql-api-query-metrics.md) sorgunun çoğu zaman nerede harcadığını belirlemede yardımcı olur. Sorgu ölçümlerinden, ne kadarının istemciye karşı arka uçta harcandığını görebilirsiniz.
+* Arka uç sorgusu hızlı bir şekilde dönerse ve istemci üzerinde büyük bir zaman harcarsa makinedeki yükü kontrol edin. Yeterli kaynak olmaması ve SDK'nın yanıtı işlemek için kaynakların kullanılabilir olmasını beklemesi olasıdır.
+* Arka uç sorgusu [yavaşsa, sorguyu en iyi duruma getirmeye](optimize-cost-queries.md) ve geçerli [dizin oluşturma ilkesine](index-overview.md) bakmayı deneyin 
 
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
-[İstek hızı çok büyük]: #request-rate-too-large
+[İstek oranı çok büyük]: #request-rate-too-large
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
