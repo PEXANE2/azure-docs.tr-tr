@@ -1,54 +1,54 @@
 ---
-title: Android Maps 'e kutucuk katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak bir haritada kutucuk katmanının nasıl işleneceğini öğreneceksiniz.
-author: farah-alyasari
-ms.author: v-faalya
+title: Android haritalara döşeme katmanı ekleme | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar Android SDK'yı kullanarak haritaüzerinde bir döşeme katmanının nasıl oluşturulacağını öğreneceksiniz.
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8e1a77ae83783b2841a2600654a9775e9ceb6ada
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209945"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335574"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya kutucuk katmanı ekleme Android SDK
+# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure Haritalar Android SDK'yı kullanarak haritaya döşeme katmanı ekleme
 
-Bu makalede, Azure Maps Android SDK kullanarak bir haritada kutucuk katmanının nasıl işleneceğini gösterilmektedir. Döşeme katmanları, Azure Maps temel harita kutucuklarının üzerine görüntü eklemenize olanak tanır. Azure haritalar döşeme sistemi hakkında daha fazla bilgi [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md) belgelerinde bulunabilir.
+Bu makalede, Azure Haritalar Android SDK'yı kullanarak haritaüzerinde bir döşeme katmanınasıl oluşturulabileceğiniz gösterilmektedir. Kutucuk katmanları, Görüntüleri Azure Haritalar temel harita kutucuklarının üzerine eklemenize olanak tanır. Azure Haritalar döşeme sistemi hakkında daha fazla bilgiyi [Yakınlaştırma düzeyleri ve döşeme ızgarası](zoom-levels-and-tile-grid.md) belgelerinde bulabilirsiniz.
 
-Döşeme katmanı bir sunucudan kutucukları yükler. Bu görüntüler, kutucuk katmanının anladığı adlandırma kuralını kullanarak, bir sunucu üzerindeki herhangi bir görüntü gibi önceden işlenebilir ve depolanabilir. Ya da bu görüntüler gerçek zamanlı görüntüleri üreten dinamik bir hizmetle birlikte oluşturulabilir. Azure haritalar TileLayer sınıfı tarafından desteklenen üç farklı kutucuk hizmeti adlandırma kuralı vardır:
+Bir Kiremit katmanı, bir sunucudan kutucuklarda yüklenir. Bu görüntüler, döşeme katmanının anladığı bir adlandırma kuralı kullanılarak sunucudaki diğer görüntüler gibi önceden işlenebilir ve depolanabilir. Veya, bu görüntüler gerçek zamanlı yakın görüntüleri üreten dinamik bir hizmet ile işlenebilir. Azure Haritalar TileLayer sınıfı tarafından desteklenen üç farklı döşeme hizmeti adlandırma kuralı vardır:
 
-* X, Y, yakınlaştırma gösterimi-yakınlaştırma düzeyine göre x, sütun ise döşeme kılavuzundaki döşemenin satır konumudur.
-* Quadkey gösterimi-x, y, zoom bilgilerini bir kutucuk için benzersiz bir tanımlayıcı olan tek bir dize değerine birleşimi.
-* Sınırlayıcı kutu-sınırlayıcı kutu koordinatları, [Web eşleme Hizmetleri (WMS)](https://www.opengeospatial.org/standards/wms)tarafından yaygın olarak kullanılan `{west},{south},{east},{north}` biçimdeki bir görüntüyü belirtmek için kullanılabilir.
+* X, Y, Zoom gösterimi - Zum düzeyine bağlı olarak, x sütundur ve y döşeme ızgarasındaki döşemenin satır konumudur.
+* Quadkey gösterimi - X, y, zoom bilgileri bir döşeme için benzersiz bir tanımlayıcı olan tek bir dize değerine yakınlaştırın.
+* Sınırlayıcı Kutu - Bağlama kutusu koordinatları, Web `{west},{south},{east},{north}` [Haritalama Hizmetleri (WMS)](https://www.opengeospatial.org/standards/wms)tarafından yaygın olarak kullanılan biçimde bir görüntüyü belirtmek için kullanılabilir.
 
 > [!TIP]
-> Bir TileLayer, haritada büyük veri kümelerini görselleştirmenin harika bir yoludur. Bir görüntüden yalnızca bir kutucuk katmanı oluşturulmayabilir, ancak vektör verileri de kutucuk katmanı olarak da oluşturulabilir. Vektör verilerini kutucuk katmanı olarak işleyerek, harita denetiminin yalnızca dosya boyutunda, temsil ettikleri vektör verilerinden çok daha küçük olabilen kutucukları yüklemesi gerekir. Bu teknik, haritada milyonlarca veri satırı oluşturması gereken birçok kişi tarafından kullanılır.
+> Bir TileLayer harita üzerinde büyük veri kümeleri görselleştirmek için harika bir yoldur. Görüntüden yalnızca bir döşeme katmanı oluşturulamaz, aynı zamanda vektör verileri de bir döşeme katmanı olarak işlenebilir. Vektör verilerini bir döşeme katmanı olarak işleyerek, harita denetiminin yalnızca dosya boyutu nda temsil ettikleri vektör verilerinden çok daha küçük olabilecek kutucukları yüklemesi gerekir. Bu teknik, harita üzerinde milyonlarca veri satırı işlemek için gereken birçok kişi tarafından kullanılır.
 
-Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına veya aşağıdaki parametreleri kullanan bir kutucuk URL şablonuna yönelik bir http/https URL 'SI olmalıdır: 
+Döşeme katmanına geçirilen döşeme URL'si, bir TileJSON kaynağının http/https URL'si veya aşağıdaki parametreleri kullanan bir döşeme URL şablonu olmalıdır: 
 
-* kutucuğun `{x}` X konumu. Ayrıca `{y}` ve `{z}`gerekir.
-* kutucuğun `{y}` Y konumu. Ayrıca `{x}` ve `{z}`gerekir.
-* kutucuğun `{z}` yakınlaştırma düzeyi. Ayrıca `{x}` ve `{y}`gerekir.
-* `{quadkey}`, Bing Haritalar kutucuk sistem adlandırma kuralına göre çeyrek anahtar tanımlayıcısı.
-* `{bbox-epsg-3857}`-EPSG 3857 uzamsal başvuru sisteminde biçim `{west},{south},{east},{north}` bir sınırlayıcı kutu dizesi.
-* `{subdomain}`-alt etki alanı değeri belirtilmişse alt etki alanı değerleri için bir yer tutucudur.
+* `{x}`- Kiremitin X konumu. Ayrıca `{y}` ihtiyaçları `{z}`ve .
+* `{y}`- Kiremitin Y konumu. Ayrıca `{x}` ihtiyaçları `{z}`ve .
+* `{z}`- Döşemenin yakınlaştırma seviyesi. Ayrıca `{x}` ihtiyaçları `{y}`ve .
+* `{quadkey}`- Bing Maps döşeme sistemi adlandırma kuralına dayalı döşeme dörtanahtar tanımlayıcısı.
+* `{bbox-epsg-3857}`- EPSG 3857 `{west},{south},{east},{north}` Mekansal Referans Sistemi formatında bir sınırlayıcı kutu dizesi.
+* `{subdomain}`- Alt etki alanı değeri belirtilirse, alt etki alanı değerleri için bir yer tutucu.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
+Bu makaledeki işlemi tamamlamak için, bir harita yüklemek için [Azure Haritalar Android SDK'yı](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
 
 
-## <a name="add-a-tile-layer-to-the-map"></a>Haritaya kutucuk katmanı ekleyin
+## <a name="add-a-tile-layer-to-the-map"></a>Haritaya döşeme katmanı ekleme
 
- Bu örnek, bir kutucuk kümesini işaret eden döşeme katmanının nasıl oluşturulacağını gösterir. Bu Kutucuklar, "x, y, Zoom" Döşeme sistemini kullanır. Bu kutucuk katmanının kaynağı, [Iowa çevresel Mesonet 'in Iowa çevre](https://mesonet.agron.iastate.edu/ogc/)bir hava durumu radar kaplamasıyla. 
+ Bu örnek, bir kutucuk kümesini işaret eden bir döşeme katmanının nasıl oluşturulutur gösteriş gösterir. Bu karolar "x, y, zoom" döşeme sistemini kullanır. Bu kiremit tabakasının kaynağı [Iowa Devlet Üniversitesi Iowa Çevre Mesonet](https://mesonet.agron.iastate.edu/ogc/)bir hava radar bindirme olduğunu. 
 
-Aşağıdaki adımları izleyerek haritaya bir kutucuk katmanı ekleyebilirsiniz.
+Aşağıdaki adımları izleyerek haritaya bir döşeme katmanı ekleyebilirsiniz.
 
-1. **Kaynak > düzeni > activity_main. xml** ' i düzenleyerek aşağıdaki gibi görünmesini sağlayın:
+1. Aşağıdaki gibi görünüyor böylece **activity_main.xml > > düzen reit** edin:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Aşağıdaki adımları izleyerek haritaya bir kutucuk katmanı ekleyebilirsiniz
     </FrameLayout>
     ```
 
-2. Aşağıdaki kod parçacığını `MainActivity.java` sınıfınızın **OnCreate ()** metoduna kopyalayın.
+2. Aşağıdaki kod parçacıklarını sınıfınızın `MainActivity.java` **onCreate()** yöntemine kopyalayın.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ Aşağıdaki adımları izleyerek haritaya bir kutucuk katmanı ekleyebilirsiniz
     });
     ```
     
-    Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra bir `TileLayer` nesnesi oluşturur ve `tileUrl` seçeneğine biçimlendirilen bir **xyz** kutucuğu URL 'si geçirir. Katman geçirgenliği `0.8` olarak ayarlanır ve kutucuk hizmetinden kullanılan kutucuklar 256 piksel döşeme olduğundan, bu bilgiler `tileSize` seçeneğine geçirilir. Kutucuk katmanı daha sonra Haritalar katman yöneticisine geçirilir.
+    Yukarıdaki kod snippet, **onReady()** geri arama yöntemini kullanarak bir Azure Haritalar harita denetimi örneği alır. Daha sonra bir `TileLayer` nesne oluşturur ve seçeneğine biçimlendirilmiş bir `tileUrl` **xyz** döşemesi URL'sini geçirir. Katmanın opaklığı ayarlanır `0.8` ve kullanılan kutucuk hizmetindeki döşemeler 256 piksel karo olduğundan, `tileSize` bu bilgiler seçeneğine aktarılır. Döşeme katmanı daha sonra haritalar katman yöneticisine geçirilir.
 
-    Yukarıdaki kod parçacığını ekledikten sonra, `MainActivity.java` aşağıdaki gibi görünmelidir:
+    Yukarıdaki kod parçacığı ekledikten sonra, `MainActivity.java` aşağıdaki gibi görünmelidir:
     
     ```Java
     package com.example.myapplication;
@@ -168,15 +168,15 @@ Aşağıdaki adımları izleyerek haritaya bir kutucuk katmanı ekleyebilirsiniz
     }
     ```
 
-Uygulamanızı Şimdi çalıştırırsanız, haritada aşağıda görüldüğü gibi bir satır görmeniz gerekir:
+Uygulamanızı şimdi çalıştırıyorsanız, haritada aşağıda görüldüğü gibi bir satır görmeniz gerekir:
 
 <center>
 
-![Android eşleme satırı](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![Android harita çizgisi](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Harita stillerini ayarlama yolları hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın
+Harita stilleri ayarlama yolları hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın
 
 > [!div class="nextstepaction"]
-> [Android haritalar 'da harita stillerini değiştirme](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Android haritalarda harita stillerini değiştirme](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

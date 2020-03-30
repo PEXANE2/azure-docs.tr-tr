@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağ eşlemesi
+title: Azure Sanal Ağ eşleme
 titlesuffix: Azure Virtual Network
 description: Azure'daki sanal ağ eşlemesi hakkında bilgi edinin.
 services: virtual-network
@@ -13,102 +13,102 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
 ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279552"
 ---
 # <a name="virtual-network-peering"></a>Sanal ağ eşleme
 
-Sanal ağ eşlemesi, [Azure sanal ağ](virtual-networks-overview.md)'da ağları sorunsuzca bağlamanıza olanak sağlar. Sanal ağlar, bağlantı amaçlarıyla bir tane olarak görünür. Sanal makineler arasındaki trafik, Microsoft omurga altyapısını kullanır. Aynı ağdaki sanal makineler arasındaki trafik gibi, trafik yalnızca Microsoft 'un *özel* ağı aracılığıyla yönlendirilir.
+Sanal ağ eşleme, [Azure Sanal Ağ'daki](virtual-networks-overview.md)ağları sorunsuz bir şekilde bağlamanızı sağlar. Sanal ağlar bağlantı amacıyla bir ağ olarak görünür. Sanal makineler arasındaki trafik, Microsoft omurga altyapısını kullanır. Aynı ağdaki sanal makineler arasındaki trafik gibi, trafik yalnızca Microsoft'un *özel* ağı üzerinden yönlendirilir.
 
-Azure aşağıdaki eşleme türlerini destekler:
+Azure aşağıdaki tür de şu türe bakmayı destekler:
 
-* Sanal ağ eşlemesi: aynı Azure bölgesindeki sanal ağları bağlayın.
-* Küresel sanal ağ eşlemesi: Azure bölgeleri arasında sanal ağları bağlama.
+* Sanal ağ eşleme: Aynı Azure bölgesindeki sanal ağları birbirine bağlayın.
+* Küresel sanal ağ eşlemi: Azure bölgelerindesanal ağları bağlama.
 
 Yerel veya genel sanal ağ eşlemesini kullanmanın avantajları şunlardır:
 
 * Farklı sanal ağlardaki kaynaklar arasında düşük gecikme süresi ve yüksek bant genişlikli bağlantı.
-* Bir sanal ağdaki kaynakların farklı bir sanal ağdaki kaynaklarla iletişim kurmasına olanak tanır.
-* Azure abonelikleri, Azure Active Directory kiracılar, dağıtım modelleri ve Azure bölgeleri arasında sanal ağlar arasında veri aktarma özelliği.
-* Azure Resource Manager aracılığıyla oluşturulmuş sanal ağları eşleyebilme özelliği.
-* Kaynak Yöneticisi aracılığıyla oluşturulan bir sanal ağı, klasik dağıtım modeliyle oluşturulan bir ağa eşleyebilme özelliği. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için bkz. [Azure dağıtım modellerini kavrama](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Bir sanal ağdaki kaynakların farklı bir sanal ağdaki kaynaklarla iletişim kurabilme yeteneği.
+* Azure abonelikleri, Azure Etkin Dizin kiracıları, dağıtım modelleri ve Azure bölgeleri arasında sanal ağlar arasında veri aktarımı yapma özelliği.
+* Azure Kaynak Yöneticisi aracılığıyla oluşturulan sanal ağlara göz görebilme özelliği.
+* Kaynak Yöneticisi aracılığıyla oluşturulan sanal ağı klasik dağıtım modeli yle oluşturulan ağa eşlenebilme yeteneği. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için bkz. [Azure dağıtım modellerini kavrama](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Eşleme oluştururken veya eşleme oluşturulduktan sonra iki sanal ağdaki kaynaklarda da kesinti süresi yaşanmaz.
 
 Eşlenen sanal ağlar arasındaki ağ trafiği gizlidir. Sanal ağlar arasındaki trafik Microsoft omurga ağı üzerinde tutulur. Sanal ağlar arasındaki iletişimde genel İnternet, ağ geçidi veya şifreleme gerekli değildir.
 
 ## <a name="connectivity"></a>Bağlantı
 
-Eşlenen sanal ağlar için, her iki sanal ağdaki kaynaklar eşlenen sanal ağdaki kaynaklarla doğrudan bağlantı sağlayabilir.
+Eşli sanal ağlar için, her iki sanal ağdaki kaynaklar, eşlenen sanal ağdaki kaynaklarla doğrudan bağlanabilir.
 
 Aynı bölgede yer alan eşlenmiş sanal ağlardaki sanal makineler arasındaki ağ gecikme süresi, tek bir sanal ağdaki gecikme süresiyle aynıdır. Ağ verimi, büyüklüğüne orantılı olarak sanal makine için izin verilen bant genişliğine bağlıdır. Eşleme içindeki bant genişliği ile ilgili herhangi bir ek kısıtlama yoktur.
 
 Eşlenmiş sanal ağlarda bulunan sanal makineler arasındaki trafik bir ağ geçidi veya genel İnternet üzerinden değil, doğrudan Microsoft omurga altyapısı aracılığıyla yönlendirilir.
 
-Diğer sanal ağlara veya alt ağlara erişimi engellemek için, her iki sanal ağ üzerinde ağ güvenlik grupları uygulayabilirsiniz.
-Sanal Ağ eşlemesini yapılandırırken, sanal ağlar arasındaki ağ güvenlik grubu kurallarını açın veya kapatın. Eşlenen sanal ağlar arasında tam bağlantı açarsanız, belirli erişimi engellemek veya reddetmek için ağ güvenlik grupları uygulayabilirsiniz. Tam bağlantı varsayılan seçenektir. Ağ güvenlik grupları hakkında daha fazla bilgi edinmek için bkz. [güvenlik grupları](security-overview.md).
+Diğer sanal ağlara veya alt ağlara erişimi engellemek için sanal ağdaki ağ güvenlik gruplarını uygulayabilirsiniz.
+Sanal ağ eşlemenin yapılandırılmasında, sanal ağlar arasındaki ağ güvenlik grubu kurallarını açın veya kapatın. Bakan sanal ağlar arasında tam bağlantı açarsanız, belirli erişimi engellemek veya reddetmek için ağ güvenlik gruplarını uygulayabilirsiniz. Tam bağlantı varsayılan seçenektir. Ağ güvenlik grupları hakkında daha fazla bilgi edinmek için [Güvenlik gruplarına](security-overview.md)bakın.
 
 ## <a name="service-chaining"></a>Hizmet zinciri
 
-Hizmet zincirleme, bir sanal ağdan gelen trafiği, Kullanıcı tanımlı yollar aracılığıyla eşlenmiş bir ağdaki sanal gereç veya ağ geçidine yönlendirmenizi sağlar.
+Hizmet zinciri, trafiği bir sanal ağdan sanal bir cihaza veya kullanıcı tanımlı rotalar aracılığıyla eşlenen bir ağdaki ağ geçidine yönlendirmenize olanak tanır.
 
-Hizmet zincirlemesini etkinleştirmek için, eşlenmiş sanal ağlardaki sanal makineleri *sonraki atlama* IP adresi olarak işaret eden Kullanıcı tanımlı yolları yapılandırın. Kullanıcı tanımlı yollar Ayrıca, hizmet zincirlemesini etkinleştirmek için sanal ağ geçitlerine işaret verebilir.
+Hizmet zincirini etkinleştirmek için, bir *sonraki atlama* IP adresi olarak eşlenen sanal ağlardaki sanal makinelere işaret eden kullanıcı tanımlı rotaları yapılandırın. Kullanıcı tanımlı rotalar, hizmet zincirini etkinleştirmek için sanal ağ ağ ağ geçitlerini de gösterebilir.
 
-Hub sanal ağının ağ sanal gereci veya VPN Gateway gibi altyapı bileşenlerini barındırdığı merkez ve bağlı ağ ağlarını dağıtabilirsiniz. Daha sonra, tüm ağlı sanal ağlar merkezi sanal ağla eşlenebilir. Trafik, hub sanal ağındaki ağ sanal gereçleri veya VPN ağ geçitleri aracılığıyla akar.
+Hub sanal ağın ağ sanal cihaz veya VPN ağ geçidi gibi altyapı bileşenlerini barındırdığı hub ve kollu ağları dağıtabilirsiniz. Daha sonra, tüm ağlı sanal ağlar merkezi sanal ağla eşlenebilir. Trafik, hub sanal ağındaki ağ sanal cihazları veya VPN ağ geçitlerinden geçer.
 
-Sanal ağ eşlemesi sayesinde, kullanıcı tanımlı yolda bir sonraki atlama, eşlenen sanal ağdaki veya bir VPN ağ geçidindeki bir sanal makinenin IP adresi olabilir. Sonraki atlama türü olarak bir Azure ExpressRoute ağ geçidini belirten Kullanıcı tanımlı bir yol ile sanal ağlar arasında yönlendirileyemiyorum. Kullanıcı tanımlı yollar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı yollara genel bakış](virtual-networks-udr-overview.md#user-defined). Hub ve bağlı bileşen ağ topolojisi oluşturmayı öğrenmek için bkz. [Azure 'Da Merkez-uç ağ topolojisi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Sanal ağ eşlemesi sayesinde, kullanıcı tanımlı yolda bir sonraki atlama, eşlenen sanal ağdaki veya bir VPN ağ geçidindeki bir sanal makinenin IP adresi olabilir. Bir sonraki atlama türü olarak Azure ExpressRoute ağ geçidini belirten kullanıcı tanımlı bir rotayla sanal ağlar arasında yol alamazsınız. Kullanıcı tanımlı yollar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı yollara genel bakış](virtual-networks-udr-overview.md#user-defined). Hub ve kollu ağ topolojisini nasıl oluşturabilirsiniz öğrenmek için [Azure'da Hub ile konuşan ağ topolojisine](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)bakın.
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Ağ geçitleri ve şirket içi bağlantı
 
-Eşlenen bir sanal ağ da dahil olmak üzere her sanal ağ kendi ağ geçidine sahip olabilir. Bir sanal ağ, ağ geçidini şirket içi bir ağa bağlanmak için kullanabilir. Ayrıca, eşlenen sanal ağlar için bile ağ geçitlerini kullanarak [sanal ağdan sanal ağ bağlantılarını](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırabilirsiniz.
+Eşli bir sanal ağ da dahil olmak üzere her sanal ağ kendi ağ geçidine sahip olabilir. Sanal ağ, ağ geçidini şirket içi ağa bağlanmak için kullanabilir. Ayrıca, eşlenen sanal ağlar için bile ağ geçitlerini kullanarak [sanal ağdan sanal ağ bağlantılarını](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırabilirsiniz.
 
-Sanal ağ bağlantısı için her iki seçeneği de yapılandırdığınızda, sanal ağlar arasındaki trafik, eşleme yapılandırması üzerinden akar. Trafik Azure omurgasını kullanır.
+Sanal ağ bağlantısı için her iki seçeneği de yapılandırdığınızda, sanal ağlar arasındaki trafik eşleme yapılandırması üzerinden akar. Trafik, Azure omurgasını kullanır.
 
-Eşlenen sanal ağdaki ağ geçidini şirket içi bir ağa geçiş noktası olarak da yapılandırabilirsiniz. Bu durumda, uzak ağ geçidi kullanan sanal ağın kendi ağ geçidi olamaz. Bir sanal ağın yalnızca bir ağ geçidi vardır. Ağ Geçidi, aşağıdaki diyagramda gösterildiği gibi, eşlenen sanal ağdaki yerel veya uzak bir ağ geçididir:
+Ayrıca, eşlenen sanal ağdaki ağ geçidini şirket içi bir ağa geçiş noktası olarak da yapılandırabilirsiniz. Bu durumda, uzak bir ağ geçidi kullanan sanal ağ kendi ağ geçidi olamaz. Sanal ağın yalnızca bir ağ geçidi vardır. Ağ geçidi, aşağıdaki diyagramda gösterildiği gibi, eşlenen sanal ağdaki yerel veya uzak bir ağ geçididir:
 
 ![Sanal ağ eşleme geçişi](./media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png)
 
-Hem sanal ağ eşlemesi hem de küresel sanal ağ eşlemesi, ağ geçidi geçişi destekler.
+Hem sanal ağ izleme hem de global sanal ağ izleme destek ağ geçidi geçişi.
 
-Farklı dağıtım modelleriyle oluşturulan sanal ağlar arasındaki ağ geçidi geçişi desteklenir. Ağ Geçidi, Kaynak Yöneticisi modelinde sanal ağda olmalıdır. Geçiş için bir ağ geçidi kullanma hakkında daha fazla bilgi için bkz. [Sanal ağ eşlemesinde geçiş için bir VPN ağ geçidi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Farklı dağıtım modelleri aracılığıyla oluşturulan sanal ağlar arasında ağ geçidi geçişi desteklenir. Ağ geçidi, Kaynak Yöneticisi modelinde sanal ağda olmalıdır. Geçiş için bir ağ geçidi kullanma hakkında daha fazla bilgi için bkz. [Sanal ağ eşlemesinde geçiş için bir VPN ağ geçidi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Tek bir Azure ExpressRoute bağlantısını paylaşan sanal ağları eşaktardığınızda, aralarındaki trafik eşleme ilişkisine gider. Bu trafik Azure omurga ağını kullanır. Şirket içi devreye bağlanmak için her bir sanal ağ üzerindeki yerel ağ geçitlerini kullanmaya devam edebilirsiniz. Aksi takdirde, paylaşılan bir ağ geçidini kullanabilir ve şirket içi bağlantı için geçişi yapılandırabilirsiniz.
+Tek bir Azure ExpressRoute bağlantısını paylaşan sanal ağlara baktığınızda, aralarındaki trafik eşleme ilişkisinden geçer. Bu trafik, Azure omurga ağını kullanır. Şirket içi devreye bağlanmak için her bir sanal ağ üzerindeki yerel ağ geçitlerini kullanmaya devam edebilirsiniz. Aksi takdirde, paylaşılan bir ağ geçidi kullanabilir ve şirket içi bağlantı için geçişi yapılandırabilirsiniz.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-Sanal ağların eşlendiğini onaylamak için, etkin yolları kontrol edebilirsiniz. Bir sanal ağ içindeki herhangi bir alt ağda bulunan bir ağ arabirimine yönelik yolları denetleyin. Bir sanal ağ eşlemesi zaten varsa, sanal ağ içindeki tüm alt ağlar, eşlenen her bir sanal ağdaki her bir adres alanı için sonraki atlama türü *VNet eşlemesi* olan yollara sahip olur. Daha fazla bilgi için bkz. [sanal makine yönlendirme sorununu tanılama](diagnose-network-routing-problem.md).
+Sanal ağların bakılmış olduğunu doğrulamak için etkili yolları denetleyebilirsiniz. Sanal ağdaki herhangi bir alt ağdaki ağ arabirimi yollarını denetleyin. Bir sanal ağ eşlemesi zaten varsa, sanal ağ içindeki tüm alt ağlar, eşlenen her bir sanal ağdaki her bir adres alanı için sonraki atlama türü *VNet eşlemesi* olan yollara sahip olur. Daha fazla bilgi için [bkz.](diagnose-network-routing-problem.md)
 
-Ayrıca, Azure ağ Izleyicisi 'ni kullanarak eşlenmiş bir sanal ağdaki sanal makineye yönelik bağlantı sorunlarını giderebilirsiniz. Bağlantı denetimi, trafiğin bir kaynak sanal makinenin ağ arabiriminden hedef sanal makinenin ağ arabirimine nasıl yönlendirildiğini görmenizi sağlar. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure Ağ İzleyicisi ile bağlantı sorunlarını giderme](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine).
+Azure Ağ İzleyicisi'ni kullanarak, eşli bir sanal ağdaki sanal makineye bağlantı sorunu da giderebilirsiniz. Bağlantı denetimi, trafiğin kaynak sanal makinenin ağ arabiriminden hedef sanal makinenin ağ arabirimine nasıl yönlendirildiğini görmenizi sağlar. Daha fazla bilgi için Azure [portalını kullanarak Azure Ağ İzleyicisi ile sorun giderme bağlantılarına](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine)bakın.
 
-Ayrıca, [sanal ağ eşleme sorunlarını giderin](virtual-network-troubleshoot-peering-issues.md)' i deneyebilirsiniz.
+[Sorun Giderme sanal ağ eşleme sorunlarını](virtual-network-troubleshoot-peering-issues.md)da deneyebilirsiniz.
 
-## Eşlenen sanal ağlar için kısıtlamalar<a name="requirements-and-constraints"></a>
+## <a name="constraints-for-peered-virtual-networks"></a>Eşlenen sanal ağlar için kısıtlamalar<a name="requirements-and-constraints"></a>
 
-Aşağıdaki kısıtlamalar yalnızca sanal ağlar genel olarak eşlendikten sonra geçerlidir:
+Aşağıdaki kısıtlamalar yalnızca sanal ağlara genel olarak bakıldığında uygulanır:
 
-* Bir sanal ağdaki kaynaklar, genel olarak eşlenmiş bir sanal ağdaki temel bir Iç Load Balancer (ıLB) ön uç IP adresiyle iletişim kuramaz.
-* Temel yük dengeleyici kullanan bazı hizmetler genel sanal ağ eşlemesi üzerinde çalışmaz. Daha fazla bilgi için bkz. [genel VNET eşlemesi ve yük dengeleyiciler ile ilgili kısıtlamalar nelerdir?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+* Bir sanal ağdaki kaynaklar, küresel olarak karşılanan bir sanal ağdaki Temel İç Yük Dengeleyicisi'nin (ILB) ön uç IP adresiyle iletişim kuramez.
+* Temel yük dengeleyicisi kullanan bazı hizmetler, genel sanal ağ eşleme üzerinde çalışmaz. Daha fazla bilgi için Global [VNet Peering ve Load Balancers ile ilgili kısıtlamalar nelerdir?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
-Daha fazla bilgi için bkz. [gereksinimler ve kısıtlamalar](virtual-network-manage-peering.md#requirements-and-constraints). Desteklenen eşleme sayısı hakkında daha fazla bilgi edinmek için bkz. [ağ sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Daha fazla bilgi için [Gereksinimler ve kısıtlamalara](virtual-network-manage-peering.md#requirements-and-constraints)bakın. Desteklenen eşleme sayısı hakkında daha fazla bilgi edinmek için [Ağ sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)bakın.
 
 ## <a name="permissions"></a>İzinler
 
-Sanal ağ eşlemesi oluşturmak için gereken izinler hakkında bilgi edinmek için, bkz. [izinler](virtual-network-manage-peering.md#permissions).
+Sanal ağ eşlemesi oluşturmak için gereken izinler hakkında bilgi edinmek için [İzinler'e](virtual-network-manage-peering.md#permissions)bakın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Sanal ağ eşleme bağlantısı kullanan giriş ve çıkış trafiği için nominal bir ücret uygulanır. Daha fazla bilgi için bkz. [sanal ağ fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network).
+Sanal ağ izleme bağlantısı kullanan giriş ve çıkış trafiği için nominal bir ücret vardır. Daha fazla bilgi için [Sanal Ağ fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network)için bkz.
 
-Ağ Geçidi geçişi, bir sanal ağın eşlenen bir sanal ağda VPN/ExpressRoute Gateway kullanmasını sağlayan bir eşleme özelliğidir. Ağ Geçidi geçişi, hem şirket içi hem de ağdan ağa bağlantı için kullanılır. Eşlenen sanal ağdaki ağ geçidine (giriş veya çıkış) giden trafik, bağlı olan VNet (veya ağ geçidi olmayan VNet) üzerinde sanal ağ eşleme ücretleri doğurur. Daha fazla bilgi için bkz. ExpressRoute ağ geçidi ücretleri için VPN Gateway ücretleri için fiyatlandırma ve ExpressRoute ağ geçidi fiyatlandırması [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) .
+Ağ Geçidi Geçişi, sanal bir ağın, bir eşlenen sanal ağda VPN/ExpressRoute ağ geçidini kullanmasını sağlayan bir eşleme özelliğidir. Ağ geçidi geçişi hem tesisler arası hem de ağdan ağa bağlantı için çalışır. Eşlenen sanal ağdaki ağ geçidine (giriş veya çıkış) giden trafik, vnet(veya ağ geçidi olmayan VNet) üzerinde sanal ağ izleme ücretlerine neden olur. Daha fazla bilgi için VPN ağ geçidi ücretleri ve ExpressRoute ağ geçidi ücretleri için ExpressRoute Ağ Geçidi fiyatlandırması için [VPN Ağ Geçidi fiyatlandırması'na](https://azure.microsoft.com/pricing/details/vpn-gateway/) bakın.
 
 >[!NOTE]
-> Bu belgenin önceki bir sürümü, ağ geçidi aktarımı ile bağlı olan VNet (veya ağ geçidi olmayan VNet) üzerinde sanal ağ eşleme ücretlerinin uygulanabileceğini ifade etmez. Artık fiyatlandırma sayfasına göre doğru fiyatlandırmayı yansıtır.
+> Bu belgenin önceki bir sürümünde, ağ geçidi geçişi ile konuşan VNet'te (veya ağ geçidi olmayan VNet) sanal ağ izleme ücretlerinin geçerli olmayacağını belirtmiştir. Şimdi fiyatlandırma sayfası başına doğru fiyatlandırma yansıtır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* İki sanal ağ arasında bir eşleme oluşturabilirsiniz. Ağlar aynı aboneliğe, aynı abonelikte farklı dağıtım modellerine veya farklı aboneliklere ait olabilir. Aşağıdaki senaryolardan biri için öğreticiyi tamamlayın:
+* İki sanal ağ arasında bir eşleme oluşturabilirsiniz. Ağlar aynı aboneye, aynı abonelikteki farklı dağıtım modellerine veya farklı aboneliklere ait olabilir. Aşağıdaki senaryolardan biri için öğreticiyi tamamlayın:
 
     |Azure dağıtım modeli             | Abonelik  |
     |---------                          |---------|
@@ -117,6 +117,6 @@ Ağ Geçidi geçişi, bir sanal ağın eşlenen bir sanal ağda VPN/ExpressRoute
     |Biri Resource Manager, diğeri klasik  |[Aynı](create-peering-different-deployment-models.md)|
     |                                   |[Farklı](create-peering-different-deployment-models-subscriptions.md)|
 
-* Hub ve bağlı bileşen ağ topolojisi oluşturmayı öğrenmek için bkz. [Azure 'Da Merkez-uç ağ topolojisi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* Tüm sanal ağ eşleme ayarları hakkında bilgi edinmek için bkz. [sanal ağ eşlemesi oluşturma, değiştirme veya silme](virtual-network-manage-peering.md).
-* Ortak sanal ağ eşlemesi ve küresel sanal ağ eşlemesi sorularına yanıt almak için bkz. [VNET eşlemesi](virtual-networks-faq.md#vnet-peering).
+* Hub ve kollu ağ topolojisini nasıl oluşturabilirsiniz öğrenmek için [Azure'da Hub ile konuşan ağ topolojisine](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)bakın.
+* Tüm sanal ağ eşleme ayarları hakkında bilgi edinmek için [bkz.](virtual-network-manage-peering.md)
+* Ortak sanal ağ eşleme ve genel sanal ağ eşleme sorularının yanıtları için [VNet Peering'e](virtual-networks-faq.md#vnet-peering)bakın.

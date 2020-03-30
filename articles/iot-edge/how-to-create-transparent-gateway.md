@@ -1,6 +1,6 @@
 ---
-title: Saydam bir ağ geçidi cihazı - Azure IOT Edge oluştur | Microsoft Docs
-description: Azure IOT Edge cihazı, aşağı akış cihazlardan bilgi işleyebilen saydam bir ağ geçidi olarak kullanma
+title: Saydam ağ geçidi aygıtı oluşturma - Azure IoT Edge | Microsoft Dokümanlar
+description: Azure IoT Edge aygıtını, akış aşağı aygıtlardan gelen bilgileri işleyebilen saydam bir ağ geçidi olarak kullanma
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,67 +8,67 @@ ms.date: 11/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf60bfb41e48220845e9aa26dc26f20e6ed60d16
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529178"
 ---
-# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Saydam bir ağ geçidi olarak görev yapacak bir IOT Edge cihazı yapılandırma
+# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma
 
-Bu makalede, bir IoT Edge cihazının diğer cihazların IoT Hub iletişim kurması için saydam bir ağ geçidi olarak çalışacak şekilde yapılandırılması için ayrıntılı yönergeler sağlanmaktadır. Bu makalede, saydam bir ağ geçidi olarak yapılandırılmış bir IoT Edge cihazına başvurmak için *IoT Edge ağ geçidi* terimi kullanılmaktadır. Daha fazla bilgi için bkz. [bir IoT Edge cihazının ağ geçidi olarak nasıl kullanılabileceği](./iot-edge-as-gateway.md).
+Bu makalede, bir IoT Edge aygıtının diğer aygıtların IoT Hub ile iletişim kurması için saydam bir ağ geçidi olarak çalışacak şekilde yapılandırılmak için ayrıntılı yönergeler sağlanmaktadır. Bu makalede, saydam ağ geçidi olarak yapılandırılan bir IoT Edge aygıtına başvurmak için *IoT Edge ağ geçidi* terimi kullanır. Daha fazla bilgi için, [IoT Edge aygıtının ağ geçidi olarak nasıl kullanılabileceğini](./iot-edge-as-gateway.md)görün.
 
 >[!NOTE]
 >Şu anda:
 >
-> * Edge özellikli cihazlar IOT Edge ağ geçidi için bağlantı kurulamıyor.
-> * Aşağı Akış cihazları karşıya dosya yükleme kullanamazsınız.
+> * Kenar özellikli aygıtlar IoT Edge ağ geçitlerine bağlanamaz.
+> * Alt akış aygıtları dosya yüklemeyi kullanamaz.
 
-Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım vardır. Bu makalede ilk adım ele alınmaktadır:
+Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım vardır. Bu makale, ilk adımı kapsar:
 
-1. **Ağ Geçidi cihazının aşağı akış cihazlarına güvenli bir şekilde bağlanabilmesi, aşağı akış cihazlarından iletişim alabilmesi ve iletileri uygun hedefe yönlendirmesi gerekir.**
-2. Aşağı akış cihazının IoT Hub kimlik doğrulaması yapabilmesi ve ağ geçidi cihazından iletişim kurmayı bilmesi için bir cihaz kimliği olması gerekir. Daha fazla bilgi için bkz. [Azure 'da bir aşağı akış cihazının kimliğini doğrulama IoT Hub](how-to-authenticate-downstream-device.md).
-3. Aşağı akış cihazının ağ geçidi cihazına güvenli bir şekilde bağlanması gerekir. Daha fazla bilgi için [bir Azure IOT Edge ağ geçidi için aşağı akış cihaz Bağlayamama](how-to-connect-downstream-device.md).
+1. **Ağ geçidi aygıtının akış aşağı aygıtlara güvenli bir şekilde bağlanabilmesi, akış aşağı aygıtlarından iletişim alabilmeleri ve iletileri uygun hedefe yönlendirebilmesi gerekir.**
+2. Alt akış aygıtının IoT Hub ile kimlik doğrulaması yapabilmesi ve ağ geçidi aygıtı üzerinden iletişim kurabilmesi için bir aygıt kimliğine sahip olması gerekir. Daha fazla bilgi için [bkz.](how-to-authenticate-downstream-device.md)
+3. Akış aşağı aygıtının ağ geçidi aygıtına güvenli bir şekilde bağlanması gerekir. Daha fazla bilgi için [bkz.](how-to-connect-downstream-device.md)
 
-Bir cihazın ağ geçidi olarak çalışması için, onun aşağı akış cihazlarına güvenli bir şekilde bağlanabilmesi gerekir. Azure IOT Edge cihazları arasında güvenli bağlantılar kurmak için bir ortak anahtar altyapısı (PKI) kullanmanıza olanak tanır. Bu durumda, biz saydam bir ağ geçidi olarak görev yapan bir IOT Edge cihazına bağlamak için bir aşağı akış cihazı vermiş olursunuz. Makul güvenliği korumak için, aşağı akış cihazının ağ geçidi cihazının kimliğini onaylamasını gerekir. Bu kimlik denetimi, cihazlarınızın potansiyel olarak kötü amaçlı ağ geçitlerine bağlanmasını engeller.
+Bir aygıtın ağ geçidi olarak çalışabilmesi için, alt akış aygıtlarına güvenli bir şekilde bağlanabilmesi gerekir. Azure IoT Edge, aygıtlar arasında güvenli bağlantılar kurmak için ortak anahtar altyapısını (PKI) kullanmanıza olanak tanır. Bu durumda, akış aşağı bir aygıtın saydam ağ geçidi görevi yapan bir IoT Edge aygıtına bağlanmasına izin veririz. Makul güvenliği sağlamak için, akış aşağı aygıtıağ aygıtının kimliğini doğrulamalıdır. Bu kimlik denetimi, aygıtlarınızın kötü amaçlı ağ geçitlerine bağlanmasını engeller.
 
-Saydam bir ağ geçidi senaryosunda bir aşağı akış cihazı, [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) bulut hizmeti ile oluşturulmuş bir kimliği olan herhangi bir uygulama veya platform olabilir. Çoğu durumda, bu uygulamaları kullanma [Azure IOT cihaz SDK'sını](../iot-hub/iot-hub-devguide-sdks.md). Tüm pratik amacıyla bir aşağı akış cihazın IOT Edge ağ geçidi cihazın kendisinde çalışan bir uygulama bile olabilir. Ancak, bir IoT Edge cihaz IoT Edge bir ağ geçidinin bir aşağı akış olamaz.
+Saydam ağ geçidi senaryosundaki bir akış aşağı aygıtı, [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) bulut hizmetiyle oluşturulmuş bir kimliğe sahip herhangi bir uygulama veya platform olabilir. Çoğu durumda, bu uygulamalar [Azure IoT aygıtı SDK'yı](../iot-hub/iot-hub-devguide-sdks.md)kullanır. Tüm pratik amaçlar için, bir downstream cihaz bile IoT Edge ağ geçidi aygıtı kendisi üzerinde çalışan bir uygulama olabilir. Ancak, bir IoT Edge aygıtı bir IoT Edge ağ geçidinin aşağı akışı olamaz.
 
-Ağ geçidi cihazı topolojiniz için gerekli güven sağlayan herhangi bir sertifika altyapısı oluşturabilirsiniz. Bu makalede, belirli bir IoT Hub (IoT Hub 'ı kök CA) ile ilişkili bir X. 509.952 CA sertifikasını, bu CA ile imzalanmış bir sertifika serisini ve IoT Edge cihazının CA 'sını içeren IoT Hub [x. 509.440 CA güvenliğini](../iot-hub/iot-hub-x509ca-overview.md) etkinleştirmek için kullandığınız sertifika kurulumunu kabul ediyoruz.
+Aygıt ağ geçidi topolojiniz için gereken güveni sağlayan herhangi bir sertifika altyapısı oluşturabilirsiniz. Bu makalede, IoT Hub'da [X.509 CA güvenliğini](../iot-hub/iot-hub-x509ca-overview.md) etkinleştirmek için kullanacağınız sertifika kurulumunun, belirli bir IoT hub hub'ı (IoT hub kökü CA), bu CA ile imzalanmış bir dizi sertifika ve IoT Edge aygıtı için bir CA içeren Bir X.509 CA sertifikasını içerdiğini varsayıyoruz.
 
-![Ağ geçidi sertifikası Kurulumu](./media/how-to-create-transparent-gateway/gateway-setup.png)
+![Ağ geçidi sertifikası kurulumu](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 >[!NOTE]
->Bu makale boyunca kullanılan "kök CA" terimi, bir dağıtılmış sertifika yetkilisinin sertifika kökü olması gerekmeyen PKI sertifika zincirinin en üst yetkili ortak sertifikasına başvurur. Çoğu durumda, aslında bir ara CA genel sertifikasıdır.
+>Bu makale boyunca kullanılan "kök CA" terimi, PKI sertifika zincirinin en üstteki yetkili kamu sertifikasını ifade eder ve sendikasyon sertifika yetkilisinin sertifika kökünü ifade eder. Çoğu durumda, aslında bir ara CA ortak sertifika.
 
-Ağ Geçidi, bağlantının başlatılması sırasında IoT Edge cihaz CA sertifikasını aşağı akış cihazına sunar. Aşağı akış cihazı, IoT Edge cihaz CA sertifikasının kök CA sertifikası tarafından imzalandığından emin olmak için kontrol eder. Bu işlem, aşağı akış cihazının ağ geçidinin güvenilir bir kaynaktan geldiğini onaylamasını sağlar.
+Ağ geçidi, bağlantının başlatılması sırasında IoT Edge aygıtCA sertifikasını alt aygıta sunar. Alt akış aygıtı, IoT Edge aygıt CA sertifikasının kök CA sertifikası tarafından imzalandığından emin olmak için denetler. Bu işlem, alt aygıt ağ geçidigüvenilir bir kaynaktan geldiğini onaylamak için izin verir.
 
-Aşağıdaki adımlar, sertifikaları oluşturma ve bunları ağ geçidine doğru yerlere yükleme sürecinde size yol gösterir. Herhangi bir makine sertifikalarını oluşturmak için kullanın ve ardından bunları IOT Edge cihazınıza kopyalayabilirsiniz.
+Aşağıdaki adımlar, sertifikaları oluşturma ve ağ geçidinde doğru yerlere yükleme işleminde size yol açar. Sertifikaları oluşturmak için herhangi bir makineyi kullanabilir ve bunları IoT Edge aygıtınıza kopyalayabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[Üretim sertifikaları](how-to-install-production-certificates.md)ile yapılandırılan Azure IoT Edge bir cihaz.
+[Üretim sertifikalarıyla](how-to-manage-device-certificates.md)yapılandırılan bir Azure IoT Edge aygıtı.
 
-## <a name="deploy-edgehub-to-the-gateway"></a>EdgeHub 'ı ağ geçidine dağıtma
+## <a name="deploy-edgehub-to-the-gateway"></a>edgeHub'ı ağ geçidine dağıtın
 
-IoT Edge bir cihaza ilk kez yüklediğinizde, otomatik olarak yalnızca bir sistem modülü başlatılır: IoT Edge Aracısı. İlk dağıtımı daha fazla bir cihaz oluşturduktan sonra, IoT Edge hub 'ı ikinci sistem modülü de başlatılır.
+IoT Edge'i bir aygıta ilk yüklediğinizde, yalnızca bir sistem modülü otomatik olarak başlar: IoT Edge aracısı. İlk dağıtımdaha fazla bir aygıt oluşturduğunuzda, ikinci sistem modülü, IoT Edge hub'ı da başlatılır.
 
-IoT Edge hub, aşağı akış cihazlarından gelen iletileri alırken ve bunları bir sonraki hedefe yönlendirmekten sorumludur. **Edgehub** modülü cihazınızda çalışmıyorsa, cihazınız için bir başlangıç dağıtımı oluşturun. Herhangi bir modül eklemediğinizden, dağıtım boş görünür, ancak her iki sistem modüllerinin de çalıştığından emin olur.
+IoT Edge hub'ı, akış aşağı aygıtlardan gelen iletileri almaktan ve bunları bir sonraki hedefe yönlendirmekten sorumludur. **edgeHub** modülü cihazınızda çalışmıyorsa, cihazınız için bir başlangıç dağıtımı oluşturun. Herhangi bir modül eklemediğiniz için dağıtım boş görünür, ancak her iki sistem modülünün de çalıştığından emin olur.
 
-Azure portal cihaz ayrıntılarını denetleyerek, Visual Studio veya Visual Studio Code cihaz durumunu görüntüleyerek ya da cihazın kendisinde komut `iotedge list` çalıştırarak bir cihazda hangi modüllerin çalıştığını kontrol edebilirsiniz.
+Azure portalında aygıt ayrıntılarını kontrol ederek, Visual Studio veya Visual Studio Code'da aygıt durumunu görüntüleyerek veya aygıtın kendi komutunu `iotedge list` çalıştırarak bir cihazda hangi modüllerin çalıştığını kontrol edebilirsiniz.
 
-**Edgeagent** modülü **edgehub** modülü olmadan çalışıyorsa, aşağıdaki adımları kullanın:
+**edgeAgent** modülü **edgeHub** modülü olmadan çalışıyorsa, aşağıdaki adımları kullanın:
 
 1. Azure portalında IoT Hub'ınıza gidin.
 
-2. Git **IOT Edge** ve ağ geçidi olarak kullanacağınız IOT Edge Cihazınızı seçin.
+2. **IoT Edge'e** gidin ve ağ geçidi olarak kullanmak istediğiniz IoT Edge aygıtınızı seçin.
 
 3. **Modülleri Ayarlama**'yı seçin.
 
-4. **İleri**’yi seçin.
+4. **Sonraki'ni**seçin.
 
-5. İçinde **yolları belirtin** sayfasında, tüm iletileri tüm modüllerden IOT Hub'ına gönderir ve varsayılan bir yol olmalıdır. Yoksa aşağıdaki kodu ekleyip **İleri**'yi seçin.
+5. **Rotaları Belirt** sayfasında, tüm modüllerden tüm iletileri IoT Hub'ına gönderen varsayılan bir rotanız olmalıdır. Yoksa aşağıdaki kodu ekleyip **İleri**'yi seçin.
 
    ```JSON
    {
@@ -78,27 +78,27 @@ Azure portal cihaz ayrıntılarını denetleyerek, Visual Studio veya Visual Stu
    }
    ```
 
-6. İçinde **gözden geçirme şablonu** sayfasında **Gönder**.
+6. Gözden **Geçir şablonu** sayfasında **Gönder'i**seçin.
 
-## <a name="open-ports-on-gateway-device"></a>Ağ Geçidi cihazında bağlantı noktalarını açma
+## <a name="open-ports-on-gateway-device"></a>Ağ geçidi aygıtındaki bağlantı noktalarını açma
 
-Standart IoT Edge cihazların herhangi bir gelen bağlantısı olması gerekmez, çünkü IoT Hub tüm iletişimler giden bağlantılar aracılığıyla yapılır. Ağ Geçidi cihazları, akış aygıtlarından iletiler alması gerektiğinden farklıdır. Bir güvenlik duvarının aşağı akış cihazları ve ağ geçidi cihazı arasında olması durumunda, iletişimin de güvenlik duvarından alınması gerekir.
+Standart IoT Edge aygıtlarının çalışması için herhangi bir gelen bağlantıya gerek yoktur, çünkü IoT Hub ile tüm iletişim giden bağlantılar aracılığıyla yapılır. Ağ geçidi aygıtları, akış aşağı aygıtlarından ileti almaları gerektiğinden farklıdır. Aşağı akım aygıtları ile ağ geçidi aygıtı arasında bir güvenlik duvarı varsa, güvenlik duvarı üzerinden de iletişimin mümkün olması gerekir.
 
-Bir ağ geçidi senaryosunun çalışması için, IoT Edge hub 'ın desteklenen protokollerinden en az birinin, aşağı akış cihazlarından gelen trafik için açık olması gerekir. Desteklenen protokoller MQTT, AMQP, HTTPS, WebSockets üzerinden MQTT ve WebSockets üzerinden AMQP 'dir.
+Ağ geçidi senaryosunun çalışması için, IoT Edge hub'ının desteklenen protokollerinden en az birinin akış aşağı aygıtlardan gelen trafik için açık olması gerekir. Desteklenen protokoller MQTT, AMQP, HTTPS, WebSockets üzerinden MQTT ve WebSockets üzerinden AMQP vardır.
 
 | Bağlantı noktası | Protokol |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |
-| 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS |
 
-## <a name="route-messages-from-downstream-devices"></a>Aşağı Akış cihazlardan yönlendirme iletileri
+## <a name="route-messages-from-downstream-devices"></a>İletileri akış aşağı aygıtlardan yönlendirme
 
-IOT Edge çalışma zamanı yalnızca modülleri tarafından gönderilen iletiler gibi aşağı akış cihazlardan gönderilen iletiler yönlendirebilirsiniz. Bu özellik, buluta veri göndermeden önce ağ geçidinde çalışan bir modülde analiz gerçekleştirmenize olanak tanır.
+IoT Edge çalışma süresi, modüller tarafından gönderilen iletiler gibi akış aşağı aygıtlarından gönderilen iletileri yönlendirebilir. Bu özellik, buluta herhangi bir veri göndermeden önce ağ geçidinde çalışan bir modülde analitik gerçekleştirmenize olanak tanır.
 
-Şu anda, aşağı akış cihazlar tarafından gönderilen iletileri yönlendiren bunları modülleri tarafından gönderilen iletilerden farklılaştırılması tarafından yoludur. Tüm modüller tarafından gönderilen iletiler olarak adlandırılan bir sistem özelliği içeren **connectionModuleId** ancak aşağı akış cihazlar tarafından gönderilen iletileri yapın. Bu sistem özelliği içeren herhangi bir iletiyi hariç tutmak için rota WHERE yan tümcesini kullanabilirsiniz.
+Şu anda, akış aşağı aygıtlar tarafından gönderilen iletileri yönlendirme şekliniz, bunları modüller tarafından gönderilen iletilerden ayırt etmektir. Modüller tarafından gönderilen iletilerin tümü **connectionModuleId** adı verilen bir sistem özelliği içerir, ancak akış aşağı aygıtları tarafından gönderilen iletiler içermez. Bu sistem özelliğini içeren iletileri hariç tutmak için rotanın WHERE yan tümcesini kullanabilirsiniz.
 
-Aşağıdaki yol, herhangi bir aşağı akış cihazdan `ai_insights`adlı bir modüle ileti gönderen ve sonra `ai_insights` IoT Hub ' e kadar olan bir örnektir.
+Aşağıdaki rota, herhangi bir akış aşağı aygıtından, daha sonra `ai_insights`IoT `ai_insights` Hub adlı bir modüle ileti gönderen bir örnektir.
 
 ```json
 {
@@ -109,16 +109,16 @@ Aşağıdaki yol, herhangi bir aşağı akış cihazdan `ai_insights`adlı bir m
 }
 ```
 
-İleti yönlendirme hakkında daha fazla bilgi için bkz. [modülleri dağıtma ve yollar'kurmak](./module-composition.md#declare-routes).
+İleti yönlendirme siması hakkında daha fazla bilgi için [modülleri dağıt'a bakın ve rotalar kurun.](./module-composition.md#declare-routes)
 
-## <a name="enable-extended-offline-operation"></a>Genişletilmiş çevrimdışı işlemi etkinleştir
+## <a name="enable-extended-offline-operation"></a>Genişletilmiş çevrimdışı işlemi etkinleştirme
 
-IoT Edge çalışma zamanının [v 1.0.4 sürümü](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) ile başlayarak, buna bağlanan ağ geçidi cihazı ve aşağı akış cihazları genişletilmiş çevrimdışı işlem için yapılandırılabilir.
+IoT Edge çalışma zamanının [v1.0.4 sürümünden](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) başlayarak, ağ geçidi aygıtı ve ona bağlanan akış aşağı aygıtları genişletilmiş çevrimdışı çalışma için yapılandırılabilir.
 
-Bu özellik sayesinde, yerel modüller veya aşağı akış cihazları gerektiği gibi IoT Edge cihazla yeniden kimlik doğrulaması yapabilir ve IoT Hub 'ından bağlantısı kesilse bile ileti ve yöntemleri kullanarak birbirleriyle iletişim kurabilir. Daha fazla bilgi için [anlayın cihazları, modülleri ve alt cihazlar bu çevrimdışı özellikleri IOT Edge için Genişletilmiş](offline-capabilities.md).
+Bu özellik sayesinde, yerel modüller veya akış aşağı aygıtları gerektiğinde IoT Edge aygıtıyla yeniden kimlik doğrulayabilir ve IoT hub'ından bağlantısı kesilse bile iletiler ve yöntemler kullanarak birbirleriyle iletişim kurabilir. Daha fazla bilgi için bkz. [IoT Edge aygıtları, modülleri ve alt aygıtları için genişletilmiş çevrimdışı özellikleri anlayın.](offline-capabilities.md)
 
-Genişletilmiş çevrimdışı özellikleri etkinleştirmek için, bir IoT Edge ağ geçidi cihazı ile Bağlanılacak olan aşağı akış cihazları arasında bir üst-alt ilişkisi kurarsınız. Bu adımlar, [bir aşağı akış cihazının Azure IoT Hub kimlik doğrulaması](how-to-authenticate-downstream-device.md)konusunda daha ayrıntılı olarak açıklanmıştır.
+Genişletilmiş çevrimdışı özellikleri etkinleştirmek için, bir IoT Edge ağ geçidi aygıtı ile ona bağlanacak alt akış aygıtları arasında bir üst-alt ilişkisi kurarsınız. Bu adımlar, [bir alt aygıtı Azure IoT Hub'ına doğrulamada](how-to-authenticate-downstream-device.md)daha ayrıntılı olarak açıklanmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Saydam bir ağ geçidi olarak çalışan bir IOT Edge cihazına sahip olduğunuza göre ağ geçidi güven ve iletileri göndermek için aşağı akış cihazlarınızı yapılandırmak gerekir. Saydam ağ geçidi senaryonuzu ayarlamanın sonraki adımları için [bir aşağı akış cihazının kimliğini Azure IoT Hub doğrulamak](how-to-authenticate-downstream-device.md) için devam edin.
+Artık saydam bir ağ geçidi olarak çalışan bir IoT Edge aygıtınız olduğuna göre, alt akış aygıtlarınızı ağ geçidine güvenecek ve ona ileti gönderecek şekilde yapılandırmanız gerekir. Saydam ağ geçidi senaryonuzu ayarlamaya yönelik sonraki adımlar için [bir alt aygıtla Azure IoT Hub'ına kimlik doğrulamaya](how-to-authenticate-downstream-device.md) devam edin.

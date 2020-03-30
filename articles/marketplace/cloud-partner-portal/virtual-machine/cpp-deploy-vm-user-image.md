@@ -1,55 +1,54 @@
 ---
-title: Bir Kullanıcı VHD 'sinden Azure VM dağıtma | Azure Marketi
-description: Bir Azure VM örneği oluşturmak için bir Kullanıcı VHD görüntüsünün nasıl dağıtılacağını açıklar.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Bir kullanıcı VHD'sinden Azure VM dağıtma | Azure Marketi
+description: Azure VM örneği oluşturmak için kullanıcı VHD görüntüsünün nasıl dağıtılangerektiğini açıklar.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 8421e9b7b7e2b7d13054e977da83be044b4e6af7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816638"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277965"
 ---
-# <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Bir Azure VM 'yi bir Kullanıcı VHD 'sinden dağıtma
+# <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Bir kullanıcı VHD'sinden Azure VM dağıtma
 
-Bu makalede, sağlanan Azure Resource Manager şablonu ve Azure PowerShell betiği kullanılarak yeni bir Azure VM kaynağı oluşturmak için genelleştirilmiş bir VHD görüntüsünün nasıl dağıtılacağı açıklanır.
+Bu makalede, sağlanan Azure Kaynak Yöneticisi şablonu ve Azure PowerShell komut dosyası kullanılarak yeni bir Azure VM kaynağı oluşturmak için genelleştirilmiş bir VHD görüntüsünasıl dağıtılanınca açıklanmaktadır.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="vhd-deployment-template"></a>VHD dağıtım şablonu
 
-[VHD dağıtımı](cpp-deploy-json-template.md) için Azure Resource Manager şablonunu `VHDtoImage.json`adlı yerel bir dosyaya kopyalayın.  Aşağıdaki parametreler için değerler sağlamak üzere bu dosyayı düzenleyin. 
+[VHD dağıtımı](cpp-deploy-json-template.md) için Azure Kaynak Yöneticisi şablonu `VHDtoImage.json`adlı yerel bir dosyaya kopyalayın.  Aşağıdaki parametreler için değerler sağlamak için bu dosyayı edin. 
 
-|  **Parametresinin**             |   **Açıklama**                                                              |
+|  **Parametre**             |   **Açıklama**                                                              |
 |  -------------             |   ---------------                                                              |
-| ResourceGroupName          | Mevcut Azure Kaynak grubu adı.  Genellikle anahtar kasanız ile ilişkili RG 'yi kullanın  |
-| TemplateFile               | Dosya `VHDtoImage.json` tam yol adı                                    |
+| ResourceGroupName          | Varolan Azure kaynak grubu adı.  Genellikle anahtar kasanızla ilişkili aynı RG'yi kullanın  |
+| Templatefile               | Dosyaya tam yol adı`VHDtoImage.json`                                    |
 | userStorageAccountName     | Depolama hesabının adı                                                    |
-| Snameforpublicıp           | Genel IP için DNS adı. Küçük harfle yazılmalıdır                                  |
+| sNameForPublicIP           | Genel IP için DNS adı. Küçük olmalı                                  |
 | subscriptionId             | Azure abonelik tanımlayıcısı                                                  |
 | Konum                   | Kaynak grubunun standart Azure coğrafi konumu                       |
 | vmName                     | Sanal makinenin adı                                                    |
 | vaultName                  | Anahtar kasasının adı                                                          |
 | vaultResourceGroup         | Anahtar kasasının kaynak grubu
-| Sertifika URL 'si             | Anahtar kasasında depolanan sürüm dahil olmak üzere sertifikanın URL 'si (örneğin: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`) |
-| vhdUrl                     | Sanal sabit diskin URL 'SI                                                   |
+| sertifikaUrl             | Anahtar kasasında depolanan sürüm de dahil olmak üzere sertifikanın url'si:`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| vhdUrl                     | Sanal sabit diskin URL'si                                                   |
 | vmSize                     | Sanal makine örneğinin boyutu                                           |
-| Publicıpaddressname        | Genel IP adresinin adı                                                  |
+| publicIPAddressName        | Genel IP adresinin adı                                                  |
 | virtualNetworkName         | Sanal ağın adı                                                    |
 | nicName                    | Sanal ağ için ağ arabirim kartının adı                     |
-| adminUserName              | Yönetici hesabının Kullanıcı adı                                          |
+| adminUserName              | Yönetici hesabının kullanıcı adı                                          |
 | adminPassword              | Yönetici parolası                                                          |
 |  |  |
 
 
-## <a name="powershell-script"></a>PowerShell betiği
+## <a name="powershell-script"></a>Powershell komut dosyası
 
-`$storageaccount` ve `$vhdUrl` değişkenleri için değerler sağlamak üzere aşağıdaki betiği kopyalayın ve düzenleyin.  Mevcut Genelleştirilmiş VHD 'nizden bir Azure VM kaynağı oluşturmak için yürütün.
+Aşağıdaki komut dosyasını kopyalayın ve `$storageaccount` değişkenler için değerler sağlamak için edin. `$vhdUrl`  Varolan genelleştirilmiş VHD'nizden bir Azure VM kaynağı oluşturmak için çalıştırın.
 
 ```powershell
 # storage account of existing generalized VHD 
@@ -67,4 +66,4 @@ New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgNa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM 'niz dağıtıldıktan sonra [VM görüntünüzü onaylamaya](./cpp-certify-vm.md)hazırsınızdır.
+VM'niz dağıtıldıktan [sonra, VM görüntünüzü onaylamaya](./cpp-certify-vm.md)hazırsınız.

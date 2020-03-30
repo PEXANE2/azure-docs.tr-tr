@@ -1,102 +1,93 @@
 ---
-title: Talep değişimlerinin REST API Azure Active Directory B2C
-description: Active Directory B2C içindeki özel ilkelere REST API talep alışverişleri ekleyin.
+title: REST API talep değişimleri - Azure Active Directory B2C
+description: Active Directory B2C'deki özel ilkelere REST API talepleri değişimi ekleyin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 351b41f45fb84384ec0193f8e3130347d0b19401
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330713"
 ---
-# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkelere REST API talep alışverişleri ekleyin
+# <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Walkthrough: Azure Active Directory B2C'deki özel ilkelere REST API talep alışverişi ekleme
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) [özel ilkelerinize](custom-policy-overview.md) bir restısteki API ile etkileşim ekleyebilirsiniz. Bu makalede, daha fazla hizmet ile etkileşim kuran Azure AD B2C Kullanıcı yolculuğunun nasıl oluşturulacağı gösterilmektedir.
+Azure Active Directory B2C (Azure AD B2C), kimlik geliştiricilerin kullanıcı yolculuğunda YENIDEN Bir API ile etkileşimi tümleştirmelerine olanak tanır. Bu iznin sonunda, [RESTful hizmetleriyle](custom-policy-rest-api-intro.md)etkileşimedebilen bir Azure AD B2C kullanıcı yolculuğu oluşturabilirsiniz.
 
-Etkileşim, REST API talepler ve Azure AD B2C arasında bilgi talebi alışverişi içerir. Talep değişimlerinin aşağıdaki özellikleri vardır:
+Bu senaryoda, kurumsal bir iş akışıyla tümleştirerek kullanıcının belirteç verilerini zenginleştiririz. Azure AD B2C, yerel veya federe hesapla kaydolma veya kaydolma sırasında, kullanıcının genişletilmiş profil verilerini uzak bir veri kaynağından almak için bir REST API'si çağırır. Bu örnekte, Azure AD B2C kullanıcının benzersiz tanımlayıcısını, objectId'yi gönderir. REST API'si daha sonra kullanıcının hesap bakiyesini (rasgele bir sayı) döndürür. Kendi CRM sisteminizle, pazarlama veritabanınızla veya herhangi bir iş akışıyla tümleştirmek için bu örneği başlangıç noktası olarak kullanın.
 
-- , Düzenleme adımı olarak tasarlanabilir.
-- , Bir dış eylemi tetikleyebilir. Örneğin, bir olayı bir dış veritabanında günlüğe kaydedebilir.
-- , Bir değeri getirmek ve sonra Kullanıcı veritabanında depolamak için kullanılabilir.
-- Yürütme akışını değiştirebilir.
+Etkileşimi doğrulama teknik profili olarak da tasarlayabilirsiniz. Bu, REST API'si ekrandaki verileri doğrularken ve talepleri iade ederken uygundur. Daha fazla bilgi için [Walkthrough: Kullanıcı girişini doğrulamak için Azure AD B2C kullanıcı yolculuğunuzdaki REST API talep alışverişini tümleştirin.](custom-policy-rest-api-claims-validation.md)
 
-Bu makalede temsil edilen senaryo aşağıdaki eylemleri içerir:
+## <a name="prerequisites"></a>Ön koşullar
 
-1. Kullanıcıya bir dış sistemde arama yapın.
-2. Kullanıcının kaydedildiği şehri alın.
-3. Bu özniteliği bir talep olarak uygulamaya döndürün.
+- [Özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın. Yerel hesaplarla kaydolmak ve oturum açmak için çalışan bir özel politikanız olmalıdır.
+- [REST API talep alışverişini Azure AD B2C özel politikanızda](custom-policy-rest-api-intro.md)nasıl entegre edebilirsiniz öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prepare-a-rest-api-endpoint"></a>REST API bitiş noktası hazırlama
 
-- [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
-- Etkileşimde bulunmak için bir REST API uç noktası. Bu makale örnek olarak basit bir Azure işlevi kullanır. Azure işlevi oluşturmak için, bkz. [Azure Portal ilk işlevinizi oluşturma](../azure-functions/functions-create-first-azure-function.md).
+Bu izbin için, bir kullanıcının Azure AD B2C objectId'inin arka uç sisteminizde kayıtlı olup olmadığını doğrulayan bir REST API'niz olmalıdır. Kaydedilmişse, REST API kullanıcı hesap bakiyesini döndürür. Aksi takdirde, REST API yeni hesabı dizine kaydeder ve `50.00`başlangıç bakiyesini döndürür.
 
-## <a name="prepare-the-api"></a>API 'YI hazırlama
+Aşağıdaki JSON kodu, Azure AD B2C'nin REST API bitiş noktanıza göndereceği verileri gösterir. 
 
-Bu bölümde, Azure işlevini `email`için bir değer alacak şekilde hazırlarsınız ve sonra Azure AD B2C tarafından talep olarak kullanılabilecek `city` değerini döndürebilirsiniz.
-
-Aşağıdaki kodu kullanmak için oluşturduğunuz Azure işlevi için Run. CSX dosyasını değiştirin:
-
-```csharp
-#r "Newtonsoft.Json"
-
-using System.Net;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
-using Newtonsoft.Json;
-
-public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+```json
 {
-  log.LogInformation("C# HTTP trigger function processed a request.");
-  string email = req.Query["email"];
-  string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-  dynamic data = JsonConvert.DeserializeObject(requestBody);
-  email = email ?? data?.email;
-
-  return email != null
-    ? (ActionResult)new OkObjectResult(
-      new ResponseContent
-      {
-        version = "1.0.0",
-        status = (int) HttpStatusCode.OK,
-        city = "Redmond"
-      })
-      : new BadRequestObjectResult("Please pass an email on the query string or in the request body");
-}
-
-public class ResponseContent
-{
-    public string version { get; set; }
-    public int status { get; set; }
-    public string city {get; set; }
+    "objectId": "User objectId",
+    "language": "Current UI language"
 }
 ```
 
-## <a name="configure-the-claims-exchange"></a>Talep değişimini yapılandırma
+REST API'niz verileri doğruladıktan sonra, aşağıdaki JSON verileriyle birlikte bir HTTP 200 (Ok) döndürmesi gerekir:
 
-Teknik bir profil, talep alışverişi için yapılandırma sağlar.
+```json
+{
+    "balance": "760.50"
+}
+```
 
-*TrustFrameworkExtensions. xml* dosyasını açın ve aşağıdaki **ClaimsProvider** XML öğesini **claimsproviders** öğesine ekleyin.
+REST API bitiş noktasının kurulumu bu makalenin kapsamı dışındadır. Bir Azure [İşlevler](https://docs.microsoft.com/azure/azure-functions/functions-reference) örneği oluşturduk. Tüm Azure işlev koduna [GitHub'dan](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)erişebilirsiniz.
 
-```XML
+## <a name="define-claims"></a>Talepleri tanımlama
+
+Talep, Azure AD B2C ilke yürütmesi sırasında verilerin geçici olarak depolanmasını sağlar. [İddialar şeması](claimsschema.md) bölümünde ki talepleri beyan edebilirsiniz. 
+
+1. İlkinizin uzantılar dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. [BuildingBlocks](buildingblocks.md) öğesini arayın. Öğe yoksa, ekleyin.
+1. [ClaimsSchema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
+1. Aşağıdaki iddiaları **ClaimsSchema** öğesine ekleyin.  
+
+```xml
+<ClaimType Id="balance">
+  <DisplayName>Your Balance</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="userLanguage">
+  <DisplayName>User UI language (used by REST API to return localized error messages)</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+```
+
+## <a name="configure-the-restful-api-technical-profile"></a>RESTful API teknik profilini yapılandırma 
+
+[Dinlendirici teknik profil,](restful-technical-profile.md) kendi RESTful hizmetinizle birlikte yüz yüze çalışma desteği sağlar. Azure AD B2C, bir `InputClaims` koleksiyondaki RESTful hizmetine veri `OutputClaims` gönderir ve bir koleksiyondaki verileri geri alır. Dosyanızdaki **ClaimsProviders** <em>**`TrustFrameworkExtensions.xml`**</em> Talep Sağlayıcıları öğesini bulun ve aşağıdaki gibi yeni bir talep sağlayıcısı ekleyin:
+
+```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="AzureFunctions-WebHook">
-      <DisplayName>Azure Function Web Hook</DisplayName>
+    <TechnicalProfile Id="REST-GetProfile">
+      <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
         <Item Key="AuthenticationType">None</Item>
@@ -104,10 +95,13 @@ Teknik bir profil, talep alışverişi için yapılandırma sağlar.
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
-        <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
+        <!-- Claims sent to your REST API -->
+        <InputClaim ClaimTypeReferenceId="objectId" />
+        <InputClaim ClaimTypeReferenceId="userLanguage" PartnerClaimType="lang" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
       </InputClaims>
       <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="city" PartnerClaimType="city" />
+        <!-- Claims parsed from your REST API -->
+        <OutputClaim ClaimTypeReferenceId="balance" />
       </OutputClaims>
       <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
     </TechnicalProfile>
@@ -115,153 +109,114 @@ Teknik bir profil, talep alışverişi için yapılandırma sağlar.
 </ClaimsProvider>
 ```
 
-**Inputclaim** öğesi Rest hizmetine gönderilen talepleri tanımlar. Bu örnekte, talep `givenName` değeri, talep `email`olarak REST hizmetine gönderilir. **Outputclaim** Öğesı, Rest hizmetinden beklenen talepleri tanımlar.
+Bu örnekte, `userLanguage` JSON yükü içinde `lang` olduğu gibi REST hizmetine gönderilecektir. Talebin `userLanguage` değeri geçerli kullanıcı dili kimliğini içerir. Daha fazla bilgi [için, talep çözümleyicisi](claim-resolver-overview.md)bakın.
 
-Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtir. Yeniden yapılan API 'lerinizi üretime yönelik olarak güvenli hale getirme hakkında bilgi edinmek için bkz. [sertifika kimlik doğrulaması ile](secure-rest-api-dotnet-certificate-auth.md) [temel kimlik doğrulama](secure-rest-api-dotnet-basic-auth.md) ve güvenilir API 'ler ile güvenli yeniden API 'ler sağlama.
+Yukarıdaki `AuthenticationType` açıklamaları `AllowInsecureAuthInProduction` belirtin ve bir üretim ortamına taşınırken yaptığınız değişiklikleri belirtin. Yeniden üretim için yeniden ifl eksalarınızı nasıl güvenli hale erdireceğimize yönelik bilgi için Secure [RESTful API'ye](secure-rest-api.md)bakın.
 
-## <a name="add-the-claim-definition"></a>Talep tanımını ekleyin
+## <a name="add-an-orchestration-step"></a>Orkestrasyon adımı ekleme
 
-**Buildingblocks** öğesi içinde `city` için bir tanım ekleyin. Bu öğeyi TrustFrameworkExtensions. xml dosyasının başlangıcında bulabilirsiniz.
+[Kullanıcı yolculukları,](userjourneys.md) bir ilkenin, bir kullanıcı için istenen talepleri elde etmesine güvenen bir taraf uygulamasının izin verdiği açık yolları belirtir. Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir orkestrasyon dizisi olarak gösterilir. Düzenleme adımları ekleyebilir veya çıkarabilirsiniz. Bu durumda, REST API çağrısı ile kullanıcı kaydolduktan veya oturum açtıktan sonra uygulamaya sağlanan bilgileri artırmak için kullanılan yeni bir düzenleme adımı eklersiniz.
 
-```XML
-<BuildingBlocks>
-  <ClaimsSchema>
-    <ClaimType Id="city">
-      <DisplayName>City</DisplayName>
-      <DataType>string</DataType>
-      <UserHelpText>Your city</UserHelpText>
-      <UserInputType>TextBox</UserInputType>
-    </ClaimType>
-  </ClaimsSchema>
-</BuildingBlocks>
+1. İlkinizin temel dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. Öğeyi `<UserJourneys>` arayın. Öğenin tamamını kopyalayın ve silin.
+1. İlkinizin uzantılar dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. `<ClaimsProviders>` Öğenin `<UserJourneys>` kapatılmasından sonra uzantıları dosyasına yapıştırın.
+1. 'yi `<UserJourney Id="SignUpOrSignIn">`bulun ve sonuncusundan önce aşağıdaki orkestrasyon adımını ekleyin.
+
+    ```XML
+    <OrchestrationStep Order="7" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    ```
+
+1. Refactor son orkestrasyon `Order` adımı `8`değiştirerek . Son iki düzenleme adımınız aşağıdaki gibi görünmelidir:
+
+    ```XML
+    <OrchestrationStep Order="7" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+
+    <OrchestrationStep Order="8" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+    ```
+
+1. **ProfileEdit** ve **PasswordReset** kullanıcı yolculukları için son iki adımı yineleyin.
+
+
+## <a name="include-a-claim-in-the-token"></a>Belirteci bir talep ekleme 
+
+`balance` Talebi güvenen taraf uygulamasına geri döndürmek <em> `SocialAndLocalAccounts/` </em> için, dosyaya bir çıktı talebi ekleyin. Çıktı talebi eklemek, başarılı bir kullanıcı yolculuğundan sonra talebi belirteci içine alacaktır ve uygulamaya gönderilir. Çıktı talebi olarak eklemek `balance` için güvenilen taraf bölümündeki teknik profil öğesini değiştirin.
+ 
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <OutputClaim ClaimTypeReferenceId="balance" DefaultValue="" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
 ```
 
-## <a name="add-an-orchestration-step"></a>Düzenleme adımı ekleme
+**ProfileEdit.xml**ve **PasswordReset.xml** kullanıcı yolculukları için bu adımı tekrarlayın.
 
-REST API çağrısının düzenleme adımı olarak kullanılabileceği birçok kullanım durumu vardır. Düzenleme adımı olarak, bir Kullanıcı ilk kez kayıt gibi bir görevi başarıyla tamamladıktan sonra veya bilgileri eşitlenmiş halde tutmak için bir profil güncelleştirmesi olarak bir dış sisteme güncelleştirme olarak kullanılabilir. Bu durumda, profil düzenledikten sonra uygulamaya girilen bilgileri artırmak için kullanılır.
+Değiştirdiğiniz dosyaları kaydedin: *TrustFrameworkBase.xml*, ve *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, ve *PasswordReset.xml*. 
 
-Profile bir adım ekleyin Kullanıcı yolculuğunu düzenleyin. Kullanıcının kimliği doğrulandıktan sonra (aşağıdaki XML 'de Orchestration adımları 1-4) ve Kullanıcı güncelleştirilmiş profil bilgilerini sağlamıştır (5. adım). *TrustFrameworkBase. xml* dosyasındaki profile düzenleme Kullanıcı yolculuğu XML kodunu, **User, neys** öğesinin içindeki *TrustFrameworkExtensions. xml* dosyasına kopyalayın. Ardından, değişikliği 6. adımda yapın.
+## <a name="test-the-custom-policy"></a>Özel ilkeyi test edin
 
-```XML
-<OrchestrationStep Order="6" Type="ClaimsExchange">
-  <ClaimsExchanges>
-    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
-  </ClaimsExchanges>
-</OrchestrationStep>
-```
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve Azure AD kiracınızı içeren dizin seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından **Uygulama kayıtlarını**arayın ve seçin.
+1. **Kimlik Deneyimi Çerçevesi'ni**seçin.
+1. **Özel Politika Yükle'yi**seçin ve sonra değiştirdiğiniz politika dosyalarını yükleyin: *TrustFrameworkBase.xml*ve *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, ve *PasswordReset.xml*. 
+1. Yüklediğiniz kaydolma veya kaydolma ilkesini seçin ve **Şimdi Çalıştır** düğmesini tıklatın.
+1. Bir e-posta adresi veya Facebook hesabı kullanarak kaydolabilirsiniz.
+1. Başvurunuza geri gönderilen `balance` belirteç, talebi içerir.
 
-Kullanıcı yolculuğu için son XML şu örnekteki gibi görünmelidir:
-
-```XML
-<UserJourney Id="ProfileEdit">
-  <OrchestrationSteps>
-    <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
-      <ClaimsProviderSelections>
-        <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
-        <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
-      </ClaimsProviderSelections>
-    </OrchestrationStep>
-    <OrchestrationStep Order="2" Type="ClaimsExchange">
-      <ClaimsExchanges>
-        <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
-        <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="3" Type="ClaimsExchange">
-      <Preconditions>
-        <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-          <Value>authenticationSource</Value>
-          <Value>localAccountAuthentication</Value>
-          <Action>SkipThisOrchestrationStep</Action>
-        </Precondition>
-      </Preconditions>
-      <ClaimsExchanges>
-        <ClaimsExchange Id="AADUserRead" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="4" Type="ClaimsExchange">
-      <Preconditions>
-        <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-          <Value>authenticationSource</Value>
-          <Value>socialIdpAuthentication</Value>
-          <Action>SkipThisOrchestrationStep</Action>
-        </Precondition>
-      </Preconditions>
-      <ClaimsExchanges>
-        <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="5" Type="ClaimsExchange">
-      <ClaimsExchanges>
-        <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <!-- Add a step 6 to the user journey before the JWT token is created-->
-    <OrchestrationStep Order="6" Type="ClaimsExchange">
-      <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-  </OrchestrationSteps>
-  <ClientDefinition ReferenceId="DefaultWeb" />
-</UserJourney>
-```
-
-## <a name="add-the-claim"></a>Talebi ekleyin
-
-*Profileedit. xml* dosyasını düzenleyin ve **outputclaim** öğesine `<OutputClaim ClaimTypeReferenceId="city" />` ekleyin.
-
-Yeni talebi ekledikten sonra teknik profil şu örneğe benzer şekilde görünür:
-
-```XML
-<TechnicalProfile Id="PolicyProfile">
-  <DisplayName>PolicyProfile</DisplayName>
-  <Protocol Name="OpenIdConnect" />
-  <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-    <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
-    <OutputClaim ClaimTypeReferenceId="city" />
-  </OutputClaims>
-  <SubjectNamingInfo ClaimType="sub" />
-</TechnicalProfile>
-```
-
-## <a name="upload-your-changes-and-test"></a>Değişikliklerinizi ve testinizi karşıya yükleyin
-
-1. Seçim Devam etmeden önce dosyaların mevcut sürümünü (indirerek indirerek) kaydedin.
-2. *TrustFrameworkExtensions. xml* ve *profileedit. xml* dosyasını karşıya yükleyin ve var olan dosyanın üzerine yazmayı seçin.
-3. **B2C_1A_ProfileEdit**seçin.
-4. Özel ilkenin genel bakış sayfasında **Uygulama Seç** için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'sinin** `https://jwt.ms`olduğundan emin olun.
-4. **Şimdi Çalıştır**' ı seçin. Hesap kimlik bilgilerinizle oturum açın ve **devam**' a tıklayın.
-
-Her şey doğru şekilde ayarlandıysa, belirteç `Redmond`değeri ile yeni talep `city`ekler.
-
-```JSON
+```json
 {
-  "exp": 1493053292,
-  "nbf": 1493049692,
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "X5eXk4xyojNFum1kl2Ytv8dlNP4-c57dO6QGTVBwaNk"
+}.{
+  "exp": 1584961516,
+  "nbf": 1584957916,
   "ver": "1.0",
   "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
-  "sub": "a58e7c6c-7535-4074-93da-b0023fbaf3ac",
-  "aud": "4e87c1dd-e5f5-4ac8-8368-bc6a98751b8b",
-  "acr": "b2c_1a_profileedit",
+  "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
+  "acr": "b2c_1a_signup_signin",
   "nonce": "defaultNonce",
-  "iat": 1493049692,
-  "auth_time": 1493049692,
-  "city": "Redmond"
+  "iat": 1584957916,
+  "auth_time": 1584957916,
+  "name": "Emily Smith",
+  "email": "emily@outlook.com",
+  "given_name": "Emily",
+  "family_name": "Smith",
+  "balance": "202.75"
+  ...
 }
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Etkileşimi bir doğrulama profili olarak da tasarlayabilirsiniz. Daha fazla bilgi için bkz. [Izlenecek yol: Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep Değişimlerinizi tümleştirme](custom-policy-rest-api-claims-validation.md).
 
-[Kullanıcılarınızın daha fazla bilgi toplamak için profil düzenlemeyi değiştirin](custom-policy-custom-attributes.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-[Başvuru: Restuz teknik profili](restful-technical-profile.md)
+API'lerinizi nasıl güvene aldığınızı öğrenmek için aşağıdaki makalelere bakın:
 
-API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için aşağıdaki makalelere bakın:
-
-* [Temel kimlik doğrulaması (Kullanıcı adı ve parola) ile yeniden takip eden API 'nizin güvenliğini sağlama](secure-rest-api-dotnet-basic-auth.md)
-* [İstemci sertifikalarıyla yeniden takip eden API 'nizin güvenliğini sağlama](secure-rest-api-dotnet-certificate-auth.md)
+- [Walkthrough: Azure AD B2C kullanıcı yolculuğunuzdaki REST API taleplerini bir orkestrasyon adımı olarak tümleştirin](custom-policy-rest-api-claims-exchange.md)
+- [RESTful API'nizi emniyete alasınız](secure-rest-api.md)
+- [Referans: RESTful teknik profili](restful-technical-profile.md)

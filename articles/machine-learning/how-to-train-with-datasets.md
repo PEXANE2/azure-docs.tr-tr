@@ -1,7 +1,7 @@
 ---
-title: Azureml veri kümeleriyle eğitme
+title: Azureml-datasets ile eğitim
 titleSuffix: Azure Machine Learning
-description: Eğitim aşamasında veri kümelerini nasıl kullanacağınızı öğrenin
+description: Eğitimde veri kümelerini nasıl kullanacağınızı öğrenin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,43 +12,43 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283504"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
+# <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning'de veri kümeleriyle eğitim
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, bağlantı dizeleri veya veri yolları hakkında endişelenmeden, uzak bir deneme eğitiminde [Azure Machine Learning veri kümelerini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) kullanmanın iki yolunu öğrenirsiniz.
+Bu makalede, bağlantı dizeleri veya veri yolları hakkında endişelenmeden uzak bir deneme eğitiminde [Azure Machine Learning veri kümelerini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) kullanmanın iki yolunu öğrenirsiniz.
 
-- Seçenek 1: yapılandırılmış veriler varsa, bir TabularDataset oluşturun ve doğrudan eğitim betiğinizdeki kullanın.
+- Seçenek 1: Yapılandırılmış verileriniz varsa, bir TabularDataset oluşturun ve doğrudan eğitim komut dosyanızda kullanın.
 
-- Seçenek 2: yapılandırılmamış verileriniz varsa, bir dosya veri kümesi oluşturun ve eğitim için uzak bir işlem ile dosyaları bağlayın veya indirin.
+- Seçenek 2: Yapılandırılmamış verileriniz varsa, bir FileDataset oluşturun ve eğitim için uzak bir bilgisayara dosya monte edin veya indirin.
 
-Azure Machine Learning veri kümeleri, [Scriptrun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), [hiper sürücü](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) ve [Azure Machine Learning işlem hatları](how-to-create-your-first-pipeline.md)gibi Azure Machine Learning eğitim ürünleriyle sorunsuz bir tümleştirme sağlar.
+Azure Machine Learning veri kümeleri, [ScriptRun,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py) [Estimator,](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) ve [Azure Machine Learning boru hatları](how-to-create-your-first-pipeline.md)gibi Azure Machine Learning eğitim ürünleriyle sorunsuz bir entegrasyon sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Veri kümeleri oluşturup eğitmeniz için şunlar gerekir:
+Veri kümeleri oluşturmak ve eğitmek için şunları yapmanız gerekir:
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
+* [Azure Makine Öğrenimi çalışma alanı.](how-to-manage-workspace.md)
 
-* Azureml [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), azureml veri kümesi paketini içerir.
+* Azureml-datasets paketini içeren [Python için Azure Machine Learning SDK yüklendi.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 
 > [!Note]
-> Bazı veri kümesi sınıflarının [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlarda desteklenir: Red Hat Enterprise Linux, Ubuntu, Fedora ve CentOS.
+> Bazı Dataset sınıflarının [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için bu sınıflar yalnızca aşağıdaki dağıtımlarda desteklenir: Red Hat Enterprise Linux, Ubuntu, Fedora ve CentOS.
 
-## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Seçenek 1: doğrudan eğitim betiklerde veri kümelerini kullanma
+## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Seçenek 1: Veri kümelerini doğrudan eğitim komut dosyalarında kullanma
 
-Bu örnekte, bir [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) oluşturun ve bunu eğitim için `estimator` nesneniz için doğrudan bir giriş olarak kullanacaksınız. 
+Bu örnekte, bir [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) oluşturur ve bunu eğitim `estimator` için nesnenize doğrudan giriş olarak kullanırsınız. 
 
-### <a name="create-a-tabulardataset"></a>TabularDataset oluşturma
+### <a name="create-a-tabulardataset"></a>Bir TabularDataset oluşturma
 
-Aşağıdaki kod, bir Web URL 'sinden kayıtlı olmayan bir TabularDataset oluşturur. Ayrıca, yerel dosyalardan veya veri depolarındaki yollardan veri kümeleri oluşturabilirsiniz. [Veri kümeleri oluşturma](https://aka.ms/azureml/howto/createdatasets)hakkında daha fazla bilgi edinin.
+Aşağıdaki kod, bir web url'sinden kayıtsız bir TabularDataset oluşturur. Ayrıca, veri depolarında yerel dosyalardan veya yollardan veri kümeleri oluşturabilirsiniz. [Veri kümelerini oluşturma](https://aka.ms/azureml/howto/createdatasets)hakkında daha fazla bilgi edinin.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -57,11 +57,11 @@ web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 ```
 
-### <a name="access-the-input-dataset-in-your-training-script"></a>Eğitim betiğinizdeki giriş veri kümesine erişin
+### <a name="access-the-input-dataset-in-your-training-script"></a>Eğitim komut dosyanızdaki giriş veri kümesine erişin
 
-TabularDataset nesneleri, tanıdık veri hazırlama ve eğitim kitaplıklarıyla çalışabilmeniz için verileri bir Pandas veya Spark veri çerçevesine yükleme yeteneği sağlar. Bu özellikten yararlanmak için, bir TabularDataset 'i eğitim yapılandırmanızda giriş olarak geçirebilir ve sonra betiğinizde alabilirsiniz.
+TabularDataset nesneleri, tanıdık veri hazırlama ve eğitim kitaplıklarıyla çalışabilmeniz için verileri pandalara yükleme veya DataFrame'i kıvılcımlama olanağı sağlar. Bu özellikten yararlanmak için, eğitim yapılandırmanızdaki giriş olarak bir TabularDataset'i geçirebilir ve komut dosyanızda geri alabilirsiniz.
 
-Bunu yapmak için, eğitim betiğinizdeki [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) nesnesi aracılığıyla giriş veri kümesine erişin ve [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metodunu kullanın. 
+Bunu yapmak için, giriş veri kümesine eğitim komut [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) dosyanızdaki [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) nesne üzerinden erişin ve yöntemi kullanın. 
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -75,17 +75,17 @@ dataset = run.input_datasets['titanic']
 df = dataset.to_pandas_dataframe()
 ```
 
-### <a name="configure-the-estimator"></a>Tahmin aracı 'ı yapılandırma
+### <a name="configure-the-estimator"></a>Tahminciyi yapılandırma
 
-Deneme çalıştırmasını göndermek için bir [tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) nesnesi kullanılır. Azure Machine Learning ortak makine öğrenimi çerçeveleri ve genel bir Estimator için önceden yapılandırılmış tahmini 'a sahiptir.
+Deneme çalışmasını göndermek için bir [tahminnesnesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) kullanılır. Azure Machine Learning, genel makine öğrenimi çerçeveleri için önceden yapılandırılmış tahmincilerin yanı sıra genel bir tahminciye de sahiptir.
 
-Bu kod, şunu belirten `est`bir genel tahmin aracı nesnesi oluşturur.
+Bu kod, genel bir tahmin `est`nesnesi oluşturur, bu belirtir
 
-* Betikleriniz için bir komut dosyası dizini. Bu dizindeki dosyaların tümü yürütülmek üzere küme düğümlerine yüklenir.
-* Eğitim betiği, *train_titanic. Kopyala*.
-* Eğitim için giriş veri kümesi, `titanic`. `as_named_input()`, giriş veri kümesinin eğitim betiğinizdeki atanan ad tarafından başvurulabilmesi için gereklidir. 
-* Deneme için işlem hedefi.
-* Deneme için ortam tanımı.
+* Senaryolarınız için bir senaryo dizini. Bu dizindeki dosyaların tümü yürütülmek üzere küme düğümlerine yüklenir.
+* Eğitim script, *train_titanic.py*.
+* Eğitim için giriş veri `titanic`kümesi, . `as_named_input()`giriş veri kümesinin eğitim komut dosyasınızda atanan adla başvurulabilmesi için gereklidir. 
+* Deneyin işlem hedefi.
+* Denemenin çevre tanımı.
 
 ```Python
 est = Estimator(source_directory=script_folder,
@@ -101,19 +101,19 @@ experiment_run.wait_for_completion(show_output=True)
 ```
 
 
-## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Seçenek 2: dosyaları uzak bir işlem hedefine bağlama
+## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Seçenek 2: Dosyaları uzak bir işlem hedefine monte etme
 
-Veri dosyalarınızı eğitim için işlem hedefinde kullanılabilir hale getirmek istiyorsanız, bu dosyanın başvurduğu dosyaları bağlamak veya indirmek için dosya [veri kümesini](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) kullanın.
+Veri dosyalarınızı eğitim için bilgi işlem hedefinde kullanılabilir hale getirmek istiyorsanız, yönlendirilen dosyaları monte etmek veya indirmek için [FileDataset'i](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) kullanın.
 
-### <a name="mount-vs-download"></a>Bağlama ile Indir
+### <a name="mount-vs-download"></a>Mount vs. İndir
 
-Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı tarafından oluşturulan veri kümelerinde herhangi bir biçimdeki dosyaları bağlama veya indirme işlemi desteklenir. 
+Azure Blob depolama, Azure Dosyaları, Azure Veri Gölü Depolama Gen1, Azure Veri Gölü Depolama Gen2, Azure SQL Veritabanı ve PostgreSQL için Azure Veritabanı'ndan oluşturulan veri kümeleri için herhangi bir biçimde dosya montajı veya indirilmesi desteklenir. 
 
-Bir veri kümesini bağladığınızda, veri kümesinin başvurduğu dosyaları bir dizine (bağlama noktası) ekler ve işlem hedefinde kullanılabilir hale getirin. Bağlama, Azure Machine Learning Işlem, sanal makineler ve HDInsight dahil olmak üzere Linux tabanlı hesaplar için desteklenir. Bir veri kümesini indirdiğinizde, veri kümesi tarafından başvurulan tüm dosyalar işlem hedefine indirilir. Tüm işlem türleri için indirme desteklenir. 
+Bir veri kümesi bağladığınızda, veri kümesi tarafından başvurulan dosyaları bir dizin (montaj noktası) olarak ekler ve bilgi işlem hedefinde kullanılabilir hale getirin. Montaj, Azure Machine Learning Compute, sanal makineler ve HDInsight dahil olmak üzere Linux tabanlı hesaplamalar için desteklenir. Bir veri kümesi indirdiğinizde, veri kümesi tarafından başvurulan tüm dosyalar bilgi işlem hedefine indirilir. İndirme tüm bilgi işlem türleri için desteklenir. 
 
-Betiğinizin veri kümesi tarafından başvurulan tüm dosyaları işliyorsa ve işlem diskiniz tam veri kümesine uyuyorsa, depolama hizmetlerinden veri akışı yükünü ortadan kaldırmak için indirme önerilir. Veri boyutunuz işlem diski boyutunu aşarsa, indirme mümkün değildir. Bu senaryo için, işleme sırasında yalnızca komut dosyası tarafından kullanılan veri dosyaları yüklendiğinden, bağlama yapmanız önerilir.
+Komut dosyanız veri kümesi tarafından başvurulan tüm dosyaları işlerse ve bilgi işlem diskiniz tam veri kümenize sığabilirse, depolama hizmetlerinden veri akışının yüklerini önlemek için karşıdan yükleme önerilir. Veri boyutunuz bilgi işlem disk boyutunu aşıyorsa, karşıdan yükleme mümkün değildir. Bu senaryo için, yalnızca komut dosyanız tarafından kullanılan veri dosyaları işleme sırasında yüklendiğinden montaj yapmanızı öneririz.
 
-Aşağıdaki kod, `mounted_path` konumundaki geçici dizine `dataset` takar
+Aşağıdaki kod `dataset` geçici dizine`mounted_path`
 
 ```python
 import tempfile
@@ -129,9 +129,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
-### <a name="create-a-filedataset"></a>Dosya veri kümesi oluşturma
+### <a name="create-a-filedataset"></a>FileDataset oluşturma
 
-Aşağıdaki örnek, Web URL 'lerinden kaydedilmemiş bir dosya veri kümesi oluşturur. Diğer kaynaklardan [veri kümeleri oluşturma](https://aka.ms/azureml/howto/createdatasets) hakkında daha fazla bilgi edinin.
+Aşağıdaki örnek, web url'lerinden kayıtsız bir FileDataset oluşturur. Diğer kaynaklardan [veri kümeleri oluşturma](https://aka.ms/azureml/howto/createdatasets) hakkında daha fazla bilgi edinin.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -145,11 +145,11 @@ web_paths = [
 mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 
-### <a name="configure-the-estimator"></a>Tahmin aracı 'ı yapılandırma
+### <a name="configure-the-estimator"></a>Tahminciyi yapılandırma
 
-Veri kümesini Estimator 'daki `inputs` parametresi aracılığıyla geçirmenin yanı sıra, veri kümesini `script_params` aracılığıyla geçirebilir ve bağımsız değişkenler aracılığıyla eğitim betiğinizdeki veri yolunu (takma noktası) alabilirsiniz. Bu şekilde, eğitim betiğinizi azureml-SDK 'dan bağımsız tutabilirsiniz. Diğer bir deyişle, yerel hata ayıklama ve herhangi bir bulut platformunda uzaktan eğitim için aynı eğitim betiğini kullanacaksınız.
+Veri kümesini tahmincideki `inputs` parametreden geçirmenin yanı sıra, veri `script_params` kümesini geçirebilir ve bağımsız değişkenler aracılığıyla eğitim komut dosyasınızdaki veri yolunu (montaj noktası) da alabilirsiniz. Bu şekilde, eğitim komut dosyanızı azureml-sdk'dan bağımsız tutabilirsiniz. Başka bir deyişle, herhangi bir bulut platformunda yerel hata ayıklama ve uzaktan eğitim için aynı eğitim komut dosyasını kullanabilirsiniz.
 
-Bir [sköğrenme](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) tahmin aracı nesnesi, scikit-denemeleri için çalışmayı göndermek üzere kullanılır. [Sköğren tahmin aracı](how-to-train-scikit-learn.md)ile eğitim hakkında daha fazla bilgi edinin.
+Bir [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) tahmincisi nesne, scikit-learn denemeleri için çalıştırmayı göndermek için kullanılır. [SKlearn tahmincisi](how-to-train-scikit-learn.md)ile eğitim hakkında daha fazla bilgi edinin.
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -171,9 +171,9 @@ run = experiment.submit(est)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>Eğitim betiğinizdeki verileri alın
+### <a name="retrieve-the-data-in-your-training-script"></a>Eğitim komut dosyanızdaki verileri alma
 
-Çalıştırmayı gönderdikten sonra, `mnist` veri kümesi tarafından başvurulan veri dosyaları işlem hedefine bağlanır. Aşağıdaki kod, betiğinizdeki verilerin nasıl alınacağını gösterir.
+Çalıştırmayı gönderdikten sonra, veri `mnist` kümesi tarafından yönlendirilen veri dosyaları bilgi işlem hedefine monte edilir. Aşağıdaki kod, komut dosyanızdaki verileri nasıl alısüreceğini gösterir.
 
 ```Python
 %%writefile $script_folder/train_mnist.py
@@ -209,12 +209,12 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="notebook-examples"></a>Not defteri örnekleri
 
-[Veri kümesi Not defterleri](https://aka.ms/dataset-tutorial) bu makaledeki kavramları gösterir ve genişletir.
+[Veri kümesi not defterleri](https://aka.ms/dataset-tutorial) bu makaledeki kavramları gösterir ve genişletir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Tabulardataset ile [makine öğrenimi modellerini otomatik eğitme](how-to-auto-train-remote.md)
+* TabularDatasets ile [otomatik tren makine öğrenme modelleri](how-to-auto-train-remote.md)
 
-* Filedataset 'ler ile [görüntü sınıflandırma modellerini eğitme](https://aka.ms/filedataset-samplenotebook)
+* FileDatasets ile [görüntü sınıflandırma modellerini eğitin](https://aka.ms/filedataset-samplenotebook)
 
-* [İşlem hatları kullanarak veri kümeleriyle eğitme](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)
+* [Veri ayarlarını kullanarak tren](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

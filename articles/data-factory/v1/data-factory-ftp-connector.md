@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak bir FTP sunucusundan veri taşıma
-description: Azure Data Factory kullanarak FTP sunucusundan veri taşıma hakkında bilgi edinin.
+title: Azure Veri Fabrikası'nı kullanarak bir FTP sunucusundan veri taşıma
+description: Azure Veri Fabrikası'nı kullanarak bir FTP sunucusundan verileri nasıl taşıyabilirsiniz hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,72 +13,72 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281411"
 ---
-# <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir FTP sunucusundan veri taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak bir FTP sunucusundan veri taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-ftp-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-ftp.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [v2 'de FTP Bağlayıcısı](../connector-ftp.md).
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki FTP konektörüne](../connector-ftp.md)bakın.
 
-Bu makalede, bir FTP sunucusundan verileri taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
+Bu makalede, bir FTP sunucusundan veri taşımak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanıyor.
 
-FTP sunucusundan desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir FTP sunucusundan diğer veri depolarına veri taşımayı destekler, ancak diğer veri depolarından verileri bir FTP sunucusuna taşımamaktadır. Hem şirket içi hem de bulut FTP sunucularını destekler.
-
-> [!NOTE]
-> Kopyalama etkinliği, hedefe başarıyla kopyalandıktan sonra kaynak dosyayı silmez. Başarılı bir kopyadan sonra kaynak dosyayı silmeniz gerekiyorsa, dosyayı silmek için özel bir etkinlik oluşturun ve işlem hattındaki etkinliğini kullanın.
-
-## <a name="enable-connectivity"></a>Bağlantıyı etkinleştir
-**Şirket içi** bir FTP sunucusundan verileri bir bulut veri deposuna (örneğin, Azure Blob depolama alanına) taşıyorsanız, veri yönetimi ağ geçidini yükleyip kullanın. Veri Yönetimi ağ geçidi, şirket içi makinenize yüklenmiş bir istemci aracısıdır ve bulut hizmetlerinin şirket içi bir kaynağa bağlanmasına izin verir. Ayrıntılar için bkz. [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md). Ağ geçidini ayarlamaya ve kullanmaya ilişkin adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md). Sunucu, Azure hizmet olarak altyapı (IaaS) sanal makinesi (VM) üzerinde olsa bile, bir FTP sunucusuna bağlanmak için ağ geçidini kullanırsınız.
-
-Ağ geçidini, FTP sunucusu ile aynı şirket içi makineye veya IaaS VM 'sine yüklemek mümkündür. Ancak, kaynak çekişmesini önlemek ve daha iyi performans sağlamak için ağ geçidini ayrı bir makineye veya IaaS VM 'sine yüklemenizi öneririz. Ağ geçidini ayrı bir makineye yüklediğinizde, makine FTP sunucusuna erişebilmelidir.
-
-## <a name="get-started"></a>başlarken
-Farklı araçları veya API 'Leri kullanarak bir FTP kaynağından veri taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
-
-İşlem hattı oluşturmanın en kolay yolu **Data Factory kopyalama Sihirbazı**' nı kullanmaktır. Hızlı bir yol için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
-
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
-
-Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirin:
-
-1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun.
-
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçları veya API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız. Bir FTP veri deposundan veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarına sahip bir örnek için, bu makaledeki [JSON örneği: FTP sunucusundan Azure Blob 'a veri kopyalama](#json-example-copy-data-from-ftp-server-to-azure-blob) bölümüne bakın.
+Bir FTP sunucusundan desteklenen herhangi bir lavabo veri deposuna verileri kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Veri Fabrikası şu anda yalnızca ftp sunucusundan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından FTP sunucusuna taşımaz. Hem şirket içi hem de bulut FTP sunucularını destekler.
 
 > [!NOTE]
-> Kullanılacak desteklenen dosya ve sıkıştırma biçimleri hakkında daha fazla bilgi için, bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md).
+> Kopyalama etkinliği, hedefe başarıyla kopyalandıktan sonra kaynak dosyayı silmez. Başarılı bir kopyadan sonra kaynak dosyayı silmeniz gerekiyorsa, dosyayı silmek için özel bir etkinlik oluşturun ve ardışık düzendeki etkinliği kullanın.
 
-Aşağıdaki bölümler, FTP 'ye özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar.
+## <a name="enable-connectivity"></a>Bağlantıyı etkinleştirme
+Verileri **şirket içi** FTP sunucusundan bir bulut veri deposuna (örneğin, Azure Blob depolamasına) taşıyorsanız, Veri Yönetimi Ağ Geçidi'ni yükleyin ve kullanın. Veri Yönetimi Ağ Geçidi, şirket içi makinenize yüklenen bir istemci aracısıdır ve bulut hizmetlerinin şirket içi bir kaynağa bağlanmasına olanak tanır. Ayrıntılar için [Veri Yönetimi Ağ Geçidi'ne](data-factory-data-management-gateway.md)bakın. Ağ geçidini kurma ve kullanma yla ilgili adım adım talimatlar için, [verileri şirket içi konumlar ve bulut arasında taşıma'ya](data-factory-move-data-between-onprem-and-cloud.md)bakın. Sunucu bir hizmet (IaaS) sanal makine (VM) olarak Bir Azure altyapısında olsa bile, bir FTP sunucusuna bağlanmak için ağ geçidini kullanırsınız.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
-Aşağıdaki tabloda, bir FTP bağlantılı hizmetine özgü JSON öğeleri açıklanmaktadır.
+Ağ geçidini FTP sunucusuyla aynı şirket içi makineye veya IaaS VM'ye yüklemek mümkündür. Ancak, kaynak çekişmesini önlemek ve daha iyi performans için ağ geçidini ayrı bir makineye veya IaaS VM'ye yüklemenizi öneririz. Ağ geçidini ayrı bir makineye yüklediğinizde, makine FTP sunucusuna erişebilmeli.
+
+## <a name="get-started"></a>Kullanmaya başlayın
+Farklı araçlar veya API'ler kullanarak bir FTP kaynağından veri hareket ettiren bir kopyalama etkinliği içeren bir ardışık hatlar oluşturabilirsiniz.
+
+Bir ardışık hatlar oluşturmanın en kolay yolu **Veri Fabrikası Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Hızlı bir geçiş için [Kopya Sihirbazı'nı kullanarak bir ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
+
+Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **PowerShell**, **Azure Kaynak Yöneticisi şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın.
+
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirin:
+
+1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.**
+
+Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçlar veya API'ler (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız. FTP veri deposundan veri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek [için JSON örneğine bakın: FTP sunucusundan](#json-example-copy-data-from-ftp-server-to-azure-blob) bu makalenin Azure blob bölümüne veri kopyalama.
+
+> [!NOTE]
+> Kullanılacak desteklenen dosya ve sıkıştırma biçimleri hakkında ayrıntılı bilgi için [Azure Veri Fabrikası'nda Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md)bakın.
+
+Aşağıdaki bölümler, FTP'ye özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar.
+
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+Aşağıdaki tabloda FTP bağlantılı bir hizmete özgü JSON öğeleri açıklanmaktadır.
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| type |Bunu FtpServer olarak ayarlayın. |Yes |&nbsp; |
-| konak |FTP sunucusunun adını veya IP adresini belirtin. |Yes |&nbsp; |
-| authenticationType |Kimlik doğrulama türünü belirtin. |Yes |Temel, anonim |
+| type |Bunu FtpServer olarak ayarlayın. |Evet |&nbsp; |
+| konak |FTP sunucusunun adını veya IP adresini belirtin. |Evet |&nbsp; |
+| authenticationType |Kimlik doğrulama türünü belirtin. |Evet |Temel, Anonim |
 | kullanıcı adı |FTP sunucusuna erişimi olan kullanıcıyı belirtin. |Hayır |&nbsp; |
-| password |Kullanıcının parolasını belirtin (Kullanıcı adı). |Hayır |&nbsp; |
-| encryptedCredential |FTP sunucusuna erişmek için şifrelenmiş kimlik bilgisini belirtin. |Hayır |&nbsp; |
-| gatewayName |Şirket içi FTP sunucusuna bağlanmak için Veri Yönetimi ağ geçidinde ağ geçidinin adını belirtin. |Hayır |&nbsp; |
+| password |Kullanıcının parolasını (kullanıcı adı) belirtin. |Hayır |&nbsp; |
+| şifreli Credential |FTP sunucusuna erişmek için şifrelenmiş kimlik bilgilerini belirtin. |Hayır |&nbsp; |
+| ağ geçidiAdı |Şirket içi ftp sunucusuna bağlanmak için Veri Yönetimi Ağ Geçidi'ndeki ağ geçidinin adını belirtin. |Hayır |&nbsp; |
 | port |FTP sunucusunun dinlediği bağlantı noktasını belirtin. |Hayır |21 |
-| enableSsl |Bir SSL/TLS kanalı üzerinden FTP kullanılıp kullanılmayacağını belirtin. |Hayır |true |
-| enableServerCertificateValidation |SSL/TLS kanalı üzerinden FTP kullanırken sunucu SSL sertifikası doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtin. |Hayır |true |
+| sağlarSsl |FTP'yi bir SSL/TLS kanalı üzerinden kullanıp kullanmayacağını belirtin. |Hayır |true |
+| enableServerCertificateValidation |SSL/TLS kanalı üzerinden FTP kullanırken sunucu SSL sertifika doğrulamasını etkinleştirip etkinleştirmeyeceğiniz belirtin. |Hayır |true |
 
 >[!NOTE]
->FTP Bağlayıcısı, şifreleme veya açık SSL/TLS şifrelemesi olmadan FTP sunucusuna erişmeyi destekler; örtük SSL/TLS şifrelemesini desteklemez.
+>FTP konektörü FTP sunucusuna şifreleme veya açık SSL/TLS şifrelemesi olmadan erişmeyi destekler; örtülü SSL/TLS şifrelemeyi desteklemez.
 
-### <a name="use-anonymous-authentication"></a>Anonim kimlik doğrulaması kullan
+### <a name="use-anonymous-authentication"></a>Anonim kimlik doğrulamasını kullanma
 
 ```JSON
 {
@@ -93,7 +93,7 @@ Aşağıdaki tabloda, bir FTP bağlantılı hizmetine özgü JSON öğeleri aç�
 }
 ```
 
-### <a name="use-username-and-password-in-plain-text-for-basic-authentication"></a>Basit kimlik doğrulaması için Kullanıcı adı ve parolayı düz metin olarak kullan
+### <a name="use-username-and-password-in-plain-text-for-basic-authentication"></a>Temel kimlik doğrulama için kullanıcı adı ve parolayı düz metin olarak kullanma
 
 ```JSON
 {
@@ -110,7 +110,7 @@ Aşağıdaki tabloda, bir FTP bağlantılı hizmetine özgü JSON öğeleri aç�
 }
 ```
 
-### <a name="use-port-enablessl-enableservercertificatevalidation"></a>Bağlantı noktası, enableSsl, enableServerCertificateValidation kullanın
+### <a name="use-port-enablessl-enableservercertificatevalidation"></a>Bağlantı noktasını kullanın, enableSsl, enableServerCertificateValidation
 
 ```JSON
 {
@@ -130,7 +130,7 @@ Aşağıdaki tabloda, bir FTP bağlantılı hizmetine özgü JSON öğeleri aç�
 }
 ```
 
-### <a name="use-encryptedcredential-for-authentication-and-gateway"></a>Kimlik doğrulaması ve ağ geçidi için encryptedCredential kullanın
+### <a name="use-encryptedcredential-for-authentication-and-gateway"></a>Kimlik doğrulama ve ağ geçidi için şifreli Credential'ı kullanma
 
 ```JSON
 {
@@ -148,27 +148,27 @@ Aşağıdaki tabloda, bir FTP bağlantılı hizmetine özgü JSON öğeleri aç�
 ```
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md). Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri için benzerdir.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [bkz.](data-factory-create-datasets.md) Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri için benzerdir.
 
-**Typeproperties** bölümü her bir veri kümesi türü için farklıdır. Veri kümesi türüne özgü bilgiler sağlar. **FileShare** türünde bir veri kümesi Için **typeproperties** bölümü aşağıdaki özelliklere sahiptir:
+**typeProperties** bölümü her veri kümesi türü için farklıdır. Veri kümesi türüne özgü bilgiler sağlar. **FileShare** türünden bir veri kümesi için **typeProperties** bölümü aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |Klasöre alt yol. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları.<br/><br/>Bu özelliği, dilim başlangıç ve bitiş tarih zamanları temelinde klasör yollarına sahip olmak için **Partitionby** ile birleştirebilirsiniz. |Yes |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde, oluşturulan dosyanın adı şu biçimdedir: <br/><br/>`Data.<Guid>.txt` (örnek: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Hayır |
-| fileFilter |Tüm dosyalar yerine **FolderPath**içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin.<br/><br/>İzin verilen değerler: `*` (birden fazla karakter) ve `?` (tek karakter).<br/><br/>Örnek 1: `"fileFilter": "*.log"`<br/>Örnek 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **FileFilter** , bir giriş FileShare veri kümesi için geçerlidir. Bu özellik Hadoop Dağıtılmış Dosya Sistemi (bir) ile desteklenmiyor. |Hayır |
-| partitionedBy |Zaman serisi verileri için dinamik bir **FolderPath** ve **filename** belirtmek için kullanılır. Örneğin, her saat veri için parametreli bir **FolderPath** belirtebilirsiniz. |Hayır |
-| format | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
-| sıkıştırma | Veri sıkıştırma düzeyi ve türünü belirtin. Desteklenen türler **gzip**, **söndür**, **bzip2**ve **zipsöndür**ve desteklenen düzeyler **en iyi** ve **en hızlardır**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
-| useBinaryTransfer |İkili aktarım modunun kullanılıp kullanılmayacağını belirtin. Değerler ikili mod için (varsayılan değerdir), ASCII için false 'dur. Bu özellik, yalnızca ilişkili bağlı hizmet türü: FtpServer türünde olduğunda kullanılabilir. |Hayır |
+| folderPath |Klasöre alt yol. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için Örnek bağlantılı hizmet ve veri kümesi tanımlarına bakın.<br/><br/>Bu özelliği **partitionBy** ile birleştirerek dilim başlangıç ve bitiş tarihlerine göre klasör yolları bulabilirsiniz. |Evet |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız **klasörDeki Dosyanın** adını belirtinPath. Bu özellik için herhangi bir değer belirtmezseniz, tablo klasördeki tüm dosyaları işaret edir.<br/><br/>Bir çıktı veri kümesi için **dosya Adı** belirtilmediğinde, oluşturulan dosyanın adı aşağıdaki biçimdedir: <br/><br/>`Data.<Guid>.txt`(Örnek: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Hayır |
+| dosyaFiltre |Tüm dosyalar yerine **folderPath'deki**dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin.<br/><br/>İzin verilen `*` değerler şunlardır: `?` (birden çok karakter) ve (tek karakter).<br/><br/>Örnek 1:`"fileFilter": "*.log"`<br/>Örnek 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** bir giriş FileShare veri kümesi için geçerlidir. Bu özellik Hadoop Dağıtılmış Dosya Sistemi (HDFS) ile desteklenmez. |Hayır |
+| bölümlemeBy |Zaman serisi verileri için dinamik bir **klasörPath** ve **fileName** belirtmek için kullanılır. Örneğin, her veri saati için parametreli bir **klasörPath** belirtebilirsiniz. |Hayır |
+| biçim | Aşağıdaki biçim türleri desteklenir: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParkeFormat**. Biçim altındaki **tür** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için [Metin Biçimi,](data-factory-supported-file-and-compression-formats.md#text-format) [Json Formatı,](data-factory-supported-file-and-compression-formats.md#json-format) [Avro Biçimi,](data-factory-supported-file-and-compression-formats.md#avro-format) [Ork Formatı](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parke Formatı](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine bakın. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıktı veri kümesi tanımlarında biçim bölümünü atlayın. |Hayır |
+| sıkıştırma | Verilerin sıkıştırma türünü ve düzeyini belirtin. Desteklenen türleri **GZip**vardır , **Deflate**, **BZip2**, ve **ZipDeflate**, ve desteklenen düzeyleri **Optimal** ve **Hızlı**. Daha fazla bilgi için [Azure Veri Fabrikası'ndaki Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md#compression-support)bakın. |Hayır |
+| useBinaryTransfer |İkili aktarım modunu kullanıp kullanmayacağını belirtin. Değerler ikili mod için doğrudur (bu varsayılan değerdir) ve ASCII için yanlıştır. Bu özellik yalnızca ilişkili bağlantılı hizmet türü ftpServer türünde olduğunda kullanılabilir. |Hayır |
 
 > [!NOTE]
-> **filename** ve **FileFilter** aynı anda kullanılamaz.
+> **fileName** ve **fileFilter** aynı anda kullanılamaz.
 
 ### <a name="use-the-partionedby-property"></a>PartionedBy özelliğini kullanma
-Önceki bölümde belirtildiği gibi, **Partitionedby** özelliği ile zaman serisi verileri için dinamik bir **FolderPath** ve **filename** belirtebilirsiniz.
+Önceki bölümde belirtildiği gibi, **bölümlenmişBy** özelliği ile zaman serisi verileri için dinamik bir **klasörPath** ve **fileName** belirtebilirsiniz.
 
-Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında bilgi edinmek için bkz. [veri kümeleri](data-factory-create-datasets.md), [zamanlama ve yürütme](data-factory-scheduling-and-execution.md)ve işlem [hatları oluşturma](data-factory-create-pipelines.md).
+Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında bilgi [Scheduling and execution](data-factory-scheduling-and-execution.md)edinmek için [bkz.](data-factory-create-datasets.md) [Creating pipelines](data-factory-create-pipelines.md)
 
 #### <a name="sample-1"></a>Örnek 1
 
@@ -179,7 +179,7 @@ Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında bilgi edinmek için
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-Bu örnekte, {Slice}, belirtilen biçimde (YYYYMMDDHH) Data Factory sistem değişkeni Dilimestart değeriyle değiştirilmiştir. Dilimcstart, dilimin başlangıç zamanına başvurur. Klasör yolu her bir dilim için farklıdır. (Örneğin, wikidatagateway/wisvahili amptadataout/2014100103 veya wikidatagateway/wisvahili amptadataout/2014100104.)
+Bu örnekte, {Slice} veri fabrikası sistem değişkeni SliceStart değeri ile, belirtilen biçimde (YYYYMMDDHH) değiştirilir. SliceStart, dilimin başlangıç saatini ifade eder. Klasör yolu her dilim için farklıdır. (Örneğin, wikidatagateway/wikisampledataout/2014100103 veya wikidatagateway/wikisampledataout/2014100104.)
 
 #### <a name="sample-2"></a>Örnek 2
 
@@ -194,41 +194,41 @@ Bu örnekte, {Slice}, belirtilen biçimde (YYYYMMDDHH) Data Factory sistem deği
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Bu örnekte, monthestart 'ın Year, month, Day ve saati, **FolderPath** ve **filename** özellikleri tarafından kullanılan ayrı değişkenlere ayıklanır.
+Bu örnekte, SliceStart'ın yılı, ayı, günü ve saati **folderPath** ve **fileName** özellikleri tarafından kullanılan ayrı değişkenlere ayıklanır.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları oluşturma](data-factory-create-pipelines.md). Ad, açıklama, giriş ve çıkış tabloları ve ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [bkz.](data-factory-create-pipelines.md) Ad, açıklama, giriş ve çıktı tabloları ve ilkeler gibi özellikler tüm etkinlik türleri için kullanılabilir.
 
-Etkinliğin **Typeproperties** bölümünde bulunan özellikler, diğer yandan her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için tür özellikleri, kaynak ve havuz türlerine göre değişir.
+Diğer taraftan, etkinliğin **typeProperties** bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için tür özellikleri kaynak ve lavabo türlerine bağlı olarak değişir.
 
-Kopyalama etkinliğinde, kaynak **Filesystemsource**türünde olduğunda aşağıdaki özellik **typeproperties** bölümünde mevcuttur:
+Kopyalama etkinliğinde, kaynak **FileSystemSource**türünde olduğunda, **typeProperties** bölümünde aşağıdaki özellik kullanılabilir:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| özyinelemeli |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True, false (varsayılan) |Hayır |
+| Özyinelemeli |Verilerin alt klasörlerden mi yoksa yalnızca belirtilen klasörden mi özyinelemeli olarak okunduğunu gösterir. |True, False (varsayılan) |Hayır |
 
-## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON örneği: FTP sunucusundan Azure Blob 'a veri kopyalama
-Bu örnek, bir FTP sunucusundan Azure Blob depolamaya nasıl veri kopyalanacağını gösterir. Ancak, veriler, Data Factory içindeki kopyalama etkinliği kullanılarak [desteklenen veri depoları ve biçimlerinde](data-factory-data-movement-activities.md#supported-data-stores-and-formats)belirtilen herhangi bir havuza doğrudan kopyalanabilir.
+## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON örneği: FTP sunucusundan Azure Blob'a veri kopyalama
+Bu örnek, ftp sunucusundan Azure Blob depolamaalanına verilerin nasıl kopyalanır olduğunu gösterir. Ancak, veriler, Veri Fabrikası'ndaki kopyalama etkinliği [kullanılarak, desteklenen veri depolarında ve biçimlerinde](data-factory-data-movement-activities.md#supported-data-stores-and-formats)belirtilen lavabolardan herhangi biri için doğrudan kopyalanabilir.
 
-Aşağıdaki örnekler, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)veya [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar:
+Aşağıdaki örnekler, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)veya [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir boru hattı oluşturmak için kullanabileceğiniz örnek JSON tanımları sağlar:
 
-* [FtpServer](#linked-service-properties) türünde bağlı bir hizmet
-* [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties) türünde bağlı bir hizmet
-* [FileShare](#dataset-properties) türünde bir giriş [veri kümesi](data-factory-create-datasets.md)
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) türünde bir çıkış [veri kümesi](data-factory-create-datasets.md)
-* [Filesystemsource](#copy-activity-properties) ve [blobsink](data-factory-azure-blob-connector.md#copy-activity-properties) kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md)
+* [FtpServer](#linked-service-properties) türünde bağlantılı bir hizmet
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) türünün bağlantılı bir hizmeti
+* [FileShare](#dataset-properties) türünden bir giriş [veri kümesi](data-factory-create-datasets.md)
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) türünden bir çıktı [veri kümesi](data-factory-create-datasets.md)
+* [FileSystemSource](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) kullanan kopyalama etkinliği olan bir [ardışık düzen](data-factory-create-pipelines.md)
 
-Örnek, verileri bir FTP sunucusundan her saat bir Azure blobuna kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
+Örnek, ftp sunucusundaki verileri her saat başı bir Azure blob'una kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
 
-### <a name="ftp-linked-service"></a>FTP bağlı hizmeti
+### <a name="ftp-linked-service"></a>FTP bağlantılı hizmet
 
-Bu örnek, basit kimlik doğrulamasını, Kullanıcı adı ve parolasıyla düz metin olarak kullanır. Aşağıdaki yollarla da kullanabilirsiniz:
+Bu örnek, kullanıcı adı ve paroladüz metinde yer alan temel kimlik doğrulamasını kullanır. Aşağıdaki yollardan birini de kullanabilirsiniz:
 
-* Anonim kimlik doğrulaması
-* Şifrelenmiş kimlik bilgileriyle temel kimlik doğrulaması
+* Anonim kimlik doğrulama
+* Şifreli kimlik bilgileriyle temel kimlik doğrulaması
 * SSL/TLS üzerinden FTP (FTPS)
 
-Kullanabileceğiniz farklı kimlik doğrulama türleri için [FTP bağlı hizmeti](#linked-service-properties) bölümüne bakın.
+Kullanabileceğiniz farklı kimlik doğrulama türleri için [FTP bağlantılı hizmet](#linked-service-properties) bölümüne bakın.
 
 ```JSON
 {
@@ -257,11 +257,11 @@ Kullanabileceğiniz farklı kimlik doğrulama türleri için [FTP bağlı hizmet
   }
 }
 ```
-### <a name="ftp-input-dataset"></a>FTP giriş veri kümesi
+### <a name="ftp-input-dataset"></a>FTP giriş veri seti
 
-Bu veri kümesi, `mysharedfolder` FTP klasörünü ve dosya `test.csv`anlamına gelir. İşlem hattı, dosyayı hedefe kopyalar.
+Bu veri kümesi FTP `mysharedfolder` klasörü `test.csv`ve dosyası anlamına gelir. Ardışık iş, dosyayı hedefe kopyalar.
 
-**External** to **true** olarak ayarlamak, Data Factory hizmetine veri kümesinin veri fabrikası dışında olduğunu bildirir ve veri fabrikasında bir etkinlik tarafından üretilmez.
+**True'nun** **dışında** ayar, Veri Fabrikası hizmetine veri kümesinin veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
 ```JSON
 {
@@ -285,7 +285,7 @@ Bu veri kümesi, `mysharedfolder` FTP klasörünü ve dosya `test.csv`anlamına 
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob çıktı veri kümesi
 
-Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
+Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine bağlı olarak dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
 
 ```JSON
 {
@@ -344,9 +344,9 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 ```
 
 
-### <a name="a-copy-activity-in-a-pipeline-with-file-system-source-and-blob-sink"></a>Dosya sistemi kaynağına ve BLOB havuzuna sahip bir işlem hattındaki kopyalama etkinliği
+### <a name="a-copy-activity-in-a-pipeline-with-file-system-source-and-blob-sink"></a>Dosya sistemi kaynağı ve blob lavabosu olan bir boru hattında kopyalama etkinliği
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **filesystemsource**olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır.
+Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **FileSystemSource**olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır.
 
 ```JSON
 {
@@ -386,11 +386,11 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 }
 ```
 > [!NOTE]
-> Kaynak veri kümesindeki sütunları havuz veri kümesinden sütunlara eşlemek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+> Kaynak veri kümesinden sütunlara kadar sütunları haritalamak için Azure [Veri Fabrikası'nda veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-* Veri taşıma (kopyalama etkinliği) performansını Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [kopyalama etkinliği performansı ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md).
+* Veri Fabrikası'ndaki veri hareketinin performansını (kopyalama etkinliği) etkileyen önemli faktörler ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Kopyalama etkinliği performansı ve atokskılavuzuna](data-factory-copy-activity-performance.md)bakın.
 
-* Kopyalama etkinliği ile işlem hattı oluşturmaya yönelik adım adım yönergeler için, [kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.
+* Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeler için [Kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.

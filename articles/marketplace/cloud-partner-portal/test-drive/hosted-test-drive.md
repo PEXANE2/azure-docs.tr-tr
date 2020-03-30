@@ -1,56 +1,54 @@
 ---
-title: Barındırılan test sürücüsü | Azure Marketi
-description: Market 'Te barındırılan test sürücüsü kurma
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+title: Barındırılan Test Sürüşü | Azure Marketi
+description: Pazar Yeri Barındırılan Test Sürüşü nasıl kurulamaz?
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2ce43402fb283cce09687bc7226770731f1bae0d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d054064e236e121e02bf58a0eb73b5a62f24a09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278272"
 ---
 # <a name="hosted-test-drive"></a>Barındırılan Test Sürüşü
 
-Barındırılan bir test sürücüsü Microsoft barındırma tarafından kurulum 'un karmaşıklığını ortadan kaldırır ve Kullanıcı hazırlama ve sağlamayı kaldırma sınama sürücüsünü gerçekleştiren hizmeti korur. Bu makale, AppSource 'ta teklifi olan veya yeni bir tane oluşturan ve müşteri katılımı için Dynamics 365, finans ve Işlemler için Dynamics 365 veya Dynamics 365 Business Central ile bağlanan bir barındırılan test sürücüsü sunmak isteyen yayımcılar içindir. Instance.
+Barındırılan Test Sürüşü, Microsoft barındırma nın kurulum karmaşıklığını kaldırır ve Test Sürücüsü kullanıcı sağlama ve düzenlemeyi gerçekleştiren hizmeti korur. Bu makale, AppSource'da teklif veren veya yeni bir teklif oluşturan ve Müşteri Katılımı için Dynamics 365, Finans ve Operasyonlar için Dynamics 365 veya Dynamics 365 Business Central ile bağlantı kuran Barındırılan Test Sürüşü sunmak isteyen Yayıncılar içindir. Örnek.
 
-## <a name="how-to-publish-a-test-drive"></a>Test sürücüsü yayımlama
+## <a name="how-to-publish-a-test-drive"></a>Test Sürüşü nasıl yayımlanır?
 
-Mevcut teklifine gidin veya yeni bir teklif oluşturun.
+Varolan teklife gidin veya yeni bir teklif oluşturun.
 
-Yan menüden sürücüyü sına seçeneğini belirleyin.
+Yan menüden Test Sürüşü seçeneğini seçin.
 
-Bir sınama sürücüsü\' seçeneğini etkinleştirmek \'için \'Evet\' seçin.
+Test \'\' Sürüşünü \'\' Etkinleştir seçeneği için Evet'i seçin.
 
 \'Ayrıntılar\' bölümünde aşağıdaki alanları sağlayın.
 
-- **Açıklama**: test sürücünüze genel bir bakış sağlar. Sınama sürücüsü sağlanırken bu metin kullanıcıya gösterilir. Bu alan, biçimlendirilen içerik sağlamak istiyorsanız HTML 'yi destekler.
-- **Kullanıcı el ile**: ayrıntılı bir kullanıcı el ile yükleyin (Type. PDF dosyası) ve bu sayede, kullanıcıların uygulamanızı nasıl kullanacağınızı anlayabilmesine yardımcı olur.
-- **Test sürücüsü tanıtım videosu**: isteğe bağlı olarak, uygulamanızı gösteren bir videoyu karşıya yükleyin.
+- **Açıklama**: Test Sürüşünüzün genel görünümünü sağlayın. Bu metin, Test Sürüşü verilirken kullanıcıya gösterilir. Biçimlendirilmiş içerik sağlamak istiyorsanız, bu alan HTML'yi destekler.
+- **Kullanım Kılavuzu**: Test Sürüşü kullanıcılarının Uygulamanızı nasıl kullanacaklarını anlamalarına yardımcı olan ayrıntılı bir kullanım kılavuzu (.pdf türü dosyası) yükleyin.
+- **Test Sürüşü Demo Videosu**: İsteğe bağlı olarak Uygulamanızı gösteren bir video yükleyin.
 
-[Burada](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)yer alan yönergeleri kullanarak Kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlamayı kaldırma Için appsource iznini verin.
+[Burada](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)bulunan talimatları kullanarak kiracınızdaki Test Sürüşü kullanıcılarını sağlama ve yok etme için AppSource izni ver.
 
-Bu adımda, aşağıda bahsedilen \'Azure AD Uygulaması Kimliği\' ve \'Azure AD Uygulaması anahtar\' değerlerini oluşturacaksınız.
+Bu adımda, aşağıda \'belirtilen Azure\' AD \'Uygulama Kimliği\' ve Azure AD Uygulama Anahtarı değerlerini oluşturursunuz.
 
-\'teknik yapılandırma\' bölümünde aşağıdaki alanları sağlayın:
+\'Teknik Yapılandırma\' bölümünde aşağıdaki alanları sağlayın:
 
-- **Test sürücüsünün türü**: Microsoft tarafından barındırılan \'(müşteri katılımı için Dynamics 365) ' seçeneğini belirleyin. Bu, Microsoft 'un Kullanıcı hazırlama ve sağlamayı kaldırma sınama sürücüsünü gerçekleştiren hizmeti barındırdığını ve bakımını gerçekleştireceğini belirtir.
-- **Maksimum eşzamanlı test sürücüsü**: bu alanı, belirli bir zaman noktasında etkin bir test sürücüsüne sahip olabilecek eşzamanlı kullanıcı sayısına ayarlayın. Her Kullanıcı, test sürücüleri etkinken bir Dynamics lisansını kullanır, bu nedenle, sınama sürücüsü kullanıcıları için en az bu sayıda Dynamics lisansın kullanılabilir olduğundan emin olmanız gerekir. Önerilen 3-5 değeri.
-- **Sınama sürücüsü süresi (saat)** : bu alanı, kullanıcıların test sürücüsünün etkin olacağı saat sayısına ayarlayın. Bu kadar saat sonra, Kullanıcı kiracınızdan kaldırılacak. Uygulamanızın karmaşıklığına bağlı olarak önerilen 2-24 saat değeri. Kullanıcı, zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde, her zaman başka bir test sürücüsü isteyebilir.
-- **Örnek URL 'si**: test sürücüsünü başlatırken kullanıcının başlangıçta GEZINDIĞI URL 'yi belirtin. Bu genellikle, uygulamanız ve örnek verileriniz üzerine yüklenmiş olan Dynamics 365 örneğinizin URL 'sidir. Örnek değer: https:\//testdrive.crm.dynamics.com
-- **Azure AD KIRACı kimliği**: Dynamics 365 örneğiniz Için Azure KIRACıNıN kimliğini belirtin. Bu değeri almak için Azure portal oturum açın ve \'Azure Active Directory\' -\> menü dikey penceresinden Özellikler ' i seçin\> Dizin KIMLIĞINI kopyalayın. Örnek değer: 72f988bf-86f1-41af-91ab-2d7cd0111234
-- **Azure AD UYGULAMASı ID**: 7. adımda oluşturduğunuz Azure AD uygulaması kimliği. \ örnek değer: 53852862-a2ae-4e43-9461-faa49650a096
-- **Azure AD uygulaması anahtar**: 7. adımda oluşturulan Azure AD uygulaması için gizli dizi. \ örnek değer: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk =
-- **Azure AD kiracı adı**: Dynamics 365 örneğiniz Için Azure kiracının adını belirtin. \<TenantName biçimini kullanın.\>onmicrosoft.com. Örnek değer: testdrive.onmicrosoft.com
-- **Örnek Web API URL 'si**: Dynamics 365 örneğiniz IÇIN Web API URL 'sini sağlayın. Bu değeri, Microsoft Dynamics 365 Örneğinizde oturum açarak alabilir ve ayar\> özelleştirme-\> geliştirici kaynakları-\> örnek Web API 'sine (Bu URL 'YI kopyalayın) giderek getirebilirsiniz. Örnek değer: https:\//testdrive.crm.dynamics.com/api/data/v9.0 
-- **Rol adı**: test sürücüsü için oluşturduğunuz özel Dynamics 365 güvenlik rolünün adını belirtin. Bu, kullanıcılara test sürücüleri sırasında atanacak olan roldür. Örnek değer: testdriverole
+- **Test Sürüşü**Türü \': Microsoft Barındırılan 'ı seçin (Müşteri Etkileşimi için örnek Dynamics 365)' seçeneğini belirleyin. Bu, Microsoft'un Test Sürüşü kullanıcı sağlama ve deprovisioning gerçekleştiren hizmeti barındıracağını ve sürdüreceğini gösterir.
+- **Maksimum Eşzamanlı Test Sürücüleri**: Bu alanı, belirli bir zamanda etkin bir Test Sürüşüne sahip olabilecek eşzamanlı kullanıcı sayısına ayarlayın. Her kullanıcı, Test Sürüşü etkinken bir Dynamics lisansı tüketir, bu nedenle Test Sürüşü kullanıcıları için en azından bu kadar Dynamics lisansı na sahip olmanız gerekir. Önerilen değer 3-5.
+- **Test Sürüşsüresi (saat)**: Bu alanı, test sürüşünün etkin olacağı saat sayısına ayarlayın. Bu kadar saatten sonra, kullanıcı kiracınızdan indirilir. Uygulamanızın karmaşıklığına bağlı olarak 2-24 saat önerilir. Kullanıcı, zamanı biterse ve Test Sürüşüne yeniden erişmek isterse her zaman başka bir Test Sürüşü isteyebilir.
+- **Örnek URL:** Test Sürüşü kullanıcısının Test Sürüşü'ne başladıklarında başlangıçta gezineceği bir URL sağlayın. Bu genellikle, Uygulamanızın ve örnek verilerinizin üzerine yüklenmiş olan Dynamics 365 örneğinizin URL'sidir. Örnek Değer:\/https: /testdrive.crm.dynamics.com
+- **Azure AD Kiracı Kimliği**: Dynamics 365 Örneğiniz için Azure Kiracısının kimliğini sağlayın. Bu değeri almak için Azure portalına \'giriş yapın\'  - \> ve menü den\> Azure Active Directory Select Properties 'e gidin - Dizin Kimliğini kopyalayın. Örnek değer: 72f988bf-86f1-41af-91ab-2d7cd0111234
+- **Azure AD Uygulama Kimliği**: Adım 7'de oluşturduğunuz Azure AD Uygulamasının kimliği.\ Örnek Değer: 53852862-a2ae-4e43-9461-faa49650a096
+- **Azure AD Uygulama Anahtarı**: Adım 7'de oluşturulan Azure AD Uygulaması için gizli.\ Örnek Değer: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
+- **Azure AD Kiracı Adı**: Dynamics 365 Örneğiniz için Azure Kiracısının adını sağlayın. \<Kiracı adının biçimini kullanın. \>onmicrosoft.com. Örnek Değer: testdrive.onmicrosoft.com
+- **Örnek Web API URL'si**: Dynamics 365 Örneğiniz için Web API URL'sini sağlayın. Bu değeri, Microsoft Dynamics 365 örneğinize giriş yaparak ve\> Ayar\> - Özelleştirme\> - Geliştirici Kaynakları - Örnek Web API'sine (Bu URL'yi kopyalayarak) yönlendirerek alabilirsiniz. Örnek değer:\/https: /testdrive.crm.dynamics.com/api/data/v9.0
+- **Rol Adı**: Test Sürüşü için oluşturduğunuz özel Dynamics 365 Güvenlik Rolü'nün adını sağlayın. Bu, Test Sürüşü sırasında kullanıcılara atanacak roldür. Örnek Değer: testdriverole
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifinizi **yayımladığınızda** , uygulamanız sertifikayı geçtikten sonra teklifinizin **önizlemesini** görürsünüz. Kullanıcı arabiriminde bir test sürücüsü başlatın ve test sürücülerinizin doğru çalıştığını doğrulayın. Önizleme teklifinizi rahat hissettiğinizde, şimdi **canlı çalışmaya devam edersiniz!**
+Teklifinizi **yayınlamaya** hazır olduğunuzda, uygulamanız sertifikayı geçtikten sonra, teklifinizin bir **önizlemesini** alırsınız. UI'de bir Test Sürüşü başlatın ve Test Sürücülerinizin doğru çalıştığını doğrulayın. Bir kez önizleme sunan rahat hissediyorum, şimdi **canlı gitmek zamanı!**

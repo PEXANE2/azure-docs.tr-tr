@@ -1,6 +1,6 @@
 ---
-title: Özellikler - Azure Event Hubs'a genel bakış | Microsoft Docs
-description: Bu makalede, özellikleri ve Azure Event Hubs'ın terminolojisi hakkında ayrıntılar sağlar.
+title: Özelliklere genel bakış - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
+description: Bu makalede, Azure Olay Hub'larının özellikleri ve terminolojisi hakkında ayrıntılı bilgi verilmektedir.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -14,36 +14,36 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281489"
 ---
-# <a name="features-and-terminology-in-azure-event-hubs"></a>Özellikler ve Azure Event Hubs terminolojisinde
+# <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
-Azure Event Hubs, ölçeklenebilir bir olay işleme alır ve büyük hacimli olayları ve verileri, düşük gecikme süresi ve yüksek güvenilirlikle işler hizmetidir. Üst düzey genel bakış için bkz. [Event Hubs nedir?](event-hubs-what-is-event-hubs.md) .
+Azure Olay Hub'ları, düşük gecikme gecikmesi ve yüksek güvenilirlikle büyük hacimli olayları ve verileri yutan ve işleyen ölçeklenebilir bir olay işleme hizmetidir. Üst düzey bir genel bakış için [Olay Hub'ları nedir?](event-hubs-what-is-event-hubs.md)
 
-Bu makale, [genel bakış makalesindeki](event-hubs-what-is-event-hubs.md)bilgileri oluşturur ve Event Hubs bileşenleri ve özellikleri hakkında teknik ve uygulama ayrıntıları sağlar.
+Bu makale, genel bakış [makalesindeki](event-hubs-what-is-event-hubs.md)bilgilere dayanmaktadır ve Olay Hub'ları bileşenleri ve özellikleri hakkında teknik ve uygulama ayrıntıları sağlar.
 
-## <a name="namespace"></a>Ad alanı
-Bir Event Hubs ad alanı, [tam etki alanı adı](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)tarafından başvurulan, bir veya daha fazla olay hub 'ı veya Kafka konu oluşturacağınız benzersiz bir kapsam kapsayıcısı sağlar. 
+## <a name="namespace"></a>Ad Alanı
+Olay Hub'ları ad alanı, [tam nitelikli etki alanı adı](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)ile başvurulan ve bir veya daha fazla etkinlik hub'ı veya Kafka konusu oluşturduğunuz benzersiz bir kapsam kapsayıcısı sağlar. 
 
 ## <a name="event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs
 
-[Bu özellik](event-hubs-for-kafka-ecosystem-overview.md) , müşterilerin Kafka protokolünü kullanarak Event Hubs konuşmalarını sağlayan bir uç nokta sağlar. Bu tümleştirme, müşterilere bir Kafka uç noktası sağlar. Bu, müşterilerin kendi Kafka kümelerini çalıştırmak için bir alternatif sunar, Event Hubs konuşabilir mevcut Kafka uygulamalarını yapılandırmak sağlar. Event Hubs için Apache Kafka, Kafka protokolü 1.0 ve üzeri destekler. 
+[Bu özellik,](event-hubs-for-kafka-ecosystem-overview.md) müşterilerin Kafka protokolünü kullanarak Event Hub'ları ile konuşmasını sağlayan bir uç nokta sağlar. Bu entegrasyon müşterilere Kafka bitiş noktası sağlar. Bu, müşterilerin mevcut Kafka uygulamalarını, Kendi Kafka kümelerini çalıştırmaya alternatif sunarak Event Hub'larıyla konuşmak üzere yapılandırmalarına olanak tanır. Apache Kafka için Etkinlik Hub'ları Kafka protokolü 1.0 ve sonrası protokolünü destekler. 
 
-Bu tümleştirmeyle Kafka kümelerini çalıştırmanız veya Zookeeper ile yönetmeniz gerekmez. Bu ayrıca, En zorlu olay hub'ları gibi yakalama, otomatik şişme ve coğrafi olağanüstü durum kurtarma özelliklerinin bazılarını ile çalışmanıza olanak sağlar.
+Bu entegrasyon ile Kafka kümelerini çalıştırmanız veya Zookeeper ile yönetmeniz gerekmez. Bu aynı zamanda Capture, Auto-flate ve Geo-disaster Recovery gibi Olay Hub'larının en zorlu özelliklerinden bazılarıyla çalışmanızı sağlar.
 
-Bu tümleştirme de yansıtma Oluşturucu gibi uygulamalar veya framework Kafka bağlanma gibi çalışması yalnızca yapılandırma değişikliğiyle clusterless sağlar. 
+Bu tümleştirme aynı zamanda Mirror Maker veya Kafka Connect gibi çerçeve gibi uygulamaların sadece yapılandırma değişiklikleriyle kümesiz çalışmasını sağlar. 
 
 ## <a name="event-publishers"></a>Olay yayımcıları
 
-Bir olay hub 'ına veri gönderen herhangi bir varlık bir olay üreticisi veya *olay yayımcısıdır*. Olay yayımcıları HTTPS veya AMQP 1.0 veya Kafka 1.0 ve üzeri kullanarak olayları yayımlayabilir. Olay yayımcıları kendilerini bir olay hub'ına tanıtmak için Paylaşılan Erişim İmzası (SAS) belirteci kullanır ve benzersiz bir kimliğe sahip olabilir ya da ortak bir SAS belirteci kullanabilir.
+Bir olay hub'ına veri gönderen herhangi bir varlık bir olay üreticisi veya *olay yayımcısıdır.* Etkinlik yayıncıları olayları HTTPS veya AMQP 1.0 veya Kafka 1.0 ve sonrası kullanarak yayımlayabilir. Olay yayımcıları kendilerini bir olay hub'ına tanıtmak için Paylaşılan Erişim İmzası (SAS) belirteci kullanır ve benzersiz bir kimliğe sahip olabilir ya da ortak bir SAS belirteci kullanabilir.
 
 ### <a name="publishing-an-event"></a>Olay yayımlama
 
-Bir olayı AMQP 1.0, 1.0 (ve üzeri) Kafka veya HTTPS üzerinden yayımlayabilirsiniz. Event Hubs, .NET istemcilerinden gelen bir olay hub 'ına olay yayımlamaya yönelik [istemci kitaplıkları ve sınıflar](event-hubs-dotnet-framework-api-overview.md) sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (Olay verileri örneği), tek bir olay ya da toplu işlem olmasına bakılmaksızın 1 MB sınırı vardır. Bu hata eşiği sonuçlarında daha büyük olaylar yayımlama. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
+Bir etkinliği AMQP 1.0, Kafka 1.0 (ve sonrası) veya HTTPS üzerinden yayınlayabilirsiniz. Olay Hub'ları, .NET istemcilerinden bir olay hub'ına olayları yayımlamak için [istemci kitaplıkları ve sınıfları](event-hubs-dotnet-framework-api-overview.md) sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayının (olay veriörneği) tek bir olay veya toplu iş olup olmadığına bakılmaksızın 1 MB sınırı vardır. Bu eşikten daha büyük olayları yayımlama bir hatayla sonuçlanır. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
 
 AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. Oturum başlatılırken AMQP’nin ağ maliyetleri daha yüksektir, ancak HTTPS her istek için ek SSL yükü gerektirir. Daha sık yayımcılar için AMQP daha yüksek performans sunar.
 
@@ -63,7 +63,7 @@ Yayımcı adlarını önceden oluşturmanız gerekli değildir, ancak bunlar ba�
 
 ## <a name="capture"></a>Capture
 
-[Event Hubs yakalama](event-hubs-capture-overview.md) , akış verilerini Event Hubs otomatik olarak yakalamanızı ve bir BLOB depolama hesabı ya da bir Azure Data Lake hizmet hesabına kaydetmenizi sağlar. Azure portalından yakalamayı etkinleştirme ve en küçük boyut ve yakalama gerçekleştirmek için zaman penceresi belirtin. Event Hubs yakalama özelliğini kullanarak, kendi Azure Blob Depolama hesabı ve kapsayıcı ya da bunlardan biri yakalanan verileri depolamak için kullanılan Azure veri Gölü hizmeti hesabı belirtin. Yakalanan veriler Apache Avro biçiminde yazılır.
+[Olay Hub'ları Yakalama,](event-hubs-capture-overview.md) Olay Hub'larında akış verilerini otomatik olarak yakalamanızı ve blob depolama hesabı veya Azure Veri Gölü Hizmeti hesabı seçiminize kaydetmenizi sağlar. Azure portalından Capture'i etkinleştirebilir ve yakalamayı gerçekleştirmek için minimum boyut ve zaman penceresi belirtebilirsiniz. Olay Hub'ları Yakalama'yı kullanarak, yakalanan verileri depolamak için kullanılan kendi Azure Blob Depolama hesabınızı ve kapsayıcınızı veya Azure Veri Gölü Hizmeti hesabınızı belirtirsiniz. Yakalanan veriler Apache Avro formatında yazılır.
 
 ## <a name="partitions"></a>Bölümler
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
@@ -71,7 +71,7 @@ Yayımcı adlarını önceden oluşturmanız gerekli değildir, ancak bunlar ba�
 
 ## <a name="sas-tokens"></a>SAS belirteçleri
 
-Event Hubs, ad alanında ve olay hub’ı düzeyinde kullanılabilen *Paylaşılan Erişim İmzaları* kullanır. SAS belirteci bir SAS anahtarından oluşturulur ve belirli bir biçimde kodlanmış bir URL’nin SHA karmasıdır. Event Hubs anahtar (ilke) ve belirtecin adını kullanarak karmayı yeniden oluşturabilir ve böylece gönderenin kimliğini doğrular. Normalde, olay yayımcıları için SAS belirteci yalnızca belirli bir olay hub'ı üzerindeki **gönder** ayrıcalıkları ile oluşturulur. Bu SAS belirteci URL mekanizması, yayımcı ilkesinde sunulan yayımcı kimliğinin temelini oluşturur. SAS ile çalışma hakkında daha fazla bilgi için bkz. [Service Bus ile Paylaşılan Erişim İmzası Kimlik Doğrulaması](../service-bus-messaging/service-bus-sas.md).
+Olay Hub'ları, ad alanı ve etkinlik hub düzeyinde kullanılabilen *Paylaşılan Erişim İmzaları*kullanır. SAS belirteci bir SAS anahtarından oluşturulur ve belirli bir biçimde kodlanmış bir URL’nin SHA karmasıdır. Event Hubs anahtar (ilke) ve belirtecin adını kullanarak karmayı yeniden oluşturabilir ve böylece gönderenin kimliğini doğrular. Normalde, olay yayımcıları için SAS belirteci yalnızca belirli bir olay hub'ı üzerindeki **gönder** ayrıcalıkları ile oluşturulur. Bu SAS belirteci URL mekanizması, yayımcı ilkesinde sunulan yayımcı kimliğinin temelini oluşturur. SAS ile çalışma hakkında daha fazla bilgi için bkz. [Service Bus ile Paylaşılan Erişim İmzası Kimlik Doğrulaması](../service-bus-messaging/service-bus-sas.md).
 
 ## <a name="event-consumers"></a>Olay tüketicileri
 
@@ -83,7 +83,7 @@ Event Hubs yayımlama/abonelik mekanizması *tüketici grupları* aracılığıy
 
 Bir akış işleme mimarisinde her bir aşağı akış uygulaması bir tüketici grubuna karşılık gelir. Olay verilerini uzun süreli depolama alanına yazmak isterseniz bu depolama yazma uygulaması bir tüketici grubudur. Bundan sonra karmaşık olay işlemesi başka ve ayrı bir tüketici grubu tarafından gerçekleştirilebilir. Bölümlere yalnızca bir tüketici grubu üzerinden erişebilirsiniz. Bir olay hub'ında her zaman varsayılan bir tüketici grubu vardır ve Standart katmanlı bir olay hub'ı için en fazla 20 tüketici grubu oluşturabilirsiniz.
 
-Tüketici grubu başına bölüm üzerinde en fazla 5 eşzamanlı okuyucu olabilir; Ancak **, Tüketici grubu başına bir bölümde yalnızca bir etkin alıcı olması önerilir**. Tek bir bölüm içinde her Okuyucu tüm iletileri alır. Ardından aynı bölüme birden fazla okuyucuyu kapsayacak varsa, yinelenen iletileri işler. Bu Önemsiz olmayabilir, kodunuzda ele almanız gerekir. Ancak, bazı senaryolarda geçerli bir yaklaşım değildir.
+Tüketici grubu başına bir bölüm üzerinde en fazla 5 eşzamanlı okuyucu olabilir; ancak **tüketici grubu başına bir bölüm üzerinde yalnızca bir etkin alıcı olması önerilir.** Tek bir bölüm içinde, her okuyucu tüm iletileri alır. Aynı bölümüzerinde birden çok okuyucunuz varsa, yinelenen iletileri işlersiniz. Bunu kodunuzda ele almanız gerekir, ki bu önemsiz olmayabilir. Ancak, bazı senaryolarda geçerli bir yaklaşımdır.
 
 
 Tüketici grubu URI kuralının örnekleri aşağıda verilmiştir:
@@ -107,11 +107,11 @@ Aşağıdaki şekilde Event Hubs akış işleme mimarisi gösterilmektedir:
 
 *Denetim noktası oluşturma*, okuyucuların bir bölüm olay dizisindeki konumlarını işaretledikleri veya uyguladıkları bir işlemdir. Denetim noktası oluşturma, tüketicinin sorumluluğundadır ve bir tüketici grubunda bölüm başına temelinde gerçekleşir. Bu sorumluluk, her bir tüketici grubu için her bölüm okuyucusunun geçerli konumunu olay akışında izlemesi gerektiği ve veri akışının tamamlandığını düşündüğünde hizmeti bilgilendirebileceği anlamına gelir.
 
-Bir okuyucunun bölüm bağlantısı kesilirse yeniden bağlandığında ilgili tüketici grubundaki o bölümün son okuyucusu tarafından daha önce gönderilen denetim noktasında okumaya başlar. Okuyucu bağlandığında okumaya başlayacağı konumu belirtmek için olay hub'ına uzaklığı geçirir. Bu şekilde, denetim noktası oluşturma özelliğini hem aşağı akış uygulamaları ile olayları "tamamlandı" olarak işaretlemek hem de farklı makinelerde çalışan okuyucular arasında bir yük devretme oluşması durumunda esneklik sağlamak amacıyla kullanabilirsiniz. Bu denetim noktası oluşturma işleminden daha düşük bir uzaklık belirterek daha eski verilere geri dönülebilir. Bu mekanizmayla denetim noktası oluşturma özelliği hem yük devretme esnekliği hem de olay akışı yeniden yürütmesi sağlar.
+Bir okuyucunun bölüm bağlantısı kesilirse yeniden bağlandığında ilgili tüketici grubundaki o bölümün son okuyucusu tarafından daha önce gönderilen denetim noktasında okumaya başlar. Okuyucu bağlandığında, okumaya başlayacağınız yeri belirtmek için ofset'i olay merkezine geçirir. Bu şekilde, denetim noktası oluşturma özelliğini hem aşağı akış uygulamaları ile olayları "tamamlandı" olarak işaretlemek hem de farklı makinelerde çalışan okuyucular arasında bir yük devretme oluşması durumunda esneklik sağlamak amacıyla kullanabilirsiniz. Bu denetim noktası oluşturma işleminden daha düşük bir uzaklık belirterek daha eski verilere geri dönülebilir. Bu mekanizmayla denetim noktası oluşturma özelliği hem yük devretme esnekliği hem de olay akışı yeniden yürütmesi sağlar.
 
 ### <a name="common-consumer-tasks"></a>Ortak tüketici görevleri
 
-Tüm Event Hubs tüketicileri bir durumu algılayan çift yönlü iletişim kanalı bir AMQP 1.0 oturumu üzerinden bağlanır. Her bölümde bölüme göre ayrılmış olayların taşınmasını kolaylaştıran bir AMQP 1.0 oturumu vardır.
+Tüm Event Hub'ları tüketicileri, devlet tarafından bilinçli bir çift yönlü iletişim kanalı olan AMQP 1.0 oturumu aracılığıyla bağlanır. Her bölümde bölüme göre ayrılmış olayların taşınmasını kolaylaştıran bir AMQP 1.0 oturumu vardır.
 
 #### <a name="connect-to-a-partition"></a>Bir bölüme bağlanma
 
@@ -138,10 +138,10 @@ Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [Javascript](get-started-java-send-v2.md)
 * [Event Hubs programlama kılavuzu](event-hubs-programming-guide.md)
 * [Event Hubs’da kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
-* [Event Hubs örnekleri][]
+* [Olay Hub'ları örnekleri][]
 
-[Event Hubs örnekleri]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Olay Hub'ları örnekleri]: https://github.com/Azure/azure-event-hubs/tree/master/samples

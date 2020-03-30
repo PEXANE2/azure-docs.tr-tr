@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-Azure 'da Linux sanal makinelerini anormal olarak yönetme
-description: Bu hızlı başlangıçta, Azure 'da bir Linux sanal makinesini kullanarak nasıl yönetebileceğinizi öğrenin
+title: Quickstart - Ansible kullanarak Azure'daki Linux sanal makinelerini yönetin
+description: Bu hızlı başlangıçta, Ansible'ı kullanarak Azure'da bir Linux sanal makinesini nasıl yönetişize edin
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
 ms.service: ansible
@@ -8,33 +8,33 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 90113373535c835e5cddf707bcb520789e596aec
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: d94858391951aaf9387394afeb5ad2ae373fa7b5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202406"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239524"
 ---
-# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Hızlı başlangıç: Azure 'da Linux sanal makinelerini kullanarak yönetme
+# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Hızlı başlatma: Ansible kullanarak Azure'daki Linux sanal makinelerini yönetin
 
-Ansible, ortamınızdaki kaynakların dağıtımını ve yapılandırılmasını otomatikleştirmenizi sağlar. Bu makalede, bir Linux sanal makinesini başlatmak ve durdurmak için anormal bir PlayBook kullanırsınız. 
+Ansible, ortamınızdaki kaynakların dağıtımını ve yapılandırılmasını otomatikleştirmenizi sağlar. Bu makalede, bir Linux sanal makine başlatmak ve durdurmak için bir Ansible oyun kitabı kullanın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="stop-a-virtual-machine"></a>Bir sanal makineyi durdurma
+## <a name="stop-a-virtual-machine"></a>Sanal makineyi durdurma
 
-Bu bölümde, bir Azure sanal makinesini serbest bırakmak (durdurmak) için kullanılması mümkün değildir.
+Bu bölümde, Bir Azure sanal makinesini dağıtmak (durdurmak) için Ansible'ı kullanırsınız.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
 
-1. [Cloud Shell](/azure/cloud-shell/overview)'i açın.
+1. [Açık Bulut Kabuk](/azure/cloud-shell/overview).
 
-1. `azure-vm-stop.yml`adlı bir dosya oluşturun ve düzenleyicide açın:
+1. Adlı `azure-vm-stop.yml`bir dosya oluşturun ve düzenleyicide açın:
 
-    ```azurecli-interactive
+    ```bash
     code azure-vm-stop.yml
     ```
 
@@ -52,17 +52,17 @@ Bu bölümde, bir Azure sanal makinesini serbest bırakmak (durdurmak) için kul
             allocated: no
     ```
 
-1. `{{ resource_group_name }}` ve `{{ vm_name }}` yer tutucuları değerlerinizle değiştirin.
+1. Yer `{{ vm_name }}` `{{ resource_group_name }}` tutucuları ve yer tutucuları değerlerinizle değiştirin.
 
 1. Dosyayı kaydedin ve düzenleyiciden çıkın.
 
-1. `ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+1. Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
     ```bash
     ansible-playbook azure-vm-stop.yml
     ```
 
-1. PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
+1. Oyun kitabını çalıştırdıktan sonra, aşağıdaki sonuçlara benzer çıktı görürsünüz:
 
     ```bash
     PLAY [Stop Azure VM] ********************************************************
@@ -77,17 +77,17 @@ Bu bölümde, bir Azure sanal makinesini serbest bırakmak (durdurmak) için kul
     localhost                  : ok=2    changed=1    unreachable=0    failed=0
     ```
 
-## <a name="start-a-virtual-machine"></a>Bir sanal makineyi başlatma
+## <a name="start-a-virtual-machine"></a>Sanal makineyi başlatma
 
-Bu bölümde, serbest bırakılmış (durdurulmuş) bir Azure sanal makinesini başlatmak için kullanabilirsiniz.
+Bu bölümde, ayrılmış (durdurulmuş) bir Azure sanal makinesini başlatmak için Ansible'ı kullanırsınız.
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
 
-1. [Cloud Shell](/azure/cloud-shell/overview)'i açın.
+1. [Açık Bulut Kabuk](/azure/cloud-shell/overview).
 
-1. `azure-vm-start.yml`adlı bir dosya oluşturun ve düzenleyicide açın:
+1. Adlı `azure-vm-start.yml`bir dosya oluşturun ve düzenleyicide açın:
 
-    ```azurecli-interactive
+    ```bash
     code azure-vm-start.yml
     ```
 
@@ -104,17 +104,17 @@ Bu bölümde, serbest bırakılmış (durdurulmuş) bir Azure sanal makinesini b
             name: {{ vm_name }}
     ```
 
-1. `{{ resource_group_name }}` ve `{{ vm_name }}` yer tutucuları değerlerinizle değiştirin.
+1. Yer `{{ vm_name }}` `{{ resource_group_name }}` tutucuları ve yer tutucuları değerlerinizle değiştirin.
 
 1. Dosyayı kaydedin ve düzenleyiciden çıkın.
 
-1. `ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+1. Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
     ```bash
     ansible-playbook azure-vm-start.yml
     ```
 
-1. PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
+1. Oyun kitabını çalıştırdıktan sonra, aşağıdaki sonuçlara benzer çıktı görürsünüz:
 
     ```bash
     PLAY [Start Azure VM] ********************************************************
@@ -132,4 +132,4 @@ Bu bölümde, serbest bırakılmış (durdurulmuş) bir Azure sanal makinesini b
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Öğretici: anormal kullanarak Azure dinamik envanterleri yönetme](./ansible-manage-azure-dynamic-inventories.md)
+> [Öğretici: Ansible kullanarak Azure dinamik envanterlerini yönetme](./ansible-manage-azure-dynamic-inventories.md)

@@ -1,7 +1,7 @@
 ---
 title: Makine öğrenimi ve veri bilimi araçları
 titleSuffix: Azure Data Science Virtual Machine
-description: Veri Bilimi Sanal Makinesi önceden yüklenmiş makine öğrenimi araçları ve çerçeveleri hakkında bilgi edinin.
+description: Veri Bilimi Sanal Makine'ye önceden yüklenmiş makine öğrenme araçları ve çerçeveleri hakkında bilgi edinin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 ms.service: machine-learning
@@ -10,108 +10,108 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c6b7e3da6cb6fd87e3b43d6f310e3b76f8fc4d30
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283842"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282316"
 ---
-# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde makine öğrenimi ve veri bilimi araçları
-Azure veri bilimi sanal makineleri (DSVMs), Python, R ve Julia gibi popüler dillerde makine öğrenimi için zengin bir araç ve kitaplık kümesine sahiptir.
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Veri Bilimi Sanal Makinelerde makine öğrenimi ve veri bilimi araçları
+Azure Veri Bilimi Sanal Makineleri (DSVM'ler), Python, R ve Julia gibi popüler dillerde kullanılabilen makine öğrenimi için zengin bir araç ve kitaplık kümesine sahiptir.
 
-DSVMs üzerindeki makine öğrenimi araçlarından ve kitaplıklarından bazıları aşağıda verilmiştir.
+DSVM'lerde makine öğrenimi araçları ve kitaplıklarından bazıları aşağıda veda edebilirsiniz.
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK'sı
 
-[Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)'nın tam başvurusuna bakın.
+Python için Azure [Machine Learning SDK için](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)tam başvuruya bakın.
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |   Azure Machine Learning, makine öğrenimi modelleri geliştirip dağıtmak için kullanabileceğiniz bir bulut hizmetidir. Oluşturmak, eğitmek, ölçeklendirme ve Python SDK'sı kullanılarak bunların yönetilmesi, Modellerinizi izleyebilirsiniz. Modelleri kapsayıcıları olarak dağıtma ve bulutta, şirket içinde veya Azure IOT Edge üzerinde çalıştırın.   |
-| Desteklenen sürümler     | Windows (conda ortam: AzureML), Linux (conda ortam: py36)    |
-| Tipik kullanımları      | Genel makine öğrenimi platformu      |
-| Nasıl, yapılandırılmış yüklü mü?      |  GPU desteğine sahip yüklü   |
-| Kullanma veya çalıştırın      | Bir Python SDK ve Azure CLı olarak. Windows sürümünde *veya* Linux edition 'da `py36` `AzureML` Conda ortamına etkinleştirin.      |
-| Örnekler için bağlantı      | Örnek Jupyıter Not defterleri, Not defterleri altındaki `AzureML` dizinine dahil edilmiştir.  |
-| İlgili araçları      | Visual Studio kodu, Jupyter   |
+| Bu nedir?   |   Azure Machine Learning, makine öğrenimi modelleri geliştirmek ve dağıtmak için kullanabileceğiniz bir bulut hizmetidir. Python SDK'yı kullanarak modellerinizi oluştururken, eğitirken, ölçeklendirirken ve yönetirken izleyebilirsiniz. Modelleri kapsayıcı olarak dağıtın ve bulutta, şirket içinde veya Azure IoT Edge'de çalıştırın.   |
+| Desteklenen sürümler     | Windows (conda ortamı: AzureML), Linux (conda ortamı: py36)    |
+| Tipik kullanımlar      | Genel makine öğrenme platformu      |
+| Nasıl yapılandırılır veya yüklenir?      |  GPU desteği ile yüklendi   |
+| Nasıl kullanılır veya çalıştırın      | Python SDK olarak ve Azure CLI'de. Windows sürümünde *veya* Linux sürümünde `py36` conda ortamına `AzureML` etkinleştirin.      |
+| Örneklere bağlantı      | Örnek Jupyter dizüstü bilgisayarlar not `AzureML` defterleri altında dizine dahildir.  |
+| İlgili araçlar      | Görsel Stüdyo Kodu, Jupyter   |
 
 ## <a name="h2o"></a>H2O
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Bellek içi, dağıtılmış, hızlı ve ölçeklenebilir makine öğrenimini destekleyen açık kaynaklı bir AI platformu.  |
+| Bu nedir?   | Bellek, dağıtılmış, hızlı ve ölçeklenebilir makine öğrenimini destekleyen açık kaynak kodlu bir yapay erişim platformu.  |
 | Desteklenen sürümler      | Linux   |
-| Tipik kullanımları      | Genel amaçlı dağıtılmış, ölçeklenebilir makine öğrenimi   |
-| Nasıl, yapılandırılmış yüklü mü?      | H2O `/dsvm/tools/h2o`yüklendi.      |
-| Kullanma veya çalıştırın      | X2Go kullanarak VM'ye bağlanın. Yeni bir Terminal başlatın ve `java -jar /dsvm/tools/h2o/current/h2o.jar`çalıştırın. Sonra bir Web tarayıcısı başlatın ve `http://localhost:54321`bağlanın.      |
-| Örnekler için bağlantı      | Örnek, `h2o` Directory altındaki Jupo 'da bulunan VM 'de kullanılabilir.      |
-| İlgili araçları      | Apache Spark, MXNet, XGBoost, Sparkling Water, derin su    |
+| Tipik kullanımlar      | Genel amaçlı dağıtılmış, ölçeklenebilir makine öğrenimi   |
+| Nasıl yapılandırılır veya yüklenir?      | H2O'da `/dsvm/tools/h2o`yüklenir.      |
+| Nasıl kullanılır veya çalıştırın      | X2Go kullanarak VM'ye bağlanın. Yeni bir terminal başlatın ve çalıştırın. `java -jar /dsvm/tools/h2o/current/h2o.jar` Sonra bir web tarayıcısı `http://localhost:54321`başlatın ve 'ye bağlanın.      |
+| Örneklere bağlantı      | Örnekler Jupyter'daki VM'de `h2o` dizine göre mevcuttur.      |
+| İlgili araçlar      | Apache Kıvılcım, MXNet, XGBoost, Köpüklü Su, Derin Su    |
 
-Dsvms üzerinde, DSVMs için Anaconda Python dağıtımının parçası olan popüler `scikit-learn` paketi gibi diğer makine öğrenimi kitaplıkları vardır. Python, R ve Julia'nın kullanılabilir paketler listesini görmek için ilgili paket yöneticileri çalıştırın.
+DSVM'ler için Anaconda Python dağıtımının `scikit-learn` bir parçası olan popüler paket gibi DSVM'lerde makine öğrenimi kitaplıkları da vardır. Python, R ve Julia'da bulunan paketlerin listesini kontrol etmek için ilgili paket yöneticilerini çalıştırın.
 
 ## <a name="lightgbm"></a>LightGBM
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Karar ağacı algoritmalarına dayanan hızlı, dağıtılmış, yüksek performanslı gradyan-arttırma (GBDT, GBRT, GBM veya MART) çerçevesi. Bu, sıralama, sınıflandırma ve diğer birçok makine öğrenimi görevi için kullanılır.    |
+| Bu nedir?   | Karar ağacı algoritmalarını temel alan hızlı, dağıtılmış, yüksek performanslı degrade artırma (GBDT, GBRT, GBM veya MART) çerçevesi. Sıralama, sınıflandırma ve diğer birçok makine öğrenme görevi için kullanılır.    |
 | Desteklenen sürümler      | Windows, Linux    |
-| Tipik kullanımları      | Genel amaçlı gradyan arttırma çerçevesi      |
-| Nasıl, yapılandırılmış yüklü mü?      | Windows üzerinde LightGBM bir Python paketi olarak yüklenir. Linux 'ta, komut satırı çalıştırılabilir dosyası `/opt/LightGBM/lightgbm`, R paketi yüklenir ve Python paketleri yüklenir.     |
-| Örnekler için bağlantı      | [LightGBM Kılavuzu](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
-| İlgili araçları      | MXNet, XgBoost  |
+| Tipik kullanımlar      | Genel amaçlı degrade artırma çerçevesi      |
+| Nasıl yapılandırılır veya yüklenir?      | Windows'da LightGBM Python paketi olarak yüklenir. Linux'ta komut satırı çalıştırılabilir, `/opt/LightGBM/lightgbm`R paketi yüklenir ve Python paketleri yüklenir.     |
+| Örneklere bağlantı      | [LightGBM kılavuzu](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
+| İlgili araçlar      | MXNet, XgBoost  |
 
-## <a name="rattle"></a>Çıngırağı
+## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |   R kullanarak veri madenciliği için grafik kullanıcı arabirimi.   |
+| Bu nedir?   |   R kullanarak veri madenciliği için bir grafik kullanıcı arabirimi.   |
 | Desteklenen sürümler     | Windows, Linux     |
-| Tipik kullanımları      | R için genel UI veri araştırma aracı    |
-| Kullanma veya çalıştırın      | Bir kullanıcı arabirimi aracı olarak. Windows 'da bir komut istemi başlatın, R çalıştırın ve ardından R içinde `rattle()`çalıştırın. Linux 'ta X2Go ile bağlanın, bir Terminal başlatın, R çalıştırın ve ardından R içinde `rattle()`çalıştırın. |
-| Örnekler için bağlantı      | [Rattle](https://togaware.com/onepager/) |
-| İlgili araçları      |LightGBM, Weka, XGBoost   |
+| Tipik kullanımlar      | R için Genel UI veri madenciliği aracı    |
+| Nasıl kullanılır veya çalıştırın      | UI aracı olarak. Windows'da bir komut istemi başlatın, R çalıştırın ve r'nin içinde çalıştırın. `rattle()` Linux'ta X2Go'ya bağlanın, bir terminal kurun, `rattle()`R çalıştırın ve r'nin içinde çalıştırın. |
+| Örneklere bağlantı      | [Rattle](https://togaware.com/onepager/) |
+| İlgili araçlar      |LightGBM, Weka, XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |   Hızlı, açık kaynaklı, çekirdek olmayan bir öğrenme sistemi kitaplığı    |
+| Bu nedir?   |   Hızlı, açık kaynak kodlu, çekirdek dışı öğrenme sistemi kütüphanesi    |
 | Desteklenen sürümler     | Windows, Linux     |
-| Tipik kullanımları      | Genel makine-öğrenme kitaplığı      |
-| Nasıl, yapılandırılmış yüklü mü?      |  Windows: msi yükleyicisi<br/>Linux: apt-get |
-| Kullanma veya çalıştırın      | Yol üzerine bir komut satırı aracı (Windows üzerinde`C:\Program Files\VowpalWabbit\vw.exe`, Linux üzerinde `/usr/bin/vw`)    |
-| Örnekler için bağlantı      | [VowPal Wabbit örnekleri](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
-| İlgili araçları      |LightGBM, MXNet, XGBoost   |
+| Tipik kullanımlar      | Genel makine öğrenimi kütüphanesi      |
+| Nasıl yapılandırılır veya yüklenir?      |  Windows: msi yükleyici<br/>Linux: apt-get |
+| Nasıl kullanılır veya çalıştırın      | Bir on-path komut satırı`C:\Program Files\VowpalWabbit\vw.exe` aracı olarak `/usr/bin/vw` (Windows' da, Linux' ta)    |
+| Örneklere bağlantı      | [VowPal Wabbit örnekleri](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
+| İlgili araçlar      |LightGBM, MXNet, XGBoost   |
 
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |  Veri araştırma görevleri için makine öğrenimi algoritmalarının koleksiyonu. Algoritmalar ya da doğrudan bir veri kümesine uygulanan veya kendi Java koddan çağrılır. Weka veri ön işleme, Sınıflandırma, regresyon, kümeleme, ilişkilendirme kuralları ve görselleştirme araçları içerir. |
+| Bu nedir?   |  Veri madenciliği görevleri için makine öğrenme algoritmaları topluluğu. Algoritmalar doğrudan bir veri kümesine uygulanabilir veya kendi Java kodunuzdan çağrılabilir. Weka veri ön işleme, sınıflandırma, regresyon, kümeleme, ilişkilendirme kuralları ve görselleştirme için araçlar içerir. |
 | Desteklenen sürümler     | Windows, Linux     |
-| Tipik kullanımları      | Genel makine öğrenme aracı     |
-| Kullanma veya çalıştırın      | Windows 'ta, **Başlat** menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın ve ardından **WEKA** > **uygulama** > **geliştirme** ' ye gidin. |
-| Örnekler için bağlantı      | [WEKA örnekleri](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| İlgili araçları      |LightGBM, Çıngırağı, XGBoost   |
+| Tipik kullanımlar      | Genel makine öğrenme aracı     |
+| Nasıl kullanılır veya çalıştırın      | Windows'da **Başlat** menüsünde Weka'yı arayın. Linux'ta, X2Go ile oturum açın ve ardından **Applications** > **Development** > **Weka'ya**gidin. |
+| Örneklere bağlantı      | [Weka örnekleri](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| İlgili araçlar      |LightGBM, Çıngırak, XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |   Python, R, Java, Scala C++ve daha fazlası için hızlı, taşınabilir ve dağıtılmış gradyan-arttırma (gbdt, GBRT veya GBM) kitaplığı. Tek bir makine üzerinde ve Apache Hadoop ve Spark üzerinde çalışır.    |
+| Bu nedir?   |   Python, R, Java, Scala, C++ve daha fazlası için hızlı, taşınabilir ve dağıtılmış degrade artırma (GBDT, GBRT veya GBM) kitaplığı. Tek bir makinede ve Apache Hadoop ve Spark'ta çalışır.    |
 | Desteklenen sürümler     | Windows, Linux     |
-| Tipik kullanımları      | Genel makine-öğrenme kitaplığı      |
-| Nasıl, yapılandırılmış yüklü mü?      |  GPU desteğine sahip yüklü   |
-| Kullanma veya çalıştırın      | Python kitaplığı (2,7 ve 3,5), R paketi ve yol üzerine komut satırı aracı (Windows için`C:\dsvm\tools\xgboost\bin\xgboost.exe` ve Linux için `/dsvm/tools/xgboost/xgboost`)    |
-| Örneklere bağlantılar      | Örnekler, sanal makineye, Linux üzerinde `/dsvm/tools/xgboost/demo` ve Windows üzerinde `C:\dsvm\tools\xgboost\demo` dahildir.   |
-| İlgili araçları      | LightGBM, MXNet   |
+| Tipik kullanımlar      | Genel makine öğrenimi kütüphanesi      |
+| Nasıl yapılandırılır veya yüklenir?      |  GPU desteği ile yüklendi   |
+| Nasıl kullanılır veya çalıştırın      | Python kitaplığı (2.7 ve 3.5), R paketi ve yol`C:\dsvm\tools\xgboost\bin\xgboost.exe` daki komut `/dsvm/tools/xgboost/xgboost` satırı aracı (Windows ve Linux için) olarak    |
+| Örneklere bağlantılar      | Örnekler VM'de, Linux'ta `/dsvm/tools/xgboost/demo` ve `C:\dsvm\tools\xgboost\demo` Windows'da dahildir.   |
+| İlgili araçlar      | LightGBM, MXNet   |
 
-## <a name="apache-drill"></a>Apache ayrıntıya
+## <a name="apache-drill"></a>Apache Drill
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Büyük verilerde açık kaynaklı SQL sorgu altyapısı    |
-| Desteklenen DSVM sürümleri      | Windows 2019 (Önizleme), Linux  |
-| DSVM 'de nasıl yapılandırılır ve yüklenir?      |  Yalnızca katıştırılmış modda `/dsvm/tools/drill*` yüklendi   |
-| Tipik kullanımları      |  Ayıklama, dönüştürme, yükleme (ETL) gerekmeden yerinde veri araştırması için. CSV, JSON, ilişkisel tablolar ve Hadoop gibi farklı veri kaynaklarını ve biçimleri sorgulayın.     |
-| Kullanma ve çalıştırma      | Masaüstü kısayolu  <br/> [10 dakika içinde detaya gitmeyi kullanmaya başlayın](https://drill.apache.org/docs/drill-in-10-minutes/)  |
-| DSVM 'deki ilgili araçlar      |   Rattle, WEKA, SQL Server Management Studio      |
+| Bu nedir?   | Büyük veri üzerinde açık kaynak SQL sorgu motoru    |
+| Desteklenen DSVM sürümleri      | Windows 2019, Linux  |
+| Nasıl yapılandırılır ve DSVM yüklü?      |  Yalnızca gömülü `/dsvm/tools/drill*` modda yüklü   |
+| Tipik kullanımlar      |  Ekstre, dönüştürme, yükleme (ETL) gerektirmeden yerinde veri arama için. CSV, JSON, ilişkisel tablolar ve Hadoop gibi farklı veri kaynaklarını ve biçimlerini sorgula.     |
+| Nasıl kullanılır ve çalıştırın      | Masaüstü kısayolu  <br/> [Drill ile 10 dakika içinde başlayın](https://drill.apache.org/docs/drill-in-10-minutes/)  |
+| DSVM ile ilgili araçlar      |   Çıngırak, Weka, SQL Server Management Studio      |
 
 

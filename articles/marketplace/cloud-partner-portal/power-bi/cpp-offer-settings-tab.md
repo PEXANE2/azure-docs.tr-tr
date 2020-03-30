@@ -1,39 +1,38 @@
 ---
-title: Power BI uygulama teklifi için teklif ayarları | Azure Marketi
-description: Microsoft AppSource Market için Power BI uygulama teklifi için teklif ayarlarını yapılandırın.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: Power BI App teklifi için teklif ayarları | Azure Marketi
+description: Microsoft AppSource pazarı için Power BI App teklifi için teklif ayarlarını yapılandırın.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: ca326b10a0707d5e4b1a5f05dccc303c9ec28269
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f3a8d740d391edc09a290d3dba4307af7eec00b1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822675"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286362"
 ---
-# <a name="power-bi-apps-offer-settings-tab"></a>Power BI uygulamalar teklif ayarları sekmesi
+# <a name="power-bi-apps-offer-settings-tab"></a>Power BI Apps Teklif Ayarları sekmesi
 
-Hizmet uygulamaları için **yeni teklif** sayfasını açtığınızda, önce **teklif ayarları** sekmesini görürsünüz. Bu sekmede teklifinizin birincil tanımlayıcılarını ve adını sağlarsınız. Bir yıldız işareti (*) gerekli bir alanı gösterir.
+Hizmet uygulamaları için **Yeni Teklif** sayfasını açtığınızda, önce **Teklif Ayarları** sekmesini görürsünüz. Bu sekmede birincil tanımlayıcıları ve teklifinizin adını sağlarsınız. Yıldız işareti (*) gerekli alanı gösterir.
 
 ![Teklif Ayarları sekmesi](./media/offer-settings-tab.png)
 
 
-## <a name="offer-settings-fields"></a>Teklif ayarları alanları 
+## <a name="offer-settings-fields"></a>Teklif Ayarları alanları 
 
-**Teklif ayarları** sekmesinde, aşağıdaki gerekli alanlara bilgi girmeniz gerekir. Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
+Teklif **Ayarları** sekmesinde, gerekli alanlara bilgi girmeniz gerekir. Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
 
 |  Alan        |  Açıklama                                                               |
 |---------------|----------------------------------------------------------------------------|
-| **Teklif KIMLIĞI\***  | Teklif için benzersiz bir tanımlayıcı (yayımcı profili içinde). Bu tanımlayıcı, ürün URL 'Lerinde, Azure Resource Manager şablonlarında ve faturalandırma raporlarında görünür olacaktır. En fazla 50 karakter uzunluğunda olur. Yalnızca küçük harfli alfasayısal karakterler ve tireler (-) içerebilir. Tireyle bitemez. Bu tanımlayıcı, bir teklif canlı olduktan sonra değiştirilemez. Contoso, teklif KIMLIĞI `sample-SvcApp`bir teklif yayımladığında, teklifin AppSource URL 'SI `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`atanır.      |
-| **Yayımcı\*** | Kuruluşunuzun [Appsource](https://appsource.microsoft.com)'da benzersiz tanımlayıcısı. Tüm tekliflerinizin yayımcı KIMLIĞINIZLE ilişkilendirilmesi gerekir. Teklif kaydedildikten sonra bu değer değiştirilemez.                         |
-| **Ad\***      | Teklifiniz için bir görünen ad. Bu ad AppSource üzerinde ve Bulut İş Ortağı Portalı görüntülenir. En fazla 50 karakter uzunluğunda olur. Ürününüz için tanınabilir bir marka adı kullanın. Uygulama bu adla pazarlanmadığı takdirde kuruluşunuzun adını buraya eklemeyin. Bu teklifi diğer web siteleri ve yayınlar için sağladıysanız, tüm yayınlarda aynı adı kullanın.    <br/>Power BI uygulamalar için önizleme dönemi boyunca bir teklifi serbest bırakırsanız, aşağıdaki gibi `(Preview)` dize adını uygulamanızın adının sonuna ekleyin: `Sample Scv App (Preview)`. |
+| **Teklif Kimliği\***  | Teklif için benzersiz bir tanımlayıcı (yayımcı profili içinde). Bu tanımlayıcı ürün URL'lerinde, Azure Kaynak Yöneticisi şablonlarında ve fatura lama raporlarında görünür. Maksimum uzunluk 50 karakterdir. Yalnızca küçük alfasayısal karakterler ve tire (-) içerebilir. Çizgiyle bitemez. Bu tanımlayıcı, bir teklif yayından yayınladıktan sonra değiştirilemez. Contoso teklif kimliği `sample-SvcApp`ile bir teklif yayınlarsa, teklif `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`AppSource URL atanır.      |
+| **Yayımcı\*** | Kuruluşunuzun [AppSource'daki](https://appsource.microsoft.com)benzersiz tanımlayıcısı. Tüm teklifleri yayıncı kimliğinizle ilişkilendirilmelidir. Teklif kaydedildikten sonra bu değer değiştirilemez.                         |
+| **Adı\***      | Teklifiniz için bir görüntü adı. Bu ad AppSource'da ve Bulut İş Ortağı Portalı'nda görünür. Maksimum uzunluk 50 karakterdir. Ürününüz için tanınabilir bir marka adı kullanın. Uygulama bu adla pazarlanan olmadıkça kuruluşunuzun adını buraya eklemeyin. Bu teklifi diğer web sitelerinde ve yayınlarda sunuyorsanız, tüm yayınlarda aynı adı kullanın.    <br/>Power BI Apps için önizleme döneminde bir teklif yayınlarsanız, uygulamanızın adının sonuna aşağıdaki gibi dize `(Preview)` ekleyin: `Sample Scv App (Preview)`. |
 |     |     |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki sekmede teklifiniz için [teknik bilgileri](./cpp-technical-info-tab.md) belirtirsiniz.
+Bir sonraki sekmede, teklifiniz için [teknik bilgileri](./cpp-technical-info-tab.md) belirtirsiniz.

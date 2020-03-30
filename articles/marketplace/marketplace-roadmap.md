@@ -1,48 +1,46 @@
 ---
-title: Azure Marketi ve AppSource yol haritası | Mavisi
-description: Market 'te meydana gelen yol haritası
-services: Azure, Marketplace, Compute
+title: Azure Marketi ve AppSource Yol Haritası
+description: Pazar Yerinde neler olduğuna bir yol haritası
 author: qianw211
-manager: MaggiePucciEvans
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/02/2019
-ms.author: blevens
-ms.openlocfilehash: ce2390f1aa71b6cfc10bbb5144127d46fc82fb19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c9c69bb475c943003f78a69df1142653c3d5249e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826435"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288385"
 ---
-# <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft ticari Market yol haritası
+# <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft ticari pazar yol haritası
 
-Bu belge, Microsoft 'un yayımcılar, satıcılar ve müşteriler için ticari Market 'in yanında bir görünüm sağlar. Bu, yaptığımız önemli özelliklerden bazılarını yakalar, ne zaman bunları görmeyi bekletireceğiz için kaba bir zaman karesi olur ve aylık olarak yenilenir. Tüm yeni özelliklerin kapsamlı bir listesi değildir ancak önemli yatırımlarımıza görünürlük sağlamak üzere tasarlanmıştır. Bu özellik kümeleri ve teslim süresi çerçeveleri geçerli ve değişikliğe tabidir.
+Bu belge, Microsoft'un yayıncılar, satıcılar ve müşteriler için ticari pazarı için sırada ne olduğunu bir görünüm sağlar. Taahhüt ettiğimiz bazı önemli özellikleri yakalar, bunları görmeyi bekleyebilirsiniz ve aylık olarak yenilenecek zaman için zor bir zaman dilimi. Tüm yeni özelliklerin kapsamlı bir listesi değildir, ancak önemli yatırımlarımızda görünürlük sağlamayı amaçlamaktadır. Bu özellik kümeleri ve teslim süresi çerçeveleri geçerlidir ve değişebilir.
 
-Önerilerinizi duymaktan mutluluk duyarız! Yeni yetenekler, programlar ve olaylar hakkında en son güncelleştirmeleri almak için [Microsoft Iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/) 'nda konuşmaya katın.
+Önerilerinizi duymaktan mutluluk duyarız! Yeni özellikler, programlar ve etkinliklerle ilgili en son güncelleştirmeleri almak için [Microsoft İş Ortağı Topluluğu'ndaki](https://www.microsoftpartnercommunity.com/) konuşmaya katılın.
 
 ## <a name="roadmap"></a>Yol Haritası
-![Kasım 2019 için Market yol haritası](./media/marketplace-publishers-guide/roadmap-nov19.png)
+![Kasım 2019 Pazar Yeri yol haritası](./media/marketplace-publishers-guide/roadmap-nov19.png)
 
-## <a name="recent-releases"></a>Son yayınlar
+## <a name="recent-releases"></a>Son sürümler
 
-Bir yetenek canlı olduktan sonra, yol haritası 'ndan kaldırılır. Market 'e eklenmiş işlevler aşağıdaki belgelerde bulunabilir.
+Bir yetenek canlı olduğunda, yol haritasından kaldırılır. Pazara eklenen işlevler aşağıdaki belgelerde bulunabilir.
 
-* [Market + CSP güncelleştirme blogu](https://aka.ms/marketplacemarchupdateblog)
-* [Teklifleri CSP kanalında yayımlama (ISV)](https://aka.ms/publishtocsp)
-* [Market tekliflerini yeniden satma (CSP)](h https://aka.ms/marketplaceincsp)
+* [Pazar Yeri + CSP Güncelleme Blog](https://aka.ms/marketplacemarchupdateblog)
+* [Teklifleri CSP kanalında yayımla (ISV)](https://aka.ms/publishtocsp)
+* [Resell Marketplace teklifleri (CSP)](hhttps://aka.ms/marketplaceincsp)
 * [Standart Sözleşme](https://aka.ms/standardcontract)
-* [SaaS karşılama API 'SI](https://aka.ms/saasapiv2)
-* [Market geos ve para birimleri](https://aka.ms/marketplacegeos)
-* [Satıcı öngörüleri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
-* [Microsoft Build Market blogu](https://aka.ms/marketplacebuildblog)
-* [Market, blog güncelleştirmelerini alabilir](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* İş Ortağı Merkezi: [Hesap oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) [ /  / ](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) , [cpp geçiş](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* İş Ortağı Merkezi: [SaaS teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [yayınlama durumu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-) / [mevcut teklif](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [teklif analizlerini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics) güncelleştirme
-* [Iş Ortağı Merkezi 'nde Market desteği alın](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* [SaaS Karşılama API](https://aka.ms/saasapiv2)
+* [Pazar Yeri Geos ve Para Birimleri](https://aka.ms/marketplacegeos)
+* [Seller Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+* [Microsoft Build Marketplace Blog](https://aka.ms/marketplacebuildblog)
+* [Pazar Mayıs Güncellemeler Blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
+* İş Ortağı Merkezi:[CPP'den](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc) [Hesap](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [Yönet'i](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / Yönet
+* İş Ortağı Merkezi: [SaaS Teklif](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [Yayımlama Durumu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
+) / [Güncelleme Mevcut Teklif](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [Teklif Analizini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics) Oluştur
+* [İş Ortağı Merkezi'nde pazar yeri için destek alın](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Marketi ve AppSource yayımcı Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin.
+Azure [Marketi ve AppSource Publisher Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin.

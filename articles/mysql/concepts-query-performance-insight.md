@@ -1,71 +1,71 @@
 ---
-title: Sorgu Performansı İçgörüleri-MySQL için Azure veritabanı
-description: Bu makalede MySQL için Azure veritabanı 'nda Sorgu Performansı İçgörüleri özelliği açıklanmaktadır
+title: Sorgu Performans Öngörüsü - MySQL için Azure Veritabanı
+description: Bu makalede, MySQL için Azure Veritabanı'ndaki Sorgu Performans Öngörüsü özelliği açıklanmaktadır
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 762353cbc276eb78868c46bbfde4789e792f6d85
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: a924f51fac6d43ae4a4530ac4f61f2e8b1f4e8c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775997"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537066"
 ---
-# <a name="query-performance-insight-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Sorgu Performansı İçgörüleri
+# <a name="query-performance-insight-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda Sorgu Performansı İçgörüleri
 
-**Uygulama hedefi:** MySQL için Azure veritabanı 5,7
+**Aşağıdakiler için geçerlidir:** MySQL 5.7 için Azure Veritabanı
 
-Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, zaman içinde nasıl değişdiklerinizi ve neleri etkilemeyi beklediğini hızlı bir şekilde tanımanıza yardımcı olur.
+Sorgu Performans Öngörüsü, en uzun süre çalışan sorgularınızın ne olduğunu, zaman içinde nasıl değiştiğini ve hangi beklemelerin onları etkilediğini hızlı bir şekilde belirlemenize yardımcı olur.
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 
 ### <a name="long-running-queries"></a>Uzun süre çalışan sorgular
 
-- Son X saat içinde en uzun çalışan sorguları tanımlama
-- Kaynaklarda bekleyen ilk N sorguyu tanımlama
+- Son X saatiçinde en uzun süre çalışan sorguları tanımlama
+- Kaynaklarda bekleyen en iyi N sorgularını tanımlama
  
 ### <a name="wait-statistics"></a>Bekleme istatistikleri
 
 - Sorgu için bekleme yapısını anlama
-- Kaynak beklemeleri ve kaynak çekişmelerinin nerede olduğunu anlama
+- Kaynak bekleme eğilimlerinin ve kaynak çekişmelerinin nerede olduğunu anlama
 
 ## <a name="permissions"></a>İzinler
 
 Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu**, grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Sorgu Performansı İçgörüleri çalışması için, verilerin [sorgu deposunda](concepts-query-store.md)bulunması gerekir.
+Sorgu Performans Öngörüsünc'ün çalışması için Sorgu [Deposu'nda](concepts-query-store.md)veri bulunması gerekir.
 
 ## <a name="viewing-performance-insights"></a>Performans öngörülerini görüntüleme
 
 Azure portaldaki [Sorgu Performansı İçgörüleri](concepts-query-performance-insight.md) görünümü, Query Store’dan alınan önemli bilgilerdeki görselleştirmeleri kullanıma açar.
 
-MySQL için Azure veritabanı sunucunuzun portal sayfasında, menü çubuğunun **akıllı performans** bölümü altında **sorgu performansı içgörüleri** ' yi seçin.
+MySQL sunucusu için Azure Veritabanınızın portal sayfasında, menü çubuğunun **Akıllı Performans** bölümü altında Sorgu **Performans Öngörüsü'nü** seçin.
 
 ### <a name="long-running-queries"></a>Uzun süre çalışan sorgular
 
-**Uzun süre çalışan sorgular** sekmesi, 15 dakikalık aralıklarda toplanan, yürütme başına ortalama süreye göre ilk 5 sorguyu gösterir. **Sorgu sayısı** açılan listesinden seçerek daha fazla sorgu görüntüleyebilirsiniz. Bunu yaptığınızda, grafik renkleri belirli bir Sorgu Kimliği için değişebilir.
+**Uzun süren sorgular** sekmesi, 15 dakikalık aralıklarla toplanan yürütme başına ortalama süreye göre en üstteki 5 sorguyu gösterir. Açılan **Sorgu Sayısı'ndan** seçerek daha fazla sorgu görüntüleyebilirsiniz. Bunu yaptığınızda, grafik renkleri belirli bir Sorgu Kimliği için değişebilir.
 
-Belirli bir zaman penceresine daraltmak için grafikte tıklayıp sürükleyebilirsiniz. Alternatif olarak, daha küçük veya daha büyük bir zaman aralığı görüntülemek için Yakınlaştır ve Kapat simgelerini kullanın.
+Belirli bir zaman penceresine daraltmak için grafikte tıklayıp sürükleyebilirsiniz. Alternatif olarak, sırasıyla daha küçük veya daha büyük bir zaman dilimini görüntülemek için simgeleri yakınlaştırın ve çıkar'ı kullanın.
 
-![Uzun süre çalışan sorguları Sorgu Performansı İçgörüleri](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+![Sorgu Performans Öngörüsü uzun süren sorgular](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
 
 ### <a name="wait-statistics"></a>Bekleme istatistikleri
 
 > [!NOTE]
-> Bekleme istatistikleri sorgu performans sorunlarını gidermeye yöneliktir. Yalnızca sorun giderme amacıyla açık olması önerilir. <br>Azure portal "hata iletisini alırsanız, *' Microsoft. DBforMySQL ' için karşılaşılan sorun; istek yerine getirilemiyor. Bu sorun devam ederse veya beklenmiyorsa lütfen bu bilgilerle desteğe başvurun.* " Bekleme istatistiklerini görüntülerken, daha kısa bir zaman aralığı kullanın.
+> Bekleme istatistikleri, sorun giderme sorgusu performans sorunları içindir. Yalnızca sorun giderme amacıyla açık olması önerilir. <br>Azure portalında hata iletisi alırsanız "*'Microsoft.DBforMySQL' için karşılaşılan sorun; isteğini yerine getiremez. Bu sorun devam ederse veya beklenmeyen bir durumsa, lütfen bu bilgilerle destek le iletişime geçin.* bekleme istatistiklerini görüntülerken daha küçük bir zaman dilimi kullanın.
 
-Bekleme istatistikleri, belirli bir sorgunun yürütülmesi sırasında oluşan bekleme olaylarının bir görünümünü sağlar. [MySQL Engine belgelerindeki](https://go.microsoft.com/fwlink/?linkid=2098206)bekleme olayı türleri hakkında daha fazla bilgi edinin.
+Bekleme istatistikleri, belirli bir sorgunun yürütülmesi sırasında oluşan bekleme olaylarının görünümünü sağlar. [MySQL motor belgelerinde](https://go.microsoft.com/fwlink/?linkid=2098206)bekleme olay türleri hakkında daha fazla bilgi edinin.
 
 Sunucudaki beklemelerle ilgili görselleştirmeleri görüntülemek için **Bekleme İstatistikleri** sekmesini seçin.
 
-Bekleme istatistikleri görünümünde görüntülenen sorgular, belirtilen zaman aralığı boyunca en büyük değeri gösteren sorgulara göre gruplandırılır.
+Bekleme istatistikleri görünümünde görüntülenen sorgular, belirtilen zaman aralığında en büyük bekleme süresini gösteren sorgulara göre gruplandırılır.
 
-![Sorgu Performansı İçgörüleri bekleyen istatistikler](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Sorgu Performans Öngörüsü istatistikleri bekler](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- MySQL için Azure veritabanı 'nda [izleme ve ayarlama](concepts-monitoring.md) hakkında daha fazla bilgi edinin.
+- MySQL için Azure Veritabanı'nda [izleme ve aetme](concepts-monitoring.md) hakkında daha fazla bilgi edinin.

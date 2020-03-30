@@ -1,40 +1,39 @@
 ---
-title: Azure IoT Edge bir modül teklifi oluşturun | Azure Marketi
-description: Market için yeni bir IoT Edge modülü yayımlama.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure IoT Edge modülü teklifi oluşturma | Azure Marketi
+description: Nasıl Pazar için yeni bir IoT Edge Modülü yayınlamak için.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: c1e2f5ac6078309b7bd8753a3fc57a592a67dcec
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 164b26560020054f4da8bd1aa0ba2a3ecff1875a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286634"
 ---
-# <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı ile yeni bir IoT Edge modül teklifi oluşturun
+# <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı ile yeni bir IoT Edge modülü teklifi oluşturun
 
-Bu makalede, Azure Marketi için bir IoT Edge modülü teklif girişi oluşturma ve yayımlama açıklanır. Her teklif Azure Marketi 'nde kendi varlığı olarak görünür ve bir veya daha fazla SKU ile ilişkilendirilir.  IoT Edge bir modül teklifi aşağıdaki varlık ve destekleyici hizmetler gruplarından oluşur:
+Bu makalede, Azure Marketi için bir IoT Edge modülü teklif girişinin nasıl oluşturulup yayımlandırılabildiğini açıklanmaktadır. Her teklif Azure Marketi'nde kendi varlığı olarak görünür ve bir veya daha fazla SUK ile ilişkilidir.  IoT Edge modül teklifi, varlıkların ve destekleyici hizmetlerin aşağıdaki gruplandırmalarından oluşur:
 
 |  **Varlık grubu**   |  **Açıklama**  |
 |  ---------------   |  ---------------  |
-|    SKU            |  Bir teklifin en küçük dağıtılabilir birimi. Tek bir teklifin (ürün sınıfı) teklifle ilişkili birden fazla SKU 'su olabilir. Desteklenen özellikleri ve faturalandırma modellerini ayırt etmek için SKU 'Ları kullanabilirsiniz. |
-|  Market       | Pazarlama, yasal ve lider yönetimi varlıkları ve belirtimleri içerir.  <ul><li> Pazarlama varlıkları, teklif adı, açıklama ve logo içerir</li> <li> Yasal varlıklar, bir gizlilik ilkesi, kullanım koşulları ve diğer yasal belgeleri içerir</li>  <li> Lider yönetimi ilkesi, Azure Marketi Son Kullanıcı portalından müşteri adaylarını nasıl işleyeceğinizi belirtmenizi sağlar.</li> </ul> |
-| Destek            | Destek iletişim ve ilke bilgilerini içerir |
+|    SKU'lar            |  Bir teklifin en küçük dağıtılabilir birimi. Tek bir teklifte (ürün sınıfı) teklifle ilişkili birden çok SNU olabilir. Desteklenen özellikler ve faturalandırma modelleri arasında ayrım yapmak için SUS'ları kullanabilirsiniz. |
+|  Market       | Pazarlama, yasal ve müşteri adayı yönetim varlıkları ve teknik özellikleri içerir.  <ul><li> Pazarlama varlıkları teklif adı, açıklama ve logolar içerir</li> <li> Yasal varlıklar arasında gizlilik politikası, kullanım koşulları ve diğer yasal belgeler yer almaktadır.</li>  <li> Müşteri adayı yönetimi ilkesi, Azure Marketi son kullanıcı portalından müşteri adaylarını nasıl işleyeceğinibelirtmenize olanak tanır.</li> </ul> |
+| Destek            | Destek iletişimi ve ilke bilgilerini içerir |
 
 
-## <a name="new-offer-form"></a>Yeni teklif formu 
+## <a name="new-offer-form"></a>Yeni Teklif formu 
 
-[Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın ve ardından sol menü çubuğunda **+ yeni teklif** ' i seçin. Yeni teklif menüsünde **IoT Edge modüller** ' i seçerek **yeni teklif** formunu görüntüleyin ve yeni bir IoT Edge modülü teklifi için varlık tanımlama sürecini başlatın. 
+Cloud Partner [Portal'da](https://cloudpartner.azure.com/)oturum açın ve ardından sol menü çubuğunda **+ Yeni Teklif'i** seçin. Yeni Teklif menüsünde, **Yeni Teklif** formunu görüntülemek ve yeni bir ioT Edge Modülü teklifi için varlıkları tanımlama işlemini başlatmak için **IoT Edge Modüllerini** seçin. 
 
-![Yeni IoT Edge modülü kullanıcı arabirimi seçimini sunmaktadır](./media/new-iot-edge-module-offer.png)
+![Yeni IoT Edge modülü kullanıcı arabirimi seçimi sunar](./media/new-iot-edge-module-offer.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Edge modülü teklif türü için **yeni teklif** sayfası, yeni bir teklif oluşturmak için kullanacağınız sekmeler ve form alanları kümesini sağlar. Aşağıdaki makalelerin her biri, yeni IoT Edge modülünüzün sunduğu varlık gruplarını ve destekleyici hizmetleri tanımlamak için sekmesinin nasıl kullanılacağını açıklamaktadır.
+IoT Edge modülü teklif türü için **Yeni Teklif** sayfası, yeni bir teklif oluşturmak için kullanacağınız bir dizi sekme ve form alanı sağlar. Aşağıdaki makalelerin her biri, yeni IoT Edge modülü teklifiniz için varlık gruplarını ve destekleyici hizmetleri tanımlamak için sekmeyi nasıl kullanacağınızı açıklar.
 
 - [Teklif Ayarları sekmesi](./cpp-offer-settings-tab.md)
 - [SKU'lar sekmesi](./cpp-skus-tab.md)

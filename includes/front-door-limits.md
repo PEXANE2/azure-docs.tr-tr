@@ -1,6 +1,6 @@
 ---
-title: içerme dosyası
-description: içerme dosyası
+title: include dosyası
+description: include dosyası
 services: frontdoor
 author: sharad4u
 ms.service: frontdoor
@@ -8,50 +8,53 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 148ec3eccce71ab7a4a6c1391c0fa4753c248bd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72237473"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335086"
 ---
-| Kaynak | Varsayılan/en yüksek sınır |
+| Kaynak | Sınır |
 | --- | --- |
-| Abonelik başına Azure ön kapı hizmeti kaynakları | 100 |
-| Kaynak başına özel etki alanları içeren ön uç Konakları | 100 |
-| Kaynak başına yönlendirme kuralları | 100 |
+| Abonelik başına Azure Ön Kapı kaynakları | 100 |
+| Kaynak başına özel etki alanlarını içeren ön uç ana bilgisayarlar | 500 |
+| Kaynak başına yönlendirme kuralları | 500 |
 | Kaynak başına arka uç havuzları | 50 |
-| Arka uç havuzu başına arka uçlar | 100 |
-| Yönlendirme kuralı için eşleştirilecek yol desenleri | 25 |
-| İlke başına özel Web uygulaması güvenlik duvarı kuralları | 10 |
+| Arka uç başına arka uçlar | 100 |
+| Yönlendirme kuralıyla eşleşecek yol desenleri | 25 |
+| Tek bir önbellek temizleme çağrısındaURL'ler | 100 |
+| İlke başına özel web uygulaması güvenlik duvarı kuralları | 100 |
 | Abonelik başına Web uygulaması güvenlik duvarı ilkesi | 100 |
-| Web uygulaması güvenlik duvarı özel kural başına eşleştirme koşulları | 10 |
-| Web uygulaması güvenlik duvarı IP adresi aralıklarını eşleşme koşulu başına | 600 |
-| Web uygulaması güvenlik duvarı dizesi eşleşme koşulu başına değerleri | 10 |
-| Web uygulaması güvenlik duvarı dizesi eşleşme değeri uzunluğu | 256 |
-| Web uygulaması güvenlik duvarı GÖNDERI gövdesi parametre adı uzunluğu | 256 |
-| Web uygulaması güvenlik duvarı HTTP üst bilgi adı uzunluğu | 256 |
-| Web uygulaması güvenlik duvarı tanımlama bilgisi adı uzunluğu | 256 |
-| Web uygulaması güvenlik duvarı HTTP istek gövdesi boyutu inceledi | 128 KB |
-| Web uygulaması güvenlik duvarı özel yanıt gövdesi uzunluğu | 2 KB |
+| Web uygulaması güvenlik duvarı maç koşulları özel kural başına | 10 |
+| Web uygulaması güvenlik duvarı IP adresi aralıkları maç durumu başına | 600 |
+| Web uygulaması güvenlik duvarı dize maç durumu başına değerleri | 10 |
+| Web uygulaması güvenlik duvarı dize maç değeri uzunluğu | 256 |
+| Web uygulaması güvenlik duvarı POST gövde parametre adı uzunluğu | 256 |
+| Web uygulaması güvenlik duvarı HTTP üstbilgi adı uzunluğu | 256 |
+| Web uygulaması güvenlik duvarı çerez adı uzunluğu | 256 |
+| Web uygulaması güvenlik duvarı HTTP istek gövde boyutu denetlenir | 128 KB |
+| Web uygulaması güvenlik duvarı özel tepki gövde uzunluğu | 2 KB |
 
-### <a name="timeout-values"></a>Zaman aşımı değerleri
-#### <a name="client-to-front-door"></a>İstemciden ön kapıya
-- Ön kapıda 61 saniyelik boş bir TCP bağlantısı zaman aşımı vardır.
+### <a name="timeout-values"></a>Zaman ara değerleri
+#### <a name="client-to-front-door"></a>Müşteriden Ön Kapıya
+* Ön Kapı 61 saniye boşta TCP bağlantı zaman adabı vardır.
 
-#### <a name="front-door-to-application-back-end"></a>Uygulama arka ucuna ön kapı
-- Yanıt öbekli bir yanıt ise, ilk öbek alındığında bir 200 döndürülür.
-- HTTP isteği arka uca iletilene sonra, ön kapı arka uçta ilk paket için 30 saniye bekler. Ardından istemciye 503 hatası döndürür.
-- Arka uçtan ilk paket alındıktan sonra, ön kapı boşta kalma zaman aşımında 30 saniye bekler. Ardından istemciye 503 hatası döndürür.
-- Arka uç TCP oturumu zaman aşımının ön kapısı 30 dakikadır.
+#### <a name="front-door-to-application-back-end"></a>Uygulama arka uç için Ön Kapı
+* Yanıt tıklım tıklım bir yanıtsa, ilk öbek alınırsa veya aldığında 200 döndürülür.
+* HTTP isteği arka uca iletildikten sonra, Ön Kapı arka uçtan gelen ilk paket için 30 saniye bekler. Sonra istemciye bir 503 hatası döndürür. Bu değer API'deki SendRecvTimeoutSeconds alanı üzerinden yapılandırılabilir.
+    * Önbelleğe alma senaryoları için, bu zaman sonu yapılandırılamaz ve bu nedenle, bir istek önbelleğe alınmışsa ve ön kapıdan veya arka uçtan ilk paket için 30 saniyeden fazla sürerse, istemciye 504 hatası döndürülür. 
+* İlk paket arka uçtan alındıktan sonra, Ön Kapı boşta bir zaman diliminde 30 saniye bekler. Sonra istemciye bir 503 hatası döndürür. Bu zaman dışı değer yapılandırılamaz.
+* Arka uç TCP oturum zaman sonuna Ön Kapı 90 saniyedir.
 
-### <a name="upload-and-download-data-limit"></a>Veri sınırını karşıya yükleme ve indirme
+### <a name="upload-and-download-data-limit"></a>Veri yükleme ve indirme sınırı
 
-|  | Öbekli aktarım kodlaması (CTE) ile | HTTP parçalama olmadan |
+|  | Öbeklenmiş aktarım kodlaması (CTE) ile | HTTP yığın olmadan |
 | ---- | ------- | ------- |
-| **İndir** | İndirme boyutunda sınır yoktur. | İndirme boyutunda sınır yoktur. |
-| **Kaydederek** |  Her CTE yüklemesi 2 GB 'den az olduğu sürece sınır yoktur. | Boyut 2 GB 'tan büyük olamaz. |
+| **İndir** | İndirme boyutunda bir sınır yoktur. | İndirme boyutunda bir sınır yoktur. |
+| **Karşıya yükle** |    Her CTE yüklemesi 2 GB'dan az olduğu sürece sınır yoktur. | Boyutu 2 GB'tan büyük olamaz. |
 
 ### <a name="other-limits"></a>Diğer sınırlar
-- En büyük URL boyutu-8.192 bayt-ham URL 'nin uzunluk üst sınırını belirtir (Düzen + ana bilgisayar + bağlantı noktası + yol + URL 'nin sorgu dizesi)
-- En fazla sorgu dizesi boyutu-4.096 bayt-sorgu dizesinin uzunluk üst sınırını bayt cinsinden belirtir.
+* Maksimum URL boyutu - 8.192 bayt - Ham URL'nin maksimum uzunluğunu belirtir (şema + ana bilgisayar adı + bağlantı noktası + yol + URL sorgu dizesi)
+* Maksimum Sorgu Dizesi boyutu - 4.096 bayt - sorgu dizesinin en büyük uzunluğunu baytolarak belirtir.
+* Sağlık sondası URL'sinden maksimum HTTP yanıt üstbilgi boyutu - 4.096 bayt - Sağlık sondalarının tüm yanıt başlıklarının maksimum uzunluğu belirtilir. 

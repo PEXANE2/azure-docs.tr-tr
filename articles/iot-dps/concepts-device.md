@@ -1,6 +1,6 @@
 ---
-title: Azure cihaz sağlama 'da cihaz kavramları | Microsoft Docs
-description: Cihaz sağlama hizmeti (DPS) ve IoT Hub cihazları için özel cihaz sağlama kavramlarını açıklar
+title: Azure aygıt sağlamada aygıt kavramları | Microsoft Dokümanlar
+description: Aygıt Sağlama Hizmeti (DPS) ve IoT Hub ile aygıtlara özgü aygıt sağlama kavramlarını açıklar
 author: nberdy
 ms.author: nberdy
 ms.date: 11/06/2019
@@ -9,53 +9,53 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79285168"
 ---
-# <a name="iot-hub-device-provisioning-service-device-concepts"></a>Cihaz sağlama hizmeti cihaz kavramlarını IoT Hub
+# <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub Cihazı Sağlama Hizmeti cihaz kavramları
 
-IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz Sağlama Hizmeti ile güvenli ve ölçeklenebilir bir şekilde milyonlarca cihaz sağlayabilirsiniz.
+IoT Hub Aygıt Sağlama Hizmeti, ioT Hub için sıfır dokunmatik aygıt sağlama sağlamasını belirli bir IoT hub'ına yapılandırmak için kullandığınız bir yardımcı hizmettir. Cihaz Sağlama Hizmeti ile güvenli ve ölçeklenebilir bir şekilde milyonlarca cihaz sağlayabilirsiniz.
 
-Bu makale, cihaz sağlama ile ilgili *cihaz* kavramlarına genel bir bakış sunar. Bu makale, bir cihazı dağıtıma hazırlamak için [Üretim adımında](about-iot-dps.md#manufacturing-step) yer alan personbuna uygundur.
+Bu makalede, aygıt sağlama ile ilgili *aygıt* kavramlarına genel bir bakış sağlar. Bu makale, bir aygıtı dağıtıma hazır hale getirmek için [üretim adımında](about-iot-dps.md#manufacturing-step) yer alan kişilikler için en çok alakalıdır.
 
-## <a name="attestation-mechanism"></a>Kanıtlama mekanizması
+## <a name="attestation-mechanism"></a>Attestation mekanizması
 
-Kanıtlama mekanizması, bir cihazın kimliğini onaylamak için kullanılan yöntemdir. Kanıtlama mekanizması, sağlama hizmetine belirli bir cihazla hangi kanıtlama yöntemini kullanacağınızı belirten kayıt listesi ile de ilgilidir.
+Attestation mekanizması, bir aygıtın kimliğini doğrulamak için kullanılan yöntemdir. Attestation mekanizması, belirli bir cihazla hangi attestation yönteminin kullanılacağını sağlayan kayıt listesiyle de ilgilidir.
 
 > [!NOTE]
-> IoT Hub, söz konusu hizmette benzer bir kavram için "kimlik doğrulama şeması" nı kullanır.
+> IoT Hub, söz bu hizmetteki benzer bir kavram için "kimlik doğrulama şeması" kullanır.
 
-Cihaz sağlama hizmeti aşağıdaki kanıtlama biçimlerini destekler:
-* Standart X. 509.440 sertifika kimlik doğrulama akışına göre **X. 509.440 sertifikaları** .
-* Anahtar bir paylaşılan erişim Imzası (SAS) belirteci sunmak için anahtarlar için TPM standardı kullanarak, bir kerelik anahtar sınamasını temel alan **Güvenilir Platform Modülü (TPM)** . Bu, cihazda fiziksel TPM gerektirmez, ancak hizmet [TPM belirtimi](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)başına onay anahtarını kullanarak test bulmayı bekler.
-* Karma **anahtar** , karma bir imza ve katıştırılmış süre sonu içeren paylaşılan erişim IMZASı (SAS) [güvenlik belirteçlerini](../iot-hub/iot-hub-devguide-security.md#security-tokens)temel alır. Daha fazla bilgi için bkz. [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md).
+Cihaz Sağlama Hizmeti aşağıdaki attestation formlarını destekler:
+* **X.509 sertifikaları standart X.509** sertifika kimlik doğrulama akışını temel alınca.
+* **Güvenilir Platform Modülü (TPM),** anahtarların imzalı paylaşılan erişim imzası (SAS) belirteci sunmak için TPM standardını kullanarak bir nonce meydan okumaya dayanır. Bu cihazda fiziksel bir TPM gerektirmez, ancak hizmet [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)başına onay anahtarı nı kullanarak kanıtlamak için bekliyor.
+* Ortak erişim imzası (SAS) [Güvenlik belirteçlerine](../iot-hub/iot-hub-devguide-security.md#security-tokens)dayalı **simetrik anahtar,** bir hashed imza ve gömülü bir son kullanma süresi içerir. Daha fazla bilgi için [Bkz. Simetrik anahtar attestation.](concepts-symmetric-key-attestation.md)
 
 ## <a name="hardware-security-module"></a>Donanım güvenlik modülü
 
-Donanım güvenlik modülü veya HSM, cihaz gizli dizileri için güvenli, donanım tabanlı depolamada kullanılır ve gizli depolama alanının en güvenli biçimidir. Hem X. 509.440 sertifikaları hem de SAS belirteçleri HSM 'de depolanabilir. HSM 'ler, sağlama hizmeti 'nin desteklediği kanıtlama mekanizmalarıyla birlikte kullanılabilir.
+Donanım güvenlik modülü veya HSM, aygıt sırlarının güvenli, donanım tabanlı depolanması için kullanılır ve gizli depolamanın en güvenli biçimidir. Hem X.509 sertifikaları hem de SAS belirteçleri HSM'de depolanabilir. HSM'ler, sağlama hizmetinin desteklediği her iki attestation mekanizmasıyla da kullanılabilir.
 
 > [!TIP]
-> Cihazlarınızda gizli dizileri güvenli bir şekilde depolamak için cihazlarla bir HSM kullanmanız önemle önerilir.
+> Aygıtlarınızdaki sırları güvenli bir şekilde depolamak için cihazlarla birlikte bir HSM kullanmanızı şiddetle öneririz.
 
-Cihaz gizli dizileri de yazılımda (bellek) depolanabilir, ancak bir HSM 'den daha az güvenli bir depolama biçimidir.
+Aygıt sırları da yazılımda (bellekte) depolanabilir, ancak HSM'den daha az güvenli bir depolama biçimidir.
 
-## <a name="registration-id"></a>Kayıt KIMLIĞI
+## <a name="registration-id"></a>Kayıt Kimliği
 
-Kayıt KIMLIĞI, cihaz sağlama hizmetinde bir cihazı benzersiz şekilde tanımlamak için kullanılır. Cihaz KIMLIĞI, sağlama hizmeti [kimlik kapsamında](#id-scope)benzersiz olmalıdır. Her cihazın bir kayıt KIMLIĞI olmalıdır. Kayıt KIMLIĞI alfasayısal, büyük/küçük harfe duyarsız ve iki nokta, nokta, alt çizgi ve kısa çizgi gibi özel karakterler içerebilir.
+Kayıt kimliği, Aygıt Sağlama Hizmeti'ndeki bir aygıtı benzersiz olarak tanımlamak için kullanılır. Aygıt kimliği, sağlama hizmeti kimliği [kapsamında](#id-scope)benzersiz olmalıdır. Her aygıtın bir kayıt kimliği olmalıdır. Kayıt kimliği alfasayısal, büyük/küçük harf duyarsız ve kolon, nokta, alt çizgi ve tire gibi özel karakterler içerebilir.
 
-* TPM söz konusu olduğunda kayıt KIMLIĞI TPM tarafından sağlanır.
-* X. 509.440 tabanlı kanıtlama söz konusu olduğunda, kayıt KIMLIĞI sertifikanın konu adı olarak sağlanır.
+* TPM durumunda, kayıt kimliği TPM kendisi tarafından sağlanır.
+* X.509 tabanlı attestation durumunda, kayıt kimliği sertifikanın özne adı olarak verilir.
 
 ## <a name="device-id"></a>Cihaz Kimliği
 
-Cihaz KIMLIĞI, IoT Hub göründüğü şekliyle KIMLIĞIDIR. İstenen cihaz KIMLIĞI kayıt girişinde ayarlanabilir, ancak ayarlanması gerekli değildir. İstenen cihaz KIMLIĞI ayarı yalnızca bireysel kayıtlar 'da desteklenir. Kayıt listesinde istenen cihaz KIMLIĞI belirtilmemişse, cihaz kaydı sırasında cihaz KIMLIĞI olarak kayıt KIMLIĞI kullanılır. [IoT Hub cihaz kimlikleri](../iot-hub/iot-hub-devguide-identity-registry.md)hakkında daha fazla bilgi edinin.
+Aygıt kimliği, IoT Hub'da göründüğü gibi kimliktir. İstenilen aygıt kimliği kayıt girişinde ayarlanabilir, ancak ayarlanmayı gerektirmez. İstenilen aygıt kimliğinin ayarlanması yalnızca tek tek kayıtlarda desteklenir. Kayıt listesinde istenilen aygıt kimliği belirtilmemişse, kayıt kimliği aygıtı kaydederken aygıt kimliği olarak kullanılır. [IoT Hub'da aygıt tbm'leri](../iot-hub/iot-hub-devguide-identity-registry.md)hakkında daha fazla bilgi edinin.
 
-## <a name="id-scope"></a>KIMLIK kapsamı
+## <a name="id-scope"></a>Kimlik kapsamı
 
-KIMLIK kapsamı, Kullanıcı tarafından oluşturulduğunda bir cihaz sağlama hizmetine atanır ve cihazın kaydedileceği belirli sağlama hizmetini benzersiz şekilde tanımlamak için kullanılır. KIMLIK kapsamı, hizmet tarafından oluşturulur ve, benzersizliği garanti eden sabittir.
+Kimlik kapsamı, kullanıcı tarafından oluşturulduğunda bir Aygıt Sağlama Hizmetine atanır ve aygıtın kaydedeceği özel sağlama hizmetini benzersiz olarak tanımlamak için kullanılır. Kimlik kapsamı hizmet tarafından oluşturulur ve benzersizliği garanti eden değişmezdir.
 
 > [!NOTE]
-> Benzersizlik, uzun süre çalışan dağıtım işlemleri ve merme ve Alım senaryoları için önemlidir.
+> Benzersizlik, uzun süren dağıtım işlemleri ve birleşme ve satın alma senaryoları için önemlidir.

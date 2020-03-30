@@ -1,7 +1,7 @@
 ---
-title: Bir haritada trafiği göster | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir Haritada trafik verilerini görüntülemeyi öğreneceksiniz.
-author: jingjing-z
+title: Haritada trafiği göster | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar Web SDK'sını kullanarak trafik verilerinin haritaüzerinde nasıl görüntülenecek olduğunu öğreneceksiniz.
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
 ms.topic: conceptual
@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9bd5ae462013924a46a3da8400719e83abae3424
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208429"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534823"
 ---
 # <a name="show-traffic-on-the-map"></a>Haritada trafiği göster
 
-Azure haritalar 'da kullanılabilen iki tür trafik verisi vardır:
+Azure Haritalar'da kullanılabilen iki tür trafik verisi vardır:
 
-- Olay verileri-oluşturma, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur.
-- Akış verileri-yollar üzerindeki trafik akışı hakkında ölçümler sağlar. Genellikle trafik akışı verileri, yolların renklendirmek için kullanılır. Renkler, akışı yavaşlatan, hız sınırına veya başka bir ölçüye göre ne kadar trafik altına göre belirlenir. Azure haritalar 'daki trafik akışı verileri üç farklı ölçüm ölçümüne sahiptir:
-    - `relative`-yolun ücretsiz akış hızına bağlıdır.
-    - `absolute`-yolda tüm taşıtlardan oluşan mutlak hızdır.
-    - `relative-delay`-beklenen ortalama gecikmeden daha yavaş olan bölgeleri görüntüler.
+- Olay verileri - inşaat, yol kapatma ve kaza gibi şeyler için nokta ve çizgi tabanlı verilerden oluşur.
+- Akış verileri - yollarda trafik akışı ölçümleri sağlar. Genellikle, trafik akışı verileri yolları renklendirmek için kullanılır. Renkler, hız sınırına veya başka bir metretmeye göre trafiğin akışı ne kadar yavaşlattığına bağlıdır. Azure Haritalar'daki trafik akışı verilerinin üç farklı ölçüm ölçümü vardır:
+    - `relative`- yolun serbest akış hızına göredir.
+    - `absolute`- yoldaki tüm araçların mutlak hızıdır.
+    - `relative-delay`- beklenen ortalama gecikmeden daha yavaş alanları görüntüler.
 
-Aşağıdaki kod, Haritada trafik verilerinin nasıl görüntüleneceğini gösterir.
+Aşağıdaki kod, trafik verilerinin haritada nasıl görüntülenebildiğini gösterir.
 
 ```javascript
 //Show traffic on the map using the traffic options.
@@ -36,21 +36,21 @@ map.setTraffic({
 });
 ```
 
-Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Haritada trafiği gösterme' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kaleme Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>bir haritadaki trafiği gösterme</a> ( <a href='https://codepen.io'>codepen</a>).
+<iframe height='500' scrolling='no' title='Haritada trafiği göster' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Azure Haritalar ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>ile haritadaki Kalem <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Göster trafiğini</a> görün.
 </iframe>
 
-## <a name="traffic-overlay-options"></a>Trafik kaplama seçenekleri
+## <a name="traffic-overlay-options"></a>Trafik bindirme seçenekleri
 
-Aşağıdaki araç, işleme değişikliğini görmek için farklı trafik kaplama ayarları arasında geçiş yapmanızı sağlar. 
+Aşağıdaki araç, işlemenin nasıl değiştiğini görmek için farklı trafik bindirme ayarları arasında geçiş yapmanızı sağlar. 
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Trafik kaplama seçenekleri" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile ilgili kalem <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>trafiği kaplama seçeneklerine</a> bakın.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Trafik bindirme seçenekleri" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>Trafiği bindirme seçeneklerine</a> bakın .
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -61,7 +61,7 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 > [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)
+> [Trafik Seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)
 
 Kullanıcı deneyimlerinizi geliştirin:
 
@@ -69,7 +69,7 @@ Kullanıcı deneyimlerinizi geliştirin:
 > [Fare olayları ile harita etkileşimi](map-events.md)
 
 > [!div class="nextstepaction"]
-> [Erişilebilir eşleme oluşturma](map-accessibility.md)
+> [Erişilebilir bir harita oluşturma](map-accessibility.md)
 
 > [!div class="nextstepaction"]
 > [Kod örnek sayfası](https://aka.ms/AzureMapsSamples)

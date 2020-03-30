@@ -1,6 +1,6 @@
 ---
-title: Kullanım olay hub'ından Apache Kafka uygulama - Azure Event Hubs | Microsoft Docs
-description: Bu makalede, Azure Event Hubs ile Apache Kafka desteği hakkında bilgi sağlar.
+title: Apache Kafka uygulamasından etkinlik merkezini kullanma - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
+description: Bu makalede, Azure Etkinlik Hub'ları tarafından verilen Apache Kafka desteği hakkında bilgi verilmektedir.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -10,48 +10,48 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: fc81226e754178ad0edfff96a494dd7522662261
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6dcbf0ad0f6678d892c5c02446cac09b4325384c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79264901"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283659"
 ---
-# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka uygulamalarından Azure Event Hubs'ı kullanın
-Event Hubs, kullanılabilir bir Kafka uç noktası sağlar, varolan Kafka kendi Kafka kümesi çalıştıran alternatif olarak tabanlı uygulamalar. Event Hubs, [Apache Kafka protokol 1,0 ve üstünü](https://kafka.apache.org/documentation/)destekler ve mirrormaker da dahil olmak üzere var olan Kafka uygulamalarınızla birlikte kullanılabilir.  
+# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka uygulamalarından Azure Etkinlik Hub'larını kullanma
+Olay Hub'ları, mevcut Kafka tabanlı uygulamalarınız tarafından kendi Kafka kümenizi çalıştırmaya alternatif olarak kullanılabilecek bir Kafka uç noktası sağlar. Etkinlik Hub'ları [Apache Kafka protokolü 1.0 ve sonrası](https://kafka.apache.org/documentation/)protokolünü destekler ve MirrorMaker da dahil olmak üzere mevcut Kafka uygulamalarınız ile çalışır.  
 
-## <a name="what-does-event-hubs-for-kafka-provide"></a>Event Hubs, Kafka için neler sağlar?
+## <a name="what-does-event-hubs-for-kafka-provide"></a>Kafka için Etkinlik Hub'ları ne sağlar?
 
-Olay hub'ları Kafka özelliği için bir protokol head ile Kafka sürümleri 1.0 ve daha sonra hem okuma hem de Kafka konularını yazmak için ikili uyumlu olan Azure Event Hubs üzerinde sağlar. Kafka uç noktasından uygulamalarınızı kod değişikliği ancak en az bir yapılandırma değişikliği kullanarak başlayabilir. Kafka kümenize işaret eden yerine olay hub'ınız tarafından kullanıma sunulan Kafka uç noktasını işaret edecek şekilde yapılandırmaları bağlantı dizesinde güncelle Ardından, Event Hubs'a Kafka protokolünü kullanan uygulamalarınızı olaylardan akış başlatabilirsiniz. Bu tümleştirme, şu anda önizleme aşamasında olan [Kafka Connect](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect)gibi çerçeveleri de destekler. 
+Kafka için Etkinlik Hub'ları özelliği, Kafka sürümleri 1.0 ile ikili uyumlu olan Azure Etkinlik Hub'larının üstüne bir protokol kafası sağlar ve daha sonra Kafka konularından hem okuma hem de yazma için. Kod değişikliği değil, en az yapılandırma değişikliği olmadan uygulamalarınızdan Kafka bitiş noktasını kullanmaya başlayabilirsiniz. Konfigürasyonlarda bağlantı dizesini, Kafka kümenizi işaret etmek yerine olay hub'ınıztarafından açığa çıkarılan Kafka uç noktasına işaret etmek için güncellersiniz. Daha sonra, Kafka protokolünü kullanan uygulamalarınızdan Etkinlik Hub'larına olayları akışına başlayabilirsiniz. Bu tümleştirme aynı zamanda şu anda önizlemede olan [Kafka Connect](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect)gibi çerçeveleri de destekler. 
 
-Kavramsal Kafka ve Event Hubs neredeyse aynıdır: akış verileri için oluşturulan bölümlenmiş günlüklerdir. Aşağıdaki tablo, Event Hubs ile Kafka arasındaki kavramları eşler.
+Kavramsal olarak Kafka ve Olay Hub'ları hemen hemen aynıdır: her ikisi de veri akışı için oluşturulmuş bölümlü günlüklerdir. Aşağıdaki tablokafka ve Olay Hub'ları arasındaki kavramları eşler.
 
-### <a name="kafka-and-event-hub-conceptual-mapping"></a>Kafka ve olay hub'ı kavramsal eşleme
+### <a name="kafka-and-event-hub-conceptual-mapping"></a>Kafka ve Event Hub kavramsal haritalama
 
-| Kafka kavramı | Olay hub'ları kavramını|
+| Kafka Kavramı | Etkinlik Hub'ları Kavramı|
 | --- | --- |
-| Küme | Ad alanı |
+| Küme | Ad Alanı |
 | Konu başlığı | Olay Hub'ı |
 | Bölüm | Bölüm|
 | Tüketici Grubu | Tüketici Grubu |
 | Uzaklık | Uzaklık|
 
-### <a name="key-differences-between-kafka-and-event-hubs"></a>Event Hubs ile Kafka arasındaki temel farklılıklar
+### <a name="key-differences-between-kafka-and-event-hubs"></a>Kafka ve Etkinlik Merkezleri arasındaki temel farklar
 
-[Apache Kafka](https://kafka.apache.org/) , seçtiğiniz her yerde çalıştırabileceğiniz bir yazılımdır, Event Hubs Azure Blob depolama alanına benzer bir bulut hizmetidir. Sunucu yok veya yönetmek için ağ ve hiçbir aracıları yapılandırmak için vardır. İçinde konuları canlı bir FQDN olduğundan, bir ad alanı oluşturur ve ardından olay hub'ları veya bu ad alanı içindeki konuları oluşturun. Event Hubs ve ad alanları hakkında daha fazla bilgi için bkz. [Event Hubs özellikleri](event-hubs-features.md#namespace). Bulut hizmeti olarak Event Hubs, uç nokta olarak tek bir kararlı sanal IP adresi kullanır, bu nedenle istemcilerin bir küme içindeki aracılar veya makineler hakkında bilmeleri gerekmez. 
+[Apache Kafka](https://kafka.apache.org/) istediğiniz yerde çalıştırabileceğiniz bir yazılım olsa da, Etkinlik Hub'ları Azure Blob Depolama'ya benzer bir bulut hizmetidir. Yönetilen sunucu lar veya ağlar ve yapılandırış yapacak aracı lar yoktur. Konularınızın yaşadığı bir FQDN olan bir ad alanı oluşturursunuz ve ardından bu ad alanı içinde Olay Hub'ları veya konuları oluşturursunuz. Olay Hub'ları ve ad alanları hakkında daha fazla bilgi için [Olay Hub'ları özelliklerine](event-hubs-features.md#namespace)bakın. Bulut hizmeti olarak, Olay Hub'ları bitiş noktası olarak tek bir kararlı sanal IP adresi kullanır, bu nedenle istemcilerin küme içindeki aracılar veya makineler hakkında bilgi edinmesine gerek yoktur. 
 
-Event Hubs ölçek tarafından kaç tane işleme birimi, saniyede 1 MB ile entitling her bir üretilen iş birimi veya giriş saniyede 1000 olay ile satın aldığınız denetlenir. Varsayılan olarak, bir [Otomatik şişeden](event-hubs-auto-inflate.md) özelliği ile sınırınıza ulaştığınızda Event Hubs üretilen iş birimlerini ölçeklendirir; Bu özellik ayrıca Event Hubs for Kafka özelliği ile de kullanılabilir. 
+Olay Hub'larında ölçeklendirme, satın aldığınız kaç iş birimi yle, her bir üretim birimi sizi saniyede 1 MB'a veya saniyede 1000 olaya kadar kontrol eder. Varsayılan olarak, Otomatik [Şişirme](event-hubs-auto-inflate.md) özelliği ile limitinize ulaştığınızda Olay Hub'ları iş birimi birimlerini ölçekler; Bu özellik kafka için Etkinlik Hub'ları ile de çalışır. 
 
 ### <a name="security-and-authentication"></a>Güvenlik ve kimlik doğrulaması
-Kafka için bir Event Hubs olay yayımlamanızda veya kullandığınızda, istemciniz Event Hubs kaynaklarına erişmeye çalışıyor. Kaynaklara yetkili bir varlık kullanılarak erişildiğinden emin olmak istiyorsunuz. İstemcileriniz ile Apache Kafka Protokolü kullanırken, SASL mekanizmalarını kullanarak kimlik doğrulama ve şifreleme için yapılandırmanızı ayarlayabilirsiniz. Kafka için Event Hubs kullandığınızda TLS şifrelemesi gerekir (Event Hubs ile iletim içindeki tüm veriler TLS şifreli olarak). Yapılandırma dosyanızdaki SASL_SSL seçeneği belirtilerek yapılabilir. 
+Kafka için bir Etkinlik Hub'ından etkinlikleri her yayımladığınızda veya tükseniz, istemciniz Olay Hub'ları kaynaklarına erişmeye çalışır. Kaynaklara yetkili bir varlık kullanılarak erişildiğından emin olmak istiyorsunuz. Müşterilerinizle Apache Kafka protokolünü kullanırken, SASL mekanizmalarını kullanarak yapılandırmanızı kimlik doğrulama ve şifreleme için ayarlayabilirsiniz. Kafka için Event Hub'ları kullanırken TLS-şifreleme gerekir (Event Hub'ları ile aktarımdaki tüm veriler TLS şifreli olduğundan). Yapılandırma dosyanızdaki SASL_SSL seçeneğini belirterek yapılabilir. 
 
-Azure Event Hubs, güvenli kaynaklarınıza erişim yetkisi vermek için birden çok seçenek sağlar. 
+Azure Etkinlik Hub'ları, güvenli kaynaklarınıza erişimi yetkilendirmek için birden çok seçenek sunar. 
 
 - OAuth
 - Paylaşılan erişim imzası (SAS)
 
 #### <a name="oauth"></a>OAuth
-Event Hubs, **OAuth** 2,0 uyumlu merkezi bir yetkilendirme sunucusu sağlayan Azure Active Directory (Azure AD) ile tümleşir. Azure AD ile, istemci kimliklerinize ayrıntılı izinler vermek için rol tabanlı erişim denetimi 'ni (RBAC) kullanabilirsiniz. Bu özelliği, mekanizmaya yönelik protokol ve **Oauthtaşıyıcı** için **SASL_SSL** belirterek, Kafka istemcileriniz ile kullanabilirsiniz. Erişimi kapsama için RBAC rolleri ve düzeyleri hakkında daha fazla bilgi için bkz. [Azure AD ile erişim yetkisi verme](authorize-access-azure-active-directory.md).
+Olay Hub'ları, **OAuth** 2.0 uyumlu merkezi leştirilmiş yetkilendirme sunucusu sağlayan Azure Active Directory (Azure AD) ile tümleşir. Azure AD ile, istemci kimliklerinize ince taneli izinler vermek için rol tabanlı erişim denetimini (RBAC) kullanabilirsiniz. Bu özelliği, protokol için **SASL_SSL** belirterek Kafka istemcilerinizve mekanizma için **OAUTHBEARER'ı** kullanarak kullanabilirsiniz. RBAC rolleri ve erişim düzeyleri hakkında daha fazla bilgi için Azure [AD ile erişimi yetkilendirme'ye](authorize-access-azure-active-directory.md)bakın.
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -61,8 +61,8 @@ sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginMo
 sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 ```
 
-#### <a name="shared-access-signature-sas"></a>Paylaşılan erişim Imzası (SAS)
-Event Hubs Ayrıca, Kafka kaynakları için Event Hubs temsilci erişimi için **paylaşılan erişim imzaları (SAS)** sağlar. OAuth 2,0 belirteç tabanlı mekanizmayı kullanarak erişimi yetkilendirmek, SAS üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Yerleşik roller Ayrıca, Kullanıcı tarafından saklanması ve yönetilmesi gereken ACL tabanlı yetkilendirme gereksinimini ortadan kaldırabilir. Bu özelliği protokol için **SASL_SSL** ve mekanizma için **düz** olarak belirterek Kafka istemcileriniz ile kullanabilirsiniz. 
+#### <a name="shared-access-signature-sas"></a>Paylaşılan Erişim İmzası (SAS)
+Olay Hub'ları, Kafka kaynakları için Etkinlik Hub'larına temsilci erişimi için **Paylaşılan Erişim İmzaları (SAS)** de sağlar. OAuth 2.0 belirteç tabanlı mekanizma yı kullanarak erişim yetkisi, SAS'a göre üstün güvenlik ve kullanım kolaylığı sağlar. Yerleşik roller, kullanıcı tarafından sürdürülmesi ve yönetilmesi gereken ACL tabanlı yetkilendirme gereksinimini de ortadan kaldırabilir. Bu özelliği, protokol için **SASL_SSL** belirterek Kafka istemcilerinizile ve mekanizma için **DÜZ** olarak kullanabilirsiniz. 
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -72,38 +72,38 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ```
 
 #### <a name="samples"></a>Örnekler 
-Kafka etkin bir olay hub 'ı oluşturmak ve SAS veya OAuth kullanarak buna erişmek için adım adım yönergeler içeren bir **öğretici** için bkz. [hızlı başlangıç: Kafka protokolünü kullanarak Event Hubs veri akışı](event-hubs-quickstart-kafka-enabled-event-hubs.md).
+Bir etkinlik hub'ı oluşturmak ve SAS veya OAuth kullanarak erişmek için adım adım yönergeleri içeren bir **öğretici** [için, Kafka protokolünü kullanarak Olay Hub'larıyla veri akışı na](event-hubs-quickstart-kafka-enabled-event-hubs.md)bakın.
 
-Kafka için Event Hubs ile OAuth 'ın nasıl kullanılacağını gösteren daha fazla **örnek** için bkz. [GitHub 'da örnekler](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
+Kafka için Olay Hub'ları ile OAuth'un nasıl kullanılacağını gösteren daha fazla **örnek** için [GitHub'daki örneklere](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)bakın.
 
-## <a name="other-event-hubs-features-available-for-kafka"></a>Kafka için diğer Event Hubs özellikleri
+## <a name="other-event-hubs-features-available-for-kafka"></a>Kafka için diğer Etkinlik Hub'ları özellikleri
 
-Kafka özelliği için Event Hubs ile bir protokol okunup yazılacağını başka ile geçerli Kafka üreticiler, Kafka aracılığıyla yayımlama devam edebilirsiniz ve Event Hubs, Azure Stream Analytics veya Azure işlevleri gibi okuyucularıyla ekleyebilirsiniz. böylece sağlar. Ayrıca, [yakalama](event-hubs-capture-overview.md) ve [coğrafi olağanüstü durum kurtarma](event-hubs-geo-dr.md) gibi Event Hubs özellikler, ayrıca, Kafka için Event Hubs özelliği ile de çalışır.
+Kafka için Etkinlik Hub'ları özelliği, mevcut Kafka yapımcılarınızın Kafka üzerinden yayımyayınlamaya devam edebilmeleri ve Azure Akış Analizi veya Azure Fonksiyonları gibi Etkinlik Hub'ları ile okuyucular ekleyebilmeniz için bir protokolle yazmanızı ve başka bir protokolle okumanızı sağlar. Ayrıca, [Capture](event-hubs-capture-overview.md) ve [Geo Disaster-Recovery](event-hubs-geo-dr.md) gibi Event Hub'ları özellikleri Kafka özelliği için Etkinlik Hub'ları ile de çalışır.
 
 ## <a name="features-that-are-not-yet-supported"></a>Henüz desteklenmeyen özellikler 
 
-Henüz desteklenmeyen Kafka özelliklerin listesi aşağıda verilmiştir:
+İşte henüz desteklenmeyen Kafka özelliklerinin listesi:
 
-*   Idempotent üretici
+*   İktidarlı yapımcı
 *   İşlem
 *   Sıkıştırma
-*   Boyutu bağlı bekletme
+*   Boyut tabanlı bekletme
 *   Günlük sıkıştırma
-*   Varolan bir konuya bölümleri ekleme
-*   HTTP Kafka API'si desteği
-*   Kafka akışlar
+*   Varolan bir konuya bölüm ekleme
+*   HTTP Kafka API desteği
+*   Kafka Akarsuları
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Kafka için Event hubs'a giriş sağlandı. Daha fazla bilgi için aşağıdaki bağlantılara bakın:
+Bu makale, Kafka için Etkinlik Hub'larına giriş sağlamıştır. Daha fazla bilgi için aşağıdaki bağlantılara bakın:
 
-- [Kafka özellikli Event Hubs oluşturma](event-hubs-create-kafka-enabled.md)
+- [Olay hub'ı oluşturma](event-hubs-create.md)
 - [Kafka uygulamalarınızdan Event Hubs'a akış yapma](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka özellikli bir olay hub'ında Kafka aracısını yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Apache Spark'ı Kafka özellikli bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)
-- [Apache Flink'i Kafka özellikli bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
-- [Kafka Connect'i Kafka özellikli olay hub'ıyla tümleştirme](event-hubs-kafka-connect-tutorial.md)
-- [Akka Streams’i Kafka özellikli olay hub'ına bağlama](event-hubs-kafka-akka-streams-tutorial.md)
+- [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)
+- [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
+- [Kafka Connect'i bir etkinlik merkeziyle bütünleştirin](event-hubs-kafka-connect-tutorial.md)
+- [Akka Akışlarını bir etkinlik merkezine bağlayın](event-hubs-kafka-akka-streams-tutorial.md)
 - [GitHub'ımızdaki örnekleri inceleme](https://github.com/Azure/azure-event-hubs-for-kafka)
 
 

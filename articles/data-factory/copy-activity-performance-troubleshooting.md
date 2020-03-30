@@ -1,6 +1,6 @@
 ---
-title: Kopyalama etkinliği performansını sorun giderme
-description: Azure Data Factory 'da etkinlik performansını kopyalama sorunlarını giderme hakkında bilgi edinin.
+title: Sorun giderme kopyalama etkinliği performansı
+description: Azure Veri Fabrikası'nda kopyalama etkinliği performansını nasıl giderebilirsiniz hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -12,181 +12,181 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: dd0343fc2e25a50f9aa9a9fdc3ef5ebb9615bc56
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125777"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531461"
 ---
-# <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
+# <a name="troubleshoot-copy-activity-performance"></a>Sorun giderme kopyalama etkinliği performansı
 
-Bu makalede Azure Data Factory ' de kopyalama etkinliği performans sorununu giderme konusu özetlenmektedir. 
+Bu makalede, Azure Veri Fabrikası'nda kopya etkinliği performansı sorunu nasıl giderilir özetlenir. 
 
-Bir kopyalama etkinliği çalıştırdıktan sonra, [kopyalama etkinliği izleme](copy-activity-monitoring.md) görünümünde sonuçları ve performans istatistiklerini toplayabilirsiniz. Aşağıda bir örnek verilmiştir.
+Bir kopyalama etkinliği çalıştırdıktan sonra, [kopyalama etkinliği izleme](copy-activity-monitoring.md) görünümünde çalıştırma sonucu ve performans istatistiklerini toplayabilirsiniz. Bir örnek verilmiştir.
 
-![Kopyalama etkinliği çalıştırma ayrıntılarını izle](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+![Kopyalama etkinliği çalıştırma ayrıntılarını izleme](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
 
 ## <a name="performance-tuning-tips"></a>Performans ayarı ipuçları
 
-Bazı senaryolarda, Data Factory bir kopyalama etkinliği çalıştırdığınızda Yukarıdaki örnekte gösterildiği gibi en üst kısımdaki **"performans ayarlama ipuçları"** nı görürsünüz. İpuçları, bu belirli bir kopya çalıştırması için ADF tarafından tanımlanan darboğazyı, kopyalama aktarım hızını nasıl arttıracaklarını gösteren önerilerden daha fazla bilgi sağlar. Yeniden konumlandırılan değişikliği yapmayı deneyin, sonra kopyayı yeniden çalıştırın.
+Bazı senaryolarda, Veri Fabrikası'nda bir kopyalama etkinliği çalıştırdığınızda, yukarıdaki örnekte gösterildiği gibi üstte **"Performans alamı ipuçları"** görürsünüz. İpuçları, bu belirli kopya çalışması için ADF tarafından tanımlanan darboğaz ve kopyalama iş masını artırma konusunda önerilerde bulunmak. Yeniden komut edilen değişikliği yapmayı deneyin ve kopyayı yeniden çalıştırın.
 
-Bir başvuru olarak şu anda performans ayarlama ipuçları aşağıdaki durumlar için öneriler sağlar:
+Başvuru olarak, şu anda performans tuning ipuçları aşağıdaki durumlar için öneriler sağlar:
 
 | Kategori              | Performans ayarı ipuçları                                      |
 | --------------------- | ------------------------------------------------------------ |
-| Veri deposuna özgü   | **Azure Synpao Analytics 'e veri yükleme (eski ADıYLA SQL DW)** : kullanılmıyorsa PolyBase veya Copy deyimlerini kullanmayı önerin. |
-| &nbsp;                | Verileri **Azure SQL veritabanı**'ndan kopyalama: DTU yüksek kullanım altındaysa, daha yüksek katmana yükseltmeyi önerin. |
-| &nbsp;                | Veri kopyalama/hedef **Azure Cosmos DB**: ru yüksek kullanım altındayken, daha büyük ru 'ya yükseltmeyi önerin. |
-| &nbsp;                | **Amazon Redshift**'tan veri almak: KULLANıLMıYORSA, kaldırma kullanmayı önerin. |
-| Veri depolama alanı azaltma | Kopyalama sırasında veri deposu tarafından bir dizi okuma/yazma işlemi kısıtlanıyor ise, veri deposu için izin verilen istek hızını denetlemeyi ve artırmayı önerin ya da eşzamanlı iş yükünü azaltın. |
-| Tümleştirme çalışma zamanı  | Şirket içinde barındırılan bir **Integration Runtime (IR)** kullanıyorsanız ve kopyalama ETKINLIĞI, IR 'nin yürütülmesi için kullanılabilir kaynağa sahip olana kadar kuyrukta uzun süre bekliyorsa, IR 'nin ölçeğini genişletme/büyütme önerin. |
-| &nbsp;                | En uygun olmayan bir bölgede bulunan bir **Azure Integration Runtime** kullanırsanız, yavaş okuma/yazma ile sonuçlanır, başka bir bölgede bir IR kullanmak için yapılandırmayı önerin. |
-| Hataya dayanıklılık       | Hata toleransını yapılandırır ve uyumsuz satırları atlayarak performansı düşürür, kaynak ve havuz verilerinin uyumlu olmasını önerin. |
-| Hazırlanmış kopya           | Hazırlanan kopya yapılandırıldıysa ancak kaynak havuzu çiftinde yararlı değilse, kaldırmayı önerin. |
-| Sürdür                | Kopyalama etkinliği son hata noktasından devam ettirildiğinde, ancak özgün çalıştırmasından sonra DIU ayarını değiştirmeniz durumunda, yeni DIU ayarının etkili olmadığına göz atın. |
+| Veri deposuna özgü   | **Azure Synpase Analytics'e (eski adıyla SQL DW)** veri yükleme : kullanılmadığı takdirde PolyBase veya COPY deyimini kullanmanızı öneririz. |
+| &nbsp;                | Verilerin Azure SQL **Veritabanı'ndan**kopyalanması : DTU yüksek kullanım altındayken, daha yüksek katmana yükseltmeyi önerir. |
+| &nbsp;                | Verileri **Azure Cosmos DB'den**kopyalama : RU yüksek kullanım altındayken, daha büyük RU'ya yükseltmeyi önerir. |
+| &nbsp;                | **Amazon Redshift'ten**veri alma : kullanılmadığı takdirde UNLOAD kullanmanızı öneririz. |
+| Veri deposu azaltma | Kopyalama sırasında veri deposu tarafından bir dizi okuma/yazma işlemi kısıtlanırsa, veri deposu için izin verilen istek oranını denetlemeyi ve artırmayı veya eşzamanlı iş yükünü azaltmayı önerin. |
+| Tümleştirme çalışma zamanı  | Kendi kendine **barındırılan Tümleştirme Çalışma Süresi (IR)** kullanıyorsanız ve kopyalama etkinliği, IR'nin yürütülecek kullanılabilir kaynağı olana kadar kuyrukta uzun süre bekliyorsa, IR'nizi ölçekleme/yükseltmeyi öneririz. |
+| &nbsp;                | Yavaş okuma/yazma yla sonuçlanan en uygun olmayan bölgede olmayan bir **Azure Tümleştirme Çalışma Zamanı** kullanıyorsanız, başka bir bölgede IR kullanmak üzere yapılandırmanızı öneririz. |
+| Hataya dayanıklılık       | Hata toleransı yapılandırın ve uyumsuz satırları atlayarak yavaş performans sağlarsanız, kaynak ve lavabo verilerinin uyumlu olmasını öneririz. |
+| Aşamalı kopya           | Aşamalı kopya yapılandırıldıysa ancak kaynak lavabo çiftiniz için yararlı değilse, kopyayı kaldırmanızı öneririz. |
+| Sürdür                | Kopyalama etkinliği son hata noktasından itibaren devam ettirildiğinde ancak özgün çalıştırmadan sonra DIU ayarını değiştirdiğinizde, yeni DIU ayarının etkili olmadığını unutmayın. |
 
 ## <a name="understand-copy-activity-execution-details"></a>Kopyalama etkinliği yürütme ayrıntılarını anlama
 
-Kopyalama etkinliği izleme görünümünün en altındaki yürütme ayrıntıları ve süreleri, kopyalama etkinliğinizin (Bu makalenin başındaki örnek), özellikle de kopyalama performansının giderilmesi için yararlı olan anahtar aşamalarını açıklar. Kopya çalışmalarınızın performans sorunu en uzun süreye sahip bir süredir. Her bir aşamanın tanımında aşağıdaki tabloya başvurun ve [Azure IR kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-azure-ir) ve bu tür bilgiyle şirket IÇINDE [barındırılan IR 'de kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-self-hosted-ir) öğrenin.
+Kopyalama etkinliği izleme görünümünün altındaki yürütme ayrıntıları ve süreleri, kopyalama etkinliğinizin geçtiği temel aşamaları açıklar (bu makalenin başındaki örneğe bakın), bu da özellikle kopya performansını gidermede yararlıdır. Kopya çalıştırmanızın darboğazı en uzun süreye sahip olandır. Her aşamanın tanımındaki aşağıdaki tabloya bakın ve [Azure IR'deki kopyalama etkinliğini](#troubleshoot-copy-activity-on-azure-ir) nasıl gidereceklerini öğrenin ve bu tür bilgilerle Kendi [barındırılan IR'de Sorun Giderme kopyalama etkinliği](#troubleshoot-copy-activity-on-self-hosted-ir) öğrenin.
 
 | Aşama           | Açıklama                                                  |
 | --------------- | ------------------------------------------------------------ |
-| Kuyruk           | Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde çalışmaya başlanana kadar geçen süre. |
-| Kopyalama öncesi betiği | IR ve kopyalama etkinliğinden itibaren kopyalama etkinliği arasındaki geçen süre, havuz veri deposunda kopyalama öncesi betiği yürütmeyi tamamlıyor. Veritabanı havuzları için kopyalama öncesi betiği yapılandırdığınızda, örneğin Azure SQL veritabanı 'na veri yazarken yeni verileri kopyalamaya başlamadan önce bu uygulamayı temizleyebilirsiniz. |
-| Aktarımı        | Önceki adımın sonu ile IR 'nin tüm verileri kaynaktan havuza aktarma arasındaki geçen süre. "Aktarım" altındaki alt adımlar paralel olarak çalışır.<br><br>**ilk bayta - süre:** önceki adımın sonu ile IR 'nin kaynak veri deposundan ilk baytı aldığı zaman arasında geçen süre. Dosya tabanlı olmayan kaynaklar için geçerlidir.<br>**liste kaynağı - :** kaynak dosyalarını veya veri bölümlerini listelemek için harcanan sürenin miktarı. İkincisi, veritabanı kaynakları için bölüm seçeneklerini yapılandırdığınızda, ör. Oracle/SAP HANA/Teradata/Netezza/vb gibi veritabanlarından veri kopyalama yaparken geçerlidir.<br/>**kaynaktan okuma -:** kaynak veri deposundan verileri almak için harcanan sürenin miktarı.<br/>**havuza yazma - :** havuz veri deposuna veri yazmak için harcanan sürenin miktarı. |
+| Kuyruk           | Kopyalama etkinliği gerçekten tümleştirme çalışma zamanında başlayana kadar geçen süre. |
+| Komut dosyasının ön kopyası | IR'de başlayan kopyalama etkinliği ile lavabo veri deposunda ön kopyalama komut dosyasının yürütülmesini tamamlama kopyalama etkinliği arasında geçen süre. Veritabanı lavaboları için ön kopyalama komut dosyasını yapılandırırken uygulayın ( örneğin Azure SQL Veritabanı'na veri yazarken yeni verileri kopyalamadan önce temizleyin. |
+| Aktarma        | Önceki adımın sonu ile KAYNAKtan batmaya tüm verileri aktaran IR arasındaki geçen süre. "Aktarım" altındaki alt adımlar paralel olarak çalışır.<br><br>- **Zaman ilk bayt için:** Önceki adımın sonu ile IR'nin kaynak veri deposundan ilk baytı aldığı saat arasında geçen süre. Dosya tabanlı olmayan kaynaklar için geçerlidir.<br>- **Listeleme kaynağı:** Kaynak dosyaları veya veri bölümlerini derecelendirmek için harcanan süre. İkincisi, veritabanı kaynakları için bölüm seçeneklerini yapılandırdığınızda geçerlidir, örneğin Oracle/SAP HANA/Teradata/Netezza/vb. veritabanlarından kopya verileri kopyalarken.<br/>-**Kaynaktan okuma:** Kaynak veri deposundan veri almak için harcanan süre.<br/>- **Lavaboya yazma:** Veri deposunu batırmak için veri yazmak için harcanan süre. |
 
-## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Azure IR kopyalama etkinliğinin sorunlarını giderme
+## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Azure IR'de sorun giderme kopyalama etkinliği
 
-Senaryolarınız için performans testi planlamak ve yürütmek için [performans ayarlama adımlarını](copy-activity-performance.md#performance-tuning-steps) izleyin. 
+Senaryonuz için performans testini planlamak ve gerçekleştirmek için [Performans tuning adımlarını](copy-activity-performance.md#performance-tuning-steps) izleyin. 
 
-Kopyalama etkinliği performansı beklentilerinizi karşılamıyorsa, Azure Integration Runtime üzerinde çalışan tek kopyalama etkinliğinin sorunlarını gidermek için, kopyalama izleme görünümünde gösterilen [performans ayarlama ipuçları](#performance-tuning-tips) ' nı görürseniz, öneriyi uygulayın ve yeniden deneyin. Aksi takdirde, [kopyalama etkinliği yürütme ayrıntılarını anlayın](#understand-copy-activity-execution-details), **en uzun** süreye sahip olan aşamayı denetleyin ve kopyalama performansını artırmak için aşağıdaki kılavuzu uygulayın:
+Kopyalama etkinliği performansı beklentinizi karşılamazsa, Azure Tümleştirme Çalıştırzamanında çalışan tek kopya etkinliğini gidermek için, kopya izleme görünümünde gösterilen [performans ayar ipuçlarını](#performance-tuning-tips) görürseniz, öneriyi uygulayın ve yeniden deneyin. Aksi takdirde, [kopyalama etkinliği yürütme ayrıntılarını anlayın,](#understand-copy-activity-execution-details)hangi aşamanın en **uzun** süreye sahip olduğunu kontrol edin ve kopyalama performansını artırmak için aşağıdaki kılavuzu uygulayın:
 
-- **"Kopyalama öncesi betiği" uzun süre yaşadı:** havuz veritabanında çalışan kopyalama öncesi betiğin tamamlanmasının uzun sürmesi anlamına gelir. Performansı geliştirmek için belirtilen kopyalama öncesi betik mantığını ayarlayın. Betiği geliştirmeye yönelik daha fazla yardıma ihtiyacınız varsa veritabanı ekibinize başvurun.
+- **"Ön kopyalama komut dosyası" uzun süre deneyimli:** bu lavabo veritabanında çalışan ön kopyalama komut dosyası bitirmek için uzun sürer anlamına gelir. Performansı artırmak için belirtilen ön kopya komut dosyası mantığını ayarlayın. Komut dosyasını geliştirmek için daha fazla yardıma ihtiyacınız varsa, veritabanı ekibinize başvurun.
 
-- **"Aktarım-ilk bayta kalan süre" uzun çalışma süresi yaşadı**: kaynak sorgunuzun herhangi bir veri döndürmesi uzun sürme anlamına gelir. Sorguyu veya sunucuyu denetleyin ve iyileştirin. Daha fazla yardıma ihtiyacınız varsa veri Mağazası ekibinize başvurun.
+- **"Aktarım - İlk bayt**için zaman" deneyimli uzun çalışma süresi : bu kaynak sorguherhangi bir veri döndürmek için uzun sürer anlamına gelir. Sorguyu veya sunucuyu denetleyin ve optimize edin. Daha fazla yardıma ihtiyacınız varsa, veri depolama ekibinize başvurun.
 
-- **"Aktarım listeleme kaynağı" uzun çalışma süresi yaşadı**: kaynak dosyalarının listelenmesi veya kaynak veritabanının veri bölümlerinin yavaş olması anlamına gelir.
+- **"Transfer - Listeleme kaynak" deneyimli uzun çalışma süresi**: bu kaynak dosyaları veya kaynak veritabanı veri bölümleri nin sayısalya yavaş anlamına gelir.
 
-  - Dosya tabanlı kaynaktan veri kopyalarken, klasör yolu veya dosya adı (`wildcardFolderPath` ya da `wildcardFileName`) üzerinde **joker karakter filtresi** kullanırsanız veya **dosya son değiştirilme zamanı filtresi** (`modifiedDatetimeStart` veya`modifiedDatetimeEnd`) kullanırsanız, bu filtre kopyalama etkinliğinin belirtilen klasörün altındaki tüm dosyaları istemci tarafına listelemesine neden olur ve sonra filtreyi uygular. Bu tür dosya numaralandırması, özellikle de yalnızca küçük bir dosya kümesi filtre kuralını karşıladığında performans sorunlarına neden olabilir.
+  - Dosya tabanlı kaynaktan veri kopyalarken, **wildcard filter** klasör yolunda veya dosya adı`wildcardFolderPath` (veya), `wildcardFileName`üzerinde joker karakter filtresi`modifiedDatetimeEnd`kullanıyorsanız veya **dosyayı son değiştirilen zaman filtresini** kullanıyorsanız (veya),`modifiedDatetimeStart` bu filtrenin belirtilen klasörün altındaki tüm dosyaları istemci tarafına listeleyerek kopyalama etkinliğine neden olacağını unutmayın ve ardından filtreyi uygulayın. Bu tür dosya numaralandırması, özellikle yalnızca küçük dosya kümesi filtre kuralıyla karşılaştığında darboğaza dönüşebilir.
 
-    - [Dosyaları, tarih saat bölümlenmiş dosya yoluna veya adına göre kopyalayıp kopyalayamayacağını](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)denetleyin. Bu şekilde, kaynak tarafında liste üzerinde yük getirmez.
+    - [Tarih bölümlenmiş dosya yoluna veya adına göre dosyaları kopyalayıp](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)kopyalayamayacağınızı denetleyin. Bu şekilde kaynak tarafında listeleme yük getirmez.
 
-    - Bunun yerine, Amazon S3 ve Azure Blob için özel olarak "**önek**" olmak üzere veri deposunun yerel filtresini kullanıp kullanınızın olup olmadığını kontrol edin. Ön ek filtresi, veri deposu sunucu tarafı filtretir ve çok daha iyi performansa sahip olur.
+    - Bunun yerine veri deposunun yerel filtresini, Özellikle Amazon S3 ve Azure Blob için **"önek**" kullanıp kullanamayacağınızı kontrol edin. Önek filtresi bir veri deposu sunucusu tarafı filtresidir ve çok daha iyi performansa sahip olur.
 
-    - Tek büyük veri kümesini birkaç küçük veri kümesine bölmek ve bu kopyalama işlerinin verilerin her bir tackles bölümünü aynı anda çalıştırmasına izin vermek için göz önünde bulundurun. Bunu arama/GetMetadata + ForEach + Copy ile yapabilirsiniz. [Birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md) veya [Amazon S3 'ten verileri](solution-template-migration-s3-azure.md) genel örnek olarak ADLS 2. çözüm şablonlarına geçirme bölümüne bakın.
+    - Tek büyük veri kümesini birkaç küçük veri kümesine bölmeyi ve bu kopyalama işlerinin eş zamanlı olarak çalışmasına izin vermeyi düşünün. Bunu Lookup/GetMetadata + ForEach + Copy ile yapabilirsiniz. Dosyaları [birden çok kapsayıcıdan kopyalayın](solution-template-copy-files-multiple-containers.md) veya [verileri Amazon S3'ten ADLS Gen2](solution-template-migration-s3-azure.md) çözüm şablonlarına genel örnek olarak geçirin.
 
-  - ADF 'nin kaynakta azaltma hatası olduğunu veya veri deponuzda yüksek kullanım durumunda olup olmadığını denetleyin. Bu durumda, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinizle iletişim kurmayı deneyin.
+  - ADF'nin kaynakta herhangi bir azaltma hatası raporedip bildirmeyin veya veri deponuzun yüksek kullanım durumu altında olup olmadığını kontrol edin. Bu nedenle, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinize başvurmayı deneyin.
 
-  - Azure IR, kaynak veri deposu bölgenize aynı veya yakın bir şekilde kullanın.
+  - Azure IR'yi kaynak veri deposu bölgenizin aynısında veya yakınında kullanın.
 
-- **"Kaynaktan okuma aktarım" uzun çalışma süresi yaşadı**: 
+- **"Transfer - kaynaktan okuma" deneyimli uzun çalışma süresi:** 
 
-  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örneğin, [Amazon Redshift](connector-amazon-redshift.md)'tan veri kopyalarken, Redshift Unload kullanacak şekilde yapılandırın.
+  - Varsa bağlayıcıya özel veri yükleme en iyi uygulama benimseyin. Örneğin, [Amazon Redshift'ten](connector-amazon-redshift.md)veri kopyalarken Redshift UNLOAD'ı kullanacak şekilde yapılandırın.
 
-  - ADF 'nin kaynakta herhangi bir azaltma hatası olup olmadığını ve veri deponuzda yüksek kullanım altında olup olmadığını denetleyin. Bu durumda, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinizle iletişim kurmayı deneyin.
+  - ADF'nin kaynakta herhangi bir azaltma hatası raporedip bildirmeyin veya veri deponuzun yüksek kullanım altında olup olmadığını kontrol edin. Bu nedenle, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinize başvurmayı deneyin.
 
-  - Kopyalama kaynak ve havuz örüntüsünün olup olmadığını denetleyin: 
+  - Kopya kaynağınızı ve lavabo deseninizi kontrol edin: 
 
-    - Kopyalama düzeniniz 4 ' ten fazla veri tümleştirme birimini (DIUs) destekliyorsa, Ayrıntılar [bölümünde bu bölüme](copy-activity-performance.md#data-integration-units) bakın, genellikle daha iyi performans almak için daha fazla performans sağlayabilirsiniz. 
+    - Kopyalama deseniniz 4 Veri Tümleştirme Birimi'nden (DIUS) daha büyük görünüyorsa - ayrıntılarla [ilgili bu bölüme](copy-activity-performance.md#data-integration-units) bakın, genellikle daha iyi performans elde etmek için DIUs'ları artırmayı deneyebilirsiniz. 
 
-    - Aksi takdirde, tek büyük veri kümesini birkaç küçük veri kümesine bölmeyi düşünün ve bu kopyalama işlerinin verilerin her bir tackles bölümünü aynı anda çalıştırmasına izin verin. Bunu arama/GetMetadata + ForEach + Copy ile yapabilirsiniz. Bkz. [birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md), [Amazon S3 ' dan ADLS 2.](solution-template-migration-s3-azure.md)veya [toplu kopyalama ile genel örnek olarak bir denetim tablosu](solution-template-bulk-copy-with-control-table.md) çözüm şablonlarıyla veri geçirme.
+    - Aksi takdirde, tek büyük veri kümesini birkaç küçük veri kümesine bölmeyi düşünün ve bu kopyalama işlerinin eş zamanlı olarak çalışmasına izin verin, her biri verilerin bir kısmını ele alır. Bunu Lookup/GetMetadata + ForEach + Copy ile yapabilirsiniz. Birden [çok kapsayıcıdan dosyaları kopyalamaya](solution-template-copy-files-multiple-containers.md)bakın, [verileri Amazon S3'ten ADLS Gen2'ye geçirin](solution-template-migration-s3-azure.md)veya genel örnek olarak bir denetim tablosu çözümü şablonları [içeren toplu kopya.](solution-template-bulk-copy-with-control-table.md)
 
-  - Azure IR, kaynak veri deposu bölgenize aynı veya yakın bir şekilde kullanın.
+  - Azure IR'yi kaynak veri deposu bölgenizin aynısında veya yakınında kullanın.
 
-- **"Havuza aktarım yazma" uzun çalışma süresi yaşadı**:
+- **"Transfer - lavaboya yazma" deneyimli uzun çalışma süresi:**
 
-  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örneğin, verileri [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md) 'e (eskı ADıYLA SQL DW) kopyalarken PolyBase veya Copy deyimlerini kullanın. 
+  - Varsa bağlayıcıya özel veri yükleme en iyi uygulama benimseyin. Örneğin, verileri [Azure Synapse Analytics'e](connector-azure-sql-data-warehouse.md) (eski adıyla SQL DW) kopyalarken, PolyBase veya COPY deyimini kullanın. 
 
-  - ADF 'nin havuzda herhangi bir azaltma hatası olduğunu veya veri deponuzda yüksek kullanım altında olup olmadığını denetleyin. Bu durumda, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinizle iletişim kurmayı deneyin.
+  - ADF'nin lavaboda herhangi bir azaltma hatası rapor edip etmeyin veya veri deponuzun yüksek kullanım altında olup olmadığını kontrol edin. Bu nedenle, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinize başvurmayı deneyin.
 
-  - Kopyalama kaynak ve havuz örüntüsünün olup olmadığını denetleyin: 
+  - Kopya kaynağınızı ve lavabo deseninizi kontrol edin: 
 
-    - Kopyalama düzeniniz 4 ' ten fazla veri tümleştirme birimini (DIUs) destekliyorsa, Ayrıntılar [bölümünde bu bölüme](copy-activity-performance.md#data-integration-units) bakın, genellikle daha iyi performans almak için daha fazla performans sağlayabilirsiniz. 
+    - Kopyalama deseniniz 4 Veri Tümleştirme Birimi'nden (DIUS) daha büyük görünüyorsa - ayrıntılarla [ilgili bu bölüme](copy-activity-performance.md#data-integration-units) bakın, genellikle daha iyi performans elde etmek için DIUs'ları artırmayı deneyebilirsiniz. 
 
-    - Aksi takdirde, [paralel kopyaları](copy-activity-performance-features.md)kademeli olarak ayarlayabilir, çok fazla sayıda paralel kopya bile performansa zarar verebilir.
+    - Aksi takdirde, yavaş yavaş [paralel kopyaları](copy-activity-performance-features.md)ayarlayın , çok fazla paralel kopyabile performans zarar verebilir unutmayın.
 
-  - Azure IR, havuz veri deposu bölgenize aynı veya yakın bir şekilde kullanın.
+  - Azure IR'yi lavabo veri deposu bölgenizin aynısında veya yakınında kullanın.
 
-## <a name="troubleshoot-copy-activity-on-self-hosted-ir"></a>Şirket içinde barındırılan IR 'de kopyalama etkinliğinin sorunlarını giderme
+## <a name="troubleshoot-copy-activity-on-self-hosted-ir"></a>Kendi barındırılan IR'de sorun giderme kopyalama etkinliği
 
-Senaryolarınız için performans testi planlamak ve yürütmek için [performans ayarlama adımlarını](copy-activity-performance.md#performance-tuning-steps) izleyin. 
+Senaryonuz için performans testini planlamak ve gerçekleştirmek için [Performans tuning adımlarını](copy-activity-performance.md#performance-tuning-steps) izleyin. 
 
-Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Runtime üzerinde çalışan tek kopyalama etkinliğinin sorunlarını gidermek için, kopyalama izleme görünümünde gösterilen [performans ayarlama ipuçları](#performance-tuning-tips) ' nı görürseniz, öneriyi uygulayın ve yeniden deneyin. Aksi takdirde, [kopyalama etkinliği yürütme ayrıntılarını anlayın](#understand-copy-activity-execution-details), **en uzun** süreye sahip olan aşamayı denetleyin ve kopyalama performansını artırmak için aşağıdaki kılavuzu uygulayın:
+Kopyalama performansı beklentinizi karşılamadığında, Azure Tümleştirme Çalıştır zamanında çalışan tek kopya etkinliğini gidermek için, kopya izleme görünümünde gösterilen [performans ayar ipuçlarını](#performance-tuning-tips) görürseniz, öneriyi uygulayın ve yeniden deneyin. Aksi takdirde, [kopyalama etkinliği yürütme ayrıntılarını anlayın,](#understand-copy-activity-execution-details)hangi aşamanın en **uzun** süreye sahip olduğunu kontrol edin ve kopyalama performansını artırmak için aşağıdaki kılavuzu uygulayın:
 
-- **"Kuyruk" uzun süre yaşadı:** bu, şirket IÇINDE barındırılan IR 'nin yürütülmesi için kaynağa sahip olana kadar kopyalama etkinliğinin sırada beklediği anlamına gelir. IR kapasitesini ve kullanımını denetleyin ve iş yükünüze göre [ölçeği artırma veya genişletme](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
+- **"Kuyruk" uzun süreli deneyimli:** kopyalama etkinliği, Kendi barındırılan IR'niz yürütülecek kaynağa sahip olana kadar kuyrukta uzun süre beklediği anlamına gelir. IR kapasitesini ve kullanımını kontrol edin ve iş yükünüze göre [ölçeklendirin veya ölçeklendirin.](create-self-hosted-integration-runtime.md#high-availability-and-scalability)
 
-- **"Aktarım-ilk bayta kalan süre" uzun çalışma süresi yaşadı**: kaynak sorgunuzun herhangi bir veri döndürmesi uzun sürme anlamına gelir. Sorguyu veya sunucuyu denetleyin ve iyileştirin. Daha fazla yardıma ihtiyacınız varsa veri Mağazası ekibinize başvurun.
+- **"Aktarım - İlk bayt**için zaman" deneyimli uzun çalışma süresi : bu kaynak sorguherhangi bir veri döndürmek için uzun sürer anlamına gelir. Sorguyu veya sunucuyu denetleyin ve optimize edin. Daha fazla yardıma ihtiyacınız varsa, veri depolama ekibinize başvurun.
 
-- **"Aktarım listeleme kaynağı" uzun çalışma süresi yaşadı**: kaynak dosyalarının listelenmesi veya kaynak veritabanının veri bölümlerinin yavaş olması anlamına gelir.
+- **"Transfer - Listeleme kaynak" deneyimli uzun çalışma süresi**: bu kaynak dosyaları veya kaynak veritabanı veri bölümleri nin sayısalya yavaş anlamına gelir.
 
-  - Şirket içinde barındırılan IR makinesinin, kaynak veri deposuna bağlanmak için düşük gecikme süresine sahip olup olmadığını denetleyin. Kaynağınız Azure 'da ise, şirket içinde barındırılan IR makinesinden Azure bölgesine gecikme süresini denetlemek için [Bu aracı](http://www.azurespeed.com/Azure/Latency) kullanabilirsiniz.
+  - Kendi kendine barındırılan IR makinesinin kaynak veri deposuna bağlanan düşük gecikme gecikmesi olup olmadığını denetleyin. Kaynağınız Azure'daysa, kendi kendine barındırılan IR makinesinden Azure bölgesine gecikme gecikmesini denetlemek için [bu aracı](http://www.azurespeed.com/Azure/Latency) kullanabilirsiniz, ne kadar iyi olursa o kadar iyi.
 
-  - Dosya tabanlı kaynaktan veri kopyalarken, klasör yolu veya dosya adı (`wildcardFolderPath` ya da `wildcardFileName`) üzerinde **joker karakter filtresi** kullanırsanız veya **dosya son değiştirilme zamanı filtresi** (`modifiedDatetimeStart` veya`modifiedDatetimeEnd`) kullanırsanız, bu filtre kopyalama etkinliğinin belirtilen klasörün altındaki tüm dosyaları istemci tarafına listelemesine neden olur ve sonra filtreyi uygular. Bu tür dosya numaralandırması, özellikle de yalnızca küçük bir dosya kümesi filtre kuralını karşıladığında performans sorunlarına neden olabilir.
+  - Dosya tabanlı kaynaktan veri kopyalarken, **wildcard filter** klasör yolunda veya dosya adı`wildcardFolderPath` (veya), `wildcardFileName`üzerinde joker karakter filtresi`modifiedDatetimeEnd`kullanıyorsanız veya **dosyayı son değiştirilen zaman filtresini** kullanıyorsanız (veya),`modifiedDatetimeStart` bu filtrenin belirtilen klasörün altındaki tüm dosyaları istemci tarafına listeleyerek kopyalama etkinliğine neden olacağını unutmayın ve ardından filtreyi uygulayın. Bu tür dosya numaralandırması, özellikle yalnızca küçük dosya kümesi filtre kuralıyla karşılaştığında darboğaza dönüşebilir.
 
-    - [Dosyaları, tarih saat bölümlenmiş dosya yoluna veya adına göre kopyalayıp kopyalayamayacağını](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)denetleyin. Bu şekilde, kaynak tarafında liste üzerinde yük getirmez.
+    - [Tarih bölümlenmiş dosya yoluna veya adına göre dosyaları kopyalayıp](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)kopyalayamayacağınızı denetleyin. Bu şekilde kaynak tarafında listeleme yük getirmez.
 
-    - Bunun yerine, Amazon S3 ve Azure Blob için özel olarak "**önek**" olmak üzere veri deposunun yerel filtresini kullanıp kullanınızın olup olmadığını kontrol edin. Ön ek filtresi, veri deposu sunucu tarafı filtretir ve çok daha iyi performansa sahip olur.
+    - Bunun yerine veri deposunun yerel filtresini, Özellikle Amazon S3 ve Azure Blob için **"önek**" kullanıp kullanamayacağınızı kontrol edin. Önek filtresi bir veri deposu sunucusu tarafı filtresidir ve çok daha iyi performansa sahip olur.
 
-    - Tek büyük veri kümesini birkaç küçük veri kümesine bölmek ve bu kopyalama işlerinin verilerin her bir tackles bölümünü aynı anda çalıştırmasına izin vermek için göz önünde bulundurun. Bunu arama/GetMetadata + ForEach + Copy ile yapabilirsiniz. [Birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md) veya [Amazon S3 'ten verileri](solution-template-migration-s3-azure.md) genel örnek olarak ADLS 2. çözüm şablonlarına geçirme bölümüne bakın.
+    - Tek büyük veri kümesini birkaç küçük veri kümesine bölmeyi ve bu kopyalama işlerinin eş zamanlı olarak çalışmasına izin vermeyi düşünün. Bunu Lookup/GetMetadata + ForEach + Copy ile yapabilirsiniz. Dosyaları [birden çok kapsayıcıdan kopyalayın](solution-template-copy-files-multiple-containers.md) veya [verileri Amazon S3'ten ADLS Gen2](solution-template-migration-s3-azure.md) çözüm şablonlarına genel örnek olarak geçirin.
 
-  - ADF 'nin kaynakta azaltma hatası olduğunu veya veri deponuzda yüksek kullanım durumunda olup olmadığını denetleyin. Bu durumda, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinizle iletişim kurmayı deneyin.
+  - ADF'nin kaynakta herhangi bir azaltma hatası raporedip bildirmeyin veya veri deponuzun yüksek kullanım durumu altında olup olmadığını kontrol edin. Bu nedenle, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinize başvurmayı deneyin.
 
-- **"Kaynaktan okuma aktarım" uzun çalışma süresi yaşadı**: 
+- **"Transfer - kaynaktan okuma" deneyimli uzun çalışma süresi:** 
 
-  - Şirket içinde barındırılan IR makinesinin, kaynak veri deposuna bağlanmak için düşük gecikme süresine sahip olup olmadığını denetleyin. Kaynağınız Azure 'da ise, şirket içinde barındırılan IR makinesinden Azure bölgelerine gecikme süresini denetlemek için [Bu aracı](http://www.azurespeed.com/Azure/Latency) kullanabilirsiniz.
+  - Kendi kendine barındırılan IR makinesinin kaynak veri deposuna bağlanan düşük gecikme gecikmesi olup olmadığını denetleyin. Kaynağınız Azure'daysa, kendi kendine barındırılan IR makinesinden Azure bölgelerine gecikme gecikmesini denetlemek için [bu aracı](http://www.azurespeed.com/Azure/Latency) kullanabilirsiniz, ne kadar iyi olursa o kadar iyi.
 
-  - Şirket içinde barındırılan IR makinesinde verileri okumak ve verileri verimli bir şekilde aktarmak için yeterli gelen bant genişliğine sahip olup olmadığını denetleyin. Kaynak veri depolduğunuz Azure 'da olması, indirme hızını denetlemek için [Bu aracı](https://www.azurespeed.com/Azure/Download) kullanabilirsiniz.
+  - Self barındırılan IR makinesinin verileri verimli bir şekilde okumak ve aktarmak için yeterli gelen bant genişliğine sahip olup olmadığını kontrol edin. Kaynak veri mağazanız Azure'daysa, indirme hızını denetlemek için [bu aracı](https://www.azurespeed.com/Azure/Download) kullanabilirsiniz.
 
-  - Data Factory-> genel bakış sayfanıza Azure portal > Şirket içinde barındırılan IR 'nin CPU ve bellek kullanımı eğilimini kontrol edin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse, [ölçeği artırma/genişletme](create-self-hosted-integration-runtime.md#high-availability-and-scalability) için göz önünde bulundurun.
+  - Veri fabrikanıza > genel bakış sayfanıza > Azure portalında Kendi kendine barındırılan IR'nin CPU ve bellek kullanım eğilimini kontrol edin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse [IR'yi ölçeklendirmeyi/çıkarmayı](create-self-hosted-integration-runtime.md#high-availability-and-scalability) düşünün.
 
-  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örnek:
+  - Varsa bağlayıcıya özel veri yükleme en iyi uygulama benimseyin. Örnek:
 
-    - [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)'dan verileri kopyalarken, verileri paralel olarak kopyalamak için veri bölümü seçeneklerini etkinleştirin.
+    - [Oracle,](connector-oracle.md#oracle-as-source) [Netezza,](connector-netezza.md#netezza-as-source) [Teradata,](connector-teradata.md#teradata-as-source)SAP [HANA,](connector-sap-hana.md#sap-hana-as-source) [SAP Table](connector-sap-table.md#sap-table-as-source)ve [SAP Open Hub'dan](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)veri kopyalarken, verileri paralel olarak kopyalamak için veri bölme seçenekleri etkinleştirin.
 
-    - Bir [sunucudan verileri](connector-hdfs.md)kopyalarken, distcp kullanacak şekilde yapılandırın.
+    - [HDFS'den](connector-hdfs.md)veri kopyalarken, DistCp'yi kullanacak şekilde yapılandırın.
 
-    - [Amazon Redshift](connector-amazon-redshift.md)'tan veri kopyalarken, Redshift Unload kullanacak şekilde yapılandırın.
+    - [Amazon Redshift'ten](connector-amazon-redshift.md)veri kopyalarken Redshift UNLOAD'ı kullanacak şekilde yapılandırın.
 
-  - ADF 'nin kaynakta herhangi bir azaltma hatası bildirme veya veri deponuzda yüksek kullanım altında olup olmadığını denetleyin. Bu durumda, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinizle iletişim kurmayı deneyin.
+  - ADF'nin kaynakta herhangi bir azaltma hatası rapor edip etmeyin veya veri deponuzun yüksek kullanım altında olup olmadığını kontrol edin. Bu nedenle, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinize başvurmayı deneyin.
 
-  - Kopyalama kaynak ve havuz örüntüsünün olup olmadığını denetleyin: 
+  - Kopya kaynağınızı ve lavabo deseninizi kontrol edin: 
 
-    - Bölüm seçeneği etkinleştirilmiş veri depolarından verileri kopyalarsanız, [paralel kopyaları](copy-activity-performance-features.md)kademeli olarak ayarlamayı düşünün. çok fazla paralel kopya, performansı da etkileyebilir.
+    - Bölüm seçeneği etkin veri depolarından verileri kopyalarsanız, [paralel kopyaları](copy-activity-performance-features.md)kademeli olarak ayarlamayı düşünün, çok fazla paralel kopyanın performansa bile zarar verebileceğini unutmayın.
 
-    - Aksi takdirde, tek büyük veri kümesini birkaç küçük veri kümesine bölmeyi düşünün ve bu kopyalama işlerinin verilerin her bir tackles bölümünü aynı anda çalıştırmasına izin verin. Bunu arama/GetMetadata + ForEach + Copy ile yapabilirsiniz. Bkz. [birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md), [Amazon S3 ' dan ADLS 2.](solution-template-migration-s3-azure.md)veya [toplu kopyalama ile genel örnek olarak bir denetim tablosu](solution-template-bulk-copy-with-control-table.md) çözüm şablonlarıyla veri geçirme.
+    - Aksi takdirde, tek büyük veri kümesini birkaç küçük veri kümesine bölmeyi düşünün ve bu kopyalama işlerinin eş zamanlı olarak çalışmasına izin verin, her biri verilerin bir kısmını ele alır. Bunu Lookup/GetMetadata + ForEach + Copy ile yapabilirsiniz. Birden [çok kapsayıcıdan dosyaları kopyalamaya](solution-template-copy-files-multiple-containers.md)bakın, [verileri Amazon S3'ten ADLS Gen2'ye geçirin](solution-template-migration-s3-azure.md)veya genel örnek olarak bir denetim tablosu çözümü şablonları [içeren toplu kopya.](solution-template-bulk-copy-with-control-table.md)
 
-- **"Havuza aktarım yazma" uzun çalışma süresi yaşadı**:
+- **"Transfer - lavaboya yazma" deneyimli uzun çalışma süresi:**
 
-  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örneğin, verileri [Azure SYNAPSE Analytics](connector-azure-sql-data-warehouse.md) 'e (eskı ADıYLA SQL DW) kopyalarken PolyBase veya Copy deyimlerini kullanın. 
+  - Varsa bağlayıcıya özel veri yükleme en iyi uygulama benimseyin. Örneğin, verileri [Azure Synapse Analytics'e](connector-azure-sql-data-warehouse.md) (eski adıyla SQL DW) kopyalarken, PolyBase veya COPY deyimini kullanın. 
 
-  - Şirket içinde barındırılan IR makinesinin, havuz veri deposuna bağlanma sırasında düşük gecikme süresine sahip olup olmadığını denetleyin. Havuzunuzu Azure 'da kullanıyorsanız, [Bu aracı](http://www.azurespeed.com/Azure/Latency) kullanarak şirket IÇINDE barındırılan IR makinesinden Azure bölgesine gecikme süresini denetleyebilir.
+  - Kendi kendine barındırılan IR makinesinin lavabo veri deposuna bağlanan düşük gecikme gecikmesi olup olmadığını kontrol edin. Lavabonuz Azure'daysa, kendi kendine barındırılan IR makinesinden Azure bölgesine gecikme gecikmesini denetlemek için [bu aracı](http://www.azurespeed.com/Azure/Latency) kullanabilirsiniz, ne kadar iyi olursa o kadar iyi.
 
-  - Şirket içinde barındırılan IR makinesinin verileri etkili bir şekilde aktarımına ve yazmaya yetecek kadar giden bant genişliğine sahip olup olmadığını denetleyin. Havuz veri depoluizin Azure 'da ise, yükleme hızını denetlemek için [Bu aracı](https://www.azurespeed.com/Azure/UploadLargeFile) kullanabilirsiniz.
+  - Self barındırılan IR makinesinin verileri verimli bir şekilde aktarmak ve yazmak için yeterli giden bant genişliğine sahip olup olmadığını kontrol edin. Lavabo veri mağazanız Azure'daysa, yükleme hızını denetlemek için [bu aracı](https://www.azurespeed.com/Azure/UploadLargeFile) kullanabilirsiniz.
 
-  - Data Factory-> genel bakış sayfanıza Azure portal > Şirket içinde barındırılan IR 'nin CPU ve bellek kullanımı eğilimi olup olmadığını denetleyin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse, [ölçeği artırma/genişletme](create-self-hosted-integration-runtime.md#high-availability-and-scalability) için göz önünde bulundurun.
+  - Azure portalında Kendi kendine barındırılan IR'nin CPU ve bellek kullanım eğiliminin veri fabrikanıza > genel > kontrol edin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse [IR'yi ölçeklendirmeyi/çıkarmayı](create-self-hosted-integration-runtime.md#high-availability-and-scalability) düşünün.
 
-  - ADF 'nin havuzda herhangi bir azaltma hatası olduğunu veya veri deponuzda yüksek kullanım altında olup olmadığını denetleyin. Bu durumda, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinizle iletişim kurmayı deneyin.
+  - ADF'nin lavaboda herhangi bir azaltma hatası rapor edip etmeyin veya veri deponuzun yüksek kullanım altında olup olmadığını kontrol edin. Bu nedenle, veri deposundaki iş yüklerinizi azaltın veya azaltma sınırını veya kullanılabilir kaynağı artırmak için veri deposu yöneticinize başvurmayı deneyin.
 
-  - [Paralel kopyaları](copy-activity-performance-features.md)kademeli olarak ayarlamayı göz önünde bulundurun. çok fazla paralel kopya, hatta performansın zarar görmediğini unutmayın.
+  - Yavaş yavaş paralel [kopyaları](copy-activity-performance-features.md)ayarlamak için düşünün , çok fazla paralel kopyaları bile performans zarar verebilir unutmayın.
 
-## <a name="other-references"></a>Diğer başvurular
+## <a name="other-references"></a>Diğer referanslar
 
-Performans izleme ve desteklenen veri depolarının bazılarını başvuruları ayarlama şu şekildedir:
+Desteklenen veri depolarından bazıları için performans izleme ve tuning başvuruları aşağıda veda edilmiştir:
 
-* Azure Blob depolama: BLOB depolama için [ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md) , [BLOB depolaması için performans ve ölçeklenebilirlik denetim listesi](../storage/blobs/storage-performance-checklist.md).
-* Azure Tablo Depolama: tablo depolaması için tablo depolama ve performans [ve ölçeklenebilirlik denetim listesi](../storage/tables/storage-performance-checklist.md) [için ölçeklenebilirlik ve performans hedefleri](../storage/tables/scalability-targets.md) .
-* Azure SQL veritabanı: [performansı izleyebilir](../sql-database/sql-database-single-database-monitor.md) ve veritabanı işlem BIRIMI (DTU) yüzdesini kontrol edebilirsiniz.
-* Azure SQL veri ambarı: yeteneği, veri ambarı birimlerinde (DWU) ölçülür. Bkz. [Azure SQL veri ambarı 'nda işlem gücünü yönetme (genel bakış)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
-* Azure Cosmos DB: [Azure Cosmos DB performans düzeyleri](../cosmos-db/performance-levels.md).
-* Şirket içi SQL Server: [performansı izleme ve ayarlama](https://msdn.microsoft.com/library/ms189081.aspx).
-* Şirket içi dosya sunucusu: [dosya sunucuları Için performans ayarlama](https://msdn.microsoft.com/library/dn567661.aspx).
+* Azure Blob depolama: Blob depolama ve [Performans ve Blob depolama için ölçeklenebilirlik kontrol listesi](../storage/blobs/storage-performance-checklist.md)için [ölçeklenebilirlik ve performans hedefleri.](../storage/blobs/scalability-targets.md)
+* Azure Tablo depolama: Tablo depolama ve Performans ve [Tablo depolama için ölçeklenebilirlik denetim listesi için](../storage/tables/storage-performance-checklist.md) [ölçeklenebilirlik ve performans hedefleri.](../storage/tables/scalability-targets.md)
+* Azure SQL Veritabanı: [Performansı izleyebilir](../sql-database/sql-database-single-database-monitor.md) ve Veritabanı İşlem Birimi (DTU) yüzdesini kontrol edebilirsiniz.
+* Azure SQL Veri Ambarı: Yeteneği Veri Ambarı Birimleri (DWUs) cinsinden ölçülür. Bkz. [Azure SQL Veri Ambarı'nda bilgi işlem gücünü yönet (Genel Bakış)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+* Azure Cosmos DB: [Azure Cosmos DB'de performans düzeyleri.](../cosmos-db/performance-levels.md)
+* Şirket içi SQL Server: [Performans için izleyin ve ayarlayın.](https://msdn.microsoft.com/library/ms189081.aspx)
+* Şirket içi dosya sunucusu: [Dosya sunucuları için performans ayarı.](https://msdn.microsoft.com/library/dn567661.aspx)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Diğer kopyalama etkinliği makalelerine bakın:
+Diğer kopyalama etkinliği makalelerini görün:
 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
-- [Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu](copy-activity-performance.md)
-- [Etkinlik performansını en iyi duruma getirme özelliklerini Kopyala](copy-activity-performance-features.md)
-- [Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın](data-migration-guidance-overview.md)
-- [Amazon S3 'ten Azure Storage 'a veri geçirme](data-migration-guidance-s3-azure-storage.md)
+- [Etkinlik performansı ve ölçeklenebilirlik kılavuzunu kopyalama](copy-activity-performance.md)
+- [Etkinlik performans optimizasyonu özelliklerini kopyalama](copy-activity-performance-features.md)
+- [Verilerinizi veri gölünüzden veya veri ambarınızdan Azure'a geçirmek için Azure Veri Fabrikası'nı kullanın](data-migration-guidance-overview.md)
+- [Verileri Amazon S3'ten Azure Depolama'ya geçirme](data-migration-guidance-s3-azure-storage.md)

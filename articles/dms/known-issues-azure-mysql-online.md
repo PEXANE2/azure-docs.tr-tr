@@ -1,10 +1,10 @@
 ---
-title: "Bilinen sorunlar: MySQL için Azure veritabanı 'na çevrimiçi geçişler"
+title: 'Bilinen sorunlar: MySQL için Azure Veritabanına çevrimiçi geçişler'
 titleSuffix: Azure Database Migration Service
-description: Azure veritabanı geçiş hizmeti kullanılırken MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar ve geçiş sınırlamaları hakkında bilgi edinin.
+description: Azure Veritabanı Geçiş Hizmeti'ni kullanırken MySQL için Azure Veritabanı'na çevrimiçi geçişlerle ilgili bilinen sorunlar ve geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,34 +14,34 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: afbff1c0b001d00f2791a869850729171782701c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650257"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235286"
 ---
-# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile MySQL için Azure DB 'ye yönelik sınırlamalar & çevrimiçi geçiş sorunları
+# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti ile MySQL için Azure DB'ye & sınırlamalar çevrimiçi geçiş sorunları
 
-MySQL 'in MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilişkili bilinen sorunlar ve sınırlamalar aşağıdaki bölümlerde açıklanmıştır.
+MySQL için MySQL'den Azure Veritabanı'na çevrimiçi geçişlerle ilgili bilinen sorunlar ve sınırlamalar aşağıdaki bölümlerde açıklanmıştır.
 
 ## <a name="online-migration-configuration"></a>Çevrimiçi geçiş yapılandırması
 
 
-- Kaynak MySQL Server sürümü Version 5.6.35, 5.7.18 veya üzeri olmalıdır
-- MySQL için Azure veritabanı şunları destekler:
-  - MySQL Community sürümü
-  - InnoDB altyapısı
-- Aynı sürüm geçişi. MySQL 5,6 ' i MySQL için Azure veritabanı 5,7 ' e geçirme desteklenmez.
-- My. ini (Windows) veya My. cnf (Unix) içinde ikili günlüğü etkinleştir
-  - Server_id herhangi bir sayıya daha büyük veya eşittir 1 olarak ayarlayın, örneğin, Server_id = 1 (yalnızca MySQL 5,6 için)
-  - Set log-bin = \<Path > (yalnızca MySQL 5,6 için)
-  - Binlog_format = satırı ayarla
-  - Expire_logs_days = 5 (yalnızca MySQL 5,6 için önerilir)
-- Kullanıcının ReplicationAdmin rolü olmalıdır.
-- Kaynak MySQL veritabanı için tanımlanan harmanlamalar, MySQL için hedef Azure veritabanı 'nda tanımlandıklardır.
-- MySQL için Azure veritabanı 'ndaki kaynak MySQL veritabanı ile hedef veritabanı arasında şemanın eşleşmesi gerekir.
-- MySQL için Azure veritabanı hedef şemasının yabancı anahtarları olmamalıdır. Yabancı anahtarları bırakmak için aşağıdaki sorguyu kullanın:
+- Kaynak MySQL Server sürümü sürüm 5.6.35, 5.7.18 veya daha sonra olmalıdır
+- MySQL için Azure Veritabanı destekler:
+  - MySQL topluluk sürümü
+  - InnoDB motoru
+- Aynı sürüm geçişi. MySQL 5.6'nın MySQL 5.7 için Azure Veritabanına geçirilmesi desteklenmez.
+- my.ini (Windows) veya my.cnf (Unix) ikili günlük etkinleştirme
+  - Server_id daha büyük veya 1'e eşit olarak ayarlayın, örneğin Server_id=1 (yalnızca MySQL 5,6 için)
+  - Log-bin = \<yol> ayarlayın (yalnızca MySQL 5.6 için)
+  - set binlog_format = satır
+  - Expire_logs_days = 5 (önerilir - sadece MySQL 5.6 için)
+- Kullanıcı ReplicationAdmin rolüne sahip olmalıdır.
+- Kaynak MySQL veritabanı için tanımlanan harmanlamalar, MySQL için hedef Azure Veritabanı'nda tanımlananlarla aynıdır.
+- Schema, MySQL için Azure Veritabanı'ndaki kaynak MySQL veritabanı ile hedef veritabanı arasında eşleşmelidir.
+- MySQL için hedef Azure Veritabanı'ndaki şemayabancı anahtarlara sahip olmamalıdır. Yabancı anahtarları bırakmak için aşağıdaki sorguyu kullanın:
     ```
     SET group_concat_max_len = 8192;
     SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
@@ -59,85 +59,85 @@ MySQL 'in MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilişkili b
     ```
 
     Sorgu sonucunda bırakma yabancı anahtarını (ikinci sütun) çalıştırın.
-- MySQL için Azure veritabanı hedef şemasının hiçbir tetikleyicisi olmamalıdır. Tetikleyicileri hedef veritabanında bırakmak için:
+- MySQL için hedef Azure Veritabanı'ndaki şemada tetikleyici olmamalıdır. Hedef veritabanında tetikleyicileri bırakmak için:
     ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
     ```
 
-## <a name="datatype-limitations"></a>Veri türü sınırlamaları
+## <a name="datatype-limitations"></a>Datatype sınırlamaları
 
-- **Kısıtlama**: kaynak MySQL VERITABANıNDA bir JSON veri türü varsa, sürekli eşitleme sırasında geçiş başarısız olur.
+- **Sınırlama**: Kaynak MySQL veritabanında json veri türü varsa, geçiş sürekli eşitleme sırasında başarısız olur.
 
-    **Geçici çözüm**: JSON veri türünü, kaynak MySQL veritabanında orta metin veya LONGTEXT olarak değiştirin.
+    **Geçici Çözüm**: Kaynak MySQL veritabanında orta metin veya uzun metin JSON veri türünü değiştirin.
 
-- **Kısıtlama**: tablolarda birincil anahtar yoksa sürekli eşitleme başarısız olur.
+- **Sınırlama**: Tablolarda birincil anahtar yoksa, sürekli eşitleme başarısız olur.
 
-    **Geçici çözüm**: geçiş işleminin devam etmesi için geçici olarak tablo için bir birincil anahtar ayarlayın. Veri geçişi tamamlandıktan sonra birincil anahtarı kaldırabilirsiniz.
+    **Geçici Çözüm**: Geçiş tablosunun devam etmesi için geçici olarak birincil anahtarı ayarlayın. Veri geçişi tamamlandıktan sonra birincil anahtarı kaldırabilirsiniz.
 
 ## <a name="lob-limitations"></a>LOB sınırlamaları
 
-Büyük nesne (LOB) sütunları, boyutu büyük büyüyerek kullanılan sütunlardır. MySQL için, orta metin, LONGTEXT, blob, düz blob, LONGBLOB vb., LOB 'un bazı veri türlerine yöneliktir.
+Büyük Nesne (LOB) sütunları boyutu büyük büyüyebilir sütunlar vardır. MySQL için, Orta metin, Longtext, Blob, Mediumblob, Longblob, vb, lob veri tipleri bazılarıdır.
 
-- **Sınırlama**: lob veri türleri birincil anahtar olarak kullanılıyorsa, geçiş başarısız olur.
+- **Sınırlama**: LOB veri türleri birincil anahtar olarak kullanılırsa, geçiş başarısız olur.
 
-    **Geçici çözüm**: birincil anahtarı diğer veri TÜRLERI veya LOB olmayan sütunlarla değiştirin.
+    **Geçici Çözüm**: Birincil anahtarı lob olmayan diğer veri türleri veya sütunlarla değiştirin.
 
-- **Kısıtlama**: büyük nesne (LOB) sütununun uzunluğu 32 KB 'tan büyükse, veriler hedefte kesilebilir. Bu sorguyu kullanarak LOB sütununun uzunluğunu kontrol edebilirsiniz:
+- **Sınırlama**: Büyük Nesne (LOB) sütununun uzunluğu 32 KB'den büyükse, veriler hedefte kesilir. Bu sorguyu kullanarak LOB sütununun uzunluğunu denetleyebilirsiniz:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Geçici çözüm**: 32 KB 'den büyük bir lob nesneniz varsa [Azure veritabanı geçişleri sorun](mailto:AskAzureDatabaseMigrations@service.microsoft.com)konusunda mühendislik ekibine başvurun.
+    **Geçici Çözüm**: 32 KB'den büyük LOB nesneniz varsa, [Azure Veritabanı Geçişlerini Sor'taki](mailto:AskAzureDatabaseMigrations@service.microsoft.com)mühendislik ekibine başvurun.
 
-## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>AWS RDS MySQL 'ten çevrimiçi geçiş yapma sınırlamaları
+## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>AWS RDS MySQL'den çevrimiçi geçiş yaparken sınırlamalar
 
-AWS RDS MySQL 'ten MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirmeye çalıştığınızda, aşağıdaki hatalarda gelebiliriz.
+AWS RDS MySQL'den MySQL için Azure Veritabanı'na çevrimiçi geçiş gerçekleştirmeye çalıştığınızda aşağıdaki hatalarla karşılaşabilirsiniz.
 
-- **Hata:** '{0}' veritabanında, hedefte yabancı anahtar (ler) bulunur. Hedefi düzeltin ve yeni bir veri geçişi etkinliği başlatın. Yabancı anahtar (ler) i listelemek için aşağıdaki betiği hedefle yürütün
+- **Hata:** Database{0}' ' ' hedefte yabancı anahtar(lar) vardır. Hedefi düzeltin ve yeni bir veri geçişi etkinliği başlatın. Yabancı anahtarı listelemek için hedefteki komut dosyasını uygulayın
 
-  **Kısıtlama**: şemanızda yabancı anahtarlarınız varsa, geçişin ilk yükü ve sürekli eşitlenmesi başarısız olur.
-  **Geçici çözüm**: doğrudan dış anahtar betiği çıkarmak ve yabancı anahtar betiği eklemek için MySQL çalışma ekranında aşağıdaki betiği yürütün:
+  **Sınırlama**: Şemanızda yabancı anahtarlar varsa, geçişin ilk yükü ve sürekli senkronizasyonu başarısız olur.
+  **Geçici Çözüm**: Açılan yabancı anahtar komut dosyasını ayıklamak ve yabancı anahtar komut dosyasını eklemek için MySQL çalışma tezgahında aşağıdaki komut dosyasını çalıştırın:
 
   ```
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
   ```
 
-- **Hata:** '{0}' veritabanı sunucuda yok. Sağlanan MySQL kaynak sunucusu büyük/küçük harfe duyarlı. Lütfen veritabanı adını denetleyin.
+- **Hata:** Veritabanı{0}' ' ' sunucuda yok. Sağlanan MySQL kaynak sunucusu büyük/küçük harfe duyarlı. Lütfen veritabanı adını denetleyin.
 
-  **Kısıtlama**: bir MySQL veritabanını komut satırı ARABIRIMI (CLI) kullanarak Azure 'a geçirirken, kullanıcılar bu hataya gelebilir. Hizmet, kaynak sunucuda veritabanını bulamadı, bu durum yanlış veritabanı adı sağlamış olabilirsiniz veya listelenen sunucuda veritabanı yok olabilir. Note veritabanı adları büyük/küçük harfe duyarlıdır.
+  **Sınırlama**: Komut Satırı Arabirimi (CLI) kullanarak bir MySQL veritabanını Azure'a geçirdiğinizde, kullanıcılar bu hataya neden olabilir. Hizmet kaynak sunucuda veritabanını bulamamış olabilir, çünkü yanlış veritabanı adı vermiş olabilirsiniz veya veritabanı listelenen sunucuda yok. Not veritabanı adları büyük/küçük harf duyarlıdır.
 
-  **Geçici çözüm**: tam veritabanı adını girip yeniden deneyin.
+  **Geçici Çözüm**: Tam veritabanı adını sağlayın ve sonra yeniden deneyin.
 
-- **Hata:** ' {Database} ' veritabanında aynı ada sahip tablolar var. MySQL için Azure Veritabanı, büyük/küçük harfe duyarlı tabloları desteklemez.
+- **Hata:** '{database}' veritabanında aynı ada sahip tablolar vardır. MySQL için Azure Veritabanı, büyük/küçük harfe duyarlı tabloları desteklemez.
 
-  **Kısıtlama**: kaynak veritabanında aynı ada sahip iki tablonuz olduğunda bu hata oluşur. MySQL için Azure veritabanı, büyük/küçük harfe duyarlı tabloları desteklemez.
+  **Sınırlama**: Kaynak veritabanında aynı ada sahip iki tablonuz olduğunda bu hata olur. MySQL için Azure Veritabanı büyük/küçük harf duyarlı tabloları desteklemez.
 
-  **Geçici çözüm**: tablo adlarını benzersiz olacak şekilde güncelleştirip yeniden deneyin.
+  **Geçici Çözüm**: Tablo adlarını benzersiz olacak şekilde güncelleştirin ve sonra yeniden deneyin.
 
-- **Hata:** Hedef veritabanı {Database} boş. Lütfen şemayı geçirin.
+- **Hata:** Hedef veritabanı {database} boş. Lütfen şemayı geçirin.
 
-  **Sınırlama**: Bu hata, MySQL Için Azure veritabanı veritabanının gerekli şemasına sahip olmadığı durumlarda oluşur. Hedefinizdeki verilerin geçirilmesini sağlamak için şema geçişi gereklidir.
+  **Sınırlama**: Bu hata, MySQL veritabanı için hedef Azure Veritabanı gerekli şema olmadığında oluşur. Hedefe veri geçişini etkinleştirmek için şema geçişi gereklidir.
 
-  **Geçici çözüm**: şemayı kaynak veritabanından hedef veritabanına [geçirin](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) .
+  **Geçici Çözüm**: [Şemayı](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) kaynak veritabanınızdan hedef veritabanına geçirin.
 
 ## <a name="other-limitations"></a>Diğer sınırlamalar
 
-- Parola dizesinin başındaki ve sonundaki küme ayracı {} açan ve kapatan bir parola dizesi desteklenmiyor. Bu sınırlama, hem kaynak MySQL 'e bağlanmak hem de MySQL için Azure veritabanı 'na yöneliktir.
-- Aşağıdaki DDLs 'ler desteklenmez:
-  - Tüm bölüm DDLs 'Leri
-  - Tabloyu bırak
+- Parola dizesinin başında ve sonunda { } kıvırcık köşeli ayraçları açılıp kapanan bir parola dizesi desteklenmez. Bu sınırlama hem kaynak MySQL'e bağlanmak hem de MySQL için hedeflenen Azure Veritabanı için geçerlidir.
+- Aşağıdaki DDL'ler desteklenmez:
+  - Tüm bölüm DDL'leri
+  - Açılan tablo
   - Tabloyu yeniden adlandır
-- *Alter table < table_name > Sütun ekle < column_name >* deyimini kullanarak tablonun başına veya ortasına sütun ekleme desteklenmez. *Alter table < table_name sütun ekle < column_name >* tablonun sonundaki sütunu ekler >.
-- Yalnızca sütun verilerinin bir kısmında oluşturulan dizinler desteklenmez. Aşağıdaki ifade, yalnızca sütun verilerinin bir kısmını kullanarak bir dizin oluşturan bir örnektir:
+- Table_name *sütun eklemek* için sütun <column_name>deyimi eklemek için değişiklik tablosu <> <değiştirilmesi tablosunun kullanılması desteklenmez. THe *alter tablo <table_name> sütun <column_name>* tablonun sonuna sütun ekler.
+- Sütun verilerinin yalnızca bir bölümünde oluşturulan dizinler desteklenmez. Aşağıdaki deyim, sütun verilerinin yalnızca bir bölümünü kullanarak bir dizin oluşturan bir örnektir:
 
     ``` 
     CREATE INDEX partial_name ON customer (name(10));
     ```
 
-- Azure veritabanı geçiş hizmeti 'nde, tek bir geçiş etkinliğinde geçirilecek veritabanlarının sınırı dördü olur.
+- Azure Veritabanı Geçiş Hizmeti'nde, tek bir geçiş etkinliğinde geçiş yapmak için veritabanlarının sınırı dörttür.
 
-- **Hata:** Satır boyutu çok büyük (> 8126). Bazı sütunların metın veya BLOBUN değiştirilmesi yardımcı olabilir. Geçerli satır biçiminde, 0 baytlık BLOB ön eki satır içi olarak depolanır.
+- **Hata:** Satır boyutu çok büyük (> 8126). Bazı sütunları TEXT veya BLOB olarak değiştirmek yardımcı olabilir. Geçerli satır biçiminde, 0 baytBLOB öneki satır içinde depolanır.
 
-  **Sınırlama**: Bu hata, InnoDB depolama altyapısını kullanarak MySQL Için Azure veritabanı 'na geçiş yaparken ve tablo satır boyutu çok büyükse (> 8126 bayt) oluşur.
+  **Sınırlama**: Bu hata, InnoDB depolama altyapısını kullanarak MySQL için Azure Veritabanı'na geçiş yaptığınızda ve herhangi bir tablo satırı boyutu çok büyükolduğunda (>8126 bayt) olur.
 
-  **Geçici çözüm**: satır boyutu 8126 bayttan büyük olan tablonun şemasını güncelleştirin. Veriler kırpılabilmesi için katı modun değiştirilmesini önermiyoruz. Page_size değiştirme desteklenmiyor.
+  **Geçici Çözüm**: 8126 bayttan büyük bir satır boyutuolan tablonun şeasını güncelleştirin. Veriler kesilir, çünkü sıkı modu değiştirmenizi önermiyoruz. page_size değiştirilmesi desteklenmez.
