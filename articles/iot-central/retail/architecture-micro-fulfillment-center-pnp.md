@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central Micro-Karşılama Merkezi | Microsoft Docs
-description: IoT Central içinde mikro Karşılama Merkezi uygulama şablonumuzu kullanarak mikro Karşılama Merkezi uygulaması derlemeyi öğrenin
+title: Azure IoT Merkezi mikro-karşılama merkezi | Microsoft Dokümanlar
+description: IoT Central'daki Mikro-karşılama merkezi uygulama şablonumuzu kullanarak bir mikro-karşılama merkezi uygulaması oluşturmayı öğrenin
 author: avneet723
 ms.author: avneets
 ms.date: 10/13/2019
@@ -10,50 +10,50 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: f752c77a6a62b9b259a8bb1869ca03ff6a19b1f5
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77020888"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Mikro-karşılama merkezi mimarisi
 
-Mikro Karşılama Merkezi çözümleri, güvenlik ve genel verimliliği artırarak kapalı kalma süresini ortadan kaldırarak maliyetleri azaltmak için tamamen otomatik bir karşılama merkezinin tüm yönlerini dijital olarak bağlamanıza, izlemenize ve yönetmenize olanak tanır. Bu çözümler IoT Central içindeki uygulama şablonlarından biri ve kılavuz olarak aşağıdaki mimaride kullanılarak oluşturulabilir.
+Mikro-karşılama merkezi çözümleri, güvenliği ve genel verimliliği artırırken kapalı kalma süresini ortadan kaldırarak maliyetleri azaltmak için tam otomatik bir karşılama merkezinin tüm yönlerini dijital olarak bağlamanızı, izlemenizi ve yönetmenize olanak sağlar. Bu çözümler, IoT Central'daki uygulama şablonlarından biri ve aşağıdaki mimari kullanılarak kılavuz olarak oluşturulabilir.
 
-![Azure IoT Central Mağazası Analizi](./media/architecture/micro-fulfillment-center-architecture-frame.png)
+![Azure IoT Merkezi Mağaza Analitiği](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- Bir ağ geçidi cihazına telemetri verileri gönderen IoT sensörleri kümesi
-- IoT Central telemetri ve toplu Öngörüler gönderen ağ geçidi cihazları
-- İşleme için istenen Azure hizmetine sürekli veri aktarma
-- Veriler istenen biçimde yapılandırılabilir ve bir depolama hizmetine gönderilebilir
-- İş uygulamaları, verileri sorgulayabilir ve Power Retail işlemleri ile ilgili öngörüler oluşturabilir
+- Bir ağ geçidi aygıtına telemetri verileri gönderen IoT sensörleri kümesi
+- IoT Central'a telemetri ve toplu kavrayış gönderen ağ geçidi cihazları
+- Manipülasyon için istenilen Azure hizmetine sürekli veri aktarımı
+- Veriler istenilen biçimde yapılandırılabilir ve bir depolama hizmetine gönderilebilir
+- İş uygulamaları verileri sorgulayabilir ve perakende işlemlerine güç veren öngörüler oluşturabilir
  
-Genellikle, mikro Karşılama Merkezi çözümünde bir bölümü oynatacak anahtar bileşenlere göz atalım.
+Genellikle bir mikro-yerine getirme merkezi çözümünde rol oynayan önemli bileşenlere bir göz atalım.
 
-## <a name="robotic-carriers"></a>Robot taşıyıcılar
+## <a name="robotic-carriers"></a>Robotik taşıyıcılar
 
-Mikro Karşılama Merkezi çözümü, farklı türlerde telemetri sinyalleri oluşturan büyük olasılıkla büyük bir robot taşıyıcılar kümesine sahip olacaktır. Bu sinyaller, bir ağ geçidi cihazı tarafından alınabilir, toplanır ve ardından mimari diyagramının sol tarafında yansıtıldığı gibi IoT Central gönderilir.  
+Bir mikro-yerine getirme merkezi çözümü büyük olasılıkla telemetri sinyalleri farklı üreten robotik taşıyıcılar büyük bir dizi olacaktır. Bu sinyaller bir ağ geçidi aygıtı tarafından yutulabilir, toplanabilir ve mimari diyagramın sol tarafından yansıtılan IoT Central'a gönderilebilir.  
 
-## <a name="condition-monitoring-sensors"></a>Koşul izleme algılayıcılar
+## <a name="condition-monitoring-sensors"></a>Durum izleme sensörleri
 
-IoT çözümü, yerine getirme merkezinizden anlamlı sinyalleri yakalayan bir algılayıcı kümesiyle başlar. Yukarıdaki mimari diyagramının en solundaki farklı algılayıcı türleri tarafından yansıtılır.
+IoT çözümü, yerine getirme merkezinizin içinden anlamlı sinyaller yakalayan bir dizi sensörle başlar. Yukarıdaki mimari diyagramın en solundaki farklı sensörler tarafından yansıtılır.
 
-## <a name="gateway-devices"></a>Ağ geçidi cihazları
+## <a name="gateway-devices"></a>Ağ geçidi aygıtları
 
-Birçok IoT algılayıcı, ham sinyalleri doğrudan buluta veya neredeyse bulunan bir ağ geçidi cihazına akışa alabilir. Ağ geçidi cihazı, bir IoT Central uygulamasına Özet Öngörüler göndermeden önce, uç sırada veri toplama işlemini gerçekleştirir. Ağ Geçidi cihazları, uygun olduğunda, algılayıcı cihazlarına geçiş komutu ve denetim işlemlerini de sorumludur. 
+Birçok IoT sensörü ham sinyalleri doğrudan buluta veya yakınlarında bulunan bir ağ geçidi cihazına besleyebilir. Ağ geçidi aygıtı, bir IoT Merkezi uygulamasına özet öngörüler göndermeden önce kenarda veri toplama gerçekleştirir. Ağ geçidi cihazları, gerektiğinde komuta ve kontrol işlemlerini sensör aygıtlarına aktarmakla da yükümlüdür. 
 
-## <a name="iot-central-application"></a>IoT Central uygulaması
+## <a name="iot-central-application"></a>IoT Merkezi uygulaması
 
-Azure IoT Central uygulaması, farklı türde IoT sensörlerinin, robotların yanı sıra karşılama merkezi ortamındaki ağ geçidi cihazlarından verileri alır ve anlamlı bir Öngörüler kümesi oluşturur.
+Azure IoT Central uygulaması, karşılama merkezi ortamındaki farklı IoT sensörleri, robotlar ve ağ geçidi aygıtlarından gelen verileri alır ve bir dizi anlamlı öngörü oluşturur.
 
-Azure IoT Central Ayrıca, altyapı cihazlarını uzaktan izleyip yönetebilmesini sağlayan mağaza işlecine özel bir deneyim sağlar.
+Azure IoT Central, mağaza operatörüne altyapı aygıtlarını uzaktan izlemelerini ve yönetmelerini sağlayan özel bir deneyim de sunar.
 
-## <a name="data-transform"></a>Veri dönüştürme
-Bir çözüm içindeki Azure IoT Central uygulaması, ham veya toplanmış öngörüleri veri işleme gerçekleştirebilen ve bu öngörüleri bir işletmeye göre daha zengin bir şekilde zenginleştiren Azure PaaS (hizmet olarak platform) Hizmetleri kümesine dışarı aktarmak üzere yapılandırılabilir Uygulamanızı. 
+## <a name="data-transform"></a>Veri dönüşümü
+Bir çözümdeki Azure IoT Merkezi uygulaması, veri işleme gerçekleştirebilen ve bu öngörüleri bir işletmeye çıkarmadan önce zenginleştirebilen bir dizi Azure PaaS (Hizmet Olarak Platform) hizmetine ham veya toplu öngörüler dışa aktaracak şekilde yapılandırılabilir Uygulama. 
 
-## <a name="business-application"></a>İş uygulaması
-IoT verileri, perakende ortamında dağıtılan farklı türlerde iş uygulamalarının gücünü desteklemek için kullanılabilir. Bir karşılama Merkezi Yöneticisi veya çalışanı, bu uygulamaları iş öngörülerini görselleştirmek ve gerçek zamanlı olarak anlamlı işlemler yapmak için kullanabilir. Perakende ekibiniz için gerçek zamanlı Power BI panosu oluşturmayı öğrenmek için [öğreticiyi](./tutorial-in-store-analytics-create-app-pnp.md)izleyin.
+## <a name="business-application"></a>İş başvurusu
+IoT verileri, perakende ortamında dağıtılan farklı türdeki iş uygulamalarına güç sağlamak için kullanılabilir. Bir yerine getirme merkezi yöneticisi veya çalışanı iş öngörülerini görselleştirmek ve gerçek zamanlı olarak anlamlı eylemlerde bulunmak için bu uygulamaları kullanabilir. Perakende ekibiniz için gerçek zamanlı bir Power BI panosu oluşturmayı öğrenmek için [öğreticiyi](./tutorial-in-store-analytics-create-app-pnp.md)izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Mikro Karşılama Merkezi](https://aka.ms/checkouttemplate) uygulama şablonunu kullanmaya başlayın. 
-* Mikro Karşılama Merkezi uygulama şablonunu kullanarak bir çözüm oluşturma konusunda size yol gösteren [öğreticiye](https://aka.ms/mfc-tutorial) göz atın.
+* [Mikro-yerine getirme Merkezi](https://aka.ms/checkouttemplate) uygulama şablonu ile başlayın. 
+* Micro-fulfillment Center uygulama şablonu kullanarak bir çözüm oluşturmak için size yol gösteren [öğretici](https://aka.ms/mfc-tutorial) bir göz atın.

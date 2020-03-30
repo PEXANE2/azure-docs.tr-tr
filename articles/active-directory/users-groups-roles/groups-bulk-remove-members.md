@@ -1,6 +1,6 @@
 ---
-title: CSV dosyası karşıya yükleyerek grup üyelerini toplu kaldırma-Azure Active Directory | Microsoft Docs
-description: Azure Yönetim Merkezi 'nde toplu olarak Kullanıcı ekleyin.
+title: CSV dosyası yükleyerek grup üyelerini toplu olarak kaldırma - Azure Active Directory | Microsoft Dokümanlar
+description: Azure yönetici merkezinde kullanıcıları toplu olarak ekleyin.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,49 +14,49 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517098"
 ---
-# <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini toplu kaldırma (Önizleme)
+# <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Azure Etkin Dizini'nde grup üyelerini toplu olarak kaldırma (önizleme)
 
-Azure Active Directory (Azure AD) portalını kullanarak, grup üyelerini toplu olarak kaldırmak için bir virgülle ayrılmış değerler (CSV) dosyası kullanarak bir gruptan çok sayıda üyeyi kaldırabilirsiniz.
+Azure Etkin Dizin (Azure AD) portalını kullanarak, grup üyelerini toplu olarak kaldırmak için virgülle ayrılmış değerler (CSV) dosyasını kullanarak çok sayıda üyeyi gruptan kaldırabilirsiniz.
 
 ## <a name="to-bulk-remove-group-members"></a>Grup üyelerini toplu olarak kaldırmak için
 
-1. [Azure Portal,](https://portal.azure.com) kuruluştaki bir kullanıcı yönetici hesabıyla oturum açın. Grup sahipleri, sahip oldukları grupların üyelerini de toplu olarak kaldırabilir.
-1. Azure AD 'de **gruplar**  > **tüm gruplar**' ı seçin.
-1. Üyelerini kaldırdığınız grubu açın ve ardından **Üyeler**' i seçin.
-1. **Üyeler** sayfasında, **üyeleri kaldır**' ı seçin.
-1. **Grup üyelerini toplu Kaldır (Önizleme)** sayfasında, gerekli Grup ÜYESI özellikleriyle CSV dosya şablonunu almak için **İndir** ' i seçin.
+1. Kuruluşta bir Kullanıcı yöneticisi hesabıyla [Azure portalında](https://portal.azure.com) oturum açın. Grup sahipleri, sahip oldukları grupların üyelerini toplu olarak kaldırabilir.
+1. Azure AD'de**Tüm grupları** **gruplar** > seçin.
+1. Üye kaldırdığınız grubu açın ve ardından **Üyeler'i**seçin.
+1. **Üyeler** **sayfasında, Üye Kaldır'ı**seçin.
+1. Toplu **kaldırma grubu üyeleri (Önizleme)** sayfasında, gerekli grup üye özelliklerine sahip CSV dosya şablonu almak için **İndir'i** seçin.
 
-   ![Üyeleri Kaldır komutu, grubun profil sayfasında bulunur](./media/groups-bulk-remove-members/remove-panel.png)
+   ![Üyeleri Kaldır komutu grubun profil sayfasında](./media/groups-bulk-remove-members/remove-panel.png)
 
-1. CSV dosyasını açın ve gruptan kaldırmak istediğiniz her grup üyesi için bir satır ekleyin (gerekli değerler üye nesne KIMLIĞI veya Kullanıcı asıl adı). Ardından dosyayı kaydedin.
+1. CSV dosyasını açın ve gruptan kaldırmak istediğiniz her grup üyesi için bir satır ekleyin (gerekli değerler Üye nesne kimliği veya Kullanıcı ana adıdır). Ardından dosyayı kaydedin.
 
-   ![CSV dosyası, kaldırılacak üyelerin adlarını ve kimliklerini içerir](./media/groups-bulk-remove-members/csv-file.png)
+   ![CSV dosyası, üyelerin kaldırabilmek için adlar ve kisimler içerir](./media/groups-bulk-remove-members/csv-file.png)
 
-1. **Grup üyelerini toplu Kaldır (Önizleme)** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyasına gidin. Dosyayı seçtiğinizde,. csv dosyasının doğrulanması başlar.
-1. Dosya içeriği doğrulandığında, toplu içeri aktarma sayfası **dosyayı başarıyla karşıya yüklendi**olarak görüntüler. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
-1. Dosyanız doğrulamayı geçtiğinde, grup üyelerini gruptan kaldıran Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
-1. Kaldırma işlemi tamamlandığında toplu işlemin başarılı olduğunu belirten bir bildirim görürsünüz.
+1. Toplu **kaldırmak grup üyeleri (Önizleme)** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçtiğinizde,.csv dosyasının doğrulanması başlar.
+1. Dosya içeriği doğrulandığında, toplu içe aktarma sayfası **başarıyla yüklenen Dosyayı**görüntüler. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
+1. Dosyanız doğrulamadan geçtiğinde, grup üyelerini gruptan kaldıran Azure toplu işlemini başlatmak için **Gönder'i** seçin.
+1. Kaldırma işlemi tamamlandığında, toplu işlemin başarılı olduğuna dair bir bildirim görürsünüz.
 
-## <a name="check-removal-status"></a>Kaldırma durumunu denetle
+## <a name="check-removal-status"></a>Kaldırma durumunu denetleme
 
-Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları (Önizleme)** sayfasında görebilirsiniz.
+**Toplu işlem sonuçları (önizleme)** sayfasında bekleyen toplu isteklerinizin durumunu görebilirsiniz.
 
-   ![Toplu işlem sonuçları sayfasında, toplu istek durumu gösterilir](./media/groups-bulk-remove-members/bulk-center.png)
+   ![Toplu işlem sonuçları sayfası toplu istek durumunu gösterir](./media/groups-bulk-remove-members/bulk-center.png)
 
-Toplu işlemdeki her bir satır öğesi hakkında ayrıntılar için **# Success**, **# Failure**veya **Total Requests** sütunlarının altındaki değerleri seçin. Hatalar oluştuysa, başarısızlık nedenleri listelenecektir.
+Toplu işlemdeki her satır öğesi yle ilgili ayrıntılar için **# Success**, **# Failure**veya Toplam **İstek** sütunları altındaki değerleri seçin. Hatalar oluştuysa, hata nedenleri listelenir.
 
 ## <a name="bulk-removal-service-limits"></a>Toplu kaldırma hizmeti sınırları
 
-Grup üyelerinin bir listesini kaldırmak için her toplu etkinlik, bir saate kadar çalıştırılabilir. Bu, en az 40.000 üyenin listesini kaldırmaya izin vermez.
+Grup üyelerinin listesini kaldırmak için yapılan her toplu etkinlik bir saate kadar çalıştırılabilir. Bu, en az 40.000 üyeden oluşan bir listenin kaldırılmasını sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Grup üyelerini Toplu içe aktarma](groups-bulk-import-members.md)
-- [Bir grubun üyelerini indir](groups-bulk-download-members.md)
-- [Tüm grupların bir listesini indir](groups-bulk-download.md)
+- [Toplu alma grubu üyeleri](groups-bulk-import-members.md)
+- [Bir grubun üyelerini indirin](groups-bulk-download-members.md)
+- [Tüm grupların listesini indirin](groups-bulk-download.md)

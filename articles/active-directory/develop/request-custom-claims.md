@@ -1,7 +1,7 @@
 ---
-title: Özel talepler iste (MSAL iOS/macOS) | Mavisi
+title: Özel talepler isteyin (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: Özel talepler isteme hakkında bilgi edinin.
+description: Özel talepler nasıl isteyeceğini öğrenin.
 services: active-directory
 documentationcenter: ''
 author: mmacy
@@ -18,27 +18,27 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085596"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Nasıl yapılır: iOS ve macOS için MSAL kullanarak özel talepler ISTEME
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Nasıl yapilir: iOS ve macOS için MSAL kullanarak özel talep teshis ihya
 
-OpenID Connect, isteğe bağlı olarak, UserInfo uç noktasından ve/veya KIMLIK belirtecinde tek tek taleplerin döndürülmesini ister. Talep isteği, istenen talepler listesini içeren bir JSON nesnesi olarak temsil edilir. Daha fazla bilgi için bkz. [OpenID Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
+OpenID Connect, UserInfo Bitiş Noktası'ndan ve/veya Id Jetonundan bireysel taleplerin iadesini isteğe bağlı olarak talep etmenizi sağlar. Talep isteği, istenen taleplerin listesini içeren bir JSON nesnesi olarak temsil edilir. Daha fazla bilgi için [OpenID Connect Core 1.0'a](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) bakın.
 
-İOS ve macOS için Microsoft kimlik doğrulama kitaplığı (MSAL), hem etkileşimli hem de sessiz belirteç alma senaryolarında belirli talepler istemeyi sağlar. Bu, `claimsRequest` parametresi aracılığıyla yapılır.
+iOS ve macOS için Microsoft Kimlik Doğrulama Kitaplığı (MSAL), hem etkileşimli hem de sessiz belirteç edinme senaryolarında belirli talepler talep edilmesine olanak tanır. Bunu `claimsRequest` parametre aracılığıyla yapar.
 
-Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
+Bunun gerekli olduğu birden çok senaryo vardır. Örnek:
 
-- Uygulamanız için standart küme dışında talepler isteme.
-- Uygulamanız için kapsamlar kullanılarak belirtilemez standart talepler için belirli birleşimler isteniyor. Örneğin, eksik talepler nedeniyle erişim belirteci reddedilirse, uygulama MSAL kullanarak eksik talepleri isteyebilir.
+- Başvurunuz için standart kümenin dışında talepte bulunmak.
+- Uygulamanız için kapsamlar kullanılarak belirtilemeyen standart taleplerin belirli birleşimlerini istemek. Örneğin, bir erişim belirteci eksik talepler nedeniyle reddedilirse, uygulama MSAL kullanarak eksik talepleri isteyebilir.
 
 > [!NOTE]
-> MSAL, bir talep isteği belirtildiğinde erişim belirteci önbelleğini atlar. Ek talepler gerektiğinde yalnızca `claimsRequest` parametre sağlanması önemlidir (her bir MSAL API çağrısında aynı `claimsRequest` parametresini her zaman sağlamanın aksine).
+> MSAL, talep isteği belirtildiğinde erişim belirteç önbelleğini atlar. Yalnızca ek talepler gerektiğinde `claimsRequest` parametre sağlamak önemlidir (her MSAL API çağrısında her zaman aynı `claimsRequest` parametrenin sağlanmasının aksine).
 
-`claimsRequest`, `MSALSilentTokenParameters` ve `MSALInteractiveTokenParameters`belirtilebilir:
+`claimsRequest`belirtilebilir `MSALSilentTokenParameters` ve: `MSALInteractiveTokenParameters`
 
 ```objc
 /*!
@@ -54,7 +54,7 @@ Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
 
 @end
 ```
-`MSALClaimsRequest`, JSON talep isteğinin NSString gösteriminden oluşturulabilir. 
+`MSALClaimsRequest`JSON Talepleri isteğinin NSString gösteriminden oluşturulabilir. 
 
 Amaç-C:
 
@@ -63,7 +63,7 @@ NSError *claimsError = nil;
 MSALClaimsRequest *request = [[MSALClaimsRequest alloc] initWithJsonString:@"{\"id_token\":{\"auth_time\":{\"essential\":true},\"acr\":{\"values\":[\"urn:mace:incommon:iap:silver\"]}}}" error:&claimsError];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 var requestError: NSError? = nil
@@ -73,7 +73,7 @@ let request = MSALClaimsRequest(jsonString: "{\"id_token\":{\"auth_time\":{\"ess
 
 
 
-Ayrıca, ek özel talepler isteyerek de değiştirilebilir:
+Ayrıca ek özel talepler istenerek değiştirilebilir:
 
 Amaç-C:
 
@@ -85,7 +85,7 @@ individualClaimRequest.additionalInfo.value = @"myvalue";
 [request requestClaim:individualClaimRequest forTarget:MSALClaimsRequestTargetIdToken error:&claimsError];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let individualClaimRequest = MSALIndividualClaimRequest(name: "custom-claim")
@@ -103,7 +103,7 @@ do {
 
 
 
-`MSALClaimsRequest`, belirteç parametrelerinde ayarlanmalıdır ve MSAL Token alma API 'Lerinden birine sağlanmalıdır:
+`MSALClaimsRequest`daha sonra belirteç parametrelerinde ayarlanmalı ve MSAL belirteç kazanımlarından birine SAĞlanmalıdır:
 
 Amaç-C:
 
@@ -118,7 +118,7 @@ parameters.claimsRequest = request;
 [application acquireTokenWithParameters:parameters completionBlock:completionBlock];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let application: MSALPublicClientApplication!
@@ -135,4 +135,4 @@ application.acquireToken(with: parameters) { (result: MSALResult?, error: Error?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin
+[Kimlik Doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin

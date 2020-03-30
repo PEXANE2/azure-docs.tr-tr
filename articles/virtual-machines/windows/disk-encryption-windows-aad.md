@@ -1,6 +1,6 @@
 ---
-title: Windows VM 'Leri için Azure AD ile Azure disk şifrelemesi (önceki sürüm)
-description: Bu makalede, Microsoft Azure Disk şifrelemesi için Windows Iaas Vm'leri etkinleştirme hakkında yönergeler sağlar.
+title: Windows VM'ler için Azure AD ile Azure Disk Şifrelemesi (önceki sürüm)
+description: Bu makalede, Windows IaaS VM'ler için Microsoft Azure Disk Şifrelemesi etkinleştirme ile ilgili yönergeler sağlanmaktadır.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
@@ -8,74 +8,74 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: d06be85e4d18bc0867835a307b44ec8813c79d7d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72245012"
 ---
-# <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows VM 'Leri için Azure AD ile Azure disk şifrelemesi (önceki sürüm)
+# <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows VM'ler için Azure AD ile Azure Disk Şifrelemesi (önceki sürüm)
 
-**Azure disk şifrelemesi 'nin yeni sürümü, VM disk şifrelemeyi etkinleştirmek için bir Azure AD uygulama parametresi sağlama gereksinimini ortadan kaldırır. Yeni sürümde, artık şifrelemeyi Etkinleştir adımını kullanarak Azure AD kimlik bilgilerini sağlamanız gerekmez. Yeni sürüm kullanılarak Azure AD uygulama parametreleri olmadan tüm yeni VM 'Ler şifrelenmelidir. Yeni sürümü kullanarak VM disk şifrelemesini etkinleştirme yönergelerini görüntülemek için bkz. [Windows VM 'leri Için Azure disk şifrelemesi](disk-encryption-windows.md). Azure AD uygulama parametreleriyle zaten şifrelenmiş VM 'Ler hala desteklenmektedir ve AAD sözdizimi ile sürdürülmeye devam etmelidir.**
+**Azure Disk Şifreleme'nin yeni sürümü, VM disk şifrelemesini etkinleştirmek için Bir Azure AD uygulama parametresi sağlama gereksinimini ortadan kaldırır. Yeni sürümle, şifrelemeyi etkinleştir medeni sırasında Azure AD kimlik bilgilerini sağlamanız artık gerekmez. Tüm yeni VM'ler, yeni sürümü kullanarak Azure AD uygulama parametreleri olmadan şifrelenmelidir. Yeni sürümü kullanarak VM disk şifrelemesini etkinleştirmek için yönergeleri görüntülemek [için Windows VMS için Azure Disk Şifreleme'ye](disk-encryption-windows.md)bakın. Azure AD uygulama parametreleri ile zaten şifrelenmiş olan VM'ler hala desteklenir ve AAD sözdizimi ile korunmaya devam etmelidir.**
 
 
-Çok sayıda disk şifreleme senaryoları etkinleştirebilirsiniz ve adımları senaryoya göre değişiklik gösterebilir. Aşağıdaki bölümlerde, Windows Iaas Vm'leri için daha ayrıntılı senaryoları kapsar. Disk şifreleme kullanmadan önce [Azure Disk şifrelemesi önkoşulları](disk-encryption-overview-aad.md) tamamlanması gerekir. 
+Birçok disk şifreleme senaryosunu etkinleştirebilirsiniz ve adımlar senaryoya göre değişebilir. Aşağıdaki bölümler, Windows IaaS VM'leri için senaryoları daha ayrıntılı olarak kapsamaktadır. Disk şifrelemeyi kullanabilmeniz için [önce Azure Disk Şifreleme ön koşullarının](disk-encryption-overview-aad.md) tamamlanması gerekir. 
 
 
 >[!IMPORTANT]
-> - Diskler şifrelenmeden önce [bir anlık görüntü alıp](snapshot-copy-managed-disk.md) /veya bir yedek oluşturmalısınız. Yedekleme kurtarma seçeneğini şifreleme sırasında beklenmeyen bir hata oluşması durumunda olası olduğundan emin olun. Şifreleme gerçekleşmeden önce yönetilen disklere sahip VM'ler yedeklemesini gerektirir. Bir yedekleme yapıldıktan sonra,-skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için [set-AzVMDiskEncryptionExtension cmdlet 'ini](/powershell/module/az.compute/set-azvmdiskencryptionextension) kullanabilirsiniz. Şifrelenmiş VM 'Leri yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [şifrelenmiş Azure VM 'Yi yedekleme ve geri yükleme](../../backup/backup-azure-vms-encryption.md). 
+> - Diskler şifrelenmeden önce [anlık görüntü almalı](snapshot-copy-managed-disk.md) ve/veya yedekleme oluşturmalısınız. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata oluşursa kurtarma seçeneğinin mümkün olmasını sağlar. Yönetilen disklere sahip VM'ler, şifreleme oluşmadan önce yedekleme gerektirir. Yedekleme yapıldıktan sonra, -skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için [Set-AzVMDiskEncryptionExtension cmdlet'ini](/powershell/module/az.compute/set-azvmdiskencryptionextension) kullanabilirsiniz. Şifreli VM'leri yedekleme ve geri yükleme hakkında daha fazla bilgi [için, yedekleme ve şifreli Azure VM'yi geri yükleme](../../backup/backup-azure-vms-encryption.md)'ye bakın. 
 >
-> - Şifrelemeyi şifrelemek veya devre dışı bırakmak bir sanal makinenin yeniden başlatılmasına neden olabilir.
+> - Şifrelemeyi şifrelemek veya devre dışı bırakmak Bir VM'nin yeniden başlatılmasına neden olabilir.
 
-## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>Marketinden oluşturulan yeni Iaas Vm'leri şifrelemeyi etkinleştirin
-Marketten bir Resource Manager şablonu kullanarak azure'da yeni Iaas Windows VM'de disk şifrelemeyi etkinleştirebilirsiniz. Yeni bir şifrelenmiş Windows Windows Server 2012 Galerisi görüntüsünü kullanarak VM şablonu oluşturur.
+## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>Marketten oluşturulan yeni IaaS VM'lerde şifrelemeyi etkinleştirme
+Kaynak Yöneticisi şablonu kullanarak Azure'daki Market'ten yeni IaaS Windows VM'de disk şifrelemeyi etkinleştirebilirsiniz. Şablon, Windows Server 2012 galeri görüntüsünü kullanarak yeni bir şifreli Windows VM oluşturur.
 
-1. Üzerinde [Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image), tıklayın **azure'a Dağıt**.
+1. Kaynak [Yöneticisi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)şablonunda, **Azure'a Dağıt'ı**tıklatın.
 
-2. Abonelik, kaynak grubu, kaynak grubu konumu, parametreleri, yasal koşulları ve Sözleşmesi'ni seçin. Tıklayın **satın alma** şifrelemesi etkin olduğu yeni bir Iaas VM dağıtmak için.
+2. Aboneliği, kaynak grubunu, kaynak grubu konumunu, parametreleri, yasal koşulları ve anlaşmayı seçin. Şifrelemenin etkin olduğu yeni bir IaaS VM dağıtmak için **Satın Alma'yı** tıklatın.
 
-3. Şablonu dağıttıktan sonra tercih ettiğiniz yöntemi kullanarak VM şifreleme durumunu doğrulayın:
-     - Azure CLI'yı kullanarak doğrulama [az vm şifreleme show](/cli/azure/vm/encryption#az-vm-encryption-show) komutu. 
+3. Şablonu dağıttıktan sonra, tercih ettiğiniz yöntemi kullanarak VM şifreleme durumunu doğrulayın:
+     - [Az vm şifreleme göster](/cli/azure/vm/encryption#az-vm-encryption-show) komutunu kullanarak Azure CLI ile doğrulayın. 
 
          ```azurecli-interactive 
          az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
          ```
 
-     - [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) cmdlet 'ini kullanarak Azure PowerShell ile doğrulayın. 
+     - [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) cmdlet'i kullanarak Azure PowerShell ile doğrulayın. 
 
          ```azurepowershell-interactive
          Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
          ```
 
-     -  Sanal Makineyi seçin ve ardından tıklayarak **diskleri** altında **ayarları** şifreleme durumu Portalı'nda doğrulamak için başlık. Grafiğin altında **şifreleme**, etkin olup olmadığını göreceksiniz. 
-           ![Azure portal disk şifrelemesi etkin](../media/disk-encryption/disk-encryption-fig2.png)
+     -  VM'yi seçin ve ardından portaldaki şifreleme durumunu doğrulamak için **Ayarlar** başlığı altındaki **Diskler'i** tıklatın. **Şifreleme**altındaki grafikte etkin olup olmadığını görürsünüz. 
+           ![Azure portalı - Disk Şifreleme Etkin](../media/disk-encryption/disk-encryption-fig2.png)
 
-Aşağıdaki tabloda Azure AD istemci KIMLIĞI kullanılarak Market senaryosundan yeni VM 'Ler için Kaynak Yöneticisi şablon parametreleri listelenmektedir:
+Aşağıdaki tabloda, Azure AD istemci kimliğini kullanarak Market senaryosundaki yeni VM'ler için Kaynak Yöneticisi şablon parametreleri listelenir:
 
 | Parametre | Açıklama | 
 | --- | --- |
 | adminUserName | Sanal makine için yönetici kullanıcı adı. |
 | adminPassword | Sanal makine için yönetici kullanıcı parolası. |
-| newStorageAccountName | İşletim sistemi ve veri VHD'leri depolamak için depolama hesabının adıdır. |
-| vmSize | VM boyutu. Şu anda yalnızca standart A, D ve G serisi desteklenmektedir. |
-| virtualNetworkName | VM NIC ait olması gereken Vnet'in adı. |
-| subnetName | VM NIC ait olmalıdır bir sanal ağ içindeki alt ağ adı. |
-| Aadclientıd | Gizli anahtar kasanız için yazma iznine sahip Azure AD uygulamasının istemci kimliği. |
-| AADClientSecret | Gizli anahtar kasanız için yazma iznine sahip Azure AD uygulamasının istemci gizli anahtarı. |
-| keyVaultURL | BitLocker anahtarı karşıya yüklenmelidir anahtar kasasının URL'si. Cmdlet'ini kullanarak elde edeceğinizi `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` veya Azure CLI `az keyvault show --name "MySecureVault" --query properties.vaultUri` |
-| KeyEncryptionKeyURL | (İsteğe bağlı) oluşturulan BitLocker anahtarı şifrelemek için kullanılan anahtar şifreleme anahtarı URL'si. </br> </br>KeyEncryptionKeyURL isteğe bağlı bir parametredir. Anahtar kasanızda veri şifreleme anahtarının (parola) daha fazla koruma için kendi KEK getirebilirsiniz. |
+| newStorageAccountName | İşletim sistemi ve veri VHD'lerini depolamak için depolama hesabının adı. |
+| vmSize | VM boyutu. Şu anda yalnızca Standart A, D ve G serileri desteklenir. |
+| virtualNetworkName | VM NIC'nin ait olması gereken VNet'in adı. |
+| subnetName | VM NIC'nin ait olması gereken VNet'teki alt netin adı. |
+| AADClientID | Anahtar kasanıza sır yazma izinleri olan Azure AD uygulamasının istemci kimliği. |
+| AADClientSecret | Anahtar kasanıza sır yazma izinleri olan Azure AD uygulamasının istemci sırrı. |
+| keyVaultURL | BitLocker anahtarının yüklenmesi gereken anahtar kasasının URL'si. Cmdlet `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` veya Azure CLI kullanarak alabilirsiniz`az keyvault show --name "MySecureVault" --query properties.vaultUri` |
+| keyEncryptionKeyURL | Oluşturulan BitLocker anahtarını şifrelemek için kullanılan anahtar şifreleme anahtarının URL'si (isteğe bağlı). </br> </br>KeyEncryptionKeyURL isteğe bağlı bir parametredir. Anahtar kasanızdaki veri şifreleme anahtarını (Passphrase secret) daha fazla korumak için kendi KEK'inizi getirebilirsiniz. |
 | keyVaultResourceGroup | Anahtar kasasının kaynak grubu. |
-| vmName | Şifreleme işlemi gerçekleştirilecek olan bir VM adı. |
+| vmName | Şifreleme işleminin yapılacağı VM'nin adı. |
 
 
-## <a name="bkmk_RunningWinVM"></a> Var olan veya Iaas Windows Vm'leri çalıştırma şifrelemeyi etkinleştir
-Bu senaryoda, bir şablon, PowerShell cmdlet'leri veya CLI komutları kullanarak şifreleyebilirsiniz. Aşağıdaki bölümlerde, Azure Disk şifrelemesi etkinleştirme konusunda daha ayrıntılı olarak açıklanmaktadır. 
+## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a><a name="bkmk_RunningWinVM"></a>Varolan veya çalışan IaaS Windows VM'lerde şifrelemeyi etkinleştirme
+Bu senaryoda, bir şablon, PowerShell cmdlets veya CLI komutları kullanarak şifreleme yi etkinleştirebilirsiniz. Aşağıdaki bölümlerde Azure Disk Şifrelemesi'nin nasıl etkinleştirilen daha ayrıntılı olarak açıklanmaktadır. 
 
 
-### <a name="bkmk_RunningWinVMPSH"></a> Var olan veya Azure PowerShell ile sanal makine çalıştırma şifrelemeyi etkinleştir 
-Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek için [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 'ini kullanın. PowerShell cmdlet'lerini kullanarak Azure Disk şifrelemesi ile şifrelemeyi etkinleştirme hakkında daha fazla bilgi için bkz. blog gönderileri [Azure PowerShell - bölüm 1 ile Azure Disk şifrelemesi keşfedin](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) ve [Azure Disk şifrelemesi keşfedin Azure PowerShell ile - bölüm 2](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx).
+### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a><a name="bkmk_RunningWinVMPSH"></a>Azure PowerShell ile varolan veya çalışan VM'lerde şifreleme yi etkinleştirme 
+Azure'da çalışan bir IaaS sanal makinede şifreleme sağlamak için [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet'ini kullanın. PowerShell cmdlets kullanarak Azure Disk Şifrelemesi ile şifrelemeyi etkinleştirme hakkında bilgi için, blog gönderilerine bakın [Azure PowerShell ile Azure Disk Şifrelemesini Keşfedin - Bölüm 1](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) ve Azure [PowerShell ile Azure Disk Şifrelemesini Keşfedin - Bölüm 2](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx).
 
--  **Çalışan bir VM 'yi bir istemci parolası kullanarak şifreleyin:** Aşağıdaki komut dosyası değişkenlerinizi başlatır ve set-AzVMDiskEncryptionExtension cmdlet 'ini çalıştırır. Kaynak grubu, VM, anahtar kasası, AAD uygulaması ve istemci gizli anahtarı zaten önkoşul olarak oluşturulmuş olmalıdır. MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin.
+-  **Çalışan bir VM'yi istemci sırrını kullanarak şifreleme:** Aşağıdaki komut dosyası değişkenlerinizi çalıştırıyor ve Set-AzVMDiskEncryptionExtension cmdlet'i çalıştırıyor. Kaynak grubu, VM, anahtar kasası, AAD uygulaması ve istemci sırrı zaten ön koşul olarak oluşturulmuş olmalıdır. MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, MySecureVault, My-AAD-client-ID ve My-AAD-istemci-gizli değerleriniz ile değiştirin.
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
       $VMRGName = 'MyVirtualMachineResourceGroup';
@@ -89,7 +89,7 @@ Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek iç
 
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
     ```
-- **İstemci gizli anahtarı sarmalama KEK kullanarak çalışan bir VM şifreleme:** Azure Disk şifrelemesi var olan bir anahtar şifreleme etkinleştirirken oluşturulan disk şifreleme gizli dizileri sarmalamak için anahtar kasanızdaki belirtmenize olanak sağlar. Anahtar şifreleme anahtarı belirtildiğinde, Azure Disk şifrelemesi anahtar Kasası'na yazmadan önce şifreleme parolaları sarmalamak için bu anahtarı kullanır. 
+- **İstemci sırrını sarmak için KEK kullanarak çalışan bir VM'yi şifreleyin:** Azure Disk Şifreleme, şifrelemeyi etkinleştirirken oluşturulan disk şifreleme sırlarını sarmak için anahtar kasanızda varolan bir anahtar belirtmenize olanak tanır. Bir anahtar şifreleme anahtarı belirtildiğinde, Azure Disk Şifreleme, Key Vault'a yazmadan önce şifreleme sırlarını sarmak için bu anahtarı kullanır. 
 
      ```azurepowershell
      $KVRGname = 'MyKeyVaultResourceGroup';
@@ -109,79 +109,79 @@ Azure 'da çalışan bir IaaS sanal makinesinde şifrelemeyi etkinleştirmek iç
      ```
      
    >[!NOTE]
-   > Disk şifreleme keyvault parametresinin değeri söz diziminin tam tanımlayıcı bir dizedir: / subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> Anahtar şifreleme anahtarı parametresinin değeri sözdizimi KEK olarak tam URI şudur: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+   > Disk-şifreleme-keyvault parametresi değeri için sözdizimi tam tanımlayıcı dizedir: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> Anahtar-şifreleme-anahtar parametresi değeri için sözdizimi kek için tam URI olduğu gibi: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
 
-- **Disklerin şifrelendiğini doğrulayın:** IaaS VM 'sinin şifreleme durumunu denetlemek için [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) cmdlet 'ini kullanın. 
+- **Disklerin şifreli olduğunu doğrulayın:** Bir IaaS VM'nin şifreleme durumunu kontrol etmek için [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) cmdlet'ini kullanın. 
      ```azurepowershell-interactive
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
     
-- **Disk şifreleme devre dışı bırak:** şifreleme devre dışı bırakmak için [Disable-AzureRmVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet'i. 
+- **Disk şifrelemeyi devre dışı devre dışı:** Şifrelemeyi devre dışı bırakmak için [Devre Dışı Bırak-AzureRmVMDiskŞifreleme](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet'ini kullanın. 
      ```azurepowershell-interactive
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
 
-### <a name="bkmk_RunningWinVMCLI"></a>Var olan veya Azure CLI ile sanal makine çalıştırma şifrelemeyi etkinleştir
-Kullanım [az vm şifrelemeyi etkinleştirme](/cli/azure/vm/encryption#az-vm-encryption-enable) azure'da çalıştırılan Iaas sanal makine üzerinde şifrelemeyi etkinleştirmek için komutu.
+### <a name="enable-encryption-on-existing-or-running-vms-with--azure-cli"></a><a name="bkmk_RunningWinVMCLI"></a>Azure CLI ile varolan veya çalışan VM'lerde şifreleme yi etkinleştirme
+Azure'da çalışan bir IaaS sanal makinede şifreleme sağlamak için [az vm şifreleme etkinleştir](/cli/azure/vm/encryption#az-vm-encryption-enable) komutunu kullanın.
 
-- **İstemci gizli anahtarı kullanarak çalışan bir VM şifrele:**
+- **Çalışan bir VM'yi istemci sırrını kullanarak şifreleme:**
 
     ```azurecli-interactive
     az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --aad-client-id "<my spn created with CLI/my Azure AD ClientID>"  --aad-client-secret "My-AAD-client-secret" --disk-encryption-keyvault "MySecureVault" --volume-type [All|OS|Data]
     ```
 
-- **İstemci gizli anahtarı sarmalama KEK kullanarak çalışan bir VM şifrele:**
+- **İstemci sırrını sarmak için KEK kullanarak çalışan bir VM'yi şifreleyin:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --aad-client-id "<my spn created with CLI which is the Azure AD ClientID>"  --aad-client-secret "My-AAD-client-secret" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type [All|OS|Data]
      ```
 
      >[!NOTE]
-     > Disk şifreleme keyvault parametresinin değeri söz diziminin tam tanımlayıcı bir dizedir: / subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] </br> Anahtar şifreleme anahtarı parametresinin değeri sözdizimi KEK olarak tam URI şudur: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+     > Disk-şifreleme-keyvault parametresi değeri için sözdizimi tam tanımlayıcı dizedir: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] </br> Anahtar-şifreleme-anahtar parametresi değeri için sözdizimi kek için tam URI olduğu gibi: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
 
-- **Disklerin şifrelendiğini doğrulayın:** IaaS VM 'sinin şifreleme durumunu denetlemek için [az VM Encryption Show](/cli/azure/vm/encryption#az-vm-encryption-show) komutunu kullanın. 
+- **Disklerin şifreli olduğunu doğrulayın:** Bir IaaS VM'nin şifreleme durumunu kontrol etmek için [az vm şifreleme göster](/cli/azure/vm/encryption#az-vm-encryption-show) komutunu kullanın. 
 
      ```azurecli-interactive
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **Şifreleme devre dışı bırak:** şifreleme devre dışı bırakmak için [az vm şifreleme devre dışı](/cli/azure/vm/encryption#az-vm-encryption-disable) komutu. 
+- **Şifrelemeyi devre dışı kılabilir:** Şifrelemeyi devre dışı kullanabilirsiniz, [az vm şifreleme devre dışı etme](/cli/azure/vm/encryption#az-vm-encryption-disable) komutunu kullanın. 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 
 
-### <a name="bkmk_RunningWinVMwRM"> </a>Resource Manager şablonu kullanma
-Disk şifrelemesi kullanarak Azure'da Iaas Windows Vm'leri çalıştırma ya da varolan etkinleştirebilirsiniz [çalışan bir Windows VM şifreleme için Resource Manager şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
+### <a name="using-the-resource-manager-template"></a><a name="bkmk_RunningWinVMwRM"> </a>Kaynak Yöneticisi şablonu kullanma
+[Çalışan bir Windows VM'yi şifrelemek için Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)kullanarak Azure'da varolan veya çalışan IaaS Windows VM'lerinde disk şifrelemesini etkinleştirebilirsiniz.
 
 
-1. Azure Hızlı Başlangıç şablonu üzerinde **azure'a Dağıt**.
+1. Azure hızlı başlatma şablonunda, **Azure'a Dağıt'ı**tıklatın.
 
-2. Abonelik, kaynak grubu, kaynak grubu konumu, parametreleri, yasal koşulları ve Sözleşmesi'ni seçin. Tıklayın **satın alma** var olan veya çalışan Iaas VM üzerinde şifrelemeyi etkinleştirmek için.
+2. Aboneliği, kaynak grubunu, kaynak grubu konumunu, parametreleri, yasal koşulları ve anlaşmayı seçin. Varolan veya çalışan IaaS VM'de şifrelemeyi etkinleştirmek için **Satın Al'ı** tıklatın.
 
-Var olan veya bir Azure AD İstemci Kimliğini kullanan sanal makineleri çalıştırmak için Resource Manager şablon parametreleri aşağıdaki tabloda listelenmektedir:
+Aşağıdaki tabloda, Azure AD istemci kimliği kullanan varolan veya çalışan VM'ler için Kaynak Yöneticisi şablon parametreleri listelenir:
 
 | Parametre | Açıklama |
 | --- | --- |
-| Aadclientıd | Bir anahtar kasasına gizli anahtarları yazmak için izne sahip olan Azure AD uygulamasının istemci kimliği. |
-| AADClientSecret | Bir anahtar kasasına gizli anahtarları yazmak için izne sahip olan Azure AD uygulamasının istemci gizli anahtarı. |
-| keyVaultName | BitLocker anahtarı karşıya yüklenmelidir anahtar kasasının adı. Bunu, cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLı komutunu kullanarak edinebilirsiniz `az keyvault list --resource-group "MySecureGroup"`|
-|  KeyEncryptionKeyURL | Oluşturulan BitLocker anahtarı şifrelemek için kullanılan anahtar şifreleme anahtarı URL'si. Bu seçerseniz isteğe bağlı bir parametredir **nokek** UseExistingKek aşağı açılan listesinde. Seçerseniz **kek** UseExistingKek aşağı açılan listeden girmelisiniz _keyEncryptionKeyURL_ değeri. |
-| VolumeType | Şifreleme işlemi gerçekleştirilir birim türü. Geçerli değerler _işletim sistemi_, _veri_, ve _tüm_. |
-| SequenceVersion | BitLocker işlemi dizisi sürümü. Bu sürüm numarası, aynı sanal makinede her bir disk şifreleme işlemi gerçekleştirildiğinde artırın. |
-| vmName | Şifreleme işlemi gerçekleştirilecek olan bir VM adı. |
+| AADClientID | Anahtar kasasına sır yazma izinleri olan Azure AD uygulamasının istemci kimliği. |
+| AADClientSecret | Anahtar kasasına sır yazma izinleri olan Azure AD uygulamasının istemci sırrı. |
+| keyVaultName | BitLocker anahtarının yüklenmesi gereken anahtar kasasının adı. Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu kullanarak alabilirsiniz`az keyvault list --resource-group "MySecureGroup"`|
+|  keyEncryptionKeyURL | Oluşturulan BitLocker anahtarını şifrelemek için kullanılan anahtar şifreleme anahtarının URL'si. UseExistingKek açılır listesinde **nokek** seçerseniz bu parametre isteğe bağlıdır. UseExistingKek açılır listesinde **kek'i** seçerseniz, _anahtarEncryptionKeyURL_ değerini girmeniz gerekir. |
+| volumeType | Şifreleme işleminin gerçekleştirildiği birim türü. Geçerli değerler _işletim sistemi,_ _Veri_ve _Tümü'tür._ |
+| sequenceVersion | BitLocker işleminin sıralı sürümü. Aynı VM üzerinde her disk şifreleme işlemi yapıldığında bu sürüm numarasını artım. |
+| vmName | Şifreleme işleminin yapılacağı VM'nin adı. |
 
 
-## <a name="bkmk_VHDpre"> </a>VHD ve şifreleme anahtarları müşteri şifrelenmiş oluşturulan yeni Iaas VM'ler
-Bu senaryoda, Resource Manager şablonu, PowerShell cmdlet'leri veya CLI komutları kullanarak şifreleme etkinleştirebilirsiniz. Aşağıdaki bölümlerde Resource Manager şablonu ve CLI komutları daha ayrıntılı olarak açıklanmaktadır. 
+## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a>Müşteri şifreli VHD ve şifreleme anahtarlarından oluşturulan yeni IaaS VM'ler
+Bu senaryoda, Kaynak Yöneticisi şablonunu, PowerShell cmdlets'i veya CLI komutlarını kullanarak şifrelemeyi etkinleştirebilirsiniz. Aşağıdaki bölümlerde Kaynak Yöneticisi şablonu ve CLI komutları daha ayrıntılı olarak açıklanabilir. 
 
-Yönergeleri ekte, Azure'da kullanılabilen önceden şifrelenmiş görüntüleri hazırlama için kullanın. Görüntü oluşturulduktan sonra şifrelenmiş bir Azure VM oluşturmak için sonraki bölümde adımları kullanabilirsiniz.
+Azure'da kullanılabilecek önceden şifrelenmiş görüntüleri hazırlamak için ekteki yönergeleri kullanın. Resim oluşturulduktan sonra, şifreli bir Azure VM oluşturmak için bir sonraki bölümdeki adımları kullanabilirsiniz.
 
 * [Önceden şifrelenmiş bir Windows VHD hazırlama](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-windows-vhd)
 
 
-### <a name="bkmk_VHDprePSH"> </a> Azure PowerShell ile önceden şifrelenmiş VHD'ler ile VM'lerin şifrele
-[Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples)PowerShell cmdlet 'ini kullanarak, şifrelenen VHD 'niz üzerinde disk şifrelemeyi etkinleştirebilirsiniz. Aşağıdaki örnek, bazı ortak parametreler sunar. 
+### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a><a name="bkmk_VHDprePSH"> </a> Azure PowerShell ile önceden şifrelenmiş VHD'lerle VM'leri şifreleme
+PowerShell cmdlet [Set-AzVMOSDisk'i](/powershell/module/az.compute/set-azvmosdisk#examples)kullanarak şifreli VHD'nizde disk şifrelemesini etkinleştirebilirsiniz. Aşağıdaki örnekte bazı ortak parametreler verir. 
 
 ```powershell
 $VirtualMachine = New-AzVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
@@ -189,14 +189,14 @@ $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name "SecureOSDisk" -VhdUr
 New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ```
 
-## <a name="enable-encryption-on-a-newly-added-data-disk"></a>Yeni eklenen verileri disk şifrelemeyi etkinleştirin
-Yapabilecekleriniz [Windows PowerShell kullanarak bir VM için yeni bir disk ekleyin](attach-disk-ps.md), veya [Azure portalı üzerinden](attach-managed-disk-portal.md). 
+## <a name="enable-encryption-on-a-newly-added-data-disk"></a>Yeni eklenen bir veri diskinde şifrelemeyi etkinleştirme
+PowerShell'i kullanarak veya [Azure portalı aracılığıyla](attach-managed-disk-portal.md)Windows [VM'ye yeni bir disk ekleyebilirsiniz.](attach-disk-ps.md) 
 
-### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>Azure PowerShell ile yeni eklenen bir disk şifrelemeyi etkinleştirin
- Windows VM'ler için yeni bir disk şifrelemek için PowerShell kullanırken, yeni bir dizisi sürümü belirtilmelidir. Dizisi sürümü benzersiz olması gerekir. Aşağıdaki komut dizisi sürümü için bir GUID oluşturur. Bazı durumlarda yeni eklenen veri diski tarafından Azure Disk şifrelemesi uzantısını otomatik olarak şifrelenebilir. Otomatik şifreleme, genellikle yeni diski çevrimiçi olduktan sonra VM yeniden başlatıldığında gerçekleşir. Bu, genellikle "All" belirtilmiş olduğundan birim türünü disk şifrelemesi daha önce VM üzerinde çalıştırdığınızda kaynaklanır. Yeni eklenen bir veri diskinde Otomatik şifreleme gerçekleşirse, set-AzVmDiskEncryptionExtension cmdlet 'ini yeni bir sıra sürümü ile yeniden çalıştırmayı öneririz. Varsa, yeni bir veri diski şifreli otomatik ve şifrelenmiş istiyor musunuz tüm sürücüleri ilk şifresini sonra işletim sistemi için birim türünü belirterek yeni bir dizisi sürümü ile yeniden şifrelenemedi. 
+### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>Azure PowerShell ile yeni eklenen bir diskte şifreleme yi etkinleştirme
+ Windows VM'ler için yeni bir diski şifrelemek için Powershell kullanılırken, yeni bir sıra sürümü belirtilmelidir. Dizi sürümü benzersiz olmalıdır. Aşağıdaki komut dosyası, sıra sürümü için bir GUID oluşturur. Bazı durumlarda, yeni eklenen bir veri diski Azure Disk Şifreleme uzantısı tarafından otomatik olarak şifrelenebilir. Otomatik şifreleme genellikle yeni disk çevrimiçi olduktan sonra VM yeniden başlatıldığında oluşur. Bunun nedeni genellikle, disk şifrelemesi vm'de daha önce çalıştırıldığında birim türü için "Tümü" belirtilmiş olduğundan kaynaklanır. Yeni eklenen bir veri diskinde otomatik şifreleme oluşuyorsa, Set-AzVmDiskEncryptionExtension cmdlet'i yeni sıra sürümüyle yeniden çalıştırmanızı öneririz. Yeni veri diskiniz otomatik olarak şifrelenmişse ve şifrelenmek istemiyorsanız, önce tüm sürücülerin şifresini çöz, ardından ses türü için işletim sistemi belirten yeni bir dizi sürümüyle yeniden şifreleyin. 
  
 
--  **Çalışan bir VM 'yi bir istemci parolası kullanarak şifreleyin:** Aşağıdaki komut dosyası değişkenlerinizi başlatır ve set-AzVMDiskEncryptionExtension cmdlet 'ini çalıştırır. Kaynak grubu, VM, anahtar kasası, AAD uygulaması ve istemci gizli anahtarı zaten önkoşul olarak oluşturulmuş olmalıdır. MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, Mysecurekasası, My-AAD-Client-ID ve My-AAD-Client-Secret değerlerini değerlerinizle değiştirin. Bu örnekte, "All" hem işletim sistemi ve veri birimlerini içeren - VolumeType parametresi için kullanılır. Yalnızca işletim sistemi birimi şifrelemek istiyorsanız, - VolumeType parametresi için "OS" kullanın. 
+-  **Çalışan bir VM'yi istemci sırrını kullanarak şifreleme:** Aşağıdaki komut dosyası değişkenlerinizi çalıştırıyor ve Set-AzVMDiskEncryptionExtension cmdlet'i çalıştırıyor. Kaynak grubu, VM, anahtar kasası, AAD uygulaması ve istemci sırrı zaten ön koşul olarak oluşturulmuş olmalıdır. MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, MySecureVault, My-AAD-client-ID ve My-AAD-istemci-gizli değerleriniz ile değiştirin. Bu örnek, hem işletim sistemi hem de Veri birimlerini içeren -VolumeType parametresi için "Tümü" kullanır. Yalnızca işletim sistemi hacmini şifrelemek istiyorsanız, -VolumeType parametresi için "OS" kullanın. 
 
      ```azurepowershell
       $sequenceVersion = [Guid]::NewGuid();
@@ -212,7 +212,7 @@ Yapabilecekleriniz [Windows PowerShell kullanarak bir VM için yeni bir disk ekl
 
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'all' –SequenceVersion $sequenceVersion;
     ```
-- **İstemci gizli anahtarı sarmalama KEK kullanarak çalışan bir VM şifreleme:** Azure Disk şifrelemesi var olan bir anahtar şifreleme etkinleştirirken oluşturulan disk şifreleme gizli dizileri sarmalamak için anahtar kasanızdaki belirtmenize olanak sağlar. Anahtar şifreleme anahtarı belirtildiğinde, Azure Disk şifrelemesi anahtar Kasası'na yazmadan önce şifreleme parolaları sarmalamak için bu anahtarı kullanır. Bu örnekte, "All" hem işletim sistemi ve veri birimlerini içeren - VolumeType parametresi için kullanılır. Yalnızca işletim sistemi birimi şifrelemek istiyorsanız, - VolumeType parametresi için "OS" kullanın. 
+- **İstemci sırrını sarmak için KEK kullanarak çalışan bir VM'yi şifreleyin:** Azure Disk Şifreleme, şifrelemeyi etkinleştirirken oluşturulan disk şifreleme sırlarını sarmak için anahtar kasanızda varolan bir anahtar belirtmenize olanak tanır. Bir anahtar şifreleme anahtarı belirtildiğinde, Azure Disk Şifreleme, Key Vault'a yazmadan önce şifreleme sırlarını sarmak için bu anahtarı kullanır. Bu örnek, hem işletim sistemi hem de Veri birimlerini içeren -VolumeType parametresi için "Tümü" kullanır. Yalnızca işletim sistemi hacmini şifrelemek istiyorsanız, -VolumeType parametresi için "OS" kullanın. 
 
      ```azurepowershell
      $sequenceVersion = [Guid]::NewGuid();
@@ -233,29 +233,29 @@ Yapabilecekleriniz [Windows PowerShell kullanarak bir VM için yeni bir disk ekl
      ```
 
     >[!NOTE]
-    > Disk şifreleme keyvault parametresinin değeri söz diziminin tam tanımlayıcı bir dizedir: / subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> Anahtar şifreleme anahtarı parametresinin değeri sözdizimi KEK olarak tam URI şudur: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+    > Disk-şifreleme-keyvault parametresi değeri için sözdizimi tam tanımlayıcı dizedir: /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> Anahtar-şifreleme-anahtar parametresi değeri için sözdizimi kek için tam URI olduğu gibi: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
 
-### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>Azure CLI ile yeni eklenen bir disk şifrelemeyi etkinleştirin
-  Şifrelemeyi etkinleştirmek için komutu çalıştırdığınızda Azure CLI komutunu otomatik olarak sizin için yeni bir sıra sürüm sağlayacaktır. Birim yype parametresi için kabul edilebilir değerler, işletim sistemi ve veri tümü. Birim türü parametresi yalnızca VM için bir tür disk şifreleme, işletim sistemi veya veri için değiştirmeniz gerekebilir. Örnekler birim türü parametresi için "All" kullanın. 
+### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>Azure CLI ile yeni eklenen bir diskte şifreleme yi etkinleştirme
+  Azure CLI komutu, şifrelemeyi etkinleştirmek için komutu çalıştırdığınızda sizin için otomatik olarak yeni bir sıra sürümü sağlar. Birim-yype parametresi için kabul edilebilir değerler Tümü, İşletim sistemi ve Veriler'dir. VM için yalnızca bir disk türünü şifreliyorsanız, birim türü parametresini işletim sistemi veya Veri olarak değiştirmeniz gerekebilir. Örnekler, birim türü parametresi için "Tümü"ni kullanır. 
 
--  **İstemci gizli anahtarı kullanarak çalışan bir VM şifrele:**
+-  **Çalışan bir VM'yi istemci sırrını kullanarak şifreleme:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --aad-client-id "<my spn created with CLI/my Azure AD ClientID>"  --aad-client-secret "My-AAD-client-secret" --disk-encryption-keyvault "MySecureVault" --volume-type "All"
      ```
 
-- **İstemci gizli anahtarı sarmalama KEK kullanarak çalışan bir VM şifrele:**
+- **İstemci sırrını sarmak için KEK kullanarak çalışan bir VM'yi şifreleyin:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --aad-client-id "<my spn created with CLI which is the Azure AD ClientID>"  --aad-client-secret "My-AAD-client-secret" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type "all"
      ```
 
 
-## <a name="enable-encryption-using-azure-ad-client-certificate-based-authentication"></a>Azure AD İstemci sertifikası tabanlı kimlik doğrulaması kullanarak şifrelemeyi etkinleştirir.
-İstemci sertifikası kimlik doğrulaması ile veya kek'siz kullanabilirsiniz. PowerShell betikleri kullanmadan önce sertifikayı anahtar kasasına yüklenmiş ve VM'ye dağıttınız olmanız gerekir. KEK KEK çok kullanıyorsanız, zaten mevcut olmalıdır. Daha fazla bilgi için [sertifika tabanlı kimlik doğrulaması için Azure AD](disk-encryption-key-vault-aad.md#certificate-based-authentication-optional) önkoşulları makalesindeki bölümüne bakın.
+## <a name="enable-encryption-using-azure-ad-client-certificate-based-authentication"></a>Azure AD istemci sertifikası tabanlı kimlik doğrulamasını kullanarak şifrelemeyi etkinleştirin.
+KEK ile veya KEK olmadan istemci sertifikası kimlik doğrulamasını kullanabilirsiniz. PowerShell komut dosyalarını kullanmadan önce, sertifikanın anahtar kasasına yüklenmesi ve VM'ye dağıtılması gerekir. KEK'i de kullanıyorsanız, KEK zaten var olmalıdır. Daha fazla bilgi için, önkoşullar makalesinin [Azure AD bölümüiçin Sertifika tabanlı kimlik doğrulaması](disk-encryption-key-vault-aad.md#certificate-based-authentication-optional) bölümüne bakın.
 
 
-### <a name="enable-encryption-using-certificate-based-authentication-with-azure-powershell"></a>Azure PowerShell ile sertifika tabanlı kimlik doğrulaması kullanarak şifrelemeyi etkinleştir
+### <a name="enable-encryption-using-certificate-based-authentication-with-azure-powershell"></a>Azure PowerShell ile sertifika tabanlı kimlik doğrulamayı kullanarak şifrelemeyi etkinleştirme
 
 ```powershell
 ## Fill in 'MyVirtualMachineResourceGroup', 'MyKeyVaultResourceGroup', 'My-AAD-client-ID', 'MySecureVault, and ‘MySecureVM’.
@@ -281,7 +281,7 @@ $aadClientCertThumbprint = $cert.Thumbprint;
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 ```
   
-### <a name="enable-encryption-using-certificate-based-authentication-and-a-kek-with-azure-powershell"></a>Sertifika tabanlı kimlik doğrulaması ve bir KEK ile Azure PowerShell kullanarak şifrelemeyi etkinleştir
+### <a name="enable-encryption-using-certificate-based-authentication-and-a-kek-with-azure-powershell"></a>Azure PowerShell ile sertifika tabanlı kimlik doğrulaması ve KEK kullanarak şifreleme yi etkinleştirme
 
 ```powershell
 # Fill in 'MyVirtualMachineResourceGroup', 'MyKeyVaultResourceGroup', 'My-AAD-client-ID', 'MySecureVault,, 'MySecureVM’, and "KEKName.
@@ -309,25 +309,25 @@ $aadClientCertThumbprint = $cert.Thumbprint;
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId
 ```
 
-## <a name="disable-encryption"></a>Şifrelemeyi devre dışı bırakma
-Azure PowerShell, Azure CLI kullanarak şifreleme devre dışı bırakabilir veya bir Resource Manager şablonu ile. 
+## <a name="disable-encryption"></a>Şifrelemeyi devre dışı
+Azure PowerShell, Azure CLI veya Kaynak Yöneticisi şablonu kullanarak şifrelemeyi devre dışı kullanabilirsiniz. 
 
-- **Azure PowerShell ile disk şifrelemesini devre dışı bırak:** şifreleme devre dışı bırakmak için [Disable-AzureRmVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet'i. 
+- **Azure PowerShell ile disk şifrelemeyi devre dışı katın:** Şifrelemeyi devre dışı bırakmak için [Devre Dışı Bırak-AzureRmVMDiskŞifreleme](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet'ini kullanın. 
      ```azurepowershell-interactive
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
 
-- **Azure CLI ile şifreleme devre dışı bırak:** şifreleme devre dışı bırakmak için [az vm şifreleme devre dışı](/cli/azure/vm/encryption#az-vm-encryption-disable) komutu. 
+- **Azure CLI ile şifrelemeyi devre dışı katın:** Şifrelemeyi devre dışı kullanabilirsiniz, [az vm şifreleme devre dışı etme](/cli/azure/vm/encryption#az-vm-encryption-disable) komutunu kullanın. 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
-- **Resource Manager şablonu ile şifreleme devre dışı bırakın:** 
+- **Kaynak Yöneticisi Şablonu yla şifrelemeyi devre dışı kakın:** 
 
-    1. Tıklayın **azure'a Dağıt** gelen [Windows VM çalıştırma disk şifreleme devre dışı bırak](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) şablonu.
-    2. Abonelik, kaynak grubu, konum, VM, yasal koşulları ve Sözleşmesi'ni seçin.
-    3.  Tıklayın **satın alma** çalışan bir Windows VM'de disk şifreleme devre dışı bırakmak için. 
+    1. Windows VM şablonu [çalıştıran Disk şifrelemesini devre dışı takın'dan](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) **Azure'a Dağıt'ı** tıklatın.
+    2. Aboneliği, kaynak grubunu, konumu, VM'yi, yasal koşulları ve anlaşmayı seçin.
+    3.  Çalışan bir Windows VM'de disk şifrelemesini devre dışı kalmak için **Satın Al'ı** tıklatın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure disk şifrelemeye genel bakış](disk-encryption-overview.md)
+> [Azure Disk Şifreleme'ye genel bakış](disk-encryption-overview.md)

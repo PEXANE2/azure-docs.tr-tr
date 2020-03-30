@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Kurumsal durum dolaşımı nedir?
-description: Enterprise State Roaming, kullanıcılara Windows cihazlarında birleştirilmiş bir deneyim sağlar
+title: Azure Etkin Dizin'de kurumsal durum dolaşımı nedir?
+description: Kurumsal Durum Dolaşımı, kullanıcılara Windows aygıtlarında birleşik bir deneyim sağlar
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,30 +12,30 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77194288"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Enterprise State Roaming nedir?
 
-Windows 10 ' da, [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) kullanıcıları Kullanıcı ayarlarını ve uygulama ayarları verilerini buluta güvenli bir şekilde eşitlemenize olanak tanır. Enterprise State Roaming, kullanıcılara Windows cihazlarında Birleşik bir deneyim sağlar ve yeni bir cihaz yapılandırmak için gereken süreyi azaltır. Enterprise State Roaming, ilk olarak Windows 8 ' de sunulan standart [tüketici ayarları eşitlemesine](https://go.microsoft.com/fwlink/?linkid=2015135) benzer şekilde çalışır. Ayrıca, Enterprise State Roaming teklifler:
+Windows 10 ile [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) kullanıcıları, kullanıcı ayarlarını ve uygulama ayarları verilerini bulutla güvenli bir şekilde eşitleme olanağı elde eder. Kurumsal Durum Dolaşımı, kullanıcılara Windows aygıtlarında birleşik bir deneyim sağlar ve yeni bir aygıtı yapılandırmak için gereken süreyi azaltır. Kurumsal Durum Dolaşımı, ilk olarak Windows 8'de tanıtılan standart [tüketici ayarları eşitlemesine](https://go.microsoft.com/fwlink/?linkid=2015135) benzer şekilde çalışır. Ayrıca, Enterprise State Roaming şunları sunar:
 
-* Kurumsal **ve tüketici verilerinin ayrımı** – kuruluşlar kendi verilerinin denetimidir ve bir kurumsal bulut hesabındaki bir tüketici bulutu hesabındaki veya tüketici verilerinde kurumsal verilerin bir karıştırılmasıyla kalmaz.
-* **Gelişmiş güvenlik** – veriler, kullanıcının Windows 10 cihazından Azure Rights Management (Azure RMS) kullanılarak ayrılmadan önce otomatik olarak şifrelenir ve veriler buluttaki geri kalanında şifreli olarak kalır. Tüm içerik, ad alanları dışında, ayarlar adı ve Windows uygulama adları gibi buluttaki geri kalanında şifreli olarak kalır.  
-* **Daha iyi yönetim ve izleme** – kuruluşunuzda ayarları ve Azure AD Portal tümleştirmesi aracılığıyla hangi cihazları eşitlediği hakkında denetim ve görünürlük sağlar. 
+* **Kurumsal ve tüketici verilerinin ayrılması** – Kuruluşlar verilerini kontrol altındadır ve kurumsal bulut hesabındaki kurumsal verilerin veya tüketici verilerinin kurumsal bulut hesabında karıştırılması yoktur.
+* **Gelişmiş güvenlik** – Veriler, Azure Hakları Yönetimi (Azure RMS) kullanılarak kullanıcının Windows 10 aygıtından çıkmadan önce otomatik olarak şifrelenir ve veriler bulutta sabit kalarak şifrelenir. Ayarlar adları ve Windows uygulama adları gibi ad alanları dışında tüm içerik bulutta sabit teşifre edilir.  
+* **Daha iyi yönetim ve izleme** – Azure AD portalı tümleştirmesi aracılığıyla kuruluşunuzdaki ayarları kimin ve hangi cihazlarda eşitlediği konusunda denetim ve görünürlük sağlar. 
 
-Enterprise State Roaming birden çok Azure bölgesinde kullanılabilir. Kullanılabilir bölgelerin güncelleştirilmiş listesini, Azure Active Directory altındaki [bölgelere göre Azure hizmetleri](https://azure.microsoft.com/regions/#services) sayfasında bulabilirsiniz.
+Kurumsal Durum Dolaşımı birden çok Azure bölgesinde kullanılabilir. Azure Etkin Dizini altında Azure [Hizmetlerine göre Bölgeler](https://azure.microsoft.com/regions/#services) sayfasında kullanılabilir bölgelerin güncelleştirilmiş listesini bulabilirsiniz.
 
 | Makale | Açıklama |
 | --- | --- |
-| [Azure Active Directory Enterprise State Roaming etkinleştirme](enterprise-state-roaming-enable.md) |Enterprise State Roaming, Premium Azure Active Directory (Azure AD) aboneliği olan her kuruluş için kullanılabilir. Azure AD aboneliği alma hakkında daha fazla bilgi için bkz. [Azure AD ürün](https://azure.microsoft.com/services/active-directory) sayfası. |
-| [Ayarlar ve veri dolaşımı hakkında SSS](enterprise-state-roaming-faqs.md) |Bu makalede, yöneticilerin ayarlar ve uygulama verilerinin eşitlenmesi hakkında sahip olabileceği bazı sorular yanıtlanmaktadır. |
-| [Ayarlar eşitleme için Grup İlkesi ve MDM ayarları](enterprise-state-roaming-group-policy-settings.md) |Windows 10, ayar eşitlemesini sınırlamak için grup ilkesi ve mobil cihaz yönetimi (MDM) ilke ayarları sağlar. |
-| [Windows 10 dolaşım ayarları başvurusu](enterprise-state-roaming-windows-settings-reference.md) |Windows 10 ' da dolaşılabilir ve/veya yedeklenecek ayarların bir listesi. |
-| [Sorun giderme](enterprise-state-roaming-troubleshooting.md) |Bu makale, sorun giderme için bazı temel adımlardan geçer ve bilinen sorunların bir listesini içerir. |
+| [Azure Active Directory'de Kurumsal Durumda Dolaşımı etkinleştirme](enterprise-state-roaming-enable.md) |Kurumsal Durum Dolaşımı, Premium Azure Etkin Dizin (Azure AD) aboneliği olan tüm kuruluşların kullanımına açıktır. Azure AD aboneliğini nasıl alacağınız hakkında daha fazla bilgi için [Azure AD ürün](https://azure.microsoft.com/services/active-directory) sayfasına bakın. |
+| [Ayarlar ve veri dolaşımı hakkında SSS](enterprise-state-roaming-faqs.md) |Bu makalede, BT yöneticilerinin ayarlar ve uygulama verileri eşitleme yle ilgili bazı soruları yanıtlar. |
+| [Ayarlar eşitleme için grup ilkesi ve MDM ayarları](enterprise-state-roaming-group-policy-settings.md) |Windows 10, ayarları eşitlemek için Grup İlkesi ve mobil aygıt yönetimi (MDM) ilkesi ayarlarını sağlar. |
+| [Windows 10 dolaşım ayarları başvurusu](enterprise-state-roaming-windows-settings-reference.md) |Windows 10'da gezinilecek ve/veya yedeklenecek ayarların listesi. |
+| [Sorun giderme](enterprise-state-roaming-troubleshooting.md) |Bu makalede, sorun giderme için bazı temel adımlar geçer ve bilinen sorunların listesini içerir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kurumsal durum dolaşımını etkinleştirme hakkında daha fazla bilgi için bkz. [kuruluş durumu dolaşımını etkinleştirme](enterprise-state-roaming-enable.md).
+Kurumsal durum dolaşımını etkinleştirme hakkında bilgi için [bkz.](enterprise-state-roaming-enable.md)

@@ -1,45 +1,45 @@
 ---
-title: Azure Kubernetes Service (AKS) içinde sertifikaları döndürme
-description: Sertifikalarınızı bir Azure Kubernetes hizmeti (AKS) kümesinde döndürme hakkında bilgi edinin.
+title: Azure Kubernetes Hizmetinde (AKS) sertifikaları döndürme
+description: Sertifikalarınızı Azure Kubernetes Hizmeti (AKS) kümesinde nasıl döndürdüğünüzü öğrenin.
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
 ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368528"
 ---
-# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde sertifikaları döndürme
+# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) sertifikaları döndürme
 
-Azure Kubernetes hizmeti (AKS), birçok bileşeni ile kimlik doğrulaması için sertifikalar kullanır. Düzenli olarak, güvenlik veya ilke nedenleriyle bu sertifikaları döndürmeniz gerekebilir. Örneğin, tüm sertifikalarınızı her 90 günde bir döndürebilmeniz için bir ilkeniz olabilir.
+Azure Kubernetes Service (AKS), birçok bileşeniyle kimlik doğrulama için sertifikalar kullanır. Düzenli aralıklarla, bu sertifikaları güvenlik veya ilke nedenleriyle döndürmeniz gerekebilir. Örneğin, tüm sertifikalarınızı her 90 günde bir döndürecek bir ilkeniz olabilir.
 
-Bu makalede, AKS kümenizdeki sertifikaların nasıl döndürübir gösterilmektedir.
+Bu makalede, AKS kümenizdeki sertifikaları nasıl döndüreceklerini gösterir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, Azure CLı sürüm 2.0.77 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+Bu makalede, Azure CLI sürümünü 2.0.77 veya daha sonra çalıştırdığınızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
-## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS sertifikaları, sertifika yetkilileri ve hizmet hesapları
+## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS sertifikaları, Sertifika Yetkilileri ve Hizmet Hesapları
 
-AKS aşağıdaki sertifikaları, sertifika yetkililerini ve hizmet hesaplarını oluşturur ve kullanır:
+AKS aşağıdaki sertifikaları, Sertifika Yetkililerini ve Hizmet Hesaplarını oluşturur ve kullanır:
 
-* AKS API sunucusu, küme CA 'sı adlı bir sertifika yetkilisi (CA) oluşturur.
-* API sunucusunda, API sunucusundan kubeyalar 'a tek yönlü iletişim için sertifikalar imzalayan bir küme CA 'sı vardır.
-* Her kubelet aynı zamanda, API sunucusuna kubelet 'ten iletişim sağlamak için, küme CA 'sı tarafından imzalanan bir sertifika Imzalama Isteği (CSR) oluşturur.
-* Etcd anahtar değer deposunda, etcd 'den API sunucusuna iletişim için küme CA 'sı tarafından imzalanmış bir sertifika vardır.
-* Etcd anahtar değeri deposu, AKS kümesindeki etcd çoğaltmaları arasında veri çoğaltmasına kimlik doğrulaması ve yetkilendirme için sertifikaları imzalayan bir CA oluşturur.
-* API toplayıcısı, Azure için açık Hizmet Aracısı gibi diğer API 'lerle iletişim için sertifikalar vermek üzere Küme CA 'sını kullanır. API toplayıcısı 'nın bu sertifikaları vermek için kendi CA 'sı da olabilir, ancak şu anda küme CA 'sını kullanır.
-* Her düğüm, küme CA 'sı tarafından imzalanmış bir hizmet hesabı (SA) belirteci kullanır.
-* `kubectl` istemcisinde AKS kümesiyle iletişim kurmak için bir sertifika vardır.
+* AKS API sunucusu, Küme CA adında bir Sertifika Yetkilisi (CA) oluşturur.
+* API sunucusu, API sunucusundan kubelets'e tek yönlü iletişim için sertifikalar imzalayan bir Küme CA'ya sahiptir.
+* Her kubelet ayrıca, kubelet'den API sunucusuna iletişim için Küme CA tarafından imzalanan bir Sertifika İmzalama İsteği (CSR) oluşturur.
+* Etcd anahtar değer deposu, PD'den API sunucusuna iletişim için Cluster CA tarafından imzalanmış bir sertifikaya sahiptir.
+* Etcd anahtar değer deposu, AKS kümesindeki etcd yinelemeleri arasında veri çoğaltmanın doğruluğunu doğrulamak ve yetkilendirmek için sertifikaları imzalayan bir CA oluşturur.
+* API toplayıcısı, Azure için Açık Servis Aracısı gibi diğer API'lerle iletişim için sertifika vermek için Cluster CA'yı kullanır. API toplayıcısı da bu sertifikaları vermek için kendi CA'sına sahip olabilir, ancak şu anda Küme CA'sını kullanır.
+* Her düğüm, Küme CA tarafından imzalanmış bir Hizmet Hesabı (SA) belirteci kullanır.
+* İstemcinin `kubectl` AKS kümesiyle iletişim kurma sertifikası vardır.
 
 > [!NOTE]
-> Mart 2019 ' den önce oluşturulan AKS kümelerinde iki yıl sonra süre sonu olan sertifikalar vardır. Mart 2019 ' den sonra oluşturulan herhangi bir küme veya sertifikaları döndürülen herhangi bir küme, 30 yıl sonra süresi dolan küme CA sertifikalardır. Diğer tüm sertifikaların süreleri iki yıl sonra doluyor. Kümenizin oluşturulduğunu doğrulamak için, düğüm havuzlarınızın *yaşını* görmek üzere `kubectl get nodes` kullanın.
+> Mart 2019'dan önce oluşturulan AKS kümelerinin iki yıl sonra süresi dolan sertifikaları vardır. Mart 2019'dan sonra oluşturulan herhangi bir küme veya sertifikaları döndürülmüş olan herhangi bir küme, 30 yıl sonra süresi dolan Küme CA sertifikalarına sahiptir. Diğer tüm sertifikaların süresi iki yıl sonra sona erer. Kümenizin ne zaman oluşturulduğunu doğrulamak için düğüm havuzlarının `kubectl get nodes` *Yaşını* görmek için kullanın.
 > 
-> Ayrıca, kümenizin sertifikasının sona erme tarihini kontrol edebilirsiniz. Örneğin, aşağıdaki komut, *Myakscluster* kümesi için sertifika ayrıntılarını görüntüler.
+> Ayrıca, kümenizin sertifikasının son kullanma tarihini de kontrol edebilirsiniz. Örneğin, aşağıdaki komut *myAKSCluster* kümesinin sertifika ayrıntılarını görüntüler.
 > ```console
 > kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
 > openssl x509 -in my-cert.crt -text
@@ -48,48 +48,48 @@ AKS aşağıdaki sertifikaları, sertifika yetkililerini ve hizmet hesaplarını
 ## <a name="rotate-your-cluster-certificates"></a>Küme sertifikalarınızı döndürme
 
 > [!WARNING]
-> `az aks rotate-certs` kullanarak sertifikalarınızı döndürme, AKS kümeniz için 30 dakikalık kapalı kalma süresine kadar bir süre olabilir.
+> Sertifikalarınızı kullanarak `az aks rotate-certs` döndürmek, AKS kümeniz için 30 dakikaya kadar kapalı kalma süresine neden olabilir.
 
-AKS kümenizde oturum açmak için [az aks Get-Credentials][az-aks-get-credentials] kullanın. Bu komut ayrıca yerel makinenizde `kubectl` istemci sertifikasını indirir ve yapılandırır.
+AKS kümenizde oturum açabilmek için [az aks get-credentials'ı][az-aks-get-credentials] kullanın. Bu komut ayrıca istemci sertifikasını `kubectl` yerel makinenizde indirir ve yapılandırır.
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
-Kümenizdeki tüm sertifikaları, CA 'Ları ve SAs 'yi döndürmek için `az aks rotate-certs` kullanın.
+Kümenizdeki tüm sertifikaları, CA'ları ve SA'ları döndürmek için kullanın. `az aks rotate-certs`
 
 ```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> `az aks rotate-certs` tamamlanması 30 dakika kadar sürebilir. Komut tamamlanmadan önce başarısız olursa, kümenin durumunun *sertifika döndürme*olduğunu doğrulamak için `az aks show` kullanın. Küme başarısız durumdaysa, sertifikalarınızı yeniden döndürmek için `az aks rotate-certs` yeniden çalıştırın.
+> Tamamlanması 30 dakika `az aks rotate-certs` kadar sürebilir. Komut tamamlanmadan önce başarısız `az aks show` olursa, kümenin durumunu doğrulamak için kullanın *Sertifika Döndürme*. Küme başarısız durumdaysa, sertifikalarınızı `az aks rotate-certs` yeniden döndürmek için yeniden çalıştırın.
 
-`kubectl` komutu çalıştırarak eski sertifikaların artık geçerli olmadığını doğrulayın. `kubectl`tarafından kullanılan sertifikaları güncelleştirmediyseniz bir hata görürsünüz.  Örnek:
+Bir `kubectl` komut çalıştırarak eski sertifikaların artık geçerli olmadığını doğrulayın. Kullandığınız `kubectl`sertifikaları güncelleştirmediğiniz için bir hata görürsünüz.  Örnek:
 
 ```console
 $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-`az aks get-credentials`çalıştırarak `kubectl` tarafından kullanılan sertifikayı güncelleştirin.
+`kubectl` Çalıştırarak kullanılan sertifikayı `az aks get-credentials`güncelleştirin.
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-`kubectl` komutu çalıştırılarak sertifikaların güncelleştirildiğini doğrulayın, bu, şimdi başarılı olur. Örnek:
+Sertifikaların artık başarılı olacak bir `kubectl` komut çalıştırarak güncelleştirildiğini doğrulayın. Örnek:
 
 ```console
 kubectl get no
 ```
 
 > [!NOTE]
-> AKS üzerinde çalışan, [Azure dev Spaces][dev-spaces]gibi bir hizmetleriniz varsa, [Bu hizmetlerle ilgili sertifikaları da güncelleştirmeniz][dev-spaces-rotate] gerekebilir.
+> [Azure Dev Spaces][dev-spaces]gibi AKS'nin üstünde çalışan hizmetleriniz varsa, [bu hizmetlerle ilgili sertifikaları][dev-spaces-rotate] da güncelleştirmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, kümenizin sertifikalarını, CA 'Ları ve SAs 'yi otomatik olarak döndürme konusu gösterilmektedir. AKS güvenlik en iyi uygulamaları hakkında daha fazla bilgi için [Azure Kubernetes Service 'te (aks) küme güvenliği ve yükseltmeleri Için en iyi uygulamaları][aks-best-practices-security-upgrades] görebilirsiniz.
+Bu makalede, kümenizin sertifikalarını, CA'larını ve SA'larını otomatik olarak nasıl döndürdüğünüz gösterilen. AKS güvenlik en iyi uygulamaları hakkında daha fazla bilgi için [Azure Kubernetes Hizmeti'nde (AKS) küme güvenliği ve yükseltmeler için en][aks-best-practices-security-upgrades] iyi uygulamaları görebilirsiniz.
 
 
 [azure-cli-install]: /cli/azure/install-azure-cli

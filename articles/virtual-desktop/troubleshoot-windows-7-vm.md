@@ -1,6 +1,6 @@
 ---
-title: Windows 7 sanal makineleri Windows sanal masaüstü-Azure
-description: Windows Sanal Masaüstü ortamındaki Windows 7 sanal makineleri (VM 'Ler) için sorunları çözme.
+title: Windows 7 sanal makineler Windows Sanal Masaüstü - Azure
+description: Windows Sanal Masaüstü ortamında Windows 7 sanal makineler (VM) sorunları nın nasıl giderilir?
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,41 +9,41 @@ ms.date: 09/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a2ff3f6fa9896e45ecd6ab40d40d46a046edf1cb
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127378"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesiyle ilgili sorunları giderme
 
-Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
+Windows Sanal Masaüstü oturumunu yapılandırırken yaşadığınız sorunları gidermek için bu makaleyi kullanın sanal makineler (VM'ler).
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Windows sanal masaüstleri üzerinde Windows 7 aşağıdaki özellikleri desteklemez:
+Windows Sanal Masaüstü Bilgisayarlardaki Windows 7 aşağıdaki özellikleri desteklemez:
 
 - Sanallaştırılmış uygulamalar (RemoteApps)
-- Saat dilimi yönlendirmesi
-- Otomatik DPı ölçeklendirme
+- Saat dilimi yeniden yönlendirme
+- Otomatik DPI ölçekleme
 
-Windows sanal masaüstü, Windows 7 için yalnızca tam masaüstlerini sanallaştırtırabilir.
+Windows Sanal Masaüstü yalnızca Windows 7 için tam masaüstü bilgisayarlara sanallaştırabilir.
 
-Otomatik DPı ölçeklendirme desteklenirken, uzak masaüstü istemcisinde simgeye sağ tıklayıp **Çözümleme**' yi seçerek sanal makinenizde çözümü el ile değiştirebilirsiniz.
+Otomatik DPI ölçekleme desteklenmese de, Uzak Masaüstü istemcisindeki simgeye sağ tıklayarak ve **Çözünürlük'ü**seçerek sanal makinenizdeki çözünürlüğü el ile değiştirebilirsiniz.
 
-## <a name="error-cant-access-the-remote-desktop-user-group"></a>Hata: Uzak Masaüstü kullanıcı grubuna erişilemiyor
+## <a name="error-cant-access-the-remote-desktop-user-group"></a>Hata: Uzak Masaüstü Kullanıcı grubuna erişemiyorum
 
-Windows sanal masaüstü, uzak masaüstü kullanıcı grubunda sizi veya kullanıcılarınızın kimlik bilgilerini bulamazsa, aşağıdaki hata iletilerinden birini görebilirsiniz:
+Windows Sanal Masaüstü Uzak Masaüstü Kullanıcısı grubunda sizi veya kullanıcılarınızın kimlik bilgilerini bulamazsa, aşağıdaki hata iletilerinden birini görebilirsiniz:
 
-- "Bu Kullanıcı, uzak masaüstü Kullanıcı grubunun bir üyesi değil"
-- "Uzak Masaüstü Hizmetleri aracılığıyla oturum açmak için izin verilmelidir"
+- "Bu kullanıcı Uzak Masaüstü Kullanıcı grubunun bir üyesi değildir"
+- "Uzak Masaüstü Hizmetleri aracılığıyla oturum açma izni niz olmalıdır"
 
-Bu hatayı onarmak için kullanıcıyı uzak masaüstü kullanıcı grubuna ekleyin:
+Bu hatayı düzeltmek için, kullanıcıyı Uzak Masaüstü Kullanıcı grubuna ekleyin:
 
 1. Azure portalı açın.
 2. Hata iletisini gördüğünüz sanal makineyi seçin.
-3. **Çalıştır komutunu**seçin.
-4. `<username>`, eklemek istediğiniz kullanıcının adı ile değiştirilmiş olan aşağıdaki komutu çalıştırın:
+3. **Bir komutu çalıştır'ı**seçin.
+4. Eklemek istediğiniz kullanıcının adı ile `<username>` değiştirilen aşağıdaki komutu çalıştırın:
    
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add

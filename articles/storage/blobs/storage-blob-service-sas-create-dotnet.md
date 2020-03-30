@@ -1,7 +1,7 @@
 ---
-title: .NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma
+title: .NET ile bir kapsayıcı veya blob için bir hizmet SAS oluşturun
 titleSuffix: Azure Storage
-description: .NET istemci kitaplığını kullanarak bir kapsayıcı veya blob için hizmet paylaşılan erişim imzası (SAS) oluşturmayı öğrenin.
+description: .NET istemci kitaplığını kullanarak bir kapsayıcı veya blob için paylaşılan erişim imzası (SAS) hizmeti nasıl oluşturabilirsiniz öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137220"
 ---
-# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma
+# <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için bir hizmet SAS oluşturun
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Bu makalede, [.net Için Azure depolama istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile bir kapsayıcı veya blob IÇIN hizmet SAS oluşturmak üzere depolama hesabı anahtarının nasıl kullanılacağı gösterilmektedir.
+Bu makalede, [.NET için Azure Depolama istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile bir kapsayıcı veya blob için bir hizmet SAS oluşturmak için depolama hesabı anahtarınasıl kullanılacağını gösterir.
 
-## <a name="create-a-service-sas-for-a-blob-container"></a>Blob kapsayıcısı için bir hizmet SAS oluşturma
+## <a name="create-a-service-sas-for-a-blob-container"></a>Blob kapsayıcısı için hizmet SAS oluşturma
 
-Bir kapsayıcı için bir hizmet SAS oluşturmak için [Cloudblobcontainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) metodunu çağırın.
+Bir kapsayıcı için hizmet SAS oluşturmak için [CloudBlobContainer.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) yöntemini arayın.
 
-Aşağıdaki kod örneği bir kapsayıcı üzerinde bir SAS oluşturur. Varolan bir depolanmış erişim ilkesinin adı sağlanmışsa, bu ilke SAS ile ilişkilendirilir. Depolanmış erişim ilkesi sağlanmazsa, kod kapsayıcıda bir geçici SAS oluşturur.
+Aşağıdaki kod örneği, bir kapsayıcı üzerinde bir SAS oluşturur. Varolan bir depolanan erişim ilkesinin adı sağlanmışsa, bu ilke SAS ile ilişkilidir. Depolanmış erişim ilkesi sağlanmadıysa, kod kapsayıcıda geçici bir SAS oluşturur.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -69,11 +69,11 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 }
 ```
 
-## <a name="create-a-service-sas-for-a-blob"></a>Blob için hizmet SAS oluşturma
+## <a name="create-a-service-sas-for-a-blob"></a>Bir blob için bir hizmet SAS oluşturma
 
-Blob için bir hizmet SAS oluşturmak için [Cloudblob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metodunu çağırın.
+Bir blob için bir hizmet SAS oluşturmak için [CloudBlob.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) yöntemini arayın.
 
-Aşağıdaki kod örneği bir blob üzerinde SAS oluşturur. Varolan bir depolanmış erişim ilkesinin adı sağlanmışsa, bu ilke SAS ile ilişkilendirilir. Depolanan erişim ilkesi sağlanmazsa, kod blob üzerinde bir geçici SAS oluşturur.
+Aşağıdaki kod örneği bir blob üzerinde bir SAS oluşturur. Varolan bir depolanan erişim ilkesinin adı sağlanmışsa, bu ilke SAS ile ilişkilidir. Depolanmış erişim ilkesi sağlanmadıysa, kod blob üzerinde geçici bir SAS oluşturur.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -122,5 +122,5 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md)
+- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni verme](../common/storage-sas-overview.md)
 - [Hizmet SAS’si oluşturma](/rest/api/storageservices/create-service-sas)

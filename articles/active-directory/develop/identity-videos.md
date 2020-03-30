@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform videoları | Mavisi
-description: Microsoft Identity platformu hakkında videoların listesi
+title: Microsoft kimlik platformu videoları | Azure
+description: Microsoft kimlik platformu yla ilgili videoların listesi
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,23 +13,23 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085202"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft kimlik platformu videoları
 
-Microsoft Identity platformu ve Microsoft kimlik doğrulama kitaplıkları (MSAL) hakkında bilgi edinin. Bunlar genellikle 1-2 dakika uzunluğundadır.
+Microsoft kimlik platformu ve Microsoft Kimlik Doğrulama kitaplıkları (MSAL) hakkında bilgi edinin. Genellikle 1-2 dakika uzunluğundadırlar.
 
-## <a name="microsoft-identity-platform-basics"></a>Microsoft Identity platform temelleri
+## <a name="microsoft-identity-platform-basics"></a>Microsoft kimlik platformu temelleri
 
-**Temel Microsoft Identity platform kavramlarını öğrenin**
+**Temel Microsoft kimlik platformu kavramlarını öğrenin**
 
 :::row:::
     :::column:::
-        Microsoft Identity platformuna genel bakış
+        Microsoft kimlik platformuna genel bakış
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -41,13 +41,13 @@ Microsoft Identity platformu ve Microsoft kimlik doğrulama kitaplıkları (MSAL
 :::row-end:::
 :::row:::
     :::column:::
-        MSAL kitaplıklarına giriş
+        MSAL kütüphanelerine giriş
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
     :::column:::
-        MSAL kimlik doğrulamasını nasıl kolaylaştırmaktadır
+        MSAL kimlik doğrulamayı nasıl kolaylaştırır?
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
@@ -61,7 +61,7 @@ Microsoft Identity platformu ve Microsoft kimlik doğrulama kitaplıkları (MSAL
         > [!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
     :::column:::
-        Aracılar nedir?
+        Broker nedir
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
@@ -69,13 +69,13 @@ Microsoft Identity platformu ve Microsoft kimlik doğrulama kitaplıkları (MSAL
 :::row-end:::
 :::row:::
     :::column:::
-        Yeniden yönlendirme URI 'Leri
+        Yönlendirme URI'leri ne işe yapar?
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
     :::column:::
-        Açıklanamayan kiracılar
+        Kiracılar açıkladı
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
@@ -83,7 +83,7 @@ Microsoft Identity platformu ve Microsoft kimlik doğrulama kitaplıkları (MSAL
 :::row-end:::
 :::row:::
     :::column:::
-        Azure AD rolü
+        Azure AD'nin Rolü
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
@@ -97,32 +97,32 @@ Microsoft Identity platformu ve Microsoft kimlik doğrulama kitaplıkları (MSAL
 :::row-end:::
 :::row:::
     :::column:::
-        Kurumsal ve kişisel Microsoft hesabı farklılıkları
+        Kuruluş ve kişisel Microsoft hesap farklılıkları
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
     :::column:::
-        SPA ve Web uygulaması farkları
+        SPA ve web uygulaması farklılıkları
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
     :::column-end:::
 :::row-end:::
 
-## <a name="migrate-from-v10-to-v20"></a>V 1.0 'dan v 2.0'a geçiş
+## <a name="migrate-from-v10-to-v20"></a>v1.0'dan v2.0'a geçirin
 
-**Microsoft Identity platform 'un en son sürümüne geçme hakkında bilgi edinin**
+**Microsoft kimlik platformunun en son sürümüne geçiş hakkında bilgi edinin**
 
 :::row:::
     :::column:::
-        Uç noktalar ve v 2.0 'a geçme avantajları
+        Uç noktalar ve v2.0'a geçmenin faydaları
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        ADAL kod tabanınızı MSAL 'e geçirme
+        ADAL kod tabanınızı MSAL'a geçirme
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -130,13 +130,13 @@ Microsoft Identity platformu ve Microsoft kimlik doğrulama kitaplıkları (MSAL
 :::row-end:::
 :::row:::
     :::column:::
-        ADAL 'dan MSAL 'e geçiş yapma
+        Neden ADAL'dan MSAL'a göç
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        ADAL üzerinden MSAL avantajları
+        MSAL'ın ADAL'a Göre Avantajları
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]

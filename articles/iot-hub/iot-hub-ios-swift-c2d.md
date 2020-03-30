@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub ile buluttan cihaza iletiler (iOS) | Microsoft Docs
-description: İOS için Azure IoT SDK 'larını kullanarak Azure IoT Hub 'ından bir cihaza buluttan cihaza ileti gönderme.
+title: Azure IoT Hub (iOS) ile buluttan cihaza iletiler | Microsoft Dokümanlar
+description: iOS için Azure IoT SDK'larını kullanarak bir Azure IoT hub'ından bir aygıta buluttan aygıta ileti gönderme.
 author: kgremban
 ms.service: iot-hub
 services: iot-hub
@@ -8,42 +8,42 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.openlocfilehash: 544b1108a3c79da50969f7fdd33cfb9af373d854
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110872"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) ile buluttan cihaza iletileri gönderme
+# <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) ile buluttan aygıta iletiler gönderme
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir ve güvenli çift yönlü iletişimin sağlanmasına yardımcı olan, tam olarak yönetilen bir hizmettir. [Bir cihazdan IoT Hub 'ına yönelik Telemetriyi, bir](quickstart-send-telemetry-ios.md) IoT Hub 'ı oluşturmayı, bu kodda bir cihaz kimliği sağlamayı ve cihazdan buluta iletiler gönderen bir sanal cihaz uygulamasını nasıl kodlayacağınızı gösterir.
+Azure IoT Hub, milyonlarca aygıt ve bir çözüm arka uç arasında güvenilir ve güvenli çift yönlü iletişim sağlamaya yardımcı olan tam olarak yönetilen bir hizmettir. Bir [aygıttan IoT hub'ına hızlı başlat'a gönder telemetrisi,](quickstart-send-telemetry-ios.md) bir IoT hub'ı oluşturmanın, içinde aygıt kimliğini nasıl sağlayabilirsiniz ve aygıttan buluta iletigönderen simüle edilmiş bir aygıt uygulamasını kodlamayı gösterir.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
-* Çözüm arka ucundan, IoT Hub aracılığıyla buluttan cihaza iletileri tek bir cihaza gönderin.
+* Çözümünüzden arka uçtan, IoT Hub üzerinden tek bir cihaza buluttan cihaza iletigönderin.
 
-* Bir cihazda buluttan cihaza iletiler alın.
+* Bir aygıttan buluttan aygıta iletiler alın.
 
-* Çözüm arka uçta, IoT Hub bir cihaza gönderilen iletiler için teslim bildirimi (*geri bildirim*) isteyin.
+* Çözümünüzden arka uçtan, IoT Hub'dan bir cihaza gönderilen iletiler için teslimat bildirimi *(geri bildirim)* isteyin.
 
-[IoT Hub geliştirici kılavuzunun Mesajlaşma bölümünde](iot-hub-devguide-messaging.md)buluttan cihaza iletiler hakkında daha fazla bilgi edinebilirsiniz.
+[IoT Hub geliştirici kılavuzunun ileti bölümünde](iot-hub-devguide-messaging.md)buluttan cihaza iletiler hakkında daha fazla bilgi bulabilirsiniz.
 
-Bu makalenin sonunda iki Swift iOS projesi çalıştırırsınız:
+Bu makalenin sonunda, iki Swift iOS projesi çalıştırırsınız:
 
-* **örnek cihaz**, aynı uygulama, IoT Hub 'ınıza bağlanan ve buluttan cihaza iletiler alan [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-ios.md)sırasında oluşturulan aynı uygulamadır.
+* **örnek cihaz**, [bir cihazdan IoT hub'ına telemetri gönder'de](quickstart-send-telemetry-ios.md)oluşturulan ve IoT hub'ınıza bağlanan ve buluttan cihaza iletiler alan aynı uygulamadır.
 
-* **örnek hizmeti**, sanal cihaz uygulamasına IoT Hub aracılığıyla buluttan cihaza ileti gönderir ve ardından teslim onayını alır.
+* ioT Hub üzerinden simüle edilen aygıt uygulamasına buluttan aygıta ileti gönderen ve ardından teslim bildirimini alan **örnek hizmet.**
 
 > [!NOTE]
-> IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java, Python ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://www.azure.com/develop/iot).
+> IoT Hub, Azure IoT aygıt SDK'ları aracılığıyla birçok aygıt platformu ve dili (C, Java, Python ve Javascript dahil) için SDK desteğine sahiptir. Cihazınızı bu öğreticinin koduna ve genellikle Azure IoT Hub'ına nasıl bağlayacaklarına ilişkin adım adım talimatlar için [Azure IoT Geliştirici Merkezi'ne](https://www.azure.com/develop/iot)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+* Etkin bir Azure hesabı. (Hesabınız yoksa, birkaç dakika içinde ücretsiz bir [hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
-* Azure 'da etkin bir IoT Hub 'ı.
+* Azure'da etkin bir IoT hub'ı.
 
 * [Azure örneklerinden](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)kod örneği.
 
@@ -51,13 +51,13 @@ Bu makalenin sonunda iki Swift iOS projesi çalıştırırsınız:
 
 * [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)'un en son sürümü.
 
-* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* 8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu makaledeki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
 
-## <a name="simulate-an-iot-device"></a>IoT cihazının benzetimini yapma
+## <a name="simulate-an-iot-device"></a>Bir IoT aygıtını simüle etme
 
-Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için bir Swift uygulaması çalıştıran bir iOS cihazının benzetimini yapın. 
+Bu bölümde, IoT hub'ından buluttan aygıta iletialmak için Swift uygulaması çalıştıran bir iOS aygıtını simüle emersiniz. 
 
-Bu, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-ios.md)makalesinde oluşturduğunuz örnek cihazdır. Çalışan zaten varsa, bu bölümü atlayabilirsiniz.
+Bu, makalede oluşturduğunuz örnek aygıtbir [aygıttan IoT hub'ına telemetri gönder.](quickstart-send-telemetry-ios.md) Zaten çalışıyorsanız, bu bölümü atlayabilirsiniz.
 
 ### <a name="install-cocoapods"></a>CocoaPods yükleme
 
@@ -79,7 +79,7 @@ Yükleme komutu, projeniz için gereken podları yüklemeye ek olarak bağımlı
 
 ### <a name="run-the-sample-device-application"></a>Örnek cihaz uygulamasını çalıştırma
 
-1. Cihazınızın bağlantı dizesini alın. Bu dizeyi cihaz ayrıntıları dikey penceresindeki [Azure Portal](https://portal.azure.com) kopyalayabilir veya aşağıdaki CLI komutuyla alabilirsiniz:
+1. Cihazınızın bağlantı dizesini alın. Bu dizeyi aygıt ayrıntıları bıçağındaki [Azure portalından](https://portal.azure.com) kopyalayabilir veya aşağıdaki CLI komutuyla geri alabilirsiniz:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {YourDeviceID} --output table
@@ -91,11 +91,11 @@ Yükleme komutu, projeniz için gereken podları yüklemeye ek olarak bağımlı
    open "MQTT Client Sample.xcworkspace"
    ```
 
-2. **MQTT Istemci örnek** projesini ve ardından aynı ada sahip klasörü genişletin.  
+2. **MQTT İstemci Örnek** projesini ve ardından aynı adı taşıyan klasörü genişletin.  
 
 3. XCode’da düzenlemek üzere **ViewController.swift** dosyasını açın. 
 
-4. **ConnectionString** değişkenini arayın ve değeri ilk adımda kopyaladığınız cihaz bağlantı dizesiyle güncelleştirin.
+4. **ConnectionString** değişkenini arayın ve ilk adımda kopyaladığınız aygıt bağlantı dizesi ile değeri güncelleştirin.
 
 5. Yaptığınız değişiklikleri kaydedin. 
 
@@ -103,21 +103,21 @@ Yükleme komutu, projeniz için gereken podları yüklemeye ek olarak bağımlı
 
    ![Projeyi çalıştırma](media/iot-hub-ios-swift-c2d/run-sample.png)
 
-## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
+## <a name="get-the-iot-hub-connection-string"></a>IoT hub bağlantı dizesini alın
 
-Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-ios.md)bölümünde oluşturduğunuz IoT Hub 'ı aracılığıyla buluttan cihaza iletileri göndermek için bir arka uç hizmeti oluşturursunuz. Buluttan cihaza iletiler göndermek için hizmetinize **hizmet bağlantısı** izni verilmesi gerekir. Varsayılan olarak, her IoT Hub, bu izni veren **hizmet** adlı paylaşılan bir erişim ilkesiyle oluşturulur.
+Bu makalede, bir aygıttan bir [IoT hub'ına telemetri gönder'de](quickstart-send-telemetry-ios.md)oluşturduğunuz IoT hub'ı üzerinden buluttan aygıta iletigöndermek için bir arka uç hizmeti oluşturursunuz. Buluttan cihaza ileti göndermek için hizmetinizin **hizmet bağlantısı** namına ihtiyacı vardır. Varsayılan olarak, her IoT Hub'ı bu izni veren paylaşılan erişim ilkesi adlı **hizmetle** oluşturulur.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="simulate-a-service-device"></a>Hizmet cihazının benzetimini yap
+## <a name="simulate-a-service-device"></a>Bir servis aygıtını simüle edin
 
-Bu bölümde, IoT Hub aracılığıyla buluttan cihaza iletiler gönderen bir Swift uygulaması ile ikinci bir iOS cihazının benzetimini yapabilirsiniz. Bu yapılandırma, bir IoT Hub 'ına bağlı diğer iOS cihazları için bir denetleyici olarak çalışan bir iPhone veya iPad 'nin bulunduğu IoT senaryolarında yararlıdır.
+Bu bölümde, IoT hub üzerinden buluttan cihaza ileti gönderen Swift uygulamasına sahip ikinci bir iOS aygıtını simüle emletebilirsiniz. Bu yapılandırma, bir IOT hub'ına bağlı diğer iOS aygıtları için denetleyici olarak çalışan bir iPhone veya iPad'in bulunduğu IoT senaryoları için yararlıdır.
 
 ### <a name="install-cocoapods"></a>CocoaPods yükleme
 
 CocoaPods, üçüncü taraf kitaplıklar kullanan iOS projeleri için bağımlılıkları yönetir.
 
-Önkoşullardan indirdiğiniz Azure IoT iOS örnekleri klasörüne gidin. Ardından, örnek hizmet projesine gidin:
+Ön koşullarda indirdiğiniz Azure IoT iOS Örnekleri klasörüne gidin. Ardından, örnek servis projesine gidin:
 
 ```sh
 cd quickstart/sample-service
@@ -131,7 +131,7 @@ pod install
 
 Yükleme komutu, projeniz için gereken podları yüklemeye ek olarak bağımlılıklar için podları kullanacak şekilde önceden yapılandırılmış bir XCode çalışma alanı dosyası da oluşturmuştur.
 
-### <a name="run-the-sample-service-application"></a>Örnek hizmet uygulamasını çalıştırma
+### <a name="run-the-sample-service-application"></a>Örnek servis uygulamasını çalıştırma
 
 1. Örnek çalışma alanını XCode'da açın.
 
@@ -139,44 +139,44 @@ Yükleme komutu, projeniz için gereken podları yüklemeye ek olarak bağımlı
    open AzureIoTServiceSample.xcworkspace
    ```
 
-2. **AzureIoTServiceSample** projesini genişletin ve aynı ada sahip klasörü genişletin.  
+2. **AzureIoTServiceSample** projesini genişletin ve ardından aynı adı taşıyan klasörü genişletin.  
 
 3. XCode’da düzenlemek üzere **ViewController.swift** dosyasını açın. 
 
-4. **ConnectionString** değişkenini arayın ve bu değeri, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)' da daha önce kopyaladığınız hizmet bağlantı dizesiyle güncelleştirin.
+4. **BağlantıString** değişkenini arayın ve [IoT hub bağlantı dizesini al'da](#get-the-iot-hub-connection-string)daha önce kopyaladığınız servis bağlantı dizesi ile değeri güncelleştirin.
 
 5. Yaptığınız değişiklikleri kaydedin.
 
-6. Xcode 'da, öykünücü ayarlarını IoT cihazını çalıştırmak için kullanılandan farklı bir iOS cihazı ile değiştirin. XCode aynı türde birden fazla öykünücü çalıştıramıyor.
+6. Xcode'da, emülatör ayarlarını IoT aygıtını çalıştırmak için kullandığınızdan farklı bir iOS aygıtıyla değiştirin. XCode aynı türden birden fazla emülatör çalıştıramaz.
 
-   ![Öykünücü cihazını değiştirme](media/iot-hub-ios-swift-c2d/change-device.png)
+   ![Emülatör aygıtını değiştirme](media/iot-hub-ios-swift-c2d/change-device.png)
 
-7. Projeyi cihaz öykünücüsünde **Oluştur ve Çalıştır** düğmesiyle veya anahtar açılan **komutu + r**ile çalıştırın.
+7. **Yapı ve çalıştır** düğmesi veya anahtar açılan Komut + **r**ile cihaz emülatörü nde proje çalıştırın.
 
    ![Projeyi çalıştırma](media/iot-hub-ios-swift-c2d/run-app.png)
 
-## <a name="send-a-cloud-to-device-message"></a>Buluttan cihaza ileti gönderme
+## <a name="send-a-cloud-to-device-message"></a>Buluttan aygıta ileti gönderme
 
-Artık, buluttan cihaza iletileri göndermek ve almak için iki uygulamayı kullanmaya hazırsınız.
+Artık buluttan cihaza ileti göndermek ve almak için iki uygulamayı kullanmaya hazırsınız.
 
-1. Sanal IoT cihazında çalıştırılan **IOS uygulama örnek** uygulamasında **Başlat**' a tıklayın. Uygulama cihazdan buluta iletileri göndermeye başlar, ancak aynı zamanda buluttan cihaza iletileri dinlemeye başlar.
+1. Simüle edilmiş IoT aygıtında çalışan **iOS Uygulama Örneği** uygulamasında **Başlat'ı**tıklatın. Uygulama aygıttan buluta iletiler göndermeye başlar, ancak buluttan aygıta iletileri dinlemeye de başlar.
 
-   ![Örnek IoT cihaz uygulamasını görüntüle](media/iot-hub-ios-swift-c2d/view-d2c.png)
+   ![Örnek IoT cihaz uygulamasını görüntüleyin](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
-2. Sanal hizmet cihazında çalışan **ıothub hizmeti Istemci örnek** uygulamasında, ileti göndermek istediğiniz ıOT cihazının kimliğini girin. 
+2. Benzetimli hizmet aygıtında çalışan **IoTHub Service Client Sample** uygulamasında, ileti göndermek istediğiniz IoT aygıtının kimliğini girin. 
 
-3. Düz metin iletisi yazıp **Gönder**' e tıklayın.
+3. Düz metin iletisi yazın, ardından **Gönder'i**tıklatın.
 
-    Gönder ' e tıkladığınızda birkaç eylem gerçekleşir. Hizmet örneği, belirttiğiniz hizmet bağlantı dizesi nedeniyle uygulamanın erişimi olan IoT Hub 'ınıza iletiyi gönderir. IoT Hub 'ınız cihaz KIMLIĞINI denetler, iletiyi hedef cihaza gönderir ve kaynak cihaza bir onay alındı bilgisi gönderir. Sanal IoT cihazınızda çalışan uygulama, IoT Hub iletileri denetler ve ekrandaki en son bir metin olan metni yazdırır.
+    Gönder'i tıklattığınızda çeşitli eylemler gerçekleşir. Hizmet örneği, sağladığınız servis bağlantısı dizesi nedeniyle uygulamanın erişebildiği IoT hub'ınıza iletiyi gönderir. IoT hub'ınız aygıt kimliğini denetler, iletiyi hedef aygıta gönderir ve kaynak aygıta bir onay makbuzu gönderir. Simüle edilmiş IoT aygıtınızda çalışan uygulama, IoT Hub'dan gelen iletileri denetler ve ekrandaki en son mesajdaki metni yazdırır.
 
-    Çıktın aşağıdaki örnekteki gibi görünmesi gerekir:
+    Çıktınız aşağıdaki örnek gibi görünmelidir:
 
    ![Buluttan cihaza iletileri görüntüleme](media/iot-hub-ios-swift-c2d/view-c2d.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, buluttan cihaza iletileri gönderme ve alma hakkında daha fazla öğrendiniz.
+Bu eğitimde, buluttan cihaza ileti göndermeyi ve almayı öğrendiniz.
 
-IoT Hub kullanan uçtan uca çözümlerin tam örneklerini görmek için bkz. [Azure IoT Çözüm Hızlandırıcıları](https://azure.microsoft.com/documentation/suites/iot-suite/) belgeleri.
+IoT Hub'ı kullanan eksiksiz uçtan uca çözümlerin örneklerini görmek için [Azure IoT Çözüm Hızlandırıcıları](https://azure.microsoft.com/documentation/suites/iot-suite/) belgelerine bakın.
 
-IoT Hub çözümleri geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.
+IoT Hub ile çözüm geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub geliştirici kılavuzuna](iot-hub-devguide.md)bakın.

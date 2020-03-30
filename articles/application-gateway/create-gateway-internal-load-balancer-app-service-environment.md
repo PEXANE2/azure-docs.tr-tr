@@ -1,6 +1,6 @@
 ---
-title: Azure 'da Application Gateway sorunlarını giderme – ıLB Ao | Microsoft Docs
-description: Azure 'da App Service Ortamı bir Iç Load Balancer kullanarak bir uygulama ağ geçidinde sorun gidermeyi öğrenin
+title: Azure'da Bir Uygulama Ağ Geçidini Giderme – ILB ASE | Microsoft Dokümanlar
+description: Azure'da Uygulama Hizmeti Ortamı olan bir İç Yük Dengeleyicisi kullanarak uygulama ağ geçidini nasıl gidereceklerini öğrenin
 services: vpn-gateway
 documentationCenter: na
 author: genlin
@@ -15,61 +15,61 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
 ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71121946"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Arka uç sunucu sertifikası, bir uygulama ağ geçidi için bir App Service Ortamı ile Iç Load Balancer kullanılarak güvenilir bir şekilde listelenmiyor
+# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Arka uç sunucu sertifikası, Uygulama Hizmet Ortamına sahip bir İç Yük Dengeleyicisi kullanılarak bir uygulama ağ geçidi için beyaz listeye alınmaz
 
-Bu makale aşağıdaki sorunu giderir: Azure 'da uçtan uca SSL kullandığınızda bir Iç Load Balancer (ıLB) ile birlikte, arka uçta bir App Service Ortamı (ACE) kullanarak bir uygulama ağ geçidi oluşturduğunuzda bir sertifika daha fazla listelenmez.
+Bu makale, aşağıdaki sorunu gidermektedir: Azure'da uçlardan uca SSL kullanırken arka uçta bir Uygulama Hizmet Ortamı (ASE) ile birlikte bir Dahili Yük Dengeleyicisi (ILB) kullanarak bir uygulama ağ geçidi oluşturduğunuzda sertifika beyaz listeye alınmaz.
 
 ## <a name="symptoms"></a>Belirtiler
 
-Arka uçta Ao ile ıLB kullanarak bir uygulama ağ geçidi oluşturduğunuzda, arka uç sunucusu sağlıksız hale gelebilir. Bu sorun, uygulama ağ geçidinin kimlik doğrulama sertifikası arka uç sunucusundaki yapılandırılmış sertifikayla eşleşmezse oluşur. Örnek olarak aşağıdaki senaryoya bakın:
+Arka uçta ASE olan bir ILB kullanarak bir uygulama ağ geçidi oluşturduğunuzda, arka uç sunucusu sağlıksız hale gelebilir. Bu sorun, uygulama ağ geçidinin kimlik doğrulama sertifikası arka uç sunucusunda yapılandırılan sertifikayla eşleşmiyorsa oluşur. Aşağıdaki senaryoya örnek olarak bakın:
 
-**Application Gateway yapılandırması:**
+**Uygulama Ağ Geçidi yapılandırması:**
 
-- **Oluşturulurken** Çok siteli
-- **Bağ** 443
-- **Ana bilgisayar adı:** test.appgwtestase.com
-- **SSL sertifikası:** CN = test. appgwtestao. com
-- **Arka uç havuzu:** IP adresi veya FQDN
-- **IP adresi:** : 10.1.5.11
-- **HTTP ayarları:** HTTPS
-- **Bağlantı noktası:** : 443
-- **Özel Araştırma:** Ana bilgisayar adı – test.appgwtestase.com
-- **Kimlik doğrulama sertifikası:** . cer of test.appgwtestase.com
-- **Arka uç sistem durumu:** Sağlıksız – arka uç sunucu sertifikası Application Gateway ile birlikte listelenmez.
+- **Dinleyici:** Çok siteli
+- **Bağlantı Noktası:** 443
+- **Ev Sahibi Adı:** test.appgwtestase.com
+- **SSL Belgesi:** CN=test.appgwtestase.com
+- **Arka uç Havuzu:** IP adresi veya FQDN
+- **IP Adresi:** 10.1.5.11
+- **HTTP Ayarları:** HTTPS
+- **Bağlantı Noktası:** 443
+- **Özel Sonda:** Hostname – test.appgwtestase.com
+- **Kimlik Doğrulama Sertifikası:** .cer of test.appgwtestase.com
+- **Arka Uç Sağlık:** Sağlıksız – Backend sunucu sertifikası Application Gateway ile beyaz listeye alınmaz.
 
-**ATıCı yapılandırması:**
+**ASE yapılandırması:**
 
-- **ILB IP 'SI:** 10.1.5.11
-- **Etki alanı adı:** appgwtestase.com
-- **App Service:** test.appgwtestase.com
-- **SSL bağlama:** SNI SSL – CN = test. appgwtestao. com
+- **ILB IP:** 10.1.5.11
+- **Alan adı:** appgwtestase.com
+- **Uygulama Hizmeti:** test.appgwtestase.com
+- **SSL Bağlama:** SNI SSL – CN=test.appgwtestase.com
 
-Uygulama ağ geçidine eriştiğinizde, arka uç sunucusu sağlıksız olduğu için aşağıdaki hata iletisini alırsınız:
+Uygulama ağ geçidine erişdiğinizde, arka uç sunucusu sağlıksız olduğundan aşağıdaki hata iletisini alırsınız:
 
-**502 – Web sunucusu bir ağ geçidi veya proxy sunucusu görevi gören geçersiz bir yanıt aldı.**
+**502 – Web sunucusu, ağ geçidi veya proxy sunucusu görevi yaparken geçersiz bir yanıt aldı.**
 
 ## <a name="solution"></a>Çözüm
 
-Bir HTTPS Web sitesine erişmek için bir ana bilgisayar adı kullanmazsanız, SNı devre dışı bırakmak için arka uç sunucusu varsayılan Web sitesinde yapılandırılan sertifikayı döndürür. ILB AI için varsayılan sertifika ıLB sertifikasından gelir. ILB için yapılandırılmış bir sertifika yoksa, sertifika Ao uygulama sertifikasından gelir.
+Bir HTTPS web sitesine erişmek için bir ana bilgisayar adı kullanmadığınızda, SNI devre dışı bırakılmış olması durumunda, arka uç sunucusu yapılandırılan sertifikayı varsayılan web sitesinde döndürecektir. Bir ILB ASE için varsayılan sertifika ILB sertifikasından gelir. ILB için yapılandırılmış sertifika yoksa, sertifika ASE App sertifikasından gelir.
 
-ILB 'ye erişmek için tam etki alanı adı (FQDN) kullandığınızda, arka uç sunucusu HTTP ayarlarında karşıya yüklenen doğru sertifikayı döndürür. Böyle bir durum söz konusu değilse, aşağıdaki seçenekleri göz önünde bulundurun:
+ILB'ye erişmek için tam nitelikli bir etki alanı adı (FQDN) kullandığınızda, arka uç sunucusu HTTP ayarlarına yüklenen doğru sertifikayı döndürecektir. Bu durumda, aşağıdaki seçenekleri göz önünde bulundurun:
 
-- ILB 'nin IP adresini işaret etmek için uygulama ağ geçidinin arka uç havuzunda FQDN 'yi kullanın. Bu seçenek yalnızca özel bir DNS bölgeniz veya yapılandırılmış özel bir DNS varsa geçerlidir. Aksi takdirde, genel DNS için bir "A" kaydı oluşturmanız gerekir.
+- ILB'nin IP adresini işaret etmek için uygulama ağ geçidinin arka uç havuzunda FQDN'yi kullanın. Bu seçenek yalnızca özel bir DNS bölgeniz veya yapılandırılmış özel bir DNS'niz varsa çalışır. Aksi takdirde, ortak bir DNS için bir "A" kaydı oluşturmanız gerekir.
 
-- HTTP ayarlarındaki ıLB 'deki veya varsayılan sertifikadaki (ıLB sertifikası) karşıya yüklenen sertifikayı kullanın. Uygulama ağ geçidi, araştırma için ıLB 'nin IP 'ye eriştiğinde sertifikayı alır.
+- Yüklenen sertifikayı Http ayarlarında ILB'de veya varsayılan sertifikada (ILB sertifikası) kullanın. Uygulama ağ geçidi, sonda için ILB'nin IP'sine eriştığında sertifikayı alır.
 
-- ILB ve arka uç sunucusunda bir joker sertifika kullanın, böylece tüm Web siteleri için sertifika ortak olur. Ancak bu çözüm, Web sitelerinin her biri farklı ana bilgisayar adları gerektirse de, yalnızca alt etki alanında mümkündür.
+- Tüm web siteleri için sertifikanın yaygın olması için ILB ve arka uç sunucusunda joker karakter sertifikası kullanın. Ancak, bu çözüm yalnızca alt etki alanlarında mümkündür ve web sitelerinin her biri farklı ana bilgisayar adları gerektiriyorsa değil.
 
-- ILB 'nin IP adresini kullanıyorsanız uygulama ağ geçidi için **App Service kullan** seçeneğini temizleyin.
+- ILB'nin IP adresini kullanıyorsanız, uygulama ağ geçidi **için Uygulama hizmeti** için Kullanım seçeneğini temizleyin.
 
-Ek yükü azaltmak için, araştırma yolunu çalışır hale getirmek üzere HTTP ayarlarına ıLB sertifikasını yükleyebilirsiniz. (Bu adım yalnızca beyaz listeye yöneliktir. SSL iletişimi için kullanılmaz.) ILB sertifikasını HTTPS üzerindeki tarayıcınızdan IP adresiyle ve ardından bir Base-64 kodlu CER biçiminde dışarı aktararak ve sertifikayı ilgili HTTP ayarları üzerine yükleyerek alabilirsiniz.
+Ek yükü azaltmak için, sonda yolunun çalışmasını sağlamak için ILB sertifikasını HTTP ayarlarına yükleyebilirsiniz. (Bu adım sadece beyaz liste içindir. SSL iletişimi için kullanılmaz.) ILB sertifikasını, TARAYıCınızdan IP adresiyle https'den erişerek, ardından SSL sertifikasını Base-64 kodlanmış CER biçiminde dışa aktararak ve sertifikayı ilgili HTTP ayarlarına yükleyerek alabilirsiniz.
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 
 Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

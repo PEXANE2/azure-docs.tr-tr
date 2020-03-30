@@ -5,18 +5,18 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857524"
 ---
-Arka uç proje türünden&mdash; [.net Back end](#dotnet) veya [Node. js arka ucu](#nodejs)ile eşleşen yordamı kullanın.
+Arka uç proje türünüzle&mdash;eşleşen yordamı kullanın [.NET arka uç](#dotnet) veya [Düğüm.js arka uç.](#nodejs)
 
-### <a name="dotnet"></a>.NET arka uç projesi
+### <a name="net-back-end-project"></a><a name="dotnet"></a>.NET arka uç projesi
 
-1. Visual Studio 'da sunucu projesine sağ tıklayın ve **NuGet Paketlerini Yönet**' e tıklayın. Arama yapın ve ardından Install öğesine tıklayın. `Microsoft.Azure.NotificationHubs` Bu, Notification Hubs istemci kitaplığını kurar.
-2. Denetleyiciler klasöründe TodoItemController.cs ' i açın ve aşağıdaki `using` deyimleri ekleyin:
+1. Visual Studio'da sunucu projesini sağ tıklatın ve **NuGet Paketlerini Yönet'i**tıklatın. `Microsoft.Azure.NotificationHubs`Ara ve sonra **Yükle'yi**tıklatın. Bu, Bildirim Hub'ları istemci kitaplığını yükler.
+2. Denetleyiciler klasöründe TodoItemController.cs açın ve `using` aşağıdaki ifadeleri ekleyin:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -67,10 +67,10 @@ Arka uç proje türünden&mdash; [.net Back end](#dotnet) veya [Node. js arka uc
 
 4. Sunucu projesini yeniden yayımlayın.
 
-### <a name="nodejs"></a>Node. js arka uç projesi
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Düğüm.js arka uç projesi
 
 1. Arka uç projenizi ayarlayın.
-2. TodoItem. js dosyasındaki mevcut kodu aşağıdaki kodla değiştirin:
+2. Todoitem.js dosyasındaki varolan kodu aşağıdakilerle değiştirin:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -117,6 +117,6 @@ Arka uç proje türünden&mdash; [.net Back end](#dotnet) veya [Node. js arka uc
     module.exports = table;
     ```
 
-    Bu, yeni bir Todo öğesi eklendiğinde Item. Text içeren bir GCM bildirimi gönderir.
+    Bu, yeni bir todo öğesi eklendiğinde item.text içeren bir GCM bildirimi gönderir.
 
-3. Yerel bilgisayarınızda dosyayı düzenlediğinizde, sunucu projesini yeniden yayımlayın.
+3. Yerel bilgisayarınızda dosyayı düzenlerken sunucu projesini yeniden yayımlayın.

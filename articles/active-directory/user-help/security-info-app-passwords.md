@@ -1,6 +1,6 @@
 ---
-title: Güvenlik bilgisi (Önizleme) sayfasından uygulama parolaları oluşturma-Azure AD
-description: Herhangi bir tarayıcı olmayan uygulamayla veya iki öğeli doğrulamayı desteklemeyen herhangi bir uygulamayla kullanmak için otomatik olarak oluşturulan parolalar (Uygulama parolaları) oluşturun. Bu uygulama parolası normal bir paroladan ayrıdır ve güvenlik bilgileri sayfasından ayarlanabilir.
+title: Güvenlik bilgileri (önizleme) sayfasından uygulama parolaları oluşturma - Azure AD
+description: Kuruluşunuzdaki tarayıcı dışı uygulamalarda veya iki faktörlü doğrulamayı desteklemeyen herhangi bir uygulamayla kullanmak üzere otomatik olarak oluşturulan parolalar (uygulama parolaları) oluşturun. Bu uygulama parolası normal bir paroladan ayrıdır ve Güvenlik bilgileri sayfasından ayarlanabilir.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,76 +12,76 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064079"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları oluşturma
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Güvenlik bilgileri (önizleme) sayfasından uygulama parolaları oluşturma
 
-Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmamasıdır. Bu sorunu çözmek için, her tarayıcı olmayan uygulamayla birlikte kullanmak üzere otomatik olarak oluşturulan bir parola oluşturarak normal parolanınızdan ayırabilirsiniz.
+Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmayamayacağı anlamına gelir. Bu sorunu aşmak için, normal parolanızdan ayrı olarak tarayıcı olmayan her uygulamayla kullanmak üzere otomatik olarak oluşturulmuş bir parola oluşturabilirsiniz.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->Yöneticiniz uygulama parolalarını kullanmanıza izin vermeyebilir. **Uygulama parolalarını** bir seçenek olarak görmüyorsanız, kuruluşunuzda mevcut değildir.
+>Yöneticiniz uygulama parolalarını kullanmanıza izin vermeyebilir. **Uygulama parolalarını** bir seçenek olarak görmüyorsanız, bunlar kuruluşunuzda kullanılamaz.
 
-Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
+Uygulama parolalarını kullanırken şunları unutmamak önemlidir:
 
 - Uygulama parolaları otomatik olarak oluşturulur ve uygulama başına bir kez oluşturulup girilmelidir.
 
-- Kullanıcı başına 40 parola sınırı vardır. Bu sınırdan sonra bir tane oluşturmayı denerseniz, yenisini oluşturmaya izin verilmeden önce mevcut bir parolayı silmeniz istenir.
+- Kullanıcı başına 40 parola sınırı vardır. Bu sınırdan sonra bir tane oluşturmaya çalışırsanız, yenisini oluşturmasına izin verilmeden önce varolan bir parolayı silmeniz istenir.
 
     >[!Note]
-    >Office 2013 istemcileri (Outlook dahil) yeni kimlik doğrulama protokollerini destekler ve iki adımlı doğrulama ile kullanılabilir. Bu destek, iki adımlı doğrulama etkinleştirildikten sonra Office 2013 istemcileri için uygulama parolalarına gerek kalmaz. Daha fazla bilgi için bkz. [office 2013 ve office 2016 istemci uygulamalarında modern kimlik doğrulaması nasıl kullanılır](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) makalesi.
+    >Office 2013 istemcileri (Outlook dahil) yeni kimlik doğrulama protokollerini destekler ve iki adımlı doğrulamayla kullanılabilir. Bu destek, iki aşamalı doğrulama açık olduktan sonra Office 2013 istemcileri için artık uygulama parolalarına ihtiyacınız olmayacağı anlamına gelir. Daha fazla bilgi için [Office 2013 ve Office 2016 istemci uygulamaları makalesi için modern kimlik doğrulamanın nasıl çalıştığına](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) bakın.
 
 ## <a name="create-new-app-passwords"></a>Yeni uygulama parolaları oluşturma
 
-İş veya okul hesabınızla iki aşamalı doğrulama kullanırsanız ve yöneticiniz güvenlik bilgileri deneyimini kullanıyorsa, **güvenlik bilgileri** sayfasını kullanarak uygulama parolalarınızı oluşturabilir ve silebilirsiniz.
+İş veya okul hesabınızla iki aşamalı doğrulama kullanıyorsanız ve yöneticiniz güvenlik bilgileri deneyimini açtıysa, Güvenlik **bilgileri** sayfasını kullanarak uygulama parolalarınızı oluşturabilir ve silebilirsiniz.
 
 >[!Note]
->Yöneticiniz güvenlik bilgileri deneyimini etkinleştirmediyse, [iki adımlı doğrulama için uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md) bölümünde yer alan yönergeleri ve bilgileri izlemeniz gerekir.
+>Yöneticiniz güvenlik bilgileri deneyimini açmadıysa, iki aşamalı doğrulama bölümü [için uygulama parolalarını yönet'teki](multi-factor-authentication-end-user-app-passwords.md) yönergeleri ve bilgileri izlemeniz gerekir.
 
 ### <a name="to-create-a-new-app-password"></a>Yeni bir uygulama parolası oluşturmak için
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın https://myprofile.microsoft.com/ ve sayfanıza gidin.
 
-    ![, Vurgulanan güvenlik bilgisi bağlantılarını gösteren profilim sayfası](media/security-info/securityinfo-myprofile-page.png)
+    ![Vurgulanan Güvenlik bilgi bağlantılarını gösteren Profil sayfam](media/security-info/securityinfo-myprofile-page.png)
 
-2. Sol gezinti bölmesinden veya **güvenlik bilgileri** bloğundaki bağlantıdan **güvenlik bilgileri** ' ni seçin ve ardından **güvenlik bilgileri** sayfasından **Yöntem Ekle** ' yi seçin.
+2. Sol gezinti bölmesinden veya **Güvenlik bilgileri** bloğundaki bağlantıdan **Güvenlik bilgilerini** seçin ve ardından Güvenlik **bilgileri** sayfasından **ekle yöntemini** seçin.
 
-    ![Vurgulanan yöntem ekleme seçeneğiyle güvenlik bilgileri sayfası](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Vurgulanan Ekle yöntemi seçeneği ile güvenlik bilgileri sayfası](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. **Yöntem Ekle** sayfasında, açılan listeden **uygulama parolası** ' nı seçin ve ardından **Ekle**' yi seçin.
+3. Yöntem **ekle** sayfasında açılan listeden **Uygulama parolasını** seçin ve sonra **Ekle'yi**seçin.
 
-    ![Uygulama parolası seçiliyken Yöntem kutusu Ekle](media/security-info/securityinfo-myprofile-addpassword.png)
+    ![Uygulama parolası seçili yöntem kutusu ekleme](media/security-info/securityinfo-myprofile-addpassword.png)
 
-4. Uygulama parolasını gerektiren uygulamanın adını yazın ve ardından **İleri**' yi seçin.
+4. Uygulama parolasını gerektiren uygulamanın adını yazın ve **sonra İleri'yi**seçin.
 
-    ![Uygulama parolası sayfası, uygulamanın adı](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![Uygulama adı ile uygulama şifresi sayfası](media/security-info/securityinfo-myprofile-password-appname.png)
 
-5. **Parola** kutusundan metni kopyalayın, parolayı uygulamanın parola alanına yapıştırın (Bu örnekte, Outlook 2010) ve **bitti**' yi seçin.
+5. **Parola** kutusundan metni kopyalayın, parolayı uygulamanın parola alanına yapıştırın (bu örnekte, Outlook 2010) ve **ardından Bitti'yi**seçin.
 
-    ![Uygulama parolası sayfası, uygulamanın adı](media/security-info/securityinfo-myprofile-password-copytext.png)
+    ![Uygulama adı ile uygulama şifresi sayfası](media/security-info/securityinfo-myprofile-password-copytext.png)
 
-    Parola eklenir ve uygulamanızda başarılı bir şekilde oturum açabilirsiniz.
+    Parola eklenir ve ileriye doğru uygulamanızda başarılı bir şekilde oturum açabilirsiniz.
 
 ## <a name="delete-your-app-passwords"></a>Uygulama parolalarınızı silme
 
-Uygulama parolası gerektiren bir uygulamayı artık kullanmanız gerekmiyorsa, ilişkili uygulama parolasını silebilirsiniz. Uygulama parolasının silinmesi, gelecekte kullanılmak üzere kullanılabilir uygulama parolası noktalarından birini serbest bırakır.
+Artık uygulama parolası gerektiren bir uygulama kullanmanız gerekmiyorsa, ilişkili uygulama parolasını silebilirsiniz. Uygulama parolasını siler, gelecekte kullanılmak üzere kullanılabilir uygulama parola noktalarından birini boşaltTır.
 
 >[!Important]
->Bir uygulama parolasını yanlışlıkla silerseniz geri alma yöntemi yoktur. Bu makalenin [Yeni uygulama parolaları oluşturma](#create-new-app-passwords) bölümündeki adımları izleyerek yeni bir uygulama parolası oluşturmanız ve uygulamayı yeniden girmeniz gerekir.
+>Bir uygulama parolasını yanlışlıkla silerseniz, bunu geri almanın bir yolu yoktur. Bu makalenin [yeni uygulama parolaları](#create-new-app-passwords) oluştur bölümündeki adımları izleyerek yeni bir uygulama parolası oluşturmanız ve uygulamaya yeniden girmeniz gerekir.
 
 ### <a name="to-delete-an-app-password"></a>Uygulama parolasını silmek için
 
-1. **Güvenlik bilgileri** sayfasında, belirli bir uygulama için **uygulama parolası** seçeneğinin yanındaki **Sil** bağlantısını seçin.
+1. Güvenlik **bilgileri** sayfasında, belirli bir uygulama için **Uygulama parolası** seçeneğinin yanındaki **Sil** bağlantısını seçin.
 
-    ![Güvenlik bilgilerinizden uygulama parolası yöntemini silmeye yönelik bağlantı](media/security-info/securityinfo-myprofile-password-appdelete.png)
+    ![Güvenlik bilgisinden uygulama şifresi yöntemini silmek için bağlantı](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. **Uygulama parolasını**silmek için onay kutusundan **Evet** ' i seçin. Uygulama parolası silindikten sonra, güvenlik bilgileriniz kaldırılır ve **güvenlik bilgileri** sayfasından kaybolur.
+2. **Uygulama parolasını**silmek için onay kutusundan **Evet'i** seçin. Uygulama parolası silindikten sonra güvenlik bilgilerinizden kaldırılır ve Güvenlik **bilgileri** sayfasından kaybolur.
 
 ## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
 
-- **Güvenlik bilgileri** sayfası ve nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [güvenlik bilgilerine genel bakış](user-help-security-info-overview.md)
+- **Güvenlik bilgileri** sayfası ve nasıl ayarlayınız hakkında daha fazla bilgi için [Güvenlik bilgilerine genel bakış](user-help-security-info-overview.md)

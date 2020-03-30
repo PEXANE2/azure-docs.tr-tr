@@ -1,6 +1,6 @@
 ---
-title: Uygulama proxy 'Si bağlayıcılarını ayıklama-Azure Active Directory | Microsoft Docs
-description: Azure Active Directory (Azure AD) uygulama proxy bağlayıcılarıyla ilgili sorunları ayıklayın.
+title: Hata Ayıklama Uygulama Proxy bağlayıcıları - Azure Active Directory | Microsoft Dokümanlar
+description: Azure Etkin Dizin (Azure AD) Uygulama Proxy bağlayıcılarıyla hata ayıklama sorunları.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,51 +12,51 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72311854"
 ---
-# <a name="debug-application-proxy-connector-issues"></a>Uygulama proxy Bağlayıcısı sorunlarını ayıklama 
+# <a name="debug-application-proxy-connector-issues"></a>Uygulama Ara Sunucusu bağlayıcı hatalarını ayıklama 
 
-Bu makale Azure Active Directory (Azure AD) uygulama proxy bağlayıcılarıyla ilgili sorunları gidermenize yardımcı olur. Şirket içi bir Web uygulamasına uzaktan erişim için uygulama ara sunucusu hizmetini kullanıyorsanız, ancak uygulamaya bağlanırken sorun yaşıyorsanız, bağlayıcı sorunlarını ayıklamak için bu akış çizelgesini kullanın. 
+Bu makale, Azure Etkin Dizin (Azure AD) Uygulama Proxy bağlayıcıları ile sorunları gidermenize yardımcı olur. Uygulama Proxy hizmetini şirket içi bir web uygulamasına uzaktan erişim için kullanıyorsanız, ancak uygulamaya bağlanmada sorun yaşıyorsanız, bağlayıcıhata ayıklama sorunlarını ayıklamak için bu akış şemasını kullanın. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, uygulama proxy bağlayıcısını yüklediğinizi ve bir sorun yaşadığınızı varsaymaktadır. Uygulama proxy 'Si sorunlarını giderirken, uygulama proxy bağlayıcısının doğru yapılandırılıp yapılandırılmadığını öğrenmek için bu sorun giderme akışıyla başlamanız önerilir. Uygulamaya bağlanırken sorun yaşamaya devam ediyorsanız, [uygulama proxy 'si uygulama sorunlarını ayıklama](application-proxy-debug-apps.md)içindeki sorun giderme akışını izleyin.  
+Bu makalede, Uygulama Proxy bağlayıcısı yüklü ve bir sorun yaşıyorsanız varsayar. Uygulama Proxy sorunları giderme, Uygulama Proxy bağlayıcıları doğru yapılandırılmış olup olmadığını belirlemek için bu sorun giderme akışı ile başlamanızı öneririz. Uygulamaya bağlanmada sorun yaşıyorsanız, [Hata Ayıklama Uygulama Proxy uygulama sorunlarındaki](application-proxy-debug-apps.md)sorun giderme akışını izleyin.  
 
 
-Uygulama proxy 'Si ve bağlayıcılarını kullanma hakkında daha fazla bilgi için bkz.:
+Uygulama Proxy ve bağlayıcılarını kullanma hakkında daha fazla bilgi için bkz:
 
-- [Uygulama proxy 'Si aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md)
-- [Uygulama proxy bağlayıcıları](application-proxy-connectors.md)
-- [Bağlayıcı yükleyip kaydetme](application-proxy-add-on-premises-application.md)
-- [Uygulama proxy 'Si sorunlarını ve hata iletilerini sorun giderme](application-proxy-troubleshoot.md)
+- [Uygulama Proxy aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md)
+- [Uygulama Proxy konektörleri](application-proxy-connectors.md)
+- [Konektör yükleme ve kaydetme](application-proxy-add-on-premises-application.md)
+- [Sorun Giderme Uygulama Proxy sorunları ve hata iletileri](application-proxy-troubleshoot.md)
 
-## <a name="flowchart-for-connector-issues"></a>Bağlayıcı sorunları için akış çizelgesi
+## <a name="flowchart-for-connector-issues"></a>Konektör sorunları için akış şeması
 
-Bu akış çizelgesi, daha yaygın bağlayıcı sorunlarından bazılarının hatalarını ayıklamaya yönelik adımlarda size yol gösterir. Her bir adımla ilgili ayrıntılar için, akış çizelgesinin altındaki tabloya bakın.
+Bu akış şeması, daha yaygın bağlayıcı sorunlarının bazılarını hata ayıklama adımlarından geçirmenize yol alar. Her adımla ilgili ayrıntılar için akış şemasının ardından tabloya bakın.
 
-![Bağlayıcının hatalarını ayıklama adımlarını gösteren akış çizelgesi](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
+![Bağlayıcıhata ayıklama adımlarını gösteren akış şeması](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
 |  | Eylem | Açıklama | 
 |---------|---------|---------|
-|1 | Uygulamaya atanan bağlayıcı grubunu bulma | Büyük olasılıkla birden çok sunucuya yüklenmiş bir bağlayıcıya sahipsiniz, bu durumda bağlayıcılar [bağlayıcı gruplarına atanmalıdır](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Bağlayıcı grupları hakkında daha fazla bilgi edinmek için bkz. [bağlayıcı gruplarını kullanarak ayrı ağlarda ve konumlarda uygulama yayımlama](application-proxy-connector-groups.md). |
-|2 | Bağlayıcıyı yükleyip bir grup atayın | Yüklü bir Bağlayıcınız yoksa, bkz. [bağlayıcı yükleme ve kaydetme](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Bağlayıcıyı yükleme konusunda sorun yaşıyorsanız, bkz. [bağlayıcıyı yükleme sorunu](application-proxy-connector-installation-problem.md).<br></br> Bağlayıcı bir gruba atanmamışsa, bkz. [bağlayıcıyı bir gruba atama](application-proxy-connector-groups.md#create-connector-groups).<br></br>Uygulama bir bağlayıcı grubuna atanmamışsa, bkz. [uygulamayı bir bağlayıcı grubuna atama](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
-|3 | Bağlayıcı sunucusunda bir bağlantı noktası testi çalıştırma | Bağlayıcı sunucusunda, 443 ve 80 bağlantı noktalarının açık olup olmadığını denetlemek için [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) veya diğer bir bağlantı noktası test aracı kullanarak bir bağlantı noktası testi çalıştırın.|
-|4 | Etki alanlarını ve bağlantı noktalarını yapılandırma | [Etki alanlarınızın ve bağlantı noktalarınızın doğru yapılandırıldığından emin olun](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) Bağlayıcının düzgün çalışması için, açık olması gereken bazı bağlantı noktaları ve sunucunuzun erişebilmesi gereken URL 'Ler vardır. |
-|5 | Bir arka uç proxy 'sinin kullanımda olup olmadığını denetleyin | Bağlayıcıların arka uç proxy sunucuları kullanıp kullanmalarını veya onları atlayıp atlamalarını denetleyin. Ayrıntılar için bkz. [bağlayıcı proxy sorunlarını giderme ve hizmet bağlantısı sorunları](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues). |
-|6 | Bağlayıcıyı ve Güncelleştirici 'yi arka uç ara sunucusunu kullanacak şekilde güncelleştirme | Bir arka uç ara sunucusu kullanılıyorsa, bağlayıcının aynı proxy 'yi kullanmakta olduğundan emin olmak isteyeceksiniz. Ara sunucularla çalışacak bağlayıcılar sorunlarını giderme ve yapılandırma hakkında ayrıntılı bilgi için bkz. [mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md). |
-|7 | Uygulamanın iç URL 'sini bağlayıcı sunucusuna yükleme | Bağlayıcı sunucusunda, uygulamanın iç URL 'sini yükleyin. |
-|8 | İç ağ bağlantısını denetle | İç ağınızda bu hata ayıklama akışının tanılamamasının bir bağlantı sorunu var. Bağlayıcıların çalışması için uygulamanın dahili olarak erişilebilir olması gerekir. Bağlayıcı olay günlüklerini, [uygulama proxy bağlayıcıları](application-proxy-connectors.md#under-the-hood)bölümünde açıklandığı gibi etkinleştirebilir ve görüntüleyebilirsiniz. |
-|9 | Arka uçtaki zaman aşımı değerini uzatın | Uygulamanız için **ek ayarlar** ' da, **arka uç uygulama zaman aşımı** ayarını **uzun**olarak değiştirin. Bkz. [Azure AD 'ye şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). |
-|10 | Sorun devam ederse, belirli akış sorunlarını hedefleyin, uygulama ve SSO hata ayıklama akışlarını gözden geçirin | [Hata ayıklama uygulama proxy 'si uygulama sorunlarını](application-proxy-debug-apps.md) giderme akışı ' nı kullanın. |
+|1 | Uygulamaya atanan bağlayıcı grubunu bulma | Büyük olasılıkla birden çok sunucuda yüklü bir bağlayıcınız vardır, bu durumda bağlayıcılar [bağlayıcı gruplarına atanmalıdır.](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups) Bağlayıcı grupları hakkında daha fazla bilgi edinmek için [bkz.](application-proxy-connector-groups.md) |
+|2 | Konektörü yükleyin ve bir grup atayın | Yüklü bir konektörüniz yoksa, [bir bağlayıcıyı yükle'ye bakın ve kaydedin.](application-proxy-add-on-premises-application.md#install-and-register-a-connector)<br></br> Bağlayıcıyı yüklerken sorun yaşıyorsanız, [bkz.](application-proxy-connector-installation-problem.md)<br></br> Bağlayıcı bir gruba atanmamışsa, [bağlayıcıyı bir gruba atay'a](application-proxy-connector-groups.md#create-connector-groups)bakın.<br></br>Uygulama bir bağlayıcı grubuna atanmamışsa, [bkz.](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)|
+|3 | Bağlayıcı sunucusunda bağlantı noktası testi çalıştırma | Bağlayıcı sunucusunda, 443 ve 80 bağlantı noktalarının açık olup olmadığını kontrol etmek için [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) veya başka bir bağlantı noktası test aracı kullanarak bir bağlantı noktası testi çalıştırın.|
+|4 | Etki alanlarını ve bağlantı noktalarını yapılandırma | [Etki alanlarınızın ve bağlantı noktalarınızın doğru şekilde yapılandırıldığından emin olun](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) Bağlayıcının düzgün çalışması için, sunucunuzun erişebilmesi gereken açık olması gereken belirli bağlantı noktaları ve URL'ler vardır. |
+|5 | Arka uç proxy'nin kullanılıp kullanılmamasını denet | Konektörlerin arka uç proxy sunucularını mı kullandığını yoksa atlayıp atlayıp atlayıp geçirmemelerini denetleyin. Ayrıntılar için, [Sorun Giderme bağlayıcısı proxy sorunları ve hizmet bağlantısı sorunları](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues)bakın. |
+|6 | Arka uç proxy'sini kullanmak için bağlayıcıyı ve güncelleyiciyi güncelleştirin | Arka uç proxy kullanılıyorsa, bağlayıcının aynı proxy'yi kullandığından emin olmak istersiniz. Proxy sunucularıyla çalışacak şekilde sorun giderme ve konektörleri yapılandırma hakkında ayrıntılı bilgi için, [mevcut şirket içi proxy sunucularıyla Çalışma'ya](application-proxy-configure-connectors-with-proxy-servers.md)bakın. |
+|7 | Uygulamanın dahili URL'sini bağlayıcı sunucusuna yükleme | Bağlayıcı sunucusunda, uygulamanın dahili URL'sini yükleyin. |
+|8 | Dahili ağ bağlantısını denetleme | Dahili ağınızda, bu hata ayıklama akışının tanılayamadığı bir bağlantı sorunu var. Bağlayıcıların çalışması için uygulama dahili olarak erişilebilir olmalıdır. [Uygulama Proxy bağlayıcılarında](application-proxy-connectors.md#under-the-hood)açıklandığı gibi bağlayıcı olay günlüğünü etkinleştirebilir ve görüntüleyebilirsiniz. |
+|9 | Arka uçtaki zaman sonu değerini uzatma | Uygulamanızın Ek Ayarları'nda, **Arka Uç Uygulama Zaman Sonu** ayarını **Uzun**olarak değiştirin. **Additional Settings** Bkz. [Azure AD'ye şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). |
+|10 | Sorunlar devam ederse, belirli akış sorunlarını hedefleyin, uygulamayı ve SSO hata ayıklama akışlarını gözden geçirin | Hata [Ayıklama Uygulama Proxy uygulaması](application-proxy-debug-apps.md) sorun giderme akışını kullanın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 
-* [Bağlayıcı gruplarını kullanarak ayrı ağlarda ve konumlarda uygulama yayımlama](application-proxy-connector-groups.md)
-* [Mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Uygulama proxy 'Si ve bağlayıcı hatalarında sorun giderme](application-proxy-troubleshoot.md)
-* [Azure AD Uygulama Ara Sunucusu bağlayıcısını sessizce yüklemek](application-proxy-register-connector-powershell.md)
+* [Bağlayıcı gruplarını kullanarak uygulamaları ayrı ağlarda ve konumlarda yayımlama](application-proxy-connector-groups.md)
+* [Varolan şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
+* [Sorun Giderme Uygulama Proxy ve bağlayıcı hataları](application-proxy-troubleshoot.md)
+* [Azure AD Uygulama Proxy Bağlayıcısı sessizce nasıl yüklenir?](application-proxy-register-connector-powershell.md)

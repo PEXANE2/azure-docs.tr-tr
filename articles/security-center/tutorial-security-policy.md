@@ -1,6 +1,6 @@
 ---
-title: Güvenlik ilkeleriyle çalışma | Microsoft Docs
-description: Bu makalede, Azure Güvenlik Merkezi 'nde güvenlik ilkeleriyle nasıl çalışılacağı açıklanır.
+title: Güvenlik politikalarıyla çalışma | Microsoft Dokümanlar
+description: Bu makalede, Azure Güvenlik Merkezi'nde güvenlik ilkeleriyle nasıl çalışılalış anlatılmaktadır.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,120 +15,120 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906863"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
-Bu makalede güvenlik ilkelerinin nasıl yapılandırıldığı ve Güvenlik Merkezi 'nde nasıl görüntüleneceği açıklanmaktadır. 
+Bu makalede, güvenlik ilkelerinin nasıl yapılandırıldığı ve Güvenlik Merkezi'nde nasıl görüntülenilen açıklanmaktadır. 
 
 ## <a name="introduction-to-security-policies"></a>Güvenlik ilkelerine giriş
 
-Güvenlik ilkesi, iş yüklerinizin istenen yapılandırmasını tanımlar ve şirketinizin veya düzenleyicilerinin güvenlik gereksinimleriyle uyumlu olmanıza yardımcı olur.
+Güvenlik ilkesi, iş yüklerinizin istenilen yapılandırmasını tanımlar ve şirketinizin veya düzenleyicilerinizin güvenlik gereksinimlerine uyduğunuzdan emin olun.
 
-Azure Güvenlik Merkezi, seçtiğiniz ilkelere göre güvenlik önerilerini sağlar. Güvenlik Merkezi ilkeleri, Azure Ilkesinde oluşturulan ilke girişimlerini temel alır. İlkelerinizi yönetmek ve ilkeleri yönetim grupları ve birden çok abonelik arasında ayarlamak için [Azure ilkesi](../governance/policy/overview.md) 'ni kullanabilirsiniz.
+Azure Güvenlik Merkezi, güvenlik önerilerini seçtiğiniz ilkelere göre yapar. Güvenlik Merkezi ilkeleri, Azure İlkesi'nde oluşturulan ilke girişimlerini temel almaktadır. İlkelerinizi yönetmek ve Yönetim grupları arasında ve birden çok abonelikte ilke ayarlamak için [Azure İlkesi'ni](../governance/policy/overview.md) kullanabilirsiniz.
 
-Güvenlik Merkezi güvenlik ilkeleriyle çalışma için aşağıdaki seçenekleri sunar:
+Güvenlik Merkezi, güvenlik ilkeleriyle çalışmak için aşağıdaki seçenekleri sunar:
 
-* **Yerleşik varsayılan Ilkeyi görüntüleyin ve düzenleyin** -Güvenlik Merkezi 'ni etkinleştirdiğinizde, tüm güvenlik merkezi kayıtlı aboneliklerine (ücretsiz veya standart katmanlara) ' ASC default ' adlı yerleşik bir girişim otomatik olarak atanır. Bu girişimi özelleştirmek için, içindeki ilkeleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz. Kullanıma hazır seçenekleri anlamak için [yerleşik güvenlik ilkeleri](security-center-policy-definitions.md) listesine bakın.
+* **Yerleşik varsayılan ilkeyi görüntüleyin ve edin** - Güvenlik Merkezi'ni etkinleştirdiğinizde, 'ASC varsayılanı' adlı yerleşik bir girişim otomatik olarak tüm Güvenlik Merkezi kayıtlı aboneliklerine (Ücretsiz veya Standart katmanlar) atanır. Bu girişimi özelleştirmek için, bu girişim içinde tek tek ilkeleri etkinleştirebilir veya devre dışı kullanabilirsiniz. Kutudan çıkan seçenekleri anlamak için [yerleşik güvenlik ilkeleri](security-center-policy-definitions.md) listesine bakın.
 
-* **Kendi özel Ilkelerinizi ekleyin** -aboneliğinize uygulanan güvenlik girişimlerini özelleştirmek istiyorsanız, bunu Güvenlik Merkezi içinde yapabilirsiniz. Daha sonra, makineleriniz oluşturduğunuz ilkeleri izleyememesi durumunda öneriler alacaksınız. Özel ilkeler oluşturma ve atama hakkında yönergeler için bkz. [özel güvenlik Ilkeleri kullanma](custom-security-policies.md).
+* **Kendi özel ilkelerinizi ekleyin** - Aboneliğinize uygulanan güvenlik girişimlerini özelleştirmek istiyorsanız, bunu Güvenlik Merkezi içinde yapabilirsiniz. Makineleriniz oluşturduğunuz ilkelere uymazsa öneriler alırsınız. Özel ilkeler oluşturma ve atama yönergeleri için [bkz.](custom-security-policies.md)
 
-* **Mevzuat uyumluluk Ilkeleri ekleme** -Güvenlik Merkezi 'nin mevzuat uyumluluk panosu, ortamınızdaki tüm değerlendirmelerin durumunu belirli bir standart veya yönetmeliği bağlamında gösterir (örneğin, Azure CIS, nıst SP 800-53 R4, SWIFT CSP) CSCF-V2020). Daha fazla bilgi için bkz. [Mevzuat uyumluluğunuzu artırma](security-center-compliance-dashboard.md).
+* **Mevzuata uygunluk ilkeleri ekleyin** - Güvenlik Merkezi'nin mevzuata uygunluk panosu, belirli bir standart veya düzenleme bağlamında (Azure CIS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020 gibi) ortamınızdaki tüm değerlendirmelerin durumunu gösterir. Daha fazla bilgi için [bkz.](security-center-compliance-dashboard.md)
 
 
 ## <a name="managing-your-security-policies"></a>Güvenlik ilkelerinizi yönetme
 
 Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
-1. **Güvenlik Merkezi** panosunda **güvenlik ilkesi**' ni seçin.
+1. Güvenlik **Merkezi** panosunda **Güvenlik ilkesini**seçin.
 
     ![İlke Yönetimi bölmesi](./media/security-center-policies/security-center-policy-mgt.png)
 
-   **İlke yönetimi** ekranında yönetim gruplarının, aboneliklerin ve çalışma alanlarının yanı sıra yönetim grubu yapınızı da görebilirsiniz.
+   **İlke yönetimi** ekranında, yönetim gruplarının, aboneliklerin ve çalışma alanlarının yanı sıra yönetim grubu yapınızı da görebilirsiniz.
 
-1. İlkelerini görüntülemek istediğiniz aboneliği veya yönetim grubunu seçin.
+1. İlkelerini görüntülemek istediğiniz abonelik veya yönetim grubunu seçin.
 
-1. Bu abonelik veya yönetim grubu için güvenlik ilkesi sayfası görüntülenir. Kullanılabilir ve atanan ilkeleri gösterir.
+1. Bu abonelik veya yönetim grubunun güvenlik ilkesi sayfası görüntülenir. Kullanılabilir ve atanan ilkeleri gösterir.
 
-   ![ilke ekranı](./media/tutorial-security-policy/security-policy-page.png)
+   ![politika ekranı](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Varsayılan ilkenize göre "MG devralınmış" etiketi varsa, ilke bir yönetim grubuna atandı ve görüntülemekte olduğunuz aboneliğin Devralındığı anlamına gelir.
+    > Varsayılan ilkenizin yanında "MG Devralındı" etiketi varsa, bu, ilkeğin bir yönetim grubuna atandığı ve görüntülemekte olduğunuz abonelik tarafından devralındığı anlamına gelir.
 
 
-1. Bu sayfadaki kullanılabilir seçenekler arasından seçim yapın:
+1. Bu sayfadaki mevcut seçenekler arasından seçim yapın:
 
-    1. Sektör ilkeleriyle çalışmak için **daha fazla standartlar Ekle**' ye tıklayın. Daha fazla bilgi için bkz. [dinamik uyumluluk paketlerine güncelleştirme](update-regulatory-compliance-packages.md).
+    1. Endüstri ilkeleriyle çalışmak için **daha fazla standart ekle'yi**tıklatın. Daha fazla bilgi için [dinamik uyumluluk paketlerine güncelleştir'e](update-regulatory-compliance-packages.md)bakın.
 
-    1. Özel girişimler atamak ve yönetmek için **özel girişimler Ekle**' ye tıklayın. Daha fazla bilgi için bkz. [özel güvenlik Ilkeleri kullanma](custom-security-policies.md).
+    1. Özel girişimleri atamak ve yönetmek için **özel girişimler ekle'yi**tıklatın. Daha fazla bilgi için [bkz.](custom-security-policies.md)
 
-    1. Varsayılan ilkeyi görüntülemek ve düzenlemek için, **geçerli Ilkeyi görüntüle** ' ye tıklayın ve aşağıda açıklandığı gibi devam edin. 
+    1. Varsayılan ilkeyi görüntülemek ve yeniden yapmak için **etkili ilkeyi Görüntüle'yi** tıklatın ve aşağıda açıklandığı gibi devam edin. 
 
-       ![ilke ekranı](./media/security-center-policies/policy-screen.png)
+       ![politika ekranı](./media/security-center-policies/policy-screen.png)
        
-       Bu **güvenlik ilkesi** ekranı, seçtiğiniz abonelik veya yönetim grubunda atanan ilkeler tarafından gerçekleştirilen eylemi yansıtır.
+       Bu **Güvenlik ilkesi** ekranı, seçtiğiniz abonelik veya yönetim grubunda atanan ilkeler tarafından gerçekleştirilen eylemi yansıtır.
        
-       * En üstteki bağlantıları kullanarak abonelik veya yönetim grubuna uygulanan bir ilke **atamasını** açın. Bu bağlantılar atamaya erişmenizi ve ilkeyi düzenlemenizi veya devre dışı bırakmanızı sağlar. Örneğin, belirli bir ilke atamasının Endpoint Protection 'ın etkin bir şekilde reddediyor olduğunu görürseniz, ilkeyi düzenlemek veya devre dışı bırakmak için bağlantıyı kullanın.
+       * Abonelik veya yönetim grubunda geçerli olan bir ilke **ataması** açmak için en üstteki bağlantıları kullanın. Bu bağlantılar, atamaya erişmenizi ve ilkeyi değiştirmenizi veya devre dışı bırakmanızı sağlar. Örneğin, belirli bir ilke atamasının uç nokta korumasını etkili bir şekilde reddettiğini görüyorsanız, ilkeyi düzenliletmek veya devre dışı etmek için bağlantıyı kullanın.
        
-       * İlke listesinde, ilkenin etkin olan uygulamasını aboneliğinizde veya yönetim grubunuzda görebilirsiniz. Kapsama uygulanan her ilkenin ayarları dikkate alınır ve ilke tarafından alınan eylemlerin toplu sonucu gösterilir. Örneğin, bir ilkenin bir atamasında devre dışıysa, ancak başka bir tane de Auditınotexist olarak ayarlandıysa, kümülatif efekt Auditınotexist uygular. Her zaman daha etkin olan etkilerden önceliklidir.
+       * İlkeler listesinde, ilkenin abonelik veya yönetim grubuna etkin bir şekilde uygulanmasını görebilirsiniz. Kapsam için geçerli olan her ilkenin ayarları dikkate alınır ve ilke tarafından gerçekleştirilen eylemlerin kümülatif sonucu gösterilir. Örneğin, ilkeğin bir atamasında devre dışı bırakılmışsa, ancak diğerinde AuditIfNotExist olarak ayarlanmışsa, kümülatif efekt AuditIfNotExist'ı uygular. Daha etkin etki her zaman önceliklidir.
        
-       * İlkelerin etkisi: Append, Audit, Auditınotexists, deny, DeployIfNotExists, Disabled. Efektlerin nasıl uygulandığı hakkında daha fazla bilgi için bkz. [ilke efektlerini anlama](../governance/policy/concepts/effects.md).
+       * İlkelerin etkisi şu olabilir: Ek, Denetim, AuditIfNotExists, Reddet, DeployIfNotExists, Devre Dışı. Efektlerin nasıl uygulandığı hakkında daha fazla bilgi için [bkz.](../governance/policy/concepts/effects.md)
 
        > [!NOTE]
-       > Atanan ilkeleri görüntülediğinizde, birden çok atamayı görebilir ve her atamanın kendi kendine nasıl yapılandırıldığını görebilirsiniz.
+       > Atanan ilkeleri görüntülediğinizde, birden çok atama görebilirsiniz ve her atamanın kendi başına nasıl yapılandırıldığınızı görebilirsiniz.
 
 
-## <a name="who-can-edit-security-policies"></a>Güvenlik ilkelerini kimler düzenleyebilir?
+## <a name="who-can-edit-security-policies"></a>Güvenlik ilkelerini kimler edinebilir?
 
-Azure Ilke portalından, REST API aracılığıyla veya Windows PowerShell kullanarak güvenlik ilkelerini düzenleyebilirsiniz.
+Güvenlik ilkelerini Azure İlkesi portalı, REST API üzerinden veya Windows PowerShell'i kullanarak edinebilirsiniz.
 
-Güvenlik Merkezi, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilen yerleşik roller sağlayan rol tabanlı Access Control (RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişimi olan kaynaklarla ilgili bilgileri görürler. Bu, kullanıcılara kaynak aboneliğine *sahip*, *katkıda*bulunan veya *okuyucu* rolünün atandığı anlamına gelir. Bu rollerin yanı sıra, iki özel güvenlik merkezi rolü vardır:
+Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen yerleşik roller sağlayan Rol Tabanlı Erişim Denetimi'ni (RBAC) kullanır. Kullanıcılar Güvenlik Merkezi'ni açtıklarında, yalnızca erişebildikleri kaynaklarla ilgili bilgileri görürler. Bu da, kullanıcıların kaynağın aboneliğine *sahip*, *katkıda bulunan*veya *okuyucu* rolü atandığı anlamına gelir. Bu rollerin yanı sıra, iki özel Güvenlik Merkezi rolü vardır:
 
-- **Güvenlik okuyucusu**: öneriler, uyarılar, ilke ve sistem durumunu içeren, ancak değişiklik yapaistemler Için Güvenlik Merkezi 'ne yönelik görünüm haklarına sahiptir.
-- **Güvenlik Yöneticisi**: *güvenlik okuyucusu*ile aynı görünüm haklarına sahip olan ve ayrıca güvenlik ilkesini güncelleştirebilir ve öneriler ile uyarıları kapatabilir.
+- **Güvenlik okuyucu**: Öneriler, uyarılar, ilke ve sistem durumu içeren Güvenlik Merkezi'nin görünüm haklarına sahip, ancak değişiklik yapamazlar.
+- **Güvenlik yöneticisi**: *Güvenlik okuyucusuyla*aynı görünüm haklarına sahiptir ve güvenlik ilkesini güncelleyebilir ve önerileri ve uyarıları reddedebilir.
 
 
-## <a name="disable-security-policies"></a>Güvenlik ilkelerini devre dışı bırak
-Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri üretiyorsa, öneriyi gönderen ilke tanımını devre dışı bırakarak bunu durdurabilirsiniz.
-Öneriler hakkında daha fazla bilgi için bkz. [güvenlik önerilerini yönetme](security-center-recommendations.md).
+## <a name="disable-security-policies"></a>Güvenlik ilkelerini devre dışı
+Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri oluşturuyorsa, öneriyi gönderen ilke tanımını devre dışı bırakarak bunu durdurabilirsiniz.
+Öneriler hakkında daha fazla bilgi için [bkz.](security-center-recommendations.md)
 
-1. Güvenlik Merkezi 'nde, **ilke & uyumluluk** bölümünde **güvenlik ilkesi**' ne tıklayın.
+1. Güvenlik Merkezi'nde, **İlke & Uyumluluk** bölümünden **Güvenlik ilkesini**tıklatın.
 
-   ![ilke yönetimi](./media/tutorial-security-policy/policy-management.png)
+   ![politika yönetimi](./media/tutorial-security-policy/policy-management.png)
 
-2. Öneriyi devre dışı bırakmak istediğiniz abonelik veya yönetim grubuna tıklayın.
-
-   > [!NOTE]
-   > Bir yönetim grubunun ilkelerini aboneliklerine uygulayacağını unutmayın. Bu nedenle, bir aboneliğin ilkesini devre dışı bırakırsanız ve abonelik hala aynı ilkeyi kullanan bir yönetim grubuna aitse, ilke önerilerini almaya devam edersiniz. İlke hala yönetim düzeyinden uygulanır ve öneriler yine de oluşturulacaktır.
-
-1. **Geçerli Ilkeyi görüntüle**' ye tıklayın.
-
-   ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/view-effective-policy.png)
-
-1. Atanan ilkeye tıklayın.
-
-   ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/security-policy.png)
-
-1. **Parametreler** bölümünde, devre dışı bırakmak istediğiniz öneriyi çağıran ilkeyi arayın ve açılan listeden **devre dışı** ' yı seçin.
-
-   ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/disable-policy.png)
-
-1. **Save (Kaydet)** düğmesine tıklayın.
+2. Öneriyi devre dışı kaltın istediğiniz abonelik veya yönetim grubunu tıklatın.
 
    > [!NOTE]
-   > İlke devre dışı bırakma değişikliklerinin etkili olması 12 saate kadar sürebilir.
+   > Bir yönetim grubunun ilkelerini aboneliklerine uygulayacağını unutmayın. Bu nedenle, bir aboneliğin ilkesini devre dışı bırakırsanız ve abonelik hala aynı ilkeyi kullanan bir yönetim grubuna aitse, ilke önerilerini almaya devam edersiniz. İlke hala yönetim düzeyinden uygulanır ve öneriler yine de oluşturulur.
+
+1. **Etkili İlkeyi Görüntüle'yi**tıklatın.
+
+   ![devre dışı at](./media/tutorial-security-policy/view-effective-policy.png)
+
+1. Atanan ilkeyi tıklatın.
+
+   ![devre dışı at](./media/tutorial-security-policy/security-policy.png)
+
+1. **PARAMETRELER** bölümünde, devre dışı bırakmak istediğiniz öneriyi çağıran ilkeyi arayın ve açılır listeden **Devre Dışı**
+
+   ![devre dışı at](./media/tutorial-security-policy/disable-policy.png)
+
+1. **Kaydet**'e tıklayın.
+
+   > [!NOTE]
+   > Devre dışı ilke değişikliklerinin yürürlüğe girmesi 12 saat kadar sürebilir.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede güvenlik ilkeleri hakkında bilgi edindiniz. İlgili bilgiler için aşağıdaki makalelere bakın:
+Bu makalede, güvenlik ilkeleri hakkında bilgi aldınız. İlgili bilgiler için aşağıdaki makalelere bakın:
 
-* PowerShell kullanarak ilkelerin nasıl ayarlanacağı hakkında yönergeler için bkz [. hızlı başlangıç: Azure PowerShell modülünü kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](../governance/policy/assign-policy-powershell.md)
+* PowerShell kullanarak ilkeleri nasıl ayarlayacaklarına ilişkin talimatlar için [bkz.](../governance/policy/assign-policy-powershell.md)
 
-* Azure Ilkesinde bir güvenlik ilkesinin nasıl düzenleneceği hakkında yönergeler için bkz. [uyumluluğu zorlamak için Ilke oluşturma ve yönetme](../governance/policy/tutorials/create-and-manage.md).
+* Azure İlkesi'nde bir güvenlik ilkesini nasıl yapılandıracağınız hakkındaki talimatlar [için, uyumluluğu uygulamak için İlkeler oluştur ve yönet'](../governance/policy/tutorials/create-and-manage.md)e bakın.
 
-* Azure Ilkesi 'ni kullanarak abonelikler arasında veya yönetim gruplarında ilke ayarlama hakkında yönergeler için bkz. [Azure ilkesi nedir?](../governance/policy/overview.md)
+* Azure İlkesi'ni kullanarak abonelikler arasında veya Yönetim gruplarında bir ilkenin nasıl ayarlanır? [What is Azure Policy?](../governance/policy/overview.md)

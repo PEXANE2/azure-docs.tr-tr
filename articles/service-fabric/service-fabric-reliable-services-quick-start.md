@@ -1,14 +1,14 @@
 ---
-title: İçinde ilk Service Fabric uygulamanızı oluşturmaC#
-description: Durum bilgisiz ve durum bilgisi olan hizmetlerle Microsoft Azure Service Fabric uygulama oluşturmaya giriş.
+title: "C'de ilk Servis Kumaşı uygulamanızı oluşturun #"
+description: Durum disları ve durum ları kullanım durumu yla bir Microsoft Azure Hizmet Kumaşı uygulaması oluşturmaya giriş.
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
 ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083787"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services özelliğini kullanmaya başlayın
@@ -17,39 +17,39 @@ ms.locfileid: "77083787"
 > * [Windows üzerinde C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux üzerinde Java](service-fabric-reliable-services-quick-start-java.md)
 
-Azure Service Fabric uygulaması, kodunuzu çalıştıran bir veya daha fazla hizmet içerir. Bu kılavuzda, [Reliable Services](service-fabric-reliable-services-introduction.md)ile hem durum bilgisi olmayan hem de durum bilgisi olan Service Fabric uygulamalarının nasıl oluşturulacağı gösterilmektedir.  
+Azure Hizmet Kumaşı uygulaması, kodunuzu çalıştıran bir veya daha fazla hizmet içerir. Bu kılavuz, [Güvenilir Hizmetler](service-fabric-reliable-services-introduction.md)ile hem durumsuz hem de durumlu Hizmet Kumaşı uygulamalarının nasıl oluşturulabileceğinizi gösterir.  
 
 ## <a name="basic-concepts"></a>Temel kavramlar
 
-Reliable Services kullanmaya başlamak için yalnızca birkaç temel kavramları anlamanız gerekir:
+Güvenilir Hizmetler'e başlamak için yalnızca birkaç temel kavramı anlamanız gerekir:
 
-* **Hizmet türü**: Bu hizmet uygulamanız. Bu, bir ad ve sürüm numarasıyla birlikte `StatelessService` genişleten, yazdığınız ve diğer kod ya da bağımlılıkların kullanıldığı sınıf tarafından tanımlanır.
-* **Adlandırılmış hizmet örneği**: hizmetinizi çalıştırmak için, bir sınıf türünün nesne örneklerini oluştururken olduğu gibi, hizmet türünden adlandırılmış örnekler oluşturursunuz. Hizmet örneği, "Fabric:/" kullanılarak URI biçiminde bir ada sahiptir Düzen, örneğin "Fabric:/MyApp/hizmetim".
-* **Hizmet ana bilgisayarı**: oluşturduğunuz adlandırılmış hizmet örneklerinin bir konak işlemi içinde çalışması gerekir. Hizmet ana bilgisayarı yalnızca hizmetinizin örneklerinin çalıştırılabileceği bir işlemdir.
-* **Hizmet kaydı**: kayıt her şeyi bir araya getirir. Service Fabric çalıştırmak için hizmet türü, bir hizmet ana bilgisayarındaki Service Fabric çalışma zamanına kaydedilmelidir.  
+* **Hizmet türü**: Bu sizin hizmet uygulamanızdır. Yazdığınız sınıf tarafından tanımlanır `StatelessService` ve burada kullanılan diğer kod lar veya bağımlılıklar, bir ad ve sürüm numarası ile birlikte.
+* **Adlandırılmış hizmet örneği**: Hizmetinizi çalıştırmak için, tıpkı bir sınıf türünün nesne örneklerini oluşturduğunuz gibi hizmet türünün adlandırılmış örneklerini oluşturursunuz. Bir hizmet örneğinin "kumaş:/" kullanarak URI şeklinde bir adı vardır. "kumaş:/MyApp/MyService" gibi şema.
+* **Hizmet ana bilgisayarı**: Oluşturduğunuz adlandırılmış hizmet örneklerinin ana bilgisayar işlemi içinde çalışması gerekir. Hizmet ana bilgisayar, hizmet inizin örneklerinin çalıştırılabildiği bir işlemdir.
+* **Hizmet kaydı**: Kayıt her şeyi bir araya getirir. Hizmet dokusunun çalışmasına izin vermek için hizmet türünün servis ana bilgisayarda Hizmet Kumaşı'na kaydedilmesi gerekir.  
 
-## <a name="create-a-stateless-service"></a>Durum bilgisi olmayan hizmet oluşturma
+## <a name="create-a-stateless-service"></a>Devletsiz hizmet oluşturma
 
-Durum bilgisi olmayan bir hizmet, şu anda bulut uygulamalarında norm olan bir hizmet türüdür. Hizmetin kendisi, güvenilir bir şekilde depolanması veya yüksek oranda kullanılabilir olması gereken veriler içermediğinden durum bilgisiz olarak değerlendirilir. Durum bilgisi olmayan bir hizmetin bir örneği kapatılırsa, tüm iç durumları kaybedilir. Bu tür bir hizmette durum, yüksek oranda kullanılabilir ve güvenilir hale getirilme için Azure tabloları veya bir SQL veritabanı gibi bir dış depoya kalıcı olmalıdır.
+Devletsiz hizmet, bulut uygulamalarında şu anda norm olan bir hizmet türüdür. Hizmetin kendisi güvenilir bir şekilde depolanması veya yüksek kullanılabilir hale getirilmesi gereken veriler içermediğinden, durum dilemez olarak kabul edilir. Bir devletsiz hizmet örneği kapanırsa, tüm iç durumu kaybolur. Bu tür bir hizmette, durum, yüksek kullanılabilir ve güvenilir hale getirilebilmek için Azure Tabloları veya SQL veritabanı gibi harici bir depoda kalıcı olmalıdır.
 
-Visual Studio 2017 veya Visual Studio 2019 ' yi yönetici olarak başlatın ve *HelloWorld*adlı yeni bir Service Fabric uygulama projesi oluşturun:
+Visual Studio 2017 veya Visual Studio 2019'u yönetici olarak başlatın ve *HelloWorld*adında yeni bir Service Fabric uygulama projesi oluşturun:
 
-![Yeni bir Service Fabric uygulaması oluşturmak için yeni proje iletişim kutusunu kullanın](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
+![Yeni Bir Hizmet Kumaşı uygulaması oluşturmak için Yeni Proje iletişim kutusunu kullanma](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-Daha sonra, *Merhaba worlddurumsuz*adlı **.NET Core 2,0** kullanarak durum bilgisi olmayan bir hizmet projesi oluşturun:
+Sonra **.NET Core 2.0** *HelloWorldStateless*adlı kullanarak bir devletsiz hizmet projesi oluşturun:
 
-![İkinci iletişim kutusunda, durum bilgisi olmayan bir hizmet projesi oluşturun](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
+![İkinci iletişim kutusunda, bir devletsiz hizmet projesi oluşturma](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
-Çözümünüz artık iki proje içerir:
+Çözümünüz artık iki proje içeriyor:
 
-* *HelloWorld*. Bu, *hizmetlerinizi*içeren *uygulama* projem. Ayrıca, uygulamayı tanımlayan uygulama bildirimini ve uygulamanızı dağıtmanıza yardımcı olan birçok PowerShell komut dosyasını da içerir.
-* *Merhaba Dünya durum bilgisiz*. Bu, hizmet projem. Durum bilgisi olmayan hizmet uygulamasını içerir.
+* *HelloWorld*. Bu, *hizmetlerinizi*içeren *uygulama* projesidir. Ayrıca, uygulamayı açıklayan uygulama bildiriminin yanı sıra uygulamanızı dağıtmanıza yardımcı olan bir dizi PowerShell komut dosyasını da içerir.
+* *HelloWorldStateLess*. Bu hizmet projesi. Bu devletsiz hizmet uygulamasını içerir.
 
-## <a name="implement-the-service"></a>Hizmeti uygulama
+## <a name="implement-the-service"></a>Hizmeti uygulayın
 
-**HelloWorldStateless.cs** dosyasını hizmet projesinde açın. Service Fabric, bir hizmet herhangi bir iş mantığını çalıştırabilir. Service API 'SI, kodunuz için iki giriş noktası sağlar:
+Hizmet projesinde **HelloWorldStateless.cs** dosyasını açın. Service Fabric'te bir hizmet herhangi bir iş mantığını çalıştırabilir. Hizmet API'si kodunuz için iki giriş noktası sağlar:
 
-* Uzun süre çalışan işlem iş yükleri dahil olmak üzere herhangi bir iş yükünü yürütmeye başlayabileceğiniz *RunAsync*adlı bir açık uçlu giriş noktası yöntemi.
+* Uzun süren işlem iş yükleri de dahil olmak üzere tüm iş yüklerini yürütmeye başlayabileceğiniz *RunAsync*adlı açık uçlu giriş noktası yöntemi.
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -58,7 +58,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-* ASP.NET Core gibi istediğiniz iletişim yığınınızı ekleyebileceğiniz iletişim giriş noktası. Bu, kullanıcılardan ve diğer hizmetlerden istek almaya başlayabileceğiniz yerdir.
+* ASP.NET Core gibi iletişim tercihinizi takabileceğiniz bir iletişim giriş noktası. Bu, kullanıcılardan ve diğer hizmetlerden istek almaya başlabildiğiniz yerdir.
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -67,11 +67,11 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-Bu öğreticide `RunAsync()` giriş noktası yöntemine odaklanacağız. Bu, kodunuzun hemen çalıştırılmasına başlayabileceğiniz yerdir.
-Proje şablonu, bir toplama sayısını artıran `RunAsync()` örnek bir uygulamasını içerir.
+Bu eğitimde, `RunAsync()` giriş noktası yöntemi üzerinde durulacak. Bu, kodunuzu hemen çalıştırmaya başlabildiğiniz yerdir.
+Proje şablonu, yuvarlanma sayısı artışlarının `RunAsync()` örnek bir uygulamasını içerir.
 
 > [!NOTE]
-> İletişim yığınıyla çalışma hakkında ayrıntılı bilgi için bkz. [ASP.NET Core Ile hizmet iletişimi](service-fabric-reliable-services-communication-aspnetcore.md)
+> İletişim yığınıyla nasıl çalışılabilenlerle ilgili ayrıntılar için [ASP.NET Core ile Hizmet iletişimine](service-fabric-reliable-services-communication-aspnetcore.md) bakın
 
 ### <a name="runasync"></a>RunAsync
 
@@ -94,40 +94,40 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Bir hizmetin bir örneği yerleştirildiğinde ve yürütülmeye hazırlanıyorsa, platform bu yöntemi çağırır. Durum bilgisi olmayan bir hizmet için hizmet örneği açıldığı zaman anlamına gelir. Hizmet örneğinizin kapatılması gerektiğinde koordine etmek için bir iptal belirteci sağlanır. Service Fabric, bir hizmet örneğinin bu açık/kapalı döngüsü, hizmetin kullanım ömrü boyunca bir bütün olarak çok fazla zaman alabilir. Bu, aşağıdakiler dahil çeşitli nedenlerden kaynaklanabilir:
+Platform, bir hizmet örneği yerleştirildiğinde ve yürütülmeye hazır olduğunda bu yöntemi çağırır. Devletsiz bir hizmet için bu, hizmet örneğinin ne zaman açıldığı anlamına gelir. Hizmet örneğinizin kapatılması gerektiğinde koordine etmek için bir iptal belirteci sağlanır. Hizmet Kumaşı'nda, bir hizmet örneğinin bu açma/kapama döngüsü, hizmetin bir bütün olarak kullanım ömrü boyunca birçok kez oluşabilir. Bu, aşağıdakiler de dahil olmak üzere çeşitli nedenlerle gerçekleşebilir:
 
-* Sistem, hizmet örneklerinizi kaynak Dengeleme için taşıdıkça.
-* Hatalar kodunuzda oluşur.
+* Sistem, kaynak dengeleme için hizmet örneklerinizi taşır.
+* Kodunuzda hatalar oluşur.
 * Uygulama veya sistem yükseltilir.
-* Temel alınan donanım bir kesinti yaşıyorsa.
+* Altta yatan donanım bir kesinti yle karşılar.
 
-Bu düzenleme sistem tarafından, hizmetinizi yüksek oranda kullanılabilir ve düzgün şekilde dengeli tutmak için yönetilir.
+Bu orkestrasyon, hizmetinizi yüksek oranda kullanılabilir ve düzgün bir şekilde dengede tutmak için sistem tarafından yönetilir.
 
-`RunAsync()` eşzamanlı olarak engellenmemelidir. RunAsync uygulamanız, çalışma zamanının devam etmesine izin vermek için uzun süre çalışan veya engelleme işlemlerinde bir görev veya await döndürmelidir. Önceki örnekte `while(true)` döngüsünde, bir görev döndüren `await Task.Delay()` kullanıldığını göz önünde. İş yükünüz zaman uyumlu olarak engellenirse, `RunAsync` uygulamanızda `Task.Run()` yeni bir görev zamanlamanız gerekir.
+`RunAsync()`senkronize olarak engellememelidir. RunAsync uygulamanız bir Görevi döndürmeli veya çalışma süresinin devam etmesine izin vermek için uzun süren veya engelleme işlemlerinde beklemeli. Önceki örnekte `while(true)` döngüde not, görev döndüren `await Task.Delay()` bir kullanılır. İş yükünüz eşzamanlı olarak engellenmesi gerekiyorsa, uygulamanızda `Task.Run()` yeni `RunAsync` bir Görev zamanlamanız gerekir.
 
-İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve `RunAsync()`, sistem iptali istediğinde mümkün olduğunca hızlı bir şekilde çıkmak önemlidir.
+İş yükünüzün iptali, sağlanan iptal belirteci tarafından yönetilen bir işbirliği çabasıdır. Sistem, devam etmeden önce görevin bitmesini (başarılı bir şekilde tamamlayarak, iptal ederek veya hata yaparak) bekler. İptal jetonuna uymak, herhangi bir işi bitirmek `RunAsync()` ve sistem iptal talebinde de diğinde mümkün olan en kısa sürede çıkmak önemlidir.
 
-Bu durum bilgisi olmayan hizmet örneğinde, sayı yerel bir değişkende depolanır. Ancak bu durum bilgisiz olmayan bir hizmet olduğundan, depolanan değer yalnızca hizmet örneğinin geçerli yaşam döngüsü için mevcut olur. Hizmet taşınsa veya yeniden başlatıldığında, değer kaybedilir.
+Bu durumsuz hizmet örneğinde, sayım yerel bir değişkende depolanır. Ancak bu durum devletsiz bir hizmet olduğundan, depolanan değer yalnızca hizmet örneğinin geçerli yaşam döngüsü için vardır. Hizmet hareket ettiğinde veya yeniden başlatıldığında, değer kaybolur.
 
-## <a name="create-a-stateful-service"></a>Durum bilgisi olan hizmet oluşturma
+## <a name="create-a-stateful-service"></a>Devlet hizmeti oluşturma
 
-Service Fabric, durum bilgisi olan yeni bir hizmet türü sunar. Durum bilgisi olan bir hizmet, hizmetin kendisi içinde güvenilir bir şekilde durumunu koruyabilir ve onu kullanan kodla birlikte bulunur. Durum, bir dış depoya durumunun kalıcı hale getirilmesi gerekmeden Service Fabric tarafından yüksek oranda kullanılabilir hale getirilir.
+Service Fabric, devlete ait yeni bir hizmet türünü sunar. Devlet hizmeti, hizmeti kullanan kodla birlikte bulunan, hizmetin kendi içinde durumu güvenilir bir şekilde koruyabilir. Durum, harici bir mağazaya durumu devam etmeye gerek kalmadan Service Fabric tarafından yüksek oranda kullanılabilir hale getirilir.
 
-Bir sayaç değerini durum bilgisiz durumundan yüksek oranda kullanılabilir ve kalıcı olarak dönüştürmek için, hizmet taşınsa veya yeniden başlatıldığında bile, durum bilgisi olan bir hizmete ihtiyacınız vardır.
+Hizmet hareket etse veya yeniden başlatıldığında bile, karşı değeri durum suzdan yüksek kullanılabilir ve kalıcı ya da kalıcı hale getirmek için, devlet hizmetine ihtiyacınız vardır.
 
-Aynı *HelloWorld* uygulamasında, uygulama projesindeki hizmetler başvurularına sağ tıklayıp **> yeni Service Fabric hizmeti**' ni seçerek yeni bir hizmet ekleyebilirsiniz.
+Aynı *HelloWorld* uygulamasında, uygulama projesindeki Hizmetler referanslarını sağ tıklayarak ve **Ekle -> Yeni Hizmet Kumaş Hizmeti'ni**seçerek yeni bir hizmet ekleyebilirsiniz.
 
 ![Service Fabric uygulamanıza hizmet ekleme](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-**.NET Core 2,0-> durum bilgisi olan hizmeti** seçin ve *Merhaba Dünya*dışı olduğunu adlandırın. **Tamam**’a tıklayın.
+**.NET Core 2.0 -> Stateful Service'i** seçin ve adını *HelloWorldStateful*olarak adlandırın. **Tamam**'a tıklayın.
 
-![Yeni proje iletişim kutusunu kullanarak yeni bir Service Fabric durum bilgisi olan hizmet oluşturun](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
+![Yeni Bir Hizmet Kumaşı devlet hizmeti oluşturmak için Yeni Proje iletişim kutusunu kullanma](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
-Uygulamanızın Şu anda iki hizmeti olmalıdır: durum bilgisi olmayan hizmet *Merhaba Dünya durum* bilgisi ve durum bilgisi olan hizmet *Merhaba Dünya durum*bilgisi.
+Uygulamanız şimdi iki hizmet olmalıdır: devletsiz hizmet *HelloWorldStateless* ve devlet hizmeti *HelloWorldStateful*.
 
-Durum bilgisi olan bir hizmet, durum bilgisi olmayan bir hizmetle aynı giriş noktalarına sahiptir. Temel fark, durumu güvenilir bir şekilde depolayabilen bir *durum sağlayıcısının* kullanılabilirliğinden oluşur. Service Fabric, güvenilir [koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)adlı bir durum sağlayıcısı uygulamasıyla birlikte gelir, bu da güvenilir durum Yöneticisi aracılığıyla çoğaltılan veri yapıları oluşturmanızı sağlar. Durum bilgisi olan güvenilir bir hizmet, varsayılan olarak bu durum sağlayıcısını kullanır.
+Devlet hizmeti, devletsiz bir hizmetle aynı giriş noktalarına sahiptir. Temel fark, durumu güvenilir bir şekilde depolayabilen bir *devlet sağlayıcısının* kullanılabilirliğidir. Service Fabric, Güvenilir Devlet Yöneticisi aracılığıyla çoğaltılan veri yapıları oluşturmanıza olanak tanıyan [Güvenilir Koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)adlı bir devlet sağlayıcı uygulamasıyla birlikte gelir. Duruma durumuna geçen Güvenilir Hizmet varsayılan olarak bu durum sağlayıcısını kullanır.
 
-Aşağıdaki RunAsync metodunu içeren *Merhaba Dünya durum bilgisi*içinde **HelloWorldStateful.cs** açın:
+*HelloWorldStateful'da*açık **HelloWorldStateful.cs,** aşağıdaki RunAsync yöntemini içerir:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -161,26 +161,26 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="runasync"></a>RunAsync
 
-`RunAsync()` durum bilgisiz ve durum bilgisi olmayan hizmetlerde benzer şekilde çalışır. Ancak, durum bilgisi olan bir hizmette, platform `RunAsync()`yürütmeden önce sizin adınıza ek iş gerçekleştirir. Bu iş, güvenilir durum Yöneticisi ve güvenilir koleksiyonların kullanıma hazırlandığından emin olabilir.
+`RunAsync()`aynı şekilde devletli ve devletsiz hizmetlerde de çalışır. Ancak, devlet hizmetinde, platform yürütülmeden önce sizin `RunAsync()`adınıza ek iş gerçekleştirir. Bu çalışma, Güvenilir Devlet Yöneticisi ve Güvenilir Koleksiyonların kullanıma hazır olmasını sağlamayı içerebilir.
 
-### <a name="reliable-collections-and-the-reliable-state-manager"></a>Güvenilir koleksiyonlar ve güvenilir durum Yöneticisi
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Güvenilir Koleksiyonlar ve Güvenilir Devlet Müdürü
 
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[Ireliabledictionary](https://msdn.microsoft.com/library/dn971511.aspx) , durumu hizmette güvenilir bir şekilde depolamak için kullanabileceğiniz bir sözlük uygulamasıdır. Service Fabric ve güvenilir koleksiyonlar sayesinde, bir dış kalıcı mağazaya gerek duymadan verileri doğrudan hizmetinize kaydedebilirsiniz. Güvenilir koleksiyonlar, verilerinizi yüksek oranda kullanılabilir hale getirir. Service Fabric, hizmetinizin birden fazla *çoğaltmasını* oluşturup yöneterek bunu gerçekleştirir. Ayrıca, bu çoğaltmaları ve bunların durum geçişlerini yönetmenin karmaşıklıklarını soyutlayan bir API sağlar.
+[IReliableDictionary,](https://msdn.microsoft.com/library/dn971511.aspx) hizmetteki durumu güvenilir bir şekilde depolamak için kullanabileceğiniz bir sözlük uygulamasıdır. Servis Kumaşı ve Güvenilir Koleksiyonlar ile, harici kalıcı depoya gerek kalmadan verileri doğrudan hizmetinizde depolayabilirsiniz. Güvenilir Koleksiyonlar, verilerinizi son derece kullanılabilir hale getirin. Service Fabric bunu, hizmetinizin birden çok *kopyasını* sizin için oluşturarak ve yöneterek gerçekleştirir. Ayrıca, bu yinelemeleri ve durum geçişlerini yönetme karmaşıklığını özetleyen bir API sağlar.
 
-Güvenilir koleksiyonlar, özel türleriniz dahil olmak üzere her türlü .NET türünü, birkaç uyarılarla saklayabilir:
+Güvenilir Koleksiyonlar, özel türleriniz de dahil olmak üzere herhangi bir .NET türünü birkaç uyarıyla depolayabilir:
 
-* Service Fabric, durumları düğümler arasında *çoğaltarak* ve güvenilir koleksiyonlar verilerinizi her çoğaltmada yerel diske depolar. Bu, güvenilir koleksiyonlar içinde depolanan her şeyin *seri hale getirilebilir*olması gerektiği anlamına gelir. Varsayılan olarak, güvenilir koleksiyonlar serileştirme için [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) kullanır, bu nedenle varsayılan serileştirici kullandığınızda türlerinizi [veri sözleşmesi serileştiricisi tarafından desteklendiğinden](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) emin olmak önemlidir.
-* İşlemler, güvenilir koleksiyonlar üzerinde işlem gerçekleştirdiğinizde yüksek kullanılabilirlik için çoğaltılır. Güvenilir koleksiyonlar ' da depolanan nesneler, hizmetinizdeki yerel bellekte tutulur. Bu, nesnesine yerel bir başvurunuz olduğu anlamına gelir.
+* Hizmet Kumaşı, düğümler arasında durumu *çoğaltarak* durumunuzu yüksek oranda kullanılabilir hale getirir ve Güvenilir Koleksiyonlar verilerinizi her yinelemede yerel diske depolar. Bu, Güvenilir Koleksiyonlarda depolanan her şeyin *serileştirilebilir*olması gerektiği anlamına gelir. Varsayılan olarak, Güvenilir Koleksiyonlar Serileştirme için [DataContract'ı](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) kullanır, bu nedenle varsayılan serializer'ı kullandığınızda türünüzün [Veri Sözleşmesi Serializer tarafından desteklendiğinden](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) emin olmak önemlidir.
+* Güvenilir Koleksiyonlar üzerinde işlem yaptığınızda nesneler yüksek kullanılabilirlik için çoğaltılır. Güvenilir Koleksiyonlarda depolanan nesneler hizmetinizde yerel bellekte tutulur. Bu, nesneye yerel bir başvurunuz olduğu anlamına gelir.
   
-   Bir işlemdeki güvenilir koleksiyonda bir güncelleştirme işlemi gerçekleştirmeden, bu nesnelerin yerel örneklerini muanmamak önemlidir. Bunun nedeni, yerel nesne örneklerine yapılan değişikliklerin otomatik olarak çoğaltılmaması olabilir. Nesneyi sözlüğe yeniden eklemeniz veya sözlükteki *güncelleştirme* yöntemlerinden birini kullanmanız gerekir.
+   Bir işlemdeki güvenilir koleksiyonda güncelleştirme işlemi gerçekleştirmeden bu nesnelerin yerel örneklerini mutasyona uğratmamanız önemlidir. Bunun nedeni, nesnelerin yerel örneklerindeki değişikliklerin otomatik olarak çoğaltılamamasıdır. Nesneyi sözlüğe yeniden eklemeniz veya sözlükteki *güncelleştirme* yöntemlerinden birini kullanmanız gerekir.
 
-Güvenilir durum Yöneticisi sizin için güvenilir koleksiyonları yönetir. Güvenilir durum yöneticisinden, her zaman ve hizmetinize dilediğiniz yerde güvenilir bir koleksiyon adını sorabilirsiniz. Güvenilir durum Yöneticisi bir başvuru geri almanızı sağlar. Sınıf üyesi değişkenlerinde veya özelliklerde güvenilir koleksiyon örneklerine başvuruları kaydetmenizi öneririz. Başvurunun hizmet yaşam döngüsünün her zaman bir örneğe ayarlandığından emin olmak için özel dikkatli olunmalıdır. Güvenilir durum Yöneticisi bu çalışmayı sizin için işler ve yineleme ziyaretleri için en iyi duruma getirilmiştir.
+Güvenilir Devlet Yöneticisi sizin için Güvenilir Koleksiyonları yönetir. Güvenilir Devlet Müdürü'nden istediğiniz zaman ve hizmetinizde herhangi bir yerde ada göre güvenilir bir koleksiyon isteyebilirsiniz. Güvenilir Durum Yöneticisi, bir başvuruyu geri almanızı sağlar. Sınıf üye değişkenlerinde veya özelliklerinde güvenilir toplama örneklerine başvuru kaydetmenizi önermiyoruz. Başvurunun hizmet yaşam döngüsünde her zaman bir örneğe ayarlandığından emin olmak için özel özen gerekir. Güvenilir Devlet Yöneticisi bu işi sizin için işler ve tekrar ziyaretler için optimize edicisidir.
 
-### <a name="transactional-and-asynchronous-operations"></a>İşlem ve zaman uyumsuz işlemler
+### <a name="transactional-and-asynchronous-operations"></a>İşlemsel ve eşzamanlı işlemler
 
 ```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
@@ -193,26 +193,26 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Güvenilir koleksiyonlar, dil ile tümleşik sorgu (LINQ) dışında `System.Collections.Generic` ve `System.Collections.Concurrent` karşılıkları tarafından aynı işlemlerin çoğuna sahiptir. Güvenilir koleksiyonlardaki işlemler zaman uyumsuzdur. Bunun nedeni, güvenilir Koleksiyonlar içeren yazma işlemlerinin verileri diske çoğaltmak ve diskte kalıcı hale getirmek için g/ç işlemleri gerçekleştirmesini sağlar.
+Güvenilir Koleksiyonlar, Dil Tümleşik `System.Collections.Generic` `System.Collections.Concurrent` Sorgusu (LINQ) dışında, kendi ve benzerlerinin yaptığı işlemlerin çoğuna sahiptir. Güvenilir Koleksiyonlar üzerindeki işlemler eşzamanlıdır. Bunun nedeni, Güvenilir Koleksiyonlar ile yazma işlemleri çoğaltmak ve diske veri kalıcı gindirimi işlemleri gerçekleştirmek olmasıdır.
 
-Güvenilir koleksiyon işlemleri *işlem yapılabilir*ve bu sayede durum, birden çok güvenilir koleksiyonlar ve işlemler arasında tutarlı tutulabilmenizi sağlayabilir. Örneğin, bir iş öğesini güvenilir bir kuyruktan sıradan sıradan alabilir, üzerinde bir işlem gerçekleştirebilir ve sonucu tek bir işlem içinde güvenilir bir sözlükte kaydedebilirsiniz. Bu bir atomik işlem olarak değerlendirilir ve tüm işlemin başarılı olacağını veya işlemin tamamının geri alınmayacağını garanti eder. Öğeyi sıradan çıktıktan sonra bir hata oluşursa, ancak sonucu kaydetmeden önce, tüm işlem geri alınır ve öğe işlenmek üzere kuyrukta kalır.
+Güvenilir Tahsilat işlemleri *işlemseldir,* böylece birden çok Güvenilir Koleksiyon ve işlem de durumu tutarlı tutabilirsiniz. Örneğin, bir iş öğesini Güvenilir Kuyruktan ayırabilir, üzerinde bir işlem gerçekleştirebilir ve sonucu tek bir işlem içinde Güvenilir Sözlük'te kaydedebilirsiniz. Bu bir atomik işlem olarak kabul edilir ve ya tüm işlemin başarılı olacağını ya da tüm işlemin geri döneceğini garanti eder. Maddenin kuyruğunu çıkardıktan sonra ancak sonucu kaydetmeden önce bir hata oluşursa, tüm işlem geri alınır ve öğe işleme için sırada kalır.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
-Şimdi *HelloWorld* uygulamasına geri dönebiliyoruz. Artık hizmetlerinizi oluşturabilir ve dağıtabilirsiniz. **F5**tuşuna bastığınızda uygulamanız oluşturulup yerel kümenize dağıtılır.
+Şimdi *HelloWorld* uygulamasına geri dönüyoruz. Artık hizmetlerinizi oluşturabilir ve dağıtabilirsiniz. **F5**tuşuna bastığınızda, uygulamanız yerel kümenize oluşturulur ve dağıtılır.
 
-Hizmetler çalışmaya başladıktan sonra, Windows için oluşturulan olay Izleme (ETW) olaylarını bir **Tanılama olayları** penceresinde görüntüleyebilirsiniz. Görüntülenen olayların hem durum bilgisi olmayan hizmetten hem de uygulamadaki durum bilgisi olan hizmetten olduğunu unutmayın. **Duraklat** düğmesine tıklayarak akışı duraklatabilirsiniz. Daha sonra bu iletiyi genişleterek bir iletinin ayrıntılarını inceleyebilirsiniz.
+Hizmetler çalışmaya başladıktan sonra, oluşturulan Windows için Olay İzleme (ETW) olaylarını **tanılama olayları** penceresinde görüntüleyebilirsiniz. Görüntülenen olayların hem devletsiz hizmetten hem de uygulamadaki stateful hizmetinden olduğunu unutmayın. **Duraklat** düğmesini tıklatarak akışı duraklatabilirsiniz. Daha sonra bu iletiyi genişleterek iletinin ayrıntılarını inceleyebilirsiniz.
 
 > [!NOTE]
-> Uygulamayı çalıştırmadan önce, çalışan bir yerel geliştirme kümeniz olduğundan emin olun. Yerel ortamınızı ayarlama hakkında bilgi edinmek için Başlarken [kılavuzuna](service-fabric-get-started.md) göz atın.
+> Uygulamayı çalıştırmadan önce, çalışan yerel bir geliştirme kümesi olduğundan emin olun. Yerel ortamınızı ayarlama hakkında bilgi almak için [başlangıç kılavuzuna](service-fabric-get-started.md) göz atın.
 > 
 > 
 
-![Visual Studio 'da Tanılama olaylarını görüntüleme](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
+![Visual Studio'da Tanılama Olaylarını Görüntüle](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Visual Studio 'da Service Fabric uygulamanızda hata ayıklama](service-fabric-debugging-your-application.md)
+[Visual Studio'da Servis Kumaşı uygulamanızı hata ayıklama](service-fabric-debugging-your-application.md)
 
-[Kullanmaya başlayın: OWıN Self-hosting ile Web API hizmetlerini Service Fabric](service-fabric-reliable-services-communication-webapi.md)
+[Başlayın: OWIN self-hosting ile Servis Kumaş Web API hizmetleri](service-fabric-reliable-services-communication-webapi.md)
 
 [Güvenilir Koleksiyonlar hakkında daha fazla bilgi edinin](service-fabric-reliable-services-reliable-collections.md)
 
@@ -220,5 +220,5 @@ Hizmetler çalışmaya başladıktan sonra, Windows için oluşturulan olay Izle
 
 [Uygulama yükseltme](service-fabric-application-upgrade.md)
 
-[Reliable Services için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/dn706529.aspx)
+[Güvenilir Hizmetler için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 

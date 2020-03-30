@@ -1,7 +1,7 @@
 ---
 title: Anahtarlık yapılandırma
 titleSuffix: Microsoft identity platform
-description: Anahtarlığınıza, uygulamanızın belirteçleri anahtarlıkta önbelleğe abilmesi için Anahtarlık yapılandırmayı öğrenin.
+description: Uygulamanızın anahtarlıktaki belirteçleri önbelleğe alması için anahtarzinciri nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,39 +14,39 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085856"
 ---
 # <a name="configure-keychain"></a>Anahtarlık yapılandırma
 
-[İOS ve macOS Için Microsoft kimlik doğrulama kitaplığı](msal-overview.md) (msal) bir kullanıcıya kaydolursa veya bir belirteci yenilediğinde, anahtarlıkta belirteçleri önbelleğe almaya çalışır. Anahtarlıkta önbelleğe alma belirteçleri, MSAL 'ın aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulama arasında sessiz çoklu oturum açma (SSO) sağlamasına izin verir. Anahtar Zinciri erişim grupları işlevselliği aracılığıyla SSO elde edilir. Daha fazla bilgi için bkz. Apple 'ın [Anahtarlık öğeleri belgeleri](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc).
+[iOS ve macOS (MSAL) için Microsoft Kimlik Doğrulama Kitaplığı](msal-overview.md) bir kullanıcıda işaretlediğinde veya bir belirteci yenilediğinde, anahtarlıktaki belirteçleri önbelleğe almaya çalışır. Anahtarlıktaki belirteçleri önbelleğe alma, MSAL'ın aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulama arasında sessiz tek oturum açma (SSO) sağlamasına olanak tanır. SSO, anahtarlık erişim grupları işlevi ile elde edilir. Daha fazla bilgi için Apple'ın [Anahtarlık Öğeleri belgelerine](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)bakın.
 
-Bu makalede, MSAL 'in önbelleğe alınmış belirteçleri iOS ve macOS anahtarlığa yazabilmesi için uygulama yetkilendirmelerini yapılandırma konuları ele alınmaktadır.
+Bu makalede, MSAL'ın iOS ve macOS anahtar zincirine önbelleğe alınmış belirteçler yazabilmesi için uygulama yetkilerinin nasıl yapılandırılabildiği ele allanmıştır.
 
-## <a name="default-keychain-access-group"></a>Varsayılan Anahtarlık erişim grubu
+## <a name="default-keychain-access-group"></a>Varsayılan anahtar zinciri erişim grubu
 
 ### <a name="ios"></a>iOS
 
-İOS üzerinde MSAL, varsayılan olarak `com.microsoft.adalcache` erişim grubunu kullanır. Bu, hem MSAL hem de Azure AD kimlik doğrulama kitaplığı (ADAL) SDK 'Ları tarafından kullanılan paylaşılan erişim grubudur ve aynı yayımcıdan gelen birden çok uygulama arasında en iyi çoklu oturum açma (SSO) deneyimini sağlar.
+iOS'taki MSAL `com.microsoft.adalcache` varsayılan olarak erişim grubunu kullanır. Bu, hem MSAL hem de Azure AD Kimlik Doğrulama Kitaplığı (ADAL) SDK'ları tarafından kullanılan paylaşılan erişim grubudur ve aynı yayımcıdan gelen birden fazla uygulama arasında en iyi tek oturum açma (SSO) deneyimini sağlar.
 
-İOS 'ta, `com.microsoft.adalcache` Anahtarlık grubunu, **proje > ayarları** ' nın altındaki Xcode 'Da, **anahtar zinciri paylaşımı** ** > Şirket içindeki yetkilendirenlerine** ekleyin
+iOS'ta, `com.microsoft.adalcache` **Proje ayarları** > **Özellikleri** > **Anahtarzinciri paylaşımı** altında uygulamanızın XCode'daki yakınına anahtarlık grubunu ekleyin
 
 ### <a name="macos"></a>macOS
 
-MacOS üzerinde MSAL, varsayılan olarak `com.microsoft.identity.universalstorage` erişim grubunu kullanır.
+macOS'taki MSAL varsayılan olarak erişim grubunu kullanır. `com.microsoft.identity.universalstorage`
 
-MacOS anahtar zinciri sınırlamaları nedeniyle, MSAL 'in `access group` macOS 10,14 ve önceki sürümlerde Anahtarlık erişim grubu özniteliğine (bkz. [Ksecattraccessgroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) doğrudan çevrilmez. Ancak, aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulamanın sessiz SSO 'ya sahip olduğundan emin olarak SSO perspektifinden aynı şekilde davranır.
+macOS anahtar zinciri sınırlamaları nedeniyle, `access group` MSAL's doğrudan macOS 10.14 ve önceki anahtarlık erişim grubu özniteliği [(bkz. kSecAttrAccessGroup)](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)anlamına gelmez. Ancak, aynı Apple geliştiricisi tarafından dağıtılan birden fazla uygulamanın sessiz SSO'ya sahip olmasını sağlayarak SSO perspektifinden benzer şekilde hareket eder.
 
-MacOS 10,15 ve sonraki sürümlerinde (macOS Catalina), MSAL, iOS 'a benzer şekilde sessiz SSO elde etmek için Anahtarlık erişim grubu özniteliğini kullanır.
+MacOS 10.15'te (macOS Catalina) MSAL, iOS'a benzer şekilde sessiz SSO elde etmek için anahtarlık erişim grubu özelliğini kullanır.
 
-## <a name="custom-keychain-access-group"></a>Özel Anahtarlık erişim grubu
+## <a name="custom-keychain-access-group"></a>Özel anahtarzinciri erişim grubu
 
-Farklı bir Anahtarlık erişim grubu kullanmak istiyorsanız, `MSALPublicClientApplication`oluşturmadan önce `MSALPublicClientApplicationConfig` oluştururken özel grubunuzu geçirebilirsiniz, örneğin:
+Farklı bir anahtar zinciri erişim grubu kullanmak istiyorsanız, oluşturmadan `MSALPublicClientApplicationConfig` önce özel `MSALPublicClientApplication`grubunuzu geçirebilirsiniz, bu gibi:
 
-# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -62,7 +62,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -80,17 +80,17 @@ do {
 
 ---
 
-## <a name="disable-keychain-sharing"></a>Anahtarlık paylaşımını devre dışı bırak
+## <a name="disable-keychain-sharing"></a>Anahtarlık paylaşımını devre dışı
 
-Birden çok uygulama arasında SSO durumu paylaşmak istemiyorsanız veya herhangi bir Anahtarlık erişim grubunu kullanarak, uygulama paketi KIMLIĞINI keychainGroup olarak geçirerek anahtar zinciri paylaşımını devre dışı bırakın:
+SSO durumunu birden çok uygulama arasında paylaşmak istemiyorsanız veya herhangi bir anahtar zinciri erişim grubu kullanmak istemiyorsanız, anahtarlık kimliğinizi anahtarlık Grubunuz olarak geçirerek anahtarlık paylaşımını devre dışı bıraktınız:
 
-# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {
@@ -100,14 +100,14 @@ if let bundleIdentifier = Bundle.main.bundleIdentifier {
 
 ---
 
-## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Tanıtıcı-34018 hatası (öğe anahtarlığa ayarlanamadı)
+## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Tanıtıcı -34018 hatası (öğeyi anahtarlık olarak ayarlayamadı)
 
-Hata-34018 normalde Anahtarlık doğru şekilde yapılandırılmadığı anlamına gelir. MSAL ' de yapılandırılmış Anahtarlık erişim grubunun yetkilendirmeler ' de yapılandırılmış bir ile eşleştiğinden emin olun.
+Hata -34018 normalde anahtarzincirinin doğru yapılandırılmadığı anlamına gelir. MSAL'da yapılandırılan anahtarlık erişim grubunun yetkilendirmelerde yapılandırılanla eşleştiğinden emin olun.
 
-## <a name="ensure-your-application-is-properly-signed"></a>Uygulamanızın düzgün şekilde imzalandığından emin olun
+## <a name="ensure-your-application-is-properly-signed"></a>Uygulamanızın düzgün imzalandığından emin olun
 
-MacOS 'ta uygulamalar, geliştirici tarafından imzalanmadan çalıştırılabilir. MSAL işlevlerinin büyük bir kısmının çalışmaya devam etmesi, Anahtarlık erişimi aracılığıyla SSO 'nun, uygulamanın imzalanmasını gerektirir. Birden çok Anahtarlık istemler yaşıyorsanız, uygulamanızın imzasının geçerli olduğundan emin olun.
+macOS'ta, uygulamalar geliştirici tarafından imzalanmadan yürütülebilir. MSAL'ın işlevselliğinin çoğu çalışmaya devam ederken, anahtarlık erişimi aracılığıyla SSO'nun uygulamanın imzalanması gerekir. Birden çok anahtarlık istemi yle karşınızdaysanız, uygulamanızın imzasının geçerli olduğundan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Apple 'ın [, anahtar zinciri öğelerine bir uygulamalar koleksiyonu Ile paylaşım erişimi](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc) üzerinde Anahtarlık erişim grupları hakkında daha fazla bilgi edinin.
+Apple'ın [AnahtarZinciri Öğelerine Erişimi Paylaşma](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc) uygulamasındaki anahtarlık erişim grupları hakkında daha fazla bilgi edinin.

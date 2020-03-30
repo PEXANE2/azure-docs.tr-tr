@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü Kullanıcı bağlantısı gecikmesi-Azure
-description: Windows sanal masaüstü kullanıcıları için bağlantı gecikme süresi.
+title: Windows Virtual Desktop kullanıcı bağlantısı gecikmesi - Azure
+description: Windows Sanal Masaüstü kullanıcıları için bağlantı gecikmesi.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,24 +9,24 @@ ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128185"
 ---
-# <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Windows sanal masaüstü 'nde Kullanıcı bağlantı gecikmesini belirleme
+# <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Windows Sanal Masaüstü'nde kullanıcı bağlantısı gecikmesi belirleme
 
-Windows sanal masaüstü küresel olarak kullanılabilir. Yöneticiler, istedikleri Azure bölgesinde sanal makineler (VM) oluşturabilir. Bağlantı gecikmesi, kullanıcıların ve sanal makinelerin konumuna göre değişir. Windows Sanal Masaüstü Hizmetleri, gecikme süresini artırmak için sürekli olarak yeni coğrafi bir şekilde kullanıma sunulacaktır. 
+Windows Sanal Masaüstü genel olarak kullanılabilir. Yöneticiler istedikleri herhangi bir Azure bölgesinde sanal makineler (VM' ler) oluşturabilirler. Bağlantı gecikmesi, kullanıcıların ve sanal makinelerin konumuna bağlı olarak değişir. Windows Sanal Masaüstü hizmetleri, gecikme süresini artırmak için sürekli olarak yeni coğrafyalara sunulacaktır. 
  
-[Windows sanal masaüstü deneyimi Estimator Aracı](https://azure.microsoft.com/services/virtual-desktop/assessment/) , sanal makinelerinizin gecikmesini iyileştirmek için en iyi konumu belirlemenize yardımcı olabilir. Windows sanal masaüstü yeni alanlara kaydolurken en iyi konumun değişmediğinden emin olmak için aracı iki ile üç ayda bir kullanmanızı öneririz. 
+[Windows Sanal Masaüstü Deneyimi Tahmincisi aracı,](https://azure.microsoft.com/services/virtual-desktop/assessment/) SANAL M'lerinizin gecikmesini en iyi duruma getirmek için en iyi konumu belirlemenize yardımcı olabilir. Windows Sanal Masaüstü yeni alanlara aktarılırken en uygun konumun değişmediğinden emin olmak için aracı her iki ila üç ayda bir kullanmanızı öneririz. 
 
 ## <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Windows sanal masaüstü, en yakın Windows sanal masaüstü hizmeti örneğini bulmak için kullanıcının DNS sunucusunun konumunu denetleyen Azure Traffic Manager kullanır. Yöneticiler, VM 'Lerin konumunu seçmeden önce kullanıcının DNS sunucusunun konumunu incelemenizi öneririz.
+Windows Sanal Masaüstü, en yakın Windows Sanal Masaüstü hizmeti örneğini bulmak için kullanıcının DNS sunucusunun konumunu kontrol eden Azure Trafik Yöneticisi'ni kullanır. Yöneticilerin, VM'lerin konumunu seçmeden önce kullanıcının DNS sunucusunun konumunu gözden geçirmelerini öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- En iyi gecikme süresinin en iyi konumunu denetlemek için bkz. [Windows sanal masaüstü deneyimi Estimator Aracı](https://azure.microsoft.com/services/virtual-desktop/assessment/).
-- Fiyatlandırma planları için bkz. [Windows sanal masaüstü fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-desktop/).
-- Windows sanal masaüstü dağıtımınızı kullanmaya başlamak için [öğreticimize](tenant-setup-azure-active-directory.md)göz atın.
+- En iyi gecikme için en iyi konumu kontrol etmek için [Windows Sanal Masaüstü Deneyimi Tahminaracı'na](https://azure.microsoft.com/services/virtual-desktop/assessment/)bakın.
+- Fiyatlandırma planları için [Windows Sanal Masaüstü fiyatlandırması'na](https://azure.microsoft.com/pricing/details/virtual-desktop/)bakın.
+- Windows Sanal Masaüstü dağıtımınıza başlamak için [öğreticimize](tenant-setup-azure-active-directory.md)göz atın.

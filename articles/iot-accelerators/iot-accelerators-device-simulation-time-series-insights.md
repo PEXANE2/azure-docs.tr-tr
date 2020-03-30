@@ -1,6 +1,6 @@
 ---
-title: Time Series Insights-Azure ile sanal Telemetriyi görselleştirin | Microsoft Docs
-description: Cihaz benzetimi Çözüm Hızlandırıcısı tarafından oluşturulan Telemetriyi araştırmak ve analiz etmek için Time Series Insights ortamınızı nasıl yapılandıracağınızı öğrenin.
+title: Zaman Serisi Öngörüleri ile simüle edilmiş telemetriyi görselleştirin - Azure | Microsoft Dokümanlar
+description: Aygıt Simülasyonu çözüm hızlandırıcısı tarafından oluşturulan telemetriyi keşfetmek ve analiz etmek için Zaman Serisi Öngörüleri ortamınızı nasıl yapılandıracaklarınızı öğrenin.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,168 +9,168 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889338"
 ---
-# <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Cihaz simülasyonu çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights kullanın
+# <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Aygıt Simülasyonu çözüm hızlandırıcısından gönderilen telemetriyi görselleştirmek için Zaman Serisi Öngörülerini kullanın
 
-Cihaz benzetimi Çözüm Hızlandırıcısı, IoT çözümlerinizi test etmek için sanal cihazlardan telemetri oluşturmanıza imkan tanır. Bu nasıl yapılır Kılavuzu, bir Time Series Insights ortamı kullanarak sanal Telemetriyi görselleştirmeyi ve çözümlemeyi gösterir.
+Cihaz Simülasyonu çözüm hızlandırıcısı, IoT çözümlerinizi test etmek için simüle edilmiş cihazlardan telemetri oluşturmanıza olanak tanır. Bu nasıl yapılsın kılavuzu, zaman serisi öngörüleri ortamını kullanarak simüle edilmiş telemetriyi nasıl görselleştirip analiz edebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yapılır kılavuzundaki adımları izleyerek etkin bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Bu nasıl yap'la ilgili kılavuzdaki adımları izlemek için etkin bir Azure aboneliğine ihtiyacınız var. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-Bu nasıl yapılır kılavuzundaki adımlarda, cihaz benzetimi çözüm Hızlandırıcısını Azure aboneliğinize dağıttığınız varsayılmaktadır. Çözüm hızlandırıcıyı dağıtmadıysanız, [bulut tabanlı cihaz benzetimi çözüm](quickstart-device-simulation-deploy.md) hızlı başlangıcı ' nda bulunan adımları izleyin ve çalıştırın.
+Bu nasıl yapılmalı kılavuzundaki adımlar, Aygıt Simülasyonu çözüm hızlandırıcısını Azure aboneliğinize dağıtdığınızı varsayar. Çözüm hızlandırıcısını dağıtmadıysanız, Dağıt'taki adımları izleyin [ve bulut tabanlı bir aygıt simülasyon çözümü](quickstart-device-simulation-deploy.md) hızlı başlatın.
 
-Bu makalede, çözüm hızlandırıcının adının **contoso simülasyonu**olduğu varsayılır. Aşağıdaki adımları tamamladıktan sonra **contoso simülasyonu** çözüm hızlandırıcısının adıyla değiştirin.
+Bu makalede çözüm hızlandırıcı adını **varsayar contoso-simülasyon**. Aşağıdaki adımları tamamlarken **solüsyon simülasyonunu** çözüm hızlandırıcınızın adı ile değiştirin.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-consumer-group"></a>Tüketici grubu oluşturma
 
-Time Series Insights telemetri akışını sağlamak için IoT Hub 'ınızda adanmış bir tüketici grubu oluşturmanız gerekir. Time Series Insights bir olay kaynağı bir IoT Hub tüketici grubunun dışlamalı kullanımına sahip olmalıdır.
+Zaman Serisi Öngörüleri'ne telemetri akışı sağlamak için IoT merkezinizde özel bir tüketici grubu oluşturmanız gerekir. Time Series Insights'taki bir etkinlik kaynağı, bir IoT Hub tüketici grubunun özel kullanımına sahip olmalıdır.
 
-Aşağıdaki adımlar, tüketici grubunu oluşturmak için Azure Cloud Shell Azure CLı 'yi kullanır:
+Aşağıdaki adımlar, tüketici grubunu oluşturmak için Azure Bulut Kabuğu'ndaki Azure CLI'yi kullanır:
 
-1. IoT Hub 'ı, cihaz benzetimi çözüm Hızlandırıcısını dağıtırken oluşturulan çeşitli kaynaklardan biridir. Aşağıdaki komutu yürütün IoT Hub 'ınızın adını bulun-çözüm hızlandırıcısının adını kullanmayı unutmayın:
+1. IoT hub'ı, Aygıt Simülasyonu çözüm hızlandırıcısını dağıttığınızda oluşturulan birkaç kaynaktan biridir. Aşağıdaki komutu uygulayın IoT hub'ınızın adını bulun - çözüm hızlandırıcınızın adını kullanmayı unutmayın:
 
     ```azurecli-interactive
     az resource list --resource-group contoso-simulation -o table
     ```
 
-    IoT Hub, **Microsoft. Devices/IotHubs**türünde kaynaktır.
+    IoT hub türü **Microsoft.Devices/IotHubs**kaynağıdır.
 
-1. **Devicesimulationtsi** adlı bir tüketici grubunu hub 'a ekleyin. Aşağıdaki komutta, hub 'ınızın adını ve çözüm hızlandırıcıyı kullanın:
+1. Hub'a **devicesimulationtsi** adlı bir tüketici grubu ekleyin. Aşağıdaki komutta hub ve çözüm hızlandırıcınızın adını kullanın:
 
     ```azurecli-interactive
     az iot hub consumer-group create --hub-name contoso-simulation7d894 --name devicesimulationtsi --resource-group contoso-simulation
     ```
 
-    Artık Azure Cloud Shell kapatabilirsiniz.
+    Artık Azure Bulut Kabuğu'nu kapatabilirsiniz.
 
-## <a name="create-a-new-time-series-insights-environment"></a>Yeni bir Time Series Insights ortamı oluştur
+## <a name="create-a-new-time-series-insights-environment"></a>Yeni bir Time Series Öngörüleri ortamı oluşturun
 
-[Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) , bulutta IoT ölçekli zaman serisi verilerinin yönetilmesi için tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Yeni bir Time Series Insights ortamı oluşturmak için:
+[Azure Time Series Öngörüleri,](../../articles/time-series-insights/time-series-insights-overview.md) bulutta IoT ölçeğinde zaman serisi verilerini yönetmek için tamamen yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Yeni bir Time Series Öngörüleri ortamı oluşturmak için:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 
-1. **Time Series Insights** > **nesnelerin interneti** > **kaynak oluştur** ' u seçin:
+1. Things > **Zaman Serisi Insights**bir kaynak > **Internet** **oluştur'un**seçin:
 
-    ![Yeni Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
+    ![Yeni Zaman Serisi Öngörüleri](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
-1. Time Series Insights ortamınızı çözüm hızlandırıcılarınız ile aynı kaynak grubunda oluşturmak için aşağıdaki tablodaki değerleri kullanın:
+1. Zaman Serisi Öngörüleri ortamınızı çözüm hızlandırıcınızla aynı kaynak grubunda oluşturmak için aşağıdaki tablodaki değerleri kullanın:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ortam adı | Aşağıdaki ekran görüntüsünde **contoso-TSI**adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı seçin. |
+    | Ortam Adı | Aşağıdaki ekran görüntüsü **Contoso-TSI**adını kullanır. Bu adımı tamamladığınızda kendi benzersiz adınızı seçin. |
     | Abonelik | Açılan listeden Azure aboneliğinizi seçin. |
-    | Kaynak grubu | **contoso-simülasyon**. Çözüm hızlandırıcısının adını kullanın. |
-    | Konum | Bu örnek **Doğu ABD**kullanır. Ortamınızı cihazınızın benzetim hızlandırıcısında aynı bölgede oluşturun. |
+    | Kaynak grubu | **aksoso-simülasyon**. Çözüm hızlandırıcınızın adını kullanın. |
+    | Konum | Bu örnekdoğu **ABD**kullanır. Ortamınızı Aygıt simülasyon hızlandırıcınızla aynı bölgede oluşturun. |
     | Sku |**S1** |
     | Kapasite | **1** |
 
-    ![Time Series Insights oluştur](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
+    ![Zaman Serisi Öngörüleri Oluştur](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
 
     > [!NOTE]
-    > Time Series Insights ortamının çözüm hızlandırıcısı ile aynı kaynak grubuna eklenmesi, çözüm hızlandırıcıyı sildiğinizde silindiği anlamına gelir.
+    > Çözüm hızlandırıcıile aynı kaynak grubuna Zaman Serisi Öngörüleri ortamının eklenmesi, çözüm hızlandırıcısını sildiğinizde silindiği anlamına gelir.
 
-1. **Oluştur**'a tıklayın. Ortamın oluşturulması birkaç dakika sürebilir.
+1. **Oluştur'u**tıklatın. Ortamın oluşturulması birkaç dakika sürebilir.
 
 ## <a name="create-event-source"></a>Olay kaynağı oluşturma
 
-IoT Hub 'ınıza bağlanmak için yeni bir olay kaynağı oluşturun. Önceki adımlarda oluşturduğunuz tüketici grubunu kullanın. Time Series Insights olay kaynağı, başka bir hizmet tarafından kullanımda olan adanmış bir tüketici grubu gerektirir.
+IoT hub'ınıza bağlanmak için yeni bir olay kaynağı oluşturun. Önceki adımlarda oluşturduğunuz tüketici grubunu kullanın. Bir Time Series Insights etkinlik kaynağı, başka bir hizmet tarafından kullanılmayan özel bir tüketici grubu gerektirir.
 
-1. Azure portal yeni zaman serisi ortamınıza gidin.
+1. Azure portalında yeni Zaman Serisi Ortamınıza gidin.
 
-1. Sol tarafta **olay kaynakları**' na tıklayın:
+1. Solda, Olay **Kaynakları'nı**tıklatın:
 
-    ![Olay kaynaklarını görüntüle](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
+    ![Etkinlik Kaynaklarını Görüntüle](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
 
-1. **Ekle**' ye tıklayın:
+1. **Ekle'yi**tıklatın :
 
-    ![Olay kaynağı Ekle](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources-add.png)
+    ![Etkinlik Kaynağı Ekle](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources-add.png)
 
-1. IoT Hub 'ınızı yeni bir olay kaynağı olarak yapılandırmak için aşağıdaki tablodaki değerleri kullanın:
+1. IoT hub'ınızı yeni bir olay kaynağı olarak yapılandırmak için aşağıdaki tablodaki değerleri kullanın:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Olay kaynağı adı | Aşağıdaki ekran görüntüsünde **contoso-IoT-Hub**adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı kullanın. |
-    | Kaynak | **IoT Hub’ı** |
-    | İçeri aktarma seçeneği | **Kullanılabilir aboneliklerden IoT Hub kullanma** |
+    | Olay kaynağı Adı | Aşağıdaki ekran görüntüsü **contoso-iot-hub**adını kullanır. Bu adımı tamamladığınızda kendi benzersiz adınızı kullanın. |
+    | Kaynak | **IoT Hub** |
+    | İçeri aktarma seçeneği | **Kullanılabilir aboneliklerden IoT Hub'ı kullanma** |
     | Abonelik Kimliği | Açılan listeden Azure aboneliğinizi seçin. |
-    | IoT Hub adı | **contoso-simulation7d894**. Cihaz simülasyonu çözüm hızlandırıcısında IoT Hub 'ınızın adını kullanın. |
-    | IoT Hub ilkesi adı | **iothubowner** |
-    | IoT Hub ilke anahtarı | Bu alan otomatik olarak doldurulur. |
-    | IoT Hub 'ı Tüketici grubu | **devicesimulationtsi** |
-    | Olay serileştirme biçimi | **JSON** |
-    | Zaman damgası Özellik adı | Boş bırakın |
+    | Iot hub adı | **contoso-simulation7d894**. Aygıt Simülasyonu çözüm hızlandırıcınızdan IoT hub'ınızın adını kullanın. |
+    | Iot hub ilke adı | **iothubowner** |
+    | Iot hub ilkesi anahtarı | Bu alan otomatik olarak doldurulur. |
+    | Iot hub tüketici grubu | **devicesimulationtsi** |
+    | Olay serileştirme biçimi | **Json** |
+    | Zaman damgası özellik adı | Boş bırakın |
 
-    ![Olay kaynağı oluştur](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
+    ![Etkinlik Kaynağı Oluşturma](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur'u**tıklatın.
 
 > [!NOTE]
-> Time Series Insights gezgin 'e daha [fazla kullanıcı erişimi](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) verebilirsiniz.
+> Zaman Serisi Öngörüler [gezginine ek kullanıcılara erişim izni](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) verebilirsiniz.
 
-## <a name="start-a-simulation"></a>Simülasyon başlatma
+## <a name="start-a-simulation"></a>Simülasyon başlatın
 
-Time Series Insights Gezginini kullanmadan önce, cihaz benzetimi çözüm Hızlandırıcısını, bazı telemetri oluşturacak şekilde yapılandırın. Aşağıdaki ekran görüntüsünde, 10 Chiller cihazlarıyla çalışan bir simülasyonu gösterilmektedir:
+Zaman Serisi Öngörüler explorer'ı kullanmadan önce, bazı telemetriler oluşturmak için Aygıt Simülasyonu çözüm hızlandırıcısını yapılandırın. Aşağıdaki ekran görüntüsü, 10 soğutucu cihazlar ile çalışan bir simülasyon gösterir:
 
-![Çalışan cihaz benzetimi](./media/iot-accelerators-device-simulation-time-series-insights/running-simulation.png)
+![Çalışan cihaz simülasyonu](./media/iot-accelerators-device-simulation-time-series-insights/running-simulation.png)
 
 ## <a name="time-series-insights-explorer"></a>Time Series Insights gezgini
 
-Time Series Insights Gezgini, telemetrinizi görselleştirmek için kullanabileceğiniz bir Web uygulamasıdır.
+Time Series Insights explorer, telemetrinizi görselleştirmek için kullanabileceğiniz bir web uygulamasıdır.
 
-1. Azure portal, Time Series Insights **genel bakış** sekmesini seçin.
+1. Azure portalında, Zaman Serisi Öngörülere **Genel Bakış** sekmesini seçin.
 
-1. Time Series Insights Explorer Web uygulamasını açmak için **ortama git**' e tıklayın:
+1. Time Series Insights explorer web uygulamasını açmak **için Ortama Git'i**tıklatın:
 
     ![Time Series Insights gezgini](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-environment.png)
 
-1. Zaman seçimi panelinde, hızlı saatler menüsünde **son 30 dakika** ' yı seçin ve **Ara**' ya tıklayın:
+1. Zaman seçim panelinde, hızlı saatler menüsünden **Son 30 dakikayı** seçin ve **Ara'yı**tıklatın:
 
-    ![Gezgin aramasını Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-search-time.png)
+    ![Zaman Serisi Insights explorer arama](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-search-time.png)
 
-1. Sol taraftaki terimler panelinde, **Ölçü** olarak **sıcaklık** ve **ıothub-bağlantı-cihaz-kimliği** değerlerini **bölünmüş değere göre** seçin:
+1. Soldaki terimler panelinde, **ölçü** olarak **Measure** sıcaklığı ve **iothub-connection-device-id** değerini **Böl** olarak seçin:
 
-    ![Gezgin sorgusunu Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![Zaman Serisi Öngörüler explorer sorgusu](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
-1. Grafiğe sağ tıklayın ve **olayları keşfet**' i seçin:
+1. Grafiğe sağ tıklayın ve **olayları keşfedin**seçin:
 
-    ![Gezgin olaylarını Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
+    ![Zaman Serisi Insights explorer etkinlikleri](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
 
-1. Olay verileri bir kılavuzda gösterilir:
+1. Olay verileri bir ızgarada gösterir:
 
-    ![Gezgin tablosu Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-table.png)
+    ![Zaman Serisi Insights explorer tablosu](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-table.png)
 
-1. Perspektif görünümü düğmesine tıklayın:
+1. Perspektif görünümü düğmesini tıklatın:
 
-    ![Gezgin perspektifini Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
+    ![Zaman Serisi Insights explorer perspektifi](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. Perspektife yeni bir sorgu eklemek için **+** ' ye tıklayın:
+1. Perspektife yeni bir sorgu eklemek için tıklatın: **+**
 
-    ![Time Series Insights Gezgini sorgu Ekle](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
+    ![Zaman Serisi Öngörüler explorer Sorgu Ekle](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
-1. Zaman aralığı olarak **son 30 dakika** , **Ölçü**olarak **nem** ve **ıothub-Connection-Device-ID** değerini değere **göre bölme** olarak seçin:
+1. Zaman aralığı olarak **Son 30 dakikayı,** **Ölçü**olarak **Nem'i** ve **iothub-connection-device-id'i** de **Split By** değeri olarak seçin:
 
-    ![Gezgin sorgusunu Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
+    ![Zaman Serisi Öngörüler explorer sorgusu](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
 
-1. Cihaz telemetri panonuzu görüntülemek için perspektif görünümü düğmesine tıklayın:
+1. Cihazınızın telemetri panosunu görüntülemek için perspektif görünümü düğmesini tıklatın:
 
-    ![Gezgin panosunu Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
+    ![Zaman Serisi Insights explorer panosu](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Daha fazla araştırma yapmak istiyorsanız çözüm Hızlandırıcısını dağıtılmış bırakın.
+Daha fazla araştırma yapmayı planlıyorsanız, çözüm hızlandırıcısını dağıtılmış bırakın.
 
-Artık çözüm hızlandırıcısına ihtiyacınız yoksa, bunu seçip **çözümü Sil**' e tıklayarak [sağlanan çözümler](https://www.azureiotsolutions.com/Accelerators#dashboard) sayfasından silin.
+Artık çözüm hızlandırıcısına ihtiyacınız yoksa, çözüm seçerek ve ardından **Çözüm Sil'i** [tıklatarak, Verilen çözümler](https://www.azureiotsolutions.com/Accelerators#dashboard) sayfasından silin.
 
-Time Series Insights ortamını çözüm hızlandırıcısının kaynak grubuna eklediyseniz, çözüm hızlandırıcıyı sildiğinizde otomatik olarak silinir. Aksi takdirde, Azure portal Time Series Insights ortamını el ile kaldırmanız gerekir.
+Çözüm hızlandırıcının kaynak grubuna Time Series Öngörüleri ortamını eklediyseniz, çözüm hızlandırıcısını sildiğinizde otomatik olarak silinir. Aksi takdirde, Azure portalından Zaman Serisi Öngörüleri ortamını el ile kaldırmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Time Series Insights Explorer 'da verileri araştırıp sorgulama hakkında daha fazla bilgi edinmek için, bkz. [Azure Time Series Insights Explorer](../time-series-insights/time-series-insights-explorer.md).
+Zaman Serisi Öngörüleri gezgininde verileri nasıl keşfedip sorgulayabilirsiniz hakkında daha fazla bilgi edinmek için [Azure Zaman Serisi Öngörüleri gezginine](../time-series-insights/time-series-insights-explorer.md)bakın.

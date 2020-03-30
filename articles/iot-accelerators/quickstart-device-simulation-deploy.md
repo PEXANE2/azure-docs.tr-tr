@@ -1,5 +1,5 @@
 ---
-title: Deneyin ve cihaz benzetimi çözümü - Azure çalıştırma | Microsoft Docs
+title: Aygıt simülasyon çözümü çalıştırmayı deneyin - Azure | Microsoft Dokümanlar
 description: Bu hızlı başlangıçta, Azure IoT Cihaz Benzetimini dağıtır ve bir benzetim çalıştırırsınız
 author: troyhopwood
 manager: timlt
@@ -10,19 +10,19 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65467871"
 ---
-# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Hızlı Başlangıç: Dağıtın ve bir IOT cihaz benzetimi Azure'da çalıştırın
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Hızlı Başlangıç: Azure’da IoT cihaz benzetimini dağıtma ve çalıştırma
 
 Bu hızlı başlangıçta, IoT çözümünüzü test etmek için Azure IoT Cihaz Benzetimini dağıtma işlemi gösterilir. Çözüm hızlandırıcısını dağıttıktan sonra çalışmaya başlamak için bir örnek benzetim çalıştırırsınız.
 
 Bu hızlı başlangıcı tamamlamak etkin bir Azure aboneliğinizin olması gerekir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="deploy-device-simulation"></a>Cihaz Benzetimini Dağıtma
 
@@ -44,7 +44,7 @@ Cihaz Benzetimi açıklama sayfasındaki **Şimdi Deneyin**’e tıklayın:
 
 Cihaz Benzetimi çözümünüzle kullanabileceğiniz bir IoT hub’ı dağıtmak için kutuyu işaretleyin. Benzetiminizin kullandığı IoT hub’ını istediğiniz zaman değiştirebilirsiniz.
 
-Tıklayın **Oluştur** çözümünüzü hazırlamaya başlamak için. Bu işlemin çalışması en az beş dakika sürer:
+Çözümünüzü oluşturmaya başlamak için **Oluştur'u** tıklatın. Bu işlemin çalışması en az beş dakika sürer:
 
 ![Cihaz Benzetimi çözümü ayrıntıları](./media/quickstart-device-simulation-deploy/createform.png)
 

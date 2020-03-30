@@ -1,7 +1,7 @@
 ---
-title: Video Indexer bir kişi modelini özelleştirme-Azure
+title: Video Dizinleyici'de Kişi modelini özelleştirme - Azure
 titleSuffix: Azure Media Services
-description: Bu makale, Video Indexer kişi modeli nedir ve özelleştirmeyi özelleştirmek için bir genel bakış sunar.
+description: Bu makalede, Video Dizinleyici'de Kişi modelinin ne olduğu ve nasıl özelleştirilene ilgili genel bir bakış yer almaktadır.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 3fabba98cb137975da749411ca9accb5a951742d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838306"
 ---
-# <a name="customize-a-person-model-in-video-indexer"></a>Video Indexer bir kişi modelini özelleştirme
+# <a name="customize-a-person-model-in-video-indexer"></a>Video Dizinleyici'de Kişi modelini özelleştirme
 
-Video Indexer, videolarınızdaki ünlüleri tanımayı destekler. Ünlüçilerin tanınma özelliği, ıMDB, Viveze ve en popüler LinkedIn etkileyen, sık istenen veri kaynağına göre yaklaşık 1.000.000 yüz içerir. Video Indexer tarafından tanınmayan yüzler hala algılanır, ancak adlandırılmamaktadır. Müşteriler özel kişi modelleri oluşturabilir ve varsayılan olarak tanınmayan yüzeyleri tanımak için Video Indexer etkinleştirebilir. Müşteriler kişilerin adını kişinin yüzlerindeki görüntü dosyalarıyla eşleştirerek bu kişi modellerini oluşturabilir.  
+Video Indexer videolarınızda ünlülerin tanınmasını destekler. Ünlü tanıma özelliği, IMDB, Wikipedia ve en çok LinkedIn etkileyenler gibi yaygın olarak istenen veri kaynağına dayalı yaklaşık bir milyon yüzü kapsar. Video Dizinleyici tarafından tanınmayan yüzler hala algılanır, ancak adsız bırakılır. Müşteriler özel Kişi modelleri oluşturabilir ve Video Dizinleyici'nin varsayılan olarak tanınmayan yüzleri tanımasını sağlayabilir. Müşteriler bu Kişi modellerini, bir kişinin adını kişinin yüzünün görüntü dosyalarıyla eşleştirerek oluşturabilir.  
 
-Hesabınız farklı kullanım durumlarına karşı, hesap başına birden fazla kişi modeli oluşturabilmeniz için avantaj sağlayabilirsiniz. Örneğin, hesabınızdaki içerik farklı kanallarda sıralanacaksa, her kanal için ayrı bir kişi modeli oluşturmak isteyebilirsiniz. 
+Hesabınız farklı kullanım durumlarına hitap ediyorsa, hesap başına birden çok Kişi modeli oluşturabilme avantajından yararlanabilirsiniz. Örneğin, hesabınızdaki içeriğin farklı kanallarda sıralanmış olması gerekiyorsa, her kanal için ayrı bir Kişi modeli oluşturmak isteyebilirsiniz. 
 
 > [!NOTE]
-> Her kişi modeli en fazla 1.000.000 kişiyi destekler ve her hesabın 50 kişi modeli sınırlaması vardır. 
+> Her Kişi modeli 1 milyon adede kadar kişiyi destekler ve her hesabın 50 Kişi modeli sınırı vardır. 
 
-Bir model oluşturulduktan sonra, bir videoyu karşıya yüklerken/dizinleme yaparken veya yeniden dizinlerken belirli bir kişi modelinin model KIMLIĞINI sağlayarak onu kullanabilirsiniz. Video için yeni bir yüz eğitimi yapın, videonun ilişkilendirildiği özel modeli günceller. 
+Bir model oluşturulduktan sonra, bir videoyu yüklerken/dizine eklerken veya yeniden dizine eklerken belirli bir Kişi modelinin model kimliğini sağlayarak onu kullanabilirsiniz. Bir video için yeni bir yüz eğitimi, video ile ilişkili olduğu özel modeli güncelleştirir. 
 
-Birden çok kişi modeli desteği gerekmiyorsa, karşıya yükleme/dizinleme veya yeniden dizin oluşturma sırasında videonuza bir kişi modeli KIMLIĞI atamayın. Bu durumda Video Indexer hesabınızda varsayılan kişi modelini kullanacaktır. 
+Birden çok Kişi modeli desteğine ihtiyacınız yoksa, yükleme/dizin oluşturma veya yeniden dizine ekin oluşturma yaparken videonuza Bir Kişi model kimliği atayın. Bu durumda, Video Dizinleyici hesabınızda varsayılan Kişi modelini kullanır. 
 
-Video Indexer Web sitesini kullanarak bir videoda algılanan yüzeyleri düzenleyebilir ve bir [Web sitesi kullanarak kişi modeli özelleştirme](customize-person-model-with-website.md) konu başlığı altında açıklandığı gibi hesabınızdaki birden fazla özel kişi modelini yönetebilirsiniz. API 'yi, API ['leri kullanarak bir kişi modelini özelleştirme](customize-person-model-with-api.md)bölümünde açıklandığı gibi de kullanabilirsiniz.
+Video Indexer web sitesini, bir videoda algılanan yüzleri düzenlemek ve bir web sitesi konusunu kullanarak [Kişiyi Özelleştir modelinde](customize-person-model-with-website.md) açıklandığı gibi hesabınızdaki birden çok özel Kişi modelini yönetmek için kullanabilirsiniz. API'leri [kullanarak Kişi modelini özelleştir'de](customize-person-model-with-api.md)açıklandığı gibi API'yi de kullanabilirsiniz.

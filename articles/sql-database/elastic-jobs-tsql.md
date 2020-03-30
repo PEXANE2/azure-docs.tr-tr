@@ -1,6 +1,6 @@
 ---
-title: Transact-SQL (T-SQL) ile elastik veritabanı Işleri oluşturma ve yönetme
-description: Transact-SQL (T-SQL) kullanarak elastik veritabanı Iş aracısına sahip birçok veritabanı arasında komut dosyalarını çalıştırın.
+title: Transact-SQL (T-SQL) ile Elastik Veritabanı İşleri oluşturma ve yönetme
+description: Transact-SQL (T-SQL) kullanarak Elastik Veritabanı İş aracısı ile birçok veritabanlarında komut dosyaları çalıştırın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,24 +12,24 @@ author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
 ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087352"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) kullanarak elastik veritabanı Işleri oluşturma ve yönetme
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Elastik Veritabanı İşlerini oluşturmak ve yönetmek için Transact-SQL'i (T-SQL) kullanın
 
-Bu makalede T-SQL kullanarak esnek ışlerle çalışmaya başlamak için birçok örnek senaryo sunulmaktadır.
+Bu makalede, T-SQL kullanarak Elastik İşler ile çalışmaya başlamak için birçok örnek senaryo sağlar.
 
-Örnekler, [*iş veritabanında*](sql-database-job-automation-overview.md#job-database)bulunan [saklı yordamları](#job-stored-procedures) ve [görünümleri](#job-views) kullanır.
+Örnekler, [*iş veritabanında*](sql-database-job-automation-overview.md#job-database)bulunan [depolanmış yordamları](#job-stored-procedures) ve [görünümleri](#job-views) kullanır.
 
-Transact-SQL (T-SQL) işleri oluşturmak, yapılandırmak, yürütmek ve yönetmek için kullanılır. Esnek Iş aracısının oluşturulması T-SQL ' de desteklenmez, bu nedenle önce portalı veya [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent)'i kullanarak bir *elastik iş Aracısı* oluşturmanız gerekir.
+Transact-SQL (T-SQL), işleri oluşturmak, yapılandırmak, yürütmek ve yönetmek için kullanılır. Elastik İş aracısını oluşturma T-SQL'de desteklenmez, bu nedenle önce portalı veya [PowerShell'i](elastic-jobs-powershell.md#create-the-elastic-job-agent)kullanarak bir *Elastik İş aracısı* oluşturmanız gerekir.
 
 
-## <a name="create-a-credential-for-job-execution"></a>İş yürütmesi için kimlik bilgisi oluşturma
+## <a name="create-a-credential-for-job-execution"></a>İş yürütme için bir kimlik bilgisi oluşturma
 
-Kimlik bilgisi, komut dosyası yürütmeye yönelik hedef veritabanlarınıza bağlanmak için kullanılır. Bu kimlik bilgisi, betiği başarıyla yürütmek için hedef grup tarafından belirtilen veritabanlarında uygun izinlere ihtiyaç duyuyor. Bir sunucu ve/veya havuz hedef grubu üyesi kullanırken, iş yürütme sırasında sunucu ve/veya havuz genişlemesinden önce kimlik bilgisini yenilemek için kullanılmak üzere bir ana kimlik bilgisi oluşturmanız önerilir. Veritabanı kapsamlı kimlik bilgileri iş Aracısı veritabanında oluşturulur. Aynı kimlik bilgileri *, oturum açmak ve oturum* açma Işleminden bir *Kullanıcı oluşturmak* Için, oturum açma veritabanı izinlerini hedef veritabanlarına vermek için kullanılmalıdır.
+Kimlik bilgisi komut dosyası yürütme için hedef veritabanlarına bağlanmak için kullanılır. Kimlik bilgisi, komut dosyasını başarıyla yürütmek için hedef grup tarafından belirtilen veritabanlarında uygun izinlere ihtiyaç duyar. Bir sunucu ve/veya havuz hedef grubu üyesi kullanırken, iş yürütme sırasında sunucu ve/veya havuz genişletmeden önce kimlik bilgilerini yenilemek için kullanılmak üzere bir ana kimlik bilgisi oluşturulması önerilir. Veritabanı kapsamı kimlik bilgileri iş aracısı veritabanında oluşturulur. Aynı kimlik bilgileri, hedef *veritabanlarında Giriş* Veritabanı İzinleri vermek için Giriş Oluşturma ve *Oturum'dan Kullanıcı Oluşturmak* için kullanılmalıdır.
 
 
 ```sql
@@ -51,8 +51,8 @@ GO
 
 ## <a name="create-a-target-group-servers"></a>Hedef grup (sunucular) oluşturma
 
-Aşağıdaki örnek, bir sunucudaki tüm veritabanlarına karşı bir işin nasıl yürütüleceğini göstermektedir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, bir sunucudaki tüm veritabanlarına karşı bir işin nasıl yürütüldgerektiğini gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 
 ```sql
@@ -74,10 +74,10 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-an-individual-database"></a>Tek bir veritabanını dışlama
+## <a name="exclude-an-individual-database"></a>Tek bir veritabanını hariç tutma
 
-Aşağıdaki örnek, *Mappingdb*adlı veritabanı dışında bir SQL veritabanı sunucusundaki tüm veritabanlarına karşı bir işin nasıl yürütüleceğini gösterir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, *MappingDB*adlı veritabanı dışında, bir SQL Veritabanı sunucusundaki tüm veritabanlarına karşı bir işin nasıl yürütüldöşedi gösterilmektedir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -119,8 +119,8 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 
 ## <a name="create-a-target-group-pools"></a>Hedef grup (havuzlar) oluşturma
 
-Aşağıdaki örnek, bir veya daha fazla elastik havuzdaki tüm veritabanlarının nasıl hedeflenecek gösterilmektedir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, bir veya daha fazla elastik havuzdaki tüm veritabanlarının nasıl hedeflenebildiğini gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -142,10 +142,10 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ```
 
 
-## <a name="deploy-new-schema-to-many-databases"></a>Yeni şemayı birçok veritabanına dağıtma
+## <a name="deploy-new-schema-to-many-databases"></a>Birçok veritabanına yeni şema dağıtma
 
-Aşağıdaki örnek, tüm veritabanlarına yeni şemanın nasıl dağıtılacağını göstermektedir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, tüm veritabanlarına yeni şema nasıl dağıtılanın gösterilmektedir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 
 ```sql
@@ -166,18 +166,18 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 ## <a name="data-collection-using-built-in-parameters"></a>Yerleşik parametreleri kullanarak veri toplama
 
-Birçok veri toplama senaryosunda, işin sonuçlarını işlemeye son vermek için bu komut dosyası değişkenlerinin bazılarını eklemek yararlı olabilir.
+Birçok veri toplama senaryosunda, işin sonuçlarını işleme sonrasına yardımcı olmak için bu komut dosyası değişkenlerinden bazılarını eklemek yararlı olabilir.
 
-- $ (job_name)
-- $ (job_id)
-- $ (job_version)
-- $ (step_id)
-- $ (step_name)
-- $ (job_execution_id)
-- $ (job_execution_create_time)
-- $ (target_group_name)
+- $(job_name)
+- $(job_id)
+- $(job_version)
+- $(step_id)
+- $(step_name)
+- $(job_execution_id)
+- $(job_execution_create_time)
+- $(target_group_name)
 
-Örneğin, aynı iş yürütmesindeki tüm sonuçları birlikte gruplandırmak için, aşağıdaki komutta gösterildiği gibi *$ (job_execution_id)* kullanın:
+Örneğin, aynı iş yürütülmesinden elde edilen tüm sonuçları birlikte gruplandırmak için aşağıdaki komutta gösterildiği gibi *$(job_execution_id)* kullanın:
 
 
 ```sql
@@ -187,15 +187,15 @@ Birçok veri toplama senaryosunda, işin sonuçlarını işlemeye son vermek iç
 
 ## <a name="monitor-database-performance"></a>Veritabanı performansını izleme
 
-Aşağıdaki örnek, birden çok veritabanından performans verilerini toplamak için yeni bir iş oluşturur.
+Aşağıdaki örnek, birden çok veritabanından performans verileri toplamak için yeni bir iş oluşturur.
 
-Varsayılan olarak, İş Aracısı döndürülen sonuçları depolamak için çıkış tablosu oluşturur. Bu nedenle, çıkış kimlik bilgisiyle ilişkili veritabanı sorumlusu en az şu izinlere sahip olmalıdır: veritabanı üzerinde `CREATE TABLE`, `ALTER`, `SELECT`, `INSERT`, çıkış tablosu veya şeması üzerinde `DELETE` ve [sys. Indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) katalog görünümünde `SELECT`.
+Varsayılan olarak, iş aracısı döndürülen sonuçları depolamak için çıktı tablosu oluşturur. Bu nedenle, çıktı kimlik bilgisi ile ilişkili veritabanı ilkesi en az `CREATE TABLE` aşağıdaki izinlere `ALTER` `SELECT`sahip `INSERT` `DELETE` olmalıdır: veritabanında, , , `SELECT` çıktı tablosunda veya şema ve [sys.indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) katalog görünümünde.
 
-Tabloyu daha önce el ile oluşturmak isterseniz, aşağıdaki özelliklere sahip olması gerekir:
-1. Sonuç kümesi için doğru adı ve veri türlerini içeren sütunlar.
-2. Uniqueidentifier veri türüyle internal_execution_id için ek sütun.
-3. İnternal_execution_id sütununda `IX_<TableName>_Internal_Execution_ID` adlı kümelenmemiş bir dizin.
-4. Veritabanında `CREATE TABLE` izin dışında, yukarıda listelenen tüm izinler.
+Tabloyu önceden el ile oluşturmak istiyorsanız, tablonun aşağıdaki özelliklere sahip olması gerekir:
+1. Sonuç kümesi için doğru ada ve veri türlerine sahip sütunlar.
+2. Benzersiz tanımlayıcının veri türüne sahip internal_execution_id için ek sütun.
+3. internal_execution_id sütununda adlandırılmış `IX_<TableName>_Internal_Execution_ID` kümesiz bir dizin.
+4. Veritabanında `CREATE TABLE` izin dışında yukarıda listelenen tüm izinler.
 
 [*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutları çalıştırın:
 
@@ -265,10 +265,10 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ```
 
 
-## <a name="view-job-definitions"></a>İş tanımlarını görüntüle
+## <a name="view-job-definitions"></a>İş tanımlarını görüntüleme
 
-Aşağıdaki örnek, geçerli iş tanımlarının nasıl görüntüleneceğini gösterir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, geçerli iş tanımlarının nasıl görüntülenebildiğini gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -286,10 +286,10 @@ select * from jobs.jobsteps
 ```
 
 
-## <a name="begin-ad-hoc-execution-of-a-job"></a>İşi geçici olarak yürütmeye başla
+## <a name="begin-ad-hoc-execution-of-a-job"></a>Bir işin geçici olarak yürütülmesine başlayın
 
-Aşağıdaki örnek, bir işin hemen nasıl başlatılacağını göstermektedir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, bir işe hemen nasıl başlan gerektiğini gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -311,8 +311,8 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 
 ## <a name="schedule-execution-of-a-job"></a>Bir işin yürütülmesini zamanlama
 
-Aşağıdaki örnek, bir işin daha sonra yürütülmesi için nasıl zamanlanalınacağını göstermektedir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, gelecekteki yürütme için bir iş zamanlamak için nasıl gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -324,10 +324,10 @@ EXEC jobs.sp_update_job
 @schedule_interval_count=15
 ```
 
-## <a name="monitor-job-execution-status"></a>İzleme işi yürütme durumu
+## <a name="monitor-job-execution-status"></a>İş yürütme durumunu izleme
 
-Aşağıdaki örnek, tüm işler için yürütme durumu ayrıntılarının nasıl görüntüleneceğini gösterir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, tüm işler için yürütme durumu ayrıntılarının nasıl görüntülenebildiğini gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -353,10 +353,10 @@ ORDER BY start_time DESC
 ```
 
 
-## <a name="cancel-a-job"></a>İşi iptal et
+## <a name="cancel-a-job"></a>Bir işi iptal etme
 
-Aşağıdaki örnek, bir işin nasıl iptal edildiğini gösterir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, bir işin nasıl iptal edilebildiğini gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -372,10 +372,10 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ```
 
 
-## <a name="delete-old-job-history"></a>Eski iş geçmişini sil
+## <a name="delete-old-job-history"></a>Eski iş geçmişini silme
 
-Aşağıdaki örnek, belirli bir tarihten önce iş geçmişinin nasıl silineceğini gösterir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, belirli bir tarihten önce iş geçmişini nasıl silerken gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -386,10 +386,10 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 --Note: job history is automatically deleted if it is >45 days old
 ```
 
-## <a name="delete-a-job-and-all-its-job-history"></a>İşi ve tüm iş geçmişini sil
+## <a name="delete-a-job-and-all-its-job-history"></a>Bir işi ve tüm iş geçmişini silme
 
-Aşağıdaki örnek, bir işin ve tüm ilgili iş geçmişinin nasıl silineceğini gösterir.  
-[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve şu komutu çalıştırın:
+Aşağıdaki örnek, bir işin nasıl silinip silinir ve ilgili tüm iş geçmişini gösterir.  
+[*İş veritabanına*](sql-database-job-automation-overview.md#job-database) bağlanın ve aşağıdaki komutu çalıştırın:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -402,33 +402,33 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-## <a name="job-stored-procedures"></a>İş saklı yordamları
+## <a name="job-stored-procedures"></a>İş depolanan yordamlar
 
-Aşağıdaki saklı yordamlar [işler veritabanında](sql-database-job-automation-overview.md#job-database)bulunur.
+Aşağıdaki depolanan yordamlar [iş veritabanında](sql-database-job-automation-overview.md#job-database)dır.
 
 
 
 |Saklı yordam  |Açıklama  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Yeni bir iş ekler.    |
-|[sp_update_job](#sp_update_job)    |      Var olan bir işi güncelleştirir.   |
-|[sp_delete_job](#sp_delete_job)     |      Var olan bir işi siler.   |
-|[sp_add_jobstep](#sp_add_jobstep)    |    İşe bir adım ekler.     |
-|[sp_update_jobstep](#sp_update_jobstep)     |     Bir iş adımını güncelleştirir.    |
-|[sp_delete_jobstep](#sp_delete_jobstep)     |     Bir iş adımını siler.    |
-|[sp_start_job](#sp_start_job)    |  İşi yürütmeye başlar.       |
-|[sp_stop_job](#sp_stop_job)     |     Bir iş yürütmesini sonlandırır.   |
+|[Sp_update_job](#sp_update_job)    |      Varolan bir işi güncelleştirir.   |
+|[Sp_delete_job](#sp_delete_job)     |      Varolan bir işi siler.   |
+|[Sp_add_jobstep](#sp_add_jobstep)    |    Bir işe bir adım ekler.     |
+|[sp_update_jobstep](#sp_update_jobstep)     |     Bir iş adımLarını güncelleştirir.    |
+|[sp_delete_jobstep](#sp_delete_jobstep)     |     İş adımLarını siler.    |
+|[Sp_start_job](#sp_start_job)    |  Bir işi yürütmeye başlar.       |
+|[sp_stop_job](#sp_stop_job)     |     İş infazını durdurur.   |
 |[sp_add_target_group](#sp_add_target_group)    |     Bir hedef grup ekler.    |
 |[sp_delete_target_group](#sp_delete_target_group)     |    Hedef grubu siler.     |
 |[sp_add_target_group_member](#sp_add_target_group_member)     |    Hedef gruba bir veritabanı veya veritabanı grubu ekler.     |
 |[sp_delete_target_group_member](#sp_delete_target_group_member)     |     Hedef grup üyesini hedef gruptan kaldırır.    |
-|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Bir işin geçmiş kayıtlarını kaldırır.     |
+|[Sp_purge_jobhistory](#sp_purge_jobhistory)    |    Bir işin geçmiş kayıtlarını kaldırır.     |
 
 
 
 
 
-### <a name="sp_add_job"></a>sp_add_job
+### <a name="sp_add_job"></a><a name="sp_add_job"></a>sp_add_job
 
 Yeni bir iş ekler. 
   
@@ -449,54 +449,54 @@ Yeni bir iş ekler.
   
 #### <a name="arguments"></a>Bağımsız Değişkenler  
 
-[ **\@job_name =** ] ' job_name '  
-İşin adı. Ad benzersiz olmalıdır ve yüzdeyi (%) içeremez inde. job_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@job_name =** ] 'job_name'  
+İşin adı. Ad benzersiz olmalı ve yüzdeyi içeremez (%) Karakter. job_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@Description =** ] açıklaması  
-İşin açıklaması. Açıklama nvarchar (512), varsayılan değeri NULL. Açıklama atlanırsa boş bir dize kullanılır.
+[ ** \@açıklama =** ] 'açıklama'  
+İşin tanımı. açıklama null varsayılan ı ile nvarchar(512) olduğunu. Açıklama atlanırsa, boş bir dize kullanılır.
 
-[ **\@Enabled =** ] etkin  
-İşin zamanlamanın etkin olup olmadığı. Etkin, varsayılan değer olan 0 olan bittir (devre dışı). 0 ise, iş etkin değildir ve zamanlamaya göre çalışmaz; Ancak, el ile çalıştırılabilir. 1 ise, iş zamanlamaya göre çalışacaktır ve ayrıca el ile çalıştırılabilir.
+[ ** \@etkin =** ] etkin  
+İş programının etkin olup olmadığı. Etkin bit, varsayılan 0 (devre dışı). 0 ise, iş etkinleştirilen değildir ve zamanlamasına göre çalışmaz; ancak, el ile çalıştırılabilir. 1 ise, iş zamanlamasına göre çalışır ve el ile de çalıştırılabilir.
 
-[ **\@schedule_interval_type =** ] schedule_interval_type  
-Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type nvarchar (50), varsayılan bir kez ve aşağıdaki değerlerden biri olabilir:
-- ' Bir kez ',
-- ' Dakika ',
-- ' Saat ',
-- ' Days ',
-- ' Hafta ',
-- Ay
+[ ** \@schedule_interval_type =**] schedule_interval_type  
+Değer, işin ne zaman yürütüleceğini gösterir. schedule_interval_type bir kez varsayılan ı olan nvarchar(50) ve aşağıdaki değerlerden biri olabilir:
+- 'Bir kez',
+- 'Dakika',
+- 'Saatler',
+- 'Gün',
+- 'Haftalar',
+- 'Aylar'
 
-[ **\@schedule_interval_count =** ] schedule_interval_count  
-İşin her yürütmesi arasında gerçekleştirilecek schedule_interval_count dönemi sayısı. schedule_interval_count, varsayılan değer olan 1 ' dir. Değer 1 ' e eşit veya daha büyük olmalıdır.
+[ ** \@schedule_interval_count =** ] schedule_interval_count  
+İşin her yürütülmesi arasında meydana gelecek schedule_interval_count dönem sayısı. schedule_interval_count, varsayılan 1 ile int olduğunu. Değer 1'den büyük veya eşit olmalıdır.
 
-[ **\@schedule_start_time =** ] schedule_start_time  
-İş yürütmenin başlayabileceği tarih. schedule_start_time DATETIME2, varsayılan olarak 0001-01-01 00:00:00.0000000.
+[ ** \@schedule_start_time =** ] schedule_start_time  
+İş yürütmenin başlayabileceğiniz tarih. schedule_start_time DATETIME2, 0001-01-01 00:00:00.000000 varsayılan ile.
 
-[ **\@schedule_end_time =** ] schedule_end_time  
-İş yürütmenin durulabileceği tarih. schedule_end_time, varsayılan olarak 9999-12-31 11:59:59.0000000 ile DATETIME2. 
+[ ** \@schedule_end_time =** ] schedule_end_time  
+İş yürütmenin durabileceği tarih. schedule_end_time DATETIME2, 9999-12-31 11:59:59.000000 000 000 0000 0000 00000. 
 
-[ **\@job_id =** ] job_id çıkışı  
-İşe başarıyla oluşturulduysa iş kimlik numarası işe atandı. job_id, uniqueidentifier türünde bir çıkış değişkenidir.
+[ ** \@job_id =** ] job_id Çıktı  
+Başarılı bir şekilde oluşturulursa işe atanan iş kimlik numarası. job_id tip benzersiz bir çıkış değişkenidir.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
+#### <a name="return-code-values"></a>İade Kodu Değerleri
 
-0 (başarılı) veya 1 (hata)
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
-sp_add_job, İş Aracısı oluşturulurken belirtilen iş Aracısı veritabanından çalıştırılmalıdır.
-Sp_add_job bir iş eklemek için yürütüldükten sonra, sp_add_jobstep iş için etkinlikleri gerçekleştiren adımları eklemek için kullanılabilir. İşin ilk sürüm numarası 0 ' dır ve ilk adım eklendiğinde 1 ' e yükseltilir.
+sp_add_job iş aracısı oluştururken belirtilen iş aracısı veritabanından çalıştırılmalıdır.
+İş eklemek için sp_add_job yürütüldükten sonra, sp_add_jobstep iş için etkinlikleri gerçekleştiren adımlar eklemek için kullanılabilir. İlk sürüm numarası 0'dır ve ilk adım eklendiğinde 1'e artılacaktır.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
-### <a name="sp_update_job"></a>sp_update_job
+### <a name="sp_update_job"></a><a name="sp_update_job"></a>Sp_update_job
 
-Var olan bir işi güncelleştirir.
+Varolan bir işi güncelleştirir.
 
 #### <a name="syntax"></a>Sözdizimi
 
@@ -512,54 +512,54 @@ Var olan bir işi güncelleştirir.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] ' job_name '  
-Güncellenme işinin adı. job_name nvarchar (128).
+[ ** \@job_name =** ] 'job_name'  
+Güncellenecek işin adı. job_name nvarchar'dır(128).
 
-[ **\@new_name =** ] ' new_name '  
-İşin yeni adı. new_name nvarchar (128).
+[ ** \@new_name =** ] 'new_name'  
+İşin yeni adı. new_name nvarchar'dır(128).
 
-[ **\@Description =** ] açıklaması  
-İşin açıklaması. Açıklama nvarchar (512).
+[ ** \@açıklama =** ] 'açıklama'  
+İşin tanımı. açıklaması nvarchar'dır(512).
 
-[ **\@Enabled =** ] etkin  
-İş zamanlamasının etkin olup olmadığını belirtir (1) veya etkin değil (0). Etkin bit.
+[ ** \@etkin =** ] etkin  
+İş programının etkin olup olmadığını (1) veya etkin olmadığını (0) belirtir. Etkin bittir.
 
-[ **\@schedule_interval_type =** ] schedule_interval_type  
-Değer, işin ne zaman yürütüleceğini belirtir. schedule_interval_type nvarchar (50) ve aşağıdaki değerlerden biri olabilir:
+[ ** \@schedule_interval_type=** ] schedule_interval_type  
+Değer, işin ne zaman yürütüleceğini gösterir. schedule_interval_type nvarchar(50) ve aşağıdaki değerlerden biri olabilir:
 
-- ' Bir kez ',
-- ' Dakika ',
-- ' Saat ',
-- ' Days ',
-- ' Hafta ',
-- Ay
+- 'Bir kez',
+- 'Dakika',
+- 'Saatler',
+- 'Gün',
+- 'Haftalar',
+- 'Aylar'
 
-[ **\@schedule_interval_count =** ] schedule_interval_count  
-İşin her yürütmesi arasında gerçekleştirilecek schedule_interval_count dönemi sayısı. schedule_interval_count, varsayılan değer olan 1 ' dir. Değer 1 ' e eşit veya daha büyük olmalıdır.
+[ ** \@schedule_interval_count=** ] schedule_interval_count  
+İşin her yürütülmesi arasında meydana gelecek schedule_interval_count dönem sayısı. schedule_interval_count, varsayılan 1 ile int olduğunu. Değer 1'den büyük veya eşit olmalıdır.
 
-[ **\@schedule_start_time =** ] schedule_start_time  
-İş yürütmenin başlayabileceği tarih. schedule_start_time DATETIME2, varsayılan olarak 0001-01-01 00:00:00.0000000.
+[ ** \@schedule_start_time=** ] schedule_start_time  
+İş yürütmenin başlayabileceğiniz tarih. schedule_start_time DATETIME2, 0001-01-01 00:00:00.000000 varsayılan ile.
 
-[ **\@schedule_end_time =** ] schedule_end_time  
-İş yürütmenin durulabileceği tarih. schedule_end_time, varsayılan olarak 9999-12-31 11:59:59.0000000 ile DATETIME2. 
+[ ** \@schedule_end_time=** ] schedule_end_time  
+İş yürütmenin durabileceği tarih. schedule_end_time DATETIME2, 9999-12-31 11:59:59.000000 000 000 0000 0000 00000. 
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
-Sp_add_job bir iş eklemek için yürütüldükten sonra, sp_add_jobstep iş için etkinlikleri gerçekleştiren adımları eklemek için kullanılabilir. İşin ilk sürüm numarası 0 ' dır ve ilk adım eklendiğinde 1 ' e yükseltilir.
+İş eklemek için sp_add_job yürütüldükten sonra, sp_add_jobstep iş için etkinlikleri gerçekleştiren adımlar eklemek için kullanılabilir. İlk sürüm numarası 0'dır ve ilk adım eklendiğinde 1'e artılacaktır.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
 
 
-### <a name="sp_delete_job"></a>sp_delete_job
+### <a name="sp_delete_job"></a><a name="sp_delete_job"></a>Sp_delete_job
 
-Var olan bir işi siler.
+Varolan bir işi siler.
 
 #### <a name="syntax"></a>Sözdizimi
 
@@ -569,29 +569,29 @@ Var olan bir işi siler.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] ' job_name '  
-Silinecek işin adı. job_name nvarchar (128).
+[ ** \@job_name =** ] 'job_name'  
+Silinecek işin adı. job_name nvarchar'dır(128).
 
-[ **\@zorla =** ] zorla  
-İşin sürmekte olan yürütmeler varsa silinip oluşturulmayacağını belirtir ve devam eden tüm yürütmeleri (1) iptal edip devam eden herhangi bir iş yürütmesi varsa başarısız olur (0). zorla bit.
+[ ** \@kuvvet =** ] kuvvet  
+İşin devam eden herhangi bir yürütmesi olup olmadığını silip silemeyeceğini ve devam eden tüm yürütmeleri iptal edip etmeyeceğini (1) veya herhangi bir iş yürütmedevam ediyorsa başarısız olup olmadığını belirtir (0). kuvvet bittir.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
-İş geçmişi, bir iş silindiğinde otomatik olarak silinir.
+Bir iş silindiğinde iş geçmişi otomatik olarak silinir.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
 
 
-### <a name="sp_add_jobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a><a name="sp_add_jobstep"></a>Sp_add_jobstep
 
-İşe bir adım ekler.
+Bir işe bir adım ekler.
 
 #### <a name="syntax"></a>Sözdizimi
 
@@ -624,100 +624,100 @@ Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümü
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
 
-[ **\@job_name =** ] ' job_name '  
-Adımın ekleneceği işin adı. job_name nvarchar (128).
+[ ** \@job_name =** ] 'job_name'  
+Adımı eklemek için işin adı. job_name nvarchar'dır(128).
 
-[ **\@step_id =** ] step_id  
-İş adımının sıra kimlik numarası. Adım tanımlama numaraları 1 ' de başlar ve boşluklar olmadan artış yapın. Mevcut bir adım zaten bu kimliğe sahipse, bu adım ve tüm adımlar, bu yeni adımın diziye eklenebilmesi için kimliğinin artmasını sağlayacaktır. Belirtilmezse, step_id adım dizisindeki son ' a otomatik olarak atanır. step_id bir int.
+[ ** \@step_id =** ] step_id  
+İş adımı için sıra tanımlama numarası. Adım tanımlama numaraları 1'den başlar ve boşluksuz olarak artış. Varolan bir adımda zaten bu kimlik varsa, bu adım ve aşağıdaki tüm adımlar, bu yeni adımın diziye eklenabilmesi için kimliklerinin artımını alacaktır. Belirtilmezse, step_id otomatik olarak adım sırasına göre sonuncuya atanır. step_id bir int.
 
-[ **\@step_name =** ] step_name  
-Adımın adı. Bir işin ilk adımı dışında (kolaylık sağlaması için) ' JobStep ' varsayılan adı olan belirtilmelidir. step_name nvarchar (128).
+[ ** \@step_name =** ] step_name  
+Adımın adı. (Kolaylık için) varsayılan adı 'JobStep' olan bir işin ilk adımı dışında belirtilmelidir. step_name nvarchar'dır(128).
 
-[ **\@command_type =** ] ' command_type '  
-Bu JobStep tarafından yürütülen komutun türü. command_type, TSql parametresinin bir T-SQL betiği olduğu @command_type anlamına gelen varsayılan değeri olan nvarchar (50) değeridir.
+[ ** \@command_type =** ] 'command_type'  
+Bu iş adımı tarafından yürütülen komut türü. command_type nvarchar(50), TSql varsayılan değeri ile, @command_type parametre değeri bir T-SQL komut dosyası anlamına gelir.
 
-Belirtilmişse, değerin TSql olması gerekir.
+Belirtilirse, değer TSql olmalıdır.
 
-[ **\@command_source =** ] ' command_source '  
-Komutun depolandığı konumun türü. command_source, varsayılan satır Içi değeri olan nvarchar (50), yani @command_source parametresinin değeri komutun değişmez metinidir.
+[ ** \@command_source =** ] 'command_source'  
+Komutun depolandığı konum türü. command_source nvarchar(50), Inline varsayılan değeri ile, @command_source parametre değeri komutunun gerçek metin anlamına gelir.
 
-Belirtilmişse, değerin satır Içi olması gerekir.
+Belirtilirse, değer Satır Lı olmalıdır.
 
-[ **\@komutu =** ] komutundaki  
-Komut geçerli bir T-SQL betiği olmalıdır ve sonra bu iş adımı tarafından yürütülür. komut, varsayılan değeri NULL olan nvarchar (max).
+[ ** \@komut =** ] 'komut'  
+Komut geçerli T-SQL komut dosyası olmalıdır ve daha sonra bu iş adımı tarafından yürütülür. komutu null varsayılan ı ile nvarchar(max) olduğunu.
 
-[ **\@credential_name =** ] ' credential_name '  
-Bu adım yürütüldüğünde hedef grup içindeki her bir hedef veritabanına bağlanmak için kullanılan, bu iş denetim veritabanında depolanan veritabanı kapsamlı kimlik bilgisinin adı. credential_name nvarchar (128).
+[ ** \@credential_name =** ] 'credential_name'  
+Bu adım yürütüldüğünde hedef grup içindeki hedef veritabanlarının her birine bağlanmak için kullanılan bu iş denetimi veritabanında depolanan veritabanı kapsamı kapsamı kimlik bilgisi. credential_name nvarchar'dır(128).
 
-[ **\@target_group_name =** ] ' Target-group_name '  
-İş adımının üzerinde yürütüleceği hedef veritabanlarını içeren hedef grubun adı. target_group_name nvarchar (128).
+[ ** \@target_group_name =** ] 'hedef group_name'  
+İş adımının yürütüleceği hedef veritabanlarını içeren hedef grubun adı. target_group_name nvarchar'dır(128).
 
-[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
-İlk yürütme denemesinde iş adımı başarısız olursa, ilk yeniden deneme denemesinden önceki gecikme. initial_retry_interval_seconds, varsayılan değer olan 1 ' dir.
+[ ** \@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+İlk yürütme girişiminde iş adımı başarısız olursa, ilk yeniden deneme girişiminden önceki gecikme. initial_retry_interval_seconds, varsayılan değeri 1 olan int'tir.
 
-[ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
-Yeniden deneme girişimleri arasındaki gecikme üst sınırı. Denemeler arasındaki gecikme bu değerden daha büyük büyürken, bunun yerine bu değere eşit hale gelir. maximum_retry_interval_seconds, varsayılan değer olan 120 ' dir.
+[ ** \@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+Yeniden deneme girişimleri arasındaki maksimum gecikme. Yeniden denemeler arasındaki gecikme bu değerden daha büyük büyüyecekse, bunun yerine bu değere kapaklanır. maximum_retry_interval_seconds, varsayılan değeri 120 olan int'tir.
 
-[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
-Birden çok iş adımı yürütme denemesi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Örneğin, ilk yeniden denenmede 5 saniyelik bir gecikme vardı ve geri dönüş çarpanı 2,0 ise ikinci yeniden deneme 10 saniyelik bir gecikme olur ve üçüncü yeniden deneme 20 saniye gecikmeyle oluşur. retry_interval_backoff_multiplier, varsayılan değer olan 2,0 ile gerçek bir değerdir.
+[ ** \@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+Birden çok iş adımı yürütme girişimi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Örneğin, ilk yeniden denemede 5 saniyelik bir gecikme varsa ve geri dönüş çarpanı 2,0 ise, ikinci yeniden denemede 10 saniye gecikme olur ve üçüncü yeniden denemede 20 saniye gecikme olur. retry_interval_backoff_multiplier, varsayılan değeri 2,0 olan gerçektir.
 
-[ **\@retry_attempts =** ] retry_attempts  
-İlk girişim başarısız olursa yürütme yeniden denenme sayısı. Örneğin, retry_attempts değeri 10 ise, 1 Başlangıç denemesi ve 10 yeniden deneme girişiminde bulunur ve toplam 11 deneme olur. Son yeniden deneme girişimi başarısız olursa, iş yürütmesi başarısız bir yaşam döngüsü ile sonlandırılır. retry_attempts, varsayılan değer 10 ' dur.
+[ ** \@retry_attempts =** ] retry_attempts  
+İlk deneme başarısız olursa yürütmeyi yeniden deneme sayısı. Örneğin, retry_attempts değeri 10 ise, toplam 11 deneme vererek 1 ilk deneme ve 10 yeniden deneme olacaktır. Son yeniden deneme girişimi başarısız olursa, iş yürütme Başarısız bir yaşam döngüsü ile sona erer. retry_attempts, varsayılan değeri 10 olan int'tir.
 
-[ **\@step_timeout_seconds =** ] step_timeout_seconds  
-Adımın yürütülmesi için izin verilen en uzun süre. Bu süre aşılırsa, iş yürütmesi zaman aşımı yaşam döngüsü ile sonlandırılır. step_timeout_seconds, varsayılan değer olan 43.200 saniyedir (12 saat).
+[ ** \@step_timeout_seconds =** ] step_timeout_seconds  
+Adımın yürütülmesi için izin verilen maksimum süre. Bu süre aşılırsa, iş yürütme TimedOut bir yaşam döngüsü ile sona erer. step_timeout_seconds, varsayılan değeri 43.200 saniye (12 saat) olan int'tir.
 
-[ **\@output_type =** ] ' output_type '  
-Null değilse, komutun ilk sonuç kümesinin yazıldığı hedefin türü. output_type nvarchar (50), varsayılan değeri NULL.
+[ ** \@output_type =** ] 'output_type'  
+Null değilse, komutun ilk sonuç kümesinin yazıldığı hedef türü. output_type nvarchar(50), NULL varsayılan ı ile.
 
-Belirtilmişse değer SqlDatabase olmalıdır.
+Belirtilirse, değer SqlDatabase olmalıdır.
 
-[ **\@output_credential_name =** ] ' output_credential_name '  
-Null değilse, çıkış hedef veritabanına bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı. Output_type SqlDatabase ise belirtilmesi gerekir. output_credential_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
+[ ** \@output_credential_name =** ] 'output_credential_name'  
+Null değilse, çıktı hedef veritabanına bağlanmak için kullanılan veritabanı kapsamı kimlik bilgisi. output_type sqldatabase eşittir belirtilmelidir. output_credential_name nvarchar(128), NULL varsayılan değeri ile.
 
-[ **\@output_subscription_id =** ] ' output_subscription_id '  
-Açıklama gerekiyor.
+[ ** \@output_subscription_id =** ] 'output_subscription_id'  
+Açıklamaya ihtiyacı var.
 
-[ **\@output_resource_group_name =** ] ' output_resource_group_name '  
-Açıklama gerekiyor.
+[ ** \@output_resource_group_name =** ] 'output_resource_group_name'  
+Açıklamaya ihtiyacı var.
 
-[ **\@output_server_name =** ] ' output_server_name '  
-Null değilse, çıkış hedefi veritabanını içeren sunucunun tam DNS adı. Output_type SqlDatabase ise belirtilmesi gerekir. output_server_name nvarchar (256), varsayılan değeri NULL.
+[ ** \@output_server_name =** ] 'output_server_name'  
+Null değilse, çıktı hedef veritabanını içeren sunucunun tam nitelikli DNS adı. output_type sqldatabase eşittir belirtilmelidir. output_server_name nvarchar(256), NULL varsayılan ı ile.
 
-[ **\@output_database_name =** ] ' output_database_name '  
-Null değilse, çıkış hedefi tablosunu içeren veritabanının adı. Output_type SqlDatabase ise belirtilmesi gerekir. output_database_name nvarchar (128), varsayılan değeri NULL.
+[ ** \@output_database_name =** ] 'output_database_name'  
+Null değilse, çıktı hedef tablosunu içeren veritabanının adı. output_type sqldatabase eşittir belirtilmelidir. output_database_name nvarchar(128), NULL varsayılan ı ile.
 
-[ **\@output_schema_name =** ] ' output_schema_name '  
-Null değilse, çıkış hedefi tablosunu içeren SQL şemasının adı. Output_type SqlDatabase öğesine eşitse, varsayılan değer dbo olur. output_schema_name nvarchar (128).
+[ ** \@output_schema_name =** ] 'output_schema_name'  
+Null değilse, çıktı hedef tablosunu içeren SQL şemasının adı. output_type SqlDatabase'e eşitse, varsayılan değer dbo'dur. output_schema_name nvarchar'dır(128).
 
-[ **\@output_table_name =** ] ' output_table_name '  
-Null değilse, komutun ilk sonuç kümesinin yazılacağı tablonun adı. Tablo önceden yoksa, döndürülen sonuç kümesi şemasına göre oluşturulur. Output_type SqlDatabase ise belirtilmesi gerekir. output_table_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
+[ ** \@output_table_name =** ] 'output_table_name'  
+Null değilse, komutun ilk sonuç kümesinin yazıldığı tablonun adı yazılır. Tablo zaten yoksa, dönen sonuç kümesinin şemasına göre oluşturulur. output_type sqldatabase eşittir belirtilmelidir. output_table_name nvarchar(128), NULL varsayılan değeri ile.
 
-[ **\@job_version =** ] job_version çıkışı  
-Yeni iş sürümü numarasına atanacak çıkış parametresi. job_version int.
+[ ** \@job_version =** ] job_version Çıktı  
+Yeni iş sürüm numarası atanacak çıktı parametresi. job_version int olduğunu.
 
-[ **\@max_parallelism =** ] max_parallelism çıkışı  
-Elastik havuz başına en yüksek paralellik düzeyi. Ayarlanırsa, iş adımı yalnızca elastik havuz başına en fazla veritabanı üzerinde çalışacak şekilde kısıtlanır. Bu, doğrudan hedef gruba dahil edilen veya hedef gruba dahil olan bir sunucu içinde olan her esnek havuz için geçerlidir. max_parallelism int.
+[ ** \@max_parallelism =** ] max_parallelism ÇıKTı  
+Elastik havuz başına maksimum paralellik düzeyi. Ayarlanırsa, iş adımı yalnızca elastik havuz başına bu kadar çok veritabanlarının en fazla üzerinde çalışacak şekilde sınırlandırılacaktır. Bu, doğrudan hedef gruba dahil olan veya hedef gruba dahil olan bir sunucunun içinde bulunan her elastik havuz için geçerlidir. max_parallelism int olduğunu.
 
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
-Sp_add_jobstep başarılı olduğunda, işin geçerli sürüm numarası artırılır. İşin bir sonraki çalıştırılışında yeni sürüm kullanılacaktır. İş şu anda yürütülerek, bu yürütme yeni adımı içermez.
+sp_add_jobstep başarılı olduğunda, işin geçerli sürüm numarası artımlanır. Bir sonraki iş yürütüldolduğunda, yeni sürüm kullanılır. İş şu anda yürütülmektese, bu yürütme yeni adımı içermez.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:  
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:  
 
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
 
 
-### <a name="sp_update_jobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a><a name="sp_update_jobstep"></a>sp_update_jobstep
 
-Bir iş adımını güncelleştirir.
+Bir iş adımLarını güncelleştirir.
 
 #### <a name="syntax"></a>Sözdizimi
 
@@ -748,101 +748,101 @@ Bir iş adımını güncelleştirir.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] ' job_name '  
-Adımın ait olduğu işin adı. job_name nvarchar (128).
+[ ** \@job_name =** ] 'job_name'  
+Adımın ait olduğu işin adı. job_name nvarchar'dır(128).
 
-[ **\@step_id =** ] step_id  
-Değiştirilecek iş adımının kimlik numarası. Step_id ya da step_name belirtilmelidir. step_id bir int.
+[ ** \@step_id =** ] step_id  
+Değiştirilecek iş adımı için kimlik numarası. step_id veya step_name belirtilmelidir. step_id bir int.
 
-[ **\@step_name =** ] ' step_name '  
-Değiştirilecek adımın adı. Step_id ya da step_name belirtilmelidir. step_name nvarchar (128).
+[ ** \@step_name =** ] 'step_name'  
+Değiştirilecek adımın adı. step_id veya step_name belirtilmelidir. step_name nvarchar'dır(128).
 
-[ **\@new_id =** ] new_id  
-İş adımının yeni sıra kimlik numarası. Adım tanımlama numaraları 1 ' de başlar ve boşluklar olmadan artış yapın. Bir adım yeniden düzenlendiğinde, diğer adımlar otomatik olarak yeniden numaralandırılır.
+[ ** \@new_id =** ] new_id  
+İş adımı için yeni sıra tanımlama numarası. Adım tanımlama numaraları 1'den başlar ve boşluksuz olarak artış. Bir adım yeniden sıralanırsa, diğer adımlar otomatik olarak yeniden numaralandırılır.
 
-[ **\@new_name =** ] ' new_name '  
-Adımın yeni adı. new_name nvarchar (128).
+[ ** \@new_name =** ] 'new_name'  
+Adımın yeni adı. new_name nvarchar'dır(128).
 
-[ **\@command_type =** ] ' command_type '  
-Bu JobStep tarafından yürütülen komutun türü. command_type, TSql parametresinin bir T-SQL betiği olduğu @command_type anlamına gelen varsayılan değeri olan nvarchar (50) değeridir.
+[ ** \@command_type =** ] 'command_type'  
+Bu iş adımı tarafından yürütülen komut türü. command_type nvarchar(50), TSql varsayılan değeri ile, @command_type parametre değeri bir T-SQL komut dosyası anlamına gelir.
 
-Belirtilmişse, değerin TSql olması gerekir.
+Belirtilirse, değer TSql olmalıdır.
 
-[ **\@command_source =** ] ' command_source '  
-Komutun depolandığı konumun türü. command_source, varsayılan satır Içi değeri olan nvarchar (50), yani @command_source parametresinin değeri komutun değişmez metinidir.
+[ ** \@command_source =** ] 'command_source'  
+Komutun depolandığı konum türü. command_source nvarchar(50), Inline varsayılan değeri ile, @command_source parametre değeri komutunun gerçek metin anlamına gelir.
 
-Belirtilmişse, değerin satır Içi olması gerekir.
+Belirtilirse, değer Satır Lı olmalıdır.
 
-[ **\@komutu =** ] komutundaki  
-Komut (ler) geçerli bir T-SQL betiği olmalıdır ve sonra bu iş adımı tarafından yürütülür. komut, varsayılan değeri NULL olan nvarchar (max).
+[ ** \@komut =** ] 'komut'  
+Komut(lar) geçerli T-SQL komut dosyası olmalıdır ve daha sonra bu iş adımı tarafından yürütülür. komutu null varsayılan ı ile nvarchar(max) olduğunu.
 
-[ **\@credential_name =** ] ' credential_name '  
-Bu adım yürütüldüğünde hedef grup içindeki her bir hedef veritabanına bağlanmak için kullanılan, bu iş denetim veritabanında depolanan veritabanı kapsamlı kimlik bilgisinin adı. credential_name nvarchar (128).
+[ ** \@credential_name =** ] 'credential_name'  
+Bu adım yürütüldüğünde hedef grup içindeki hedef veritabanlarının her birine bağlanmak için kullanılan bu iş denetimi veritabanında depolanan veritabanı kapsamı kapsamı kimlik bilgisi. credential_name nvarchar'dır(128).
 
-[ **\@target_group_name =** ] ' Target-group_name '  
-İş adımının üzerinde yürütüleceği hedef veritabanlarını içeren hedef grubun adı. target_group_name nvarchar (128).
+[ ** \@target_group_name =** ] 'hedef group_name'  
+İş adımının yürütüleceği hedef veritabanlarını içeren hedef grubun adı. target_group_name nvarchar'dır(128).
 
-[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
-İlk yürütme denemesinde iş adımı başarısız olursa, ilk yeniden deneme denemesinden önceki gecikme. initial_retry_interval_seconds, varsayılan değer olan 1 ' dir.
+[ ** \@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+İlk yürütme girişiminde iş adımı başarısız olursa, ilk yeniden deneme girişiminden önceki gecikme. initial_retry_interval_seconds, varsayılan değeri 1 olan int'tir.
 
-[ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
-Yeniden deneme girişimleri arasındaki gecikme üst sınırı. Denemeler arasındaki gecikme bu değerden daha büyük büyürken, bunun yerine bu değere eşit hale gelir. maximum_retry_interval_seconds, varsayılan değer olan 120 ' dir.
+[ ** \@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+Yeniden deneme girişimleri arasındaki maksimum gecikme. Yeniden denemeler arasındaki gecikme bu değerden daha büyük büyüyecekse, bunun yerine bu değere kapaklanır. maximum_retry_interval_seconds, varsayılan değeri 120 olan int'tir.
 
-[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
-Birden çok iş adımı yürütme denemesi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Örneğin, ilk yeniden denenmede 5 saniyelik bir gecikme vardı ve geri dönüş çarpanı 2,0 ise ikinci yeniden deneme 10 saniyelik bir gecikme olur ve üçüncü yeniden deneme 20 saniye gecikmeyle oluşur. retry_interval_backoff_multiplier, varsayılan değer olan 2,0 ile gerçek bir değerdir.
+[ ** \@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+Birden çok iş adımı yürütme girişimi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Örneğin, ilk yeniden denemede 5 saniyelik bir gecikme varsa ve geri dönüş çarpanı 2,0 ise, ikinci yeniden denemede 10 saniye gecikme olur ve üçüncü yeniden denemede 20 saniye gecikme olur. retry_interval_backoff_multiplier, varsayılan değeri 2,0 olan gerçektir.
 
-[ **\@retry_attempts =** ] retry_attempts  
-İlk girişim başarısız olursa yürütme yeniden denenme sayısı. Örneğin, retry_attempts değeri 10 ise, 1 Başlangıç denemesi ve 10 yeniden deneme girişiminde bulunur ve toplam 11 deneme olur. Son yeniden deneme girişimi başarısız olursa, iş yürütmesi başarısız bir yaşam döngüsü ile sonlandırılır. retry_attempts, varsayılan değer 10 ' dur.
+[ ** \@retry_attempts =** ] retry_attempts  
+İlk deneme başarısız olursa yürütmeyi yeniden deneme sayısı. Örneğin, retry_attempts değeri 10 ise, toplam 11 deneme vererek 1 ilk deneme ve 10 yeniden deneme olacaktır. Son yeniden deneme girişimi başarısız olursa, iş yürütme Başarısız bir yaşam döngüsü ile sona erer. retry_attempts, varsayılan değeri 10 olan int'tir.
 
-[ **\@step_timeout_seconds =** ] step_timeout_seconds  
-Adımın yürütülmesi için izin verilen en uzun süre. Bu süre aşılırsa, iş yürütmesi zaman aşımı yaşam döngüsü ile sonlandırılır. step_timeout_seconds, varsayılan değer olan 43.200 saniyedir (12 saat).
+[ ** \@step_timeout_seconds =** ] step_timeout_seconds  
+Adımın yürütülmesi için izin verilen maksimum süre. Bu süre aşılırsa, iş yürütme TimedOut bir yaşam döngüsü ile sona erer. step_timeout_seconds, varsayılan değeri 43.200 saniye (12 saat) olan int'tir.
 
-[ **\@output_type =** ] ' output_type '  
-Null değilse, komutun ilk sonuç kümesinin yazıldığı hedefin türü. Output_type değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_type nvarchar (50), varsayılan değeri NULL.
+[ ** \@output_type =** ] 'output_type'  
+Null değilse, komutun ilk sonuç kümesinin yazıldığı hedef türü. output_type değerini NULL'a geri ayarlamak için, bu parametrenin değerini '' (boş dize) olarak ayarlayın. output_type nvarchar(50), NULL varsayılan ı ile.
 
-Belirtilmişse değer SqlDatabase olmalıdır.
+Belirtilirse, değer SqlDatabase olmalıdır.
 
-[ **\@output_credential_name =** ] ' output_credential_name '  
-Null değilse, çıkış hedef veritabanına bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı. Output_type SqlDatabase ise belirtilmesi gerekir. Output_credential_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_credential_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
+[ ** \@output_credential_name =** ] 'output_credential_name'  
+Null değilse, çıktı hedef veritabanına bağlanmak için kullanılan veritabanı kapsamı kimlik bilgisi. output_type sqldatabase eşittir belirtilmelidir. output_credential_name değerini NULL'a sıfırlamak için bu parametrenin değerini '' (boş dize) olarak ayarlayın. output_credential_name nvarchar(128), NULL varsayılan değeri ile.
 
-[ **\@output_server_name =** ] ' output_server_name '  
-Null değilse, çıkış hedefi veritabanını içeren sunucunun tam DNS adı. Output_type SqlDatabase ise belirtilmesi gerekir. Output_server_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_server_name nvarchar (256), varsayılan değeri NULL.
+[ ** \@output_server_name =** ] 'output_server_name'  
+Null değilse, çıktı hedef veritabanını içeren sunucunun tam nitelikli DNS adı. output_type sqldatabase eşittir belirtilmelidir. null output_server_name değerini sıfırlamak için, bu parametrenin değerini '' (boş dize) olarak ayarlayın. output_server_name nvarchar(256), NULL varsayılan ı ile.
 
-[ **\@output_database_name =** ] ' output_database_name '  
-Null değilse, çıkış hedefi tablosunu içeren veritabanının adı. Output_type SqlDatabase ise belirtilmesi gerekir. Output_database_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_database_name nvarchar (128), varsayılan değeri NULL.
+[ ** \@output_database_name =** ] 'output_database_name'  
+Null değilse, çıktı hedef tablosunu içeren veritabanının adı. output_type sqldatabase eşittir belirtilmelidir. output_database_name değerini NULL'a sıfırlamak için bu parametrenin değerini '' (boş dize) olarak ayarlayın. output_database_name nvarchar(128), NULL varsayılan ı ile.
 
-[ **\@output_schema_name =** ] ' output_schema_name '  
-Null değilse, çıkış hedefi tablosunu içeren SQL şemasının adı. Output_type SqlDatabase öğesine eşitse, varsayılan değer dbo olur. Output_schema_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_schema_name nvarchar (128).
+[ ** \@output_schema_name =** ] 'output_schema_name'  
+Null değilse, çıktı hedef tablosunu içeren SQL şemasının adı. output_type SqlDatabase'e eşitse, varsayılan değer dbo'dur. output_schema_name değerini NULL'a geri ayarlamak için, bu parametrenin değerini '' (boş dize) olarak ayarlayın. output_schema_name nvarchar'dır(128).
 
-[ **\@output_table_name =** ] ' output_table_name '  
-Null değilse, komutun ilk sonuç kümesinin yazılacağı tablonun adı. Tablo önceden yoksa, döndürülen sonuç kümesi şemasına göre oluşturulur. Output_type SqlDatabase ise belirtilmesi gerekir. Output_server_name değerini NULL olarak sıfırlamak için, bu parametrenin değerini ' ' olarak ayarlayın (boş dize). output_table_name, varsayılan değeri NULL olan nvarchar (128) değeridir.
+[ ** \@output_table_name =** ] 'output_table_name'  
+Null değilse, komutun ilk sonuç kümesinin yazıldığı tablonun adı yazılır. Tablo zaten yoksa, dönen sonuç kümesinin şemasına göre oluşturulur. output_type sqldatabase eşittir belirtilmelidir. null output_server_name değerini sıfırlamak için, bu parametrenin değerini '' (boş dize) olarak ayarlayın. output_table_name nvarchar(128), NULL varsayılan değeri ile.
 
-[ **\@job_version =** ] job_version çıkışı  
-Yeni iş sürümü numarasına atanacak çıkış parametresi. job_version int.
+[ ** \@job_version =** ] job_version Çıktı  
+Yeni iş sürüm numarası atanacak çıktı parametresi. job_version int olduğunu.
 
-[ **\@max_parallelism =** ] max_parallelism çıkışı  
-Elastik havuz başına en yüksek paralellik düzeyi. Ayarlanırsa, iş adımı yalnızca elastik havuz başına en fazla veritabanı üzerinde çalışacak şekilde kısıtlanır. Bu, doğrudan hedef gruba dahil edilen veya hedef gruba dahil olan bir sunucu içinde olan her esnek havuz için geçerlidir. Max_parallelism değerini null olarak sıfırlamak için, bu parametrenin değerini-1 olarak ayarlayın. max_parallelism int.
+[ ** \@max_parallelism =** ] max_parallelism ÇıKTı  
+Elastik havuz başına maksimum paralellik düzeyi. Ayarlanırsa, iş adımı yalnızca elastik havuz başına bu kadar çok veritabanlarının en fazla üzerinde çalışacak şekilde sınırlandırılacaktır. Bu, doğrudan hedef gruba dahil olan veya hedef gruba dahil olan bir sunucunun içinde bulunan her elastik havuz için geçerlidir. max_parallelism değerini sıfırlamak için bu parametrenin değerini -1 olarak ayarlayın. max_parallelism int olduğunu.
 
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
-İşin devam eden tüm yürütmeleri etkilenmeyecektir. Sp_update_jobstep başarılı olduğunda, işin sürüm numarası artırılır. İşin bir sonraki çalıştırılışında yeni sürüm kullanılacaktır.
+İşin devam eden yürütmeleri etkilenmez. sp_update_jobstep başarılı olduğunda, işin sürüm numarası artımlanır. Bir sonraki iş yürütüldolduğunda, yeni sürüm kullanılır.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir
 
 
 
 
-### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a><a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
-Bir işten iş adımını kaldırır.
+Bir iş adımLarını bir işten kaldırır.
 
 #### <a name="syntax"></a>Sözdizimi
 
@@ -855,40 +855,40 @@ Bir işten iş adımını kaldırır.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] ' job_name '  
-Adımın kaldırılacağı işin adı. job_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@job_name =** ] 'job_name'  
+Adımın kaldırılacağı işin adı. job_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@step_id =** ] step_id  
-Silinecek iş adımının kimlik numarası. Step_id ya da step_name belirtilmelidir. step_id bir int.
+[ ** \@step_id =** ] step_id  
+İş adımının silinecek kimlik numarası. step_id veya step_name belirtilmelidir. step_id bir int.
 
-[ **\@step_name =** ] ' step_name '  
-Silinecek adımın adı. Step_id ya da step_name belirtilmelidir. step_name nvarchar (128).
+[ ** \@step_name =** ] 'step_name'  
+Silinecek adımın adı. step_id veya step_name belirtilmelidir. step_name nvarchar'dır(128).
 
-[ **\@job_version =** ] job_version çıkışı  
-Yeni iş sürümü numarasına atanacak çıkış parametresi. job_version int.
+[ ** \@job_version =** ] job_version Çıktı  
+Yeni iş sürüm numarası atanacak çıktı parametresi. job_version int olduğunu.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
-İşin devam eden tüm yürütmeleri etkilenmeyecektir. Sp_update_jobstep başarılı olduğunda, işin sürüm numarası artırılır. İşin bir sonraki çalıştırılışında yeni sürüm kullanılacaktır.
+İşin devam eden yürütmeleri etkilenmez. sp_update_jobstep başarılı olduğunda, işin sürüm numarası artımlanır. Bir sonraki iş yürütüldolduğunda, yeni sürüm kullanılır.
 
-Diğer iş adımları, silinen iş adımının solundaki boşluğu dolduracak şekilde otomatik olarak yeniden numaralandırılır.
+Silinen iş adımından kalan boşluğu doldurmak için diğer iş adımları otomatik olarak yeniden numaralandırılır.
  
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
 
 
 
 
 
-### <a name="sp_start_job"></a>sp_start_job
+### <a name="sp_start_job"></a><a name="sp_start_job"></a>Sp_start_job
 
-İşi yürütmeye başlar.
+Bir işi yürütmeye başlar.
 
 #### <a name="syntax"></a>Sözdizimi
 
@@ -899,27 +899,27 @@ Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümü
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] ' job_name '  
-Adımın kaldırılacağı işin adı. job_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@job_name =** ] 'job_name'  
+Adımın kaldırılacağı işin adı. job_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@job_execution_id =** ] job_execution_id çıkışı  
-İş yürütmenin kimliğine atanacak çıkış parametresi. job_version uniqueidentifier.
+[ ** \@job_execution_id =** ] job_execution_id ÇıKTı  
+İş yürütme kimliğinin atanacak çıktı parametresi. job_version benzersiz bir tanımlayıcıdır.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
 Yok.
  
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
-### <a name="sp_stop_job"></a>sp_stop_job
+### <a name="sp_stop_job"></a><a name="sp_stop_job"></a>sp_stop_job
 
-Bir iş yürütmesini sonlandırır.
+İş infazını durdurur.
 
 #### <a name="syntax"></a>Sözdizimi
 
@@ -930,23 +930,23 @@ Bir iş yürütmesini sonlandırır.
 
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_execution_id =** ] job_execution_id  
-Durdurulacak iş yürütmenin kimlik numarası. job_execution_id, varsayılan değeri NULL olan uniqueidentifier.
+[ ** \@job_execution_id =** ] job_execution_id  
+Durdurulacak iş yürütmekimlik numarası. job_execution_id, NULL varsayılanı ile benzersiz bir tanımlayıcıdır.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
 Yok.
  
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
 
-### <a name="sp_add_target_group"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a><a name="sp_add_target_group"></a>sp_add_target_group
 
 Bir hedef grup ekler.
 
@@ -960,24 +960,24 @@ Bir hedef grup ekler.
 
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@target_group_name =** ] ' target_group_name '  
-Oluşturulacak hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@target_group_name =** ] 'target_group_name'  
+Oluşturulacak hedef grubun adı. target_group_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@target_group_id =** ] target_group_id çıkış başarıyla oluşturulursa, işe atanan hedef grup kimlik numarası. target_group_id, varsayılan değeri NULL olan uniqueidentifier türünde bir çıkış değişkenidir.
+[ ** \@target_group_id = ]** target_group_id OUTPUT Başarılı bir şekilde oluşturulduğunda işe atanan hedef grup kimlik numarası. target_group_id, NULL varsayılanı olan tip benzersiz tanımlayıcısının bir çıktı değişkenidir.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
-Hedef gruplar, bir işi veritabanı koleksiyonunda hedeflemek için kolay bir yol sağlar.
+Hedef gruplar, veritabanları koleksiyonundaki bir işi hedeflemenin kolay bir yolunu sağlar.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
-### <a name="sp_delete_target_group"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a><a name="sp_delete_target_group"></a>sp_delete_target_group
 
 Hedef grubu siler.
 
@@ -990,22 +990,22 @@ Hedef grubu siler.
 
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@target_group_name =** ] ' target_group_name '  
-Silinecek hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@target_group_name =** ] 'target_group_name'  
+Silmek için hedef grubun adı. target_group_name nvarchar(128), hiçbir varsayılan ile.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
 Yok.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
-### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a><a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
 Hedef gruba bir veritabanı veya veritabanı grubu ekler.
 
@@ -1024,45 +1024,45 @@ Hedef gruba bir veritabanı veya veritabanı grubu ekler.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@target_group_name =** ] ' target_group_name '  
-Üyenin ekleneceği hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@target_group_name =** ] 'target_group_name'  
+Üyenin ekeceği hedef grubun adı. target_group_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@membership_type =** ] ' membership_type '  
-Hedef grubu üyesinin dahil edilip edilmeyeceğini veya dışlanacağını belirtir. target_group_name, varsayılan değer olan ' Include ' ile nvarchar (128). Target_group_name için geçerli değerler ' Include ' veya ' exclude '.
+[ ** \@membership_type = ]** 'membership_type'  
+Hedef grup üyesinin dahil edilip edilmeyeceğini veya dahil edilip edilmeyeceğini belirtir. target_group_name nvarchar(128), varsayılan olarak 'Include' ile. target_group_name için geçerli değerler 'Dahil Et' veya 'Hariç Tut' değeridir.
 
-[ **\@target_type =** ] ' target_type '  
-Bir sunucudaki tüm veritabanları, bir elastik havuzdaki tüm veritabanları, parça haritadaki tüm veritabanları veya ayrı bir veritabanı dahil olmak üzere hedef veritabanının türü veya veritabanı koleksiyonu. target_type, varsayılan değer olmadan nvarchar (128) ' dir. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ', ' SqlDatabase ' veya ' SqlShardMap '. 
+[ ** \@target_type =** ] 'target_type'  
+Sunucudaki tüm veritabanları, Elastik havuzdaki tüm veritabanları, parça haritadaki tüm veritabanları veya tek bir veritabanı dahil olmak üzere hedef veritabanı veya veritabanlarının toplanması türü. target_type nvarchar(128), hiçbir varsayılan ile. target_type için geçerli değerler 'SqlServer', 'SqlElasticPool', 'SqlDatabase'veya 'SqlShardMap'tir. 
 
-[ **\@refresh_credential_name =** ] ' refresh_credential_name '  
-SQL veritabanı sunucusunun adı. refresh_credential_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@refresh_credential_name =** ] 'refresh_credential_name'  
+SQL Veritabanı sunucusunun adı. refresh_credential_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@SERVER_NAME =** ] ' server_name '  
-Belirtilen hedef gruba eklenmesi gereken SQL veritabanı sunucusunun adı. target_type ' SqlServer ' olduğunda server_name belirtilmelidir. server_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@server_name =** ] 'server_name'  
+Belirtilen hedef gruba eklenmesi gereken SQL Veritabanı sunucusunun adı. server_name target_type 'SqlServer' olduğunda belirtilmelidir. server_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@database_name =** ] ' database_name '  
-Belirtilen hedef gruba eklenmesi gereken veritabanının adı. target_type ' SqlDatabase ' olduğunda database_name belirtilmelidir. database_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@database_name =** ] 'database_name'  
+Belirtilen hedef gruba eklenmesi gereken veritabanının adı. target_type 'SqlDatabase' olduğunda database_name belirtilmelidir. database_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@elastic_pool_name =** ] ' elastic_pool_name '  
-Belirtilen hedef gruba eklenmesi gereken elastik havuzun adı. target_type ' Sqtalakpool ' olduğunda elastic_pool_name belirtilmelidir. elastic_pool_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@elastic_pool_name =** ] 'elastic_pool_name'  
+Belirtilen hedef gruba eklenmesi gereken Elastik havuzun adı. target_type 'SqlElasticPool' olduğunda elastic_pool_name belirtilmelidir. elastic_pool_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@shard_map_name =** ] ' shard_map_name '  
-Belirtilen hedef gruba eklenmesi gereken parça eşleme havuzunun adı. target_type ' SqlSqlShardMap ' olduğunda elastic_pool_name belirtilmelidir. shard_map_name, varsayılan değer olmadan nvarchar (128) ' dir.
+[ ** \@shard_map_name =** ] 'shard_map_name'  
+Belirtilen hedef gruba eklenmesi gereken parça harita havuzunun adı. elastic_pool_name target_type 'SqlSqlShardMap' olduğunda belirtilmelidir. shard_map_name nvarchar(128), hiçbir varsayılan ile.
 
-[ **\@target_id =** ] target_group_id çıkışı  
-Oluşturulmuş hedef grup üyesine atanan hedef kimlik numarası, hedef gruba eklendiyse. target_id, varsayılan değeri NULL olan uniqueidentifier türünde bir çıkış değişkenidir.
-Dönüş kodu değerleri 0 (başarı) veya 1 (hata)
+[ ** \@target_id =** ] target_group_id Çıktı  
+Oluşturulan hedef gruba eklenirse hedef grup üyesine atanan hedef tanımlama numarası. target_id, NULL varsayılanı olan tip benzersiz identifier bir çıkış değişkenidir.
+İade Kodu Değerleri 0 (başarılı) veya 1 (hata)
 
 #### <a name="remarks"></a>Açıklamalar
-Bir iş, hedef gruba bir SQL veritabanı sunucusu veya elastik havuz dahil edildiğinde, bir SQL veritabanı sunucusu içindeki tüm tek veritabanlarında veya yürütme sırasında elastik havuzda yürütülür.
+Bir iş, bir SQL Veritabanı sunucusu veya Elastik havuz hedef gruba dahil edildiğinde, yürütme sırasında bir SQL Veritabanı sunucusu içindeki tüm tek veritabanlarında veya elastik bir havuzda yürütülür.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
 #### <a name="examples"></a>Örnekler
-Aşağıdaki örnek, Londra ve NewYork sunucularındaki tüm veritabanlarını müşteri bilgilerini tutarak grup sunucularına ekler. Bu durumda, iş aracısını oluştururken belirtilen işler veritabanına bağlanmanız gerekir.
+Aşağıdaki örnek, Londra ve NewYork sunucularında bulunan tüm veritabanlarını Müşteri Bilgilerini Koruyan Sunucular grubuna ekler. Bu durumda ElasticJobs, iş aracısını oluştururken belirtilen iş veritabanına bağlanmanız gerekir.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1094,7 +1094,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a><a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
 Hedef grup üyesini hedef gruptan kaldırır.
 
@@ -1108,26 +1108,26 @@ Hedef grup üyesini hedef gruptan kaldırır.
 
 
 
-Bağımsız değişkenler [@target_group_name =] ' target_group_name '  
-Hedef grup üyesinin kaldırılacağı hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
+Bağımsız @target_group_name değişkenler [ = ] 'target_group_name'  
+Hedef grup üyesini kaldırmak için hedef grubun adı. target_group_name nvarchar(128), hiçbir varsayılan ile.
 
-[@target_id =] target_id  
- Kaldırılacak hedef grup üyesine atanan hedef kimlik numarası. target_id, varsayılan değeri NULL olan bir uniqueidentifier.
+[ @target_id = ] target_id  
+ Kaldırılacak hedef grup üyesine atanan hedef kimlik numarası. target_id, NULL varsayılanı olan bir benzersiz leştiricidir.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarılı) veya 1 (hata)
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (başarısızlık)
 
 #### <a name="remarks"></a>Açıklamalar
-Hedef gruplar, bir işi veritabanı koleksiyonunda hedeflemek için kolay bir yol sağlar.
+Hedef gruplar, veritabanları koleksiyonundaki bir işi hedeflemenin kolay bir yolunu sağlar.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
 #### <a name="examples"></a>Örnekler
-Aşağıdaki örnek, müşteri bilgilerini korumak için Londra sunucusunu grup sunucularından kaldırır. Bu durumda, iş aracısını oluştururken belirtilen işler veritabanına bağlanmanız gerekir.
+Aşağıdaki örnek, Londra sunucusunu Müşteri Bilgilerini Koruyan Sunucular grubundan kaldırır. Bu durumda ElasticJobs, iş aracısını oluştururken belirtilen iş veritabanına bağlanmanız gerekir.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1145,7 +1145,7 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a><a name="sp_purge_jobhistory"></a>Sp_purge_jobhistory
 
 Bir işin geçmiş kayıtlarını kaldırır.
 
@@ -1159,26 +1159,26 @@ Bir işin geçmiş kayıtlarını kaldırır.
 ```
 
 #### <a name="arguments"></a>Bağımsız Değişkenler
-[ **\@job_name =** ] ' job_name '  
-Geçmiş kayıtlarının silineceği işin adı. job_name nvarchar (128), varsayılan değeri NULL. Job_id ya da job_name belirtilmelidir, ancak her ikisi de belirtilemez.
+[ ** \@job_name =** ] 'job_name'  
+Geçmiş kayıtlarını silmek için işin adı. job_name nvarchar(128), NULL varsayılan ı ile. job_id veya job_name belirtilmelidir, ancak her ikisi de belirtilemez.
 
-[ **\@job_id =** ] job_id  
- Silinecek kayıtlar için işin iş kimliği numarası. job_id, varsayılan değeri NULL olan uniqueidentifier. Job_id ya da job_name belirtilmelidir, ancak her ikisi de belirtilemez.
+[ ** \@job_id =** ] job_id  
+ Kayıtların silinmesi için işin iş kimlik numarası. job_id, NULL varsayılanı ile benzersiz bir tanımlayıcıdır. job_id veya job_name belirtilmelidir, ancak her ikisi de belirtilemez.
 
-[ **\@oldest_date =** ] oldest_date  
- Geçmişte tutulacak en eski kayıt. oldest_date, varsayılan değer olan DATETIME2. Oldest_date belirtildiğinde, sp_purge_jobhistory yalnızca belirtilen değerden eski olan kayıtları kaldırır.
+[ ** \@oldest_date =** ] oldest_date  
+ Tarihte tutulan en eski kayıt. oldest_date DATETIME2, NULL varsayılan ı ile. oldest_date belirtildiğinde, sp_purge_jobhistory yalnızca belirtilen değerden eski kayıtları kaldırır.
 
-#### <a name="return-code-values"></a>Dönüş kodu değerleri
-0 (başarı) veya 1 (hata) açıklamalar hedef grupları, bir işi veritabanı koleksiyonunda hedeflemek için kolay bir yol sağlar.
+#### <a name="return-code-values"></a>İade Kodu Değerleri
+0 (başarı) veya 1 (hata) Açıklamalar Hedef gruplar veritabanları koleksiyonunda bir işi hedeflemek için kolay bir yol sağlar.
 
 #### <a name="permissions"></a>İzinler
-Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu saklı yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izlemeye kısıtlama, kullanıcıyı iş Aracısı oluştururken belirtilen iş Aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olarak verebilirsiniz:
+Varsayılan olarak, sysadmin sabit sunucu rolünün üyeleri bu depolanan yordamı yürütebilir. Bir kullanıcıyı yalnızca işleri izleyebilmeyi kısıtlarlar, kullanıcıya iş aracısını oluştururken belirtilen iş aracısı veritabanında aşağıdaki veritabanı rolünün bir parçası olmasını sağlayabilirsiniz:
 - jobs_reader
 
-Bu rollerin izinleri hakkında daha fazla bilgi için bu belgenin Izin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait olan işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
+Bu rollerin izinleri hakkında ayrıntılı bilgi için bu belgedeki İzin bölümüne bakın. Yalnızca sysadmin üyeleri, diğer kullanıcılara ait işlerin özniteliklerini düzenlemek için bu saklı yordamı kullanabilir.
 
 #### <a name="examples"></a>Örnekler
-Aşağıdaki örnek, Londra ve NewYork sunucularındaki tüm veritabanlarını müşteri bilgilerini tutarak grup sunucularına ekler. Bu durumda, iş aracısını oluştururken belirtilen işler veritabanına bağlanmanız gerekir.
+Aşağıdaki örnek, Londra ve NewYork sunucularında bulunan tüm veritabanlarını Müşteri Bilgilerini Koruyan Sunucular grubuna ekler. Bu durumda ElasticJobs, iş aracısını oluştururken belirtilen iş veritabanına bağlanmanız gerekir.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1192,160 +1192,160 @@ GO
 
 ## <a name="job-views"></a>İş görünümleri
 
-Aşağıdaki görünümler [işler veritabanında](sql-database-job-automation-overview.md#job-database)kullanılabilir.
+İş [veritabanında](sql-database-job-automation-overview.md#job-database)aşağıdaki görünümler mevcuttur.
 
 
 |Görünüm  |Açıklama  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  İş yürütme geçmişini gösterir.      |
-|[Çizelge](#jobs-view)     |   Tüm işleri gösterir.      |
+|[Işleri](#jobs-view)     |   Tüm işleri gösterir.      |
 |[job_versions](#job_versions-view)     |   Tüm iş sürümlerini gösterir.      |
-|[JobSteps](#jobsteps-view)     |     Her bir işin geçerli sürümündeki tüm adımları gösterir.    |
-|[jobstep_versions](#jobstep_versions-view)     |     Her bir işin tüm sürümlerindeki tüm adımları gösterir.    |
-|[target_groups](#target_groups-view)     |      Tüm hedef gruplarını gösterir.   |
+|[Jobsteps](#jobsteps-view)     |     Her işin geçerli sürümündeki tüm adımları gösterir.    |
+|[jobstep_versions](#jobstep_versions-view)     |     Her işin tüm sürümlerindeki tüm adımları gösterir.    |
+|[target_groups](#target_groups-view)     |      Tüm hedef grupları gösterir.   |
 |[target_group_members](#target_group_members-view)     |   Tüm hedef grupların tüm üyelerini gösterir.      |
 
 
-### <a name="job_executions-view"></a>job_executions görünümü
+### <a name="job_executions-view"></a><a name="job_executions-view"></a>job_executions görünümü
 
-[işler]. [job_executions]
+[işleri]. [job_executions]
 
 İş yürütme geçmişini gösterir.
 
 
-|sütun adı|   Veri türü   |Açıklama|
+|Sütun adı|   Veri türü   |Açıklama|
 |---------|---------|---------|
-|**job_execution_id**   |uniqueidentifier|  İş yürütme örneğinin benzersiz KIMLIĞI.
-|**job_name**   |nvarchar (128)  |İşin adı.
-|**job_id** |uniqueidentifier|  İşin benzersiz KIMLIĞI.
-|**job_version**    |int    |İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).
-|**step_id**    |int|   Adım için benzersiz (Bu iş için) tanımlayıcı. NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**is_active**| bit |Bilgilerin etkin mi yoksa devre dışı mı olduğunu gösterir. 1 etkin işleri gösterir ve 0 etkin değil anlamına gelir.
-|**uyor**| nvarchar (50)|İşin durumunu gösteren değer: ' Created ', ' sürüyor ', ' Failed ', ' başarılı ', ' atlandı ', ' SucceededWithSkipped '|
-|**create_time**|   datetime2 (7)|   İşin oluşturulduğu tarih ve saat.
-|**start_time** |datetime2 (7)|  İşin yürütmeye başladığı tarih ve saat. İş henüz yürütülmemişse NULL.
-|**end_time**|  datetime2 (7)    |İşin yürütmenin bittiği tarih ve saat. İş henüz yürütülmemişse veya henüz yürütmeyi tamamlamamışsa NULL.
-|**current_attempts**   |int    |Adımın yeniden denenme sayısı. Ana iş 0 olacak, alt iş yürütmeleri yürütme ilkesine göre 1 veya daha büyük olacaktır.
-|**current_attempt_start_time** |datetime2 (7)|  İşin yürütmeye başladığı tarih ve saat. NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**last_message**   |nvarchar(max)| İş veya adım geçmişi iletisi. 
-|**target_type**|   nvarchar (128)   |Bir sunucudaki tüm veritabanları, bir elastik havuzdaki veya bir veritabanındaki tüm veritabanları dahil hedef veritabanı veya veritabanı koleksiyonu türü. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ' veya ' SqlDatabase ' değerleridir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**target_id**  |uniqueidentifier|  Hedef grubu üyesinin benzersiz KIMLIĞI.  NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**target_group_name**  |nvarchar (128)  |Hedef grubun adı. NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**target_server_name**|    nvarchar (256)|  Hedef grupta bulunan SQL veritabanı sunucusunun adı. Yalnızca target_type ' SqlServer ' ise belirtilir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
-|**target_database_name**   |nvarchar (128)| Hedef grupta bulunan veritabanının adı. Yalnızca target_type ' SqlDatabase ' olduğunda belirtilir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**job_execution_id**   |uniqueidentifier|  Bir iş yürütme örneğinin benzersiz kimliği.
+|**Job_name**   |nvarchar(128)  |İşin adı.
+|**Job_id** |uniqueidentifier|  İşin benzersiz kimliği.
+|**job_version**    |int    |İşin sürümü (iş her değiştirildiğinde otomatik olarak güncelleştirilir).
+|**step_id**    |int|   Adım için benzersiz (bu iş için) tanımlayıcı. NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**is_active**| bit |Bilgilerin etkin veya etkin olmadığını gösterir. 1 etkin işleri gösterir ve 0 etkin olmayan işleri gösterir.
+|**Yaşam döngüsü**| nvarchar(50)|İşin durumunu gösteren değer:'Oluşturuldu', 'Devam Ediyor', 'Başarısız', 'Başarılı', 'Atlandı', 'BaşarılıWithSkipped'|
+|**create_time**|   datetime2(7)|   İşoluşturulduğu tarih ve saat.
+|**Start_time** |datetime2(7)|  İşin yürütmeye başladığı tarih ve saat. İş henüz yürütülmediyse NULL.
+|**end_time**|  datetime2(7)    |İşin yürütmenin bittiği tarih ve saat. İş henüz yürütülmediyse veya yürütmeyi henüz tamamlamamışsa NULL.
+|**current_attempts**   |int    |Adımın kaç kez yeniden denendiği. Üst iş 0 olacak, alt iş yürütmeler 1 veya daha fazla yürütme ilkesine göre olacaktır.
+|**current_attempt_start_time** |datetime2(7)|  İşin yürütmeye başladığı tarih ve saat. NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**last_message**   |nvarchar(maks)| İş veya adım geçmişi iletisi. 
+|**target_type**|   nvarchar(128)   |Bir sunucudaki tüm veritabanları, Elastik havuzdaki tüm veritabanları veya veritabanı dahil olmak üzere hedef veritabanı veya veritabanları koleksiyonu türü. target_type için geçerli değerler 'SqlServer', 'SqlElasticPool' veya 'SqlDatabase' dir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**target_id**  |uniqueidentifier|  Hedef grup üyesinin benzersiz kimliği.  NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**target_group_name**  |nvarchar(128)  |Hedef grubun adı. NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**target_server_name**|    nvarchar(256)|  Hedef grupta bulunan SQL Veritabanı sunucusunun adı. Yalnızca target_type 'SqlServer' ise belirtilir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
+|**target_database_name**   |nvarchar(128)| Hedef grupta bulunan veritabanının adı. Yalnızca target_type 'SqlDatabase' olduğunda belirtilir. NULL, bunun ana iş yürütmesi olduğunu gösterir.
 
 
-### <a name="jobs-view"></a>işler görünümü
+### <a name="jobs-view"></a>iş görünümü
 
-[işler]. Çizelge
+[işleri]. [işler]
 
 Tüm işleri gösterir.
 
-|sütun adı|   Veri türü|  Açıklama|
+|Sütun adı|   Veri türü|  Açıklama|
 |------|------|-------|
-|**job_name**|  nvarchar (128)   |İşin adı.|
-|**job_id**|    uniqueidentifier    |İşin benzersiz KIMLIĞI.|
-|**job_version**    |int    |İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).|
-|**açıklaması**    |nvarchar (512)| İş için açıklama. etkin bit, işin etkin veya devre dışı olduğunu belirtir. 1 etkin işleri gösterir ve 0 devre dışı işleri gösterir.|
-|**schedule_interval_type** |nvarchar (50)   |İşin ne zaman yürütüleceğini belirten değer: ' bir kez ', ' dakika ', ' saat ', ' Days ', ' hafta ', ' ay '
-|**schedule_interval_count**|   int|    İşin her yürütmesi arasında gerçekleştirilecek schedule_interval_type dönemi sayısı.|
-|**schedule_start_time**    |datetime2 (7)|  İşin en son başladığı tarih ve saat.|
-|**schedule_end_time**| datetime2 (7)|   İşin yürütmenin en son tamamlandığı tarih ve saat.|
+|**Job_name**|  nvarchar(128)   |İşin adı.|
+|**Job_id**|    uniqueidentifier    |İşin benzersiz kimliği.|
+|**job_version**    |int    |İşin sürümü (iş her değiştirildiğinde otomatik olarak güncelleştirilir).|
+|**Açıklama**    |nvarchar(512)| İş için açıklama. etkinleştirilmiş bit, işin etkin mi yoksa devre dışı mı olduğunu gösterir. 1 etkin işleri, 0 ise devre dışı bırakılmış işleri gösterir.|
+|**schedule_interval_type** |nvarchar(50)   |İşin ne zaman yürütüleceğini gösteren değer:'Bir kez', 'Dakika', 'Saat', 'Gün', 'Haftalar', 'Aylar'
+|**schedule_interval_count**|   int|    İşin her yürütülmesi arasında meydana gelecek schedule_interval_type süre sayısı.|
+|**schedule_start_time**    |datetime2(7)|  İşin en son yürütünmeye başlandığı tarih ve saat.|
+|**schedule_end_time**| datetime2(7)|   İşin en son yürütülmesinin tamamlandığı tarih ve saat.|
 
 
-### <a name="job_versions-view"></a>job_versions görünümü
+### <a name="job_versions-view"></a><a name="job_versions-view"></a>job_versions görünüm
 
-[işler]. [job_versions]
+[işleri]. [job_versions]
 
 Tüm iş sürümlerini gösterir.
 
-|sütun adı|   Veri türü|  Açıklama|
+|Sütun adı|   Veri türü|  Açıklama|
 |------|------|-------|
-|**job_name**|  nvarchar (128)   |İşin adı.|
-|**job_id**|    uniqueidentifier    |İşin benzersiz KIMLIĞI.|
-|**job_version**    |int    |İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).|
+|**Job_name**|  nvarchar(128)   |İşin adı.|
+|**Job_id**|    uniqueidentifier    |İşin benzersiz kimliği.|
+|**job_version**    |int    |İşin sürümü (iş her değiştirildiğinde otomatik olarak güncelleştirilir).|
 
 
-### <a name="jobsteps-view"></a>JobSteps görünümü
+### <a name="jobsteps-view"></a>iş adımları görünümü
 
-[işler]. [JobSteps]
+[işleri]. [iş adımları]
 
-Her bir işin geçerli sürümündeki tüm adımları gösterir.
+Her işin geçerli sürümündeki tüm adımları gösterir.
 
-|sütun adı    |Veri türü| Açıklama|
+|Sütun adı    |Veri türü| Açıklama|
 |------|------|-------|
-|**job_name**   |nvarchar (128)| İşin adı.|
-|**job_id** |uniqueidentifier   |İşin benzersiz KIMLIĞI.|
-|**job_version**|   int|    İşin sürümü (iş her değiştirililişinde otomatik olarak güncelleştirilir).|
-|**step_id**    |int    |Adım için benzersiz (Bu iş için) tanımlayıcı.|
-|**step_name**  |nvarchar (128)  |Adımın benzersiz (Bu iş için) adı.|
-|**command_type**   |nvarchar (50)   |İş adımında yürütülecek komutun türü. V1 için, değer ' TSql ' değerine eşit ve varsayılan değer olarak ayarlanmalıdır.|
-|**command_source** |nvarchar (50)|  Komutun konumu. V1 için, ' Inline ' varsayılan ve yalnızca kabul edilen değerdir.|
-|**komutundaki**|   nvarchar(max)|  Command_type aracılığıyla elastik işler tarafından yürütülecek komutlar.|
-|**credential_name**|   nvarchar (128)   |İşi yürütmek için kullanılan veritabanı kapsamlı kimlik bilgisinin adı.|
-|**target_group_name**| nvarchar (128)   |Hedef grubun adı.|
-|**target_group_id**|   uniqueidentifier|   Hedef grubun benzersiz KIMLIĞI.|
+|**Job_name**   |nvarchar(128)| İşin adı.|
+|**Job_id** |uniqueidentifier   |İşin benzersiz kimliği.|
+|**job_version**|   int|    İşin sürümü (iş her değiştirildiğinde otomatik olarak güncelleştirilir).|
+|**step_id**    |int    |Adım için benzersiz (bu iş için) tanımlayıcı.|
+|**step_name**  |nvarchar(128)  |Adım için benzersiz (bu iş için) adı.|
+|**command_type**   |nvarchar(50)   |İş adımında yürütülecek komut türü. v1 için değer 'TSql'e eşit ve varsayılan olmalıdır.|
+|**command_source** |nvarchar(50)|  Komutanlığın yeri. v1 için 'Satır Çizgisi' varsayılan ve yalnızca kabul edilen değerdir.|
+|**Komut**|   nvarchar(maks)|  Elastik işler tarafından command_type yoluyla yürütülecek komutlar.|
+|**credential_name**|   nvarchar(128)   |İşi yürütmek için kullanılan veritabanı kapsamı kimlik bilgisinin adı.|
+|**target_group_name**| nvarchar(128)   |Hedef grubun adı.|
+|**target_group_id**|   uniqueidentifier|   Hedef grubun benzersiz kimliği.|
 |**initial_retry_interval_seconds**|    int |İlk yeniden deneme denemesinden önceki gecikme. Varsayılan değer 1'dir.|
-|**maximum_retry_interval_seconds** |int|   Yeniden deneme girişimleri arasındaki gecikme üst sınırı. Denemeler arasındaki gecikme bu değerden daha büyük büyürken, bunun yerine bu değere eşit hale gelir. Varsayılan değer 120 ' dir.|
-|**retry_interval_backoff_multiplier**  |real|  Birden çok iş adımı yürütme denemesi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Varsayılan değer 2,0 ' dir.|
-|**retry_attempts** |int|   Bu adım başarısız olursa, kullanılacak yeniden deneme sayısı. Varsayılan değer 10 ' dur. Bu, yeniden deneme girişimi olmadığını gösterir.|
-|**step_timeout_seconds**   |int|   Yeniden deneme girişimleri arasındaki dakika cinsinden süre. Varsayılan değer 0 dakikalık bir aralığı gösteren 0 ' dır.|
-|**output_type**    |nvarchar (11)|  Komutun konumu. Geçerli önizlemede, ' Inline ' varsayılan ve yalnızca kabul edilen değerdir.|
-|**output_credential_name**|    nvarchar (128)   |Sonuç kümesini depolamak üzere hedef sunucuya bağlanmak için kullanılacak kimlik bilgilerinin adı.|
-|**output_subscription_id**|    uniqueidentifier|   Sorgu yürütmeden sonuçlar kümesi için hedef server\database aboneliğinin benzersiz KIMLIĞI.|
-|**output_resource_group_name** |nvarchar (128)| Hedef sunucunun bulunduğu kaynak grubu adı.|
-|**output_server_name**|    nvarchar (256)   |Sonuç kümesi için hedef sunucunun adı.|
-|**output_database_name**   |nvarchar (128)| Sonuç kümesi için hedef veritabanının adı.|
-|**output_schema_name** |nvarchar(max)| Hedef şemanın adı. Belirtilmezse, varsayılan olarak dbo olur.|
-|**output_table_name**| nvarchar(max)|  Sorgu sonuçlarından sonuçları kümesinin depolayabileceği tablonun adı. Tablo, zaten mevcut değilse, sonuçlar kümesi şemasına göre otomatik olarak oluşturulur. Şemanın sonuçlar kümesi şemasıyla eşleşmesi gerekir.|
-|**max_parallelism**|   int|    İş adımının her seferinde çalışacağı, esnek havuz başına en fazla veritabanı sayısı. Varsayılan değer NULL, yani hiçbir sınır yoktur. |
+|**maximum_retry_interval_seconds** |int|   Yeniden deneme girişimleri arasındaki maksimum gecikme. Yeniden denemeler arasındaki gecikme bu değerden daha büyük büyüyecekse, bunun yerine bu değere kapaklanır. Varsayılan değer 120'dir.|
+|**retry_interval_backoff_multiplier**  |gerçek|  Birden çok iş adımı yürütme girişimi başarısız olursa yeniden deneme gecikmesine uygulanacak çarpan. Varsayılan değer 2.0'dır.|
+|**retry_attempts** |int|   Bu adım başarısız olursa yeniden deneme denemelerinin sayısı. Varsayılan 10, hiçbir yeniden deneme girişimi gösterir.|
+|**step_timeout_seconds**   |int|   Yeniden deneme denemeleri arasındaki dakika dakika daki süre. Varsayılan değer 0 dakikalık bir aralığı gösteren 0'dır.|
+|**output_type**    |nvarchar(11)|  Komutanlığın yeri. Geçerli önizlemede, 'Satır İçi' varsayılan ve yalnızca kabul edilen değerdir.|
+|**output_credential_name**|    nvarchar(128)   |Sonuçları kümesini depolamak için hedef sunucuya bağlanmak için kullanılacak kimlik bilgilerinin adı.|
+|**output_subscription_id**|    uniqueidentifier|   Sorgu yürütmebelirlenen sonuçlar için hedef sunucu\veritabanı aboneliği benzersiz kimliği.|
+|**output_resource_group_name** |nvarchar(128)| Hedef sunucunun bulunduğu kaynak grubu adı.|
+|**output_server_name**|    nvarchar(256)   |Sonuçlar kümesi için hedef sunucunun adı.|
+|**output_database_name**   |nvarchar(128)| Sonuç kümesi için hedef veritabanının adı.|
+|**output_schema_name** |nvarchar(maks)| Hedef şema adı. Belirtilmemişse varsayılan olarak dbo'ya göre belirlenir.|
+|**output_table_name**| nvarchar(maks)|  Sorgu sonuçlarından ayarlanan sonuçları depolamak için tablonun adı. Tablo, zaten yoksa, belirlenen sonuçların şemasına göre otomatik olarak oluşturulur. Şema, belirlenen sonuçların şemasıyla eşleşmelidir.|
+|**max_parallelism**|   int|    İş adımının aynı anda çalıştırılacak elastik havuz başına en fazla veritabanları sayısı. Varsayılan, sınır olmadığı anlamına gelen NULL'dur. |
 
 
-### <a name="jobstep_versions-view"></a>jobstep_versions görünümü
+### <a name="jobstep_versions-view"></a><a name="jobstep_versions-view"></a>jobstep_versions görünümü
 
-[işler]. [jobstep_versions]
+[işleri]. [jobstep_versions]
 
-Her bir işin tüm sürümlerindeki tüm adımları gösterir. Şema, [JobSteps](#jobsteps-view)ile aynıdır.
+Her işin tüm sürümlerindeki tüm adımları gösterir. Şema [iş adımlarının aynısa.](#jobsteps-view)
 
-### <a name="target_groups-view"></a>target_groups görünümü
+### <a name="target_groups-view"></a><a name="target_groups-view"></a>target_groups görünümü
 
-[işler]. [target_groups]
+[işleri]. [target_groups]
 
-Tüm hedef gruplarını listeler.
+Tüm hedef grupları listeler.
 
-|sütun adı|Veri türü| Açıklama|
+|Sütun adı|Veri türü| Açıklama|
 |-----|-----|-----|
-|**target_group_name**| nvarchar (128)   |Hedef grubun adı, veritabanı koleksiyonu. 
-|**target_group_id**    |uniqueidentifier   |Hedef grubun benzersiz KIMLIĞI.
+|**target_group_name**| nvarchar(128)   |Hedef grubun adı, veritabanları koleksiyonu. 
+|**target_group_id**    |uniqueidentifier   |Hedef grubun benzersiz kimliği.
 
-### <a name="target_group_members-view"></a>target_group_members görünümü
+### <a name="target_group_members-view"></a><a name="target_group_members-view"></a>target_group_members görünümü
 
-[işler]. [target_group_members]
+[işleri]. [target_group_members]
 
 Tüm hedef grupların tüm üyelerini gösterir.
 
-|sütun adı|Veri türü| Açıklama|
+|Sütun adı|Veri türü| Açıklama|
 |-----|-----|-----|
-|**target_group_name**  |nvarchar (128|Hedef grubun adı, veritabanı koleksiyonu. |
-|**target_group_id**    |uniqueidentifier   |Hedef grubun benzersiz KIMLIĞI.|
-|**membership_type**    |int|   Hedef grup üyesinin hedef gruba dahil edilip edilmediğini belirtir. Target_group_name için geçerli değerler ' Include ' veya ' exclude '.|
-|**target_type**    |nvarchar (128)| Bir sunucudaki tüm veritabanları, bir elastik havuzdaki veya bir veritabanındaki tüm veritabanları dahil hedef veritabanı veya veritabanı koleksiyonu türü. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ', ' SqlDatabase ' veya ' SqlShardMap '.|
-|**target_id**  |uniqueidentifier|  Hedef grubu üyesinin benzersiz KIMLIĞI.|
-|**refresh_credential_name**    |nvarchar (128)  |Hedef grup üyesine bağlanmak için kullanılan veritabanı kapsamlı kimlik bilgisinin adı.|
-|**subscription_id**    |uniqueidentifier|  Aboneliğin benzersiz KIMLIĞI.|
-|**resource_group_name**    |nvarchar (128)| Hedef grup üyesinin bulunduğu kaynak grubunun adı.|
-|**server_name**    |nvarchar (128)  |Hedef grupta bulunan SQL veritabanı sunucusunun adı. Yalnızca target_type ' SqlServer ' ise belirtilir. |
-|**database_name**  |nvarchar (128)  |Hedef grupta bulunan veritabanının adı. Yalnızca target_type ' SqlDatabase ' olduğunda belirtilir.|
-|**elastic_pool_name**  |nvarchar (128)| Hedef grupta bulunan elastik havuzun adı. Yalnızca target_type ' Sqtalakpool ' olduğunda belirtilir.|
-|**shard_map_name** |nvarchar (128)| Hedef grupta bulunan parça eşlemesinin adı. Yalnızca target_type ' SqlShardMap ' olduğunda belirtilir.|
+|**target_group_name**  |nvarchar(128|Hedef grubun adı, veritabanları koleksiyonu. |
+|**target_group_id**    |uniqueidentifier   |Hedef grubun benzersiz kimliği.|
+|**membership_type**    |int|   Hedef grup üyesinin hedef gruba dahil edilip edilemeyişveya dışlandığını belirtir. target_group_name için geçerli değerler 'Dahil Et' veya 'Hariç Tut' değeridir.|
+|**target_type**    |nvarchar(128)| Bir sunucudaki tüm veritabanları, Elastik havuzdaki tüm veritabanları veya veritabanı dahil olmak üzere hedef veritabanı veya veritabanları koleksiyonu türü. target_type için geçerli değerler 'SqlServer', 'SqlElasticPool', 'SqlDatabase'veya 'SqlShardMap'tir.|
+|**target_id**  |uniqueidentifier|  Hedef grup üyesinin benzersiz kimliği.|
+|**refresh_credential_name**    |nvarchar(128)  |Hedef grup üyesine bağlanmak için kullanılan veritabanı kapsamı kimlik bilgisinin adı.|
+|**subscription_id**    |uniqueidentifier|  Aboneliğin benzersiz kimliği.|
+|**resource_group_name**    |nvarchar(128)| Hedef grup üyesinin bulunduğu kaynak grubunun adı.|
+|**Server_name**    |nvarchar(128)  |Hedef grupta bulunan SQL Veritabanı sunucusunun adı. Yalnızca target_type 'SqlServer' ise belirtilir. |
+|**Veritabanı_adı**  |nvarchar(128)  |Hedef grupta bulunan veritabanının adı. Yalnızca target_type 'SqlDatabase' olduğunda belirtilir.|
+|**elastic_pool_name**  |nvarchar(128)| Hedef grupta bulunan Elastik havuzun adı. Yalnızca target_type 'SqlElasticPool' olduğunda belirtilir.|
+|**shard_map_name** |nvarchar(128)| Hedef grupta bulunan parça haritanın adı. Yalnızca target_type 'SqlShardMap' olduğunda belirtilir.|
 
 
 ## <a name="resources"></a>Kaynaklar
 
- - ![Konu bağlantı simgesi](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Konu bağlantı simgesi") [Transact-SQL sözdizimi kuralları](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![Konu bağlantısı simgesi](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Konu bağlantısı simgesi") [Transact-SQL Sözdizimi Kuralları](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PowerShell’i kullanarak Elastik İşler oluşturma ve yönetme](elastic-jobs-powershell.md)
-- [Yetkilendirme ve Izinler SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
+- [PowerShell'i kullanarak Elastik İşler oluşturma ve yönetme](elastic-jobs-powershell.md)
+- [Yetkilendirme ve İzinler SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

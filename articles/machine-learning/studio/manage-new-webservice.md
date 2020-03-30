@@ -1,7 +1,7 @@
 ---
 title: Web hizmetlerini yönetme
 titleSuffix: ML Studio (classic) - Azure
-description: Machine Learning yeni ve klasik Web hizmetlerinizi Microsoft Azure Machine Learning Web Hizmetleri portalını kullanarak yönetin. Klasik Web Hizmetleri ve yeni Web Hizmetleri, farklı temel teknolojileri temel alarak, bunların her biri için biraz farklı yönetim yeteneğiniz vardır.
+description: Microsoft Azure Machine Learning Web Hizmetleri portalını kullanarak Machine Learning New ve Classic Web hizmetlerinizi yönetin. Klasik Web hizmetleri ve Yeni Web hizmetleri farklı temel teknolojilere dayandığından, her biri için biraz farklı yönetim yeteneklerine sahipsiniz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,149 +11,149 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: 2277aa3de5955efe5a3e4cb938fa557352f89006
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217969"
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme
+# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri portalını kullanarak bir web hizmetini yönetme
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Machine Learning yeni ve klasik Web hizmetlerinizi Microsoft Azure Machine Learning Web Hizmetleri portalını kullanarak yönetebilirsiniz. Klasik Web Hizmetleri ve yeni Web Hizmetleri, farklı temel teknolojileri temel alarak, bunların her biri için biraz farklı yönetim yeteneğiniz vardır.
+Microsoft Azure Machine Learning Web Hizmetleri portalını kullanarak Machine Learning New ve Classic Web hizmetlerinizi yönetebilirsiniz. Klasik Web hizmetleri ve Yeni Web hizmetleri farklı temel teknolojilere dayandığından, her biri için biraz farklı yönetim yeteneklerine sahipsiniz.
 
-Machine Learning Web Hizmetleri portalında şunları yapabilirsiniz:
+Machine Learning Web Services portalında şunları yapabilirsiniz:
 
 * Web hizmetinin nasıl kullanıldığını izleyin.
-* Açıklamayı yapılandırın, Web hizmeti anahtarlarını güncelleştirin (yalnızca yeni), depolama hesabı anahtarınızı güncelleştirin (yalnızca yeni), günlüğü etkinleştirin ve örnek verileri etkinleştirin veya devre dışı bırakın.
+* Açıklamayı yapılandırın, web hizmetinin anahtarlarını güncelleştirin (yalnızca Yeni), depolama hesabı anahtarınızı güncelleştirin (yalnızca Yeni), günlüğe kaydetmeyi etkinleştirin ve örnek verileri etkinleştirin veya devre dışı kalacaksınız.
 * Web hizmetini silin.
-* Faturalandırma planları oluşturma, silme veya güncelleştirme (yalnızca yeni).
-* Uç nokta ekleme ve silme (yalnızca klasik)
+* Faturalandırma planlarını oluşturun, silin veya güncelleştirin (yalnızca Yeni).
+* Uç noktaları ekleme ve silme (Yalnızca Klasik)
 
 >[!NOTE]
->Klasik Web hizmetlerini **Web Hizmetleri** sekmesinde [Machine Learning Studio (klasik)](https://studio.azureml.net) içinde de yönetebilirsiniz.
+>Ayrıca, **Web hizmetleri** sekmesinde [Machine Learning Studio'da (klasik)](https://studio.azureml.net) Klasik web hizmetlerini yönetebilirsiniz.
 
-## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Yeni Kaynak Yöneticisi tabanlı Web hizmetlerini yönetme izinleri
+## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Yeni Kaynaklar Yöneticisi tabanlı web hizmetlerini yönetme izinleri
 
-Yeni Web Hizmetleri Azure kaynakları olarak dağıtılır. Bu nedenle, yeni Web hizmetlerini dağıtmak ve yönetmek için doğru izinlere sahip olmanız gerekir.  Yeni Web hizmetlerini dağıtmak veya yönetmek için, Web hizmetinin dağıtıldığı abonelikte bir katkıda bulunan veya yönetici rolü atanması gerekir. Bir Machine Learning çalışma alanına başka bir kullanıcı davet ederseniz, Web hizmetlerini dağıtabilmeleri veya yönetebilmeniz için bunları abonelikte bir katkıda bulunan veya yönetici rolüne atamanız gerekir. 
+Yeni web hizmetleri Azure kaynakları olarak dağıtılır. Bu nedenle, Yeni web hizmetlerini dağıtmak ve yönetmek için doğru izinlere sahip olmalısınız.  Yeni web hizmetlerini dağıtmak veya yönetmek için, web hizmetinin dağıtıldığı abonelikte bir katılımcı veya yönetici rolü atanması gerekir. Başka bir kullanıcıyı makine öğrenimi çalışma alanına davet ederseniz, web hizmetlerini dağıtmadan veya yönetebilmeleri için önce onları abonelikteki bir katılımcı veya yönetici rolüne atamanız gerekir. 
 
-Kullanıcı, Azure Machine Learning Web Hizmetleri portalındaki kaynaklara erişmek için doğru izinlere sahip değilse, bir Web hizmetini dağıtmaya çalışırken şu hatayı alırlar:
+Kullanıcı, Azure Machine Learning Web Hizmetleri portalındaki kaynaklara erişmek için doğru izinlere sahip değilse, bir web hizmeti dağıtmaya çalışırken aşağıdaki hatayı alır:
 
-*Web hizmeti dağıtımı başarısız oldu. Bu hesabın, çalışma alanını içeren Azure aboneliğine yeterli erişimi yok. Bir Web hizmetini Azure 'a dağıtmak için, aynı hesabın çalışma alanına davet edilmesi ve çalışma alanını içeren Azure aboneliğine erişim verilmesi gerekir.*
+*Web Hizmeti dağıtımı başarısız oldu. Bu hesap, Çalışma Alanı'nı içeren Azure aboneliğine yeterli erişime sahip değildir. Bir Web Hizmetini Azure'a dağıtmak için, aynı hesabın Çalışma Alanına davet edilmesi ve Çalışma Alanı'nı içeren Azure aboneliğine erişim izni verilmesi gerekir.*
 
-Çalışma alanı oluşturma hakkında daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) çalışma alanı oluşturma ve paylaşma](create-workspace.md).
+Çalışma alanı oluşturma hakkında daha fazla bilgi için azure [machine learning studio (klasik) çalışma alanı oluştur ve paylaş'](create-workspace.md)a bakın.
 
-Erişim izinlerini ayarlama hakkında daha fazla bilgi için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Erişim izinleri ayarlama hakkında daha fazla bilgi için Bkz. [RBAC ve Azure portalını kullanarak erişimi yönet.](../../role-based-access-control/role-assignments-portal.md)
 
 
 ## <a name="manage-new-web-services"></a>Yeni Web hizmetlerini yönetme
 Yeni Web hizmetlerinizi yönetmek için:
 
-1. Microsoft Azure hesabınızı kullanarak [Microsoft Azure Machine Learning Web Hizmetleri](https://services.azureml.net/quickstart) portalında oturum açın-Azure aboneliğiyle ilişkili hesabı kullanın.
-2. Menüsünde, **Web Hizmetleri**' ne tıklayın.
+1. Microsoft Azure hesabınızı kullanarak [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart) portalında oturum açın - Azure aboneliğiyle ilişkili hesabı kullanın.
+2. Menüde Web **Hizmetleri'ni**tıklatın.
 
-Bu, aboneliğiniz için dağıtılan Web hizmetlerinin bir listesini görüntüler. 
+Bu, aboneliğiniz için dağıtılan Web hizmetlerinin listesini görüntüler. 
 
-Bir Web hizmetini yönetmek için Web Hizmetleri ' ne tıklayın. Web Hizmetleri sayfasından şunları yapabilirsiniz:
+Bir Web hizmetini yönetmek için Web Hizmetleri'ni tıklatın. Web Hizmetleri sayfasından şunları yapabilirsiniz:
 
-* Yönetmek için Web hizmetine tıklayın.
-* Web hizmeti 'nin güncelleştirilmesi için faturalandırma planına tıklayın.
-* Bir Web hizmetini silin.
-* Bir Web hizmetini kopyalayın ve başka bir bölgeye dağıtın.
+* Yönetmek için web hizmetini tıklatın.
+* Güncelleştirmek için web hizmetiiçin FaturaLandırma Planı'nı tıklatın.
+* Bir web hizmetini silin.
+* Bir web hizmetini kopyalayın ve başka bir bölgeye dağıtın.
 
-Bir Web hizmetine tıkladığınızda, Web hizmeti hızlı başlangıç sayfası açılır. Web hizmeti hızlı başlangıç sayfasında, Web hizmetinizi yönetmenizi sağlayan iki menü seçeneği vardır:
+Bir web hizmetini tıklattığınızda, web hizmeti Quickstart sayfası açılır. Web hizmeti Quickstart sayfasında web hizmetinizi yönetmenize olanak tanıyan iki menü seçeneği vardır:
 
-* **Pano** -Web hizmeti kullanımını görüntülemenize izin verir.
-* **Yapılandırma** -açıklayıcı metin eklemenize, Web hizmetiyle ilişkili depolama hesabının anahtarını güncelleştirmenize ve örnek verileri etkinleştirip devre dışı bırakmanıza olanak tanır.
+* **PANO** - Web hizmeti kullanımını görüntülemenizi sağlar.
+* **CONFIGURE** - Açıklayıcı metin eklemenize, Web hizmetiyle ilişkili depolama hesabının anahtarını güncelleştirmenize ve örnek verileri etkinleştirmenize veya devre dışı bıraktığınızda izin verir.
 
 ### <a name="monitoring-how-the-web-service-is-being-used"></a>Web hizmetinin nasıl kullanıldığını izleme
-**Pano** sekmesine tıklayın.
+**PANO** sekmesini tıklatın.
 
-Panodan, Web hizmetinizin genel kullanımını bir süre içinde görüntüleyebilirsiniz. Kullanım grafiklerinin sağ üst köşesindeki dönem açılan menüsünden görüntülenecek dönemi seçebilirsiniz. Panoda aşağıdaki bilgiler gösterilmektedir:
+Panodan, web hizmetinizin genel kullanımını belirli bir süre içinde görüntüleyebilirsiniz. Kullanım grafiklerinin sağ üst kısmındaki Dönem açılır menüsünden görüntülenebilen dönemi seçebilirsiniz. Pano aşağıdaki bilgileri gösterir:
 
-* **Zaman Içindeki istekler** , seçilen dönemdeki istek sayısının adım grafiğini görüntüler. Kullanımda ani artışlar yaşadığınızı belirlemenize yardımcı olabilir.
-* **İstek-yanıt istekleri** , hizmetin seçilen süre boyunca aldığı ve kaç tane başarısız olduğu istek yanıtı çağrılarının toplam sayısını görüntüler.
-* **Ortalama istek-yanıt Işlem süresi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
-* **Batch istekleri** , hizmetin seçilen süre boyunca aldığı ve kaç tane başarısız olduğunu gösteren toplu işlem isteklerinin toplam sayısını görüntüler.
-* **Ortalama Iş gecikmesi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
-* **Hatalar** , Web hizmeti çağrılarında oluşan toplam hata sayısını görüntüler.
-* Hizmet **maliyetleri** , hizmetle ilişkili faturalandırma planının ücretini görüntüler.
+* **Zaman Daki İstekler,** seçili zaman dilimindeki istek sayısının adım grafiğini görüntüler. Kullanımda ani artışlar yaşanıp yaşamadığınızı belirlemenize yardımcı olabilir.
+* **İstek-Yanıt İstekleri,** hizmetin seçili zaman dilimi içinde aldığı toplam İstek-Yanıt çağrısı sayısını ve bunların kaçtanesinin başarısız olduğunu görüntüler.
+* **Ortalama İstek-Yanıt İşlem Süresi,** alınan istekleri yürütmek için gereken sürenin ortalamasını görüntüler.
+* **Toplu İşlemler,** hizmetin seçili zaman dilimi içinde aldığı toplam Toplu İşlem sayısını ve bunların kaç tanesinin başarısız olduğunu görüntüler.
+* **Ortalama İş Gecikmesi,** alınan istekleri yürütmek için gereken sürenin ortalamasını görüntüler.
+* **Hatalar,** web hizmetine yapılan aramalarda oluşan toplam hata sayısını görüntüler.
+* **Hizmet Maliyetleri,** hizmetle ilişkili faturalandırma planının ücretlerini görüntüler.
 
 ### <a name="configuring-the-web-service"></a>Web hizmetini yapılandırma
-**Yapılandır** menü seçeneğine tıklayın.
+**CONFIGURE** menüsü seçeneğini tıklatın.
 
 Aşağıdaki özellikleri güncelleştirebilirsiniz:
 
-* **Açıklama** , Web hizmeti için bir açıklama girmenize olanak sağlar.
-* **Başlık** , Web hizmeti için bir başlık girmenizi sağlar
-* **Anahtarlar** , birincil ve ikincil API anahtarlarınızı döndürmenize olanak tanır.
-* **Depolama hesabı anahtarı** , Web hizmeti değişiklikleriyle ilişkili depolama hesabının anahtarını güncelleştirmenize olanak tanır. 
-* **Örnek verileri etkinleştirme** , Istek-yanıt hizmetini test etmek için kullanabileceğiniz örnek veriler sağlamanıza olanak tanır. Web hizmetini Machine Learning Studio (klasik) ' de oluşturduysanız, örnek veriler modelinize eğitebilmeniz için kullandığınız verilerden alınır. Hizmeti programlı olarak oluşturduysanız, veriler JSON paketinin bir parçası olarak verdiğiniz örnek verilerden alınır.
+* **Açıklama,** Web hizmeti için bir açıklama girmenize olanak tanır.
+* **Başlık,** Web hizmeti için bir başlık girmenizi sağlar
+* **Tuşlar** birincil ve ikincil API tuşlarınızı döndürmenizi sağlar.
+* **Depolama hesabı anahtarı,** Web hizmeti değişiklikleriyle ilişkili depolama hesabının anahtarını güncelleştirmenize olanak tanır. 
+* **Örnek verileri etkinleştir,** İstek-Yanıt hizmetini sınamak için kullanabileceğiniz örnek verileri sağlamanıza olanak tanır. Machine Learning Studio'da (klasik) web hizmetini oluşturduysanız, örnek veriler modelinizi eğitmek için kullandığınız verilerden alınır. Hizmeti programlı bir şekilde oluşturduysanız, veriler JSON paketinin bir parçası olarak sağladığınız örnek verilerden alınır.
 
 ### <a name="managing-billing-plans"></a>Faturalandırma planlarını yönetme
-Web hizmetleri hızlı başlangıç sayfasından **planlar** menü seçeneğine tıklayın. Ayrıca, bu planı yönetmek için belirli bir Web hizmetiyle ilişkili plana tıklayabilirsiniz.
+Web hizmetleri Quickstart sayfasından **Planlar** menüsü seçeneğini tıklatın. Ayrıca, bu planı yönetmek için belirli Web hizmetiyle ilişkili planı da tıklatabilirsiniz.
 
-* **Yeni** bir plan oluşturmanıza olanak sağlar.
-* **Plan örneği Ekle/Kaldır** , kapasite eklemek için var olan bir planı "ölçeklendirmenizi" sağlar.
-* **Yükseltme/düşürme** , kapasite eklemek için var olan bir planı "ölçeklendirmenizi" sağlar.
-* **Silme** , bir planı silmenizi sağlar.
+* **Yeni** yeni bir plan oluşturmanıza olanak sağlar.
+* **Plan Ekle/Kaldır örneği,** kapasite eklemek için varolan bir planı "ölçeklendirmenize" olanak tanır.
+* **Yükseltme/Düşürme,** kapasite eklemek için varolan bir planı "ölçeklendirmenize" olanak tanır.
+* **Silme,** bir planı silmenizi sağlar.
 
-Panosunu görüntülemek için bir plana tıklayın. Pano, seçilen bir süre boyunca anlık görüntü veya plan kullanımı sağlar. Görüntülenecek zaman aralığını seçmek için panonun sağ üst köşesindeki **nokta** açılan listesine tıklayın. 
+Panosunu görüntülemek için bir planı tıklatın. Pano, belirli bir süre boyunca anlık görüntü veya plan kullanımı sağlar. Görüntülenebilmek için süreyi seçmek için, panonun sağ üst kısmındaki **Dönem** açılır görünümünü tıklatın. 
 
-Plan Panosu aşağıdaki bilgileri sağlar:
+Plan panosu aşağıdaki bilgileri sağlar:
 
-* **Plan açıklaması** , planla ilişkili maliyetler ve kapasite hakkındaki bilgileri görüntüler.
-* **Plan kullanımı** , plana göre ücretlendirilen işlem ve işlem saatleri sayısını görüntüler.
-* **Web Hizmetleri** , bu planı kullanan Web hizmetlerinin sayısını görüntüler.
-* **Çağrılardan En Iyi Web hizmeti** , plana göre ücretlendirilen çağrı yapan en popüler dört Web hizmetini görüntüler.
-* **Işlem saat başına En Iyi Web Hizmetleri** , plana göre ücretlendirilen işlem kaynaklarını kullanan en popüler dört Web hizmetini görüntüler.
+* **Plan Açıklaması,** planla ilişkili maliyetler ve kapasite yle ilgili bilgileri görüntüler.
+* **Plan Kullanımı,** plana karşı ücretlendirilen hareket ve işlem saatlerinin sayısını görüntüler.
+* **Web Hizmetleri,** bu planı kullanan Web hizmetlerinin sayısını görüntüler.
+* **Aramalara Göre En İyi Web Hizmeti,** plana karşı ücretlendirilen çağrılar yapan en iyi dört Web hizmetini görüntüler.
+* **Compute Hrs tarafından En İyi Web Hizmetleri,** plana karşı ücretlendirilen işlem kaynaklarını kullanan en iyi dört Web hizmetlerini görüntüler.
 
-## <a name="manage-classic-web-services"></a>Klasik Web hizmetlerini yönetme
+## <a name="manage-classic-web-services"></a>Klasik Web Hizmetlerini Yönetin
 > [!NOTE]
-> Bu bölümdeki yordamlar, Azure Machine Learning Web Hizmetleri Portalı aracılığıyla klasik Web hizmetlerini yönetmeyle ilgilidir. Klasik Web hizmetlerini Machine Learning Studio (klasik) ve Azure portal aracılığıyla yönetme hakkında bilgi için bkz. [Azure Machine Learning Studio (klasik) çalışma alanını yönetme](manage-workspace.md).
+> Bu bölümdeki yordamlar, Azure Machine Learning Web Services portalı üzerinden Klasik web hizmetlerinin yönetilmesiyle ilgilidir. Machine Learning Studio (klasik) ve Azure portalı üzerinden Klasik Web hizmetlerini yönetme hakkında daha fazla bilgi için [bkz.](manage-workspace.md)
 > 
 > 
 
 Klasik Web hizmetlerinizi yönetmek için:
 
-1. Microsoft Azure hesabınızı kullanarak [Microsoft Azure Machine Learning Web Hizmetleri](https://services.azureml.net/quickstart) portalında oturum açın-Azure aboneliğiyle ilişkili hesabı kullanın.
-2. Menüde **Klasik Web Hizmetleri**' ne tıklayın.
+1. Microsoft Azure hesabınızı kullanarak [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart) portalında oturum açın - Azure aboneliğiyle ilişkili hesabı kullanın.
+2. Menüde Klasik **Web Hizmetleri'ni**tıklatın.
 
-Klasik bir Web hizmetini yönetmek için **Klasik Web Hizmetleri**' ne tıklayın. Klasik Web Hizmetleri sayfasından şunları yapabilirsiniz:
+Klasik Web Hizmeti'ni yönetmek için **Klasik Web Hizmetleri'ni**tıklatın. Klasik Web Hizmetleri sayfasından şunları yapabilirsiniz:
 
-* İlişkili uç noktaları görüntülemek için Web hizmetine tıklayın.
-* Bir Web hizmetini silin.
+* İlişkili uç noktaları görüntülemek için web hizmetini tıklatın.
+* Bir web hizmetini silin.
 
-Klasik bir Web hizmetini yönetirken, uç noktaların her birini ayrı ayrı yönetirsiniz. Web Hizmetleri sayfasında bir Web hizmetine tıkladığınızda, hizmetle ilişkili uç noktaların listesi açılır. 
+Klasik Web hizmetini yönettiğinizde, uç noktaların her birini ayrı ayrı yönetirsiniz. Web Hizmetleri sayfasında bir web hizmetini tıklattığınızda, hizmetle ilişkili uç noktaların listesi açılır. 
 
-Klasik Web hizmeti uç noktası sayfasında, hizmette uç noktalar ekleyip silebilirsiniz. Uç nokta ekleme hakkında daha fazla bilgi için bkz. [uç nokta oluşturma](create-endpoint.md).
+Klasik Web Hizmeti bitiş noktası sayfasında, hizmete uç noktaları ekleyebilir ve silebilirsiniz. Uç noktaları ekleme hakkında daha fazla bilgi için [bkz.](create-endpoint.md)
 
-Web hizmeti hızlı başlangıç sayfasını açmak için uç noktalardan birine tıklayın. Hızlı Başlangıç sayfasında, Web hizmetinizi yönetmenizi sağlayan iki menü seçeneği vardır:
+Web hizmeti Quickstart sayfasını açmak için uç noktalardan birini tıklatın. Quickstart sayfasında, web hizmetinizi yönetmenize olanak tanıyan iki menü seçeneği vardır:
 
-* **Pano** -Web hizmeti kullanımını görüntülemenize izin verir.
-* **Yapılandırma** -açıklayıcı metin eklemenize, hata oturum açma ve kapatma yapmanıza, Web hizmetiyle ilişkili depolama hesabının anahtarını güncelleştirmenize ve örnek verileri etkinleştirip devre dışı bırakmanıza olanak tanır.
+* **PANO** - Web hizmeti kullanımını görüntülemenizi sağlar.
+* **CONFIGURE** - Açıklayıcı metin eklemenize, hata günlüğe kaydetmeyi açmanızı, Web hizmetiyle ilişkili depolama hesabının anahtarını güncelleştirmenizi ve örnek verileri etkinleştirmenizi ve devre dışı etmenizi sağlar.
 
 ### <a name="monitoring-how-the-web-service-is-being-used"></a>Web hizmetinin nasıl kullanıldığını izleme
-**Pano** sekmesine tıklayın.
+**PANO** sekmesini tıklatın.
 
-Panodan, Web hizmetinizin genel kullanımını bir süre içinde görüntüleyebilirsiniz. Kullanım grafiklerinin sağ üst köşesindeki dönem açılan menüsünden görüntülenecek dönemi seçebilirsiniz. Panoda aşağıdaki bilgiler gösterilmektedir:
+Panodan, web hizmetinizin genel kullanımını belirli bir süre içinde görüntüleyebilirsiniz. Kullanım grafiklerinin sağ üst kısmındaki Dönem açılır menüsünden görüntülenebilen dönemi seçebilirsiniz. Pano aşağıdaki bilgileri gösterir:
 
-* **Zaman Içindeki istekler** , seçilen dönemdeki istek sayısının adım grafiğini görüntüler. Kullanımda ani artışlar yaşadığınızı belirlemenize yardımcı olabilir.
-* **İstek-yanıt istekleri** , hizmetin seçilen süre boyunca aldığı ve kaç tane başarısız olduğu istek yanıtı çağrılarının toplam sayısını görüntüler.
-* **Ortalama istek-yanıt Işlem süresi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
-* **Batch istekleri** , hizmetin seçilen süre boyunca aldığı ve kaç tane başarısız olduğunu gösteren toplu işlem isteklerinin toplam sayısını görüntüler.
-* **Ortalama Iş gecikmesi** , alınan isteklerin yürütülmesi için gereken sürenin ortalamasını görüntüler.
-* **Hatalar** , Web hizmeti çağrılarında oluşan toplam hata sayısını görüntüler.
-* Hizmet **maliyetleri** , hizmetle ilişkili faturalandırma planının ücretini görüntüler.
+* **Zaman Daki İstekler,** seçili zaman dilimindeki istek sayısının adım grafiğini görüntüler. Kullanımda ani artışlar yaşanıp yaşamadığınızı belirlemenize yardımcı olabilir.
+* **İstek-Yanıt İstekleri,** hizmetin seçili zaman dilimi içinde aldığı toplam İstek-Yanıt çağrısı sayısını ve bunların kaçtanesinin başarısız olduğunu görüntüler.
+* **Ortalama İstek-Yanıt İşlem Süresi,** alınan istekleri yürütmek için gereken sürenin ortalamasını görüntüler.
+* **Toplu İşlemler,** hizmetin seçili zaman dilimi içinde aldığı toplam Toplu İşlem sayısını ve bunların kaç tanesinin başarısız olduğunu görüntüler.
+* **Ortalama İş Gecikmesi,** alınan istekleri yürütmek için gereken sürenin ortalamasını görüntüler.
+* **Hatalar,** web hizmetine yapılan aramalarda oluşan toplam hata sayısını görüntüler.
+* **Hizmet Maliyetleri,** hizmetle ilişkili faturalandırma planının ücretlerini görüntüler.
 
 ### <a name="configuring-the-web-service"></a>Web hizmetini yapılandırma
-**Yapılandır** menü seçeneğine tıklayın.
+**CONFIGURE** menüsü seçeneğini tıklatın.
 
 Aşağıdaki özellikleri güncelleştirebilirsiniz:
 
-* **Açıklama** , Web hizmeti için bir açıklama girmenize olanak sağlar. Açıklama gerekli bir alandır.
-* **Günlüğe kaydetme** , uç noktada hata günlüğü etkinleştirmenizi veya devre dışı bırakmanızı sağlar. Günlüğe kaydetme hakkında daha fazla bilgi için bkz. [Machine Learning Web Hizmetleri için günlüğü](web-services-logging.md)etkinleştirme.
-* **Örnek verileri etkinleştirme** , Istek-yanıt hizmetini test etmek için kullanabileceğiniz örnek veriler sağlamanıza olanak tanır. Web hizmetini Machine Learning Studio (klasik) ' de oluşturduysanız, örnek veriler modelinize eğitebilmeniz için kullandığınız verilerden alınır. Hizmeti programlı olarak oluşturduysanız, veriler JSON paketinin bir parçası olarak verdiğiniz örnek verilerden alınır.
+* **Açıklama,** Web hizmeti için bir açıklama girmenize olanak tanır. Açıklama gerekli bir alandır.
+* **Günlüğe kaydetme,** bitiş noktasında hata günlüğe kaydetmeyi etkinleştirmenize veya devre dışı betmenizi sağlar. Günlük İşlemi hakkında daha [logging for Machine Learning web services](web-services-logging.md)fazla bilgi için bkz.
+* **Örnek verileri etkinleştir,** İstek-Yanıt hizmetini sınamak için kullanabileceğiniz örnek verileri sağlamanıza olanak tanır. Machine Learning Studio'da (klasik) web hizmetini oluşturduysanız, örnek veriler modelinizi eğitmek için kullandığınız verilerden alınır. Hizmeti programlı bir şekilde oluşturduysanız, veriler JSON paketinin bir parçası olarak sağladığınız örnek verilerden alınır.
 
 

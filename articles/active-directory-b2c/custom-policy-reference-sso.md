@@ -1,7 +1,7 @@
 ---
-title: Özel ilkeler kullanarak çoklu oturum açma oturumu yönetimi
+title: Özel ilkeler kullanarak tek oturum oturumu yönetimi
 titleSuffix: Azure AD B2C
-description: Azure AD B2C özel ilkeleri kullanarak SSO oturumlarını yönetmeyi öğrenin.
+description: Azure AD B2C'de özel ilkeleri kullanarak SSO oturumlarını nasıl yönetiştize edin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,48 +12,48 @@ ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246038"
 ---
-# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
+# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de tek oturum yönetimi
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) içindeki çoklu oturum açma (SSO) oturum yönetimi, kullanıcının kimliği doğrulandıktan sonra bir kullanıcının Kullanıcı ile etkileşimini denetlemesine olanak sağlar. Örneğin, yönetici, kimlik sağlayıcılarının seçiminin görüntülenip görüntülenmediğini veya yerel hesap ayrıntılarının yeniden girilmesi gerekip gerekmediğini denetleyebilir. Bu makalede Azure AD B2C için SSO ayarlarının nasıl yapılandırılacağı açıklanır.
+Azure Active Directory B2C'de (Azure AD B2C) tek oturum (SSO) oturum yönetimi, bir yöneticinin kullanıcının kimliğini doğruladıktan sonra kullanıcıyla etkileşimi denetlemesini sağlar. Örneğin, yönetici kimlik sağlayıcı seçiminin görüntülenip görüntülenmediğini veya yerel hesap ayrıntılarının yeniden girilmesi gerekip gerekmediğini denetleyebilir. Bu makalede, Azure AD B2C için SSO ayarlarının nasıl yapılandırılabildiğini açıklanmaktadır.
 
-SSO oturum yönetiminin iki bölümü vardır. İlk olarak, kullanıcının etkileşimiyle doğrudan Azure AD B2C ve diğeri de Facebook gibi dış taraflarla ilgili etkileşimlerle ilgili etkileşimlerle ilgilidir. Azure AD B2C dış taraflar tarafından tutulabilecek SSO oturumlarını geçersiz kılmaz veya atlamaz. Dış tarafa ulaşmak için Azure AD B2C üzerinden yol "hatırlanır", bunun yerine kullanıcıdan sosyal veya kurumsal kimlik sağlayıcısını seçmesini yeniden sorma gereksinimini ortadan kaldırmaktan kaçının. Son SSO kararı dış tarafla birlikte kalır.
+SSO oturum yönetimi iki bölümden oluşmaktadır. İlk olarak, kullanıcının doğrudan Azure AD B2C ile etkileşimi ve diğer işlemler de kullanıcının Facebook gibi harici taraflarla etkileşimiyle ilgilidir. Azure AD B2C, harici taraflarca tutulabilecek SSO oturumlarını geçersiz kılmaz veya atlamaz. Dış tarafa ulaşmak için Azure AD B2C üzerinden giden yol "hatırlanmak"tır ve kullanıcıyı sosyal veya kurumsal kimlik sağlayıcısını seçmesi için yeniden harekete geçirme gereksinimini önler. Nihai SSO kararı dış partide kalacak.
 
-SSO oturum yönetimi, özel ilkelerdeki diğer teknik profille aynı semantiğini kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil bir `UseTechnicalProfileForSessionManagement` başvurusu için sorgulanır. Varsa, başvurulan SSO oturum sağlayıcısı, kullanıcının bir oturum katılımcısı olup olmadığını görmek için denetlenir. Öyleyse, oturum yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir düzenleme adımının yürütülmesi tamamlandığında, bir SSO oturum sağlayıcısı belirtilmişse, oturum bilgilerini oturumdaki depolamak için sağlayıcı kullanılır.
+SSO oturum yönetimi, özel ilkelerdeki diğer teknik profillerle aynı semantikleri kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil `UseTechnicalProfileForSessionManagement` başvuru için sorgulanır. Varsa, başvurulan SSO oturum sağlayıcısı kullanıcının oturum katılımcısı olup olmadığını görmek için denetlenir. Bu nedenle, Oturumu yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir yürütme adımının yürütülmesi tamamlandığında, sağlayıcı bir SSO oturum sağlayıcısı belirtilmişse bilgileri oturumda depolamak için kullanılır.
 
-Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
+Azure AD B2C, kullanılabilecek bir dizi SSO oturum sağlayıcısı tanımlamıştır:
 
-* NoopSSOSessionProvider
-* DefaultSSOSessionProvider
-* ExternalLoginSSOSessionProvider
-* SamlSSOSessionProvider
+* NoopSSOSessionSağlayıcı
+* VarsayılanSSOSessionSağlayıcı
+* HariciLoginSSOSessionSağlayıcı
+* SamlSSOSessionSağlayıcı
 
-SSO yönetim sınıfları, bir teknik profilin `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` öğesi kullanılarak belirtilir.
+SSO yönetim sınıfları `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` teknik profil öğesi kullanılarak belirtilir.
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-`InputClaims` öğesi boş veya yok.
+Öğe `InputClaims` boş veya yok.
 
 ## <a name="persisted-claims"></a>Kalıcı talepler
 
-Uygulamanın geri döndürülmesi veya sonraki adımlarda ön koşullar tarafından kullanılması gereken talepler, oturum üzerinde depolanması veya dizindeki Kullanıcı profilinden bir okuma ile genişletilmiş olmalıdır. Kalıcı talepler kullanmak, kimlik doğrulamanın, eksik taleplerde başarısız olmasına neden olur. Oturumdaki talepleri eklemek için teknik profilin `<PersistedClaims>` öğesini kullanın. Sağlayıcı oturumu yeniden doldurmak için kullanıldığında, kalıcı talepler talep çantasına eklenir.
+Uygulamaya döndürülmesi veya sonraki adımlarda ön koşullartarafından kullanılması gereken talepler, oturumda depolanmalıdır veya kullanıcının dizindeki profilinden okunarak artırılmalıdır. Kalıcı talepleri kullanmak, kimlik doğrulama yolculuklarınızın eksik taleplerde başarısız olmamasını sağlar. Oturuma talep eklemek için `<PersistedClaims>` teknik profil öğesini kullanın. Sağlayıcı oturumu yeniden doldurmak için kullanıldığında, kalıcı talepler talep çantasına eklenir.
 
-## <a name="output-claims"></a>Çıkış talepleri
+## <a name="output-claims"></a>Çıktı talepleri
 
-`<OutputClaims>`, oturumdan talepleri almak için kullanılır.
+Oturumdan `<OutputClaims>` talepleri almak için kullanılır.
 
 ## <a name="session-providers"></a>Oturum sağlayıcıları
 
-### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
+### <a name="noopssosessionprovider"></a>NoopSSOSessionSağlayıcı
 
-Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik profilde SSO davranışını gizleme için kullanılabilir. Aşağıdaki `SM-Noop` teknik profili [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
+Adından da belirtildiği gibi, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik profil için SSO davranışını bastırmak için kullanılabilir. Aşağıdaki `SM-Noop` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
 ```XML
 <TechnicalProfile Id="SM-Noop">
@@ -62,9 +62,9 @@ Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik pro
 </TechnicalProfile>
 ```
 
-### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
+### <a name="defaultssosessionprovider"></a>VarsayılanSSOSessionSağlayıcı
 
-Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağlayıcıya genellikle yerel hesapları yönetmek için kullanılan bir teknik profilde başvurulur. Aşağıdaki `SM-AAD` teknik profili [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
+Bu sağlayıcı, talepleri oturumda depolamak için kullanılabilir. Bu sağlayıcı genellikle yerel hesapları yönetmek için kullanılan teknik bir profilde başvurur. Aşağıdaki `SM-AAD` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -84,7 +84,7 @@ Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağ
 </TechnicalProfile>
 ```
 
-Aşağıdaki `SM-MFA` teknik profili [özel ilke başlangıç paketi](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`eklenmiştir. Bu teknik profil, Multi-Factor Authentication oturumunu yönetir.
+Aşağıdaki `SM-MFA` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`dahildir. Bu teknik profil, çok faktörlü kimlik doğrulama oturumunu yönetir.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -99,9 +99,9 @@ Aşağıdaki `SM-MFA` teknik profili [özel ilke başlangıç paketi](custom-pol
 </TechnicalProfile>
 ```
 
-### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
+### <a name="externalloginssosessionprovider"></a>HariciLoginSSOSessionSağlayıcı
 
-Bu sağlayıcı, "kimlik sağlayıcısını Seç" ekranının görüntülenmesini sağlamak için kullanılır. Genellikle Facebook gibi bir dış kimlik sağlayıcısı için yapılandırılmış teknik bir profilde başvurulur. Aşağıdaki `SM-SocialLogin` teknik profili [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
+Bu sağlayıcı, "kimlik sağlayıcı seç" ekranını bastırmak için kullanılır. Genellikle Facebook gibi harici bir kimlik sağlayıcısı için yapılandırılan teknik bir profilde başvurulur. Aşağıdaki `SM-SocialLogin` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
@@ -120,11 +120,11 @@ Bu sağlayıcı, "kimlik sağlayıcısını Seç" ekranının görüntülenmesin
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Hayır | Şu anda kullanılmıyor olabilir. |
+| AlwaysFetchClaimsFromSağlayıcı | Hayır | Şu anda kullanılmayan, yoksayılabilir. |
 
-### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
+### <a name="samlssosessionprovider"></a>SamlSSOSessionSağlayıcı
 
-Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, `RegisterServiceProviders` `false`olarak ayarlanmalıdır. Aşağıdaki `SM-Saml-idp` teknik profili [SAML teknik profili](saml-technical-profile.md)tarafından kullanılır.
+Bu sağlayıcı, güvenilen bir taraf uygulaması veya federe bir SAML kimlik sağlayıcısı arasındaki Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO `RegisterServiceProviders` sağlayıcısını `false`kullanırken, '' Aşağıdaki `SM-Saml-idp` teknik profil [SAML teknik profili](saml-technical-profile.md)tarafından kullanılır.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -136,9 +136,9 @@ Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlay�
 </TechnicalProfile>
 ```
 
-B2C SAML oturumunu depolamak için sağlayıcıyı kullanırken, `RegisterServiceProviders` `true`olarak ayarlanmalıdır. SAML oturumu kapatma `SessionIndex` ve `NameID` tamamlanmasını gerektiriyor.
+B2C SAML oturumunu depolamak için sağlayıcı `RegisterServiceProviders` kullanırken, 'ye `true`ayarlanmalıdır. SAML oturum oturumu `SessionIndex` oturumu `NameID` gerektirir ve tamamlamak için.
 
-Aşağıdaki `SM-Saml-idp` teknik profili [SAML verenin teknik profili](saml-issuer-technical-profile.md) tarafından kullanılır
+Aşağıdaki `SM-Saml-idp` teknik profil [SAML veren teknik profili](saml-issuer-technical-profile.md) tarafından kullanılır
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">
@@ -150,8 +150,8 @@ Aşağıdaki `SM-Saml-idp` teknik profili [SAML verenin teknik profili](saml-iss
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| Includesessionındex | Hayır | Şu anda kullanılmıyor olabilir.|
-| RegisterServiceProviders | Hayır | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false`.|
+| IncludeSessionIndex | Hayır | Şu anda kullanılmayan, yoksayılabilir.|
+| RegisterServiceProviders | Hayır | Sağlayıcının, bir iddia verilmiş tüm SAML hizmet sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false`.|
 
 
 

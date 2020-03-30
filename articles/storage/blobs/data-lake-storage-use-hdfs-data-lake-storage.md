@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage 2. ile
-description: Data Lake Storage 2. için
+title: Azure Veri Gölü Depolama Gen2 ile HDFS CLI'yi kullanma
+description: Veri Gölü Depolama Gen2 için HDFS CLI Giriş
 services: storage
 author: normesta
 ms.service: storage
@@ -10,26 +10,26 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
 ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992212"
 ---
-# <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage 2. ile
+# <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Veri Gölü Depolama Gen2 ile HDFS CLI kullanma
 
-Bir [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi bir komut satırı arabirimi kullanarak Depolama hesabınızdaki verilere erişebilir ve bunları yönetebilirsiniz. Bu makalede, başlamanıza yardımcı olacak bazı örnekler sağlanmaktadır.
+[Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile olduğu gibi bir komut satırı arabirimi kullanarak depolama hesabınızdaki verilere erişebilir ve yönetebilirsiniz. Bu makalede, başlamak yardımcı olacak bazı örnekler sağlar.
 
-HDInsight, işlem düğümlerine yerel olarak bağlı olan dağıtılmış kapsayıcıya erişim sağlar. Bu kapsayıcıya, Hadoop 'un desteklediği diğer dosya sistemleriyle doğrudan etkileşim kuran kabuğu kullanarak erişebilirsiniz.
+HDInsight, bilgi işlem düğümlerine yerel olarak bağlı olan dağıtılmış kapsayıcıya erişim sağlar. Bu kapsayıcıya HDFS ve Hadoop'un desteklediği diğer dosya sistemleriyle doğrudan etkileşimde olan kabuğu nu kullanarak erişebilirsiniz.
 
-GUCLı hakkında daha fazla bilgi için bkz. [resmi belgeler](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) ve bu Ayrıntılar [Kılavuzu](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+HDFS CLI hakkında daha fazla bilgi için [resmi belgelere](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) ve [HDFS İzinleri Kılavuzu'na](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html) bakın
 
 >[!NOTE]
->HDInsight yerine Azure Databricks kullanıyorsanız ve bir komut satırı arabirimi kullanarak verilerinizle etkileşim kurmak istiyorsanız, databricks CLı dosya sistemiyle etkileşim kurmak için Databricks CLı 'yi kullanabilirsiniz. Bkz. [Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+>HDInsight yerine Azure Databricks kullanıyorsanız ve bir komut satırı arabirimi kullanarak verilerinizle etkileşimkurmak istiyorsanız, Databricks CLI'yi Kullanarak Databricks dosya sistemiyle etkileşimkurabilirsiniz. Bkz. [Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
 
-## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Linux 'ta bir HDInsight Hadoop kümesi ile bir HDInsight Hadoop kümesi kullanma
+## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>HDFS CLI'yi Linux üzerinde HDInsight Hadoop kümesiyle kullanın
 
-İlk olarak, [hizmetlere uzaktan erişim](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services)oluşturun. [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) 'yi seçerseniz örnek PowerShell kodu aşağıdaki gibi görünür:
+İlk olarak, [hizmetlere uzaktan erişim](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services)kurmak. [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) seçerseniz örnek PowerShell kodu aşağıdaki gibi görünür:
 
 ```powershell
 #Connect to the cluster via SSH.
@@ -39,24 +39,24 @@ hdfs dfs -ls /
 #Create a sample directory.
 hdfs dfs -mkdir /samplefolder
 ```
-Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Cluster LOGIN" bölümünde bulunabilir. Küme oluşturma sırasında SSH kimlik bilgileri belirtildi.
+Bağlantı dizesi, Azure portalındaki HDInsight küme bıçağının "SSH + Cluster giriş" bölümünde bulunabilir. Küme oluşturma sırasında SSH kimlik bilgileri belirtilmiştir.
 
 >[!IMPORTANT]
->HDInsight kümesi faturalandırma bir küme oluşturulduktan sonra başlar ve küme silindiğinde duraklar. Fatura dakikalara eşit olarak dağıtıldığından, kullanılmayan kümelerinizi mutlaka silmelisiniz. Bir kümeyi silmeyi öğrenmek için [konusundaki makalemize](../../hdinsight/hdinsight-delete-cluster.md)bakın. Ancak, Data Lake Storage 2. etkinleştirilmiş bir depolama hesabında depolanan veriler, HDInsight kümesi silindikten sonra bile devam ediyor.
+>HDInsight küme faturalandırması bir küme oluşturulduktan sonra başlar ve küme silindiğinde durur. Fatura dakikalara eşit olarak dağıtıldığından, kullanılmayan kümelerinizi mutlaka silmelisiniz. Bir kümeyi nasıl sildiğinizi öğrenmek için [konuyla ilgili makalemize](../../hdinsight/hdinsight-delete-cluster.md)bakın. Ancak, Bir HDInsight kümesi silindikten sonra bile Veri Gölü Depolama Gen2 etkin leştirilmiş bir depolama hesabında depolanan veriler devam eder.
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
     hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-* Yer tutucusunu `<container-name>` , kapsayıcınıza vermek istediğiniz adla değiştirin.
+* Yer `<container-name>` tutucuyu kabınıza vermek istediğiniz adla değiştirin.
 
-* `<storage-account-name>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
+* Yer `<storage-account-name>` tutucuyu depolama hesabınızın adı ile değiştirin.
 
-## <a name="get-a-list-of-files-or-directories"></a>Dosya veya dizinlerin listesini al
+## <a name="get-a-list-of-files-or-directories"></a>Dosyaların veya dizinlerin listesini alma
 
     hdfs dfs -ls <path>
 
-`<path>` Yer tutucuyu kapsayıcının veya kapsayıcı klasörünün URI 'siyle değiştirin.
+Yer `<path>` tutucuyu konteyner veya kapsayıcı klasörünün URI'si ile değiştirin.
 
 Örneğin, `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
@@ -64,19 +64,19 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
     hdfs dfs -mkdir [-p] <path>
 
-`<path>` Yer tutucusunu kök kapsayıcı adı veya Kapsayıcınız içindeki bir klasör ile değiştirin.
+Yer `<path>` tutucuyu kök kapsayıcı adı veya kapsayıcınızdaki bir klasörle değiştirin.
 
 Örneğin, `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
-## <a name="delete-a-file-or-directory"></a>Dosya veya dizini silme
+## <a name="delete-a-file-or-directory"></a>Dosya veya dizin silme
 
     hdfs dfs -rm <path>
 
-Yer tutucusunu `<path>` , silmek istediğiniz dosya veya klasörün URI 'siyle değiştirin.
+Yer `<path>` tutucuyu, silmek istediğiniz dosya veya klasörün URI'si ile değiştirin.
 
 Örneğin, `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
-## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Dosyaların ve dizinlerin Access Control listelerini (ACL 'Ler) görüntüleme
+## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Dosyaların ve dizinlerin Erişim Denetim Listelerini (ALISANS'ları) görüntüleme
 
     hdfs dfs -getfacl [-R] <path>
 
@@ -86,7 +86,7 @@ Yer tutucusunu `<path>` , silmek istediğiniz dosya veya klasörün URI 'siyle d
 
 Bkz. [getfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#getfacl)
 
-## <a name="set-acls-of-files-and-directories"></a>Dosya ve dizinlerin ACL 'Lerini ayarla
+## <a name="set-acls-of-files-and-directories"></a>Dosyaların ve dizinlerin ADA'larını ayarlama
 
     hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
 
@@ -106,7 +106,7 @@ Bkz. [chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-co
 
     hdfs dfs -chgrp [-R] <group> <URI>
 
-Bkz. [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
+bkz. [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
 ## <a name="change-the-permissions-of-files"></a>Dosyaların izinlerini değiştirme
 
@@ -114,10 +114,10 @@ Bkz. [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-co
 
 Bkz. [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)
 
-Komutların tüm listesini [Apache Hadoop 2.4.1 dosya sistemi kabuğu Kılavuzu](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) Web sitesinde görüntüleyebilirsiniz.
+[Apache Hadoop 2.4.1 Dosya Sistemi Kabuk Kılavuzu](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) Web Sitesindeki komutların tam listesini görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Databricks Azure Data Lake Storage 2. özellikli bir hesap kullanın](./data-lake-storage-quickstart-create-databricks-account.md)
+* [Azure Veri Tuğlaları'nda Azure Veri Gölü Depolama Gen2 özellikli bir hesap kullanın](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [Dosya ve dizinlerdeki erişim denetim listeleri hakkında bilgi edinin](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [Dosyalar ve dizinler üzerindeki erişim denetim listeleri hakkında bilgi edinin](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)

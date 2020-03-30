@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory koşul etkinliği
-description: If koşulu etkinliği, işleme akışını bir koşula göre denetlemenizi sağlar.
+title: Azure Veri Fabrikası'nda Koşul etkinliği
+description: If Durumu etkinliği, bir koşula göre işlem akışını denetlemenize olanak tanır.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444145"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238691"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory koşul etkinliği
+# <a name="if-condition-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Koşul etkinliği
 If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği sağlar. Koşul `true` sonucunu verdiğinde bir dizi etkinliği, `false` sonucu verdiğinde ise başka bir dizi etkinliği değerlendirmeye alır. 
 
 ## <a name="syntax"></a>Sözdizimi
@@ -63,21 +63,21 @@ If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | İzin verilen değerler | Gereklidir
+Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | If-Condition etkinliğinin adı. | Dize | Evet
-type | **Ifcondition** olarak ayarlanmalıdır | Dize | Evet
-expression | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Evet
-ifTrueActivities | İfade `true`olarak değerlendirildiğinde yürütülen etkinlik kümesi. | Dizi | Evet
-Ifyanlışa etkinlikleri | İfade `false`olarak değerlendirildiğinde yürütülen etkinlik kümesi. | Dizi | Evet
+ad | If-koşul etkinliğinin adı. | Dize | Evet
+type | **IfCondition** olarak ayarlanmalıdır | Dize | Evet
+ifade | Doğru veya yanlışı değerlendirmesi gereken ifade | Sonuç türü boolean ile ifade | Evet
+ifTrueActivities | İfade değerlendirilmesinde yürütülen etkinlikler `true`kümesi. | Dizi | Evet
+ifFalseActivities | İfade değerlendirilmesinde yürütülen etkinlikler `false`kümesi. | Dizi | Evet
 
 ## <a name="example"></a>Örnek
-Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasörüne kopyalar. Çıkış klasörü, işlem hattı parametresinin değeri tarafından belirlenir: routeSelection. RouteSelection değeri true ise, veriler outputPath1 ' e kopyalanır. Ve eğer routeSelection değeri false ise, veriler outputPath2 ' e kopyalanır. 
+Bu örnekteki ardışık işlem, verileri bir giriş klasöründen çıktı klasörüne kopyalar. Çıktı klasörü, boru hattı parametresi değerine göre belirlenir: routeSelection. rotaSeçimi değeri doğruysa, veriler outputPath1'e kopyalanır. Ve, rotaSeçimi değeri yanlışsa, veriler outputPath2'ye kopyalanır. 
 
 > [!NOTE]
-> Bu bölüm, işlem hattını çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak Data Factory işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
+> Bu bölümde, ardışık hattı çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak bir Veri Fabrikası ardışık hattı oluşturmak için adım adım yönergeleri içeren bir yol [için, bkz.](quickstart-create-data-factory-powershell.md)
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>If-Condition etkinliği ile işlem hattı (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>IF-Condition etkinliği olan boru hattı (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -178,17 +178,17 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 }
 ```
 
-İfade için başka bir örnek şunlardır: 
+İfade için başka bir örnek: 
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Depolama bağlantılı hizmet (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -202,8 +202,8 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset. JSON)
-İşlem hattı **FolderPath** değerini, Işlem hattının **OutputPath1** ya da **outputPath2** parametresinin değerine ayarlar. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure Blob veri seti (BlobDataset.json)
+Ardışık etki, **folderPath'i,** ardışık yolun **outputPath1** veya **outputPath2** parametresinin değerine ayarlar. 
 
 ```json
 {
@@ -229,7 +229,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Boru hattı parametresi JSON (PipelineParameters.json)
 
 ```json
 {
@@ -244,7 +244,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu komutlar JSON dosyalarını klasörüne kaydettiğiniz varsayılmaktadır: C:\ADF. 
+Bu komutlar, JSON dosyalarını klasöre kaydettiğinizi varsayar: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -286,10 +286,10 @@ $result.Error -join "`r`n"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
+Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
 
-- [İşlem Hattı Yürütme Etkinliği](control-flow-execute-pipeline-activity.md)
-- [Her etkinlik için](control-flow-for-each-activity.md)
+- [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
+- [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
 - [Arama Etkinliği](control-flow-lookup-activity.md)
-- [Web etkinliği](control-flow-web-activity.md)
+- [Web Etkinliği](control-flow-web-activity.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Paylaşılan görüntü Galerisi
-description: Kuruluşunuz genelinde VM görüntülerini paylaşmak için paylaşılan görüntü galerilerini nasıl kullanacağınızı öğrenin.
+title: Azure Paylaşılan Resim Galerisi
+description: VM görüntülerini kuruluşunuz genelinde paylaşmak için paylaşılan resim galerilerini nasıl kullanacağınızı öğrenin.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: axayjo
@@ -17,13 +17,13 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 839ef8d32e9a84005dc47ad90b957bb780090589
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065623"
 ---
-# <a name="shared-image-gallery-overview"></a>Paylaşılan görüntü galerisine genel bakış
+# <a name="shared-image-gallery-overview"></a>Paylaşılan Resim Galerisi'ne genel bakış
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
@@ -31,4 +31,4 @@ ms.locfileid: "74065623"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure PowerShell kullanarak paylaşılan görüntüleri dağıtmayı](shared-images.md)öğrenin.
+[Azure PowerShell'i kullanarak paylaşılan görüntüleri nasıl dağıtılayarak](shared-images.md)dağıtılamayı öğrenin.

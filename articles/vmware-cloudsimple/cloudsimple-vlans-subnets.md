@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümlerinde VLAN 'Lar ve alt ağlar (AVS)
-description: AVS özel bulutu 'nda VLAN 'Lar ve alt ağlar hakkında bilgi edinin
+title: CloudSimple tarafından Azure VMware Solution'daki V'ler ve alt ağlar
+description: CloudSimple Private Cloud'da V'n'ler ve alt ağlar hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,78 +8,78 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d0ce15c782ae70e16f55a28ec8c4b70f3b080f54
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024900"
 ---
-# <a name="vlans-and-subnets-overview"></a>VLAN 'Lara ve alt ağlara genel bakış
+# <a name="vlans-and-subnets-overview"></a>VUN'lara ve alt ağlara genel bakış
 
-AVS, AVS hizmetinizin dağıtıldığı bölge başına bir ağ sağlar. Ağ, yönlendirme özelliği varsayılan olarak etkin olan tek bir TCP katman 3 adres alanıdır. Bu bölgede oluşturulan tüm AVS özel bulutları ve alt ağları ek bir yapılandırma olmadan birbirleriyle iletişim kurabilir. VLAN 'Lar kullanarak vCenter üzerinde dağıtılmış bağlantı noktası grupları oluşturabilirsiniz.
+CloudSimple, CloudSimple hizmetinizin dağıtıldığı bölge başına bir ağ sağlar.  Ağ, varsayılan olarak etkin olan tek bir TCP Katmanı 3 adres alanıdır.  Bu bölgede oluşturulan tüm Özel Bulutlar ve alt ağlar, ek yapılandırma olmadan birbirleriyle iletişim kurabilir.  VLAN'ları kullanarak vCenter'da dağıtılmış bağlantı noktası grupları oluşturabilirsiniz.
 
-![AVS ağ topolojisi](media/cloudsimple-network-topology.png)
+![CloudSimple Ağ Topolojisi](media/cloudsimple-network-topology.png)
 
-## <a name="vlans"></a>VLAN
+## <a name="vlans"></a>Vlan
 
-Her bir AVS özel bulutu için bir VLAN (katman 2 ağ) oluşturulur. Katman 2 trafiği, AVS özel bulutunun sınırları içinde kalır ve bu da AVS özel bulutundaki yerel trafiği yalıtmanıza olanak sağlar. AVS özel bulutu üzerinde oluşturulan bir VLAN, yalnızca o AVS özel bulutunda dağıtılmış bağlantı noktası grupları oluşturmak için kullanılabilir. AVS özel bulutu üzerinde oluşturulan bir VLAN, bir AVS özel bulutunun konaklarına bağlı tüm anahtarlarda otomatik olarak yapılandırılır.
+Her Özel Bulut için bir VLAN (Katman 2 ağı) oluşturulur.  Katman 2 trafiği, Özel Bulut'un sınırları içinde kalır ve Özel Bulut içindeki yerel trafiği yalıtmanızı sağlar.  Özel Bulut'ta oluşturulan bir VLAN, yalnızca o Özel Bulut'ta dağıtılmış bağlantı noktası grupları oluşturmak için kullanılabilir.  Özel Bulut'ta oluşturulan bir VLAN, Özel Bulut'un ana bilgisayarlarına bağlı tüm anahtarlar üzerinde otomatik olarak yapılandırılır.
 
 ## <a name="subnets"></a>Alt ağlar
 
-Alt ağın adres alanını tanımlayarak bir VLAN oluşturduğunuzda bir alt ağ oluşturabilirsiniz. Adres alanından bir IP adresi, alt ağ geçidi olarak atanır. Her müşteri ve bölge için tek bir özel katman 3 adres alanı atanır. Ağ bölgenizde, şirket içi ağınız veya Azure sanal ağınız ile herhangi bir RFC 1918 çakışmayan adres alanı yapılandırabilirsiniz.
+Alt netin adres alanını tanımlayarak bir VLAN oluşturduğunuzda bir alt ağ oluşturabilirsiniz. Adres alanından bir IP adresi alt ağ geçidi olarak atanır. Müşteri ve bölge başına tek bir özel Katman 3 adres alanı atanır. RFC 1918 örtüşmeyen adres alanını, şirket içi ağınızla veya Azure sanal ağınızla ağ bölgenizde yapılandırabilirsiniz.
 
-Tüm alt ağlar varsayılan olarak birbirleriyle iletişim kurabilir ve AVS özel bulutları arasında yönlendirme için yapılandırma yükünü azaltır. Aynı bölgedeki bilgisayarlar arasında Doğu Batı verileri aynı katman 3 ağında kalır ve bölge içindeki yerel ağ altyapısına aktarır. Bir bölgedeki AVS özel bulutları arasındaki iletişim için çıkış gerekmez. Bu yaklaşım, farklı AVS özel bulutlarında farklı iş yüklerini dağıtmanın tüm WAN/çıkış performans cezalarını ortadan kaldırır.
+Tüm alt ağlar varsayılan olarak birbirleriyle iletişim kurarak Özel Bulutlar arasında yönlendirme için yapılandırma ek yükü azaltılabilir. Aynı bölgedeki bilgisayarlar arasında doğu-batı verileri aynı Katman 3 ağında kalır ve bölge içindeki yerel ağ altyapısı üzerinden aktarılabiliyor. Bir bölgedeki Özel Bulutlar arasındaki iletişim için çıkış gerekmez. Bu yaklaşım, farklı Özel Bulutlar'da farklı iş yüklerini dağıtmada herhangi bir WAN/çıkış performans cezasını ortadan kaldırır.
 
-## <a name="vspherevsan-subnets-cidr-range"></a>vSphere/vSAN alt ağları CıDR aralığı
+## <a name="vspherevsan-subnets-cidr-range"></a>vSphere/vSAN alt ağları CIDR aralığı
 
-Bir AVS özel bulutu, bir vCenter sunucusu tarafından yönetilen yalıtılmış bir VMware Stack (ESXi Konakları, vCenter, vSAN ve NSX) ortamı olarak oluşturulur. Yönetim bileşenleri, vSphere/vSAN alt ağları CıDR için seçilen ağda dağıtılır. Ağ CıDR aralığı, dağıtım sırasında farklı alt ağlara bölünmüştür.
+Özel Bulut, vCenter sunucusu tarafından yönetilen yalıtılmış bir VMware yığını (ESXi ana bilgisayarları, vCenter, vSAN ve NSX) ortamı olarak oluşturulur.  Yönetim bileşenleri vSphere/vSAN alt ağları CIDR için seçilen ağda dağıtılır.  Ağ CIDR aralığı dağıtım sırasında farklı alt ağlara ayrılmıştır.
 
-* Minimum vSphere/vSAN alt ağları CıDR aralığı ön eki: **/24**
-* Maksimum vSphere/vSAN alt ağları CıDR aralığı ön eki: **/21**
+* Minimum vSphere/vSAN alt ağları CIDR aralığı öneki: **/24**
+* Maksimum vSphere/vSAN alt ağları CIDR aralığı öneki: **/21**
 
-> [!IMPORTANT]
-> VSphere/vSAN CıDR aralığındaki IP adresleri, AVS özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır. Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.
+> [!CAUTION]
+> vSphere/vSAN CIDR serisindeki IP adresleri Özel Bulut altyapısı tarafından kullanılmak üzere ayrılmıştır.  Bu aralıktaki IP adresini herhangi bir sanal makinede kullanmayın.
 
-### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN alt ağları CıDR Aralık sınırları
+### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN alt ağları CIDR aralığı limitleri
 
-VSphere/vSAN alt ağlarının CıDR Aralık boyutunun seçilmesi, AVS özel bulutunuzun boyutunu etkiler. Aşağıdaki tabloda, vSphere/vSAN alt ağlarının CıDR boyutunu temel alan en fazla düğüm sayısı gösterilmektedir.
+vSphere/vSAN alt ağlarıCIDR aralığı boyutunun seçilmesi Özel Bulut'unuzun boyutu üzerinde etkilidir.  Aşağıdaki tabloda vSphere/vSAN alt ağları CIDR boyutuna göre sahip olabileceğiniz maksimum düğüm sayısı gösterilmektedir.
 
-| Belirtilen vSphere/vSAN alt ağları CıDR ön eki uzunluğu | En fazla düğüm sayısı |
+| Belirtilen vSphere/vSAN alt ağları CIDR öneki uzunluğu | Maksimum düğüm sayısı |
 |---------------------------------------------------|-------------------------|
 | /24 | 26 |
 | /23 | 58 |
 | /22 | 118 |
 | /21 | 220 |
 
-### <a name="management-subnets-created-on-an-avs-private-cloud"></a>Bir AVS özel bulutu 'nda oluşturulan yönetim alt ağları
+### <a name="management-subnets-created-on-a-private-cloud"></a>Özel Bulut'ta oluşturulan yönetim alt ağları
 
-Aşağıdaki yönetim alt ağları, bir AVS özel bulutu oluşturduğunuzda oluşturulur.
+Özel Bulut oluşturduğunuzda aşağıdaki yönetim alt ağları oluşturulur.
 
-* **Sistem yönetimi**. ESXi ' Management Network, DNS Server, vCenter Server konakları için VLAN ve subnet.
-* **VMotion**. ESXi konakları için VLAN ve subnet, ' vMotion Network.
-* **VSAN**. ESXi konakları için VLAN ve subnet ' vSAN ağı.
-* **NsxtEdgeUplink1**. Bir dış ağa VLAN bağlantıları için VLAN ve subnet.
-* **NsxtEdgeUplink2**. Bir dış ağa VLAN bağlantıları için VLAN ve subnet.
-* **Nsxtedgetransport**. Taşıma bölgeleri için VLAN ve subnet, NSX-T içindeki katman 2 ağlarının erişimini denetler.
-* **Nsxthosttransport**. Konak aktarım bölgesi için VLAN ve subnet.
+* **Sistem yönetimi**. ESXi'nin yönetim ağı, DNS sunucusu, vCenter sunucusu için VLAN ve alt ağı.
+* **VMotion**. ESXi'nin vMotion ağlarını barındıran VLAN ve alt ağı.
+* **VSAN**. ESXi'nin vSAN ağına ev sahipliği yapan VLAN ve subnet.
+* **NsxtEdgeUplink1**. VLAN için VLAN ve alt ağ harici bir ağa uplinks.
+* **NsxtEdgeUplink2**. VLAN için VLAN ve alt ağ harici bir ağa uplinks.
+* **NsxtEdgeTransport**. Taşıma bölgeleri için VLAN ve alt ağ, NSX-T'deki Katman 2 ağlarının erişimini kontrol eder.
+* **NsxtHostTransport**. VLAN ve ana taşıma bölgesi için alt ağ.
 
-### <a name="management-network-cidr-range-breakdown"></a>Yönetim ağı CıDR aralığı dökümü
+### <a name="management-network-cidr-range-breakdown"></a>Yönetim ağı CIDR aralık dökümü
 
-Belirtilen vSphere/vSAN alt ağları CıDR aralığı birden çok alt ağa bölünmüştür. Aşağıdaki tabloda, izin verilen ön ekler için döküm örneği gösterilmektedir. Örnek, CıDR aralığı olarak 192.168.0.0 kullanır.
+vSphere/vSAN subnets CIDR aralığı belirtilen birden fazla alt ağlara ayrılmıştır.  Aşağıdaki tablo, izin verilen önekler için dökümübir örnek gösterir.  Örnek, CIDR aralığı olarak 192.168.0.0 kullanır.
 
 Örnek:
 
-| Belirtilen vSphere/vSAN alt ağları CıDR/ön eki | 192.168.0.0/21 | 192.168.0.0/22 | 192.168.0.0/23 | 192.168.0.0/24 |
+| Belirtilen vSphere/vSAN alt ağları CIDR/öneki | 192.168.0.0/21 | 192.168.0.0/22 | 192.168.0.0/23 | 192.168.0.0/24 |
 |---------------------------------|----------------|----------------|----------------|----------------|
-| Sistem Yönetimi | 192.168.0.0/24 | 192.168.0.0/24 | 192.168.0.0/25 | 192.168.0.0/26 |
+| Sistem yönetimi | 192.168.0.0/24 | 192.168.0.0/24 | 192.168.0.0/25 | 192.168.0.0/26 |
 | vMotion | 192.168.1.0/24 | 192.168.1.0/25 | 192.168.0.128/26 | 192.168.0.64/27 |
 | vSAN | 192.168.2.0/24 | 192.168.1.128/25 | 192.168.0.192/26 | 192.168.0.96/27 |
-| NSX-T ana bilgisayar taşıması | 192.168.4.0/23 | 192.168.2.0/24 | 192.168.1.0/25 | 192.168.0.128/26 |
-| NSX-T Edge taşıması | 192.168.7.208/28 | 192.168.3.208/28 | 192.168.1.208/28 | 192.168.0.208/28 |
-| NSX-T Edge Uplink1 | 192.168.7.224/28 | 192.168.3.224/28 | 192.168.1.224/28 | 192.168.0.224/28 |
-| NSX-T Edge uplink2 | 192.168.7.240/28 | 192.168.3.240/28 | 192.168.1.240/28 | 192.168.0.240/28 |
+| NSX-T Ana Taşıyıcı | 192.168.4.0/23 | 192.168.2.0/24 | 192.168.1.0/25 | 192.168.0.128/26 |
+| NSX-T Kenar Taşıma | 192.168.7.208/28 | 192.168.3.208/28 | 192.168.1.208/28 | 192.168.0.208/28 |
+| NSX-T Kenar Uplink1 | 192.168.7.224/28 | 192.168.3.224/28 | 192.168.1.224/28 | 192.168.0.224/28 |
+| NSX-T Kenar uplink2 | 192.168.7.240/28 | 192.168.3.240/28 | 192.168.1.240/28 | 192.168.0.240/28 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [VLAN 'Ları ve alt ağları oluşturma ve yönetme](create-vlan-subnet.md)
+* [VLAN ve alt ağlar oluşturma ve yönetme](create-vlan-subnet.md)

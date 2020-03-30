@@ -1,84 +1,84 @@
 ---
-title: Dayanıklı İşlevler sürümlere genel bakış-Azure Işlevleri
-description: Dayanıklı İşlevler sürümleri hakkında bilgi edinin.
+title: Dayanıklı Fonksiyonlar sürümlerine genel bakış - Azure Fonksiyonları
+description: Dayanıklı Fonksiyonlar sürümleri hakkında bilgi edinin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152899"
 ---
-# <a name="durable-functions-versions-overview"></a>Dayanıklı İşlevler sürümlere genel bakış
+# <a name="durable-functions-versions-overview"></a>Dayanıklı Fonksiyonlar sürümlerine genel bakış
 
-*Dayanıklı işlevler* , [Azure Işlevleri](../functions-overview.md) ve [Azure Web işleri](../../app-service/web-sites-create-web-jobs.md) 'nin bir uzantısıdır ve bu da sunucusuz bir ortamda durum bilgisi olan işlevler yazmanızı sağlar. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir. Daha önce Dayanıklı İşlevler hakkında bilginiz yoksa [genel bakış belgelerine](durable-functions-overview.md)bakın.
+*Dayanıklı Işlevler,* [Azure İşlevlerinin](../functions-overview.md) ve [Azure Web İşlerinin](../../app-service/web-sites-create-web-jobs.md) bir uzantısıdır ve sunucusuz bir ortamda durum lu işlevler yazmanızı sağlar. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir. Dayanıklı İşlevler'e zaten aşina değilseniz, [genel bakış belgelerine](durable-functions-overview.md)bakın.
 
-## <a name="new-features-in-2x"></a>2\. x içindeki yeni özellikler
+## <a name="new-features-in-2x"></a>2.x yeni özellikler
 
-Bu bölümde, sürüm 2. x ' de eklenen Dayanıklı İşlevler özellikleri açıklanmaktadır.
+Bu bölümde, sürüm 2.x'e eklenen Dayanıklı İşlevler'in özellikleri açıklanmaktadır.
 
 ### <a name="durable-entities"></a>Dayanıklı varlıklar
 
-Dayanıklı İşlevler 2. x ' de yeni bir [varlık işlevleri](durable-functions-entities.md) kavramı sunuyoruz.
+Dayanıklı Fonksiyonlar 2.x'te yeni bir [varlık fonksiyonları](durable-functions-entities.md) kavramını tanıttık.
 
-Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
+Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okuma ve güncelleştirme işlemlerini tanımlar. Orchestrator işlevleri gibi, varlık işlevleri özel bir tetikleyici türü, *varlık tetikleyici*si ile işlevlerdir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli bir kod kısıtlaması yoktur. Varlık işlevleri de açıkça yerine örtülü kontrol akışı yoluyla devlet temsil devlet yönetir.
 
-Daha fazla bilgi için bkz. [dayanıklı varlıklar](durable-functions-entities.md) makalesi.
+Daha fazla bilgi edinmek için [dayanıklı varlıklar](durable-functions-entities.md) makalesine bakın.
 
-### <a name="durable-http"></a>Kalıcı HTTP
+### <a name="durable-http"></a>Dayanıklı HTTP
 
-Dayanıklı İşlevler 2. x ' de şunları yapmanıza olanak sağlayan yeni bir [DAYANıKLı http](durable-functions-http-features.md#consuming-http-apis) özelliği sunuyoruz:
+Dayanıklı Fonksiyonlar 2.x'te, şunları yapmanızı sağlayan yeni bir [Dayanıklı HTTP](durable-functions-http-features.md#consuming-http-apis) özelliği ni kullanıma sunduk:
 
-* HTTP API 'Lerini doğrudan düzenleme işlevlerinden çağırın (bazı belgelenen sınırlamalar ile).
-* Otomatik istemci tarafı HTTP 202 durum yoklamasını uygulayın.
-* [Azure Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)için yerleşik destek.
+* HTTP API'leri doğrudan düzenleme işlevlerinden (bazı belgelenmiş sınırlamalarla) arayın.
+* Otomatik istemci tarafı HTTP 202 durum yoklama uygulayın.
+* [Azure Yönetilen Kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)için yerleşik destek.
 
-Daha fazla bilgi için bkz. [http özellikleri](durable-functions-http-features.md#consuming-http-apis) makalesi.
+Daha fazla bilgi için [HTTP özellikleri](durable-functions-http-features.md#consuming-http-apis) makalesine bakın.
 
-## <a name="migrate-from-1x-to-2x"></a>1\. x 'ten 2. x 'e geçiş
+## <a name="migrate-from-1x-to-2x"></a>1.x'ten 2.x'e geçirin
 
-Bu bölümde, yeni özelliklerden yararlanmak için mevcut sürüm 1. x Dayanıklı İşlevler sürüm 2. x ' e nasıl geçirileceği açıklanmaktadır.
+Bu bölümde, yeni özelliklerden yararlanmak için varolan sürüm 1.x Dayanıklı Fonksiyonlar sürüm 2.x'e nasıl geçirilir açıklanmaktadır.
 
-### <a name="upgrade-the-extension"></a>Uzantıyı yükseltin
+### <a name="upgrade-the-extension"></a>Uzantıyı yükseltme
 
-[Dayanıklı işlevler bağlamaları uzantısının](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) sürüm 2. x ' i projenize yükler. Daha fazla bilgi için bkz. [Azure işlevleri bağlama uzantılarını kaydetme](../functions-bindings-register.md) .
+Projenizdeki [Dayanıklı Fonksiyonlar bağlama uzantısısürüm](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 2.x'i yükleyin. Daha fazla bilgi için [Azure İşlerini kaydedin](../functions-bindings-register.md) uzantılarını kaydedin.
 
-### <a name="update-your-code"></a>Kodunuzu güncelleştirme
+### <a name="update-your-code"></a>Kodunuzu güncelleştirin
 
-Dayanıklı İşlevler 2. x birkaç önemli değişiklik sunar. Dayanıklı İşlevler 1. x uygulamaları, kod değişikliği olmadan Dayanıklı İşlevler 2. x ile uyumlu değildir. Bu bölümde, sürüm 1. x işlevinizi 2. x olarak yükseltirken yapmanız gereken bazı değişiklikler listelenmiştir.
+Dayanıklı Fonksiyonlar 2.x birkaç kırılma değişiklikleri tanır. Dayanıklı Fonksiyonlar 1.x uygulamaları kod değişikliği olmadan Dayanıklı Fonksiyonlar 2.x ile uyumlu değildir. Bu bölümde, sürüm 1.x işlevlerinizi 2.x'e yükseltirken yaptığınız değişikliklerden bazıları listelemektedir.
 
-#### <a name="hostjson-schema"></a>Host. JSON şeması
+#### <a name="hostjson-schema"></a>Host.json şema
 
-Dayanıklı İşlevler 2. x yeni bir Host. JSON şeması kullanır. 1\. x üzerindeki ana değişiklikler şunları içerir:
+Dayanıklı Fonksiyonlar 2.x yeni bir host.json şeması kullanır. 1.x'ten itibaren yapılan ana değişiklikler şunlardır:
 
-* depolamaya özgü yapılandırma için `"storageProvider"` (ve `"azureStorage"` alt bölümü).
-* izleme ve günlüğe kaydetme yapılandırması için `"tracing"`.
-* Event Grid bildirim yapılandırması için `"notifications"` (ve `"eventGrid"` alt bölümü).
+* `"storageProvider"`(ve `"azureStorage"` alt bölüm) depolamaya özgü yapılandırma için.
+* `"tracing"`izleme ve günlük yapılandırması için.
+* `"notifications"`(ve `"eventGrid"` alt bölüm) olay ızgarabildirim yapılandırması için.
 
-Ayrıntılar için [dayanıklı işlevler Host. JSON başvurusu belgelerine](durable-functions-bindings.md#durable-functions-2-0-host-json) bakın.
+Ayrıntılar için [Dayanıklı Fonksiyonlar host.json başvuru belgelerine](durable-functions-bindings.md#durable-functions-2-0-host-json) bakın.
 
 #### <a name="default-taskhub-name-changes"></a>Varsayılan taskhub adı değişiklikleri
 
-Sürüm 1. x içinde, Host. JSON içinde bir görev hub 'ı adı belirtilmemişse, varsayılan olarak "DurableFunctionsHub" olarak kabul edildi. Sürüm 2. x ' de, varsayılan görev merkezi adı artık işlev uygulamasının adından türetilir. Bu nedenle, 2. x sürümüne yükseltirken bir görev hub 'ı adı belirtmiyorsanız, kodunuz yeni görev hub 'ı ile çalışır ve tüm uçuş düzenlemeleri artık bunları işleyen bir uygulamaya sahip olmayacaktır. Bu sorunu geçici olarak çözmek için, görev hub 'ınızın adını "DurableFunctionsHub" nin varsayılan değeri olan v1. x varsayılan olarak ayarlayabilir veya kesintiye neden olan değişiklikleri nasıl işleyebileceğine ilişkin ayrıntılar için [sıfır kesinti dağıtım kılavuzumuzu](durable-functions-zero-downtime-deployment.md) takip edebilirsiniz.
+Sürüm 1.x'te, host.json'da bir görev hub adı belirtilmemişse, varsayılan olarak "DurableFunctionsHub" olarak belirlenmiştir. Sürüm 2.x'te varsayılan görev merkezi adı artık işlev uygulamasının adından türetilmiştir. Bu nedenle, 2.x'e yükseltirken bir görev hub adı belirtmediyseniz, kodunuz yeni görev hub'ı ile çalışacaktır ve tüm uçuş içi orkestrasyonlar artık bunları işleyen bir uygulama olmaz. Bunu aşmak için, görev hub adınızı açıkça "DurableFunctionsHub" v1.x varsayılanına ayarlayabilir veya uçuş içi orkestrasyonlar için son değişiklikleri nasıl işleyeceğiniz hakkında ayrıntılar için [sıfır kesinti zamanı dağıtım kılavuzumuzu](durable-functions-zero-downtime-deployment.md) izleyebilirsiniz.
 
-#### <a name="public-interface-changes-net-only"></a>Ortak arabirim değişiklikleri (yalnızca .NET)
+#### <a name="public-interface-changes-net-only"></a>Ortak arabirim değişiklikleri (yalnızca.NET)
 
-1\. x sürümünde, Dayanıklı İşlevler tarafından desteklenen çeşitli _bağlam_ nesneleri, birim testinde kullanılmak üzere tasarlanan soyut temel sınıflara sahiptir. Dayanıklı İşlevler 2. x ' in bir parçası olarak, bu soyut temel sınıflar, arabirimler ile değiştirilmiştir.
+Sürüm 1.x'te, Dayanıklı Işlevler tarafından desteklenen çeşitli _bağlam_ nesneleri birim testinde kullanılmak üzere tasarlanmış soyut temel sınıflara sahiptir. Dayanıklı Fonksiyonlar 2.x'in bir parçası olarak, bu soyut temel sınıflar arabirimlerle değiştirilir.
 
-Aşağıdaki tablo, ana değişiklikleri temsil eder:
+Aşağıdaki tablo ana değişiklikleri temsil eder:
 
-| 'in | 2.x |
+| 1.x | 2.x |
 |----------|----------|
 | `DurableOrchestrationClientBase` | `IDurableOrchestrationClient` veya `IDurableClient` |
 | `DurableOrchestrationContext` veya `DurableOrchestrationContextBase` | `IDurableOrchestrationContext` |
 | `DurableActivityContext` veya `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-Soyut bir temel sınıfın sanal yöntemler içerdiği durumlarda, bu sanal yöntemler `DurableContextExtensions`tanımlı uzantı yöntemleriyle değiştirilmiştir.
+Soyut bir taban sınıfının sanal yöntemler içerdiği durumlarda, bu sanal yöntemler `DurableContextExtensions`.
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>function. JSON değişiklikleri (JavaScript ve C# betik)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>function.json değişiklikleri (JavaScript ve C# Script)
 
-Dayanıklı İşlevler 1. x içinde Orchestration istemci bağlaması `orchestrationClient``type` kullanır. Sürüm 2. x bunun yerine `durableClient` kullanır.
+Dayanıklı Fonksiyonlar 1.x'te, orkestrasyon istemcisi bağlama bir `type` . `orchestrationClient` Sürüm 2.x `durableClient` bunun yerine kullanır.

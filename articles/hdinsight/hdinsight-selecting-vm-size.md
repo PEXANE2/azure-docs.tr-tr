@@ -1,7 +1,7 @@
 ---
 title: Azure HDInsight kümeniz için doğru VM boyutunu seçme
-description: HDInsight kümeniz için doğru VM boyutunu seçme hakkında bilgi edinin.
-keywords: VM boyutları, küme boyutları, küme yapılandırması
+description: HDInsight kümeniz için doğru VM boyutunu nasıl seçeceğimize öğrenin.
+keywords: vm boyutları, küme boyutları, küme yapılandırması
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,50 +10,50 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73682199"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Azure HDInsight kümeniz için doğru VM boyutunu seçme
 
-Bu makalede, HDInsight kümenizdeki çeşitli düğümlerin doğru VM boyutunu seçme açıklanmaktadır. 
+Bu makalede, HDInsight kümenizdeki çeşitli düğümler için doğru VM boyutunun nasıl seçilen anlatılmaktadır. 
 
-CPU işleme, RAM boyutu ve ağ gecikmesi gibi bir sanal makinenin özelliklerinin iş yüklerinizin işlenmesini nasıl etkileyeceğini anlamak için başlayın. Daha sonra, uygulamanızı ve farklı VM aileleri için en iyi duruma getirilmiş ile nasıl eşleştiğini düşünün. Kullanmak istediğiniz VM ailesinin, dağıtmayı planladığınız küme türüyle uyumlu olduğundan emin olun. Her küme türü için desteklenen ve önerilen tüm VM boyutlarının listesi için bkz. [Azure HDInsight desteklenen düğüm yapılandırması](hdinsight-supported-node-configuration.md). Son olarak, bazı örnek iş yüklerini test etmek ve bu ailedeki SKU 'nun sizin için uygun olduğunu denetlemek için bir benchişaretleme işlemi kullanabilirsiniz.
+CPU işleme, RAM boyutu ve ağ gecikmesi gibi sanal bir makinenin özelliklerinin iş yüklerinizin işlenmesini nasıl etkileyeceğini anlayarak başlayın. Ardından, uygulamanızı ve farklı VM ailelerinin hangi leri için optimize edilmiş olduğuyla nasıl eşleştiğini düşünün. Kullanmak istediğiniz VM ailesinin dağıtmayı planladığınız küme türüyle uyumlu olduğundan emin olun. Her küme türü için desteklenen ve önerilen tüm VM boyutlarının listesi için [Azure HDInsight desteklenen düğüm yapılandırmalarına](hdinsight-supported-node-configuration.md)bakın. Son olarak, bazı örnek iş yüklerini test etmek ve bu aile içinde hangi SKU'nun sizin için uygun olduğunu kontrol etmek için bir kıyaslama işlemi kullanabilirsiniz.
 
-Kümenizin depolama türünü veya küme boyutunu seçme gibi diğer yönlerini planlama hakkında daha fazla bilgi için bkz. [HDInsight kümeleri Için kapasite planlaması](hdinsight-capacity-planning.md).
+Depolama türü veya küme boyutu seçme gibi kümenizin diğer yönlerini planlama hakkında daha fazla bilgi [için HDInsight kümeleri için Kapasite planlamasına](hdinsight-capacity-planning.md)bakın.
 
 ## <a name="vm-properties-and-big-data-workloads"></a>VM özellikleri ve büyük veri iş yükleri
 
-VM boyutu ve türü, CPU işleme gücü, RAM boyutu ve ağ gecikmesi tarafından belirlenir:
+VM boyutu ve türü CPU işleme gücü, RAM boyutu ve ağ gecikmesi ile belirlenir:
 
-- CPU: VM boyutu çekirdek sayısını belirler. Daha fazla çekirdek, her bir düğümün elde edilebileceği paralel hesaplamanın derecesi artar. Ayrıca, bazı VM türlerinde daha hızlı çekirdek vardır.
+- CPU: VM boyutu çekirdek sayısını belirler. Daha fazla çekirdek, her düğüm elde edebilirsiniz paralel hesaplama derecesi daha büyüktür. Ayrıca, bazı VM türleri daha hızlı çekirdek var.
 
-- RAM: VM boyutu VM 'deki kullanılabilir RAM miktarını da belirler. Diskten okumak yerine verileri işlenmek üzere bellekte depolayan iş yükleri için, çalışan düğümlerinizin verilere sığacak kadar yeterli belleğe sahip olduğundan emin olun.
+- RAM: VM boyutu da VM kullanılabilir RAM miktarını dikte. Diskten okuma yerine verileri işlemek için bellekte depolayan iş yükleri için, çalışan düğümlerinizin verilere uyacak kadar belleğe sahip olmasını sağlayın.
 
-- Ağ: çoğu küme türü Için, küme tarafından işlenen veriler yerel diskte değildir, bunun yerine Data Lake Storage veya Azure depolama gibi bir harici depolama hizmetidir. Düğüm VM ve depolama hizmeti arasındaki ağ bant genişliğini ve aktarım hızını göz önünde bulundurun. Bir VM için kullanılabilen ağ bant genişliği genellikle daha büyük boyutlarda artar. Ayrıntılar için bkz. [VM boyutlarına genel bakış](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+- Ağ: Çoğu küme türünde küme tarafından işlenen veriler yerel diskte değil, Veri Gölü Depolama veya Azure Depolama gibi harici bir depolama hizmetindedir. VM düğümü ile depolama hizmeti arasındaki ağ bant genişliğini ve iş buzunu göz önünde bulundurun. VM'nin kullanılabilen ağ bant genişliği genellikle daha büyük boyutlarda artar. Ayrıntılar için [VM boyutlarına genel bakış](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)alabilirsiniz.
 
-## <a name="understanding-vm-optimization"></a>VM iyileştirmesini anlama
+## <a name="understanding-vm-optimization"></a>VM optimizasyonu anlama
 
-Azure 'daki sanal makine aileleri farklı kullanım durumlarına uyacak şekilde iyileştirilmiştir. Aşağıdaki tabloda, en popüler kullanım durumlarının ve bunlarla eşleşen VM ailelerinin bazılarını bulabilirsiniz.
+Azure'daki sanal makine aileleri, farklı kullanım durumlarına uyacak şekilde optimize edilebiyi kullanır. Aşağıdaki tabloda, en popüler kullanım servis lerinden bazılarını ve bunlara uyan VM ailelerini bulabilirsiniz.
 
 | Tür                     | Boyutlar           |    Açıklama       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Giriş düzeyi](../virtual-machines/linux/sizes-general.md)          | A, AV2  | Geliştirme ve test gibi giriş düzeyi iş yükleri için en uygun CPU performansı ve bellek yapılandırmalarının olması gerekir. Bu VM'ler ekonomiktir ve Azure ile çalışmaya başlamak için düşük maliyetli bir seçenek sunar. |
-| [Genel amaçlı](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Dengeli CPU/bellek oranı. Test ve geliştirme, küçük - orta boyutlu veritabanları, düşük - orta yoğunluklu trafiğe sahip web sunucuları için idealdir. |
-| [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md)        | F           | Yüksek CPU/bellek oranı. Orta yoğunlukta trafiğe sahip web sunucuları, ağ gereçleri, toplu işlemler ve uygulama sunucuları için uygundur.        |
+| [Giriş seviyesi](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Cpu performansı ve bellek yapılandırmaları en iyi geliştirme ve test gibi giriş düzeyi iş yükleri için uygundur. Ekonomiktirler ve Azure'a başlamak için düşük maliyetli bir seçenek sunarlar. |
+| [Genel amaç](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Dengeli CPU-bellek oranı. Test ve geliştirme, küçük-orta büyüklükteki veritabanları ve küçük-orta büyüklükte trafik hacmine sahip web sunucuları için idealdir. |
+| [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md)        | F           | Yüksek CPU-bellek oranı. Orta trafik web sunucuları, ağ cihazları, toplu işlem ve uygulama sunucuları için idealdir.        |
 | [Bellek için iyileştirilmiş](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Yüksek bellek-CPU oranı. İlişkisel veritabanı sunucuları, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
 
-- HDInsight tarafından desteklenen bölgelerde kullanılabilir sanal makine örneklerinin fiyatlandırması hakkında bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/).
+- HDInsight destekli bölgelerde mevcut VM örneklerinin fiyatlandırması hakkında daha fazla bilgi için [HDInsight Fiyatlandırması'na](https://azure.microsoft.com/pricing/details/hdinsight/)bakın.
 
-## <a name="cost-saving-vm-types-for-light-workloads"></a>Hafif iş yükleri için VM türlerini kaydetme maliyeti
+## <a name="cost-saving-vm-types-for-light-workloads"></a>Hafif iş yükleri için maliyet tasarrufu Sağlayan VM türleri
 
-Açık işleme gereksinimleriniz varsa, HDInsight kullanmaya başlamak için [F serisi](https://azure.microsoft.com/blog/f-series-vm-size/) iyi bir seçim olabilir. Daha düşük bir saatlik liste fiyatına sahip olan F Serisi, vCPU başına Azure İşlem Birimi (ACU) açısından fiyat-performans alanında Azure portföyündeki en iyi seçenektir.
+Hafif işleme gereksinimleriniz varsa, [F serisi](https://azure.microsoft.com/blog/f-series-vm-size/) HDInsight ile başlamak için iyi bir seçim olabilir. Daha düşük bir saatlik liste fiyatına sahip olan F Serisi, vCPU başına Azure İşlem Birimi (ACU) açısından fiyat-performans alanında Azure portföyündeki en iyi seçenektir.
 
-Aşağıdaki tabloda, Fsv2 serisi VM 'lerle oluşturulabilecek küme türleri ve düğüm türleri açıklanmaktadır.
+Aşağıdaki tabloda, Fsv2 serisi VM'lerle oluşturulabilen küme türleri ve düğüm türleri açıklanmaktadır.
 
-| Küme Türü | Sürüm | Çalışan Düğümü | Baş Düğüm | ZooKeeper Düğümü |
+| Küme Türü | Sürüm | İşçi Düğümü | Kafa Düğümü | Zookeeper Düğümü |
 |---|---|---|---|---|
 | Spark | Tümü | F4 ve üzeri | hayır | hayır |
 | Hadoop | Tümü | F4 ve üzeri | hayır | hayır |
@@ -61,17 +61,17 @@ Aşağıdaki tabloda, Fsv2 serisi VM 'lerle oluşturulabilecek küme türleri ve
 | HBase | Tümü | F4 ve üzeri | hayır | hayır |
 | LLAP | devre dışı | hayır | hayır | hayır |
 | Storm | devre dışı | hayır | hayır | hayır |
-| ML hizmeti | YALNıZCA HDı 3,6 | F4 ve üzeri | hayır | hayır |
+| ML Servisi | SADECE HDI 3.6 | F4 ve üzeri | hayır | hayır |
 
-Her F serisi SKU 'sunun belirtimlerini görmek için bkz. [f SERISI VM boyutları](https://azure.microsoft.com/blog/f-series-vm-size/).
+Her F serisi SKU'nun teknik özelliklerini görmek için [F serisi VM boyutlarına](https://azure.microsoft.com/blog/f-series-vm-size/)bakın.
 
-## <a name="benchmarking"></a>Karşılaştırmalı
+## <a name="benchmarking"></a>Kıyaslama
 
-Sınama, üretim iş yükleriniz için ne kadar iyi işlem gerçekleştireceğini ölçmek üzere farklı VM 'lerde sanal iş yüklerini çalıştırma işlemidir. 
+Kıyaslama, üretim iş yükleri için ne kadar iyi performans göstereceğini ölçmek için farklı VM'lerde simüle edilmiş iş yüklerini çalıştırma işlemidir. 
 
-VM SKU 'Larının ve küme boyutlarının benchi hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta küme kapasitesi planlaması ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type).
+VM SK'ler ve küme boyutları için kıyaslama hakkında daha fazla bilgi için Azure [HDInsight'ta Küme kapasite planlamasına ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure HDInsight desteklenen düğüm yapılandırması](hdinsight-supported-node-configuration.md)
+- [Azure HDInsight desteklenen düğüm yapılandırmaları](hdinsight-supported-node-configuration.md)
 - [Azure'daki Linux sanal makinesi boyutları](../virtual-machines/linux/sizes.md)

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f3bb391dceb1948820d00c0d09229f2c106ffc0b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68601392"
 ---
-İşlem rolü yapılandırılmış bir Data Box Edge cihazında, modülleri izlemek veya sorunlarını gidermek için Docker komutlarının bir alt kümesi kullanılabilir. Kullanılabilir komutların listesini görmek için [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface) ve `dkrdbe` işlevini kullanın.
+İşlem rolünü yapılandıran bir Veri Kutusu Kenarı aygıtında, modülleri izlemek veya sorun gidermek için docker komutlarının bir alt kümesi kullanılabilir. Kullanılabilir komutların listesini görmek [için PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface) ve `dkrdbe` işlevi kullanın.
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -35,28 +35,28 @@ Commands:
 
 [10.100.10.10]: PS>
 ```
-Aşağıdaki tabloda, için `dkrdbe`kullanılabilen komutların kısa bir açıklaması verilmiştir:
+Aşağıdaki tablo için `dkrdbe`kullanılabilir komutların kısa bir açıklaması vardır:
 
-|Komutu  |Açıklama |
+|command  |Açıklama |
 |---------|---------|
-|`image`     | Görüntüleri yönetin. Kullanılmayan görüntüleri kaldırmak için şunu kullanın:`dkrdbe image prune -a -f`       |
-|`images`     | Resimleri Listele         |
-|`inspect`     | Docker nesnelerinde alt düzey bilgileri döndür         |
-|`login`     | Docker kayıt defterinde oturum açma         |
-|`logout`     | Docker kayıt defterinden oturumu kapatma         |
-|`logs`     | Bir kapsayıcının günlüklerini getirme        |
-|`port`     | Bağlantı noktası eşlemelerini veya kapsayıcı için belirli bir eşlemeyi listeleyin        |
+|`image`     | Görüntüleri yönetin. Kullanılmayan görüntüleri kaldırmak için şunları kullanın:`dkrdbe image prune -a -f`       |
+|`images`     | Resimleri listele         |
+|`inspect`     | Docker nesneleri hakkında düşük düzey bilgileri döndürme         |
+|`login`     | Docker kayıt defterinde oturum açın         |
+|`logout`     | Docker kayıt defterinden çıkış         |
+|`logs`     | Bir kapsayıcının günlüklerini getir        |
+|`port`     | Bağlantı noktası eşlemelerini veya kapsayıcı için belirli bir eşleme yi listele        |
 |`ps`     | Kapsayıcıları listeleme        |
 |`pull`     | Kayıt defterinden görüntü veya depo çekme         |
-|`start`     | Durdurulmuş bir veya daha fazla kapsayıcıyı Başlat         |
-|`stats`     | Kapsayıcı kaynak kullanımı istatistiklerinin canlı akışını görüntüle         |
-|`stop`     | Çalışan bir veya daha fazla kapsayıcıyı durdur        |
-|`system`     | Docker 'ı yönetme         |
-|`top`     | Bir kapsayıcının çalışan süreçlerini görüntüleme         |
+|`start`     | Bir veya daha fazla durmuş kapsayıcıyı başlatma         |
+|`stats`     | Konteyner(ler) kaynak kullanım istatistiklerinin canlı akışını görüntüleme         |
+|`stop`     | Bir veya daha fazla çalışan kapsayıcıyı durdurma        |
+|`system`     | Docker'ı Yönet         |
+|`top`     | Bir kapsayıcının çalışma işlemlerini görüntüleme         |
 
-Kullanılabilir herhangi bir komutla ilgili yardım almak için kullanın `dkrdbe <command-name> --help`.
+Kullanılabilir herhangi bir komut için `dkrdbe <command-name> --help`yardım almak için .
 
-Örneğin, `port` komutun kullanımını anlamak için şunu yazın:
+Örneğin, `port` komutun kullanımını anlamak için yazın:
 
 ```powershell
 [10.100.10.10]: P> dkrdbe port --help
@@ -78,13 +78,13 @@ Options:
 [10.100.10.10]: PS>
 ```
 
-`dkrdbe` İşlevi için kullanılabilen komutlar, normal Docker komutları için kullanıldıkları parametrelerle aynı parametreleri kullanır. Docker komutuyla kullanılan seçenekler ve parametreler için [Docker CommandLine kullanma](https://docs.docker.com/engine/reference/commandline/docker/)bölümüne gidin.
+`dkrdbe` İşlev için kullanılabilir komutlar, normal docker komutları için kullanılanparametrelerle aynı parametreleri kullanır. Docker komutu yla kullanılan seçenekler ve parametreler için [Docker komut satırını kullanın.](https://docs.docker.com/engine/reference/commandline/docker/)
 
-### <a name="to-check-if-the-module-deployed-successfully"></a>Modülün başarıyla dağıtılıp dağıtılmadığını denetlemek için
+### <a name="to-check-if-the-module-deployed-successfully"></a>Modülün başarılı bir şekilde dağıtılıp dağıtılmamalarını kontrol etmek için
 
-İşlem modülleri, iş mantığı uygulanmış kapsayıcılardır. Bir işlem modülünün başarıyla dağıtılıp dağıtılmadığını denetlemek için, `ps` komutunu çalıştırın ve kapsayıcının (işlem modülüne karşılık gelen) çalışıp çalışmadığını denetleyin.
+İşlem modülleri, iş mantığı nın uygulandığı kapsayıcılardır. Bir bilgi işlem modülünün başarıyla dağıtılıp `ps` dağıtılmamasını denetlemek için komutu çalıştırın ve kapsayıcının (bilgi işlem modülüne karşılık gelen) çalışır durumda olup olmadığını kontrol edin.
 
-Tüm kapsayıcıların (duraklatılmış olanlar dahil) listesini almak için `ps -a` komutunu çalıştırın.
+Tüm kapsayıcıların (duraklatılmış olanlar dahil) listesini almak için `ps -a` komutu çalıştırın.
 
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
@@ -96,9 +96,9 @@ acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/s
 [10.100.10.10]: PS>
 ```
 
-Kapsayıcı görüntüsünü oluştururken veya görüntüyü çekirken bir hata oluşursa, öğesini çalıştırın `logs edgeAgent`.  `EdgeAgent`, diğer kapsayıcıları sağlamaktan sorumlu IoT Edge çalışma zamanı kapsayıcısıdır.
+Kapsayıcı görüntüsünün oluşturulmasında veya görüntüyü çekerken bir hata `logs edgeAgent`varsa çalıştırın.  `EdgeAgent`diğer kapsayıcıların sağlanmasından sorumlu olan IoT Edge çalışma zamanı kapsayıcısýr.
 
-Tüm `logs edgeAgent` günlüklerin dökümünü yaptığından, son hataları görmenin iyi bir yolu, seçeneğini `--tail 20`kullanmaktır.
+Tüm `logs edgeAgent` günlükleri döker çünkü, son hataları görmek için iyi `--tail 20`bir yol seçeneği kullanmaktır.
 
 
 ```powershell
@@ -117,12 +117,12 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 2019-02-28 23:38:28.480 +00:00 [DBG] [Microsoft.Azure.Devices.Edge.Agent.Core.Planners.HealthRestartPlanner] - HealthRestartPlanner created Plan, with 0 command(s).
 ```
 
-### <a name="to-get-container-logs"></a>Kapsayıcı günlüklerini almak için
+### <a name="to-get-container-logs"></a>Konteyner günlüklerini almak için
 
-Belirli bir kapsayıcıya ait günlükleri almak için, önce kapsayıcıyı listeleyin ve ardından ilgilendiğiniz kapsayıcının günlüklerini alın.
+Belirli bir kapsayıcının günlüklerini almak için önce kapsayıcıyı listeleyin ve ardından ilgilendiğiniz kapsayıcının günlüklerini alın.
 
-1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
-2. Çalışan kapsayıcıların listesini almak için `ps` komutunu çalıştırın.
+1. [PowerShell arabirimine bağlanın.](#connect-to-the-powershell-interface)
+2. Çalışan kapsayıcıların listesini almak için `ps` komutu çalıştırın.
 
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
@@ -133,9 +133,9 @@ Belirli bir kapsayıcıya ait günlükleri almak için, önce kapsayıcıyı lis
     acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
-3. İçin günlüklere ihtiyacınız olan kapsayıcının kapsayıcı KIMLIĞINI bir yere getirin.
+3. Günlükleri için ihtiyacınız olan kapsayıcı nın konteyner kimliğini not edin.
 
-4. Belirli bir kapsayıcının günlüklerini almak için, kapsayıcı kimliğini sağlayan `logs` komutunu çalıştırın.
+4. Belirli bir kapsayıcının günlüklerini almak `logs` için, konteyner kimliğini sağlayan komutu çalıştırın.
 
     ```powershell
     [10.100.10.10]: PS>dkrdbe logs d99e2f91d9a8
@@ -152,16 +152,16 @@ Belirli bir kapsayıcıya ait günlükleri almak için, önce kapsayıcıyı lis
 
 ### <a name="to-monitor-the-usage-statistics-of-the-device"></a>Cihazın kullanım istatistiklerini izlemek için
 
-Cihazdaki belleği, CPU kullanımını ve GÇ 'yi izlemek için `stats` komutunu kullanın.
+Aygıttaki belleği, CPU kullanımını ve IO'yu `stats` izlemek için komutu kullanın.
 
-1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
-2. Canlı akışı devre dışı bırakmak ve yalnızca ilk sonucu çekmek için komutunuçalıştırın.`stats`
+1. [PowerShell arabirimine bağlanın.](#connect-to-the-powershell-interface)
+2. Canlı `stats` akışı devre dışı bırakıp yalnızca ilk sonucu çekecek şekilde komutu çalıştırın.
 
    ```powershell
    dkrdbe stats --no-stream
    ```
 
-   Aşağıdaki örnek, bu cmdlet 'in kullanımını gösterir:
+   Aşağıdaki örnek, bu cmdlet kullanımını gösterir:
 
     ```
     [10.100.10.10]: P> dkrdbe stats --no-stream

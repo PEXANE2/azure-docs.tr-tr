@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services için PowerShell modülü | Microsoft Docs
-description: Bu makalede, Azure Lab Services yapıların yönetilmesine yardımcı olan bir PowerShell modülü hakkında bilgi sağlanır.
+title: Azure Laboratuvar Hizmetleri için PowerShell modülü | Microsoft Dokümanlar
+description: Bu makalede, Azure Lab Hizmetleri'ndeki yapıların yönetimine yardımcı olan bir PowerShell modülü hakkında bilgi verilmektedir.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: spelluru
 ms.openlocfilehash: cc82355ee43f9fee4f9c2e1bb1bcc0481e4dcea3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73609404"
 ---
-# <a name="azlabservices-powershell-module-preview"></a>Az. LabServices PowerShell modülü (Önizleme)
-Az. LabServices, Azure Laboratuvar Hizmetleri 'nin yönetimini kolaylaştıran bir PowerShell modülüdür. Laboratuvar hesapları, laboratuvarlar, VM 'Ler ve görüntüler oluşturmak, sorgulamak, güncelleştirmek ve silmek için birleştirilebilir işlevler sağlar. Bu modülle ilgili daha fazla bilgi için [GitHub 'Daki az. LabServices giriş sayfasına](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)bakın.
+# <a name="azlabservices-powershell-module-preview"></a>Az.LabServices PowerShell modülü (önizleme)
+Az.LabServices, Azure Lab hizmetlerinin yönetimini kolaylaştıran bir PowerShell modülüdür. Laboratuvar hesaplarını, laboratuvarları, VM'leri ve Görüntüleri oluşturmak, sorgulamak, güncelleştirmek ve silmek için tek kullanımlık işlevler sağlar. Bu modül hakkında daha fazla bilgi için [GitHub'daki Az.LabServices ana sayfasına](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)bakın.
 
 > [!NOTE]
-> Bu modül **önizlemededir**. 
+> Bu modül **önizlemede.** 
 
 ## <a name="example-command"></a>Örnek komut
-Tüm laboratuvarlarda çalışan tüm VM 'Leri durdurmak için bir PowerShell komutu kullanılmasına bir örnek aşağıda verilmiştir.
+Aşağıda, tüm laboratuarlarda çalışan tüm VM'leri durdurmak için PowerShell komutu kullanmanın bir örneği verilmiştir.
 
 ```powershell
 Get-AzLabAccount | Get-AzLab | Get-AzLabVm -Status Running | Stop-AzLabVm
 ```
 
-## <a name="get-started"></a>Başlarken
-1. Makinenizde yoksa [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) . 
-2. Makinenize [az. LabServices. psm1](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Modules/Library/Az.LabServices.psm1) indirin.
-3. Modülü içeri aktar:
+## <a name="get-started"></a>Kullanmaya başlayın
+1. Makinenizde yoksa [Azure PowerShell'i](https://docs.microsoft.com/powershell/azure/overview) yükleyin. 
+2. [Az.LabServices.psm1'i](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Modules/Library/Az.LabServices.psm1) makinenize indirin.
+3. Modülü içe aktarın:
 
     ```powershell
     Import-Module .\Az.LabServices.psm1
@@ -48,4 +48,4 @@ Get-AzLabAccount | Get-AzLab | Get-AzLabVm -Status Running | Stop-AzLabVm
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[GitHub 'Daki az. LabServices giriş sayfasına](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)bakın.
+[GitHub'daki Az.LabServices ana sayfasına](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)bakın.

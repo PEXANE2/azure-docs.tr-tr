@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Web uç noktasına BLOB depolama olayları gönderme-Portal'
-description: "Hızlı başlangıç: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure portal kullanın. Olayları, Web kancası'na gönderin."
+title: 'Quickstart: Blob depolama olaylarını web bitiş noktasına gönder - portal'
+description: "Hızlı başlangıç: Blob depolama hesabı oluşturmak ve etkinliklerine abone olmak için Azure Olay Ağıt ını ve Azure portalını kullanın. Olayları bir Webhook'a gönderin."
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844794"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Hızlı Başlangıç: Azure portalı ile web uç noktasına rota Blob Depolama olaylarına
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Quickstart: Azure portalı ile Blob depolama olaylarını web bitiş noktasına yönlendirin
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure portalını kullanarak bir Blob depolama hesabı oluşturur, bu blob depolama hesabının olaylarına abone olur ve sonucu görmek için bir olayı tetiklersiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
@@ -28,7 +28,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure 
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-1. [Azure portalda](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 
 1. Bir Blob depolaması oluşturmak için **Kaynak oluşturun**'u seçin. 
 
@@ -43,7 +43,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure 
    ![Başlangıç adımları](./media/blob-event-quickstart-portal/provide-blob-values.png)
 
 >[!NOTE]
-> Yalnızca **StorageV2 (genel amaçlı v2)** ve **blobstorage** türünde depolama hesapları olay tümleştirmesini destekler. **Depolama (genral amaçlı v1)** Event Grid ile *tümleştirmeyi desteklemez.*
+> Yalnızca depolama türü **StorageV2 (genel amaçlı v2)** ve **BlobStorage** destek olay tümleştirmedepolama hesapları. **Depolama (genral amaçlı v1)** Olay Grid ile tümleştirme *desteklemez.*
 
 ## <a name="create-a-message-endpoint"></a>İleti uç noktası oluşturma
 
@@ -105,7 +105,7 @@ Dosya yükleyerek Blob depolaması için bir olay tetiklemiş olursunuz. Dosyan�
 
 1. Test dosyanıza göz atın ve yükleyin.
 
-1. Olayı tetiklediniz ve Event Grid, iletiyi abone olurken yapılandırdığınız uç noktaya gönderdi. İleti JSON biçimindedir ve bir veya daha fazla olaya sahip bir dizi içerir. Aşağıdaki örnekte, JSON iletisi bir olay içeren bir dizi içerir. Web uygulamanızı görüntülediğinizde blob oluşturma olayının gönderildiğini göreceksiniz. 
+1. Olayı tetiklediniz ve Event Grid, iletiyi abone olurken yapılandırdığınız uç noktaya gönderdi. İleti JSON biçimindedir ve bir veya daha fazla olayı içeren bir dizi içerir. Aşağıdaki örnekte, JSON iletisi tek bir olay içeren bir dizi içerir. Web uygulamanızı görüntülediğinizde blob oluşturma olayının gönderildiğini göreceksiniz. 
 
    ```json
    [{
@@ -146,4 +146,4 @@ Kaynak grubunu seçin ve **Kaynak grubunu sil** seçeneğini belirleyin.
 - [Event Grid Hakkında](overview.md)
 - [Blob depolama olaylarını bir özel web uç noktasına yönlendirme](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Azure Event Grid ve Logic Apps ile sanal makine değişikliklerini izleme](monitor-virtual-machine-changes-event-grid-logic-app.md)
-- [Veri ambarına büyük veri akışı yapma](event-grid-event-hubs-integration.md)
+- [Büyük verileri bir veri ambarına akışla aktarma](event-grid-event-hubs-integration.md)

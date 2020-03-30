@@ -1,16 +1,16 @@
 ---
-title: Hızlı başlangıç-Azure portal bir VM 'yi yedekleme
-description: Bu hızlı başlangıçta, bir kurtarma hizmetleri Kasası oluşturmayı, bir Azure VM 'de korumayı etkinleştirmeyi ve Azure portal VM 'yi yedeklemeyi öğrenin.
+title: Quickstart - Azure portalı ile bir VM yedekleme
+description: Bu Quickstart'ta, Kurtarma Hizmetleri kasası oluşturmayı, Azure VM'de korumayı nasıl etkinleştirin ve Azure portalıyla VM'yi yedeklemeyi öğrenin.
 ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 02/06/2020
 ms.custom: mvc
 ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240453"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
@@ -21,7 +21,7 @@ Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleşti
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com)oturum açın.
 
 ## <a name="select-a-vm-to-back-up"></a>Yedeklenecek sanal makineyi seçme
 
@@ -76,7 +76,7 @@ Sanal makine verilerini nasıl geri yükleyeceğinizi açıklayan bir Yedekleme 
 
 3. Açılan menüden **Yedekleme Verilerini Sil**'i seçin.
 
-4. **Yedekleme öğesinin adını yazın** iletişim kutusuna sanal makinenizin adını girin. Örneğin: *myVM*. **Yedeklemeyi Durdur**' u seçin.
+4. **Yedekleme öğesinin adını yazın** iletişim kutusuna sanal makinenizin adını girin. Örneğin: *myVM*. **Yedeklemeyi Durdur'u**seçin.
 
     Sanal makine yedekleme işlemi durdurulduktan ve kurtarma noktaları kaldırıldıktan sonra kaynak grubunu silebilirsiniz. Var olan bir sanal makineyi kullandıysanız kaynak grubunu ve sanal makineyi bırakmak isteyebilirsiniz.
 

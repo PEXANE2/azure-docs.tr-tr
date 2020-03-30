@@ -1,6 +1,6 @@
 ---
-title: REST API hata kodları-Azure Machine Learning Studio (klasik) | Microsoft Docs
-description: Bu hata kodları, bir Azure Machine Learning web hizmeti üzerinde bir işlem tarafından döndürülebilir.
+title: REST API hata kodları - Azure Machine Learning Studio (klasik) | Microsoft Dokümanlar
+description: Bu hata kodları, Azure Machine Learning web hizmetindeki bir işlemle döndürülebilir.
 keywords: ''
 services: machine-learning
 author: xiaoharper
@@ -13,142 +13,142 @@ ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
 ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217768"
 ---
-# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klasik) REST API hata kodları
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klasik) REST API Hata Kodları
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
-Aşağıdaki hata kodları Azure Machine Learning Studio (klasik) Web hizmetindeki bir işlem tarafından döndürülebilir.
+Aşağıdaki hata kodları, Azure Machine Learning Studio (klasik) web hizmetindeki bir işlemle döndürülebilir.
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP durum kodu 400)
  
-Sağlanan geçersiz bağımsız değişken.
+Geçersiz bağımsız değişken sağlandı.
  
-Bu sınıf hataların yere sağlanan bağımsız değişken geçersiz anlamına gelir. Bu kimlik bilgileri veya bir web hizmetine geçirilen Azure depolama konumunu olabilir. Hangi belirli bağımsız değişkenin geçersiz olduğunu tanılamak için lütfen "Ayrıntılar" bölümündeki hata "Code" alanına bakın.
+Bu hata sınıfı, bir yerde sağlanan bir bağımsız değişkenin geçersiz olduğu anlamına gelir. Bu, Azure depolama alanının web hizmetine aktarılan bir şeye ait bir kimlik bilgisi veya konumu olabilir. Lütfen hangi özel bağımsız değişkenin geçersiz olduğunu tanılamak için "ayrıntılar" bölümündeki "kod" bölümüne bakın.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| BadParameterValue | Sağlanan parametre değeri parametre parametresi kural karşılamaz |
-| BadSubscriptionId | Abonelik puanlamak için kullanılan kimliği kaynakta mevcut değil |
-| BadVersionCall | API çağrısı sırasında geçersiz sürüm parametresi geçirildi: {0}. Doğru sürüm geçirmek için API Yardım sayfası denetleyin ve yeniden deneyin. |
-| BatchJobInputsNotSpecified | Şu gerekli giriş (ler) istekle birlikte belirtilmedi: {0}. Lütfen olun tüm giriş verilerini belirtilir ve yeniden deneyin. |
-| BatchJobInputsTooManySpecified | İstek, hizmette tanımlanan çok daha fazla giriş belirtilen. Kabul edilen giriş (lar) listesi: {0}. Lütfen olun tüm giriş verilerini doğru belirtildiğinden ve yeniden deneyin. |
-| BlobNameTooLong | Tanılama çıktısı için belirtilen Azure Blob depolama yolu çok uzun: {0}. Yolunu kısaltın ve yeniden deneyin. |
-| BlobNotFound | Belirtilen Azure Blob 'a erişilemiyor-{0}.  Azure hata iletisi: {1}. |
-| ContainerIsEmpty | Hiçbir Azure depolama kapsayıcısı adı sağlanmadı. Geçerli kapsayıcı adı sağlayın ve tekrar deneyin. |
-| ContainerSegmentInvalid | Kapsayıcı adı geçersiz. Geçerli kapsayıcı adı sağlayın ve tekrar deneyin. |
-| ContainerValidationFailed | Blob kapsayıcısı doğrulaması şu hatayla başarısız oldu: {0}. |
-| DataTypeNotSupported | Sağlanan desteklenmeyen veri türü. Geçerli veri türleri sağlayın ve tekrar deneyin. |
-| DuplicateInputInBatchCall | Toplu istek geçerli değil. Tek ve çoklu giriş, aynı anda belirtilemez. Bu öğelerden birini istekten kaldırın ve yeniden deneyin. |
-| ExpiryTimeInThePast | Belirtilen sona erme saati geçmişte: {0}. Gelecekteki bitiş zamanı, UTC sağlayın ve tekrar deneyin. Süresiz olarak süre sonu değeri NULL olarak ayarlayın. |
-| IncompleteSettings | Tanılama ayarları eksik. |
-| InputBlobRelativeLocationInvalid | Azure depolama blob adı sağlandı. Geçerli bir blob adı sağlayın ve tekrar deneyin. |
-| InvalidBlob | Blob için geçersiz blob belirtimi: {0}. Bu bağlantı dizesini doğrulayın / göreli yol veya SAS belirteci belirtimi doğru olduğundan ve yeniden deneyin. |
-| InvalidBlobConnectionString | Giriş/çıkış Bloblarından biri için belirtilen bağlantı dizesi geçersiz: {0}. Lütfen bunu düzeltin ve yeniden deneyin. |
-| InvalidBlobExtension | Blob başvurusu: {0} geçersiz veya eksik bir dosya uzantısına sahip. Bu çıkış türü için desteklenen dosya uzantıları şunlardır: "{1}". |
-| InvalidInputNames | İstekte geçersiz hizmet girdisi adları belirtildi: {0}. Lütfen doğru hizmet girişleri için giriş verilerini eşleştirin ve yeniden deneyin. |
-| InvalidOutputOverrideName | Geçersiz çıkış geçersiz kılma adı: {0}. Hizmet, bu ada sahip bir çıkış düğümü yok. Lütfen geçersiz kılmak için bir doğru çıkış düğümü adı olarak oldfashionedgoat (büyük/küçük harfe duyarlılık geçerlidir). |
-| InvalidQueryParameter | '{0}' sorgu parametresi geçersiz. {1} |
-| MissingInputBlobInformation | Azure depolama blob bilgisi eksik. Geçerli bağlantı dizesi ve göreli yol veya URI sağlayın ve tekrar deneyin. |
-| MissingJobId | İş Kimliği sağlanmadı. Bir işi ilk kez gönderildiğinde bir iş kimliği döndürülür. ' % S'proje kimliği doğru olduğunu doğrulayın ve yeniden deneyin. |
-| MissingKeys | Sağlanan anahtar yok veya bir birincil veya ikincil anahtarı sağlanmadı. |
-| MissingModelPackage | Model paket kimliği veya sağlanan model paketi yok. Geçerli model paket kimliği belirtin veya paket model ve yeniden deneyin. |
-| MissingOutputOverrideSpecification | İsteğin çıkış geçersiz kılma {0}için blob belirtimi eksik. Lütfen geçerli bir blob konumuna istekle belirtin veya konumu geçersiz kılma isteniyorsa çıkış belirtimini kaldırın. |
-| MissingRequestInput | Web hizmeti giriş bekliyor, ancak herhangi bir giriş sağlanmadı. Geçerli giriş modelinde yayımlanan giriş noktalarına dayalı olduğundan emin olun ve yeniden deneyin. |
-| MissingRequiredGlobalParameters | Tüm web hizmeti parametreleri sağlanan gereklidir. Modüller için beklenen parametreyle doğru olduğundan emin olun ve yeniden deneyin. |
-| MissingRequiredOutputOverrides | Çıkış geçirin zorunludur bir şifrelenmiş hizmet uç noktası çağrısı yapıldığında hizmetin tüm çıkışlar için geçersiz kılar. Şu anda bu çıktılar için geçersiz kılmalar eksik: {0} |
-| MissingWebServiceGroupId | Hiçbir web hizmeti grubu kimliği sağlanmadı. Geçerli web hizmet grubu kimliği sağlayın ve tekrar deneyin. |
-| MissingWebServiceId | Hiçbir web hizmeti Kimliği sağlanmadı. Geçerli web hizmeti kimliği sağlayın ve tekrar deneyin. |
-| MissingWebServicePackage | Web hizmeti paketi sağlanan. Geçerli web hizmeti paketi sağlayın ve tekrar deneyin. |
-| MissingWorkspaceId | Çalışma alanı Kimliği sağlanmadı. Geçerli çalışma alanı kimliği sağlayın ve tekrar deneyin. |
-| ModelConfigurationInvalid | Model paketi yapılandırmasında geçersiz model. Çıkış uç noktası tanımı, standart hata uç noktası, model yapılandırmasını içerir ve std uç noktası ve yeniden deneyin emin olun. |
-| ModelPackageIdInvalid | Geçersiz model paket kimliği. model paket kimliğinin doğru olduğundan emin olun ve yeniden deneyin. |
-| RequestBodyInvalid | Hiçbir istek gövdesinde sağlanan veya istek gövdesi seri durumdan çıkarılırken hata oluştu. |
-| RequestIsEmpty | Sağlanan istek. Geçerli bir isteği sağlayın ve tekrar deneyin. |
-| UnexpectedParameter | Beklenmeyen parametresi belirtilmedi. Tüm parametre adları doğru yazıldığından, yalnızca beklenen parametrelerin geçirilir ve yeniden deneyin doğrulayın. |
-| Başvuruları | Bilinmeyen hata. |
-| UserParameterInvalid | {0} |
-| WebServiceConcurrentRequestRequirementInvalid | {0} Web hizmeti için eşzamanlı istek gereksinimleri değiştirilemiyor. |
-| WebServiceIdInvalid | Sağlanan geçersiz web hizmeti kimliği. Web hizmeti kimliği geçerli bir GUID olmalıdır. |
-| WebServiceTooManyConcurrentRequestRequirement | Eşzamanlı istek gereksinimi {0}fazlasına ayarlanamaz. |
-| WebServiceTypeInvalid | Sağlanan geçersiz web hizmeti türü. Geçerli web hizmeti türü doğru olduğunu doğrulayın ve yeniden deneyin. Geçerli Web hizmeti türleri: {0}. |
+| BadParameterValue | Sağlanan parametre değeri parametre üzerindeki parametre kuralını karşılamaz |
+| BadSubscriptionId | Puan lamak için kullanılan abonelik kimliği kaynaktaki mevcut kimlik |
+| BadVersionCall | Geçersiz sürüm parametresi API çağrısı {0}sırasında geçirildi: . Doğru sürümü geçmek için API yardım sayfasını kontrol edin ve yeniden deneyin. |
+| BatchJobInputsNotSpecified | Aşağıdaki gerekli giriş(ler) istek ile belirtilmedi: {0}. Lütfen tüm giriş verilerinin belirtildiğinden emin olun ve yeniden deneyin. |
+| BatchJobInputsTooManySpecified | İstek, hizmette tanımlanandan daha fazla giriş belirtti. Kabul edilen giriş(ler) {0}listesi: . Lütfen tüm giriş verilerinin doğru şekilde belirtildiğinden emin olun ve yeniden deneyin. |
+| BlobNameTooLong | Tanılama çıktısı için sağlanan azure blob depolama yolu çok uzundur: {0}. Yolu kısaltın ve yeniden deneyin. |
+| BlobNotFound | Sağlanan Azure blob erişemiyor {0}- .  Azure hata {1}iletisi: . |
+| Konteyner Boş | Azure depolama kapsayıcı adı sağlanmadı. Geçerli bir kapsayıcı adı sağlayın ve yeniden deneyin. |
+| KonteynerSegmentGeçersiz | Geçersiz kapsayıcı adı. Geçerli bir kapsayıcı adı sağlayın ve yeniden deneyin. |
+| Konteyner DoğrulamaBaşarısız | Blob kapsayıcı doğrulama bu hata {0}ile başarısız oldu: . |
+| DataTypeNotDesteklenen | Desteklenmeyen veri türü sağlandı. Geçerli veri türü(ler) sağlayın ve yeniden deneyin. |
+| DuplicateInputInBatchCall | Toplu iş isteği geçersizdir. Aynı anda hem tek hem de birden çok giriş belirtemez. Bu öğelerden birini istekten çıkarın ve yeniden deneyin. |
+| ExpiryTimeInThePast | Verilen son kullanma süresi geçmişte {0}kaldı: . UTC'de ileride bir son kullanma süresi sağlayın ve yeniden deneyin. Süresinin dolmaması için son kullanma tarihini NULL olarak ayarlayın. |
+| Eksik Ayarlar | Tanılama ayarları tamamlanmaz. |
+| GirişBlobRelativeLocationGeçersiz | Azure depolama blob adı sağlanmadı. Geçerli bir blob adı sağlayın ve yeniden deneyin. |
+| GeçersizBlob | Blob için geçersiz blob {0}belirtimi: . Bağlantı dizesi / göreli yol veya SAS belirteç belirtimidoğru olduğunu doğrulayın ve yeniden deneyin. |
+| GeçersizBlobConnectionString | Geçersiz giriş/çıkış lekelerinden biri için belirtilen bağlantı dizesi: {0}. Lütfen bunu düzeltin ve tekrar deneyin. |
+| GeçersizBlobExtension | Blob başvurusu: {0} geçersiz veya eksik dosya uzantısı vardır. Bu çıktı türü için desteklenen dosya{1}uzantıları şunlardır: " ". |
+| InvalidInputNames | İstekte belirtilen geçersiz hizmet giriş adı(lar) : {0}. Lütfen giriş verilerini doğru hizmet girişleriyle eşleyin ve yeniden deneyin. |
+| GeçersizOutputOverrideName | Geçersiz çıktı geçersiz kılma {0}adı: . Hizmetin bu ada sahip bir çıkış düğümü yok. Geçersiz kılmak için lütfen doğru çıktı düğümü adını geçirin (büyük/küçük harf duyarlılığı uygulanır). |
+| GeçersizQueryParametresi | Geçersiz sorgu parametresi '{0}'. {1} |
+| EksikInputBlobBilgi | Eksik Azure depolama blob bilgileri. Geçerli bir bağlantı dizesi ve göreli yol veya URI sağlayın ve yeniden deneyin. |
+| EksikJobid | İş kimliği verilmedi. Bir iş kimliği, bir iş ilk kez gönderildiğinde döndürülür. İş Kimliğinin doğru olduğunu doğrulayın ve yeniden deneyin. |
+| Eksik Anahtarlar | Anahtar sağlanmadı veya Birincil veya İkincil Anahtardan biri sağlanmadı. |
+| Eksik Model Paketi | Model paketi Kimliği veya model paketi sağlanmadı. Geçerli bir model paketi Kimliği veya model paketi sağlayın ve yeniden deneyin. |
+| Eksik OutputOverrideSpecification | İstek çıkış geçersiz kılma {0}için blob belirtimi eksik. Lütfen istekle birlikte geçerli bir blob konumu belirtin veya konum geçersiz kılma İstenmiyorsa çıktı belirtimini kaldırın. |
+| Eksikİstek Girişi | Web hizmeti bir giriş bekler, ancak giriş sağlanmaz. Modeldeki yayımlanmış giriş bağlantı noktalarına göre geçerli girdilerin sağlandığından emin olun ve yeniden deneyin. |
+| Eksik GerekliKüresel Parametreler | Gerekli tüm web hizmeti parametresi(ler) sağlanmadı. Modül(ler) için beklenen parametrenin doğru olduğunu doğrulayın ve yeniden deneyin. |
+| Eksik Gerekli OutputOverrides | Şifreli bir hizmet bitiş noktasını ararken, tüm hizmet çıktıları için çıktı geçersiz kılmaları geçmek zorunludur. Bu çıktılar için şu anda eksik geçersiz kılar:{0} |
+| Eksik WebServiceGroupId | Web servis grubu Kimliği sağlanmadı. Geçerli bir web hizmet grubu Kimliği sağlayın ve yeniden deneyin. |
+| Eksik WebServiceid | Web hizmeti Kimliği sağlanmadı. Geçerli bir web hizmeti Kimliği sağlayın ve yeniden deneyin. |
+| Eksik WebServicePackage | Web Hizmeti paketi sağlanmadı. Geçerli bir web servis paketi sağlayın ve yeniden deneyin. |
+| EksikÇalışma AlanıId | Çalışma alanı kimliği sağlanmadı. Geçerli bir çalışma alanı kimliği sağlayın ve yeniden deneyin. |
+| ModelYapılandırmaGeçersiz | Model paketinde geçersiz model yapılandırması. Model yapılandırmasının çıktı uç noktası(lar) tanımı, std hatası bitiş noktası ve std out endpoint ve yeniden deneyin içerir emin olun. |
+| ModelPackageIdGeçersiz | Geçersiz model paketi Id. Model paketi Kimliğinin doğru olduğunu doğrulayın ve yeniden deneyin. |
+| İstekBodyGeçersiz | İstek gövdesi nin serisini silmede hiçbir istek gövdesi veya hata sağlanmadı. |
+| İstekBoş | İstek sağlanmadı. Geçerli bir istek sağlayın ve yeniden deneyin. |
+| Beklenmeyen Parametre | Beklenmeyen parametreler sağlandı. Tüm parametre adlarının doğru yazıldığından, yalnızca beklenen parametrelerin geçirildiğini doğrulayın ve yeniden deneyin. |
+| UnknownError | Bilinmeyen hata. |
+| UserParameterGeçersiz | {0} |
+| WebServiceConcurrentRequestRequirementGeçersiz | Web hizmeti için {0} eşzamanlı istek gereksinimlerini değiştiremez. |
+| WebServiceIdGeçersiz | Geçersiz web hizmeti kimliği sağlandı. Web hizmeti kimliği geçerli bir kılavuz olmalıdır. |
+| WebServiceTooManyConcurrentRequestRequirement | Eşzamanlı istek gereksinimini ' {0}den fazlasına ayarlayamaz. |
+| WebServiceTypeGeçersiz | Geçersiz web hizmeti türü sağlandı. Geçerli web hizmet türünün doğru olduğunu doğrulayın ve yeniden deneyin. Geçerli web hizmet {0}türleri: . |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (HTTP durum kodu 400)
  
-Sağlanan geçersiz kullanıcı bağımsız değişkeni.
+Geçersiz kullanıcı bağımsız değişkeni sağlandı.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| InputMismatchError | Giriş verilerini giriş bağlantı noktasını şemayla eşleşmiyor. |
-| InputParseError | Giriş vektörü başarısız ayrıştırma.  Sütunları ve türleri doğru sayıda giriş vektör olduğunu doğrulayın.  Ek ayrıntılar: {0}. |
-| MissingRequiredGlobalParameters | Web hizmeti tarafından beklenen parametre eksik. Web hizmeti tarafından beklenen tüm gerekli parametreleri doğru olduğundan emin olun ve yeniden deneyin. |
-| UnexpectedParameter | Doğrulayın. yalnızca web hizmeti tarafından beklenen gerekli parametreleri geçirilir ve yeniden deneyin. |
-| UserParameterInvalid | {0} |
+| InputMismatchError | Giriş verileri giriş noktası şemasıyla eşleşmiyor. |
+| GirişParseError | Giriş vektörünün ayrışması başarısız oldu.  Giriş vektörünün doğru sayıda sütun ve veri türüne sahip olduğunu doğrulayın.  Ek ayrıntılar: {0}. |
+| Eksik GerekliKüresel Parametreler | Web hizmeti tarafından beklenen parametre(ler) eksik. Web hizmeti tarafından beklenen tüm gerekli parametrelerin doğru olduğunu doğrulayın ve yeniden deneyin. |
+| Beklenmeyen Parametre | Yalnızca web hizmeti tarafından beklenen gerekli parametrelerin geçirildiğini doğrulayın ve yeniden deneyin. |
+| UserParameterGeçersiz | {0} |
  
-## <a name="invalidoperation-http-status-code-400"></a>Invalidoperation (HTTP durum kodu 400)
+## <a name="invalidoperation-http-status-code-400"></a>Geçersiz Çalışma (HTTP durum kodu 400)
  
-İstek, geçerli bağlamda geçersiz.
+İstek geçerli bağlamda geçersizdir.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| CannotStartJob | İş {0} durumunda olduğundan başlatılamıyor. |
-| IncompatibleModel | Model isteği sürümü ile uyumlu değil. İstek sürümü, yalnızca tek bir datatable çıkış modelleri destekler. |
-| MultipleInputsNotAllowed | Model, birden çok giriş izin vermez. |
+| İşe Başlayamaması | {0} İş, eyalette olduğu için başlatılamaz. |
+| UyumsuzModel | Model istek sürümüile uyumsuzdur. İstek sürümü yalnızca tek bir veri tablosu çıktı modellerini destekler. |
+| MultipleInputsNotAllowed | Model birden çok girişe izin vermez. |
  
 ## <a name="libraryexecutionerror-http-status-code-400"></a>LibraryExecutionError (HTTP durum kodu 400)
  
-Modül yürütme iç kitaplığı hatayla karşılaştı.
+Modül yürütme bir iç kitaplık hatası yla karşılaştı.
  
  
 ## <a name="moduleexecutionerror-http-status-code-400"></a>ModuleExecutionError (HTTP durum kodu 400)
  
-Modül yürütme bir hatayla karşılaştı.
+Modül yürütme bir hata yla karşılaştı.
  
  
 ## <a name="webservicepackageerror-http-status-code-400"></a>WebServicePackageError (HTTP durum kodu 400)
  
-Geçersiz web hizmeti paketi. Sağlanan web hizmeti paketi doğru olduğunu doğrulayın ve yeniden deneyin.
+Geçersiz web servis paketi. Sağlanan web hizmet paketinin doğru olduğunu doğrulayın ve yeniden deneyin.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| FormatError | Web hizmeti paketi hatalı biçimlendirilmiş. Ayrıntılar: {0} |
-| RuntimesError | Web hizmeti paketi graf geçersiz. Ayrıntılar: {0} |
-| ValidationError | Web hizmeti paketi graf geçersiz. Ayrıntılar: {0} |
+| Biçim Hatası | Web servis paketi bozuk. Şey:{0} |
+| RuntimesError | Web hizmeti paket grafiği geçersizdir. Şey:{0} |
+| Validationerror | Web hizmeti paket grafiği geçersizdir. Şey:{0} |
  
 ## <a name="unauthorized-http-status-code-401"></a>Yetkisiz (HTTP durum kodu 401)
  
-Yetkisiz erişim kaynağa isteğidir.
+Kaynağa erişmek için istek yetkisizdir.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| AdminRequestUnauthorized | Yetkisiz |
-| ManagementRequestUnauthorized | Yetkisiz |
-| ScoreRequestUnauthorized | Geçersiz kimlik bilgileri sağlandı. |
+| AdminRequestYetkisiz | Yetkisiz |
+| YönetimİsteğIYetkisiz | Yetkisiz |
+| ScoreRequestYetkisiz | Geçersiz kimlik bilgileri sağlandı. |
  
-## <a name="notfound-http-status-code-404"></a>Bulunamadı (HTTP durum kodu 404)
+## <a name="notfound-http-status-code-404"></a>NotFound (HTTP durum kodu 404)
  
 Kaynak bulunamadı.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| ModelPackageNotFound | Model paketi bulunamadı. Model paket kimliği doğru olduğunu doğrulayın ve yeniden deneyin. |
-| WebServiceIdNotFoundInWorkspace | Web hizmeti altında bu çalışma alanı bulunamadı. WebServiceId ve çalışma alanı kimliği arasında bir uyumsuzluk var. Sağlanan web hizmeti çalışma alanında bir parçası olduğunu doğrulayın ve yeniden deneyin. |
-| WebServiceNotFound | Web hizmeti bulunamadı. Web hizmeti kimliği doğru olduğunu doğrulayın ve yeniden deneyin. |
-| WorkspaceNotFound | Çalışma alanı bulunamadı. Çalışma alanı kimliği doğru olduğunu doğrulayın ve yeniden deneyin. |
+| ModelPackageNotFound | Model paketi bulunamadı. Model paketi Kimliğinin doğru olduğunu doğrulayın ve yeniden deneyin. |
+| WebServiceIdNotFoundInWorkspace | Bu çalışma alanı altında Web hizmeti bulunamadı. webServiceId ve workspaceId arasında bir uyumsuzluk vardır. Sağlanan web hizmetinin çalışma alanının bir parçası olduğunu doğrulayın ve yeniden deneyin. |
+| WebServiceNotFound | Web hizmeti bulunamadı. Web hizmeti Kimliği'nin doğru olduğunu doğrulayın ve yeniden deneyin. |
+| Çalışma AlanıNotFound | Çalışma alanı bulunamadı. Çalışma alanı kimliğinin doğru olduğunu doğrulayın ve yeniden deneyin. |
  
-## <a name="requesttimeout-http-status-code-408"></a>RequestTimeout (HTTP durum kodu 408)
+## <a name="requesttimeout-http-status-code-408"></a>İstekZaman (HTTP durum kodu 408)
  
-İşlem izin verilen sürede tamamlanamadı.
+İşlem izin verilen süre içinde tamamlanamadı.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| RequestCanceled | İstek, istemci tarafından iptal edildi. |
-| ScoreRequestTimeout | Yürütme isteği zaman aşımına uğradı. |
+| İstekİptal edildi | İstek istemci tarafından iptal edildi. |
+| ScoreRequestTimeout | Yürütme isteği zaman doldu. |
  
 ## <a name="conflict-http-status-code-409"></a>Çakışma (HTTP durum kodu 409)
  
@@ -156,7 +156,7 @@ Kaynak zaten var.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| ModelOutputMetadataMismatch | Geçersiz çıkış parametresi adı. Sütunları yeniden adlandırma ve yeniden denemek için meta verileri Düzenleyicisi modülü kullanmayı deneyin. |
+| ModelOutputMetadataMismatch | Geçersiz çıktı parametresi adı. Sütunları yeniden adlandırmak ve yeniden denemek için meta veri düzenleyicisi modüllerini kullanmayı deneyin. |
  
 ## <a name="memoryquotaviolation-http-status-code-413"></a>MemoryQuotaViolation (HTTP durum kodu 413)
  
@@ -164,92 +164,92 @@ Model, kendisine atanan bellek kotasını aşmıştı.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| OutOfMemoryLimit | Model için tahsis bellekten daha fazlasını tüketilen. Model için izin verilen en yüksek bellek {0} MB 'tır. Modelinizi sorunları gözden geçirin. |
+| OutofmemoryLimit | Model, ona tahsis edilenden daha fazla bellek tüketti. Model için izin verilen {0} maksimum bellek MB'dir. Sorunlar için lütfen modelinizi kontrol edin. |
  
-## <a name="internalerror-http-status-code-500"></a>Internalerror (HTTP durum kodunu 500)
+## <a name="internalerror-http-status-code-500"></a>InternalError (HTTP durum kodu 500)
  
-Yürütme bir iç hatayla karşılaştı.
+Yürütme bir iç hata yla karşılaştı.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
 | AdminAuthenticationFailed |  |
-| BackendArgumentError |  |
+| BackendArgumentHatası |  |
 | BackendBadRequest |  |
 | ClusterConfigBlobMisconfigured |  |
-| ContainerProcessTerminatedWithSystemError | Sistem hatası ile kapsayıcı işlemi kilitlendi |
-| ContainerProcessTerminatedWithUnknownError | Bilinmeyen bir hata ile kapsayıcı işlemi kilitlendi |
-| ContainerValidationFailed | Blob kapsayıcısı doğrulaması şu hatayla başarısız oldu: {0}. |
+| KonteynerİşlemiSonSistemiHatası | Konteyner işlemi sistem hatası ile çöktü |
+| ContainerProcessTerminatedUnknownError hatası | Konteyner işlemi bilinmeyen bir hatayla çöktü |
+| Konteyner DoğrulamaBaşarısız | Blob kapsayıcı doğrulama bu hata {0}ile başarısız oldu: . |
 | DeleteWebServiceResourceFailed |  |
-| ExceptionDeserializationError |  |
+| Özel DurumDeserializationError |  |
 | FailedGettingApiDocument |  |
 | FailedStoringWebService |  |
-| InvalidMemoryConfiguration | Invalidmemoryconfiguration, ConfigValue: {0} |
-| InvalidResourceCacheConfiguration |  |
-| InvalidResourceDownloadConfiguration |  |
-| InvalidWebServiceResources |  |
-| MissingTaskInstance | Hiç bağımsız değişken sağlanmadı. Doğrulayın. geçerli bağımsız değişkenler geçirilir ve yeniden deneyin. |
-| ModelPackageInvalid |  |
-| ModuleExecutionFailed |  |
-| ModuleLoadFailed |  |
-| ModuleObjectCloneFailed |  |
+| GeçersizMemoryConfiguration | GeçersizMemoryConfiguration, ConfigValue:{0} |
+| GeçersizKaynak ÖnbellekYapılandırma |  |
+| GeçersizKaynakDownloadConfiguration |  |
+| GeçersizWebServiceResources |  |
+| Eksik Görev Örneği | Bağımsız değişken sağlanmadı. Geçerli bağımsız değişkenlerin geçirildiğini doğrulayın ve yeniden deneyin. |
+| ModelPackageGeçersiz |  |
+| Modül Yürütme Başarısız |  |
+| ModülYükü Başarısız Oldu |  |
+| ModülObjectCloneFailed |  |
 | OutputConversionFailed |  |
-| PortDataTypeNotSupported | Bağlantı noktası kimliği ={0} desteklenmeyen bir veri türüne sahip: {1}. |
-| ResourceDownload |  |
-| ResourceLoadFailed |  |
+| PortDataTypeNotDesteklenen | Port id={0} desteklenmeyen bir {1}veri türü vardır: . |
+| Kaynak İndir |  |
+| Kaynak YüküBaşarısız |  |
 | ServiceUrisNotFound |  |
-| SwaggerGeneration | Swagger oluşturma başarısız oldu, Ayrıntılar: {0} |
-| UnexpectedScoreStatus |  |
+| SwaggerNesil | Swagger nesil başarısız oldu, Ayrıntılar:{0} |
+| Beklenmeyen Puan Durumu |  |
 | UnknownBackendErrorResponse |  |
-| Başvuruları |  |
-| UnknownJobStatusCode | Bilinmeyen iş durum kodu {0}. |
-| UnknownModuleError |  |
+| UnknownError |  |
+| UnknownJobStatusCode | Bilinmeyen iş {0}durum kodu. |
+| BilinmeyenModül Hatası |  |
 | UpdateWebServiceResourceFailed |  |
 | WebServiceGroupNotFound |  |
-| WebServicePackageInvalid | Invalidwebservicepackage, Ayrıntılar: {0} |
-| WorkerAuthorizationFailed |  |
-| WorkerUnreachable |  |
+| WebServicePackageGeçersiz | GeçersizWebServicePackage, Ayrıntılar:{0} |
+| İşçi Yetkilendirmesi Başarısız Oldu |  |
+| İşçi Erişilemez |  |
  
-## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (HTTP durum kodunu 500)
+## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (HTTP durum kodu 500)
  
-Yürütme bir iç hatayla karşılaştı. Sistem belleği yetersiz. Lütfen yeniden deneyin.
- 
- 
-## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (HTTP durum kodunu 500)
- 
-Geçersiz model paketi. Sağlanan model paketi doğru olduğunu doğrulayın ve yeniden deneyin.
+Yürütme bir iç hata yla karşılaştı. Sistem hafızası düşük. Lütfen tekrar deneyin.
  
  
-## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError (HTTP durum kodunu 500)
+## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (HTTP durum kodu 500)
  
-Geçersiz web hizmeti paketi. Sağlanan web paketi doğru olduğunu doğrulayın ve yeniden deneyin.
+Geçersiz model paketi. Sağlanan model paketinin doğru olduğunu doğrulayın ve yeniden deneyin.
+ 
+ 
+## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError (HTTP durum kodu 500)
+ 
+Geçersiz web servis paketi. Sağlanan web paketinin doğru olduğunu doğrulayın ve yeniden deneyin.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| ModuleError | Web hizmeti paketi graf geçersiz. Ayrıntılar: {0} |
+| Modül Hatası | Web hizmeti paket grafiği geçersizdir. Şey:{0} |
  
-## <a name="initializingcontainers-http-status-code-503"></a>InitializingContainers (HTTP durum kodu 503)
+## <a name="initializingcontainers-http-status-code-503"></a>Başlangıç Kapları (HTTP durum kodu 503)
  
-Kapsayıcıları başlatıldı olarak istek yürütülemiyor.
+Kapsayıcılar başharfe atılıyor gibi istek yürütülemez.
  
  
-## <a name="serviceunavailable-http-status-code-503"></a>ServiceUnavailable (HTTP durum kodu 503)
+## <a name="serviceunavailable-http-status-code-503"></a>ServiceKullanılamaz (HTTP durum kodu 503)
  
 Hizmet geçici olarak kullanılamıyor.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| NoMoreResources | İstek için kullanılabilir kaynaklar yoktur. |
-| RequestThrottled | {0} uç noktası için istek kısıtlandı. Uç nokta için en fazla eşzamanlılık {1}. |
-| TooManyConcurrentRequests | Çok fazla eş zamanlı istek gönderildi. |
-| TooManyHostsBeingInitialized | Çok fazla konak aynı anda başlatılmış. Azaltma / yeniden deneniyor göz önünde bulundurun. |
-| TooManyHostsBeingInitializedPerModel | Çok fazla konak aynı anda başlatılmış. Azaltma / yeniden deneniyor göz önünde bulundurun. |
+| NomoreResources | İstek için kullanılabilir kaynak yok. |
+| İstekThrottled | İstek bitiş noktası için {0} azaltıldı. Bitiş noktası için maksimum eşzamanlılık. {1} |
+| TooManyConcurrentRequests | Çok fazla eşzamanlı istek gönderildi. |
+| TooManyHostsBeingInitialized | Aynı anda çok fazla ana bilgisayar başharfe bünyede başharfe bilgili. Azaltmayı / yeniden denemeyi düşünün. |
+| TooManyHostsBeingInitializedPerModel | Aynı anda çok fazla ana bilgisayar başharfe bünyede başharfe bilgili. Azaltmayı / yeniden denemeyi düşünün. |
  
-## <a name="gatewaytimeout-http-status-code-504"></a>GatewayTimeout (HTTP durum kodu 504)
+## <a name="gatewaytimeout-http-status-code-504"></a>Ağ Geçidi Timeout (HTTP durum kodu 504)
  
-İşlem izin verilen sürede tamamlanamadı.
+İşlem izin verilen süre içinde tamamlanamadı.
  
 | Hata kodu | Kullanıcı iletisi |
 | ---------- |--------------|
-| BackendInitializationTimeout | Web hizmeti başlatma, izin verilen sürede tamamlanamadı. |
-| BackendScoreTimeout | Web hizmeti isteği yürütülmesine izin verilen sürede tamamlanamadı. |
+| BackendInitializationTimeout | Web hizmeti başlatma izin verilen süre içinde tamamlanamadı. |
+| BackendScoreTimeout | Web hizmeti isteği yürütme izin verilen süre içinde tamamlanamadı. |
  

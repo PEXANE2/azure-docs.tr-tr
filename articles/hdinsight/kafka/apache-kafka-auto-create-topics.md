@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka Azure HDInsight 'ta otomatik konu oluşturmayı etkinleştirme
-description: HDInsight üzerinde Apache Kafka otomatik olarak konu başlıkları oluşturacak şekilde yapılandırma hakkında bilgi edinin. Auto. Create. konularını ayarlayarak Kafka 'yi yapılandırabilirsiniz. ambarı aracılığıyla veya PowerShell veya Kaynak Yöneticisi şablonları aracılığıyla küme oluşturma sırasında doğru olarak etkinleştirin.
+title: Apache Kafka'da otomatik konu oluşturmayı etkinleştirin - Azure HDInsight
+description: Apache Kafka'yı HDInsight'ta otomatik olarak konular oluşturmak için nasıl yapılandıracağınızı öğrenin. Kafka'yı ambari üzerinden veya PowerShell veya Resource Manager şablonları aracılığıyla küme oluşturma sırasında gerçeğe uygun olarak auto.create.topics ayarlayarak yapılandırabilirsiniz.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,56 +9,56 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 7ec7d15806927306b12624962facbafddf2ce08b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73242368"
 ---
-# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>HDInsight üzerinde Apache Kafka otomatik olarak konu başlıkları oluşturacak şekilde yapılandırma
+# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka HDInsight'ta otomatik olarak konu oluşturmak için nasıl yapılandırılabilen
 
-Varsayılan olarak, HDInsight üzerinde [Apache Kafka](https://kafka.apache.org/) otomatik konu oluşturmayı etkinleştirmez. [Apache ambarı](https://ambari.apache.org/)'nı kullanarak mevcut kümeler için otomatik konu oluşturmayı etkinleştirebilirsiniz. Ayrıca, bir Azure Resource Manager şablonu kullanarak yeni bir Kafka kümesi oluştururken otomatik konu oluşturmayı etkinleştirebilirsiniz.
+Varsayılan olarak, HDInsight'taki [Apache Kafka](https://kafka.apache.org/) otomatik konu oluşturmayı etkinleştirmez. [Apache Ambari'yi](https://ambari.apache.org/)kullanarak varolan kümeler için otomatik konu oluşturmayı etkinleştirebilirsiniz. Azure Kaynak Yöneticisi şablonu kullanarak yeni bir Kafka kümesi oluştururken otomatik konu oluşturmayı da etkinleştirebilirsiniz.
 
-## <a name="apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimi
+## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
-Ambarı Web Kullanıcı arabirimi aracılığıyla mevcut bir kümede otomatik konu oluşturmayı etkinleştirmek için aşağıdaki adımları kullanın:
+Ambari Web Kullanıcı Arabirimi aracılığıyla varolan bir kümede otomatik konu oluşturmayı etkinleştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com), Kafka kümenizi seçin.
+1. Azure [portalından](https://portal.azure.com)Kafka kümenizi seçin.
 
-1. **Küme panolarında**, **ambarı giriş**' i seçin.
+1. **Küme panolarından** **Ambari home'u**seçin.
 
-    ![Küme panosu seçiliyken portalın görüntüsü](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
+    ![Küme panosu seçili portalın görüntüsü](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-    İstendiğinde, küme için oturum açma (yönetici) kimlik bilgilerini kullanarak kimlik doğrulaması yapın. Alternatif olarak, Kafka Kümenizin adı olan `CLUSTERNAME` `https://CLUSTERNAME.azurehdinsight.net/` doğrudan ' den Amabrı 'e bağlanabilirsiniz.
+    İstendiğinde, küme için giriş (yönetici) kimlik bilgilerini kullanarak kimlik doğrulaması yapın. Alternatif olarak, Kafka kümenizin `https://CLUSTERNAME.azurehdinsight.net/` adının `CLUSTERNAME` bulunduğu yerden Amabri'ye doğrudan bağlanabilirsiniz.
 
 1. Sayfanın solundaki listeden Kafka hizmetini seçin.
 
-    ![Apache ambarı hizmet listesi sekmesi](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    ![Apache Ambari hizmet listesi sekmesi](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
-1. Sayfanın ortasında configs ' ı seçin.
+1. Sayfanın ortasında Configs'ı seçin.
 
-    ![Apache ambarı hizmet yapılandırması yapılandırma](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    ![Apache Ambari hizmet configs sekmesi](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-1. Filtre alanına bir `auto.create`değeri girin.
+1. Filtre alanına bir değer `auto.create`girin.
 
-    ![Apache ambarı arama filtresi alanı](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    ![Apache Ambari arama filtresi alanı](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Bu, Özellik listesini filtreler ve `auto.create.topics.enable` ayarını görüntüler.
+    Bu özellik listesini filtreler ve `auto.create.topics.enable` ayarı görüntüler.
 
-1. `auto.create.topics.enable` değerini `true`olarak değiştirip **Kaydet**' i seçin. Bir Note ekleyin ve sonra yeniden **Kaydet** ' i seçin.
+1. 'nin `auto.create.topics.enable` değerini değiştirin ve sonra **Kaydet'i seçin.** `true` Not ekleyin ve sonra yeniden **Kaydet'i** seçin.
 
-    ![Auto. Create. konular. Enable girişinin görüntüsü](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    ![Image of the auto.create.topics.enable girişi](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-1. Kafka hizmetini seçin, __Yeniden Başlat__' ı seçin ve ardından __etkilenen tümünü yeniden Başlat__' ı seçin. İstendiğinde, __Tümünü Yeniden Başlat__' ı seçin.
+1. Kafka hizmetini seçin, __Yeniden Başlat'ı__seçin ve etkilenen __tümünü Yeniden Başlat'ı__seçin. İstendiğinde, __tümünü yeniden başlat'ı onayla'yı__seçin.
 
-    ![Apache ambarı yeniden başlatma etkilendi](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Apache Ambari tüm etkilenen yeniden başlatın](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
-> Ayrıca, ambarı değerlerini ambarı REST API aracılığıyla da ayarlayabilirsiniz. Bu, geçerli yapılandırmayı almak için birden çok REST çağrısı yapmak, değiştirmek, vb. için genellikle daha zordur. Daha fazla bilgi için [Apache ambarı REST API belgelerini kullanarak HDInsight kümelerini yönetme](../hdinsight-hadoop-manage-ambari-rest-api.md) bölümüne bakın.
+> Ambari REST API ile Ambari değerlerini de ayarlayabilirsiniz. Geçerli yapılandırmayı almak, değiştirmek, vb. için birden çok REST çağrısı yapmak zorunda olduğunuz için bu genellikle daha zordur. Daha fazla bilgi [için, Apache Ambari REST API belgesini kullanarak HDInsight kümelerini yönet'e](../hdinsight-hadoop-manage-ambari-rest-api.md) bakın.
 
 ## <a name="resource-manager-templates"></a>Resource Manager şablonları
 
-Bir Azure Resource Manager şablonu kullanarak bir Kafka kümesi oluştururken, `auto.create.topics.enable` bir `kafka-broker`ekleyerek doğrudan ayarlayabilirsiniz. Aşağıdaki JSON kod parçacığında bu değerin `true`olarak nasıl ayarlanacağı gösterilmektedir:
+Azure Kaynak Yöneticisi şablonu kullanarak Kafka kümesi oluştururken, `auto.create.topics.enable` doğrudan `kafka-broker`bir . Aşağıdaki JSON snippet bu değeri nasıl `true`ayarlayişgösterdiğini gösterir:
 
 ```json
 "clusterDefinition": {
@@ -77,7 +77,7 @@ Bir Azure Resource Manager şablonu kullanarak bir Kafka kümesi oluştururken, 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bu belgede, HDInsight üzerinde Apache Kafka için otomatik konu oluşturmayı nasıl etkinleştireceğinizi öğrendiniz. Kafka ile çalışma hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın:
+Bu belgede, HDInsight'ta Apache Kafka için otomatik konu oluşturmayı nasıl etkinleştireceğinizi öğrendiniz. Kafka ile çalışma hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara bakın:
 
-* [Apache Kafka günlüklerini çözümle](apache-kafka-log-analytics-operations-management.md)
-* [Apache Kafka kümeleri arasında veri çoğaltma](apache-kafka-mirroring.md)
+* [Apache Kafka günlüklerini çözümleme](apache-kafka-log-analytics-operations-management.md)
+* [Apache Kafka kümeleri arasındaki verileri çoğaltma](apache-kafka-mirroring.md)

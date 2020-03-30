@@ -1,7 +1,7 @@
 ---
-title: Metin bölünmüş Bilişsel Beceri
+title: Metin bölünmüş bilişsel beceri
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde bulunan metni, öbeklere veya metin sayfalarına bölün.
+description: Azure Bilişsel Arama'daki bir AI zenginleştirme ardışık hattındaki uzunluğa göre metni parçalara veya metin sayfalarına ayırın.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,48 +9,48 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73479662"
 ---
-# <a name="text-split-cognitive-skill"></a>Metin bölünmüş Bilişsel Beceri
+# <a name="text-split-cognitive-skill"></a>Metin bölünmüş bilişsel beceri
 
-Metni **bölünmüş** metin, metni metin parçalara ayırır. Metni cümlelere veya belirli uzunluktaki sayfalara bölmek isteyip istemediğinizi belirtebilirsiniz. Bu beceri, özellikle diğer yeteneklerin akış yönündeki maksimum metin uzunluğu gereksinimi olduğunda yararlıdır. 
+**Metin Bölme** becerisi metni metin yığınlarına böler. Metni cümlelere mi yoksa belirli bir uzunluktaki sayfalara mı ayırmak istediğinizi belirtebilirsiniz. Bu beceri, özellikle akış aşağı diğer becerilerde maksimum metin uzunluğu gereksinimleri varsa yararlıdır. 
 
 > [!NOTE]
-> Bu yetenek bilişsel hizmetler API 'SI ile bağlantılı değildir ve bunu kullanmak için ücretlendirilirsiniz. Yine de bir bilişsel [Hizmetler kaynağı iliştirmelisiniz](cognitive-search-attach-cognitive-services.md), ancak her gün çok az sayıda günlük zenginleştirme için sizi sınırlayan **ücretsiz** Kaynak seçeneğini geçersiz kılabilirsiniz.
+> Bu beceri Bilişsel Hizmetler API'sine bağlı değildir ve bunu kullanmak için ücret alınmaz. Yine de, günlük günlük zenginleştirmeler az sayıda sizi sınırlayan **Ücretsiz** kaynak seçeneği geçersiz kılmak için, [bilişsel hizmetler kaynak eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. yetenekler. Text. Splitbeceri 
+Microsoft.Skills.Text.SplitSkill 
 
-## <a name="skill-parameters"></a>Yetenek parametreleri
+## <a name="skill-parameters"></a>Beceri Parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| textSplitMode      | "Pages" veya "cümleler" | 
-| maximumPageLength | TextSplitMode, "Pages" olarak ayarlanırsa, `String.Length`göre ölçülen maksimum sayfa uzunluğuna başvurur. Minimum değer 100 ' dir.  TextSplitMode değeri "Pages" olarak ayarlandıysa, algoritma metni en çok "maximumPageLength" boyutunda olan parçalara bölmeye çalışır. Bu durumda, algoritma bir cümle sınırında tümceyi bölmek için en iyi şekilde yapılır, bu nedenle öbek boyutu "maximumPageLength" değerinden biraz daha az olabilir. | 
-| defaultLanguageCode   | seçim Şu dil kodlarından biri: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer Ingilizce 'dir (en). Göz önünde bulundurulması gereken birkaç nokta vardır:<ul><li>LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.</li><li>Dil önceki listede değilse, bölünmüş beceri metin karakter sınırlarındaki metni keser.</li><li>Bir dil kodu sağlamak, Çince, Japonca ve Korece gibi boşluk olmayan diller için bir sözcüğün yarısını kesmemek için yararlıdır.</li><li>Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), İngilizce (en) varsayılan değer yeterli olmalıdır. </li></ul>  |
+| textSplitMode      | Ya "sayfalar" ya da "cümleler" | 
+| maksimumPageLength | textSplitMode "sayfalar" olarak ayarlanmışsa, bu, `String.Length`'ile ölçülen maksimum sayfa uzunluğuna başvurur. Minimum değer 100'dür.  TextSplitMode "sayfalar" olarak ayarlanmışsa, algoritma metni en fazla "maximumPageLength" boyutunda olan parçalara bölmeye çalışır. Bu durumda, algoritma cümleyi bir cümle sınırında kırmak için elinden geleni yapar, bu nedenle östen boyutu "maksimum PageLength"tan biraz daha az olabilir. | 
+| defaultLanguageCode   | (isteğe bağlı) Aşağıdaki dil kodlarından `da, de, en, es, fi, fr, it, ko, pt`biri: . Varsayılan, İngilizce (tr) olur. Göz önünde bulundurulması gereken birkaç şey:<ul><li>Bir languagecode-countrycode biçimini geçerseniz, biçimin yalnızca languagecode bölümü kullanılır.</li><li>Dil önceki listede değilse, bölme becerisi karakter sınırlarında metni kırar.</li><li>Dil kodu sağlamak, Çince, Japonca ve Korece gibi beyaz olmayan diller için bir sözcüğü yarıya kesmekten kaçınmak için yararlıdır.</li><li>Dili bilmiyorsanız (yani [LanguageDetectionSkill'e](cognitive-search-skill-language-detection.md)giriş için metni bölmeniz gerekir), İngilizce (tr) varsayılanı yeterli olmalıdır. </li></ul>  |
 
 
-## <a name="skill-inputs"></a>Beceri girişleri
+## <a name="skill-inputs"></a>Beceri Girişleri
 
 | Parametre adı       | Açıklama      |
 |----------------------|------------------|
-| metin  | Alt dizeden bölünecek metin. |
-| languageCode  | Seçim Belge için dil kodu. Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), bu girişin kaldırılması güvenlidir.  |
+| metin  | Alt dize ye bölünecek metin. |
+| languageCode  | (İsteğe bağlı) Belgenin dil kodu. Dili bilmiyorsanız (yani [languageDetectionSkill'e](cognitive-search-skill-language-detection.md)giriş için metni bölmeniz gerekir), bu girişi kaldırmak güvenlidir.  |
 
-## <a name="skill-outputs"></a>Yetenek çıkışları 
+## <a name="skill-outputs"></a>Beceri Çıktıları 
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| Textıtems | Ayıklanan alt dizeler dizisi. |
+| textItems | Çıkarılan bir dizi alt dize. |
 
 
-##  <a name="sample-definition"></a>Örnek tanım
+##  <a name="sample-definition"></a>Örnek tanımı
 
 ```json
 {
@@ -100,7 +100,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 }
 ```
 
-##  <a name="sample-output"></a>Örnek çıkış
+##  <a name="sample-output"></a>Örnek Çıktı
 
 ```json
 {
@@ -127,10 +127,10 @@ Parametreler büyük/küçük harfe duyarlıdır.
 }
 ```
 
-## <a name="error-cases"></a>Hata durumları
-Bir dil desteklenmiyorsa, bir uyarı oluşturulur ve metin karakter sınırlarına bölünür.
+## <a name="error-cases"></a>Hata örnekleri
+Bir dil desteklenmezse, bir uyarı oluşturulur ve metin karakter sınırlarında bölünür.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)

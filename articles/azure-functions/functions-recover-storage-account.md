@@ -1,38 +1,38 @@
 ---
-title: 'Sorun giderme hatası: Azure İşlevleri Çalışma Zamanı ulaşılamıyor'
-description: Geçersiz bir depolama hesabında sorun gidermeyi öğrenin.
+title: 'Sorun giderme hatası: Azure İşlevler Runtime erişilemez'
+description: Geçersiz bir depolama hesabının nasıl giderilmeye başlandığını öğrenin.
 author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
 ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063790"
 ---
-# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Sorun giderme hatası: "Azure İşlevleri Çalışma Zamanı erişilebilir değil"
+# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Sorun giderme hatası: "Azure İşlevler Çalışma Süresi erişilmazdir"
 
-Bu makale, Azure portal görüntülenen aşağıdaki hata dizesinin sorunlarını gidermenize yardımcı olur:
+Bu makale, Azure portalında görünen aşağıdaki hata dizesini gidermenize yardımcı olur:
 
-> "Hata: Azure İşlevleri Çalışma Zamanı ulaşılamaz. Depolama yapılandırmasıyla ilgili ayrıntılar için buraya tıklayın. "
+> "Hata: Azure İşlevler Runtime erişilemez. Depolama yapılandırması ile ilgili ayrıntılar için buraya tıklayın."
 
-Azure İşlevleri Çalışma Zamanı başlayamediğinde bu sorun oluşur. Sorunun en yaygın nedeni, işlev uygulamasının depolama hesabına erişiminin kaybedilme nedenidir. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
+Bu sorun, Azure İşlevler Çalıştırıladığında ortaya çıkar. Sorunun en yaygın nedeni, işlev uygulamasının depolama hesabına erişimini kaybetmiş olmasıdır. Daha fazla bilgi için [Bkz. Depolama hesabı gereksinimleri.](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
-Bu makalenin geri kalanında, her bir durumu belirleme ve çözme dahil olmak üzere bu hatanın aşağıdaki nedenlerini gidermenize yardımcı olur.
+Bu makalenin geri kalanı, her servis talebinin nasıl tanımlandığı ve çözüleceği de dahil olmak üzere, bu hatanın aşağıdaki nedenlerini gidermenize yardımcı olur.
 
 ## <a name="storage-account-was-deleted"></a>Depolama hesabı silindi
 
-Her işlev uygulamasının çalışması için bir depolama hesabının olması gerekir. Bu hesap silinirse, işleviniz çalışmaz.
+Her işlev uygulamasının çalışması için bir depolama hesabı gerektirir. Bu hesap silinirse, işleviniz çalışmaz.
 
-Uygulama ayarlarınızda depolama hesabı adınızı arayarak başlayın. `AzureWebJobsStorage` ya da `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`, bir bağlantı dizesinde Sarmalanan depolama hesabınızın adını içerir. Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
+Uygulama ayarlarınızda depolama hesabı adınızı bakarak başlayın. Bağlantı `AzureWebJobsStorage` `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` dizesinde sarılmış depolama hesabınızın adını veya adını içerir. Daha fazla bilgi için [Azure İşlevler için Uygulama ayarları başvurusuna](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)bakın.
 
-Hala mevcut olup olmadığını görmek için Azure portal depolama hesabınızı arayın. Silinmişse, depolama hesabını yeniden oluşturun ve depolama bağlantı dizelerinizi değiştirin. İşlev kodunuz kaybolur ve yeniden dağıtmanız gerekir.
+Depolama hesabınızı azure portalında arayararak hala var olup olmadığını görün. Silinmişse, depolama hesabını yeniden oluşturun ve depolama bağlantı dizelerinizi değiştirin. İşlev kodunuz kayboldu ve yeniden dağıtmanız gerekiyor.
 
 ## <a name="storage-account-application-settings-were-deleted"></a>Depolama hesabı uygulama ayarları silindi
 
-Önceki adımda, bir depolama hesabı bağlantı dizesi bulamazsanız muhtemelen silinmiş veya üzerine yazılmıştı. Uygulama ayarlarının silinmesi, dağıtım yuvaları veya Azure Resource Manager betikleri kullanırken uygulama ayarlarını ayarlamak için genellikle gerçekleşir.
+Önceki adımda, bir depolama hesabı bağlantı dizesini bulamıyorsanız, büyük olasılıkla silinmiş veya üzerine yazılmış. Uygulama ayarlarını silme işlemi en sık uygulama ayarlarını ayarlamak için dağıtım yuvalarını veya Azure Kaynak Yöneticisi komut dosyalarını kullanırken gerçekleşir.
 
 ### <a name="required-application-settings"></a>Gerekli uygulama ayarları
 
@@ -42,57 +42,57 @@ Hala mevcut olup olmadığını görmek için Azure portal depolama hesabınız�
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
+Daha fazla bilgi için [Azure İşlevler için Uygulama ayarları başvurusuna](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)bakın.
 
 ### <a name="guidance"></a>Rehber
 
-* Bu ayarlardan herhangi biri için "yuva ayarı" ' nı denetmayın. Dağıtım yuvalarını takas ederseniz, işlev uygulaması kesilir.
-* Bu ayarları otomatik dağıtımların parçası olarak değiştirmeyin.
-* Bu ayarlar, oluşturma sırasında sağlanmalı ve geçerli olmalıdır. Bu ayarları içermeyen bir otomatik dağıtım, ayarlar daha sonra eklense bile çalıştırmayacak bir işlev uygulamasına neden olur.
+* Bu ayarların hiçbiri için "yuva ayarı"nı denetlemeyin. Dağıtım yuvalarını değiştirirseniz, işlev uygulaması kırılır.
+* Otomatik dağıtımların bir parçası olarak bu ayarları değiştirmeyin.
+* Bu ayarlar oluşturma zamanında sağlanmalı ve geçerli olmalıdır. Bu ayarları içermeyen otomatik dağıtım, ayarlar daha sonra eklense bile çalışmayan bir işlev uygulamasıyla sonuçlanır.
 
-## <a name="storage-account-credentials-are-invalid"></a>Depolama hesabı kimlik bilgileri geçersiz
+## <a name="storage-account-credentials-are-invalid"></a>Depolama hesabı kimlik bilgileri geçersizdir
 
-Depolama anahtarlarını yeniden oluşturursanız, daha önce tartışılan depolama hesabı bağlantı dizeleri güncelleştirilmeleri gerekir. Depolama anahtarı yönetimi hakkında daha fazla bilgi için bkz. [Azure Storage hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Depolama anahtarlarını yeniden oluşturursanız, daha önce tartışılan depolama hesabı bağlantı dizeleri güncelleştirilmelidir. Depolama anahtarı yönetimi hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
 ## <a name="storage-account-is-inaccessible"></a>Depolama hesabına erişilemiyor
 
-İşlev uygulamanız depolama hesabına erişebilmelidir. Bir işlev uygulamasının bir depolama hesabına erişimini engelleyen yaygın sorunlar şunlardır:
+İşlev uygulamanız depolama hesabına erişebilmeli. Bir işlev uygulamasının bir depolama hesabına erişimini engelleyen sık karşılaşılan sorunlar şunlardır:
 
-* İşlev uygulaması, depolama hesabından gelen ve giden trafiğe izin vermek için doğru ağ kuralları olmadan App Service Ortamı dağıtılır.
+* İşlev uygulaması, depolama hesabına ve depolama hesabından trafiğin girmesine izin vermek için doğru ağ kuralları olmadan App Service Environment'ınıza dağıtılır.
 
-* Depolama hesabı güvenlik duvarı etkinleştirilir ve işlevlere ve işlevlerine giden trafiğe izin verecek şekilde yapılandırılmamıştır. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* Depolama hesabı güvenlik duvarı etkindir ve işlevlere gelen ve gelen trafiğe izin verecek şekilde yapılandırılmamıştır. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="daily-execution-quota-is-full"></a>Günlük yürütme kotası dolu
 
-Günlük yürütme kotayı yapılandırdıysanız, işlev uygulamanız geçici olarak devre dışı bırakılır ve bu da Portal denetimlerinin çoğunun kullanılamaz hale gelmesine neden olur. 
+Günlük yürütme kotası yapılandırıldıysa, işlev uygulamanız geçici olarak devre dışı bırakılır ve bu da portal denetimlerinin çoğunun kullanılamamasına neden olur. 
 
-[Azure Portal](https://portal.azure.com)kotayı doğrulamak için, Işlev uygulamanızda **Platform özellikleri** > **işlev uygulaması ayarları** ' nı seçin. Ayarladığınız **günlük kullanım kotasının** üzerinde çalışıyorsanız, aşağıdaki ileti görüntülenir:
+[Azure portalındaki](https://portal.azure.com)kotayı doğrulamak için işlev uygulamanızdaki **Platform Özellikleri** > **İşlev Uygulama Ayarları'nı** seçin. Belirlediğiniz **Günlük Kullanım Kotasını** aştıysanız, aşağıdaki ileti görüntülenir:
 
-  > "İşlev Uygulaması günlük kullanım kotasına ulaştı ve sonraki 24 saatlik zaman dilimine kadar durduruldu."
+  > "İşlev Uygulaması günlük kullanım kotası ulaştı ve sonraki 24 saat zaman dilimine kadar durduruldu."
 
-Bu sorunu çözmek için günlük kotasını kaldırın veya arttırın ve sonra uygulamanızı yeniden başlatın. Aksi takdirde, uygulamanızın yürütülmesi bir sonraki güne kadar engellenir.
+Bu sorunu gidermek için günlük kotayı kaldırın veya artırın ve ardından uygulamanızı yeniden başlatın. Aksi takdirde, uygulamanızın yürütülmesi ertesi güne kadar engellenir.
 
 ## <a name="app-is-behind-a-firewall"></a>Uygulama bir güvenlik duvarının arkasında
 
-İşlev çalışma zamanı, aşağıdaki nedenlerden biri için ulaşılamaz olabilir:
+İşlev çalışma süreniz aşağıdaki nedenlerden herhangi biri için erişilemez olabilir:
 
-* İşlev uygulamanız, [dahili olarak yük dengeli bir App Service ortamı](../app-service/environment/create-ilb-ase.md) barındırılır ve gelen internet trafiğini engelleyecek şekilde yapılandırılmıştır.
+* İşlev uygulamanız [dahili olarak yüklü](../app-service/environment/create-ilb-ase.md) bir Uygulama Hizmeti Ortamında barındırılır ve gelen internet trafiğini engelleyecek şekilde yapılandırılır.
 
-* İşlev uygulamanızda internet erişimini engelleyecek şekilde yapılandırılmış [gelen IP kısıtlamaları](functions-networking-options.md#inbound-ip-restrictions) vardır. 
+* İşlev uygulamanız, internet erişimini engellemek için yapılandırılan [gelen IP kısıtlamalarına](functions-networking-options.md#inbound-ip-restrictions) sahiptir. 
 
-Azure portal işlevler listesini getirmek için doğrudan çalışan uygulamaya çağrı yapar ve kudu uç noktasına HTTP çağrıları yapar. **Platform özellikleri** sekmesi altındaki platform düzeyi ayarları hala kullanılabilir.
+Azure portalı, işlevlerin listesini almak için doğrudan çalışan uygulamaya arama yapar ve HTTP çağrılarını Kudu bitiş noktasına yapar. **Platform Özellikleri** sekmesi altındaki platform düzeyinde ayarlar hala kullanılabilir.
 
-App Service Ortamı yapılandırmanızı doğrulamak için:
-1. App Service Ortamı bulunduğu alt ağın ağ güvenlik grubu 'na (NSG) gidin.
-1. Uygulamaya eriştiğiniz bilgisayarın genel IP 'sinden gelen trafiğe izin vermek için gelen kurallarını doğrulayın. 
+Uygulama Hizmeti Ortamı yapılandırmanızı doğrulamak için:
+1. Uygulama Hizmet Ortamının bulunduğu alt ağın ağ güvenlik grubuna (NSG) gidin.
+1. Uygulamaya eriştiğiniz bilgisayarın genel IP'sinden gelen trafiğe izin vermek için gelen kuralları doğrulayın. 
    
-Portalı, uygulamanızı çalıştıran sanal ağa veya sanal ağınızda çalışan bir sanal makineye bağlı bir bilgisayardan da kullanabilirsiniz. 
+Portalı, uygulamanızı çalıştıran sanal ağa veya sanal ağınızda çalışan sanal bir makineye bağlı bir bilgisayardan da kullanabilirsiniz. 
 
-Gelen kuralı yapılandırması hakkında daha fazla bilgi için, [bir App Service ortamı Için ağ oluşturma konuları](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)"ağ güvenlik grupları" bölümüne bakın.
+Gelen kural yapılandırması hakkında daha fazla bilgi için, [Bir Uygulama Hizmeti Ortamı için Ağ konularının](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)"Ağ Güvenlik Grupları" bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İşlev uygulamalarınızı izleme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Azure Işlevlerini izleme](functions-monitoring.md)
+> [Azure İşlevlerini İzleme](functions-monitoring.md)

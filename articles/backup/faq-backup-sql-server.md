@@ -1,107 +1,107 @@
 ---
-title: SSS-Azure VM 'lerinde SQL Server veritabanlarını yedekleme
-description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
+title: SSS - Azure VM'lerde SQL Server veritabanlarını yedekleme
+description: Azure Yedekleme ile Azure VM'lerde SQL Server veritabanlarını yedekleme yle ilgili sık sorulan soruların yanıtlarını bulun.
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247715"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
-Bu makalede, Azure sanal makinelerinde (VM 'Ler) çalışan SQL Server veritabanlarının yedeklenmesi ve [Azure Backup](backup-overview.md) hizmetinin kullanılması hakkında sık sorulan sorular yanıtlanmaktadır.
+Bu makalede, Azure sanal makinelerde (VM) çalışan ve [Azure Yedekleme](backup-overview.md) hizmetini kullanan SQL Server veritabanlarını yedekleme yle ilgili sık sorulan soruları yanıtlar.
 
-## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>IaaS sanal makinesi için Azure Backup 'ın yanı sıra aynı makinede SQL Server kullanabilir miyim?
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>IaaS VM ve SQL Server için Azure yedeklemesini aynı makinede kullanabilir miyim?
 
-Evet, VM yedeklemesi ve SQL Backup 'ın aynı VM 'de olmasını sağlayabilirsiniz. Bu durumda, günlükleri kesmeyin şekilde sanal makinede salt kopya tam yedeklemeyi tetikliyoruz.
+Evet, aynı VM'de hem VM yedeklemehem de SQL yedeklemesi olabilir. Bu durumda, günlükleri burdamamak için VM'de yalnızca kopyalı tam yedeklemeyi dahili olarak tetikleriz.
 
-## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>Çözüm yeniden denensin veya yedeklemeleri otomatik olarak al mi?
+## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>Çözüm yedekleri yeniden dener veya otomatik olarak iyileştirir mi?
 
-Bazı durumlarda Azure Backup hizmeti düzeltme yedeklemelerini tetikler. Otomatik Heal aşağıda bahsedilen altı koşuldan herhangi biri için gerçekleşebilir:
+Bazı durumlarda Azure Yedekleme hizmeti düzeltici yedeklemeleri tetikler. Otomatik iyileşme aşağıda belirtilen altı koşuldan herhangi biri için gerçekleşebilir:
 
-- Günlük veya değişiklik yedeklemesi LSN doğrulama hatası nedeniyle başarısız olursa, sonraki günlük veya değişiklik yedeklemesi bunun yerine tam yedeklemeye dönüştürülür.
-- Bir günlük veya değişiklik yedeklemesinden önce tam yedekleme gerçekleştiyse, bu günlük veya değişiklik yedeklemesi bunun yerine tam yedeklemeye dönüştürülür.
-- En son tam yedeklemenin zaman aşımı 15 günden eskiyse, sonraki günlük veya değişiklik yedeklemesi bunun yerine tam yedeklemeye dönüştürülür.
-- Uzantı yükseltmesi nedeniyle iptal edilen tüm yedekleme işleri, yükseltme tamamlandıktan ve uzantı başlatıldıktan sonra yeniden tetiklenir.
-- Geri yükleme sırasında veritabanının üzerine yazmayı seçerseniz, bir sonraki günlük/değişiklik yedeklemesi başarısız olur ve bunun yerine tam yedekleme tetiklenir.
-- Veritabanı kurtarma modelindeki değişiklik nedeniyle günlük zincirlerinin sıfırlanması için tam yedeklemenin gerekli olduğu durumlarda, bir sonraki zamanlamaya göre bir tam otomatik olarak tetiklenir.
+- LSN Doğrulama Hatası nedeniyle günlük veya diferansiyel yedekleme başarısız olursa, sonraki günlük veya diferansiyel yedekleme bunun yerine tam yedeklemeye dönüştürülür.
+- Günlük veya diferansiyel yedeklemeden önce tam yedekleme gerçekleşmemişse, bu günlük veya diferansiyel yedekleme bunun yerine tam yedeklemeye dönüştürülür.
+- En son tam yedeklemenin giriş süresi 15 günden daha eskiyse, bir sonraki günlük veya diferansiyel yedekleme bunun yerine tam yedeklemeye dönüştürülür.
+- Bir uzantı yükseltmesi nedeniyle iptal edilen tüm yedekleme işleri, yükseltme tamamlandıktan ve uzantı başlatıldıktan sonra yeniden tetiklenir.
+- Geri Yükleme sırasında veritabanının üzerine yazmayı seçerseniz, bir sonraki günlük/diferansiyel yedekleme başarısız olur ve bunun yerine tam bir yedekleme tetiklenir.
+- Veritabanı kurtarma modelindeki değişiklik nedeniyle günlük zincirlerini sıfırlamak için tam yedekleme nin gerekli olduğu durumlarda, tam bir sonraki zamanlamada otomatik olarak tetiklenir.
 
-Otomatik olarak bir özellik olarak tüm kullanıcılar için varsayılan olarak etkindir; Ancak, bunu devre dışı bırakmak isterseniz aşağıdaki işlemleri gerçekleştirin:
+Bir yetenek olarak otomatik iyileşme varsayılan olarak tüm kullanıcı için etkinleştirilir; Ancak, bu durumu devre dışı bırakmayı seçerseniz, aşağıdakileri gerçekleştirin:
 
-- SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe **ExtensionSettingsOverrides. JSON** dosyasını oluşturun veya düzenleyin.
-- **ExtensionSettingsOverrides. JSON**dosyasında *{"EnableAutoHealer": false}* ayarlayın.
+- SQL Server örneğinde, *C:\Program Files\Azure İş Yükü Yedekleme\bin* **klasöründe, ExtensionSettingsOverrides.json** dosyasını oluşturun veya düzenleme.
+- **ExtensionSettingsOverrides.json'da** *{"EnableAutoHealer": false}* ayarlayın.
 - Değişikliklerinizi kaydedin ve dosyayı kapatın.
-- SQL Server örneğinde, **Görevi Yönet** ' i açın ve sonra **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.
+- SQL Server örneğinde **Görev Yönet'i** açın ve **ardından AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.
 
-## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL Server 'da kaç tane eş zamanlı yedeklemenin çalıştırıldığını denetleyebilir miyim?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL sunucusunda kaç eşzamanlı yedeklemenin çalıştırıldığını denetleyebilir miyim?
 
-Evet. Bir SQL Server örneğindeki etkiyi en aza indirmek için yedekleme ilkesinin çalışma hızını azallendirebilirsiniz. Ayarı değiştirmek için:
+Evet. Bir SQL Server örneğindeki etkiyi en aza indirmek için yedekleme ilkesinin çalıştığı hızı azaltabilirsiniz. Ayarı değiştirmek için:
 
-1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe *ExtensionSettingsOverrides. JSON* dosyasını oluşturun.
-2. *ExtensionSettingsOverrides. JSON* dosyasında **Defaultbackuptasksthreshold** ayarını daha düşük bir değere (örneğin, 5) değiştirin. <br>
+1. SQL Server örneğinde, *C:\Program Files\Azure İş Yükü Yedekleme\bin* *klasöründe, ExtensionSettingsOverrides.json* dosyasını oluşturun.
+2. *ExtensionSettingsOverrides.json* **dosyasında, VarsayılanBackupTasksThreshold** ayarını daha düşük bir değere (örneğin, 5) değiştirin. <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
-DefaultBackupTasksThreshold varsayılan değeri **20**' dir.
+VarsayılanBackupTasksThreshold varsayılan değeri **20'dir.**
 
 3. Değişikliklerinizi kaydedin ve dosyayı kapatın.
-4. SQL Server örneğinde, **Görev Yöneticisi**'ni açın. **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.<br/> <br/>
- Bu yöntem, yedek uygulamanın büyük miktarda kaynak tükettiği durumlarda, SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) , gelen uygulama ISTEKLERININ kullanabileceği CPU, fiziksel GÇ ve bellek miktarına yönelik sınırları belirtmenin daha genel bir yoludur.
+4. SQL Server örneğinde **Görev Yöneticisi'ni**açın. **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.<br/> <br/>
+ Bu yöntem, yedekleme uygulaması büyük miktarda kaynak tüketiyorsa yardımcı olsa da, SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) gelen uygulama isteklerinin kullanabileceği CPU, fiziksel IO ve bellek miktarına sınırlamalar belirtmenin daha genel bir yoludur.
 
 > [!NOTE]
-> UX 'de, herhangi bir zamanda daha fazla yedekleme yapabilirsiniz, ancak yukarıdaki örneğe göre, 5 ' in bir kayan penceresinde işlenir.
+> UX'de herhangi bir zamanda birçok yedekleme olarak devam edebilir ve zamanlayabilirsiniz, ancak yukarıdaki örneğe göre 5'in sürgülü penceresinde işlenirler.
 
-## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>İkincil bir çoğaltmadan tam yedekleme çalıştırabilir miyim?
+## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>İkincil bir yinelemeden tam yedekleme çalıştırabilir miyim?
 
-SQL kısıtlamalarına göre, Ikincil çoğaltmada yalnızca tam yedeklemeyi Kopyala ' yı çalıştırabilirsiniz; Ancak tam yedeklemeye izin verilmez.
+SQL sınırlamalarına göre, İkincil Yineleme'de Yalnızca Tam Yedekleme kopyala yı çalıştırabilirsiniz; ancak Tam yedeklemeye izin verilmez.
 
-## <a name="can-i-protect-availability-groups-on-premises"></a>Şirket içi kullanılabilirlik gruplarını koruyabilir miyim?
+## <a name="can-i-protect-availability-groups-on-premises"></a>Şirket içinde kullanılabilirlik gruplarını koruyabilir miyim?
 
-Hayır. Azure 'da çalışan SQL Server veritabanlarını Azure Backup korur. Bir kullanılabilirlik grubu (AG) Azure ile şirket içi makineler arasında yayılaysa, ağ yalnızca birincil çoğaltma Azure 'da çalışıyorsa korunabilir. Ayrıca, Azure Backup yalnızca kurtarma hizmetleri kasasıyla aynı Azure bölgesinde çalışan düğümleri korur.
+Hayır. Azure Yedekleme, Azure'da çalışan SQL Server veritabanlarını korur. Kullanılabilirlik grubu (AG) Azure ve şirket içi makineler arasında yayılıyorsa, AG yalnızca birincil yineleme Azure'da çalışıyorsa korunabilir. Ayrıca, Azure Yedekleme yalnızca Kurtarma Hizmetleri kasası ile aynı Azure bölgesinde çalışan düğümleri korur.
 
-## <a name="can-i-protect-availability-groups-across-regions"></a>Bölge genelindeki kullanılabilirlik gruplarını koruyabilir miyim?
+## <a name="can-i-protect-availability-groups-across-regions"></a>Kullanılabilirlik gruplarını bölgeler arasında koruyabilir miyim?
 
-Azure Backup kurtarma hizmetleri Kasası, kasala aynı bölgedeki tüm düğümleri algılayabilir ve koruyabilir. SQL Server Always on kullanılabilirlik grubunuz birden çok Azure bölgesine yayılmışsa, birincil düğümü olan bölgeden Yedeklemeyi ayarlayın. Azure Backup, yedekleme tercihlerinize göre kullanılabilirlik grubundaki tüm veritabanlarını algılayabilir ve koruyabilir. Yedekleme tercihiniz karşılanmazsa yedeklemeler başarısız olur ve hata uyarısını alırsınız.
+Azure Yedekleme Kurtarma Hizmetleri kasası, kasayla aynı bölgede bulunan tüm düğümleri algılayabilir ve koruyabilir. SQL Server Always On kullanılabilirlik grubunuz birden çok Azure bölgesine yayılıyorsa, birincil düğüme sahip bölgeden yedeklemeyi ayarlayın. Azure Yedekleme, yedekleme tercihinize göre kullanılabilirlik grubundaki tüm veritabanlarını algılayabilir ve koruyabilir. Yedekleme tercihiniz karşılanmadığında, yedeklemeler başarısız olur ve hata uyarısı alırsınız.
 
-## <a name="do-successful-backup-jobs-create-alerts"></a>Başarılı yedekleme işleri uyarı oluştursın mı?
+## <a name="do-successful-backup-jobs-create-alerts"></a>Başarılı yedekleme işleri sonucunda uyarı oluşturulur mu?
 
-Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca başarısız olan yedekleme işleri için gönderilir. Portal uyarıları için ayrıntılı davranış [burada](backup-azure-monitoring-built-in-monitor.md)belgelenmiştir. Ancak, bu işlemleri başarılı işler için bile izleyebilirsiniz, [Azure izleyici 'yi kullanarak izlemeyi](backup-azure-monitoring-use-azuremonitor.md)kullanabilirsiniz.
+Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca başarısız olan yedekleme işleri için gönderilir. Portal uyarıları için ayrıntılı davranış [burada](backup-azure-monitoring-built-in-monitor.md)belgelenmiştir. Ancak, başarılı işler için bile uyarılar varsa, ilginizi çekebilir, [Azure Monitor'u kullanarak İzleme'yi](backup-azure-monitoring-use-azuremonitor.md)kullanabilirsiniz.
 
-## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Yedekleme Işleri menüsünde zamanlanmış yedekleme işlerini görebilir miyim?
+## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Yedek İşler menüsünde zamanlanmış yedekleme işleri görebilir miyim?
 
-**Yedekleme işi** menüsü yalnızca isteğe bağlı yedekleme işlerini gösterir. Zamanlanan iş için [Azure izleyici 'yi kullanarak izlemeyi](backup-azure-monitoring-use-azuremonitor.md)kullanın.
+**Yedek İş** menüsü yalnızca isteğe bağlı yedekleme işleri gösterir. [Azure Monitör'ü kullanarak](backup-azure-monitoring-use-azuremonitor.md)zamanlanmış iş kullanımı İzleme için.
 
-## <a name="are-future-databases-automatically-added-for-backup"></a>Gelecekteki veritabanları yedekleme için otomatik olarak eklendi mi?
+## <a name="are-future-databases-automatically-added-for-backup"></a>Gelecekteki veritabanları yedekleme için otomatik olarak eklenir mi?
 
-Evet, bu özelliği [otomatik koruma](backup-sql-server-database-azure-vms.md#enable-auto-protection)ile elde edebilirsiniz.  
+Evet, [otomatik koruma](backup-sql-server-database-azure-vms.md#enable-auto-protection)ile bu özelliği elde edebilirsiniz.  
 
-## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Bir veritabanını bir yeniden korunan örnekten silersem, yedeklemelere ne olur?
+## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Otomatik korumalı bir örnekten bir veritabanını silersem, yedeklemelere ne olur?
 
-Bir veritabanı, bir yeniden korunan örnekten bırakılırsa, veritabanı yedeklemeleri hala denenir. Bu, silinen veritabanının **yedekleme öğeleri** altında sağlıksız olarak gösterilmeye başladığı ve hala korunduğu anlamına gelir.
+Bir veritabanı otomatik korumalı bir örnekten bırakılırsa, veritabanı yedeklemeleri yine de denenir. Bu, silinen veritabanının **Yedekleme Öğeleri** altında sağlıksız olarak görünmeye başladığı ve hala korunduğu anlamına gelir.
 
-Bu veritabanını korumayı durdurmak için doğru yol, bu veritabanındaki **silme verileriyle** **yedeklemeyi durdurmaktır** .  
+Bu veritabanını korumayı durdurmanın en doğru yolu, bu veritabanındaki **verileri silerek** **Yedeklemeyi Durdur'u** yapmaktır.  
 
-## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Otomatik korumalı bir veritabanının yedekleme işlemini durdurdum, davranışı ne olur?
+## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Otomatik korumalı bir veritabanının yedekleme işlemini durdurursam davranışı ne olacak?
 
-**Verileri koruma ile yedeklemeyi durdurursanız**, gelecekteki yedeklemeler gerçekleşmez ve var olan kurtarma noktaları değişmeden kalır. Veritabanı hala korumalı olarak kabul edilir ve **yedekleme öğeleri**altında gösterilir.
+Yedeklemeyi **tutma verileriyle durdurursanız,** gelecekteki yedeklemeler gerçekleşmez ve varolan kurtarma noktaları bozulmadan kalır. Veritabanı yine de korumalı olarak kabul edilecek ve **Yedekleme öğeleri**altında gösterilecek.
 
-**Silme verileriyle yedeklemeyi durdurursanız**, gelecekteki yedeklemeler gerçekleşmeyecektir ve var olan kurtarma noktaları da silinir. Veritabanı korunmuyor olarak değerlendirilir ve yapılandırma Yedeklemedeki örnek altında gösterilir. Bununla birlikte, el ile seçilemeyen veya bu veritabanı tarafından korunabilen diğer, korunan veritabanlarının aksine, bu veritabanı gri görünür ve seçilemez. Bu veritabanını yeniden korumanın tek yolu, örnekte otomatik korumayı devre dışı bırakmanız. Artık bu veritabanını seçebilir ve korumayı yapılandırabilir veya örnekte otomatik korumayı yeniden etkinleştirebilirsiniz.
+**Silme verileriyle yedeklemeyi durdurursanız,** gelecekteki yedeklemeler gerçekleşmez ve varolan kurtarma noktaları da silinir. Veritabanı korumasız olarak kabul edilir ve Yapılaşı Yedekleme'deki örnek altında gösterilir. Ancak, el ile seçilebilen veya otomatik koruma alabilecek diğer yukarı korumalı veritabanlarının aksine, bu veritabanı soluk renkte görünür ve seçilemez. Bu veritabanını yeniden korumanın tek yolu, örnekte otomatik korumayı devre dışı betmektir. Artık bu veritabanını seçebilir ve üzerinde koruma yapılandırabilir veya örnekte otomatik korumayı yeniden etkinleştirebilirsiniz.
 
-## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Korunduktan sonra veritabanının adını değiştirdiğimde, davranış ne olur?
+## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Veritabanı nın adını korumaaltına alındıktan sonra değiştirirsem, davranış nedir?
 
-Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlendirilir. Bu nedenle, hizmet bu durumu veritabanı bulunmazsa ve yedeklemelerle başarısız olarak değerlendirir.
+Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak kabul edilir. Bu nedenle, hizmet veritabanı bulunamadı ve başarısız yedekleri ile bu durumu ele alacaktır.
 
-Şimdi yeniden adlandırılan veritabanını seçebilirsiniz ve üzerinde koruma yapılandırabilirsiniz. Örnekte otomatik korumanın etkin olması durumunda, yeniden adlandırılmış veritabanı otomatik olarak algılanır ve korunur.
+Şimdi yeniden adlandırılmış olan veritabanını seçebilir ve üzerinde koruma yapılandırabilirsiniz. Örnekte otomatik korumanın etkinleştirilmesi durumunda, yeniden adlandırılmış veritabanı otomatik olarak algılanır ve korunur.
 
-## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Neden yeniden korunan bir örnek için eklenen bir veritabanını göremiyorum?
+## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Otomatik korumalı bir örnek için ekbir veritabanını neden göremiyorum?
 
-[Bir oto korumalı örneğe eklediğiniz](backup-sql-server-database-azure-vms.md#enable-auto-protection) bir veritabanı, korunan öğeler altında hemen görünmeyebilir. Bunun nedeni, bulmanın genellikle her 8 saatte bir çalışır. Ancak, aşağıdaki görüntüde gösterildiği gibi, veritabanlarını **yeniden keşfet**' i seçerek bir bulmayı el ile çalıştırırsanız yeni veritabanlarını hemen bulabilir ve koruyabilirsiniz:
+[Otomatik korumalı bir örneğe eklediğiniz bir](backup-sql-server-database-azure-vms.md#enable-auto-protection) veritabanı, korumalı öğelerin hemen altında görünmeyebilir. Bunun nedeni, keşfin genellikle her 8 saatte bir çalıştırıştur. Ancak, aşağıdaki resimde gösterildiği gibi, **DB'leri Yeniden Keşfet'i**seçerek bir keşfi el ile çalıştırırsanız, yeni veritabanlarını hemen keşfedebilir ve koruyabilirsiniz:
 
-  ![Yeni eklenen bir veritabanını el ile bulma](./media/backup-azure-sql-database/view-newly-added-database.png)
+  ![Yeni eklenen bir veritabanını el ile keşfedin](./media/backup-azure-sql-database/view-newly-added-database.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure VM 'de çalışan [SQL Server bir veritabanını nasıl yedekleyeceğinizi](backup-azure-sql-database.md) öğrenin.
+Azure VM'de çalışan [bir SQL Server veritabanını](backup-azure-sql-database.md) nasıl yedekleyeceğimiz öğrenin.

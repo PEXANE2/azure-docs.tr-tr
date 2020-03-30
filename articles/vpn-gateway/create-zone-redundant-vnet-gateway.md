@@ -1,6 +1,6 @@
 ---
-title: Azure Kullanılabilirlik Alanları bölgede yedekli bir sanal ağ geçidi oluşturma
-description: Kullanılabilirlik Alanları VPN Gateway ve ExpressRoute ağ geçitlerini dağıtma
+title: Azure Kullanılabilirlik Bölgelerinde bölge gereksiz sanal ağ ağ geçidi oluşturma
+description: Kullanılabilirlik Bölgelerinde VPN Ağ Geçidi ve ExpressRoute ağ geçitlerini dağıtma
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -9,23 +9,23 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77150221"
 ---
-# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Azure Kullanılabilirlik Alanları bölgede yedekli bir sanal ağ geçidi oluşturma
+# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Azure Kullanılabilirlik Bölgelerinde bölge gereksiz sanal ağ ağ geçidi oluşturma
 
-VPN ve ExpressRoute ağ geçitlerini Azure Kullanılabilirlik Alanları dağıtabilirsiniz. Bu, sanal ağ geçitleri için esneklik, ölçeklenebilirlik ve daha yüksek kullanılabilirlik sağlar. Ağ geçitlerini Azure Kullanılabilirlik Alanları fiziksel olarak dağıtmak ve bölge düzeyindeki hatalardan Azure ile şirket içi ağ bağlanabilirliğini korurken bir bölgedeki ağ geçitlerini mantıksal olarak ayırır. Daha fazla bilgi için bkz. bölgesel olarak [yedekli sanal ağ geçitleri](about-zone-redundant-vnet-gateways.md) ve [Azure kullanılabilirlik alanları hakkında](../availability-zones/az-overview.md).
+Azure Kullanılabilirlik Bölgelerinde VPN ve ExpressRoute ağ geçitlerini dağıtabilirsiniz. Bu seçenek, sanal ağ geçitlerine dayanıklılık, ölçeklenebilirlik ve daha yüksek kullanılabilirlik getirir. Ağ geçitlerini Azure Kullanılabilirlik Alanları içinde dağıtmak, bir bölge içindeki ağ geçitlerini fiziksel ve mantıksal olarak birbirinden ayırırken, Azure ile şirket içi ağ bağlantınızı alan düzeyindeki hatalardan korur. Daha fazla bilgi için, [bölge yedekli sanal ağ ağ geçitleri](about-zone-redundant-vnet-gateways.md) ve [Azure Kullanılabilirlik Bölgeleri Hakkında'ya](../availability-zones/az-overview.md)bakın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="variables"></a>1. değişkenlerinizi bildirin
+## <a name="1-declare-your-variables"></a><a name="variables"></a>1. Değişkenlerinizi bildirin
 
-Kullanmak istediğiniz değişkenleri bildirin. Aşağıdaki örneği kullanın ve gerektiğinde, değerleri kendi değerlerinizle değiştirin. Alıştırma sırasında herhangi bir noktada PowerShell/Cloud Shell oturumunuzu kapatırsanız, değişkenleri yeniden bildirmek için değerleri kopyalamanız ve yeniden yapıştırmanız yeterlidir. Konum belirtirken, belirttiğiniz bölgenin desteklendiğini doğrulayın. Daha fazla bilgi için bkz. [SSS](#faq).
+Kullanmak istediğiniz değişkenleri bildirin. Aşağıdaki örneği kullanın ve gerektiğinde, değerleri kendi değerlerinizle değiştirin. Egzersiz sırasında PowerShell/Cloud Shell oturumunuzu herhangi bir noktada kapatırsanız, değişkenleri yeniden bildirmek için değerleri kopyalayıp yapıştırmanız gerekir. Konum belirtirken, belirttiğiniz bölgenin desteklendiğinden doğrulayın. Daha fazla bilgi için [SSS](#faq)bölümüne bakın.
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"
@@ -43,7 +43,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="configure"></a>2. sanal ağı oluşturma
+## <a name="2-create-the-virtual-network"></a><a name="configure"></a>2. Sanal ağ oluşturma
 
 Bir kaynak grubu oluşturun.
 
@@ -59,9 +59,9 @@ $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPr
 $vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
-## <a name="gwsub"></a>3. ağ geçidi alt ağını ekleme
+## <a name="3-add-the-gateway-subnet"></a><a name="gwsub"></a>3. Ağ geçidi alt ağı ekle
 
-Ağ geçidi alt ağı, sanal ağ geçidi hizmetlerinin kullandığı ayrılmış IP adreslerini içerir. Bir ağ geçidi alt ağı eklemek ve ayarlamak için aşağıdaki örnekleri kullanın:
+Ağ geçidi alt ağı, sanal ağ ağ geçidi hizmetlerinin kullandığı ayrılmış IP adreslerini içerir. Ağ geçidi alt ağı eklemek ve ayarlamak için aşağıdaki örnekleri kullanın:
 
 Ağ geçidi alt ağını ekleyin.
 
@@ -75,34 +75,34 @@ Sanal ağ için ağ geçidi alt ağ yapılandırmasını ayarlayın.
 ```azurepowershell-interactive
 $getvnet | Set-AzVirtualNetwork
 ```
-## <a name="publicip"></a>4. genel IP adresi isteyin
+## <a name="4-request-a-public-ip-address"></a><a name="publicip"></a>4. Genel bir IP adresi isteyin
  
-Bu adımda, oluşturmak istediğiniz ağ geçidine uygulanan yönergeleri seçin. Ağ geçitlerini dağıtmaya yönelik bölgelerin seçimi, genel IP adresi için belirtilen bölgelere bağlıdır.
+Bu adımda, oluşturmak istediğiniz ağ geçidine uygulanan yönergeleri seçin. Ağ geçitlerini dağıtmak için bölgelerin seçimi, ortak IP adresi için belirtilen bölgelere bağlıdır.
 
-### <a name="ipzoneredundant"></a>Bölgesel olarak yedekli ağ geçitleri için
+### <a name="for-zone-redundant-gateways"></a><a name="ipzoneredundant"></a>Bölge yedekli ağ geçitleri için
 
-**Standart** bir PUBLICıPADDRESS SKU 'su olan genel bir IP adresi isteyin ve herhangi bir bölge belirtmeyin. Bu durumda, oluşturulan Standart genel IP adresi bölgesel olarak yedekli bir genel IP olacaktır.   
+**Standart** PublicIpaddress SKU içeren genel bir IP adresi isteyin ve herhangi bir bölge belirtmeyin. Bu durumda, oluşturulan Standart genel IP adresi, bölge gereksiz bir genel IP olacaktır.   
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="ipzonalgw"></a>Bölgesel ağ geçitleri için
+### <a name="for-zonal-gateways"></a><a name="ipzonalgw"></a>Zonal ağ geçitleri için
 
-**Standart** bir PUBLICıPADDRESS SKU 'su ile genel bir IP adresi isteyin. Bölgeyi belirtin (1, 2 veya 3). Tüm ağ geçidi örnekleri, bu bölgeye dağıtılacak.
+**Standart** PublicIpaddress SKU içeren genel bir IP adresi isteyin. Bölgeyi belirtin (1, 2 veya 3). Tüm ağ geçidi örnekleri bu bölgede dağıtılacaktır.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
-### <a name="ipregionalgw"></a>Bölgesel ağ geçitleri için
+### <a name="for-regional-gateways"></a><a name="ipregionalgw"></a>Bölgesel ağ geçitleri için
 
-**Temel** bir PUBLICıPADDRESS SKU 'su ile genel bir IP adresi isteyin. Bu durumda, ağ geçidi bölgesel ağ geçidi olarak dağıtılır ve ağ geçidine yerleştirilmiş bölge yedekliliği yoktur. Ağ Geçidi örnekleri, sırasıyla herhangi bir bölgede oluşturulur.
+**Temel** PublicIpaddress SKU ile ortak bir IP adresi isteyin. Bu durumda, ağ geçidi bölgesel bir ağ geçidi olarak dağıtılır ve ağ geçidinde yerleşik herhangi bir bölge artıklığı yoktur. Ağ geçidi örnekleri sırasıyla herhangi bir bölgede oluşturulur.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
-## <a name="gwipconfig"></a>5. IP yapılandırmasını oluşturma
+## <a name="5-create-the-ip-configuration"></a><a name="gwipconfig"></a>5. IP yapılandırmasını oluşturun
 
 ```azurepowershell-interactive
 $getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
@@ -110,9 +110,9 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $get
 $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
-## <a name="gwconfig"></a>6. ağ geçidini oluşturun
+## <a name="6-create-the-gateway"></a><a name="gwconfig"></a>6. Ağ geçidi oluşturma
 
-Sanal ağ geçidini oluşturun.
+Sanal ağ ağ ağ geçidini oluşturun.
 
 ### <a name="for-expressroute"></a>ExpressRoute için
 
@@ -120,30 +120,30 @@ Sanal ağ geçidini oluşturun.
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute -GatewaySku ErGw1AZ
 ```
 
-### <a name="for-vpn-gateway"></a>VPN Gateway için
+### <a name="for-vpn-gateway"></a>VPN Ağ Geçidi için
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
 ```
 
-## <a name="faq"></a>SSS
+## <a name="faq"></a><a name="faq"></a>SSS
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Bu yeni SKU 'Ları dağıtırken ne değişecektir?
+### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Bu yeni STU'ları dağıtdığımda ne değişecek?
 
-Perspektifinden, ağ geçitlerini bölge yedekliliği ile dağıtabilirsiniz. Bu, ağ geçitlerinin tüm örneklerinin Azure Kullanılabilirlik Alanları üzerinden dağıtılacağı ve her kullanılabilirlik bölgesinin farklı bir hata ve güncelleştirme etki alanı olması anlamına gelir. Bu, ağ geçitlerinizin bölge hatalarıyla daha güvenilir, kullanılabilir ve dayanıklı olmasını sağlar.
+Sizin bakış açınızdan, ağ geçitlerinizi bölge artıklığıyla dağıtabilirsiniz. Bu, ağ geçitlerinin tüm örneklerinin Azure Kullanılabilirlik Bölgeleri arasında dağıtılacayaçalışacağı ve her Kullanılabilirlik Bölgesinin farklı bir hata ve güncelleştirme etki alanı olduğu anlamına gelir. Bu, ağ geçitlerinizi bölge hatalarına karşı daha güvenilir, kullanılabilir ve esnek hale getirir.
 
-### <a name="can-i-use-the-azure-portal"></a>Azure portal kullanabilir miyim?
+### <a name="can-i-use-the-azure-portal"></a>Azure portalını kullanabilir miyim?
 
-Evet, yeni SKU 'Ları dağıtmak için Azure portal kullanabilirsiniz. Ancak, bu yeni SKU 'Ları yalnızca Azure Kullanılabilirlik Alanları olan Azure bölgelerinde görürsünüz.
+Evet, yeni SNU'ları dağıtmak için Azure portalını kullanabilirsiniz. Ancak, bu yeni SK'leri yalnızca Azure Kullanılabilirlik Bölgeleri olan Azure bölgelerinde görürsünüz.
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Yeni SKU 'Ları kullanamadığı için hangi bölgeler kullanılabilir?
+### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Yeni SNU'ları kullanabilmek için hangi bölgeler kullanılabilir?
 
-Kullanılabilir bölgelerin en son listesi için bkz. [kullanılabilirlik alanları](../availability-zones/az-overview.md#services-support-by-region) .
+Kullanılabilir bölgelerin en son listesi için [Kullanılabilirlik Bölgeleri'ne](../availability-zones/az-overview.md#services-support-by-region) bakın.
 
-### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Var olan sanal ağ geçitlerini, bölgesel olarak yedekli veya bölgesel ağ geçitlerine değiştirebilir/geçirebilir/yükseltebilir miyim?
+### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Can I change/migrate/upgrade my existing virtual network gateways to zone-redundant or zonal gateways?
 
-Mevcut sanal ağ geçitlerinizi bölgesel olarak yedekli veya bölgesel ağ geçitlerine geçirme işlemi şu anda desteklenmiyor. Bununla birlikte, mevcut ağ geçidinizi silebilir ve bölgesel olarak yedekli veya bölgesel ağ geçidini yeniden oluşturabilirsiniz.
+Varolan sanal ağ ağağlarınızı bölge gereksiz veya bölge ağ geçitlerine geçirmek şu anda desteklenmez. Ancak, varolan ağ geçidinizi silebilir ve bölge gereksiz veya bölgesel ağ geçidini yeniden oluşturabilirsiniz.
 
-### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Aynı sanal ağda hem VPN hem de hızlı rota ağ geçitlerini dağıtabilir miyim?
+### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Vpn ve Express Route ağ geçitlerini aynı sanal ağda dağıtabilir miyim?
 
-Aynı sanal ağ üzerinde hem VPN hem de hızlı rota ağ geçitlerinin birlikte bulunması desteklenir. Ancak, ağ geçidi alt ağı için bir/27 IP adresi aralığı ayırmanız gerekir.
+Aynı sanal ağda hem VPN hem de Express Route ağ geçitlerinin birlikte liği desteklenir. Ancak, ağ geçidi alt ağı için bir /27 IP adresi aralığı rezerve etmelisiniz.

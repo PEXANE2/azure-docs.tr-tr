@@ -1,6 +1,6 @@
 ---
-title: Microsoft® Kesintisiz Akış Istemci taşıma setini lisanslama
-description: Microsoft® Kesintisiz Akış Istemci taşıma paketi 'nin nasıl lisanslandığı hakkında bilgi edinin.
+title: Microsoft® Sorunsuz Akış İstemci Taşıma Kitilisanslama
+description: Microsoft® Sorunsuz Akış İstemci Taşıma Kiti'ni lisanslama hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -15,152 +15,152 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
 ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096717"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Microsoft® Kesintisiz Akış Istemci taşıma setini lisanslama 
+# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Microsoft® Sorunsuz Akış İstemci Taşıma Kitilisanslama 
 ## <a name="overview"></a>Genel Bakış
-Microsoft Kesintisiz Akış Client taşıma kiti (Short için**Sspk** ), yerleşik cihaz üreticilerine, kablolu ve mobil işleçlere, içerik hizmeti sağlayıcılarına, ahize üreticilerine, bağımsız yazılım satıcılarına (ISV) ve kesintisiz akış biçimde Uyarlamalı içerik akışı için ürün ve hizmet oluşturmaya yönelik çözüm sağlayıcılarına yardımcı olmak üzere iyileştirilmiş bir kesintisiz akış istemci uygulamasıdır. SSPK, lisans tarafından herhangi bir cihaza ve platforma bir cihaz tarafından aşılenebilir Kesintisiz Akış istemcisinin platformdan bağımsız bir uygulamasıdır. 
+Microsoft Smooth Streaming İstemci Taşıma Kiti (kısaca**SSPK),** gömülü aygıt üreticilerine, kablo ve mobil operatörlere, içerik servis sağlayıcılarına, cep telefonu üreticilerine, bağımsız yazılım satıcılarına (ISV) ve çözüm sağlayıcılarına yardımcı olmak için, Uyumlu İçeriği Düzgün Akış biçiminde akışsağlamak için ürün ve hizmetler oluşturmaya yardımcı olmak için optimize edilmiş bir Sorunsuz Akış istemcisi uygulamasıdır. SSPK, lisans sahibi tarafından herhangi bir cihaza ve platforma taşınabilir Düzgün Akış istemcisinin aygıt ve platformdan bağımsız bir uygulamasıdır. 
 
-Aşağıda yer alan üst düzey bir mimari ve IIS Kesintisiz Akış taşıma paketi kutusu, Microsoft tarafından sağlanan Kesintisiz Akış Istemci uygulamasıdır ve Kesintisiz Akış içeriğinin kayıttan yürütülmesi için tüm çekirdek mantığını içerir. Daha sonra bu içerik, uygun arabirimleri uygulayarak belirli bir cihaz veya platformun iş ortakları tarafından yer verilir. 
+Aşağıda üst düzey bir mimari ve IIS Smooth Streaming Porting Kit kutusu Microsoft tarafından sağlanan Smooth Streaming İstemci uygulamasıdır ve Düzgün Akış içeriğinin oynatılmı için tüm temel mantığı içerir. Bu içerik daha sonra uygun arabirimler uygulanarak belirli bir aygıt veya platform için ortaklar tarafından taşınır. 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
 ## <a name="description"></a>Açıklama
-SSPK, mükemmel iş değeri sunan koşullara göre lisanslanır. SSPK lisansı sektörde şunları sağlar:
+SSPK, mükemmel iş değeri sunan terimlerle lisanslanır. SSPK lisansı sektöre şunları sağlar:
 
-* ' De Kit kaynağı taşıma Kesintisiz AkışC++ 
-  * Kesintisiz Akış Istemci işlevselliği uygular
-  * biçim ayrıştırma, buluşsal yöntemler, arabelleğe alma mantığı vb. ekler.
-* Oynatıcı uygulaması API 'Leri 
-  * Media Player uygulamasıyla etkileşim için programlama arabirimleri
-* Platform soyutlama katmanı (PAL) arabirimi 
-  * işletim sistemi (iş parçacıkları, yuvalar) ile etkileşim için programlama arabirimleri
-* Donanım soyutlama katmanı (HAL) arabirimi 
-  * donanım A/V kod çözücüleriyle etkileşim için programlama arabirimleri (kod çözme, oluşturma)
-* Dijital Rights Management (DRM) arabirimi 
-  * DRM soyutlama katmanı (DAL) aracılığıyla DRM işlemeye yönelik programlama arabirimleri
-  * Microsoft PlayReady taşıma kiti ayrı olarak dağıtılır ancak bu arabirim aracılığıyla tümleştirilir. Microsoft PlayReady cihaz lisanslama hakkında daha fazla bilgi için [buraya](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)tıklayın.
+* C++'da Düzgün Akış Taşıma Kiti kaynağı 
+  * Sorunsuz Akış İstemci işlevselliğini uygular
+  * format ayrıştırma, buluşsal, tamponlama mantığı, vb ekler
+* Oyuncu uygulama API'leri 
+  * bir medya oynatıcı uygulaması ile etkileşim için programlama arayüzleri
+* Platform Soyutlama Katmanı (PAL) Arabirimi 
+  * işletim sistemi (iş parçacığı, soketler) ile etkileşim için programlama arayüzleri
+* Donanım Soyutlama Katmanı (HAL) Arabirimi 
+  * donanım A/V kod çözücülerle etkileşim için programlama arabirimleri (kod çözme, işleme)
+* Dijital Haklar Yönetimi (DRM) Arabirimi 
+  * DRM Soyutlama Katmanı (DAL) aracılığıyla DRM'yi işlemek için programlama arayüzleri
+  * Microsoft PlayReady Porting Kit ayrı ayrı gemi ama bu arayüz üzerinden entegre. Microsoft PlayReady Device lisanslama hakkında daha fazla bilgi için [buraya](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)tıklayın.
 * Uygulama örnekleri 
-  * Linux için örnek PAL uygulamasının
-  * GStreamer için örnek HAL uygulama
+  * Linux için örnek PAL uygulaması
+  * GStreamer için örnek HAL uygulaması
 
-## <a name="licensing-options"></a>Lisanslama seçenekleri
-Microsoft Kesintisiz Akış Istemci taşıma kiti, lisansların iki ayrı lisans sözleşmesi altında görüebilmesini sağlar: Kesintisiz Akış Istemci geçici ürünlerini geliştirme ve son kullanıcılara Kesintisiz Akış Istemci son ürünlerini dağıtmaya yönelik diğeri.
+## <a name="licensing-options"></a>Lisans Seçenekleri
+Microsoft Smooth Streaming İstemci Taşıma Kiti, iki farklı lisans anlaşması altında lisans sahiplerinin kullanımına sunulmuştur: biri Düzgün Akışlı İstemci Geçici Ürünleri geliştirmek ve diğeri de Düzgün Akışlı İstemci Son Ürünlerini son kullanıcılara dağıtmak için.
 
-* Yonga ürünleri geliştirmek için bir kaynak kodu taşıma paketi gerektiren yonga kümesi üreticileri, sistem tümleştiricileri veya bağımsız yazılım satıcıları (ISV 'Ler) için bir Microsoft Kesintisiz Akış Istemci taşıma Seti **geçici ürün lisansı** yürütülmelidir.
-* Son kullanıcılara Kesintisiz Akış Istemci son ürünleri için dağıtım hakları gerektiren cihaz üreticileri veya ISV 'Ler için, Microsoft Kesintisiz Akış Istemci taşıma paketi **son ürün lisansının** yürütülmesi gerekir.
+* Geçici Ürünler geliştirmek için kaynak kodu taşıma kiti gerektiren yonga seti üreticileri, sistem entegratörleri veya bağımsız yazılım satıcıları (ISV) için bir Microsoft Smooth Streaming İstemci Taşıma Kiti **Geçici Ürün Lisansı** çalıştırılmalıdır.
+* Düzgün Akış Lı İstemci Son Ürünleri için son kullanıcılara dağıtım hakları gerektiren aygıt üreticileri veya ISV'ler için Microsoft Düzgün Akış İstemci Taşıma Kiti **Son Ürün Lisansı** yürütülmelidir.
 
-### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Kesintisiz Akış Istemci taşıma seti geçici ürün lisansı
-Bu lisans kapsamında, Microsoft Kesintisiz Akış Istemci ara ürünlerini diğer Kesintisiz Akış geliştirmek ve dağıtmak için gerekli fikri mülkiyet haklarını Kesintisiz Akış istemci taşıma paketi cihaz lisansı \ ' i görür Kesintisiz Akış Client son ürünlerini dağıtın.
-
-#### <a name="fee-structure"></a>Ücret yapısı
-Bir ABD $50.000 tek seferlik lisans ücreti Kesintisiz Akış Istemci taşıma paketine erişim sağlar. 
-
-### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Kesintisiz Akış Client taşıma paketi son ürün lisansı
-Bu lisans kapsamında, Microsoft diğer Kesintisiz Akış istemci ara ürünlerini Kesintisiz Akış almak için gereken tüm fikri mülkiyet haklarını sunar ve şirket markalı Kesintisiz Akış Istemcisinin son dağıtımını sağlar Son kullanıcılar için ürünler.
+### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Smooth Streaming İstemci Taşıma Kiti Geçici Ürün Lisansı
+Bu lisans altında, Microsoft, Sorunsuz Akış İstemci Taşıma Kiti ve diğer Sorunsuz Akış İstemci Taşıma Kiti cihaz lisans sahiplerine Düzgün Akış İstemci Geçici Ürünler geliştirmek ve dağıtmak için gerekli fikri mülkiyet hakları sunar Smooth Streaming İstemci Son Ürünleri dağıtın.
 
 #### <a name="fee-structure"></a>Ücret yapısı
-Kesintisiz Akış Istemcisi son ürünü, şu şekilde bir ayrıcalıklı model altında sunulmaktadır:
+50.000 ABD doları tek seferlik lisans ücreti, Smooth Streaming İstemci Taşıma Kiti'ne erişim sağlar. 
 
-* cihaz uygulamasına göre $0,10
-* Telif ücreti her yıl $50.000 ' de kadık
-* Her yıl ilk 10.000 cihaz uygulaması için lisanslı değildir 
+### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming İstemci Taşıma Kiti Son Ürün Lisansı
+Bu lisans altında, Microsoft diğer Smooth Streaming İstemci Taşıma Kiti lisans sahiplerinden Düzgün Akış İstemci Geçici Ürünler almak ve şirket markalı Smooth Streaming Client Final dağıtmak için gerekli tüm fikri mülkiyet haklarını sunar Son kullanıcılara ürünler.
 
-## <a name="licensing-procedure-and-sspk-access"></a>Lisans prosedürü ve SSPK erişimi
-Tüm lisans sorguları için e-posta [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) .
+#### <a name="fee-structure"></a>Ücret yapısı
+Smooth Streaming Client Final Product aşağıdaki gibi bir telif modeli altında sunulmaktadır:
 
-[Sspk dağıtım portalına](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) kayıtlı geçici lisans sahipleri tarafından erişilebilir.
+* Sevk edilen cihaz uygulaması başına $0.10
+* Kraliyet ailesi her yıl 50.000 dolar alacaktır.
+* Her yıl ilk 10.000 cihaz uygulaması için telif hakkı yok 
 
-Ara ve nihai SSPK lisanslamamaları, [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)Teknik sorular gönderebilir.
+## <a name="licensing-procedure-and-sspk-access"></a>Lisans Prosedürü ve SSPK erişimi
+Tüm [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) lisans sorguları için e-posta.
 
-## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Kesintisiz Akış Istemci ara ürün sözleşmesi lisans sahipleri
+[SSPK Dağıtım portalı,](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) kayıtlı Geçici lisans sahipleri tarafından erişilebilir.
 
-* Adroit Business Solutions, Inc
-* Gelişmiş dijital yayın SA
-* AirTies Kablosuz Iletism SanayiVe Dis Ticaret A.S.
-* Albümde Technologies Ltd.
-* Alticast şirketi
-* Amazon Digital Services, Inc.
-* Ariyon Technology, Inc.
-* AVC Multimedia Software Co., Ltd.
+Ara ve Son SSPK lisans sahipleri [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)teknik soruları .
+
+## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming İstemci Geçici Ürün Sözleşmesi Lisans Sahipleri
+
+* Adroit İş Çözümleri A.Ş.
+* Gelişmiş Dijital Yayın SA
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.Ş.
+* Albis Teknolojileri Ltd
+* Alticast Şirketi
+* Amazon Dijital Hizmetler, Inc
+* Arion Teknoloji A.Ş.
+* AVC Multimedya Yazılım A.Ş.
 * Cavium, Inc.
-* Yankı Star satın alma şirketi
+* EchoStar Satın Alma Şirketi
 * Enseo, Inc.
-* Floendo G.A.
-* Guangzhou Kııkun elektronik., Ltd.
-* HANDAN geniş Infocom Co., Ltd.
+* Fluendo S.A.
+* Guangzhou Shikun Elektronik., Ltd
+* HANDAN BroadInfoCom Co, Ltd
 * Infomir GMBH
-* Irdeto ABD Inc.
-* Liberty küresel hizmetler BV
-* MediaTek Inc.
+* Irdeto ABD A.Ş.
+* Liberty Global Hizmetler BV
+* MediaTek A.Ş.
 * MStar Co, Ltd
-* Ni do Co., Ltd.
+* Nintendo Co, Ltd
 * OpenTV, Inc.
-* Saffron dijital sınırlı
-* Sichuan Changhong Elektrik Co., Ltd
-* SoftAtHome
+* Safran Dijital Limited
+* Sichuan Changhong Elektrik Co, Ltd
+* SoftatHome
 * Sony Corporation
-* Tatung Technology Inc.
-* En popüler zafer yatırımları, Ltd.
-* Vestel Elektronik Sanayi ve Ticaret A.S.
+* Tatung Teknoloji A.Ş.
+* Top Victory Investments, Ltd.
+* Vestel Elektronik Sanayi ve Ticaret A.Ş.
 * VisualOn, Inc.
-* ZTE Corporation
+* ZTE Şirketi
 
-## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Kesintisiz Akış Client son ürün sözleşmesi lisans sahipleri
-* Gelişmiş dijital yayın SA
-* AirTies Kablosuz Iletism SanayiVe Dis Ticaret A.S.
-* Albümde Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
-* Arcadyan teknoloji şirketi
-* Ariyon Technology, Inc.
-* ATMACA ELEKTRONIK SAN. VE TIC. A. Ş
-* İngiliz gök yayını sınırlı
-* Kalepal Technology Inc., Shenzhen
-* Compal elektroniği, Inc.
-* Dongguan Digital AV Technology Corp., Ltd.
-* Yankı Star satın alma şirketi
+## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming İstemci Nihai Ürün Sözleşmesi Lisans Sahipleri
+* Gelişmiş Dijital Yayın SA
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.Ş.
+* Albis Teknolojileri Ltd
+* Amazon Dijital Hizmetler, Inc
+* AmTRAN Teknoloji A.Ş.
+* Arcadyan Teknoloji A.Ş.
+* Arion Teknoloji A.Ş.
+* ATMACA ELEKTRONİK SAN. VE TİC. A.ş
+* İngiliz Sky Broadcasting Limited
+* CastPal Teknoloji A.Ş., Shenzhen
+* Compal Elektronik A.Ş.
+* Dongguan Dijital AV Technology Corp, Ltd
+* EchoStar Satın Alma Şirketi
 * Enseo, Inc.
-* FilmFlex filmleri sınırlı
-* Floendo G.A.
-* FUNAı ELEKTRIK CO., LTD
-* Aşson buluşları sınırlı
-* Haier Information Applicantion S. R. L
-* HANDAN geniş Infocom Co., Ltd.
-* HiSense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision sektör Co., Ltd.
+* FilmFlex Filmler Limited
+* Fluendo S.A.
+* FUNAI ELEKTRİk A.Ş., LTD
+* Gibson Yenilikler Limited
+* Haier Bilgi Başvuru S.R.L
+* HANDAN BroadInfoCom Co, Ltd
+* Hisense International Co, Ltd 
+* Homecast Co, Ltd
+* Hon Hai Hassas Sanayi A.Ş.
 * Infomir GMBH
-* Kaonmedia Co., Ltd.
-* KDDı Corporation
-* Ni do Co., Ltd.
+* Kaonmedia Co, Ltd
+* KDDI Şirketi
+* Nintendo Co, Ltd
 * Turuncu SA
-* Saffron dijital sınırlı
-* Sagemcom geniş bant SAS
-* Shenzhen Chuangwei-RGB Electronics Co., Ltd.
-* Shenzhen Conakliye Electronics CO., LTD
-* Shenzhen Jiuzhou Elektrik Co., Ltd
-* Kıenzhen ufuk, dijital teknoloji Co., Ltd
-* Sichuan Changhong Elektrik Co., Ltd.
-* Skardın Endüstriyel Corp.
-* Sky Deutschland Fernsehen GmbH & Co. KG
+* Safran Dijital Limited
+* Sagemcom Genişbant SAS
+* Shenzhen Chuangwei-RGB Elektronik Co, Ltd
+* Shenzhen Coship Elektronik CO., LTD
+* Shenzhen Jiuzhou Elektrik Co, Ltd
+* Shenzhen Skyworth Dijital Teknoloji A.Ş., Ltd
+* Sichuan Changhong Elektrik Co, Ltd
+* Skardin Sanayi A.Ş.
+* Gökyüzü Deutschland Fernsehen GmbH & Co KG
 * SmarDTV S.A.
-* SoftAtHome
+* SoftatHome
 * Sony Corporation
-* Teknisyen teslim teknolojileri, SAS
-* Tongfang genel Ltd.
-* En popüler zafer yatırımları, Ltd.
-* Toshiba yaşam stil ürünleri & Services Corporation
-* Evrensel medya şirketi/Slovakia/s.r.o.
+* Technicolor Dağıtım Teknolojileri, SAS
+* Tongfang Global Ltd
+* Top Victory Investments, Ltd.
+* Toshiba Lifestyle Ürünler & Hizmetleri Corporation
+* Universal Media Corporation /Slovakya/ s.r.o.
 * VIZIO, Inc.
-* Wistron Corporation
-* ZTE Corporation
+* Wistron Şirketi
+* ZTE Şirketi
 
-## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma

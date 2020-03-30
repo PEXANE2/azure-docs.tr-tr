@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: c1cca99a04e78c40cdd1061e52e49f45a73c73eb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68361563"
 ---
 ### <a name="identity-tier"></a>Kimlik katmanı 
 
-Microsoft-Oracle ortaklığı, Azure, OCı ve Oracle uygulamanız arasında Birleşik bir kimlik ayarlamanıza olanak sağlar. JD EDBOL EnterpriseOne veya PeopleSoft uygulama paketi için, Azure AD ve Oracle ıDCS arasında çoklu oturum açmayı ayarlamak için Oracle HTTP sunucusu (OHS) örneği gereklidir.
+Microsoft-Oracle ortaklığı, Azure, OCI ve Oracle uygulamanızda birleşik bir kimlik ayarlamanızı sağlar. JD Edwards EnterpriseOne veya PeopleSoft uygulama paketi için, Azure AD ve Oracle IDCS arasında tek oturum açma ayarlamak için Oracle HTTP Server (OHS) örneği gereklidir.
 
-OHS, uygulama katmanında ters ara sunucu görevi görür, bu da son uygulamalara yönelik tüm isteklerin bu şekilde gezinmesidir. Oracle Access Manager Web Gate, son uygulamaya giden her isteği izleyen bir OHS Web sunucusu eklentisidir. Erişilmekte olan bir kaynak korunuyorsa (kimliği doğrulanmış bir oturum gerektiriyorsa) WebGate, kimlik bulut hizmeti ile OıDC kimlik doğrulama akışını kullanıcının tarayıcısı aracılığıyla başlatır. OpenID Connect WebGate tarafından desteklenen akışlar hakkında daha fazla bilgi için bkz. [Oracle Access Manager belgeleri](https://docs.oracle.com/en/middleware/idm/access-manager/12.2.1.3/aiaag/integrating-webgate-oidc-server.html).
+İsG, uygulama katmanına ters proxy görevi görür, bu da son uygulamalara yapılan tüm isteklerin bu katmandan geçtiği anlamına gelir. Oracle Access Manager WebGate, son uygulamaya giden her isteği engelleyen bir OHS web sunucusu eklentisidir. Erişilen bir kaynak korunuyorsa (kimlik doğrulaması oturumu gerektiriyorsa), WebGate kullanıcının tarayıcısı aracılığıyla Identity Cloud Service ile OIDC kimlik doğrulama akışını başlatır. OpenID Connect WebGate tarafından desteklenen akışlar hakkında daha fazla bilgi için [Oracle Access Manager belgelerine](https://docs.oracle.com/en/middleware/idm/access-manager/12.2.1.3/aiaag/integrating-webgate-oidc-server.html)bakın.
 
-Bu kurulumla, Azure AD 'de zaten oturum açmış bir Kullanıcı, Oracle Identity Cloud Service aracılığıyla yeniden oturum açmadan JD EDBOL EnterpriseOne veya PeopleSoft uygulamasına gidebilir. Bu çözümü dağıtan müşteriler tek bir kimlik bilgileri kümesi, geliştirilmiş bir oturum açma deneyimi, geliştirilmiş güvenlik ve daha az yardım masası maliyeti dahil olmak üzere çoklu oturum açma 'nın avantajlarından yararlanır.
+Bu kurulumla, Azure AD'ye giriş yapmış bir kullanıcı, Oracle Identity Cloud Service aracılığıyla tekrar oturum açmadan JD Edwards EnterpriseOne veya PeopleSoft uygulamasına gidebilir. Bu çözümü dağıtan müşteriler, tek bir kimlik bilgileri kümesi, geliştirilmiş oturum açma deneyimi, geliştirilmiş güvenlik ve daha az yardım masası maliyeti dahil olmak üzere tek oturum açma avantajlarından yararlanır.
 
-Azure AD ile JD EDBOL EnterpriseOne veya PeopleSoft için çoklu oturum açma ayarlama hakkında daha fazla bilgi edinmek için bkz. ilişkili [Oracle teknik incelemesi](https://cloud.oracle.com/iaas/whitepapers/deploy_peoplesoft_jdedwards_across_oci_azure.pdf).
+Azure AD ile JD Edwards EnterpriseOne veya PeopleSoft için tek oturum açma hakkında daha fazla bilgi edinmek için ilgili [Oracle teknik incelemesine](https://cloud.oracle.com/iaas/whitepapers/deploy_peoplesoft_jdedwards_across_oci_azure.pdf)bakın.

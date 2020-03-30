@@ -13,10 +13,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d376672336845958fb6434a78177f42aca938229
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70081961"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure Sanal Makinelerinde SQL Server'a Genel Bakış (Linux)
@@ -29,14 +29,14 @@ Azure sanal makinelerinde SQL Server, şirket içi donanım yönetmenize gerek k
 
 Azure sanal makineleri dünyanın birçok farklı [coğrafi bölgesinde](https://azure.microsoft.com/regions/) çalışır. Bu makineler, ayrıca çeşitli [makine boyutları](../sizes.md) sunar. Sanal makine resim galerisi, doğru sürüm ve işletim sistemiyle bir SQL Server VM’i oluşturmanızı sağlar. Bu, sanal makineleri birçok farklı SQL Server iş yükleri için iyi bir seçenek yapar.
 
-## <a id="create"></a> SQL VM’lerini kullanmaya başlayın
+## <a name="get-started-with-sql-vms"></a><a id="create"></a> SQL VM’lerini kullanmaya başlayın
 
 Kullanmaya başlamak için, gerekli olan sürüm ve işletim sisteminizle birlikte bir SQL Server sanal makine resmi seçin. Aşağıdaki bölümlerde SQL Server sanal makine galeri görüntüleri için Azure portalının doğrudan bağlantıları verilmektedir.
 
 > [!TIP]
 > SQL görüntülerinin fiyatlandırmasını anlamak için bkz. [Linux SQL Server VM’leri için fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-| Version | İşletim Sistemi | Sürüm |
+| Sürüm | İşletim Sistemi | Sürüm |
 | --- | --- | --- |
 | **SQL Server 2017** | Red Hat Enterprise Linux (RHEL) 7.4 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonRedHatEnterpriseLinux74), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonRedHatEnterpriseLinux74), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonRedHatEnterpriseLinux74), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonRedHatEnterpriseLinux74), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonRedHatEnterpriseLinux74) |
 | **SQL Server 2017** | SUSE Linux Enterprise Server (SLES) v12 SP2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonSLES12SP2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonSLES12SP2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonSLES12SP2), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2) |
@@ -45,7 +45,7 @@ Kullanmaya başlamak için, gerekli olan sürüm ve işletim sisteminizle birlik
 > [!NOTE]
 > Kullanabileceğiniz Windows SQL Server sanal makine görüntülerini görmek için bkz. [Azure Sanal Makinelerinde SQL Server'a Genel Bakış (Windows)](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
 
-## <a id="packages"></a> Yüklü paketler
+## <a name="installed-packages"></a><a id="packages"></a> Yüklü paketler
 
 Linux üzerinde SQL Server yapılandırdıktan sonra veritabanı altyapısı paketini ve gereksinimlerinize bağlı olarak çeşitli isteğe bağlı paketleri yüklersiniz. SQL Server için Linux sanal makine görüntüleri birçok paketi otomatik olarak sizin için yükler. Aşağıdaki tabloda her dağıtımda yüklenen paketler gösterilmektedir.
 
@@ -65,11 +65,11 @@ Linux üzerinde SQL Server yapılandırdıktan sonra veritabanı altyapısı pak
 
 * [Microsoft Azure Depolama'ya Giriş](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Ağ
+### <a name="networking"></a>Ağ Oluşturma
 
-* [Sanal Ağ’a genel bakış](../../../virtual-network/virtual-networks-overview.md)
-* [Azure’da IP adresleri](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
-* [Azure Portal'da Tam Etki Alanı Adı oluşturma](../portal-create-fqdn.md)
+* [Sanal Ağa genel bakış](../../../virtual-network/virtual-networks-overview.md)
+* [Azure'da IP adresleri](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [Azure portalda Tam Etki Alanı Adı oluşturma](../portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 

@@ -1,6 +1,6 @@
 ---
-title: Mikro-Karşılama Merkezi uygulama şablonu öğreticisi | Microsoft Docs
-description: Azure IoT Central için mikro Karşılama Merkezi uygulama şablonuyla ilgili bir öğretici
+title: Mikro-fulfillment merkezi uygulama şablonu öğretici | Microsoft Dokümanlar
+description: Azure IoT Central için mikro-gerçekleştirme merkezi uygulama şablonu hakkında bir öğretici
 author: avneet723
 ms.author: avneets
 ms.service: iot-central
@@ -8,89 +8,89 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 01/09/2020
 ms.openlocfilehash: 93906f582f1edc351088f8b4c453bf9ebda54f83
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77369870"
 ---
-# <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Öğretici: mikro Karşılama Merkezi uygulama şablonunu dağıtma ve gözden geçir
+# <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Öğretici: Dağıtma ve bir mikro-yerine getirme merkezi uygulama şablonu ile yürümek
 
-Bu öğreticide, bir perakende çözümü oluşturmak için Azure IoT Central mikro Karşılama Merkezi uygulama şablonunu kullanırsınız. Şablonun nasıl dağıtılacağını, buna dahil edildiğini ve ileri bir sonraki ne yapmak isteyebileceğiniz hakkında bilgi edineceksiniz.
+Bu eğitimde, bir perakende çözümü oluşturmak için Azure IoT Merkezi mikro yerine getirme merkezi uygulama şablonunu kullanırsınız. Şablonu nasıl dağıtabileceğinizi, şablona nelerin ekolduğunu ve bundan sonra ne yapmak isteyebileceğinizi öğrenirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu öğretici serisini tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
+## <a name="prerequisites"></a>Ön koşullar
+Bu öğretici seriyi tamamlamak için bir Azure aboneliğine ihtiyacınız var. İsteğe bağlı olarak 7 günlük ücretsiz deneme sürümü kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir abonelik oluşturabilirsiniz.
 
 ## <a name="create-an-application"></a>Uygulama oluşturma 
-Bu bölümde, bir şablondan yeni bir Azure IoT Central uygulaması oluşturacaksınız. Bu uygulamayı, tüm bir çözüm oluşturmak için öğretici serisi boyunca kullanacaksınız.
+Bu bölümde, şablondan yeni bir Azure IoT Merkezi uygulaması oluşturursunuz. Tam bir çözüm oluşturmak için öğretici serisi boyunca bu uygulamayı kullanacağız.
 
 Yeni bir Azure IoT Central uygulaması oluşturmak için:
 
-1. [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesine gidin.
-1. Azure aboneliğiniz varsa, ona erişmek için kullandığınız kimlik bilgileriyle oturum açın. Aksi takdirde, Microsoft hesabı kullanarak oturum açın:
+1. [Azure IoT Central uygulama yöneticisi](https://aka.ms/iotcentral) web sitesine gidin.
+1. Azure aboneliğiniz varsa, bu aboneye erişmek için kullandığınız kimlik bilgileriyle oturum açın. Aksi takdirde, bir Microsoft hesabı kullanarak oturum açın:
 
-   ![Microsoft hesabı oturum açma iletişim kutusunun ekran görüntüsü](./media/tutorial-in-store-analytics-create-app-pnp/sign-in.png)
+   ![Microsoft hesap oturum açma iletişim kutusunun ekran görüntüsü](./media/tutorial-in-store-analytics-create-app-pnp/sign-in.png)
 
 1. Yeni bir Azure IoT Central uygulaması oluşturmaya başlamak için **Yeni Uygulama**'yı seçin.
 
-1. **Perakende**' ı seçin.  Perakende sayfasında çeşitli perakende uygulama şablonları görüntülenir.
+1. **Perakende'yi**seçin.  Perakende sayfası birkaç perakende uygulama şablonu görüntüler.
 
-Önizleme özelliklerini kullanan yeni bir mikro Karşılama Merkezi uygulaması oluşturmak için:  
-1. **Mikro Karşılama Merkezi** uygulama şablonunu seçin. Bu şablon, öğreticide kullanılan tüm cihazların cihaz şablonlarını içerir. Şablon Ayrıca, karşılama merkezinizdeki koşulların yanı sıra robot taşıyıcılar için koşullar için de bir operatör panosu sağlar. 
+Önizleme özelliklerini kullanan yeni bir mikro karşılama merkezi uygulaması oluşturmak için:  
+1. **Mikro-karşılama merkezi** uygulama şablonu'nu seçin. Bu şablon, öğreticide kullanılan tüm aygıtlar için aygıt şablonlarını içerir. Şablon ayrıca, yerine getirme merkezinizdeki izleme koşullarının yanı sıra robot taşıyıcılarınızın koşullarını izlemek için bir operatör panosu da sağlar. 
 
-    ![Azure IoT Central IoT uygulama sayfanızı derleme ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/iotc-retail-homepage-mfc.png)
+    ![Azure IoT Central Ekran Görüntüsü IoT uygulama sayfanızı oluşturun](./media/tutorial-micro-fulfillment-center-app-pnp/iotc-retail-homepage-mfc.png)
     
-1. İsteğe bağlı olarak, kolay bir **uygulama adı**seçin. Uygulama şablonu kurgusal şirket Northwind Traders ' i temel alır. 
+1. İsteğe bağlı olarak, dostça bir **Uygulama adı**seçin. Uygulama şablonu kurgusal şirket Northwind Traders dayanmaktadır. 
 
     >[!NOTE]
-    >Kolay bir uygulama adı kullanırsanız, uygulama URL 'SI için yine de benzersiz bir değer kullanmanız gerekir.
+    >Kolay bir uygulama adı kullanıyorsanız, uygulama URL'si için yine de benzersiz bir değer kullanmanız gerekir.
 
-1. Azure aboneliğiniz varsa dizininizi, Azure aboneliğinizi ve bölgenizi girin. Aboneliğiniz yoksa, 7 günlük ücretsiz denemeyi etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
+1. Azure aboneliğiniz varsa, dizininizi, Azure aboneliğinizi ve bölgenizi girin. Aboneliğiniz yoksa, 7 günlük ücretsiz deneme sürümünü etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [uygulama oluşturma](../preview/quick-deploy-iot-central.md) hızlı başlangıcı.
+    Dizinler ve abonelikler hakkında daha fazla bilgi için uygulama hızlı [başlat'ı oluştur'a](../preview/quick-deploy-iot-central.md) bakın.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur'u**seçin.
 
-    ![Azure IoT Central yeni uygulama sayfasının ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/iotc-retail-create-app-mfc.png)
+    ![Azure IoT Merkezi Yeni uygulama sayfasının ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/iotc-retail-create-app-mfc.png)
 
-## <a name="walk-through-the-application"></a>Uygulamayı gözden geçir 
+## <a name="walk-through-the-application"></a>Uygulama da yürüyün 
 
-Uygulama şablonunu başarıyla dağıttıktan sonra, **Northwind Traders Micro-Karşılama Merkezi panosunu**görürsünüz. Northwind Traders, bu Azure IoT Central uygulamasında yönetilen bir mikro karşılama merkezinin bulunduğu kurgusal bir satıcıdır. Bu operatör panosunda, bu şablondaki cihazlarla ilgili bilgileri ve telemetrisi, gerçekleştirebileceğiniz bir dizi komut, iş ve eylemi görürsünüz. Pano, mantıksal olarak iki bölüme ayrılır. Sol tarafta, karşılama yapısı içinde ortam koşullarını izleyebilir ve sağ tarafta, bir robot taşıyıcının durumunu tesis içinde izleyebilirsiniz.  
+Uygulama şablonu başarıyla dağıtıldıktan sonra, **Northwind Traders mikro-yerine getirme merkezi panosunu**görürsünüz. Northwind Traders, bu Azure IoT Central uygulamasında yönetilen bir mikro-gerçekleştirme merkezine sahip hayali bir perakendecidir. Bu operatör panosunda, bu şablondaki aygıtlar hakkında bilgi ve telemetrinin yanı sıra yapabileceğiniz bir dizi komut, iş ve eylem görürsünüz. Pano mantıksal olarak iki bölüme ayrılmıştır. Solda, yerine getirme yapısı içindeki çevre koşullarını izleyebilir, sağda ise tesis içindeki robotik taşıyıcının sağlığını izleyebilirsiniz.  
 
 Panodan şunları yapabilirsiniz:
-   * Çekme sayısı, işlenen siparişlerin sayısı ve yapı sistemi durumu gibi özellikler gibi cihaz telemetrisine bakın.  
-   * Karşılama yapısında robot taşıyıcılar 'nın kat planını ve konumunu görüntüleyin.
-   * Denetim sistemini sıfırlama, taşıyıcının bellenimini güncelleştirme ve ağı yeniden yapılandırma gibi tetikleyici komutları.
+   * Çekme sayısı, işlenen sipariş sayısı ve yapı sistemi durumu gibi özellikler gibi aygıt telemetrisi bölümüne bakın.  
+   * Yerine getirme yapısı içinde kat planı ve robotik taşıyıcıların konumunu görüntüleyin.
+   * Denetim sistemini sıfırlama, taşıyıcının yazılımını güncelleştirme ve ağı yeniden yapılandırma gibi tetikleyici komutlar.
 
-     ![Northwind Traders Micro-Karşılama Merkezi panosunun ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/mfc-dashboard1.png)
-   * Bir işlecin, yerine getirme Merkezi içindeki koşulları izlemek için kullanabileceği bir pano örneği görürsünüz. 
-   * Karşılama Merkezi içindeki ağ geçidi cihazında çalışan yüklerin sistem durumunu izleyin.    
+     ![Northwind Traders mikro-yerine getirme merkezi panosu ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/mfc-dashboard1.png)
+   * Bir operatörün yerine getirme merkezindeki koşulları izlemek için kullanabileceği pano örneğine bakın. 
+   * Karşılama merkezi içinde ağ geçidi aygıtında çalışan yüklerin durumunu izleyin.    
 
-     ![Northwind Traders Micro-Karşılama Merkezi panosunun ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/mfc-dashboard2.png)
+     ![Northwind Traders mikro-yerine getirme merkezi panosu ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/mfc-dashboard2.png)
 
-## <a name="device-template"></a>Cihaz şablonu
-Cihaz şablonları sekmesini seçerseniz, şablonun parçası olan iki farklı cihaz türü olduğunu görürsünüz: 
-   * **Robot taşıyıcı**: Bu cihaz şablonu, karşılama yapısında dağıtılan ve uygun depolama ve alma işlemlerini gerçekleştiren, çalışan bir robot taşıyıcının tanımını temsil eder. Şablonu seçerseniz, robot 'un sıcaklık ve eksen konumu gibi cihaz verilerini gönderdiğini ve robot taşıyıcı durumu gibi özellikler olduğunu görürsünüz. 
-   * **Yapı koşulu izleme**: Bu cihaz şablonu, ortam koşulunun yanı sıra, yerine getirme merkezinizi desteklemek için çeşitli Edge iş yüklerini barındıran ağ geçidi cihazını da izlemenize olanak tanıyan bir cihaz koleksiyonunu temsil eder. Cihaz sıcaklık, çekme sayısı ve sipariş sayısı gibi telemetri verileri gönderir. Ayrıca, ortamınızda çalışan işlem iş yüklerinin durumu ve durumu hakkında bilgi gönderir. 
+## <a name="device-template"></a>Aygıt şablonu
+Aygıt şablonları sekmesini seçerseniz, şablonun bir parçası olan iki farklı aygıt türü olduğunu görürsünüz: 
+   * **Robotik Taşıyıcı**: Bu cihaz şablonu, yerine getirme yapısında konuşlandırılmış ve uygun depolama ve alma işlemlerini gerçekleştiren işleyen bir robot taşıyıcının tanımını temsil eder. Şablonu seçerseniz, robotun sıcaklık ve eksen konumu gibi aygıt verilerini ve robot taşıyıcı durumu gibi özellikleri gönderdiğini görürsünüz. 
+   * **Yapı Durumu İzleme**: Bu aygıt şablonu, ortam durumunu izlemenize olanak tanıyan bir aygıt koleksiyonunun yanı sıra yerine getirme merkezinize güç sağlamak için çeşitli kenar iş yüklerini barındıran ağ geçidi aygıtını temsil eder. Cihaz sıcaklık, çekme sayısı ve sipariş sayısı gibi telemetri verileri gönderir. Ayrıca, ortamınızda çalışan bilgi işlem iş yüklerinin durumu ve durumu hakkında da bilgi gönderir. 
 
-     ![Mikro-Karşılama Merkezi cihaz şablonları](./media/tutorial-micro-fulfillment-center-app-pnp/device-templates.png)
+     ![Mikro-yerine getirme Merkezi Cihaz Şablonları](./media/tutorial-micro-fulfillment-center-app-pnp/device-templates.png)
 
-Cihaz grupları sekmesini seçerseniz, bu cihaz şablonlarının kendileri için otomatik olarak cihaz grupları oluşturduğunu de görürsünüz.
+Aygıt grupları sekmesini seçerseniz, bu aygıt şablonlarının kendileri için otomatik olarak aygıt grupları oluşturulduğunu da görürsünüz.
 
 ## <a name="rules"></a>Kurallar
-**Kurallar** sekmesinde, robot taşıyıcının sıcaklık koşullarını izlemek için uygulama şablonunda bulunan örnek bir kural görürsünüz. Bu kuralı, tesisteki belirli bir robot fazla Isıtma olursa ve bakım için çevrimdışına alınması gerekiyorsa işleci uyarmak için kullanabilirsiniz. 
+**Kurallar** sekmesinde, robot taşıyıcının sıcaklık koşullarını izlemek için uygulama şablonunda bulunan bir örnek kuralı görürsünüz. Tesisteki belirli bir robot aşırı ısınıyorsa ve servis için çevrimdışı olması gerekiyorsa, operatörü uyarmak için bu kuralı kullanabilirsiniz. 
 
-Örnek kuralı, iş işlevleriniz için daha uygun olan kuralları tanımlamak için ilham olarak kullanın.
+İş işlevleriniz için daha uygun olan kuralları tanımlamak için örnek kuralını ilham kaynağı olarak kullanın.
 
 ![Kurallar sekmesinin ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/rules.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekecekseniz uygulama şablonunu silin. **Yönetim** > **uygulama ayarları**' na gidin ve **Sil**' i seçin.
+Bu uygulamayı kullanmaya devam etmeyecekseniz, uygulama şablonunu silin. **Yönetim** > **Uygulaması ayarlarına**gidin ve **Sil'i**seçin.
 
-![Mikro-Karşılama Merkezi uygulama ayarları sayfasının ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/delete.png)
+![Mikro-dolum merkezi Uygulama ayarları sayfasının ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app-pnp/delete.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Mikro Karşılama Merkezi Çözüm mimarisi](./architecture-micro-fulfillment-center-pnp.md)hakkında daha fazla bilgi edinin.
-* Diğer [Azure IoT Central perakende şablonları](./overview-iot-central-retail-pnp.md)hakkında daha fazla bilgi edinin.
-* [Azure IoT Central genel bakış](../preview/overview-iot-central.md)makalesini okuyun.
+* [Mikro-yerine getirme merkezi çözüm mimarisi](./architecture-micro-fulfillment-center-pnp.md)hakkında daha fazla bilgi edinin.
+* Diğer Azure [IoT Merkezi perakende satış şablonları](./overview-iot-central-retail-pnp.md)hakkında daha fazla bilgi edinin.
+* Azure [IoT Merkezi genel görünümünü](../preview/overview-iot-central.md)okuyun.

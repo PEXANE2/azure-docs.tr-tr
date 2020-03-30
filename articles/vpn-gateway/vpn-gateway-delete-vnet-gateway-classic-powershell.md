@@ -1,6 +1,6 @@
 ---
-title: 'Bir sanal ağ geçidini silme: Azure klasik'
-description: Klasik dağıtım modelinde PowerShell kullanarak bir sanal ağ geçidini silin.
+title: 'Sanal ağ ağ geçidini silme: Azure klasik'
+description: Klasik dağıtım modelinde PowerShell'i kullanarak sanal ağ ağ ağ geçidini silin.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198658"
 ---
-# <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell kullanarak bir sanal ağ geçidini silme (klasik)
+# <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell 'i kullanarak sanal ağ ağ ağ geçidini silme (klasik)
 
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure portalı](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Kaynak Yöneticisi - Azure portalı](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [Klasik-PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [Klasik - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 
-Bu makale, PowerShell kullanarak klasik dağıtım modelinde bir VPN ağ geçidini silmenizi sağlar. Sanal ağ geçidi silindikten sonra, artık kullanmadığınız öğeleri kaldırmak için ağ yapılandırma dosyasını değiştirin.
+Bu makale, PowerShell kullanarak klasik dağıtım modelinde bir VPN ağ geçidini silmenize yardımcı olur. Sanal ağ ağ geçidi silindikten sonra, artık kullanmadığınız öğeleri kaldırmak için ağ yapılandırma dosyasını değiştirin.
 
-## <a name="connect"></a>1. Adım: Azure 'a bağlanma
+## <a name="step-1-connect-to-azure"></a><a name="connect"></a>Adım 1: Azure'a bağlanma
 
-### <a name="1-install-the-latest-powershell-cmdlets"></a>1. en son PowerShell cmdlet 'lerini yükler.
+### <a name="1-install-the-latest-powershell-cmdlets"></a>1. En son PowerShell cmdlets yükleyin.
 
 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -35,7 +35,7 @@ Bu makale, PowerShell kullanarak klasik dağıtım modelinde bir VPN ağ geçidi
 
 PowerShell konsolunuzu yükseltilmiş haklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 
-1. PowerShell konsolunuzu yükseltilmiş haklarla açın. Hizmet yönetimine geçiş yapmak için şu komutu kullanın:
+1. PowerShell konsolunuzu yüksek haklarla açın. Hizmet yönetimine geçmek için şu komutu kullanın:
 
    ```powershell
    azure config mode asm
@@ -46,9 +46,9 @@ PowerShell konsolunuzu yükseltilmiş haklarla açın ve hesabınıza bağlanın
    Add-AzureAccount
    ```
 
-## <a name="export"></a>2. Adım: ağ yapılandırma dosyasını dışarı aktarma ve görüntüleme
+## <a name="step-2-export-and-view-the-network-configuration-file"></a><a name="export"></a>Adım 2: Ağ yapılandırma dosyasını dışa aktarma ve görüntüleme
 
-Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu dosyayı, her ikisi de geçerli yapılandırma bilgilerini görüntülemek ve ağ yapılandırmasını değiştirmek için kullanırsınız.
+Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu dosyayı hem geçerli yapılandırma bilgilerini görüntülemek hem de ağ yapılandırmasını değiştirmek için kullanırsınız.
 
 Bu örnekte, ağ yapılandırma dosyası C:\AzureNet dizinine aktarılır.
 
@@ -56,31 +56,31 @@ Bu örnekte, ağ yapılandırma dosyası C:\AzureNet dizinine aktarılır.
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Dosyayı bir metin düzenleyici ile açın ve klasik sanal ağınızın adını görüntüleyin. Azure portal bir sanal ağ oluşturduğunuzda, Azure 'un kullandığı tam ad portalda görünmez. Örneğin, Azure portal adı ' ClassicVNet1 ' olarak görünen bir VNet, ağ yapılandırma dosyasında çok daha uzun bir ada sahip olabilir. Ad şöyle görünebilir: ' Group ClassicRG1 ClassicVNet1 '. Sanal ağ adları **' Virtualnetworksite Name = '** olarak listelenir. PowerShell cmdlet 'lerinizi çalıştırırken ağ yapılandırma dosyasındaki adları kullanın.
+Dosyayı bir metin düzenleyicisi ile açın ve klasik VNet'inizin adını görüntüleyin. Azure portalında bir VNet oluşturduğunuzda, Azure'un kullandığı tam ad portalda görünmez. Örneğin, Azure portalında 'ClassicVNet1' olarak adlandırılmış gibi görünen bir VNet'in ağ yapılandırma dosyasında çok daha uzun bir adı olabilir. Adı gibi bir şey görünebilir: 'Grup ClassicRG1 ClassicVNet1'. Sanal ağ adları **'VirtualNetworkSite adı ='** olarak listelenir. PowerShell cmdlets'inizi çalıştırırken ağ yapılandırma dosyasındaki adları kullanın.
 
-## <a name="delete"></a>3. Adım: sanal ağ geçidini silme
+## <a name="step-3-delete-the-virtual-network-gateway"></a><a name="delete"></a>Adım 3: Sanal ağ ağ geçidini silme
 
-Bir sanal ağ geçidini sildiğinizde, ağ geçidi aracılığıyla VNet 'e yönelik tüm bağlantıların bağlantısı kesilir. VNet 'e bağlı P2S istemcileriniz varsa, bunlar uyarı vermeden kesilir.
+Sanal ağ ağ ağ geçidini sildiğinizde, ağ geçidi üzerinden VNet'e olan tüm bağlantıların bağlantısı kesilir. VNet'e bağlı P2S istemciniz varsa, uyarı yapılmadan bağlantı kesilir.
 
-Bu örnek, sanal ağ geçidini siler. Ağ yapılandırma dosyasından sanal ağın tam adını kullandığınızdan emin olun.
+Bu örnek, sanal ağ ağ ağ geçidini siler. Ağ yapılandırma dosyasından sanal ağın tam adını kullandığınızdan emin olun.
 
 ```powershell
 Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"
 ```
 
-Başarılı olursa, dönüş şunu gösterir:
+Başarılı olursa, dönüş gösterir:
 
 ```
 Status : Successful
 ```
 
-## <a name="modify"></a>4. Adım: ağ yapılandırma dosyasını değiştirme
+## <a name="step-4-modify-the-network-configuration-file"></a><a name="modify"></a>Adım 4: Ağ yapılandırma dosyasını değiştirme
 
-Bir sanal ağ geçidini sildiğinizde, cmdlet ağ yapılandırma dosyasını değiştirmez. Artık kullanılmayan öğeleri kaldırmak için dosyayı değiştirmeniz gerekir. Aşağıdaki bölümler, indirdiğiniz ağ yapılandırma dosyasını değiştirmenize yardımcı olur.
+Sanal ağ ağ ağ geçidini sildiğinizde, cmdlet ağ yapılandırma dosyasını değiştirmez. Artık kullanılmayan öğeleri kaldırmak için dosyayı değiştirmeniz gerekir. Aşağıdaki bölümler, karşıdan yüklediğiniz ağ yapılandırma dosyasını değiştirmenize yardımcı olur.
 
-### <a name="lnsref"></a>Yerel ağ sitesi başvuruları
+### <a name="local-network-site-references"></a><a name="lnsref"></a>Yerel Ağ Sitesi Referansları
 
-Site başvuru bilgilerini kaldırmak için **Connectionstolocalnetwork/LocalNetworkSiteRef**üzerinde yapılandırma değişiklikleri yapın. Yerel bir site başvurusunu kaldırma, bir tüneli silmek için Azure 'ı tetikler. Oluşturduğunuz yapılandırmaya bağlı olarak, listelenmiş bir **LocalNetworkSiteRef** bulunmayabilir.
+Site başvuru bilgilerini kaldırmak için **ConnectionsToLocalNetwork/LocalNetworkSiteRef'te**yapılandırma değişiklikleri yapın. Yerel bir site başvurusu kaldırmak, bir tüneli silmek için Azure'u tetikler. Oluşturduğunuz yapılandırmaya bağlı olarak, bir **LocalNetworkSiteRef** listelenmemiş olabilir.
 
 ```
 <Gateway>
@@ -101,9 +101,9 @@ Site başvuru bilgilerini kaldırmak için **Connectionstolocalnetwork/LocalNetw
  </Gateway>
 ```
 
-### <a name="lns"></a>Yerel ağ siteleri
+### <a name="local-network-sites"></a><a name="lns"></a>Yerel Ağ Siteleri
 
-Artık kullanmadığınız tüm yerel siteleri kaldırın. Oluşturduğunuz yapılandırmaya bağlı olarak, listelenen bir **Localnetworksitenizin** olması mümkündür.
+Artık kullanmadığınız yerel siteleri kaldırın. Oluşturduğunuz yapılandırmaya bağlı olarak, listelenen bir **LocalNetworkSite'niz** yok olabilir.
 
 ```
 <LocalNetworkSites>
@@ -122,7 +122,7 @@ Artık kullanmadığınız tüm yerel siteleri kaldırın. Oluşturduğunuz yap�
  </LocalNetworkSites>
 ```
 
-Bu örnekte, yalnızca Site3 ' ı kaldırdık.
+Bu örnekte, yalnızca Site3 kaldırıldı.
 
 ```
 <LocalNetworkSites>
@@ -135,9 +135,9 @@ Bu örnekte, yalnızca Site3 ' ı kaldırdık.
  </LocalNetworkSites>
 ```
 
-### <a name="clientaddresss"></a>İstemci adres havuzu
+### <a name="client-addresspool"></a><a name="clientaddresss"></a>Müşteri Adresi Havuzu
 
-VNet 'iniz için P2S bağlantınız varsa, bir **Vpnclientaddresspool**olur. Sildiğiniz sanal ağ geçidine karşılık gelen istemci adresi havuzlarını kaldırın.
+VNet'inize P2S bağlantınız varsa **VPNClientAddressPool'unuz**olacaktır. Sildiğiniz sanal ağ ağ ağ geçidine karşılık gelen istemci adresi havuzlarını kaldırın.
 
 ```
 <Gateway>
@@ -156,9 +156,9 @@ VNet 'iniz için P2S bağlantınız varsa, bir **Vpnclientaddresspool**olur. Sil
  </Gateway>
 ```
 
-### <a name="gwsub"></a>GatewaySubnet
+### <a name="gatewaysubnet"></a><a name="gwsub"></a>GatewaySubnet
 
-VNet 'e karşılık gelen **Gatewaysubnet** 'i silin.
+VNet'e karşılık gelen **GatewaySubnet'i** silin.
 
 ```
 <Subnets>
@@ -181,15 +181,15 @@ VNet 'e karşılık gelen **Gatewaysubnet** 'i silin.
  </Subnets>
 ```
 
-## <a name="upload"></a>5. Adım: ağ yapılandırma dosyasını karşıya yükleme
+## <a name="step-5-upload-the-network-configuration-file"></a><a name="upload"></a>Adım 5: Ağ yapılandırma dosyasını yükleme
 
-Değişikliklerinizi kaydedin ve ağ yapılandırma dosyasını Azure 'a yükleyin. Dosya yolunu ortamınız için gerektiği gibi değiştirdiğinizden emin olun.
+Değişikliklerinizi kaydedin ve ağ yapılandırma dosyasını Azure'a yükleyin. Ortamınız için gerekli olan dosya yolunu değiştirdiğinizden emin olun.
 
 ```powershell
 Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 ```
 
-Başarılı olursa, return bu örneğe benzer bir şey gösterir:
+Başarılı olursa, dönüş bu örneğe benzer bir şey gösterir:
 
 ```
 OperationDescription        OperationId                      OperationStatus                                                

@@ -1,6 +1,6 @@
 ---
-title: Bağlı fabrika Topolojisini Yapılandırma-Azure | Microsoft Docs
-description: Bu makalede, topolojisi dahil bağlı fabrika çözümü hızlandırıcının nasıl yapılandırılacağı açıklanır.
+title: Bağlı Fabrika topolojisini yapılandırın - Azure | Microsoft Dokümanlar
+description: Bu makalede, topolojisi de dahil olmak üzere Bağlı Fabrika çözüm hızlandırıcısının nasıl yapılandırılabildiğini açıklanmaktadır.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,63 +9,63 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820127"
 ---
-# <a name="configure-the-connected-factory-solution-accelerator"></a>Bağlı fabrika çözüm Hızlandırıcısını yapılandırma
+# <a name="configure-the-connected-factory-solution-accelerator"></a>Bağlı Fabrika çözüm hızlandırıcısını yapılandırın
 
-Bağlı fabrika çözümü hızlandırıcısı, kurgusal bir şirket Contoso için sanal bir panoyu gösterir. Bu şirketin küresel olarak çok sayıda küresel konumda fabrikası vardır.
+Connected Factory çözüm hızlandırıcısı, kurgusal bir şirket Olan Contoso için simüle edilmiş bir pano gösterir. Bu şirketin dünya çapında çok sayıda küresel yerlerde fabrikaları vardır.
 
-Bu makalede, bağlı bir fabrika çözümünün topolojisinin nasıl yapılandırılacağını anlatan bir örnek olarak Contoso kullanılır.
+Bu makalede, Bağlı Fabrika çözümünün topolojisinin nasıl yapılandırılabildiğini açıklamak için Contoso bir örnek olarak kullanılmıştır.
 
-## <a name="simulated-factories-configuration"></a>Sanal fabrika yapılandırması
+## <a name="simulated-factories-configuration"></a>Simüle edilmiş fabrikalar yapılandırması
 
-Her contoso fabrikası, her biri üç istasyondan oluşan üretim satırlarına sahiptir. Her istasyon, belirli bir role sahip gerçek bir OPC UA sunucusudur:
+Her Contoso fabrikası, her biri üç istasyondan oluşan üretim hatlarına sahiptir. Her istasyon belirli bir rolü olan gerçek bir OPC UA sunucusudur:
 
-* Derleme İstasyonu
-* Test İstasyonu
-* Paketleme İstasyonu
+* Montaj istasyonu
+* Test istasyonu
+* Paketleme istasyonu
 
-Bu OPC UA sunucuları OPC UA düğümlerine sahiptir ve [OPC yayımcısı](overview-opc-publisher.md) bu düğümlerin değerlerini bağlı fabrikaya gönderir. Buna aşağıdakiler dahildir:
+Bu OPC UA sunucularında OPC UA düğümleri vardır ve [OPC Publisher](overview-opc-publisher.md) bu düğümlerin değerlerini Bağlı Fabrika'ya gönderir. Buna aşağıdakiler dahildir:
 
-* Geçerli güç tüketimi gibi geçerli işlemsel durum.
-* Üretilen ürünlerin sayısı gibi üretim bilgileri.
+* Mevcut güç tüketimi gibi geçerli çalışma durumu.
+* Üretilen ürün sayısı gibi üretim bilgileri.
 
-Panoları, genel bir görünümden bir istasyon düzeyi görünümüne kadar contoso fabrika topolojisine ulaşmak için kullanabilirsiniz. Bağlı fabrika panosu şunları sunar:
+Küresel bir görünümden istasyon düzeyinde görünüme kadar Contoso fabrika topolojisini delmek için gösterge panelini kullanabilirsiniz. Bağlı Fabrika panosu şunları sağlar:
 
-* Topolojideki her katman için OEE ve KPI rakamları görselleştirmesi.
-* İstasyonlardaki OPC UA düğümlerinin geçerli değerlerinin görselleştirilmesi.
-* OEE ve KPI rakamları, istasyon düzeyinden genel düzeye kadar toplanmaktadır.
-* Değerler belirli eşiklere ulaştıklarında gerçekleştirilecek uyarıların ve eylemlerin görselleştirilmesi.
+* Topolojideki her katman için OEE ve KPI figürlerinin görselleştirilmesi.
+* İstasyonlarda OPC UA düğümlerinin geçerli değerlerinin görselleştirilmesi.
+* OEE ve KPI rakamlarının istasyon seviyesinden küresel düzeye toplanması.
+* Değerler belirli eşiklere ulaşıyorsa gerçekleştirecek uyarıların ve eylemlerin görselleştirilmesi.
 
-## <a name="connected-factory-topology"></a>Bağlı fabrika topolojisi
+## <a name="connected-factory-topology"></a>Bağlı Fabrika topolojisi
 
-Fabrikalar, üretim hatları ve istasyonların topolojisi hiyerarşidir:
+Fabrikaların, üretim hatlarının ve istasyonların topolojisi hiyerarşiktir:
 
-* Genel düzeyin alt öğe olarak fabrika düğümleri vardır.
-* Fabrikalar, üretim satırı düğümlerine alt öğe olarak sahiptir.
-* Üretim satırlarında alt öğe olarak istasyon düğümleri vardır.
-* İstasyonlar (OPC UA sunucuları) alt öğe olarak OPC UA düğümlerine sahiptir.
+* Küresel düzeyde çocuk olarak fabrika düğümleri vardır.
+* Fabrikalarda çocukken üretim hattı düğümleri vardır.
+* Üretim hatlarında çocukken istasyon düğümleri vardır.
+* İstasyonlarda (OPC UA sunucuları) çocuk olarak OPC UA düğümleri vardır.
 
-Topolojideki her düğüm, aşağıdakileri tanımlayan ortak bir özellikler kümesine sahiptir:
+Topolojideki her düğüm, aşağıdakileri tanımlayan ortak bir özellik kümesine sahiptir:
 
 * Topoloji düğümü için benzersiz bir tanımlayıcı.
-* Bir ad.
-* Bir açıklama.
+* Bir isim.
+* Bir tanımlama.
 * Bir görüntü.
-* Topoloji düğümünün alt öğeleri.
-* OEE ve KPI rakamları için en düşük, hedef ve maksimum değerler ve yürütülecek uyarı eylemleri.
+* Topoloji düğümünün çocukları.
+* OEE ve KPI rakamları ve yürütülecek uyarı eylemleri için minimum, hedef ve maksimum değerler.
 
 ## <a name="topology-configuration-file"></a>Topoloji yapılandırma dosyası
 
-Önceki bölümde listelenen özellikleri yapılandırmak için, bağlı fabrika çözümü [Contosotopologyıdescription. JSON](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)adlı bir yapılandırma dosyası kullanır.
+Önceki bölümde listelenen özellikleri yapılandırmak için, Bağlı Fabrika çözümü [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)adlı bir yapılandırma dosyası kullanır.
 
-Bu dosyayı `WebApp/Contoso/Topology` klasöründeki çözüm kaynak kodunda bulabilirsiniz.
+Bu dosyayı klasördeki çözüm kaynak `WebApp/Contoso/Topology` kodunda bulabilirsiniz.
 
-Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandırma dosyasının bir ana hattı gösterilmektedir:
+Aşağıdaki snippet yapılandırma dosyasının `ContosoTopologyDescription.json` bir anahat gösterir:
 
 ```json
 {
@@ -85,237 +85,237 @@ Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandır
 }
 ```
 
- `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`ve `<station_configuration>` ortak özellikleri şunlardır:
+ `<global_configuration>`, , , `<factory_configuration>` `<production_line_configuration>`ve `<station_configuration>` ortak özellikleri şunlardır:
 
 * **Ad** (tür dizesi)
 
-  Bir tanımlayıcı ad tanımlar, bu, bir topoloji düğümünün panoda gösterilmesi için yalnızca bir kelime olmalıdır.
+  Panoda gösterilecek topoloji düğümü için yalnızca bir sözcük olması gereken açıklayıcı bir ad tanımlar.
 
 * **Açıklama** (tür dizesi)
 
-  Topoloji düğümünü daha ayrıntılı olarak açıklar.
+  Topoloji düğümlerini daha ayrıntılı olarak açıklar.
 
-* **Görüntü** (tür dizesi)
+* **Resim** (yazı dizesi)
 
-  Panoda topoloji düğümü hakkında bilgi gösterildiğinde gösterilecek bir görüntünün yolu.
+  Panoda topoloji düğümü hakkındaki bilgilerin gösterildiğinde WebApp çözümündeki bir görüntüye giden yol.
 
-* **Oeegenel**, **oeeperformance**, **oeeavailability**, **oeequality**, **Kpi1**, **Kpi2** (tür `<performance_definition>`)
+* **OeeGenel**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (türü `<performance_definition>`)
 
-  Bu özellikler, uyarı oluşturmak için kullanılan işletimsel şeklin en küçük, hedef ve maxhayvan değerlerini tanımlar. Bu özellikler ayrıca bir uyarı algılandığında yürütülecek eylemleri tanımlar.
+  Bu özellikler, uyarılar oluşturmak için kullanılan operasyonel şeklin en az, hedef ve maksimal değerlerini tanımlar. Bu özellikler, bir uyarı algılanırsa yürütülecek eylemleri de tanımlar.
 
-`<factory_configuration>` ve `<production_line_configuration>` öğelerinin bir özelliği vardır:
+Ve `<factory_configuration>` `<production_line_configuration>` öğelerin bir özelliği vardır:
 
-* **GUID** (tür dizesi)
+* **Kılavuz** (tip dize)
 
-  Topoloji düğümünü benzersiz şekilde tanımlar.
+  Topoloji düğümlerini benzersiz bir şekilde tanımlar.
 
-`<factory_configuration>` bir özelliğe sahiptir:
+`<factory_configuration>`bir özelliği vardır:
 
-* **Konum** (tür `<location_definition>`)
+* **Konum** (tür) `<location_definition>`
 
-  Fabrikasının bulunduğu yeri belirtir.
+  Fabrikanın nerede olduğunu belirtir.
 
-`<station_configuration>` özellikler vardır:
+`<station_configuration>`özellikleri vardır:
 
-* **Opcuri** (dize türü)
+* **OpcUri** (tip dize)
 
-  Bu özellik OPC UA sunucusunun OPC UA uygulama URI 'sine ayarlanmalıdır.
-  OPC UA belirtimi tarafından genel olarak benzersiz olması gerektiğinden, bu özellik istasyon topolojisi düğümünü belirlemek için kullanılır.
+  Bu özellik, OPC UA sunucusunun OPC UA Uygulama URI olarak ayarlanmalıdır.
+  OPC UA belirtimi tarafından küresel olarak benzersiz olması gerektiğinden, bu özellik istasyon topoloji düğümlerini tanımlamak için kullanılır.
 
-* OPC UA düğümlerinin dizisi olan **Opcnodes**(tür `<opc_node_description>`)
+* **OpcNodes**, OPC UA düğümleri bir dizi `<opc_node_description>`olan (türü)
 
-`<location_definition>` özellikler vardır:
+`<location_definition>`özellikleri vardır:
 
-* **Şehir** (tür dizesi)
+* **Şehir** (tip dize)
 
   Konuma en yakın şehrin adı
 
-* **Ülke** (tür dizesi)
+* **Ülke** (tip dizesi)
 
   Konumun ülkesi
 
-* **Enlem** (çift türü)
+* **Enlem** (çift tip)
 
-  Konumun enlem
+  Konumun enlemi
 
-* **Boylam** (çift türü)
+* **Boylam** (tip çift)
 
-  Konumun Boylam
+  Konumun boylam
 
-`<performance_definition>` özellikler vardır:
+`<performance_definition>`özellikleri vardır:
 
-* **Minimum** (tür Double)
+* **Minimum** (tip çift)
 
-  Değer, daha düşük olabilir. Geçerli değer bu eşiğin altındaysa, bir uyarı oluşturulur.
+  Değerin ulaşabileceği daha düşük eşik. Geçerli değer bu eşiğin altındaysa, bir uyarı oluşturulur.
 
-* **Target** (çift türü)
+* **Hedef** (tip çift)
 
-  Ideal hedef değeri.
+  İdeal hedef değeri.
 
-* **Maksimum** (çift türü)
+* **Maksimum** (tip çift)
 
-  Değerin ulaşabileceği üst eşik değeri. Geçerli değer bu eşiğin üstünde ise, bir uyarı oluşturulur.
+  Değerin ulaşabileceği üst eşik. Geçerli değer bu eşiğin üzerindeyse, bir uyarı oluşturulur.
 
-* **Minimumalertactions** (tür `<alert_action>`)
+* **MinimumAlertActions** (türü) `<alert_action>`
 
-  En az bir uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
+  Minimum uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
 
-* **Maximumalertactions** (tür `<alert_action>`)
+* **MaximumAlertActions** (türü) `<alert_action>`
 
   Maksimum uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
 
 `<alert_action`> özellikleri vardır:
 
-* **Tür** (dize türü)
+* **Türü** (tür dize)
 
-  Uyarı eyleminin türü. Aşağıdaki türler bilinmektedir:
+  Uyarı eyleminin türü. Aşağıdaki türleri bilinmektedir:
 
-  * Bildirim alınan **gealert**: uyarının durumu Onaylandı olarak değiştirilmelidir.
-  * **Closealert**: aynı türdeki tüm eski uyarılar artık panoda gösterilmemelidir.
+  * **AcknowledgeAlert**: uyarının durumu kabul edilemeyecek şekilde değiştirilmelidir.
+  * **CloseAlert**: Aynı türden tüm eski uyarılar artık panoda gösterilmemelidir.
   * **CallOpcMethod**: OPC UA yöntemi çağrılmalıdır.
-  * **OpenWeb sayfası**: ek bağlamsal bilgileri gösteren bir tarayıcı penceresi açılmalıdır.
+  * **OpenWebPage**: ek bağlamsal bilgiler gösteren bir tarayıcı penceresi açılmalıdır.
 
 * **Açıklama** (tür dizesi)
 
   Panoda gösterilen eylemin açıklaması.
 
-* **Parameter** (tür dizesi)
+* **Parametre** (tip dize)
 
-  Eylemi yürütmek için gereken parametreler. Değer, eylem türüne bağlıdır.
+  Eylemi yürütmek için gereken parametreler. Değer eylem türüne bağlıdır.
 
-  * Bildiren **Gealert**: parametre gerekli değil.
-  * **Closealert**: parametre gerekli değil.
-  * **CallOpcMethod**: BIR OPC UA yönteminin "NodeId of Parent Node, çağrılacak yöntemin NodeId, OPC UA sunucusu URI 'si) biçiminde çağırmak için düğüm bilgileri ve parametreleri."
-  * **OpenWeb sayfası**: tarayıcı PENCERESINDE gösterilecek URL.
+  * **AcknowledgeAlert**: parametre gerektirmez.
+  * **CloseAlert**: parametre gerektirmez.
+  * **CallOpcMethod**: Düğüm bilgileri ve OPC UA yönteminin parametreleri biçiminde aramak için "Ana düğümün Düğümü, NodeId metod, Uri OPC UA sunucusunun."
+  * **OpenWebPage**: tarayıcı penceresinde gösterilen URL.
 
-`<opc_node_description>` bir istasyondaki OPC UA düğümleri hakkında bilgiler içerir (OPC UA sunucusu). Mevcut OPC UA düğümlerini temsil eden, ancak bağlı fabrika hesaplama mantığındaki depolama alanı olarak kullanılan düğümler de geçerlidir. Aşağıdaki özelliklere sahiptir:
+`<opc_node_description>`bir istasyondaki OPC UA düğümleri (OPC UA sunucusu) hakkında bilgi içerir. Varolan Hiçbir OPC UA düğümlerini temsil eden, ancak Bağlı Fabrika'nın hesaplama mantığında depolama olarak kullanılan düğümler de geçerlidir. Aşağıdaki özelliklere sahiptir:
 
-* **NodeId** (tür dizesi)
+* **Düğüm (tip** dizesi)
 
-  İstasyonun (OPC UA sunucusu) adres alanındaki OPC UA düğümünün adresi. Sözdizimi bir NodeId için OPC UA belirtiminde belirtilen şekilde olmalıdır.
+  İstasyonun (OPC UA sunucusunun) adres alanında ki OPC UA düğümünün adresi. Sözdizimi, Bir Düğüm için OPC UA belirtiminde belirtildiği gibi olmalıdır.
 
-* **Sembolicname** (tür dizesi)
+* **SymbolicName** (tip dizesi)
 
   Bu OPC UA düğümünün değeri gösterildiğinde panoda gösterilecek ad.
 
-* **İlgi** (dize türünde dizi)
+* **Alaka düzeyi** (tür dize dizisi)
 
-  OPC UA düğüm değerinin hangi şekilde kullanılacağını belirtir. Her dizi öğesi aşağıdaki değerlerden biri olabilir:
+  OEE veya KPI'nın hangi hesaplamaiçin OPC UA düğümü değerinin alakalı olduğunu gösterir. Her dizi öğesi aşağıdaki değerlerden biri olabilir:
 
-  * **OeeAvailability_Running**: değer, OEE kullanılabilirliği hesaplanmasıyla ilgilidir.
-  * **OeeAvailability_Fault**: değer, OEE kullanılabilirliği hesaplanmasıyla ilgilidir.
-  * **OeePerformance_Ideal**: değer, OEE performansının hesaplanmasıyla ilgilidir ve genellikle sabit bir değerdir.
-  * **OeePerformance_Actual**: değer, OEE performansının hesaplanmasıyla ilgilidir.
-  * **OeeQuality_Good**: değer OEE kalitesi hesaplanmasıyla ilgilidir.
-  * **OeeQuality_Bad**: değer OEE kalitesi hesaplanmasıyla ilgilidir.
-  * **Kpi1**: değer, Kpi1 hesaplamasında geçerlidir.
-  * **Kpi2**: değer, Kpi2 hesaplamasında geçerlidir.
+  * **OeeAvailability_Running**: değer OEE Kullanılabilirliğinin hesaplanması için önemlidir.
+  * **OeeAvailability_Fault**: değer OEE Kullanılabilirliğinin hesaplanması için önemlidir.
+  * **OeePerformance_Ideal**: değer OEE Performansının hesaplanması için önemlidir ve genellikle sabit bir değerdir.
+  * **OeePerformance_Actual**: değer OEE Performansının hesaplanması için önemlidir.
+  * **OeeQuality_Good**: değer OEE Kalitesinin hesaplanması için önemlidir.
+  * **OeeQuality_Bad**: değer OEE Kalitesinin hesaplanması için önemlidir.
+  * **Kpi1**: değer KPI1 hesaplanması için ilgilidir.
+  * **Kpi2**: değer KPI2 hesaplaması için ilgilidir.
 
-* **Opcode** (tür dizesi)
+* **OpCode** (tip dize)
 
-  OPC UA düğümünün değerinin, zaman serisi Insight sorguları ve OEE/KPI hesaplamalarında nasıl işlendiğini gösterir. Her zaman, bir dizi Insight sorgusu, sorgunun bir parametresi olan ve bir sonuç sunan belirli bir TimeSpan 'yi hedefler. OpCode, sonucun nasıl hesaplanabileceğini denetler ve aşağıdaki değerlerden biri olabilir:
+  Zaman Serisi Öngörü sorgularında ve OEE/KPI hesaplamalarında OPC UA düğümünün değerinin nasıl işlendiğini gösterir. Her Zaman Serisi Öngörü sorgusu, sorgunun bir parametresi olan belirli bir zaman dilimini hedefler ve bir sonuç verir. OpCode, sonucun nasıl hesaplandığını denetler ve aşağıdaki değerlerden biri olabilir:
 
-  * **Fark**: TimeSpan içindeki Last ve First değeri arasındaki fark.
-  * **AVG**: TimeSpan içindeki tüm değerlerin ortalaması.
-  * **Sum**: TimeSpan içindeki tüm değerlerin toplamı.
-  * **Son**: Şu anda kullanılmıyor.
-  * **Sayı**: TimeSpan içindeki değer sayısı.
-  * **Max**: TimeSpan içindeki maxhayvan değeri.
-  * **Min**: TimeSpan içindeki minimum değer.
-  * **Const**: sonuç, constValue özelliği tarafından belirtilen değerdir.
-  * **Submaxmin**: maxhayvan ve en düşük değer arasındaki fark.
-  * **TimeSpan**: TimeSpan.
+  * **Diff**: zaman bölmesindeki son ve ilk değer arasındaki fark.
+  * **Avg**: zaman açısından tüm değerlerin ortalaması.
+  * **Toplam**: zaman bölmesindeki tüm değerlerin toplamı.
+  * **Son**: şu anda kullanılmaz.
+  * **Count**: zaman bölmesindeki değer sayısı.
+  * **Max**: zaman açısından maksimal değer.
+  * **Min**: zaman açısından en az değer.
+  * **Const**: sonuç özellik ConstValue tarafından belirtilen değerdir.
+  * **SubMaxMin**: maksimal ve minimal değer arasındaki fark.
+  * **Zaman gazetesi**: zaman gazetesi.
 
-* **Birimler** (tür dizesi)
+* **Birimler** (tip dize)
 
-  Panoda görüntülenmek üzere bir değer birimi tanımlar.
+  Panoda görüntülenecek değerin bir birimini tanımlar.
 
-* **Visible** (tür Boolean)
+* **Görünür** (tip boolean)
 
-  Değerin panoda gösterilmesi gerekip gerekmediğini denetler.
+  Değerin panoda gösterilip gösterilmediğini denetler.
 
-* **ConstValue** (çift tür)
+* **ConstValue** (tip çift)
 
-  **Opcode** **const**ise, bu özellik düğümün değeridir.
+  **OpCode** **Const**ise, bu özellik düğümün değeridir.
 
-* **Minimum** (tür Double)
+* **Minimum** (tip çift)
 
-  Geçerli değer bu değerin altına düşerse, en az bir uyarı oluşturulur.
+  Geçerli değer bu değerin altına düşerse, en az uyarı oluşturulur.
 
-* **Maksimum** (çift türü)
+* **Maksimum** (tip çift)
 
-  Geçerli değer bu değerin üzerine yükselirse, en fazla bir uyarı oluşturulur.
+  Geçerli değer bu değerin üzerinde yükselirse, en büyük uyarı oluşturulur.
 
-* **Minimumalertactions** (tür `<alert_action>`)
+* **MinimumAlertActions** (türü) `<alert_action>`
 
-  En az bir uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
+  Minimum uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
 
-* **Maximumalertactions** (tür `<alert_action>`)
+* **MaximumAlertActions** (türü) `<alert_action>`
 
   Maksimum uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
 
-İstasyon düzeyinde **simülasyon** nesnelerini de görürsünüz. Bu nesneler yalnızca bağlı fabrika simülasyonu yapılandırmak için kullanılır ve gerçek bir topolojiyi yapılandırmak için kullanılmamalıdır.
+İstasyon düzeyinde, **Simülasyon** nesnelerini de görürsünüz. Bu nesneler yalnızca Bağlı Fabrika simülasyonu yapılandırmak için kullanılır ve gerçek bir topolojiyi yapılandırmak için kullanılmamalıdır.
 
-## <a name="how-the-configuration-data-is-used-at-runtime"></a>Yapılandırma verileri çalışma zamanında nasıl kullanılır
+## <a name="how-the-configuration-data-is-used-at-runtime"></a>Çalışma zamanında yapılandırma verilerinin nasıl kullanıldığı
 
-Yapılandırma dosyasında kullanılan tüm özellikler, kullanıldıkları ayarlara bağlı olarak farklı kategorilerde gruplandırılabilir. Bu kategoriler şunlardır:
+Yapılandırma dosyasında kullanılan tüm özellikler, nasıl kullanıldıklarına bağlı olarak farklı kategorilerde gruplandırılabilir. Bu kategoriler şunlardır:
 
 ### <a name="visual-appearance"></a>Görsel görünüm
 
-Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örneklere şunlar dahildir:
+Bu kategorideki özellikler Bağlı Fabrika panosunun görsel görünümünü tanımlar. Örneklere şunlar dahildir:
 
-* Ad
+* Adı
 * Açıklama
 * Görüntü
 * Konum
 * Birimler
-* Görüne
+* Görünür
 
 ### <a name="internal-topology-tree-addressing"></a>İç topoloji ağacı adresleme
 
-WebApp, tüm topoloji düğümlerinin bilgilerini içeren bir iç veri sözlüğünü tutar. Properties **Guid** ve **opcuri** , bu sözlüğe erişmek ve benzersiz olması gereken anahtarlar olarak kullanılır.
+WebApp, tüm topoloji düğümlerinin bilgilerini içeren bir dahili veri sözlüğü tutar. Özellikleri **Guid** ve **OpcUri** bu sözlük erişmek için anahtar olarak kullanılır ve benzersiz olması gerekir.
 
-### <a name="oeekpi-computation"></a>OEE/KPI hesaplaması
+### <a name="oeekpi-computation"></a>OEE/KPI hesaplama
 
-Bağlı fabrika simülasyonu için OEE/KPI rakamları şu şekilde parametreleştiriyordu:
+Bağlı Fabrika simülasyonu için OEE/KPI rakamları aşağıdakiler tarafından parametrelendirilmiştir:
 
-* Hesaplamaya dahil edilecek OPC UA düğüm değerleri.
-* Şekil telemetri değerlerinden nasıl hesaplanır.
+* Hesaplamaya dahil edilecek OPC UA düğümü değerleri.
+* Şeklin telemetri değerlerinden nasıl hesaplanır.
 
-Bağlı fabrika, [http://www.oeefoundation.org](http://www.oeefoundation.org)tarafından yayınlanan OEE formüllerini kullanır.
+Bağlı Fabrika tarafından yayınlanan OEE formülleri [http://www.oeefoundation.org](http://www.oeefoundation.org)kullanır.
 
-İstasyonlardaki OPC UA düğüm nesneleri OEE/KPI hesaplamasında kullanım için etiketlemeyi etkinleştirir. **İlgi** özelliği, OPC UA düğüm değerinin kullanılması gereken OEE/KPI şeklini belirtir. **Opcode** özelliği değerin hesaplamada nasıl ekleneceğini tanımlar.
+İstasyonlarda bulunan OPC UA düğümü nesneleri, OEE/KPI hesaplamasında kullanılmak için etiketlemeyi sağlar. **Alaka** özelliği, OEE/KPI figürü için OPC UA düğümü değerinin kullanılması gerektiğini gösterir. **OpCode** özelliği, değerin hesaplamaya nasıl dahil edildiğini tanımlar.
 
 ### <a name="alert-handling"></a>Uyarı işleme
 
-Bağlı fabrika basit en düşük/en yüksek eşik tabanlı uyarı oluşturma mekanizmasını destekler. Bu uyarılara yanıt olarak yapılandırabileceğiniz bir dizi önceden tanımlanmış eylem vardır. Aşağıdaki özellikler bu mekanizmayı denetler:
+Connected Factory basit bir minimum/maksimum eşik tabanlı uyarı oluşturma mekanizmasını destekler. Bu uyarılara yanıt olarak yapılandırabileceğiniz önceden tanımlanmış eylemler vardır. Aşağıdaki özellikler bu mekanizmayı denetler:
 
 * Maksimum
 * Minimum
 * MaximumAlertActions
 * MinimumAlertActions
 
-## <a name="correlating-to-telemetry-data"></a>Telemetri verileriyle ilişkilendirme
+## <a name="correlating-to-telemetry-data"></a>Telemetri verileriyle ilişkili
 
-Son değeri görselleştirme veya zaman serisi Insight sorguları oluşturma gibi belirli işlemler için WebApp, alınan telemetri verileri için bir adres düzeni gerektirir. Bağlı fabrikaya gönderilen Telemetriyi iç veri yapılarında da depolanması gerekir. Bu işlemleri etkinleştiren iki özellik istasyon (OPC UA sunucusu) ve OPC UA düğüm düzeyi:
+Son değeri görselleştirme veya Time Series Insight sorguları oluşturma gibi belirli işlemler için WebApp'ın yutulan telemetri verileri için bir adresleme şemasına ihtiyacı vardır. Bağlı Fabrika'ya gönderilen telemetrinin iç veri yapılarında da depolanması gerekir. Bu işlemleri etkinleştiren iki özellik istasyonda (OPC UA sunucusu) ve OPC UA düğümü düzeyindedir:
 
 * **OpcUri**
 
-  Telemetrinin geldiği OPC UA sunucusunu tanımlar (genel olarak benzersiz). Alınan iletilerde, bu özellik **ApplicationUri**olarak gönderilir.
+  Telemetrinin geldiği OPC UA sunucusunu tanımlar (genel olarak benzersizdir). Yutulan iletilerde, bu özellik **ApplicationUri**olarak gönderilir.
 
-* **NodeId**
+* **Düğüm**
 
-  OPC UA sunucusunda düğüm değerini tanımlar. Özelliğin biçimi OPC UA belirtiminde belirtilen şekilde olmalıdır. Alınan iletilerde, bu özellik **NodeId**olarak gönderilir.
+  OPC UA sunucusundaki düğüm değerini tanımlar. Özelliğin biçimi, OPC UA belirtiminde belirtildiği gibi olmalıdır. Yutulan iletilerde, bu özellik **Düğüm**olarak gönderilir.
 
-Telemetri verilerinin bağlı fabrikaya nasıl yapılacağı hakkında daha fazla bilgi için bkz. [OPC yayımcısı nedir?](overview-opc-publisher.md) .
+Telemetri verilerinin Bağlı Fabrika'ya nasıl yutulduşu hakkında daha fazla bilgi için [OPC Publisher nedir](overview-opc-publisher.md) bilgisini görün.
 
 ## <a name="example-how-kpi1-is-calculated"></a>Örnek: KPI1 nasıl hesaplanır?
 
-`ContosoTopologyDescription.json` dosyadaki yapılandırma, OEE/KPI rakamlarını nasıl hesaplanacağını denetler. Aşağıdaki örnek, bu dosyadaki özelliklerin KPI1 hesaplamasını denetleme şeklini gösterir.
+Dosyadaki yapılandırma, OEE/KPI rakamlarının `ContosoTopologyDescription.json` nasıl hesaplanır denetler. Aşağıdaki örnek, bu dosyadaki özelliklerin KPI1 hesaplamasını nasıl denetletolduğunu gösterir.
 
-Bağlı fabrika KPI1, son bir saat içinde başarıyla üretilmiş ürünlerin sayısını ölçmek için kullanılır. Bağlı fabrika simülasyonu içindeki her istasyon (OPC UA sunucusu), bu KPI 'Yı hesaplamak için telemetri sağlayan bir OPC UA düğümü (`NodeId: "ns=2;i=385"`) sağlar.
+Bağlı Fabrika Da KPI1 son bir saat içinde başarıyla üretilen ürünlerin sayısını ölçmek için kullanılır. Bağlı Fabrika simülasyonundaki her istasyon (OPC UA sunucusu), bu`NodeId: "ns=2;i=385"`KPI'yi hesaplamak için telemetri sağlayan bir OPC UA düğümü sağlar.
 
-Bu OPC UA düğümünün yapılandırması aşağıdaki kod parçacığına benzer şekilde görünür:
+Bu OPC UA düğümü için yapılandırma aşağıdaki snippet gibi görünür:
 
 ```json
 {
@@ -326,18 +326,18 @@ Bu OPC UA düğümünün yapılandırması aşağıdaki kod parçacığına benz
 },
 ```
 
-Bu yapılandırma, Time Series Insights kullanarak bu düğümün telemetri değerlerinin sorgulanmasını sunar. Time Series Insights sorgu şunu alır:
+Bu yapılandırma, Zaman Serisi Öngörüleri kullanarak bu düğümün telemetri değerlerinin sorgulanmasını sağlar. Zaman Serisi Öngörüleri sorgusu alır:
 
 * Değer sayısı.
-* En küçük değer.
-* Maxhayvan değeri.
+* En az değer.
+* Maksimal değer.
 * Tüm değerlerin ortalaması.
-* Tüm benzersiz **Opcuri** (**ApplicationUri**) için tüm değerlerin toplamı, belirli bir TimeSpan içindeki **NodeId** çiftleri.
+* Tüm benzersiz **OpcUri** **(ApplicationUri),** Belirli bir zaman açısından **Düğüm** çiftleri için tüm değerlerin toplamı.
 
-**Numberofmanufactureredproducts** düğümü değerinin bir özelliği yalnızca artar. Zaman aralığı içinde üretilen ürünlerin sayısını hesaplamak için bağlı fabrika, **submaxmin** **işlem** kodunu kullanır. Hesaplama, zaman yayılımı başlangıcında en küçük değeri ve TimeSpan 'nin sonundaki maksimum değeri alır.
+**NumberOfManufactureredProducts** düğüm değerinin bir özelliği de yalnızca artmasıdır. Zaman açısından üretilen ürün sayısını hesaplamak için, Connected Factory **OpCode** **SubMaxMin**kullanır. Hesaplama, zaman bölmesinin başındaki minimum değeri ve zaman alanının sonundaki en büyük değeri alır.
 
-Yapılandırmadaki **Opcode** , maksimum ve minimum değer farkının sonucunu hesaplamak için hesaplama mantığını yapılandırır. Bu sonuçlar daha sonra kök (genel) düzeyine kadar biriktirilir ve panoda gösterilir.
+Yapılandırmadaki **OpCode,** maksimum ve minimum değer farkının sonucunu hesaplamak için hesaplama mantığını yapılandırır. Bu sonuçlar daha sonra alt ta kök (genel) düzeyine kadar birikir ve panoda gösterilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önerilen bir sonraki adım, [bağlı fabrika çözümünü nasıl özelleştireceğinizi](iot-accelerators-connected-factory-customize.md)öğrenirsiniz.
+Önerilen bir sonraki adım, [Bağlı Fabrika çözümlerini](iot-accelerators-connected-factory-customize.md)nasıl özelleştirini öğrenmektir.

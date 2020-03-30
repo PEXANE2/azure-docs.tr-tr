@@ -1,6 +1,6 @@
 ---
-title: Azure Internet Analyzer sorunlarını giderme | Microsoft Docs
-description: Azure Internet Çözümleyicisi için sorun giderme başvurusu.
+title: Azure Internet Çözümleyici sorun giderme | Microsoft Dokümanlar
+description: Azure Internet Analyzer için sorun giderme başvurusu.
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
@@ -8,28 +8,28 @@ ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
 ms.openlocfilehash: a265278652c16b4682707470d183a02a55b9a0ec
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77069226"
 ---
-# <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet Çözümleyicisi sorunlarını giderme
+# <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet Çözümleyici sorun giderme
 
-Bu makale, yaygın Internet çözümleyici sorunları için sorun giderme adımlarını içerir.
+Bu makalede, sık karşılaşılan Internet Çözümleyici sorunları için sorun giderme adımları içerir.
 
-## <a name="things-to-keep-in-mind"></a>Göz önünde bulundurmanız gerekenler
-- İstemci betiği bir **https** Web sitesine katıştırmalıdır. Betik bir düz metin (**http://** ) veya yerel (**File://** ) Web sitesinde çalışıyorsa ölçümler toplanmaz.
-- Ölçüm verileri yalnızca Internet Çözümleyicisi profilinin istemci betiği gerçek Kullanıcı trafiği alan bir uygulamaya katıştırılmışsa toplanacaktır. Yapay trafik (örneğin, Azure WebApp performans testleri) genellikle katıştırılmış JavaScript kodunu yürütmez, bu nedenle bu tür trafik tarafından hiçbir ölçüm oluşturulmaz.
+## <a name="things-to-keep-in-mind"></a>Akılda tutulması gereken noktalar
+- İstemci komut dosyası bir **HTTPS** web sitesine katışdırılmış olmalıdır. Komut dosyası düz metin **(http://)** veya yerel **(file://)** web sitesinde çalışırsa ölçümler toplanmaz.
+- Ölçüm verileri yalnızca Internet Analyzer profilinin istemci komut dosyası gerçek kullanıcı trafiği alan bir uygulamaya gömülüyse toplanır. Sentetik trafik (örneğin, Azure WebApp Performans Testleri) genellikle gömülü Javascript kodunu yürütmez, bu nedenle bu tür bir trafik tarafından ölçüm oluşturulmaz.
 
-## <a name="azure-portal"></a>Azure portalı
-**"Karneler bölümünde seçili filtre birleşimi için bir karne üretilmemiştir"**
-- Karneler günlük olarak (her günün sonunda UTC saati) oluşturulur.
-- Karneler yalnızca seçili filtre birleşimi (test, zaman aralığı, ülke vb.) için 100 ' den fazla ölçüm toplanmışsa üretilir.
+## <a name="azure-portal"></a>Azure portalında
+**Karneler bölümünde "Seçili filtre kombinasyonu için bir karne oluşturulmadı"**
+- Karneler günlük olarak oluşturulur (her günün sonunda, UTC saati).
+- Karneler yalnızca seçilen filtre kombinasyonu (Test, Zaman Dilimi, Ülke, vb.) için 100'den fazla ölçüm toplanmışsa oluşturulur.
 
-**Testteki bir veya her iki uç nokta için "Toplam ölçüm sayısı" sıfır**
-- Zaman serisi ve ölçüm sayıları bir saat olarak hesaplanır, bu nedenle yeni ölçüm verilerinin görünmesi için en az bu süreyi beklemeniz gerekir.
-- Internet çözümleyici, analizi için yalnızca başarılı ölçümleri (yani, HTTP 200 yanıtlarını) sayar. Testteki bir veya her iki uç noktanın ulaşılamaz veya 200 olmayan bir HTTP Kodu döndürmesi durumunda, sıfır toplam ölçümle gösterilir.
+**"Toplam Ölçüm Sayısı" bir testteki bir veya her iki uç nokta için sıfırdır**
+- Zaman serileri ve ölçüm sayıları saatte bir kez hesaplanır, bu nedenle yeni ölçüm verilerinin gösterilmesi için en az bu kadar süre beklemeniz gerekir.
+- Internet Analyzer, analizi için yalnızca başarılı ölçümleri (örneğin, HTTP 200 yanıtları) sayar. Bir testteki bir veya her iki uç nokta erişilemez veya 200 olmayan bir HTTP kodu döndürebilirse, toplam sıfır ölçümle gösterilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Internet ÇÖZÜMLEYICISI SSS](internet-analyzer-faq.md) makalesini okuyun
+Internet [Analyzer SSS'yi](internet-analyzer-faq.md) okuyun

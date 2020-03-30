@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-VPN ağ geçitleri
-description: AVS siteden siteye VPN ve Noktadan siteye VPN kavramları hakkında bilgi edinin
+title: CloudSimple tarafından Azure VMware Çözümü - VPN ağ geçitleri
+description: CloudSimple Siteden Siteye VPN ve Site'ye Noktadan KullanıcıYA VPN kavramları hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,69 +8,69 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 73171e2c46bdf6c934db5777efe36ba51153a686
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024866"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ağ geçitlerine genel bakış
 
-VPN ağ geçidi, bir AVS bölgesi ağı ile şirket içi konumdaki bir bilgisayar veya genel İnternet üzerinden bir bilgisayar arasında şifrelenmiş trafik göndermek için kullanılır. Her bölge, birden çok bağlantıyı destekleyebilen bir VPN ağ geçidine sahip olabilir. Aynı VPN ağ geçidiyle birden fazla bağlantı oluşturduğunuzda, tüm VPN tünelleri kullanılabilir ağ geçidi bant genişliğini paylaşır.
+VPN ağ geçidi, bir CloudSimple bölge ağı arasında şirket içi bir konumda veya genel internet üzerinden bir bilgisayar arasında şifreli trafik göndermek için kullanılır.  Her bölgede birden çok bağlantıyı desteklenebilen bir VPN ağ geçidi olabilir. Aynı VPN ağ geçidiyle birden fazla bağlantı oluşturduğunuzda, tüm VPN tünelleri kullanılabilir ağ geçidi bant genişliğini paylaşır.
 
-AVS iki tür VPN ağ geçidi sağlar:
+CloudSimple iki tür VPN ağ geçidi sağlar:
 
-* Siteden siteye VPN ağ geçidi
-* Noktadan siteye VPN ağ geçidi
+* Siteden Siteye VPN ağ geçidi
+* Noktadan Siteye VPN ağ geçidi
 
-## <a name="site-to-site-vpn-gateway"></a>Siteden siteye VPN ağ geçidi
+## <a name="site-to-site-vpn-gateway"></a>Siteden Siteye VPN ağ geçidi
 
-Bir AVS bölgesi ağı ile şirket içi veri merkezi arasında şifrelenmiş trafik göndermek için siteden siteye VPN ağ geçidi kullanılır. Şirket içi ağınız ve AVS bölgesi ağı arasındaki ağ trafiği için alt ağları/CıDR aralığını tanımlamak üzere bu bağlantıyı kullanın.
+Siteden Siteye VPN ağ geçidi, CloudSimple bölge ağı ile şirket içi veri merkezi arasında şifreli trafik göndermek için kullanılır. Şirket içi ağınızla CloudSimple bölge ağı arasındaki ağ trafiği için alt ağlar/CIDR aralığını tanımlamak için bu bağlantıyı kullanın.
 
-VPN ağ geçidi, AVS özel bulutunuzda şirket içi hizmetleri ve şirket içi ağdan AVS özel bulutunuzda Hizmetleri kullanmanıza olanak sağlar. AVS, şirket içi ağınızdan bağlantı kurmak için ilke tabanlı bir VPN sunucusu sağlar.
+VPN ağ geçidi, Özel Bulut'unuzda şirket içi hizmetler ve şirket içi ağdan Özel Bulut'unuzdaki hizmetleri tüketmenize olanak tanır.  CloudSimple, şirket içi ağınızdan bağlantıyı kurmak için ilke tabanlı bir VPN sunucusu sağlar.
 
-Siteden siteye VPN için kullanım örnekleri:
+Siteden Siteye VPN için kılıfları kullanma:
 
-* Şirket içi ağınızdaki herhangi bir iş istasyonundan AVS özel bulut vCenter ' nin erişilebilirliği.
-* Şirket içi Active Directory vCenter Identity kaynağı olarak kullanın.
-* VM şablonlarının, ISOs 'nin ve diğer dosyaların şirket içi kaynaklarınızdan AVS özel bulut vCenter 'larınıza uygun şekilde aktarılması.
-* Şirket içi ağınızdan, AVS özel bulutunuzda çalışan iş yüklerinin erişilebilirliği.
+* Özel Bulut vCenter'ınızın şirket içi ağınızdaki herhangi bir iş istasyonundan erişilebilirliği.
+* Şirket içi Active Directory'nizi vCenter kimlik kaynağı olarak kullanın.
+* Şirket içi kaynaklarınızdan Özel Bulut vCenter'ınıza VM şablonlarının, ISO'larının ve diğer dosyaların rahat çalarından aktarılması.
+* Özel Bulut'unuzda çalışan iş yüklerinin şirket içi ağınızdan erişilebilirliği.
 
-![Siteden siteye VPN bağlantı topolojisi](media/cloudsimple-site-to-site-vpn-connection.png)
+![Siteden Siteye VPN bağlantı topolojisi](media/cloudsimple-site-to-site-vpn-connection.png)
 
 ### <a name="cryptographic-parameters"></a>Şifreleme parametreleri
 
-Siteden siteye VPN bağlantısı, güvenli bir bağlantı kurmak için aşağıdaki varsayılan şifreleme parametrelerini kullanır. Şirket içi VPN cihazınızdan bir bağlantı oluşturduğunuzda, şirket içi VPN ağ geçidiniz tarafından desteklenen aşağıdaki parametrelerden birini kullanın.
+Siteden Siteye VPN bağlantısı, güvenli bir bağlantı kurmak için aşağıdaki varsayılan şifreleme parametrelerini kullanır.  Şirket içi VPN aygıtınızdan bir bağlantı oluşturduğunuzda, şirket içi VPN ağ geçidiniz tarafından desteklenen aşağıdaki parametrelerden herhangi birini kullanın.
 
-#### <a name="phase-1-proposals"></a>1\. aşama teklifleri
+#### <a name="phase-1-proposals"></a>Faz 1 önerileri
 
 | Parametre | Teklif 1 | Teklif 2 | Teklif 3 |
 |-----------|------------|------------|------------|
 | IKE Sürümü | IKEv1 | IKEv1 | IKEv1 |
 | Şifreleme | AES 128 | AES 256 | AES 256 |
-| Karma algoritması| SHA 256 | SHA 256 | SHA 1 |
-| Diffie Hellman grubu (DH grubu) | 2 | 2 | 2 |
-| Yaşam süresi | 28.800 saniye | 28.800 saniye | 28.800 saniye |
-| Veri boyutu | 4 GB | 4 GB | 4 GB |
+| Karma Algoritma| ŞAH 256 | ŞAH 256 | SHA 1 |
+| Diffie Hellman Grubu (DH Grubu) | 2 | 2 | 2 |
+| Yaşam Süresi | 28.800 saniye | 28.800 saniye | 28.800 saniye |
+| Veri Boyutu | 4 GB | 4 GB | 4 GB |
 
-#### <a name="phase-2-proposals"></a>2\. aşama teklifleri
+#### <a name="phase-2-proposals"></a>Aşama 2 önerileri
 
 | Parametre | Teklif 1 | Teklif 2 | Teklif 3 |
 |-----------|------------|------------|------------|
 | Şifreleme | AES 128 | AES 256 | AES 256 |
-| Karma algoritması| SHA 256 | SHA 256 | SHA 1 |
-| Kusursuz Iletme gizliliği grubu (PFS Grubu) | Hiçbiri | Hiçbiri | Hiçbiri |
-| Yaşam süresi | 1\.800 saniye | 1\.800 saniye | 1\.800 saniye |
-| Veri boyutu | 4 GB | 4 GB | 4 GB |
+| Karma Algoritma| ŞAH 256 | ŞAH 256 | SHA 1 |
+| Perfect Forward Gizlilik Grubu (PFS Group) | None | None | None |
+| Yaşam Süresi | 1800 saniye | 1800 saniye | 1800 saniye |
+| Veri Boyutu | 4 GB | 4 GB | 4 GB |
 
 
 > [!IMPORTANT]
-> VPN cihazınızda 1200 ' de TCP ve üst sınırı ayarlayın. Ya da VPN cihazlarınız, sahip olma özelliğini desteklemiyorsa, bunun yerine tünel arabirimindeki MTU değerini 1240 bayta ayarlayabilirsiniz.
+> VPN cihazınızda TCP MSS Bağlamayı 1200 olarak ayarlayın. Veya VPN aygıtlarınız MSS bağlamayı desteklemiyorsa, tünel arabirimindeki MTU'yu alternatif olarak 1240 bayt olarak ayarlayabilirsiniz.
 
-## <a name="point-to-site-vpn-gateway"></a>Noktadan siteye VPN ağ geçidi
+## <a name="point-to-site-vpn-gateway"></a>Noktadan Siteye VPN ağ geçidi
 
-Bir AVS bölgesi ağı ile istemci bilgisayar arasında şifrelenmiş trafik göndermek için Noktadan siteye VPN kullanılır. Uçtan Siteye VPN, AVS özel bulut vCenter ve iş yükü VM 'leriniz de dahil olmak üzere AVS özel bulut ağınıza erişmenin en kolay yoludur. AVS özel bulutuna uzaktan bağlanıyorsanız Noktadan siteye VPN bağlantısı kullanın.
+Bir CloudSimple bölge ağı ile istemci bilgisayar arasında şifreli trafik göndermek için Site'ye Nokta VPN kullanılır.  Özel Bulut vCenter'ınız ve iş yükü VM'leriniz de dahil olmak üzere Özel Bulut ağınıza erişmenin en kolay yoludur.  Özel Bulut'a uzaktan bağlanıyorsanız, Site'ye Noktalı VPN bağlantısını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Kuruluşunuzun uygulama & gruplarına erişimini yönetme-Azure AD
-description: Uygulamalarım portalından Kuruluşunuzun uygulamalarına ve gruplarına yönelik güvenlik erişimini yönetmek için bir erişim incelemesi gerçekleştirmeyi öğrenin.
+title: Kuruluşunuzun uygulamalara erişimini & gruplarına yönetme - Azure AD
+description: Uygulamam portalından kuruluşunuzun uygulamaları ve grupları için güvenlik erişimini yönetmek için bir erişim incelemesini nasıl gerçekleştireceklerinizi öğrenin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,68 +13,68 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: c71195b247af6d5046d88d3e6918a660eddf09b3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062396"
 ---
-# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Uygulamalarım portalından bir erişim incelemesi gerçekleştirme
+# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Uygulamalarım portalından erişim incelemesi gerçekleştirin
 
-Uygulamalarınız ve gruplarınız için erişim gözden geçirmeleri gerçekleştirmek üzere Web tabanlı **My Apps** portalından iş veya okul hesabınızı kullanabilirsiniz. Erişim gözden geçirmeleri, eski erişimi yönetmenize veya erişim gereksinimlerini değiştirmenize ve bunların incelenip güncelleştirilmesini sağlamanıza yardımcı olur.
+Uygulamalarınız ve gruplarınız için erişim değerlendirmeleri gerçekleştirmek için web tabanlı **Uygulamalarım** portalındaki iş veya okul hesabınızı kullanabilirsiniz. Erişim incelemeleri, eski erişimi yönetmenize veya erişim gereksinimlerini değiştirmenize ve bunların gözden geçirilmesini ve güncelleştirilmesini sağlamanıza yardımcı olur.
 
-**Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masanızla iletişime geçin.
+**Uygulamalarım** portalına erişiminiz yoksa, izin almak için Yardım Masanıza başvurun.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Bu içerik, **uygulamalarım** kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
+>Bu içerik **Uygulamalarım** kullanıcıları için tasarlanmıştır. Yöneticiyseniz, [Uygulama Yönetimi Dokümantasyonu'nda](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızı nasıl ayarlayıp yönetebileceğiniz hakkında daha fazla bilgi bulabilirsiniz.
 
-## <a name="manage-access-reviews"></a>Erişim incelemelerini yönetme
+## <a name="manage-access-reviews"></a>Erişim yorumlarını yönetme
 
-Yöneticiniz kendi erişim incelemelerinizi gerçekleştirme izni verdiyse, kendi **uygulamalarım** veya uygulamalar erişim gözden geçirmeleri sayfasındaki **erişim İncelemeleri** kutucuğundan gruplarınızı veya uygulamalarınızı yönetebilirsiniz.
+Yöneticiniz size kendi erişim yorumlarınızı gerçekleştirme izni verdiyse, Gruplarınızı veya uygulamalarınızın erişimini **Uygulamalarım** portalı sayfasındaki **Access incelemeleri** döşemesinden yönetebilirsiniz.
 
 >[!Note]
->**Erişim gözden geçirmeleri** kutucuğunu görmüyorsanız, bu, erişim gözden geçirmeleri gerçekleştirme izniniz olmadığı ya da Onayınızı bekleyen herhangi bir gözden geçirmede sahip olmadığınız anlamına gelir. Kutucuğa erişiminizin olması gerektiğini düşünüyorsanız yardım için yardım masasına başvurun.
+>**Access incelemeleri** döşemesini görmüyorsanız, bu, erişim incelemeleri gerçekleştirmek için izniniz olmadığı veya onayınızı bekleyen yorumlarınız olmadığı anlamına gelir. Döşemeye erişiminiz olması gerektiğini düşünüyorsanız, yardım için Yardım Masanıza başvurun.
 
-## <a name="to-perform-your-access-reviews"></a>Erişim incelemelerinizi gerçekleştirmek için
+## <a name="to-perform-your-access-reviews"></a>Erişim yorumlarınızı gerçekleştirmek için
 
 1. İş veya okul hesabınızda oturum açın.
 
-2. Web tarayıcınızı açın ve https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.comgibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. Web tarayıcınızı açın https://myapps.microsoft.comve kuruluşunuz tarafından sağlanan bağlantıyı kullanın. Örneğin, kuruluşunuz için özelleştirilmiş bir sayfaya yönlendirilmiş https://myapps.microsoft.com/contoso.comolabilirsiniz.
 
-    Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
+    **Uygulamalar** sayfası, kuruluşunuz tarafından sahip olunan ve kullanabileceğiniz tüm bulut tabanlı uygulamaları gösterir.
 
     ![Uygulamalarım portalındaki uygulamalar sayfası](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
 
-3. Onayınızı bekleyen erişim gözden geçirmeleri listesini görmek için **erişim İncelemeleri** kutucuğunu seçin.
+3. Onayınızı bekleyen erişim yorumlarılistesini görmek için **Access incelemeleri** döşemesini seçin.
 
-    ![Kuruluş için bekleyen erişim gözden geçirmeleri içeren erişim İncelemeleri sayfası](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
+    ![Kuruluş için bekleyen erişim yorumlarıyla incelemeler sayfasına erişin](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Erişim incelemenizi başlatmak için **gözden geçirmeyi** Başlat ' ı seçin.
+4. Erişim **incelemenizi** başlatmak için Gözden Geçir'i Başlat'ı seçin.
 
-5. Erişiminizi gözden geçirin ve hâlâ gerekli olup olmadığını saptayın.
+5. Erişiminizi gözden geçirin ve hala gerekli olup olmadığını belirleyin.
 
-    ![İnceleme ayrıntılarını gösteren erişim gözden geçirme sayfası](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
-
-    >[!Note]
-    >Yöneticiyseniz ve kuruluşunuzun gruplara ve uygulamalara erişimini incelemeye izin verildiyse, farklı bir sayfa görürsünüz. Kuruluşunuz için grupları veya uygulamaları gözden geçirme hakkında daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleriyle gruplara veya uygulamalara erişimi gözden geçirme](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
-
-6. Erişiminizi **kaldırmak için, erişiminizi korumak Için** **Evet** ' i seçin.
-
-    **Evet**' i seçerseniz, **neden** kutusunda bir gerekçe belirtmeniz gerekebilir.
-
-    ![Örnek metinle ilgili neden kutusunu gösteren erişim gözden geçirme sayfası](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
-
-7. **Gönder**' i seçin.
-
-    Erişim incelemeniz tamamlanmıştır ve **My Apps** portalına dönersiniz.
+    ![İnceleme ayrıntılarını gösteren inceleme sayfasına erişin](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Erişiminizi, erişim gözden geçirme döneminizin bitene kadar istediğiniz zaman değiştirebilirsiniz. Bir uygulamaya veya gruba erişiminizi kaldırırsanız, bu, hemen kaldırılmaz. Kaldırma işlemi, erişim gözden geçirme süresi sona erdiğinde veya bir yönetici incelemeyi kapattığında gerçekleşir.
+    >Yöneticiyseniz ve kuruluşunuzun gruplara ve uygulamalara erişimini gözden geçirmenize izin verilirse, farklı bir sayfa görürsünüz. Kuruluşunuz için grupları veya uygulamaları gözden geçirme hakkında daha fazla bilgi için Azure [AD Erişim İncelemeleri'ndeki gruplara veya uygulamalara erişimi gözden geçir'e](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review)bakın.
+
+6. Erişiminizi korumak için **Evet'i** veya erişiminizi kaldırmak için **Hayır'ı** seçin.
+
+    **Evet'i**seçerseniz, **Neden** kutusunda bir yaslama belirtmeniz gerekebilir.
+
+    ![Örnek metinle Neden kutusunu gösteren inceleme sayfasına erişin](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
+
+7. **Gönder**’i seçin.
+
+    Erişim incelemeniz tamamlandı ve **Uygulamalarım** portalına geri dönüyorsunuz.
+
+    >[!Note]
+    >Erişim inceleme döneminiz sona erene kadar istediğiniz zaman erişiminizi değiştirebilirsiniz. Bir uygulamaya veya gruba erişiminizi kaldırırsanız, uygulama hemen kaldırılmaz. Kaldırma, erişim gözden geçirme dönemi sona erdiğinde veya yönetici gözden geçirmeyi kapattığında gerçekleşir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulamalarım portalındaki uygulamalara erişin ve bunları kullanın](my-apps-portal-end-user-access.md)
-- [Profil bilgilerinizi değiştirin](my-apps-portal-end-user-update-profile.md)
-- [Gruplarla ilgili bilgilerinizi görüntüleyin ve güncelleştirin](my-apps-portal-end-user-groups.md)
+- [Profil bilgilerinizi değiştirme](my-apps-portal-end-user-update-profile.md)
+- [Gruplarla ilgili bilgilerinizi görüntüleme ve güncelleme](my-apps-portal-end-user-groups.md)

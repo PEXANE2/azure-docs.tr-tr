@@ -1,7 +1,7 @@
 ---
-title: OCR Bilişsel Beceri
+title: OCR bilişsel beceri
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama 'de bir zenginleştirme ardışık düzeninde optik karakter tanıma (OCR) kullanarak görüntü dosyalarından metin ayıklayın.
+description: Azure Bilişsel Arama'da bir zenginleştirme ardışık alanında optik karakter tanıma (OCR) kullanarak görüntü dosyalarından metin ayıklayın.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,61 +9,61 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72791917"
 ---
-# <a name="ocr-cognitive-skill"></a>OCR Bilişsel Beceri
+# <a name="ocr-cognitive-skill"></a>OCR bilişsel beceri
 
-**Optik karakter tanıma (OCR)** yeteneği, görüntü dosyalarında yazdırılmış ve el yazısı metinleri tanır. Bu beceri bilişsel hizmetler 'de [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) tarafından sunulan makine öğrenimi modellerini kullanır. **OCR** becerisi aşağıdaki işlevlere eşlenir:
+**Optik karakter tanıma (OCR)** becerisi, görüntü dosyalarında yazdırılan ve el yazısıyla yazılmış metni tanır. Bu beceri, [Bilişsel Hizmetler'de Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) tarafından sağlanan makine öğrenme modellerini kullanır. **OCR** beceri aşağıdaki işlevsellik eşler:
 
-+ Ingilizce dışındaki diller için ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'si kullanılır. 
-+ Ingilizce için yeni ["okuma"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API 'si kullanılır.
++ ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API'si İngilizce dışındaki diller için kullanılır. 
++ İngilizce için yeni ["Read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API kullanılır.
 
-**OCR** becerisi, resim dosyalarından metin ayıklar. Desteklenen dosya biçimleri şunlardır:
+**OCR** becerisi görüntü dosyalarından metin ayıklar. Desteklenen dosya biçimleri şunlardır:
 
-+ . JPEG
-+ . JPG
-+ . KITAPLıĞıNı
-+ . BMP
-+ . GIF
-+ . DOSYALARıNDA
++ . Jpeg
++ . Jpg
++ . Png
++ . Bmp
++ . Gıf
++ . Tıff
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşleme sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla Bilgi Al algoritması ekleyerek kapsamı genişlettikçe, [faturalandırılabilir Bilişsel Hizmetler kaynağı eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir. Bilişsel Hizmetler'de API'leri ararken ve Azure Bilişsel Arama'da belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk ettirilir. Belgelerden metin çıkarma için herhangi bir ücret yoktur.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik becerilerin yürütülmesi, mevcut [Bilişsel Hizmetler ödeme-as-you gitmek fiyat](https://azure.microsoft.com/pricing/details/cognitive-services/)tahsil edilir. Görüntü çıkarma fiyatlandırması [Azure Bilişsel Arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmıştır.
 
 
-## <a name="skill-parameters"></a>Yetenek parametreleri
+## <a name="skill-parameters"></a>Beceri parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| detectOrientation | Görüntü yönünün yeniden algılanmasına izin vermez. <br/> Geçerli değerler: true/false.|
-|defaultLanguageCode | <p>  Giriş metninin dil kodu. Desteklenen diller: <br/> zh-Hans (Çinesebasitleştirilmiş) <br/> zh-Hant (çon Setradi) <br/>CS (Çek) <br/>da (Danimarka) <br/>nl (Felemenkçe) <br/>En (Ingilizce) <br/>Fi (Fince)  <br/>fr (Fransızca) <br/>  de (Almanca) <br/>el (Yunanca) <br/> Hu (Macarca) <br/> BT (Italyanca) <br/>  Ja (Japonca) <br/> Ko (Korece) <br/> NB (Norveç) <br/>   pl (Lehçe) <br/> PT (Portekizce) <br/>  ru (Rusça) <br/>  es (Ispanyolca) <br/>  ZF (Isveççe) <br/>  tr (Türkçe) <br/> AR (Arapça) <br/> ro (Rumence) <br/> SR-Cyrl (SerbianCyrillic) <br/> sr-Latn (SerbianLatin) <br/>  SK (Slovakça). <br/>  UNK (bilinmiyor) <br/><br/> Dil kodu belirtilmemişse veya null ise, dil Ingilizce olarak ayarlanır. Dil açıkça "UNK" olarak ayarlandıysa dil otomatik olarak algılanır. </p> |
-|Satır sonu | Algılanan her satır arasında kullanılacak değer. Olası değerler: ' Space ', ' CarriageReturn ', ' LineFeed '.  Varsayılan değer ' Space ' |
+| algılama Oryantasyon | Görüntü yönünün otomatik olarak algılanmasını sağlar. <br/> Geçerli değerler: true / false.|
+|defaultLanguageCode | <p>  Giriş metninin dil kodu. Desteklenen diller: <br/> zh-Hans (Çince Basitleştirilmiş) <br/> zh-Hant (ÇinceGeleneksel) <br/>cs (Çekçe) <br/>da (Danca) <br/>nl (Felemenkçe) <br/>tr (İngilizce) <br/>fi (Fince)  <br/>fr (Fransızca) <br/>  de (Almanca) <br/>el (Yunanca) <br/> hu (Macarca) <br/> o (İtalyanca) <br/>  ja (Japonca) <br/> ko (Korece) <br/> nb (Norveççe) <br/>   pl (Lehçe) <br/> pt (Portekizce) <br/>  ru (Rusça) <br/>  es (İspanyolca) <br/>  sv (İsveççe) <br/>  tr (Türkçe) <br/> ar (Arapça) <br/> ro (Romence) <br/> sr-Cyrl (SırpKiril) <br/> sr-Latn (Sırplatincesi) <br/>  sk (Slovakça). <br/>  unk (Bilinmiyor) <br/><br/> Dil kodu belirtilmemiş veya null ise, dil İngilizce olarak ayarlanır. Dil açıkça "unk" olarak ayarlanırsa, dil otomatik olarak algılanır. </p> |
+|lineEnding | Algılanan her satır arasında kullanılacak değer. Olası değerler: 'Space','CarriageReturn','LineFeed'.  Varsayılan 'Boşluk' |
 
-Daha önce, yeteneğin "yazdırılmış" veya "el ile" metin ayıklanıp ayıklanmayacağını belirtmek için "textExtractionAlgorithm" adlı bir parametre vardı.  Bu parametre kullanım dışıdır ve en son okuma API 'SI algoritması aynı anda her iki türden metni ayıklamada artık gerekli değildir.  Yetenek tanımınızda zaten bu parametre varsa, onu kaldırmanız gerekmez, ancak artık kullanılmayacak ve her iki tür metin de ne şekilde ayarlandığına bakılmaksızın ileri doğru şekilde ayıklanacaktır.
+Daha önce, beceri "yazdırılmış" veya "el yazısı" metin ayıklamak gerektiğini belirtmek için "textExtractionAlgorithm" adlı bir parametre vardı.  En son Okuma API algoritması her iki metin türünü aynı anda ayıklama yeteneğine sahip olduğundan, bu parametre amortismana alınır ve artık gerekli değildir.  Beceri tanımınız zaten bu parametreyi içeriyorsa, kaldırmanız gerekmez, ancak artık kullanılmaz ve her iki metin türü de ne olarak ayarlandığına bakılmaksızın ileriye doğru ayıklanır.
 
-## <a name="skill-inputs"></a>Beceri girişleri
+## <a name="skill-inputs"></a>Beceri girdileri
 
 | Giriş adı      | Açıklama                                          |
 |---------------|------------------------------------------------------|
-| image         | Karmaşık tür. Şu anda, ```imageAction``` ```none```dışında bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_ımages" alanı ile birlikte çalışıyor. Daha fazla bilgi için [örneğe](#sample-output) bakın.|
+| image         | Karmaşık Tip. Şu anda yalnızca Azure Blob dizinleyicisi ```imageAction``` tarafından üretilen "/document/normalized_images" ```none```alanı yla çalışır. Daha fazla bilgi için [örneğe](#sample-output) bakın.|
 
 
-## <a name="skill-outputs"></a>Yetenek çıkışları
-| Çıkış adı     | Açıklama                   |
+## <a name="skill-outputs"></a>Beceri çıktıları
+| Çıktı adı     | Açıklama                   |
 |---------------|-------------------------------|
-| metin          | Görüntüden ayıklanan düz metin.   |
-| layoutText    | Ayıklanan metni ve metnin bulunduğu konumu açıklayan karmaşık tür.|
+| metin          | Görüntüden çıkarılan düz metin.   |
+| düzenMetin    | Çıkarılan metni ve metnin bulunduğu konumu açıklayan karmaşık yazı.|
 
 
-## <a name="sample-definition"></a>Örnek tanım
+## <a name="sample-definition"></a>Örnek tanımı
 
 ```json
 {
@@ -96,7 +96,7 @@ Daha önce, yeteneğin "yazdırılmış" veya "el ile" metin ayıklanıp ayıkla
 ```
 <a name="sample-output"></a>
 
-## <a name="sample-text-and-layouttext-output"></a>Örnek metin ve layoutText çıktısı
+## <a name="sample-text-and-layouttext-output"></a>Örnek metin ve düzenMetin çıktısı
 
 ```json
 {
@@ -134,11 +134,11 @@ Daha önce, yeteneğin "yazdırılmış" veya "el ile" metin ayıklanıp ayıkla
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Örnek: katıştırılmış görüntülerden ayıklanan metni belge içeriğiyle birleştirme.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Örnek: Katıştılı resimlerden çıkarılan metni belgenin içeriğiyle birleştirme.
 
-Metin Merbilirliği için ortak kullanım örneği, görüntülerin metinsel gösterimini (bir OCR özelliğinden metin veya bir görüntünün başlığını) belgenin içerik alanına birleştirebilme yeteneğidir.
+Metin Birleştirme için ortak kullanım örneği, görüntülerin metinsel temsilini (OCR becerisinden metin veya görüntünün alt yazısı) belgenin içerik alanına birleştirme yeteneğidir.
 
-Aşağıdaki örnek beceri bir *merged_text* alanı oluşturur. Bu alan, belgenizin metinsel içeriğini ve bu belgede gömülü resimlerin her birinden OCRed metni içerir.
+Aşağıdaki örnek skillset *merged_text* bir alan oluşturur. Bu alan, belgenizin metin içeriğini ve bu belgeye katıştırılmış görüntülerin her birinden OKK'lu metni içerir.
 
 #### <a name="request-body-syntax"></a>İstek Gövdesi Sözdizimi
 ```json
@@ -190,7 +190,7 @@ Aşağıdaki örnek beceri bir *merged_text* alanı oluşturur. Bu alan, belgeni
   ]
 }
 ```
-Yukarıdaki beceri örnek, normalleştirilmiş görüntüler alanının bulunduğunu varsayar. Bu alanı oluşturmak için, Dizin Oluşturucu tanımınızda *ımageaction* yapılandırmasını aşağıda gösterildiği gibi *Generatenormalizmages* olarak ayarlayın:
+Yukarıdaki skillset örneği, normalleştirilmiş görüntüler alanının var olduğunu varsayar. Bu alanı oluşturmak için, aşağıda gösterildiği gibi *Normalize Görüntüler oluşturmak* için indexer tanımınızda *imageAction* yapılandırmasını ayarlayın:
 
 ```json
 {
@@ -206,6 +206,6 @@ Yukarıdaki beceri örnek, normalleştirilmiş görüntüler alanının bulundu�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [TextMerger yeteneği](cognitive-search-skill-textmerger.md)
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Dizin Oluşturucu oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [TextMerger beceri](cognitive-search-skill-textmerger.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Dizin Oluşturucu Oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

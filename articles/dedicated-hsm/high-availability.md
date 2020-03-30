@@ -1,6 +1,6 @@
 ---
-title: Yüksek kullanılabilirlik - Azure ayrılmış HSM | Microsoft Docs
-description: Azure ayrılmış HSM yüksek kullanılabilirlik örneği ve temel konuları
+title: Yüksek kullanılabilirlik - Azure Özel HSM | Microsoft Dokümanlar
+description: Azure Özel HSM yüksek kullanılabilirlik örneği ve temel hususlar
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70882256"
 ---
-# <a name="azure-dedicated-hsm-high-availability"></a>Azure ayrılmış HSM yüksek kullanılabilirlik
+# <a name="azure-dedicated-hsm-high-availability"></a>Azure Özel HSM yüksek kullanılabilirlik
 
-Azure ayrılmış HSM, Microsoft'un yüksek oranda kullanılabilir veri merkezleri tarafından underpinned. Bununla birlikte, yüksek oranda kullanılabilir herhangi bir veri merkezine yerelleştirilmiş hataları ve olağanüstü durumlarda, bölgesel düzeyindeki hatalar savunmasız durumdadır. Microsoft, HSM cihazlarına farklı veri merkezlerindeki birden çok cihaz sağlama tek bir rafa paylaşımı aygıtları götürmez emin olmak için bir bölge içinde dağıtır. Bu HSM 'ler, Gemalto HA Group özelliğini kullanarak bir bölgedeki veri merkezlerinde bu HSM 'leri eşleştirerek daha fazla yüksek kullanılabilirlik elde edilebilir. Ayrıca bir olağanüstü durum kurtarma durumda bölgesel yük devretme adres bölgeler arasında çifti cihazlara mümkündür. Bu çok katmanlı bir yüksek kullanılabilirlik yapılandırmasıyla, herhangi bir cihaz hata otomatik olarak çalışan uygulamaları korumak için getirilecektir. Başarısız olan herhangi bir CİHAZDAN vakitli şekilde değiştirilebilmesi tüm veri merkezlerinde de yedek aygıtlarının ve bileşenlerinin tesise var.
+Azure Özel HSM, Microsoft'un yüksek oranda kullanılabilen veri merkezleri tarafından desteklenmektedir. Ancak, yüksek kullanılabilirlikteki herhangi bir veri merkezi yerelleştirilmiş hatalara ve olağanüstü durumlarda bölgesel düzey hatalarına karşı savunmasızdır. Microsoft, birden çok aygıtın sağlanmasının bu aygıtların tek bir rafı paylaşmasına yol açmamasını sağlamak için HSM aygıtlarını bir bölgedeki farklı veri merkezlerinde dağıtır. Gemalto HA Group özelliğini kullanarak bu HSM'leri bölgedeki veri merkezleri arasında eşleştirerek daha yüksek kullanılabilirlik düzeyi elde edilebilir. Ayrıca, bir olağanüstü durum kurtarma durumunda bölgesel başarısızlık ları gidermek için aygıtları bölgeler arasında eşleştirmek de mümkündür. Bu çok katmanlı yüksek kullanılabilirlik yapılandırması sayesinde, uygulamaların çalışmaya devam etmesi için herhangi bir aygıt hatası otomatik olarak giderilir. Tüm veri merkezlerinin yerinde yedek aygıtları ve bileşenleri de vardır, böylece başarısız olan aygıtlar zamanında değiştirilebilir.
 
 ## <a name="high-availability-example"></a>Yüksek kullanılabilirlik örneği
 
-Yüksek kullanılabilirlik için HSM cihazlarına yazılım düzeyinde yapılandırma konusunda bilgi 'Gemalto Luna ağ HSM Yönetim Kılavuzu'nda ' dir. Bu belge, [Gemalto HSM sayfasında](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)bulunur.
+HSM aygıtlarının yazılım düzeyinde yüksek kullanılabilirlik için nasıl yapılandırılabilen bilgiler 'Gemalto Luna Network HSM Yönetim Kılavuzu'nda yer almaktadır. Bu belge [gemalto HSM Sayfasında](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)mevcuttur.
 
-Aşağıdaki diyagramda yüksek oranda kullanılabilir bir mimari gösterilmektedir. Birden çok bölgede hem de ayrı bir bölgede eşleştirilmiş birden çok cihazlarda kullanır. Bu mimari, en az dört HSM cihazlarına ve sanal ağ bileşenleri kullanır.
+Aşağıdaki diyagram, kullanılabilir bir mimari gösterir. Bölgede birden çok aygıt ve ayrı bir bölgede eşleştirilmiş birden çok aygıt kullanır. Bu mimari, en az dört HSM aygıtı ve sanal ağ bileşeni kullanır.
 
 ![Yüksek kullanılabilirlik diyagramı](media/high-availability/high-availability.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüksek kullanılabilirlik ve güvenlik gibi hizmete tüm temel kavramlarını cihaz sağlama ve uygulama tasarım veya dağıtımınızın önce iyi anlaşıldığından önerilir.
-Daha fazla kavramı düzey konular:
+Yüksek kullanılabilirlik ve güvenlik gibi hizmetin tüm temel kavramlarının, cihaz sağlama ve uygulama tasarımı veya dağıtımından önce iyi anlaşılması önerilir.
+Diğer kavram düzeyi konuları:
 
-* [Dağıtım mimarisi](deployment-architecture.md)
-* [Fiziksel güvenlik](physical-security.md)
-* [Ağ](networking.md)
-* [Desteklenebilirliği](supportability.md)
+* [Dağıtım Mimarisi](deployment-architecture.md)
+* [Fiziksel Güvenlik](physical-security.md)
+* [Ağ Oluşturma](networking.md)
+* [Desteklenebilirlik](supportability.md)
 * [İzleme](monitoring.md)
 
-HSM cihazlarına yüksek kullanılabilirlik için yapılandırma belirli Ayrıntılar için lütfen Yönetici kılavuzları için Gemalto müşteri desteği Portalı'na bakın ve 6 bölümüne bakın.
+Yüksek kullanılabilirlik için HSM aygıtlarının yapılandırılmasıyla ilgili özel ayrıntılar için, lütfen Yönetici Kılavuzları için Gemalto Müşteri Destek Portalı'na bakın ve bölüm 6'ya bakın.

@@ -1,62 +1,62 @@
 ---
-title: Logic Apps REST API tümleştirme hizmeti ortamları (sesleri) oluşturun
-description: Azure Logic Apps Azure sanal ağlarına (VNet) erişebilmek için Logic Apps REST API kullanarak bir tümleştirme hizmeti ortamı (ıSE) oluşturun
+title: Logic Apps REST API ile entegrasyon hizmeti ortamları (ISS' ler) oluşturun
+description: Azure Logic Apps Apps Uygulamalarından Azure sanal ağlarına (VNETs) erişebilmeniz için Logic Apps REST API'sini kullanarak bir entegrasyon hizmeti ortamı (İmKB) oluşturun
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 2c6e35b1e7d160064998004f87c5b14d0eaeac5e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127667"
 ---
-# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps kullanarak bir tümleştirme hizmeti ortamı (ıSE) oluşturun REST API
+# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API'yi kullanarak bir entegrasyon hizmet ortamı (Ise) oluşturun
 
-Bu makalede, mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md)erişmesi gereken senaryolar için Logic Apps REST API aracılığıyla bir [ *tümleştirme hizmeti ortamının* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) nasıl oluşturulacağı gösterilmektedir. ISE, "Global" çok kiracılı Logic Apps hizmetinden ayrı tutulan adanmış depolama ve diğer kaynakları kullanan yalıtılmış bir ortamdır. Bu ayrım Ayrıca diğer Azure kiracılarının uygulamalarınızın performansı üzerinde sahip olabileceği etkileri azaltır. ISE, size kendi statik IP adreslerinizi de sağlar. Bu IP adresleri, genel, çok kiracılı hizmette Logic Apps tarafından paylaşılan statik IP adreslerinden ayrıdır.
+Bu makalede, mantık uygulamalarınızın ve tümleştirme hesaplarınızın bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md)erişmeye ihtiyaç duyduğu senaryolar için Logic Apps REST API aracılığıyla bir [ *tümleştirme hizmet ortamının* (İmKB)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) nasıl oluşturulacağı gösterilmektedir. Ise, "genel" çok kiracılı Logic Apps hizmetinden ayrı tutulan özel depolama ve diğer kaynakları kullanan yalıtılmış bir ortamdır. Bu ayrım, diğer Azure kiracılarının uygulamalarınızın performansı üzerindeki etkisini de azaltır. Bir ISE aynı zamanda kendi statik IP adreslerinizi de sağlar. Bu IP adresleri, genel, çok kiracılı hizmetteki mantık uygulamaları tarafından paylaşılan statik IP adreslerinden ayrıdır.
 
-Bunun yerine Azure portal kullanarak bir ıSE oluşturmak için, bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+Bunun yerine Azure portalını kullanarak bir İmKB oluşturmak için Azure [Mantık Uygulamalarından Azure sanal ağlarına bağlan'a](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)bakın.
 
 > [!IMPORTANT]
-> Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
+> Logic uygulamaları, yerleşik tetikleyiciler, yerleşik eylemler ve İmKB'nizde çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. ISE'ler için fiyatlandırma ve faturalandırmanın nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma oranları için [Logic Apps fiyatlandırması'na](../logic-apps/logic-apps-pricing.md)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure portal bir ıSE oluşturduğunuzda, [Ise için erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [Önkoşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
+* Azure portalında Bir İmKB oluşturduğunuzda olduğu [gibi İmKB'nize erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [ön koşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
 
-* HTTPS PUT isteğiyle Logic Apps REST API çağırarak ıSE oluşturmak için kullanabileceğiniz bir araç. Örneğin [Postman](https://www.getpostman.com/downloads/)'ı kullanabilir veya bu görevi gerçekleştiren bir mantıksal uygulama oluşturabilirsiniz.
+* Https PUT isteğiyle Logic Apps REST API'sini arayarak İmKB'nizi oluşturmak için kullanabileceğiniz bir araçtır. Örneğin, [Postacı'yı](https://www.getpostman.com/downloads/)kullanabilir veya bu görevi gerçekleştiren bir mantık uygulaması oluşturabilirsiniz.
 
-## <a name="send-the-request"></a>İsteği gönder
+## <a name="send-the-request"></a>İsteği gönderme
 
-Logic Apps REST API çağırarak ıSE oluşturmak için, bu HTTPS PUT isteğini yapın:
+Logic Apps REST API'yi arayarak İmKB'nizi oluşturmak için şu HTTPS PUT isteğini yapın:
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Logic Apps REST API 2019-05-01 sürümü, ıSE bağlayıcıları için kendi HTTP PUT isteğinizi yapmanızı gerektirir.
+> Logic Apps REST API 2019-05-01 sürümü, İmKB konektörleri için kendi HTTP PUT isteğinizi oluşturmanızı gerektirir.
 
-Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen dağıtım dört saate kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğinizdeki [Azure Portal](https://portal.azure.com)bildirimler bölmesini açan Bildirimler simgesini seçin.
+Dağıtımın tamamlanması genellikle iki saat içinde gerçekleşir. Bazen, dağıtım dört saat kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğunuzdaki [Azure portalında,](https://portal.azure.com)bildirimler bölmesini açan bildirimler simgesini seçin.
 
 > [!NOTE]
-> Dağıtım başarısız olursa veya ıSE 'yi silerseniz, Azure, alt ağlarınızı serbest bırakmadan önce bir saat kadar sürebilir. Bu gecikme, başka bir ıSE içinde bu alt ağları yeniden kullanmadan önce beklemeniz gerekebilecek anlamına gelir.
+> Dağıtım başarısız olursa veya İmKB'nizi silerseniz, Azure'un alt ağlarınızı serbest bırakması bir saat kadar sürebilir. Bu gecikme, bu alt ağları başka bir ISE'de yeniden kullanmadan önce beklemeniz anlamına gelir.
 >
-> Sanal ağınızı silerseniz Azure, alt ağlarınızı serbest bırakmadan genellikle iki saate kadar sürer, ancak bu işlem daha uzun sürebilir. 
-> Sanal ağları silerken, hala bağlı hiçbir kaynak bulunmadığından emin olun. 
-> Bkz. [sanal ağı silme](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
+> Sanal ağınızı silerseniz, Azure'un alt ağlarınızı serbest bırakması genellikle iki saat kadar sürer, ancak bu işlem daha uzun sürebilir. 
+> Sanal ağları silerken, hiçbir kaynağın hala bağlı olmadığından emin olun. 
+> Bkz. [Sanal ağı sil.](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)
 
 ## <a name="request-header"></a>İstek üst bilgisi
 
 İstek üstbilgisinde şu özellikleri ekleyin:
 
-* `Content-type`: Bu özellik değerini `application/json`olarak ayarlayın.
+* `Content-type`: Bu özellik `application/json`değerini .
 
-* `Authorization`: Bu özellik değerini, kullanmak istediğiniz Azure aboneliğine veya kaynak grubuna erişimi olan müşterinin taşıyıcı belirtecine ayarlayın.
+* `Authorization`: Bu özellik değerini, kullanmak istediğiniz Azure aboneliğine veya kaynak grubuna erişimi olan müşteri için taşıyıcı belirteci olarak ayarlayın.
 
 ### <a name="request-body-syntax"></a>İstek gövdesi sözdizimi
 
-İşte, ıSE 'nizi oluştururken kullanılacak özellikleri açıklayan istek gövdesi sözdizimi şöyledir:
+İmKB'nizi oluştururken kullanılacak özellikleri açıklayan istek gövdesi sözdizimi aşağıda verilmiştir:
 
 ```json
 {
@@ -95,7 +95,7 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
 
 ### <a name="request-body-example"></a>İstek gövdesi örneği
 
-Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
+Bu örnek istek gövdesi örnek değerleri gösterir:
 
 ```json
 {
@@ -134,6 +134,6 @@ Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tümleştirme hizmeti ortamlarına kaynak ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [Entegrasyon hizmeti ortamlarına kaynak ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Tümleştirme hizmeti ortamlarını yönetme](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)
 

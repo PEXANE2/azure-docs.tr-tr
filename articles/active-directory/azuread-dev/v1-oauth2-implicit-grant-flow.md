@@ -1,75 +1,72 @@
 ---
-title: Azure AD 'de OAuth2 örtük verme akışını anlama | Microsoft Docs
-description: Azure Active Directory OAuth2 örtük verme akışının uygulaması ve uygulamanızın doğru olup olmadığı hakkında daha fazla bilgi edinin.
+title: Azure AD'deki OAuth2 örtülü hibe akışını anlama | Microsoft Dokümanlar
+description: Azure Active Directory'nin OAuth2 örtülü hibe akışını uygulaması ve uygulamanız için doğru olup olmadığı hakkında daha fazla bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ec9d58c517cca354b00af25e1f0204460f2851bb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: eaa3844bfbbef8cb71dbe8691cab894c921ce00a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164103"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154517"
 ---
-# <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) OAuth2 örtük verme akışını anlama
+# <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Etkin Dizin (AD)'deki OAuth2 örtülü hibe akışını anlama
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-OAuth2 örtük verme, OAuth2 belirtiminde en uzun güvenlik sorunları listesine izin vermekle birlikte, ntoriou olur. Henüz, ADAL JS tarafından uygulanan yaklaşım ve SPA uygulamaları yazarken önerdiğimiz bir yaklaşım. Ne sağlar? Bu, tüm dengelerden bağımsız olarak, bir tarayıcıdan JavaScript aracılığıyla bir Web API 'SI kullanan uygulamalar için en iyi yaklaşım, örtük bir yöntemdir.
+OAuth2 örtülü hibe OAuth2 belirtimigüvenlik endişeleri en uzun listesi ile hibe olduğu için kötü üne sahiptir. Ve yine de, bu yaklaşım ADAL JS tarafından uygulanan ve biz SPA uygulamaları yazarken tavsiye biridir. Ne verir? Her şey bir denge meselesidir: ve görünüşe göre, örtük hibe bir tarayıcıdan JavaScript üzerinden bir Web API tüketen uygulamalar için takip edebilirsiniz en iyi yaklaşımdır.
 
-## <a name="what-is-the-oauth2-implicit-grant"></a>OAuth2 örtük verme nedir?
+## <a name="what-is-the-oauth2-implicit-grant"></a>OAuth2 örtülü hibe nedir?
 
-Quintessential [OAuth2 yetkilendirme kodu verme](https://tools.ietf.org/html/rfc6749#section-1.3.1) , iki ayrı uç nokta kullanan yetkilendirme vericisinden yararlanır. Yetkilendirme uç noktası, bir yetkilendirme kodu ile sonuçlanan Kullanıcı etkileşimi aşaması için kullanılır. Belirteç uç noktası daha sonra istemci tarafından bir erişim belirtecinin kodunu ve genellikle bir yenileme belirtecini değiş tokuş etmek için kullanılır. Yetkilendirme sunucusunun istemcinin kimliğini doğrulayabilmesi için, Web uygulamalarının belirteç uç noktasına kendi uygulama kimlik bilgilerini sunması gerekir.
+Quintessential [OAuth2 yetkilendirme kodu hibe](https://tools.ietf.org/html/rfc6749#section-1.3.1) iki ayrı uç noktaları kullanan yetkilendirme hibe. Yetkilendirme bitiş noktası, yetkilendirme koduyla sonuçlanan kullanıcı etkileşimi aşaması için kullanılır. Belirteç bitiş noktası daha sonra istemci tarafından bir erişim belirteci için kod alışverişi için kullanılır ve genellikle de bir yenileme belirteci. Web uygulamalarının, yetkilendirme sunucusunun istemcinin kimliğini doğrulayabilmesi için kendi uygulama kimlik bilgilerini belirteç bitiş noktasına sunması gerekir.
 
-[OAuth2 örtük verme](https://tools.ietf.org/html/rfc6749#section-1.3.2) , diğer yetkilendirmelerden oluşan bir değişkendir. Bir istemcinin, bir erişim belirteci almasına izin verir (ve [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)kullanırken id_token), Token Endpoint ile iletişim kurmadan veya istemcinin kimliğini doğrulamadan doğrudan yetkilendirme uç noktasından. Bu değişken, bir Web tarayıcısında çalışan JavaScript tabanlı uygulamalar için tasarlandı: özgün OAuth2 belirtiminde belirteçler bir URI parçasında döndürülür. Bu, belirteç bitlerini istemcideki JavaScript kodu için kullanılabilir hale getirir, ancak sunucuya doğru yeniden yönlendirmelere dahil edilmezler. OAuth2 örtük izin ' da, yetkilendirme uç noktası önceden sağlanan yeniden yönlendirme URI 'sini kullanarak doğrudan istemciye erişim belirteçleri verir. Ayrıca, belirteç uç noktasıyla iletişim kurmak için JavaScript uygulamasının gerekli olduğu durumlarda gerekli olan çapraz kaynak çağrıları için tüm gereksinimleri ortadan kaldırma avantajına sahiptir.
+[OAuth2 örtülü hibe](https://tools.ietf.org/html/rfc6749#section-1.3.2) diğer yetki hibe bir çeşididir. Bir istemcinin, belirteç bitiş noktasına başvurmadan veya istemcinin kimliğini doğrulamadan doğrudan yetkilendirme bitiş noktasından [OpenId Connect'i](https://openid.net/specs/openid-connect-core-1_0.html)kullanırken bir erişim jetonu (ve id_token) almasına olanak tanır. Bu varyant, Bir Web tarayıcısında çalışan JavaScript tabanlı uygulamalar için tasarlanmıştır: orijinal OAuth2 belirtiminde, belirteçleri bir URI parçası döndürülür. Bu, belirteç bitlerini istemcideki JavaScript koduiçin kullanılabilir hale getirir, ancak bunların sunucuya yönlendirmelere dahil edilmeyeceğini garanti eder. OAuth2 örtülü hibesinde, yetkilendirme bitiş noktası, daha önce sağlanan bir yeniden yönlendirme URI'si kullanarak belirteçleri doğrudan istemciye verir. Ayrıca, JavaScript uygulamasının belirteç bitiş noktasına başvurması gerekiyorsa gerekli olan çapraz orijinli aramalar için gereksinimleri ortadan kaldırma avantajına sahiptir.
 
-OAuth2 örtük verme 'nin önemli bir özelliği, bu akışların istemciye hiçbir zaman yenileme belirteçleri döndürmemesinden kaynaklanmaktadır. Sonraki bölümde bunun gerekli olmadığını ve aslında bir güvenlik sorunu olduğunu gösterir.
+OAuth2 örtük hibe önemli bir özelliği bu tür akışları istemciye yenileme belirteçleri dönmek asla gerçektir. Bir sonraki bölümde, bunun nasıl gerekli olmadığı ve aslında bir güvenlik sorunu olacağı gösterilmektedir.
 
-## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 örtük verme için uygun senaryolar
+## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 örtülü hibe için uygun senaryolar
 
-OAuth2 belirtimi, örtük verme 'nin, Kullanıcı Aracısı uygulamalarının (örneğin, bir tarayıcıda yürütülen JavaScript uygulamaları) etkinleştirilmesi için bu özelliği kaldırdığınızı bildirir. Bu tür uygulamaların tanımlanması, JavaScript kodunun sunucu kaynaklarına (genellikle bir Web API) erişmek ve uygulama kullanıcı deneyiminin uygun şekilde güncelleştirilmesi için kullanılır. Gmail veya Outlook Web Erişimi gibi uygulamalar düşünün: gelen kutunuzdan bir ileti seçtiğinizde, yalnızca ileti görselleştirme paneli yeni seçimi görüntüleyecek şekilde değişir, ancak sayfanın geri kalanı değiştirilmemiş olarak kalır. Bu özellik geleneksel yeniden yönlendirme tabanlı Web Apps 'in aksine, her kullanıcı etkileşimi tam sayfa geri gönderme işlemiyle ve yeni sunucu yanıtının tam sayfa işlemesi ile sonuçlanır.
+OAuth2 belirtimi, örtük hibenin kullanıcı aracısı uygulamalarını etkinleştirmek için tasarlandığını beyan eder – yani, JavaScript uygulamaları bir tarayıcı içinde yürütülür. Bu tür uygulamaların belirleyici özelliği, JavaScript kodunun sunucu kaynaklarına (genellikle bir Web API'si) erişmek ve uygulama kullanıcı deneyimini buna göre güncelleştirmek için kullanılmasıdır. Gmail veya Outlook Web Erişimi gibi uygulamaları düşünün: Gelen kutunuzdan bir ileti seçtiğinizde, yeni seçimi görüntülemek için yalnızca ileti görselleştirme paneli değişirken, sayfanın geri kalanı değiştirilmemiş olarak kalır. Bu özellik, her kullanıcı etkileşiminin tam sayfa postback ve yeni sunucu yanıtının tam sayfa olarak işlenmesiyle sonuçlandığı geleneksel yönlendirme tabanlı Web uygulamalarıyla zıttır.
 
-Üst sınırına yönelik JavaScript tabanlı yaklaşımdan uygulamalar tek sayfalı uygulamalar veya maça olarak adlandırılır. Fikir, bu uygulamaların yalnızca bir ilk HTML sayfası ve ilişkili JavaScript 'e sahip olduğu ve JavaScript aracılığıyla gerçekleştirilen Web API çağrıları tarafından çalıştırılmakta olan bir sonraki etkileşimi sunan bir uygulamadır. Bununla birlikte, uygulamanın genellikle geri gönderme yapılır ancak zaman zaman JS çağrıları gerçekleştirdiği karma yaklaşımlar, seyrek erişimli değildir. örtülü akış kullanımı hakkındaki tartışma, bunlar için de geçerlidir.
+JavaScript tabanlı yaklaşımı aşırıya katan uygulamalara tek sayfalı uygulamalar veya SPA'lar denir. Fikir, bu uygulamaların yalnızca bir başlangıç HTML sayfası ve ilişkili JavaScript hizmet, sonraki tüm etkileşimleri Web API aramaları JavaScript üzerinden gerçekleştirilen tarafından tahrik ediliyor olmasıdır. Ancak, uygulama çoğunlukla postback odaklı ama zaman zaman JS çağrıları gerçekleştirir hibrid yaklaşımlar, nadir değildir - örtük akış kullanımı hakkında tartışma da bu için ilgilidir.
 
-Yeniden yönlendirme tabanlı uygulamalar, genellikle istekleri tanımlama bilgileri aracılığıyla güvenli hale getirmeye karşın bu yaklaşım, JavaScript uygulamaları için de çalışmaz. Tanımlama bilgileri, JavaScript çağrıları diğer etki alanlarına yönlendirilirken, yalnızca için oluşturulan etki alanına karşı çalışır. Aslında bu durum genellikle şu şekilde olacaktır: Microsoft Graph API, Office API 'si, Azure API 'SI çağıran uygulamaları, uygulamanın sunulduğu etki alanının dışında bulundurduğunu düşünün. JavaScript uygulamalarına yönelik büyümekte olan bir eğilim, iş işlevlerini uygulamak için üçüncü taraf Web API 'Lerinde %100 bağlı bir arka uç gerektirmez.
+Yönlendirme tabanlı uygulamalar genellikle tanımlama bilgileri aracılığıyla isteklerini güvence altına alır, ancak bu yaklaşım JavaScript uygulamaları için de çalışmaz. Çerezler yalnızca oluşturuldukları etki alanına göre çalışır, Ancak JavaScript çağrıları diğer etki adlarına yönlendirilebilir. Aslında, bu sık sık olacaktır: Microsoft Graph API, Office API, Azure API çağıran uygulamaları düşünün - tüm uygulama nın sunulduğu yerden etki alanı dışında ikamet eden. JavaScript uygulamaları için büyüyen bir eğilim, üçüncü taraf Web API'lerinin iş işlevlerini uygulamak için %100'e güvenerek hiçbir geri uça sahip olmakdeğildir.
 
-Şu anda, bir Web API 'sine yapılan çağrıları korumanın tercih edilen yöntemi, her çağrının bir OAuth2 erişim belirteciyle birlikte olduğu OAuth2 taşıyıcı belirteç yaklaşımını kullanmaktır. Web API 'SI, gelen erişim belirtecini inceler ve gerekli kapsamlar içinde bulunursa, istenen işleme erişim izni verir. Örtük akış, JavaScript uygulamalarının bir Web API 'sine erişim belirteçleri elde etmek için kullanışlı bir mekanizma sağlar ve tanımlama bilgilerine göre çok sayıda avantaj sunar:
+Şu anda, Bir Web API'ye yapılan çağrıları korumanın tercih edilen yöntemi, her çağrıya Bir OAuth2 erişim belirtecinin eşlik ettiği OAuth2 taşıyıcı belirteci yaklaşımını kullanmaktır. Web API gelen erişim belirteci inceler ve gerekli kapsamları bulursa, istenen işlem erişim verir. Örtük akış, JavaScript uygulamalarının bir Web API'si için erişim belirteçleri elde etmesi için kullanışlı bir mekanizma sağlayarak çerezlerle ilgili olarak çok sayıda avantaj sunar:
 
-* Belirteçler, çapraz kaynak çağrılarına gerek kalmadan güvenilir bir şekilde elde edilebilir: belirteçlerin döndürüleceği yeniden yönlendirme URI 'sinin zorunlu kaydı, belirteçlerin hatalı olarak döndürülmediğini garanti eder
-* JavaScript uygulamaları, istedikleri sayıda Web API 'si için, her bir etki alanında kısıtlama olmadan, gerek duydukları sayıda erişim belirteci elde edebilir
-* Oturum veya yerel depolama gibi HTML5 özellikleri, belirteç önbelleğe alma ve ömür yönetimi üzerinde tam denetim verir, ancak tanımlama bilgileri yönetimi uygulama için donuk olur
-* Erişim belirteçleri siteler arası istek sahteciliğini önleme (CSRF) saldırılarına karşı savunmasız değildir
+* Jetonlar, çapraz menşeli aramalara gerek kalmadan güvenilir bir şekilde elde edilebilir – jetonların yerlerinin yerinden edilmeyeceğinin iade garantisi olduğu yeniden yönlendirme URI'nin zorunlu kaydı
+* JavaScript uygulamaları, hedefledikleri web AP'leri için, etki alanlarında herhangi bir kısıtlama olmadan, gereksinim duydukları kadar erişim belirteçleri elde edebilirsiniz
+* Oturum veya yerel depolama gibi HTML5 özellikleri belirteç önbelleğe alma ve ömür boyu yönetimi üzerinde tam kontrol sağlarken, tanımlama bilgileri yönetimi uygulamaya opaktır
+* Erişim belirteçleri, site ler arası istek sahteciliği (CSRF) saldırılarına açık değildir
 
-Örtük verme akışı, genellikle güvenlik nedenleriyle yenileme belirteçleri vermez. Yenileme belirteci, erişim belirteçleri olarak en dar kapsamlı değildir, bu nedenle çok daha fazla güç verilmeye devam ediyor ve çok daha fazla Zararsızmış olabilir. Örtük akışta, belirteçler URL 'de dağıtılır, bu nedenle, geri alma riski yetkilendirme kodu verenden daha yüksektir.
+Örtük hibe akışı, çoğunlukla güvenlik nedenleriyle yenileme belirteçleri vermez. Bir yenileme belirteci erişim belirteçleri kadar dar kapsamlı değildir, dolayısıyla dışarı sızdırılmış durumda çok daha fazla hasar veren çok daha fazla güç veren. Örtük akışta, belirteçler URL'de teslim edilir, bu nedenle engelleme riski yetkilendirme kodu hibesinden daha yüksektir.
 
-Ancak, bir JavaScript uygulamasının, kullanıcıya kimlik bilgileri için sürekli olarak sormadan erişim belirteçlerini yenilemeye yönelik başka bir mekanizması vardır. Uygulama, Azure AD 'nin yetkilendirme uç noktasına karşı yeni belirteç istekleri gerçekleştirmek için gizli bir iframe kullanabilir: tarayıcının hala Azure AD etki alanına karşı etkin bir oturum (okuma: bir oturum tanımlama bilgisi vardır) olduğu sürece, kimlik doğrulama isteği Kullanıcı etkileşimi gerektirmeden başarıyla meydana gelir.
+Ancak, bir JavaScript uygulaması, kullanıcıdan sürekli olarak kimlik bilgilerini sormadan erişim belirteçlerini yenilemek için emrinde başka bir mekanizmaya sahiptir. Uygulama, Azure AD'nin yetkilendirme bitiş noktasına karşı yeni belirteç istekleri gerçekleştirmek için gizli bir iframe kullanabilir: tarayıcının Azure AD etki alanına karşı etkin bir oturumu (okuma: oturum çerezi vardır) olduğu sürece, kimlik doğrulama isteği kullanıcı etkileşimine gerek kalmadan başarılı bir şekilde gerçekleşir.
 
-Bu model, JavaScript uygulamasına, erişim belirteçlerini bağımsız olarak yenileme ve hatta yeni bir API için yeni bir API (Kullanıcı tarafından daha önce kendisine onay verilmiş olan) için yeni bir API alma özelliği verir. Bu, yenileme belirteci gibi yüksek değerli yapıtları alma, sürdürme ve koruma yükünü ortadan kaldırır. Sessiz yenilemeyi mümkün kılan yapıt, Azure AD oturum tanımlama bilgisi uygulama dışında yönetilir. Bu yaklaşımın bir diğer avantajı, Azure AD 'de oturum açmış uygulamalardan herhangi birini kullanarak, tarayıcı sekmelerinden birinde çalışan bir kullanıcının Azure AD 'den oturumu açmasını sağlayabilir. Bu, Azure AD oturum tanımlama bilgisinin silinmesine neden olur ve JavaScript uygulaması, oturum açan kullanıcı için belirteçleri yenileme özelliğini otomatik olarak kaybeder.
+Bu model, JavaScript uygulamasına erişim belirteçlerini bağımsız olarak yenileme ve hatta yeni bir API için yeni lerini edinme olanağı verir (kullanıcının daha önce onlar için onay vermiş olması koşuluyla). Bu, yenileme belirteci gibi yüksek değerli bir yapıyı edinme, koruma ve koruma yükünü önler. Sessiz yenilemeyi mümkün kılan yapı, Azure AD oturumu çerezi, uygulama dışında yönetilir. Bu yaklaşımın bir diğer avantajı da, kullanıcının Azure AD'de oturum açtığı uygulamaları kullanarak azure AD'den oturum açabiliyor ve tarayıcı sekmelerinden herhangi birinde çalışıyor. Bu, Azure AD oturumu çerezinin silinmesine neden olur ve JavaScript uygulaması oturumu imzalayan kullanıcının belirteçlerini otomatik olarak yenileme yeteneğini kaybeder.
 
-## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Örtük izin uygulamam için uygun midir?
+## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Örtülü hibe uygulamam için uygun mu?
 
-Örtük verme, diğer izin verenden daha fazla risk sunar ve dikkat etmeniz gereken alanların iyi belgelendiğinden (örneğin, [örtük akışta kaynak sahibine taklit etmek Için erişim belirtecinin kötüye kullanımı][OAuth2-Spec-Implicit-Misuse] ve [OAuth 2,0 tehdit modeli ve güvenlik konuları][OAuth2-Threat-Model-And-Security-Implications]). Ancak, daha yüksek riskli profil büyük ölçüde, uzak bir kaynak tarafından tarayıcıya hizmet veren etkin kodu çalıştıran uygulamaların etkinleştirilmesi amaçlıyordu. SPA mimarisi planlarken, arka uç bileşenleri yoksa veya JavaScript aracılığıyla bir Web API 'SI çağırmak istiyorsanız, belirteç alımı için örtük akışın kullanılması önerilir.
+Örtülü hibe diğer hibelere göre daha fazla risk sunar ve dikkat etmeniz gereken alanlar iyi belgelenmiştir (örneğin, [Dolaylı Akış'ta Kaynak Sahibinin Kimliğine Bürünmek için Erişim Belirteci'nin Kötüye Kullanımı][OAuth2-Spec-Implicit-Misuse] ve [OAuth 2.0 Tehdit Modeli ve Güvenlik Hususları).][OAuth2-Threat-Model-And-Security-Implications] Ancak, daha yüksek risk profili büyük ölçüde etkin kodu çalıştıran, uzak bir kaynak tarafından tarayıcıya sunulan uygulamaları etkinleştirmek için olması nedeniyle. Bir SPA mimarisi planlıyorsanız, arka uç bileşenleriniz yoksa veya JavaScript üzerinden Bir Web API'sini çağırmak istiyorsanız, belirteç edinimi için örtülü akışın kullanılması önerilir.
 
-Uygulamanız yerel bir istemcili ise, örtük akış harika bir uyum değildir. Azure AD oturum tanımlama bilgisinin bir yerel istemci bağlamında yokluğu, uygulamanızı uzun süreli bir oturum koruma yoluyla kaldırır. Yani, uygulamanız yeni kaynaklar için erişim belirteçleri alırken Kullanıcı tarafından tekrar tekrar sorulacak.
+Uygulamanız yerel bir istemciise, örtük akış pek uygun değildir. Azure AD oturum çerezinin yerel bir istemci bağlamında olmaması, uygulamanızı uzun ömürlü bir oturumu sürdürme şeklinden mahrum eder. Bu da, uygulamanızın yeni kaynaklar için erişim belirteçleri alırken kullanıcıdan sürekli olarak istekte bulunduğu anlamına gelir.
 
-Arka uç içeren ve arka uç kodundan bir API kullanan bir Web uygulaması geliştiriyorsanız, örtük akış de uygun değildir. Diğer izinler size daha fazla güç verir. Örneğin, OAuth2 istemci kimlik bilgileri verme, Kullanıcı temsilcilerinin aksine uygulamanın kendisine atanan izinleri yansıtan belirteçleri elde etme yeteneği sağlar. Bu, bir kullanıcı oturumunda etkin bir şekilde olmadığında ve bu şekilde devam ettiğinizde, istemcinin kaynaklara programlı erişim sağlama yeteneğine sahip olduğu anlamına gelir. Ancak, bu tür izinler daha yüksek güvenlik garantisi verir. Örneğin, erişim belirteçleri Kullanıcı tarayıcısından hiçbir şekilde geçiş yapmayın, tarayıcı geçmişine kaydedilmeleri ve bu şekilde devam eder. İstemci uygulaması, belirteç istenirken güçlü kimlik doğrulaması da gerçekleştirebilir.
+Arka uç içeren bir Web uygulaması geliştiriyorsanız ve arka uç kodundan bir API tüketiyorsanız, örtük akış da uygun değildir. Diğer bağışlar size çok daha fazla güç verir. Örneğin, OAuth2 istemci kimlik bilgileri hibesi, kullanıcı delegasyonlarının aksine, uygulamanın kendisine atanan izinleri yansıtan belirteçleri alma olanağı sağlar. Bu, istemcinin, kullanıcı bir oturumda etkin bir şekilde meşgul olmasa bile kaynaklara programlı erişimi koruma yeteneğine sahip olduğu anlamına gelir. Sadece bu değil, ama bu tür hibeler daha yüksek güvenlik garantileri verir. Örneğin, erişim belirteçleri kullanıcı tarayıcısı üzerinden hiçbir zaman geçiş yapmaz, tarayıcı geçmişinde kaydedilme riskini göze alamazlar ve böyle devam eder. İstemci uygulaması, belirteç isteğinde de güçlü kimlik doğrulaması gerçekleştirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Uygulama Tümleştirme sürecinde daha ayrıntılı bilgi için bkz. [bir uygulamayı Azure AD ile tümleştirme][ACOM-How-To-Integrate] .
+* Uygulama tümleştirme işleminde ek derinlik sağlamak için [bir uygulamayı Azure AD ile nasıl tümleştirileştirene][ACOM-How-To-Integrate] bakın.
 
 <!--Image references-->
 

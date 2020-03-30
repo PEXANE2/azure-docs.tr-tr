@@ -1,6 +1,6 @@
 ---
-title: Yerelleştirme-Azure Active Directory B2C
-description: Azure Active Directory B2C bir özel ilkenin yerelleştirme öğesini belirtin.
+title: Yerelleştirme - Azure Etkin Dizini B2C
+description: Azure Etkin Dizin B2C'de özel bir ilkenin Yerelleştirme öğesini belirtin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,20 +11,20 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126764"
 ---
 # <a name="localization"></a>Yerelleştirme
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Yerelleştirme** öğesi, Kullanıcı yolculukları için ilkedeki birden çok yerel ayarı veya dili desteketmenize olanak tanır. İlkelerde yerelleştirme desteği şunları yapmanıza olanak sağlar:
+**Yerelleştirme** öğesi, kullanıcı yolculukları için ilkedeki birden çok yerel alanı veya dili desteklemenize olanak tanır. İlkelerdeki yerelleştirme desteği şunları yapmanızı sağlar:
 
 - Bir ilkede desteklenen dillerin açık listesini ayarlayın ve varsayılan bir dil seçin.
-- Dile özgü dizeler ve koleksiyonlar sağlayın.
+- Dile özel dizeleri ve koleksiyonları sağlayın.
 
 ```XML
 <Localization Enabled="true">
@@ -41,80 +41,80 @@ ms.locfileid: "79126764"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Etkin | Hayır | Olası değerler: `true` veya `false`. |
+| Etkin | Hayır | Olası `true` değerler: `false`veya . |
 
-**Yerelleştirme** Öğesı aşağıdaki XML öğelerini içerir
+**Yerelleştirme** öğesi aşağıdaki XML öğelerini içerir
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| SupportedLanguages | 1: n | Desteklenen dillerin listesi. |
-| LocalizedResources | 0: n | Yerelleştirilmiş kaynakların listesi. |
+| Desteklenen Diller | 1:n | Desteklenen diller listesi. |
+| Yerelleştirilmiş Kaynaklar | 0:n | Yerelleştirilmiş kaynakların listesi. |
 
-## <a name="supportedlanguages"></a>SupportedLanguages
+## <a name="supportedlanguages"></a>Desteklenen Diller
 
-**Supportedlanguages** öğesi aşağıdaki öznitelikleri içerir:
+**Desteklenen Diller** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| DefaultLanguage | Yes | Yerelleştirilmiş kaynaklar için varsayılan olarak kullanılacak dil. |
-| MergeBehavior | Hayır | Aynı tanımlayıcıya sahip bir üst ilkede bulunan tüm ClaimType ile birlikte birleştirilmiş değerlerin sabit listesi değerleri. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append`, `Prepend`veya `ReplaceAll`. `Append` değeri, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyonun sonuna eklenmesi gerektiğini belirtir. `Prepend` değeri, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyondan önce eklenmesi gerektiğini belirtir. `ReplaceAll` değeri, üst ilkede tanımlanan veri koleksiyonunun, bunun yerine geçerli ilkede tanımlanan veriler kullanılarak yoksayılacağını belirtir. |
+| DefaultLanguage | Evet | Yerelleştirilmiş kaynaklar için varsayılan olarak kullanılacak dil. |
+| Birleştirme Davranışı | Hayır | Bir üst politikada aynı tanımlayıcıya sahip herhangi bir ClaimType ile birleştirilen değerlerin numaralandırma değerleri. Temel ilkede belirtilen bir talebin üzerine yazarken bu özniteliği kullanın. Olası `Append`değerler: `Prepend`, `ReplaceAll`, veya . Değer, `Append` var olan veri toplamanın üst politikada belirtilen koleksiyonun sonuna eklendiğini belirtir. Değer, `Prepend` ana ilkede belirtilen koleksiyondan önce mevcut veri toplamanın eklenmesi gerektiğini belirtir. Değer, `ReplaceAll` geçerli ilkede tanımlanan verileri kullanarak, ana ilkede tanımlanan veri toplamanın yoksayılması gerektiğini belirtir. |
 
-### <a name="supportedlanguages"></a>SupportedLanguages
+### <a name="supportedlanguages"></a>Desteklenen Diller
 
-**Supportedlanguages** öğesi aşağıdaki öğeleri içerir:
+**Desteklenen Diller** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| SupportedLanguage | 1: n | Dilleri tanımlamak için RFC 5646-Tags başına bir dil etiketine uyan içeriği görüntüler. |
+| Desteklenen Dil | 1:n | RFC 5646 - Dilleri Tanımlama Etiketleri başına bir dil etiketine uygun içeriği görüntüler. |
 
-## <a name="localizedresources"></a>LocalizedResources
+## <a name="localizedresources"></a>Yerelleştirilmiş Kaynaklar
 
-**Localizedresources** öğesi aşağıdaki öznitelikleri içerir:
+**Yerelleştirilmiş Kaynaklar** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Yerelleştirilmiş kaynakları benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcı. |
+| Kimlik | Evet | Yerelleştirilmiş kaynakları benzersiz olarak tanımlamak için kullanılan bir tanımlayıcı. |
 
-**Localizedresources** öğesi aşağıdaki öğeleri içerir:
+**Yerelleştirilmiş Kaynaklar** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| LocalizedCollections | 0: n | Çeşitli kültürlerde tüm koleksiyonları tanımlar. Bir koleksiyon çeşitli kültürler için farklı sayıda öğe ve farklı dize içerebilir. Koleksiyon örnekleri, talep türlerinde görünen numaralandırmaları içerir. Örneğin, bir ülke/bölge listesi kullanıcıya bir açılan listede gösterilir. |
-| LocalizedStrings | 0: n | Çeşitli kültürlerde koleksiyonlarda görünen dizeler hariç tüm dizeleri tanımlar. |
+| Yerelleştirilmiş Koleksiyonlar | 0:n | Çeşitli kültürlerdeki tüm koleksiyonları tanımlar. Bir koleksiyon, çeşitli kültürler için farklı sayıda öğeye ve farklı dizeleri ne olabilir. Koleksiyonlara örnek olarak, talep türlerinde görünen sayısallaştırmalar verilebilir. Örneğin, bir ülke/bölge listesi açılır listede kullanıcıya gösterilir. |
+| Yerelleştirilmiş Strings | 0:n | Koleksiyonlarda görünen dizeleri dışında, çeşitli kültürlerde tüm dizeleri tanımlar. |
 
-### <a name="localizedcollections"></a>LocalizedCollections
+### <a name="localizedcollections"></a>Yerelleştirilmiş Koleksiyonlar
 
-**Localizedcollections** öğesi aşağıdaki öğeleri içerir:
+**Yerelleştirilmiş Koleksiyonlar** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| LocalizedCollection | 1: n | Desteklenen dillerin listesi. |
+| Yerelleştirilmiş Koleksiyon | 1:n | Desteklenen diller listesi. |
 
-#### <a name="localizedcollection"></a>LocalizedCollection
+#### <a name="localizedcollection"></a>Yerelleştirilmiş Koleksiyon
 
-**Localizedcollection** öğesi aşağıdaki öznitelikleri içerir:
+**LocalizedCollection** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ElementType | Yes | İlke dosyasında bir ClaimType öğesine veya bir kullanıcı arabirimi öğesine başvurur. |
-| ElementID | Yes | **ElementType** bir ClaimType olarak ayarlandıysa kullanılan ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içeren bir dize. |
-| TargetCollection | Yes | Hedef koleksiyon. |
+| Elementtype | Evet | İlke dosyasında bir ClaimType öğesine veya kullanıcı arabirimi öğesine başvurur. |
+| Elementıd | Evet | **ElementType** Bir ClaimType olarak ayarlanmışsa kullanılan ClaimsSchema bölümünde zaten tanımlanmış bir talep türüne başvuru içeren bir dize. |
+| Targetcollection | Evet | Hedef toplama. |
 
-**Localizedcollection** öğesi aşağıdaki öğeleri içerir:
+**LocalizedCollection** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| Öğe | 0: n | Kullanıcının, açılan menüdeki bir değer gibi kullanıcı arabirimindeki bir talep için seçim yapmak üzere kullanılabilir bir seçenek tanımlar. |
+| Öğe | 0:n | Kullanıcının, açılır bırakmadaki değer gibi kullanıcı arabirimindeki bir talep için seçmesi için kullanılabilir bir seçenek tanımlar. |
 
-**Öğe** öğesi aşağıdaki öznitelikleri içerir:
+**Madde** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Metin | Yes | Bu seçenek için Kullanıcı arabiriminde kullanıcıya gösterilmesi gereken kullanıcı dostu görüntüleme dizesi. |
-| Değer | Yes | Bu seçeneği belirleyerek ilişkili dize talep değeri. |
-| SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
+| Metin | Evet | Bu seçenek için kullanıcı arabiriminde kullanıcıya gösterilmesi gereken kullanıcı dostu ekran dizesi. |
+| Değer | Evet | Bu seçeneğin seçilmesiile ilişkili dize talep değeri. |
+| SelectbyDefault | Hayır | UI'de bu seçeneğin varsayılan olarak seçilip seçilmemesi gerektiğini gösterir. Olası değerler: Doğru veya Yanlış. |
 
-Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösterir. Biri Ingilizce ve diğeri Ispanyolca için olmak üzere iki **Localizedcollection** öğesi içerir. Her ikisi de **, bir dizi `Gender`, İngilizce** ve İspanyolca bir öğe listesiyle ayarlayın.
+Aşağıdaki örnekte **Yerelleştirilmiş Koleksiyonlar** öğesinin kullanımı gösterilmektedir. Biri İngilizce, diğeri İspanyolca olmak üzere iki **LocalizedCollection** öğesi içerir. Her ikisi de İngilizce `Gender` ve İspanyolca öğelerin bir listesi ile **iddianın Kısıtlama** toplama ayarlayın.
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -134,24 +134,24 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 </LocalizedCollections>
 ```
 
-### <a name="localizedstrings"></a>LocalizedStrings
+### <a name="localizedstrings"></a>Yerelleştirilmiş Strings
 
-**Localizedstrings** öğesi aşağıdaki öğeleri içerir:
+**LocalizedStrings** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| LocalizedString | 1: n | Yerelleştirilmiş bir dize. |
+| Yerelleştirilmiş String | 1:n | Yerelleştirilmiş bir dize. |
 
 **LocalizedString** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ElementType | Yes | İlkede bir talep türü öğesine veya bir kullanıcı arabirimi öğesine başvuru. Olası değerler: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`veya `GetLocalizedStringsTransformationClaimType`. `ClaimType` değeri, Strıngıd içinde belirtildiği gibi talep özniteliklerinden birini yerelleştirmek için kullanılır. `UxElement` değeri, Strıngıd içinde belirtilen kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. `ErrorMessage` değeri, Strıngıd içinde belirtilen sistem hatası iletilerinden birini yerelleştirmek için kullanılır. `Predicate` değeri, Strıngıd içinde belirtilen [koşul](predicates.md) hatası iletilerinden birini yerelleştirmek için kullanılır. `InputValidation` değeri, Strıngıd içinde belirtilen tahmine [Atevalidation](predicates.md) Group hata iletilerinden birini yerelleştirmek için kullanılır. `GetLocalizedStringsTransformationClaimType` değeri, yerelleştirilmiş dizeleri taleplerine kopyalamak için kullanılır. Daha fazla bilgi için bkz. [Getlocalizedstringstrans, talepler dönüştürmesi](string-transformations.md#getlocalizedstringstransformation)  | 
-| ElementID | Yes | **ElementType** `ClaimType`, `Predicate`veya `InputValidation`olarak ayarlandıysa, bu öğe ClaimsSchema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içerir. |
-| StringID | Yes | **ElementType** `ClaimType`olarak ayarlandıysa, bu öğe bir talep türünün özniteliğine bir başvuru içerir. Olası değerler: `DisplayName`, `AdminHelpText`veya `PatternHelpText`. `DisplayName` değeri, talep görünen adını ayarlamak için kullanılır. `AdminHelpText` değeri, talep kullanıcısının yardım metni adını ayarlamak için kullanılır. `PatternHelpText` değeri, talep deseninin yardım metnini ayarlamak için kullanılır. **ElementType** `UxElement`olarak ayarlandıysa, bu öğe bir kullanıcı arabirimi öğesinin özniteliğine bir başvuru içerir. **ElementType** `ErrorMessage`olarak ayarlandıysa, bu öğe bir hata iletisinin tanımlayıcısını belirtir. `UxElement` tanımlayıcılarının tüm listesi için bkz. [Yerelleştirme dize kimlikleri](localization-string-ids.md) .|
+| Elementtype | Evet | İlkedeki bir talep türü öğesine veya kullanıcı arabirimi öğesine başvuru. `ClaimType`Olası değerler: `UxElement` `ErrorMessage`, `Predicate`, `GetLocalizedStringsTransformationClaimType`, veya . Değer, `ClaimType` StringId'de belirtildiği gibi, talep özniteliklerinden birini yerelleştirmek için kullanılır. Değer, `UxElement` StringId'de belirtildiği gibi kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. Değer, `ErrorMessage` StringId'de belirtildiği gibi sistem hata iletilerinden birini yerelleştirmek için kullanılır. Değer, `Predicate` StringId'de belirtildiği gibi [Yüklem](predicates.md) hata iletilerinden birini yerelleştirmek için kullanılır. Değer, `InputValidation` StringId'de belirtildiği gibi [PredicateValidation](predicates.md) grup hata iletilerinden birini yerelleştirmek için kullanılır. Değer, `GetLocalizedStringsTransformationClaimType` yerelleştirilmiş dizeleri taleplere kopyalamak için kullanılır. Daha fazla bilgi için [GetLocalizedStringsTransformation talepleri dönüşümüne](string-transformations.md#getlocalizedstringstransformation) bakın  | 
+| Elementıd | Evet | **Eğer ElementType** `ClaimType`, `Predicate`, `InputValidation`, veya , bu öğe zaten ClaimsSchema bölümünde tanımlanan bir talep türüiçin bir başvuru içerir. |
+| StringId | Evet | **ElementType** `ClaimType`ayarlanırsa, bu öğe bir talep türü bir öznitelik için bir başvuru içerir. Olası `DisplayName`değerler: `AdminHelpText`, `PatternHelpText`, veya . Değer, `DisplayName` talep görüntüleme adını ayarlamak için kullanılır. Değer, `AdminHelpText` talep kullanıcısının yardım metin adını ayarlamak için kullanılır. Değer, `PatternHelpText` talep deseni yardım metnini ayarlamak için kullanılır. **ElementType** `UxElement`ayarlanmışsa, bu öğe bir kullanıcı arabirimi öğesinin özniteliğiiçin bir başvuru içerir. **ElementType** `ErrorMessage`ayarlanmışsa, bu öğe bir hata iletisinin tanımlayıcısını belirtir. Tanımlayıcıların tam listesi için [Yerelleştirme dize kimliklerini](localization-string-ids.md) görün. `UxElement`|
 
 
-Aşağıdaki örnekte, yerelleştirilmiş kaydolma sayfası gösterilmektedir. İlk üç **LocalizedString** değeri talep özniteliğini ayarlar. Üçüncü, devam düğmesinin değerini değiştirir. Son bir hata iletisini değiştirir.
+Aşağıdaki örnekte yerelleştirilmiş bir kayıt sayfası gösterilmektedir. İlk üç **LocalizedString** değerleri talep özniteliğini ayarlar. Üçüncü devam düğmesinin değerini değiştirir. Sonuncusu hata iletisini değiştirir.
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -165,7 +165,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaydolma sayfası gösterilmektedir. �
 </LocalizedResources>
 ```
 
-Aşağıdaki örnek, kimliği `IsLengthBetween8And64`olan koşulun **Userhelptext** öğesini yerelleştirilmiş olarak gösterir. Ve kimlik `StrongPassword`tahmine **Atevalidation** `CharacterClasses` kimliği olan **predicategroup** 'un yerelleştirilmiş **userhelptext** .
+Aşağıdaki örnekte, Id ile **Yüklemin** `IsLengthBetween8And64` **UserHelp Text'i** yerelleştirilmiş bir şekilde gösterilmektedir. Ve `StrongPassword`Id ile **PredicateValidation** Id `CharacterClasses` ile **PredicateGroup** yerelleştirilmiş **UserHelpText** .
 
 ```XML
 <PredicateValidation Id="StrongPassword">
@@ -192,11 +192,11 @@ Aşağıdaki örnek, kimliği `IsLengthBetween8And64`olan koşulun **Userhelptex
 
 ## <a name="set-up-localization"></a>Yerelleştirmeyi ayarlama
 
-Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı veya dili nasıl destekleyeceği gösterilmektedir. Yerelleştirme üç adım gerektirir: desteklenen dillerin açık listesini ayarlayın, dile özgü dizeler ve koleksiyonlar sağlayın ve sayfa için ContentDefinition 'ı düzenleyin.
+Bu makalede, kullanıcı yolculukları için ilkedeki birden çok yerel alanı veya dili nasıl destekleyeceğiniz gösterilmektedir. Yerelleştirme üç adım gerektirir: desteklenen dillerin açık listesini ayarlayın, dile özgü dizeleri ve koleksiyonları sağlayın ve sayfa için ContentDefinition'ı güncelleyin.
 
 ### <a name="set-up-the-explicit-list-of-supported-languages"></a>Desteklenen dillerin açık listesini ayarlama
 
-**Buildingblocks** öğesi altında, desteklenen dillerin listesine sahip **Yerelleştirme** öğesini ekleyin. Aşağıdaki örnek, hem Ingilizce (varsayılan) hem de Ispanyolca için yerelleştirme desteğinin nasıl tanımlanacağını göstermektedir:
+**BuildingBlocks** öğesinin altında, desteklenen dillerin listesini içeren **Yerelleştirme** öğesini ekleyin. Aşağıdaki örnek, hem İngilizce (varsayılan) hem de İspanyolca için yerelleştirme desteğinin nasıl tanımlandığını gösterir:
 
 ```XML
 <Localization Enabled="true">
@@ -211,5 +211,5 @@ Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı v
 
 Yerelleştirme örnekleri için aşağıdaki makalelere bakın:
 
-- [Azure Active Directory B2C özel ilkeyle dil özelleştirmesi](custom-policy-localization.md)
-- [Azure Active Directory B2C Kullanıcı akışları ile dil özelleştirmesi](user-flow-language-customization.md)
+- [Azure Active Directory B2C'de özel ilke ile dil özelleştirme](custom-policy-localization.md)
+- [Azure Active Directory B2C'de kullanıcı akışlarıyla dil özelleştirme](user-flow-language-customization.md)

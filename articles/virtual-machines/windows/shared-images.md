@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell paylaşılan VM görüntülerini oluşturma
-description: Azure 'da paylaşılan bir sanal makine görüntüsü oluşturmak için Azure PowerShell kullanmayı öğrenin
+title: Azure PowerShell ile paylaşılan VM görüntüleri oluşturma
+description: Azure'da paylaşılan sanal makine görüntüsü oluşturmak için Azure PowerShell'i nasıl kullanacağınızı öğrenin
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,45 +16,45 @@ ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74066249"
 ---
-# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Azure PowerShell paylaşılan bir görüntü galerisi oluşturma 
+# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Azure PowerShell ile paylaşılan bir resim galerisi oluşturma 
 
-[Paylaşılan görüntü Galerisi](shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamalar, uygulama yapılandırması ve diğer işletim sistemi yapılandırmalarının dağıtım görevlerinin önyüklemesi için kullanılabilir. 
+[Paylaşılan Resim Galerisi,](shared-image-galleries.md) kuruluşunuz genelinde özel görüntü paylaşımını kolaylaştırır. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, önceden yükleme uygulamaları, uygulama yapılandırmaları ve diğer işletim sistemi yapılandırmaları gibi dağıtım görevlerini önyükleme de kullanılabilir. 
 
-Paylaşılan görüntü Galerisi, özel VM görüntülerinizi kuruluşunuzdaki diğer kişilerle, bir AAD kiracısı içinde veya bölgeler arasında paylaşmanızı sağlar. Hangi görüntüleri paylaşmak istediğinizi, içinde hangi bölgelerin kullanılabilir olmasını istediğinizi ve bunları ile paylaşmak istediğinizi seçin. Paylaşılan görüntüleri mantıksal olarak gruplandırabilmeniz için birden çok Galeri oluşturabilirsiniz. 
+Paylaşılan Resim Galerisi, özel VM görüntülerinizi kuruluşunuzdaki, bölgeler içinde veya diğer bölgeler arasında, bir AAD kiracısı içinde başkalarıyla paylaşmanıza olanak tanır. Hangi resimleri paylaşmak istediğinizi, bunları hangi bölgelerde kullanılabilir hale getirmek istediğinizi ve bunları kiminle paylaşmak istediğinizi seçin. Paylaşılan görüntüleri mantıksal olarak gruplandırmak için birden çok galeri oluşturabilirsiniz. 
 
-Galeri, tam rol tabanlı erişim denetimi (RBAC) sağlayan en üst düzey bir kaynaktır. Görüntülerin sürümü oluşturulabilir ve her görüntü sürümünü farklı bir Azure bölgesi kümesine çoğaltmayı tercih edebilirsiniz. Galeri yalnızca yönetilen görüntülerle birlikte kullanılabilir.
+Galeri, tam rol tabanlı erişim denetimi (RBAC) sağlayan üst düzey bir kaynaktır. Görüntüler sürülebilir ve her resim sürümünü farklı bir Azure bölgesi kümesinde çoğaltmayı seçebilirsiniz. Galeri yalnızca Yönetilen Görüntüler ile çalışır.
 
-Paylaşılan görüntü Galerisi özelliğinin birden çok kaynak türü vardır. Bunları bu makalede kullanacağız veya oluşturacağız:
+Paylaşılan Resim Galerisi özelliğinin birden çok kaynak türü vardır. Bu makalede bunları kullanacak veya inşa edeceğiz:
 
 | Kaynak | Açıklama|
 |----------|------------|
-| **Yönetilen görüntü** | Bu, tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntüdür. Yönetilen görüntüler Genelleştirilmiş VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
-| **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
-| **Görüntü tanımı** | Görüntüler, bir galeri içinde tanımlanır ve bu görüntüyü dahili olarak kullanmaya yönelik gereksinimler hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, sürüm notları ve en düşük ve en yüksek bellek gereksinimleri olduğunu içerir. Bu, bir görüntü türünün tanımıdır. |
-| **Görüntü sürümü** | Bir **görüntü sürümü** , galerı kullanılırken VM oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, bir sanal makine oluşturmak için bir **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
+| **Yönetilen görüntü** | Bu, tek başına kullanılabilen veya resim galerisinde **görüntü sürümü** oluşturmak için kullanılabilen temel bir görüntüdür. Yönetilen görüntüler genelleştirilmiş VM'lerden oluşturulur. Yönetilen görüntü, birden çok VM yapmak için kullanılabilen ve şimdi paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
+| **Resim galerisi** | Azure Marketi gibi, **resim galerisi** de görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimin erişimi olduğunu siz denetlersiniz. |
+| **Resim tanımı** | Görüntüler bir galeri içinde tanımlanır ve görüntü ve dahili olarak kullanmak için gereksinimleri hakkında bilgi taşır. Bu, görüntünün Windows veya Linux olup olmadığını, sürüm notlarını ve minimum ve maksimum bellek gereksinimlerini içerir. Bu bir görüntü türünün tanımıdır. |
+| **Görüntü sürümü** | **Resim sürümü,** galeri kullanırken VM oluşturmak için kullandığınız sürümdür. Ortamınız için gerektiği gibi görüntünün birden çok sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, VM oluşturmak için bir **görüntü sürümü** kullandığınızda, görüntü sürümü VM için yeni diskler oluşturmak için kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
 
-Aynı anda oluşturduğunuz her 20 VM için bir çoğaltmayı tutmanız önerilir. Örneğin, bir bölgedeki aynı görüntüyü kullanarak aynı anda 120 VM oluşturuyorsanız, resminizin en az 6 çoğaltmasını tutmanız önerilir. Daha fazla bilgi için bkz. [ölçekleme](/azure/virtual-machines/windows/shared-image-galleries#scaling).
+Aynı anda oluşturduğunuz her 20 VM için bir yineleme bulundurmanızı öneririz. Örneğin, bir bölgede aynı görüntüyü aynı anda kullanarak 120 VM oluşturuyorsanız, görüntünüzün en az 6 kopyasını saklamanızı öneririz. Daha fazla bilgi için [ölçekleme'ye](/azure/virtual-machines/windows/shared-image-galleries#scaling)bakın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaledeki örneği tamamlayabilmeniz için, mevcut bir yönetilen görüntünüz olmalıdır. [Öğreticiyi izleyebilirsiniz: gerekirse bir Azure VM 'nin özel bir görüntüsünü Azure PowerShell](tutorial-custom-images.md) oluşturun. Yönetilen görüntü bir veri diski içeriyorsa, veri diski boyutu 1 TB 'den fazla olamaz.
+Bu makaledeki örneği tamamlamak için varolan yönetilen bir görüntüye sahip olmalısınız. Öğretici'yi takip edebilirsiniz: Gerekirse bir azure VShell oluşturmak için [Azure PowerShell ile azure vm'nin özel bir görüntüsünü oluşturun.](tutorial-custom-images.md) Yönetilen görüntü bir veri diski içeriyorsa, veri diskboyutu 1 TB'den fazla olamaz.
 
-Bu makalede çalışırken, kaynak grubu ve VM adlarını gerektiği yerde değiştirin.
+Bu makale üzerinde çalışırken, gerektiğinde kaynak grubunu ve VM adlarını değiştirin.
 
 [!INCLUDE [virtual-machines-common-shared-images-powershell](../../../includes/virtual-machines-common-shared-images-powershell.md)]
 
  
 ## <a name="create-vms-from-an-image"></a>Görüntüden VM oluşturma
 
-Görüntü sürümü tamamlandıktan sonra bir veya daha fazla yeni VM oluşturabilirsiniz. [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanma. 
+Görüntü sürümü tamamlandıktan sonra, bir veya daha fazla yeni VM oluşturabilirsiniz. [Yeni-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet kullanarak. 
 
-Bu örnek, *Orta Güney ABD* veri merkezinde *Myresourcegroup* Içinde *myvmfromımage*adlı bir VM oluşturur.
+Bu örnek, *Güney Orta ABD* veri merkezindeki *myResourceGroup'ta* *myVMfromImage*adında bir VM oluşturur.
 
 
 ```azurepowershell-interactive
@@ -97,14 +97,14 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure görüntü Oluşturucu (Önizleme)](image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
+[Azure Image Builder (önizleme)](image-builder-overview.md) görüntü sürümü oluşturma otomatikleştirmek yardımcı olabilir, hatta güncelleme kullanabilirsiniz ve [varolan bir resim sürümünden yeni bir resim sürümü oluşturmak](image-builder-gallery-update-image-version.md). 
 
-Ayrıca, şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı da oluşturabilirsiniz. Çeşitli Azure hızlı başlangıç şablonları mevcuttur: 
+Şablonları kullanarak Paylaşılan Resim Galerisi kaynağını da oluşturabilirsiniz. Kullanılabilir birkaç Azure Quickstart Şablonu vardır: 
 
-- [Paylaşılan görüntü galerisi oluşturma](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Paylaşılan görüntü galerisinde görüntü tanımı oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Paylaşılan görüntü galerisinde görüntü sürümü oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Görüntü sürümünden VM oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Paylaşılan Resim Galerisi Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Paylaşılan Resim Galerisinde Resim Tanımı Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Paylaşılan Resim Galerisinde Resim Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Resim Sürümünden VM Oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [genel bakış](shared-image-galleries.md). Sorunlarla karşılaşırsanız bkz. [paylaşılan görüntü galerilerine sorun giderme](troubleshooting-shared-images.md).
+Paylaşılan Resim Galerileri hakkında daha fazla bilgi için [Genel Bakış'a](shared-image-galleries.md)bakın. Sorunlarla karşılaştıysanız, [paylaşılan görüntü galerilerini sorun giderme](troubleshooting-shared-images.md)konusuna bakın.
 

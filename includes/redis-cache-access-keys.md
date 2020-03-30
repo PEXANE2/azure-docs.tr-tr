@@ -9,21 +9,21 @@ ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: a737e130d616a67bab28c7c96c0372216a6707af
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73720398"
 ---
-### <a name="retrieve-host-name-ports-and-access-keys-from-the-azure-portal"></a>Azure portal ana bilgisayar adı, bağlantı noktaları ve erişim anahtarlarını alın
+### <a name="retrieve-host-name-ports-and-access-keys-from-the-azure-portal"></a>Azure portalından ana bilgisayar adı, bağlantı noktaları ve erişim anahtarlarını alma
 
-Redsıs örneği için bir Azure önbelleğine bağlanmak üzere önbellek istemcilerinin, önbellek için ana bilgisayar adı, bağlantı noktaları ve bir anahtar olması gerekir. Bazı istemciler bu öğelere biraz daha farklı adlarla başvurabilir. Ana bilgisayar adı, bağlantı noktaları ve anahtarları [Azure Portal](https://portal.azure.com)edinebilirsiniz.
+Redis için bir Azure Önbelleğine bağlanmak için önbellek istemcilerinin ana bilgisayar adı, bağlantı noktaları ve önbellek için bir anahtara ihtiyacı vardır. Bazı istemciler bu öğelere biraz daha farklı adlarla başvurabilir. Ana bilgisayar adını, bağlantı noktalarını ve anahtarları [Azure portalından](https://portal.azure.com)alabilirsiniz.
 
-- Önbellek sol gezininizden erişim anahtarlarını almak için **erişim tuşları**' nı seçin. 
+- Giriş tuşlarını almak için, önbelleğinizden sol gezinme, **Access tuşlarını**seçin. 
   
-  ![Redsıs anahtarları için Azure önbelleği](media/redis-cache-access-keys/redis-cache-keys.png)
+  ![Redis tuşları için Azure Önbelleği](media/redis-cache-access-keys/redis-cache-keys.png)
 
-- Ana bilgisayar adını ve bağlantı noktalarını, önbellek sol gezininizden almak için **Özellikler**' i seçin. Ana bilgisayar adı *\<DNS adı >. redsıs. cache. Windows. net*' dir.
+- Önbellek sol gezinti gelen ana bilgisayar adı ve bağlantı noktaları almak için **Özellikleri**seçin. Ana bilgisayar adı form * \<DNS adı>.redis.cache.windows.net*.
 
-  ![Redsıs özellikleri için Azure önbelleği](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
+  ![Redis özellikleri için Azure Önbelleği](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

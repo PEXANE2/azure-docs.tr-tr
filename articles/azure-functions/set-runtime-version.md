@@ -1,71 +1,71 @@
 ---
-title: Azure İşlevleri çalışma zamanı sürümleri nasıl hedeflenir?
-description: Azure İşlevleri, birden fazla çalışma zamanı sürümünü destekler. Azure'da barındırılan bir işlev uygulamasında çalışma zamanı sürümünü nasıl belirteceğinizi öğrenin.
+title: Azure İşlevleri çalışma zamanı sürümlerini hedefleme
+description: Azure İşlevler çalışma zamanının birden çok sürümlerini destekler. Azure'da barındırılan bir işlev uygulamasının çalışma zamanı sürümünü nasıl belirtin.
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77151964"
 ---
-# <a name="how-to-target-azure-functions-runtime-versions"></a>Azure İşlevleri çalışma zamanı sürümleri nasıl hedeflenir?
+# <a name="how-to-target-azure-functions-runtime-versions"></a>Azure İşlevleri çalışma zamanı sürümlerini hedefleme
 
-Bir işlev uygulaması, Azure İşlevleri çalışma zamanının belirli bir sürümünde çalışır. Üç ana sürüm vardır: [1. x, 2. x ve 3. x](functions-versions.md). Varsayılan olarak, işlev uygulamaları çalışma zamanının 2. x sürümünde oluşturulur. Bu makalede, Azure'daki bir işlev uygulamasının seçtiğiniz sürüm üzerinde çalıştırılacak şekilde nasıl yapılandırılacağı açıklanmaktadır. Belirli bir sürüm için yerel bir geliştirme ortamının nasıl yapılandırılacağı hakkında bilgi için bkz. [Code ve Azure işlevlerini yerel olarak test](functions-run-local.md)etme.
+Bir işlev uygulaması Azure İşlevleri çalışma zamanının belirli bir sürümünde çalışır. Üç ana versiyonu vardır: [1.x, 2.x ve 3.x](functions-versions.md). Varsayılan olarak, işlev uygulamaları çalışma zamanının sürüm 2.x'inde oluşturulur. Bu makalede, Seçtiğiniz sürümde çalışacak şekilde Azure'daki bir işlev uygulamasını nasıl yapılandırabileceğiniz açıklanmaktadır. Belirli bir sürüm için yerel geliştirme ortamını nasıl yapılandırılayacağıhakkında bilgi için [Kod'a bakın ve Azure İşlevlerini yerel olarak test edin.](functions-run-local.md)
 
-## <a name="automatic-and-manual-version-updates"></a>Otomatik ve el ile sürüm güncelleştirmeleri
+## <a name="automatic-and-manual-version-updates"></a>Otomatik ve manuel sürüm güncellemeleri
 
-Azure Işlevleri, bir işlev uygulamasındaki `FUNCTIONS_EXTENSION_VERSION` uygulama ayarını kullanarak çalışma zamanının belirli bir sürümünü hedeflemenizi sağlar. İşlev uygulaması siz açıkça yeni bir sürüme geçene kadar belirtilen ana sürüm üzerinde tutulur.
+Azure İşlevler, bir işlev uygulamasındauygulama ayarını `FUNCTIONS_EXTENSION_VERSION` kullanarak çalışma zamanının belirli bir sürümünü hedeflemenize olanak tanır. İşlev uygulaması, yeni bir sürüme geçmeyi açıkça seçene kadar belirtilen ana sürümde tutulur.
 
-Yalnızca ana sürümü belirtirseniz, işlev uygulaması kullanılabilir hale geldiğinde çalışma zamanının yeni ikincil sürümlerine otomatik olarak güncelleştirilir. Yeni ikincil sürümler, son değişiklikleri sunmamalıdır. İkincil bir sürüm (örneğin, "2.0.12345") belirtirseniz işlev uygulaması, siz açıkça değiştirene kadar ilgili sürüme sabitlenir.
+Yalnızca ana sürümü belirtirseniz, işlev uygulaması kullanılabilir olduklarında çalışma zamanının yeni küçük sürümlerine otomatik olarak güncelleştirilir. Yeni küçük sürümler kırılma değişiklikleri tanıtmak olmamalıdır. Küçük bir sürüm belirtirseniz (örneğin, "2.0.12345"), işlev uygulaması, siz açıkça değiştirene kadar belirli bir sürüme sabitlenir.
 
 > [!NOTE]
-> Azure Işlevleri 'nin belirli bir sürümüne sabitleyebilir ve sonra Visual Studio 'Yu kullanarak Azure 'a yayımlamayı denerseniz, en son sürüme güncelleştirmenizi isteyip istemediğinizi soran bir iletişim kutusu penceresi açılır veya yayımlamayı iptal edersiniz. Bunu önlemek için, `.csproj` dosyanıza `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` özelliğini ekleyin.
+> Azure İşlevlerinin belirli bir sürümüne sabitleyip Visual Studio'yu kullanarak Azure'da yayımlamaya çalışırsanız, en son sürüme güncelleştirmenizi veya yayımlamayı iptal etmenize neden olan bir iletişim penceresi açılır. Bunu önlemek için `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` dosyanızdaki `.csproj` özelliği ekleyin.
 
-Yeni bir sürüm genel kullanıma sunulduğunda portalda görüntülenecek bir istem size yazılımınızı söz konusu sürüme yükseltme olanağı sunar. Yeni bir sürüme taşıdıktan sonra, `FUNCTIONS_EXTENSION_VERSION` uygulaması ayarını her zaman önceki bir sürüme geri dönmek için kullanabilirsiniz.
+Yeni bir sürüm herkese açık olduğunda, portaldaki bir istem size bu sürüme geçme şansı verir. Yeni bir sürüme geçtikten sonra, `FUNCTIONS_EXTENSION_VERSION` önceki sürüme geri dönmek için uygulama ayarını her zaman kullanabilirsiniz.
 
-Aşağıdaki tabloda, otomatik güncelleştirmeleri etkinleştirmek üzere her ana sürüm için `FUNCTIONS_EXTENSION_VERSION` değerleri gösterilmektedir:
+Aşağıdaki tablo, `FUNCTIONS_EXTENSION_VERSION` otomatik güncelleştirmeleri etkinleştirmek için her ana sürümün değerlerini gösterir:
 
-| Ana sürüm | `FUNCTIONS_EXTENSION_VERSION` değeri |
+| Ana sürüm | `FUNCTIONS_EXTENSION_VERSION`Değer |
 | ------------- | ----------------------------------- |
 | 3.x  | `~3` |
 | 2.x  | `~2` |
-| 'in  | `~1` |
+| 1.x  | `~1` |
 
-Çalışma zamanı sürümündeki değişiklikler işlev uygulamanızın yeniden başlatılmasına neden olur.
+Çalışma zamanı sürümünde yapılan bir değişiklik, işlev uygulamasının yeniden başlatılmasına neden olur.
 
 ## <a name="view-and-update-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü görüntüleme ve güncelleştirme
 
-İşlev uygulamanız tarafından kullanılan çalışma zamanı sürümünü değiştirebilirsiniz. Son değişiklikler nedeniyle, işlev uygulamanızda herhangi bir işlev oluşturmadan önce çalışma zamanı sürümünü değiştirebilirsiniz. 
+İşlev uygulamanız tarafından kullanılan çalışma zamanı sürümünü değiştirebilirsiniz. Değişiklikleri bölme potansiyeli nedeniyle, yalnızca işlev uygulamanızda herhangi bir işlev oluşturmadan önce çalışma zamanı sürümünü değiştirebilirsiniz. 
 
 > [!IMPORTANT]
-> Çalışma zamanı sürümü `FUNCTIONS_EXTENSION_VERSION` ayarı tarafından belirlendiği halde, ayarı doğrudan değiştirerek bu değişikliği Azure portal yapmalısınız. Bunun nedeni, portalın yaptığınız değişiklikleri doğrulaması ve ilgili diğer değişiklikleri gerekli hale getirir.
+> Çalışma zamanı sürümü `FUNCTIONS_EXTENSION_VERSION` ayarı tarafından belirlense de, bu değişikliği doğrudan ayarı değiştirerek değil, Azure portalında yapmalısınız. Bunun nedeni, portalın değişikliklerinizi doğrulayabı ve gerektiğinde diğer ilgili değişiklikleri yapmasıdır.
 
 ### <a name="from-the-azure-portal"></a>Azure portalından
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 > [!NOTE]
-> Azure portal kullanarak, zaten işlevleri bulunan bir işlev uygulamasının çalışma zamanı sürümünü değiştiremezsiniz.
+> Azure portalını kullanarak, zaten işlevler içeren bir işlev uygulamasının çalışma zamanı sürümünü değiştiremezsiniz.
 
-### <a name="view-and-update-the-runtime-version-using-azure-cli"></a>Azure CLı 'dan
+### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>Azure CLI'den
 
-Ayrıca Azure CLı 'dan `FUNCTIONS_EXTENSION_VERSION` görüntüleyebilir ve ayarlayabilirsiniz.
+Azure `FUNCTIONS_EXTENSION_VERSION` CLI'yi görüntüleyebilir ve ayarlayabilirsiniz.
 
 >[!NOTE]
->Çalışma zamanı sürümü diğer ayarları etkileyebileceğinden sürümü portalda değiştirmeniz gerekir. Çalışma zamanı sürümlerini değiştirdiğinizde portal, Node.js sürümü ve çalışma zamanı yığını gibi diğer gerekli güncelleştirmeleri de otomatik olarak yapar.  
+>Diğer ayarlar çalışma zamanı sürümünden etkilenebileceğinden, portaldaki sürümü değiştirmeniz gerekir. Portal, çalışma zamanı sürümlerini değiştirdiğinizde Node.js sürümü ve çalışma zamanı yığını gibi diğer gerekli güncelleştirmeleri otomatik olarak yapar.  
 
-Azure CLı 'yı kullanarak, [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutuyla geçerli çalışma zamanı sürümünü görüntüleyin.
+Azure CLI'yi kullanarak, geçerli çalışma zamanı sürümünü [az functionapp config appsettings kümesi](/cli/azure/functionapp/config/appsettings) komutuyla görüntüleyin.
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <function_app> \
 --resource-group <my_resource_group>
 ```
 
-Bu kodda `<function_app>`, işlev uygulamanızın adıyla değiştirin. Ayrıca `<my_resource_group>`, işlev uygulamanızın kaynak grubunun adıyla değiştirin. 
+Bu kodda, `<function_app>` işlev uygulamanızın adı ile değiştirin. Ayrıca `<my_resource_group>` işlev uygulamanız için kaynak grubunun adı ile değiştirin. 
 
-Aşağıdaki çıktıda `FUNCTIONS_EXTENSION_VERSION` görürsünüz ve bu, açıklık açısından kısaltıldı:
+Netlik `FUNCTIONS_EXTENSION_VERSION` için kesilen aşağıdaki çıktıyı görürsünüz:
 
 ```output
 [
@@ -90,7 +90,7 @@ Aşağıdaki çıktıda `FUNCTIONS_EXTENSION_VERSION` görürsünüz ve bu, aç�
 ]
 ```
 
-İşlev uygulamasındaki `FUNCTIONS_EXTENSION_VERSION` ayarını [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutuyla güncelleştirebilirsiniz.
+Fonksiyon uygulamasındaki `FUNCTIONS_EXTENSION_VERSION` ayarı [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) komutu ile güncelleyebilirsiniz.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
@@ -98,16 +98,16 @@ az functionapp config appsettings set --name <function_app> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
 
-`<function_app>`, işlev uygulamanızın adıyla değiştirin. Ayrıca `<my_resource_group>`, işlev uygulamanızın kaynak grubunun adıyla değiştirin. Ayrıca, `<version>`, 1. x çalışma zamanının geçerli bir sürümüyle veya sürüm 2. x için `~2` ile değiştirin.
+İşlev uygulamanızın adı ile değiştirin. `<function_app>` Ayrıca `<my_resource_group>` işlev uygulamanız için kaynak grubunun adı ile değiştirin. Ayrıca, `<version>` 1.x çalışma zamanının geçerli bir `~2` sürümüyle veya sürüm 2.x ile değiştirin.
 
-Yukarıdaki kod örneğinde **deneyin** ' i seçerek bu komutu [Azure Cloud Shell](../cloud-shell/overview.md) çalıştırabilirsiniz. Ayrıca, oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu çalıştırdıktan sonra bu komutu yürütmek IÇIN [Azure CLI 'yı yerel olarak](/cli/azure/install-azure-cli) da kullanabilirsiniz.
+Bu komutu, önceki kod örneğinde **Taz'ı** seçerek [Azure Bulut Kabuğu'ndan](../cloud-shell/overview.md) çalıştırabilirsiniz. Oturum açmak için [az oturum](/cli/azure/reference-index#az-login) açtıktan sonra bu komutu yürütmek için [Azure CLI'yi yerel olarak](/cli/azure/install-azure-cli) da kullanabilirsiniz.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Yerel geliştirme ortamınızda 2,0 çalışma zamanını hedefleyin](functions-run-local.md)
+> [Yerel geliştirme ortamınızda 2,0 çalışma süresini hedefleme](functions-run-local.md)
 
 > [!div class="nextstepaction"]
-> [Bkz. çalışma zamanı sürümleri için sürüm notları](https://github.com/Azure/azure-webjobs-sdk-script/releases)
+> [Çalışma zamanı sürümleri için Yayın notlarına bakın](https://github.com/Azure/azure-webjobs-sdk-script/releases)

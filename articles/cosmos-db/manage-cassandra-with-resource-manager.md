@@ -1,35 +1,35 @@
 ---
-title: Azure Cosmos DB için Kaynak Yöneticisi şablonlar Cassandra API
-description: Azure Cosmos DB Cassandra API oluşturmak ve yapılandırmak için Azure Resource Manager şablonları kullanın.
+title: Azure Cosmos DB Cassandra API için Kaynak Yöneticisi şablonları
+description: Azure Cosmos DB Cassandra API oluşturmak ve yapılandırmak için Azure Kaynak Yöneticisi şablonlarını kullanın.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
 ms.openlocfilehash: c4dc97453fe50865db74f8918ef3dffdb4013b4f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251901"
 ---
-# <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme
+# <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonlarını kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme
 
-Bu makalede, Azure Resource Manager şablonları kullanarak Azure Cosmos DB hesaplarınızın, veritabanlarınızın ve kapsayıcılarınızın yönetimini otomatikleştirmek için farklı işlemlerin nasıl gerçekleştirileceği açıklanır. Bu makalede yalnızca SQL API hesapları için örnekler bulunur, diğer API türü hesaplara yönelik örnekler bulunur. bkz. [SQL](manage-sql-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [tablo](manage-table-with-resource-manager.md) makaleleri için Azure Cosmos DB API 'siyle Azure Resource Manager şablonları kullanma.
+Bu makalede, Azure Kaynak Yöneticisi şablonlarını kullanarak Azure Cosmos DB hesaplarınızın, veritabanlarınızın ve kapsayıcılarınızın yönetimini otomatikleştirmek için farklı işlemlerin nasıl gerçekleştirilişeği açıklanmaktadır. Bu makalede, diğer API türü hesaplara örnek bulmak için yalnızca SQL API hesapları için örnekler vardır: Azure Cosmos DB'nin [SQL](manage-sql-with-resource-manager.md)API'si ile Azure Kaynak Yöneticisi şablonlarını kullanın, [Gremlin,](manage-gremlin-with-resource-manager.md) [MongoDB](manage-mongodb-with-resource-manager.md), [Tablo](manage-table-with-resource-manager.md) makaleleri.
 
-## Azure Cosmos hesabı, anahtar alanı ve tablo oluşturma<a id="create-resource"></a>
+## <a name="create-azure-cosmos-account-keyspace-and-table"></a>Azure Cosmos hesabı, keyspace ve tablo oluşturma<a id="create-resource"></a>
 
-Azure Resource Manager şablonu kullanarak Azure Cosmos DB kaynakları oluşturun. Bu şablon, anahtar alanı düzeyinde 400 RU/sn aktarım hızını paylaşan iki tabloyla Cassandra API için bir Azure Cosmos hesabı oluşturur. Şablonu kopyalayın ve aşağıda gösterildiği gibi dağıtın veya [Azure hızlı başlangıç Galerisi](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) ' ni ziyaret edin ve Azure Portal dağıtın. Ayrıca, şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturup `--template-file` parametresiyle yerel yolu belirtebilirsiniz.
+Azure Kaynak Yöneticisi şablonu kullanarak Azure Cosmos DB kaynaklarını oluşturun. Bu şablon, cassandra API için, keyspace düzeyinde 400 RU/s iş ortasını paylaşan iki tabloiçeren bir Azure Cosmos hesabı oluşturur. Şablonu kopyalayın ve aşağıda gösterildiği gibi dağıtın veya [Azure Quickstart Galerisi'ni](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) ziyaret edin ve Azure portalından dağıtın. Ayrıca şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturabilir `--template-file` ve parametreyle yerel yolu belirtebilirsiniz.
 
 > [!NOTE]
-> Hesap adları küçük ve 44 ya da daha az karakter olmalıdır.
-> RU/s 'yi güncelleştirmek için, şablonu güncelleştirilmiş işleme özelliği değerleriyle yeniden gönderin.
+> Hesap adları küçük ve 44 veya daha az karakter olmalıdır.
+> RU/s'leri güncelleştirmek için, şablonu güncelleştirilmiş iş verme özelliği değerleriyle yeniden gönderin.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
-## <a name="deploy-with-the-azure-cli"></a>Azure CLı ile dağıtma
+## <a name="deploy-with-the-azure-cli"></a>Azure CLI ile dağıtma
 
-Azure CLı kullanarak Azure Resource Manager şablonunu dağıtmak için, betiği **kopyalayın** ve Azure Cloud Shell açmak için **dene** ' yi seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
+Azure CLI'yi kullanarak Azure Kaynak Yöneticisi şablonuna dağıtmak için komut dosyasını **kopyalayın** ve Azure Bulut Bulutu'nu açmak için **deneyin'i** seçin. Komut dosyasını yapıştırmak için kabuğu sağ tıklatın ve sonra **Yapıştır'ı**seçin:
 
 ```azurecli-interactive
 
@@ -51,14 +51,14 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` komutu, yeni oluşturulan Azure Cosmos hesabını, sağlandıktan sonra gösterir. Cloud Shell kullanmak yerine Azure CLı 'nın yerel olarak yüklü bir sürümünü kullanmayı tercih ederseniz, bkz. [Azure CLI](/cli/azure/) makalesi.
+Komut, `az cosmosdb show` yeni oluşturulan Azure Cosmos hesabını oluşturulduktan sonra gösterir. Bulut Kabuğu kullanmak yerine Azure CLI'nin yerel olarak yüklenmiş bir sürümünü kullanmayı seçerseniz, [Azure CLI](/cli/azure/) makalesine bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı ek kaynaklar aşağıda verilmiştir:
+Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
-- [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
+- [Azure Kaynak Yöneticisi belgeleri](/azure/azure-resource-manager/)
 - [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Ortak Azure Resource Manager Dağıtım hatalarını giderme](../azure-resource-manager/templates/common-deployment-errors.md)
+- [Azure Cosmos DB Hızlı Başlatma şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Sık karşılaşılan Azure Kaynak Yöneticisi dağıtım hatalarını giderme](../azure-resource-manager/templates/common-deployment-errors.md)

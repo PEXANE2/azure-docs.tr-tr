@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Gateway kullanım örnekleri | Microsoft Docs
-description: Azure 'a veri aktarmanıza imkan tanıyan bir Sanal Gereç depolama çözümü olan Azure Data Box Gateway için kullanım örneklerini açıklar
+title: Microsoft Azure Veri Kutusu Ağ Geçidi kullanım örnekleri | Microsoft Dokümanlar
+description: Verileri Azure'a aktarmanızı sağlayan bir sanal cihaz depolama çözümü olan Azure Veri Kutusu Ağ Geçidi'nin kullanım durumlarını açıklar
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,89 +9,89 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022690"
 ---
-# <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway için kullanım örnekleri
+# <a name="use-cases-for-azure-data-box-gateway"></a>Azure Veri Kutusu Ağ Geçidi için kılıfları kullanma
 
-Azure Data Box Gateway, şirket içinde bulunan ve görüntünüzü, medyayı ve diğer verilerinizi Azure 'a gönderen bir bulut depolama ağ geçidi aygıtıdır. Bu bulut depolama ağ geçidi, hiper yöneticiniz üzerinde sağlanan bir sanal makinedir. Bu sanal cihaza, daha sonra Azure 'a gönderdiği NFS ve SMB protokollerini kullanarak veri yazarsınız. Bu makalede, bu cihazı dağıtabileceğiniz senaryoların ayrıntılı bir açıklaması sağlanmaktadır.
+Azure Veri Kutusu Ağ Geçidi, binanızda bulunan ve resminizi, medyanızı ve diğer verilerinizi Azure'a gönderen bir bulut depolama ağ geçidi aygıtıdır. Bu bulut depolama ağ geçidi, hipervizörünüzde bulunan sanal bir makinedir. Verileri bu sanal aygıta NFS ve Kobİ protokollerini kullanarak yazarsınız ve bu cihaz azure'a gönderir. Bu makalede, bu aygıtı dağıtabileceğiniz senaryoların ayrıntılı bir açıklamasını sağlar.
 
-Aşağıdaki senaryolar için Data Box Gateway kullanın:
+Aşağıdaki senaryolar için Veri Kutusu Ağ Geçidi'ni kullanın:
 
-- Büyük miktarlarda verileri sürekli alma.
-- Güvenli ve etkili bir şekilde veri bulutu arşivi için.
-- Data Box kullanılarak ilk toplu aktarım yapıldıktan sonra ağ üzerinden artımlı veri aktarımı için.
+- Sürekli büyük miktarda veri yutmak için.
+- Verilerin güvenli ve verimli bir şekilde bulut arşivlemesine neden olun.
+- İlk toplu aktarım Veri Kutusu kullanılarak yapıldıktan sonra ağ üzerinden artımlı veri aktarımiçin.
 
-Bu senaryoların her biri, sonraki bölümlerde ayrıntılı olarak açıklanmıştır.
+Bu senaryoların her biri sonraki bölümlerde ayrıntılı olarak açıklanmıştır.
 
 
 ## <a name="continuous-data-ingestion"></a>Sürekli veri alımı
 
-Data Box Gateway başlıca avantajlarından biri, veri boyutundan bağımsız olarak buluta kopyalamak için verileri cihaza sürekli olarak alma olanağıdır.
+Veri Kutusu Ağ Geçidi'nin en önemli avantajlarından biri, veri boyutundan bağımsız olarak buluta kopyalamak için aygıta sürekli veri yutabilmesidir.
 
-Veri ağ geçidi cihazına yazıldığı için cihaz, verileri Azure depolama 'ya yükler. Bu cihaz, belirli bir eşiğe ulaştığında meta verileri korurken, dosyaları yerel olarak kaldırarak depolamayı otomatik olarak yönetir. Meta verilerin yerel bir kopyasının tutulması, ağ geçidi cihazının yalnızca dosya güncelleştirilirken değişiklikleri karşıya yüklemesine olanak sağlar. Ağ geçidinize yüklenen veriler, [veri yükleme uyarıları](data-box-gateway-limits.md#data-upload-caveats)'ndaki yönergelere göre olmalıdır.
+Veriler ağ geçidi aygıtına yazıldığından, aygıt verileri Azure Depolama'ya yükler. Aygıt, belirli bir eşiğe ulaştığında meta verileri korurken dosyaları yerel olarak kaldırarak depolama alanını otomatik olarak yönetir. Meta verilerin yerel bir kopyasını tutmak, ağ geçidi aygıtının değişiklikleri yalnızca dosya güncelleştirildiğinde yüklemesine olanak tanır. Ağ geçidi aygıtınıza yüklenen veriler, [Veri yükleme ihtarlarında](data-box-gateway-limits.md#data-upload-caveats)belirtilen yönergelere uygun olmalıdır.
 
-Cihaz verilerle doldurulduğunda, verilerin buluta yüklenme oranıyla eşleşecek şekilde giriş hızını azaltmayı (gerektiğinde) başlatır. Cihazdaki sürekli alımı izlemek için uyarıları kullanırsınız. Bu uyarılar, daraltma başladıktan sonra tetiklenir ve daraltma durdurulduktan sonra temizlenir.
+Aygıt verilerle dolduğunda, verilerin buluta yüklenme hızıyla eşleşecek şekilde giriş hızını (gerektiği gibi) daraltmaya başlar. Cihazdaki sürekli alımını izlemek için uyarılar kullanırsınız. Bu uyarılar, azaltma başladıktan sonra yükseltilir ve azaltma durdurulduktan sonra temizlenir.
 
-## <a name="cloud-archival-of-data"></a>Veri bulutu Arşivi
+## <a name="cloud-archival-of-data"></a>Verilerin bulut arşivlemi
 
-Verilerinizi bulutta uzun süreli olarak sürdürmek istediğinizde Data Box Gateway kullanın. Depolamanın **Arşiv** katmanını uzun süreli saklama için kullanabilirsiniz.
+Verilerinizi bulutta uzun süre saklamak istediğinizde Veri Kutusu Ağ Geçidi'ni kullanın. Uzun süreli bekletme için **Arşiv** depolama katmanını kullanabilirsiniz.
 
-Arşiv katmanı, nadiren erişilen verileri en az 180 gün boyunca depolamak için iyileştirilmiştir. **Arşiv** katmanı en düşük depolama maliyetlerini sunar, ancak en yüksek erişim maliyetlerine sahiptir. Daha fazla bilgi için [Arşiv erişim katmanı](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier)' na gidin.
+Arşiv katmanı, nadiren erişilen verileri en az 180 gün boyunca depolamak için optimize edilmiştir. **Arşiv** katmanı en düşük depolama maliyetlerini sunar, ancak en yüksek erişim maliyetlerine sahiptir. Daha fazla bilgi için [Arşiv erişim katmanına](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier)gidin.
 
-### <a name="move-data-to-archive-tier"></a>Verileri arşiv katmanına taşıma
+### <a name="move-data-to-archive-tier"></a>Verileri Arşiv katmanına taşıma
 
-Başlamadan önce, çalışan bir Data Box Gateway cihazınıza sahip olduğunuzdan emin olun. Eğitim bölümünde açıklanan adımları izleyin. [Azure Data Box Gateway dağıtmaya hazırlanın](data-box-gateway-deploy-prep.md) ve bir işlem cihazına sahip olana kadar sonraki öğreticiye ilerletmeden devam edin.
+Başlamadan önce çalışan bir Veri Kutusu Ağ Geçidi aygıtınız olduğundan emin olun. Öğretici'de ayrıntılı olarak belirtilen adımları [izleyin: Azure Veri Kutusu Ağ Geçidi'ni dağıtmaya hazırlanın](data-box-gateway-deploy-prep.md) ve operasyonel bir aygıtınız olana kadar bir sonraki öğreticiye ilerlemeye devam edin.
 
-- Verileri [Data Box Gateway aracılığıyla aktarma](data-box-gateway-deploy-add-shares.md)bölümünde açıklandığı gibi olağan aktarım yordamı aracılığıyla Azure 'a veri yüklemek için Data Box Gateway cihazını kullanın.
-- Veriler karşıya yüklendikten sonra arşiv katmanına taşımanız gerekir. Blob katmanını iki şekilde ayarlayabilirsiniz: Azure PowerShell betiği veya Azure Storage yaşam döngüsü yönetim ilkesi.  
-    - Azure PowerShell kullanıyorsanız, verileri arşiv katmanına taşımak için aşağıdaki [adımları](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) izleyin.
-    - Azure yaşam döngüsü yönetimi kullanıyorsanız, verileri arşiv katmanına taşımak için aşağıdaki adımları izleyin.
-        - Arşiv katmanını kullanmak için blob yaşam döngüsü yönetim hizmetinin önizlemesine [kaydolun](/azure/storage/common/storage-lifecycle-management-concepts) .
-        - Alma [sırasında verileri arşivlemek](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)için aşağıdaki ilkeyi kullanın.
-- Blob 'lar arşiv olarak işaretlendikten sonra sık veya soğuk katmana taşınmadığı sürece Ağ Geçidi tarafından artık değiştirilemeyebilir. Dosya yerel depodadır, yerel kopyada yapılan değişiklikler (silme dahil) arşiv katmanına yüklenmeyecektir.
-- Arşiv depolamadaki verileri okumak için, blob katmanı sık erişimli veya seyrek erişimli olarak değiştirilerek yeniden doldurulması gerekir. Ağ geçidinde [paylaşımın yenilenmesi](data-box-gateway-manage-shares.md#refresh-shares) blob 'u yeniden göstermez.
+- Veri Kutusu Ağ Geçidi üzerinden Veri Aktarımı'nda açıklandığı gibi, her zamanki aktarım yordamı yla Azure'a veri yüklemek için [Veri Kutusu Ağ Geçidi aygıtını](data-box-gateway-deploy-add-shares.md)kullanın.
+- Veriler yüklendikten sonra Arşiv katmanına taşımanız gerekir. Blob katmanını iki şekilde ayarlayabilirsiniz: Azure PowerShell komut dosyası veya Azure Depolama Yaşam Döngüsü Yönetimi ilkesi.  
+    - Azure PowerShell kullanıyorsanız, verileri Arşiv katmanına taşımak için aşağıdaki [adımları](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) izleyin.
+    - Azure Yaşam Döngüsü Yönetimi'ni kullanıyorsanız, verileri Arşiv katmanına taşımak için aşağıdaki adımları izleyin.
+        - Arşiv katmanını kullanmak için Blob Yaşam Döngüsü yönetim hizmetinin önizlemesine [kaydolun.](/azure/storage/common/storage-lifecycle-management-concepts)
+        - Verileri [yutma üzerine arşivlemek](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)için aşağıdaki ilkeyi kullanın.
+- Lekeler Arşiv olarak işaretlendikten sonra, sıcak veya soğuk katmana taşınmadıkları sürece ağ geçidi tarafından değiştirilemezler. Dosya yerel depolama alanındaysa, yerel kopyada yapılan değişiklikler (silmeler dahil) arşiv katmanına yüklenmez.
+- Arşiv depolamasındaki verileri okumak için, blob katmanını sıcak veya serin olarak değiştirerek yeniden sulandırılmalıdır. Ağ [geçidindeki payı yenilemek](data-box-gateway-manage-shares.md#refresh-shares) lekeyi yeniden sulendirmez.
 
-Daha fazla bilgi için [Azure Blob depolama yaşam döngüsünü yönetme](/azure/storage/common/storage-lifecycle-management-concepts)hakkında daha fazla bilgi edinin.
+Daha fazla bilgi için [Azure Blob Depolama Yaşam Döngüsünü](/azure/storage/common/storage-lifecycle-management-concepts)Nasıl Yönetebilirsiniz hakkında daha fazla bilgi edinin.
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>İlk toplu aktarım ve ardından artımlı aktarım
 
-Büyük miktarda verileri toplu karşıya yüklemeyi ve ardından artımlı aktarımları yapmak istediğinizde Data Box ve Data Box Gateway birlikte kullanın. Bir çevrimdışı modda (ilk çekirdek) ve ağ üzerinden artımlı aktarımlar (devam eden akış) için Data Box Gateway toplu aktarım için Data Box kullanın.
+Büyük miktarda veriyi ve ardından artımlı aktarımları toplu olarak yüklemek istediğinizde Veri Kutusu ve Veri Kutusu Ağ Geçidi'ni birlikte kullanın. Ağ üzerinden artımlı aktarımlar (devam eden akış) için çevrimdışı modda (ilk tohum) toplu aktarım için Veri Kutusu'nu ve Veri Kutusu Ağ Geçidi'ni kullanın.
 
-### <a name="seed-the-data-with-data-box"></a>Data Box ile verileri tohum
+### <a name="seed-the-data-with-data-box"></a>Veri Kutusu ile verileri tohumla
 
-Data Box verileri kopyalamak ve Azure depolama alanına yüklemek için bu adımları izleyin.
+Verileri Veri Kutusu'na kopyalamak ve Azure Depolama'ya yüklemek için aşağıdaki adımları izleyin.
 
-1. [Data Box sıralayın](/azure/databox/data-box-deploy-ordered).
-2. [Data Box ayarlayın](/azure/databox/data-box-deploy-set-up).
-3. [SMB aracılığıyla Data Box verileri kopyalayın](/azure/databox/data-box-deploy-copy-data).
-4. [Data Box döndürün, verilerin Azure 'a yüklenmesini doğrulayın](/azure/databox/data-box-deploy-picked-up).
-5. Verileri Azure 'a yükleme işlemi tamamlandıktan sonra tüm veriler Azure depolama kapsayıcıları 'nda olmalıdır. Data Box için depolama hesabında, tüm verilerin kopyalandığından emin olmak için blob (ve dosya) kapsayıcısına gidin. Bu adı daha sonra kullanacağınız için kapsayıcı adı ' nı bir yere getirin. Örneğin, aşağıdaki ekran görüntüsünde, artımlı aktarım için `databox` kapsayıcı kullanılacaktır.
+1. [Veri Kutunuzu Sipariş Edin.](/azure/databox/data-box-deploy-ordered)
+2. [Veri Kutunuzu ayarlayın.](/azure/databox/data-box-deploy-set-up)
+3. [Verileri SMB üzerinden Veri Kutusu'na kopyalayın.](/azure/databox/data-box-deploy-copy-data)
+4. [Veri Kutusunu döndürün, veri yüklemesini Azure'a doğrulayın.](/azure/databox/data-box-deploy-picked-up)
+5. Azure'a veri yüklemesi tamamlandıktan sonra, tüm veriler Azure depolama kapsayıcılarında olmalıdır. Veri Kutusu'nun depolama hesabında, tüm verilerin kopyalandığından emin olmak için Blob (ve Dosya) kapsayıcısına gidin. Bu adı daha sonra kullanacağınız için kapsayıcı adını not edin. Örneğin, aşağıdaki ekran görüntüsünde, `databox` kapsayıcı artımlı aktarım için kullanılır.
 
-    ![Data Box veri içeren kapsayıcı](media/data-box-gateway-use-cases/data-container1.png)
+    ![Veri Kutusu'nda veri içeren kapsayıcı](media/data-box-gateway-use-cases/data-container1.png)
 
-Bu toplu aktarım, ilk dengeli dağıtım aşamasını tamamlar.
+Bu toplu aktarım ilk tohumlama aşamasını tamamlar.
 
-### <a name="ongoing-feed-with-data-box-gateway"></a>Data Box Gateway ile devam eden akış
+### <a name="ongoing-feed-with-data-box-gateway"></a>Veri Kutusu Ağ Geçidi ile devam eden akış
 
-Data Box Gateway ile ilgili devam eden adımları izleyin.
+Data Box Ağ Geçidi tarafından devam eden alım için aşağıdaki adımları izleyin.
 
-1. Data Box Gateway üzerinde bir bulut paylaşma oluşturun. Bu paylaşımın tüm verileri Azure depolama hesabına otomatik olarak yükler. Data Box Gateway kaynağınızın **Paylaşımlar** bölümüne gidin ve **+ Paylaşım Ekle**' ye tıklayın.
+1. Veri Kutusu Ağ Geçidi'nde bulut paylaşımı oluşturun. Bu paylaşım, tüm verileri otomatik olarak Azure Depolama hesabına yükler. Veri Kutusu Ağ Geçidi kaynağınızdaki **Paylaşımlar'a** gidin ve **+ Paylaş ekle'yi**tıklatın.
 
-    ![\+ Paylaşma Ekle ' ye tıklayın.](media/data-box-gateway-use-cases/add-share1.png)
+    ![+Ekle paylaşım'ı tıklatın](media/data-box-gateway-use-cases/add-share1.png)
 
-2. Bu paylaşımın, sağlanan verileri içeren kapsayıcınıza eşlendiğinden emin olun. **BLOB kapsayıcısı Seç**Için **Varolanı kullan** ' ı seçin ve Data Box verilerin aktarıldığı kapsayıcıya gidin.
+2. Bu paylaşım, tohumlu verileri içeren kapsayıcıyla eşlerinizi olduğundan emin olun. **Blob kapsayıcısını seç**seçeneğini belirleyin ve **Varolan'ı kullanın** ve Veri Kutusu'ndaki verilerin aktarıldığı kapsayıcıya göz atın.
 
-    ![Ayarları paylaşma](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
+    ![Ayarları paylaşın](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 
-3. Paylaşma oluşturulduktan sonra, paylaşma 'yı yenileyin. Bu işlem şirket içi paylaşma işlemini Azure 'daki içerikle yeniler.
+3. Paylaşım oluşturulduktan sonra, payı yenileyin. Bu işlem, Azure'daki içerikle şirket içi paylaşımı yeniler.
 
-    ![Paylaşma Yenile](media/data-box-gateway-use-cases/refresh-share1.png)
+    ![Paylaşımı yenile](media/data-box-gateway-use-cases/refresh-share1.png)
 
-    Paylaşma eşitlendiğinde, dosyalar istemcide değiştirilmişse, artımlı değişiklikleri karşıya yükler Data Box Gateway.
+    Paylaşım eşitlendiğinde, dosyalar istemcide değiştirildiğinde Veri Kutusu Ağ Geçidi artımlı değişiklikleri yükler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

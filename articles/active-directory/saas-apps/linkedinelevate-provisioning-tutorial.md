@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: LinkedIn yükseltme için Kullanıcı hazırlama-Azure AD'
-description: Kullanıcı hesaplarını LinkedIn 'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: LinkedIn Yükseltme için kullanıcı sağlama - Azure AD'
+description: Azure Active Directory'yi LinkedIn Elevate'e otomatik olarak sağlama ve kullanıcı hesaplarını sağlama ve sağlamadan çıkarma için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,111 +16,111 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057422"
 ---
-# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için LinkedIn yükseltmeyi yapılandırma
+# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için LinkedIn Yükseltme'yi yapılandırın
 
-Bu öğreticinin amacı, Azure AD 'den LinkedIn 'e yönelik kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için LinkedIn ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
+Bu öğreticinin amacı, Azure AD'den LinkedIn Yükseltme'ye otomatik olarak kullanıcı hesapları sağlamak ve sağlamadan sağlamak için LinkedIn Yükseltme ve Azure AD'de gerçekleştirmeniz gereken adımları size göstermektir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, zaten aşağıdaki öğelere sahip olduğunuzu varsayar:
 
 * Azure Active Directory kiracısı
-* LinkedIn 'i yükselt
-* LinkedIn 'de LinkedIn hesap merkezine erişimi olan bir yönetici hesabı
+* LinkedIn Yükseltme kiracısı
+* LinkedIn Hesap Merkezi'ne erişimi olan LinkedIn Elevate'deki bir yönetici hesabı
 
 > [!NOTE]
-> Azure Active Directory, [SCIM](http://www.simplecloud.info/) protokolünü kullanarak LinkedIn yükseltmesine tümleştirilir.
+> Azure Active Directory, [SCIM](http://www.simplecloud.info/) protokolünü kullanarak LinkedIn Yükseltme ile tümleşir.
 
-## <a name="assigning-users-to-linkedin-elevate"></a>Kullanıcıları LinkedIn 'e atama
+## <a name="assigning-users-to-linkedin-elevate"></a>LinkedIn Yükseltme'ye kullanıcı atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için "atamalar" adlı bir kavram kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya "atanmış" kullanıcılar ve gruplar eşitlenir.
 
-Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcı ve/veya grupların LinkedIn 'e erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları LinkedIn 'e atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki kullanıcıların ve/veya grupların LinkedIn Yükseltmes'e erişilmesi gereken kullanıcıları temsil edeceğine karar vermeniz gerekir. Karar verildikten sonra, bu kullanıcıları buradaki yönergeleri izleyerek LinkedIn Yükseltme'ye atayabilirsiniz:
 
-[Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+[Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>LinkedIn 'e Kullanıcı atamaya yönelik önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>LinkedIn Elevate'e kullanıcı atamak için önemli ipuçları
 
-* Sağlama yapılandırmasını test etmek üzere LinkedIn 'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Sağlama yapılandırmasını sınamak için tek bir Azure REKLAM kullanıcısının LinkedIn Yükseltme'ye atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı LinkedIn 'e atarken atama iletişim kutusunda **Kullanıcı** rolünü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
+* LinkedIn Yükseltme'ye bir kullanıcı atarken, atama iletişim **kutusundaki Kullanıcı** rolünü seçmeniz gerekir. "Varsayılan Erişim" rolü sağlama için çalışmaz.
 
-## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>Kullanıcı sağlamayı LinkedIn 'e yapılandırma
+## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>Kullanıcı sağlamayı LinkedIn Yükseltme olarak yapılandırma
 
-Bu bölüm, Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmetini Kullanıcı ve grup atamasına göre LinkedIn 'in atandığı kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırmak için size rehberlik eder Azure AD 'de.
+Bu bölüm, Azure REKLAM'ınızı LinkedIn Elevate'in SCIM kullanıcı hesabı sağlama API'sine bağlamanız ve kullanıcı ve grup atamasına bağlı olarak LinkedIn Elevate'de atanan kullanıcı hesaplarını oluşturacak, güncelleştirecek ve devre dışı edecek şekilde sağlama hizmetini yapılandırmanız konusunda size yol gösteriyor Azure AD'de.
 
-**İpucu:** Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri izleyerek LINKEDıN için SAML tabanlı çoklu oturum açmayı da tercih edebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
+**İpucu:** [Azure portalında](https://portal.azure.com)sağlanan yönergeleri izleyerek LinkedIn Yükseltmesi için SAML tabanlı Tek Oturum Açma özelliğini de etkinleştirmeyi seçebilirsiniz. Tek oturum açma, otomatik sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı hesabı sağlamayı LinkedIn 'e yükseltmek için:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Azure AD'de LinkedIn Yükseltme için otomatik kullanıcı hesabı sağlama yapılandırmak için:
 
-İlk adım, LinkedIn erişim belirtecinizi almak için kullanılır. Kuruluş yöneticisiyseniz, kendi kendine erişim belirteci sağlayabilirsiniz. Hesap merkezinizde **ayarlar &gt; genel ayarlar** ' a gidin ve **SCIM kurulum** panelini açın.
+İlk adım LinkedIn erişim jetonu almaktır. Bir Kurumsal yöneticiyseniz, bir erişim jetonuna kendi kendine sağlayabilirsiniz. Hesap merkezinizde **Ayarlar &gt; Global Ayarları'na** gidin ve **SCIM Kurulum** panelini açın.
 
 > [!NOTE]
-> Hesap merkezine bir bağlantı yerine doğrudan erişiyorsanız, aşağıdaki adımları kullanarak buna ulaşabilirsiniz.
+> Hesap merkezine bir bağlantı yerine doğrudan erişiyorsanız, aşağıdaki adımları kullanarak bu merkeze ulaşabilirsiniz.
 
-1. Hesap Merkezi 'nde oturum açın.
+1. Hesap Merkezi'nde oturum açın.
 
-2. Yönetici **&gt; yönetici ayarları** ' nı seçin.
+2. **Yönetici &gt; Yönetici Ayarlarını** Seçin.
 
-3. Sol kenar çubuğunda **Gelişmiş tümleştirmeler** ' e tıklayın. Hesap merkezine yönlendirilirsiniz.
+3. Sol kenar çubuğunda **Gelişmiş Tümleştirmeler'i** tıklatın. Hesap merkezine yönlendirilirsiniz.
 
-4. **+ Yenı SCIM Yapılandırması Ekle** ' ye tıklayın ve her alanı doldurarak yordamı izleyin.
-
-    > [!NOTE]
-    > Yeniden atama lisansları etkin olmadığında, yalnızca Kullanıcı verilerinin eşitlendiği anlamına gelir.
-
-    ![LinkedIn yükseltme sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
+4. **+ Yeni SCIM yapılandırması ekleyin** ve her alanı doldurarak yordamı izleyin.
 
     > [!NOTE]
-    > Oto lisans ataması etkinleştirildiğinde, uygulama örneği ve lisans türünü not etmeniz gerekir. Lisanslar ilk olarak atanır, ilk olarak tüm lisanslar alınana kadar temel alınır.
+    > Otomatik atama lisansları etkinleştirilemediğinde, yalnızca kullanıcı verilerinin eşitlenmiş olduğu anlamına gelir.
 
-    ![LinkedIn yükseltme sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+    ![LinkedIn Yükseltme Sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
-5. **Belirteç oluştur**' a tıklayın. Erişim belirteci, erişim **belirteci** alanının altında görüntülenir.
+    > [!NOTE]
+    > Otomatik lisans ataması etkinleştirildiğinde, uygulama örneğini ve lisans türünü not almanız gerekir. Lisanslar, tüm lisanslar alınana kadar ilk gelene, önce hizmet esasına göre atanır.
+
+    ![LinkedIn Yükseltme Sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+
+5. **Belirteç Oluştur'u**tıklatın. **Access belirteci** alanının altında erişim belirteci ekranınızı görmeniz gerekir.
 
 6. Sayfadan çıkmadan önce erişim belirtecinizi panonuza veya bilgisayarınıza kaydedin.
 
-7. Ardından [Azure Portal](https://portal.azure.com)oturum açın ve **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
+7. Ardından, [Azure portalında](https://portal.azure.com)oturum açın ve **Azure Active Directory > Kurumsal Uygulamalar > Tüm uygulamalar** bölümüne göz atın.
 
-8. Çoklu oturum açma için LinkedIn yükseltmeyi zaten yapılandırdıysanız arama alanını kullanarak LinkedIn 'in örneğini arayın. Aksi takdirde, uygulama galerisinde **LinkedIn** 'e **Ekle** ve ara ' yı seçin. Arama sonuçlarından LinkedIn Yükselt ' i seçin ve uygulama listenize ekleyin.
+8. LinkedIn Yükseltme'yi tek oturum açma için zaten yapılandırıldıysanız, arama alanını kullanarak LinkedIn Yükseltme örneğinizi arayın. Aksi takdirde, uygulama galerisinde **LinkedIn** **Yükseltme** ekle ve arama yı seçin. Arama sonuçlarından LinkedIn Yükseltme'yi seçin ve uygulama listenize ekleyin.
 
-9. LinkedIn yükseltme örneğinizi seçin, sonra **sağlama** sekmesini seçin.
+9. LinkedIn Yükseltme örneğini seçin ve ardından **Sağlama** sekmesini seçin.
 
-10. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+10. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
-    ![LinkedIn yükseltme sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
+    ![LinkedIn Yükseltme Sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
-11. **Yönetici kimlik bilgileri** altında aşağıdaki alanları girin:
+11. **Yönetici Kimlik Bilgileri** altında aşağıdaki alanları doldurun:
 
-    * **Kiracı URL 'si** alanında `https://api.linkedin.com`girin.
+    * Kiracı **URL** alanına girin. `https://api.linkedin.com`
 
-    * **Gizli belirteç** alanına, adım 1 ' de oluşturduğunuz erişim belirtecini girin ve **Bağlantıyı Sına** ' yı tıklatın.
+    * Gizli **Belirteç** alanında, adım 1'de oluşturduğunuz erişim jetonunu girin ve **Test Bağlantısı'nı** tıklatın.
 
-    * Portalınızın sağ tarafında bir başarı bildirimi görmeniz gerekir.
+    * Portalınızın sağ üst tarafında bir başarı bildirimi görmeniz gerekir.
 
-12. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
+12. **Bildirim E-posta** alanında ödeme hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
 
-13. **Kaydet** düğmesine tıklayın.
+13. **Kaydet**'e tıklayın.
 
-14. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den LinkedIn yükseltmesine eşitlenecek Kullanıcı ve grup özniteliklerini gözden geçirin. Güncelleştirme işlemleri için, **eşleşen** özellikler olarak seçilen özniteliklerin LinkedIn yükseltme içindeki kullanıcı hesaplarını ve grupları eşleştirmek için kullanılacağını unutmayın. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
+14. **Öznitelik Eşlemeleri** bölümünde, Azure AD'den LinkedIn Yükseltme'ye eşitlenecek kullanıcı ve grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen özniteliklerin, güncelleştirme işlemleri için LinkedIn Yükseltme'deki kullanıcı hesapları ve gruplarıyla eşleştirmek için kullanılacağını unutmayın. Herhangi bir değişiklik yapmak için Kaydet düğmesini seçin.
 
-    ![LinkedIn yükseltme sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
+    ![LinkedIn Yükseltme Sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
-15. LinkedIn 'in Azure AD sağlama hizmetini etkinleştirmek için **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
+15. LinkedIn Yükseltmes için Azure AD sağlama hizmetini etkinleştirmek için, **ıstaşlama Durumunu** **Ayarlar** bölümünde açık **On**
 
-16. **Kaydet** düğmesine tıklayın.
+16. **Kaydet**'e tıklayın.
 
-Bu, kullanıcılar ve Gruplar bölümünde LinkedIn 'e atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen sonraki eşitlemeler yerine daha uzun süreceğini unutmayın. Eşitleme ayrıntıları bölümünü izlemek ve LinkedIn uygulamanızın sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
+Bu, LinkedIn Yükseltme'ye atanan kullanıcıların ve/veya grupların Kullanıcılar ve Gruplar bölümünde ilk eşitlenmesine başlar. İlk eşitlemenin, hizmet çalışırken yaklaşık her 40 dakikada bir oluşan sonraki eşitlemelerden daha uzun süreceğini unutmayın. LinkedIn Yükseltme uygulamanızda sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemeyi izlemek ve sağlama etkinlik günlüklerine olan bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)

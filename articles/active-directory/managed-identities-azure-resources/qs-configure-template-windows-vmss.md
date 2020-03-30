@@ -1,6 +1,6 @@
 ---
-title: Şablonu, sanal makine ölçek kümelerinde yönetilen kimlikleri kullanacak şekilde Yapılandırma-Azure AD
-description: Bir Azure Resource Manager şablonu kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
+title: Şablonu sanal makine ölçeği kümelerinde yönetilen kimlikleri kullanacak şekilde yapılandırın - Azure AD
+description: Azure Kaynak Yöneticisi şablonu kullanarak Azure kaynakları için yönetilen kimlikleri sanal makine ölçeğinde yapılandırmak için adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,54 +16,54 @@ ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d5e324ea20b2ea82fac5b5132893d3558bd3b41
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425570"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Bir şablon kullanarak bir Azure sanal makine ölçeğinde Azure kaynakları için Yönetilen kimlikler yapılandırma
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Azure sanal makine ölçeğinde azure kaynakları için yönetilen kimlikleri şablon kullanarak yapılandırma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.
+Azure kaynakları için yönetilen kimlikler, Azure Etkin Dizini'nde otomatik olarak yönetilen bir kimlik le Azure hizmetlerine olanak sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmetin kimliğini doğrulamak için kullanabilirsiniz.
 
-Bu makalede, Azure Resource Manager dağıtım şablonu kullanarak Azure sanal makine ölçek kümesindeki Azure kaynakları işlemleri için aşağıdaki yönetilen kimliklerin nasıl gerçekleştirileceğini öğreneceksiniz:
-- Azure sanal makine ölçek kümesi üzerinde sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
-- Azure sanal makine ölçek kümesine Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma
+Bu makalede, Azure Kaynak Yöneticisi dağıtım şablonu kullanarak Azure kaynakları işlemleri için aşağıdaki yönetilen kimlikleri bir Azure sanal makine ölçeğinde nasıl gerçekleştireceklerini öğreneceksiniz:
+- Azure sanal makine ölçeğinde sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırak
+- Azure sanal makine ölçeğinde kullanıcı tarafından atanan yönetilen bir kimlik ekleme ve kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için yönetilen kimliklere aşina değilseniz, [genel bakış bölümüne](overview.md)göz atın. ** [Sistem tarafından atanan ve kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirin.**
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- Bu makaledeki yönetim işlemlerini gerçekleştirmek için, hesabınız aşağıdaki Azure rol tabanlı erişim denetimi atamalarına ihtiyaç duyuyor:
+- Bu makalede yönetim işlemlerini gerçekleştirmek için, hesabınızda aşağıdaki Azure rol tabanlı erişim denetimi atamaları gerekir:
 
     > [!NOTE]
-    > Ek Azure AD dizin rolü ataması gerekli değildir.
+    > Ek Azure AD dizini rol atamaları gerekmez.
 
-    - Sanal makine [katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) bir sanal makine ölçek kümesi oluşturmak ve sistem ve/veya Kullanıcı tarafından atanan yönetilen kimliği bir sanal makine ölçek kümesinden etkinleştirmek ve kaldırmak için.
-    - Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rolü.
-    - Kullanıcı tarafından atanan yönetilen kimliği ve sanal makine ölçek kümesine atamak ve kaldırmak için [yönetilen kimlik operatörü](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rolü.
+    - [Sanal Makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) sanal makine ölçeği kümesi oluşturmak ve sistemi ve/veya kullanıcı tarafından atanan yönetilen kimliği sanal makine ölçeği kümesinden etkinleştirmek ve kaldırmak için.
+    - Kullanıcı tarafından atanan yönetilen bir kimlik oluşturmak için [Yönetilen Kimlik Oluşturici](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rolü.
+    - Kullanıcı tarafından atanan yönetilen bir kimliği sanal makine ölçeği kümesinden ve sanal makine ölçeğikümesine atamak ve kaldırmak için [Yönetilen Kimlik İşlemi](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rolü.
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
-Azure portal ve betikte olduğu gibi [Azure Resource Manager](../../azure-resource-manager/management/overview.md) şablonlar, bir Azure Kaynak grubu tarafından tanımlanan yeni veya değiştirilmiş kaynakları dağıtma olanağı sağlar. Aşağıdakiler dahil olmak üzere hem yerel hem de portal tabanlı şablon düzenlemesi ve dağıtımı için çeşitli seçenekler mevcuttur:
+Azure portalı ve komut dosyası oluşturmada olduğu gibi, [Azure Kaynak Yöneticisi](../../azure-resource-manager/management/overview.md) şablonları da bir Azure kaynak grubu tarafından tanımlanan yeni veya değiştirilmiş kaynakları dağıtma olanağı sağlar. Şablon düzenleme ve dağıtım için hem yerel hem de portal tabanlı çeşitli seçenekler mevcuttur:
 
-   - Sıfırdan bir şablon oluşturmanıza veya mevcut bir ortak ya da [hızlı başlangıç şablonuna](https://azure.microsoft.com/documentation/templates/)temeletmenize olanak tanıyan [Azure Marketi 'nden özel bir şablon](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kullanma.
-   - Varolan bir kaynak grubundan türeterek, [orijinal dağıtımdan](../../azure-resource-manager/templates/export-template-portal.md)veya [dağıtımın geçerli durumundan](../../azure-resource-manager/templates/export-template-portal.md)bir şablonu dışarı aktararak.
-   - Yerel bir [JSON Düzenleyicisi (vs Code gibi)](../../azure-resource-manager/resource-manager-create-first-template.md)kullanarak ve POWERSHELL veya CLI kullanarak karşıya yükleme ve dağıtma.
-   - Bir şablon oluşturmak ve dağıtmak için Visual Studio [Azure Kaynak grubu projesini](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) kullanma.  
+   - Sıfırdan bir şablon oluşturmanıza veya varolan bir ortak veya [hızlı başlangıç şablonuna](https://azure.microsoft.com/documentation/templates/)dayandırmanızı sağlayan Azure [Marketi'nden özel](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)bir şablon kullanarak.
+   - Özgün [dağıtımdan](../../azure-resource-manager/templates/export-template-portal.md)veya [dağıtımın geçerli durumundan](../../azure-resource-manager/templates/export-template-portal.md)bir şablon dışa aktararak varolan bir kaynak grubundan türeyen.
+   - Yerel bir [JSON düzenleyicisi (VS Code gibi)](../../azure-resource-manager/resource-manager-create-first-template.md)kullanarak ve ardından PowerShell veya CLI kullanarak yükleme ve dağıtma.
+   - Bir şablon oluşturmak ve dağıtmak için Visual Studio [Azure Kaynak Grubu projesini](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) kullanma.  
 
-Seçtiğiniz seçenekten bağımsız olarak, şablon söz dizimi ilk dağıtım ve yeniden dağıtım sırasında aynıdır. Yeni veya mevcut bir VM 'de Azure kaynakları için yönetilen kimliklerin etkinleştirilmesi aynı şekilde yapılır. Ayrıca, varsayılan olarak Azure Resource Manager dağıtımlar için [artımlı bir güncelleştirme](../../azure-resource-manager/templates/deployment-modes.md) yapar.
+Seçtiğiniz seçenek ne olursa olsun, şablon sözdizimi ilk dağıtım ve yeniden dağıtım sırasında aynıdır. Yeni veya varolan bir VM'de Azure kaynakları için yönetilen kimlikleri etkinleştirme aynı şekilde yapılır. Ayrıca, varsayılan olarak, Azure Kaynak Yöneticisi dağıtımlar için [artımlı](../../azure-resource-manager/templates/deployment-modes.md) bir güncelleştirme yapar.
 
-## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
+## <a name="system-assigned-managed-identity"></a>Sistem le atanmış yönetilen kimlik
 
-Bu bölümde, sistem tarafından atanan yönetilen kimliği bir Azure Resource Manager şablonu kullanarak etkinleştirip devre dışı bırakacaksınız.
+Bu bölümde, bir Azure Kaynak Yöneticisi şablonu kullanarak sistem tarafından atanan yönetilen kimliği etkinleştirecek ve devre dışı kacaksınız.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesi veya var olan bir sanal makine ölçek kümesi oluşturma sırasında sistem tarafından atanan yönetilen kimliği etkinleştirin
+### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Sanal makine ölçeği kümesi veya varolan sanal makine ölçeği kümesi nin oluşturulması sırasında sistem tarafından atanan yönetilen kimliği etkinleştirme
 
-1. Azure 'da yerel olarak veya Azure portal aracılığıyla oturum açıp etmeksizin, sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesabı kullanın.
-2. Sistem tarafından atanan yönetilen kimliği etkinleştirmek için, şablonu bir düzenleyiciye yükleyin, kaynaklar bölümünde ilgilendiğiniz `Microsoft.Compute/virtualMachinesScaleSets` kaynağını bulun ve `"type": "Microsoft.Compute/virtualMachinesScaleSets"` özelliğiyle aynı düzeyde `identity` özelliğini ekleyin. Aşağıdaki sözdizimini kullanın:
+1. İster yerel olarak Azure'da oturum açın ister Azure portalı üzerinden, sanal makine ölçeği kümesini içeren Azure aboneliğiyle ilişkili bir hesap kullanın.
+2. Sistem tarafından atanan yönetilen kimliği etkinleştirmek için şablonu `Microsoft.Compute/virtualMachinesScaleSets` bir düzenleyiciye yükleyin, kaynaklar `identity` bölümündeki ilgi kaynağını `"type": "Microsoft.Compute/virtualMachinesScaleSets"` bulun ve özelliği özellik ile aynı düzeyde ekleyin. Aşağıdaki sözdizimini kullanın:
 
    ```JSON
    "identity": {
@@ -72,10 +72,10 @@ Bu bölümde, sistem tarafından atanan yönetilen kimliği bir Azure Resource M
    ```
 
 > [!NOTE]
-> İsteğe bağlı olarak, Azure kaynakları sanal makine ölçek kümesi uzantısının yönetilen kimliklerini şablonun `extensionProfile` öğesinde belirterek sağlayabilirsiniz. Bu adım, belirteçleri de almak için Azure Instance Metadata Service (IMDS) kimlik uç noktasını kullanabileceğiniz için isteğe bağlıdır.  Daha fazla bilgi için bkz. [kimlik doğrulaması IÇIN VM uzantısından Azure IMDS 'ye geçiş](howto-migrate-vm-extension.md).
+> İsteğe bağlı olarak, şablonunsurunda `extensionProfile` belirterek Azure kaynakları sanal makine kümesi uzantısı için yönetilen kimlikleri sağlayabilirsiniz. Bu adım, belirteçleri almak için Azure Örneği Meta veri hizmeti (IMDS) kimlik bitiş noktasını kullanabileceğiniz için isteğe bağlıdır.  Daha fazla bilgi için, [kimlik doğrulaması için VM uzantısından Azure IMDS'ye geçir'e](howto-migrate-vm-extension.md)bakın.
 
 
-4. İşiniz bittiğinde, şablonunuzun kaynak bölümüne aşağıdaki bölümler eklenmelidir ve şuna benzemelidir:
+4. İşinizi bitirdiğinizde, şablonunuzun kaynak bölümüne aşağıdaki bölümler eklenmelidir:
 
    ```json
     "resources": [
@@ -115,25 +115,25 @@ Bu bölümde, sistem tarafından atanan yönetilen kimliği bir Azure Resource M
     ]
    ```
 
-### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Azure sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği devre dışı bırakma
+### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Sistem tarafından atanan yönetilen kimliği Azure sanal makine ölçeği kümesinden devre dışı bırak
 
-Artık sistem tarafından atanan yönetilen kimliğe ihtiyacı olmayan bir sanal makine ölçek kümesine sahipseniz:
+Artık sistem tarafından atanmış yönetilen bir kimliğe ihtiyaç dolmayan sanal bir makine ölçeği kümeniz varsa:
 
-1. Azure 'da yerel olarak veya Azure portal aracılığıyla oturum açıp etmeksizin, sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesabı kullanın.
+1. İster yerel olarak Azure'da oturum açın ister Azure portalı üzerinden, sanal makine ölçeği kümesini içeren Azure aboneliğiyle ilişkili bir hesap kullanın.
 
-2. Şablonu bir [düzenleyiciye](#azure-resource-manager-templates) yükleyin ve `resources` bölümü içinde ilgilendiğiniz `Microsoft.Compute/virtualMachineScaleSets` kaynağını bulun. Yalnızca sistem tarafından atanan yönetilen kimliğe sahip bir VM varsa, kimlik türünü `None`değiştirerek devre dışı bırakabilirsiniz.
+2. Şablonu bir [düzenleyiciye](#azure-resource-manager-templates) yükleyin ve `Microsoft.Compute/virtualMachineScaleSets` `resources` bölümdeki ilgi kaynağını bulun. Yalnızca sistemle atanmış yönetilen kimliğe sahip bir VM'iniz varsa, kimlik `None`türünü 'ye değiştirerek devre dışı kullanabilirsiniz
 
-   **Microsoft. COMPUTE/virtualMachineScaleSets API sürüm 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API sürümü 2018-06-01**
 
-   Apisürümünüz `2018-06-01` ve sanal makinenizde hem sistem hem de Kullanıcı tarafından atanan Yönetilen kimlikler varsa, kimlik türünden `SystemAssigned` kaldırın ve `UserAssigned`, Useratandıdentities sözlük değerleriyle birlikte tutun.
+   ApiVersion'unuz `2018-06-01` ysa ve VM'nizde hem sistem hem `SystemAssigned` de kullanıcı tarafından `UserAssigned` atanmış yönetilen kimlikler varsa, kimlik türünden kaldırın ve userAssignedIdentities sözlük değerleriyle birlikte tutun.
 
-   **Microsoft. COMPUTE/virtualMachineScaleSets API sürüm 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API sürümü 2018-06-01**
 
-   Apisürümünüz `2017-12-01` ve sanal makine ölçek kümesinde hem sistem hem de Kullanıcı tarafından atanan Yönetilen kimlikler varsa, kimlik türünden `SystemAssigned` kaldırın ve Kullanıcı tarafından atanan yönetilen kimliklerin `identityIds` dizisiyle birlikte `UserAssigned` tutun.
+   ApiVersion `2017-12-01` ve sanal makine ölçek küme hem sistem ve kullanıcı tarafından `SystemAssigned` atanan yönetilen kimlikleri `UserAssigned` varsa, `identityIds` kimlik türünden kaldırın ve kullanıcı tarafından atanan yönetilen kimliklerin dizi ile birlikte tutun.
 
 
 
-   Aşağıdaki örnek, Kullanıcı tarafından atanan yönetilen kimlikleri olmayan bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği nasıl kaldıragösterdiğini gösterir:
+   Aşağıdaki örnek, kullanıcı tarafından atanan yönetilen kimlikler olmadan sistem tarafından atanan yönetilen bir kimliği sanal makine ölçeğinden nasıl kaldırdığınızı gösterir:
 
    ```json
    {
@@ -149,18 +149,18 @@ Artık sistem tarafından atanan yönetilen kimliğe ihtiyacı olmayan bir sanal
 
 ## <a name="user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik
 
-Bu bölümde, Azure Resource Manager şablonu kullanarak bir sanal makine ölçek kümesine Kullanıcı tarafından atanan bir yönetilen kimlik atarsınız.
+Bu bölümde, Azure Kaynak Yöneticisi şablonu kullanarak sanal makine ölçeğine kullanıcı tarafından atanmış yönetilen bir kimlik atamış olursunuz.
 
 > [!Note]
-> Azure Resource Manager şablonu kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için, bkz. [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
+> Azure Kaynak Yöneticisi Şablonu kullanarak kullanıcı tarafından atanmış yönetilen [bir](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)kimlik oluşturmak için bkz.
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Kullanıcı tarafından atanan yönetilen kimliği bir sanal makine ölçek kümesine atama
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Kullanıcı tarafından atanan yönetilen kimliği sanal makine ölçeği kümesine atama
 
-1. `resources` öğesi altında, sanal makine ölçek kümesine Kullanıcı tarafından atanan bir yönetilen kimlik atamak için aşağıdaki girişi ekleyin.  `<USERASSIGNEDIDENTITY>`, oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliğin adıyla değiştirdiğinizden emin olun.
+1. Öğenin `resources` altında, sanal makine ölçeği kümenize kullanıcı tarafından atanan yönetilen bir kimlik atamak için aşağıdaki girişi ekleyin.  Oluşturduğunuz kullanıcı `<USERASSIGNEDIDENTITY>` tarafından atanan yönetilen kimliğin adıyla değiştirdiğinden emin olun.
 
-   **Microsoft. COMPUTE/virtualMachineScaleSets API sürüm 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API sürümü 2018-06-01**
 
-   ApiVersion `2018-06-01`ise, Kullanıcı tarafından atanan yönetilen kimlikleriniz `userAssignedIdentities` sözlük biçiminde depolanır ve `<USERASSIGNEDIDENTITYNAME>` değeri şablonunuzun `variables` bölümünde tanımlanan bir değişkende depolanmalıdır.
+   ApiVersion ise, `2018-06-01`kullanıcı tarafından atanan yönetilen kimlikleri sözlük `userAssignedIdentities` biçiminde depolanır `<USERASSIGNEDIDENTITYNAME>` ve değer şablonunuzun `variables` bölümünde tanımlanan bir değişkende depolanmalıdır.
 
    ```json
    {
@@ -177,9 +177,9 @@ Bu bölümde, Azure Resource Manager şablonu kullanarak bir sanal makine ölçe
    }
    ```   
 
-   **Microsoft. COMPUTE/virtualMachineScaleSets API sürüm 2017-12-01**
+   **Microsoft.Compute/virtualMachineScaleSets API sürümü 2017-12-01**
 
-   `apiVersion` `2017-12-01` veya daha önceki bir sürümdeyse, Kullanıcı tarafından atanan yönetilen kimlikleriniz `identityIds` dizisinde depolanır ve `<USERASSIGNEDIDENTITYNAME>` değeri şablonunuzun değişkenler bölümünde tanımlanan bir değişkende depolanmalıdır.
+   Daha `apiVersion` önce `2017-12-01` veya daha önceyseniz, kullanıcı tarafından atanan `identityIds` yönetilen kimlikleriniz dizide depolanır ve `<USERASSIGNEDIDENTITYNAME>` değer şablonunuzun değişkenler bölümünde tanımlanan bir değişkende depolanmalıdır.
 
    ```json
    {
@@ -196,11 +196,11 @@ Bu bölümde, Azure Resource Manager şablonu kullanarak bir sanal makine ölçe
    }
    ```
 > [!NOTE]
-> İsteğe bağlı olarak, Azure kaynakları sanal makine ölçek kümesi uzantısının yönetilen kimliklerini şablonun `extensionProfile` öğesinde belirterek sağlayabilirsiniz. Bu adım, belirteçleri de almak için Azure Instance Metadata Service (IMDS) kimlik uç noktasını kullanabileceğiniz için isteğe bağlıdır.  Daha fazla bilgi için bkz. [kimlik doğrulaması IÇIN VM uzantısından Azure IMDS 'ye geçiş](howto-migrate-vm-extension.md).
+> İsteğe bağlı olarak, şablonunsurunda `extensionProfile` belirterek Azure kaynakları sanal makine kümesi uzantısı için yönetilen kimlikleri sağlayabilirsiniz. Bu adım, belirteçleri almak için Azure Örneği Meta veri hizmeti (IMDS) kimlik bitiş noktasını kullanabileceğiniz için isteğe bağlıdır.  Daha fazla bilgi için, [kimlik doğrulaması için VM uzantısından Azure IMDS'ye geçir'e](howto-migrate-vm-extension.md)bakın.
 
-3. İşiniz bittiğinde, şablonunuz şuna benzer görünmelidir:
+3. Işiniz bittiğinde, şablonunuz aşağıdakilere benzer olmalıdır:
 
-   **Microsoft. COMPUTE/virtualMachineScaleSets API sürüm 2018-06-01**   
+   **Microsoft.Compute/virtualMachineScaleSets API sürümü 2018-06-01**   
 
    ```json
    "resources": [
@@ -243,7 +243,7 @@ Bu bölümde, Azure Resource Manager şablonu kullanarak bir sanal makine ölçe
     ]
    ```
 
-   **Microsoft. COMPUTE/virtualMachines API sürümü 2017-12-01**
+   **Microsoft.Compute/virtualMachines API sürümü 2017-12-01**
 
    ```json
    "resources": [
@@ -285,15 +285,15 @@ Bu bölümde, Azure Resource Manager şablonu kullanarak bir sanal makine ölçe
         }
     ]
    ```
-   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Kullanıcı tarafından atanan yönetilen kimliği bir Azure sanal makine ölçek kümesinden kaldır
+   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Kullanıcı tarafından atanan yönetilen kimliği Azure sanal makine ölçeği kümesinden kaldırma
 
-Artık Kullanıcı tarafından atanan yönetilen kimliğe ihtiyacı olmayan bir sanal makine ölçek kümesine sahipseniz:
+Artık kullanıcı tarafından atanmış yönetilen bir kimliğe ihtiyaç dolmayan sanal bir makine ölçeği kümeniz varsa:
 
-1. Azure 'da yerel olarak veya Azure portal aracılığıyla oturum açıp etmeksizin, sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesabı kullanın.
+1. İster yerel olarak Azure'da oturum açın ister Azure portalı üzerinden, sanal makine ölçeği kümesini içeren Azure aboneliğiyle ilişkili bir hesap kullanın.
 
-2. Şablonu bir [düzenleyiciye](#azure-resource-manager-templates) yükleyin ve `resources` bölümü içinde ilgilendiğiniz `Microsoft.Compute/virtualMachineScaleSets` kaynağını bulun. Yalnızca Kullanıcı tarafından atanan yönetilen kimliğe sahip bir sanal makine ölçek kümesine sahipseniz, kimlik türünü `None`değiştirerek devre dışı bırakabilirsiniz.
+2. Şablonu bir [düzenleyiciye](#azure-resource-manager-templates) yükleyin ve `Microsoft.Compute/virtualMachineScaleSets` `resources` bölümdeki ilgi kaynağını bulun. Yalnızca kullanıcı tarafından atanan yönetilen kimliğe sahip sanal bir makine ölçeği kümeniz varsa, `None`kimlik türünü '' ye değiştirerek devre dışı bırakabilirsiniz.
 
-   Aşağıdaki örnek, sistem tarafından atanan yönetilen kimlikleri olmayan bir VM 'den Kullanıcı tarafından atanan tüm yönetilen kimliklerin nasıl kaldırılacağını gösterir:
+   Aşağıdaki örnek, sistem tarafından atanmış yönetilen kimlikler olmadan, kullanıcı tarafından atanan tüm yönetilen kimlikleri vm'den nasıl kaldırdığınızı gösterir:
 
    ```json
    {
@@ -306,18 +306,18 @@ Artık Kullanıcı tarafından atanan yönetilen kimliğe ihtiyacı olmayan bir 
    }
    ```
 
-   **Microsoft. COMPUTE/virtualMachineScaleSets API sürüm 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API sürümü 2018-06-01**
 
-   Bir sanal makine ölçek kümesinden Kullanıcı tarafından atanan tek bir yönetilen kimliği kaldırmak için `userAssignedIdentities` sözlüğünden kaldırın.
+   Sanal makine ölçeği kümesinden kullanıcı tarafından atanan tek bir yönetilen `userAssignedIdentities` kimliği kaldırmak için, bu kimliği sözlükten kaldırın.
 
-   Sistem tarafından atanan bir kimliğiniz varsa, `identity` değerinin altındaki `type` değerinde saklayın.
+   Sistemle atanmış bir kimliğiniz varsa, onu `type` `identity` değerin altındaki değerde saklayın.
 
-   **Microsoft. COMPUTE/virtualMachineScaleSets API sürüm 2017-12-01**
+   **Microsoft.Compute/virtualMachineScaleSets API sürümü 2017-12-01**
 
-   Bir sanal makine ölçek kümesinden Kullanıcı tarafından atanan tek bir yönetilen kimliği kaldırmak için `identityIds` dizisinden kaldırın.
+   Sanal makine ölçeği kümesinden kullanıcı tarafından atanan tek bir yönetilen `identityIds` kimliği kaldırmak için, bu kimliği diziden kaldırın.
 
-   Sistem tarafından atanan bir yönetilen Kimliğiniz varsa, `identity` değeri altındaki `type` değerinde ' de saklayın.
+   Sistem tarafından atanmış yönetilen bir kimliğiniz varsa, `type` bu kimliği `identity` değerin altındaki değerde saklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure kaynaklarına genel bakış Için Yönetilen kimlikler](overview.md).
+- [Azure kaynaklarına genel bakış için yönetilen kimlikler.](overview.md)

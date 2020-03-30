@@ -15,24 +15,24 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69015049"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Azure Portal’ı kullanarak isteğe bağlı içerik göndermeye başlama
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 
 Bu öğretici, Azure portalı kullanarak Azure Media Services uygulaması ile temel bir isteğe bağlı video içerik teslim hizmeti uygulamanın adımlarını açıklar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
-* Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/). 
-* Bir Media Services hesabı. Bir Media Services hesabı oluşturmak için bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
+* Bir Azure hesabı. Ayrıntılar için [Azure ücretsiz deneme sürümüne](https://azure.microsoft.com/pricing/free-trial/)bakın. 
+* Bir Media Services hesabı. Medya Hizmetleri hesabı oluşturmak için Medya [Hizmetleri hesabı nın nasıl oluşturulabildiğini](media-services-portal-create-account.md)öğrenin.
 
 Bu öğretici aşağıdaki görevleri içerir:
 
@@ -51,9 +51,9 @@ Azure Media Services ile çalışırken en sık karşılaşılan senaryolardan b
 
 Akış uç noktasını başlatmak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. **Ayarlar** > **Akış uç noktaları**’nı seçin. 
-3. Varsayılan akış uç noktasına tıklayın. **VARSAYILAN AKIŞ UÇ NOKTASI AYRINTILAR** penceresi görüntülenir.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. **Ayarlar** > **Akış uç noktalarını**seçin. 
+3. Varsayılan akış uç noktasına tıklayın. **Varsayılan AKıŞ SON NOKTA AyrINTILARI** penceresi görüntülenir.
 4. **Başlat** simgesini seçin.
 5. **Kaydet** düğmesini seçin.
 
@@ -61,7 +61,7 @@ Akış uç noktasını başlatmak için:
 Media Services kullanarak video akışı sağlamak için kaynak videoları karşıya yükler, bunları çoklu bit hızlarında kodlar ve sonucu yayımlarsınız. İlk adım, bu bölümde ele alınmıştır. 
 
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayarlar** > **Varlıklar**’ı seçin. Ardından **Karşıya Yükle** düğmesini seçin.
+2. **Ayarlar** > **Varlıkları'nı**seçin. Ardından **Karşıya Yükle** düğmesini seçin.
    
     ![Dosyaları karşıya yükleme](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -84,14 +84,14 @@ Dinamik paketlemeden yararlanmak için kaynak dosyanızı çoklu bit hızına sa
 İçeriğinizi Azure portalında Media Encoder Standard kullanarak kodlamak için:
 
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayarlar** > **Varlıklar**’ı seçin. Kodlamak istediğiniz varlığı seçin.
+2. **Ayarlar** > **Varlıkları'nı**seçin. Kodlamak istediğiniz varlığı seçin.
 3. **Kodla** düğmesini seçin.
-4. **Bir varlık kodla** bölmesinde, **Media Encoder Standard** işlemcisini ve bir ön ayarı seçin. Hazır ayarlar hakkında daha fazla bilgi için bkz. [Bit hızı merdivenini otomatik oluşturma](media-services-autogen-bitrate-ladder-with-mes.md) ve [Media Encoder Standard için görev ön ayarları](media-services-mes-presets-overview.md). Girdi videonuz için en iyi sonucu verecek hazır ayarı seçmeniz önemlidir. Örneğin, girdi videonuzun 1920 &#215; 1080 piksel çözünürlüğü olduğunu biliyorsanız, **H264 Çoklu Bit hızı 1080p** ön ayarını kullanabilirsiniz. Düşük çözünürlüklü bir videonuz varsa (640 &#215; 360), **H264 Çoklu Bit Hızı 1080p** ön ayarını kullanmamalısınız.
+4. **Bir varlık kodla** bölmesinde, **Media Encoder Standard** işlemcisini ve bir ön ayarı seçin. Hazır ayarlar hakkında daha fazla bilgi için bkz. [Bit hızı merdivenini otomatik oluşturma](media-services-autogen-bitrate-ladder-with-mes.md) ve [Media Encoder Standard için görev ön ayarları](media-services-mes-presets-overview.md). Girdi videonuz için en iyi sonucu verecek hazır ayarı seçmeniz önemlidir. Örneğin, girdi videonuzun 1920 &#215; 1080 piksel çözünürlüğü olduğunu biliyorsanız, **H264 Çoklu Bit hızı 1080p** ön ayarını kullanabilirsiniz. Düşük çözünürlüklü bir videonuz varsa (640 & #215; 360), **H264 Çoklu Bit Hızı 1080p** ön ayarını kullanmamalısınız.
    
    Kaynaklarınızın yönetmenize yardımcı olmak için çıktı varlığının ve işin adını düzenleyebilirsiniz.
    
    ![Varlıkları kodlama](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. **Oluştur**’u seçin.
+5. **Oluştur'u**seçin.
 
 ### <a name="monitor-encoding-job-progress"></a>Kodlama işi ilerleme durumunu izleme
 Kodlama işinin ilerleme durumunu izlemek için, sayfanın üst kısmından **Ayarlar**’ı ve ardından **İşler**’i seçin.
@@ -104,7 +104,7 @@ Kullanıcınıza içeriğinizin akışını sağlamak veya indirmek için kullan
 * **Akış (OnDemandOrigin) bulucuları**. Akış bulucuları, uyarlamalı akış için kullanılır. Uyarlamalı akış örnekleri HLS, Kesintisiz Akış ve MPEG-DASH’i içerir. Akış bulucusu oluşturmak için varlığınız bir .ism dosyası içermelidir. 
 * **Aşamalı (paylaşılan erişim imzası) bulucuları**. Aşamalı bulucular, videoları aşamalı indirme aracılığıyla sunmak için kullanılır.
 
-HLS akış URL’si oluşturmak için, URL’ye *(format=m3u8-aapl)* ekleyin.
+HLS akış URL'si oluşturmak için URL'ye *(format=m3u8-aapl)* ekin:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -132,10 +132,10 @@ Bulucunun sona erme tarihini güncelleştirmek için bir [REST API](https://docs
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Bir varlık yayımlamak için portal kullanmak üzere
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayarlar** > **Varlıklar**’ı seçin. Yayımlamak istediğiniz varlığı seçin.
+2. **Ayarlar** > **Varlıkları'nı**seçin. Yayımlamak istediğiniz varlığı seçin.
 3. **Yayımla** düğmesini seçin.
 4. Bulucu türünü seçin.
-5. **Add (Ekle)** seçeneğini belirleyin.
+5. **Ekle'yi**seçin.
    
     ![Videoyu yayımlama](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

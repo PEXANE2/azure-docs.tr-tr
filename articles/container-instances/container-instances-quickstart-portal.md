@@ -1,21 +1,21 @@
 ---
-title: Hızlı başlangıç-Docker kapsayıcısını kapsayıcı örneğine dağıtma-Portal
-description: Bu hızlı başlangıçta, yalıtılmış bir Azure Container örneğinde çalışan kapsayıcılı bir Web uygulamasını hızlıca dağıtmak için Azure portal kullanırsınız
+title: Quickstart - Docker konteynerini konteyner örneğine dağıt - Portal
+description: Bu hızlı başlatmada, yalıtılmış bir Azure kapsayıcı örneğinde çalışan kapsayıcı web uygulamasını hızla dağıtmak için Azure portalını kullanırsınız
 ms.topic: quickstart
 ms.date: 03/09/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79087971"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure 'da kapsayıcı örneği dağıtma
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Hızlı başlatma: Azure portalını kullanarak Azure'da bir kapsayıcı örneğini dağıtma
 
-Azure 'da sunucusuz Docker kapsayıcılarını basitlik ve hızla çalıştırmak için Azure Container Instances kullanın. Azure Kubernetes hizmeti gibi tam kapsayıcı düzenleme platformu gerekmiyorsa, bir uygulamayı isteğe bağlı olarak bir kapsayıcı örneğine dağıtın.
+Azure'da sunucusuz Docker kapsayıcılarını basitlik ve hızla çalıştırmak için Azure Kapsayıcı Örnekleri'ni kullanın. Azure Kubernetes Hizmeti gibi tam bir kapsayıcı düzenleme platformuna ihtiyacınız olmadığında uygulamayı isteğe bağlı bir kapsayıcı örneğine dağıtın.
 
-Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtmak ve uygulamayı tam etki alanı adı (FQDN) ile kullanılabilir hale getirmek için Azure portal kullanırsınız. Birkaç ayarı yapılandırdıktan ve kapsayıcıyı dağıttıktan sonra çalışan uygulamaya göz atabilirsiniz:
+Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısı dağıtmak ve uygulamasını tam nitelikli bir etki alanı adı (FQDN) ile kullanılabilir hale getirmek için Azure portalını kullanırsınız. Birkaç ayarı yapılandırdıktan ve kapsayıcıyı dağıttıktan sonra çalışan uygulamaya göz atabilirsiniz:
 
 ![Azure Container Instances hizmetine dağıtılmış uygulamanın tarayıcıdaki görüntüsü][aci-portal-07]
 
@@ -23,42 +23,42 @@ Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-free-account] oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz][azure-free-account] bir hesap oluşturun.
 
 ## <a name="create-a-container-instance"></a>Kapsayıcı örneği oluşturma
 
-**Kaynak oluştur** > **Kapsayıcılar** > **Container Instances** seçeneğini belirleyin.
+Kaynak > **Kapsayıcı** > **Örnekleri** **Oluştur'u**seçin.
 
 ![Azure portalında yeni bir kapsayıcı örneği oluşturmaya başlama][aci-portal-01]
 
-**Temel bilgiler** sayfasında, **kaynak grubu**, **kapsayıcı adı**ve **kapsayıcı görüntüsü** metin kutularına aşağıdaki değerleri girin. Diğer değerleri varsayılan değerlerinde bırakın ve **Tamam**’ı seçin.
+Temel **Bilgiler** sayfasında, **Kaynak grubuna,** Kapsayıcı **adına**ve **Kapsayıcı resim** metin kutularına aşağıdaki değerleri girin. Diğer değerleri varsayılan değerlerinde bırakın ve **Tamam**’ı seçin.
 
-* Kaynak grubu: **Yeni oluştur** > `myresourcegroup`
+* Kaynak grubu: **Yeni oluşturma** > `myresourcegroup`
 * Kapsayıcı adı: `mycontainer`
-* Görüntü kaynağı: **hızlı başlangıç görüntüleri**
-* Kapsayıcı görüntüsü: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
+* Görüntü kaynağı: **Quickstart görüntüleri**
+* Konteyner görüntüsü: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Azure portalında yeni bir kapsayıcı örneği için temel ayarları yapılandırma][aci-portal-03]
 
-Bu hızlı başlangıçta, genel Microsoft `aci-helloworld` görüntüsünü dağıtmak için varsayılan ayarları kullanacaksınız. Bu örnek Linux görüntüsü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler. Ayrıca, Azure Container Registry, Docker Hub veya diğer kayıt defterlerinde depolanan kendi kapsayıcı görüntülerinizi de getirebilirsiniz.
+Bu hızlı başlangıç için, genel Microsoft `aci-helloworld` görüntüsünü dağıtmak için varsayılan ayarları kullanırsınız. Bu örnek Linux görüntüsü, Node.js ile yazılmış statik bir HTML sayfasına hizmet veren küçük bir web uygulamasını paketler. Azure Konteyner Kayıt Defteri, Docker Hub veya diğer kayıt defterlerinde depolanan kendi kapsayıcı resimlerinizi de getirebilirsiniz.
 
-**Ağ** sayfasında, Kapsayıcınız Için bir **DNS ad etiketi** belirtin. Ad, kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır. Kapsayıcınız `<dns-name-label>.<region>.azurecontainer.io` konumunda genel kullanıma sunulacaktır. "DNS ad etiketi kullanılamıyor" hata iletisiyle karşılaşırsanız farklı bir DNS ad etiketi deneyin.
+**Ağ** sayfasında, kapsayıcınız için bir **DNS ad etiketi** belirtin. Ad, kapsayıcı örneğini oluşturduğunuz Azure bölgesinde benzersiz olmalıdır. Kapsayıcınız `<dns-name-label>.<region>.azurecontainer.io` konumunda genel kullanıma sunulacaktır. "DNS ad etiketi kullanılamıyor" hata iletisiyle karşılaşırsanız farklı bir DNS ad etiketi deneyin.
 
-![Azure portal yeni bir kapsayıcı örneği için ağ ayarlarını yapılandırma][aci-portal-04]
+![Azure portalında yeni bir kapsayıcı örneği için ağ ayarlarını yapılandırma][aci-portal-04]
 
-Diğer ayarları varsayılan olarak bırakın ve ardından **gözden geçir + oluştur**' u seçin.
+Diğer ayarları varsayılanlarına bırakın, ardından **Gözden Geçir + oluştur'u**seçin.
 
-Doğrulama tamamlandığında, kapsayıcı ayarlarının bir özeti gösterilir. Kapsayıcı dağıtım isteğinizi göndermek için **Oluştur** ' u seçin.
+Doğrulama tamamlandığında, kapsayıcı ayarlarının bir özeti gösterilir. Kapsayıcı dağıtım isteğinizi göndermek için **Oluştur'u** seçin.
 
 ![Azure portalında yeni bir kapsayıcı örneği için ayarların özeti][aci-portal-05]
 
-Dağıtım başladığında, dağıtımın devam ettiğini belirten bir bildirim görüntülenir. Kapsayıcı grubu dağıtıldığında yeni bir bildirim daha görüntülenir.
+Dağıtım başladığında, dağıtımın devam ettiğini gösteren bir bildirim görüntülenir. Kapsayıcı grubu dağıtıldığında yeni bir bildirim daha görüntülenir.
 
-Myresourcegroup > **myContainer** > **kaynak gruplarına** giderek kapsayıcı grubu için genel **myresourcegroup** bakışı açın. Kapsayıcı örneğinin **Durum**’u ile birlikte **FQDN**’sini (tam etki alanı adı) not edin.
+**Kaynak Grupları** > **myresourcegroup** > **mycontainer'a**yönlendirerek kapsayıcı grubu için genel bakışı açın. Kapsayıcı örneğinin **Durum**’u ile birlikte **FQDN**’sini (tam etki alanı adı) not edin.
 
 ![Azure portalında kapsayıcı grubuna genel bakış][aci-portal-06]
 
-**Çalışıyor***Durumunda* iken tarayıcınızda kapsayıcının FQDN’sine gidin.
+*Çalışıyor***Durumunda** iken tarayıcınızda kapsayıcının FQDN’sine gidin.
 
 ![Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor][aci-portal-07]
 
@@ -74,7 +74,7 @@ Kapsayıcının günlüklerini görüntülemek için **Ayarlar** altında **Kaps
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kapsayıcıyla işiniz bittiğinde, **mycontainer** kapsayıcı örneğine ait *Genel bakış*’ı ve ardından **Sil**’i seçin.
+Kapsayıcıyla işiniz bittiğinde, *mycontainer* kapsayıcı örneğine ait **Genel bakış**’ı ve ardından **Sil**’i seçin.
 
 ![Azure portalında kapsayıcı örneğini silme][aci-portal-09]
 
@@ -84,7 +84,7 @@ Onay iletişim kutusu görüntülendiğinde **Evet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, genel Microsoft görüntüsünden bir Azure Kapsayıcı örneği oluşturdunuz. Kapsayıcı görüntüsünü oluşturup özel bir Azure kapsayıcı kayıt defterinden dağıtmak istiyorsanız Azure Container Instances öğreticisine geçin.
+Bu hızlı başlangıçta, herkese açık bir Microsoft görüntüsünden bir Azure kapsayıcı örneği oluşturdunuz. Kapsayıcı görüntüsünü oluşturup özel bir Azure kapsayıcı kayıt defterinden dağıtmak istiyorsanız Azure Container Instances öğreticisine geçin.
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances öğreticisi](./container-instances-tutorial-prepare-app.md)
