@@ -1,41 +1,41 @@
 ---
-title: Hızlı başlangıç-Azure 'da tam bir Linux VM oluşturmak için Terrayform kullanın
-description: Bu hızlı başlangıçta, Azure 'da tüm Linux sanal makine ortamı oluşturmak ve yönetmek için Terrayform 'u kullanacaksınız
-keywords: Azure DevOps terrayform Linux VM sanal makinesi
+title: Quickstart - Azure'da eksiksiz bir Linux VM oluşturmak için Terraform'u kullanın
+description: Bu hızlı başlangıçta, Azure'da eksiksiz bir Linux sanal makine ortamı oluşturmak ve yönetmek için Terraform'u kullanırsınız
+keywords: azure devops terraform linux vm sanal makine
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.openlocfilehash: 03974d68477855d4ff55b7179312c91ba7d0d055
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.date: 03/15/2020
+ms.openlocfilehash: f262734cc16d97e4d73af371410403a4cbb8815e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943516"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79415470"
 ---
-# <a name="quickstart-create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Hızlı başlangıç: Azure 'da Terrayform ile tamamen Linux sanal makine altyapısı oluşturma
+# <a name="quickstart-create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Quickstart: Terraform ile Azure'da eksiksiz bir Linux sanal makine altyapısı oluşturun
 
-Terrayform, Azure 'da tüm altyapı dağıtımlarını tanımlamanızı ve oluşturmanızı sağlar. Azure kaynaklarını tutarlı, tekrarlanabilir bir şekilde oluşturup yapılandıran, Kullanıcı tarafından okunabilen bir biçimde Terrayform şablonları oluşturursunuz. Bu makalede, tüm Linux ortamının nasıl oluşturulduğu ve Terrayform ile destekleyici kaynakların nasıl oluşturulduğu gösterilir. Ayrıca, [Terrayform 'u yüklemeyi ve yapılandırmayı](terraform-install-configure.md)da öğrenebilirsiniz.
+Terraform, Azure'da eksiksiz altyapı dağıtımları tanımlamanıza ve oluşturmanıza olanak tanır. Terraform şablonlarını, Azure kaynaklarını tutarlı ve tekrarlanabilir bir şekilde oluşturan ve yapılandıran, insan tarafından okunabilir bir biçimde oluşturursunuz. Bu makalede, terraform ile tam bir Linux ortamı ve destekleyici kaynaklar oluşturmak için nasıl gösterir. Ayrıca [Terraform'u nasıl yükleyip yapılandırabileceğinizi](terraform-install-configure.md)de öğrenebilirsiniz.
 
 > [!NOTE]
-> Terkform 'a özgü destek için lütfen Topluluk kanallarından birini kullanarak doğrudan Terkform 'a ulaşın:
+> Terraform'a özel destek için lütfen topluluk kanallarından birini kullanarak Terraform'a doğrudan ulaşın:
 >
->    * Topluluk portalının [Terkform bölümü](https://discuss.hashicorp.com/c/terraform-core) , sorular, kullanım örnekleri ve yararlı desenler içerir.
+>    * Topluluk portalının [Terraform bölümü](https://discuss.hashicorp.com/c/terraform-core) sorular, kullanım örnekleri ve yararlı desenler içerir.
 >
->    * Sağlayıcıyla ilgili sorular için lütfen Topluluk portalının [Terkform sağlayıcıları](https://discuss.hashicorp.com/c/terraform-providers) bölümünü ziyaret edin.
+>    * Sağlayıcıyla ilgili sorularınız için lütfen topluluk portalının [Terraform Sağlayıcıları](https://discuss.hashicorp.com/c/terraform-providers) bölümünü ziyaret edin.
 
 
 ## <a name="create-azure-connection-and-resource-group"></a>Azure bağlantısı ve kaynak grubu oluşturma
 
-Bir Terrayform şablonunun her bir bölümünü inceleyelim. Ayrıca, kopyalayabilir ve yapıştırabileceğiniz [Terrayform şablonunun](#complete-terraform-script) tam sürümünü de görebilirsiniz.
+Terraform şablonunun her bölümüne bakalım. Ayrıca kopyalayıp yapıştırabileceğiniz [Terraform şablonunun](#complete-terraform-script) tam sürümünü de görebilirsiniz.
 
-`provider` bölümü, Teraform 'un bir Azure sağlayıcısı kullanmasını söyler. *Subscription_id*, *client_id*, *client_secret*ve *Tenant_id*değerlerini almak için bkz. [terrayform 'u yüklemek ve yapılandırmak](terraform-install-configure.md). 
+Bölüm, Terraform'a `provider` bir Azure sağlayıcısı kullanmasını söyler. ,, , `subscription_id` `client_id` `client_secret`, ve `tenant_id`, için değerler almak için [Terraform'u Yükleyin ve yapılandırın.](terraform-install-configure.md) 
 
 > [!TIP]
-> Değerler için ortam değişkenleri oluşturursanız veya [Azure Cloud Shell Bash deneyimini](/azure/cloud-shell/overview) kullanıyorsanız, bu bölüme değişken bildirimleri eklemeniz gerekmez.
+> Değerler için ortam değişkenleri oluşturuyorsanız veya [Azure Bulut Ubash deneyimini](/azure/cloud-shell/overview) kullanıyorsanız, değişken bildirimlerini bu bölüme eklemeniz gerekmez.
 
 ```hcl
 provider "azurerm" {
     # The "feature" block is required for AzureRM provider 2.x. 
-    # If you are using version 1.x, the "features" block is not allowed.
+    # If you're using version 1.x, the "features" block is not allowed.
     version = "~>2.0"
     features {}
     
@@ -46,7 +46,7 @@ provider "azurerm" {
 }
 ```
 
-Aşağıdaki bölümde `eastus` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturulur:
+Aşağıdaki `eastus` bölümde, konumda adı `myResourceGroup` geçen bir kaynak grubu oluşturulur:
 
 ```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
@@ -59,10 +59,10 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-Ek bölümlerde, kaynak grubuna *$ {azurerm_resource_group. mytersformgroup. Name}* ile başvurmalısınız.
+Ek bölümlerde, kaynak grubuna `${azurerm_resource_group.myterraformgroup.name}`başvurursunuz.
 
 ## <a name="create-virtual-network"></a>Sanal ağ oluşturma
-Aşağıdaki bölüm, *10.0.0.0/16* adres alanında *myvnet* adlı bir sanal ağ oluşturur:
+Aşağıdaki bölüm `myVnet` `10.0.0.0/16` adres alanında adlı bir sanal ağ oluşturur:
 
 ```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
@@ -77,7 +77,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 }
 ```
 
-Aşağıdaki bölüm, *Myvnet* sanal ağında *mysubnet* adlı bir alt ağ oluşturur:
+Aşağıdaki bölüm `mySubnet` `myVnet` sanal ağda bir alt ağ oluşturur:
 
 ```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
@@ -89,8 +89,8 @@ resource "azurerm_subnet" "myterraformsubnet" {
 ```
 
 
-## <a name="create-public-ip-address"></a>Genel IP adresi oluştur
-Internet üzerindeki kaynaklara erişmek için, VM 'nize bir genel IP adresi oluşturun ve atayın. Aşağıdaki bölüm *Mypublicıp*adlı BIR genel IP adresi oluşturur:
+## <a name="create-public-ip-address"></a>Ortak IP adresi oluşturma
+Internet'teki kaynaklara erişmek için VM'inize genel bir IP adresi oluşturun ve atayın. Aşağıdaki bölüm, genel bir IP `myPublicIP`adresi oluşturur:
 
 ```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
@@ -106,8 +106,8 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 ```
 
 
-## <a name="create-network-security-group"></a>Ağ güvenlik grubu oluştur
-Ağ güvenlik grupları, sanal makinenizin içindeki ve dışı ağ trafiği akışını denetler. Aşağıdaki bölümde, *Mynetworksecuritygroup* adlı bir ağ güvenlik grubu oluşturulur ve TCP bağlantı noktası 22 ' de SSH trafiğine izin veren bir kural tanımlanmaktadır:
+## <a name="create-network-security-group"></a>Ağ Güvenlik Grubu Oluşturma
+Ağ Güvenlik Grupları, VM'nize giriş ve çıkışlı ağ trafiğinin akışını denetler. Aşağıdaki bölüm, tcp bağlantı `myNetworkSecurityGroup` noktası 22'de SSH trafiğine izin verecek bir kural adlandırılmış bir ağ güvenlik grubu oluşturur ve bir kural tanımlar:
 
 ```hcl
 resource "azurerm_network_security_group" "myterraformnsg" {
@@ -134,8 +134,8 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 ```
 
 
-## <a name="create-virtual-network-interface-card"></a>Sanal ağ arabirim kartı oluştur
-Sanal ağ arabirim kartı (NIC), VM 'nizi belirli bir sanal ağ, genel IP adresi ve ağ güvenlik grubuna bağlar. Bir Terrayform şablonunda bulunan aşağıdaki bölüm, oluşturduğunuz sanal ağ kaynaklarına bağlı *MYNIC* adlı BIR sanal NIC oluşturur:
+## <a name="create-virtual-network-interface-card"></a>Sanal ağ arabirim kartı oluşturma
+Sanal ağ arabirim kartı (NIC), VM'nizi belirli bir sanal ağa, genel IP adresine ve ağ güvenlik grubuna bağlar. Terraform şablonundaki aşağıdaki bölüm, oluşturduğunuz `myNIC` sanal ağ kaynaklarına bağlı olarak sanal bir NIC oluşturur:
 
 ```hcl
 resource "azurerm_network_interface" "myterraformnic" {
@@ -164,7 +164,7 @@ resource "azurerm_network_interface_security_group_association" "example" {
 
 
 ## <a name="create-storage-account-for-diagnostics"></a>Tanılama için depolama hesabı oluşturma
-Bir VM için önyükleme tanılamayı depolamak üzere bir depolama hesabı gerekir. Bu önyükleme Tanılaması, sorunları gidermenize ve sanal makinenizin durumunu izlemenize yardımcı olabilir. Oluşturduğunuz depolama hesabı yalnızca önyükleme tanılama verilerini depolamak içindir. Her depolama hesabının benzersiz bir adı olması gerektiği için aşağıdaki bölümde bazı rastgele metinler oluşturulur:
+VM için önyükleme tanılamadepolamak için bir depolama hesabı gerekir. Bu önyükleme tanılama sorunları gidermek ve VM durumunu izlemek yardımcı olabilir. Oluşturduğunuz depolama hesabı yalnızca önyükleme tanılama verilerini depolamak içindir. Her depolama hesabının benzersiz bir adı olması gerektiğinden, aşağıdaki bölüm rastgele bir metin oluşturur:
 
 ```hcl
 resource "random_id" "randomId" {
@@ -177,7 +177,7 @@ resource "random_id" "randomId" {
 }
 ```
 
-Artık bir depolama hesabı oluşturabilirsiniz. Aşağıdaki bölümde, önceki adımda oluşturulan rastgele metne göre ada sahip bir depolama hesabı oluşturulur:
+Artık bir depolama hesabı oluşturabilirsiniz. Aşağıdaki bölüm, adı önceki adımda oluşturulan rasgele metne dayalı bir depolama hesabı oluşturur:
 
 ```hcl
 resource "azurerm_storage_account" "mystorageaccount" {
@@ -196,9 +196,9 @@ resource "azurerm_storage_account" "mystorageaccount" {
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-Son adım, bir sanal makine oluşturmak ve oluşturulan tüm kaynakları kullanmaktır. Aşağıdaki bölüm, *Myvm* adlı bir VM oluşturur ve *MYNIC*adlı sanal NIC 'yi ekler. En son *Ubuntu 16,04-LTS* görüntüsü kullanılır ve parola kimlik doğrulaması devre dışı olarak *azureuser* adlı bir Kullanıcı oluşturulur.
+Son adım bir VM oluşturmak ve oluşturulan tüm kaynakları kullanmaktır. Aşağıdaki bölümde bir VM `myVM` adlı oluşturur ve adlı `myNIC`sanal NIC bağlanır. En `Ubuntu 16.04-LTS` son görüntü kullanılır ve `azureuser` parola kimlik doğrulaması devre dışı bırakılmış olarak adlandırılmış bir kullanıcı oluşturulur.
 
- SSH anahtar verileri *ssh_keys* bölümünde verilmiştir. *Key_data* alanında geçerli BIR genel SSH anahtarı sağlayın.
+ `ssh_keys` Bölümünde SSH anahtar verileri sağlanmaktadır. `key_data` Alanında ortak bir SSH anahtarı sağlayın.
 
 ```hcl
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
@@ -214,7 +214,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
         storage_account_type = "Premium_LRS"
     }
 
-    storage_image_reference {
+    source_image_reference {
         publisher = "Canonical"
         offer     = "UbuntuServer"
         sku       = "16.04.0-LTS"
@@ -240,15 +240,15 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 }
 ```
 
-## <a name="complete-terraform-script"></a>Terrayform betiğini doldurun
+## <a name="complete-terraform-script"></a>Tam Terraform komut dosyası
 
-Bu bölümlerin tümünü bir araya getirmek ve Terrampaform 'u görmek için *terraform_azure. tf* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
+Tüm bu bölümleri bir araya getirmek ve Terraform'u iş başında görmek için, aşağıdaki içeriği adında `terraform_azure.tf` bir dosya oluşturun ve yapıştırın:
 
 ```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     # The "feature" block is required for AzureRM provider 2.x. 
-    # If you are using version 1.x, the "features" block is not allowed.
+    # If you're using version 1.x, the "features" block is not allowed.
     version = "~>2.0"
     features {}
 
@@ -411,20 +411,20 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 ```
 
 
-## <a name="build-and-deploy-the-infrastructure"></a>Altyapıyı derleme ve dağıtma
-Terrayform şablonunuz oluşturulduktan sonra, birinci adım Terrayform 'u başlatmalıdır. Bu adım, Azure 'da şablonunuzu derlemek için Terrampaform 'un tüm önkoşullara sahip olmasını sağlar.
+## <a name="build-and-deploy-the-infrastructure"></a>Altyapıyı oluşturma ve dağıtma
+Terraform şablonunuzun oluşturulmasıyla, ilk adım Terraform'u başlatmaktır. Bu adım, Terraform'un şablonunuzu Azure'da oluşturmak için tüm ön koşullara sahip olmasını sağlar.
 
 ```bash
 terraform init
 ```
 
-Bir sonraki adım, Terrayform 'nun şablonu incelemesinin ve doğrulayacaktır. Bu adım, istenen kaynakları Terrayform tarafından kaydedilen durum bilgileriyle karşılaştırır ve ardından planlı yürütmeyi çıkartır. Kaynaklar Azure *'da oluşturulmaz.*
+Bir sonraki adım Terraform gözden geçirmek ve şablonu doğrulamak için. Bu adım, istenen kaynakları Terraform tarafından kaydedilen durum bilgileriyle karşılaştırır ve ardından planlanan yürütmeyi dışarı çıkarır. Azure kaynakları bu noktada oluşturulmaz.
 
 ```bash
 terraform plan
 ```
 
-Önceki komutu yürütmeden sonra, aşağıdaki ekrana benzer bir şey görmeniz gerekir:
+Önceki komutu çalıştırdıktan sonra aşağıdaki ekrana benzer bir şey görmeniz gerekir:
 
 ```console
 Refreshing Terraform state in-memory prior to plan...
@@ -453,19 +453,19 @@ Note: You didn't specify an "-out" parameter to save this plan, so when
 Plan: 7 to add, 0 to change, 0 to destroy.
 ```
 
-Her şey doğru görünüyorsa ve altyapıyı Azure 'da oluşturmaya hazırsanız, şablonu Terrayform 'da uygulayın:
+Her şey doğru görünüyorsa ve Azure'da altyapı oluşturmaya hazırsanız, şablonu Terraform'da uygulayın:
 
 ```bash
 terraform apply
 ```
 
-Terrampaform tamamlandığında, VM altyapınız hazırlayın. [Az VM Show](/cli/azure/vm)ile sanal MAKINENIZIN genel IP adresini edinin:
+Terraform tamamlandığında, VM altyapınız hazır dır. [Az vm show](/cli/azure/vm)ile VM'nizin genel IP adresini edinin:
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
 ```
 
-Daha sonra sanal makinenize SSH gönderebilirsiniz:
+Daha sonra VM'nize SSH yapabilirsiniz:
 
 ```bash
 ssh azureuser@<publicIps>
@@ -473,4 +473,4 @@ ssh azureuser@<publicIps>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Azure 'da Terrayform kullanma hakkında daha fazla bilgi edinin](/azure/terraform)
+> [Azure'da Terraform'u kullanma hakkında daha fazla bilgi edinin](/azure/terraform)

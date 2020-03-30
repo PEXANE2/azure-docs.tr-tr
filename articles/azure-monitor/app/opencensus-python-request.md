@@ -1,28 +1,28 @@
 ---
-title: OpenCensus Python ile Azure Application Insights gelen Istek Izleme | Microsoft Docs
-description: OpenCensus Python aracılığıyla Python uygulamalarınızın istek çağrılarını izleyin.
+title: OpenCensus Python ile Azure Uygulama Öngörülerinde Gelen İstek İzleme | Microsoft Dokümanlar
+description: OpenCensus Python aracılığıyla Python uygulamalarınız için istek çağrılarını izleyin.
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669956"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python ile gelen istekleri izleme
 
-Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanılarak toplanır. Popüler Web çerçeveleri `django`, `flask` ve `pyramid`en üstünde oluşturulmuş Web uygulamalarınıza gönderilen gelen istek verilerini izleyin. Veriler daha sonra Azure Izleyici altında `requests` telemetri olarak Application Insights gönderilir.
+Gelen istek verileri OpenCensus Python ve çeşitli tümleştirmeleri kullanılarak toplanır. Popüler web çerçevelerinin `django`üzerine inşa edilmiş web uygulamalarınız için gönderilen `flask` `pyramid`gelen istek verilerini izleyin ve . Veriler daha sonra Azure Monitor altında uygulama `requests` öngörüleri için telemetri olarak gönderilir.
 
-İlk olarak, Python uygulamanızı en son [Opencensus Python SDK 'sı](../../azure-monitor/app/opencensus-python.md)ile işaretleyin.
+İlk olarak, en son [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md)ile Python uygulamanızı enstrüman.
 
-## <a name="tracking-django-applications"></a>Docgo uygulamalarını izleme
+## <a name="tracking-django-applications"></a>Django uygulamalarını izleme
 
-1. [Pypı](https://pypi.org/project/opencensus-ext-django/) 'den `opencensus-ext-django` indirip yükleyin ve uygulamanızı `django` ara yazılım ile işaretleyin. `django` uygulamanıza gönderilen gelen istekler izlenir.
+1. [PyPI'den](https://pypi.org/project/opencensus-ext-django/) indirin ve kurun `django` `opencensus-ext-django` ve aracı uygulamanızı ara yazılımla birlikte enstrüman. Başvurunuza `django` gönderilen gelen istekler takip edilecektir.
 
-2. `MIDDLEWARE`altındaki `settings.py` dosyanıza `opencensus.ext.django.middleware.OpencensusMiddleware` ekleyin.
+2. Dosyanıza `settings.py` ' `MIDDLEWARE`ın altında ekle. `opencensus.ext.django.middleware.OpencensusMiddleware`
 
     ```python
     MIDDLEWARE = (
@@ -32,7 +32,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
     )
     ```
 
-3. AzureExporter altındaki `settings.py` `OPENCENSUS`doğru yapılandırıldığından emin olun.
+3. AzureExporter'nın altında `OPENCENSUS`düzgün şekilde `settings.py` yapılandırıldığından emin olun.
 
     ```python
     OPENCENSUS = {
@@ -45,7 +45,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
     }
     ```
 
-4. Ayrıca, izlemek istemediğiniz istekler için `BLACKLIST_PATHS` altına `settings.py` URL 'ler ekleyebilirsiniz.
+4. İzlemek `settings.py` istemediğiniz istekler `BLACKLIST_PATHS` için altına urller de ekleyebilirsiniz.
 
     ```python
     OPENCENSUS = {
@@ -61,7 +61,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
 
 ## <a name="tracking-flask-applications"></a>Flask uygulamalarını izleme
 
-1. [Pypı](https://pypi.org/project/opencensus-ext-flask/) 'den `opencensus-ext-flask` indirip yükleyin ve uygulamanızı `flask` ara yazılım ile işaretleyin. `flask` uygulamanıza gönderilen gelen istekler izlenir.
+1. [PyPI'den](https://pypi.org/project/opencensus-ext-flask/) indirin ve kurun `flask` `opencensus-ext-flask` ve aracı uygulamanızı ara yazılımla birlikte enstrüman. Başvurunuza `flask` gönderilen gelen istekler takip edilecektir.
 
     ```python
     
@@ -86,7 +86,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
     
     ```
 
-2. `flask` ara ortamınızı doğrudan kodda yapılandırabilirsiniz. İzlemek istemediğiniz URL 'lerden gelen istekler için bunları `BLACKLIST_PATHS`ekleyin.
+2. Aracınızı `flask` doğrudan kodda yapılandırabilirsiniz. İzlemek istemediğiniz url'lerden gelen istekler için, `BLACKLIST_PATHS`bunları ekleyin.
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -102,7 +102,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
 
 ## <a name="tracking-pyramid-applications"></a>Piramit uygulamalarını izleme
 
-1. [Pypı](https://pypi.org/project/opencensus-ext-pyramid/) 'den `opencensus-ext-django` indirip yükleyin ve uygulamanızı `pyramid` ara ile işaretleyin. `pyramid` uygulamanıza gönderilen gelen istekler izlenir.
+1. [PyPI'den](https://pypi.org/project/opencensus-ext-pyramid/) indirin ve kurun `pyramid` `opencensus-ext-django` ve uygulamanızı tween ile enstrüman. Başvurunuza `pyramid` gönderilen gelen istekler takip edilecektir.
 
     ```python
     def main(global_config, **settings):
@@ -112,7 +112,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. `pyramid` arasını doğrudan kodda yapılandırabilirsiniz. İzlemek istemediğiniz URL 'lerden gelen istekler için bunları `BLACKLIST_PATHS`ekleyin.
+2. Yeninizi doğrudan `pyramid` kodda yapılandırabilirsiniz. İzlemek istemediğiniz url'lerden gelen istekler için, `BLACKLIST_PATHS`bunları ekleyin.
 
     ```python
     settings = {
@@ -132,7 +132,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Uygulama Eşlemesi](../../azure-monitor/app/app-map.md)
-* [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) sorgusu](../../azure-monitor/log-query/log-query-overview.md)
+* [Kullanılabilir -lik](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Arama](../../azure-monitor/app/diagnostic-search.md)
+* [Günlük (Analytics) sorgusu](../../azure-monitor/log-query/log-query-overview.md)
 * [İşlem tanılama](../../azure-monitor/app/transaction-diagnostics.md)

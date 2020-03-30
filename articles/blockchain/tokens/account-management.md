@@ -1,36 +1,36 @@
 ---
-title: Azure blok zinciri belirteçleri hesap yönetimi
-description: Azure blok zinciri belirteçleri hesap yönetimini kullanarak, blok zinciri eylemlerine erişimi denetlemek için gruplar oluşturabilir ve blok zinciri hesapları bağlayabilirsiniz.
+title: Azure Blockchain Belirteçleri hesap yönetimi
+description: Azure Blockchain Belirteçleri hesap yönetimini kullanarak, blockchain eylemlerine erişimi denetlemek için gruplar oluşturabilir ve blockchain hesaplarını bağlayabilirsiniz.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9931ef59e613501ba6feaedf3ac5d4721f0df752
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74326110"
 ---
-# <a name="azure-blockchain-tokens-account-management"></a>Azure blok zinciri belirteçleri hesap yönetimi
+# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain Belirteçleri hesap yönetimi
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Bir blok zinciri çözümü için, kullanıcılar Azure blok zinciri belirteçleri hizmeti ile oluşturulan belirteçlere farklı düzeylerde erişim gerektirebilir. Çoğu blok zinciri senaryosunda, genel muhasebede bulunan farklı blok zinciri hesapları planlamanız ve dağıtmanız gerekir. Ayrıca katılımcılar arasındaki erişimi de yönetmeniz gerekir. Azure blok zinciri belirteçleri hesap yönetimini kullanarak, blok zinciri eylemlerine erişimi denetlemek için gruplar oluşturabilir ve blok zinciri hesapları bağlayabilirsiniz.
+Blockchain çözümü için kullanıcılar, Azure Blockchain Belirteçleri hizmetiyle oluşturulan belirteçlere farklı erişim düzeyleri gerektirebilir. Çoğu blockchain senaryosunda, genel muhasebede bulunan farklı blockchain hesaplarını planlamanız ve dağıtmanız gerekir. Ayrıca katılımcılar arasında erişimi yönetmeniz gerekir.Azure Blockchain Belirteçleri hesap yönetimini kullanarak, blockchain eylemlerine erişimi denetlemek için gruplar oluşturabilir ve blockchain hesaplarını bağlayabilirsiniz.
 
-## <a name="blockchain-networks"></a>Blok zinciri ağları
+## <a name="blockchain-networks"></a>Blockchain ağları
 
-Azure blok zinciri belirteçleri, bir blok zinciri ağları kümesi genelinde belirteçlerin dağıtımını ve yönetilmesini mümkün bir şekilde sunar. Hizmete tek bir blok zinciri defteri veya çeşitli blok zinciri bağlantısı bağlayabilirsiniz.
+Azure Blockchain Belirteçleri, bir dizi blockchain ağı arasında belirteçlerin dağıtılmasını ve yönetilmesini sağlar. Tek bir blockchain defterini veya birkaç blockchain defterini hizmete bağlayabilirsiniz.
 
 ## <a name="accounts"></a>Hesaplar
 
-Azure blok zinciri belirteçlerine bağlı blok zinciri ağları için hizmet, hesap özel ortak anahtar çiftlerini oluşturup yönetir ve işlem imzalama ve gönderme gerçekleştirir. Azure blok zinciri belirteçleri, hesap için ortak anahtar kimliği olan hesapları eşleştirmek üzere kimlik eşlemesi de sağlar.
+Azure Blockchain Belirteçleri'ne bağlı blockchain ağları için hizmet, hesabı özel-ortak anahtar çiftleri oluşturur ve yönetir ve işlem imzalama ve gönderme gerçekleştirir. Azure Blockchain Belirteçleri, hesapları genel muhasebedeki ortak anahtar kimliğiyle eşleştirmek için kimlik eşlemede de sağlar.
 
 ## <a name="groups"></a>Gruplar
 
-Gruplar, bağlı ağlarda çok sayıda blok zinciri hesabını yönetmenizi sağlar. Dizindeki hangi uygulamaların ve kullanıcıların Azure blok zinciri belirteçleri API 'Leri aracılığıyla hesapları kullanma yeteneğinin olduğunu izleyip denetleyebilirsiniz. Örneğin, farklı iş hatlarını veya farklı rolleri temsil eden bir hesap kümesini gruplandırabilir ve blok zinciri belirteçlerine erişin.
+Gruplar, bağlı ağlar arasında çok sayıda blockchain hesabını yönetmenize olanak tanır. Dizindeki hangi uygulamaların ve kullanıcıların Hesapları Azure Blockchain Belirteçleri API'leri aracılığıyla kullanabilme yeteneğine sahip olduğunu izleyebilir ve denetleyebilirsiniz. Örneğin, farklı iş hatlarını veya farklı rolleri ve blockchain belirteçlerine erişimi temsil eden bir hesap kümesi gruplandırmak olabilir.
 
-Ayrıca, bir grubu Azure Active Directory Kullanıcı veya hizmet sorumlusu ile ilişkilendirebilirsiniz ve bu sorumlunun grup ve ilişkili hesapları için izinleri vardır.  
+Bir grubu bir Azure Etkin Dizin kullanıcısı veya hizmet yöneticisiyle de ilişkilendirebilirsiniz ve bu müdürün grup ve ilişkili hesaplarına izinleri vardır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanılabilir [Azure blok zinciri belirteçleri şablonları](templates.md)hakkında daha fazla bilgi edinin.
+Kullanılabilir Azure [Blockchain Belirteçleri şablonları](templates.md)hakkında daha fazla bilgi edinin.

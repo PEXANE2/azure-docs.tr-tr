@@ -1,29 +1,29 @@
 ---
-title: Azure Cosmos DB FROM yan tümcesi
-description: SQL söz dizimi ve Azure Cosmos DB for FROM yan tümcesinin örneği hakkında bilgi edinin. Bu makalede ayrıca, FROM yan tümcesini kullanarak, kapsam sonuçları için örnekler gösterilmektedir ve alt öğeleri elde edebilirsiniz.
+title: Azure Cosmos DB'deki FROM yan tümcesi
+description: SQL sözdizimi hakkında bilgi edinin ve Azure Cosmos DB için FROM yan tümcesi için örnek olun. Bu makalede, kapsam sonuçlarına örnekler de gösterilmektedir ve FROM yan tümcesini kullanarak alt öğeleri alın.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587694"
 ---
-# <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB FROM yan tümcesi
+# <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB'deki FROM yan tümcesi
 
-Kaynak filtrelenmez veya sorgu daha sonra yansıtılmamışsa FROM (`FROM <from_specification>`) yan tümcesi isteğe bağlıdır. `SELECT * FROM Families` gibi bir sorgu, tüm `Families` kapsayıcısının üzerinde numaralandırılır. Kapsayıcı adını kullanmak yerine kapsayıcı için özel tanımlayıcı kökünü de kullanabilirsiniz.
+KAYNAK filtre`FROM <from_specification>`uygulanmadığı veya sorguda daha sonra yansıtılmadığı sürece FROM ( ) yan tümcesi isteğe bağlıdır. Gibi bir `SELECT * FROM Families` sorgu tüm `Families` kapsayıcı üzerinde sayısallar. Kapsayıcı adını kullanmak yerine kapsayıcı için özel tanımlayıcı ROOT'u da kullanabilirsiniz.
 
 FROM yan tümcesi sorgu başına aşağıdaki kuralları uygular:
 
-* Kapsayıcı `SELECT f.id FROM Families AS f` veya yalnızca `SELECT f.id FROM Families f`gibi diğer ad olabilir. Burada `f` `Families`diğer addır. , Tanımlayıcı [diğer adı](sql-query-aliasing.md) için isteğe bağlı bir anahtar sözcüktür.  
+* Kapsayıcı gibi `SELECT f.id FROM Families AS f` veya basitçe `SELECT f.id FROM Families f`diğer adlar olabilir. Burada `f` diğer adı `Families`. AS tanımlayıcı [diğer adı](sql-query-aliasing.md) için isteğe bağlı bir anahtar kelimedir.  
 
-* Diğer ad eklendikten sonra özgün kaynak adı bağlanamaz. Örneğin, tanımlayıcı `Families` başka bir ad olduğu ve artık çözümlenemediği için `SELECT Families.id FROM Families f` sözdizimsel olarak geçersizdir.  
+* Takma ad landıktan sonra, özgün kaynak adı bağlanamaz. Örneğin, `SELECT Families.id FROM Families f` tanımlayıcı diğer adı olduğundan ve artık çözülemediğinden sözdizimi geçersizdir. `Families`  
 
-* Kesin şema bağlılığı yokluğunda belirsiz bağlamalardan kaçınmak için, tüm başvurulan özellikler tam olarak nitelenmelidir. Örneğin, özellik `id` bağlanmadığından `SELECT id FROM Families f` sözdizimsel olarak geçersizdir.
+* Kesin şema yapışması yokluğunda belirsiz ciltlemeleri önlemek için, başvurulan tüm özelliklerin tam olarak nitelikli olması gerekir. Örneğin, `SELECT id FROM Families f` özellik `id` bağlı olmadığından sözdizimsel olarak geçersizdir.
 
 ## <a name="syntax"></a>Sözdizimi
   
@@ -49,19 +49,19 @@ FROM <from_specification>
   
 - `<from_source>`  
   
-  Bir veri kaynağı olan veya olmayan bir diğer ad belirtir. Diğer ad belirtilmemişse, aşağıdaki kurallar kullanılarak `<container_expression>` çıkarslacaktır:  
+  Takma adlı veya takma adsız bir veri kaynağını belirtir. Diğer ad belirtilmemişse, aşağıdaki `<container_expression>` kurallardan çıkarılır:  
   
-  -  İfade bir container_name ise container_name diğer ad olarak kullanılır.  
+  -  İfade container_name ise, container_name takma ad olarak kullanılır.  
   
-  -  İfade `<container_expression>`, property_name daha sonra property_name bir diğer ad olarak kullanılır. İfade bir container_name ise container_name diğer ad olarak kullanılır.  
+  -  İfade `<container_expression>`, property_name ise, property_name takma ad olarak kullanılacaktır. İfade container_name ise, container_name takma ad olarak kullanılır.  
   
-- `input_alias` olarak  
+- Olarak`input_alias`  
   
-  `input_alias`, temel alınan kapsayıcı ifadesinin döndürdüğü bir değer kümesi olduğunu belirtir.  
+  Alttaki kapsayıcı `input_alias` ifadesi tarafından döndürülen bir değer kümesi olduğunu belirtir.  
  
-- `input_alias`  
+- `input_alias`Inç  
   
-  `input_alias`, temel alınan kapsayıcı ifadesi tarafından döndürülen her bir dizinin tüm dizi öğelerinde yineleme yaparak elde edilen değer kümesini temsil etmelidir. Bir dizi değil temel alınan kapsayıcı ifadesi tarafından döndürülen herhangi bir değer yoksayılır.  
+  Temel kapsayıcı ifadesi `input_alias` tarafından döndürülen her dizinin tüm dizi öğeleri üzerinde yineleyerek elde edilen değerler kümesini temsil etmesi gerektiğini belirtir. Bir dizi olmayan altbilgi ifadesi tarafından döndürülen herhangi bir değer yoksayılır.  
   
 - `<container_expression>`  
   
@@ -69,52 +69,52 @@ FROM <from_specification>
   
 - `ROOT`  
   
-  Bu belge, varsayılan, bağlı durumda kapsayıcı alınması gerektiğini belirtir.  
+  Bu belgenin varsayılan olarak bağlı olan kapsayıcıdan alınması gerektiğini belirtir.  
   
 - `container_name`  
   
-  Bu belgede sağlanan kapsayıcıdan alınacağını belirtir. Kapsayıcının adı şu anda bağlı kapsayıcısının adı eşleşmelidir.  
+  Bu belgenin sağlanan kapsayıcıdan alınması gerektiğini belirtir. Kapsayıcının adı, şu anda bağlı olan kapsayıcının adıyla eşleşmelidir.  
   
 - `input_alias`  
   
-  Bu belgede sağlanan diğer ad tarafından tanımlanan diğer kaynaktan alınması gerektiğini belirtir.  
+  Bu belgenin sağlanan diğer ad tarafından tanımlanan diğer kaynaktan alınması gerektiğini belirtir.  
   
 - `<container_expression> '.' property_name`  
   
-  `property_name` özelliğine erişerek belgenin alınması gerektiğini belirtir.  
+  Bu belgenin `property_name` özelliğe erişilerek alınması gerektiğini belirtir.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Belirtilen kapsayıcı ifadesi tarafından alınan tüm belgeler için `property_name` özelliğine veya array_index dizi öğesine erişerek belgenin alınması gerektiğini belirtir.  
+  Belirtilen kapsayıcı ifadesi tarafından alınan tüm belgeler `property_name` için özellik veya array_index dizi öğesierişerek bu belgenin alınması gerektiğini belirtir.  
   
 ## <a name="remarks"></a>Açıklamalar
   
-`<from_source>(`s) için belirtilen veya çıkarılan tüm diğer adlar benzersiz olmalıdır. `<container_expression>.`property_name sözdizimi `<container_expression>' ['"property_name"']'`ile aynıdır. Ancak, bir özellik adı bir tanımlayıcı olmayan karakter içeriyorsa, ikinci sözdizimi kullanılabilir.  
+Sağlanan veya `<from_source>(`s) çıkarılan tüm diğer adlar benzersiz olmalıdır. Sözdizimi `<container_expression>.`property_name ile `<container_expression>' ['"property_name"']'`aynıdır. Ancak, bir özellik adı tanımlayıcı olmayan bir karakter içeriyorsa, ikinci sözdizimi kullanılabilir.  
   
-### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Dizi öğeleri yanı sıra, tanımsız değerler eksik özellikler eksik işleme
+### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Eksik özellikleri, eksik dizi öğelerini ve tanımlanmamış değerleri işleme
   
-Bir kapsayıcı ifadesi özellikleri veya dizi öğeleri ve değeri yok erişirse, bu değer yoksayılır ve daha fazla işlenmedi.  
+Bir kapsayıcı ifadesi özelliklere veya dizi öğelerine erişiyorsa ve bu değer yoksa, bu değer yoksayılacak ve daha fazla işlenmez.  
   
-### <a name="container-expression-context-scoping"></a>Kapsayıcı bağlamı ifadesi kapsamı  
+### <a name="container-expression-context-scoping"></a>Kapsayıcı ifade bağlamı kapsam  
   
-Bir kapsayıcı ifade kapsayıcı kapsamlı veya belge kapsamlı olabilir:  
+Kapsayıcı ifadesi kapsayıcı kapsamında veya belge kapsamı içinde olabilir:  
   
--   Kapsayıcı ifadesinin temeldeki kaynağı kök veya `container_name`ise, bir ifade kapsayıcı kapsamıdır. Böyle bir ifade, bir kapsayıcıdan doğrudan alınan belge kümesini temsil eder ve diğer kapsayıcı ifadeler işleme bağımlı değildir.  
+-   Kapsayıcı ifadesinin altında yatan kaynak ROOT veya `container_name`. Böyle bir ifade, doğrudan kapsayıcıdan alınan bir belge kümesini temsil eder ve diğer kapsayıcı ifadelerinin işlenmesine bağlı değildir.  
   
--   Bir ifade, kapsayıcı ifadesinin temel alınan kaynağı sorguda daha önce tanıtılan `input_alias`, belge kapsamıdır. Böyle bir ifade, diğer adlı kapsayıcı ile ilişkili bir kümeye ait her bir belgenin kapsamında kapsayıcı ifadesinin değerlendirilmesi elde belgeleri kümesini temsil eder.  Sonuç kümesi, her bir temel alınan belgeler için kapsayıcı ifadesinin değerlendirilmesi elde edilen kümeleri birleşimi olacaktır. 
+-   Kapsayıcı ifadesinin altında yatan kaynak sorguda daha önce `input_alias` tanıtılırsa, bir ifade belge kapsamındadır. Böyle bir ifade, diğer adla eklenen kapsayıcıyla ilişkili kümeye ait her belgenin kapsamındaki kapsayıcı ifadesini değerlendirerek elde edilen bir belge kümesini temsil eder.  Elde edilen küme, temel kümedeki her belge için kapsayıcı ifadesi değerlendirilerek elde edilen kümeler birleşimi olacaktır. 
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="get-subitems-by-using-the-from-clause"></a>FROM yan tümcesini kullanarak alt öğeleri Al
+### <a name="get-subitems-by-using-the-from-clause"></a>FROM yan tümcesini kullanarak alt öğeleri alın
 
-FROM yan tümcesi, kaynağı daha küçük bir alt kümeye düşürebilir. Her bir öğedeki yalnızca bir alt ağacı numaralandırmak için, aşağıdaki örnekte gösterildiği gibi alt kök kaynak olabilir:
+FROM yan tümcesi kaynağı daha küçük bir alt kümeye indirebilir. Her öğede yalnızca bir alt ağacı sıralamak için, alt kök aşağıdaki örnekte gösterildiği gibi kaynak olabilir:
 
 ```sql
     SELECT *
     FROM Families.children
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -147,14 +147,14 @@ Sonuçlar şunlardır:
     ]
 ```
 
-Yukarıdaki sorgu kaynak olarak bir dizi kullandı, ancak kaynak olarak bir nesnesi de kullanabilirsiniz. Sorgu, sonuca eklenmek üzere kaynakta geçerli, tanımlı herhangi bir JSON değerini dikkate alır. Aşağıdaki örnek, bir `address.state` değeri olmayan `Families` dışarıda bırakır.
+Önceki sorgu kaynak olarak bir dizi kullanılır, ancak kaynak olarak bir nesne de kullanabilirsiniz. Sorgu, sonuca eklenmesi için kaynaktaki geçerli, tanımlanmış JSON değerini dikkate alır. Aşağıdaki örnek, `Families` değeri olmayanları `address.state` dışlar.
 
 ```sql
     SELECT *
     FROM Families.address.state
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [

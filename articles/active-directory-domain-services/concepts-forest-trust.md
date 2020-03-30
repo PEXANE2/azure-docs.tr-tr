@@ -1,6 +1,6 @@
 ---
-title: Güvenler Azure AD Domain Services için nasıl çalışır | Microsoft Docs
-description: Orman güveninin nasıl çalıştığı hakkında daha fazla bilgi edinin Azure AD Domain Services
+title: Azure AD Etki Alanı Hizmetleri için güvenler nasıl çalışır? Microsoft Dokümanlar
+description: Azure AD Etki Alanı Hizmetleri ile orman güveninin nasıl çalıştığı hakkında daha fazla bilgi edinin
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,272 +11,272 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 8b79e0fb24c15d2e9f16640e90d62f7df5c21f32
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233707"
 ---
-# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Güven ilişkilerinin Azure Active Directory Domain Services içindeki kaynak ormanları için nasıl çalıştığı
+# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Etkin Dizin Etki Alanı Hizmetleri'ndeki kaynak ormanları için güven ilişkileri nasıl çalışır?
 
-Active Directory Domain Services (AD DS), etki alanı ve orman güveni ilişkileri aracılığıyla birden çok etki alanı veya orman arasında güvenlik sağlar. Güvenlerde kimlik doğrulamanın gerçekleşebilmesi için önce Windows 'un, bir Kullanıcı, bilgisayar veya hizmet tarafından istenen etki alanının, istekte bulunan hesabın etki alanı ile bir güven ilişkisine sahip olup olmadığını denetlemesi gerekir.
+Etkin Dizin Etki Alanı Hizmetleri (AD DS), etki alanı ve orman güven ilişkileri aracılığıyla birden çok etki alanı veya orman genelinde güvenlik sağlar. Güvenler arasında kimlik doğrulama sıcanmadan önce, Windows'un öncelikle bir kullanıcı, bilgisayar veya hizmet tarafından talep edilen etki alanının istenen hesabın etki alanıyla güven ilişkisi olup olmadığını denetlemesi gerekir.
 
-Bu güven ilişkisini denetlemek için Windows güvenlik sistemi, isteği alan sunucunun etki alanı denetleyicisi (DC) ve istekte bulunan hesabın etki alanındaki bir DC arasında bir güven yolu hesaplar.
+Bu güven ilişkisini denetlemek için, Windows güvenlik sistemi isteği alan sunucu için etki alanı denetleyicisi (DC) ile isteyen hesabın etki alanında bir DC arasında bir güven yolu hesaplar.
 
-AD DS tarafından sunulan erişim denetim mekanizmaları ve Windows dağıtılmış güvenlik modeli, etki alanı ve orman güvenleri 'nin çalışması için bir ortam sağlar. Bu güvenin düzgün çalışması için, her kaynak veya bilgisayarın, bulunduğu etki alanındaki bir DC 'ye yönelik doğrudan güven yoluna sahip olması gerekir.
+AD DS ve Windows dağıtılmış güvenlik modeli tarafından sağlanan erişim denetim mekanizmaları etki alanı ve orman güvenlerinin çalışması için bir ortam sağlar. Bu güvenlerin düzgün çalışabilmesi için, her kaynağın veya bilgisayarın bulunduğu etki alanında dc'ye doğrudan bir güven yolu olması gerekir.
 
-Güven yolu, güvenilen etki alanı yetkilisine kimliği doğrulanmış bir uzak yordam çağrısı (RPC) bağlantısı kullanılarak net oturum açma hizmeti tarafından uygulanır. Güvenli kanal, etki alanları arası güven ilişkileri aracılığıyla diğer AD DS etki alanlarına da genişletilir. Bu güvenli kanal, kullanıcılar ve gruplar için güvenlik tanımlayıcıları (SID 'Ler) dahil olmak üzere güvenlik bilgilerini almak ve doğrulamak için kullanılır.
+Güven yolu, güvenilen etki alanı yetkilisine doğrulanmış bir uzaktan yordam çağrısı (RPC) bağlantısı kullanılarak Net Logon hizmeti tarafından uygulanır. Güvenli bir kanal, etki alanları arası güven ilişkileri aracılığıyla diğer AD DS etki alanlarını da genişletir. Bu güvenli kanal, kullanıcılar ve gruplar için güvenlik tanımlayıcıları (SIT'ler) dahil olmak üzere güvenlik bilgilerini elde etmek ve doğrulamak için kullanılır.
 
 ## <a name="trust-relationship-flows"></a>Güven ilişkisi akışları
 
-Güven üzerinden güvenli iletişimin akışı, bir güvenin esneklik düzeyini belirler. Güven oluşturma veya yapılandırma, iletişimin ne kadar orman içinde veya ormanlar arasında genişletiğini belirler.
+Güvenler üzerinden güvenli iletişim akışı bir güvenin esnekliğini belirler. Bir güveni nasıl oluşturduğunuz veya yapılandırdığınız, iletişimin ormanlar içinde veya arasında ne kadar genişler olduğunu belirler.
 
-Güven üzerinden iletişimin akışı güvenin yönlerine göre belirlenir. Güvenler tek yönlü veya iki yönlü olabilir ve geçişli ya da geçişli olabilir.
+Güvenler üzerinden iletişim akışı güven in yönü tarafından belirlenir. Güvenler tek yönlü veya çift yönlü olabilir ve geçişli veya geçişsiz olabilir.
 
-Aşağıdaki diyagramda, *ağaç 1* ve *ağaç 2* ' deki tüm etki alanlarının varsayılan olarak geçişli güven ilişkilerine sahip olduğu gösterilmektedir. Sonuç olarak, *ağaç 1* ' deki kullanıcılar, *ağaç 2* ' deki etki alanlarındaki kaynaklara erişebilir ve kaynak üzerinde uygun izinler atandığında ağaç *1* ' deki kullanıcılar, *ağaç 2*' deki kaynaklara erişebilir.
+Aşağıdaki diyagram, *Ağaç 1* ve *Ağaç 2'deki* tüm etki alanlarının varsayılan olarak geçişli güven ilişkileri olduğunu gösterir. Sonuç olarak, *Ağaç 1'deki* kullanıcılar Ağaç *2'deki* etki alanlarındaki kaynaklara erişebilir ve *Ağaç 1'deki* kullanıcılar kaynakta uygun izinler atandığında *Ağaç 2'deki*kaynaklara erişebilir.
 
 ![İki orman arasındaki güven ilişkilerinin diyagramı](./media/concepts-forest-trust/trust-relationships.png)
 
 ### <a name="one-way-and-two-way-trusts"></a>Tek yönlü ve çift yönlü güvenler
 
-Güven ilişkileri, kaynaklara erişimin tek yönlü veya iki yönlü olmasını sağlar.
+Güven ilişkileri, kaynaklara erişimin tek yönlü veya çift yönlü olmasını sağlar.
 
-Tek yönlü güven, iki etki alanı arasında oluşturulan tek yönlü kimlik doğrulama yoludur. Etki alanı *a* ve *etki alanı b*arasındaki tek yönlü güvende, *a etki* alanındaki kullanıcılar *etki alanı b*'deki kaynaklara erişebilir. Ancak, *etki alanı B* 'Deki kullanıcılar *A etki alanındaki*kaynaklara erişemez.
+Tek yönlü güven, iki etki alanı arasında oluşturulan tek yönlü bir kimlik doğrulama yoludur. *Etki Alanı A* ve Etki *Alanı B*arasında tek yönlü güven, Etki Alanı *A* kullanıcıları Etki *Alanı B'deki*kaynaklara erişebilir. Ancak, *Etki Alanı B'deki* kullanıcılar Etki *Alanı A'daki*kaynaklara erişemez.
 
-Bazı tek yönlü güvenler, oluşturulmakta olan güvenin türüne bağlı olarak geçişli ya da geçişli olabilir.
+Bazı tek yönlü güvenler, oluşturulan güven türüne bağlı olarak geçişsiz veya geçişli olabilir.
 
-İki yönlü güvende *etki alanı bir* güven *etki alanı b* ve etki alanı *b* etki *alanı a*'ya güvenir. Bu yapılandırma, her iki yönde de iki etki alanı arasında kimlik doğrulama isteklerinin geçirilebileceği anlamına gelir. Bazı iki yönlü ilişkiler, oluşturulmakta olan güvenin türüne bağlı olarak geçişli veya geçişli olabilir.
+İki yönlü bir güvende, *Etki Alanı A* Etki Alanı *B'ye* güvenir ve Etki *Alanı B* Etki *Alanı A'ya*güvenir. Bu yapılandırma, kimlik doğrulama isteklerinin iki etki alanı arasında her iki yönde de geçirilebileceği anlamına gelir. Bazı iki yönlü ilişkiler, oluşturulan güven türüne bağlı olarak geçişsiz veya geçişli olabilir.
 
-Bir AD DS ormanındaki tüm etki alanı güvenleri, iki yönlü, geçişli güvenlerdir. Yeni bir alt etki alanı oluşturulduğunda, yeni alt etki alanı ve üst etki alanı arasında iki yönlü, geçişli bir güven otomatik olarak oluşturulur.
+AD DS ormanındaki tüm etki alanı güvenleri çift yönlü, geçişli güvenlerdir. Yeni bir alt etki alanı oluşturulduğunda, yeni alt etki alanı ile üst etki alanı arasında otomatik olarak iki yönlü, geçişli bir güven oluşturulur.
 
-### <a name="transitive-and-non-transitive-trusts"></a>Geçişli ve geçişli olmayan güvenler
+### <a name="transitive-and-non-transitive-trusts"></a>Geçişli ve geçişsiz güvenler
 
-Geçişlilik, bir güvenin oluşturulduğu iki etki alanının dışında uzatılıp uzatılamayabileceğini belirler.
+Geçiş, bir güvenin oluşturulduğu iki etki alanının dışına genişletilip genişletilemeyeceğini belirler.
 
-* Karşılıklı güven, diğer etki alanlarıyla güven ilişkilerini genişletmek için kullanılabilir.
-* Geçişli olmayan bir güven, diğer etki alanlarıyla güven ilişkilerini reddetmek için kullanılabilir.
+* Geçişli güven, diğer etki alanlarıyla güven ilişkilerini genişletmek için kullanılabilir.
+* Geçişsiz bir güven, diğer etki alanlarıyla olan güven ilişkilerini reddetmek için kullanılabilir.
 
-Bir ormanda yeni bir etki alanı oluşturduğunuzda, yeni etki alanı ve onun üst etki alanı arasında iki yönlü, geçişli bir güven ilişkisi otomatik olarak oluşturulur. Yeni etki alanına alt etki alanları eklenirse, güven yolu, yeni etki alanı ve onun üst etki alanı arasında oluşturulan ilk güven yolunu genişleterek etki alanı hiyerarşisinde yukarı doğru akar. Geçişli güven ilişkileri, etki alanı ağacındaki tüm etki alanları arasında geçişli güvenler oluşturarak, bir etki alanı ağacı aracılığıyla yukarı doğru akar.
+Bir ormanda yeni bir etki alanı oluşturduğunuzda, yeni etki alanı ve üst etki alanı arasında otomatik olarak iki yönlü, geçişli bir güven ilişkisi oluşturulur. Alt etki alanları yeni etki alanına eklenirse, güven yolu etki alanı hiyerarşisi boyunca yukarı doğru akar ve yeni etki alanı ile ana etki alanı arasında oluşturulan ilk güven yolunu genişletir. Geçişli güven ilişkileri oluşturulduğu sırada bir etki alanı ağacından yukarı doğru akar ve etki alanı ağacındaki tüm etki alanları arasında geçişli güvenler oluşturur.
 
-Kimlik doğrulama istekleri bu güven yollarını izler, bu nedenle ormandaki herhangi bir etki alanının hesaplarının kimliği, ormandaki başka bir etki alanı tarafından doğrulanabilir. Tek bir oturum açma işlemiyle, uygun izinlere sahip hesaplar ormandaki herhangi bir etki alanındaki kaynaklara erişebilir.
+Kimlik doğrulama istekleri bu güven yollarını izler, böylece ormandaki herhangi bir etki alanından gelen hesapların ormandaki herhangi bir etki alanı tarafından kimlik doğrulaması yapılabilir. Tek bir oturum açma işlemiyle, uygun izinlere sahip hesaplar ormandaki herhangi bir etki alanında kaynaklara erişebilir.
 
 ## <a name="forest-trusts"></a>Ormanlar güvenleri
 
-Orman güvenleri, bölünmüş bir AD DS altyapıları yönetmenize ve birden çok orman genelinde kaynaklara ve diğer nesnelere erişimi desteklemeye yardımcı olur. Orman güvenleri, hizmet sağlayıcıları, birleşmeler veya alımlar, işbirliğine dayalı iş extranet 'ler ve yönetim bağımsız çalışma sınırı için bir çözüm arayan şirketler için faydalıdır.
+Orman güvenleri, bölümlenmiş bir AD DS altyapılarını yönetmenize ve birden çok ormandaki kaynaklara ve diğer nesnelere erişimi desteklemenize yardımcı olur. Orman güvenleri, hizmet sağlayıcılar, birleşme veya satın almalar geçiren şirketler, işbirlikçi iş extranet'leri ve idari özerklik için çözüm arayan şirketler için yararlıdır.
 
-Orman güvenlerini kullanarak, tek yönlü veya iki yönlü geçişli güven ilişkisi oluşturmak için iki farklı ormanı bağlayabilirsiniz. Orman güveni, yöneticilerin ormanlar genelinde sorunsuz bir kimlik doğrulama ve yetkilendirme deneyimi sağlaması için tek bir güven ilişkisine sahip iki AD DS ormanını bağlanmasına olanak sağlar.
+Orman güvenlerini kullanarak, iki farklı ormanı tek yönlü veya çift yönlü geçişli güven ilişkisi oluşturmak için bağlayabilirsiniz. Orman güveni, yöneticilerin iki AD DS ormanını tek bir güven ilişkisiyle birbirine bağlayarak ormanlar arasında sorunsuz bir kimlik doğrulama ve yetkilendirme deneyimi sağlamasına olanak tanır.
 
-Orman güveni, yalnızca bir ormandaki bir orman kök etki alanı ve başka bir ormandaki bir orman kök etki alanı arasında oluşturulabilir. Orman güvenleri yalnızca iki orman arasında oluşturulabilir ve örtülü olarak üçüncü bir ormana genişletilemez. Bu davranış, orman *1* ile *orman 2*arasında bir orman güveni oluşturulduysa ve *orman 2* ile *orman 3*arasında başka bir orman güveni oluşturulduysa, *Orman 1* ' in *orman 3*ile kapalı bir güveni yoktur anlamına gelir.
+Bir orman güveni yalnızca bir ormandaki orman kökü etki alanı ile başka bir ormandaki orman kökü etki alanı arasında oluşturulabilir. Orman güvenleri yalnızca iki orman arasında oluşturulabilir ve örtülü olarak üçüncü bir ormana genişletilemez. Bu davranış, *Orman 1* ve *Orman 2*arasında bir orman güveni oluşturulursa ve Orman *2* ile *Orman 3*arasında başka bir orman güveni oluşturulursa, Orman *1'in Orman 3*ile örtülü bir güveni olmadığı anlamına gelir. *Forest 1*
 
-Aşağıdaki diyagramda tek bir kuruluşta üç AD DS ormanı arasında iki ayrı orman güven ilişkisi gösterilmektedir.
+Aşağıdaki diyagram, tek bir kuruluştaki üç AD DS ormanı arasındaki iki ayrı orman güven ilişkisi gösterir.
 
-![Tek bir kuruluş içindeki orman güvenleri ilişkilerinin diyagramı](./media/concepts-forest-trust/forest-trusts.png)
+![Orman diyagramı, tek bir kuruluş içindeki ilişkilere güvenir](./media/concepts-forest-trust/forest-trusts.png)
 
 Bu örnek yapılandırma aşağıdaki erişimi sağlar:
 
-* *Orman 2* ' deki kullanıcılar, her *Orman 1* veya *orman 3* ' teki herhangi bir etki alanındaki kaynaklara erişebilir
-* *Orman 3* ' teki kullanıcılar, *orman 2* ' deki herhangi bir etki alanındaki kaynaklara erişebilir
-* *Orman 1* ' deki kullanıcılar, *orman 2* ' deki herhangi bir etki alanındaki kaynaklara erişebilir
+* Orman *2'deki* *kullanıcılar, Orman 1* veya *Orman 3'teki* herhangi bir etki alanındaki kaynaklara erişebilir
+* Orman *3'teki* *kullanıcılar, Orman 2'deki* herhangi bir etki alanındakaynaklara erişebilir
+* Orman *1'deki* *kullanıcılar, Orman 2'deki* herhangi bir etki alanındakaynaklara erişebilir
 
-Bu yapılandırma, *Orman 1* ' deki kullanıcıların, *orman 3* ' teki kaynaklara erişmesine izin vermez veya tam tersi olur. Hem *Orman 1* hem de *orman 3* ' teki kullanıcıların kaynakları paylaşmasına izin vermek için iki orman arasında iki yönlü geçişli güven oluşturulmalıdır.
+Bu yapılandırma, *Orman 1'deki* kullanıcıların *Orman 3'teki* kaynaklara erişmesine veya bunun tersi ne kadar önemli değildir. *Hem Orman 1* hem de Orman *3'teki* kullanıcıların kaynakları paylaşmasına izin vermek için, iki orman arasında iki yönlü geçişli güven oluşturulması gerekir.
 
-İki orman arasında tek yönlü bir orman güveni oluşturulursa, güvenilen ormanın üyeleri güvenen ormanda bulunan kaynakları kullanabilir. Ancak, güven yalnızca bir yönde çalışır.
+İki orman arasında tek yönlü bir orman güveni oluşturulursa, güvenilen ormanın üyeleri güven ormanında bulunan kaynakları kullanabilir. Ancak, güven yalnızca bir yönde çalışır.
 
-Örneğin, *Orman 1* (güvenilen orman) ve *orman 2* (güvenen orman) arasında tek yönlü bir orman güveni oluşturulduğunda:
+Örneğin, tek yönlü bir orman güveni *Orman 1* (güvenilen orman) ve Orman *2* (güvenilen orman) arasında oluşturulur:
 
-* *Orman 1* üyeleri, *orman 2*' de bulunan kaynaklara erişebilir.
-* *Orman 2* üyeleri aynı güveni kullanarak *Orman 1* ' de bulunan kaynaklara erişemez.
+* Orman *1* üyeleri *Orman 2'de*bulunan kaynaklara erişebilir.
+* Forest *2* üyeleri, aynı güveni kullanarak *Orman 1'de* bulunan kaynaklara erişemez.
 
 > [!IMPORTANT]
-> Azure AD Domain Services kaynak ormanı yalnızca şirket içi Active Directory tek yönlü bir orman güvenini destekler.
+> Azure AD Etki Alanı Hizmetleri kaynak ormanı, şirket içi Active Directory'ye yalnızca tek yönlü orman güvenini destekler.
 
-### <a name="forest-trust-requirements"></a>Orman güveni gereksinimleri
+### <a name="forest-trust-requirements"></a>Orman güven gereksinimleri
 
-Bir orman güveni oluşturabilmeniz için önce doğru etki alanı adı sistemi (DNS) altyapısının bulunduğunu doğrulamanız gerekir. Orman güvenleri yalnızca aşağıdaki DNS yapılandırmalarından biri kullanılabilir olduğunda oluşturulabilir:
+Bir orman güveni oluşturmadan önce, doğru Etki Alanı Adı Sistemi (DNS) altyapısına sahip olduğunuzu doğrulamanız gerekir. Orman güvenleri yalnızca aşağıdaki DNS yapılandırmalarından biri kullanılabilir olduğunda oluşturulabilir:
 
-* Tek bir kök DNS sunucusu, her iki orman DNS ad alanı için de kök DNS sunucusudur. kök bölge, DNS ad alanlarının her biri için temsilciler içerir ve tüm DNS sunucularının kök ipuçları kök DNS sunucusunu içerir.
-* Paylaşılan bir kök DNS sunucusu olmadığı ve her orman DNS ad alanı için kök DNS sunucuları, diğer ad alanındaki adlara yönelik sorguları yönlendirmek üzere her DNS ad alanı için DNS koşullu ileticileri kullanır.
+* Tek kök DNS sunucusu her iki orman DNS ad alanları için kök DNS sunucusudur - kök bölge DNS ad alanlarının her biri için delegasyonlar içerir ve tüm DNS sunucularının kök ipuçları kök DNS sunucusuiçerir.
+* Paylaşılan kök DNS sunucusunun olmadığı ve her orman DNS ad alanının kök DNS sunucularının bulunduğu yerlerde, diğer ad alanındaki adların sorgularını yönlendirmek için her DNS ad alanı için DNS koşullu iletmeler kullanılır.
 
     > [!IMPORTANT]
-    > Azure AD Domain Services kaynak ormanı bu DNS yapılandırmasını kullanmalıdır. Kaynak ormanı DNS ad alanı dışında bir DNS ad alanı barındırması Azure AD Domain Services bir özellik değildir. Koşullu ileticiler doğru yapılandırmadır.
+    > Azure AD Etki Alanı Hizmetleri kaynak ormanı bu DNS yapılandırması kullanmalıdır. Kaynak ormanı DNS ad alanı dışında bir DNS ad alanı barındırma, Azure AD Etki Alanı Hizmetlerinin bir özelliği değildir. Koşullu iletmeler uygun yapılandırmadır.
 
-* Paylaşılan bir kök DNS sunucusu olmadığı ve her orman DNS ad alanı için kök DNS sunucularının DNS ikincil bölgeleri, diğer ad alanındaki adlara yönelik sorguları yönlendirmek üzere her bir DNS ad alanında yapılandırılır.
+* Paylaşılan kök DNS sunucusunun olmadığı ve her orman DNS ad alanının kök DNS sunucularının kullanıldığı yerlerde DNS ikincil bölgeleri, diğer ad alanındaki adların sorgularını yönlendirmek için her DNS ad alanında yapılandırılır.
 
-Orman güveni oluşturmak için, Active Directory etki alanı yöneticileri grubunun (orman kök etki alanında) veya Enterprise Admins grubunun bir üyesi olmanız gerekir. Her güvene, her iki ormandaki yöneticilerin bilmeleri gereken bir parola atanır. Her iki ormanda da Enterprise Admins üyeleri her iki ormanda da güvenleri oluşturabilir ve bu senaryoda, her iki orman için de şifreli olarak rastgele bir parola oluşturulur ve yazılır.
+Orman güveni oluşturmak için Etki Alanı Yöneticileri grubunun (orman kökü etki alanında) veya Active Directory'deki Kurumsal Yöneticiler grubunun bir üyesi olmalısınız. Her güvene, her iki ormandaki yöneticilerin bilmesi gereken bir parola atanır. Her iki ormandaki Kurumsal Yöneticilerin üyeleri aynı anda her iki ormanda da güven oluşturabilir ve bu senaryoda, şifreleme olarak rasgele olan bir parola otomatik olarak oluşturulur ve her iki orman için de yazılır.
 
-Azure AD Domain Services giden orman güveni Azure portal oluşturulur. Güveni, yönetilen etki alanının kendisiyle el ile oluşturmazsınız. Gelen orman güveninin, daha önce şirket içi Active Directory belirtilen ayrıcalıklara sahip bir kullanıcı tarafından yapılandırılması gerekir.
+Azure AD Etki Alanı Hizmetleri için giden orman güveni Azure portalında oluşturulur. Yönetilen etki alanının kendisiyle güveni el ile oluşturamazsınız. Gelen orman güveni, şirket içi Active Directory'de daha önce belirtilen ayrıcalıklara sahip bir kullanıcı tarafından yapılandırılmalıdır.
 
-## <a name="trust-processes-and-interactions"></a>Güvenli süreçler ve etkileşimler
+## <a name="trust-processes-and-interactions"></a>Güven süreçleri ve etkileşimleri
 
-Birçok etki alanı ve ormanlar arası işlem, çeşitli görevleri tamamlamaya yönelik etki alanı veya orman güvenlerini temel alır. Bu bölümde, güvenler arasında kaynaklara erişildiği ve kimlik doğrulama başvurularına değerlendirilen süreçler ve etkileşimler açıklanmaktadır.
+Birçok etki alanı ve ormanlar arası işlemler, çeşitli görevleri tamamlamak için etki alanı veya orman güvenlerine bağlıdır. Bu bölümde, güvenler arasında kaynaklara erişilirken ve kimlik doğrulama başvuruları değerlendirilirken oluşan süreçler ve etkileşimler açıklanmaktadır.
 
-### <a name="overview-of-authentication-referral-processing"></a>Kimlik doğrulama başvurusu Işlemeye genel bakış
+### <a name="overview-of-authentication-referral-processing"></a>Kimlik Doğrulama Sevk İşlemine Genel Bakış
 
-Bir etki alanı kimlik doğrulaması için bir istek olduğunda, bu etki alanındaki etki alanı denetleyicisinin, isteğin geldiği etki alanı ile bir güven ilişkisinin olup olmadığını belirlemesi gerekir. Güvenin yönü ve güvenin geçişli ya da geçişsiz olması, etki alanındaki kaynaklara erişmek için kullanıcının kimlik doğrulamasından geçmeden önce de belirlenmesi gerekir. Güvenilen etki alanları arasında gerçekleşen kimlik doğrulama işlemi, kullanımdaki kimlik doğrulama protokolüne göre değişir. Kerberos V5 ve NTLM protokolleri, kimlik doğrulama için başvuruları farklı bir etki alanına göre işler
+Kimlik doğrulama isteği bir etki alanına başlandığında, söz konusu etki alanında etki alanı denetleyicisinin isteğin geldiği etki alanıyla bir güven ilişkisi nin bulunup bulunmadığını belirlemesi gerekir. Güvenin yönü ve güvenin geçişli veya geçişsiz olup olmadığı da kullanıcının etki alanındakaynaklara erişmesi için kimlik doğrulamadan önce belirlenmelidir. Güvenilen etki alanları arasında oluşan kimlik doğrulama işlemi, kullanılan kimlik doğrulama protokolüne göre değişir. Kerberos V5 ve NTLM protokolleri, kimlik doğrulaması için başvuruları farklı bir etki alanına işleme
 
-### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 başvuru Işleme
+### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 Tavsiye İşlemi
 
-Kerberos V5 kimlik doğrulama protokolü, istemci kimlik doğrulaması ve yetkilendirme bilgileri için etki alanı denetleyicilerindeki net oturum açma hizmetine bağımlıdır. Kerberos protokolü, oturum biletleri için bir çevrimiçi Anahtar Dağıtım Merkezi (KDC) ve Active Directory hesap deposuna bağlanır.
+Kerberos V5 kimlik doğrulama protokolü, istemci kimlik doğrulaması ve yetkilendirme bilgileri için etki alanı denetleyicilerinde Net Logon hizmetine bağlıdır. Kerberos protokolü, oturum biletleri için çevrimiçi Anahtar Dağıtım Merkezi'ne (KDC) ve Active Directory hesap mağazasına bağlanır.
 
-Kerberos protokolü Ayrıca, siteler arası Bilet sağlama hizmetleri (TGS) için güvenler kullanır ve güvenli bir kanalda ayrıcalık özniteliği sertifikalarını (PACs) doğrular. Kerberos protokolü, yalnızca bir MıT Kerberos bölgesi gibi Windows markalı olmayan işletim sistemi Kerberos alanları ile çapraz bölge kimlik doğrulaması gerçekleştirir ve Net Logon hizmetiyle etkileşime gerek kalmaz.
+Kerberos protokolü ayrıca, adi bilet verme hizmetleri (TGS) ve güvenli bir kanal da Ayrıcalık Öznitelik Sertifikaları (PC) doğrulamak için güvenler kullanır. Kerberos protokolü, yalnızca MIT Kerberos alemi gibi Windows markası olmayan işletim sistemi Kerberos alemleri ile alemler arası kimlik doğrulama gerçekleştirir ve Net Logon hizmeti ile etkileşime geçmesi gerekmez.
 
-İstemci kimlik doğrulaması için Kerberos V5 kullanıyorsa, hedef etki alanındaki sunucuya, hesap etki alanındaki bir etki alanı denetleyicisinden bir bilet ister. Kerberos KDC, istemci ve sunucu arasında güvenilir bir aracı görevi görür ve iki tarafın birbirlerinin kimliğini doğrulamasını sağlayan bir oturum anahtarı sağlar. Hedef etki alanı geçerli etki alanından farklıysa, KDC bir kimlik doğrulama isteğinin başvuramayacağını anlamak için bir mantıksal işlem izler:
+İstemci kimlik doğrulaması için Kerberos V5 kullanıyorsa, hesap etki alanında bir etki alanı denetleyicisinden hedef etki alanında sunucuya bir bilet ister. Kerberos KDC istemci ve sunucu arasında güvenilir bir aracı olarak hareket eder ve iki tarafın birbirini doğrulamasını sağlayan bir oturum anahtarı sağlar. Hedef etki alanı geçerli etki alanından farklıysa, KDC kimlik doğrulama isteğinin sevk edilip edilmeyeceğini belirlemek için mantıklı bir işlem izler:
 
-1. Geçerli etki alanı, istenen sunucunun etki alanı tarafından doğrudan güvenilir mi?
-    * Yanıt Evet ise, istemciye istenen etki alanına bir başvuru gönderin.
-    * Hayır ise, bir sonraki adıma gidin.
+1. Geçerli etki alanı doğrudan istenen sunucunun etki alanı tarafından güvenilir mi?
+    * Evet se, istemciye istenen etki alanına bir havale gönderin.
+    * Hayır ise, bir sonraki adıma geçin.
 
-2. Geçerli etki alanı ile güven yolundaki bir sonraki etki alanı arasında geçişli bir güven ilişkisi var mı?
-    * Yanıt Evet ise, istemciye güven yolundaki sonraki etki alanına bir başvuru gönderir.
-    * Hayır ise, istemciyi bir oturum açma reddedildi iletisi gönderin.
+2. Geçerli etki alanı ile güven yolundaki sonraki etki alanı arasında geçişli bir güven ilişkisi var mı?
+    * Evet se, istemciye güven yolundaki bir sonraki etki alanına bir havale gönderin.
+    * Hayır ise, istemciye oturum açma reddedilen bir ileti gönderin.
 
-### <a name="ntlm-referral-processing"></a>NTLM başvuru Işleme
+### <a name="ntlm-referral-processing"></a>NTLM Sevk İşleme
 
-NTLM kimlik doğrulama protokolü, istemci kimlik doğrulaması ve yetkilendirme bilgileri için etki alanı denetleyicilerindeki net oturum açma hizmetine bağımlıdır. Bu protokol, Kerberos kimlik doğrulaması kullanmayan istemcilerin kimliğini doğrular. NTLM, etki alanları arasında kimlik doğrulama isteklerini geçirmek için güvenleri kullanır.
+NTLM kimlik doğrulama protokolü, istemci kimlik doğrulaması ve yetkilendirme bilgileri için etki alanı denetleyicilerinde net oturum açma hizmetine bağlıdır. Bu protokol, Kerberos kimlik doğrulaması kullanmayan istemcilerin kimliğini doğrular. NTLM, etki alanları arasında kimlik doğrulama isteklerini geçirmek için güvenleri kullanır.
 
-İstemci kimlik doğrulaması için NTLM kullanıyorsa, kimlik doğrulaması için başlangıç isteği doğrudan istemciden hedef etki alanındaki kaynak sunucusuna gider. Bu sunucu, istemcinin yanıt verdiği bir zorluk oluşturur. Sunucu daha sonra kullanıcının bilgisayar hesabı etki alanındaki bir etki alanı denetleyicisine yanıtını gönderir. Bu etki alanı denetleyicisi, Kullanıcı hesabını güvenlik hesapları veritabanına karşı denetler.
+İstemci kimlik doğrulaması için NTLM kullanıyorsa, kimlik doğrulama için ilk istek doğrudan istemciden hedef etki alanında kaynak sunucusuna gider. Bu sunucu, istemcinin yanıtladığı bir sorun oluşturur. Sunucu daha sonra kullanıcının yanıtını bilgisayar hesabı etki alanında bir etki alanı denetleyicisine gönderir. Bu etki alanı denetleyicisi, kullanıcı hesabını güvenlik hesapları veritabanıyla karşıla karşılar.
 
-Hesap veritabanında yoksa, etki alanı denetleyicisi doğrudan kimlik doğrulaması yapılıp yapılmayacağını, isteği iletmenizi veya aşağıdaki mantığı kullanarak isteği reddetmeyi belirler:
+Hesap veritabanında yoksa, etki alanı denetleyicisi geçiş kimlik doğrulaması gerçekleştirmek, isteği iletmek veya aşağıdaki mantığı kullanarak isteği reddetmek için belirler:
 
-1. Geçerli etki alanı, kullanıcının etki alanıyla doğrudan güven ilişkisine sahip mi?
-    * Yanıt Evet ise, etki alanı denetleyicisi istemcinin kimlik bilgilerini doğrudan kimlik doğrulama için kullanıcının etki alanındaki etki alanı denetleyicisine gönderir.
-    * Hayır ise, bir sonraki adıma gidin.
+1. Geçerli etki alanının kullanıcının etki alanıyla doğrudan güven ilişkisi var mı?
+    * Evet ise, etki alanı denetleyicisi geçiş kimlik doğrulaması için kullanıcının etki alanında bir etki alanı denetleyicisine istemcinin kimlik bilgilerini gönderir.
+    * Hayır ise, bir sonraki adıma geçin.
 
-2. Geçerli etki alanı, kullanıcının etki alanıyla geçişli bir güven ilişkisine sahip mi?
-    * Yanıt Evet ise, kimlik doğrulama isteğini güven yolundaki bir sonraki etki alanına geçirin. Bu etki alanı denetleyicisi, kullanıcının kimlik bilgilerini kendi güvenlik hesapları veritabanına göre denetleyerek işlemi yineler.
-    * Hayır ise, istemciyi bir oturum açma reddedildi iletisi gönderin.
+2. Geçerli etki alanının kullanıcının etki alanıyla geçişli bir güven ilişkisi var mı?
+    * Evet ise, kimlik doğrulama isteğini güven yolundaki bir sonraki etki alanına geçirin. Bu etki alanı denetleyicisi, kullanıcının kimlik bilgilerini kendi güvenlik hesapları veritabanıyla karşılaştırarak işlemi yineler.
+    * Hayır ise, istemciye oturum açma reddedilen bir ileti gönderin.
 
-### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Orman güvenleri üzerinden kimlik doğrulama Isteklerinin Kerberos tabanlı Işlenmesi
+### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Orman Güvenleri Üzerinden Kimlik Doğrulama İsteklerinin Kerberos Tabanlı İşlenmesi
 
-İki orman bir orman güveni tarafından bağlandığında, her iki ormandaki kaynaklara erişim sağlamak için, Kerberos V5 veya NTLM protokolleri kullanılarak yapılan kimlik doğrulama istekleri, ormanlar arasında yönlendirilebilir.
+İki orman bir orman güveniyle bağlandığında, Kerberos V5 veya NTLM protokolleri kullanılarak yapılan kimlik doğrulama istekleri, her iki ormandaki kaynaklara erişim sağlamak için ormanlar arasında yönlendirilebilir.
 
-Bir orman güveni ilk kez oluşturulduğunda, her orman ortak ormanındaki tüm güvenilir ad alanlarını toplar ve bilgileri [Güvenilen bir etki alanı nesnesine](#trusted-domain-object)depolar. Güvenilen ad alanları, diğer ormanda kullanılan etki alanı ağacı adlarını, Kullanıcı asıl adı (UPN) soneklerini, hizmet asıl adı (SPN) soneklerini ve güvenlik KIMLIĞI (SID) ad alanlarını içerir. TDO nesneleri genel kataloğa çoğaltılır.
+Bir orman güveni ilk kurulduğunda, her orman iş ortağı ormanındaki tüm güvenilen ad alanlarını toplar ve bilgileri güvenilir bir [etki alanı nesnesinde](#trusted-domain-object)depolar. Güvenilen ad alanları, etki alanı ağacı adları, kullanıcı adı (UPN) sonekleri, hizmet anaadı (SPN) soneklerini ve diğer ormanda kullanılan güvenlik kimliği (SID) ad alanlarını içerir. TDO nesneleri genel katalogda çoğaltılır.
 
-Kimlik doğrulama protokollerinin orman güven yolunu izleyebilmesi için, kaynak bilgisayarın hizmet asıl adı (SPN) diğer ormandaki bir konuma çözümlenmelidir. SPN aşağıdakilerden biri olabilir:
+Kimlik doğrulama protokolleri orman güven yolunu izleyebilmek için kaynak bilgisayarın hizmet ana adı (SPN) diğer ormandaki bir konuma çözülmelidir. Bir SPN aşağıdakilerden biri olabilir:
 
-* Bir konağın DNS adı.
-* Bir etki alanının DNS adı.
-* Bir hizmet bağlantı noktası nesnesinin ayırt edici adı.
+* Bir ana bilgisayar DNS adı.
+* Etki alanının DNS adı.
+* Hizmet bağlantı noktası nesnesinin ayırt edici adı.
 
-Bir ormandaki bir iş istasyonu, başka bir ormandaki bir kaynak bilgisayardaki verilere erişmeye çalıştığında, Kerberos kimlik doğrulama işlemi, kaynak bilgisayarın SPN 'sine bir hizmet bileti için etki alanı denetleyicisiyle iletişim kurar. Etki alanı denetleyicisi genel kataloğu sorgular ve SPN 'nin etki alanı denetleyicisiyle aynı ormanda olmadığını belirlerse, etki alanı denetleyicisi, ana etki alanı için iş istasyonuna geri bir başvuru gönderir. Bu noktada, iş istasyonu, hizmet bileti için üst etki alanını sorgular ve kaynağın bulunduğu etki alanına ulaşıncaya kadar referans zincirini izlemeye devam eder.
+Bir ormandaki bir iş istasyonu başka bir ormandaki bir kaynak bilgisayardaki verilere erişmeye çalıştığında, Kerberos kimlik doğrulama işlemi kaynak bilgisayarın SPN'sine bir hizmet bileti için etki alanı denetleyicisi ile bağlantı yatarım. Etki alanı denetleyicisi genel kataloğu sorgulayıp SPN'nin etki alanı denetleyicisi ile aynı ormanda olmadığını belirledikten sonra, etki alanı denetleyicisi ana etki alanı için iş istasyonuna bir başvuru gönderir. Bu noktada, iş istasyonu servis bileti için ana etki alanını sorgular ve kaynağın bulunduğu etki alanına ulaşana kadar başvuru zincirini izlemeye devam eder.
 
-Aşağıdaki diyagram ve adımlar, Windows çalıştıran bilgisayarlar başka bir ormanda bulunan bir bilgisayardan kaynaklara erişmeyi denediklerinde kullanılan Kerberos kimlik doğrulama işleminin ayrıntılı bir açıklamasını sağlar.
+Aşağıdaki diyagram ve adımlar, Windows çalıştıran bilgisayarlar başka bir ormanda bulunan bir bilgisayardan kaynaklara erişmeye çalışırken kullanılan Kerberos kimlik doğrulama işleminin ayrıntılı bir açıklamasını sağlar.
 
-![Bir orman güveni üzerinden Kerberos işleminin diyagramı](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![Bir orman güven üzerinde Kerberos sürecinin Diyagramı](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
 
-1. *Kullanıcı1* , *Europe.tailspintoys.com* etki alanındaki kimlik bilgilerini kullanarak *işistasyonda* oturum açar. Kullanıcı daha sonra *USA.wingtiptoys.com* ormanında bulunan *FileServer1* üzerinde paylaşılan bir kaynağa erişmeyi dener.
+1. *User1,* *europe.tailspintoys.com* etki alanından kimlik bilgilerini kullanarak *Workstation1'de* oturum açar. Kullanıcı daha sonra *usa.wingtiptoys.com* ormanında bulunan *FileServer1'de* paylaşılan bir kaynağa erişmeye çalışır.
 
-2. *Işistasyonu* , etki alanındaki bir etki alanı DENETLEYICISINDEKI Kerberos KDC ile iletişim kurar, *ChildDC1*ve *FileServer1* SPN için bir hizmet bileti ister.
+2. *Workstation1,* Kendi etki alanı, *ChildDC1*bir etki alanı denetleyicisi üzerinde Kerberos KDC başvurur ve *FileServer1* SPN için bir servis bileti ister.
 
-3. *ChildDC1* , SPN 'yi etki alanı veritabanında bulamaz ve *tailspintoys.com* ormanındaki herhangi BIR etki alanının bu SPN 'yi içerdiğini görmek için genel kataloğu sorgular. Genel Katalog kendi ormanıyla sınırlı olduğundan SPN bulunamadı.
+3. *ChildDC1,* etki alanı veritabanında SPN'yi bulamaz ve *tailspintoys.com* ormanındaki etki alanlarının bu SPN'yi içerip içermediğini görmek için genel kataloğu sorgular. Küresel katalog kendi ormanıyla sınırlı olduğundan, SPN bulunamadı.
 
-    Genel Katalog daha sonra, ormanı ile oluşturulan tüm orman güvenleri hakkında bilgi için veritabanını denetler. Bulunursa, bir eşleşme bulmak için orman güveni güvenilen etki alanı nesnesinde (TDO) listelenen ad soneklerini hedef SPN 'nin sonekine karşılaştırır. Bir eşleşme bulunduğunda genel katalog, *ChildDC1*için bir yönlendirme ipucu sağlar.
+    Genel katalog daha sonra, ormanıyla birlikte kurulan orman güvenleri hakkında bilgi için veritabanını denetler. Bulunursa, eşleşebilir bulmak için orman güvenilen etki alanı nesnesi (TDO) ad sonekleri ile hedef SPN'nin soneklerini karşılaştırır. Bir eşleşme bulunduğunda, genel katalog *ChildDC1'e*yönlendirme ipucu sağlar.
 
-    Yönlendirme ipuçları, kimlik doğrulama isteklerini hedef ormana yönlendirmek için yardım sağlar. İpuçları yalnızca yerel etki alanı denetleyicisi ve genel katalog gibi geleneksel kimlik doğrulama kanalları bir SPN 'yi bulamazsa kullanılır.
+    Yönlendirme ipuçları, doğrudan kimlik doğrulama isteklerini hedef ormana yönlendirmeye yardımcı olur. İpuçları yalnızca yerel etki alanı denetleyicisi ve ardından genel katalog gibi tüm geleneksel kimlik doğrulama kanalları bir SPN'yi bulamadığında kullanılır.
 
-4. *ChildDC1* , üst etki alanı için bir başvuruyu *işistasyona*geri gönderir.
+4. *ChildDC1,* ana etki alanı için *Workstation1'e*bir başvuru gönderir.
 
-5. *Işistasyonubu* , *wingtiptoys.com* ormanının orman kök etki alanındaki bir etki alanı denetleyicisine (*ForestRootDC2*) bir başvuru için *ForestRootDC1* (üst etki alanı) içindeki bir etki alanı denetleyicisiyle iletişim kurar.
+5. *Workstation1,* *wingtiptoys.com* ormanının orman kökü etki alanında bir etki alanı denetleyicisine *(ForestRootDC2)* sevk etmek için *ForestRootDC1'de* (ana etki alanı) bir etki alanı denetleyicisi ile bağlantı kurmaktadır.
 
-6. *Işistasyonuo* , istenen hizmete hizmet bileti için *wingtiptoys.com* ormanında *ForestRootDC2* ile iletişim kurar.
+6. *Workstation1,* istenen servise servis bileti almak için *wingtiptoys.com* ormanındaki *ForestRootDC2* ile iletişime geyleer.
 
-7. *FORESTROOTDC2* SPN 'yi bulmak için genel kataloğu ile iletişim kurar ve genel katalog SPN için bir eşleşme bulur ve bunu *ForestRootDC2*'e geri gönderir.
+7. *ForestRootDC2,* SPN'yi bulmak için küresel kataloğuyla bağlantı kurur ve genel katalog SPN için bir eşleşme bulur ve *onu ForestRootDC2'ye*geri gönderir.
 
-8. *ForestRootDC2* daha sonra *USA.wingtiptoys.com* 'e başvurusunu *işistasyona*geri gönderir.
+8. *ForestRootDC2* daha sonra *usa.wingtiptoys.com'a* geri *Workstation1'e*yönlendirme gönderir.
 
-9. *Işistasyonubu* , *ChildDC2* üzerindeki KDC Ile iletişim kurar ve *FileServer1*'ye erişim kazanmak için *kullanıcı1* biletini belirler.
+9. *Workstation1* *ChildDC2'de* KDC ile bağlantı kurun ve *User1'in* *FileServer1'e*erişim elde etmesi için bileti görüşür.
 
-10. *Işistasyonubu* bir hizmet bileti olduktan sonra, *kullanıcı1*'in güvenlik kimlik bilgilerini okuyan ve buna uygun bir erişim belirteci oluşturan *FileServer1*'e hizmet bileti gönderir.
+10. *Workstation1'de* servis bileti olduğunda, servis biletini *User1'in*güvenlik kimlik bilgilerini okuyan ve buna göre bir erişim belirteci oluşturan *FileServer1'e*gönderir.
 
 ## <a name="trusted-domain-object"></a>Güvenilen etki alanı nesnesi
 
-Bir kuruluştaki her etki alanı veya orman güveni, etki alanı içindeki *sistem* kapsayıcısında depolanan bir güvenilen etki alanı NESNESI (TDO) ile temsil edilir.
+Kuruluştaki her etki alanı veya orman güveni, etki alanı içinde *Sistem* kapsayıcısında depolanan güvenilir bir Etki Alanı Nesnesi (TDO) tarafından temsil edilir.
 
 ### <a name="tdo-contents"></a>TDO içeriği
 
-TDO 'da yer alan bilgiler, bir TDO 'nun bir etki alanı güveni veya bir orman güveni tarafından oluşturulup oluşturulmadığına bağlı olarak değişir.
+Bir TDO'da yer alan bilgiler, bir TDO'nun bir etki alanı güveni veya orman güveni tarafından oluşturulup oluşturulmadığına bağlı olarak değişir.
 
-Bir etki alanı güveni oluşturulduğunda, DNS etki alanı adı, etki alanı SID, güven türü, güven geçişliliği ve karşılıklı etki alanı adı gibi öznitelikler TDO 'da temsil edilir. Orman güveni TDOs, ortak ormandaki tüm güvenilir ad alanlarını tanımlamak için ek öznitelikler depolar. Bu öznitelikler etki alanı ağacı adlarını, Kullanıcı asıl adı (UPN) soneklerini, hizmet asıl adı (SPN) soneklerini ve güvenlik KIMLIĞI (SID) ad alanlarını içerir.
+Bir etki alanı güveni oluşturulduğunda, DNS etki alanı adı, etki alanı SID, güven türü, güven geçişi ve karşılıklı etki alanı adı gibi öznitelikler TDO'da temsil edilir. Orman güven TDO'ları, ortak ormandaki tüm güvenilen ad alanlarını tanımlamak için ek öznitelikler depolar. Bu öznitelikler etki alanı ağacı adlarını, kullanıcı anaadı (UPN) soneklerini, hizmet anaadı (SPN) soneklerini ve güvenlik kimliği (SID) ad alanlarını içerir.
 
-Güvenler as TDOs olarak Active Directory depolandığından, ormandaki tüm etki alanları, orman genelinde yerinde olan güven ilişkilerinin bilgisine sahiptir. Benzer şekilde, iki veya daha fazla orman, orman güvenleri üzerinden birlikte eklendiğinde, her ormandaki orman kök etki alanları, güvenilen ormanlardaki tüm etki alanları genelinde yer alan güven ilişkileri hakkında bilgi sahibi olmalıdır.
+Güvenler Etkin Dizin'de TDO olarak depolandığı için, ormandaki tüm etki alanları orman boyunca bulunan güven ilişkileri hakkında bilgiye sahiptir. Benzer şekilde, orman güvenleri aracılığıyla iki veya daha fazla orman birleştiğinde, her ormandaki orman kökü etki alanları, güvenilen ormanlarda bulunan tüm etki alanlarında yürürlükte olan güven ilişkileri hakkında bilgi sahibidir.
 
-### <a name="tdo-password-changes"></a>TDO parola değişiklikleri
+### <a name="tdo-password-changes"></a>TDO şifre değişiklikleri
 
-Güven ilişkisindeki her iki etki alanı da Active Directory içindeki TDO nesnesinde depolanan bir parolayı paylaşır. Hesap bakım işleminin bir parçası olarak, güvenen etki alanı denetleyicisinde her 30 günde bir, TDO 'da depolanan parolayı değiştirir. Her iki yönlü güven gerçekten 2 1 yönlü güven olduğundan, iki yönlü güvenler için işlem iki kez gerçekleşir.
+Güven ilişkisindeki her iki etki alanı da, Etkin Dizin'deki TDO nesnesinde depolanan bir parolayı paylaşır. Hesap bakım sürecinin bir parçası olarak, güvenen etki alanı denetleyicisi Her 30 günde bir TDO'da depolanan parolayı değiştirir. Tüm iki yönlü güvenler aslında zıt yönlere giden iki tek yönlü güven olduğundan, işlem iki yönlü güvenler için iki kez gerçekleşir.
 
-Güven, güvenen ve güvenilen bir tarafına sahiptir. Güvenilen tarafta, işlem için tüm yazılabilir etki alanı denetleyicileri kullanılabilir. Güvenen tarafta, PDC öykünücüsü parola değişikliğini gerçekleştirir.
+Bir güvenin güvenilir ve güvenilir bir tarafı vardır. Güvenilir tarafta, herhangi bir yazılabilir etki alanı denetleyicisi işlem için kullanılabilir. Güvenen tarafta, PDC emülatörü parola değişikliğini gerçekleştirir.
 
-Bir parolayı değiştirmek için etki alanı denetleyicileri aşağıdaki işlemi tamamlar:
+Parolayı değiştirmek için etki alanı denetleyicileri aşağıdaki işlemi tamamlar:
 
-1. Güvenen etki alanındaki birincil etki alanı denetleyicisi (PDC) öykünücüsü yeni bir parola oluşturur. Güvenilen etki alanındaki bir etki alanı denetleyicisi, parola değişikliğini hiçbir şekilde başlatmayacaktır. Güvenilen etki alanı PDC öykünücüsü tarafından her zaman başlatılır.
+1. Güvenilen etki alanında birincil etki alanı denetleyicisi (PDC) emülatörü yeni bir parola oluşturur. Güvenilen etki alanında bir etki alanı denetleyicisi parola değişikliğini asla başlatmaz. Her zaman güvenen etki alanı PDC emülatörü tarafından başlatılır.
 
-2. Güvenen etki alanındaki PDC öykünücüsü, TDO nesnesinin *oldPassword* alanını geçerli *YeniParola* alanına ayarlar.
+2. Güvenilen etki alanındaki PDC emülatörü, TDO nesnesinin *OldPassword* alanını geçerli *NewPassword* alanına ayarlar.
 
-3. Güvenen etki alanındaki PDC öykünücüsü, TDO nesnesinin *YeniParola* alanını yeni parolaya ayarlar. Önceki parolanın bir kopyasının tutulması, güvenilen etki alanındaki etki alanı denetleyicisi değişikliği alamadığında veya değişiklik, yeni güven parolasını kullanan bir istek yapılmadan önce çoğaltılmamışsa eski parolaya geri dönmek mümkün hale gelir.
+3. Güvenilen etki alanındaki PDC emülatörü, TDO nesnesinin *NewPassword* alanını yeni parolaya ayarlar. Önceki parolanın bir kopyasının tutulması, güvenilen etki alanında etki alanı denetleyicisi değişikliği almazsa veya değişiklik yeni güven parolasını kullanan bir istek edilmeden önce çoğaltılmazsa eski parolaya geri dönmek mümkün olur.
 
-4. Güvenen etki alanındaki PDC öykünücüsü, güvenilen etki alanındaki bir etki alanı denetleyicisine uzaktan bir çağrı yapar ve bu kullanıcıdan güven hesabındaki parolayı yeni parolaya ayarlamanızı ister.
+4. Güvenilen etki alanında ki PDC emülatörü, güven hesabındaki parolayı yeni parolaya ayarlamasını isteyen güvenilir etki alanındaki bir etki alanı denetleyicisine uzaktan arama yapar.
 
-5. Güvenilen etki alanındaki etki alanı denetleyicisi, güven parolasını yeni parolayla değiştirir.
+5. Güvenilen etki alanında etki alanı denetleyicisi güven parolasını yeni parolayla değiştirir.
 
-6. Güvenin her tarafında güncelleştirmeler, etki alanındaki diğer etki alanı denetleyicilerine çoğaltılır. Güvenen etki alanında değişiklik, güvenilen etki alanı nesnesinin acil bir çoğaltmasını tetikler.
+6. Güvenin her iki tarafında, güncelleştirmeler etki alanında diğer etki alanı denetleyicilerine çoğaltılır. Güvenilen etki alanında, değişiklik güvenilen etki alanı nesnesinin acil bir çoğaltmasını tetikler.
 
-Parola, her iki etki alanı denetleyicisinde de değişmiştir. Normal çoğaltma, TDO nesnelerini etki alanındaki diğer etki alanı denetleyicilerine dağıtır. Ancak, güvenen etki alanındaki etki alanı denetleyicisinin, güvenilen etki alanındaki bir etki alanı denetleyicisini başarıyla güncelleştirmeden parolayı değiştirmesi mümkündür. Bu senaryo, parola değişikliğini işlemek için gerekli olan güvenli bir kanal kurulamadığından meydana gelebilir. Ayrıca, güvenilen etki alanındaki etki alanı denetleyicisinin işlem sırasında bir noktada kullanılamaması ve güncelleştirilmiş parolayı almamanız mümkündür.
+Parola artık her iki etki alanı denetleyicisi üzerinde değiştirilir. Normal çoğaltma, TDO nesnelerini etki alanındaki diğer etki alanı denetleyicilerine dağıtır. Ancak, güvenilen etki alanında etki alanı denetleyicisinin, güvenilen etki alanında bir etki alanı denetleyicisini başarıyla güncelleştirmeden parolayı değiştirmesi mümkündür. Parola değişikliğini işlemek için gereken güvenli bir kanal oluşturulamadığından bu senaryo oluşabilir. Ayrıca, güvenilen etki alanında etki alanı denetleyicisi işlem sırasında bir noktada kullanılamaz ve güncelleştirilmiş parolayı alamayabilir de mümkündür.
 
-Parola değişikliğinin başarılı bir şekilde iletimediği durumlarla başa çıkmak için, güvenen etki alanındaki etki alanı denetleyicisi, yeni parolayı kullanarak kimlik doğrulamasından (güvenli bir kanal ayarlamaya), yeni parolayı hiçbir şekilde değiştirmez. Bu davranış, güvenilen etki alanının TDO nesnesinde hem eski hem de yeni parolaların tutulmasından neden olur.
+Parola değişikliğinin başarıyla iletilemediği durumlarla başa çıkmak için, güvenalan etki alanındaki etki alanı denetleyicisi, yeni parolayı kullanarak başarılı bir şekilde kimlik doğrulaması yapmadıkça (güvenli bir kanal kurma) yeni parolayı asla değiştirmez. Bu davranış, hem eski hem de yeni parolaların güvenalan etki alanının TDO nesnesinde tutulmasının nedenidir.
 
-Parola başarıyla kullanıldığında kimlik doğrulaması başarılı olana kadar parola değişikliği sonlandırılmadı. Güvenilen etki alanındaki etki alanı denetleyicisi yeni parolayı alıncaya kadar, bu nedenle kesintisiz hizmeti etkinleştirerek, eski, depolanan parola güvenli kanal üzerinden kullanılabilir.
+Parolayı kullanarak kimlik doğrulaması başarılı olana kadar parola değişikliği tamamlanmaz. Eski, depolanan parola, güvenilen etki alanında etki alanı denetleyicisi yeni parolayı alana kadar güvenli kanal üzerinden kullanılabilir ve böylece kesintisiz hizmet sağlar.
 
-Parola geçersiz olduğundan, yeni parolayı kullanan kimlik doğrulaması başarısız olursa, güvenen etki alanı denetleyicisi eski parolayı kullanarak kimlik doğrulamaya çalışır. Eski parolayla başarıyla kimlik doğrulaması gerçekleştiriyorsa, 15 dakika içinde parola değiştirme işlemine devam eder.
+Parola geçersiz olduğu için yeni parolayı kullanarak kimlik doğrulaması başarısız olursa, güvenilen etki alanı denetleyicisi eski parolayı kullanarak kimlik doğrulaması yapmaya çalışır. Eski parolayla başarılı bir şekilde kimlik doğrulaması yaparsa, parola değiştirme işlemini 15 dakika içinde devam ettirer.
 
-Güven parola güncelleştirmelerinin, her iki tarafının da 30 gün içinde etki alanı denetleyicilerine çoğaltılması gerekir. Güven parolası 30 gün sonra değiştirilirse ve bir etki alanı denetleyicisinin yalnızca N-2 parolası varsa, güvenen taraftan güveni kullanamaz ve güvenilir tarafta güvenli bir kanal oluşturamaz.
+Güven parola güncelleştirmelerinin 30 gün içinde güvenin her iki tarafının etki alanı denetleyicilerine çoğaltılması gerekir. Güven parolası 30 gün sonra değiştirilirse ve etki alanı denetleyicisi yalnızca N-2 parolasına sahipse, güven tarafında güven kullanamaz ve güvenilen tarafta güvenli bir kanal oluşturamaz.
 
 ## <a name="network-ports-used-by-trusts"></a>Güvenler tarafından kullanılan ağ bağlantı noktaları
 
-Güvenin çeşitli ağ sınırları genelinde dağıtılması gerektiğinden, bir veya daha fazla güvenlik duvarının yayılması gerekebilir. Bu durumda, trafiğin geçmesine izin vermek için güvenlik duvarı genelinde güven trafiğini tüneledebilir veya güvenlik duvarında belirli bağlantı noktalarını açabilirsiniz.
+Güvenlerin çeşitli ağ sınırları içinde dağıtılması gerektiğinden, bir veya daha fazla güvenlik duvarLarını aşması gerekebilir. Bu durumda, trafiğin geçmesine izin vermek için güvenlik duvarındaki güven trafiğini tünelleyebilir veya güvenlik duvarındaki belirli bağlantı noktalarını açabilirsiniz.
 
 > [!IMPORTANT]
-> Active Directory Domain Services, Active Directory RPC trafiğinin belirli bağlantı noktalarına kısıtlanması desteklenmez.
+> Etkin Dizin Etki Alanı Hizmetleri, Active Directory RPC trafiğinin belirli bağlantı noktalarıyla sınırlandırMasını desteklemez.
 
-Bir orman güveni için gereken bağlantı noktaları hakkında bilgi edinmek için [Active Directory etki alanları ve Güvenleri için bir güvenlik duvarı yapılandırma](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) Microsoft desteği makalesinin **Windows Server 2008 ve sonraki sürümler** bölümünü okuyun.
+Windows **Server 2008 ve daha sonraki sürümleri** Microsoft Destek Makalesi bölümünü okuyun Nasıl Etkin [Dizin etki alanları ve güvenler için bir güvenlik duvarı yapılandırmak](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) için bir orman güven için gerekli bağlantı noktaları hakkında bilgi edinmek için.
 
-## <a name="supporting-services-and-tools"></a>Destekleyici hizmetler ve araçlar
+## <a name="supporting-services-and-tools"></a>Destek hizmetleri ve araçları
 
-Güvenleri ve kimlik doğrulamasını desteklemek için bazı ek özellikler ve yönetim araçları kullanılır.
+Güvenleri ve kimlik doğrulamayı desteklemek için bazı ek özellikler ve yönetim araçları kullanılır.
 
-### <a name="net-logon"></a>NET oturum açma
+### <a name="net-logon"></a>Net Oturum Açma
 
-NET oturum açma hizmeti, Windows tabanlı bir bilgisayardan DC 'ye güvenli bir kanal sağlar. Ayrıca, aşağıdaki güvenle ilgili işlemlerde de kullanılır:
+Net Logon hizmeti, Windows tabanlı bir bilgisayardan DC'ye kadar güvenli bir kanalı tutar. Ayrıca, güvenle ilgili aşağıdaki işlemlerde de kullanılır:
 
-* Güven kurulumu ve yönetimi-net oturum açma, güven parolalarının korunmasını, güven bilgilerini toplamanıza ve LSA işlemiyle ve TDO ile etkileşime girerek güvenleri doğrular.
+* Güven kurulumu ve yönetimi - Net Logon, güven parolalarının korunmasına yardımcı olur, güven bilgilerini toplar ve LSA süreci ve TDO ile etkileşim kurarak güvenleri doğrular.
 
-    Orman güvenleri için güven bilgileri, güvenilen bir ormanın yönetilmesi için gereken ad alanları kümesini içeren orman güven bilgileri (*Ftınfo*) kaydını içerir. Bu, her talebe güvenen orman tarafından güvenilip güvenilmediğini gösteren bir alanla birlikte açıklanmış olur.
+    Orman güvenleri için güven bilgileri, güvenilir bir ormanın yönetmek için iddia ettiği ad alanları kümesini içeren ve her talebin güvenilen orman tarafından güvenilip güvenilmediğini gösteren bir alanla ek açıklama içeren Orman Güven Bilgileri *(FTInfo)* kaydını içerir.
 
-* Kimlik doğrulaması – bir etki alanı denetleyicisine güvenli bir kanal üzerinden Kullanıcı kimlik bilgilerini sağlar ve Kullanıcı için etki alanı SID 'Lerini ve Kullanıcı haklarını döndürür.
+* Kimlik doğrulama - Güvenli bir kanal üzerinden kullanıcı kimlik bilgilerini bir etki alanı denetleyicisine sağlar ve kullanıcı için etki alanı SIT'lerini ve kullanıcı haklarını döndürür.
 
-* Etki alanı denetleyicisi konumu – bir etki alanında veya etki alanlarında etki alanı denetleyicileri bulmaya veya bulmaya yardımcı olur.
+* Etki alanı denetleyicisi konumu – Etki alanı denetleyicilerini bir etki alanında veya etki alanlarında bulmada yardımcı olur.
 
-* Doğrudan doğrulama – diğer etki alanlarındaki kullanıcıların kimlik bilgileri net oturum açma tarafından işlenir. Güvenen bir etki alanının bir kullanıcının kimliğini doğrulaması gerektiğinde, doğrulama için kullanıcının kimlik bilgilerini güvenilir etki alanına ağ oturumu aracılığıyla geçirir.
+* Geçiş doğrulama - Diğer etki alanlarındaki kullanıcıların kimlik bilgileri Net Logon tarafından işlenir. Güvenilen bir etki alanının bir kullanıcının kimliğini doğrulaması gerektiğinde, kullanıcının kimlik bilgilerini Net Logon aracılığıyla doğrulama için güvenilir etki alanına geçirir.
 
-* Ayrıcalık öznitelik sertifikası (PAC) doğrulaması – kimlik doğrulaması için Kerberos protokolünü kullanan bir sunucunun bir hizmet bileti içindeki PAC 'yi doğrulaması gerektiğinde, kimlik doğrulama için PAC 'yi güvenli kanal üzerinden etki alanı denetleyicisine gönderir.
+* Ayrıcalık Öznitelik Sertifikası (PAC) doğrulaması – Kimlik doğrulama için Kerberos protokolünü kullanan bir sunucunun PAC'i bir hizmet biletinde doğrulaması gerektiğinde, PAC'yi güvenli kanal üzerinden doğrulama için etki alanı denetleyicisine gönderir.
 
-### <a name="local-security-authority"></a>Yerel güvenlik yetkilisi
+### <a name="local-security-authority"></a>Yerel Güvenlik Yetkilisi
 
-Yerel güvenlik yetkilisi (LSA), sistemdeki yerel güvenlik özelliklerinin tüm yönleri hakkında bilgi tutan bir korumalı alt sistemdir. Her topluca yerel güvenlik ilkesi olarak bilinen LSA, adlar ve tanımlayıcılar arasında çeviri için çeşitli hizmetler sağlar.
+Yerel Güvenlik Otoritesi (LSA), bir sistemdeki yerel güvenliğin tüm yönleri hakkında bilgi tutan korumalı bir alt sistemdir. Topluolarak yerel güvenlik politikası olarak bilinen LSA, adlar ve tanımlayıcılar arasında çeviri için çeşitli hizmetler sunmaktadır.
 
-LSA güvenlik alt sistemi, nesnelere erişimi doğrulamak, kullanıcı ayrıcalıklarını denetlemek ve denetim iletileri oluşturmak için hem çekirdek modunda hem de Kullanıcı modunda hizmetler sağlar. LSA, güvenilen veya güvenilmeyen etki alanlarında hizmetler tarafından sunulan tüm oturum biletlerinin geçerliliğini denetmaktan sorumludur.
+LSA güvenlik alt sistemi, nesnelere erişimi doğrulamak, kullanıcı ayrıcalıklarını denetlemek ve denetim iletileri oluşturmak için hem çekirdek modunda hem de kullanıcı modunda hizmetler sağlar. LSA, hizmetler tarafından güvenilen veya güvenilmeyen etki alanlarında sunulan tüm oturum biletlerinin geçerliliğini denetlemekten sorumludur.
 
 ### <a name="management-tools"></a>Yönetim araçları
 
-Yöneticiler, güvenleri göstermek, oluşturmak, kaldırmak veya değiştirmek için *Active Directory etki alanları ve Güvenleri*, *netdom* ve *nltest* kullanabilirler.
+Yöneticiler, güvenleri ortaya çıkarmak, oluşturmak, kaldırmak veya değiştirmek için *Active Directory Etki Alanları ve Güvenler,* *Netdom* ve *Nltest'i* kullanabilir.
 
-* *Active Directory etki alanları ve güvenler* , etki alanı güvenlerini, etki alanı ve orman işlev düzeylerini ve Kullanıcı asıl adı soneklerini yönetmek Için kullanılan Microsoft Yönetim Konsolu 'NA (MMC) sahiptir.
-* *Netdom* ve *nltest* komut satırı araçları, güvenleri bulmak, göstermek, oluşturmak ve yönetmek için kullanılabilir. Bu araçlar, bir etki alanı denetleyicisindeki LSA yetkilisi ile doğrudan iletişim kurar.
+* *Etkin Dizin Etki Alanları ve Güvenleri,* etki alanı güvenlerini, etki alanı ve orman işlevsel düzeylerini ve kullanıcı ana adı soneklerini yönetmek için kullanılan Microsoft Yönetim Konsolu'dur (MMC).
+* *Netdom* ve *Nltest* komut satırı araçları, güvenleri bulmak, görüntülemek, oluşturmak ve yönetmek için kullanılabilir. Bu araçlar, etki alanı denetleyicisi üzerindeki LSA yetkilisiyle doğrudan iletişim kurar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynak ormanları hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS orman güvenleri nasıl çalışır?][concepts-trust]
+Kaynak ormanları hakkında daha fazla bilgi edinmek için [Azure AD DS'de orman güvenleri nasıl çalışır?][concepts-trust]
 
-Kaynak ormanı ile Azure AD DS yönetilen etki alanı oluşturmaya başlamak için bkz. [azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Ardından, [bir şirket içi etki alanına (Önizleme) giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
+Kaynak ormanı olan bir Azure AD DS yönetilen etki alanı oluşturmaya başlamak için [bkz.][tutorial-create-advanced] Daha sonra [şirket içi etki alanına giden orman güveni (önizleme) oluşturabilirsiniz.][create-forest-trust]
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

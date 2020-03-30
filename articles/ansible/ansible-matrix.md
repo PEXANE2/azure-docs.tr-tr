@@ -1,226 +1,226 @@
 ---
-title: Azure için anerişilebilir modül ve Sürüm matrisi | Microsoft Docs
-description: Azure için anerişilebilir modül ve Sürüm matrisi
-keywords: anerişilebilir, roller, matris, sürüm, Azure, DevOps
+title: Azure için ansi modül ve sürüm matrisi | Microsoft Dokümanlar
+description: Azure için saklı modül ve sürüm matrisi
+keywords: ansible, roller, matris, sürüm, azure, devops
 ms.topic: reference
 ms.date: 10/14/2019
 ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74155990"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible modülü ve sürüm matrisi
 
-Anormal, Azure kaynaklarını sağlama ve yapılandırma konusunda kullanılacak bir modül paketini içerir. Bu kaynaklar sanal makineler, ölçek kümeleri, ağ hizmetleri ve kapsayıcı hizmetleri içerir. Bu makalede, Azure için çeşitli anormal modüller ve teslim ettikleri anormal sürümler listelenmiştir.
+Ansible, Azure kaynaklarının sağlanması nda ve yapılandırılmasında kullanılmak üzere bir modül paketi içerir. Bu kaynaklar sanal makineleri, ölçek kümelerini, ağ hizmetlerini ve kapsayıcı hizmetlerini içerir. Bu makalede, Azure için çeşitli Ansible modülleri ve içinde gönderiyaptıkları Ansible sürümleri listeleilmektedir.
 
-## <a name="ansible-modules-for-azure"></a>Azure için anerişilebilir modüller
+## <a name="ansible-modules-for-azure"></a>Azure için ansi modüller
 
-Aşağıdaki modüller doğrudan uzak konaklarda veya playbooks aracılığıyla yürütülebilir.  
+Aşağıdaki modüller doğrudan uzak ana bilgisayarlarda veya oyun kitapları aracılığıyla yürütülebilir.  
 
-Bu modüller, anormal bir resmi yayından ve aşağıdaki Microsoft PlayBook rollerinden edinilebilir.
+Bu modüller Ansible resmi sürümünden ve aşağıdaki Microsoft oyun kitabı rollerinden edinilebilir.
 
 > [!NOTE]
-> Anormal 2,9 ve sonraki sürümlerde, tüm * _facts modüllerini * _info olarak yeniden adlandırdık ve izin verilen adlandırma kuralına bağlı olarak. Eski ve yeniden adlandırılmış modüller, kullanımdan kaldırma uyarısı görmekten, tüm modüllerin daha önce olduğu gibi çalıştığı şekilde bağlantılıdır.
+> Ansible 2.9'dan itibaren, tüm *_facts modüllerinin adını Ansible adlandırma kuralına uymak için *_info olarak yeniden adlandırdık. Eski ve yeniden adlandırılmış modüller, bir amortisman uyarısı görmenin dışında, tüm modüller eskisi gibi çalışır.
 
-| Azure için anerişilebilir modül                   |  Anerişilebilir 2,4 |  Anerişilebilir 2,5 |  Anerişilebilir 2,6 | Anerişilebilir 2,7 | Anerişilebilir 2,8 | Anerişilebilir 2,9 | Anormal rol | 
+| Azure için ansi modül                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible 2.8 | Ansible 2.9 | Ansible Rolü | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------|--------------|  
 | **İşlem**                    |           |                          |                          |                            |           |           |           |
-| azure_rm_availabilityset                   | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_availabilityset_info              | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_batchaccount                       | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_deployment                         | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_deployment_info                   | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_functionapp                        | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_functionapp_info                  | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_gallery                            | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_gallery_info                       | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_galleryimage                       | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_galleryimage_info                  | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_galleryimageversion                | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_galleryimageversion_info           | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_image                              | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_image_info                        | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_resource                           | -            | -                           | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_resource_info                     | -            | -                           | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_resourcegroup                      | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_resourcegroup_info                | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_snapshot                           | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_virtualmachine                     | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachine_info               | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachineextension            | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachineextension_info      | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachineimage_info          | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachinescaleset             | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachinescaleset_info       | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachinescalesetextension    | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachinescalesetextension_info | -            | -                        | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachinescalesetinstance     | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_virtualmachinescalesetinstance_info | -            | -                         | -            | -            | Yes          | Yes          | Yes          |
-| **Ağ**                              |              |                             |              |              |              |              |              |
-| azure_rm_appgateway                         | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_applicationsecuritygroup           | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_applicationsecuritygroup_info     | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_cdnendpoint                        | -            | -                         | -          | -            | Yes          | Yes          | Yes          |
-| azure_rm_cdnendpoint_info                  | -            | -                         | -          | -            | Yes          | Yes          | Yes          |
-| azure_rm_cdnprofile                         | -            | -                         | -          | -            | Yes          | Yes          | Yes          |
-| azure_rm_cdnprofile_info                   | -            | -                         | -          | -            | Yes          | Yes          | Yes          |
-| azure_rm_dnsrecordset                       | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_dnsrecordset_info                 | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_dnszone                            | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_dnszone_info                      | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_firewall                           | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_firewall_info                      | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_loadbalancer                       | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_loadbalancer_info                 | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_networkinterface                   | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_networkinterface_info             | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_publicipaddress                    | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_publicipaddress_info              | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_route                              | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_routetable                         | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_routetable_info                   | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_securitygroup                      | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_securitygroup_info                 | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_subnet                             | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_subnet_info                       | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_trafficmanagerendpoint             | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_trafficmanagerendpoint_info       | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_trafficmanagerprofile              | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_trafficmanagerprofile_info        | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualnetwork                     | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualnetwork_info               | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_virtualnetworkgateway              | -            | -                         | -          | -            | Yes          | Yes          | Yes          |
-| azure_rm_virtualnetworkpeering              | -            | -                         | -          | -            | Yes          | Yes          | Yes          |
-| azure_rm_virtualnetworkpeering_info         | -            | -                         | -          | -            | -            | Yes          | Yes          |
+| azure_rm_availabilityset                   | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_availabilityset_info              | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_batchaccount                       | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_deployment                         | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_deployment_info                   | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_functionapp                        | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_functionapp_info                  | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_gallery                            | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_gallery_info                       | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_galleryimage                       | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_galleryimage_info                  | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_galleryimageversion                | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_galleryimageversion_info           | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_image                              | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_image_info                        | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_resource                           | -            | -                           | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_resource_info                     | -            | -                           | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_resourcegroup                      | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_resourcegroup_info                | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_snapshot                           | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_virtualmachine                     | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachine_info               | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachineextension            | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachineextension_info      | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachineimage_info          | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachinescaleset             | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachinescaleset_info       | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachinescalesetextension    | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachinescalesetextension_info | -            | -                        | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachinescalesetinstance     | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_virtualmachinescalesetinstance_info | -            | -                         | -            | -            | Evet          | Evet          | Evet          |
+| **Ağ Oluşturma**                              |              |                             |              |              |              |              |              |
+| azure_rm_appgateway                         | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_applicationsecuritygroup           | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_applicationsecuritygroup_info     | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_cdnendpoint                        | -            | -                         | -          | -            | Evet          | Evet          | Evet          |
+| azure_rm_cdnendpoint_info                  | -            | -                         | -          | -            | Evet          | Evet          | Evet          |
+| azure_rm_cdnprofile                         | -            | -                         | -          | -            | Evet          | Evet          | Evet          |
+| azure_rm_cdnprofile_info                   | -            | -                         | -          | -            | Evet          | Evet          | Evet          |
+| azure_rm_dnsrecordset                       | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_dnsrecordset_info                 | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_dnszone                            | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_dnszone_info                      | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_firewall                           | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_firewall_info                      | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_loadbalancer                       | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_loadbalancer_info                 | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_networkinterface                   | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_networkinterface_info             | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_publicipaddress                    | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_publicipaddress_info              | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_route                              | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_routetable                         | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_routetable_info                   | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_securitygroup                      | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_securitygroup_info                 | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_subnet                             | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_subnet_info                       | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_trafficmanagerendpoint             | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_trafficmanagerendpoint_info       | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_trafficmanagerprofile              | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_trafficmanagerprofile_info        | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualnetwork                     | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualnetwork_info               | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_virtualnetworkgateway              | -            | -                         | -          | -            | Evet          | Evet          | Evet          |
+| azure_rm_virtualnetworkpeering              | -            | -                         | -          | -            | Evet          | Evet          | Evet          |
+| azure_rm_virtualnetworkpeering_info         | -            | -                         | -          | -            | -            | Evet          | Evet          |
 | **Depolama**                    |           |                          |                          |                            |           |           |         |
-| azure_rm_manageddisk                        | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_manageddisk_info                  | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_storageaccount                     | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_storageaccount_info               | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_storageblob                        | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
+| azure_rm_manageddisk                        | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_manageddisk_info                  | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_storageaccount                     | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_storageaccount_info               | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_storageblob                        | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
 | **Web**                    |           |                          |                          |                             |           |           |           |
-| azure_rm_appserviceplan                     | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_appserviceplan_info               | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_webapp                             | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_webapp_info                       | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_webappslot                         | -            | -                         | -          | -            | Yes          | Yes          | Yes          |
+| azure_rm_appserviceplan                     | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_appserviceplan_info               | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_webapp                             | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_webapp_info                       | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_webappslot                         | -            | -                         | -          | -            | Evet          | Evet          | Evet          |
 | **Kapsayıcılar**                    |           |                          |                          |                            |           |           |          |
-| azure_rm_acs                                | Yes          | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_aks                                | -            | -                           | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_aks_info                          | -            | -                           | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_aksversion_info                   | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_containerinstance                  | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_containerinstance_info            | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_containerregistry                  | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_containerregistry_info            | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_containerregistryreplication       | -            | -                           | -            | -            | -          | -          | Yes          |
-| azure_rm_containerregistryreplication_info  | -            | -                           | -            | -            | -          | -          | Yes          |
-| azure_rm_containerregistrywebhook           | -            | -                           | -            | -            | -          | -          | Yes          |
-| azure_rm_containerregistrywebhook_info      | -            | -                           | -            | -            | -          | -          | Yes          |
-| **Veritabanları**                    |           |                          |                          |                             |           |           |          |
-| azure_rm_cosmosdbaccount                    | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_cosmosdbaccount_info              | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mariadbconfiguration               | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mariadbconfiguration_info         | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mariadbdatabase                    | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mariadbdatabase_info              | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mariadbfirewallrule                | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mariadbfirewallrule_info          | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mariadbserver                      | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mariadbserver_info                | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mysqlconfiguration                 | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mysqlconfiguration_info           | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mysqldatabase                      | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_mysqldatabase_info                | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_mysqlfirewallrule                  | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mysqlfirewallrule_info            | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_mysqlserver                        | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_mysqlserver_info                  | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_postgresqlconfiguration            | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_postgresqlconfiguration_info      | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_postgresqldatabase                 | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_postgresqldatabase_info           | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_postgresqlfirewallrule             | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_postgresqlfirewallrule_info       | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_postgresqlserver                   | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_postgresqlserver_info             | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_rediscache                         | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_rediscache_info                   | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_rediscachefirewallrule             | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_sqldatabase                        | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_sqldatabase_info                  | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_sqlelasticpool                    | -            | -                           | -            | -            | -          | -          | Yes          |
-| azure_rm_sqlelasticpool_info               | -            | -                           | -            | -            | -          | -          | Yes          |
-| azure_rm_sqlfirewallrule                    | -            | -                           | -            | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_sqlfirewallrule_info              | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_sqlserver                          | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_sqlserver_info                    | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
+| azure_rm_acs                                | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_aks                                | -            | -                           | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_aks_info                          | -            | -                           | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_aksversion_info                   | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_containerinstance                  | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_containerinstance_info            | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_containerregistry                  | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_containerregistry_info            | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_containerregistryreplication       | -            | -                           | -            | -            | -          | -          | Evet          |
+| azure_rm_containerregistryreplication_info  | -            | -                           | -            | -            | -          | -          | Evet          |
+| azure_rm_containerregistrywebhook           | -            | -                           | -            | -            | -          | -          | Evet          |
+| azure_rm_containerregistrywebhook_info      | -            | -                           | -            | -            | -          | -          | Evet          |
+| **Veritaban -ları**                    |           |                          |                          |                             |           |           |          |
+| azure_rm_cosmosdbaccount                    | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_cosmosdbaccount_info              | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mariadbconfiguration               | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mariadbconfiguration_info         | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mariadbdatabase                    | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mariadbdatabase_info              | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mariadbfirewallrule                | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mariadbfirewallrule_info          | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mariadbserver                      | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mariadbserver_info                | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mysqlconfiguration                 | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mysqlconfiguration_info           | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mysqldatabase                      | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_mysqldatabase_info                | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_mysqlfirewallrule                  | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mysqlfirewallrule_info            | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_mysqlserver                        | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_mysqlserver_info                  | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_postgresqlconfiguration            | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_postgresqlconfiguration_info      | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_postgresqldatabase                 | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_postgresqldatabase_info           | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_postgresqlfirewallrule             | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_postgresqlfirewallrule_info       | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_postgresqlserver                   | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_postgresqlserver_info             | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_rediscache                         | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_rediscache_info                   | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_rediscachefirewallrule             | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_sqldatabase                        | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_sqldatabase_info                  | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_sqlelasticpool                    | -            | -                           | -            | -            | -          | -          | Evet          |
+| azure_rm_sqlelasticpool_info               | -            | -                           | -            | -            | -          | -          | Evet          |
+| azure_rm_sqlfirewallrule                    | -            | -                           | -            | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_sqlfirewallrule_info              | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_sqlserver                          | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_sqlserver_info                    | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
 | **Analiz**                    |           |                          |                          |                             |           |           |          |
-| azure_rm_hdinsightcluster                   | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_hdinsightcluster_info              | -            | -                           | -            | -            | -            | Yes          | Yes          |
+| azure_rm_hdinsightcluster                   | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_hdinsightcluster_info              | -            | -                           | -            | -            | -            | Evet          | Evet          |
 | **Tümleştirme**                    |           |                          |                          |                             |           |           |          |
-| azure_rm_servicebus                         | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_servicebus_info                   | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_servicebusqueue                    | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_servicebussaspolicy                | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_servicebustopic                    | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_servicebustopicsubscription        | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
+| azure_rm_servicebus                         | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_servicebus_info                   | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_servicebusqueue                    | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_servicebussaspolicy                | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_servicebustopic                    | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_servicebustopicsubscription        | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
 | **Güvenlik**                    |           |                          |                          |                             |           |           |           |
-| azure_rm_keyvault                           | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_keyvault_info                     | -            | -                           | -              | -          | Yes          | Yes          | Yes          |
-| azure_rm_keyvaultkey                        | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_keyvaultkey_info                   | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_keyvaultsecret                     | -            | Yes                         | Yes          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_roleassignment                     | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_roleassignment_info               | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_roledefinition                     | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_roledefinition_info               | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
+| azure_rm_keyvault                           | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_keyvault_info                     | -            | -                           | -              | -          | Evet          | Evet          | Evet          |
+| azure_rm_keyvaultkey                        | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_keyvaultkey_info                   | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_keyvaultsecret                     | -            | Evet                         | Evet          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_roleassignment                     | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_roleassignment_info               | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_roledefinition                     | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_roledefinition_info               | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
 | **DevOps**               |           |                          |                          |                             |           |           |                  |
-| azure_rm_devtestlab                         | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlab_info                   | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabarmtemplate_info        | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabartifact_info           | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabartifactsource           | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabartifactsource_info     | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabcustomimage              | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabcustomimage_info         | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_devtestlabenvironment              | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabenvironment_info         | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_devtestlabpolicy                   | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabpolicy_info              | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_devtestlabschedule                 | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabschedule_info            | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| azure_rm_devtestlabvirtualmachine           | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabvirtualmachine_info | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabvirtualnetwork           | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_devtestlabvirtualnetwork_info     | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
+| azure_rm_devtestlab                         | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlab_info                   | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabarmtemplate_info        | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabartifact_info           | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabartifactsource           | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabartifactsource_info     | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabcustomimage              | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabcustomimage_info         | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_devtestlabenvironment              | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabenvironment_info         | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_devtestlabpolicy                   | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabpolicy_info              | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_devtestlabschedule                 | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabschedule_info            | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| azure_rm_devtestlabvirtualmachine           | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabvirtualmachine_info | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabvirtualnetwork           | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_devtestlabvirtualnetwork_info     | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
 | **Azure İzleyici**                           |              |                           |            |              |                 |           |              |
-| azure_rm_autoscale                          | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_autoscale_info                    | -            | -                         | -          | Yes          | Yes          | Yes          | Yes          |
-| azure_rm_loganalyticsworkspace              | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_loganalyticsworkspace_info        | -            | -                           | -            | -            | Yes          | Yes          | Yes          |
-| azure_rm_monitorlogprofile                  | -            | -                           | -            | -            | -            | Yes          | Yes          |
-| **Yönetim ve Idare**     |              |                           |            |            |            |            |              |
-| azure_rm_automationaccount        | -            | -                         | -          | -          | -          | Yes        | Yes          |
-| azure_rm_automationaccount_info   | -            | -                         | -          | -          | -          | Yes        | Yes          |
-| azure_rm_lock                     | -            | -                         | -          | -          | -          | Yes        | Yes          |
-| azure_rm_lock_info                | -            | -                         | -          | -          | -          | Yes        | Yes          |
+| azure_rm_autoscale                          | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_autoscale_info                    | -            | -                         | -          | Evet          | Evet          | Evet          | Evet          |
+| azure_rm_loganalyticsworkspace              | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_loganalyticsworkspace_info        | -            | -                           | -            | -            | Evet          | Evet          | Evet          |
+| azure_rm_monitorlogprofile                  | -            | -                           | -            | -            | -            | Evet          | Evet          |
+| **Yönetim ve İdare**     |              |                           |            |            |            |            |              |
+| azure_rm_automationaccount        | -            | -                         | -          | -          | -          | Evet        | Evet          |
+| azure_rm_automationaccount_info   | -            | -                         | -          | -          | -          | Evet        | Evet          |
+| azure_rm_lock                     | -            | -                         | -          | -          | -          | Evet        | Evet          |
+| azure_rm_lock_info                | -            | -                         | -          | -          | -          | Evet        | Evet          |
 | **Nesnelerin İnterneti**            |              |                           |            |            |            |            |              |
-| azure_rm_iotdevice                | -            | -                         | -          | -          | -          | Yes        | Yes          |
-| azure_rm_iotdevice_info           | -            | -                         | -          | -          | -          | Yes        | Yes          |
-| azure_rm_iotdevicemodule          | -            | -                         | -          | -          | -          | Yes        | Yes          |
-| azure_rm_iothub_info              | -            | -                         | -          | -          | -          | Yes        | Yes          |
-| azure_rm_iothub_info              | -            | -                         | -          | -          | -          | Yes        | Yes          |
-| azure_rm_iothubconsumergroup      | -            | -                         | -          | -          | -          | Yes        | Yes          |
+| azure_rm_iotdevice                | -            | -                         | -          | -          | -          | Evet        | Evet          |
+| azure_rm_iotdevice_info           | -            | -                         | -          | -          | -          | Evet        | Evet          |
+| azure_rm_iotdevicemodule          | -            | -                         | -          | -          | -          | Evet        | Evet          |
+| azure_rm_iothub_info              | -            | -                         | -          | -          | -          | Evet        | Evet          |
+| azure_rm_iothub_info              | -            | -                         | -          | -          | -          | Evet        | Evet          |
+| azure_rm_iothubconsumergroup      | -            | -                         | -          | -          | -          | Evet        | Evet          |
 
-## <a name="introduction-to-playbook-role-for-azure"></a>Azure için PlayBook rolüne giriş
+## <a name="introduction-to-playbook-role-for-azure"></a>Azure için oyun kitabı rolüne giriş
 
-[Azure_preview_module PlayBook rolü](https://galaxy.ansible.com/Azure/azure_preview_modules/) , en son Azure modüllerini içerir. Güncelleştirmeler ve hata düzeltmeleri, resmi olarak erişilebilir sürümden daha zamanında yapılır. Azure kaynak sağlama amaçlarıyla kullanılması durumunda, `azure_preview_module` PlayBook rolünü yüklemelisiniz.
+[azure_preview_module oyun kitabı rolü,](https://galaxy.ansible.com/Azure/azure_preview_modules/) en son Azure modüllerini içerir. Güncelleştirmeler ve hata düzeltmeleri resmi Ansible sürümüdaha zamanında yapılır. Ansible'ı Azure kaynak sağlama amacıyla kullanıyorsanız, oyun kitabı `azure_preview_module` rolünü yüklemeniz için teşvik edilirsiniz.
 
-`azure_preview_module` PlayBook rolü her üç haftada bir yayımlanır.
+Oyun `azure_preview_module` kitabı rolü her üç haftada bir yayınlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-PlayBook rolleri hakkında daha fazla bilgi için bkz. yeniden [kullanılabilir PlayBook 'ları oluşturma](https://docs.ansible.com/ansible/latest/playbooks_reuse.html). 
+Oyun kitabı rolleri hakkında daha fazla bilgi için [bkz.](https://docs.ansible.com/ansible/latest/playbooks_reuse.html) 

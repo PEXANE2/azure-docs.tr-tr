@@ -1,6 +1,6 @@
 ---
-title: Eğilim mikro derin güvenliğini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Trend mikro derin güvenliğini Azure Sentinel 'e bağlamayı öğrenin.
+title: Trend Micro Deep Security'yi Azure Sentinel'e bağlayın| Microsoft Dokümanlar
+description: Trend Micro Deep Security'yi Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588034"
 ---
-# <a name="connect-trend-micro-deep-security"></a>Bağlama eğilimi mikro derin güvenliği
+# <a name="connect-trend-micro-deep-security"></a>Trend Micro Deep Security'yi bağlayın
 
-Trend mikro derin güvenlik Bağlayıcısı, Azure Sentinel ile derin güvenlik günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirir. Bu, kuruluşunuzun ağları ve sistemleri hakkında daha fazla bilgi verir ve güvenlik işlemi yeteneklerini geliştirir.
+Trend Micro Deep Security konektörü, panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı iyileştirmek için Derin Güvenlik günlüklerinizi Azure Sentinel ile kolayca bağlamanızı sağlar. Bu, kuruluşunuzun ağları ve sistemleri hakkında daha fazla bilgi verir ve güvenlik işlem yeteneklerinizi geliştirir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
+- Azure Sentinel çalışma alanı için izinleri okuyun ve yazın.
 
-## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Azure Sentinel 'i Trend mikro derin güvenlik 'e bağlayın
+## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Azure Sentinel'i Trend Micro Deep Security'ye bağlayın
 
-1. Azure portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve ardından **Trend mikro derin güvenlik** bağlayıcısını seçin.
+1. Azure portalında Azure **Sentinel** > **Veri bağlayıcılarına** gidin ve **ardından Trend Micro Deep Security** bağlayıcısını seçin.
 
-2. **Bağlayıcı sayfasını aç**' ı seçin.
+2. **Bağlayıcıyı Aç'ı**seçin.
 
-3. Yönergeleri ve sonraki adımları izleyin.
+3. Talimatları ve sonraki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Trend mikro derin güvenliğini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
+Bu belgede, Trend Micro Deep Security'yi Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
+- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
 
 

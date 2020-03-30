@@ -1,6 +1,6 @@
 ---
-title: Azure BT operatörleri için Başlarken Kılavuzu | Microsoft Docs
-description: Azure It işleçleri için Başlarken Kılavuzu
+title: Azure BT operatörleri için başlangıç kılavuzu | Microsoft Dokümanlar
+description: Azure BT operatörleri için başlangıç kılavuzunu başlatın
 author: RicksterCDN
 ms.author: rclaus
 tags: azure-resource-manager
@@ -9,90 +9,90 @@ ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.openlocfilehash: 4f9da6cbfe8d1e6b92c39148b275de193730c8f1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77623570"
 ---
-# <a name="get-started-for-azure-it-operators"></a>Azure It işleçleri için kullanmaya başlayın
+# <a name="get-started-for-azure-it-operators"></a>Azure BT operatörleri için başlayın
 
-Bu kılavuzda, bir Microsoft Azure altyapısının dağıtımıyla ve yönetimiyle ilgili temel kavramlar tanıtılmıştır. Bulut bilgi işlem veya Azure 'un kendisi için yeni başladıysanız, bu kılavuzda kavramlar, dağıtım ve yönetim ayrıntılarının hızlı bir şekilde başlamanıza yardımcı olur. Bu kılavuzun pek çok bölümü, sanal makine dağıtma gibi bir işlemi tartışır ve daha ayrıntılı teknik ayrıntı için bir bağlantı sağlar.
+Bu kılavuz, Microsoft Azure altyapısının dağıtımı ve yönetimiyle ilgili temel kavramları tanıtır. Bulut bilgi işlemde veya Azure'un kendisinde yeniyseniz, bu kılavuz kavramlar, dağıtım ve yönetim ayrıntılarıyla hızla başlamanıza yardımcı olur. Bu kılavuzun birçok bölümü sanal bir makine dağıtma gibi bir işlemi tartışır ve ardından ayrıntılı teknik ayrıntılar için bir bağlantı sağlar.
 
-## <a name="cloud-computing-overview"></a>Bulut bilgi işlem genel bakış
+## <a name="cloud-computing-overview"></a>Bulut bilgi işleme genel bakış
 
-Bulut bilgi işlem, geleneksel şirket içi veri merkezine modern bir alternatif sağlar. Genel bulut satıcıları, tüm bilgi işlem altyapısını ve temel alınan yönetim yazılımını sağlar ve yönetir. Bu satıcılar çok çeşitli bulut hizmetleri sağlar. Bu durumda bir bulut hizmeti, bir sanal makine, bir Web sunucusu veya bulut tarafından barındırılan bir veritabanı altyapısı olabilir. Bir bulut sağlayıcısı müşterisi olarak, bu bulut hizmetlerini gerekli bir şekilde kiralayın. Bunu yaparken, büyük miktarda donanım bakım masrafına bir operasyonel gider olarak dönüştürürsünüz. Bulut hizmeti de şu avantajları sağlar:
+Bulut bilgi işlem, geleneksel şirket içi veri merkezine modern bir alternatif sunar. Genel bulut satıcıları tüm bilgi işlem altyapısını ve temel yönetim yazılımını sağlar ve yönetir. Bu satıcılar çok çeşitli bulut hizmetleri sağlar. Bu durumda bir bulut hizmeti sanal bir makine, bir web sunucusu veya bulut barındırılan veritabanı altyapısı olabilir. Bulut sağlayıcısı müşterisi olarak, bu bulut hizmetlerini gerektiği gibi kiralarsınız. Bunu yaparken, donanım bakımının sermaye giderini işletme giderine dönüştürürsunuz. Bulut hizmeti de şu avantajları sağlar:
 
-- Büyük işlem ortamlarının hızlı dağıtımı
+- Büyük bilgi işlem ortamlarının hızlı dağıtımı
 
-- Artık gerekli olmayan sistemlerin hızlı bir şekilde ayırmayı kaldırma
+- Artık gerekli olmayan sistemlerin hızlı deallocation
 
-- Geleneksel olarak karmaşık sistemlerin yük dengeleyiciler gibi kolay dağıtımı
+- Yük dengeleyicileri gibi geleneksel olarak karmaşık sistemlerin kolay dağıtımı
 
-- Gerektiğinde esnek işlem kapasitesi veya ölçek sağlama olanağı
+- Gerektiğinde esnek bilgi işlem kapasitesi veya ölçek lendirme becerisi
 
-- Daha düşük maliyetli bilgi işlem ortamları
+- Daha uygun maliyetli bilgi işlem ortamları
 
-- Web tabanlı portal veya programlı Otomasyon ile herhangi bir yerden erişim
+- Web tabanlı bir portal veya programlı otomasyon ile her yerden erişim
 
-- Çoğu işlem ve uygulama ihtiyaçlarını karşılamak için bulut tabanlı hizmetler
+- Çoğu bilgi işlem ve uygulama gereksinimlerini karşılamak için bulut tabanlı hizmetler
 
-Şirket içi altyapıyla, dağıtılan donanım ve yazılımlar üzerinde tam denetime sahip olursunuz. Tarihsel olarak, bu, ölçeklendirmeye odaklanarak donanım tedarik kararlarına yol açmıştır. En yüksek performans ihtiyaçlarını karşılamak için daha fazla çekirdeğe sahip bir sunucu satın alma örneğidir. Ne yazık ki, bu altyapı isteğe bağlı bir pencere dışında kullanılıyor olabilir. Azure ile yalnızca ihtiyacınız olan altyapıyı dağıtabilir ve istediğiniz zaman bu altyapıyı ayarlayabilir veya azaltabilirsiniz. Bu, bir performans gereksinimini karşılamak için ek işlem düğümlerinin dağıtımına göre ölçeklendirmeye odaklanmaya yol açar. Bulut hizmetlerinin ölçeklendirilmesi, pahalı donanıma kadar ölçeklendirmeye kıyasla daha düşük maliyetli bir işlemdir.
+Şirket içi altyapı ile, dağıtılan donanım ve yazılım üzerinde tam denetime sahipsiniz. Tarihsel olarak, bu kadar ölçekleme odaklanmak donanım satın alma kararları yol açmıştır. Bir örnek, en yüksek performans gereksinimlerini karşılamak için daha fazla çekirdekli bir sunucu satın almaktır. Ne yazık ki, bu altyapı bir talep penceresi dışında yeterince kullanılabilir. Azure ile yalnızca ihtiyacınız olan altyapıyı dağıtabilir ve istediğiniz zaman yukarı veya aşağı ayarlayabilirsiniz. Bu, bir performans gereksinimini karşılamak için ek bilgi işlem düğümlerinin dağıtımı yoluyla ölçekleme üzerinde odaklanmaya yol açar. Bulut hizmetlerini ölçekleme, pahalı donanımlar aracılığıyla ölçekleme yapmaktan daha uygun maliyetlidir.
 
-Microsoft, dünyanın dört bir yanındaki çeşitli Azure veri merkezlerini daha planlı olarak dağıtmıştır. Ayrıca, Microsoft, Çin ve Almanya gibi bölgelerde egeign bulutlarını de artmaktadır. Veri merkezlerini yalnızca en büyük küresel kuruluşlar bu şekilde dağıtabilir. bu nedenle Azure kullanmak, tüm boyuttaki kuruluşların hizmetlerini müşterilerine yakın bir şekilde dağıtmasını kolaylaştırır.
+Microsoft, daha planlı olarak dünya çapında birçok Azure veri merkezi dağıttı. Ayrıca, Microsoft Çin ve Almanya gibi bölgelerde egemen bulutlar artmaktadır. Yalnızca en büyük küresel işletmeler veri merkezlerini bu şekilde dağıtabilir, bu nedenle Azure'u kullanmak her boyuttaki işletmelerin hizmetlerini müşterilerine yakın bir şekilde dağıtmasını kolaylaştırır.
 
-Küçük işletmeler için, Azure düşük maliyetli bir giriş noktasına izin verir ve bu sayede işlem artışları için hızlı bir istek olarak ölçeklendirme olanağı sağlar. Bu, altyapıda büyük bir ön ön sermaye yatırımını önler ve gerektiğinde sistemleri mimarın ve yeniden mimarın üzerinde ayarlama esnekliği sağlar. Bulut bilgi işlemin kullanımı, başlangıç artışını hızlı ve başarısız-hızlı bir modelle uyumlu hale sığdırır.
+Azure, küçük işletmeler için, bilgi işlem talebi arttıkça hızla ölçeklendirme özelliğiyle düşük maliyetli bir giriş noktası sağlar. Bu, altyapıya büyük bir ön sermaye yatırımını önler ve gerektiğinde mimar ve yeniden mimar sistemleri için esneklik sağlar. Bulut bilgi işlem kullanımı, başlangıç büyümesinin ölçek hızında ve başarısız hızlı modeline çok iyi uyum sağlar.
 
-Kullanılabilir Azure bölgeleri hakkında daha fazla bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/).
+Kullanılabilir Azure bölgeleri hakkında daha fazla bilgi için Azure [bölgelerine](https://azure.microsoft.com/regions/)bakın.
 
 ### <a name="cloud-computing-model"></a>Bulut bilgi işlem modeli
 
-Azure, müşterilere sunulan hizmet kategorilerini temel alan bir bulut bilgi işlem modeli kullanır. Üç hizmet kategorisi hizmet olarak altyapı (IaaS), hizmet olarak platform (PaaS) ve hizmet olarak yazılım (SaaS) içerir. Satıcılar, bu kategorilerin her birinde bilgi işlem yığınındaki bileşenlerin bir kısmını veya tamamını paylaşır. Bulut bilgi işlem kategorilerinin her birine göz atalım.
-![bulut bilgi Işlem yığını karşılaştırması](./media/cloud-computing-comparison.png)
+Azure, müşterilere sağlanan hizmet kategorilerini temel alan bir bulut bilgi işlem modeli kullanır. Hizmet in üç kategorisi hizmet olarak altyapı (IaaS), Hizmet Olarak Platform (PaaS) ve Hizmet Olarak Yazılım (SaaS) içerir. Satıcılar, bu kategorilerin her birinde bilgi işlem yığınındaki bileşenlerin sorumluluğunun bir kısmını veya tümünün paylaşMaktadır. Bulut bilgi işlem kategorilerinin her birine bir göz atalım.
+![Bulut Bilgi İşlem Yığını Karşılaştırması](./media/cloud-computing-comparison.png)
 
-#### <a name="iaas-infrastructure-as-a-service"></a>IaaS: hizmet olarak altyapı
+#### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Hizmet olarak altyapı
 
-Bir IaaS Bulut satıcısı çalışır ve bilgisayar sanallaştırmayı etkinleştirmek için tüm fiziksel işlem kaynaklarını ve gerekli yazılımları yönetir. Bu hizmetin bir müşterisi, sanal makineleri bu barındırılan veri merkezlerinde dağıtır. Sanal makineler, site dışı bir veri merkezinde yer alıyor olsa da, IaaS tüketicisi temeldeki altyapıyı bulut satıcısına bırakarak işletim sisteminin yapılandırması ve yönetimi üzerinde denetime sahiptir.
+Bir IaaS bulut satıcısı, bilgisayar sanallaştırmasını etkinleştirmek için tüm fiziksel bilgi işlem kaynaklarını ve gerekli yazılımı çalıştırıp yönetir. Bu hizmetin bir müşterisi, barındırılan bu veri merkezlerinde sanal makineler dağıtıyor. Sanal makineler iş yeri dışında bir veri merkezinde bulunsa da, IaaS tüketicisi işletim sisteminin yapılandırması ve yönetimi üzerinde denetime sahiptir ve altta yatan altyapıyı bulut satıcısına bırakır.
 
-Azure, sanal makineler, sanal makine ölçek kümeleri ve ilgili ağ altyapısı gibi çeşitli IaaS çözümleri içerir. Sanal makineler, başlangıçta Hizmetleri Azure 'a geçirmeye yönelik popüler bir seçimdir çünkü bir "kaldırma ve kaydırma" geçiş modeli sağlar. Bir VM 'yi, veri merkezinizde Hizmetleri çalıştırmakta olan altyapı gibi yapılandırabilir ve ardından yazılımınızı yeni VM 'ye geçirebilirsiniz. Diğer hizmetlere veya depolamaya yönelik URL 'Ler gibi yapılandırma güncelleştirmeleri yapmanız gerekebilir, ancak pek çok uygulamayı bu şekilde geçirebilirsiniz.
+Azure, sanal makineler, sanal makine ölçek kümeleri ve ilgili ağ altyapısı dahil olmak üzere çeşitli IaaS çözümleri içerir. Sanal makineler, "kaldırma ve kaydırma" geçiş modeline olanak sağladığından, başlangıçta hizmetleri Azure'a geçirmek için popüler bir seçimdir. Veri merkezinizde hizmetlerinizi çalıştıran altyapı gibi bir VM yapılandırabilir ve ardından yazılımınızı yeni VM'ye geçirebilirsiniz. URL'ler gibi yapılandırma güncelleştirmeleri yapmanız gerekebilir, ancak birçok uygulamayı bu şekilde geçirebilirsiniz.
 
-Sanal Makine Ölçek Kümeleri, Azure sanal makinelerinin üzerine kurulmuştur ve özdeş VM 'lerin kümelerini dağıtmanın kolay bir yolunu sağlar. Sanal makine ölçek kümeleri de otomatik ölçeklendirmeyi destekler, böylece yeni VM 'Ler gerektiğinde otomatik olarak dağıtılacaktır. Bu, sanal makine ölçeğini Azure Service Fabric ve Azure Container Service gibi daha üst düzey mikro hizmet işlem kümelerini barındırmak için ideal bir platform ayarlar.
+Sanal makine ölçek kümeleri Azure Sanal Makineleri'nin üzerine inşa edilmiştir ve aynı Sanal Makinelerden kümeleri dağıtmak için kolay bir yol sağlar. Sanal makine ölçek kümeleri, gerektiğinde yeni VM'lerin otomatik olarak dağıtılabilmesi için otomatik ölçeklendirmeyi de destekler. Bu, sanal makine ölçeği kümelerini Azure Hizmet Kumaşı ve Azure Kapsayıcı Hizmeti gibi üst düzey mikrohizmet bilgi işlem kümelerini barındırmak için ideal bir platform haline getirir.
 
-#### <a name="paas-platform-as-a-service"></a>PaaS: hizmet olarak platform
+#### <a name="paas-platform-as-a-service"></a>PaaS: Hizmet olarak platform
 
-PaaS ile uygulamanızı, bulut hizmeti satıcısının sağladığı bir ortama dağıtırsınız. Satıcı, uygulama geliştirme ve veri yönetimine odaklanabilmeniz için tüm altyapı yönetimini yapar.
+PaaS ile, uygulamanızı bulut hizmeti satıcısının sağladığı bir ortama dağısınız. Uygulama geliştirme ve veri yönetimine odaklanabilmeniz için satıcı tüm altyapı yönetimini yapar.
 
-Azure, Azure App Service ve Azure Cloud Services (Web ve çalışan rolleri) Web Apps özelliği de dahil olmak üzere çeşitli PaaS bilgi işlem teklifleri sunar. Her iki durumda da geliştiriciler, uygulamayı destekleyen NSU ve cıvatların her şeyi bilmeden uygulamasını dağıtmanın birden çok yolu vardır. Geliştiricilerin sanal makineler (VM) oluşturması, her birinde oturum açması için Uzak Masaüstü Protokolü (RDP) kullanması veya uygulamayı yüklemesi gerekmez. Bu kişiler yalnızca bir düğmeye (veya buna yakın) ulaşarak, Microsoft tarafından sunulan araçların VM 'Leri sağlamasını ve uygulamayı onlara dağıtıp yüklemesini sağlar.
+Azure, Azure Uygulama Hizmeti'nin Web Uygulamaları özelliği ve Azure Bulut Hizmetleri (web ve çalışan rolleri) dahil olmak üzere çeşitli PaaS hesaplama teklifleri sunar. Her iki durumda da, geliştiricilerin uygulamayı destekleyen somunlar ve cıvatalar hakkında hiçbir şey bilmeden uygulamalarını dağıtmanın birden çok yolu vardır. Geliştiricilerin sanal makineler (VM' ler) oluşturması, her birinde oturum açmak için Uzak Masaüstü Protokolü (RDP) kullanması veya uygulamayı yüklemesi gerekmiyor. Onlar sadece bir düğmeye (veya yakın) ve Microsoft tarafından sağlanan araçlar VM'ler hükmü ve daha sonra dağıtmak ve onlara uygulama yükleyin.
 
-#### <a name="saas-software-as-a-service"></a>SaaS: hizmet olarak yazılım
+#### <a name="saas-software-as-a-service"></a>SaaS: Bir hizmet olarak yazılım
 
-SaaS, merkezi olarak barındırılan ve yönetilen bir yazılımdır. Genellikle çok kiracılı bir mimariye dayalıdır — uygulamanın tek bir sürümü tüm müşteriler için kullanılır. Tüm konumlarda en iyi performansı sağlamak için birden çok örneğe ölçeklendirilebilir. SaaS yazılımı genellikle aylık veya yıllık bir abonelik üzerinden lisanslanır. SaaS yazılım satıcıları yazılım yığınının tüm bileşenlerinden sorumludur, böylece tüm yönettiğiniz hizmetler sağlanmış olur.
+SaaS merkezi olarak barındırılan ve yönetilen bir yazılımdır. Genellikle çok kiracılı bir mimariye dayanır- uygulamanın tek bir sürümü tüm müşteriler için kullanılır. Tüm konumlarda en iyi performansı sağlamak için birden çok örneğe ölçeklenebilir. SaaS yazılımı genellikle aylık veya yıllık abonelik yoluyla lisanslanır. SaaS yazılım satıcıları yazılım yığınının tüm bileşenlerinden sorumludur, bu nedenle tek yönettiğiniz hizmetler sağlanan hizmetlerdir.
 
-Microsoft Office 365, SaaS teklifiyle iyi bir örnektir. Aboneler aylık veya yıllık abonelik ücreti ödeyerek Microsoft Exchange, Microsoft OneDrive ve Microsoft Office paketinin geri kalanını bir hizmet olarak alırlar. Aboneler her zaman en son sürümü alır ve Exchange sunucusu sizin için yönetilir. Her yıl Office 'i yükleme ve yükseltme ile karşılaştırıldığında, bu daha pahalıdır ve daha az çaba gerektirir.
+Microsoft Office 365, SaaS teklifinin iyi bir örneğidir. Aboneler aylık veya yıllık abonelik ücreti öder ler ve Microsoft Exchange, Microsoft OneDrive ve Microsoft Office paketinin geri kalanını hizmet olarak alırlar. Aboneler her zaman en son sürümü almak ve Exchange sunucusu sizin için yönetilir. Office'i her yıl yüklemek ve yükseltmekle karşılaştırıldığında, bu daha az pahalıdır ve daha az çaba gerektirir.
 
 ## <a name="azure-services"></a>Azure hizmetleri
 
-Azure, bulut bilgi işlem platformunda çok sayıda hizmet sunar. Bu hizmetler aşağıdakileri içerir.
+Azure, bulut bilgi işlem platformunda birçok hizmet sunmaktadır. Bu hizmetler aşağıdakileri içerir.
 
 ### <a name="compute-services"></a>İşlem hizmetleri
 
-Uygulama iş yükünü barındırmak ve çalıştırmak için hizmetler:
+Uygulama iş yükünü barındırma ve çalıştırma hizmetleri:
 
-- Azure sanal makineler — hem Linux hem de Windows
+- Azure Sanal Makineler—hem Linux hem de Windows
 
-- Uygulama Hizmetleri (Web Apps, Mobile Apps, Logic Apps, API Apps ve Işlev uygulamaları)
+- Uygulama Hizmetleri (Web Uygulamaları, Mobil Uygulamalar, Mantık Uygulamaları, API Uygulamaları ve Fonksiyon Uygulamaları)
 
-- Azure Batch (büyük ölçekli paralel ve toplu işlem işleri için)
+- Azure Toplu İş (büyük ölçekli paralel ve toplu işlem işleri için)
 
 - Azure Service Fabric
 
 - Azure Container Service
 
-### <a name="data-services"></a>Veri Hizmetleri
+### <a name="data-services"></a>Veri hizmetleri
 
-Verileri depolama ve yönetme Hizmetleri:
+Verileri depolama ve yönetme hizmetleri:
 
-- Azure depolama (Azure blob, kuyruk, tablo ve dosya hizmetlerinden oluşur)
+- Azure Depolama (Azure Blob, Sıra, Tablo ve Dosya hizmetlerini içerir)
 
 - Azure SQL Veritabanı
 
@@ -102,384 +102,384 @@ Verileri depolama ve yönetme Hizmetleri:
 
 - Redis için Azure Önbelleği
 
-### <a name="application-services"></a>Uygulama Hizmetleri
+### <a name="application-services"></a>Uygulama hizmetleri
 
-Oluşturma ve işletim uygulamaları için hizmetler:
+Bina ve işletme uygulamaları için hizmetler:
 
 - Azure Active Directory (Azure AD)
 
-- Dağıtılmış sistemleri bağlamak için Azure Service Bus
+- Dağıtılmış sistemleri bağlamak için Azure Servis Veri Servisi
 
 - Büyük verileri işlemek için Azure HDInsight
 
 - Tümleştirme ve düzenleme iş akışları için Azure Logic Apps
 
-- Azure Media Services
+- Azure Medya Hizmetleri
 
-### <a name="network-services"></a>Ağ Hizmetleri
+### <a name="network-services"></a>Ağ hizmetleri
 
-Hem Azure hem de Azure ile şirket içi veri merkezleri arasında ağ hizmetleri için hizmetler:
+Hem Azure içinde hem de Azure ve şirket içi veri merkezleri arasında ağ oluşturmak için hizmetler:
 
 - Azure Sanal Ağ
 
 - Azure ExpressRoute
 
-- Azure tarafından sağlanmış DNS
+- Azure tarafından sağlanan DNS
 
 - Azure Traffic Manager
 
 - Azure Content Delivery Network
 
-Azure hizmetleri hakkında ayrıntılı belgeler için bkz. [Azure hizmet belgeleri](https://docs.microsoft.com/azure).
+Azure hizmetleriyle ilgili ayrıntılı belgeler için [Azure hizmet belgelerine](https://docs.microsoft.com/azure)bakın.
 
-## <a name="azure-key-concepts"></a>Azure Anahtar kavramları
+## <a name="azure-key-concepts"></a>Azure anahtar kavramları
 
 ### <a name="datacenters-and-regions"></a>Veri merkezleri ve bölgeler
 
-Azure, dünyanın dört bir yanındaki birçok bölgede genel olarak kullanılabilen küresel bir bulut platformudur. Azure 'da bir hizmet, uygulama veya VM sağladığınızda bir bölge seçmeniz istenir. Seçilen bölge, uygulamanızın çalıştığı belirli bir veri merkezini temsil eder. Daha fazla bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/).
+Azure, genellikle dünyanın birçok bölgesinde kullanılabilen küresel bir bulut platformudur. Azure'da bir hizmet, uygulama veya VM sağladığınızda, bir bölge seçmeniz istenir. Seçili bölge, uygulamanızın çalıştığı belirli bir veri merkezini temsil eder. Daha fazla bilgi için Azure [bölgelerine](https://azure.microsoft.com/regions/)bakın.
 
-Azure kullanmanın avantajlarından biri, uygulamalarınızı dünyanın dört bir yanındaki çeşitli veri merkezlerine dağıtabileceğiniz bir avantajdır. Seçtiğiniz bölge, uygulamanızın performansını etkileyebilir. Ağ isteklerindeki gecikmeyi azaltmak için müşterilerinizin en yakınına daha yakın bir bölge seçmek en iyisidir. Ayrıca, belirli ülkelerde/bölgelerde uygulamanızı dağıtmaya yönelik yasal gereksinimleri karşılamak için bir bölge seçebilirsiniz.
+Azure'u kullanmanın avantajlarından biri, uygulamalarınızı dünyanın çeşitli veri merkezlerine dağıtabiliyor olmaktır. Seçtiğiniz bölge uygulamanızın performansını etkileyebilir. Ağ isteklerindeki gecikme süresini azaltmak için müşterilerinizin çoğuna daha yakın bir bölge seçmek en uygun uyrulur. Uygulamanızı belirli ülkelerde/bölgelerde dağıtmak için yasal gereklilikleri karşılamak için bir bölge de seçebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
-Azure portal, Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için kullanılabilen Web tabanlı bir uygulamadır. Azure portal [Portal.Azure.com](https://portal.azure.com)adresinde bulunur. Bu, Azure kaynaklarını yönetmeye yönelik özelleştirilebilir bir Pano ve araç içerir. Ayrıca faturalandırma ve abonelik bilgileri de sağlar. Daha fazla bilgi için bkz. [Microsoft Azure Portal genel bakış](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) ve [Azure kaynaklarını Portal üzerinden yönetme](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Azure portalı, Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için kullanılabilecek web tabanlı bir uygulamadır. Azure portalı [portal.azure.com](https://portal.azure.com)adresinde yer alır. Azure kaynaklarını yönetmek için özelleştirilebilir bir pano ve araç içerir. Ayrıca fatura ve abonelik bilgileri sağlar. Daha fazla bilgi için [Microsoft Azure portalına genel bakış](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) ve Azure kaynaklarını portal aracılığıyla [yönet'e](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)bakın.
 
 ### <a name="resources"></a>Kaynaklar
 
-Azure kaynakları, bir Azure aboneliğine dağıtılan bireysel işlem, ağ, veri veya uygulama barındırma hizmetlerdir. Bazı ortak kaynaklar sanal makineler, depolama hesapları veya SQL veritabanlarıdır. Azure hizmetleri genellikle ilgili birkaç Azure kaynaklarından oluşur. Örneğin, bir Azure sanal makinesi bir VM, depolama hesabı, ağ bağdaştırıcısı ve genel IP adresi içerebilir. Bu kaynaklar tek tek veya bir grup olarak oluşturulabilir, yönetilebilir ve silinebilir. Azure kaynakları, bu kılavuzun ilerleyen kısımlarında daha ayrıntılı bir şekilde ele alınmıştır.
+Azure kaynakları, Azure aboneliğine dağıtılan tek tek bilgi işlem, ağ, veri veya uygulama barındırma hizmetleridir. Bazı yaygın kaynaklar sanal makineler, depolama hesapları veya SQL veritabanlarıdır. Azure hizmetleri genellikle birkaç ilgili Azure kaynağından oluşur. Örneğin, bir Azure sanal makinesi nde VM, depolama hesabı, ağ bağdaştırıcısı ve genel IP adresi olabilir. Bu kaynaklar tek tek veya grup olarak oluşturulabilir, yönetilebilir ve silinebilir. Azure kaynakları daha sonra bu kılavuzda daha ayrıntılı olarak ele alınmıştır.
 
 ### <a name="resource-groups"></a>Kaynak grupları
 
-Azure Kaynak grubu, bir Azure çözümü için ilgili kaynakları tutan bir kapsayıcıdır. Kaynak grubu, çözüme yönelik tüm kaynakları veya yalnızca Grup olarak yönetmek istediğiniz kaynakları içerebilir. Azure Kaynak grupları, bu kılavuzun ilerleyen kısımlarında daha ayrıntılı bir şekilde ele alınmıştır.
+Azure kaynak grubu, Bir Azure çözümü için ilgili kaynakları barındıran bir kapsayıcıdır. Kaynak grubu, çözüm için tüm kaynakları veya grup olarak yönetmek istediğiniz kaynakları içerebilir. Azure kaynak grupları daha sonra bu kılavuzda daha ayrıntılı olarak ele alınmıştır.
 
 ### <a name="resource-manager-templates"></a>Resource Manager şablonları
 
-Azure Resource Manager şablonu, bir kaynak grubuna dağıtılacak bir veya daha fazla kaynağı tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Dağıtılan kaynaklar arasındaki bağımlılıkları da tanımlar. Kaynak Yöneticisi şablonlar bu kılavuzun ilerleyen kısımlarında daha ayrıntılı bir şekilde ele alınmıştır.
+Azure Kaynak Yöneticisi şablonu, kaynak grubuna dağıtılabilmek için bir veya daha fazla kaynak tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Ayrıca, dağıtılan kaynaklar arasındaki bağımlılıkları da tanımlar. Kaynak Yöneticisi şablonları daha sonra bu kılavuzda daha ayrıntılı olarak ele alınmıştır.
 
-### <a name="automation"></a>Otomasyon
+### <a name="automation"></a>Automation
 
-Azure portal kullanarak kaynak oluşturmaya, yönetmeye ve silmeye ek olarak, bu etkinlikleri PowerShell veya Azure komut satırı arabirimi (CLı) kullanarak otomatik hale getirebilirsiniz.
+Azure portalını kullanarak kaynak oluşturmanın, yönetmenin ve silmenin yanı sıra PowerShell veya Azure komut satırı arabirimini (CLI) kullanarak bu etkinlikleri otomatikleştirebilirsiniz.
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell, Azure 'un yönetilmesi için cmdlet 'leri sağlayan bir modüller kümesidir. Azure hizmetlerini oluşturmak, yönetmek ve kaldırmak için cmdlet 'lerini kullanabilirsiniz. Cmdlet 'ler tutarlı, yinelenebilir ve uygulamalı dağıtımlar elde etmenize yardımcı olabilir. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps).
+Azure PowerShell, Azure'u yönetmek için cmdlets sağlayan bir modül kümesidir. Azure hizmetlerini oluşturmak, yönetmek ve kaldırmak için cmdlet'leri kullanabilirsiniz. Cmdlets tutarlı, tekrarlanabilir ve hands-off dağıtımları elde edebilirsiniz yardımcı olabilir. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps).
 
 #### <a name="azure-command-line-interface"></a>Azure komut satırı arabirimi
 
-Azure komut satırı arabirimi, komut satırından Azure kaynaklarını oluşturmak, yönetmek ve kaldırmak için kullanabileceğiniz bir araçtır. Azure CLı, Linux, Mac OS X ve Windows için kullanılabilir. Daha fazla bilgi ve teknik ayrıntılar için bkz. [Azure CLI 'Yi yüklemeyi](/cli/azure/install-azure-cli).
+Azure komut satırı arabirimi, Azure kaynaklarını komut satırından oluşturmak, yönetmek ve kaldırmak için kullanabileceğiniz bir araçtır. Azure CLI, Linux, Mac OS X ve Windows için kullanılabilir. Daha fazla bilgi ve teknik ayrıntılar için Azure [CLI'yi yükleyin.](/cli/azure/install-azure-cli)
 
 #### <a name="rest-apis"></a>REST API'leri
 
-Azure, Azure portal Kullanıcı arabirimini destekleyen bir REST API kümesi üzerine kurulmuştur. Bu REST API 'lerinin çoğu, bir Internet etkin cihazdan Azure kaynaklarınızı ve uygulamalarınızı programlı bir şekilde sağlamanıza ve yönetmenize olanak sağlamak için de desteklenir. Daha fazla bilgi için bkz. [Azure Rest SDK başvurusu](https://docs.microsoft.com/rest/api/index).
+Azure, Azure portalı ui'sini destekleyen bir REST API kümesi üzerine oluşturulmuştür. Bu REST API'lerinin çoğu, Azure kaynaklarınızı ve uygulamalarınızı Internet özellikli herhangi bir cihazdan programlı olarak sağlamanıza ve yönetmenize olanak sağlamak için de desteklenir. Daha fazla bilgi için [Azure REST SDK Başvurusu'na](https://docs.microsoft.com/rest/api/index)bakın.
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Yöneticiler, Azure Cloud Shell adlı tarayıcıda erişilebilen bir deneyim aracılığıyla Azure PowerShell ve Azure CLı 'ye erişebilir. Bu etkileşimli arabirim, Linux ve Windows yöneticilerinin, bash veya PowerShell gibi tercih ettiğiniz komut satırı arabirimini kullanması için esnek bir araç sağlar. Azure Cloud Shell, Portal üzerinden veya [Shell.Azure.com](https://shell.azure.com)adresinde tek başına bir Web arabirimi olarak veya başka bir dizi erişim noktasından erişebilir. Daha fazla bilgi için bkz. [Azure Cloud Shell Genel Bakış](https://docs.microsoft.com/azure/cloud-shell/overview).
+Yöneticiler Azure PowerShell ve Azure CLI'ye Azure Bulut Shell adı verilen tarayıcıda erişilebilen bir deneyimle erişebilir. Bu etkileşimli arabirim, Linux ve Windows yöneticilerinin Bash veya PowerShell gibi tercih ettikleri komut satırı arabirimini kullanmaları için esnek bir araç sağlar. Azure Bulut Shell portalından [(shell.azure.com](https://shell.azure.com)tek başına bir web arabirimi olarak veya diğer erişim noktalarından erişebilir. Daha fazla bilgi için Azure [Bulut BulutU'na Genel Bakış](https://docs.microsoft.com/azure/cloud-shell/overview)bölümüne bakın.
 
 ## <a name="azure-subscriptions"></a>Azure abonelikleri
 
-Abonelik, Azure hesabına bağlı Azure hizmetlerinin mantıksal gruplandırmasıdır. Tek bir Azure hesabı, birden çok abonelik içerebilir. Azure hizmetleri için faturalandırma, abonelik başına esasına göre yapılır. Azure aboneliklerinde, abonelik üzerinde tam denetim sahibi olan ve abonelik içindeki tüm hizmetler üzerinde denetim sahibi olan bir hizmet yöneticisi olan bir hesap yöneticisi vardır. Klasik abonelik yöneticileri hakkında daha fazla bilgi için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](../../cost-management-billing/manage/add-change-subscription-administrator.md). Yöneticilere ek olarak, bireysel hesaplara [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)kullanılarak Azure kaynakları için ayrıntılı denetim verilebilir.
+Abonelik, Azure hesabına bağlı Azure hizmetlerinin mantıksal bir gruplandırmasIdır. Tek bir Azure hesabı birden çok abonelik içerebilir. Azure hizmetlerinin faturalandırması abonelik başına yapılır. Azure aboneliklerinde, abonelik üzerinde tam denetime sahip bir Hesap Yöneticisi ve abonelikteki tüm hizmetleri denetleyen bir Hizmet Yöneticisi vardır. Klasik abonelik yöneticileri hakkında bilgi için Azure [abonelik yöneticileri ekle veya değiştir'e](../../cost-management-billing/manage/add-change-subscription-administrator.md)bakın. Yöneticilere ek olarak, tek tek hesaplara rol [tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)kullanılarak Azure kaynaklarının ayrıntılı denetimi verilebilir.
 
-### <a name="select-and-enable-an-azure-subscription"></a>Azure aboneliğini seçme ve etkinleştirme
+### <a name="select-and-enable-an-azure-subscription"></a>Azure aboneliğini seçin ve etkinleştirin
 
-Azure hizmetleriyle çalışabilmeniz için önce bir aboneliğiniz olması gerekir. Birkaç abonelik türü var.
+Azure hizmetleriyle çalışabilmeniz için önce bir aboneliğe ihtiyacınız var. Çeşitli abonelik türleri mevcuttur.
 
-**Ücretsiz hesaplar**: ücretsiz bir hesaba kaydolma bağlantısı [Azure Web sitesinde](https://azure.microsoft.com/)yer alır. Böylece, Azure 'da kaynakların herhangi bir birleşimini denemek için 30 günlük kurs üzerinden kredi elde edersiniz. Kredi tutarınızı aşarsanız hesabınız askıya alınır. Deneme süresi sonunda, hizmetleriniz kullanımdan çıkarıldı ve artık çalışmayacak. Dilediğiniz zaman bir Kullandıkça Öde aboneliğine yükseltebilirsiniz.
+**Ücretsiz hesaplar**: Ücretsiz bir hesaba kaydolmak için bağlantı [Azure web sitesindedir.](https://azure.microsoft.com/) Bu, Azure'daki herhangi bir kaynak birleşimini denemeniz için 30 gün boyunca kredi verir. Kredi tutarınızı aşarsanız, hesabınız askıya alınır. Deneme nin sonunda, hizmetleriniz kullanımdan kaldırıldı ve artık çalışmayacak. İstediğiniz zaman istediğiniz kadar öde aboneliğine yükseltebilirsiniz.
 
-**MSDN abonelikleri**: bir MSDN aboneliğiniz varsa, her ay Azure kredisi için belirli bir miktar alırsınız. Örneğin, bir MSDN aboneliğine sahip bir Microsoft Visual Studio Enterprise varsa Azure kredisi ' nda ayda 150 \$alırsınız.
+**MSDN abonelikleri**: MSDN aboneliğiniz varsa, her ay Azure kredisinde belirli bir tutar elde edeyim. Örneğin, MSDN aboneliği olan bir Microsoft Visual Studio \$Enterprise'A sahipseniz, Azure kredisinde ayda 150 alırsınız.
 
-Kredi miktarını aşarsanız, hizmetiniz bir sonraki ay başlamadan devre dışı bırakılır. Harcama limitini kapatabilir ve ek maliyetler için kullanılacak kredi kartını ekleyebilirsiniz. Bu maliyetlerin bazıları MSDN hesapları için indirimli. Örneğin, Windows Server çalıştıran VM 'Ler için Linux fiyatını ödeyin ve Microsoft SQL Server gibi Microsoft sunucuları için ek ücret alınmaz. Bu, MSDN hesaplarını geliştirme ve test senaryoları için ideal hale getirir.
+Kredi tutarını aşarsanız, hizmetiniz bir sonraki ay başlayana kadar devre dışı bırakılır. Harcama limitini kapatabilir ve ek maliyetler için kullanılacak bir kredi kartı ekleyebilirsiniz. Bu maliyetlerden bazıları MSDN hesapları için indirimlidir. Örneğin, Windows Server çalıştıran VM'ler için Linux ücretini ödersiniz ve Microsoft SQL Server gibi Microsoft sunucuları için ek ücret alınmaz. Bu, MSDN hesaplarını geliştirme ve test senaryoları için ideal hale getirir.
 
-**BizSpark hesapları**: Microsoft BizSpark programı, başlatmalar için birçok avantaj sağlar. Bu avantajlardan biri, beş adede kadar MSDN hesabına yönelik geliştirme ve test ortamları için tüm Microsoft yazılımlarına erişim sağlar. Bu beş MSDN hesabının her biri için Azure kredisi $150 alır ve sanal makineler gibi birçok Azure hizmeti için indirimli ücret ödersiniz.
+**BizSpark hesapları**: Microsoft BizSpark programı yeni başlayanlar için birçok avantaj sağlar. Bu avantajlardan biri, en fazla beş MSDN hesabı için geliştirme ve test ortamları için tüm Microsoft yazılımlarına erişimdir. Bu beş MSDN hesabının her biri için 150 TL Azure kredisi alırsınız ve Sanal Makineler gibi Azure hizmetlerinin birkaçı için indirimli ücretler ödenirsiniz.
 
-**Kullandıkça Öde**: bu abonelikle, hesaba kredi kartı veya banka kartı ekleyerek kullandığınız kadar ödeyin. Bir kurumunuzda faturalandırma için de onay alabilirsiniz.
+**Kullandıkça Öde**: Bu abonelikle, kullandığınız parayı hesaba bir kredi kartı veya banka kartı ekleyerek ödenebilirsiniz. Bir kuruluşsanız, faturalama için de onaylanabilirsiniz.
 
-**Kurumsal Anlaşmalar**: kurumsal anlaşma sayesinde, bir sonraki yılda Azure 'da belirli sayıda hizmeti kullanmaya ve bu miktarı önceden ödemeniz gerekir. Yaptığınız taahhüt yıl içinde tüketilecektir. Taahhüt tutarını aşarsanız fazla kullanım süresini büyük bir süre içinde ödeyebilirsiniz. Taahhüt miktarına bağlı olarak, Azure 'daki hizmetlere ilişkin bir indirim elde edersiniz.
+**Kurumsal anlaşmalar**: Kurumsal bir sözleşmeyle, gelecek yıl Azure'da belirli sayıda hizmet kullanmayı taahhüt edersiniz ve bu tutarı önceden ödersiniz. Yaptığınız taahhüt yıl boyunca tüketilir. Taahhüt tutarını aşarsanız, fazla ödemeyi borç olarak ödeyebilirsiniz. Taahhüdün miktarına bağlı olarak, Azure'daki hizmetlerde indirim alırsınız.
 
-### <a name="grant-administrative-access-to-an-azure-subscription"></a>Azure aboneliğine yönetici erişimi verme
+### <a name="grant-administrative-access-to-an-azure-subscription"></a>Azure aboneliğine yönetim erişimi verme
 
-RBAC 'de izin atamak için kullanabileceğiniz çeşitli yerleşik roller vardır. Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik kapsamında bu rolü [sahip](../../role-based-access-control/built-in-roles.md#owner) rolüne atayın. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir.
+RBAC'ın izin atamak için kullanabileceğiniz birkaç yerleşik rolü vardır. Bir kullanıcıyı Azure aboneliğinin yöneticisi yapmak için, bu kullanıcıya abonelik kapsamında [Ki'nin Sahibi](../../role-based-access-control/built-in-roles.md#owner) rolünü atayın. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir.
 
 Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
 
-### <a name="view-billing-information-in-the-azure-portal"></a>Azure portal fatura bilgilerini görüntüleme
+### <a name="view-billing-information-in-the-azure-portal"></a>Azure portalında fatura bilgilerini görüntüleme
 
-Azure kullanmanın önemli bir bileşeni faturalandırma bilgilerini görüntüleyebilme olanağıdır. Azure portal Azure Faturalandırma bilgileri hakkında ayrıntılı bilgiler sağlar.
+Azure'u kullanmanın önemli bir bileşeni, fatura bilgilerini görüntüleme yeteneğidir. Azure portalı, Azure faturalandırma bilgileri hakkında ayrıntılı bilgiler sağlar.
 
-Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
+Daha fazla bilgi için [Azure fatura faturanızı ve günlük kullanım verilerinizi nasıl karşıdan yükleyebilirsiniz.](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)
 
-### <a name="get-billing-information-from-billing-apis"></a>Faturalandırma API 'Lerinden fatura bilgilerini alın
+### <a name="get-billing-information-from-billing-apis"></a>Fatura apilerinden fatura bilgileri alma
 
-Portalda faturalandırmayı görüntülemenin yanı sıra, Azure Faturalandırma REST API 'Leri aracılığıyla bir betik veya program kullanarak faturalandırma bilgilerine erişebilirsiniz:
+Portaldaki faturalandırmayı görüntülemenin yanı sıra, Azure FaturaLAMA REST API'leri aracılığıyla bir komut dosyası veya program kullanarak fatura bilgilerine de erişebilirsiniz:
 
-- Kullanım verilerinizi almak için Azure kullanım API 'sini kullanabilirsiniz. İlgili Azure kaynaklarını etiketleyerek faturalandırma kullanım bilgilerine ince ayar yapabilirsiniz. Örneğin, bir kaynak grubundaki kaynakların her birini bir departman adı veya proje adı ile etiketleyebilir ve ardından bu bir etiket için maliyetleri özel olarak izleyebilirsiniz.
+- Kullanım verilerinizi almak için Azure Kullanım API'sini kullanabilirsiniz. İlgili Azure kaynaklarını etiketleyerek fatura kullanım bilgilerinde ince ayar yapabilirsiniz. Örneğin, bir kaynak grubundaki kaynakların her birini bir departman adı veya proje adı yla etiketleyebilir ve ardından bu etiketiçin özel olarak maliyetleri izleyebilirsiniz.
 
-- Tüm kullanılabilir kaynakları, bu kaynakların her biri hakkındaki meta verileri ve fiyatlandırma bilgilerini listelemek için Azure fiyat kartı API 'sini kullanabilirsiniz.
+- Azure Hız Kartı API'sini, bu kaynakların her biri hakkındaki meta veriler ve fiyatlandırma bilgileriyle birlikte kullanılabilir tüm kaynakları listelemek için kullanabilirsiniz.
 
 Daha fazla bilgi için bkz. [Microsoft Azure kaynak kullanımınızla ilgili içgörüler edinin](../../cost-management-billing/manage/usage-rate-card-overview.md).
 
-### <a name="forecast-cost-with-the-pricing-calculator"></a>Fiyatlandırma hesaplayıcısı ile tahmin maliyeti
+### <a name="forecast-cost-with-the-pricing-calculator"></a>Fiyatlandırma hesaplayıcısı ile tahmini maliyet
 
-Azure 'daki her bir hizmetin fiyatlandırması farklıdır. Birçok Azure hizmeti temel, standart ve Premium katmanları sağlar. Genellikle, her katmanın birkaç fiyat ve performans düzeyi vardır. [Çevrimiçi Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator)' ı kullanarak fiyatlandırma tahminleri oluşturabilirsiniz. Hesaplayıcı, maliyeti tek bir kaynakta veya kaynak grubunda tahmin etmek için esneklik içerir.
+Azure'daki her hizmetin fiyatlandırması farklıdır. Birçok Azure hizmeti Temel, Standart ve Premium katmanları sağlar. Genellikle, her katmanda birkaç fiyat ve performans düzeyi vardır. [Çevrimiçi fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator)kullanarak, fiyatlandırma tahminleri oluşturabilirsiniz. Hesap makinesi, tek bir kaynak veya bir kaynak grubunun maliyetini tahmin etme esnekliğini içerir.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Azure Resource Manager, Azure kaynakları için dağıtım, yönetim ve kuruluş mekanizmasından sorumludur. Kaynak Yöneticisi kullanarak, birçok ayrı kaynağı bir kaynak grubunda birlikte yerleştirebilirsiniz.
+Azure Kaynak Yöneticisi, Azure kaynakları için bir dağıtım, yönetim ve kuruluş mekanizmasıdır. Kaynak Yöneticisi'ni kullanarak, birçok ayrı kaynağı bir kaynak grubunda bir araya getirebilirsiniz.
 
-Kaynak Yöneticisi ayrıca, ilgili kaynakların özelleştirilebilir dağıtımına ve yapılandırılmasına izin veren dağıtım özelliklerini de içerir. Örneğin, Kaynak Yöneticisi kullanarak birden çok sanal makineden, yük dengeleyiciden ve SQL veritabanından tek bir birim olarak oluşan bir uygulamayı dağıtabilirsiniz. Bu dağıtımları bir Kaynak Yöneticisi şablonu kullanarak geliştirirsiniz.
+Kaynak Yöneticisi, ilgili kaynakların özelleştirilebilir dağıtımına ve yapılandırmasına izin veren dağıtım özelliklerini de içerir. Örneğin, Kaynak Yöneticisi'ni kullanarak, birden çok sanal makine, yük dengeleyicisi ve SQL veritabanından oluşan bir uygulamayı tek bir birim olarak dağıtabilirsiniz. Kaynak Yöneticisi şablonu kullanarak bu dağıtımları geliştirirsiniz.
 
 Resource Manager çeşitli avantajlar sunar:
 
 - Çözümünüzdeki tüm kaynakları ayrı ayrı ele almak yerine bunları grup halinde dağıtabilir, yönetebilir ve izleyebilirsiniz.
 
-- Çözümünüzü geliştirme yaşam döngüsü boyunca sürekli olarak dağıtabilir ve kaynaklarınızın tutarlı bir durumda dağıtıldığından emin olabilirsiniz.
+- Çözümünüzü geliştirme yaşam döngüsü boyunca sürekli olarak dağıtabilir ve kaynaklarınızın tutarlı bir durumda dağıtıldıklarından emin olabilirsiniz.
 
 - Altyapınızı betikler yerine bildirim temelli şablonları kullanarak yönetebilirsiniz.
 
 - Doğru sırayla dağıtılmalarını sağlamak için kaynaklarınız arasındaki bağımlılıkları tanımlayabilirsiniz.
 
-- RBAC, yönetim platformuyla yerel olarak tümleştirildiği için, kaynak grubunuzdaki tüm hizmetlere erişim denetimi uygulayabilirsiniz.
+- RBAC yerel olarak yönetim platformuna entegre olduğundan, kaynak grubunuzdaki tüm hizmetlere erişim denetimi uygulayabilirsiniz.
 
-- Aboneliğinizdeki tüm kaynakları mantıksal olarak düzenlemek için kaynaklara Etiketler uygulayabilirsiniz.
+- Aboneliğinizdeki tüm kaynakları mantıksal olarak düzenlemek için kaynaklara etiketler uygulayabilirsiniz.
 
-- Aynı etiketi paylaşan bir kaynak grubu için maliyetleri görüntüleyerek kuruluşunuzun faturalandırmasını açıklığa kavuşturun.
+- Aynı etiketi paylaşan bir kaynak grubunun maliyetlerini görüntüleyerek kuruluşunuzun faturalandırmasını netleştirebilirsiniz.
 
-### <a name="tips-for-creating-resource-groups"></a>Kaynak grupları oluşturmaya yönelik ipuçları
+### <a name="tips-for-creating-resource-groups"></a>Kaynak grupları oluşturmak için ipuçları
 
-Kaynak gruplarınız hakkında kararlar verirken, bu ipuçlarını göz önünde bulundurun:
+Kaynak gruplarınızla ilgili kararlar alırken şu ipuçlarını göz önünde bulundurun:
 
-- Bir kaynak grubundaki tüm kaynaklar aynı yaşam döngüsüne sahip olmalıdır.
+- Kaynak grubundaki tüm kaynaklar aynı yaşam döngüsüne sahip olmalıdır.
 
-- Bir kaynağı tek seferde yalnızca bir gruba atayabilirsiniz.
+- Bir kaynağı aynı anda yalnızca bir gruba atayabilirsiniz.
 
-- Kaynak grubundan istediğiniz zaman bir kaynak ekleyebilir veya kaldırabilirsiniz. Her kaynak bir kaynak grubuna ait olmalıdır. Bu nedenle bir kaynağı bir gruptan kaldırırsanız, başka bir gruba eklemeniz gerekir.
+- İstediğiniz zaman kaynak grubundan kaynak ekleyebilir veya kaldırabilirsiniz. Her kaynak bir kaynak grubuna ait olmalıdır. Bu nedenle, bir kaynağı bir gruptan kaldırırsanız, başka bir gruba eklemeniz gerekir.
 
-- Birçok kaynak türünü, istediğiniz zaman farklı bir kaynak grubuna taşıyabilirsiniz.
+- Çoğu kaynak türünü istediğiniz zaman farklı bir kaynak grubuna taşıyabilirsiniz.
 
-- Bir kaynak grubundaki kaynaklar farklı bölgelerde olabilir.
+- Kaynak grubundaki kaynaklar farklı bölgelerde olabilir.
 
-- Bir kaynak grubunu, içindeki kaynakların erişimini denetlemek için kullanabilirsiniz.
+- Kaynak grubunu, kaynakların erişimini denetlemek için kullanabilirsiniz.
 
 ### <a name="building-resource-manager-templates"></a>Kaynak Yöneticisi şablonları oluşturma
 
-Kaynak Yöneticisi şablonlar, tek bir kaynak grubuna dağıtılacak kaynakları ve kaynak konfigürasyonları bildirimli olarak tanımlar. Daha fazla betik oluşturma veya el ile yapılandırma gerekmeden karmaşık dağıtımları düzenlemek için Kaynak Yöneticisi şablonlarını kullanabilirsiniz. Bir şablon geliştirdikten sonra, aynı sonuca sahip her seferinde birden çok kez dağıtabilirsiniz.
+Kaynak Yöneticisi şablonları, tek bir kaynak grubuna dağıtılacak kaynakları ve kaynak yapılandırmalarını bildirimsel olarak tanımlar. Fazla komut dosyası veya el ile yapılandırmaya gerek kalmadan karmaşık dağıtımları düzenlemek için Kaynak Yöneticisi şablonlarını kullanabilirsiniz. Bir şablon geliştirdikten sonra, şablonu her seferinde aynı sonuçla birden çok kez dağıtabilirsiniz.
 
-Bir Kaynak Yöneticisi şablonu dört bölümden oluşur:
+Kaynak Yöneticisi şablonu dört bölümden oluşur:
 
-- **Parametreler**: Bunlar dağıtıma yönelik girişlerdir. Parametre değerleri bir insan veya otomatik işlem tarafından sağlanarak yapılabilir. Örnek bir parametre, bir Windows sanal makinesi için Yönetici Kullanıcı adı ve parola olabilir. Parametre değerleri, belirtildiklerinde dağıtım boyunca kullanılır.
+- **Parametreler**: Bunlar dağıtıma girişlerdir. Parametre değerleri bir insan veya otomatik bir işlem tarafından sağlanabilir. Örnek bir parametre, Windows VM için yönetici kullanıcı adı ve parola olabilir. Parametre değerleri, dağıtış boyunca belirtildiğinde kullanılır.
 
-- **Değişkenler**: Bunlar dağıtım genelinde kullanılan değerleri tutmak için kullanılır. Parametrelerin aksine, dağıtım zamanında bir değişken değeri sağlanmaz. Bunun yerine, sabit kodlanmış veya dinamik olarak oluşturulur.
+- **Değişkenler**: Bunlar dağıtım boyunca kullanılan değerleri tutmak için kullanılır. Parametrelerden farklı olarak, dağıtım zamanında değişken bir değer sağlanmaz. Bunun yerine, sabit kodlanmış veya dinamik olarak oluşturulur.
 
-- **Kaynaklar**: şablonun bu bölümü, sanal makineler, depolama hesapları ve sanal ağlar gibi dağıtılacak kaynakları tanımlar.
+- **Kaynaklar**: Şablonun bu bölümü, sanal makineler, depolama hesapları ve sanal ağlar gibi dağıtılacak kaynakları tanımlar.
 
-- **Çıkış**: bir dağıtım tamamlandıktan sonra, Kaynak Yöneticisi dinamik olarak oluşturulan bağlantı dizeleri gibi verileri döndürebilir.
+- **Çıktı**: Dağıtım tamamlandıktan sonra, Kaynak Yöneticisi dinamik olarak oluşturulan bağlantı dizeleri gibi verileri döndürebilir.
 
-Aşağıdaki mekanizmalar Dağıtım Otomasyonu için kullanılabilir:
+Dağıtım otomasyonu için aşağıdaki mekanizmalar kullanılabilir:
 
-- **İşlevler**: Kaynak Yöneticisi şablonlarda birkaç işlevi kullanabilirsiniz. Bunlar, bir dizeyi küçük harfe dönüştürme, tanımlı bir kaynağın birden çok örneğini dağıtma ve hedef kaynak grubunu dinamik olarak döndürme gibi işlemleri içerir. Kaynak Yöneticisi işlevler dinamik dağıtımlar oluşturmaya yardımcı olur.
+- **Fonksiyonlar**: Kaynak Yöneticisi şablonlarında çeşitli işlevler kullanabilirsiniz. Bunlar arasında dizeyi küçük harfe dönüştürme, tanımlı bir kaynağın birden çok örneğini dağıtma ve hedef kaynak grubunu dinamik olarak döndürme gibi işlemler yer alır. Kaynak Yöneticisi işlevleri dinamik dağıtımlar oluşturmaya yardımcı olur.
 
-- **Kaynak bağımlılıkları**: birden çok kaynak dağıttığınızda, bazı kaynakların diğerlerine bağımlılığı olur. Dağıtımı kolaylaştırmak için, bağımlı kaynakların diğerlerinden önce dağıtılması için bir bağımlılık bildirimi kullanabilirsiniz.
+- **Kaynak bağımlılıkları**: Birden çok kaynak dağıtırken, bazı kaynakların diğerlerine bağımlılığı olacaktır. Dağıtımı kolaylaştırmak için, bağımlı kaynakların diğerlerinden önce dağıtılması için bağımlılık bildirimi kullanabilirsiniz.
 
-- **Şablon bağlama**: bir kaynak yöneticisi şablonu içinden başka bir şablona bağlantı oluşturabilirsiniz. Bu, dağıtıma ayrışmaya hedeflenen ve amaca özgü bir şablon kümesine izin verir.
+- **Şablon bağlama**: Bir Kaynak Yöneticisi şablonu içinden başka bir şablona bağlanabilirsiniz. Bu, hedeflenen, amaca özel şablonlar kümesine dağıtım ayrıştırma sağlar.
 
-Herhangi bir metin düzenleyicisinde Kaynak Yöneticisi şablonlar oluşturabilirsiniz. Ancak, Visual Studio için Azure SDK, size yardımcı olacak araçlar içerir. Visual Studio 'yu kullanarak, bir sihirbaz aracılığıyla şablona kaynak ekleyebilir, sonra şablonu doğrudan Visual Studio içinden dağıtabilir ve hatalarını ayıklayabilirsiniz. Daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md).
+Kaynak Yöneticisi şablonlarını herhangi bir metin düzenleyicisinde oluşturabilirsiniz. Ancak Visual Studio için Azure SDK size yardımcı olacak araçlar içerir. Visual Studio'yu kullanarak, şablona bir sihirbaz aracılığıyla kaynak ekleyebilir, ardından şablonu doğrudan Visual Studio'nun içinden dağıtabilir ve hata ayıklayabilirsiniz. Daha fazla bilgi için bkz: [Azure Kaynak Yöneticisi şablonları yazar.](../../resource-group-authoring-templates.md)
 
-Son olarak, varolan kaynak gruplarını Azure portal yeniden kullanılabilir bir şablona dönüştürebilirsiniz. Bu, var olan bir kaynak grubunun dağıtılabilir bir şablonunu oluşturmak veya yalnızca temeldeki JSON 'u incelemek istiyorsanız yararlı olabilir. Bir kaynak grubunu dışarı aktarmak için, kaynak grubunun ayarlarından **Otomasyon betiği** düğmesini seçin.
+Son olarak, varolan kaynak gruplarını Azure portalından yeniden kullanılabilir bir şablona dönüştürebilirsiniz. Bu, varolan bir kaynak grubunun dağıtılabilir bir şablonu oluşturmak veya sadece temel deki JSON'u incelemek istiyorsanız yararlı olabilir. Kaynak grubu dışa aktarmak için kaynak grubunun ayarlarından **Otomasyon Komut Dosyası** düğmesini seçin.
 
 ## <a name="security-of-azure-resources-rbac"></a>Azure kaynaklarının güvenliği (RBAC)
 
-Belirli bir kapsamdaki Kullanıcı hesaplarına işletimsel erişim izni verebilirsiniz: abonelik, kaynak grubu veya tek kaynak. Bu, bir kaynak kümesini bir sanal makine ve tüm ilgili kaynaklar gibi bir kaynak grubuna dağıtabileceğiniz ve belirli bir kullanıcı veya gruba izin verdiğiniz anlamına gelir. Bu yaklaşım, erişimi yalnızca hedef kaynak grubuna ait kaynaklarla sınırlandırır. Ayrıca, sanal makine veya sanal ağ gibi tek bir kaynağa erişim izni verebilirsiniz.
+Abonelik, kaynak grubu veya tek tek kaynak gibi belirli bir kapsamda ki kullanıcı hesaplarına operasyonel erişim izni verebilirsiniz. Bu, sanal makine ve ilgili tüm kaynaklar gibi bir kaynak grubuna bir kaynak kümesi dağıtabileceğiniz ve belirli bir kullanıcıya veya gruba izin verebileceğiniz anlamına gelir. Bu yaklaşım, yalnızca hedef kaynak grubuna ait kaynaklara erişimi sınırlar. Sanal makine veya sanal ağ gibi tek bir kaynağa erişim izni de verebilirsiniz.
 
-Erişim vermek için kullanıcıya veya kullanıcı grubuna bir rol atarsınız. Önceden tanımlanmış birçok rol vardır. Kendi özel rollerinizi de tanımlayabilirsiniz.
+Erişim sağlamak için, kullanıcıya veya kullanıcı grubuna bir rol atarsınız. Önceden tanımlanmış birçok rol vardır. Kendi özel rollerinizi de tanımlayabilirsiniz.
 
-[Azure 'da birkaç örnek yerleşik rol](../../role-based-access-control/built-in-roles.md)aşağıda verilmiştir:
+[Azure'da yerleşik](../../role-based-access-control/built-in-roles.md)birkaç rol şunlardır:
 
-- **Sahip**: Bu role sahip bir Kullanıcı, erişim dahil her şeyi yönetebilir.
+- **Sahibi**: Bu role sahip bir kullanıcı erişim de dahil olmak üzere her şeyi yönetebilir.
 
-- **Okuyucu**: Bu role sahip bir Kullanıcı, tüm türlerin kaynaklarını okuyabilir (gizli dizileri hariç) ancak değişiklik yapamaz.
+- **Okuyucu**: Bu role sahip bir kullanıcı tüm türdeki kaynakları (sırlar hariç) okuyabilir, ancak değişiklik yapamaz.
 
-- **Sanal makine katılımcısı**: Bu role sahip bir Kullanıcı sanal makineleri yönetebilir, ancak bağlı oldukları sanal ağı veya VHD dosyasının bulunduğu depolama hesabını yönetemez.
+- **Sanal Makine Katılımcısı**: Bu role sahip bir kullanıcı sanal makineleri yönetebilir, ancak bağlı oldukları sanal ağı veya VHD dosyasının bulunduğu depolama hesabını yönetemez.
 
-- **SQL DB katılımcısı**: Bu role sahip BIR kullanıcı SQL veritabanlarını yönetebilir, ancak güvenlikle ilgili ilkelerini yönetemez.
+- **SQL DB Katılımcısı**: Bu role sahip bir kullanıcı SQL veritabanlarını yönetebilir, ancak güvenlikle ilgili ilkelerini yönetemez.
 
-- **SQL Güvenlik Yöneticisi**: Bu role sahip bir Kullanıcı, SQL Server ve veritabanlarının güvenlikle ilgili ilkelerini yönetebilir.
+- **SQL Security Manager**: Bu role sahip bir kullanıcı, SQL sunucularının ve veritabanlarının güvenlikle ilgili ilkelerini yönetebilir.
 
-- **Depolama hesabı katılımcısı**: Bu role sahip bir Kullanıcı, depolama hesaplarını yönetebilir ancak depolama hesaplarına erişimi yönetemez.
+- **Depolama Hesabı Katılımcısı**: Bu role sahip bir kullanıcı depolama hesaplarını yönetebilir ancak depolama hesaplarına erişimi yönetemez.
 
 Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Sanal Makineler
 
-Azure sanal makineleri, Azure 'daki merkezi IaaS hizmetlerinden biridir. Azure sanal makineleri, bir Microsoft Azure veri merkezinde Windows veya Linux sanal makinelerinin dağıtımını destekler. Azure sanal makineler ile, VM yapılandırması üzerinde toplam denetiminiz vardır ve tüm yazılım yükleme, yapılandırma ve bakımın sorumluluğundadır.
+Azure Sanal Makineler, Azure'daki merkezi IaaS hizmetlerinden biridir. Azure Sanal Makineler, Windows veya Linux sanal makinelerinin Microsoft Azure veri merkezinde dağıtımını destekler. Azure Sanal Makineler ile VM yapılandırması üzerinde tam denetime sahipsiniz ve tüm yazılım yükleme, yapılandırma ve bakımdan sorumlusunuz.
 
-Bir Azure VM 'yi dağıttığınızda Azure Marketi 'nden bir görüntü seçebilir veya size Genelleştirilmiş görüntü sağlayabilirsiniz. Bu görüntü, işletim sistemini ve ilk yapılandırmayı uygulamak için kullanılır. Dağıtım sırasında Kaynak Yöneticisi, bilgisayar adı, yönetici kimlik bilgileri ve ağ yapılandırması atama gibi bazı yapılandırma ayarlarını işleyecek. Yazılım yükleme, virüsten koruma yapılandırması ve izleme çözümleri gibi yapılandırmaları otomatik hale getirmek için Azure sanal makine uzantıları ' nı kullanabilirsiniz.
+Bir Azure VM dağıtırken, Azure Marketi'nden bir resim seçebilir veya genelleştirilmiş bir görüntü sağlayabilirsiniz. Bu görüntü işletim sistemi ve ilk yapılandırma uygulamak için kullanılır. Dağıtım sırasında Kaynak Yöneticisi, bilgisayar adını, yönetim kimlik bilgilerini ve ağ yapılandırmasını atama gibi bazı yapılandırma ayarlarını işler. Yazılım yükleme, virüsten koruma yapılandırması ve izleme çözümleri gibi yapılandırmaları daha fazla otomatikleştirmek için Azure sanal makine uzantılarını kullanabilirsiniz.
 
-Sanal makineleri birçok farklı boyutta oluşturabilirsiniz. Sanal makinenin boyutu, işlem, bellek ve depolama kapasitesi gibi kaynak ayırmayı belirler. Bazı durumlarda, RDMA özellikli ağ bağdaştırıcıları ve SSD diskleri gibi belirli özellikler yalnızca belirli VM boyutları ile kullanılabilir. VM boyutlarının ve yeteneklerin tüm listesi için, bkz. [Windows](../../virtual-machines/windows/sizes.md) ve [Linux](../../virtual-machines/linux/sizes.md)için "Azure 'Da sanal makineler için Boyutlar".
+Birçok farklı boyutlarda sanal makineler oluşturabilirsiniz. Sanal makinenin boyutu işleme, bellek ve depolama kapasitesi gibi kaynak ayırmayı belirler. Bazı durumlarda, RDMA özellikli ağ bağdaştırıcıları ve SSD diskler gibi belirli özellikler yalnızca belirli VM boyutlarında kullanılabilir. VM boyutları nın ve özelliklerinin tam listesi için [Windows](../../virtual-machines/windows/sizes.md) ve [Linux](../../virtual-machines/linux/sizes.md)için "Azure'daki sanal makineler için boyutlar" bölümüne bakın.
 
 ### <a name="use-cases"></a>Uygulama alanları
 
-Azure sanal makineleri yapılandırma üzerinde tamamen denetim sağladığından, PaaS modeline sığmayan çok çeşitli sunucu iş yükleri için idealdir. Veritabanı sunucuları (SQL Server, Oracle veya MongoDB), Windows Server Active Directory, Microsoft SharePoint ve çok daha fazlası gibi sunucu iş yükleri Microsoft Azure platformunda çalıştırılabilir. İsterseniz, çok sayıda yeniden yapılandırma olmadan şirket içi bir veri merkezindeki bu tür iş yüklerini bir veya daha fazla Azure bölgesine taşıyabilirsiniz.
+Azure sanal makineleri yapılandırma üzerinde tam denetim sunduğundan, PaaS modeline sığmayan çok çeşitli sunucu iş yükleri için idealdir. Veritabanı sunucuları (SQL Server, Oracle veya MongoDB), Windows Server Active Directory, Microsoft SharePoint ve daha birçok sunucu iş yükleri Microsoft Azure platformunda çalıştırmak mümkün olur. İstenirseniz, bu tür iş yüklerini şirket içi bir veri merkezinden büyük miktarda yeniden yapılandırma olmadan bir veya daha fazla Azure bölgesine taşıyabilirsiniz.
 
 ### <a name="deployment-of-virtual-machines"></a>Sanal makinelerin dağıtımı
 
-Azure portal kullanarak, Azure PowerShell modülüyle Otomasyon kullanarak veya platformlar arası CLı ile Otomasyon kullanarak Azure sanal makineleri dağıtabilirsiniz.
+Azure sanal makinelerini Azure portalını kullanarak, Azure PowerShell modülüyle otomasyon uyarak veya çapraz platform CLI ile otomasyon kullanarak dağıtabilirsiniz.
 
 #### <a name="portal"></a>Portal
 
-Azure portal kullanarak sanal makine dağıtmak için yalnızca etkin bir Azure aboneliği ve bir Web tarayıcısına erişim gerekir. Değişen yapılandırmalara sahip birçok farklı işletim sistemi görüntüsü seçebilirsiniz. Tüm depolama ve ağ gereksinimleri dağıtım sırasında yapılandırılır. Daha fazla bilgi için bkz. [Windows](../../virtual-machines/windows/quick-create-portal.md) ve [Linux](../../virtual-machines/linux/quick-create-portal.md)için "Azure Portal sanal makine oluşturma".
+Azure portalını kullanarak sanal bir makinedağıtmak yalnızca etkin bir Azure aboneliği ve bir web tarayıcısına erişim gerektirir. Farklı yapılandırmalara sahip birçok farklı işletim sistemi görüntüsü seçebilirsiniz. Tüm depolama ve ağ gereksinimleri dağıtım sırasında yapılandırılır. Daha fazla bilgi için [Windows](../../virtual-machines/windows/quick-create-portal.md) ve [Linux](../../virtual-machines/linux/quick-create-portal.md)için "Azure portalında sanal bir makine oluşturun" bilgisine bakın.
 
-Bir sanal makineyi Azure portal dağıtmanın yanı sıra, portaldan bir Azure Resource Manager şablonu dağıtabilirsiniz. Bu işlem, şablonda tanımlandığı şekilde tüm kaynakları dağıtır ve yapılandırır. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure Portal ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-portal.md).
+Azure portalından sanal bir makine dağıtmanın yanı sıra, portaldan bir Azure Kaynak Yöneticisi şablonu da dağıtabilirsiniz. Bu, şablonda tanımlandığı şekilde tüm kaynakları dağıtacak ve yapılandıracaktır. Daha fazla bilgi için [Kaynak Yöneticisi şablonları ve Azure portalı ile kaynakları dağıt'a](../../azure-resource-manager/templates/deploy-portal.md)bakın.
 
 #### <a name="powershell"></a>PowerShell
 
-PowerShell kullanarak bir Azure sanal makinesini dağıtmak, depolama ve ağ dahil olmak üzere tüm ilgili sanal makine kaynaklarının dağıtım otomasyonunu sağlar. Daha fazla bilgi için bkz. [Kaynak Yöneticisi ve PowerShell kullanarak WINDOWS VM oluşturma](../../virtual-machines/windows/quick-create-powershell.md).
+PowerShell'i kullanarak bir Azure sanal makinedağıtmak, depolama ve ağ dahil olmak üzere ilgili tüm sanal makine kaynaklarının tam dağıtım otomasyonuna olanak tanır. Daha fazla bilgi için Kaynak [Yöneticisi ve PowerShell'i kullanarak Windows VM oluştur'a](../../virtual-machines/windows/quick-create-powershell.md)bakın.
 
-Azure işlem kaynaklarını tek tek dağıtmanın yanı sıra, bir Azure Resource Manager şablonu dağıtmak için Azure PowerShell modülünü de kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-powershell.md).
+Azure bilgi işlem kaynaklarını tek tek dağıtmanın yanı sıra, Azure Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell modüllerini kullanabilirsiniz. Daha fazla bilgi için Kaynak [Yöneticisi şablonları ve Azure PowerShell ile kaynakları dağıt'a](../../azure-resource-manager/templates/deploy-powershell.md)bakın.
 
-#### <a name="command-line-interface-cli"></a>Komut satırı arabirimi (CLı)
+#### <a name="command-line-interface-cli"></a>Komut satırı arabirimi (CLI)
 
-PowerShell modülünde olduğu gibi, Azure komut satırı arabirimi de Dağıtım Otomasyonu sağlar ve Windows, OS X veya Linux sistemlerinde kullanılabilir. Azure CLı **VM hızlı oluşturma** komutunu kullanırken, tüm ilgili sanal makine kaynakları (depolama ve ağ dahil) ve sanal makine dağıtılır. Daha fazla bilgi için bkz. [CLI kullanarak Azure 'Da LINUX VM oluşturma](../../virtual-machines/linux/quick-create-cli.md).
+PowerShell modülünde olduğu gibi, Azure komut satırı arabirimi dağıtım otomasyonu sağlar ve Windows, OS X veya Linux sistemlerinde kullanılabilir. Azure CLI **vm hızlı oluşturma** komutunu kullanırken, ilgili tüm sanal makine kaynakları (depolama ve ağ dahil) ve sanal makinenin kendisi dağıtılır. Daha fazla bilgi için [CLI'yi kullanarak Azure'da Linux VM oluştur'a](../../virtual-machines/linux/quick-create-cli.md)bakın.
 
-Benzer şekilde, bir Azure Resource Manager şablonu dağıtmak için Azure CLı 'yi de kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md).
+Aynı şekilde, Azure Kaynak Yöneticisi şablonu dağıtmak için Azure CLI'yi kullanabilirsiniz. Daha fazla bilgi için Kaynak [Yöneticisi şablonları ve Azure CLI ile kaynakları dağıt'a](../../azure-resource-manager/templates/deploy-cli.md)bakın.
 
 ### <a name="access-and-security-for-virtual-machines"></a>Sanal makineler için erişim ve güvenlik
 
-Bir sanal makineye Internet 'ten erişmek için ilişkili ağ arabirimi veya varsa yük dengeleyici, genel bir IP adresiyle yapılandırılmalıdır. Genel IP adresi, sanal makine veya yük dengeleyiciye çözülecek bir DNS adı içerir. Daha fazla bilgi için bkz. [Azure 'Da IP adresleri](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+Sanal bir makineye Internet'ten erişmek, ilişkili ağ arabiriminin veya varsa yük dengeleyicisinin ortak bir IP adresiyle yapılandırılmasını gerektirir. Ortak IP adresi, sanal makineveya yük dengeleyicisine çözülecek bir DNS adı içerir. Daha fazla bilgi için [Azure'daki IP adreslerine](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)bakın.
 
-Ağ güvenlik grubu (NSG) kaynağını kullanarak, genel IP adresi üzerinden sanal makineye erişimi yönetirsiniz. Bir NSG güvenlik duvarı gibi davranır ve tanımlı bir bağlantı noktası kümesindeki ağ arabirimi veya alt ağ genelinde trafiğe izin verir veya reddeder. Örneğin, bir Azure VM ile uzak masaüstü oturumu oluşturmak için NSG bağlantı noktası 3389 üzerinde gelen trafiğe izin verecek şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure 'da BIR VM 'ye bağlantı noktaları açma](../../virtual-machines/windows/nsg-quickstart-portal.md).
+Bir ağ güvenlik grubu (NSG) kaynağı kullanarak ortak IP adresi üzerinden sanal makineye erişimi yönetirsiniz. NSG bir güvenlik duvarı gibi davranır ve ağ arabirimi veya alt ağ üzerinden tanımlanan bağlantı noktaları kümesindeki trafiğe izin verir veya reddeder. Örneğin, Azure VM'li uzak masaüstü oturumu oluşturmak için, 3389 bağlantı noktasında gelen trafiğe izin verecek şekilde NSG'yi yapılandırmanız gerekir. Daha fazla bilgi için Bkz. [Azure portalını kullanarak Azure'da bir VM bağlantı noktalarını açma.](../../virtual-machines/windows/nsg-quickstart-portal.md)
 
-Son olarak, herhangi bir bilgisayar sisteminin yönetiminde olduğu gibi, güvenlik kimlik bilgilerini ve yazılım güvenlik duvarlarını kullanarak işletim sisteminde bir Azure sanal makinesi için güvenlik sağlamanız gerekir.
+Son olarak, herhangi bir bilgisayar sisteminin yönetiminde olduğu gibi, güvenlik kimlik bilgilerini ve yazılım güvenlik duvarlarını kullanarak işletim sistemindeki bir Azure sanal makinesinin güvenliğini sağlamanız gerekir.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure depolama, dayanıklı, ölçeklenebilir ve yedekli depolama sağlayan, Microsoft tarafından yönetilen bir hizmettir. Herhangi bir kaynak dağıtım yöntemi kullanarak bir Azure Depolama hesabını kaynak olarak herhangi bir kaynak grubuna ekleyebilirsiniz. Azure dört depolama türü içerir: BLOB depolama, dosya depolama, tablo depolama ve kuyruk depolama. Bir depolama hesabı dağıtıldığında, genel amaçlı ve BLOB depolama olmak üzere iki hesap türü vardır. Genel amaçlı bir depolama hesabı, dört depolama türüne erişmenizi sağlar. BLOB depolama hesapları, genel amaçlı hesaplara benzer, ancak sık ve soğuk erişim katmanları içeren özel blob 'lar içerir. BLOB depolama hakkında daha fazla bilgi için bkz. [Azure Blob depolama](../../storage/blobs/storage-blob-storage-tiers.md).
+Azure Depolama, dayanıklı, ölçeklenebilir ve gereksiz depolama sağlayan Microsoft tarafından yönetilen bir hizmettir. Herhangi bir kaynak dağıtım yöntemini kullanarak herhangi bir kaynak grubuna kaynak olarak bir Azure depolama hesabı ekleyebilirsiniz. Azure dört depolama türü içerir: Blob depolama, Dosya Depolama, Tablo depolama ve Sıra depolama. Bir depolama hesabı dağıtılırken, genel amaçlı ve blob depolama olmak üzere iki hesap türü kullanılabilir. Genel amaçlı bir depolama hesabı, dört depolama türüne de erişmenizi sağlar. Blob depolama hesapları genel amaçlı hesaplara benzer, ancak sıcak ve soğuk erişim katmanları içeren özel lekeler içerir. Blob depolama hakkında daha fazla bilgi için [Azure Blob depolama alanına](../../storage/blobs/storage-blob-storage-tiers.md)bakın.
 
 Azure depolama hesapları farklı artıklık düzeyleriyle yapılandırılabilir:
 
-- **Yerel olarak yedekli depolama** , yazma başarılı bir şekilde kabul etmeden önce tüm verilerin üç kopyasının zaman uyumlu olarak yapılmasını sağlayarak yüksek kullanılabilirlik sağlar. Bu kopyalar tek bir bölgedeki tek bir tesisde depolanır. Çoğaltmalar ayrı hata etki alanları ve yükseltme etki alanlarında bulunur. Bu, verilerinizi barındıran bir depolama düğümü başarısız olsa veya güncelleştirilmesini çevrimdışı duruma getirildiğinde bile verilerin kullanılabildiği anlamına gelir.
+- **Yerel olarak yedekli depolama,** bir yazma başarılı kabul edilmeden önce tüm verilerin üç kopyasının eşzamanlı olarak yapılmasını sağlayarak yüksek kullanılabilirlik sağlar. Bu kopyalar tek bir bölgedeki tek bir tesiste saklanır. Yinelemeler ayrı hata etki alanlarında ve yükseltme etki alanlarında yer alıyor. Bu, verilerinizi tutan bir depolama düğümü başarısız olsa veya güncelleştirilecek şekilde çevrimdışı olsa bile verilerin kullanılabilir olduğu anlamına gelir.
 
-- **Coğrafi olarak yedekli depolama** , yüksek kullanılabilirlik için birincil bölgedeki verilerin üç zaman uyumlu kopyasını yapar ve ardından olağanüstü durum kurtarma için eşlenmiş bir bölgede üç kopya zaman uyumsuz olarak yapılır.
+- **Coğrafi yedekli depolama,** yüksek kullanılabilirlik için birincil bölgedeki verilerin üç eşzamanlı kopyasını yapar ve ardından eş zamanlı olarak olağanüstü durum kurtarma için eşleştirilmiş bir bölgede üç yineleme yapar.
 
-- **Okuma Erişimli Coğrafi olarak yedekli depolama** , coğrafi olarak yedekli depolama ve ikincil bölgedeki verileri okuma imkanına sahiptir. Bu özellik kısmi olağanüstü durum kurtarma için uygun hale getirir. Birincil bölgeyle ilgili bir sorun varsa, uygulamanızı eşleştirilmiş bölgeye salt okuma erişimi olacak şekilde değiştirebilirsiniz.
+- **Okuma-erişim coğrafi yedekli depolama** jeo-yedekli depolama artı ikincil bölgedeki verileri okuma yeteneğidir. Bu yetenek kısmi felaket kurtarma için uygun hale getirir. Birincil bölgeyle ilgili bir sorun varsa, uygulamanızı eşleştirilmiş bölgeye salt okunur erişim ene sahip olacak şekilde değiştirebilirsiniz.
 
 ### <a name="use-cases"></a>Uygulama alanları
 
-Her depolama türünün farklı bir kullanım durumu vardır.
+Her depolama türü farklı bir kullanım örneği vardır.
 
 #### <a name="blob-storage"></a>Blob depolama
 
-Sözcük *blobu* , *ikili büyük nesnenin*kısaltması olur. Blob 'lar, bilgisayarınızda depoladığınız gibi yapılandırılmamış dosyalardır. Blob Storage belge, medya dosyası veya uygulama yükleyici gibi her tür metin veya ikili veri depolayabilir. Blob Storage aynı zamanda nesne depolama olarak adlandırılır. Azure Blob depolama, Azure sanal makineler veri disklerini de barındırır.
+*Blob* *sözcüğü, ikili büyük nesnenin*kısaltmasıdır. Blobs, bilgisayarınızda depoladığınız dosyalar gibi yapılandırılmamış dosyalardır. Blob Storage belge, medya dosyası veya uygulama yükleyici gibi her tür metin veya ikili veri depolayabilir. Blob Storage aynı zamanda nesne depolama olarak adlandırılır. Azure Blob depolama da Azure Sanal Makineler veri diskleri tutar.
 
-Azure depolama üç tür blob destekler:
+Azure Depolama üç blob türünü destekler:
 
-- **Blok Blobları** , normal dosyaları 195 GB 'a kadar (4 MB × 50.000 blok) tutmak için kullanılır. Blok Blobları için birincil kullanım örneği, medya dosyaları veya Web siteleri için görüntü dosyaları gibi baştan sona okunan dosyaların depolanması olur. Bunlar blok Blobları olarak adlandırılır çünkü 64 MB 'tan büyük dosyalar küçük bloklar olarak karşıya yüklenmelidir. Bu bloklar daha sonra son bloba birleştirilir (veya kaydedilir).
+- **Blok lekelerboyutu** (4 MB × 50.000 blok) boyutu (4 MB × 50.000 blok) 195 GB'a kadar sıradan dosyaları tutmak için kullanılır. Blok bloblarının birincil kullanım örneği, medya dosyaları veya web siteleri için görüntü dosyaları gibi baştan sona okunan dosyaların depolanmasıdır. 64 MB'dan büyük dosyaların küçük bloklar olarak yüklenmesi gerektiğinden, bunlarblok blobs olarak adlandırılır. Bu bloklar daha sonra son blob içine konsolide (veya taahhüt) leştirilir.
 
-- **Sayfa Blobları** , boyutu 1 TB 'ye kadar olan rastgele erişim dosyalarını tutmak için kullanılır. Sayfa Blobları, Azure 'da IaaS işlem hizmeti olan Azure sanal makineleri için dayanıklı diskler sağlayan VHD 'ler için genellikle yedekleme depolama alanı olarak kullanılır. Bunlar, 512 baytlık sayfalara rastgele okuma/yazma erişimi sağladığından sayfa Blobları olarak adlandırılmaktadır.
+- **Sayfa lekeleri,** rasgele erişilen dosyaları 1 TB boyutuna kadar tutmak için kullanılır. Sayfa lekeleri, azure'daki IaaS bilgi işlem hizmeti olan Azure Sanal Makineleri için dayanıklı diskler sağlayan VHD'ler için öncelikle destek depolama alanı olarak kullanılır. 512 baytlık sayfalara rastgele okuma/yazma erişimi sağladıklarından sayfa blobu olarak adlandırılır.
 
-- **Ekleme Blobları** blok Blobları gibi bloklardan oluşur, ancak ekleme işlemleri için en iyi duruma getirilir. Bunlar, bir veya daha fazla kaynaktan aynı bloba bilgi günlüğe kaydetmek için sık kullanılır. Örneğin, birden çok VM 'de çalışan bir uygulama için izleme günlüğü 'nün tümünü aynı ekleme blobuna yazabilirsiniz. Tek bir ekleme blobu 195 GB 'a kadar olabilir.
+- **Ek blobs** blok blobs gibi bloklar oluşur, ancak ek işlemleri için optimize edilmiştir. Bunlar genellikle bir veya daha fazla kaynaktan aynı blob bilgileri günlüğe kaydetme için kullanılır. Örneğin, birden çok VM'de çalışan bir uygulama için tüm izleme günleme gününüzü aynı ek blob'a yazabilirsiniz. Tek bir ekleme blobu en fazla 195 GB olabilir.
 
-Daha fazla bilgi için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Daha fazla bilgi için [.NET'i kullanarak Azure Blob depolama alanına başlayın'a](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)bakın.
 
 #### <a name="file-storage"></a>Dosya depolama
 
-Azure dosya depolama, standart sunucu Ileti bloğu (SMB) protokolünü kullanarak bulutta dosya paylaşımları sunan bir hizmettir. Hizmet hem SMB 2,1 hem de SMB 3,0 'yi destekler. Azure dosya depolama ile, dosya paylaşımlarına yönelik uygulamaları, maliyetli yeniden yazar olmadan hızlı bir şekilde Azure 'a geçirebilirsiniz. Azure sanal makinelerinde, bulut hizmetlerinde veya şirket içi istemcilerde çalışan uygulamalar, buluta bir dosya paylaşımının bağlanabilir. Bu, bir masaüstü uygulamasının tipik bir SMB payını taktığından benzerdir. Ardından herhangi sayıda uygulama bileşeni eş zamanlı olarak File Storage paylaşımını bağlayıp buna erişim sağlayabilir.
+Azure Dosya depolama, standart Sunucu İleti Bloğu (SMB) protokolünü kullanarak bulutta dosya paylaşımları sunan bir hizmettir. Hizmet hem SMB 2.1 hem de SMB 3.0'ı destekler. Azure Dosya depolama ile, dosya paylaşımlarına dayanan uygulamaları hızlı ve maliyetli yeniden yazmadan Azure'a geçirebilirsiniz. Azure sanal makinelerinde, bulut hizmetlerinde veya şirket içi istemcilerden çalışan uygulamalar buluta dosya paylaşımı ekleyebilir. Bu, bir masaüstü uygulamasının tipik bir SMB payını nasıl birşekilde monte ettiğine benzer. Ardından herhangi sayıda uygulama bileşeni eş zamanlı olarak File Storage paylaşımını bağlayıp buna erişim sağlayabilir.
 
-Bir dosya depolama payı standart bir SMB dosya paylaşımında olduğundan, Azure 'da çalışan uygulamalar dosya sistemi g/ç API 'Leri aracılığıyla paylaşımdaki verilere erişebilir. Bu nedenle, geliştiriciler mevcut uygulamaları geçirmek için mevcut kodlarını ve yeteneklerini kullanabilir. BT uzmanları, Azure uygulamalarının yönetiminin bir parçası olarak dosya depolama paylaşımlarını oluşturmak, bağlamak ve yönetmek için PowerShell cmdlet 'lerini kullanabilir.
+Dosya depolama paylaşımı standart bir Kobİ dosya paylaşımı olduğundan, Azure'da çalışan uygulamalar dosya sistemi G/Ç API'leri aracılığıyla paylaşımdaki verilere erişebilir. Bu nedenle geliştiriciler varolan uygulamaları geçirmek için varolan kod ve becerilerini kullanabilirler. BT uzmanları, Azure uygulamalarının yönetiminin bir parçası olarak Dosya depolama paylaşımlarını oluşturmak, monte etmek ve yönetmek için PowerShell cmdlets'i kullanabilir.
 
-Daha fazla bilgi için bkz. [Windows 'Da Azure dosya depolama ile çalışmaya başlama](../../storage/files/storage-how-to-use-files-windows.md) veya [Linux ile Azure dosya depolama 'yı kullanma](../../storage/files/storage-how-to-use-files-linux.md).
+Daha fazla bilgi için [Windows'daki Azure Dosyası depolama alanına başlayın](../../storage/files/storage-how-to-use-files-windows.md) veya Linux ile Azure Dosyası [depolamasını nasıl](../../storage/files/storage-how-to-use-files-linux.md)kullanacağız'a bakın.
 
 #### <a name="table-storage"></a>Table Storage
 
-Azure Table Storage, bulutta yapılandırılmış NoSQL verileri depolayan bir hizmettir. Tablo depolama, şema daha az bir tasarıma sahip bir anahtar/öznitelik deposudur. Tablo Depolaması şemadan daha az olduğundan, uygulamanızın ihtiyaçları geliştikçe verilerinizi kolayca uyarlayabilirsiniz. Her türlü uygulama için verilere erişim hızlı ve uygun maliyetlidir. Table Storage, benzer hacimdeki veriler için geleneksel SQL’e oranla çok daha düşük maliyetlidir.
+Azure Table Storage, bulutta yapılandırılmış NoSQL verileri depolayan bir hizmettir. Tablo depolama, şemasız tasarıma sahip bir anahtar/öznitelik deposudur. Tablo depolama şemasız olduğundan, uygulamanızın gereksinimleri geliştikçe verilerinizi uyarlamak kolaydır. Her türlü uygulama için verilere erişim hızlı ve uygun maliyetlidir. Table Storage, benzer hacimdeki veriler için geleneksel SQL’e oranla çok daha düşük maliyetlidir.
 
-Web uygulamaları için kullanıcı verileri, adres defterleri, cihaz bilgileri ve hizmetiniz için gerekli olan tüm diğer meta veri türleri gibi esnek veri kümelerini depolamak üzere Table Storage’ı kullanabilirsiniz. Bir tabloda herhangi bir sayıda varlığı saklayabilirsiniz. Depolama hesabı, depolama hesabının kapasite sınırına kadar herhangi bir sayıda tablo içerebilir.
+Web uygulamaları için kullanıcı verileri, adres defterleri, cihaz bilgileri ve hizmetiniz için gerekli olan tüm diğer meta veri türleri gibi esnek veri kümelerini depolamak üzere Table Storage’ı kullanabilirsiniz. Bir tabloda istediğiniz sayıda varlığı depolayabilirsiniz. Depolama hesabı, depolama hesabının kapasite sınırına kadar herhangi bir sayıda tablo içerebilir.
 
-Daha fazla bilgi için bkz. [Azure Tablo Depolamayı kullanmaya başlama](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Daha fazla bilgi için bkz: [Azure Tablo depolama alanına başlayın.](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 
 #### <a name="queue-storage"></a>Kuyruk depolama
 
-Azure Queue depolama birimi, uygulama bileşenleri arasında bulut mesajlaşma özelliği sağlar. Uygulamaları ölçeklendirmek için tasarlarken, uygulama bileşenleri genellikle birbirinden bağımsız olarak ölçeklendirilebilecek şekilde ayrılır. Kuyruk depolama bulutta, masaüstünde, şirket içi sunucuda veya mobil bir cihazda çalışan uygulama bileşenleri arasındaki iletişim için zaman uyumsuz mesajlaşma sunar. Kuyruk depolama zaman uyumsuz görevlerin yönetilmesini ve süreç iş akışlarının oluşturulmasını da destekler.
+Azure Queue depolama birimi, uygulama bileşenleri arasında bulut mesajlaşma özelliği sağlar. Ölçek uygulamaları tasarlanırken, uygulama bileşenleri genellikle bağımsız ölçeklendirebilmeleri için birbirinden ayrıştırılır. Kuyruk depolama bulutta, masaüstünde, şirket içi sunucuda veya mobil bir cihazda çalışan uygulama bileşenleri arasındaki iletişim için zaman uyumsuz mesajlaşma sunar. Kuyruk depolama zaman uyumsuz görevlerin yönetilmesini ve süreç iş akışlarının oluşturulmasını da destekler.
 
-Daha fazla bilgi için bkz. [Azure kuyruk depolamayı kullanmaya başlama](../../storage/queues/storage-dotnet-how-to-use-queues.md).
+Daha fazla bilgi için bkz: [Azure Kuyruk depolama alanına başlayın.](../../storage/queues/storage-dotnet-how-to-use-queues.md)
 
 ### <a name="deploying-a-storage-account"></a>Depolama hesabı dağıtma
 
-Depolama hesabı dağıtmaya yönelik çeşitli seçenekler vardır.
+Depolama hesabı dağıtmak için çeşitli seçenekler vardır.
 
 #### <a name="portal"></a>Portal
 
-Azure portal kullanarak depolama hesabı dağıtmak için yalnızca etkin bir Azure aboneliği ve bir Web tarayıcısına erişim gerekir. Yeni veya var olan bir kaynak grubuna yeni bir depolama hesabı dağıtabilirsiniz. Depolama hesabını oluşturduktan sonra, portalı kullanarak bir blob kapsayıcısı veya dosya paylaşma oluşturabilirsiniz. Programlı bir şekilde tablo ve kuyruk depolama varlıkları oluşturabilirsiniz. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md).
+Azure portalını kullanarak bir depolama hesabı dağıtmak yalnızca etkin bir Azure aboneliği ve bir web tarayıcısına erişim gerektirir. Yeni bir depolama hesabını yeni veya varolan bir kaynak grubuna dağıtabilirsiniz. Depolama hesabını oluşturduktan sonra, portalı kullanarak bir blob kapsayıcısı veya dosya paylaşımı oluşturabilirsiniz. Tablo ve Sıra depolama varlıkları katmanlı olarak oluşturabilirsiniz. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md).
 
-Azure portal bir depolama hesabı dağıtmaya ek olarak portaldan bir Azure Resource Manager şablonu dağıtabilirsiniz. Bu, herhangi bir depolama hesabı da dahil olmak üzere şablonda tanımlanan tüm kaynakları dağıtır ve yapılandırır. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure Portal ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-portal.md).
+Azure portalından bir depolama hesabı dağıtmanın yanı sıra, portaldan bir Azure Kaynak Yöneticisi şablonu da dağıtabilirsiniz. Bu, herhangi bir depolama hesapları da dahil olmak üzere şablonda tanımlanan tüm kaynakları dağıtacak ve yapılandıracaktır. Daha fazla bilgi için [Kaynak Yöneticisi şablonları ve Azure portalı ile kaynakları dağıt'a](../../azure-resource-manager/templates/deploy-portal.md)bakın.
 
 #### <a name="powershell"></a>PowerShell
 
-PowerShell kullanarak bir Azure depolama hesabı dağıtmak, depolama hesabının tüm dağıtım otomasyonunu sağlar. Daha fazla bilgi için bkz. [Azure depolama ile Azure PowerShell kullanma](../../storage/common/storage-powershell-guide-full.md).
+PowerShell'i kullanarak bir Azure depolama hesabı dağıtmak, depolama hesabının tam dağıtım otomasyonuna olanak tanır. Daha fazla bilgi için bkz: [Azure Depolama ile Azure PowerShell'i kullanma.](../../storage/common/storage-powershell-guide-full.md)
 
-Azure kaynaklarını tek tek dağıtmanın yanı sıra, bir Azure Resource Manager şablonu dağıtmak için Azure PowerShell modülünü kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-powershell.md).
+Azure kaynaklarını tek tek dağıtmanın yanı sıra, Azure Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell modüllerini kullanabilirsiniz. Daha fazla bilgi için Kaynak [Yöneticisi şablonları ve Azure PowerShell ile kaynakları dağıt'a](../../azure-resource-manager/templates/deploy-powershell.md)bakın.
 
-#### <a name="command-line-interface-cli"></a>Komut satırı arabirimi (CLı)
+#### <a name="command-line-interface-cli"></a>Komut satırı arabirimi (CLI)
 
-PowerShell modülünde olduğu gibi, Azure komut satırı arabirimi de Dağıtım Otomasyonu sağlar ve Windows, OS X veya Linux sistemlerinde kullanılabilir. Depolama hesabı oluşturmak için Azure CLı **depolama hesabı oluştur** komutunu kullanabilirsiniz. Daha fazla bilgi için Azure [depolama ile Azure CLI kullanma](../../storage/common/storage-azure-cli.md) konusuna bakın.
+PowerShell modülünde olduğu gibi, Azure komut satırı Arabirimi dağıtım otomasyonu sağlar ve Windows, OS X veya Linux sistemlerinde kullanılabilir. Bir depolama hesabı oluşturmak için Azure CLI **depolama hesabı oluşturma** komutunu kullanabilirsiniz. Daha fazla bilgi için [bkz.](../../storage/common/storage-azure-cli.md)
 
-Benzer şekilde, bir Azure Resource Manager şablonu dağıtmak için Azure CLı 'yi de kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](../../resource-group-template-deploy-cli.md).
+Aynı şekilde, Azure Kaynak Yöneticisi şablonu dağıtmak için Azure CLI'yi kullanabilirsiniz. Daha fazla bilgi için Kaynak [Yöneticisi şablonları ve Azure CLI ile kaynakları dağıt'a](../../resource-group-template-deploy-cli.md)bakın.
 
-### <a name="access-and-security-for-azure-storage"></a>Azure depolama için erişim ve güvenlik
+### <a name="access-and-security-for-azure-storage"></a>Azure Depolama için erişim ve güvenlik
 
-Azure depolama 'nın Azure portal, VM oluşturma ve işlem sırasında ve depolama istemci kitaplıklarından farklı yollarla erişilir.
+Azure Depolama'ya, Azure portalı, VM oluşturma ve çalışma sırasında ve Depolama istemci kitaplıkları dahil olmak üzere çeşitli şekillerde erişilir.
 
 #### <a name="virtual-machine-disks"></a>Sanal makine diskleri
 
-Bir sanal makine dağıttığınızda, sanal makine işletim sistemi diskini ve tüm ek veri disklerini tutmak için bir depolama hesabı da oluşturmanız gerekir. Var olan bir depolama hesabını seçebilir veya yeni bir depolama hesabı oluşturabilirsiniz. Blob 'un en büyük boyutu 1.024 GB olduğundan, tek bir VM diskinin en fazla 1.023 GB boyutunda olması gerekir. Daha büyük bir veri diski yapılandırmak için, sanal makineye birden çok veri diski sunabilir ve bunları tek bir mantıksal disk olarak birlikte havuzda oluşturabilirsiniz. Daha fazla bilgi için bkz. [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) ve [Linux](../../virtual-machines/linux/tutorial-manage-disks.md)Için "Azure disklerini yönetme".
+Sanal bir makine dağıtırken, sanal makine işletim sistemi diskini ve ek veri disklerini tutmak için bir depolama hesabı oluşturmanız gerekir. Varolan bir depolama hesabı seçebilir veya yeni bir depo oluşturabilirsiniz. Bir blob maksimum boyutu 1.024 GB olduğundan, tek bir VM disk 1.023 GB maksimum boyutu vardır. Daha büyük bir veri diskini yapılandırmak için, sanal makineye birden çok veri diski sunabilir ve bunları tek bir mantıksal disk olarak bir araya getirebilirsiniz. Daha fazla bilgi için [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) ve [Linux](../../virtual-machines/linux/tutorial-manage-disks.md)için "Azure disklerini Yönet" başlıklı bilgi için.
 
 #### <a name="storage-tools"></a>Depolama araçları
 
-Azure depolama hesaplarına, Visual Studio Cloud Explorer gibi birçok farklı depolama araştırması aracılığıyla erişilebilir. Bu araçlar, depolama hesaplarına ve verilerine göz atmanıza olanak sağlar. Daha fazla bilgi ve kullanılabilir depolama gezginleri listesi için bkz. [Azure Storage istemci araçları](../../storage/common/storage-explorers.md).
+Azure depolama hesaplarına Visual Studio Cloud Explorer gibi birçok farklı depolama gezgini aracılığıyla erişilebilir. Bu araçlar, depolama hesaplarına ve verilere göz atmanıza izin sağlar. Daha fazla bilgi ve kullanılabilir depolama kaşiflerinin listesi için [Azure Depolama istemcisi araçlarına](../../storage/common/storage-explorers.md)bakın.
 
-#### <a name="storage-api"></a>Depolama API 'SI
+#### <a name="storage-api"></a>Depolama API'si
 
-Depolama kaynaklarına, HTTP/HTTPS istekleri yapan herhangi bir dil tarafından erişilebilir. Ayrıca, Azure Storage birkaç popüler dilde programlama kitaplıkları sunar. Bu kitaplıklar zaman uyumlu ve zaman uyumsuz çağrı, işlemlerin toplu işi, özel durum yönetimi ve otomatik yeniden denemeler gibi ayrıntıları işleyerek Azure depolama ile çalışmayı basitleştirir. Daha fazla bilgi için bkz. [Azure Storage service REST API başvurusu](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
+Depolama kaynaklarına HTTP/HTTPS isteklerini gerçekleştirebilecek herhangi bir dil erişebilir. Ayrıca, Azure Storage birkaç popüler dilde programlama kitaplıkları sunar. Bu kitaplıklar, senkron ve eşzamanlı çağırma, işlemlerin toplu kullanımı, özel durum yönetimi ve otomatik yeniden denemeler gibi ayrıntıları işleyerek Azure Depolama ile çalışmayı kolaylaştırır. Daha fazla bilgi için Azure [Depolama hizmeti REST API başvurusuna](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)bakın.
 
-#### <a name="storage-access-keys"></a>Depolama erişim tuşları
+#### <a name="storage-access-keys"></a>Depolama erişim anahtarları
 
-Her depolama hesabının, birincil ve ikincil olmak üzere iki kimlik doğrulama anahtarı vardır. , Depolama erişim işlemleri için kullanılabilir. Bu depolama anahtarları, bir depolama hesabının güvenliğini sağlamaya yardımcı olmak için kullanılır ve verilere programlı bir şekilde erişmek için gereklidir. Güvenliği geliştirmek için anahtarların zaman zaman geçişine izin veren iki anahtar vardır. Hesap adıyla birlikte, depolama hesabındaki herhangi bir veriye sınırsız erişime izin verdiğinden anahtarların güvenli tutulması önemlidir.
+Her depolama hesabının iki kimlik doğrulama anahtarı vardır, bir birincil ve ikincil. Her ikisi de depolama erişim işlemleri için kullanılabilir. Bu depolama anahtarları, bir depolama hesabının güvenliğini sağlamaya yardımcı olmak için kullanılır ve verilere programlı olarak erişmek için gereklidir. Güvenliği artırmak için tuşların ara sıra devrine izin veren iki anahtar vardır. Anahtarların güvenliğini sağlamak çok önemlidir, çünkü sahip oldukları, hesap adı ile birlikte, depolama hesabındaki herhangi bir veriye sınırsız erişim eve erişime olanak sağlar.
 
 #### <a name="shared-access-signatures"></a>Paylaşılan erişim imzaları
 
-Kullanıcıların depolama kaynaklarınıza denetimli erişimi olması gerekiyorsa, paylaşılan erişim imzası oluşturabilirsiniz. Paylaşılan erişim imzası, bir depolama kaynağına temsilci erişimi sağlayan bir URL 'ye eklenebileceği bir belirteçtir. Belirtece sahip olan herkes, geçerli olduğu süre boyunca gösterdiği izinlerle işaret eden kaynağa erişebilir olabilir. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Kullanıcıların depolama kaynaklarınıza kontrollü erişim ebilmelerine izin vermek istiyorsanız, paylaşılan bir erişim imzası oluşturabilirsiniz. Paylaşılan erişim imzası, depolama kaynağına devredilen erişimi sağlayan bir URL'ye eklenebilen bir belirteçtir. Belirteci sahip olan herkes, işaret ettiği kaynağa, geçerli olduğu süre boyunca, belirttiği izinlerle erişebilir. Daha fazla bilgi için [bkz.](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)
 
 ## <a name="azure-virtual-network"></a>Azure Sanal Ağ
 
-Sanal makineler arasındaki iletişimleri desteklemek için sanal ağlar gereklidir. Alt ağları, özel IP adresini, DNS ayarlarını, güvenlik filtrelemeyi ve yük dengelemeyi tanımlayabilirsiniz. Azure farklı kullanımlar durumlarını destekler: yalnızca bulut ağları veya karma sanal ağlar.
+Sanal ağlar sanal makineler arasındaki iletişimi desteklemek için gereklidir. Alt ağlar, özel IP adresi, DNS ayarları, güvenlik filtreleme ve yük dengeleme tanımlayabilirsiniz. Azure, yalnızca bulut ağları veya karma sanal ağlar gibi farklı kullanım durumlarını destekler.
 
-### <a name="cloud-only-virtual-networks"></a>Yalnızca bulut sanal ağları
+### <a name="cloud-only-virtual-networks"></a>Yalnızca bulutsanal ağlar
 
-Azure sanal ağı, varsayılan olarak yalnızca Azure 'da depolanan kaynaklarla erişilebilir. Aynı sanal ağa bağlı kaynaklar birbirleriyle iletişim kurabilir. Sanal makineyi Internet üzerinden erişilebilir hale getirmek için sanal makine ağ arabirimlerini ve yük dengeleyicileri genel bir IP adresi ile ilişkilendirebilirsiniz. Ağ güvenlik grubu kullanarak genel kullanıma sunulan kaynaklara güvenli erişim sağlanmasına yardımcı olabilirsiniz.
+Varsayılan olarak Azure sanal ağına yalnızca Azure'da depolanan kaynaklar erişebilir. Aynı sanal ağa bağlı kaynaklar birbirleriyle iletişim kurabilir. Sanal makinenin Internet üzerinden erişilebilir olmasını sağlamak için sanal makine ağ arabirimlerini ve yük dengeleyicilerini genel bir IP adresiyle ilişkilendirebilirsiniz. Bir ağ güvenlik grubu kullanarak, genel olarak açığa çıkan kaynaklara erişimin güvenli hale kullanılmasına yardımcı olabilirsiniz.
 
-![2 katmanlı bir Web uygulaması için Azure sanal ağı](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+![2 katmanlı bir Web Uygulaması için Azure Sanal Ağı](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
 
 ### <a name="hybrid-virtual-networks"></a>Karma sanal ağlar
 
-ExpressRoute veya siteden siteye VPN bağlantısı kullanarak şirket içi bir ağı bir Azure sanal ağına bağlayabilirsiniz. Bu yapılandırmada, Azure sanal ağı aslında şirket içi ağınızın bulut tabanlı uzantısıdır.
+ExpressRoute'u veya siteden siteye VPN bağlantısını kullanarak şirket içi ağı Azure sanal ağına bağlayabilirsiniz. Bu yapılandırmada, Azure sanal ağı aslında şirket içi ağınızın bulut tabanlı bir uzantısıdır.
 
-Azure sanal ağı şirket içi ağınıza bağlı olduğundan, şirket içi sanal ağlar, kuruluşunuzun kullandığı adres alanının benzersiz bir bölümünü kullanmalıdır. Farklı şirket konumlarına belirli bir IP alt ağına atanabileceği şekilde, Azure, ağınızı genişletmenizi sağlayan başka bir konum haline gelir.
+Azure sanal ağı şirket içi ağınıza bağlı olduğundan, tesisler arası sanal ağlar kuruluşunuzun kullandığı adres alanının benzersiz bir bölümünü kullanmalıdır. Farklı kurumsal konumlara belirli bir IP alt ağı atanması gibi, Azure ağınızı genişlettikçe başka bir konum haline gelir.
 Sanal ağ dağıtmak için çeşitli seçenekler vardır.
 
 - [Portal](../..//virtual-network/quick-create-portal.md)
 
-- [PowerShell](../../virtual-network/quick-create-powershell.md)
+- [Powershell](../../virtual-network/quick-create-powershell.md)
 
-- [Komut satırı arabirimi (CLı)](../../virtual-network/quick-create-cli.md)
+- [Komut Satırı Arabirimi (CLI)](../../virtual-network/quick-create-cli.md)
 
-- Azure Resource Manager şablonları
+- Azure Kaynak Yöneticisi Şablonları
 
-> **Ne zaman kullanılır**: Azure 'da VM 'lerle çalışırken sanal ağlarla çalışacaksınız. Bu, VM 'lerinizi, şirket içi veri merkezlerine benzer şekilde herkese açık ve özel alt ağlarda parçalara ayırma olanağı sağlar.
+> **Ne zaman kullanılır**: Azure'da SANAL M'lerle çalışırken sanal ağlarla çalışırsınız. Bu, Sanal M'lerinizi kamuya açık ve özel alt ağlara benzer şirket içi veri merkezlerine segmente etme olanağı sağlar.
 >
-> **Kullanmaya başlayın**: Azure Portal kullanarak Azure sanal ağını dağıtmak, yalnızca etkin bir Azure aboneliği gerektirir ve bir Web tarayıcısına erişim sağlar. Yeni veya var olan bir kaynak grubuna yeni bir sanal ağ dağıtabilirsiniz. Portaldan yeni bir sanal makine oluştururken, var olan bir sanal ağı seçebilir veya yeni bir ağ oluşturabilirsiniz. Kullanmaya başlayın ve [Azure Portal kullanarak bir sanal ağ oluşturun](../../virtual-network/quick-create-portal.md).
+> **Başlayın**: Azure portalını kullanarak bir Azure sanal ağı dağıtmak yalnızca etkin bir Azure aboneliği ve bir web tarayıcısına erişim gerektirir. Yeni bir sanal ağı yeni veya varolan bir kaynak grubuna dağıtabilirsiniz. Portaldan yeni bir sanal makine oluştururken, varolan bir sanal ağı seçebilir veya yeni bir ağ oluşturabilirsiniz. Azure portalını kullanarak başlatın ve [sanal ağ oluşturun.](../../virtual-network/quick-create-portal.md)
 
 ### <a name="access-and-security-for-virtual-networks"></a>Sanal ağlar için erişim ve güvenlik
 
-Bir ağ güvenlik grubu kullanarak Azure sanal ağlarının güvenliğini sağlamaya yardımcı olabilirsiniz. NSG 'ler bir sanal ağdaki VM örneklerinizin ağ trafiğine izin veren veya reddeden erişim denetim listesi (ACL) kurallarının bir listesini içerir. NSG 'leri alt ağlar veya alt ağ içindeki tek bir VM örneğiyle ilişkilendirebilirsiniz. Bir NSG 'yi bir alt ağ ile ilişkilendirdiğinizde, ACL kuralları bu alt ağdaki tüm sanal makine örneklerine uygulanır. Ayrıca, bir NSG 'yi bu VM ile doğrudan ilişkilendirerek, tek bir VM 'ye giden trafiği daha da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [Ağ güvenlik grupları ile ağ trafiğini filtreleme](../../virtual-network/security-overview.md).
+Bir ağ güvenlik grubu kullanarak Azure sanal ağlarının güvenliğini sağlamaya yardımcı olabilirsiniz. NSG'ler, sanal ağdaki VM örneklerinize ağ trafiğine izin veren veya reddeden bir erişim denetim listesi (ACL) kuralları içerir. NSG'leri bu alt ağ daki alt ağlarla veya tek tek VM örnekleriyle ilişkilendirebilirsiniz. Bir NSG'yi bir alt ağla ilişkilendirdiğinizde, ACL kuralları o alt ağdaki tüm VM örnekleri için geçerlidir. Buna ek olarak, bir NSG'yi doğrudan bu VM ile ilişkilendirerek trafiği tek bir VM ile daha da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [Ağ güvenlik grupları ile ağ trafiğini filtreleme](../../virtual-network/security-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

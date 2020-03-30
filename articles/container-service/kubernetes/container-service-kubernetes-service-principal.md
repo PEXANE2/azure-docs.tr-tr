@@ -1,5 +1,5 @@
 ---
-title: Kullanım DıŞı Azure Kubernetes kümesi için hizmet sorumlusu
+title: (AmortismanA Uğradı) Azure Kubernetes kümesi için hizmet sorumlusu
 description: Azure Container Service içindeki bir Kubernetes kümesi için Azure Active Directory hizmet sorumlusu oluşturma ve yönetme
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371129"
 ---
-# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Kullanım DıŞı Kapsayıcı hizmetinde bir Kubernetes kümesi için Azure AD hizmet sorumlusu ayarlama
+# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(AmortismanA Uğradı) Konteyner Hizmeti'nde bir Kubernetes kümesi için Azure AD hizmet ilkesi ayarlama
 
 > [!TIP]
-> Azure Kubernetes hizmetini kullanan Bu makalenin güncelleştirilmiş sürümü için bkz. [Azure Kubernetes Service (AKS) Ile hizmet sorumluları](../../aks/kubernetes-service-principal.md).
+> Azure Kubernetes Hizmetini kullanan bu makalenin güncelleştirilmiş sürümü için Azure [Kubernetes Hizmeti (AKS) ile Hizmet ilkelerine](../../aks/kubernetes-service-principal.md)bakın.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -41,7 +41,7 @@ Aşağıdaki gereksinimleri karşılayan mevcut bir Azure AD hizmet sorumlusunu 
 > Bir hizmet sorumlusu oluşturmak için, Azure AD kiracınızla bir uygulamayı kaydetme ve uygulamanızı aboneliğinizdeki bir role atama izinlerinizin olması gerekir. Gerekli izinlere sahip olup olmadığınızı görmek için [Portal’dan denetleyin](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 >
 
-## <a name="option-1-create-a-service-principal-in-azure-ad"></a>1\. Seçenek: Azure AD'de hizmet sorumlusu oluşturma
+## <a name="option-1-create-a-service-principal-in-azure-ad"></a>1. Seçenek: Azure AD'de hizmet sorumlusu oluşturma
 
 Kubernetes kümenizi dağıtmadan önce bir Azure AD hizmet sorumlusu oluşturmak isterseniz, Azure birkaç yöntem sunar.
 
@@ -61,7 +61,7 @@ Aşağıdakine benzer bir çıktı döndürülür (burada gösterilen sonuç kı
 
 ![Hizmet sorumlusu oluşturma](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-Vurgulanmış olan **istemci kimliği** (`appId`) ve **gizli anahtar** (`password`), küme dağıtımı için hizmet sorumlusu parametreleri olarak kullandığınız değerlerdir.
+Vurgulanan istemci **kimliği** `appId`( ) ve`password`küme dağıtımı için hizmet temel parametreleri olarak kullandığınız istemci **gizlidir.**
 
 
 ### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>Kubernetes kümesi oluştururken hizmet sorumlusu belirtme
@@ -71,14 +71,14 @@ Kubernetes kümesini oluştururken, mevcut bir hizmet sorumlusunun **istemci kim
 Kubernetes kümesini dağıtırken, bu parametreleri [Azure Komut Satırı Arabirimi (CLI)](container-service-kubernetes-walkthrough.md), [Azure portalı](../dcos-swarm/container-service-deployment.md) veya diğer yöntemleri kullanarak belirtebilirsiniz.
 
 >[!TIP]
->**İstemci kimliğini** belirtirken, hizmet sorumlusunun `appId` değerini değil `ObjectId` değerini kullandığınızdan emin olun.
+>**İstemci kimliğini** belirtirken, hizmet sorumlusunun `ObjectId` değerini değil `appId` değerini kullandığınızdan emin olun.
 >
 
 Aşağıdaki örnekte Azure CLI ile parametreleri iletme yollarından biri gösterilmektedir. Bu örnekte [Kubernetes hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) kullanılmıştır.
 
-1. [ şablon parametre dosyasını GitHub’dan ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)indirin`azuredeploy.parameters.json`.
+1. `azuredeploy.parameters.json` şablon parametre dosyasını GitHub’dan [indirin](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json).
 
-2. Hizmet sorumlusunu belirtmek için dosyada `servicePrincipalClientId` ve `servicePrincipalClientSecret` değerlerini girin. (Ayrıca `dnsNamePrefix` ve `sshRSAPublicKey` için kendi değerlerinizi de belirtmeniz gerekir. İkincisi, kümeye erişmek için SSH ortak anahtarıdır.) Dosyayı kaydedin.
+2. Hizmet sorumlusunu belirtmek için dosyada `servicePrincipalClientId` ve `servicePrincipalClientSecret` değerlerini girin. (Ayrıca `dnsNamePrefix` ve `sshRSAPublicKey` için kendi değerlerinizi de belirtmeniz gerekir. İkincisi kümeye erişmek için SSH ortak anahtarıdır.) Dosyayı kaydedin.
 
     ![Hizmet sorumlusu parametrelerini iletme](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -95,9 +95,9 @@ Aşağıdaki örnekte Azure CLI ile parametreleri iletme yollarından biri göst
     ```
 
 
-## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>2\. Seçenek: `az acs create` ile küme oluştururken hizmet sorumlusu oluşturma
+## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>2. Seçenek: `az acs create` ile küme oluştururken hizmet sorumlusu oluşturma
 
-Kubernetes kümesini oluşturmak için [`az acs create`](/cli/azure/acs#az-acs-create) komutunu çalıştırırsanız, otomatik olarak bir hizmet sorumlusu oluşturma seçeneğine sahip olursunuz.
+Kubernetes [`az acs create`](/cli/azure/acs#az-acs-create) kümesini oluşturmak için komutu çalıştırırsanız, otomatik olarak bir hizmet ilkesi oluşturma seçeneğiniz vardır.
 
 Diğer Kubernetes kümesi oluşturma seçeneklerinde olduğu gibi, `az acs create` çalıştırırken mevcut bir hizmet sorumlusunun parametrelerini belirtebilirsiniz. Ancak, bu parametreleri atlarsanız Azure CLI, Container Service ile kullanılacak bir hizmet sorumlusunu otomatik olarak oluşturur. Bu işlem dağıtım sırasında saydam bir şekilde gerçekleştirilir.
 
@@ -133,7 +133,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 Bir hizmet sorumlusu oluştururken `--years` parametresiyle özel bir geçerlilik penceresi belirtmediğiniz sürece, bir hizmet sorumlusu oluşturduğunuzda, kimlik bilgileri oluşturma zamanından sonraki 1 yıl boyunca geçerli olur. Kimlik bilgilerinin süresi dolduğunda, küme düğümleriniz bir **NotReady** durumu girebilir.
 
-Bir hizmet sorumlusunun sona erme tarihini denetlemek için, [az ad uygulamasını göster](/cli/azure/ad/app#az-ad-app-show) komutunu `--debug` parametresiyle yürütün ve çıktının altının yakınında bulunda `endDate` alanındaki `passwordCredentials` değerini arayın:
+Bir hizmet sorumlusunun sona erme tarihini denetlemek için, [az ad uygulamasını göster](/cli/azure/ad/app#az-ad-app-show) komutunu `--debug` parametresiyle yürütün ve çıktının altının yakınında bulunda `passwordCredentials` alanındaki `endDate` değerini arayın:
 
 ```azurecli
 az ad app show --id <appId> --debug

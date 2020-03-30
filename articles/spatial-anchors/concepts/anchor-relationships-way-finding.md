@@ -1,6 +1,6 @@
 ---
-title: Bağlama ilişkileri ve yöntemi-bulma
-description: Bağlantı ilişkilerinin arkasındaki kavramsal model hakkında bilgi edinin. Bir alan içindeki çıpası bağlamayı ve bir yol bulma senaryosunu karşılamak için yakındaki API 'yi kullanmayı öğrenin.
+title: Çapa ilişkileri ve yol bulma
+description: Çapa ilişkilerinin arkasındaki kavramsal model hakkında bilgi edinin. Bir alan içindeki bağlantı bağlantılarını bağlamayı ve yol bulma senaryosunu yerine getirmek için Yakındaki API'yi kullanmayı öğrenin.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,77 +9,77 @@ ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74270612"
 ---
-# <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure uzamsal bağlayıcılarını ve bağlama ilişkilerini ve yolunu bulma
+# <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure Uzamsal Bağlantılarda bağlantı ilişkileri ve yol bulma
 
-Bağlayıcı ilişkilerini kullanarak, bir alanda bağlı Tutturucular oluşturabilir ve ardından bunlar gibi sorular sorabilirsiniz:
+Bağlantı ilişkilerini kullanarak, bir boşlukta bağlı çapalar oluşturabilir ve ardından şu gibi sorular sorabilirsiniz:
 
-* Yakında bağlayıcı var mı?
-* Ne kadar uzakta?
+* Yakınlarda çapa var mı?
+* Ne kadar uzaktalar?
 
 ## <a name="examples"></a>Örnekler
 
-Bağlı bağlayıcıları bunlar gibi durumlarda kullanabilirsiniz:
+Bu gibi durumlarda bağlı çapak kullanabilirsiniz:
 
-* Çalışan bir endüstriyel fabrikadaki çeşitli konumları ziyaret eden bir görevi tamamlaması gerekir. Fabrikada her konumdaki uzamsal bağlantılar bulunur. HoloLens veya mobil uygulama, çalışan tarafından bir konumdan sonrakine kılavuzluk eder. Uygulama ilk olarak yakın uzamsal Tutturuculara sorar ve sonra çalışanı bir sonraki konuma yönlendirir. Uygulama, genel yönü ve bir sonraki konuma mesafeyi gösterir.
+* Bir işçi bir sanayi fabrikasında çeşitli yerleri ziyaret içeren bir görevi tamamlamak gerekir. Fabrikanın her yerinde mekansal çapalar vardır. HoloLens veya mobil uygulama, işçiyi bir konumdan diğerine yönlendirmeye yardımcı olur. Uygulama önce yakındaki uzamsal çapaları sorar ve ardından işçiyi bir sonraki konuma yönlendirir. Uygulama, genel yönü ve bir sonraki konuma olan uzaklığı görsel olarak gösterir.
 
-* Bir Museum, genel ekranlarda uzamsal bağlantılar oluşturur. Birlikte, bu Tutturucuların her biri, Museum 'un gerekli genel ekranların bir saatlik turuna göre yapılır. Ortak bir ekranda, ziyaretçiler, mobil cihazlarıyla Museum 'un karma gerçeklik uygulamasını açabilir. Daha sonra genel yönü görmek ve turdaki diğer genel ekranları bulmak için telefon kameralarını alanın çevresinde işaret ederler. Bir Kullanıcı genel bir ekranda ilerlemelerine göre, uygulama, kullanıcıya kılavuzluk eden genel yönü ve mesafeyi güncelleştirir.
+* Bir müze halka açık sergilerde mekansal çapalar oluşturur. Bu çapalar birlikte müzenin temel halka açık sergilerinde bir saatlik bir tur oluştururlar. Halka açık bir ekranda, ziyaretçiler müzenin karma gerçeklik uygulamasını mobil cihazlarıyla açabilirler. Daha sonra turdaki diğer halka açık ekranlara genel yönünü ve mesafeyi görmek için telefon kameralarını alanın etrafına yönlendirirler. Bir kullanıcı herkese açık bir ekrana doğru yürürken, uygulama kullanıcıya rehberlik etmek için genel yönü ve mesafeyi güncelleştirir.
 
-## <a name="set-up-way-finding"></a>Yöntemi ayarlama-bulma
+## <a name="set-up-way-finding"></a>Yol bulma yı ayarlama
 
-Gözetimi sağlayan bir uygulama, kılavuz sağlamak için *yol bulma yöntemini*kullanıyor. Yöntem-bulma işlemi, sırayla gezinmede farklılık açabilir. Açılan gezinmede, kullanıcılar duvarlar, kapıların ve katlar arasında kılavuzluk eder. Yöntemle, Kullanıcı hedefin genel yönü hakkında ipuçları alır. Ancak alanın çıkarım veya bilgisi, kullanıcının hedef yapıya göre gezinmenize de yardımcı olur.
+Kılavuzluk sağlamak için görüş hattı yönünü ve bağlantı noktası arasındaki mesafeyi kullanan bir uygulama *yol bulma*yı kullanıyor. Yol bulma, turn-by-turn navigasyon farklıdır. Kullanıcılar, sıra yla navigasyonda duvarların etrafında, kapılardan ve katlar arasında yönlendirilir. Yol bulma ile, kullanıcı hedefin genel yönü hakkında ipuçları alır. Ancak çıkarım veya alan bilgisi de kullanıcının yapı da hedefe doğru gezinmesine yardımcı olur.
 
-Bir yöntem bulma deneyimi oluşturmak için ilk olarak deneyim için bir alan hazırlayın ve kullanıcıların etkileşime gileceği bir uygulama geliştirin. Bunlar kavramsal adımlardır:
+Yol bulma deneyimi oluşturmak için, önce deneyim için bir alan hazırlayın ve kullanıcıların etkileşimde bulunacağı bir uygulama geliştirin. Bunlar kavramsal adımlarşunlardır:
 
-1. **Alanı planlayın**: alanın içindeki konumların, yol bulma deneyiminin bir parçası olacağını belirleyin. Senaryolarımızda, fabrika idarecisi veya Museum Tur Düzenleyicisi, yol bulma deneyimine hangi konumlara dahil edileceğini karar verebilir.
-2. **Bağlantı bağlantıları**: uzamsal bağlayıcı oluşturmak için seçili konumları ziyaret edin. Bunu, Son Kullanıcı uygulamasının bir yönetici modunda veya tamamen farklı bir uygulamada yapabilirsiniz. Her bir bağlayıcıyı birbirine bağlayacaksınız veya birbirleriyle ilişkilendirirsiniz. Hizmet bu ilişkileri korur.
-3. **Son Kullanıcı deneyimini başlatın**: kullanıcılar, seçili konumlardan hiçbirinde olabilecek bir tutturucu bulmak için uygulamayı çalıştırır. Genel tasarımınız, kullanıcıların deneyimi girebilecekleri konumları belirlemelidir.
-4. **Yakın bağlayıcıları bul**: Kullanıcı bir tutturucu bulduktan sonra, uygulama yakındaki bağlantıları isteyebilir. Bu yordam, cihaz ve bu bağlantılar arasında bir poz döndürür.
-5. **Kullanıcıya kılavuzluk**edin: uygulama, kullanıcının genel yönü ve mesafesi hakkında rehberlik sağlamak için bu bağlayıcıların her birine ait pozları kullanabilir. Örneğin, uygulamadaki kamera akışı, aşağıdaki görüntüde gösterildiği gibi her bir olası hedefi temsil eden bir simge ve ok gösterebilir.
-6. **Kılavuzu daraltın**: Kullanıcı yönergede olduğu gibi, uygulama cihaz ile hedef bağlantı noktası arasında düzenli olarak yeni bir poz hesaplayabilir. Uygulama, kullanıcının hedefe ulaşmaya yardımcı olan kılavuz ipuçlarını iyileştirmeye devam etmektedir.
+1. **Alanı planlayın**: Alan içinde hangi yerlerin yol bulma deneyiminin bir parçası olacağına karar verin. Senaryolarımızda, fabrika şefi veya müze tur koordinatörü yol bulma deneyimine hangi yerleri dahil edeceğine karar verebilir.
+2. **Bağlantı çapaları**: Uzamsal çapalar oluşturmak için seçilen yerleri ziyaret edin. Bunu son kullanıcı uygulamasının yönetici modunda veya tamamen farklı bir uygulamada yapabilirsiniz. Her çapayı diğerleriyle bağlayacak veya ilişkilendireceksiniz. Hizmet bu ilişkileri korur.
+3. **Son kullanıcı deneyimini başlatın**: Kullanıcılar seçilen konumlardan herhangi birinde bulunabilecek bir çapayı bulmak için uygulamayı çalıştırın. Genel tasarımınız, kullanıcıların deneyimi girebileceği konumları belirlemelidir.
+4. **Yakındaki çapaları bulun**: Kullanıcı bir çapa bulduktan sonra, uygulama yakındaki çapaları isteyebilir. Bu yordam, aygıt ve bu çapalar arasında bir poz döndürür.
+5. **Kılavuzu :** Uygulama, kullanıcının genel yönü ve mesafesi hakkında rehberlik etmek için bu çapaların her birine poz verebilir. Örneğin, uygulamadaki kamera akışı, aşağıdaki resimde görüldüğü gibi, her olası hedefi temsil edecek bir simge ve ok gösterebilir.
+6. **Kılavuzu hassaslaştırın**: Kullanıcı yürürken, uygulama cihaz ve hedef çapa arasında düzenli olarak yeni bir poz hesaplayabilir. Uygulama, kullanıcının hedefe ulaşmasına yardımcı olan kılavuz ipuçlarını geliştirmeye devam eder.
 
-    ![Uygulamanın yol bulma kılavuzunu nasıl gösterebileceğine ilişkin bir örnek](./media/meeting-spot.png)
+    ![Bir uygulamanın yol bulma kılavuzunu nasıl gösterebileceğine bir örnek](./media/meeting-spot.png)
 
-## <a name="connect-anchors"></a>Bağlantı bağlantıları
+## <a name="connect-anchors"></a>Bağlantı bağlantılarını
 
-Bir yöntem bulma deneyimi oluşturmak için önce bağlantıları seçili konumlara yerleştirmeniz gerekir. Bu bölümde, uygulamanın yöneticisinin bu çalışmayı zaten tamamladığını varsayacağız.
+Yol bulma deneyimi oluşturmak için öncelikle çapaları seçilen konumlara yerleştirmeniz gerekir. Bu bölümde, uygulamanın yöneticisinin bu çalışmayı çoktan bitirdiğini varsayacağız.
 
-### <a name="connect-anchors-in-a-single-session"></a>Bağlantıları tek bir oturumda bağlama
+### <a name="connect-anchors-in-a-single-session"></a>Çapaları tek bir oturumda bağlama
 
-Bağlantıları bağlamak için:
+Çapaları bağlamak için:
 
-1. İlk konuma kılavuzluk edin ve bir CloudSpatialAnchorSession kullanarak bağlayıcı oluşturun.
-2. İkinci konuma kılavuzluk edin. Temel alınan MR/AR platformu hareketi izler.
-3. Aynı CloudSpatialAnchorSession kullanarak bağlayıcı B oluşturun. A ve B bağlantıları artık bağlı. Uzamsal bağlayıcı hizmeti bu ilişkiyi tutar.
-4. Kalan Tutturucuların yordamına devam edin.
+1. İlk konuma yürüyün ve CloudSpatialAnchorSession kullanarak Çapa A oluşturun.
+2. İkinci yere doğru yürü. Altta yatan MR/AR platformu hareketi izler.
+3. Aynı CloudSpatialAnchorSession kullanarak Anchor B oluşturun. A ve B çapaları artık birbirine bağlı. Uzamsal Çapalar hizmeti bu ilişkiyi korur.
+4. Kalan çapalar için yordamı devam edin.
 
-### <a name="connect-anchors-in-multiple-sessions"></a>Birden çok oturumda bağlantıları bağlama
+### <a name="connect-anchors-in-multiple-sessions"></a>Birden çok oturumda bağlantı bağlantı
 
-Uzamsal Tutturucuların birden çok oturum üzerinden bağlanmasını sağlayabilirsiniz. Bu yöntemi kullanarak, bir seferde bazı bağlayıcıları oluşturup bağlayıp daha sonra daha sonra daha fazla bağlayıcı oluşturup bağlayabilirsiniz.
+Uzamsal çapaları birden çok oturum üzerinden bağlayabilirsiniz. Bu yöntemi kullanarak, bazı çapaları aynı anda oluşturabilir ve bağlayabilir ve daha sonra daha fazla bağlantı oluşturup bağlayabilirsiniz.
 
-Birden çok oturumun bağlayıcılarını bağlamak için:
+Birden çok oturum üzerinden çapa bağlamak için:
 
-1. Uygulama bir CloudSpatialAnchorSession içinde bazı bağlantılar oluşturur.
-2. Farklı bir zamanda uygulama, yeni bir CloudSpatialAnchorSession kullanarak bu bağlayıcıların birini (örneğin, A bağlantısı) bulur.
-3. Yeni bir konuma kılavuzluk edin. Temel karma gerçeklik veya genişletilmiş gerçeklik platformu, taşımayı izler.
-4. Aynı CloudSpatialAnchorSession kullanarak bir bağlayıcı oluşturun. A, B ve C bağlantıları artık bağlı. Uzamsal bağlayıcı hizmeti bu ilişkiyi tutar.
+1. Uygulama, bir CloudSpatialAnchorSession bazı çapa oluşturur.
+2. Farklı bir zamanda, uygulama bu çapalardan birini (örneğin, Çapa A) yeni bir CloudSpatialAnchorSession kullanarak bulur.
+3. Yeni bir yere yürüyün. Altta yatan karışık gerçeklik veya artırılmış gerçeklik platformu hareketi izler.
+4. Aynı CloudSpatialAnchorSession kullanarak Çapa C oluşturun. A, B ve C çapaları artık birbirine bağlı. Uzamsal Çapalar hizmeti bu ilişkiyi korur.
 
-Zaman içinde daha fazla bağlayıcı ve daha fazla oturum için bu yordama devam edebilirsiniz.
+Zaman içinde daha fazla çapa ve daha fazla oturum için bu yordamı devam edebilirsiniz.
 
 ### <a name="verify-anchor-connections"></a>Bağlantı bağlantılarını doğrulama
 
-Uygulama, yakın Tutturucular için bir sorgu vererek iki Tutturucuların bağlandığını doğrulayabilirler. Sorgunun sonucu hedef bağlayıcıyı içerdiğinde, bağlantı bağlantısı doğrulanır. Bağlantı bağlantıları bağlı değilse, uygulama bunları yeniden bağlamayı deneyebilir.
+Uygulama, yakındaki çapalar için bir sorgu düzenleyerek iki bağlantının bağlı olduğunu doğrulayabilir. Sorgunun sonucu hedef bağlantı içerdiğinde, bağlantı bağlantısı doğrulanır. Çapalar bağlı değilse, uygulama bunları yeniden bağlamayı deneyebilir.
 
-Bağlantı oluşturulamalarının bağlanamamasının bazı nedenleri aşağıda verilmiştir:
+Çapaların bağlanamamasının bazı nedenleri şunlardır:
 
-* Bağlantıları bağlama işlemi sırasında temeldeki karma gerçeklik veya genişletilmiş gerçeklik platformu kayıp izleme.
-* Uzamsal bağlayıcı hizmeti ile iletişim sırasında bir ağ hatası nedeniyle, bağlantı bağlantısı kalıcı hale getirilemedi.
+* Altta yatan karma gerçeklik veya artırılmış gerçeklik platformu, çapabağlama işlemi sırasında izlemeyi kaybetti.
+* Uzamsal Çapalar hizmetiyle iletişim sırasında bir ağ hatası nedeniyle, bağlantı bağlantısı kalıcı olamazdı.
 
-### <a name="find-sample-code"></a>Örnek kod bulma
+### <a name="find-sample-code"></a>Örnek kodu bulma
 
-Bağlantı ve yakın sorguları nasıl bağlayabileceğinizi gösteren örnek kodu bulmak için bkz. [uzamsal Tutturucuların örnek uygulamaları](https://github.com/Azure/azure-spatial-anchors-samples).
+Çapaları nasıl bağlayacaklarını gösteren örnek kodu bulmak ve yakındaki sorguları yapmak için [Uzamsal Çapalar örnek uygulamalarına](https://github.com/Azure/azure-spatial-anchors-samples)bakın.

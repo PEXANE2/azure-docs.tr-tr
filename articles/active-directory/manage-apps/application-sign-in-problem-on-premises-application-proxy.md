@@ -1,6 +1,6 @@
 ---
-title: Azure AD uygulama proxy 'sini kullanarak şirket içi uygulamada oturum açma sorunu | Microsoft Docs
-description: Azure AD Uygulama Ara Sunucusu kullanarak Azure AD ile tümleştirilmiş şirket içi bir uygulamada oturum açarken karşılaşılan yaygın sorunları giderme
+title: Azure AD uygulama proxy'sini kullanarak şirket içi uygulamada oturum açma sorunu | Microsoft Dokümanlar
+description: Azure AD Uygulama Proxy'sini kullanarak Azure AD ile tümleşik bir şirket içi uygulamada oturum açamadığınızda karşılaşılan sık karşılaşılan sorunları giderme
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,15 +16,15 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232336"
 ---
-# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Azure AD uygulama proxy 'sini kullanarak şirket içi bir uygulamada oturum açma sorunları
+# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Azure AD uygulama proxy'sini kullanarak şirket içi uygulamada oturum açma sorunları
 
-Şirket içi bir uygulamada oturum açarken sorun yaşıyorsanız, sorunu çözmek için aşağıdaki adımları takip edebilirsiniz.
+Şirket içi bir uygulamada oturum açmada sorun yaşıyorsanız, sorununuzu çözmek için aşağıdaki adımları uygulamayı deneyebilirsiniz.
 
 ## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Uygulamamı yükleyebiliyorum ama sayfadaki bir şey bozuk görünüyor
 

@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB ve Işlevleri kullanarak yapılandırılmamış verileri depolama
+title: Azure Cosmos DB ve Fonksiyonlar kullanarak yapılandırılmamış verileri depolama
 description: Azure İşlevleri ve Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74230556"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure İşlevleri ve Azure Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), yapılandırılmamış verileri ve JSON verilerini depolamanın harika bir yoludur. Cosmos DB, Azure İşlevleri ile birlikte kullanıldığında verilerin ilişkisel bir veritabanında depolanmasına göre çok daha az kodla verileri hızlı ve kolay bir şekilde depolar.
+[Azure Cosmos DB,](https://azure.microsoft.com/services/cosmos-db/) yapılandırılmamış ve JSON verilerini depolamak için harika bir yoldur. Cosmos DB, Azure İşlevleri ile birlikte kullanıldığında verilerin ilişkisel bir veritabanında depolanmasına göre çok daha az kodla verileri hızlı ve kolay bir şekilde depolar.
 
 > [!NOTE]
 > Şu anda Azure Cosmos DB tetikleyicisi, giriş bağlamaları ve çıkış bağlamaları yalnızca SQL API ve Graph API hesaplarıyla çalışır.
@@ -22,7 +22,7 @@ Azure İşlevleri’nde giriş ve çıkış bağlamaları, işlevinizden dış h
 
 ![Cosmos DB](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-cosmosdb.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -55,7 +55,7 @@ Bu öğreticiyi tamamlamak için:
     | **Belge parametre adı** | taskDocument | Kodda Cosmos DB nesnesine başvuran ad. |
     | **Veritabanı adı** | taskDatabase | Belgelerin kaydedileceği veritabanının adı. |
     | **Koleksiyon adı** | TaskCollection | Veritabanı koleksiyonunun adı. |
-    | **True ise, Cosmos DB veritabanı ve koleksiyonunu oluşturur** | Onay işaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
+    | **True ise, Cosmos DB veritabanı ve koleksiyonunu oluşturur** | İşaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
     | **Azure Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**'yi ve ardından **Aboneliğinizi**, önceden oluşturduğunuz **Veritabanı hesabını** ve **Seç**'i belirtin. Hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
     | **Koleksiyon aktarım hızı** |400 RU| Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz. |
 
@@ -65,7 +65,7 @@ Bu öğreticiyi tamamlamak için:
 
 Mevcut işlev kodunu aşağıdan seçtiğiniz dildeki kodla değiştirin:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Mevcut C# işlevini aşağıdaki kodla değiştirin:
 
@@ -102,7 +102,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Mevcut JavaScript işlevini aşağıdaki kodla değiştirin:
 

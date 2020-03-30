@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SAP HANA için desteklenen senaryolar (büyük örnekler) | Microsoft Docs
-description: Desteklenen senaryolar ve Azure 'daki SAP HANA için mimari ayrıntıları (büyük örnekler)
+title: Azure'da SAP HANA için desteklenen senaryolar (Büyük Örnekler)| Microsoft Dokümanlar
+description: Azure'da SAP HANA için desteklenen senaryolar ve mimari ayrıntıları (Büyük Örnekler)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,285 +14,285 @@ ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617176"
 ---
-# <a name="supported-scenarios-for-hana-large-instances"></a>HANA büyük örnekleri için desteklenen senaryolar
-Bu makalede, HANA büyük örnekler (HLI) için desteklenen senaryolar ve mimari ayrıntıları açıklanmaktadır.
+# <a name="supported-scenarios-for-hana-large-instances"></a>HANA Büyük Örnekleri için desteklenen senaryolar
+Bu makalede, HANA Büyük Örnekleri (HLI) için desteklenen senaryolar ve mimari ayrıntıları açıklanmaktadır.
 
 >[!NOTE]
->Gerekli senaryonuz bu makalede bahsedilmez, gereksinimlerinizi değerlendirmek için Microsoft hizmet yönetimi ekibine başvurun.
-HLI birimini ayarlamadan önce SAP veya hizmet uygulama iş ortağınızdan tasarımı doğrulayın.
+>Bu makalede gerekli senaryonuz belirtilmemişse, gereksinimlerinizi değerlendirmek için Microsoft Hizmet Yönetimi ekibine başvurun.
+HLI birimini ayarlamadan önce, tasarımı SAP veya hizmet uygulama ortağınızla doğrulayın.
 
-## <a name="terms-and-definitions"></a>Hüküm ve tanımlar
-Bu makalede kullanılan hüküm ve tanımları anlayalim:
+## <a name="terms-and-definitions"></a>Terimler ve tanımlar
+Bu makalede kullanılan terimleri ve tanımları anlayalım:
 
-- **SID**: Hana sistemi için bir sistem tanımlayıcısı
-- **HLi**: Hana büyük örnekleri
-- **Dr**: olağanüstü durum kurtarma
-- **Normal Dr**: yalnızca Dr amaçları için ayrılmış kaynağa sahip bir sistem kurulumu
-- **Çok AMAÇLı Dr**: bir Dr olayı için yapılandırılmış bir üretim örneği ile birlikte, üretim dışı bir ortamı kullanacak şekilde YAPıLANDıRıLMıŞ bir Dr-site sistemi 
-- **Tek SID**: bir örneği yüklü bir sistem
-- **Çoklu SID**: birden çok örneği yapılandırılmış bir sistem; MCOS ortamı da denir
-- **HSR**: sistem çoğaltmasını SAP HANA
+- **SID**: HANA sistemi için bir sistem tanımlayıcısı
+- **HLI**: Hana Büyük Örnekleri
+- **DR**: Olağanüstü durum kurtarma
+- **Normal DR**: Yalnızca DR amaçları için özel bir kaynağa sahip bir sistem kurulumu
+- **Çok Amaçlı DR**: Dr olayı için yapılandırılan bir üretim örneğinin yanı sıra üretim dışı bir ortam kullanacak şekilde yapılandırılan DR-site sistemi 
+- **Single-SID**: Bir örneği yüklü bir sistem
+- **Multi-SID**: Birden fazla örneği yapılandırılmış bir sistem; mcos ortamı olarak da adlandırılır
+- **HSR**: SAP HANA Sistem Çoğaltma
 
 ## <a name="overview"></a>Genel Bakış
-HANA büyük örnekleri, iş gereksinimlerinizi gerçekleştirmenize yardımcı olmak için çeşitli mimarilerin kullanılmasını destekler. Aşağıdaki bölümlerde mimari senaryolar ve bunların yapılandırma ayrıntıları ele alınmaktadır. 
+HANA Büyük Örnekler, iş gereksinimlerinizi gerçekleştirmenize yardımcı olmak için çeşitli mimarileri destekler. Aşağıdaki bölümler mimari senaryoları ve bunların yapılandırma ayrıntılarını kapsamaktadır. 
 
-Türetilmiş mimari tasarımı yalnızca bir altyapı perspektifinden, SAP veya HANA dağıtımı için uygulama iş ortaklarınıza danışmanız gerekir. Senaryolarınız Bu makalede listelenmiyorsa, mimariyi gözden geçirmek ve sizin için bir çözüm türetmek üzere Microsoft hesabı ekibine başvurun.
+Türetilen mimari tasarım tamamen altyapı açısından dır ve HANA dağıtımı için SAP'ye veya uygulama ortaklarınıza danışmalısınız. Senaryolarınız bu makalede listelenmiyorsa, mimariyi gözden geçirmek ve sizin için bir çözüm elde etmek için Microsoft hesap ekibine başvurun.
 
 > [!NOTE]
-> Bu mimariler, özel veri tümleştirme (TDı) tasarımı ile tam uyumludur ve SAP tarafından desteklenir.
+> Bu mimariler Özel Veri Tümleştirme (TDI) tasarımıile tamamen uyumludur ve SAP tarafından desteklenir.
 
-Bu makalede, desteklenen her mimarideki iki bileşenin ayrıntıları açıklanmaktadır:
+Bu makalede, desteklenen her mimaride iki bileşenin ayrıntıları açıklanır:
 
 - Ethernet
 - Depolama
 
 ### <a name="ethernet"></a>Ethernet
 
-Sağlanan her sunucu, Ethernet arabirimleri kümeleriyle önceden yapılandırılmış olarak gelir. Her bir HLI birimde yapılandırılan Ethernet arabirimleri dört tür olarak kategorilere ayrılır:
+Her sağlanan sunucu, Ethernet arabirimi kümeleriyle önceden yapılandırılmış olarak gelir. Her HLI biriminde yapılandırılan Ethernet arabirimleri dört türe ayrılır:
 
-- **A**: istemci erişimi için veya tarafından kullanılır.
-- **B**: düğümden düğüme iletişim için kullanılır. Bu arabirim, istenen topolojiden bağımsız olarak tüm sunucularda yapılandırılır, ancak yalnızca genişleme senaryolarında kullanılır.
-- **C**: düğümden depolamaya bağlantı için kullanılır.
-- **D**: STONITH kurulumu için düğüm-iSCSI cihaz bağlantısı için kullanılır. Bu arabirim yalnızca bir HSR kurulumu istendiğinde yapılandırılır.  
+- **A**: İstemci erişimi için veya istemci erişimi için kullanılır.
+- **B**: Düğümden düğüme iletişim için kullanılır. Bu arabirim tüm sunucularda yapılandırılır (istenen topolojiden bağımsız olarak) ancak yalnızca ölçeklendirme senaryoları için kullanılır.
+- **C**: Düğümden depolama bağlantısı için kullanılır.
+- **D**: STONITH kurulumu için düğüm-iSCSI cihaz bağlantısı için kullanılır. Bu arabirim yalnızca HSR kurulumu istendiğinde yapılandırılır.  
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme|
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | STONıTH |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Düğümden düğüme|
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | STONıTH |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Düğümden düğüme|
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | TAŞIT |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Düğümden düğüme|
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | TAŞIT |
 
-Ara birim üzerinde yapılandırılan topolojiye göre arabirimi seçersiniz. Örneğin, "B" arabirimi düğümden düğüme iletişim için ayarlanır ve bu, yapılandırılmış bir genişleme topolojisi olduğunda faydalıdır. Bu arabirim, tek düğüm, ölçek yapılandırması için kullanılmaz. Arabirim kullanımı hakkında daha fazla bilgi için, gerekli senaryolarınızı gözden geçirin (Bu makalenin ilerleyen kısımlarında). 
+Arabirimi, HLI biriminde yapılandırılan topolojiyi temel alın. Örneğin, "B" arabirimi düğümden düğüme iletişim için ayarlanmıştır ve bu da ölçeklendirilmiş bir topolojiniz olduğunda kullanışlıdır. Bu arabirim tek düğüm, ölçeklendirme yapılandırmaları için kullanılmaz. Arabirim kullanımı hakkında daha fazla bilgi için, gerekli senaryoları gözden geçirin (bu makalenin ilerleyen saatlerinde). 
 
-Gerekirse, sizin için Ek NIC kartları tanımlayabilirsiniz. Ancak, *mevcut NIC 'lerin yapılandırması değiştirilemez.*
+Gerekirse, ek NIC kartlarını kendi olarak tanımlayabilirsiniz. Ancak, varolan NIC'lerin yapılandırmaları *değiştirilemez.*
 
 >[!NOTE]
->Fiziksel arabirimler veya bonus olan ek arabirimler bulabilirsiniz. Kullanım durumu için yalnızca daha önce bahsedilen arabirimleri göz önünde bulundurmanız gerekir. Diğerleri yok sayılabilir.
+>Fiziksel arabirimler veya yapıştırma ek arabirimler bulabilirsiniz. Kullanım örneğiniz için yalnızca daha önce bahsedilen arabirimleri göz önünde bulundurmalısınız. Diğerleri göz ardı edilebilir.
 
-İki atanmış IP adresine sahip birimler için dağıtım şöyle görünmelidir:
+İki atanmış IP adresine sahip birimlerin dağılımı aşağıdaki gibi görünmelidir:
 
-- Ethernet "A", Microsoft 'a gönderdiğiniz sunucu IP havuzu adres aralığı içinde atanmış bir IP adresine sahip olmalıdır. Bu IP adresi, işletim sisteminin */etc/hosts* dizininde tutulmalıdır.
+- Ethernet "A", Microsoft'a gönderdiğiniz sunucu IP havuzu adres aralığında atanmış bir IP adresine sahip olmalıdır. Bu IP adresi işletim sistemi */etc/hosts* dizininde tutulmalıdır.
 
-- Ethernet "C", NFS iletişimi için kullanılan bir atanmış IP adresine sahip olmalıdır. Bu adresin, kiracı içinde örnek trafiğe izin vermek için *etc/hosts* dizininde *tutulması gerekmez.*
+- Ethernet "C"nin NFS ile iletişim için kullanılan atanmış bir IP adresi olmalıdır. Bu adresin, kiracı içinde örnek-örnek trafiğine izin vermek için *vb/hosts* dizininde tutulması *gerekmez.*
 
-HANA sistem çoğaltması veya HANA genişleme dağıtımı için, iki atanmış IP adresine sahip bir dikey pencere yapılandırması uygun değildir. Yalnızca iki atanmış IP adresiniz varsa ve böyle bir yapılandırma dağıtmak istiyorsanız, Azure hizmet yönetimi 'nde SAP HANA başvurun. Üçüncü bir VLAN 'da size üçüncü bir IP adresi atayabilirler. Üç NIC bağlantı noktasında üç atanan IP adresi olan HANA büyük örnek birimleri için aşağıdaki kullanım kuralları geçerlidir:
+HANA Sistem Çoğaltma veya HANA ölçekli dağıtım için, iki atanmış IP adresine sahip bir bıçak yapılandırması uygun değildir. Yalnızca iki atanmış IP adresiniz varsa ve böyle bir yapılandırmadağıtmak istiyorsanız, Azure Hizmet Yönetimi'nde SAP HANA ile iletişime geçin. Üçüncü bir VLAN'da size üçüncü bir IP adresi atayabilirler. Üç NIC bağlantı noktası üzerinde üç atanmış IP adresi bulunan HANA Büyük Örnekler birimleri için aşağıdaki kullanım kuralları geçerlidir:
 
-- Ethernet "A", Microsoft 'a gönderdiğiniz sunucu IP havuzu adres aralığının dışında atanmış bir IP adresine sahip olmalıdır. Bu IP adresi, işletim sisteminin *vs/hosts* dizininde tutulmamalıdır.
+- Ethernet "A", Microsoft'a gönderdiğiniz sunucu IP havuzu adres aralığının dışında atanmış bir IP adresine sahip olmalıdır. Bu IP adresi işletim sistemi *vb / hosts* dizininde muhafaza edilmemelidir.
 
-- Ethernet "B", çeşitli örnekler arasında iletişim için özel olarak, *etc/hosts* dizininde tutulmalıdır. Bunlar, HANA 'nın düğümler arası yapılandırma için kullandığı IP adresleri olarak genişleme HANA yapılandırmalarında korunacak IP adresleridir.
+- Ethernet "B" çeşitli örnekler arasındaki iletişim için *sadece etc/hosts* dizininde muhafaza edilmelidir. Bunlar, HANA'nın düğümler arası yapılandırma için kullandığı IP adresleri olarak ölçeklendirilmiş HANA yapılandırmalarında tutulması gereken IP adresleridir.
 
-- Ethernet "C", NFS depolama iletişimi için kullanılan bir atanmış IP adresine sahip olmalıdır. Bu tür bir adres, *etc/hosts* dizininde tutulmamalıdır.
+- Ethernet "C"nin NFS depolamasına iletişim için kullanılan atanmış bir IP adresi olmalıdır. Bu tür *adresler vb/hosts* dizininde tutulamaz.
 
-- "D", pacemaker için yalnızca STONITH cihazlarına erişim için kullanılmalıdır. Bu arabirim, HANA sistem çoğaltmasını yapılandırırken ve SBD tabanlı bir cihaz kullanarak işletim sisteminin otomatik olarak yük devretmesini sağlamak istediğinizde gereklidir.
+- Ethernet "D" sadece Pacemaker için STONITH cihazlarına erişim için kullanılmalıdır. HANA Sistem Çoğaltma yapılandırma ve SBD tabanlı bir aygıt kullanarak işletim sisteminin otomatik arıza elde etmek istediğinizde bu arabirim gereklidir.
 
 
 ### <a name="storage"></a>Depolama
-Depolama, istenen topolojiye göre önceden yapılandırılmıştır. Birim boyutları ve bağlama noktaları, sunucu sayısına, SKU sayısına ve yapılandırılan topolojiye bağlı olarak değişir. Daha fazla bilgi için, gerekli senaryolarınızı gözden geçirin (Bu makalenin ilerleyen kısımlarında). Daha fazla depolama gerekliyse, bunu 1 TB 'lik artışlarla satın alabilirsiniz.
+Depolama, istenen topolojiye göre önceden yapılandırılmıştır. Birim boyutları ve montaj noktaları sunucu sayısına, SNU sayısına ve yapılandırılan topolojiye bağlı olarak değişir. Daha fazla bilgi için, gerekli senaryoları gözden geçirin (bu makalenin ilerleyen saatlerinde). Daha fazla depolama alanına ihtiyacınız varsa, 1-TB artışlarla satın alabilirsiniz.
 
 >[!NOTE]
->Bağlama noktası/usr/SAP/\<SID >,/Hana/Shared bağlama noktasına yönelik sembolik bir bağlantıdır.
+>Montaj noktası /usr/sap/\<SID> /hana/paylaşılan montaj noktasına sembolik bir bağlantıdır.
 
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-Sonraki bölümlerde bulunan mimari diyagramları aşağıdaki gösterimleri kullanır:
+Sonraki bölümlerdeki mimari diyagramlarda aşağıdaki gösterimler kullanılır:
 
-[mimari diyagramları ![tablosu](media/hana-supported-scenario/Legends.png)](media/hana-supported-scenario/Legends.png#lightbox)
+[![Mimari diyagramlar tablosu](media/hana-supported-scenario/Legends.png)](media/hana-supported-scenario/Legends.png#lightbox)
 
 Desteklenen senaryolar şunlardır:
 
-* Tek bir SID içeren tek düğüm
-* Tek düğümlü MCOS
+* Bir SID ile tek düğüm
+* Tek düğüm MCOS
 * DR ile tek düğüm (normal)
-* DR (çok amaçlı) ile tek düğüm
+* DR ile tek düğüm (çok amaçlı)
 * STONITH ile HSR
 * DR ile HSR (normal/çok amaçlı) 
-* Konak otomatik yük devretme (1 + 1) 
-* Bekleme ile genişleme
-* Bekleme olmadan genişleme
+* Ana bilgisayar otomatik arıza (1+1) 
+* Bekleme ile ölçeklendirme
+* Bekleme olmadan ölçeklendirme
 * DR ile ölçeklendirme
 
-## <a name="single-node-with-one-sid"></a>Tek bir SID içeren tek düğüm
+## <a name="single-node-with-one-sid"></a>Bir SID ile tek düğüm
 
-Bu topoloji, bir SID ile genişleme yapılandırmasındaki bir düğümü destekler.
+Bu topoloji, bir SID ile ölçeklendirme yapılandırmasında ki tek düğümü destekler.
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Tek bir SID içeren tek düğüm](media/hana-supported-scenario/Single-node-with-one-SID.png)
+![Bir SID ile tek düğüm](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
-|/hana/shared/SID | HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Günlükleri Yinele |
+|/hana/paylaşılan/SID | HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Redo günlükleri |
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
 
-## <a name="single-node-mcos"></a>Tek düğümlü MCOS
+## <a name="single-node-mcos"></a>Tek düğüm MCOS
 
-Bu topoloji, birden çok SID içeren bir ölçek yapılandırmasındaki bir düğümü destekler.
+Bu topoloji, birden çok SIT'li ölçeklenmiş yapılandırmadaki bir düğümü destekler.
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Tek düğümlü MCOS](media/hana-supported-scenario/single-node-mcos.png)
+![Tek düğüm MCOS](media/hana-supported-scenario/single-node-mcos.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
-|/Hana/Shared/SID1 | SID1 için HANA yüklemesi | 
-|/Hana/Data/SID1/mnt00001 | SID1 için veri dosyaları yüklemesi | 
-|/Hana/log/SID1/mnt00001 | SID1 için günlük dosyaları yüklemesi | 
-|/Hana/logbackups/SID1 | SID1 için günlükleri Yinele |
-|/Hana/Shared/SID2 | SID2 için HANA yüklemesi | 
-|/Hana/Data/SID2/mnt00001 | SID2 için veri dosyaları yüklemesi | 
-|/Hana/log/SID2/mnt00001 | SID2 için günlük dosyaları yüklemesi | 
-|/Hana/logbackups/SID2 | SID2 için günlükleri Yinele |
+|/hana/paylaşılan/SID1 | SID1 için HANA kurulumu | 
+|/hana/veri/SID1/mnt00001 | SID1 için veri dosyaları yükleme | 
+|/hana/log/SID1/mnt00001 | SID1 için günlük dosyaları yükleme | 
+|/hana/logbackups/SID1 | SID1 için Redo günlükleri |
+|/hana/paylaşılan/SID2 | SID2 için HANA kurulumu | 
+|/hana/veri/SID2/mnt00001 | SID2 için veri dosyaları yükleme | 
+|/hana/log/SID2/mnt00001 | SID2 için günlük dosyaları yükleme | 
+|/hana/logbackups/SID2 | SID2 için Redo günlükleri |
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- Birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- Birim boyutu dağılımı bellekteki veritabanı boyutuna dayanır. Bellekteki veritabanı boyutlarının hangilerinin çok SID ortamında destekleniyi öğrenmek için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
-## <a name="single-node-with-dr-using-storage-replication"></a>Depolama çoğaltması kullanan DR ile tek düğüm
+## <a name="single-node-with-dr-using-storage-replication"></a>Depolama çoğaltma kullanarak DR ile tek düğüm
  
-Bu topoloji, bir veya birden fazla SID içeren bir genişleme yapılandırmasındaki bir düğümü, birincil SID için DR sitesine depolama tabanlı çoğaltma ile destekler. Diyagramda, birincil sitede yalnızca bir tek SID sistemi gösterilmiştir, ancak MCOS sistemleri de desteklenir.
+Bu topoloji, bir veya birden çok SID ile ölçeklenmiş yapılandırmada bir düğümü destekler ve birincil SID için DR sitesine depolama tabanlı çoğaltma sağlar. Diyagramda, birincil sitede yalnızca tek bir SID sistemi gösterilmiştir, ancak MCOS sistemleri de desteklenir.
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Depolama çoğaltması kullanan DR ile tek düğüm](media/hana-supported-scenario/Single-node-with-dr.png)
+![Depolama çoğaltma kullanarak DR ile tek düğüm](media/hana-supported-scenario/Single-node-with-dr.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
-|/hana/shared/SID | SID için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | SID için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | SID için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | SID için günlükleri Yinele |
+|/hana/paylaşılan/SID | SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | SID için Redo günlükleri |
 
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
-- DR sitesinde: birimler ve bağlama noktaları ("HANA yüklemesi için gereklidir" olarak işaretlenir), DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).
-- *SKU türü ı sınıfı* için önyükleme birimi Dr düğümüne çoğaltılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- MCOS için: Birim boyutu dağılımı bellekteki veritabanı boyutuna dayanır. Bellekteki veritabanı boyutlarının hangilerinin çok SID ortamında destekleniyi öğrenmek için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- DR yerinde: Dr HLI ünitesindeki hana örnek kurulum için hacimler ve montaj noktaları yapılandırılır (HANA kurulumu için gerekli olarak işaretlenmiştir). 
+- DR sitesinde: Veriler, günlük yedeklemeleri ve paylaşılan birimler ("Depolama Çoğaltma" olarak işaretlenir) üretim sitesinden anlık görüntü yoluyla çoğaltılır. Bu birimler yalnızca başarısız sırasında monte edilir. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- *SKU Tip I sınıfının* önyükleme hacmi DR düğümüne kopyalanır.
 
 
-## <a name="single-node-with-dr-multipurpose-using-storage-replication"></a>Depolama çoğaltması kullanarak DR (çok amaçlı) ile tek düğüm
+## <a name="single-node-with-dr-multipurpose-using-storage-replication"></a>Depolama çoğaltma kullanarak DR (çok amaçlı) ile tek düğüm
  
-Bu topoloji, bir veya birden fazla SID içeren bir genişleme yapılandırmasındaki bir düğümü, birincil SID için DR sitesine depolama tabanlı çoğaltma ile destekler. Diyagramda, birincil sitede yalnızca bir tek SID sistemi gösterilmiştir, ancak çoklu SID (MCOS) sistemleri de desteklenir. DR sitesinde, birincil siteden üretim işlemleri çalışırken QA örneği için HLı birimi kullanılır. DR üzerinde yük devretme (veya yük devretme testi) sırasında, DR sitesindeki QA örneği alınır.
+Bu topoloji, bir veya birden çok SID ile ölçeklenmiş yapılandırmada bir düğümü destekler ve birincil SID için DR sitesine depolama tabanlı çoğaltma sağlar. Diyagramda, birincil sitede yalnızca tek bir SID sistemi gösterilmiştir, ancak multi-SID (MCOS) sistemleri de desteklenir. DR yerinde, üretim işlemleri birincil siteden çalışırken Qa örneği için HLI birimi kullanılır. DR failover (veya failover testi) sırasında, DR yerindeki QA örneği aşağı alınır.
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Depolama çoğaltması kullanarak DR (çok amaçlı) ile tek düğüm](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
+![Depolama çoğaltma kullanarak DR (çok amaçlı) ile tek düğüm](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Birincil sitede**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 |**DR sitesinde**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/shared/QA-SID | QA SID için HANA yüklemesi | 
-|/Hana/Data/qa-SID/mnt00001 | QA SID için veri dosyaları yüklemesi | 
-|/Hana/log/qa-SID/mnt00001 | QA SID için günlük dosyaları yüklemesi |
-|/hana/logbackups/QA-SID | QA SID için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/paylaşılan/QA-SID | QA SID için HANA kurulumu | 
+|/hana/veri/QA-SID/mnt00001 | QA SID için veri dosyaları yükleme | 
+|/hana/log/QA-SID/mnt00001 | QA SID için günlük dosyaları yükleme |
+|/hana/logbackups/QA-SID | QA SID için redo günlükleri |
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
-- DR sitesinde: birimler ve bağlama noktaları ("HANA yüklemesi için gereklidir" olarak işaretlenir), DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
-- DR sitesinde: qa örnek yüklemesi için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenir) yapılandırılır.
-- *SKU türü ı sınıfı* için önyükleme birimi Dr düğümüne çoğaltılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- MCOS için: Birim boyutu dağılımı bellekteki veritabanı boyutuna dayanır. Bellekteki veritabanı boyutlarının hangilerinin çok SID ortamında destekleniyi öğrenmek için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- DR yerinde: Dr HLI ünitesindeki hana örnek kurulum için hacimler ve montaj noktaları yapılandırılır (HANA kurulumu için gerekli olarak işaretlenmiştir). 
+- DR sitesinde: Veriler, günlük yedeklemeleri ve paylaşılan birimler ("Depolama Çoğaltma" olarak işaretlenir) üretim sitesinden anlık görüntü yoluyla çoğaltılır. Bu birimler yalnızca başarısız sırasında monte edilir. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) 
+- DR sitesinde: QA için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenmiştir) QA örnek yüklemesi için yapılandırılır.
+- *SKU Tip I sınıfının* önyükleme hacmi DR düğümüne kopyalanır.
 
 ## <a name="hsr-with-stonith-for-high-availability"></a>Yüksek kullanılabilirlik için STONITH ile HSR
  
-Bu topoloji, HANA sistem çoğaltma yapılandırması için iki düğümü destekler. Bu yapılandırma yalnızca bir düğümdeki tek HANA örnekleri için desteklenir. Bu, MCOS *senaryolarının desteklenmediği anlamına* gelir.
+Bu topoloji HANA Sistem Çoğaltma yapılandırması için iki düğüm destekler. Bu yapılandırma yalnızca düğümdeki tek HANA örnekleri için desteklenir. Bu, MCOS senaryolarının *desteklenmediğini* anlamına gelir.
 
 > [!NOTE]
-> 2019 Aralık itibariyle bu mimari yalnızca SUSE işletim sistemi için desteklenir.
+> Aralık 2019 itibariyle bu mimari yalnızca SUSE işletim sistemi için desteklenir.
 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
@@ -304,264 +304,264 @@ Bu topoloji, HANA sistem çoğaltma yapılandırması için iki düğümü deste
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | STONITH için kullanıldı |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | STONITH için kullanıldı |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | STONITH için kullanılır |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | STONITH için kullanılır |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Birincil düğümde**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 |**İkincil düğümde**|
-|/hana/shared/SID | İkincil SID için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | İkincil SID için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | İkincil SID için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | İkincil SID için günlükleri Yinele |
+|/hana/paylaşılan/SID | İkincil SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | İkincil SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | İkincil SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | İkincil SID için redo günlükleri |
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
-- STONITH: bir SBD, STONITH kurulumu için yapılandırılmıştır. Ancak, STONITH kullanımı isteğe bağlıdır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- MCOS için: Birim boyutu dağılımı bellekteki veritabanı boyutuna dayanır. Bellekteki veritabanı boyutlarının hangilerinin çok SID ortamında destekleniyi öğrenmek için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- STONITH: STONITH kurulumu için bir SBD yapılandırılır. Ancak, STONITH kullanımı isteğe bağlıdır.
 
 
-## <a name="high-availability-with-hsr-and-dr-with-storage-replication"></a>Depolama çoğaltması ile HSR ve DR ile yüksek kullanılabilirlik
+## <a name="high-availability-with-hsr-and-dr-with-storage-replication"></a>Depolama çoğaltma ile HSR ve DR ile yüksek kullanılabilirlik
  
-Bu topoloji, HANA sistem çoğaltma yapılandırması için iki düğümü destekler. Hem normal hem de çok yönlü DRs desteklenir. Bu konfigürasyonlar yalnızca bir düğümdeki tek HANA örnekleri için desteklenir. Bu, MCOS senaryolarının bu yapılandırmalarda *desteklenmediği* anlamına gelir.
+Bu topoloji HANA Sistem Çoğaltma yapılandırması için iki düğüm destekler. Hem normal hem de çok amaçlı DR desteklenir. Bu yapılandırmalar yalnızca düğümüzerindeki tek HANA örnekleri için desteklenir. Bu, MCOS senaryolarının bu yapılandırmalarla *desteklenmediğini* anlamına gelir.
 
-Diyagramda, üretim işlemleri birincil siteden çalışırken QA örneği için HLI biriminin kullanıldığı DR sitesinde çok amaçlı bir senaryo gösterilmiştir. DR üzerinde yük devretme (veya yük devretme testi) sırasında, DR sitesindeki QA örneği alınır. 
+Diyagramda, üretim işlemleri birincil siteden çalışırken HLI biriminin QA örneği için kullanıldığı DR yerinde çok amaçlı bir senaryo gösterilmiştir. DR failover (veya failover testi) sırasında, DR yerindeki QA örneği aşağı alınır. 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Depolama çoğaltması ile HSR ve DR ile yüksek kullanılabilirlik](media/hana-supported-scenario/HSR-with-DR.png)
+![Depolama çoğaltma ile HSR ve DR ile yüksek kullanılabilirlik](media/hana-supported-scenario/HSR-with-DR.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | STONITH için kullanıldı |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | STONITH için kullanıldı |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | STONITH için kullanılır |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | STONITH için kullanılır |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Birincil sitedeki birincil düğümde**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 |**Birincil sitedeki ikincil düğümde**|
-|/hana/shared/SID | İkincil SID için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | İkincil SID için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | İkincil SID için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | İkincil SID için günlükleri Yinele |
+|/hana/paylaşılan/SID | İkincil SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | İkincil SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | İkincil SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | İkincil SID için redo günlükleri |
 |**DR sitesinde**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/shared/QA-SID | QA SID için HANA yüklemesi | 
-|/Hana/Data/qa-SID/mnt00001 | QA SID için veri dosyaları yüklemesi | 
-|/Hana/log/qa-SID/mnt00001 | QA SID için günlük dosyaları yüklemesi |
-|/hana/logbackups/QA-SID | QA SID için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/paylaşılan/QA-SID | QA SID için HANA kurulumu | 
+|/hana/veri/QA-SID/mnt00001 | QA SID için veri dosyaları yükleme | 
+|/hana/log/QA-SID/mnt00001 | QA SID için günlük dosyaları yükleme |
+|/hana/logbackups/QA-SID | QA SID için redo günlükleri |
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
-- STONITH: bir SBD, STONITH kurulumu için yapılandırılmıştır. Ancak, STONITH kullanımı isteğe bağlıdır.
-- DR sitesinde: birincil ve ikincil düğüm çoğaltması için *iki depolama birimi kümesi gereklidir* .
-- DR sitesinde: birimler ve bağlama noktaları ("HANA yüklemesi için gereklidir" olarak işaretlenir), DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
-- DR sitesinde: qa örnek yüklemesi için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenir) yapılandırılır.
-- *SKU türü ı sınıfı* için önyükleme birimi Dr düğümüne çoğaltılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- MCOS için: Birim boyutu dağılımı bellekteki veritabanı boyutuna dayanır. Bellekteki veritabanı boyutlarının hangilerinin çok SID ortamında destekleniyi öğrenmek için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- STONITH: STONITH kurulumu için bir SBD yapılandırılır. Ancak, STONITH kullanımı isteğe bağlıdır.
+- DR sitesinde: Birincil ve ikincil düğüm çoğaltma için *iki depolama hacmi kümesi gereklidir.*
+- DR yerinde: Dr HLI ünitesindeki hana örnek kurulum için hacimler ve montaj noktaları yapılandırılır (HANA kurulumu için gerekli olarak işaretlenmiştir). 
+- DR sitesinde: Veriler, günlük yedeklemeleri ve paylaşılan birimler ("Depolama Çoğaltma" olarak işaretlenir) üretim sitesinden anlık görüntü yoluyla çoğaltılır. Bu birimler yalnızca başarısız sırasında monte edilir. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) 
+- DR sitesinde: QA için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenmiştir) QA örnek yüklemesi için yapılandırılır.
+- *SKU Tip I sınıfının* önyükleme hacmi DR düğümüne kopyalanır.
 
 
-## <a name="host-auto-failover-11"></a>Konak otomatik yük devretme (1 + 1)
+## <a name="host-auto-failover-11"></a>Ana bilgisayar otomatik arıza (1+1)
  
-Bu topoloji, bir konak otomatik yük devretme yapılandırmasındaki iki düğümü destekler. Ana/çalışan rolüne ve bir bekleme moduna sahip bir düğüm vardır. *SAP bu senaryoyu yalnızca S/4 HANA için destekler.* Daha fazla bilgi için bkz. [OSS note 2408419-SAP S/4HANA-çoklu düğüm desteği](https://launchpad.support.sap.com/#/notes/2408419).
+Bu topoloji, ana bilgisayar otomatik hata yapılandırmasında iki düğümü destekler. Bir ana/işçi rolü olan bir düğüm ve bekleme olarak başka bir düğüm vardır. *SAP bu senaryoyu yalnızca S/4 HANA için destekler.* Daha fazla bilgi için [OSS note 2408419 - SAP S/4HANA - Multi-Node Desteği'ne](https://launchpad.support.sap.com/#/notes/2408419)bakın.
 
 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Konak otomatik yük devretme (1 + 1)](media/hana-supported-scenario/scaleup-with-standby.png)
+![Ana bilgisayar otomatik arıza (1+1)](media/hana-supported-scenario/scaleup-with-standby.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Düğümden düğüme iletişim |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Düğümden düğüme iletişim |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Ana ve bekleme düğümlerinde**|
-|/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 
 
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- Bekleme durumunda: birim ve bağlama noktaları, bir HANA örneği yüklemesi için bekleme biriminde yapılandırılır ("HANA yüklemesi için gerekli" olarak işaretlenir).
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- Bekleme de: Bekleme ünitesindeki HANA örnek kurulumu için hacimler ve montaj noktaları yapılandırılır ("HANA kurulumu için gerekli" olarak işaretlenir).
  
 
-## <a name="scale-out-with-standby"></a>Bekleme ile genişleme
+## <a name="scale-out-with-standby"></a>Bekleme ile ölçeklendirme
  
-Bu topoloji, genişleme yapılandırmasındaki birden çok düğümü destekler. Ana role sahip bir düğüm, çalışan rolüne sahip bir veya daha fazla düğüm ve bekleme olarak bir veya daha fazla düğüm vardır. Ancak, herhangi bir zamanda tek bir noktada yalnızca bir ana düğüm olabilir.
+Bu topoloji, ölçeklendirme yapılandırmasında birden çok düğümü destekler. Ana rolü olan bir düğüm, işçi rolü olan bir veya daha fazla düğüm ve bekleme olarak bir veya daha fazla düğüm vardır. Ancak, zaman içinde herhangi bir noktada yalnızca bir ana düğüm olabilir.
 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Bekleme ile genişleme](media/hana-supported-scenario/scaleout-nm-standby.png)
+![Bekleme ile ölçeklendirme](media/hana-supported-scenario/scaleout-nm-standby.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Düğümden düğüme iletişim |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Düğümden düğüme iletişim |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
-|**Ana, çalışan ve bekleme düğümlerinde**|
-|/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|**Ana, işçi ve bekleme düğümlerinde**|
+|/hana/paylaşılan | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 
 
-## <a name="scale-out-without-standby"></a>Bekleme olmadan genişleme
+## <a name="scale-out-without-standby"></a>Bekleme olmadan ölçeklendirme
  
-Bu topoloji, genişleme yapılandırmasındaki birden çok düğümü destekler. Ana role sahip bir düğüm ve bir çalışan rolüne sahip bir veya daha fazla düğüm vardır. Ancak, herhangi bir zamanda tek bir noktada yalnızca bir ana düğüm olabilir.
+Bu topoloji, ölçeklendirme yapılandırmasında birden çok düğümü destekler. Ana rolü olan bir düğüm ve işçi rolü olan bir veya daha fazla düğüm vardır. Ancak, zaman içinde herhangi bir noktada yalnızca bir ana düğüm olabilir.
 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Bekleme olmadan genişleme](media/hana-supported-scenario/scaleout-nm.png)
+![Bekleme olmadan ölçeklendirme](media/hana-supported-scenario/scaleout-nm.png)
 
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Düğümden düğüme iletişim |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Düğümden düğüme iletişim |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
-|**Ana ve çalışan düğümlerinde**|
-|/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|**Ana ve işçi düğümleri üzerinde**|
+|/hana/paylaşılan | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
 
-## <a name="scale-out-with-dr-using-storage-replication"></a>Depolama çoğaltması kullanarak DR ile genişleme
+## <a name="scale-out-with-dr-using-storage-replication"></a>Depolama çoğaltma kullanarak DR ile ölçeklendirme
  
-Bu topoloji, bir DR ile bir ölçekte birden çok düğümü destekler. Hem normal hem de çok yönlü DRs desteklenir. Diyagramda yalnızca tek amaçlı DR gösterilmiştir. Bu topolojiyi, bekleme düğümü olmadan veya olmadan isteyebilirsiniz.
+Bu topoloji, dr ile bir ölçek-out birden fazla düğüm leri destekler. Hem normal hem de çok amaçlı DR desteklenir. Diyagramda, yalnızca tek amaçlı DR tasvir edilir. Bu topolojiyi bekleme düğümü ile veya bekleme düğümü olmadan talep edebilirsiniz.
 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Depolama çoğaltması kullanarak DR ile genişleme](media/hana-supported-scenario/scaleout-with-dr.png)
+![Depolama çoğaltma kullanarak DR ile ölçeklendirme](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI'ya |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Düğümden düğüme iletişim |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI'ya |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Düğümden düğüme iletişim |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Birincil düğümde**|
-|/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 |**DR düğümünde**|
-|/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
+|/hana/paylaşılan | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
 
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
--  DR sitesinde: birimler ve bağlama noktaları ("HANA yüklemesi için gereklidir" olarak işaretlenir), DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
-- *SKU türü ı sınıfı* için önyükleme birimi Dr düğümüne çoğaltılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+-  DR yerinde: Dr HLI ünitesindeki hana örnek kurulum için hacimler ve montaj noktaları yapılandırılır (HANA kurulumu için gerekli olarak işaretlenmiştir). 
+- DR sitesinde: Veriler, günlük yedeklemeleri ve paylaşılan birimler ("Depolama Çoğaltma" olarak işaretlenir) üretim sitesinden anlık görüntü yoluyla çoğaltılır. Bu birimler yalnızca başarısız sırasında monte edilir. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) 
+- *SKU Tip I sınıfının* önyükleme hacmi DR düğümüne kopyalanır.
 
 
 ## <a name="single-node-with-dr-using-hsr"></a>HSR kullanarak DR ile tek düğüm
  
-Bu topoloji, bir SID ile bir genişleme yapılandırmasındaki bir düğümü destekler ve bir birincil SID için DR sitesine HANA sistem çoğaltmasını sağlar. Diyagramda, birincil sitede yalnızca bir tek SID sistemi gösterilmiştir, ancak çoklu SID (MCOS) sistemleri de desteklenir.
+Bu topoloji, bir SID ile ölçeklendirme yapılandırmasında bir düğümü destekler, birincil SID için DR sitesine HANA Sistem Çoğaltma ile. Diyagramda, birincil sitede yalnızca tek bir SID sistemi gösterilmiştir, ancak multi-SID (MCOS) sistemleri de desteklenir.
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
@@ -570,89 +570,89 @@ Bu topoloji, bir SID ile bir genişleme yapılandırmasındaki bir düğümü de
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI/HSR'ye |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI/HSR'ye |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları, HLI birimlerinde (birincil ve DR) önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları hem HLI birimlerinde (Birincil ve DR) önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
-|/hana/shared/SID | SID için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | SID için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | SID için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | SID için günlükleri Yinele |
+|/hana/paylaşılan/SID | SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | SID için Redo günlükleri |
 
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
-- Birincil düğüm, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- MCOS için: Birim boyutu dağılımı bellekteki veritabanı boyutuna dayanır. Bellekteki veritabanı boyutlarının hangilerinin çok SID ortamında destekleniyi öğrenmek için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- Birincil düğüm HANA Sistem Çoğaltma kullanarak DR düğümü ile eşitler. 
+- [Global Reach,](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) bölgesel ağlarınız arasında özel bir ağ yapmak için ExpressRoute devrelerini birbirine bağlamak için kullanılır.
 
 
 
-## <a name="single-node-hsr-to-dr-cost-optimized"></a>Tek düğümlü HSR-DR (maliyet için iyileştirilmiş) 
+## <a name="single-node-hsr-to-dr-cost-optimized"></a>Dr tek düğüm HSR (maliyet optimize) 
  
- Bu topoloji, bir SID ile bir genişleme yapılandırmasındaki bir düğümü destekler ve bir birincil SID için DR sitesine HANA sistem çoğaltmasını sağlar. Diyagramda, birincil sitede yalnızca bir tek SID sistemi gösterilmiştir, ancak çoklu SID (MCOS) sistemleri de desteklenir. DR sitesinde, üretim işlemleri birincil siteden çalışırken QA örneği için bir HLı birimi kullanılır. DR üzerinde yük devretme (veya yük devretme testi) sırasında, DR sitesindeki QA örneği alınır.
+ Bu topoloji, bir SID ile ölçeklendirme yapılandırmasında bir düğümü destekler, birincil SID için DR sitesine HANA Sistem Çoğaltma ile. Diyagramda, birincil sitede yalnızca tek bir SID sistemi gösterilmiştir, ancak multi-SID (MCOS) sistemleri de desteklenir. DR sitesinde, üretim işlemleri birincil siteden çalışırken QA örneği için bir HLI birimi kullanılır. DR failover (veya failover testi) sırasında, DR yerindeki QA örneği aşağı alınır.
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![Tek düğümlü HSR-DR (maliyet için iyileştirilmiş)](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
+![Dr tek düğüm HSR (maliyet optimize)](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI/HSR'ye |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI/HSR'ye |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Birincil sitede**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 |**DR sitesinde**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
-|/hana/shared/QA-SID | QA SID için HANA yüklemesi | 
-|/Hana/Data/qa-SID/mnt00001 | QA SID için veri dosyaları yüklemesi | 
-|/Hana/log/qa-SID/mnt00001 | QA SID için günlük dosyaları yüklemesi |
-|/hana/logbackups/QA-SID | QA SID için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
+|/hana/paylaşılan/QA-SID | QA SID için HANA kurulumu | 
+|/hana/veri/QA-SID/mnt00001 | QA SID için veri dosyaları yükleme | 
+|/hana/log/QA-SID/mnt00001 | QA SID için günlük dosyaları yükleme |
+|/hana/logbackups/QA-SID | QA SID için redo günlükleri |
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
-- DR sitesinde: birimler ve bağlama noktaları, DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır (DR sitesinde "ÜRETIM örneği" olarak işaretlenir). 
-- DR sitesinde: qa örnek yüklemesi için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenir) yapılandırılır.
-- Birincil düğüm, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- MCOS için: Birim boyutu dağılımı bellekteki veritabanı boyutuna dayanır. Bellekteki veritabanı boyutlarının hangilerinin çok SID ortamında destekleniyi öğrenmek için [bkz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- DR yerinde: Hacimler ve montaj noktaları DR HLI ünitesinde üretim HANA örnek kurulumu için yapılandırılır (DR yerinde PROD Örneği olarak işaretlenmiştir). 
+- DR sitesinde: QA için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenmiştir) QA örnek yüklemesi için yapılandırılır.
+- Birincil düğüm HANA Sistem Çoğaltma kullanarak DR düğümü ile eşitler. 
+- [Global Reach,](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) bölgesel ağlarınız arasında özel bir ağ yapmak için ExpressRoute devrelerini birbirine bağlamak için kullanılır.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma 
  
- Bu topoloji, yerel bölgelerin yüksek kullanılabilirliği için HANA sistem çoğaltma yapılandırması için iki düğümü destekler. DR bölgesindeki üçüncü düğüm, HSR (zaman uyumsuz mod) kullanarak birincil siteyle eşitlenir. 
+ Bu topoloji, yerel bölgelerin yüksek kullanılabilirliği için HANA Sistem Çoğaltma yapılandırması için iki düğüm destekler. DR için, DR bölgesindeki üçüncü düğüm HSR (async modu) kullanarak birincil siteyle eşitler. 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
@@ -661,137 +661,137 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI/HSR'ye |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI/HSR'ye |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Birincil sitede**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 |**DR sitesinde**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- DR sitesinde: birimler ve bağlama noktaları, DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır ("ÜRETIM DR örneği" olarak işaretlenir). 
-- Birincil site düğümü, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- DR yerinde: Hacimler ve montaj noktaları DR HLI ünitesindeki hana örnek kurulumu için yapılandırılır ("PROD DR örneği" olarak işaretlenir). 
+- Birincil site düğümü HANA Sistem Çoğaltma kullanarak DR düğümü ile eşitler. 
+- [Global Reach,](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) bölgesel ağlarınız arasında özel bir ağ yapmak için ExpressRoute devrelerini birbirine bağlamak için kullanılır.
 
-## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma (maliyet için iyileştirilmiş)
+## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma (maliyet optimize edilmiş)
  
- Bu topoloji, yerel bölgelerin yüksek kullanılabilirliği için HANA sistem çoğaltma yapılandırması için iki düğümü destekler. Dr bölgesindeki üçüncü düğüm, diğer bir örnek (örneğin, QA) DR düğümünden zaten çalıştırıldığı sırada DR bölgesindeki üçüncü düğüm, HSR (Async modu) kullanarak birincil siteyle eşitlenir. 
+ Bu topoloji, yerel bölgelerin yüksek kullanılabilirliği için HANA Sistem Çoğaltma yapılandırması için iki düğümü destekler. DR için, DR bölgesindeki üçüncü düğüm HSR (async modu) kullanarak birincil siteyle eşitlenirken, başka bir örnek (örneğin, QA) dr düğümünden zaten tükeniyor. 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-![HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma (maliyet için iyileştirilmiş)](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
+![HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma (maliyet optimize edilmiş)](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Yapılandırıldı ancak kullanımda değil |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI/HSR'ye |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI/HSR'ye |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Yapılandırılan ancak kullanımda olmayan |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Birincil sitede**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 |**DR sitesinde**|
-|/hana/shared/SID | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
-|/hana/shared/QA-SID | QA SID için HANA yüklemesi | 
-|/Hana/Data/qa-SID/mnt00001 | QA SID için veri dosyaları yüklemesi | 
-|/Hana/log/qa-SID/mnt00001 | QA SID için günlük dosyaları yüklemesi |
-|/hana/logbackups/QA-SID | QA SID için günlükleri Yinele |
+|/hana/paylaşılan/SID | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
+|/hana/paylaşılan/QA-SID | QA SID için HANA kurulumu | 
+|/hana/veri/QA-SID/mnt00001 | QA SID için veri dosyaları yükleme | 
+|/hana/log/QA-SID/mnt00001 | QA SID için günlük dosyaları yükleme |
+|/hana/logbackups/QA-SID | QA SID için redo günlükleri |
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- DR sitesinde: birimler ve bağlama noktaları, DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır ("ÜRETIM DR örneği" olarak işaretlenir). 
-- DR sitesinde: qa örnek yüklemesi için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenir) yapılandırılır.
-- Birincil site düğümü, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- DR yerinde: Hacimler ve montaj noktaları DR HLI ünitesindeki hana örnek kurulumu için yapılandırılır ("PROD DR örneği" olarak işaretlenir). 
+- DR sitesinde: QA için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenmiştir) QA örnek yüklemesi için yapılandırılır.
+- Birincil site düğümü HANA Sistem Çoğaltma kullanarak DR düğümü ile eşitler. 
+- [Global Reach,](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) bölgesel ağlarınız arasında özel bir ağ yapmak için ExpressRoute devrelerini birbirine bağlamak için kullanılır.
 
 ## <a name="scale-out-with-dr-using-hsr"></a>HSR kullanarak DR ile ölçeklendirme
  
-Bu topoloji, bir DR ile bir ölçekte birden çok düğümü destekler. Bu topolojiyi, bekleme düğümü olmadan veya olmadan isteyebilirsiniz. Birincil site düğümü, HANA sistem çoğaltması (zaman uyumsuz mod) kullanılarak DR sitesi düğümüyle eşitlenir.
+Bu topoloji, dr ile bir ölçek-out birden fazla düğüm leri destekler. Bu topolojiyi bekleme düğümü ile veya bekleme düğümü olmadan talep edebilirsiniz. Birincil site düğümü HANA Sistem Çoğaltma (async modu) kullanarak DR site düğümü ile eşitler.
 
 
 ### <a name="architecture-diagram"></a>Mimari diyagramı  
 
-[HSR kullanarak DR ile ölçek genişletme ![](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
+[![HSR kullanarak DR ile ölçeklendirme](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
 
 
 ### <a name="ethernet"></a>Ethernet
 Aşağıdaki ağ arabirimleri önceden yapılandırılmıştır:
 
-| NIC mantıksal arabirimi | SKU türü | SUSE OS adı | RHEL işletim sistemi ile ad | Kullanım durumu|
+| NIC mantıksal arabirimi | SKU tipi | SUSE OS ile Ad | RHEL OS ile ad | Kullanım örneği|
 | --- | --- | --- | --- | --- |
-| A | TÜR ı | eth0. Tenant | eno1. Tenant | İstemciden HLI/HSR |
-| B | TÜR ı | eth2. Tenant | eno3. Tenant | Düğümden düğüme iletişim |
-| C | TÜR ı | eth1. Tenant | eno2. Tenant | Düğümden depolamaya |
-| D | TÜR ı | eth4. Tenant | eno4. Tenant | Yapılandırıldı ancak kullanımda değil |
-| A | TÜR ıı | VLAN\<tenantNo > | team0. Tenant | İstemciden HLI/HSR |
-| B | TÜR ıı | VLAN\<tenantNo + 2 > | team0. Tenant + 2 | Düğümden düğüme iletişim |
-| C | TÜR ıı | VLAN\<tenantNo + 1 > | team0. Tenant + 1 | Düğümden depolamaya |
-| D | TÜR ıı | VLAN\<tenantNo + 3 > | team0. Tenant + 3 | Yapılandırıldı ancak kullanımda değil |
+| A | TIP I | eth0.kiracı | eno1.kiracı | İstemciden HLI/HSR'ye |
+| B | TIP I | eth2.kiracı | eno3.kiracı | Düğümden düğüme iletişim |
+| C | TIP I | eth1.tenant | eno2.kiracı | Düğümden depolamaya |
+| D | TIP I | eth4.kiracı | eno4.kiracı | Yapılandırılan ancak kullanımda olmayan |
+| A | TIP II | vlan\<kiracıNo> | team0.tenant | İstemciden HLI/HSR'ye |
+| B | TIP II | vlan\<kiracıNo+2> | takım0.kiracı+2 | Düğümden düğüme iletişim |
+| C | TIP II | vlan\<kiracıNo+1> | takım0.kiracı+1 | Düğümden depolamaya |
+| D | TIP II | vlan\<kiracıNo+3> | takım0.kiracı+3 | Yapılandırılan ancak kullanımda olmayan |
 
 ### <a name="storage"></a>Depolama
-Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
+Aşağıdaki montaj noktaları önceden yapılandırılmıştır:
 
-| Bağlama noktası | Kullanım durumu | 
+| Montaj noktası | Kullanım örneği | 
 | --- | --- |
 |**Birincil düğümde**|
-|/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 |**DR düğümünde**|
-|/Hana/Shared | Üretim SID 'SI için HANA yüklemesi | 
-|/Hana/Data/SID/mnt00001 | Üretim SID 'SI için veri dosyaları yüklemesi | 
-|/Hana/log/SID/mnt00001 | Üretim SID 'SI için günlük dosyaları yüklemesi | 
-|/hana/logbackups/SID | Üretim SID 'SI için günlükleri Yinele |
+|/hana/paylaşılan | ÜRETIM SID için HANA kurulumu | 
+|/hana/veri/SID/mnt00001 | Üretim SID için veri dosyaları yükleme | 
+|/hana/log/SID/mnt00001 | Üretim SID için günlük dosyaları yükleme | 
+|/hana/logbackups/SID | Üretim SID için Redo günlükleri |
 
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
-- /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- DR sitesinde: birimler ve bağlama noktaları, DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- Birincil site düğümü, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- /usr/sap/SID , /hana/shared/SID için sembolik bir bağlantıdır.
+- DR yerinde: Hacimler ve montaj noktaları DR HLI ünitesinde üretim HANA örnek kurulumu için yapılandırılmıştır. 
+- Birincil site düğümü HANA Sistem Çoğaltma kullanarak DR düğümü ile eşitler. 
+- [Global Reach,](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) bölgesel ağlarınız arasında özel bir ağ yapmak için ExpressRoute devrelerini birbirine bağlamak için kullanılır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- HANA büyük örnekleri için [altyapı ve bağlantı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- HANA büyük örnekleri için [yüksek kullanılabilirlik ve olağanüstü durum kurtarma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- HANA Büyük Örnekleri için [altyapı ve bağlantı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
+- HANA Büyük Örnekleri için [yüksek kullanılabilirlik ve olağanüstü durum kurtarma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)

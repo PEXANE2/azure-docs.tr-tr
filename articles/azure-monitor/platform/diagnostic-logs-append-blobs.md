@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma
-description: 1 Kasım 2018 ' de ekleme bloblarını kullanacak şekilde değiştirilen yeni Azure Kaynak günlüklerini işlemek için, bu etkiyi ve araçlarınızın nasıl güncelleştirileceğini açıklar.
+title: Azure Monitor kaynak günlüklerinde biçim değişikliğine hazırlanın
+description: 1 Kasım 2018'de ek blobs kullanmak üzere değiştirilen yeni Azure kaynak günlüklerini işlemek için aracınızın etkisini ve nasıl güncelleştirilmeye başlandığını açıklar.
 author: johnkemnetz
 services: monitoring
 ms.topic: conceptual
@@ -8,55 +8,55 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670449"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Azure Izleyici kaynak günlüklerinde bir depolama hesabına arşivlenen biçim değişikliğine hazırlanma
+# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Depolama hesabına arşivlenmiş Azure Monitor kaynak günlüklerinde biçim değişikliğine hazırlanma
 
 > [!WARNING]
-> [Kaynak tanılama ayarlarını veya etkinlik günlüklerini kullanarak bir depolama hesabına Azure Kaynak kaynağı günlükleri veya ölçümleri](./../../azure-monitor/platform/archive-diagnostic-logs.md) , [günlük profillerini kullanarak](./../../azure-monitor/platform/archive-activity-log.md)gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, Kasım 'da JSON satırları olarak değişir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır. 
+> [Günlük profillerini kullanarak](./../../azure-monitor/platform/archive-activity-log.md)bir depolama hesabına kaynak tanılama ayarlarını veya etkinlik günlüklerini kullanarak bir depolama [hesabına Azure kaynak günlükleri veya ölçümleri](./../../azure-monitor/platform/archive-diagnostic-logs.md) gönderiyorsanız, depolama hesabındaki verilerin biçimi 1 Kasım 2018'de JSON Satırları olarak değişecektir. Aşağıdaki yönergelerde, yeni biçimi işlemek için aracınızın etkisi ve nasıl güncelleştirilen açıklanmıştır. 
 >
 > 
 
-## <a name="what-is-changing"></a>Değişen
+## <a name="what-is-changing"></a>Neler değişiyor
 
-Azure Izleyici, Azure Izleyici 'de bir Azure depolama hesabına, Event Hubs ad alanına veya bir Log Analytics çalışma alanına kaynak Tanılama verileri ve etkinlik günlüğü verileri göndermenizi sağlayan bir özellik sunar. Bir sistem performansı sorununa yönelik olarak, **1 kasım 2018 ' de 12:00 gece yarısı UTC** , blob depolamaya gönderilen günlük verilerinin biçimi değişecektir. Blob depolamadan veri okuyan bir araç varsa, yeni veri biçimini anlamak için araç araçlarınızı güncelleştirmeniz gerekir.
+Azure Monitor, kaynak tanılama verileri ve etkinlik günlüğü verilerini Bir Azure depolama hesabına, Olay Hub'ları ad alanına veya Azure Monitor'daki Günlük Analizi çalışma alanına göndermenize olanak tanıyan bir özellik sunar. Bir sistem performansı sorununu gidermek için, **1 Kasım 2018 tarihinde saat 12:00'de UTC'de** blob depolamaya gönderilen günlük verilerinin formatı değişecektir. Blob depolama dan veri okuma araç varsa, yeni veri biçimini anlamak için araç güncelleştirmeniz gerekir.
 
-* Salı günü, 1 Kasım 2018, 12:00 gece UTC 'de, blob biçimi de [JSON satırları](http://jsonlines.org/)olacak şekilde değişir. Bu, her kaydın bir yeni satır tarafından sınırlandırıldığından, dış kayıt dizisi olmadan ve JSON kayıtları arasında virgül olmaması anlamına gelir.
-* Blob biçimi tüm abonelikler genelinde tüm Tanılama ayarları için aynı anda değişir. 1 Kasım 1 için yayılan ilk PT1H. JSON dosyası bu yeni biçimi kullanacaktır. Blob ve kapsayıcı adları aynı kalır.
-* Şu an ve 1 Kasım arasında bir tanılama ayarı ayarlanması, verileri geçerli biçimde 1 Kasım 'a kadar yaymaya devam eder.
-* Bu değişiklik, tüm genel bulut bölgelerinde bir kez gerçekleşir. Bu değişiklik, 21Vianet tarafından çalıştırılan Microsoft Azure, Azure Almanya veya Azure Kamu bulutlarında henüz gerçekleşmeyecektir.
+* Perşembe günü, Kasım 1, 2018 at 12:00 gece yarısı UTC, blob biçimi [JSON Lines](http://jsonlines.org/)olarak değişecektir. Bu, her kaydın bir yeni satırla sınırlandırılacak, dış kayıt dizisi ve JSON kayıtları arasında virgül olmayacağı anlamına gelir.
+* Blob biçimi, tüm abonelikler genelinde aynı anda tüm tanılama ayarları için değişir. 1 Kasım için yayılan ilk PT1H.json dosyası bu yeni biçimi kullanacaktır. Leke ve kapsayıcı adları aynı kalır.
+* Şimdi ve 1 Kasım arasında bir tanıa ayar 1 Kasım'a kadar geçerli biçimde veri yayarlar.
+* Bu değişiklik, tüm genel bulut bölgelerinde aynı anda gerçekleşir. Değişiklik, 21Vianet, Azure Almanya veya Azure Devlet bulutları tarafından işletilen Microsoft Azure'da henüz gerçekleşmez.
 * Bu değişiklik aşağıdaki veri türlerini etkiler:
-  * [Azure Kaynak kaynağı günlükleri](archive-diagnostic-logs.md) ([kaynakların listesini buraya bakın](diagnostic-logs-schema.md))
-  * [Tanılama ayarları tarafından aktarılan Azure Kaynak ölçümleri](diagnostic-settings.md)
-  * [Azure etkinlik günlüğü verileri, günlük profilleri tarafından veriliyor](archive-activity-log.md)
-* Bu değişiklik etkilenmez:
-  * Ağ akışı günlükleri
-  * Azure hizmet günlükleri henüz Azure Izleyici aracılığıyla kullanılamaz (örneğin, kaynak günlükleri Azure App Service, depolama Analizi günlükleri)
-  * Azure Kaynak günlüklerinin ve etkinlik günlüklerinin diğer hedeflere yönlendirilmesi (Event Hubs Log Analytics)
+  * [Azure kaynak günlükleri](archive-diagnostic-logs.md) ([kaynak listesine bakın)](diagnostic-logs-schema.md)
+  * [Azure kaynak ölçümleri tanılama ayarlarıyla dışa aktarılıyor](diagnostic-settings.md)
+  * [Azure Etkinlik günlük verileri günlük profilleri tarafından dışa aktarılıyor](archive-activity-log.md)
+* Bu değişiklik etkilemez:
+  * Ağ akış günlükleri
+  * Azure hizmet günlükleri henüz Azure Monitor üzerinden kullanıma sunulmadı (örneğin, Azure App Service kaynak günlükleri, depolama analizi günlükleri)
+  * Azure kaynak günlüklerinin ve etkinlik günlüklerinin diğer hedeflere yönlendirmesi (Olay Hub'ları, Günlük Analizi)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Etkilenip etkilenmediğinizi görme
 
-Bu değişiklikten yalnızca şunları yaptıysanız etkilenmiş olursunuz:
-1. , Bir kaynak tanılama ayarı kullanarak bir Azure depolama hesabına günlük verileri gönderiyor ve
-2. Depolama alanındaki bu günlüklerin JSON yapısına bağlı olan araçları izleyin.
+Bu değişiklikyalnızca şu şekilde etkilenirseniz:
+1. Kaynak tanılama ayarını kullanarak günlük verilerini bir Azure depolama hesabına gönderiyor ve
+2. Depolama bu günlükleri JSON yapısına bağlı takım var.
  
-Bir Azure depolama hesabına veri gönderen kaynak tanılama ayarlarınıza sahip olup olmadığını belirlemek için portalın **izleyici** bölümüne gidebilir, **Tanılama ayarları**' na tıklayabilir ve **Tanılama durumu** **etkin**olarak ayarlanmış olan tüm kaynakları belirleyebilirsiniz:
+Bir Azure depolama hesabına veri gönderen kaynak tanılama ayarlarınız olup olmadığını belirlemek için portalın **Monitör** bölümüne gidebilir, **Tanılama Ayarları'nı**tıklatabilir ve **Etkin'e** **Tanıdurumu** ayarlanan kaynakları tanımlayabilirsiniz:
 
-![Azure Izleyici Tanılama ayarları dikey penceresi](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
+![Azure Monitör Tanı Ayarları blade](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
-Tanı durumu etkin olarak ayarlanırsa, bu kaynak üzerinde etkin bir tanılama ayarınız vardır. Bir depolama hesabına veri gönderip göndermeyen tanılama ayarlarının olup olmadığını görmek için kaynağa tıklayın:
+Tanılama Durumu etkin olarak ayarlanmışsa, bu kaynakta etkin bir tanılama ayarı var. Herhangi bir tanılama ayarlarının bir depolama hesabına veri gönderip göndermedığını görmek için kaynağa tıklayın:
 
 ![Depolama hesabı etkin](./media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
-Bu kaynak tanılama ayarlarını kullanarak bir depolama hesabına veri gönderen kaynaklarınız varsa, bu depolama hesabındaki verilerin biçimi bu değişiklikten etkilenir. Bu depolama hesaplarının dışında çalışan özel bir araç yoksa, biçim değişikliği sizi etkilemez.
+Bu kaynak tanılama ayarlarını kullanarak bir depolama hesabına veri gönderen kaynaklarınız varsa, bu depolama hesabındaki verilerin biçimi bu değişiklikten etkilenir. Bu depolama hesaplarının dışında çalışan özel takımlarınız yoksa, biçim değişikliği sizi etkilemez.
 
 ### <a name="details-of-the-format-change"></a>Biçim değişikliğinin ayrıntıları
 
-Azure Blob depolama 'daki PT1H. json dosyasının geçerli biçimi, bir JSON dizi kayıt kullanır. İşte şu anda bir Keykasası günlük dosyası örneği:
+Azure blob depolamasındaki PT1H.json dosyasının geçerli biçimi, bir JSON kayıt dizisi kullanır. Burada şimdi bir KeyVault günlük dosyasının bir örneği:
 
 ```json
 {
@@ -117,23 +117,23 @@ Azure Blob depolama 'daki PT1H. json dosyasının geçerli biçimi, bir JSON diz
 }
 ```
 
-Yeni biçim, her olayın bir satır olduğu ve yeni bir olayı gösterdiği yeni bir olayı gösteren [JSON hatlarını](http://jsonlines.org/)kullanır. Yukarıdaki örnek, PT1H. json dosyasında değişiklikten sonra şöyle görünür:
+Yeni biçim, her olayın bir satır olduğu ve yeni çizgi karakterinin yeni bir olayı gösterdiği [JSON satırlarını](http://jsonlines.org/)kullanır. Yukarıdaki örnek, değişiklikten sonra PT1H.json dosyasında aşağıdaki gibidir:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Bu yeni biçim, Azure Izleyici 'nin, yeni olay verilerini sürekli olarak eklemek için daha verimli olan [ekleme Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)kullanarak günlük dosyalarını gönderebilmesine olanak sağlar.
+Bu yeni biçim, Azure Monitor'un yeni olay verilerini sürekli olarak eklemede daha verimli olan [ek blob'ları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)kullanarak günlük dosyalarını itmesini sağlar.
 
-## <a name="how-to-update"></a>Güncelleştirme
+## <a name="how-to-update"></a>Nasıl güncellenir?
 
-Yalnızca bu günlük dosyalarını daha fazla işlemeye yönelik bir özel araç varsa, güncelleştirmeler yapmanız gerekir. Bir dış Log Analytics veya SıEM aracı kullanıyorsanız, [bunun yerine bu verileri almak için Olay Hub 'larını kullanmanızı](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)öneririz. Olay Hub 'ları tümleştirmesi, belirli bir günlükteki birçok hizmet ve yer işareti konumundan günlükleri işleme açısından daha kolay hale getirir.
+Yalnızca daha fazla işlem için bu günlük dosyalarını yutacak özel bir araç varsa güncelleştirmeler yapmanız gerekir. Harici bir günlük analitiği veya SIEM aracı kullanıyorsanız, [bunun yerine bu verileri yutmak için olay hub'larını kullanmanızı](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)öneririz. Olay hub'ları tümleştirmesi, birçok hizmetten günlük işleme ve belirli bir günlükteki yer imi konumu açısından daha kolaydır.
 
-Özel araçlar, yukarıda açıklanan hem geçerli biçimi hem de JSON satırları biçimini işleyecek şekilde güncellenecektir. Bu, verilerin yeni biçimde görüntülenmesinden sonra araçlarınızın kesintiye uğramadığından emin olur.
+Özel araçlar, hem geçerli biçimi hem de yukarıda açıklanan JSON Satırları biçimini işlemek için güncelleştirilmelidir. Bu, verilerin yeni biçimde görünmeye başladığında araçlarınızın kırılmamasını sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak kaynak günlüklerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-diagnostic-logs.md) hakkında bilgi edinin
-* [Etkinlik günlüğü verilerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-activity-log.md) hakkında bilgi edinin
+* Kaynak [günlüklerini depolama hesabına arşivleme](./../../azure-monitor/platform/archive-diagnostic-logs.md) hakkında bilgi edinin
+* Etkinlik [günlüğü verilerini depolama hesabına arşivleme](./../../azure-monitor/platform/archive-activity-log.md) hakkında bilgi edinin
 

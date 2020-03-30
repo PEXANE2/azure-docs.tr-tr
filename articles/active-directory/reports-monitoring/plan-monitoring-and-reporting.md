@@ -1,6 +1,6 @@
 ---
-title: Raporları planlayın & izleme dağıtımı-Azure AD
-description: Raporlama ve izlemenin nasıl planlanacağını ve yürütüleceğini açıklar.
+title: Raporları & izleme dağıtımı - Azure AD
+description: Raporlama ve izleme nin nasıl planlanıp yürütüldöğünü açıklar.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,173 +13,173 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232114"
 ---
-# <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory raporlama ve izleme dağıtımını planlayın
+# <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Etkin Dizin raporlama ve izleme dağıtımı planlama
 
-Azure Active Directory (Azure AD) raporlama ve izleme çözümünüz, yasal, güvenlik ve operasyonel gereksinimlerinize ve var olan ortamınıza ve süreçlerinize bağlıdır. Bu makalede, çeşitli tasarım seçenekleri sunulmakta ve doğru dağıtım stratejisinde size rehberlik sunulmaktadır.
+Azure Etkin Dizin (Azure AD) raporlama ve izleme çözümünüz yasal, güvenlik ve operasyonel gereksinimlerinize ve mevcut ortamınıza ve süreçlerinize bağlıdır. Bu makalede, çeşitli tasarım seçenekleri sunar ve doğru dağıtım stratejisi için size rehberlik eder.
 
 ### <a name="benefits-of-azure-ad-reporting-and-monitoring"></a>Azure AD raporlama ve izlemenin avantajları
 
-Azure AD raporlama, ortamınızda oturum açma olayları, denetim olayları ve dizininizde değişiklikler dahil olmak üzere Azure AD etkinliğinin kapsamlı bir görünümünü ve günlüklerini sağlar.
+Azure REKLAM raporlaması, etkinliklerde oturum açma, denetim etkinlikleri ve dizininizdeki değişiklikler de dahil olmak üzere ortamınızdaki Azure REKLAM etkinliğinin kapsamlı bir görünümünü ve günlüklerini sağlar.
 
 Sağlanan verilerle:
 
-* uygulamalarınızın ve hizmetlerinizin nasıl kullanıldığını saptayın.
+* uygulamalarınızın ve hizmetlerinizin nasıl kullanıldığını belirleyin.
 
-* ortamınızın sistem durumunu etkileyen olası riskleri tespit edin.
+* çevrenizin sağlığını etkileyen potansiyel riskleri tespit etmek.
 
-* Kullanıcılarınızın işlerini halledmesini önlemeye yönelik sorunları giderin.
+* kullanıcılarınızın işlerini halletmesini engelleyen sorunları giderir.
 
-* Azure AD dizininizde yapılan değişikliklerin denetim olaylarını görerek Öngörüler elde edin.
+* Azure REKLAM dizininizdeki değişikliklerin denetim olaylarını görerek öngörüler elde edin.
 
 > [!IMPORTANT]
-> Azure AD izleme, Azure AD raporlama tarafından oluşturulan günlüklerinizi farklı hedef sistemlere yönlendirmenizi sağlar. Ardından bu günlükleri uzun vadeli kullanım için saklayabilir veya ortamınızla ilgili içgörülere ulaşmak için üçüncü taraf Güvenlik Bilgileri ve Olay Yönetimi (SIEM) araçlarıyla tümleştirebilirsiniz.
+> Azure AD izleme, Azure AD raporlaması tarafından oluşturulan günlüklerinizi farklı hedef sistemlere yönlendirmenize olanak tanır. Ardından bu günlükleri uzun vadeli kullanım için saklayabilir veya ortamınızla ilgili içgörülere ulaşmak için üçüncü taraf Güvenlik Bilgileri ve Olay Yönetimi (SIEM) araçlarıyla tümleştirebilirsiniz.
 
 Azure AD izleme ile günlükleri şu şekilde yönlendirebilirsiniz:
 
-* arşivleme amacıyla bir Azure depolama hesabı.
-* Daha önce Azure Log Analytics çalışma alanı olarak bilinen, verileri çözümleyebildiğiniz, pano oluşturabileceğiniz ve belirli olaylara uyarı oluşturabileceğiniz Azure Izleyici günlükleri.
-* splunk, SumoLogic veya QRadar gibi var olan SıEM araçlarınızla tümleştirebileceğiniz bir Azure Olay Hub 'ı.
+* arşivleme amaçları için bir Azure depolama hesabı.
+* Verileri analiz edebileceğiniz, panolar oluşturabileceğiniz ve belirli olaylarhakkında uyarıda verebileceğiniz Azure Log Analytics çalışma alanı olarak bilinen Azure Monitor günlükleri.
+* Splunk, Sumlogic veya QRadar gibi mevcut SIEM araçlarınızla tümleştirebileceğiniz bir Azure etkinlik merkezi.
 
 > [!NOTE]
-Yakın zamanda Log Analytics yerine Azure Izleyici günlükleri terimini kullanmaya başladık. Günlük verileri hala bir Log Analytics çalışma alanında depolanır ve yine de aynı Log Analytics hizmeti tarafından toplanıp çözümlenmektedir. [Azure izleyici 'de günlüklerin](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection)rolünü daha iyi yansıtacak şekilde terminolojiyi güncelleştiriyoruz. Ayrıntılar için bkz. [Azure izleyici terminolojisi değişiklikleri](https://docs.microsoft.com/azure/azure-monitor/azure-monitor-rebrand) .
+Kısa bir süre önce Log Analytics yerine Azure Monitor günlükleri terimini kullanmaya başladık. Günlük verileri hala bir Log Analytics çalışma alanında depolanır ve yine de aynı Log Analytics hizmeti tarafından toplanır ve analiz edilir. [Azure Monitor'daki günlüklerin](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection)rolünü daha iyi yansıtacak şekilde terminolojiyi güncelliyoruz. Ayrıntılar için [Azure Monitör terminolojisi değişikliklerine](https://docs.microsoft.com/azure/azure-monitor/azure-monitor-rebrand) bakın.
 
-[Rapor bekletme ilkeleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention).
+[Rapor bekletme ilkeleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention)
 
-### <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Azure AD raporlama ve izleme için lisanslama ve Önkoşullar
+### <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Azure AD raporlaması ve izleme için lisanslama ve ön koşullar
 
-Azure AD oturum açma günlüklerine erişmek için bir Azure AD Premium lisansına sahip olmanız gerekir.
+Azure AD oturum günlüğüne erişmek için Azure AD premium lisansına ihtiyacınız vardır.
 
-[Azure Active Directory fiyatlandırma kılavuzunda](https://azure.microsoft.com/pricing/details/active-directory/)ayrıntılı özellik ve lisanslama bilgileri için.
+[Azure Active Directory fiyatlandırma kılavuzunda](https://azure.microsoft.com/pricing/details/active-directory/)ayrıntılı özellik ve lisans bilgileri için.
 
-Azure AD izleme ve raporlama dağıtmak için, Azure AD kiracısı için genel yönetici veya güvenlik yöneticisi olan bir kullanıcıya ihtiyacınız vardır.
+Azure AD izleme ve raporlamayı dağıtmak için Azure AD kiracısı için genel yönetici veya güvenlik yöneticisi olan bir kullanıcıya ihtiyacınız olur.
 
-Günlük verilerinizin son hedefine bağlı olarak, aşağıdakilerden birine sahip olmanız gerekir:
+Günlük verilerinizin son hedefine bağlı olarak aşağıdakilerden birine ihtiyacınız vardır:
 
-* İçin ListKeys izinleriniz olan bir Azure depolama hesabı. Blob depolama hesabı değil genel bir depolama hesabı kullanmanızı öneririz. Depolamayla fiyatlandırma bilgileri için bkz. [Azure Depolama fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?service=storage).
+* ListKeys izinlerine sahip olduğunuz bir Azure depolama hesabı. Blob depolama hesabı değil genel bir depolama hesabı kullanmanızı öneririz. Depolamayla fiyatlandırma bilgileri için bkz. [Azure Depolama fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?service=storage).
 
-* Üçüncü taraf SıEM çözümleriyle tümleştirilecek Azure Event Hubs ad alanı.
+* Üçüncü taraf SIEM çözümleriyle tümleştirmek için bir Azure Etkinlik Hub'ları ad alanı.
 
-* Azure Izleyici günlüklerine Günlükler göndermek için bir Azure Log Analytics çalışma alanı.
+* Günlükleri Azure Monitor günlüklerine göndermek için bir Azure Günlük Analizi çalışma alanı.
 
-## <a name="plan-an-azure-reporting-and-monitoring-deployment-project"></a>Azure raporlama ve izleme dağıtım projesi planlayın
+## <a name="plan-an-azure-reporting-and-monitoring-deployment-project"></a>Bir Azure raporlama ve izleme dağıtım projesi planlama
 
-Bu projede, raporları tüketmek ve izlemek için izleyicileri tanımlayacaksınız ve Azure AD izleme mimarinizi tanımlayacaksınız.
+Bu projede, raporları tüketecek ve izleyecek hedef kitleleri ve Azure AD izleme mimarinizi tanımlarsınız.
 
-### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
+### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlarla etkileşimde bulunun
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu sınırları önlemek için, [doğru paydaşları ilgi çekici olduğunuzdan emin olun](https://aka.ms/deploymentplans). Ayrıca, proje katılımcıları ve bunların proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuçlar ve sorumluluklar hakkındaki uyumsuz beklentiler nedeniyle bunu yaparlar. Bu tuzaklardan kaçınmak için, [doğru paydaşlarla etkileşimde bulunduğunuzdan emin olun.](https://aka.ms/deploymentplans) Ayrıca, paydaşların ve bunların proje girdive hesap yeteneklerini belgeleyerek projedeki paydaş rollerinin iyi anlaşılmasını sağlamak.
 
-### <a name="plan-communications"></a>İletişimleri planlayın
+### <a name="plan-communications"></a>İletişimi planlama
 
-İletişim, her yeni hizmetin başarısı için önemlidir. Deneyimlerinizin nasıl değiştirileceği, ne zaman değiştirileceği ve sorunlarla karşılaştıkları durumlarda nasıl destek kazanabilecekleri hakkında daha etkin bir şekilde iletişim kurun.
+İletişim, herhangi bir yeni hizmetin başarısı için çok önemlidir. Kullanıcılarınızla deneyimlerinin nasıl değişeceğini, ne zaman değişeceğini ve sorunlarla karşılaşırsa nasıl destek kazanabileceklerini proaktif bir şekilde iletin.
 
-### <a name="document-your-current-infrastructure-and-policies"></a>Geçerli altyapınızı ve ilkelerinizi belgeleyin
+### <a name="document-your-current-infrastructure-and-policies"></a>Mevcut altyapınızı ve ilkelerinizi belgeleme
 
-Geçerli altyapınız ve ilkeleriniz raporlama ve izleme tasarımınızı barındıracak. Haberdar olduğunuzdan emin olun
+Mevcut altyapınız ve politikalarınız raporlama ve izleme tasarımınızı yönlendirecektir. Bildiğinizden emin olun
 
-* Kullandığınız varsa SıEM araçları.
+* Kullandığınız SIEM araçları ne, varsa.
 
-* Mevcut depolama hesapları ve kullanılan izleme dahil olmak üzere Azure altyapınız.
+* Mevcut depolama hesapları ve kullanılan izleme de dahil olmak üzere Azure altyapınız.
 
-* Tüm geçerli uyumluluk çerçeveleri dahil olmak üzere Günlükler için kuruluş bekletme ilkeleriniz. 
+* Gerekli geçerli uyumluluk çerçeveleri de dahil olmak üzere günlükler için kuruluş bekletme ilkeleriniz. 
 
-## <a name="plan-an-azure-ad-reporting-and-monitoring-deployment"></a>Azure AD raporlama ve izleme dağıtımını planlayın
+## <a name="plan-an-azure-ad-reporting-and-monitoring-deployment"></a>Azure AD raporlaması ve dağıtımını izleme planı
 
-Raporlama ve izleme, iş gereksinimlerinizi karşılamak, kullanım desenleriyle ilgili Öngörüler elde etmek ve kuruluşların güvenlik duruşunuzu artırmak için kullanılır.
+Raporlama ve izleme, iş gereksinimlerinizi karşılamak, kullanım alışkanlıkları hakkında öngörüler elde etmek ve kuruluşlarınuzun güvenlik duruşunu artırmak için kullanılır.
 
 ### <a name="business-use-cases"></a>İş kullanım örnekleri
 
-* Çözümün iş ihtiyaçlarını karşılaması için gereklidir
-* İş ihtiyaçlarını karşılamak için iyi
-* Geçerli değil
+* İş gereksinimlerini karşılamak için çözüm için gerekli
+* İş gereksinimlerini karşılamak güzel
+* Uygulanamaz
 
 |Alan |Açıklama |
 |-|-|
-|Saklama| **30 günden uzun süre bekletmesi günlüğe kaydedilir**. Yasal veya iş gereksinimleri nedeniyle, Denetim günlüklerini depolamak ve Azure AD 'de oturum açmak 30 günden daha uzun bir süre için gereklidir. |
-|Analiz| **Günlüklerin aranabilir olması gerekir**. Depolanan günlüklerin Analitik araçlarla aranabilir olması gerekir. |
-| Operasyonel İçgörüler| **Çeşitli ekipler Için Öngörüler**. Uygulama kullanımı, oturum açma hataları, Self Servis kullanımı, eğilimler vb. gibi operasyonel içgörüler elde etmek için farklı kullanıcılara erişim verme ihtiyacı. |
-| Güvenlik öngörüleri| **Çeşitli ekipler Için Öngörüler**. Uygulama kullanımı, oturum açma hataları, Self Servis kullanımı, eğilimler vb. gibi operasyonel içgörüler elde etmek için farklı kullanıcılara erişim verme ihtiyacı. |
-| SıEM sistemlerinde tümleştirme      | **SIEM tümleştirmesi**. Mevcut SıEM sistemlerine Azure AD oturum açma ve denetim günlüklerini tümleştirme ve akışla birleştirme ihtiyacı. |
+|Bekletme| **30 günden fazla günlük tutma.** Yasal veya iş gereksinimleri nedeniyle, denetim günlüklerini depolamak ve Azure AD günlüklerini 30 günden uzun süre oturum açmak gerekir. |
+|Analiz| **Günlüklerin aranabilir olması gerekir.** Depolanan günlüklerin analitik araçlarla aranabilir olması gerekir. |
+| Operasyonel İçgörüler| **Çeşitli takımlar için Insights**. Uygulama kullanımı, oturum açma hataları, self servis kullanımı, eğilimler gibi operasyonel öngörüler elde etmek için farklı kullanıcılara erişim sağlama gereksinimi. |
+| Güvenlik Öngörüleri| **Çeşitli takımlar için Insights**. Uygulama kullanımı, oturum açma hataları, self servis kullanımı, eğilimler, vb. gibi operasyonel öngörüler elde etmek için farklı kullanıcılara erişim sağlama gereksinimi. |
+| SIEM sistemlerine entegrasyon      | **SIEM entegrasyonu**. Mevcut SIEM sistemlerine Azure AD oturum açma ve denetleme günlüklerini entegre etme ve akışla aktarma gereksinimi. |
 
-### <a name="choose-a-monitoring-solution-architecture"></a>İzleme çözümü mimarisi seçin
+### <a name="choose-a-monitoring-solution-architecture"></a>İzleme çözümü mimarisini seçin
 
-Azure AD izleme ile Azure AD etkinlik günlüklerinizi, iş gereksinimlerinizi en iyi şekilde karşılayan bir sisteme yönlendirebilirsiniz. Daha sonra bu bilgileri, ortamınız hakkında öngörüler elde etmek ve SıEM araçlarıyla bütünleştirmek için uzun süreli raporlama ve analizler için koruyabilirsiniz.
+Azure AD izleme ile Azure AD etkinlik günlüklerinizi işletme gereksinimlerinizi en iyi şekilde karşılayan bir sisteme yönlendirebilirsiniz. Daha sonra, ortamınız hakkında bilgi edinmek ve SIEM araçlarıyla entegre etmek için bunları uzun vadeli raporlama ve analiz ler için saklayabilirsiniz.
 
-#### <a name="decision-flow-chartan-image-showing-what-is-described-in-subsequent-sectionsmediareporting-deployment-plandeploy-reporting-flow-diagrampng"></a>Karar akışı grafiği![Sonraki bölümlerde nelerin açıklandığı gösteren resim](media/reporting-deployment-plan/deploy-reporting-flow-diagram.png)
+#### <a name="decision-flow-chartan-image-showing-what-is-described-in-subsequent-sections"></a>Karar akış şeması![Sonraki bölümlerde açıklananları gösteren bir resim](media/reporting-deployment-plan/deploy-reporting-flow-diagram.png)
 
-#### <a name="archive-logs-in-a-storage-account"></a>Depolama hesabında arşiv günlükleri
+#### <a name="archive-logs-in-a-storage-account"></a>Depolama hesabındaki günlükleri arşivleme
 
-Günlükleri bir Azure depolama hesabına yönlendirerek, bunları [bekletme ilkilerimizde](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention)özetlenen varsayılan saklama süresinden daha uzun bir süre boyunca tutabilirsiniz. Günlüklerinizi arşivlemeniz gerekiyorsa, ancak bunları SıEM sistemiyle tümleştirmeniz gerekmiyorsa ve sürekli sorgular ve analize gerek duymuyorsanız bu yöntemi kullanın. İsteğe bağlı aramalar yapabilirsiniz.
+Günlükleri bir Azure depolama hesabına yönlendirme yaparak, bunları [bekletme ilkelerimizde](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention)özetlenen varsayılan bekletme süresinden daha uzun süre saklayabilirsiniz. Günlüklerinizi arşivlemeniz gerekiyorsa, ancak bunları bir SIEM sistemiyle tümleştirmeniz gerekmiyorsa ve devam eden sorgular ve çözümlemelere gerek yoksa bu yöntemi kullanın. İsteğe bağlı aramalar yapmaya devam edebilirsiniz.
 
 [Verileri depolama hesabınıza yönlendirmeyi](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account) öğrenin.
 
-#### <a name="send-logs-to-azure-monitor-logs"></a>Günlükleri Azure Izleyici günlüklerine gönder
+#### <a name="send-logs-to-azure-monitor-logs"></a>Günlükleri Azure Monitor günlüklerine gönderme
 
-[Azure izleyici günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) , izleme verilerini farklı kaynaklardan birleştirir. Ayrıca, uygulamalarınızın ve kaynak kullanmanın çalışması hakkında Öngörüler sağlayan bir sorgu dili ve analiz altyapısı da sağlar. Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine göndererek, toplanan verileri hızlıca alabilir, izleyebilir ve uyarabilir. Verilerinizi doğrudan göndermek istediğiniz bir SıEM çözümünüz yoksa ve sorgu ve analiz yapmak istiyorsanız bu yöntemi kullanın. Verileriniz Azure Izleyici günlükleriniz olduktan sonra bunu Olay Hub 'ına ve isterseniz SıEM 'ye gönderebilirsiniz.
+[Azure Monitor günlükleri,](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) farklı kaynaklardan gelen izleme verilerini birleştirir. Ayrıca, uygulamalarınızın işleyişi ve kaynakların kullanımı hakkında bilgi veren bir sorgu dili ve analiz motoru da sağlar. Azure AD etkinlik günlüklerini Azure Monitor günlüklerine göndererek, toplanan verileri hızla alabilir, izleyebilir ve uyarabilirsiniz. Verilerinizi doğrudan göndermek istediğiniz ancak sorgu ve çözümleme istediğiniz varolan bir SIEM çözümünüz yoksa bu yöntemi kullanın. Verileriniz Azure Monitor günlüklerine ulaştıktan sonra, isterseniz etkinlik merkezine ve oradan da bir SIEM'e gönderebilirsiniz.
 
-[Azure izleyici günlüklerine veri gönderme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)hakkında bilgi edinin.
+[Azure Monitor günlüklerine nasıl veri göndereceğinizi](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)öğrenin.
 
-Ayrıca, oturum açma ve denetim olaylarına ilişkin yaygın senaryoları izlemek üzere Azure AD etkinlik günlükleri için önceden oluşturulmuş görünümleri yükleyebilirsiniz.
+Oturum açma ve denetleme etkinlikleriyle ilgili yaygın senaryoları izlemek için Azure AD etkinlik günlükleri için önceden oluşturulmuş görünümleri de yükleyebilirsiniz.
 
-[Azure ad etkinlik günlükleri için Log Analytics görünümlerini yüklemeyi ve kullanmayı](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)öğrenin.
+[Azure AD etkinlik günlükleri için günlük analizi görünümlerini nasıl yükleyip kullanacağınızı](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)öğrenin.
 
-#### <a name="stream-logs-to-your-azure-event-hub"></a>Günlükleri Azure Olay Hub 'ınıza akışla
+#### <a name="stream-logs-to-your-azure-event-hub"></a>Azure etkinlik merkezinize akış günlükleri
 
-Azure Olay Hub 'ına yönlendirme günlükleri, üçüncü taraf SıEM araçlarıyla tümleştirmeyi sağlar. Bu tümleştirme, ortamınızda daha zengin Öngörüler sağlamak için Azure AD etkinlik günlüğü verilerini SıEM 'niz tarafından yönetilen diğer verilerle birleştirmenizi sağlar. 
+Günlükleri bir Azure etkinlik merkezine yönlendirme, üçüncü taraf SIEM araçlarıyla tümleştirmeyi sağlar. Bu tümleştirme, azure REKLAM etkinliği günlük verilerini, çevrenize daha zengin bakış açısı sağlamak için SIEM'iniz tarafından yönetilen diğer verilerle birleştirmenize olanak tanır. 
 
 [Olay hub'ına günlük akışı yapmayı](https://docs.microsoft.com//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub) öğrenin.
 
-## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD raporlama ve izleme için Işlem ve güvenlik planlayın
+## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD raporlaması ve izleme için İşlemleri ve Güvenliği Planlayın
 
-Paydaşların operasyonel içgörüler elde etmek için Azure AD günlüklerine erişmesi gerekir. Büyük olasılıkla kullanıcılara güvenlik ekibi üyeleri, iç veya dış denetçiler ve kimlik ve erişim yönetimi işlemleri ekibi dahildir.
+Hissedarların operasyonel öngörüler elde etmek için Azure REKLAM günlüklerine erişmesi gerekir. Olası kullanıcılar arasında güvenlik ekibi üyeleri, dahili veya harici denetçiler ve kimlik ve erişim yönetimi işlemleri ekibi yer almaktadır.
 
-Azure AD rolleri, Azure AD raporlarını rolünüze göre yapılandırma ve görüntüleme olanağı sağlar. Kuruluşunuzun Azure AD raporlarını okumak için hangi izinlere ihtiyacı olduğunu ve bu kullanıcılara hangi rolün uygun olduğunu belirlemek. 
+Azure AD rolleri, azure REKLAM Raporlarını rolünüze göre yapılandırma ve görüntüleme özelliğini devretmenizi sağlar. Kuruluşunuzdaki lerin Azure REKLAM raporlarını okumak için kimlerin izin alması gerektiğini ve bunlar için hangi rolün uygun olacağını belirleyin. 
 
-Aşağıdaki roller Azure AD raporlarını okuyabilir:
+Aşağıdaki roller Azure REKLAM raporlarını okuyabilir:
 
 * Genel Yönetici
 
 * Güvenlik Yöneticisi
 
-* Güvenlik okuyucusu
+* Güvenlik Okuyucu
 
-* Rapor okuyucu
+* Rapor Okuyucu
 
-[Azure AD Yönetim rolleri](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)hakkında daha fazla bilgi edinin.
+[Azure AD Yönetim Rolleri](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)hakkında daha fazla bilgi edinin.
 
-*Hesap güvenliğinin tehlikeye düşmesi riskini azaltmak Için her zaman en az ayrıcalık kavramını uygulayın*. Kuruluşunuzun güvenliğini sağlamak için [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) uygulamayı düşünün.
+*Her zaman bir hesap uzlaşma riskini azaltmak için en az ayrıcalıklar kavramını uygulayın.* Kuruluşunuzun güvenliğini sağlamak için [Ayrıcalıklı Kimlik Yönetimi'ni](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) uygulamayı düşünün.
 
 ##  
 
 ## <a name="deploy-azure-ad-reporting-and-monitoring"></a>Azure AD raporlama ve izleme dağıtma
 
-Yukarıdaki tasarım kılavuzunu kullanarak daha önce yaptığınız kararlara bağlı olarak, bu bölüm, farklı dağıtım seçeneklerindeki belgelerde size kılavuzluk eder.
+Yukarıdaki tasarım kılavuzunu kullanarak daha önce vermiş olduğunuz kararlara bağlı olarak, bu bölüm sizi farklı dağıtım seçenekleriyle ilgili belgelere yönlendirecektir.
 
-### <a name="consume-and-archive-azure-ad-logs"></a>Azure AD günlüklerini tüketme ve arşivleme
+### <a name="consume-and-archive-azure-ad-logs"></a>Azure REKLAM günlüklerini tüketin ve arşivleyin
 
 [Azure portalda etkinlik raporlarını bulma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
 
-[Azure AD günlüklerini bir Azure depolama hesabına arşivleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
+[Azure AD günlüklerini bir Azure Depolama hesabına arşivleyin](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
 
-### <a name="implement-monitoring-and-analytics"></a>İzleme ve analiz uygulama
+### <a name="implement-monitoring-and-analytics"></a>İzleme ve analiz uygulayın
 
-[Günlükleri Azure Izleyici 'ye gönderme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+[Günlükleri Azure Monitör'e gönderme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-[Azure Active Directory için Log Analytics görünümlerini yükleyip kullanın](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)
+[Azure Active Directory için günlük analizi görünümlerini yükleme ve kullanma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)
 
-[Azure Izleyici günlükleri ile Azure AD etkinlik günlüklerini çözümleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)
+[Azure Monitor günlükleriyle Azure REKLAM etkinlik günlüklerini analiz edin](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)
 
 * [Azure İzleyici denetim günlükleri şemasını yorumlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
 
-* [Azure Izleyici 'de oturum açma günlüğü şemasını yorumlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema)
+* [Azure Monitor'da oturum açma şemasıyorumlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema)
 
- * [Azure AD günlüklerini Azure Olay Hub 'ına akış](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)
+ * [Azure REKLAM günlüğünü bir Azure etkinlik merkezine aktarın](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)
 
 * [Azure İzleyici kullanarak Azure AD günlüklerini Splunk ile tümleştirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-integrate-activity-logs-with-splunk)
 
@@ -191,8 +191,8 @@ Yukarıdaki tasarım kılavuzunu kullanarak daha önce yaptığınız kararlara 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) uygulamayı deneyin 
+[Ayrıcalıklı Kimlik Yönetimi'ni](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) uygulamayı düşünün 
 
-[Rol tabanlı erişim denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) uygulamayı düşünün
+[Rol tabanlı erişim denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) uygulama yı düşünün
 
  

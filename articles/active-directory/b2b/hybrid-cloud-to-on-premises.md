@@ -1,6 +1,6 @@
 ---
-title: B2B kullanıcılarına şirket içi uygulamalarınıza erişim verme-Azure AD
-description: Bulut B2B kullanıcılarına Azure AD B2B işbirliğiyle şirket içi uygulamalar için erişim verme şeklini gösterir.
+title: B2B kullanıcılarına şirket içi uygulamalarınıza erişim izni verme - Azure AD
+description: Azure AD B2B işbirliği ile bulut B2B kullanıcılarına şirket içi uygulamalara nasıl erişilir.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,79 +12,79 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272792"
 ---
-# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
+# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD'deki B2B kullanıcılarına şirket içi uygulamalarınıza erişim izni verme
 
-Azure ad iş ortağı kuruluşlardan Konuk kullanıcıları davet etmek için Azure Active Directory (Azure AD) B2B işbirliği özelliklerini kullanan bir kuruluş, artık bu B2B kullanıcıları şirket içi uygulamalara erişim sağlayabilir. Bu şirket içi uygulamaları, Kerberos Kısıtlı temsilci (KCD) ile SAML tabanlı kimlik doğrulaması veya tümleşik Windows kimlik doğrulaması (IWA) kullanabilirsiniz.
+Ortak kuruluşlardan gelen konuk kullanıcıları Azure AD'nize davet etmek için Azure Active Directory (Azure AD) B2B işbirliği özelliklerini kullanan bir kuruluş olarak, artık bu B2B kullanıcılarına şirket içi uygulamalara erişim sağlayabilirsiniz. Bu şirket içi uygulamalar, Saml tabanlı kimlik doğrulamayı veya Entegre Windows Kimlik Doğrulaması'nı (IWA) Kerberos kısıtlı delegasyonu (KCD) ile kullanabilir.
 
 ## <a name="access-to-saml-apps"></a>SAML uygulamalarına erişim
 
-Şirket içi uygulamanız SAML tabanlı kimlik doğrulaması kullanıyorsa, bu uygulamaları Azure portal aracılığıyla Azure AD B2B işbirliği kullanıcılarınız için kolayca kullanılabilir hale getirebilirsiniz.
+Şirket içi uygulamanız SAML tabanlı kimlik doğrulamasını kullanıyorsa, Azure portalı aracılığıyla bu uygulamaları Azure AD B2B işbirliği kullanıcılarınız için kolayca kullanılabilir hale getirebilirsiniz.
 
-Aşağıdakilerden her ikisini de yapmanız gerekir:
+Aşağıdakilerin her ikisini de yapmalısınız:
 
-- [Azure Active Directory Uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](../manage-apps/configure-single-sign-on-non-gallery-applications.md)başlığı altında açıklandığı gıbı, SAML uygulamasını Galeri dışı uygulama şablonunu kullanarak tümleştirin. **Oturum açma URL 'si** değeri için ne kullanacağınızı aklınızda olduğunuzdan emin olun.
--  Şirket içi uygulamayı, kimlik doğrulama kaynağı olarak yapılandırılmış **Azure Active Directory** birlikte yayımlamak için Azure AD uygulama ara sunucusu kullanın. Yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](../manage-apps/application-proxy-publish-azure-portal.md). 
+- [Azure Active Directory uygulama galerisinde olmayan uygulamalarda tek oturum açma](../manage-apps/configure-single-sign-on-non-gallery-applications.md)yapılandırmada açıklandığı gibi, galeri dışı uygulama şablonu kullanarak SAML uygulamasını tümleştirin. **Oturum Açma URL** değeri için ne kullandığınızı not aldığınızdan emin olun.
+-  Azure **Active Directory** kimlik doğrulama kaynağı olarak yapılandırılan şirket içi uygulamayı yayınlamak için Azure AD Application Proxy'yi kullanın. Yönergeler için [bkz.](../manage-apps/application-proxy-publish-azure-portal.md) 
 
-   **Iç URL** ayarını yapılandırdığınızda, Galeri dışı uygulama şablonunda belirttiğiniz oturum açma URL 'sini kullanın. Bu şekilde, kullanıcılar uygulamaya kuruluş sınırının dışından erişebilir. Uygulama proxy 'Si, şirket içi uygulama için SAML çoklu oturum açma işlemini gerçekleştirir.
+   **Dahili Url** ayarını yapılandırDığınızda, galeri dışı uygulama şablonunda belirttiğiniz oturum açma URL'sini kullanın. Bu şekilde, kullanıcılar uygulamaya kuruluş sınırı dışından erişebilir. Application Proxy, şirket içi uygulama için SAML tek oturum açma gerçekleştirir.
  
-   ![Şirket içi uygulama ayarlarını iç URL ve kimlik doğrulaması gösterir](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
+   ![Şirket içi uygulama ayarlarını dahili URL ve kimlik doğrulamagösterir](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
 
 ## <a name="access-to-iwa-and-kcd-apps"></a>IWA ve KCD uygulamalarına erişim
 
-B2B kullanıcılarına, tümleşik Windows kimlik doğrulaması ve Kerberos kısıtlı temsilcisiyle güvenliği sağlanmış şirket içi uygulamalara erişim sağlamak için aşağıdaki bileşenlere ihtiyacınız vardır:
+B2B kullanıcılarının Entegre Windows Kimlik Doğrulaması ve Kerberos kısıtlı delegasyonu ile güvenli olan şirket içi uygulamalara erişebilmeniz için aşağıdaki bileşenlere ihtiyacınız vardır:
 
-- **Azure AD uygulama ara sunucusu aracılığıyla kimlik doğrulaması**. B2B kullanıcılarının şirket içi uygulamada kimlik doğrulaması yapabilmesi gerekir. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için bkz. [uygulama proxy 'si ile çalışmaya başlama ve](../manage-apps/application-proxy-enable.md) [Azure AD uygulama ara sunucusu kullanarak](../manage-apps/application-proxy-publish-azure-portal.md)bağlayıcı ve uygulama yayımlama.
-- **Şirket içi dizindeki BIR B2B Kullanıcı nesnesi aracılığıyla yetkilendirme**. Uygulamanın kullanıcı erişim denetimleri gerçekleştirebilmesi ve doğru kaynaklara erişim izni vermesi gerekir. IWA ve KCD, bu yetkilendirmeyi tamamlaması için şirket içi Windows Server Active Directory bir kullanıcı nesnesi gerektirir. [KCD ile çoklu oturum açma konusunda](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)açıklandığı gibi, uygulama proxy 'si, kullanıcının kimliğine bürünmesi ve uygulamaya Kerberos belirteci alması için bu kullanıcı nesnesine ihtiyaç duyuyor. 
+- **Azure AD Uygulama Proxy ile kimlik doğrulama.** B2B kullanıcıları şirket içi uygulamaya kimlik doğrulaması yapabilmeli. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Proxy'si aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için Bkz. [Uygulama Proxy'yi başlatın ve bağlayıcıyı yükleyin](../manage-apps/application-proxy-enable.md) ve [Uygulamaları Azure AD Application Proxy'yi kullanarak yayımlayın.](../manage-apps/application-proxy-publish-azure-portal.md)
+- **Şirket içi dizinde bir B2B kullanıcı nesnesi üzerinden yetkilendirme.** Uygulama, kullanıcı erişim denetimleri gerçekleştirebilmeli ve doğru kaynaklara erişim verebilmelidir. IWA ve KCD, bu yetkilendirmeyi tamamlamak için şirket içi Windows Server Active Directory'de bir kullanıcı nesnesi gerektirir. [KCD ile tek oturum açma nın nasıl çalıştığı](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)konusunda açıklandığı gibi, Application Proxy'nin kullanıcıyı taklit etmesi ve uygulamaya Kerberos belirteci alması için bu kullanıcı nesnesine ihtiyacı vardır. 
 
-   B2B Kullanıcı senaryosunda, şirket içi dizinde yetkilendirme için gerekli olan Konuk kullanıcı nesnelerini oluşturmak için kullanabileceğiniz iki yöntem vardır:
+   B2B kullanıcı senaryosu için, şirket içi dizinde yetkilendirme için gerekli olan konuk kullanıcı nesnelerini oluşturmak için kullanabileceğiniz iki yöntem vardır:
 
-   - Microsoft Graph için Microsoft Identity Manager (MıM) ve MıM Yönetim Aracısı. 
-   - [Bir PowerShell betiği](#create-b2b-guest-user-objects-through-a-script-preview). Betiği kullanmak, MıM gerektirmeyen daha basit bir çözümdür. 
+   - Microsoft Identity Manager (MIM) ve Microsoft Graph için MIM yönetim aracısı. 
+   - [Bir PowerShell komut dosyası](#create-b2b-guest-user-objects-through-a-script-preview). Komut dosyasını kullanmak, MIM gerektirmeyen daha hafif bir çözümdür. 
 
-Aşağıdaki diyagramda, B2B kullanıcılarına şirket içi ıWA ve KCD uygulamalarınıza erişim sağlamak için Azure AD Uygulama Ara Sunucusu 'nin ve şirket içi dizindeki B2B Kullanıcı nesnesinin oluşturulmasına ilişkin üst düzey bir genel bakış sağlanmaktadır. Numaralandırılmış adımlar, diyagramın altında ayrıntılı olarak açıklanmaktadır.
+Aşağıdaki diyagram, B2B kullanıcılarına şirket içi IWA ve KCD uygulamalarınıza erişim izni vermek için Azure AD Application Proxy ve şirket içi dizindeki B2B kullanıcı nesnesinin oluşumunun birlikte nasıl çalıştığına ilişkin üst düzey bir genel bakış sağlar. Numaralanan adımlar diyagramın altında ayrıntılı olarak açıklanmıştır.
 
-![MıM ve B2B betik çözümlerinin diyagramı](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
+![MIM ve B2B komut dosyası çözümleri diyagramı](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
-1.  Bir iş ortağı kuruluştan (Fabrikam kiracısı) bir Kullanıcı contoso kiracısına davet edilir.
-2.  Contoso kiracısında bir Konuk Kullanıcı nesnesi oluşturulur (örneğin, guest_fabrikam UPN 'si olan bir kullanıcı nesnesi). com # EXT #@contoso.onmicrosoft.com).
-3.  Fabrikam konuğu, contoso 'dan MıM 'e veya B2B PowerShell betiği aracılığıyla içeri aktarılır.
-4.  Fabrikam Konuk Kullanıcı nesnesinin (konuk # EXT #) temsili veya "ayak izi", MıM aracılığıyla veya B2B PowerShell betiği aracılığıyla şirket içi dizininde oluşturulur.
-5.  Konuk Kullanıcı, app.contoso.com Şirket içi uygulamasına erişir.
-6.  Kimlik doğrulama isteği, Kerberos kısıtlanmış temsili kullanılarak uygulama proxy 'Si aracılığıyla yetkilendirilir. 
-7.  Konuk Kullanıcı nesnesi yerel olarak mevcut olduğundan kimlik doğrulaması başarılı olur.
+1.  Ortak bir kuruluştan (Fabrikam kiracısı) bir kullanıcı Contoso kiracısına davet edilir.
+2.  Contoso kiracısında bir konuk kullanıcı nesnesi oluşturulur (örneğin, UPN guest_fabrikam.com#EXT#@contoso.onmicrosoft.comiçeren bir kullanıcı nesnesi).
+3.  Fabrikam konuğu Contoso'dan MIM veya B2B PowerShell komut dosyası ile ithal edilir.
+4.  Fabrikam konuk kullanıcı nesnesinin (Guest#EXT#) bir gösterimi veya "ayak izi", şirket içi dizinde, Contoso.com, MIM aracılığıyla veya B2B PowerShell komut dosyası aracılığıyla oluşturulur.
+5.  Konuk kullanıcı şirket içi başvuruya app.contoso.com.
+6.  Kimlik doğrulama isteği, Kerberos kısıtlı delegasyonu kullanılarak Uygulama Proxy'si aracılığıyla yetkilendirilir. 
+7.  Konuk kullanıcı nesnesi yerel olarak var olduğundan, kimlik doğrulaması başarılı olur.
 
-### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
+### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetimi politikaları
 
-Şirket içi B2B Kullanıcı nesnelerini yaşam döngüsü yönetim ilkeleri aracılığıyla yönetebilirsiniz. Örneğin:
+Şirket içi B2B kullanıcı nesnelerini yaşam döngüsü yönetimi ilkeleri yle yönetebilirsiniz. Örnek:
 
-- Uygulama proxy kimlik doğrulaması sırasında MFA kullanılacak şekilde Konuk Kullanıcı için Multi-Factor Authentication (MFA) ilkeleri ayarlayabilirsiniz. Daha fazla bilgi için bkz. [B2B işbirliği kullanıcıları Için koşullu erişim](conditional-access.md).
-- Bulut B2B kullanıcısı üzerinde gerçekleştirilen tüm sponsorships, erişim incelemeleri, hesap doğrulamaları vb. Şirket içi kullanıcılar için geçerlidir. Örneğin, bulut kullanıcısı yaşam döngüsü yönetimi ilkeleriniz aracılığıyla silinirse, şirket içi Kullanıcı de MıM eşitleme veya Azure AD Connect eşitleme aracılığıyla silinir. Daha fazla bilgi için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).
+- Uygulama Proxy kimlik doğrulaması sırasında MFA'nın kullanılması için Konuk kullanıcı için çok faktörlü kimlik doğrulama (MFA) ilkeleri ayarlayabilirsiniz. Daha fazla bilgi [için B2B işbirliği kullanıcıları için Koşullu Erişim'e](conditional-access.md)bakın.
+- Bulut B2B kullanıcısı üzerinde gerçekleştirilen tüm sponsorluklar, erişim değerlendirmeleri, hesap doğrulamaları vb. şirket içi kullanıcılar için geçerlidir. Örneğin, bulut kullanıcısı yaşam döngüsü yönetimi ilkeleriniz aracılığıyla silinirse, şirket içi kullanıcı MIM Sync veya Azure AD Connect eşitlemi yoluyla da silinir. Daha fazla bilgi için bkz: [Azure AD erişim incelemeleri ile konuk erişimini yönet.](../governance/manage-guest-access-with-access-reviews.md)
 
-### <a name="create-b2b-guest-user-objects-through-mim"></a>MıM aracılığıyla B2B Konuk Kullanıcı nesneleri oluşturma
+### <a name="create-b2b-guest-user-objects-through-mim"></a>MIM aracılığıyla B2B konuk kullanıcı nesneleri oluşturma
 
-MıM 2016 hizmet paketi 1 ' i ve MıM Yönetim Aracısı 'nı şirket içi dizinde Konuk Kullanıcı nesneleri oluşturmak üzere Microsoft Graph için kullanma hakkında bilgi için bkz. Azure [uygulama proxy 'si ile Microsoft Identity Manager (MIM) 2016 SP1 Ile Azure AD işletmeden işletmeye (B2B) işbirliği](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
+Şirket dizininde konuk kullanıcı nesneleri oluşturmak için MIM 2016 Service Pack 1 ve Microsoft Graph için MIM yönetim aracısının nasıl kullanılacağı hakkında bilgi için, Azure Ad iş yeri [(B2B) işbirliği ile Microsoft Identity Manager (MIM) 2016 SP1 ile Azure Application Proxy'ye](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)bakın.
 
-### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Betik aracılığıyla B2B Konuk Kullanıcı nesneleri oluşturma (Önizleme)
+### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Komut dosyası aracılığıyla B2B konuk kullanıcı nesneleri oluşturma (Önizleme)
 
-Şirket içi Active Directory Konuk kullanıcı nesnelerini oluşturmak için başlangıç noktası olarak kullanabileceğiniz bir PowerShell örnek betiği bulunur.
+Şirket içi Active Directory'nizde konuk kullanıcı nesnelerini oluşturmak için başlangıç noktası olarak kullanabileceğiniz bir PowerShell örnek komut dosyası mevcuttur.
 
-Betiği ve Benioku dosyasını [Indirme merkezinden](https://www.microsoft.com/download/details.aspx?id=51495)indirebilirsiniz. **Azure AD B2B kullanıcıları on-Prem. zip dosyasını çekmek Için betiği ve Benioku** dosyasını seçin.
+Komut dosyasını ve Readme dosyasını [Download Center'dan](https://www.microsoft.com/download/details.aspx?id=51495)indirebilirsiniz. Azure **AD B2B kullanıcılarını prem.zip dosyasına çekmek için Komut Dosyası ve Readme'yi** seçin.
 
-Betiği kullanmadan önce, ilişkili Readme dosyasındaki önkoşulları ve önemli konuları gözden geçirdiğinizden emin olun. Ayrıca, betiğin yalnızca örnek olarak kullanılabileceğini de anlayın. Geliştirme takımınızın veya iş ortağının, çalıştırmadan önce betiği özelleştirmesi ve incelemesi gerekir.
+Komut dosyasını kullanmadan önce, ilişkili Readme dosyasındaki ön koşulları ve önemli hususları gözden aldığınızdan emin olun. Ayrıca, komut dosyasının yalnızca örnek olarak kullanılabildiğini anlayın. Geliştirme ekibinizin veya iş ortağınızın, siz çalıştırmadan önce komut dosyasını özelleştirmesi ve gözden geçirmesi gerekir.
 
-## <a name="license-considerations"></a>Lisans konuları
+## <a name="license-considerations"></a>Lisans hususları
 
-Şirket içi uygulamalara erişen dış Konuk kullanıcılar için doğru Istemci erişim lisanslarına (CAL) sahip olduğunuzdan emin olun. Daha fazla bilgi için, [Istemci erişim lisansları ve yönetim lisanslarının](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)"dış Bağlayıcılar" bölümüne bakın. Özel lisans gereksinimleriniz hakkında Microsoft temsilcinize veya yerel satıcınızla görüşün.
+Şirket içi uygulamalara erişen harici konuk kullanıcılar için doğru İstemci Erişim Lisanslarına (CALs) sahip olduğunuzdan emin olun. Daha fazla bilgi [için, İstemci Erişim Lisansları ve Yönetim Lisansları'nın](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)"Harici Bağlayıcılar" bölümüne bakın. Özel lisans gereksinimleriniz için Microsoft temsilcinize veya yerel satıcınıza danışın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Karma kuruluşlar için B2B işbirliği Azure Active Directory](hybrid-organizations.md)
+- [Karma kuruluşlar için Azure Active Directory B2B işbirliği](hybrid-organizations.md)
 
-- Azure AD Connect genel bir bakış için bkz. Şirket [içi dizinlerinizi Azure Active Directory Ile tümleştirme](../hybrid/whatis-hybrid-identity.md).
+- Azure AD Connect'e genel bir bakış için [bkz.](../hybrid/whatis-hybrid-identity.md)
 

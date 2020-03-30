@@ -1,6 +1,6 @@
 ---
-title: Uygulama proxy 'Si uygulamalarında hata ayıklama-Azure Active Directory | Microsoft Docs
-description: Azure Active Directory (Azure AD) uygulama proxy 'Si uygulamalarıyla ilgili sorunları ayıklayın.
+title: Hata Ayıklama Uygulama Proxy uygulamaları - Azure Active Directory | Microsoft Dokümanlar
+description: Azure Etkin Dizin (Azure AD) Uygulama Proxy uygulamalarıyla hata ayıklama sorunları.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,48 +12,48 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382070"
 ---
-# <a name="debug-application-proxy-application-issues"></a>Uygulama proxy 'Si uygulama sorunlarını ayıklama 
+# <a name="debug-application-proxy-application-issues"></a>Uygulama Ara Sunucusu uygulama hatalarını ayıklama 
 
-Bu makale Azure Active Directory (Azure AD) uygulama proxy 'Si uygulamalarıyla ilgili sorunları gidermenize yardımcı olur. Şirket içi bir Web uygulamasına uzaktan erişim için uygulama ara sunucusu hizmetini kullanıyorsanız, ancak uygulamaya bağlanırken sorun yaşıyorsanız, uygulama sorunlarını ayıklamak için bu akış çizelgesini kullanın. 
+Bu makale, Azure Etkin Dizin (Azure AD) Uygulama Proxy uygulamalarıyla ilgili sorunları gidermenize yardımcı olur. Uygulama Proxy hizmetini şirket içi bir web uygulamasına uzaktan erişim için kullanıyorsanız, ancak uygulamaya bağlanmada sorun yaşıyorsanız, uygulama hatasını ayıklamak için bu akış şemasını kullanın. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Uygulama proxy 'Si sorunlarını giderirken, bağlayıcılarla başlamasını öneririz. İlk olarak, uygulama proxy bağlayıcısının doğru yapılandırıldığından emin olmak için [uygulama proxy Bağlayıcısı sorunlarını ayıklama](application-proxy-debug-connectors.md) içindeki sorun giderme akışını izleyin. Hala sorun yaşıyorsanız, uygulamanın sorunlarını gidermek için bu makaleye geri dönün.  
+Uygulama Proxy sorunları giderme, size bağlayıcılar ile başlamanızı öneririz. İlk olarak, Uygulama Proxy bağlayıcılarının doğru şekilde yapılandırıldığından emin olmak için [Hata Ayıklama Uygulama Proxy Bağlayıcısı sorunlarındaki](application-proxy-debug-connectors.md) sorun giderme akışını izleyin. Sorun yaşadığınız için, uygulamayı gidermek için bu makaleye dönün.  
 
-Uygulama proxy 'Si hakkında daha fazla bilgi için bkz.
+Uygulama Proxy hakkında daha fazla bilgi için bkz:
 
-- [Uygulama proxy 'Si aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md)
-- [Uygulama proxy bağlayıcıları](application-proxy-connectors.md)
-- [Bağlayıcı yükleyip kaydetme](application-proxy-add-on-premises-application.md)
-- [Uygulama proxy 'Si sorunlarını ve hata iletilerini sorun giderme](application-proxy-troubleshoot.md)
+- [Uygulama Proxy aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md)
+- [Uygulama Proxy konektörleri](application-proxy-connectors.md)
+- [Konektör yükleme ve kaydetme](application-proxy-add-on-premises-application.md)
+- [Sorun Giderme Uygulama Proxy sorunları ve hata iletileri](application-proxy-troubleshoot.md)
 
-## <a name="flowchart-for-application-issues"></a>Uygulama sorunları için akış çizelgesi
+## <a name="flowchart-for-application-issues"></a>Uygulama sorunları için akış şeması
 
-Bu akış çizelgesi, uygulamaya bağlanma ile ilgili daha yaygın sorunlardan bazılarının hatalarını ayıklamaya yönelik adımlarda size yol gösterir. Her bir adımla ilgili ayrıntılar için, akış çizelgesinin altındaki tabloya bakın.
+Bu akış şeması, uygulamaya bağlanmayla ilgili daha yaygın sorunlardan bazılarını hata ayıklama adımlarından geçirmenize yönelik adımlarboyunca size yol alar. Her adımla ilgili ayrıntılar için akış şemasının ardından tabloya bakın.
 
-![Bir uygulamada hata ayıklama adımlarını gösteren akış çizelgesi](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
+![Bir uygulamanın hata ayıklama adımlarını gösteren akış şeması](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
 |  | Eylem | Açıklama | 
 |---------|---------|---------|
-|1\. | Bir tarayıcı açın, uygulamaya erişin ve kimlik bilgilerinizi girin | Uygulamada oturum açmak için kimlik bilgilerinizi kullanmayı deneyin ve [Bu şirket uygulamasına erişilemediği](application-proxy-sign-in-bad-gateway-timeout-error.md)gibi kullanıcı ile ilgili herhangi bir hata olup olmadığını denetleyin. |
-|2 | Uygulamaya Kullanıcı atamasını doğrulama | Kullanıcı hesabınızın, kurumsal ağın içinden uygulamaya erişim izni olduğundan emin olun ve ardından [uygulamayı test](application-proxy-add-on-premises-application.md#test-the-application)etme bölümündeki adımları izleyerek uygulamada oturum açmayı sınayın. Oturum açma sorunları devam ederse bkz. [oturum açma hatalarıyla ilgili sorun giderme](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).  |
-|3 | Bir tarayıcı açın ve uygulamaya erişmeyi deneyin | Bir hata hemen görüntülenirse, uygulama proxy 'Sinin doğru şekilde yapılandırılıp yapılandırılmadığını denetleyin. Belirli hata iletileri hakkında daha fazla bilgi için bkz. [uygulama proxy sorunlarını ve hata Iletilerini sorun giderme](application-proxy-troubleshoot.md).  |
-|4 | Özel etki alanı kurulumunuzu denetleyin veya hatayı giderin | Sayfa hiç görünmezse, özel etki [alanlarıyla çalışmayı](application-proxy-configure-custom-domain.md)inceleyerek özel etki alanınızı doğru şekilde yapılandırıldığından emin olun.<br></br>Sayfa yüklenmez ve bir hata iletisi görünürse, [uygulama proxy 'si sorunlarını ve hata Iletilerini sorun giderme](application-proxy-troubleshoot.md)konusuna başvurarak hatayı giderin. <br></br>Bir hata iletisinin görünmesi 20 saniyeden uzun sürerse bağlantı sorunu olabilir. [Hata ayıklama uygulama proxy 'si bağlayıcıları](application-proxy-debug-connectors.md) sorun giderme makalesine gidin.  |
-|5 | Sorun devam ederse bağlayıcı hata ayıklama bölümüne gidin | Ara sunucu ile bağlayıcı arasında veya bağlayıcı ile arka uç arasında bir bağlantı sorunu olabilir. [Hata ayıklama uygulama proxy 'si bağlayıcıları](application-proxy-debug-connectors.md) sorun giderme makalesine gidin. |
-|6 | Tüm kaynakları yayımlama, tarayıcı geliştirici araçlarını denetleme ve bağlantıları çözme | Yayımlama yolunun, uygulamanız için gereken tüm görüntüleri, betikleri ve stil sayfalarını içerdiğinden emin olun. Ayrıntılar için bkz. [Azure AD 'ye şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). <br></br>Tarayıcının geliştirici araçlarını kullanın (Internet Explorer veya Microsoft Edge 'de F12 araçları) ve [Uygulama sayfasında](application-proxy-page-appearance-broken-problem.md)açıklandığı şekilde yayımlama sorunlarını kontrol edin. <br></br>[Sayfadaki bağlantılarda](application-proxy-page-links-broken-problem.md)kopuk bağlantıları çözme seçeneklerini gözden geçirin. |
-|7 | Ağ gecikmesini denetle | Sayfa yavaş yüklenirse, [gecikme süresini azaltmak Için dikkate alınması gereken](application-proxy-network-topology.md#considerations-for-reducing-latency)ağ gecikmesini en aza indirme yolları hakkında bilgi edinin. | 
-|8 | Ek sorun giderme yardımına bakın | Sorun devam ederse, [uygulama proxy 'si sorun giderme belgelerindeki](application-proxy-troubleshoot.md)ek sorun giderme makalelerini bulun. |
+|1 | Bir tarayıcı açın, uygulamaya erişin ve kimlik bilgilerinizi girin | Uygulamada oturum açtırmak için kimlik bilgilerinizi kullanmayı deneyin ve [bu kurumsal uygulamaya erişilemeyecek](application-proxy-sign-in-bad-gateway-timeout-error.md)gibi kullanıcıyla ilgili hataları kontrol edin. |
+|2 | Uygulamanın kullanıcı atamasını doğrulama | Kullanıcı hesabınızın uygulamaya şirket ağı içinden erişme iznine sahip olduğundan emin olun ve [uygulamayı test](application-proxy-add-on-premises-application.md#test-the-application)etme adımlarını izleyerek uygulamaya giriş yapma testi yapın. Oturum açma sorunları devam ederse, [oturum açma hatalarını nasıl gidereceklerini](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)öğrenin.  |
+|3 | Bir tarayıcı açın ve uygulamaya erişmeye çalışın | Hemen bir hata çıkarsa, Uygulama Proxy'nin doğru şekilde yapılandırıldığından denetleyin. Belirli hata iletileri hakkında ayrıntılı bilgi için, [Sorun Giderme Uygulaması Proxy sorunları ve hata iletileri](application-proxy-troubleshoot.md)bakın.  |
+|4 | Özel etki alanı kurulumunuzu kontrol edin veya hatayı giderin | Sayfa hiç görüntülenmiyorsa, [özel etki alanlarıyla Çalışma'yı](application-proxy-configure-custom-domain.md)gözden geçirerek özel etki alanınızın doğru şekilde yapılandırıldığından emin olun.<br></br>Sayfa yüklenmezse ve bir hata iletisi görüntülanırsa, Sorun [Giderme Uygulaması Proxy sorunlarına ve hata iletilerine](application-proxy-troubleshoot.md)atıfta bulunarak hatayı giderin. <br></br>Bir hata iletisi görünmesi 20 saniyeden uzun sürerse, bağlantı sorunu olabilir. [Hata Ayıklama Uygulama Proxy bağlayıcıları](application-proxy-debug-connectors.md) sorun giderme makalesine gidin.  |
+|5 | Sorunlar devam ederse, bağlayıcı hata ayıklama | Proxy ve bağlayıcı arasında veya bağlayıcı ile arka uç arasında bir bağlantı sorunu olabilir. [Hata Ayıklama Uygulama Proxy bağlayıcıları](application-proxy-debug-connectors.md) sorun giderme makalesine gidin. |
+|6 | Tüm kaynakları yayımlayın, tarayıcı geliştirici araçlarını denetleyin ve bağlantıları düzeltin | Yayımlama yolunun uygulamanız için gerekli tüm görüntüleri, komut dosyalarını ve stil sayfalarını içerdiğinden emin olun. Ayrıntılar için Azure [AD'ye şirket içi uygulama ekleme'ye](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)bakın. <br></br>Tarayıcının geliştirici araçlarını (Internet Explorer veya Microsoft Edge'deki F12 araçları) kullanın ve Uygulama sayfasında açıklandığı gibi yayımlama sorunlarını [doğru görüntülemediğini](application-proxy-page-appearance-broken-problem.md)denetleyin. <br></br>Sayfadaki Bağlantılar'da bozuk bağlantıları çözme seçenekleri [çalışmaz.](application-proxy-page-links-broken-problem.md) |
+|7 | Ağ gecikmesi olup yok olup yok olup yok | Sayfa yavaş yüklenirse, gecikme süresini azaltmak [için Göz önünde bulundurulması gereken](application-proxy-network-topology.md#considerations-for-reducing-latency)ağ gecikmesini en aza indirmenin yolları hakkında bilgi edinin. | 
+|8 | Ek sorun giderme yardımına bakın | Sorunlar devam ederse, Uygulama Proxy [sorun giderme belgelerinde](application-proxy-troubleshoot.md)ek sorun giderme makaleleri bulabilirsiniz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 
-* [Bağlayıcı gruplarını kullanarak ayrı ağlarda ve konumlarda uygulama yayımlama](application-proxy-connector-groups.md)
-* [Mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Uygulama proxy 'Si ve bağlayıcı hatalarında sorun giderme](application-proxy-troubleshoot.md)
-* [Azure AD Uygulama Ara Sunucusu bağlayıcısını sessizce yüklemek](application-proxy-register-connector-powershell.md)
+* [Bağlayıcı gruplarını kullanarak uygulamaları ayrı ağlarda ve konumlarda yayımlama](application-proxy-connector-groups.md)
+* [Varolan şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
+* [Sorun Giderme Uygulama Proxy ve bağlayıcı hataları](application-proxy-troubleshoot.md)
+* [Azure AD Uygulama Proxy Bağlayıcısı sessizce nasıl yüklenir?](application-proxy-register-connector-powershell.md)

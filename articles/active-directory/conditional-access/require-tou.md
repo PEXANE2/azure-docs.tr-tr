@@ -1,6 +1,6 @@
 ---
-title: Koşullu erişim için kullanım koşulları gerekir-Azure Active Directory
-description: Bu hızlı başlangıçta, seçilen bulut uygulamalarına erişim için Azure Active Directory Koşullu erişim tarafından sağlanmadan önce kullanım şartlarınızın kabul edilip edilmediğini nasıl sağlayabileceğinizi öğreneceksiniz.
+title: Koşullu Erişim kullanım koşulları gerektirir - Azure Etkin Dizini
+description: Bu hızlı başlangıçta, belirli bulut uygulamalarına erişim Azure Active Active Directory Koşullu Erişim tarafından verilmeden önce kullanım koşullarınızın kabul edilmesini nasıl talep edebileceğinizi öğrenirsiniz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,165 +12,165 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74380095"
 ---
-# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilecek kullanım koşullarını gerektir
+# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Hızlı başlatma: Bulut uygulamalarına erişmeden önce kullanım koşullarının kabul edilmesini zorunlu kılmasını zorunlu kılması
 
-Ortamınızdaki belirli bulut uygulamalarına erişmeden önce, kullanım koşullarınızı (ToU) kabul etme biçiminde kullanıcılardan onay almak isteyebilirsiniz. Azure Active Directory (Azure AD) koşullu erişim size şunları sağlar:
+Ortamınızdaki belirli bulut uygulamalarına erişmeden önce, kullanım koşullarınızı (ToU) kabul etme şeklinde kullanıcılardan onay almak isteyebilirsiniz. Azure Etkin Dizin (Azure AD) Koşullu Erişim size şunları sağlar:
 
-- ToU yapılandırma basit bir yöntemi
-- Koşullu erişim ilkesi aracılığıyla kullanım koşullarınızı kabul etmeyi gerektirme seçeneği  
+- ToU yapılandırmak için basit bir yöntem
+- Koşullu Erişim ilkesi yle kullanım koşullarınızı kabul etmeyi talep etme seçeneği  
 
-Bu hızlı başlangıçta, ortamınızdaki seçili bir bulut uygulaması için ToU 'nın kabul edilmesi gereken bir [Azure AD koşullu erişim ilkesinin](../active-directory-conditional-access-azure-portal.md) nasıl yapılandırılacağı gösterilmektedir.
+Bu hızlı başlangıç, ortamınızda seçili bir bulut uygulaması için bir ToU'nun kabul edilmesi gereken bir [Azure AD Koşullu Erişim ilkesini](../active-directory-conditional-access-azure-portal.md) nasıl yapılandırıştırılabildiğini gösterir.
 
 ![İlke oluşturma](./media/require-tou/5555.png)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıçta senaryoyu tamamlayabilmeniz için şunlar gerekir:
+Bu hızlı başlangıçta senaryoyu tamamlamak için şunları yapmanız gerekir:
 
-- **Azure AD Premium sürümüne erişim** -Azure AD koşullu erişim, Azure AD Premium bir özelliktir.
-- **Isabella Simonsen adlı bir sınama hesabı** -bir sınama hesabı oluşturmayı bilmiyorsanız bkz. [bulut tabanlı kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Azure AD Premium sürümüne erişim** - Azure AD Koşullu Erişim bir Azure AD Premium özelliğidir.
+- **Isabella Simonsen adlı** bir test hesabı - Bir test hesabı oluşturmayı bilmiyorsanız, [bulut tabanlı kullanıcı ekle'ye](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)bakın.
 
-## <a name="test-your-sign-in"></a>Oturum açma bilgilerinizi test etme
+## <a name="test-your-sign-in"></a>Oturum açmanızı test edin
 
-Bu adımın amacı, koşullu erişim ilkesi olmadan oturum açma deneyiminin bir izlenimini sağlamaktır.
+Bu adımın amacı, Koşullu Erişim ilkesi olmadan oturum açma deneyimi hakkında bir izlenim elde etmektir.
 
-**Oturum açma bilgilerinizi test etmek için:**
+**Oturum açmanızı test etmek için:**
 
-1. [Azure Portal](https://portal.azure.com/) Isabella Simonsen olarak oturum açın.
+1. [Azure portalınızda](https://portal.azure.com/) Isabella Simonsen olarak oturum açın.
 1. Oturumunuzu kapatın.
 
 ## <a name="create-your-terms-of-use"></a>Kullanım koşullarınızı oluşturun
 
-Bu bölüm, örnek bir ToU oluşturma adımları sağlar. Bir ToU oluşturduğunuzda, **koşullu erişim ilkesi şablonlarıyla zorlamak**için bir değer seçersiniz. **Özel ilke** seçildiğinde, ToU oluşturulduktan hemen sonra yeni bir koşullu erişim ilkesi oluşturmak için iletişim kutusu açılır.
+Bu bölümde, örnek Bir ToU oluşturmak için adımlar sağlar. Bir ToU oluşturduğunuzda, **Koşullu Erişim ilkesi şablonları ile Uygula**için bir değer seçersiniz. Özel **ilke** yi seçmek, ToU'nuz oluşturulur oluşturulmaz yeni bir Koşullu Erişim ilkesi oluşturmak için iletişim kutusunu açar.
 
 **Kullanım koşullarınızı oluşturmak için:**
 
-1. Microsoft Word 'de yeni bir belge oluşturun.
-1. **Kullanım koşullarımı**yazın ve ardından belgeyi bilgisayarınızda **mytou. PDF**olarak kaydedin.
-1. [Azure Portal](https://portal.azure.com) genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. Azure portal sol gezinti çubuğunda **Azure Active Directory**' e tıklayın.
+1. Microsoft Word'de yeni bir belge oluşturun.
+1. **Kullanım koşullarımı**yazın ve belgeyi **mytou.pdf**olarak bilgisayarınıza kaydedin.
+1. [Azure portalınızda](https://portal.azure.com) genel yönetici, güvenlik yöneticisi veya Koşullu Erişim yöneticisi olarak oturum açın.
+1. Azure portalında, sol daki gezinme çubuğunda **Azure Etkin Dizini'ni**tıklatın.
 
    ![Azure Active Directory](./media/require-tou/02.png)
 
-1. **Azure Active Directory** sayfasındaki **güvenlik** bölümünde **koşullu erişim**' e tıklayın.
+1. Azure **Etkin Dizin** sayfasında, **Güvenlik** bölümünde **Koşullu Erişim'i**tıklatın.
 
    ![Koşullu Erişim](./media/require-tou/03.png)
 
-1. **Yönet** bölümünde **kullanım koşulları**' a tıklayın.
+1. **Yönet** bölümünde kullanım **koşulları'nı**tıklatın.
 
    ![Kullanım koşulları](./media/require-tou/04.png)
 
-1. Üstteki menüde **yeni terimler**' e tıklayın.
+1. Üstteki menüde Yeni **terimler'i**tıklatın.
 
    ![Kullanım koşulları](./media/require-tou/05.png)
 
-1. **Yeni kullanım koşulları** sayfasında:
+1. Yeni **kullanım koşulları** sayfasında:
 
    ![Kullanım koşulları](./media/require-tou/112.png)
 
-   1. **Ad** metın kutusuna **tou My**yazın.
-   1. **Görünen ad** metın kutusuna **tou My**yazın.
-   1. Kullanım koşullarınızı PDF dosyanızı karşıya yükleyin.
-   1. **Dil**olarak, **İngilizce**' yi seçin.
-   1. **Kullanıcıların kullanım koşullarını genişletmesini gerektirirken** **Açık**' ı seçin.
-   1. **Koşullu erişim ilkesi şablonlarıyla zorlamak**için **özel ilke**' yi seçin.
-   1. **Oluştur**'a tıklayın.
+   1. **Ad** metin kutusuna, **Tou'm**yazın.
+   1. Görüntü **adı** metin kutusuna, **Tou'm**yazın.
+   1. Kullanım koşullarınızı PDF dosyanıza yükleyin.
+   1. **Dil**olarak , **İngilizce**seçin.
+   1. **Kullanıcıların kullanım koşullarını genişletmelerini gerektirdiğinde,** **Aç'ı**seçin.
+   1. **Koşullu Erişim ilkesi şablonları ile Uygula'da** **Özel ilke**yi seçin.
+   1. **Oluştur'u**tıklatın.
 
-## <a name="create-your-conditional-access-policy"></a>Koşullu erişim ilkenizi oluşturma
+## <a name="create-your-conditional-access-policy"></a>Koşullu Erişim ilkenizi oluşturun
 
-Bu bölüm, gerekli koşullu erişim ilkesinin nasıl oluşturulacağını gösterir. Bu hızlı başlangıçtaki senaryo şunları kullanır:
+Bu bölümde, gerekli Koşullu Erişim ilkesinin nasıl oluşturulacak olduğu gösterilmektedir. Bu quickstart'taki senaryo da kullanır:
 
-- Bir bulut uygulaması için, ToU 'nizin kabul edilmesini gerektiren Azure portal yer tutucu olarak. 
-- Koşullu erişim ilkesini test etmek için örnek Kullanıcı.  
+- Azure portalı, ToU'nuzun kabul edilmesi gereken bir bulut uygulamasının yer tutucusu olarak sunulur. 
+- Koşullu Erişim ilkesini sınamak için örnek kullanıcınız.  
 
 İlkenizde şunları ayarlayın:
 
-| Ayar | Value |
+| Ayar | Değer |
 | --- | --- |
 | Kullanıcılar ve gruplar | Isabella Simonsen |
-| Bulut uygulamaları | Microsoft Azure yönetimi |
-| Erişim verme | TOU My |
+| Bulut uygulamaları | Microsoft Azure Yönetimi |
+| Erişim verme | Benim TOU |
 
 ![İlke oluşturma](./media/require-tou/1234.png)
 
-**Koşullu erişim ilkenizi yapılandırmak için:**
+**Koşullu Erişim ilkenizi yapılandırmak için:**
 
-1. **Yeni** sayfada, **ad** metin kutusuna, **Isabella için tou gerektir**yazın.
+1. **Yeni** sayfada, **Ad** metin kutusunda, **Isabella için TOU'yu gerektir**yazın.
 
-   ![Name](./media/require-tou/71.png)
+   ![Adı](./media/require-tou/71.png)
 
-1. **Atama** bölümünde **Kullanıcılar ve gruplar**' a tıklayın.
+1. **Atama** bölümünde, **Kullanıcılar ve gruplar'ı**tıklatın.
 
    ![Kullanıcılar ve gruplar](./media/require-tou/06.png)
 
-1. **Kullanıcılar ve gruplar** sayfasında:
+1. Kullanıcılar **ve gruplar** sayfasında:
 
    ![Kullanıcılar ve gruplar](./media/require-tou/24.png)
 
-   1. **Kullanıcı ve Grup Seç**' e tıklayın ve ardından **Kullanıcılar ve gruplar**' ı seçin.
-   1. **Seç**'e tıklayın.
-   1. **Seç** sayfasında, **Isabella Simonsen**' ı seçin ve ardından **Seç**' e tıklayın.
-   1. **Kullanıcılar ve gruplar** sayfasında **bitti**' ye tıklayın.
-1. **Bulut uygulamaları**' na tıklayın.
+   1. **Kullanıcıları ve grupları seçin'i**tıklatın ve ardından Kullanıcıları ve **grupları**seçin.
+   1. **Seç'i**tıklatın.
+   1. **Seç** sayfasında Isabella **Simonsen'i**seçin ve sonra **Seç'i**tıklatın.
+   1. Kullanıcılar **ve gruplar** **sayfasında, Bitti'yi**tıklatın.
+1. **Bulut uygulamalarını**tıklatın.
 
    ![Bulut uygulamaları](./media/require-tou/08.png)
 
-1. **Bulut uygulamaları** sayfasında:
+1. Bulut **uygulamaları** sayfasında:
 
    ![Bulut uygulamalarını seçin](./media/require-tou/26.png)
 
-   1. **Uygulama Seç**' e tıklayın.
-   1. **Seç**'e tıklayın.
-   1. **Seç** sayfasında, **Microsoft Azure Yönetim**' i seçin ve ardından **Seç**' e tıklayın.
-   1. **Bulut uygulamaları** sayfasında **bitti**' ye tıklayın.
-1. **Erişim denetimleri** bölümünde, **izin ver**' e tıklayın.
+   1. **Uygulamaları Seç'i**tıklatın.
+   1. **Seç'i**tıklatın.
+   1. **Seç** sayfasında Microsoft **Azure Yönetimi'ni**seçin ve sonra **Seç'i**tıklatın.
+   1. Bulut **uygulamaları** **sayfasında, Bitti'yi**tıklatın.
+1. Access **denetimleri** **bölümünde, Ver'i**tıklatın.
 
    ![Erişim denetimleri](./media/require-tou/10.png)
 
-1. **İzin** sayfasında:
+1. **Hibe** sayfasında:
 
-   ![Semantiği](./media/require-tou/111.png)
+   ![İzin verme](./media/require-tou/111.png)
 
-   1. **Erişim ver**' i seçin.
-   1. **Tou 'Imi**seçin.
-   1. **Seç**'e tıklayın.
-1. **Ilkeyi etkinleştir** bölümünde, **Açık**' a tıklayın.
+   1. **Erişime Ver'i**seçin.
+   1. **Benim TOU**seçin.
+   1. **Seç'i**tıklatın.
+1. Etkinleştir **ilkesi** **bölümünde, '''yi**tıklatın.
 
    ![İlkeyi etkinleştirme](./media/require-tou/18.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur'u**tıklatın.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Benzetimli bir oturum açmayı değerlendir
+## <a name="evaluate-a-simulated-sign-in"></a>Benzetimli oturum açma yı değerlendirme
 
-Koşullu erişim ilkenizi yapılandırdığınıza göre muhtemelen, beklendiği gibi çalışıp çalışmadığını bilmeniz gerekir. İlk adım olarak, test kullanıcılarınız için bir oturum açma benzetimi yapmak üzere koşullu erişim ilke Aracı ' nı kullanın. Simülasyon, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir simülasyon raporu oluşturur.  
+Koşullu Erişim ilkenizi yapılandırdığınıza göre, büyük olasılıkla beklendiği gibi çalışıp çalışmadığını bilmek istersiniz. İlk adım olarak, test kullanıcınızın oturum açma simüle etmek için ilke aracı ne olur Koşullu Erişim kullanın. Benzetim, bu oturum açma işleminin ilkeleriniz üzerindeki etkisini tahmin eder ve bir benzetim raporu oluşturur.  
 
-**What If** ilkesi değerlendirme aracı 'nı başlatmak için, şunu ayarlayın:
+**What If** ilke değerlendirme aracını başlatmayı ayarlayın:
 
-- **Isabella Simonsen** Kullanıcı olarak
-- Bulut uygulaması olarak **Microsoft Azure yönetimi**
+- **Isabella Simonsen** kullanıcı olarak
+- Bulut uygulaması olarak **Microsoft Azure Yönetimi**
 
-**What If** tıklamak şunları gösteren bir benzetim raporu oluşturur:
+**What'ı** tıklatma, şunları gösteren bir simülasyon raporu oluşturur:
 
-- **Uygulanacak Ilkelerde** **Isabella için tou gerektir**
-- **Tou** olarak **izin ver denetimleri**.
+- **Uygulanacak Politikalar** Kapsamında Isabella **için TOU'ya ihtiyaç**
+- **Hibe Kontrolleri**olarak **Benim TOU** .
 
-![Ne tür ilke aracı](./media/require-tou/79.png)
+![Ya ilke aracı](./media/require-tou/79.png)
 
-**Koşullu erişim ilkenizi değerlendirmek için:**
+**Koşullu Erişim ilkenizi değerlendirmek için:**
 
-1. [Koşullu erişim ilkeleri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) sayfasında, üstteki menüden **What If**' ye tıklayın.  
+1. [Koşullu Erişim - İlkeler](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) sayfasında, üstteki menüde **Ne Varsa'yı**tıklatın.  
 
    ![What If](./media/require-tou/14.png)
 
-1. **Kullanıcılar**' a tıklayın, **Isabella Simonsen**' i seçin ve ardından **Seç**' e tıklayın.
+1. **Kullanıcılar'ı**tıklatın, **Isabella Simonsen'i**seçin ve sonra **Seç'i**tıklatın.
 
    ![Kullanıcı](./media/require-tou/15.png)
 
@@ -178,36 +178,36 @@ Koşullu erişim ilkenizi yapılandırdığınıza göre muhtemelen, beklendiği
 
    ![Bulut uygulamaları](./media/require-tou/16.png)
 
-   1. **Bulut uygulamaları**' na tıklayın.
-   1. **Bulut uygulamaları sayfasında**, **Uygulama Seç**' e tıklayın.
-   1. **Seç**'e tıklayın.
-   1. **Seç** sayfasında, **Microsoft Azure Yönetim**' i seçin ve ardından **Seç**' e tıklayın.
-   1. Bulut uygulamaları sayfasında **bitti**' ye tıklayın.
-1. **What If**' ye tıklayın.
+   1. **Bulut uygulamalarını**tıklatın.
+   1. Bulut **uygulamaları sayfasında,** **Uygulamaları Seç'i**tıklatın.
+   1. **Seç'i**tıklatın.
+   1. **Seç** sayfasında Microsoft **Azure Yönetimi'ni**seçin ve sonra **Seç'i**tıklatın.
+   1. Bulut uygulamaları **sayfasında, Bitti'yi**tıklatın.
+1. **What'ı**tıklatın.
 
-## <a name="test-your-conditional-access-policy"></a>Koşullu erişim ilkenizi test etme
+## <a name="test-your-conditional-access-policy"></a>Koşullu Erişim ilkenizi test edin
 
-Önceki bölümde, benzetimli bir oturum açma değerlendirmesini öğrendiniz. Bir simülasyonu ek olarak, beklenen şekilde çalıştığından emin olmak için koşullu erişim ilkenizi da test etmelisiniz.
+Önceki bölümde, benzetimli oturum açma nasıl değerlendirileceklerini öğrendiniz. Simülasyona ek olarak, beklendiği gibi çalıştığından emin olmak için Koşullu Erişim ilkenizi de test etmeniz gerekir.
 
-İlkenizi test etmek için, **Isabella Simonsen** test hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açmayı deneyin. Kullanım koşullarınızı kabul etmenizi gerektiren bir iletişim kutusu görmeniz gerekir.
+İlkinizi test etmek **için, Isabella Simonsen** test hesabınızı kullanarak [Azure portalınızda](https://portal.azure.com) oturum açmayı deneyin. Kullanım koşullarınızı kabul etmenizi gerektiren bir iletişim kutusu görmeniz gerekir.
 
 ![Kullanım koşulları](./media/require-tou/57.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, test kullanıcısını ve koşullu erişim ilkesini silin:
+Artık gerekmediğinde, test kullanıcısını ve Koşullu Erişim ilkesini silin:
 
-- Bir Azure AD kullanıcısını nasıl silebileceğinizi bilmiyorsanız bkz. [Azure AD 'de kullanıcıları silme](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- İlkenizi silmek için ilkenizi seçin ve sonra hızlı erişim araç çubuğunda **Sil** ' e tıklayın.
+- Bir Azure REKLAM kullanıcısını nasıl sildiğinizi bilmiyorsanız, [bkz.](../fundamentals/add-users-azure-active-directory.md#delete-a-user)
+- İlkenizi silmek için ilkenizi seçin ve ardından hızlı erişim araç çubuğunda **Sil'i** tıklatın.
 
-    ![Multi-Factor Authentication](./media/require-tou/33.png)
+    ![Multi-factor authentication](./media/require-tou/33.png)
 
-- Kullanım koşullarınızı silmek için, seçin ve ardından araç çubuğunda en üstteki **terimi Sil** ' e tıklayın.
+- Kullanım koşullarınızı silmek için seçin ve ardından üstteki araç çubuğundaki **terimleri sil'i** tıklatın.
 
-    ![Multi-Factor Authentication](./media/require-tou/29.png)
+    ![Multi-factor authentication](./media/require-tou/29.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir oturum riski algılandığında](app-sign-in-risk.md) [belirli uygulamalarda MFA](app-based-mfa.md)
-> erişimi iste
+> [Belirli uygulamalar](app-based-mfa.md)
+> için MFA'yı gerektiren[Oturum riski algılandığında erişimi engelleyin](app-sign-in-risk.md)

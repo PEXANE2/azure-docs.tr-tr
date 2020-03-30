@@ -1,6 +1,6 @@
 ---
-title: Hadoop akış etkinliğini kullanarak verileri dönüştürme-Azure
-description: Bir Azure Data Factory 'de Hadoop akışı programlarını isteğe bağlı/kendi HDInsight kümeniz üzerinde çalıştırarak verileri dönüştürmek için nasıl kullanabileceğinizi öğrenin.
+title: Hadoop Akış Etkinliği'ni kullanarak verileri dönüştürme - Azure
+description: İsteğe bağlı/kendi HDInsight kümenizde Hadoop Streaming programlarını çalıştırarak verileri dönüştürmek için Bir Azure veri fabrikasındaki Hadoop Akış Etkinliğini nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,38 +13,38 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703378"
 ---
-# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory 'de Hadoop akışı etkinliğini kullanarak verileri dönüştürme
-> [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
-> * [Hive etkinliği](data-factory-hive-activity.md) 
-> * [Pig etkinliği](data-factory-pig-activity.md)
-> * [MapReduce etkinliği](data-factory-map-reduce.md)
-> * [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
-> * [Spark etkinliği](data-factory-spark.md)
+# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Hadoop Akış Etkinliği'ni kullanarak verileri dönüştürme
+> [!div class="op_single_selector" title1="Dönüşüm Faaliyetleri"]
+> * [Kovan Etkinliği](data-factory-hive-activity.md) 
+> * [Domuz Aktivitesi](data-factory-pig-activity.md)
+> * [MapReduce Etkinliği](data-factory-map-reduce.md)
+> * [Hadoop Akış Etkinliği](data-factory-hadoop-streaming-activity.md)
+> * [Kıvılcım Etkinliği](data-factory-spark.md)
 > * [Machine Learning Batch Yürütme Etkinliği](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning Kaynak Güncelleştirme Etkinliği](data-factory-azure-ml-update-resource-activity.md)
 > * [Saklı Yordam Etkinliği](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL Etkinliği](data-factory-usql-activity.md)
-> * [.NET özel etkinliği](data-factory-use-custom-activities.md)
+> * [.NET Özel Etkinlik](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory Hadoop akışını kullanarak verileri dönüştürme](../transform-data-using-hadoop-streaming.md).
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [Veri Fabrikası'ndaki Hadoop akış etkinliğini kullanarak verileri dönüştürme bölümüne](../transform-data-using-hadoop-streaming.md)bakın.
 
 
-Bir Azure Data Factory işlem hattından Hadoop akış işi çağırma HDInsightStreamingActivity etkinliğini kullanabilirsiniz. Aşağıdaki JSON kod parçacığında, bir işlem hattı JSON dosyasında HDInsightStreamingActivity kullanımı için sözdizimi gösterilmektedir. 
+HDInsightStreamingActivity Etkinliğini, Bir Azure Veri Fabrikası ardışık hattından Hadoop Akış işini başlatabilirsiniz. Aşağıdaki JSON snippet bir ardışık JSON dosyasında HDInsightStreamingActivity kullanmak için sözdizimini gösterir. 
 
-Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight akış etkinliği, [kendi kendinize](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight kümenizde Hadoop akış programlarını yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesinde oluşturulur.
+Veri Fabrikası [boru hattındaki](data-factory-create-pipelines.md) HDInsight Akış Etkinliği, Hadoop Streaming programlarını kendi veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight [kümenizde](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) yürütür. Bu makalede, veri dönüşümü ve desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesi temel almaktadır.
 
 > [!NOTE] 
-> Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
+> Azure Veri Fabrikası'nda yeniyseniz, [Azure Veri Fabrikası'na Giriş'i](data-factory-introduction.md) okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce ilk veri [ardışık işleminizi oluşturun.](data-factory-build-your-first-pipeline.md) 
 
 ## <a name="json-sample"></a>JSON örneği
-HDInsight kümesi, örnek programlarla (WC. exe ve Cat. exe) ve veriler (DaVinci. txt) ile otomatik olarak doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin kendisidir. Örneğin, Kümenizin adı myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır. 
+HDInsight kümesi otomatik olarak örnek programlar (wc.exe ve cat.exe) ve verilerle (davinci.txt) doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin adıdır. Örneğin, küme adınız myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır. 
 
 ```JSON
 {
@@ -94,28 +94,28 @@ HDInsight kümesi, örnek programlarla (WC. exe ve Cat. exe) ve veriler (DaVinci
 
 Aşağıdaki noktalara dikkat edin:
 
-1. **Linkedservicename** ' i, akış MapReduce Işinin çalıştırıldığı HDInsight kümenize işaret eden bağlı hizmetin adı olarak ayarlayın.
-2. Etkinliğin türünü **hdınsightstreaming**olarak ayarlayın.
-3. **Eşleyici** özelliği için Eşleyici yürütülebilirinin adını belirtin. Örnekte, Cat. exe Eşleyici yürütülebilirdir.
-4. **Reducer** özelliği için Reducer yürütülebilir dosyasının adını belirtin. Örnekte, WC. exe, Reducer çalıştırılabilir.
-5. **Giriş** türü özelliği için Eşleyici için giriş dosyasını (konum dahil) belirtin. Örnek: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample blob kapsayıcısıdır, example/Data/Gutenberg klasörüdür ve DaVinci. txt blob olur.
-6. **Çıktı** türü özelliği için, Reducer için çıkış dosyasını (konum dahil) belirtin. Hadoop akış işinin çıktısı, bu özellik için belirtilen konuma yazılır.
-7. **FilePaths** bölümünde Eşleyici ve Reducer Yürütülebilirler için yolları belirtin. Örnek: "adfsample/example/Apps/WC. exe", adfsample blob kapsayıcısıdır, örnek/uygulamalar klasördür ve WC. exe yürütülebilir bir dosyadır.
-8. **Filelinkedservice** özelliği Için, filePaths bölümünde belirtilen dosyaları içeren Azure depolama 'yı temsil eden Azure depolama bağlı hizmetini belirtin.
-9. **Arguments** özelliği için akış işinin bağımsız değişkenlerini belirtin.
-10. **GetDebugInfo** özelliği, isteğe bağlı bir öğedir. Hata olarak ayarlandığında Günlükler yalnızca hata durumunda indirilir. Her zaman olarak ayarlandığında, yürütme durumu ne olursa olsun Günlükler her zaman indirilir.
+1. **linkedServiceName'i,** akış lı mapreduce işinin çalıştırıldığı HDInsight kümenize işaret eden bağlantılı hizmetin adına ayarlayın.
+2. Etkinliğin türünü **HDInsightStreaming**olarak ayarlayın.
+3. **Mapper** özelliği için, yürütülebilir mapper adını belirtin. Örnekte, cat.exe mapper çalıştırılabilir.
+4. **Azaltıcı** özelliği için, çalıştırılabilir azaltıcının adını belirtin. Örnekte, wc.exe uygulayabilir indirgeyicidir.
+5. **Giriş** türü özelliği için, mapper için giriş dosyasını (konum dahil) belirtin. Örnekte: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample blob kapsayıcı, örnek / veri / Gutenberg klasör, ve davinci.txt blob olduğunu.
+6. **Çıktı** türü özelliği için, azaltıcı için çıktı dosyasını (konum dahil) belirtin. Hadoop Streaming işinin çıktısı bu özellik için belirtilen konuma yazılır.
+7. **filePaths** bölümünde, mapper ve azaltıcı yürütülebilir yolları belirtin. Örnekte: "adfsample/example/apps/wc.exe", adfsample blob kapsayıcı, örnek /uygulamalar klasör ve wc.exe yürütülebilir.
+8. **FileLinkedService** özelliği için, dosya Yolları bölümünde belirtilen dosyaları içeren Azure depolama sını temsil eden Azure Depolama bağlantılı hizmeti belirtin.
+9. Bağımsız **değişkenler** özelliği için akış işi için bağımsız değişkenleri belirtin.
+10. **getDebugInfo** özelliği isteğe bağlı bir öğedir. Hata olarak ayarlandığında, günlükler yalnızca hata üzerine karşıdan yüklenir. Her zaman olarak ayarlandığında, günlükler yürütme durumuna bakılmaksızın her zaman karşıdan yüklenir.
 
 > [!NOTE]
-> Örnekte gösterildiği gibi, **çıktılar** özelliği Için Hadoop akış etkinliği için bir çıktı veri kümesi belirtirsiniz. Bu veri kümesi, yalnızca işlem hattı zamanlamasını sağlamak için gerekli olan bir kukla veri kümesidir. **Girişler** özelliği için etkinlik için herhangi bir giriş veri kümesi belirtmeniz gerekmez.  
+> Örnekte gösterildiği gibi, çıktılar özelliği için Hadoop Akış Etkinliği için bir çıktı veri kümesi **belirtirsiniz.** Bu veri kümesi, ardışık işlem zamanlamasını sürmek için gereken sahte bir veri kümesidir. **Giriş** özelliği için etkinlik için herhangi bir giriş veri kümesi belirtmeniz gerekmez.  
 > 
 > 
 
 ## <a name="example"></a>Örnek
-Bu izlenecek işlem hattı, Azure HDInsight kümenizdeki sözcük sayısı akış Haritası/azaltma programını çalıştırır. 
+Bu izlenecek yoldaki ardışık işlem, Azure HDInsight kümenizde Word Count akış Haritası/Azalt programını çalıştırAr. 
 
 ### <a name="linked-services"></a>Bağlı hizmetler
 #### <a name="azure-storage-linked-service"></a>Azure Storage bağlı hizmeti
-İlk olarak, Azure HDInsight kümesi tarafından kullanılan Azure depolama alanını Azure Data Factory 'ye bağlamak için bağlı bir hizmet oluşturursunuz. Aşağıdaki kodu kopyalayıp yapıştırırsanız, hesap adı ve hesap anahtarı 'nı Azure depolamanın adı ve anahtarıyla değiştirmeyi unutmayın. 
+İlk olarak, Azure HDInsight kümesi tarafından kullanılan Azure Depolama'yı Azure veri fabrikasına bağlamak için bağlantılı bir hizmet oluşturursunuz. Aşağıdaki kodu kopyalar/yapıştırın, hesap adı ve hesap anahtarını Azure Depolama nızın adı ve anahtarıyla değiştirmeyi unutmayın. 
 
 ```JSON
 {
@@ -129,8 +129,8 @@ Bu izlenecek işlem hattı, Azure HDInsight kümenizdeki sözcük sayısı akı�
 }
 ```
 
-#### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight bağlı hizmeti
-Ardından, Azure HDInsight kümenizi Azure Data Factory 'ye bağlamak için bağlı bir hizmet oluşturursunuz. Aşağıdaki kodu kopyalayıp yapıştırırsanız, HDInsight kümesi adını HDInsight kümenizin adıyla değiştirin ve Kullanıcı adı ve parola değerlerini değiştirin. 
+#### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight bağlantılı hizmet
+Ardından, Azure HDInsight kümenizi Azure veri fabrikasına bağlamak için bağlantılı bir hizmet oluşturursunuz. Aşağıdaki kodu kopyalar/yapıştırArsanız, HDInsight küme adını HDInsight kümenizin adıyla değiştirin ve kullanıcı adı ve parola değerlerini değiştirin. 
 
 ```JSON
 {
@@ -148,8 +148,8 @@ Ardından, Azure HDInsight kümenizi Azure Data Factory 'ye bağlamak için bağ
 ```
 
 ### <a name="datasets"></a>Veri kümeleri
-#### <a name="output-dataset"></a>Çıkış veri kümesi
-Bu örnekteki işlem hattı herhangi bir giriş yapmaz. HDInsight akış etkinliği için bir çıkış veri kümesi belirtirsiniz. Bu veri kümesi, yalnızca işlem hattı zamanlamasını sağlamak için gerekli olan bir kukla veri kümesidir. 
+#### <a name="output-dataset"></a>Çıktı veri kümesi
+Bu örnekte boru hattı herhangi bir giriş almaz. HDInsight Akış Etkinliği için bir çıktı veri kümesi belirtirsiniz. Bu veri kümesi, ardışık işlem zamanlamasını sürmek için gereken sahte bir veri kümesidir. 
 
 ```JSON
 {
@@ -174,9 +174,9 @@ Bu örnekteki işlem hattı herhangi bir giriş yapmaz. HDInsight akış etkinli
 ```
 
 ### <a name="pipeline"></a>İşlem hattı
-Bu örnekteki işlem hattının şu türde yalnızca bir etkinliği vardır: **hdınsightstreaming**. 
+Bu örnekteki ardışık işlemde türünde tek bir etkinlik vardır: **HDInsightStreaming**. 
 
-HDInsight kümesi, örnek programlarla (WC. exe ve Cat. exe) ve veriler (DaVinci. txt) ile otomatik olarak doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin kendisidir. Örneğin, Kümenizin adı myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır.  
+HDInsight kümesi otomatik olarak örnek programlar (wc.exe ve cat.exe) ve verilerle (davinci.txt) doldurulur. Varsayılan olarak, HDInsight kümesi tarafından kullanılan kapsayıcının adı kümenin adıdır. Örneğin, küme adınız myhdicluster ise, ilişkili blob kapsayıcısının adı myhdicluster olacaktır.  
 
 ```JSON
 {
@@ -223,9 +223,9 @@ HDInsight kümesi, örnek programlarla (WC. exe ve Cat. exe) ve veriler (DaVinci
 }
 ```
 ## <a name="see-also"></a>Ayrıca Bkz.
-* [Hive etkinliği](data-factory-hive-activity.md)
-* [Pig etkinliği](data-factory-pig-activity.md)
-* [MapReduce etkinliği](data-factory-map-reduce.md)
-* [Spark programlarını çağırma](data-factory-spark.md)
-* [R betiklerini çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
+* [Kovan Etkinliği](data-factory-hive-activity.md)
+* [Domuz Aktivitesi](data-factory-pig-activity.md)
+* [MapReduce Etkinliği](data-factory-map-reduce.md)
+* [Spark programları çağırma](data-factory-spark.md)
+* [R betikleri çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 
