@@ -1,6 +1,6 @@
 ---
-title: Yönetilen örnek için var olan bir sanal ağı yapılandırma
-description: Bu makalede, Azure SQL veritabanı yönetilen örneğini dağıtabileceğiniz mevcut bir sanal ağın ve alt ağın nasıl yapılandırılacağı açıklanır.
+title: Yönetilen örneğinvarı olan bir sanal ağı yapılandırma
+description: Bu makalede, Azure SQL Veritabanı Yönetilen Örneği'ni dağıtabileceğiniz varolan bir sanal ağ ve alt ağ nasıl yapılandırılabildiğiniz açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,35 +10,35 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-ms.date: 01/15/2019
-ms.openlocfilehash: 6dfc0a59ab4150173196fae82d90eca4880d5364
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/17/2020
+ms.openlocfilehash: 50b832baa9253f47b5f10980ae1764c9425ed4d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818889"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476958"
 ---
-# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği için mevcut bir sanal ağı yapılandırma
+# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Mevcut sanal ağı Azure SQL Veritabanı Yönetilen Örneği için yapılandırma
 
-Azure SQL veritabanı yönetilen örneği, bir Azure [sanal ağı](../virtual-network/virtual-networks-overview.md) içinde dağıtılmalıdır ve alt ağ yalnızca yönetilen örnekler için ayrılmış olmalıdır. [Yönetilen örnek sanal ağ gereksinimlerine](sql-database-managed-instance-connectivity-architecture.md#network-requirements)göre yapılandırıldıysa, var olan sanal ağı ve alt ağı kullanabilirsiniz.
+Azure SQL Veritabanı Yönetilen Örnek, bir Azure [sanal ağında](../virtual-network/virtual-networks-overview.md) ve yalnızca Yönetilen Örnekler için ayrılmış alt ağ da dağıtılmalıdır. [Yönetilen Örnek sanal ağ gereksinimlerine](sql-database-managed-instance-connectivity-architecture.md#network-requirements)göre yapılandırılırsa varolan sanal ağı ve alt ağı kullanabilirsiniz.
 
-Aşağıdaki durumlardan biri sizin için geçerliyse, bu makalede açıklanan betiği kullanarak ağınızı doğrulayabilir ve değiştirebilirsiniz:
+Aşağıdaki durumlardan biri sizin için geçerliyse, bu makalede açıklanan komut dosyasını kullanarak ağınızı doğrulayabilir ve değiştirebilirsiniz:
 
-- Hala yapılandırılmamış yeni bir alt ağa sahipsiniz.
-- Alt ağın [gereksinimlere](sql-database-managed-instance-connectivity-architecture.md#network-requirements)göre hizalandığından emin değilsiniz.
-- Değişiklikleri yaptıktan sonra alt ağın [ağ gereksinimleriyle](sql-database-managed-instance-connectivity-architecture.md#network-requirements) uyumlu olup olmadığını kontrol etmek istiyorsunuz.
+- Hala yapılandırılmamış yeni bir alt ağınız var.
+- Alt ağın [gereksinimlerle](sql-database-managed-instance-connectivity-architecture.md#network-requirements)uyumlu olduğundan emin değilseniz.
+- Değişiklik yaptıktan sonra alt ağın ağ [gereksinimlerine](sql-database-managed-instance-connectivity-architecture.md#network-requirements) uygun olup olmadığını denetlemek istiyorsunuz.
 
 > [!Note]
-> Yönetilen bir örneği yalnızca Azure Resource Manager dağıtım modeliyle oluşturulan sanal ağlarda oluşturabilirsiniz. Klasik dağıtım modeli aracılığıyla oluşturulan Azure sanal ağları desteklenmez. [Yönetilen örnekler için alt ağın boyutunu belirleme](sql-database-managed-instance-determine-size-vnet-subnet.md) makalesindeki yönergeleri izleyerek alt ağ boyutunu hesaplayın. İçindeki kaynakları dağıttıktan sonra alt ağı yeniden boyutlandıramazsınız.
+> Yönetilen Örnek'i yalnızca Azure Kaynak Yöneticisi dağıtım modeli aracılığıyla oluşturulan sanal ağlarda oluşturabilirsiniz. Klasik dağıtım modeli yle oluşturulan Azure sanal ağları desteklenmez. Yönetilen Örnekler makalesi için alt [net boyutunu](sql-database-managed-instance-determine-size-vnet-subnet.md) belirleyin'deki yönergeleri izleyerek alt net boyutunu hesaplayın. İçerideki kaynakları dağıttıktan sonra alt ağı yeniden boyutlandıramazsınız.
 >
-> Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
+> Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneğin veya VNet'in başka bir kaynak grubuna taşınması veya aboneliği desteklenmez.
 
-## <a name="validate-and-modify-an-existing-virtual-network"></a>Var olan bir sanal ağı doğrulama ve değiştirme
+## <a name="validate-and-modify-an-existing-virtual-network"></a>Varolan bir sanal ağı doğrulama ve değiştirme
 
-Var olan bir alt ağ içinde yönetilen bir örnek oluşturmak istiyorsanız, alt ağı hazırlamak için aşağıdaki PowerShell betiğini öneririz:
+Varolan bir alt ağ içinde Yönetilen Örnek oluşturmak istiyorsanız, alt ağı hazırlamak için aşağıdaki PowerShell komut dosyasını öneririz:
 
 ```powershell
-$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
+$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/delegate-subnet'
 
 $parameters = @{
     subscriptionId = '<subscriptionId>'
@@ -47,17 +47,17 @@ $parameters = @{
     subnetName = '<subnetName>'
     }
 
-Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
+Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delegateSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
-Betik, alt ağı üç adımda hazırlar:
+Komut dosyası alt ağı üç adımda hazırlar:
 
-1. Doğrula: yönetilen örnek ağ gereksinimleri için seçili sanal ağı ve alt ağı doğrular.
-2. Onayla: kullanıcıya, yönetilen örnek dağıtımı için alt ağı hazırlamak üzere yapılması gereken bir değişiklik kümesi gösterilir. Ayrıca onay ister.
-3. Hazırlama: sanal ağı ve alt ağı düzgün şekilde yapılandırır.
+1. Doğrulama: Yönetilen Örnek ağ gereksinimleri için seçilen sanal ağı ve alt ağı doğrular.
+2. Onayla: Kullanıcıya, alt ağı Yönetilen Örnek dağıtımına hazırlamak için yapılması gereken bir dizi değişiklik gösterir. Ayrıca rıza da ister.
+3. Hazırla: Sanal ağı ve alt ağı düzgün bir şekilde yapılandırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Genel bakış için bkz. [yönetilen örnek nedir?](sql-database-managed-instance.md).
-- Bir sanal ağ oluşturmayı, yönetilen bir örnek oluşturmayı ve bir veritabanını bir veritabanı yedeklemesinden geri yüklemeyi gösteren bir öğretici için bkz. [Azure SQL veritabanı yönetilen örneği oluşturma](sql-database-managed-instance-get-started.md).
-- DNS sorunları için bkz. [Özel BIR DNS yapılandırma](sql-database-managed-instance-custom-dns.md).
+- Genel bakış için [bkz.](sql-database-managed-instance.md)
+- Sanal ağ oluşturmayı, Yönetilen Örnek'i nasıl oluşturup veritabanı yedeklemesinden veritabanını geri yükleyin, [bkz.](sql-database-managed-instance-get-started.md)
+- DNS sorunları için [bkz.](sql-database-managed-instance-custom-dns.md)

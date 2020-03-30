@@ -1,66 +1,68 @@
 ---
-title: Azure Cosmos DB Cassandra API ölçek ile esnek
-description: Bir Azure Cosmos DB Cassandra API hesabı ve bunların avantajları/dezavantajlarını ölçeklendirmeye yönelik seçenekler hakkında bilgi edinin
+title: Azure Cosmos DB'de Cassandra API ile elastik ölçeklendirme
+description: Azure Cosmos DB Cassandra API hesabını ölçeklendirmek için kullanılabilen seçenekler ve avantajları/dezavantajları hakkında bilgi edinin
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: e2967a6d12fba2d81dad9de31e7476a027a39d1c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 10d81de48c0d8f56c7c3fd26e3fd82a8c3df84c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468839"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474688"
 ---
-# <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API bir hesabı ölçeklendirin
+# <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API hesabını elastik olarak ölçeklendirin
 
-Cassandra için Azure Cosmos DB API 'sinin elastik yapısını keşfetmeye yönelik çeşitli seçenekler vardır. Azure Cosmos DB etkin bir şekilde ölçeklendirmenin nasıl yapılacağını anlamak için, sisteminizdeki performans taleplerini hesaba eklemek üzere doğru istek birimi (RU/sn) miktarına nasıl sağlanacağını anlamak önemlidir. İstek birimleri hakkında daha fazla bilgi için bkz. [İstek birimleri](request-units.md) makalesi. 
+Cassandra için Azure Cosmos DB API'nin elastik doğasını keşfetmek için çeşitli seçenekler vardır. Azure Cosmos DB'de nasıl etkili bir şekilde ölçeklendirilebildiğini anlamak için, sisteminizdeki performans taleplerini hesaba katmak için doğru miktarda istek biriminin (RU/s) nasıl sağlandığını anlamak önemlidir. İstek birimleri hakkında daha fazla bilgi edinmek için [istek birimleri](request-units.md) makalesine bakın. 
 
-![Veritabanı işlemleri Istek birimlerini tüketir](./media/request-units/request-units.png)
+Cassandra API için [,NET ve Java SDK'larını](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api)kullanarak tek tek sorgular için İstek Birimi ücretini alabilirsiniz. Bu, hizmette sağlamanız gereken RU/s miktarını belirlemede yararlıdır.
 
-## <a name="handling-rate-limiting-429-errors"></a>İşleme hızı sınırlaması (429 hata)
+![Veritabanı işlemleri İstek Birimlerini tüketir](./media/request-units/request-units.png)
 
-Azure Cosmos DB, istemciler sağladığınız miktardan daha fazla kaynak (RU/sn) kullanıyorsa, oran-Limited (429) hata döndürür. Azure Cosmos DB Cassandra API, bu özel durumları Cassandra Native protokolünde aşırı yüklenmiş hatalara dönüştürür. 
+## <a name="handling-rate-limiting-429-errors"></a>İşlem hızı sınırlayıcı (429 hata)
 
-Sisteminiz gecikme süresine duyarlı değilse, yeniden denemeler kullanılarak üretilen iş hızı oranını işlemek yeterli olabilir. Java 'da [Cassandra yeniden deneme ilkesi](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) için [Azure Cosmos DB uzantısını](https://github.com/Azure/azure-cosmos-cassandra-extensions) kullanarak nasıl saydam bir şekilde işleneceğini nasıl işleyeceğinizi gösteren [Java kod örneğine](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) bakın. Aynı zamanda [Spark uzantısını](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) , hız sınırını işlemek için de kullanabilirsiniz.
+Azure Cosmos DB, istemciler sizin sağladığınız tutardan daha fazla kaynak (RU/s) tüketirse, fiyat sınırlı (429) hataları döndürür. Azure Cosmos DB'deki Cassandra API, bu özel durumları Cassandra yerel protokolündeki aşırı yüklenen hatalara çevirir. 
 
-## <a name="manage-scaling"></a>Ölçeklendirmeyi Yönet
+Sisteminiz gecikmeye duyarlı değilse, yeniden denemeler kullanarak işlenecek iş verme oranını işlemek için yeterli olabilir. Java'daki [Cassandra yeniden deneme ilkesi](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) için Azure [Cosmos DB uzantısını](https://github.com/Azure/azure-cosmos-cassandra-extensions) kullanarak hızı saydam bir şekilde nasıl işleyeceğiniz için [Java kodu örneğine](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) bakın. Hız sınırlamasını işlemek için [Kıvılcım uzantısını](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) da kullanabilirsiniz.
 
-Gecikme süresini en aza indirmek isterseniz, Cassandra API ölçek ve sağlama aktarım hızını (ru) yönetmek için kullanabileceğiniz bir seçenek yelpazesi vardır:
+## <a name="manage-scaling"></a>Ölçekleme yönetme
 
-* [Azure portal kullanarak el ile](#use-azure-portal)
-* [Denetim düzlemi özelliklerini kullanarak program aracılığıyla](#use-control-plane)
-* [Belirli bir SDK ile CQL komutlarını kullanarak programlama yoluyla](#use-cql-queries)
-* [Autopilot kullanarak dinamik olarak](#use-autopilot)
+Gecikme yi en aza indirmeniz gerekiyorsa, Cassandra API'sinde ölçek yönetimi ve üretim (RUs) sağlama seçenekleri vardır:
 
-Aşağıdaki bölümlerde her yaklaşımın avantajları ve dezavantajları açıklanmaktadır. Daha sonra, çözümünüzün ölçeklendirme ihtiyaçlarını, genel maliyet ve gereksinimlerinize yönelik verimlilik ihtiyaçlarını dengelemek için en iyi stratejiye karar verebilirsiniz.
+* [Azure portalını kullanarak el ile](#use-azure-portal)
+* [Kontrol düzlemi özelliklerini kullanarak programlanabilir](#use-control-plane)
+* [Belirli bir SDK ile CQL komutları kullanılarak programlanabilir](#use-cql-queries)
+* [Otomatik pilot kullanarak dinamik olarak](#use-autopilot)
 
-## <a id="use-azure-portal"></a>Azure portal kullanın
+Aşağıdaki bölümlerde her yaklaşımın avantajları ve dezavantajları açıklayınız. Daha sonra sisteminizin ölçekleme gereksinimlerini, genel maliyet ve çözümünüzün verimlilik gereksinimlerini dengelemek için en iyi stratejiye karar verebilirsiniz.
 
-Azure Cosmos DB Cassandra API hesabındaki kaynakları Azure portal kullanarak ölçeklendirebilirsiniz. Daha fazla bilgi edinmek için [kapsayıcılar ve veritabanlarında üretilen Iş sağlama](set-throughput.md)başlıklı makaleye bakın. Bu makalede, Azure portal [veritabanı](set-throughput.md#set-throughput-on-a-database) ya da [kapsayıcı](set-throughput.md#set-throughput-on-a-container) düzeyinde üretilen işi ayarlamanın göreli avantajları açıklanmaktadır. Bu makalelerde bahsedilen "veritabanı" ve "kapsayıcı" terimleri, Cassandra API için sırasıyla "keyspace" ve "Table" ile eşlenir.
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portal’ı kullanma
 
-Bu yöntemin avantajı, veritabanında üretilen iş kapasitesini yönetmenin kolay bir anahtar yoludur. Öte yandan, büyük bir deyişle, ölçeklendirmeye yönelik yaklaşımınızın her ikisi de düşük maliyetli ve yüksek performanslı bir otomasyon düzeyinin olması gerekebilir. Sonraki bölümlerde ilgili senaryolar ve yöntemler açıklanmaktadır.
+Azure portalını kullanarak Azure Cosmos DB Cassandra API hesabındaki kaynakları ölçeklendirebilirsiniz. Daha fazla bilgi için, [kapsayıcılar ve veritabanları üzerinde Provizyon iş parçacığı](set-throughput.md)makalesine bakın. Bu makalede, Azure portalında [veritabanı](set-throughput.md#set-throughput-on-a-database) veya [kapsayıcı](set-throughput.md#set-throughput-on-a-container) düzeyinde iş parçacığı ayarı göreli yararları açıklanmaktadır. Bu makalelerde belirtilen "veritabanı" ve "kapsayıcı" terimleri, Cassandra API için sırasıyla "keyspace" ve "tablo" ile eşleşmektedir.
 
-## <a id="use-control-plane"></a>Denetim düzlemi 'ni kullanma
+Bu yöntemin avantajı, veritabanında üretim kapasitesini yönetmek için basit bir anahtar teslim yoludur. Ancak, dezavantajı birçok durumda, ölçekleme yaklaşımınızın hem uygun maliyetli hem de yüksek performanslı olması için belirli otomasyon düzeylerini gerektirebilir. Sonraki bölümlerde ilgili senaryolar ve yöntemler açıklanın.
 
-Cassandra için Azure Cosmos DB API 'SI, çeşitli denetim düzlemi özelliklerimizi kullanarak aktarım hızını programlı bir şekilde ayarlama yeteneği sağlar. Rehberlik ve örnekler için [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [POWERSHELL](powershell-samples-cassandra.md)ve [Azure CLI](cli-samples-cassandra.md) makalelerine bakın.
+## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Kontrol düzlemini kullanma
 
-Bu yöntemin avantajı, yoğun etkinlik veya düşük etkinlik dönemlerinde hesaba bir Zamanlayıcı temelinde kaynakların ölçeğini artırma veya azaltma işlemlerini otomatikleştirebileceğiniz bir yöntemdir. Azure Işlevleri ve PowerShell kullanarak bunu [gerçekleştirmek için](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) örneğimize göz atın.
+Azure Cosmos DB'nin Cassandra için sunduğu API, çeşitli kontrol düzlemi özelliklerimizi kullanarak iş ortamını programlı olarak ayarlama olanağı sağlar. Kılavuz ve örnekler için [Azure Kaynak Yöneticisi,](manage-cassandra-with-resource-manager.md) [Powershell](powershell-samples-cassandra.md)ve [Azure CLI](cli-samples-cassandra.md) makalelerini görün.
 
-Bu yaklaşımdan olumsuz bir dezavantajı, öngörülemeyen değişiklik ölçeği ihtiyaçlarına gerçek zamanlı olarak yanıt veremeyebilirsiniz. Bunun yerine, sisteminizde uygulama bağlamından, istemci/SDK düzeyinde veya [Autopilot](provision-throughput-autopilot.md)kullanarak kullanmanız gerekebilir.
+Bu yöntemin avantajı, en yüksek etkinlik veya düşük etkinlik dönemleri için hesap lamak için bir zamanlayıcıya dayalı kaynakların ölçekleme yukarı veya aşağı otomatikleştirebilirsiniz. Azure İşlevlerini ve Powershell'i kullanarak bunu nasıl başarabilirsiniz [alada](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) örneğimize bir göz atın.
 
-## <a id="use-cql-queries"></a>Belirli bir SDK ile CQL sorgularını kullanma
+Bu yaklaşımın dezavantajı, öngörülemeyen değişen ölçek gereksinimlerine gerçek zamanlı olarak yanıt verememeniz olabilir. Bunun yerine, sisteminizdeki uygulama bağlamından, istemci/SDK düzeyinde veya [Otomatik Pilot'u](provision-throughput-autopilot.md)kullanmanız gerekebilir.
 
-Verilen veritabanı veya kapsayıcı için [CQL alter komutlarını](cassandra-support.md#keyspace-and-table-options) yürüterek sistemi kodla dinamik olarak ölçeklendirebilirsiniz.
+## <a name="use-cql-queries-with-a-specific-sdk"></a><a id="use-cql-queries"></a>Belirli bir SDK ile CQL sorgularını kullanma
 
-Bu yaklaşımın avantajı, ölçek ihtiyaçlarına dinamik olarak ve uygulamanıza uygun özel bir şekilde yanıt vermenize olanak tanır. Bu yaklaşım sayesinde standart RU/s ücretlerinden ve oranlarından yararlanmaya devam edebilirsiniz. Sisteminizin ölçek ihtiyacı genellikle tahmin edilebilir ise (%70 veya daha fazla), CQL ile SDK kullanılması, Autopilot kullanmaktan farklı şekilde otomatik ölçeklendirmenin daha düşük maliyetli bir yöntemi olabilir. Bu yaklaşımın dezavantajı, hız sınırlandırma gecikme süresini arttırabilirken yeniden denemeler uygulamak için oldukça karmaşık olabilir.
+Verilen veritabanı veya kapsayıcı için [CQL ALTER komutlarını](cassandra-support.md#keyspace-and-table-options) çalıştırarak sistemi kodla dinamik olarak ölçeklendirebilirsiniz.
 
-## <a id="use-autopilot"></a>Autopilot kullanma
+Bu yaklaşımın avantajı, ölçek gereksinimlerine dinamik olarak ve uygulamanıza uygun özel bir şekilde yanıt vermenize olanak sağlamasıdır. Bu yaklaşımla, standart RU/s ücretlerinden ve oranlarından hala yararlanabilirsiniz. Sisteminizin ölçek gereksinimleri çoğunlukla tahmin edilebilirse (%70 civarı veya daha fazla), CQL ile SDK kullanmak Otomatik Pilot kullanmaktan daha uygun maliyetli bir otomatik ölçeklendirme yöntemi olabilir. Bu yaklaşımın dezavantajı, oran sınırlamagecikmesini artırabiliriken yeniden denemelerin uygulanmasının oldukça karmaşık olmasıdır.
 
-İş üretimini sağlamanın el ile veya programlama yöntemine ek olarak, Azure Cosmos kapsayıcılarını de Autopilot modda yapılandırabilirsiniz. Autopilot modu, SLA 'Lara ödün vermeden belirtilen RU aralıklarında tüketim gereksinimlerinize otomatik olarak ve anında ölçeklenecektir. Daha fazla bilgi edinmek için [Autopilot modunda Azure Cosmos kapsayıcıları ve veritabanları oluşturma](provision-throughput-autopilot.md) makalesine bakın.
+## <a name="use-autopilot"></a><a id="use-autopilot"></a>Otomatik Pilot Kullanma
 
-Bu yaklaşımın avantajı, sisteminizdeki ölçekleme ihtiyaçlarını yönetmenin en kolay yoludur. **YAPıLANDıRıLAN ru aralıkları içinde**hız sınırlaması uygulamamaya garanti vermez. Dezavantajı, sisteminizdeki ölçekleme ihtiyaçları tahmin edilebilir ise, Autopilot yukarıda bahsedilen beslenme denetim düzlemi veya SDK düzeyi yaklaşımlarını kullanmaktan daha az uygun maliyetli bir yol olabilir.
+İş ortasını sağlamanın manuel veya programlı bir şekilde sağlanmasına ek olarak, Azure kozmosun kaplarını Otomatik Pilot modunda da yapılandırabilirsiniz. Otomatik pilot modu, SLA'lardan ödün vermeden belirtilen RU aralıkları dahilinde tüketim ihtiyaçlarınıza otomatik olarak ve anında ölçeklendirecektir. Daha fazla bilgi edinmek için [otomatik pilot modu makalesinde Azure Cosmos kapsayıcıları ve veritabanları oluştur'a](provision-throughput-autopilot.md) bakın.
+
+Bu yaklaşımın avantajı, sisteminizdeki ölçekleme gereksinimlerini yönetmenin en kolay yolu olmasıdır. **Yapılandırılmış RU aralıkları içinde**fiyat sınırlaması uygulamamayı garanti eder. Dezavantajı, sisteminizde ölçekleme gereksinimleri öngörülebilir ise, Otomatik Pilot ısmarlama kontrol düzlemi veya Yukarıda belirtilen SDK düzeyi yaklaşımları kullanarak daha ölçekleme ihtiyaçlarını işleme daha az maliyet-etkin bir yol olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

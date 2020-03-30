@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub, müşteri tarafından yönetilen anahtarlar aracılığıyla bekleyen veri şifrelemesi | Microsoft Docs
-description: IoT Hub için müşteri tarafından yönetilen anahtarlarla bekleyen verilerin şifrelenmesi
+title: Azure IoT Hub veri şifrelemesi müşteri tarafından yönetilen anahtarlar aracılığıyla istirahatte| Microsoft Dokümanlar
+description: IoT Hub için müşteri tarafından yönetilen anahtarlarla veri şifrelemesi
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: asrastog
 ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370585"
 ---
-# <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>IoT Hub için müşteri tarafından yönetilen anahtarlarla bekleyen verilerin şifrelenmesi
+# <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>IoT Hub için müşteri tarafından yönetilen anahtarlarla veri şifrelemesi
 
-IoT Hub, müşteri tarafından yönetilen anahtarlar (CMK) ile bekleyen verilerin şifrelenmesini destekler, Ayrıca, kendi anahtarını getir (BYOK) olarak da bilinen Azure IoT Hub desteği. Azure IoT Hub, bekleyen ve aktarım sırasında veri şifrelemesini sağlar. Varsayılan olarak IoT Hub, verileri şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. CMK desteğiyle, müşteriler artık [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)kullanarak müşterilerin yönettiği bir anahtar şifreleme anahtarıyla bekleyen verileri şifreleme seçeneği vardır.
+IoT Hub, Azure IoT Hub desteği olan kendi anahtarınızı getir (BYOK) olarak da bilinen müşteri tarafından yönetilen anahtarlarla (CMK) veri şifrelemesini destekler. Azure IoT Hub, veri şifrelemesini istirahat te ve aktarım sırasında sağlar. Varsayılan olarak, IoT Hub verileri şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. CMK desteği ile müşteriler artık Azure Anahtar Kasası'nı kullanarak müşteriler tarafından yönetilen anahtar [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)şifreleme anahtarıyla verileri şifreleme seçeneğine sahip.
 
-Bu özellik, şu bölgelerden birinde yeni bir IoT Hub (temel veya Standart katman) oluşturulmasını gerektirir: Doğu ABD, Batı ABD 2, Orta Güney ABD veya US Gov. Bu özelliği denemek için [Microsoft desteği](https://azure.microsoft.com/support/create-ticket/)ile bizimle iletişim kurun. Microsoft Destek ile iletişim kurarken şirketinizin adını ve abonelik KIMLIĞINIZI paylaşabilirsiniz.
+Bu özellik, aşağıdaki bölgelerden birinde yeni bir IoT Hub 'ı (temel veya standart katman) oluşturulmasını gerektirir: Doğu ABD, Batı ABD 2, Güney Orta ABD veya ABD Gov. Bu özelliği denemek için [Microsoft desteği](https://azure.microsoft.com/support/create-ticket/)aracılığıyla bize ulaşın. Microsoft desteğine başvururken şirket adınızı ve abonelik kimliğinizi paylaşın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [IoT Hub hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)
 
-* [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Anahtar Kasası hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

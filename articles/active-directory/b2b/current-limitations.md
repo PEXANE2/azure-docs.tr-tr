@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği sınırlamaları-Azure Active Directory | Microsoft Docs
+title: B2B işbirliğinin sınırlamaları - Azure Active Directory | Microsoft Dokümanlar
 description: Azure Active Directory B2B işbirliği için geçerli sınırlamalar
 services: active-directory
 ms.service: active-directory
@@ -12,46 +12,46 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffee01488ecf658ce02a20a41252aca19288667c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263367"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğinin sınırlamaları
-Azure Active Directory (Azure AD) B2B işbirliği Şu anda bu makalede açıklanan sınırlamalara tabidir.
+Azure Etkin Dizin (Azure AD) B2B işbirliği şu anda bu makalede açıklanan sınırlamalara tabidir.
 
-## <a name="possible-double-multi-factor-authentication"></a>Olası çift Multi-Factor Authentication
-Azure AD B2B ile, çok faktörlü kimlik doğrulamasını kaynak kuruluşta (kuruluşun davet eden) zorunlu kılabilirsiniz. Bu yaklaşımın nedenleri, [B2B işbirliği kullanıcıları Için koşullu erişim](conditional-access.md)bölümünde ayrıntılı olarak açıklanmıştır. Bir iş ortağının zaten çok faktörlü kimlik doğrulaması ayarlandıysa ve zorlanmışsa, kullanıcıların kimlik doğrulamasını ana kuruluşlarındaki bir kez ve daha sonra bir kez gerçekleştirmesi gerekebilir.
+## <a name="possible-double-multi-factor-authentication"></a>Olası çift çok faktörlü kimlik doğrulama
+Azure AD B2B ile kaynak kuruluşta (davet eden kuruluş) çok faktörlü kimlik doğrulaması uygulayabilirsiniz. Bu yaklaşımın nedenleri [B2B işbirliği kullanıcıları için Koşullu Erişim](conditional-access.md)ayrıntılı olarak açıklanmaktadır. Bir iş ortağızaten çok faktörlü kimlik doğrulaması ayarlanmış ve zorlanmışsa, kullanıcılarının kimlik doğrulamasını kendi ev kuruluşunda bir kez ve daha sonra tekrar sizin evinizde gerçekleştirmesi gerekebilir.
 
-## <a name="instant-on"></a>Anında
-B2B işbirliği akışlarında, kullanıcıları dizine ekler ve davet satın alma, uygulama ataması vb. sırasında bunları dinamik olarak güncelleştirir. Güncelleştirmeler ve yazma işlemleri normalde tek bir dizin örneğinde gerçekleşir ve tüm örneklerde çoğaltılmalıdır. Tüm örnekler güncelleştirildikten sonra çoğaltma tamamlanır. Bazen nesne bir örnekte yazıldığında veya güncelleştirilirse ve bu nesneyi almak için yapılan çağrı başka bir örneğe ise çoğaltma gecikmeleri oluşabilir. Bu durumda, yenileyin veya yardım için yeniden deneyin. API 'imizi kullanarak bir uygulama yazıyorsanız, bu sorunu giderebilmeniz için bazı geri denemelerle yeniden denemeler yapmak iyi bir savunma yöntemidir.
+## <a name="instant-on"></a>Anında Açma
+B2B işbirliği akışlarında, kullanıcıları dizine ekler ve davet kullanımı, uygulama ataması ve benzeri durumlarda bunları dinamik olarak güncelleriz. Güncelleştirmeler ve yazmalar normalde tek bir dizin örneğinde gerçekleşir ve tüm örneklerde çoğaltılması gerekir. Tüm örnekler güncelleştirildikten sonra çoğaltma tamamlanır. Bazen nesne bir örnekte yazıldığında veya güncelleştirildiğinde ve bu nesneyi alma çağrısı başka bir örneğe geldiğinde, çoğaltma gecikmeleri oluşabilir. Bu durumda, yenilemek veya yardım etmeye yeniden çalışın. Bizim API kullanarak bir uygulama yazıyorsanız, o zaman bazı back-off ile yeniden bu sorunu hafifletmek için iyi, savunma uygulamadır.
 
-## <a name="azure-ad-directories"></a>Azure AD dizinleri
-Azure AD B2B, Azure AD hizmeti dizin sınırlarına tabidir. Bir kullanıcının oluşturabileceğiniz dizin sayısı ve bir kullanıcının veya Konuk kullanıcının ait olduğu dizin sayısı hakkında daha fazla bilgi için bkz. [Azure AD hizmet limitleri ve kısıtlamaları](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
+## <a name="azure-ad-directories"></a>Azure REKLAM dizinleri
+Azure AD B2B, Azure AD hizmet dizini sınırlarına tabidir. Bir kullanıcının oluşturabileceği dizin sayısı ve bir kullanıcının veya konuk kullanıcının ait olabileceği dizin sayısı hakkında ayrıntılı bilgi için [Azure REKLAM hizmet sınırları ve kısıtlamalarına](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)bakın.
 
 ## <a name="national-clouds"></a>Ulusal bulutlar
-[Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) , Azure 'un fiziksel olarak yalıtılmış örnekleridir. B2B işbirliği Ulusal bulut sınırları genelinde desteklenmez. Örneğin, Azure kiracınız genel, genel bulutda ise, hesabı ulusal bir bulutta olan bir kullanıcıyı davet edebilirsiniz. Kullanıcıyla işbirliği yapmak için, başka bir e-posta adresi isteyin veya dizininizdeki kullanıcılar için bir üye kullanıcı hesabı oluşturun.
+[Ulusal bulutlar,](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) fiziksel olarak yalıtılmış Azure örnekleridir. B2B işbirliği ulusal bulut sınırları içinde desteklenmez. Örneğin, Azure kiracınız genel bulutta, genel buluttaysa, hesabı ulusal bulutta olan bir kullanıcıyı davet edemezsiniz. Kullanıcıyla işbirliği yapmak için, onlardan başka bir e-posta adresi isteyin veya dizininizde onlar için bir üye kullanıcı hesabı oluşturun.
 
-## <a name="azure-us-government-clouds"></a>Azure ABD kamu bulutları
-Azure ABD kamu bulutu dahilinde, B2B işbirliği Şu anda yalnızca Azure ABD devlet bulutu dahilinde olan ve hem B2B işbirliğini destekleyen kiracılar arasında desteklenmektedir. Azure ABD kamu bulutunun parçası olmayan veya henüz B2B işbirliğini desteklemeyen bir kiracıya bir kullanıcıyı davet ediyorsanız, davet başarısız olur veya Kullanıcı daveti kullanamaz. Diğer sınırlamalar hakkında daha fazla bilgi için bkz. [Azure Active Directory Premium P1 ve P2 Çeşitlemeler](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+## <a name="azure-us-government-clouds"></a>Azure ABD Devlet bulutları
+Azure ABD Hükümeti bulutu içinde, B2B işbirliği şu anda yalnızca hem Azure ABD Hükümeti bulutu içinde olan hem de B2B işbirliğini destekleyen kiracılar arasında desteklenir. Bir kullanıcıyı Azure ABD Kamu bulutunun bir parçası olmayan veya henüz B2B işbirliğini desteklemeyen bir kiracıya davet ederseniz, davet başarısız olur veya kullanıcı daveti kullanamaz. Diğer sınırlamalar hakkında ayrıntılı bilgi için [Azure Active Directory Premium P1 ve P2 Varyasyonları'na](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)bakın.
 
-### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>B2B işbirliğinin Azure ABD kamu kiracısında kullanılabilir olup olmadığını nasıl anlayabilirim?
-Azure ABD kamu bulutu kiracınızın B2B işbirliğini destekleyip desteklemediğini öğrenmek için aşağıdakileri yapın:
+### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>B2B işbirliğinin Azure ABD Devlet kiracımda kullanılabilir olup olmadığını nasıl anlayabilirim?
+Azure ABD Kamu bulut kiracınızın B2B işbirliğini destekleyip desteklemeyin bunu öğrenmek için aşağıdakileri yapın:
 
-1. Bir tarayıcıda, *&lt;TenantName&gt;* için kiracı adınızı DEĞIŞTIREREK aşağıdaki URL 'ye gidin:
+1. Bir tarayıcıda, * &lt;kiracı adınızı&gt;* n için aşağıdaki URL'ye gidin:
 
    `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
 
-2. JSON yanıtında `"tenant_region_scope"` bulun:
+2. JSON yanıtı nda bulun: `"tenant_region_scope"`
 
-   - `"tenant_region_scope":"USGOV”` görünürse, B2B desteklenir.
-   - `"tenant_region_scope":"USG"` görünürse, B2B desteklenmez.
+   - `"tenant_region_scope":"USGOV”` Görünürse, B2B desteklenir.
+   - `"tenant_region_scope":"USG"` Görünürse, B2B desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
-- [B2B işbirliği davetlerini devretmek](delegate-invitations.md)
+- [Temsilci B2B işbirliği davetiyeleri](delegate-invitations.md)
 

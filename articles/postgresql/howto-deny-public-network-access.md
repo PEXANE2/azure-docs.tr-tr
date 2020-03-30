@@ -1,46 +1,46 @@
 ---
-title: Ortak ağ erişimini reddetme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
-description: PostgreSQL için Azure veritabanı tek sunuculu Azure portal kullanarak genel ağ erişimini reddetme hakkında bilgi edinin
+title: Genel Ağ Erişimini Reddet - Azure portalı - PostgreSQL için Azure Veritabanı - Tek sunucu
+description: PostgreSQL Tek sunucu için Azure Veritabanınız için Azure portalı kullanarak Genel Ağ Erişimini Reddet'i nasıl yapılandırabilirsiniz öğrenin
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 4dff2321414721dbd415b468e59aea0ab4b3acee
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79375128"
 ---
-# <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı 'nda genel ağ erişimini reddetme
+# <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Azure portalını kullanarak PostgreSQL Tek sunucu için Azure Veritabanında Genel Ağ Erişimini Reddetme
 
-Bu makalede, bir PostgreSQL için Azure veritabanı 'nı tüm genel yapılandırmaların reddedecek ve yalnızca özel uç noktalar aracılığıyla ağ güvenliğini artırmak üzere yalnızca bağlantılara izin verecek şekilde nasıl yapılandırabileceğiniz açıklanmaktadır.
+Bu makalede, postgreSQL Tek sunucu için bir Azure Veritabanını tüm genel yapılandırmaları reddetmek ve ağ güvenliğini daha da artırmak için yalnızca özel uç noktalar üzerinden bağlantılara izin verecek şekilde nasıl yapılandırabileceğiniz açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yapılır kılavuzunda tamamlanması gerekir:
+Bu nasıl yapılacağını kılavuzunu tamamlamak için şunları yapmanız gerekir:
 
-* [PostgreSQL Için Azure veritabanı tek sunucu](quickstart-create-PostgreSQL Single server-server-database-using-azure-portal.md)
+* [PostgreSQL Tek sunucu için Azure Veritabanı](quickstart-create-PostgreSQL Single server-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>Ortak ağ erişimini reddet ayarla
+## <a name="set-deny-public-network-access"></a>Genel Ağ Erişimini Reddet'i Ayarla
 
-PostgreSQL için tek sunuculu ortak ağ erişimini reddet ' i ayarlamak için şu adımları izleyin:
+PostgreSQL Tek sunucu Reddet Public Network Access ayarlamak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), mevcut PostgreSQL Için Azure veritabanı tek sunucu ' yı seçin.
+1. Azure [portalında,](https://portal.azure.com/)PostgreSQL Tek sunucu için mevcut Azure Veritabanınızı seçin.
 
-1. PostgreSQL tek sunucusu sayfasında, **Ayarlar**altında bağlantı **güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
+1. PostgreSQL Tek sunucu sayfasında, **Ayarlar**altında bağlantı güvenliği yapılandırma sayfasını açmak için **Bağlantı güvenliği'ni** tıklatın.
 
-1. **Ortak ağ erişimini engelle**' de, PostgreSQL tek sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
+1. **Genel Ağ Erişimini Reddet'te,** PostgreSQL Tek sunucunuz için genel erişimi reddetmek için **Evet'i** seçin.
 
-    ![PostgreSQL için Azure veritabanı tek sunucu ağ erişimini reddet](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    ![PostgreSQL Tek sunucu Ağ erişimini reddet için Azure Veritabanı](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
 
 1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
-1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
+1. Bildirim, bağlantı güvenlik ayarının başarıyla etkinleştirildiğini onaylar.
 
-    ![PostgreSQL için Azure veritabanı tek sunuculu ağ erişimini reddetme başarılı](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    ![PostgreSQL Tek sunucu ağ erişim başarısını reddet için Azure Veritabanı](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ölçümler üzerinde uyarılar oluşturma](howto-alert-on-metric.md)hakkında bilgi edinin.
+Ölçümler [de nasıl uyarı oluşturacağınız](howto-alert-on-metric.md)hakkında bilgi edinin.

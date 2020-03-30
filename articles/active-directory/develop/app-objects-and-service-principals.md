@@ -1,7 +1,7 @@
 ---
-title: Azure AD 'de hizmet sorumlularını & uygulamalar | Mavisi
+title: Azure AD'de hizmet & uygulamalar | Azure
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory içindeki uygulama ve hizmet sorumlusu nesneleri arasındaki ilişki hakkında bilgi edinin.
+description: Azure Active Directory'de uygulama ve hizmet temel nesneleri arasındaki ilişki hakkında bilgi edinin.
 author: rwike77
 manager: CelesteDG
 services: active-directory
@@ -15,85 +15,85 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.openlocfilehash: 19085346fb5797245c9f71911f8178df0a1b742a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263016"
 ---
-# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory içindeki uygulama ve hizmet sorumlusu nesneleri
+# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri
 
-Bazen, "uygulama" teriminin anlamı, Azure Active Directory (Azure AD) bağlamında kullanıldığında yanlış anlaşılabilirler. Bu makale, Azure AD uygulama tümleştirmesinin kavramsal ve somut yönlerini, [çok kiracılı bir uygulama](developer-glossary.md#multi-tenant-application)için kayıt ve onay gösterimi ile açıklar.
+Bazen, Azure Etkin Dizin (Azure AD) bağlamında kullanıldığında "uygulama" teriminin anlamı yanlış anlaşılabilir. Bu makalede, [çok kiracılı](developer-glossary.md#multi-tenant-application)bir uygulama için kayıt ve onay bir örnek ile, Azure AD uygulama entegrasyonu kavramsal ve somut yönlerini açıklar.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure AD ile tümleştirilmiş bir uygulama, yazılımın en boy oranını aşan etkilere sahiptir. "Uygulama" genellikle kavramsal bir terim olarak kullanılır, yalnızca uygulama yazılımının değil, ayrıca çalışma zamanında kimlik doğrulama/yetkilendirme "konuşmaları" içinde Azure AD kaydı ve rolü.
+Azure AD ile tümleşik olan bir uygulamanın yazılım yönünün ötesine geçmesine ilişkin etkileri vardır. "Uygulama", yalnızca uygulama yazılımına değil, aynı zamanda Azure AD kaydına ve çalışma zamanında kimlik doğrulama/yetkilendirme "konuşmaları"ndaki rolüne de atıfta bulunarak kavramsal bir terim olarak sıklıkla kullanılır.
 
-Tanım olarak bir uygulama şu rollerde çalışabilir:
+Tanım olarak, bir uygulama bu rollerde çalışabilir:
 
-- [İstemci](developer-glossary.md#client-application) rolü (bir kaynak kullanan)
-- [Kaynak sunucu](developer-glossary.md#resource-server) rolü (API 'leri istemcilere gösterme)
+- [İstemci](developer-glossary.md#client-application) rolü (kaynak tüketen)
+- [Kaynak sunucusu](developer-glossary.md#resource-server) rolü (istemcilere API'lerin açığa çıkarılması)
 - Hem istemci rolü hem de kaynak sunucusu rolü
 
-Bir [OAuth 2,0 yetkilendirme verme akışı](developer-glossary.md#authorization-grant) , istemci/kaynağın sırasıyla bir kaynağın verilerine erişmesine/korumasına izin veren konuşma protokolünü tanımlar.
+[OAuth 2.0 Yetkilendirme Hibesi akışı,](developer-glossary.md#authorization-grant) istemcinin/kaynağın sırasıyla bir kaynağın verilerine erişmesine/korumasına olanak tanıyan konuşma protokolünü tanımlar.
 
-Aşağıdaki bölümlerde, Azure AD uygulama modelinin tasarım zamanı ve çalışma zamanında bir uygulamayı nasıl temsil ettiğini göreceksiniz.
+Aşağıdaki bölümlerde, Azure AD uygulama modelinin tasarım zamanı ve çalışma zamanında bir uygulamayı nasıl temsil ettiğinizi görürsünüz.
 
 ## <a name="application-registration"></a>Uygulama kaydı
 
-[Azure Portal][AZURE-Portal]BIR Azure AD uygulaması kaydettiğinizde, Azure AD kiracınızda iki nesne oluşturulur:
+[Azure portalına][AZURE-Portal]bir Azure REKLAM uygulaması kaydettiğinizde, Azure AD kiracınızda iki nesne oluşturulur:
 
-- Uygulama nesnesi ve
+- Bir uygulama nesnesi ve
 - Hizmet sorumlusu nesnesi
 
 ### <a name="application-object"></a>Uygulama nesnesi
 
-Bir Azure AD uygulaması, uygulamanın kaydedildiği, uygulamanın "giriş" kiracısı olarak bilinen Azure AD kiracısında bulunan bir ve yalnızca uygulama nesnesi tarafından tanımlanır. Microsoft Graph [uygulama varlığı][MS-Graph-App-Entity] , uygulama nesnesinin özellikleri için şemayı tanımlar.
+Azure AD uygulaması, uygulamanın "ev" kiracıolarak bilinen, uygulamanın kayıtlı olduğu Azure AD kiracısında bulunan tek ve tek uygulama nesnesi tarafından tanımlanır. Microsoft Graph [Application varlığı,][MS-Graph-App-Entity] bir uygulama nesnesinin özellikleri için şema tanımlar.
 
-### <a name="service-principal-object"></a>Hizmet sorumlusu nesnesi
+### <a name="service-principal-object"></a>Hizmet temel nesnesi
 
-Bir Azure AD kiracısı tarafından güvenliği sağlanmış olan kaynaklara erişmek için, erişim gerektiren varlık bir güvenlik sorumlusu tarafından temsil etmelidir. Bu, hem kullanıcılar (Kullanıcı sorumlusu) hem de uygulamalar (hizmet sorumlusu) için geçerlidir.
+Azure AD kiracıtarafından güvence altına alınarak güvenli kaynaklara erişmek için, erişim gerektiren varlığın bir güvenlik sorumlusu tarafından temsil edilmesi gerekir. Bu, hem kullanıcılar (kullanıcı anabilim) hem de uygulamalar (hizmet sorumlusu) için geçerlidir.
 
-Güvenlik sorumlusu, Azure AD kiracısında Kullanıcı/uygulama için erişim ilkesini ve izinleri tanımlar. Bu, oturum açma sırasında kullanıcı/uygulamanın kimlik doğrulaması ve kaynak erişimi sırasında yetkilendirme gibi temel özellikleri sunar.
+Güvenlik ilkesi, Azure AD kiracısında kullanıcı/uygulama için erişim ilkesini ve izinlerini tanımlar. Bu, oturum açma sırasında kullanıcının/uygulamanın kimlik doğrulaması ve kaynak erişimi sırasında yetkilendirme gibi temel özellikleri sağlar.
 
-Bir uygulamaya bir Kiracıdaki kaynaklara erişim izni verildiğinde (kayıt veya [onay](developer-glossary.md#consent)sağlandığında), bir hizmet sorumlusu nesnesi oluşturulur. Microsoft Graph [ServicePrincipal varlığı][MS-Graph-Sp-Entity] , bir hizmet sorumlusu nesnesinin özelliklerine ilişkin şemayı tanımlar.
+Bir uygulamaya kiracıdaki kaynaklara erişim izni verildiğinde (kayıt veya [rıza](developer-glossary.md#consent)üzerine), bir hizmet temel nesnesi oluşturulur. Microsoft Graph [ServicePrincipal varlığı,][MS-Graph-Sp-Entity] bir hizmet ana nesnesinin özellikleri için şema tanımlar.
 
 ### <a name="application-and-service-principal-relationship"></a>Uygulama ve hizmet sorumlusu ilişkisi
 
-Uygulama nesnesini, tüm kiracılarda kullanılmak üzere uygulamanızın *genel* temsili olarak ve hizmet sorumlusu, belirli bir kiracıda kullanılmak üzere *Yerel* gösterim olarak göz önünde bulundurun.
+Uygulama nesnesini, başvurunuzun tüm kiracılar arasında kullanılmak üzere *genel* gösterimi ve hizmet ilkesini belirli bir kiracıda kullanılmak üzere *yerel* temsilcilik olarak düşünün.
 
-Uygulama nesnesi, karşılık gelen hizmet sorumlusu nesneleri oluştururken kullanılmak üzere ortak ve varsayılan özelliklerin *türetildiği* şablon görevi görür. Bu nedenle, bir uygulama nesnesi, yazılım uygulamasıyla 1:1 ilişkiye sahiptir ve buna karşılık gelen hizmet sorumlusu nesnesiyle 1: çok ilişki bulunur.
+Uygulama nesnesi, buna karşılık gelen hizmet sorumlusu nesnelerini oluştururken kullanılmak üzere ortak ve varsayılan özelliklerin *türetildiği* şablon görevi görür. Bu nedenle bir uygulama nesnesinin yazılım uygulamasıyla 1:1 ilişkisi ve karşılık gelen hizmet ana nesnesi(ler) ile 1:01 ilişkisi vardır.
 
-Uygulamanın kullanıldığı her kiracıda bir hizmet sorumlusu oluşturulmalıdır, bu sayede oturum açma ve/veya kiracı tarafından güvenliği sağlanmış kaynaklara erişim için bir kimlik oluşturulmasını sağlar. Tek kiracılı bir uygulamanın yalnızca bir hizmet sorumlusu vardır (kendi ana kiracısında) ve uygulama kaydı sırasında kullanım için oluşturulur ve kullanıma alınmıştır. Çok kiracılı bir Web uygulaması/API 'SI, bu kiracıdan gelen bir kullanıcının kendi kullanımına neden olan her bir kiracıda oluşturulmuş bir hizmet sorumlusu de vardır.
+Uygulamanın kullanıldığı her kiracıda bir hizmet ilkesi oluşturularak, oturum açma ve/veya kiracı tarafından güvence altına alınarak kaynaklara erişim için bir kimlik oluşturması sağlanmalıdır. Tek kiracı uygulamasının (ana kiracısında) uygulama kaydı sırasında kullanılmak için oluşturulan ve onaylanan tek bir hizmet sorumlusu vardır. Çok kiracılı bir Web uygulaması/API'si, her kiracıdan bir kullanıcının kullanımına onay verdiği her kiracıda oluşturulan bir hizmet ilkesine de sahiptir.
 
 > [!NOTE]
-> Uygulama nesneniz üzerinde yaptığınız tüm değişiklikler Ayrıca uygulamanın yalnızca giriş kiracısındaki hizmet sorumlusu nesnesine yansıtılır (kayıtlı olan kiracı). Çok kiracılı uygulamalarda, erişim [uygulama erişim paneli](https://myapps.microsoft.com) aracılığıyla kaldırılana ve yeniden verilene kadar, uygulama nesnesi üzerindeki değişiklikler herhangi bir tüketici kiracının hizmet sorumlusu nesnelerinde yansıtılmaz.
+> Uygulama nesnenizde yaptığınız değişiklikler, uygulamanın yalnızca ev kiracısındaki (kayıtlı olduğu kiracı) hizmet ana nesnesine de yansıtılır. Çok kiracılı uygulamalarda, erişim [Uygulama Erişim Paneli](https://myapps.microsoft.com) aracılığıyla kaldırılıp yeniden verilene kadar, uygulama nesnesindeki değişiklikler hiçbir tüketici kiracısının hizmet ana nesnelerine yansıtılmaz.
 >
-> Ayrıca yerel uygulamaların varsayılan olarak çok kiracılı olarak kaydedildiğini unutmayın.
+> Ayrıca, yerel uygulamaların varsayılan olarak çok kiracı olarak kaydolduğunu da unutmayın.
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki diyagramda, bir uygulamanın uygulama nesnesi ile karşılık gelen hizmet sorumlusu nesneleri arasındaki ilişki, **HR uygulaması**adlı örnek bir çok kiracılı uygulama bağlamında gösterilmektedir. Bu örnek senaryoda üç Azure AD kiracının olması vardır:
+Aşağıdaki diyagram, **İk uygulaması**adı verilen örnek çok kiracılı bir uygulama bağlamında, bir uygulamanın uygulama nesnesi ile ilgili hizmet temel nesneleri arasındaki ilişkiyi göstermektedir. Bu örnek senaryoda üç Azure AD kiracısı vardır:
 
-- **Adatum** -şirket tarafından **İK uygulamasını** geliştiren kiracı
-- **Contoso** - **İK uygulamasının** bir tüketicisi olan contoso organizasyonu tarafından kullanılan kiracı
-- **Fabrikam** -fabrikam organizasyonu tarafından kullanılan kiracı, ayrıca **HR uygulamasını** kullanır
+- **Adatum** - **İk uygulamasını** geliştiren şirket tarafından kullanılan kiracı
+- **Contoso** - **İk uygulamasının** tüketicisi olan Contoso organizasyonu tarafından kullanılan kiracı
+- **Fabrikam** - **Fabrikam** organizasyonunda kullanılan ve İk uygulamasını da tüketen kiracı
 
-![Uygulama nesnesi ve hizmet sorumlusu nesnesi arasındaki ilişki](./media/app-objects-and-service-principals/application-objects-relationship.svg)
+![Uygulama nesnesi ve hizmet ana nesnesi arasındaki ilişki](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 Bu örnek senaryoda:
 
 | Adım | Açıklama |
 |------|-------------|
-| 1    | Uygulamanın giriş kiracısında uygulama ve hizmet sorumlusu nesneleri oluşturma işlemidir. |
-| 2    | Contoso ve Fabrikam yöneticileri onayı tamamladıktan sonra, şirketinin Azure AD kiracısında bir hizmet sorumlusu nesnesi oluşturulur ve yöneticinin verdiği izinler atanır. Ayrıca, IK uygulamasının Kullanıcı tarafından bireysel kullanım için izin verecek şekilde yapılandırılıp tasarlanmadığını unutmayın. |
-| 3    | HR uygulamasının (contoso ve Fabrikam) tüketici kiracılarının her biri kendi hizmet sorumlusu nesnesine sahiptir. Her biri, ilgili yönetici tarafından onaylanan izinlerle yönetilen, çalışma zamanında uygulamanın bir örneğinin kullanımını temsil eder. |
+| 1    | Uygulamanın ev kiracı uygulama ve hizmet ana nesneleri oluşturma işlemidir. |
+| 2    | Contoso ve Fabrikam yöneticileri onayı tamamladığında, şirketinin Azure AD kiracısında bir hizmet temel nesnesi oluşturulur ve yöneticinin verdiği izinleri atanır. Ayrıca İk uygulamasının, kullanıcıların bireysel kullanım için rızasını sağlayacak şekilde yapılandırılabileceğini/tasarlanabileceğini de unutmayın. |
+| 3    | İk uygulamasının (Contoso ve Fabrikam) tüketici kiracılarının her birinin kendi hizmet temel nesnesi vardır. Her biri, ilgili yöneticitarafından onaylanan izinler tarafından yönetilen çalışma zamanında uygulamanın bir örneğini kullandıklarını temsil eder. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hem uygulama hem de hizmet sorumlusu nesnelerini sorgulamak için [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) kullanabilirsiniz.
-- Bir uygulamanın uygulama nesnesine, Microsoft Graph API 'sini, [Azure Portal][AZURE-Portal] uygulama bildirimi düzenleyicisini veya [Azure AD PowerShell cmdlet 'Lerini](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)kullanarak, OData [uygulaması varlığıyla][MS-Graph-App-Entity]temsil ederek erişebilirsiniz.
-- Bir uygulamanın hizmet sorumlusu nesnesine, Microsoft Graph API veya [Azure AD PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)aracılığıyla OData [ServicePrincipal varlığıyla][MS-Graph-Sp-Entity]temsil ederek erişebilirsiniz.
+- Hem uygulama hem de hizmet ana nesnelerini sorgulamak için [Microsoft Graph Explorer'ı](https://developer.microsoft.com/graph/graph-explorer) kullanabilirsiniz.
+- Bir uygulamanın uygulama nesnesine, [Azure portalının][AZURE-Portal] uygulama bildirimi düzenleyicisi Microsoft Graph API'sını veya OData [Application varlığı][MS-Graph-App-Entity]tarafından temsil edildiği şekilde Azure [AD PowerShell cmdlets'i](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)kullanarak erişebilirsiniz.
+- Bir uygulamanın hizmet ana nesnesine, OData [ServicePrincipal varlığı][MS-Graph-Sp-Entity]tarafından temsil edildiği şekilde Microsoft Graph API veya [Azure AD PowerShell cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)aracılığıyla erişebilirsiniz.
 
 <!--Image references-->
 

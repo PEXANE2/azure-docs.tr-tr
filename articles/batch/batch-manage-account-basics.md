@@ -1,6 +1,6 @@
 ---
-title: Hesabınızı yönetin-Azure Batch | Microsoft Docs
-description: Azure Batch hesabını neyin kapsacağınızı öğrenin
+title: Hesabınızı yönetin- Azure Toplu İş | Microsoft Dokümanlar
+description: Azure Toplu İş hesabının nelerden oluştuğunu öğrenin
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72630a2003b63e60ba79882e1861283173840425
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: a4df2ec0439e659fd8dc1448c6209c9718114791
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79375193"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479799"
 ---
-# <a name="manage-your-batch-account"></a>Batch hesabınızı yönetme
+# <a name="manage-your-batch-account"></a>Toplu İşlem hesabınızı yönetme
 
 Bir Batch hesabı Batch hizmeti dahilinde benzersiz şekilde tanımlanan bir varlıktır. Tüm işlemler bir Batch hesabıyla ilişkilendirilir.
 
@@ -29,35 +29,36 @@ Bir Batch hesabı Batch hizmeti dahilinde benzersiz şekilde tanımlanan bir var
 
 Tek bir Batch hesabında birden fazla Batch iş yükü çalıştırabilir ya da iş yüklerinizi aynı abonelik ve farklı Azure bölgelerindeki Batch hesapları arasında dağıtabilirsiniz.
 
-## <a name="components-of-the-batch-account"></a>Batch hesabının bileşenleri
+## <a name="components-of-the-batch-account"></a>Toplu İşlem hesabının bileşenleri
 
-Batch hesabı, Azure 'da büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HPC) toplu işlerini verimli bir şekilde çalıştırmanızı sağlar. Yönettiğiniz hesap dahilinde:
+Toplu İşlem hesabı, Azure'da büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HPC) toplu işlerini verimli bir şekilde çalıştırmanızı sağlar. Yönettiğiniz hesap içinde:
 
 - çalıştırdığınız uygulamalar
 
-- havuzlar içindeki havuzların ve düğümlerin ayrılması
+- havuzları içinde havuzları ve düğümleri tahsisi
 
 - görev sayısı ve türleri 
 
-- verilerin girişi ve çıkışı. Görevleri yönetmek için ek yazılım yüklemeniz gerekmez.
+- veri girişi ve çıktısı. Görevleri yönetmek için ek yazılım yüklemeniz gerekmez.
 
-- Batch hesabını oluşturduğunuzda buna bir ad atamanız istenir. Bu ad, KIMLIĞI ve atandıktan sonra değiştirilemez.
+- Toplu İş hesabı oluşturduğunuzda, bu hesaba bir ad atamanız istenir. Bu ad onun kimliğidir ve bir kez atandıktan sonra değiştirilemez.
 
-- Bir hesabın adını değiştirmek için, onu silmeniz ve yeni bir Batch hesabı oluşturmanız gerekir.
+- Bir hesabın adını değiştirmek için hesabı silmeniz ve yeni bir Toplu İşlem hesabı oluşturmanız gerekir.
 
 - Hesap, kullanmak istediğiniz abonelik içinde oluşturulur.
 
-- Aboneliğinizdeki herhangi bir Batch hesabından birincil ve ikincil hesap anahtarlarını tanımlamak ve almak için hesabını kullanın.
+- Aboneliğinizdeki herhangi bir Toplu Iş hesabından birincil ve ikincil hesap anahtarlarını tanımlamak ve almak için hesabı kullanın.
 
-- Hesap, havuz ayırma ve çekirdek kotalar hakkındaki bilgileri saklar.  
+- Hesap, havuz tahsisi ve çekirdek kotalar hakkında bilgi tutar.  
 
-- Hesap, konum bilgilerini içerir.
+- Hesap konum bilgilerini içerir.
 
 - Hesap, depolama hesabınızı tanımlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal](batch-account-create-portal.md)kullanarak bir Batch hesabı oluşturun.
-- [Batch yönetimi .NET kitaplığı](batch-management-dotnet.md)ile gibi programlı bir şekilde Batch hesabı oluşturun.
-- [Bir Azure Batch havuzundaki işlem düğümlerine uzaktan erişimi yapılandırın veya devre dışı bırakın](pool-endpoint-configuration.md).
+- [Azure portalını](batch-account-create-portal.md)kullanarak toplu iş hesabı oluşturun.
+- [Toplu İşlem Yönetimi .NET kitaplığı](batch-management-dotnet.md)gibi programlı bir Toplu Iş hesabı oluşturun.
+- [Azure Toplu İş havuzunda bilgi düğümleri için uzaktan erişimi yapılandırma](pool-endpoint-configuration.md)veya devre dışı bırakın.
 - [Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma](batch-job-prep-release.md)
+

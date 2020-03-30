@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: mimart
 ms.openlocfilehash: 4e03d076fc9ed7d87326a4c8b4f8bf6c0b21c750
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126718"
 ---
 ## <a name="disable-email-verification"></a>E-posta doğrulamayı devre dışı bırakma
 
-Varsayılan olarak, Azure Active Directory B2C (Azure AD B2C), müşterinin e-posta adresini yerel hesaplar için doğrular (e-posta adresi veya Kullanıcı adı ile kaydolan kullanıcılar için hesaplar). Azure AD B2C, müşterilerin kaydolma işlemi sırasında bunları doğrulamasını zorunlu kılarak geçerli e-posta adreslerini sağlar. Ayrıca, kötü amaçlı aktörlerin uygulamalarınızda sahte hesaplar oluşturmak için otomatik süreçler kullanmalarını da engeller.
+Varsayılan olarak, Azure Active Directory B2C (Azure AD B2C), yerel hesaplar için müşterinizin e-posta adresini doğrular (e-posta adresi veya kullanıcı adı ile kaydolan kullanıcıların hesapları). Azure AD B2C, müşterilerin kayıt işlemi sırasında bunları doğrulamalarını isteyerek geçerli e-posta adresleri sağlar. Ayrıca, kötü amaçlı aktörlerin uygulamalarınızda sahte hesaplar oluşturmak için otomatik leştirilmiş işlemler kullanmasını da engeller.
 
-Bazı uygulama geliştiricileri, kaydolma işlemi sırasında e-posta doğrulamasını atlamayı tercih eder ve bunun yerine müşterilerin e-posta adreslerini daha sonra doğrular. Bunu desteklemek için Azure AD B2C, e-posta doğrulamasını devre dışı bırakacak şekilde yapılandırılabilir. Bunun yapılması daha sorunsuz bir kaydolma işlemi oluşturur ve geliştiricilere, e-posta adreslerini doğrulayan müşterileri, kendilerine ait olmayan müşterilerin ayırt edilmesine yönelik esneklik sağlar.
+Bazı uygulama geliştiricileri, kaydolma işlemi sırasında e-posta doğrulamasını atlamayı ve bunun yerine müşterilerin e-posta adreslerini daha sonra doğrulamalarını tercih eder. Bunu desteklemek için Azure AD B2C e-posta doğrulamasını devre dışı kılacak şekilde yapılandırılabilir. Bunu yapmak daha sorunsuz bir kayıt işlemi oluşturur ve geliştiricilere e-posta adreslerini doğrulamamış müşterilerden ayırt etme esnekliği sağlar.
 
 > [!WARNING]
-> Kaydolma işleminde e-posta doğrulamasını devre dışı bırakmak istenmeyen postalara neden olabilir. Varsayılan Azure AD B2C tarafından belirtilen e-posta doğrulamasını devre dışı bırakırsanız, bir değiştirme doğrulama sistemi uygulamanızı öneririz.
+> Kayıt işleminde e-posta doğrulamanın devre dışı bırakılması istenmeyen postaya yol açabilir. Varsayılan Azure AD B2C sağlanan e-posta doğrulamasını devre dışı ederseniz, yeni bir doğrulama sistemi uygulamanızı öneririz.

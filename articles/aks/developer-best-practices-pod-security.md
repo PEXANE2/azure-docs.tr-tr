@@ -1,50 +1,50 @@
 ---
-title: Geliştirici en iyi uygulamalar - Pod güvenlik Azure Kubernetes Hizmetleri (AKS)
-description: Geliştirici için en iyi pod'ları Azure Kubernetes Service (AKS) güvenli hale getirmeyi öğrenin
+title: Geliştirici en iyi uygulamaları - Azure Kubernetes Hizmetlerinde Pod güvenliği (AKS)
+description: Azure Kubernetes Hizmetinde (AKS) bölmelerin nasıl güvenli hale gelebildiğini öğrenmek için geliştiricinin en iyi uygulamalarını öğrenin
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: eaeb81d7f93124f1f3dedf9676314b1b786d8571
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ee41770f9993da381215f03ebf67aea3cc7dd9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252993"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475587"
 ---
-# <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Pod güvenlik Azure Kubernetes Service (AKS) için en iyi uygulamalar
+# <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) pod güvenliği için en iyi uygulamalar
 
-Geliştirmek ve Azure Kubernetes Service (AKS) uygulamaları çalıştırma gibi podlarınız güvenliğini önemli bir noktadır. Uygulamalarınız, gereken en az sayıda ayrıcalıkların ilkesine göre tasarlanmalıdır. Özel verilerini güvende tutmanın üstünde müşteriler için göz önünde yer alır. Veritabanı bağlantı dizeleri, anahtarlar veya gizlilikler gibi kimlik bilgilerini ve bir saldırganın kötü amaçlı olarak bu gizli dizileri avantajlarından faydalanabilecek dış dünyaya açık sertifikaları istemezsiniz. Bunları kodunuza ekleyin veya kapsayıcı görüntülerinizi katıştırmanız kullanmayın. Bu yaklaşım bir maruz kalma riskini oluşturun ve ancak kapsayıcı görüntülerini yeniden açmanız gerekeceğinden bu kimlik bilgilerini döndürmek için özelliğini sınırlayabilir.
+Azure Kubernetes Hizmeti'nde (AKS) uygulama geliştirip çalıştırdığınızda, bölmelerinizin güvenliği önemli bir husustur. Uygulamalarınız, gereken en az sayıda ayrıcalık ilkesine göre tasarlanmalıdır. Özel verileri güvende tutmak müşteriler için en üst düzey. Veritabanı bağlantı dizeleri, anahtarlar veya sırlar ve sertifikalar gibi kimlik bilgilerini, saldırganın bu sırlardan kötü amaçlı olarak yararlanabileceği dış dünyaya açık olmasını istemezsiniz. Bunları kodunuza eklemeyin veya kapsayıcı resimlerinize gömmeyin. Bu yaklaşım, pozlama için bir risk oluşturur ve kapsayıcı görüntülerinyeniden oluşturulması gerekeceği için bu kimlik bilgilerini döndürme yeteneğini sınırlandıracaktır.
 
-Bu en iyi yöntemler makalesinde, aks 'de Pod 'nin güvenliğini sağlama konusunda odaklanılır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu en iyi uygulamalar makale aks bölmeleri güvenli nasıl odaklanır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * İşlemler ve hizmetler veya ayrıcalık yükseltme saldırısı erişimi sınırlamak için pod güvenlik bağlamını kullanır.
-> * Pod yönetilen kimliklerle diğer Azure kaynaklarıyla kimlik doğrulaması
-> * Azure Key Vault gibi dijital bir kasa kimlik bilgilerini almak ve istek
+> * İşlemlere ve hizmetlere erişimi veya ayrıcalık yükseltmeyi sınırlamak için bölme güvenlik bağlamını kullanın
+> * Bölme yönetilen kimlikleri kullanarak diğer Azure kaynaklarıyla kimlik doğrulaması
+> * Azure Anahtar Kasası gibi dijital kasadan kimlik bilgilerini isteyin ve alın
 
-[Küme güvenliği][best-practices-cluster-security] ve [kapsayıcı görüntüsü yönetimi][best-practices-container-image-management]için en iyi yöntemleri de okuyabilirsiniz.
+Küme [güvenliği][best-practices-cluster-security] ve [kapsayıcı görüntü yönetimi][best-practices-container-image-management]için en iyi uygulamaları da okuyabilirsiniz.
 
-## <a name="secure-pod-access-to-resources"></a>Pod kaynaklarına güvenli erişim
+## <a name="secure-pod-access-to-resources"></a>Kaynaklara güvenli pod erişimi
 
-**En iyi Yöntem Kılavuzu** -farklı bir kullanıcı veya grup olarak çalıştırmak ve temel alınan düğüm işlemlerine ve hizmetlerine erişimi sınırlandırmak için pod güvenlik bağlamı ayarlarını tanımlayın. En az atama ayrıcalıklarına sayısı.
+**En iyi uygulama kılavuzu** - Farklı bir kullanıcı veya grup olarak çalıştırmak ve temel düğüm işlemlerine ve hizmetlerine erişimi sınırlamak için pod güvenlik bağlamı ayarlarını tanımlayın. Gereken en az sayıda ayrıcalık atayın.
 
-Uygulamalarınızın doğru çalışması için, Pod 'lerin, *kök*olarak değil, tanımlı kullanıcı veya grup olarak çalışması gerekir. Pod veya kapsayıcı için `securityContext`, uygun izinleri varsaymak üzere *RunAsUser* veya *fsgroup* gibi ayarları tanımlamanızı sağlar. Yalnızca gerekli kullanıcı veya grup izinleri atayın ve güvenlik bağlamı bir şekilde ek izinler varsaymak kullanmayın. *RunAsUser*, ayrıcalık yükseltme ve diğer Linux özellikleri ayarları yalnızca Linux düğümlerinde ve pods 'de kullanılabilir.
+Uygulamalarınızın doğru çalışması için bölmelerin *kök*olarak değil, tanımlanmış bir kullanıcı veya grup olarak çalışması gerekir. Bir `securityContext` bölme veya kapsayıcı için uygun izinleri almak için *runAsUser* veya *fsGroup* gibi ayarları tanımlamanızı sağlar. Yalnızca gerekli kullanıcı veya grup izinlerini atayın ve güvenlik bağlamını ek izinleri üstlenmek için bir araç olarak kullanmayın. *runAsUser*, ayrıcalık yükseltme ve diğer Linux yetenekleri ayarları yalnızca Linux düğümleri ve bölmelerinde kullanılabilir.
 
-Kök olmayan kullanıcı olarak çalıştırdığınızda, kapsayıcılar ayrıcalıklı bağlantı noktalarına altında 1024 bağlanamıyor. Bu senaryoda, Kubernetes Hizmetleri bir uygulamanın belirli bir bağlantı noktası üzerinde çalıştığı olgu gizlemek için kullanılabilir.
+Kök olmayan bir kullanıcı olarak çalıştırdığınızda, kapsayıcılar 1024 altındaki ayrıcalıklı bağlantı noktalarına bağlanamaz. Bu senaryoda, Kubernetes Hizmetleri, bir uygulamanın belirli bir bağlantı noktasında çalıştığı gerçeğini gizlemek için kullanılabilir.
 
-Pod güvenlik bağlamı da ek özellikler veya işlemleri ve Hizmetleri erişmek için izinler tanımlayabilirsiniz. Aşağıdaki ortak güvenlik bağlamı tanımları ayarlanabilir:
+Pod güvenlik bağlamı, işlemlere ve hizmetlere erişmek için ek özellikler veya izinler de tanımlayabilir. Aşağıdaki ortak güvenlik bağlamı tanımları ayarlanabilir:
 
-* **Allowprivilegeilerletme** , Pod 'un *kök* ayrıcalıkları varsayabilir olup olmadığını tanımlar. Bu ayarın her zaman *false*olarak ayarlanması için uygulamalarınızı tasarlayın.
-* **Linux özellikleri** , Pod 'un temel alınan düğüm işlemlerine erişmesini sağlar. Bu özellikler atama ile dikkatli olun. En az Ata ayrıcalıkları gerekli sayısı. Daha fazla bilgi için bkz. [Linux özellikleri][linux-capabilities].
-* **SELinux etiketleri** , hizmetler, süreçler ve dosya sistemi erişimi için erişim ilkeleri tanımlamanıza olanak sağlayan bir Linux çekirdek güvenlik modülüdür. En az yeniden ata ayrıcalıkları gerekli sayısı. Daha fazla bilgi için bkz. [Kubernetes 'Te SELinux seçenekleri][selinux-labels]
+* **allowPrivilegeEscalation,** bölmenin *kök* ayrıcalıklarını varsayabiliyorsa tanımlar. Uygulamalarınızı, bu ayar her zaman *yanlış*olarak ayarlanması için tasarla.
+* **Linux yetenekleri,** bölmenin alttaki düğüm işlemlerine erişmesini sağlar. Bu yetenekleri atamaya dikkat edin. Gereken en az sayıda ayrıcalık atayın. Daha fazla bilgi için [Bkz. Linux özellikleri.][linux-capabilities]
+* **SELinux etiketleri,** hizmetler, işlemler ve dosya sistemi erişimi için erişim ilkelerini tanımlamanıza olanak tanıyan bir Linux çekirdeği güvenlik modülüdür. Yine, gereken en az sayıda ayrıcalık atayın. Daha fazla bilgi için [Kubernetes'teki SELinux seçeneklerine][selinux-labels] bakın
 
-Aşağıdaki örnek pod YAML bildirim güvenlik bağlamı ayarları tanımlamak için ayarlar:
+Aşağıdaki örnek pod YAML bildirimi tanımlamak için güvenlik bağlamı ayarlarını ayarlar:
 
-* Pod, Kullanıcı KIMLIĞI *1000* ve grup kimliği *2000* ' nin bir parçası olarak çalışır
-* Kullanım ayrıcalıkları `root` için yükseltilemedi
-* Ağ arabirimleri ve ana bilgisayarın (Donanım) gerçek zamanlı saatini erişmek Linux özellikleri sağlar
+* Pod kullanıcı kimliği *1000* ve grup kimliği *2000* parçası olarak çalışır
+* Kullanmak için ayrıcalıkları artıramaz`root`
+* Linux yeteneklerinin ağ arabirimlerine ve ana bilgisayarın gerçek zamanlı (donanım) saatine erişmesine olanak tanır
 
 ```yaml
 apiVersion: v1
@@ -63,52 +63,52 @@ spec:
         add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
-Gereksinim duyduğunuz güvenlik bağlamı ayarları belirlemek için küme işleci ile çalışır. Ek izinler ve erişim pod gerektirir en aza indirmek için uygulamalarınızı tasarlamak deneyin. AppArmor ve küme operatörleri tarafından uygulanabilir (güvenli bilgi işlem) seccomp kullanarak erişimi kısıtlamak için ek güvenlik özellikleri vardır. Daha fazla bilgi için bkz. [kaynaklara yönelik güvenli kapsayıcı erişimi][apparmor-seccomp].
+Hangi güvenlik bağlamı ayarlarına ihtiyacınız olduğunu belirlemek için küme operatörünüzle birlikte çalışın. Ek izinleri en aza indirmek ve bölme nin gerektirdiği neşredilene erişmek için uygulamalarınızı tasarlamaya çalışın. Cluster operatörleri tarafından uygulanabilen AppArmor ve seccomp (güvenli bilgi işlem) kullanarak erişimi sınırlamak için ek güvenlik özellikleri vardır. Daha fazla bilgi için [bkz.][apparmor-seccomp]
 
-## <a name="limit-credential-exposure"></a>Kimlik bilgisi ifşa sınırı
+## <a name="limit-credential-exposure"></a>Kimlik bilgisi maruziyetini sınırlama
 
-**En iyi Yöntem Kılavuzu** -uygulama kodunuzda kimlik bilgilerini tanımlamayın. Azure kaynakları için yönetilen kimlikleri pod isteği erişiminizi diğer kaynaklara izin vermek için kullanın. Azure Key Vault gibi dijital bir kasa, depolamak ve dijital anahtarlarını ve kimlik bilgilerini almak için de kullanılmalıdır. Pod tarafından yönetilen kimlikler yalnızca Linux Pod ve kapsayıcı görüntüleri ile kullanılmaya yöneliktir.
+**En iyi uygulama kılavuzu** - Uygulama kodunuzdaki kimlik bilgilerini tanımlamayın. Pod'unuzun diğer kaynaklara erişim istemesine izin vermek için Azure kaynakları için yönetilen kimlikleri kullanın. Azure Key Vault gibi dijital kasa, dijital anahtarları ve kimlik bilgilerini depolamak ve almak için de kullanılmalıdır. Pod yönetilen kimlikler yalnızca Linux bölmeleri ve konteyner görüntüleriyle kullanılmak üzere tasarlanmıştır.
 
-Kimlik bilgileri uygulama kodunuzda maruz kalma riskini sınırlamak için sabit ya da paylaşılan kimlik bilgilerini kullanmaktan kaçının. Kimlik bilgilerine veya anahtarlara doğrudan kodunuza eklenmemelidir. Bu kimlik bilgilerinin ifşa edildiği imzalanmasını ve güncelleştirilmiş uygulama gerekir. Kendi kimlik ve kendi kimliğini doğrulamasını veya otomatik olarak dijital bir kasadan kimlik bilgilerini almak için yol pod'ların vermek daha iyi bir yaklaşımdır.
+Uygulama kodunuzda kimlik bilgilerinin maruz kalma riskini sınırlamak için, sabit veya paylaşılan kimlik bilgilerinin kullanımından kaçının. Kimlik bilgileri veya anahtarlar doğrudan kodunuza dahil edilmemelidir. Bu kimlik bilgileri açıklanırsa, uygulamanın güncelleştirilip yeniden dağıtılması gerekir. Daha iyi bir yaklaşım, bölmelere kendi kimliklerini ve kimliklerini doğrulamanın yolunu vermek veya kimlik bilgilerini dijital kasadan otomatik olarak almaktır.
 
-Aşağıdaki [ilişkili AKS açık kaynak projeleri][aks-associated-projects] , dijital bir kasadan otomatik olarak kimlik doğrulama veya kimlik bilgileri ve anahtar istekleri yapmanızı sağlar:
+Aşağıdaki [ilişkili AKS açık kaynak projeleri,][aks-associated-projects] bölmelerin otomatik olarak doğrulamasını veya dijital kasadan kimlik bilgileri ve anahtarlar istemenizi sağlar:
 
-* Yönetilen Azure kaynakları için kimlikleri ve
-* Azure anahtar kasası FlexVol sürücüsü
+* Azure kaynakları için yönetilen kimlikler ve
+* Azure Key Vault FlexVol sürücüsü
 
-İlişkili AKS açık kaynak projeleri, Azure teknik desteği tarafından desteklenmez. Topluluğumuza geri bildirim ve hata toplamak için sağlanırlar. Bu projeler üretim kullanımı için önerilmez.
+İlişkili AKS açık kaynak projeleri Azure teknik desteği yle desteklenmez. Onlar bizim toplumdan geribildirim ve hata toplamak için sağlanır. Bu projeler üretim kullanımı için önerilmez.
 
-### <a name="use-pod-managed-identities"></a>Kullanım pod kimlikler yönetilen
+### <a name="use-pod-managed-identities"></a>Bölme yönetilen kimlikleri kullanma
 
-Azure kaynakları için yönetilen bir kimlik, bir pod 'ın kendisini destekleyen, depolama veya SQL gibi Azure hizmetlerinde kimlik doğrulamasını sağlar. Pod, bunları Azure Active Directory kimlik doğrulaması ve dijital belirteç almasını sağlayan bir Azure kimlik atanır. Bu dijital belirteci pod hizmete erişmek ve gerekli eylemleri gerçekleştirmek için yetkili olup olmadığını denetleyen diğer Azure hizmetlerine sunulabilir. Bu yaklaşım, gizli dizi örnek veritabanı bağlantı dizeleri için gerekli olduğu anlamına gelir. Pod yönetilen kimlik için Basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
+Azure kaynakları için yönetilen bir kimlik, bir bölmenin kendisini depolama veya SQL gibi destekleyen Azure hizmetlerine karşı kimliğini niçin doğrulamasını sağlar. Bölmeye, Azure Etkin Dizin'ine kimlik doğrulamalarını ve dijital belirteç almalarını sağlayan bir Azure Kimliği atanır. Bu dijital belirteç, bölmenin hizmete erişmeye ve gerekli eylemleri gerçekleştirmeye yetkili olup olmadığını kontrol eden diğer Azure hizmetlerine sunulabilir. Bu yaklaşım, veritabanı bağlantı dizeleri için hiçbir sır gerekli olduğu anlamına gelir, örneğin. Pod yönetilen kimlik için basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
 
-![Azure'da kimlik pod için basitleştirilmiş bir iş akışı yönetilen](media/developer-best-practices-pod-security/basic-pod-identity.png)
+![Azure'da pod yönetilen kimlik için basitleştirilmiş iş akışı](media/developer-best-practices-pod-security/basic-pod-identity.png)
 
-Yönetilen bir kimlik ile uygulama kodunuzu Azure depolama gibi bir hizmete erişmek için kimlik bilgilerini eklemek gerekmez. Bu nedenle her pod kendi kimliği ile kimlik doğrulaması gibi denetim ve erişim gözden geçirebilirsiniz. Uygulamanız diğer Azure Hizmetleri ile bağlanıyorsa, kimlik bilgilerini yeniden sınırı ve ifşa riskini yönetilen kimlikleri kullanın.
+Yönetilen bir kimliğe sahip olan uygulama kodunuz, Azure Depolama gibi bir hizmete erişmek için kimlik bilgilerini içermelidir. Her bölme nin kendi kimliğiyle kimlik doğrulaması yaptığı ndan, erişimi denetleyebilir ve gözden geçirebilirsiniz. Uygulamanız diğer Azure hizmetlerine bağlanıyorsa, kimlik bilgisi nin yeniden kullanımını ve maruz kalma riskini sınırlamak için yönetilen kimlikleri kullanın.
 
-Pod kimlikleri hakkında daha fazla bilgi için bkz. [BIR AKS kümesini Pod tarafından yönetilen kimlikleri ve uygulamalarınızla birlikte kullanmak Için yapılandırma][aad-pod-identity]
+Pod kimlikleri hakkında daha fazla bilgi için [bkz.][aad-pod-identity]
 
-### <a name="use-azure-key-vault-with-flexvol"></a>Azure Key Vault ile FlexVol kullanma
+### <a name="use-azure-key-vault-with-flexvol"></a>FlexVol ile Azure Anahtar Kasası'nı kullanma
 
-Yönetilen pod kimlikler destekleyici Azure Hizmetleri karşı kimlik doğrulaması yapmak için harika çalışır. Kendi Hizmetleri veya Azure kaynakları için yönetilen kimlikleri olmadan uygulamalar için yine de kimlik bilgilerine veya anahtarlara kullanarak kimlik doğrulaması. Dijital bir kasa, bu kimlik bilgilerini depolamak için kullanılabilir.
+Yönetilen bölme kimlikleri, Azure hizmetlerini desteklemeye karşı kimlik doğrulama yapmak için harika çalışır. Azure kaynakları için yönetilen kimlikleri olmayan kendi hizmetleriniz veya uygulamalarınız için kimlik bilgilerini veya anahtarlarını kullanmaya devam emiyorsunuz. Bu kimlik bilgilerini depolamak için dijital kasa kullanılabilir.
 
-Bunlar dijital kasa ile iletişim kurmak uygulamaların bir kimlik bilgisi gerektiğinde, en son kimlik bilgilerini almak ve daha sonra gerekli hizmete bağlanın. Azure Key Vault bu dijital kasası olabilir. Azure Key Vault'taki pod yönetilen kimliklerle bir kimlik bilgisi almak için basitleştirilmiş bir iş akışı aşağıdaki diyagramda gösterilmiştir:
+Uygulamalar bir kimlik bilgisine ihtiyaç duyduğunda, dijital kasayla iletişim kurar, en son kimlik bilgilerini alır ve gerekli hizmete bağlanır. Azure Key Vault bu dijital kasa olabilir. Pod yönetilen kimlikleri kullanarak Azure Anahtar Kasası'ndan bir kimlik belgesi almak için basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
 
-![Yönetilen bir pod kullanarak Key Vault'tan bir kimlik bilgisi almak için basitleştirilmiş bir iş akışı kimliği](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![Pod yönetilen bir kimlik kullanarak Key Vault'tan kimlik bilgilerini almak için basitleştirilmiş iş akışı](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
 
-Key Vault ile depolayın ve kimlik bilgilerini, depolama hesabı anahtarlarını veya sertifika gibi gizli dizileri düzenli olarak döndür. Azure Key Vault bir FlexVolume kullanarak bir AKS kümesi ile tümleştirebilirsiniz. FlexVolume sürücü yerel olarak kimlik Key Vault'tan almanız ve güvenli bir şekilde yalnızca isteyen pod'u sağlayacağını AKS kümesi sağlar. Anahtar kasası FlexVol sürücü AKS düğümleri üzerine dağıtmak için küme işleci ile çalışır. Pod yönetilen kimlik, anahtar kasası erişim istemek ve FlexVolume sürücüyü gereken kimlik bilgilerini almak için kullanabilirsiniz.
+Key Vault ile kimlik bilgileri, depolama hesabı anahtarları veya sertifikalar gibi sırları düzenli olarak saklar ve düzenli olarak döndürür. FlexVolume kullanarak Azure Key Vault'u aks kümesiyle tümleştirebilirsiniz. FlexVolume sürücüsü, AKS kümesinin anahtar kasasından kimlik bilgilerini yerel olarak almasına ve bunları yalnızca istenen bölmeye güvenli bir şekilde sağlamasına olanak tanır. Key Vault FlexVol sürücüsünü AKS düğümlerine dağıtmak için küme operatörünüzle birlikte çalışın. Anahtar Kasası'na erişim istemek ve FlexVolume sürücüsü aracılığıyla ihtiyacınız olan kimlik bilgilerini almak için pod yönetilen bir kimlik kullanabilirsiniz.
 
-Esnek olarak Azure Key Vault, Linux Pod ve düğümlerinde çalışan uygulamalar ve hizmetlerle birlikte kullanılmak üzere tasarlanmıştır.
+FlexVol'lu Azure Key Vault, Linux bölmeleri ve düğümleri üzerinde çalışan uygulamalar ve hizmetlerle kullanılmak üzere tasarlanmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, pod'ların güvenli nasıl odaklanır. Bu alanlardan bazıları uygulamak için aşağıdaki makalelere bakın:
+Bu makalede, bölmelerinizi nasıl güvenli hale getirmek için odaklanılabilen bir makale yer alanmıştır. Bu alanlardan bazılarını uygulamak için aşağıdaki makalelere bakın:
 
-* [AKS ile Azure kaynakları için Yönetilen kimlikler kullanma][aad-pod-identity]
-* [Azure Key Vault AKS ile tümleştirme][aks-keyvault-flexvol]
+* [AKS ile Azure kaynakları için yönetilen kimlikleri kullanma][aad-pod-identity]
+* [Azure Anahtar Kasası'nı AKS ile tümleştir][aks-keyvault-flexvol]
 
 <!-- EXTERNAL LINKS -->
-[aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo-pod
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
 [aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core

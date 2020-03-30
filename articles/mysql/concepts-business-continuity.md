@@ -1,55 +1,55 @@
 ---
-title: İş sürekliliği-MySQL için Azure veritabanı
-description: MySQL için Azure veritabanı hizmeti kullanılırken iş sürekliliği (zaman içinde geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme) hakkında bilgi edinin.
+title: İş sürekliliği - MySQL için Azure Veritabanı
+description: MySQL hizmeti için Azure Veritabanı'nı kullanırken iş sürekliliği (zamanında geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme) hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 3f82dfd5e289b09761dbdbdc5af4da76d7c961d4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: af0069adc741cfc802c37c90c0c7ec3c3ba74bb2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537236"
 ---
-# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda iş sürekliliğini anlama
+# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda iş sürekliliğini anlama
 
-Bu makalede, MySQL için Azure veritabanı 'nın iş sürekliliği ve olağanüstü durum kurtarma için sağladığı yetenekler açıklanır. Veri kaybına neden olabilecek veya veritabanınızın ve uygulamanızın kullanılamaz hale gelmesine neden olabilecek kurtarmayan olaylardan kurtarmaya yönelik seçenekler hakkında bilgi edinin. Bir kullanıcı veya uygulama hatası veri bütünlüğünü etkiliyorsa, bir Azure bölgesinin kesintiye neden olması veya uygulamanızın bakım gerektirmesi durumunda ne yapılacağını öğrenin.
+Bu makalede, MySQL için Azure Veritabanı'nın iş sürekliliği ve olağanüstü durum kurtarma için sağladığı özellikler açıklanmaktadır. Veri kaybına veya veritabanınızın ve uygulamanızın kullanılamamasına neden olabilecek yıkıcı olaylardan kurtarma seçenekleri hakkında bilgi edinin. Bir kullanıcı veya uygulama hatası veri bütünlüğünü etkilediğinde, bir Azure bölgesinde kesinti olduğunda veya uygulamanız bakım gerektirdiğinde ne yapmanız gerektiğini öğrenin.
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>İş sürekliliği sağlamak için kullanabileceğiniz özellikler
 
-MySQL için Azure veritabanı otomatik yedeklemeleri ve kullanıcıların coğrafi geri yükleme başlatma özelliğini içeren iş sürekliliği özellikleri sağlar. Her birinin tahmini kurtarma süresi (ERT) ve olası veri kaybı için farklı özellikleri vardır. Bu seçenekleri anladıktan sonra aralarında seçim yapabilir ve bunları farklı senaryolar için birlikte kullanabilirsiniz. İş sürekliliği planınızı geliştirdikçe, kurtarma süresi hedefiniz (RTO) bu şekilde kesintiye uğradıktan sonra uygulama tamamen kurtarmadan önce kabul edilebilir maksimum süreyi anlamanız gerekir. Ayrıca, kurtarma noktası hedefiniz (RPO) olduğundan, uygulamanın, kesintiye uğratan sonra kurtarma sırasında kaybedilmesi için en yüksek veri güncelleştirme miktarını (zaman aralığı) anlamanız gerekir.
+MySQL için Azure Veritabanı, otomatik yedeklemeler ve kullanıcıların coğrafi geri yükleme başlatma olanağı nı içeren iş sürekliliği özellikleri sağlar. Her biri Tahmini Kurtarma Süresi (ERT) ve olası veri kaybı için farklı özelliklere sahiptir. Bu seçenekleri anladıktan sonra, aralarından birini seçebilir ve bunları farklı senaryolar için birlikte kullanabilirsiniz. İş sürekliliği planınızı geliştirirken, uygulamanın rahatsız edici olaydan sonra tamamen iyileşmesi için kabul edilebilir maksimum zamanı anlamanız gerekir - bu sizin Kurtarma Süresi Hedefinizdir (RTO). Ayrıca, uygulamanın yıkıcı olaydan sonra kurtarma yaparken kaybetmeyi tolere edebileceği en yüksek son veri güncelleştirmesi miktarını (zaman aralığı) anlamanız gerekir - bu sizin Kurtarma Noktası Hedefinizdir (RPO).
 
-Aşağıdaki tabloda, kullanılabilir özellikler için ERT ve RPO karşılaştırılır:
+Aşağıdaki tablo, kullanılabilir özellikler için ERT ve RPO'yu karşılaştırır:
 
-| **Yapma** | **Temel** | **Genel Amaçlı** | **Bellek için iyileştirilmiş** |
+| **Özellik** | **Temel** | **Genel Amaç** | **Bellek için iyileştirilmiş** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
-| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmiyor | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Yedekten belirli bir noktaya geri yükleme | Bekletme süresi içindeki herhangi bir geri yükleme noktası | Bekletme süresi içindeki herhangi bir geri yükleme noktası | Bekletme süresi içindeki herhangi bir geri yükleme noktası |
+| Coğrafi olarak çoğaltılan yedeklemelerden coğrafi geri yükleme | Desteklenmiyor | ERT < 12 saat<br/>RPO < 1 saat | ERT < 12 saat<br/>RPO < 1 saat |
 
 > [!IMPORTANT]
-> Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz.
+> Silinen sunucular geri **yüklenemez.** Sunucuyu silerseniz, sunucuya ait tüm veritabanları da silinir ve kurtarılamaz.
 
-## <a name="recover-a-server-after-a-user-or-application-error"></a>Bir kullanıcı veya uygulama hatasından sonra bir sunucuyu kurtarma
+## <a name="recover-a-server-after-a-user-or-application-error"></a>Kullanıcı veya uygulama hatasından sonra sunucu kurtarma
 
-Bir sunucuyu çeşitli kesintiye uğratan kurtarmak için hizmetin yedeklemelerini kullanabilirsiniz. Bir kullanıcı yanlışlıkla bazı verileri silebilir, yanlışlıkla önemli bir tabloyu bırakabilir, hatta tüm veritabanını bile bırakabilir. Bir uygulama, bir uygulama hatası nedeniyle yanlışlıkla hatalı verilerle iyi verilerin üzerine yazabilir ve bu şekilde devam edebilir.
+Bir sunucuyu çeşitli yıkıcı olaylardan kurtarmak için hizmetin yedeklerini kullanabilirsiniz. Kullanıcı yanlışlıkla bazı verileri silebilir, yanlışlıkla önemli bir tabloyu bırakabilir ve hatta tüm veritabanını bırakabilir. Bir uygulama yanlışlıkla bir uygulama hatası nedeniyle kötü veri ile iyi verilerin üzerine yazabilir, ve benzeri.
 
-Sunucunuzun bir kopyasını zaman içinde bilinen iyi bir noktada oluşturmak için bir zaman içinde geri yükleme gerçekleştirebilirsiniz. Bu nokta, sunucunuz için yapılandırdığınız yedekleme saklama süresi içinde olmalıdır. Veriler yeni sunucuya geri yüklendikten sonra, özgün sunucuyu yeni geri yüklenen sunucuyla değiştirebilir veya gerekli verileri geri yüklenen sunucudan özgün sunucuya kopyalayabilirsiniz.
+Sunucunuzun bir kopyasını zamanında zamanında geri yükleme gerçekleştirebilirsiniz. Bu nokta, sunucunuz için yapılandırdığınız yedekleme bekletme süresi içinde olmalıdır. Veriler yeni sunucuya geri yüklendikten sonra, özgün sunucuyu yeni yüklenen sunucuyla değiştirebilir veya geri yüklenen sunucudan gerekli verileri özgün sunucuya kopyalayabilirsiniz.
 
 ## <a name="recover-from-an-azure-regional-data-center-outage"></a>Azure bölgesel veri merkezi kesintisinden kurtarma
 
-Çok sık olmasa da Azure veri merkezlerinde kesintiler yaşanabilir. Bir kesinti oluştuğunda, en son birkaç dakika içinde bir iş kesintilerine neden olabilir, ancak saat için en son zaman alabilir.
+Çok sık olmasa da Azure veri merkezlerinde kesintiler yaşanabilir. Bir kesinti meydana geldiğinde, yalnızca birkaç dakika sürebilir, ancak saatlerce sürebilir bir iş kesintiye neden olur.
 
-Bir seçenek, veri merkezi kesintisi olduğunda sunucunuzun çevrimiçi duruma gelmesini bekleyeyöneliktir. Bu, örneğin bir geliştirme ortamı gibi belirli bir süre için sunucunun çevrimdışı olmasını sağlayan uygulamalar için geçerlidir. Veri merkezi bir kesinti olduğunda, kesintiden en son ne kadar süre sürdüğünü bilemezsiniz, bu nedenle bu seçenek yalnızca sunucunuza bir süredir ihtiyacınız yoksa işe yarar.
+Bir seçenek, veri merkezi kesintisi sona erdiğinde sunucunuzun çevrimiçi olmasını beklemektir. Bu, sunucunun belirli bir süre için çevrimdışı olmasını göze alabilen uygulamalar için çalışır, örneğin bir geliştirme ortamı. Veri merkezinin kesintisi olduğunda, kesintinin ne kadar süreceğini bilemezsiniz, bu nedenle bu seçenek yalnızca sunucunuza bir süre ihtiyacınız yoksa çalışır.
 
-Diğer seçenek ise, MySQL için Azure veritabanı 'nın coğrafi olarak yedekli yedeklemeleri kullanarak sunucuyu geri yükleyen coğrafi geri yükleme özelliğini kullanmaktır. Bu yedeklemeler, sunucunuzun barındırıldığı bölge çevrimdışı olduğunda bile erişilebilir. Bu yedeklerden başka bir bölgeye geri yükleme yapabilir ve sunucunuzu yeniden çevrimiçi hale getirebilirsiniz.
+Diğer seçenek, MySQL'in coğrafi yedekli yedeklemeleri kullanarak sunucuyu geri yükleyen coğrafi geri yükleme özelliği için Azure Veritabanı'nı kullanmaktır. Bu yedeklemelere, sunucunuzun barındırılan bölgesi çevrimdışı olsa bile erişilebilir. Bu yedeklemelerden başka bir bölgeye geri yüklenebilir ve sunucunuzu yeniden çevrimiçi duruma getirebilirsiniz.
 
 > [!IMPORTANT]
-> Coğrafi geri yükleme yalnızca, sunucuyu coğrafi olarak yedekli yedekleme depolama alanı ile sağladıysanız mümkündür. Mevcut bir sunucu için yerel olarak yedekli yedekten coğrafi olarak yedekli yedeklemelere geçiş yapmak istiyorsanız, var olan sunucunuzun mysqldump ' ı kullanarak bir döküm almanız ve coğrafi olarak yedekli yedeklemeler ile yapılandırılmış yeni oluşturulan bir sunucuya geri yüklemeniz gerekir.
+> Coğrafi geri yükleme, yalnızca sunucuya coğrafi yedekli yedekleme depolama alanı sağlamanız halinde mümkündür. Varolan bir sunucu için yerel olarak yedekli den coğrafi yedekli yedeklemelere geçmek istiyorsanız, varolan sunucunuzun mysqldökümü kullanarak bir döküm almalı ve coğrafi yedekli yedeklemelerle yapılandırılan yeni oluşturulmuş bir sunucuya geri yüklemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [MySQL Için Azure veritabanı 'nda otomatikleştirilmiş yedeklemeler](concepts-backup.md)hakkında daha fazla bilgi edinin.
-- [Azure Portal](howto-restore-server-portal.md) veya [Azure CLI](howto-restore-server-cli.md)kullanarak nasıl geri yükleyeceğinizi öğrenin.
-- [MySQL Için Azure veritabanı 'nda okuma çoğaltmaları](concepts-read-replicas.md)hakkında bilgi edinin.
+- [MySQL için Azure Veritabanı'ndaki otomatik yedeklemeler](concepts-backup.md)hakkında daha fazla bilgi edinin.
+- [Azure portalını](howto-restore-server-portal.md) veya Azure [CLI'yi](howto-restore-server-cli.md)kullanarak nasıl geri yükleyin ilerler öğrenin.
+- [MySQL için Azure Veritabanı'nda okuma yinelemeleri](concepts-read-replicas.md)hakkında bilgi edinin.

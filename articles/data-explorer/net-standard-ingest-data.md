@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini .NET Standard SDK ile veri alma (Önizleme)
-description: Bu makalede .NET Standard SDK kullanarak Azure Veri Gezgini 'a veri alma (yükleme) hakkında bilgi edineceksiniz.
+title: Azure Data Explorer .NET Standard SDK ile veri alma (Önizleme)
+description: Bu makalede, .NET Standart SDK'yı kullanarak Azure Veri Gezgini'ne nasıl veri öttürecek (yüklenirsiniz) öğrenirsiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251784"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Azure Veri Gezgini .NET Standard SDK 'sını kullanarak verileri alma (Önizleme)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Azure Veri Gezgini .NET Standart SDK'yı kullanarak veri alma (Önizleme)
 
-Azure Veri Gezgini (ADX), günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir bir veri araştırma hizmetidir. ADX, .NET Standard için iki istemci kitaplığı sağlar: alma [kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) ve [veri kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Bu kitaplıklar verileri bir kümeye almanıza (yüklemenize ve kodunuzdan verileri sorgulamanıza olanak tanır. Bu makalede, ilk olarak bir test kümesinde tablo ve veri eşlemesi oluşturacaksınız. Daha sonra kümeye bir alımı sıraya alın ve sonuçları doğrulayın.
+Azure Veri Gezgini (ADX), günlük ve telemetri verileri için hızlı ve yüksek ölçeklenebilir bir veri arama hizmetidir. ADX ,NET Standard için iki istemci kitaplığı sağlar: [bir yutma kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) ve [veri kitaplığı.](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard) Bu kitaplıklar verileri bir kümeye almanıza (yüklemenize ve kodunuzdan verileri sorgulamanıza olanak tanır. Bu makalede, önce bir test kümesinde bir tablo ve veri eşleme oluşturursunuz. Daha sonra kümeye bir alım sırasına göre sıralanır ve sonuçları doğrularsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
 * [Test kümesi ve veritabanı](create-cluster-database-portal.md)
 
-## <a name="install-the-ingest-library"></a>Alma kitaplığını yüklemesi
+## <a name="install-the-ingest-library"></a>Yutabilir kitaplığı yükleme
 
 ```
 Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 ```
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Azure Veri Gezgini uygulamanın kimliğini doğrulamak için AAD kiracı kimliğinizi kullanır. Kiracı kimliğinizi bulmak için aşağıdaki URL'yi kullanın ve *YourDomain* yerine kendi etki alanınızı yazın.
 
@@ -46,7 +46,7 @@ https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 
 Bu örnekte kiracı kimliği `6babcaad-604b-40ac-a9d7-9fd97c0b779f` değeridir.
 
-Bu örnek, kümeye erişmek için kimlik doğrulaması için bir AAD kullanıcısı ve parolası kullanır. AAD uygulama sertifikası ve AAD uygulama anahtarını da kullanabilirsiniz. Bu kodu çalıştırmadan önce `tenantId`, `user`ve `password` değerlerini ayarlayın.
+Bu örnek, kümeye erişmek için kimlik doğrulaması için bir AAD kullanıcısı ve parola kullanır. AAD uygulama sertifikasını ve AAD uygulama anahtarını da kullanabilirsiniz. Bu kodu `tenantId`çalıştırmadan `user` `password` önce ve değerlerini ayarlamadan önce.
 
 ```csharp
 var tenantId = "<TenantId>";
@@ -54,7 +54,7 @@ var user = "<User>";
 var password = "<Password>";
 ```
 
-## <a name="construct-the-connection-string"></a>Bağlantı dizesini oluşturun
+## <a name="construct-the-connection-string"></a>Bağlantı dizesini oluşturma
 Şimdi bağlantı dizesini hazırlayın. Sonraki bir adımda hedef tabloyu ve eşlemeyi oluşturursunuz.
 
 ```csharp
@@ -81,7 +81,7 @@ var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/Storm
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Test kümenizde tablo oluşturma
-`StormEvents.csv` dosyasındaki verilerin şemasıyla eşleşen `StormEvents` adlı bir tablo oluşturun.
+Dosyadaki verilerin `StormEvents` şemaile eşleşen adlandırılmış bir tablo oluşturun. `StormEvents.csv`
 
 ```csharp
 var table = "StormEvents";
@@ -122,7 +122,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="define-ingestion-mapping"></a>Veri alımı eşlemesini tanımlama
 
-Gelen CSV verilerini tablo oluştururken kullanılan sütun adlarıyla eşleyin.
+Gelen CSV verilerini tablo oluştururken kullanılan sütun adlarıyla eşle.
 Bu tabloda bir [CSV sütun eşleme nesnesi](/azure/kusto/management/create-ingestion-mapping-command) sağlama
 
 ```csharp
@@ -165,7 +165,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="queue-a-message-for-ingestion"></a>Veri alımı için bir iletiyi kuyruğa alma
 
-Blob depolamadan veri çekmek ve bu verilerin ADX 'e alınması için bir ileti kuyruğa alın.
+Blob depolamadan veri çekmek ve bu verileri ADX'e almak için bir ileti sıraya girin.
 
 ```csharp
 var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -193,9 +193,9 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 }
 ```
 
-## <a name="validate-data-was-ingested-into-the-table"></a>Verileri doğrulama, tabloya alındı
+## <a name="validate-data-was-ingested-into-the-table"></a>Verileri doğrula tabloya alındı
 
-Sıraya alınan alma işleminin alımı zamanlamasını ve verileri ADX ' e yüklemesi için beş ila on dakika bekleyin. Ardından aşağıdaki kodu çalıştırarak `StormEvents` tablosundaki kayıtların sayısını alın.
+Verileri öttürme zamanlamak ve ADX'e yüklemek için sıraya alınan alım için beş ila on dakika bekleyin. Ardından aşağıdaki kodu çalıştırarak `StormEvents` tablosundaki kayıtların sayısını alın.
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
@@ -209,7 +209,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="run-troubleshooting-queries"></a>Sorun giderme sorguları çalıştırma
 
-[https://dataexplorer.azure.com](https://dataexplorer.azure.com) adresinde oturum açın ve kümenize bağlanın. Son dört saatte hiç veri alımı hatası olup olmadığını görmek için veritabanınızda aşağıdaki komutu çalıştırın. Çalıştırmadan önce veritabanı adını değiştirin.
+Oturum açın [https://dataexplorer.azure.com](https://dataexplorer.azure.com) ve kümenize bağlanın. Son dört saatte hiç veri alımı hatası olup olmadığını görmek için veritabanınızda aşağıdaki komutu çalıştırın. Çalıştırmadan önce veritabanı adını değiştirin.
 
 ```Kusto
 .show ingestion failures
@@ -226,7 +226,7 @@ Son dört saatteki tüm veri alım işlemlerinin durumunu görüntülemek için 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer makalelerimizi izlemeyi planlıyorsanız oluşturduğunuz kaynakları saklayın. Aksi takdirde, veritabanınızda aşağıdaki komutu çalıştırarak `StormEvents` tablosunu temizleyin.
+Diğer makalelerimizi izlemeyi planlıyorsanız, oluşturduğunuz kaynakları koruyun. Aksi takdirde, veritabanınızda aşağıdaki komutu çalıştırarak `StormEvents` tablosunu temizleyin.
 
 ```Kusto
 .drop table StormEvents

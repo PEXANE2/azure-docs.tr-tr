@@ -1,58 +1,58 @@
 ---
-title: Azure Dev Spaces kümenizi Held 3 (Önizleme) kullanacak şekilde yapılandırma
+title: Azure Dev Spaces kümenizi Miğfer 3 'ü kullanacak şekilde yapılandırın (önizleme)
 services: azure-dev-spaces
 ms.date: 02/28/2020
 ms.topic: conceptual
-description: Geliştirme alanları kümenizi hele 3 kullanacak şekilde yapılandırmayı öğrenin
-keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 9e3f3ff90d36215c386bf1d8b8ec1edd54ebfb6a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+description: Miğfer 3'ü kullanmak için Dev Spaces kümenizi nasıl yapılandırılasınız öğrenin
+keywords: Azure Dev Alanlar, Dev Alanlar, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler
+ms.openlocfilehash: dbccb2618fd5a27805261d60e7891d920e0bc372
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78202266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454304"
 ---
-# <a name="configure-your-azure-dev-spaces-cluster-to-use-helm-3-preview"></a>Azure Dev Spaces kümenizi Held 3 (Önizleme) kullanacak şekilde yapılandırma
+# <a name="configure-your-azure-dev-spaces-cluster-to-use-helm-3-preview"></a>Azure Dev Spaces kümenizi Miğfer 3 'ü kullanacak şekilde yapılandırın (önizleme)
 
-Azure Dev Spaces, Kullanıcı hizmetlerini AKS kümenizdeki dev Spaces 'a yüklemek için varsayılan olarak Held 2 kullanır. Geliştirme alanlarında Kullanıcı hizmetlerini yüklemek için, Azure Dev Spaces Held 2 yerine helm3 kullanmasını sağlayabilirsiniz. Helm Azure Dev Spaces 'ın Kullanıcı hizmetlerini yüklemek için kullandığı sürümden bağımsız olarak, aynı kümedeki kendi sürümlerinizi yönetmek için Helm 2 veya 3 istemcisini kullanmaya devam edebilirsiniz.
+Azure Dev Spaces, AKS kümenizde kullanıcı hizmetlerini dev alanlarda yüklemek için varsayılan olarak Helm 2'yi kullanır. Azure Dev Spaces'in, geliştirme alanlarında kullanıcı hizmetlerini yükleyen Helm 2 yerine Miğfer 3'ü kullanmasını etkinleştirebilirsiniz. Miğfer Azure Dev Spaces'in kullanıcı hizmetlerini yüklemek için kullandığı sürümden bağımsız olarak, aynı kümede kendi sürümlerinizi yönetmek için Helm 2 veya 3 istemcisini kullanmaya devam edebilirsiniz.
 
-Helm 3 ' ü etkinleştirdiğinizde, Azure Dev Spaces aşağıdaki yollarla Kullanıcı hizmetlerini geliştirme alanlarına yüklerken farklı davranır:
+Mik 3'ü etkinleştirdiğinizde, Azure Geliştirme Alanları kullanıcı hizmetlerini geliştirme alanlarında aşağıdaki şekillerde yüklerken farklı şekilde davranmaktadır:
 
-* Tiller artık *azds* ad alanındaki kümenize dağıtılmadı.
-* Held, sürüm bilgilerini, *azds* ad alanı yerine bir hizmetin yüklendiği ad alanında depolar.
-* Helb 3 sürüm bilgileri, bir denetleyici silindikten sonra hizmetin yüklendiği ad alanında kalır.
-* Heln 3 istemcisini kullanarak kümenizdeki Azure Dev Spaces tarafından yönetilen herhangi bir yayınla doğrudan etkileşim kurabilirsiniz.
+* Çapa makinesi artık *azds* ad alanında kümenize dağıtılamaz.
+* Helm, *azds* ad alanı yerine bir hizmetin yüklü olduğu ad alanında bilgi yayımlar.
+* Miğfer 3 sürüm bilgileri, denetleyici silindikten sonra bir hizmetin yüklendiği ad alanında kalır.
+* Miğfer 3 istemcisini kullanarak kümenizdeki Azure Dev Spaces tarafından yönetilen tüm sürümlerle doğrudan etkileşim kurabilirsiniz.
 
-Bu kılavuzda, geliştirme alanlarında Kullanıcı hizmetlerini yüklemek için Azure Dev Spaces Held 3 ' ü nasıl etkinleştireceğinizi öğreneceksiniz.
+Bu kılavuzda, Azure Geliştirme Alanları için Miğfer 3'ün kullanıcı hizmetlerini dev alanlara yüklemesini nasıl etkinleştireceğinizi öğreneceksiniz.
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI][azure-cli].
 
-### <a name="register-the-helm3preview-preview-feature"></a>Helm3Preview Preview özelliğini kaydetme
+### <a name="register-the-helm3preview-preview-feature"></a>Helm3Preview önizleme özelliğini kaydedin
 
-Geliştirme alanlarında Kullanıcı hizmetlerini yüklemek için Azure Dev Spaces Held 3 ' ü kullanmak üzere etkinleştirmek için, önce *az Feature Register* komutunu kullanarak aboneliğinizde *Helm3Preview* Özellik bayrağını etkinleştirin:
+Azure Dev Spaces'in kullanıcı hizmetlerini geliştirme alanlarında yüklemek için Miğfer 3'ü kullanmasını sağlamak için, öncelikle *az özellik kayıt* komutunu kullanarak aboneliğinizde *Helm3Preview* özellik bayrağını etkinleştirin:
 
 > [!WARNING]
-> *Helm3Preview* özelliği bayrağıyla üzerinde Azure dev Spaces etkinleştirdiğiniz herhangi bir aks kümesi, bu önizleme deneyimini kullanacaktır. AKS kümelerinde tamamen desteklenen Azure Dev Spaces etkinleştirmeye devam etmek için, üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek için ayrı bir test veya geliştirme Azure aboneliği kullanın.
+> *Helm3Preview* özellik bayrağıyla Azure Dev Spaces'i etkinleştirdiğiniz herhangi bir AKS kümesi bu önizleme deneyimini kullanır. AKS kümelerinde tam destekli Azure Dev Alanları'nı etkinleştirmeye devam etmek için, üretim aboneliklerinde önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek için ayrı bir test veya geliştirme Azure aboneliği kullanın.
 
 ```azure-cli
 az feature register --namespace Microsoft.DevSpaces --name Helm3Preview
 ```
 
-Kaydın tamamlanabilmesi birkaç dakika sürer. *Az Feature Show* komutunu kullanarak kayıt durumunu denetleyin:
+Kaydın tamamlanması birkaç dakika sürer. *az özelliği göster* komutunu kullanarak kayıt durumunu kontrol edin:
 
 ```azure-cli
 az feature show --namespace Microsoft.DevSpaces --name Helm3Preview
 ```
 
-*Durum* *kaydedildiğinde*, *az Provider Register*kullanarak *Microsoft. devspaces* kaydını yenileyin:
+*Devlet* *Kaydedildiğinde,* az sağlayıcı kaydını kullanarak *Microsoft.DevSpaces* *kaydını yenileyin:*
 
 ```azure-cli
 az provider register --namespace Microsoft.DevSpaces
@@ -62,34 +62,34 @@ az provider register --namespace Microsoft.DevSpaces
 
 Bu özellik önizlemedeyken aşağıdaki sınırlamalar geçerlidir:
 
-* Bu özelliği, mevcut iş yükleriyle AKS kümelerinde kullanamazsınız. Yeni bir AKS kümesi oluşturmanız gerekir.
+* Varolan iş yüklerine sahip AKS kümelerinde bu özelliği kullanamazsınız. Yeni bir AKS kümesi oluşturmanız gerekir.
 
-## <a name="create-your-cluster"></a>Kümenizi oluşturma
+## <a name="create-your-cluster"></a>Kümenizi oluşturun
 
-Bu Önizleme özelliğine sahip bir bölgede yeni bir AKS kümesi oluşturun. Aşağıdaki komutlar *Myresourcegroup* adlı bir kaynak grubu ve *Orta Güney ABD* bölgesinde *MYAKS* adlı yeni bir aks kümesi oluşturur:
+Bu önizleme özelliğine sahip bir bölgede yeni bir AKS kümesi oluşturun. Aşağıdaki komutlar *MyResourceGroup* adında bir kaynak grubu ve *MyAKS*adında yeni bir AKS kümesi oluşturur:
 
 ```azure-cli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces"></a>Azure Dev Spaces etkinleştir
+## <a name="enable-azure-dev-spaces"></a>Azure Dev Alanlarını Etkinleştir
 
-AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için *Use-dev-Spaces* komutunu kullanın. Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve varsayılan bir dev alanı oluşturuyor.
+AKS kümenizde Dev Spaces'i etkinleştirmek ve istemleri izlemek için *kullanım-dev-spaces* komutunu kullanın. Aşağıdaki komut, *MyResourceGroup* grubunda *MyAKS* kümesinde Dev Spaces'i etkinleştirive varsayılan bir dev alanı oluşturur.
 
 ```cmd
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
 
-## <a name="verify-dev-spaces-is-running-helm-3"></a>Geliştirme alanlarının, Held 3 çalıştığını doğrulama
+## <a name="verify-dev-spaces-is-running-helm-3"></a>Dev Spaces'in Miğfer 3'ü çalıştırdan doğrula
 
-*Azds* ad alanındaki dağıtımları listeleyerek Tiller 'in çalışmadığını doğrulayın:
+Çapa makinesinin *azds* ad alanında dağıtımları listeleyerek çalışmadığını doğrulayın:
 
 ```cmd
 kubectl get deployment -n azds
 ```
 
-*Tiller-Deploy* komutunun azds ad alanında çalışmadığını onaylayın. Örnek:
+*Çapa makinesi dağıtmanın* azds ad alanında çalışmadığını onaylayın. Örnek:
 
 ```console
 $ kubectl get deployments -n azds
@@ -100,10 +100,10 @@ traefik                   1/1     1            1           39m
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
+Azure Geliştirme Alanları'nın birden çok kapsayıcıda daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda farklı sürümlerle veya kod dallarıyla çalışarak ortak geliştirmeyi nasıl basitleştirebileceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 'de takım geliştirme][team-quickstart]
+> [Azure Geliştirme Alanlarında ekip geliştirme][team-quickstart]
 
 
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest

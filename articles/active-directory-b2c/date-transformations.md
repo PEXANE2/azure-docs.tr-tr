@@ -1,45 +1,45 @@
 ---
-title: Özel ilkeler için tarih talebi dönüştürme örnekleri
-description: Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için tarih talep dönüştürme örnekleri.
+title: Özel ilkeler için tarih talepleri dönüşüm örnekleri
+description: Azure Active Directory B2C'nin Kimlik Deneyimi Çerçevesi (IEF) şeması için tarih talepleri dönüşüm örnekleri.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c02ac9392d6f3f95deef38ff86250e96dfb76d96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78188856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476697"
 ---
-# <a name="date-claims-transformations"></a>Tarih talebi dönüşümleri
+# <a name="date-claims-transformations"></a>Tarih talepleri dönüşümleri
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çerçevesi şemasının Tarih talep dönüştürmelerinin kullanılmasına yönelik örnekler sağlanmaktadır. Daha fazla bilgi için bkz. [Claimstransformations](claimstransformations.md).
+Bu makalede, Azure Etkin Dizin B2C(Azure AD B2C) schema'daki Kimlik Deneyimi Çerçevesi şemasının tarih talep dönüşümlerini kullanmak için örnekler verilmektedir. Daha fazla bilgi için [Bkz.](claimstransformations.md)
 
-## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
+## <a name="assertdatetimeisgreaterthan"></a>Assertdatetimeisgreaterthan
 
-Bir tarih ve saat talebinin (dize veri türü) ikinci bir tarih ve saat talebine (dize veri türü) göre daha sonra olduğunu denetler ve bir özel durum oluşturur.
+Bir tarih ve saat talebinin (dize veri türü) ikinci bir tarih ve saat talebinden (string veri türü) daha geç olduğunu denetler ve bir özel durum oluşturur.
 
-| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| ınputclaim | leftOperand | string | İkinci talepten daha sonra olması gereken ilk talebin türü. |
-| ınputclaim | rightOperand | string | İkinci talebin türü, ilk talepten daha önce olmalıdır. |
-| InputParameter | Assertıequalto | boole | Sol işlenen sağ işlenene eşitse bu onay işaretinin geçmesi gerekip gerekmediğini belirtir. |
-| InputParameter | AssertIfRightOperandIsNotPresent | boole | Sağ işlenen eksik ise bu onay geçişinin geçmesi gerekip gerekmediğini belirtir. |
-| InputParameter | TreatAsEqualIfWithinMillseconds | int | İki tarih ile aynı süreyi göz önünde bulundurmaya izin veren milisaniye sayısını belirtir (örneğin, saat eğme için hesaba). |
+| Girişİddia | leftOperand | string | İlk iddianın türü, ikinci iddiadan daha geç olması gerekir. |
+| Girişİddia | rightOperand | string | İkinci iddianın türü, ilk iddiadan daha önce olması gerekir. |
+| ınputparameter | Assertifequalto | boole | Sol operand sağ operand eşit ise bu iddia nın geçip geçmeyeceğini belirtir. |
+| ınputparameter | AssertIfRightOperandIsNotPresent | boole | Doğru operand eksikse bu iddianın geçip geçmeyeceğini belirtir. |
+| ınputparameter | TreatAsEqualIfWithinMillseconds | int | İki tarih zamanı arasında izin verilebilen milisaniye sayısını, süreleri eşit olarak kabul etmek için belirtir (örneğin, saat çarpıklığı için hesaba katmak için). |
 
-**AssertDateTimeIsGreaterThan** talep dönüştürmesi, her zaman [otomatik olarak onaylanan bir teknik profille](self-asserted-technical-profile.md)çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. **DateTimeGreaterThan** kendiliğinden onaylanan teknik profil meta verileri, teknik profilin kullanıcıya sunduğu hata iletisini denetler.
+**AssertDateTimeIsGreaterThan** talepleri dönüştürme her zaman kendini ileri teknik bir [profil](self-asserted-technical-profile.md)tarafından çağrılan bir doğrulama teknik [profilden](validation-technical-profile.md) yürütülür. **DateTimeGreaterThan** kendi kendine ileri teknik profil meta veri teknik profil kullanıcıya sunduğu hata iletisini denetler. Hata iletileri [yerelleştirilebilir.](localization-string-ids.md#claims-transformations-error-messages)
 
-![Assertstringclaimsareeşittir yürütme](./media/date-transformations/assert-execution.png)
+![AssertStringClaimsAreEşit yürütme](./media/date-transformations/assert-execution.png)
 
-Aşağıdaki örnek, `currentDateTime` talebini `approvedDateTime` talep ile karşılaştırır. `currentDateTime` `approvedDateTime`daha sonra olduğunda bir hata oluşur. Dönüştürme, 5 dakika (30000 milisaniye) farklılık içinde olan değerleri eşit olarak değerlendirir.
+Aşağıdaki örnek, `currentDateTime` `approvedDateTime` iddiaile talebi karşılaştırır. Daha sonra `currentDateTime` ise bir `approvedDateTime`hata atılır. Dönüştürme, değerleri 5 dakika (30000 milisaniye) fark içindeyse eşit olarak değerlendirir.
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -55,7 +55,7 @@ Aşağıdaki örnek, `currentDateTime` talebini `approvedDateTime` talep ile kar
 </ClaimsTransformation>
 ```
 
-`login-NonInteractive` doğrulaması teknik profili `AssertApprovedDateTimeLaterThanCurrentDateTime` talep dönüşümünü çağırır.
+Doğrulama `login-NonInteractive` teknik profili, `AssertApprovedDateTimeLaterThanCurrentDateTime` talep dönüşümlerini çağırır.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -65,7 +65,7 @@ Aşağıdaki örnek, `currentDateTime` talebini `approvedDateTime` talep ile kar
 </TechnicalProfile>
 ```
 
-Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz** teknik profilini çağırır.
+Kendi kendini öne süren teknik profil, doğrulama **girişi-NonInteractive** teknik profilini çağırır.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -81,20 +81,20 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **leftOperand**: 2018-10-01T15:00:00.0000000 z
-    - **rightOperand**: 2018-10-01T14:00:00.0000000 z
-- Sonuç: hata oluştu
+    - **leftOperand**: 2020-03-01T15:00:00.000000Z
+    - **rightOperand**: 2020-03-01T14:00:00.000000Z
+- Sonuç: Hata atıldı
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
-**Tarih** ClaimType 'ı bir **DateTime** ClaimType 'a dönüştürür. Talep dönüştürmesi saat biçimini dönüştürür ve tarihe 12:00:00 ÖÖ ekler.
+**Tarih** Talep Türünü **DateTime** ClaimType'a dönüştürür. Talepler dönüştürme zaman biçimini dönüştürür ve tarihe 12:00:00 ekler.
 
-| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| ınputclaim | ınputclaim | date | Dönüştürülecek ClaimType. |
-| OutputClaim | OutputClaim | Tarih/saat | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| Girişİddia | inputClaim | date | Dönüştürülecek Talep Türü. |
+| ÇıktılarTalep | outputClaim | tarih saat | Bu Talep Dönüşümünden sonra üretilen ClaimType çağrıldı. |
 
-Aşağıdaki örnek, talep `dateOfBirth` (Tarih veri türü) başka bir talep `dateOfBirthWithTime` (TarihSaat veri türü) dönüştürmeyi gösterir.
+Aşağıdaki örnek, talebin `dateOfBirth` (tarih veri türü) başka `dateOfBirthWithTime` bir iddiaya (dateTime veri türü) dönüştürülmesini gösterir.
 
 ```XML
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
@@ -110,20 +110,20 @@ Aşağıdaki örnek, talep `dateOfBirth` (Tarih veri türü) başka bir talep `d
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputclaim**: 2019-06-01
-- Çıkış talepleri:
-    - **Outputclaim**: 1559347200 (1 haziran 2019 12:00:00)
+    - **inputClaim**: 2020-15-03
+- Çıktı talepleri:
+    - **outputClaim**: 2020-15-03T00:00:00.000000Z
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
+## <a name="convertdatetimetodateclaim"></a>ConvertdatetimeToDateClaim
 
-Bir **DateTime** ClaimType 'ı bir **Tarih** ClaimType 'a dönüştürür. Talep dönüştürmesi saat biçimini tarihten itibaren kaldırır.
+**DateTime** ClaimType'ı **Date** ClaimType'a dönüştürür. Talepler dönüştürme tarihten zaman biçimini kaldırır.
 
-| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| ınputclaim | ınputclaim | Tarih/saat | Dönüştürülecek ClaimType. |
-| OutputClaim | OutputClaim | date | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| Girişİddia | inputClaim | tarih saat | Dönüştürülecek Talep Türü. |
+| ÇıktılarTalep | outputClaim | date | Bu Talep Dönüşümünden sonra üretilen ClaimType çağrıldı. |
 
-Aşağıdaki örnek, talep `systemDateTime` (dateTime veri türü) başka bir talep `systemDate` (Tarih veri türü) için dönüştürmeyi gösterir.
+Aşağıdaki örnek, talebin `systemDateTime` (dateTime veri türü) başka `systemDate` bir iddiaya (tarih veri türü) dönüştürülmesini gösterir.
 
 ```XML
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
@@ -139,17 +139,17 @@ Aşağıdaki örnek, talep `systemDateTime` (dateTime veri türü) başka bir ta
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **ınputclaim**: 1559347200 (1 haziran 2019 12:00:00)
-- Çıkış talepleri:
-  - **Outputclaim**: 2019-06-01
+  - **giriş**: 2020-15-03T11:34:22.000000Z
+- Çıktı talepleri:
+  - **outputTalep**: 2020-15-03
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
-Geçerli UTC Tarih ve saatini alın ve değeri bir ClaimType 'a ekleyin.
+Geçerli UTC tarih ve saatini alın ve bir ClaimType'a değer ekleyin.
 
-| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | currentDateTime | Tarih/saat | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| ÇıktılarTalep | currentDateTime | tarih saat | Bu Talep Dönüşümünden sonra üretilen ClaimType çağrıldı. |
 
 ```XML
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
@@ -161,23 +161,23 @@ Geçerli UTC Tarih ve saatini alın ve değeri bir ClaimType 'a ekleyin.
 
 ### <a name="example"></a>Örnek
 
-* Çıkış talepleri:
-    * **CurrentDateTime**: 1534418820 (16 ağustos 2018 11:27:00)
+* Çıktı talepleri:
+    * **currentTimeTime**: 2020-15-03T11:40:35.000000Z
 
-## <a name="datetimecomparison"></a>DateTimeComparison
+## <a name="datetimecomparison"></a>DateTimeKarşılaştırma
 
-Bir tarih saat değerinin daha sonra, daha önce veya diğer bir değere eşit olup olmadığını belirleme. Sonuç, `true` veya `false`bir değere sahip yeni bir Boole ClaimType Boole değeridir.
+Bir dateTime'ın daha sonra mı, daha önce mi yoksa diğerine eşit mi olduğunu belirleyin. Sonuç bir değeri `true` veya `false`ile yeni bir boolean ClaimType boolean olduğunu.
 
-| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| ınputclaim | firstDateTime | Tarih/saat | İkinci tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ilk tarih saat. Null değer bir özel durum oluşturur. |
-| ınputclaim | secondDateTime | Tarih/saat | İlk tarih saatten daha önce veya sonra olup olmadığını karşılaştırmak için ikinci tarih saat. Null değer geçerli datetTime olarak değerlendirilir. |
-| InputParameter | operator | string | Şu değerlerden biri: aynı, daha sonra veya daha önceki bir sürüm. |
-| InputParameter | Timespanınseconds | int | TimeSpan öğesini ilk tarih/saate ekleyin. |
-| OutputClaim | Sonuç | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| Girişİddia | ilkDateTime | tarih saat | İlk dateTime önce veya daha sonra ikinci dateTime daha önce veya daha geç olup olmadığını karşılaştırmak için. Null değeri bir özel durum atar. |
+| Girişİddia | secondDateTime | tarih saat | İlk dateTime'dan önce mi yoksa daha geç mi olduğunu karşılaştırmak için ikinci dateTime. Null değeri geçerli datetTime olarak kabul edilir. |
+| ınputparameter | operator | string | Aşağıdaki değerlerden biri: aynı, daha sonra veya daha önce. |
+| ınputparameter | timeSpanInSeconds | int | Zaman dilimini ilk datetime ekleyin. |
+| ÇıktılarTalep | sonuç | boole | Bu Talep Dönüşümünden sonra üretilen ClaimType çağrıldı. |
 
-İki ClaimTypes 'ın eşit, daha sonra veya daha önceki bir sürümü olup olmadığını anlamak için bu talep dönüşümünü kullanın. Örneğin, bir kullanıcının hizmet koşullarınızı (TOS) en son kabul ettiği zamanı saklayabilirsiniz. 3 aydan sonra kullanıcıdan TOS 'a yeniden erişmesini isteyebilirsiniz.
-Talep dönüşümünü çalıştırmak için, ilk olarak geçerli tarih saat ve ayrıca Kullanıcı TOS 'ı kabul eden son zamanı almanız gerekir.
+İki ClaimTypes'ın birbirinden eşit, daha sonra mı yoksa daha önce mi olduğunu belirlemek için bu talep dönüşümlerini kullanın. Örneğin, bir kullanıcı nın hizmet şartlarınızı (TOS) en son kabul ettiği zamanı depolayabilirsiniz. 3 ay sonra, kullanıcıdan TOS'a tekrar erişmelerini isteyebilirsiniz.
+Talep dönüşümlerini çalıştırmak için, önce geçerli dateTime'ı almanız ve ayrıca kullanıcının TOS'u son kez kabul etmesi gerekir.
 
 ```XML
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
@@ -198,10 +198,10 @@ Talep dönüşümünü çalıştırmak için, ilk olarak geçerli tarih saat ve 
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **Firstdatetime**: 2018-01-01T00:00:00.100000 z
-    - **Seconddatetime**: 2018-04-01T00:00:00.100000 z
+    - **ilkTarih :** 2020-01-01T00:00:00.100000Z
+    - **secondDateTime**: 2020-04-01T00:00:00.100000Z
 - Giriş parametreleri:
-    - **işleç**: daha sonra
-    - **Timespanınseconds**: 7776000 (90 gün)
-- Çıkış talepleri:
-    - **sonuç**: true
+    - **operator**: daha sonra
+    - **timeSpanInSeconds:** 7776000 (90 gün)
+- Çıktı talepleri:
+    - **sonuç**: doğru

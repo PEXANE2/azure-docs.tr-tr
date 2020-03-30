@@ -1,161 +1,165 @@
 ---
 title: Uygulamaları izleme
-description: Azure portal kullanarak Azure App Service uygulamaları nasıl izleyeceğinizi öğrenin. Bildirilen kotaları ve ölçümleri anlayın.
+description: Azure portalını kullanarak Azure Uygulama Hizmeti'ndeki uygulamaları nasıl izleyeceğinizi öğrenin. Bildirilen kotaları ve ölçümleri anlayın.
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d84340730391abd7dba4d13202503d37941c09b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658449"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500425"
 ---
-# <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
+# <a name="monitor-apps-in-azure-app-service"></a>Azure Uygulama Hizmeti'ndeki uygulamaları izleme
+[Azure Uygulama Hizmeti,](https://go.microsoft.com/fwlink/?LinkId=529714) [Azure portalında](https://portal.azure.com)web uygulamaları, mobil cihazlar ve API uygulamaları için yerleşik izleme işlevi sağlar.
 
-Azure portal, bir uygulama ve App Service planı için *kotaları* ve *ölçümleri* gözden geçirebilir ve temel ölçümler olan *uyarıları* ve *Otomatik ölçeklendirmeyi* ayarlayabilirsiniz.
+Azure portalında, bir uygulama ve Uygulama Hizmeti planı için *kotaları* ve *ölçümleri* inceleyebilir ve *uyarılar* ve kurallara dayalı *ölçümleri otomatik ölçekleme* ayarlayabilirsiniz.
 
 ## <a name="understand-quotas"></a>Kotaları anlama
 
-App Service barındırılan uygulamalar, kullanabilecekleri kaynaklar üzerinde belirli sınırlara tabidir. Sınırlar, uygulamayla ilişkili App Service planı tarafından tanımlanır.
+Uygulama Hizmeti'nde barındırılan uygulamalar, kullanabilecekleri kaynaklarla ilgili belirli sınırlara tabidir. Sınırlar, uygulamayla ilişkili Uygulama Hizmeti planı yla tanımlanır.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Uygulama *ücretsiz* veya *paylaşılan* bir planda barındırılıyorsa, uygulamanın kullanabileceği kaynakların sınırları Kotalar tarafından tanımlanır.
+Uygulama *Ücretsiz* veya *Paylaşılan* bir planda barındırılıyorsa, uygulamanın kullanabileceği kaynakların sınırları kotalarla tanımlanır.
 
-Uygulama *temel*, *Standart*veya *Premium* bir planda barındırılıyorsa, kullandıkları kaynaklarla ilgili sınırlar, App Service planındaki *Boyut* (küçük, orta, büyük) ve *örnek sayısı* (1, 2, 3, vb.) ile ayarlanır.
+Uygulama *Temel,* *Standart*veya *Premium* planda barındırılıyorsa, kullanabilecekleri kaynakların sınırları, Uygulama Hizmeti planının *boyutuna* (Küçük, Orta, Büyük) ve *örnek sayısına* (1, 2, 3 vb.) göre ayarlanır.
 
-Ücretsiz veya paylaşılan uygulamalar için kotalar şunlardır:
+Ücretsiz veya Paylaşılan uygulamalar için kotalar şunlardır:
 
 | Kota | Açıklama |
 | --- | --- |
-| **CPU (kısa)** | Bu uygulama için, 5 dakikalık bir aralıkta izin verilen CPU miktarı. Bu kota her beş dakikada bir sıfırlanır. |
-| **CPU (gün)** | Bu uygulama için bir günde izin verilen toplam CPU miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
+| **Cpu (Kısa)** | Bu uygulama için izin verilen CPU miktarı 5 dakikalık bir aralıkta. Bu kota her beş dakikada bir sıfırlanır. |
+| **CPU (Gün)** | Bir gün içinde bu uygulama için izin verilen toplam CPU miktarı. Bu kota, gece yarısı UTC'de her 24 saatte bir sıfırlanır. |
 | **Bellek** | Bu uygulama için izin verilen toplam bellek miktarı. |
-| **Bant genişliği** | Bu uygulama için günde izin verilen giden bant genişliğinin toplam miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
-| **Biçimlendiri** | İzin verilen toplam depolama miktarı. |
+| **Bant genişliği** | Bir gün içinde bu uygulama için izin giden bant genişliği toplam miktarı. Bu kota, gece yarısı UTC'de her 24 saatte bir sıfırlanır. |
+| **Dosya Sistemi** | İzin verilen toplam depolama miktarı. |
 
-*Temel*, *Standart*ve *Premium* 'da barındırılan uygulamalar Için geçerli olan tek Kota dosya sistemi 'dir.
+*Temel*, *Standart*ve *Premium'da* barındırılan uygulamalar için geçerli olan tek kota Filesystem'dir.
 
-Çeşitli App Service SKU 'Larının kullanabildiği belirli kotalar, sınırlar ve özellikler hakkında daha fazla bilgi için bkz. [Azure abonelik hizmeti sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
+Çeşitli Uygulama Hizmeti SK'leri tarafından kullanılabilen belirli kotalar, sınırlar ve özellikler hakkında daha fazla bilgi için [Azure Abonelik hizmet sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)bakın.
 
-### <a name="quota-enforcement"></a>Kota zorlaması
+### <a name="quota-enforcement"></a>Kota uygulaması
 
-Bir uygulama *CPU (Short)* , *CPU (gün)* veya *bant genişliği* kotasını aşarsa, kota sıfırlanana kadar uygulama durdurulur. Bu süre boyunca, tüm gelen istekler HTTP 403 hatasına neden olacak.
+Bir uygulama CPU *(kısa) ,* *CPU (Gün)* veya *bant genişliği* kotasını aşarsa, uygulama kota sıfırlanına kadar durdurulur. Bu süre zarfında, gelen tüm istekler bir HTTP 403 hatasıyla sonuçlanır.
 
 ![403 hata iletisi][http403]
 
-Uygulama belleği kotası aşılırsa, uygulama yeniden başlatılır.
+Uygulama Bellek kotası aşılırsa, uygulama yeniden başlatılır.
 
-Dosya sistemi kotası aşılırsa, herhangi bir yazma işlemi başarısız olur. Yazma işlemi hatalarında günlüklere yazma işlemleri dahildir.
+Filesystem kotası aşılırsa, herhangi bir yazma işlemi başarısız olur. Yazma işlemi hataları günlükleri için herhangi bir yazma içerir.
 
-App Service planınızı yükselterek, kotalarınızı uygulamanızı artırabilir veya kaldırabilirsiniz.
+Uygulama Hizmeti planınızı yükselterek uygulamanızdaki kotaları artırabilir veya kaldırabilirsiniz.
 
 ## <a name="understand-metrics"></a>Ölçümleri anlama
 
 > [!NOTE]
-> **Dosya sistemi kullanımı** , genel olarak alınan yeni bir ölçümdür, özel önizleme için beyaz listeye alınmadığınız takdirde hiçbir veri beklenmez.
+> **Dosya Sistemi Kullanımı,** genel olarak kullanıma çıkarılan yeni bir metriktir, özel önizleme için beyaz listeye alınmadıkça veri beklenmiyor.
 > 
 
-Ölçümler, uygulama veya App Service planının davranışı hakkında bilgi sağlar.
+> [!IMPORTANT]
+> **Ortalama Yanıt Süresi,** metrik toplamalarla karışıklığı önlemek için amortismana kesilir. **Yanıt Süresini** yedek olarak kullanın.
+
+Ölçümler, uygulama veya Uygulama Hizmeti planının davranışı hakkında bilgi sağlar.
 
 Bir uygulama için kullanılabilir ölçümler şunlardır:
 
 | Ölçüm | Açıklama |
 | --- | --- |
-| **Ortalama yanıt süresi** | Uygulama için geçen ortalama süre (saniye cinsinden). |
-| **Ortalama bellek çalışma kümesi** | Uygulama tarafından, megabayt (MIB) cinsinden kullanılan ortalama bellek miktarı. |
-| **Bağlantılar** | Korumalı alan içindeki ilişkili yuva sayısı (W3wp. exe ve onun alt işlemi).  Bağlama yuvası, bind ()/Connect () API 'Leri çağırarak ve bir yuva CloseHandle ()/Closesocket () ile kapatılana kadar kalır. |
-| **CPU süresi** | Uygulama tarafından saniye cinsinden tüketilen CPU miktarı. Bu ölçüm hakkında daha fazla bilgi için bkz. [CPU saati vs CPU yüzdesi](#cpu-time-vs-cpu-percentage). |
-| **Geçerli derlemeler** | Bu uygulamadaki tüm AppDomain 'ler genelinde yüklenen derlemelerin geçerli sayısı. |
-| **Içindeki veriler** | MIB içinde uygulama tarafından tüketilen gelen bant genişliği miktarı. |
-| **Giden veriler** | MIB içinde uygulama tarafından tüketilen giden bant genişliği miktarı. |
-| **Dosya sistemi kullanımı** | Uygulama tarafından tüketilen dosya sistemi kotasının yüzdesi. |
-| **Gen 0 çöp koleksiyonları** | Uygulama işleminin başlangıcından bu yana nesil 0 nesnelerinin atık olarak toplandığı sayı. Daha yüksek nesil GCs, tüm düşük nesil GCs 'leri içerir.|
-| **Gen 1 çöp koleksiyonları** | Uygulama işleminin başlangıcından bu yana 1. nesil nesnelerin atık olarak toplandığı sayı. Daha yüksek nesil GCs, tüm düşük nesil GCs 'leri içerir.|
-| **Gen 2 çöp koleksiyonları** | Oluşturma 2 nesnelerinin, uygulama işleminin başlangıcından bu yana atık olarak toplandığı sayı.|
-| **Tanıtıcı sayısı** | Uygulama işlemi tarafından şu anda açık olan tanıtıcı sayısının toplam sayısı.|
-| **Http 2xx** | HTTP durum kodu ≥ 200 ile sonuçlanan isteklerin sayısı, ancak 300 <. |
-| **Http 3xx** | HTTP durum kodu ≥ 300 ile sonuçlanan isteklerin sayısı, ancak 400 <. |
-| **Http 401** | HTTP 401 durum koduna neden olan istek sayısı. |
-| **Http 403** | HTTP 403 durum koduna neden olan istek sayısı. |
-| **HTTP 404** | HTTP 404 durum koduna neden olan istek sayısı. |
-| **Http 406** | HTTP 406 durum koduna neden olan istek sayısı. |
-| **Http 4xx** | HTTP durum kodu ≥ 400 ile sonuçlanan isteklerin sayısı, ancak 500 <. |
-| **Http sunucu hataları** | HTTP durum kodu ≥ 500 ile sonuçlanan isteklerin sayısı, ancak 600 <. |
-| **GÇ diğer bayt/saniye** | Uygulama işleminin, denetim işlemleri gibi verileri içermeyen g/ç işlemlerine bayt verme hızıdır.|
-| **GÇ diğer Işlem/saniye** | Uygulama işleminin okuma veya yazma işlemleri olmayan g/ç işlemlerini verme oranı.|
-| **GÇ okuma bayt/saniye** | Uygulama işleminin g/ç işlemlerinden bayt okuma hızıdır.|
-| **GÇ okuma Işlemi/saniye** | Uygulama işleminin okuma g/ç işlemlerini verme hızıdır.|
-| **GÇ yazma bayt/saniye** | Uygulama işleminin g/ç işlemlerine bayt yazma hızıdır.|
-| **GÇ Yazma Işlemi/saniye** | Uygulama işleminin yazma g/ç işlemlerini verme hızıdır.|
-| **Bellek çalışma kümesi** | Uygulama tarafından, MIB 'de kullanılan geçerli bellek miktarı. |
-| **Özel baytlar** | Özel baytlar, uygulama işleminin ayırdığı ve diğer işlemlerle paylaşılamayan belleğin bayt cinsinden geçerli boyutudur.|
-| **İstekleri** | Elde edilen HTTP durum kodundan bağımsız olarak isteklerin toplam sayısı. |
-| **Uygulama kuyruğundaki istekler** | Uygulama istek sırasındaki isteklerin sayısı.|
-| **İş parçacığı sayısı** | Uygulama işleminde Şu anda etkin olan iş parçacıklarının sayısı.|
-| **Toplam uygulama etki alanları** | Bu uygulamada yüklü olan AppDomain 'in geçerli sayısı.|
-| **Toplam yüklenmeyen uygulama etki alanları** | Uygulamanın başlangıcından bu yana bellekten kaldırılan toplam AppDomain sayısı.|
+| **Yanıt Süresi** | Uygulamanın isteklere saniyeler içinde sunması için gereken süre. |
+| **Ortalama Yanıt Süresi (amortismana uğradı)** | Uygulamanın isteklere saniyeler içinde sunması için gereken ortalama süre. |
+| **Ortalama bellek çalışma kümesi** | Megabayt (MiB) olarak uygulama tarafından kullanılan ortalama bellek miktarı. |
+| **Bağlantılar** | Kum havuzunda bulunan bağlı soketlerin sayısı (w3wp.exe ve alt işlemleri).  Bağlı bir soket bind()/connect() API'leri çağırarak oluşturulur ve belirtilen soket CloseHandle()/closesocket() ile kapatılana kadar kalır. |
+| **CPU Süresi** | Uygulama tarafından saniyeler içinde tüketilen CPU miktarı. Bu metrik hakkında daha fazla bilgi için [CPU süresi vs CPU yüzdesi](#cpu-time-vs-cpu-percentage)bakın. |
+| **Geçerli Meclisler** | Bu uygulamadaki tüm AppDomain'lere yüklenen mevcut Derleme sayısı. |
+| **Veri In** | MiB'de uygulama tarafından tüketilen gelen bant genişliği miktarı. |
+| **Veri Çıkış** | MiB'de uygulama tarafından tüketilen giden bant genişliği miktarı. |
+| **Dosya Sistemi Kullanımı** | Uygulama tarafından tüketilen dosya sistemi kotasının yüzdesi. |
+| **Gen 0 Çöp Koleksiyonları** | Uygulama işleminin başlangıcından bu yana nesil 0 nesnelerinin kaç kez çöp topladığı. Yüksek nesil GC'ler tüm alt nesil GC'leri içerir.|
+| **Gen 1 Çöp Koleksiyonları** | Uygulama işleminin başlangıcından bu yana nesil 1 nesnelerin kaç kez çöp topladığı. Yüksek nesil GC'ler tüm alt nesil GC'leri içerir.|
+| **Gen 2 Çöp Koleksiyonları** | Uygulama sürecinin başlangıcından bu yana nesil 2 nesnelerin kaç kez çöp topladığı.|
+| **Tanıtıcı Sayısı** | Uygulama işlemi tarafından şu anda açık olan toplam tutamaç sayısı.|
+| **Http 2xx** | HTTP durum kodu ≥ 200 ile sonuçlanan ancak 300 < isteklerin sayısı. |
+| **Http 3xx** | HTTP durum kodu ≥ 300 ile sonuçlanan ancak 400 < isteklerin sayısı. |
+| **Http 401** | HTTP 401 durum koduyla sonuçlanan isteklerin sayısı. |
+| **Http 403** | HTTP 403 durum koduyla sonuçlanan isteklerin sayısı. |
+| **Http 404** | HTTP 404 durum koduyla sonuçlanan isteklerin sayısı. |
+| **Http 406** | HTTP 406 durum koduyla sonuçlanan isteklerin sayısı. |
+| **Http 4xx** | HTTP durum kodu ≥ 400 ile sonuçlanan ancak 500'< sonuçlanan isteklerin sayısı. |
+| **Http Sunucu Hataları** | HTTP durum kodu ≥ 500 ile sonuçlanan ancak 600 < isteklerin sayısı. |
+| **IO Saniyede Diğer Baytlar** | Uygulama işleminin denetim işlemleri gibi verileri içermeyen G/Ç işlemlerine bayt verme oranı.|
+| **IO Saniyede Diğer İşlemler** | Uygulama işleminin okuma veya yazma işlemleri olmayan G/Ç işlemlerini verme oranı.|
+| **IO Saniyede Bayt Oku** | Uygulama işleminin G/Ç işlemlerinden bayt okuma oranı.|
+| **IO Saniyede Okuma İşlemleri** | Uygulama işleminin okuma G/Ç işlemlerini verme oranı.|
+| **IO Saniyede Bayt Yaz** | Uygulama işleminin G/Ç işlemlerine bayt yazma oranı.|
+| **IO Saniyede Yazma İşlemleri** | Uygulama işleminin yazma G/Ç işlemleri verme oranı.|
+| **Bellek çalışma kümesi** | Uygulama tarafından mib'de kullanılan geçerli bellek miktarı. |
+| **Özel Baytlar** | Özel Baytlar, uygulama işleminin diğer işlemlerle paylaşılmayan ayırdığı bellekteki geçerli boyutdur.|
+| **Istek** | Ortaya çıkan HTTP durum koduna bakılmaksızın toplam istek sayısı. |
+| **Uygulama Kuyruğundaki İstekler** | Uygulama istek kuyruğundaki istek sayısı.|
+| **Ilmekli** | Uygulama işleminde şu anda etkin olan iş parçacığı sayısı.|
+| **Toplam Uygulama Etki Alanı** | Bu uygulamaya yüklenen geçerli AppDomain sayısı.|
+| **Toplam Uygulama Etki Alanı Boşaltıldı** | Uygulamanın başlangıcından bu yana boşaltılan toplam AppDomain sayısı.|
 
 
-App Service planı için kullanılabilir ölçümler şunlardır:
+Bir Uygulama Hizmeti planı için kullanılabilir ölçümler şunlardır:
 
 > [!NOTE]
-> App Service planı ölçümleri yalnızca *temel*, *Standart*ve *Premium* katmanlardaki planlar için kullanılabilir.
+> Uygulama Hizmeti planı ölçümleri yalnızca *Temel,* *Standart*ve *Premium* katmanlarda bulunan planlar için kullanılabilir.
 > 
 
 | Ölçüm | Açıklama |
 | --- | --- |
-| **CPU yüzdesi** | Planın tüm örnekleri genelinde kullanılan ortalama CPU. |
-| **Bellek yüzdesi** | Planın tüm örnekleri genelinde kullanılan ortalama bellek. |
-| **Içindeki veriler** | Planın tüm örnekleri genelinde kullanılan ortalama gelen bant genişliği. |
-| **Giden veriler** | Planın tüm örneklerinde kullanılan ortalama giden bant genişliği. |
-| **Disk kuyruğu uzunluğu** | Depolama üzerinde sıraya alınan okuma ve yazma isteklerinin ortalama sayısı. Yüksek disk kuyruğu uzunluğu, aşırı disk g/ç nedeniyle yavaşlabilen bir uygulamanın göstergesidir. |
-| **Http kuyruğu uzunluğu** | Yerine getirilmeden önce kuyruğa oturmak zorunda olan HTTP isteklerinin ortalama sayısı. Yüksek veya artan bir HTTP kuyruğu uzunluğu, ağır yük altında bir planın belirtisidir. |
+| **CPU Yüzdesi** | Planın tüm örneklerinde kullanılan ortalama CPU. |
+| **Bellek Yüzdesi** | Planın tüm örneklerinde kullanılan ortalama bellek. |
+| **Veri In** | Planın tüm örneklerinde kullanılan ortalama gelen bant genişliği. |
+| **Veri Çıkış** | Planın tüm örneklerinde kullanılan ortalama giden bant genişliği. |
+| **Disk Sıra Uzunluğu** | Depolama da sıraya alınan ortalama okuma ve yazma istekleri sayısı. Yüksek disk sırası uzunluğu, aşırı disk G/Ç nedeniyle yavaşlayan bir uygulamanın göstergesidir. |
+| **Http Sıra Uzunluğu** | Yerine getirilmeden önce kuyruğa girmek zorunda olan ortalama HTTP isteği sayısı. Yüksek veya artan HTTP Kuyruk uzunluğu, ağır yük altındaki bir planın belirtisidir. |
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>CPU süresi vs CPU yüzdesi
 <!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
 CPU kullanımını yansıtan iki ölçüm vardır:
 
-**CPU süresi**: ücretsiz veya paylaşılan planlarda barındırılan uygulamalar için yararlıdır, çünkü kotalarından biri uygulama tarafından kullanılan CPU dakikalarında tanımlanmıştır.
+**CPU Süresi**: Kotalarından biri uygulama tarafından kullanılan CPU dakikalarında tanımlandığı için, Ücretsiz veya Paylaşılan planlarda barındırılan uygulamalar için yararlıdır.
 
-**CPU yüzdesi**: temel, standart ve Premium planlarında barındırılan uygulamalar için kullanışlıdır, çünkü bu kişiler dışarı ölçeklenebilirler. CPU yüzdesi, tüm örneklerde genel kullanım kullanımının iyi bir göstergesidir.
+**CPU yüzdesi**: Temel, Standart ve Premium planlarında barındırılan uygulamalar için yararlıdır, çünkü bunlar ölçeklendirilebilir. CPU yüzdesi tüm örneklerde genel kullanımın iyi bir göstergesidir.
 
-## <a name="metrics-granularity-and-retention-policy"></a>Ölçüm ayrıntı düzeyi ve bekletme ilkesi
-Bir uygulama ve App Service planı için ölçümler, aşağıdaki granuya ve bekletme ilkeleriyle birlikte günlüğe kaydedilir ve hizmet tarafından toplanır:
+## <a name="metrics-granularity-and-retention-policy"></a>Ölçümler tanecikve bekletme ilkesi
+Bir uygulama ve uygulama hizmeti planı için ölçümler, aşağıdaki ayrıntılı lıklar ve bekletme ilkeleriyle birlikte hizmet tarafından günlüğe kaydedilir ve toplanır:
 
-* **Dakika** ayrıntı düzeyi ölçümleri 30 saat boyunca tutulur.
-* **Saat** ayrıntı düzeyi ölçümleri 30 gün boyunca tutulur.
-* **Gün** ayrıntı düzeyi ölçümleri 30 gün boyunca tutulur.
+* **Dakika** tanecik ölçümleri 30 saat saklanır.
+* **Saat** tanecik ölçümleri 30 gün boyunca saklanır.
+* **Gün** tanecik ölçümleri 30 gün boyunca saklanır.
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure portal kotaları ve ölçümleri izleme
-Bir uygulamayı etkileyen çeşitli kotalar ve ölçümlerin durumunu gözden geçirmek için [Azure Portal](https://portal.azure.com)gidin.
+## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure portalındaki kotaları ve ölçümleri izleme
+Bir uygulamayı etkileyen çeşitli kotaların ve ölçümlerin durumunu gözden geçirmek için [Azure portalına](https://portal.azure.com)gidin.
 
-![Azure portal kota grafiği][quotas]
+![Azure portalında kotalar grafiği][quotas]
 
-Kotaları bulmak için **ayarlar** > **Kotalar**' ı seçin. Grafik üzerinde şunları gözden geçirebilirsiniz: 
+Kotaları bulmak için **Ayarlar** > **Kotaları'nı**seçin. Grafikte şunları inceleyebilirsiniz: 
 1. Kota adı.
 1. Sıfırlama aralığı.
-1. Geçerli sınırı.
-1. Geçerli değeri.
+1. Geçerli limiti.
+1. Şu anki değeri.
 
-Azure portal][metrics] ölçüm grafiği ![doğrudan kaynak **genel bakış** sayfasından ölçümlere erişebilirsiniz. Burada bazı uygulama ölçümlerini temsil eden grafikler görürsünüz.
+![Azure portalında][metrics] metrik grafik Ölçümlere doğrudan kaynak **Genel Bakış** sayfasından erişebilirsiniz. Burada bazı uygulama ölçümlerini temsil eden grafikler görürsünüz.
 
-Bu grafiklerin herhangi birine tıkladığınızda, özel grafikler oluşturabileceğiniz, farklı ölçümleri Sorgulayabileceğiniz ve çok daha birçok Ölçüm görünümü uygulanır. 
+Bu grafiklerden herhangi birini tıklattığınızda, özel grafikler oluşturabileceğiniz, farklı ölçümleri sorgulayabileceğiniz ve çok daha fazlasını yapabileceğiniz metrikgörünümüne götürün. 
 
-Ölçümler hakkında daha fazla bilgi edinmek için bkz. [hizmet ölçümlerini izleme](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Ölçümler hakkında daha fazla bilgi edinmek için hizmet [ölçümlerini izleyin'e](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)bakın.
 
 ## <a name="alerts-and-autoscale"></a>Uyarılar ve otomatik ölçeklendirme
-Bir uygulama veya App Service planı için ölçümler, uyarılara bağlanabilir. Daha fazla bilgi için bkz. [Uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-alerts-portal.md).
+Bir uygulama nın veya Uygulama Hizmeti planının ölçümleri uyarılara bağlanabilir. Daha fazla bilgi için bkz. [Uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-Temel veya daha yüksek App Service planlarında barındırılan App Service uygulamalar otomatik ölçeklendirmeyi destekler. Otomatik ölçeklendirme ile App Service planı ölçümlerini izleyen kuralları yapılandırabilirsiniz. Kurallar, gerektiğinde ek kaynaklar sağlayabilen örnek sayısını artırabilir veya azaltabilir. Kurallar, uygulamanın aşırı sağlandığı durumlarda tasarruf etmenize de yardımcı olabilir.
+Temel veya daha yüksek Uygulama Hizmeti planlarında barındırılan Uygulama Hizmeti uygulamaları otomatik ölçeği destekler. Otomatik ölçeklendirme ile, Uygulama Hizmeti planı ölçümlerini izleyen kuralları yapılandırabilirsiniz. Kurallar, gerektiğinde ek kaynaklar sağlayabilecek örnek sayısını artırabilir veya azaltabilir. Kurallar, uygulama aşırı sağlandığında da paradan tasarruf etmenizi sağlayabilir.
 
-Otomatik ölçeklendirme hakkında daha fazla bilgi için [](../monitoring-and-diagnostics/insights-how-to-scale.md) bkz. [Azure izleyici otomatik ölçeklendirme Için ölçeklendirme ve en iyi uygulamalar](../azure-monitor/platform/autoscale-best-practices.md).
+Otomatik ölçeklendirme hakkında daha fazla bilgi için Azure [Monitörü otomatik ölçeklendirmeiçin](../azure-monitor/platform/autoscale-best-practices.md) [nasıl ölçeklendirilip](../monitoring-and-diagnostics/insights-how-to-scale.md) en iyi uygulamalara bakın.
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

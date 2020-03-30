@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM 'de Oracle altın kapısı uygulama | Microsoft Docs
-description: Azure ortamınızda bir Oracle altın kapıdan yararlanın ve çalışır duruma hızla erişin.
+title: Oracle Golden Gate'i Azure Linux VM'de uygulayın | Microsoft Dokümanlar
+description: Azure ortamınızda bir Oracle Golden Gate'i hızla çalışır hale getirin.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0706b7d3c238c154d3694b5760266299a7d788ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309599"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536879"
 ---
-# <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM 'de Oracle altın kapısı uygulama 
+# <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden Gate'i Azure Linux VM'de uygulayın 
 
-Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu kılavuzda, Azure 'un Market Galerisi görüntüsünden bir Oracle 12c veritabanı dağıtmak için Azure CLı 'nin nasıl kullanılacağı açıklanır. 
+Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu kılavuz, Azure Marketi galerisi görüntüsünden bir Oracle 12c veritabanı dağıtmak için Azure CLI'nin nasıl kullanılacağını ayrıntılarıyla anlatır. 
 
-Bu belgede, bir Azure VM üzerinde Oracle altın kapısı oluşturma, yüklemeyi ve yapılandırmayı adım adım gösterir. Bu öğreticide, iki sanal makine tek bir bölgedeki kullanılabilirlik kümesinde ayarlanır. Aynı öğretici, tek bir Azure bölgesindeki farklı Kullanılabilirlik Alanları veya iki farklı bölgede bulunan VM 'Ler için OracleGolden Gate 'i kurmak için kullanılabilir.
+Bu belge, Oracle Golden Gate'i Azure VM'de nasıl oluşturabileceğinizi, yükleyip yapılandırabileceğinizi adım adım gösterir. Bu öğreticide, iki sanal makine tek bir bölgede ayarlanmış bir kullanılabilirlik kümesinde ayarlanır. Aynı öğretici, tek bir Azure bölgesinde farklı Kullanılabilirlik Bölgelerindeki VM'ler için OracleGolden Gate'i veya iki farklı bölgedeki VM kurulumu için kullanılabilir.
 
 Başlamadan önce Azure CLI’nin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure CLI yükleme kılavuzu](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama
 
-Oracle altın kapısı yüklemesini gerçekleştirmek için aynı Kullanılabilirlik kümesinde iki Azure VM oluşturmanız gerekir. VM 'Leri oluşturmak için kullandığınız Market görüntüsü **Oracle: Oracle-Database-Ee: 12.1.0.2: latest**.
+Oracle Golden Gate yüklemesini gerçekleştirmek için, aynı kullanılabilirlik kümesinde iki Azure VM oluşturmanız gerekir. VM'leri oluşturmak için kullandığınız Market görüntüsü **Oracle:Oracle-Database-Ee:12.1.0.2:latest**.
 
-Ayrıca, UNIX Düzenleyicisi VI hakkında bilgi sahibi olmanız ve X11 (X Windows) ile ilgili temel bilgiye sahip olmanız gerekir.
+Ayrıca Unix editörü vi aşina olmak ve x11 (X Windows) temel bir anlayışa sahip olması gerekir.
 
-Aşağıda ortam yapılandırmasının bir özeti verilmiştir:
+Aşağıdaki ortam yapılandırmasının bir özeti veözeti:
 > 
-> |  | **Birincil site** | **Siteyi Çoğalt** |
+> |  | **Birincil site** | **Siteyi çoğaltma** |
 > | --- | --- | --- |
-> | **Oracle sürümü** |Oracle 12c sürüm 2 – (12.1.0.2) |Oracle 12c sürüm 2 – (12.1.0.2)|
+> | **Oracle sürümü** |Oracle 12c Sürüm 2 – (12.1.0.2) |Oracle 12c Sürüm 2 – (12.1.0.2)|
 > | **Makine adı** |myVM1 |myVM2 |
-> | **İşletim sistemi** |Oracle Linux 6. x |Oracle Linux 6. x |
-> | **Oracle SID 'SI** |CDB1 |CDB1 |
-> | **Çoğaltma şeması** |SINAMANIZ|SINAMANIZ |
-> | **Altın Kapı sahibi/Çoğalt** |C##GGADMIN |REPUSER |
-> | **Altın Kapı işlemi** |EXTORA |REPORA|
+> | **İşletim sistemi** |Oracle Linux 6.x |Oracle Linux 6.x |
+> | **Oracle SID** |CDB1 |CDB1 |
+> | **Çoğaltma şeması** |TEST|TEST |
+> | **Golden Gate sahibi/çoğaltma** |C##GGADMIN |REPUSER |
+> | **Golden Gate süreci** |EXTORA |REPORA|
 
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 
-[Az Login](/cli/azure/reference-index) komutuyla Azure aboneliğinizde oturum açın. Ardından ekrandaki yönergeleri izleyin.
+Az giriş komutuyla Azure aboneliğinizde oturum [açın.](/cli/azure/reference-index) Ardından ekrandaki yönergeleri izleyin.
 
 ```azurecli
 az login
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetilebilecekleri mantıksal bir kapsayıcıdır. 
+[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetilebileceği mantıksal bir kapsayıcıdır. 
 
 Aşağıdaki örnek `westus` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur.
 
@@ -66,9 +66,9 @@ Aşağıdaki örnek `westus` konumunda `myResourceGroup` adlı bir kaynak grubu 
 az group create --name myResourceGroup --location westus
 ```
 
-### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluştur
+### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
-Aşağıdaki adım isteğe bağlıdır, ancak önerilir. Daha fazla bilgi için bkz. [Azure kullanılabilirlik kümeleri Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Aşağıdaki adım isteğe bağlıdır, ancak önerilir. Daha fazla bilgi için [Azure kullanılabilirlik kümeleri kılavuzuna](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)bakın.
 
 ```azurecli
 az vm availability-set create \
@@ -82,9 +82,10 @@ az vm availability-set create \
 
 [az vm create](/cli/azure/vm) komutuyla bir sanal makine oluşturun. 
 
-Aşağıdaki örnek, ve `myVM1` `myVM2`adlı iki sanal makine oluşturur. Varsayılan anahtar konumunda henüz yoksa SSH anahtarları oluşturun. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, iki VMs `myVM1` `myVM2`adlı oluşturur ve. Varsayılan bir anahtar konumunda zaten yoksa SSH anahtarlarını oluşturun. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
-#### <a name="create-myvm1-primary"></a>MyVM1 oluştur (birincil):
+#### <a name="create-myvm1-primary"></a>myVM1 (birincil):
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -95,9 +96,9 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-VM oluşturulduktan sonra Azure CLı, aşağıdaki örneğe benzer bilgiler gösterir. (Öğesine göz `publicIpAddress`atın. Bu adres, sanal makineye erişmek için kullanılır.)
+VM oluşturulduktan sonra, Azure CLI aşağıdaki örneğe benzer bilgileri gösterir. (Dikkat edin `publicIpAddress`. Bu adres VM'ye erişmek için kullanılır.)
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -110,7 +111,8 @@ VM oluşturulduktan sonra Azure CLı, aşağıdaki örneğe benzer bilgiler gös
 }
 ```
 
-#### <a name="create-myvm2-replicate"></a>MyVM2 oluştur (Çoğalt):
+#### <a name="create-myvm2-replicate"></a>myVM2 oluşturma (çoğaltma):
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -121,13 +123,13 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Oluşturulduktan sonra, ve `publicIpAddress` ' i de bir yere göz atın.
+Oluşturulduktan sonra `publicIpAddress` da dikkat edin.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>Bağlantı için TCP bağlantı noktasını açın
+### <a name="open-the-tcp-port-for-connectivity"></a>Bağlantı için TCP bağlantı noktasını açma
 
-Bir sonraki adım, Oracle veritabanına uzaktan erişmenizi sağlayan dış uç noktaları yapılandırmaktır. Dış uç noktaları yapılandırmak için aşağıdaki komutları çalıştırın.
+Bir sonraki adım, Oracle veritabanına uzaktan erişmenizi sağlayan harici uç noktaları yapılandırmaktır. Dış uç noktaları yapılandırmak için aşağıdaki komutları çalıştırın.
 
-#### <a name="open-the-port-for-myvm1"></a>MyVM1 için bağlantı noktasını açın:
+#### <a name="open-the-port-for-myvm1"></a>myVM1 için bağlantı noktasını açın:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -137,9 +139,9 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-Sonuçlar aşağıdaki yanıta benzer görünmelidir:
+Sonuçlar aşağıdaki yanıta benzer olmalıdır:
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -158,7 +160,7 @@ Sonuçlar aşağıdaki yanıta benzer görünmelidir:
 }
 ```
 
-#### <a name="open-the-port-for-myvm2"></a>MyVM2 için bağlantı noktasını açın:
+#### <a name="open-the-port-for-myvm2"></a>myVM2 için bağlantı noktasını açın:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -172,15 +174,15 @@ az network nsg rule create --resource-group myResourceGroup\
 
 Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini, sanal makinenizin `publicIpAddress` ile değiştirin.
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
-### <a name="create-the-database-on-myvm1-primary"></a>Veritabanını myVM1 (birincil) üzerinde oluşturma
+### <a name="create-the-database-on-myvm1-primary"></a>myVM1(birincil) veritabanını oluşturma
 
-Oracle yazılımı Market görüntüsünde zaten yüklüdür, bu nedenle sonraki adım veritabanını yüklemektir. 
+Oracle yazılımı zaten Marketplace görüntü yüklü, bu nedenle bir sonraki adım veritabanıyüklemektir. 
 
-Yazılımı ' Oracle ' superuser olarak çalıştır:
+Yazılımı 'oracle' süper kullanıcısı olarak çalıştırın:
 
 ```bash
 sudo su - oracle
@@ -207,9 +209,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Çıktılar aşağıdaki yanıta benzer görünmelidir:
 
-```bash
+Çıktılar aşağıdaki yanıta benzer olmalıdır:
+
+```output
 Copying database files
 1% complete
 2% complete
@@ -247,7 +250,7 @@ $ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-İsteğe bağlı olarak, bu ayarların gelecekteki oturum açma işlemleri için kaydedilmesini sağlamak üzere. bashrc dosyasına ORACLE_HOME ve ORACLE_SID ekleyebilirsiniz:
+İsteğe bağlı olarak, .bashrc dosyasına ORACLE_HOME ve ORACLE_SID ekleyebilirsiniz, böylece bu ayarlar gelecekteki oturum açma işlemleri için kaydedilir:
 
 ```bash
 # add oracle home
@@ -258,16 +261,18 @@ export ORACLE_SID=cdb1
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
-### <a name="start-oracle-listener"></a>Oracle dinleyicisini Başlat
+### <a name="start-oracle-listener"></a>Oracle dinleyicisini başlatın
+
 ```bash
 $ lsnrctl start
 ```
 
-### <a name="create-the-database-on-myvm2-replicate"></a>Veritabanını myVM2 üzerinde oluşturma (çoğaltma)
+### <a name="create-the-database-on-myvm2-replicate"></a>myVM2'de veritabanı oluşturma (çoğaltma)
 
 ```bash
 sudo su - oracle
 ```
+
 Veritabanını oluşturun:
 
 ```bash
@@ -289,6 +294,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 ORACLE_SID ve ORACLE_HOME değişkenlerini ayarlayın.
 
 ```bash
@@ -297,7 +303,7 @@ $ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
-İsteğe bağlı olarak, bu ayarların gelecekteki oturum açma işlemleri için kaydedilmesi için, ORACLE_HOME ve ORACLE_SID. bashrc dosyasına ekleyebilirsiniz.
+İsteğe bağlı olarak, .bashrc dosyasına ORACLE_HOME ve ORACLE_SID ekleyebilirsiniz, böylece bu ayarlar gelecekteki oturum açma işlemleri için kaydedilir.
 
 ```bash
 # add oracle home
@@ -308,16 +314,17 @@ export ORACLE_SID=cdb1
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
-### <a name="start-oracle-listener"></a>Oracle dinleyicisini Başlat
+### <a name="start-oracle-listener"></a>Oracle dinleyicisini başlatın
+
 ```bash
 $ sudo su - oracle
 $ lsnrctl start
 ```
 
-## <a name="configure-golden-gate"></a>Altın kapısı yapılandırma 
-Altın kapısı yapılandırmak için bu bölümdeki adımları uygulayın.
+## <a name="configure-golden-gate"></a>Golden Gate'i Yapılandır 
+Golden Gate'i yapılandırmak için bu bölümdeki adımları izleyin.
 
-### <a name="enable-archive-log-mode-on-myvm1-primary"></a>MyVM1 (birincil) üzerinde arşiv günlüğü modunu etkinleştir
+### <a name="enable-archive-log-mode-on-myvm1-primary"></a>myVM1'de arşiv günlüğü modunu etkinleştirme (birincil)
 
 ```bash
 $ sqlplus / as sysdba
@@ -332,7 +339,7 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
-Günlüğe kaydetmeyi zorla ' yı etkinleştirin ve en az bir günlük dosyası bulunduğundan emin olun.
+Kuvvet günlüğe kaydetmeyi etkinleştirin ve en az bir günlük dosyasının bulunduğundan emin olun.
 
 ```bash
 SQL> ALTER DATABASE FORCE LOGGING;
@@ -344,25 +351,25 @@ SQL> ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
 SQL> EXIT;
 ```
 
-### <a name="download-golden-gate-software"></a>Altın Kapı yazılımını indirin
-Oracle altın kapısı yazılımını indirmek ve hazırlamak için aşağıdaki adımları izleyin:
+### <a name="download-golden-gate-software"></a>Golden Gate yazılımLarını indirin
+Oracle Golden Gate yazılımını indirmek ve hazırlamak için aşağıdaki adımları tamamlayın:
 
-1. [Oracle altın kapısı indirme sayfasından](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html) **fbo_ggs_Linux_x64_shiphome. zip** dosyasını indirin. **Oracle Linux x86-64 Için Oracle GoldenGate 12. x. x. x**indirme başlığı altında, indirilecek bir. zip dosyaları kümesi olmalıdır.
+1. Oracle Golden Gate indirme [sayfasından](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html) **fbo_ggs_Linux_x64_shiphome.zip** dosyasını indirin. Oracle Linux **x86-64 için oracle GoldenGate 12.x.x.x**indirme başlığı altında, indirmek için .zip dosyaları bir dizi olmalıdır.
 
-2. . Zip dosyalarını istemci bilgisayarınıza indirdikten sonra, dosyaları sanal makinenize kopyalamak için güvenli kopyalama Protokolü 'Nü (SCP) kullanın:
+2. .zip dosyalarını istemci bilgisayarınıza indirdikten sonra, dosyaları VM'nize kopyalamak için Güvenli Kopyalama Protokolü'nü (SCP) kullanın:
 
    ```bash
    $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
    ```
 
-3. . Zip dosyalarını **/opt** klasörüne taşıyın. Sonra dosyaların sahibini aşağıdaki gibi değiştirin:
+3. .zip dosyalarını **/opt** klasörüne taşıyın. Ardından dosyaların sahibini aşağıdaki gibi değiştirin:
 
    ```bash
    $ sudo su -
    # mv <folder>/*.zip /opt
    ```
 
-4. Dosyaları sıkıştırmayı açın (zaten yüklenmemişse Linux unzip yardımcı programını yükleme):
+4. Dosyaları unzip (zaten yüklü değilse Linux unzip yardımcı programı yükleyin):
 
    ```bash
    # yum install unzip
@@ -370,32 +377,32 @@ Oracle altın kapısı yazılımını indirmek ve hazırlamak için aşağıdaki
    # unzip fbo_ggs_Linux_x64_shiphome.zip
    ```
 
-5. Değiştirme izni:
+5. İzni değiştir:
 
    ```bash
    # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
    ```
 
-### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>İstemciyi ve VM 'yi X11 çalıştıracak şekilde hazırlama (yalnızca Windows istemcileri için)
-Bu isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten X11 kurulumuna sahipseniz, bu adımı atlayabilirsiniz.
+### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>İstemciyi ve VM'yi x11'i çalıştıracak şekilde hazırlayın (yalnızca Windows istemcileri için)
+Bu isteğe bağlı bir adımdır. Bir Linux istemcisi kullanıyorsanız veya zaten x11 kurulumunuz varsa bu adımı atlayabilirsiniz.
 
-1. PuTTY ve Xsiteye Windows bilgisayarınıza indirin:
+1. PuTTY ve Xming'i Windows bilgisayarınıza indirin:
 
-   * [PuTTY 'yi indirin](https://www.putty.org/)
-   * [Xwebsite 'i indirin](https://xming.en.softonic.com/)
+   * [PutTY'yi Karşıdan Yükleyin](https://www.putty.org/)
+   * [Xming'i İndir](https://xming.en.softonic.com/)
 
-2. PuTTY ' i yükledikten sonra (örneğin, C:\Program Files\PuTTY), PuTTYgen. exe ' yi (PuTTY anahtar Oluşturucu) çalıştırın.
+2. PuTTY'yi yükledikten sonra, PuTTY klasörüne (örneğin, C:\Program Files\PuTTY), puttygen.exe (PuTTY Anahtar Jeneratörü) çalıştırın.
 
-3. PuTTY anahtar Oluşturucu:
+3. PutTY anahtar jeneratörü olarak:
 
    - Bir anahtar oluşturmak için **Oluştur** düğmesini seçin.
-   - Anahtarın içeriğini kopyalayın (**CTRL + C**).
-   - **Özel anahtarı kaydet** düğmesini seçin.
-   - Görüntülenen uyarıyı yoksayın ve sonra **Tamam**' ı seçin.
+   - Anahtarın içeriğini kopyalayın (**Ctrl+C**).
+   - Özel **anahtarı kaydet düğmesini** seçin.
+   - Görünen uyarıyı yoksayın ve ardından **Tamam'ı**seçin.
 
-   ![PuTTY anahtar Oluşturucu sayfasının ekran görüntüsü](./media/oracle-golden-gate/puttykeygen.png)
+   ![PuTTY anahtar jeneratör sayfasının ekran görüntüsü](./media/oracle-golden-gate/puttykeygen.png)
 
-4. SANAL makinenizde şu komutları çalıştırın:
+4. VM'nizde şu komutları çalıştırın:
 
    ```bash
    # sudo su - oracle
@@ -403,61 +410,62 @@ Bu isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten X
    $ cd .ssh
    ```
 
-5. **Authorized_keys**adlı bir dosya oluşturun. Anahtarın içeriğini bu dosyaya yapıştırın ve dosyayı kaydedin.
+5. **authorized_keys**adlı bir dosya oluşturun. Bu dosyadaki anahtarın içeriğini yapıştırın ve ardından dosyayı kaydedin.
 
    > [!NOTE]
-   > Anahtarın dizeyi `ssh-rsa`içermesi gerekir. Ayrıca, anahtarın içeriği tek satırlık bir metin olmalıdır.
+   > Anahtar dize `ssh-rsa`içermelidir. Ayrıca, anahtarın içeriği tek bir metin satırı olmalıdır.
    >  
 
-6. PuTTY’yi başlatın. **Kategori** bölmesinde **bağlantı** > SSHkimlik > **doğrulaması**' nı seçin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
+6. PuTTY’yi başlatın. **Kategori** bölmesinde **Bağlantı** > **SSH** > **Auth'u**seçin. Kimlik **doğrulama için Özel anahtar dosyasında,** daha önce oluşturduğunuz anahtara göz atın.
 
-   ![Özel anahtar ayarla sayfasının ekran görüntüsü](./media/oracle-golden-gate/setprivatekey.png)
+   ![Set Private Key sayfasının ekran görüntüsü](./media/oracle-golden-gate/setprivatekey.png)
 
-7. **Kategori** bölmesinde **bağlantı** > SSHX11 > ' ı seçin. Ardından **X11 Iletmeyi etkinleştir** kutusunu seçin.
+7. **Kategori** bölmesinde **Bağlantı** > **SSH** > **X11'i**seçin. Ardından **X11 yönlendirme** kutusunu etkinleştir'i seçin.
 
-   ![Enable X11 sayfasının ekran görüntüsü](./media/oracle-golden-gate/enablex11.png)
+   ![X11'i etkinleştir sayfasının ekran görüntüsü](./media/oracle-golden-gate/enablex11.png)
 
-8. **Kategori** bölmesinde **oturum**' a gidin. Ana bilgisayar bilgilerini girip **Aç**' ı seçin.
+8. **Kategori** bölmesinde **Oturum'a**gidin. Ana bilgisayar bilgilerini girin ve sonra **Aç'ı**seçin.
 
    ![Oturum sayfasının ekran görüntüsü](./media/oracle-golden-gate/puttysession.png)
 
-### <a name="install-golden-gate-software"></a>Altın Kapı yazılımını yükler
+### <a name="install-golden-gate-software"></a>Golden Gate yazılımLarını yükleyin
 
-Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
+Oracle Golden Gate'i yüklemek için aşağıdaki adımları tamamlayın:
 
-1. Oracle olarak oturum açın. (Parola sorulmadan oturum açabiliyor olmanız gerekir.) Yüklemeye başlamadan önce, XTE 'ın çalıştığından emin olun.
- 
+1. Kahin olarak oturum açın. (Bir parola istenmeden oturum açabilmelisiniz.) Yüklemeye başlamadan önce Xming'in çalıştığını unutmayın.
+
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
-2. ' Oracle Database 12c için Oracle GoldenGate ' seçeneğini belirleyin. Sonra devam etmek için **İleri** ' yi seçin.
 
-   ![Yükleyici yükleme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_01.png)
+2. Oracle Database 12c için 'Oracle GoldenGate' seçeneğini belirleyin. Ardından devam etmek için **İleri'yi** seçin.
+
+   ![Yükleyici Select Kurulum sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_01.png)
 
 3. Yazılım konumunu değiştirin. Ardından **Başlat Yöneticisi** kutusunu seçin ve veritabanı konumunu girin. Devam etmek için **İleri**’yi seçin.
 
-   ![Yükleme Seçme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_02.png)
+   ![Yükleme seç sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. Envanter dizinini değiştirin ve ardından devam etmek için **İleri** ' yi seçin.
+4. Stok dizinini değiştirin ve devam etmek için **İleri'yi** seçin.
 
-   ![Yükleme Seçme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![Yükleme seç sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. **Özet** ekranında, devam etmek için **yüklemek** ' ı seçin.
+5. **Özet** ekranında devam etmek için **Yükle'yi** seçin.
 
-   ![Yükleyici yükleme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![Yükleyici Select Kurulum sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. Bir betiği ' root ' olarak çalıştırmanız istenebilir. Bu durumda, ayrı bir oturum açın, VM 'ye SSH yapın, kök için sudo ve sonra betiği çalıştırın. **Tamam** devam et ' i seçin.
+6. Bir komut dosyasını 'root' olarak çalıştırmanız isden edilebilir. Bu öyleyse, ayrı bir oturum açın, VM'ye ssh, köksudo ve sonra komut dosyası çalıştırın. **Devam Et'i** seç.
 
-   ![Yükleme Seçme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![Yükleme seç sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. Yükleme tamamlandığında, işlemi gerçekleştirmek için **Kapat** ' ı seçin.
+7. Yükleme tamamlandığında, işlemi tamamlamak için **Kapat'ı** seçin.
 
-   ![Yükleme Seçme sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![Yükleme seç sayfasının ekran görüntüsü](./media/oracle-golden-gate/golden_gate_install_06.png)
 
-### <a name="set-up-service-on-myvm1-primary"></a>MyVM1 'de hizmet ayarlama (birincil)
+### <a name="set-up-service-on-myvm1-primary"></a>myVM1'de hizmet ayarlama (birincil)
 
-1. Tnsnames. ora dosyasını oluşturun veya güncelleştirin:
+1. Tnsnames.ora dosyasını oluşturun veya güncelleştirin:
 
    ```bash
    $ cd $ORACLE_HOME/network/admin
@@ -490,10 +498,10 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
     )
    ```
 
-2. Altın Kapı sahibini ve Kullanıcı hesaplarını oluşturun.
+2. Golden Gate sahibini ve kullanıcı hesaplarını oluşturun.
 
    > [!NOTE]
-   > Sahip hesabının C## prefix 'i olmalıdır.
+   > Sahip hesabında C## öneki olmalıdır.
    >
 
     ```bash
@@ -506,7 +514,7 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
     SQL> EXIT;
     ```
 
-3. Altın Kapı testi Kullanıcı hesabını oluşturma:
+3. Golden Gate test kullanıcı hesabını oluşturun:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -520,9 +528,9 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
    SQL> EXIT;
    ```
 
-4. Ayıklama parametre dosyasını yapılandırın.
+4. Ekstre parametresi dosyasını yapılandırın.
 
-   Altın Kapı komut satırı arabirimini (ggscı) başlatın:
+   Golden gate komut satırı arabirimini başlatın (ggsci):
 
    ```bash
    $ sudo su - oracle
@@ -536,7 +544,8 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
 
    GGSCI> EDIT PARAMS EXTORA
    ```
-5. EXTRACT parametre dosyasına aşağıdakini ekleyin (VI komutlarını kullanarak). ESC tuşu, ': WQ! ' tuşlarına basın dosyasını kaydedin. 
+
+5. EXTRACT parametre dosyasına (vi komutlarını kullanarak) aşağıdakileri ekleyin. Esc tuşuna basın, ':wq!' dosyayı kaydetmek için. 
 
    ```bash
    EXTRACT EXTORA
@@ -550,7 +559,8 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
    TABLE pdb1.test.TCUSTMER;
    TABLE pdb1.test.TCUSTORD;
    ```
-6. Kayıt ayıklamayı kaydet--tümleşik Ayıkla:
+
+6. Kayıt özü--entegre özü:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -565,7 +575,8 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
 
    GGSCI> exit
    ```
-7. Ayıklama denetim noktalarını ayarlama ve gerçek zamanlı ayıklamayı başlatma:
+
+7. Ayıklama denetim noktalarını ayarlayın ve gerçek zamanlı ayıklama başlatın:
 
    ```bash
    $ ./ggsci
@@ -587,7 +598,8 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
    MANAGER     RUNNING
    EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
    ```
-   Bu adımda, daha sonra farklı bir bölümde kullanılacak olan başlangıç SCN 'sini bulabilirsiniz:
+
+   Bu adımda, daha sonra kullanılacak başlangıç SCN'sini farklı bir bölümde bulabilirsiniz:
 
    ```bash
    $ sqlplus / as sysdba
@@ -616,10 +628,10 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
    GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
    ```
 
-### <a name="set-up-service-on-myvm2-replicate"></a>MyVM2 üzerinde hizmet ayarlama (çoğaltma)
+### <a name="set-up-service-on-myvm2-replicate"></a>myVM2'de hizmet ayarlama (çoğaltma)
 
 
-1. Tnsnames. ora dosyasını oluşturun veya güncelleştirin:
+1. Tnsnames.ora dosyasını oluşturun veya güncelleştirin:
 
    ```bash
    $ cd $ORACLE_HOME/network/admin
@@ -652,7 +664,7 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
     )
    ```
 
-2. Çoğaltma hesabı oluştur:
+2. Çoğaltma hesabı oluşturun:
 
    ```bash
    $ sqlplus / as sysdba
@@ -664,7 +676,7 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
    SQL> EXIT;
    ```
 
-3. Altın kapıdan test Kullanıcı hesabı oluşturun:
+3. Golden Gate test kullanıcı hesabı oluşturun:
 
    ```bash
    $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -684,7 +696,8 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
    $ ./ggsci
    GGSCI> EDIT PARAMS REPORA  
    ```
-   REPORA parametre dosyası içeriği:
+
+   REPORA parametre dosyasının içeriği:
 
    ```bash
    REPLICAT REPORA
@@ -717,21 +730,23 @@ Oracle altın kapısı yüklemek için aşağıdaki adımları izleyin:
    GGSCI> ADD REPLICAT INITREP, SPECIALRUN
    ```
 
-### <a name="set-up-the-replication-myvm1-and-myvm2"></a>Çoğaltmayı ayarlama (myVM1 ve myVM2)
+### <a name="set-up-the-replication-myvm1-and-myvm2"></a>Çoğaltma (myVM1 ve myVM2) ayarlayın
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. MyVM2 üzerinde çoğaltmayı ayarlama (çoğaltma)
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. myVM2 çoğaltma ayarlayın (çoğaltma)
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   GGSCI> EDIT PARAMS MGR
   ```
-Dosyayı şu şekilde güncelleştirin:
+
+Dosyayı aşağıdakilerle güncelleştirin:
 
   ```bash
   PORT 7809
   ACCESSRULE, PROG *, IPADDR *, ALLOW
   ```
+
 Ardından Yönetici hizmetini yeniden başlatın:
 
   ```bash
@@ -740,9 +755,9 @@ Ardından Yönetici hizmetini yeniden başlatın:
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. MyVM1 (birincil) üzerinde çoğaltmayı ayarlama
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. myVM1 (birincil) üzerinde çoğaltma ayarlayın
 
-Başlangıç yükünü başlatın ve hata olup olmadığını denetleyin:
+İlk yükü başlatın ve hataları denetleyin:
 
 ```bash
 $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -750,53 +765,55 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. MyVM2 üzerinde çoğaltmayı ayarlama (çoğaltma)
 
-SCN numarasını, daha önce edindiğiniz numarayla değiştirin:
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. myVM2 çoğaltma ayarlayın (çoğaltma)
+
+SCN numarasını daha önce elde ettiğiniz numarayla değiştirin:
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   START REPLICAT REPORA, AFTERCSN 1857887
   ```
-Çoğaltma başlamış ve TEST tablolarına yeni kayıtlar ekleyerek test edebilirsiniz.
+
+Çoğaltma başladı ve TEST tablolarına yeni kayıtlar ekleyerek bunu sınayabilirsiniz.
 
 
-### <a name="view-job-status-and-troubleshooting"></a>İş durumunu ve sorun gidermeyi görüntüleme
+### <a name="view-job-status-and-troubleshooting"></a>İş durumunu ve sorun giderme durumunu görüntüleme
 
 #### <a name="view-reports"></a>Raporları görüntüle
-MyVM1 hakkındaki raporları görüntülemek için aşağıdaki komutları çalıştırın:
+myVM1'deki raporları görüntülemek için aşağıdaki komutları çalıştırın:
 
   ```bash
   GGSCI> VIEW REPORT EXTORA 
   ```
  
-MyVM2 hakkındaki raporları görüntülemek için aşağıdaki komutları çalıştırın:
+myVM2'deki raporları görüntülemek için aşağıdaki komutları çalıştırın:
 
   ```bash
   GGSCI> VIEW REPORT REPORA
   ```
 
 #### <a name="view-status-and-history"></a>Durumu ve geçmişi görüntüleme
-MyVM1 üzerinde durum ve geçmişi görüntülemek için aşağıdaki komutları çalıştırın:
+myVM1'de durumu ve geçmişi görüntülemek için aşağıdaki komutları çalıştırın:
 
   ```bash
   GGSCI> dblogin userid c##ggadmin, password ggadmin 
   GGSCI> INFO EXTRACT EXTORA, DETAIL
   ```
 
-MyVM2 üzerinde durum ve geçmişi görüntülemek için aşağıdaki komutları çalıştırın:
+myVM2'de durumu ve geçmişi görüntülemek için aşağıdaki komutları çalıştırın:
 
   ```bash
   GGSCI> dblogin userid repuser@pdb1 password rep_pass 
   GGSCI> INFO REP REPORA, DETAIL
   ```
-Bu, Oracle Linux üzerinde altın kapı yükleme ve yapılandırmasını tamamlar.
+Bu, Oracle linux'ta Golden Gate'in kurulumunu ve yapılandırmasını tamamlar.
 
 
 ## <a name="delete-the-virtual-machine"></a>Şu sanal makineyi silin:
 
-Artık gerekli olmadığında, kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komut kullanılabilir.
+Artık gerekolmadığında, kaynak grubunu, VM'i ve ilgili tüm kaynakları kaldırmak için aşağıdaki komut kullanılabilir.
 
 ```azurecli
 az group delete --name myResourceGroup

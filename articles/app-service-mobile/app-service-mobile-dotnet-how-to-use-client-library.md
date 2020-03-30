@@ -1,43 +1,43 @@
 ---
 title: Yönetilen istemci kitaplığıyla çalışma
-description: .NET istemci kitaplığı 'nı Windows ve Xamarin uygulamalarıyla Azure App Service Mobile Apps nasıl kullanacağınızı öğrenin.
+description: Windows ve Xamarin uygulamalarıyla Azure App Service Mobile Apps için .NET istemci kitaplığını nasıl kullanacağınızı öğrenin.
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249379"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps için yönetilen istemci kullanma
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu kılavuzda, Windows ve Xamarin uygulamaları için Azure App Service Mobile Apps yönetilen istemci kitaplığını kullanarak genel senaryoları nasıl gerçekleştireceğiniz gösterilmektedir. Mobile Apps yeni olduğunuzda, önce [Azure Mobile Apps hızlı başlangıç][1] öğreticisini tamamlamayı düşünmelisiniz. Bu kılavuzda, istemci tarafı yönetilen SDK 'ya odaklanıyoruz. Mobile Apps yönelik sunucu tarafı SDK 'Ları hakkında daha fazla bilgi için, [.NET Server SDK][2] veya [Node. js sunucu SDK][3]belgelerine bakın.
+Bu kılavuz, Windows ve Xamarin uygulamaları için Azure App Service Mobile Apps için yönetilen istemci kitaplığını kullanarak sık karşılaşılan senaryoları nasıl gerçekleştireceklerini gösterir. Mobil Uygulamalar'da yeniyseniz, öncelikle Azure [Mobil Uygulamalar hızlı başlatma][1] eğitimini tamamlamayı düşünmelisiniz. Bu kılavuzda, müşteri tarafı yönetilen SDK odaklanmak. Mobil Uygulamalar için sunucu tarafındaki SDK'lar hakkında daha fazla bilgi edinmek için [.NET Server SDK][2] veya [Node.js Server SDK][3]belgelerine bakın.
 
-## <a name="reference-documentation"></a>Başvuru belgeleri
-İstemci SDK 'Sı için başvuru belgeleri şurada bulunur: [Azure Mobile Apps .NET istemci başvurusu][4].
-[Azure-Samples GitHub deposunda][5]birçok istemci örneği de bulabilirsiniz.
+## <a name="reference-documentation"></a>Referans belgeleri
+İstemci SDK için başvuru belgeleri burada bulunur: [Azure Mobile Apps .NET istemci başvurusu.][4]
+[Azure Örnekleri GitHub deposunda][5]da birkaç istemci örneği bulabilirsiniz.
 
-## <a name="supported-platforms"></a>Desteklenen platformlar
-.NET platformu aşağıdaki platformları destekler:
+## <a name="supported-platforms"></a>Desteklenen Platformlar
+.NET Platformu aşağıdaki platformları destekler:
 
-* API 19 ile 24 arasında Xamarin Android sürümleri (KitKat ile Nougat)
-* İOS sürümleri 8,0 ve üzeri için Xamarin iOS sürümleri
+* API 19 ile 24 (Nougat ile KitKat) için Xamarin Android bültenleri
+* Xamarin iOS sürümleri için 8.0 ve sonrası sürümleri
 * Evrensel Windows Platformu
 * Windows Phone 8.1
-* Silverlight uygulamaları hariç Windows Phone 8,0
+* Silverlight uygulamaları dışında Windows Phone 8.0
 
-"Sunucu-akışı" kimlik doğrulaması, sunulan kullanıcı arabirimi için bir WebView kullanır.  Cihaz bir WebView Kullanıcı arabirimini sunmıyorsa, diğer kimlik doğrulama yöntemleri gereklidir.  Bu SDK bu nedenle, Izleme türü veya benzer kısıtlanmış cihazlar için uygun değildir.
+"Sunucu akışı" kimlik doğrulaması, sunulan web hizmeti için bir Web Görünümü kullanır.  Aygıt bir WebView Web Hizmeti sürümü sunamıyorsa, diğer kimlik doğrulama yöntemleri gerekir.  Bu nedenle Bu SDK, Watch tipi veya benzer şekilde kısıtlanmış aygıtlar için uygun değildir.
 
-## <a name="setup"></a>Kurulum ve Önkoşullar
-En az bir tablo içeren mobil uygulama arka uç projenizi zaten oluşturmuş ve yayımladığınızı varsayalım.  Bu konuda kullanılan kodda, tablo `TodoItem` olarak adlandırılır ve şu sütunlara sahiptir: `Id`, `Text`ve `Complete`. Bu tablo, [Azure Mobile Apps hızlı başlangıç][1]adımlarını tamamladıktan sonra oluşturulan tablodur.
+## <a name="setup-and-prerequisites"></a><a name="setup"></a>Kurulum ve Ön koşullar
+En az bir tablo içeren Mobil Uygulama arka uç projenizi zaten oluşturduğunuzu ve yayınladığınızı varsayıyoruz.  Bu konuda kullanılan kodda, tablo `TodoItem` adlandırılmış ve aşağıdaki `Id`sütunlara sahiptir: , `Text`ve `Complete`. Bu tablo, [Azure Mobil Uygulamaları'nı quickstart'ı][1]tamamladığınızda oluşturulan tabloyla aynıdır.
 
-' De C# karşılık gelen türü belirtilmiş istemci tarafı türü aşağıdaki sınıftır:
+C#'da karşılık gelen dakti-sİstem tarafı türü aşağıdaki sınıftır:
 
 ```csharp
 public class TodoItem
@@ -52,85 +52,85 @@ public class TodoItem
 }
 ```
 
-[Jsonpropertyattribute][6] , istemci alanı ve tablo alanı arasındaki *PropertyName* eşlemesini tanımlamak için kullanılır.
+[JsonPropertyAttribute][6] istemci alanı ve tablo alanı arasında *PropertyName* eşleme tanımlamak için kullanılır.
 
-Mobile Apps arka ucunuzdaki tablo oluşturmayı öğrenmek için [.NET Server SDK konusuna][7] veya [Node. js sunucu SDK][8]konusuna bakın. Mobil uygulama arka ucunuzu hızlı başlangıç kullanarak Azure portal oluşturduysanız, [Azure portalında] **kolay tablolar** ayarını da kullanabilirsiniz.
+Mobil Uygulamalarınızda nasıl tablo oluşturabilirsiniz öğrenmek için [.NET Server SDK konusuna][7] veya [Node.js Server SDK konusuna][8]bakın. Mobil Uygulama arka uçunuzu Azure portalında QuickStart'ı kullanarak oluşturduysanız, Azure [portalındaki] **Kolay tablolar** ayarını da kullanabilirsiniz.
 
-### <a name="how-to-install-the-managed-client-sdk-package"></a>Nasıl yapılır: yönetilen istemci SDK paketini yüklemek
-[NuGet][9]'den Mobile Apps için YÖNETILEN istemci SDK paketini yüklemek için aşağıdaki yöntemlerden birini kullanın:
+### <a name="how-to-install-the-managed-client-sdk-package"></a>Nasıl yapılır: Yönetilen istemci SDK paketini yükleyin
+[NuGet'den][9]Mobil Uygulamalar için yönetilen istemci SDK paketini yüklemek için aşağıdaki yöntemlerden birini kullanın:
 
-* **Visual Studio** Projenize sağ tıklayın, **NuGet Paketlerini Yönet**' e tıklayın, `Microsoft.Azure.Mobile.Client` paketini arayın ve ardından **Install**' a tıklayın.
-* **Xamarin Studio** Projenize sağ tıklayın, **ekle** > **NuGet paketleri Ekle**' ye tıklayın, `Microsoft.Azure.Mobile.Client` paketini arayın ve ardından **paket Ekle**' ye tıklayın.
+* **Görsel Stüdyo** Projenizi sağ tıklatın, **NuGet Paketlerini Yönet'i**tıklatın, `Microsoft.Azure.Mobile.Client` paketi arayın, ardından **Yükle'yi**tıklatın.
+* **Xamarin Stüdyosu** Projenizi sağ tıklatın, **NuGet Paketleri** **Ekle'yi** > tıklatın, paketi arayın ve ardından **Paket Ekle'yi** `Microsoft.Azure.Mobile.Client` tıklatın.
 
-Ana Etkinlik dosyanızda, aşağıdaki **using** ifadesini eklemeyi unutmayın:
+Ana etkinlik dosyanızda aşağıdaki leri **kullanarak** ifadeeklemeyi unutmayın:
 
 ```csharp
 using Microsoft.WindowsAzure.MobileServices;
 ```
 
 > [!NOTE]
-> Android projenizde başvurulan tüm destek paketlerinin aynı sürüme sahip olması gerektiğini unutmayın. SDK 'nın Android platformu için `Xamarin.Android.Support.CustomTabs` bağımlılığı vardır. bu nedenle, projeniz daha yeni destek paketleri kullanıyorsa, çakışmaları önlemek için bu paketi gerekli sürüme doğrudan yüklemeniz gerekir.
+> Android projenizde başvurulan tüm destek paketlerinin aynı sürüme sahip olması gerektiğini unutmayın. SDK'nın `Xamarin.Android.Support.CustomTabs` Android platformuna bağımlılığı vardır, bu nedenle projenizde daha yeni destek paketleri kullanıyorsa, çakışmaları önlemek için bu paketi doğrudan gerekli sürümle yüklemeniz gerekir.
 
-### <a name="symbolsource"></a>Nasıl yapılır: Visual Studio 'da hata ayıklama sembolleriyle çalışma
-Microsoft. Azure. Mobile ad alanı sembolleri, [Symbolsource][10]'ta kullanılabilir.  Symbols kaynağını Visual Studio ile bütünleştirmek için [symbolsource yönergelerine][11] bakın.
+### <a name="how-to-work-with-debug-symbols-in-visual-studio"></a><a name="symbolsource"></a>Nasıl yapIlir: Visual Studio'da hata ayıklama sembolleri ile çalışma
+Microsoft.Azure.Mobile ad alanı sembolleri [SymbolSource'da][10]mevcuttur.  SymbolSource'u Visual Studio ile tümleştirmek için [SymbolSource yönergelerine][11] bakın.
 
-## <a name="create-client"></a>Mobile Apps istemcisini oluşturma
-Aşağıdaki kod, mobil uygulama arka ucunuza erişmek için kullanılan [MobileServiceClient][12] nesnesini oluşturur.
+## <a name="create-the-mobile-apps-client"></a><a name="create-client"></a>Mobil Uygulamalar istemcisini oluşturma
+Aşağıdaki kod, Mobil Uygulama arka arka ucunuza erişmek için kullanılan [MobileServiceClient][12] nesnesini oluşturur.
 
 ```csharp
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Yukarıdaki kodda `MOBILE_APP_URL`, [Azure portalında]mobil uygulamanızın arka ucunuzun dikey penceresinde bulunan mobil uygulama arka ucunun URL 'siyle değiştirin. MobileServiceClient nesnesi tek bir olmalıdır.
+Önceki kodda, Azure `MOBILE_APP_URL` [portalındaki]Mobil Uygulama arka uçunuzda bulunan Mobil Uygulama arka ucunun URL'sini değiştirin. MobileServiceClient nesnesi bir singleton olmalıdır.
 
-## <a name="work-with-tables"></a>Tablolarla çalışma
-Aşağıdaki bölümde kayıtları arama ve alma ve tablodaki verileri değiştirme ayrıntıları yer alır.  Aşağıdaki konular ele alınmıştır:
+## <a name="work-with-tables"></a>Tablolarla Çalışma
+Aşağıdaki bölümde, kayıtların nasıl aranıp alınıp alınışları ve tablo içindeki verileri nasıl değiştirileri ayrıntılı olarak açıklanmıştır.  Aşağıdaki konular ele alınmıştır:
 
 * [Tablo başvurusu oluşturma](#instantiating)
-* [Sorgu verileri](#querying)
-* [Döndürülen verileri filtrele](#filtering)
-* [Döndürülen verileri Sırala](#sorting)
-* [Sayfalarda verileri döndürme](#paging)
-* [Belirli sütunları seç](#selecting)
-* [Kimliğe göre kayıt ara](#lookingup)
-* [Türsüz sorgularla ilgilenme](#untypedqueries)
+* [Verileri sorgulama](#querying)
+* [Döndürülen verileri filtreleme](#filtering)
+* [Döndürülen verileri sıralama](#sorting)
+* [Sayfalarda veri döndürme](#paging)
+* [Belirli sütunları seçme](#selecting)
+* [Id'ye göre bir kaydı ara](#lookingup)
+* [Yazılmamış sorgularla başa çıkma](#untypedqueries)
 * [Veri ekleme](#inserting)
-* Veriler güncelleştiriliyor
+* Verileri güncelleştirme
 * [Verileri silme](#deleting)
-* [Çakışma çözümü ve Iyimser eşzamanlılık](#optimisticconcurrency)
-* [Windows Kullanıcı arabirimine bağlama](#binding)
-* [Sayfa boyutunu değiştirme](#pagesize)
+* [Uyuşmazlık Çözümü ve İyimser Eşzamanlılık](#optimisticconcurrency)
+* [Windows Kullanıcı Arabirimine bağlanma](#binding)
+* [Sayfa Boyutunu Değiştirme](#pagesize)
 
-### <a name="instantiating"></a>Nasıl yapılır: tablo başvurusu oluşturma
-Bir arka uç tablosundaki verileri erişen veya değiştiren tüm kodlar `MobileServiceTable` nesnesindeki işlevleri çağırır. [GetTable] metodunu aşağıdaki gibi çağırarak tabloya bir başvuru alın:
+### <a name="how-to-create-a-table-reference"></a><a name="instantiating"></a>Nasıl yapılsın: Tablo başvurusu oluşturma
+Arka uç tablosundaki verilere erişen veya verileri değiştiren tüm `MobileServiceTable` kod, nesnedeki işlevleri çağırır. [GetTable] yöntemini aşağıdaki gibi çağırarak tabloya bir başvuru alın:
 
 ```csharp
 IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
 ```
 
-Döndürülen nesne, türü belirtilmiş serileştirme modelini kullanır. Türsüz bir serileştirme modeli de desteklenir. Aşağıdaki örnek, [türsüz bir tabloya başvuru oluşturur]:
+Döndürülen nesne, daktino serileştirme modelini kullanır. Yazılmamış serileştirme modeli de desteklenir. Aşağıdaki örnek, [yazılmamış bir tabloya bir başvuru oluşturur:]
 
 ```csharp
 // Get an untyped table reference
 IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 ```
 
-Türsüz sorgularda, temeldeki OData sorgu dizesini belirtmeniz gerekir.
+Yazılmamış sorgularda, altta yatan OData sorgu dizesini belirtmeniz gerekir.
 
-### <a name="querying"></a>Nasıl yapılır: mobil uygulamanızdan veri sorgulama
-Bu bölümde, aşağıdaki işlevleri içeren mobil uygulama arka ucuna sorgu verme açıklanmaktadır:
+### <a name="how-to-query-data-from-your-mobile-app"></a><a name="querying"></a>Nasıl kullanılır: Mobil Uygulamanızdan veri sorgulama
+Bu bölümde, aşağıdaki işlevselliği içeren Mobil Uygulama arka ucuna sorgu verme nin nasıl yapılacağını açıklar:
 
-* [Döndürülen verileri filtrele](#filtering)
-* [Döndürülen verileri Sırala](#sorting)
-* [Sayfalarda verileri döndürme](#paging)
-* [Belirli sütunları seç](#selecting)
-* [Verileri KIMLIĞE göre ara](#lookingup)
+* [Döndürülen verileri filtreleme](#filtering)
+* [Döndürülen verileri sıralama](#sorting)
+* [Sayfalarda veri döndürme](#paging)
+* [Belirli sütunları seçme](#selecting)
+* [Kimliklerine göre verilere bakın](#lookingup)
 
 > [!NOTE]
-> Tüm satırların döndürülmesini engellemek için sunucu odaklı bir sayfa boyutu zorlanır.  Sayfalama, büyük veri kümelerinin varsayılan isteklerini, hizmetin olumsuz şekilde etkilenmeden korur.  50 'den fazla satır döndürmek için, `Skip` ve `Take` yöntemini, [sayfalardaki dönüş verileri](#paging)bölümünde açıklandığı gibi kullanın.
+> Tüm satırların döndürülmesini önlemek için sunucu tarafından yönlendirilen sayfa boyutu zorlanır.  Sayfalama, büyük veri kümeleri için varsayılan isteklerin hizmeti olumsuz etkilemesini sağlar.  50'den fazla satır döndürmek `Skip` için, `Take` [sayfalardaki İade verilerinde](#paging)açıklandığı gibi, bu yöntemi ve yöntemi kullanın.
 
-### <a name="filtering"></a>Nasıl yapılır: döndürülen verileri filtreleme
-Aşağıdaki kod, bir sorguya bir `Where` yan tümcesi ekleyerek verilerin nasıl filtreleneceğini göstermektedir. `Complete` özelliği `false`'e eşit olan `todoTable` tüm öğeleri döndürür. [Olmadığı] işlevi, tabloya karşı sorguya bir satır filtreleme koşulu uygular.
+### <a name="how-to-filter-returned-data"></a><a name="filtering"></a>Nasıl kullanılır: Döndürülen verileri filtreleme
+Aşağıdaki kod, bir sorguya bir `Where` yan tümce ekleyerek verilerin nasıl filtreuygulanış edilebildiğini göstermektedir. Özelliği ne eşit `todoTable` `false` `Complete` olan tüm öğeleri döndürür. [Where] işlevi tabloya karşı sorguya bir satır filtreleme yüklemi uygular.
 
 ```csharp
 // This query filters out completed TodoItems and items without a timestamp.
@@ -139,13 +139,13 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-Arka uca gönderilen isteğin URI 'sini, tarayıcı geliştirici araçları veya [Fiddler]gibi ileti İnceleme yazılımını kullanarak görüntüleyebilirsiniz. İstek URI 'sine bakarsanız, sorgu dizesinin değiştirildiğini unutmayın:
+Tarayıcı geliştirici araçları veya [Fiddler]gibi ileti denetim yazılımını kullanarak arka uca gönderilen isteğin URI'sini görüntüleyebilirsiniz. Uri isteğine bakarsanız, sorgu dizesinin değiştirildiğini fark edin:
 
 ```csharp
 GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 ```
 
-Bu OData isteği sunucu SDK 'sı tarafından bir SQL sorgusuna çevrilir:
+Bu OData isteği Server SDK tarafından bir SQL sorgusuna çevrilir:
 
 ```csharp
 SELECT *
@@ -153,7 +153,7 @@ SELECT *
     WHERE ISNULL(complete, 0) = 0
 ```
 
-`Where` yöntemine geçirilen işlevin rastgele sayıda koşulu olabilir.
+`Where` Yönteme geçirilen işlev, rasgele sayıda koşula sahip olabilir.
 
 ```csharp
 // This query filters out completed TodoItems where Text isn't null
@@ -162,7 +162,7 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-Bu örnek, sunucu SDK 'sı tarafından bir SQL sorgusuna çevrilir:
+Bu örnek, Server SDK tarafından bir SQL sorgusuna çevrilebilir:
 
 ```csharp
 SELECT *
@@ -171,7 +171,7 @@ SELECT *
           AND ISNULL(text, 0) = 0
 ```
 
-Bu sorgu birden çok yan tümce için de ayrılabilir:
+Bu sorgu da birden çok yan tümceye ayrılabilir:
 
 ```csharp
 List<TodoItem> items = await todoTable
@@ -180,22 +180,22 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-İki yöntem eşdeğerdir ve birbirlerinin yerine kullanılabilir.  Tek bir sorgu&mdash;birden çok koşul birleştirerek&mdash;eski seçenek daha kompakt ve önerilir.
+Bu iki yöntem eşdeğerdir ve birbirinin yerine kullanılabilir.  &mdash;Bir sorguda&mdash;birden çok yüklemi bağlama seçeneği daha kompakttır ve önerilir.
 
-`Where` yan tümcesi OData alt kümesine çevrilen işlemleri destekler. İşlemler şunları içerir:
+Yan `Where` tümce, OData alt kümesine çevrilecek işlemleri destekler. İşlemler şunlardır:
 
-* İlişkisel işleçler (= =,! =, <, < =, >, > =),
-* Aritmetik işleçler (+,-,/, *,%),
-* Sayı duyarlığı (Math. Floor, Math. tavan),
-* Dize işlevleri (length, SUBSTRING, Replace, IndexOf, StartsWith, EndsWith),
-* Tarih özellikleri (yıl, ay, gün, saat, dakika, saniye),
+* İlişkisel işleçler (==, !=, <, <, >, >=),
+* Aritmetik işleçler (+, -, /, *, %),
+* Sayı hassasiyeti (Math.Floor, Math.Ceiling),
+* String fonksiyonları (Uzunluk, Alt dize, değiştir, indexOf, StartsWith, EndsWith),
+* Tarih özellikleri (Yıl, Ay, Gün, Saat, Dakika, İkinci),
 * Bir nesnenin özelliklerine erişin ve
 * Bu işlemlerden herhangi birini birleştiren ifadeler.
 
-Sunucu SDK 'sının neleri desteklediğini düşünürken [OData v3 belgeleri]düşünebilirsiniz.
+Sunucu SDK'nın neleri desteklediğini düşünürken, [OData v3 Dokümantasyon'u]düşünebilirsiniz.
 
-### <a name="sorting"></a>Nasıl yapılır: döndürülen verileri sıralama
-Aşağıdaki kod, sorguya bir [OrderBy] veya [OrderByDescending] işlevi ekleyerek verilerin nasıl sıralanacağını gösterir. `Text` alana göre artan düzende sıralanmış `todoTable` öğeleri döndürür.
+### <a name="how-to-sort-returned-data"></a><a name="sorting"></a>Nasıl kullanılır: Döndürülen verileri sıralama
+Aşağıdaki kod, sorguya bir OrderBy veya [OrderByDescending] işlevini ekleyerek verilerin nasıl sıralanabildiğini göstermektedir. [OrderBy] Alana göre `Text` `todoTable` sıralanmış artan öğeleri döndürür.
 
 ```csharp
 // Sort items in ascending order by Text field
@@ -209,8 +209,8 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-### <a name="paging"></a>Nasıl yapılır: sayfalarda verileri döndürme
-Varsayılan olarak, arka uç yalnızca ilk 50 satırı döndürür. [Almanız] metodunu çağırarak döndürülen satır sayısını artırabilirsiniz. Sorgu tarafından döndürülen toplam veri kümesinin belirli bir "sayfasını" istemek için [Şimdilik] yöntemiyle birlikte `Take` kullanın. Aşağıdaki sorgu yürütüldüğünde, tablodaki en üstteki üç öğeyi döndürür.
+### <a name="how-to-return-data-in-pages"></a><a name="paging"></a>Nasıl kullanılır: Sayfalardaki verileri döndürme
+Varsayılan olarak, arka uç yalnızca ilk 50 satırı döndürür. [Take] yöntemini arayarak döndürülen satır sayısını artırabilirsiniz. Sorgu `Take` tarafından döndürülen toplam veri kümesinin belirli bir "sayfasını" istemek için [Atlama] yöntemiyle birlikte kullanın. Aşağıdaki sorgu, yürütüldüğünde, tablodaki en iyi üç öğeyi döndürür.
 
 ```csharp
 // Define a filtered query that returns the top 3 items.
@@ -218,7 +218,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-Aşağıdaki düzeltilen sorgu ilk üç sonucu atlar ve sonraki üç sonucu döndürür. Bu sorgu, sayfa boyutunun üç öğe olduğu, verilerin ikinci "sayfasını" üretir.
+Aşağıdaki gözden geçirilmiş sorgu ilk üç sonucu atlar ve sonraki üç sonucu döndürür. Bu sorgu, sayfa boyutunun üç öğe olduğu ikinci "veri sayfası"nı üretir.
 
 ```csharp
 // Define a filtered query that skips the top 3 items and returns the next 3 items.
@@ -226,22 +226,22 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Skip(3).Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-[IncludeTotalCount] metodu, belirtilen tüm sayfalama/limit yan tümcesini yoksayarak döndürülen *Tüm* kayıtların toplam sayısını ister:
+[IncludeTotalCount] yöntemi, belirtilen herhangi bir sayfalama/sınır yan tümcesini yok sayarak döndürülecek *tüm* kayıtlar için toplam sayımı ister:
 
 ```csharp
 query = query.IncludeTotalCount();
 ```
 
-Gerçek bir dünya uygulamasında, yukarıdaki örneğe benzer sorguları bir sayfalayıcı denetimiyle veya sayfalar arasında gezinmek için karşılaştırılabilir Kullanıcı arabirimine kullanabilirsiniz.
+Gerçek bir uygulamada, sayfalar arasında gezinmek için bir çağrı cihazı denetimi veya benzer web-yüksek ötüeden önceki örneğe benzer sorgular kullanabilirsiniz.
 
 > [!NOTE]
-> Bir mobil uygulama arka ucunda 50 satırlık sınırı geçersiz kılmak için, [EnableQueryAttribute] ÖĞESINI ortak alma yöntemine de uygulamanız ve sayfalama davranışını belirtmeniz gerekir. Yöntemine uygulandığında, aşağıdaki en fazla döndürülen satırları 1000 olarak ayarlar:
+> Mobil Uygulama arka ucundaki 50 satır sınırını geçersiz kılmak için, [EnableQueryAttribute'u] genel GET yöntemine uygulamalı ve çağrılama davranışını belirtmelisiniz. Yönteme uygulandığında, döndürülen en fazla satır 1000 olarak ayarlar:
 >
 > `[EnableQuery(MaxTop=1000)]`
 
 
-### <a name="selecting"></a>Nasıl yapılır: belirli sütunları seçme
-Sorgunuza bir [Seç] yan tümcesi ekleyerek sonuçlara hangi özellik kümesinin ekleneceğini belirtebilirsiniz. Örneğin, aşağıdaki kod, tek bir alanın nasıl ve ayrıca birden çok alanı seçme ve biçimlendirme işlemlerinin nasıl yapılacağını göstermektedir:
+### <a name="how-to-select-specific-columns"></a><a name="selecting"></a>Nasıl kullanılır: Belirli sütunları seçme
+Sorgunuza bir [Seç] yan tümcesi ekleyerek sonuçlara hangi özellik kümesinin dahil edileceğini belirtebilirsiniz. Örneğin, aşağıdaki kod, yalnızca bir alanın nasıl seçilebildiğini ve birden çok alanın nasıl seçilip biçimlendirilenini gösterir:
 
 ```csharp
 // Select one field -- just the Text
@@ -257,7 +257,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<string> items = await query.ToListAsync();
 ```
 
-Şimdiye kadar açıklanan tüm işlevler eklenebilir, bu nedenle zincirleme devam edebilir. Her zincirleme çağrı sorguyu etkiler. Bir örnek daha:
+Şu ana kadar açıklanan tüm fonksiyonlar katkı maddesi, bu yüzden onları zincirleme yedevam edebiliriz. Her zincirleme arama sorgunun daha fazlasını etkiler. Bir örnek daha:
 
 ```csharp
 MobileServiceTableQuery<TodoItem> query = todoTable
@@ -268,35 +268,35 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<string> items = await query.ToListAsync();
 ```
 
-### <a name="lookingup"></a>Nasıl yapılır: KIMLIĞE göre verileri arama
-[LookupAsync] işlevi, veritabanından belırlı bir kimliğe sahip nesneleri aramak için kullanılabilir.
+### <a name="how-to-look-up-data-by-id"></a><a name="lookingup"></a>Nasıl kullanılır: Kimlikle veri arama
+[LookupAsync] işlevi, belirli bir kimlikle veritabanındaki nesneleri aramak için kullanılabilir.
 
 ```csharp
 // This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
 TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
 ```
 
-### <a name="untypedqueries"></a>Nasıl yapılır: türsüz sorgular yürütme
-Türsüz bir tablo nesnesi kullanarak bir sorgu yürütürken, aşağıdaki örnekte olduğu gibi, [ReadAsync]'ı çağırarak OData sorgu dizesini açıkça belirtmeniz gerekir:
+### <a name="how-to-execute-untyped-queries"></a><a name="untypedqueries"></a>Nasıl yapılsın: Yazılmamış sorguları yürütme
+Yazılmamış bir tablo nesnesi kullanarak bir sorgu yürütürken, aşağıdaki örnekte olduğu gibi [ReadAsync'i]arayarak OData sorgu dizesini açıkça belirtmeniz gerekir:
 
 ```csharp
 // Lookup untyped data using OData
 JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 ```
 
-Bir özellik paketi gibi kullanabileceğiniz JSON değerlerini geri alırsınız. JToken ve Newtonsoft Json.NET hakkında daha fazla bilgi için bkz. [JSON.net] sitesi.
+Bir özellik çantası gibi kullanabileceğiniz JSON değerleri geri almak. JToken ve Newtonsoft Json.NET hakkında daha fazla bilgi için [Json.NET] sitesine bakın.
 
-### <a name="inserting"></a>Nasıl yapılır: mobil uygulama arka ucuna veri ekleme
-Tüm istemci türleri, varsayılan olarak bir dize olan **kimliği**adlı bir üye içermelidir. Bu **kimlik** , CRUD işlemlerini gerçekleştirmek ve çevrimdışı eşitleme için gereklidir. Aşağıdaki kod, bir tabloya yeni satırlar eklemek için [Insertasync] yönteminin nasıl kullanılacağını gösterir. Parametresi .NET nesnesi olarak eklenecek verileri içerir.
+### <a name="how-to-insert-data-into-a-mobile-app-backend"></a><a name="inserting"></a>Nasıl kullanılır: Mobil Uygulama arka ucuna veri ekleme
+Tüm istemci türleri, varsayılan olarak bir dize olan **Id**adlı bir üye içermelidir. Bu **Kimlik** CRUD işlemleri gerçekleştirmek ve çevrimdışı eşitleme için gereklidir. Aşağıdaki kod, tabloya yeni satırlar eklemek için [InsertAsync] yönteminin nasıl kullanılacağını göstermektedir. Parametre,.NET nesnesi olarak eklenecek verileri içerir.
 
 ```csharp
 await todoTable.InsertAsync(todoItem);
 ```
 
-Bir ekleme sırasında `todoItem` benzersiz bir özel KIMLIK değeri yoksa, sunucu tarafından bir GUID oluşturulur.
-Çağrı dönüşdikten sonra nesneyi inceleyerek oluşturulan kimliği alabilirsiniz.
+Bir ekleme `todoItem` sırasında benzersiz bir özel kimlik değeri dahil edilmezse, sunucu tarafından bir GUID oluşturulur.
+Arama döndükten sonra nesneyi inceleyerek oluşturulan Kimliği alabilirsiniz.
 
-Türsüz verileri eklemek için Json.NET avantajlarından yararlanabilirsiniz:
+Yazılmamış veri eklemek için Json.NET yararlanabilirsiniz:
 
 ```csharp
 JObject jo = new JObject();
@@ -305,7 +305,7 @@ jo.Add("Complete", false);
 var inserted = await table.InsertAsync(jo);
 ```
 
-Benzersiz bir dize kimliği olarak bir e-posta adresi kullanan bir örnek aşağıda verilmiştir:
+Burada benzersiz bir dize kimliği olarak bir e-posta adresi kullanarak bir örnek:
 
 ```csharp
 JObject jo = new JObject();
@@ -315,28 +315,28 @@ jo.Add("Complete", false);
 var inserted = await table.InsertAsync(jo);
 ```
 
-### <a name="working-with-id-values"></a>KIMLIK değerleriyle çalışma
-Mobile Apps, tablonun **kimlik** sütunu için benzersiz özel dize değerlerini destekler. Bir dize değeri, uygulamaların, KIMLIK için e-posta adresleri veya Kullanıcı adları gibi özel değerleri kullanmasına izin verir.  Dize kimlikleri aşağıdaki avantajları sağlar:
+### <a name="working-with-id-values"></a>Kimlik değerleriyle çalışma
+Mobil Uygulamalar, tablonun **kimlik** sütunu için benzersiz özel dize değerlerini destekler. Dize değeri, uygulamaların kimlik için e-posta adresleri veya kullanıcı adları gibi özel değerleri kullanmasına olanak tanır.  Dize işlikiler size aşağıdaki avantajlardan yararlanırır:
 
-* Kimlikler, veritabanına gidiş dönüş yapılmadan oluşturulur.
-* Kayıtlar farklı tablolardan veya veritabanlarından birleştirmek daha kolaydır.
-* Kimlikler değerleri, bir uygulamanın mantığı ile daha iyi tümleştirilebilir.
+* Veritabanlarına gidiş dönüş yapmadan yapılan t.c.
+* Kayıtların farklı tablolardan veya veritabanlarından birleştirilmesi daha kolaydır.
+* Yanlış lar değerleri, uygulamanın mantığıyla daha iyi tümleştirilebilir.
 
-Ekli bir kayıtta bir dize KIMLIĞI değeri ayarlanmamışsa, mobil uygulama arka ucu KIMLIK için benzersiz bir değer oluşturur. İstemci veya arka uçta kendi KIMLIK değerlerinizi oluşturmak için [GUID. NewGuid] yöntemini kullanabilirsiniz.
+Eklenen bir kayıtta dize kimliği değeri ayarlanmadığında, Mobil Uygulama arka ucu kimlik için benzersiz bir değer oluşturur. [Guid.NewGuid] yöntemini, istemcide veya arka uçta kendi kimlik değerlerinizi oluşturmak için kullanabilirsiniz.
 
 ```csharp
 JObject jo = new JObject();
 jo.Add("id", Guid.NewGuid().ToString("N"));
 ```
 
-### <a name="modifying"></a>Nasıl yapılır: bir mobil uygulama arka ucunda verileri değiştirme
-Aşağıdaki kod, aynı KIMLIĞE sahip mevcut bir kaydı yeni bilgilerle güncelleştirmek için [UpdateAsync] yönteminin nasıl kullanılacağını gösterir. Parametresi, .NET nesnesi olarak güncellenen verileri içerir.
+### <a name="how-to-modify-data-in-a-mobile-app-backend"></a><a name="modifying"></a>Nasıl kullanılır: Mobil Uygulama arka ucundaki verileri değiştirme
+Aşağıdaki kod, varolan bir kaydı yeni bilgilerle aynı kimlikle güncelleştirmek için [UpdateAsync] yönteminin nasıl kullanılacağını göstermektedir. Parametre,.NET nesnesi olarak güncellenecek verileri içerir.
 
 ```csharp
 await todoTable.UpdateAsync(todoItem);
 ```
 
-Türsüz verileri güncelleştirmek için, [JSON.net] 'den şu şekilde yararlanabilirsiniz:
+Yazılmamış verileri güncelleştirmek için aşağıdaki gibi [Json.NET] yararlanabilirsiniz:
 
 ```csharp
 JObject jo = new JObject();
@@ -346,16 +346,16 @@ jo.Add("Complete", false);
 var inserted = await table.UpdateAsync(jo);
 ```
 
-Güncelleştirme yapılırken bir `id` alanı belirtilmelidir. Arka uç, hangi satırın güncelleştirilecek olduğunu belirlemek için `id` alanını kullanır. `id` alanı `InsertAsync` çağrısının sonucundan elde edilebilir. Bir öğeyi `id` değeri sağlamadan güncelleştirmeyi denerseniz `ArgumentException` tetiklenir.
+Güncelleştirme `id` yaparken bir alan belirtilmelidir. Arka uç, `id` hangi satırı güncelleştireceklerini belirlemek için alanı kullanır. Alan `id` `InsertAsync` arama sonucunda elde edilebilir. Bir `ArgumentException` öğeyi `id` değer sağlamadan güncelleştirmeye çalışırsanız, bir yükseltilir.
 
-### <a name="deleting"></a>Nasıl yapılır: bir mobil uygulama arka ucunda verileri silme
-Aşağıdaki kod, var olan bir örneği silmek için [DeleteAsync] yönteminin nasıl kullanılacağını gösterir. Örnek, `todoItem`ayarlanan `id` alan tarafından tanımlanır.
+### <a name="how-to-delete-data-in-a-mobile-app-backend"></a><a name="deleting"></a>Nasıl kullanılır: Mobil Uygulama arka ucundaki verileri silme
+Aşağıdaki kod, varolan bir örneği silmek için [DeleteAsync] yönteminin nasıl kullanılacağını göstermektedir. Örnek, `todoItem`'de `id` ayarlanan alan tarafından tanımlanır.
 
 ```csharp
 await todoTable.DeleteAsync(todoItem);
 ```
 
-Türsüz verileri silmek için, Json.NET ' den şu şekilde yararlanabilirsiniz:
+Yazılmamış verileri silmek için aşağıdaki gibi Json.NET yararlanabilirsiniz:
 
 ```csharp
 JObject jo = new JObject();
@@ -363,14 +363,14 @@ jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
 await table.DeleteAsync(jo);
 ```
 
-Silme isteği yaptığınızda bir KIMLIK belirtilmelidir. Diğer özellikler hizmete geçirilmez veya hizmette yok sayılır. `DeleteAsync` çağrısının sonucu genellikle `null`. Geçirilecek KIMLIK `InsertAsync` çağrısının sonucundan elde edilebilir. `id` alanını belirtmeden bir öğeyi silmeye çalıştığınızda bir `MobileServiceInvalidOperationException` oluşturulur.
+Silme isteğinde bulunduğunuzda, bir kimlik belirtilmelidir. Diğer özellikler hizmete geçirilir veya hizmette yoksayılır. Bir `DeleteAsync` aramanın sonucu `null`genellikle . Geçecek `InsertAsync` kimlik, arama sonucundan elde edilebilir. Alan `MobileServiceInvalidOperationException` belirtmeden `id` bir öğeyi silmeye çalıştığınızda A atılır.
 
-### <a name="optimisticconcurrency"></a>Nasıl yapılır: çakışma çözümü için Iyimser eşzamanlılık kullanma
-İki veya daha fazla istemci aynı öğedeki değişiklikleri aynı anda yazabilir. Çakışma algılaması olmadan, son yazma önceki güncelleştirmelerin üzerine yazar. **İyimser eşzamanlılık denetimi** , her bir işlemin işleme ve bu nedenle herhangi bir kaynak kilitlemeyi kullanmayan varsayılmaktadır.  Bir işlemi işlemeden önce, iyimser eşzamanlılık denetimi başka hiçbir işlemin verileri değiştirmadığını doğrular. Veriler değiştirilmişse, işleme işlemi geri alınır.
+### <a name="how-to-use-optimistic-concurrency-for-conflict-resolution"></a><a name="optimisticconcurrency"></a>Nasıl kullanılır: Çakışma çözümü için İyimser Eşzamanlılık'ı kullanın
+İki veya daha fazla istemci aynı öğeye aynı anda değişiklik yazabilir. Çakışma algılama olmadan, son yazma önceki güncelleştirmeleri üzerine yazmak istiyorsunuz. **İyimser eşzamanlılık denetimi,** her işlemin işleyebileceğini varsayar ve bu nedenle herhangi bir kaynak kilitleme kullanmaz.  Bir işlem gerçekleştirmeden önce, iyimser eşzamanlılık denetimi başka hiçbir işlemin verileri değiştirdiğini doğrular. Veriler değiştirildiyse, işleyen işlem geri alınır.
 
-Mobile Apps, mobil uygulama arka ucunuzdaki her tablo için tanımlanan `version` sistem özelliği sütununu kullanarak her bir öğedeki değişiklikleri izleyerek iyimser eşzamanlılık denetimini destekler. Kayıt her güncelleştirildiği zaman, Mobile Apps bu kayıt için `version` özelliğini yeni bir değere ayarlar. Her güncelleştirme isteği sırasında, isteğe eklenen kaydın `version` özelliği, sunucudaki kayıt için aynı özellik ile karşılaştırılır. İstekle geçilen sürüm arka uca eşleşmiyorsa, istemci kitaplığı `MobileServicePreconditionFailedException<T>` bir özel durum oluşturur. Özel duruma dahil edilen tür, kaydın sunucular sürümünü içeren arka ucun kaydıdır. Uygulama daha sonra bu bilgileri kullanarak, değişiklikleri kaydetmek için arka uçta doğru `version` değeri ile güncelleştirme isteğinin yeniden yürütülüp yürütülmeyeceğine karar verebilir.
+Mobil Uygulamalar, Mobil Uygulama arka uçunuzdaki `version` her tablo için tanımlanan sistem özelliği sütununu kullanarak her öğedeki değişiklikleri izleyerek iyimser eşzamanlılık denetimini destekler. Bir kayıt her güncelleştirinde, `version` Mobil Uygulamalar bu kaydın özelliğini yeni bir değere ayarlar. Her güncelleştirme isteği `version` sırasında, istekle birlikte kaydedilen kaydın özelliği, sunucudaki kayıt için aynı özellik ile karşılaştırılır. İstekle geçirilen sürüm arka uçla eşleşmiyorsa, istemci `MobileServicePreconditionFailedException<T>` kitaplığı bir özel durum oluşturur. Özel durum la birlikte dahil edilen tür, kaydın sunucu sürümünü içeren arka uçtan gelen kayıttır. Uygulama daha sonra değişiklikleri işlemek için arka uçtan doğru `version` değerle güncelleştirme isteğini yeniden yürütüp yürütmemeye karar vermek için bu bilgileri kullanabilirsiniz.
 
-İyimser eşzamanlılığı etkinleştirmek üzere `version` sistemi özelliği için tablo sınıfında bir sütun tanımlayın. Örnek:
+İyimser eşzamanlılık sağlamak `version` için sistem özelliği için tablo sınıfında bir sütun tanımlayın. Örnek:
 
 ```csharp
 public class TodoItem
@@ -389,14 +389,14 @@ public class TodoItem
 }
 ```
 
-Türsüz tablolar kullanan uygulamalar, tablonun `SystemProperties` `Version` bayrağını aşağıdaki gibi ayarlayarak iyimser eşzamanlılık sağlar.
+Yazılmamış tablolar kullanan uygulamalar, tablonun `Version` `SystemProperties` üzerindeki bayrağı aşağıdaki gibi ayarlayarak iyimser eşzamanlılık sağlar.
 
 ```csharp
 //Enable optimistic concurrency by retrieving version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-İyimser eşzamanlılık etkinleştirmenin yanı sıra, [UpdateAsync]çağrılırken kodunuzda `MobileServicePreconditionFailedException<T>` özel durumu da yakalamalı.  Güncelleştirilmiş kayda doğru `version` uygulayarak çakışmayı çözün ve çözümlenen kayıtla [UpdateAsync] çağırın. Aşağıdaki kod, bir yazma çakışmasını tespit edildikten sonra nasıl çözümleneceğini gösterir:
+İyimser eşzamanlılığı etkinleştirmeye ek olarak, `MobileServicePreconditionFailedException<T>` [UpdateAsync'i]ararken kodunuzda ki özel durumu da yakalamanız gerekir.  Güncelleştirilmiş kayda doğru `version` uygulayarak çakışmayı çözümleyin ve çözülmüş kayıtla [UpdateAsync'i] arayın. Aşağıdaki kod, bir yazma çakışması algılandıktan sonra nasıl çözüleceğini gösterir:
 
 ```csharp
 private async void UpdateToDoItem(TodoItem item)
@@ -454,10 +454,10 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-Daha fazla bilgi için bkz. [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme] konusu.
+Daha fazla bilgi için [Azure Mobil Uygulamaları konusundaki Çevrimdışı Veri Eşitleme konusuna] bakın.
 
-### <a name="binding"></a>Nasıl yapılır: Windows Kullanıcı arabirimine Mobile Apps verileri bağlama
-Bu bölümde, bir Windows uygulamasında kullanıcı arabirimi öğeleri kullanılarak döndürülen veri nesnelerinin nasıl görüntüleneceği gösterilmektedir.  Aşağıdaki örnek kod, tamamlanmamış öğeler için bir sorguyla birlikte listenin kaynağına bağlanır. [MobileServiceCollection] Mobile Apps duyarlı bir bağlama koleksiyonu oluşturur.
+### <a name="how-to-bind-mobile-apps-data-to-a-windows-user-interface"></a><a name="binding"></a>Nasıl yapilir: Mobil Uygulamalar verilerini Windows kullanıcı arabirimine bağlama
+Bu bölümde, bir Windows uygulamasında UI öğelerini kullanarak döndürülen veri nesnelerinin nasıl görüntülenilen görüntülenilen.  Aşağıdaki örnek kod, tamamlanmamış öğeler için bir sorgu ile listenin kaynağına bağlanır. [MobileServiceCollection,] Mobil Uygulamalara duyarlı bir bağlama koleksiyonu oluşturur.
 
 ```csharp
 // This query filters out completed TodoItems.
@@ -473,7 +473,7 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Yönetilen çalışma zamanındaki bazı denetimler [ISupportIncrementalLoading]adlı bir arabirimi destekler. Bu arabirim, Kullanıcı kaydırıldığında denetimlerin ek veri istemesine izin verir. Bu arabirim için, [MobileServiceIncrementalLoadingCollection]aracılığıyla Evrensel Windows uygulamaları için yerleşik destek bulunur ve bu, denetimlerden gelen çağrıları otomatik olarak işler. Windows uygulamalarında `MobileServiceIncrementalLoadingCollection` aşağıdaki gibi kullanın:
+Yönetilen çalışma zamanındaki bazı denetimler [ISupportIncrementalLoading]adlı bir arabirimi destekler. Bu arabirim, kullanıcı kaydırıldığında denetimlerin ek veri istemesine olanak tanır. [MobileServiceIncrementalLoadingCollection]aracılığıyla evrensel Windows uygulamaları için bu arayüz için yerleşik destek vardır , hangi otomatik olarak kontrollerden aramaları işler. Windows `MobileServiceIncrementalLoadingCollection` uygulamalarında aşağıdaki gibi kullanın:
 
 ```csharp
 MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
@@ -483,19 +483,19 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Yeni koleksiyonu Windows Phone 8 ve "Silverlight" uygulamalarında kullanmak için, `IMobileServiceTableQuery<T>` ve `IMobileServiceTable<T>`üzerinde `ToCollection` uzantısı yöntemlerini kullanın. Verileri yüklemek için `LoadMoreItemsAsync()`çağırın.
+Windows Phone 8 ve "Silverlight" uygulamalarında yeni `ToCollection` koleksiyonu kullanmak `IMobileServiceTableQuery<T>` `IMobileServiceTable<T>`için, uzantı yöntemlerini kullanın ve. Veri yüklemek için. `LoadMoreItemsAsync()`
 
 ```csharp
 MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 await items.LoadMoreItemsAsync();
 ```
 
-`ToCollectionAsync` veya `ToCollection`çağırarak oluşturulan koleksiyonu kullandığınızda, UI denetimlerine bağlanabilen bir koleksiyon alırsınız.  Bu koleksiyon disk belleğine duyarlı.  Koleksiyon ağdan veri yüklüyor olduğundan, yükleme bazen başarısız olur. Bu tür sorunları işlemek için, `LoadMoreItemsAsync`çağrılarından kaynaklanan özel durumları işlemek için `MobileServiceIncrementalLoadingCollection` `OnException` yöntemi geçersiz kılın.
+Arayarak `ToCollectionAsync` oluşturulan koleksiyonu kullandığınızda `ToCollection`veya , UI denetimlerine bağlı olabilecek bir koleksiyon elde elabilirsiniz.  Bu koleksiyon sayfalama farkındadır.  Koleksiyon ağdan veri yüklediğinden, yükleme bazen başarısız olur. Bu tür hataları işlemek `OnException` `MobileServiceIncrementalLoadingCollection` için, `LoadMoreItemsAsync`''ye yapılan çağrılardan kaynaklanan özel durumları işlemek için yöntemi geçersiz kılın
 
-Tablonuzun çok fazla alan olup olmadığını ve yalnızca bazı bunları denetimenizde göstermek istediğinizi göz önünde bulundurun. Kullanıcı arabiriminde görüntülenecek belirli sütunları seçmek için yukarıdaki "[belirli sütunları seç](#selecting)" bölümündeki Kılavuzu kullanabilirsiniz.
+Tablonuzda çok sayıda alan olup olmadığını, ancak yalnızca bazılarını denetiminizde görüntülemek isteyip istemediğiniz göz önünde bulundurun. UI'de görüntülenecek belirli sütunları seçmek için önceki bölümdeki "[Belirli sütunları seçin](#selecting)" kılavuzu kullanabilirsiniz.
 
-### <a name="pagesize"></a>Sayfa boyutunu değiştirme
-Azure Mobile Apps, varsayılan olarak istek başına en fazla 50 öğe döndürür.  Hem istemcide hem de sunucuda maksimum sayfa boyutunu artırarak disk belleği boyutunu değiştirebilirsiniz.  İstenen sayfa boyutunu artırmak için `PullAsync()`kullanırken `PullOptions` belirtin:
+### <a name="change-the-page-size"></a><a name="pagesize"></a>Sayfa boyutunu değiştirme
+Azure Mobile Apps varsayılan olarak istek başına en fazla 50 öğe döndürür.  Hem istemcide hem de sunucuda maksimum sayfa boyutunu artırarak sayfa boyutunu değiştirebilirsiniz.  İstenen sayfa boyutunu artırmak `PullOptions` için `PullAsync()`şunları kullanırken belirtin:
 
 ```csharp
 PullOptions pullOptions = new PullOptions
@@ -504,21 +504,21 @@ PullOptions pullOptions = new PullOptions
     };
 ```
 
-Sunucu içinde 100 'e eşit veya ondan büyük `PageSize` yaptığınız varsayılarak, bir istek en fazla 100 öğe döndürür.
+Sunucu içinde 100'e `PageSize` eşit veya daha büyük bir istek yaptığınızvarsa, istek en fazla 100 öğe döndürür.
 
-## <a name="#offlinesync"></a>Çevrimdışı tablolarla çalışma
-Çevrimdışı tablolar, verileri çevrimdışıyken kullanılmak üzere depolamak için yerel bir SQLite depo kullanır.  Tüm tablo işlemleri, uzak sunucu deposu yerine yerel SQLite deposuna göre yapılır.  Çevrimdışı bir tablo oluşturmak için önce projenizi hazırlayın:
+## <a name="work-with-offline-tables"></a><a name="#offlinesync"></a>Çevrimdışı Tablolarla Çalışma
+Çevrimdışı tablolar, çevrimdışı olduğunda kullanmak üzere verileri depolamak için yerel bir SQLite deposu kullanır.  Tüm tablo işlemleri uzak sunucu deposu yerine yerel SQLite deposuna karşı yapılır.  Çevrimdışı bir tablo oluşturmak için önce projenizi hazırlayın:
 
-1. Visual Studio 'da çözüme sağ tıklayın > çözüm **Için NuGet Paketlerini Yönet...** ' i sağ tıklatın ve Çözümdeki tüm projeler için **Microsoft. Azure. Mobile. Client. SQLiteStore** NuGet paketini arayın ve yüklemeyi yapın.
-2. Seçim Windows cihazlarını desteklemek için aşağıdaki SQLite çalışma zamanı paketlerinden birini yüklemelisiniz:
+1. Visual Studio'da, **Çözüm için NuGet Paketlerini Yönet>** çözüme sağ tıklayın... ardından çözümdeki tüm projeler için **Microsoft.Azure.Mobile.Mobile.Client.SQLiteStore** NuGet paketini arayın ve yükleyin.
+2. (İsteğe bağlı) Windows aygıtlarını desteklemek için aşağıdaki SQLite çalışma zamanı paketlerinden birini yükleyin:
 
-   * **Windows 8.1 çalışma zamanı:** [Windows 8.1 Için SQLite][3]'ı yükler.
-   * **Windows Phone 8,1:** [Windows Phone 8,1 Için SQLite][4]'ı yükler.
-   * **Evrensel Windows platformu** [Evrensel pencereler Için SQLite][5]'ı yükler.
-3. (İsteğe bağlı). Windows cihazları için **başvurular** > **Başvuru Ekle...** öğesine tıklayın, **Windows** klasör > **uzantıları**' nı genişletin ve Windows SDK için **Visual C++ 2013 çalışma zamanı** ile birlikte Windows SDK **için uygun SQLite** 'u etkinleştirin.
-    SQLite SDK adları her bir Windows platformunda biraz farklılık gösterir.
+   * **Windows 8.1 Çalışma Zamanı:** [Windows 8.1 için SQLite'yi][3]yükleyin.
+   * **Windows Phone 8.1:** [Windows Phone 8.1 için SQLite'yi][4]yükleyin.
+   * **Evrensel Windows Platformu** [Evrensel Windows için SQLite yükleyin.][5]
+3. (İsteğe bağlı). Windows aygıtları **için, Başvuru** > **Ekle Başvuru...** seçeneğini tıklatın, **Windows** klasörünü genişletin > **Uzantıları'nı**genişletin, ardından **Visual C++ 2013 Windows** SDK için Çalışma Süresi ile birlikte Windows SDK için uygun **SQLite'yi** etkinleştirin.
+    SQLite SDK adları her Windows platformuna göre biraz farklılık gösterir.
 
-Bir tablo başvurusu oluşturulmadan önce, yerel depo hazırlanmalıdır:
+Tablo başvurusu oluşturulmadan önce yerel mağazanın hazırlanması gerekir:
 
 ```csharp
 var store = new MobileServiceSQLiteStore(Constants.OfflineDbPath);
@@ -528,21 +528,21 @@ store.DefineTable<TodoItem>();
 await this.client.SyncContext.InitializeAsync(store);
 ```
 
-Mağaza başlatması normalde istemci oluşturulduktan hemen sonra yapılır.  **Offlinedbyolu** , destekledikleri tüm platformlarda kullanılmak üzere uygun bir dosya adı olmalıdır.  Yol tam olarak nitelenmiş bir yoldur (yani eğik çizgiyle başlıyorsa), bu yol kullanılır.  Yol tam nitelikli değilse, dosya platforma özgü bir konuma yerleştirilir.
+Mağaza başlatma normalde istemci oluşturulduktan hemen sonra yapılır.  **ÇevrimdışıDbPath,** desteklediğiniz tüm platformlarda kullanıma uygun bir dosya adı olmalıdır.  Yol tam nitelikli bir yolsa (yani, bir eğik çizgiyle başlar), o yol kullanılır.  Yol tam olarak nitelikli değilse, dosya platforma özgü bir konuma yerleştirilir.
 
-* İOS ve Android cihazlarda, varsayılan yol "kişisel dosyalar" klasörüdür.
-* Windows cihazlarında, varsayılan yol uygulamaya özgü "AppData" klasörüdür.
+* iOS ve Android cihazlar için varsayılan yol "Kişisel Dosyalar" klasörüdür.
+* Windows aygıtları için varsayılan yol uygulamaya özgü "AppData" klasörüdür.
 
-`GetSyncTable<>` yöntemi kullanılarak bir tablo başvurusu elde edilebilir:
+Yöntem kullanılarak `GetSyncTable<>` bir tablo başvurusu elde edilebilir:
 
 ```csharp
 var table = client.GetSyncTable<TodoItem>();
 ```
 
-Çevrimdışı bir tablo kullanmak için kimlik doğrulaması yapmanız gerekmez.  Yalnızca arka uç hizmetiyle iletişim kurarken kimlik doğrulaması yapmanız gerekir.
+Çevrimdışı tablo kullanmak için kimlik doğrulamanız gerekmez.  Yalnızca arka uç hizmetiyle iletişim kurarken kimlik doğrulamanız gerekir.
 
-### <a name="syncoffline"></a>Çevrimdışı bir tabloyu eşitleme
-Çevrimdışı tablolar varsayılan olarak arka uca eşitlenmez.  Eşitleme iki parçaya bölünür.  Değişiklikleri yeni öğeler indirilmeden ayrı olarak gönderebilirsiniz.  Tipik bir eşitleme yöntemi aşağıda verilmiştir:
+### <a name="syncing-an-offline-table"></a><a name="syncoffline"></a>Çevrimdışı Tabloyu Eşitleme
+Çevrimdışı tablolar varsayılan olarak arka uçla eşitlenmez.  Senkronizasyon iki parçaya bölünür.  Değişiklikleri yeni öğeleri indirmekten ayrı olarak itebilirsiniz.  Aşağıda tipik bir eşitleme yöntemi vereme yöntemi vereme yöntemi ve
 
 ```csharp
 public async Task SyncAsync()
@@ -590,68 +590,68 @@ public async Task SyncAsync()
 }
 ```
 
-`PullAsync` ilk bağımsız değişkeni null ise, artımlı eşitleme kullanılmaz.  Her eşitleme işlemi tüm kayıtları alır.
+İlk bağımsız değişken `PullAsync` null ise, artımlı eşitleme kullanılmaz.  Her eşitleme işlemi tüm kayıtları alır.
 
-SDK kayıtları çekmeden önce örtük bir `PushAsync()` gerçekleştirir.
+SDK, kayıtları `PushAsync()` çekmeden önce örtük bir performans sergiliyor.
 
-Çakışma işleme bir `PullAsync()` yönteminde gerçekleşir.  Çakışmalarla, çevrimiçi tablolarla aynı şekilde ilgilenebilmeniz gerekir.  Ekleme, güncelleştirme veya silme sırasında yerine `PullAsync()` çağrıldığında çakışma üretilir. Birden çok çakışma meydana geliyorsa, bunlar tek bir MobileServicePushFailedException içinde paketlenmiştir.  Her başarısızlığı ayrı olarak işleyin.
+Çakışma işleme `PullAsync()` bir yöntem de olur.  Çakışmalarla çevrimiçi tablolarla aynı şekilde başa çıkabilirsiniz.  Çakışma, `PullAsync()` ekleme, güncelleştirme veya silme sırasında değil, çağrıldığında oluşur. Birden çok çakışma olursa, bunlar tek bir MobileServicePushFailedException içine paketlenir.  Her hatayı ayrı ayrı ele alın.
 
-## <a name="#customapi"></a>Özel bir API ile çalışma
-Özel bir API, bir INSERT, Update, DELETE veya Read işlemiyle eşleşmeyen sunucu işlevlerini açığa çıkaran özel uç noktalar tanımlamanızı sağlar. Özel bir API kullanarak ileti üzerinde daha fazla denetime sahip olabilirsiniz ve HTTP ileti üst bilgilerini okumak ve ayarlamak ve JSON dışında bir ileti gövdesi biçimi tanımlamak dahil olabilirsiniz.
+## <a name="work-with-a-custom-api"></a><a name="#customapi"></a>Özel bir API ile çalışma
+Özel API, ekleme, güncelleştirme, silme veya okuma işlemine eş olmayan sunucu işlevselliğini ortaya çıkaran özel uç noktaları tanımlamanızı sağlar. Özel bir API kullanarak, HTTP ileti üstbilgilerini okuma ve ayarlama ve JSON dışındaki ileti gövdesi biçimini tanımlama dahil olmak üzere mesajlaşma üzerinde daha fazla denetime sahip olabilirsiniz.
 
-İstemci üzerindeki [Invokeapiasync] yöntemlerinden birini çağırarak özel bir API 'yi çağırabilirsiniz. Örneğin, aşağıdaki kod satırı arka uçtaki **Completeall** API 'SINE bir post isteği gönderir:
+İstemcideki [InvokeApiAsync] yöntemlerinden birini arayarak özel bir API çağırırsınız. Örneğin, aşağıdaki kod satırı arka uçtaki tüm API'nin **tamamına** bir POST isteği gönderir:
 
 ```javascript
 var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
 ```
 
-Bu form, yazılı bir yöntem çağrıdır ve **Markallresult** dönüş türünün tanımlanmasını gerektirir. Hem yazılan hem de türsüz yöntemler desteklenir.
+Bu form, yazılı bir yöntem çağrısıdır ve **MarkAllResult** dönüş türünün tanımlanmasını gerektirir. Hem yazılan hem de yazılmamış yöntemler desteklenir.
 
-Invokeapiasync () yöntemi, API '/' ile başlanmadığı takdirde çağırmak istediğiniz API 'ye '/api/' öğesine eklenir.
+InvokeApiAsync() yöntemi, API '/' ile başlamadığı sürece aramak istediğiniz API'ye '/api/' hazırlar.
 Örnek:
 
-* `InvokeApiAsync("completeAll",...)` arka uçta/api/completeAll çağrısı
-* `InvokeApiAsync("/.auth/me",...)`, arka uçta/.exe auth/Me 'yi çağırır
+* `InvokeApiAsync("completeAll",...)`aramalar /api/completeAll arka uçta
+* `InvokeApiAsync("/.auth/me",...)`arka uçta /.auth/me'yi arar
 
-Azure Mobile Apps ile tanımlanmayan bu WebAPIs dahil olmak üzere herhangi bir WebAPI çağırmak için ınvokeapiasync kullanabilirsiniz.  Invokeapiasync () kullandığınızda, kimlik doğrulama üst bilgileri de dahil olmak üzere uygun üstbilgiler istekle birlikte gönderilir.
+Azure Mobil Uygulamaları yla tanımlanmamış WebAPI'ler de dahil olmak üzere, invokeApiAsync'i herhangi bir WebAPI'yi aramak için kullanabilirsiniz.  InvokeApiAsync() kullandığınızda, kimlik doğrulama üstleri de dahil olmak üzere uygun üstbilgi istekle birlikte gönderilir.
 
-## <a name="authentication"></a>Kullanıcıların kimliklerini doğrulama
-Mobile Apps, farklı dış kimlik sağlayıcıları kullanarak uygulama kullanıcılarının kimlik doğrulamasını ve yetkilendiriyi destekler: Facebook, Google, Microsoft hesabı, Twitter ve Azure Active Directory. Belirli işlemlere erişimi yalnızca kimliği doğrulanmış kullanıcılarla kısıtlamak için tablolar üzerinde izinler belirleyebilirsiniz. Ayrıca, sunucu betiklerine yetkilendirme kuralları uygulamak için kimliği doğrulanmış kullanıcıların kimliğini de kullanabilirsiniz. Daha fazla bilgi için [Uygulamanıza kimlik doğrulaması ekleme] öğreticisine bakın.
+## <a name="authenticate-users"></a><a name="authentication"></a>Kullanıcıların kimliklerini doğrulama
+Mobil Uygulamalar, uygulama kullanıcılarının facebook, Google, Microsoft Hesabı, Twitter ve Azure Active Directory gibi çeşitli dış kimlik sağlayıcılarını kullanarak kimlik doğrulamayı ve yetkilendirmeyi destekler. Belirli işlemlere erişimi yalnızca kimlik doğrulaması yapılan kullanıcılarla sınırlamak için izinleri tablolarda ayarlayabilirsiniz. Sunucu komut dosyasında yetkilendirme kuralları nı uygulamak için kimlik doğrulaması yapılan kullanıcıların kimliğini de kullanabilirsiniz. Daha fazla bilgi için [Uygulamanıza kimlik doğrulaması ekleme] öğreticisine bakın.
 
-İki kimlik doğrulama akışı desteklenir: *istemci tarafından yönetilen* ve *sunucu tarafından yönetilen* akış. Sunucu tarafından yönetilen akış, sağlayıcının web kimlik doğrulama arabirimini temel aldığından en basit kimlik doğrulama deneyimini sağlar. İstemci tarafından yönetilen akış, sağlayıcıya özel cihaza özgü SDK 'lara bağlı olduğundan cihaza özgü yetenekler ile daha derin tümleştirme sağlar.
+İki kimlik doğrulama akışı desteklenir: *istemci tarafından yönetilen* ve sunucu tarafından *yönetilen* akış. Sunucu tarafından yönetilen akış, sağlayıcının web kimlik doğrulama arabirimine dayandığı için en basit kimlik doğrulama deneyimini sağlar. İstemci tarafından yönetilen akış, sağlayıcıya özel aygıta özgü SDK'lara dayandığı için cihaza özgü özelliklerle daha derin tümleştirme sağlar.
 
 > [!NOTE]
 > Üretim uygulamalarınızda istemci tarafından yönetilen bir akış kullanmanızı öneririz.
 
-Kimlik doğrulaması ayarlamak için uygulamanızı bir veya daha fazla kimlik sağlayıcısıyla kaydetmeniz gerekir.  Kimlik sağlayıcısı, uygulamanız için bir istemci KIMLIĞI ve bir istemci gizli anahtarı oluşturur.  Bu değerler daha sonra Azure App Service Kimlik Doğrulaması/Yetkilendirmeyi etkinleştirmek için arka ucunuza ayarlanır.  Daha fazla bilgi için, [uygulamanıza kimlik doğrulaması ekleme]öğreticisindeki ayrıntılı yönergeleri izleyin.
+Kimlik doğrulamasını ayarlamak için uygulamanızı bir veya daha fazla kimlik sağlayıcısına kaydetmeniz gerekir.  Kimlik sağlayıcısı, uygulamanız için bir istemci kimliği ve bir istemci sırrı oluşturur.  Bu değerler daha sonra Azure App Service kimlik doğrulamasını/yetkilendirmesini etkinleştirmek için arka ucunuzda ayarlanır.  Daha fazla bilgi için, öğreticideki ayrıntılı yönergeleri [uygulayın Uygulamanıza kimlik doğrulama yı ekleyin.]
 
-Bu bölümde aşağıdaki konular ele alınmıştır:
+Aşağıdaki konular bu bölümde ele alınmıştır:
 
 * [İstemci tarafından yönetilen kimlik doğrulaması](#clientflow)
-* [Sunucu tarafından yönetilen kimlik doğrulaması](#serverflow)
-* [Kimlik doğrulama belirtecini önbelleğe alma](#caching)
+* [Sunucu tarafından yönetilen kimlik doğrulama](#serverflow)
+* [Kimlik doğrulama belirteci önbelleğe alma](#caching)
 
-### <a name="clientflow"></a>İstemci tarafından yönetilen kimlik doğrulaması
-Uygulamanız kimlik sağlayıcısıyla bağımsız olarak iletişim kurabilerek arka ucunuza oturum açma sırasında döndürülen belirteci sağlayabilir. Bu istemci akışı, kullanıcılar için bir çoklu oturum açma deneyimi sağlamanıza veya kimlik sağlayıcısından ek kullanıcı verileri almanıza olanak sağlar. Kimlik sağlayıcısı SDK 'Sı daha yerel bir UX sağlar ve ek özelleştirmeye izin veriyorsa, istemci akışı kimlik doğrulaması bir sunucu akışı kullanımı için tercih edilir.
+### <a name="client-managed-authentication"></a><a name="clientflow"></a>İstemci tarafından yönetilen kimlik doğrulaması
+Uygulamanız kimlik sağlayıcıyla bağımsız olarak iletişim kurabilir ve giriş sırasında iade edilen jetonu arka ucunuzla sağlayabilir. Bu istemci akışı, kullanıcılar için tek bir oturum açma deneyimi sağlamanıza veya kimlik sağlayıcısından ek kullanıcı verileri almanıza olanak tanır. Kimlik sağlayıcısı SDK daha yerel bir UX hissi sağladığı ndan ve ek özelleştirmeye olanak sağladığından, istemci akışı kimlik doğrulaması sunucu akışını kullanmak için tercih edilir.
 
 Aşağıdaki istemci akışı kimlik doğrulama desenleri için örnekler verilmiştir:
 
-* [Active Directory Authentication Library](#adal)
+* [Etkin Dizin Kimlik Doğrulama Kitaplığı](#adal)
 * [Facebook veya Google](#client-facebook)
 
-#### <a name="adal"></a>Active Directory Authentication Library kullanıcıların kimliğini doğrulama
-Azure Active Directory kimlik doğrulaması kullanarak istemciden kullanıcı kimlik doğrulaması başlatmak için Active Directory Authentication Library (ADAL) kullanabilirsiniz.
+#### <a name="authenticate-users-with-the-active-directory-authentication-library"></a><a name="adal"></a>Active Directory Authentication Library ile kullanıcıları kimlik doğrulama
+Azure Etkin Dizin kimlik doğrulaması kullanarak istemciden kullanıcı kimlik doğrulaması başlatmak için Etkin Dizin Kimlik Doğrulama Kitaplığını (ADAL) kullanabilirsiniz.
 
-1. [Active Directory oturum açma için App Service yapılandırma] izleyerek AAD oturum açma için mobil uygulamanızın arka ucunu yapılandırın. Yerel istemci uygulamasını kaydetme işleminin isteğe bağlı adımını tamamladığınızdan emin olun.
-2. Visual Studio veya Xamarin Studio içinde projenizi açın ve `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet paketine bir başvuru ekleyin. Arama sırasında yayın öncesi sürümleri dahil edin.
-3. Aşağıdaki kodu, kullandığınız platforma göre uygulamanıza ekleyin. Her birinde aşağıdaki değişiklikleri yapın:
+1. [Active Directory giriş] için Uygulama Hizmetini yapılandırma yı izleyerek AAD oturum açma için mobil uygulama arka uçunuzu yapılandırın. Yerel istemci uygulamasını kaydetmenin isteğe bağlı adımını tamamladıktan emin olun.
+2. Visual Studio veya Xamarin Studio'da projenizi açın `Microsoft.IdentityModel.Clients.ActiveDirectory` ve NuGet paketine bir referans ekleyin. Arama yaparken, ön sürüm sürümlerini ekleyin.
+3. Kullandığınız platforma göre uygulamanız için aşağıdaki kodu ekleyin. Her birinde, aşağıdaki değiştirmeleri yapın:
 
-   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.comolmalıdır. Bu değer, [Azure portalında]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
-   * **Insert-Resource-ID-burada** , mobil uygulama arka ucunuzun istemci kimliği ile değiştirin. İstemci KIMLIĞINI, portalda **Azure Active Directory ayarlar** ' ın altında bulunan **Gelişmiş** sekmesinden elde edebilirsiniz.
-   * **Ekle-ISTEMCI kimliği-** ' ni yerel istemci uygulamasından KOPYALADıĞıNıZ istemci kimliğiyle değiştirin.
-   * {1 & gt; **Insert-REDIRECT-URI** & lt; 1} ÖĞESINI, https şemasını kullanarak sitenizin */.Auth/login/done* uç noktasıyla değiştirin Bu değer, *https://contoso.azurewebsites.net/.auth/login/done* benzer olmalıdır.
+   * **INSERT-AUTHORITY-HERE'ı** başvurunuzu yaptığınız kiracının adı ile değiştirin. Biçimi olmalıdır. https://login.microsoftonline.com/contoso.onmicrosoft.com Bu değer, [Azure portalındaki]Azure Etkin Dizininizdeki Etki Alanı sekmesinden kopyalanabilir.
+   * **INSERT-RESOURCE-ID-HERE'ı** mobil uygulama arka ucunuz için istemci kimliğiyle değiştirin. Portaldaki **Azure Etkin Dizin Ayarları** altında **Gelişmiş** sekmesinden istemci kimliğini edinebilirsiniz.
+   * **INSERT-CLIENT-ID-HERE'ı** yerel istemci uygulamasından kopyaladığınız istemci kimliğiyle değiştirin.
+   * HTTPS şemasını kullanarak **INSERT-REDIRECT-URI-HERE'ı** sitenizin */.auth/login/done* endpoint'iyle değiştirin. Bu değer *https://contoso.azurewebsites.net/.auth/login/done*.
 
-     Her platform için gereken kod aşağıdadır:
+     Her platform için gerekli kod aşağıdaki gibidir:
 
      **Windows:**
 
@@ -754,8 +754,8 @@ Azure Active Directory kimlik doğrulaması kullanarak istemciden kullanıcı ki
      }
      ```
 
-#### <a name="client-facebook"></a>Facebook veya Google 'dan bir belirteç kullanarak çoklu oturum açma
-Facebook veya Google için bu kod parçacığında gösterildiği gibi istemci akışını kullanabilirsiniz.
+#### <a name="single-sign-on-using-a-token-from-facebook-or-google"></a><a name="client-facebook"></a>Facebook veya Google'dan bir belirteç kullanarak Tek Oturum Açma
+Bu snippet'te gösterildiği gibi müşteri akışını Facebook veya Google için kullanabilirsiniz.
 
 ```csharp
 var token = new JObject();
@@ -788,8 +788,8 @@ private async Task AuthenticateAsync()
 }
 ```
 
-### <a name="serverflow"></a>Sunucu tarafından yönetilen kimlik doğrulaması
-Kimlik sağlayıcınızı kaydettikten sonra, [MobileServiceClient] üzerinde, sağlayıcınızdaki [Mobileserviceauthenticationprovider] değeri Ile [loginasync] yöntemini çağırın. Örneğin, aşağıdaki kod Facebook kullanarak bir sunucu akışı oturum açma işlemini başlatır.
+### <a name="server-managed-authentication"></a><a name="serverflow"></a>Sunucu tarafından yönetilen kimlik doğrulama
+Kimlik sağlayıcınızı kaydettikten sonra, sağlayıcınızın [MobileServiceAuthenticationProvider] değeriyle [MobileServiceClient] üzerindeki [LoginAsync] yöntemini arayın. Örneğin, aşağıdaki kod Facebook'u kullanarak sunucu akışı oturum açma işlemini başlatır.
 
 ```csharp
 private MobileServiceUser user;
@@ -817,12 +817,12 @@ private async System.Threading.Tasks.Task Authenticate()
 }
 ```
 
-Facebook dışında bir kimlik sağlayıcısı kullanıyorsanız, [Mobileserviceauthenticationprovider] değerini sağlayıcınızın değerine değiştirin.
+Facebook dışında bir kimlik sağlayıcısı kullanıyorsanız, [MobileServiceAuthenticationProvider'ın] değerini sağlayıcınızın değeriyle değiştirin.
 
-Sunucu akışında, Azure App Service seçili sağlayıcının oturum açma sayfasını görüntüleyerek OAuth kimlik doğrulama akışını yönetir.  Kimlik sağlayıcısı döntikten sonra, Azure App Service bir App Service kimlik doğrulama belirteci üretir. [Loginasync] yöntemi, bir JSON Web BELIRTECI (JWT) olarak kimliği doğrulanmış kullanıcının ve [Mobileserviceauthenticationtoken]'ın [UserID] kimliğini sağlayan bir [mobileserviceuser]döndürür. Bu belirteç önbelleğe alınabilir süresi sona erene kadar yeniden kullanılabilir. Daha fazla bilgi için bkz. [kimlik doğrulama belirtecini önbelleğe alma](#caching).
+Azure App Service, sunucu akışında, seçilen sağlayıcının oturum açma sayfasını görüntüleyerek OAuth kimlik doğrulama akışını yönetir.  Kimlik sağlayıcısı döndükten sonra, Azure App Service bir Uygulama Hizmeti kimlik doğrulama belirteci oluşturur. [LoginAsync] yöntemi, hem kimliği doğrulanan kullanıcının [UserId'ini] hem de [MobileServiceAuthenticationToken'ı]JSON web jetonu (JWT) olarak sağlayan bir [MobileServiceUser'ı]döndürür. Bu belirteç önbelleğe alınabilir süresi sona erene kadar yeniden kullanılabilir. Daha fazla bilgi için kimlik [doğrulama belirteci önbelleğe alma'ya](#caching)bakın.
 
-### <a name="caching"></a>Kimlik doğrulama belirtecini önbelleğe alma
-Bazı durumlarda, oturum açma yöntemine yapılan çağrının kimlik doğrulama belirteci sağlayıcıdan depolanarak ilk başarılı kimlik doğrulamasından sonra kaçınılabilir.  Microsoft Store ve UWP uygulamaları, başarılı bir oturum açma işleminden sonra geçerli kimlik doğrulama belirtecini şu şekilde önbelleğe almak için [Passwordkasası] kullanabilir:
+### <a name="caching-the-authentication-token"></a><a name="caching"></a>Kimlik doğrulama belirteci önbelleğe alma
+Bazı durumlarda, kimlik doğrulama belirteci sağlayıcıdan depolayarak ilk başarılı kimlik doğrulamasından sonra oturum açma yöntemine çağrı önlenebilir.  Microsoft Store ve UWP uygulamaları, başarılı bir oturum açma sonrasında geçerli kimlik doğrulama belirteciöneğini önbelleğe almak için [PasswordVault'u] aşağıdaki gibi kullanabilir:
 
 ```csharp
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -832,7 +832,7 @@ vault.Add(new PasswordCredential("Facebook", client.currentUser.UserId,
     client.currentUser.MobileServiceAuthenticationToken));
 ```
 
-UserID değeri kimlik bilgisinin Kullanıcı adı olarak depolanır ve belirteç parola olarak depolanır. Sonraki başlangıçlarda, önbelleğe alınmış kimlik bilgileri için **Passwordkasasını** kontrol edebilirsiniz. Aşağıdaki örnek, bulunan önbelleğe alınmış kimlik bilgilerini kullanır, aksi halde arka uca yeniden kimlik doğrulaması yapmayı dener:
+UserId değeri, kimlik bilgisinin Kullanıcı Adı olarak depolanır ve belirteç Parola olarak depolanır. Sonraki başlangıçlarda, önbelleğe alınmış kimlik bilgileri için **Parola Vault'u** denetleyebilirsiniz. Aşağıdaki örnek, önbelleğe alınmış kimlik bilgilerini bulunduklarında kullanır ve aksi takdirde arka uçla yeniden kimlik doğrulamayı dener:
 
 ```csharp
 // Try to retrieve stored credentials.
@@ -850,16 +850,16 @@ else
 }
 ```
 
-Bir kullanıcının oturumunu kapattığınızda, depolanan kimlik bilgilerini aşağıdaki gibi de kaldırmanız gerekir:
+Bir kullanıcıyı oturum dışı bettiğinizde, depolanan kimlik bilgilerini aşağıdaki gibi kaldırmanız gerekir:
 
 ```csharp
 client.Logout();
 vault.Remove(vault.Retrieve("Facebook", client.currentUser.UserId));
 ```
 
-Xamarin Apps, kimlik bilgilerini bir **Hesap** nesnesinde güvenli bir şekilde depolamak için [Xamarin. auth] API 'lerini kullanır. Bu API 'Leri kullanmayla ilgili bir örnek için [Contosodakika fotoğraf paylaşma örneğindeki](https://github.com/azure-appservice-samples/ContosoMoments) [AuthStore.cs] kod dosyasına bakın.
+Xamarin uygulamaları, kimlik bilgilerini bir **Hesap** nesnesinde güvenli bir şekilde depolamak için [Xamarin.Auth] API'lerini kullanır. Bu API'leri kullanma örneği için, [ContosoMoments fotoğraf paylaşım örneğindeki](https://github.com/azure-appservice-samples/ContosoMoments) [AuthStore.cs] kodu dosyasına bakın.
 
-İstemci tarafından yönetilen kimlik doğrulaması kullandığınızda, sağlayıcınızda Facebook veya Twitter gibi alınan erişim belirtecini de önbelleğe alabilirsiniz. Bu belirteç arka uca yeni bir kimlik doğrulama belirteci istemek için aşağıdaki gibi sağlanabilir:
+İstemci tarafından yönetilen kimlik doğrulamasını kullandığınızda, sağlayıcınızdan Facebook veya Twitter gibi elde edilen erişim belirteci önbelleğe de alabilirsiniz. Bu belirteç, aşağıdaki gibi arka uçtan yeni bir kimlik doğrulama belirteci istemek için sağlanabilir:
 
 ```csharp
 var token = new JObject();
@@ -870,15 +870,15 @@ token.Add("access_token", "<your_access_token_value>");
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 ```
 
-## <a name="pushnotifications"></a>Anında iletme bildirimleri
-Aşağıdaki konularda anında Iletme bildirimleri ele alınmaktadır:
+## <a name="push-notifications"></a><a name="pushnotifications"></a>Anında İletme Bildirimleri 
+Aşağıdaki konular Push Bildirimleri'ni kapsar:
 
-* [Anında Iletme bildirimleri için kaydolun](#register-for-push)
-* [Microsoft Store paketi SID 'SI edinin](#package-sid)
-* [Platformlar arası şablonlarla kaydolun](#register-xplat)
+* [Anında İtme Bildirimleri için kaydolun](#register-for-push)
+* [Microsoft Store paketi SID edinin](#package-sid)
+* [Platform ötesi şablonlarla kaydolun](#register-xplat)
 
-### <a name="register-for-push"></a>Nasıl yapılır: anında Iletme bildirimleri için kaydolma
-Mobile Apps istemcisi Azure Notification Hubs anında iletme bildirimleri için kayıt yapmanızı sağlar. Kayıt sırasında, platforma özgü anında Iletme bildirimi hizmetinden (PNS) edindiğiniz bir tanıtıcı elde edersiniz. Daha sonra, kaydı oluştururken bu değeri herhangi bir etiketle birlikte sağlarsınız. Aşağıdaki kod, Windows Notification hizmeti (WNS) ile birlikte anında iletme bildirimleri için Windows uygulamanızı kaydeder:
+### <a name="how-to-register-for-push-notifications"></a><a name="register-for-push"></a>Nasıl Yapilir: Anında İtme Bildirimleri için kaydolun
+Mobil Uygulamalar istemcisi, anında iletme bildirimleri için Azure Bildirim Hub'ları ile kaydolmanıza olanak tanır. Kayıt olurken, platforma özgü Anında Bildirim Hizmeti'nden (PNS) elde ettiğiniz bir tutamaç elde edersiniz. Daha sonra, kaydı oluştururken bu değeri herhangi bir etiketle birlikte sağlarsınız. Aşağıdaki kod, Windows Bildirim Hizmeti (WNS) ile anında iletme bildirimleri için Windows uygulamanızı kaydeder:
 
 ```csharp
 private async void InitNotificationsAsync()
@@ -891,38 +891,38 @@ private async void InitNotificationsAsync()
 }
 ```
 
-WNS ' a itiediyorsanız [bir Microsoft Store paketi SID 'si EDINMENIZ](#package-sid)gerekir.  Şablon kayıtlarına kaydolma da dahil olmak üzere Windows uygulamaları hakkında daha fazla bilgi için bkz. [uygulamanıza anında iletme bildirimleri ekleme].
+Eğer WNS itiyorsanız, o zaman [bir Microsoft Store paketi SID elde](#package-sid)etmek gerekir.  Şablon kayıtları için nasıl kaydolunur gibi Windows uygulamaları hakkında daha fazla bilgi için [bkz.]
 
-İstemciden etiket isteme desteklenmiyor.  Etiket Istekleri kayıttan sessizce kesilir.
-Cihazınızı etiketlere kaydetmek isterseniz, kayıt işlemini gerçekleştirmek için Notification Hubs API 'sini kullanan özel bir API oluşturun.  `RegisterNativeAsync()` yöntemi yerine özel API 'YI çağırın.
+İstemciden etiket istenmesi desteklenmez.  Etiket İstekleri sessizce kayıttan bırakılır.
+Cihazınızı etiketlerle kaydetmek istiyorsanız, kaydı sizin adınıza gerçekleştirmek için Bildirim Hub'ları API'sini kullanan bir Özel API oluşturun.  Yöntem yerine Özel API'yi `RegisterNativeAsync()` arayın.
 
-### <a name="package-sid"></a>Nasıl yapılır: Microsoft Store paketi SID 'SI edinme
-Microsoft Store uygulamalarda anında iletme bildirimlerini etkinleştirmek için bir paket SID 'SI gerekir.  Bir paket SID 'SI almak için, Microsoft Store uygulamanızı kaydedin.
+### <a name="how-to-obtain-a-microsoft-store-package-sid"></a><a name="package-sid"></a>Nasıl yapılır: Microsoft Store paketi SID edinin
+Microsoft Mağazası uygulamalarında anında iletme bildirimlerini etkinleştirmek için bir paket SID gereklidir.  Bir paket SID almak için uygulamanızı Microsoft Mağazası'na kaydedin.
 
 Bu değeri elde etmek için:
 
-1. Visual Studio Çözüm Gezgini Microsoft Store uygulama projesine sağ tıklayın, **mağaza** > **uygulamayı mağaza ile ilişkilendir...** seçeneğini tıklayın.
-2. Sihirbazda, **İleri**' ye tıklayın, Microsoft hesabı ile oturum açın, **Yeni bir uygulama adı**ayırarak uygulamanız için bir ad yazın ve ardından **Ayır**' a tıklayın.
-3. Uygulama kaydı başarıyla oluşturulduktan sonra uygulama adını seçin, **İleri**' ye tıklayın ve ardından **ilişkilendir**' e tıklayın.
-4. Microsoft hesabınızı kullanarak [Windows Geliştirme Merkezi] ' nde oturum açın. **Uygulamalarım**altında oluşturduğunuz uygulama kaydına tıklayın.
-5. **Uygulama yönetimi** > **uygulama kimliği**' ne tıklayın ve ardından aşağı kaydırarak **paket SID**'nizi bulun.
+1. Visual Studio Solution Explorer'da Microsoft Store uygulama **Store** > projesine sağ tıklayın, Mağaza**ile Ilişkilendir Uygulamasını tıklatın...**
+2. Sihirbazda, **İleri'yi**tıklatın , Microsoft hesabınızla oturum açın, **Rezerv'de**uygulamanız için bir ad yazın, ardından **Rezerv'i**tıklatın.
+3. Uygulama kaydı başarıyla oluşturulduktan sonra, uygulama adını seçin, **İleri'yi**tıklatın ve ardından **Ilişkilendir'i**tıklatın.
+4. Microsoft Hesabınızı kullanarak [Windows Dev Center'da] oturum açın. **Uygulamalarım**altında oluşturduğunuz uygulama kaydına tıklayın.
+5. **App yönetimi** > **App kimliğini**tıklatın ve ardından **Paket SID'nizi**bulmak için aşağı kaydırın.
 
-Paket SID 'sinin birçok kullanımı, bunu bir URI olarak değerlendirir ve bu durumda, şema olarak *MS-App://* kullanmanız gerekir. Bu değeri bir ön ek olarak birleştirerek, paket SID 'sinin oluşturulmuş sürümünü unutmayın.
+Paket SID birçok kullanır bir URI olarak tedavi, bu durumda şema olarak *ms-app://* kullanmanız gerekir. Bu değeri önek olarak biraraya getirerek oluşturduğunuz SID paketinizin sürümünü not edin.
 
-Xamarin uygulamaları, iOS veya Android platformlarında çalışan bir uygulamayı kaydedebilmek için bazı ek kodlar gerektirir. Daha fazla bilgi için platformunuzun konusuna bakın:
+Xamarin uygulamaları, iOS veya Android platformlarında çalışan bir uygulamayı kaydedebilmek için bazı ek kodlara ihtiyaç duyar. Daha fazla bilgi için platformunuzun konusuna bakın:
 
 * [Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md#add-push)
 * [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started-push.md#add-push-notifications-to-your-app)
 
-### <a name="register-xplat"></a>Nasıl yapılır: platformlar arası bildirimler göndermek için gönderme şablonlarını kaydetme
-Şablonları kaydetmek için aşağıdaki gibi şablonlarla birlikte `RegisterAsync()` yöntemini kullanın:
+### <a name="how-to-register-push-templates-to-send-cross-platform-notifications"></a><a name="register-xplat"></a>Nasıl yapilir: Platformlar arası bildirimler göndermek için itme şablonlarını kaydetme
+Şablonları kaydetmek `RegisterAsync()` için, yöntemi şablonlarla birlikte aşağıdaki gibi kullanın:
 
 ```csharp
 JObject templates = myTemplates();
 MobileService.GetPush().RegisterAsync(channel.Uri, templates);
 ```
 
-Şablonlarınızın `JObject` türleri olması gerekir ve aşağıdaki JSON biçiminde birden çok şablon bulunabilir:
+Şablonlarınız türolmalıdır `JObject` ve aşağıdaki JSON biçiminde birden çok şablon içerebilir:
 
 ```csharp
 public JObject myTemplates()
@@ -947,19 +947,19 @@ public JObject myTemplates()
 }
 ```
 
-**RegisterAsync ()** yöntemi de ikincil kutucukları kabul eder:
+**RegisterAsync()** yöntemi de İkincil Karolar kabul eder:
 
 ```csharp
 MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObject secondaryTiles);
 ```
 
-Güvenlik için kayıt sırasında tüm Etiketler kaldırılır. Yüklemeler içindeki yüklemelere veya şablonlara Etiketler eklemek için, bkz. [Azure için .NET arka uç sunucu SDK 'Sı ile çalışma Mobile Apps].
+Güvenlik kaydı sırasında tüm etiketler çıkarılır. Yüklemelere veya yüklemelere etiketler eklemek için bkz: [Azure Mobil Uygulamaları için .NET arka uç sunucusu SDK ile çalışın].
 
-Bu kayıtlı şablonların kullanılmasıyla bildirim göndermek için [Notification Hubs API 'Leri]bakın.
+Bu kayıtlı şablonları kullanan bildirimler göndermek için [Bildirim Hub'ları API'lerine]bakın.
 
-## <a name="misc"></a>Çeşitli konular
-### <a name="errors"></a>Nasıl yapılır: hataları Işleme
-Arka uçta bir hata oluştuğunda, istemci SDK bir `MobileServiceInvalidOperationException`oluşturur.  Aşağıdaki örnek, arka uç tarafından döndürülen bir özel durumun nasıl işleneceğini göstermektedir:
+## <a name="miscellaneous-topics"></a><a name="misc"></a>Çeşitli Konular
+### <a name="how-to-handle-errors"></a><a name="errors"></a>Nasıl yapılır: Hataları işleme
+Arka uçta bir hata oluştuğunda, istemci SDK bir `MobileServiceInvalidOperationException`.  Aşağıdaki örnek, arka uç tarafından döndürülen bir özel durum nasıl işleyeceğini gösterir:
 
 ```csharp
 private async void InsertTodoItem(TodoItem todoItem)
@@ -978,10 +978,10 @@ private async void InsertTodoItem(TodoItem todoItem)
 }
 ```
 
-Hata koşulları ile ilgilenme ile ilgili başka bir örnek [Mobile Apps dosyaları örneği]bulunabilir. [Logginghandler] örneği, arka uca yapılan istekleri günlüğe kaydetmek için bir günlüğe kaydetme temsilci işleyicisi sağlar.
+Hata koşulları ile ilgili başka bir örnek [Mobil Uygulamalar Dosyaları Örnek]bulunabilir. [LoggingHandler] örneği, arka uçta yapılan istekleri günlüğe kaydetmek için bir günlüğe kaydetme temsilcisi işleyicisi sağlar.
 
-### <a name="headers"></a>Nasıl yapılır: istek üstbilgilerini özelleştirme
-Belirli uygulama senaryonuzu desteklemek için, mobil uygulama arka ucu ile iletişimi özelleştirmeniz gerekebilir. Örneğin, her giden isteğe özel bir üst bilgi eklemek ve hatta yanıt durum kodlarını değiştirmek isteyebilirsiniz. Aşağıdaki örnekte olduğu gibi özel bir [DelegatingHandler]kullanabilirsiniz:
+### <a name="how-to-customize-request-headers"></a><a name="headers"></a>Nasıl yapılacağını: İstek üstbilgileri özelleştirin
+Belirli uygulama senaryonuzu desteklemek için Mobil Uygulama arka ucuyla iletişimi özelleştirmeniz gerekebilir. Örneğin, her giden isteğe özel bir üstbilgi eklemek ve hatta yanıt durum kodlarını değiştirmek isteyebilirsiniz. Aşağıdaki örnekte olduğu gibi özel bir [DelegatingHandler]kullanabilirsiniz:
 
 ```csharp
 public async Task CallClientWithHandler()
@@ -1035,7 +1035,7 @@ public class MyHandler : DelegatingHandler
 [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme]: app-service-mobile-offline-data-sync.md
 [Uygulamanıza anında iletme bildirimleri ekleme]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Register your app to use a Microsoft account login]: ../app-service/configure-authentication-provider-microsoft.md
-[Active Directory oturum açma için App Service yapılandırma]: ../app-service/configure-authentication-provider-aad.md
+[Active Directory girişi için Uygulama Hizmeti nasıl yapılandırılır?]: ../app-service/configure-authentication-provider-aad.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/library/azure/dn250636(v=azure.10).aspx
@@ -1043,39 +1043,39 @@ public class MyHandler : DelegatingHandler
 [MobileServiceAuthenticationProvider]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
 [MobileServiceUser]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
 [MobileServiceAuthenticationToken]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
-[GetTable]: https://msdn.microsoft.com/library/azure/jj554275(v=azure.10).aspx
-[türsüz bir tabloya başvuru oluşturur]: https://msdn.microsoft.com/library/azure/jj554278(v=azure.10).aspx
-[DeleteAsync]: https://msdn.microsoft.com/library/azure/dn296407(v=azure.10).aspx
-[IncludeTotalCount]: https://msdn.microsoft.com/library/azure/dn250560(v=azure.10).aspx
-[Insertasync]: https://msdn.microsoft.com/library/azure/dn296400(v=azure.10).aspx
-[Invokeapiasync]: https://msdn.microsoft.com/library/azure/dn268343(v=azure.10).aspx
-[LoginAsync]: https://msdn.microsoft.com/library/azure/dn296411(v=azure.10).aspx
+[Gettable]: https://msdn.microsoft.com/library/azure/jj554275(v=azure.10).aspx
+[yazılmamış bir tabloya başvuru oluşturur]: https://msdn.microsoft.com/library/azure/jj554278(v=azure.10).aspx
+[Deleteasync]: https://msdn.microsoft.com/library/azure/dn296407(v=azure.10).aspx
+[Toplam Sayıyı Dahil Et]: https://msdn.microsoft.com/library/azure/dn250560(v=azure.10).aspx
+[EkleAsync]: https://msdn.microsoft.com/library/azure/dn296400(v=azure.10).aspx
+[InvokeApiAsync]: https://msdn.microsoft.com/library/azure/dn268343(v=azure.10).aspx
+[GirişAsync]: https://msdn.microsoft.com/library/azure/dn296411(v=azure.10).aspx
 [LookupAsync]: https://msdn.microsoft.com/library/azure/jj871654(v=azure.10).aspx
-[OrderBy]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
-[OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
-[ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
-[Almanız]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
+[Orderby]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
+[Orderbydescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
+[Readasync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
+[Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
 [Seç]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[Şimdilik]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
-[UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
-[UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[Olmadığı]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Atlamak]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[Updateasync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
+[Userıd]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
+[Nerede]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure portalında]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
-[Guid. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
+[Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[Windows Geliştirme Merkezi]: https://dev.windows.com/overview
-[DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
-[Passwordkasası]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
+[Windows Dev Merkezi]: https://dev.windows.com/overview
+[Delegatinghandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
+[PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
-[Notification Hubs API 'Leri]: https://msdn.microsoft.com/library/azure/dn495101.aspx
-[Mobile Apps dosyaları örneği]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
+[Bildirim Hub'ları API'leri]: https://msdn.microsoft.com/library/azure/dn495101.aspx
+[Mobil Uygulamalar Dosyaları Örnek]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
 [LoggingHandler]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files/blob/master/src/client/MobileAppsFilesSample/Helpers/LoggingHandler.cs#L63
 
 <!-- External URLs -->
-[OData v3 belgeleri]: https://www.odata.org/documentation/odata-version-3-0/
+[OData v3 Dokümantasyon]: https://www.odata.org/documentation/odata-version-3-0/
 [Fiddler]: https://www.telerik.com/fiddler
 [Json.NET]: https://www.newtonsoft.com/json
-[Xamarin. auth]: https://components.xamarin.com/view/xamarin.auth/
+[Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments

@@ -1,69 +1,68 @@
 ---
-title: Ticari Market 'te ücretli olarak | Azure Marketi
-description: Ticari Market 'teki gelirinize yönelik ödemeleri alma hakkında bilgi edinin.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Ticari pazarda ödeme alma | Azure Marketi
+description: Ticari pazarda kazançlarınız için ödeme alma hakkında bilgi edinin.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933594"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275841"
 ---
 # <a name="getting-paid"></a>Ödeme alma
-Tekliflerinizin, eklentilerin ve reklam gelirlerine ilişkin ödeme alma hakkında bazı önemli bilgiler aşağıda verilmiştir.
+İşte teklifleriniz, eklentileriniz ve reklam kazançlarınız için ödeme alma hakkında bazı önemli bilgiler.
 
 > [!IMPORTANT]
-> Ticari Market 'teki teklif satışlarından para almadan önce, [ödeme hesabınızı ayarlamanız ve gerekli vergi formlarını doldurmanız](set-up-your-payout-account-tax-forms.md)gerekir.
+> Ticari pazarda teklif satışlarından para alabilmeniz için ödeme [hesabınızı ayarlamanız ve gerekli vergi formlarını doldurmanız](set-up-your-payout-account-tax-forms.md)gerekir.
 
 ## <a name="store-fee"></a>Mağaza ücreti
 
-[Bir geliştirici hesabı için kaydolduğunuzda](https://go.microsoft.com/fwlink/p/?LinkID=615100) [Microsoft Azure Market yayımcı sözleşmesini](https://go.microsoft.com/fwlink/p/?LinkID=699560)kabul etmiş olursunuz. Bu anlaşma, Microsoft 'un sunduğu her satış için ücretlendirdiği mağaza ücreti dahil olmak üzere, sizin ve Microsoft arasındaki ilişkiyi ticari Market 'te satma konusunda da açıklar.
+Bir [geliştirici hesabına kaydolduğunuzda,](https://go.microsoft.com/fwlink/p/?LinkID=615100) [Microsoft Azure Marketi Yayımcı Sözleşmesini](https://go.microsoft.com/fwlink/p/?LinkID=699560)kabul edersiniz. Bu anlaşma, Microsoft'un yapılan her satış için ücret aldığı Mağaza ücreti de dahil olmak üzere, ticari pazarda satış teklifiyle ilgili olarak siz ve Microsoft arasındaki ilişkiyi açıklar.
 
-Ücretler, [Microsoft Azure Market yayımcı anlaşmasında](https://go.microsoft.com/fwlink/p/?LinkID=699560)resmi olarak tanımlanır. Herhangi bir sorunuz varsa, her zaman bu belgeyi gözden geçirin.
+Ücretler resmi olarak [Microsoft Azure Marketi Yayımcı Sözleşmesi'nde](https://go.microsoft.com/fwlink/p/?LinkID=699560)tanımlanır. Herhangi bir sorunuz varsa her zaman bu belgeyi gözden geçirin.
 
-Mağaza ücreti, eklentiler de dahil olmak üzere ticari Market tarafından toplanan tüm teklif satışlarına uygulanır.
+Mağaza ücreti, eklentiler de dahil olmak üzere ticari pazar tarafından toplanan tüm teklif satışlarına uygulanır.
 
 ## <a name="price-tiers"></a>Fiyat katmanları
 
-Seçtiğiniz fiyat katmanı (ler), teklifinizi dağıtmayı seçtiğiniz tüm ülkelerde satış fiyatını ayarlar. Farklı pazarlar için farklı fiyatlar seçme gibi ek fiyatlandırma özellikleri de kullanabilirsiniz.
+Seçtiğiniz fiyat katmanı(lar), teklifinizi dağıtmayı seçtiğiniz tüm ülkelerdeki satış fiyatını ayarlar. Ayrıca, farklı pazarlar için farklı fiyatlar seçmek gibi ek fiyatlandırma özelliklerini de kullanabilirsiniz.
 
-Uygulamanızı ücretsiz olarak sunabilir veya müşterilerin teklifinizi almak için ödeme yapmak zorunda olduğu bir fiyat seçebilirsiniz. Fiyat katmanları, ek artışlarla (1,09 USD, 1,19 ABD, vb.) başlayıp 99 ABD Doları ile başlar. Fiyat katmanları arasındaki artış, fiyat arttıkça artar.
+Uygulamanızı ücretsiz olarak sunabilir veya teklifinizi almak için müşterilerin ödemesi gereken bir fiyat seçebilirsiniz. Fiyat katmanları 0,99 USD'den başlar ve ek artışlarla (1,09 USD, 1,19 USD vb.) başlar. Fiyat arttıkça fiyat katmanları arasındaki artışlar artar.
 
 > [!NOTE] 
-> Bu fiyat katmanları, teklifinizin içinden sunduğunuz tüm eklentiler için de geçerlidir.
+> Bu fiyat katmanları, teklifiniz dahilinde sunduğunuz eklentiler için de geçerlidir.
 
-Her fiyat katmanının, mağaza tarafından sunulan her bir para birimi için karşılık gelen bir değeri vardır. Teklifinizi, dünyanın her yerindeki karşılaştırılabilir bir fiyat noktasında satmanıza yardımcı olması için kullanırız. Ancak, yabancı döviz kurlarındaki değişiklikler nedeniyle, tam satış miktarı bir para biriminden diğerine biraz farklılık gösterebilir.
+Her fiyat katmanı, Mağaza tarafından sunulan para birimlerinin her birinde karşılık gelen bir değere sahiptir. Bu değerleri, teklifinizi dünya çapında benzer bir fiyat noktasında satmanıza yardımcı olmak için kullanırız. Ancak, döviz kurlarındaki değişiklikler nedeniyle, tam satış tutarı bir para biriminden diğerine biraz farklılık gösterebilir.
 
-Ayrıca, belirli bir pazara ait yerel para birimiyle seçtiğiniz bir serbest biçimli fiyat girme seçeneğiniz de vardır. Bunu yaptığınızda, yeni bir fiyatla bir güncelleştirme göndermediğiniz takdirde fiyat ayarlanmaz (dönüştürme ücretleri değişse bile). 
+Ayrıca, belirli bir piyasanın yerel para birimi cinsinden seçtiğiniz serbest biçimli bir fiyat girme seçeneğiniz de vardır. Bunu yaptığınızda, yeni bir fiyatla güncelleştirme göndermediğiniz sürece fiyat ayarlanmaz (dönüşüm oranları değişse bile). 
 
-Seçtiğiniz fiyata müşterilerinizin ödemesi gereken satış veya katma değer vergisi dahil olabileceğini göz önünde bulundurun. Daha fazla bilgi için [ücretli teklif Için vergi ayrıntılarına](tax-details-paid-transactions.md) bakın.
-
-
-## <a name="payout-reporting"></a>Ödeme raporlaması
-
-Ödeme bilgilerinize ilişkin ayrıntılara erişip, [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)'nin **ödeme özetinde** rapor indirebilirsiniz. Burada gösterilen bilgiler hakkında daha fazla bilgi edinmek ve kazandığınız parayı nasıl sınıflandırdığımızda, bkz. [Ödeme Özeti](payout-summary.md).
+Seçtiğiniz fiyatın müşterilerinizin ödemesi gereken satışları veya katma değer vergisini içerebileceğini unutmayın. Daha fazla bilgi [için ücretli teklif için Vergi ayrıntılarına](tax-details-paid-transactions.md) bakın.
 
 
-## <a name="payout-timeframe"></a>Ödeme zaman çerçevesi
+## <a name="payout-reporting"></a>Ödeme raporlama
 
-Ödemeler aylık olarak yapılır (geçerli ödeme eşiği karşılanmıştır ve ödemenizi aşağıda açıklandığı gibi ayrı tutmaya yerleştirmezsiniz). Genellikle söz konusu ayın 15. gününe kadar, belirli bir ayda ödenmesi gereken tüm ödemeleri göndereceğiz. Ödemelerden, ödeme hesabınıza ulaşmak için genellikle 3 ila 10 ek iş günü ele alındığına göz atın. Daha fazla bilgi için bkz. [ödeme eşikleri, Yöntemler ve süreleri](payment-thresholds-methods-timeframes.md).
+[İş Ortağı Merkezi'nin](https://partner.microsoft.com/dashboard) **Ödeme özetinde** ödeme bilgilerinizle ilgili ayrıntılara erişebilir ve raporları indirebilirsiniz. Burada gösterilen bilgiler ve kazandığınız parayı nasıl kategorilere ayırdığımız hakkında daha fazla bilgi için [Ödeme özetine](payout-summary.md)bakın.
+
+
+## <a name="payout-timeframe"></a>Ödeme süresi
+
+Ödemeler aylık olarak yapılır (ilgili ödeme eşiğinin karşılanması ve ödemenizi aşağıda açıklandığı şekilde beklemeye almamış olduğunuz koşuluyla). Genellikle belirli bir ay içinde ödenmesi gereken ödemeleri o ayın 15. Ödemelerin ödeme hesabınıza ulaşması genellikle 3 ila 10 iş günü arasında sürebilir. Daha fazla bilgi için [Ödeme eşikleri, yöntemleri ve zaman dilimlerine](payment-thresholds-methods-timeframes.md)bakın.
 
 
 ##  <a name="payout-hold-status"></a>Ödeme tutma durumu
 
-Varsayılan olarak, yukarıda açıklandığı gibi ödemeleri aylık olarak göndereceğiz. Ancak, ücretlerinizi bir program için yerleştirme seçeneğiniz vardır. Bu, ücretlerinizi hesabınıza göndermemize engel olur. Ödelerinizi beklemeye almaya çalışırsanız, aldığınız herhangi bir geliri kaydetmeye devam edeceğiz ve **ödek özetinizdeki**ayrıntıları sağlarsınız. Ancak, tutmayı kaldırana kadar hesabınıza herhangi bir ödeme gönderemeyiz.
+Varsayılan olarak, yukarıda açıklandığı gibi aylık olarak ödemeleri göndeririz. Ancak, hesabınıza ödeme göndermemizi engelleyecek bir program için ödemelerinizi beklemeye alma seçeneğiniz vardır. Ödemelerinizi beklemeye almayı seçerseniz, kazandığınız tüm gelirleri kaydetmeye ve ayrıntıları **Ödeme özetinize**vermeye devam edeceğiz. Ancak, siz beklemeyi kaldırana kadar hesabınıza herhangi bir ödeme göndermeyiz.
 
-Ödemelere beklemeye koymak için **Geliştirici ayarları**' na gidin. Ödeme **ve vergi '** ın altında, ödeme **ve vergi profili ataması** bölümünde, ödemeleri istediğiniz programı bulun. Bu program için ödemeleri tutmak üzere **ödemi tut** onay kutusuna tıklayın. Ödeme tutma durumunuzu dilediğiniz zaman değiştirebilirsiniz, ancak kararlarınızın bir sonraki aylık ödeyerek etkileyebileceğini unutmayın. Örneğin, Nisan 'un payından birini tutmak istiyorsanız, Mart 'un sonundan önce, ödeme tutma durumunuzu **Açık** olarak ayarladığınızdan emin olun.
+Ödemelerinizi beklemeye almak için **Geliştirici ayarlarına**gidin. **Ödeme ve vergi**kapsamında, Ödeme ve vergi profili **atama** bölümünde, ödemelerin yapılmasını istediğiniz programı bulun. Bu programın ödemelerini tutmak için **Ödememi Tut** onay kutusunu tıklatın. Ödeme tutma durumunuzu istediğiniz zaman değiştirebilirsiniz, ancak kararınızın bir sonraki aylık ödemeyi etkileyeceğini unutmayın. Örneğin, April'ın ödemesini tutmak istiyorsanız, ödeme tutma durumunuzu Mart ayı sonundan önce **A'ya** ayarladığınızdan emin olun.
 
-Ödeme bekletme durumunuzu **Açık**olarak ayarladıktan sonra, kaydırıcıyı **devre dışı**olarak açana kadar bu program için tüm ödemeler beklemeye alınır. Bunu yaptığınızda, bir sonraki aylık ödeme döngüsünün (ilgili ödeme eşikleri karşılandığında) dahil edersiniz. Örneğin, ödeticinizi beklemeye aldıysanız, Haziran ayında üretilmiş bir ödeme sahip olmak istiyorsanız, Işlem sonundan önce, ödememiş tutma durumunu **kapalı** durumuna geçirdiğinizden emin olun.
+Ödeme tutma durumunuzu **On**olarak ayarladıktan sonra, kaydırıcıyı **Off'a**geri kaydırana kadar bu program için tüm ödemeler beklemede olacaktır. Bunu yaptığınızda, bir sonraki aylık ödeme döngüsüne dahil edileceksiniz (geçerli ödeme eşikleri karşılanmışsa). Örneğin, ödemelerinizi beklemeye aldıysanız, ancak Haziran ayında bir ödeme nin oluşturulmasını istiyorsanız, ödeme tutma durumunu Mayıs ayı sonundan önce **Kapatma'ya** yaptığınızdan emin olun.
 
 > [!NOTE]
-> **Ödeme tutma durumunuz** her program için ayrı ayrı (Microsoft Store, reklam, Azure Marketi vb.) uygulanır. Tüm programlarınızda ödemeleri tutmak istiyorsanız, ödemeleri her bir programda tek tek tutmanız gerekir.
+> **Ödeme tutma durumunuz** her program için ayrı ayrı geçerlidir (Microsoft Mağazası, reklamcılık, Azure Marketi, vb.). Tüm programlarınız için ödeme yapmak istiyorsanız, her programiçin tek tek ödeme tutmanız gerekir.
 
 
  

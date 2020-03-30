@@ -1,7 +1,7 @@
 ---
 title: Python
 titleSuffix: Azure Machine Learning
-description: Verileri dönüştürmek için Azure Machine Learning tasarımcısında Python kullanmayı öğrenin.
+description: Verileri dönüştürmek için Azure Machine Learning tasarımcısında Python'u nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,59 +9,59 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.openlocfilehash: b0b0bb5eefde9e744b1f30109d60ded91d3b44e8
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: a2bd9845cd29c7d139e2042f39b4697847639207
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455800"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında Python kodu yürütme
+# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında Python kodunu çalıştırma
 
-Bu makalede, Azure Machine Learning tasarımcısına özel mantık eklemek için [Python betiği yürütme](algorithm-module-reference/execute-python-script.md) modülünü nasıl kullanacağınızı öğreneceksiniz. Aşağıdaki nasıl yapılır, basit özellik Mühendisliği yapmak için Pandas kitaplığını kullanırsınız.
+Bu makalede, Azure Machine Learning tasarımcısına özel mantık eklemek için [Python Script](algorithm-module-reference/execute-python-script.md) modüllerini nasıl kullanacağınızı öğreneceksiniz. Aşağıdaki nasıl yapılacağını, basit özellik mühendisliği yapmak için Pandas kitaplığını kullanın.
 
-Basit Python mantığını hızlıca eklemek için yerleşik kod düzenleyicisini kullanabilirsiniz. Daha karmaşık kod eklemek veya ek Python kitaplıklarını karşıya yüklemek istiyorsanız ZIP dosyası yöntemini kullanmanız gerekir.
+Basit Python mantığını hızla eklemek için dahili kod düzenleyicisini kullanabilirsiniz. Daha karmaşık kod eklemek veya ek Python kitaplıkları yüklemek istiyorsanız, zip dosyası yöntemini kullanmanız gerekir.
 
-Varsayılan yürütme ortamı, Python 'un Anauyumluluk dağıtımını kullanır. Önceden yüklenmiş paketlerin tam listesi için bkz. [Python betik modülü başvurusunu yürütme](algorithm-module-reference/execute-python-script.md) sayfası.
+Varsayılan yürütme ortamı Python Anacondas dağıtımını kullanır. Önceden yüklenmiş paketlerin tam listesi için [Python Script modül başvuru](algorithm-module-reference/execute-python-script.md) sayfasına bakın.
 
-![Python giriş eşlemesini Yürüt](media/how-to-designer-python/execute-python-map.png)
+![Python giriş haritasını yürüt](media/how-to-designer-python/execute-python-map.png)
 
-## <a name="execute-python-written-in-the-designer"></a>Tasarımcıda yazılan Python yürütme
+## <a name="execute-python-written-in-the-designer"></a>Tasarımcıda yazılan Python'u çalıştırın
 
-### <a name="add-the-execute-python-script-module"></a>Python betiği yürütme modülünü ekleme
+### <a name="add-the-execute-python-script-module"></a>Execute Python Script modülekle
 
-1. Tasarımcı paletinde **Python betiği yürütme** modülünü bulun. **Python dili** bölümünde bulunabilir.
+1. Designer paletinde Python Script modüllerini **çalıştır'ı** bulun. **Python Dili** bölümünde bulunabilir.
 
-1. Modülün işlem hattı tuvaline sürükleyip bırakın.
+1. Modülü sürükleyin ve boru hattı tuvaline bırakın.
 
 ### <a name="connect-input-datasets"></a>Giriş veri kümelerini bağlama
 
-Bu makalede, **otomobil fiyat verileri (ham)** örnek veri kümesi kullanılmıştır. 
+Bu makalede örnek veri kümesi, **Otomobil fiyat verileri (Ham)** kullanır. 
 
-1. Veri kümenizi sürükleyin ve işlem hattı tuvaline bırakın.
+1. Veri setinizi sürükleyin ve boru hattı tuvaline bırakın.
 
-1. Veri kümesinin çıkış bağlantı noktasını, **Python betiği Yürüt** modülünün sol üst giriş bağlantı noktasına bağlayın. Tasarımcı girişi giriş noktası betiğinin parametresi olarak kullanıma sunar.
+1. Veri kümesinin çıkış bağlantı noktasını **Python Script** modülünün sol üst giriş bağlantı noktasına bağlayın. Tasarımcı giriş noktası komut dosyasına bir parametre olarak giriş ortaya çıkarır.
     
-    Doğru giriş bağlantı noktası daraltılmış Python kitaplıkları için ayrılmıştır.
+    Doğru giriş bağlantı noktası sıkıştırılmış python kitaplıkları için ayrılmıştır.
 
     ![Veri kümelerini bağlama](media/how-to-designer-python/connect-dataset.png)
         
 
-1. Kullandığınız giriş bağlantı noktasını bir yere göz atın. Tasarımcı, `dataset2`için `dataset1` değişkenine ve ortadaki giriş bağlantı noktasına sol giriş bağlantı noktasını atar. 
+1. Hangi giriş bağlantı noktasını kullandığınıza dikkat edin. Tasarımcı, sol giriş bağlantı noktasını değişkene `dataset1` ve orta giriş `dataset2`bağlantı noktasına . 
 
-Doğrudan **Python betik** modülünde veri oluşturabileceğiniz veya içeri aktarabileceğinden, giriş modülleri isteğe bağlıdır.
+Doğrudan **Execute Python Script** modülünde veri oluşturabileceğiniz veya içe aktarabileceğiniz için giriş modülleri isteğe bağlıdır.
 
-### <a name="write-your-python-code"></a>Python kodunuzu yazma
+### <a name="write-your-python-code"></a>Python kodunuzu yazın
 
-Tasarımcı, düzenlemeniz için bir başlangıç giriş noktası betiği sağlar ve kendi Python kodunuzu girersiniz. 
+Tasarımcı, kendi Python kodunuzu ve kodunuzu yeniden ve girebilmek için bir başlangıç giriş noktası komut dosyası sağlar. 
 
-Bu örnekte, **her horseüs için dolar**, yeni bir sütun oluşturmak için, otomobil veri kümesinde, **Price** ve **gücünü**'da bulunan iki sütunu birleştirmek üzere Pandas kullanırsınız. Bu sütun her horseüs için ne kadar ücret Ödediğinize göre temsil eder. Bu, bir otomobil para için iyi bir anlaşma olup olmadığına karar veren yararlı bir özelliktir. 
+Bu örnekte, otomobil veri kümesi, **Fiyat** ve **Beygir gücü**bulunan iki sütun birleştirmek için Pandalar kullanın, yeni bir sütun oluşturmak için, **Beygir gücü başına Dolar**. Bu sütun, bir araba para için iyi bir anlaşma olup olmadığına karar vermek için yararlı bir özellik olabilir her beygir gücü için ne kadar ödeme temsil eder. 
 
-1. **Python betik modülünü Yürüt** ' ü seçin.
+1. Python Script modülünü **yürüt'ünü** seçin.
 
-1. Tuvalin sağında görüntülenen bölmede, **Python betiği** metin kutusunu seçin.
+1. Tuvalin sağında görünen bölmede **Python komut dosyası** metin kutusunu seçin.
 
-1. Aşağıdaki kodu kopyalayıp metin kutusuna yapıştırın.
+1. Aşağıdaki kodu metin kutusuna kopyalayıp yapıştırın.
 
     ```python
     import pandas as pd
@@ -70,18 +70,18 @@ Bu örnekte, **her horseüs için dolar**, yeni bir sütun oluşturmak için, ot
         dataframe1['Dollar/HP'] = dataframe1.price / dataframe1.horsepower
         return dataframe1
     ```
-    İşlem hatlarınız aşağıdaki görüntüye bakmalıdır:
+    Ardışık hattınız aşağıdaki resme bakmalıdır:
     
-    ![Python işlem hattını yürütme](media/how-to-designer-python/execute-python-pipeline.png)
+    ![Python ardışık hattını çalıştırma](media/how-to-designer-python/execute-python-pipeline.png)
 
-    Giriş noktası betiği `azureml_main`işlevi içermelidir. **Python betik modülünün yürütülmesi** için iki giriş bağlantı noktası ile eşlenen iki işlev parametresi vardır.
+    Giriş noktası komut dosyası `azureml_main`işlevi içermelidir. **Python Script** modülü için iki giriş bağlantı noktası için eşleyen iki işlev parametresi vardır.
 
-    Dönüş değeri bir Pandas Dataframe olmalıdır. Modül çıkışları olarak en fazla iki veri çerçevesine döndürebilirsiniz.
+    İade değeri bir Pandas Dataframe olmalıdır. Modül çıktıları olarak en fazla iki veri çerçevesi döndürebilirsiniz.
     
-1. İşlem hattını çalıştırma.
+1. Boru hattını gönderin.
 
-Şimdi, bir otomobil öneren eğitiminde yararlı olabilecek yeni **ABD Doları/HP**özelliğini içeren bir veri kümeniz var. Bu, özellik ayıklama ve boyutlılık azaltmaya bir örnektir. 
+Şimdi, yeni özellik Dolar / **HP**ile bir veri seti var , bir araba tavsiye eğitimi yararlı olabilir. Bu özellik çıkarma ve boyutsallık azaltma bir örnektir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning tasarımcısında [kendi verilerinizi nasıl içeri aktaracağınızı](how-to-designer-import-data.md) öğrenin.
+Azure Machine Learning [tasarımcısında kendi verilerinizi nasıl içe aktarılacınız](how-to-designer-import-data.md) öğrenin.

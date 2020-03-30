@@ -1,6 +1,6 @@
 ---
-title: Azure AD sağlamasının nasıl çalıştığını anlayın | Microsoft Docs
-description: Azure AD sağlamasının nasıl çalıştığını anlama
+title: Azure AD sağlamanın nasıl çalıştığını anlama | Microsoft Dokümanlar
+description: Azure AD sağlamanın nasıl çalıştığını anlama
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,187 +15,187 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 892cdeea20780c90ce325e8be9b7b91fee0d9fad
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 555fb39836054be05102f4c28167d72016805639
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79264056"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481509"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
-Otomatik sağlama, kullanıcıların erişmesi gereken bulut uygulamalarında kullanıcı kimliklerinin ve rollerinin oluşturulmasına başvurur. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Dağıtıma başlamadan önce, Azure AD sağlama 'nın nasıl çalıştığını ve yapılandırma önerilerini alma hakkında bilgi edinmek için bu makaleyi gözden geçirebilirsiniz. 
+Otomatik sağlama, kullanıcıların erişilmesi gereken bulut uygulamalarında kullanıcı kimlikleri ve rolleri oluşturma anlamına gelir. Kullanıcı kimlikleri oluşturmaya ek olarak, otomatik sağlama, durum veya roller değiştikçe kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Dağıtıma başlamadan önce, Azure AD hükmünün nasıl çalıştığını öğrenmek ve yapılandırma önerileri almak için bu makaleyi gözden geçirebilirsiniz. 
 
-**Azure AD sağlama hizmeti** , uygulama satıcısı tarafından sağlanan etki alanları arası kimlik yönetimi (SCIM) 2,0 Kullanıcı yönetimi API uç noktası Için bir sisteme bağlanarak kullanıcılara ve diğer sistemlere SaaS uygulamaları sağlar. Bu SCıM uç noktası, Azure AD 'nin Kullanıcı aracılığıyla kullanıcıları oluşturmasına, güncelleştirmesine ve kaldırmasına izin verir. Seçilen uygulamalarda, sağlama hizmeti gruplar ve roller gibi kimlik ile ilgili diğer nesneleri de oluşturabilir, güncelleştirebilir ve kaldırabilir. Azure AD ile uygulama arasında sağlama için kullanılan kanal, HTTPS SSL şifrelemesi kullanılarak şifrelenir.
+**Azure AD Sağlama Hizmeti,** uygulama satıcısı tarafından sağlanan Bir Etki Alanı Arası Kimlik Yönetimi Sistemi (SCIM) 2.0 kullanıcı yönetimi API bitiş noktasına bağlanarak kullanıcıları SaaS uygulamalarına ve diğer sistemlere karşı sağlar. Bu SCIM bitiş noktası, Azure AD'nin kullanıcıları programlı bir şekilde oluşturmasına, güncelleştirmesine ve kaldırmasına olanak tanır. Seçili uygulamalar için, sağlama hizmeti, gruplar ve roller gibi kimlikle ilgili ek nesneler oluşturabilir, güncelleyebilir ve kaldırabilir. Azure AD ile uygulama arasında sağlama için kullanılan kanal, HTTPS TLS şifrelemesi kullanılarak şifrelenir.
 
 
-![Azure AD sağlama hizmeti](./media/how-provisioning-works/provisioning0.PNG)
-*Şekil 1: Azure AD sağlama hizmeti*
+![Azure AD Sağlama](./media/how-provisioning-works/provisioning0.PNG)
+Hizmeti*Şekil 1: Azure REKLAM Sağlama Hizmeti*
 
-Giden Kullanıcı sağlama iş akışı ![](./media/how-provisioning-works/provisioning1.PNG)
-*Şekil 2: Azure AD 'den popüler SaaS uygulamalarına "giden" Kullanıcı sağlama iş akışı*
+![Giden kullanıcı sağlama iş](./media/how-provisioning-works/provisioning1.PNG)
+akışı*Şekil 2: Azure AD'den popüler SaaS uygulamalarına iş akışı sağlayan "Giden" kullanıcı*
 
-![gelen Kullanıcı sağlama iş akışı](./media/how-provisioning-works/provisioning2.PNG)
-*Şekil 3: popüler ınsan büyük yönetim (HCM) uygulamalarından Azure Active Directory ve Windows Server 'a "gelen" Kullanıcı sağlama iş akışı Active Directory*
+![Gelen kullanıcı sağlama iş](./media/how-provisioning-works/provisioning2.PNG)
+akışı*Şekil 3: Popüler İnsan Sermayesi Yönetimi (HCM) uygulamalarından Azure Active Directory ve Windows Server Active Directory'ye "Gelen" kullanıcı sağlama iş akışı*
 
-## <a name="provisioning-using-scim-20"></a>SCıM 2,0 kullanarak sağlama
+## <a name="provisioning-using-scim-20"></a>SCIM 2.0 kullanarak sağlama
 
-Azure AD sağlama hizmeti otomatik sağlama için [SCIM 2,0 protokolünü](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards) kullanır. Hizmet, uygulama için SCıM uç noktasına bağlanır ve kullanıcıların ve grupların sağlanması ve sağlanması için otomatik hale getirme işlemini otomatikleştirmek üzere SCıM Kullanıcı nesne şemasını ve REST API 'Lerini kullanır. Azure AD galerisinde çoğu uygulama için bir SCıM tabanlı sağlama Bağlayıcısı sağlanır. Azure AD için uygulama oluştururken, geliştiriciler SCıM 2,0 kullanıcı yönetim API 'sini kullanarak Azure AD 'yi sağlama için tümleştiren bir SCıM uç noktası oluşturabilir. Ayrıntılar için bkz. [SCıM uç noktası oluşturma ve Kullanıcı sağlamayı yapılandırma](../app-provisioning/use-scim-to-provision-users-and-groups.md).
+Azure AD sağlama hizmeti, otomatik sağlama için [SCIM 2.0 protokolünü](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards) kullanır. Hizmet, uygulama için SCIM bitiş noktasına bağlanır ve kullanıcıların ve grupların sağlanmasını ve bunların sağlanmasını otomatikleştirmek için SCIM kullanıcı nesnesi şeması ve REST API'lerini kullanır. Azure AD galerisindeki çoğu uygulama için SCIM tabanlı bir sağlama bağlayıcısı sağlanır. Geliştiriciler, Azure AD için uygulamalar oluştururken, sağlaması için Azure AD'yi tümleştiren bir SCIM bitiş noktası oluşturmak için SCIM 2.0 kullanıcı yönetimi API'sini kullanabilir. Ayrıntılar için, [bkz.](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-Şu anda biri olmayan bir uygulama için otomatik bir Azure AD sağlama Bağlayıcısı istemek üzere bir [Azure Active Directory uygulama isteği](https://aka.ms/aadapprequest)doldurun.
+Şu anda sahip olmayan bir uygulama için otomatik Azure AD sağlama bağlayıcısı istemek için bir [Azure Etkin Dizin Uygulama İsteği](https://aka.ms/aadapprequest)doldurun.
 
 ## <a name="authorization"></a>Yetkilendirme
 
-Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için kimlik bilgileri gereklidir. Bir uygulama için otomatik Kullanıcı sağlamayı yapılandırırken, geçerli kimlik bilgilerini girmeniz gerekir. Uygulama öğreticisine başvurarak uygulamanın kimlik bilgisi türlerini ve gereksinimlerini bulabilirsiniz. Azure portal, Azure AD 'nin sağlanan kimlik bilgilerini kullanarak uygulamanın sağlama uygulamasına bağlanmasını sağlayarak kimlik bilgilerini sınayabileceksiniz.
+Azure AD'nin uygulamanın kullanıcı yönetimi API'sine bağlanması için kimlik bilgileri gereklidir. Bir uygulama için otomatik kullanıcı sağlama yapılandırmayaparken, geçerli kimlik bilgileri girmeniz gerekir. Uygulama öğreticisine atıfta bulunarak uygulama için kimlik bilgisi türlerini ve gereksinimlerini bulabilirsiniz. Azure portalında, Azure AD'nin sağlanan kimlik bilgilerini kullanarak uygulamanın sağlama uygulamasına bağlanmaya çalışmasıiçin kimlik bilgilerini sınayabilirsiniz.
 
-SAML tabanlı çoklu oturum açma, uygulama için de yapılandırılmışsa Azure AD 'nin iç, uygulama başına depolama sınırı 1024 bayttır. Bu sınır, bir uygulamanın tek bir örneğiyle ilişkili tüm sertifikaları, gizli belirteçleri, kimlik bilgilerini ve ilgili yapılandırma verilerini (Azure AD 'de hizmet sorumlusu kaydı olarak da bilinir) içerir. SAML tabanlı çoklu oturum açma yapılandırıldığında, SAML belirteçlerini imzalamak için kullanılan sertifika, genellikle alanın yüzde 50 ' ünü kullanır. Kullanıcı hazırlama kurulumu sırasında girdiğiniz ek öğeler (gizli belirteçler, URI 'Ler, bildirim e-posta adresleri, Kullanıcı adları ve parolalar) depolama sınırını aşabilir. Daha fazla bilgi için, bkz. [Kullanıcı sağlama yapılandırılırken yönetici kimlik bilgilerini kaydetme sorunu](../manage-apps/application-provisioning-config-problem-storage-limit.md).
+SamL tabanlı tek oturum açma da uygulama için yapılandırılırsa, Azure AD'nin dahili, uygulama başına depolama sınırı 1024 bayttır. Bu sınır, bir uygulamanın tek bir örneğiyle ilişkili tüm sertifikaları, gizli belirteçleri, kimlik bilgilerini ve ilgili yapılandırma verilerini (Azure AD'de hizmet temel kaydı olarak da bilinir) içerir. SAML tabanlı tek oturum açma yapılandırıldığınızda, SAML belirteçlerini imzalamak için kullanılan sertifika genellikle alanın %50'sinden fazlasını tüketir. Kullanıcı sağlama kurulumu sırasında girdiğiniz ek öğeler (gizli belirteçler, URL'ler, bildirim e-posta adresleri, kullanıcı adları ve parolalar) depolama sınırını aşabilir. Daha fazla bilgi için, [kullanıcı sağlama yı yapılandırırken sorun kaydetme yönetici kimlik bilgilerine](../manage-apps/application-provisioning-config-problem-storage-limit.md)bakın.
 
-## <a name="mapping-attributes"></a>Öznitelikleri eşleme
+## <a name="mapping-attributes"></a>Eşleme öznitelikleri
 
-Bir üçüncü taraf SaaS uygulaması için Kullanıcı sağlamayı etkinleştirdiğinizde Azure portal, öznitelik değerlerini öznitelik eşlemeleriyle denetler. Eşlemeler, Kullanıcı hesapları sağlandığında veya güncelleştirilirken Azure AD ile hedef uygulama arasında akan Kullanıcı özniteliklerini belirleme.
+Üçüncü taraf bir SaaS uygulaması için kullanıcı sağlamayı etkinleştirdiğinizde, Azure portalı öznitelik eşlemeleri aracılığıyla öznitelik değerlerini denetler. Eşlemeler, kullanıcı hesapları sağlandığında veya güncelleştirildiğinde Azure AD ile hedef uygulama arasında akan kullanıcı özniteliklerini belirler.
 
-Azure AD Kullanıcı nesneleri ve her bir SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir öznitelikler ve öznitelik eşlemeleri kümesi vardır. Bazı uygulamalar, gruplar gibi kullanıcılarla birlikte diğer nesne türlerini de yönetir.
+Azure AD kullanıcı nesneleri ile her SaaS uygulamasının kullanıcı nesneleri arasında önceden yapılandırılmış öznitelikler ve öznitelik eşlemeleri kümesi vardır. Bazı uygulamalar, Kullanıcılar la birlikte Gruplar gibi diğer nesne türlerini yönetir.
 
-Sağlamayı ayarlarken, hangi kullanıcı (veya grup) özelliklerinin Azure AD 'den uygulamaya akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmeniz ve yapılandırmanız önemlidir. İki sistem arasındaki kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan eşleşen özelliği (**Bu özniteliği kullanarak nesneleri Eşleştir**) gözden geçirin ve yapılandırın.
+Sağlama yı ayarlarken, Azure AD'den uygulamaya hangi kullanıcı (veya grup) özelliklerinin aktığını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmek ve yapılandırmak önemlidir. İki sistem arasındaki kullanıcıları/grupları benzersiz olarak tanımlamak ve eşleştirmek için kullanılan eşleşen özelliği **(Bu özniteliği kullanarak**eşleştirin) gözden geçirin ve yapılandırın.
 
-Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştirebilirsiniz. Bu nedenle, var olan öznitelik eşlemelerini değiştirebilir veya silebilir veya yeni öznitelik eşlemeleri oluşturabilirsiniz. Ayrıntılar için bkz. [SaaS uygulamaları için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](../manage-apps/customize-application-attributes.md).
+Varsayılan öznitelik eşlemelerini işletme gereksinimlerinize göre özelleştirebilirsiniz. Bu nedenle, varolan öznitelik eşlemelerini değiştirebilir veya silebilir veya yeni öznitelik eşlemeleri oluşturabilirsiniz. Ayrıntılar için, [SaaS uygulamaları için kullanıcı sağlama öznitelik eşlemelerini özelleştirme konusuna](../manage-apps/customize-application-attributes.md)bakın.
 
-Bir SaaS uygulaması için sağlama yapılandırdığınızda, belirtebilmeniz için öznitelik eşlemelerini türdeki bir ifade eşleme biridir. Bu eşlemeler için, kullanıcılarınızın verilerini SaaS uygulaması için daha kabul edilebilir biçimlere dönüştürmenizi sağlayan bir betik benzeri ifade yazmalısınız. Ayrıntılar için bkz. [öznitelik eşlemeleri için Ifadeler yazma](functions-for-customizing-application-data.md).
+Bir SaaS uygulamasına sağlama yı yapılandırdığınızda, belirtebileceğiniz öznitelik eşlemetürtürtürtür. Bu eşlemeler için, kullanıcılarınızın verilerini SaaS uygulaması için daha kabul edilebilir biçimlere dönüştürmenize olanak tanıyan komut dosyası na benzer bir ifade yazmanız gerekir. Ayrıntılar [için, öznitelik eşlemeleri için ifadeleri yazma'ya](functions-for-customizing-application-data.md)bakın.
 
 ## <a name="scoping"></a>Kapsam 
 ### <a name="assignment-based-scoping"></a>Atama tabanlı kapsam
 
-Azure AD 'den bir SaaS uygulamasına giden sağlama için, [Kullanıcı veya grup atamalarına](../manage-apps/assign-user-or-group-access-portal.md) güvenmek, hangi kullanıcıların sağlama kapsamında olduğunu belirlemenin en yaygın yoludur. Kullanıcı atamaları çoklu oturum açmayı etkinleştirmek için de kullanıldığından, aynı yöntem hem erişim hem de sağlamayı yönetmek için kullanılabilir. Atama tabanlı kapsam, Workday ve başarılı etmenler gibi gelen sağlama senaryolarına uygulanmaz.
+Azure AD'den Bir SaaS uygulamasına giden sağlama için, [kullanıcı veya grup atamalarına](../manage-apps/assign-user-or-group-access-portal.md) güvenmek, hangi kullanıcıların sağlama kapsamında olduğunu belirlemenin en yaygın yoludur. Kullanıcı atamaları tek oturum açma sağlamak için de kullanıldığından, aynı yöntem hem erişimi hem de sağlamayı yönetmek için kullanılabilir. Atama tabanlı kapsam, İş Günü ve Başarı Faktörleri gibi gelen sağlama senaryoları için geçerli değildir.
 
-* **Gruplandıran.** Bir Azure AD Premium lisans planıyla, bir SaaS uygulamasına erişim atamak için grupları kullanabilirsiniz. Ardından, sağlama kapsamı **yalnızca atanmış kullanıcıları ve grupları Eşitle**olarak AYARLANDıĞıNDA Azure AD sağlama hizmeti, uygulamaya atanan bir grubun üyesi olup olmadıkları temel alınarak kullanıcıları sağlar veya serbest bırakılır. Uygulama, Grup nesnelerini desteklemediği takdirde grup nesnesinin kendisi tarafından sağlanmamıştır.
+* **Grup.** Azure AD Premium lisans planıyla, grupları bir SaaS uygulamasına erişim atamak için kullanabilirsiniz. Daha sonra, sağlama kapsamı **yalnızca atanan kullanıcıları ve grupları Eşitle**olarak ayarlandığında, Azure AD sağlama hizmeti, kullanıcılara uygulamaya atanan bir grubun üyesi olup olmadıklarına bağlı olarak sağlama veya sağlamadan kaldırma hizmeti sağlar. Uygulama grup nesnelerini desteklemedikçe grup nesnesinin kendisi sağlanmış değildir.
 
-* **Dinamik Gruplar.** Azure AD Kullanıcı sağlama hizmeti, [dinamik gruplardaki](../users-groups-roles/groups-create-rule.md)kullanıcıları okuyabilir ve sağlayabilir. Bu uyarıları ve önerileri göz önünde bulundurun:
+* **Dinamik gruplar.** Azure AD kullanıcı sağlama hizmeti, kullanıcıları [dinamik gruplar](../users-groups-roles/groups-create-rule.md)halinde okuyabilir ve sağlayabilir. Bu uyarılar ve öneriler akılda tutun:
 
-  * Dinamik Gruplar, Azure AD 'den SaaS uygulamalarına kadar uçtan uca sağlamanın performansını etkileyebilir.
+  * Dinamik gruplar, Azure AD'den SaaS uygulamalarına uçtan uca sağlama performansını etkileyebilir.
 
-  * Bir SaaS uygulamasında, dinamik bir gruptaki bir kullanıcının ne kadar hızlı sağlandığını veya sağlanması gerektiğini, dinamik grubun üyelik değişikliklerini ne kadar hızlı değerlendirebileceğinizi gösterir. Dinamik bir grubun işleme durumunu denetleme hakkında daha fazla bilgi için bkz. [bir üyelik kuralı için işleme durumunu denetleme](../users-groups-roles/groups-create-rule.md).
+  * Dinamik bir gruptaki bir kullanıcının Bir SaaS uygulamasında ne kadar hızlı sağlanmış veya de-provisioned dinamik grup üyelik değişiklikleri değerlendirebilirsiniz bağlıdır. Dinamik bir grubun işlem durumunu nasıl denetleyecekleri hakkında bilgi [için, üyelik kuralı için işleme durumunu](../users-groups-roles/groups-create-rule.md)denetle'ye bakın.
 
-  * Bir kullanıcı dinamik gruptaki üyeliği kaybettiğinde, bu, bir sağlama olayı olarak kabul edilir. Dinamik Gruplar için kurallar oluştururken bu senaryoyu göz önünde bulundurun.
+  * Bir kullanıcı dinamik grupta üyeliğini kaybettiğinde, bu bir de-provisioning olayı olarak kabul edilir. Dinamik gruplar için kurallar oluştururken bu senaryoyu göz önünde bulundurun.
 
-* **İç içe gruplar.** Azure AD Kullanıcı sağlama hizmeti iç içe gruplardaki kullanıcıları okuyamıyor veya sağlayamaz. Hizmet yalnızca açıkça atanan bir grubun hemen üyesi olan kullanıcıları okuyabilir ve sağlayabilir. "Uygulamalara grup tabanlı atamalar" da bu sınırlama çoklu oturum açmayı da etkiler (bkz. [SaaS uygulamalarına erişimi yönetmek için Grup kullanma](../users-groups-roles/groups-saasapps.md)). Bunun yerine, sağlanması gereken kullanıcıları içeren gruplarda doğrudan atayın veya başka bir şekilde [kapsamı](define-conditional-rules-for-provisioning-user-accounts.md) yoktur.
+* **İç içe gruplar.** Azure AD kullanıcı sağlama hizmeti, iç içe olan gruplardaki kullanıcıları okuyamaz veya sağalamaz. Hizmet yalnızca açıkça atanmış bir grubun hemen üyeleri olan kullanıcıları okuyabilir ve sağlayabilir. "Uygulamalara grup tabanlı atamalar" sınırlaması, tek oturum açmayı da etkiler (bkz. [SaaS uygulamalarına erişimi yönetmek için bir grup kullanma).](../users-groups-roles/groups-saasapps.md) Bunun yerine, sağlanması gereken kullanıcıları içeren gruplara doğrudan atama veya başka bir [kapsam.](define-conditional-rules-for-provisioning-user-accounts.md)
 
 ### <a name="attribute-based-scoping"></a>Öznitelik tabanlı kapsam 
 
-Bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerini kullanabilirsiniz. Bu yöntem, HCM uygulamalarından Azure AD 'ye gelen sağlama ve Active Directory için yaygın olarak kullanılır. Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öznitelik eşlemelerinin bir parçası olarak yapılandırılır. Öznitelik tabanlı kapsam filtrelerini yapılandırma hakkında ayrıntılı bilgi için bkz. [kapsam filtreleri Ile öznitelik tabanlı uygulama sağlama](define-conditional-rules-for-provisioning-user-accounts.md).
+Bir uygulamaya hangi kullanıcıların sağlanmış olduğunu belirleyen öznitelik tabanlı kuralları tanımlamak için kapsam filtreleri kullanabilirsiniz. Bu yöntem genellikle HCM uygulamalarından Azure AD ve Active Directory'ye gelen sağlama için kullanılır. Kapsam filtreleri, her Azure AD kullanıcı sağlama bağlayıcısı için öznitelik eşlemelerinin bir parçası olarak yapılandırılır. Öznitelik tabanlı kapsam filtreleri yapılandırma hakkında ayrıntılar için, [kapsam filtreleri ile Öznitelik tabanlı uygulama sağlama](define-conditional-rules-for-provisioning-user-accounts.md)bakın.
 
 ### <a name="b2b-guest-users"></a>B2B (konuk) kullanıcıları
 
-Azure AD Kullanıcı sağlama hizmeti 'ni kullanarak Azure AD 'deki B2B (veya konuk) kullanıcılarını SaaS uygulamalarına sağlayabilirsiniz. Ancak, B2B kullanıcılarının Azure AD 'yi kullanarak SaaS uygulamasında oturum açması için, SaaS uygulamasının SAML tabanlı çoklu oturum açma yeteneğine belirli bir şekilde yapılandırılmış olması gerekir. SaaS uygulamalarının B2B kullanıcılarından oturum açma işlemlerini desteklemesi için nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. [B2B işbirliği Için SaaS uygulamalarını yapılandırma](../b2b/configure-saas-apps.md).
+Azure AD kullanıcı sağlama hizmetini, Azure AD'deki B2B (veya konuk) kullanıcılarını SaaS uygulamalarına sağlamak için kullanmak mümkündür. Ancak, B2B kullanıcılarının Azure AD kullanarak SaaS uygulamasında oturum açabilmesi için, SaaS uygulamasının SAML tabanlı tek oturum açma özelliğinin belirli bir şekilde yapılandırılmış olması gerekir. B2B kullanıcılarının oturum açma işlemlerini destekleyecek Şekilde SaaS uygulamalarının nasıl yapılandırılabildiğini hakkında daha fazla bilgi [için B2B işbirliği için SaaS uygulamalarını yapılandırın.](../b2b/configure-saas-apps.md)
 
-Konuk Kullanıcı için userPrincipalName genellikle "alias # EXT #@domain.com" olarak depolandığını unutmayın. userPrincipalName, öznitelik eşlemelerinizde kaynak özniteliği olarak dahil edildiğinde, #EXT # userPrincipalName öğesinden çıkarılır. #EXT # öğesinin mevcut olmasını istiyorsanız, userPrincipalName değerini kaynak öznitelik olarak originalUserPrincipalName ile değiştirin. 
+Konuk kullanıcı için userPrincipalName'nin genellikle "diğer ad#EXT#@domain.com" olarak depoladığını unutmayın. userPrincipalName kaynak özniteliği olarak öznitelik eşlemelerinize eklendiğinde, #EXT# userPrincipalName'den çıkarılır. #EXT#'nın bulunmasını istiyorsanız, kaynak özniteliği olarak userPrincipalName'i originalUserPrincipalName ile değiştirin. 
 
-## <a name="provisioning-cycles-initial-and-incremental"></a>Sağlama döngüleri: Ilk ve artımlı
+## <a name="provisioning-cycles-initial-and-incremental"></a>Sağlama döngüleri: Başlangıç ve artımlı
 
-Azure AD kaynak sistem olduğunda, sağlama hizmeti, kullanıcıları ve grupları izlemek için [Microsoft Graph verilerdeki değişiklikleri izlemek üzere Delta sorgusunu](https://docs.microsoft.com/graph/delta-query-overview) kullanır. Sağlama Hizmeti, kaynak sistem ve hedef sisteme karşı bir başlangıç döngüsü çalıştırır ve ardından düzenli artımlı Döngülerde çalışır.
+Azure AD kaynak sistem olduğunda, sağlama hizmeti kullanıcıları ve grupları izlemek [için Microsoft Graph verilerindeki değişiklikleri izlemek için Kullanım deltası sorgusunu](https://docs.microsoft.com/graph/delta-query-overview) kullanır. Sağlama hizmeti, kaynak sistem ve hedef sisteme karşı bir başlangıç döngüsü ve ardından periyodik artımlı döngüler çalışır.
 
-### <a name="initial-cycle"></a>Başlangıç çevrimi
+### <a name="initial-cycle"></a>İlk döngü
 
-Sağlama hizmeti başlatıldığında, ilk işlem şunları yapar:
+Sağlama hizmeti başlatıldığında, ilk döngü aşağıdakileri yapacaktır:
 
-1. [Öznitelik eşlemelerinde](customize-application-attributes.md)tanımlanmış tüm öznitelikleri alarak kaynak sistemden tüm kullanıcıları ve grupları sorgulayın.
+1. [Öznitelik eşlemelerinde](customize-application-attributes.md)tanımlanan tüm öznitelikleri alınarak kaynak sistemden tüm kullanıcıları ve grupları sorgulayın.
 
-2. Yapılandırılan [atamaları](../manage-apps/assign-user-or-group-access-portal.md) veya [öznitelik tabanlı kapsam filtrelerini](define-conditional-rules-for-provisioning-user-accounts.md)kullanarak döndürülen kullanıcıları ve grupları filtreleyin.
+2. Yapılandırılan [atamaları](../manage-apps/assign-user-or-group-access-portal.md) veya [öznitelik tabanlı kapsam filtreleri](define-conditional-rules-for-provisioning-user-accounts.md)kullanarak döndürülen kullanıcıları ve grupları filtreleyin.
 
-3. Bir Kullanıcı atandığında veya sağlama kapsamında olduğunda, hizmet belirtilen [eşleşen öznitelikleri](customize-application-attributes.md#understanding-attribute-mapping-properties)kullanarak hedef sistemi eşleşen bir kullanıcı için sorgular. Örnek: Kaynak sistemdeki userPrincipal adı eşleşen özniteliktir ve hedef sistemdeki Kullanıcı adı ile eşleşiyorsa, sağlama hizmeti kaynak sistemdeki userPrincipal ad değerleriyle eşleşen kullanıcı adları için hedef sistemi sorgular.
+3. Bir kullanıcı atandığında veya sağlama kapsamında olduğunda, hizmet belirtilen [eşleşen öznitelikleri](customize-application-attributes.md#understanding-attribute-mapping-properties)kullanarak eşleşen bir kullanıcı için hedef sistemi sorgular. Örnek: Kaynak sistemdeki kullanıcıPrincipal adı, hedef sistemde kullanıcı Adı ile eşleşen öznitelik ve eşlemler ise, sağlama hizmeti kaynak sistemdeki kullanıcıAna ad değerleriyle eşleşen kullanıcı Adları için hedef sistemi sorgular.
 
-4. Hedef sistemde eşleşen bir Kullanıcı bulunamazsa, kaynak sistemden döndürülen öznitelikler kullanılarak oluşturulur. Kullanıcı hesabı oluşturulduktan sonra, sağlama hizmeti yeni kullanıcı için hedef sistemin KIMLIĞINI algılar ve önbelleğe alır. Bu KIMLIK, bu kullanıcı üzerinde gelecekteki tüm işlemleri çalıştırmak için kullanılır.
+4. Eşleşen bir kullanıcı hedef sistemde bulunmazsa, kaynak sistemden döndürülen öznitelikler kullanılarak oluşturulur. Kullanıcı hesabı oluşturulduktan sonra, sağlama hizmeti yeni kullanıcı için hedef sistemin kimliğini algılar ve önbelleğe dardır. Bu kimlik, bu kullanıcı üzerinde gelecekteki tüm işlemleri çalıştırmak için kullanılır.
 
-5. Eşleşen bir kullanıcı bulunursa, kaynak sistem tarafından belirtilen öznitelikler kullanılarak güncelleştirilir. Kullanıcı hesabı eşleştirildikten sonra, sağlama hizmeti yeni kullanıcı için hedef sistemin KIMLIĞINI algılar ve önbelleğe alır. Bu KIMLIK, bu kullanıcı üzerinde gelecekteki tüm işlemleri çalıştırmak için kullanılır.
+5. Eşleşen bir kullanıcı bulunursa, kaynak sistem tarafından sağlanan öznitelikler kullanılarak güncelleştirilir. Kullanıcı hesabı eşleştikten sonra, sağlama hizmeti yeni kullanıcı için hedef sistemin kimliğini algılar ve önbelleğe dardır. Bu kimlik, bu kullanıcı üzerinde gelecekteki tüm işlemleri çalıştırmak için kullanılır.
 
-6. Öznitelik eşlemeleri "başvuru" öznitelikleri içeriyorsa, hizmet, başvurulan nesneleri oluşturmak ve bağlamak için hedef sistemde ek güncelleştirmeler yapar. Örneğin, bir Kullanıcı hedef sistemde bir "Yönetici" özniteliğine sahip olabilir ve bu, hedef sistemde oluşturulan başka bir kullanıcıyla bağlantılıdır.
+6. Öznitelik eşlemeleri "başvuru" öznitelikleri içeriyorsa, hizmet başvurulan nesneleri oluşturmak ve bağlamak için hedef sistemde ek güncelleştirmeler yapar. Örneğin, bir kullanıcıhedef sistemde oluşturulan başka bir kullanıcıya bağlı bir "Yönetici" özniteliğine sahip olabilir.
 
-7. İlk döngüsünün sonunda, sonraki artımlı döngüler için başlangıç noktasını sağlayan bir filigranı kalıcı hale getirin.
+7. Daha sonraki artımlı döngüler için başlangıç noktası sağlayan ilk çevrimin sonunda bir filigran devam edin.
 
-ServiceNow, G Suite ve Box gibi bazı uygulamalar yalnızca kullanıcıları sağlamaktan, ayrıca grupları ve üyelerini sağlamaktan de destek vermez. Bu durumlarda, [eşlemelerde](customize-application-attributes.md)grup sağlama etkinse, sağlama hizmeti kullanıcıları ve grupları eşitler ve daha sonra grup üyeliklerini eşitler.
+ServiceNow, G Suite ve Box gibi bazı uygulamalar yalnızca kullanıcıları sağlamanın yanı sıra grupları ve üyelerini de destekler. Bu gibi durumlarda, [eşlemelerde](customize-application-attributes.md)grup sağlama etkinse, sağlama hizmeti kullanıcıları ve grupları eşitler ve daha sonra grup üyeliklerini eşitler.
 
 ### <a name="incremental-cycles"></a>Artımlı döngüler
 
-İlk döngüden sonra diğer tüm döngüler şunları yapar:
+İlk döngüden sonra, diğer tüm döngüler:
 
-1. Son eşik depolanmasından bu yana güncelleştirilmiş olan tüm kullanıcılar ve gruplar için kaynak sistemi sorgulayın.
+1. Son filigran depolandığından beri güncelleştirilen kullanıcılar ve gruplar için kaynak sistemi sorgulayın.
 
-2. Yapılandırılan [atamaları](../manage-apps/assign-user-or-group-access-portal.md) veya [öznitelik tabanlı kapsam filtrelerini](define-conditional-rules-for-provisioning-user-accounts.md)kullanarak döndürülen kullanıcıları ve grupları filtreleyin.
+2. Yapılandırılan [atamaları](../manage-apps/assign-user-or-group-access-portal.md) veya [öznitelik tabanlı kapsam filtreleri](define-conditional-rules-for-provisioning-user-accounts.md)kullanarak döndürülen kullanıcıları ve grupları filtreleyin.
 
-3. Bir Kullanıcı atandığında veya sağlama kapsamında olduğunda, hizmet belirtilen [eşleşen öznitelikleri](customize-application-attributes.md#understanding-attribute-mapping-properties)kullanarak hedef sistemi eşleşen bir kullanıcı için sorgular.
+3. Bir kullanıcı atandığında veya sağlama kapsamında olduğunda, hizmet belirtilen [eşleşen öznitelikleri](customize-application-attributes.md#understanding-attribute-mapping-properties)kullanarak eşleşen bir kullanıcı için hedef sistemi sorgular.
 
-4. Hedef sistemde eşleşen bir Kullanıcı bulunamazsa, kaynak sistemden döndürülen öznitelikler kullanılarak oluşturulur. Kullanıcı hesabı oluşturulduktan sonra, sağlama hizmeti yeni kullanıcı için hedef sistemin KIMLIĞINI algılar ve önbelleğe alır. Bu KIMLIK, bu kullanıcı üzerinde gelecekteki tüm işlemleri çalıştırmak için kullanılır.
+4. Eşleşen bir kullanıcı hedef sistemde bulunmazsa, kaynak sistemden döndürülen öznitelikler kullanılarak oluşturulur. Kullanıcı hesabı oluşturulduktan sonra, sağlama hizmeti yeni kullanıcı için hedef sistemin kimliğini algılar ve önbelleğe dardır. Bu kimlik, bu kullanıcı üzerinde gelecekteki tüm işlemleri çalıştırmak için kullanılır.
 
-5. Eşleşen bir kullanıcı bulunursa, kaynak sistem tarafından belirtilen öznitelikler kullanılarak güncelleştirilir. Bu, eşleşen yeni bir hesap ise, sağlama hizmeti yeni kullanıcı için hedef sistemin KIMLIĞINI algılar ve önbelleğe alır. Bu KIMLIK, bu kullanıcı üzerinde gelecekteki tüm işlemleri çalıştırmak için kullanılır.
+5. Eşleşen bir kullanıcı bulunursa, kaynak sistem tarafından sağlanan öznitelikler kullanılarak güncelleştirilir. Eşleşen yeni atanan bir hesapsa, sağlama hizmeti yeni kullanıcı için hedef sistemin kimliğini algılar ve önbelleğe darda kalır. Bu kimlik, bu kullanıcı üzerinde gelecekteki tüm işlemleri çalıştırmak için kullanılır.
 
-6. Öznitelik eşlemeleri "başvuru" öznitelikleri içeriyorsa, hizmet, başvurulan nesneleri oluşturmak ve bağlamak için hedef sistemde ek güncelleştirmeler yapar. Örneğin, bir Kullanıcı hedef sistemde bir "Yönetici" özniteliğine sahip olabilir ve bu, hedef sistemde oluşturulan başka bir kullanıcıyla bağlantılıdır.
+6. Öznitelik eşlemeleri "başvuru" öznitelikleri içeriyorsa, hizmet başvurulan nesneleri oluşturmak ve bağlamak için hedef sistemde ek güncelleştirmeler yapar. Örneğin, bir kullanıcıhedef sistemde oluşturulan başka bir kullanıcıya bağlı bir "Yönetici" özniteliğine sahip olabilir.
 
-7. Önceden sağlama kapsamında olan bir Kullanıcı, atanmamış olarak da dahil olmak üzere kapsamdan kaldırılırsa, hizmet, hedef sistemdeki kullanıcıyı bir güncelleştirme aracılığıyla devre dışı bırakır.
+7. Daha önce sağlama kapsamında olan bir kullanıcı atanmamış olmak da dahil olmak üzere kapsamdan kaldırılırsa, hizmet bir güncelleştirme aracılığıyla hedef sistemdeki kullanıcıyı devre dışı kılabilir.
 
-8. Kaynak sistemde daha önce sağlama kapsamında olan bir kullanıcı devre dışıysa veya geçici olarak silinirse, hizmet, hedef sistemdeki kullanıcıyı bir güncelleştirme aracılığıyla devre dışı bırakır.
+8. Daha önce sağlama kapsamında olan bir kullanıcı kaynak sistemde devre dışı bırakılmış veya silinmişse, hizmet bir güncelleştirme aracılığıyla hedef sistemdeki kullanıcıyı devre dışı eder.
 
-9. Daha önce sağlama kapsamında olan bir Kullanıcı kaynak sistemde sabit bir şekilde silinirse, hizmet kullanıcıyı hedef sistemde siler. Azure AD 'de, kullanıcılar, geçici olarak silindikten sonra 30 gün sonra kalıcı olarak silinir.
+9. Daha önce sağlama kapsamında olan bir kullanıcı kaynak sistemde zor silinirse, hizmet hedef sistemdeki kullanıcıyı siler. Azure AD'de, kullanıcılar yumuşak bir şekilde silindikten 30 gün sonra sabit silinir.
 
-10. Daha sonraki artımlı döngüler için başlangıç noktasını sağlayan artımlı döngüsünün sonunda yeni bir filigranı kalıcı hale getirin.
+10. Artımlı döngünün sonunda yeni bir filigran devam edin, hangi sonraki artımlı döngüleri için başlangıç noktası sağlar.
 
 > [!NOTE]
-> İsteğe bağlı olarak, [eşlemeler](customize-application-attributes.md) bölümündeki **hedef nesne eylemleri** onay kutularını kullanarak **oluşturma**, **güncelleştirme**veya **silme** işlemlerini devre dışı bırakabilirsiniz. Bir güncelleştirme sırasında kullanıcıyı devre dışı bırakma mantığı, "accountEnabled" gibi bir alandan bir öznitelik eşlemesi aracılığıyla da denetlenir.
+> [Eşlemeler](customize-application-attributes.md) bölümündehedef **nesne eylemleri** onay kutularını kullanarak **Oluşturma,** **Güncelleştir**veya **Sil** işlemlerini isteğe bağlı olarak devre dışı kullanabilirsiniz. Güncelleştirme sırasında bir kullanıcıyı devre dışı bıyıltırmanın mantığı da "accountEnabled" gibi bir alandan bir öznitelik eşleme yoluyla denetlenir.
 
-Sağlama Hizmeti, [her uygulamaya özgü öğreticide](../saas-apps/tutorial-list.md)tanımlanan aralıklarda sonsuza kadar sürekli artımlı Döngülerde çalışmaya devam eder. Artımlı döngüler aşağıdaki olaylardan biri gerçekleşene kadar devam eder:
+Sağlama hizmeti, [her uygulamaya özgü öğreticide](../saas-apps/tutorial-list.md)tanımlanan aralıklarla, arka arkaya artımlı döngüleri süresiz olarak çalıştırmaya devam eder. Artımlı döngüler aşağıdaki olaylardan biri meydana gelene kadar devam eder:
 
-- Hizmet, Azure portal kullanılarak veya uygun Microsoft Graph API komutu kullanılarak el ile durdurulur.
-- Yeni bir başlangıç çevrimi, Azure portal **durumu temizle ve yeniden Başlat** seçeneği kullanılarak veya uygun Microsoft Graph API komutu kullanılarak tetiklenir. Bu eylem tüm depolanmış filigranı temizler ve tüm kaynak nesnelerinin yeniden değerlendirilmesini sağlar.
-- Öznitelik eşlemelerinde veya kapsam filtrelerinde değişiklik nedeniyle yeni bir başlangıç çevrimi tetiklenir. Bu eylem Ayrıca, depolanan tüm filigranı temizler ve tüm kaynak nesnelerinin yeniden değerlendirilmesini sağlar.
-- Sağlama işlemi, yüksek bir hata oranı nedeniyle karantinaya alınır (aşağıya bakın) ve dört haftadan uzun bir şekilde karantinayla kalır. Bu olay, hizmet otomatik olarak devre dışı bırakılır.
+- Hizmet, Azure portalı kullanılarak veya uygun Microsoft Graph API komutunu kullanarak el ile durdurulur.
+- Azure portalındaki **Açıkla durumu ve yeniden başlatma** seçeneği veya uygun Microsoft Graph API komutu kullanılarak yeni bir başlangıç döngüsü tetiklenir. Bu eylem, depolanan filigranı temizler ve tüm kaynak nesnelerin yeniden değerlendirilmesine neden olur.
+- Öznitelik eşlemeleri veya kapsam filtreleri bir değişiklik nedeniyle yeni bir ilk döngü tetiklenir. Bu eylem ayrıca depolanan filigranı temizler ve tüm kaynak nesnelerin yeniden değerlendirilmesine neden olur.
+- Sağlama işlemi yüksek hata oranı nedeniyle karantinaya girer (aşağıya bakın) ve dört haftadan fazla karantinada kalır. Bu durumda, hizmet otomatik olarak devre dışı bırakılır.
 
 ### <a name="errors-and-retries"></a>Hatalar ve yeniden denemeler
 
-Hedef sistemdeki bir hata, hedef sistemde tek bir kullanıcının eklenmesini, güncelleştirilmesini veya silinmesini engelliyorsa, işlem sonraki eşitleme döngüsüne yeniden denenir. Kullanıcı başarısız olmaya devam ederse, yeniden denemeler daha düşük bir sıklıkta gerçekleşecek ve aşamalı olarak günde yalnızca bir denemeye geri dönebilir. Sorunu çözmek için Yöneticiler, temel nedeni tespit etmek ve uygun eylemi gerçekleştirmek için [sağlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) denetlemelidir. Yaygın hatalarda şunlar olabilir:
+Hedef sistemdeki bir hata, tek bir kullanıcının hedef sistemde eklenmesini, güncellemesini veya silinmesini engellerse, işlem bir sonraki eşitleme döngüsünde yeniden denenir. Kullanıcı başarısız olmaya devam ederse, yeniden denemeler daha düşük bir frekansta oluşmaya başlar ve yavaş yavaş günde yalnızca bir denemeyle yeniden ölçeklenebilir. Hatayı gidermek için, yöneticilerin temel nedeni belirlemek ve uygun eylemi yapmak için [sağlama günlüklerini denetlemeleri](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) gerekir. Sık karşılaşılan hatalar şunları içerebilir:
 
-- Hedef sistemde gerekli olan kaynak sistemde doldurulmuş bir özniteliği olmayan kullanıcılar
-- Kaynak sistemde, hedef sistemde benzersiz bir kısıtlama olan ve aynı değer başka bir Kullanıcı kaydında bulunan bir öznitelik değeri olan kullanıcılar
+- Hedef sistemde gerekli olan kaynak sistemde doldurulan bir özniteliğe sahip olmayan kullanıcılar
+- Kaynak sistemde öznitelik değeri olan ve hedef sistemde benzersiz bir kısıtlama bulunan ve aynı değer başka bir kullanıcı kaydında bulunan kullanıcılar
 
-Kaynak sistemdeki etkilenen kullanıcının öznitelik değerlerini ayarlayarak veya öznitelik eşlemelerini çakışmalara neden olmayan şekilde ayarlayarak bu sorunları çözün.
+Bu hataları, kaynak sistemde etkilenen kullanıcının öznitelik değerlerini ayarlayarak veya öznitelik eşlemelerini çakışmalara neden olmayacak şekilde ayarlayarak giderin.
 
 ### <a name="quarantine"></a>Karantina
 
-Hedef sisteme karşı gerçekleştirilen çağrıların çoğu veya hepsi bir hata nedeniyle (örneğin, geçersiz yönetici kimlik bilgileri) başarısız olursa, sağlama işi "Karantina" durumuna geçer. Bu durum, [sağlama Özeti raporunda](../manage-apps/check-status-user-account-provisioning.md) ve Azure Portal e-posta bildirimleri yapılandırılmışsa e-postayla belirtilir.
+Hedef sisteme karşı yapılan çağrıların çoğu veya tümü bir hata nedeniyle sürekli olarak başarısız olursa (örneğin geçersiz yönetici kimlik bilgileri) sağlama işi bir "karantina" durumuna girer. Bu durum, e-posta bildirimleri Azure portalında yapılandırıldıysa, [sağlayan özet raporunda](../manage-apps/check-status-user-account-provisioning.md) ve e-posta yoluyla belirtilir.
 
-Karantinaya alma sırasında, artımlı döngülerin sıklığı günde bir kez yavaş şekilde azaltılır.
+Karantinadayken, artımlı döngülerin sıklığı yavaş yavaş günde bir kez azalır.
 
-Tüm sorunlu hatalar düzeltildikten ve sonraki eşitleme döngüsünün başlaması durumunda sağlama işi karantinadan çıkar. Sağlama işi dört haftadan uzun bir süreyle karantinayla kalırsa, sağlama işi devre dışı bırakılır. [Burada karantina durumu hakkında](../manage-apps/application-provisioning-quarantine-status.md)daha fazla bilgi edinin.
+Tüm kusurlu hatalar düzeltildikten ve bir sonraki eşitleme döngüsü başladıktan sonra, sağlama işi karantinadan çıkar. Sağlama işi dört haftadan fazla karantinada kalırsa, sağlama işi devre dışı bırakılır. Burada karantina durumu hakkında daha fazla bilgi [edinin.](../manage-apps/application-provisioning-quarantine-status.md)
 
 ### <a name="how-long-provisioning-takes"></a>Sağlamanın tamamlanma süresi
 
-Performans, sağlama işinizin ilk sağlama döngüsünü mi yoksa artımlı bir döngüyü mi çalıştırdığına bağlıdır. Sağlama süresinin ne kadar süreceği ve sağlama hizmetinin durumunun nasıl izleneceği hakkında ayrıntılar için bkz. [Kullanıcı sağlama durumunu denetleme](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md).
+Performans, sağlama işinizin başlangıç döngüsü mü yoksa artımlı bir döngü mü çalıştırdığına bağlıdır. Sağlamanın ne kadar süreceği ve sağlama hizmetinin durumunun nasıl izlendiği hakkında ayrıntılı bilgi [için](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)bkz.
 
-### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Kullanıcıların düzgün şekilde sağlandığını söylemek
+### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Kullanıcıların doğru şekilde sağlandığını nasıl anlaylayama
 
-Kullanıcı sağlama hizmeti tarafından çalıştırılan tüm işlemler, Azure AD [sağlama günlüklerine (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir. Günlükler, kaynak ve hedef sistemlere yapılan tüm okuma ve yazma işlemlerini ve her işlem sırasında okunan veya yazılan kullanıcı verilerini içerir. Azure portal sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [sağlama Raporlama Kılavuzu](../manage-apps/check-status-user-account-provisioning.md).
+Kullanıcı sağlama hizmeti tarafından yürütülen tüm işlemler Azure AD [Sağlama günlüklerine (önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir. Günlükler, kaynak ve hedef sistemlere yapılan tüm okuma ve yazma işlemlerini ve her işlem sırasında okunan veya yazılan kullanıcı verilerini içerir. Azure portalındaki sağlama günlüklerini nasıl okuyabilirsiniz hakkında bilgi [için, sağlama raporlama kılavuzuna](../manage-apps/check-status-user-account-provisioning.md)bakın.
 
-## <a name="de-provisioning"></a>Serbest sağlama
+## <a name="de-provisioning"></a>De-provisioning
 
-Azure AD sağlama hizmeti, kullanıcıların artık erişim sahibi olmaması gerektiğinde, kaynak ve hedef sistemleri, hesapları serbest bırakma ile eşitlenmiş halde tutar. 
+Azure AD sağlama hizmeti, kullanıcıların artık erişimi olmaması gereken hesapları sağlamadan kaynak ve hedef sistemleri eşit tutar. 
 
-Azure AD sağlama hizmeti, uygulama suupports geçici olarak silindiğinde (etkin = false ile güncelleştirme isteği) ve aşağıdaki olaylardan herhangi biri gerçekleştiğinde bir uygulamadaki kullanıcıyı geçici olarak siler:
+Azure AD sağlama hizmeti, uygulama yumuşak silme (etkin = yanlış ile güncelleştirme isteği) ve aşağıdaki olaylardan herhangi biri oluştuğunda, bir uygulamadaki bir kullanıcıyı yumuşak bir şekilde siler:
 
-* Kullanıcı hesabı Azure AD 'de silinir
-*   Kullanıcı, uygulamadan atanmamış
-*   Kullanıcı artık kapsam filtresini karşılamadığı ve kapsam dışına çıkış
-    * Varsayılan olarak, Azure AD sağlama hizmeti, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Bu varsayılan davranışı geçersiz kılmak istiyorsanız, [kapsam dışı silme işlemlerini atlamak](../app-provisioning/skip-out-of-scope-deletions.md)için bir bayrak ayarlayabilirsiniz.
-*   AccountEnabled özelliği false olarak ayarlandı
+* Kullanıcı hesabı Azure AD'de silinir
+*   Kullanıcı uygulamadan atanmamış
+*   Kullanıcı artık bir kapsam filtresiyle karşılaşmadı ve kapsam dışına çıkıyor
+    * Varsayılan olarak, Azure AD sağlama hizmeti kapsam dışına çıkan kullanıcıları siler veya devre dışı kılabilir. Bu varsayılan davranışı geçersiz kılmak istiyorsanız, [kapsam dışı silmeleri atlayacak](../app-provisioning/skip-out-of-scope-deletions.md)bir bayrak ayarlayabilirsiniz.
+*   AccountEnabled özelliği False olarak ayarlanır
 
-Yukarıdaki dört olaydan biri meydana gelirse ve hedef uygulama geçici silme işlemini desteklemiyorsa, sağlama hizmeti kullanıcıyı uygulamadan kalıcı olarak silmek için bir SILME isteği gönderir. 
+Yukarıdaki dört olaydan biri oluşursa ve hedef uygulama yumuşak silmeleri desteklemiyorsa, sağlama hizmeti kullanıcıyı uygulamadan kalıcı olarak silmek için bir DELETE isteği gönderir. 
 
-Azure AD 'de bir Kullanıcı silindikten 30 gün sonra, bu kullanıcılar kiracıdan kalıcı olarak silinir. Bu noktada, sağlama hizmeti uygulamada kullanıcıyı kalıcı olarak silmek için bir SILME isteği gönderir. 30 günlük pencerede herhangi bir zamanda, uygulamayı [kalıcı olarak el ile silebilirsiniz](../fundamentals/active-directory-users-restore.md). Bu, uygulamaya bir silme isteği gönderir.
+Bir kullanıcı Azure AD'de silindikten 30 gün sonra, kullanıcı kiracıdan kalıcı olarak silinir. Bu noktada, sağlama hizmeti, uygulamadaki kullanıcıyı kalıcı olarak silmek için bir DELETE isteği gönderir. 30 günlük süre boyunca istediğiniz zaman, bir [kullanıcıyı kalıcı olarak el ile silebilirsiniz](../fundamentals/active-directory-users-restore.md)ve bu da uygulamaya silme isteği gönderir.
 
-Öznitelik eşlemelerinizde bir öznitelik ıssoftdeleted görürseniz, kullanıcının durumunu ve etkin = false olan bir güncelleştirme isteğinin Kullanıcı tarafından geçici olarak silinmesini sağlamak için kullanılır. 
+Öznitelik eşlemelerinizde Bir öznitelik IsSoftDeleted görürseniz, kullanıcının durumunu belirlemek ve kullanıcıyı yumuşak silmek için active = false içeren bir güncelleştirme isteği gönderip göndermemeniz için kullanılır. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[Otomatik Kullanıcı sağlama dağıtımı planlayın](../app-provisioning/plan-auto-user-provisioning.md)
+[Otomatik kullanıcı sağlama dağıtımı planlama](../app-provisioning/plan-auto-user-provisioning.md)
 
 [Galeri uygulaması için sağlamayı yapılandırma](../manage-apps/configure-automatic-user-provisioning-portal.md)
 
-[Kendi uygulamanızı oluştururken bir SCıM uç noktası oluşturun ve sağlamayı yapılandırın](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+[Bir SCIM bitiş noktası oluşturun ve kendi uygulamanızı oluştururken sağlamayı yapılandırın](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[Kullanıcılara yapılandırma ve uygulama sağlama ile ilgili sorunları giderin](../manage-apps/application-provisioning-config-problem.md).
+[Kullanıcıları bir uygulamaya yapılandırma ve sağlama yla ilgili sorunları giderin.](../manage-apps/application-provisioning-config-problem.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapısı hizmeti - Yönlendirme kural eşleşen izleme | Microsoft Docs
-description: Bu makale Azure ön kapısı hizmet gelen bir istek için kullanmak üzere hangi yönlendirme kuralını nasıl eşleştiğini anlamanıza yardımcı olur.
+title: Azure Ön Kapı - Yönlendirme kuralı eşleştirme izleme | Microsoft Dokümanlar
+description: Bu makale, Azure Ön Kapı'nın gelen bir istek için kullanılacak yönlendirme kuralıyla nasıl eşleştiğini anlamanıza yardımcı olur
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,87 +11,87 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736301"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471600"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Ön kapısı istek yönlendirme kuralı için nasıl eşleşir?
+# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Ön Kapı istekleri yönlendirme kuralıyla nasıl eşleşir?
 
-Bir istek üzerinde gölünüzdeki olduğunda bağlantı kurduktan sonra bir SSL el sıkışması yapılması bir ön kapısı ortamı ön kapısı yapan ilk şeylerden biri tüm yapılandırmalardan, hangi isteği eşleştirmek için belirli yönlendirme kuralı ve sonra alma belirliyor tanımlı eylem. Belgesinde, ön kapısı bir HTTP isteği işlerken kullanılacak rota yapılandırmayı nasıl belirlediğini açıklar.
+Bir bağlantı kurduktan ve Bir SSL el sıkışması yaptıktan sonra, bir istek Ön Kapı ortamına indiğinde, Ön Kapı'nın yaptığı ilk şeylerden biri, isteği eşleştirmek için hangi özel yönlendirme kuralını belirleyen ve daha sonra tanımlanan eylem. Aşağıdaki belge, Ön Kapı'nın bir HTTP isteğini işlerken hangi Rota yapılandırmasını kullanacağını nasıl belirlediğini açıklar.
 
-## <a name="structure-of-a-front-door-route-configuration"></a>Bir ön kapısı yol yapılandırması yapısı
-Bir ön kapısı yönlendirme kuralı yapılandırması, iki ana bölümden oluşur: "sol tarafındaki" ve "sağ tarafında". Biz istek işleminin nasıl sağ tarafı tanımlar sol tarafına rotanın gelen istek eşleştirme.
+## <a name="structure-of-a-front-door-route-configuration"></a>Ön Kapı rota yapılandırmasının yapısı
+Ön Kapı yönlendirme kuralı yapılandırması iki ana bölümden oluşur: "sol taraf" ve "sağ taraf". Gelen isteği rotanın sol tarafına eşleştirirken, sağ taraf isteği nasıl işlediğimizi tanımlar.
 
-### <a name="incoming-match-left-hand-side"></a>Gelen eşleşme (sol tarafı)
-Aşağıdaki özellikler, gelen istek yönlendirme kuralı (veya sol tarafı) ile eşleşip eşleşmediğini belirler:
+### <a name="incoming-match-left-hand-side"></a>Gelen maç (sol taraf)
+Aşağıdaki özellikler, gelen isteğin yönlendirme kuralıyla (veya sol tarafla) eşleşip eşleşmediğini belirler:
 
-* **HTTP protokolleri** (HTTP/HTTPS)
-* **Konaklar** (örneğin, www\.foo.com, \*. bar.com)
-* **Yolları** (örneğin, /\*, /users/\*, /file.gif)
+* **HTTP Protokolleri** (HTTP/HTTPS)
+* **Ana bilgisayarlar** (örneğin, www\.foo.com, \*.bar.com)
+* **Yollar** (örneğin,\*/ ,\*/users/ , /file.gif)
 
-Bu özellikler böylece her bir birleşimi Protokolü/konak/yol olası eşleşme kümesi kullanıma dahili olarak genişletilir.
+Bu özellikler, Protokol/Ana Bilgisayar/Yol'un her birleşimi nin olası bir eşleşme kümesi olması için dahili olarak genişletilir.
 
-### <a name="route-data-right-hand-side"></a>Rota verilerini (sağ taraf)
-Önbelleğe almanın etkin olup veya belirli bir yol için bir isteği işlemek nasıl karar bağlıdır. Bu nedenle, istek için önbelleğe alınan yanıt de yoksa, biz isteği yapılandırılmış arka uç havuzundaki uygun arka uca iletir.
+### <a name="route-data-right-hand-side"></a>Rota verileri (sağ taraf)
+İsteğin nasıl işlenip işlenmeyeceğine ilişkin karar, önbelleğe almanın belirli bir rota için etkin olup olmadığına bağlıdır. Bu nedenle, istek için önbelleğe alınmış bir yanıt yoksa, isteği yapılandırılmış arka uç havuzunda uygun arka uca ileteceğiz.
 
-## <a name="route-matching"></a>Eşleşen yol
-Bu bölümde, belirli bir ön kapısı yönlendirme kuralını nasıl eşleştirme üzerinde odaklanır. Temel kavramlar sizi her zaman için eşleşmesidir **en belirgin eşleşen ilk** görünümlü yalnızca "sol tarafındaki" konumunda.  İlk HTTP protokolü, ardından Frontend ana bilgisayar ardından yolu göre eşleştirme.
+## <a name="route-matching"></a>Rota eşleştirme
+Bu bölümde, belirli bir Ön Kapı yönlendirme kuralına nasıl uyacağız üzerinde durulacaktır. Temel kavram, her zaman **en özel maç ilk** sadece "sol tarafı" bakarak maç olmasıdır.  Biz ilk HTTP protokolü dayalı maç, sonra Frontend ev sahibi, sonra Yol.
 
 ### <a name="frontend-host-matching"></a>Frontend ana bilgisayar eşleştirme
-Frontend ana eşleştirirken mantığı aşağıdaki gibi kullanırız:
+Frontend ana bilgisayarlarını eşleştirirken, mantığı aşağıdaki gibi kullanırız:
 
-1. Bir konaktaki bir tam eşleşme ile yönlendirme bakın.
-2. Tam ön uç konak eşleşiyorsa isteği onaylayabileceğini ve 400 Hatalı istek hatası gönderin.
+1. Ev sahibi üzerinde tam bir eşleşme ile herhangi bir yönlendirme arayın.
+2. Tam bir ön uç ev sahibi eşleşme yoksa, isteği reddedin ve 400 Kötü İstek hatası gönderin.
 
-Bu işlem daha da açıklamak için örnek bir yapılandırma (yalnızca sol tarafı) ön kapısı yolların göz atalım:
+Bu işlemi daha fazla açıklamak için, Ön Kapı rotalarının örnek bir yapılandırmasına bakalım (yalnızca sol taraf):
 
-| Yönlendirme kuralı | Frontend ana bilgisayar | `Path` |
+| Yönlendirme kuralı | Frontend ev sahipleri | Yol |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
-| B | foo.contoso.com | /Users/\* |
-| C | www\.fabrikam.com, foo.adventure works.com'u  | /\*, /images/\* |
+| B | foo.contoso.com | /kullanıcılar/\* |
+| C | www\.fabrikam.com, foo.adventure-works.com  | /\*, /images/\* |
 
-Aşağıdaki gelen istekler için ön kapı göndermediyse aşağıdaki Yönlendirme kuralları yukarıdaki karşı eşleşir:
+Aşağıdaki gelen istekler Ön Kapı'ya gönderilirse, yukarıdaki aşağıdaki yönlendirme kurallarına göre eşleşirler:
 
-| Gelen frontend ana bilgisayar | Yönlendirme kuralları eşleşmesi |
+| Gelen ön uç ana bilgisayar | Eşleşen yönlendirme kuralı(lar) |
 |---------------------|---------------|
 | foo.contoso.com | A, B |
 | www\.fabrikam.com | C |
-| images.fabrikam.com | 400\. hata: Bozuk İstek |
-| foo.Adventure Works.com'u | C |
-| contoso.com | 400\. hata: Bozuk İstek |
-| www\.adventure works.com'u | 400\. hata: Bozuk İstek |
-| www\.adının | 400\. hata: Bozuk İstek |
+| images.fabrikam.com | Hata 400: Kötü İstek |
+| foo.adventure-works.com | C |
+| contoso.com | Hata 400: Kötü İstek |
+| www\.adventure-works.com | Hata 400: Kötü İstek |
+| www\.northwindtraders.com | Hata 400: Kötü İstek |
 
-### <a name="path-matching"></a>Yol ile eşleşen
-Belirli bir ön uç konak belirleme ve filtreleme için yalnızca ön uç barındıran rotalarla olası yönlendirme kuralları sonra ön kapısı sonra isteği yola göre yönlendirme kurallarını filtreler. Ön uç ana bilgisayarları olarak benzer bir mantık kullanırız:
+### <a name="path-matching"></a>Yol eşleştirme
+Belirli ön uç ana bilgisayarını belirledikten ve olası yönlendirme kurallarını sadece ön uç ana bilgisayarıyla olan rotalara filtreledikten sonra, Ön Kapı sonra yönlendirme kurallarını istek yoluna göre filtreler. Ön uç ana bilgisayarları olarak benzer bir mantık kullanırız:
 
-1. Yol üzerindeki bir tam eşleşme ile herhangi bir yönlendirme kural arayın
-2. Tam eşleşme yol, sözcük joker karakterle eşleşen yolu yönlendirme kurallarını arayın
-3. Yönlendirme kuralı yok ile eşleşen bir yol bulunmazsa, isteği reddetmek ve bir 400 döndürür: Hatalı istek Hatası HTTP yanıtı.
+1. Yol'da tam eşleşme içeren herhangi bir yönlendirme kuralıarayın
+2. Yollarla tam eşleşme yoksa, eşleşen bir joker Yol ile yönlendirme kurallarını arayın
+3. Eşleşen bir Yol'da yönlendirme kuralları bulunmazsa, isteği reddedin ve 400: Hata İstek hatası HTTP yanıtını döndürün.
 
 >[!NOTE]
-> Yollar joker karakteri olmadan tam eşleşme yollar kabul edilir. Yol eğik çizgiyle sona ererse bile, yine de tam eşleşme değerlendirilir.
+> Joker kartı olmayan tüm Yollar, Yollar'a tam olarak eşleşiyor olarak kabul edilir. Yol bir kesikle bitse bile, yine de tam eşleşme olarak kabul edilir.
 
-Daha fazla açıklamak için başka bir örnekler kümesini göz atalım:
+Daha fazla açıklamak için, başka bir örnek kümesine bakalım:
 
-| Yönlendirme kuralı | Frontend ana bilgisayar    | `Path`     |
+| Yönlendirme kuralı | Ön uç ana bilgisayar    | Yol     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
-| C     | www\.contoso.com | /AB      |
+| C     | www\.contoso.com | /ab      |
 | D     | www\.contoso.com | /abc     |
 | E     | www\.contoso.com | /abc/    |
-| F     | www\.contoso.com | /ABC/\*  |
-| G     | www\.contoso.com | / abc/def |
-| H     | www\.contoso.com | /Path/   |
+| F     | www\.contoso.com | /abc/\*  |
+| G     | www\.contoso.com | /abc/def |
+| H     | www\.contoso.com | /yol/   |
 
-Bu yapılandırmayı göz önünde bulundurulduğunda, aşağıdaki örnek eşleşen tablo neden olur:
+Bu yapılandırma göz önüne alındığında, aşağıdaki örnek eşleşen tablo neden olur:
 
-| Gelen istek    | Eşleşen bir rota |
+| Gelen İstek    | Eşleşen Rota |
 |---------------------|---------------|
 | www\.contoso.com/            | A             |
 | www\.contoso.com/a           | B             |
@@ -108,22 +108,22 @@ Bu yapılandırmayı göz önünde bulundurulduğunda, aşağıdaki örnek eşle
 | www\.contoso.com/path/zzz    | B             |
 
 >[!WARNING]
-> </br> Catch tüm bir tam eşleşme frontend ana bilgisayar için yönlendirme kuralı yok ise yolu rota (`/*`), daha sonra herhangi bir yönlendirme kuralı bir eşleşme olmayacaktır.
+> </br> Catch-all yolu Yolu (), ile tam maç önuç ana bilgisayar`/*`için yönlendirme kuralları yoksa, o zaman herhangi bir yönlendirme kuralı bir eşleşme olmayacaktır.
 >
 > Örnek yapılandırma:
 >
-> | Yol | Ana bilgisayar             | `Path`    |
+> | Yol | Host             | Yol    |
 > |-------|------------------|---------|
-> | A     | Profile.contoso.com | /api/\* |
+> | A     | profile.contoso.com | /api/\* |
 >
-> Eşleşen Tablo:
+> Eşleşen tablo:
 >
-> | Gelen istek       | Eşleşen bir rota |
+> | Gelen istek       | Eşleşen Rota |
 > |------------------------|---------------|
-> | Profile.domain.com/Other | Yok. 400\. hata: Bozuk İstek |
+> | profile.domain.com/other | Yok. Hata 400: Kötü İstek |
 
-### <a name="routing-decision"></a>Yönlendirme karar
-Biz tek bir ön kapısı yönlendirme kural eşleşen sonra biz sonra isteği işlemek nasıl seçmeniz gerekir. Ardından, eşleşen yönlendirme kuralı için bir önbelleğe alınan yanıt kullanılabilir ön kapısı varsa aynı istemciye hizmet. Aksi takdirde, değerlendirilen bir sonraki şey mi yapılandırdığınıza olan [URL yeniden yazma (özel yönlendirme yolunu)](front-door-url-rewrite.md) eşleşen yönlendirme için kural ya da değil. Ardından tanımlanan özel iletme yol değilse, istek uygun arka uca olarak yapılandırılmış bir arka uç havuzundaki iletilen. Aksi takdirde istek yolu olarak başına güncelleştirilir [özel iletme yolu](front-door-url-rewrite.md) tanımlı ve ardından arka uç için iletme.
+### <a name="routing-decision"></a>Yönlendirme kararı
+Tek bir Ön Kapı yönlendirme kuralına eşleştikten sonra, isteği nasıl işleyeceğiz seçmeliyiz. Eşleşen yönlendirme kuralı için, Ön Kapı önbelleğe alınmış bir yanıt varsa, aynı istemciye geri servis alır. Aksi takdirde, değerlendirilen bir sonraki şey, eşleşen yönlendirme kuralı için [URL Yeniden Yazma (özel yönlendirme yolu)](front-door-url-rewrite.md) yapılandırılmış olup olmadığıdır. Tanımlanmış özel bir iletme yolu yoksa, istek yapılandırılan arka uç havuzunda uygun arka uça iletilir. Aksi takdirde, istek yolu tanımlanan [özel iletme yoluna](front-door-url-rewrite.md) göre güncelleştirilir ve sonra arka uca iletilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

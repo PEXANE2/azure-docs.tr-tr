@@ -1,56 +1,55 @@
 ---
-title: Ticari Market 'te Azure uygulamaları için ekleme API 'SI
-description: Microsoft Iş Ortağı Merkezi 'nde ticari Market 'teki Azure uygulamaları için API önkoşulları.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Ticari Pazar'daki Azure uygulamaları için Onboarding API
+description: Microsoft İş Ortağı Merkezi'ndeki ticari pazardaki Azure uygulamaları için API ön koşulları.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: c14d8c6f27e4b0f4a4a75fa14b83455ff30ee35a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933659"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279768"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>Azure uygulamalarını Iş Ortağı Merkezi 'ne ekleme API 'SI
+# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>İş Ortağı Merkezi'nde Azure uygulamalarına binme için API
 
-Program aracılığıyla sorgulamak, teslimleri oluşturmak ve Azure tekliflerini yayımlamak için *Iş Ortağı Merkezi gönderme API* 'sini kullanın.  Bu API, hesabınız birçok teklifi yönetirse ve bu teklifler için gönderme işlemini otomatikleştirmek ve iyileştirmek istiyorsanız yararlıdır.
+Azure tekliflerini programlı bir şekilde sorgulamak, gönderiler oluşturmak ve yayımlamak için *İş Ortağı Merkezi gönderme API'sini* kullanın.  Bu API, hesabınız birçok teklifi yönetiyorsa ve bu teklifler için gönderim işlemini otomatikleştirmek ve optimize etmek istiyorsanız yararlıdır.
 
-## <a name="api-prerequisites"></a>API önkoşulları
+## <a name="api-prerequisites"></a>API ön koşullar
 
-Azure ürünleri için Iş Ortağı Merkezi API 'sini kullanmak üzere ihtiyacınız olan birkaç programlı varlık vardır: 
+Azure Ürünleri Için İş Ortağı Merkezi API'sini kullanmak için ihtiyacınız olan birkaç programlı varlık vardır: 
 
-- bir Azure Active Directory uygulaması.
-- Azure Active Directory (Azure AD) erişim belirteci.
+- Bir Azure Etkin Dizin uygulaması.
+- bir Azure Etkin Dizin (Azure AD) erişim jetonu.
 
-### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>1\. Adım: Iş Ortağı Merkezi gönderme API 'SI kullanımı için tüm önkoşulları
+### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>Adım 1: İş Ortağı Merkezi gönderme API'sini kullanmak için tam ön koşullar
 
-Iş Ortağı Merkezi gönderme API 'sini çağırmak için kod yazmaya başlamadan önce, aşağıdaki önkoşulları tamamladığınızdan emin olun.
+İş Ortağı Merkezi gönderme API'sini aramak için kod yazmaya başlamadan önce, aşağıdaki ön koşulları tamamladığınızdan emin olun.
 
-- Siz (veya kuruluşunuzun) bir Azure AD dizinine sahip olmanız ve dizin için [genel yönetici](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) izninizin olması gerekir. Office 365 veya Microsoft 'un diğer iş hizmetlerini zaten kullanıyorsanız Azure AD dizininiz zaten var. Aksi takdirde, ek ücret ödemeden [Iş Ortağı Merkezi 'nde yeni bir Azure ad oluşturabilirsiniz](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) .
+- Sizin (veya kuruluşunuz) bir Azure REKLAM dizinine sahip olmalısınız ve dizin için [Global yönetici](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) iznine sahip olmalısınız. Microsoft'un Office 365 veya diğer iş hizmetlerini zaten kullanıyorsanız, Azure REKLAM dizininiz zaten var. Aksi takdirde, [İş Ortağı Merkezi'nde](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) ek ücret ödemeden yeni bir Azure REKLAMı oluşturabilirsiniz.
 
-- [Bir Azure AD uygulamasını Iş Ortağı Merkezi hesabınızla ilişkilendirmeli](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) ve kiracı kimliğinizi, istemci kimliğini ve anahtarınızı edinmeniz gerekir. Microsoft Store gönderme API 'SI çağrılarında kullanacağınız bir Azure AD erişim belirteci edinmek için bu değerlere ihtiyacınız vardır.
+- Bir [Azure REKLAM uygulamasını İş Ortağı Merkezi hesabınızla ilişkilendirmeli](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) ve kiracı kimliğinizi, istemci kimliğinizi ve anahtarınızı edinmeniz gerekir. Microsoft Mağazası gönderim API'sine yapılan aramalarda kullanacağınız bir Azure AD erişim jetonunu elde etmek için bu değerlere ihtiyacınız vardır.
 
-#### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Azure AD uygulamasını Iş Ortağı Merkezi hesabınızla ilişkilendirme
+#### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Azure REKLAM uygulamasını İş Ortağı Merkezi hesabınızla ilişkilendirme
 
-Microsoft Store gönderimi API 'sini kullanmak için, Iş Ortağı Merkezi hesabınızla bir Azure AD uygulaması ilişkilendirmeniz, uygulamanın kiracı KIMLIĞINI ve istemci KIMLIĞINI almanız ve bir anahtar oluşturmanız gerekir. Azure AD uygulaması, Iş Ortağı Merkezi gönderme API 'sini çağırmak istediğiniz uygulamayı veya hizmeti temsil eder. API 'ye geçirdiğiniz bir Azure AD erişim belirteci edinmek için kiracı KIMLIĞI, istemci KIMLIĞI ve anahtarı gereklidir.
+Microsoft Mağazası gönderim API'sini kullanmak için, bir Azure REKLAM uygulamasını İş Ortağı Merkezi hesabınızla ilişkilendirmeniz, uygulama için kiracı kimliğini ve istemci kimliğini almanız ve bir anahtar oluşturmanız gerekir. Azure AD uygulaması, İş Ortağı Merkezi gönderim API'sini aramak istediğiniz uygulamayı veya hizmeti temsil eder. API'ye geçtiğiniz bir Azure AD erişim jetonunu elde etmek için kiracı kimliğine, istemci kimliğine ve anahtarına ihtiyacınız var.
 
 >[!Note]
->Bu görevi yalnızca bir kez gerçekleştirmeniz gerekir. Kiracı KIMLIĞI, istemci KIMLIĞI ve anahtarı aldıktan sonra, yeni bir Azure AD erişim belirteci oluşturmak için gereken her seferinde bunları yeniden kullanabilirsiniz.
+>Bu görevi yalnızca bir kez gerçekleştirmeniz gerekir. Kiracı kimliği, istemci kimliği ve anahtarı aldıktan sonra, yeni bir Azure AD erişim jetonu oluşturmak için ihtiyacınız olan her zaman bunları yeniden kullanabilirsiniz.
 
-1. Iş Ortağı Merkezi 'nde [kuruluşunuzun Iş Ortağı Merkezi hesabını kuruluşunuzun Azure AD diziniyle ilişkilendirin](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center).
-1. Ardından, Iş Ortağı Merkezi 'nin **Hesap ayarları** bölümündeki **Kullanıcılar** sayfasında, iş ortağı merkezi hesabınıza yönelik Gönderimlere erişmek için kullanacağınız uygulamayı veya HIZMETI temsil eden [Azure AD uygulamasını ekleyin](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) . Bu uygulamayı **yönetici** rolüne atadığınızdan emin olun. Uygulama henüz Azure AD dizininizde yoksa, [Iş Ortağı Merkezi 'nde yeni bir Azure AD uygulaması oluşturabilirsiniz](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account).
-1. **Kullanıcılar** sayfasına dönün, uygulama ayarlarına gitmek IÇIN Azure AD uygulamanızın adına tıklayın ve **kiracı KIMLIĞI** ile **istemci kimliği** değerlerini kopyalayın.
-1. **Yeni anahtar Ekle**' ye tıklayın. Aşağıdaki ekranda, **anahtar** değerini kopyalayın. Bu sayfadan ayrıldıktan sonra bu bilgilere bir daha erişemeyeceksiniz. Daha fazla bilgi için bkz. [Azure AD uygulaması için anahtarları yönetme](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys).
+1. İş Ortağı [Merkezi'nde, kuruluşunuzun İş Ortağı Merkezi hesabını kuruluşunuzun Azure REKLAM diziniyle ilişkilendirin.](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center)
+1. Ardından, İş Ortağı Merkezi'nin **Hesap ayarları** bölümündeki **Kullanıcılar** sayfasından, İş Ortağı Merkezi hesabınıza yönelik gönderilere erişmek için kullanacağınız uygulamayı veya hizmeti temsil eden Azure AD [uygulamasını ekleyin.](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) Bu uygulamayı **Yönetici** rolünü atadığınızdan emin olun. Uygulama Azure REKLAM dizininizde henüz yoksa, İş [Ortağı Merkezi'nde yeni bir Azure AD uygulaması oluşturabilirsiniz.](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account)
+1. **Kullanıcılar** sayfasına dönün, uygulama ayarlarına gitmek için Azure REKLAM uygulamanızın adını tıklatın ve **Kiracı Kimliği** ve **İstemci Kimliği** değerlerini kopyalayın.
+1. **Yeni anahtar ekle'yi**tıklatın. Aşağıdaki **ekranda, Anahtar** değerini kopyalayın. Bu sayfadan ayrıldıktan sonra bu bilgilere bir daha erişemezsiniz. Daha fazla bilgi için azure [AD uygulaması için Yönet tuşlarına](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)bakın.
 
-### <a name="step-2-obtain-an-azure-ad-access-token"></a>2\. Adım: Azure AD erişim belirteci alma
+### <a name="step-2-obtain-an-azure-ad-access-token"></a>Adım 2: Azure AD erişim jetonu edinin
 
-Iş Ortağı Merkezi gönderme API 'sindeki yöntemlerden herhangi birini çağırabilmeniz için önce API 'deki her yöntemin **Yetkilendirme** üstbilgisine geçirdiğiniz BIR Azure AD erişim belirteci edinmeniz gerekir. Erişim belirteci elde ettikten sonra, süresi dolmadan önce kullanmanız 60 dakika sürer. Belirtecin süresi dolduktan sonra, API 'yi sonraki çağrılarında kullanmaya devam edebilmeniz için belirteci yenileyebilirsiniz.
+İş Ortağı Merkezi gönderme API'sindeki yöntemlerden herhangi birini aramadan önce, öncelikle API'deki her yöntemin **Yetkilendirme** üstbilgisine geçtiğiniz bir Azure AD erişim belirteci edinmeniz gerekir. Bir erişim jetonu aldıktan sonra, süresi dolmadan önce kullanmak için 60 dakikanız vardır. Belirteç süresi dolduktan sonra, belirteci yenileyebilir, böylece ileride API'ye yapılan aramalarda kullanmaya devam edebilirsiniz.
 
-Erişim belirtecini almak için, `https://login.microsoftonline.com/<tenant_id>/oauth2/token` uç noktasına bir `HTTP POST` göndermek üzere [Istemci kimlik bilgilerini kullanarak çağrılara hizmet vermek Için hizmet](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) talimatlarını izleyin. Örnek bir istek aşağıda verilmiştir:
+Erişim jetonuna ulaşmak için, bitiş noktasına bir `HTTP POST` gönderme yapmak için `https://login.microsoftonline.com/<tenant_id>/oauth2/token` Müşteri Kimlik Bilgilerini Kullanarak [Hizmet Çağrılarına Hizmet](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) yönergelerini izleyin. Örnek bir istek aşağıda veda edebilirsiniz:
 
 JSONCopy
 ```Json
@@ -64,10 +63,10 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-`POST URI` ve *client_id* ve *client_secret* parametrelerinin *tenant_id* değeri Için, önceki bölümde iş ortağı merkezi 'nden ALDıĞıNıZ uygulamanızın Kiracı kimliğini, istemci kimliğini ve anahtarını belirtin. *Kaynak* parametresi için `https://api.partner.microsoft.com`belirtmeniz gerekir.
+client_id *tenant_id* `POST URI` ve *client_secret* parametrelerindeki *client_secret* tenant_id değeri için, önceki bölümde İş Merkezi'nden aldığınız kiracı kimliğini, istemci kimliğini ve başvurunuzun anahtarını belirtin. *Kaynak* parametresi için `https://api.partner.microsoft.com`.
 
-### <a name="step-3-use-the-microsoft-store-submission-api"></a>3\. Adım: Microsoft Store gönderimi API 'sini kullanma
+### <a name="step-3-use-the-microsoft-store-submission-api"></a>Adım 3: Microsoft Mağazası gönderme API'sini kullanma
 
-Bir Azure AD erişim belirteciniz olduktan sonra, Iş Ortağı Merkezi gönderme API 'sindeki yöntemleri çağırabilirsiniz. Gönderimler oluşturmak veya güncelleştirmek için genellikle Iş Ortağı Merkezi gönderme API 'sinde belirli bir sırada birden çok yöntemi çağırabilirsiniz. Her senaryo ve her yöntemin sözdizimi hakkında daha fazla bilgi için bkz. alma API 'SI Swagger.
+Azure AD erişim jetonuna sahip olduktan sonra, İş Ortağı Merkezi gönderme API'sında yöntemleri arayabilirsiniz. Gönderiler oluşturmak veya güncellemek için, genellikle İş Ortağı Merkezi gönderim API'sinde belirli bir sırada birden çok yöntemi çağırırsınız. Her senaryo ve her yöntemin sözdizimi hakkında bilgi için Yutma API swagger bakın.
 
 https://apidocs.microsoft.com/services/partneringestion/

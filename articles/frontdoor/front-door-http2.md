@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapı hizmeti-HTTP2 desteği | Microsoft Docs
-description: Bu makale Azure ön kapı hizmeti 'nde HTTP/2 desteği hakkında bilgi edinmenize yardımcı olur
+title: Azure Ön Kapı - HTTP2 desteği | Microsoft Dokümanlar
+description: Bu makale, Azure Ön Kapı'da HTTP/2 desteği hakkında bilgi edinmenize yardımcı olur
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,41 +11,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c3c1721454c0b3c96071c685a764f34d4fa540b9
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 415a89cbccd6b43d64ba1a553d44ac003df5806a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775262"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471634"
 ---
-# <a name="http2-support-in-azure-front-door-service"></a>Azure ön kapı hizmetinde HTTP/2 desteği
+# <a name="http2-support-in-azure-front-door"></a>Azure Ön Kapı'da HTTP/2 desteği
 
-Şu anda, HTTP/2 desteği tüm ön kapı yapılandırmalarında etkindir. Müşterilerden başka bir eylem yapılması gerekmez.
+Şu anda, HTTP/2 desteği tüm Ön Kapı yapılandırmaları için etkindir. Müşterilerden başka bir işlem gerekmez.
 
-Http/2, HTTP/1.1 için önemli bir düzeltme. Daha hızlı Web performansı, daha az yanıt süresi ve geliştirilmiş Kullanıcı deneyimi sağlar, ancak tanıdık HTTP yöntemlerini, durum kodlarını ve semantiğini koruyun. Http/2, HTTP ve HTTPS ile çalışmak üzere tasarlanmış olsa da, çoğu istemci Web tarayıcısı yalnızca Aktarım Katmanı Güvenliği (TLS) üzerinden HTTP/2 ' yi destekler.
+HTTP/2 HTTP/1.1 için büyük bir revizyondur. Tanıdık HTTP yöntemlerini, durum kodlarını ve anlambilimini korurken daha hızlı web performansı, daha az yanıt süresi ve gelişmiş kullanıcı deneyimi sağlar. HTTP/2 HTTP ve HTTPS ile çalışmak üzere tasarlanmış olsa da, birçok istemci web tarayıcısı yalnızca Taşıma Katmanı Güvenliği (TLS) üzerinden HTTP/2'yi destekler.
 
 ### <a name="http2-benefits"></a>HTTP/2 avantajları
 
-HTTP/2 avantajları şunları içerir:
+HTTP/2'nin yararları şunlardır:
 
-*   **Çoğullama ve eşzamanlılık**
+*   **Çoklama ve eşzamanlılık**
 
-    HTTP 1,1 kullanarak birden çok kaynak isteğinin birden çok TCP bağlantısı olması ve her bağlantının onunla ilişkili performans yükü vardır. HTTP/2, tek bir TCP bağlantısında birden fazla kaynağın istenme izin verir.
+    HTTP 1.1'i kullanarak, birden çok kaynak isteğinde bulunmak için birden çok TCP bağlantısı gerektirir ve her bağlantıyla ilişkili performans ek yükü vardır. HTTP/2, tek bir TCP bağlantısında birden çok kaynağın istenmesine izin verir.
 
-*   **Üstbilgi sıkıştırması**
+*   **Üstbilgi sıkıştırma**
 
-    Sunulan kaynakların HTTP üst bilgilerini sıkıştırarak, iletişimdeki zaman önemli ölçüde azaltılır.
+    Hizmet verilen kaynaklar için HTTP üstbilgilerini sıkıştırarak, kabloüzerindeki süre önemli ölçüde azalır.
 
 *   **Akış bağımlılıkları**
 
-    Akış bağımlılıkları, istemcinin önceliğe sahip olduğu sunucuya işaret ediyor olmasını sağlar.
+    Akış bağımlılıkları istemcinin sunucuya hangi kaynakların önceliği olduğunu göstermesine olanak sağlar.
 
 
 ## <a name="http2-browser-support"></a>HTTP/2 tarayıcı desteği
 
-Tüm ana tarayıcılar geçerli sürümlerinde HTTP/2 desteği uyguladık. Desteklenmeyen tarayıcılar, otomatik olarak HTTP/1.1 'e geri dönüş.
+Tüm büyük tarayıcılar mevcut sürümlerinde HTTP/2 desteği uyguladık. Desteklenmeyen tarayıcılar otomatik olarak HTTP/1.1'e geri döner.
 
-|Browser|En düşük sürüm|
+|Tarayıcı|En Düşük Sürüm|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|
@@ -57,7 +57,7 @@ Tüm ana tarayıcılar geçerli sürümlerinde HTTP/2 desteği uyguladık. Deste
 
 HTTP/2 hakkında daha fazla bilgi edinmek için aşağıdaki kaynakları ziyaret edin:
 
-- [HTTP/2 belirtim giriş sayfası](https://http2.github.io/)
+- [HTTP/2 belirtim ana sayfası](https://http2.github.io/)
 - [Resmi HTTP/2 SSS](https://http2.github.io/faq/)
 - [Front Door oluşturmayı](quickstart-create-front-door.md) öğrenin.
 - [Front Door’un nasıl çalıştığını](front-door-routing-architecture.md) öğrenin.

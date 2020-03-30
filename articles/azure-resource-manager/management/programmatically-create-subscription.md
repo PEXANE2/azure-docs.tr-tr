@@ -1,43 +1,46 @@
 ---
-title: Program aracılığıyla Azure abonelikleri oluşturma
+title: Azure aboneliklerini programlı bir şekilde oluşturun
 description: Programlı olarak ek Azure abonelikleri oluşturmayı öğrenin.
 author: amberbhargava
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 03/17/2020
+ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 47d4454c47967d07898492176438e547b1e561b6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 33f1d154f438b917b79cd299e81c9078e2f2e81d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198692"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460407"
 ---
-# <a name="programmatically-create-azure-subscriptions-preview"></a>Programlı olarak Azure abonelikleri oluşturma (Önizleme)
+# <a name="programmatically-create-azure-subscriptions-preview"></a>Azure aboneliklerini programlı bir şekilde oluşturun (önizleme)
 
-[Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)olan Azure müşterileri, [Microsoft MÜŞTERI Sözleşmesi (MCA)](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) veya [MICROSOFT iş ortağı Sözleşmesi (MPa)](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement) faturalandırma hesabı, abonelikleri programlı bir şekilde oluşturabilir. Bu makalede, Azure Resource Manager kullanarak program aracılığıyla abonelik oluşturmayı öğreneceksiniz.
+Kurumsal Sözleşme [(EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Microsoft Müşteri Sözleşmesi (MCA)](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) veya [Microsoft İş Ortağı Sözleşmesi (MPA)](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement) fatura hesabı olan Azure müşterileri programlı abonelikler oluşturabilir. Bu makalede, Azure Kaynak Yöneticisi'ni kullanarak programlı abonelikoluşturmayı öğrenirsiniz.
 
-Bir Azure aboneliğini programlı bir şekilde oluşturduğunuzda, bu abonelik Microsoft 'tan veya yetkili bir satıcıdan Azure hizmetleri elde ettiğiniz sözleşmeye tabidir. Daha fazla bilgi için bkz. [Microsoft Azure yasal bilgiler](https://azure.microsoft.com/support/legal/).
+Programlı bir Azure aboneliği oluşturduğunuzda, bu abonelik Microsoft'tan veya yetkili bir satıcıdan Azure hizmetleri aldığınız sözleşmeye tabidir. Daha fazla bilgi için [Microsoft Azure Yasal Bilgileri'ne](https://azure.microsoft.com/support/legal/)bakın.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 
-## <a name="create-subscriptions-for-an-ea-billing-account"></a>EA faturalandırma hesabı için abonelikler oluşturma
+## <a name="create-subscriptions-for-an-ea-billing-account"></a>EA fatura hesabı için abonelik oluşturma
 
-### <a name="prerequisites"></a>Önkoşullar
+EA abonelikleri oluşturmak için aşağıdaki bölümlerdeki bilgileri kullanın.
 
-Abonelik oluşturmak için bir kayıt hesabında sahip rolüne sahip olmanız gerekir. Rolü almanın iki yolu vardır:
+### <a name="prerequisites"></a>Ön koşullar
 
-* Kaydınıza ait kuruluş yöneticisi, kayıt hesabının sahibini sağlayan [bir hesap sahibi](https://ea.azure.com/helpdocs/addNewAccount) (gerekli oturum açma) yapabilir.
+Abonelik oluşturmak için Kayıt Hesabında Sahip rolünüz olmalıdır. Rolü almanın iki yolu vardır:
 
-* Kayıt hesabının mevcut sahibi [size erişim verebilir](grant-access-to-create-subscription.md). Benzer şekilde, bir EA aboneliği oluşturmak için hizmet sorumlusu kullanmak istiyorsanız, [Bu hizmet sorumlusuna abonelik oluşturma olanağı vermeniz](grant-access-to-create-subscription.md)gerekir.
+* Kaydınızın Kurumsal Yöneticisi [sizi Bir Hesap Sahibi (gerekli](https://ea.azure.com/helpdocs/addNewAccount) oturum açma) yapabilir ve bu da sizi Kayıt Hesabı'nın sahibi yapar.
 
-### <a name="find-accounts-you-have-access-to"></a>Erişiminiz olan hesapları bulun
+* Kayıt Hesabı'nın varolan bir Sahibi [size erişim izni](grant-access-to-create-subscription.md)verebilir. Benzer şekilde, bir EA aboneliği oluşturmak için bir hizmet sorumlusu kullanmak istiyorsanız, [bu hizmet ilkesine abonelik oluşturma olanağı vermelisiniz.](grant-access-to-create-subscription.md)
 
-Hesap sahibiyle ilişkili bir kayıt hesabına eklendikten sonra Azure, abonelik ücretlerinin nerede faturalanabileceğini öğrenmek için hesap-kayıt ilişkisini kullanır. Hesap altında oluşturulan tüm abonelikler, hesabın bulunduğu EA kaydına faturalandırılır. Abonelik oluşturmak için, aboneliğe sahip kayıt hesabı ve Kullanıcı sorumluları hakkında değerleri geçirmeniz gerekir.
+### <a name="find-accounts-you-have-access-to"></a>Erişebildiğiniz hesapları bulun
 
-Aşağıdaki komutları çalıştırmak için, varsayılan olarak aboneliklerin oluşturulduğu dizin olan hesap sahibinin *giriş dizininde*oturum açmalısınız.
+Bir Hesap Sahibiyle ilişkili bir Kayıt Hesabına eklendikten sonra Azure, abonelik ücretlerini nerede faturalandıracağını belirlemek için hesap-kayıt ilişkisini kullanır. Hesap altında oluşturulan tüm abonelikler, hesabın içinde olduğu EA kaydına faturalandırılır. Abonelik oluşturmak için, aboneye sahip olmak için kayıt hesabı ve kullanıcı ilkeleri yle ilgili değerleri geçmeniz gerekir.
 
-### <a name="resttabrest"></a>[REST](#tab/rest)
+Aşağıdaki komutları çalıştırmak için, aboneliklerin varsayılan olarak oluşturulduğu dizini olan Hesap Sahibinin *ev dizininde*oturum açmanız gerekir.
+
+### <a name="rest"></a>[Geri kalanı](#tab/rest)
 
 Erişiminiz olan tüm kayıt hesaplarını listeleme isteği:
 
@@ -45,7 +48,7 @@ Erişiminiz olan tüm kayıt hesaplarını listeleme isteği:
 GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
 ```
 
-API yanıtı, erişiminiz olan tüm kayıt hesaplarını listeler:
+API yanıtı, erişebildiğiniz tüm kayıt hesaplarını listeler:
 
 ```json
 {
@@ -70,36 +73,36 @@ API yanıtı, erişiminiz olan tüm kayıt hesaplarını listeler:
 }
 ```
 
-Aboneliklerinin faturalandırılacağını istediğiniz hesabı belirlemek için `principalName` özelliğini kullanın. Bu hesabın `name` kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelikler oluşturmak isterseniz, ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```kopyalamalısınız. Bu tanımlayıcı, kayıt hesabının nesne KIMLIĞIDIR. Sonraki adımda `enrollmentAccountObjectId`olarak kullanabilmeniz için bu değeri bir yere yapıştırın.
+Aboneliklerin `principalName` faturalandırılmasını istediğiniz hesabı tanımlamak için özelliği kullanın. O `name` hesabın kopyasını kopyala. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelik oluşturmak istiyorsanız, kopyalamak ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```istiyorum. Bu tanımlayıcı, kayıt hesabının nesne kimliğidir. Bir sonraki adımda kullanabilmeniz için bu değeri `enrollmentAccountObjectId`bir yere yapıştırın.
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-[Azure Cloud Shell](https://shell.azure.com/) açın ve PowerShell ' i seçin.
+[Azure Bulut Shell'i](https://shell.azure.com/) açın ve PowerShell'i seçin.
 
-Erişiminiz olan tüm kayıt hesaplarını listelemek için [Get-Azkayıtları Mentaccount](/powershell/module/az.billing/get-azenrollmentaccount) cmdlet 'ini kullanın.
+Erişebildiğiniz tüm kayıt hesaplarını listelemek için [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) cmdlet'ini kullanın.
 
 ```azurepowershell-interactive
 Get-AzEnrollmentAccount
 ```
 
-Azure, erişim sahibi olduğunuz kayıt hesaplarının bir listesi ile yanıt verir:
+Azure, erişebildiğiniz kayıt hesaplarının bir listesiyle yanıt verir:
 
 ```azurepowershell
 ObjectId                               | PrincipalName
 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | SignUpEngineering@contoso.com
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
-Aboneliklerinin faturalandırılacağını istediğiniz hesabı belirlemek için `principalName` özelliğini kullanın. Bu hesabın `ObjectId` kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelikler oluşturmak isterseniz, ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```kopyalamalısınız. `enrollmentAccountObjectId`bir sonraki adımda kullanabilmeniz için bu nesne KIMLIĞINI bir yere yapıştırın.
+Aboneliklerin `principalName` faturalandırılmasını istediğiniz hesabı tanımlamak için özelliği kullanın. O `ObjectId` hesabın kopyasını kopyala. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelik oluşturmak istiyorsanız, kopyalamak ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```istiyorum. Bir sonraki adımda kullanabilmeniz için bu nesne kimliğini `enrollmentAccountObjectId`bir yere yapıştırın.
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Erişiminiz olan tüm kayıt hesaplarını listelemek için [az faturalandırma kaydı-hesap listesi](https://aka.ms/EASubCreationPublicPreviewCLI) komutunu kullanın.
+Erişiminiz olan tüm kayıt hesaplarını listelemek için [az fatura kayıt hesabı listesini](https://aka.ms/EASubCreationPublicPreviewCLI) kullanın.
 
 ```azurecli-interactive
 az billing enrollment-account list
 ```
 
-Azure, erişim sahibi olduğunuz kayıt hesaplarının bir listesi ile yanıt verir:
+Azure, erişebildiğiniz kayıt hesaplarının bir listesiyle yanıt verir:
 
 ```json
 [
@@ -118,17 +121,17 @@ Azure, erişim sahibi olduğunuz kayıt hesaplarının bir listesi ile yanıt ve
 ]
 ```
 
-Aboneliklerinin faturalandırılacağını istediğiniz hesabı belirlemek için `principalName` özelliğini kullanın. Bu hesabın `name` kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelikler oluşturmak isterseniz, ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```kopyalamalısınız. Bu tanımlayıcı, kayıt hesabının nesne KIMLIĞIDIR. Sonraki adımda `enrollmentAccountObjectId`olarak kullanabilmeniz için bu değeri bir yere yapıştırın.
+Aboneliklerin `principalName` faturalandırılmasını istediğiniz hesabı tanımlamak için özelliği kullanın. O `name` hesabın kopyasını kopyala. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelik oluşturmak istiyorsanız, kopyalamak ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```istiyorum. Bu tanımlayıcı, kayıt hesabının nesne kimliğidir. Bir sonraki adımda kullanabilmeniz için bu değeri `enrollmentAccountObjectId`bir yere yapıştırın.
 
 ---
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Belirli bir kayıt hesabı altında abonelik oluşturma
 
-Aşağıdaki örnek, önceki adımda seçilen kayıt hesabında *dev takım aboneliği* adlı bir abonelik oluşturur. Abonelik teklifi *MS-AZR-0017P* (düzenli Microsoft kurumsal anlaşma). Ayrıca, isteğe bağlı olarak abonelik için RBAC sahipleri olarak iki kullanıcı da ekler.
+Aşağıdaki örnek, önceki adımda seçilen kayıt hesabında *Dev Team Aboneliği* adlı bir abonelik oluşturur. Abonelik teklifi *MS-AZR-0017P* 'dir (normal Microsoft Kurumsal Sözleşmesi). Ayrıca isteğe bağlı olarak abonelik için RBAC Sahipleri olarak iki kullanıcı ekler.
 
-### <a name="resttabrest"></a>[REST](#tab/rest)
+### <a name="rest"></a>[Geri kalanı](#tab/rest)
 
-`<enrollmentAccountObjectId>` değerini, ilk adımda (`name`) kopyaladığınız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ile değiştirerek aşağıdaki istekte bulunun. Sahipleri belirtmek isterseniz, [Kullanıcı nesne kimliklerini nasıl alabileceğinizi](grant-access-to-create-subscription.md#userObjectId)öğrenin.
+`<enrollmentAccountObjectId>` değerini, ilk adımda (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopyaladığınız `name` ile değiştirerek aşağıdaki istekte bulunun. Sahipleri belirtmek istiyorsanız, [kullanıcı nesnesi İngilizcesi iAh'lerini nasıl alacağınızı](grant-access-to-create-subscription.md#userObjectId)öğrenin.
 
 ```json
 POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
@@ -147,82 +150,82 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| Öğe adı  | Gerekli | Tür   | Açıklama                                                                                               |
+| Öğe Adı  | Gerekli | Tür   | Açıklama                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmemişse, "Microsoft Azure Kurumsal" gibi teklifin adına ayarlanır.                                 |
-| `offerType`   | Evet      | Dize | Abonelik teklifi. EA 'nın iki seçeneği [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve [MS-azr-0148p](https://azure.microsoft.com/offers/ms-azr-0148p/) (GELIŞTIRME/test, [EA Portalı kullanılarak açık](https://ea.azure.com/helpdocs/DevOrTestOffer)olması gerekir).                |
-| `owners`      | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının nesne KIMLIĞI.  |
+| `displayName` | Hayır      | Dize | Aboneliğin görüntü adı. Belirtilmemişse, "Microsoft Azure Enterprise" gibi teklifin adı ayarlanır.                                 |
+| `offerType`   | Evet      | Dize | Abonelik teklifi. EA için iki seçenek [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/ test, [EA portalı kullanılarak açık](https://ea.azure.com/helpdocs/DevOrTestOffer)olması gerekir).                |
+| `owners`      | Hayır       | Dize | Oluşturulduğunda aboneliğe RBAC Sahibi olarak eklemek istediğiniz herhangi bir kullanıcının Nesne Kimliği.  |
 
-Yanıtta, izleme için bir `subscriptionOperation` nesnesini geri alırsınız. Abonelik oluşturma işlemi tamamlandığında, `subscriptionOperation` nesnesi, abonelik KIMLIĞI olan bir `subscriptionLink` nesnesi döndürür.
+Yanıtolarak, izleme için `subscriptionOperation` bir nesne geri alırsınız. Abonelik oluşturma tamamlandığında, `subscriptionOperation` nesne abonelik kimliği `subscriptionLink` olan bir nesne döndürecek.
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-İlk olarak, `Install-Module Az.Subscription -AllowPrerelease`çalıştırarak bu önizleme modülünü yüklemeniz gerekir. `-AllowPrerelease` çalıştığından emin olmak için, [Get PowerShellGet modülü](/powershell/scripting/gallery/installing-psget)' nden PowerShellGet ' in yeni bir sürümünü yüklemelisiniz.
+İlk olarak, çalıştırarak `Install-Module Az.Subscription -AllowPrerelease`bu önizleme modüllerini yükleyin. Çalıştığından `-AllowPrerelease` emin olmak için PowerShellGet'ın yeni bir sürümünü [Get PowerShellGet Modülü'nden](/powershell/scripting/gallery/installing-psget)yükleyin.
 
-Aşağıdaki [New-AzSubscription](/powershell/module/az.subscription) komutunu çalıştırın ve `<enrollmentAccountObjectId>` ilk adımda toplanan `ObjectId` ile değiştirin (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Sahipleri belirtmek isterseniz, [Kullanıcı nesne kimliklerini nasıl alabileceğinizi](grant-access-to-create-subscription.md#userObjectId)öğrenin.
+Aşağıdaki [Yeni Abonelik](/powershell/module/az.subscription) komutunu çalıştırın, `ObjectId` ilk adımda toplananın```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```yerine `<enrollmentAccountObjectId>` (). Sahipleri belirtmek istiyorsanız, [kullanıcı nesnesi İngilizcesi iAh'lerini nasıl alacağınızı](grant-access-to-create-subscription.md#userObjectId)öğrenin.
 
 ```azurepowershell-interactive
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| Öğe adı  | Gerekli | Tür   | Açıklama                                                                                               |
+| Öğe Adı  | Gerekli | Tür   | Açıklama                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `Name` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmemişse, "Microsoft Azure Kurumsal" gibi teklifin adına ayarlanır.                                 |
-| `OfferType`   | Evet      | Dize | Abonelik teklifi. EA 'nın iki seçeneği [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve [MS-azr-0148p](https://azure.microsoft.com/offers/ms-azr-0148p/) (GELIŞTIRME/test, [EA Portalı kullanılarak açık](https://ea.azure.com/helpdocs/DevOrTestOffer)olması gerekir).                |
-| `EnrollmentAccountObjectId`      | Evet       | Dize | Aboneliğin oluşturulduğu ve faturalandırılan kayıt hesabının nesne KIMLIĞI. Bu değer, `Get-AzEnrollmentAccount`aldığınız bir GUID 'dir. |
-| `OwnerObjectId`      | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının nesne KIMLIĞI.  |
-| `OwnerSignInName`    | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının e-posta adresi. `OwnerObjectId`yerine bu parametreyi kullanabilirsiniz.|
-| `OwnerApplicationId` | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir hizmet sorumlusunun uygulama KIMLIĞI. `OwnerObjectId`yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanılırken, hizmet sorumlusu [dizine okuma erişimine](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)sahip olmalıdır.|
+| `Name` | Hayır      | Dize | Aboneliğin görüntü adı. Belirtilmemişse, "Microsoft Azure Enterprise" gibi teklifin adı ayarlanır.                                 |
+| `OfferType`   | Evet      | Dize | Abonelik teklifi. EA için iki seçenek [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/ test, [EA portalı kullanılarak açık](https://ea.azure.com/helpdocs/DevOrTestOffer)olması gerekir).                |
+| `EnrollmentAccountObjectId`      | Evet       | Dize | Aboneliğin altında oluşturulduğu ve faturalandırıldığu kayıt hesabının Nesne Kimliği. Bu değer, aldığınız `Get-AzEnrollmentAccount`bir GUID'dir. |
+| `OwnerObjectId`      | Hayır       | Dize | Oluşturulduğunda aboneliğe RBAC Sahibi olarak eklemek istediğiniz herhangi bir kullanıcının Nesne Kimliği.  |
+| `OwnerSignInName`    | Hayır       | Dize | Oluşturulduğunda aboneye RBAC Sahibi olarak eklemek istediğiniz herhangi bir kullanıcının e-posta adresi. Bu parametreyi ' `OwnerObjectId`yerine kullanabilirsiniz.|
+| `OwnerApplicationId` | Hayır       | Dize | Oluşturulduğunda aboneliğe RBAC Sahibi olarak eklemek istediğiniz herhangi bir hizmet sorumlusunun uygulama kimliği. Bu parametreyi ' `OwnerObjectId`yerine kullanabilirsiniz. Bu parametreyi kullanırken, hizmet [yöneticisinin dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)olması gerekir.|
 
-Tüm parametrelerin tam listesini görmek için, bkz. [New-AzSubscription](/powershell/module/az.subscription).
+Tüm parametrelerin tam listesini görmek için [Yeni Abonelik'e](/powershell/module/az.subscription)bakın.
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-İlk olarak, `az extension add --name subscription`çalıştırarak bu önizleme uzantısını yüklemeniz gerekir.
+İlk olarak, çalıştırarak `az extension add --name subscription`bu önizleme uzantısı yükleyin.
 
-Aşağıdaki [az Account Create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) komutunu çalıştırın ve `<enrollmentAccountObjectId>` ilk adımda kopyaladığınız `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) ile değiştirin. Sahipleri belirtmek isterseniz, [Kullanıcı nesne kimliklerini nasıl alabileceğinizi](grant-access-to-create-subscription.md#userObjectId)öğrenin.
+Az [hesabı oluşturma](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) komutunu çalıştırın, `name` ilk adımda kopyalanan```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```ile değiştirin `<enrollmentAccountObjectId>` ( ). Sahipleri belirtmek istiyorsanız, [kullanıcı nesnesi İngilizcesi iAh'lerini nasıl alacağınızı](grant-access-to-create-subscription.md#userObjectId)öğrenin.
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| Öğe adı  | Gerekli | Tür   | Açıklama                                                                                               |
+| Öğe Adı  | Gerekli | Tür   | Açıklama                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `display-name` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmemişse, "Microsoft Azure Kurumsal" gibi teklifin adına ayarlanır.                                 |
-| `offer-type`   | Evet      | Dize | Abonelik teklifi. EA 'nın iki seçeneği [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve [MS-azr-0148p](https://azure.microsoft.com/offers/ms-azr-0148p/) (GELIŞTIRME/test, [EA Portalı kullanılarak açık](https://ea.azure.com/helpdocs/DevOrTestOffer)olması gerekir).                |
-| `enrollment-account-object-id`      | Evet       | Dize | Aboneliğin oluşturulduğu ve faturalandırılan kayıt hesabının nesne KIMLIĞI. Bu değer, `az billing enrollment-account list`aldığınız bir GUID 'dir. |
-| `owner-object-id`      | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının nesne KIMLIĞI.  |
-| `owner-upn`    | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının e-posta adresi. `owner-object-id`yerine bu parametreyi kullanabilirsiniz.|
-| `owner-spn` | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir hizmet sorumlusunun uygulama KIMLIĞI. `owner-object-id`yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanılırken, hizmet sorumlusu [dizine okuma erişimine](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)sahip olmalıdır.|
+| `display-name` | Hayır      | Dize | Aboneliğin görüntü adı. Belirtilmemişse, "Microsoft Azure Enterprise" gibi teklifin adı ayarlanır.                                 |
+| `offer-type`   | Evet      | Dize | Abonelik teklifi. EA için iki seçenek [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/ test, [EA portalı kullanılarak açık](https://ea.azure.com/helpdocs/DevOrTestOffer)olması gerekir).                |
+| `enrollment-account-object-id`      | Evet       | Dize | Aboneliğin altında oluşturulduğu ve faturalandırıldığu kayıt hesabının Nesne Kimliği. Bu değer, aldığınız `az billing enrollment-account list`bir GUID'dir. |
+| `owner-object-id`      | Hayır       | Dize | Oluşturulduğunda aboneliğe RBAC Sahibi olarak eklemek istediğiniz herhangi bir kullanıcının Nesne Kimliği.  |
+| `owner-upn`    | Hayır       | Dize | Oluşturulduğunda aboneye RBAC Sahibi olarak eklemek istediğiniz herhangi bir kullanıcının e-posta adresi. Bu parametreyi ' `owner-object-id`yerine kullanabilirsiniz.|
+| `owner-spn` | Hayır       | Dize | Oluşturulduğunda aboneliğe RBAC Sahibi olarak eklemek istediğiniz herhangi bir hizmet sorumlusunun uygulama kimliği. Bu parametreyi ' `owner-object-id`yerine kullanabilirsiniz. Bu parametreyi kullanırken, hizmet [yöneticisinin dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)olması gerekir.|
 
-Tüm parametrelerin tam listesini görmek için, bkz. [az Account Create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create).
+Tüm parametrelerin tam listesini görmek için [az hesap oluşturma](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)bölümüne bakın.
 
 ---
 
-### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Kurumsal abonelik oluşturma API 'SI sınırlamaları
+### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Kurumsal abonelik oluşturma API sınırlamaları
 
-- Yalnızca Azure Enterprise abonelikleri bu API kullanılarak oluşturulabilir.
-- Kayıt hesabı başına 200 aboneliklerin sınırı vardır. Bundan sonra, hesap için daha fazla abonelik yalnızca Azure portal oluşturulabilir. API aracılığıyla daha fazla abonelik oluşturmak istiyorsanız, başka bir kayıt hesabı oluşturun.
-- Hesap sahipleri olmayan, ancak RBAC aracılığıyla bir kayıt hesabına eklenen kullanıcılar Azure portal abonelik oluşturamaz.
-- İçinde oluşturulacak abonelik için kiracıyı seçemezsiniz. Abonelik, her zaman hesap sahibinin giriş kiracısında oluşturulur. Aboneliği farklı bir kiracıya taşımak için bkz. [abonelik kiracısını değiştirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+- Bu API kullanılarak yalnızca Azure Kurumsal abonelikleri oluşturulabilir.
+- Kayıt hesabı başına 500 abonelik sınırı vardır. Bundan sonra, hesap için daha fazla abonelik yalnızca Azure portalında oluşturulabilir. API üzerinden daha fazla abonelik oluşturmak istiyorsanız, başka bir kayıt hesabı oluşturun.
+- Hesap Sahibi olmayan ancak RBAC aracılığıyla bir kayıt hesabına eklenen kullanıcılar Azure portalında abonelik oluşturamaz.
+- Oluşturulacak abonelik için kiracıyı seçemezsiniz. Abonelik her zaman Hesap Sahibinin ev kiracı oluşturulur. Aboneliği farklı bir kiracıya taşımak [için, abonelik kiracısını değiştir'e](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)bakın.
 
 
-## <a name="create-subscriptions-for-an-mca-account"></a>MCA hesabı için abonelikler oluşturma
+## <a name="create-subscriptions-for-an-mca-account"></a>MCA hesabı için abonelik oluşturma
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Abonelik oluşturmak için bir fatura bölümünde veya bir faturalandırma hesabındaki sahip veya katkıda bulunan rolünde sahip, katkıda bulunan veya Azure abonelik Oluşturucu rolüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [Abonelik faturalama rolleri ve görevleri](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Abonelik oluşturmak için fatura bölümünde veya fatura profilinde veya fatura hesabında sahip, katılımcı veya Azure abonelik oluşturucu rolü olmalıdır. Daha fazla bilgi için bkz. [Abonelik faturalama rolleri ve görevleri](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
-Aşağıda gösterilen örnek REST API 'Lerini kullanır. Şu anda PowerShell ve Azure CLI desteklenmemektedir.
+Aşağıda gösterilen örnekte REST API'leri kullanılmaktadır. Şu anda PowerShell ve Azure CLI desteklenmemektedir.
 
-### <a name="find-billing-accounts-that-you-have-access-to"></a>Erişiminiz olan faturalandırma hesaplarını bulun
+### <a name="find-billing-accounts-that-you-have-access-to"></a>Erişebildiğiniz fatura hesaplarını bulma
 
-Tüm faturalandırma hesaplarını listelemek için aşağıdaki isteği yapın.
+Tüm fatura hesaplarını listelemek için aşağıdaki isteği yapın.
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
-API yanıtı, erişiminiz olan faturalandırma hesaplarını listeler.
+API yanıtı, erişebildiğiniz fatura hesaplarını listeler.
 
 ```json
 {
@@ -259,18 +262,18 @@ API yanıtı, erişiminiz olan faturalandırma hesaplarını listeler.
 }
 
 ```
-Abonelik oluşturmak istediğiniz faturalandırma hesabını belirlemek için `displayName` özelliğini kullanın. Hesabın agreeementType, *Microsoftcustomeragreement*olduğundan emin olun. Hesabın `name` kopyalayın.  Örneğin, `Contoso` faturalandırma hesabı için bir abonelik oluşturmak istiyorsanız `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`kopyalamalısınız. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
+Abonelik `displayName` oluşturmak istediğiniz faturahesabını tanımlamak için özelliği kullanın. Emin olun, hesabın agreeementType *MicrosoftCustomerAgreement*olduğunu. Hesabın `name` kopyalanması.  Örneğin, `Contoso` fatura hesabı için bir abonelik oluşturmak istiyorsanız, kopyalamak `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`istiyorum. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
 
 ### <a name="find-invoice-sections-to-create-subscriptions"></a>Abonelik oluşturmak için fatura bölümlerini bulma
 
-Aboneliğinizin ücretleri, bir faturalandırma profili faturasının bir bölümünde görüntülenir. Azure abonelikleri oluşturma izniniz olan fatura bölümlerinin ve faturalama profillerinin listesini almak için aşağıdaki API 'yi kullanın.
+Aboneliğinizin ücretleri, fatura profilinin faturasının bir bölümünde görünür. Azure abonelikleri oluşturma iznine sahip fatura bölümleri nin ve fatura profillerinin listesini almak için aşağıdaki API'yi kullanın.
 
-`<billingAccountName>` değerini, ilk adımda (`name`) kopyaladığınız ```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx``` ile değiştirerek aşağıdaki istekte bulunun.
+`<billingAccountName>` değerini, ilk adımda (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```) kopyaladığınız `name` ile değiştirerek aşağıdaki istekte bulunun.
 
 ```json
 POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/listInvoiceSectionsWithCreateSubscriptionPermission?api-version=2019-10-01-preview
 ```
-API yanıtı, abonelik oluşturma erişimi olan tüm fatura bölümlerini ve bunların faturalandırma profillerini listeler:
+API yanıtı, abonelik oluşturmak için erişebildiğiniz tüm fatura bölümlerini ve bunların fatura profillerini listeler:
 
 ```json
 {
@@ -307,13 +310,13 @@ API yanıtı, abonelik oluşturma erişimi olan tüm fatura bölümlerini ve bun
 
 ```
 
-Abonelik oluşturmak istediğiniz fatura bölümünü belirlemek için `invoiceSectionDisplayName` özelliğini kullanın. `invoiceSectionId`, `billingProfileId` ve fatura bölümünün `skuId` birini kopyalayın. Örneğin, `Development` fatura bölümü için `Microsoft Azure plan` türünde bir abonelik oluşturmak istiyorsanız `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX`, `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-xxxx-xxx-xxx` ve `0001`kopyalar. Bir sonraki adımda kullanabilmeniz için bu değerleri bir yere yapıştırın.
+Abonelik `invoiceSectionDisplayName` oluşturmak istediğiniz fatura bölümünü tanımlamak için özelliği kullanın. Fatura `invoiceSectionId`bölümüne `billingProfileId` ve `skuId` fatura bölümünden birini kopyalayın. Örneğin, fatura bölümü `Microsoft Azure plan` için `Development` tür aboneliği oluşturmak istiyorsanız, `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX`, , `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-xxxx-xxx-xxx` ve `0001`. Bir sonraki adımda kullanabilmeniz için bu değerleri bir yere yapıştırın.
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>Fatura bölümü için abonelik oluşturma
 
-Aşağıdaki örnek, *geliştirme* faturası bölümü Için *Microsoft Azure plan* türünde *dev takım aboneliği* adlı bir abonelik oluşturur. Abonelik, *contoso finans* 'nin faturalama profiline faturalandırılır ve faturasının *geliştirme* bölümünde görüntülenir.
+Aşağıdaki örnek, *Geliştirme* faturası bölümü için *Microsoft Azure Planı* türünde Dev *Team aboneliği* adlı bir abonelik oluşturur. Abonelik, *Contoso finansının* faturalandırma profiline faturalandırılır ve faturasının *Geliştirme* bölümünde görünür.
 
-`<invoiceSectionId>` ikinci adımdan (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```) kopyalandığı `invoiceSectionId` değiştirerek aşağıdaki isteği yapın. `billingProfileId` ve API 'nin istek parametrelerine ikinci adımdan kopyalanmış `skuId` geçirmeniz gerekir. Sahipleri belirtmek isterseniz, [Kullanıcı nesne kimliklerini nasıl alabileceğinizi](grant-access-to-create-subscription.md#userObjectId)öğrenin.
+İkinci adımdan `<invoiceSectionId>` `invoiceSectionId` kopyalanan ile değiştirerek aşağıdaki isteği```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```yapın ( ). API istek `billingProfileId` parametrelerinde `skuId` ikinci adımdan geçmeniz ve kopyalamanız gerekir. Sahipleri belirtmek istiyorsanız, [kullanıcı nesnesi İngilizcesi iAh'lerini nasıl alacağınızı](grant-access-to-create-subscription.md#userObjectId)öğrenin.
 
 ```json
 POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview
@@ -337,33 +340,33 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| Öğe adı  | Gerekli | Tür   | Açıklama                                                                                               |
+| Öğe Adı  | Gerekli | Tür   | Açıklama                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | Evet      | Dize | Aboneliğin görünen adı.|
-| `billingProfileId`   | Evet      | Dize | Aboneliğin ücretleri için faturalandırılacak Faturalandırma profili KIMLIĞI.  |
-| `skuId` | Evet      | Dize | Azure planının türünü belirleyen SKU KIMLIĞI. |
-| `owners`      | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının veya hizmet sorumlusunun nesne KIMLIĞI.  |
-| `costCenter` | Hayır      | Dize | Abonelikle ilişkili maliyet merkezi. Kullanım CSV dosyasında görünür. |
-| `managementGroupId` | Hayır      | Dize | Aboneliğin ekleneceği yönetim grubunun KIMLIĞI. Yönetim gruplarının listesini almak için, bkz. [Yönetim grupları-LIST API](/rest/api/resources/managementgroups/list). API 'den bir yönetim grubunun KIMLIĞINI kullanın. |
+| `displayName` | Evet      | Dize | Aboneliğin görüntü adı.|
+| `billingProfileId`   | Evet      | Dize | Aboneliğin ücretleri için faturalandırılacak faturalandırma profilinin kimliği.  |
+| `skuId` | Evet      | Dize | Azure planının türünü belirleyen sku kimliği. |
+| `owners`      | Hayır       | Dize | Oluşturulduğunda aboneliğe RBAC Sahibi olarak eklemek istediğiniz herhangi bir kullanıcı veya hizmet sorumlusunun Nesne Kimliği.  |
+| `costCenter` | Hayır      | Dize | Abonelikle ilişkili maliyet merkezi. Bu kullanım csv dosyasında gösterir. |
+| `managementGroupId` | Hayır      | Dize | Aboneliğin eklendiği yönetim grubunun kimliği. Yönetim gruplarının listesini almak için [Yönetim Grupları - Liste API'sine](/rest/api/resources/managementgroups/list)bakın. API'deki bir yönetim grubunun kimliğini kullanın. |
 
-Yanıtta, izleme için bir `subscriptionCreationResult` nesnesini geri alırsınız. Abonelik oluşturma işlemi tamamlandığında, `subscriptionCreationResult` nesnesi, abonelik KIMLIĞI olan bir `subscriptionLink` nesnesi döndürür.
+Yanıtolarak, izleme için `subscriptionCreationResult` bir nesne geri alırsınız. Abonelik oluşturma tamamlandığında, `subscriptionCreationResult` nesne abonelik kimliği `subscriptionLink` olan bir nesne döndürecek.
 
-## <a name="create-subscriptions-for-an-mpa-billing-account"></a>MPA faturalandırma hesabı için abonelikler oluşturma
+## <a name="create-subscriptions-for-an-mpa-billing-account"></a>MPA fatura hesabı için abonelik oluşturma
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Faturalandırma hesabınız için abonelik oluşturmak üzere kuruluşunuzun bulut çözümü sağlayıcısı hesabında bir genel yönetici veya yönetici aracı rolüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [Iş Ortağı Merkezi-Kullanıcı rolleri ve Izinleri atama](https://docs.microsoft.com/partner-center/permissions-overview).
+Fatura hesabınız için abonelik oluşturmak için kuruluşunuzun bulut çözümü sağlayıcısı hesabında Global Admin veya Yönetici Temsilcisi rolünün olması gerekir. Daha fazla bilgi için Bkz. [İş Ortağı Merkezi - Kullanıcılara roller ve izinler atayın.](https://docs.microsoft.com/partner-center/permissions-overview)
 
-Aşağıda gösterilen örnek REST API 'Lerini kullanır. Şu anda PowerShell ve Azure CLI desteklenmemektedir.
+Aşağıda gösterilen örnekte REST API'leri kullanılmaktadır. Şu anda PowerShell ve Azure CLI desteklenmemektedir.
 
-### <a name="find-the-billing-accounts-that-you-have-access-to"></a>Erişiminiz olan faturalandırma hesaplarını bulun
+### <a name="find-the-billing-accounts-that-you-have-access-to"></a>Erişiminiz olan fatura hesaplarını bulma
 
-Erişiminiz olan tüm faturalandırma hesaplarını listelemek için aşağıdaki isteği yapın.
+Erişiminiz olan tüm fatura hesaplarını listelemek için aşağıdaki isteği yapın.
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
-API yanıtı faturalandırma hesaplarını listeler.
+API yanıtı fatura hesaplarını listeler.
 
 ```json
 {
@@ -400,16 +403,16 @@ API yanıtı faturalandırma hesaplarını listeler.
 }
 
 ```
-Abonelik oluşturmak istediğiniz faturalandırma hesabını belirlemek için `displayName` özelliğini kullanın. Hesabın agreeementType, *Microsoftpartneragreement*olduğundan emin olun. Hesap için `name` kopyalayın. Örneğin, `Contoso` faturalandırma hesabı için bir abonelik oluşturmak istiyorsanız `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`kopyalamalısınız. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
+Abonelik `displayName` oluşturmak istediğiniz faturahesabını tanımlamak için özelliği kullanın. Emin olun, hesabın agreeementType *MicrosoftPartnerAgreement*olduğunu. Hesap `name` için kopyalayın. Örneğin, `Contoso` fatura hesabı için bir abonelik oluşturmak istiyorsanız, kopyalamak `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`istiyorum. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
 
-### <a name="find-customers-that-have-azure-plans"></a>Azure planlarına sahip müşterileri bulun
+### <a name="find-customers-that-have-azure-plans"></a>Azure planları olan müşterileri bulma
 
-Azure abonelikleri oluşturabileceğiniz faturalandırma hesabındaki tüm müşterileri listelemek için, `<billingAccountName>` birinci adımdan (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```) kopyalandığı `name` değiştirerek aşağıdaki isteği yapın.
+Azure abonelikleri oluşturabileceğiniz `<billingAccountName>` fatura `name` hesabındaki tüm müşterileri```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```listelemek için ilk adımdan kopyalanan ( ) ile değiştirerek aşağıdaki isteği yapın.
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/customers?api-version=2019-10-01-preview
 ```
-API yanıtı, Azure planlarına sahip faturalandırma hesabındaki müşterileri listeler. Bu müşteriler için abonelikler oluşturabilirsiniz.
+API yanıtı, fatura hesabındaki müşterileri Azure planlarıyla listeler. Bu müşteriler için abonelikler oluşturabilirsiniz.
 
 ```json
 {
@@ -438,18 +441,18 @@ API yanıtı, Azure planlarına sahip faturalandırma hesabındaki müşterileri
 
 ```
 
-Abonelik oluşturmak istediğiniz müşteriyi belirlemek için `displayName` özelliğini kullanın. Müşterinin `id` kopyalayın. Örneğin, `Fabrikam toys`için bir abonelik oluşturmak istiyorsanız `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`kopyalamanız gerekir. Sonraki adımlarda bu değeri kullanmak için bir yere yapıştırın.
+Abonelikoluşturmak `displayName` istediğiniz müşteriyi tanımlamak için özelliği kullanın. Müşteri `id` için kopyalayın. Örneğin, bir abonelik oluşturmak `Fabrikam toys`istiyorsanız, kopyalamak `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`istiyorum. Sonraki adımlarda kullanmak için bu değeri bir yere yapıştırın.
 
-### <a name="optional-for-indirect-providers-get-the-resellers-for-a-customer"></a>Dolaylı sağlayıcılar için isteğe bağlı: bir müşterinin satıcılarını edinme
+### <a name="optional-for-indirect-providers-get-the-resellers-for-a-customer"></a>Dolaylı sağlayıcılar için isteğe bağlı: Bir müşteri için satıcıları alın
 
-CSP iki katmanlı modelde dolaylı bir Sağlayıcıysanız, müşteriler için abonelikler oluştururken bir satıcı belirtebilirsiniz.
+CSP iki katmanlı modelinde Dolaylı bir sağlayıcıysanız, müşteriler için abonelikler oluştururken bir satıcı belirtebilirsiniz.
 
-Bir müşterinin kullanabildiği tüm satıcıları listelemek için, `<customerId>` ikinci adımdan (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopyalandığı `id` değiştirerek aşağıdaki isteği yapın.
+Bir müşteri için kullanılabilen `id` tüm satıcıları listelemek```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```için ikinci adımdan kopyalanan ( ) ile değiştirerek `<customerId>` aşağıdaki isteği yapın.
 
 ```json
 GET https://management.azure.com<customerId>?$expand=resellers&api-version=2019-10-01-preview
 ```
-API yanıtı, müşterinin satıcılarını listeler:
+API yanıtı, müşteri için satıcıları listeler:
 
 ```json
 {
@@ -483,13 +486,13 @@ API yanıtı, müşterinin satıcılarını listeler:
 }]
 }
 ```
-Abonelikle ilişkilendirilecek Bayi tanımlamak için `description` özelliğini kullanın. Satıcı için `resellerId` kopyalayın. Örneğin, `Wingtip`ilişkilendirmek istiyorsanız `3xxxxx`kopyalamanız gerekir. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
+Abonelikle `description` ilişkilendirilecek satıcıyı tanımlamak için özelliği kullanın. Satıcı `resellerId` için kopyalayın. Örneğin, ilişkilendirmek `Wingtip`istiyorsanız, kopyalamak `3xxxxx`istiyorum. Bir sonraki adımda kullanabilmeniz için bu değeri bir yere yapıştırın.
 
 ### <a name="create-a-subscription-for-a-customer"></a>Müşteri için abonelik oluşturma
 
-Aşağıdaki örnek, *fabrikam Toys* Için *dev takım aboneliği* adlı bir abonelik oluşturur ve *Wingtip* satıcıyı abonelikle ilişkilendirir. T
+Aşağıdaki örnek, *Fabrikam oyuncakları* için *Dev Team aboneliği* ve *Wingtip* satıcısını aboneye ortak olarak oluşturur. T
 
-`<customerId>` ikinci adımdan (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopyalandığı `id` değiştirerek aşağıdaki isteği yapın. API 'nin istek parametrelerine ikinci adımdan kopyalanmış olan isteğe bağlı *ResellerID* 'yi geçirin.
+İkinci adımdan `<customerId>` `id` kopyalanan ile değiştirerek aşağıdaki isteği```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```yapın ( ). API istek parametrelerinde ikinci adımdan kopyalanan isteğe bağlı *satıcıId'i* geçirin.
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview
@@ -502,16 +505,16 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| Öğe adı  | Gerekli | Tür   | Açıklama                                                                                               |
+| Öğe Adı  | Gerekli | Tür   | Açıklama                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | Evet      | Dize | Aboneliğin görünen adı.|
-| `skuId` | Evet      | Dize | Azure planının SKU KIMLIĞI. Microsoft Azure plan türünde abonelikler için *0001* kullanın |
-| `resellerId`      | Hayır       | Dize | Abonelikle ilişkilendirilecek satıcının MPN KIMLIĞI.  |
+| `displayName` | Evet      | Dize | Aboneliğin görüntü adı.|
+| `skuId` | Evet      | Dize | Azure planının sku kimliği. Microsoft Azure Planı türü abonelikleri için *0001'i* kullanma |
+| `resellerId`      | Hayır       | Dize | Abonelikle ilişkilendirilecek satıcının MPN kimliği.  |
 
-Yanıtta, izleme için bir `subscriptionCreationResult` nesnesini geri alırsınız. Abonelik oluşturma işlemi tamamlandığında, `subscriptionCreationResult` nesnesi, abonelik KIMLIĞI olan bir `subscriptionLink` nesnesi döndürür.
+Yanıtolarak, izleme için `subscriptionCreationResult` bir nesne geri alırsınız. Abonelik oluşturma tamamlandığında, `subscriptionCreationResult` nesne abonelik kimliği `subscriptionLink` olan bir nesne döndürecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* .NET kullanarak Kurumsal Anlaşma (EA) aboneliği oluşturma hakkında bir örnek için bkz. [GitHub üzerinde örnek kod](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
-* Artık bir abonelik oluşturduğunuza göre, bu özelliği diğer kullanıcılara ve hizmet sorumlularına atayabilirsiniz. Daha fazla bilgi için bkz. [Azure Enterprise abonelikleri (Önizleme) oluşturmak için erişim verme](grant-access-to-create-subscription.md).
-* Yönetim gruplarını kullanarak çok sayıda aboneliği yönetme hakkında daha fazla bilgi edinmek için bkz. [Azure Yönetim gruplarıyla kaynaklarınızı düzenleme](../../governance/management-groups/overview.md)
+* .NET'i kullanarak Kurumsal Sözleşme (EA) aboneliği oluşturma örneği için [GitHub'daki örnek koda](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)bakın.
+* Artık bir abonelik oluşturduğunuza göre, bu yeteneği diğer kullanıcılara ve hizmet ilkelerine verebilirsiniz. Daha fazla bilgi için [Azure Kurumsal abonelikleri (önizleme) oluşturmak için Erişim Eki'ne](grant-access-to-create-subscription.md)bakın.
+* Yönetim gruplarını kullanarak çok sayıda aboneliği yönetme hakkında daha fazla bilgi edinmek için [bkz.](../../governance/management-groups/overview.md)

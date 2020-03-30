@@ -1,55 +1,55 @@
 ---
-title: Azure Kubernetes hizmeti (AKS) kümesi için kimlik bilgilerini sıfırlama
-description: Bir Azure Kubernetes hizmeti (AKS) kümesi için hizmet sorumlusu veya AAD uygulama kimlik bilgilerini güncelleştirme veya sıfırlama hakkında bilgi edinin
+title: Azure Kubernetes Hizmeti (AKS) kümesinin kimlik bilgilerini sıfırlama
+description: Azure Kubernetes Hizmeti (AKS) kümesi için hizmet sorumlusu veya AAD Uygulama kimlik bilgilerini nasıl güncelleştirip sıfırladığını öğrenin
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 5dab9a778653d2ec6e32ddb3833ddcf6a95cae13
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: b7d652be3733cb130a3973909de59489047efe0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096108"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475553"
 ---
-# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için kimlik bilgilerini güncelleştirme veya döndürme
+# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) kimlik bilgilerini güncelleştirme veya döndürme
 
-Varsayılan olarak, AKS kümeleri bir yıllık sona erme saati olan bir hizmet sorumlusu ile oluşturulur. Sona erme tarihinin yakınında, hizmet sorumlusunu ek bir süre için uzatmak üzere kimlik bilgilerini sıfırlayabilirsiniz. Ayrıca, kimlik bilgilerini tanımlanmış güvenlik ilkesinin bir parçası olarak güncelleştirmek veya döndürmek isteyebilirsiniz. Bu makalede bir AKS kümesi için bu kimlik bilgilerini güncelleştirme ayrıntıları anlatılmaktadır.
+Varsayılan olarak, AKS kümeleri bir yıllık son kullanma süresi olan bir hizmet ilkesiyle oluşturulur. Son kullanma tarihine yaklaştıkça, hizmet ilkesini ek bir süre uzatmak için kimlik bilgilerini sıfırlayabilirsiniz. Ayrıca, kimlik bilgilerini tanımlı bir güvenlik ilkesinin parçası olarak güncelleştirmek veya döndürmek isteyebilirsiniz. Bu makalede, bir AKS kümesi için bu kimlik bilgileri nasıl güncelleştirileştirilir.
 
-Ayrıca [AKS kümenizi Azure Active Directory ile tümleştirmiş][aad-integration]ve bunu kümeniz için bir kimlik doğrulama sağlayıcısı olarak kullanmanıza da olabilirsiniz. Bu durumda, kümeniz, AAD sunucu uygulaması ve AAD Istemci uygulaması için 2 daha fazla kimliğe sahip olursunuz. bu kimlik bilgilerini de sıfırlayabilirsiniz. 
+[AKS kümenizi Azure Etkin Dizini ile tümleştirmiş][aad-integration]ve kümeniz için kimlik doğrulama sağlayıcısı olarak kullanabilirsiniz. Bu durumda kümeniz, AAD Server Uygulaması ve AAD İstemci Uygulaması için oluşturulan 2 kimlik daha olacak sayılsa, bu kimlik bilgilerini de sıfırlayabilirsiniz. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Azure CLI sürümü 2.0.65 veya daha sonra yüklenmiş ve yapılandırılan gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
 
-## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>AKS kümeniz için yeni bir hizmet sorumlusu güncelleştirme veya oluşturma
+## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>AKS kümeniz için yeni bir Hizmet Sorumlusu güncelleştirme veya oluşturma
 
-Bir AKS kümesinin kimlik bilgilerini güncellemek istediğinizde şunları yapabilirsiniz:
+Bir AKS kümesinin kimlik bilgilerini güncelleştirmek istediğinizde şunları seçebilirsiniz:
 
-* küme tarafından kullanılan mevcut hizmet sorumlusunun kimlik bilgilerini güncelleştirin veya
-* bir hizmet sorumlusu oluşturun ve kümeyi bu yeni kimlik bilgilerini kullanacak şekilde güncelleştirin.
+* küme tarafından kullanılan varolan hizmet sorumlusunun kimlik bilgilerini güncelleştirmek veya
+* bir hizmet sorumlusu oluşturun ve bu yeni kimlik bilgilerini kullanmak için kümeyi güncelleştirin.
 
-### <a name="reset-existing-service-principal-credential"></a>Mevcut hizmet sorumlusu kimlik bilgisini Sıfırla
+### <a name="reset-existing-service-principal-credential"></a>Varolan Hizmet Temel Kimlik Belgesini Sıfırlama
 
-Mevcut hizmet sorumlusunun kimlik bilgilerini güncelleştirmek için [az aks Show][az-aks-show] komutunu kullanarak kümenizin HIZMET sorumlusu kimliğini alın. Aşağıdaki örnek, *Myresourcegroup* kaynak grubundaki *Myakscluster* adlı kümenin kimliğini alır. Hizmet sorumlusu KIMLIĞI, ek komutta kullanılmak üzere *SP_ID* adlı bir değişken olarak ayarlanır.
+Varolan hizmet sorumlusunun kimlik bilgilerini güncelleştirmek için [az aks göster][az-aks-show] komutunu kullanarak kümenizin hizmet ana kimliğini alın. Aşağıdaki örnek, *myResourceGroup* kaynak grubunda *myAKSCluster* adlı kümenin kimliğini alır. Hizmet temel kimliği, ek komutta kullanılmak üzere *SP_ID* adlı bir değişken olarak ayarlanır.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
 ```
 
-Hizmet sorumlusu KIMLIĞINI içeren bir değişken kümesi ile, [az ad SP kimlik bilgisi sıfırlaması][az-ad-sp-credential-reset]' nı kullanarak kimlik bilgilerini sıfırlayın. Aşağıdaki örnek, Azure platformunun hizmet sorumlusu için yeni bir güvenli gizlilik oluşturmasına imkan tanır. Bu yeni güvenli gizli dizi da bir değişken olarak depolanır.
+Hizmet ana kimliği içeren değişken kümesi yle, artık [az reklam sp kimlik bilgilerini sıfırla][az-ad-sp-credential-reset]'yı kullanarak kimlik bilgilerini sıfırla. Aşağıdaki örnek, Azure platformunun hizmet sorumlusu için yeni bir güvenli sır oluşturmasına olanak tanır. Bu yeni güvenli sır da bir değişken olarak saklanır.
 
 ```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-Şimdi [yeni hizmet sorumlusu kimlik bilgileriyle AKS kümesini güncelleştirmek](#update-aks-cluster-with-new-service-principal-credentials)için devam edin. Bu adım, hizmet sorumlusu değişikliklerinin, AKS kümesinde yansıtılması için gereklidir.
+Şimdi yeni [hizmet temel kimlik bilgileri ile AKS küme güncellemeye devam edin.](#update-aks-cluster-with-new-service-principal-credentials) Bu adım, Hizmet Sorumlusu değişikliklerinin AKS kümesine yansıması için gereklidir.
 
-### <a name="create-a-new-service-principal"></a>Yeni bir hizmet sorumlusu oluşturun
+### <a name="create-a-new-service-principal"></a>Yeni Hizmet Müdürü Oluşturma
 
-Önceki bölümde mevcut hizmet sorumlusu kimlik bilgilerini güncelleştirmeyi seçerseniz, bu adımı atlayın. [AKS kümesini yeni hizmet sorumlusu kimlik bilgileriyle güncelleştirmeye](#update-aks-cluster-with-new-service-principal-credentials)devam edin.
+Önceki bölümde varolan hizmet temel kimlik bilgilerini güncelleştirmeyi seçtiyseniz, bu adımı atlayın. [AKS kümesini yeni hizmet temel kimlik bilgileriyle güncelleştirmeye](#update-aks-cluster-with-new-service-principal-credentials)devam edin.
 
-Bir hizmet sorumlusu oluşturmak ve ardından bu yeni kimlik bilgilerini kullanmak üzere AKS kümesini güncelleştirmek için [az ad SP Create-for-RBAC][az-ad-sp-create] komutunu kullanın. Aşağıdaki örnekte, `--skip-assignment` parametresi, ek varsayılan atamaların atanmasını engellemektedir:
+Bir hizmet sorumlusu oluşturmak ve sonra aks kümesini bu yeni kimlik bilgilerini kullanmak üzere güncelleştirmek [için az reklam sp create-for-rbac][az-ad-sp-create] komutunu kullanın. Aşağıdaki örnekte, `--skip-assignment` parametresi, ek varsayılan atamaların atanmasını engellemektedir:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -66,18 +66,18 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-Şimdi, aşağıdaki örnekte gösterildiği gibi, [az ad SP Create-for-RBAC][az-ad-sp-create] komutunuzu kullanarak HIZMET sorumlusu kimliği ve istemci gizli anahtarı için değişkenleri tanımlayın. *SP_ID* *uygulama* *uygulamasıdır*ve *SP_SECRET* parolanız olur:
+Şimdi, aşağıdaki örnekte gösterildiği gibi, kendi [az reklam sp create-for-rbac][az-ad-sp-create] komutunuzdan çıktıkullanarak hizmet ana kimliği ve istemci sırrı için değişkenler tanımlayın. *SP_ID* *appId*ve *SP_SECRET* *şifreniz:*
 
-```azurecli-interactive
+```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
 
-Şimdi [yeni hizmet sorumlusu kimlik bilgileriyle AKS kümesini güncelleştirmek](#update-aks-cluster-with-new-service-principal-credentials)için devam edin. Bu adım, hizmet sorumlusu değişikliklerinin, AKS kümesinde yansıtılması için gereklidir.
+Şimdi yeni [hizmet temel kimlik bilgileri ile AKS küme güncellemeye devam edin.](#update-aks-cluster-with-new-service-principal-credentials) Bu adım, Hizmet Sorumlusu değişikliklerinin AKS kümesine yansıması için gereklidir.
 
-## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>AKS kümesini yeni hizmet sorumlusu kimlik bilgileriyle Güncelleştir
+## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>AKS kümesini yeni Hizmet Sorumlusu kimlik bilgileriyle güncelleştirin
 
-Mevcut hizmet sorumlusu için kimlik bilgilerini güncelleştirmeyi veya bir hizmet sorumlusu oluşturmayı seçtiğinizden bağımsız olarak, [az aks Update-Credentials][az-aks-update-credentials] komutunu kullanarak aks kümesini yeni kimlik bilgilerinizle güncelleştirmeniz gerekir. *--Service-Principal* ve *--Client-Secret* değişkenleri kullanılır:
+Varolan hizmet sorumlusunun kimlik bilgilerini güncelleştirmeyi veya bir hizmet sorumlusu oluşturmayı seçmiş olsanız da, [artık AZ aks update-credentials][az-aks-update-credentials] komutunu kullanarak AKS kümesini yeni kimlik bilgilerinizle güncelleştirmiş siniz. *--hizmet sorumlusu* ve *--istemci-gizli* değişkenleri kullanılır:
 
 ```azurecli-interactive
 az aks update-credentials \
@@ -88,11 +88,11 @@ az aks update-credentials \
     --client-secret $SP_SECRET
 ```
 
-Hizmet sorumlusu kimlik bilgilerinin AKS 'te güncelleştirilebilmesi birkaç dakika sürer.
+Hizmet temel kimlik bilgilerinin AKS'de güncellenmesi birkaç dakika sürer.
 
-## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>AKS kümesini yeni AAD uygulaması kimlik bilgileriyle Güncelleştir
+## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>AKS Cluster'ı yeni AAD Uygulama kimlik bilgileriyle güncelleştirin
 
-[AAD tümleştirme adımlarını][create-aad-app]IZLEYEREK yeni AAD sunucusu ve istemci uygulamaları oluşturabilirsiniz. Veya mevcut AAD uygulamalarınızı [hizmet sorumlusu sıfırlama ile aynı yöntemi](#reset-existing-service-principal-credential)izleyerek sıfırlayın. Bundan sonra, yalnızca aynı [az aks Update-Credentials][az-aks-update-credentials] komutunu kullanarak, ancak *--Reset-AAD* değişkenlerini kullanarak kümenizin AAD uygulaması kimlik bilgilerinizi güncelleştirmeniz gerekir.
+[AAD tümleştirme adımlarını][create-aad-app]izleyerek yeni AAD Server ve İstemci uygulamaları oluşturabilirsiniz. Veya hizmet [temel sıfırlama ile aynı yöntemi](#reset-existing-service-principal-credential)izleyerek mevcut AAD Uygulamaları nızı sıfırla. Bundan sonra sadece aynı [az aks update-credentials][az-aks-update-credentials] komutu kullanarak küme AAD Uygulama kimlik bilgilerini güncelleştirmeniz gerekir ama *--sıfır-aad* değişkenleri kullanarak.
 
 ```azurecli-interactive
 az aks update-credentials \
@@ -107,7 +107,7 @@ az aks update-credentials \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, AKS kümesi için hizmet sorumlusu ve AAD tümleştirme uygulamaları güncelleştirildi. Bir küme içindeki iş yüklerinin kimliğini yönetme hakkında daha fazla bilgi için bkz. [AKS 'de kimlik doğrulama ve yetkilendirme Için en iyi uygulamalar][best-practices-identity].
+Bu makalede, AKS kümesinin kendisi ve AAD Tümleştirme Uygulamaları için hizmet ilkesi güncelleştirildi. Kümedeki iş yükleri için kimliğin nasıl yönetilene ilgili daha fazla bilgi için [AKS'de kimlik doğrulama ve yetkilendirme için en iyi uygulamalara][best-practices-identity]bakın.
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

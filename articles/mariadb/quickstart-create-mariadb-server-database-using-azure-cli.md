@@ -1,29 +1,29 @@
 ---
-title: 'Hızlı başlangıç: sunucu oluşturma-Azure CLı-MariaDB için Azure veritabanı'
+title: 'Quickstart: Bir sunucu oluşturma - Azure CLI - MariaDB için Azure Veritabanı'
 description: Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir Azure kaynak grubunda nasıl MariaDB için Azure Veritabanı sunucusu oluşturabileceğiniz açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770042"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536471"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI kullanarak MariaDB için Azure Veritabanı sunucusu oluşturma
 
-Azure CLI ile komut satırından veya betik içindeki Azure kaynaklarını oluşturabilir ve yönetebilirsiniz. Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir Azure kaynak grubunda yaklaşık beş dakikada nasıl MariaDB için Azure Veritabanı sunucusu oluşturabileceğiniz açıklanır. 
+Azure CLI ile komut satırından veya betik içindeki Azure kaynaklarını oluşturabilir ve yönetebilirsiniz. Bu hızlı başlangıçta, Azure CLI aracını kullanarak bir Azure kaynak grubunda yaklaşık beş dakikada nasıl MariaDB için Azure Veritabanı sunucusu oluşturabileceğiniz açıklanır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanacaksanız bu hızlı başlangıç için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 2.0’ı yükleme]( /cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanacaksanız bu hızlı başlangıç için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 2.0’ı yükleme]( /cli/azure/install-azure-cli).
 
 Birden fazla aboneliğiniz varsa kaynağı içeren aboneliği veya faturalandırıldığınız aboneliği seçin. Hesabınızdaki belirli bir abonelik kimliğini seçmek için [az account set](/cli/azure/account#az-account-set) komutunu kullanın:
 
@@ -49,7 +49,7 @@ Ayar | Örnek değer | Açıklama
 ---|---|---
 ad | **mydemoserver** | MariaDB için Azure Veritabanı sunucunuzu tanımlayan benzersiz bir ad girin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.
 resource-group | **myresourcegroup** | Azure kaynak grubunun adını girin.
-sku-name | **GP_Gen5_2** | SKU'nun adı. Kısaca *fiyatlandırma katmanı*\_*işlem nesli*\_*sanal çekirdek sayısı* kuralına uyar. **sku-name** parametresi hakkında daha fazla bilgi için bu tablonun altındaki bölüme bakın.
+sku-name | **GP_Gen5_2** | SKU'nun adı. Steno'da kongre *fiyatlandırma katmanı*\_*hesaplama oluşturma*\_*vCores* izler. **sku-name** parametresi hakkında daha fazla bilgi için bu tablonun altındaki bölüme bakın.
 backup-retention | **7** | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. Aralık: 7-35. 
 geo-redundant-backup | **Devre dışı** | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **Devre Dışı**.
 location | **westus** | Sunucu için Azure konumu.
@@ -57,10 +57,10 @@ ssl-enforcement | **Etkin** | Bu sunucu için SSL'in etkinleştirilip etkinleşt
 storage-size | **51200** | Sunucunun depolama kapasitesi (birim olarak megabayt kullanılır). Geçerli depolama boyutları 5.120 MB (minimum) ile başlar ve 1.024 MB artar. Depolama boyutu sınırları hakkında daha fazla bilgi için bkz. [Fiyatlandırma katmanları](./concepts-pricing-tiers.md). 
 version | **10.2** | MariaDB büyük altyapı sürümü.
 admin-user | **myadmin** | Yöneticinin oturum açma kullanıcı adı. **admin-user** parametresi **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public** olamaz.
-admin-password | *parolanız* | Yönetici kullanıcının parolası. Parolanız 8 ile 128 arasında karakter içermelidir. Şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.
+admin-password | *şifreniz* | Yönetici kullanıcının parolası. Parolanız 8 ile 128 arasında karakter içermelidir. Şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.
 
 sku-name parametresi değeri aşağıdaki örneklerde gösterildiği gibi {fiyatlandırma katmanı}\_{işlem oluşturma}\_{sanal çekirdek} kuralını kullanır:
-+ `--sku-name B_Gen5_1` temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
++ `--sku-name B_Gen5_1`Temel, Gen 5 ve 1 vCore haritaları. Bu seçenek, mevcut en küçük SKU'dur.
 + `--sku-name GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
 + `--sku-name MO_Gen5_2` Bellek için iyileştirilmiş, Gen 5 ve 2 sanal çekirdekle eşleşir.
 
@@ -73,14 +73,13 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 ```
 
 > [!NOTE]
-> Hafif işlem ve g/ç iş yükünüz için yeterli ise temel fiyatlandırma katmanını kullanmayı düşünün. Temel fiyatlandırma katmanında oluşturulan sunucuların daha sonra Genel Amaçlı veya bellek için Iyileştirilmiş olarak ölçeklenmeyeceğini unutmayın. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/) .
-> 
+> Hafif işlem ve G/Ç iş yükünüz için yeterliyse Temel fiyatlandırma katmanını kullanmayı düşünün. Temel fiyatlandırma katmanında oluşturulan sunucuların daha sonra Genel Amaç veya Bellek Optimize Edilemeyeceğine dikkat edin. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/mariadb/) bakın.
 
 ## <a name="configure-a-firewall-rule"></a>Güvenlik duvarı kuralını yapılandırma
 
-[az maridb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) komutunu kullanarak MariaDB için Azure Veritabanı sunucusu düzeyinde bir güvenlik duvarı kuralı oluşturun. Sunucu düzeyindeki bir güvenlik duvarı kuralı, mysql komut satırı aracı veya MySQL Workbench gibi bir dış uygulamanın MariaDB için Azure Veritabanı hizmetinin güvenlik duvarı üzerinden sunucunuza bağlanmasına imkan tanır. 
+[az maridb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) komutunu kullanarak MariaDB için Azure Veritabanı sunucusu düzeyinde bir güvenlik duvarı kuralı oluşturun. Sunucu düzeyindeki bir güvenlik duvarı kuralı, mysql komut satırı aracı veya MySQL Workbench gibi bir dış uygulamanın MariaDB için Azure Veritabanı hizmetinin güvenlik duvarı üzerinden sunucunuza bağlanmasına imkan tanır.
 
-Aşağıdaki örnek `AllowMyIP` adında ve 192.168.0.1 IP adresinden gelen bağlantılara izin veren bir güvenlik duvarı kuralı oluşturur. Bağlandığınız konuma ait IP adresi veya IP adresi aralığıyla değiştirin. 
+Aşağıdaki örnek `AllowMyIP` adında ve 192.168.0.1 IP adresinden gelen bağlantılara izin veren bir güvenlik duvarı kuralı oluşturur. Bağlandığınız konuma ait IP adresi veya IP adresi aralığıyla değiştirin.
 
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,14 +87,13 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 
 > [!NOTE]
 > MariaDB için Azure Veritabanı bağlantıları, 3306 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, 3306 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, sunucunuza ancak BT departmanınız 3306 numaralı bağlantı noktasını açarsa bağlanabilirsiniz.
-> 
 
 ## <a name="configure-ssl-settings"></a>SSL ayarlarını yapılandırma
 
 Varsayılan olarak sunucunuz ile istemci uygulamaları arasında SSL bağlantıları zorunlu tutulur. Bu varsayılan ayar, İnternet üzerinden veri akışını şifreleyerek “hareket halindeki” verilerinizin güvenli olmasını sağlar. Bu hızlı başlangıç için sunucunuzda SSL bağlantılarını devre dışı bırakın. Üretim sunucuları için SSL’in devre dışı bırakılması önerilmez. Daha ayrıntılı bilgi için bkz. [MariaDB için Azure Veritabanı'na güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısını yapılandırma](./howto-configure-ssl.md).
 
 Aşağıdaki örnek, MariaDB için Azure Veritabanı sunucunuzda SSL zorlamasını devre dışı bırakır:
- 
+
 ```azurecli-interactive
 az mariadb server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
 ```
@@ -156,9 +154,10 @@ mysql komut satırı aracını kullanarak sunucuya bağlanmak için:
    ```sql
    status
    ```
+
    Aşağıdaki metne benzer bir sonuç görmeniz gerekir:
 
-   ```bash
+   ```cmd
    C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
    Enter password: ***********
    Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -217,8 +216,8 @@ mysql komut satırı aracını kullanarak sunucuya bağlanmak için:
    | Bağlantı Yöntemi | **Standart (TCP/IP)** | MariaDB için Azure Veritabanı'na bağlanmak için TCP/IP protokolünü kullanın |
    | Ana Bilgisayar Adı | **mydemoserver.mariadb.database.azure.com** | Daha önceden not aldığınız sunucu adı. |
    | Bağlantı noktası | **3306** | MariaDB için Azure Veritabanı'nın varsayılan bağlantı noktası. |
-   | Kullanıcı adı | **myadmin\@demosunucum** | Daha önceden not aldığınız sunucu yöneticisi oturum açma bilgileri. |
-   | Parola | *parolanız* | Önceden belirlediğiniz yönetici parolasını kullanın. |
+   | Kullanıcı adı | **myadmin\@mydemoserver** | Daha önceden not aldığınız sunucu yöneticisi oturum açma bilgileri. |
+   | Parola | *şifreniz* | Önceden belirlediğiniz yönetici parolasını kullanın. |
 
 3. Tüm parametrelerin doğru yapılandırılıp yapılandırılmadığını denetlemek için **Test Connection** (Bağlantıyı Sına) öğesini seçin.
 
@@ -241,4 +240,4 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure CLı ile bir MariaDB veritabanı tasarlama](./tutorial-design-database-cli.md)
+> [Azure CLI ile Bir MariaDB Veritabanı Tasarımı](./tutorial-design-database-cli.md)

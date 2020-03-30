@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SAP HANA ağ mimarisi (büyük örnekler) | Microsoft Docs
-description: Azure 'da SAP HANA dağıtımı (büyük örnekler) için ağ mimarisi.
+title: Azure'da SAP HANA ağ mimarisi (Büyük Örnekler) | Microsoft Dokümanlar
+description: SAP HANA'nın Azure'da (Büyük Örnekler) nasıl dağıtılanabildiğini anlatan ağ mimarisi.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -13,191 +13,191 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca05603ebf06906349a7f94443eafb773a0764f9
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79139003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502405"
 ---
-# <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (büyük örnekler) ağ mimarisi
+# <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (Büyük Örnekler) ağ mimarisi
 
-Azure ağ hizmetleri 'nin mimarisi, HANA büyük örnek üzerinde SAP uygulamalarının başarıyla dağıtılması için önemli bir bileşendir. Genellikle, Azure 'da SAP HANA (büyük örnekler) dağıtımlarda, farklı türlerdeki veritabanları, CPU kaynak tüketimi ve bellek kullanımı gibi çeşitli SAP çözümlerine sahip daha büyük bir SAP yatay vardır. Bu, tüm BT sistemleri Azure 'da zaten yer alıyor olabilir. SAP manzara, genellikle NetWeaver ve S/4HANA ile SAP HANA ve diğer DBMS 'nin bir karışımını kullanarak bir DBMS noktasından ve SAP uygulama noktasından de karma olarak karma bir uygulamadır. Azure, Azure 'da farklı DBMS, NetWeaver ve S/4HANA sistemlerini çalıştırmanıza olanak tanıyan farklı hizmetler sunar. Azure Ayrıca, Azure 'un Şirket içi yazılım dağıtımlarınıza bir sanal veri merkezi gibi görünmesini sağlamak için size ağ teknolojisi sağlar
+Azure ağ hizmetlerinin mimarisi, SAP uygulamalarının HANA Büyük Örneği'nde başarılı bir şekilde dağıtılmasının önemli bir bileşenidir. Genellikle, Azure'daki SAP HANA (Büyük Örnekler) dağıtımları, farklı veritabanları, CPU kaynak tüketimi ve bellek kullanımı boyutlarına sahip birkaç farklı SAP çözümüne sahip daha büyük bir SAP ortamına sahiptir. Tüm BT sistemlerinin azure'da zaten bulunmamış olması olasıdır. SAP manzara genellikle netWeaver ve S/4HANA ve SAP HANA ve diğer DBMS karışımını kullanarak bir DBMS noktası ve SAP uygulama açısından da melezdir. Azure, Azure'da farklı DBMS, NetWeaver ve S/4HANA sistemlerini çalıştırmanızı sağlayan farklı hizmetler sunar. Azure, azure'u şirket içi yazılım dağıtımlarınıza sanal bir veri merkezi gibi göstermek için ağ teknolojisi de sunar
 
-Tamamlanmış BT sistemleri Azure 'da barındırılmaz. Azure ağ işlevleri, Azure 'un bir sanal veri merkezi gibi görünmesini sağlamak için şirket içi dünyayı Azure varlıklarınızla bağlamak için kullanılır. Kullanılan Azure ağ işlevleri şunlardır: 
+Tam BT sistemleriniz Azure'da barındırılan sürece. Azure ağ işlevi, Azure'un sanal bir veri merkezi niz gibi görünmesi için şirket içi dünyayı Azure varlıklarınızla bağlamak için kullanılır. Kullanılan Azure ağ işlevi: 
 
-- Azure sanal ağları, şirket içi ağ varlıklarınıza bağlanan [ExpressRoute](https://azure.microsoft.com/services/expressroute/) devresine bağlanır.
-- Şirket içinde Azure 'a bağlanan bir ExpressRoute devresi, en az [1 Gbps veya daha yüksek](https://azure.microsoft.com/pricing/details/expressroute/)bant genişliğine sahip olmalıdır. Bu en düşük bant genişliği, VM 'lerde çalışan şirket içi sistemler ve sistemler arasında veri aktarımı için yeterli bant genişliğine izin verir. Ayrıca, şirket içi kullanıcılardan Azure sistemlerine bağlantı için yeterli bant genişliğine de olanak tanır.
-- Azure 'daki tüm SAP sistemleri, sanal ağlarda birbirleriyle iletişim kuracak şekilde ayarlanır.
-- Şirket içinde barındırılan Active Directory ve DNS, şirket içi üzerinden ExpressRoute aracılığıyla Azure 'a genişletilir veya Azure 'da tamamlanmış olarak çalışır.
+- Azure sanal ağları, şirket içi ağ varlıklarınıza bağlanan [ExpressRoute](https://azure.microsoft.com/services/expressroute/) devresine bağlıdır.
+- Şirket içinde Azure'a bağlanan bir ExpressRoute devresinin en az [1 Gbps veya daha yüksek](https://azure.microsoft.com/pricing/details/expressroute/)bant genişliği olmalıdır. Bu minimum bant genişliği, VM'lerde çalışan şirket içi sistemler ve sistemler arasında veri aktarımı için yeterli bant genişliği sağlar. Ayrıca, şirket içi kullanıcılardan Azure sistemlerine bağlantı için yeterli bant genişliği sağlar.
+- Azure'daki tüm SAP sistemleri, birbirleriyle iletişim kurmak için sanal ağlarda ayarlanır.
+- Şirket içinde barındırılan Etkin Dindizi ve DNS, şirket içinden ExpressRoute aracılığıyla Azure'a genişletilir veya Azure'da tamamlanır.
 
-HANA büyük örnekleri Azure veri merkezi ağ dokusuna tümleştirmeyle ilgili belirli bir durum için Azure ExpressRoute teknolojisi de kullanılır
+HANA Büyük Örnekleri'nin Azure veri merkezi ağ dokusuna entegre edilmesi durumunda Azure ExpressRoute teknolojisi de kullanılır
 
 
 > [!NOTE] 
-> Yalnızca bir Azure aboneliği, belirli bir Azure bölgesindeki bir HANA büyük örnek damgasında yalnızca bir kiracıya bağlanabilir. Buna karşılık, tek bir HANA büyük örnek damgası kiracısı yalnızca bir Azure aboneliğine bağlanabilir. Bu gereksinim, Azure 'daki diğer faturalandırılabilir nesnelerle tutarlıdır.
+> Belirli bir Azure bölgesindeki HANA Büyük Örnek damgasında yalnızca bir Azure aboneliği ne kadar bağlı olabilir. Tam tersine, tek bir HANA Büyük Örnek damgası kiracısı yalnızca bir Azure aboneliğine bağlanabilir. Bu gereksinim, Azure'daki diğer faturalandırılabilir nesnelerle tutarlıdır.
 
-Azure 'daki SAP HANA (büyük örnekler) birden çok farklı Azure bölgesinde dağıtılırsa, HANA büyük örnek damgasında ayrı bir kiracı dağıtılır. Aynı SAP yatay 'ın bir parçası olduğu sürece, her ikisini de aynı Azure aboneliği altında çalıştırabilirsiniz. 
+Azure'daki SAP HANA (Büyük Örnekler) birden çok farklı Azure bölgesinde dağıtılırsa, HANA Büyük Örnek damgasında ayrı bir kiracı dağıtılır. Bu örnekler aynı SAP ortamının parçası olduğu sürece her ikisini de aynı Azure aboneliği altında çalıştırabilirsiniz. 
 
 > [!IMPORTANT] 
-> Yalnızca Azure Resource Manager dağıtım yöntemi Azure 'da SAP HANA desteklenir (büyük örnekler).
+> Azure'da (Büyük Örnekler) SAP HANA ile yalnızca Azure Kaynak Yöneticisi dağıtım yöntemi desteklenir.
 
  
 
 ## <a name="additional-virtual-network-information"></a>Ek sanal ağ bilgileri
 
-Bir sanal ağı ExpressRoute 'a bağlamak için bir Azure ExpressRoute ağ geçidi oluşturulması gerekir. Daha fazla bilgi için bkz. [ExpressRoute Için ExpressRoute ağ geçitleri hakkında](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Bir sanal ağı ExpressRoute'a bağlamak için bir Azure ExpressRoute ağ geçidi oluşturulması gerekir. Daha fazla bilgi için [ExpressRoute ağ geçitleri hakkında](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın. 
 
-Azure ExpressRoute ağ geçidi, Azure dışındaki bir altyapıya veya Azure büyük örnek damgasına ExpressRoute ile birlikte kullanılır. Azure ExpressRoute ağ geçidini, bu bağlantılar farklı Microsoft Kurumsal kenar yönlendiricilerinde geldiği sürece en fazla dört farklı ExpressRoute devresine bağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) altyapısı ve bağlantısı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Azure ExpressRoute ağ geçidi, ExpressRoute ile Azure dışındaki bir altyapıya veya Azure Büyük Örnek damgasına kullanılır. Azure ExpressRoute ağ geçidini, bu bağlantılar farklı Microsoft kurumsal kenar yönlendiricilerinden geldiği sürece en fazla dört farklı ExpressRoute devresine bağlayabilirsiniz. Daha fazla bilgi için, [Azure'da SAP HANA (Büyük Örnekler) altyapısı na ve bağlantıya](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın. 
 
 > [!NOTE] 
-> Bir ExpressRoute bağlantısı kullanarak, bir ExpressRoute ağ geçidiyle elde edilebilecek en fazla aktarım hızı 10 Gbps 'dir. Bir sanal ağda ve şirket içi bir sistemde bulunan bir VM arasında dosya kopyalama (tek kopya akış olarak), farklı ağ geçidi SKU 'Larının tam verimini elde etmez. ExpressRoute ağ geçidinin tüm bant genişliğinden yararlanmak için birden çok akış kullanın. Ya da farklı dosyaları tek bir dosyanın paralel akışlarına kopyalamanız gerekir.
+> ExpressRoute ağ geçidi ile elde edebileceğiniz maksimum iş, ExpressRoute bağlantısı kullanılarak 10 Gbps'dir. Sanal ağda bulunan bir VM ile şirket içinde bir sistem (tek bir kopya akışı olarak) arasında dosya kopyalamak, farklı ağ geçidi SUS'larının tam iş akışını sağlamaz. ExpressRoute ağ geçidinin tüm bant genişliğinden yararlanmak için birden çok akış kullanın. Veya farklı dosyaları tek bir dosyanın paralel akışlarında kopyalamanız gerekir.
 
 
-## <a name="networking-architecture-for-hana-large-instance"></a>HANA büyük örneği için ağ mimarisi
-HANA büyük örneği için ağ mimarisi dört farklı parçaya ayrılabilir:
+## <a name="networking-architecture-for-hana-large-instance"></a>HANA Büyük Örnek için ağ mimarisi
+HANA Büyük Örneği'nin ağ mimarisi dört farklı bölüme ayrılabilir:
 
-- Azure ile şirket içi ağ ve ExpressRoute bağlantısı. Bu bölüm, müşterinin etki alanıdır ve ExpressRoute aracılığıyla Azure 'a bağlanır. Bu ExpressRoute bağlantı hattı, sizin tarafınızdan bir müşteri olarak ücretteymiştir. Bant genişliği, şirket içi varlıklarınız ile bağlanmakta olduğunuz Azure bölgesi arasındaki ağ trafiğini işleyecek kadar büyük olmalıdır. Aşağıdaki şekilde sağ alt köşedeki bölümüne bakın.
-- Azure Ağ Hizmetleri, daha önce açıklandığı gibi, sanal ağlarla birlikte, ExpressRoute ağ geçitlerinin eklenmeleri gerekir. Bu bölüm, uygulama gereksinimleriniz, güvenlik ve uyumluluk gereksinimlerinizin uygun tasarımlarını bulmanız gereken bir alandır. HANA büyük örnek 'i kullanmanıza bakılmaksızın, aralarından seçim yapabileceğiniz sanal ağların ve Azure Gateway SKU 'Larının sayısını göz önünde bulundurmanız gereken başka bir nokta vardır. Şeklin sağ üst bölümüne bakın.
-- ExpressRoute teknolojisi aracılığıyla Azure 'da HANA büyük örnek bağlantısı. Bu bölüm Microsoft tarafından dağıtılır ve işlenir. Tüm yapmanız gereken, HANA büyük örnekteki varlıklarınızın dağıtımıyla sonra bazı IP adresi aralıkları sağlamak, ExpressRoute devresini sanal ağlara bağlayın. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) altyapısı ve bağlantısı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Azure veri merkezi ağ yapısı ve HANA büyük örnek birimleri arasında bağlantı için müşteri olarak size ek ücret alınmaz.
-- Genellikle sizin için saydam olan HANA büyük örnek damgasında ağ iletişimi.
+- Şirket içi ağ ve Azure'a ExpressRoute bağlantısı. Bu bölüm müşterinin etki alanıdır ve ExpressRoute aracılığıyla Azure'a bağlanır. Bu Expressroute devresi tamamen bir müşteri olarak sizin tarafından ödenir. Bant genişliği, şirket içi varlıklarınız ile karşıya bağlandığınız Azure bölgesi arasındaki ağ trafiğini işleyecek kadar büyük olmalıdır. Aşağıdaki şekilde sağ alt bakınız.
+- Azure ağ hizmetleri, daha önce tartışıldığı gibi, yine ExpressRoute ağ geçitleri eklenmesi gereken sanal ağlarla birlikte. Bu bölüm, uygulama gereksinimleriniz, güvenlik ve uyumluluk gereksinimleriniz için uygun tasarımları bulmanız gereken bir alandır. HANA Large Instance'ı kullanıp kullanmadığınız, sanal ağ sayısı ve aralarından seçim yapabileceğiniz Azure ağ geçidi SUS'ları açısından göz önünde bulundurulması gereken başka bir noktadır. Şekildeki sağ üst tekine bakın.
+- HANA Large Instance'ın ExpressRoute teknolojisi ile Azure'a bağlantısı. Bu bölüm Microsoft tarafından dağıtılır ve işlenir. Tek yapmanız gereken, HANA Large Instance'daki varlıklarınızın dağıtımından sonra ExpressRoute devresini sanal ağlara bağladıktan sonra bazı IP adres aralıkları sağlamaktır. Daha fazla bilgi için, [Azure'da SAP HANA (Büyük Örnekler) altyapısı na ve bağlantıya](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın. Azure veri merkezi ağ dokusu ile HANA Büyük Örnek birimleri arasındaki bağlantı için müşteri olarak ek bir ücret yoktur.
+- Çoğunlukla sizin için saydam olan HANA Büyük Örnek damgası içinde ağ.
 
-![Azure 'da SAP HANA bağlı sanal ağ (büyük örnekler) ve şirket içi](./media/hana-overview-architecture/image1-architecture.png)
+![Azure'da SAP HANA'ya bağlı sanal ağ (Büyük Örnekler) ve şirket içi](./media/hana-overview-architecture/image1-architecture.png)
 
-HANA büyük örneğini kullandığınız için şirket içi varlıklarınızın ExpressRoute aracılığıyla Azure 'a bağlanması gerekir. HANA büyük örnek birimlerinde barındırılan HANA örneklerine bağlanan uygulama katmanını barındıran VM 'Leri çalıştıran bir veya birden çok sanal ağa sahip olmanız için de değişiklik yapmaz. 
+Şirket içi varlıklarınızın ExpressRoute üzerinden Azure'a bağlanması gereksinimi, HANA Large Instance'ı kullandığınız için değişmez. HANA Büyük Örnek birimlerinde barındırılan HANA örneklerine bağlanan uygulama katmanını barındıran VM'leri çalıştıran bir veya birden çok sanal acasahip olması gereksinimi de değişmez. 
 
-Azure 'da SAP dağıtımları arasındaki farklar şunlardır:
+Azure'daki SAP dağıtımları arasındaki farklar şunlardır:
 
-- Müşteri kiracınızın HANA büyük örnek birimleri, sanal ağlarınıza başka bir ExpressRoute devresi üzerinden bağlanır. Yük koşullarını ayırmak için şirket içi ile Azure sanal ağ ExpressRoute devreleri ve Azure sanal ağları ile HANA büyük örnekleri arasındaki devreler aynı yönlendiricileri paylaşmaz.
-- SAP uygulama katmanı ve HANA büyük örneği arasındaki iş yükü profili, birçok küçük istek ve veri aktarımları (sonuç kümeleri) gibi çok sayıda küçük istekte bulunan farklı bir doğası ve uygulama katmanına SAP HANA.
-- SAP uygulama mimarisi, verilerin şirket içi ve Azure arasında değiş tokuş edildiği tipik senaryolardaki ağ gecikme süresine kıyasla daha duyarlıdır.
-- Azure ExpressRoute ağ geçidinde en az iki ExpressRoute bağlantısı vardır. Şirket içinde ve HANA büyük örneklerden bağlanan bir bağlantı. Bu, farklı MSEE 'lar ExpressRoute ağ geçidine bağlanmak üzere yalnızca başka bir iki ek devre için yer bırakır. Bu kısıtlama, ExpressRoute hızlı yolunun kullanımından bağımsızdır. Tüm bağlı devreler, ExpressRoute ağ geçidinin gelen verileri için maksimum bant genişliğini paylaşır.
+- Müşteri kiracınızın HANA Büyük Örnek birimleri, başka bir ExpressRoute devresi üzerinden sanal ağlarınıza bağlanır. Yük koşullarını ayırmak için, Azure sanal ağı ExpressRoute devreleri ve Azure sanal ağları ile HANA Büyük Örnekleri arasındaki devreler aynı yönlendiricileri paylaşmaz.
+- SAP uygulama katmanı ile HANA Büyük Örneği arasındaki iş yükü profili farklı bir niteliktedir ve SAP HANA'dan uygulama katmanına veri aktarımları (sonuç kümeleri) gibi birçok küçük istek ve patlama ile farklı bir niteliktedir.
+- SAP uygulama mimarisi, şirket içi ve Azure arasında veri alışverişi yapılan tipik senaryolardan daha fazla ağ gecikmesine karşı daha duyarlıdır.
+- Azure ExpressRoute ağ geçidinde en az iki ExpressRoute bağlantısı vardır. Şirket içinde bağlanan bir devre ve HANA Büyük Örnekleri'nden bağlı bir devre. Bu, ExpressRoute Ağ Geçidi'ne bağlanmak için farklı MSEE'lerden sadece iki ek devre ye yer bırakır. Bu kısıtlama ExpressRoute Fast Path kullanımından bağımsızdır. Bağlı tüm devreler, ExpressRoute ağ geçidinin gelen verileri için maksimum bant genişliğini paylaşır.
 
-HANA büyük örnek damgalarının 3. düzeltmesi sayesinde, VM 'Ler ve HANA büyük örnek birimleri arasında karşılaşılan ağ gecikmesi, tipik bir sanal makineden VM ağına gidiş dönüş gecikmesinden daha yüksek olabilir. Azure bölgesine bağlı olarak, ölçülen değerler, [SAP Note #1100926-SSS: ağ performansı](https://launchpad.support.sap.com/#/notes/1100926/E)için aşağıda belirtildiği gibi sınıflandırılan 0,7-MS gidiş dönüş gecikmesini aşabilir. Bir Azure VM ve HANA büyük örnek birimi arasında ağ gidiş dönüş gecikmesini ölçmek için Azure bölgesine ve aracına bağımlıdır, ölçülen gecikme süresi 2 milisaniyeye kadar olabilir. Bununla birlikte, müşteriler SAP HANA tabanlı üretim SAP uygulamalarını SAP HANA büyük örnek üzerinde başarıyla dağıtır. Azure HANA büyük örneğinde iş işlemlerinizi iyice test ettiğinizden emin olun. ExpressRoute hızlı yolu adlı yeni bir işlev, Azure 'daki yalnızca HANA büyük örnekler ve uygulama katmanı VM 'Leri arasındaki ağ gecikmesini azaltabilir (aşağıya bakın). 
+HANA Büyük Örnek pullarının Revizyon 3'ü ile, VM'ler ve HANA Büyük Örnek birimleri arasında yaşanan ağ gecikmesi, tipik bir VM-vm ağ gidiş-dönüş gecikmesinden daha yüksek olabilir. Azure bölgesine bağlı olarak, ölçülen değerler SAP Note #1100926 ortalamasının altında olarak sınıflandırılan 0,7 ms gidiş-dönüş gecikme süresini aşabilir [- SSS: Ağ performansı.](https://launchpad.support.sap.com/#/notes/1100926/E) Azure VM ve HANA Büyük Örnek birimi arasındaki ağ gidiş-dönüş gecikmesini ölçmek için Azure Bölgesine ve araca bağlı olarak, ölçülen gecikme si 2 milisaniyeye kadar olabilir. Bununla birlikte, müşteriler SAP HANA tabanlı üretim SAP uygulamalarını SAP HANA Büyük Örneği'nde başarıyla dağıtıyor. Azure HANA Büyük Örneği'nde iş süreçlerinizi kapsamlı bir şekilde test ettiğinizden emin olun. ExpressRoute Fast Path adı verilen yeni bir işlev, HANA Büyük Örnekleri ile Azure'daki uygulama katmanı VM'leri arasındaki ağ gecikmesini önemli ölçüde azaltabilir (aşağıya bakın). 
 
-HANA büyük örnek damgalarının 4. düzeltmesi sayesinde, HANA büyük örnek damgasına yakınlık halinde dağıtılan Azure VM 'Ler arasındaki ağ gecikmesi, [SAP Note #1100926-SSS:](https://launchpad.support.sap.com/#/notes/1100926/E) Azure ExpressRoute hızlı yolu yapılandırılmışsa (aşağıya bakın), ağ performansı ile ilgili ortalama veya daha iyi bir sınıflandırmayla karşılaşmıştır. Azure VM 'Leri, düzeltme 4 ' ün büyük örnek birimlerine yakın bir yerde dağıtmak için [Azure yakınlık yerleşimi gruplarından](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)yararlanabilirsiniz. Aynı Azure veri merkezinde barındırılan HANA büyük örnek birimleri ile SAP uygulama katmanını bulmak için yakınlık yerleşimi gruplarının nasıl kullanılabileceği, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarında](sap-proximity-placement-scenarios.md)açıklanacaktır.
+HANA Büyük Örnek damgalarının Revizyonu 4 ile, HANA Büyük Örnek damgasına yakın olarak dağıtılan Azure VM'leri arasındaki ağ gecikmesi, [SAP Note #1100926 - SSS:](https://launchpad.support.sap.com/#/notes/1100926/E) Azure ExpressRoute Hızlı Yolu yapılandırılırsa ortalama sınıflandırmayı karşılayacak şekilde yaşanır (aşağıya bakın). Azure VM'leri, REVIZYON 4'ün HANA Büyük Örnek birimlerine yakın bir yerde dağıtmak için [Azure Yakınlık Yerleşim Gruplarından](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)yararlanmanız gerekir. Sapma 4 barındırılan HANA Büyük Örnek birimleriyle aynı Azure veri merkezinde SAP uygulama katmanını bulmak için yakınlık yerleşim işlemi gruplarının kullanılabilir ışığı, [SAP uygulamalarıyla en iyi ağ gecikmesi için Azure Yakınlık ışı Bulma Grupları'](sap-proximity-placement-scenarios.md)nda anlatılıyor.
 
-VM 'Ler ve HANA büyük örnek arasında kararlı ağ gecikmesi sağlamak için, ExpressRoute ağ geçidi SKU 'SU seçeneği gereklidir. Şirket içi ve VM 'Ler arasındaki trafik desenlerinden farklı olarak, VM 'Ler ve HANA büyük örnek arasındaki trafik deseni, iletilmek üzere küçük ancak yüksek miktarda istek ve veri birimi geliştirebilir. Bu tür artışlarıyla 'yi işlemek için UltraPerformance Gateway SKU 'sunun kullanımını önemle öneririz. HANA büyük örnek SKU 'Larının tür II sınıfı için, UltraPerformance ağ geçidi SKU 'sunun ExpressRoute ağ geçidi olarak kullanılması zorunludur.
-
-> [!IMPORTANT] 
-> SAP uygulaması ve veritabanı katmanları arasındaki genel ağ trafiği verildiğinde, Azure 'daki SAP HANA (büyük örnekler) bağlanmak için yalnızca sanal ağlara yönelik HighPerformance veya UltraPerformance Gateway SKU 'Ları desteklenir. HANA büyük örnek türü II SKU 'Ları için, ExpressRoute ağ geçidi olarak yalnızca UltraPerformance ağ geçidi SKU 'SU desteklenir. ExpressRoute hızlı yolu (aşağıya bakın) kullanılırken özel durumlar geçerlidir
-
-### <a name="expressroute-fast-path"></a>ExpressRoute hızlı yolu
-Gecikme süresini azaltmak için, ExpressRoute hızlı yolu, 2019 Mayıs 'ta SAP uygulama VM 'lerini barındıran Azure sanal ağlarına belirli bir HANA büyük örnek bağlantısı için tanıtılmıştır ve yayımlanmıştır. Şu ana kadar çözüm olan en önemli fark, sanal makineler ve HANA büyük örnekler arasındaki veri akışı artık ExpressRoute Gateway üzerinden yönlendirilmemektedir. Bunun yerine, Azure sanal ağının alt ağında atanan VM 'Ler, adanmış kurumsal sınır yönlendiricisi ile doğrudan iletişim kuruyor. 
+VM'ler ve HANA Büyük Örnek arasında belirleyici ağ gecikmesi sağlamak için ExpressRoute ağ geçidi SKU'nun seçimi esastır. Şirket içi ve VM'ler arasındaki trafik düzeninin aksine, VM'ler ve HANA Büyük Örnek arasındaki trafik deseni, iletilecek küçük ancak yüksek istek ve veri hacimleri patlamaları gelişebilir. Bu tür patlamaları iyi işlemek için UltraPerformance ağ geçidi SKU'nun kullanılmasını şiddetle tavsiye ediyoruz. HANA Large Instance SKU'ların Type II sınıfı için, UltraPerformance ağ geçidi SKU'nun ExpressRoute ağ geçidi olarak kullanılması zorunludur.
 
 > [!IMPORTANT] 
-> ExpressRoute hızlı yolu işlevselliği, SAP uygulama VM 'lerini çalıştıran alt ağların, HANA büyük örneklerine bağlı aynı Azure sanal ağında olmasını gerektirir. Azure sanal ağlarında bulunan ve doğrudan HANA büyük örnek birimlerine bağlı Azure sanal ağı 'nda bulunan VM 'Ler, ExpressRoute hızlı yolundan yararlanırken değildir. Sonuç olarak, ExpressRoute bağlantı hattı bir hub sanal ağı ve SAP uygulama katmanını (bağlı bileşen) içeren sanal ağları, ExpressRoute hızlı en iyi duruma getirmeye yönelik olan tipik bir merkez ve bağlı olan sanal ağ tasarımları olarak Yol çalışmayacak. Ek olarak, ExpressRoute hızlı yolu, günümüzde Kullanıcı tanımlı yönlendirme kurallarını (UDR) desteklemez. Daha fazla bilgi için bkz. [ExpressRoute sanal ağ geçidi ve FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways). 
+> SAP uygulaması ve veritabanı katmanları arasındaki genel ağ trafiği göz önüne alındığında, yalnızca sanal ağlar için HighPerformance veya UltraPerformance ağ geçidi SUS'ları Azure'da SAP HANA'ya (Büyük Örnekler) bağlanmak için desteklenir. HANA Büyük Örnek Tip II SKU'lar için, yalnızca UltraPerformance ağ geçidi SKU ExpressRoute ağ geçidi olarak desteklenir. ExpressRoute Hızlı Yolu kullanırken özel durumlar geçerlidir (aşağıya bakın)
+
+### <a name="expressroute-fast-path"></a>ExpressRoute Hızlı Yol
+Gecikme süresini azaltmak için ExpressRoute Fast Path, HANA Large Instances'ın SAP uygulaması VM'lerini barındıran Azure sanal ağlarına özel bağlantısı için Mayıs 2019'da tanıtıldı ve piyasaya sürüldü. Şimdiye kadar kullanıma alınan çözümdeki en büyük fark, VM'ler ve HANA Büyük Örnekleri arasındaki veri akışlarının artık ExpressRoute ağ geçidinden yönlendirilen olmamasıdır. Bunun yerine, Azure sanal ağının alt ağında atanan VM'ler, ilgili kuruluş kenar yönlendiricisiyle doğrudan iletişim kurar. 
+
+> [!IMPORTANT] 
+> ExpressRoute Hızlı Yol işlevi, SAP uygulaması VM'lerini çalıştıran alt ağların HANA Büyük Örnekleri'ne bağlanan aynı Azure sanal ağında olmasını gerektirir. Doğrudan HANA Büyük Örnek birimlerine bağlı Azure sanal ağına bakan Azure sanal ağlarında bulunan Sanal Ağlarda bulunan Sanal M'ler ExpressRoute Hızlı Yol'dan yararlanmıyor. Sonuç olarak, ExpressRoute devrelerinin bir hub sanal ağına ve SAP uygulama katmanını (sözcüleri) içeren sanal ağlara bağlandığı tipik hub ve kollu sanal ağ tasarımları, ExpressRoute Fast tarafından optimizasyona bakılıyor Yol çalışmaz. Addtion olarak, ExpressRoute Hızlı Yol kullanıcı tanımlı yönlendirme kuralları (UDR) bugün desteklemez. Daha fazla bilgi için [ExpressRoute sanal ağ ağ geçidi ve FastPath'e](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)bakın. 
 
 
-ExpressRoute hızlı yolunu yapılandırma hakkında daha fazla bilgi için, [bir sanal ağı Hana büyük örneklerine bağlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)belgesini okuyun.    
+ExpressRoute Hızlı Yol'un nasıl yapılandırılabildiğini hakkında daha fazla bilgi için, sanal [ağı HANA'nın büyük örneklerine bağlayın](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)belgesini okuyun.    
 
 > [!NOTE]
-> ExpressRoute hızlı yolunun çalışmasını sağlamak için bir UltraPerformance ExpressRoute ağ geçidi gerekir
+> ExpressRoute Hızlı Yol'un çalışması için UltraPerformance ExpressRoute ağ geçidi gereklidir
 
 
 ## <a name="single-sap-system"></a>Tek SAP sistemi
 
-Daha önce gösterilen şirket içi altyapı, ExpressRoute aracılığıyla Azure 'a bağlanır. ExpressRoute bağlantı hattı bir Microsoft kurumsal sınır yönlendiricisine (MSEE) bağlanır. Daha fazla bilgi için bkz. [ExpressRoute teknik genel bakış](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Yol kurulduktan sonra Azure omurgasına bağlanır.
+Daha önce gösterilen şirket içi altyapı ExpressRoute üzerinden Azure'a bağlanır. ExpressRoute devresi bir Microsoft kurumsal kenar yönlendiricisine (MSEE) bağlanır. Daha fazla bilgi için [ExpressRoute teknik genel bakış](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bilgisine bakın. Rota oluşturulduktan sonra Azure omurgasına bağlanır.
 
 > [!NOTE] 
-> Azure 'da SAP landscapes 'yi çalıştırmak için SAP yatay 'daki Azure bölgesine en yakın kurumsal kenar yönlendiricisine bağlanın. HANA büyük örnek damgaları, Azure IaaS ve HANA büyük örnek damgalarındaki VM 'Ler arasındaki ağ gecikmesini en aza indirmek için adanmış kurumsal uç yönlendirici cihazları aracılığıyla bağlanır.
+> Azure'da SAP manzaralarını çalıştırmak için, SAP ortamında Azure bölgesine en yakın kurumsal kenar yönlendiricisine bağlanın. HANA Büyük Örnek damgaları, Azure IaaS'taki VM'ler ile HANA Büyük Örnek damgaları arasındaki ağ gecikmesini en aza indirmek için özel kurumsal kenar yönlendirici aygıtları aracılığıyla bağlanır.
 
-SAP uygulama örneklerinin barındırıldığı VM 'Ler için ExpressRoute ağ geçidi, şirket içi ağa bağlanan bir ExpressRoute devresine bağlanır. Aynı sanal ağ, büyük örnek damgalarına bağlanmak için ayrılmış ayrı bir kurumsal kenar yönlendiricisine bağlanır. ExpressRoute hızlı yolunu kullanarak, HANA büyük örneklerden SAP uygulama katmanı VM 'lerine veri akışı, artık ExpressRoute Gateway üzerinden ve ile ağ gidiş dönüş gecikmesini azaltır.
+SAP uygulama örneklerini barındıran VM'ler için ExpressRoute ağ geçidi, şirket içi bağlanan bir ExpressRoute devresine bağlanır. Aynı sanal ağ, Büyük Örnek damgalarına bağlanmaya adanmış ayrı bir kuruluş kenar yönlendiricisine bağlanır. ExpressRoute Hızlı Yol'u kullanarak, HANA Büyük Örnekleri'nden SAP uygulama katmanı VM'lere gelen veri akışı artık ExpressRoute ağ geçidinden yönlendirilen değildir ve bu da ağ gidiş-dönüş gecikme süresini azaltır.
 
-Bu sistem, tek bir SAP sisteminin basit bir örneğidir. SAP uygulama katmanı Azure 'da barındırılır. SAP HANA veritabanı, Azure 'da SAP HANA üzerinde çalışır (büyük örnekler). Varsayım, ExpressRoute ağ geçidi bant genişliğinin 2 Gbps veya 10 Gbps 'lik verimlilik bir darboğazın temsil etmediği varsayılır.
+Bu sistem, tek bir SAP sisteminin basit bir örneğidir. SAP uygulama katmanı Azure'da barındırılır. SAP HANA veritabanı Azure'da (Büyük Örnekler) SAP HANA'da çalışır. Varsayım, 2 Gbps veya 10 Gbps iş çıkışLı ExpressRoute ağ geçidi bant genişliğinin bir darboğaz teşkil etmediğidir.
 
-## <a name="multiple-sap-systems-or-large-sap-systems"></a>Birden çok SAP sistemi veya büyük SAP sistemleri
+## <a name="multiple-sap-systems-or-large-sap-systems"></a>Birden fazla SAP sistemi veya büyük SAP sistemleri
 
-Azure 'da (büyük örnekler) SAP HANA bağlanmak için birden fazla SAP sistemi veya büyük SAP sistemi dağıtılırsa, ExpressRoute ağ geçidinin üretilen iş hızı bir performans sorunu haline gelebilir. Ya da üretim ve üretim dışı sistemleri farklı Azure sanal ağlarında yalıtmak istiyorsanız. Böyle bir durumda, uygulama katmanlarını birden çok sanal ağa bölebilirsiniz. Ayrıca, şu gibi durumlarda HANA büyük örneğine bağlanan özel bir sanal ağ oluşturabilirsiniz:
+Azure'da (Büyük Örnekler) SAP HANA'ya bağlanmak için birden fazla SAP sistemi veya büyük SAP sistemi dağıtılırsa, ExpressRoute ağ geçidinin iş bölümü bir darboğaza dönüşebilir. Veya farklı Azure sanal ağlarında üretim ve üretim dışı sistemleri yalıtmak istiyorsunuz. Böyle bir durumda, uygulama katmanlarını birden çok sanal ağa bölün. Ayrıca, şu gibi durumlar için HANA Büyük Örnek'e bağlanan özel bir sanal ağ da oluşturabilirsiniz:
 
-- Yalnızca HANA büyük örneğindeki HANA örneklerinden yedeklemeler, NFS paylaşımlarını barındıran Azure sanal makinesine doğrudan gerçekleştiriliyor.
-- Büyük yedeklemeleri veya diğer dosyaları HANA büyük örnek birimlerinden Azure 'da yönetilen disk alanına kopyalama.
+- Hana Büyük Örneği'ndeki HANA örneklerinden nfs hisselerine ev sahipliği yapan Azure'daki bir VM'ye doğrudan yedekleme yapmak.
+- HANA Büyük Örnek birimlerinden Azure'da yönetilen disk alanına büyük yedeklemeleri veya diğer dosyaları kopyalama.
 
-HANA büyük örnekler ve Azure arasında verilerin toplu aktarımı için depolamayı yöneten VM 'Leri barındırmak üzere ayrı bir sanal ağ kullanın. Bu düzenleme, SAP uygulama katmanını çalıştıran VM 'Lere hizmet eden ExpressRoute ağ geçidinde büyük dosya veya veri aktarımının etkilerini önler. 
+HANA Büyük Örnekleri ve Azure arasında toplu veri aktarımı için depolamayı yöneten VM'leri barındırmak için ayrı bir sanal ağ kullanın. Bu düzenleme, BÜYÜK Dosya veya veri aktarımının HANA Large Instance'dan Azure'a SAP uygulama katmanını çalıştıran VM'lere hizmet veren ExpressRoute ağ geçidi üzerindeki etkilerini önler. 
 
-Daha ölçeklenebilir bir ağ mimarisi için:
+Daha ölçeklenebilir ağ mimarisi için:
 
 - Tek ve daha büyük bir SAP uygulama katmanı için birden çok sanal ağdan yararlanın.
-- Bu SAP sistemlerini aynı sanal ağ altındaki ayrı alt ağlarda birleştirmeye kıyasla, dağıtılan her SAP sistemi için ayrı bir sanal ağ dağıtın.
+- Dağıtılan her SAP sistemi için ayrı bir sanal ağ dağıtın, bu SAP sistemlerini aynı sanal ağ altında ayrı alt ağlarda birleştirerek karşılaştırın.
 
-  Azure 'da SAP HANA için daha ölçeklenebilir bir ağ mimarisi (büyük örnekler):
+  Azure'da SAP HANA (Büyük Örnekler) için daha ölçeklenebilir ağ mimarisi:
 
 ![SAP uygulama katmanını birden çok sanal ağ üzerinden dağıtma](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-Kurallara ve kısıtlamalara bağlı olarak, farklı SAP sistemlerine ait VM 'Leri barındıran farklı sanal ağlar arasında uygulamak istiyorsanız, bu sanal ağları eşlemelidir. Sanal ağ eşlemesi hakkında daha fazla bilgi için bkz. [sanal ağ eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+Kurallara ve kısıtlamalara bağlı olarak, farklı SAP sistemlerinin VM'lerini barındıran farklı sanal ağlar arasında uygulamak istiyorsanız, bu sanal ağlara bakmalısınız. Sanal ağ eşleme hakkında daha fazla bilgi için [Sanal ağ eşleme'ye](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)bakın.
 
 
-## <a name="routing-in-azure"></a>Azure 'da yönlendirme
+## <a name="routing-in-azure"></a>Azure'da Yönlendirme
 
-Varsayılan dağıtım, Azure 'daki SAP HANA için üç ağ yönlendirme hakkında önemli noktalar (büyük örnekler) için önemlidir:
+Varsayılan dağıtım olarak, Azure'daki SAP HANA (Büyük Örnekler) için üç ağ yönlendirme hususu önemlidir:
 
-* Azure 'daki SAP HANA (büyük örneklere) yalnızca Azure VM 'Leri ve şirket içi olarak değil, özel ExpressRoute bağlantısı aracılığıyla erişilebilir. Microsoft 'un sizin tarafınızdan sunulan Şirket içinden HANA büyük örnek birimlerine doğrudan erişim, hemen mümkün değildir. Geçişli yönlendirme kısıtlamaları, SAP HANA büyük örnek için kullanılan geçerli Azure ağ mimarisinden kaynaklanır. Şirket içinde çalışan SAP çözüm Yöneticisi gibi bazı yönetim istemcileri ve doğrudan erişim gerektiren uygulamalar SAP HANA veritabanına bağlanamaz. Özel durumlar için ' HANA büyük örneklere doğrudan yönlendirme ' bölümüne bakın.
+* Azure'daki SAP HANA'ya (Büyük Örnekler) yalnızca Azure VM'leri ve özel ExpressRoute bağlantısı üzerinden erişilebilir, doğrudan şirket içinden değil. Microsoft tarafından size teslim edildiği üzere şirket içi HANA Büyük Örnek birimlerine doğrudan erişim hemen mümkün değildir. Geçişli yönlendirme kısıtlamaları, SAP HANA Büyük Örneği için kullanılan geçerli Azure ağ mimarisinden kaynaklanmaktadır. Bazı yönetim istemcileri ve şirket içinde çalışan SAP Solution Manager gibi doğrudan erişim eki ihtiyacı olan uygulamalar SAP HANA veritabanına bağlanabilir. İstisnalar için 'HANA Büyük Örneklerine Doğrudan Yönlendirme' bölümünü kontrol edin.
 
-* Olağanüstü durum kurtarma için iki farklı Azure bölgesinde dağıtılan HANA büyük örnek birimleriniz varsa, geçmişte aynı geçici yönlendirme kısıtlamaları uygulanır. Diğer bir deyişle, bir bölgedeki bir HANA büyük örnek biriminin IP adresleri (örneğin, ABD Batı), başka bir bölgede dağıtılan bir HANA büyük örnek birimine yönlendirilmedi (örneğin, ABD Doğu). Bu kısıtlama, bölgeler genelinde Azure ağ eşleme kullanımını veya HANA büyük örnek birimlerini sanal ağlara bağlayan ExpressRoute devrelerinin çapraz bağlantı sağlamasından bağımsızdır. Grafik gösterimi için, "birden çok bölgede HANA büyük örnek birimlerini kullanma" bölümündeki şekle bakın. Dağıtılan mimariyle birlikte gelen bu kısıtlama, HANA sistem çoğaltmasının olağanüstü durum kurtarma işlevselliği olarak hemen kullanılmasını yasaklamıştır. Son değişiklikler için ' birden çok bölgede HANA büyük örnek birimlerini kullanma ' bölümüne bakın. 
+* Olağanüstü durum kurtarma için iki farklı Azure bölgesinde dağıtılan HANA Büyük Örnek birimlerine sahipseniz, geçmişte uygulanan geçici yönlendirme kısıtlamaları. Başka bir deyişle, bir bölgedeki HANA Büyük Örnek biriminin IP adresleri (örneğin, ABD Batısı) başka bir bölgede (örneğin, ABD Doğusu) dağıtılan bir HANA Büyük Örnek birimine yönlendirilmedi. Bu kısıtlama, bölgeler arasında Azure ağ eşleme sinin kullanımından veya HANA Büyük Örnek birimlerini sanal ağlara bağlayan ExpressRoute devrelerini birbirine bağlamadan bağımsızdı. Grafik gösterimi için , "HANA Büyük Örnek birimlerini birden çok bölgede kullanın" bölümündeki şilete bakın. Dağıtılan mimariyle birlikte gelen bu kısıtlama, HANA Sistem Çoğaltma'nın felaket kurtarma işlevi olarak hemen kullanılmasını yasakladı. Son değişiklikler için 'HANA Büyük Örnek birimlerini birden çok bölgede kullanın' bölümüne bakın. 
 
-* Azure (büyük örnekler) birimlerindeki SAP HANA, HANA büyük örnek dağıtımı istenirken gönderdiğiniz sunucu IP havuzu adres aralığından atanmış bir IP adresine sahiptir. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) altyapısı ve bağlantısı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Bu IP adresine Azure sanal ağlarını HANA büyük örneklerine bağlayan Azure abonelikleri ve devresi aracılığıyla erişilebilir. Bu sunucu IP havuzu adres aralığından atanan IP adresi doğrudan donanım birimine atanır. Bu çözümün ilk dağıtımında olduğu gibi, artık NAT *aracılığıyla atanmaz.* 
+* Azure'daki SAP HANA (Büyük Örnekler) birimlerinde, HANA Büyük Örnek dağıtımını talep ederken gönderdiğiniz sunucu IP havuzu adres aralığından atanmış bir IP adresi vardır. Daha fazla bilgi için, [Azure'da SAP HANA (Büyük Örnekler) altyapısı na ve bağlantıya](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın. Bu IP adresine, Azure sanal ağlarını HANA Büyük Örnekleri'ne bağlayan Azure abonelikleri ve devresi aracılığıyla erişilebilir. Bu sunucu IP havuzu adres aralığından atanan IP adresi doğrudan donanım birimine atanır. Bu çözümün ilk dağıtımlarında olduğu gibi artık NAT aracılığıyla *atanmıyor.* 
 
-### <a name="direct-routing-to-hana-large-instances"></a>HANA büyük örneklerine doğrudan yönlendirme
+### <a name="direct-routing-to-hana-large-instances"></a>HANA Büyük Örnekleridoğrudan Yönlendirme
 
 Varsayılan olarak, geçişli yönlendirme bu senaryolarda çalışmaz:
 
-* HANA büyük örnek birimleri ve şirket içi dağıtım arasında.
+* HANA Büyük Örnek birimleri ve şirket içi dağıtım arasında.
 
-* İki farklı bölgede dağıtılan HANA büyük örnek yönlendirmesi arasında.
+* İki farklı bölgede dağıtılan HANA Büyük Örnek yönlendirmesi arasında.
 
 Bu senaryolarda geçişli yönlendirmeyi etkinleştirmenin üç yolu vardır:
 
-- Veri yönlendirmek için bir ters proxy Örneğin, F5 BIG-IP, NGıNX, HANA büyük örneklerine ve şirket içi bir sanal güvenlik duvarı/trafik yönlendirme çözümü olarak bağlanan Azure sanal ağında dağıtılan Traffic Manager.
-- Şirket içi konumlar ile HANA büyük örnek birimleri arasında veya farklı bölgelerdeki HANA büyük örnek birimleri arasında yönlendirmeyi etkinleştirmek için bir Linux sanal makinesinde [Iptables kurallarını](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) kullanma. Iptables çalıştıran VM 'nin HANA büyük örneklerine ve şirket içine bağlanan Azure sanal ağı 'nda dağıtılması gerekir. VM 'nin ağ aktarım hızı beklenen ağ trafiği için yeterli olduğundan, sanal makinenin buna uygun olarak boyutlandırılması gerekir. VM ağı bant genişliği hakkında daha fazla bilgi için, [Azure 'Da Linux sanal makinelerinin makale boyutlarını](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)kontrol edin.
-- [Azure Güvenlik Duvarı](https://azure.microsoft.com/services/azure-firewall/) , şirket ıçı ve Hana büyük örnek birimleri arasında doğrudan trafiği etkinleştirmek için başka bir çözümdür. 
+- Verileri yönlendirmek için bir ters proxy, ve gelen. Örneğin, HANA Büyük Örnekleri'ne ve sanal bir güvenlik duvarı/trafik yönlendirme çözümü olarak şirket içi ağına bağlanan Azure sanal ağında dağıtılan Trafik Yöneticisi ile F5 BIG-IP, NGINX.
+- Şirket içi konumlar ve HANA Büyük Örnek birimleri arasında veya farklı bölgelerdeki HANA Büyük Örnek birimleri arasında yönlendirmeyi etkinleştirmek için Bir Linux VM'de [IPTable kurallarını](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) kullanma. IpTable çalıştıran VM'nin HANA Büyük Örnekleri'ne ve şirket içi sanal ağa bağlanan Azure sanal ağında dağıtılması gerekir. VM'nin buna göre boyutlandırılması gerekir, böylece VM'nin ağ kullanılabilirliği beklenen ağ trafiği için yeterlidir. VM ağ bant genişliği hakkında ayrıntılı bilgi için Azure'daki Linux sanal makinelerin makale Boyutlarını kontrol [edin.](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure Güvenlik Duvarı,](https://azure.microsoft.com/services/azure-firewall/) şirket içi ve HANA Büyük örnek birimleri arasında doğrudan trafiği etkinleştirmek için başka bir çözüm olacaktır. 
 
-Bu çözümlerin tüm trafiği bir Azure sanal ağı aracılığıyla yönlendirilir ve bu nedenle trafik, Azure ağ güvenlik grupları tarafından kullanılan veya Azure ağ güvenlik grupları tarafından, belirli IP adreslerinin veya IP adresi aralıklarının kullanıldığı yazılım tarafından da kısıtlanabilir. Şirket içinde etkinleştirilebilir veya HANA büyük örneklere erişime açık bir şekilde izin verilir. 
+Bu çözümlerin tüm trafiği bir Azure sanal ağı üzerinden yönlendirilir ve bu nedenle trafik kullanılan yumuşak cihazlar veya Azure Ağ Güvenlik Grupları tarafından ayrıca sınırlandırılabilir, böylece belirli IP adresleri veya IP adresi şirket içi ENGELLENEBILIR veya HANA Büyük Örnekleri'ne erişmesine açıkça izin verilebilir. 
 
 > [!NOTE]  
-> Üçüncü taraf ağ gereçlerini veya Iptables 'ı içeren özel çözümlerin uygulanması ve desteğinin Microsoft tarafından sağlandığının farkında olun. Destek, kullanılan bileşenin satıcısı veya tümleştirici tarafından sağlanmalıdır. 
+> Üçüncü taraf ağ cihazları veya IPTable'ları içeren özel çözümlerin uygulanması ve desteğinin Microsoft tarafından sağlanmadığını unutmayın. Destek, kullanılan bileşenin satıcısı veya entegratörü tarafından sağlanmalıdır. 
 
-#### <a name="express-route-global-reach"></a>Express Route Global Reach
-Microsoft, [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)adlı yeni bir işlevsellik sunmuştur. Global Reach, iki senaryoda HANA büyük örnekleri için kullanılabilir:
+#### <a name="express-route-global-reach"></a>Ekspres Rota Küresel Erişim
+Microsoft [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)adlı yeni bir işlev tanıttı. Global Reach, HANA Büyük Örnekleri için iki senaryoda kullanılabilir:
 
-- Farklı bölgelerde dağıtılan HANA büyük örnek birimlerinizde Şirket içinden doğrudan erişimi etkinleştirin
-- Farklı bölgelerde dağıtılan HANA büyük örnek birimleriniz arasında doğrudan iletişimi etkinleştir
+- Farklı bölgelerde dağıtılan HANA Büyük Örnek birimlerinize şirket içi doğrudan erişimi etkinleştirin
+- Farklı bölgelerde dağıtılan HANA Büyük Örnek birimleriniz arasında doğrudan iletişimi etkinleştirin
 
 
-##### <a name="direct-access-from-on-premises"></a>Şirket içinden doğrudan erişim
-Global Reach sunulan Azure bölgelerinde, şirket içi ağınızı, HANA büyük örnek birimlerinizde bulunan Azure sanal ağına bağlayan ExpressRoute bağlantı hattı için Global Reach işlevselliğinin etkinleştirilmesini isteyebilirsiniz. ExpressRoute bağlantı hattının şirket içi tarafında bazı maliyet etkileri vardır. Fiyatlar için [Global Reach eklentisinin](https://azure.microsoft.com/pricing/details/expressroute/)fiyatlarını kontrol edin. HANA büyük örnek birimlerini Azure 'a bağlayan devre ile ilgili ek maliyet yoktur. 
-
-> [!IMPORTANT]  
-> HANA büyük örnek birimleriniz ve şirket içi varlıklarınızla doğrudan erişimi etkinleştirmek için Global Reach kullanılması durumunda, ağ verileri ve denetim akışı **Azure sanal ağları aracılığıyla yönlendirilemez**, ancak doğrudan Microsoft kurumsal Exchange yönlendiricileri arasında değildir. Sonuç olarak, herhangi bir NSG veya ASG kuralı ya da bir Azure sanal ağında dağıttığınız herhangi bir güvenlik duvarı, NVA veya proxy türü dokunulmaz. **Şirket içinden HANA büyük örnek birimleri kısıtlamalarına doğrudan erişimi etkinleştirmek için ExpressRoute Global Reach kullanırsanız ve HANA büyük örnek birimlerine erişim izinleri şirket içi tarafında güvenlik duvarları içinde tanımlanmalıdır** 
-
-##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>Farklı Azure bölgelerinde HANA büyük örnekleri bağlama
-Aynı şekilde, ExpressRoute Global Reach, şirket içinde HANA büyük örnek birimlerine bağlamak için kullanılabildiği için, iki farklı bölgede sizin için dağıtılan Tow HANA büyük örnek kiracılarına bağlanmak için kullanılabilir. Yalıtım, HANA büyük örnek Kiracılarınızın her iki bölgede de Azure 'a bağlanmak için kullandığı ExpressRoute devreleri. İki farklı bölgede dağıtılan iki HANA büyük örnek kiracıyı bağlamak için ek ücret alınmaz. 
+##### <a name="direct-access-from-on-premises"></a>Şirket içinden Doğrudan Erişim
+Global Erişimin sunulduğu Azure bölgelerinde, şirket içi ağınızı HANA Büyük Örnek birimlerinize de bağlanan Azure sanal ağına bağlayan ExpressRoute devreniz için Global Reach işlevini etkinleştirme isteğinde bulunabilirsiniz. ExpressRoute devrenizin şirket içi tarafı için bazı maliyet etkileri vardır. Fiyatlar için [Global Reach Eklentisi](https://azure.microsoft.com/pricing/details/expressroute/)fiyatlarını kontrol edin. HANA Büyük Örnek birimi(ler) azure'a bağlayan devreyle ilgili ek bir ücret ödemezsiniz. 
 
 > [!IMPORTANT]  
-> Farklı HANA büyük örnek kiracılar arasındaki ağ trafiğinin veri akışı ve denetim akışı, Azure ağları üzerinden yönlendirilmeyecektir. Sonuç olarak, iki HANA büyük örnek kiracılar arasında iletişim kısıtlamalarını zorlamak için Azure işlevselliği veya NVA 'lar kullanamazsınız. 
+> HANA Büyük Örnek birimleriniz ve şirket içi varlıklarınız arasında doğrudan erişim sağlamak için Global Reach'i kullanmak durumunda, ağ verileri ve denetim akışı Azure sanal ağları üzerinden değil, doğrudan Microsoft kurumsal değişim yönlendiricileri arasında **yönlendirilir.** Sonuç olarak, bir Azure sanal ağında dağıttığınız NSG veya ASG kuralları veya herhangi bir güvenlik duvarı, NVA veya proxy'ye dokunulmaz. **Şirket içi HANA Büyük örnek birimleri kısıtlamalarına ve HANA'ya erişim izinlerine doğrudan erişimi etkinleştirmek için ExpressRoute Global Reach kullanıyorsanız, şirket içi taraftaki güvenlik duvarlarında tanımlanmalıdır** 
 
-ExpressRoute Global Reach etkinleştirme hakkında daha fazla bilgi için, [sanal ağı Hana büyük örneklerine bağlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)belgesini okuyun.
+##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>HANA Büyük Örnekleri'ni farklı Azure bölgelerinde bağlama
+Aynı şekilde, ExpressRoute Global Reach şirket içi HANA Büyük Örnek birimlerine bağlanmak için kullanılabildiği için, sizin için iki farklı bölgede dağıtılan iki HANA Büyük Örnek kiracısını bağlamak için kullanılabilir. Yalıtım, HANA Büyük Örnek kiracılarınızın her iki bölgede de Azure'a bağlanmak için kullandığı ExpressRoute devreleridir. İki farklı bölgede dağıtılan iki HANA Büyük Örnek kiracıyı bağlamak için ek ücret yoktur. 
 
+> [!IMPORTANT]  
+> Farklı HANA Büyük örnek kiracılar arasındaki ağ trafiğinin veri akışı ve denetim akışı azure ağları üzerinden yönlendirilmez. Sonuç olarak, iki HANA Büyük Örneği kiracınız arasındaki iletişim kısıtlamalarını uygulamak için Azure işlevselliğini veya NV'lerini kullanamazsınız. 
 
-## <a name="internet-connectivity-of-hana-large-instance"></a>HANA büyük örneğinin Internet bağlantısı
-HANA büyük örneğinin doğrudan internet *bağlantısı yok.* Örnek olarak, bu kısıtlama işletim sistemi görüntüsünü doğrudan işletim sistemi satıcısına kaydetme yeteneğinizi kısıtlayabilir. Yerel SUSE Linux Enterprise Server abonelik yönetim aracı sunucunuz veya Red Hat Enterprise Linux abonelik Yöneticisi ile çalışmanız gerekebilir.
-
-## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM 'Ler ve HANA büyük örnek arasında veri şifreleme
-HANA büyük örneği ve VM 'Ler arasında aktarılan veriler şifrelenmez. Ancak, yalnızca HANA DBMS yan ve JDBC/ODBC tabanlı uygulamalar arasındaki değişim için trafik şifrelemeyi etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [SAP tarafından bu belgelere](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)bakın.
-
-## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Birden çok bölgede HANA büyük örnek birimlerini kullanma
-
-Olağanüstü durum kurtarma kümesi UPS 'i gerçekleştirmek için, birden çok Azure bölgesinde KıANA büyük örnek birimlere sahip olmanız gerekir. Azure [Global VNET eşlemesi] kullanılmasına karşın, iki farklı bölgede HANA büyük örnek kiracılar arasında varsayılan olarak geçişli yönlendirme çalışmaz. Ancak, Global Reach iki farklı bölgede sağladığınız HANA büyük örnek birimleri arasındaki iletişim yolunu açar. ExpressRoute Global Reach bu kullanım senaryosu şunları sunar:
-
- - Ek proxy veya güvenlik duvarları olmadan HANA sistem çoğaltması
- - Sistem kopyaları veya sistem yenilemeleri gerçekleştirmek üzere iki farklı bölgedeki HANA büyük örnek birimleri arasında yedeklemeleri kopyalama
+ExpressRoute Global Reach'in nasıl etkinleştirileceği hakkında daha fazla bilgi için, sanal [ağı HANA'nın büyük örneklerine bağlayın](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)belgesini okuyun.
 
 
-![Farklı Azure bölgelerindeki Azure büyük örnek damgalarına bağlı sanal ağ](./media/hana-overview-architecture/image8-multiple-regions.png)
+## <a name="internet-connectivity-of-hana-large-instance"></a>HANA Büyük Örneği'nin Internet bağlantısı
+HANA Büyük Örnek doğrudan internet bağlantısı *yok.* Örnek olarak, bu sınırlama işletim sistemi görüntüsünü doğrudan işletim sistemi satıcısına kaydetme yeteneğinizi kısıtlar. Yerel SUSE Linux Enterprise Server Subscription Management Tool sunucunuz veya Red Hat Enterprise Linux Subscription Manager ile çalışmanız gerekebilir.
 
-Şekilde her iki bölgedeki farklı sanal ağların her iki Azure bölgesindeki (gri çizgiler) Azure 'da SAP HANA bağlanmak için kullanılan iki farklı ExpressRoute devresine nasıl bağlandığı gösterilmektedir. Bu iki çapraz bağlantının nedeni, her iki tarafta de MIMIN kesintiinden korunabilmektedir. İki Azure bölgesindeki iki sanal ağ arasındaki iletişim akışı iki farklı bölgedeki iki sanal ağın [genel eşlemesi](https://blogs.msdn.microsoft.com/azureedu/2018/04/24/how-to-setup-global-vnet-peering-in-azure/) üzerinden işlenmelidir (Mavi noktalı çizgi). Kalın kırmızı çizgi, iki farklı bölgedeki Kiracılarınızın HANA büyük örnek birimlerinin birbirleriyle iletişim kurmasına izin veren ExpressRoute Global Reach bağlantısını açıklar. 
+## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM'ler ve HANA Büyük Örneği arasında veri şifreleme
+HANA Büyük Örnek ve VM'ler arasında aktarılan veriler şifrelenmez. Ancak, tamamen HANA DBMS tarafı ile JDBC/ODBC tabanlı uygulamalar arasındaki değişim için trafiğin şifresini etkinleştirebilirsiniz. Daha fazla bilgi için [sap tarafından bu belgelere](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)bakın.
+
+## <a name="use-hana-large-instance-units-in-multiple-regions"></a>HANA Büyük Örnek birimlerini birden çok bölgede kullanma
+
+Olağanüstü durum kurtarma kurulumlarını gerçekleştirmek için birden çok Azure bölgesinde SHANA Büyük Örnek birimlerine sahip olmanız gerekir. Azure [Global Vnet Peering] kullanılarak bile, varsayılan olarak geçişli yönlendirme iki farklı bölgede HANA Büyük Örnek kiracılar arasında çalışmıyor. Ancak, Global Reach, iki farklı bölgede sağlamış olduğunuz HANA Büyük Örnek birimleri arasındaki iletişim yolunu açar. ExpressRoute Global Reach'in bu kullanım senaryosu şunları sağlar:
+
+ - Herhangi bir ek yakınlık veya güvenlik duvarı olmadan HANA Sistem Çoğaltma
+ - Sistem kopyalarını veya sistem yenilemelerini gerçekleştirmek için iki farklı bölgede HANA Büyük Örnek birimleri arasında yedekleme kopyalama
+
+
+![Farklı Azure bölgelerindeki Azure Büyük Örnek damgalarına bağlı sanal ağ](./media/hana-overview-architecture/image8-multiple-regions.png)
+
+Şekil, her iki bölgede de farklı sanal ağların, her iki Azure bölgesinde (gri çizgiler) Azure'da (Büyük Örnekler) SAP HANA'ya bağlanmak için kullanılan iki farklı ExpressRoute devresine nasıl bağlandığı gösterilmektedir. Bu iki çapraz bağlantının nedeni, her iki taraftaki MSEE'lerin kesintisinden korunmaktır. İki Azure bölgesinde yer alan iki sanal ağ arasındaki iletişim akışının, iki farklı bölgede (mavi noktalı çizgi) iki sanal anın [genel olarak ele](https://blogs.msdn.microsoft.com/azureedu/2018/04/24/how-to-setup-global-vnet-peering-in-azure/) alınması gerekir. Kalın kırmızı çizgi, iki farklı bölgede bulunan kiracılarınızın HANA Büyük Örnek birimlerinin birbiriyle iletişim kurmasını sağlayan ExpressRoute Global Reach bağlantısını açıklar. 
 
 > [!IMPORTANT] 
-> Birden çok ExpressRoute devresine birini kullandıysanız, trafiğin doğru şekılde yönlendirilmesini sağlamak için yol önbekleyen ve yerel tercih BGP ayarlarının kullanılması gerekir.
+> Birden çok ExpressRoute devresi kullandıysanız, trafiğin düzgün yönlendirilmesini sağlamak için AS Yolu ön bekleyeni ve Yerel Tercih BGP ayarları kullanılmalıdır.
 
 **Sonraki adımlar**
-- [SAP HANA (büyük örnekler) depolama mimarisini](hana-storage-architecture.md) inceleyin
+- [SAP HANA (Büyük Örnekler) depolama mimarisine](hana-storage-architecture.md) bakın

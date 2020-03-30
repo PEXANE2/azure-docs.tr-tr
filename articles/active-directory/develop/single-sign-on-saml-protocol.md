@@ -1,6 +1,6 @@
 ---
-title: Azure çoklu oturum açma SAML Protokolü | Microsoft Docs
-description: Bu makalede Azure Active Directory içindeki çoklu oturum açma SAML Protokolü açıklanmaktadır
+title: SAML Protokolü'nde Azure Tek İmza | Microsoft Dokümanlar
+description: Bu makalede, Azure Etkin Dizini'nde SAML protokolünde Tek Oturum
 services: active-directory
 documentationcenter: .net
 author: rwike77
@@ -18,23 +18,23 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262431"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Çoklu oturum açma SAML Protokolü
+# <a name="single-sign-on-saml-protocol"></a>Tek Oturum Açma SAML protokolü
 
-Bu makalede, Azure Active Directory (Azure AD) tarafından çoklu oturum açma için desteklenen SAML 2,0 kimlik doğrulama istekleri ve yanıtları ele alınmaktadır.
+Bu makale, Azure Etkin Dizini'nin (Azure AD) Tek Oturum Açma için desteklediği SAML 2.0 kimlik doğrulama isteklerini ve yanıtlarını kapsar.
 
-Aşağıdaki protokol diyagramında çoklu oturum açma sırası açıklanmaktadır. Bulut hizmeti (hizmet sağlayıcısı) bir `AuthnRequest` (kimlik doğrulama isteği) öğesini Azure AD 'ye (kimlik sağlayıcısı) geçirmek için HTTP yeniden yönlendirme bağlamasını kullanır. Daha sonra Azure AD, bulut hizmetine bir `Response` öğesi göndermek için bir HTTP POST bağlaması kullanır.
+Aşağıdaki protokol diyagramı tek oturum açma sırasını açıklar. Bulut hizmeti (hizmet sağlayıcısı), bir `AuthnRequest` (kimlik doğrulama isteği) öğesini Azure AD'ye (kimlik sağlayıcısı) geçirmek için bir HTTP Yeniden Yönlendirme bağlayıcısı kullanır. Azure AD daha sonra bir `Response` öğeyi bulut hizmetine göndermek için bir HTTP gönderisi kullanır.
 
-![Çoklu oturum açma Iş akışı](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![İş Akışında Tek İşaret](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
-## <a name="authnrequest"></a>Authbir kimlik doğrulama
+## <a name="authnrequest"></a>AuthnRequest
 
-Bir kullanıcı kimlik doğrulaması istemek için, bulut hizmetleri Azure AD 'ye bir `AuthnRequest` öğesi gönderir. Örnek SAML 2,0 `AuthnRequest` aşağıdaki örnekteki gibi görünebilir:
+Bulut hizmetleri, kullanıcı kimlik doğrulaması `AuthnRequest` istemek için Azure AD'ye bir öğe gönderir. Bir örnek SAML `AuthnRequest` 2.0 aşağıdaki örnek gibi görünebilir:
 
 ```
 <samlp:AuthnRequest
@@ -48,62 +48,62 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| Kimlik | Gerekli | Azure AD döndürülen yanıtın `InResponseTo` özniteliğini doldurmak için bu özniteliği kullanır. KIMLIK bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji, bir GUID 'nin dize gösterimine "ID" gibi bir dizeyi eklemek için kullanılır. Örneğin, `id6c1c178c166d486687be4aaf5e482730` geçerli bir KIMLIK. |
-| Sürüm | Gerekli | Bu parametre **2,0**olarak ayarlanmalıdır. |
-| IssueInstant | Gerekli | Bu, UTC değeri ve [gidiş dönüş biçimine ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)sahip bir tarih saat dizesidir. Azure AD bu türde bir DateTime değeri bekler, ancak bu değeri değerlendirmez veya kullanmaz. |
-| AssertionConsumerServiceUrl | İsteğe bağlı | Bu parametre sağlanmışsa, Azure AD 'deki bulut hizmetinin `RedirectUri` eşleşmelidir. |
-| ForceAuthn | İsteğe bağlı | Bu bir Boole değeridir. Doğru ise, kullanıcının Azure AD ile geçerli bir oturumu olsa bile yeniden kimlik doğrulaması yapması zorunlu olacaktır. |
-| Ipassive | İsteğe bağlı | Bu, Azure AD 'nin Kullanıcı etkileşimi olmadan kullanıcının kimlik doğrulaması yapması gerekip gerekmediğini, varsa oturum tanımlama bilgisini kullanmasını belirten bir Boole değeridir. Bu değer doğru ise, Azure AD oturum tanımlama bilgisini kullanarak kullanıcının kimliğini doğrulamaya çalışacaktır. |
+| Kimlik | Gerekli | Azure AD, döndürülen yanıtın `InResponseTo` özniteliğini doldurmak için bu özelliği kullanır. Kimlik bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji guid dize temsiline "id" gibi bir dize hazırlamaktır. Örneğin, `id6c1c178c166d486687be4aaf5e482730` geçerli bir kimliktir. |
+| Sürüm | Gerekli | Bu parametre **2.0**olarak ayarlanmalıdır. |
+| IssueInstant | Gerekli | Bu, UTC değeri ve [gidiş-dönüş biçimi ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)olan bir DateTime dizesidir. Azure AD bu tür bir DateTime değeri bekler, ancak değeri değerlendirmez veya kullanmaz. |
+| İddiaTüketiciServiceUrl | İsteğe bağlı | Sağlandığı takdirde, bu parametrenin Azure AD'deki bulut `RedirectUri` hizmetiyle eşleşmesi gerekir. |
+| ForceAuthn | İsteğe bağlı | Bu bir boolean değeridir. Doğruysa, Azure AD ile geçerli bir oturumu olsa bile kullanıcının yeniden kimlik doğrulaması yapmak zorunda olacağı anlamına gelir. |
+| IsPassive | İsteğe bağlı | Bu, Azure AD'nin varsa oturum çerezini kullanarak kullanıcı etkileşimi olmadan kullanıcının kimliğini sessizce doğrulayıp doğrulamayacağını belirten bir boolean değeridir. Bu doğruysa, Azure AD oturum çerezini kullanarak kullanıcının kimliğini doğrulamayı dener. |
 
-Onay, hedef, Assertionconsumerserviceındex, Attributeconsumerserviceındex ve ProviderName gibi diğer tüm `AuthnRequest` öznitelikleri **yok sayılır**.
+Consent, `AuthnRequest` Destination, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex ve ProviderName gibi diğer tüm öznitelikler **yoksayılır.**
 
-Azure AD, `AuthnRequest``Conditions` öğesini de yoksayar.
+Azure AD da `Conditions` öğeyi `AuthnRequest`yoksalan .
 
 ### <a name="issuer"></a>Veren
 
-Bir `AuthnRequest` `Issuer` öğesi, Azure AD 'deki bulut hizmetindeki **ServicePrincipalNames adlarından** birine tam olarak uymalıdır. Genellikle, bu, uygulama kaydı sırasında belirtilen **uygulama KIMLIĞI URI** 'sine ayarlanır.
+Bir `Issuer` `AuthnRequest` öğedeki öğe, Azure AD'deki bulut hizmetindeki **ServicePrincipalNames'ten** biriyle tam olarak eşleşmelidir. Genellikle, bu uygulama kaydı sırasında belirtilen **App ID URI** olarak ayarlanır.
 
-`Issuer` öğesini içeren bir SAML alıntısı aşağıdaki örneğe benzer şekilde görünür:
+Öğeyi `Issuer` içeren bir SAML alıntısı aşağıdaki örneğe benzer:
 
 ```
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
 ```
 
-### <a name="nameidpolicy"></a>Nameıdpolicy
+### <a name="nameidpolicy"></a>NameIDPolitikası
 
-Bu öğe, yanıtta belirli bir ad KIMLIĞI biçimi ister ve Azure AD 'ye gönderilen `AuthnRequest` öğelerinde isteğe bağlıdır.
+Bu öğe yanıtta belirli bir ad kimliği `AuthnRequest` biçimi ister ve Azure AD'ye gönderilen öğelerde isteğe bağlıdır.
 
-Bir `NameIdPolicy` öğesi aşağıdaki örneğe benzer şekilde görünür:
+Bir `NameIdPolicy` öğe aşağıdaki örneğe benzer:
 
 ```
 <NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
 ```
 
-`NameIDPolicy` sağlanmışsa, isteğe bağlı `Format` özniteliğini dahil edebilirsiniz. `Format` özniteliği aşağıdaki değerlerden yalnızca birine sahip olabilir; diğer herhangi bir değer bir hatayla sonuçlanır.
+`NameIDPolicy` Sağlanırsa, isteğe bağlı `Format` özniteliğini ekleyebilirsiniz. Öznitelik `Format` aşağıdaki değerlerden yalnızca birine sahip olabilir; başka bir değer bir hata yla sonuçlanır.
 
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Azure Active Directory, NameID talebini ikili bir tanımlayıcı olarak verir.
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Azure Active Directory, e-posta adresi biçiminde NameID talebini yayınlar.
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Bu değer Azure Active Directory talep biçimini seçmesine izin verir. Azure Active Directory, NameID 'yi ikili bir tanımlayıcı olarak verir.
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory NameID talebini, geçerli SSO işlemi için benzersiz olan rastgele oluşturulmuş bir değer olarak verir. Bu, değerin geçici olduğu ve kimliği doğrulanmış kullanıcıyı tanımlamak için kullanılamayan anlamına gelir.
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Azure Active Directory, NameID iddiasını çift eşli tanımlayıcı olarak yayınlar.
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Azure Active Directory, NameID iddiasını e-posta adresi biçiminde yayınlar.
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Bu değer, Azure Active Directory'nin talep biçimini seçmesine izin verir. Azure Etkin Dizin, NameID'yi çift eşli tanımlayıcı olarak yayınlar.
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Etkin Dizini, NameID iddiasını geçerli SSO işlemine özgü rasgele oluşturulmuş bir değer olarak yayınlar. Bu, değerin geçici olduğu ve kimlik doğrulayan kullanıcıyı tanımlamak için kullanılamayacağı anlamına gelir.
 
-Azure AD `AllowCreate` özniteliğini yoksayar.
+Azure AD özniteliği yoksayılsa. `AllowCreate`
 
-### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` öğesi istenen kimlik doğrulama yöntemlerini belirtir. Azure AD 'ye gönderilen `AuthnRequest` öğelerinde isteğe bağlıdır. Azure AD, `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`gibi `AuthnContextClassRef` değerlerini destekler.
+### <a name="requestauthncontext"></a>İstekAuthnContext
+Öğe, `RequestedAuthnContext` istenen kimlik doğrulama yöntemlerini belirtir. Azure AD'ye gönderilen öğelerde `AuthnRequest` isteğe bağlıdır. Azure AD `AuthnContextClassRef` gibi `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`değerleri destekler.
 
 ### <a name="scoping"></a>Kapsam
-Kimlik sağlayıcılarının bir listesini içeren `Scoping` öğesi, Azure AD 'ye gönderilen `AuthnRequest` öğelerinde isteğe bağlıdır.
+Kimlik `Scoping` sağlayıcılarının listesini içeren öğe, Azure `AuthnRequest` AD'ye gönderilen öğelerde isteğe bağlıdır.
 
-Sağlanmışsa, `ProxyCount` özniteliği, `IDPListOption` veya `RequesterID` öğesi desteklenmez.
+Sağlandığı takdirde, desteklenmedikleri için `IDPListOption` `RequesterID` `ProxyCount` özniteliği veya öğeyi eklemeyin.
 
 ### <a name="signature"></a>İmza
-Azure AD imzalı kimlik doğrulama isteklerini desteklemediği için `AuthnRequest` öğelerine `Signature` öğesi eklemeyin.
+Azure AD imzalı `Signature` kimlik `AuthnRequest` doğrulama isteklerini desteklemediği için öğelere bir öğe eklemeyin.
 
 ### <a name="subject"></a>Özne
-Azure AD, `AuthnRequest` öğelerin `Subject` öğesini yoksayar.
+Azure AD öğelerin `Subject` `AuthnRequest` öğesini yoksayılsa.
 
 ## <a name="response"></a>Yanıt
-İstenen bir oturum açma işlemi başarıyla tamamlandığında, Azure AD, bulut hizmetine bir yanıt gönderir. Başarılı bir oturum açma girişimine yanıt aşağıdaki örneğe benzer şekilde görünür:
+İstenen bir oturum açma başarıyla tamamlandığında, Azure AD bulut hizmetine bir yanıt gönderir. Başarılı bir oturum açma girişimine verilen yanıt aşağıdaki örneğe benzer:
 
 ```
 <samlp:Response ID="_a4958bfd-e107-4e67-b06d-0d85ade2e76a" Version="2.0" IssueInstant="2013-03-18T07:38:15.144Z" Destination="https://contoso.com/identity/inboundsso.aspx" InResponseTo="id758d0ef385634593a77bdf7e632984b6" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -150,16 +150,16 @@ Azure AD, `AuthnRequest` öğelerin `Subject` öğesini yoksayar.
 
 ### <a name="response"></a>Yanıt
 
-`Response` öğesi, yetkilendirme isteğinin sonucunu içerir. Azure AD, `Response` öğesindeki `ID`, `Version` ve `IssueInstant` değerlerini ayarlar. Ayrıca, aşağıdaki öznitelikleri de ayarlar:
+Öğe, `Response` yetkilendirme isteğinin sonucunu içerir. Azure AD `ID` `Response` öğedeki `IssueInstant` ve `Version` değerleri ayarlar. Ayrıca aşağıdaki öznitelikleri ayarlar:
 
-* `Destination`: oturum açma başarıyla tamamlandığında, bu hizmet sağlayıcının (bulut hizmeti) `RedirectUri` ayarlanır.
-* `InResponseTo`: Bu, yanıtı Başlatan `AuthnRequest` öğesinin `ID` özniteliğine ayarlanır.
+* `Destination`: Oturum açma başarıyla tamamlandığında, bu `RedirectUri` işlem servis sağlayıcısının (bulut hizmeti) ayarlanır.
+* `InResponseTo`: Bu, yanıtı `ID` başlatan öğenin `AuthnRequest` özniteliğine ayarlanır.
 
 ### <a name="issuer"></a>Veren
 
-Azure AD, `Issuer` öğesini \<TenantIDGUID > Azure AD kiracısının kiracı KIMLIĞI olduğu `https://login.microsoftonline.com/<TenantIDGUID>/` olarak ayarlar.
+Azure AD, `Issuer` öğeyi TenantIDGUID `https://login.microsoftonline.com/<TenantIDGUID>/`>'nin Azure AD kiracısının kiracı kimliği olduğu yer \<olarak ayarlar.
 
-Örneğin, veren öğesiyle bir yanıt aşağıdaki örneğe benzeyebilir:
+Örneğin, Veren öğesi ile bir yanıt aşağıdaki örnek gibi görünebilir:
 
 ```
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
@@ -167,11 +167,11 @@ Azure AD, `Issuer` öğesini \<TenantIDGUID > Azure AD kiracısının kiracı KI
 
 ### <a name="status"></a>Durum
 
-`Status` öğesi, oturum açma başarısını veya başarısızlığını alır. Bu, bir kodu içeren `StatusCode` öğesini veya isteğin durumunu temsil eden iç içe geçmiş kodlar kümesini içerir. Ayrıca, oturum açma işlemi sırasında oluşturulan özel hata iletilerini içeren `StatusMessage` öğesi de içerir.
+Öğe, `Status` oturum açmanın başarısını veya başarısızlığını iletir. Bir kod `StatusCode` veya isteğin durumunu temsil eden iç içe kodlar kümesini içeren öğeyi içerir. Ayrıca, oturum `StatusMessage` açma işlemi sırasında oluşturulan özel hata iletilerini içeren öğeyi de içerir.
 
 <!-- TODO: Add an authentication protocol error reference -->
 
-Aşağıdaki örnek, başarısız bir oturum açma girişimine bir SAML yanıtı örneğidir.
+Aşağıdaki örnek, başarısız bir oturum açma girişimine verilen SAML yanıtıdır.
 
 ```
 <samlp:Response ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -188,11 +188,11 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 ### <a name="assertion"></a>Onaylama işlemi
 
-`ID`, `IssueInstant` ve `Version`ek olarak, Azure AD yanıtın `Assertion` öğesinde aşağıdaki öğeleri ayarlar.
+Buna ek `ID`olarak `IssueInstant` `Version`, ve , Azure AD `Assertion` yanıt öğesiaşağıdaki öğeleri ayarlar.
 
 #### <a name="issuer"></a>Veren
 
-Bu, Azure AD kiracısının kiracı KIMLIĞI olan \<TenantIDGUID > `https://sts.windows.net/<TenantIDGUID>/`olarak ayarlanır.
+Bu, TenantIDGUID>'nin Azure AD kiracısının Kiracı Kimliği olduğu `https://sts.windows.net/<TenantIDGUID>/`yer \<olarak ayarlanır.
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
@@ -200,7 +200,7 @@ Bu, Azure AD kiracısının kiracı KIMLIĞI olan \<TenantIDGUID > `https://sts.
 
 #### <a name="signature"></a>İmza
 
-Azure AD, başarılı bir oturum açmaya yanıt olarak onaylama işlemi imzalar. `Signature` öğesi, bulut hizmetinin onay bütünlüğünü doğrulamak üzere kaynağın kimliğini doğrulamak için kullanabileceği dijital bir imza içerir.
+Azure AD, başarılı bir oturum açma ya da bu iddiayı imzalar. Öğe, `Signature` bulut hizmetinin iddianın bütünlüğünü doğrulamak için kaynağı doğrulamak için kullanabileceği dijital imza içerir.
 
 Bu dijital imzayı oluşturmak için Azure AD, meta veri belgesinin `IDPSSODescriptor` öğesinde imzalama anahtarını kullanır.
 
@@ -212,9 +212,9 @@ Bu dijital imzayı oluşturmak için Azure AD, meta veri belgesinin `IDPSSODescr
 
 #### <a name="subject"></a>Özne
 
-Bu, onay içindeki deyimlerin konusu olan sorumluyu belirtir. Kimliği doğrulanmış kullanıcıyı temsil eden bir `NameID` öğesi içerir. `NameID` değeri, yalnızca belirtecin hedef kitlesi olan hizmet sağlayıcısına yönlendirilen hedeflenen bir tanıtıcıdır. Kalıcı, iptal edilebilir, ancak hiçbir şekilde yeniden atanmaz. Ayrıca, kullanıcı hakkındaki herhangi bir şeyi açığa çıkarmadığından ve öznitelik sorguları için bir tanımlayıcı olarak kullanılamaz.
+Bu, iddiadaki ifadelerin konusu olan asıl lığı belirtir. Kimlik doğrulaması yapılan kullanıcıyı temsil eden bir `NameID` öğe içerir. Değer, `NameID` yalnızca belirteci için hedef kitle olan hizmet sağlayıcısına yönlendirilen hedeflenmiş bir tanımlayıcıdır. Bu kalıcıdır - iptal edilebilir, ancak yeniden atandırılmalı. Ayrıca opaktır, kullanıcı hakkında hiçbir şey göstermez ve öznitelik sorguları için tanımlayıcı olarak kullanılamaz.
 
-`SubjectConfirmation` öğesinin `Method` özniteliği her zaman `urn:oasis:names:tc:SAML:2.0:cm:bearer`olarak ayarlanmıştır.
+Öğenin `Method` `SubjectConfirmation` özniteliği her zaman `urn:oasis:names:tc:SAML:2.0:cm:bearer`.
 
 ```
 <Subject>
@@ -227,7 +227,7 @@ Bu, onay içindeki deyimlerin konusu olan sorumluyu belirtir. Kimliği doğrulan
 
 #### <a name="conditions"></a>Koşullar
 
-Bu öğe, SAML onaylamaları için kabul edilebilir kullanımını tanımlayan koşulları belirtir.
+Bu öğe, SAML iddialarının kabul edilebilir kullanımını tanımlayan koşulları belirtir.
 
 ```
 <Conditions NotBefore="2013-03-18T07:38:15.128Z" NotOnOrAfter="2013-03-18T08:48:15.128Z">
@@ -237,14 +237,14 @@ Bu öğe, SAML onaylamaları için kabul edilebilir kullanımını tanımlayan k
 </Conditions>
 ```
 
-`NotBefore` ve `NotOnOrAfter` öznitelikleri, onaylama işlemi için geçerli olduğu aralığı belirtir.
+Ve `NotBefore` `NotOnOrAfter` öznitelikleri, iddianın geçerli olduğu aralığı belirtir.
 
-* `NotBefore` özniteliğin değeri, `Assertion` öğesinin `IssueInstant` özniteliği değerinden daha sonra eşittir veya biraz (küçüktür). Azure AD, kendisiyle bulut hizmeti (hizmet sağlayıcısı) arasında herhangi bir zaman farkı hesaba almaz ve bu saate herhangi bir arabellek eklemez.
-* `NotOnOrAfter` özniteliğinin değeri, `NotBefore` özniteliği değerinden daha sonra 70 dakikadır.
+* Özniteliğin `NotBefore` değeri, `IssueInstant` `Assertion` öğenin özniteliğinin değerinden daha sonra (bir saniyeden kısa) eşit veya biraz daha kısadır. Azure AD kendisi ile bulut hizmeti (servis sağlayıcısı) arasındaki zaman farkını hesaba katmaz ve bu süreye herhangi bir arabellek eklemez.
+* Özniteliğin `NotOnOrAfter` değeri, özniteliğin değerinden `NotBefore` 70 dakika sonradır.
 
 #### <a name="audience"></a>Hedef kitle
 
-Bu, amaçlanan bir izleyiciyi tanımlayan bir URI içerir. Azure AD, bu öğenin değerini, oturum açmayı Başlatan `AuthnRequest` `Issuer` öğesinin değerine ayarlar. `Audience` değerini değerlendirmek için, uygulama kaydı sırasında belirtilen `App ID URI` değerini kullanın.
+Bu, amaçlanan bir hedef kitleyi tanımlayan bir URI içerir. Azure AD, bu öğenin değerini `Issuer` oturum açma `AuthnRequest` işlemini başlatan öğenin öğesinin değerine ayarlar. `Audience` Değeri değerlendirmek için, uygulama kaydı `App ID URI` sırasında belirtilen değerin değerini kullanın.
 
 ```
 <AudienceRestriction>
@@ -252,11 +252,11 @@ Bu, amaçlanan bir izleyiciyi tanımlayan bir URI içerir. Azure AD, bu öğenin
 </AudienceRestriction>
 ```
 
-`Issuer` değeri gibi `Audience` değeri, Azure AD 'deki bulut hizmetini temsil eden hizmet sorumlusu adlarından biriyle tam olarak eşleşmelidir. Ancak, `Issuer` öğesinin değeri bir URI değeri değilse, yanıttaki `Audience` değeri `spn:`önekli `Issuer` değeridir.
+`Issuer` Değer gibi, `Audience` değer de Azure AD'deki bulut hizmetini temsil eden hizmet temel adlarından biriyle tam olarak eşleşmelidir. `Issuer` Ancak, öğenin değeri URI değeri değilse, `Audience` yanıttaki `Issuer` değer . `spn:`
 
-#### <a name="attributestatement"></a>AttributeStatement
+#### <a name="attributestatement"></a>ÖznitelikBildirimi
 
-Bu konu veya Kullanıcı hakkında talepler içerir. Aşağıdaki alıntı bir örnek `AttributeStatement` öğesi içerir. Üç nokta, öğesinin birden çok öznitelik ve öznitelik değeri içerebileceğini belirtir.
+Bu, konu veya kullanıcı yla ilgili talepleri içerir. Aşağıdaki alıntı bir `AttributeStatement` örnek öğe içerir. Elips, öğenin birden çok öznitelik ve öznitelik değerleri içerebileceğini gösterir.
 
 ```
 <AttributeStatement>
@@ -270,15 +270,15 @@ Bu konu veya Kullanıcı hakkında talepler içerir. Aşağıdaki alıntı bir �
 </AttributeStatement>
 ```        
 
-* **Ad talebi** -`Name` özniteliğinin değeri (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`), `testuser@managedtenant.com`gibi kimliği doğrulanmış kullanıcının Kullanıcı asıl adıdır.
-* **Objectıdentifier Claim** -`ObjectIdentifier` özniteliğin değeri (`http://schemas.microsoft.com/identity/claims/objectidentifier`), Azure AD 'de kimliği doğrulanmış kullanıcıyı temsil eden dizin nesnesinin `ObjectId`. `ObjectId`, sabit, genel olarak benzersiz ve kimliği doğrulanmış kullanıcının güvenli tanımlayıcısını yeniden kullanır.
+* **Ad Talebi** - Özniteliğin `Name` `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`değeri ( ) kimlik doğrulaması yapılan kullanıcının `testuser@managedtenant.com`kullanıcı ana adıdır.
+* **ObjectIdentifier Claim** - Öznitelik `ObjectIdentifier` değeri`http://schemas.microsoft.com/identity/claims/objectidentifier`( `ObjectId` ) Azure AD'de kimlik doğrulaması yapılan kullanıcıyı temsil eden dizin nesnesidir. `ObjectId`değişmez, genel olarak benzersiz dir ve kimliği doğrulanan kullanıcının güvenli tanımlayıcısını yeniden kullanın.
 
-#### <a name="authnstatement"></a>Authndeyim
+#### <a name="authnstatement"></a>AuthnStatement
 
-Bu öğe, onaylama konusunun belirli bir zamanda belirli bir anlama göre doğrulandığını onaylar.
+Bu öğe, iddia öznesinin belirli bir zamanda belirli bir araçla doğrulandığını ileri sürerek ileri süredilir.
 
-* `AuthnInstant` özniteliği, kullanıcının kimlik doğrulamasının Azure AD ile süresini belirtir.
-* `AuthnContext` öğesi, kullanıcının kimliğini doğrulamak için kullanılan kimlik doğrulaması bağlamını belirtir.
+* Öznitelik, `AuthnInstant` kullanıcının Azure AD ile kimlik doğrulamasını belirlediği zamanı belirtir.
+* Öğe, `AuthnContext` kullanıcının kimliğini doğrulamak için kullanılan kimlik doğrulama bağlamını belirtir.
 
 ```
 <AuthnStatement AuthnInstant="2013-03-18T07:33:56.000Z" SessionIndex="_bf9c623d-cc20-407a-9a59-c2d0aee84d12">

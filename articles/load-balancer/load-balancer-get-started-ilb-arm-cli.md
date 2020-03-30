@@ -1,7 +1,7 @@
 ---
-title: Bir iç temel yük dengeleyici - Azure CLI'yı oluşturma
+title: Dahili bir Temel Yük Dengeleyicisi Oluşturma - Azure CLI
 titleSuffix: Azure Load Balancer
-description: Bu makalede, Azure CLı kullanarak iç yük dengeleyici oluşturmayı öğrenin
+description: Bu makalede, Azure CLI kullanarak bir iç yük dengeleyicisi nasıl oluşturulacak öğrenin
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
-ms.openlocfilehash: 8726991682ca8c2eabd628f1539ff940bf94e03d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79284115"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457020"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI kullanarak sanal makinelerin yük dengelemesi için iç yük dengeleyici oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede, sanal makinelerin yük dengelemesi için iç yük dengeleyicinin na
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.28 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.28 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -39,9 +39,10 @@ Aşağıdaki örnek *eastus* konumunda *myResourceGroupILB* adlı bir kaynak gru
     --name myResourceGroupILB \
     --location eastus
 ```
+
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-*az network vnet create* komutunu kullanarak *myResourceGroup* içinde *mySubnet* adlı bir alt ağ ile [myVnet](https://docs.microsoft.com/cli/azure/network/vnet) adlı bir sanal ağ oluşturun.
+[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) komutunu kullanarak *myResourceGroup* içinde *mySubnet* adlı bir alt ağ ile *myVnet* adlı bir sanal ağ oluşturun.
 
 ```azurecli-interactive
   az network vnet create \
@@ -50,6 +51,7 @@ Aşağıdaki örnek *eastus* konumunda *myResourceGroupILB* adlı bir kaynak gru
     --location eastus \
     --subnet-name mySubnet
 ```
+
 ## <a name="create-basic-load-balancer"></a>Temel Yük Dengeleyici Oluşturma
 
 Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
@@ -60,7 +62,7 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
 
 ### <a name="create-the-load-balancer"></a>Yük dengeleyiciyi oluşturma
 
-"* Kısmına 10.0.0.7" özel IP adresi ile ilişkili **Mybackendpool** adlı bir arka uç havuzu olan **myön uç**adlı ön uç IP **yapılandırmasını içeren,** [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı bir iç Load Balancer oluşturun.
+Az ağ lb ile bir iç Yük Dengeleyici **myFrontEnd**adlı bir frontend IP yapılandırması içeren **myLoadBalancer** , özel bir IP adresi **10.0.0.7 ile ilişkili **myBackEndPool** adlı bir arka uç havuzu [oluşturun.](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest)
 
 ```azurecli-interactive
   az network lb create \
@@ -71,7 +73,8 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
     --backend-pool-name myBackEndPool \
     --vnet-name myVnet \
     --subnet mySubnet      
-  ```
+```
+
 ### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
 
 Durum araştırması tüm sanal makine örneklerini denetleyerek ağ trafiği aldıklarından emin olur. Sistem durumu denetimi başarısız olan sanal makine örnekleri tekrar çevrimiçi olana ve sistem durumu denetimi iyi olduğuna karar verene kadar yük dengeleyiciden kaldırılır. Sanal makinelerin durumunu izlemek için [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) ile bir durum araştırması oluşturun. 
@@ -87,7 +90,7 @@ Durum araştırması tüm sanal makine örneklerini denetleyerek ağ trafiği al
 
 ### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
-Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç IP havuzunu tanımlar. *myFrontEnd* ön uç havuzunda 80 numaralı bağlantı noktasını dinlemek ve yine 80 numaralı bağlantı noktasını kullanarak [myBackEndPool](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) arka uç adres havuzuna yük dengelemesi yapılmış ağ trafiğini göndermek için *az network lb rule create* ile *myHTTPRule* yük dengeleyici kuralı oluşturun. 
+Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç IP havuzunu tanımlar. *myFrontEnd* ön uç havuzunda 80 numaralı bağlantı noktasını dinlemek ve yine 80 numaralı bağlantı noktasını kullanarak *myBackEndPool* arka uç adres havuzuna yük dengelemesi yapılmış ağ trafiğini göndermek için [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) ile *myHTTPRule* yük dengeleyici kuralı oluşturun. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -128,9 +131,9 @@ Bu örnekte, yük dengeleyici için arka uç sunucular olarak kullanılacak iki 
 
 ### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
-[az vm availabilityset create](/cli/azure/network/nic) komutunu kullanarak kullanılabilirlik kümesi oluşturun
+[az vm kullanılabilirlik seti oluşturmak](/cli/azure/network/nic) ile bir kullanılabilirlik kümesi oluşturma
 
- ```azurecli-interactive
+```azurecli-interactive
   az vm availability-set create \
     --resource-group myResourceGroupILB \
     --name myAvailabilitySet
@@ -180,11 +183,11 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 [az vm create](/cli/azure/vm#az-vm-create) komutunu kullanarak sanal makineleri oluşturun.
 
- ```azurecli-interactive
+```azurecli-interactive
 for i in `seq 1 2`; do
   az vm create \
     --resource-group myResourceGroupILB \
@@ -196,6 +199,7 @@ for i in `seq 1 2`; do
     --custom-data cloud-init.txt
     done
 ```
+
 Sanal makinelerin dağıtılması birkaç dakika sürebilir.
 
 ### <a name="create-a-vm-for-testing-the-load-balancer"></a>Yük dengeleyiciyi test etmek için sanal makine oluşturma
@@ -221,14 +225,15 @@ Yük dengeleyicinin özel IP adresini almak için [az network lb show](/cli/azur
   az network lb show \
     --name myLoadBalancer \
     --resource-group myResourceGroupILB
-``` 
-![Yük dengeleyiciyi test etme](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
+```
+
+![Yük dengeleyiciyi sınama](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, [az group delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu, yük dengeleyiciyi ve tüm ilgili kaynakları kaldırabilirsiniz.
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete --name myResourceGroupILB
 ```
 

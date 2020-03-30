@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files için kaydolun | Microsoft Docs
-description: Azure NetApp Files kullanmak için nasıl kayıt yapılacağını açıklar.
+title: Azure NetApp Dosyaları için kaydolun | Microsoft Dokümanlar
+description: Azure NetApp Dosyalarını kullanmak için nasıl kaydolunur açıklanır.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,69 +15,69 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
 ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274066"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files için kaydolma
 
 > [!IMPORTANT] 
-> Azure NetApp Files kaynak sağlayıcısını kaydetmeden önce, Azure NetApp Files ekibinden hizmete erişim verildiğini onaylayan bir e-posta almış olmanız gerekir. 
+> Azure NetApp Files kaynak sağlayıcısını kaydetmeden önce, Azure NetApp Files ekibinden hizmete erişim izni verildiğini onaylayan bir e-posta almış olmanız gerekir. 
 
-Bu makalede, hizmeti kullanmaya başlayabilmeniz için Azure NetApp Files nasıl kaydolacağınızı öğrenin.
+Bu makalede, hizmeti kullanmaya başlayabilmek için Azure NetApp Dosyalarına nasıl kaydolabileceğinizi öğrenin.
 
-## <a name="waitlist"></a>Hizmete erişmek için bir eklenebileceğinizi isteği gönder
+## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Hizmete erişmek için bekleme listesi isteği gönderme
 
-1. [Azure NetApp Files eklenebileceğinizi gönderim sayfası](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)aracılığıyla Azure NetApp Files hizmetine erişmek için bir eklenebileceğinizi isteği gönderir. 
+1. Azure NetApp Files hizmetine Erişmek için bekleme listesi isteğini [Azure NetApp Dosyaları bekleme listesi gönderme sayfası](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)üzerinden gönderin. 
 
-    Waitlist kayıt hizmeti, anında hizmet erişimini garanti etmez. 
+    Bekleme listesi kaydolma, anında hizmet erişimini garanti etmez. 
 
-2. Diğer görevlerle devam etmeden önce Azure NetApp Files ekibinden resmi bir onay e-postası için bekleyin. 
+2. Diğer görevlere devam etmeden önce Azure NetApp Files ekibinden resmi onay e-postası bekleyin. 
 
-## <a name="resource-provider"></a>NetApp kaynak sağlayıcısını kaydetme
+## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>NetApp Kaynak Sağlayıcısı'nı Kaydedin
 
-Hizmeti kullanmak için, Azure NetApp Files için Azure Kaynak sağlayıcısını kaydetmeniz gerekir.
+Hizmeti kullanmak için Azure NetApp Dosyaları için Azure Kaynak Sağlayıcısı'nı kaydetmeniz gerekir.
 
 > [!NOTE] 
-> Hizmet için erişim izni verilmeden de NetApp kaynak sağlayıcısını başarıyla kaydedebileceksiniz. Ancak, erişim yetkilendirmesi olmadan bir NetApp hesabı ya da başka bir Azure NetApp Files kaynağı oluşturmaya yönelik Azure portal veya API isteği aşağıdaki hata ile reddedilir:  
+> NetApp Kaynak Sağlayıcısı'nı hizmet erişimi ne olursa olsun başarılı bir şekilde kaydedebilirsiniz. Ancak, erişim izni olmadan, herhangi bir Azure portalı veya API'nin NetApp hesabı veya başka bir Azure NetApp Files kaynağı oluşturma isteği aşağıdaki hatayla reddedilecektir:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 
-1. Azure portal sağ üst köşedeki Azure Cloud Shell simgesine tıklayın:
+1. Azure portalından sağ üst köşedeki Azure Bulut BulutU simgesini tıklatın:
 
-      ![Azure Cloud Shell simgesi](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
+      ![Azure Bulut Kabuğu simgesi](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. Azure hesabınızda birden çok aboneliğiniz varsa, Azure NetApp Files için beyaz listeye alınmış olanı seçin:
+2. Azure hesabınızda birden çok aboneliğiniz varsa, Azure NetApp Dosyaları için beyaz listeye alınmış olan aboneliği seçin:
     
         az account set --subscription <subscriptionId>
 
-3. Azure Cloud Shell konsolunda, aboneliğinizin beyaz listeye eklendiğini doğrulamak için aşağıdaki komutu girin:
+3. Azure Bulut BulutU konsolunda, aboneliğinizin beyaz listeye alındığını doğrulamak için aşağıdaki komutu girin:
     
         az feature list | grep NetApp
 
-   Komut çıktısı şu şekilde görünür:
+   Komut çıktısı aşağıdaki gibi görünür:
    
        "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
        "name": "Microsoft.NetApp/ANFGA" 
        
-   abonelik KIMLIĞINIZ `<SubID>`.
+   `<SubID>`abonelik kimliğinizdir.
 
-    `Microsoft.NetApp/ANFGA`özellik adını görmüyorsanız, hizmete erişiminiz yok demektir. Bu adımla durdur. Devam etmeden önce hizmet erişimi istemek üzere [hizmete erişmek için bir eklenebileceğinizi isteği gönderme](#waitlist) konusundaki yönergeleri izleyin. 
+    Özellik adını `Microsoft.NetApp/ANFGA`görmüyorsanız, hizmete erişiminiz yoktur. Bu adımda dur. Devam etmeden önce hizmete erişim istemek [için hizmete erişmek için bekleme listesi isteği gönder'deki](#waitlist) yönergeleri izleyin. 
 
-4. Azure Cloud Shell konsolunda, Azure Kaynak sağlayıcısı 'nı kaydetmek için aşağıdaki komutu girin: 
+4. Azure Bulut BulutU konsolunda, Azure Kaynak Sağlayıcısı'nı kaydetmek için aşağıdaki komutu girin: 
     
         az provider register --namespace Microsoft.NetApp --wait
 
-   `--wait` parametresi, konsolun kaydın tamamlanmasını beklemesini ister. Kayıt işleminin tamamlanması biraz zaman alabilir.
+   `--wait` Parametre, konsola kaydın tamamlanmasını beklemesini bildirir. Kayıt işleminin tamamlanması biraz zaman alabilir.
 
-5. Azure Cloud Shell konsolunda, Azure Kaynak sağlayıcısı 'nın kaydedildiğini doğrulamak için aşağıdaki komutu girin: 
+5. Azure Bulut BulutU konsolunda, Azure Kaynak Sağlayıcısı'nın kayıtlı olduğunu doğrulamak için aşağıdaki komutu girin: 
     
         az provider show --namespace Microsoft.NetApp
 
-   Komut çıktısı şu şekilde görünür:
+   Komut çıktısı aşağıdaki gibi görünür:
    
         {
         "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
@@ -85,13 +85,13 @@ Hizmeti kullanmak için, Azure NetApp Files için Azure Kaynak sağlayıcısın�
         "registrationState": "Registered", 
         "resourceTypes": […. 
 
-   abonelik KIMLIĞINIZ `<SubID>`.  `state` parametre değeri `Registered`gösterir.
+   `<SubID>`abonelik kimliğinizdir.  `state` Parametre değeri `Registered`gösterir.
 
-6. Azure portal, **abonelikler** dikey penceresine tıklayın.
-7. Abonelikler dikey penceresinde abonelik KIMLIĞINIZ ' ne tıklayın. 
-8. Abonelik ayarları ' nda, Microsoft. NetApp sağlayıcısı 'nın kayıtlı durumu olduğunu doğrulamak için **kaynak sağlayıcıları** ' na tıklayın: 
+6. Azure portalından **Abonelikler** bıçağını tıklatın.
+7. Abonelikler bıçağında abonelik kimliğinizi tıklatın. 
+8. Abonelik ayarlarında, Microsoft.NetApp Sağlayıcısı'nın Kayıtlı durumu belirttiğini doğrulamak için **Kaynak sağlayıcılarını** tıklatın: 
 
-      ![Kayıtlı Microsoft. NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
+      ![Kayıtlı Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu
-description: Kopyalama etkinliğini kullandığınızda Azure Data Factory veri hareketinin performansını etkileyen anahtar faktörleri hakkında bilgi edinin.
+title: Etkinlik performansı ve ölçeklenebilirlik kılavuzunu kopyalama
+description: Kopyalama etkinliğini kullandığınızda Azure Veri Fabrikası'ndaki veri hareketinin performansını etkileyen önemli etkenler hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,113 +13,113 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: 231b0d77dc441e70dc0ec8de313291bb6b4f9292
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261404"
 ---
-# <a name="copy-activity-performance-and-scalability-guide"></a>Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu
+# <a name="copy-activity-performance-and-scalability-guide"></a>Etkinlik performansı ve ölçeklenebilirlik kılavuzunu kopyalama
 
-> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Veri Fabrikası sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-activity-performance.md)
 > * [Geçerli sürüm](copy-activity-performance.md)
 
-Data Lake veya kurumsal veri ambarından (EDW) Azure 'a büyük ölçekli veri geçişi gerçekleştirmek isteyip istemediğiniz ya da büyük veri analizi için farklı kaynaklardaki verileri Azure 'a dönüştürmek istiyorsanız, en iyi performansı elde etmek ve sorun.  Azure Data Factory, verileri ölçeklendirerek yüksek performanslı ve ölçeklenebilir veri alma işlem hatları oluşturmaya yönelik veri mühendislerine harika bir uyum sağlayan performans, esnek ve ekonomik bir mekanizma sağlar.
+İster veri gölünden ister kurumsal veri ambarından (EDW) Azure'a büyük ölçekli bir veri geçişi gerçekleştirmek, ister büyük veri analitiği için farklı kaynaklardan Azure'a ölçekte veri almak istiyorsanız, en iyi performansı elde etmek ve Ölçeklenebilir -lik.  Azure Veri Fabrikası, verileri ölçekte almak için performanslı, esnek ve uygun maliyetli bir mekanizma sağlayarak, yüksek performanslı ve ölçeklenebilir veri alma boru hatları oluşturmak isteyen veri mühendisleri için mükemmel bir uyum sağlar.
 
-Bu makaleyi okuduktan sonra aşağıdaki soruları yanıtlamak mümkün olacaktır:
+Bu makaleyi okuduktan sonra, aşağıdaki soruları cevaplamak mümkün olacak:
 
-- Veri taşıma ve veri alma senaryolarında ADF kopyalama etkinliğini kullanarak ne düzeyde performans ve ölçeklenebilirlik elde edebilirim?
+- Veri geçişi ve veri alma senaryoları için ADF kopyalama etkinliğini kullanarak ne düzeyde performans ve ölçeklenebilirlik elde edebilirim?
 
-- ADF kopyalama etkinliğinin performansını ayarlamak için hangi adımları gerçekleştirmeniz gerekir?
-- Tek bir kopyalama etkinliğinin çalışması için performansı iyileştirmek üzere ADF performans iyileştirmesi her ne kadar kullanabilir?
-- Kopyalama performansını en iyi duruma getirirken ADF dışında hangi diğer faktörler göz önüne
+- ADF kopyalama etkinliğinin performansını ayarlamak için hangi adımları atmalıyım?
+- Tek bir kopyalama etkinliği çalışması için performansı optimize etmek için hangi ADF perf optimizasyon uynikleme tonlarını kullanabilirim?
+- Kopya performansını optimize ederken ADF dışındaki diğer faktörler göz önünde bulundurulması gereken ler nelerdir?
 
 > [!NOTE]
-> Kopyalama etkinliğini genel olarak bilmiyorsanız, bu makaleyi kullanmadan önce [kopyalama etkinliğine genel bakış](copy-activity-overview.md) bölümüne bakın.
+> Genel olarak kopyalama etkinliğini bilmiyorsanız, bu makaleyi okumadan önce [kopyalama etkinliğine genel bakışa](copy-activity-overview.md) bakın.
 
-## <a name="copy-performance-and-scalability-achievable-using-adf"></a>ADF kullanarak performans ve ölçeklenebilirlik ulaşılabilir kopyalama
+## <a name="copy-performance-and-scalability-achievable-using-adf"></a>ADF kullanarak performansı ve ölçeklenebilirliği kopyala
 
-ADF, farklı düzeylerde paralellik sağlayan sunucusuz bir mimari sunar ve bu sayede, ortamınız için veri taşıma aktarım hızını en üst düzeye çıkarmak amacıyla, geliştiricilerin ağ bant genişliğinizi ve depolama ıOPS ve bant genişliğini tamamen kullanmak üzere işlem hatları oluşturmalarına olanak tanır.  Bu, elde ettiğiniz aktarım hızı, kaynak veri deposu, hedef veri deposu ve kaynak ile hedef arasındaki ağ bant genişliği tarafından sunulan minimum aktarım hızını ölçerek tahmin edilebilecek bir anlamına gelir.  Aşağıdaki tabloda, ortamınız için veri boyutuna ve bant genişliği sınırına göre kopyalama süresi hesaplanır. 
+ADF, geliştiricilerin ortamınız için veri hareketi veri veri miniliğini en üst düzeye çıkarmak için ağ bant genişliğinizi, depolama IOPS'nizi ve bant genişliğinizi tam olarak kullanmalarını sağlayan farklı düzeylerde paralellik sağlayan sunucusuz bir mimari sunar.  Bu, kaynak veri deposu, hedef veri deposu ve kaynak ve hedef arasındaki ağ bant genişliği tarafından sunulan minimum iş verisini ölçerek elde edebileceğiniz iş kaynağının tahmin edilebildiği anlamına gelir.  Aşağıdaki tablo, veri boyutunu ve ortamınız için bant genişliği sınırını temel alan kopyalama süresini hesaplar. 
 
-| Veri boyutu/ <br/> bant genişliği | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
+| Veri boyutu / <br/> Bant genişliği | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
 | **1 GB**                    | 2,7 dk    | 1,4 dk   | 0,3 dk   | 0,1 dk  | 0,03 dk | 0,01 dk | 0,0 dk   |
 | **10 GB**                   | 27,3 dk   | 13,7 dk  | 2,7 dk   | 1,3 dk  | 0,3 dk  | 0,1 dk  | 0,03 dk  |
-| **100 GB**                  | 4,6 saat    | 2,3 saat   | 0,5 saat   | 0,2 saat  | 0,05 Saat | 0,02 Saat | 0,0 saat   |
-| **1 TB**                    | 46,6 saat   | 23,3 saat  | 4,7 saat   | 2,3 saat  | 0,5 saat  | 0,2 saat  | 0,05 Saat  |
-| **10 TB**                   | 19,4 gün  | 9,7 gün  | 1,9 gün  | 0,9 gün | 0,2 gün | 0,1 gün | 0,02 gün |
-| **100 TB**                  | 194,2 gün | 97,1 gün | 19,4 gün | 9,7 gün | 1,9 gün | 1 gün    | 0,2 gün  |
-| **1 PB**                    | 64,7 Mo    | 32,4 Mo   | 6,5 Mo    | 3,2 Mo   | 0,6 Mo   | 0,3 Mo   | 0,06 Mo   |
-| **10 PB**                   | 647,3 Mo   | 323,6 Mo  | 64,7 Mo   | 31,6 Mo  | 6,5 Mo   | 3,2 Mo   | 0,6 Mo    |
+| **100 GB**                  | 4.6 saat    | 2.3 saat   | 0,5 saat   | 0,2 saat  | 0.05 saat | 0.02 saat | 0.0 saat   |
+| **1 TB**                    | 46.6 saat   | 23.3 saat  | 4.7 saat   | 2.3 saat  | 0,5 saat  | 0,2 saat  | 0.05 saat  |
+| **10 TB**                   | 19.4 gün  | 9.7 gün  | 1.9 gün  | 0.9 gün | 0,2 gün | 0.1 gün | 0.02 gün |
+| **100 TB**                  | 194.2 gün | 97.1 gün | 19.4 gün | 9.7 gün | 1.9 gün | 1 gün    | 0,2 gün  |
+| **1 PB**                    | 64.7 mo    | 32.4 mo   | 6,5 mo    | 3.2 mo   | 0,6 mo   | 0,3 mo   | 0.06 mo   |
+| **10 PB**                   | 647.3 mo   | 323,6 mo  | 64.7 mo   | 31.6 mo  | 6,5 mo   | 3.2 mo   | 0,6 mo    |
 
 ADF kopyası farklı düzeylerde ölçeklenebilir:
 
-![ADF kopyalama nasıl ölçeklendirilir](media/copy-activity-performance/adf-copy-scalability.png)
+![ADF kopyalama ölçeklendirme](media/copy-activity-performance/adf-copy-scalability.png)
 
-- ADF denetim akışı, örneğin [her döngü için](control-flow-for-each-activity.md)kullanarak birden çok kopyalama etkinliğini paralel olarak başlatabilir.
-- Tek bir kopyalama etkinliği ölçeklenebilir işlem kaynaklarından yararlanabilir: Azure Integration Runtime kullanırken, her bir kopyalama etkinliği için sunucusuz bir şekilde [en fazla 256 DIUs](#data-integration-units) belirtebilirsiniz; Şirket içinde barındırılan Integration Runtime kullanılırken, makineyi el ile ölçeklendirebilir veya birden fazla makineye ([4 düğüme kadar](create-self-hosted-integration-runtime.md#high-availability-and-scalability)) ölçeklendirebilirsiniz ve tek bir kopyalama etkinliği dosya kümesini tüm düğümlerde bölümleyebilir.
+- ADF denetim akışı, örneğin [Her döngü için](control-flow-for-each-activity.md)kullanarak, paralel olarak birden çok kopyalama etkinlikleri başlatabilirsiniz.
+- Tek bir kopyalama etkinliği ölçeklenebilir bilgi işlem kaynaklarından yararlanabilir: Azure Tümleştirme Çalışma Zamanı'nı kullanırken, her kopyalama etkinliği için sunucusuz bir şekilde [256'ya kadar DIUs](#data-integration-units) belirtebilirsiniz; kendi kendine barındırılan Tümleştirme Runtime kullanırken, makineyi el ile ölçeklendirebilir veya birden çok makineye[(en fazla 4 düğüm)](create-self-hosted-integration-runtime.md#high-availability-and-scalability)ölçeklendirebilirsiniz ve tek bir kopyalama etkinliği dosya kümesini tüm düğümler arasında bölümlere ayırır.
 - Tek bir kopyalama etkinliği, [paralel olarak](#parallel-copy)birden çok iş parçacığı kullanarak veri deposundan okur ve yazar.
 
-## <a name="performance-tuning-steps"></a>Performans ayarlama adımları
+## <a name="performance-tuning-steps"></a>Performans alamı adımları
 
-Kopyalama etkinliğiyle Azure Data Factory hizmetinizin performansını ayarlamak için bu adımları uygulayın.
+Azure Veri Fabrikası hizmetinizin performansını kopyalama etkinliğiyle ayarlamak için aşağıdaki adımları izleyin.
 
-1. **Bir test veri kümesi seçin ve bir taban çizgisi oluşturun.** Geliştirme aşamasında, bir temsili veri örneğine göre kopyalama etkinliğini kullanarak işlem hattınızı test edin. Seçtiğiniz veri kümesi, normal veri desenlerinizi (klasör yapısı, dosya deseni, veri şeması vb.) temsil etmelidir ve kopyalama performansını değerlendirmek için yeterince büyük olur, örneğin kopyalama etkinliğinin tamamlanabilmesi için 10 dakika veya daha fazla süre sürer. [Kopyalama etkinliği izlemeyi](copy-activity-monitoring.md)izleyen yürütme ayrıntılarını ve performans özelliklerini toplayın.
+1. **Bir test veri kümesi seçin ve bir taban çizgisi kurun.** Geliştirme aşamasında, kopyalama etkinliğini temsili bir veri örneğine karşı kullanarak ardışık hattınızı test edin. Seçtiğiniz veri kümesi, tipik veri desenlerinizi (klasör yapısı, dosya deseni, veri şeması vb.) temsil etmeli ve kopyalama performansını değerlendirecek kadar büyükolmalıdır, örneğin kopyalama etkinliğinin tamamlanması 10 dakika veya ötesini alır. [Kopyalama etkinliği izlemesonrasında](copy-activity-monitoring.md)yürütme ayrıntılarını ve performans özelliklerini toplayın.
 
-2. **Tek bir kopyalama etkinliğinin performansını en üst düzeye çıkarma**:
+2. **Tek bir kopyalama etkinliğinin performansını en üst düzeye çıkarma:**
 
-   İle başlamak için, ilk olarak tek bir kopyalama etkinliği kullanarak performansı en üst düzeye çıkarmanızı öneririz.
+   Başlangıç olarak, önce tek bir kopyalama etkinliğini kullanarak performansı en üst düzeye çıkarmanızı öneririz.
 
-   - **Kopyalama etkinliği bir Azure Integration Runtime üzerinde yürütülürse:** [veri tümleştirme birimleri (Diu)](#data-integration-units) ve [paralel kopya](#parallel-copy) ayarları için varsayılan değerlerle başlayın. 
+   - **Kopyalama etkinliği Azure Tümleştirme Çalışma Zamanında yürütülüyorsa:** [Veri Tümleştirme Birimleri (DIU)](#data-integration-units) ve [paralel kopyalama](#parallel-copy) ayarları için varsayılan değerlerle başlayın. 
 
-   - **Kopyalama etkinliği şirket içinde barındırılan bir Integration Runtime yürütülürse:** Integration Runtime 'ı barındırmak için veri deposunu barındıran sunucudan ayrı bir adanmış makine kullanmanızı öneririz. [Paralel kopyalama](#parallel-copy) ayarı için varsayılan değerlerle başlayın ve kendınden konak IR için tek bir düğüm kullanın.  
+   - **Kopyalama etkinliği kendi barındırılan Tümleştirme Çalışma Zamanında yürütülüyorsa:** tümleştirme çalışma süresini barındırmak için veri deposunu barındıran sunucudan ayrı özel bir makine kullanmanızı öneririz. [Paralel kopya](#parallel-copy) ayarı için varsayılan değerlerle başlayın ve kendi barındırılan IR için tek bir düğüm kullanarak.  
 
-   Bir performans testi çalıştırması gerçekleştirin ve performans ve paralel kopyalar gibi kullanılan gerçek değerleri de göz önünde bulunun. Bkz. çalışma sonuçlarını ve performans ayarlarını toplama hakkında [Etkinlik izlemeyi kopyalama](copy-activity-monitoring.md) ve performans sorunlarını belirlemek ve çözmek için [etkinlik performansını kopyalama sorunlarını giderme](copy-activity-performance-troubleshooting.md) hakkında bilgi edinin. 
+   Bir performans testi çalışması gerçekleştirin ve elde edilen performansın yanı sıra DIUs ve paralel kopyalar gibi kullanılan gerçek değerleri de not alın. Kullanılan çalıştıran sonuçların ve performans ayarlarının nasıl toplandığına ilişkin [kopyalama etkinliği izleme](copy-activity-monitoring.md) sine bakın ve darboğazdan birini belirlemek ve çözmek için kopya etkinliği performansını nasıl [çözeceğinizi](copy-activity-performance-troubleshooting.md) öğrenin. 
 
-   Sorun giderme ve ayarlama kılavuzlarından sonra ek performans testi çalıştırmaları yürütmek için yineleme yapın. Tek bir kopyalama etkinliği çalıştırması daha iyi işleme sağlayamayabilir, aynı anda 3. adıma başvuran birden çok kopya çalıştırarak toplam aktarım hızını en üst düzeye çıkarmayı düşünün.
+   Sorun giderme ve aetme kılavuzunu takiben ek performans testi çalıştırmaları gerçekleştirmek için yineleyin. Tek kopya etkinliği çalıştırılamıyorsa, 3 adıma atıfta bulunarak aynı anda birden çok kopya çalıştırarak toplam iş elde etmeyi düşünün.
 
 
-3. **Birden çok kopyayı eşzamanlı olarak çalıştırarak toplam aktarım hızını en iyi duruma getirme:**
+3. **Aynı anda birden çok kopya çalıştırarak toplam iş bünyesini en üst düzeye çıkarma:**
 
-   Tek bir kopyalama etkinliğinin performansını zaten kapladığınıza göre, ortamınız-ağ, kaynak veri deposu ve hedef veri deposu Için üretilen iş üst limitlerine henüz ulaşmadıysanız, [her döngü için](control-flow-for-each-activity.md)gibi ADF denetim akış yapılarını kullanarak birden çok kopyalama etkinliğini paralel olarak çalıştırabilirsiniz. Bkz. [birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md), [Amazon S3 ' dan ADLS 2.](solution-template-migration-s3-azure.md)veya [toplu kopyalama ile genel örnek olarak bir denetim tablosu](solution-template-bulk-copy-with-control-table.md) çözüm şablonlarıyla veri geçirme.
+   Artık tek bir kopyalama etkinliğinin performansını en üst düzeye çıkardığınıza göre, henüz ortamınızın üretim üst limitlerini (ağ, kaynak veri deposu ve hedef veri deposu) elde etmediyseniz, Her döngü [için](control-flow-for-each-activity.md)adf denetim akışı yapılarını kullanarak paralel olarak birden çok kopyalama etkinliği çalıştırabilirsiniz. Birden [çok kapsayıcıdan dosyaları kopyalamaya](solution-template-copy-files-multiple-containers.md)bakın, [verileri Amazon S3'ten ADLS Gen2'ye geçirin](solution-template-migration-s3-azure.md)veya genel örnek olarak bir denetim tablosu çözümü şablonları [içeren toplu kopya.](solution-template-bulk-copy-with-control-table.md)
 
-5. **Yapılandırmayı tüm veri kümeniz için genişletin.** Yürütme sonuçları ve performansından memnun olduğunuzda, tüm veri kümenizi kapsayacak şekilde tanımı ve işlem hattını genişletebilirsiniz.
+5. **Yapılandırmayı tüm veri kümenize genişletin.** Yürütme sonuçlarından ve performansından memnun olduğunuzda, tüm veri kümenizi kapsayacak şekilde tanımı ve ardışık alanı genişletebilirsiniz.
 
-## <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
+## <a name="troubleshoot-copy-activity-performance"></a>Sorun giderme kopyalama etkinliği performansı
 
-Senaryolarınız için performans testi planlamak ve yürütmek için [performans ayarlama adımlarını](#performance-tuning-steps) izleyin. Ve [kopyalama etkinliği performansıyla Ilgili sorun giderme](copy-activity-performance-troubleshooting.md)Azure Data Factory içindeki her bir kopyalama etkinliği çalışmasının performans sorununu nasıl giderebileceğinizi öğrenin.
+Senaryonuz için performans testini planlamak ve gerçekleştirmek için [Performans tuning adımlarını](#performance-tuning-steps) izleyin. Ayrıca, Azure Veri Fabrikası'nda çalışan her bir kopyalama etkinliğinin performans sorununu [sorun giderme sorununu, Sorun Giderme etkinliği performansından](copy-activity-performance-troubleshooting.md)öğrenin.
 
-## <a name="copy-performance-optimization-features"></a>Performansı en iyi duruma getirme özelliklerini Kopyala
+## <a name="copy-performance-optimization-features"></a>Performans optimizasyonu özelliklerini kopyalama
 
-Azure Data Factory aşağıdaki performans iyileştirme özelliklerini sağlar:
+Azure Veri Fabrikası aşağıdaki performans optimizasyonu özelliklerini sağlar:
 
 - [Veri Tümleştirme Birimleri](#data-integration-units)
-- [Şirket içinde barındırılan tümleştirme çalışma zamanı ölçeklenebilirliği](#self-hosted-integration-runtime-scalability)
+- [Kendi kendine barındırılan tümleştirme çalışma zamanı ölçeklenebilirliği](#self-hosted-integration-runtime-scalability)
 - [Paralel kopya](#parallel-copy)
-- [Hazırlanmış kopya](#staged-copy)
+- [Aşamalı kopya](#staged-copy)
 
-### <a name="data-integration-units"></a>Veri tümleştirme birimleri
+### <a name="data-integration-units"></a>Veri Tümleştirme Birimleri
 
-Veri tümleştirme birimi, Azure Data Factory içinde tek bir birimin gücünü (CPU, bellek ve ağ kaynak ayırma birleşimi) temsil eden bir ölçüdür. Veri tümleştirme birimi yalnızca [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md#azure-integration-runtime)için geçerlidir, ancak [Şirket içinde barındırılan tümleştirme çalışma zamanı](concepts-integration-runtime.md#self-hosted-integration-runtime)için geçerli değildir. [Daha fazla bilgi edinin](copy-activity-performance-features.md#data-integration-units).
+Veri Tümleştirme Birimi, Azure Veri Fabrikası'ndaki tek bir birimin gücünü (CPU, bellek ve ağ kaynağı ayırmanın birleşimi) temsil eden bir ölçüdür. Veri Tümleştirme Birimi yalnızca [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md#azure-integration-runtime)için geçerlidir, ancak kendi kendine [barındırılan tümleştirme çalışma zamanı](concepts-integration-runtime.md#self-hosted-integration-runtime)için geçerli değildir. [Daha fazla bilgi edinin](copy-activity-performance-features.md#data-integration-units).
 
-### <a name="self-hosted-integration-runtime-scalability"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı ölçeklenebilirliği
+### <a name="self-hosted-integration-runtime-scalability"></a>Kendi kendine barındırılan tümleştirme çalışma zamanı ölçeklenebilirliği
 
-Artan eşzamanlı iş yükünü barındırmak ya da daha yüksek performans elde etmek için, şirket içinde barındırılan Integration Runtime ölçeklendirebilir veya ölçeklendirebilirsiniz. [Daha fazla bilgi edinin](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability).
+Artan eşzamanlı iş yükünü barındırmak veya daha yüksek performans elde etmek için, Kendi kendine barındırılan Tümleştirme Çalışma Süresini büyütebilir veya ölçeklendirebilirsiniz. [Daha fazla bilgi edinin](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability).
 
 ### <a name="parallel-copy"></a>Paralel kopya
 
-Kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirtmek için paralel kopya ayarlayabilirsiniz. Bu özelliği, kopyalama etkinliğindeki en fazla iş parçacığı sayısı olarak, kaynağınızdan okunan veya kanal veri depolarınız paralel olarak yazabilirsiniz. [Daha fazla bilgi edinin](copy-activity-performance-features.md#parallel-copy).
+Kopyalama etkinliğinin kullanmasını istediğiniz paralelliği belirtmek için paralel kopya ayarlayabilirsiniz. Bu özelliği, kaynağınızdan okunan veya paralel olarak lavabo veri depolarınıza yazan kopyalama etkinliği içindeki maksimum iş parçacığı sayısı olarak düşünebilirsiniz. [Daha fazla bilgi edinin](copy-activity-performance-features.md#parallel-copy).
 
-### <a name="staged-copy"></a>Hazırlanmış kopya
+### <a name="staged-copy"></a>Aşamalı kopya
 
-Bir kaynak veri deposundan bir havuz veri deposuna veri kopyalama, geçici bir hazırlama deposu Blob depolamayı kullanmak seçebilirsiniz. [Daha fazla bilgi edinin](copy-activity-performance-features.md#staged-copy).
+Verileri bir kaynak veri deposundan lavabo veri deposuna kopyaladiğinizde, Blob depolama alanını geçici bir hazırlama deposu olarak kullanmayı seçebilirsiniz. [Daha fazla bilgi edinin](copy-activity-performance-features.md#staged-copy).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Diğer kopyalama etkinliği makalelerine bakın:
+Diğer kopyalama etkinliği makalelerini görün:
 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
-- [Kopyalama etkinliği performansını sorun giderme](copy-activity-performance-troubleshooting.md)
-- [Etkinlik performansını en iyi duruma getirme özelliklerini Kopyala](copy-activity-performance-features.md)
-- [Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın](data-migration-guidance-overview.md)
-- [Amazon S3 'ten Azure Storage 'a veri geçirme](data-migration-guidance-s3-azure-storage.md)
+- [Sorun giderme kopyalama etkinliği performansı](copy-activity-performance-troubleshooting.md)
+- [Etkinlik performans optimizasyonu özelliklerini kopyalama](copy-activity-performance-features.md)
+- [Verilerinizi veri gölünüzden veya veri ambarınızdan Azure'a geçirmek için Azure Veri Fabrikası'nı kullanın](data-migration-guidance-overview.md)
+- [Verileri Amazon S3'ten Azure Depolama'ya geçirme](data-migration-guidance-s3-azure-storage.md)

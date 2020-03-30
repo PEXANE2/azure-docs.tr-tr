@@ -1,39 +1,38 @@
 ---
-title: Azure kapsayıcıları önkoşulları sunuyor | Azure Marketi
-description: Azure kapsayıcısı yayımlama önkoşulları.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure Kapsayıcılar ön koşullar sunar | Azure Marketi
+description: Azure kapsayıcısı yayımlamanın ön koşulları.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 2c4e5520a2055fafee586fc369c21acfa36037c6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: db2300ae827677f8902e420b136acec3da694c8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823125"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280023"
 ---
 # <a name="container-publishing-prerequisites"></a>Kapsayıcı yayımlama önkoşulları
 
-Bu makalede, Azure Marketi 'nde bir kapsayıcı teklifi yayımlama önkoşulları açıklanmaktadır.  Daha önce yapmadıysanız, [kapsayıcıları teklif yayımlama kılavuzunu](../../marketplace-containers.md)gözden geçirmeniz gerekir.
+Bu makalede, Azure Marketi'nde bir kapsayıcı teklifi yayımlama nın ön koşulları açıklanmaktadır.  Bunu zaten yapmadıysanız, [Kapsayıcılar Teklif Yayın Kılavuzu'nu](../../marketplace-containers.md)gözden geçirmelisiniz.
 
-## <a name="publishing-prerequisites"></a>Ön koşullar yayımlanıyor
+## <a name="publishing-prerequisites"></a>Ön koşullarıyayınlama
 
-Yeni bir kapsayıcı görüntüsü yayımlamak için aşağıdaki önkoşulları karşılamanız gerekir:
+Yeni bir kapsayıcı resmi yayınlamak için aşağıdaki ön koşulları karşılamanız gerekir:
 
-- Bulut İş Ortağı Portalı erişim. Daha fazla bilgi için bkz. Azure Marketi ve AppSource Yayımlama Kılavuzu.
-- Azure Marketi koşullarına yönelik anlaşma
-- Kapsayıcı teknik varlığınızı bir Azure Container Registry barındırın.
-- Kapsayıcı meta verilerinizi kullanıma hazırlayın. Örneğin, aşağıdaki ayrıntılı olmayan liste:
+- Bulut İş Ortağı Portalına erişim. Daha fazla bilgi için Azure Marketi ve AppSource yayımlama kılavuzuna bakın.
+- Azure MarketI Koşullarına Uyum
+- Konteyner teknik varlığınızı bir Azure Kapsayıcı Kayıt Defteri'nde barındırın.
+- Kapsayıcı meta verilerinizi kullanıma hazır layın. Örneğin, aşağıdaki kapsamlı olmayan liste:
   - Bir başlık
-  - Bir açıklama (HTML biçiminde)
-  - Bir logo resmi (PNG biçiminde) ve bu sabit resim boyutları: 40x40 px, 90x90 px, 115x 115 px ve 255x115 px.
-- *Kullanım koşulları* ve *Gizlilik ilkesi* deyimleri
-- Kapsayıcı çözümü belgeleri
+  - Açıklama (HTML biçiminde)
+  - Bir logo görüntüsü (PNG formatında) ve bu sabit görüntü boyutları: 40x40 px, 90x90 px, 115x 115 px ve 255x115 px.
+- Kullanım *Koşulları* ve *Gizlilik Politikası* beyanları
+- Konteyner çözüm belgeleri
 - Destek kişileri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce yapmadıysanız, [kapsayıcı teklifinizi](./cpp-create-offer.md)oluşturmadan önce [kapsayıcı teknik varlıklarınızı hazırlamanız](./cpp-create-technical-assets.md) gerekir.  
+Bunu zaten yapmadıysanız, [konteyner teklifinizi oluşturmadan](./cpp-create-offer.md)önce konteyner teknik [varlıklarınızı hazırlamanız](./cpp-create-technical-assets.md) gerekir.  

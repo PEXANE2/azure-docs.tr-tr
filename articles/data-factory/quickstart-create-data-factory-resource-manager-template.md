@@ -1,5 +1,5 @@
 ---
-title: Kaynak Yöneticisi şablonu kullanarak Azure Veri Fabrikası oluşturma
+title: Kaynak Yöneticisi şablonu kullanarak Bir Azure veri fabrikası oluşturma
 description: Bu öğreticide, bir Azure Resource Manager şablonu kullanarak örnek bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 documentationcenter: ''
@@ -11,19 +11,19 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240747"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak Azure veri fabrikası oluşturma
 
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-resource-manager-template.md)
 
-Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak bir Azure veri fabrikasını nasıl oluşturacağınız ve izleyeceğiniz açıklanmaktadır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar**. Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](transform-data-using-spark.md).
+Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak bir Azure veri fabrikasını nasıl oluşturacağınız ve izleyeceğiniz açıklanmaktadır. Bu veri fabrikasında oluşturduğunuz ardışık işlem, verileri azure blob depolamasında bir klasörden başka bir klasöre **kopyalar.** Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](transform-data-using-spark.md).
 
 > [!NOTE]
 > Bu makale, Data Factory hizmetine ayrıntılı giriş bilgileri sağlamaz. Azure Data Factory hizmetine giriş bilgileri için bkz. [Azure Data Factory'ye giriş](introduction.md).
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak bir Azure 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) konusundaki yönergeleri izleyerek en güncel Azure PowerShell modüllerini yükleyin.
+[Azure PowerShell'in nasıl yüklenir ve yapılandırılabilen](/powershell/azure/install-Az-ps)yönergeleri izleyerek en son Azure PowerShell modüllerini yükleyin.
 
 ## <a name="resource-manager-templates"></a>Resource Manager şablonları
 
@@ -42,11 +42,11 @@ Azure Resource Manager şablonları hakkında genel bir bilgi almak için bkz. [
 
 Aşağıdaki bölümde, öğreticiyi hızlıca geçip şablonu test etmeniz için Data Factory varlıklarını tanımlamaya yönelik tam bir Resource Manager şablonu verilmektedir. Her bir Data Factory varlığının nasıl tanımlandığını anlamak için [Şablondaki Data Factory varlıkları](#data-factory-entities-in-the-template) bölümüne bakın.
 
-Bir şablondaki Data Factory kaynakların JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. DataFactory kaynak türleri](/azure/templates/microsoft.datafactory/allversions).
+Şablondaki Veri Fabrikası kaynaklarının JSON sözdizimi ve özellikleri hakkında bilgi edinmek için [Microsoft.DataFactory kaynak türlerine](/azure/templates/microsoft.datafactory/allversions)bakın.
 
 ## <a name="data-factory-json"></a>Data Factory JSON
 
-**C:\adföğreticisi** klasöründe **ADFTutorialARM. JSON** adlı bir JSON dosyası oluşturun (henüz yoksa adföğreticisi klasörünü oluşturun) ve aşağıdaki içeriği oluşturun:
+**C:\ADFTutorial** klasöründe **ADFTutorialARM.json** adlı bir JSON dosyası oluşturun (Zaten yoksa ADFTutorial klasörünü oluşturun) aşağıdaki içerikle:
 
 ```json
 {  
@@ -323,7 +323,7 @@ Azure Resource Manager şablonuna yönelik parametreleri içeren **ADFTutorialAR
 
 ## <a name="deploy-data-factory-entities"></a>Data Factory varlıklarını dağıtma
 
-PowerShell 'de, bu hızlı başlangıçta daha önce oluşturduğunuz Kaynak Yöneticisi şablonunu kullanarak kaynak grubunuzdaki Data Factory varlıkları dağıtmak için aşağıdaki komutu çalıştırın (Bu durumda, örnek olarak ADFTutorialResourceGroup alın).
+PowerShell'de, bu hızlı başlangıçta daha önce oluşturduğunuz Kaynak Yöneticisi şablonunu kullanarak kaynak grubunuzdaki Veri Fabrikası varlıklarını dağıtmak için aşağıdaki komutu çalıştırın (bu durumda, ADFTutorialResourceGroup'u örnek alın).
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
@@ -361,9 +361,9 @@ DeploymentDebugLogLevel :
 - Kopyalama etkinliği içeren işlem hattı
 - İşlem hattını tetikleyen tetikleyici
 
-Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyiciyi başlatma yöntemlerinden biri **Start-AzDataFactoryV2Trigger** PowerShell cmdlet 'ini kullanmaktır. Aşağıdaki yordamda ayrıntılı adımlar verilmektedir:
+Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyiciyi başlatmanın yollarından biri **Start-AzDataFactoryV2Trigger** PowerShell cmdlet'i kullanmaktır. Aşağıdaki yordamda ayrıntılı adımlar verilmektedir:
 
-1. PowerShell penceresinde kaynak grubunun adını tutacak bir değişken oluşturun. Aşağıdaki komutu PowerShell penceresine kopyalayıp ENTER tuşuna basın. New-AzResourceGroupDeployment komutu için farklı bir kaynak grubu adı belirttiyseniz, değeri burada güncelleştirin.
+1. PowerShell penceresinde kaynak grubunun adını tutacak bir değişken oluşturun. Aşağıdaki komutu PowerShell penceresine kopyalayıp ENTER tuşuna basın. Yeni Kaynak GrubuDağıtım komutu için farklı bir kaynak grubu adı belirttiyseniz, değeri burada güncelleştirin.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -396,7 +396,7 @@ Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyiciyi başlatma yönt
     ```
     
     Tetikleyicinin çalışma zamanı durumunun **Durduruldu** olduğuna dikkat edin.
-5. **Tetikleyiciyi başlatın**. Tetikleyici, şablonda tanımlanan işlem hattını belirtilen saatte çalıştırır. Diğer bir deyişle, bu komutu öğleden sonra 2:25’te yürüttüyseniz, tetikleyici işlem hattını ilk kez öğleden sonra 3’te çalıştırır. Sonra, işlem hattını tetikleyici için belirlediğiniz bitiş zamanına kadar saatlik olarak çalıştırır.
+5. **Tetikleyiciyi başlatın**. Tetikleyici, şablonda tanımlanan işlem hattını belirtilen saatte çalıştırır. Diğer bir deyişle, bu komutu öğleden sonra 2:25’te yürüttüyseniz, tetikleyici işlem hattını ilk kez öğleden sonra 3’te çalıştırır. Ardından, tetikleme için belirttiğiniz bitiş saatine kadar ardışık saat çalışır.
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -410,7 +410,7 @@ Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyiciyi başlatma yönt
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Tetikleyiciyi, Get-AzDataFactoryV2Trigger komutunu yeniden çalıştırarak başlatıldığını onaylayın.
+6. Get-AzDataFactoryV2Trigger komutunu yeniden çalıştırarak tetikleyicinin başlatıldığını doğrulayın.
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -432,21 +432,21 @@ Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyiciyi başlatma yönt
 
 2. **Veri Fabrikaları** sayfasında, oluşturduğunuz veri fabrikasına tıklayın. Gerekirse, veri fabrikanızın adıyla listeyi filtreleyin.
 
-3. Data Factory sayfasında, **& İzleyicisi** kutucuğunu yaz ' a tıklayın.
+3. Veri fabrikası sayfasında, **Yazar & Monitör** döşemesini tıklatın.
 
-4. **Haydi başlayalım** sayfasında, **izleyici sekmesini**seçin.  ![Izleme işlem hattı çalıştırma](media/doc-common-process/get-started-page-monitor-button.png)
+4. **Başlatalım** sayfasında **Monitör sekmesini**seçin.  ![Boru hattı çalışmasını izleme](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
     > İşlem hattının yalnızca saat başı çalıştığını görürsünüz (örneğin: sabah 4, 5, 6 vb.). Zaman sonraki saate ulaştığında listeyi yenilemek için araç çubuğunda **Yenile**’ye tıklayın.
 
-5. **Eylemler** sütunundaki **etkinlik çalıştırmalarını görüntüle** bağlantısına tıklayın.
+5. **Eylemler** sütunundaki **Etkinlik Çalıştır'ları Görüntüle** bağlantısını tıklatın.
 
     ![İşlem hattı eylemleri bağlantısı](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
 6. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görürsünüz. Bu hızlı başlangıçta işlem hattı yalnızca bir etkinlik türü içerir: Kopyalama. Bu nedenle, bu etkinliğe ait bir çalıştırma görürsünüz.
 
     ![Etkinlik çalıştırmaları](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-7. Eylemler sütununun altındaki **Çıkış** bağlantısına tıklayın. Kopyalama işleminin çıktısını bir **Çıktı** penceresinde görürsünüz. Tam çıktıyı görmek için ekranı kapla düğmesine tıklayın. Ekranı kaplayan çıktı penceresini veya çıktıyı kapatabilirsiniz.
+7. Eylemler sütunundaki **Çıktı** bağlantısını tıklatın. Kopyalama işleminin çıktısını bir **Çıktı** penceresinde görürsünüz. Tam çıktıyı görmek için ekranı kapla düğmesine tıklayın. Ekranı kaplayan çıktı penceresini veya çıktıyı kapatabilirsiniz.
 
 8. Başarılı/başarısız çalıştırma gördüğünüzde tetikleyiciyi durdurun. Tetikleyici, işlem hattını saatte bir kez çalıştırır. İşlem hattı her çalıştırma için aynı dosyayı girdi klasöründen çıktı klasörüne kopyalar. Tetikleyiciyi durdurmak için PowerShell penceresinde aşağıdaki komutu çalıştırın.
     
@@ -456,13 +456,13 @@ Dağıtılan tetikleyici durdurulmuş durumdadır. Tetikleyiciyi başlatma yönt
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
-## <a name="data-factory-entities-in-the-template"></a> Varlıklar için JSON tanımları
+## <a name="json-definitions-for-entities"></a><a name="data-factory-entities-in-the-template"></a>Varlıklar için JSON tanımları
 
 Aşağıdaki Data Factory varlıkları JSON şablonunda tanımlanır:
 
-- [Azure Storage bağlı hizmeti](#azure-storage-linked-service)
+- [Azure Depolama bağlantılı hizmet](#azure-storage-linked-service)
 - [İkili giriş veri kümesi](#binary-input-dataset)
-- [İkili çıkış veri kümesi](#binary-output-dataset)
+- [İkili çıktı veri kümesi](#binary-output-dataset)
 - [Kopyalama etkinliği içeren bir veri işlem hattı](#data-pipeline)
 - [Tetikleyici](#trigger)
 
@@ -490,11 +490,11 @@ AzureStorageLinkedService, Azure depolama hesabınızı veri fabrikasına bağla
 }
 ```
 
-ConnectionString, storageAccountName ve storageAccountKey parametrelerini kullanır. Bu parametrelerin değerleri bir yapılandırma dosyası kullanılarak geçirilir. Tanım ayrıca şablonda tanımlanan değişkenleri kullanır: azureStorageLinkedService ve dataFactoryName.
+ConnectionString, storageAccountName ve storageAccountKey parametrelerini kullanır. Bu parametrelerin değerleri bir yapılandırma dosyası kullanılarak geçirilir. Tanım da değişkenleri kullanır: azureStorageLinkedService ve dataFactoryName şablonda tanımlanan.
 
 #### <a name="binary-input-dataset"></a>İkili giriş veri kümesi
 
-Azure Depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Ikili veri kümesi tanımında, blob kapsayıcısı, klasör ve girdi verilerini içeren dosyanın adını belirtirsiniz. Ikili veri kümesini tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi için bkz. [ikili veri kümesi özellikleri](format-binary.md#dataset-properties) .
+Azure Depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. İkili veri kümesi tanımında, giriş verilerini içeren blob kapsayıcısı, klasörü ve dosyanın adlarını belirtirsiniz. İkili veri kümesi tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılar için [İkili veri kümesi özelliklerine](format-binary.md#dataset-properties) bakın.
 
 ```json
 {  
@@ -526,9 +526,9 @@ Azure Depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabın�
 }
 ```
 
-#### <a name="binary-output-dataset"></a>İkili çıkış veri kümesi
+#### <a name="binary-output-dataset"></a>İkili çıktı veri kümesi
 
-Azure Blob Depolamada girdi klasöründen kopyalanmış verileri tutan klasörün adını belirtin. Ikili veri kümesini tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi için bkz. [ikili veri kümesi özellikleri](format-binary.md#dataset-properties) .
+Azure Blob Depolamada girdi klasöründen kopyalanmış verileri tutan klasörün adını belirtin. İkili veri kümesi tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılar için [İkili veri kümesi özelliklerine](format-binary.md#dataset-properties) bakın.
 
 ```json
 {  
@@ -561,7 +561,7 @@ Azure Blob Depolamada girdi klasöründen kopyalanmış verileri tutan klasörü
 
 #### <a name="data-pipeline"></a>Veri işlem hattı
 
-Verileri bir Ikili veri kümesinden başka bir Ikili veri kümesine kopyalayan bir işlem hattı tanımlayın. Bu örnekte bir işlem hattı tanımlamak için kullanılan JSON öğelerinin açıklamaları için bkz. [İşlem Hattı JSON](concepts-pipelines-activities.md#pipeline-json).
+Verileri bir İkili veri kümesinden başka bir İkili veri kümesine kopyalayan bir ardışık kaynak tanımlarsınız. Bu örnekte bir işlem hattı tanımlamak için kullanılan JSON öğelerinin açıklamaları için bkz. [İşlem Hattı JSON](concepts-pipelines-activities.md#pipeline-json).
 
 ```json
 {  
@@ -636,7 +636,7 @@ Verileri bir Ikili veri kümesinden başka bir Ikili veri kümesine kopyalayan b
 
 #### <a name="trigger"></a>Tetikleyici
 
-İşlem hattını saatte bir kez çalıştıran bir tetikleyici tanımlayın. Dağıtılan tetikleyici durdurulmuş durumdadır. **Start-AzDataFactoryV2Trigger** cmdlet 'ini kullanarak tetikleyiciyi başlatın. Tetikleyiciler hakkında daha fazla bilgi için [İşlem hattı yürütme ve tetikleyicileri](concepts-pipeline-execution-triggers.md#triggers) makalesine bakın.
+İşlem hattını saatte bir kez çalıştıran bir tetikleyici tanımlayın. Dağıtılan tetikleyici durdurulmuş durumdadır. **Start-AzDataFactoryV2Trigger** cmdlet kullanarak tetikleyiciyi başlatın. Tetikleyiciler hakkında daha fazla bilgi [için, bkz.](concepts-pipeline-execution-triggers.md#triggers)
 
 ```json
 {  

@@ -1,6 +1,6 @@
 ---
-title: Premium Encoder ile birden çok giriş dosyası ve bileşen özelliği-Azure | Microsoft Docs
-description: Bu konu, birden çok giriş dosyası kullanmak ve Media Encoder Premium Workflow medya işlemcisine özel verileri geçirmek için setRuntimeProperties 'in nasıl kullanılacağını açıklamaktadır.
+title: Premium Encoder ile birden çok giriş dosyası ve bileşen özelliği - Azure | Microsoft Dokümanlar
+description: Bu konu, birden çok giriş dosyasını kullanmak ve özel verileri Media Encoder Premium İş Akışı ortam işlemcisine aktarmak için setRuntimeProperties'in nasıl kullanılacağını açıklar.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -16,25 +16,25 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251004"
 ---
-# <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder ile birden çok giriş dosyası ve bileşen özellikleri kullanma
+# <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder ile birden fazla giriş dosyası ve bileşen özelliği kullanma
 ## <a name="overview"></a>Genel Bakış
-**Media Encoder Premium Workflow** medya işlemcisi ile bir görev gönderdiğinizde, bileşen özelliklerini özelleştirmeniz, KLIP listesi XML içeriğini belirtmeniz veya birden çok giriş dosyası göndermeniz gerekebilecek senaryolar vardır. Bazı örnekler şunlardır:
+**Media Encoder Premium İş Akışı** ortam işlemcisi ile görev gönderirken bileşen özelliklerini özelleştirmeniz, Küçük Liste XML içeriğini belirtmeniz veya birden çok giriş dosyası göndermeniz gerekebileceği senaryolar vardır. Bazı örnekler şunlardır:
 
-* Videoda metin yerleştirme ve her giriş videosunun çalışma zamanında metin değeri (örneğin, geçerli tarih) ayarlama.
-* Klip Listesi XML 'sini özelleştirme (kırpma, vb. ile veya olmayan bir veya birkaç kaynak dosyayı belirtmek için).
-* Video kodlanırken giriş videosunda bir logo görüntüsünü yerleştirme.
-* Birden çok ses dili kodlaması.
+* Her giriş videosu için çalışma saatinde metni videoya üst üste bindirin ve metin değerini (örneğin, geçerli tarih) ayarlayın.
+* Küçük Ler Listesi XML'i özelleştirme (kırpma lı veya kırpmasız, vb. bir veya birkaç kaynak dosya belirtmek için).
+* Video kodlanırken giriş videosunda bir logo görüntüsünün yer leşmesi.
+* Birden çok ses dili kodlama.
 
-**Media Encoder Premium Workflow** , görevi oluştururken veya birden çok giriş dosyası gönderdiğinizde iş akışındaki bazı özellikleri değiştirdiklerinizi bilmesini sağlamak için **setRuntimeProperties** ve/veya **transcodesource**içeren bir yapılandırma dizesi kullanmanız gerekir. Bu konuda, bunların nasıl kullanılacağı açıklanmaktadır.
+**Media Encoder Premium İş** Akışı'na, görevi oluşturduğunuzda veya birden çok giriş dosyası gönderdiğinde iş akışındaki bazı özellikleri değiştirdiğinizi bildirmek **için, setRuntimeProperties** ve/veya **transcodeSource**içeren bir yapılandırma dizesi kullanmanız gerekir. Bu konu, bunların nasıl kullanılacağını açıklar.
 
-## <a name="configuration-string-syntax"></a>Yapılandırma dizesi sözdizimi
-Kodlama görevinde ayarlanacak yapılandırma dizesi şuna benzer bir XML belgesi kullanır:
+## <a name="configuration-string-syntax"></a>Yapılandırma dize sözdizimi
+Kodlama görevinde ayarlanması için yapılandırma dizesi, aşağıdaki gibi görünen bir XML belgesi kullanır:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -47,7 +47,7 @@ Kodlama görevinde ayarlanacak yapılandırma dizesi şuna benzer bir XML belges
 </transcodeRequest>
 ```
 
-Aşağıdaki C# kod, BIR dosyadan xml yapılandırmasını okuyan, doğru video dosya adı ile güncelleştiren ve bunu bir işteki göreve geçirir:
+XML yapılandırmasını bir dosyadan okuyan, doğru video dosya adı ile güncelleştiren ve bir işte göreve aktaran C# kodu aşağıda veda eder:
 
 ```csharp
 string premiumConfiguration = ReadAllText(@"D:\home\site\wwwroot\Presets\SetRuntime.xml").Replace("VideoFileName", myVideoFileName);
@@ -76,12 +76,12 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ```
 
 ## <a name="customizing-component-properties"></a>Bileşen özelliklerini özelleştirme
-### <a name="property-with-a-simple-value"></a>Basit değerli Özellik
-Bazı durumlarda, bileşen özelliğini Media Encoder Premium Workflow tarafından yürütülecek iş akışı dosyası ile birlikte özelleştirmek yararlı olur.
+### <a name="property-with-a-simple-value"></a>Basit bir değere sahip özellik
+Bazı durumlarda, Media Encoder Premium İş Akışı tarafından yürütülecek iş akışı dosyasıyla birlikte bir bileşen özelliğini özelleştirmek yararlıdır.
 
-Videolarınızdaki metni kaplayan bir iş akışı tasarlamış olduğunuzu ve metnin (örneğin, geçerli tarihin) çalışma zamanında ayarlanması gerektiğini varsayalım. Bunu, kodlama görevinden, yer paylaşımı bileşeninin Text özelliği için yeni değer olarak ayarlanacak metni göndererek yapabilirsiniz. Bu mekanizmayı iş akışındaki bir bileşenin diğer özelliklerini (örneğin, kaplamanın konumu veya rengi, AVC Kodlayıcısı için bit hızı, vb.) değiştirmek için kullanabilirsiniz.
+Videolarınızdaki metni bökezleyen bir iş akışı tasarladığınızı ve metnin (örneğin, geçerli tarih) çalışma zamanında ayarlandığı varsayalım. Bunu, kodlama görevinden bindirme bileşeninin metin özelliği için yeni değer olarak ayarlanacak metni göndererek yapabilirsiniz. Bu mekanizmayı, iş akışındaki bir bileşenin diğer özelliklerini (bindirmenin konumu veya rengi, AVC kodlayıcının bithızı vb.) değiştirmek için kullanabilirsiniz.
 
-**setRuntimeProperties** , iş akışının bileşenlerinde bir özelliği geçersiz kılmak için kullanılır.
+**setRuntimeProperties** iş akışı bileşenlerindeki bir özelliği geçersiz kılmak için kullanılır.
 
 Örnek:
 
@@ -97,7 +97,7 @@ Videolarınızdaki metni kaplayan bir iş akışı tasarlamış olduğunuzu ve m
 ```
 
 ### <a name="property-with-an-xml-value"></a>XML değeri olan özellik
-XML değeri bekleyen bir özelliği ayarlamak için `<![CDATA[ and ]]>`kullanarak kapsülleyebilirsiniz.
+XML değeri bekleyen bir özellik ayarlamak için, kullanarak `<![CDATA[ and ]]>`kapsülleme.
 
 Örnek:
 
@@ -131,47 +131,47 @@ XML değeri bekleyen bir özelliği ayarlamak için `<![CDATA[ and ]]>`kullanara
 ```
 
 > [!NOTE]
-> `<![CDATA[`hemen sonra bir satır başı yerleştirdiğinizden emin olun.
+> Hemen sonra `<![CDATA[`bir araba dönüş koymak değil emin olun.
 
 ### <a name="propertypath-value"></a>propertyPath değeri
-Önceki örneklerde, propertyPath "/Media File Input/filename" veya "/ınactivetimeout" veya "clipListXml" idi.
-Bu, genel olarak, bileşenin adı, sonra özelliğin adıdır. Yol, "/primarySourceFile" (özellik iş akışının kökünde olduğundan) veya "/video Işleme/grafik kaplama/opaklık" (yani bir grupta yer aldığı için) gibi daha fazla veya daha az düzeye sahip olabilir.    
+Önceki örneklerde, propertyPath "/Media File Input/filename" veya "/inactiveTimeout" veya "clipListXml" idi.
+Bu, genel olarak, bileşenin adı, sonra özelliğin adıdır. Yol, "/primarySourceFile" (özellik iş akışının kökünde olduğundan) veya "/Video İşleme/Grafik Bindirme/Opaklık" gibi daha fazla veya daha az düzeye sahip olabilir (Çünkü Bindirme bir gruptadır).    
 
-Yolu ve özellik adını denetlemek için her bir özelliğin hemen yanındaki eylem düğmesini kullanın. Bu eylem düğmesine tıklayıp **Düzenle**seçeneğini belirleyebilirsiniz. Bu, özelliğin gerçek adını ve hemen üzerindeki ad alanını gösterir.
+Yol ve özellik adını denetlemek için, her özelliğin hemen yanındaki eylem düğmesini kullanın. Bu eylem düğmesini tıklatıp **Edit'i**seçebilirsiniz. Bu, özelliğin gerçek adını ve hemen üstündeki ad alanını gösterir.
 
-![Eylem/düzenleme](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
+![Eylem/Edit](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 
 ![Özellik](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture7_viewproperty.png)
 
 ## <a name="multiple-input-files"></a>Birden çok giriş dosyası
-**Media Encoder Premium Workflow** gönderdiğiniz her görev iki varlık gerektirir:
+**Media Encoder Premium İş Akışına** gönderdiğiniz her görev iki varlık gerektirir:
 
-* Birincisi, bir iş akışı dosyası içeren bir *Iş akışı varlığıdır* . [İş akışı Tasarımcısı](media-services-workflow-designer.md)kullanarak iş akışı dosyalarını tasarlayabilirsiniz.
-* İkinci bir, kodlamak istediğiniz medya dosyalarını içeren bir *medya* varlıktır.
+* Bunlardan ilki, iş akışı dosyası içeren bir *İş Akışı Varlığıdır.* İş Akışı [Tasarımcısı'nı](media-services-workflow-designer.md)kullanarak iş akışı dosyalarını tasarlayabilirsiniz.
+* İkincisi, kodlamak istediğiniz ortam dosyasını(lar) içeren bir *Media Asset'dir.*
 
-Birden çok medya dosyasını **Media Encoder Premium Workflow** kodlayıcıya gönderdiğinizde aşağıdaki kısıtlamalar geçerlidir:
+**Media Encoder Premium İş Akışı** kodlayıcısına birden fazla ortam dosyası gönderirken aşağıdaki kısıtlamalar geçerlidir:
 
-* Tüm medya dosyaları aynı *medya varlığı*içinde olmalıdır. Birden çok medya varlığı kullanılması desteklenmez.
-* Bu medya kıymetinin birincil dosyasını ayarlamanız gerekir (ideal olarak, bu, kodlayıcının işlemesi istenen ana video dosyasıdır).
-* **SetRuntimeProperties** ve/veya **transcodesource** öğesini içeren yapılandırma verilerini işlemciye geçirmek gereklidir.
-  * **setRuntimeProperties** , FileName özelliğini veya iş akışının bileşenlerinde başka bir özelliği geçersiz kılmak için kullanılır.
-  * **Transcodesource** , KLIP listesi XML içeriğini belirtmek için kullanılır.
+* Tüm ortam dosyaları aynı *Media Asset'de*olmalıdır. Birden çok Medya Varlığı kullanmak desteklenmez.
+* Bu Media Asset'deki birincil dosyayı ayarlamanız gerekir (ideal olarak, bu kodlayıcının işlemesi istenen ana video dosyasıdır).
+* **SetRuntimeProperties** ve/veya **transcodeSource** öğesini içeren yapılandırma verilerini işlemciye aktarmak gerekir.
+  * **setRuntimeProperties,** iş akışının bileşenlerindeki dosya adı özelliğini veya başka bir özelliği geçersiz kılmak için kullanılır.
+  * **transcodeSource,** Klip Listesi XML içeriğini belirtmek için kullanılır.
 
 İş akışındaki bağlantılar:
 
-* Bir veya birkaç medya dosyası giriş bileşeni kullanırsanız ve dosya adını belirtmek için **setRuntimeProperties** kullanmayı planlıyorsanız, birincil dosya bileşeni PIN 'ini bunlara bağlanmayın. Birincil dosya nesnesiyle medya dosyası girişleri arasında bağlantı olmadığından emin olun.
-* Clip List XML ve tek bir medya kaynağı bileşeni kullanmayı tercih ediyorsanız, her ikisini de birbirine bağlayabilirsiniz.
+* Bir veya birkaç Ortam Dosyası Girişi bileşeni kullanıyorsanız ve dosya adını belirtmek için **setRuntimeProperties'i** kullanmayı planlıyorsanız, birincil dosya bileşeni pinini bunlara bağlamın. Birincil dosya nesnesi ile Ortam Dosyası Girişi(ler) arasında bağlantı olmadığından emin olun.
+* Clip List XML ve bir Medya Kaynağı bileşenini kullanmayı tercih ederseniz, her ikisini de birbirine bağlayabilirsiniz.
 
-![Birincil kaynak dosyasından medya dosyası girişine bağlantı yok](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
+![Birincil Kaynak Dosyadan Ortam Dosyası Girişine bağlantı yok](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
 
-*Dosya adı özelliğini ayarlamak için setRuntimeProperties kullanırsanız, birincil dosyadan medya dosya girişi bileşenlerine bağlantı yoktur.*
+*Dosya adı özelliğini ayarlamak için setRuntimeProperties kullanıyorsanız, birincil dosyadan Media File Input bileşenine(ler) bağlantı yoktur.*
 
-![Clip List XML 'den klip listesi kaynağına bağlantı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
+![Kliplistesi XML'den Klip Listesi Kaynağına Bağlantı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
 
-*Clip List XML 'i medya kaynağına bağlayıp, transcodeSource kullanabilirsiniz.*
+*Clip List XML'i Media Source'a bağlayabilir ve transcodeSource'u kullanabilirsiniz.*
 
-### <a name="clip-list-xml-customization"></a>Klip Listesi XML özelleştirmesi
-Çalışma zamanında iş akışındaki Clip List XML 'i, yapılandırma dizesi XML dosyasında **Transcodesource** kullanarak belirtebilirsiniz. Bu, klip listesi XML PIN 'inin iş akışındaki medya kaynağı bileşenine bağlanmasını gerektirir.
+### <a name="clip-list-xml-customization"></a>Klip Listesi XML özelleştirme
+**TranscodeSource** yapılandırma dizesi XML kullanarak çalışma zamanında iş akışında Klip Listesi XML belirtebilirsiniz. Bu, Klip Listesi XML pininin iş akışındaki Medya Kaynağı bileşenine bağlanmasını gerektirir.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -199,7 +199,7 @@ Birden çok medya dosyasını **Media Encoder Premium Workflow** kodlayıcıya g
   </transcodeRequest>
 ```
 
-' Ifadeler ' kullanarak çıkış dosyalarını adlandırmak üzere bu özelliği kullanmak için/primarySourceFile belirtmek istiyorsanız, küçük resim listesinin/primarySourceFile özelliğinden *sonra* bir özellik olarak bir özellik olarak geçirilmesini öneririz.
+Çıktı dosyalarını 'İfadeler' kullanarak adlandırmak için bu özelliği kullanmak için /primarySourceFile belirtmek istiyorsanız, Clip List'in /primarySourceFile ayarı tarafından geçersiz kılınmasını önlemek için Klip Listesi XML'i /primarySourceFile özelliğinden *sonra* özellik olarak geçirmenizi öneririz.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -230,7 +230,7 @@ Birden çok medya dosyasını **Media Encoder Premium Workflow** kodlayıcıya g
   </transcodeRequest>
 ```
 
-Ek çerçeveye doğru kırpma ile:
+Ek çerçeve doğru kırpma ile:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -269,14 +269,14 @@ Ek çerçeveye doğru kırpma ile:
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Örnek 1: videonun üzerinde bir görüntünün üzerine bindirme
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Örnek 1 : Videonun üstüne bir görüntü yerle bir
 
 ### <a name="presentation"></a>Sunum
-Video kodlanırken, giriş videosunda bir logo resminin kaplamasını istediğiniz bir örnek düşünün. Bu örnekte, giriş videosu "Microsoft_HoloLens_Possibilities_816p24. mp4" olarak adlandırılır ve logo "logo. png" olarak adlandırılmıştır. Aşağıdaki adımları gerçekleştirmeniz gerekir:
+Video kodlanırken giriş videosuna bir logo resmi bindirmek istediğiniz bir örnek düşünün. Bu örnekte, giriş videosu "Microsoft_HoloLens_Possibilities_816p24.mp4" ve logosu "logo.png" olarak adlandırılır. Aşağıdaki adımları gerçekleştirmeniz gerekir:
 
-* İş akışı dosyası ile bir Iş akışı varlığı oluşturun (aşağıdaki örneğe bakın).
-* İki dosya içeren bir medya varlığı oluşturun: birincil dosya olarak Myınputvideo. mp4 ve MyLogo. png.
-* Yukarıdaki giriş varlıklarıyla Media Encoder Premium Workflow medya işlemcisine bir görev gönderin ve aşağıdaki yapılandırma dizesini belirtin.
+* İş akışı dosyasıyla birlikte bir İş Akışı Varlığı oluşturun (aşağıdaki örneğe bakın).
+* İki dosya içeren bir Medya Varlığı oluşturun: MyInputVideo.mp4 birincil dosya ve MyLogo.png olarak.
+* Yukarıdaki giriş varlıklarıyla Media Encoder Premium İş Akışı ortam işlemcisine bir görev gönderin ve aşağıdaki yapılandırma dizesini belirtin.
 
 Yapılandırma:
 
@@ -291,114 +291,114 @@ Yapılandırma:
   </transcodeRequest>
 ```
 
-Yukarıdaki örnekte, video dosyasının adı medya dosyası giriş bileşenine ve primarySourceFile özelliğine gönderilir. Logo dosyasının adı, grafik kaplama bileşenine bağlı başka bir medya dosyası girişine gönderilir.
+Yukarıdaki örnekte, video dosyasının adı Media File Input bileşenine ve birincilSourceFile özelliğine gönderilir. Logo dosyasının adı, grafik kaplama bileşenine bağlı başka bir Medya Dosyası Girişi'ne gönderilir.
 
 > [!NOTE]
-> Video dosyası adı primarySourceFile özelliğine gönderilir. Bunun nedeni, örnek olarak Ifadeleri kullanarak doğru çıkış dosyası adını oluşturmak için iş akışında bu özelliği kullanmaktır.
+> Video dosyası adı birincilSourceFile özelliğine gönderilir. Bunun nedeni, örneğin İfadeler'i kullanarak doğru çıktı dosya adını oluşturmak için iş akışında bu özelliği kullanmaktır.
 
 ### <a name="step-by-step-workflow-creation"></a>Adım adım iş akışı oluşturma
-Aşağıda, giriş: video ve görüntü gibi iki dosya alan bir iş akışı oluşturma adımları verilmiştir. Videonun üzerinde görüntünün üst kısmında yer alır.
+Burada, giriş olarak iki dosya alan bir iş akışı oluşturma adımları ve bir görüntü ve bir görüntü ve giriş vardır. Görüntüyü videonun üstüne yerleştirir.
 
-**İş akışı Tasarımcısı** açın ve **Dosya** > **Yeni çalışma alanı** > **transcode Blueprint**' i seçin.
+**İş Akışı Tasarımcısı'nı** açın ve **Dosya** > **Yeni İş Alanı** > **Transcode Blueprint'i**seçin.
 
-Yeni iş akışı üç öğe gösterir:
+Yeni iş akışı üç öğeyi gösterir:
 
-* Birincil kaynak dosyası
-* Klip Listesi XML 'i
-* Çıkış dosyası/varlık  
+* Birincil Kaynak Dosya
+* Klip Listesi XML
+* Çıktı Dosyası/Varlık  
 
-![Yeni kodlama Iş akışı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture9_empty.png)
+![Yeni Kodlama İş Akışı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture9_empty.png)
 
-*Yeni kodlama Iş akışı*
+*Yeni Kodlama İş Akışı*
 
-Giriş medya dosyasını kabul etmek için, medya dosyası giriş bileşeni ekleme ile başlayın. İş akışına bir bileşen eklemek için depo arama kutusunda bunu bulun ve istenen girişi tasarımcı bölmesine sürükleyin.
+Giriş ortamı dosyasını kabul etmek için, bir Ortam Dosyası Girişi bileşeni ekleyerek başlayın. İş akışına bir bileşen eklemek için, Depo arama kutusunda onu arayın ve istenen girişi tasarımcı bölmesine sürükleyin.
 
-Sonra, iş akışınızı tasarlamak için kullanılacak video dosyasını ekleyin. Bunu yapmak için, İş Akışı Tasarımcısı arka plan bölmesine tıklayın ve sağ Özellik bölmesinde birincil kaynak dosyası özelliğini arayın. Klasör simgesine tıklayın ve uygun video dosyasını seçin.
+Ardından, iş akışınızı tasarlamak için kullanılacak video dosyasını ekleyin. Bunu yapmak için, İş Akışı Tasarımcısı'ndaki arka plan bölmesini tıklatın ve sağ daki özellik bölmesinde Birincil Kaynak Dosya özelliğini arayın. Klasör simgesini tıklatın ve uygun video dosyasını seçin.
 
-![Birincil dosya kaynağı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture10_primaryfile.png)
+![Birincil Dosya Kaynağı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture10_primaryfile.png)
 
-*Birincil dosya kaynağı*
+*Birincil Dosya Kaynağı*
 
-Ardından, medya dosyası giriş bileşeninde video dosyasını belirtin.   
+Ardından, Medya Dosyası Girişi bileşeninde video dosyasını belirtin.   
 
-![Medya dosyası giriş kaynağı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture11_mediafileinput.png)
+![Medya Dosya Giriş Kaynağı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture11_mediafileinput.png)
 
-*Medya dosyası giriş kaynağı*
+*Medya Dosya Giriş Kaynağı*
 
-Bu işlem tamamlandıktan hemen sonra medya dosyası giriş bileşeni, dosyayı inceler ve çıktı PIN 'ini inceledi dosyayı yansıtacak şekilde doldurur.
+Bu işlem yapılır yapılmaz, Ortam Dosyası Girişi bileşeni dosyayı inceler ve denetlediği dosyayı yansıtacak şekilde çıktı pinlerini doldurur.
 
-Sonraki adım, REC. 709 için renk alanını belirtmek üzere "video veri türü güncelleştiricisi" eklemektir. Veri düzeni/Düzen türü = yapılandırılabilir planar olarak ayarlanan bir "video biçimi dönüştürücüsü" ekleyin. Bu işlem, video akışını, kaplama bileşeninin bir kaynağı olarak alınabilecek bir biçime dönüştürür.
+Bir sonraki adım, Rec.709'a renk alanını belirtmek için bir "Video Veri Türü Güncelleyici" eklemektir. Veri Düzeni/Düzen türü = Yapılandırılabilir Düzlemsel'e ayarlanan bir "Video Biçimi Dönüştürücü" ekleyin. Bu, video akışını bindirme bileşeninin kaynağı olarak alınabilecek bir biçime dönüştürür.
 
-![video veri türü Güncelleştirici ve biçim dönüştürücüsü](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
+![video Veri Türü Güncelleyici ve Biçim Dönüştürücü](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
 
-*Video veri türü Güncelleştirici ve biçim dönüştürücüsü*
+*Video Veri Türü Güncelleyici ve Biçim Lendirici*
 
-![Düzen türü = yapılandırılabilir Planar](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
+![Düzen türü = Yapılandırılabilir Düzlemsel](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
 
-*Düzen türü yapılandırılabilir Planar*
+*Düzen türü Yapılandırılabilir Düzlemsel*
 
-Daha sonra, bir video kaplama bileşeni ekleyin ve medya dosyası girişinin (sıkıştırılmamış) video PIN 'ini (sıkıştırılmamış) video PIN 'ini bağlayın.
+Ardından, bir Video Bindirme bileşeni ekleyin ve (sıkıştırılmamış) video pinini ortam dosyası girişinin (sıkıştırılmamış) video pinine bağlayın.
 
-Başka bir medya dosyası girişi ekleyin (logo dosyasını yüklemek için), bu bileşene tıklayın ve "medya dosyası giriş logosu" olarak yeniden adlandırın ve dosya özelliğinde bir görüntü (örneğin bir. png dosyası) seçin. Sıkıştırılmamış görüntü PIN 'ini, kaplamanın sıkıştırılmamış görüntü PIN 'ini bağlayın.
+Başka bir Medya Dosyası Girişi ekleyin (logo dosyasını yüklemek için), bu bileşene tıklayın ve "Media File Input Logo" olarak yeniden adlandırın ve dosya özelliğinde bir resim (örneğin .png dosyası) seçin. Sıkıştırılmamış görüntü pinini bindirmenin sıkıştırılmamış görüntü pimasına bağlayın.
 
-![Yer paylaşımı bileşeni ve resim dosya kaynağı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
+![Yer kaplama bileşeni ve görüntü dosyası kaynağı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
 
-*Yer paylaşımı bileşeni ve resim dosya kaynağı*
+*Yer kaplama bileşeni ve görüntü dosyası kaynağı*
 
-Logo 'nin video üzerinde konumunu değiştirmek istiyorsanız (örneğin, videonun sol üst köşesinden yüzde 10 ' luk bir konuma konumlandırmak isteyebilirsiniz), "El Ile giriş" onay kutusunu temizleyin. Bunun için, bir medya dosyası girişi kullanarak, bir logo dosyasını bir kaplama bileşenine sağlamanız gerekir.
+Videodaki logonun konumunu değiştirmek istiyorsanız (örneğin, videonun sol üst köşesinden yüzde 10 oranında konumlandırmak isteyebilirsiniz), "El Ile Giriş" onay kutusunu temizleyin. Logo dosyasını bindirme bileşenine sağlamak için bir Ortam Dosyası Girişi kullandığınız için bunu yapabilirsiniz.
 
-![Yer paylaşımı konumu](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
+![Bindirme konumu](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
 
-*Yer paylaşımı konumu*
+*Bindirme konumu*
 
-Video akışını H. bir ile kodlamak için, AVC video Kodlayıcısı ve AAC Kodlayıcısı bileşenlerini tasarımcı yüzeyine ekleyin. PIN 'leri bağlayın.
-AAC Kodlayıcısı 'nı ayarlayın ve ses biçimi dönüşümü/ön ayarı seçin: 2,0 (L, R).
+Video akışını H.264'e kodlamak için, Tasarımcı yüzeyine AVC Video Encoder ve AAC kodlayıcı bileşenlerini ekleyin. Pimleri bağlayın.
+AAC kodlayıcısını ayarlayın ve Ses Biçimi Dönüştürme/Hazır Set: 2.0 (L, R) seçeneğini belirleyin.
 
-![Ses ve video kodlayıcıları](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
+![Ses ve Video Kodlayıcılar](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
-*Ses ve video kodlayıcıları*
+*Ses ve Video Kodlayıcılar*
 
-Şimdi **ISO MPEG-4 Çoğullayıcı** ve **dosya çıkış** bileşenlerini ekleyin ve PIN 'leri gösterildiği gibi bağlayın.
+Şimdi **ISO Mpeg-4 Multiplexer** ve **Dosya Çıkışı** bileşenlerini ekleyin ve pimleri gösterildiği gibi bağlayın.
 
-![MP4 Çoğullayıcı ve dosya çıktısı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture16_mp4output.png)
+![MP4 multiplexer ve dosya çıktısı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture16_mp4output.png)
 
-*MP4 Çoğullayıcı ve dosya çıktısı*
+*MP4 multiplexer ve dosya çıktısı*
 
-Çıktı dosyasının adını ayarlamanız gerekir. **Dosya çıktısı** bileşenine tıklayın ve dosyanın ifadesini düzenleyin:
+Çıktı dosyasının adını ayarlamanız gerekir. Dosya **Çıktısı** bileşenini tıklatın ve dosya için ifadeyi tıklatın:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
 
-![Dosya çıkış adı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
+![Dosya çıktısı adı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
 
-*Dosya çıkış adı*
+*Dosya çıktısı adı*
 
 Doğru çalışıp çalışmadığını denetlemek için iş akışını yerel olarak çalıştırabilirsiniz.
 
-Tamamlandıktan sonra, Azure Media Services ' de çalıştırabilirsiniz.
+Bittiğinde, Azure Medya Hizmetleri'nde çalıştırabilirsiniz.
 
-İlk olarak, Azure Media Services içinde iki dosya ile bir varlık hazırlayın: video dosyası ve logosu. Bunu .NET veya REST API kullanarak yapabilirsiniz. Bunu, Azure portal veya [Azure Media Services Gezgini](https://github.com/Azure/Azure-Media-Services-Explorer) 'ni (amo) kullanarak da yapabilirsiniz.
+İlk olarak, Azure Medya Hizmetleri'nde içinde iki dosya bulunan bir varlık hazırlayın: video dosyası ve logo. Bunu .NET veya REST API'yi kullanarak yapabilirsiniz. Bunu, Azure portalını veya [Azure Medya Hizmetleri Gezgini'ni](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) kullanarak da yapabilirsiniz.
 
-Bu öğreticide, amo ile varlıkları yönetme konusu gösterilmektedir. Bir varlığa dosya eklemenin iki yolu vardır:
+Bu öğretici, AMSE ile varlıkları nasıl yöneteceğimize gösterilmektedir. Bir varlığa dosya eklemenin iki yolu vardır:
 
-* Yerel bir klasör oluşturun, içindeki iki dosyayı kopyalayın ve ardından dosyayı **varlık** sekmesine sürükleyin ve bırakın.
-* Video dosyasını varlık olarak karşıya yükleyin, varlık bilgilerini görüntüleyin, dosyalar sekmesine gidin ve ek dosyayı (logo) karşıya yükleyin.
+* Yerel bir klasör oluşturun, iki dosyayı kopyalayın ve klasörü sürükleyip **Varlık** sekmesine bırakın.
+* Video dosyasını varlık olarak yükleyin, varlık bilgilerini görüntüleyin, dosyalar sekmesine gidin ve ek bir dosya (logo) yükleyin.
 
 > [!NOTE]
-> Varlık içinde bir birincil dosya (ana video dosyası) ayarladığınızdan emin olun.
+> Kıymette (ana video dosyası) birincil dosyayı ayarladıklı olun.
 
-![AMO 'daki varlık dosyaları](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
+![AMSE'deki varlık dosyaları](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
 
-*AMO 'daki varlık dosyaları*
+*AMSE'deki varlık dosyaları*
 
-Varlığı seçin ve Premium kodlayıcıyla kodlamayı seçin. İş akışını karşıya yükleyin ve seçin.
+Varlığı seçin ve Premium Kodlayıcı ile kodlamayı seçin. İş akışını yükleyin ve seçin.
 
-İşlemciye veri geçirmek için düğmeye tıklayın ve çalışma zamanı özelliklerini ayarlamak için aşağıdaki XML 'i ekleyin:
+Verileri işlemciye aktarmak için düğmeyi tıklatın ve çalışma zamanı özelliklerini ayarlamak için aşağıdaki XML'i ekleyin:
 
-![AMO 'da Premium kodlayıcı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture19_amsepremium.png)
+![AMSE'de Premium Kodlayıcı](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture19_amsepremium.png)
 
-*AMO 'da Premium kodlayıcı*
+*AMSE'de Premium Kodlayıcı*
 
-Ardından, aşağıdaki XML verilerini yapıştırın. Hem medya dosyası girişi hem de primarySourceFile için video dosyasının adını belirtmeniz gerekir. Logo için dosya adının adını belirtin.
+Ardından, aşağıdaki XML verilerini yapıştırın. Hem Medya Dosyası Girişi hem de primarySourceFile için video dosyasının adını belirtmeniz gerekir. Logo için dosya adının adını da belirtin.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -415,37 +415,37 @@ Ardından, aşağıdaki XML verilerini yapıştırın. Hem medya dosyası giriş
 
 *setRuntimeProperties*
 
-Görevi oluşturmak ve çalıştırmak için .NET SDK kullanıyorsanız, bu XML verilerinin yapılandırma dizesi olarak geçirilmesi gerekir.
+Görevi oluşturmak ve çalıştırmak için .NET SDK'yı kullanırsanız, bu XML verilerinin yapılandırma dizesi olarak geçirilmesi gerekir.
 
 ```csharp
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 
-İş tamamlandıktan sonra, çıkış varlığı içindeki MP4 dosyası kaplamayı görüntüler!
+İş tamamlandıktan sonra, çıkış varlığındaki MP4 dosyası bindirmeyi görüntüler!
 
-![Videoda kaplama](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
+![Videodaki yer kaplaması](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
 
-*Videoda kaplama*
+*Videodaki yer kaplaması*
 
-Örnek iş akışını [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)'dan indirebilirsiniz.
+Örnek iş akışını [GitHub'dan](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)indirebilirsiniz.
 
-## <a name="example-2--multiple-audio-language-encoding"></a>Örnek 2: birden çok ses dili kodlaması
+## <a name="example-2--multiple-audio-language-encoding"></a>Örnek 2 : Birden çok ses dili kodlaması
 
-[GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding)'da birden çok ses dili Encoding iş akışı örneği mevcuttur.
+Birden çok ses dili kodlama iş akışı örneği [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding)mevcuttur.
 
-Bu klasör, bir MXF dosyasını birden çok ses parçası olan çok MP4 dosyaları varlığına kodlamak için kullanılabilen bir örnek iş akışı içerir.
+Bu klasör, bir MXF dosyasını birden çok ses parçası içeren çok MP4 dosyaları varlığa kodlamak için kullanılabilecek örnek bir iş akışı içerir.
 
-Bu iş akışı, MXF dosyasının bir ses izi içerdiğini varsayar; Ek ses parçaları ayrı ses dosyaları (WAV veya MP4...) olarak geçirilmelidir.
+Bu iş akışı, MXF dosyasının tek bir ses parçası içerdiğini varsayar; ek ses parçaları ayrı ses dosyaları (WAV veya MP4...) olarak geçirilmelidir.
 
-Kodlamak için lütfen şu adımları izleyin:
+Kodlamak için lütfen aşağıdaki adımları izleyin:
 
-* MXF dosyası ve ses dosyalarıyla (0 ila 18 ses dosyası) Media Services bir varlık oluşturun.
-* MXF dosyasının birincil dosya olarak ayarlandığından emin olun.
-* Premium Iş akışı Kodlayıcısı işlemcisini kullanarak bir iş ve görev oluşturun. Belirtilen iş akışını kullanın (MultiMP4-1080p-19audio-v1. Workflow).
-* Setruntime. xml verilerini göreve geçirin (Azure Media Services Gezgini kullanıyorsanız, "XML verilerini iş akışına geçir" düğmesine basın.
-  * Lütfen doğru dosya adları ve diller etiketlerini belirtmek için XML verilerini güncelleştirin.
-  * İş akışında, Audio 1 adlı ses bileşenleri 18 ' e sahiptir.
-  * RFC5646, Language etiketi için desteklenir.
+* MXF dosyası ve Ses dosyaları (0 - 18 ses dosyası) ile bir Medya Hizmetleri varlık oluşturun.
+* MXF dosyasının birincil dosya olarak ayarlandıkdığından emin olun.
+* Premium İş Akışı Encoder işlemcisini kullanarak bir iş ve görev oluşturun. Sağlanan iş akışını kullanın (MultiMP4-1080p-19audio-v1.iş akışı).
+* setruntime.xml verilerini göreve aktarın (Azure Medya Hizmetleri Gezgini kullanıyorsanız, "xml verilerini iş akışına geçir" düğmesini kullanın).
+  * Doğru dosya adlarını ve dil etiketlerini belirtmek için lütfen XML verilerini güncelleştirin.
+  * İş akışında Ses 1'den Ses 18'e kadar ses bileşenleri vardır.
+  * RFC5646 dil etiketi için desteklenir.
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -464,17 +464,17 @@ Kodlamak için lütfen şu adımları izleyin:
 </transcodeRequest>
 ```
 
-* Kodlanmış varlık çok dilli ses parçaları içerir ve bu parçalar Azure Media Player seçilebilmelidir.
+* Kodlanmış varlık çok dilli ses parçaları içerir ve bu parçalar Azure Media Player'da seçilebilir olmalıdır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure Media Services Premium kodlamaya giriş](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-* [Azure Media Services içinde Premium kodlama kullanma](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
-* [Azure Media Services ile isteğe bağlı içeriği kodlama](media-services-encode-asset.md#media-encoder-premium-workflow)
-* [Media Encoder Premium Workflow biçimleri ve kodlayıcıları](media-services-premium-workflow-encoder-formats.md)
+* [Azure Medya Hizmetlerinde Premium Kodlama Ile Tanış](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+* [Azure Medya Hizmetlerinde Premium Kodlama nasıl kullanılır?](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+* [Azure Medya Hizmetleri ile isteğe bağlı içeriği kodlama](media-services-encode-asset.md#media-encoder-premium-workflow)
+* [Media Encoder Premium İş Akışı biçimleri ve codec'leri](media-services-premium-workflow-encoder-formats.md)
 * [Örnek iş akışı dosyaları](https://github.com/Azure/azure-media-services-samples)
 * [Azure Media Services Gezgini aracı](https://aka.ms/amse)
 
-## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
