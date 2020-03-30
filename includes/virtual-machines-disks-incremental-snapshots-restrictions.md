@@ -9,14 +9,14 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8e4c1c05b133f85b7473c3ce97c9f509ac8f7d37
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299215"
 ---
-- Artımlı anlık görüntüler şu anda abonelikler arasında taşınamaz.
-- Şu anda, belirli bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsüne sahip SAS URI 'Leri oluşturabilirsiniz.
-- Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız.
-- Her beş dakikada bir disk başına en fazla yedi Artımlı anlık görüntü oluşturulabilir.
-- Tek bir disk için toplam 200 Artımlı anlık görüntü oluşturulabilir.
+- Şu anda artan anlık görüntüler abonelikler arasında taşınamaz.
+- Şu anda herhangi bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsünün SAS URI'lerini oluşturabilirsiniz.
+- Belirli bir disk in aboneliği dışında belirli bir disk için artımlı anlık görüntü oluşturamazsınız.
+- Her beş dakikada bir disk başına en fazla yedi artımlı anlık görüntü oluşturulabilir.
+- Tek bir disk için toplam 200 artımlı anlık görüntü oluşturulabilir.

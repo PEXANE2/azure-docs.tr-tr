@@ -1,6 +1,6 @@
 ---
-title: Haritaya kutucuk katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir harita üzerindeki döşeme katmanını nasıl kaplacağınızı öğreneceksiniz. Döşeme katmanları, bir haritada görüntü işleme sağlar.
+title: Haritaya döşeme katmanı ekleme | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar Web SDK'sını kullanarak haritaüzerinde bir döşeme Katmanı'nı nasıl yerleştirirsiniz öğreneceksiniz. Döşeme katmanları, görüntüleri harita üzerinde oluşturmanıza olanak sağlar.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,37 +10,37 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988609"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Haritaya kutucuk katmanı ekleme
 
-Bu makalede, haritada kutucuk katmanının nasıl yer aldığı gösterilmektedir. Döşeme katmanları, Azure Maps temel harita kutucuklarının üzerine görüntü eklemenize olanak tanır. Azure haritalar döşeme sistemi hakkında daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
+Bu makalede, haritaüzerinde bir Kiremit katmanı nın nasıl yerle bir edilebildiğini gösterir. Kutucuk katmanları, Görüntüleri Azure Haritalar temel harita kutucuklarının üzerine eklemenize olanak tanır. Azure Haritalar döşeme sistemi hakkında daha fazla bilgi için [Yakınlaştırma düzeyleri ve döşeme ızgarası'na](zoom-levels-and-tile-grid.md)bakın.
 
-Döşeme katmanı bir sunucudan kutucukları yükler. Bu görüntüler önceden işlenmiş ya da dinamik olarak işlenmiş olabilir. Önceden işlenmiş görüntüler, kutucuk katmanının anladığı bir adlandırma kuralını kullanarak bir sunucu üzerindeki diğer herhangi bir görüntü gibi saklanır. Dinamik olarak işlenen görüntüler görüntüleri gerçek zamanlı olarak yakın bir şekilde yüklemek için bir hizmet kullanır. Azure haritalar [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) sınıfı tarafından desteklenen üç farklı kutucuk hizmeti adlandırma kuralı vardır: 
+Bir Kiremit katmanı, bir sunucudan kutucuklarda yüklenir. Bu görüntüler önceden işlenmiş veya dinamik olarak işlenebilir. Önceden işlenmiş görüntüler, döşeme katmanının anladığı bir adlandırma kuralı kullanılarak sunucudaki diğer görüntüler gibi depolanır. Dinamik olarak işlenen görüntüler, görüntüleri gerçek zamanlıya yakın yüklemek için bir hizmet kullanır. Azure Haritalar [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) sınıfı tarafından desteklenen üç farklı döşeme hizmeti adlandırma kuralı vardır: 
 
-* X, Y, zoom gösterimi-X sütundur, Y, kutucuk kılavuzundaki döşemenin satır konumudur ve yakınlaştırma düzeyi yakınlaştırma düzeyine göre bir değer gösterimi.
-* Quadkey gösterimi-x, y ve zoom bilgilerini tek bir dize değeri olarak birleştirir. Bu dize değeri, tek bir kutucuk için benzersiz bir tanımlayıcı haline gelir.
-* Sınırlayıcı kutusu-sınırlayıcı kutu koordinatları biçiminde bir görüntü belirleyin: `{west},{south},{east},{north}`. Bu biçim genellikle [Web eşleme Hizmetleri (WMS)](https://www.opengeospatial.org/standards/wms)tarafından kullanılır.
+* X, Y, Zoom gösterimi - X sütundur, Y döşeme ızgarasındaki döşemenin satır konumudur ve Yakınlaştırma gösterimi yakınlaştırma düzeyine dayalı bir değerdir.
+* Dört tuşlu gösterim - X, y ve yakınlaştırma bilgilerini tek bir dize değerinde birleştirir. Bu dize değeri, tek bir döşeme için benzersiz bir tanımlayıcı olur.
+* Sınırlayıcı Kutu - Bağlama kutusu koordinat biçiminde bir `{west},{south},{east},{north}`resim belirtin: . Bu biçim genellikle [Web Eşleme Hizmetleri (WMS)](https://www.opengeospatial.org/standards/wms)tarafından kullanılır.
 
 > [!TIP]
-> Bir [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) , haritada büyük veri kümelerini görselleştirmenin harika bir yoludur. Bir görüntüden yalnızca kutucuk katmanı oluşturulmayabilir, vektör verileri de kutucuk katmanı olarak da oluşturulabilir. Vektör verilerini kutucuk katmanı olarak işleyerek, Map Control yalnızca dosya boyutunda daha küçük olan kutucukları, temsil ettikleri vektör verilerinden yüklemek için gerekir. Bu teknik, haritada milyonlarca veri satırını işlemek için yaygın olarak kullanılır.
+> [Bir TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) harita üzerinde büyük veri kümeleri görselleştirmek için harika bir yoldur. Bir görüntüden yalnızca bir döşeme katmanı oluşturulamaz, vektör verileri de bir döşeme katmanı olarak işlenebilir. Vektör verilerini bir döşeme katmanı olarak işleyerek, harita denetiminin yalnızca dosya boyutunda temsil ettikleri vektör verilerinden daha küçük olan kutucukları yüklemesi gerekir. Bu teknik genellikle haritaüzerinde milyonlarca veri satırı işlemek için kullanılır.
 
-Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına yönelik bir http veya https URL 'SI ya da aşağıdaki parametreleri kullanan bir kutucuk URL şablonu olmalıdır: 
+Döşeme katmanına geçirilen döşeme URL'si, bir TileJSON kaynağının http veya https URL'si veya aşağıdaki parametreleri kullanan bir döşeme URL şablonu olmalıdır: 
 
-* kutucuğun `{x}` X konumu. Ayrıca `{y}` ve `{z}`gerekir.
-* kutucuğun `{y}` Y konumu. Ayrıca `{x}` ve `{z}`gerekir.
-* kutucuğun `{z}` yakınlaştırma düzeyi. Ayrıca `{x}` ve `{y}`gerekir.
-* `{quadkey}`, Bing Haritalar kutucuk sistem adlandırma kuralına göre çeyrek anahtar tanımlayıcısı.
-* `{bbox-epsg-3857}`-EPSG 3857 uzamsal başvuru sisteminde biçim `{west},{south},{east},{north}` bir sınırlayıcı kutu dizesi.
-* `{subdomain}`-alt etki alanı değerleri için bir yer tutucu, belirtilmişse `subdomain` eklenir.
+* `{x}`- Kiremitin X konumu. Ayrıca `{y}` ihtiyaçları `{z}`ve .
+* `{y}`- Kiremitin Y konumu. Ayrıca `{x}` ihtiyaçları `{z}`ve .
+* `{z}`- Döşemenin yakınlaştırma seviyesi. Ayrıca `{x}` ihtiyaçları `{y}`ve .
+* `{quadkey}`- Bing Maps döşeme sistemi adlandırma kuralına dayalı döşeme dörtanahtar tanımlayıcısı.
+* `{bbox-epsg-3857}`- EPSG 3857 `{west},{south},{east},{north}` Mekansal Referans Sistemi formatında bir sınırlayıcı kutu dizesi.
+* `{subdomain}`- Alt etki alanı değerleri için bir `subdomain` yer tutucu, belirtilirse eklenecektir.
 
 ## <a name="add-a-tile-layer"></a>Kutucuk katmanı ekleme
 
- Bu örnek, bir kutucuk kümesini işaret eden döşeme katmanının nasıl oluşturulacağını gösterir. Bu örnek x, y, yakınlaştırma Döşeme sistemini kullanır. Bu kutucuk katmanının kaynağı, [Iowa çevresel Mesonet 'in Iowa çevre](https://mesonet.agron.iastate.edu/ogc/)bir hava durumu radar kaplamasıyla. Radar verileri görüntülerken, ideal kullanıcılar haritada gezindikleri gibi şehirlerin etiketlerini açıkça görürler. Bu davranış, `labels` katmanının altına kutucuk katmanının eklenmesiyle uygulanabilir.
+ Bu örnek, bir kutucuk kümesini işaret eden bir döşeme katmanının nasıl oluşturulutur gösteriş gösterir. Bu örnekx, y, zoom fayans sistemini kullanır. Bu kiremit tabakasının kaynağı [Iowa Devlet Üniversitesi Iowa Çevre Mesonet](https://mesonet.agron.iastate.edu/ogc/)bir hava radar bindirme olduğunu. Radar verilerini görüntülerken, ideal olarak kullanıcılar haritada gezinirken şehirlerin etiketlerini açıkça görürler. Bu davranış, `labels` katmanın altına döşeme katmanı ekleyerek uygulanabilir.
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -52,20 +52,20 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='X, Y ve Z kullanarak döşeme katmanı' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>X, Y ve Z kullanarak kalem döşeme katmanına</a> bakın.
+<iframe height='500' scrolling='no' title='X, Y ve Z kullanan Kiremit Tabakası' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a göre <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>X, Y ve Z kullanarak</a> Kalem Döşeme Katmanı'na bakın .<a href='https://codepen.io/azuremaps'>@azuremaps</a>
 </iframe>
 
 ## <a name="customize-a-tile-layer"></a>Döşeme katmanını özelleştirme
 
-Döşeme katmanı sınıfının birçok stil seçeneği vardır. İşte deneyebileceğiniz bir araç.
+Döşeme katmanı sınıfıbirçok stil seçeneğine sahiptir. Burada bunları denemek için bir araçtır.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Döşeme katmanı seçenekleri' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>kutucuğu katman seçeneklerine</a> bakın.
+<iframe height='700' scrolling='no' title='Çini Katman Seçenekleri' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Azure Haritalar'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem Döşeme Katmanı <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Seçeneklerine</a> bakın .
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini üretime çağıran masaüstü uygulamasını taşıma-Microsoft Identity platform | Mavisi
-description: Web API 'Lerini üretime çağıran bir masaüstü uygulamasını nasıl taşıyacağınızı öğrenin
+title: Masaüstü uygulaması arama web API'lerini üretime taşıyın - Microsoft kimlik platformu | Azure
+description: Web API'lerini üretime çağıran bir masaüstü uygulamasını nasıl taşıyabilirsiniz öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,37 +17,37 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c8a9cf0c05d8af14d52bb1efb536dc8bbe7db84d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262574"
 ---
-# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması: üretime taşı
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API'lerini çağıran masaüstü uygulaması: Üretime geç
 
-Bu makalede, Web API 'Lerini üretime çağıran masaüstü uygulamanızı nasıl taşıyacağınızı öğreneceksiniz.
+Bu makalede, web API'lerini çağıran masaüstü uygulamanızı üretime nasıl taşıyabileceğinizi öğreneceksiniz.
 
-## <a name="handle-errors-in-desktop-applications"></a>Masaüstü uygulamalarında hataları işleme
+## <a name="handle-errors-in-desktop-applications"></a>Masaüstü uygulamalarındaki hataları işleme
 
-Farklı akışlarda, kod parçacıkları bölümünde gösterildiği gibi sessiz akışlar için hataları nasıl işleyeceğinizi öğrendiniz. Ayrıca, artan onay ve koşullu erişim bölümünde olduğu gibi, etkileşimin gerekli olduğu durumlar olduğunu da gördünüz.
+Farklı akışlarda, kod parçacıklarında gösterildiği gibi sessiz akışlar için hataları nasıl işleyeceğiniz öğrenilir. Artımlı onam ve koşullu erişim gibi etkileşimin gerekli olduğu durumlar olduğunu da gördünüz.
 
-## <a name="have-the-user-consent-upfront-for-several-resources"></a>Kullanıcı onayını birkaç kaynağın önüne alma
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>Kullanıcının çeşitli kaynaklar için önceden onayını alın
 
 > [!NOTE]
-> Birkaç kaynağa onay alınması Microsoft Identity platform için geçerlidir ancak Azure Active Directory (Azure AD) B2C için değildir. Azure AD B2C, Kullanıcı onayını değil yalnızca yönetici onayını destekler.
+> Birden çok kaynak için onay almak Microsoft kimlik platformu için çalışır, ancak Azure Active Directory (Azure AD) B2C için çalışmaz. Azure AD B2C, kullanıcı onayı değil, yalnızca yönetici onayInı destekler.
 
-Microsoft Identity platform (v 2.0) uç noktası ile aynı anda birkaç kaynak için bir belirteç alamazsınız. `scopes` parametresi yalnızca tek bir kaynak için kapsam içerebilir. Kullanıcının `extraScopesToConsent` parametresini kullanarak birkaç kaynağa ön onay vererek emin olabilirsiniz.
+Microsoft kimlik platformu (v2.0) bitiş noktası ile aynı anda birden fazla kaynak için bir belirteç alamazsınız. Parametre yalnızca `scopes` tek bir kaynak için kapsamlar içerebilir. `extraScopesToConsent` Parametreyi kullanarak kullanıcının çeşitli kaynaklara önceden onay verdiğinden emin olabilirsiniz.
 
-Örneğin, her biri iki kapsamın bulunduğu iki kaynak olabilir:
+Örneğin, her biri iki kapsamı olan iki kaynağınız olabilir:
 
-- `https://mytenant.onmicrosoft.com/customerapi` kapsamlar `customer.read` ve `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi` kapsamlar `vendor.read` ve `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`kapsamları `customer.read` ve`customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`kapsamları `vendor.read` ve`vendor.write`
 
-Bu örnekte, `extraScopesToConsent` parametresine sahip `.WithAdditionalPromptToConsent` değiştiricisini kullanın.
+Bu örnekte, `.WithAdditionalPromptToConsent` `extraScopesToConsent` parametreye sahip değiştiriciyi kullanın.
 
 Örneğin:
 
-### <a name="in-msalnet"></a>MSAL.NET içinde
+### <a name="in-msalnet"></a>MSAL.NET yılında
 
 ```csharp
 string[] scopesForCustomerApi = new string[]
@@ -68,7 +68,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-### <a name="in-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL içinde
+### <a name="in-msal-for-ios-and-macos"></a>iOS ve macOS için MSAL'da
 
 Amaç-C:
 
@@ -84,7 +84,7 @@ interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -98,17 +98,17 @@ interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
 ```
 
-Bu çağrı, ilk Web API 'SI için bir erişim belirteci alır.
+Bu arama, ilk web API'si için bir erişim belirteci alır.
 
-İkinci Web API 'sini çağırmanız gerektiğinde `AcquireTokenSilent` API 'sini çağırın.
+İkinci web API'sini aramanız gerektiğinde `AcquireTokenSilent` API'yi arayın.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Uygulama her çalıştığında Microsoft Kişisel hesabı için reconsent gerekir
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Microsoft kişisel hesabı, uygulama her çalıştığında yeniden onay gerektirir
 
-Microsoft kişisel hesap kullanıcıları için, yetkilendirmede her bir yerel istemcide (masaüstü veya mobil uygulama) onay için yeniden sorma, amaçlanan davranıştır. Yerel istemci kimliği, gizli istemci uygulama kimliğinin aksine, doğal olarak güvenli değildir. Gizli istemci uygulamaları, kimlik kanıtlamaları için Microsoft Identity platformu ile gizli dizi değişimi. Microsoft Identity platformu, uygulamanın her yetkilendirildiği her seferinde kullanıcıdan izin vermesini isteyerek tüketici hizmetleri için bu ingüvenliğin azaltılmasına karar verebilir.
+Microsoft kişisel hesap kullanıcıları için, her yerel istemcinin (masaüstü veya mobil uygulama) yetkilendirme çağrısının onayını yeniden isteme, amaçlanan davranıştır. Yerel istemci kimliği, gizli istemci uygulama kimliğine aykırı olan doğal olarak güvensizdir. Gizli istemci uygulamaları, kimliklerini kanıtlamak için Microsoft Identity platformuyla bir sır alışverişinde bulunarak. Microsoft kimlik platformu, uygulama nın izin li olduğu her seferde kullanıcıdan onay isteyen tüketici hizmetleri için bu güvensizliği azaltmayı seçti.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

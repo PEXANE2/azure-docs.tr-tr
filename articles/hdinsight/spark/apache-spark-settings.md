@@ -1,5 +1,5 @@
 ---
-title: Spark ayarlarını yapılandırma-Azure HDInsight
+title: Kıvılcım ayarlarını yapılandırma - Azure HDInsight
 description: Azure HDInsight kümesi için Apache Spark ayarlarını görüntüleme ve yapılandırma
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,39 +9,39 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272025"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark ayarlarını yapılandırma
 
-An HDInsight Spark kümesi, [Apache Spark](https://spark.apache.org/) kitaplığının bir yüklemesini içerir.  Her HDInsight kümesi, Spark dahil olmak üzere tüm yüklü Hizmetleri için varsayılan yapılandırma parametrelerini içerir.  HDInsight Apache Hadoop kümesini yönetmenin önemli bir yönü, işlerin öngörülebilir bir şekilde çalıştığından emin olmak için Spark Işleri dahil iş yükünü izliyor. Spark işlerini en iyi şekilde çalıştırmak için, kümenin mantıksal yapılandırmasını en iyi hale getirmeyi belirlerken fiziksel küme yapılandırmasını göz önünde bulundurun.
+HDInsight Spark kümesi, [Apache Spark](https://spark.apache.org/) kitaplığı yüklemesini içerir.  Her HDInsight kümesi, Spark da dahil olmak üzere tüm yüklü hizmetleri için varsayılan yapılandırma parametrelerini içerir.  HDInsight Apache Hadoop kümesini yönetmenin önemli bir yönü, işlerin öngörülebilir bir şekilde çalıştığından emin olmak için Spark Jobs da dahil olmak üzere iş yükünü izlemektir. Spark işlerini en iyi çalıştırmak için, kümenin mantıksal yapılandırmasını en iyi duruma getirmenin nasıl yapılacağını belirlerken fiziksel küme yapılandırmasını göz önünde bulundurun.
 
-Varsayılan HDInsight Apache Spark kümesi şu düğümleri içerir: üç [Apache ZooKeeper](https://zookeeper.apache.org/) düğüm, iki baş düğüm ve bir veya daha fazla çalışan düğümü:
+Varsayılan HDInsight Apache Spark kümesi aşağıdaki düğümleri içerir: üç [Apache ZooKeeper](https://zookeeper.apache.org/) düğümleri, iki baş düğümleri ve bir veya daha fazla işçi düğümleri:
 
-![Spark HDInsight mimarisi](./media/apache-spark-settings/spark-hdinsight-arch.png)
+![Spark HDInsight Mimarisi](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-HDInsight kümenizdeki düğümlerin sayısı ve sanal makine boyutları Spark yapılandırmanızı de etkileyebilir. Varsayılan olmayan HDInsight yapılandırma değerleri genellikle varsayılan olmayan Spark yapılandırma değerlerini gerektirir. Bir HDInsight Spark kümesi oluşturduğunuzda, bileşenlerden her biri için önerilen VM boyutları gösterilir. Şu anda Azure için [bellek için Iyileştirilmiş LINUX VM boyutları](../../virtual-machines/linux/sizes-memory.md) D12 v2 veya daha fazladır.
+HDInsight kümenizdeki düğümler için VM sayısı ve VM boyutları da Spark yapılandırmanızı etkileyebilir. Varsayılan olmayan HDInsight yapılandırma değerleri genellikle varsayılan olmayan Spark yapılandırma değerlerini gerektirir. Bir HDInsight Spark kümesi oluşturduğunuzda, bileşenlerin her biri için önerilen VM boyutları gösterilir. Şu anda Azure için [Bellek için optimize edilmiş Linux VM boyutları](../../virtual-machines/linux/sizes-memory.md) D12 v2 veya daha büyüktür.
 
 ## <a name="apache-spark-versions"></a>Apache Spark sürümleri
 
-Kümeniz için en iyi Spark sürümünü kullanın.  HDInsight hizmeti hem Spark hem de HDInsight 'ın kendine ait çeşitli sürümlerini içerir.  Spark 'ın her sürümü bir dizi varsayılan küme ayarlarını içerir.  
+Kümeniz için en iyi Spark sürümünü kullanın.  HDInsight hizmeti, hem Spark hem de HDInsight'ın çeşitli sürümlerini içerir.  Spark'ın her sürümü varsayılan küme ayarları kümesini içerir.  
 
-Yeni bir küme oluşturduğunuzda, aralarından seçim yapabileceğiniz birden çok Spark sürümü vardır. Tam listeyi görmek için [HDInsight bileşenlerini ve sürümlerini](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
+Yeni bir küme oluşturduğunuzda, aralarından seçim yapabileceğiniz birden çok Spark sürümü vardır. Tam listeyi görmek [için, HDInsight Bileşenleri ve Sürümleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
 
 
 > [!NOTE]  
-> HDInsight hizmetindeki Apache Spark varsayılan sürümü hiçbir bildirimde bulunmaksızın değiştirilebilir. Bir sürüm bağımlılığı varsa, Microsoft, .NET SDK, Azure PowerShell ve Azure klasik CLı kullanarak kümeler oluştururken belirli sürümü belirtmenizi önerir.
+> HDInsight hizmetindeki Apache Spark'ın varsayılan sürümü önceden haber verilmeden değişebilir. Sürüm bağımlılığınız varsa, Microsoft .NET SDK, Azure PowerShell ve Azure Classic CLI kullanarak kümeler oluştururken bu sürümü belirtmenizi önerir.
 
-Apache Spark üç sistem yapılandırma konumuna sahiptir:
+Apache Spark üç sistem yapılandırma konumuvardır:
 
-* Spark özellikleri çoğu uygulama parametresini denetler ve bir `SparkConf` nesnesi kullanılarak veya Java sistem özellikleri aracılığıyla ayarlanabilir.
-* Ortam değişkenleri, her düğümdeki `conf/spark-env.sh` betiği aracılığıyla, IP adresi gibi makine başına ayarları ayarlamak için kullanılabilir.
-* Günlüğe kaydetme, `log4j.properties`aracılığıyla yapılandırılabilir.
+* Kıvılcım özellikleri çoğu uygulama parametrelerini denetler `SparkConf` ve bir nesne kullanılarak veya Java sistem özellikleri aracılığıyla ayarlanabilir.
+* Ortam değişkenleri, her düğümdeki `conf/spark-env.sh` komut dosyası aracılığıyla IP adresi gibi makine başına ayarları ayarlamak için kullanılabilir.
+* Günlüğe kaydetme yoluyla `log4j.properties`yapılandırılabilir.
 
-Spark 'ın belirli bir sürümünü seçtiğinizde, kümeniz varsayılan yapılandırma ayarlarını içerir.  Varsayılan Spark yapılandırma değerlerini özel bir Spark yapılandırma dosyası kullanarak değiştirebilirsiniz.  Aşağıda bir örnek gösterilmiştir.
+Spark'ın belirli bir sürümünü seçtiğinizde, kümeniz varsayılan yapılandırma ayarlarını içerir.  Özel bir Spark yapılandırma dosyası kullanarak varsayılan Spark yapılandırma değerlerini değiştirebilirsiniz.  Aşağıda bir örnek gösterilmiştir.
 
 ```
 spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
@@ -51,89 +51,89 @@ spark.sql.files.maxPartitionBytes 1099511627776
 spark.sql.files.openCostInBytes 1099511627776
 ```
 
-Yukarıda gösterilen örnek, beş Spark yapılandırma parametresi için birkaç varsayılan değeri geçersiz kılar.  Bunlar sıkıştırma codec 'tir Apache Hadoop, MapReduce Split minimum boyut ve Parquet blok boyutları ve ayrıca Spar SQL bölümü ve açık dosya boyutları varsayılan değerleri.  Bu yapılandırma değişiklikleri, ilişkili veriler ve işler (Bu örnekte genomik verileri) belirli özelliklere sahip olduğundan ve bu özel yapılandırma ayarları kullanılarak daha iyi gerçekleştirilecek şekilde seçilir.
+Yukarıda gösterilen örnek, beş Spark yapılandırma paramı için birkaç varsayılan değeri geçersiz kılar.  Bu sıkıştırma codec, Apache Hadoop MapReduce bölünmüş minimum boyut ve parke bloğu boyutları ve aynı zamanda Spar SQL bölümü ve açık dosya boyutları varsayılan değerlerivardır.  İlişkili veriler ve işler (bu örnekte genomik veriler) bu özel yapılandırma ayarlarını kullanarak daha iyi performans gösteren belirli özelliklere sahip olduğundan, bu yapılandırma değişiklikleri seçilir.
 
 ---
 
-## <a name="view-cluster-configuration-settings"></a>Küme yapılandırma ayarlarını görüntüle
+## <a name="view-cluster-configuration-settings"></a>Küme yapılandırma ayarlarını görüntüleme
 
-Kümede performans iyileştirmesi gerçekleştirmeden önce geçerli HDInsight küme yapılandırma ayarlarını doğrulayın. Spark kümesi bölmesindeki **Pano** bağlantısına tıklayarak hdınsight panosunu Azure Portal başlatın. Küme yöneticisinin Kullanıcı adı ve parolasıyla oturum açın.
+Kümede performans optimizasyonu gerçekleştirmeden önce geçerli HDInsight küme yapılandırma ayarlarını doğrulayın. Spark küme bölmesindeki **Pano** bağlantısını tıklatarak Azure portalından HDInsight Panosu'nu başlatın. Küme yöneticisinin kullanıcı adı ve parolasıyla oturum açın.
 
-Apache ambarı Web Kullanıcı arabirimi, anahtar kümesi kaynak kullanımı ölçümlerinin bir pano görünümüyle görüntülenir.  Ambarı panosu, Apache Spark yapılandırmayı ve yüklediğiniz diğer hizmetleri gösterir. Panoda, Spark dahil olmak üzere tüm yüklü hizmetlerin yapılandırma bilgilerini görüntüleyebileceğiniz bir **yapılandırma geçmişi** sekmesi bulunur.
+Apache Ambari Web UI, anahtar küme kaynak kullanım ölçümlerinin pano görünümüyle görüntülenir.  Ambari Panosu size Apache Spark yapılandırmasını ve yüklediğiniz diğer hizmetleri gösterir. Pano, Spark da dahil olmak üzere tüm yüklü hizmetlerin yapılandırma bilgilerini görüntüleyebileceğiniz bir **Config History** sekmesi içerir.
 
-Apache Spark yapılandırma değerlerini görmek için yapılandırma **geçmişi**' ni seçin ve ardından **Spark2**' ı seçin.  Yapılandırma ' yı **seçin, sonra** hizmet listesindeki `Spark` (veya sürümünüze bağlı olarak `Spark2`) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
+Apache Spark için yapılandırma değerlerini görmek için **Config History'yi**seçin ve ardından **Spark2'yi**seçin.  **Configs** sekmesini seçin ve `Spark` ardından `Spark2`servis listesindeki (veya sürüme bağlı olarak) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
 
-![Spark yapılandırması](./media/apache-spark-settings/spark-configurations.png)
+![Kıvılcım Yapılandırmaları](./media/apache-spark-settings/spark-configurations.png)
 
-Tek tek Spark yapılandırma değerlerini görmek ve değiştirmek için bağlantı başlığında "Spark" kelimesiyle herhangi bir bağlantı seçin.  Spark yapılandırmaları, bu kategorilerdeki özel ve gelişmiş yapılandırma değerlerini içerir:
+Tek tek Spark yapılandırma değerlerini görmek ve değiştirmek için bağlantı başlığında "kıvılcım" sözcüğünün olduğu herhangi bir bağlantı seçin.  Spark için yapılandırmalar, bu kategorilerde hem özel hem de gelişmiş yapılandırma değerlerini içerir:
 
 * Özel Spark2-varsayılanlar
-* Özel Spark2-ölçümler-Özellikler
-* Gelişmiş Spark2-varsayılanlar
+* Özel Spark2-metrics-özellikleri
+* Gelişmiş Spark2 varsayılanları
 * Gelişmiş Spark2-env
-* Gelişmiş spark2-Hive-site-geçersiz kıl
+* Gelişmiş spark2-kovan-site-geçersiz kılma
 
-Varsayılan olmayan bir yapılandırma değerleri kümesi oluşturursanız, yapılandırma güncelleştirmelerinizin geçmişini de görebilirsiniz.  Bu yapılandırma geçmişi, varsayılan olmayan yapılandırmanın en iyi performansa sahip olduğunu görmek için yararlı olabilir.
-
-> [!NOTE]  
-> Ortak Spark kümesi yapılandırma ayarlarını görmek, ancak değiştirmek için, üst düzey **Spark işi Kullanıcı arabirimi** arabirimindeki **ortam** sekmesini seçin.
-
-## <a name="configuring-spark-executors"></a>Spark yürüticileri yapılandırma
-
-Aşağıdaki diyagramda, anahtar Spark nesneleri: sürücü programı ve onunla ilişkili Spark bağlamı ve Küme Yöneticisi ve *n* çalışan düğümleri gösterilmektedir.  Her çalışan düğümü bir yürütücü, önbellek ve *n* görev örnekleri içerir.
-
-![Küme nesneleri](./media/apache-spark-settings/hdi-spark-architecture.png)
-
-Spark işleri çalışan kaynakları, özellikle bellek kullanır, bu yüzden çalışan düğüm Yürüticileri için Spark yapılandırma değerlerini ayarlamak yaygındır.
-
-Uygulama gereksinimlerini geliştirmek üzere Spark yapılandırmalarının ayarlanması için genellikle ayarlanmış üç temel parametre `spark.executor.instances`, `spark.executor.cores`ve `spark.executor.memory`. Yürütücü, Spark uygulaması için başlatılan bir işlemdir. Bir yürütücü çalışan düğümünde çalışır ve uygulamanın görevlerinden sorumludur. Her küme için, varsayılan yürütmelerin sayısı ve yürütücü boyutları, çalışan düğümlerinin sayısı ve çalışan düğüm boyutu temel alınarak hesaplanır. Bunlar küme baş düğümlerinde `spark-defaults.conf` depolanır.  Bu değerleri, çalışan bir kümede, ambarı Web Kullanıcı arabirimindeki **özel Spark-Defaults** bağlantısını seçerek düzenleyebilirsiniz.  Değişiklik yaptıktan sonra, Kullanıcı arabirimi tarafından etkilenen tüm hizmetleri **yeniden başlatmanız** istenir.
+Varsayılan olmayan bir yapılandırma değerleri kümesi oluşturursanız, yapılandırma güncelleştirmelerinizin geçmişini de görebilirsiniz.  Bu yapılandırma geçmişi, hangi varsayılan olmayan yapılandırmanın en iyi performansa sahip olduğunu görmek için yararlı olabilir.
 
 > [!NOTE]  
-> Bu üç yapılandırma parametresi küme düzeyinde yapılandırılabilir (küme üzerinde çalışan tüm uygulamalar için) ve ayrıca her bir uygulama için de belirtilir.
+> Ortak Spark küme yapılandırma ayarlarını görmek, ancak değiştirmek için üst düzey **Spark İş Arabirimi** arabiriminde **Çevre** sekmesini seçin.
 
-Spark Yürütücüleri tarafından kullanılan kaynaklar hakkında bir diğer bilgi kaynağı Spark Uygulaması Kullanıcı Arabirimidir.  Spark Kullanıcı arabiriminde, yürüticileri tarafından tüketilen yapılandırma ve kaynakların Özet ve ayrıntı görünümlerini göstermek için **yürüticileri** sekmesini seçin.  Bu görünümler varsayılan değerleri kümenin tamamında Spark yürütücüleri için mi yoksa belirli bir iş yürütmeleri kümesi için mi değiştireceğinizi saptamanıza yardımcı olabilir.
+## <a name="configuring-spark-executors"></a>Kıvılcım uygulayıcıları yapılandırma
 
-![Spark Yürüticileri](./media/apache-spark-settings/apache-spark-executors.png)
+Aşağıdaki diyagram anahtar Kıvılcım nesnelerini gösterir: sürücü programı ve ilişkili Spark Bağlamı ve küme yöneticisi ve *onun n* alt düğümleri.  Her alt düğüm bir Yürütücü, önbellek ve *n* görev örnekleri içerir.
 
-Alternatif olarak, HDInsight ve Spark kümesi yapılandırma ayarlarını programlı bir şekilde doğrulamak için ambarı REST API kullanabilirsiniz.  [GitHub 'Daki Apache AMBARı API başvurusunda](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)daha fazla bilgi bulabilirsiniz.
+![Nesneleri kümele](./media/apache-spark-settings/hdi-spark-architecture.png)
+
+Kıvılcım işleri, özellikle bellek olmak üzere alt kaynakları kullanır, bu nedenle çalışan düğüm Uygulayıcıları için Spark yapılandırma değerlerini ayarlamak yaygındır.
+
+Genellikle uygulama gereksinimlerini geliştirmek için Spark yapılandırmaları ayarlamak için `spark.executor.instances` `spark.executor.cores`ayarlanmış `spark.executor.memory`üç önemli parametre , ve . Uygulayıcı, Bir Kıvılcım uygulaması için başlatılan bir işlemdir. Bir Uygulayıcı işçi düğümüüzerinde çalışır ve uygulama nın görevlerden sorumludur. Her küme için, varsayılan uygulayıcı sayısı ve uygulayıcı boyutları, alt düğüm sayısı ve alt düğüm boyutuna göre hesaplanır. Bunlar küme kafa `spark-defaults.conf` düğümlerinde depolanır.  Ambari web Kullanıcı Aracı'ndaki **Özel kıvılcım varsayılanları** bağlantısını seçerek bu değerleri çalışan kümede düzenleme yapabilirsiniz.  Değişiklik yaptıktan sonra, UI tarafından etkilenen tüm hizmetleri **yeniden başlatmanız** istenir.
+
+> [!NOTE]  
+> Bu üç yapılandırma paramı küme düzeyinde (kümeüzerinde çalışan tüm uygulamalar için) ve her bir uygulama için de belirtilmiş olarak yapılandırılabilir.
+
+Spark Yürütücüleri tarafından kullanılan kaynaklar hakkında bir diğer bilgi kaynağı Spark Uygulaması Kullanıcı Arabirimidir.  Spark UI'de, **uygulayıcılar** tarafından tüketilen yapılandırma ve kaynakların Özet ve Ayrıntı görünümlerini görüntülemek için Uygulayıcılar sekmesini seçin.  Bu görünümler varsayılan değerleri kümenin tamamında Spark yürütücüleri için mi yoksa belirli bir iş yürütmeleri kümesi için mi değiştireceğinizi saptamanıza yardımcı olabilir.
+
+![Kıvılcım Uygulayıcıları](./media/apache-spark-settings/apache-spark-executors.png)
+
+Alternatif olarak, HDInsight ve Spark küme yapılandırma ayarlarını programlı olarak doğrulamak için Ambari REST API'yi kullanabilirsiniz.  Daha fazla bilgi [GitHub üzerinde Apache Ambari API referans](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)mevcuttur.
 
 Spark iş yükünüze bağlı olarak, varsayılan dışındaki bir Spark yapılandırmasının daha iyi Spark iş yürütmeleri sağladığına karar verebilirsiniz.  Varsayılan dışındaki küme yapılandırmalarının doğrulanması için örnek iş yükleriyle karşılaştırmalı testler yapmalısınız.  Ayarlamayı düşünebileceğiniz yaygın parametrelerden bazıları:
 
-* `--num-executors` yürüticileri sayısını belirler.
-* `--executor-cores` her bir yürütücü için çekirdek sayısını ayarlar. Diğer süreçler da kullanılabilir belleğin bir kısmını tükettiği için orta ölçekli yürüticileri kullanmanızı öneririz.
-* `--executor-memory`, [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)üzerindeki her bir yürütücü için bellek boyutunu (yığın boyutu) denetler ve yürütme ek yükü için bazı bellek bırakmanız gerekir.
+* `--num-executors`uygulayıcıların sayısını ayarlar.
+* `--executor-cores`her uygulayıcı için çekirdek sayısını ayarlar. Diğer işlemler de kullanılabilir belleğin bir kısmını tükettiği için orta ölçekli yürütücüler kullanmanızı öneririz.
+* `--executor-memory`[Apache Hadoop İpn](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)her uygulayıcısının bellek boyutunu (yığın boyutu) denetler ve yürütme yükü için bazı bellek bırakmak gerekir.
 
-Farklı yapılandırma değerlerine sahip iki çalışan düğümü örneği aşağıda verilmiştir:
+Aşağıda, farklı yapılandırma değerlerine sahip iki alt düğüm örneği verilmiştir:
 
-![İki düğümlü yapılandırma](./media/apache-spark-settings/executor-configuration.png)
+![İki düğüm yapılandırması](./media/apache-spark-settings/executor-configuration.png)
 
-Aşağıdaki listede Key Spark yürütücü bellek parametreleri gösterilmektedir.
+Aşağıdaki liste anahtar Spark yürütücü bellek parametrelerini gösterir.
 
-* `spark.executor.memory`, bir yürütücü için kullanılabilen toplam bellek miktarını tanımlar.
-* `spark.storage.memoryFraction` (varsayılan ~ %60) kalıcı RDD 'leri depolamak için kullanılabilir bellek miktarını tanımlar.
-* `spark.shuffle.memoryFraction` (varsayılan ~ %20) karıştırma için ayrılan bellek miktarını tanımlar.
-* `spark.storage.unrollFraction` ve `spark.storage.safetyFraction` (Toplam belleğin %30 ' a toplamını alma)-Bu değerler Spark tarafından dahili olarak kullanılır ve değiştirilmemelidir.
+* `spark.executor.memory`bir uygulayıcı için kullanılabilir toplam bellek miktarını tanımlar.
+* `spark.storage.memoryFraction`(varsayılan ~60%) kalıcı RDD'leri depolamak için kullanılabilir bellek miktarını tanımlar.
+* `spark.shuffle.memoryFraction`(varsayılan ~20%) karıştırma için ayrılmış bellek miktarını tanımlar.
+* `spark.storage.unrollFraction`ve `spark.storage.safetyFraction` (toplam belleğin ~%30'u) - bu değerler Spark tarafından dahili olarak kullanılır ve değiştirilmemelidir.
 
-YARN, her Spark düğümündeki kapsayıcı tarafından kullanılan en fazla bellek toplamını denetler. Aşağıdaki diyagramda, YARN yapılandırma nesneleri ile Spark nesneleri arasındaki düğüm başına ilişkiler gösterilmektedir.
+YARN, her Kıvılcım düğümündeki kapsayıcılar tarafından kullanılan maksimum bellek toplamını denetler. Aşağıdaki diyagram, İplik yapılandırma nesneleri ile Kıvılcım nesneleri arasındaki düğüm başına ilişkileri gösterir.
 
-![YARN Spark bellek yönetimi](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+![İplik Kıvılcım Bellek Yönetimi](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
-## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Not defteri 'nde çalışan bir uygulama için parametreleri değiştirme
+## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter dizüstü bilgisayarda çalışan bir uygulama için parametreleri değiştirme
 
-HDInsight 'ta Spark kümeleri, varsayılan olarak bir dizi bileşen içerir. Bu bileşenlerin her biri, gerektiğinde geçersiz kılınabilen varsayılan yapılandırma değerlerini içerir.
+HDInsight'taki kıvılcım kümeleri varsayılan olarak bir dizi bileşen içerir. Bu bileşenlerin her biri, gerektiğinde geçersiz kılınabilen varsayılan yapılandırma değerlerini içerir.
 
-* Spark Core-Spark Core, Spark SQL, Spark streaming API 'Leri, GraphX ve Apache Spark MLlib.
-* Anaconda-Python Paket Yöneticisi.
-* [Apache Livy](https://livy.incubator.apache.org/) -uzak Işleri bir HDInsight Spark kümesine göndermek için kullanılan Apache Spark REST API.
-* [Jupyter](https://jupyter.org/) ve [Apache Zeppelin](https://zeppelin.apache.org/) Not defterleri-Spark kümeniz ile etkileşimde bulunmak için etkileşimli tarayıcı tabanlı kullanıcı arabirimi.
-* ODBC sürücüsü-HDInsight 'ta Spark kümelerini Microsoft Power BI ve Tableau gibi iş zekası (BI) araçlarına bağlar.
+* Spark Core - Spark Core, Spark SQL, Spark streaming API'leri, GraphX ve Apache Spark MLlib.
+* Anaconda - bir python paket yöneticisi.
+* [Apache Livy - Apache](https://livy.incubator.apache.org/) Spark REST API, bir HDInsight Spark kümesine uzak işleri göndermek için kullanılır.
+* [Jupyter](https://jupyter.org/) ve [Apache Zeppelin](https://zeppelin.apache.org/) dizüstü bilgisayarlar - Spark kümenizle etkileşim kurmak için etkileşimli tarayıcı tabanlı ui.
+* ODBC sürücüsü - HDInsight'taki Kıvılcım kümelerini Microsoft Power BI ve Tableau gibi iş zekası (BI) araçlarına bağlar.
 
-Jupyter not defterinde çalışan uygulamalar için, yapılandırma değişikliklerinin Not Defteri içinden olması için `%%configure` komutunu kullanın. Bu yapılandırma değişiklikleri, Not defteri örneğinden çalıştırılan Spark işlerine uygulanır. İlk kod hücresini çalıştırmadan önce bu değişiklikleri uygulamanın başlangıcında yapmanız gerekir. Değiştirilen yapılandırma, oluşturulması sırasında, Livy oturumuna uygulanır.
+Jupyter not defterinde çalışan uygulamalar `%%configure` için, not defterinin içinden yapılandırma değişiklikleri yapmak için komutu kullanın. Bu yapılandırma değişiklikleri, not defteri örneğinizden çalıştırılan Kıvılcım işlerine uygulanır. İlk kod hücrenizi çalıştırmadan önce, uygulamanın başında bu tür değişiklikler yapmalısınız. Değiştirilen yapılandırma oluşturulduğunda Livy oturumuna uygulanır.
 
 > [!NOTE]  
-> Uygulamanın sonraki bir aşamada yapılandırmayı değiştirmek için `-f` (zorla) parametresini kullanın. Ancak, uygulamadaki tüm ilerleme durumu kaybedilir.
+> Uygulamanın sonraki bir aşamasında yapılandırmayı değiştirmek `-f` için (kuvvet) parametresini kullanın. Ancak, uygulamada tüm ilerleme kaybolur.
 
-Aşağıdaki kod, bir Jupyter not defterinde çalışan bir uygulama için yapılandırmanın nasıl değiştirileceğini gösterir.
+Aşağıdaki kod, Jupyter dizüstü bilgisayarında çalışan bir uygulamanın yapılandırmasını nasıl değiştireceğini gösterir.
 
 ```
 %%configure
@@ -142,12 +142,12 @@ Aşağıdaki kod, bir Jupyter not defterinde çalışan bir uygulama için yapı
 
 ## <a name="conclusion"></a>Sonuç
 
-Spark işlerinizin öngörülebilir ve performanslı bir şekilde çalıştığından emin olmak için izlemeniz ve ayarlamanız gereken birçok temel yapılandırma ayarı vardır. Bu ayarlar, belirli iş yükleriniz için en iyi Spark kümesi yapılandırmasını belirlemesine yardımcı olur.  Ayrıca, uzun süreli ve/veya kaynak kullanan Spark iş yürütmelerinin yürütülmesini izlemeniz gerekecektir.  Doğru olmayan yapılandırmalara (özellikle hatalı boyutlardaki yürüticileri), uzun süreli işlemlere ve görevlere yönelik olarak, Kartezyen işlemlerde oluşan en yaygın güçlükler merkezi.
+Spark işlerinizin öngörülebilir ve performanslı bir şekilde çalışmasını sağlamak için izlemeniz ve ayarlamanız gereken birkaç temel yapılandırma ayarı vardır. Bu ayarlar, belirli iş yüklerinizle ilgili en iyi Spark küme yapılandırmasını belirlemeye yardımcı olur.  Ayrıca, uzun süredir çalışan ve/veya kaynak tüketen Spark iş yürütmelerinin yürütülmesini izlemeniz gerekir.  Yanlış yapılandırmalar (özellikle yanlış boyutlandırılmış yürütücüler), uzun süren işlemler ve Kartezyen işlemlerle sonuçlanan görevler nedeniyle bellek baskısı etrafında en yaygın zorluklar merkezi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight ile kullanılabilen bileşenler ve sürümler Apache Hadoop?](../hdinsight-component-versioning.md)
-* [HDInsight üzerinde Apache Spark kümesi için kaynakları yönetme](apache-spark-resource-manager.md)
+* [Apache Hadoop bileşenleri ve HDInsight ile kullanılabilir sürümleri?](../hdinsight-component-versioning.md)
+* [HDInsight'ta bir Apache Spark kümesinin kaynaklarını yönetme](apache-spark-resource-manager.md)
 * [Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Apache Spark yapılandırması](https://spark.apache.org/docs/latest/configuration.html)
-* [Apache Spark Apache Hadoop YARN üzerinde çalışıyor](https://spark.apache.org/docs/latest/running-on-yarn.html)
+* [Apache Kıvılcım Yapılandırması](https://spark.apache.org/docs/latest/configuration.html)
+* [Apache Hadoop İplik üzerinde Çalışan Apache Kıvılcım](https://spark.apache.org/docs/latest/running-on-yarn.html)

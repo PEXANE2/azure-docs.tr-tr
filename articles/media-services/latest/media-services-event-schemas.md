@@ -1,6 +1,6 @@
 ---
-title: Media Services olaylar için Azure Event Grid şemaları
-description: Azure Event Grid Media Services olaylar için belirtilen özellikleri açıklar
+title: Medya Hizmetleri etkinlikleri için Azure Olay Izgaraşe şemaları
+description: Azure Etkinlik Ağıtı ile Medya Hizmetleri etkinlikleri için sağlanan özellikleri açıklar
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,107 +12,107 @@ ms.topic: reference
 ms.date: 02/25/2020
 ms.author: juliako
 ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251355"
 ---
-# <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services olaylar için Azure Event Grid şemaları
+# <a name="azure-event-grid-schemas-for-media-services-events"></a>Medya Hizmetleri etkinlikleri için Azure Olay Izgaraşe şemaları
 
-Bu makale Media Services olaylar için şemaları ve özellikleri sağlar.
+Bu makalede, Medya Hizmetleri olayları için şema ve özellikleri sağlar.
 
-Örnek betiklerin ve öğreticilerin bir listesi için bkz. [Media Services olay kaynağı](../../event-grid/event-sources.md#azure-subscriptions).
+Örnek komut dosyaları ve öğreticilerin listesi için [Medya Hizmetleri etkinlik kaynağına](../../event-grid/event-sources.md#azure-subscriptions)bakın.
 
-## <a name="job-related-event-types"></a>İşle ilgili olay türleri
+## <a name="job-related-event-types"></a>İşle ilgili etkinlik türleri
 
-Media Services aşağıda açıklanan **işle** ilgili olay türlerini yayar. **İşle** ilgili olaylar için iki kategori vardır: "Iş durumu değişikliklerini izleme" ve "Iş çıkış durumu değişikliklerini izleme". 
+Medya Hizmetleri, aşağıda açıklanan **İş** ile ilgili olay türlerini yayır. **İşle** ilgili olaylar için iki kategori vardır: "İş Durumu Değişikliklerini İzleme" ve "İş Çıktısı Durumu Değişikliklerini İzleme". 
 
-JobStateChange olayına abone olarak tüm olaylara kaydolabilirsiniz. Ya da yalnızca belirli olaylara abone olabilirsiniz (örneğin, Jobhatalı, JobFinished ve Jobiptal edildi gibi son durumlar).   
+JobStateChange etkinliğine abone olarak tüm etkinlikler için kaydolabilirsiniz. Veya yalnızca belirli etkinlikler için abone olabilirsiniz (örneğin, JobErrored, JobFinished ve JobCanceled gibi son durumlar).   
 
-### <a name="monitoring-job-state-changes"></a>Iş durumu değişikliklerini izleme
-
-| Olay türü | Açıklama |
-| ---------- | ----------- |
-| Microsoft. Media. JobStateChange| Tüm Iş durumu değişiklikleri için bir olay alın. |
-| Microsoft. Media. Jobzamanlandı| Zamanlanan duruma Iş geçişi yaptığında bir olay alın. |
-| Microsoft. Media. JobProcessing| Iş durumu işlemeye geçiş yaptığında bir olay alın. |
-| Microsoft. Media. Jobiptali| Durumu iptal etmek için Iş geçişleri olduğunda bir olay alın. |
-| Microsoft. Media. JobFinished| Işi tamamlandı durumuna geçirdiinizde bir olay alın. Bu, Iş çıkışlarını içeren son bir durumdur.|
-| Microsoft. Media. Jobiptal edildi| Iş iptal edildi durumuna geçiş yaptığında bir olay alın. Bu, Iş çıkışlarını içeren son bir durumdur.|
-| Microsoft. Media. Jobhatalı| Iş, hata durumuna geçiş yaptığında bir olay alır. Bu, Iş çıkışlarını içeren son bir durumdur.|
-
-Aşağıdaki [şema örneklerine](#event-schema-examples) bakın.
-
-### <a name="monitoring-job-output-state-changes"></a>İzleme işi çıkış durumu değişiklikleri
-
-Bir iş birden çok iş çıkışı içerebilir (dönüşümü birden çok iş çıkışına sahip olacak şekilde yapılandırdıysanız) Bireysel iş çıkışının ayrıntılarını izlemek isterseniz, iş çıkışı değişiklik olayını dinleyin.
-
-Her bir **Iş** **joverput**öğesinden daha yüksek bir düzeyde olacak, bu nedenle iş çıkışı olayları ilgili bir işin içinde harekete geçirilir. 
-
-`JobFinished`, `JobCanceled``JobError` hata iletileri her iş çıktısı için toplanan sonuçları, tüm bunların tamamlanmaları tamamlandığında çıktı. Ancak, her görev tamamlandığında iş çıkış olayları ateşlenir. Örneğin, bir kodlama çıktılarınız varsa ve ardından bir video analizi çıkışı varsa, son JobFinished olayının toplanan verilerle tetiklamadan önce iş çıkış olayları olarak iki olay tetikleyerek bir işlem elde edersiniz.
+### <a name="monitoring-job-state-changes"></a>İş durumu değişikliklerini izleme
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. Media. Joi Putstatechange| Tüm Iş çıkış durumu değişiklikleri için bir olay alın. |
-| Microsoft. Media. Joi Putzamanlandı| Iş çıkışı zamanlanan duruma geçiş yaptığında bir olay alın. |
-| Microsoft. Media. Joi Putprocessing| Iş çıkışı işleme durumuna geçiş yaptığında bir olay alın. |
-| Microsoft. Media. Joi Putiptali| Durum iptal etmek için Iş çıktısı geçişleri olduğunda bir olay alın.|
-| Microsoft. Media. Joi Putfinished| Iş çıkışı tamamlandı durumuna geçerse bir olay alın.|
-| Microsoft. Media. Joi Putiptal edildi| Iş çıkışı iptal edildi durumuna geçerse bir olay alın.|
-| Microsoft. Media. JobOutputErrored| Iş çıkışı hata durumuna geçerse bir olay alın.|
+| Microsoft.Media.JobStateChange| Tüm İş Durumu değişiklikleri için bir etkinlik alın. |
+| Microsoft.Media.JobScheduled| İş zamanlanan duruma geçtiğinde bir olay alın. |
+| Microsoft.Media.JobProcessing| İş işleme durumuna geçtiğinde bir olay alın. |
+| Microsoft.Media.JobCanceling| İş durumu iptal etmek için geçiş yaptığında bir olay alın. |
+| Microsoft.Media.JobFinished| İş tamamlanan duruma geçtiğinde bir olay alın. Bu, İş çıktılarını içeren son durumdur.|
+| Microsoft.Media.JobCanceled| İş iptal edilen duruma geçtiğinde bir etkinlik alın. Bu, İş çıktılarını içeren son durumdur.|
+| Microsoft.Media.JobErrored| İş hata durumuna geçtiğinde bir olay alın. Bu, İş çıktılarını içeren son durumdur.|
 
-Aşağıdaki [şema örneklerine](#event-schema-examples) bakın.
+Aşağıdaki [Şema örneklerine](#event-schema-examples) bakın.
 
-### <a name="monitoring-job-output-progress"></a>İş çıkışı ilerlemesini izleme
+### <a name="monitoring-job-output-state-changes"></a>İş çıktısı durumu değişikliklerinin izlenmesi
 
-| Olay türü | Açıklama |
-| ---------- | ----------- |
-| Microsoft. Media. Joi Putprogress| Bu olay, %0 ' dan %100 ' e kadar iş işleme ilerlemesini yansıtır. Hizmet, ilerleme değerinde %5 veya daha fazla artış varsa veya son olaydan (sinyal) bu yana 30 saniyeden uzun süredir bir olay gönderilmeye çalışır. İlerleme değerinin %0 ' dan başlaması veya %100 ' e ulaşması ya da zaman içinde sabit bir hızda artması garanti edilmez. Bu olay işlemin tamamlandığını belirlemede kullanılmamalıdır; bunun yerine durum değişikliği olaylarını kullanmalısınız.|
+Bir iş birden çok iş çıktısı içerebilir (dönüşümü birden çok iş çıktısı olacak şekilde yapılandırırsanız.) Tek tek iş çıktısının ayrıntılarını izlemek istiyorsanız, iş çıktısı değişikliği olayını dinleyin.
 
-Aşağıdaki [şema örneklerine](#event-schema-examples) bakın.
+Her **İş** **JobOutput**daha yüksek bir düzeyde olacak, böylece iş çıktısı olayları ilgili bir iş içinde ateş olsun. 
 
-## <a name="live-event-types"></a>Canlı olay türleri
-
-Media Services Ayrıca aşağıda açıklanan **canlı** olay türlerini de yayar. **Canlı** olaylar için iki kategori vardır: akış düzeyi olayları ve izleme düzeyi olayları. 
-
-### <a name="stream-level-events"></a>Akış düzeyi olaylar
-
-Akış düzeyi olaylar, akış veya bağlantı başına oluşturulur. Her olayda bağlantı veya akışı tanımlayan bir `StreamId` parametresi vardır. Her bir akışta veya bağlantıda farklı türlerin bir veya daha fazla izlemesi vardır. Örneğin, bir kodlayıcının bir bağlantısının bir ses izi ve dört video parçası olabilir. Akış olay türleri şunlardır:
+Tüm iş çıkışı `JobCanceled`için `JobError` toplanan sonuçları çıktı , , , hata iletileri . `JobFinished` Oysa, her görev sona ererken iş çıktısı olayları ateşler. Örneğin, bir kodlama çıktınız varsa ve ardından bir Video Analytics çıktısı varsa, son JobFinished olayı toplu verilerle birlikte ateşlemeden önce iki olayın iş çıktısı olayı olarak ateşlenmesini sağlarsınız.
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. Media. Liveeventconnectionreddedildi | Kodlayıcının bağlantı girişimi reddedildi. |
-| Microsoft. Media. LiveEventEncoderConnected | Kodlayıcı canlı olayla bağlantı kurar. |
-| Microsoft. Media. Liveeventencoderconnected bağlantısı kesildi | Kodlayıcı bağlantısı kesiliyor. |
+| Microsoft.Media.JobOutputStateChange| Tüm İş çıktısı Durumu değişiklikleri için bir olay alın. |
+| Microsoft.Media.JobOutputScheduled| İş çıktısı zamanlanan duruma geçtiğinde bir olay alın. |
+| Microsoft.Media.JobOutputProcessing| İş çıktısı işleme durumuna geçtiğinde bir olay alın. |
+| Microsoft.Media.JobOutputCanceling| İş çıktısı iptal durumuna geçtiğinde bir olay alın.|
+| Microsoft.Media.JobOutputFinished| İş çıktısı tamamlanan duruma geçtiğinde bir olay alın.|
+| Microsoft.Media.JobOutputCanceled| İş çıktısı iptal durumuna geçtiğinde bir olay alın.|
+| Microsoft.Media.JobOutputHatası| İş çıktısı hata durumuna geçtiğinde bir olay alın.|
 
-Aşağıdaki [şema örneklerine](#event-schema-examples) bakın.
+Aşağıdaki [Şema örneklerine](#event-schema-examples) bakın.
 
-### <a name="track-level-events"></a>İzleme düzeyi olaylar
+### <a name="monitoring-job-output-progress"></a>İş çıktısı ilerlemesini izleme
 
-İzleme düzeyi olaylar iz başına getirilir. 
+| Olay türü | Açıklama |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputProgress| Bu olay, %0'dan %100'e kadar iş işleme ilerlemesini yansıtır. Hizmet, ilerleme değerinde %5 veya daha fazla artış varsa veya son olaydan (sinyal) bu yana 30 saniyeden fazla bir süre geçtiyse, bir olay göndermeye çalışır. İlerleme değerinin %0'dan başlayıp %100'e ulaşması garanti edilmez ve zaman içinde sabit bir oranda artacağı garanti edilmez. Bu olay, işlemin tamamlandığını belirlemek için kullanılmamalıdır – bunun yerine durum değişikliği olaylarını kullanmalısınız.|
+
+Aşağıdaki [Şema örneklerine](#event-schema-examples) bakın.
+
+## <a name="live-event-types"></a>Canlı etkinlik türleri
+
+Medya Hizmetleri ayrıca aşağıda açıklanan **Live** etkinlik türlerini de yayır. **Canlı** etkinlikler için iki kategori vardır: akış düzeyinde etkinlikler ve izleme düzeyi olaylar. 
+
+### <a name="stream-level-events"></a>Akış düzeyindeki olaylar
+
+Akış düzeyindeki olaylar akış veya bağlantı başına yükseltilir. Her olayın `StreamId` bağlantıyı veya akışı tanımlayan bir parametresi vardır. Her akış veya bağlantı, farklı türde bir veya daha fazla parçaya sahiptir. Örneğin, kodlayıcıdan bir bağlantının bir ses parçası ve dört video parçası olabilir. Akış olay türleri şunlardır:
+
+| Olay türü | Açıklama |
+| ---------- | ----------- |
+| Microsoft.Media.LiveEventConnection Reddedildi | Kodlayıcının bağlantı denemesi reddedildi. |
+| Microsoft.Media.LiveEventEncoderConnected | Encoder canlı olay ile bağlantı kurar. |
+| Microsoft.Media.LiveEventEncoderBağlantısı kesildi | Kodlayıcı bağlantıyı keser. |
+
+Aşağıdaki [Şema örneklerine](#event-schema-examples) bakın.
+
+### <a name="track-level-events"></a>İzleme düzeyindeki olaylar
+
+Parça düzeyindeki olaylar parça başına yükseltilir. 
 
 > [!NOTE]
-> Tüm izleme düzeyi olaylar, canlı bir kodlayıcı bağlandıktan sonra tetiklenir.
+> Tüm parça düzeyindeki olaylar, canlı kodlayıcı bağlandıktan sonra yükseltilir.
 
-İzleme düzeyi olay türleri şunlardır:
+Parça düzeyinde olay türleri şunlardır:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. Media. Liveeventincomingdatachunkbırakılan | Medya sunucusu çok geç olduğu veya çakışan bir zaman damgasına sahip olduğu için veri öbeğini bırakıyor (yeni veri öbeğinin zaman damgası, önceki veri öbeğinin bitiş zamanından daha az). |
-| Microsoft. Media. Liveeventincomingstreamalındı | Medya sunucusu akıştaki veya bağlantıdaki her bir parça için ilk veri öbeki alır. |
-| Microsoft. Media. LiveEventIncomingStreamsOutOfSync | Medya sunucusu sesi algılar ve video akışları eşitlenmemiş. Kullanıcı deneyimi etkilenmediği için uyarı olarak kullanın. |
-| Microsoft. Media. LiveEventIncomingVideoStreamsOutOfSync | Media Server, dış kodlayıcılardan gelen iki video akışının herhangi birini algılar. Kullanıcı deneyimi etkilenmediği için uyarı olarak kullanın. |
-| Microsoft. Media. Liveeventingesthearti | Canlı olay çalışırken her bir parça için her 20 saniyede bir yayımlanır. Inest sistem durumu özetini sağlar.<br/><br/>Kodlayıcının ilk bağlantısı yapıldıktan sonra, sinyal olayı, kodlayıcının hala bağlı olup olmadığına bakılmaksızın her 20 saniyede bir yaymaya devam eder. |
-| Microsoft. Media. Liveeventtrackdiscontinuityalgılanan | Media Server, gelen izlemede süreksizlik algılar. |
+| Microsoft.Media.LiveEventIncomingDataChunkDropped | Çok geç olduğu veya çakışan bir zaman damgası olduğundan medya sunucusu veri yığınını düşürür (yeni veri yığınının zaman damgası önceki veri yığınının bitiş saatinden daha azdır). |
+| Microsoft.Media.LiveEventIncomingStreamReceived | Medya sunucusu akış veya bağlantıdaki her parça için ilk veri öbeklerini alır. |
+| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Medya sunucusu ses ve video akışlarının eşitlenmemiş olduğunu algılar. Kullanıcı deneyimi etkilenmeyebileceğinden uyarı olarak kullanın. |
+| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Medya sunucusu, harici kodlayıcıdan gelen iki video akışından herhangi birinin eşitolmadığını algılar. Kullanıcı deneyimi etkilenmeyebileceğinden uyarı olarak kullanın. |
+| Microsoft.Media.LiveEventingestHeartbeat | Canlı etkinlik çalışırken her parça için her 20 saniyede bir yayınlanır. Yutma sağlık özeti sağlar.<br/><br/>Kodlayıcı başlangıçta bağlandıktan sonra, kodlayıcı nın hala bağlı olup olmadığını her 20 saniyede bir yayan sinyal olayı devam ediyor. |
+| Microsoft.Media.LiveEventTrackDiscontinuityAlgılandı | Medya sunucusu gelen parçadaki süreksizlikalgılar. |
 
-Aşağıdaki [şema örneklerine](#event-schema-examples) bakın.
+Aşağıdaki [Şema örneklerine](#event-schema-examples) bakın.
 
 ## <a name="event-schema-examples"></a>Olay şeması örnekleri
 
 ### <a name="jobstatechange"></a>JobStateChange
 
-Aşağıdaki örnek, **Jobstatechange** olayının şemasını göstermektedir: 
+Aşağıdaki örnek, **JobStateChange** olayının şemalarını gösterir: 
 
 ```json
 [
@@ -137,16 +137,16 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | previousState | string | Olaydan önceki işin durumu. |
-| durum | string | Bu olayda bildirim yapılacak işin yeni durumu. Örneğin, "zamanlandı: iş başlamaya hazırlanıyor" veya "tamamlandı: iş tamamlandı".|
+| durum | string | Bu olayda işin yeni durumu bildirilir. Örneğin, "Zamanlanan: İş başlamaya hazır" veya "Tamamlandı: İş bitti" .|
 
-Iş durumunun değerlerden biri olabilir: *sıraya alınmış*, *Zamanlanmış*, *işleme*, *tamamlandı*, *hata*, *iptal edildi*, *iptal etme*
+İş durumu değerlerden biri olabilir: *Sıralı*, *Zamanlanmış*, *İşleme*, *Bitmiş*, *Hata*, *İptal ,* *İptal*
 
 > [!NOTE]
-> *Kuyruğa* alma yalnızca **PreviousState** özelliğinde bulunur, ancak **durum** özelliğinde yer almıyor.
+> *Sıraya sadece* **önceki Devlet** mülkiyetinde mevcut olacak, ancak **devlet** mülkiyetinde bulunmaz.
 
-### <a name="jobscheduled-jobprocessing-jobcanceling"></a>Jobzamanlandı, JobProcessing, Jobiptali
+### <a name="jobscheduled-jobprocessing-jobcanceling"></a>İş Zamanlanan, İşİşlemleme, İşİptal Etme
 
-Son olmayan her Iş durumu değişikliği için (örneğin, Jobzamanlandı, JobProcessing, Jobiptal), örnek şema şuna benzer:
+Son olmayan her İş durumu değişikliği (JobScheduled, JobProcessing, JobCanceling gibi) için şema aşağıdakilere benzer:
 
 ```json
 [{
@@ -168,9 +168,9 @@ Son olmayan her Iş durumu değişikliği için (örneğin, Jobzamanlandı, JobP
 }]
 ```
 
-### <a name="jobfinished-jobcanceled-joberrored"></a>JobFinished, Jobiptal edildi, Jobhatalı
+### <a name="jobfinished-jobcanceled-joberrored"></a>İş Bitti, İşİptal edildi, İş HataLı
 
-Her son Iş durumu değişikliği için (örneğin, JobFinished, Jobiptal, Jobhatalı), örnek şema şuna benzer:
+Her son İş durumu değişikliği (JobFinished, JobCanceled, JobErrored gibi), örnek şema aşağıdakilere benzer:
 
 ```json
 [{
@@ -206,11 +206,11 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| outputs | Dizi | Iş çıkışlarını alır.|
+| Çıkış | Dizi | İş çıktılarını alır.|
 
-### <a name="joboutputstatechange"></a>Joi Putstatechange
+### <a name="joboutputstatechange"></a>JobOutputStateChange
 
-Aşağıdaki örnek, **Joi Putstatechange** olayının şemasını göstermektedir:
+Aşağıdaki örnek, **JobOutputStateChange** olayının şemalarını gösterir:
 
 ```json
 [{
@@ -239,9 +239,9 @@ Aşağıdaki örnek, **Joi Putstatechange** olayının şemasını göstermekted
 }]
 ```
 
-### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>Joi Putzamanlandı, Joiputprocessing, Joiputfinished, Joiputiptali, Joiputiptal edildi, JobOutputErrored
+### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled, JobOutputProcessing, JobOutputFinished, JobOutputCanceling, JobOutputCanceled, JobOutputErrored
 
-Her Joi put durumu değişikliği için örnek şema şuna benzer:
+Her JobOutput durum değişikliği için, örnek şema aşağıdakilere benzer:
 
 ```json
 [{
@@ -269,9 +269,9 @@ Her Joi put durumu değişikliği için örnek şema şuna benzer:
   "metadataVersion": "1"
 }]
 ```
-### <a name="joboutputprogress"></a>Joi Putprogress
+### <a name="joboutputprogress"></a>İş Çıktıları İlerleme
 
-Örnek şema şuna benzer:
+Örnek şema aşağıdakilere benzer:
 
  ```json
 [{
@@ -293,9 +293,9 @@ Her Joi put durumu değişikliği için örnek şema şuna benzer:
 }]
 ```
 
-### <a name="liveeventconnectionrejected"></a>Liveeventconnectionreddedildi
+### <a name="liveeventconnectionrejected"></a>LiveEventConnectionReddedildi
 
-Aşağıdaki örnekte, **Liveeventconnectionreddedildi** olayının şeması gösterilmektedir: 
+Aşağıdaki örnek, **LiveEventConnectionRejected** olayının şema gösterir: 
 
 ```json
 [
@@ -322,17 +322,17 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'sine eklemekten sorumludur. |  
-| ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |  
-| encoderIp | string | Kodlayıcının IP 'si. |
-| encoderPort | string | Bu akışın geldiği kodlayıcının bağlantı noktası. |
-| resultCode | string | Bağlantının reddedilme nedeni. Sonuç kodları aşağıdaki tabloda listelenmiştir. |
+| streamId | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu kimliği yutulan URL'ye eklemekle yükümlüdür. |  
+| yutmaUrl | string | Canlı etkinlik tarafından sağlanan URL'yi yutma. |  
+| encoderIp | string | Kodlayıcının IP'si. |
+| encoderPort | string | Bu derenin geldiği yerden kodlayıcının limanı. |
+| Resultcode | string | Bağlantının reddedilmesinin nedeni. Sonuç kodları aşağıdaki tabloda listelenir. |
 
-Hata sonuç kodlarını [canlı olay hata kodlarında](live-event-error-codes.md)bulabilirsiniz.
+Hata sonuç kodlarını [canlı Olay hata kodlarında](live-event-error-codes.md)bulabilirsiniz.
 
-### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
+### <a name="liveeventencoderconnected"></a>LiveEventEncoderBağlı
 
-Aşağıdaki örnekte, **Liveeventencoderconnected** olayının şeması gösterilmektedir: 
+Aşağıdaki örnek, **LiveEventEncoderConnected** olayının şemalarını gösterir: 
 
 ```json
 [
@@ -358,14 +358,14 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'SI içinde sağlamaktan sorumludur. |
-| ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |
-| encoderIp | string | Kodlayıcının IP 'si. |
-| encoderPort | string | Bu akışın geldiği kodlayıcının bağlantı noktası. |
+| streamId | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu kimliği en yüksek URL'de sağlamaktan sorumludur. |
+| yutmaUrl | string | Canlı etkinlik tarafından sağlanan URL'yi yutma. |
+| encoderIp | string | Kodlayıcının IP'si. |
+| encoderPort | string | Bu derenin geldiği yerden kodlayıcının limanı. |
 
-### <a name="liveeventencoderdisconnected"></a>Liveeventencoderconnected bağlantısı kesildi
+### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderBağlantısı kesildi
 
-Aşağıdaki örnek **Liveeventencoderconnected** olayının şemasını gösterir: 
+Aşağıdaki örnek, **LiveEventEncoderDisconnected** olayının şema gösterir: 
 
 ```json
 [
@@ -392,29 +392,29 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'sine eklemekten sorumludur. |  
-| ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |  
-| encoderIp | string | Kodlayıcının IP 'si. |
-| encoderPort | string | Bu akışın geldiği kodlayıcının bağlantı noktası. |
-| resultCode | string | Kodlayıcı bağlantısının kesilmesi nedeni. Bu, düzgün bir şekilde kesilmesi veya bir hatadan olabilir. Sonuç kodları aşağıdaki tabloda listelenmiştir. |
+| streamId | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu kimliği yutulan URL'ye eklemekle yükümlüdür. |  
+| yutmaUrl | string | Canlı etkinlik tarafından sağlanan URL'yi yutma. |  
+| encoderIp | string | Kodlayıcının IP'si. |
+| encoderPort | string | Bu derenin geldiği yerden kodlayıcının limanı. |
+| Resultcode | string | Kodlayıcının bağlantısını kesme nedeni. Bu zarif bir kopukluk veya bir hata dan olabilir. Sonuç kodları aşağıdaki tabloda listelenir. |
 
-Hata sonuç kodlarını [canlı olay hata kodlarında](live-event-error-codes.md)bulabilirsiniz.
+Hata sonuç kodlarını [canlı Olay hata kodlarında](live-event-error-codes.md)bulabilirsiniz.
 
-Düzgün olmayan bağlantıyı kesme sonuç kodları şunlardır:
+Zarif kesme sonuç kodları şunlardır:
 
 | Sonuç kodu | Açıklama |
 | ----------- | ----------- |
-| S_OK | Kodlayıcının bağlantısı başarıyla kesildi. |
-| MPE_CLIENT_TERMINATED_SESSION | Kodlayıcı bağlantısı kesildi (RTMP). |
-| MPE_CLIENT_DISCONNECTED | Kodlayıcı bağlantısı kesildi (FMP4). |
-| MPI_REST_API_CHANNEL_RESET | Kanal sıfırlama komutu alındı. |
+| S_OK | Kodlayıcı başarıyla kesildi. |
+| MPE_CLIENT_TERMINATED_SESSION | Kodlayıcı nın bağlantısı kesildi (RTMP). |
+| MPE_CLIENT_DISCONNECTED | Kodlayıcı nın bağlantısı kesildi (FMP4). |
+| MPI_REST_API_CHANNEL_RESET | Kanal sıfırlama komutu alınır. |
 | MPI_REST_API_CHANNEL_STOP | Kanal durdurma komutu alındı. |
-| MPI_REST_API_CHANNEL_STOP | Kanal bakımda. |
+| MPI_REST_API_CHANNEL_STOP | Kanal bakımdan geçiyor. |
 | MPI_STREAM_HIT_EOF | EOF akışı kodlayıcı tarafından gönderilir. |
 
-### <a name="liveeventincomingdatachunkdropped"></a>Liveeventıncomingdatachunkbırakılan
+### <a name="liveeventincomingdatachunkdropped"></a>LiveEventIncomingDataChunkDropped
 
-Aşağıdaki örnek, **Liveeventincomingdatachunkbırakılan** olayının şemasını gösterir: 
+Aşağıdaki örnek, **LiveEventIncomingDataChunkDropped** olayının şemalarını gösterir: 
 
 ```json
 [
@@ -442,16 +442,16 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| trackType | string | İzlemenin türü (ses/video). |
-| trackName | string | İzlemenin adı. |
-| bitrate | integer | İzlemenin bit hızı. |
-| timestamp | string | Atlanan veri öbeğinin zaman damgası. |
-| timescale | string | Zaman damgasının zaman ölçeği. |
-| resultCode | string | Veri öbeği bırakma nedeni. **FragmentDrop_OverlapTimestamp** veya **FragmentDrop_NonIncreasingTimestamp**. |
+| trackType | string | Parçanın türü (Ses / Video). |
+| trackName | string | Pistin adı. |
+| Bitrate | integer | Parçanın Bitrate'si. |
+| timestamp | string | Veri yığınının zaman damgası düştü. |
+| Zaman ölçeği | string | Zaman damgasının zaman ölçeği. |
+| Resultcode | string | Veri yığınının düşme nedeni. **FragmentDrop_OverlapTimestamp** ya da **FragmentDrop_NonIncreasingTimestamp.** |
 
-### <a name="liveeventincomingstreamreceived"></a>Liveeventincomingstreamalındı
+### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
-Aşağıdaki örnekte, **Liveeventincomingstreamreceived** olayının şeması gösterilmektedir: 
+Aşağıdaki örnek, **LiveEventIncomingStreamReceived** olayının şemalarını gösterir: 
 
 ```json
 [
@@ -482,18 +482,18 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| trackType | string | İzlemenin türü (ses/video). |
-| trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
-| bitrate | integer | İzlemenin bit hızı. |
-| ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |
-| encoderIp | string  | Kodlayıcının IP 'si. |
-| encoderPort | string | Bu akışın geldiği kodlayıcının bağlantı noktası. |
-| timestamp | string | Alınan veri öbeğinin ilk zaman damgası. |
-| timescale | string | Zaman damgasının temsil edildiği zaman ölçeği. |
+| trackType | string | Parçanın türü (Ses / Video). |
+| trackName | string | Parçanın adı (kodlayıcı tarafından sağlanan veya RTMP durumunda sunucu *TrackType_Bitrate* biçiminde üretir). |
+| Bitrate | integer | Parçanın Bitrate'si. |
+| yutmaUrl | string | Canlı etkinlik tarafından sağlanan URL'yi yutma. |
+| encoderIp | string  | Kodlayıcının IP'si. |
+| encoderPort | string | Bu derenin geldiği yerden kodlayıcının limanı. |
+| timestamp | string | Alınan veri yığınının ilk zaman damgası. |
+| Zaman ölçeği | string | Zaman damgasının temsil edildiği zaman ölçeği. |
 
-### <a name="liveeventincomingstreamsoutofsync"></a>Liveevenıncomingstreamsoutofsync
+### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
-Aşağıdaki örnekte, **Liveeventincomingstreamsoutofsync** olayının şeması gösterilmektedir: 
+Aşağıdaki örnek, **LiveEventIncomingStreamsOutOfSync** olayının şeasını gösterir: 
 
 ```json
 [
@@ -521,16 +521,16 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| minLastTimestamp | string | Tüm parçalar arasındaki en az son zaman damgası (ses veya video). |
-| typeOfTrackWithMinLastTimestamp | string | En az son zaman damgasıyla izleme (ses veya video) türü. |
-| maxLastTimestamp | string | Tüm parçalar arasındaki tüm zaman damgalarının (ses veya video) en fazla sayısı. |
-| typeOfTrackWithMaxLastTimestamp | string | En fazla son zaman damgasına sahip parça (ses veya video) türü. |
-| timescaleOfMinLastTimestamp| string | "MinLastTimestamp" nin temsil edildiği zaman ölçeğini alır.|
-| timescaleOfMaxLastTimestamp| string | "MaxLastTimestamp" nin temsil edildiği zaman ölçeğini alır.|
+| minLastTimestamp | string | Tüm parçalar (ses veya video) arasında en az son zaman damgası. |
+| typeOfTrackWithMinLastTimestamp | string | En az son zaman damgası olan parçanın (ses veya video) türü. |
+| maxLastTimestamp | string | Tüm parçalar (ses veya video) arasında tüm zaman damgaları maksimum. |
+| typeOfTrackWithMaxLastTimestamp | string | En yüksek son zaman damgası olan parçanın (ses veya video) türü. |
+| zaman ölçeğiOfMinLastTimestamp| string | "MinLastTimestamp"ın temsil edildiği zaman ölçeğini alır.|
+| zaman ölçeğiOfMaxLastTimestamp| string | "MaxLastTimestamp"ın temsil edildiği zaman ölçeğini alır.|
 
-### <a name="liveeventincomingvideostreamsoutofsync"></a>Liveevenıncomingvideostreamsoutofsync
+### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
-Aşağıdaki örnekte, **Liveeventincomingvideostreamsoutofsync** olayının şeması gösterilmektedir: 
+Aşağıdaki örnek, **LiveEventIncomingVideoStreamsOutOfSync** olayının şemalarını gösterir: 
 
 ```json
 [
@@ -557,15 +557,15 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| firstTimestamp | string | Video türünde parçalar/kalite seviyelerinin biri için zaman damgası alındı. |
-| firstDuration | string | İlk zaman damgasıyla veri öbeğinin süresi. |
-| secondTimestamp | string  | Video türünde başka bir izleme/kalite düzeyi için zaman damgası alındı. |
-| secondDuration | string | İkinci zaman damgasıyla veri öbeğinin süresi. |
-| timescale | string | Zaman damgalarının ve sürenin zaman ölçeği.|
+| ilkTimestamp | string | Zaman damgası, tip videonun parça/kalite düzeylerinden biri için alınmıştır. |
+| ilkSüre | string | İlk zaman damgası ile veri yığınının süresi. |
+| secondTimestamp | string  | Zaman damgası türü videonun başka bir parça/kalite düzeyi için alınmıştır. |
+| secondDuration | string | İkinci zaman damgası ile veri yığınının süresi. |
+| Zaman ölçeği | string | Zaman damgalarının ve sürenin zaman ölçeği.|
 
-### <a name="liveeventingestheartbeat"></a>Liveeventingesthearti
+### <a name="liveeventingestheartbeat"></a>LiveEventingestHeartbeat
 
-Aşağıdaki örnek, **Liveeventingestheartma** olayının şemasını göstermektedir: 
+Aşağıdaki örnek, **LiveEventIngestHeartbeat** olayının şemalarını gösterir: 
 
 ```json
 [
@@ -599,22 +599,22 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| trackType | string | İzlemenin türü (ses/video). |
-| trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
-| bitrate | integer | İzlemenin bit hızı. |
-| incomingBitrate | integer | Kodlayıcıdan gelen veri öbeklerini temel alan hesaplanan bit hızı. |
-| lastTimestamp | string | Son 20 saniye içindeki bir izleme için en son zaman damgası alındı. |
-| timescale | string | Zaman damgalarının ifade edildiği zaman ölçeği. |
-| overlapCount | integer | Veri öbeklerinin sayısı, son 20 saniye içinde çakışan zaman damgalarına sahipti. |
-| discontinuityCount | integer | Son 20 saniye içinde gözlenen süreksizlik sayısı. |
-| nonIncreasingCount | integer | Son 20 saniye içinde, geçmişteki zaman damgalarına sahip veri öbeklerinin sayısı alındı. |
-| unexpectedBitrate | bool | Beklenen ve gerçek bitoranlar, son 20 saniye içinde izin verilen sınırın üzerinde farklılık gösterir. Yalnızca ve yalnızca, ıncomingbit hızı > = 2 * bit hızı veya ıncomingbit hızı < = bit hızı/2 ya da ıncomingbit hızı = 0 olduğunda geçerlidir. |
-| durum | string | Canlı etkinliğin durumu. |
-| healthy | bool | Alma sayısının, sayımlar ve bayraklara göre sağlıklı olup olmadığını gösterir. OverlapCount = 0 & & discontinuityCount = 0 & & Nonıncreasingcount = 0 & & unexpectedBitrate = false olduğunda sağlıklı değeri true 'dur. |
+| trackType | string | Parçanın türü (Ses / Video). |
+| trackName | string | Parçanın adı (kodlayıcı tarafından sağlanan veya RTMP durumunda sunucu *TrackType_Bitrate* biçiminde üretir). |
+| Bitrate | integer | Parçanın Bitrate'si. |
+| gelenBitrate | integer | Kodlayıcıdan gelen veri yığınlarına göre hesaplanan bit hızı. |
+| lastTimestamp | string | Son 20 saniye içinde bir parça için alınan son zaman damgası. |
+| Zaman ölçeği | string | Zaman damgalarının ifade edildiği zaman ölçeği. |
+| çakışmaSayısı | integer | Veri parçalarının sayısı son 20 saniyede zaman damgaları ile örtüştü. |
+| süreksizlikSayısı | integer | Son 20 saniyede gözlenen süreksizlik sayısı. |
+| nonIncreasingCount | integer | Son 20 saniyede zaman damgalı veri parçalarının sayısı alındı. |
+| beklenmeyenBitrate | bool | Beklenen ve gerçek bit hızları son 20 saniye de izin verilenden daha fazla sınıra göre değişirse. Eğer ve sadece eğer, gelenBitrate >= 2* bitrate VEYA gelenBitrate <= bitrate/2 VEYA GelenBitrate = 0. |
+| durum | string | Canlı olayın durumu. |
+| Sağlıklı | bool | Sayımları ve bayrakları temel alınarak yutulmanın sağlıklı olup olmadığını gösterir. ÖrtüşmeCount = 0 && süreksizlikCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false ise sağlıklı doğrudur. |
 
-### <a name="liveeventtrackdiscontinuitydetected"></a>Liveeventtrackdiscontinuityalgılandı
+### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackSüretazlik Algılandı
 
-Aşağıdaki örnek, **Liveeventtrackdiscontinuityalgılanan** olayının şemasını gösterir: 
+Aşağıdaki örnek, **LiveEventTrackDiscontinuityAlgılanan** olayın şemagösterir: 
 
 ```json
 [
@@ -643,35 +643,35 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| trackType | string | İzlemenin türü (ses/video). |
-| trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
-| bitrate | integer | İzlemenin bit hızı. |
-| previousTimestamp | string | Önceki parçanın zaman damgası. |
+| trackType | string | Parçanın türü (Ses / Video). |
+| trackName | string | Parçanın adı (kodlayıcı tarafından sağlanan veya RTMP durumunda sunucu *TrackType_Bitrate* biçiminde üretir). |
+| Bitrate | integer | Parçanın Bitrate'si. |
+| öncekiZaman Damgası | string | Önceki parçanın zaman damgası. |
 | newTimestamp | string | Geçerli parçanın zaman damgası. |
-| discontinuityGap | string | İki zaman damgası üzerinde boşluk. |
-| timescale | string | Hem zaman damgası hem de süreksizlik boşluğunu temsil eden zaman ölçeği. |
+| süreksizlikGap | string | İki zaman damgası arasındaki boşluk. |
+| Zaman ölçeği | string | Hem zaman damgası hem de süreksizlik boşluğunun temsil edildiği zaman ölçeği. |
 
 ### <a name="common-event-properties"></a>Ortak olay özellikleri
 
-Bir olay aşağıdaki en üst düzey verilere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | string | EventGrid konusu. Bu özelliğin Media Services hesabının kaynak KIMLIĞI vardır. |
-| subject | string | Media Services hesabının altındaki Media Services kanalının kaynak yolu. Konunun ve konunun bitiştirerek iş için kaynak KIMLIĞI verilmektedir. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. Örneğin, "Microsoft. Media. JobStateChange". |
-| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| data | object | Olay verilerini Media Services. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | string | EventGrid konusu. Bu özellik, Medya Hizmetleri hesabının kaynak kimliğine sahiptir. |
+| Konu | string | Medya Hizmetleri hesabı nın altındaki Medya Hizmetleri kanalının kaynak yolu. Konuyu ve konuyu daraltma, size iş için kaynak kimliğini verir. |
+| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. Örneğin, "Microsoft.Media.JobStateChange". |
+| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Medya Hizmetleri olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İş durumu değişikliği olaylarını Kaydet](job-state-events-cli-how-to.md)
+[İş durumu değişikliği etkinlikleri için kaydolun](job-state-events-cli-how-to.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Media Service olaylarını içeren EventGrid .NET SDK 'Sı](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
-- [Media Services olaylarının tanımları](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Canlı olay hata kodları](live-event-error-codes.md)
+- [Medya Hizmeti olaylarını içeren EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [Medya Hizmetleri etkinliklerinin tanımları](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [Canlı Olay hata kodları](live-event-error-codes.md)

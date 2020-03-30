@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub cihaz TWINS (node) ile çalışmaya başlama | Microsoft Docs
-description: Azure IoT Hub cihaz ikimlerini kullanarak etiketler ekleyin ve ardından bir IoT Hub sorgusu kullanın. Node. js için Azure IoT SDK 'larını kullanarak, etiketleri ekleyen ve IoT Hub sorguyu çalıştıran bir hizmet uygulamasının benzetimini gerçekleştirin.
+title: Azure IoT Hub aygıt ikizleri (Düğüm) | Microsoft Dokümanlar
+description: Etiketler eklemek ve ardından bir IoT Hub sorgusu kullanmak için Azure IoT Hub aygıt ikizleri nasıl kullanılır? Benzetimli aygıt uygulamasını ve etiketleri ekleyen ve IoT Hub sorgusunu çalıştıran bir hizmet uygulamasını uygulamak için Node.js için Azure IoT SDK'larını kullanırsınız.
 author: fsautomata
 ms.service: iot-hub
 services: iot-hub
@@ -9,69 +9,69 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
 ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110837"
 ---
-# <a name="get-started-with-device-twins-nodejs"></a>Cihaz ikizlerini kullanmaya başlama (node. js)
+# <a name="get-started-with-device-twins-nodejs"></a>Cihaz ikizleri (Node.js) ile başlayın
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Bu öğreticinin sonunda iki Node. js konsol uygulamanız olacaktır:
+Bu eğitimin sonunda, iki Node.js konsol uygulaması olacak:
 
-* Etiket ve sorgu cihaz TWINS 'i ekleyen bir Node. js arka uç uygulaması olan **Addtagsandquery. js**.
+* **AddTagsAndQuery.js**, etiketleri ve sorguları cihaz ikizler ekler bir Düğüm.js arka uç uygulaması.
 
-* Daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan bir cihazın benzetimini yapan ve bağlantı koşulunu raporlayan bir Node. js uygulaması olan **TwinSimulatedDevice. js**.
+* **TwinSimulatedDevice.js**, Daha önce oluşturulan aygıt kimliği ile IoT hub'ınıza bağlanan bir aygıtı taklit eden ve bağlantı durumunu bildiren bir Düğüm.js uygulamasıdır.
 
 > [!NOTE]
-> [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesi, hem cihaz hem de arka uç uygulamaları oluşturmak Için kullanabileceğiniz Azure IoT SDK 'ları hakkında bilgi sağlar.
+> Azure [IoT SDK'lar](iot-hub-devguide-sdks.md) makalesi, hem aygıt hem de arka uç uygulamaları oluşturmak için kullanabileceğiniz Azure IoT SK'ları hakkında bilgi sağlar.
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* Node. js sürüm 10.0. x veya üzeri.
+* Düğüm.js sürüm 10.0.x veya daha sonra.
 
-* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
+* Etkin bir Azure hesabı. (Hesabınız yoksa, birkaç dakika içinde ücretsiz bir [hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
-* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* 8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu makaledeki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>IoT Hub 'a yeni bir cihaz kaydetme
+## <a name="register-a-new-device-in-the-iot-hub"></a>Yeni bir aygıtı IoT hub'ına kaydetme
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
+## <a name="get-the-iot-hub-connection-string"></a>IoT hub bağlantı dizesini alın
 
 [!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-custom-connection-string](../../includes/iot-hub-include-find-custom-connection-string.md)]
 
-## <a name="create-the-service-app"></a>Hizmet uygulaması oluşturma
+## <a name="create-the-service-app"></a>Hizmet uygulamasını oluşturma
 
-Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekleyen bir Node. js konsol uygulaması oluşturacaksınız. Daha sonra, IoT Hub 'ında depolanan cihaz TWINS 'sini, ABD 'de bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
+Bu bölümde, **myDeviceId**ile ilişkili aygıt ikizine konum meta verileri ekleyen bir Düğüm.js konsol uygulaması oluşturursunuz. Daha sonra, Abd'de bulunan aygıtları seçerek IoT hub'ında depolanan aygıt ikizleri ve hücresel bağlantı bildirenaygıtları sorgular.
 
-1. **Addtagsandqueryapp**adlı yeni bir boş klasör oluşturun. Komut istemindeki aşağıdaki komutu kullanarak **addtagsandqueryapp** klasöründe yeni bir Package. JSON dosyası oluşturun. `--yes` parametresi tüm varsayılanları kabul eder.
+1. **addtagsandqueryapp**adlı yeni bir boş klasör oluşturun. **addtagsandqueryapp** klasöründe, komut isteminizde aşağıdaki komutu kullanarak yeni bir package.json dosyası oluşturun. `--yes` Parametre tüm varsayılanları kabul eder.
 
     ```cmd/sh
     npm init --yes
     ```
 
-2. Komut istemindeki **addtagsandqueryapp** klasöründe, **Azure-ıothub** paketini yüklemek için aşağıdaki komutu çalıştırın:
+2. **addtagsandqueryapp** klasöründeki komut isteminizde **azure-iothub** paketini yüklemek için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. Bir metin düzenleyicisi kullanarak **addtagsandqueryapp** klasöründe yeni bir **Addtagsandquery. js** dosyası oluşturun.
+3. Bir metin düzenleyicisi kullanarak, **addtagsandqueryapp** klasöründe yeni bir **AddTagsAndQuery.js** dosyası oluşturun.
 
-4. Aşağıdaki kodu **Addtagsandquery. js** dosyasına ekleyin. `{iot hub connection string}` [, IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin.
+4. **AddTagsAndQuery.js** dosyasına aşağıdaki kodu ekleyin. [IoT hub bağlantı dizesini al'da](#get-the-iot-hub-connection-string)kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `{iot hub connection string}`
 
    ``` javascript
         'use strict';
@@ -104,11 +104,11 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekl
         });
    ```
 
-    **Kayıt defteri** nesnesi, hizmetten cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, **kayıt defteri** nesnesini ilk kez başlatır, sonra **mydeviceıd**için Device ikizi alır ve son olarak etiketlerini istenen konum bilgileriyle güncelleştirir.
+    **Kayıt Defteri nesnesi,** hizmetteki aygıt ikizleri ile etkileşim kurmak için gereken tüm yöntemleri ortaya çıkarır. Önceki kod önce Kayıt **Defteri** nesnesini başolarak adlandırır, sonra aygıt ikizini **myDeviceId**için alır ve son olarak etiketlerini istenen konum bilgileriyle güncelleştirir.
 
-    Etiketler güncelleştirildikten sonra **Querytwins** işlevini çağırır.
+    Etiketleri güncelledikten sonra **queryTwins** işlevini çağırır.
 
-5. **Queryxtwins** işlevini uygulamak Için **Addtagsandquery. js** sonuna aşağıdaki kodu ekleyin:
+5. **QueryTwins** işlevini uygulamak için **AddTagsAndQuery.js'nin** sonuna aşağıdaki kodu ekleyin:
 
    ```javascript
         var queryTwins = function() {
@@ -132,41 +132,41 @@ Bu bölümde, **Mydeviceıd**ile ilişkili cihaz ikizi konum meta verilerini ekl
         };
    ```
 
-    Önceki kod iki sorgu yürütür: İlki yalnızca **Redmond43** tesisinde bulunan cihazların cihaz ikelerini seçer ve ikincisi ise yalnızca hücresel ağ üzerinden de bağlı olan cihazları seçecek şekilde sorguyu iyileştirir.
+    Önceki kod iki sorgu yürütür: ilki **Redmond43** tesisinde bulunan aygıtların yalnızca aygıt ikizlerini seçer ve ikincisi sorguyu yalnızca hücresel ağ üzerinden bağlanan aygıtları seçmek için geliştirir.
 
-    Kod **sorgu** nesnesini oluşturduğunda, ikinci parametrede döndürülen en fazla belge sayısını belirtir. **Sorgu** nesnesi, tüm sonuçları almak Için **Nextastwin** yöntemlerini birden çok kez çağırmak için kullanabileceğiniz bir **hasMoreResults** Boolean özelliği içerir. **Daha sonra** adlı bir yöntem, cihaz ikikileri, örneğin toplama sorgularının sonuçları gibi, cihaz WINS olmayan sonuçlar için kullanılabilir.
+    Kod **sorgu** nesnesini oluşturduğunda, ikinci parametrede döndürülen en fazla belge sayısını belirtir. **Sorgu nesnesi,** tüm sonuçları almak için **nextAsTwin** yöntemlerini birden çok kez çağırmak için kullanabileceğiniz bir **hasMoreResults** boolean özelliği içerir. **Sonraki** adlı bir yöntem aygıt ikizi olmayan sonuçlar için kullanılabilir, örneğin, toplama sorgularının sonuçları.
 
-6. Uygulamayı ile çalıştırın:
+6. Uygulamayı aşağıdakilerle çalıştırın:
 
     ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
-   **Redmond43** ' de bulunan tüm cihazları isteyen sorgunun sonuçlarında bir cihaz görmeniz gerekir ve sonuçları hücresel ağ kullanan cihazlara kısıtlayan sorgu için yok.
+   **Redmond43'te** bulunan tüm aygıtları soran sorgunun sonuçlarında bir aygıt görmeniz ve sonuçları hücresel ağ kullanan aygıtlarla sınırlayan sorgu için hiçbir aygıt görmeniz gerekir.
 
-   ![Sorgu sonuçlarındaki bir cihaza bakın](media/iot-hub-node-node-twin-getstarted/service1.png)
+   ![Sorgu sonuçlarındaki tek aygıta bakın](media/iot-hub-node-node-twin-getstarted/service1.png)
 
-Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgunun sonucunu değiştiren bir cihaz uygulaması oluşturacaksınız.
+Sonraki bölümde, bağlantı bilgilerini bildiren ve önceki bölümdeki sorgunun sonucunu değiştiren bir aygıt uygulaması oluşturursunuz.
 
-## <a name="create-the-device-app"></a>Cihaz uygulaması oluşturma
+## <a name="create-the-device-app"></a>Cihaz uygulamasını oluşturma
 
-Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol uygulaması oluşturursunuz ve ardından Device ikizi 'ın bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olduğu bilgileri içerecek şekilde güncelleştirir.
+Bu bölümde, hub'ınıza **myDeviceId**olarak bağlanan bir Düğüm.js konsol uygulaması oluşturur sunuz ve ardından aygıt ikizinin bildirilen özelliklerini günceller ve hücresel ağ kullanarak bağlı olduğu bilgileri içerir.
 
-1. **Reportconnectivity**adlı yeni bir boş klasör oluşturun. **Reportconnectivity** klasöründe, komut istemindeki aşağıdaki komutu kullanarak yeni bir Package. JSON dosyası oluşturun. `--yes` parametresi tüm varsayılanları kabul eder.
+1. **Reportconnectivity**adlı yeni bir boş klasör oluşturun. **Reportconnectivity** klasöründe, komut isteminizde aşağıdaki komutu kullanarak yeni bir package.json dosyası oluşturun. `--yes` Parametre tüm varsayılanları kabul eder.
 
     ```cmd/sh
     npm init --yes
     ```
 
-2. **Reportconnectivity** klasöründe komut istemindeki **Azure-IoT-Device**ve **Azure-IoT-Device-MQTT** paketlerini yüklemek için aşağıdaki komutu çalıştırın:
+2. **Reportconnectivity** klasöründeki komut isteminizde **azure-iot-device**ve **azure-iot-device-mqtt** paketlerini yüklemek için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Bir metin düzenleyicisi kullanarak, **reportconnectivity** klasöründe yeni bir **reportconnectivity. js** dosyası oluşturun.
+3. Bir metin düzenleyicisi kullanarak, **reportconnectivity** klasöründe yeni bir **ReportConnectivity.js** dosyası oluşturun.
 
-4. **Reportconnectivity. js** dosyasına aşağıdaki kodu ekleyin. `{device connection string}` [, IoT Hub 'ına yeni bir cihaz kaydetme](#register-a-new-device-in-the-iot-hub)bölümünde **mydeviceıd** cihaz kimliğini oluştururken kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
+4. **ReportConnectivity.js** dosyasına aşağıdaki kodu ekleyin. `{device connection string}` [IoT hub'ında yeni bir aygıtı kaydedin'de](#register-a-new-device-in-the-iot-hub) **myDeviceId** aygıt kimliğini oluşturduğunuzda kopyaladığınız aygıt bağlantısı dizesiyle değiştirin.
 
     ```javascript
         'use strict';
@@ -206,34 +206,34 @@ Bu bölümde, hub 'ınıza **Mydeviceıd**olarak bağlanan bir Node. js konsol u
         });
     ```
 
-    **İstemci** nesnesi, cihazdan cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, **istemci** nesnesini başlattıktan sonra **mydeviceıd** için Device ikizi 'ı alır ve bildirilen özelliğini bağlantı bilgileriyle güncelleştirir.
+    **İstemci** nesnesi, aygıttaki aygıt ikizleri ile etkileşim de olsa gereken tüm yöntemleri ortaya çıkarır. Önceki kod, **Istemci** nesnesini aldıktan sonra aygıtı **myDeviceId** için ikiz olarak alır ve bildirilen özelliğini bağlantı bilgileriyle güncelleştirir.
 
-5. Cihaz uygulamasını çalıştırma
+5. Aygıt uygulamasını çalıştırma
 
     ```cmd/sh
         node ReportConnectivity.js
     ```
 
-    İleti `twin state reported`görmeniz gerekir.
+    İletiyi `twin state reported`görmelisiniz.
 
-6. Cihaz bağlantı bilgilerini raporladığı için, her iki sorgu da görünmelidir. **Addtagsandqueryapp** klasörüne dönün ve sorguları yeniden çalıştırın:
+6. Aygıt bağlantı bilgilerini bildirdiğine göre, her iki sorguda da görünmesi gerekir. **addtagsandqueryapp** klasörüne geri dönün ve sorguları yeniden çalıştırın:
 
     ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
-    **Mydeviceıd** bu kez sorgu sonuçlarında görünmelidir.
+    Bu kez **myDeviceId** her iki sorgu sonuçlarında da görünmelidir.
 
-    ![Mydeviceıd 'yi her iki sorgu sonucunda göster](media/iot-hub-node-node-twin-getstarted/service2.png)
+    ![MyDeviceId'i her iki sorgu sonuçlarında da göster](media/iot-hub-node-node-twin-getstarted/service2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure portalında yeni bir IoT hub'ı yapılandırdınız ve ardından IoT hub'ının kimlik kayıt defterinde bir cihaz kimliği oluşturdunuz. Cihaz meta verilerini bir arka uç uygulamasından Etiketler olarak eklediniz ve cihaz ikizi cihaz bağlantı bilgilerini raporlamak için bir sanal cihaz uygulaması yazmış olursunuz. Ayrıca, bu bilgilerin SQL benzeri IoT Hub sorgu dilini kullanarak nasıl sorgulanalınacağını da öğrendiniz.
+Bu öğreticide, Azure portalında yeni bir IoT hub'ı yapılandırdınız ve ardından IoT hub'ının kimlik kayıt defterinde bir cihaz kimliği oluşturdunuz. Aygıt meta verilerini arka uç uygulamasından etiketler olarak eklediniz ve aygıt ikizindeki aygıt bağlantı bilgilerini bildirmek için simüle edilmiş bir aygıt uygulaması yazdınız. Ayrıca, SQL benzeri IoT Hub sorgu dilini kullanarak bu bilgileri nasıl sorgulayabileceğinizi de öğrendiniz.
 
-Aşağıdakilerin nasıl yapılacağını öğrenmek için aşağıdaki kaynakları kullanın:
+Nasıl yapılacağını öğrenmek için aşağıdaki kaynakları kullanın:
 
-* [IoT Hub ile çalışmaya](quickstart-send-telemetry-node.md) başlayın öğreticisi sayesinde cihazlardan telemetri gönderin
+* [IoT Hub öğreticiile başlatıla](quickstart-send-telemetry-node.md) ile cihazlardan telemetri göndermek,
 
-* [cihazları yapılandırmak için istenen özellikleri kullan](tutorial-device-twins.md) öğreticisiyle cihaz ikizi 'nin istenen özelliklerini kullanarak cihazları yapılandırın öğreticisi
+* cihazları yapılandırmak [için istenilen özellikleri kullanarak cihaz](tutorial-device-twins.md) ikizinin istenilen özelliklerini kullanarak yapılandırMak,
 
-* cihazları etkileşimli olarak (kullanıcı denetimli bir uygulamadan bir fanı açmak gibi) [doğrudan Yöntemler](quickstart-control-device-node.md) öğreticisini kullanarak kontrol edin.
+* cihazları etkileşimli olarak kontrol edin (kullanıcı kontrolündeki bir uygulamadan bir fanı açmak gibi), [doğrudan yöntem](quickstart-control-device-node.md) kullanma öğreticisi ile.

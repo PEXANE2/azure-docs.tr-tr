@@ -1,6 +1,6 @@
 ---
-title: Otomatik ölçeklendirme v1
-description: Otomatik ölçeklendirme ve App Service Ortamı v1. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
+title: V1'i otomatik olarak ölçekleme
+description: Otomatikleme ve Uygulama Servis Ortamı v1. Bu doküman yalnızca eski v1 ASE'yi kullanan müşteriler için sağlanır.
 author: btardif
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.topic: article
@@ -8,214 +8,214 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687291"
 ---
-# <a name="autoscaling-and-app-service-environment-v1"></a>Otomatik ölçeklendirme ve App Service Ortamı v1
+# <a name="autoscaling-and-app-service-environment-v1"></a>Otomatikleme ve Uygulama Servis Ortamı v1
 
 > [!NOTE]
-> Bu makale App Service Ortamı v1 ile ilgilidir.  Daha güçlü altyapıda daha kolay ve çalışır App Service Ortamı daha yeni bir sürümü vardır. Yeni sürüm hakkında daha fazla bilgi edinmek için [App Service ortamı giriş](intro.md)ile başlayın.
+> Bu makale, App Service Environment v1 hakkındadır.  Uygulama Hizmet Ortamı'nın kullanımı daha kolay olan ve daha güçlü altyapıda çalışan daha yeni bir sürümü vardır. Yeni sürüm hakkında daha fazla bilgi edinmek [için Uygulama Hizmet Ortamına Giriş](intro.md)ile başlayın.
 > 
 
-Azure App Service ortamlar *Otomatik ölçeklendirmeyi*destekler. İş havuzlarını ölçümlere veya zamanlamaya göre otomatik ölçeklendirme yapabilirsiniz.
+Azure Uygulama Hizmeti ortamları *otomatik küçültmeyi*destekler. Ölçümlere veya zamanlamaya göre tek tek çalışan havuzları otomatik ölçeklendirebilirsiniz.
 
-![Bir çalışan havuzu için otomatik ölçeklendirme seçenekleri.][intro]
+![İşçi havuzu için otomatik ölçeklendirme seçenekleri.][intro]
 
-Otomatik ölçeklendirme, bir App Service ortamını bütçenize ve veya yükleme profilinize uyacak şekilde otomatik olarak büyüyerek ve küçülterek kaynak kullanımınızı iyileştirir.
+Otomatik ölçeklendirme, bütçenize ve veya yük profilinize uyacak şekilde bir Uygulama Hizmeti ortamını otomatik olarak büyüterek ve küçülterek kaynak kullanımınızı optimize eder.
 
-## <a name="configure-worker-pool-autoscale"></a>Çalışan havuzu otomatik ölçeklendirmeyi yapılandırma
-Otomatik ölçeklendirme işlevselliğine, çalışan havuzunun **Ayarlar** sekmesinden erişebilirsiniz.
+## <a name="configure-worker-pool-autoscale"></a>Yapılandırılan işçi havuzu otomatik ölçeklendirme
+Otomatik ölçeklendirme işlevine çalışan havuzunun **Ayarlar** sekmesinden erişebilirsiniz.
 
-![Çalışan havuzunun ayarlar sekmesi.][settings-scale]
+![Alt havuzun ayarlar sekmesi.][settings-scale]
 
-Buradan, bir App Service planını ölçeklendirçalışırken gördüğünüz deneyim aynı olduğundan arabirim oldukça tanıdık olmalıdır. 
+Buradan, bir Uygulama Hizmeti planını ölçeklendirdiğinizde gördüğünüz deneyimle aynı olduğundan, arabirim oldukça tanıdık olmalıdır. 
 
-![El ile ölçeklendirme ayarları.][scale-manual]
+![El ile ölçek ayarları.][scale-manual]
 
-Otomatik ölçeklendirme profili de yapılandırabilirsiniz.
+Otomatik ölçek profilini de yapılandırabilirsiniz.
 
 ![Otomatik ölçeklendirme ayarları.][scale-profile]
 
-Ölçeklendirme profilleri, ölçeğinizdeki sınırları ayarlamak için faydalıdır. Bu şekilde, bir üst sınır (2) ayarlayarak, daha düşük bir sınır değeri (1) ve öngörülebilir bir harcama ucu ayarlayarak tutarlı bir performans deneyimine sahip olabilirsiniz.
+Otomatik ölçek profilleri, ölçeğinizde sınırlar belirlemek için yararlıdır. Bu şekilde, daha düşük bir sınır ölçeği değeri (1) ve öngörülebilir bir harcama kapağı nı üst sınır (2) ayarlayarak tutarlı bir performans deneyimi yaşayabilirsiniz.
 
 ![Profildeki ayarları ölçeklendirin.][scale-profile2]
 
-Bir profil tanımladıktan sonra, profil tarafından tanımlanan sınırlar dahilinde çalışan havuzundaki örneklerin sayısını artırma veya azaltma için otomatik ölçeklendirme kuralları ekleyebilirsiniz. Otomatik ölçeklendirme kuralları ölçümlere göre yapılır.
+Bir profil tanımladıktan sonra, profil tarafından tanımlanan sınırlar içinde alt havuzdaki örnek sayısını ölçeklendirmek veya küçültmek için otomatik ölçeklendirme kuralları ekleyebilirsiniz. Otomatik ölçeklendirme kuralları ölçümlere dayanır.
 
-![Kural ölçeklendirin.][scale-rule]
+![Ölçek kuralı.][scale-rule]
 
- Otomatik ölçeklendirme kurallarını tanımlamak için herhangi bir çalışan havuzu veya ön uç ölçümleri kullanılabilir. Bu ölçümler, kaynak dikey penceresinde izleyebilmeniz veya uyarılarını ayarlamanıza yönelik ölçümlerdir.
+ Otomatik ölçeklendirme kurallarını tanımlamak için herhangi bir alt havuz veya ön uç ölçümleri kullanılabilir. Bu ölçümler, kaynak bıçak grafiklerinde izleyebileceğiniz veya uyarılar ayarlayabildiğiniz ölçümlerle aynıdır.
 
-## <a name="autoscale-example"></a>Otomatik ölçeklendirme örneği
-Bir App Service ortamının otomatik ölçeklendirilmesi, bir senaryo aracılığıyla yürüyerek en iyi şekilde gösterilmiştir.
+## <a name="autoscale-example"></a>Otomatik ölçekörneği
+Bir Uygulama Hizmeti ortamının otomatik ölçeklendirmesi en iyi senaryoda yürüyerek gösterilebilir.
 
-Bu makalede, otomatik ölçeklendirmeyi ayarlarken gereken tüm noktalar açıklanmaktadır. Bu makalede, App Service Ortamı barındırılan ortamları App Service otomatik ölçeklendirmeyi gerçekleştirirken oyun oynamak için sunulan etkileşimler adım adım açıklanmaktadır.
+Bu makalede, otomatik ölçek ayarladiğinizde gerekli tüm hususlar açıklanmaktadır. Makale, App Service Environment'da barındırılan Uygulama Hizmeti ortamlarını otomatik olarak ölçeklediğinizde devreye giren etkileşimler arasında size yol sunar.
 
-### <a name="scenario-introduction"></a>Senaryo tanıtımı
-Filiz, yönettikleri iş yüklerinin bir kısmını App Service ortamına geçirmiştir.
+### <a name="scenario-introduction"></a>Senaryo girişi
+Frank, yöneticilik yüklerinin bir kısmını Bir Uygulama Hizmeti ortamına geçiren bir kuruluş için bir sysadmin'dir.
 
-App Service ortamı aşağıdaki şekilde el ile ölçeklenebilen şekilde yapılandırılmıştır:
+Uygulama Hizmeti ortamı aşağıdaki gibi manuel ölçeklendirilir:
 
 * **Ön uçlar:** 3
-* **Çalışan havuzu 1**: 10
-* **Çalışan Havuzu 2**: 5
-* **Çalışan havuzu 3**: 5
+* **İşçi havuzu 1**: 10
+* **İşçi havuzu 2**: 5
+* **İşçi havuzu 3**: 5
 
-Çalışan havuzu 1, üretim iş yükleri için, çalışan Havuzu 2 ve çalışan havuzu 3 kalite güvencesi (QA) ve geliştirme iş yükleri için kullanılır.
+İşçi havuzu 1 üretim iş yükleri için kullanılırken, işçi havuzu 2 ve işçi havuzu 3 kalite güvencesi (QA) ve geliştirme iş yükleri için kullanılır.
 
-QA ve dev için App Service planları el ile ölçeğe göre yapılandırılmıştır. Üretim App Service planı, yük ve trafikte çeşitlerle başa çıkmak için otomatik ölçeklendirme olarak ayarlanır.
+QA ve dev için Uygulama Hizmeti planları manuel ölçekle yapılandırılır. Üretim App Service planı yük ve trafik varyasyonları ile başa çıkmak için otomatik ölçeklendirme ayarlanır.
 
-Filiz, uygulamaya çok tanıdık gelecektir. Bunlar, çalışanların ofis ofisinde oldukları sırada kullandıkları bir iş kolu (LOB) uygulaması olduğundan, yükün yoğun saatlerin 9:00 ile 6:00 PM arasında olduğunu bilir. Kullanım, kullanıcılar söz konusu gün için bittiğinde daha sonra bırakılanlar. Kullanıcılar mobil cihazlarını veya ev bilgisayarlarını kullanarak uygulamaya uzaktan erişebildiğinden, yoğun saatlerin dışında hala bazı yük vardır. Üretim App Service planı, aşağıdaki kurallarla CPU kullanımına göre otomatik olarak otomatik ölçeklendirme için yapılandırılmıştır:
+Frank başvuruyu çok iyi biliyor. Bu, çalışanların ofisteyken kullandıkları bir iş hattı (LOB) uygulaması olduğu için, yükleme için en yoğun saatlerin 09:00 ile 18:00 arasında olduğunu bilirler. Kullanıcılar o gün için yapıldığında kullanım daha sonra düşer. Yoğun saatler dışında, kullanıcılar mobil cihazlarını veya ev bilgisayarlarını kullanarak uygulamaya uzaktan erişebildikleri için hala bazı yükler vardır. Üretim App Service planı zaten aşağıdaki kurallarla CPU kullanımına göre otomatik ölçeklendirme için yapılandırılmıştır:
 
 ![LOB uygulaması için özel ayarlar.][asp-scale]
 
-| **Otomatik ölçeklendirme profili – iş günleri – App Service planı** | **Otomatik ölçeklendirme profili – hafta sonları – App Service plan** |
+| **Otomatik ölçekprofili – Hafta içi – Uygulama Hizmeti planı** | **Otomatik ölçekprofili – Hafta sonları – Uygulama Hizmeti planı** |
 | --- | --- |
-| **Ad:** Hafta içi profil |**Ad:** Hafta sonu profili |
-| **Ölçek ölçütü:** Zamanlama ve performans kuralları |**Ölçek ölçütü:** Zamanlama ve performans kuralları |
-| **Profil:** Ları |**Profil:** Hafta |
-| **Şunu yazın:** Yinelemeyi |**Şunu yazın:** Yinelemeyi |
+| **Adı:** Hafta içi profili |**Adı:** Hafta sonu profili |
+| **Şuna göre ölçeklendirin:** Zamanlama ve performans kuralları |**Şuna göre ölçeklendirin:** Zamanlama ve performans kuralları |
+| **Profil:** Hafta içi |**Profil:** Hafta sonu |
+| **Türü:** Yineleme |**Türü:** Yineleme |
 | **Hedef aralığı:** 5 ila 20 örnek |**Hedef aralığı:** 3 ila 10 örnek |
-| **Gün sayısı:** Pazartesi, Salı, Çarşamba, Perşembe, Cuma |**Gün sayısı:** Cumartesi, Pazar |
-| **Başlangıç Zamanı:** 9:00 |**Başlangıç Zamanı:** 9:00 |
+| **Gün Sayısı:** Pazartesi, Salı, Çarşamba, Perşembe, Cuma |**Gün Sayısı:** Cumartesi, Pazar |
+| **Başlangıç saati:** 9:00 |**Başlangıç saati:** 9:00 |
 | **Saat dilimi:** UTC-08 |**Saat dilimi:** UTC-08 |
 |  | |
-| **Otomatik ölçeklendirme kuralı (ölçek artırma)** |**Otomatik ölçeklendirme kuralı (ölçek artırma)** |
-| **Kaynak:** Üretim (App Service Ortamı) |**Kaynak:** Üretim (App Service Ortamı) |
-| **Ölçüm:** 'SUNA |**Ölçüm:** 'SUNA |
-| **İşlem:** %60 ' den büyük |**İşlem:** %80 ' den büyük |
-| **Süre:** 5 dakika |**Süre:** 10 dakika |
+| **Otomatik ölçeklendirme kuralı (Yukarı Ölçekle)** |**Otomatik ölçeklendirme kuralı (Yukarı Ölçekle)** |
+| **Kaynak:** Üretim (Uygulama Servis Ortamı) |**Kaynak:** Üretim (Uygulama Servis Ortamı) |
+| **Metrik:** CPU % |**Metrik:** CPU % |
+| **İşlem:** %60'tan büyük |**İşlem:** %80'den büyük |
+| **Süre:** 5 Dakika |**Süre:** 10 Dakika |
 | **Zaman toplama:** Ortalama |**Zaman toplama:** Ortalama |
-| **Eylem:** Sayıyı 2 ' ye kadar artır |**Eylem:** Sayıyı 1 artır |
-| Seyrek Erişimli **(dakika):** 15 |Seyrek Erişimli **(dakika):** 20 |
+| **Eylem:** Sayıyı 2 artırın |**Eylem:** Sayıyı 1 artırın |
+| **Soğuma (dakika):** 15 |**Soğuma (dakika):** 20 |
 |  | |
-| **Otomatik ölçeklendirme kuralı (ölçek azaltma)** |**Otomatik ölçeklendirme kuralı (ölçek azaltma)** |
-| **Kaynak:** Üretim (App Service Ortamı) |**Kaynak:** Üretim (App Service Ortamı) |
-| **Ölçüm:** 'SUNA |**Ölçüm:** 'SUNA |
-| **İşlem:** %30 ' dan az |**İşlem:** %20 ' den az |
+| **Otomatik ölçeklendirme kuralı (Aşağı Yıkı)** |**Otomatik ölçeklendirme kuralı (Aşağı Yıkı)** |
+| **Kaynak:** Üretim (Uygulama Servis Ortamı) |**Kaynak:** Üretim (Uygulama Servis Ortamı) |
+| **Metrik:** CPU % |**Metrik:** CPU % |
+| **İşlem:** %30'dan az |**İşlem:** %20'den az |
 | **Süre:** 10 dakika |**Süre:** 15 dakika |
 | **Zaman toplama:** Ortalama |**Zaman toplama:** Ortalama |
-| **Eylem:** Sayıyı 1 azaltma |**Eylem:** Sayıyı 1 azaltma |
-| Seyrek Erişimli **(dakika):** 20 |Seyrek Erişimli **(dakika):** 10 |
+| **Eylem:** Sayıyı 1 azaltın |**Eylem:** Sayıyı 1 azaltın |
+| **Soğuma (dakika):** 20 |**Soğuma (dakika):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>App Service planı enflasyon oranı
-Otomatik ölçeklendirme için yapılandırılan App Service planlar, saat başına en fazla hızda yapılır. Bu fiyat, otomatik ölçeklendirme kuralında belirtilen değerlere göre hesaplanabilir.
+Otomatik ölçeklendirme için yapılandırılan Uygulama Hizmeti planları bunu saat başına maksimum hızda yapar. Bu oran, otomatik ölçek kuralında sağlanan değerlere göre hesaplanabilir.
 
-*App Service planı enflasyon oranını* anlamak ve hesaplamak, bir çalışan havuzunda ölçek değişiklikleri anlık olmadığından App Service ortam otomatik ölçeklendirme için önemlidir.
+*Uygulama Hizmeti planı enflasyon oranını* anlamak ve hesaplamak, çalışma havuzundaki ölçek değişiklikleri anlık olmadığından, App Service ortamı için oto ölçeklendirme için önemlidir.
 
-App Service planı enflasyon oranı aşağıdaki şekilde hesaplanır:
+App Service planı enflasyon oranı aşağıdaki gibi hesaplanır:
 
 ![App Service planı enflasyon oranı hesaplaması.][ASP-Inflation]
 
-Üretim App Service planının hafta Içi profili için otomatik ölçeklendirme – ölçek genişletme kuralına göre:
+Üretim App Service planının Hafta içi profili için Otomatik Ölçek - Ölçeklendirme kuralına göre:
 
-![Otomatik ölçeklendirme için ölçek artırma kuralına bağlı olarak, hafta içi haftanın enflasyon oranını App Service.][Equation1]
+![Otomatik Ölçek - Ölçeklendirme kuralına göre hafta içi için Uygulama Hizmeti planı enflasyon oranı.][Equation1]
 
-Otomatik ölçeklendirme, üretim App Service planının hafta sonu profili için ölçeği büyütme durumunda, formül şu şekilde çözümlenir:
+Otomatik Ölçekleme durumunda – Üretim App Service planının Hafta sonu profili için Yükseltme kuralını ölçeklendirin, formül aşağıdakileri çözecektir:
 
-![Otomatik ölçeklendirme için ölçek artırma kuralına göre hafta sonları için enflasyon oranı planı App Service.][Equation2]
+![Otomatik Ölçeklendirme - Ölçeklendirme kuralına göre hafta sonları için Uygulama Hizmeti planı enflasyon oranı.][Equation2]
 
-Bu değer, ölçek azaltma işlemleri için de hesaplanabilir.
+Bu değer, küçültme işlemleri için de hesaplanabilir.
 
-Üretim App Service planının hafta Içi profili için otomatik ölçeklendirme – ölçek azaltma kuralına bağlı olarak, bu şöyle görünür:
+Üretim App Service planının Hafta içi profili için Otomatik Ölçek - Küçült kuralına göre, bu aşağıdaki gibi görünür:
 
-![Otomatik ölçeklendirme için ölçek azaltma kuralına bağlı olarak, hafta içi günlere yönelik enflasyon oranı planı App Service.][Equation3]
+![Otomatik Ölçek - Küçültme kuralına göre hafta içi için Uygulama Hizmeti planı enflasyon oranı.][Equation3]
 
-Otomatik ölçeklendirme için, üretim App Service planının hafta sonu profili için ölçek Azaltma kuralı için formül şu şekilde çözümlenir:  
+Üretim App Service planının Hafta sonu profili için Otomatik Ölçeklendirme - Küçült kuralı söz konusu olduğunda, formül aşağıdakileri çözecektir:  
 
-![Otomatik ölçeklendirme – ölçek azaltma kuralına göre hafta sonları için App Service plan fiyatı.][Equation4]
+![Otomatik Ölçek - Küçült kuralına göre hafta sonları için Uygulama Hizmeti planı enflasyon oranı.][Equation4]
 
-Üretim App Service planı, hafta boyunca en fazla sekiz örnek/saat ve hafta sonu boyunca dört örnek/saat üzerinden büyüyebilir. Örnek, hafta boyunca en fazla dört örnek/saat ve hafta içinde altı örnek/saat hızında serbest bırakabilir.
+Üretim App Service planı hafta boyunca en fazla sekiz örnek/saat, hafta sonu ise dört örnek/saat hızında büyüyebilir. Hafta boyunca en fazla dört örnek/saat, hafta sonları ise altı örnek/saat gibi durumlarda örnekleri yayınlayabilir.
 
-Birden çok App Service planı bir çalışan havuzunda barındırılıyorsa, bu çalışan havuzunda barındırmakta olan tüm App Service planlarının enflasyon oranının toplamı olarak *Toplam enflasyon oranını* hesaplamanız gerekir.
+Bir işçi havuzunda birden çok Uygulama Hizmeti planı barındırılıyorsa, *toplam enflasyon oranını,* o çalışan havuzunda barındırmakta olan tüm Uygulama Hizmeti planlarının enflasyon oranının toplamı olarak hesaplamanız gerekir.
 
-![Bir çalışan havuzunda barındırılan birden çok App Service planı için toplam enflasyon oranı hesaplaması.][ASP-Total-Inflation]
+![İşçi havuzunda barındırılan birden çok Uygulama Hizmeti planı için toplam enflasyon oranı hesaplaması.][ASP-Total-Inflation]
 
-### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Çalışan havuzu otomatik ölçeklendirme kurallarını tanımlamak için App Service planı enflasyon oranını kullanın
-Otomatik ölçeklendirme olarak yapılandırılmış App Service planlarını barındıran çalışan havuzlarının bir kapasite arabelleği ayrılması gerekir. Arabellek, otomatik ölçeklendirme işlemlerinin, App Service planını gerektiği şekilde büyütmesine ve küçültmesine izin verir. En düşük arabellek, hesaplanan toplam App Service planı enflasyon oranı olacaktır.
+### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>İşçi havuzu otomatik ölçeklendirme kurallarını tanımlamak için App Service planı enflasyon oranını kullanma
+Otomatik ölçeklendirme için yapılandırılan Uygulama Hizmeti planlarını barındıran alt havuzlarının bir kapasite arabelleği ayrılması gerekir. Arabellek, otomatik ölçeklendirme işlemlerinin gerektiğinde App Service planını büyütmesine ve küçültmesine olanak tanır. Minimum arabellek hesaplanan Toplam Uygulama Hizmeti Planı Enflasyon Oranı olacaktır.
 
-App Service ortamı ölçeklendirme işlemlerinin uygulanması biraz zaman aldığı için herhangi bir değişiklik, bir ölçeklendirme işlemi devam ederken oluşabilecek daha fazla talep değişikliği hesaba malıdır. Bu gecikmeyi karşılamak için, hesaplanan toplam App Service planı enflasyon oranını her bir otomatik ölçeklendirme işlemi için eklenen minimum örnek sayısı olarak kullanmanızı öneririz.
+Uygulama Hizmeti ortamı ölçeği işlemlerinin uygulanması biraz zaman aldığından, herhangi bir değişikliğin bir ölçek işlemi devam ederken meydana gelebilecek diğer talep değişikliklerini hesaba katması gerekir. Bu gecikmeyi karşılamak için, hesaplanan Toplam Uygulama Hizmeti Planı Enflasyon Oranını, her otomatik ölçeklendirme işlemi için eklenen en az örnek sayısı olarak kullanmanızı öneririz.
 
-Bu bilgilerle, filiz aşağıdaki otomatik ölçeklendirme profilini ve kurallarını tanımlayabilir:
+Bu bilgilerle, Frank aşağıdaki otomatik ölçek profilini ve kurallarını tanımlayabilir:
 
-![LOB örneği için otomatik ölçeklendirme profili kuralları.][Worker-Pool-Scale]
+![LOB örneği için otomatik ölçeklendirme profil kuralları.][Worker-Pool-Scale]
 
-| **Otomatik ölçeklendirme profili – hafta Içi** | **Otomatik ölçeklendirme profili – hafta sonları** |
+| **Otomatik ölçeklendirme profili – Hafta içi** | **Otomatik ölçeklendirme profili – Hafta sonları** |
 | --- | --- |
-| **Ad:** Hafta içi profil |**Ad:** Hafta sonu profili |
-| **Ölçek ölçütü:** Zamanlama ve performans kuralları |**Ölçek ölçütü:** Zamanlama ve performans kuralları |
-| **Profil:** Ları |**Profil:** Hafta |
-| **Şunu yazın:** Yinelemeyi |**Şunu yazın:** Yinelemeyi |
-| **Hedef Aralık:** 13-25 örnek |**Hedef aralığı:** 6-15 örnek |
-| **Gün sayısı:** Pazartesi, Salı, Çarşamba, Perşembe, Cuma |**Gün sayısı:** Cumartesi, Pazar |
-| **Başlangıç Zamanı:** 7:00 |**Başlangıç Zamanı:** 9:00 |
+| **Adı:** Hafta içi profili |**Adı:** Hafta sonu profili |
+| **Şuna göre ölçeklendirin:** Zamanlama ve performans kuralları |**Şuna göre ölçeklendirin:** Zamanlama ve performans kuralları |
+| **Profil:** Hafta içi |**Profil:** Hafta sonu |
+| **Türü:** Yineleme |**Türü:** Yineleme |
+| **Hedef aralığı:** 13 ila 25 örnek |**Hedef aralığı:** 6 ila 15 örnek |
+| **Gün Sayısı:** Pazartesi, Salı, Çarşamba, Perşembe, Cuma |**Gün Sayısı:** Cumartesi, Pazar |
+| **Başlangıç saati:** 7:00 |**Başlangıç saati:** 9:00 |
 | **Saat dilimi:** UTC-08 |**Saat dilimi:** UTC-08 |
 |  | |
-| **Otomatik ölçeklendirme kuralı (ölçek artırma)** |**Otomatik ölçeklendirme kuralı (ölçek artırma)** |
-| **Kaynak:** Çalışan havuzu 1 |**Kaynak:** Çalışan havuzu 1 |
-| **Ölçüm:** WorkersAvailable |**Ölçüm:** WorkersAvailable |
-| **İşlem:** 8 ' den az |**İşlem:** 3 ' ten az |
+| **Otomatik ölçeklendirme kuralı (Yukarı Ölçekle)** |**Otomatik ölçeklendirme kuralı (Yukarı Ölçekle)** |
+| **Kaynak:** İşçi havuzu 1 |**Kaynak:** İşçi havuzu 1 |
+| **Metrik:** İşçiler Kullanılabilir |**Metrik:** İşçiler Kullanılabilir |
+| **İşlem:** 8'den az |**İşlem:** 3'ten az |
 | **Süre:** 20 dakika |**Süre:** 30 dakika |
 | **Zaman toplama:** Ortalama |**Zaman toplama:** Ortalama |
-| **Eylem:** Sayıyı 8 olarak artır |**Eylem:** Sayıyı 3 olarak artır |
-| Seyrek Erişimli **(dakika):** 180 |Seyrek Erişimli **(dakika):** 180 |
+| **Eylem:** Sayıyı 8 artırın |**Eylem:** Sayıyı 3 artırın |
+| **Soğuma (dakika):** 180 |**Soğuma (dakika):** 180 |
 |  | |
-| **Otomatik ölçeklendirme kuralı (ölçek azaltma)** |**Otomatik ölçeklendirme kuralı (ölçek azaltma)** |
-| **Kaynak:** Çalışan havuzu 1 |**Kaynak:** Çalışan havuzu 1 |
-| **Ölçüm:** WorkersAvailable |**Ölçüm:** WorkersAvailable |
-| **İşlem:** 8 ' den büyük |**İşlem:** 3 ' ten büyük |
+| **Otomatik ölçeklendirme kuralı (Aşağı Yıkı)** |**Otomatik ölçeklendirme kuralı (Aşağı Yıkı)** |
+| **Kaynak:** İşçi havuzu 1 |**Kaynak:** İşçi havuzu 1 |
+| **Metrik:** İşçiler Kullanılabilir |**Metrik:** İşçiler Kullanılabilir |
+| **İşlem:** 8'den büyük |**İşlem:** 3'ten büyük |
 | **Süre:** 20 dakika |**Süre:** 15 dakika |
 | **Zaman toplama:** Ortalama |**Zaman toplama:** Ortalama |
-| **Eylem:** Sayıyı 2 ' ye kadar azalt |**Eylem:** Sayıyı 3 olarak azalt |
-| Seyrek Erişimli **(dakika):** 120 |Seyrek Erişimli **(dakika):** 120 |
+| **Eylem:** Sayıyı 2'ye düşürün |**Eylem:** Sayıyı 3'e düşürün |
+| **Soğuma (dakika):** 120 |**Soğuma (dakika):** 120 |
 
-Profilde tanımlanan hedef aralığı, App Service planı + arabelleği için profilde tanımlanan minimum örneklerle hesaplanır.
+Profilde tanımlanan Hedef aralığı, App Service planı + arabelleği profilinde tanımlanan minimum örneklere göre hesaplanır.
 
-En büyük Aralık, çalışan havuzunda barındırılan tüm App Service planlarına ait tüm maksimum aralıkların toplamıdır.
+Maksimum aralık, işçi havuzunda barındırılan tüm Uygulama Hizmeti planları için maksimum aralıkların toplamı olacaktır.
 
-Ölçek Genişletme kuralları için artış sayısı en az 1X, ölçek artırma için App Service plan enflasyon oranına ayarlanmalıdır.
+Ölçeklendirme kurallarıiçin Artış sayısı, ölçeklendirme için Uygulama Hizmeti Planı Enflasyon Oranı'nın en az 1Kat olarak ayarlanmalıdır.
 
-Azaltma sayısı, ölçek azaltma için App Service planı enflasyon oranını 1/2X veya 1X arasında bir şeye göre ayarlanabilir.
+Azalma sayısı, küçültme için Uygulama Hizmeti Planı Enflasyon Oranı'nın 1/2X veya 1X arasında bir şeye ayarlanabilir.
 
 ### <a name="autoscale-for-front-end-pool"></a>Ön uç havuzu için otomatik ölçeklendirme
-Ön uç otomatik ölçeklendirme kuralları, çalışan havuzlarından daha basittir. Öncelikle,  
-ölçüm süresinin ve coolazaltma zamanlayıcıları App Service planındaki Ölçek işlemlerinin anlık olmadığından emin olun.
+Ön uç otomatik ölçeklendirme kuralları, çalışan havuzlarına göre daha basittir. Öncelikle,  
+ölçüm süresinin ve bekleme sürelerinin, Bir Uygulama Hizmeti planındaki ölçek işlemlerinin anlık olmadığını göz önünde bulundurun.
 
-Bu senaryoda, Filiz, ön uçlar %80 CPU kullanımına ulaştığında hata oranının arttığı ve örnekleri aşağıdaki gibi artıracak şekilde otomatik ölçeklendirme kuralını ayarlıyor:
+Bu senaryo için Frank, ön uçlar %80 CPU kullanımına ulaştıktan sonra hata oranının arttığını bilir ve örnekleri aşağıdaki gibi artırmak için otomatik ölçek kuralını ayarlar:
 
 ![Ön uç havuzu için otomatik ölçeklendirme ayarları.][Front-End-Scale]
 
-| **Otomatik ölçeklendirme profili – ön uçlar** |
+| **Otomatik ölçeklendirme profili – Ön uçlar** |
 | --- |
-| **Ad:** Otomatik ölçeklendirme – ön uçlar |
-| **Ölçek ölçütü:** Zamanlama ve performans kuralları |
-| **Profil:** Her |
-| **Şunu yazın:** Yinelemeyi |
+| **Adı:** Otomatik ölçeklendirme – Ön uçlar |
+| **Şuna göre ölçeklendirin:** Zamanlama ve performans kuralları |
+| **Profil:** Günlük |
+| **Türü:** Yineleme |
 | **Hedef aralığı:** 3 ila 10 örnek |
-| **Gün sayısı:** Her |
-| **Başlangıç Zamanı:** 9:00 |
+| **Gün Sayısı:** Günlük |
+| **Başlangıç saati:** 9:00 |
 | **Saat dilimi:** UTC-08 |
 |  |
-| **Otomatik ölçeklendirme kuralı (ölçek artırma)** |
+| **Otomatik ölçeklendirme kuralı (Yukarı Ölçekle)** |
 | **Kaynak:** Ön uç havuzu |
-| **Ölçüm:** 'SUNA |
-| **İşlem:** %60 ' den büyük |
+| **Metrik:** CPU % |
+| **İşlem:** %60'tan büyük |
 | **Süre:** 20 dakika |
 | **Zaman toplama:** Ortalama |
-| **Eylem:** Sayıyı 3 olarak artır |
-| Seyrek Erişimli **(dakika):** 120 |
+| **Eylem:** Sayıyı 3 artırın |
+| **Soğuma (dakika):** 120 |
 |  |
-| **Otomatik ölçeklendirme kuralı (ölçek azaltma)** |
-| **Kaynak:** Çalışan havuzu 1 |
-| **Ölçüm:** 'SUNA |
-| **İşlem:** %30 ' dan az |
-| **Süre:** 20 dakika |
+| **Otomatik ölçeklendirme kuralı (Aşağı Yıkı)** |
+| **Kaynak:** İşçi havuzu 1 |
+| **Metrik:** CPU % |
+| **İşlem:** %30'dan az |
+| **Süre:** 20 Dakika |
 | **Zaman toplama:** Ortalama |
-| **Eylem:** Sayıyı 3 olarak azalt |
-| Seyrek Erişimli **(dakika):** 120 |
+| **Eylem:** Sayıyı 3'e düşürün |
+| **Soğuma (dakika):** 120 |
 
 <!-- IMAGES -->
 [intro]: ./media/app-service-environment-auto-scale/introduction.png

@@ -1,6 +1,6 @@
 ---
-title: Şirket içinde barındırılan Azure API Management Gateway 'e genel bakış | Microsoft Docs
-description: Şirket içinde barındırılan Azure API Management Gateway 'in karma ve çok yüksek ortamlarda API 'Leri yönetmesine nasıl yardımcı olduğunu öğrenin.
+title: Kendi kendine barındırılan Azure API Yönetimi ağ geçidine genel bakış | Microsoft Dokümanlar
+description: Kendi kendine barındırılan Azure API Yönetimi ağ geçidinin, kuruluşların karma ve çok bulutlu ortamlarda KI ApI'leri yönetmesine nasıl yardımcı olduğunu öğrenin.
 services: api-management
 documentationcenter: ''
 author: vlvinogr
@@ -13,73 +13,73 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 415f0e209e607a863d715b1a66a2435603a662f0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73513724"
 ---
-# <a name="self-hosted-api-management-gateway-overview"></a>Şirket içinde barındırılan API Management ağ geçidine genel bakış
+# <a name="self-hosted-api-management-gateway-overview"></a>Kendi barındırılan API Yönetimi ağ geçidine genel bakış
 
-Bu makalede, şirket içinde barındırılan ağ geçidi özelliğinin karma ve çok bulut API yönetimini nasıl sağladığından, üst düzey mimarisini sunduğu ve temel yeteneklerini vurguladığı açıklanır.
+Bu makalede, kendi kendine barındırılan ağ geçidi özelliğinin hibrit ve çok bulutlu API yönetimine nasıl olanak sağladığı, üst düzey mimarisini nasıl sunduğu ve temel yeteneklerini nasıl vurguladığı açıklanmaktadır.
 
 > [!NOTE]
-> Şirket içinde barındırılan ağ geçidi özelliği önizlemededir. Önizleme sırasında, şirket içinde barındırılan ağ geçidi, yalnızca geliştirici ve Premium katmanlarda ek ücret ödemeden kullanılabilir. Geliştirici katmanı, tek bir şirket içinde barındırılan ağ geçidi dağıtımıyla sınırlıdır.
+> Kendi kendine barındırılan ağ geçidi özelliği önizlemededir. Önizleme sırasında, kendi kendine barındırılan ağ geçidi ek ücret ödemeden yalnızca Geliştirici ve Premium katmanlarında kullanılabilir. Geliştirici katmanı, kendi kendine barındırılan tek bir ağ geçidi dağıtımıyla sınırlıdır.
 
-## <a name="hybrid-and-multi-cloud-api-management"></a>Karma ve çoklu bulut API Yönetimi
+## <a name="hybrid-and-multi-cloud-api-management"></a>Karma ve çoklu bulut API yönetimi
 
-Şirket içinde barındırılan ağ geçidi özelliği, karma ve çok bulut ortamları için API Management destekler ve kuruluşların şirket içinde ve bulutta barındırılan API 'Leri Azure 'daki tek bir API Management hizmetinden verimli ve güvenli bir şekilde yönetmesine olanak sağlar.
+Kendi kendine barındırılan ağ geçidi özelliği, karma ve çok bulutlu ortamlar için API Yönetimi desteğini genişletir ve kuruluşların Azure'daki tek bir API Yönetimi hizmetinden şirket içinde ve bulutlar arasında barındırılan API'leri verimli ve güvenli bir şekilde yönetmesini sağlar.
 
-Şirket içinde barındırılan ağ geçidiyle, müşteriler, API Management ağ geçidi bileşeninin kapsayıcılı bir sürümünü, API 'Lerini barındırdıkları ortamlara dağıtma esnekliği sunar. Şirket içinde barındırılan tüm ağ geçitleri, tüm iç ve dış API 'Ler genelinde görünürlük ve Birleşik yönetim deneyimi sunarak müşterilere, içinde yer aldığı API Management hizmetten yönetilir. Ağ geçitlerinin API 'lere yerleştirilmesi, müşterilerin API trafik akışlarını iyileştirmelerine ve güvenlik ve uyumluluk gereksinimlerini karşıçalıştırmasına izin verir.
+Kendi kendine barındırılan ağ geçidi yle, müşteriler API Yönetimi ağ geçidi bileşeninin kapsayıcılaştırılmış bir sürümünü API'lerini barındırdıkları aynı ortamlara dağıtma esnekliğine sahiptir. Tüm kendi kendine barındırılan ağ geçitleri, federated edildikleri API Yönetimi hizmetinden yönetilir ve böylece müşterilere tüm iç ve dış API'lerde görünürlük ve birleşik yönetim deneyimi sağlar. Ağ geçitlerinin API'lere yakın bir yere yerleştirilmesi, müşterilerin API trafik akışlarını optimize etmesine ve güvenlik ve uyumluluk gereksinimlerini gidermesine olanak sağlar.
 
-Her bir API Management hizmeti aşağıdaki anahtar bileşenlerinden oluşur:
+Her API Yönetimi hizmeti aşağıdaki temel bileşenlerden oluşur:
 
--   Bir API olarak sunulan yönetim düzlemi, Azure portal, PowerShell ve diğer desteklenen mekanizmalar aracılığıyla hizmeti yapılandırmak için kullanılır.
--   Ağ Geçidi (veya veri düzlemi), API isteklerinin proxy isteklerini, ilkelerin uygulanmasını ve Telemetriyi toplamayı sağlamaktan sorumludur
--   Geliştiriciler tarafından API 'Leri bulmayı, öğrenmeyi ve kullanmayı öğrenmek için kullanılan geliştirici portalı
+-   API olarak açıkta olan yönetim düzlemi, hizmeti Azure portalı, PowerShell ve diğer desteklenen mekanizmalar üzerinden yapılandırmak için kullanılır.
+-   Ağ geçidi (veya veri düzlemi), API isteklerini proxyleme, ilkeler uygulama ve telemetri toplamakla yükümlüdür
+-   Geliştiriciler tarafından API'leri kullanmak için keşfetmek, öğrenmek ve yerleşik olarak kullanılan geliştirici portalı
 
-Varsayılan olarak, tüm bu bileşenler Azure 'da dağıtılır ve API 'Lerin alt uçlarının barındırıldığından bağımsız olarak, tüm API trafiğinin Azure üzerinden akmasını sağlar. Bu modelin operasyonel basitliği, artan gecikme süresi, uyumluluk sorunları ve bazı durumlarda ek veri aktarımı ücretleri üzerinden gelir.
+Varsayılan olarak, tüm bu bileşenler Azure'da dağıtılır ve tüm API trafiğinin (aşağıdaki resimde düz siyah oklar olarak gösterildiği) API'leri uygulayan arka uçların nerede barındırıldığına bakılmaksızın Azure'da akmasına neden olur. Bu modelin operasyonel basitliği artan gecikme, uyumluluk sorunları ve bazı durumlarda ek veri aktarım ücretleri pahasına gelir.
 
 ![Kendi kendine barındırılan ağ geçitleri olmadan API trafik akışı](media/self-hosted-gateway-overview/without-gateways.png)
 
-Şirket içinde barındırılan ağ geçitlerini arka uç API uygulamalarıyla aynı ortamlara dağıtmak ve bunları API Management hizmetine eklemek, API trafiğinin doğrudan arka uç API 'Lerine akmasını sağlar, bu da gecikme süresini iyileştirir, veri aktarımı maliyetlerini iyileştirir ve bu sayede uygulamalarının nerede barındırıldığından bağımsız olarak kuruluştaki tüm API 'lerin tek bir yönetim noktası ve keşfedilmesi avantajlarının yanı sıra uyumluluk sağlar.
+Arka uç API uygulamalarıyla aynı ortamlara barındırılan ağ geçitlerini dağıtmak ve bunları API Yönetimi hizmetine eklemek, API trafiğinin gecikmeyi artıran, veri aktarım maliyetlerini optimize eden ve veri aktarım maliyetlerini optimize eden arka uç API'lerine doğrudan akmasına olanak tanır uygulamalarının nerede barındırıldığına bakılmaksızın, tek bir yönetim noktasına sahip olmanın ve kuruluş içindeki tüm API'lerin keşfinin yararlarını korurken uyumluluk.
 
-![Şirket içinde barındırılan ağ geçitleriyle API trafik akışı](media/self-hosted-gateway-overview/with-gateways.png)
+![Kendi kendine barındırılan ağ geçitleri ile API trafik akışı](media/self-hosted-gateway-overview/with-gateways.png)
 
-## <a name="packaging-and-features"></a>Paketleme ve Özellikler
+## <a name="packaging-and-features"></a>Ambalaj ve özellikler
 
-Şirket içinde barındırılan ağ geçidi, her API Management hizmetinin bir parçası olarak Azure 'a dağıtılan yönetilen ağ geçidinin Kapsayıcılı, işlevsel olarak eşdeğer bir sürümüdür. Şirket içinde barındırılan ağ geçidi, Microsoft Container Registry Linux tabanlı bir Docker kapsayıcısı olarak kullanılabilir. Docker, Kubernetes veya bir masaüstü, sunucu kümesi veya bulut altyapısında çalışan başka bir kapsayıcı düzenleme çözümüne dağıtılabilir.
+Kendi kendine barındırılan ağ geçidi, her API Yönetimi hizmetinin bir parçası olarak Azure'a dağıtılan yönetilen ağ geçidinin kapsayıcılaştırılmış, işlevsel olarak eşdeğer bir sürümüdür. Kendi kendine barındırılan ağ geçidi, Microsoft Konteyner Kayıt Defteri'nden Linux tabanlı Docker kapsayıcısı olarak kullanılabilir. Docker, Kubernetes veya masaüstü, sunucu kümesi veya bulut altyapısında çalışan başka bir kapsayıcı düzenleme çözümüne dağıtılabilir.
 
 > [!IMPORTANT]
-> Yönetilen ağ geçidinde bulunan bazı işlevler henüz önizlemede kullanılamıyor. En önemlisi: Olay Hub 'ı ilkesinde oturum açın, Service Fabric tümleştirme, aşağı akış HTTP/2. Şirket içinde barındırılan ağ geçidinde yerleşik bir önbelleğin kullanılabilmesini sağlama planı yoktur.
+> Yönetilen ağ geçidinde bulunan bazı işlevler henüz önizlemede kullanılamaz. En önemlisi: Event Hub ilkesine, Service Fabric entegrasyonuna, http/2 aşağı akışına giriş yapın. Kendi barındırılan ağ geçidinde yerleşik bir önbelleği kullanılabilir hale getirme planı yoktur.
 
-## <a name="connectivity-to-azure"></a>Azure bağlantısı
+## <a name="connectivity-to-azure"></a>Azure'a Bağlantı
 
-Şirket içinde barındırılan ağ geçidi 443 numaralı bağlantı noktasında Azure 'a giden TCP/IP bağlantısı gerektirir. Her şirket içinde barındırılan her ağ geçidinin tek bir API Management hizmetiyle ilişkilendirilmesi ve yönetim düzlemi aracılığıyla yapılandırılması gereklidir. Şirket içinde barındırılan ağ geçidi, için Azure bağlantısını kullanır:
+Kendi kendine barındırılan ağ geçidi, 443 bağlantı noktasındaki Azure'a giden TCP/IP bağlantısı gerektirir. Her kendi kendine barındırılan ağ geçidi tek bir API Yönetimi hizmetiile ilişkilendirilmelidir ve yönetim düzlemi üzerinden yapılandırılır. Kendi kendine barındırılan ağ geçidi, Azure'a bağlantı sağlar:
 
--   Her dakikada sinyal mesajları göndererek durumunu raporlama
--   Düzenli olarak (10 saniyede bir) denetleniyor ve her kullanılabilir olduğunda yapılandırma güncelleştirmeleri uygulanıyor
--   Bu şekilde yapılandırıldıysa, Azure Izleyici 'ye istek günlükleri ve ölçümleri gönderme
--   Application Insights olarak ayarlandıysa olayları gönderme
+-   Her dakika sinyal iletileri göndererek durumunu bildirme
+-   Düzenli olarak (her 10 saniyede bir) kontrol etme ve kullanılabilir olduklarında yapılandırma güncelleştirmelerini uygulama
+-   Yapılandırılmışsa, istek günlüklerini ve ölçümlerini Azure Monitor'a gönderme
+-   Bunu yapmaya ayarlanmışsa, etkinlikleri Uygulama Öngörüleri'ne gönderme
 
-Azure ile bağlantı kesildiğinde, şirket içinde barındırılan ağ geçidi yapılandırma güncelleştirmelerini alamıyor, durumunu bildiremeyecek veya Telemetriyi karşıya yükleyemeyecektir.
+Azure bağlantısı kaybolduğunda, kendi kendine barındırılan ağ geçidi yapılandırma güncelleştirmelerini alamayacak, durumunu bildiremez veya telemetri yükleyemez.
 
-Şirket içinde barındırılan ağ geçidi, "başarısız statik" olarak tasarlanmıştır ve Azure ile geçici bağlantı kaybını da sürdürabilir. Yerel yapılandırma yedeklemesi açık olarak veya olmadan dağıtılabilir. Önceki durumda, şirket içinde barındırılan ağ geçitleri düzenli olarak bir yapılandırmanın yedek kopyasını kapsayıcıya veya Pod 'a bağlı kalıcı bir birime kaydeder.
+Kendi kendine barındırılan ağ geçidi "statik arıza" için tasarlanmıştır ve Azure'a geçici bağlantı kaybı yaşayabilir. Yerel yapılandırma yedeklemesi açık olsun veya açık olmadan dağıtılabilir. Eski durumda, kendi kendine barındırılan ağ geçitleri, kapsayıcıya veya bölmeye bağlı kalıcı bir birimde yapılandırmanın yedek bir kopyasını düzenli olarak kaydeder.
 
-Yapılandırma Yedeklemesi devre dışı bırakıldığında ve Azure bağlantısı kesintiye uğradığında:
+Yapılandırma yedeklemesi kapatıldığında ve Azure bağlantısı kesildiğinde:
 
--   Çalıştıran şirket içinde barındırılan ağ geçitleri, yapılandırmanın bellek içi bir kopyasını kullanarak çalışmaya devam edecektir
--   Kendi kendine barındırılan ağ geçitleri başlatılamaz
+-   Çalışan kendi kendine barındırılan ağ geçitleri yapılandırmanın bellek içi bir kopyasını kullanarak çalışmaya devam eder
+-   Durdurulan kendi kendine barındırılan ağ geçitleri başlatılamaz
 
-Yapılandırma Yedeklemesi açık olduğunda ve Azure ile bağlantı kesildiğinde:
+Yapılandırma yedeklemesi açıklandığında ve Azure bağlantısı kesildiğinde:
 
--   Çalıştıran şirket içinde barındırılan ağ geçitleri, yapılandırmanın bellek içi bir kopyasını kullanarak çalışmaya devam edecektir
--   Kendi kendine barındırılan ağ geçitleri, yapılandırmanın yedek bir kopyasını kullanmaya başlayacak
+-   Çalışan kendi kendine barındırılan ağ geçitleri yapılandırmanın bellek içi bir kopyasını kullanarak çalışmaya devam eder
+-   Durdurulan kendi kendine barındırılan ağ geçitleri yapılandırmanın yedek kopyasını kullanmaya başlar
 
-Bağlantı geri yüklendiğinde, kesintiden etkilenen her bir şirket içinde barındırılan ağ geçidi, ilişkili API Management hizmetine otomatik olarak yeniden bağlanır ve ağ geçidi "çevrimdışı" iken gerçekleşen tüm yapılandırma güncelleştirmelerini indirir.
+Bağlantı geri yüklendiğinde, kesintiden etkilenen her kendi kendine barındırılan ağ geçidi ilişkili API Yönetimi hizmetiyle otomatik olarak yeniden bağlanır ve ağ geçidi "çevrimdışı" iken oluşan tüm yapılandırma güncelleştirmelerini karşıdan yükler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--   [Bu konuda ek arka plan için bir teknik incelemeyi okuyun](https://aka.ms/hybrid-and-multi-cloud-api-management)
--   [Şirket içinde barındırılan ağ geçidini Docker 'a dağıtma](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
--   [Kubernetes 'e şirket içinde barındırılan ağ geçidi dağıtma](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+-   [Bu konuda ek arka plan için bir teknik inceleme okuyun](https://aka.ms/hybrid-and-multi-cloud-api-management)
+-   [Docker'a kendi kendine barındırılan ağ geçidini dağıtın](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
+-   [Kubernetes'e kendi kendine barındırılan ağ geçidini dağıtın](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid güvenliğini ve kimlik doğrulaması
-description: Bu makalede, Event Grid kaynaklarınıza (Web kancası, abonelikler, özel konular) erişimin kimliklerinin nasıl doğrulanmasıyla ilgili farklı yollar açıklanmaktadır
+title: Azure Olay Izgara güvenliği ve kimlik doğrulaması
+description: Bu makalede, Olay Izgara kaynaklarınıza (WebHook, abonelikler, özel konular) erişimin kimlik doğrulaması yapmanın farklı yolları açıklanmaktadır.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -9,57 +9,57 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
 ms.openlocfilehash: 0b7c5b42ac6291c6687337ba8d6a9d35830b9bda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281021"
 ---
-# <a name="authenticating-access-to-event-grid-resources"></a>Event Grid kaynaklarına erişim izni doğrulanıyor
+# <a name="authenticating-access-to-event-grid-resources"></a>Olay Izgara kaynaklarına erişimin doğrulanması
 
-Azure Event Grid, kimlik doğrulaması üç tür vardır:
+Azure Olay Izgarası'nın üç tür kimlik doğrulaması vardır:
 
-* Web kancası olay teslimi
+* WebHook etkinlik teslimi
 * Olay abonelikleri
-* Özel Konu yayımlama
+* Özel konu yayımlama
 
-## <a name="webhook-event-delivery"></a>Web kancası olay teslimi
+## <a name="webhook-event-delivery"></a>WebHook Etkinliği teslimatı
 
-Web kancaları olayları Azure Event Grid'den almak için birçok yöntemlerinden biridir. Yeni bir olay hazır olduğunda, Event Grid hizmet istek gövdesinde olay ile yapılandırılmış uç noktasına bir HTTP isteği gönderir.
+Webhooks, Azure Olay Sgrid'den etkinlik almanın birçok yollarından biridir. Yeni bir olay hazır olduğunda, Olay Izgara hizmeti, istek gövdesindeki olayla birlikte yapılandırılan bitiş noktasına bir HTTP isteği verir.
 
-Web kancalarını destekleyen birçok diğer hizmetleri gibi Event Grid, olayları için bu endpoint göndermeye başlamadan sahipliğini Web kancası uç noktanızın kanıtlamak gerektirir. Bu gereksinim, uç noktanızı olaylarla taşmasını gelen kötü niyetli bir kullanıcı önler. Aşağıda listelenen üç Azure hizmetlerinden herhangi birinin kullandığınızda, Azure altyapısının bu doğrulama otomatik olarak işler:
+Webhooks destekleyen diğer birçok hizmet gibi, Olay Grid bu uç noktaya olayları teslim başlamadan önce Webhook bitiş noktası nın sahipliğini kanıtlamak için gerektirir. Bu gereksinim, kötü amaçlı bir kullanıcının bitiş noktanızı olaylarla doldurmasını önler. Aşağıda listelenen üç Azure hizmetinden herhangi birini kullandığınızda, Azure altyapısı bu doğrulamayı otomatik olarak işler:
 
-* [Event Grid Bağlayıcısı](https://docs.microsoft.com/connectors/azureeventgrid/) ile Azure Logic Apps
-* [Web kancası](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) aracılığıyla Azure Otomasyonu
-* [Event Grid tetikleyicisiyle](../azure-functions/functions-bindings-event-grid.md) Azure işlevleri
+* [Olay Izgara Bağlayıcısı](https://docs.microsoft.com/connectors/azureeventgrid/) ile Azure Mantık Uygulamaları
+* Webhook üzerinden Azure [Otomasyonu](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
+* [Olay Izgara Tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) ile Azure Fonksiyonları
 
-HTTP tetikleyicisi tabanlı Azure işlevi gibi başka türde bir uç noktasını kullanıyorsanız, Event Grid ile bir doğrulama anlaşması'na katılmak uç nokta kodunuzun gerekir. Event Grid aboneliği doğrulama iki şekilde destekler.
+HTTP tetikleyici tabanlı Azure işlevi gibi başka bir uç nokta türü kullanıyorsanız, bitiş noktası kodunuz Olay Grid ile doğrulama el sıkışmasına katılması gerekir. Olay Grid aboneliği doğrulamanın iki yolunu destekler.
 
-1. **Validationcode Handshake (programlı)** : uç noktanız için kaynak kodu denetederseniz bu yöntem önerilir. Olay aboneliği oluşturma sırasında Event Grid aboneliği doğrulama olayı uç noktanıza gönderir. Bu olayın şeması için başka bir Event Grid olayı benzerdir. Bu olayın veri bölümü bir `validationCode` özelliği içerir. Uygulamanızı doğrulama isteği için beklenen olay aboneliği ve doğrulama kodu Event grid'e yankılayan olduğunu doğrular. Bu anlaşma mekanizması tüm Event Grid sürümlerinde desteklenir.
+1. **ValidationCode el sıkışma (programlı)**: Bitiş noktanızın kaynak kodunu kontrol ediyorsanız, bu yöntem önerilir. Olay aboneliği oluşturuldurma sırasında, Olay Grid bitiş noktanıza bir abonelik doğrulama olayı gönderir. Bu olayın şeması diğer Olay Izgara olayına benzer. Bu olayın veri bölümü `validationCode` bir özellik içerir. Uygulamanız doğrulama isteğinin beklenen bir olay aboneliği için olduğunu doğrular ve doğrulama kodunu Olay Grid'ine yansıtır. Bu el sıkışma mekanizması tüm Event Grid sürümlerinde desteklenir.
 
-2. **Validationurl el sıkışma (el ile)** : belirli durumlarda, validationcode anlaşmasını uygulamak için uç noktanın kaynak koduna erişemezsiniz. Örneğin, üçüncü taraf bir hizmet kullanıyorsanız ( [Zapier](https://zapier.com) veya [ifttt](https://ifttt.com/)gibi), doğrulama koduyla program aracılığıyla yanıt veremez.
+2. **ValidationURL el sıkışma (manuel)**: Bazı durumlarda, Doğrulama Kodu el sıkışmauygulamak için bitiş noktasının kaynak koduna erişemezsiniz. Örneğin, bir üçüncü taraf hizmeti [(Zapier](https://zapier.com) veya [IFTTT](https://ifttt.com/)gibi) kullanıyorsanız, doğrulama koduyla programlı olarak yanıt veremezsiniz.
 
-   Event Grid, sürümü 2018-05-01-preview ile başlayarak, el ile doğrulama el sıkışması destekler. API sürümü 2018-05-01-Preview veya sonraki bir sürümünü kullanan bir SDK veya araçla bir olay aboneliği oluşturuyorsanız, Event Grid Abonelik doğrulama olayının veri bölümünde bir `validationUrl` özelliği gönderir. Anlaşma tamamlamak için bulma olay verileri ve el ile bu URL'yi bir GET isteği gönder. Bir REST istemcisi ya da web tarayıcınızı kullanabilirsiniz.
+   Sürüm 2018-05-01 önizleme ile başlayarak, Olay Grid manuel doğrulama el sıkışma destekler. API sürümü 2018-05-01 önizleme veya daha sonra kullanan bir SDK veya araçla bir `validationUrl` olay aboneliği oluşturuyorsanız, Olay Grid abonelik doğrulama olayının veri bölümünde bir özellik gönderir. El sıkışmayı tamamlamak için, olay verilerindeki URL'yi bulun ve el ile get isteği gönderin. Rest istemcisi veya web tarayıcınızı kullanabilirsiniz.
 
-   Belirtilen URL 5 dakika için geçerlidir. Bu süre boyunca, olay aboneliğinin sağlama durumu `AwaitingManualAction`. El ile doğrulamayı 5 dakika içinde tamamlamazsanız, sağlama durumu `Failed`olarak ayarlanır. Olay aboneliği el ile doğrulama başlatmadan önce yeniden oluşturmanız gerekir.
+   Sağlanan URL 5 dakika süreyle geçerlidir. Bu süre zarfında, olay aboneliğinin sağlama `AwaitingManualAction`durumu . Kılavuz doğrulamayı 5 dakika içinde tamamlamazsanız, sağlama durumu ' `Failed`ya ayarlanır. El kitabı doğrulamayı başlatmadan önce olay aboneliğini yeniden oluşturmanız gerekir.
 
-    Bu kimlik doğrulama mekanizması Ayrıca, el ile doğrulama moduna alınmadan önce doğrulama olayının GÖNDERISINI kabul ettiğini bilmesi için Web kancası uç noktasının 200 HTTP durum kodunu döndürmesini gerektirir. Diğer bir deyişle, uç nokta 200 döndürürse ancak programlı olarak bir doğrulama yanıtı geri dönmezse, mod el ile doğrulama moduna geçirilir. Doğrulama URL 'sinde 5 dakika içinde bir GET varsa, doğrulama el sıkışması başarılı olarak kabul edilir.
+    Bu kimlik doğrulama mekanizması, webhook bitiş noktasının 200'lük bir HTTP durum kodunu döndürmesini de gerektirir, böylece doğrulama olayı için POST'un el ile doğrulama moduna konulmadan önce kabul edildiğini bilir. Başka bir deyişle, bitiş noktası 200 döndürür ancak programlı bir doğrulama yanıtı geri dönmezse, mod el ile doğrulama moduna geçirilir. Doğrulama URL'sinde 5 dakika içinde GET varsa, doğrulama el sıkışması başarılı olarak kabul edilir.
 
 > [!NOTE]
-> Doğrulama için otomatik olarak imzalanan sertifikalar kullanılması desteklenmez. Bunun yerine bir sertifika yetkilisinden (CA) imzalı bir sertifika kullanın.
+> Doğrulama için kendi imzalı sertifikaların kullanılması desteklenmez. Bunun yerine bir sertifika yetkilisinden (CA) imzalı bir sertifika kullanın.
 
 ### <a name="validation-details"></a>Doğrulama ayrıntıları
 
-* Olay aboneliği oluşturma/güncelleştirme zaman Event Grid aboneliği doğrulama olayı hedef uç noktasına gönderir. 
-* Olayı bir üst bilgi değeri içeren "aeg olay türü: SubscriptionValidation".
-* Olay gövdesinde diğer Event Grid olaylarına aynı şemaya sahip.
-* Olayın eventType özelliği `Microsoft.EventGrid.SubscriptionValidationEvent`.
-* Olayın Data özelliği rastgele oluşturulmuş bir dizeye sahip bir `validationCode` özelliği içerir. Örneğin, "validationCode: acb13...".
-* Olay verileri, aboneliği el ile doğrulamak için URL ile birlikte bir `validationUrl` özelliği de içerir.
-* Dizi doğrulama olay içeriyor. Doğrulama kodu geri echo sonra gelen diğer olayları ayrı bir istek gönderilir.
-* EventGrid veri düzlemi SDK'ları abonelik doğrulama olay verileri ve abonelik doğrulama yanıt karşılık gelen sınıfları içerir.
+* Olay aboneliği oluşturma/güncelleştirme sırasında, Olay Izgarası hedef bitiş noktasına bir abonelik doğrulama olayı gönderir. 
+* Olay bir üstbilgi değeri "aeg-olay türü: Abonelik Geçersiz" içerir.
+* Olay gövdesi, diğer Olay Izgara olayları ile aynı şema sahiptir.
+* Olayın eventType özelliği . `Microsoft.EventGrid.SubscriptionValidationEvent`
+* Olayın veri özelliği rasgele `validationCode` oluşturulan dize ile bir özellik içerir. Örneğin, "doğrulamaKodu: acb13...".
+* Olay verileri, aboneliği `validationUrl` el ile doğrulamak için URL'si olan bir özellik de içerir.
+* Dizi yalnızca doğrulama olayını içerir. Doğrulama kodunu geri döndürdünen sonra diğer olaylar ayrı bir istekle gönderilir.
+* EventGrid DataPlane SDK'ların abonelik doğrulama olay verilerine ve abonelik doğrulama yanıtına karşılık gelen sınıflar vardır.
 
-Bir örnek SubscriptionValidationEvent aşağıdaki örnekte gösterilmiştir:
+Bir örnek SubscriptionValidationEvent aşağıdaki örnekte gösterilir:
 
 ```json
 [{
@@ -77,7 +77,7 @@ Bir örnek SubscriptionValidationEvent aşağıdaki örnekte gösterilmiştir:
 }]
 ```
 
-Uç nokta sahipliği kanıtlamak için geri validationResponse özelliğinde doğrulama kodu aşağıdaki örnekte gösterildiği gibi echo:
+Bitiş noktası sahipliğini kanıtlamak için, aşağıdaki örnekte gösterildiği gibi doğrulamaYanıtı özelliğindeki doğrulama kodunu geri döndürün:
 
 ```json
 {
@@ -85,63 +85,63 @@ Uç nokta sahipliği kanıtlamak için geri validationResponse özelliğinde do�
 }
 ```
 
-Bir HTTP 200 Tamam yanıt durum kodu döndürmelidir. Kabul edilen HTTP 202, geçerli bir Event Grid Abonelik doğrulama yanıtı olarak tanınmıyor. Http isteğinin 30 saniye içinde tamamlaması gerekir. İşlem 30 saniye içinde sonlanmazsa, işlem iptal edilir ve 5 saniye sonra yeniden denenecek. Tüm denemeler başarısız olursa, doğrulama el sıkışma hatası olarak kabul edilir.
+HTTP 200 Ok yanıt durum kodunu döndürmeniz gerekir. HTTP 202 Kabul geçerli bir Olay Grid abonelik doğrulama yanıtı olarak tanınmıyor. Http isteği 30 saniye içinde tamamlanmalıdır. İşlem 30 saniye içinde bitmezse, işlem iptal edilir ve 5 saniye sonra yeniden denenebilir. Tüm denemeler başarısız olursa, o zaman doğrulama el sıkışma hatası olarak kabul edilecektir.
 
-Veya doğrulama URL'si için bir GET isteği göndererek abonelik el ile doğrulayabilirsiniz. Olay aboneliği doğrulandı kadar bir bekleme durumunda kalır. Doğrulama URL 'Si 553 numaralı bağlantı noktasını kullanır. Güvenlik Duvarı kurallarınız bağlantı noktası 553 ' i engellerseniz, başarılı el ile el sıkışma için kuralların güncellenmesi gerekebilir.
+Veya doğrulama URL'sine get isteği göndererek aboneliği el ile doğrulayabilirsiniz. Olay aboneliği doğrulanına kadar bekleme durumunda kalır. Doğrulama Url'si 553 bağlantı noktasını kullanır. Güvenlik duvarı kurallarınız bağlantı noktası 553'ü engelliyorsa, başarılı el ile el sıkışma için kuralların güncellenmesi gerekebilir.
 
-Abonelik doğrulama anlaşmasını işleme bir örnek için bkz. bir [ C# örnek](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
+Abonelik doğrulama el sıkışmasını işleme örneği için [bir C# örneğine](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)bakın.
 
 ### <a name="checklist"></a>Denetim Listesi
 
-Olay aboneliği oluşturma sırasında, "belirtilen uç nokta https 'yi doğrulama denemesi:\//Your-Endpoint-Here hatasıyla birlikte bir hata mesajı görüyorsanız. Daha fazla ayrıntı için https:\//aka.ms/esvalidation "adresini ziyaret edin. Bu, doğrulama el sıkışmasının bir hata olduğunu gösterir. Bu hatayı gidermek için aşağıdaki durumlara doğrulayın:
+Olay aboneliği oluşturma sırasında, "Sağlanan bitiş noktası https doğrulama girişimi:\//bitiş noktası-burada başarısız oldu gibi bir hata iletisi görüyorsanız. Daha fazla bilgi için\/https: /aka.ms/esvalidation" adresini ziyaret edin, doğrulama el sıkışmasında bir hata olduğunu gösterir. Bu hatayı gidermek için aşağıdaki yönleri doğrulayın:
 
-* Hedef uç noktada çalışan uygulama kodunu kontrol ediyor musunuz? Örneğin, Azure işlevi bir HTTP tetikleyici tabanlı yazıyorsanız, değişiklik yapmak için uygulama koduna erişmeniz gerekiyor?
-* Uygulama koduna erişiminiz varsa, yukarıdaki örnekte gösterildiği gibi temel ValidationCode el sıkışması mekanizması uygulayın.
+* Hedef bitiş noktasında çalışan uygulama kodunu denetler misiniz? Örneğin, HTTP tetikleyici tabanlı Azure İşlevi yazıyorsanız, uygulamada değişiklik yapmak için uygulama koduna erişiminiz var mı?
+* Uygulama koduna erişiminiz varsa, yukarıdaki örnekte gösterildiği gibi Doğrulama Kodu tabanlı el sıkışma mekanizmasını uygulayın.
 
-* Uygulama kodu (örneğin, Web kancalarını destekleyen üçüncü taraf bir hizmet kullanıyorsanız) erişimi yoksa, el ile anlaşma mekanizması kullanabilirsiniz. Doğrulama olay validationUrl almak için 2018-05-01-Önizleme API sürümü veya üzeri (yükleme Event Grid Azure CLI uzantısı) kullandığınızdan emin olun. El ile doğrulama el sıkışmasını gerçekleştirmek için `validationUrl` özelliğinin değerini alın ve Web tarayıcınızda bu URL 'YI ziyaret edin. Doğrulama başarılı olursa, doğrulama başarılı olduğunu, web tarayıcınızda bir ileti görürsünüz. Olay aboneliğinin provisioningState "başarılı olduğunu" görürsünüz. 
+* Uygulama koduna erişiminiz yoksa (örneğin, web hooks'u destekleyen bir üçüncü taraf hizmeti kullanıyorsanız), manuel el sıkışma mekanizmasını kullanabilirsiniz. Doğrulama olayındaki doğrulamaUrl'sini almak için 2018-05-01 önizleme API sürümünü veya daha sonrasını (Olay Grid Azure CLI uzantısını yükleyin) kullandığınızdan emin olun. Manuel doğrulama el sıkışmasını tamamlamak için `validationUrl` özelliğin değerini alın ve web tarayıcınızdaki url'yi ziyaret edin. Doğrulama başarılı olursa, web tarayıcınızda doğrulamanın başarılı olduğuna dair bir ileti görmeniz gerekir. Olay aboneliğinin provisioningState'inin "Başarılı" olduğunu görürsünüz. 
 
-### <a name="event-delivery-security"></a>Olay teslimi güvenliği
+### <a name="event-delivery-security"></a>Olay teslim güvenliği
 
 #### <a name="azure-ad"></a>Azure AD
 
-Azure Active Directory kullanarak Web kancası uç noktanızı güvenli hale getirerek olayları, uç noktalarınıza yayımlamak üzere Event Grid kimlik doğrulaması ve yetkilendirmek için kullanabilirsiniz. Bir Azure Active Directory uygulaması oluşturmanız, Event Grid uygulamanızda bir rol ve hizmet ilkesi oluşturmanız ve olay aboneliğini Azure AD uygulamasını kullanacak şekilde yapılandırmanız gerekir. [AAD 'yi Event Grid ile yapılandırmayı öğrenin](secure-webhook-delivery.md).
+Olay Sgara'nın kimliğini doğrulamak ve olayları uç noktalarınızda yayımlamak için yetkilendirmek için Azure Active Directory'yi kullanarak webhook bitiş noktanızı güvenebilirsiniz. Bir Azure Etkin Dizin Uygulaması oluşturmanız, Etkinlik Ağıtını yetkilendirme uygulamanızda bir rol ve hizmet ilkesi oluşturmanız ve etkinlik aboneliğini Azure AD Uygulamasını kullanacak şekilde yapılandırmanız gerekir. [AAD'yi Olay Izgarasıyla nasıl yapılandırılamayı öğrenin.](secure-webhook-delivery.md)
 
 #### <a name="query-parameters"></a>Sorgu parametreleri
-Bir olay aboneliği oluştururken, Web kancası URL'si sorgu parametreleri ekleyerek, Web kancası uç noktası güvenli hale getirebilirsiniz. Bu sorgu parametrelerinden birini, [erişim belirteci](https://en.wikipedia.org/wiki/Access_token)gibi bir gizli dizi olacak şekilde ayarlayın. Web kancası olay geçerli izinleriyle Event Grid'den gelen tanımak için gizli anahtarı kullanabilirsiniz. Olay Kılavuzu her Web kancası olay teslimi bu sorgu parametreleri içerir.
+Olay Aboneliği oluştururken sorgu parametrelerini webhook URL'sine ekleyerek webhook bitiş noktanızı güvenebilirsiniz. Bu sorgu parametrelerinden birini [erişim belirteci](https://en.wikipedia.org/wiki/Access_token)gibi gizli olarak ayarlayın. Webhook, olayın geçerli izinlerle Olay Izgara'dan geldiğini tanımak için sırrı kullanabilir. Olay Grid webhook her olay teslim bu sorgu parametreleri içerecektir.
 
-Olay aboneliği düzenlenirken, Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)'de [--Include-Full-Endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) parametresi kullanılmadığı takdirde sorgu parametreleri gösterilmez veya döndürülmez.
+Olay Aboneliği'ni düzenlerken, Azure [CLI'de](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) [--dahil-tam bitiş noktası-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) parametresi kullanılmadığı sürece sorgu parametreleri görüntülenmez veya döndürülemez.
 
-Son olarak, Azure Event Grid yalnızca HTTPS Web kancası uç noktaları desteklediğini unutmayın.
+Son olarak, Azure Olay Izgara'nın yalnızca HTTPS webhook uç noktalarını desteklediğini unutmayın.
 
 ## <a name="event-subscription"></a>Olay aboneliği
 
-Bir olaya abone olmak için olay kaynağı ve işleyici erişimi olmasını kanıtlamaları gerekir. Bir Web kancası sahibi olduğunu doğrulayan ve önceki bölümde ele. Bir Web kancası (örneğin, bir olay hub'ı veya kuyruk depolama) olmayan bir olay işleyicisi kullanıyorsanız, bu kaynağa yazma erişimi gerekir. Bu izinleri denetimi, yetkisiz bir kullanıcı, kaynağınıza olayları göndermesini engeller.
+Bir etkinliğe abone olmak için, olay kaynağına ve işleyicisine erişiminiz olduğunu kanıtlamanız gerekir. Bir WebHook'a sahip olduğunuzu kanıtlayan bir önceki bölümde yer alıyordu. WebHook olmayan bir olay işleyicisi (olay hub'ı veya sıra depolama alanı gibi) kullanıyorsanız, bu kaynağa yazma erişimi ne gerekir. Bu izin denetimi, yetkisiz bir kullanıcının kaynağınıza olay göndermesini engeller.
 
-Olay kaynağı olan kaynakta **Microsoft. EventGrid/Eventabonelikleriniz/Write** izninizin olması gerekir. Kaynağın yeni bir abonelik kapsamda yazmakta olduğunuz çünkü bu iznine sahip olmanız gerekir. Gerekli kaynak sistem konusu ya da özel konuya abone göre farklılık gösterir. Bu bölümde iki türü de açıklanmaktadır.
+Etkinlik kaynağı olan kaynakta **Microsoft.EventGrid/EventSubscriptions/Write** iznine sahip olmalısınız. Kaynağın kapsamında yeni bir abonelik yazdığından bu izne ihtiyacınız var. Gerekli kaynak, bir sistem konusuna mı yoksa özel bir konuya mı abone olduğunuza bağlı olarak farklılık gösterir. Her iki tür de bu bölümde açıklanmıştır.
 
 ### <a name="system-topics-azure-service-publishers"></a>Sistem konuları (Azure hizmet yayımcılar)
 
-Sistem konuları için yeni bir olay aboneliği kapsamında olayın yayımlanması kaynak yazma izni gerekir. Kaynağın biçimi: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+Sistem konuları için, olayı yayımlama kaynağıkapsamında yeni bir olay aboneliği yazmak için izin almanız gerekir. Kaynağın biçimi:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Örneğin, **myacct**adlı bir depolama hesabındaki bir olaya abone olmak Için, Microsoft. Eventgrid/Eventaboneliklerin/Write iznine şunlar gerekir: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Örneğin, **myacct**adlı bir depolama hesabındaki bir etkinliğe abone olmak için Microsoft.EventGrid/EventSubscriptions/Write iznine ihtiyacınız vardır:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
-### <a name="custom-topics"></a>Özel konular
+### <a name="custom-topics"></a>Özel konu başlıkları
 
-Özel konu için yeni olay aboneliğinizi kapsamında olay Kılavuzu konusu yazma izni gerekir. Kaynağın biçimi: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+Özel konular için, olay ızgarası konusukapsamında yeni bir olay aboneliği yazmak için izin almanız gerekir. Kaynağın biçimi:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Örneğin, **MyTopic**adlı özel bir konuya abone olmak Için, Microsoft. Eventgrid/Eventaboneliklerin/Write iznine şunlar gerekir: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Örneğin, **mytopic**adlı özel bir konuya abone olmak için Microsoft.EventGrid/EventSubscriptions/Write iznine ihtiyacınız vardır:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
-## <a name="custom-topic-publishing"></a>Özel Konu yayımlama
+## <a name="custom-topic-publishing"></a>Özel konu yayımlama
 
-Özel konu, paylaşılan erişim imzası (SAS) veya anahtar kimlik doğrulaması kullanın. SAS öneririz, ancak anahtar kimlik doğrulaması basit bir programlama sağlar ve birçok mevcut Web kancası yayımcıları ile uyumludur. 
+Özel konular Paylaşılan Erişim İmzası (SAS) veya anahtar kimlik doğrulaması kullanır. SAS'ı öneririz, ancak anahtar kimlik doğrulaması basit programlama sağlar ve birçok varolan webhook yayımcısıyla uyumludur. 
 
-HTTP üst bilgisi kimlik doğrulaması değeri içerir. SAS için, üst bilgi değeri için **AEG-SAS-Token** ' ı kullanın. Anahtar kimlik doğrulaması için, üst bilgi değeri için **AEG-SAS-Key** kullanın.
+Http üstbilgisinde kimlik doğrulama değerini eklersiniz. SAS için, üstbilgi değeri için **aeg-sas-token** kullanın. Anahtar kimlik doğrulaması için üstbilgi değeri için **aeg-sas-key'i** kullanın.
 
 ### <a name="key-authentication"></a>Anahtar kimlik doğrulaması
 
-Anahtar kimlik doğrulaması, kimlik doğrulamasının en basit biçimidir. Şu biçimi kullanın: `aeg-sas-key: <your key>`
+Anahtar kimlik doğrulaması, kimlik doğrulamanın en basit biçimidir. Biçimi kullanın:`aeg-sas-key: <your key>`
 
-Örneğin, bir anahtar ile geçirin:
+Örneğin, bir anahtarı niçin geçersiniz:
 
 ```
 aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
@@ -149,19 +149,19 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 ### <a name="sas-tokens"></a>SAS belirteçleri
 
-Event Grid için SAS belirteci, kaynak, sona erme süresini ve imza içerir. SAS belirtecinin biçimi: `r={resource}&e={expiration}&s={signature}`.
+Olay Izgarası için SAS belirteçleri kaynak, bir son kullanma süresi ve imza içerir. SAS belirteci biçimi: `r={resource}&e={expiration}&s={signature}`.
 
-Kaynak için olayları gönderiyorsunuz olay Kılavuzu konusu yoludur. Örneğin, geçerli bir kaynak yolu: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+Kaynak, olayları gönderdiğiniz olay ızgarası konusunun yoludur. Örneğin, geçerli bir kaynak yolu:`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
-Bir anahtar, imza üret
+İmzayı bir anahtardan oluşturursunuz.
 
-Örneğin, geçerli bir **AEG-SAS-Token** değeri:
+Örneğin, geçerli bir **aeg-sas-belirteç** değeri:
 
 ```http
 aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
-Aşağıdaki örnek, Event Grid ile kullanmak için bir SAS belirteci oluşturur:
+Aşağıdaki örnek, Olay Grid'de kullanılmak üzere bir SAS belirteci oluşturur:
 
 ```cs
 static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
@@ -188,8 +188,8 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
-Event Grid hizmeti tarafından diske yazılan tüm olaylar veya veriler, bekleyen bir şekilde şifrelendiğinden emin olmak için Microsoft tarafından yönetilen bir anahtarla şifrelenir. Ayrıca, olayların veya verilerin saklanacağı en uzun süre, [Event Grid yeniden deneme ilkesiyle](delivery-and-retry.md)ilgili olarak 24 saat olur. Event Grid, 24 saat sonra tüm olayları veya verileri otomatik olarak siler veya olayın yaşam süresi (hangisi daha az) olur.
+Olay Izgara hizmeti tarafından diske yazılan tüm olaylar veya veriler, microsoft tarafından yönetilen bir anahtarla şifrelenir ve bu durum istirahatte şifrelenir. Ayrıca, olayların veya verilerin tutulduğu maksimum [süre, Olay Izgarayeniden deneme ilkesine](delivery-and-retry.md)bağlı olarak 24 saattir. Olay Grid, 24 saat sonra tüm olayları veya verileri veya hangisi daha azsa, etkinlik süresini otomatik olarak siler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Event Grid giriş için bkz. [Event Grid hakkında](overview.md)
+* Olay Izgarasına giriş için [Olay Izgarası Hakkında'ya](overview.md) bakın

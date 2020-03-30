@@ -1,29 +1,29 @@
 ---
 title: İlke atama yapısının ayrıntıları
-description: Değerlendirme için kaynaklarla ilke tanımlarını ve parametreleri ilişkilendirmek üzere Azure Ilkesi tarafından kullanılan ilke atama tanımını açıklar.
+description: İlke tanımlarını ve parametreleri değerlendirme kaynaklarıyla ilişkilendirmek için Azure İlkesi tarafından kullanılan ilke atama tanımını açıklar.
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265304"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
-İlke atamaları, hangi ilkelerin veya girişimlerin hangi kaynaklara atandığını tanımlamak için Azure Ilkesi tarafından kullanılır. İlke ataması, atama zamanında bu kaynak grubu için parametrelerin değerlerini belirleyebilir ve aynı kaynak özelliklerini, uyumluluk için farklı ihtiyaçlarla ele alan ilke tanımlarının yeniden kullanılmasını mümkün kılar.
+İlke atamaları, hangi kaynakların atandığını tanımlamak için Azure İlkesi tarafından kullanılır. İlke ataması, atama sırasında söz söz le o kaynak grubu için parametrelerin değerlerini belirleyerek, aynı kaynak özelliklerini farklı uyumluluk gereksinimlerine yönelik ilke tanımlarının yeniden kullanılmasını mümkün kılar.
 
-Bir ilke ataması oluşturmak için JSON kullanırsınız. İlke ataması için öğeleri içerir:
+Bir ilke ataması oluşturmak için JSON'u kullanırsınız. İlke ataması için aşağıdaki öğeleri içerir:
 
-- Görünen ad
+- görüntü adı
 - açıklama
 - meta veriler
-- zorlama modu
+- uygulama modu
 - ilke tanımı
 - parametreler
 
-Örneğin, aşağıdaki JSON, _Donotenzorlama_ modunda dinamik parametrelerle bir ilke atamasını göstermektedir:
+Örneğin, aşağıdaki JSON dinamik parametreleri ile _DoNotEnforce_ modunda bir ilke atama gösterir:
 
 ```json
 {
@@ -47,34 +47,34 @@ Bir ilke ataması oluşturmak için JSON kullanırsınız. İlke ataması için 
 }
 ```
 
-Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
+Tüm Azure İlkesi örnekleri [Azure İlkesi](../samples/index.md)örneklerindedir.
 
-## <a name="display-name-and-description"></a>Görünen ad ve açıklama
+## <a name="display-name-and-description"></a>Görüntü adı ve açıklama
 
-**DisplayName** ve **Description** kullanarak ilke atamasını tanımlayabilir ve belirli bir kaynak kümesiyle kullanımı için bağlam sağlayabilirsiniz. **DisplayName** , en fazla _128_ karakter uzunluğunda ve en fazla _512_ karakter uzunluğunda bir **Açıklama** içeriyor.
+İlke atamasını tanımlamak ve belirli kaynaklarla kullanımı için bağlam sağlamak için **displayName** ve **açıklama** kullanırsınız. **displayName** en fazla _128_ karakter uzunluğundadır ve en fazla _512_ karakter uzunluğunda açıklama **tanımlar.**
 
-## <a name="enforcement-mode"></a>Zorlama modu
+## <a name="enforcement-mode"></a>Uygulama Modu
 
-**Enforcementmode** özelliği, müşterilere ilke efektini başlatmadan veya [Azure etkinlik günlüğündeki](../../../azure-monitor/platform/platform-logs-overview.md)girişleri tetiklemeden mevcut kaynaklarda bir ilkenin sonucunu test etme yeteneği sağlar. Bu senaryo genellikle "What If" olarak adlandırılır ve güvenli dağıtım uygulamalarına hizalanır. **Enforcementmode** [devre dışı](./effects.md#disabled) etkilerden farklıdır, çünkü bu efekt kaynak değerlendirmesinin hiç oluşmasını önler.
+**enforcementMode** özelliği, müşterilere ilke efektini başlatmadan veya [Azure Etkinliği günlüğündeki](../../../azure-monitor/platform/platform-logs-overview.md)girişleri tetiklemeden bir ilkenin sonucunu varolan kaynaklar üzerinde sınama olanağı sağlar. Bu senaryo genellikle "Ne Olur" olarak adlandırılır ve güvenli dağıtım uygulamalarına hizalanır. **enforcementMode** [Devre Dışı bırakma](./effects.md#disabled) efektinden farklıdır, çünkü bu etki kaynak değerlendirmesinin gerçekleşmesini engeller.
 
 Bu özellik aşağıdaki değerlere sahiptir:
 
-|Mod |JSON değeri |Tür |El ile düzelt |Etkinlik günlüğü girişi |Açıklama |
+|Mod |JSON Değeri |Tür |El ile düzeltin |Etkinlik günlüğü girişi |Açıklama |
 |-|-|-|-|-|-|
-|Etkin |Varsayılan |string |Yes |Yes |İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
-|Devre dışı |Donotenzorlamalı |string |Yes |Hayır | İlke etkisi, kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
+|Etkin |Varsayılan |string |Evet |Evet |İlke efekti kaynak oluşturma veya güncelleştirme sırasında zorlanır. |
+|Devre dışı |DoNotEnforce |string |Evet |Hayır | İlke efekti kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
 
-İlke veya girişim tanımında **Enforcementmode** belirtilmemişse, _varsayılan_ değer kullanılır. **Enforcementmode** , _Donotenzorlamalı_olarak ayarlandığında bile, dağıtım [görevleri](../how-to/remediate-resources.md) [deployifnotexists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
+**EnforcementMode** bir ilke veya girişim tanımında belirtilmemişse, _Varsayılan_ değer kullanılır. [Düzeltme görevleri,](../how-to/remediate-resources.md) **enforcementMode** _DoNotEnforce_olarak ayarlansa [bile, deployIfNotExists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
 
-## <a name="policy-definition-id"></a>İlke tanımı KIMLIĞI
+## <a name="policy-definition-id"></a>İlke tanımı kimliği
 
-Bu alan, bir ilke tanımının ya da bir girişim tanımının tam yol adı olmalıdır.
-`policyDefinitionId` dize değil bir dizedir. Bunun yerine bir [girişim](./definition-structure.md#initiatives) kullanmak için birden çok ilke genellikle birlikte atanırsa, bu önerilir.
+Bu alan, bir ilke tanımının veya bir girişim tanımının tam yol adı olmalıdır.
+`policyDefinitionId`bir dizi değil, bir dizedir. Birden çok ilke genellikle birlikte atanmışsa, bunun yerine bir [girişim](./definition-structure.md#initiatives) kullanılması önerilir.
 
 ## <a name="parameters"></a>Parametreler
 
-İlke atamasının bu segmenti, [ilke tanımı veya girişim tanımında](./definition-structure.md#parameters)tanımlanan parametrelerin değerlerini sağlar.
-Bu tasarım, farklı kaynaklarla bir ilke veya girişim tanımını yeniden kullanmayı mümkün kılar, ancak farklı iş değerlerini veya sonuçlarını denetleyebilir.
+İlke atamasının bu [kesimi, ilke tanımında veya girişim tanımında](./definition-structure.md#parameters)tanımlanan parametrelerin değerlerini sağlar.
+Bu tasarım, bir ilke veya girişim tanımının farklı kaynaklarla yeniden kullanılmasını mümkün kılar, ancak farklı iş değerlerini veya sonuçlarını denetler.
 
 ```json
 "parameters": {
@@ -87,12 +87,12 @@ Bu tasarım, farklı kaynaklarla bir ilke veya girişim tanımını yeniden kull
 }
 ```
 
-Bu örnekte, daha önce ilke tanımında tanımlanan parametreler `prefix` ve `suffix`. Bu ilke ataması, `prefix` **Depta** ve `suffix` to **-LC**olarak ayarlanır. Aynı ilke tanımı farklı bir departman için farklı bir parametre kümesiyle yeniden kullanılabilir, ancak esneklik sağlarken ilke tanımlarının çoğaltılmasını ve karmaşıklığını azaltır.
+Bu örnekte, ilke tanımında daha `prefix` önce `suffix`tanımlanan parametreler ve . Bu özel ilke **ataması DeptA** ve `suffix` **-LC'ye**ayarlar. `prefix` Aynı ilke tanımı, esneklik sağlarken ilke tanımlarının çoğaltılmasını ve karmaşıklığını azaltarak, farklı bir departman için farklı bir parametre kümesiyle yeniden kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [İlke tanımı yapısı](./definition-structure.md)hakkında bilgi edinin.
-- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
-- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.
+- [İlkeleri programlı bir şekilde nasıl oluşturlayacağımı](../how-to/programmatically-create.md)anlayın.
+- Uyumluluk verilerini nasıl [alacağınızı](../how-to/get-compliance-data.md)öğrenin.
+- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteriz öğrenin.
+- [Azure yönetim gruplarıyla kaynaklarınızı düzenleyin](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu gözden geçirin.

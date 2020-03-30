@@ -1,7 +1,7 @@
 ---
-title: Işlem öykünücüsünde yerel olarak bir bulut hizmeti profili oluşturma | Microsoft Docs
+title: Bilgi İşlem Emülatör'de Yerel Olarak Bir Bulut Hizmetiprofilleme | Microsoft Dokümanlar
 services: cloud-services
-description: Visual Studio Profiler ile bulut hizmetlerindeki performans sorunlarını araştırın
+description: Visual Studio profil oluşturucusuyla bulut hizmetlerindeki performans sorunlarını araştırın
 documentationcenter: ''
 author: mikejo
 manager: jillfra
@@ -15,34 +15,34 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70094113"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio Profiler kullanarak Azure Işlem öykünücüsünde yerel olarak bir bulut hizmetinin performansını test etme
+# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio Profiler'ı Kullanarak Azure İşlem Emülatör'ünde Bulut Hizmetinin Performansını Yerel Olarak Test Etme
 Bulut hizmetlerinin performansını test etmek için çeşitli araçlar ve teknikler mevcuttur.
-Azure 'Da bir bulut hizmeti yayımladığınızda, Visual Studio 'Nun profil oluşturma verilerini toplamasını ve sonra [Azure uygulamasında profil oluşturma][1]bölümünde açıklandığı gibi yerel olarak çözümlemenizi sağlayabilirsiniz.
-Ayrıca, [Azure 'da performans sayaçlarını kullanma][2]bölümünde açıklandığı gibi çeşitli performans sayaçlarını izlemek için tanılamayı da kullanabilirsiniz.
-Ayrıca, Uygulamanızı buluta dağıtmadan önce işlem öykünücüsünde yerel olarak profili de isteyebilirsiniz.
+Bir bulut hizmetini Azure'da yayımladığınızda, Visual Studio'nun profil oluşturma verilerini toplamasını ve ardından [Azure Uygulamasını Profil Oluşturma'da][1]açıklandığı gibi yerel olarak analiz etmesini sağlayabilirsiniz.
+[Azure'da performans sayaçlarını kullanma'da][2]açıklandığı gibi, çeşitli performans sayaçlarını izlemek için tanılama yı da kullanabilirsiniz.
+Ayrıca, uygulamanızı buluta dağıtmadan önce işlem emülatöründe yerel olarak profilini çıkarmak isteyebilirsiniz.
 
-Bu makale, öykünücüde yer olarak uygulanabilen, profil oluşturma için CPU Örnekleme yöntemini kapsar. CPU örnekleme, profil oluşturmanın çok zorsız bir yöntemdir. Belirlenmiş bir örnekleme aralığı içinde profil oluşturucu, çağrı yığınının anlık görüntüsünü alır. Veriler bir süre içinde toplanır ve bir raporda gösterilir. Bu profil oluşturma yöntemi, CPU işinin büyük bir bölümünü yoğun şekilde yoğun bir uygulamada nerede yapıldığını belirtmek için eğilimi gösterir.  Bu, uygulamanızın en çok zaman harcaacağı "etkin yol" üzerine odaklanma fırsatı sağlar.
+Bu makale, emülatörde yerel olarak yapılabilecek cpu örnekleme profiloluşturma yöntemini kapsar. CPU örnekleme çok müdahaleci olmayan bir profil oluşturma yöntemidir. Belirli bir örnekleme aralığında, profil oluşturucu arama yığınının anlık görüntüsünü alır. Veriler belirli bir süre içinde toplanır ve bir raporda gösterilir. Bu profil oluşturma yöntemi, hesaplama açısından yoğun bir uygulamada CPU çalışmalarının çoğunun nerede yapıldığını gösterme eğilimindedir.  Bu, uygulamanızın en çok zaman harcadığı "sıcak yola" odaklanma fırsatı verir.
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1: Profil oluşturma için Visual Studio 'Yu yapılandırma
-İlk olarak, profil oluşturma sırasında yararlı olabilecek birkaç Visual Studio yapılandırma seçeneği vardır. Profil oluşturma raporlarının anlamlı olması için, uygulamanız için semboller (. pdb dosyaları) ve ayrıca sistem kitaplıkları için semboller gerekir. Kullanılabilir sembol sunucularına başvurduğunuzdan emin olmak isteyeceksiniz. Bunu yapmak için, Visual Studio 'daki **Araçlar** menüsünde **Seçenekler**' i ve ardından **hata ayıklama**ve **semboller**' i seçin. Microsoft symbol sunucularının **sembol dosyası (. pdb) konumları**altında listelendiğinden emin olun.  Ayrıca, ek sembol https://referencesource.microsoft.com/symbols dosyalarına sahip olabilecek başvuru de oluşturabilirsiniz.
+## <a name="1-configure-visual-studio-for-profiling"></a>1: Profil oluşturma için Visual Studio'yı yapılandırın
+İlk olarak, profil oluşturma da yararlı olabilecek birkaç Visual Studio yapılandırma seçeneği vardır. Profil oluşturma raporlarını anlamak için, uygulamanız için sembollere (.pdb dosyaları) ve sistem kitaplıkları için de sembollere ihtiyacınız vardır. Kullanılabilir sembol sunucularına başvuru yaptığınızdan emin olmak istersiniz. Bunu yapmak için, Visual Studio **Araçlar** menüsünde, **Seçenekler**seçin , sonra **Hata Ayıklama**seçin , sonra **Semboller**. Microsoft Symbol **Sunucuları'nın Simge dosyası (.pdb) konumları**altında listelenmiş olduğundan emin olun.  Ayrıca, ek https://referencesource.microsoft.com/symbolssembol dosyaları olabilir başvuru yapabilirsiniz.
 
 ![Sembol seçenekleri][4]
 
-İsterseniz, profil oluşturucunun oluşturduğu raporları Yalnızca kendi kodum ayarlayarak basitleştirebilirsiniz. Yalnızca kendi kodum etkinken, işlev çağrısı yığınları basitleştirilerek tamamen iç kitaplıklara çağrı yapılır ve .NET Framework raporlardan gizlenir. Üzerinde **Araçları** menüsünde seçin **seçenekleri**. Ardından **performans araçları** düğümünü genişletin ve **genel**' i seçin. **Profil Oluşturucu raporları için yalnızca kendi kodum etkinleştir**onay kutusunu seçin.
+İstenirse, Profiloluşturcun oluşturduğu raporları Yalnızca Kodum ayarlayarak basitleştirebilirsiniz. Just My Code etkinleştirildiğinde, işlev çağrı yığınları basitleştirildiğinde, çağrıların kitaplıklara tamamen dahili olması ve .NET Framework'ün raporlardan gizlenmesi sağlanır. **Araçlar** menüsünde **Seçenekler'i**seçin. Ardından **Performans Araçları** düğümlerini genişletin ve **Genel'i**seçin. **Profil oluşturucu raporları için Yalnızca Kodumu Etkinleştir için**onay kutusunu seçin.
 
-![Yalnızca kendi kodum seçenekleri][17]
+![Sadece Kod seçeneklerim][17]
 
-Bu yönergeleri mevcut bir projeyle veya yeni bir projeyle birlikte kullanabilirsiniz.  Aşağıda açıklanan teknikleri denemek için yeni bir proje oluşturursanız, bir C# **Azure bulut hizmeti** projesi seçin ve bir **Web rolü** ve bir **çalışan rolü**seçin.
+Bu yönergeleri varolan bir projede veya yeni bir projeyle kullanabilirsiniz.  Aşağıda açıklanan teknikleri denemek için yeni bir proje oluşturursanız, bir C# **Azure Bulut Hizmeti** projesi seçin ve bir Web **Rolü** ve **İşçi Rolü**seçin.
 
-![Azure bulut hizmeti proje rolleri][5]
+![Azure Bulut Hizmeti proje rolleri][5]
 
-Örneğin, projenize çok zaman alan ve bazı açık performans sorunları gösteren bazı kodlar ekleyin. Örneğin, aşağıdaki kodu bir çalışan rolü projesine ekleyin:
+Örneğin amaçlar için, projenize çok fazla zaman alan ve bazı belirgin performans sorunu gösteren bazı kodlar ekleyin. Örneğin, bir alt rol projesine aşağıdaki kodu ekleyin:
 
 ```csharp
 public class Concatenator
@@ -60,7 +60,7 @@ public class Concatenator
 }
 ```
 
-Çalışan rolünün RoleEntryPoint-Derived sınıfındaki RunAsync yönteminden bu kodu çağırın. (Zaman uyumlu olarak çalışan yöntemi hakkındaki uyarıyı yoksayın.)
+Bu kodu, alt rolün RoleEntryPoint türetilmiş sınıfındaki RunAsync yönteminden çağırın. (Eşzamanlı olarak çalışan yöntem le ilgili uyarıyı yoksayın.)
 
 ```csharp
 private async Task RunAsync(CancellationToken cancellationToken)
@@ -74,23 +74,23 @@ private async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Çözüm yapılandırması **yayın**olarak ayarlanmış şekilde, bulut hizmetinizi hata ayıklamadan (CTRL + F5) yerel olarak derleyin ve çalıştırın. Bu, uygulamayı yerel olarak çalıştırmak için tüm dosya ve klasörlerin oluşturulmasını sağlar ve tüm öykünücülerin başlatılmasını sağlar. Çalışan rolünüzün çalıştığını doğrulamak için görev çubuğundan Işlem öykünücüsü Kullanıcı arabirimini başlatın.
+Hata ayıklama (Ctrl+F5) olmadan bulut hizmetinizi yerel olarak oluşturun ve çalıştırın ve çözüm yapılandırması **Serbest Bırak'a**ayarlandı. Bu, uygulamanın yerel olarak çalıştırılması için tüm dosya ve klasörlerin oluşturulmasını ve tüm emülatörlerin başlatılmasını sağlar. Çalışan rolünüzün çalıştığını doğrulamak için görev çubuğundan İşlem Emülatör UI'sini başlatın.
 
-## <a name="2-attach-to-a-process"></a>2: Bir işleme iliştirme
-Visual Studio 2010 IDE 'den başlatarak uygulamanın profilini oluşturmak yerine, profil oluşturucuyu çalışan bir işleme bağlamanız gerekir. 
+## <a name="2-attach-to-a-process"></a>2: Bir işleme iliştirin
+Visual Studio 2010 IDE'den başlatarak uygulamanın profilini çıkarmak yerine, profil oluşturucuyu çalışan bir işleme eklemeniz gerekir. 
 
-Profil oluşturucuyu bir işleme iliştirmek için, **Çözümle** menüsünde **Profil Oluşturucu** ve **Ekle/ayır**' ı seçin.
+Profil oluşturucuyu bir işleme eklemek **için, Çözümle** menüsünde **Profiler'ı** seçin ve **Ekle/Ayır.**
 
-![Profil ekle seçeneği][6]
+![Profil seçeneği ekle][6]
 
-Bir çalışan rolü için WaWorkerHost. exe işlemini bulun.
+Bir işçi rolü için, WaWorkerHost.exe işlemini bulun.
 
-![WaWorkerHost işlemi][7]
+![WaWorkerHost süreci][7]
 
-Proje klasörünüz bir ağ sürücüsündeyse profil oluşturucu, profil oluşturma raporlarının kaydedileceği başka bir konum sağlamanızı ister.
+Proje klasörünüz bir ağ sürücüsündeyse, profil oluşturucu sizden profil oluşturma raporlarını kaydetmek için başka bir konum sağlamanızı ister.
 
- Ayrıca, WaIISHost. exe ' ye ekleyerek bir Web rolüne de iliştirebilirsiniz.
-Uygulamanızda birden çok çalışan rolü işlemi varsa, bunları ayırt etmek için Işlem işlemini kullanmanız gerekir. Işlem nesnesine erişerek ProcessId 'yi programlı bir şekilde sorgulayabilirsiniz. Örneğin, bu kodu bir roldeki RoleEntryPoint-Derived sınıfının Run yöntemine eklerseniz, hangi işlemin bağlanacağı hakkında bilgi edinmek için Işlem öykünücüsü Kullanıcı arabirimindeki günlüğe bakabilirsiniz.
+ Ayrıca WaIISHost.exe ekleyerek bir web rolü ekleyebilirsiniz.
+Uygulamanızda birden çok alt rol işlemi varsa, bunları ayırt etmek için işlem kimliğini kullanmanız gerekir. İşlem nesnesi erişerek işlem kimliğini programlı olarak sorgulayabilirsiniz. Örneğin, bu kodu role role RoleEntryPoint türetilmiş sınıfın Çalıştır yöntemine eklerseniz, hangi işleme bağlanacağınıbilmek için Compute Emulator UI'deki günlüklere bakabilirsiniz.
 
 ```csharp
 var process = System.Diagnostics.Process.GetCurrentProcess();
@@ -98,39 +98,39 @@ var message = String.Format("Process ID: {0}", process.Id);
 Trace.WriteLine(message, "Information");
 ```
 
-Günlüğü görüntülemek için, Işlem öykünücüsü Kullanıcı arabirimini başlatın.
+Günlüğü görüntülemek için İşlem Emülatör UI'sini başlatın.
 
-![Işlem öykünücüsü Kullanıcı arabirimini başlatma][8]
+![İşlem Emülatör UI'sini Başlat][8]
 
-Konsol penceresinin başlık çubuğuna tıklayarak, Işlem öykünücüsü Kullanıcı arabirimindeki çalışan rolü günlüğü konsol penceresini açın. İşlem KIMLIĞINI günlükte görebilirsiniz.
+Konsol penceresinin başlık çubuğuna tıklayarak İşlem Emülatör UI'deki alt rol günlüğü konsol penceresini açın. İşlem kimliğini günlükte görebilirsiniz.
 
-![İşlem KIMLIĞINI görüntüle][9]
+![İşlem kimliğini görüntüleme][9]
 
-Eklediğiniz bir tane, senaryonun yeniden oluşturulması için uygulamanızın kullanıcı arabirimindeki adımları gerçekleştirin (gerekirse).
+Eklediğiniz bir senaryoyu yeniden oluşturmak için uygulamanızın Kullanıcı Arabirimi'ndeki (gerekirse) adımları gerçekleştirin.
 
-Profil oluşturmayı durdurmak istediğinizde, **profil oluşturmayı durdur** bağlantısını seçin.
+Profil oluşturmayı durdurmak istediğinizde, **Profil Oluşturmayı Durdur** bağlantısını seçin.
 
-![Profil oluşturma seçeneğini durdur][10]
+![Profil Oluşturmayı Durdurma seçeneği][10]
 
 ## <a name="3-view-performance-reports"></a>3: Performans raporlarını görüntüleme
-Uygulamanız için performans raporu görüntülenir.
+Uygulamanızın performans raporu görüntülenir.
 
-Bu noktada, profil oluşturucu yürütmeyi sonlandırır, verileri bir. vsp dosyasına kaydeder ve bu verilerin analizini gösteren bir rapor görüntüler.
+Bu noktada, profil oluşturucu yürütmeyi durdurur, verileri bir .vsp dosyasına kaydeder ve bu verilerin çözümlemesi gösteren bir rapor görüntüler.
 
-![Profil Oluşturucu raporu][11]
+![Profil oluşturucu raporu][11]
 
-Etkin yolda String. wstrcpy görürseniz, görünümü yalnızca Kullanıcı kodunu gösterecek şekilde değiştirmek için Yalnızca kendi kodum ' a tıklayın.  String. Concat görürseniz, tüm kodu göster düğmesine basmayı deneyin.
+Hot Path'te String.wstrcpy'yi görürseniz, yalnızca kullanıcı kodunu göstermek için görünümü değiştirmek için Kodum'u değiştirin.  String.Concat'i görürseniz, Tüm Kodu Göster düğmesine basarak deneyin.
 
-Birleştirme yöntemi ve dize. Concat, yürütme süresinin büyük bir kısmını gerçekleştirerek.
+Concatenate yöntemini ve String.Concat'in yürütme süresinin büyük bir kısmını aldığını görmelisiniz.
 
-![Raporun Analizi][12]
+![Raporun analizi][12]
 
-Bu makaleye dize birleştirme kodu eklediyseniz, bunun için Görev Listesi bir uyarı görmeniz gerekir. Ayrıca, oluşturulan ve bırakılan dizelerin sayısından kaynaklanan aşırı miktarda çöp toplama işlemi olduğunu belirten bir uyarı da görebilirsiniz.
+Bu makalede dize concatenation kodunu eklediyseniz, bunun için Görev Listesi'nde bir uyarı görmeniz gerekir. Ayrıca, oluşturulan ve bertaraf edilen dizelerin sayısına bağlı olarak aşırı miktarda çöp toplama olduğuna dair bir uyarı da görebilirsiniz.
 
 ![Performans uyarıları][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4 Değişiklik yapın ve performansı karşılaştırın
-Ayrıca, bir kod değişikliğinden önceki ve sonraki performansı da karşılaştırabilirsiniz.  Çalışan işlemi durdurun ve dize birleştirme işlemini, StringBuilder 'ın kullanımıyla değiştirecek şekilde kodu düzenleyin:
+## <a name="4-make-changes-and-compare-performance"></a>4: Değişiklik yapın ve performansı karşılaştırın
+Kod değişikliğinden önceki ve sonraki performansı da karşılaştırabilirsiniz.  Çalışma işlemini durdurun ve string concatenation işlemini StringBuilder kullanımıyla değiştirmek için kodu düzenlediniz:
 
 ```csharp
 public static string Concatenate(int number)
@@ -145,26 +145,26 @@ public static string Concatenate(int number)
 }
 ```
 
-Başka bir performans çalıştırması yapın ve ardından performansı karşılaştırın. Performans Gezgini, çalıştırmalar aynı oturumdaydaysanız, her iki raporu da seçebilir, kısayol menüsünü açabilir ve **performans raporlarını karşılaştır**' ı seçebilirsiniz. Başka bir performans oturumunda bir çalıştırmaya göre karşılaştırmak istiyorsanız, **Çözümle** menüsünü açın ve **performans raporlarını karşılaştır**' ı seçin. Görüntülenen iletişim kutusunda her iki dosyayı da belirtin.
+Başka bir performans çalışması yapın ve ardından performansı karşılaştırın. Performans Gezgini'nde, çalıştırmalar aynı oturumdaysa, her iki raporu da seçebilir, kısayol menüsünü açabilir ve **Performans Raporlarını Karşılaştır'ı**seçebilirsiniz. Başka bir performans oturumundaki bir çalışmayla karşılaştırmak istiyorsanız, **Analiz menüsünü** açın ve **Performans Raporlarını Karşılaştır'ı**seçin. Görünen iletişim kutusunda her iki dosyayı belirtin.
 
-![Performans raporlarını karşılaştır seçeneği][15]
+![Performans raporları seçeneğini karşılaştırma][15]
 
-Raporlar iki çalıştırma arasındaki farkları vurgular.
+Raporlar, iki çalıştırma arasındaki farkları vurgular.
 
 ![Karşılaştırma raporu][16]
 
-Tebrikler! Profil Oluşturucu ile çalışmaya başlayın.
+Tebrikler! Profilciyle başladın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-* Yayın derlemesinin profilini oluşturmadan ve hata ayıklamadan başladığınızdan emin olun.
-* Profil Oluşturucu menüsünde Iliştirme/Ayır seçeneği etkinleştirilmemişse, performans sihirbazını çalıştırın.
-* Uygulamanızın durumunu görüntülemek için Işlem öykünücüsü Kullanıcı arabirimini kullanın. 
-* Öykünücüdeki uygulamaları başlatırken veya profil oluşturucuyu iliştirirken sorun yaşıyorsanız, işlem öykünücüsünü kapatın ve yeniden başlatın. Bu sorunu çözmezse, yeniden başlatmayı deneyin. Bu sorun, çalışan dağıtımları askıya almak ve kaldırmak için Işlem öykünücüsünü kullanırsanız ortaya çıkabilir.
-* Komut satırından profil oluşturma komutlarından birini, özellikle de genel ayarları kullandıysanız, VSPerfClrEnv/globaloff ' ın çağrıldığından ve VsPerfMon. exe ' nin kapatıldığından emin olun.
-* Örnekleme yapıldığında, "PRF0025: Veri toplanmadı, "bağlı olduğunuz işlemin CPU etkinliğine sahip olduğunu kontrol edin. Herhangi bir hesaplama çalışması yapmamayan uygulamalar, hiçbir örnekleme verisi üretmeyebilir.  Herhangi bir örnekleme yapılmadan önce işlemden çıkılması da mümkündür. Profil oluşturduğunuz bir rolün run yönteminin sonlanmadığından emin olun.
+* Bir Sürüm yapısının profilini oluşturduğunuzdan emin olun ve hata ayıklamadan başlayın.
+* Profiler menüsünde Ekle/Ayırma seçeneği etkin değilse, Performans Sihirbazı'nı çalıştırın.
+* Uygulamanızın durumunu görüntülemek için Bilgi İşlem Emülatör UI'sini kullanın. 
+* Emülatörde uygulamaları başlatmakta veya profil oluşturucuya takmakta sorun yaşıyorsanız, işlem emülatörü kapatın ve yeniden başlatın. Bu sorunu çözmezse, yeniden başlatmayı deneyin. Çalışan dağıtımları askıya almak ve kaldırmak için İşlem Emülatörü'nü kullanırsanız bu sorun oluşabilir.
+* Komut satırındaki profil oluşturma komutlarından herhangi birini, özellikle de genel ayarlardan herhangi birini kullandıysanız, VSPerfClrEnv /globaloff'un çağrıldığından ve VsPerfMon.exe'nin kapatıldığından emin olun.
+* Örnekleme yaparken "PRF0025: Veri toplanmadı" iletisini görüyorsanız, iliştirdiğiniz işlemin CPU etkinliği olup olmadığını denetleyin. Herhangi bir hesaplama işi yapmayan uygulamalar herhangi bir örnekleme verisi oluşturmayabilir.  Herhangi bir örnekleme yapmadan önce işlemin çıkmış olması da mümkündür. Profil oluşturma yaptığınız bir rolün Çalıştır yönteminin sonlandırmadığını denetleyin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Öykünücüdeki Azure ikililerini düzenleme işlemi Visual Studio Profiler 'da desteklenmez, ancak bellek ayırmayı test etmek istiyorsanız, profil oluştururken bu seçeneği belirleyebilirsiniz. Ayrıca, iş parçacıklarının, bir uygulamanın katmanları arasında etkileşim kurarken performans sorunlarını izlemenize yardımcı olan ve katman etkileşim profili oluşturma gibi iş parçacıklarından bağımsız olarak zaman harcamaları olup olmadığını belirlemenize yardımcı olan eşzamanlılık profili oluşturmayı da seçebilirsiniz. veri katmanı ve bir çalışan rolü arasındaki sıklıkla.  Uygulamanızın oluşturduğu veritabanı sorgularını görüntüleyebilir ve veritabanının kullanımını geliştirmek için profil oluşturma verilerini kullanın. Katman etkileşimi profili oluşturma hakkında daha fazla bilgi için bkz. [blog gönderisi Kılavuzu: Visual Studio Team System 2010][3]' de katman etkileşimi profil oluşturucuyu kullanma.
+Emülatördeki Azure ikililerini emülatöre bağlama, Visual Studio profil oluşturucusunda desteklenmez, ancak bellek ayırmayı test etmek istiyorsanız, profil oluşturma sırasında bu seçeneği seçebilirsiniz. Ayrıca, iş parçacıklarının kilitler için rekabet ederek zaman kaybı olup olmadığını belirlemenize yardımcı olan eşzamanlılık profil oluşturmayı veya bir uygulamakatmanları arasında etkileşim kurarken performans sorunlarını izlemenize yardımcı olan katman etkileşimprofiloluşturmayı da seçebilirsiniz, çoğu genellikle veri katmanı ve bir alt rol arasında.  Uygulamanızın oluşturduğu veritabanı sorgularını görüntüleyebilir ve veritabanı nı kullanımınızı geliştirmek için profil oluşturma verilerini kullanabilirsiniz. Katman etkileşimi profil oluşturma hakkında daha fazla bilgi [için, Visual Studio Team System 2010'da Seviye Etkileşim Profilleyicisini Kullanma: Blog][3]gönderisi Walkthrough'a bakın.
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
 [2]: https://msdn.microsoft.com/library/azure/hh411542.aspx

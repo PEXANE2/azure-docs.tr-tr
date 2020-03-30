@@ -1,72 +1,72 @@
 ---
-title: Kapsayıcılar için Azure İzleyicisi'nin genel bakış | Microsoft Docs
-description: Bu makalede, AKS kapsayıcı öngörüleri çözümüdür ve değer AKS kümeleri ve Azure Container Instances'da durumunu izleyerek sunar izleyen kapsayıcılar için Azure İzleyici açıklanır.
+title: Kapsayıcılar için Azure Monitör'e Genel Bakış | Microsoft Dokümanlar
+description: Bu makalede, AKS Kapsayıcı Öngörüleri çözümünü izleyen kapsayıcılar için Azure Monitor ve Azure'daki AKS kümelerinizin ve Kapsayıcı Örneklerinizin durumunu izleyerek sağladığı değeri açıklar.
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275236"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Kapsayıcılara genel bakış için Azure İzleyici
+# <a name="azure-monitor-for-containers-overview"></a>Kapsayıcılar için Azure İzleyici'ye genel bakış
 
-Kapsayıcılar için Azure Izleyici, ' ye dağıtılan kapsayıcı iş yüklerinin performansını izlemek için tasarlanmış bir özelliktir:
+Kapsayıcılar için Azure Monitör, aşağıdakiler için dağıtılan kapsayıcı iş yüklerinin performansını izlemek üzere tasarlanmış bir özelliktir:
 
-- [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) üzerinde barındırılan yönetilen Kubernetes kümeleri
-- [Aks altyapısı](https://github.com/Azure/aks-engine) kullanılarak Azure üzerinde barındırılan, kendi kendine yönetilen Kubernetes kümeleri
+- Azure [Kubernetes Hizmetinde (AKS)](../../aks/intro-kubernetes.md) barındırılan Yönetilen Kubernetes kümeleri
+- [AKS Engine](https://github.com/Azure/aks-engine) kullanarak Azure'da barındırılan kendi kendini yöneten Kubernetes kümeleri
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) veya şirket içinde barındırılan, kendi kendine yönetilen Kubernetes kümeleri
+- [Azure Yığını'nda](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) veya şirket içinde barındırılan kendi kendini yöneten Kubernetes kümeleri
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 
-Kapsayıcılar için Azure Izleyici, Linux ve Windows Server 2019 işletim sistemi çalıştıran kümeleri destekler. 
+Kapsayıcılar için Azure Monitor, Linux ve Windows Server 2019 işletim sistemini çalıştıran kümeleri destekler. 
 
-Özellikle birden çok uygulama ile ölçekli olarak bir üretim kümesi çalıştırırken, kapsayıcılarınızın izlenmesi kritik önem taşır.
+Kapsayıcılarınızı izlemek, özellikle birden çok uygulamayla ölçekte bir üretim kümesi çalıştırıyorsanız çok önemlidir.
 
-Kapsayıcılar için Azure İzleyici denetleyicileri, düğümleri ve Kubernetes ölçümler API aracılığıyla kullanılabilir olan kapsayıcıları bellekten toplanması ve işlemci ölçümleri performans görünürlük sağlar. Kapsayıcı günlükleri de toplanır.  Kubernetes kümelerinden izlemeyi etkinleştirdikten sonra, ölçümler ve Günlükler, Linux için Log Analytics aracısının kapsayıcılı bir sürümü aracılığıyla sizin için otomatik olarak toplanır. Ölçümler ölçüm deposuna yazılır ve günlük verileri [Log Analytics](../log-query/log-query-overview.md) çalışma alanıyla ilişkili Günlükler deposuna yazılır. 
+Kapsayıcılar için Azure Monitör, Ölçümler API'si aracılığıyla Kubernetes'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğü sağlar. Kapsayıcı günlükleri de toplanır.  Kubernetes kümelerinden izlemeyi etkinleştirdikten sonra, ölçümler ve günlükler, Linux için Log Analytics aracısının konteynerleştirilmiş bir sürümü aracılığıyla sizin için otomatik olarak toplanır. Ölçümler metrik deposuna yazılır ve günlük verileri [Log Analytics](../log-query/log-query-overview.md) çalışma alanınızla ilişkili günlük deposuna yazılır. 
 
-![Kapsayıcılar için Azure Izleyici mimarisi](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![Kapsayıcı mimarisi için Azure Monitör](./media/container-insights-overview/azmon-containers-architecture-01.png)
  
-## <a name="what-does-azure-monitor-for-containers-provide"></a>Kapsayıcıları sağlamak için Azure İzleyici yapar?
+## <a name="what-does-azure-monitor-for-containers-provide"></a>Kapsayıcılar için Azure Monitor ne sağlar?
 
-Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini kullanarak kapsamlı bir izleme deneyimi sağlar. Bu özellikler, Linux ve Windows Server 2019 işletim sistemi ve kapsayıcı iş yüklerini çalıştıran Kubernetes kümenizin performansını ve sistem durumunu anlamanıza olanak tanır. Kapsayıcılar için Azure Izleyici ile şunları yapabilirsiniz:
+Kapsayıcılar için Azure Monitör, Azure Monitor'un farklı özelliklerini kullanarak kapsamlı bir izleme deneyimi sunar. Bu özellikler, Linux ve Windows Server 2019 işletim sistemini çalıştıran Kubernetes kümenizin performansını ve sistem durumunu ve kapsayıcı iş yüklerini anlamanızı sağlar. Kapsayıcılar için Azure Monitor ile şunları yapabilirsiniz:
 
-* Düğüm ve bunların ortalama işlemci ve bellek kullanımı çalışan AKS kapsayıcı belirleyin. Bu bilgi, kaynak darboğazları belirlemenize yardımcı olabilir.
-* Kapsayıcı grupları ve Azure Container Instances'da barındırılan kapsayıcılarına işlemci ve bellek kullanımı belirleyin.  
-* Kapsayıcının bir denetleyicide veya Pod içinde nerede olduğunu belirler. Bu bilgi, denetleyicinin ya da pod'ın genel performansını görüntülemenize yardımcı olabilir. 
-* Pod destekleyen standart işlemlere ilgisiz, ana bilgisayarda çalışan iş yüklerini kaynak kullanımını gözden geçirin.
-* Ortalama ve en yoğun iş yükü altında kümeye davranışını anlayın. Bu bilgi, kapasite gereksinimlerini tanımlama ve kümenin karşılayabileceği en fazla yükü belirlemek yardımcı olabilir. 
-* Düğümleri veya kapsayıcılardaki CPU ve bellek kullanımı eşiklerinizi aştığında ya da altyapı ya da düğümler sistem durumu toplamakta olan kümede bir sistem durumu değişikliği gerçekleştiğinde sizi önceden bilgilendirmesi veya kaydetmek için uyarıları yapılandırın.
-* Özel uyarılar, panolar oluşturmak ve ayrıntılı analiz gerçekleştirmek için [sorguları](container-insights-log-search.md) kullanarak düğümlerden ve Kubernetes tarafından toplanan uygulama ve iş yükü ölçümlerini görüntülemek Için [Prometheus](https://prometheus.io/docs/introduction/overview/) ile tümleştirin.
-* Şirket içi ve [aks altyapısına Azure Stack üzerinde](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) [dağıtılan](https://github.com/Azure/aks-engine) kapsayıcı iş yüklerini izleyin.
-* [Azure Red Hat OpenShift 'e dağıtılan](../../openshift/intro-openshift.md)kapsayıcı iş yüklerini izleyin.
+* Düğüm de çalışan AKS kapsayıcıları ve bunların ortalama işlemci ve bellek kullanımını tanımlayın. Bu bilgi, kaynak darboğazlarını belirlemenize yardımcı olabilir.
+* Azure Kapsayıcı Örnekleri'nde barındırılan kapsayıcı gruplarının ve kapsayıcılarının işlemci ve bellek kullanımını tanımlayın.  
+* Kapsayıcının denetleyicide veya bölmede nerede bulunduğunu belirleyin. Bu bilgi, denetleyicinin veya bölmenin genel performansını görüntülemenize yardımcı olabilir. 
+* Bölmeyi destekleyen standart işlemlerle ilgisi olmayan ana bilgisayarda çalışan iş yüklerinin kaynak kullanımını gözden geçirin.
+* Kümenin ortalama ve en ağır yüklerin altında davranışını anlayın. Bu bilgi, kapasite gereksinimlerini belirlemenize ve kümenin sürdürebileceği maksimum yükü belirlemenize yardımcı olabilir. 
+* Düğümveya kapsayıcılarda CPU ve bellek kullanımı eşiklerinizi aştığında veya altyapı veya düğüm ler sistem durumu toplama kümesinde bir sistem durumu değişikliği gerçekleştiğinde uyarıları proaktif olarak bildirmek veya kaydetmek için uyarıları yapılandırın.
+* Özel uyarılar, panolar ve ayrıntılı analizler gerçekleştirmek için [sorguları](container-insights-log-search.md) kullanarak düğümlerden ve Kubernetes'lerden topladığı uygulama ve iş yükü ölçümlerini görüntülemek için [Prometheus](https://prometheus.io/docs/introduction/overview/) ile tümleştirin.
+* Şirket içinde [AKS Engine'e](https://github.com/Azure/aks-engine) ve [Azure Yığını'nda AKS Engine'e](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)dağıtılan konteyner iş yüklerini izleyin.
+* Azure Red [Hat OpenShift'e dağıtılan](../../openshift/intro-openshift.md)kapsayıcı iş yüklerini izleyin.
 
     >[!NOTE]
-    >Azure Red Hat OpenShift desteği şu anda genel önizlemede bir özelliktir.
+    >Azure Red Hat OpenShift desteği, şu anda genel önizlemede bir özelliktir.
     >
 
-Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan izlemedeki başlıca farklar şunlardır:
+Bir Windows Server kümesini bir Linux kümesiyle karşılaştırıldığında izlemedeki temel farklar şunlardır:
 
-- Bellek RSS ölçümü Windows düğüm ve kapsayıcıları için kullanılamaz.
+- Bellek RSS ölçümü Windows düğümü ve kapsayıcılar için kullanılamaz.
 - Disk depolama kapasitesi bilgileri Windows düğümleri için kullanılamaz.
 - Kapsayıcı günlükleri Windows düğümlerinde çalışan kapsayıcılar için kullanılamaz.
-- Canlı veriler (Önizleme) özelliği desteği, Windows kapsayıcı günlükleri dışında bulunur.
-- Docker ortamları değil yalnızca Pod ortamları izlenir.
-- Önizleme sürümü ile en fazla 30 Windows Server kapsayıcısı desteklenir. Bu sınırlama, Linux kapsayıcıları için geçerlidir. 
+- Canlı Veri (önizleme) özellik desteği, Windows kapsayıcı günlükleri dışında kullanılabilir.
+- Docker ortamları değil, yalnızca pod ortamları izlenir.
+- Önizleme sürümüyle en fazla 30 Windows Server kapsayıcısı desteklenir. Bu sınırlama Linux kapsayıcıları için geçerli değildir. 
 
-AKS kümenizi kapsayıcılar için Azure Izleyici ile izleme hakkında bilgi edinmenize yardımcı olmak için, aşağıdaki videoya göz atın.
+Kapsayıcılar için Azure Monitor ile AKS kümenizi izleme hakkında bilgi edinmenize yardımcı olmak için ara düzey derin dalış sağlayan aşağıdaki videoya göz atın.
 
 > [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
 
-## <a name="how-do-i-access-this-feature"></a>Bu özelliği nasıl erişim sağlanır?
+## <a name="how-do-i-access-this-feature"></a>Bu özelliğe nasıl erişebilirim?
 
-İki yolu, seçilen AKS kümesini Azure İzleyici ya da doğrudan kapsayıcılar için Azure İzleyici erişebilirsiniz. Azure Izleyici 'den, izlenen ve olmayan tüm kapsayıcılardan oluşan küresel bir perspektife sahipsiniz, bu, abonelikleriniz ve kaynak gruplarınız üzerinde arama ve filtreleme olanağı sağlar ve ardından Azure Izleyici 'de kapsayıcılar için Seçili kapsayıcı.  Aksi takdirde, özelliğe doğrudan, AKS sayfasından seçilen bir AKS kapsayıcısından erişebilirsiniz.  
+Kapsayıcılar için Azure Monitor'a Azure Monitor'dan veya doğrudan seçili AKS kümesinden iki şekilde erişebilirsiniz. Azure Monitor'dan, dağıtılan ve izlenen ve olmayan tüm kapsayıcılar hakkında küresel bir bakış açısına sahip siniz ve abonelikleriniz ve kaynak gruplarınızda arama ve filtre leme olanağı sağlar ve ardından seçili kapsayıcı.  Aksi takdirde, özelliğe doğrudan seçili bir AKS kapsayıcısından AKS sayfasından erişebilirsiniz.  
 
-![Kapsayıcılar için Azure İzleyici erişim yöntemlerine genel bakış](./media/container-insights-overview/azmon-containers-experience.png)
+![Kapsayıcılar için Azure Monitör'e erişim yöntemlerine genel bakış](./media/container-insights-overview/azmon-containers-experience.png)
 
-Yapılandırma, denetim ve kaynak kullanımını görüntülemek için AKS dışında çalışan Docker ve Windows kapsayıcı konaklarınızı izlemeye ve yönetmeye ilgileniyorsanız, bkz. [kapsayıcı izleme çözümü](../../azure-monitor/insights/containers.md).
+Yapılandırmayı, denetimi ve kaynak kullanımını görüntülemek için AKS dışında çalışan Docker ve Windows kapsayıcı ana bilgisayarlarınızı izlemek ve yönetmekle ilgileniyorsanız, [Kapsayıcı İzleme çözümüne](../../azure-monitor/insights/containers.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kubernetes kümenizi izlemeye başlamak için, izlemeyi etkinleştirmek üzere gereksinimleri ve kullanılabilir yöntemleri anlamak üzere [kapsayıcılar Için Azure Izleyicisini nasıl etkinleştireceğinizi](container-insights-onboard.md) gözden geçirin. 
+Kubernetes kümenizi izlemeye başlamak için, denetimi etkinleştirmek için gereksinimleri ve kullanılabilir yöntemleri anlamak [için kapsayıcılar için Azure Monitörünü nasıl etkinleştirin](container-insights-onboard.md) irdeleyin. 

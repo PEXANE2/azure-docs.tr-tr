@@ -1,62 +1,62 @@
 ---
 title: Azure Geçişi çoğaltma gereci
-description: Aracı tabanlı VMWare geçişi için Azure geçişi çoğaltma gereci hakkında bilgi edinin.
+description: Aracı tabanlı VMWare geçişi için Azure Geçiş çoğaltma cihazı hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245869"
 ---
-# <a name="replication-appliance"></a>Çoğaltma gereci
+# <a name="replication-appliance"></a>Çoğaltma cihazı
 
-Bu makalede, [Azure geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) tarafından kullanılan çoğaltma gereci açıklanmaktadır: VMware VM 'leri, fiziksel makineler ve özel/genel bulut VM 'lerini, aracı tabanlı geçiş kullanarak Azure 'a geçirme. 
+Bu [makalede, Aracı](migrate-services-overview.md#azure-migrate-server-migration-tool) tabanlı geçiş kullanarak VMware VM'leri, fiziksel makineleri ve özel/genel bulut VM'lerini Azure'a geçirerken Sunucu Geçişi aracı tarafından kullanılan çoğaltma cihazı açıklanmaktadır. 
 
 
 ## <a name="overview"></a>Genel Bakış
 
-VMware VM 'Leri veya fiziksel sunucuları için aracı tabanlı geçiş ayarladığınızda, çoğaltma gereci dağıtılır. VMware VM ya da fiziksel sunucu olarak tek bir şirket içi makine olarak dağıtılır. Çalışır:
+Çoğaltma cihazı, VMware VM'lerinin veya fiziksel sunucuların aracı tabanlı geçişini ayarladığınızda dağıtılır. VMware VM veya fiziksel sunucu olarak tek bir şirket içi makine olarak dağıtılır. Çalışır:
 
-- **Çoğaltma**gereci: çoğaltma gereci iletişimleri koordine eder ve Azure 'a çoğaltılan şirket Içi VMware VM 'leri ve fiziksel sunucular için veri çoğaltmasını yönetir.
-- **İşlem sunucusu**: çoğaltma gereci üzerinde varsayılan olarak yüklenen işlem sunucusu ve şunları yapar:
-    - **Çoğaltma ağ geçidi**: çoğaltma ağ geçidi olarak davranır. Çoğaltma için etkinleştirilen makinelerden çoğaltma verilerini alır. Önbelleğe alma, sıkıştırma ve şifreleme ile çoğaltma verilerini iyileştirir ve Azure 'a gönderir.
-    - **Aracı yükleyicisi**: Mobility hizmetinin anında yüklenmesini gerçekleştirir. Bu hizmet, geçiş için çoğaltmak istediğiniz her şirket içi makinede yüklü ve çalışır olmalıdır.
+- Çoğaltma cihazı : Çoğaltma **cihazı,** şirket içi VMware VM'ler ve Azure'a çoğalan fiziksel sunucular için iletişimi koordine eder ve veri çoğaltmaişlemini yönetir.
+- **İşlem sunucusu**: Çoğaltma cihazına varsayılan olarak yüklenen ve aşağıdakileri yapan işlem sunucusu:
+    - **Çoğaltma ağ geçidi**: Çoğaltma ağ geçidi görevi görür. Çoğaltma için etkinleştirilen makinelerden çoğaltma verileri alır. Önbelleğe alma, sıkıştırma ve şifreleme ile çoğaltma verilerini optimize eder ve Azure'a gönderir.
+    - **Aracı yükleyici**: Mobilite Hizmetinin itme yüklemesini gerçekleştirir. Bu hizmet, geçiş için çoğaltmak istediğiniz her şirket içi makineye yüklenmeli ve çalıştırılmalıdır.
 
-## <a name="appliance-deployment"></a>Gereç dağıtımı
+## <a name="appliance-deployment"></a>Cihaz dağıtımı
 
-**Kullanıldığı yer** | **Ayrıntılar**
+**Kullanıldığı yerler** | **Şey**
 --- |  ---
-VMware VM Aracısı tabanlı geçiş | OVA şablonunu Azure geçiş hub 'ından indirir ve gereç sanal makinesini oluşturmak için vCenter Server içeri aktarabilirsiniz.
-Fiziksel makine Aracısı tabanlı geçiş | Bir VMware altyapınız yoksa veya bir OVA şablonu kullanarak bir VMware VM 'si oluşturmazsanız, Azure geçiş hub 'ından bir yazılım yükleyicisi indirir ve gereci makinesini kurmak için çalıştırırsınız.
+VMware VM aracı tabanlı geçiş | Azure Geçiş hub'ından OVA şablonu indirin ve vM cihazını oluşturmak için vCenter Server'a içe aktarın.
+Fiziksel makine aracısı tabanlı geçiş | VMware altyapınız yoksa veya OVA şablonu kullanarak bir VMware VM oluşturamıyorsanız, Azure Geçiş hub'ından bir yazılım yükleyicisi indirip beyaz eşya makinesini kurmak için çalıştırın.
 
-## <a name="appliance-requirements"></a>Gereç gereksinimleri
+## <a name="appliance-requirements"></a>Cihaz gereksinimleri
 
-Azure geçişi hub 'ında belirtilen OVA şablonunu kullanarak çoğaltma gerecini ayarladığınızda, Gereç Windows Server 2016 ' i çalıştırır ve destek gereksinimlerine uyar. Çoğaltma gerecini fiziksel bir sunucuda el ile ayarlarsanız, gereksinimlerle uyumlu olduğundan emin olun.
+Çoğaltma cihazını Azure Geçiş hub'ında sağlanan OVA şablonu kullanılarak ayarladığınızda, cihaz Windows Server 2016'yı çalıştırıyor ve destek gereksinimlerine uyuyor. Çoğaltma cihazını fiziksel bir sunucuda el ile ayarlarsanız, gereksinimlerine uyduğundan emin olun.
 
 **Bileşen** | **Gereksinim**
 --- | ---
- | **VMware VM gereci**
-PowerCLI | Çoğaltma gereci bir VMware VM üzerinde çalışıyorsa [PowerCLI sürüm 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 'nin yüklenmesi gerekir.
-NIC türü | VMXNET3 (gereç bir VMware sanal makinesi ise)
+ | **VMware VM cihazı**
+PowerCLI | Çoğaltma cihazı Bir VMware VM üzerinde çalışıyorsa [PowerCLI sürüm 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) takılmalıdır.
+NIC türü | VMXNET3 (cihaz vmware VM ise)
  | **Donanım ayarları**
 CPU çekirdekleri | 8
 RAM | 16 GB
-Disk sayısı | Üç: işletim sistemi diski, işlem sunucusu önbellek diski ve bekletme sürücüsü.
+Disk sayısı | Üç: Işletim sistemi diski, işlem sunucusu önbellek diski ve bekletme sürücüsü.
 Boş disk alanı (önbellek) | 600 GB
 Boş disk alanı (bekletme diski) | 600 GB
 **Yazılım ayarları** |
 İşletim sistemi | Windows Server 2016 veya Windows Server 2012 R2
-Lisans | Gereç, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla gelir.<br/><br/> Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
+Lisans | Cihaz, 180 gün boyunca geçerli olan Bir Windows Server 2016 değerlendirme lisansıile birlikte gelir.<br/><br/> Değerlendirme süresi sona ermek üzereyse, yeni bir cihaz indirip dağıtmanızı veya cihaz VM'nin işletim sistemi lisansını etkinleştirmenizi öneririz.
 İşletim sistemi yerel ayarı | İngilizce (en-us)
-TLS | TLS 1,2 etkinleştirilmelidir.
-.NET Framework | .NET Framework 4,6 veya üzeri bir sürüm makinede yüklü olmalıdır (güçlü şifreleme etkin.
-MySQL | MySQL 'in gereç üzerinde yüklü olması gerekir.<br/> MySQL yüklenmelidir. El ile yükleyebilirsiniz veya Site Recovery gereç dağıtımı sırasında yükleyebilir.
-Diğer uygulamalar | Çoğaltma gereci üzerinde başka uygulamalar çalıştırmayın.
-Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V
-Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Önceden var olan varsayılan Web sitesi yok <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir
+TLS | TLS 1.2 etkinleştirilmelidir.
+.NET Framework | .NET Framework 4.6 veya daha sonra (güçlü şifreleme etkin) makineye monte edilmelidir.
+MySQL | MySQL cihaza monte edilmelidir.<br/> MySQL yüklü olmalıdır. El ile yükleyebilirsiniz veya Site Kurtarma cihaz dağıtımı sırasında yükleyebilir.
+Diğer uygulamalar | Çoğaltma cihazında başka uygulamalar çalıştırmayın.
+Windows Server rolleri | Bu rolleri etkinleştirme: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V
+Grup ilkeleri | Bu grup ilkelerini etkinleştirme: <br> - Komut istemine erişimi engelleyin. <br> - Kayıt defteri düzenleme araçlarına erişimi engelleyin. <br> - Dosya ekleri için güven mantığı. <br> - Komut Dosyası Yürütme'yi açın. <br> [Daha fazlasını öğrenin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | - Önceden varolan varsayılan web sitesi yok <br> - 443 nolu bağlantı noktası üzerinde önceden var olan web sitesi/uygulama dinleme <br>- [Anonim kimlik doğrulamayı etkinleştirme](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştirin
 **Ağ ayarları** |
 IP adresi türü | Statik
 Bağlantı Noktaları | 443 (Denetim kanalı düzenleme)<br>9443 (Veri aktarımı)
@@ -64,63 +64,63 @@ NIC türü | VMXNET3
 
 ## <a name="mysql-installation"></a>MySQL yüklemesi 
 
-MySQL, çoğaltma gereç makinesinde yüklü olmalıdır. Bu yöntemlerin biri kullanılarak yüklenebilir.
+MySQL çoğaltma cihazı makinesine takılmalıdır. Bu yöntemlerden biri kullanılarak yüklenebilir.
 
-**Yöntem** | **Ayrıntılar**
+**Yöntem** | **Şey**
 --- | ---
-El ile indir ve yükle | MySQL uygulamasını indirin & C:\Temp\ASRSetup klasörüne yerleştirip el ile yükleyin.<br/> Gereç 'yi ayarlarken, MySQL zaten yüklü olarak gösterilir.
-Çevrimiçi indirme olmadan | MySQL Yükleyici uygulamasını C:\temp\asrsetupfolder klasörüne yerleştirin. Gereci yüklerken ve MySQL 'i indirip yüklemek için tıkladığınızda, kurulum eklediğiniz yükleyiciyi kullanır.
-Azure geçişi 'ne indirme ve yükleme | Gereci yüklerken ve MySQL istendiğinde, **indir ve yükle**' yi seçin.
+El ile indirin ve kurun | MySQL uygulamasını & C:\Temp\ASRSetup klasörüne yerleştirin, ardından el ile yükleyin.<br/> Cihazı kurduğunuzda MySQL zaten yüklü olarak gösterecektir.
+Online indirme olmadan | MySQL yükleyici uygulamasını C:\Temp\ASRSetup klasörüne yerleştirin. Cihazı yüklediğinizde ve MySQL'i indirmek ve yüklemek için tıklattığınızda, kurulum eklediğiniz yükleyiciyi kullanır.
+Azure Geçiş'te karşıdan yükleme ve yükleme | Cihazı yüklediğinizde ve MySQL için istendiğinde **İndir ve yükle'yi**seçin.
 
 ## <a name="url-access"></a>URL erişimi
 
-Çoğaltma gerecinin bu URL 'Lere erişmesi gerekir.
+Çoğaltma cihazının bu URL'lere erişmesi gerekiyor.
 
-**URL** | **Ayrıntılar**
+**URL** | **Şey**
 --- | ---
-\*.backup.windowsazure.com | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
-\*.store.core.windows.net | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
+\*.backup.windowsazure.com | Çoğaltılan veri aktarımı ve koordinasyonu için kullanılır
+\*.store.core.windows.net | Çoğaltılan veri aktarımı ve koordinasyonu için kullanılır
 \*.blob.core.windows.net | Çoğaltılan verileri depolayan depolama hesabına erişmek için kullanılır
-\*.hypervrecoverymanager.windowsazure.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır
-https:\//management.azure.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır
-*.services.visualstudio.com | Telemetri amaçları için kullanılır (isteğe bağlıdır)
+\*.hypervrecoverymanager.windowsazure.com | Çoğaltma yönetimi işlemleri ve koordinasyonu için kullanılır
+https:\//management.azure.com | Çoğaltma yönetimi işlemleri ve koordinasyonu için kullanılır
+*.services.visualstudio.com | Telemetri amaçlı kullanılır (İsteğe bağlıdır)
 time.nist.gov | Sistem ile genel saat arasındaki saat eşitlemesini denetlemek için kullanılır.
 time.windows.com | Sistem ile genel saat arasındaki saat eşitlemesini denetlemek için kullanılır.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF kurulumunun bu URL 'lere erişmesi gerekiyor. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL indirme işleminin tamamlanabilmesi için
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF kurulumunun bu URL'lere erişmesi gerekir. Azure Active Directory tarafından erişim denetimi ve kimlik yönetimi için kullanılırlar
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL download'u tamamlamak için
 
 ## <a name="port-access"></a>Bağlantı noktası erişimi
 
-**Aygıtların** | **Bağlanma**
+**Cihaz** | **Bağlantı**
 --- | ---
-VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
-Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
-İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, bu verileri iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.<br/> Varsayılan olarak, işlem sunucusu çoğaltma gereci üzerinde çalışır.
+VM'ler | VM'lerde çalışan Mobilite hizmeti, çoğaltma yönetimi için https 443 gelen bağlantı noktasında ki şirket içi çoğaltma cihazıyla (yapılandırma sunucusu) iletişim kurar.<br/><br/> VM'ler çoğaltma verilerini HTTPS 9443 bağlantı noktasındaki işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan) gönderir. Bu bağlantı noktası değiştirilebilir.
+Çoğaltma cihazı | Çoğaltma cihazı, https 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı yönetir.
+İşlem sunucusu | İşlem sunucusu çoğaltma verilerini alır, en iyi duruma getirir ve şifreler ve 443 bağlantı noktası üzerinden Azure depolamasına gönderir.<br/> Varsayılan olarak işlem sunucusu çoğaltma cihazı üzerinde çalışır.
 
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 
-1. Bir sanal makine için çoğaltmayı etkinleştirdiğinizde, Azure Storage 'a ilk çoğaltma, belirtilen çoğaltma ilkesi kullanılarak başlar. 
-2. Trafik, internet üzerinden Azure depolama genel uç noktalarına çoğaltılır. Şirket içi siteden Azure 'a siteden siteye sanal özel ağ (VPN) üzerinden trafik çoğaltma desteklenmez.
-3. İlk çoğaltma tamamlandıktan sonra Delta çoğaltma başlar. Bir makine için izlenen değişiklikler günlüğe kaydedilir.
-4. İletişim şu şekilde gerçekleşir:
-    - VM 'Ler, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında çoğaltma gereci ile iletişim kurar.
-    - Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.
-    - VM 'Ler, çoğaltma verilerini işlem sunucusuna (çoğaltma gereci üzerinde çalışır), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
-    - İşlem sunucusu çoğaltma verilerini alır, bunları iyileştirir ve şifreler ve 443 giden bağlantı noktası üzerinden Azure depolama 'ya gönderir.
-5. Çoğaltma verileri günlüğü, ilk olarak Azure 'da bir önbellek depolama hesabında yer açar. Bu Günlükler işlenir ve veriler bir Azure yönetilen diskinde depolanır.
+1. Bir VM için çoğaltmayı etkinleştirdiğinizde, belirtilen çoğaltma ilkesini kullanarak Azure depolamasına ilk çoğaltma başlar. 
+2. Trafik, Internet üzerinden Azure depolama ortak uç noktalarına çoğalır. Şirket içi bir siteden Azure'a siteden siteye sanal özel ağ (VPN) üzerinden trafiği çoğaltmak desteklenmez.
+3. İlk çoğaltma bittikten sonra, delta çoğaltma başlar. Bir makine için izlenen değişiklikler günlüğe kaydedilir.
+4. İletişim aşağıdaki gibi olur:
+    - VM'ler, çoğaltma yönetimi için HTTPS 443'ün gelen bağlantı noktasındaki çoğaltma cihazıyla iletişim kurar.
+    - Çoğaltma cihazı, https 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı yönetir.
+    - VM'ler çoğaltma verilerini HTTPS 9443 gelen bağlantı noktasındaki işlem sunucusuna (çoğaltma cihazında çalışan) gönderir. Bu bağlantı noktası değiştirilebilir.
+    - İşlem sunucusu çoğaltma verilerini alır, en iyi duruma getirir ve şifreler ve 443 bağlantı noktası üzerinden Azure depolamasına gönderir.
+5. Çoğaltma verileri ilk olarak Azure'daki bir önbellek depolama hesabında yer açar. Bu günlükler işlenir ve veriler Azure yönetilen bir diskte depolanır.
 
 ![Mimari](./media/migrate-replication-appliance/architecture.png)
 
-## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
+## <a name="appliance-upgrades"></a>Cihaz yükseltmeleri
 
-Gereç, Azure geçiş hub 'ından el ile yükseltilir. En son sürümü her zaman çalıştırmanızı öneririz.
+Cihaz Azure Geçiş merkezinden el ile yükseltilir. Her zaman en son sürümü çalıştırmanızı öneririz.
 
-1. Azure geçişi > sunucuları > Azure geçişi: Sunucu değerlendirmesi, altyapı sunucuları, **yapılandırma sunucuları**' na tıklayın.
-2. **Yapılandırma sunucularında**, çoğaltma gerecinin yeni bir sürümü kullanılabilir olduğunda **Aracı sürümünde** bir bağlantı görüntülenir. 
-3. Yükleyiciyi, çoğaltma gereci makinesine indirin ve yükseltmeyi yükleyin. Yükleyici, Gereç üzerinde çalışan geçerli sürümü algılar.
+1. Azure Geçiş > > Sunucularında Azure Geçiş: Sunucu Değerlendirmesi, Altyapı sunucuları, **Yapılandırma sunucularını**tıklatın.
+2. **Yapılandırma sunucularında,** çoğaltma cihazının yeni bir sürümü kullanılabilir olduğunda **Agent Version'da** bir bağlantı görüntülenir. 
+3. Yükleyiciyi çoğaltma cihazı makinesine indirin ve yükseltmeyi yükleyin. Yükleyici, cihazın üzerinde çalışan sürüm akımını algılar.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Aracı tabanlı VMware VM geçişi için çoğaltma gerecini ayarlamayı [öğrenin](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) .
-- Fiziksel sunucular için çoğaltma gerecini ayarlamayı [öğrenin](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) .
+- Aracı tabanlı VMware VM geçişi için çoğaltma cihazını nasıl ayarlayatıyarı [öğrenin.](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance)
+- Fiziksel sunucular için çoğaltma cihazını nasıl ayarlayacağınızı [öğrenin.](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance)

@@ -1,7 +1,7 @@
 ---
-title: 'Satır ekleme: modül başvurusu'
+title: 'Satır Ekle: Modül Başvurusu'
 titleSuffix: Azure Machine Learning
-description: İki veri kümesini birleştirmek için Azure Machine Learning satır ekle modülünü nasıl kullanacağınızı öğrenin.
+description: İki veri kümesini biraraya getirmek için Azure Machine Learning'de Satır Ekle modüllerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,37 +9,37 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918504"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477740"
 ---
-# <a name="add-rows-module"></a>Satır ekleme modülü
+# <a name="add-rows-module"></a>Satır Ekle modülü
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-İki veri kümesini birleştirmek için bu modülü kullanın. Birleştirme sırasında, ikinci veri kümesinin satırları ilk veri kümesinin sonuna eklenir.  
+İki veri kümesini birleştirmek için bu modülü kullanın. Concatenation olarak, ikinci veri kümesinin satırları ilk veri kümesinin sonuna eklenir.  
   
-Satırları birleştirme, aşağıdaki gibi senaryolarda faydalıdır:  
+Satırların birleşmesi aşağıdaki gibi senaryolarda yararlıdır:  
   
-+ Bir dizi değerlendirme istatistiği oluşturmuş ve bunları daha kolay raporlama için tek bir tabloda birleştirmek istiyorsunuz.  
++ Bir dizi değerlendirme istatistikleri oluşturdunuz ve bunları daha kolay raporlama için tek bir tabloda birleştirmek istiyorsunuz.  
   
-+ Farklı veri kümeleriyle çalışıyorsunuz ve son veri kümesi oluşturmak için veri kümelerini birleştirmek istiyorsunuz.  
++ Farklı veri kümeleriyle çalışıyorsunuz ve son bir veri kümesi oluşturmak için veri kümelerini birleştirmek istiyorsunuz.  
 
-## <a name="how-to-use-add-rows"></a>Satır Ekle kullanma  
+## <a name="how-to-use-add-rows"></a>Satır Ekle nasıl kullanılır?  
 
-İki veri kümesinden satırları birleştirmek için, satırların tam olarak aynı şemaya sahip olması gerekir. Bu, aynı sayıda sütun ve sütunlarda aynı tür verilerin olması anlamına gelir.
+Satırları iki veri kümesinden ayırmak için satırların tam olarak aynı şemaya sahip olması gerekir. Bu, aynı sayıda sütun ve sütunlarda aynı veri türü anlamına gelir.
 
-1.  **Satır ekleme** modülünü işlem hattınızla sürükleyin, **veri dönüştürme**bölümünde bulabilirsiniz.
+1.  Satır **Ekle** modülünüzü ardınıza sürükleyin, **Veri Dönüşümü**altında bulabilirsiniz.
 
-2. Veri kümelerini iki giriş bağlantı noktasına bağlayın. Eklemek istediğiniz veri kümesi ikinci (sağdaki) bağlantı noktasına bağlanmalıdır. 
+2. Veri kümelerini iki giriş bağlantı noktasına bağlayın. Eklemek istediğiniz veri kümesi ikinci (sağ) bağlantı noktasına bağlanmalıdır. 
   
-3.  İşlem hattını çalıştırma. Çıktı veri kümesindeki satır sayısı, her iki giriş veri kümesinin satır toplamına eşit olmalıdır.
+3.  Boru hattını gönderin. Çıktı veri kümesindeki satır sayısı, her iki giriş veri kümesinin satırlarının toplamına eşit olmalıdır.
 
-    Aynı veri kümesini **satır ekle** modülünün her iki girişe de eklerseniz, veri kümesi yinelenir. 
+    **Satır Ekle** modülünün her iki girişine de aynı veri kümesini eklerseniz, veri kümesi çoğaltılır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

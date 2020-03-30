@@ -1,6 +1,6 @@
 ---
-title: Erişim isteklerini onaylama veya reddetme-Azure AD Yetkilendirme Yönetimi
-description: Azure Active Directory yetkilendirme yönetimi 'nde bir erişim paketine yönelik istekleri onaylamak veya reddetmek için erişim portalını nasıl kullanacağınızı öğrenin.
+title: Erişim isteklerini onaylama veya reddetme - Azure AD yetkilendirme yönetimi
+description: Azure Active Directory yetkilendirme yönetiminde bir erişim paketine yapılan istekleri onaylamak veya reddetmek için Erişimim portalını nasıl kullanacağınızı öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,63 +17,63 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261729"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim isteklerini onaylama veya reddetme
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde erişim isteklerini onaylama veya reddetme
 
-Azure AD yetkilendirme yönetimi sayesinde, ilkeleri erişim paketleri için onay gerektirecek şekilde yapılandırabilir ve bir veya daha fazla onaylayan seçebilirsiniz. Bu makalede, belirlenen onaylayanlar erişim paketleri için istekleri onaylama veya reddetme işlemlerinin nasıl yapılacağı açıklanır.
+Azure AD yetkilendirme yönetimi yle, ilkeleri erişim paketleri için onay gerektirecek şekilde yapılandırabilir ve bir veya daha fazla onaylayıcı seçebilirsiniz. Bu makalede, atanan onaylayıcıların erişim paketleri isteklerini nasıl onaylayabilir veya reddedebilir.
 
 ## <a name="open-request"></a>Açık istek
 
-Erişim isteklerini onaylamaya veya reddetmeye yönelik ilk adım, onay bekleyen erişim isteğini bulup açar. Erişim isteğini açmak için iki yol vardır.
+Erişim isteklerini onaylamak veya reddetmek için ilk adım, onay bekleyen erişim isteğini bulmak ve açmaktır. Erişim isteğini açmanın iki yolu vardır.
 
-**Önkoşul rolü:** Kişi
+**Önkoşul rolü:** Onaylayan
 
-1. Bir isteği onaylamayı veya reddetmenizi isteyen Microsoft Azure bir e-posta bulun. Örnek bir e-posta aşağıda verilmiştir:
+1. Microsoft Azure'dan isteği onaylamanızı veya reddetmenizi isteyen bir e-postayı arayın. İşte örnek bir e-posta:
 
-    ![Paket e-postasına erişim isteğini onayla](./media/entitlement-management-shared/approver-request-email.png)
+    ![Paket e-postasına erişmek için isteği onaylama](./media/entitlement-management-shared/approver-request-email.png)
 
-1. Erişim isteğini açmak için **Onayla veya reddetme isteği** bağlantısına tıklayın.
+1. Erişim isteğini açmak için **İstek bağlantısını onayla veya reddet** bağlantısını tıklatın.
 
-1. Erişim Portalı ' nda oturum açın.
+1. Erişimim portalında oturum açın.
 
-E-postanız yoksa, bu adımları izleyerek Onayınızı bekleyen erişim isteklerini bulabilirsiniz.
+E-postanız yoksa, aşağıdaki adımları izleyerek onayınızı bekleyen erişim isteklerini bulabilirsiniz.
 
-1. [https://myaccess.microsoft.com](https://myaccess.microsoft.com)adresindeki erişim portalı 'nda oturum açın.  (ABD kamu için, erişim portalı bağlantımda bulunan etki alanı `myaccess.microsoft.us`olacaktır.)
+1. adresindeki Erişim portalım'da [https://myaccess.microsoft.com](https://myaccess.microsoft.com)oturum açın.  (ABD Hükümeti için, Erişim portalıbağlantımdaki `myaccess.microsoft.us`etki alanı olacaktır.)
 
-1. Onay bekleyen erişim isteklerinin bir listesini görmek için sol taraftaki menüden **onaylar** ' a tıklayın.
+1. Sol menüde, onay bekleyen erişim isteklerilistesini görmek için **Onaylar'ı** tıklatın.
 
-1. **Bekleyen** sekmesinde, isteği bulun.
+1. Bekleme **sekmesinde** isteği bulun.
 
-## <a name="approve-or-deny-request"></a>İsteği onayla veya Reddet
+## <a name="approve-or-deny-request"></a>İsteği onaylama veya reddetme
 
-Onay bekleyen bir erişim isteği açtıktan sonra, bir onaylama veya reddetme kararı vermenize yardımcı olacak ayrıntıları görebilirsiniz.
+Onay bekleyen bir erişim isteğini açtıktan sonra, onay veya reddetme kararı vermenize yardımcı olacak ayrıntıları görebilirsiniz.
 
-**Önkoşul rolü:** Kişi
+**Önkoşul rolü:** Onaylayan
 
-1. Erişim isteği bölmesini açmak için **Görünüm** bağlantısına tıklayın.
+1. Access istek bölmesini açmak için **Görünüm** bağlantısını tıklatın.
 
-1. Erişim isteğiyle ilgili ayrıntıları görmek için **Ayrıntılar** ' a tıklayın.
+1. Erişim isteğiyle ilgili ayrıntıları görmek için **Ayrıntılar'ı** tıklatın.
 
-    Ayrıntılar arasında kullanıcının adı, kuruluş, erişim başlangıç ve bitiş tarihi, iş gerekçe, isteğin gönderildiği zaman ve isteğin ne zaman dolacağı bulunur.
+    Ayrıntılar, kullanıcının adını, kuruluşunu, sağlandığı takdirde erişim başlangıç ve bitiş tarihini, iş gerekçesini, isteğin ne zaman gönderildiğini ve isteğin ne zaman sona ereceğini içerir.
 
-1. **Onayla** veya **Reddet**' e tıklayın.
+1. Onayla veya **Reddet'i** tıklatın. **Deny**
 
-1. Gerekirse bir neden girin.
+1. Gerekirse, bir neden girin.
 
-    ![Erişim Portalı-erişim isteği](./media/entitlement-management-request-approve/my-access-approve-request.png)
+    ![Erişim portalım - Erişim isteği](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
-1. Kararınızı göndermek için **Gönder** ' e tıklayın.
+1. Kararınızı göndermek için **Gönder'i** tıklatın.
 
-    Bir ilke birden çok onaylayıcı ile yapılandırıldıysa, yalnızca bir onaylayanın bekleyen onay ile ilgili bir karar vermesini sağlaması gerekir. Bir onaylayan, erişim isteğine kararını gönderdikten sonra, istek tamamlanır ve diğer onaylayanların isteği onaylaması veya reddetmesi için artık kullanılamaz. Diğer onaylayanlar, erişim Portalı ' nda istek kararlarını ve karar Oluşturucu 'yu görebilir. Şu anda yalnızca tek aşamalı onay desteklenir.
+    Bir ilke birden çok onaylayıcıyla yapılandırılırsa, bekleyen onay hakkında yalnızca bir onaylayıcının karar alması gerekir. Bir onaylayıcı kararını erişim isteğine sunduktan sonra, istek tamamlanır ve diğer onaylayanların isteği onaylaması veya reddetmesi artık kullanılamaz. Diğer onaylayanlar istek kararını ve karar vericiyi Erişim portalında görebilirler. Şu anda yalnızca tek aşamalı onay desteklenir.
 
-    Yapılandırılmış onaylayanlardan hiçbiri erişim isteğini onaylayabilir veya reddedeiyorsa, istek süresi yapılandırılan istek süresinden sonra dolar. Kullanıcı, erişim isteğinin bittiğini ve erişim isteğini yeniden gönderebilmeleri gerektiğini bildirdi.
+    Yapılandırılan onaylayanlardan hiçbiri erişim isteğini onaylayamaz veya reddedemiyorsa, istek yapılandırılan istek süresinden sonra sona erer. Kullanıcı, erişim isteğinin süresinin dolduğunu ve erişim isteğini yeniden göndermesi gerektiğini bildirdi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Erişim paketine erişim isteme](entitlement-management-request-access.md)
-- [İşlem ve e-posta bildirimleri iste](entitlement-management-process.md)
+- [Erişim paketine erişim isteği](entitlement-management-request-access.md)
+- [İstek süreci ve e-posta bildirimleri](entitlement-management-process.md)

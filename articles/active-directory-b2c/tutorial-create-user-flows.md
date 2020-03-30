@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Kullanıcı akışları oluşturma-Azure Active Directory B2C
-description: Kaydolma, oturum açma ve Azure Active Directory B2C uygulamalarınız için Kullanıcı profili düzenlemesini etkinleştirmek üzere Azure portal Kullanıcı akışları oluşturmayı öğrenin.
+title: Öğretici - Kullanıcı akışları oluşturma - Azure Active Directory B2C
+description: Azure Active Directory B2C'deki uygulamalarınız için kaydolma, oturum açma ve kullanıcı profili düzenlemesini etkinleştirmek için Azure portalında kullanıcı akışları oluşturmayı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,120 +11,120 @@ ms.date: 06/07/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264251"
 ---
-# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı akışları oluşturma
+# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C'de kullanıcı akışları oluşturma
 
-Uygulamalarınızda, kullanıcıların kaydolmalarına, oturum açmalarına veya profillerini yönetmesine olanak tanıyan [Kullanıcı akışlarına](user-flow-overview.md) sahip olabilirsiniz. Azure Active Directory B2C (Azure AD B2C) kiracınızda farklı türlerde birden çok Kullanıcı akışı oluşturabilir ve bunları gerektiği şekilde uygulamalarınızda kullanabilirsiniz. Kullanıcı akışları, uygulamalar arasında yeniden kullanılabilir.
+Uygulamalarınızda, kullanıcıların profillerini kaydolmasını, oturum açmasını veya yönetmesini sağlayan [kullanıcı akışları](user-flow-overview.md) olabilir. Azure Active Directory B2C (Azure AD B2C) kiracınızda farklı türde birden çok kullanıcı akışı oluşturabilir ve bunları gerektiğinde uygulamalarınızda kullanabilirsiniz. Kullanıcı akışları uygulamalar arasında yeniden kullanılabilir.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Kaydolma ve oturum açma Kullanıcı akışı oluşturma
-> * Profil düzenlemesi Kullanıcı akışı oluşturma
-> * Parola sıfırlama Kullanıcı akışı oluşturma
+> * Kaydolma ve kaydolma kullanıcı akışı oluşturma
+> * Profil düzenleme kullanıcı akışı oluşturma
+> * Parola sıfırlama kullanıcı akışı oluşturma
 
-Bu öğreticide, Azure portal kullanarak önerilen bazı Kullanıcı akışlarını nasıl oluşturacağınız gösterilmektedir. Uygulamanızda bir kaynak sahibi parola kimlik bilgileri (ROPC) akışının nasıl ayarlanacağı hakkında bilgi arıyorsanız, bkz. [Azure AD B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma](configure-ropc.md).
+Bu öğretici, Azure portalını kullanarak önerilen bazı kullanıcı akışlarını nasıl oluşturabileceğinizi gösterir. Uygulamanızda kaynak sahibi parola kimlik bilgilerini (ROPC) akışını nasıl ayarlayacaklarınız hakkında bilgi arıyorsanız, Azure [AD B2C'deki kaynak sahibi parola kimlik bilgilerini yapılandır'a](configure-ropc.md)bakın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Oluşturmak istediğiniz kullanıcı akışlarının parçası olan [uygulamalarınızı kaydedin](tutorial-register-applications.md) .
+Oluşturmak istediğiniz kullanıcı akışlarının bir parçası olan [uygulamalarınızı](tutorial-register-applications.md) kaydedin.
 
-## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Kaydolma ve oturum açma Kullanıcı akışı oluşturma
+## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Kaydolma ve kaydolma kullanıcı akışı oluşturma
 
-Kaydolma ve oturum açma Kullanıcı akışı, hem kayıt hem de oturum açma deneyimlerini tek bir yapılandırmayla işler. Uygulamanızın kullanıcıları, bağlama göre doğru yolun altına alınır.
+Kaydolma ve kaydolma kullanıcı akışı, tek bir yapılandırmayla hem kaydolma hem de oturum açma deneyimlerini işler. Uygulamanızın kullanıcıları içeriğe bağlı olarak doğru yola yönlendirilir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Portal araç çubuğundaki **Dizin + Abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-    ![B2C kiracısı, dizin ve abonelik bölmesi, Azure portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
+    ![B2C kiracı, Dizin ve Abonelik bölmesi, Azure portalı](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
+1. Azure **portalında, Azure AD B2C'yi**arayın ve seçin.
+1. **İlkeler**altında, **Kullanıcı akışlarını (ilkeler)** seçin ve ardından **Yeni kullanıcı akışını**seçin.
 
-    ![Yeni Kullanıcı akışı düğmesi vurgulanmış şekilde portalda Kullanıcı akışları sayfası](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
+    ![Yeni kullanıcı akışı düğmesi vurgulanmış portalda kullanıcı akışları sayfası](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-1. **Önerilen** sekmede, **oturum aç ve oturum aç** Kullanıcı akışı ' nı seçin.
+1. **Önerilen** sekmede **Kaydol'u** seçin ve kullanıcı akışını oturum açın.
 
-    ![Kaydolma ve oturum açma akışı vurgulanmış bir Kullanıcı akış sayfası seçin](./media/tutorial-create-user-flows/signup-signin-type.png)
+    ![Kaydol ve vurgulanan akışta oturum açın özelliğine sahip bir kullanıcı akış sayfası seçin](./media/tutorial-create-user-flows/signup-signin-type.png)
 
-1. Kullanıcı akışı için bir **ad** girin. Örneğin, *signupsignin1*.
-1. **Kimlik sağlayıcıları**Için **e-posta kaydı**' nı seçin.
+1. Kullanıcı akışı için bir **Ad** girin. Örneğin, *signupsignin1*.
+1. **Kimlik sağlayıcıları** **için, E-posta kaydolma**seçin.
 
-    ![Azure portal ' de vurgulanan özelliklerle Kullanıcı akışı oluşturma sayfası](./media/tutorial-create-user-flows/signup-signin-properties.png)
+    ![Azure portalında vurgulanmış özelliklerle kullanıcı akışı sayfası oluşturma](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-1. **Kullanıcı öznitelikleri ve talepler**için, kayıt sırasında kullanıcıdan toplamak ve göndermek istediğiniz talepleri ve öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge**, **görünen ad**ve **posta kodu**için öznitelikler ve talepler ' i seçin. **Tamam** düğmesine tıklayın.
+1. **Kullanıcı öznitelikleri ve talepleri**için, kaydolma sırasında kullanıcıdan toplamak ve göndermek istediğiniz talepleri ve öznitelikleri seçin. Örneğin, **daha fazlasını göster'i**seçin ve ardından **Ülke/Bölge,** **Görüntü Adı**ve Posta **Kodu**için öznitelikler ve talepler seçin. **Tamam**'a tıklayın.
 
-    ![Üç talep seçili olan öznitelikler ve talepler seçim sayfası](./media/tutorial-create-user-flows/signup-signin-attributes.png)
+    ![Seçili üç hak talebiolan öznitelikler ve talepler seçim sayfası](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-1. Kullanıcı akışını eklemek için **Oluştur** ' a tıklayın. *B2C_1* bir ön eki otomatik olarak ada eklenir.
+1. Kullanıcı akışını eklemek için **Oluştur'u** tıklatın. B2C_1 bir *B2C_1* önek otomatik olarak ada eklenir.
 
-### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
+### <a name="test-the-user-flow"></a>Kullanıcı akışını test edin
 
-1. Genel Bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
-1. **Uygulama**için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** `https://jwt.ms`göstermelidir.
-1. **Kullanıcı akışını Çalıştır**' a tıklayın ve ardından **Şimdi kaydolun**' ı seçin.
+1. Genel bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır'ı**seçin.
+1. **Uygulama**için, daha önce kaydolduğunuz *webapp1* adlı web uygulamasını seçin. **Yanıt URL'si** gösterilmelidir. `https://jwt.ms`
+1. **Kullanıcı akışını çalıştır'ı**tıklatın ve ardından **şimdi Kaydol'u**seçin.
 
-    ![Kullanıcı akışını Çalıştır düğmesi vurgulanmış şekilde portalda Kullanıcı akış sayfasını Çalıştır](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
+    ![Kullanıcı akışı düğmesini vurgulanmış olarak portalda çalıştırın](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
-1. Geçerli bir e-posta adresi girin, **doğrulama kodu gönder**' e tıklayın, aldığınız doğrulama kodunu girin ve **kodu doğrula**' yı seçin.
+1. Geçerli bir e-posta adresi girin, **doğrulama kodu gönder'i**tıklatın, aldığınız doğrulama kodunu girin, ardından **kodu doğrula'yı**seçin.
 1. Yeni bir parola girin ve parolayı onaylayın.
-1. Ülkenizi ve bölgenizi seçin, görüntülenmesini istediğiniz adı girin, bir posta kodu girin ve ardından **Oluştur**' a tıklayın. Belirteç `https://jwt.ms` döndürülür ve size gösterilmesi gerekir.
-1. Artık kullanıcı akışını yeniden çalıştırabilirsiniz ve oluşturduğunuz hesapla oturum açabilmelisiniz. Döndürülen belirteç, ülke/bölge, ad ve posta kodu ' nu seçtiğiniz talepleri içerir.
+1. Ülkenizi ve bölgenizi seçin, görüntülenmesini istediğiniz adı girin, bir posta kodu girin ve sonra **Oluştur'u**tıklatın. Belirteç döndürülür `https://jwt.ms` ve size görüntülenmelidir.
+1. Artık kullanıcı akışını yeniden çalıştırabilirsiniz ve oluşturduğunuz hesapla oturum açabilirsiniz. İade edilen belirteç, ülke/bölge, ad ve posta kodu seçtiğiniz talepleri içerir.
 
-## <a name="create-a-profile-editing-user-flow"></a>Profil düzenlemesi Kullanıcı akışı oluşturma
+## <a name="create-a-profile-editing-user-flow"></a>Profil düzenleme kullanıcı akışı oluşturma
 
-Kullanıcıların uygulamanızdaki profilini düzenlemesini etkinleştirmek istiyorsanız, bir profil düzenleme Kullanıcı akışı kullanın.
+Kullanıcıların uygulamanızda profillerini düzenlemelerini sağlamak istiyorsanız, profil düzenleme kullanıcı akışı kullanırsınız.
 
-1. Azure AD B2C kiracının Genel Bakış sayfasının menüsünde, **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
-1. **Önerilen** sekmede **profil düzenlemesi** Kullanıcı akışı ' nı seçin.
-1. Kullanıcı akışı için bir **ad** girin. Örneğin, *profileediting1*.
-1. **Kimlik sağlayıcıları**Için **yerel hesap oturumu açma**' yı seçin.
-1. **Kullanıcı öznitelikleri**için, müşterinin profilinde düzenleyebilmesini istediğiniz öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve **görünen ad** ve **iş unvanı**için her iki özniteliği ve talebi seçin. **Tamam** düğmesine tıklayın.
-1. Kullanıcı akışını eklemek için **Oluştur** ' a tıklayın. *B2C_1* bir ön eki otomatik olarak ada eklenir.
+1. Azure AD B2C kiracı genel bakış sayfasının menüsünde **Kullanıcı akışlarını (ilkeler)** seçin ve ardından **Yeni kullanıcı akışını**seçin.
+1. **Önerilen** sekmede **Profil düzenleme** kullanıcı akışını seçin.
+1. Kullanıcı akışı için bir **Ad** girin. Örneğin, *profileediting1*.
+1. **Kimlik sağlayıcıları için**Yerel Hesap **SignIn'i**seçin.
+1. **Kullanıcı öznitelikleri**için, müşterinin profilinde yeniden oluşturabilmesini istediğiniz öznitelikleri seçin. Örneğin, **daha fazlasını göster'i**seçin ve ardından **Görüntü adı** ve İş **başlığı**için hem öznitelikleri hem de talepleri seçin. **Tamam**'a tıklayın.
+1. Kullanıcı akışını eklemek için **Oluştur'u** tıklatın. B2C_1 bir *B2C_1* önek otomatik olarak ada eklenir.
 
-### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
+### <a name="test-the-user-flow"></a>Kullanıcı akışını test edin
 
-1. Genel Bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
-1. **Uygulama**için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** `https://jwt.ms`göstermelidir.
-1. **Kullanıcı akışını Çalıştır**' a tıklayın ve daha önce oluşturduğunuz hesapla oturum açın.
-1. Artık Kullanıcı için görünen adı ve iş başlığını değiştirme fırsatına sahipsiniz. **Devam**’a tıklayın. Belirteç `https://jwt.ms` döndürülür ve size gösterilmesi gerekir.
+1. Genel bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır'ı**seçin.
+1. **Uygulama**için, daha önce kaydolduğunuz *webapp1* adlı web uygulamasını seçin. **Yanıt URL'si** gösterilmelidir. `https://jwt.ms`
+1. **Kullanıcı akışını çalıştır'ı**tıklatın ve ardından daha önce oluşturduğunuz hesapla oturum açın.
+1. Artık kullanıcının görüntü adını ve iş başlığını değiştirme fırsatına sahipsiniz. **Devam**’a tıklayın. Belirteç döndürülür `https://jwt.ms` ve size görüntülenmelidir.
 
-## <a name="create-a-password-reset-user-flow"></a>Parola sıfırlama Kullanıcı akışı oluşturma
+## <a name="create-a-password-reset-user-flow"></a>Parola sıfırlama kullanıcı akışı oluşturma
 
-Uygulamanızın kullanıcılarının parolasını sıfırlamasına olanak tanımak için, parola sıfırlama kullanıcı akışını kullanırsınız.
+Uygulamanızın kullanıcılarının parolalarını sıfırlamalarını sağlamak için parola sıfırlama kullanıcı akışını kullanırsınız.
 
-1. Azure AD B2C kiracı genel bakış menüsünde, **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
-1. **Önerilen** sekmede **parola sıfırlama** Kullanıcı akışını seçin.
-1. Kullanıcı akışı için bir **ad** girin. Örneğin, *passwordreset1*.
-1. **Kimlik sağlayıcıları**için **e-posta adresini kullanarak parolayı sıfırlamayı**etkinleştirin.
-1. Uygulama talepleri bölümünde **daha fazla göster** ' e tıklayın ve uygulamanıza geri gönderilen yetkilendirme belirteçlerinde döndürülmesini istediğiniz talepleri seçin. Örneğin, **Kullanıcının Nesne Kimliği**’ni seçin.
-1. **Tamam** düğmesine tıklayın.
-1. Kullanıcı akışını eklemek için **Oluştur** ' a tıklayın. *B2C_1* bir ön eki otomatik olarak ada eklenir.
+1. Azure AD B2C kiracı genel bakış **menüsünde, Kullanıcı akışlarını (ilkeler)** seçin ve ardından **Yeni kullanıcı akışını**seçin.
+1. **Önerilen** sekmede **Parola sıfırlama** kullanıcı akışını seçin.
+1. Kullanıcı akışı için bir **Ad** girin. Örneğin, *passwordreset1*.
+1. **Kimlik sağlayıcıları**için, **e-posta adresini kullanarak parolayı sıfırla'yı**etkinleştirin.
+1. Uygulama talepleri altında, **daha fazlasını göster'i** tıklatın ve başvurunuza geri gönderilen yetkilendirme belirteçlerinde iade sini istediğiniz talepleri seçin. Örneğin, **Kullanıcının Nesne Kimliği**’ni seçin.
+1. **Tamam**'a tıklayın.
+1. Kullanıcı akışını eklemek için **Oluştur'u** tıklatın. B2C_1 bir *B2C_1* önek otomatik olarak ada eklenir.
 
-### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
+### <a name="test-the-user-flow"></a>Kullanıcı akışını test edin
 
-1. Genel Bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
-1. **Uygulama**için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** `https://jwt.ms`göstermelidir.
-1. **Kullanıcı akışını Çalıştır**' a tıklayın, daha önce oluşturduğunuz hesabın e-posta adresini doğrulayın ve **devam**' ı seçin.
-1. Artık Kullanıcı parolasını değiştirme fırsatına sahipsiniz. Parolayı değiştirin ve **devam**' ı seçin. Belirteç `https://jwt.ms` döndürülür ve size gösterilmesi gerekir.
+1. Genel bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır'ı**seçin.
+1. **Uygulama**için, daha önce kaydolduğunuz *webapp1* adlı web uygulamasını seçin. **Yanıt URL'si** gösterilmelidir. `https://jwt.ms`
+1. **Kullanıcı akışını çalıştır'ı**tıklatın, daha önce oluşturduğunuz hesabın e-posta adresini doğrulayın ve **Devam et'i**seçin.
+1. Artık kullanıcının parolasını değiştirme fırsatınız var. Parolayı değiştirin ve **Devam et'i**seçin. Belirteç döndürülür `https://jwt.ms` ve size görüntülenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, şu şekilde nasıl yapılacağını öğrendiniz:
+Bu makalede, nasıl öğrendim:
 
 > [!div class="checklist"]
-> * Kaydolma ve oturum açma Kullanıcı akışı oluşturma
-> * Profil düzenlemesi Kullanıcı akışı oluşturma
-> * Parola sıfırlama Kullanıcı akışı oluşturma
+> * Kaydolma ve kaydolma kullanıcı akışı oluşturma
+> * Profil düzenleme kullanıcı akışı oluşturma
+> * Parola sıfırlama kullanıcı akışı oluşturma
 
-Daha sonra, Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft veya Twitter gibi sağlayıcılardan Kullanıcı oturum açmasını etkinleştirmek için uygulamalarınıza kimlik sağlayıcıları ekleme hakkında bilgi edinin.
+Ardından, Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft veya Twitter gibi sağlayıcılarla kullanıcı oturum açma olanağı sağlamak için uygulamalarınıza kimlik sağlayıcıları ekleme hakkında bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Uygulamalarınıza kimlik sağlayıcıları ekleyin >](tutorial-add-identity-providers.md)
+> [Uygulamalarınız >kimlik sağlayıcılarını uygulamalarınız için ekleme](tutorial-add-identity-providers.md)

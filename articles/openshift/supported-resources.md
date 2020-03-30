@@ -1,16 +1,16 @@
 ---
 title: Azure Red Hat OpenShift için desteklenen kaynaklar
-description: Microsoft Azure Red Hat OpenShift tarafından desteklenen Azure bölgelerini ve sanal makine boyutlarını anlayın.
+description: Microsoft Azure Red Hat OpenShift tarafından hangi Azure bölgelerinin ve sanal makine boyutlarının desteklenerek desteklendirilmelerini anlayın.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243672"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift kaynakları
@@ -19,20 +19,20 @@ Bu konu, Microsoft Azure Red Hat OpenShift hizmeti tarafından desteklenen Azure
 
 ## <a name="azure-regions"></a>Azure bölgeleri
 
-Azure Red Hat OpenShift kümelerini dağıtabileceğiniz bölgelerin geçerli bir listesi için [bölgeye göre kullanılabilir ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) bakın.
+Azure Kırmızı Şapka OpenShift kümelerini dağıtabileceğiniz bölgelerin geçerli bir listesi için [bölgeye göre kullanılabilen Ürünler'e](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) bakın.
 
 ## <a name="virtual-machine-sizes"></a>Sanal makine boyutları
 
-Azure Red Hat OpenShift kümenizdeki işlem düğümleri için belirtebileceğiniz desteklenen sanal makine boyutları aşağıda verilmiştir.
+Azure Red Hat OpenShift kümenizdeki bilgi işlem düğümleri için belirtebileceğiniz desteklenen sanal makine boyutları aşağıda veda edilmiştir.
 
 > [!Important]
-> Her VM 'nin iliştirilebilecek farklı sayıda sürücüsü vardır. Bu, bellek veya CPU boyutu kadar hemen açık olmayabilir.
-> Tüm bölgelerde tüm VM boyutları kullanılamaz. API belirttiğiniz boyutu desteklese de, boyut belirttiğiniz bölgede yoksa bir hata alabilirsiniz.
-> Daha fazla bilgi için bkz. [bölge başına desteklenen VM boyutlarının geçerli listesi](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) .
+> Her VM'nin ekilebilen farklı sayıda sürücüsü vardır. Bu bellek veya CPU boyutu kadar hemen açık olmayabilir.
+> Tüm VM boyutları tüm bölgelerde kullanılamaz. API belirttiğiniz boyutu desteklese bile, boyut belirttiğiniz bölgede kullanılamıyorsa bir hata alabilirsiniz.
+> Daha fazla bilgi için [bölge başına desteklenen VM boyutlarının geçerli listesine](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) bakın.
 
-## <a name="compute-node-sizes"></a>İşlem düğüm boyutları
+## <a name="compute-node-sizes"></a>Hesap düğümü boyutları
 
-Aşağıdaki işlem düğümü boyutları Azure Red Hat Openshıft REST API tarafından desteklenir:
+Aşağıdaki işlem düğümü boyutları Azure Red Hat OpenShift REST API tarafından desteklenir:
 
 |Boyut|Sanal işlemci|RAM|
 |-|-|-|
@@ -52,7 +52,7 @@ Aşağıdaki işlem düğümü boyutları Azure Red Hat Openshıft REST API tara
 
 ## <a name="master-node-sizes"></a>Ana düğüm boyutları
 
-Aşağıdaki ana/altyapı düğüm boyutları, Azure Red Hat Openshıft REST API tarafından desteklenir:
+Aşağıdaki ana / altyapı düğümü boyutları Azure Red Hat OpenShift REST API tarafından desteklenir:
 
 |Boyut|Sanal işlemci|RAM|
 |-|-|-|
@@ -63,4 +63,4 @@ Aşağıdaki ana/altyapı düğüm boyutları, Azure Red Hat Openshıft REST API
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisini deneyin.
+Azure [Kırmızı Şapka OpenShift küme](tutorial-create-cluster.md) oluşturma öğreticisini deneyin.

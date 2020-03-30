@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub MQTT desteğini anlayın | Microsoft Docs
-description: Geliştirici Kılavuzu-MQTT protokolünü kullanarak IoT Hub cihaza yönelik bir uç noktaya bağlanan cihazlar için destek. Azure IoT cihaz SDK 'lerinde yerleşik MQTT desteği hakkında bilgiler içerir.
+title: Azure IoT Hub MQTT desteğini anlayın | Microsoft Dokümanlar
+description: Geliştirici kılavuzu - MQTT protokolünü kullanarak IoT Hub aygıta bakan bir uç noktasına bağlanan aygıtlar için destek. Azure IoT aygıt SDK'larında yerleşik MQTT desteği hakkında bilgi içerir.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,51 +8,51 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
 ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271167"
 ---
-# <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
+# <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT hub'ınızla iletişim kurun
 
-IoT Hub, cihazların kullanarak IoT Hub cihaz uç noktalarıyla iletişim kurmasını sağlar:
+IoT Hub, aygıtların Aşağıdakileri kullanarak IoT Hub aygıt uç noktalarıyla iletişim kurmasını sağlar:
 
-* 8883 numaralı bağlantı noktasında [MQTT v 3.1.1](https://mqtt.org/)
-* 443 numaralı bağlantı noktasında WebSocket üzerinden MQTT v 3.1.1.
+* [MQTT v3.1.1](https://mqtt.org/) bağlantı noktası 8883
+* MQTT v3.1.1 bağlantı noktası 443 websocket üzerinde.
 
-IoT Hub tam özellikli bir MQTT Aracısı değildir ve MQTT v 3.1.1 Standard 'da belirtilen tüm davranışları desteklemez. Bu makalede, cihazların IoT Hub ile iletişim kurmak için desteklenen MQTT davranışlarını nasıl kullanabileceği açıklanır.
+IoT Hub, tam özellikli bir MQTT aracısı değildir ve MQTT v3.1.1 standart sürümünde belirtilen tüm davranışları desteklemez. Bu makalede, aygıtların IoT Hub ile iletişim kurmak için desteklenen MQTT davranışlarını nasıl kullanabileceği açıklanmaktadır.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub ile tüm cihaz iletişimi, TLS/SSL kullanılarak güvenli hale getirilmelidir. Bu nedenle IoT Hub, 1883 numaralı bağlantı noktası üzerinden güvenli olmayan bağlantıları desteklemez.
+IoT Hub ile tüm cihaz iletişimi TLS/SSL kullanılarak güvence altına alınmalıdır. Bu nedenle, IoT Hub bağlantı noktası 1883 üzerinden güvenli olmayan bağlantıları desteklemez.
 
-## <a name="connecting-to-iot-hub"></a>IoT Hub bağlanılıyor
+## <a name="connecting-to-iot-hub"></a>IoT Hub'ına bağlanma
 
-Bir cihaz, aşağıdaki seçeneklerden herhangi birini kullanarak bir IoT Hub 'ına bağlanmak için MQTT protokolünü kullanabilir.
+Aygıt, aşağıdaki seçeneklerden herhangi birini kullanarak bir IoT hub'ına bağlanmak için MQTT protokolünü kullanabilir.
 
-* [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)'larının kitaplıkları.
+* [Azure IoT SDK'lardaki kitaplıklar.](https://github.com/Azure/azure-iot-sdks)
 * MQTT protokolü doğrudan.
 
-MQTT bağlantı noktası (8883) birçok kurumsal ve eğitim ağı ortamında engellenir. Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açamazsınız, Web Yuvaları üzerinden MQTT kullanmanızı öneririz. Web Yuvaları üzerinden MQTT, ağ ortamlarında neredeyse her zaman açık olan 443 numaralı bağlantı noktası üzerinden iletişim kurar. Azure IoT SDK 'larını kullanırken, Web Sockets protokolleri üzerinden MQTT ve MQTT 'yi belirtmeyi öğrenmek için bkz. [cihaz SDK 'Larını kullanma](#using-the-device-sdks).
+MQTT bağlantı noktası (8883) birçok kurumsal ve eğitim ağı ortamında engellenir. Güvenlik duvarınızda 8883 bağlantı noktasını açamıyorsanız, Web Soketleri üzerinde MQTT kullanmanızı öneririz. Web Soketleri üzerinden MQTT, ağ ortamlarında hemen hemen her zaman açık olan 443 bağlantı noktası üzerinden iletişim kurar. Azure IoT SDK'larını kullanırken Web Soketleri protokolleri üzerinden MQTT ve MQTT'yi nasıl belirteceğimiz [hakkında](#using-the-device-sdks)bilgi edinmek için bkz.
 
-## <a name="using-the-device-sdks"></a>Cihaz SDK 'larını kullanma
+## <a name="using-the-device-sdks"></a>Aygıt SDK'larını kullanma
 
-MQTT protokolünü destekleyen [cihaz SDK 'ları](https://github.com/Azure/azure-iot-sdks) , Java, Node. js, C, C#ve Python için kullanılabilir. Cihaz SDK 'Ları, IoT Hub ile bağlantı kurmak için standart IoT Hub bağlantı dizesini kullanır. MQTT protokolünü kullanmak için, istemci protokol parametresi **MQTT**olarak ayarlanmalıdır. İstemci protokol parametresinde, Web Yuvaları üzerinden MQTT ' i de belirtebilirsiniz. Varsayılan olarak, cihaz SDK 'Ları **Cleansession** bayrağı **0** olarak ayarlanmış bir IoT Hub bağlanır ve IoT Hub Ile ileti alışverişi için **QoS 1** kullanır.
+MQTT protokolünü destekleyen [aygıt SDK'ları](https://github.com/Azure/azure-iot-sdks) Java, Node.js, C, C#ve Python için kullanılabilir. Aygıt SDK'ları, bir IoT hub'ına bağlantı kurmak için standart IoT Hub bağlantı dizesini kullanır. MQTT protokolünü kullanmak için istemci protokolü parametresi **MQTT**olarak ayarlanmalıdır. İstemci protokolü parametresinde Web Soketleri üzerinde MQTT belirtebilirsiniz. Varsayılan olarak, Aygıt SDK'ları **CleanSession** bayrağı **0** olarak ayarlanmış bir IoT Hub'ına bağlanır ve IoT hub'ı ile ileti alışverişi için **QoS 1'i** kullanır.
 
-Bir cihaz IoT Hub 'ına bağlandığında cihaz SDK 'Ları, cihazın IoT Hub ile ileti alışverişi için izin veren yöntemler sağlar.
+Bir aygıt bir IoT hub'ına bağlandığında, aygıt SDK'ları aygıtın bir IoT hub'ı ile ileti alışverişini sağlayan yöntemler sağlar.
 
-Aşağıdaki tablo desteklenen her dil için kod örneklerine bağlantılar içerir ve MQTT veya Web soketi üzerinden MQTT kullanarak IoT Hub bağlantı kurmak için kullanılacak parametreyi belirtir.
+Aşağıdaki tablo, desteklenen her dil için kod örneklerine bağlantılar içerir ve Web Soketleri protokolü üzerinden MQTT veya MQTT kullanarak IoT Hub'a bağlantı kurmak için kullanılacak parametreyi belirtir.
 
-| Dil | MQTT protokol parametresi | Web Sockets protokol parametresi üzerinden MQTT
+| Dil | MQTT protokol parametresi | Web Soketleri protokol parametresi üzerinden MQTT
 | --- | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IoT-Device-MQTT. MQTT | Azure-IoT-Device-MQTT. MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol. MQTT_WS |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt. Mqtt | azure-iot-device-mqtt. MqttWs |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). MQTT | TransportType. MQTT, MQTT başarısız olursa Web Yuvaları üzerinden MQTT 'e geri döner. Yalnızca Web Yuvaları üzerinden MQTT belirtmek için, TransportType. Mqtt_WebSocket_Only kullanın |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Varsayılan olarak MQTT 'yi destekler | İstemciyi oluşturmak için çağrıya `websockets=True` ekleyin |
+| [C #](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt | TransportType.Mqtt, MQTT başarısız olursa Web Soketleri üzerinden MQTT'ye geri döner. Yalnızca Web Soketleri üzerinde MQTT belirtmek için TransportType.Mqtt_WebSocket_Only'ı kullanın |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Varsayılan olarak MQTT'yi destekler | `websockets=True` İstemciyi oluşturmak için çağrıekleme |
 
-Aşağıdaki parça, Azure IoT Node. js SDK 'sını kullanırken MQTT Over Web Sockets protokolünü nasıl belirtmektir:
+Aşağıdaki parça, Azure IoT Düğüm.js SDK'yı kullanırken Web Soketleri protokolü üzerinden MQTT'nin nasıl belirtilen;
 
 ```javascript
 var Client = require('azure-iot-device').Client;
@@ -60,168 +60,168 @@ var Protocol = require('azure-iot-device-mqtt').MqttWs;
 var client = Client.fromConnectionString(deviceConnectionString, Protocol);
 ```
 
-Aşağıdaki parça, Azure IoT Python SDK kullanılırken Web soketi üzerinden MQTT 'in nasıl kullanılacağını göstermektedir:
+Aşağıdaki parça, Azure IoT Python SDK'yı kullanırken Web Soketleri protokolü üzerinden MQTT'nin nasıl belirtilen;
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient
 device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectionString, websockets=True)
 ```
 
-### <a name="default-keep-alive-timeout"></a>Varsayılan etkin tutma zaman aşımı
+### <a name="default-keep-alive-timeout"></a>Varsayılan canlı tutma zaman ayarı
 
-İstemci/IoT Hub bağlantısının etkin kalmasını sağlamak için, hem hizmet hem de istemci birbirlerine *sürekli olarak canlı* bir ping gönderin. IoT SDK kullanan istemci, aşağıdaki tabloda tanımlanan aralıkta etkin tutma gönderir:
+Bir istemci/IoT Hub bağlantısının canlı kalmasını sağlamak için, hem hizmet hem de istemci düzenli olarak birbirlerine *canlı bir* ping gönderir. IoT SDK kullanan istemci aşağıdaki tabloda tanımlanan aralıkta canlı bir şekilde gönderir:
 
-|Dil  |Varsayılan etkin tut aralığı  |Yapılandırılabilir  |
+|Dil  |Varsayılan canlı tutma aralığı  |Yapılandırılabilir  |
 |---------|---------|---------|
 |Node.js     |   180 saniye      |     Hayır    |
 |Java     |    230 saniye     |     Hayır    |
 |C     | 240 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 saniye |  Hayır   |
+|Piton (V2)   | 60 saniye |  Hayır   |
 
-Aşağıdaki [MQTT belirtiminin](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)IoT Hub, etkin tutma zaman aşımı süresi, istemci canlı tutma değerinin 1,5 katından fazla. Ancak, tüm Azure hizmetleri Azure yük dengeleyici TCP boşta kalma zaman aşımı süresi olan 29,45 (1767 saniye) ile birlikte IoT Hub en fazla sunucu tarafı zaman aşımını 29,45 dakikaya (saniye) sınırlar. 
+[MQTT spec'i](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)takiben, IoT Hub'ın canlı tutma ping aralığı istemcinin canlı tutma değerinin 1,5 katıdır. Ancak, tüm Azure hizmetleri 29,45 dakika olan Azure yük bakiyesi TCP boşta zaman ayarı'na bağlı olduğundan, IoT Hub sunucu tarafındaki maksimum zaman ayarı 29,45 dakika (1767 saniye) ile sınırlar. 
 
-Örneğin, Java SDK 'sını kullanan bir cihaz, etkin tut ping komutunu gönderir ve ardından ağ bağlantısını kaybeder. 230 saniye sonra, cihaz çevrimdışı olduğu için etkin tut ping komutunu yok. Ancak IoT Hub bağlantıyı hemen kapatmaz; cihazın bağlantısını kesmeden önce bir `(230 * 1.5) - 230 = 115` saniye bekler ve [404104 Deviceconnectioncloseduzaktan](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)hatası. 
+Örneğin, Java SDK'yı kullanan bir aygıt canlı kalma ping'ini gönderir ve ağ bağlantısını kaybeder. 230 saniye sonra cihaz, çevrimdışı olduğu için canlı tutma pingini kaçırıyor. Ancak, IoT Hub bağlantıyı hemen kapatmaz - `(230 * 1.5) - 230 = 115` [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)hatası ile aygıtın bağlantısını kesmeden önce bir saniye daha bekler. 
 
-Ayarlayabileceğiniz maksimum istemci etkin tutma değeri `1767 / 1.5 = 1177` saniyedir. Tüm trafik etkin tut ' a sıfırlanır. Örneğin, başarılı bir SAS belirteci yenilemesi canlı tutmayı sıfırlar.
+Ayarlayabildiğiniz maksimum istemci tutma `1767 / 1.5 = 1177` değeri saniyedir. Herhangi bir trafik canlı tutmak sıfırlar. Örneğin, başarılı bir SAS belirteci yenilemesi canlı tutmayı sıfırlar.
 
-### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Bir cihaz uygulamasını AMQP 'den MQTT 'ye geçirme
+### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Bir aygıt uygulamasını AMQP'dan MQTT'ye geçirme
 
-[Cihaz SDK](https://github.com/Azure/azure-iot-sdks)'larını kullanıyorsanız AMQP Ile MQTT arasında geçiş yapmak için, daha önce belirtildiği gibi istemci başlatılmasında protokol parametresinin değiştirilmesini gerektirir.
+[SDK'ları](https://github.com/Azure/azure-iot-sdks)kullanıyorsanız, AMQP'dan MQTT'ye geçmek, istemci başlatmada daha önce belirtildiği gibi protokol parametresini değiştirmeyi gerektirir.
 
-Bunu yaparken, aşağıdaki öğeleri denetlediğinizden emin olun:
+Bunu yaparken, aşağıdaki öğeleri kontrol ettiğinizden emin olun:
 
-* AMQP, çok sayıda koşul için hatalar döndürüyor, ancak MQTT bağlantıyı sonlandırır. Sonuç olarak, özel durum işleme mantığınızın bazı değişiklikler gerektirebilirler.
+* AmQP birçok koşuliçin hataları döndürür, MQTT ise bağlantıyı sonlandırır. Sonuç olarak, özel durum işleme mantığınız bazı değişiklikler gerektirebilir.
 
-* MQTT, [buluttan cihaza iletileri](iot-hub-devguide-messaging.md)alırken *reddetme* işlemlerini desteklemez. Arka uç uygulamanızın cihaz uygulamasından bir yanıt alması gerekiyorsa, [doğrudan Yöntemler](iot-hub-devguide-direct-methods.md)kullanmayı göz önünde bulundurun.
+* MQTT, [buluttan aygıta iletiler](iot-hub-devguide-messaging.md)alırken *reddetme* işlemlerini desteklemez. Arka uç uygulamanızın cihaz uygulamasından yanıt alması gerekiyorsa, [doğrudan yöntemler](iot-hub-devguide-direct-methods.md)kullanmayı düşünün.
 
-* AMQP, Python SDK 'sında desteklenmez
+* Python SDK'da AMQP desteklenmez
 
-## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>MQTT protokolünü doğrudan kullanma (cihaz olarak)
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>MQTT protokolünü doğrudan kullanma (aygıt olarak)
 
-Bir cihaz, cihaz SDK 'larını kullanalamazsanız, bağlantı noktası 8883 üzerindeki MQTT protokolünü kullanarak ortak cihaz uç noktalarına bağlanabilir. **Bağlantı** paketinde, cihaz aşağıdaki değerleri kullanmalıdır:
+Bir aygıt Aygıtı SDK'ları kullanamıyorsa, bağlantı noktası 8883'teki MQTT protokolünü kullanarak ortak aygıt uç noktalarına bağlanmaya devam edebilir. **CONNECT** paketinde aygıt aşağıdaki değerleri kullanmalıdır:
 
-* **ClientID** alanı Için, **DeviceID**'yi kullanın.
+* **ClientId** alanı için **deviceId'i**kullanın.
 
-* **Kullanıcı adı** alanı için, `{iothubhostname}` IoT Hub 'ının tam CNAME 'i olan `{iothubhostname}/{device_id}/?api-version=2018-06-30`kullanın.
+* Kullanıcı **adı** alanı için, `{iothubhostname}` IoT hub'ının tam CName'si nerede yatsın. `{iothubhostname}/{device_id}/?api-version=2018-06-30`
 
-    Örneğin, IoT Hub 'ınızın adı **contoso.Azure-Devices.net** ise ve cihazınızın adı **MyDevice01**Ise, tam **Kullanıcı adı** alanı şunları içermelidir:
+    Örneğin, IoT hub'ınızın adı **contoso.azure-devices.net** ve cihazınızın adı **MyDevice01**ise, tam **Kullanıcı Adı** alanı şunları içermelidir:
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
-* **Parola** alanı IÇIN bir SAS belirteci kullanın. SAS belirtecinin biçimi hem HTTPS hem de AMQP protokolleriyle aynıdır:
+* **Parola** alanı için bir SAS belirteci kullanın. SAS belirteci biçimi hem HTTPS hem de AMQP protokolleri için aynıdır:
 
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > X. 509.952 sertifikası kimlik doğrulamasını kullanıyorsanız SAS belirteç parolaları gerekmez. Daha fazla bilgi için bkz. [Azure IoT Hub 'Da X. 509.440 güvenliğini ayarlama](iot-hub-security-x509-get-started.md) ve [aşağıdaki](#tlsssl-configuration)kod yönergelerini izleyin.
+  > X.509 sertifika kimlik doğrulaması kullanıyorsanız, SAS belirteç parolaları gerekmez. Daha fazla bilgi için Azure [IoT Hub'ınızda X.509 güvenlik ayarlama'ya](iot-hub-security-x509-get-started.md) bakın ve [aşağıdaki](#tlsssl-configuration)kod yönergelerini izleyin.
 
-  SAS belirteçleri oluşturma hakkında daha fazla bilgi için [IoT Hub güvenlik belirteçlerini kullanma](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)konusunun cihaz bölümüne bakın.
+  SAS belirteçlerinin nasıl üretilenhakkında daha fazla bilgi [için, IoT Hub güvenlik belirteçlerini kullanmanın](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)aygıt bölümüne bakın.
 
-  Test edilirken, kendi kodunuza kopyalayabileceğiniz ve yapıştırabileceğiniz bir SAS belirtecini hızlıca oluşturmak için [Visual Studio Code için platformlar arası Azure IoT araçlarını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) veya [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) aracını da kullanabilirsiniz:
+  Test ederken, görsel stüdyo kodu için çapraz platform [Azure IoT Araçlarını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) veya Kendi kodunuza kopyalayıp yapıştırabileceğiniz bir SAS belirteci oluşturmak için [Aygıt Gezgini](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) aracını da kullanabilirsiniz:
 
-### <a name="for-azure-iot-tools"></a>Azure IoT araçları için
+### <a name="for-azure-iot-tools"></a>Azure IoT Araçları için
 
-1. Visual Studio Code sol alt köşesindeki **Azure ıOT hub cihazları** sekmesini genişletin.
+1. Visual Studio Code'un sol alt köşesindeki **AZURE IOT HUB AYGıTlar** sekmesini genişletin.
   
-2. Cihazınıza sağ tıklayın ve **cihaz IÇIN SAS belirteci oluştur**' u seçin.
+2. Cihazınıza sağ tıklayın ve **Aygıt için SAS Belirteci Oluştur'u**seçin.
   
-3. **Süre sonu saatini** ayarlayın ve ' Enter ' tuşuna basın.
+3. **Son kullanma tarihini** ayarlayın ve 'Enter' tuşuna basın.
   
-4. SAS belirteci oluşturulup panoya kopyalanır.
+4. SAS belirteci oluşturulur ve panoya kopyalanır.
 
-### <a name="for-device-explorer"></a>Device Explorer için
+### <a name="for-device-explorer"></a>Aygıt Gezgini için
 
-1. **Device Explorer** **Yönetim** sekmesine gidin.
+1. **Aygıt Gezgini'nde** **Yönetim** sekmesine gidin.
 
-2. **SAS belirteci** (sağ üst) seçeneğine tıklayın.
+2. **SAS Belirteci'ni** tıklatın (sağ üstte).
 
-3. **Sastokenform**'Da, **DeviceID** açılan penceresinde cihazınızı seçin. **TTL**'nizi ayarlayın.
+3. **SASTokenForm'da** **DeviceID** açılır durumda cihazınızı seçin. **TTL'nizi**ayarlayın.
 
-4. Belirtecinizi oluşturmak için **Oluştur** ' a tıklayın.
+4. Belirtecinizi oluşturmak için **Oluştur'u** tıklatın.
 
    Oluşturulan SAS belirteci aşağıdaki yapıya sahiptir:
 
    `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
-   Bu belirtecin MQTT kullanarak bağlanmak için **parola** alanı olarak kullanılacak bölümü:
+   MQTT kullanarak bağlanmak için **Parola** alanı olarak kullanılacak bu belirteç parçası:
 
    `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
-MQTT paketleri bağlama ve bağlantısını kesme için, IoT Hub **Işlemler izleme** kanalında bir olay yayınlar. Bu olay, bağlantı sorunlarını gidermenize yardımcı olabilecek ek bilgiler içerir.
+MQTT'nin paketleri bağlaması ve bağlantısını kesmesi için, IoT Hub **Operations Monitoring** kanalında bir olay yayınlar. Bu olay, bağlantı sorunlarını gidermenize yardımcı olabilecek ek bilgilere sahiptir.
 
-Cihaz uygulaması, **Connect** paketinde bir **yapılacak** ileti belirtebilir. Cihaz **uygulamasının, bir** telemetri iletisi **olarak iletileceği iletileri tanımlayacak** `devices/{device_id}/messages/events/` veya `devices/{device_id}/messages/events/{property_bag}` kullanması gerekir. Bu durumda, ağ bağlantısı kapatılırsa, ancak cihazdan bir **bağlantı kesme** paketi daha önce alınmıyorsa IoT Hub, **Connect** paketinde sağlanan **yapılacak** iletiyi telemetri kanalına gönderir. Telemetri kanalı, varsayılan **Olaylar** uç noktası ya da IoT Hub yönlendirme tarafından tanımlanan özel bir uç nokta olabilir. İleti, bir değeri olan **ıothub-MessageType** özelliğine sahip **olur** .
+Cihaz uygulaması **CONNECT** paketinde **bir Will** iletisi belirtebilir. Cihaz uygulaması, `devices/{device_id}/messages/events/` bir `devices/{device_id}/messages/events/{property_bag}` telemetri iletisi olarak iletilecek **Will** iletilerini tanımlamak için **Will** topic adını kullanmalıdır. Bu durumda, ağ bağlantısı kapalıysa, ancak aygıttan daha önce bir **DISCONNECT** paketi alınmamışsa, IoT Hub **CONNECT** paketinde verilen **Will** iletisini telemetri kanalına gönderir. Telemetri kanalı varsayılan **Olaylar** bitiş noktası veya IoT Hub yönlendirmesi tarafından tanımlanan özel bir bitiş noktası olabilir. İleti, kendisine atanan **Will** değerine sahip **iothub-MessageType** özelliğine sahiptir.
 
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Azure IoT C SDK 'Sı olmadan MQTT kullanan C kodu örneği
-Bu [depoda](https://github.com/Azure-Samples/IoTMQTTSample), telemetri iletilerinin nasıl gönderileceğini gösteren birkaç C/C++ demo projesi bulacaksınız, Azure IoT C SDK 'sını kullanmadan bir IoT Hub ile olay alma. 
+### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Azure IoT C SDK olmadan MQTT kullanarak C kodu örneği
+Bu [depoda,](https://github.com/Azure-Samples/IoTMQTTSample)Azure IoT C SDK'yı kullanmadan telemetri iletilerinin nasıl gönderilebildiğini, ioT hub'ı ile etkinlik nasıl alınacağını gösteren birkaç C/C++ demo projesi bulacaksınız. 
 
-Bu örnekler, IoT Hub 'ında uygulanan MQTT aracısına ileti göndermek için tutulma mosquıto kitaplığını kullanır.
+Bu örnekler, Eclipse Mosquitto kitaplığını kullanarak IoT hub'ında uygulanan MQTT Broker'a mesaj gönderir.
 
 Bu depo şunları içerir:
 
 **Windows için:**
 
-* TelemetryMQTTWin32: bir Windows makinesinde oluşturulup çalıştırılan bir Azure IoT Hub 'ına telemetri iletisi göndermek için kod içerir.
+* TelemetryMQTTWin32: Windows makinesinde oluşturulmuş ve çalıştırılan bir Azure IoT hub'ına telemetri iletisi göndermek için kod içerir.
 
-* SubscribeMQTTWin32: bir Windows makinesindeki belirli bir IoT Hub 'ının olaylarına abone olmak için kod içerir.
+* SubscribeMQTTWin32: Windows makinesinde belirli bir IoT hub'ındaki olaylara abone olmak için kod içerir.
 
-* DeviceTwinMQTTWin32: bir Windows makinesindeki Azure IoT Hub 'ındaki bir cihazın cihaz ikizi olaylarını sorgulamak ve abone olmak için kod içerir.
+* DeviceTwinMQTTWin32: Windows makinesindeki Azure IoT hub'ındaki bir aygıtın aygıttaki ikiz olaylarını sorgulamak ve abone olmak için kod içerir.
 
-* PnPMQTTWin32: bir Windows makinesinde oluşturulup çalıştırılan bir Azure IoT Hub 'ına IoT eklentisi & oynatma önizleme cihaz özellikleri içeren bir telemetri iletisi göndermek için kod içerir. IoT eklentisi & [buradan](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) oynat
+* PnPMQTTWin32: IoT Plug & Play önizleme Aygıtı özelliklerini bir Windows makinesinde oluşturulmuş ve çalıştıran bir Azure IoT hub'ına içeren bir telemetri iletisi göndermek için kod içerir. Burada IoT Fiş [here](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) & play hakkında daha fazla
 
 **Linux için:**
 
-* MQTTLinux: Linux üzerinde çalıştırılacak kod ve derleme betiği içerir (WSL, Ubuntu ve Raspbian şu ana kadar sınanmıştır).
+* MQTTLinux: Linux üzerinde çalıştırmak için kod ve yapı komut dosyası içerir (WSL, Ubuntu ve Raspbian şimdiye kadar test edilmiştir).
 
-* LinuxConsoleVS2019: aynı kodu içerir, ancak WSL 'yi hedefleyen bir VS2019 projesi (Windows Linux alt sistemi). Bu proje, Visual Studio 'da Linux adımında çalışan kodun hatalarını ayıklamanıza olanak tanır.
+* LinuxConsoleVS2019: aynı kodu içerir ancak WSL'yi (Windows Linux alt sistemi) hedefleyen bir VS2019 projesinde. Bu proje Visual Studio'dan Linux'ta adım adım çalışan kodu hata ayıklamanızı sağlar.
 
-**Mosquitto_pub için:**
+**mosquitto_pub için:**
 
-Bu klasör, Mosquitto.org tarafından sağlanan mosquitto_pub yardımcı program aracıyla kullanılan iki örnek komut içerir.
+Bu klasör, Mosquitto.org tarafından sağlanan mosquitto_pub yardımcı araçla birlikte kullanılan iki örnek komutu içerir.
 
-* Mosquitto_sendmessage: bir Azure IoT Hub 'ına cihaz olarak davranan basit bir kısa mesaj göndermek için.
+* Mosquitto_sendmessage: Aygıt görevi görehareket eden bir Azure IoT hub'ına basit bir kısa mesaj göndermek.
 
-* Mosquitto_subscribe: bir Azure IoT Hub 'ında gerçekleşen olayları görmek için.
+* Mosquitto_subscribe: Bir Azure IoT hub'ında meydana gelen olayları görmek için.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>MQTT protokolünü doğrudan kullanma (modül olarak)
 
-Modül kimliğini kullanarak MQTT üzerinden IoT Hub bağlantı, cihaza benzerdir ( [yukarıda](#using-the-mqtt-protocol-directly-as-a-device)açıklanmıştır) ancak aşağıdakileri kullanmanız gerekir:
+Bir modül kimliği kullanarak MQTT üzerinden IoT Hub'a bağlanmak aygıta benzer [(yukarıda](#using-the-mqtt-protocol-directly-as-a-device)açıklanan) ancak aşağıdakileri kullanmanız gerekir:
 
-* İstemci KIMLIĞINI `{device_id}/{module_id}`olarak ayarlayın.
+* İstemci kimliğini `{device_id}/{module_id}`' ye ayarlayın
 
-* Kullanıcı adı ve parolayla kimlik doğrulaması yapıyorsa, Kullanıcı adını `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` olarak ayarlayın ve parola olarak modül kimliğiyle ilişkili SAS belirtecini kullanın.
+* Kullanıcı adı ve parolayla kimlik doğrulaması yapacaksanız, kullanıcı adını modül kimliğiyle ilişkili SAS belirteci parolanız olarak ayarlayın `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` ve kullanın.
 
-* Telemetriyi yayımlamak için konu olarak `devices/{device_id}/modules/{module_id}/messages/events/` kullanın.
+* Telemetri yayınlamak için konu olarak kullanın. `devices/{device_id}/modules/{module_id}/messages/events/`
 
-* `devices/{device_id}/modules/{module_id}/messages/events/` olarak, bu konu başlığı altında kullanın.
+* WILL `devices/{device_id}/modules/{module_id}/messages/events/` konusu olarak kullanın.
 
-* İkizi GET ve PATCH konuları modüller ve cihazlar için aynıdır.
+* İkiz GET ve PATCH konuları modüller ve aygıtlar için aynıdır.
 
-* İkizi durumu konusu modüller ve cihazlar için aynıdır.
+* İkiz durum konusu modüller ve aygıtlar için aynıdır.
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL yapılandırması
 
-MQTT protokolünü doğrudan kullanmak için, istemciniz TLS/SSL *üzerinden bağlanmalıdır.* Bu adımı atlama denemeleri bağlantı hatalarıyla başarısız olur.
+MQTT protokolünü doğrudan kullanmak için istemcinizin TLS/SSL üzerinden bağlanması *gerekir.* Bu adımı atlama girişimleri bağlantı hataları ile başarısız oldu.
 
-Bir TLS bağlantısı kurmak için DigiCert Baltidaha daha fazla kök sertifikasını indirmeniz ve başvurmanız gerekebilir. Bu sertifika, Azure 'un bağlantıyı güvenli hale getirmek için kullandığı bir sertifikadır. Bu sertifikayı [Azure-IoT-SDK-c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) deposunda bulabilirsiniz. Bu sertifikalar hakkında daha fazla bilgi, [DigiCert 'ın Web sitesinde](https://www.digicert.com/digicert-root-certificates.htm)bulunabilir.
+TLS bağlantısı kurmak için DigiCert Baltimore Root Sertifikası'nı indirmeniz ve başvurmanız gerekebilir. Bu sertifika, Azure'un bağlantıyı korumak için kullandığı sertifikadır. Bu sertifikayı [Azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) deposunda bulabilirsiniz. Bu sertifikalar hakkında daha fazla bilgiyi [Digicert'in web sitesinde](https://www.digicert.com/digicert-root-certificates.htm)bulabilirsiniz.
 
-Bunu, tutulma temeli tarafından [PAHO MQTT kitaplığı](https://pypi.python.org/pypi/paho-mqtt) 'nın Python sürümü kullanarak nasıl uygulayacağınızı gösteren bir örnek aşağıdaki gibi görünebilir.
+Eclipse Vakfı tarafından [Paho MQTT kitaplığın](https://pypi.python.org/pypi/paho-mqtt) Python sürümünü kullanarak bu nasıl uygulanacağını bir örnek aşağıdaki gibi görünebilir.
 
-İlk olarak, komut satırı ortamınızdan PAHO kitaplığı 'nı yükleme:
+İlk olarak, komut satırı ortamınızdan Paho kitaplığını yükleyin:
 
 ```cmd/sh
 pip install paho-mqtt
 ```
 
-Ardından, istemcisini bir Python betiğine uygulayın. Yer tutucuları aşağıdaki gibi değiştirin:
+Ardından, istemciyi Python komut dosyasında uygulayın. Yer tutucuları aşağıdaki gibi değiştirin:
 
-* `<local path to digicert.cer>`, DigiCert Baltidaha fazla kök sertifikasını içeren yerel bir dosyanın yoludur. Bu dosyayı, sertifika bilgilerini C için Azure IoT SDK 'sindeki [CERT. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) ' den kopyalayarak oluşturabilirsiniz. satırları `-----BEGIN CERTIFICATE-----` ve `-----END CERTIFICATE-----`ekleyin, her satırın başındaki ve sonundaki `"` işaretlerini kaldırın ve her satırın sonundaki `\r\n` karakterleri kaldırın.
+* `<local path to digicert.cer>`DigiCert Baltimore Root sertifikasını içeren yerel bir dosyaya giden yoldur. Bu dosyayı, [Certs.c'deki](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) sertifika bilgilerini C için Azure IoT SDK'dan `-----END CERTIFICATE-----`kopyalayarak `"` oluşturabilir ve satırları `-----BEGIN CERTIFICATE-----` eklemeve , her `\r\n` satırın başındaki ve sonundaki işaretleri kaldırabilir ve her satırın sonundaki karakterleri kaldırabilirsiniz.
 
-* `<device id from device registry>`, IoT Hub 'ınıza eklediğiniz bir cihazın KIMLIĞIDIR.
+* `<device id from device registry>`IoT hub'ınıza eklediğiniz bir aygıtın kimliğidir.
 
-* `<generated SAS token>`, bu makalede daha önce açıklandığı gibi oluşturulan cihaz için bir SAS belirtecidir.
+* `<generated SAS token>`bu makalede daha önce açıklandığı gibi oluşturulan aygıt için bir SAS belirtecidir.
 
-* IoT Hub 'ınızın adını `<iot hub name>`.
+* `<iot hub name>`IoT hub'ınızın adı.
 
 ```python
 from paho.mqtt import client as mqtt
@@ -264,7 +264,7 @@ client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
 
-Bir cihaz sertifikası kullanarak kimlik doğrulaması yapmak için yukarıdaki kod parçacığını aşağıdaki değişikliklerle güncelleştirin (bkz. sertifika tabanlı kimlik doğrulamasına hazırlanma hakkında [bir X. 509.952 CA sertifikası alma](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) ):
+Aygıt sertifikası kullanarak kimlik doğrulaması yapmak için yukarıdaki kod parçacıklarını aşağıdaki değişikliklerle güncelleştirin (sertifika tabanlı kimlik doğrulamasına nasıl hazırlanacağınız hakkında [X.509 CA sertifikası](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) nasıl alınır' a bakın):
 
 ```python
 # Create the client as before
@@ -284,44 +284,44 @@ client.tls_set(ca_certs=path_to_root_cert, certfile=cert_file, keyfile=key_file,
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
 ```
 
-## <a name="sending-device-to-cloud-messages"></a>Cihazdan buluta iletiler gönderme
+## <a name="sending-device-to-cloud-messages"></a>Aygıttan buluta iletigönderme
 
-Başarılı bir bağlantı yaptıktan sonra, bir cihaz `devices/{device_id}/messages/events/` veya `devices/{device_id}/messages/events/{property_bag}` bir **Konu adı**olarak IoT Hub ileti gönderebilir. `{property_bag}` öğesi, cihazın URL kodlamalı bir biçimde ek özelliklerle ileti göndermesini sağlar. Örnek:
+Başarılı bir bağlantı yaptıktan sonra, bir aygıt IoT `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` Hub'a **Konu Adı**kullanarak veya olarak ileti gönderebilir. Öğe, `{property_bag}` aygıtın url kodlanmış biçimde ek özelliklere sahip iletiler göndermesini sağlar. Örnek:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
 ```
 
 > [!NOTE]
-> Bu `{property_bag}` öğesi, HTTPS protokolünde sorgu dizeleriyle aynı kodlamayı kullanır.
+> Bu `{property_bag}` öğe, HTTPS protokolünde sorgu dizeleri ile aynı kodlamayı kullanır.
 
-IoT Hub uygulamaya özgü davranışların bir listesi aşağıda verilmiştir:
+Aşağıda, IoT Hub uygulamasına özgü davranışların bir listesi vetir:
 
-* IoT Hub, QoS 2 iletilerini desteklemez. Bir cihaz uygulaması **QoS 2**ile bir ileti yayımladığında, IoT Hub ağ bağlantısını kapatır.
+* IoT Hub, QoS 2 iletilerini desteklemez. Bir aygıt uygulaması **QoS 2**ile bir ileti yayımlarsa, IoT Hub ağ bağlantısını kapatır.
 
-* IoT Hub iletileri kalıcı olarak sürdürmez. Bir cihaz, **bekletme** bayrağı 1 olarak ayarlanmış bir ileti gönderirse, IoT Hub **x-Opt-Opt** uygulama özelliğini iletiye ekler. Bu durumda, bekletme iletisini kalıcı hale getirmeniz yerine IoT Hub arka uç uygulamasına geçirir.
+* IoT Hub iletileri saklamada kalıcı değildir. Bir aygıt **RETAIN** bayrağı kümesi 1'e ayarlanmış bir ileti gönderirse, IoT Hub iletiye **x-opt-retain** uygulama özelliğini ekler. Bu durumda, ioT Hub iletiyi tutma iletisini kalıcı hale getirmek yerine arka uç uygulamasına geçirir.
 
-* IoT Hub, cihaz başına yalnızca bir etkin MQTT bağlantısını destekler. Aynı cihaz KIMLIĞI adına göre yeni MQTT bağlantısı, IoT Hub var olan bağlantıyı bırakmaya neden olur.
+* IoT Hub, aygıt başına yalnızca bir etkin MQTT bağlantısını destekler. Aynı aygıt kimliği adına yapılan herhangi bir yeni MQTT bağlantısı, IoT Hub'ın varolan bağlantıyı bırakmasına neden olur.
 
-Daha fazla bilgi için bkz. [mesajlaşma Geliştirici Kılavuzu](iot-hub-devguide-messaging.md).
+Daha fazla bilgi için [Mesajlaşma geliştiricisi kılavuzuna](iot-hub-devguide-messaging.md)bakın.
 
-## <a name="receiving-cloud-to-device-messages"></a>Buluttan cihaza iletileri alma
+## <a name="receiving-cloud-to-device-messages"></a>Buluttan aygıta ileti alma
 
-IoT Hub ileti almak için, bir cihazın bir **Konu filtresi**olarak `devices/{device_id}/messages/devicebound/#` kullanarak abone olması gerekir. Konu filtresindeki çok düzeyli joker karakter `#` yalnızca cihazın konu adında ek özellikler almasına izin vermek için kullanılır. IoT Hub, alt konuların filtrelenmesi için `#` veya `?` joker karakterlerinden kullanılmasına izin vermez. IoT Hub, genel amaçlı bir yayın-Sub mesajlaşma Aracısı olmadığından, yalnızca belgelenen konu adlarını ve konu filtrelerini destekler.
+IoT Hub'dan ileti almak için, `devices/{device_id}/messages/devicebound/#` bir aygıtın **Konu Filtresi**olarak abone olması gerekir. Konu Filtresi'ndeki `#` çok düzeyli joker karakter yalnızca aygıtın konu adında ek özellikler almasına izin vermek için kullanılır. IoT Hub alt konuları filtreleme `?` için joker veya joker kartların kullanımına `#` izin vermez. IoT Hub genel amaçlı bir pub-alt mesajlaşma aracısı olmadığından, yalnızca belgelenen konu adlarını ve konu filtrelerini destekler.
 
-Cihaz, `devices/{device_id}/messages/devicebound/#` konu filtresiyle temsil edilen cihaza özgü uç noktaya başarıyla abone olana kadar IoT Hub ileti almaz. Abonelik kurulduktan sonra cihaz, abonelik zamanından sonra kendisine gönderilen buluttan cihaza iletiler alır. Cihaz **Cleansession** bayrağı **0**olarak ayarlandıysa, abonelik farklı oturumlarda kalıcı hale getirilir. Bu durumda, cihazın bir dahaki sefer **Cleansession 0** ile bağlanması, bağlantısı kesilirken kendisine gönderilen bekleyen iletileri alır. Cihaz, **Cleansession** bayrağını **1** olarak ayarlandıysa, cihaz uç noktasına abone olana kadar IoT Hub ileti almaz.
+Cihaz, `devices/{device_id}/messages/devicebound/#` konu filtresi tarafından temsil edilen aygıta özgü bitiş noktasına başarıyla abone olana kadar IoT Hub'dan herhangi bir ileti almaz. Bir abonelik kurulduktan sonra, aygıt abonelik saatinden sonra gönderilen buluttan aygıta iletileri alır. Aygıt **CleanSession** bayrağına 0 olarak **0**ayarlanmış olarak bağlanırsa, abonelik farklı oturumlarda kalıcıdır. Bu durumda, aygıt **CleanSession 0'a** bir sonraki bağlanında bağlantısı kesilirken ona gönderilen olağanüstü iletileri alır. Aygıt **CleanSession** bayrak kümesini **1** olarak kullanıyorsa, aygıt bitiş noktasına abone olana kadar IoT Hub'dan herhangi bir ileti almaz.
 
-IoT Hub **Konu adı** `devices/{device_id}/messages/devicebound/`veya ileti özellikleri olduğunda `devices/{device_id}/messages/devicebound/{property_bag}` ileti sunar. `{property_bag}`, ileti özelliklerinin URL kodlamalı anahtar/değer çiftlerini içerir. Özellik paketine yalnızca uygulama özellikleri ve Kullanıcı tarafından ayarlanabilir sistem özellikleri (örneğin, **MessageID** veya **bağıntıkimliği**) dahil edilir. Sistem özelliği adlarının ön eki **$** , uygulama özellikleri ön ek olmadan özgün özellik adını kullanır.
+IoT **Hub, Konu Adı** `devices/{device_id}/messages/devicebound/`veya `devices/{device_id}/messages/devicebound/{property_bag}` ileti özellikleri olduğunda iletiler sunar. `{property_bag}`ileti özelliklerinin url kodlanmış anahtar/değer çiftleri içerir. Özellik çantasına yalnızca uygulama özellikleri ve kullanıcı ayarlanamasa sistem özellikleri **(messageId** veya **correlationId**gibi) dahildir. Sistem özelliği adları önek **$** var, uygulama özellikleri önek ile özgün özellik adını kullanın.
 
-Bir cihaz uygulaması **QoS 2**ile bir konuya abone olduğunda IoT Hub, **suback** paketinde en fazla QoS düzey 1 ' i verir. Bundan sonra, IoT Hub QoS 1 kullanarak cihaza ileti teslim eder.
+Bir cihaz uygulaması **QoS 2**ile bir konuya abone olduğunda, IoT Hub **SUBACK** paketinde maksimum QoS düzeyi 1 verir. Bundan sonra, IoT Hub QoS 1 kullanarak cihaza iletiler sunar.
 
-## <a name="retrieving-a-device-twins-properties"></a>Bir cihaz ikizi özelliklerini alma
+## <a name="retrieving-a-device-twins-properties"></a>Aygıt ikizinin özelliklerini alma
 
-İlk olarak, bir cihaz işlemin yanıtlarını almak için `$iothub/twin/res/#`abone olur. Daha sonra, `$iothub/twin/GET/?$rid={request id}`konuya boş bir ileti gönderir ve **Istek kimliği**için doldurulmuş bir değer vardır. Hizmet daha sonra, istekle aynı **Istek kimliğini** kullanarak `$iothub/twin/res/{status}/?$rid={request id}`konu başlığı altında cihaz ikizi verilerini içeren bir yanıt iletisi gönderir.
+İlk olarak, bir `$iothub/twin/res/#`aygıt, işlemin yanıtlarını almak için abone olunur. Daha sonra, **istek kimliği** `$iothub/twin/GET/?$rid={request id}`için doldurulan bir değere sahip konuya boş bir ileti gönderir. Hizmet daha sonra, istekle aynı istek `$iothub/twin/res/{status}/?$rid={request id}` **kimliğini** kullanarak aygıt konusuyla ilgili ikiz verileri içeren bir yanıt iletisi gönderir.
 
-İstek KIMLIĞI, ileti özelliği değeri için geçerli bir değer olabilir, [IoT Hub mesajlaşma geliştiricisi kılavuzu 'na](iot-hub-devguide-messaging.md)göre ve durum bir tamsayı olarak onaylanır.
+İstek Kimliği, [IoT Hub mesajlaşma geliştiricisi kılavuzuna](iot-hub-devguide-messaging.md)göre ileti özelliği değeri için geçerli bir değer olabilir ve durum tamsayı olarak doğrulanır.
 
-Yanıt gövdesi, aşağıdaki yanıt örneğinde gösterildiği gibi, Device ikizi 'ın Özellikler bölümünü içerir:
+Yanıt gövdesi, aşağıdaki yanıt örneğinde gösterildiği gibi aygıt ikizinin özellikleri bölümünü içerir:
 
 ```json
 {
@@ -345,21 +345,21 @@ Olası durum kodları şunlardır:
 | 429 | [IoT Hub azaltma](iot-hub-devguide-quotas-throttling.md) başına çok fazla istek (daraltılmış) |
 | 5** | Sunucu hataları |
 
-Daha fazla bilgi için bkz. [cihaz TWINS Geliştirici Kılavuzu](iot-hub-devguide-device-twins.md).
+Daha fazla bilgi için [Device ikizleri geliştirici kılavuzuna](iot-hub-devguide-device-twins.md)bakın.
 
-## <a name="update-device-twins-reported-properties"></a>Cihaz ikizi bildirilen özelliklerini güncelleştir
+## <a name="update-device-twins-reported-properties"></a>Aygıt ikizinin bildirilen özelliklerini güncelleştirme
 
-Bildirilen özellikleri güncelleştirmek için cihaz, belirlenen bir MQTT konusunun yayını üzerinden IoT Hub bir istek yayınlar. İstek işlendikten sonra, IoT Hub güncelleştirme işleminin başarı veya başarısızlık durumunu başka bir konuya yayınlar. Bu konu, ikizi Güncelleştirme isteğinin sonucu hakkında bilgilendirmek üzere cihaza abone olabilir. MQTT 'de bu tür bir istek/yanıt etkileşimini uygulamak için, güncelleştirme isteğinde başlangıçta cihaz tarafından belirtilen istek KIMLIĞI (`$rid`) kavramından faydalanır. Bu istek KIMLIĞI, cihazın yanıtı belirli bir önceki isteğiyle ilişkilendirme izni vermek için IoT Hub yanıtı da dahil edilir.
+Bildirilen özellikleri güncelleştirmek için aygıt, belirlenen bir MQTT konusu üzerinden bir yayın yoluyla IoT Hub'a bir istek yayınlar. İsteği işledikten sonra, IoT Hub güncelleştirme işleminin başarı veya hata durumunu başka bir konuya yayın yoluyla yanıtlar. Bu konu, ikiz güncelleştirme isteğinin sonucunu bildirmek için cihaz tarafından abone edilebilir. MQTT'de bu tür bir istek/yanıt etkileşimi uygulamak için, başlangıçta aygıtın güncelleştirme isteğinde sağladığı istek kimliği ()`$rid`kavramından yararlanırız. Bu istek kimliği, aygıtın yanıtı belirli önceki isteğiyle ilişkilendirmesine izin vermek için IoT Hub'ın yanıtına da eklenir.
 
-Aşağıdaki sıra, bir cihazın IoT Hub cihaz ikizi bildirilen özelliklerini nasıl güncelleştirçalıştığını açıklar:
+Aşağıdaki sıra, aygıtın IoT Hub'daki aygıt ikizinde bildirilen özellikleri nasıl güncellebildiğini açıklar:
 
-1. Bir cihazın, işlemin IoT Hub yanıtlarını almak için öncelikle `$iothub/twin/res/#` konusuna abone olması gerekir.
+1. Bir aygıtın işlemin `$iothub/twin/res/#` yanıtlarını IoT Hub'dan almak için öncelikle konuya abone olması gerekir.
 
-2. Bir cihaz, `$iothub/twin/PATCH/properties/reported/?$rid={request id}` konusuna cihaz ikizi güncelleştirmesini içeren bir ileti gönderir. Bu ileti bir **Istek kimliği** değeri içerir.
+2. `$iothub/twin/PATCH/properties/reported/?$rid={request id}` Aygıt, konuya aygıt ikiz güncelleştirmesini içeren bir ileti gönderir. Bu ileti bir **istek kimliği** değeri içerir.
 
-3. Hizmet daha sonra `$iothub/twin/res/{status}/?$rid={request id}`konu başlığı altında bildirilen özellikler koleksiyonu için yeni ETag değerini içeren bir yanıt iletisi gönderir. Bu yanıt iletisi istekle aynı **Istek kimliğini** kullanır.
+3. Hizmet daha sonra, konuyla ilgili `$iothub/twin/res/{status}/?$rid={request id}`olarak bildirilen özellikler koleksiyonu için yeni ETag değerini içeren bir yanıt iletisi gönderir. Bu yanıt iletisi, istekle aynı **istek kimliğini** kullanır.
 
-İstek iletisi gövdesi, bildirilen özelliklerin yeni değerlerini içeren bir JSON belgesi içerir. JSON belgesindeki her üye, Device ikizi 'in belgesine karşılık gelen üyeyi güncelleştirir veya ekler. `null`olarak ayarlanan bir üye, kendisini içeren nesneden siler. Örnek:
+İstek iletisi gövdesi, bildirilen özellikler için yeni değerler içeren bir JSON belgesi içerir. JSON belgedeki her üye güncellenir veya aygıt ikizinin belgesine ilgili üyeyi ekler. Üye, `null`üyeyi içeren nesneden siler. Örnek:
 
 ```json
 {
@@ -372,12 +372,12 @@ Olası durum kodları şunlardır:
 
 |Durum | Açıklama |
 | ----- | ----------- |
-| 204 | Başarılı (hiçbir içerik döndürülmez) |
-| 400 | Hatalı Istek. Hatalı biçimlendirilmiş JSON |
+| 204 | Başarı (içerik döndürülür) |
+| 400 | Kötü istek. Yanlış Biçimlendirilmiş JSON |
 | 429 | [IoT Hub azaltma](iot-hub-devguide-quotas-throttling.md) başına çok fazla istek (daraltılmış) |
 | 5** | Sunucu hataları |
 
-Aşağıdaki Python kod parçacığı, MQTT üzerinden ikizi raporlanan Özellikler güncelleştirme işlemini gösterir (PAHO MQTT Client kullanılarak):
+Aşağıdaki python kodu snippet, MQTT (Paho MQTT istemcisi kullanarak) üzerinde ikiz bildirilen özellikleri güncelleştirme işlemi gösterir:
 
 ```python
 from paho.mqtt import client as mqtt
@@ -391,13 +391,13 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
                rid, twin_reported_property_patch, qos=0)
 ```
 
-Yukarıdaki ikizi bildirilen özellikler güncelleştirme işleminin başarılı olması durumunda, IoT Hub yayın iletisi şu konuya sahip olacaktır: `$iothub/twin/res/204/?$rid=1&$version=6`, burada `204`, başarıyı gösteren durum kodudur, `$rid=1` koddaki cihaz tarafından belirtilen istek KIMLIĞINE karşılık gelir ve `$version`, güncelleştirmeden sonra cihaz TWINS 'in bildirilen Özellikler bölümüne karşılık gelir.
+Yukarıda bildirilen ikiz özellikleri güncelleştirme işleminin başarısı üzerine, IoT Hub'dan gelen yayın iletisi şu konuya sahip olacaktır: `$iothub/twin/res/204/?$rid=1&$version=6`, başarıyı gösteren durum kodu nerededir, `204` `$rid=1` koddaki aygıt tarafından sağlanan istek kimliğine karşılık gelir ve `$version` güncelleştirmeden sonra aygıt ikizlerinin bildirilen özellikleri bölümüne karşılık gelir.
 
-Daha fazla bilgi için bkz. [cihaz TWINS Geliştirici Kılavuzu](iot-hub-devguide-device-twins.md).
+Daha fazla bilgi için [Device ikizleri geliştirici kılavuzuna](iot-hub-devguide-device-twins.md)bakın.
 
-## <a name="receiving-desired-properties-update-notifications"></a>İstenen özellikleri güncelleştirme bildirimleri alınıyor
+## <a name="receiving-desired-properties-update-notifications"></a>İstenilen özellikleri güncelleme bildirimlerini alma
 
-Bir cihaz bağlandığında IoT Hub, çözüm arka ucu tarafından gerçekleştirilen güncelleştirmenin içeriğini içeren `$iothub/twin/PATCH/properties/desired/?$version={new version}`konuya bildirim gönderir. Örnek:
+Bir aygıt bağlandığında, IoT Hub, çözüm `$iothub/twin/PATCH/properties/desired/?$version={new version}`arka uç tarafından gerçekleştirilen güncelleştirmenin içeriğini içeren konuya bildirimler gönderir. Örnek:
 
 ```json
 {
@@ -407,37 +407,37 @@ Bir cihaz bağlandığında IoT Hub, çözüm arka ucu tarafından gerçekleşti
 }
 ```
 
-Özellik güncelleştirmelerinde olduğu gibi `null` değerler JSON nesnesi üyesinin silinmekte olduğu anlamına gelir. Ayrıca `$version`, ikizi 'in istenen özellikler bölümünün yeni sürümünü gösterir.
+Özellik güncelleştirmeleri `null` gelince, değerler JSON nesne üyesi silindiği anlamına gelir. Ayrıca, ikiz `$version` istenilen özellikler bölümünün yeni sürümünü gösterir unutmayın.
 
 > [!IMPORTANT]
-> IoT Hub yalnızca cihazlar bağlıyken değişiklik bildirimleri oluşturur. İstenen özellikleri IoT Hub ile cihaz uygulaması arasında eşitlenmiş tutmak için [cihaz yeniden bağlantı akışını](iot-hub-devguide-device-twins.md#device-reconnection-flow) uyguladığınızdan emin olun.
+> IoT Hub, yalnızca aygıtlar bağlandığında değişiklik bildirimleri oluşturur. IoT Hub ile aygıt uygulaması arasında senkronize olmak için istenen özellikleri korumak için [aygıt yeniden bağlantı akışını](iot-hub-devguide-device-twins.md#device-reconnection-flow) uyguladığından emin olun.
 
-Daha fazla bilgi için bkz. [cihaz TWINS Geliştirici Kılavuzu](iot-hub-devguide-device-twins.md).
+Daha fazla bilgi için [Device ikizleri geliştirici kılavuzuna](iot-hub-devguide-device-twins.md)bakın.
 
 ## <a name="respond-to-a-direct-method"></a>Doğrudan bir yönteme yanıt verme
 
-İlk olarak, bir cihazın `$iothub/methods/POST/#`abone olması gerekir. IoT Hub, geçerli bir JSON ya da boş bir gövdele yöntem isteklerini konuya `$iothub/methods/POST/{method name}/?$rid={request id}`gönderir.
+İlk olarak, bir aygıtın `$iothub/methods/POST/#`abone olması gerekir. IoT Hub, geçerli bir `$iothub/methods/POST/{method name}/?$rid={request id}`JSON veya boş bir gövdeyle konuya yöntem istekleri gönderir.
 
-Yanıt vermek için, cihaz `$iothub/methods/res/{status}/?$rid={request id}`konu başlığı altında geçerli bir JSON veya boş gövde içeren bir ileti gönderir. Bu iletide, **istek kimliği** istek iletisindeki bir kimlikle eşleşmelidir ve **durum** bir tamsayı olmalıdır.
+Yanıt vermek için, aygıt konuya `$iothub/methods/res/{status}/?$rid={request id}`geçerli bir JSON veya boş gövdeiçeren bir ileti gönderir. Bu iletide, **istek kimliği** istek iletisindekiyle eşleşmeli ve **durum** bir tamsayı olmalıdır.
 
-Daha fazla bilgi için bkz. [doğrudan yöntem Geliştirici Kılavuzu](iot-hub-devguide-direct-methods.md).
+Daha fazla bilgi için [Doğrudan yöntem geliştirici kılavuzuna](iot-hub-devguide-direct-methods.md)bakın.
 
 ## <a name="additional-considerations"></a>Diğer konular
 
-Son dikkat olarak, bulut tarafında MQTT protokol davranışını özelleştirmeniz gerekirse, [Azure IoT protokolü ağ geçidini](iot-hub-protocol-gateway.md)gözden geçirmeniz gerekir. Bu yazılım, IoT Hub doğrudan arabirimlerini sağlayan yüksek performanslı bir özel protokol ağ geçidi dağıtmanıza olanak sağlar. Azure IoT protokolü ağ geçidi, cihaz protokolünü brownfield MQTT dağıtımlarını veya diğer özel protokolleri kapsayacak şekilde özelleştirmenize olanak sağlar. Ancak bu yaklaşım, çalıştırdığınız ve özel bir protokol ağ geçidi işletebilmeniz gerekir.
+Son bir düşünce olarak, bulut tarafında MQTT protokol davranışını özelleştirmeniz gerekiyorsa, [Azure IoT iletişim ağ geçidini](iot-hub-protocol-gateway.md)gözden geçirmelisiniz. Bu yazılım, doğrudan IoT Hub ile arabirim yapan yüksek performanslı özel bir ağ geçidi dağıtmanızı sağlar. Azure IoT iletişim ağ geçidi, cihaz protokolünü brownfield MQTT dağıtımlarını veya diğer özel protokolleri barındıracak şekilde özelleştirmenize olanak tanır. Ancak, bu yaklaşım, özel bir iletişim ağ geçidi çalıştırıp çalıştırmanızı gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 MQTT protokolü hakkında daha fazla bilgi edinmek için [MQTT belgelerine](https://mqtt.org/documentation)bakın.
 
-IoT Hub Dağıtımınızı planlama hakkında daha fazla bilgi edinmek için bkz.:
+IoT Hub dağıtımınızı planlama hakkında daha fazla bilgi edinmek için bkz:
 
 * [IoT için Azure Sertifikalı cihaz kataloğu](https://catalog.azureiotsolutions.com/)
-* [Ek protokolleri destekleme](iot-hub-protocol-gateway.md)
-* [Event Hubs ile karşılaştırın](iot-hub-compare-event-hubs.md)
-* [Ölçeklendirme, HA ve DR](iot-hub-scaling.md)
+* [Ek protokolleri destekleyin](iot-hub-protocol-gateway.md)
+* [Etkinlik Hub'larıyla karşılaştırın](iot-hub-compare-event-hubs.md)
+* [Ölçekleme, HA ve DR](iot-hub-scaling.md)
 
-IoT Hub yeteneklerini daha fazla incelemek için bkz.:
+IoT Hub'ın yeteneklerini daha fazla keşfetmek için bkz:
 
-* [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
-* [Azure IoT Edge ile uç cihazlara AI dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Hub geliştirici kılavuzu](iot-hub-devguide.md)
+* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)

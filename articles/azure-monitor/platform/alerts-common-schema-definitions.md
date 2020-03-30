@@ -1,24 +1,24 @@
 ---
-title: Azure Izleyici için ortak uyarı şeması tanımları
-description: Azure Izleyici için ortak uyarı şeması tanımlarını anlama
+title: Azure Monitör için ortak uyarı şeması tanımları
+description: Azure Monitörü için ortak uyarı şeması tanımlarını anlama
 author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275028"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
-Bu makalede, Web kancaları, Azure Logic Apps, Azure Işlevleri ve Azure Otomasyonu runbook 'ları gibi Azure Izleyici için [genel uyarı şeması tanımları](https://aka.ms/commonAlertSchemaDocs) açıklanmaktadır. 
+Bu makalede, web hooks, Azure Logic Apps, Azure İşlevler ve Azure Otomasyon runbook'lar dahil olmak üzere Azure Monitor için [ortak uyarı şeması tanımları](https://aka.ms/commonAlertSchemaDocs) açıklanmaktadır. 
 
-Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıklar. Bu örnekler, aşağıdaki bölümlerde ortak şemada açıklanmıştır:
-* **Essentials**: uyarının hangi kaynakla ilgili olduğunu açıklayan tüm uyarı türlerinde ortak olan standartlaştırılmış alanlar kümesi (örneğin, önem derecesi veya açıklama). 
-* **Uyarı bağlamı**: uyarı türüne göre değişen alanlarla, uyarının nedenini açıklayan bir alan kümesi. Örneğin, bir ölçüm uyarısı, uyarı bağlamındaki ölçüm adı ve ölçüm değeri gibi alanları içerir, ancak bir etkinlik günlüğü uyarısıyla uyarıyı oluşturan olay hakkında bilgi bulunur. 
+Herhangi bir uyarı örneği etkilenen kaynağı ve uyarının nedenini açıklar. Bu örnekler aşağıdaki bölümlerde ortak şema da açıklanmıştır:
+* **Temel Bilgiler**: Uyarının hangi kaynağın açık olduğunu açıklayan tüm uyarı türlerinde yaygın olan standartlaştırılmış alanlar kümesi ve ek ortak uyarı meta verileri (örneğin, önem derecesi veya açıklama). 
+* **Uyarı bağlamı**: Uyarı türüne göre değişen alanlar ile uyarının nedenini açıklayan alanlar kümesi. Örneğin, bir metrik uyarı, uyarı bağlamında metrik ad ve metrik değer gibi alanları içerirken, etkinlik günlüğü uyarısı uyarıyı oluşturan olay hakkında bilgilere sahiptir. 
 
 **Örnek uyarı yükü**
 ```json
@@ -73,19 +73,19 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 
 | Alan | Açıklama|
 |:---|:---|
-| AlertId | GUID, uyarı örneğini benzersiz bir şekilde tanımlıyor. |
+| alertId | GUID, uyarı örneğini benzersiz bir şekilde tanımlar. |
 | alertRule | Uyarı örneğini oluşturan uyarı kuralının adı. |
-| Severity | Uyarının önem derecesi. Olası değerler: Sev0, Sev1, Sev2, Sev3 veya Sev4. |
-| signalType | Uyarı kuralının tanımlandığı sinyali tanımlar. Olası değerler: ölçüm, günlük veya etkinlik günlüğü. |
-| monitorCondition | Bir uyarı tetiklendiğinde, uyarının izleyici koşulu **tetiklenir**olarak ayarlanır. Uyarının tetiklenmesine neden olan temeldeki durum temizlediğinde, izleme koşulu **çözüldü**olarak ayarlanır.   |
-| monitoringService | Uyarıyı oluşturan izleme hizmeti veya çözümü. Uyarı bağlamı alanları izleme hizmeti tarafından dikte edilir. |
-| Alerttargetıds | Bir uyarının etkilenen hedeflerini Azure Resource Manager kimliklerinin listesi. Log Analytics çalışma alanında veya Application Insights örneğinde tanımlanan bir günlük uyarısı için, ilgili çalışma alanı veya uygulamadır. |
-| Originalertıd | Uyarı örneğinin, onu oluşturan izleme hizmeti tarafından oluşturulan KIMLIĞI. |
-| firedDateTime | Uyarı örneğinin Eşgüdümlü Evrensel Saat (UTC) olarak tetiklenme tarihi ve saati. |
-| resolvedDateTime | Uyarı örneği için izleyici koşulunun UTC olarak **çözümlendi** olarak ayarlandığı tarih ve saat. Şu anda yalnızca ölçüm uyarıları için geçerlidir.|
-| açıklama | Uyarı kuralında tanımlandığı şekilde açıklama. |
-|essentialsVersion| Essentials bölümünün sürüm numarası.|
-|alertContextVersion | `alertContext` bölümü için sürüm numarası. |
+| Severity | Uyarının şiddeti. Olası değerler: Sev0, Sev1, Sev2, Sev3 veya Sev4. |
+| signalType | Uyarı kuralının tanımlandığı sinyali tanımlar. Olası değerler: Metrik, Günlük veya Etkinlik Günlüğü. |
+| monitorCondition | Bir uyarı çıktığında, uyarının monitör durumu **Ateş olarak**ayarlanır. Uyarının yangına neden olan altta yatan koşulu temizlendiğinde, monitör durumu **Çözülmüş**olarak ayarlanır.   |
+| izlemeService | Uyarıyı oluşturan izleme hizmeti veya çözüm. Uyarı bağlamı alanları izleme hizmeti tarafından dikte edilir. |
+| alertTargetIds | Bir uyarının etkilenen hedefleri olan Azure Kaynak Yöneticisi'nin listesi. Log Analytics çalışma alanı veya Application Insights örneğinde tanımlanan bir günlük uyarısı için, ilgili çalışma alanı veya uygulamadır. |
+| originAlertId | Bunu oluşturan izleme hizmeti tarafından oluşturulan uyarı örneğinin kimliği. |
+| ateşDateTime | Eşgüdümlü Evrensel Saat 'te (UTC) uyarı örneğinin ateşlendiği tarih ve saat. |
+| çözülmüşDateTime | Uyarı örneğinin monitör koşulunun UTC'de **Çözüldü** olarak ayarlandığı tarih ve saat. Şu anda yalnızca metrik uyarılar için geçerlidir.|
+| açıklama | Uyarı kuralında tanımlandığı gibi açıklama. |
+|essentialsVersion| Temel bölüm için sürüm numarası.|
+|alertContextVersion | `alertContext` Bölümün sürüm numarası. |
 
 **Örnek değerler**
 ```json
@@ -149,7 +149,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 ### <a name="log-alerts"></a>Günlük uyarıları
 
 > [!NOTE]
-> Özel bir e-posta konusu ve/veya JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, e-posta konusu ve/veya yük şemasının aşağıdaki gibi açıklanacak şekilde geri dönmesiyle yapılır. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bunu, bayrağını `IncludeSearchResults`denetleyerek belirleyebilirsiniz. Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanmanız gerekir. 
+> Özel bir e-posta konusu ve/veya JSON yükü tanımlanmış günlük uyarıları için, ortak şema e-posta öznesini ve/veya taşıma şemasını aşağıdaki gibi açıklanana geri çevirer. Ortak şema etkin uyarılar uyarı başına 256 KB bir üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiği geçmesine neden olursa günlük uyarılarının yüküne katıştı değil. Bayrağı işaretleyerek bunu `IncludeSearchResults`belirleyebilirsiniz. Arama sonuçları dahil olmadığında, arama sorgusunu [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get)ile birlikte kullanmalısınız. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -481,6 +481,6 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ortak uyarı şeması](https://aka.ms/commonAlertSchemaDocs)hakkında daha fazla bilgi edinin.
-- [Tüm uyarılarınızı işlemek için ortak uyarı şemasını kullanan bir mantıksal uygulama oluşturmayı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)öğrenin. 
+- Ortak uyarı [şeması](https://aka.ms/commonAlertSchemaDocs)hakkında daha fazla bilgi edinin.
+- [Tüm uyarılarınızı işlemek için ortak uyarı şemasını kullanan bir mantık uygulaması oluşturmayı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)öğrenin. 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Domain Services için Kerberos kısıtlanmış temsili | Microsoft Docs
-description: Azure Active Directory Domain Services yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlı temsilcisini (KCD) etkinleştirmeyi öğrenin.
+title: Azure AD Etki Alanı Hizmetleri için Kerberos kısıtlı delegasyon | Microsoft Dokümanlar
+description: Azure Active Directory Domain Services yönetilen etki alanında kaynak tabanlı Kerberos kısıtlı temsilciliği (KCD) nasıl etkinleştireceğinizi öğrenin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,77 +12,77 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
 ms.openlocfilehash: 216fdeca9893f4e290474512617f13382d22890f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614020"
 ---
-# <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kerberos kısıtlanmış temsilcisini (KCD) yapılandırma
+# <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Etki Alanı Hizmetlerinde Kerberos kısıtlı delegasyonu (KCD) yapılandırın
 
-Uygulamaları çalıştırırken, bu uygulamaların farklı bir kullanıcı bağlamında kaynaklara erişmesi için bir gereksinim olabilir. Active Directory Domain Services (AD DS), bu kullanım örneğini sağlayan *Kerberos temsili* adlı bir mekanizmayı destekler. Kerberos *kısıtlı* temsilcisi (KCD), bu mekanizmaya, kullanıcı bağlamında erişilebilen belirli kaynakları tanımlamak için oluşturulur. Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanları, geleneksel şirket içi AD DS ortamlarından daha güvenli bir şekilde kilitlidir, bu nedenle daha güvenli *kaynak tabanlı* bir KCD kullanın.
+Uygulamaları çalıştırırken, bu uygulamaların farklı bir kullanıcı bağlamında kaynaklara erişmeleri gerekebilir. Active Directory Domain Services (AD DS), *kerberos delegasyonu* adı verilen ve bu kullanım örneğini etkinleştiren bir mekanizmayı destekler. Kerberos *kısıtlı* delegasyon (KCD) sonra kullanıcı bağlamında erişilebilir belirli kaynakları tanımlamak için bu mekanizma üzerine inşa eder. Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS) yönetilen etki alanları, geleneksel şirket içi AD DS ortamlarına göre daha güvenli bir şekilde kilitlenir, bu nedenle daha güvenli bir *kaynak tabanlı* KCD kullanın.
 
-Bu makalede, Azure AD DS yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlanmış temsilcinin nasıl yapılandırılacağı gösterilir.
+Bu makalede, azure AD DS yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlı delegasyonu nasıl yapılandırılabildiğiniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
+Bu makaleyi tamamlamak için aşağıdaki kaynaklara ihtiyacınız var:
 
 * Etkin bir Azure aboneliği.
-    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
-    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
-* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance].
-* Azure AD DS yönetilen etki alanına katılmış bir Windows Server Yönetim sanal makinesi.
-    * Gerekirse, [bir Windows Server VM 'si oluşturup yönetilen bir etki alanına katmak][create-join-windows-vm] için öğreticiyi doldurun ve [AD DS yönetim araçlarını][tutorial-create-management-vm]ekleyin.
-* Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Aboneliğinizle ilişkili bir Azure Etkin Dizin kiracısı, şirket içi bir dizini veya yalnızca bulut dizininizle eşitlenir.
+    * Gerekirse, [bir Azure Etkin Dizin kiracısı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin.][associate-azure-ad-tenant]
+* Azure Etkin Dizin Etki Alanı Hizmetleri, Azure AD kiracınızda etkin leştirilmiş ve yapılandırılan bir etki alanı yönetildi.
+    * Gerekirse, [bir Azure Etkin Dizin Etki Alanı Hizmetleri örneği oluşturun ve yapılandırın.][create-azure-ad-ds-instance]
+* Azure AD DS yönetilen etki alanına katılan bir Windows Server yönetimi VM'si.
+    * Gerekirse, bir Windows [Server VM oluşturmak için][create-join-windows-vm] öğretici yi tamamlayın ve yönetilen bir etki alanına katılmak sonra AD [DS yönetim araçlarını yükleyin.][tutorial-create-management-vm]
+* Azure AD kiracınızda *Azure AD DC yöneticileri* grubunun üyesi olan bir kullanıcı hesabı.
 
-## <a name="kerberos-constrained-delegation-overview"></a>Kerberos kısıtlı temsilciye genel bakış
+## <a name="kerberos-constrained-delegation-overview"></a>Kerberos kısıtlı delegasyon genel bakış
 
-Kerberos temsili, bir hesabın kaynaklara erişmek için başka bir hesabın kimliğine bürünmesini sağlar. Örneğin, arka uç Web bileşenine erişen bir Web uygulaması, arka uç bağlantısı yaptığında kendisini farklı bir kullanıcı hesabı olarak taklit edebilir. Kimliğe bürünme hesabının erişebileceği kaynakları sınırmadığı için Kerberos temsili güvenli değildir.
+Kerberos delegasyonu, bir hesabın kaynaklara erişmek için başka bir hesabın kimliğine bürünmelerine izin verir. Örneğin, arka uç web bileşenine erişen bir web uygulaması, arka uç bağlantısı yaptığında kendisini farklı bir kullanıcı hesabı olarak taklit edebilir. Kerberos delegasyonu, taklit eden hesabın erişebileceği kaynakları sınırlamadığından güvensizdir.
 
-Kerberos kısıtlanmış temsili (KCD), belirli bir sunucunun veya uygulamanın başka bir kimlik kimliğine bürünerek bağlanabileceği Hizmetleri veya kaynakları kısıtlar. Geleneksel KCD, bir hizmet için etki alanı hesabı yapılandırmak için etki alanı yöneticisi ayrıcalıklarına gerek duyar ve hesabı tek bir etki alanında çalışacak şekilde kısıtlar.
+Kerberos kısıtlı delegasyonu (KCD), belirli bir sunucunun veya uygulamanın başka bir kimliği taklit ederken bağlanabileceği hizmetleri veya kaynakları kısıtlar. Geleneksel KCD, bir hizmet için etki alanı hesabını yapılandırmak için etki alanı yöneticisi ayrıcalıkları gerektirir ve hesabın tek bir etki alanında çalışmasını kısıtlar.
 
-Geleneksel KCD 'de de bazı sorunlar vardır. Örneğin, önceki işletim sistemlerinde, hizmet yöneticisinin sahip oldukları kaynak hizmetleri için hangi ön uç hizmetlerin temsilci olarak olduğunu bilmemiz için kullanışlı bir yolu yoktur. Kaynak hizmetine temsilci olabilecek herhangi bir ön uç hizmeti potansiyel bir saldırı noktasıdır. Kaynak hizmetleri için temsilci olarak yapılandırılmış bir ön uç hizmeti barındıran bir sunucunun güvenliği tehlikeye girerse, kaynak hizmetleri de tehlikeye girebilir.
+Geleneksel KCD de birkaç sorunları vardır. Örneğin, önceki işletim sistemlerinde, hizmet yöneticisinin sahip oldukları kaynak hizmetlerine hangi ön uç hizmetlerinin devredildiğini bilmenin yararlı bir yolu yoktu. Kaynak hizmetine temsilci verebilecek herhangi bir ön uç hizmeti olası bir saldırı noktasıydı. Kaynak hizmetlerine devretmek üzere yapılandırılmış bir ön uç hizmetini barındıran bir sunucu tehlikeye girerse, kaynak hizmetleri de tehlikeye atılabilir.
 
-Azure AD DS yönetilen bir etki alanında etki alanı yöneticisi ayrıcalıklarına sahip değilsiniz. Sonuç olarak, yönetilen bir etki alanında AD DS Azure 'da geleneksel hesap tabanlı KCD yapılandırılamaz. Kaynak tabanlı KCD, bunun yerine daha da güvenli bir şekilde kullanılabilir.
+Azure AD DS yönetilen bir etki alanında etki alanı yöneticisi ayrıcalıklarınız yoktur. Sonuç olarak, geleneksel hesap tabanlı KCD, yönetilen bir etki alanında Azure AD DS'de yapılandırılamaz. Kaynak tabanlı KCD bunun yerine daha güvenli de kullanılabilir.
 
 ### <a name="resource-based-kcd"></a>Kaynak tabanlı KCD
 
-Windows Server 2012 ve üzeri, hizmet yöneticilerine hizmeti için kısıtlanmış temsilciyi yapılandırma olanağı sağlar. Bu model kaynak tabanlı KCD olarak bilinir. Bu yaklaşımda, arka uç hizmet yöneticisi, belirli ön uç hizmetlerinin KCD kullanmasını sağlayabilir veya reddedebilir.
+Windows Server 2012 ve daha sonra hizmet yöneticilerine hizmetleri için kısıtlı delegasyonu yapılandırma olanağı sağlar. Bu model kaynak tabanlı KCD olarak bilinir. Bu yaklaşımla, arka uç hizmet yöneticisi belirli ön uç hizmetlerinin KCD kullanmasına izin verebilir veya reddedebilir.
 
-Kaynak tabanlı KCD, PowerShell kullanılarak yapılandırılır. Kimliğe bürünme hesabının bir bilgisayar hesabı mı yoksa bir kullanıcı hesabı/hizmet hesabı mı olduğuna bağlı olarak [set-ADComputer][Set-ADComputer] veya [set-aduser][Set-ADUser] cmdlet 'lerini kullanırsınız.
+Kaynak tabanlı KCD PowerShell kullanılarak yapılandırılır. Kimlik taklidi yapılan hesabın bir bilgisayar hesabı mı yoksa kullanıcı hesabı / hizmet hesabı mı olduğuna bağlı olarak [Set-ADComputer][Set-ADComputer] veya [Set-ADUser][Set-ADUser] cmdlets'i kullanırsınız.
 
-## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Bilgisayar hesabı için kaynak tabanlı KCD 'YI yapılandırma
+## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Bir bilgisayar hesabı için kaynak tabanlı KCD yapılandırma
 
-Bu senaryoda, *contoso-WebApp.aaddscontoso.com*adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *contoso-api.aaddscontoso.com* adlı bilgisayarda çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
+Bu senaryoda, *contoso-webapp.aaddscontoso.com*adlı bilgisayarda çalışan bir web uygulamanız olduğunu varsayalım. Web uygulamasının etki alanı kullanıcıları bağlamında *contoso-api.aaddscontoso.com* adlı bilgisayarda çalışan bir web API'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları tamamlayın:
 
-1. [Özel BIR OU oluşturun](create-ou.md). Bu özel OU 'yu Azure AD DS yönetilen etki alanındaki kullanıcılara yönetmek için izinler atayabilirsiniz.
-1. [Etki alanı-][create-join-windows-vm]hem Web uygulamasını çalıştıran hem de Web API 'sini çalıştıran sanal makineleri Azure AD DS tarafından yönetilen etki alanına ekleyin. Önceki adımda özel OU 'da bu bilgisayar hesaplarını oluşturun.
+1. [Özel bir OU oluşturun.](create-ou.md) Bu özel OU'yu yönetmek için izinleri Azure AD DS yönetilen etki alanındaki kullanıcılara devredebilirsiniz.
+1. Hem web uygulamasını çalıştıran hem de web API'sini çalıştıran [sanal makinelere][create-join-windows-vm]Azure AD DS yönetilen etki alanına katılın. Bu bilgisayar hesaplarını önceki adımdaki özel OU'da oluşturun.
 
     > [!NOTE]
-    > Web uygulaması ve Web API 'SI için bilgisayar hesapları, kaynak tabanlı KCD 'yi yapılandırma izninizin olduğu özel bir OU 'da olmalıdır. Yerleşik *AAD DC bilgisayarları* kapsayıcısında bir bilgisayar hesabı için kaynak tabanlı KCD 'yi yapılandıramazsınız.
+    > Web uygulaması nın bilgisayar hesapları ve web API'si, kaynak tabanlı KCD'yi yapılandırma izinlerine sahip olduğunuz özel bir OU'da olmalıdır. Yerleşik *AAD DC Bilgisayar* kapsayıcısındaki bir bilgisayar hesabı için kaynak tabanlı KCD yapılandıramazsınız.
 
-1. Son olarak, [set-ADComputer][Set-ADComputer] PowerShell cmdlet 'ini kullanarak kaynak tabanlı KCD 'yi yapılandırın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın. Gerektiğinde kendi bilgisayar adlarınızı sağlayın:
+1. Son olarak, [Set-ADComputer][Set-ADComputer] PowerShell cmdlet kullanarak kaynak tabanlı KCD yapılandırın. Etki alanına katılan yönetim VM'nizden ve *Azure AD DC yöneticileri* grubunun üyesi olan kullanıcı hesabı olarak oturum açın, aşağıdaki cmdlets'i çalıştırın. Gerektiğinde kendi bilgisayar adlarınızı sağlayın:
     
     ```powershell
     $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aaddscontoso.com
     Set-ADComputer contoso-api.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
-## <a name="configure-resource-based-kcd-for-a-user-account"></a>Bir kullanıcı hesabı için kaynak tabanlı KCD 'YI yapılandırma
+## <a name="configure-resource-based-kcd-for-a-user-account"></a>Bir kullanıcı hesabı için kaynak tabanlı KCD yapılandırma
 
-Bu senaryoda, *appsvc*adlı bir hizmet hesabı olarak çalışan bir Web uygulamanız olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *backendsvc* adlı bir hizmet hesabı olarak çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
+Bu senaryoda, *appsvc*adlı bir hizmet hesabı olarak çalışan bir web uygulamanız olduğunu varsayalım. Web uygulamasının etki alanı kullanıcıları bağlamında *backendsvc* adlı bir hizmet hesabı olarak çalışan bir web API'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları tamamlayın:
 
-1. [Özel BIR OU oluşturun](create-ou.md). Bu özel OU 'yu Azure AD DS yönetilen etki alanındaki kullanıcılara yönetmek için izinler atayabilirsiniz.
-1. [Etki alanı-][create-join-windows-vm] arka uç Web API 'si/kaynağını çalıştıran sanal makineleri Azure AD DS tarafından yönetilen etki alanına ekleyin. Kendi bilgisayar hesabını özel OU içinde oluşturun.
-1. Web uygulamasını özel OU içinde çalıştırmak için kullanılan hizmet hesabını (örneğin, ' appsvc ') oluşturun.
+1. [Özel bir OU oluşturun.](create-ou.md) Bu özel OU'yu yönetmek için izinleri Azure AD DS yönetilen etki alanındaki kullanıcılara devredebilirsiniz.
+1. Arka uç web API'sını/kaynağını Azure AD DS yönetilen etki alanına çalıştıran [sanal makinelere katılın.][create-join-windows-vm] Özel OU içinde bilgisayar hesabını oluşturun.
+1. Web uygulamasını özel OU içinde çalıştırmak için kullanılan hizmet hesabını (örneğin, 'appsvc') oluşturun.
 
     > [!NOTE]
-    > Yine, Web API sanal makinesi için bilgisayar hesabı ve Web uygulaması için hizmet hesabı, kaynak tabanlı KCD 'yi yapılandırma izninizin olduğu özel bir OU 'da olmalıdır. Yerleşik *AAD DC Computers* veya *AAD DC Users* kapsayıcılarındaki hesaplar için kaynak tabanlı KCD 'yi yapılandıramazsınız. Bu ayrıca kaynak tabanlı KCD 'yi ayarlamak için Azure AD 'den eşitlenen Kullanıcı hesaplarını kullanamayacağı anlamına gelir. Azure AD DS 'de özel olarak oluşturulan hizmet hesaplarını oluşturmanız ve kullanmanız gerekir.
+    > Yine, web API VM için bilgisayar hesabı ve web uygulaması için hizmet hesabı, kaynak tabanlı KCD yapılandırmak için izinleri var özel bir OU olmalıdır. Yerleşik *AAD DC Bilgisayarlardaki* veya *AAD DC Users* kapsayıcılarında bulunan hesaplar için kaynak tabanlı KCD yapılandıramazsınız. Bu, kaynak tabanlı KCD ayarlamak için Azure AD'den eşitlenen kullanıcı hesaplarını kullanamadığınız anlamına da gelir. Azure AD DS'de özel olarak oluşturulmuş hizmet hesapları oluşturmalı ve kullanmalısınız.
 
-1. Son olarak, [set-ADUser][Set-ADUser] PowerShell cmdlet 'ini kullanarak kaynak tabanlı KCD 'yi yapılandırın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın. Gerektiğinde kendi hizmet adlarınızı sağlayın:
+1. Son olarak, [Set-ADUser][Set-ADUser] PowerShell cmdlet kullanarak kaynak tabanlı KCD yapılandırın. Etki alanına katılan yönetim VM'nizden ve *Azure AD DC yöneticileri* grubunun üyesi olan kullanıcı hesabı olarak oturum açın, aşağıdaki cmdlets'i çalıştırın. Gerektiğinde kendi hizmet adlarınızı sağlayın:
 
     ```powershell
     $ImpersonatingAccount = Get-ADUser -Identity appsvc
@@ -91,7 +91,7 @@ Bu senaryoda, *appsvc*adlı bir hizmet hesabı olarak çalışan bir Web uygulam
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Active Directory Domain Services ' de temsilcinin nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Kerberos kısıtlanmış temsilciye genel bakış][kcd-technet].
+Etkin Dizin Etki Alanı Hizmetlerinde temsilcinin nasıl çalıştığı hakkında daha fazla bilgi edinmek için [Kerberos Kısıtlı Delegasyona Genel Bakış'a][kcd-technet]bakın.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

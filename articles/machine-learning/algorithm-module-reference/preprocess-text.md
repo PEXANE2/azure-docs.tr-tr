@@ -1,7 +1,7 @@
 ---
-title: 'Ön işlem metni: modül başvurusu'
+title: 'Proprocess Text: Modül Referansı'
 titleSuffix: Azure Machine Learning
-description: Metni temizlemek ve basitleştirmek için Azure Machine Learning 'de ön Işlem metin modülünü nasıl kullanacağınızı öğrenin.
+description: Metni temizlemek ve basitleştirmek için Azure Machine Learning'deki İşlem Öncesi Metin modüllerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,82 +9,82 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: a8938eba0f7af995086ab1e2baba41aee7dc6330
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153817"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477502"
 ---
 # <a name="preprocess-text"></a>Metni Ön İşleme
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-Metni temizlemek ve basitleştirmek için **ön Işlem metin** modülünü kullanın. Bu ortak metin işleme işlemlerini destekler:
+Metni temizlemek ve basitleştirmek için **İşlem Öncesi Metin** modüllerini kullanın. Bu yaygın metin işleme işlemlerini destekler:
 
-* Durma sözcüklerini kaldırma
+* Stop-kelimelerin kaldırılması
 * Belirli hedef dizeleri aramak ve değiştirmek için normal ifadeleri kullanma
-* Birden çok ilgili sözcüğü tek bir kurallı forma dönüştüren limon
-* Örnek olay normalleştirme
+* Birden çok ilişkili sözcüğü tek bir kanonik forma dönüştüren Lemmatizasyon
+* Büyük/küçük harf normalleştirme
 * Sayılar, özel karakterler ve "aaaa" gibi yinelenen karakterlerin dizileri gibi belirli karakter sınıflarının kaldırılması
-* E-postaların ve URL 'Lerin tanımlanması ve kaldırılması
+* E-postaların ve URL'lerin tanımlanması ve kaldırılması
 
-**Preprocess metin** modülü şu anda yalnızca İngilizce 'yi destekliyor.
+**Proprocess Text** modülü şu anda yalnızca İngilizce'yi desteklemektedir.
 
-## <a name="configure-text-preprocessing"></a>Metin ön Işleme yapılandırma  
+## <a name="configure-text-preprocessing"></a>Metin Önİşleme Yapılandırma  
 
-1.  Azure Machine Learning, **işlem hattınızı ön Işle metin** modülünü ekleyin. Bu modülü **metin analizi**altına bulabilirsiniz.
+1.  Azure Machine Learning'de **Ön İşlem Metni** modüllerini ardınıza ekleyin. Bu modülü Text **Analytics**altında bulabilirsiniz.
 
-1. Metin içeren en az bir sütunu olan bir veri kümesini bağlayın.
+1. Metin içeren en az bir sütuna sahip bir veri kümesibağlayın.
 
-1. **Dil** açılan listesinden dili seçin.
+1. **Dil** açılır listesinden dili seçin.
 
-1. **Temizleyen metin sütunu**: önceden işlemek istediğiniz sütunu seçin.
+1. **Temizleyecek metin sütunu**: Önceden işlemek istediğiniz sütunu seçin.
 
-1. **Durdurma sözcüklerini kaldır**: metin sütununa önceden tanımlanmış bir durma sözcüğü listesi uygulamak istiyorsanız bu seçeneği belirleyin. 
+1. **Durdurma sözcüklerini kaldır**: Metin sütununa önceden tanımlanmış bir sözcük listesi uygulamak istiyorsanız bu seçeneği belirleyin. 
 
-    Stopword listeleri dile bağlı ve özelleştirilebilir.
+    Kronole listeleri dile bağlıdır ve özelleştirilebilir.
 
-1. Su **kullanımı: sözcüklerin**kurallı biçimde temsil edilebilmesi istiyorsanız bu seçeneği belirleyin. Bu seçenek, başka türlü benzer metin belirteçlerinin benzersiz oluşum sayısını azaltmak için yararlıdır.
+1. **Lemmatization**: Sözcüklerin kanonik biçimde temsil edilebilmesini istiyorsanız bu seçeneği seçin. Bu seçenek, aksi takdirde benzer metin belirteçleri benzersiz oluşumlarının sayısını azaltmak için yararlıdır.
 
-    Katileştirme işlemi yüksek oranda dile bağımlıdır.
+    Lemmatizasyon süreci son derece dile bağlıdır...
 
-1. **Cümleleri Algıla**: modülün analiz gerçekleştirirken bir cümle sınır işareti eklemesini istiyorsanız bu seçeneği belirleyin.
+1. **Cümleleri algılama**: Analiz yaparken modülün bir cümle sınır işareti eklemesini istiyorsanız bu seçeneği seçin.
 
-    Bu modül, cümle sonlandırıcıyı temsil etmek için `|||` üç kanal karakter serisi kullanır.
+    Bu modül, cümle sonlandırıcısını `|||` temsil etmek için üç boş¶karakterden oluşan bir dizi kullanır.
 
-1. Normal ifadeler kullanarak isteğe bağlı bulma ve değiştirme işlemleri gerçekleştirin.
+1. Normal ifadeleri kullanarak isteğe bağlı bul ve değiştir işlemleri gerçekleştirin.
 
-    * **Özel normal ifade**: aramakta olduğunuz metni tanımlayın.
-    * **Özel değiştirme dizesi**: tek bir değiştirme değeri tanımlayın.
+    * **Özel normal ifade**: Aradığınız metni tanımlayın.
+    * **Özel değiştirme dizesi**: Tek bir değiştirme değeri tanımlayın.
 
-1. **Büyük/küçük harf karakterlerini Normalleştir**: ASCII büyük harfleri küçük formlarına dönüştürmek istiyorsanız bu seçeneği belirleyin.
+1. **Küçük harfe normalleştir**: ASCII büyük harf karakterlerini küçük harf formlarına dönüştürmek istiyorsanız bu seçeneği belirleyin.
 
-    Karakterler normalleştirilmemişse, büyük ve küçük harflerle aynı sözcük iki farklı sözcük olarak değerlendirilir.
+    Karakterler normalleştirilemezse, büyük harfli ve küçük harflerdeki aynı sözcük iki farklı sözcük olarak kabul edilir.
 
-1. Ayrıca, işlenen çıkış metninde aşağıdaki karakter veya karakter dizileri türlerini de kaldırabilirsiniz:
+1. İşlenen çıktı metninden aşağıdaki karakter veya karakter dizilerini de kaldırabilirsiniz:
 
-    * **Sayıları kaldır**: belirtilen dile ait tüm sayısal karakterleri kaldırmak için bu seçeneği belirleyin. Kimlik numaraları, etki alanına bağımlıdır ve dile bağımlıdır. Sayısal karakterler bilinen bir sözcüğün integral parçasıysa, sayı kaldırılmayabilir.
+    * **Sayıları Kaldır**: Belirtilen dilin tüm sayısal karakterlerini kaldırmak için bu seçeneği belirleyin. Kimlik numaraları etki alanına ve dile bağlıdır. Sayısal karakterler bilinen bir sözcüğün ayrılmaz bir parçasıysa, sayı kaldırılmayabilir.
     
-    * **Özel karakterleri kaldır**: alfasayısal olmayan özel karakterleri kaldırmak için bu seçeneği kullanın.
+    * **Özel karakterleri kaldır**: Alfasayısal olmayan özel karakterleri kaldırmak için bu seçeneği kullanın.
     
-    * **Yinelenen karakterleri kaldır**: iki kez tekrarlanacak herhangi bir dizilerden fazla karakter kaldırmak için bu seçeneği belirleyin. Örneğin, "aaaaa" gibi bir sıra "AA" olarak düşürülür.
+    * **Yinelenen karakterleri kaldır**: İki den fazla yinelenen dizilerde fazladan karakterleri kaldırmak için bu seçeneği belirleyin. Örneğin, "aaaaa" gibi bir dizi "aa" indirgenir.
     
-    * **E-posta adreslerini kaldır**: `<string>@<string>`biçim sırasını kaldırmak için bu seçeneği belirleyin.  
-    * **URL 'Leri kaldır**: aşağıdaki URL öneklerini içeren herhangi bir sırayı kaldırmak için bu seçeneği belirleyin: `http`, `https`, `ftp`, `www`
+    * **E-posta adreslerini kaldırma**: Biçimin `<string>@<string>`herhangi bir sırasını kaldırmak için bu seçeneği seçin.  
+    * **URL'leri Kaldırma**: Aşağıdaki URL önekleri içeren sırayı kaldırmak `http` `https`için `ftp`bu seçeneği seçin: , , ,`www`
     
-1. **Fiil kodlamalarını Genişlet**: Bu seçenek yalnızca fiil kodlamalarını kullanan diller için geçerlidir; Şu anda yalnızca Ingilizce. 
+1. **Expand verb contractions**: Bu seçenek sadece fiil kasılmaları kullanan diller için geçerlidir; şu anda, sadece İngilizce. 
 
-    Örneğin, bu seçeneği belirleyerek "hiçbir zaman" *kalmazın* "olmaz" ifadesini " *Not*edin" olarak değiştirebilirsiniz.
+    Örneğin, bu seçeneği seçerek, *"orada kalmazdım" ifadesini "orada kalmazdım"* ifadesini *değiştirebilirsiniz.*
 
-1. **Ters eğik çizgileri eğik çizgi Ile Normalleştir**: tüm `\\` örneklerini `/`eşlemek için bu seçeneği belirleyin.
+1. **Slashes için backslashes normalleştirin**: Bu seçeneği `\\` `/`seçerek tüm örnekleri eşleme .
 
-1. **Belirteçleri özel karakterlere Böl**: `&`, `-`vb. gibi karakterlerden sözcükleri kesmek istiyorsanız bu seçeneği belirleyin. Bu seçenek ayrıca, iki kez yinelendiğinde özel karakterleri de azaltabilir. 
+1. **Özel karakterlerdeki belirteçleri böl**: `&`, , `-`ve benzeri karakterlerde sözcükleri kırmak istiyorsanız bu seçeneği belirleyin. Bu seçenek, ikiden fazla tekrarladığında özel karakterleri de azaltabilir. 
 
-    Örneğin, `MS---WORD` dize üç belirtece ayrılabilir, `MS`, `-`ve `WORD`.
+    Örneğin, dize `MS---WORD` üç belirteçleri `MS`ayrılır, `-`, `WORD`, ve .
 
-1. İşlem hattını çalıştırma.
+1. Boru hattını gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

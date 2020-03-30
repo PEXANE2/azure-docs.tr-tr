@@ -1,6 +1,6 @@
 ---
-title: Active Directory bağlı hizmetini kullanma (Visual Studio)
-description: Visual Studio bağlı hizmetler Ekle iletişim kutusunu kullanarak Azure Active Directory ekleme
+title: Active Directory bağlantılı hizmeti kullanma (Visual Studio)
+description: Visual Studio Bağlantılı Hizmetler Ekle iletişim kutusunu kullanarak Azure Etkin Dizini ekleme
 author: ghogen
 manager: jillfra
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.openlocfilehash: f139fc8cb59c40ea169e195312326773296b0592
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159634"
 ---
-# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio'da Bağlı Hizmetleri kullanarak Azure Etkin Dizini ekleme
 
-Azure Active Directory (Azure AD) kullanarak, ASP.NET MVC web uygulamaları için çoklu oturum açma (SSO) veya Web API hizmetlerinde Active Directory kimlik doğrulama desteği sağlayabilirsiniz. Azure AD kimlik doğrulaması ile kullanıcılarınız, Web uygulamalarınıza bağlanmak için Azure Active Directory hesaplarını kullanabilir. Web API 'si ile Azure AD kimlik doğrulamasının avantajları, bir Web uygulamasından API 'YI kullanıma sunmadan gelişmiş veri güvenliği içerir. Azure AD ile ayrı bir kimlik doğrulama sistemini kendi hesabı ve Kullanıcı yönetimi ile yönetmeniz gerekmez.
+Azure Etkin Dizin (Azure AD) kullanarak, ASP.NET MVC web uygulamaları için Tek Oturum Açma (SSO) veya Web API hizmetlerinde Etkin Dizin Kimlik Doğrulaması'nı destekleyebilirsiniz. Azure AD Kimlik Doğrulaması ile kullanıcılarınız web uygulamalarınıza bağlanmak için hesaplarını Azure Active Directory'den kullanabilir. Web API ile Azure AD Kimlik Doğrulaması'nın avantajları arasında, bir web uygulamasından API açığa çıkarırken gelişmiş veri güvenliği yer almaktadır. Azure AD ile, kendi hesabı ve kullanıcı yönetimiyle ayrı bir kimlik doğrulama sistemini yönetmeniz gerekmez.
 
-Bu makale ve yardımcı makaleler, Active Directory için Visual Studio bağlı hizmet özelliğini kullanma hakkında ayrıntılı bilgi sağlar. Özelliği Visual Studio 2015 ve üzeri sürümlerde kullanılabilir.
+Bu makale ve eşlik eden makaleler, Active Directory için Visual Studio Connected Service özelliğini kullanmanın ayrıntılarını sağlar. Bu özellik Visual Studio 2015 ve sonraki yıllarda mevcuttur.
 
-Active Directory bağlı hizmet, ASP.NET Core uygulamalarını desteklemez.
+Şu anda Active Directory'ye bağlı hizmet ASP.NET Core uygulamalarını desteklememektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure hesabı: bir Azure hesabınız yoksa, [ücretsiz deneme için kaydolabilir](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) veya [Visual Studio abone avantajlarınızı etkinleştirebilirsiniz](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
-- **Visual Studio 2015** veya üzeri. [Visual Studio 'yu şimdi indirin](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Azure hesabı: Azure hesabınız yoksa, [ücretsiz deneme sürümüne kaydolabilir](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) veya [Visual Studio abone avantajlarınızı etkinleştirebilirsiniz.](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)
+- **Visual Studio 2015** veya sonrası. [Visual Studio'u hemen indirin.](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
 
-### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Bağlı hizmetler iletişim kutusunu kullanarak Azure Active Directory bağlanma
+### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Bağlı Hizmetler iletişim kutusunu kullanarak Azure Etkin Dizine bağlanma
 
-1. Visual Studio 'da bir ASP.NET MVC projesi veya bir ASP.NET Web API projesi oluşturun veya açın. MVC, Web API, tek sayfalı uygulama, Azure API uygulaması, Azure mobil uygulaması ve Azure mobil hizmet şablonlarını kullanabilirsiniz.
+1. Visual Studio'da ASP.NET bir MVC projesi veya ASP.NET bir Web API projesi oluşturun veya açın. MVC, Web API, Tek Sayfa Uygulaması, Azure API Uygulaması, Azure Mobil Uygulaması ve Azure Mobil Hizmet şablonlarını kullanabilirsiniz.
 
-1. **Project > bağlı hizmet ekle...** menü komutunu seçin veya Çözüm Gezgini içindeki proje altında bulunan **bağlı hizmetler** düğümüne çift tıklayın.
+1. Bağlı **Hizmet Ekle...** menü komutunu > Proje'yi seçin veya Solution Explorer'da projenin altında bulunan **Bağlı Hizmetler** düğümünü çift tıklatın.
 
-1. **Bağlı hizmetler** sayfasında, **Azure Active Directory kimlik doğrulaması**' nı seçin.
+1. Bağlı **Hizmetler** sayfasında, **Azure Etkin Dizini ile Kimlik Doğrulama'yı**seçin.
 
-    ![Bağlı hizmetler sayfası](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
+    ![Bağlantılı Hizmetler sayfası](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
 
-1. **Giriş** sayfasında, **İleri**' yi seçin. Bu sayfada hata görürseniz, [Azure Active Directory bağlı hizmeti ile hataları tanılama](vs-active-directory-error.md)bölümüne bakın.
+1. **Giriş** sayfasında **İleri'yi**seçin. Bu sayfada hatalar görürseniz, [Azure Etkin Dizin Bağlantılı Hizmetile hata tanılama'ya](vs-active-directory-error.md)bakın.
 
     ![Giriş sayfası](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. **Çoklu oturum açma** sayfasında, **etki alanı** açılır listesinden bir etki alanı seçin. Liste, Visual Studio 'nun hesap ayarları iletişim kutusunda listelenen hesaplar tarafından erişilebilen tüm etki alanlarını içerir (**dosya > hesap ayarları..** .). Alternatif olarak, aradığınızı bulamazsanız, `mydomain.onmicrosoft.com`gibi bir etki alanı adı girebilirsiniz. Azure Active Directory bir uygulama oluşturma veya var olan bir Azure Active Directory uygulamasındaki ayarları kullanma seçeneğini belirleyebilirsiniz. Bittiğinde **İleri ' yi** seçin.
+1. Tek **Oturum Açma** sayfasında, **Etki Alanı** açılır listesinden bir etki alanı seçin. Liste, Visual Studio **(Dosya > Hesap Ayarları)** iletişim kutusunda listelenen hesaplar tarafından erişilebilen tüm etki alanlarını içerir. Alternatif olarak, aradığınız ı bulamazsanız bir etki alanı adı girebilirsiniz. `mydomain.onmicrosoft.com` Bir Azure Active Directory uygulaması oluşturma veya ayarları mevcut bir Azure Active Directory uygulamasından kullanma seçeneğini seçebilirsiniz. Bittiğinde **İleri'yi** seçin.
 
-    ![Çoklu oturum açma sayfası](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
+    ![Sayfada tek oturum açma](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
-1. **Dizin erişimi** sayfasında, istediğiniz şekilde **Dizin verilerini oku** seçeneğini belirleyin. Geliştiriciler genellikle bu seçeneği içerir.
+1. **Dizin Erişimi** sayfasında, istediğiniz gibi **Okuma dizin verileri** seçeneğini belirleyin. Geliştiriciler genellikle bu seçeneği içerir.
 
-    ![Dizin erişimi sayfası](./media/vs-azure-active-directory/configure-azure-ad-wizard-3.png)
+    ![Dizin erişim sayfası](./media/vs-azure-active-directory/configure-azure-ad-wizard-3.png)
 
-1. Azure AD kimlik doğrulamasını etkinleştirmek üzere projenizde değişiklikler başlatmak için **son** ' u seçin. Visual Studio şu süre boyunca ilerleme durumunu gösterir:
+1. Azure AD kimlik doğrulamasını etkinleştirmek için projenizde değişiklik başlatmak için **Bitiş'i** seçin. Visual Studio bu süre içinde ilerleme gösterir:
 
-    ![Bağlı hizmet ilerlemesini Active Directory](./media/vs-azure-active-directory/active-directory-connected-service-output.png)
+    ![Etkin Dizin bağlantılı hizmet ilerleme](./media/vs-azure-active-directory/active-directory-connected-service-output.png)
 
-1. İşlem tamamlandığında, Visual Studio tarayıcınızı proje türüne uygun şekilde aşağıdaki makalelerden birine açar:
+1. İşlem tamamlandığında Visual Studio, proje türünüze uygun olarak tarayıcınızı aşağıdaki makalelerden birine açar:
 
     - [.NET MVC projelerini kullanmaya başlama](vs-active-directory-dotnet-getting-started.md)
     - [.NET WebAPI projelerini kullanmaya başlama](vs-active-directory-webapi-getting-started.md)
 
-1. Ayrıca, [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)Active Directory etki alanını da görebilirsiniz.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040)Active Directory etki alanını da görebilirsiniz.
 
-## <a name="how-your-project-is-modified"></a>Projenizi nasıl değiştirilir
+## <a name="how-your-project-is-modified"></a>Projeniz nasıl değiştirilir?
 
-Bağlı hizmeti sihirbaza eklediğinizde, Visual Studio projenize Azure Active Directory ve ilişkili başvuruları ekler. Projenizdeki yapılandırma dosyaları ve kod dosyaları da Azure AD desteği eklemek için değiştirilir. Visual Studio 'Nun yaptığı belirli değişiklikler proje türüne bağlıdır. Ayrıntılar için aşağıdaki makalelere bakın:
+Bağlı hizmeti sihirbaza eklediğinizde, Visual Studio projenize Azure Active Directory ve ilişkili referanslar ekler. Projenizdeki yapılandırma dosyaları ve kod dosyaları da Azure AD desteği eklemek üzere değiştirilir. Visual Studio'nun yaptığı belirli değişiklikler proje türüne bağlıdır. Ayrıntılar için aşağıdaki makalelere bakın:
 
 - [.NET MVC projeme ne oldu?](vs-active-directory-dotnet-what-happened.md)
-- [Web API projem ne oldu?](vs-active-directory-webapi-what-happened.md)
+- [Web API projeme ne oldu?](vs-active-directory-webapi-what-happened.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory için kimlik doğrulama senaryoları](authentication-scenarios.md)
-- [Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme](quickstart-v2-aspnet-webapp.md)
+- [Azure Etkin Dizin için kimlik doğrulama senaryoları](authentication-scenarios.md)
+- [ASP.NET bir web uygulamasına Microsoft ile oturum açma ekleme](quickstart-v2-aspnet-webapp.md)
