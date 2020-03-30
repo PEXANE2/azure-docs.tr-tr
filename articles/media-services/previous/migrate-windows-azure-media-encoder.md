@@ -1,6 +1,6 @@
 ---
-title: Windows Azure Media Encoder 'dan Media Encoder Standard 'e geçiş | Microsoft Docs
-description: Bu konuda, Azure Medya Kodlayıcısı 'ndan Media Encoder Standard medya işlemcisine nasıl geçiş yapılacağı anlatılmaktadır.
+title: Windows Azure Media Encoder'dan Media Encoder Standardına geçiş | Microsoft Dokümanlar
+description: Bu konu, Azure Media Encoder'dan Media Encoder Standart ortam işlemcisine nasıl geçirilir tartışılır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513210"
 ---
-# <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Windows Azure Medya Kodlayıcısı 'ndan Media Encoder Standard 'e geçiş
+# <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Windows Azure Media Encoder'dan Media Encoder Standardına geçiş
 
-Bu makalede, eski Windows Azure Medya Kodlayıcısı (WAME) medya işlemcisinden (Kullanımdan kaldırılmış olan) Media Encoder Standard medya işlemcisine geçiş adımları ele alınmaktadır. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](legacy-components.md) konusuna bakın.
+Bu makalede, eski Windows Azure Media Encoder (WAME) medya işlemcisinden (kullanımdan kaldırılan) Media Encoder Standart medya işlemcisine geçiş adımları açıklanmaktadır. Emeklilik tarihleri için bu [eski bileşenler](legacy-components.md) konusuna bakın.
 
-Dosyaları WAME ile kodlarken müşteriler genellikle `H264 Adaptive Bitrate MP4 Set 1080p`gibi adlandırılmış bir ön ayar dizesi kullanıyordu. Geçiş yapmak için, kodunuzun WAME yerine **Media Encoder Standard** medya işlemcisini kullanacak şekilde güncelleştirilmesi ve `H264 Multiple Bitrate 1080p`gibi eşdeğer [sistem önayarlarından](media-services-mes-presets-overview.md) biri olması gerekir. 
+WAME ile dosyaları kodlarken, müşteriler genellikle `H264 Adaptive Bitrate MP4 Set 1080p`. Geçiş yapabilmek için, kodunuzu WAME yerine **Media Encoder Standart** medya işlemcisi ve eşdeğer `H264 Multiple Bitrate 1080p`sistem önceden [ayarlarından](media-services-mes-presets-overview.md) birini kullanmak için güncelleştirilmelidir. 
 
-## <a name="migrating-to-media-encoder-standard"></a>Media Encoder Standard geçiriliyor
+## <a name="migrating-to-media-encoder-standard"></a>Ortam Kodlayıcı Standardına Geçiş
 
-Eski bileşeni kullanan tipik C# bir kod örneği aşağıda verilmiştir. 
+Burada, eski bileşeni kullanan tipik bir C# kodu örneği verem. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-Media Encoder Standard kullanan güncelleştirilmiş sürüm aşağıda verilmiştir.
+Burada Media Encoder Standard kullanan güncelleştirilmiş sürümü.
 
 ```csharp
 // Declare a new job. 
@@ -64,19 +64,19 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Gelişmiş senaryolar 
 
-Kendi şemasını kullanarak WAME için kendi kodlama ön ayarını oluşturduysanız, [Media Encoder Standard için eşdeğer bir şema](media-services-mes-schema.md)vardır.
+Eğer kendi şema kullanarak WAME için kendi kodlama önayar oluşturmuş olsaydı, [Media Encoder Standart için eşdeğer](media-services-mes-schema.md)bir şema vardır.
 
 ## <a name="known-differences"></a>Bilinen farklar 
 
-Media Encoder Standard daha sağlam, güvenilir, daha iyi performansa sahiptir ve eski WAME kodlayıcısından daha iyi bir kalite çıkışı üretir. Ayrıca: 
+Media Encoder Standard daha sağlam, güvenilir, daha iyi performansa sahip ve eski WAME kodlayıcısından daha kaliteli çıktı üretir. Ayrıca: 
 
-* Media Encoder Standard, WAME 'dan farklı bir adlandırma kuralına sahip çıktı dosyaları üretir.
-* Media Encoder Standard, [giriş dosyası meta verilerini](media-services-input-metadata-schema.md) ve [Çıkış dosyası meta verilerini](media-services-output-metadata-schema.md)içeren dosyalar gibi yapıtlar üretir.
-* [Fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/media-services/#encoding) belgelendiği gibi (özellikle SSS bölümünde), Media Encoder Standard kullanarak videoları kodlarken, çıktı olarak üretilen dosyaların süresine göre faturalandırılırsınız. WAME ile, giriş video dosyalarının ve çıkış video dosyalarının boyutlarına göre faturalandırılırsınız.
+* Media Encoder Standard, WAME'den farklı bir adlandırma kuralına sahip çıktı dosyaları üretir.
+* Media Encoder [Standard, giriş dosyası meta verilerini](media-services-input-metadata-schema.md) ve çıktı [dosyası(lar) meta verilerini](media-services-output-metadata-schema.md)içeren dosyalar gibi yapılar üretir.
+* [Fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/media-services/#encoding) (özellikle SSS bölümünde) belgelendirildiği gibi, Media Encoder Standard'ı kullanarak videoları kodlarken, çıktı olarak üretilen dosyaların süresine bağlı olarak faturalandırılırsınız. WAME ile, giriş video dosyası(lar) ve çıktı video dosyası(lar) boyutlarına göre faturalandırılırsınız.
 
-## <a name="need-help"></a>Yardım mı gerekiyor?
+## <a name="need-help"></a>Yardıma mı ihtiyacınız var?
 
-[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
+[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) yönlendirerek destek bileti açabilirsiniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

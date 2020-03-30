@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning veri işlem hattı kopya kağıdı - Team Data Science Process
-description: Verilerinizi azure'da veya bir üçüncü taraf bulut hizmetinde akış şirket içinde olup olmadığını bir otomatik veri işlem hattı, Azure Machine Learning web hizmeti için nasıl ayarlanacağı gösteren bir yazdırılabilir kağıdı.
+title: Azure Machine Learning veri boru hattı hile sayfası - Takım Veri Bilimi Süreci
+description: Verileriniz şirket içinde, akışta, Azure'da veya bir üçüncü taraf bulut hizmetinde olsun, Azure Machine Learning web hizmetinize otomatik bir veri aktarımı nasıl ayarlayabileceğinizi gösteren yazdırılabilir bir kopya sayfası.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,30 +12,30 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
 ms.openlocfilehash: d09f13a65a72c6c856a7fcd3d943ec116f3da43f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721872"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning öngörüleri için otomatik veri işlem hattı kopya sayfası
-**Microsoft Azure Machine Learning otomatikleştirilmiş veri ardışık düzen sayfası** , verilerinizi tahmine dayalı analiz modelinize göre puanlabileceğiniz Machine Learning Web hizmetinize almak için kullanabileceğiniz teknolojide gezinmenize yardımcı olur.
+**Microsoft Azure Machine Learning otomatik veri boru hattı hile sayfası,** verilerinizi tahmine dayalı analitik modeliniz tarafından puanlanabileceği Machine Learning web hizmetinize getirmek için kullanabileceğiniz teknolojide gezinmenize yardımcı olur.
 
-Verilerinizin şirket içinde, bulutta veya gerçek zamanlı akışta olmasına bağlı olarak, verileri Puanlama için Web hizmeti uç noktanıza taşıyacağınız farklı mekanizmalar mevcuttur.
-Bu kural sayfası yapmanız gereken kararların size ve çözümünüzü geliştirmenize yardımcı olabilecek makalelerin bağlantıları sunar.
+Verilerinizin şirket içinde, bulutta veya gerçek zamanlı akışta olmasına bağlı olarak, verileri puanlama için web hizmeti bitiş noktanıza taşımak için farklı mekanizmalar vardır.
+Bu hile sayfası yapmanız gereken kararlar boyunca size yol ve çözüm geliştirmenize yardımcı olabilecek makalelere bağlantılar sunuyor.
 
-## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Machine Learning otomatik veri işlem hattı ipuçlarını indirin
-İpuçlarını indirin, sonra tabloid boyutunda (11 x 17 inç) yazdırabilirsiniz.
+## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Machine Learning otomatik veri boru hattı hile sayfasını indirin
+Bir kez hile sayfası indirebilirsiniz, tabloid boyutu (11 x 17 in.) yazdırabilirsiniz.
 
-Bu sayfayı buraya indirin:  **[Microsoft Azure Machine Learning otomatik veri ardışık düzen sayfası](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Burada hile sayfası indirin: ** [Microsoft Azure Machine Learning otomatik veri boru hattı hile sayfası](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
-![Microsoft Azure Machine Learning Studio (klasik) özelliklerine genel bakış][op-cheat-sheet]
+![Microsoft Azure Machine Learning Studio (klasik) Yeteneklerine Genel Bakış][op-cheat-sheet]
 
 [op-cheat-sheet]: ./media/automated-data-pipeline-cheat-sheet/machine-learning-automated-data-pipeline-cheat-sheet_v1.1.png
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Machine Learning Studio hakkında daha fazla yardım
-* Microsoft Azure Machine Learning genel bir bakış için bkz. [Microsoft Azure makine öğrenimine giriş](../studio/what-is-machine-learning.md).
-* Puanlama Web hizmeti dağıtma hakkında bir açıklama için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md).
-* Puanlama Web hizmetinin nasıl kullanılacağına ilişkin bir tartışma için bkz. [Azure Machine Learning Web hizmeti kullanma](../studio/consume-web-services.md).
+* Microsoft Azure Machine Learning'e genel bir bakış için microsoft [Azure'da makine öğrenimine giriş](../studio/what-is-machine-learning.md)bölümüne bakın.
+* Puanlama web hizmetinin nasıl dağıtılanabildiğini öğrenmek için [bkz.](../studio/deploy-a-machine-learning-web-service.md)
+* Puanlama web hizmetinin nasıl tüketilene ilgili bir tartışma için Azure [Machine Learning Web hizmetini nasıl tüketir'](../studio/consume-web-services.md)e bakın.
 

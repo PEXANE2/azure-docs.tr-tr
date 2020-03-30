@@ -1,6 +1,6 @@
 ---
-title: Web trafiğini URL 'ye göre yönlendirme-Azure CLı
-description: Bu makalede, Azure CLı kullanarak Web trafiğini URL 'ye göre ölçeklenebilir sunucuların belirli havuzlarıyla yönlendirmeyi öğrenin.
+title: Web trafiğini URL'ye göre yönlendirme - Azure CLI
+description: Bu makalede, Web trafiğini URL'ye dayalı olarak Azure CLI'yi kullanan belirli ölçeklenebilir sunucu havuzlarına nasıl yönlendireceklerini öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68688187"
 ---
-# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLı kullanarak Web trafiğini URL 'ye göre yönlendirme
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLI'yi kullanarak URL'ye dayalı web trafiğini yönlendirme
 
-Web trafiğini yöneten bir BT yöneticisi olarak müşterilerinizin ihtiyaç duydukları bilgilere mümkün olan en hızlı şekilde ulaşmalarına yardımcı olmak istersiniz. Müşteri deneyimini iyileştirmenin bir yolu da farklı türlerdeki web trafiğini farklı sunucu kaynaklarına yönlendirmektir. Bu makalede, Azure CLı kullanarak uygulamanızdan farklı türde trafik için Application Gateway yönlendirmeyi ayarlama ve yapılandırma hakkında yönergeler verilmektedir. Yönlendirme, trafiği URL'ye göre farklı sunucu havuzlarına yönlendirir.
+Web trafiğini yöneten bir BT yöneticisi olarak müşterilerinizin ihtiyaç duydukları bilgilere mümkün olan en hızlı şekilde ulaşmalarına yardımcı olmak istersiniz. Müşteri deneyimini iyileştirmenin bir yolu da farklı türlerdeki web trafiğini farklı sunucu kaynaklarına yönlendirmektir. Bu makalede, uygulamanızdan farklı trafik türleri için Uygulama Ağ Geçidi yönlendirmesini ayarlamak ve yapılandırmak için Azure CLI'yi nasıl kullanacağınızı gösterir. Yönlendirme, trafiği URL'ye göre farklı sunucu havuzlarına yönlendirir.
 
 ![URL yönlendirme örneği](./media/tutorial-url-route-cli/scenario.png)
 
@@ -31,13 +31,13 @@ Bu makalede şunları öğreneceksiniz:
 > * Otomatik ölçeklendirme gerçekleştirmek için her havuzda bir ölçek kümesi oluşturma
 > * Farklı trafik türlerinin doğru havuza gittiğini doğrulamak için bir test gerçekleştirme
 
-İsterseniz, [Azure PowerShell](tutorial-url-route-powershell.md) veya [Azure Portal](create-url-route-portal.md)kullanarak bu yordamı tamamlayabilirsiniz.
+İsterseniz, Azure [PowerShell](tutorial-url-route-powershell.md) veya [Azure portalını](create-url-route-portal.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.4 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI sürümü 2.0.4 veya sonraki sürümlerini çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>URL eşleme ile uygulama ağ geçidi oluşturma
 
-`az network application-gateway create` komutunu kullanarak *myAppGateway* adlı bir uygulama ağ geçidi oluşturun. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Application Gateway, *Myagsubnet* ve *Myagpublicıpaddress*öğesine atanır.
+`az network application-gateway create` komutunu kullanarak *myAppGateway* adlı bir uygulama ağ geçidi oluşturun. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi *myAGSubnet* ve *myAGPublicIPAddress*atanır.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -167,7 +167,7 @@ az network application-gateway url-path-map rule create \
   --address-pool videoBackendPool
 ```
 
-### <a name="add-a-routing-rule"></a>Yönlendirme kuralı ekle
+### <a name="add-a-routing-rule"></a>Yönlendirme kuralı ekleme
 
 Yönlendirme kuralı URL eşlemelerini oluşturduğunuz dinleyici ile ilişkilendirir. `az network application-gateway rule create` komutunu kullanarak *rule2* adlı bir kural ekleyin.
 
@@ -182,9 +182,9 @@ az network application-gateway rule create \
   --address-pool appGatewayBackendPool
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerini oluşturma
+## <a name="create-virtual-machine-scale-sets"></a>Sanal makine ölçek kümesi oluşturma
 
-Bu makalede, oluşturduğunuz üç arka uç havuzunu destekleyen üç sanal makine ölçek kümesi oluşturacaksınız. Oluşturduğunuz ölçek kümeleri *myvmss1*, *myvmss2* ve *myvmss3* olarak adlandırılır. Her bir ölçek kümesi NGINX yükleyeceğiniz iki sanal makine örneği içerir.
+Bu makalede, oluşturduğunuz üç arka uç havuzunu destekleyen üç sanal makine ölçeği kümesi oluşturursunuz. Oluşturduğunuz ölçek kümeleri *myvmss1*, *myvmss2* ve *myvmss3* olarak adlandırılır. Her bir ölçek kümesi NGINX yükleyeceğiniz iki sanal makine örneği içerir.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -236,7 +236,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için az network public-ip show komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. ,,, Veya`http://40.121.222.19:8080/video/test.htm`gibi. `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm`
+Uygulama ağ geçidinin genel IP adresini almak için az network public-ip show komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Gibi, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm`veya .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -248,11 +248,11 @@ az network public-ip show \
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-URL 'yi IP adresi için&lt; &lt;IP&gt;adresinizi http://&gt;IP adresi: 8080/images/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+IP adresinizyerine&lt;IP&gt;adresinizi &lt;&gt;değiştirerek URL'yi ip adresi :8080/images/test.html http:// olarak değiştirin ve aşağıdaki örnekgibi bir şey görmeniz gerekir:
 
 ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-URL 'yi IP adresi için&lt; &lt;IP&gt;adresinizi http://&gt;IP adresi: 8080/video/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir.
+URL'yi ip&lt;adresi&gt;http:// :8080/video/test.html olarak değiştirin, IP adresinizyerine &lt;ip adresinizi&gt;değiştirin ve aşağıdaki örnekgibi bir şey görmeniz gerekir.
 
 ![Video URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 

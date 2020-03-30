@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 578e935ee742ad476aeafb53670f0a92035249e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064075"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388993"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "80064075"
 Bu makalede, [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) ve Azure [Machine Learning tasarımcısında (önizleme)](https://docs.microsoft.com/azure/machine-learning/concept-designer) [makine öğrenimi boru hatlarını](concept-ml-pipelines.md) nasıl hata ayıklamave sorun giderme yle öğreneceğinizi öğreneceksiniz. Nasıl yapılabilmek için bilgi verilir:
 
 * Azure Machine Learning SDK'yı kullanarak hata ayıklama
-* Azure Machine Learning Designer'ı kullanarak hata ayıklama
+* Azure Machine Learning tasarımcısını kullanarak hata ayıklama
 * Uygulama Öngörülerini Kullanarak Hata Ayıklama
 * Visual Studio Code (VS Code) ve Python Tools for Visual Studio (PTVSD) araçlarını kullanarak etkileşimli hata ayıklama
 
@@ -91,7 +91,7 @@ Aşağıdaki tablo, ardışık hatlar için farklı hata ayıklama seçenekleri 
 | Kitaplık                    | Tür   | Örnek                                                          | Hedef                                  | Kaynaklar                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK’sı | Ölçüm | `run.log(name, val)`                                             | Azure Makine Öğrenme Portalı UI             | [Denemeler nasıl izleyebilirsiniz?](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml.core.Run sınıfı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python yazdırma/günlüğe kaydetme    | Günlük    | `print(val)`<br>`logging.info(message)`                          | Sürücü günlükleri, Azure Machine Learning Designer | [Denemeler nasıl izleyebilirsiniz?](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python günlüğü](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| Python yazdırma/günlüğe kaydetme    | Günlük    | `print(val)`<br>`logging.info(message)`                          | Sürücü günlükleri, Azure Machine Learning tasarımcısı | [Denemeler nasıl izleyebilirsiniz?](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python günlüğü](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | Açık Nüfus Sayımı Python          | Günlük    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Uygulama Öngörüleri - izlemeler                | [Application Insights’ta işlem hatlarında hata ayıklama](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure İzleyici Dışarı Aktarıcıları](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python günlük yemek kitabı](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>Günlüğe kaydetme seçenekleri örneği
@@ -136,8 +136,8 @@ Tasarımcıda oluşturulan ardışık hatlar için, **günlük dosyalarını** y
 Bir ardışık hatlar hattı çalıştırdığınızda ve yazma sayfasında kaldığınızda, her modül için oluşturulan günlük dosyalarını bulabilirsiniz.
 
 1. Yazma tuvalindeki herhangi bir modülü seçin.
-1. Modülün sağ bölmesinde **Çıktılar+ogs** sekmesine gidin.
-1. Günlük dosyasını seçin`70_driver_log.txt`
+1. Modülün sağ bölmesinde Çıktılar + **günlükler** sekmesine gidin.
+1. Günlük dosyasını `70_driver_log.txt`seçin.
 
     ![Sayfa modülü günlüklerinin yazilmesi](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
@@ -148,8 +148,8 @@ Belirli çalıştırmaların günlük **dosyalarını, Ardışık Hatlar** veya 
 1. Tasarımcıda oluşturulan bir ardışık hatlar hattı çalıştırın.
     ![Boru hattı çalıştırma sayfası](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. Önizleme bölmesindeki herhangi bir modülü seçin.
-1. Modülün sağ bölmesinde **Çıktılar+ogs** sekmesine gidin.
-1. Günlük dosyasını seçin`70_driver_log.txt`
+1. Modülün sağ bölmesinde Çıktılar + **günlükler** sekmesine gidin.
+1. Günlük dosyasını `70_driver_log.txt`seçin.
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Uygulama Öngörüleri'nde hata ayıklama ve sorun giderme
 OpenCensus Python kitaplığını bu şekilde kullanma hakkında daha fazla bilgi için şu kılavuza bakın: [Application Insights'ta hata ayıklama ve sorun giderme makinesi öğrenme ardışık hatları](how-to-debug-pipelines-application-insights.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak Amazon Redshift 'tan veri taşıma
-description: Azure Data Factory kopyalama etkinliğini kullanarak Amazon Redshift 'tan veri taşımayı öğrenin.
+title: Azure Veri Fabrikası'nı kullanarak Verileri Amazon Redshift'ten taşıma
+description: Azure Veri Fabrikası Kopyalama Etkinliği'ni kullanarak verileri Amazon Redshift'ten nasıl taşıyarak nasıl taşıyarak edinebilirsiniz.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,101 +13,101 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260533"
 ---
-# <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'Tan veri taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Veri Fabrikasını kullanarak Verileri Amazon Redshift'ten Taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-amazon-redshift-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-amazon-redshift.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, [v2 'de Amazon Redshift Connector](../connector-amazon-redshift.md)bölümüne bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki Amazon Redshift konektörüne](../connector-amazon-redshift.md)bakın.
 
-Bu makalede, Amazon Redshift 'tan verileri taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Makale, kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
+Bu makalede, Verileri Amazon Redshift'ten taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Makale, kopyalama etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesi ne dayanıyor?
 
-Data Factory Şu anda yalnızca Amazon Redshift 'ten [desteklenen bir havuz veri deposuna](data-factory-data-movement-activities.md#supported-data-stores-and-formats)veri taşımayı destekliyor. Diğer veri depolarından Amazon Redshift 'a veri taşıma desteklenmiyor.
+Veri Fabrikası şu anda yalnızca Amazon Redshift'ten desteklenen bir [lavabo veri deposuna](data-factory-data-movement-activities.md#supported-data-stores-and-formats)veri taşımayı desteklemektedir. Diğer veri depolarından Amazon Redshift'e veri taşınması desteklenmez.
 
 > [!TIP]
-> Amazon Redshift 'den büyük miktarlarda veri kopyalarken en iyi performansı elde etmek için, Amazon Simple Storage Service (Amazon S3) aracılığıyla yerleşik Redshift **Unload** komutunu kullanmayı düşünün. Ayrıntılar için bkz. [Amazon Redshift 'tan veri kopyalamak IÇIN kaldırma kullanma](#use-unload-to-copy-data-from-amazon-redshift).
+> Amazon Redshift'ten büyük miktarda veriyi kopyalarken en iyi performansı elde etmek için, Yerleşik Redshift **UNLOAD** komutunu Amazon Basit Depolama Hizmeti (Amazon S3) aracılığıyla kullanmayı düşünün. Ayrıntılar için Amazon [Redshift'ten verileri kopyalamak için UNLOAD kullan'a](#use-unload-to-copy-data-from-amazon-redshift)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
-* Verileri şirket içi veri deposuna taşıyorsanız, şirket içi bir makineye [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) yükleyebilirsiniz. Şirket içi makine IP adresini kullanarak Amazon Redshift kümesine bir ağ geçidi için erişim izni verin. Yönergeler için bkz. [kümeye erişim yetkisi verme](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
-* Verileri bir Azure veri deposuna taşımak için, [Microsoft Azure veri merkezleri tarafından kullanılan Işlem IP adresi ve SQL aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)bakın.
+## <a name="prerequisites"></a>Ön koşullar
+* Verileri şirket içi veri deposuna taşıyorsanız, şirket içi bir makineye [Veri Yönetimi Ağ Geçidi'ni](data-factory-data-management-gateway.md) yükleyin. Şirket içi makine IP adresini kullanarak Amazon Redshift kümesine erişim izni ver. Yönergeler için [bkz.](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)
+* Verileri bir Azure veri deposuna taşımak için [Microsoft Azure Veri Merkezleri tarafından kullanılan İşlem IP adresi ve SQL aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)bakın.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar ve API 'Ler kullanarak bir Amazon Redshift kaynağından veri taşımak için kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
+Farklı araçlar ve API'ler kullanarak verileri Bir Amazon Redshift kaynağından taşımak için bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz.
 
-İşlem hattı oluşturmanın en kolay yolu Azure Data Factory kopyalama Sihirbazı ' nı kullanmaktır. Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik hızlı bir anlatım için, bkz [: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
+Bir ardışık iş tonu oluşturmanın en kolay yolu Azure Veri Fabrikası Kopyalama Sihirbazı'nı kullanmaktır. Kopya Sihirbazı'nı kullanarak bir ardışık kaynak oluşturma konusunda hızlı bir geçiş [için, Bkz. Öğretici: Kopya Sihirbazı'nı kullanarak bir ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
 
-Ayrıca, Visual Studio, Azure PowerShell veya diğer araçları kullanarak bir işlem hattı da oluşturabilirsiniz. Azure Resource Manager şablonları, .NET API 'SI veya REST API ardışık düzeni oluşturmak için de kullanılabilir. Kopyalama etkinliği ile işlem hattı oluşturmaya yönelik adım adım yönergeler için, [kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.
+Visual Studio, Azure PowerShell veya diğer araçları kullanarak bir boru hattı da oluşturabilirsiniz. Azure Kaynak Yöneticisi şablonları, .NET API veya REST API de ardışık kaynak oluşturmak için kullanılabilir. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeler için [Etkinlik Kopyala öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.
 
-Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için bağlı hizmetler oluşturun.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturun.
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem hattı oluşturun.
+1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için bağlantılı hizmetler oluşturun.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek veri kümeleri oluşturun.
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir ardışık işlem oluşturma.
 
-Kopyalama Sihirbazı 'nı kullandığınızda, bu Data Factory varlıkların JSON tanımları otomatik olarak oluşturulur. Araçları veya API 'Leri (.NET API hariç) kullandığınızda, Data Factory varlıklarını JSON biçimini kullanarak tanımlarsınız. JSON örneği: Amazon Redshift 'dan Azure Blob depolama 'ya veri kopyalama bir Amazon Redshift veri deposundan veri kopyalamak için kullanılan Data Factory varlıkların JSON tanımlarını gösterir.
+Kopyalama Sihirbazı'nı kullandığınızda, bu Veri Fabrikası varlıkları için JSON tanımları otomatik olarak oluşturulur. Araçlar veya API'ler (.NET API hariç) kullandığınızda, JSON biçimini kullanarak Veri Fabrikası varlıklarını tanımlarsınız. JSON örneği: Amazon Redshift'ten Azure Blob depolamasına kadar olan verileri kopyalamak, Bir Amazon Redshift veri deposundan veri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlarını gösterir.
 
-Aşağıdaki bölümlerde, Amazon Redshift için Data Factory varlıklarını tanımlamak üzere kullanılan JSON özellikleri açıklanır.
+Aşağıdaki bölümlerde Amazon Redshift için Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri açıklanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-Aşağıdaki tabloda, Amazon Redshift bağlı hizmetine özgü JSON öğeleri için açıklamalar sağlanmaktadır.
+Aşağıdaki tablo, Bir Amazon Redshift bağlantılı hizmete özgü JSON öğeleri için açıklamalar sağlar.
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **type** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Yes |
-| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
-| **bağ** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır (varsayılan değer 5439) |
-| **veritabanınızı** |Amazon Redshift veritabanının adı. |Yes |
-| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Yes |
-| **parolayı** |Kullanıcı hesabının parolası. |Yes |
+| **Türü** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Evet |
+| **sunucu** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
+| **Bağlantı noktası** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktasının sayısı. |Hayır (varsayılan değer 5439'dur) |
+| **Veritabanı** |Amazon Redshift veritabanının adı. |Evet |
+| **Username** |Veritabanına erişimi olan kullanıcının adı. |Evet |
+| **parola** |Kullanıcı hesabının şifresi. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. **Yapı**, **kullanılabilirlik**ve **ilke** bölümleri tüm veri kümesi türleri için benzerdir. Veri kümesi türlerine örnek olarak Azure SQL, Azure Blob depolama ve Azure Tablo depolama verilebilir.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. **Yapı,** **kullanılabilirlik**ve **ilke** bölümleri tüm veri kümesi türleri için benzerdir. Veri kümesi türlerine örnek olarak Azure SQL, Azure Blob depolama ve Azure Tablo depolama sayılabilir.
 
-**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve depodaki verilerin konumu hakkında bilgi sağlar. Amazon Redshift veri kümesini içeren **Relationaltable**türünde bir veri kümesinin **typeproperties** bölümü aşağıdaki özelliklere sahiptir:
-
-| Özellik | Açıklama | Gerekli |
-| --- | --- | --- |
-| **tableName** |Amazon Redshift veritabanındaki, bağlı hizmetin başvurduğu tablonun adı. |Hayır ( **Relationalsource** türünde kopyalama etkinliğinin **sorgu** özelliği belirtilmişse) |
-
-## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. **Ad**, **Açıklama**, **giriş** tablosu, **Çıkış** tablosu ve **ilke** özellikleri tüm etkinlik türleri için kullanılabilir. **Typeproperties** bölümünde kullanılabilen özellikler her etkinlik türü için farklılık gösterir. Kopyalama etkinliği için özellikler veri kaynağı ve havuz türlerine göre değişir.
-
-Kopyalama etkinliği için, kaynak **AmazonRedshiftSource**türünde olduğunda aşağıdaki özellikler **typeproperties** bölümünde mevcuttur:
+**typeProperties** bölümü her veri kümesi türü için farklıdır ve depodaki verilerin konumu hakkında bilgi sağlar. Amazon Redshift veri kümesini içeren **RelationalTable**türünden bir veri kümesinin **typeProperties** bölümü aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **sorgulayamadı** | Verileri okumak için özel sorguyu kullanın. |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
-| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | Hayır |
-| **s3LinkedServiceName** | Bir ara mağaza olarak kullanmak için Amazon S3. Bağlı hizmet, **Awsaccesskey**türünde bir Azure Data Factory adı kullanılarak belirtilir. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
-| **bucketName** | Ara verileri depolamak için kullanılacak Amazon S3 demet öğesini gösterir. Bu özellik sağlanmazsa, kopyalama etkinliği otomatik olarak bir demet oluşturur. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
+| **Tablename** |Bağlı hizmetin atıfta bulunduğu Amazon Redshift veritabanındaki tablonun adı. |Hayır **(RelationalSource** türündeki bir kopya etkinliğinin **sorgu** özelliği belirtilmişse) |
 
-Alternatif olarak, **Typeproperties** bölümünde aşağıdaki özelliği Içeren Amazon Redshift Içeren **relationalsource** türünü de kullanabilirsiniz. Bu kaynak türü Redshift **Unload** komutunu desteklemez.
+## <a name="copy-activity-properties"></a>Etkinlik özelliklerini kopyalama
+
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin listesi [için, Kaynak Hatları Oluşturma](data-factory-create-pipelines.md) makalesine bakın. **Ad,** **açıklama,** **giriş** tablosu, **çıktılar** tablosu ve **ilke** özellikleri tüm etkinlik türleri için kullanılabilir. **TypeProperties** bölümünde bulunan özellikler her etkinlik türü için değişir. Kopyalama Etkinliği için özellikler veri kaynakları ve lavabo türlerine bağlı olarak değişir.
+
+Copy Activity için, kaynak **AmazonRedshiftSource**türünde olduğunda, aşağıdaki özellikler **typeProperties** bölümünde mevcuttur:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **sorgulayamadı** |Verileri okumak için özel sorguyu kullanın. | Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
+| **Sorgu** | Verileri okumak için özel sorguyu kullanın. |Hayır (bir veri kümesinin **tabloAdı** özelliği belirtilirse) |
+| **redshiftUnloadAyarlar** | Redshift **UNLOAD** komutunu kullanırken özellik grubunu içerir. | Hayır |
+| **s3LinkedServiceName** | Amazon S3 geçici bir mağaza olarak kullanmak. Bağlantılı hizmet, **AwsAccessKey**türünden bir Azure Veri Fabrikası adı kullanılarak belirtilir. | **RedshiftUnloadSettings** özelliğini kullanırken gereklidir |
+| **bucketName** | Ara verileri depolamak için kullanılacak Amazon S3 kovasını gösterir. Bu özellik sağlanamazsa, Kopyalama Etkinliği otomatik olarak bir kova oluşturur. | **RedshiftUnloadSettings** özelliğini kullanırken gereklidir |
 
-## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Amazon Redshift 'tan veri kopyalamak için KALDıRMA kullanma
+Alternatif olarak, Amazon Redshift içeren **RelationalSource** türünü **typeProperties** bölümünde aşağıdaki özelliği ile kullanabilirsiniz. Bu kaynak türünün Redshift **UNLOAD** komutunu desteklemediğini unutmayın.
 
-Amazon Redshift [**Unload**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) komutu bir sorgunun sonuçlarını Amazon S3 üzerindeki bir veya daha fazla dosyaya kaldırır. Bu komut, Redshift ' den büyük veri kümelerini kopyalamak için Amazon tarafından önerilir.
+| Özellik | Açıklama | Gerekli |
+| --- | --- | --- |
+| **Sorgu** |Verileri okumak için özel sorguyu kullanın. | Hayır (bir veri kümesinin **tabloAdı** özelliği belirtilirse) |
 
-**Örnek: Amazon Redshift 'tan Azure SQL veri ambarı 'na veri kopyalama**
+## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Amazon Redshift'ten verileri kopyalamak için UNLOAD'ı kullanın
 
-Bu örnek, Amazon Redshift 'tan Azure SQL veri ambarı 'na veri kopyalar. Örnek, Redshift **Unload** komutunu, hazırlanan kopyalama verilerini ve Microsoft PolyBase 'i kullanır.
+Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) komutu, bir sorgunun sonuçlarını Amazon S3'teki bir veya daha fazla dosyaya boşaltır. Bu komut, Redshift'ten büyük veri kümelerini kopyalamak için Amazon tarafından önerilir.
 
-Bu örnek kullanım örneği için, kopyalama etkinliği önce Amazon Redshift ' dan Amazon S3 ' dan, **Redkaydırıcı Tunloadsettings** seçeneğinde yapılandırıldığı gibi verileri kaldırır. Daha sonra, veriler, **Stagingsettings** seçeneğinde belirtildiği gibi Amazon S3 öğesinden Azure Blob depolama alanına kopyalanır. Son olarak, PolyBase verileri SQL veri ambarı 'na yükler. Tüm ara biçimler kopyalama etkinliği tarafından işlenir.
+**Örnek: Verileri Amazon Redshift'ten Azure SQL Veri Ambarı'na kopyalama**
 
-![Amazon Redshift 'dan SQL veri ambarı 'na iş akışını kopyalama](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+Bu örnek, Amazon Redshift'ten Azure SQL Veri Ambarı'na kadar olan verileri kopyalar. Örnek, Redshift **UNLOAD** komutunu, aşamalı kopya verilerini ve Microsoft PolyBase'i kullanır.
+
+Bu örnek kullanım örneği için, Copy Activity önce **redshiftUnloadSettings** seçeneğinde yapılandırıldığı gibi Amazon Redshift'ten Amazon S3'e verileri boşaltır. Ardından, **veriler, evreleme Ayarlar** seçeneğinde belirtildiği şekilde Amazon S3'ten Azure Blob depolamasına kopyalanır. Son olarak, PolyBase verileri SQL Veri Ambarı'na yükler. Tüm ara biçimleri Copy Activity tarafından işlenir.
+
+![Amazon Redshift'ten SQL Veri Ambarı'na iş akışını kopyala](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -137,20 +137,20 @@ Bu örnek kullanım örneği için, kopyalama etkinliği önce Amazon Redshift '
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON örneği: Amazon Redshift 'tan Azure Blob depolama alanına veri kopyalama
-Bu örnek, bir Amazon Redshift veritabanından Azure Blob depolama alanına nasıl veri kopyalanacağını gösterir. Veriler, kopyalama etkinliği kullanılarak, desteklenen herhangi bir [havuza](data-factory-data-movement-activities.md#supported-data-stores-and-formats) doğrudan kopyalanabilir.
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON örneği: Verileri Amazon Redshift'ten Azure Blob depolamaalanına kopyalama
+Bu örnek, bir Amazon Redshift veritabanından Azure Blob Depolama'ya verilerin nasıl kopyalanır olduğunu gösterir. Veriler, Kopyalama Etkinliği kullanılarak desteklenen herhangi bir [lavaboya](data-factory-data-movement-activities.md#supported-data-stores-and-formats) doğrudan kopyalanabilir.
 
-Örnek, aşağıdaki Data Factory varlıklarına sahiptir:
+Örnekte aşağıdaki veri fabrikası varlıkları vardır:
 
-* [AmazonRedshift](#linked-service-properties) türünde bağlı bir hizmet
-* [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-* [Relationaltable](#dataset-properties) türünde bir giriş [veri kümesi](data-factory-create-datasets.md)
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) türünde bir çıkış [veri kümesi](data-factory-create-datasets.md)
-* [Relationalsource](#copy-activity-properties) ve [blobsink](data-factory-azure-blob-connector.md#copy-activity-properties) özelliklerini kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md)
+* [AmazonRedshift](#linked-service-properties) türü ne bağlı bir hizmet
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+* [Tür İlişkisel Tablo'nun](#dataset-properties) giriş [veri kümesi](data-factory-create-datasets.md)
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) türünden bir çıktı [veri kümesi](data-factory-create-datasets.md)
+* [İlişkisel Kaynak](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) özelliklerini kullanan bir kopyalama etkinliği olan bir [ardışık hat](data-factory-create-pipelines.md)
 
-Örnek, Amazon Redshift 'deki bir sorgu sonucundan verileri saatlik bir Azure blobuna kopyalar. Örnekte kullanılan JSON özellikleri, varlık tanımlarını izleyen bölümlerde açıklanmıştır.
+Örnek, amazon redshift'inden bir Azure blob'una saatlik olarak bir sorgu sonucundaki verileri kopyalar. Örnekte kullanılan JSON özellikleri varlık tanımlarını izleyen bölümlerde açıklanmıştır.
 
-**Amazon Redshift bağlı hizmeti**
+**Amazon Redshift bağlantılı hizmet**
 
 ```json
 {
@@ -170,7 +170,7 @@ Bu örnek, bir Amazon Redshift veritabanından Azure Blob depolama alanına nas�
 }
 ```
 
-**Azure Blob depolama bağlı hizmeti**
+**Azure Blob depolama bağlantılı hizmet**
 
 ```json
 {
@@ -183,9 +183,9 @@ Bu örnek, bir Amazon Redshift veritabanından Azure Blob depolama alanına nas�
   }
 }
 ```
-**Amazon Redshift Input veri kümesi**
+**Amazon Redshift giriş dataset**
 
-**External** özelliği "true" olarak ayarlanır ve bu, veri kümesinin veri fabrikası dışında olduğunu Data Factory hizmetini bilgilendirmek için. Bu özellik ayarı, veri kümesinin veri fabrikasında bir etkinlik tarafından üretilmediğini belirtir. İşlem hattındaki bir etkinlik tarafından üretilmeyen bir giriş veri kümesinde özelliği true olarak ayarlayın.
+**Dış** özellik, Veri Fabrikası hizmetine veri kümesinin veri fabrikasının dışında olduğunu bildirmek için "true" olarak ayarlanır. Bu özellik ayarı, veri kümesinin veri fabrikasındaki bir etkinlik tarafından üretilmediğini gösterir. El üstündeki bir etkinlik tarafından üretilmeyen bir giriş veri kümesinde özelliği doğru şekilde ayarlayın.
 
 ```json
 {
@@ -207,7 +207,7 @@ Bu örnek, bir Amazon Redshift veritabanından Azure Blob depolama alanına nas�
 
 **Azure Blob çıktı veri kümesi**
 
-**Sıklık** özelliği "Hour" ve **Interval** özelliği 1 olarak ayarlanarak, veriler her saat yeni bir bloba yazılır. Blob için **FolderPath** özelliği dinamik olarak değerlendirilir. Özellik değeri, işlenmekte olan dilimin başlangıç zamanına göre belirlenir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
+Veri, **frekans** özelliğini "Saat" ve **aralık** özelliği 1 olarak ayarlayarak her saat yeni bir blob'a yazılır. Blob için **folderPath** özelliği dinamik olarak değerlendirilir. Özellik değeri, işlenen dilimin başlangıç saatini temel adatır. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
 
 ```json
 {
@@ -265,9 +265,9 @@ Bu örnek, bir Amazon Redshift veritabanından Azure Blob depolama alanına nas�
 }
 ```
 
-**Azure Redshift kaynağına sahip bir işlem hattındaki etkinliği (RelationalSource türü) ve bir Azure Blob havuzunu kopyalama**
+**Azure Redshift kaynağı (türü İlişkisel Kaynak) ve Azure Blob lavabosu içeren bir ardışık ardışık ardışık ardışık ardışık alanda etkinliği kopyalama**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. İşlem hattı her saat çalışacak şekilde zamanlanır. İşlem hattının JSON tanımında, **kaynak** türü **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, son saatten kopyalanacak verileri seçer.
+Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan bir kopyalama etkinliği içerir. Boru hattının her saat başı çalışması planlanıyor. Boru hattı için JSON tanımında, **kaynak** türü **RelationalSource** olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır. **Sorgu** özelliği için belirtilen SQL sorgusu, son bir saat içinde kopyalanacak verileri seçer.
 
 ```json
 {
@@ -319,37 +319,37 @@ Bu örnek, bir Amazon Redshift veritabanından Azure Blob depolama alanına nas�
     }
 }
 ```
-### <a name="type-mapping-for-amazon-redshift"></a>Amazon Redshift için tür eşleme
-[Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi kopyalama etkinliği, kaynak türünden havuz türüne otomatik tür dönüştürmeleri gerçekleştirir. Türler iki adımlı bir yaklaşım kullanılarak dönüştürülür:
+### <a name="type-mapping-for-amazon-redshift"></a>Amazon Redshift için tip haritalama
+[Veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, Kopyalama Etkinliği kaynak türünden lavabo türüne otomatik tür dönüştürmeleri gerçekleştirir. Türleri iki adımlı bir yaklaşım kullanılarak dönüştürülür:
 
-1. Yerel bir kaynak türünden .NET türüne dönüştürme
-2. .NET türünden yerel havuz türüne dönüştürme
+1. Yerel kaynak türünden .NET türüne dönüştürme
+2. .NET türünden yerel lavabo türüne dönüştürme
 
-Kopyalama etkinliği verileri bir Amazon Redshift türünden .NET türüne dönüştürdüğünde aşağıdaki eşlemeler kullanılır:
+Kopyalama Etkinliği verileri Amazon Redshift türünden bir .NET türüne dönüştürdüğünde aşağıdaki eşlemeler kullanılır:
 
-| Amazon Redshift türü | .NET türü |
+| Amazon Redshift tipi | .NET türü |
 | --- | --- |
-| SMALLINT |Int16 |
-| INTEGER |Int32 |
-| BIGıNT |Int64 |
-| DECIMAL |Ondalık |
-| REAL |Tek |
-| DOUBLE PRECISION |çift |
-| BOOLEAN |Dize |
-| CHAR |Dize |
-| VARCHAR |Dize |
+| Smallint |Int16 |
+| TAMSAYI |Int32 |
+| Bigint |Int64 |
+| On -da -lık |Ondalık |
+| GERÇEK SAYI |Tek |
+| ÇİFT HASSASLIK |Çift |
+| Boolean |Dize |
+| Char |Dize |
+| Varchar |Dize |
 | DATE |DateTime |
-| TIMESTAMP |DateTime |
+| Zaman damgası |DateTime |
 | TEXT |Dize |
 
-## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
-Kaynak veri kümesindeki sütunların havuz veri kümesindeki sütunlara nasıl eşlendiğini öğrenmek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Sütunları batırmak için harita kaynağı
+Kaynak veri kümesindeki sütunları lavabo veri kümesindeki sütunlara nasıl eşlendireceklerini öğrenmek için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
 
-## <a name="repeatable-reads-from-relational-sources"></a>İlişkisel kaynaklardan tekrarlanabilir okuma
-İlişkisel bir veri deposundan verileri kopyaladığınızda, istenmeyen sonuçlardan kaçınmak için yinelenebilirlik aklınızda bulundurun. Azure Data Factory, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda bir dilimi yeniden çalıştırmak için bir veri kümesi için yeniden deneme **ilkesini** de yapılandırabilirsiniz. Dilimin kaç kez yeniden çalıştırıldıklarından bağımsız olarak aynı verilerin okunduğunuzdan emin olun. Ayrıca, dilimi yeniden çalıştırma şeklinden bağımsız olarak aynı verilerin okunup de bulunduğundan emin olun. Daha fazla bilgi için bkz. [ilişkisel kaynaklardan tekrarlanabilir okumalar](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-reads-from-relational-sources"></a>İlişkisel kaynaklardan tekrarlanabilir okumalar
+İlişkisel bir veri deposundan veri kopyaladığınızda, istenmeyen sonuçlardan kaçınmak için tekrarlanabilirliği aklınızda bulundurun. Azure Veri Fabrikası'nda, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda bir dilimi yeniden çalıştırmak için bir veri kümesi için yeniden deneme **ilkesini** de yapılandırabilirsiniz. Dilim kaç kez yeniden çalıştırılırsa çalıştırılırsa okunsun, aynı verilerin okunduğundan emin olun. Ayrıca, dilimi nasıl yeniden çalıştırdığınıza bakılmaksızın aynı verilerin okunduğundan emin olun. Daha fazla bilgi için bkz: [İlişkisel kaynaklardan tekrarlanabilir okumalar.](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
 ## <a name="performance-and-tuning"></a>Performans ve ayar
-Kopyalama etkinliğinin performansını etkileyen anahtar faktörleri ve [kopyalama etkinliği performansı ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md)' nda performansı iyileştirme yolları hakkında bilgi edinin.
+Kopyalama Etkinliği performansını etkileyen önemli etkenler ve Kopyalama [Etkinliği Performansı ve Tuning Kılavuzu'ndaki](data-factory-copy-activity-performance.md)performansı optimize etmenin yolları hakkında bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kopyalama etkinliği ile işlem hattı oluşturmaya yönelik adım adım yönergeler için, [kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.
+Kopyalama Etkinliği ile bir ardışık hatlar oluşturmak için adım adım yönergeler için, [Etkinliği Kopyala öğreticiye](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)bakın.

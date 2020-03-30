@@ -1,7 +1,7 @@
 ---
-title: ML işlem hatları nelerdir
+title: ML Boru Hatları Nedir
 titleSuffix: Azure Machine Learning
-description: Bu makalede, Python için Azure Machine Learning SDK ile oluşturabileceğiniz Machine Learning (ML) işlem hatlarının avantajlarını öğrenin. Makine öğrenimi ardışık düzenleri, veri bilimcilerinin makine öğrenimi iş akışlarını derlemek, iyileştirmek ve yönetmek için kullanılır.
+description: Bu makalede, Python için Azure Machine Learning SDK ile oluşturabileceğiniz makine öğrenimi (ML) boru hatlarının avantajlarını öğrenin. Makine öğrenimi boru hatları, veri bilimciler tarafından makine öğrenimi iş akışlarını oluşturmak, optimize etmek ve yönetmek için kullanılır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,131 +9,131 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 3f1d0e13d9b76c7ef06edb953b59ebfa73c302de
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: da45c0db027dffc89bd058b70331a4bd6d093b08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79296855"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336952"
 ---
-# <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
+# <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning boru hatları nedir?
 
-Azure Machine Learning işlem hatları, Machine Learning projelerinizde iş akışları oluşturmanıza olanak tanır. Bu iş akışlarının çeşitli avantajları vardır: 
+Azure Machine Learning ardışık hatları, makine öğrenimi projelerinizde iş akışları oluşturmanıza olanak tanır. Bu iş akışlarının bir dizi avantajı vardır: 
 
-+ Olması
++ Sade -lik
 + Hız
-+ Yinelenebilirlik
++ Tekrarlanabilirlik
 + Esneklik
-+ Sürüm oluşturma ve izleme
-+ Modülerlik 
++ Sürüm ve izleme
++ Modüler 
 + Kalite güvencesi
-+ Maliyet denetimi
++ Maliyet kontrolü
 
-Bu avantajlar, Machine Learning projeniz saf araştırmadan ve yinelemeye doğru ilerlemediğinde önemli hale gelir. Basit tek adımlı işlem hatları da değerli olabilir. Makine öğrenimi projeleri genellikle karmaşık bir durumlardır ve tek bir iş akışının kesin bir işlem olmasını sağlamak zor olabilir.
+Bu avantajlar, makine öğrenimi projeniz saf keşif ve yinelemenin ötesine geçer geçmez önem edir. Hatta basit tek adımlı boru hatları değerli olabilir. Makine öğrenimi projeleri genellikle karmaşık bir durumdadır ve tek bir iş akışının kesin başarısını önemsiz bir süreç haline getirmek rahatlatıcı olabilir.
 
-[İlk işlem hattınızı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
+[İlk ardışık hattınızı](how-to-create-your-first-pipeline.md)nasıl oluşturabilirsiniz öğrenin.
 
-![Azure Machine Learning 'de makine öğrenimi ardışık düzenleri](./media/concept-ml-pipelines/pipeline-flow.png)
+![Azure Machine Learning'de makine öğrenimi boru hatları](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
-### <a name="which-azure-pipeline-technology-should-i-use"></a>Hangi Azure ardışık düzen teknolojisini kullanmalıyım?
+### <a name="which-azure-pipeline-technology-should-i-use"></a>Hangi Azure boru hattı teknolojisini kullanmalıyım?
 
-Azure bulutu, her biri farklı bir amaca sahip birkaç farklı işlem hattı sağlar. Aşağıdaki tabloda, farklı işlem hatları ve bunların kullanıldıkları özellikler listelenmiştir:
+Azure bulutu, her biri farklı bir amaca sahip birkaç başka ardışık hat lar sağlar. Aşağıdaki tabloda farklı ardışık lıklar ve ne için kullanıldığı listelenir:
 
-| Senaryo | Birincil kişi | Azure teklifi | OSS sunumu | Kurallı Kanal | Yönleri | 
+| Senaryo | Birincil persona | Azure teklifi | OSS teklifi | Kanonik boru | Güçlü | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
-| Model düzenleme (Machine Learning) | Veri bilimcisi | Azure Machine Learning işlem hatları | Kubeflow işlem hatları | Veri > modeli | Dağıtım, önbelleğe alma, kod ilk, yeniden kullanım | 
-| Veri düzenleme (veri hazırlığı) | Veri mühendisi | [Azure Data Factory işlem hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | Veri > verileri | Kesin tür belirtilmiş hareket. Veri merkezli etkinlikler. |
-| Kod & uygulama düzenlemesi (CI/CD) | Uygulama geliştiricisi/Ops | [Azure DevOps işlem hatları](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Kod + model-> App/Service | En açık ve Flexibile etkinlik desteği, onay kuyrukları, geçişi olan aşamalar | 
+| Model orkestrasyonu (Makine öğrenimi) | Veri bilimcisi | Azure Makine Öğrenme Boru Hatları | Kubeflow Boru Hatları | Veri -> Modeli | Dağıtım, önbelleğe alma, kod-ilk, yeniden | 
+| Veri düzenleme (Veri hazırlama) | Veri mühendisi | [Azure Data Factory işlem hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Hava Akımı | Veri -> Verileri | Güçlü bir şekilde yazılan hareket. Veri merkezli etkinlikler. |
+| Kod & uygulama düzenleme (CI/CD) | Uygulama Geliştirici / Ops | [Azure DevOps Boru Hatları](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Kod + Model -> Uygulama/Servis | En açık ve esnek etkinlik desteği, onay kuyrukları, gating ile aşamaları | 
 
 
-## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML işlem hatları ne yapabilir?
+## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML boru hatları ne yapabilir?
 
-Azure Machine Learning işlem hattı, bir makine öğrenimi görevinin bağımsız bir yürütülebilir iş akışıdır. Alt görevler işlem hattı içinde bir dizi adım olarak kapsüllenir. Bir Azure Machine Learning işlem hattı, Python betiği çağıran bir basit olabilir, bu nedenle yalnızca herhangi bir şey _olabilir_ . İşlem hatları, şu gibi makine öğrenimi görevlerine _odaklanmalıdır_ :
+Azure Machine Learning ardışık alanı, tam bir makine öğrenimi görevinin bağımsız olarak yürütülebilir bir iş akışıdır. Alt görevler işlem hattı içinde bir dizi adım olarak kapsüllenir. Azure Machine Learning ardışık bir ardışık nokta Python komut dosyası çağıran bir boru hattı kadar basit olabilir, _bu_ nedenle hemen hemen her şeyi yapabilir. Boru hatları gibi makine öğrenimi görevlerine _odaklanmalıdır:_
 
 + İçeri aktarma, doğrulama ve temizleme, ham verileri kullanışlı hale getirme ve dönüştürme, normalleştirme ve hazırlamayı içeren veri hazırlığı
 + Bağımsız değişkenleri, dosya yollarını ve günlük / raporlama yapılandırmalarını parametreleştirmeyi içeren eğitim yapılandırması
-+ Verimli ve sürekli olarak eğitim ve doğrulama. Verimlilik, belirli veri alt kümeleri, farklı donanım işlem kaynakları, dağıtılmış işlem ve ilerleme izlemeyi belirtmekten gelebilir
++ Verimli ve sürekli eğitim ve doğrulama. Verimlilik, belirli veri alt kümeleri, farklı donanım bilgi işlem kaynakları, dağıtılmış işleme ve ilerleme izleme belirtilmesinden kaynaklanabilir
 + Sürüm oluşturma, ölçeklendirme, sağlama ve erişim denetimini içeren dağıtım 
 
-Bağımsız adımlar, birden fazla veri bilimcilerinin aynı işlem hattı üzerinde, yoğun işlem kaynakları olmadan aynı anda çalışmasına izin verir. Ayrı adımlar, her adım için farklı işlem türleri/boyutları kullanmayı da kolaylaştırır.
+Bağımsız adımlar, birden fazla veri bilim adamının aynı boru hattı üzerinde aynı anda, bilgi işlem kaynaklarını aşırı vergilendirmeden çalışmasına olanak sağlar. Ayrı adımlar, her adım için farklı işlem türlerinin/boyutlarının kullanılmasını da kolaylaştırır.
 
-İşlem hattı tasarlandıktan sonra, işlem hattının eğitim döngüsü etrafında genellikle daha fazla ince ayar yapılır. Bir işlem hattını yeniden çalıştırdığınızda, çalıştırma, güncelleştirilmiş bir eğitim betiği gibi yeniden çalıştırılması gereken adımlara atlar. Yeniden çalıştırılması gerekmeyen adımlar atlanır. Aynı analiz, adımın yerine kullanılan değiştirilmemiş betikler için geçerlidir. Bu yeniden kullanım işlevselliği, temel alınan veriler değişmemişse veri alımı ve dönüştürme gibi maliyetli ve zaman uyumlu adımların çalıştırılmasının önlenmesine yardımcı olur.
+Boru hattı tasarlandıktan sonra, genellikle boru hattının eğitim döngüsü etrafında daha ince ayar vardır. Bir ardışık hattı yeniden çalıştırdığınızda, çalıştır, güncelleştirilmiş bir eğitim komut dosyası gibi yeniden çalıştırılması gereken adımlara atlar. Yeniden çalıştırılması gerekmeyen adımlar atlanır. Aynı çözümleme, adımın başarıya uyması için kullanılan değişmemiş komut dosyaları için de geçerlidir. Bu yeniden kullanım işlevi, temel veriler değişmemişse veri alımı ve dönüştürme gibi maliyetli ve zaman yoğun adımlardan kaçınmaya yardımcı olur.
 
-Azure Machine Learning, işlem hattınızdaki her adım için PyTorch veya TensorFlow gibi çeşitli araç setleri ve çerçeveler kullanabilirsiniz. Azure, kullandığınız çeşitli [işlem hedeflerini](concept-azure-machine-learning-architecture.md) koordine eder, bu sayede ara verileriniz aşağı akış işlem hedefleri ile paylaşılabilir.
+Azure Machine Learning ile, boru hattınızdaki her adım için PyTorch veya TensorFlow gibi çeşitli araç kitlerini ve çerçeveleri kullanabilirsiniz. Azure, ara verilerinizin akış aşağı bilgi işlem hedefleriyle paylaşılabilmeleri için kullandığınız çeşitli [bilgi işlem hedeflerini](concept-azure-machine-learning-architecture.md) koordine eder.
 
-İşlem [hattı denemeleri için ölçümleri](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) doğrudan Azure Portal veya [çalışma alanı giriş sayfanız (Önizleme)](https://ml.azure.com)içinde izleyebilirsiniz. Bir işlem hattı yayımlandıktan sonra, herhangi bir platform veya yığından işlem hattını yeniden çalıştırmanıza olanak sağlayan bir REST uç noktası yapılandırabilirsiniz.
+Boru [hattı denemelerinizin ölçümlerini](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) doğrudan Azure portalında veya [çalışma alanı açılış sayfanızda (önizleme)](https://ml.azure.com)izleyebilirsiniz. Bir ardışık hatlar yayımlandıktan sonra, ardışık hattı herhangi bir platformdan veya yığından yeniden çalıştırmanızı sağlayan bir REST bitiş noktası yapılandırabilirsiniz.
 
-Kısacası, makine öğrenimi yaşam döngüsünün tüm karmaşık görevlerine işlem hatları ile yardımcı olabilir. Diğer Azure işlem hattı teknolojilerinin, verilerle çalışma ve sürekli tümleştirme ve dağıtım için [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) [Azure Data Factory işlem hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) gibi kendi güçlü yönleri vardır. Ancak odaklanmanız makine öğrenimi ise, Azure Machine Learning işlem hatları, iş akışı gereksinimleriniz için en iyi seçenektir. 
+Kısacası, makine öğrenimi yaşam döngüsünün tüm karmaşık görevleri boru hatları ile yardımcı olabilir. Diğer Azure boru hattı teknolojileri, sürekli tümleştirme ve dağıtım için verilerle çalışmak için [Azure Veri Fabrikası ardışık hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) ve Azure [Ardışık Hatları](https://azure.microsoft.com/services/devops/pipelines/) gibi kendi güçlü yanlarına sahiptir. Ancak odak noktanız makine öğrenimiyse, Azure Machine Learning boru hatları iş akışı gereksinimleriniz için en iyi seçim olabilir. 
 
-## <a name="what-are-azure-ml-pipelines"></a>Azure ML işlem hatları nelerdir?
+## <a name="what-are-azure-ml-pipelines"></a>Azure ML boru hatları nedir?
 
-Azure ML işlem hattı, sıralı bir adım dizisi ile tamamlanmış bir mantıksal iş akışı gerçekleştirir. Her adım ayrı bir işleme eylemi olur. İşlem hatları Azure Machine Learning [deneme](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)bağlamında çalışır.
+Azure ML ardışık bir ardışık düzen, sıralı bir adım dizisiyle tam bir mantıksal iş akışı gerçekleştirir. Her adım ayrı bir işleme eylemidir. Ardışık hatlar, Azure Machine Learning [Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)bağlamında çalışır.
 
-Bir ML projesinin erken aşamalarında, Azure çalışma alanı ve kaynak yapılandırması, veri hazırlama, çalıştırma yapılandırma, eğitim ve doğrulama çalışmalarını yapan tek bir Jupyter Not defteri veya Python betiğinin olması çok güzel. Ancak, işlevlerin ve sınıfların tek bir kesinlik bloğu için hızlı bir şekilde tercih edileceği şekilde, ML iş akışlarının tek parçalı bir not defteri veya betiğe hızla tercih edileceği. 
+BIR ML projesinin ilk aşamalarında, Azure çalışma alanı ve kaynak yapılandırması, veri hazırlama, yapılandırma çalıştırma, eğitim ve doğrulama nın tüm işlerini yapan tek bir Jupyter dizüstü bilgisayarına veya Python komut dosyasına sahip olmak iyidir. Ancak işlevler ve sınıflar tek bir zorunlu kod bloğuna hızla tercih edilir hale geldikçe, ML iş akışları da hızla yekpare bir not defterine veya komut dosyasına tercih edilir hale gelir. 
 
-ML görevleri modüle göre, işlem hatları, bir bileşenin "do (yalnızca) bir tane daha iyi olması gerektiğini, bilgisayar bilimi 'ni destekler. Modülerlik, ekiplerde programlarken proje başarısı için çok önemlidir, ancak tek başına çalışırken bile, küçük bir ML projesi her biri ayrı bir karmaşıklık miktarı olan ayrı görevler içerir. Görevler şunlardır: çalışma alanı yapılandırma ve veri erişimi, veri hazırlama, model tanımı ve yapılandırma ve dağıtım. Bir ya da daha fazla görevin çıkışları, girdileri başka bir şekilde oluştururken, her bir görevin tam uygulama ayrıntıları, en iyi ve bir sonraki konuda ilgisiz değildir. En kötü durumda, bir görevin hesaplama durumu başka bir hataya neden olabilir. 
+ML görevlerini modüle ederek, boru hatları bilgisayar bilimi zorunluluğunu destekler, bir bileşenin "tek bir şeyi iyi yapması" gerektiğini yapar. Modülerlik açıkça takım halinde programlama başarı proje için hayati önem taşımaktadır, ama tek başına çalışırken bile, hatta küçük bir ML proje ayrı görevler içerir, karmaşıklık iyi bir miktar her. Görevler şunlardır: çalışma alanı yapılandırması ve veri erişimi, veri hazırlama, model tanımı ve yapılandırma ve dağıtım. Bir veya daha fazla görevin çıktıları girdileri diğerine oluştururken, herhangi bir görevin tam uygulama ayrıntıları, en iyi ihtimalle, sonraki alakasız dikkat dağıtıcı şeylerdir. En kötü ihtimalle, bir görevin hesaplama durumu başka bir hataya neden olabilir. 
 
-### <a name="analyzing-dependencies"></a>Bağımlılıklar çözümleniyor
+### <a name="analyzing-dependencies"></a>Bağımlılıkları analiz etme
 
-Birçok programlama ekosisteminde kaynak, kitaplık veya derleme bağımlılıklarını düzenleyen araçlar vardır. Genellikle, bu araçlar bağımlılıkları hesaplamak için dosya zaman damgalarını kullanır. Bir dosya değiştirildiğinde yalnızca bu ve bağımlıları güncelleştirilir (indirilir, yeniden derlenir veya paketlenmiş). Azure ML işlem hatları bu kavramı önemli ölçüde genişletir. Geleneksel derleme araçları gibi işlem hatları, adımlar arasındaki bağımlılıkları hesaplar ve yalnızca gerekli yeniden hesaplamaları gerçekleştirir. 
+Birçok programlama ekosisteminde kaynak, kitaplık veya derleme bağımlılıklarını düzenleyen araçlar bulunur. Genellikle, bu araçlar bağımlılıkları hesaplamak için dosya zaman damgalarını kullanır. Bir dosya değiştirildiğinde, yalnızca o ve bağımlıları güncelleştirilir (karşıdan yüklenir, yeniden derlenir veya paketlenir). Azure ML boru hatları bu kavramı önemli ölçüde genişletir. Geleneksel yapı araçları gibi, ardışık hatlar da adımlar arasındaki bağımlılıkları hesaplar ve yalnızca gerekli yeniden hesaplamaları gerçekleştirir. 
 
-Azure ML işlem hatları 'ndaki bağımlılık analizi, basit zaman damgalarından daha karmaşıktır. Her adım farklı bir donanım ve yazılım ortamında çalıştırılabilir. Veri hazırlama zaman alan bir işlem olabilir ancak güçlü GPU 'Lar ile donanımda çalıştırılması gerekmez, bazı adımlar işletim sistemine özgü yazılım gerektirebilir, dağıtılmış eğitim kullanmak isteyebilirsiniz ve bu şekilde devam edebilir. Kaynakları iyileştirmek için maliyet tasarrufları önemli olabilir, ancak donanım ve yazılım kaynaklarındaki farklı çeşitliliğe el ile karşı el ile karşı bir işlem yapmak oldukça zor olabilir. Adımlar arasında aktardığınız verilerde bir hata yapmadan tüm bunları yapmak daha da zordur. 
+Azure ML ardışık hatlarındaki bağımlılık çözümlemesi basit zaman damgalarından daha karmaşıktır. Her adım farklı bir donanım ve yazılım ortamında çalışabilir. Veri hazırlama zaman alan bir işlem olabilir, ancak güçlü GPU'lara sahip donanımda çalışması gerekmez, belirli adımlar işletim sistemi özel yazılım gerektirebilir, dağıtılmış eğitim kullanmak isteyebilirsiniz, vb. Kaynakları optimize etmek için maliyet tasarrufu önemli olsa da, donanım ve yazılım kaynaklarındaki tüm farklı varyasyonları el ile yapmak çok zor olabilir. Adımlar arasında aktardığınız verilerde hata yapmadan tüm bunları yapmak daha da zordur. 
 
-İşlem hatları bu sorunu çözüyor. Azure Machine Learning, işlem hattı adımları arasındaki tüm bağımlılıkları otomatik olarak düzenler. Bu düzenleme, Docker görüntülerini alıp, işlem kaynaklarını ekleyerek ve ayırmayı ve adımlar arasında tutarlı ve otomatik bir şekilde veri taşımayı içerebilir.
+Boru hatları bu sorunu çözer. Azure Machine Learning, boru hattı adımları arasındaki tüm bağımlılıkları otomatik olarak yönetir. Bu orkestrasyon, Docker görüntülerini yukarı ve aşağı döndürmeyi, bilgi işlem kaynaklarını eklemeyi ve ayırmayı ve verileri adımlar arasında tutarlı ve otomatik bir şekilde taşımayı içerebilir.
 
 ### <a name="reusing-results"></a>Sonuçları yeniden kullanma
 
-Ayrıca, bir adımın çıktısı, öğesini seçerseniz, yeniden kullanılabilir. Bir olasılık olarak yeniden kullan seçeneğini belirtirseniz ve yeniden hesaplamayı tetikleyen yukarı akış bağımlılığı yoksa, işlem hattı hizmeti adım sonuçlarının önbelleğe alınmış bir sürümünü kullanır. Bu yeniden kullanım, geliştirme süresini önemli ölçüde azaltabilir. Karmaşık bir veri hazırlama göreviniz varsa, büyük olasılıkla kesinlikle gerekli olandan daha sık yeniden çalıştırmanız gerekir. İşlem hatları sizi merak eder: gerekirse, adım çalışır, yoksa, bu işlem çalışmaz.
+Ayrıca, bir adımın çıktısı, isterseniz, yeniden kullanılabilir. Yeniden kullanımı bir olasılık olarak belirtirseniz ve yeniden hesaplamayı tetikleyen yukarı akım bağımlılıkları yoksa, ardışık düzen hizmeti adımın sonuçlarının önbelleğe alınmış bir sürümünü kullanır. Bu tür yeniden kullanım önemli ölçüde geliştirme süresini azaltabilir. Karmaşık bir veri hazırlama göreviniz varsa, büyük olasılıkla yalnızca gerekli olandan daha sık yeniden çalıştırAbilirsiniz. Boru hatları sizi bu endişeden kurtarıyor: gerekirse, adım çalışmayacak, değilse, çalışmayacaktır.
 
-Bu bağımlılık analizi, düzenleme ve etkinleştirmenin hepsi, bir işlem [hattı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) nesnesini örneklediğinizde, bir `Experiment`geçirdiğinizde ve `submit()`çağırdığınızda Azure Machine Learning tarafından işlenir. 
+Tüm bu bağımlılık analizi, orkestrasyon ve etkinleştirme, bir [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) nesnesini anında aldığınızda, `Experiment`bir `submit()`'ye aktardığınızda ve . 
 
-### <a name="coordinating-the-steps-involved"></a>İlgili adımları koordine etme
+### <a name="coordinating-the-steps-involved"></a>İlgili adımların koordinasyonu
 
-Bir `Pipeline` nesnesi oluşturup çalıştırdığınızda, aşağıdaki üst düzey adımlar oluşur:
+Bir `Pipeline` nesne oluşturup çalıştırdığınızda, aşağıdaki üst düzey adımlar oluşur:
 
-+ Her adım için, hizmet gereksinimleri hesaplar:
-    + Donanım işlem kaynakları
-    + İşletim sistemi kaynakları (Docker görüntüsü)
-    + Yazılım kaynakları (Conda/virtualenv bağımlılıkları)
++ Her adım için hizmet aşağıdaki gereksinimleri hesaplar:
+    + Donanım hesaplama kaynakları
+    + İşletim sistemi kaynakları (Docker image(s))
+    + Yazılım kaynakları (Conda / virtualenv bağımlılıkları)
     + Veri girişleri 
-+ Hizmet, adımlar arasındaki bağımlılıkları belirler ve bu, dinamik bir yürütme grafiğine yol açar
++ Hizmet, adımlar arasındaki bağımlılıkları belirler ve dinamik bir yürütme grafiği oluşturur
 + Yürütme grafiğindeki her düğüm çalıştığında:
-    + Hizmet gereken donanım ve yazılım ortamını yapılandırır (Belki de mevcut kaynakları yeniden kullanılıyor)
-    + Bu adım çalışma, kendi içerdiği `Experiment` nesnesine günlük kaydı ve izleme bilgileri sağlar
-    + Adım tamamlandığında, çıkışları bir sonraki adıma giriş olarak hazırlanır ve/veya depolama alanına yazılır
-    + Artık gerekli olmayan kaynaklar sonlandırılır ve ayrılır
+    + Hizmet gerekli donanım ve yazılım ortamını yapılandırır (belki de varolan kaynakları yeniden kullanır)
+    + Adım çalışır, içeren `Experiment` nesneye günlük ve izleme bilgileri sağlar
+    + Adım tamamlandığında, çıktıları bir sonraki adıma giriş olarak hazırlanır ve/veya depolamaalanına yazılır
+    + Artık ihtiyaç duyulmaan kaynaklar tamamlanır ve ayrılır
 
-![Ardışık düzen adımları](./media/concept-ml-pipelines/run_an_experiment_as_a_pipeline.png)
+![Boru hattı adımları](./media/concept-ml-pipelines/run_an_experiment_as_a_pipeline.png)
 
-## <a name="building-pipelines-with-the-python-sdk"></a>Python SDK ile işlem hatları oluşturma
+## <a name="building-pipelines-with-the-python-sdk"></a>Python SDK ile boru hatları inşa etme
 
-[Azure Machine Learning Python SDK 'sında](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), işlem hattı `azureml.pipeline.core` modülünde tanımlanan bir Python nesnesidir. İşlem [hattı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) nesnesi bir veya daha fazla [ardışık düzen inestep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) nesnesinin sıralı dizisini içerir. `PipelineStep` sınıfı soyuttur ve gerçek adımlar, [Estimatorstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)veya [datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)gibi alt sınıflar olacaktır. [Modulestep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) sınıfı, işlem hatları arasında paylaşılabilen, yeniden kullanılabilir bir adım dizisi içerir. Bir `Pipeline` `Experiment`bir parçası olarak çalışır.
+Azure [Machine Learning Python SDK'da,](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)bir ardışık `azureml.pipeline.core` koşul, modülde tanımlanan bir Python nesnesidir. [Bir Pipeline nesnesi,](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) bir veya daha fazla [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) nesnesinin sıralı sıralı sırasını içerir. Sınıf `PipelineStep` soyuttur ve gerçek adımlar [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)veya [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)gibi alt sınıflardan olacaktır. [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) sınıfı, ardışık hatlar arasında paylaşılabilen yeniden kullanılabilir bir adım dizisi tutar. A `Pipeline` bir `Experiment`parçası olarak çalışır .
 
-Bir Azure ML işlem hattı, bir Azure Machine Learning çalışma alanıyla ilişkilendirilir ve bir işlem hattı adımı söz konusu çalışma alanı içinde kullanılabilir bir işlem hedefi ile ilişkilendirilir. Daha fazla bilgi için bkz. [Azure portal Azure Machine Learning çalışma alanları oluşturma ve yönetme](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) veya [Azure Machine Learning 'Nda işlem hedefleri nelerdir?](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
+Azure ML ardışık bir ardışık işlem alanı, Azure Machine Learning çalışma alanıyla ilişkilidir ve bir ardışık işlem adımı da bu çalışma alanında bulunan bir bilgi işlem hedefiyle ilişkilidir. Daha fazla bilgi için azure [portalında Azure Machine Learning çalışma alanlarını oluştur ve yönetme](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) veya Azure Machine [Learning'deki bilgi işlem hedefleri nelerdir?](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)
 
-Azure Machine Learning, bir işlem hedefi, bir ML aşamasının gerçekleştiği ortamdır. Yazılım ortamı, uzak bir VM, Azure Machine Learning Işlem, Azure Databricks, Azure Batch vb. olabilir. Ayrıca, donanım ortamı GPU desteğine, belleğe, depolamaya ve benzeri önemli ölçüde farklılık gösterebilir. Her adım için işlem hedefini belirtebilir, bu, maliyetleri üzerinde ayrıntılı denetim sağlar. Projenizin belirli bir eylemi, veri hacmi ve performans ihtiyaçları için daha fazla veya daha az güçlü kaynak kullanabilirsiniz. 
+Azure Machine Learning'de, bir bilgi işlem hedefi ML aşamasının oluştuğu ortamdır. Yazılım ortamı uzak bir VM, Azure Machine Learning Compute, Azure Databricks, Azure Toplu İş ve benzeri olabilir. Donanım ortamı, GPU desteğine, belleğe, depolamaya vb. bağlı olarak büyük ölçüde değişebilir. Her adım için bilgi işlem hedefini belirtebilirsiniz, bu da size maliyetler üzerinde ince taneli denetim sağlar. Projenizin belirli eylem, veri hacmi ve performans gereksinimleri için daha fazla veya daha az güçlü kaynak kullanabilirsiniz. 
 
-## <a name="building-pipelines-with-the-designer"></a>Tasarımcı ile işlem hatları oluşturma
+## <a name="building-pipelines-with-the-designer"></a>Tasarımcı ile boru hatları oluşturma
 
-Görsel tasarım yüzeyini tercih eden geliştiriciler, işlem hatları oluşturmak için Azure Machine Learning tasarımcısını kullanabilir. Bu araca, çalışma alanınızın giriş sayfasındaki **Tasarımcı** seçiminden erişebilirsiniz.  Tasarımcı, tasarım yüzeyine olan adımları sürükleyip bırakmayı sağlar. Hızlı geliştirme için, ML görevlerinin spektrumu genelinde mevcut modülleri kullanabilirsiniz; mevcut modüller, veri dönüşümden algoritma seçimine, dağıtıma eğitimlere kadar her şeyi kapsar. Ya da Python betiklerinizde tanımlanan kendi adımlarınızı birleştirerek tamamen özel bir işlem hattı oluşturabilirsiniz.
+Görsel tasarım yüzeyini tercih eden geliştiriciler, ardışık hatlar oluşturmak için Azure Machine Learning tasarımcısını kullanabilir. Bu araca çalışma alanınızın ana sayfasındaki **Tasarımcı** seçiminden erişebilirsiniz.  Tasarımcı, adımları tasarım yüzeyine sürüklemenizi ve bırakmanızı sağlar. Hızlı gelişme için, ML görev spektrumu boyunca mevcut modülleri kullanabilirsiniz; varolan modüller veri dönüşümünden algoritma seçimine, eğitimden dağıtıma kadar her şeyi kapsar. Veya Python komut dosyalarında tanımlanan kendi adımlarınızı birleştirerek tamamen özel bir ardışık kaynak oluşturabilirsiniz.
 
-İşlem hatlarını görsel olarak tasarladığınızda, bir adımın giriş ve çıkışları görünmez bir şekilde görüntülenir. Veri akışını sürükleyip bırakabilir, böylece işlem hattınızdaki veri akışını hızla anlamanıza ve değiştirebilirsiniz.
+Ardışık hatları görsel olarak tasarlarken, bir adımın giriş ve çıkışları gözle görülür şekilde görüntülenir. Veri bağlantılarını sürükleyebilir ve bırakarak ardınızdaki veri akışını hızlı bir şekilde anlamanızı ve değiştirmenizi sağlayabilirsiniz.
  
 ![Azure Machine Learning tasarımcı örneği](./media/concept-designer/designer-drag-and-drop.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Yürütme grafiğini anlama
 
-Bir işlem hattının içindeki adımlarda diğer adımlara bağımlılıklar olabilir. Azure ML işlem hattı hizmeti bu bağımlılıkları çözümleme ve düzenleme işini yapar. Sonuçta elde edilen "yürütme grafiği" düğümleri işleme adımları. Her adım, belirli bir donanım ve yazılım birleşimini oluşturma veya yeniden kullanma, önbelleğe alınmış sonuçları yeniden kullanma ve benzeri bir işlem içerebilir. Hizmetin bu yürütme grafiğinin düzenlemesi ve iyileştirmesi, bir ML aşamasını önemli ölçüde hızlandırır ve maliyetleri azaltabilir. 
+Bir ardışık ardışık alandaki adımlar diğer adımlara bağımlı olabilir. Azure ML boru hattı hizmeti, bu bağımlılıkları çözümleme ve düzenleme işini yapar. Ortaya çıkan "yürütme grafiği" düğümleri işleme adımları vardır. Her adım, belirli bir donanım ve yazılım birleşimi oluşturmayı veya yeniden kullanmayı, önbelleğe alınmış sonuçları yeniden oluşturmayı ve benzerlerini içerebilir. Hizmetin bu yürütme grafiğinin düzenlenmesi ve optimizasyonu ml aşamasını önemli ölçüde hızlandırabilir ve maliyetleri düşürebilir. 
 
-Adımlar bağımsız olarak çalıştırıldığı için, adımlar arasında akan giriş ve çıkış verilerini tutacak nesneler dışarıdan tanımlanmalıdır. Bu, [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py), [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)ve ilişkili sınıfların rolüdür. Bu veri nesneleri, depolama yapılandırmalarını kapsülleyen bir [veri deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) nesnesi ile ilişkilendirilir. `PipelineStep` temel sınıfı her zaman bir `name` dizesi, bir `inputs`listesi ve bir `outputs`listesi oluşturulur. Genellikle `arguments` bir listesi de vardır ve genellikle bir `resource_inputs`listesi olur. Alt sınıflarda genellikle ek bağımsız değişkenler de olur (örneğin, `PythonScriptStep` çalıştırmak için betiğin dosya adını ve yolunu gerektirir). 
+Adımlar bağımsız olarak çalıştırıldığı için, adımlar arasında akan giriş ve çıktı verilerini tutacak nesnelerin dışarıdan tanımlanması gerekir. Bu [DataReference,](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)ve ilişkili sınıfların rolüdür. Bu veri nesneleri, depolama yapılandırmalarını kapsülleyen bir [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) nesnesi ile ilişkilidir. `PipelineStep` Taban sınıf her zaman `name` bir dize, `inputs`bir listesi `outputs`ve bir listesi ile oluşturulur. Genellikle, aynı zamanda bir `arguments` listesi vardır ve genellikle `resource_inputs`bir listesi olacak . Alt sınıfların da genellikle ek bağımsız değişkenleri olacaktır (örneğin, `PythonScriptStep` dosya adı ve komut dosyasının çalışması için yol gerektirir). 
 
-Yürütme grafiği Çevrimsiz olur, ancak işlem hatları yinelenen bir zamanlamaya göre çalıştırılabilir ve dosya sistemine durum bilgilerini yazabilmesi için karmaşık profiller oluşturmak mümkün hale getiren Python betikleri çalıştırılabilir. İşlem hattınızı, belirli adımların paralel veya zaman uyumsuz olarak çalıştırılabilmesini sağlayacak şekilde tasarlarsanız, Azure Machine Learning, hem fan hem de fan için bağımlılık analizini ve koordinasyonunu, saydam bir şekilde işler. Genellikle yürütme grafiğinin ayrıntıları ile ilgilenmeniz gerekmez, ancak işlem [hattı. Graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) özniteliği aracılığıyla bulunabilir. 
+Yürütme grafiği asikliktir, ancak ardışık düzenler yinelenen bir zamanlamada çalıştırılabilir ve dosya sistemine durum bilgilerini yazabilen Python komut dosyalarını çalıştırarak karmaşık profiller oluşturmayı mümkün kılar. Belirli adımların paralel veya eş zamanlı olarak çalışabilmesi için ardışık yapınızı tasarlarsanız, Azure Machine Learning, fan-out ve fan-in bağımlılık çözümlemesi ve koordinasyonunu şeffaf bir şekilde işler. Genellikle yürütme grafiğinin ayrıntıları ile kendinizi endişe etmek zorunda değilsiniz, ama [Pipeline.graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) özniteliği üzerinden kullanılabilir. 
 
 
-### <a name="a-simple-python-pipeline"></a>Basit bir Python işlem hattı
+### <a name="a-simple-python-pipeline"></a>Basit bir Python Boru Hattı
 
-Bu kod parçacığı, temel bir `Pipeline`oluşturmak ve çalıştırmak için gereken nesneleri ve çağrıları gösterir:
+Bu parçacık, temel `Pipeline`bir oluşturmak ve çalıştırmak için gereken nesneleri ve çağrıları gösterir:
 
 ```python
 ws = Workspace.from_config() 
@@ -166,74 +166,74 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Kod parçacığı, ortak Azure Machine Learning nesneleriyle, bir `Workspace`, `Datastore`, bir [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)ve bir `Experiment`başlar. Daha sonra kod, `input_data` ve `output_data`tutmak için nesneleri oluşturur. Dizi `steps`, veri nesnelerini kullanacak ve `compute_target`çalıştıran bir `PythonScriptStep` tek bir öğe içerir. Daha sonra kod, `Pipeline` nesnenin kendisini başlatır, çalışma alanı ve adımlar dizisinin içine geçer. `experiment.submit(pipeline)` çağrısı Azure ML işlem hattı çalıştırmasına başlar. İşlem hattı bitene kadar blok `wait_for_completion()` çağrısı. 
+Parçacık ortak Azure Machine Learning nesneleri ile başlar, `Workspace` `Datastore`a , a , bir `Experiment` [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py), ve bir . Daha sonra, kod tutmak `input_data` için nesneleri `output_data`oluşturur ve. Dizi `steps` tek bir öğe, `PythonScriptStep` veri nesneleri kullanacak ve üzerinde `compute_target`çalışacak bir tutar. Daha sonra, kod nesnenin `Pipeline` kendisini anında, çalışma alanı ve adım dizisinde niçin geçer. Azure ML `experiment.submit(pipeline)` ardışık hatlar hattını çalıştırma çağrısı. Boru hattı `wait_for_completion()` bitene kadar engelleme çağrısı. 
 
-İşlem hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için [verilere erişme ve veri](how-to-access-data.md) [kümelerini kaydetme](how-to-create-register-datasets.md)makalelerine bakın. 
+Ardışık hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için, [verilere nasıl erişilir](how-to-access-data.md) ve [Veri Kümelerini Nasıl Kaydeder'](how-to-create-register-datasets.md)makalelerine bakın. 
 
-## <a name="best-practices-when-using-pipelines"></a>İşlem hatları kullanırken en iyi uygulamalar
+## <a name="best-practices-when-using-pipelines"></a>Boru hatlarını kullanırken en iyi uygulamalar
 
-Gördüğünüz gibi, bir Azure ML işlem hattı oluşturmak, bir betiği başlatmaktan biraz daha karmaşıktır. İşlem hatları birkaç Python nesnesinin yapılandırılmasını ve oluşturulmasını gerektirir. 
+Gördüğünüz gibi, Bir Azure ML ardışık oluşturmak bir komut dosyası başlatmaktan biraz daha karmaşıktır. Ardışık hatlar, birkaç Python nesnesi yapılandırmasını ve oluşturulmasını gerektirir. 
 
-İşlem hattı kullanmayı öneren bazı durumlar:
+Bir ardışık hat lar kullanarak düşündüren bazı durumlar:
 
-* Bir ekip ortamında: geliştiricilerin programlarını bağımsız olarak çalışabilmesi ve gelişmesi için ML görevlerini birden çok bağımsız adımlara bölün. 
+* Ekip ortamında: GELIŞTIRICILERin programlarını bağımsız olarak çalışabilmesi ve geliştirebilmeleri için ML görevlerini birden çok bağımsız adıma bölün. 
 
-* Ya da neredeyse dağıtım sırasında: yapılandırmayı değiştirip, değişen verilerin üzerine kalmak için zamanlanmış ve olay odaklı işlemleri kullanın.
+* Dağıtıma yakın olduğunda veya dağıtıma yakınken: yapılandırmayı çivilayın ve verileri değiştirme konusunda en üstte kalmak için zamanlanmış ve olay odaklı işlemleri kullanın.
 
-* Bir ML projesinin erken aşamalarında veya tek başına çalışırken: derlemeyi otomatikleştirmek için işlem hatlarını kullanın. Yeni bir fikir uygulamadan önce yapılandırma ve hesaplama durumunu yeniden oluşturma konusunda endişelenmeye başladıysanız, bu, iş akışını otomatikleştirmek için bir işlem hattı kullanmayı düşünebileceğiniz bir sinyaldir. 
+* Bir ML projesinin erken aşamalarında veya tek başına çalışmak: yapıyı otomatikleştirmek için boru hatlarını kullanın. Yeni bir fikir uygulamadan önce yapılandırmayı ve hesaplama durumunu yeniden oluşturma konusunda endişelenmeye başladıysanız, bu iş akışını otomatikleştirmek için bir ardışık nokta kullanmayı düşünabileceğiniz bir sinyaldir. 
 
-Önbelleğe alınmış sonuçları yeniden kullanma, işlem maliyetleri üzerinde ayrıntılı denetim ve işlem yalıtımının yanı sıra işlem hatlarında maliyetleri vardır. Bazı anti-desenler şunları içerir:
+Önbelleğe alınmış sonuçları yeniden elde etme, bilgi işlem maliyetleri üzerinde ince taneli kontrol ve proses yalıtımı konusunda hevesli olmak kolaydır, ancak boru hatlarının maliyetleri vardır. Bazı anti-desenler şunlardır:
 
-* Sorunları ayırmak için tek bir anlamı olan işlem hatlarını kullanma. Python 'un yerleşik işlevleri, nesneleri ve modülleri, programlı bir durum oluşmasını önlemek için uzun bir yoldur! İşlem hattı adımı, bir işlev çağrısından çok daha pahalıdır.
+* Boru hatlarını endişeleri ayırmak için tek araç olarak kullanmak. Python'un yerleşik işlevleri, nesneleri ve modülleri kafa karıştırıcı programlı durumu önlemek için uzun bir yol kat eder! Bir boru hattı adımı işlev çağrısından çok daha pahalıdır.
 
-* Ardışık düzen adımları arasında ağır bir eşlenme. Bir bağımlı adımı sık sık yeniden düzenleme, önceki bir adımın çıktılarının değiştirilmesini gerektiriyorsa, bu durum büyük bir avantajdan daha fazla maliyetle zaten daha fazla maliyetlidir. Bu adımların çok fazla bağlanmış olduğunu gösteren bir adım, veri olmayan bir adımın bağımsız değişkenlerdir ancak işlemeyi denetlemek için bayraklar. 
+* Boru hattı adımları arasında ağır bağlantı. Bağımlı bir adımı sık sık yeniden düzenleme yapmak önceki bir adımın çıktılarını değiştirmeyi gerektiriyorsa, ayrı adımlar şu anda bir yarardan daha fazla maliyet olabilir. Adımların aşırı birleştiğine dair bir diğer ipucu da, veri değil, işlemeyi denetlemek için bayraklar olan bir adımın bağımsız değişkenleridir. 
 
-* İşlem kaynaklarını erken iyileştirme. Örneğin, veri hazırlığı için genellikle birkaç aşama vardır ve biri genellikle "Oh, paralel programlama için bir `MpiStep` kullanabilirim, ancak daha az güçlü bir işlem hedefi olan bir `PythonScriptStep` kullanabilirim" gibi bir yerdir. Belki de uzun çalıştırmada, özellikle de her zaman yeniden hesaplama yerine önbelleğe alınmış sonuçları kullanma olanağı varsa, bu gibi hassas adımlar oluşturma. Ancak ardışık düzenleri `multiprocessing` modülünün yerini alacak şekilde tasarlanmamıştır. 
+* İşlem kaynaklarını erken optimize etme. Örneğin, veri hazırlama için genellikle çeşitli aşamaları vardır ve bir sık sık görebilirsiniz "Oh, burada paralel programlama için bir `MpiStep` kullanabilirsiniz `PythonScriptStep` bir yer ama burada daha az güçlü bir bilgi işlem hedefi ile kullanabilirsiniz bir yer," ve benzeri. Ve belki de, uzun vadede, bunun gibi ince taneli adımlar oluşturmak değerli olabilir, özellikle de önbelleğe alınmış sonuçları her zaman yeniden hesaplamak yerine kullanma olasılığı varsa. Ancak boru hatları Python'un yerel `multiprocessing` modülün yerini almak için tasarlanmamıştır. 
 
-Bir proje büyük veya daha iyi bir dağıtım yapana kadar, işlem hatlarınızın hassas olması yerine kaba olması gerekir. ML projenizi _aşamalar_ ve bir işlem hattı dahil olmak üzere düşünüyorsanız, sizi belirli bir aşamada hareket ettirmek üzere bir iş akışı sağlamak için doğru yolda olursunuz. 
+Bir proje büyük olana veya dağıtıma yaklaşınceye kadar, ardışık hatlar oldukça ince taneli olmalıdır. ML projenizi _aşamaları_ ve bir boru hattını içeren bir boru hattı olarak düşünürseniz, sizi belirli bir aşamadan geçirmek için tam bir iş akışı sağlarsanız, doğru yoldasınız. 
 
-## <a name="key-advantages"></a>Başlıca avantajları
+## <a name="key-advantages"></a>Önemli avantajlar
 
-Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel avantajları şunlardır:
+Makine öğrenimi iş akışlarınız için boru hatları kullanmanın temel avantajları şunlardır:
 
-|Önemli bir avantajı|Açıklama|
+|Önemli avantaj|Açıklama|
 |:-------:|-----------|
-|**Katılımsız&nbsp;çalıştırmaları**|Adımları güvenilir ve katılımsız bir şekilde paralel veya sırayla çalışacak şekilde zamanlayın. Veri hazırlama ve modelleme son günler veya haftadır ve işlem hatları, işlem çalışırken diğer görevlere odaklanabilmenize olanak tanır. |
-|**Heterojen işlem**|Heterojen ve ölçeklenebilir işlem kaynakları ve depolama konumları genelinde güvenilir bir şekilde koordine edilen birden çok işlem hattı kullanın. HDInsight, GPU veri bilimi VM 'Leri ve Databricks gibi farklı işlem hedeflerinde bireysel ardışık düzen adımlarını çalıştırarak kullanılabilir işlem kaynaklarının verimli bir şekilde kullanılmasını sağlayın.|
-|**Ölçeklendirilebileceği**|Yeniden eğitme ve Batch Puanlama gibi belirli senaryolar için ardışık düzen şablonları oluşturun. Dış sistemlerden yayınlanan işlem hatlarını basit REST çağrıları aracılığıyla tetikleyin.|
-|**İzleme ve sürüm oluşturma**|Yineleme sırasında verileri ve sonuç yollarını el ile izlemek yerine, veri kaynaklarınızı, girdilerlerinizi ve çıkışları açıkça adlandırmak ve sürümüne eklemek için işlem hatları SDK 'sını kullanın. Ayrıca, daha fazla üretkenlik için betikleri ve verileri ayrı olarak yönetebilirsiniz.|
-| **Modülerlik** | Kaygıları ve değişiklikleri yalıtma alanlarının ayrılması, yazılımın daha yüksek kalitede daha hızlı gelişmeye olanak tanır. | 
-|**İş**|İşlem hatları, veri bilimcilerinin makine öğrenimi tasarım sürecinin tüm alanlarında işbirliği yapmasına olanak sağlarken işlem hattı adımlarında eşzamanlı olarak çalışabiliyor.|
+|**Katılımsız&nbsp;çalıştırmalar**|Adımları güvenilir ve katılımsız bir şekilde paralel veya sırayla çalışacak şekilde zamanlayın. Veri hazırlama ve modelleme günler veya haftalar sürebilir ve ardışık işler, işlem çalışırken diğer görevlere odaklanmanıza olanak tanır. |
+|**Heterojen hesaplama**|Heterojen ve ölçeklenebilir işlem kaynakları ve depolama konumları arasında güvenilir bir şekilde koordine edilmiş birden çok ardışık işlem aygıtı kullanın. HDInsight, GPU Data Science VM'ler ve Databricks gibi farklı bilgi işlem hedeflerinde tek tek ardışık işlem adımları çalıştırarak kullanılabilir bilgi işlem kaynaklarını verimli bir şekilde kullanın.|
+|**Yeniden kullanılabilirlik**|Yeniden eğitim ve toplu puanlama gibi belirli senaryolar için ardışık işlem şablonları oluşturun. Basit REST çağrıları aracılığıyla harici sistemlerden yayınlanan boru hatlarını tetikler.|
+|**İzleme ve sürüm**|Verileri ve sonuç yollarını, siz yinelerken el ile izlemek yerine, veri kaynaklarınızı, girişlerinizi ve çıktılarınızı açıkça adlandırmak ve sürüm olarak SDK ardışık hatlar hattını kullanın. Daha fazla üretkenlik için komut dosyalarını ve verileri ayrı ayrı yönetebilirsiniz.|
+| **Modüler** | Endişe alanlarını ayırmak ve değişiklikleri yalıtmak, yazılımın daha yüksek kaliteyle daha hızlı gelişmesini sağlar. | 
+|**İş Birliği**|Boru hatları, veri bilimcilerin makine öğrenimi tasarım sürecinin tüm alanlarında işbirliği yapmasına olanak sağlarken, aynı anda boru hattı adımları üzerinde çalışabilme lerini sağlar.|
 
-### <a name="choosing-the-proper-pipelinestep-subclass"></a>Doğru ardışık düzen Inestep alt sınıfını seçme
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>Uygun PipelineStep alt sınıfını seçme
 
-`PythonScriptStep` soyut `PipelineStep`en esnek alt sınıfıdır. `EstimatorStep` alt sınıfları ve `DataTransferStep` gibi diğer alt sınıflar, daha az kodla belirli görevleri gerçekleştirebilir. Örneğin, yalnızca adım, bir `Estimator`ve işlem hedefi için bir ad geçirerek bir `EstimatorStep` oluşturulabilir. Ya da girişleri ve çıkışları, işlem hattı parametrelerini ve bağımsız değişkenleri geçersiz kılabilirsiniz. Daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md). 
+Soyut `PythonScriptStep` en esnek alt `PipelineStep`sınıftır. Alt sınıflar gibi `EstimatorStep` diğer alt `DataTransferStep` sınıflar ve daha az kodla belirli görevleri gerçekleştirebilirsiniz. Örneğin, yalnızca `EstimatorStep` adım, bir `Estimator`ve bir işlem hedefi için bir ad geçerek oluşturulabilir. Veya giriş ve çıkışları, boru hattı parametrelerini ve bağımsız değişkenleri geçersiz kılabilir. Daha fazla bilgi için, [tahminci kullanarak Azure Machine Learning'e sahip Train modellerine](how-to-train-ml-models.md)bakın. 
 
-`DataTransferStep` veri kaynakları ve havuzlar arasında veri taşımayı kolaylaştırır. Bunu el ile yapmak için kod basit ancak tekrarlı. Bunun yerine, yalnızca ad, veri kaynağı ve veri havuzu ve bir işlem hedefi olan bir `DataTransferStep` oluşturabilirsiniz. [DataTransferStep ile](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) not defteri Azure Machine Learning işlem hattı bu esnekliği gösterir.
+Veri `DataTransferStep` kaynakları ve lavabolar arasında veri taşımayı kolaylaştırır. Bunu el ile yapmak için kod basit ama yinelenen. Bunun yerine, yalnızca `DataTransferStep` bir ad, bir veri kaynağı ve veri lavabo ve bir bilgi işlem hedefi referansları ile oluşturabilirsiniz. [DataTransferStep ile](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) birlikte dizüstü Azure Machine Learning Pipeline bu esnekliği gösterir.
 
 ## <a name="modules"></a>Modules
 
-Ardışık düzen adımları önceki çalıştırmanın sonuçlarının yeniden kullanılmasına izin verirken, çoğu durumda adımın oluşturulması, betiklerin ve bağımlı dosyaların gerekli olduğu varsayılır. Bir veri bilimconu mevcut kodların üzerine derlemek istiyorsa, betikler ve bağımlılıkların genellikle ayrı bir depodan klonlanmış olması gerekir.
+Ardışık hatlar adımları önceki çalıştırmanın sonuçlarının yeniden kullanılmasına izin verirken, çoğu durumda adımın yapısı, gerekli komut dosyalarının ve bağımlı dosyaların yerel olarak kullanılabilir olması gerektiğini varsayar. Bir veri bilimci varolan kodun üzerine oluşturmak istiyorsa, komut dosyaları ve bağımlılıklar genellikle ayrı bir depodan klonlanmalıdır.
 
-Modüller, ardışık düzen adımları için kullanımlarda benzerdir, ancak çalışma alanı aracılığıyla kolaylaştırırken, birlikte çalışma ve ölçek açısından yeniden kullanılabilirlik sağlar. Modüller birden çok işlem hattına yeniden kullanılmak üzere tasarlanmıştır ve belirli bir hesaplamayı farklı kullanım durumlarına uyarlamak için gelişebilirler. Kullanıcılar, dış depoları kullanmadan, çalışma alanı aracılığıyla aşağıdaki görevleri gerçekleştirebilir:
+Modüller, kullanımda ardışık basamakadımlarına benzer, ancak çalışma alanı aracılığıyla kolaylaştırılan sürümler sağlar ve bu da ölçekte işbirliği ve yeniden kullanılabilirlik sağlar. Modüller birden çok ardışık alanda yeniden kullanılmak üzere tasarlanmıştır ve belirli bir hesaplamayı farklı kullanım durumlarına uyarlamak için gelişebilir. Kullanıcılar dış depoları kullanmadan çalışma alanı üzerinden aşağıdaki görevleri yapabilir:
 
-* Yeni modüller oluşturma ve var olan modüllerin yeni sürümlerini yayımlama
-* Mevcut sürümleri kullanımdan kaldırma
-* Tüketicilerin bu sürümü kullanmasını engellemek için sürümleri devre dışı olarak işaretleyin
+* Yeni modüller oluşturun ve mevcut modüllerin yeni sürümlerini yayımlayın
+* Varolan sürümleri amortismana ayırma
+* Tüketicilerin bu sürümü kullanmasını engellemek için devre dışı bırakılan sürümleri işaretle
 * Varsayılan sürümleri belirleme
-* Takımların aynı kodu kullandığından emin olmak için, çalışma alanından modülleri sürüme göre al
+* Ekiplerin aynı kodu kullandığından emin olmak için modülleri çalışma alanından sürüme göre alın
 
-Azure Machine Learning işlem hatları 'nda modül oluşturma, bağlanma ve kullanma hakkında kod örnekleri için [Not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) bakın.
+Azure Machine Learning ardışık hatlarında modüllerin nasıl oluşturulup bağlanılacak ve kullanılacağıyla ilgili kod örnekleri için [not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure ML işlem hatları, erken geliştirme aşamalarında değer sunmaya başlayan güçlü bir olanaklardır. Takım ve proje büyüdükçe değer artar. Bu makalede, işlem hatlarının Azure Machine Learning Python SDK ile nasıl belirtildiği ve Azure 'da düzenlendiği açıklanmaktadır. Bazı temel kaynak kodlarını gördünüz ve kullanılabilir `PipelineStep` sınıflarından birkaçı sunulmuştur. Azure ML işlem hatlarını ne zaman kullanacağınızı ve Azure 'un nasıl çalıştığını anlamalısınız. 
+Azure ML boru hatları, erken geliştirme aşamalarında değer sunmaya başlayan güçlü bir tesistir. Takım ve proje büyüdükçe değer artar. Bu makalede, Azure Machine Learning Python SDK ile boru hatlarının nasıl belirtildiği ve Azure'da nasıl düzenlendiği açıklanmıştır. Bazı temel kaynak kodu gördünüz ve kullanılabilen `PipelineStep` birkaç sınıfla tanıştınız. Azure ML ardışık hatlarını ne zaman kullanacağınız ve Azure'un bunları nasıl çalıştırdığınızı anlamanız gerekir. 
 
 
-+ [İlk işlem hattınızı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
++ [İlk ardışık hattınızı](how-to-create-your-first-pipeline.md)nasıl oluşturabilirsiniz öğrenin.
 
-+ [Büyük verilerde toplu tahmine dayalı tahminleri nasıl çalıştıracağınızı](tutorial-pipeline-batch-scoring-classification.md )öğrenin.
++ [Büyük verilerde toplu iş tahminlerini nasıl çalıştırılacıolarak](tutorial-pipeline-batch-scoring-classification.md )öğrenin.
 
-+ İşlem [hattı çekirdeği](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) ve [ardışık düzen adımları](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)için SDK başvuru belgeleri bölümüne bakın.
++ Boru hattı çekirdeği ve [boru hattı](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) adımları için SDK başvuru [dokümanlarına](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)bakın.
 
-+ İşlem [hatları Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)gösteren örnek bir Jupyter Not defteri deneyin. [Bu hizmeti araştırmak için not defterlerini çalıştırmayı](samples-notebooks.md)öğrenin.
++ [Azure Machine Learning boru hatlarını](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)gösteren örnek Jupyter dizüstü bilgisayarları deneyin. Bu hizmeti keşfetmek için not defterlerini nasıl [çalıştırılacıolarak çalıştırılamayı](samples-notebooks.md)öğrenin.

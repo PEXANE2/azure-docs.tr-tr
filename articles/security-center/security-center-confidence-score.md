@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde Güvenirlik puanı | Microsoft Docs
-description: Güvenlik Merkezi, takımınızın bir tehdidin meşru olup olmadığını ve uyarıların nasıl önceliklendirme ve önceliklendirmesi gerektiğini belirlemesine yardımcı olmak için güven puanları oluşturur.
+title: Azure Güvenlik Merkezi'nde güven puanı | Microsoft Dokümanlar
+description: Güvenlik Merkezi, ekibinizin bir tehdidin meşru olup olmadığını ve uyarıları nasıl önceliklendirmeyi ve önceliklendirmeyi belirlemesine yardımcı olmak için güven puanları oluşturur.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,39 +14,39 @@ ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
 ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604375"
 ---
 # <a name="alert-confidence-score-preview"></a>Uyarı güven puanı (Önizleme)
 
-Azure Güvenlik Merkezi, Azure 'da çalıştırdığınız kaynaklar üzerinde görünürlük sağlar ve olası sorunları algıladığında sizi uyarır. Uyarı hacmi bir güvenlik işlemleri ekibinin tek tek adreslenebilmesi için zor olabilir ve hangi uyarıların araştırılacağını önceliklendirmek için gerekli hale gelir. Uyarıların araştırması karmaşık ve zaman alıcı olabilir ve sonuç olarak bazı uyarılar yok sayılır.
+Azure Güvenlik Merkezi, Azure'da çalıştırdığınız kaynaklar arasında görünürlük sağlar ve olası sorunları algıladığında sizi uyarır. Bir güvenlik operasyonları ekibinin tek tek ele alması için uyarı ların hacmi zor olabilir ve hangi uyarıların araştırılması için önceliklendirilmesi gerekli olur. Uyarıları araştırmak karmaşık ve zaman alıcı olabilir ve sonuç olarak bazı uyarılar yoksayılır.
 
-Güvenlik Merkezi 'ndeki güven puanı (Şu anda önizlemede), takımınızın uyarıları önceliklendirme ve önceliklendirmesine yardımcı olabilir. Güvenlik Merkezi, bir tehdidin meşru olup olmadığını anlamak için analist tarafından kullanılan sektör en iyi uygulamalarını, akıllı algoritmaları ve işlemleri otomatik olarak uygular ve Güvenirlik puanı biçiminde anlamlı öngörüler sağlar.
+Güvenlik Merkezi'ndeki güven puanı (şu anda önizlemede) ekibinizin önceliklendirmesini ve uyarıları önceliklendirmelerine yardımcı olabilir. Güvenlik Merkezi, bir tehdidin meşru olup olmadığını belirlemek için analistler tarafından kullanılan endüstrinin en iyi uygulamalarını, akıllı algoritmalarını ve süreçlerini otomatik olarak uygular ve size güven puanı şeklinde anlamlı öngörüler sağlar.
 
-## <a name="how-the-confidence-score-is-triggered"></a>Güvenirlik puanı nasıl tetiklenir
+## <a name="how-the-confidence-score-is-triggered"></a>Güven puanı nasıl tetiklenir?
 
-Uyarılar, sanal makinelerinizde çalışan şüpheli süreçler algılandığında oluşturulur. Güvenlik Merkezi, Azure 'da çalışan Windows sanal makinelerinde bu uyarıları inceler ve analiz eder. Kuruluş genelinde birden fazla varlık ve veri kaynağı genelinde gelişmiş algoritmaları kullanarak otomatik denetimler ve bağıntılar gerçekleştirir ve tüm Azure kaynaklarınız ve Güvenlik Merkezi 'nin ne kadar güvenli olduğunu gösteren bir güven puanı sunar. uyarının orijinal olduğunu ve araştırılması gerektiğini unutmayın.
+Sanal makinelerinizde çalışan şüpheli işlemler algılandığında uyarılar oluşturulur. Güvenlik Merkezi, Azure'da çalışan Windows sanal makinelerinde bu uyarıları inceler ve analiz eder. Kuruluş genelinde birden fazla varlık ve veri kaynağında ve tüm Azure kaynaklarınızda gelişmiş algoritmalar kullanarak otomatik denetimler ve korelasyonlar gerçekleştirir ve Güvenlik Merkezi'nin ne kadar güvenli olduğunun bir ölçüsüolan bir güven puanı sunar uyarının gerçek olduğunu ve araştırılması gerektiğini.
 
-## <a name="understanding-the-confidence-score"></a>Güvenirlik Puanını anlama
+## <a name="understanding-the-confidence-score"></a>Güven puanını anlama
 
-Güvenirlik puanı 1 ile 100 arasında değişir ve güven güvenlik merkezi 'nin incelenmesi, uyarının araştırılması gerektiğini gösterir. Puan arttıkça, daha güvenli bir güvenlik merkezi, uyarının orijinal bir kötü amaçlı etkinliği gösterdiği anlamına gelir. Güven puanı, uyarının güven puanı alma nedeninin bir listesini içerir. Güvenirlik puanı, Güvenlik analistlerinin uyarılara yönelik önceliklerini önceliklendirmesini ve öncelikle saldırılara ve ihlallere yanıt vermek için geçen süreyi azaltarak, en çok bir kez saldırmayı daha kolay hale getirir.
+Güven puanı 1 ile 100 arasında değişir ve Güvenlik Merkezi'nin uyarının araştırılması gerektiğine dair güvenini temsil eder. Puan ne kadar yüksekse, Güvenlik Merkezi'nin uyarının gerçek kötü amaçlı etkinliği gösterdiği de o kadar güvenlidir. Güven puanı, uyarının güven puanını almasının en önemli nedenlerinin bir listesini içerir. Güven puanı, güvenlik analistlerinin uyarılara verdikleri yanıta öncelik vermelerini ve ilk önce en acil saldırıları ele almalarını kolaylaştırarak, saldırılara ve ihlallere yanıt vermek için gereken süreyi azaltır.
 
-Güven Puanını görüntülemek için:
-- Güvenlik Merkezi portalında güvenlik uyarıları dikey penceresini açın.
--  Uyarılar ve olaylar en yüksekten en düşüğe doğru düzenlenmiştir, yani daha güvenli güvenlik merkezi bir uyarının tehdidi gösterdiği olması durumunda sayfanın en üstüne daha yakın hale gelir. 
+Güven puanını görüntülemek için:
+- Güvenlik Merkezi portalında, Güvenlik uyarı bıçağını açın.
+-  Uyarılar ve olaylar en yüksekten en aşağıya doğru düzenlenir, yani güvenlik merkezi ne kadar eminse, bir uyarı nın bir tehdit temsil etmesi, sayfanın en üstüne o kadar yakın olmasıdır. 
 
 
  ![Güvenilirlik puanı][1]
 
-Bir uyarıda Güvenlik Merkezi 'nin güvenliğine katkıda bulunan verileri görüntülemek için:
-- Güvenlik Uyarısı dikey penceresinde, **güven**altında, güvenilirlik puanına katkıda bulunan gözlemleri görüntüleyin ve uyarıyla ilgili Öngörüler elde edin. Bu, uyarıya neden olan etkinliklerin doğası hakkında daha fazla öngörü sağlar.
+Güvenlik Merkezi'nin bir uyarıya olan güvenine katkıda bulunan verileri görüntülemek için:
+- **Güven**altında Güvenlik uyarı bıçak, güven puanı katkıda bulunan gözlemler igörmek ve uyarı ile ilgili anlayışlar kazanmak. Bu, uyarıya neden olan etkinliklerin doğası hakkında daha fazla bilgi sağlar.
 
-  ![Şüpheli Güvenirlik puanı][2]
+  ![Şüpheli güven puanı][2]
 
-Ortamınızdaki uyarı önceliklendirme önceliğini belirlemek için Güvenlik Merkezi 'nin güven Puanını kullanın. Güvenilirlik puanı, uyarıları otomatik olarak inceleyerek, sektördeki en iyi uygulamaları ve akıllı algoritmaları uygulayarak ve bir sanal analist olarak davranarak, hangi tehditlerin gerçek olduğunu ve dikkat etmeniz gereken yerleri tespit ederek zaman ve çaba tasarrufu sağlar.
+Ortamınızdaki uyarı önceliklendirmesine öncelik vermek için Güvenlik Merkezi'nin güven puanını kullanın. Güven puanı, uyarıları otomatik olarak araştırarak, endüstrinin en iyi uygulamalarını ve akıllı algoritmalarını uygulayarak ve hangi tehditlerin gerçek olduğunu ve dikkatinizi nereye odaklamanız gerektiğini belirlemek için sanal bir analist olarak hareket ederek size zaman ve çaba kazandırır.
 
 
 <!--Image references-->

@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72789382"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388976"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini Azure’a geçirme
 
-Bu öğretici, Azure Site Recovery’yi kullanarak, Amazon Web Services (AWS) sanal makinelerini Azure sanal makinelerine nasıl geçireceğinizi öğretir. AWS EC2 örneklerini Azure’a geçirirken VM’ler, fiziksel şirket içi bilgisayarlarmış gibi değerlendirilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, Azure Site Kurtarma'yı kullanarak Amazon Web Hizmetleri (AWS) sanal makinelerini (VM'ler) Azure Sanal M'lere nasıl geçirilebilirsiniz gösterir. AWS EC2 örneklerini Azure’a geçirirken VM’ler, fiziksel şirket içi bilgisayarlarmış gibi değerlendirilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+
+
+> [!TIP]
+> Artık Azure Site Kurtarma hizmeti yerine AWS VM'leri Azure'a geçirmek için Azure Geçir hizmetini kullanmanız gerekir. [Daha fazla bilgi edinin](../migrate/tutorial-migrate-physical-virtual-machines.md).
+
 
 > [!div class="checklist"]
 > * Önkoşulları doğrulama
@@ -31,9 +36,6 @@ Bu öğretici, Azure Site Recovery’yi kullanarak, Amazon Web Services (AWS) sa
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/pricing/free-trial/) bir hesap oluşturun.
 
-
-> [!NOTE]
-> Artık AWS örneklerini Azure'a geçirmek için Azure Geçir hizmetini kullanabilirsiniz. [Daha fazla bilgi edinin](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 - Geçirmek istediğiniz VM’lerin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. Desteklenen sürümlere şunlar dahildir: 

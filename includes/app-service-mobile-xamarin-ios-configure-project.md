@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: a69df0cc9ea14a2c9fa172c77663afb1d6861f9b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188871"
 ---
-#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Xamarin Studio'da iOS projesi yapılandırma
-1. Xamarin.Studio içinde açın **Info.plist**ve güncelleştirme **paket grubu tanımlayıcısı** yeni uygulama kimliğiniz ile daha önce oluşturduğunuz paket kimliği ile
+#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Xamarin Studio'daki iOS projesini yapılandırın
+1. Xamarin.Studio'da **Info.plist'i**açın ve yeni uygulama kimliğinizle daha önce oluşturduğunuz paket kimliğiyle **Paket Tanımlayıcısını** güncelleyin.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-21.png)
-2. Ekranı aşağı kaydırarak **arka plan modları**. Seçin **arka plan modlarını etkinleştir** kutusu ve **uzak bildirimler** kutusu.
+2. **Arka Plan Modları'na**gidin. Arka **Plan Modlarını Etkinleştir** kutusunu ve **Uzak bildirimler** kutusunu seçin.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-22.png)
-3. Açmak için çözüm panelinde projenizin çift **proje seçenekleri**.
-4. Altında **derleme**, seçin **iOS paket grubu imzalama**, karşılık gelen bir kimliği'ni seçin ve sağlama profili, ayarladığınız yukarı bu proje için.
+3. **Proje Seçenekleri'ni**açmak için Çözüm Paneli'nde projenizi çift tıklatın.
+4. **Build**altında, **iOS Paket İmzalama'yı**seçin ve bu proje için yeni ayarladığınız ilgili kimlik ve sağlama profilini seçin.
 
    ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-20.png)
 
-   Bu, kod imzalama için projeyi yeni profili kullanmasını sağlar. Belge resmi Xamarin cihaz sağlama için bkz: [Xamarin cihaz sağlama].
+   Bu, projenin kod imzalama için yeni profili kullanmasını sağlar. Resmi Xamarin cihaz sağlama belgeleri için Bkz. [Xamarin Cihaz Sağlama].
 
-#### <a name="configure-the-ios-project-in-visual-studio"></a>Visual Studio'da iOS projesi yapılandırma
-1. Visual Studio'da projeye sağ tıklayın ve ardından **özellikleri**.
-2. Özellikler Sayfaları'nda tıklatın **iOS uygulama** sekme ve güncelleştirme **tanımlayıcı** daha önce oluşturduğunuz Kimliğine sahip.
+#### <a name="configure-the-ios-project-in-visual-studio"></a>Visual Studio'da iOS projesini yapılandırın
+1. Visual Studio'da projeyi sağ tıklatın ve ardından **Özellikler'i**tıklatın.
+2. Özellikler sayfalarında **iOS Uygulama** sekmesini tıklatın ve **identifier'i** daha önce oluşturduğunuz kimlikle güncelleştirin.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-23.png)
-3. İçinde **iOS paket grubu imzalama** sekmesinde karşılık gelen bir kimliği'ni seçin ve sağlama profili yeni ayarladığınız bu proje için.
+3. **iOS Paket İmzalama** sekmesinde, bu proje için ayarladığınız ilgili kimlik ve sağlama profilini seçin.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-24.png)
 
-    Bu, kod imzalama için projeyi yeni profili kullanmasını sağlar. Belge resmi Xamarin cihaz sağlama için bkz: [Xamarin cihaz sağlama].
-4. Info.plist açın ve ardından etkinleştirmek için çift **RemoteNotifications** altında **arka plan modları**.
+    Bu, projenin kod imzalama için yeni profili kullanmasını sağlar. Resmi Xamarin cihaz sağlama belgeleri için Bkz. [Xamarin Cihaz Sağlama].
+4. Açmak için Info.plist'e çift tıklayın ve **ardından Arka Plan Modları**altında Uzaktan **Bildirimler'i** etkinleştirin.
 
-[Xamarin cihaz sağlama]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
+[Xamarin Cihaz Temini]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/

@@ -2,25 +2,25 @@
 title: Azure Geçiş'te VMware değerlendirme desteği
 description: Azure Geçir Sunucu Değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 03d07adb6f19346901286bdae148f95e68290e4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/29/2020
+ms.openlocfilehash: e0172656d06075f89a7c3a06e8d4e9be94e6f5d0
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336871"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389316"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
-Bu makalede, Azure'a geçişe hazırlık aşamasında VMware VM'leri değerlendirmek için ön koşullar ve destek gereksinimleri özetlenmiştir. VMware VM'leri Azure'a geçirmek istiyorsanız, [geçiş destek matrisini](migrate-support-matrix-vmware-migration.md)gözden geçirin.
+Bu makalede, Azure'a geçiş için VMware VMM'leri değerlendirirken ön koşullar ve destek gereksinimleri özetlenmiştir( azure geçişi:Sunucu Değerlendirmesi](geçir-hizmetlere genel bakış.md#azure-geçir-sunucu-değerlendirme aracı) aracını kullanır. VMware VM'leri Azure'a geçirmek istiyorsanız, [geçiş destek matrisini](migrate-support-matrix-vmware-migration.md)gözden geçirin.
 
-[Azure Geçir:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracıyla fiziksel sunucuları değerlendirirsiniz. Bir Azure Geçir projesi oluşturun ve sonra aracı projeye eklersiniz. Araç eklendikten sonra Azure [Geçir cihazını](migrate-appliance.md)dağıtmış sınız. Cihaz sürekli olarak şirket içi makineleri keşfeder ve makine meta verilerini ve performans verilerini Azure'a gönderir. Makine keşfinden sonra, keşfedilen makineleri gruplar halinde toplar ve bir grup için bir değerlendirme çalıştırın.
+VMware VM'leri değerlendirmek için bir Azure Geçiş projesi oluşturur sunuz ve ardından projeye Sunucu Değerlendirmesi aracını ekleyin. Araç eklendikten sonra Azure [Geçir cihazını](migrate-appliance.md)dağıtmış sınız. Cihaz sürekli olarak şirket içi makineleri keşfeder ve makine meta verilerini ve performans verilerini Azure'a gönderir. Keşif tamamlandıktan sonra, keşfedilen makineleri gruplar halinde toplar ve bir grup için bir değerlendirme çalıştırın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
 **Destek** | **Şey**
 --- | ---
-**Proje sınırları** | Azure aboneliğinde birden çok proje oluşturabilirsiniz.<br/><br/> Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)35.000 VMware VM'ye kadar keşfedebilir ve değerlendirebilirsiniz. Proje, her biri için değerlendirme sınırlarına kadar VMware VM'leri, fiziksel sunucuları ve Hyper-V V'leri içerebilir.
+**Proje sınırları** | Azure aboneliğinde birden çok proje oluşturabilirsiniz.<br/><br/> Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)35.000 VMware VM'ye kadar keşfedebilir ve değerlendirebilirsiniz. Proje, her biri için değerlendirme sınırlarına kadar fiziksel sunucular ve Hyper-V VM'ler de içerebilir.
 **Bulma** | Azure Geçir cihazı, vCenter Server'da 10.000 VMware VM'ye kadar keşfedebilir.
 **Değerlendirme** | Tek bir grupta en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 VM'yi değerlendirebilirsiniz.
 
@@ -29,11 +29,11 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin.](concepts-assessment-calcu
 
 ## <a name="application-discovery"></a>Uygulama bulma
 
-Azure Geçir: Sunucu Değerlendirmesi, makineleri keşfetmenin yanı sıra uygulamaları, rolleri ve makinelerde çalışan özellikleri de keşfedebilir. Uygulama envanterinizi keşfetmek, şirket içi iş yüklerinize göre uyarlanmış bir geçiş yolu belirlemenize ve planlamanıza olanak tanır. 
+Sunucu Değerlendirmesi, makineleri keşfetmenin yanı sıra, makinelerde çalışan uygulamaları, rolleri ve özellikleri de keşfedebilir. Uygulama envanterinizi keşfetmek, şirket içi iş yüklerinize göre uyarlanmış bir geçiş yolu belirlemenize ve planlamanıza olanak tanır. 
 
 **Destek** | **Şey**
 --- | ---
-**Desteklenen makineler** | Uygulama bulma şu anda yalnızca şirket içi VMware VM'ler için desteklenir.
+**Desteklenen makineler** | Uygulama bulma şu anda yalnızca VMware VM'ler için desteklenir.
 **Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
 **VM desteği** | Uygulama bulma tüm Windows ve Linux sürümleri için desteklenir.
 **vCenter kimlik bilgileri** | Uygulama bulma nın yalnızca salt okunur erişime sahip bir vCenter Server hesabına ve Sanal Makineler > Konuk İşlemleri için etkinleştirilen ayrıcalıklara ihtiyacı vardır.
@@ -58,7 +58,7 @@ Azure Geçir: Sunucu Değerlendirmesi, makineleri keşfetmenin yanı sıra uygul
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Geçişi aleti gereksinimleri
 
-Azure Geçir, keşif ve değerlendirme için [Azure Geçir cihazını](migrate-appliance.md) kullanır. VMware için cihaz, vCenter Server'a aktarılan bir OVA şablonu kullanılarak dağıtılır. 
+Azure Geçir, keşif ve değerlendirme için [Azure Geçir cihazını](migrate-appliance.md) kullanır. Cihazı vCenter Server'a aktarılan BIR OVA şablonu kullanarak veya [PowerShell komut dosyası](deploy-appliance-script.md)kullanarak VMWare VM olarak dağıtabilirsiniz.
 
 - VMware için [cihaz gereksinimleri](migrate-appliance.md#appliance---vmware) hakkında bilgi edinin.
 - Cihazın erişmesi gereken [URL'ler](migrate-appliance.md#url-access) hakkında bilgi edinin.
@@ -77,7 +77,7 @@ ESXi ana bilgisayarları (uygulama bulma/aracısız bağımlılık analizi) | [U
 
 **Gereksinim** | **Şey**
 --- | --- 
-**Dağıtımdan önce** | Projeye Azure Geçiş: Sunucu Değerlendirme aracı eklenmiştir.<br/><br/>  Şirket içi VMWare makinelerinizi keşfetmek için bir Azure Geçir cihazı kurduktan sonra bağımlılık görselleştirmesini dağıtAbilirsiniz.<br/><br/> İlk kez bir [projeoluşturmayı öğrenin.](create-manage-projects.md)<br/> Varolan bir projeye nasıl bir değerlendirme aracı ekleyeceğinizi [öğrenin.](how-to-assess.md)<br/> VMware VM'lerin değerlendirilmesi için Azure Geçir cihazını nasıl ayarlayatısınız [öğrenin.](how-to-set-up-appliance-vmware.md)
+**Dağıtımdan önce** | Sunucu Değerlendirme aracı projeye eklenen bir Azure Geçiş projeniz olmalıdır.<br/><br/>  Şirket içi VMWare makinelerinizi keşfetmek için bir Azure Geçir cihazı kurduktan sonra bağımlılık görselleştirmesini dağıtAbilirsiniz.<br/><br/> İlk kez bir [projeoluşturmayı öğrenin.](create-manage-projects.md)<br/> Varolan bir projeye nasıl bir değerlendirme aracı ekleyeceğinizi [öğrenin.](how-to-assess.md)<br/> VMware VM'lerin değerlendirilmesi için Azure Geçir cihazını nasıl ayarlayatısınız [öğrenin.](how-to-set-up-appliance-vmware.md)
 **VM desteği** | Şu anda yalnızca VMware VM'ler için desteklenir.
 **Windows VM’leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bit).
 **Windows hesabı** |  Bağımlılık çözümlemesi için Azure Geçiş cihazının Windows VM'lerine erişmek için yerel veya etki alanı yöneticisi hesabına ihtiyacı vardır.

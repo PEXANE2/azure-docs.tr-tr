@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi'nde güvenlik önerileri
-description: Bu belge, Azure Güvenlik Merkezi 'ndeki önerilerin Azure kaynaklarınızı korumanıza ve güvenlik ilkeleriyle uyumlu kalmanıza nasıl yardımcı olduğunu gösterir.
+description: Bu belge, Azure Güvenlik Merkezi'ndeki önerilerin Azure kaynaklarınızı korumanıza ve güvenlik ilkelerine uymanıza nasıl yardımcı olduğunu size iletiyor.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,63 +14,63 @@ ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
 ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245310"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
-Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde Azure kaynaklarınızı korumanıza yardımcı olan önerilerin nasıl görüntüleneceği ve anlayabileceği açıklanmaktadır.
+Bu konu, Azure kaynaklarınızı korumanıza yardımcı olmak için Azure Güvenlik Merkezi'ndeki önerileri nasıl görüntülayacağınızı ve anlayacağınızı açıklar.
 
 > [!NOTE]
-> Bu belge, örnek bir dağıtım kullanarak hizmeti tanıtır.  Bu belge adım adım kılavuz değildir.
+> Bu belge, örnek bir dağıtım kullanarak hizmeti tanıtır.  Bu belge adım adım bir kılavuz değildir.
 >
 
 ## <a name="what-are-security-recommendations"></a>Güvenlik önerileri nelerdir?
 
-Önerileriniz kaynaklarınızın güvenliğini sağlamak için yapmanız gereken eylemlerdir.
+Öneriler, kaynaklarınızı güvence altına almak için gerçekleştirdiğiniz eylemlerdir.
 
-Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz edin. Daha sonra bunları nasıl kaldırabilmeniz için öneriler sağlar.
+Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli aralıklarla analiz ediyor. Daha sonra bunları kaldırmak için nasıl öneriler sağlar.
 
-Her öneri şunları sağlar:
+Her öneri size şunları sağlar:
 
-- Neyin önerilmekte olduğuna ilişkin kısa bir açıklama.
-- Öneriyi uygulamak için gerçekleştirilecek düzeltme adımları. <!-- In some cases, Quick Fix remediation is available. -->
-- Üzerinde önerilen eylemi gerçekleştirmek için gerekli olan kaynakları kullanabilirsiniz.
-- Bu öneriyi uygularsanız, güvenli puanınızın gidebileceği miktar olan **güvenli puan etkisi**.
+- Tavsiye edilen şeyin kısa bir açıklaması.
+- Tavsiyeyi uygulamak için yerine getirilen düzeltme adımları. <!-- In some cases, Quick Fix remediation is available. -->
+- Hangi kaynakların onlar hakkında önerilen eylemi gerçekleştirmenize ihtiyacı vardır.
+- Bu öneriyi uygularsanız Güvenli Puan ınızın artacağı miktar olan **Güvenli Puan etkisi.**
 
-## İzleme önerileri<a name="monitor-recommendations"></a>
+## <a name="monitor-recommendations"></a>Önerileri izleyin<a name="monitor-recommendations"></a>
 
-Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynaklarınızın güvenlik durumunu analiz eder. **Genel bakış** bölümündeki **öneriler** kutucuğu, Güvenlik Merkezi tarafından tanımlanan toplam öneri sayısını gösterir.
+Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynaklarınızın güvenlik durumunu analiz eder. **Genel Bakış** altındaki **Öneriler** döşemesi, Güvenlik Merkezi tarafından tanımlanan toplam öneri sayısını gösterir.
 
-![Güvenlik Merkezi 'ne genel bakış](./media/security-center-recommendations/asc-overview.png)
+![Güvenlik merkezine genel bakış](./media/security-center-recommendations/asc-overview.png)
 
-1. **Genel bakış**' ın altında **öneriler kutucuğunu** seçin. **Öneriler** listesi açılır.
+1. **Genel Bakış**altında **Öneriler döşemesini** seçin. **Öneriler** listesi açılır.
 
       ![Önerileri görüntüleme](./media/security-center-recommendations/view-recommendations.png)
 
-    Önerilere filtre uygulayabilirsiniz. Önerilere filtre uygulamak için **öneriler** dikey penceresinde **filtre** ' yi seçin. **Filtre** dikey penceresi açılır ve görmek istediğiniz önem derecesini ve durum değerlerini seçersiniz.
+    Önerilere filtre uygulayabilirsiniz. Önerilere filtre uygulayabilmek için **Öneriler** bıçağındaki **Filtre'yi** seçin. **Filtre** bıçağı açılır ve görmek istediğiniz önem ve durum değerlerini seçersiniz.
 
-   * **Öneriler**: öneri.
-   * **GÜVENLI puan etkisi**: güvenlik, güvenlik önerilerinizi kullanarak ve her öneriye ne kadar önemli olduğunu anlamak için gelişmiş algoritmalar uygulayarak oluşturulan bir puandır. Daha fazla bilgi için bkz. [güvenli puan hesaplaması](security-center-secure-score.md#secure-score-calculation).
-   * **Kaynak**: Bu önerinin uygulandığı kaynakları listeler.
-   * **Durum çubukları**: söz konusu önerinin önem derecesini açıklar:
-       * **Yüksek (kırmızı)** : anlamlı bir kaynakta (örneğin, bir uygulama, VM veya ağ güvenlik grubu) bir güvenlik açığı bulunur ve dikkat edilmesi gerekir.
-       * **Orta (turuncu)** : bir güvenlik açığı bulunur ve kritik olmayan ya da bir işlemi tamamlamaya yönelik ek adımlar gerekir.
-       * **Düşük (mavi)** : giderilmesi gereken ancak anında ilgilenilmesi gerekmeyen bir güvenlik açığı var. (Varsayılan olarak, düşük öneriler sunulmaz, ancak bunları görmek istiyorsanız düşük önerilere filtre uygulayabilirsiniz.) 
-       * **Sağlıklı (yeşil)** :
-       * **Kullanılamıyor (gri)** :
+   * **ÖNERİLER**: Tavsiye.
+   * **GÜVENLİ PUAN Etkİsİ**: Güvenlik Merkezi tarafından güvenlik önerilerinizi kullanarak ve her önerinin ne kadar önemli olduğunu belirlemek için gelişmiş algoritmalar uygulayan bir puan. Daha fazla bilgi için [Güvenli Puan hesaplaması'na](security-center-secure-score.md#secure-score-calculation)bakın.
+   * **KAYNAK**: Bu önerinin uygulandığı kaynakları listeler.
+   * **STATUS BARS**: Bu özel önerinin önem derecesini açıklar:
+       * **Yüksek (Kırmızı)**: Anlamlı bir kaynakla (uygulama, VM veya ağ güvenlik grubu gibi) bir güvenlik açığı vardır ve dikkat gerektirir.
+       * **Orta (Turuncu)**: Bir güvenlik açığı vardır ve onu ortadan kaldırmak veya bir işlemi tamamlamak için kritik olmayan veya ek adımlar gereklidir.
+       * **Düşük (Mavi)**: Ele alınması gereken ancak hemen dikkat gerektirmeyen bir güvenlik açığı vardır. (Varsayılan olarak, düşük öneriler sunulmaz, ancak görmek istiyorsanız düşük önerilere filtre uygulayabilirsiniz.) 
+       * **Sağlıklı (Yeşil)**:
+       * **Mevcut Değil (Gri)**:
 
-1. Her bir önerinin ayrıntılarını görüntülemek için, öneriye tıklayın.
+1. Her önerinin ayrıntılarını görüntülemek için öneriye tıklayın.
 
     ![Öneri ayrıntıları](./media/security-center-recommendations/recommendation-details.png)
 
 >[!NOTE] 
-> Bkz. Azure kaynakları için [Klasik ve Kaynak Yöneticisi dağıtım modelleri](../azure-classic-rm.md) .
+> Azure kaynakları için [klasik ve Kaynak Yöneticisi dağıtım modellerine](../azure-classic-rm.md) bakın.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede, güvenlik merkezi 'nde güvenlik önerilerine sunulmuştur. Önerileri düzeltme hakkında bilgi edinmek için:
+Bu belgede, Güvenlik Merkezi'nde güvenlik önerileri tanıtıldı. Önerileri nasıl düzelteceklerini öğrenmek için:
 
-* [Önerileri](security-center-remediate-recommendations.md) düzeltme — Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
+* [İyileştirici öneriler](security-center-remediate-recommendations.md) — Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini nasıl yapılandırıştırılacak öğrenin.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188046"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -16,18 +16,18 @@ ms.locfileid: "67188046"
 
 ## <a name="managing-table-entities"></a>Tablo varlıklarını yönetme
 
-Bir tablonuz olduğuna göre varlıklar veya tablosundaki satırları yönetme göz atalım. 
+Artık bir tablonuz olduğuna göre, tablodaki varlıkları veya satırları nasıl yönetebildiğinize bakalım. 
 
-Varlıkları üç sistem özelliği dahil olmak üzere, en fazla 255 özelliklere sahiptir: **PartitionKey**, **RowKey**, ve **zaman damgası**. Ekleme ve güncelleştirme değerlerini sorumlu **PartitionKey** ve **RowKey**. Sunucu değeri yönetir **zaman damgası**, hangi değiştirilemez. Birlikte **PartitionKey** ve **RowKey** tablo içindeki her bir varlık benzersiz olarak tanımlanabilmesi.
+Varlıklar en fazla 255 özellikleri, üç sistem özellikleri de dahil olmak üzere olabilir: **PartitionKey**, **RowKey**ve **Timestamp**. **PartitionKey** ve **RowKey**değerlerini eklemek ve güncelleştirmekten siz sorumlusunuz. Sunucu, değiştirilemeyen **Timestamp**değerini yönetir. **PartitionKey** ve **RowKey** birlikte bir tablodaki tüm varlığı benzersiz bir şekilde tanımlar.
 
-* **PartitionKey**: Varlık içinde depolanır bölüm belirler.
-* **RowKey**: Varlığı bölüm içinde benzersiz olarak tanımlar.
+* **PartitionKey**: Varlığın depolanan bölümü belirler.
+* **RowKey**: Bölüm içindeki varlığı benzersiz bir şekilde tanımlar.
 
-Bir varlık için özel en çok 252 özellik tanımlayabilir. 
+Bir varlık için en fazla 252 özel özellik tanımlayabilirsiniz. 
 
-### <a name="add-table-entities"></a>Tablo varlık ekleme
+### <a name="add-table-entities"></a>Tablo varlıkları ekleme
 
-Varlıkları kullanarak bir tablo ekleyin **Ekle AzTableRow**. Bu örneklerde değerlerle bölüm anahtarları `partition1` ve `partition2`, ve satır anahtarı için durum kısaltmalar eşit. Her bir varlıkta özellikleri `username` ve `userid`. 
+**Add-AzTableRow'u**kullanarak tabloya varlıklar ekleyin. Bu örnekler, değerler `partition1` ve `partition2`, ve satır anahtarları ile bölüm tuşları kullanır devlet kısaltmaları eşit. Her varlıktaki özellikler `username` `userid`ve . 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -55,12 +55,12 @@ Add-AzTableRow `
     -rowKey ("TX") -property @{"username"="Steven";"userid"=4}
 ```
 
-### <a name="query-the-table-entities"></a>Tablo varlıkları sorgulama
+### <a name="query-the-table-entities"></a>Tablo varlıklarını sorgula
 
-Bir tablodaki varlıkları kullanarak sorgulayabilirsiniz **Get-AzTableRow** komutu.
+**Get-AzTableRow** komutunu kullanarak tablodaki varlıkları sorgulayabilirsiniz.
 
 > [!NOTE]
-> Cmdlet'ler **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName**, ve  **Get-AzureStorageTableRowByCustomFilter** kullanım dışıdır ve gelecekteki sürümüne güncelleştirmede kaldırılacak.
+> Cmdlets **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableByPartitionKey**, **Get-AzureStorageTableRowByColumnName**ve **Get-AzureStorageTableTableByCustomFilter** azalır ve gelecekteki sürüm güncelleştirmesinde kaldırılır.
 
 #### <a name="retrieve-all-entities"></a>Tüm varlıkları alma
 
@@ -68,14 +68,14 @@ Bir tablodaki varlıkları kullanarak sorgulayabilirsiniz **Get-AzTableRow** kom
 Get-AzTableRow -table $cloudTable | ft
 ```
 
-Bu komut için aşağıdaki tabloda benzer sonuçlar verir:
+Bu komut aşağıdaki tabloya benzer sonuçlar verir:
 
-| userid | username | Bölüm | rowkey |
+| Userıd | kullanıcı adı | partition | rowkey |
 |----|---------|---------------|----|
-| 1 | Chris | Bölüm1 | CA |
-| 3 | Christine | Bölüm1 | WA |
-| 2 | Jessie | Bölüm2 | NM |
-| 4 | Steven | Bölüm2 | TX |
+| 1 | Chris | bölüm1 | CA |
+| 3 | Christine | bölüm1 | WA |
+| 2 | Jessie | bölüm2 | NM |
+| 4 | Steven | bölüm2 | TX |
 
 #### <a name="retrieve-entities-for-a-specific-partition"></a>Belirli bir bölüm için varlıkları alma
 
@@ -83,14 +83,14 @@ Bu komut için aşağıdaki tabloda benzer sonuçlar verir:
 Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 ```
 
-Sonuçları aşağıdaki tabloda benzer görünmelidir:
+Sonuçlar aşağıdaki tabloya benzer:
 
-| userid | username | Bölüm | rowkey |
+| Userıd | kullanıcı adı | partition | rowkey |
 |----|---------|---------------|----|
-| 1 | Chris | Bölüm1 | CA |
-| 3 | Christine | Bölüm1 | WA |
+| 1 | Chris | bölüm1 | CA |
+| 3 | Christine | bölüm1 | WA |
 
-#### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Belirli bir değeri belirli bir sütundaki varlıkları alma
+#### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Belirli bir sütundaki belirli bir değere ait varlıkları alma
 
 ```powershell
 Get-AzTableRow -table $cloudTable `
@@ -99,13 +99,13 @@ Get-AzTableRow -table $cloudTable `
     -operator Equal
 ```
 
-Bu sorgu, bir kaydı alır.
+Bu sorgu bir kayıt alır.
 
-|Alan|value|
+|alan|value|
 |----|----|
-| userid | 1 |
-| username | Chris |
-| PartitionKey | Bölüm1 |
+| Userıd | 1 |
+| kullanıcı adı | Chris |
+| PartitionKey | bölüm1 |
 | RowKey      | CA |
 
 #### <a name="retrieve-entities-using-a-custom-filter"></a>Özel bir filtre kullanarak varlıkları alma 
@@ -116,20 +116,20 @@ Get-AzTableRow `
     -customFilter "(userid eq 1)"
 ```
 
-Bu sorgu, bir kaydı alır.
+Bu sorgu bir kayıt alır.
 
-|Alan|value|
+|alan|value|
 |----|----|
-| userid | 1 |
-| username | Chris |
-| PartitionKey | Bölüm1 |
+| Userıd | 1 |
+| kullanıcı adı | Chris |
+| PartitionKey | bölüm1 |
 | RowKey      | CA |
 
 ### <a name="updating-entities"></a>Varlıkları güncelleştirme 
 
-Varlıkları güncelleştirme için üç adım vardır. İlk olarak değiştirmek için varlık alın. İkinci olarak, değişikliği yapın. Üçüncü olarak, değişiklik kullanarak işleme **güncelleştirme AzTableRow**.
+Varlıkları güncelleştirmek için üç adım vardır. İlk olarak, değiştirmek için varlık alın. İkincisi, değişikliği yap. Üçüncü olarak, **Update-AzTableRow**kullanarak değişikliği işlemek.
 
-Kullanıcı adıyla varlığı Güncelleştirme 'kullanıcı adı için Jessie' = 'Jessie2' =. Bu örnek ayrıca .NET türlerini kullanarak özel bir filtre oluşturmak için başka bir yol gösterir.
+Kullanıcı adı = 'Jessie' kullanıcı adı = 'Jessie2' olması için varlığı güncelleştirin. Bu örnek, .NET türlerini kullanarak özel bir filtre oluşturmanın başka bir yolunu da gösterir.
 
 ```powershell
 # Create a filter and get the entity to be updated.
@@ -151,22 +151,22 @@ Get-AzTableRow -table $cloudTable `
     -customFilter "(username eq 'Jessie2')"
 ```
 
-Sonuçları Jessie2 kaydı gösterir.
+Sonuçlar Jessie2 rekorunu gösteriyor.
 
-|Alan|value|
+|alan|value|
 |----|----|
-| userid | 2 |
-| username | Jessie2 |
-| PartitionKey | Bölüm2 |
+| Userıd | 2 |
+| kullanıcı adı | Jessie2 |
+| PartitionKey | bölüm2 |
 | RowKey      | NM |
 
 ### <a name="deleting-table-entities"></a>Tablo varlıklarını silme
 
-Bir varlık veya tablodaki tüm varlıkları silebilirsiniz.
+Tablodaki bir varlığı veya tüm varlıkları silebilirsiniz.
 
 #### <a name="deleting-one-entity"></a>Bir varlığı silme
 
-Tek bir varlığı silmek için bu varlığa bir başvuru almak ve içine kanal **Remove-AzTableRow**.
+Tek bir varlığı silmek için, bu varlığa bir başvuru alın ve **onu Remove-AzTableRow'a**boruyla getirin.
 
 ```powershell
 # Set filter.
@@ -184,9 +184,9 @@ $userToDelete | Remove-AzTableRow -table $cloudTable
 Get-AzTableRow -table $cloudTable | ft
 ```
 
-#### <a name="delete-all-entities-in-the-table"></a>Tablodaki tüm varlıklarını silme
+#### <a name="delete-all-entities-in-the-table"></a>Tablodaki tüm varlıkları silme
 
-Tablodaki tüm varlıkları silmek için bunları alın ve sonuçları Kaldır cmdlet'e kanal oluşturarak. 
+Tablodaki tüm varlıkları silmek için, bunları alır ve sonuçları cmdlet'i kaldırabilirsiniz. 
 
 ```powershell
 # Get all rows and pipe the result into the remove cmdlet.

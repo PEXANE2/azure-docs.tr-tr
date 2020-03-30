@@ -1,6 +1,6 @@
 ---
-title: IoT güvenlik modülü TWINS için Azure Güvenlik Merkezi 'Ni anlama | Microsoft Docs
-description: Güvenlik modülü TWINS kavramı ve IoT için Azure Güvenlik Merkezi 'nde nasıl kullanıldıkları hakkında bilgi edinin.
+title: IoT güvenlik modülü için Azure Güvenlik Merkezi'ni anlayın| Microsoft Dokümanlar
+description: IoT için Azure Güvenlik Merkezi'nde güvenlik modülü ikizleri kavramı ve bunların nasıl kullanıldığı hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,35 +16,35 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: ab3b6e740e644a1ed1495eb776045888be448047
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68596506"
 ---
 # <a name="security-module"></a>Güvenlik modülü
 
 
-Bu makalede IoT için Azure Güvenlik Merkezi 'nin cihaz ikleri ve modülleri nasıl kullandığı açıklanır. 
+Bu makalede, Azure Güvenlik Merkezi iot için aygıt ikizleri ve modüllerini nasıl kullandığı açıklanmaktadır. 
 
-## <a name="device-twins"></a>Cihaz ikikesi
+## <a name="device-twins"></a>Cihaz ikizleri
 
-Azure 'da oluşturulan IoT çözümleri için, cihaz ikis, hem cihaz yönetimi hem de süreç otomasyonu 'nda anahtar rol oynar.  
+Azure'da yerleşik IoT çözümleri için aygıt ikizleri hem cihaz yönetiminde hem de proses otomasyonunda önemli bir rol oynar.  
 
-IoT için Azure Güvenlik Merkezi, mevcut IoT cihaz yönetimi Platformunuzla tam tümleştirme sunarak, cihaz güvenlik durumunuzu yönetmenize ve mevcut cihaz denetimi yeteneklerini kullanmanıza olanak sağlar. Tümleştirme, IoT Hub ikizi mekanizması kullanılarak elde edilir.  
+Azure Güvenlik Merkezi IoT, mevcut IoT aygıt yönetim platformunuzla tam entegrasyon sunarak cihaz güvenlik durumunuzu yönetmenize ve mevcut aygıt kontrol özelliklerinden yararlanmanıza olanak tanır. Entegrasyon, IoT Hub çift mekanizmasından yararlanılarak sağlanır.  
 
-Azure IoT Hub 'de [cihaz](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) ikseponları kavramı hakkında daha fazla bilgi edinin. 
+Azure IoT Hub'da [aygıt ikizleri](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) kavramı hakkında daha fazla bilgi edinin. 
 
-## <a name="security-module-twins"></a>Güvenlik modülü TWINS
+## <a name="security-module-twins"></a>Güvenlik modülü ikizleri
 
-IoT için Azure Güvenlik Merkezi, hizmette bulunan her cihaz için bir güvenlik modülü ikizi tutar.
-İkizi güvenlik modülü, çözümünüzde her belirli cihaz için cihaz güvenliğiyle ilgili tüm bilgileri tutar.
-Cihaz güvenlik özellikleri, daha güvenli iletişim için ikizi ve daha az kaynak gerektiren güncelleştirmeleri ve bakımı etkinleştirmek üzere özel bir güvenlik modülünde saklanır.  
+Azure Güvenlik Merkezi ioT, hizmetteki her aygıt için bir güvenlik modülü ikizi tutar.
+Güvenlik modülü ikizi, çözümünüzdeki her bir cihaz için aygıt güvenliğiyle ilgili tüm bilgileri tutar.
+Aygıt güvenlik özellikleri, daha güvenli iletişim ve daha az kaynak gerektiren güncelleştirmeleri ve bakımı etkinleştirmek için özel bir güvenlik modülü ikizinde korunur.  
 
-İkizi oluşturmayı, özelleştirmeyi ve yapılandırmayı öğrenmek için bkz. [Güvenlik modülü oluşturma ikizi](quickstart-create-security-twin.md) ve [güvenlik aracılarını yapılandırma](how-to-agent-configuration.md) . IoT Hub modül TWINS kavramı hakkında daha fazla bilgi edinmek için bkz. [Modül TWINS 'ı anlama](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) . 
+Bkz. [İkiz'i](quickstart-create-security-twin.md) nasıl oluşturup, özelleştirecek ve yapılandıracak şekilde öğrenmek için güvenlik [aracılarını](how-to-agent-configuration.md) oluştur ve yapılandırır. IoT [Hub'da](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) modül ikizleri kavramı hakkında daha fazla bilgi edinmek için anlama modülü ikizleri bölümüne bakın. 
  
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [IoT için Azure Güvenlik Merkezi 'ne genel bakış](overview.md)
-- [Güvenlik aracılarını dağıtma](how-to-deploy-agent.md)
-- [Güvenlik Aracısı kimlik doğrulama yöntemleri](concept-security-agent-authentication-methods.md)
+- [IoT genel bakışı için Azure Güvenlik Merkezi](overview.md)
+- [Güvenlik aracısı dağıtma](how-to-deploy-agent.md)
+- [Güvenlik aracısı kimlik doğrulama yöntemleri](concept-security-agent-authentication-methods.md)

@@ -1,6 +1,6 @@
 ---
-title: OPC Kasası sertifika yönetimi hizmetini güvenli bir şekilde çalıştırma-Azure | Microsoft Docs
-description: OPC Kasası sertifika yönetimi hizmetini Azure 'da güvenli bir şekilde çalıştırmayı açıklar ve göz önünde bulundurmanız gereken diğer güvenlik kılavuzlarını gözden geçirir.
+title: OPC Vault sertifika yönetimi hizmetini güvenli bir şekilde çalıştırma - Azure | Microsoft Dokümanlar
+description: Azure'da OPC Vault sertifika yönetimi hizmetinin nasıl güvenli bir şekilde çalıştırılabildiğini açıklar ve göz önünde bulundurulması gereken diğer güvenlik yönergelerini gözden geçirir.
 author: mregen
 ms.author: mregen
 ms.date: 8/16/2019
@@ -9,237 +9,237 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271713"
 ---
-# <a name="run-the-opc-vault-certificate-management-service-securely"></a>OPC Kasası sertifika yönetimi hizmetini güvenli bir şekilde çalıştırın
+# <a name="run-the-opc-vault-certificate-management-service-securely"></a>OPC Vault sertifika yönetimi hizmetini güvenli bir şekilde çalıştırın
 
-Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da güvenli bir şekilde çalıştırılması ve göz önünde bulundurulması gereken diğer güvenlik yönergeleri inceleneceği açıklanır.
+Bu makalede, Azure'da OPC Vault sertifika yönetimi hizmetinin güvenli bir şekilde nasıl çalıştırılacak olduğu açıklanmaktadır ve göz önünde bulundurulması gereken diğer güvenlik yönergelerigözden geçirilir.
 
 ## <a name="roles"></a>Roller
 
-### <a name="trusted-and-authorized-roles"></a>Güvenilen ve yetkili roller
+### <a name="trusted-and-authorized-roles"></a>Güvenilir ve yetkili roller
 
-OPC Kasası mikro hizmeti, farklı rollerin hizmetin çeşitli bölümlerine erişmesine izin verir.
+OPC Vault microservice, farklı rollerin hizmetin çeşitli bölümlerine erişmesine olanak tanır.
 
 > [!IMPORTANT]
-> Dağıtım sırasında, komut dosyası yalnızca dağıtım betiğini çalıştıran kullanıcıyı tüm roller için Kullanıcı olarak ekler. Bir üretim dağıtımı için, bu rol atamasını gözden geçirmeniz ve aşağıdaki yönergeleri izleyerek uygun şekilde yeniden yapılandırmanız gerekir. Bu görev, Azure Active Directory (Azure AD) kurumsal uygulamalar portalında rol ve hizmetlerin el ile atanmasını gerektirir.
+> Komut dosyası, dağıtım sırasında yalnızca dağıtım komut dosyasını tüm roller için kullanıcı olarak çalıştıran kullanıcıyı ekler. Bir üretim dağıtımı için, bu rol atamasını gözden geçirmeniz ve aşağıdaki yönergeleri izleyerek uygun şekilde yeniden yapılandırmanız gerekir. Bu görev, Azure Etkin Dizin (Azure AD) Kurumsal Uygulamalar portalındaki rollerin ve hizmetlerin el ile atanmasını gerektirir.
 
-### <a name="certificate-management-service-roles"></a>Sertifika Yönetimi hizmet rolleri
+### <a name="certificate-management-service-roles"></a>Sertifika yönetimi hizmeti rolleri
 
-OPC Kasası mikro hizmeti aşağıdaki rolleri tanımlar:
+OPC Vault microservice aşağıdaki rolleri tanımlar:
 
-- **Okuyucu**: varsayılan olarak, Kiracıdaki tüm kimliği doğrulanmış kullanıcılar okuma erişimine sahiptir. 
-  - Uygulamalar ve sertifika isteklerine yönelik okuma erişimi. Uygulamalar ve sertifika isteklerini listeleyebilir ve sorgulayabilir. Ayrıca, cihaz bulma bilgilerine ve genel sertifikalara okuma erişimiyle erişilebilir.
-- **Yazıcı**: yazıcı rolü, belirli görevler için yazma izinleri eklemek üzere bir kullanıcıya atanır. 
-  - Uygulamalar ve sertifika isteklerine yönelik okuma/yazma erişimi. Uygulamaları kaydedebilir, güncelleştirebilir ve kayıt silebilirsiniz. Sertifika istekleri oluşturabilir ve onaylanan özel anahtarlar ve sertifikalar alabilir. , Özel anahtarları da silebilir.
-- **Onaylayan**: onaylayan rolü, sertifika isteklerini onaylamak veya reddetmek için bir kullanıcıya atanır. Rol başka bir rol içermez.
-  - OPC Kasası mikro hizmet API 'sine erişmek için onaylayanın rolüne ek olarak, kullanıcıların sertifikaları imzalayabilmesi için Azure Key Vault anahtar imzalama iznine de sahip olması gerekir.
-  - Yazıcı ve onaylayan rolü farklı kullanıcılara atanmalıdır.
-  - Onaylayanın ana rolü, sertifika isteklerinin oluşturulması ve redlini onaysıdır.
-- **Yönetici**: yönetici rolü, sertifika gruplarını yönetmek için bir kullanıcıya atanır. Rol onaylayan rolünü desteklemez, ancak yazıcı rolünü içerir.
-  - Yönetici, sertifika gruplarını yönetebilir, yapılandırmayı değiştirebilir ve yeni bir sertifika Iptal listesi (CRL) vererek uygulama sertifikalarını iptal edebilir.
-  - İdeal olarak, yazıcı, onaylayan ve yönetici rolleri farklı kullanıcılara atanır. Ek güvenlik için, onaylayan veya yönetici rolüne sahip bir kullanıcının ayrıca Key Vault, sertifika vermek veya bir veren CA sertifikasını yenilemek için anahtar imzalama izni olması gerekir.
-  - Mikro hizmet Yönetim rolüne ek olarak, rol şunları içerir ancak bunlarla sınırlı değildir:
-    - CA 'nın güvenlik uygulamalarının uygulanmasını yönetme sorumluluğu.
-    - Sertifikaların oluşturulması, iptali ve askıya alınma yönetimi. 
-    - Şifreleme anahtarı yaşam döngüsü yönetimi (örneğin, veren CA anahtarlarının yenilenmesi).
-    - CA 'yı çalışan hizmetlerin yüklenmesi, yapılandırılması ve bakımı.
-    - Hizmetlerin gündelik işlemi. 
+- **Okuyucu**: Varsayılan olarak, kiracıherhangi bir kimlik doğrulamakullanıcı erişim okudu. 
+  - Uygulamalara ve sertifika isteklerine erişimi okuyun. Başvurular ve sertifika istekleri ni listeleyebilir ve sorgulayabilir. Ayrıca aygıt bulma bilgilerine ve genel sertifikalara okuma erişimiyle erişilebilir.
+- **Yazar**: Yazar rolü, belirli görevler için yazma izinleri eklemek üzere bir kullanıcıya atanır. 
+  - Başvurulara ve sertifika isteklerine erişimi okuma/yazma. Uygulamaları kaydedebilir, güncelleyebilir ve kayıt dışı edebilir. Sertifika istekleri oluşturabilir ve onaylı özel anahtarlar ve sertifikalar alabilir. Özel tuşları da silebilirsiniz.
+- **Onaylayıcı**: Onaylayıcı rolü, sertifika isteklerini onaylamak veya reddetmek üzere bir kullanıcıya atanır. Rol başka bir rol içermez.
+  - OPC Vault mikro hizmet API'sine erişmek için Onaylayıcı rolüne ek olarak, kullanıcının sertifikaları imzalayabilmek için Azure Key Vault'ta anahtar imzalama iznine sahip olması gerekir.
+  - Yazar ve Onaylayıcı rolü farklı kullanıcılara atanmalıdır.
+  - Onaylayan'ın ana rolü, sertifika isteklerinin yenilenmesi ve reddedilmesidir.
+- **Yönetici**: Yönetici rolü, sertifika gruplarını yönetmek için bir kullanıcıya atanır. Rol Onaylayıcı rolünü desteklemez, ancak Yazar rolünü içerir.
+  - Yönetici, yeni bir Sertifika İptal Listesi (CRL) düzenleyerek sertifika gruplarını yönetebilir, yapılandırmayı değiştirebilir ve uygulama sertifikalarını iptal edebilir.
+  - İdeal olarak, Yazar, Onaylayıcı ve Yönetici rolleri farklı kullanıcılara atanır. Ek güvenlik için, Onaylayıcı veya Yönetici rolüne sahip bir kullanıcının, sertifika vermek veya Bir İhraççı CA sertifikasını yenilemek için Key Vault'ta anahtar imzalama iznine de ihtiyacı vardır.
+  - Mikro hizmet yönetimi rolüne ek olarak, rol şunları içerir, ancak bunlarla sınırlı değildir:
+    - CA'nın güvenlik uygulamalarının uygulanmasını yönetme sorumluluğu.
+    - Sertifikaların neslinin yönetimi, iptali ve askıya alınması. 
+    - Şifreleme anahtar yaşam döngüsü yönetimi (örneğin, Veren CA anahtarlarının yenilenmesi).
+    - CA'yı çalıştıran hizmetlerin yüklenmesi, konfigürasyonu ve bakımı.
+    - Hizmetlerin günlük işleyişi. 
     - CA ve veritabanı yedekleme ve kurtarma.
 
 ### <a name="other-role-assignments"></a>Diğer rol atamaları
 
-Ayrıca, hizmeti çalıştırırken aşağıdaki rolleri göz önünde bulundurun:
+Ayrıca hizmeti çalıştırırken aşağıdaki rolleri göz önünde bulundurun:
 
-- Dış kök sertifika yetkilisine sahip sertifika tedarik sözleşmesinin iş sahibi (örneğin, sahibi bir dış CA 'dan sertifika satın alırken veya harici bir CA 'ya bağımlı bir CA çalıştırırken).
-- Sertifika yetkilisinin geliştirilmesi ve doğrulanması.
-- Denetim kayıtlarını gözden geçirme.
-- CA 'yı desteklemeye veya fiziksel ve bulut tesislerinin yönetilmesine yardımcı olan, ancak CA işlemlerini gerçekleştirmek için doğrudan güvenilir olmayan personel, *yetkili* roldür. Yetkilendirilmiş roldeki kişilerin gerçekleştirmesine izin verilen görev kümesi de açıklanmalıdır.
+- Harici kök sertifika yetkilisi ile sertifika satın alma sözleşmesinin işletme sahibi (örneğin, sahibi harici bir CA'dan sertifika satın aldığında veya harici bir CA'ya bağlı bir CA çalıştırdığında).
+- Sertifika Yetkilisinin geliştirilmesi ve onaylanması.
+- Denetim kayıtlarının gözden geçirilmesi.
+- CA'yı desteklemeye veya fiziksel ve bulut tesislerini yönetmeye yardımcı olan, ancak CA işlemlerini gerçekleştirmek için doğrudan güvenilmeyen personel *yetkili* roldedir. Yetkili roldeki kişilerin gerçekleştirmesine izin verilen görev kümesi de belgelenmelidir.
 
-### <a name="review-memberships-of-trusted-and-authorized-roles-quarterly"></a>Güvenilen ve yetkili rollerin üyeliklerini üç ayda gözden geçirin
+### <a name="review-memberships-of-trusted-and-authorized-roles-quarterly"></a>Güvenilir ve yetkili rollerin üyeliklerini üç ayda bir gözden geçirme
 
-Güvenilen ve yetkili rollerin üyeliğini en az üç ayda bir inceleyin. Her roldeki kişilerin (el ile süreçler için) veya hizmet kimliklerinin (Otomatik süreçler için) en düşük düzeyde tutulduğundan emin olun.
+Güvenilir ve yetkili rollerin üyeliğini en az üç ayda bir gözden geçirin. Her roldeki kişi kümesinin (el ile işlemler için) veya hizmet kimlikleri (otomatik işlemler için) en az da tutulduğundan emin olun.
 
-### <a name="role-separation-between-certificate-requester-and-approver"></a>Sertifika isteyenin ve onaylayan arasında rol ayrımı
+### <a name="role-separation-between-certificate-requester-and-approver"></a>Sertifika istektecisi ve onaylayıcısı arasındaki rol ayrımı
 
-Sertifika verme işlemi, sertifika talep eden ve sertifika onaylayan rolleri (kişiler veya otomatik sistemler) arasında rol ayrımı zorlaması gerekir. Sertifika verme, sertifika istek sahibinin sertifika alma yetkisi olduğunu doğrulayan bir sertifika onaylayan rolü tarafından yetkilendirilmelidir. Sertifika onaylayan rolünü tutan kişiler, resmi olarak yetkilendirilmiş bir kişi olmalıdır.
+Sertifika verme işlemi, sertifika istektecisi ile sertifika onaylayıcısı rolleri (kişiler veya otomatik sistemler) arasındaki rol ayrımını zorunlu kılmalıdır. Sertifika verme, sertifika isteği sahibinin sertifika almaya yetkili olduğunu doğrulayan bir sertifika onaylayıcısı rolüyle yetkilendirilmelidir. Sertifika onaylayıcı rolünü elinde bulunduran kişiler resmi olarak yetkili kişi olmalıdır.
 
-### <a name="restrict-assignment-of-privileged-roles"></a>Ayrıcalıklı rollerin atamasını kısıtla
+### <a name="restrict-assignment-of-privileged-roles"></a>Ayrıcalıklı rollerin atanmasını kısıtlama
 
-Yöneticiler ve onaylayanlar grubunun üyeliğini yetkilendirme gibi ayrıcalıklı rollerin atanmasını, sınırlı bir yetkili personele göre kısıtlamalısınız. Herhangi bir ayrıcalıklı rol değişikliği, 24 saat içinde erişimi iptal etmelidir. Son olarak, ayrıcalıklı rol atamalarını üç ayda bir gözden geçirin ve gereksiz veya süre dolmayan atamaları kaldırın.
+Yöneticiler ve Onaylayıcılar grubunun üyeliğine yetki vermek gibi ayrıcalıklı rollerin atanmasını sınırlı bir yetkili personel kümesiyle sınırlamanız gerekir. Tüm ayrıcalıklı rol değişiklikleri erişim 24 saat içinde iptal edilmelidir. Son olarak, ayrıcalıklı rol atamalarını üç ayda bir gözden geçirin ve gereksiz veya süresi dolmuş atamaları kaldırın.
 
-### <a name="privileged-roles-should-use-two-factor-authentication"></a>Ayrıcalıklı roller iki öğeli kimlik doğrulaması kullanmalıdır
+### <a name="privileged-roles-should-use-two-factor-authentication"></a>Ayrıcalıklı roller iki faktörlü kimlik doğrulaması kullanmalıdır
 
-Onaylayanlar ve yöneticilerin etkileşimli oturum açma işlemleri için çok faktörlü kimlik doğrulaması (iki öğeli kimlik doğrulaması da denir) kullanın.
+Hizmete Onaylayanların ve Yöneticilerin etkileşimli oturum açmaları için çok faktörlü kimlik doğrulamayı (iki faktörlü kimlik doğrulama olarak da adlandırılır) kullanın.
 
-## <a name="certificate-service-operation-guidelines"></a>Sertifika hizmeti işlem yönergeleri
+## <a name="certificate-service-operation-guidelines"></a>Sertifika hizmeti çalışma yönergeleri
 
-### <a name="operational-contacts"></a>İşletimsel kişiler
+### <a name="operational-contacts"></a>Operasyonel bağlantılar
 
-Sertifika Hizmeti, ayrıntılı işletimsel olay yanıtı kişilerini içeren dosya üzerinde güncel bir güvenlik yanıt planına sahip olmalıdır.
+Sertifika hizmetinin dosyasında ayrıntılı operasyonel olay yanıt kişileri içeren güncel bir güvenlik yanıt planı olmalıdır.
 
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
-Tüm sistemler sürekli olarak izlenmeli ve en son güvenlik güncelleştirmeleriyle güncellenecektir.
+Tüm sistemler en son güvenlik güncelleştirmeleriyle sürekli olarak izlenmeli ve güncellenmelidir.
 
 > [!IMPORTANT]
-> OPC Kasası hizmetinin GitHub deposu, güvenlik düzeltme ekleriyle sürekli olarak güncelleştirilir. Bu güncelleştirmeleri izleyin ve düzenli aralıklarla hizmete uygulayın.
+> OPC Vault hizmetinin GitHub deposu sürekli olarak güvenlik yamaları ile güncellenir. Bu güncelleştirmeleri izleyin ve düzenli aralıklarla hizmete uygulayın.
 
 ### <a name="security-monitoring"></a>Güvenliği izleme
 
-Uygun güvenlik izlemeye abone olun veya uygulayın. Örneğin, bir merkezi izleme çözümüne abone olun (örneğin, Azure Güvenlik Merkezi veya Office 365 izleme çözümü) ve güvenlik olaylarının izleme çözümüne aktarılmasını sağlamak için uygun şekilde yapılandırın.
+Abone olun veya uygun güvenlik izleme uygulayın. Örneğin, merkezi bir izleme çözümüne (Azure Güvenlik Merkezi veya Office 365 izleme çözümü gibi) abone olun ve güvenlik olaylarının izleme çözümüne iletilmesini sağlamak için uygun şekilde yapılandırın.
 
 > [!IMPORTANT]
-> Varsayılan olarak, OPC kasası hizmeti bir izleme çözümü olarak [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) ile dağıtılır. [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) gibi bir güvenlik çözümü eklemek kesinlikle önerilir.
+> Varsayılan olarak, OPC Vault hizmeti bir izleme çözümü olarak [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) ile dağıtılır. [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) gibi bir güvenlik çözümü eklemenizi şiddetle tavsiye edilir.
 
-### <a name="assess-the-security-of-open-source-software-components"></a>Açık kaynaklı yazılım bileşenlerinin güvenliğini değerlendirin
+### <a name="assess-the-security-of-open-source-software-components"></a>Açık kaynak yazılım bileşenlerinin güvenliğini değerlendirmek
 
-Bir ürün veya hizmet içinde kullanılan tüm açık kaynaklı bileşenler, orta veya daha büyük güvenlik açıklarına karşı ücretsiz olmalıdır.
+Bir ürün veya hizmet te kullanılan tüm açık kaynak bileşenleri orta veya daha büyük güvenlik açıklarından arındırılmış olmalıdır.
 
 > [!IMPORTANT]
-> Sürekli tümleştirme derlemeleri sırasında OPC kasası hizmeti 'nin GitHub deposu güvenlik açıkları için tüm bileşenleri tarar. Bu güncelleştirmeleri GitHub 'da izleyin ve düzenli aralıklarla hizmete uygulayın.
+> Sürekli tümleştirme oluşturmaları sırasında, OPC Vault hizmetinin GitHub deposu tüm bileşenleri güvenlik açıklarına karşı tarar. Bu güncelleştirmeleri GitHub'da izleyin ve düzenli aralıklarla servise uygulayın.
 
-### <a name="maintain-an-inventory"></a>Envanter Bakımı
+### <a name="maintain-an-inventory"></a>Envanteri koruma
 
-Tüm üretim Konakları (kalıcı sanal makineler dahil), cihazlar, tüm iç IP adresi aralıkları, VIP 'ler ve genel DNS etki alanı adları için bir varlık envanterini saklayın. Bir sistem, aygıt IP adresi, VIP veya genel DNS etki alanı eklediğinizde veya kaldırdığınızda, stoku 30 gün içinde güncelleştirmeniz gerekir.
+Tüm üretim ana bilgisayarları (kalıcı sanal makineler dahil), aygıtlar, tüm dahili IP adres aralıkları, VIP'ler ve genel DNS alan adları için bir varlık envanterini koruyun. Bir sistem, cihaz IP adresi, VIP veya herkese açık DNS etki alanı eklediğinizde veya kaldırdığınızda, envanteri 30 gün içinde güncelleştirmeniz gerekir.
 
-#### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Varsayılan Azure OPC Kasası mikro hizmet üretim dağıtımının envanteri 
+#### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Varsayılan Azure OPC Vault mikro hizmet üretim dağıtımıenvanteri 
 
-Azure 'da:
-- **App Service plan**: hizmet ana bilgisayarları için App Service planı. Varsayılan S1.
-- Mikro hizmet için **App Service** : OPC kasa hizmeti Konağı.
-- Örnek uygulama için **App Service** : OPC Kasası örnek uygulama konağı.
-- **Key Vault standart**: Web Hizmetleri için gizli dizileri ve Azure Cosmos DB anahtarlarını depolamak için.
-- **Key Vault Premium**: veren CA anahtarlarını barındırmak, imzalama hizmeti için ve uygulama özel anahtarlarının kasa yapılandırması ve depolaması için.
-- **Azure Cosmos DB**: uygulama ve sertifika istekleri için veritabanı. 
-- **Application Insights**: (isteğe bağlı) Web hizmeti ve uygulaması için izleme çözümü.
-- **Azure AD uygulama kaydı**: örnek uygulama, hizmet ve Edge modülü için bir kayıt.
+Azure'da:
+- **Uygulama Hizmet Planı**: Hizmet barındıran lar için uygulama hizmet planı. Varsayılan S1.
+- Mikro hizmet için **Uygulama Hizmeti:** OPC Vault servis ana bilgisayarı.
+- Örnek uygulama için **Uygulama Hizmeti:** OPC Vault örnek uygulama ana bilgisayarı.
+- **Anahtar Vault Standardı**: Web hizmetleri için sırları ve Azure Cosmos DB anahtarlarını depolamak için.
+- **Key Vault Premium**: İhraççı CA anahtarlarını barındırmak, imza hizmeti için ve uygulama özel anahtarlarının kasa konfigürasyonu ve depolanması için.
+- **Azure Cosmos DB**: Uygulama ve sertifika istekleri için veritabanı. 
+- **Uygulama Öngörüleri**: (isteğe bağlı) Web hizmeti ve uygulaması için izleme çözümü.
+- **Azure AD Uygulama Kaydı**: Örnek uygulama, hizmet ve kenar modülü için bir kayıt.
 
 Bulut hizmetleri için, hizmeti dağıtmak için kullanılan tüm ana bilgisayar adları, kaynak grupları, kaynak adları, abonelik kimlikleri ve kiracı kimlikleri belgelenmelidir. 
 
-Azure IoT Edge veya yerel IoT Edge sunucusunda:
-- **OPC kasası IoT Edge modülü**: bir fabrika ağı OPC UA genel bulma sunucusunu desteklemek için. 
+Azure IoT Edge veya yerel bir IoT Edge sunucusunda:
+- **OPC Vault IoT Edge modülü**: Bir fabrika ağını desteklemek için OPC UA Global Discovery Server. 
 
-IoT Edge cihazlarda, ana bilgisayar adları ve IP adresleri belgelenmelidir. 
+IoT Edge aygıtları için ana bilgisayar adları ve IP adresleri belgelenmelidir. 
 
-### <a name="document-the-certification-authorities-cas"></a>Sertifika yetkililerini (CA 'Lar) belgeleme
+### <a name="document-the-certification-authorities-cas"></a>Belgelendirme Yetkililerini (CA) Belgele
 
-CA hiyerarşisi belgelerinin tüm çalıştırılan CA 'Ları içermesi gerekir. Bu, hizmet tarafından yönetilmediğinde bile ilgili tüm alt CA 'Ları, üst CA 'Ları ve kök CA 'Ları içerir. Resmi belgeler yerine, tüm süre dolmayan CA sertifikalarının kapsamlı bir kümesini sağlayabilirsiniz.
-
-> [!NOTE]
-> OPC Kasası örnek uygulaması, belgeleri için hizmette kullanılan ve üretilen tüm sertifikaların indirilmesini destekler.
-
-### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>Tüm sertifika yetkililerine (CAs) verilen sertifikaları belgeleme
-
-Son 12 ayda verilen tüm sertifikaların ayrıntılı bir kümesini sağlar.
+CA hiyerarşisi belgeleri, işletilen tüm CA'ları içermelidir. Bu, hizmet tarafından yönetilmeseler bile ilgili tüm alt CA'ları, ana CA'ları ve kök CA'ları içerir. Resmi belgeler yerine, süresi dolmamış tüm CA sertifikalarının ayrıntılı bir kümesini sağlayabilirsiniz.
 
 > [!NOTE]
-> OPC Kasası örnek uygulaması, belgeleri için hizmette kullanılan ve üretilen tüm sertifikaların indirilmesini destekler.
+> OPC Vault örnek uygulaması, dokümantasyon hizmetinde kullanılan ve üretilen tüm sertifikaların indirilmelerini destekler.
 
-### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>Şifreleme anahtarlarını güvenli bir şekilde silmek için standart işletim yordamını belgeleyin
+### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>Tüm Sertifika Yetkilileri (CA) tarafından verilen sertifikaları belgeleme
 
-CA 'nın kullanım ömrü boyunca, anahtar silme yalnızca nadiren olabilir. Hiçbir kullanıcının Key Vault sertifikası silme hakkı atanmamış ve bir veren CA sertifikasını silmeye yönelik hiçbir API 'nin neden olmadığı. Sertifika yetkilisi şifreleme anahtarlarını güvenli bir şekilde silmek için el ile standart işletim yordamı yalnızca Azure portal Key Vault doğrudan erişim yoluyla kullanılabilir. Key Vault de sertifika grubunu silebilirsiniz. Hemen silme işlemini sağlamak için [Key Vault geçici silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) işlevini devre dışı bırakın.
+Son 12 ay içinde verilen tüm sertifikaların kapsamlı bir setini sağlayın.
+
+> [!NOTE]
+> OPC Vault örnek uygulaması, dokümantasyon hizmetinde kullanılan ve üretilen tüm sertifikaların indirilmelerini destekler.
+
+### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>Şifreleme anahtarlarını güvenli bir şekilde silen standart çalışma yordamını belgeleme
+
+CA'nın ömrü boyunca anahtar silme işlemi yalnızca nadiren gerçekleşebilir. Bu nedenle hiçbir kullanıcının Anahtar Kasa Sertifikası Silme hakkı yoktur ve bu nedenle Bir İhraççı CA sertifikasını silmeye açık HIÇBIR API yoktur. Sertifika yetkilisi şifreleme anahtarlarını güvenli bir şekilde silen manuel standart kullanım prosedürü, yalnızca Azure portalındaki Key Vault'a doğrudan erişerek kullanılabilir. Anahtar Kasası'ndaki sertifika grubunu da silebilirsiniz. Anında silinmesini sağlamak için Key [Vault yumuşak silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) işlevini devre dışı edin.
 
 ## <a name="certificates"></a>Sertifikalar
 
-### <a name="certificates-must-comply-with-minimum-certificate-profile"></a>Sertifikalar en düşük sertifika profiliyle uyumlu olmalıdır
+### <a name="certificates-must-comply-with-minimum-certificate-profile"></a>Sertifikalar minimum sertifika profiline uygun olmalıdır
 
-OPC kasa hizmeti, abonelere son varlık sertifikaları veren çevrimiçi bir CA 'dır. OPC Kasası mikro hizmeti bu yönergeleri varsayılan uygulamada izler.
+OPC Vault hizmeti, abonelere son varlık sertifikaları veren çevrimiçi bir CA'dır. OPC Vault microservice varsayılan uygulamada bu yönergeleri izler.
 
-- Tüm sertifikaların aşağıda belirtilen X. 509.440 alanlarını içermesi gerekir:
+- Tüm sertifikalar aşağıda belirtildiği gibi aşağıdaki X.509 alanlarını içermelidir:
   - Sürüm alanının içeriği v3 olmalıdır. 
-  - SerialNumber alanının içeriği, FIPS (Federal bilgi Işleme standartları) 140 onaylı rastgele sayı üreticisi tarafından alınan en az 8 baytlık entropi içermelidir.<br>
+  - SerialNumber alanının içeriği, FIPS (Federal Bilgi İşlem Standartları) 140 onaylı rasgele sayı üretecisinden elde edilen entropi nin en az 8 baytını içermelidir.<br>
     > [!IMPORTANT]
-    > OPC Kasası seri numarası varsayılan olarak 20 bayttır ve işletim sistemi şifreleme rastgele sayı oluşturucusından elde edilir. Rastgele sayı üreticisi, Windows cihazlarında FIPS 140 onaylı, ancak Linux üzerinde onaylanmamış bir sayıdır. Linux VM 'Leri veya Linux Docker Kapsayıcıları kullanan bir hizmet dağıtımı seçerken bunu göz önünde bulundurun. Bu, temel alınan teknoloji OpenSSL FIPS 140 onaylı değildir.
-  - Issueruniqueıd ve Subjectuniqueıd alanları mevcut olmamalıdır.
-  - Son varlık sertifikalarının, IETF RFC 5280 ' ye uygun olarak temel kısıtlamalar uzantısıyla tanımlanması gerekir.
-  - Veren CA sertifikası için pathLenConstraint alanının 0 olarak ayarlanması gerekir. 
-  - Genişletilmiş anahtar kullanımı uzantısının mevcut olması gerekir ve en düşük genişletilmiş anahtar kullanımı nesne tanımlayıcıları (OID) kümesini içermelidir. AnyExtendedKeyUsage OID (2.5.29.37.0) belirtilmemelidir. 
-  - CRL dağıtım noktası (CDP) uzantısının veren CA sertifikasında mevcut olması gerekir.<br>
+    > OPC Vault seri numarası varsayılan olarak 20 bayttır ve işletim sistemi kriptografik rasgele sayı üretecisinden elde edilir. Rasgele sayı üreteci FIPS 140 Windows cihazlarda onaylı, ancak Linux üzerinde değil. Linux VM'leri veya Linux docker kapsayıcıları kullanan ve temel teknoloji OpenSSL'nin FIPS 140 onaylı olmadığı bir hizmet dağıtımı seçerken bunu göz önünde bulundurun.
+  - VerenUniqueID ve subjectUniqueID alanları mevcut olmamalıdır.
+  - Son varlık sertifikaları, IETF RFC 5280 uyarınca temel kısıtlama uzantısı ile tanımlanmalıdır.
+  - Veren CA sertifikası için pathLenConstraint alanı 0 olarak ayarlanmalıdır. 
+  - Genişletilmiş Anahtar Kullanımı uzantısı mevcut olmalı ve genişletilmiş anahtar kullanım nesne tanımlayıcıları (OSB) en az kümesini içermelidir. AnyExtendedKeyUsage OID (2.5.29.37.0) belirtilmemelidir. 
+  - CRL Dağıtım Noktası (CDP) uzantısı İhraççı CA sertifikasında bulunmalıdır.<br>
     > [!IMPORTANT]
-    > CDP uzantısı OPC kasa CA sertifikalarında bulunur. Bununla birlikte, OPC UA cihazları CRL 'Leri dağıtmak için özel yöntemler kullanır.
-  - Yetkili bilgi erişimi uzantısının abone sertifikalarında mevcut olması gerekir.<br>
+    > CDP uzantısı OPC Vault CA sertifikalarında bulunur. Bununla birlikte, OPC UA aygıtları CRL'leri dağıtmak için özel yöntemler kullanır.
+  - Yetkili Bilgi Erişimi uzantısı abone belgelerinde bulunmalıdır.<br>
     > [!IMPORTANT]
-    > Yetkili bilgi erişimi uzantısı OPC Kasası abone sertifikalarında bulunur. Bununla birlikte, OPC UA cihazları veren CA bilgilerini dağıtmak için özel yöntemler kullanır.
-- Onaylanan Asimetrik algoritmalar, anahtar uzunlukları, karma işlevler ve doldurma modları kullanılmalıdır.
-  - Yalnızca RSA ve SHA-2 desteklenen algoritmalardır.
-  - RSA, şifreleme, anahtar değişim ve imza için kullanılabilir.
-  - RSA şifrelemesi yalnızca OAEP, RSA-KED veya RSA-PSS doldurma modlarını kullanmalıdır.
-  - 2048 bitten büyük veya buna eşit olan anahtar uzunlukları gereklidir.
-  - SHA-2 karma algoritmaları ailesini (SHA256, SHA384 ve SHA512 olur) kullanın.
-  - 20 yaşından büyük veya buna eşit bir yaşam süresine sahip RSA kök CA anahtarları 4096 bit veya daha büyük olmalıdır.
-  - RSA veren CA anahtarları en az 2048 bit olmalıdır. CA sertifikasının sona erme tarihi 2030 sonrasında, CA anahtarı 4096 bit veya daha büyük olmalıdır.
+    > Yetki Bilgilerine Erişim uzantısı OPC Vault abone belgelerinde mevcuttur. Bununla birlikte, OPC UA aygıtları İhraççı CA bilgilerini dağıtmak için özel yöntemler kullanır.
+- Onaylı asimetrik algoritmalar, anahtar uzunlukları, karma fonksiyonlar ve dolgu modları kullanılmalıdır.
+  - RSA ve SHA-2 desteklenen tek algoritmalardır.
+  - RSA şifreleme, anahtar değişimi ve imza için kullanılabilir.
+  - RSA şifreleme yalnızca OAEP, RSA-KEM veya RSA-PSS doldurma modlarını kullanmalıdır.
+  - 2048 bit'ten büyük veya eşit anahtar uzunlukları gereklidir.
+  - SHA-2 karma algoritmaailesi (SHA256, SHA384 ve SHA512) kullanın.
+  - 20 yıldan daha büyük veya eşit olan tipik bir ömür boyu 4096 bit veya daha büyük olan RSA Root CA anahtarları olmalıdır.
+  - RSA Veren CA tuşları en az 2048 bit olmalıdır. CA sertifikasının son kullanma tarihi 2030'dan sonraysa, CA anahtarı 4096 bit veya daha büyük olmalıdır.
 - Sertifika ömrü
-  - Kök CA sertifikaları: kök CA 'Lar için en fazla sertifika geçerlilik süresi 25 yıldan fazla olmamalıdır.
-  - Alt CA veya çevrimiçi veren CA sertifikaları: çevrimiçi olan ve yalnızca abone sertifikaları veren CA 'Lar için en fazla sertifika geçerlilik süresi 6 yıldan fazla olmamalıdır. Bu CA 'Lar için, ilgili özel imza anahtarı 3 yıldan daha uzun bir süre önce yeni sertifika vermek için kullanılmamalıdır.<br>
+  - Kök CA sertifikaları: Kök CA'lar için maksimum sertifika geçerlilik süresi 25 yılı geçmemelidir.
+  - Alt CA veya çevrimiçi İhraççı CA sertifikaları: Çevrimiçi olan ve yalnızca abone sertifikası veren CA'ların maksimum sertifika geçerlilik süresi 6 yılı geçmemelidir. Bu C'ler için, ilgili özel imza anahtarı yeni sertifikalar vermek için 3 yıldan uzun süre kullanılmamalıdır.<br>
     > [!IMPORTANT]
-    > Sertifikayı veren sertifika, dış kök CA 'sı olmayan varsayılan OPC Kasası mikro hizmetinde oluşturulduğu gibi, ilgili gereksinimler ve yaşam süreleri ile bir çevrimiçi alt CA gibi değerlendirilir. Varsayılan ömür, 2048 veya daha büyük bir anahtar uzunluğu ile 5 yıl olarak ayarlanır.
-  - Tüm asimetrik anahtarların en fazla 5 yıllık ömrü ve önerilen 1 yıllık ömrü olması gerekir.<br>
+    > Dış Root CA olmadan varsayılan OPC Vault microservice oluşturulan Veren sertifika, ilgili gereksinimleri ve yaşam ları ile, bir online Alt CA gibi kabul edilir. Varsayılan ömür, 2048'den büyük veya eşit bir anahtar uzunluğuyla 5 yıla ayarlanır.
+  - Tüm asimetrik anahtarlar en fazla 5 yıllık bir kullanım ömrüne ve önerilen 1 yıllık kullanım ömrüne sahip olmalıdır.<br>
     > [!IMPORTANT]
-    > Varsayılan olarak, OPC kasası ile verilen uygulama sertifikalarının yaşam sürelerinin ömrü 2 yıldır ve her yıl değiştirilmelidir. 
-  - Bir sertifika her yenilendiğinde, yeni bir anahtarla yenilenir.
-- Uygulama örneği sertifikalarındaki OPC UA 'a özgü uzantılar
-  - SubjectAltName uzantısı, uygulama URI 'sini ve ana bilgisayar adlarını içerir. Bunlara FQDN, IPv4 ve IPv6 adresleri de dahil olabilir.
-  - KeyUsage, digitalSignature, reddetme, keyEncipherment ve Dataencment öğelerini içerir.
-  - ExtendedKeyUsage, serverAuth ve clientAuth bilgilerini içerir.
-  - Authoritykeyıdentifier, imzalanmış sertifikalarda belirtilir.
+    > Varsayılan olarak, OPC Vault ile verilen başvuru sertifikalarının kullanım ömürleri 2 yıldır ve her yıl değiştirilmelidir. 
+  - Bir sertifika yenilendiğinde, yeni bir anahtarla yenilenir.
+- Uygulama örneği sertifikalarında OPC UA'ya özel uzantılar
+  - ÖzneAltName uzantısı uygulama Uri ve ana bilgisayar adlarını içerir. Bunlar FQDN, IPv4 ve IPv6 adreslerini de içerebilir.
+  - AnahtarKullanım digitalSignature, nonRepudiation, keyEncipherment ve dataEncipherment içerir.
+  - Genişletilmiş KeyUsage serverAuth ve clientAuth içerir.
+  - AuthorityKeyIdentifier imzalı sertifikalarda belirtilir.
 
-### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>CA anahtarları ve sertifikaların minimum gereksinimleri karşılaması gerekir
+### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>CA anahtarları ve sertifikaları minimum gereksinimleri karşılamalıdır
 
-- **Özel anahtarlar**: RSA anahtarları en az 2048 bit olmalıdır. CA sertifikasının sona erme tarihi 2030 sonrasında, CA anahtarı 4096 bit veya daha büyük olmalıdır.
-- **Ömür**: çevrimiçi olan ve yalnızca abone sertifikaları veren CA 'lara yönelik en fazla sertifika geçerlilik süresi 6 yıldan fazla olmamalıdır. Bu CA 'Lar için, ilgili özel imza anahtarı 3 yıldan daha uzun bir süre önce yeni sertifika vermek için kullanılmamalıdır.
+- **Özel tuşlar**: RSA tuşları en az 2048 bit olmalıdır. CA sertifikasının son kullanma tarihi 2030'dan sonraysa, CA anahtarı 4096 bit veya daha büyük olmalıdır.
+- **Ömür Süresi**: Çevrimiçi olan ve yalnızca abone sertifikası veren C'ler için maksimum sertifika geçerlilik süresi 6 yılı geçmemelidir. Bu C'ler için, ilgili özel imza anahtarı yeni sertifikalar vermek için 3 yıldan uzun süre kullanılmamalıdır.
 
-### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>CA anahtarları, donanım güvenlik modülleri kullanılarak korunur
+### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>CA tuşları Donanım Güvenlik Modülleri kullanılarak korunur
 
-Opckasa Azure Key Vault Premium kullanır ve anahtarlar FIPS 140-2 düzey 2 donanım güvenlik modülleri (HSM) tarafından korunur. 
+OpcVault Azure Key Vault Premium kullanır ve tuşlar FIPS 140-2 Düzey 2 Donanım Güvenlik Modülleri (HSM) tarafından korunur. 
 
-Key Vault kullandığı şifreleme modülleri, HSM veya yazılımın FIPS tarafından doğrulanıp onaylanmadığını belirtir. HSM korumalı olarak oluşturulan veya içeri aktarılan anahtarlar, FIPS 140-2 düzey 2 olarak doğrulanan bir HSM içinde işlenir. Yazılım korumalı olarak oluşturulan veya içeri aktarılan anahtarlar FIPS 140-2 düzey 1 ' e doğrulanan şifreleme modülleri içinde işlenir.
+Key Vault'un kullandığı şifreleme modülleri, HSM veya yazılım olsun, FIPS doğrulanır. HSM korumalı olarak oluşturulan veya içe aktarılan anahtarlar, BIR HSM içinde işlenir ve FIPS 140-2 Düzey 2'ye doğrulanır. Yazılım korumalı olarak oluşturulan veya içe aktarılan anahtarlar, FIPS 140-2 Düzey 1'e doğrulanmış şifreleme modülleri içinde işlenir.
 
-## <a name="operational-practices"></a>İşletimsel uygulamalar
+## <a name="operational-practices"></a>Operasyonel uygulamalar
 
-### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-enrollment"></a>Sertifika kaydı için standart işletimsel PKI uygulamalarını belgeleyin ve bakımını yapın
+### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-enrollment"></a>Sertifika kaydı için standart operasyonel PKI uygulamalarını belgeleme ve koruma
 
-CA 'Ların sertifika verme yöntemi (SOP 'ler belirli) için aşağıdakiler dahil olmak üzere standart işletimsel yordamları belgeleyin ve saklayın: 
-- Abonenin nasıl tanımlandığı ve kimliği doğrulanır. 
-- Sertifika isteği nasıl işlenir ve onaylanır (varsa, sertifika yenileme ve yeniden anahtarlama isteklerinin nasıl işleneceğini de içerir). 
-- Verilen sertifikalar abonelere nasıl dağıtılır. 
+Örneğin, ÖRNEĞIN CA'ların sertifikaları nasıl düzenleyene ilişkin standart çalışma prosedürlerini (SOP'leri) belgele ve koruyun: 
+- Abonenin nasıl tanımlanır ve kimlik doğrulaması yapılır. 
+- Sertifika isteğinin nasıl işlenir ve doğrulanır (varsa, sertifika yenileme ve yeniden anahtar isteklerinin nasıl işlenir olduğunu da içerir). 
+- Verilen sertifikaların abonelere nasıl dağıtıldığı. 
 
-OPC Kasası mikro hizmeti SOP, OPC Kasası [mimarisinde](overview-opc-vault-architecture.md) açıklanmıştır ve [OPC Kasası sertifika hizmetini yönetebilir](howto-opc-vault-manage.md). Uygulamalar "OPC Birleşik mimari belirtimi Bölüm 12: bulma ve küresel hizmetler" ' i izler.
+OPC Vault microservice [SOP, OPC Vault mimarisinde](overview-opc-vault-architecture.md) ve [OPC Vault sertifika hizmetinde](howto-opc-vault-manage.md)tanımlanmıştır. Uygulamalar "OPC Birleşik Mimari Belirtimi Bölüm 12: Discovery and Global Services" uygulamalarını takip eder.
 
 
-### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>Sertifika iptali için standart işletimsel PKI uygulamalarını belgeleyin ve bakımını yapın
+### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>Sertifika iptali için standart operasyonel PKI uygulamalarını belgeleme ve koruma
 
-Sertifika iptal işlemi [OPC kasa mimarisinde](overview-opc-vault-architecture.md) açıklanmıştır ve [OPC Kasası sertifika hizmetini yönetebilir](howto-opc-vault-manage.md).
+Sertifika iptal işlemi [OPC Vault mimarisinde](overview-opc-vault-architecture.md) açıklanmıştır ve [OPC Vault sertifika hizmetini yönetin.](howto-opc-vault-manage.md)
     
-### <a name="document-ca-key-generation-ceremony"></a>Belge CA anahtarı oluşturma seremonisi 
+### <a name="document-ca-key-generation-ceremony"></a>Belge CA anahtar oluşturma töreni 
 
-OPC Kasası mikro hizmetindeki veren CA anahtarı oluşturma işlemi, Azure Key Vault güvenli depolama nedeniyle basitleştirilmiştir. Daha fazla bilgi için bkz. [OPC Kasası sertifika hizmetini yönetme](howto-opc-vault-manage.md).
+Azure Key Vault'taki güvenli depolama sayesinde OPC Vault mikrohizmetindeki Veren CA anahtar üretimi basitleştirilmiştir. Daha fazla bilgi için Bkz. [OPC Vault sertifika hizmetini yönet.](howto-opc-vault-manage.md)
 
-Ancak, bir dış kök sertifika yetkilisi kullanırken, CA anahtarı oluşturma sertifikası aşağıdaki gereksinimlere uymalıdır.
+Ancak, harici bir Root sertifika yetkilisi kullanıyorsanız, CA anahtar oluşturma töreni aşağıdaki gereksinimlere uymalıdır.
 
-CA anahtarı oluşturma sertifikası, en azından aşağıdaki öğeleri içeren belgelenmiş bir betikte gerçekleştirilmelidir: 
-- Rollerin ve katılımcı sorumlulukların tanımı.
-- CA anahtar oluşturma seremonisi 'nin kullanım için onay.
-- Ceremony için gereken şifreleme donanımı ve etkinleştirme malzemeleri.
-- Donanım hazırlama (varlık/yapılandırma bilgileri güncelleştirmesi ve oturumu kapatma dahil).
-- İşletim sistemi yüklemesi.
-- CA anahtarı oluşturma sertifikası sırasında gerçekleştirilen belirli adımlar: 
-  - CA uygulaması yükleme ve yapılandırma.
-  - CA anahtarı oluşturma.
-  - CA anahtarı yedeklemesi.
-  - CA sertifika imzalama.
-  - İmzalı anahtarların hizmetin korumalı HSM 'de içeri aktarılması.
-  - CA sistemi kapanıyor.
+CA anahtar oluşturma töreni, en az aşağıdaki öğeleri içeren belgelenmiş bir komut dosyasına karşı gerçekleştirilmelidir: 
+- Rollerin tanımı ve katılımcı sorumlulukları.
+- CA anahtar oluşturma töreninin yürütülmesi için onay.
+- Tören için gerekli olan kriptografik donanım ve aktivasyon malzemeleri.
+- Donanım hazırlama (varlık/yapılandırma bilgileri güncelleştirme ve imzalama dahil).
+- İşletim sistemi kurulumu.
+- CA anahtar oluşturma töreni sırasında gerçekleştirilen belirli adımlar, örneğin: 
+  - CA uygulama yükleme ve yapılandırma.
+  - CA anahtar üretimi.
+  - CA tuşu yedekleme.
+  - CA sertifikası imzalama.
+  - Hizmetin korumalı HSM'sinde imzalı anahtarların içe aktarılır.
+  - CA sistemi kapatma.
   - Depolama için malzemelerin hazırlanması.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık OPC kasasını güvenli bir şekilde yönetmeyi öğrendiğinize göre şunları yapabilirsiniz:
+Artık OPC Vault'u güvenli bir şekilde nasıl yönetebileceğinizi öğrendiğiniz için şunları yapabilirsiniz:
 
 > [!div class="nextstepaction"]
-> [OPC kasası ile OPC UA cihazlarını güvenli hale getirme](howto-opc-vault-secure.md)
+> [OPC Vault ile Güvenli OPC UA cihazları](howto-opc-vault-secure.md)

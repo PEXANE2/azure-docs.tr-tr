@@ -1,6 +1,6 @@
 ---
-title: Tek ve havuza alınmış veritabanları için veritabanı Danışmanı performans önerileri
-description: Azure SQL veritabanı, Azure SQL veritabanı 'nda sorgu performansını iyileştirebilecek tek ve havuza alınmış veritabanları için öneriler sağlar.
+title: Tek ve havuzlu veritabanları için veritabanı danışmanı performans önerileri
+description: Azure SQL Veritabanı, Azure SQL veritabanında sorgu performansını artırabilecek tek ve birleştirilmiş veritabanları için öneriler sağlar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,111 +12,111 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: bd7473813722fd413947535413b98d493058634a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214148"
 ---
-# <a name="database-advisor-performance-recommendations-for-single-and-pooled-databases"></a>Tek ve havuza alınmış veritabanları için performans önerilerini Veritabanı Danışmanı
+# <a name="database-advisor-performance-recommendations-for-single-and-pooled-databases"></a>Tek ve havuzlu veritabanları için Veritabanı Danışmanı performans önerileri
 
-Azure SQL veritabanı öğrenir ve uygulamanızla uyum sağlar. Tek ve havuza alınmış veritabanları için SQL veritabanı, performansı en üst düzeye çıkarmanızı sağlayan özelleştirilmiş öneriler sağlayan çeşitli veritabanı danışmanlarına sahiptir. Bu veritabanı danışmanları sürekli olarak kullanım geçmişini değerlendirir ve analiz eder ve performansı artırmaya yardımcı olan iş yükü desenlerine göre öneriler sağlar.
+Azure SQL Veritabanı, uygulamanızı öğrenir ve uyum sağlar. Sql Veritabanı, tek ve birleştirilmiş veritabanları için performansı en üst düzeye çıkarmanızı sağlayan özelleştirilmiş öneriler sağlayan bir dizi veritabanı danışmanına sahiptir. Bu veritabanı danışmanları, kullanım geçmişini sürekli olarak değerlendirir ve analiz eder ve performansı artırmaya yardımcı olan iş yükü desenlerine dayalı öneriler sağlar.
 
 ## <a name="performance-overview"></a>Performansa genel bakış
 
-Performansa genel bakış, veritabanı Performanslarınızın bir özetini sağlar ve performans ayarlama ve sorun giderme konusunda size yardımcı olur.
+Performansa genel bakış veritabanı performansınızın bir özetini sağlar ve performans ayarlama ve sorun giderme konusunda size yardımcı olur.
 
-![Azure SQL veritabanı için performansa genel bakış](./media/sql-database-performance/performance-overview-annotated.png)
+![Azure SQL Veritabanı için performansa genel bakış](./media/sql-database-performance/performance-overview-annotated.png)
 
-- **Öneriler** kutucuğu, veritabanınız için ayarlama önerilerinin dökümünü sağlar (daha fazla varsa ilk üç öneri gösterilir). Bu Kutucuğa tıkladığınızda **[performans önerisi seçeneklerine](sql-database-advisor-portal.md#viewing-recommendations)** gidersiniz.
-- **Ayarlama etkinliği** kutucuğu, veritabanınız için devam eden ve tamamlanmış ayarlama eylemlerinin bir özetini sağlar ve bu sayede ayarlama etkinliğinin geçmişine hızlı bir görünüm sağlar. Bu Kutucuğa tıkladığınızda veritabanınız için tam ayarlama geçmişi görünümüne gidersiniz.
-- **Otomatik ayarlama** kutucuğu veritabanınız için **[otomatik ayarlama yapılandırmasını](sql-database-automatic-tuning-enable.md)** gösterir (veritabanınıza otomatik olarak uygulanan ayarlama seçenekleri). Bu Kutucuğa tıkladığınızda Otomasyon yapılandırma iletişim kutusu açılır.
-- **Veritabanı sorguları** kutucuğu, veritabanınızın sorgu performansının özetini gösterir (genel DTU kullanımı ve en üstteki kaynak kullanan sorgular). Bu Kutucuğa tıkladığınızda **[sorgu performansı içgörüleri](sql-database-query-performance.md)** için gidersiniz.
+- **Öneriler** döşemesi veritabanınız için atoklama önerilerinin dökümünü sağlar (daha fazla varsa en iyi üç öneri gösterilir). Bu döşemeyi tıklattığınızda Performans **[önerisi seçeneklerine](sql-database-advisor-portal.md#viewing-recommendations)** geçersiniz.
+- **Tuning etkinlik** döşemesi, veritabanınız için devam eden ve tamamlanmış atonlama eylemlerinin bir özetini sağlayarak, atoklama etkinliğinin geçmişine hızlı bir görünüm sağlar. Bu döşemeyi tıklattığınızda veritabanınızın tam tuning geçmişi görünümüne götürür.
+- **Otomatik ayar** döşemesi veritabanınızın otomatik **[ayar yapılandırmasını](sql-database-automatic-tuning-enable.md)** (veritabanınıza otomatik olarak uygulanan ayar seçenekleri) gösterir. Bu döşemeyi tıklattığınızda otomasyon yapılandırma iletişim kutusu açılır.
+- **Veritabanı sorguları döşemesi** veritabanınız için sorgu performansının özetini (genel DTU kullanımı ve en iyi kaynak tüketen sorgular) gösterir. Bu döşemeyi tıklattığınızda, **[Sorgu Performans Öngörüsüne](sql-database-query-performance.md)** geçersiniz.
 
 ## <a name="performance-recommendation-options"></a>Performans önerisi seçenekleri
 
-Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanları için kullanılabilen performans önerisi seçenekleri şunlardır:
+Azure SQL Veritabanı'nda tek ve havuza toplanan veritabanları için kullanılabilen performans önerisi seçenekleri şunlardır:
 
-| Performans önerisi | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
+| Performans önerisi | Tek veritabanı ve havuzlu veritabanı desteği | Örnek veritabanı desteği |
 | :----------------------------- | ----- | ----- |
-| **Dizin önerileri oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinlerin oluşturulmasını önerir. | Yes | Hayır |
-| **Dizin önerilerini bırakma** -benzersiz dizinler ve uzun süredir kullanılmamış dizinler dışında, yedekli ve yinelenen dizinlerin her gün kaldırılmasını önerir (> 90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Yes | Hayır |
-| **Sorgu önerilerini Parametreleştirme (Önizleme)** -sürekli olarak yeniden derlenen ancak aynı sorgu yürütme planına sahip bir veya daha fazla sorgunuz varsa, bu durumlarda zorunlu Parametreleştirme önerilir. | Yes | Hayır |
-| **Şema sorunları önerilerini düzeltme (Önizleme)** -SQL veritabanı HIZMETI, SQL veritabanınızda oluşan şema Ile ilgili SQL hatalarının sayısında bir anomali fark edildiğinde şema düzeltme için öneriler görüntülenir. Microsoft şu anda "şema sorununu çözme" önerilerini kullanımdan kaldıramamaktadır. | Yes | Hayır |
+| **Dizin önerileri oluşturma** - İş yükünüzün performansını artırabilecek dizinler oluşturulmasını önerir. | Evet | Hayır |
+| **Bırakma dizini önerileri** - Benzersiz dizinler ve uzun süre kullanılmayan dizinler (>90 gün) dışında, gereksiz ve yinelenen dizinlerin günlük olarak kaldırılmasını önerir. Bu seçeneğin bölüm değiştirme ve dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığını lütfen unutmayın. Kullanılmayan dizinlerin düşmesi Premium ve İş Açısından Kritik hizmet katmanları için desteklenmez. | Evet | Hayır |
+| **Sorgu önerilerini (önizleme) parametrenize ayırma** - Sürekli olarak yeniden derlenen ancak aynı sorgu yürütme planıyla sona erecek bir veya daha fazla sorgunuz olduğunda zorunlu parametreizasyon önerir. | Evet | Hayır |
+| **Şema sorunları önerilerini düzeltme (önizleme)** - SQL Veritabanı hizmeti, SQL veritabanınızda meydana gelen şema ile ilgili SQL hatalarının sayısında bir anormallik fark ettiğinde şema düzeltme önerileri görüntülenir. Microsoft şu anda "Şema sorununu düzelt" önerilerini küçümsüyor. | Evet | Hayır |
 
-![Azure SQL veritabanı için performans önerileri](./media/sql-database-performance/performance-recommendations-annotated.png)
+![Azure SQL Veritabanı için performans önerileri](./media/sql-database-performance/performance-recommendations-annotated.png)
 
-Performans önerilerini uygulamak için bkz. [öneri uygulama](sql-database-advisor-portal.md#applying-recommendations). Önerilerin durumunu görüntülemek için bkz. [izleme işlemleri](sql-database-advisor-portal.md#monitoring-operations).
+Performans önerilerini uygulamak [için, bkz.](sql-database-advisor-portal.md#applying-recommendations) Önerilerin durumunu görüntülemek için izleme [işlemleri](sql-database-advisor-portal.md#monitoring-operations)bölümüne bakın.
 
-Geçmişte uygulanan ayarlama eylemlerinin tamamlanma geçmişini de bulabilirsiniz.
+Ayrıca, geçmişte uygulanan atokalma eylemlerinin tam geçmişini de bulabilirsiniz.
 
 ## <a name="create-index-recommendations"></a>Dizin önerileri oluşturma
 
-SQL veritabanı, çalıştıran sorguları sürekli izler ve performansı iyileştirebilecek dizinleri tanımlar. Belirli bir dizinin eksik olduğu güvenden sonra yeni bir **Dizin oluşturma** önerisi oluşturulur.
+SQL Veritabanı sürekli olarak çalışan sorguları izler ve performansı artırabilecek dizinleri tanımlar. Belirli bir dizinin eksik olduğuna dair yeterli güven olduktan sonra, yeni bir **Create dizin** önerisi oluşturulur.
 
-Azure SQL veritabanı, dizinin bir süre içinde dolaştıracağından emin olarak güven oluşturur. Tahmini performans kazanmasına bağlı olarak, öneriler yüksek, orta veya düşük olarak kategorize edilir.
+Azure SQL Veritabanı, dizinin zaman içinde getireceği performans kazancını tahmin ederek güven oluşturur. Tahmini performans kazancına bağlı olarak, öneriler yüksek, orta veya düşük olarak sınıflandırılır.
 
-Öneriler kullanılarak oluşturulan dizinler her zaman otomatik olarak oluşturulan dizinler olarak işaretlenir. [Sys. Indexes görünümüne](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)bakarak hangi dizinlerin otomatik olarak oluşturulduğunu görebilirsiniz. Otomatik oluşturulan dizinler DEĞIŞTIRME/yeniden adlandırma komutlarını engellemez.
+Öneriler kullanılarak oluşturulan dizinler her zaman otomatik oluşturulan dizinler olarak işaretlenir. [Sys.indexs görünümüne](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)bakarak hangi dizinlerin otomatik olarak oluşturulduğunu görebilirsiniz. Otomatik oluşturulan dizinler ALTER/RENAME komutlarını engellemez.
 
-Otomatik olarak oluşturulmuş bir dizine sahip sütunu bırakmaya çalışırsanız, komut geçer. Otomatik oluşturulan dizin, komutla birlikte bırakılır. Normal dizinler, dizini oluşturulmuş sütunlarda ALTER/RENAME komutunu engeller.
+Üzerinde otomatik olarak oluşturulmuş dizin olan sütunu düşürmeye çalışırsanız, komut geçer. Otomatik oluşturulan dizin komutu ile de bırakılır. Düzenli dizinler dizine eklenmiş sütunlarda ALTER/RENAME komutunu engeller.
 
-Dizin oluşturma önerisi uygulandıktan sonra Azure SQL veritabanı, sorguların performansını taban çizgisi performansına göre karşılaştırır. Yeni Dizin performansı artırdıysa, öneri başarılı olarak işaretlenir ve etki raporu kullanılabilir. Dizin performansı iyileştirmediyse, otomatik olarak geri döndürülür. SQL veritabanı, önerilerin veritabanı performansını iyileştirdiğinden emin olmak için bu işlemi kullanır.
+Create index önerisi uygulandıktan sonra, Azure SQL Veritabanı sorguların performansını temel performansla karşılaştırır. Yeni dizin performansı artırdıysa, öneri başarılı olarak işaretlenir ve etki raporu kullanılabilir. Dizin performansı artırmadıysa, otomatik olarak döndürülebilir. SQL Veritabanı, önerilerin veritabanı performansını artırmasını sağlamak için bu işlemi kullanır.
 
-Herhangi bir **Dizin oluşturma** önerisi, bir veritabanının veya havuzun kaynak kullanımı yüksek olduğunda öneriyi uygulamaya izin veren bir geri dönüş ilkesine sahiptir. Geri ödeme ilkesi, hesap CPU 'SU, veri GÇ, günlük GÇ ve kullanılabilir depolama alanına girer.
+Herhangi bir **create index** önerisi, bir veritabanı veya havuzun kaynak kullanımı yüksekse, önerinin uygulanmasına izin vermeyen bir geri leme ilkesine sahiptir. Geri çekme ilkesi CPU, Veri IO, Log IO ve kullanılabilir depolamayı dikkate alır.
 
-CPU, veri GÇ veya günlük GÇ, önceki 30 dakika içinde %80 ' den yüksekse, dizin oluşturma önerisi ertelenir. Kullanılabilir depolama alanı dizin oluşturulduktan sonra %10 ' un altında olursa öneri bir hata durumuna geçer. Birkaç gün sonra otomatik ayarlama, dizinin faydalı olacağını düşünmeye devam ediyorsa, işlem yeniden başlatılır.
+CPU, veri IO veya günlük IO önceki 30 dakika içinde% 80'den yüksekse, oluşturma dizin önerisi ertelenir. Dizin oluşturulduktan sonra kullanılabilir depolama alanı %10'un altında olacaksa, öneri bir hata durumuna geçer. Birkaç gün sonra otomatik ayar hala dizinin yararlı olacağına inanıyorsa, işlem yeniden başlar.
 
-Bu işlem, dizin oluşturmak için yeterli kullanılabilir depolama alanı olana kadar veya dizin artık yararlı olarak görülene kadar yinelenir.
+Bu işlem, bir dizin oluşturmak için yeterli kullanılabilir depolama alanı olana veya dizin artık yararlı olarak görülmeyene kadar yinelenir.
 
-## <a name="drop-index-recommendations"></a>Dizin önerilerini bırak
+## <a name="drop-index-recommendations"></a>Drop index önerileri
 
-Eksik dizinlerin algılanmasının yanı sıra SQL veritabanı, mevcut dizinlerin performansını sürekli olarak analiz eder. Bir dizin kullanılmıyorsa, Azure SQL veritabanı bunu bırakmayı önerir. İki durumda da dizin bırakma önerilir:
+SQL Veritabanı, eksik dizinleri algılamanın yanı sıra varolan dizinlerin performansını sürekli olarak analiz eder. Bir dizin kullanılmazsa, Azure SQL Veritabanı dizin bırakmanızı önerir. Bir dizin bırakarak iki durumda önerilir:
 
-- Dizin, başka bir dizinin yinelemesi (aynı dizinli ve dahil edilen sütun, Bölüm şeması ve filtreler).
-- Dizin, uzun süreli bir süre (93 gün) için kullanılmadı.
+- Dizin başka bir dizin (aynı dizinlenmiş ve sütun, bölüm şeması ve filtreler) bir kopyasıdır.
+- Dizin uzun bir süre (93 gün) kullanılmamıştır.
 
-Bırakma dizini önerileri, Ayrıca, uygulamadan sonra doğrulama aracılığıyla da gider. Performans artdığı takdirde, etki raporu kullanılabilir. Performans düşer ise, öneri geri döndürülür.
+Drop index önerileri de uygulamadan sonra doğrulama geçer. Performans iyileşirse, etki raporu kullanılabilir. Performans bozulursa, öneri geri döndürülür.
 
-## <a name="parameterize-queries-recommendations-preview"></a>Sorgu önerilerini Parametreleştirme (Önizleme)
+## <a name="parameterize-queries-recommendations-preview"></a>Sorgu önerilerini parametreize et (önizleme)
 
-*Parametreli* sorgu önerileri, sürekli olarak yeniden derlenmesi gereken ancak aynı sorgu yürütme planıyla biten bir veya daha fazla sorgunuz olduğunda görünür. Bu koşul zorunlu Parametreleştirme uygulamak için bir fırsat oluşturur. Zorunlu Parametreleştirme, daha sonra sorgu planlarının önbelleğe alınıp daha sonra yeniden kullanılmasını sağlar ve bu da performansı artırır ve kaynak kullanımını azaltır.
+*Parameterize sorguları* önerileri, sürekli olarak yeniden derlenen ancak aynı sorgu yürütme planıyla sona erecek bir veya daha fazla sorgunuz olduğunda görüntülenir. Bu durum, zorunlu parametrelendirme uygulamak için bir fırsat oluşturur. Zorunlu parametreleştirme, sırayla, sorgu planlarının gelecekte önbelleğe alınmasına ve yeniden kullanılmasına izin verir, bu da performansı artırır ve kaynak kullanımını azaltır.
 
-Başlangıçta SQL Server karşı verilen her sorgunun bir yürütme planı oluşturmak için derlenmesi gerekir. Oluşturulan her plan plan önbelleğine eklenir. Aynı sorgunun sonraki yürütmeleri bu planı önbellekten yeniden kullanabilir ve bu da ek derleme ihtiyacını ortadan kaldırır.
+Bir yürütme planı oluşturmak için başlangıçta SQL Server'a karşı verilen her sorgunun derlenmesi gerekir. Oluşturulan her plan, plan önbelleğine eklenir. Aynı sorgunun sonraki yürütmeleri, ek derleme gereksinimini ortadan kaldıran önbellekten bu planı yeniden kullanabilir.
 
-Parametreli olmayan değerlere sahip sorgular, parametreli olmayan değerler farklı olan her seferinde yürütme planı yeniden derlendiğinden performans yüküne neden olabilir. Çoğu durumda, farklı parametre değerlerine sahip aynı sorgular aynı yürütme planlarını oluşturur. Ancak, bu planlar hala plan önbelleğine ayrı olarak eklenir.
+Yürütme planı parametresiz değerler her farklı olduğunda yeniden derlenişolduğundan, parametrelendirilmeyen değerlere sahip sorgular performans ek yüküne neden olabilir. Çoğu durumda, farklı parametre değerlerine sahip aynı sorgular aynı yürütme planlarını oluşturur. Ancak bu planlar yine de plan önbelleğine ayrı olarak eklenir.
 
-Yürütme planlarını yeniden derleme işlemi veritabanı kaynaklarını kullanır, sorgu süresi süresini artırır ve plan önbelleğinin dışına taşıyor. Bu olaylar, sırayla önbellekten çıkarılmasına neden olur. Bu SQL Server davranışı, veritabanında zorlanan Parametreleştirme seçeneği ayarlanarak değiştirilebilir.
+Yürütme planlarını yeniden derleme işlemi veritabanı kaynaklarını kullanır, sorgu süresini artırır ve plan önbelleğini taşar. Bu olaylar da planların önbellekten tahliye edilmesine neden olur. Bu SQL Server davranışı veritabanında zorunlu parametreleme seçeneği ayarlayarak değiştirilebilir.
 
-Bu önerinin etkisini tahmin etmenize yardımcı olmak için, gerçek CPU kullanımı ve öngörülen CPU kullanımı (öneri uygulanmış gibi) arasında bir karşılaştırma sağlanır. Bu öneri, CPU tasarrufu elde etmenize yardımcı olabilir. Ayrıca, plan önbelleğinin sorgu süresini ve ek yükünü azaltmanıza yardımcı olabilir. Bu, planlardan daha fazla planın önbellekte kalabileceği ve yeniden kullanılması anlamına gelir. **Uygula** komutunu seçerek bu öneriyi hızlıca uygulayabilirsiniz.
+Bu önerinin etkisini tahmin etmek için, gerçek CPU kullanımı ile öngörülen CPU kullanımı (öneri uygulanmış gibi) arasında bir karşılaştırma sağlanır. Bu öneri, CPU tasarrufları elde yardımcı olabilir. Ayrıca, plan önbelleği için sorgu süresini ve ek yükü azaltmanıza da yardımcı olabilir, bu da planların daha fazlasının önbellekte kalıp yeniden kullanılabildiği anlamına gelir. Bu öneriyi **Uygula** komutunu seçerek hızlı bir şekilde uygulayabilirsiniz.
 
-Bu öneriyi uyguladıktan sonra, veritabanınızda dakika içinde zorunlu Parametreleştirme etkinleştirilir. Yaklaşık 24 saat süren izleme işlemini başlatır. Bu dönemden sonra doğrulama raporunu görebilirsiniz. Bu rapor, önerinin uygulandıktan önce ve sonra veritabanınızın CPU kullanımını 24 saat gösterir. SQL Veritabanı Danışmanı, performans gerileme algılanırsa uygulanan öneriyi otomatik olarak geri alan bir güvenlik mekanizmasına sahiptir.
+Bu öneriyi uyguladıktan sonra, veritabanınızda birkaç dakika içinde zorunlu parametreizasyon sağlar. Yaklaşık 24 saat süren izleme işlemini başlatır. Bu dönemden sonra doğrulama raporunu görebilirsiniz. Bu rapor, veritabanınızın cpu kullanımını önerinin uygulanmasından 24 saat önce ve sonra gösterir. SQL Database Advisor, performans regresyonu algılanırsa uygulanan öneriyi otomatik olarak geri alan bir güvenlik mekanizmasına sahiptir.
 
-## <a name="fix-schema-issues-recommendations-preview"></a>Şema sorunları önerilerini çözme (Önizleme)
+## <a name="fix-schema-issues-recommendations-preview"></a>Şema sorunları önerilerini düzeltme (önizleme)
 
 > [!IMPORTANT]
-> Microsoft şu anda "şema sorununu çözme" önerilerini kullanımdan kaldıramamaktadır. Daha önce bahsedilen "şema sorununu çözme" önerilerini içeren şema sorunları da dahil olmak üzere, veritabanı performans sorunlarınızı izlemek için [akıllı içgörüler](sql-database-intelligent-insights.md) kullanmanızı öneririz.
+> Microsoft şu anda "Şema sorununu düzelt" önerilerini küçümsüyor. Veritabanı performans sorunlarınızı izlemek için [Intelligent Insights'ı](sql-database-intelligent-insights.md) kullanmanızı öneririz, buna daha önce "Şema sorununu düzelt" önerilerinin kapsadığı şema sorunları da dahil.
 
-SQL veritabanı hizmeti, SQL veritabanınızda oluşan şema ile ilgili SQL hatalarının sayısında bir anomali fark edildiğinde, **şema sorunları önerilerini düzeltir** . Bu öneri genellikle veritabanınız bir saat içinde birden fazla şemaya ilişkin hatayla (geçersiz sütun adı, geçersiz nesne adı vb.) karşılaştığında görüntülenir.
+SQL Veritabanı hizmeti, SQL veritabanınızda meydana gelen şema ile ilgili SQL hatalarının sayısında bir anormallik fark ettiğinde **şema sorunlarını düzeltme** önerileri görüntülenir. Bu öneri genellikle veritabanınız şema ile ilgili birden çok hatayla (geçersiz sütun adı, geçersiz nesne adı vb.) bir saat içinde karşılaştığında görünür.
 
-"Şema sorunları" SQL Server bir sözdizimi hataları sınıfıdır. SQL sorgusunun tanımı ve veritabanı şemasının tanımı hizalanmazsa bunlar oluşur. Örneğin, sorgu tarafından beklenen sütunlardan biri hedef tabloda eksik olabilir veya bunun tersi de geçerlidir.
+"Şema sorunları" SQL Server'daki sözdizimi hataları sınıfıdır. Bunlar, SQL sorgusunun tanımı ve veritabanı şemasının tanımı hizalanmadığında oluşur. Örneğin, sorgu tarafından beklenen sütunlardan biri hedef tabloda eksik veya tam tersi olabilir.
 
-Azure SQL veritabanı hizmeti, SQL veritabanınızda oluşan şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde "şema sorununu çözme" önerisi görüntülenir. Aşağıdaki tabloda, şema sorunlarıyla ilgili hatalar gösterilmektedir:
+"Şema sorununu düzelt" önerisi, Azure SQL Veritabanı hizmeti, SQL veritabanınızda meydana gelen şema ile ilgili SQL hatalarının sayısında bir anormallik fark ettiğinde görüntülenir. Aşağıdaki tabloşema sorunları ile ilgili hataları gösterir:
 
 | SQL hata kodu | İleti |
 | --- | --- |
-| 201 |' ' Yordamı veya işlevi, sağlanmamış *' ' parametresini bekliyor*. |
-| 207 |Geçersiz sütun adı ' * '. |
-| 208 |Geçersiz nesne adı ' * '. |
-| 213 |Girilen değerlerin sütun adı veya numarası tablo tanımıyla eşleşmiyor. |
-| 2812 |' * ' Saklı yordamı bulunamadı. |
-| 8144 |Yordam veya işlev *, çok fazla sayıda bağımsız değişken belirtti. |
+| 201 |Yordam veya işlev '*' ' parametre bekliyor '*', hangi verilmedi. |
+| 207 |Geçersiz sütun adı '*'. |
+| 208 |Geçersiz nesne adı '*'. |
+| 213 |Sütun adı veya verilen değerlerin sayısı tablo tanımıyla eşleşmiyor. |
+| 2812 |Depolanan yordam '*' bulamadı. |
+| 8144 |Yordam veya işlev * çok fazla bağımsız değişken belirtilmiştir. |
 
 ## <a name="custom-applications"></a>Özel uygulamalar
 
-Geliştiriciler, Azure SQL veritabanı için performans önerilerini kullanarak özel uygulamalar geliştirmeyi düşünebilirler. Bir veritabanı için Portalda listelenen tüm önerilere [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API aracılığıyla erişilebilir.
+Geliştiriciler, Azure SQL Veritabanı için performans önerilerini kullanarak özel uygulamalar geliştirmeyi düşünebilir. Bir veritabanı için portalda listelenen tüm [önerilere Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API üzerinden erişilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Veritabanı dizinlerinin ve sorgu yürütme planlarının otomatik olarak ayarlanması hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı otomatik ayarlama](sql-database-automatic-tuning.md).
-- Performans sorunlarının otomatik tanılama ve kök neden analizine sahip veritabanı performansını otomatik olarak izleme hakkında daha fazla bilgi için bkz. [Azure SQL akıllı içgörüler](sql-database-intelligent-insights.md).
-- En iyi sorguların performans etkisini öğrenmek ve görüntülemek için bkz. [sorgu Performans öngörüleri](sql-database-query-performance.md) .
+- Veritabanı dizinlerinin ve sorgu yürütme planlarının otomatik olarak ayarlanması hakkında daha fazla bilgi için [Azure SQL Veritabanı otomatik ayarını](sql-database-automatic-tuning.md)görün.
+- Otomatik tanılama ve performans sorunlarının kök neden analiziyle veritabanı performansını otomatik olarak izleme hakkında daha fazla bilgi için [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md)bölümüne bakın.
+- En iyi sorgularınızın performans etkisini öğrenmek ve görüntülemek için [Sorgu Performansı Öngörüleri'ne](sql-database-query-performance.md) bakın.

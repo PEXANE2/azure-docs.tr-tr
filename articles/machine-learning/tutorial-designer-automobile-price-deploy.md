@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: aeccd604a4dae3b2ca83f5b599d9a6857acee34a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c3ca37fd47b6551a95f9a491053ec7863acd1eeb
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037188"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389401"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Öğretici: Tasarımcı ile bir makine öğrenme modeli dağıtmak (önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -57,6 +57,8 @@ Ardışık sisteminizi dağıtmak için önce eğitim ardışık hattını gerç
     >
 
 1. **Gönder'i**seçin ve birinci bölümde kullandığınız aynı işlem hedefini ve denemeyi kullanın.
+
+    İlk çalıştırma ysa, ardışık alanınızın çalışmasını tamamlaması 20 dakika kadar sürebilir. Varsayılan işlem ayarlarının en az düğüm boyutu 0'dır, bu da tasarımcının boşta kaldıktan sonra kaynak ayırması gerektiği anlamına gelir. Yinelenen ardışık işlem çalışır işlem kaynakları zaten tahsis olduğundan daha az zaman alacaktır. Ayrıca, tasarımcı verimliliği daha da artırmak için her modül için önbelleğe alınmış sonuçlar kullanır.
 
 1. **Dağıt**'ı seçin.
 

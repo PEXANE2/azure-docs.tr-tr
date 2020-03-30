@@ -1,34 +1,34 @@
 ---
-title: Azure Veri Gezgini Python kitaplığını kullanarak verileri alma
-description: Bu makalede, Python kullanarak verileri Azure Veri Gezgini 'a alma (yükleme) hakkında bilgi edineceksiniz.
+title: Azure Veri Gezgini Python kitaplığını kullanarak veri alma
+description: Bu makalede, Python'u kullanarak Azure Veri Gezgini'ne nasıl veri öttürecek (yüklenir) öğrenirsiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 28151476ce96fabc92e04078396119d0eb8c2f17
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251732"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389367"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Azure Veri Gezgini Python kitaplığını kullanarak verileri alma
+# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Azure Veri Gezgini Python kitaplığını kullanarak veri alma
 
-Bu makalede, Azure Veri Gezgini Python kitaplığını kullanarak veri alırsınız. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini Python için iki istemci kitaplığı sağlar: [alma kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) ve [veri kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Bu kitaplıklar, verileri bir kümeye alma veya yükleme, kodunuzun verilerini sorgulama imkanı sağlar.
+Bu makalede, Azure Veri Gezgini Python kitaplığını kullanarak veri yutabilirsiniz. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini Python için iki istemci kitaplığı sağlar: [alma kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) ve [veri kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Bu kitaplıklar, verileri bir kümeye almanızı veya yüklemenizi ve kodunuzdaki verileri sorgulamanızı sağlar.
 
-İlk olarak, bir kümede tablo ve veri eşlemesi oluşturun. Ardından veri alımını kümenin kuyruğuna ekler ve sonuçları doğrularsınız.
+İlk olarak, bir kümede bir tablo ve veri eşleme oluşturun. Ardından veri alımını kümenin kuyruğuna ekler ve sonuçları doğrularsınız.
 
-Bu makale bir [Azure Not defteri](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)olarak da kullanılabilir.
+Bu makale, Azure [Not Defteri](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)olarak da kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Bir küme ve veritabanı](create-cluster-database-portal.md).
+* [Bir küme ve veritabanı.](create-cluster-database-portal.md)
 
 ## <a name="install-the-data-and-ingest-libraries"></a>Veri ve alma kitaplarını yükleme
 
@@ -41,7 +41,7 @@ pip install azure-kusto-ingest
 
 ## <a name="add-import-statements-and-constants"></a>İçeri aktarma deyimlerini ve sabitlerini ekleme
 
-Azure-kusto-Data sınıfından sınıfları içeri aktarın.
+Azure-kusto-verilerinden sınıfları içe aktarın.
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
@@ -70,7 +70,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Şimdi bağlantı dizesini hazırlayın. Bu örnekte kümeye erişmek için cihaz kimlik doğrulaması kullanılır. [AAD uygulama sertifikası](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [AAD uygulama anahtarı](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)ve [AAD Kullanıcı ve parolasını](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)da kullanabilirsiniz.
+Şimdi bağlantı dizesini hazırlayın. Bu örnekte kümeye erişmek için cihaz kimlik doğrulaması kullanılır. Ayrıca [AAD uygulama sertifikası,](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24) [AAD uygulama anahtarı](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)ve [AAD kullanıcı ve şifre](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)kullanabilirsiniz.
 
 Sonraki bir adımda hedef tabloyu ve eşlemeyi oluşturursunuz.
 
@@ -103,7 +103,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
     CONTAINER + "/" + FILE_PATH + SAS_TOKEN
 ```
 
-## <a name="create-a-table-on-your-cluster"></a>Kümenizde tablo oluşturma
+## <a name="create-a-table-on-your-cluster"></a>Kümenizde bir tablo oluşturma
 
 StormEvents.csv dosyasındaki verilerin şemasıyla eşleşen bir tablo oluşturun. Bu kod çalıştırıldığında, şuna benzer bir ileti döndürür: *Oturum açmak için web tarayıcısını kullanarak https://microsoft.com/devicelogin sayfasını açın ve kimliği doğrulamak için F3W4VWZDM kodunu girin*. Adımları izleyerek oturum açın, sonra da dönüp bir sonraki kod bloğunu çalıştırın. Bağlantı kuran sonraki kod blokları için yeniden oturum açmak gerekir.
 
@@ -136,7 +136,7 @@ Blob depolamadan verileri çekmek ve bu verileri Azure Veri Gezgini'ne almak iç
 INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv,
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.CSV,
                                            mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
@@ -146,7 +146,7 @@ INGESTION_CLIENT.ingest_from_blob(
 print('Done queuing up ingestion with Azure Data Explorer')
 ```
 
-## <a name="query-data-that-was-ingested-into-the-table"></a>Tabloya alınan verileri sorgulama
+## <a name="query-data-that-was-ingested-into-the-table"></a>Tabloya yutulan verileri sorgula
 
 Kuyruğa eklenen veri alımının, verileri Azure Veri Gezgini'ne alma ve yükleme işlemini zamanlaması için beş ile on dakika arasında bekleyin. Ardından aşağıdaki kodu çalıştırarak StormEvents tablosundaki kayıtların sayısını alın.
 
@@ -160,7 +160,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="run-troubleshooting-queries"></a>Sorun giderme sorguları çalıştırma
 
-[https://dataexplorer.azure.com](https://dataexplorer.azure.com) adresinde oturum açın ve kümenize bağlanın. Son dört saatte hiç veri alımı hatası olup olmadığını görmek için veritabanınızda aşağıdaki komutu çalıştırın. Çalıştırmadan önce veritabanı adını değiştirin.
+Oturum açın [https://dataexplorer.azure.com](https://dataexplorer.azure.com) ve kümenize bağlanın. Son dört saatte hiç veri alımı hatası olup olmadığını görmek için veritabanınızda aşağıdaki komutu çalıştırın. Çalıştırmadan önce veritabanı adını değiştirin.
 
 ```Kusto
 .show ingestion failures
@@ -177,7 +177,7 @@ Son dört saatteki tüm veri alım işlemlerinin durumunu görüntülemek için 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer makalelerimizi izlemeyi planlıyorsanız oluşturduğunuz kaynakları saklayın. Aksi takdirde, veritabanınızda aşağıdaki komutu çalıştırarak StormEvents tablosunu temizleyin.
+Diğer makalelerimizi izlemeyi planlıyorsanız, oluşturduğunuz kaynakları koruyun. Aksi takdirde, veritabanınızda aşağıdaki komutu çalıştırarak StormEvents tablosunu temizleyin.
 
 ```Kusto
 .drop table StormEvents
@@ -185,4 +185,4 @@ Diğer makalelerimizi izlemeyi planlıyorsanız oluşturduğunuz kaynakları sak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Python kullanarak verileri sorgulama](python-query-data.md)
+* [Python kullanarak verileri sorgula](python-query-data.md)

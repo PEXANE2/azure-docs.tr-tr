@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage 1. veri kopyalama
-description: Azure Data Factory kullanarak Data Lake Store veri kopyalama hakkında bilgi edinin
+title: Azure Veri Gölü Depolama Gen1'e ve bu verilerden kopyalama
+description: Azure Veri Fabrikası'nı kullanarak Veri Gölü Deposu'na veri kopyalama yı ve bunları nasıl kopyalayacağım
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,90 +13,90 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281606"
 ---
-# <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory kullanarak Data Lake Storage 1. veri kopyalama
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Veri Fabrikası'nı kullanarak Verileri Veri Gölü Depolama Gen1'e ve
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-azure-datalake-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, [v2 'de Azure Data Lake Storage 1. Bağlayıcısı](../connector-azure-data-lake-store.md)' na bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki Azure Veri Gölü Depolama Gen1 bağlayıcısına](../connector-azure-data-lake-store.md)bakın.
 
-Bu makalede, verileri Azure Data Lake Storage 1. 'ye taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır (daha önce Azure Data Lake Store olarak bilinir). [Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde, kopyalama etkinliğiyle veri hareketine genel bir bakış için oluşturulur.
+Bu makalede, verileri Azure Veri Gölü Deposu Gen1'e (daha önce Azure Veri Gölü Deposu olarak da bilinir) taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. [Veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesi, Kopyalama Etkinliği ile veri hareketine genel bir bakış üzerine inşa edin.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
-**Azure Data Lake Store** verileri aşağıdaki veri depolarına kopyalayabilirsiniz:
+Azure Veri **Gölü Deposu'ndaki** verileri aşağıdaki veri depolarına kopyalayabilirsiniz:
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-**Azure Data Lake Store için**aşağıdaki veri depolarından veri kopyalayabilirsiniz:
+Aşağıdaki veri mağazalarından Azure **Veri Gölü Deposu'na**veri kopyalayabilirsiniz:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
-> Kopyalama etkinliğine sahip bir işlem hattı oluşturmadan önce bir Data Lake Store hesabı oluşturun. Daha fazla bilgi için bkz. [Azure Data Lake Store kullanmaya başlama](../../data-lake-store/data-lake-store-get-started-portal.md).
+> Kopyalama Etkinliği ile bir ardışık hatlar oluşturmadan önce bir Veri Gölü Deposu hesabı oluşturun. Daha fazla bilgi için bkz: [Azure Veri Gölü Deposu'na başlayın.](../../data-lake-store/data-lake-store-get-started-portal.md)
 
 ## <a name="supported-authentication-types"></a>Desteklenen kimlik doğrulama türleri
-Data Lake Store Bağlayıcısı bu kimlik doğrulama türlerini destekler:
+Veri Gölü Deposu bağlayıcısı şu kimlik doğrulama türlerini destekler:
 * Hizmet sorumlusu kimlik doğrulaması
-* Kullanıcı kimlik bilgileri (OAuth) kimlik doğrulaması
+* Kullanıcı kimlik bilgisi (OAuth) kimlik doğrulaması
 
-Özellikle zamanlanmış bir veri kopyası için hizmet sorumlusu kimlik doğrulaması kullanmanızı öneririz. Belirteç süre sonu davranışı, Kullanıcı kimlik doğrulaması kimlik doğrulamasıyla oluşabilir. Yapılandırma ayrıntıları için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü.
+Özellikle zamanlanmış bir veri kopyası için hizmet temel kimlik doğrulaması kullanmanızı öneririz. Kullanıcı kimlik bilgisi kimlik doğrulaması ile belirteç sona erme davranışı oluşabilir. Yapılandırma ayrıntıları için [Bağlantılı hizmet özellikleri](#linked-service-properties) bölümüne bakın.
 
-## <a name="get-started"></a>başlarken
-Farklı araçlar/API 'Ler kullanarak bir Azure Data Lake Store veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
+## <a name="get-started"></a>Kullanmaya başlayın
+Farklı araçlar/API'ler kullanarak verileri Azure Veri Gölü Deposu'na/ondan aktaran bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz.
 
-Verileri kopyalamak için bir işlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik bir öğretici için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
+Verileri kopyalamak için bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Kopya Sihirbazı'nı kullanarak bir ardışık yol oluşturma öğreticisi için [Bkz. Öğretici: Kopya Sihirbazı'nı kullanarak bir ardışık kaynak oluştur.](data-factory-copy-data-wizard-tutorial.md)
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın.
 
-Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Bir **Veri Fabrikası**oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir.
-2. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun. Örneğin, bir Azure Blob depolamadan Azure Data Lake Store veri kopyalıyorsanız, Azure depolama hesabınızı ve Azure Data Lake deponuzu veri fabrikanıza bağlamak için iki bağlı hizmet oluşturursunuz. Azure Data Lake Store özgü bağlı hizmet özellikleri için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda bahsedilen örnekte, blob kapsayıcısını ve girdi verilerini içeren klasörü belirtmek için bir veri kümesi oluşturursunuz. Ve, blob depolamadan kopyalanmış verileri tutan Data Lake deposundaki klasör ve dosya yolunu belirtmek için başka bir veri kümesi oluşturursunuz. Azure Data Lake Store özgü veri kümesi özellikleri için bkz. [veri kümesi özellikleri](#dataset-properties) bölümü.
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. Daha önce bahsedilen örnekte, BlobSource değerini kaynak olarak ve AzureDataLakeStoreSink olarak kopyalama etkinliği için havuz olarak kullanırsınız. Benzer şekilde, Azure Data Lake Store 'den Azure Blob depolamaya kopyalama yapıyorsanız kopyalama etkinliğinde AzureDataLakeStoreSource ve BlobSink kullanın. Azure Data Lake Store özgü kopyalama etkinliği özellikleri için bkz. [kopyalama etkinliği özellikleri](#copy-activity-properties) bölümü. Bir veri deposunu kaynak veya havuz olarak kullanma hakkında ayrıntılı bilgi için, veri deponuzdaki önceki bölümde yer alan bağlantıya tıklayın.
+1. Bir **veri fabrikası**oluşturun. Bir veri fabrikası bir veya daha fazla ardışık hat lar içerebilir.
+2. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun. Örneğin, bir Azure blob deposundan bir Azure Veri Gölü Mağazası'na veri kopyalıyorsanız, Azure depolama hesabınızı ve Azure Veri Gölü mağazanızı veri fabrikanıza bağlamak için iki bağlantılı hizmet oluşturursunuz. Azure Veri Gölü Deposu'na özgü bağlantılı hizmet özellikleri için [bağlantılı hizmet özellikleri](#linked-service-properties) bölümüne bakın.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda belirtilen örnekte, giriş verilerini içeren blob kapsayıcısını ve klasörünü belirtmek için bir veri kümesi oluşturursunuz. Ayrıca, veri gölü deposunda blob depolamadan kopyalanan verileri tutan klasör ve dosya yolunu belirtmek için başka bir veri kümesi oluşturursunuz. Azure Veri Gölü Deposu'na özgü veri kümesi özellikleri için [bkz.](#dataset-properties)
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.** Daha önce bahsedilen örnekte, BlobSource'u kaynak olarak, AzureDataLakeStoreSink'i ise kopyalama etkinliği için lavabo olarak kullanırsınız. Benzer şekilde, Azure Veri Gölü Deposu'ndan Azure Blob Depolama'ya kopyalıyorsanız, kopyalama etkinliğinde AzureDataLakeStoreSource ve BlobSink'i kullanırsınız. Azure Veri Gölü Deposu'na özgü kopyalama etkinliği özellikleri için [kopyalama etkinlik özellikleri](#copy-activity-properties) bölümüne bakın. Kaynak veya lavabo olarak veri deposunun nasıl kullanılacağı yla ilgili ayrıntılar için, veri deponuzun önceki bölümündeki bağlantıyı tıklatın.
 
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız. Azure Data Lake Store veri kopyalamak için kullanılan Data Factory varlıkların JSON tanımlarına sahip örnekler için, bu makalenin [JSON örnekleri](#json-examples-for-copying-data-to-and-from-data-lake-store) bölümüne bakın.
+Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız. Azure Veri Gölü Deposu'na/Azure Veri Gölü Deposu'na/verilerinden veri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı örnekler için bu makalenin [JSON örnekleri](#json-examples-for-copying-data-to-and-from-data-lake-store) bölümüne bakın.
 
-Aşağıdaki bölümler Data Lake Store özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler, Veri Gölü Deposu'na özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
-Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Data Lake Store verilerinizi veri fabrikanıza bağlamak için **AzureDataLakeStore** türünde bağlı bir hizmet oluşturursunuz. Aşağıdaki tabloda Data Lake Store bağlı hizmetlere özgü JSON öğeleri açıklanmaktadır. Hizmet sorumlusu ve Kullanıcı kimlik bilgisi kimlik doğrulaması arasında seçim yapabilirsiniz.
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+Bağlantılı bir hizmet, bir veri deposuna veri fabrikasına bağlanır. Veri Gölü Deposu verilerinizi veri fabrikanıza bağlamak için **AzureDataLakeStore** türünde bağlantılı bir hizmet oluşturursunuz. Aşağıdaki tabloda, Data Lake Store bağlantılı hizmetlere özgü JSON öğeleri açıklanmaktadır. Hizmet sorumlusu ile kullanıcı kimlik bilgisi kimlik doğrulaması arasında seçim yapabilirsiniz.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **type** | Type özelliği **AzureDataLakeStore**olarak ayarlanmalıdır. | Yes |
-| **dataLakeStoreUri** | Azure Data Lake Store hesabı hakkında bilgi. Bu bilgiler şu biçimlerden birini alır: `https://[accountname].azuredatalakestore.net/webhdfs/v1` veya `adl://[accountname].azuredatalakestore.net/`. | Yes |
-| **SubscriptionID** | Data Lake Store hesabına ait olduğu azure abonelik kimliği. | Havuz için gerekli |
-| **resourceGroupName** | Data Lake Store hesabına ait olduğu azure kaynak grubu adı. | Havuz için gerekli |
+| **Türü** | Tür özelliği **AzureDataLakeStore**olarak ayarlanmalıdır. | Evet |
+| **dataLakeStoreUri** | Azure Veri Gölü Deposu hesabı hakkında bilgi. Bu bilgiler aşağıdaki biçimlerden birini `https://[accountname].azuredatalakestore.net/webhdfs/v1` `adl://[accountname].azuredatalakestore.net/`alır: veya . | Evet |
+| **subscriptionId** | Data Lake Store hesabının ait olduğu Azure abonelik kimliği. | Lavabo için gerekli |
+| **resourceGroupName** | Veri Gölü Deposu hesabının ait olduğu Azure kaynak grubu adı. | Lavabo için gerekli |
 
-### <a name="service-principal-authentication-recommended"></a>Hizmet sorumlusu kimlik doğrulaması (önerilir)
-Hizmet sorumlusu kimlik doğrulamasını kullanmak için, bir uygulama varlığını Azure Active Directory (Azure AD) olarak kaydedin ve Data Lake Store erişim izni verin. Ayrıntılı adımlar için bkz. [hizmetten hizmete kimlik doğrulaması](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Bağlı hizmetini tanımlamak için kullandığınız şu değerleri not edin:
+### <a name="service-principal-authentication-recommended"></a>Hizmet temel kimlik doğrulaması (önerilir)
+Hizmet temel kimlik doğrulamasını kullanmak için, azure Etkin Dizin'e (Azure AD) bir uygulama varlığı kaydedin ve veri gölü deposuna erişim izni verin. Ayrıntılı adımlar için [hizmete kimlik doğrulamasına](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)bakın. Bağlantılı hizmeti tanımlamak için kullandığınız aşağıdaki değerlere dikkat edin:
 * Uygulama Kimliği
 * Uygulama anahtarı
 * Kiracı Kimliği
 
 > [!IMPORTANT]
-> Hizmet sorumlusu uygun Azure Data Lake Store içinde izni olduğundan emin olun:
->- **Kaynak olarak Data Lake Store kullanmak için**, bir klasörün içeriğini listelemek ve kopyalamak üzere en az **okuma ve yürütme** izni verin ya da tek bir dosyayı kopyalamak için **Oku** iznini verin. Hesap düzeyinde erişim denetimi gereksinimi yoktur.
->- **Havuz olarak Data Lake Store kullanmak için**, klasörde alt öğeler oluşturmak üzere en az **yazma + yürütme** veri erişimi izni verin. Kopyalama sağlamak için Azure IR kullanırsanız (hem kaynak hem de havuz bulutta bulunur), Data Factory Data Lake Store bölgesini algılamaya izin vermek için hesap erişim denetimi 'nde (ıAM) en az **okuyucu** rolü verin. Bu ıAM rolünü önlemek istiyorsanız, kopyalama etkinliğinde Data Lake Store konum konumuyla birlikte [executionLocation](data-factory-data-movement-activities.md#global) ' ı belirtin.
->- İşlem **hatlarını yazmak Için kopyalama Sihirbazı 'nı kullanıyorsanız**, hesap erişim denetimi 'NDE (IAM) en az **okuyucu** rolü verin. Ayrıca, Data Lake Store köke ("/") ve alt öğelerine en az **okuma ve yürütme** izni verin. Aksi takdirde "belirtilen kimlik bilgileri geçersiz." iletisini görebilirsiniz.
+> Azure Veri Gölü Deposu'nda hizmet ilkesine uygun izni aldığınızdan emin olun:
+>- **Veri Gölü Deposu'nu kaynak olarak kullanmak için,** bir klasörün içeriğini listelemek ve kopyalamak için en azından **Read + Execute** veri erişim izni verin veya tek bir dosyayı kopyalamak için okuma izni verin. **Read** Hesap düzeyi erişim denetiminde gereklilik yok.
+>- **Veri Gölü Deposu'nu lavabo olarak kullanmak için,** klasörde alt öğeler oluşturmak için en azından Veri Erişim Izni **Yaz + Yürüt'** e izin verin. Veri Fabrikası'nın Data Lake Store'un bölgesini algılamasına izin vermek için kopyalamayı güçlendirmek için Azure IR'yi kullanırsanız (hem kaynak hem de lavabo buluttadır), hesap erişim denetiminde (IAM) en az **Reader** rolü verir. Bu IAM rolünden kaçınmak istiyorsanız, kopyalama etkinliğinde Veri Gölü Mağazanızın konumuyla [birlikte yürütmeKonumu'nu belirtin.](data-factory-data-movement-activities.md#global)
+>- **Ardışık hatlar yazar kopya sihirbazı kullanıyorsanız,** hesap erişim denetimi (IAM) en az **Reader** rolü verir. Ayrıca, Veri Gölü Deposu root ("/") ve çocuklarına en azından **Okuma + Yürüt** izni verin. Aksi takdirde "Sağlanan kimlik bilgileri geçersizdir" iletisini görebilirsiniz.
 
-Aşağıdaki özellikleri belirterek hizmet sorumlusu kimlik doğrulamasını kullanın:
+Aşağıdaki özellikleri belirterek hizmet temel kimlik doğrulamasını kullanın:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **Serviceprincipalıd** | Uygulamanın istemci kimliği belirtin. | Yes |
-| **Servicesprincipalkey** | Uygulama anahtarını belirtin. | Yes |
-| **Kiracı** | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Azure portalının sağ üst köşedeki fare getirerek geri alabilirsiniz. | Yes |
+| **hizmetPrincipalId** | Uygulamanın istemci kimliğini belirtin. | Evet |
+| **servicePrincipalKey** | Uygulamanın anahtarını belirtin. | Evet |
+| **Kiracı** | Uygulamanızın bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı kimliği) belirtin. Azure portalının sağ üst köşesinde fareyi gezdirerek geri alabilirsiniz. | Evet |
 
-**Örnek: hizmet sorumlusu kimlik doğrulaması**
+**Örnek: Hizmet temel kimlik doğrulaması**
 ```json
 {
     "name": "AzureDataLakeStoreLinkedService",
@@ -115,18 +115,18 @@ Aşağıdaki özellikleri belirterek hizmet sorumlusu kimlik doğrulamasını ku
 ```
 
 ### <a name="user-credential-authentication"></a>Kullanıcı kimlik bilgisi kimlik doğrulaması
-Alternatif olarak, aşağıdaki özellikleri belirterek veya Data Lake Store kopyalamak için Kullanıcı kimlik bilgisi kimlik doğrulamasını kullanabilirsiniz:
+Alternatif olarak, aşağıdaki özellikleri belirterek, kopyalamak için kullanıcı kimlik bilgilerini veya Data Lake Store'u kullanabilirsiniz:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **yetkisi** | Data Factory düzenleyicisinde **Yetkilendir** düğmesine tıklayın ve bu özelliğe otomatik olarak oluşturulan yetkilendirme URL 'sini atayan kimlik bilgilerinizi girin. | Yes |
-| **Kimliği** | OAuth yetkilendirme oturumundan gelen OAuth oturum KIMLIĞI. Her oturum KIMLIĞI benzersizdir ve yalnızca bir kez kullanılabilir. Bu ayar Data Factory düzenleyicisini kullandığınızda otomatik olarak üretilir. | Yes |
+| **Yetkilendirme** | Veri Fabrikası Düzenleyicisi'ndeki **Yetkilendirme** düğmesini tıklatın ve bu özelliğe otomatik olarak oluşturulmuş yetkilendirme URL'sini atayan kimlik bilgilerinizi girin. | Evet |
+| **Sessionıd** | OAuth yetkilendirme oturumundan OAuth oturum kimliği. Her oturum kimliği benzersizdir ve yalnızca bir kez kullanılabilir. Veri Fabrikası Düzenleyicisi'ni kullandığınızda bu ayar otomatik olarak oluşturulur. | Evet |
 
 > [!IMPORTANT]
-> Azure Data Lake Store ' de kullanıcıya uygun izni verdiğinizden emin olun:
->- **Kaynak olarak Data Lake Store kullanmak için**, bir klasörün içeriğini listelemek ve kopyalamak üzere en az **okuma ve yürütme** izni verin ya da tek bir dosyayı kopyalamak için **Oku** iznini verin. Hesap düzeyinde erişim denetimi gereksinimi yoktur.
->- **Havuz olarak Data Lake Store kullanmak için**, klasörde alt öğeler oluşturmak üzere en az **yazma + yürütme** veri erişimi izni verin. Kopyalama sağlamak için Azure IR kullanırsanız (hem kaynak hem de havuz bulutta bulunur), Data Factory Data Lake Store bölgesini algılamaya izin vermek için hesap erişim denetimi 'nde (ıAM) en az **okuyucu** rolü verin. Bu ıAM rolünü önlemek istiyorsanız, kopyalama etkinliğinde Data Lake Store konum konumuyla birlikte [executionLocation](data-factory-data-movement-activities.md#global) ' ı belirtin.
->- İşlem **hatlarını yazmak Için kopyalama Sihirbazı 'nı kullanıyorsanız**, hesap erişim denetimi 'NDE (IAM) en az **okuyucu** rolü verin. Ayrıca, Data Lake Store köke ("/") ve alt öğelerine en az **okuma ve yürütme** izni verin. Aksi takdirde "belirtilen kimlik bilgileri geçersiz." iletisini görebilirsiniz.
+> Azure Veri Gölü Deposu'nda kullanıcıya uygun izni aldığınızdan emin olun:
+>- **Veri Gölü Deposu'nu kaynak olarak kullanmak için,** bir klasörün içeriğini listelemek ve kopyalamak için en azından **Read + Execute** veri erişim izni verin veya tek bir dosyayı kopyalamak için okuma izni verin. **Read** Hesap düzeyi erişim denetiminde gereklilik yok.
+>- **Veri Gölü Deposu'nu lavabo olarak kullanmak için,** klasörde alt öğeler oluşturmak için en azından Veri Erişim Izni **Yaz + Yürüt'** e izin verin. Veri Fabrikası'nın Data Lake Store'un bölgesini algılamasına izin vermek için kopyalamayı güçlendirmek için Azure IR'yi kullanırsanız (hem kaynak hem de lavabo buluttadır), hesap erişim denetiminde (IAM) en az **Reader** rolü verir. Bu IAM rolünden kaçınmak istiyorsanız, kopyalama etkinliğinde Veri Gölü Mağazanızın konumuyla [birlikte yürütmeKonumu'nu belirtin.](data-factory-data-movement-activities.md#global)
+>- **Ardışık hatlar yazar kopya sihirbazı kullanıyorsanız,** hesap erişim denetimi (IAM) en az **Reader** rolü verir. Ayrıca, Veri Gölü Deposu root ("/") ve çocuklarına en azından **Okuma + Yürüt** izni verin. Aksi takdirde "Sağlanan kimlik bilgileri geçersizdir" iletisini görebilirsiniz.
 
 **Örnek: Kullanıcı kimlik bilgisi kimlik doğrulaması**
 ```json
@@ -145,21 +145,21 @@ Alternatif olarak, aşağıdaki özellikleri belirterek veya Data Lake Store kop
 }
 ```
 
-#### <a name="token-expiration"></a>Belirteç süre sonu
-**Yetkilendir** düğmesini kullanarak oluşturduğunuz yetkilendirme kodu belirli bir süre sonra dolar. Aşağıdaki ileti, kimlik doğrulama belirtecinin süresi dolduğunda anlamına gelir:
+#### <a name="token-expiration"></a>Belirteç sona ermesi
+**Yetkilendirme** düğmesini kullanarak oluşturduğunuz yetkilendirme kodunun süresi belirli bir süre sonra sona erer. Aşağıdaki ileti, kimlik doğrulama belirteci süresinin dolduğu anlamına gelir:
 
-Kimlik bilgisi işlemi hatası: invalid_grant-AADSTS70002: kimlik bilgileri doğrulanırken hata oluştu. AADSTS70008: belirtilen erişim izni, zaman aşımına uğradı veya iptal edildi. İzleme KIMLIĞI: d18629e8-af88-43c5-88e3-d8419eb1fca1 bağıntı KIMLIĞI: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 zaman damgası: 2015-12-15 21-09-31Z.
+Kimlik doğrulama hatası: invalid_grant - AADSTS70002: Kimlik bilgilerini doğrulayan hata. AADSTS70008: Sağlanan erişim izninin süresi doldu veya iptal edildi. İz KIMLIĞI: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korelasyon Id: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21-09-31Z.
 
-Aşağıdaki tabloda farklı kullanıcı hesabı türlerinin sona erme zamanları gösterilmektedir:
+Aşağıdaki tablo, farklı kullanıcı hesabı türlerinin son kullanma sürelerini gösterir:
 
-| Kullanıcı türü | Süre sonu |
+| Kullanıcı türü | Sonra sona erer |
 |:--- |:--- |
-| Azure Active Directory tarafından *yönetilmeyen Kullanıcı* hesapları (örneğin, @hotmail.com veya @live.com) |12 saat |
-| Azure Active Directory tarafından yönetilen Kullanıcı hesapları |Son dilimin çalıştırıldıktan 14 gün sonra <br/><br/>90 gün, OAuth tabanlı bağlı bir hizmete dayalı bir dilim 14 günde bir en az bir kez çalışırsa |
+| Azure Etkin Dizintarafından *yönetilmeyen* kullanıcı @hotmail.com hesapları @live.com(örneğin, veya) |12 saat |
+| Azure Active Directory tarafından yönetilen kullanıcı hesapları |Son dilim çalışmasından 14 gün sonra <br/><br/>OAuth tabanlı bağlantılı bir hizmete dayalı bir dilim en az 14 günde bir çalışıyorsa, 90 gün |
 
-Parolanızı belirtecin süre sonu zamanından önce değiştirirseniz, belirtecin süresi hemen dolar. Bu bölümün önceki kısımlarında bahsedilen iletiyi görürsünüz.
+Parolanızı son kullanma tarihinden önce değiştirirseniz, belirteç hemen sona erer. Bu bölümde daha önce bahsedilen iletiyi görürsünüz.
 
-Belirteç, bağlı hizmeti yeniden dağıtmak için zaman aşımına uğradığında **Yetkilendir** düğmesini kullanarak hesabı yeniden yetkilendirmek için kullanabilirsiniz. Aşağıdaki kodu kullanarak, program aracılığıyla **SessionID** ve **Yetkilendirme** özellikleri için değerler de oluşturabilirsiniz:
+Belirteç bağlantılı hizmeti yeniden dağıtmak için süresi dolduğunda **Yetkilendirme** düğmesini kullanarak hesabı yeniden yetkilendirebilirsiniz. Ayrıca aşağıdaki kodu kullanarak **programlı sessionId** ve **yetkilendirme** özellikleri için değerler oluşturabilirsiniz:
 
 
 ```csharp
@@ -186,33 +186,33 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-Kodda kullanılan Data Factory sınıfları hakkında daha fazla bilgi için bkz. [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)ve [authorizationsessiongetresponse sınıfı](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) konuları. Kodda kullanılan `WindowsFormsWebAuthenticationDialog` sınıfı için `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` sürüm `2.9.10826.1824` bir başvuru ekleyin.
+Kodda kullanılan Veri Fabrikası sınıfları hakkında ayrıntılı bilgi için [AzureDataLakeStoreBağlantılıHizmet Sınıfı,](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx) [AzureDataLakeAnalyticsLinkedService Sınıfı](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)ve [YetkilendirmeSessionGetResponse Sınıfı](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) konularına bakın. Kodda kullanılan `2.9.10826.1824` `WindowsFormsWebAuthenticationDialog` sınıf `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` için sürüme bir başvuru ekleyin.
 
 ## <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
-**Belirti:** **Verileri Azure Data Lake Store** kopyalanırken kopyalama etkinliğinizi aşağıdaki hatayla başarısız olur:
+**Belirti:** Verileri Azure Veri Gölü **Deposu'na** kopyalarken, kopyalama etkinliğiniz aşağıdaki hatayla başarısız olursa:
 
   ```
   Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
   ```
 
-**Kök nedeni:** 2 olası neden vardır:
+**Kök nedeni:** Bunun 2 olası nedeni vardır:
 
-1. Azure Data Lake Store bağlantılı hizmette belirtilen `resourceGroupName` ve/veya `subscriptionId` yanlış;
-2. Kullanıcı veya hizmet sorumlusu gerekli izne sahip değil.
+1. Azure `resourceGroupName` Veri `subscriptionId` Gölü Deposu'na bağlı hizmette belirtilen ve/veya belirtilen ler yanlıştır;
+2. Kullanıcı nın veya hizmet sorumlusunun gerekli izni yoktur.
 
-**Çözünürlüğüne**
+**Çözünürlük:**
 
-1. Bağlı hizmette belirttiğiniz `subscriptionId` ve `resourceGroupName` gerçekten Data Lake hesabınızın ait olduğu `typeProperties` olduğundan emin olun.
+1. Bağlantılı `subscriptionId` serviste `resourceGroupName` `typeProperties` belirttiğiniz ve belirttiğiniz şeyin veri gölü hesabınızın gerçekten ait olduğu kişiler olduğundan emin olun.
 
-2. Data Lake hesabındaki Kullanıcı veya hizmet sorumlusu için en az **okuyucu** rolü verdiğinizden emin olun. Bunun nasıl yapılacağı aşağıda verilmiştir:
+2. Veri gölü hesabındaki kullanıcıya veya hizmet sorumlusuna en az **Reader** rolü verdiğinden emin olun. Bunu nasıl yapacağınız aşağıda açıklanmıştır:
 
-    1. Data Lake Store hesabınıza > Azure portal gidin
-    2. Data Lake Store dikey penceresinde **erişim denetimi (IAM)** öğesine tıklayın
-    3. **Rol ataması Ekle** ' ye tıklayın
-    4. **Rolü** **okuyucu**olarak ayarlayın ve erişim izni vermek için, kopyalamak üzere kullandığınız kullanıcıyı veya hizmet sorumlusunu seçin
+    1. Azure portalına gidin -Data Lake Store hesabınıza >
+    2. Veri Gölü Deposu'nun bıçak üzerinde **Erişim denetimine (IAM)** tıklayın
+    3. **Rol Atama ekle'yi** tıklatın
+    4. **Rolü** **Okuyucu**olarak ayarlayın ve erişim sağlamak için kopya lamak için kullandığınız kullanıcıyı veya hizmet müdürünü seçin
 
-3. Kullanıcıya veya hizmet sorumlusuna **okuyucu** rolü vermek istemiyorsanız, alternatif olarak, kopyalama etkinliğinde Data Lake Store konumuyla birlikte [bir yürütme konumu belirtmektir](data-factory-data-movement-activities.md#global) . Örnek:
+3. **Okuyucu** rolünü kullanıcıya veya hizmet ilkesine vermek istemiyorsanız, alternatif olarak Veri Gölü Mağazanızın konumuyla birlikte kopyalama etkinliğinde [bir yürütme konumu açıkça belirtmek](data-factory-data-movement-activities.md#global) tir. Örnek:
 
     ```json
     {
@@ -232,23 +232,23 @@ Kodda kullanılan Data Factory sınıfları hakkında daha fazla bilgi için bkz
     ```
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Data Lake Store giriş verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin **Type** özelliğini **AzureDataLakeStore**olarak ayarlarsınız. Veri kümesinin **Linkedservicename** özelliğini Data Lake Store bağlantılı hizmetin adı olarak ayarlayın. Veri kümelerini tanımlamaya yönelik JSON bölümlerinin ve özelliklerinin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. **Yapı**, **kullanılabilirlik**ve **ilke**gibi JSON 'daki veri kümesinin bölümleri, tüm veri KÜMESI türleri (örneğin, Azure SQL veritabanı, Azure Blob ve Azure tablosu) için benzerdir. **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu ve biçimi gibi bilgiler sağlar.
+Veri Gölü Deposu'ndaki giriş verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin **tür** özelliğini **AzureDataLakeStore**olarak ayarlarsınız. Veri kümesinin **linkedServiceName** özelliğini Data Lake Store bağlantılı hizmetin adına ayarlayın. Veri kümelerini tanımlamak için kullanılabilen JSON bölümlerinin ve özelliklerinin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. JSON'daki **yapı,** **kullanılabilirlik**ve **ilke**gibi bir veri kümesinin bölümleri tüm veri kümesi türleri için benzerdir (örneğin Azure SQL veritabanı, Azure blob ve Azure tablosu). **typeProperties** bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu ve biçimi gibi bilgiler sağlar.
 
-**AzureDataLakeStore** türündeki bir veri kümesi Için **typeproperties** bölümü aşağıdaki özellikleri içerir:
+**AzureDataLakeStore** türündeki bir veri kümesinin **typeProperties** bölümü aşağıdaki özellikleri içerir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| **folderPath** |Data Lake Store kapsayıcı ve klasörün yolu. |Yes |
-| **Kısaltın** |Azure Data Lake Store içindeki dosyanın adı. **Filename** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. <br/><br/>**Dosya adı**belirtirseniz, etkinlik (kopyalama dahil) belirli dosya üzerinde çalışmaktadır.<br/><br/>**Dosya adı** belirtilmediğinde, Copy, giriş veri kümesindeki **FolderPath** içindeki tüm dosyaları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı `Data._Guid_.txt`biçimindedir. Örneğin: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt. |Hayır |
-| **partitionedBy** |**Partitionedby** özelliği isteğe bağlıdır. Bu uygulamayı, zaman serisi verileri için dinamik bir yol ve dosya adı belirtmek üzere kullanabilirsiniz. Örneğin, **FolderPath** her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için bkz. partitionedBy özelliği. |Hayır |
-| **formatını** | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **Orcformat**ve **parquetformat**. **Biçim** ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için, [Azure Data Factory makale tarafından desteklenen dosya ve sıkıştırma biçimlerinde](data-factory-supported-file-and-compression-formats.md) [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine bakın. <br><br> Dosya tabanlı mağazalar (ikili kopya) arasında "olduğu gibi" dosyaları kopyalamak istiyorsanız hem giriş hem de çıkış veri kümesi tanımlarında `format` bölümünü atlayın. |Hayır |
-| **masıyla** | Veri sıkıştırma düzeyi ve türünü belirtin. Desteklenen türler **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler **en iyi** ve **en hızlardır**. Daha fazla bilgi için bkz. [Azure Data Factory tarafından desteklenen dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
+| **folderPath** |Veri Gölü Deposu'ndaki kapsayıcı ve klasöre giden yol. |Evet |
+| **Dosyaadı** |Azure Veri Gölü Deposu'ndaki dosyanın adı. **fileName** özelliği isteğe bağlıdır ve büyük/küçük harf duyarlıdır. <br/><br/>**fileName**belirtirseniz, etkinlik (Kopya dahil) belirli bir dosya üzerinde çalışır.<br/><br/>**fileName** belirtilmediğinde, Copy giriş veri kümesindeki **folderPath'teki** tüm dosyaları içerir.<br/><br/>Bir çıktı veri kümesi için **dosya Adı** belirtilmediğinde ve **korumaHiyerarşisi** etkinlik lavabosunda belirtilmediğinde, oluşturulan dosyanın adı biçimindedir. `Data._Guid_.txt` Örneğin: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Hayır |
+| **bölümlemeBy** |**BölümlemeBy** özelliği isteğe bağlıdır. Zaman serisi verileri için dinamik bir yol ve dosya adı belirtmek için kullanabilirsiniz. Örneğin, **folderPath** her saatlik veri için parametreli olabilir. Ayrıntılar ve örnekler için bölümlenmişBy özelliğine bakın. |Hayır |
+| **Biçim** | Aşağıdaki biçim türleri desteklenir: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ve **ParkquetFormat**. **Biçim** altındaki **tür** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için Dosya'daki [Metin biçimi,](data-factory-supported-file-and-compression-formats.md#text-format) [JSON biçimi,](data-factory-supported-file-and-compression-formats.md#json-format) [Avro biçimi,](data-factory-supported-file-and-compression-formats.md#avro-format) [ORC biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parke Biçimi](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine ve Azure Veri Fabrikası makalesi tarafından desteklenen sıkıştırma [biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında "olduğu gibi" `format` kopyalamak istiyorsanız, hem giriş hem de çıktı veri kümesi tanımlarında bölümü atlayın. |Hayır |
+| **Sıkıştırma** | Verilerin sıkıştırma türünü ve düzeyini belirtin. Desteklenen türleri **GZip,** **Deflate**, **BZip2**, ve **ZipDeflate**vardır. Desteklenen seviyeler **Optimal** ve **En Hızlı'dır.** Daha fazla bilgi için Azure [Veri Fabrikası tarafından desteklenen Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md#compression-support)bakın. |Hayır |
 
-### <a name="the-partitionedby-property"></a>PartitionedBy özelliği
-**Partitionedby** özelliği, Data Factory işlevleri ve sistem değişkenleri ile zaman serisi verileri Için dinamik **FolderPath** ve **filename** özellikleri belirtebilirsiniz. Ayrıntılar için bkz. [Azure Data Factory-işlevler ve sistem değişkenleri](data-factory-functions-variables.md) makalesi.
+### <a name="the-partitionedby-property"></a>BölümlenmişBy özelliği
+**Bölümleme Özelliği,** Veri Fabrikası işlevleri ve sistem değişkenleri ile zaman serisi verileri için dinamik **klasörYol** ve **fileName** özelliklerini belirtebilirsiniz. Ayrıntılar için [Azure Veri Fabrikası - işlevler ve sistem değişkenleri](data-factory-functions-variables.md) makalesine bakın.
 
 
-Aşağıdaki örnekte `{Slice}`, belirtilen biçimde `SliceStart` Data Factory sistem değişkeninin değeri ile değiştirilmiştir (`yyyyMMddHH`). Ad `SliceStart`, dilimin başlangıç saatine başvurur. `folderPath` özelliği, `wikidatagateway/wikisampledataout/2014100103` veya `wikidatagateway/wikisampledataout/2014100104`gibi her bir dilim için farklıdır.
+Aşağıdaki örnekte, `{Slice}` veri fabrikası sistem değişkeninin `SliceStart` değeri belirtilen biçimde`yyyyMMddHH`değiştirilir ( ). Ad, `SliceStart` dilimin başlangıç saatini ifade eder. Özellik `folderPath` her dilim için farklı, `wikidatagateway/wikisampledataout/2014100103` `wikidatagateway/wikisampledataout/2014100104`gibi ya da .
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -258,7 +258,7 @@ Aşağıdaki örnekte `{Slice}`, belirtilen biçimde `SliceStart` Data Factory s
 ],
 ```
 
-Aşağıdaki örnekte, yıl, ay, gün ve saat `SliceStart`, `folderPath` ve `fileName` özellikleri tarafından kullanılan ayrı değişkenlere ayıklanır:
+Aşağıdaki örnekte, yıl, ay, gün ve `SliceStart` saat, ve `folderPath` `fileName` özellikleri tarafından kullanılan ayrı değişkenler halinde ayıklanır:
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
@@ -270,56 +270,56 @@ Aşağıdaki örnekte, yıl, ay, gün ve saat `SliceStart`, `folderPath` ve `fil
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında daha fazla bilgi için [Azure Data Factory Içindeki veri kümelerine](data-factory-create-datasets.md) bakın ve [zamanlama ve yürütme makalelerini Data Factory](data-factory-scheduling-and-execution.md) .
+Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında daha fazla bilgi için Azure Veri Fabrikası ve [Veri Fabrikası zamanlama ve yürütme](data-factory-scheduling-and-execution.md) [makalelerinde Veri kümelerine](data-factory-create-datasets.md) bakın.
 
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilke gibi özellikler, tüm etkinlik türleri için kullanılabilir.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, ardışık hatlar oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı tabloları ve ilke gibi özellikler tüm etkinlik türleri için kullanılabilir.
 
-Etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
+Bir etkinliğin **typeProperties** bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişirler.
 
-**AzureDataLakeStoreSource** , **typeproperties** bölümünde aşağıdaki özelliği destekler:
-
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
-| --- | --- | --- | --- |
-| **öz** |Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. |True (varsayılan değer), yanlış |Hayır |
-
-**AzureDataLakeStoreSink** , **typeproperties** bölümünde aşağıdaki özellikleri destekler:
+**AzureDataLakeStoreSource,** **typeProperties** bölümünde aşağıdaki özelliği destekler:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| **copyBehavior** |Kopyalama davranışını belirtir. |<b>Preservehierarchy</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yol, hedef dosya hedef klasöre göreli yoluna aynıdır.<br/><br/><b>DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyinde oluşturulur. Hedef dosyalar otomatik olarak oluşturulan adlarla oluşturulur.<br/><br/><b>Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya ya da blob adı belirtilirse, birleştirilmiş dosya adı belirtilen adıdır. Aksi takdirde, dosya adı otomatik olarak oluşturulur. |Hayır |
+| **Özyinelemeli** |Verilerin alt klasörlerden mi yoksa yalnızca belirtilen klasörden mi özyinelemeli olarak okunduğunu gösterir. |True (varsayılan değer), False |Hayır |
+
+**AzureDataLakeStoreSink,** **typeProperties** bölümünde aşağıdaki özellikleri destekler:
+
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| --- | --- | --- | --- |
+| **copyBehavior** |Kopyalama davranışını belirtir. |<b>Koruma Hiyerarşisi</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasörüne göreli yolu hedef klasöre hedef dosyanın göreli yolu ile aynıdır.<br/><br/><b>FlattenHiyerarşiy</b>: Kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyinde oluşturulur. Hedef dosyalar otomatik olarak oluşturulan adlarla oluşturulur.<br/><br/><b>Birleştirme Dosyaları</b>: Kaynak klasördeki tüm dosyaları tek bir dosyayla birleştirir. Dosya veya blob adı belirtilirse, birleştirilen dosya adı belirtilen addır. Aksi takdirde, dosya adı otomatik olarak oluşturulur. |Hayır |
 
 ### <a name="recursive-and-copybehavior-examples"></a>özyinelemeli ve copyBehavior örnekleri
-Bu bölümde, elde edilen davranışını özyinelemeli ve copyBehavior değer farklı birleşimleri kopyalama işlemi açıklanmaktadır.
+Bu bölümde, özyinelemeli ve copyBehavior değerlerinin farklı birleşimleri için Kopyalama işleminin ortaya çıkan davranışı açıklanmaktadır.
 
-| özyinelemeli | copyBehavior | Sonuç davranışı |
+| Özyinelemeli | copyBehavior | Sonuç davranış |
 | --- | --- | --- |
-| true |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef klasör Klasör1, kaynak ile aynı yapıyla oluşturulmuştur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true |flattenHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Klasör1<br/>Fıle1 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>dosya2 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>file3 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>File4 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>File5 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp; |
-| true |mergeFiles |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 + dosya2 + File3 + File4 + dosya 5 içerikleri, otomatik olarak oluşturulan dosya adı ile tek bir dosyada birleştirilir |
-| false |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/><br/><br/>Subfolder1 dosya3 File4 ve File5 ile değil teslim alındı. |
-| false |flattenHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Klasör1<br/>Fıle1 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/>dosya2 için otomatik olarak oluşturulan ad &nbsp;&nbsp;&nbsp;&nbsp;<br/><br/><br/>Subfolder1 dosya3 File4 ve File5 ile değil teslim alındı. |
-| false |mergeFiles |Aşağıdaki yapıyla Klasör1 kaynak klasörü için:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 + dosya2 içerikleri, otomatik olarak oluşturulan dosya adı ile tek bir dosyada birleştirilir. Fıle1'de otomatik olarak oluşturulan adı<br/><br/>Subfolder1 dosya3 File4 ve File5 ile değil teslim alındı. |
+| true |korumaHiyerarşisi |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef klasör Folder1 kaynak la aynı yapıile oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5. |
+| true |flattenHiyerarşi |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef Folder1 aşağıdaki yapı ile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 için otomatik olarak oluşturulan ad |
+| true |birleştirmeDosyaları |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef Folder1 aşağıdaki yapı ile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + Dosya 5 içeriği otomatik oluşturulan dosya adı ile bir dosya da birleştirilir |
+| yanlış |korumaHiyerarşisi |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef klasör Folder1 aşağıdaki yapı ile oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/><br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
+| yanlış |flattenHiyerarşi |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef klasör Folder1 aşağıdaki yapı ile oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 için otomatik olarak oluşturulan ad<br/><br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
+| yanlış |birleştirmeDosyaları |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef klasör Folder1 aşağıdaki yapı ile oluşturulur<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 içeriği otomatik olarak oluşturulan dosya adı içeren bir dosyada birleştirilir. File1 için otomatik olarak oluşturulan ad<br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
 
 ## <a name="supported-file-and-compression-formats"></a>Desteklenen dosya ve sıkıştırma biçimleri
-Ayrıntılar için [Azure Data Factory makalesindeki dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
+Ayrıntılar için [Azure Veri Fabrikası makalesinde Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
 
-## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Data Lake Store veri kopyalamaya yönelik JSON örnekleri
-Aşağıdaki örnekler örnek JSON tanımlarını sağlar. Bu örnek tanımları, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabilirsiniz. Örneklerde, Data Lake Store ve Azure Blob Storage 'a ve bunlara verilerin nasıl kopyalanacağı gösterilmektedir. Ancak, veriler herhangi bir kaynaktan, desteklenen herhangi bir havuza _doğrudan_ kopyalanabilir. Daha fazla bilgi için bkz. [kopyalama etkinliği kullanarak verileri taşıma](data-factory-data-movement-activities.md) makalesindeki "desteklenen veri depoları ve biçimleri" bölümüne bakın.
+## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Data Lake Store'a ve Data Lake Store'dan veri kopyalamak için JSON örnekleri
+Aşağıdaki örnekler örnek JSON tanımlarını sağlar. [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell'i](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir boru hattı oluşturmak için bu örnek tanımları kullanabilirsiniz. Örnekler, Data Lake Store ve Azure Blob depolama alanına veri kopyalamanın nasıl yapılacağını gösterir. Ancak, veriler _doğrudan_ kaynaklardan herhangi biri tarafından desteklenen lavabolara kopyalanabilir. Daha fazla bilgi için, [Etkinlik Kopyala makalesini kullanarak Taşı verilerindeki](data-factory-data-movement-activities.md) "Desteklenen veri depoları ve biçimleri" bölümüne bakın.
 
-### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Örnek: Azure Blob depolamadan Azure Data Lake Store verileri kopyalama
+### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Örnek: Azure Blob Depolama'dan Azure Veri Gölü Deposu'na veri kopyalama
 Bu bölümdeki örnek kod şunları gösterir:
 
-* [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-* [AzureDataLakeStore](#linked-service-properties)türünde bağlı bir hizmet.
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
-* [AzureDataLakeStore](#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
-* [Blobsource](data-factory-azure-blob-connector.md#copy-activity-properties) ve [AzureDataLakeStoreSink](#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+* [AzureDataLakeStore](#linked-service-properties)türünde bağlantılı bir hizmet.
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
+* [AzureDataLakeStore](#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
+* [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) ve [AzureDataLakeStoreSink](#copy-activity-properties)kullanan bir kopyalama etkinliği olan bir [ardışık kaynak.](data-factory-create-pipelines.md)
 
-Örneklerde Azure Blob depolama alanındaki saat serisi verilerinin her saat Data Lake Store nasıl kopyalandığı gösterilmektedir.
+Örnekler, Azure Blob Depolama'daki zaman serileri verilerinin her saat başı Data Lake Store'a nasıl kopyalandığını gösterir.
 
-**Azure Storage bağlı hizmeti**
+**Azure Depolama bağlantılı hizmet**
 
 ```JSON
 {
@@ -333,7 +333,7 @@ Bu bölümdeki örnek kod şunları gösterir:
 }
 ```
 
-**Bağlı hizmet Azure Data Lake Store**
+**Azure Veri Gölü Deposu bağlantılı hizmet**
 
 ```JSON
 {
@@ -353,12 +353,12 @@ Bu bölümdeki örnek kod şunları gösterir:
 ```
 
 > [!NOTE]
-> Yapılandırma ayrıntıları için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü.
+> Yapılandırma ayrıntıları için [Bağlantılı hizmet özellikleri](#linked-service-properties) bölümüne bakın.
 >
 
 **Azure Blob girdi veri kümesi**
 
-Aşağıdaki örnekte, veriler her saat yeni bir bloba alınır (`"frequency": "Hour", "interval": 1`). Blob için klasör yolu ve dosya adı, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay ve gün kısmını kullanır. Dosya adı başlangıç zamanının saat kısmını kullanır. `"external": true` ayarı, Data Factory hizmetine tablonun veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
+Aşağıdaki örnekte, veriler her saat yeni bir damladan alınır (`"frequency": "Hour", "interval": 1`). Blob için klasör yolu ve dosya adı, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay ve gün bölümünü kullanır. Dosya adı, başlangıç zamanının saat bölümünü kullanır. Ayar, `"external": true` Veri Fabrikası hizmetine tablonun veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
 ```JSON
 {
@@ -419,9 +419,9 @@ Aşağıdaki örnekte, veriler her saat yeni bir bloba alınır (`"frequency": "
 }
 ```
 
-**Azure Data Lake Store çıktı veri kümesi**
+**Azure Veri Gölü Deposu çıktı veri kümesi**
 
-Aşağıdaki örnek Data Lake Store verileri kopyalar. Yeni veriler her saat Data Lake Store kopyalanır.
+Aşağıdaki örnek verileri Data Lake Store'a kopyalar. Yeni veriler her saat başı Data Lake Store'a kopyalanır.
 
 ```JSON
 {
@@ -440,9 +440,9 @@ Aşağıdaki örnek Data Lake Store verileri kopyalar. Yeni veriler her saat Dat
 }
 ```
 
-**Blob kaynağı ve bir Data Lake Store havuzu ile işlem hattındaki etkinliği kopyalama**
+**Blob kaynağı ve Veri Gölü Deposu lavabosu olan bir ardışık ardışık alanda etkinliği kopyalama**
 
-Aşağıdaki örnekte, işlem hattı giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. Kopyalama etkinliği her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında `source` türü `BlobSource`olarak ayarlanır ve `sink` türü `AzureDataLakeStoreSink`olarak ayarlanır.
+Aşağıdaki örnekte, ardışık yapı, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan bir kopyalama etkinliği içerir. Kopyalama etkinliği her saat çalışacak şekilde zamanlanır. JSON ardışık ardışık `source` tanımda, `BlobSource`tür `sink` , ve `AzureDataLakeStoreSink`türü olarak ayarlanır.
 
 ```json
 {
@@ -492,18 +492,18 @@ Aşağıdaki örnekte, işlem hattı giriş ve çıkış veri kümelerini kullan
 }
 ```
 
-### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>Örnek: Azure Data Lake Store verileri Azure Blob 'a kopyalama
+### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>Örnek: Azure Veri Gölü Deposu'ndan azure blob'una veri kopyalama
 Bu bölümdeki örnek kod şunları gösterir:
 
-* [AzureDataLakeStore](#linked-service-properties)türünde bağlı bir hizmet.
-* [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-* [AzureDataLakeStore](#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
-* [AzureDataLakeStoreSource](#copy-activity-properties) ve [blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
+* [AzureDataLakeStore](#linked-service-properties)türünde bağlantılı bir hizmet.
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+* [AzureDataLakeStore](#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
+* [AzureDataLakeStoreSource](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan bir kopyalama etkinliği olan bir [ardışık kaynak.](data-factory-create-pipelines.md)
 
-Kod, saat serisi verilerini her saat Data Lake Store bir Azure blobuna kopyalar.
+Kod, Data Lake Store'dan her saat başı bir Azure blob'una zaman serisi verilerini kopyalar.
 
-**Bağlı hizmet Azure Data Lake Store**
+**Azure Veri Gölü Deposu bağlantılı hizmet**
 
 ```json
 {
@@ -521,10 +521,10 @@ Kod, saat serisi verilerini her saat Data Lake Store bir Azure blobuna kopyalar.
 ```
 
 > [!NOTE]
-> Yapılandırma ayrıntıları için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü.
+> Yapılandırma ayrıntıları için [Bağlantılı hizmet özellikleri](#linked-service-properties) bölümüne bakın.
 >
 
-**Azure Storage bağlı hizmeti**
+**Azure Depolama bağlantılı hizmet**
 
 ```JSON
 {
@@ -537,9 +537,9 @@ Kod, saat serisi verilerini her saat Data Lake Store bir Azure blobuna kopyalar.
   }
 }
 ```
-**Azure Data Lake girişi veri kümesi**
+**Azure Veri Gölü giriş veri kümesi**
 
-Bu örnekte, `"external"` `true` olarak ayarlamak, Data Factory hizmetini tablonun veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
+Bu örnekte, `"external"` `true` tablonun veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Veri Fabrikası hizmetine bildirme ayarı.
 
 ```json
 {
@@ -572,9 +572,9 @@ Bu örnekte, `"external"` `true` olarak ayarlamak, Data Factory hizmetini tablon
     }
 }
 ```
-**Azure Blob çıktı veri kümesi**
+**Azure blob çıktı veri seti**
 
-Aşağıdaki örnekte, veriler her saat yeni bir bloba yazılır (`"frequency": "Hour", "interval": 1`). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısmını kullanır.
+Aşağıdaki örnekte, veriler her saat yeni bir`"frequency": "Hour", "interval": 1`blob () yazılır. Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümünü kullanır.
 
 ```JSON
 {
@@ -632,9 +632,9 @@ Aşağıdaki örnekte, veriler her saat yeni bir bloba yazılır (`"frequency": 
 }
 ```
 
-**Bir işlem hattındaki bir Azure Data Lake Store kaynağı ve bir blob havuzu içeren bir kopyalama etkinliği**
+**Azure Veri Gölü Deposu kaynağı ve blob lavabosu olan bir ardışık ardışık ardışık ardışık alanda kopyalama etkinliği**
 
-Aşağıdaki örnekte, işlem hattı giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. Kopyalama etkinliği her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında `source` türü `AzureDataLakeStoreSource`olarak ayarlanır ve `sink` türü `BlobSink`olarak ayarlanır.
+Aşağıdaki örnekte, ardışık yapı, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan bir kopyalama etkinliği içerir. Kopyalama etkinliği her saat çalışacak şekilde zamanlanır. JSON ardışık ardışık `source` tanımda, `AzureDataLakeStoreSource`tür `sink` , ve `BlobSink`türü olarak ayarlanır.
 
 ```json
 {
@@ -682,7 +682,7 @@ Aşağıdaki örnekte, işlem hattı giriş ve çıkış veri kümelerini kullan
 }
 ```
 
-Kopyalama etkinliği tanımında, kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara de eşleyebilirsiniz. Ayrıntılar için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+Kopyalama etkinliği tanımında, kaynak veri kümesinden lavabo veri kümesindeki sütunlara kadar sütunları da eşleyebilirsiniz. Ayrıntılar için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)bilgisine bakın.
 
 ## <a name="performance-and-tuning"></a>Performans ve ayar
-Kopyalama etkinliği performansını ve bunun nasıl iyileştirileceği faktörleri hakkında bilgi edinmek için, [etkinlik performansını kopyalama ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md) makalesini inceleyin.
+Kopyalama Etkinliği performansını etkileyen etkenler ve onu nasıl optimize edeceğinizi öğrenmek için [Kopyalama Etkinliği performansı ve atokskılavuzu](data-factory-copy-activity-performance.md) makalesine bakın.

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: sample
 author: peterclu
 ms.author: peterlu
-ms.date: 03/10/2020
-ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/29/2020
+ms.openlocfilehash: f9a8b0a4c51024d91e517db2f6ae10a4dba62384
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037405"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389350"
 ---
 # <a name="designer-sample-pipelines"></a>Tasarımcı örnek boru hatları
 
@@ -30,6 +30,8 @@ Kendi makine öğrenimi boru hatlarınızı oluşturmaya hızla başlamak için 
 
 Tasarımcı, örnek ardışık hatların bir kopyasını stüdyo çalışma alanınıza kaydeder. Boru hattını gereksinimlerinize uyarlamak ve kendi gereksinimleriniz gibi kaydetmek için edinebilirsiniz. Projelerinizi başlatmak için bunları başlangıç noktası olarak kullanın.
 
+### <a name="open-a-sample-pipeline"></a>Örnek bir boru hattı açma
+
 1. <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a>oturum açın ve çalışmak istediğiniz çalışma alanını seçin.
 
 1. **Tasarımcı'yı**seçin.
@@ -37,6 +39,31 @@ Tasarımcı, örnek ardışık hatların bir kopyasını stüdyo çalışma alan
 1. **Yeni ardışık hatlar** bölümü altında örnek bir ardışık hat lar seçin.
 
     Örneklerin tam listesi için **daha fazla örnek göster'i** seçin.
+
+### <a name="submit-a-pipeline-run"></a>Bir ardışık hat lar çalıştır
+
+Bir ardışık ardışık hattı çalıştırmak için öncelikle ardışık hattı çalıştırmak için varsayılan işlem hedefini ayarlamanız gerekir.
+
+1. Tuvalin sağındaki **Ayarlar** bölmesinde, **bilgi işlem hedefini seçin'i**seçin.
+
+1. Görünen iletişim kutusunda, varolan bir işlem hedefini seçin veya yeni bir hedef oluşturun. **Kaydet'i**seçin.
+
+1. Bir boru hattı çalıştırmak için tuvalin üst kısmında **Gönder'i** seçin.
+
+Örnek ardışık işlem ve bilgi işlem ayarlarına bağlı olarak, çalıştırmaların tamamlanması biraz zaman alabilir. Varsayılan işlem ayarlarının en az düğüm boyutu 0'dır, bu da tasarımcının boşta kaldıktan sonra kaynak ayırması gerektiği anlamına gelir. Yinelenen ardışık işlem çalışır işlem kaynakları zaten tahsis olduğundan daha az zaman alacaktır. Ayrıca, tasarımcı verimliliği daha da artırmak için her modül için önbelleğe alınmış sonuçlar kullanır.
+
+
+### <a name="review-the-results"></a>Sonuçları gözden geçirin
+
+Ardışık hatlar çalışma bittikten sonra, ardışık hattı gözden geçirebilir ve daha fazla bilgi edinmek için her modülün çıktısını görüntüleyebilirsiniz.
+
+Modül çıktılarını görüntülemek için aşağıdaki adımları kullanın:
+
+1. Tuvalde bir modül seçin.
+
+1. Tuvalin sağındaki modül ayrıntıları bölmesinde **Çıktılar + günlükleri**seçin. Her modülün ![sonuçlarını](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) görmek için grafik simgesini visualize simgesini seçin. 
+
+En yaygın makine öğrenimi senaryolarından bazıları için örnekleri başlangıç noktası olarak kullanın.
 
 ## <a name="regression-samples"></a>Regresyon örnekleri
 

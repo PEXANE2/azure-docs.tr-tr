@@ -9,24 +9,24 @@ ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188105"
 ---
 > [!NOTE]
-> Bu örnekler S2S/ExpressRoute için geçerli değildir yapılandırmaları bir arada.
-> Coexist yapılandırmasında ağ geçitleri ile çalışma hakkında daha fazla bilgi için bkz. [arada var olabilen bağlantılar yapılandırma.](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
+> Bu örnekler S2S/ExpressRoute birlikte yapılandırmaları için geçerli değildir.
+> Ortak bir yapılandırmada ağ geçitleriyle çalışma hakkında daha fazla bilgi için, [birlikte varolan bağlantıları Yapılandırma'ya bakın.](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
 
 ## <a name="add-a-gateway"></a>Ağ geçidi ekleme
 
-Klasik kaynak modeli kullanarak bir sanal ağ geçidi eklediğinizde, doğrudan ağ geçidi oluşturmadan önce ağ yapılandırma dosyasını değiştirin. Değerleri aşağıdaki örneklerde bir ağ geçidi oluşturmak için dosyasında mevcut olmalıdır. Sanal ağınıza daha önce ilişkili bir ağ geçidi varsa, bu değerlerden bazıları zaten mevcut olacaktır. Aşağıdaki değerleri yansıtacak şekilde dosyasını değiştirin.
+Klasik kaynak modelini kullanarak sanal ağa ağ geçidi eklediğinizde, ağ geçidini oluşturmadan önce ağ yapılandırma dosyasını doğrudan değiştirirsiniz. Bir ağ geçidi oluşturmak için aşağıdaki örneklerdeki değerlerin dosyada bulunması gerekir. Sanal ağınızın daha önce bu ağla ilişkili bir ağ geçidi varsa, bu değerlerden bazıları zaten mevcut olacaktır. Aşağıdaki değerleri yansıtacak şekilde dosyayı değiştirin.
 
 ### <a name="download-the-network-configuration-file"></a>Ağ yapılandırma dosyasını indirin
 
-1. İçindeki adımları kullanarak ağ yapılandırma dosyasını indirme [ağ yapılandırma dosyasını](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) makalesi. Bir metin düzenleyicisi kullanarak dosyayı açın.
-2. Bir yerel ağ alanına dosyaya ekleyin. Herhangi bir geçerli adresi önek kullanabilirsiniz. VPN ağ geçidi herhangi bir geçerli IP adresi ekleyebilirsiniz. Bu bölümdeki adres değerlerini ExpressRoute işlemleri için kullanılmaz, ancak dosya doğrulama için gereklidir. Örnekte, "branch1" sitenin adıdır. Farklı bir ad kullanın ancak aynı değeri ağ geçidi bölümünde kullandığınızdan emin olun.
+1. Ağ yapılandırma dosyası makalesindeki adımları kullanarak ağ yapılandırma [dosyasını](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) karşıdan yükleyin. Bir metin düzenleyicisi kullanarak dosyayı açın.
+2. Dosyaya yerel bir ağ sitesi ekleyin. Geçerli adres önekini kullanabilirsiniz. VPN ağ geçidi için geçerli bir IP adresi ekleyebilirsiniz. Bu bölümdeki adres değerleri ExpressRoute işlemleri için kullanılmaz, ancak dosya doğrulama için gereklidir. Örnekte, "branch1" sitenin adıdır. Farklı bir ad kullanabilirsiniz, ancak dosyanın Ağ Geçidi bölümünde aynı değeri kullandığınızdan emin olun.
 
    ```
    <VirtualNetworkConfiguration>
@@ -39,11 +39,11 @@ Klasik kaynak modeli kullanarak bir sanal ağ geçidi eklediğinizde, doğrudan 
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
    ```
-3. İçin VirtualNetworkSites gidin ve alanları değiştirin.
+3. VirtualNetworkSites'e gidin ve alanları değiştirin.
 
-   * Ağ geçidi alt ağı, sanal ağınıza ilişkin mevcut olduğunu doğrulayın. Kullanmıyorsa, şu anda ekleyebilirsiniz. Adı "GatewaySubnet" olmalıdır.
-   * Ağ geçidi kısmında var olduğunu doğrulayın. Seçili değilse bunu ekleyin. Bu sanal ağ (bağlanmakta olduğunuz ağ temsil eden) yerel ağ alanı ile ilişkilendirmek için gereklidir.
-   * Bağlantı türü doğrulayın adanmış =. Bu, ExpressRoute bağlantıları için gereklidir.
+   * Ağ Geçidi Alt Ağının sanal ağınız için var olduğunu doğrulayın. Değilse, şu anda bir ekleyebilirsiniz. Adı "GatewaySubnet" olmalıdır.
+   * Dosyanın Ağ Geçidi bölümünün var olduğunu doğrulayın. Eğer değilse, ekleyin. Bu, sanal ağı yerel ağ sitesiyle ilişkilendirmek için gereklidir (bağlandığınız ağı temsil eder).
+   * Bağlantı türünün = Adanmış olduğunu doğrulayın. Bu, ExpressRoute bağlantıları için gereklidir.
 
    ```
    </LocalNetworkSites>
@@ -76,26 +76,26 @@ Klasik kaynak modeli kullanarak bir sanal ağ geçidi eklediğinizde, doğrudan 
 
 ### <a name="create-the-gateway"></a>Ağ geçidi oluşturma
 
-Bir ağ geçidi oluşturmak için aşağıdaki komutu kullanın. Tüm değerleri kendi değiştirin.
+Bir ağ geçidi oluşturmak için aşağıdaki komutu kullanın. Herhangi bir değeri kendi değerlerinin yerine.
 
 ```powershell
 New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayType DynamicRouting -GatewaySKU  Standard
 ```
 
-## <a name="verify-the-gateway-was-created"></a>Ağ geçidinin oluşturulduğunu doğrulayın.
+## <a name="verify-the-gateway-was-created"></a>Ağ geçidinin oluşturulduğunu doğrulama
 
-Ağ geçidinin oluşturulduğunu doğrulamak için aşağıdaki komutu kullanın. Bu komut ayrıca diğer işlemler için gereken ağ geçidi kimliği alır.
+Ağ geçidinin oluşturulduğunu doğrulamak için aşağıdaki komutu kullanın. Bu komut, diğer işlemler için gereken ağ geçidi kimliğini de alır.
 
 ```powershell
 Get-AzureVNetGateway
 ```
 
-## <a name="resize-a-gateway"></a>Bir ağ geçidini yeniden boyutlandırın
+## <a name="resize-a-gateway"></a>Ağ geçidini yeniden boyutlandırma
 
-Bir dizi vardır [ağ geçidi SKU'ları](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Herhangi bir zamanda ağ geçidi SKU'suna değiştirmek için aşağıdaki komutu kullanabilirsiniz.
+[Ağ Geçidi SKUs](../articles/expressroute/expressroute-about-virtual-network-gateways.md)bir dizi vardır. Ağ Geçidi SKU'yu istediğiniz zaman değiştirmek için aşağıdaki komutu kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Bu komut, UltraPerformance ağ geçidi çalışmaz. Ağ geçidinize bir UltraPerformance ağ geçidi değiştirmek için önce var olan ExpressRoute ağ geçidini kaldırın ve ardından yeni bir UltraPerformance ağ geçidi oluşturun. Bir UltraPerformance ağ geçidi geçidinizden düşürmek için ilk UltraPerformance ağ geçidi kaldırın ve ardından yeni bir ağ geçidi oluşturun.
+> Bu komut UltraPerformance ağ geçidi için çalışmaz. Ağ geçidinizi bir UltraPerformance ağ geçidine değiştirmek için önce varolan ExpressRoute ağ geçidini kaldırın ve ardından yeni bir UltraPerformance ağ geçidi oluşturun. Ağ geçidinizi bir UltraPerformance ağ geçidinden düşürmek için önce UltraPerformance ağ geçidini kaldırın ve ardından yeni bir ağ geçidi oluşturun.
 >
 >
 
@@ -105,7 +105,7 @@ Resize-AzureVNetGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
 ## <a name="remove-a-gateway"></a>Ağ geçitlerini kaldırma
 
-Bir ağ geçidini kaldırmak için aşağıdaki komutu kullanın.
+Ağ geçidini kaldırmak için aşağıdaki komutu kullanın
 
 ```powershell
 Remove-AzureVnetGateway -GatewayId <Gateway ID>

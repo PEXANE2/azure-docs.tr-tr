@@ -1,102 +1,102 @@
 ---
-title: Azure Pipelines ve Azure Application Insights ile DevOps yayın işlem hattınızı sürekli izleme | Microsoft Docs
-description: Application Insights ile sürekli izlemeyi hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
+title: DevOps sürüm ardışık sisteminizin Azure Denetim Hatları ve Azure Uygulama Öngörüleri ile sürekli izlenmesi | Microsoft Dokümanlar
+description: Uygulama Öngörüleri ile sürekli izlemeyi hızla ayarlamak için talimatlar sağlar
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655404"
 ---
-# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Yayın ardışık düzenine sürekli izleme ekleme
+# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Sürüm ardışık sisteminize sürekli izleme ekleme
 
-Azure Pipelines, yazılım geliştirme yaşam döngüsü boyunca DevOps yayın işlem hattınızı sürekli olarak izlemeye olanak tanımak için Azure Application Insights ile tümleşir. 
+Azure Pipelines, Yazılım geliştirme yaşam döngüsü boyunca DevOps sürüm ardınızın sürekli olarak izlenmesine olanak sağlamak için Azure Uygulama Öngörüleri ile tümleşir. 
 
-Sürekli izleme sayesinde, yayın işlem hatları Application Insights ve diğer Azure kaynaklarından izleme verileri içerebilir. Yayın ardışık düzeni bir Application Insights uyarısı algıladığında, işlem hattı, uyarı çözümlenene kadar dağıtımı geçit veya geri alabilir. Tüm denetimler başarılı olursa dağıtımlar, el ile müdahale gerekmeden üretime kadar her türlü teste otomatik olarak devam edebilir. 
+Sürekli izleme yle, sürüm ardışık hatları, Uygulama Öngörüleri ve diğer Azure kaynaklarından gelen izleme verilerini birbiriyle birleştirebilir. Sürüm ardışık bir Uygulama Öngörüleri uyarısı algıladığında, ardışık iş adı, uyarı çözülene kadar dağıtımı kaplayabilir veya geri alabilir. Tüm denetimler geçerse, dağıtımlar el ile müdahaleye gerek kalmadan testten üretime kadar otomatik olarak devam edebilir. 
 
 ## <a name="configure-continuous-monitoring"></a>Sürekli izlemeyi yapılandırma
 
-1. [Azure DevOps](https://dev.azure.com)'da bir kuruluş ve proje seçin.
+1. [Azure DevOps'te](https://dev.azure.com)bir kuruluş ve proje seçin.
    
-1. Proje sayfasının sol menüsünde, işlem **hatları** > **sürümler**' i seçin. 
+1. Proje sayfasının sol menüsünde, **Pipelines** > **Releases'i**seçin. 
    
-1. **Yeni** ' nin yanındaki oku aşağı kaydırın ve **Yeni sürüm işlem hattı**' nı seçin. Ya da henüz bir işlem hattınız yoksa görüntülenen sayfada yeni işlem **hattı** ' nı seçin.
+1. **Yeni'nin** yanındaki oku bırakın ve **Yeni sürüm ardışık hattını**seçin. Veya, henüz bir ardışık hattınız yoksa, görünen sayfada **Yeni ardışık**
    
-1. **Şablon seçin** bölmesinde, **sürekli izlemeye sahip Azure App Service dağıtımı**arayıp seçin ve ardından **Uygula**' yı seçin. 
+1. **Şablon** seç bölmesinde, sürekli **izleme yle Azure Uygulama Hizmeti dağıtımını**arayın ve seçin ve ardından **Uygula'yı**seçin. 
 
-   ![Yeni Azure Pipelines yayın işlem hattı](media/continuous-monitoring/001.png)
+   ![Yeni Azure Ardışık Hatları serbest ardışık](media/continuous-monitoring/001.png)
 
-1. **Aşama 1** kutusunda, **aşama görevlerini görüntülemek** için köprüyü seçin.
+1. Aşama **1** kutusunda, aşama görevlerini görüntülemek için köprüseçeneğini **seçin.**
 
-   ![Aşama görevlerini görüntüle](media/continuous-monitoring/002.png)
+   ![Sahne görevlerini görüntüleme](media/continuous-monitoring/002.png)
 
-1. 1\. **aşama** Yapılandırma bölmesinde aşağıdaki alanları doldurun: 
+1. Aşama **1** yapılandırma bölmesinde, aşağıdaki alanları tamamlayın: 
 
     | Parametre        | Değer |
    | ------------- |:-----|
-   | **Aşama adı**      | Bir aşama adı sağlayın veya **1. aşamada**bırakın. |
-   | **Azure aboneliği** | Açılır ve kullanmak istediğiniz bağlı Azure aboneliğini seçin.|
-   | **Uygulama türü** | Açılır ve uygulama türü ' nü seçin. |
-   | **App Service adı** | Azure App Service adını girin. |
-   | **Application Insights için kaynak grubu adı**    | Açılır ve kullanmak istediğiniz kaynak grubunu seçin. |
-   | **Application Insights kaynak adı** | Açılır ve seçtiğiniz kaynak grubu için Application Insights kaynağını seçin.
+   | **Aşama adı**      | Bir sahne adı sağlayın veya **Aşama 1'de**bırakın. |
+   | **Azure aboneliği** | Aşağı inin ve kullanmak istediğiniz bağlantılı Azure aboneliğini seçin.|
+   | **Uygulama türü** | Aşağı inin ve uygulama türünü seçin. |
+   | **Uygulama Hizmeti adı** | Azure Uygulama Hizmetinizin adını girin. |
+   | **Uygulama Öngörüleri için Kaynak Grubu adı**    | Aşağı inin ve kullanmak istediğiniz kaynak grubunu seçin. |
+   | **Uygulama Öngörüleri kaynak adı** | Aşağı inin ve seçtiğiniz kaynak grubu için Uygulama Öngörüleri kaynağını seçin.
 
-1. İşlem hattını varsayılan uyarı kuralı ayarlarıyla kaydetmek için, Azure DevOps penceresinde sağ üst üste **Kaydet** ' i seçin. Açıklayıcı bir açıklama girin ve ardından **Tamam**' ı seçin.
+1. Varsayılan uyarı kuralı ayarlarıyla ardışık hattı kaydetmek için Azure DevOps penceresinde sağ üstte **Kaydet'i** seçin. Açıklayıcı bir açıklama girin ve ardından **Tamam'ı**seçin.
 
 ## <a name="modify-alert-rules"></a>Uyarı kurallarını değiştirme
 
-Kullanıma hazır, **sürekli izleme şablonuyla Azure App Service dağıtımı** dört uyarı kuralına sahiptir: **kullanılabilirlik**, **başarısız istekler**, **sunucu yanıt süresi**ve **sunucu özel durumları**. Daha fazla kural ekleyebilir veya kural ayarlarını hizmet seviyesi gereksinimlerinize uyacak şekilde değiştirebilirsiniz. 
+Kutunun dışında, sürekli izleme şablonuna **sahip Azure Uygulama Hizmeti dağıtımının** dört uyarı kuralı vardır: **Kullanılabilirlik**, **Başarısız istekler,** **Sunucu yanıt süresi**ve Sunucu **özel durumları.** Daha fazla kural ekleyebilir veya hizmet düzeyi gereksinimlerinizi karşılamak için kural ayarlarını değiştirebilirsiniz. 
 
 Uyarı kuralı ayarlarını değiştirmek için:
 
-1. Yayın ardışık düzeni sayfasının sol bölmesinde **Application Insights uyarılarını Yapılandır**' ı seçin.
+1. Sürüm ardışık alanı sayfasının sol bölmesinde, **Uygulama Öngörülerini Yapılandır'ı**seçin.
 
-1. **Azure Izleyici uyarıları** bölmesinde **Uyarı kuralları**' nın yanındaki üç nokta **...** seçeneğini belirleyin.
+1. Azure **Monitör Uyarıları** bölmesinde, **Uyarı kurallarının** **yanında** elips ... seçeneğini belirleyin.
    
-1. **Uyarı kuralları** iletişim kutusunda, **kullanılabilirlik**gibi bir uyarı kuralının yanındaki açılan simgeyi seçin. 
+1. Uyarı **kuralları** iletişim kutusunda, **Kullanılabilirlik**gibi bir uyarı kuralının yanındaki açılır simgeyi seçin. 
    
-1. **Eşiği** ve diğer ayarları gereksinimlerinize uyacak şekilde değiştirin.
+1. Gereksinimlerinizi karşılamak için **Eşik** ve diğer ayarları değiştirin.
    
-   ![Uyarıyı Değiştir](media/continuous-monitoring/003.png)
+   ![Uyarıyı değiştirme](media/continuous-monitoring/003.png)
    
-1. **Tamam**' ı seçin ve ardından Azure DevOps penceresinde sağ üst üste **Kaydet** ' i seçin. Açıklayıcı bir açıklama girin ve ardından **Tamam**' ı seçin.
+1. **Tamam'ı**seçin ve ardından Azure DevOps penceresinde sağ üstte **Kaydet'i** seçin. Açıklayıcı bir açıklama girin ve ardından **Tamam'ı**seçin.
 
 ## <a name="add-deployment-conditions"></a>Dağıtım koşulları ekleme
 
-Yayın işlem hattınızı dağıtım kapıları eklediğinizde, sizin ayarladığınız eşikleri aşan bir uyarı istenmeyen yayın yükseltmesini önler. Uyarıyı çözdükten sonra dağıtım otomatik olarak devam edebilir.
+Sürüm ardışık noktanıza dağıtım kapıları eklediğinizde, ayarladığınız eşikleri aşan bir uyarı istenmeyen sürüm promosyonunu önler. Uyarıyı çözdükten sonra dağıtım otomatik olarak devam edebilir.
 
 Dağıtım kapıları eklemek için:
 
-1. Ana ardışık düzen sayfasında, **aşamalar**' ın altında, hangi aşamanın sürekli bir izleme kapısı ihtiyacı olduğuna bağlı olarak dağıtım **öncesi koşulları** veya **dağıtım sonrası koşullar** simgesini seçin.
+1. Ana boru hattı sayfasında, **Aşamalar**altında, hangi aşamanın sürekli bir izleme kapısına ihtiyaç duyduğuna bağlı olarak **dağıtım öncesi koşulları** veya dağıtım sonrası **koşullar** simgesini seçin.
    
-   ![Dağıtım öncesi koşulları](media/continuous-monitoring/004.png)
+   ![Dağıtım öncesi koşullar](media/continuous-monitoring/004.png)
    
-1. **Dağıtım öncesi koşullar** Yapılandırma bölmesinde, **kapıları** öğesini **etkin**olarak ayarlayın.
+1. Dağıtım **öncesi koşullar** yapılandırma bölmesinde, **Gates'i** **Etkin**olarak ayarlayın.
    
-1. **Dağıtım kapıları**' ın yanındaki **Ekle**' yi seçin.
+1. Dağıtım **kapılarının**yanında **Ekle'yi**seçin.
    
-1. Açılan menüden **Azure izleyici uyarılarını sorgula** ' yı seçin. Bu seçenek hem Azure Izleyici hem de Application Insights uyarılarınıza erişmenizi sağlar.
+1. Açılan menüden **Azure Monitörünü Sorgula uyarılarını** seçin. Bu seçenek, hem Azure Monitörü hem de Uygulama Öngörüleri uyarılarına erişmenizi sağlar.
    
-   ![Azure Izleyici uyarılarını sorgulama](media/continuous-monitoring/005.png)
+   ![Azure Monitör uyarılarını sorgula](media/continuous-monitoring/005.png)
    
-1. **Değerlendirme seçenekleri**altında, **ağ geçitleri için yeniden değerlendirme ve kapıların** **başarısız olduğu zaman aşımı**arasındaki süre gibi ayarlar için istediğiniz değerleri girin. 
+1. **Değerlendirme seçenekleri**altında, **kapıların yeniden değerlendirilmesi ile** sonraki **kapıların başarısız olduğu zaman sonu**gibi ayarlar için istediğiniz değerleri girin. 
 
-## <a name="view-release-logs"></a>Yayın günlüklerini görüntüle
+## <a name="view-release-logs"></a>Sürüm günlüklerini görüntüleme
 
-Dağıtım kapısı davranışını ve diğer sürüm adımlarını yayın günlüklerinde görebilirsiniz. Günlükleri açmak için:
+Dağıtım kapısı davranışını ve diğer sürüm adımlarını sürüm günlüklerinde görebilirsiniz. Günlükleri açmak için:
 
-1. Ardışık düzen sayfasının sol menüsünde **yayınlar** ' ı seçin. 
+1. Ardışık hatlar sayfasının sol menüsünden **Sürümler'i** seçin. 
    
-1. Herhangi bir sürüm seçin. 
+1. Herhangi bir sürümü seçin. 
    
-1. **Aşamalar**' ın altında, bir sürüm özetini görüntülemek için herhangi bir aşamayı seçin. 
+1. **Aşamalar**altında, bir sürüm özetini görüntülemek için herhangi bir aşamayı seçin. 
    
-1. Günlükleri görüntülemek için, yayın özetinde **günlükleri görüntüle** ' yi seçin, herhangi bir aşamada **başarılı** veya **başarısız** köprüyü seçin ya da herhangi bir aşamanın üzerine gelin ve **Günlükler**' i seçin. 
+1. Günlükleri görüntülemek için, sürüm özetinde **günlükleri** görüntüle'yi seçin, herhangi bir aşamada **Başarılı** veya **Başarısız köprübağlantısını** seçin veya herhangi bir aşamanın üzerine gidip **Günlükler'i**seçin. 
    
-   ![Yayın günlüklerini görüntüle](media/continuous-monitoring/006.png)
+   ![Sürüm günlüklerini görüntüleme](media/continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Pipelines hakkında daha fazla bilgi için [Azure Pipelines belgelerine](https://docs.microsoft.com/azure/devops/pipelines)bakın.
+Azure Ardışık Hatları hakkında daha fazla bilgi için [Azure Ardışık Hatları belgelerine](https://docs.microsoft.com/azure/devops/pipelines)bakın.

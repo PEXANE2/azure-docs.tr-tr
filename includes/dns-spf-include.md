@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67189002"
 ---
-Gönderen ilke framework (SPF) kayıtları hangi e-posta sunucuları bir etki alanı adı adına e-posta gönderebilir belirtmek için kullanılır. Alıcılara e-postanızı önemsiz olarak işaretlemenizi önlemek SPF kayıtlarının doğru yapılandırılması önemlidir.
+Gönderen ilkesi çerçevesi (SPF) kayıtları, bir etki alanı adı adına hangi e-posta sunucularının e-posta gönderebileceğini belirtmek için kullanılır. SPF kayıtlarının doğru yapılandırması, alıcıların e-postanızı önemsiz olarak işaretlemesini önlemek için önemlidir.
 
-DNS RFC'ler ilk olarak bu senaryoyu desteklemek için yeni bir SPF kaydını türü kullanıma sunuldu. Eski ad sunucularını desteklemek için bunlar da SPF kayıtlarının TXT kaydı türü kullanımını izin. Bu belirsizlik işlemler sırasında LED'i tarafından çözümlendi Karışıklığı önlemek için [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1). Bu, SPF kayıtlarının TXT kaydı türü kullanılarak oluşturulması gerektiğini belirtir. SPF kayıt türü kullanım dışı olduğunu belirtir.
+DNS RFC'ler başlangıçta bu senaryoyu desteklemek için yeni bir SPF kayıt türü tanıttı. Eski ad sunucularını desteklemek için, SPF kayıtlarını belirtmek için TXT kayıt türünün kullanılmasına da izin verdiler. Bu [belirsizlik, RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1)tarafından çözüldü karışıklığa yol açtı. SPF kayıtlarının TXT kayıt türü kullanılarak oluşturulması gerektiğini belirtir. Ayrıca, SPF kayıt türünün amortismana erdiğini belirtir.
 
-**SPF kayıtlarının TXT kaydı türü kullanılarak oluşturulması gerekir ve Azure DNS tarafından desteklenir.** Eski bir SPF kaydını türü desteklenmiyor. Olduğunda, [DNS bölge dosyasını içeri aktarma](../articles/dns/dns-import-export.md), SPF kaydı türü kullanmaktadır herhangi bir SPF kayıtlarının TXT kayıt türüne dönüştürülür.
+**SPF kayıtları Azure DNS tarafından desteklenir ve TXT kayıt türü kullanılarak oluşturulmalıdır.** Eski SPF kayıt türü desteklenmez. Bir [DNS bölge dosyasını içe](../articles/dns/dns-import-export.md)aktardığınızda, SPF kayıt türünü kullanan tüm SPF kayıtları TXT kayıt türüne dönüştürülür.

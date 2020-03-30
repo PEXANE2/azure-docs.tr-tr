@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 8b471dd509dca02ab2a66d70dbc7fac9988f1afe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472246"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389435"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Öğretici: Tasarımcı ile otomobil fiyatı tahmin (önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -103,7 +103,7 @@ Kullanacağınız veri kümesini anlamak için verileri görselleştirebilirsini
 
 1. Otomobil **fiyat verileri (Raw)** modülünü seçin.
 
-1. Tuvalin sağındaki modül ayrıntıları bölmesinde **Çıktılar'ı**seçin.
+1. Tuvalin sağındaki modül ayrıntıları bölmesinde **Çıktılar + log'u**seçin.
 
 1. Verileri görselleştirmek için grafik simgesini seçin.
 
@@ -269,7 +269,7 @@ Modelinizin test veri kümesini ne kadar iyi puanladığını değerlendirmek i�
 
 ## <a name="submit-the-pipeline"></a>Boru hattını gönderme
 
-Artık boru hattınız tamamen kurulum olduğuna göre, makine öğrenimi modelinizi eğitmek için bir boru hattı çalıştırabilirsiniz. Tasarımcıda boru hattı inşa ederken istediğiniz zaman bir ardışık hat çalışması gönderebilirsiniz. Bunu, ardışık noktanızın beklendiği gibi çalıştığını doğrulamak için çalışırken çalışmanızı denetlemek için yapabilirsiniz.
+Artık boru hattınız tamamen kurulum olduğuna göre, makine öğrenimi modelinizi eğitmek için bir boru hattı çalıştırabilirsiniz. Geliştirme sırasında ardışık hatlar için yapılan değişiklikleri gözden geçirmek için kullanılabilecek geçerli bir ardışık hatlar hattı çalıştırabilirsiniz.
 
 1. Tuvalin üst kısmında **Gönder'i**seçin.
 
@@ -283,6 +283,8 @@ Artık boru hattınız tamamen kurulum olduğuna göre, makine öğrenimi modeli
     1. **Gönder**’i seçin.
     
     Tuvalin sağ üst kısmında ki çalışma durumunu ve ayrıntılarını görüntüleyebilirsiniz.
+    
+    İlk çalıştırma ysa, ardışık alanınızın çalışmasını tamamlaması 20 dakika kadar sürebilir. Varsayılan işlem ayarlarının en az düğüm boyutu 0'dır, bu da tasarımcının boşta kaldıktan sonra kaynak ayırması gerektiği anlamına gelir. Yinelenen ardışık işlem çalışır işlem kaynakları zaten tahsis olduğundan daha az zaman alacaktır. Ayrıca, tasarımcı verimliliği daha da artırmak için her modül için önbelleğe alınmış sonuçlar kullanır.
 
 ### <a name="view-scored-labels"></a>Puanlı etiketleri görüntüleme
 
@@ -290,7 +292,7 @@ Artık boru hattınız tamamen kurulum olduğuna göre, makine öğrenimi modeli
 
 1. Çıktısını görüntülemek için **Puan Modeli** modülünü seçin.
 
-1. Tuvalin sağındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek ![için **Çıktılar** > grafik simgesini](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) görselleştir'i seçin.
+1. Tuvalin sağındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek için **Çıktılar + günlükler** > grafik simgesini ![görselleştir'i](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) seçin.
 
     Burada tahmin edilen fiyatları ve test verilerinden gerçek fiyatları görebilirsiniz.
 
@@ -302,7 +304,7 @@ Test veri kümesinde eğitimli modelin ne kadar iyi performans gösterdiğini g�
 
 1. Çıktısını görüntülemek için **Modeli Değerlendir** modülünü seçin.
 
-1. Tuvalin sağındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek ![için](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) **Çıktı** > grafik simgesini görselleştir'i seçin.
+1. Tuvalin sağındaki modül ayrıntıları bölmesinde, sonuçları görüntülemek için **Çıktılar + günlükler** > grafik simgesini ![görselleştir'i](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) seçin.
 
 Modeliniz için aşağıdaki istatistikler gösterilir:
 

@@ -1,6 +1,6 @@
 ---
-title: IoT Hub 'ınızın IP adresini anlama | Microsoft Docs
-description: IoT Hub IP adresinizi ve özelliklerini sorgulamayı öğrenin. IoT Hub 'ınızın IP adresi, olağanüstü durum kurtarma veya bölgesel yük devretme gibi belirli senaryolar sırasında değiştirilebilir.
+title: IoT hub'ınızın IP adresini anlama | Microsoft Dokümanlar
+description: IoT hub IP adresinizi ve özelliklerini nasıl sorgulayacağınızı öğrenin. IoT hub'ınızın IP adresi, olağanüstü durum kurtarma veya bölgesel arıza gibi belirli senaryolar sırasında değişebilir.
 author: philmea
 ms.author: philmea
 ms.service: iot-hub
@@ -8,49 +8,49 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367576"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresleri
 
-Ortak uç noktaların IoT Hub IP adresi önekleri, düzenli aralıklarla _AzureIoTHub_ [Service etiketi](../virtual-network/service-tags-overview.md)altında yayımlanır.
+IoT Hub ortak uç noktalarının IP adresi önekleri _AzureIoTHub_ [hizmet etiketi](../virtual-network/service-tags-overview.md)altında düzenli aralıklarla yayımlanır.
 
 > [!NOTE]
-> Azure IoT Hub, şirket içi ağların içine dağıtılan cihazlar için özel uç noktalarla VNET bağlantısı tümleştirmesini destekler. Daha fazla bilgi için bkz. [VNET için IoT Hub desteği](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) .
+> Şirket içi ağlarda dağıtılan aygıtlar için Azure IoT Hub, Özel uç noktalarla VNET bağlantı tümleştirmesini destekler. Daha fazla bilgi [için VNET'ler için IoT Hub desteğine](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) bakın.
 
 
-Bu IP adresi öneklerini, çeşitli ağ yalıtımı hedefleri uygulamak üzere IoT Hub ile cihazlarınız veya Ağ varlıkları arasındaki bağlantıyı denetlemek için kullanabilirsiniz:
+Çeşitli ağ yalıtım hedefleri uygulamak için bu IP adresi önekleri, IoT Hub ile aygıtlarınız veya ağ varlıklarınız arasındaki bağlantıyı denetlemek için kullanabilirsiniz:
 
-| Hedef | İlgili senaryolar | Yaklaşım |
+| Hedef | Uygulanabilir senaryolar | Yaklaşım |
 |------|-----------|----------|
-| Cihazlarınızın ve hizmetlerinizin yalnızca IoT Hub uç noktalarıyla iletişim kurmasını sağlayın | [Cihazdan buluta](./iot-hub-devguide-messaging.md)ve [buluttan cihaza](./iot-hub-devguide-messages-c2d.md) mesajlaşma, [doğrudan Yöntemler](./iot-hub-devguide-direct-methods.md), [Cihaz ve modül TWINS](./iot-hub-devguide-device-twins.md) ve [cihaz akışları](./iot-hub-device-streams-overview.md) | IoT Hub ve Olay Hub 'ı IP adresi öneklerini bulma ve bu IP adresi önekleri için cihazlarınızda ' ve hizmetler ' güvenlik duvarı ayarında ızın verme kurallarını yapılandırma için _AzureIoTHub_ ve _EventHub_ hizmet etiketlerini kullanın; cihazların veya hizmetlerin iletişim kurmasını istemediğiniz trafiği diğer hedef IP adreslerine bırakın. |
-| IoT Hub cihaz uç noktanızın yalnızca cihazlarınızdan ve ağ varlıklarınızdan bağlantı aldığından emin olun | [Cihazdan buluta](./iot-hub-devguide-messaging.md)ve [buluttan cihaza](./iot-hub-devguide-messages-c2d.md) mesajlaşma, [doğrudan Yöntemler](./iot-hub-devguide-direct-methods.md), [Cihaz ve modül TWINS](./iot-hub-devguide-device-twins.md) ve [cihaz akışları](./iot-hub-device-streams-overview.md) | Cihazlarınızdan ve ağ varlık IP adreslerinden gelen bağlantılara izin vermek için IoT Hub [IP filtresi özelliğini](iot-hub-ip-filtering.md) kullanın (bkz. [sınırlamalar](#limitations-and-workarounds) bölümü). | 
-| Rotalarınızın özel uç nokta kaynaklarına (depolama hesapları, hizmet veri yolu ve Olay Hub 'ları) yalnızca ağ varlıklarınızdan erişilebildiğinden emin olun | [İleti yönlendirme](./iot-hub-devguide-messages-d2c.md) | Bağlantıyı kısıtlama (örneğin, [güvenlik duvarı kuralları](../storage/common/storage-network-security.md), [özel bağlantılar](../private-link/private-endpoint-overview.md)veya [hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)aracılığıyla) için kaynak kılavuzunu izleyin; IoT Hub IP adresi öneklerini bulma ve kaynağınızın güvenlik duvarı yapılandırmasındaki bu IP önekleri için ızın verme kuralları ekleme (bkz. [sınırlamalar](#limitations-and-workarounds) bölümü) için _AzureIoTHub_ Service etiketlerini kullanın. |
+| Aygıtlarınızın ve hizmetlerinizin yalnızca IoT Hub uç noktalarıyla iletişim kurmasını sağlayın | [Cihazdan buluta](./iot-hub-devguide-messaging.md)ve [bulutdan cihaza](./iot-hub-devguide-messages-c2d.md) mesajlaşma, [doğrudan yöntemler,](./iot-hub-devguide-direct-methods.md) [cihaz ve modül ikizleri ve](./iot-hub-devguide-device-twins.md) cihaz [akışları](./iot-hub-device-streams-overview.md) | IoT Hub'ı keşfetmek için _AzureIoTHub_ ve _EventHub_ hizmet etiketlerini kullanın ve Event Hub IP adresi önekleri ve bu IP adresi önekleri için aygıtlarınızın ve hizmetlerinizin güvenlik duvarı ayarında ALLOW kurallarını yapılandırın; aygıtların veya hizmetlerin iletişim kurmasını istemediğiniz diğer hedef IP adreslerine trafik bırakın. |
+| IoT Hub aygıtınızın uç noktasının yalnızca aygıtlarınızdan ve ağ varlıklarınızdan bağlantı aldığından emin olun | [Cihazdan buluta](./iot-hub-devguide-messaging.md)ve [bulutdan cihaza](./iot-hub-devguide-messages-c2d.md) mesajlaşma, [doğrudan yöntemler,](./iot-hub-devguide-direct-methods.md) [cihaz ve modül ikizleri ve](./iot-hub-devguide-device-twins.md) cihaz [akışları](./iot-hub-device-streams-overview.md) | Aygıtlarınızdan ve ağ varlık IP adreslerinden bağlantılara izin vermek için IoT Hub [IP filtresi özelliğini](iot-hub-ip-filtering.md) kullanın [(bkz. sınırlamalar](#limitations-and-workarounds) bölümü). | 
+| Rotalarınızın özel uç nokta kaynaklarına (depolama hesapları, servis veri yolu ve etkinlik hub'ları) yalnızca ağ varlıklarınızdan erişilebilmesini sağlayın | [İleti yönlendirme](./iot-hub-devguide-messages-d2c.md) | Bağlantının kısıtlanması konusunda kaynağınızın kılavuzunu izleyin (örneğin [güvenlik duvarı kuralları,](../storage/common/storage-network-security.md) [özel bağlantılar](../private-link/private-endpoint-overview.md)veya hizmet [bitiş noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)yoluyla); IoT Hub IP adresi önekleri keşfetmek ve kaynağınızın güvenlik duvarı yapılandırmasına bu IP önekleri için IZIN kuralları eklemek için _AzureIoTHub_ hizmet etiketlerini kullanın [(bkz. sınırlamalar](#limitations-and-workarounds) bölümü). |
 
 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-* Cihazlarınızda ızın verme kuralları eklerken, [uygun protokoller tarafından kullanılan belirli bağlantı noktalarını](./iot-hub-devguide-protocols.md#port-numbers)sağlamak en iyisidir.
+* Aygıtlarınızın güvenlik duvarı yapılandırmasına ALLOW kuralları eklerken, [ilgili protokoller tarafından kullanılan](./iot-hub-devguide-protocols.md#port-numbers)belirli bağlantı noktalarını sağlamak en iyisidir.
 
-* IoT Hub 'ının IP adresi önekleri değişebilir. Bu değişiklikler, etkin olmadan önce hizmet etiketleri aracılığıyla düzenli olarak yayımlanır. Bu nedenle, en son hizmet etiketlerini düzenli olarak almak ve kullanmak için işlem geliştirmeniz önemlidir. Bu işlem, [hizmet etiketleri bulma API 'si](../virtual-network/service-tags-overview.md#service-tags-on-premises)aracılığıyla otomatikleştirilebilir. Service Tags bulma API 'sinin hala önizlemede olduğunu ve bazı durumlarda etiketlerin ve IP adreslerinin tam listesini oluşturmadığını unutmayın. Keşif API 'SI genel kullanıma hazır olana kadar, [INDIRILEBILIR JSON biçiminde hizmet etiketlerini](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)kullanmayı göz önünde bulundurun. 
+* IoT hub'ının IP adresi önekleri değiştirilebilir. Bu değişiklikler, yürürlüğe girmeden önce hizmet etiketleri aracılığıyla periyodik olarak yayınlanır. Bu nedenle, en son hizmet etiketlerini düzenli olarak almak ve kullanmak için süreçler geliştirmeniz önemlidir. Bu [işlem, servis etiketleri bulma API](../virtual-network/service-tags-overview.md#service-tags-on-premises)üzerinden otomatikolabilir. Hizmet etiketleri bulma API'sinin hala önizlemede olduğunu ve bazı durumlarda etiketlerin ve IP adreslerinin tam listesini oluşturmayabileceğini unutmayın. Bulma API'si genellikle kullanılabilir olana kadar, [hizmet etiketlerini indirilebilir JSON formatında](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)kullanmayı düşünün. 
 
-* AzureIoTHub kullanın *. [ bölge adı]* etiketi, belirli bir bölgedeki IoT Hub uç noktaları tarafından kullanılan IP öneklerini belirler. Veri merkezi olağanüstü durum kurtarmaya veya [bölgesel yük devretmeye](iot-hub-ha-dr.md) yönelik hesaba gitmek için IoT Hub coğrafi ÇIFT bölgesinin IP öneklerine yönelik bağlantıların de etkinleştirildiğinden emin olun.
+* *AzureIoTHub'ı kullanın.[ bölge adı]* etiketi, belirli bir bölgedeki IoT hub uç noktaları tarafından kullanılan IP önekleri tanımlamak için kullanılır. Veri merkezi olağanüstü durum kurtarma veya [bölgesel arıza](iot-hub-ha-dr.md) için IoT Hub'ınızın coğrafi çifti bölgesinin IP öneklerine bağlantı nın da etkin olmasını sağlayın.
 
-* IoT Hub 'de güvenlik duvarı kuralları ayarlamak, IoT Hub Azure CLı ve PowerShell komutlarını çalıştırmak için gereken bağlantıyı engelleyebilir. Bunu önlemek için, istemcilerin IP adresi öneklerine ızın ver kuralları ekleyerek CLı veya PowerShell istemcilerinin IoT Hub iletişim kurmasını sağlayabilirsiniz.  
+* IoT Hub'da güvenlik duvarı kurallarının ayarlanması, Azure CLI ve PowerShell komutlarını IoT Hub'ınıza karşı çalıştırmak için gereken bağlantıyı engelleyebilir. Bunu önlemek için, CLI veya PowerShell istemcilerinin IoT Hub'ınızla iletişim kurmasını yeniden etkinleştirmek için müşterilerinizin IP adresi önekleri için ALLOW kuralları ekleyebilirsiniz.  
 
 
-## <a name="limitations-and-workarounds"></a>Sınırlamalar ve geçici çözümler
+## <a name="limitations-and-workarounds"></a>Sınırlamalar ve geçici geçici işler
 
-* IoT Hub IP Filtresi özelliği 10 kuralla sınırlıdır. Bu sınır, Azure müşteri desteği aracılığıyla istekler aracılığıyla oluşturulabilir. 
+* IoT Hub IP filtre özelliğinin 10 kuralı vardır. Bu sınır, Azure Müşteri Desteği aracılığıyla istekler yoluyla yükseltilebilir. 
 
-* Yapılandırılmış [IP filtreleme kurallarınız](iot-hub-ip-filtering.md) , IoT Hub 'ının yerleşik Olay Hub 'ı uç noktasında değil, yalnızca IoT Hub IP uç noktalarına uygulanır. Ayrıca, iletilerinizin depolandığı Olay Hub 'ında IP filtrelemesinin uygulanmasını istiyorsanız, istediğiniz IP filtreleme kurallarınızı doğrudan yapılandırabileceğiniz bir olay hub 'ı kaynağını izleyebilirsiniz. Bunu yapmak için kendi olay hub 'ınızın kaynağını sağlamanız ve [ileti yönlendirmeyi](./iot-hub-devguide-messages-d2c.md) , IoT Hub yerleşik Olay Hub 'ı yerine bu kaynağa göndermek için ayarlamanız gerekir. Son olarak, yukarıdaki tabloda açıklandığı gibi, ileti yönlendirme işlevini etkinleştirmek için, IoT Hub IP adresi öneklerinden sağlanan olay hub kaynağınız için bağlantıya izin vermeniz gerekir.
+* Yapılandırılmış [IP filtreleme kurallarınız](iot-hub-ip-filtering.md) yalnızca IoT Hub IP uç noktalarınızda uygulanır, IoT hub'ınızın yerleşik Event Hub bitiş noktasında değil. İletilerinizin depolandığı Olay Hub'ında IP filtrelemenin de uygulanmasını istiyorsanız, istediğiniz IP filtreleme kurallarını doğrudan yapılandırabileceğiniz kendi Event Hub kaynağınızı getirebilirsiniz. Bunu yapmak için, kendi Olay Hub kaynağınızı sağlamanız ve iletilerinizi IoT Hub'ınızın yerleşik Olay Hub'ı yerine bu kaynağa göndermek için [ileti yönlendirmesini](./iot-hub-devguide-messages-d2c.md) ayarlamanız gerekir. Son olarak, yukarıdaki tabloda anlatıldığı gibi, ileti yönlendirme işlevini etkinleştirmek için, IoT Hub'ın IP adresi öneklerinden sizin sağlanan Olay Hub kaynağınıza bağlantı izni vermeniz gerekir.
 
-* Bir depolama hesabına yönlendirdiğinde, IoT Hub IP adresi öneklerinden gelen trafiğe izin vermek, yalnızca depolama hesabı IoT Hub olarak farklı bir bölgedeyse mümkündür.
+* Bir depolama hesabına yönlendirme yaparken, IoT Hub'ın IP adresi önekleri trafiğine izin vermek yalnızca depolama hesabı IoT Hub'ınız la farklı bir bölgede olduğunda mümkündür.
 
-## <a name="support-for-ipv6"></a>IPv6 desteği 
+## <a name="support-for-ipv6"></a>IPv6 için destek 
 
-IPv6 Şu anda IoT Hub desteklenmiyor.
+IPv6 şu anda IoT Hub'da desteklenmez.

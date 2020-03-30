@@ -1,7 +1,7 @@
 ---
-title: PowerShell kullanarak eşdüzey ASN 'yi Azure aboneliğiyle ilişkilendir
+title: PowerShell'i kullanarak EŞ ASN'yi Azure aboneliğiyle ilişkilendirin
 titleSuffix: Azure
-description: PowerShell kullanarak eşdüzey ASN 'yi Azure aboneliğiyle ilişkilendir
+description: PowerShell'i kullanarak EŞ ASN'yi Azure aboneliğiyle ilişkilendirin
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,28 +9,28 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75908979"
 ---
-# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>PowerShell kullanarak eşdüzey ASN 'yi Azure aboneliğiyle ilişkilendir
+# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>PowerShell'i kullanarak EŞ ASN'yi Azure aboneliğiyle ilişkilendirin
 
-Bir eşleme isteği göndermeden önce, aşağıdaki adımları kullanarak ASN 'nizi Azure aboneliğiyle ilişkilendirmeniz gerekir.
+Bir eşleme isteği göndermeden önce, asn aboneliğinizi aşağıdaki adımları kullanarak Azure aboneliğiyle ilişkilendirmelisiniz.
 
 İsterseniz, [portalı](howto-subscription-association-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>ASN 'nizi Azure aboneliğiyle ilişkilendirmek için PeerASN oluşturun
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>ASN'nizi Azure Aboneliği ile ilişkilendirmek için PeerASN oluşturun
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure hesabınızda oturum açın ve aboneliğinizi seçin
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="register-for-peering-resource-provider"></a>Eşleme kaynak sağlayıcısı için kaydolun
-Aşağıdaki komutu kullanarak aboneliğinizde eşleme kaynak sağlayıcısına kaydolun. Bunu yürütütemezsiniz, eşlemeyi ayarlamak için gereken Azure kaynaklarına erişilemez.
+### <a name="register-for-peering-resource-provider"></a>Eşleyen kaynak sağlayıcısına kaydolun
+Aşağıdaki komutu kullanarak aboneliğinizde eşleyen kaynak sağlayıcıya kaydolun. Bunu yürütmezseniz, eşleme ayarlamak için gereken Azure kaynaklarına erişilemez.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
@@ -42,11 +42,11 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
 > [!IMPORTANT]
-> Devam etmeden önce *Registrationstate* 'In "kayıtlı" olmasını bekleyin. Komutu yürütmeden bu işlem 5 ila 30 dakika sürebilir.
+> Devam etmeden önce *RegistrationState'in* "Kayıtlı" olarak dönmesini bekleyin. Komutu çalıştırdıktan sonra 5 ila 30 dakika sürebilir.
 
-### <a name="update-the-peer-information-associated-with-this-subscription"></a>Bu abonelikle ilişkili eş bilgilerini güncelleştir
+### <a name="update-the-peer-information-associated-with-this-subscription"></a>Bu abonelikle ilişkili eş bilgilerini güncelleştirme
 
-Eş bilgilerini güncelleştirme örneği aşağıda verilmiştir.
+Aşağıda eş bilgilerini güncelleştirmek için bir örnek verilmiştir.
 
 ```powershell
 New-AzPeerAsn `
@@ -58,17 +58,17 @@ New-AzPeerAsn `
 ```
 
 > [!NOTE]
-> -Ad kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir. Ancak-peerName, şirketinizin adına karşılık gelir ve PeeringDB profiliniz için mümkün olduğunca yakın olması gerekir. -PeerName değerinin yalnızca a-z, A-Z ve boşluk karakterlerini desteklediğini unutmayın.
+> -Ad kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir. Ancak, -peerName şirketinizin adına karşılık gelir ve PeeringDB profilinize mümkün olduğunca yakın olması gerekir. -peerName değerinin yalnızca a-z, A-Z ve boşluk karakterlerini desteklediğini unutmayın.
 
-Bir abonelikte birden fazla ASNs olabilir. Her ASN için eşleme bilgilerini güncelleştirin. "Ad" nın her ASN için benzersiz olduğundan emin olun.
+Bir aboneliğin birden çok ASN'si olabilir. Her ASN için eşleme bilgilerini güncelleştirin. "Ad"ın her ASN için benzersiz olduğundan emin olun.
 
-Eşlerin [Peeringdb](https://www.peeringdb.com)'de tam ve güncel bir profili olması beklenir. Bu bilgileri kayıt sırasında, NOC bilgileri, teknik iletişim bilgileri ve eşleme tesislerinde bulunan bu kişilerin varlığı gibi eşdüzey ayrıntılarını doğrulamak için kullanırız.
+Eşlerin [PeeringDB'de](https://www.peeringdb.com)tam ve güncel bir profile sahip olması beklenir. Bu bilgileri kayıt sırasında, noc bilgileri, teknik iletişim bilgileri ve bunların akran tesislerindeki varlığı gibi akran bilgilerini doğrulamak için kullanırız.
 
-Yukarıdaki çıktıda **{SubscriptionID}** yerine gerçek abonelik kimliği görüntülenir.
+Yukarıdaki çıktıda **{subscriptionId}** yerine gerçek abonelik kimliğinin görüntüleneceğini unutmayın.
 
-## <a name="view-status-of-a-peerasn"></a>PeerASN durumunu görüntüleme
+## <a name="view-status-of-a-peerasn"></a>PeerASN'nin durumunu görüntüleme
 
-Aşağıdaki komutu kullanarak ASN doğrulama durumunu kontrol edin:
+Aşağıdaki komutu kullanarak ASN Doğrulama durumunu denetleyin:
 
 ```powershell
 Get-AzPeerAsn
@@ -86,27 +86,27 @@ Type            : Microsoft.Peering/peerAsns
 ```
 
 > [!IMPORTANT]
-> Bir eşleme isteği göndermeden önce ValidationState durumunun "Onaylandı" olmasını bekleyin. Bu onay için 12 saate kadar zaman alabilir.
+> Bir eşleme isteği göndermeden önce Doğrulama Durumunun "Onaylandı"yı döndürmesini bekleyin. Bu onay 12 saat kadar sürebilir.
 
-## <a name="modify-peerasn"></a>PeerAsn 'yi Değiştir
-NOC iletişim bilgilerini dilediğiniz zaman değiştirebilirsiniz.
+## <a name="modify-peerasn"></a>PeerAsn değiştir
+NOC kişi bilgilerini istediğiniz zaman değiştirebilirsiniz.
 
-Aşağıda bir örnek verilmiştir:
+Aşağıda bir örnek:
 
 ```powershell
 Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ```
 
-## <a name="delete-peerasn"></a>PeerAsn 'yi Sil
-PeerASN silme işlemi şu anda desteklenmiyor. PeerASN 'yi silmeniz gerekiyorsa, [Microsoft eşleme](mailto:peering@microsoft.com)ile iletişim kurun.
+## <a name="delete-peerasn"></a>PeerAsn'ı sil
+PeerASN silme şu anda desteklenmez. PeerASN'yi silmeniz gerekiyorsa, [Microsoft'a başvurun.](mailto:peering@microsoft.com)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Doğrudan eşleme oluşturma veya değiştirme](howto-direct-powershell.md)
-* [Eski bir doğrudan eşlemeyi Azure kaynağına Dönüştür](howto-legacy-direct-powershell.md)
-* [Exchange eşlemesi oluşturma veya değiştirme](howto-exchange-powershell.md)
-* [Eski bir Exchange eşlemesini Azure kaynağına Dönüştür](howto-legacy-exchange-powershell.md)
+* [Eski bir Doğrudan eşlemeyi Azure kaynağına dönüştürme](howto-legacy-direct-powershell.md)
+* [Exchange eşlemi oluşturma veya değiştirme](howto-exchange-powershell.md)
+* [Eski bir Exchange eşlemeyi Azure kaynağına dönüştürme](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Daha fazla bilgi için [Internet eşlemesi SSS](faqs.md) ' yi ziyaret edin
+Daha fazla bilgi için [Internet'e bakan SSS'leri](faqs.md) ziyaret edin

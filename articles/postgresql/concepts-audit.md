@@ -1,100 +1,100 @@
 ---
-title: Denetim günlüğü-PostgreSQL için Azure veritabanı-tek sunucu
-description: PostgreSQL için Azure veritabanı 'nda pgAudit denetim günlüğü için kavramlar-tek sunucu.
+title: Denetim günlüğü - PostgreSQL için Azure Veritabanı - Tek Sunucu
+description: PostgreSQL için Azure Veritabanında pgAudit denetim günlüğü için kavramlar - Tek Sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842478"
 ---
-# <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-tek sunucu
+# <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanında Denetim günlüğü - Tek Sunucu
 
-PostgreSQL için Azure veritabanı 'nda veritabanı etkinliklerini denetleme-tek sunucu, PostgreSQL Denetim Uzantısı aracılığıyla kullanılabilir: [pgaudit](https://www.pgaudit.org/). pgAudit ayrıntılı oturum ve/veya nesne denetim günlüğü sağlar.
+PostgreSQL - Single Server için Azure Veritabanı'ndaki veritabanı etkinliklerinin denetim günlüğü, PostgreSQL Denetim Uzantısı üzerinden kullanılabilir: [pgAudit](https://www.pgaudit.org/). pgAudit ayrıntılı oturum ve/veya nesne denetimi günlüğü sağlar.
 
 > [!NOTE]
-> pgAudit, PostgreSQL için Azure veritabanı 'nda önizlemededir.
-> Uzantı yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucularda etkinleştirilebilir.
+> pgAudit, PostgreSQL için Azure Veritabanı'nda önizlemededir.
+> Uzantı yalnızca Genel Amaç ve Bellek Optimize Edilmiş sunucularda etkinleştirilebilir.
 
-İşlem ve depolama Ölçeklendirmesi gibi işlemler için Azure Kaynak düzeyinde Günlükler istiyorsanız bkz. [Azure etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md).
+Bilgi işlem ve depolama ölçekleme gibi işlemler için Azure kaynak düzeyi günlükleri istiyorsanız, [Azure Etkinlik Günlüğü'ne](../azure-monitor/platform/platform-logs-overview.md)bakın.
 
-## <a name="usage-considerations"></a>Kullanım konuları
-Varsayılan olarak, Postgres'in standart günlük özelliği kullanılarak pgAudit günlük deyimleri normal günlük deyimlerinizle birlikte yayılır. PostgreSQL için Azure Veritabanı'nda bu .log dosyaları Azure portalı veya CLI aracılığıyla indirilebilir. Dosya koleksiyonu için maksimum depolama alanı 1 GB ve her dosya en fazla yedi gün için kullanılabilir (varsayılan değer üç gündür). Bu hizmet, kısa süreli bir depolama seçeneğidir.
+## <a name="usage-considerations"></a>Kullanım da göz önünde bulundurulması gerekenler
+Varsayılan olarak, Postgres'in standart günlük özelliği kullanılarak pgAudit günlük deyimleri normal günlük deyimlerinizle birlikte yayılır. PostgreSQL için Azure Veritabanı'nda bu .log dosyaları Azure portalı veya CLI aracılığıyla indirilebilir. Dosyaların toplanması için maksimum depolama alanı 1 GB'dır ve her dosya en fazla yedi gün kullanılabilir (varsayılan değer üç gündür). Bu hizmet kısa süreli depolama seçeneğidir.
 
-Alternatif olarak, tüm günlüklerin Azure Izleyici 'nin tanılama günlüğü hizmetine yayınlanacağını yapılandırabilirsiniz. Azure Izleyici tanılama günlüğünü etkinleştirirseniz, sizin seçiminize bağlı olarak günlüklerinizi Azure depolama, Event Hubs ve/veya Azure Izleyici günlüklerine otomatik olarak (JSON biçiminde) gönderilir.
+Alternatif olarak, tüm günlükleri Azure Monitor'un tanıgünlüğü hizmetine yayılacak şekilde yapılandırabilirsiniz. Azure Monitor tanı günlüğe kaydetmeyi etkinleştiriseniz, günlükleriniz otomatik olarak (JSON formatında) seçtiğinize bağlı olarak Azure Depolama, Etkinlik Hub'ları ve/veya Azure Monitor günlüklerine gönderilir.
 
 pgAudit'in etkinleştirilmesi sunucuda çok büyük hacimli bir günlük oluşturur, bu da performansı ve günlük depolamasını etkiler. Hem daha uzun vadeli depolama seçenekleri hem de analiz ve uyarı özellikleri sunan Azure tanılama günlüğü hizmetini kullanmanızı öneririz. Ek günlüğün performans üzerindeki etkisini azaltmak için standart günlüğü kapatmanızı öneririz:
 
-   1. `logging_collector` parametresini kapalı olarak ayarlayın. 
+   1. Parametreyi `logging_collector` OFF olarak ayarlayın. 
    2. Bu değişikliği uygulamak için sunucuyu yeniden başlatın.
 
-Azure depolama, Event Hubs veya Azure Izleyici günlüklerine günlük kaydı ayarlamayı öğrenmek için [sunucu günlükleri makalesinin](concepts-server-logs.md)tanılama günlükleri bölümünü ziyaret edin.
+Azure Depolama, Etkinlik Hub'ları veya Azure Monitor günlüklerinde günlüğe kaydetmeyi öğrenmek için [sunucu günlükleri makalesinin](concepts-server-logs.md)tanıgünlükleri bölümünü ziyaret edin.
 
-## <a name="installing-pgaudit"></a>PgAudit yükleniyor
+## <a name="installing-pgaudit"></a>pgAudit yükleme
 
-PgAudit 'ı yüklemek için sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin `shared_preload_libraries` parametresindeki bir değişiklik, sunucu yeniden başlatmanın etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)veya [REST API](/rest/api/postgresql/configurations/createorupdate)kullanarak parametreleri değiştirebilirsiniz.
+pgAudit'i yüklemek için sunucunun paylaşılan ön yükleme kitaplıklarına eklemeniz gerekir. Postgres'in `shared_preload_libraries` parametresindeki değişiklik, bir sunucunun yeniden başlatılmasını gerektirir. [Azure portalı, Azure](howto-configure-server-parameters-using-portal.md) [CLI](howto-configure-server-parameters-using-cli.md)veya REST [API'yi](/rest/api/postgresql/configurations/createorupdate)kullanarak parametreleri değiştirebilirsiniz.
 
-[Azure Portal](https://portal.azure.com)kullanarak:
+Azure [portalını](https://portal.azure.com)kullanma:
 
    1. PostgreSQL için Azure Veritabanı sunucunuzu seçin.
-   2. Kenar çubuğunda **sunucu parametreleri**' ni seçin.
-   3. `shared_preload_libraries` parametresini arayın.
-   4. **Pgaudit**öğesini seçin.
+   2. Kenar çubuğunda **Sunucu Parametreleri'ni**seçin.
+   3. Parametreyi `shared_preload_libraries` arayın.
+   4. **pgaudit'i**seçin.
    5. Değişikliği uygulamak için sunucuyu yeniden başlatın.
 
-   6. Bir istemciyi (psql gibi) kullanarak sunucunuza bağlanın ve pgAudit uzantısını etkinleştirin
+   6. Bir istemci (psql gibi) kullanarak sunucunuza bağlanın ve pgAudit uzantısını etkinleştirin
       ```SQL
       CREATE EXTENSION pgaudit;
       ```
 
 > [!TIP]
-> Bir hata görürseniz, `shared_preload_libraries`kaydettikten sonra sunucunuzu yeniden başlattığınızdan emin olun.
+> Bir hata görürseniz, kaydedindikten `shared_preload_libraries`sonra sunucunuzu yeniden başlattığınızı onaylayın.
 
 ## <a name="pgaudit-settings"></a>pgAudit ayarları
 
-pgAudit oturum veya nesne denetim günlüğünü yapılandırmanızı sağlar. [Oturum denetim günlüğü](https://github.com/pgaudit/pgaudit/blob/master/README.md#session-audit-logging) , yürütülen deyimlerin ayrıntılı günlüklerini yayar. [Nesne denetim günlüğü](https://github.com/pgaudit/pgaudit/blob/master/README.md#object-audit-logging) , belirli ilişkilerin kapsama alınmış bir denetim. Günlük kayıt türlerinin birini veya ikisini birden ayarlamayı seçebilirsiniz. 
+pgAudit oturum veya nesne denetim günlüğü yapılandırmak için izin verir. [Oturum denetim günlüğü,](https://github.com/pgaudit/pgaudit/blob/master/README.md#session-audit-logging) yürütülen ifadelerin ayrıntılı günlüklerini yayır. [Nesne denetim günlüğü,](https://github.com/pgaudit/pgaudit/blob/master/README.md#object-audit-logging) belirli ilişkilere göre denetlenir. Bir veya her iki günlük türünü ayarlamayı seçebilirsiniz. 
 
 > [!NOTE]
-> pgAudit ayarları, genel olarak belirtilmiştir ve bir veritabanı veya rol düzeyinde belirtilemez.
+> pgAudit ayarları gloabally belirtilir ve bir veritabanı veya rol düzeyinde belirtilemez.
 
-[PgAudit](#installing-pgaudit)' i yükledikten sonra, parametrelerini günlüğe kaydetmeyi başlatacak şekilde yapılandırabilirsiniz. [Pgaudit belgeleri](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) her parametrenin tanımını sağlar. Önce parametreleri test edin ve beklenen davranışı aldığınızı onaylayın.
-
-> [!NOTE]
-> `pgaudit.log_client` ' ın ON olarak ayarlanması, günlükleri dosyaya yazılması yerine bir istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır. <br> <br>
-> `pgaudit.log_level` yalnızca `pgaudit.log_client` açık olduğunda etkinleştirilir.
+[pgAudit'i yükledikten](#installing-pgaudit)sonra, parametrelerini günlüğe kaydetmeye başlamak için yapılandırabilirsiniz. [pgAudit belgeleri](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) her parametrenin tanımını sağlar. Önce parametreleri test edin ve beklenen davranışı aldığınızı onaylayın.
 
 > [!NOTE]
-> PostgreSQL için Azure veritabanı 'nda, `pgaudit.log` pgAudit belgelerinde açıklandığı şekilde `-` (eksi) işareti kısayolu kullanılarak ayarlanamaz. Tüm gereken deyim sınıfları (READ, WRITE vb.) tek tek belirtilmelidir.
+> A'ya ayar, `pgaudit.log_client` günlükleri dosyaya yazılmak yerine istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır. <br> <br>
+> `pgaudit.log_level`yalnızca alırken `pgaudit.log_client` etkinleştirilir.
+
+> [!NOTE]
+> PostgreSQL için Azure `pgaudit.log` Veritabanı'nda, `-` pgAudit belgelerinde açıklandığı gibi (eksi) işaret kısayolu kullanılarak ayarlanamaz. Tüm gereken deyim sınıfları (READ, WRITE vb.) tek tek belirtilmelidir.
 
 ### <a name="audit-log-format"></a>Denetim günlüğü biçimi
-Her denetim girişi, günlük satırının başlangıcına yakın `AUDIT:` tarafından gösterilir. Girişin geri kalanının biçimi [Pgaudit belgelerinde](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)ayrıntılıdır.
+Her denetim girişi, `AUDIT:` günlük satırının başına yakın olarak gösterilir. Girişin geri kalanının biçimi [pgAudit belgelerinde](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)ayrıntılı olarak açıklanır.
 
-Denetim gereksinimlerinizi karşılamak için başka bir alana ihtiyacınız varsa, Postgres parametresi `log_line_prefix`kullanın. `log_line_prefix`, her bir Postgres günlük satırının başlangıcında çıktı olan bir dizedir. Örneğin, aşağıdaki `log_line_prefix` ayarı zaman damgası, Kullanıcı adı, veritabanı adı ve işlem KIMLIĞI sağlar:
+Denetim gereksinimlerinizi karşılamak için başka alanlara ihtiyacınız varsa, `log_line_prefix`Postgres parametresini kullanın. `log_line_prefix`her Postgres günlük satırının başında çıktı olan bir dizedir. Örneğin, aşağıdaki `log_line_prefix` ayar zaman damgası, kullanıcı adı, veritabanı adı ve işlem kimliği sağlar:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-`log_line_prefix`hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerini](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)ziyaret edin.
+Hakkında `log_line_prefix`daha fazla bilgi edinmek için [PostgreSQL belgelerini](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)ziyaret edin.
 
-### <a name="getting-started"></a>Başlangıç
-Hızlıca kullanmaya başlamak için `pgaudit.log` `WRITE`ayarlayın ve çıktıyı gözden geçirmek için günlüklerinizi açın. 
+### <a name="getting-started"></a>Başlarken
+Hızlı bir şekilde başlamak `pgaudit.log` `WRITE`için, ''yi ayarlayın ve çıktıyı gözden geçirmek için günlüklerinizi açın. 
 
 ## <a name="viewing-audit-logs"></a>Denetim günlüklerini görüntüleme
-. Log dosyalarını kullanıyorsanız, denetim günlüklerinizin PostgreSQL hata günlüklerinizin bulunduğu dosyaya dahil edilir. Günlük dosyalarını Azure [portalından](howto-configure-server-logs-in-portal.md) veya [CLI](howto-configure-server-logs-using-cli.md)'dan indirebilirsiniz. 
+.log dosyalarını kullanıyorsanız, denetim günlükleriniz PostgreSQL hata günlüklerinizle aynı dosyaya dahil edilir. Azure [portalından](howto-configure-server-logs-in-portal.md) veya [CLI'den](howto-configure-server-logs-using-cli.md)günlük dosyalarını indirebilirsiniz. 
 
-Azure tanılama günlüğü 'nü kullanıyorsanız, günlüklere erişme yönteminiz seçtiğiniz uç noktaya göre değişir. Azure depolama için [günlük depolama hesabı](../azure-monitor/platform/resource-logs-collect-storage.md) makalesine bakın. Event Hubs için bkz. [Azure günlükleri akışı](../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesi.
+Azure tanılama günlüğünü kullanıyorsanız, günlüklere erişme şekliniz seçtiğiniz bitiş noktasına bağlıdır. Azure Depolama için [günlükdepolama hesabı](../azure-monitor/platform/resource-logs-collect-storage.md) makalesine bakın. Olay Hub'ları için [akış Azure günlükleri](../azure-monitor/platform/resource-logs-stream-event-hubs.md) makalesine bakın.
 
-Azure Izleyici günlükleri için Günlükler seçtiğiniz çalışma alanına gönderilir. Postgres günlükleri **AzureDiagnostics** Collection modunu kullanır, bu nedenle AzureDiagnostics tablosundan sorgulanırlar. Tablodaki alanlar aşağıda açıklanmıştır. [Azure Izleyici günlükleri sorgusuna](../azure-monitor/log-query/log-query-overview.md) genel bakış bölümünde sorgulama ve uyarı alma hakkında daha fazla bilgi edinin.
+Azure Monitör Günlükleri için günlükler seçtiğiniz çalışma alanına gönderilir. Postgres günlükleri Azure Diagnostics toplama modunu kullanarak **AzureDiagnostics** tablosundan sorgulanabilirler. Tablodaki alanlar aşağıda açıklanmıştır. [Azure Monitör Günlükleri sorgusuna](../azure-monitor/log-query/log-query-overview.md) genel bakışta sorgulama ve uyarı hakkında daha fazla bilgi edinin.
 
-Başlamak için bu sorguyu kullanabilirsiniz. Sorgular temelinde uyarıları yapılandırabilirsiniz.
+Başlamak için bu sorguyı kullanabilirsiniz. Uyarıları sorgulara göre yapılandırabilirsiniz.
 
-Son gün içinde belirli bir sunucu için tüm Postgres günlüklerini arayın
+Son gün içinde belirli bir sunucu için tüm Postgres günlüklerini arama
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
@@ -103,5 +103,5 @@ AzureDiagnostics
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [PostgreSQL için Azure veritabanı 'nda günlüğe kaydetme hakkında bilgi edinin](concepts-server-logs.md)
-- [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)veya [REST API](/rest/api/postgresql/configurations/createorupdate)kullanarak parametrelerin nasıl ayarlanacağını öğrenin.
+- [PostgreSQL için Azure Veritabanı'nda oturum açma hakkında bilgi edinin](concepts-server-logs.md)
+- [Azure portalı, Azure](howto-configure-server-parameters-using-portal.md) [CLI](howto-configure-server-parameters-using-cli.md)veya [REST API'yi](/rest/api/postgresql/configurations/createorupdate)kullanarak parametreleri nasıl ayarlayabilirsiniz öğrenin.

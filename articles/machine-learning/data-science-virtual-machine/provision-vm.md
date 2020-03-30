@@ -1,74 +1,74 @@
 ---
-title: 'Hızlı başlangıç: Windows Veri Bilimi Sanal Makinesi oluşturma'
+title: 'Quickstart: Windows Veri Bilimi Sanal Makine Oluşturma'
 titleSuffix: Azure Data Science Virtual Machine
-description: Yapılandırma ve analiz için Azure'da bir veri bilimi sanal makinesi oluşturma ve makine öğrenimi.
+description: Analitik ve makine öğrenimi için Azure'da bir Veri Bilimi Sanal Makinesi'ni yapılandırın ve oluşturun.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281791"
 ---
-# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Quickstart: Windows için Veri Bilimi Sanal Makine'yi ayarlama
 
-Windows Server 2019 Veri Bilimi Sanal Makinesi ile çalışmaya başlayın.
+Windows Server 2019 Data Science Virtual Machine ile çalışmaya devam edin.
 
 ## <a name="prerequisite"></a>Önkoşul
 
-Bir Windows Veri Bilimi Sanal Makinesi oluşturmak için bir Azure aboneliğinizin olması gerekir. [Azure 'ı ücretsiz deneyin](https://azure.com/free).
-Lütfen Azure Ücretsiz hesapları GPU etkin sanal makine SKU 'Larını desteklemez.
+Windows Veri Bilimi Sanal Makinesi oluşturmak için bir Azure aboneliğiniz olması gerekir. [Azure'u ücretsiz deneyin.](https://azure.com/free)
+Azure ücretsiz hesaplarının GPU özellikli sanal makine SKU'larını desteklemediğini lütfen unutmayın.
 
-## <a name="create-your-dsvm"></a>DSVM 'nizi oluşturma
+## <a name="create-your-dsvm"></a>DSVM'nizi oluşturun
 
-DSVM örneği oluşturmak için:
+Bir DSVM örneği oluşturmak için:
 
-1. Daha önce oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir [Azure Portal](https://portal.azure.com) gidin.
-1. "Veri bilimi sanal makinesi" ni yazarak ve "Veri Bilimi Sanal Makinesi-Win 2019 (Önizleme)" öğesini seçerek sanal makine listesini bulun.
+1. [Azure portalına](https://portal.azure.com) gidin, zaten oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir.
+1. "Veri bilimi sanal makine" yazarak ve "Data Science Virtual Machine - Windows 2019" seçeneğini seçerek sanal makine girişini bulun.
 
-1. Alt kısımdaki **Oluştur** düğmesini seçin.
+1. Alttaki **Oluştur** düğmesini seçin.
 
-1. "Sanal makine oluşturma" dikey penceresine yönlendirilmelisiniz.
+1. "Sanal bir makine oluştur" bıçağına yönlendirilmelisiniz.
 
-1. **Temel bilgiler** sekmesini doldur:
-      * **Abonelik**: birden fazla aboneliğiniz varsa makinenin oluşturulacağı ve faturalandırılabileceği bir tane seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
-      * **Kaynak grubu**: yeni bir grup oluşturun veya var olan bir grubu kullanın.
-      * **Sanal makine adı**: sanal makinenin adını girin. Azure portal bu şekilde görünür.
-      * **Konum**: en uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
-      * **Görüntü**: varsayılan değeri bırakın.
-      * **Boyut**: Bu, genel iş yükleri için uygun bir boyutla otomatik olarak doldurulur. [Azure 'Da WINDOWS VM boyutları](../../virtual-machines/windows/sizes.md)hakkında daha fazla bilgi edinin.
-      * **Kullanıcı adı**: yönetici kullanıcı adını girin. Bu, sanal makinenizde oturum açmak için kullanacağınız Kullanıcı adı ve Azure Kullanıcı adınızla aynı olmaması gerekir.
-      * **Parola**: sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
+1. **Temel Bilgiler** sekmesini doldurun:
+      * **Abonelik**: Birden fazla aboneliğiniz varsa, makinenin oluşturulacağı ve faturalandırılacağı aboneliği seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
+      * **Kaynak grubu**: Yeni bir grup oluşturun veya varolan bir grup kullanın.
+      * **Sanal makine adı**: Sanal makinenin adını girin. Azure portalınızda bu şekilde görünür.
+      * **Konum**: En uygun veri merkezini seçin. En hızlı ağ erişimi için, verilerinizin çoğuna sahip olan veya fiziksel konumunuza en yakın olan veri merkezidir. [Azure Bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
+      * **Resim**: Varsayılan değeri bırakın.
+      * **Boyut**: Bu, genel iş yükleri için uygun bir boyutla otomatik doldurmalıdır. [Azure'da Windows VM boyutları](../../virtual-machines/windows/sizes.md)hakkında daha fazla bilgi edinin.
+      * **Kullanıcı Adı**: Yönetici kullanıcı adını girin. Bu, sanal makinenize giriş yapmak için kullanacağınız kullanıcı adıdır ve Azure kullanıcı adınız ile aynı olması gerekmez.
+      * **Şifre**: Sanal makinenize giriş yapmak için kullanacağınız şifreyi girin.    
 1. **İncele ve oluştur**’u seçin.
-1. **Gözden geçir + oluştur**
-   * Girdiğiniz tüm bilgilerin doğru olduğundan emin olun. 
-   * **Oluştur**’u seçin.
+1. **İnceleme+oluştur**
+   * Girdiğiniz tüm bilgilerin doğru olduğundan doğrulayın. 
+   * **Oluştur'u**seçin.
 
 
 > [!NOTE]
-> * Sanal makinede önceden yüklenmiş olarak gelen yazılımlar için lisans ücretleri ödemezsiniz. **Boyut** adımında seçtiğiniz sunucu boyutu için işlem maliyetini ödeyin.
-> * Sağlama 10 ila 20 dakika sürer. Azure portal sanal makinenizin durumunu görüntüleyebilirsiniz.
+> * Sanal makineye önceden yüklenmiş olarak gelen yazılımlar için lisans ücreti ödemezsiniz. **Boyut** adımında seçtiğiniz sunucu boyutu için bilgi işlem maliyetini ödersiniz.
+> * Sağlama 10 ila 20 dakika sürer. Azure portalında VM'nizin durumunu görüntüleyebilirsiniz.
 
-## <a name="access-the-dsvm"></a>DSVM 'ye erişme
+## <a name="access-the-dsvm"></a>DSVM'ye erişin
 
-VM oluşturulup sağlandıktan sonra, [Azure tabanlı sanal makinenize bağlanmak](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md)için listelenen adımları izleyin. Bir sanal makine oluşturmanın **temelleri** adımında yapılandırdığınız Yönetici hesabı kimlik bilgilerini kullanın. 
+VM oluşturulduktan ve sağlandıktan sonra, [Azure tabanlı sanal makinenize bağlanmak](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md)için listelenen adımları izleyin. Sanal makine oluşturmak için **Temeller** adımında yapılandırdığınız yönetici hesabı kimlik bilgilerini kullanın. 
 
-Yüklenmiş ve yapılandırılmış VM'de araçları kullanmaya başlamak hazırsınız demektir. Araçların çoğuna **Başlangıç** menüsü kutucukları ve Masaüstü simgeleri aracılığıyla erişilebilir.
+VM'de yüklenen ve yapılandırılan araçları kullanmaya başlamaya hazırsınız. Araçların çoğuna **Başlat** menüsü kutucukları ve masaüstü simgeleri aracılığıyla erişilebilir.
 
-Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücretsiz hizmet katmanının sınırlamalarını atlamak için Azure Notebooks bir DSVM ekleyebilirsiniz. Daha fazla bilgi için bkz. [Not defteri projelerini yönetme ve yapılandırma](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
+Ayrıca, VM'de Jupyter dizüstü bilgisayarları çalıştırmak ve ücretsiz hizmet katmanının sınırlamalarını atlamak için Azure Not Defterlerine bir DSVM ekleyebilirsiniz. Daha fazla bilgi için Bkz. [Not Defterleri projelerini yönet ve yapılandırma.](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects)
 
 <a name="tools"></a>
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* **Başlat** menüsünü açarak dsvm 'deki araçları araştırın.
-* [Azure Machine Learning ne olduğunu](../overview-what-is-azure-ml.md) okuyarak Azure Machine Learning hakkında bilgi edinin ve [öğreticiler](../index.yml)deneyin.
-* [Veri bilimi sanal makinesi için kullanabileceğiniz on şey](https://aka.ms/dsvmtenthings)makalesini okuyun.
-* Azure 'da Azure Machine Learning ve ilgili veri hizmetlerini kullanan Machine Learning ve veri analizi örnekleri için [Azure yapay zeka Galerisi](https://gallery.cortanaintelligence.com) ziyaret edin. Ayrıca, bu Galeri için **Başlat** menüsünde ve sanal makinenin masaüstüne bir simge sağladık.
+* **Başlat** menüsünü açarak DSVM'deki araçları keşfedin.
+* [Azure Machine Learning nedir](../overview-what-is-azure-ml.md) okuyarak ve [öğreticileri](../index.yml)deneyerek Azure Machine Learning hakkında bilgi edinin.
+* Makaleyi okuyun [Veri Bilimi Sanal Makine üzerinde yapabileceğiniz on şey](https://aka.ms/dsvmtenthings).
+* Azure Makine [Öğrenimi](https://gallery.cortanaintelligence.com) ve Azure'daki ilgili veri hizmetlerini kullanan makine öğrenimi ve veri analizi örnekleri için Azure Yapay Değer Galerisi'ni ziyaret edin. Ayrıca **Başlat** menüsünde ve sanal makinenin masaüstünde bu galeri için bir simge sağladık.
 

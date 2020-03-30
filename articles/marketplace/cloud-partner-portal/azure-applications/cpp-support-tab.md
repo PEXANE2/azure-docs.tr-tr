@@ -1,44 +1,43 @@
 ---
 title: Azure uygulama desteğini yapılandırma | Azure Marketi
-description: Azure uygulama desteğini Azure Market 'teki bir teklif için yapılandırın.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+description: Azure Marketi'ndeki bir teklif için Azure uygulama desteğini yapılandırın.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 93dd8636f60ceca0f43d806d4f5b1a037ed21ee4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818192"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289031"
 ---
-# <a name="azure-application-support-tab"></a>Azure uygulama desteği sekmesi
+# <a name="azure-application-support-tab"></a>Azure uygulama Destek sekmesi
 
-Mühendislik ve müşteri desteği bilgilerini sağlamak için destek sekmesini kullanın.
+Mühendislik ve müşteri destek bilgilerini sağlamak için Destek sekmesini kullanın.
  
-## <a name="identify-contacts-and-websites"></a>Kişileri ve Web sitelerini tanımla
+## <a name="identify-contacts-and-websites"></a>Kişileri ve web sitelerini tanımlama
 
-Gerekli bilgileri sağlamak için bir sonraki ekran yakalamayı kılavuz olarak kullanın. Kırmızı yıldız işareti (*) ile eklenen tüm alan adları doldurulmalıdır.
+Gerekli bilgileri sağlamak için bir sonraki ekran yakalamayı kılavuz olarak kullanın. Kırmızı yıldız (*) ile eklenen tüm alan adları tamamlanmalıdır.
 
   ![Teklif için destek formu](./media/azureapp-support-tab.png)
 
-1. **Mühendislik Ilgili kişisi**bölümünde aşağıdaki alanlar için bilgi sağlayın:
+1. **Mühendislik İletişim**altında, aşağıdaki alanlar için bilgi sağlamak:
 
-   - **Ad\*** -uygulamanızın mühendislik kişisinin adını girin. Bu kişi, Microsoft 'tan teknik iletişimler alır.
-   - **E-posta\*** -mühendislik kişisinin e-posta adresini girin.
-   - **Telefon\*** -mühendislik kişisinin telefon numarasını girin.
+   - **Ad\* ** - Uygulamanız için mühendislik kişi adını girin. Bu kişi Microsoft'tan teknik iletişim alır.
+   - **E-posta\* ** - Mühendislik ilgili iletişiminin e-posta adresini girin.
+   - **Telefon\* ** - Mühendislik ilgili iletişimintelefon numarasını girin.
   
-2. **Destek kişisi**altında, aşağıdaki alanlar için bilgi sağlayın:
+2. **Destek İletişim**altında, aşağıdaki alanlar için bilgi sağlamak:
 
-   - **Ad\*** -uygulamanızın destek kişisinin adını girin. Bu kişi, Microsoft 'tan destek ile ilgili iletişimler alır.
-   - **E-posta\*** -uygulamanızın destek kişisinin e-posta adresini girin.
-   - **Telefon\*** -destek kişisinin telefon numarasını girin.
+   - **Ad\* ** - Uygulamanızın destek kişisinin adını girin. Bu kişi Microsoft'tan destekle ilgili iletişimler alır.
+   - **E-posta\* ** - Uygulamanızın destek iletişim inine girin.
+   - **Telefon\* ** - Destek kişisinin telefon numarasını girin.
  
-3. **Destek URL 'leri**altında, müşterileriniz destek biletlerini açtıklarında Microsoft 'un kullanacağı uygun destek URL 'lerini sağlayın. Bu URL 'Ler, genel Azure veya Azure Kamu Bulutu için olacaktır.
-4. İşiniz bittiğinde **Kaydet** ' i seçin.
+3. **Destek Urlleri**altında, müşterileriniz destek biletleri açtığında Microsoft'un kullanacağı uygun destek URL'lerini sağlayın. Bu Url'ler Genel Azure veya Azure Kamu Bulutu için olacaktır.
+4. İşiniz bittiğinde **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Şema güncelleştirmeleri Haziran 1-2016
-description: Azure Logic Apps 'de Logic App tanımları için şema sürümü 2016-06-01 güncelleştirildi
+title: Şema güncellemeleri Haziran-1-2016
+description: Azure Mantık Uygulamaları'nda mantık uygulama tanımları için 2016-06-01 güncelleştirilmiş şema sürümü
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,27 +9,27 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792881"
 ---
-# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps için şema güncelleştirmeleri-1 Haziran 2016
+# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps için Şema güncellemeleri - 1 Haziran 2016
 
-Azure Logic Apps için [güncelleştirilmiş şema](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) ve API sürümü, mantıksal uygulamaları daha güvenilir ve kullanımı kolay hale getirmek için önemli geliştirmeler içerir:
+Azure Logic Apps için [güncelleştirilmiş şema](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) ve API sürümü, mantık uygulamalarını daha güvenilir ve kullanımı daha kolay hale getiren önemli geliştirmeleri içerir:
 
-* [Kapsamlar](#scopes) eylemleri bir dizi koleksiyon olarak gruplandırmasına veya yuvadeğiştirmenize olanak sağlar.
+* [Kapsamlar,](#scopes) eylemleri eylemler topluluğu olarak gruplandırmanıza veya yuvalamanıza izin vermez.
 * [Koşullar ve döngüler](#conditions-loops) artık birinci sınıf eylemlerdir.
-* `runAfter` özelliği ile eylemleri çalıştırmaya yönelik daha kesin sıralama, `dependsOn` değiştirme
+* Eylemleri `runAfter` mülkle çalıştırmak için daha kesin sıralama,`dependsOn`
 
-Logic Apps 'i 1 Ağustos 2015 Preview şemasından 1 Haziran 2016 şemasına yükseltmek için [Yükseltme bölümüne bakın](#upgrade-your-schema).
+Mantık uygulamalarınızı 1 Ağustos 2015 önizleme şemasından 1 Haziran 2016 şemaya yükseltmek için [yükseltme bölümüne göz atın.](#upgrade-your-schema)
 
 <a name="scopes"></a>
 
 ## <a name="scopes"></a>Kapsamlar
 
-Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbirini iç içe bir şekilde gruplamanıza olanak sağlayan kapsamları içerir. Örneğin, bir koşul başka bir koşul içerebilir. [Kapsam sözdizimi](../logic-apps/logic-apps-loops-and-scopes.md)hakkında daha fazla bilgi edinin veya bu temel kapsam örneğini gözden geçirin:
+Bu şema, eylemleri birlikte gruplandırmanıza veya eylemleri birbirinin içine yerleştirmenize izin veren kapsamlar içerir. Örneğin, bir koşul başka bir koşul içerebilir. [Kapsam sözdizimi](../logic-apps/logic-apps-loops-and-scopes.md)hakkında daha fazla bilgi edinin veya bu temel kapsam örneğini gözden geçirin:
 
 ```json
 {
@@ -53,9 +53,9 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 
 <a name="conditions-loops"></a>
 
-## <a name="conditions-and-loops-changes"></a>Koşullar ve döngüler değişiklikleri
+## <a name="conditions-and-loops-changes"></a>Koşullar ve döngüdeğişiklikleri
 
-Önceki şema sürümlerinde, koşullar ve döngüler tek bir eylemle ilişkili parametrelerdi. Bu şema bu kısıtlamayı durdurur, bu nedenle koşullar ve döngüler artık eylem türleri olarak kullanılabilir. [Döngüler ve kapsamlar](../logic-apps/logic-apps-loops-and-scopes.md), [koşullar](../logic-apps/logic-apps-control-flow-conditional-statement.md)hakkında daha fazla bilgi edinin veya bir koşul eylemi gösteren bu temel örneği gözden geçirin:
+Önceki şema sürümlerinde, koşullar ve döngüler tek bir eylemle ilişkili parametrelerdi. Bu şema bu sınırlamayı kaldırır, bu nedenle koşullar ve döngüler artık eylem türleri olarak kullanılabilir. [Döngüler ve kapsamlar,](../logic-apps/logic-apps-loops-and-scopes.md) [koşullar](../logic-apps/logic-apps-control-flow-conditional-statement.md)hakkında daha fazla bilgi edinin veya koşul eylemini gösteren bu temel örneği gözden geçirin:
 
 ```json
 {
@@ -83,9 +83,9 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 
 <a name="run-after"></a>
 
-## <a name="runafter-property"></a>' runAfter ' özelliği
+## <a name="runafter-property"></a>'runAfter' özelliği
 
-`runAfter` özelliği, önceki eylemlerin durumuna göre eylemler için Çalıştırma sırasını belirttiğinizde daha fazla duyarlık sağlayan `dependsOn`yerini alır. `dependsOn` özelliği, bir önceki eylemin başarılı, başarısız veya Atlanmasının, eylemi çalıştırmak istediğiniz kaç kez denenmediğini temel alarak "eylem çalıştı ve başarılı oldu" olarak belirtilmiştir. `runAfter` özelliği, nesnenin çalıştıktan sonra tüm eylem adlarını belirten bir nesne olarak esneklik sağlar. Bu özellik ayrıca tetikleyici olarak kabul edilebilir bir durumlar dizisini tanımlar. Örneğin, eylem başarılı olduktan sonra bir eylemin çalışmasını istiyorsanız ve ayrıca işlem başarılı veya başarısız olduktan sonra bu `runAfter` özelliğini ayarlayın:
+Önceki `runAfter` eylemlerin `dependsOn`durumuna göre eylemler için çalışma sırasını belirttiğiniz zaman daha fazla kesinlik sağlayan özellik, değiştirilir. Özellik, `dependsOn` önceki eylemin başarılı olup olmadığına, başarısız olup olmadığına veya atlanıp atlanmadığına bağlı olarak "eylemin çalışıp çalışmadığını ve başarılı olup olmadığını" belirtir - eylemi kaç kez çalıştırmak istediğinize değil. Özellik, `runAfter` nesnenin çalıştırdığı tüm eylem adlarını belirten bir nesne olarak esneklik sağlar. Bu özellik, tetikleyici olarak kabul edilebilir bir dizi durum da tanımlar. Örneğin, bir eylemin eylem A'nın başarılı olduktan sonra ve ayrıca B eyleminin `runAfter` başarılı veya başarısız olduktan sonra çalışmasını istiyorsanız, bu özelliği ayarlayın:
 
 ```json
 {
@@ -97,63 +97,63 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 }
 ```
 
-## <a name="upgrade-your-schema"></a>Şemanızı yükseltme
+## <a name="upgrade-your-schema"></a>Şemanızı yükseltin
 
-[En son şemaya](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)yükseltmek için yalnızca birkaç adım gerçekleştirmeniz gerekir. Yükseltme işlemi, yükseltme betiğini çalıştırmayı, yeni bir mantıksal uygulama olarak kaydetmeyi ve isterseniz, büyük olasılıkla önceki mantıksal uygulamanın üzerine yazılmasını içerir.
+En son [şemaya](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)yükseltmek için yalnızca birkaç adım atmanız gerekir. Yükseltme işlemi, yükseltme komut dosyasının çalıştırılmasını, yeni bir mantık uygulaması olarak kaydetmeyi ve isterseniz muhtemelen önceki mantık uygulamasının üzerine yazmayı içerir.
 
-1. Azure portal mantıksal uygulamanızı açın.
+1. Azure portalında mantık uygulamanızı açın.
 
-2. **Genel Bakış ' a**gidin. Mantıksal uygulama araç çubuğunda **Şemayı Güncelleştir**' i seçin.
+2. Genel **Bakış'a**gidin. Mantık uygulaması araç çubuğunda, **Schema'yı Güncelleştir'i**seçin.
    
-   ![Şemayı Güncelleştir ' i seçin][1]
+   ![Schema'yı Güncelleştir'i Seçin][1]
    
-   Yükseltilen tanım döndürülür ve gerekirse bir kaynak tanımına kopyalayabilir ve yapıştırabilirsiniz. 
+   Yükseltilen tanım döndürülür ve gerekirse kaynak tanımına kopyalayıp yapıştırabilirsiniz. 
 
    > [!IMPORTANT]
-   > **Farklı kaydet** ' i *seçtiğinizden emin olun* , böylece tüm bağlantı başvurularının yükseltilen mantıksal uygulamada geçerli kalmasını sağlayın.
+   > Tüm bağlantı başvurularının yükseltilmiş mantık uygulamasında geçerli kalması için **Kaydet'i** seçtiğinizden *emin olun.*
 
-3. Yükseltme dikey penceresinde **farklı kaydet**' i seçin.
+3. Yükseltme bıçağı araç **çubuğunda, Farklı Kaydet'i**seçin.
 
-4. Mantıksal adı ve durumu girin. Yükseltilen mantıksal uygulamanızı dağıtmak için **Oluştur**' u seçin.
+4. Mantık adını ve durumunu girin. Yükseltilmiş mantık uygulamanızı dağıtmak için **Oluştur'u**seçin.
 
-5. Yükseltilen mantıksal uygulamanızın beklendiği gibi çalıştığından emin olun.
+5. Yükseltilmiş mantık uygulamanızın beklendiği gibi çalıştığını doğrulayın.
    
    > [!NOTE]
-   > El ile veya istek tetikleyicisi kullanıyorsanız, geri çağırma URL 'SI yeni mantıksal uygulamanızda değişir. Uçtan uca deneyimin çalıştığından emin olmak için yeni URL 'YI test edin. Önceki URL 'Leri korumak için, mevcut mantıksal uygulamanızı kopyalayabilirsiniz.
+   > Bir el kitabı veya istek tetikleyicisi kullanıyorsanız, geri arama URL'si yeni mantık uygulamanızda değişir. Uçuça deneyimin çalıştığından emin olmak için yeni URL'yi sınayın. Önceki URL'leri korumak için, varolan mantık uygulamanızın üzerine klonlayabilirsiniz.
 
-6. *Isteğe bağlı* Önceki mantıksal uygulamanızın yeni şema sürümüyle üzerine yazmak için, araç çubuğunda, **Şemayı Güncelleştir**' ın yanındaki **Kopyala**' yı seçin. Bu adım yalnızca mantıksal uygulamanızın aynı kaynak KIMLIĞINI veya istek tetikleyicisi URL 'sini tutmak istiyorsanız gereklidir.
+6. *İsteğe bağlı* Önceki mantık uygulamanızın üzerine yeni şema sürümüyle, araç çubuğunda yazmak için, **Schema'yı Güncelleştir'in**yanındaki **Clone'u**seçin. Bu adım, yalnızca aynı kaynak kimliğini tutmak veya mantık uygulamanızın tetikleyici URL'sini istemek istiyorsanız gereklidir.
 
-## <a name="upgrade-tool-notes"></a>Yükseltme aracı notları
+## <a name="upgrade-tool-notes"></a>Araç notlarını yükseltme
 
-### <a name="mapping-conditions"></a>Eşleme koşulları
+### <a name="mapping-conditions"></a>Haritalama koşulları
 
-Yükseltilen tanımda araç, doğru ve yanlış dal eylemlerini bir kapsam olarak gruplandırmada en iyi çabayı yapar. Özellikle, `@equals(actions('a').status, 'Skipped')` tasarımcı deseninin `else` eylem olarak görünmesi. Ancak araç tanınmayan desenler algılarsa, araç hem true hem de false dalı için ayrı koşullar oluşturabilir. Gerekirse, yükseltmeden sonra eylemleri yeniden eşleyebilirsiniz.
+Yükseltilmiş tanımda, araç doğru ve yanlış dal eylemlerini kapsam olarak gruplandırmak için en iyi çabayı gösterir. Özellikle, tasarımcı deseni bir `@equals(actions('a').status, 'Skipped')` `else` eylem olarak görünür. Ancak, araç tanınmaz desenler algılarsa, araç hem doğru hem de yanlış dal için ayrı koşullar oluşturabilir. Gerekirse, yükseltmeden sonra eylemleri yeniden eşleyebilirsiniz.
 
-#### <a name="foreach-loop-with-condition"></a>Condition ile ' foreach ' döngüsü
+#### <a name="foreach-loop-with-condition"></a>koşulu ile 'foreach' döngü
 
-Yeni şemada, her bir döngü **için** bir öğe başına bir koşul kullanan düzeni çoğaltmak için filtre eylemini kullanabilirsiniz. Ancak, yükselttiğinizde değişiklik otomatik olarak gerçekleşir. Koşul, **her** bir döngüden önce görüntülenen, yalnızca koşulla eşleşen bir öğe dizisi döndüren ve bu diziyi **her eylem için** geçirerek bir filtre eylemi olur. Bir örnek için bkz. [döngüler ve kapsamlar](../logic-apps/logic-apps-loops-and-scopes.md).
+Yeni şemada, öğe başına bir koşulla her döngü **için** kullanılan deseni çoğaltmak için filtre eylemini kullanabilirsiniz. Ancak, yükseltme yaptığınızda değişiklik otomatik olarak gerçekleşir. Koşul, her döngü **için** önce görünen, yalnızca koşulla eşleşen bir dizi öğe döndüren ve bu diziyi her eylem **için** geçen bir filtre eylemi olur. Örneğin, [bkz. Döngüler ve kapsamlar.](../logic-apps/logic-apps-loops-and-scopes.md)
 
 ### <a name="resource-tags"></a>Kaynak etiketleri
 
-Yükseltmeden sonra kaynak etiketleri kaldırılır, bu nedenle bunları yükseltilen iş akışı için sıfırlamanız gerekir.
+Yükseltmeden sonra kaynak etiketleri kaldırılır, bu nedenle yükseltilen iş akışı için bunları sıfırlamanız gerekir.
 
 ## <a name="other-changes"></a>Diğer değişiklikler
 
-### <a name="renamed-manual-trigger-to-request-trigger"></a>' Manual ' tetikleyicisi ' Request ' tetikleyicisi olarak yeniden adlandırıldı
+### <a name="renamed-manual-trigger-to-request-trigger"></a>'İstek' tetikleyicisine 'el kitabı' tetikleyicisi olarak yeniden adlandırıldı
 
-`manual` tetikleyici türü kullanımdan kaldırılmıştır ve tür `http`ile `request` olarak yeniden adlandırıldı. Bu değişiklik, tetikleyicinin derlemek için kullanılan model türü için daha fazla tutarlılık oluşturur.
+Tetikleyici `manual` türü amortismana uğradı ve `request` türüyle `http`yeniden adlandırıldı. Bu değişiklik, tetikleyici oluşturmak için kullanılan desen türü için daha fazla tutarlılık oluşturur.
 
-### <a name="new-filter-action"></a>Yeni ' filtre ' eylemi
+### <a name="new-filter-action"></a>Yeni 'filtre' eylemi
 
-Büyük bir diziyi daha küçük bir öğe kümesine filtrelemek için, yeni `filter` türü bir diziyi ve koşulu kabul eder, her öğe için koşulu değerlendirir ve koşulu karşılayan öğeleri içeren bir dizi döndürür.
+Büyük bir diziyi daha küçük bir öğe `filter` kümesine filtrelemek için, yeni tür bir dizi ve bir koşul kabul eder, her öğe için durumu değerlendirir ve durumu karşılayan öğeleri içeren bir dizi döndürür.
 
-### <a name="restrictions-for-foreach-and-until-actions"></a>' Foreach ' ve ' Until ' eylemlerine yönelik kısıtlamalar
+### <a name="restrictions-for-foreach-and-until-actions"></a>'Foreach' ve 'until' eylemleri için kısıtlamalar
 
-`foreach` ve `until` döngüsü tek bir eylemle kısıtlıdır.
+Ve `foreach` `until` döngü tek bir eylemle sınırlıdır.
 
-### <a name="new-trackedproperties-for-actions"></a>Eylemler için yeni ' trackedProperties '
+### <a name="new-trackedproperties-for-actions"></a>Eylemler için yeni 'izlenen Özellikler'
 
-Eylemler artık `runAfter` ve `type` özelliklerine eşdüzey `trackedProperties`adlı ek bir özelliğe sahip olabilir. Bu nesne, bir iş akışının parçası olarak yayınlanan Azure tanılama telemetrisine dahil etmek istediğiniz belirli eylem girdilerini veya çıkışları belirtir. Örnek:
+Eylemler artık kardeş `trackedProperties` `runAfter` ve `type` özellikleri olarak adlandırılan ek bir özellik olabilir. Bu nesne, iş akışının bir parçası olarak yayılan Azure Tanılama telemetrisine eklemek istediğiniz belirli eylem girişlerini veya çıktılarını belirtir. Örnek:
 
 ``` json
 {
@@ -174,8 +174,8 @@ Eylemler artık `runAfter` ve `type` özelliklerine eşdüzey `trackedProperties
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Logic Apps için iş akışı tanımları oluşturma](../logic-apps/logic-apps-author-definitions.md)
-* [Mantıksal uygulama dağıtımını otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)
+* [Mantık uygulamaları için iş akışı tanımları oluşturma](../logic-apps/logic-apps-author-definitions.md)
+* [Mantıksal uygulama dağıtımı otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

@@ -1,85 +1,83 @@
 ---
-title: Azure Active Directory Web API uygulamaları
-description: Web API uygulamalarının ne olduğunu ve bu uygulama türü için protokol akışı, kayıt ve belirteç süre sonu hakkındaki temel bilgileri açıklar.
+title: Azure Etkin Dizini'ndeki Web API uygulamaları
+description: Web API uygulamalarının ne olduğunu ve bu uygulama türü için protokol akışı, kayıt ve belirteç sona erme ile ilgili temel bilgileri açıklar.
 services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 93e487063944801129090d6b9952143b8df887da
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163921"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154432"
 ---
 # <a name="web-api"></a>Web API
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Web API Apps, bir Web API 'sinden kaynak alması gereken Web uygulamalarıdır. Bu senaryoda, Web uygulamasının, Web API 'sini doğrulamak ve çağırmak için kullanabileceği iki kimlik türü vardır:
+Web API uygulamaları, bir web API'sinden kaynak elde etmesi gereken web uygulamalarıdır. Bu senaryoda, web uygulamasının web API'sini doğrulamak ve çağırmak için kullanabileceği iki kimlik türü vardır:
 
-- **Uygulama kimliği** -bu senaryo, uygulama olarak kimlik doğrulaması yapmak ve Web API 'sine erişmek için OAuth 2,0 istemci kimlik bilgileri kullanır. Web API 'si, bir uygulama kimliği kullanırken, Web API 'SI Kullanıcı hakkında herhangi bir bilgi almadıkça yalnızca Web uygulamasının bunu çağırıyor olduğunu algılayabilir. Uygulama, Kullanıcı hakkında bilgi alırsa uygulama protokolü aracılığıyla gönderilir ve Azure AD tarafından imzalanmamıştır. Web API 'SI, Web uygulamasının kimliğinin doğruladığını güvendiğinde. Bu nedenle, bu düzen, bir güvenilir alt sistem adı verilir.
-- **Temsil edilen Kullanıcı kimliği** -bu senaryo iki şekilde gerçekleştirilebilir: OpenID Connect ve OAuth 2,0 yetkilendirme kodu, gizli bir istemciyle birlikte kullanılabilir. Web uygulaması, Kullanıcı için bir erişim belirteci edinir, bu, kullanıcının Web uygulamasına başarıyla kimlik doğruladığını ve Web uygulamasının Web API 'sini çağırmak için yetkilendirilmiş bir kullanıcı kimliği elde edebildiğini kanıtlayan Web API 'sine sahip olur. Bu erişim belirteci, kullanıcıya yetki veren ve istenen kaynağı döndüren Web API 'sine yönelik istekte gönderilir.
+- **Uygulama kimliği** - Bu senaryo, uygulama olarak kimlik doğrulaması yapmak ve web API'sine erişmek için OAuth 2.0 istemci kimlik bilgilerini kullanır. Bir uygulama kimliği kullanırken, web API'si yalnızca web API'sı kullanıcı hakkında herhangi bir bilgi almadığı için web uygulamasının onu aradığını algılayabilir. Uygulama kullanıcı hakkında bilgi alırsa, uygulama protokolü aracılığıyla gönderilir ve Azure AD tarafından imzalanmaz. Web API, web uygulamasının kullanıcının kimliğini doğruladığını güvenir. Bu nedenle, bu desen güvenilir bir alt sistem olarak adlandırılır.
+- **Temsilci kullanıcı kimliği** - Bu senaryo iki şekilde gerçekleştirilebilir: OpenID Connect ve gizli bir istemci ile OAuth 2.0 yetkilendirme kodu hibe. Web uygulaması, kullanıcı için bir erişim belirteci elde eder, bu da web API'ye kullanıcının web uygulamasına başarıyla doğrulandığını ve web uygulamasının web API'sını aramak için yetkiverilen bir kullanıcı kimliği elde edebildiğini kanıtlar. Bu erişim belirteci, kullanıcıyı yetkilendirmeve istenen kaynağı döndüren web API'sine istek olarak gönderilir.
 
-Hem uygulama kimliği hem de temsilci Kullanıcı kimlik türleri aşağıdaki akışta ele alınmıştır. Aralarındaki temel fark, temsilci Kullanıcı kimliğinin, Kullanıcı oturum açabilmeniz ve Web API 'sine erişim kazanmak için öncelikle bir yetkilendirme kodu edinmesi gerekir.
+Hem uygulama kimliği hem de temsilci kullanıcı kimlik türleri aşağıdaki akışta ele alınmıştır. Aralarındaki temel fark, devredilen kullanıcı kimliğinin, kullanıcıoturum açmadan ve web API'sine erişebilmek için önce bir yetkilendirme kodu edinmesi gerektiğidir.
 
 ## <a name="diagram"></a>Diyagram
 
-![Web uygulamasından Web API diyagramına](./media/authentication-scenarios/web-app-to-web-api.png)
+![Web Uygulaması Ndan Web API diyagramına](./media/authentication-scenarios/web-app-to-web-api.png)
 
 ## <a name="protocol-flow"></a>Protokol akışı
 
-### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>OAuth 2,0 istemci kimlik bilgileri izni ile uygulama kimliği
+### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>OAuth 2.0 müşteri kimlik bilgileri hibe ile başvuru kimliği
 
-1. Bir Kullanıcı Web uygulamasında Azure AD 'ye oturum açtı (daha fazla bilgi için **Web Apps** bölümüne bakın).
-1. Web API'si için kimlik doğrulaması yapmak ve almak istediğiniz kaynak bir erişim belirteci almak web uygulaması gerekir. Kimlik bilgisi, uygulama KIMLIĞI ve Web API 'sinin uygulama KIMLIĞI URI 'sini sağlayarak Azure AD 'nin belirteç uç noktası için bir istek yapar.
-1. Azure AD uygulamanın kimliğini doğrular ve Web API 'sini çağırmak için kullanılan bir JWT erişim belirteci döndürür.
-1. HTTPS üzerinden Web uygulaması, isteğin yetkilendirme üstbilgisinde Web API 'sine bir "taşıyıcı" atamaya sahip JWT dizesini eklemek için döndürülen JWT erişim belirtecini kullanır. Web API 'SI daha sonra JWT belirtecini doğrular ve doğrulama başarılı olursa, istenen kaynağı döndürür.
+1. Bir kullanıcı web uygulamasında Azure AD'de oturum açtır (daha fazla bilgi için **Web uygulamaları** bölümüne bakın).
+1. Web uygulamasının, web API'sine kimlik doğrulaması yapabilmesi ve istenen kaynağı alabilmesi için bir erişim belirteci edinmesi gerekir. Kimlik bilgisi, uygulama kimliği ve web API uygulama kimliği URI sağlayarak Azure AD'nin belirteç bitiş noktasına bir istekte bulunarak.
+1. Azure AD uygulamanın kimliğini doğrular ve web API'sını aramak için kullanılan bir JWT erişim belirteci döndürür.
+1. HTTPS üzerinden, web uygulaması, web API'ya isteğin Yetkilendirme başlığında "Taşıyıcı" ibaresi bulunan JWT dizesini eklemek için döndürülen JWT erişim belirteci kullanır. Web API sonra JWT belirteci doğrular ve doğrulama başarılı olursa, istenen kaynak döndürür.
 
-### <a name="delegated-user-identity-with-openid-connect"></a>OpenID Connect ile temsilci Kullanıcı kimliği
+### <a name="delegated-user-identity-with-openid-connect"></a>OpenID Connect ile temsilci kullanıcı kimliği
 
-1. Bir Kullanıcı Azure AD kullanarak bir Web uygulamasında oturum açtı (yukarıdaki Web uygulamasına Web tarayıcısı bölümüne bakın). Web uygulamasının kullanıcısı, Web uygulamasının kendi adına Web API 'sini çağırması için henüz onay vermediyse, kullanıcının onaylaması gerekir. Uygulama, gerektirdiği izinleri görüntüler ve bunlardan herhangi biri yönetici düzeyindeki izinlerdir, dizindeki normal bir Kullanıcı onay yapamaz. Bu izin işlemi, uygulama zaten gerekli izinlere sahip olacağı için tek kiracılı uygulamalar değil, yalnızca çok kiracılı uygulamalar için geçerlidir. Kullanıcı oturum açtıktan sonra, Web uygulaması, bir KIMLIK belirtecinin yanı sıra kullanıcı hakkındaki bilgileri ve bir yetkilendirme kodunu almıştır.
-1. Web uygulaması, Azure AD tarafından verilen Yetkilendirme kodunu kullanarak Azure AD 'nin belirteç uç noktasına, yetkilendirme kodunu, istemci uygulamayla ilgili ayrıntıları (uygulama KIMLIĞI ve yeniden yönlendirme URI 'SI) ve istenen kaynağı (uygulama KIMLIĞI) içeren bir istek gönderir. Web API 'SI için URI).
-1. Yetkilendirme kodu ve Web uygulaması ve Web API 'SI ile ilgili bilgiler Azure AD tarafından onaylanır. Doğrulama başarıyla tamamlandığında, Azure AD iki belirteç döndürür: bir JWT erişim belirteci ve JWT yenileme belirteci.
-1. HTTPS üzerinden Web uygulaması, isteğin yetkilendirme üstbilgisinde Web API 'sine bir "taşıyıcı" atamaya sahip JWT dizesini eklemek için döndürülen JWT erişim belirtecini kullanır. Web API 'SI daha sonra JWT belirtecini doğrular ve doğrulama başarılı olursa, istenen kaynağı döndürür.
+1. Bir kullanıcı Azure AD kullanarak bir web uygulamasında oturum açtı (yukarıdaki Web Tarayıcısı-Web Uygulaması bölümüne bakın). Web uygulamasının kullanıcısı, web uygulamasının kendi adına web API'sini aramasına izin vermeyi henüz kabul etmediyse, kullanıcının onay göstermesi gerekir. Uygulama, gerektirdiği izinleri görüntüler ve bunlardan herhangi biri yönetici düzeyinde izinlerse, dizindeki normal bir kullanıcı izin veremeyecektir. Bu onay işlemi, uygulama zaten gerekli izinlere sahip olacağından, yalnızca tek kiracı uygulamaları için değil, çok kiracılı uygulamalar için geçerlidir. Kullanıcı oturum landığında, web uygulaması kullanıcı hakkında bilgi içeren bir kimlik belirteci ve bir yetkilendirme kodu aldı.
+1. Azure AD tarafından verilen yetkilendirme kodunu kullanarak, web uygulaması Azure AD'nin yetkilendirme kodunu, istemci uygulamasıyla ilgili ayrıntıları (Application ID ve yeniden yönlendirme URI) ve istenen kaynağı (uygulama kimliği) içeren belirteç bitiş noktasına bir istek gönderir Web API için URI).
+1. Yetkilendirme kodu ve web uygulaması ve web API'si hakkındaki bilgiler Azure AD tarafından doğrulanır. Azure AD, başarılı bir doğrulama üzerine iki belirteç döndürür: JWT erişim belirteci ve JWT yenileme belirteci.
+1. HTTPS üzerinden, web uygulaması, web API'ya isteğin Yetkilendirme başlığında "Taşıyıcı" ibaresi bulunan JWT dizesini eklemek için döndürülen JWT erişim belirteci kullanır. Web API sonra JWT belirteci doğrular ve doğrulama başarılı olursa, istenen kaynak döndürür.
 
-### <a name="delegated-user-identity-with-oauth-20-authorization-code-grant"></a>OAuth 2,0 yetkilendirme kodu izni ile temsilci Kullanıcı kimliği
+### <a name="delegated-user-identity-with-oauth-20-authorization-code-grant"></a>OAuth 2.0 yetki kodu hibesi ile temsilci kullanıcı kimliği
 
-1. Bir Kullanıcı, kimlik doğrulama mekanizması Azure AD 'den bağımsız olan bir Web uygulamasında zaten oturum açtı.
-1. Web uygulaması, bir erişim belirteci almak için bir yetkilendirme kodu gerektirir, bu nedenle, başarılı bir kimlik doğrulamasından sonra Web uygulaması için uygulama KIMLIĞI ve yeniden yönlendirme URI 'sini sağlayarak Azure AD 'nin yetkilendirme uç noktasına tarayıcıdan bir istek yayınlar. Kullanıcı Azure AD 'de oturum açar.
-1. Web uygulamasının kullanıcısı, Web uygulamasının kendi adına Web API 'sini çağırması için henüz onay vermediyse, kullanıcının onaylaması gerekir. Uygulama, gerektirdiği izinleri görüntüler ve bunlardan herhangi biri yönetici düzeyindeki izinlerdir, dizindeki normal bir Kullanıcı onay yapamaz. Bu izin hem tek hem de çok kiracılı uygulamalar için geçerlidir. Tek kiracılı bir durumda, yönetici kullanıcı adına yönetici onayı gerçekleştirebilir. Bu işlem, [Azure portal](https://portal.azure.com)`Grant Permissions` düğmesi kullanılarak yapılabilir. 
-1. Kullanıcı onayladıktan sonra, Web uygulaması erişim belirteci alması için gereken yetkilendirme kodunu alır.
-1. Web uygulaması, Azure AD tarafından verilen Yetkilendirme kodunu kullanarak Azure AD 'nin belirteç uç noktasına, yetkilendirme kodunu, istemci uygulamayla ilgili ayrıntıları (uygulama KIMLIĞI ve yeniden yönlendirme URI 'SI) ve istenen kaynağı (uygulama KIMLIĞI) içeren bir istek gönderir. Web API 'SI için URI).
-1. Yetkilendirme kodu ve Web uygulaması ve Web API 'SI ile ilgili bilgiler Azure AD tarafından onaylanır. Doğrulama başarıyla tamamlandığında, Azure AD iki belirteç döndürür: bir JWT erişim belirteci ve JWT yenileme belirteci.
-1. HTTPS üzerinden Web uygulaması, isteğin yetkilendirme üstbilgisinde Web API 'sine bir "taşıyıcı" atamaya sahip JWT dizesini eklemek için döndürülen JWT erişim belirtecini kullanır. Web API 'SI daha sonra JWT belirtecini doğrular ve doğrulama başarılı olursa, istenen kaynağı döndürür.
+1. Bir kullanıcı, kimlik doğrulama mekanizması Azure AD'den bağımsız olan bir web uygulamasında zaten oturum açmış durumda.
+1. Web uygulaması bir erişim jetonu edinmek için bir yetkilendirme kodu gerektirir, bu nedenle tarayıcı üzerinden Azure AD'nin yetkilendirme bitiş noktasına bir istek yayınlar ve başarılı kimlik doğrulamadan sonra URI'yi web uygulamasına yönlendirir. Kullanıcı Azure AD'de kaydolur.
+1. Web uygulamasının kullanıcısı, web uygulamasının kendi adına web API'sini aramasına izin vermeyi henüz kabul etmediyse, kullanıcının onay göstermesi gerekir. Uygulama, gerektirdiği izinleri görüntüler ve bunlardan herhangi biri yönetici düzeyinde izinlerse, dizindeki normal bir kullanıcı izin veremeyecektir. Bu onay hem tek hem de çok kiracılı uygulama için geçerlidir. Tek kiracı durumunda, yönetici, kullanıcıları adına onay vermek için yönetici onayı gerçekleştirebilir. Bu, Azure `Grant Permissions` [portalındaki](https://portal.azure.com)düğmeyi kullanarak yapılabilir. 
+1. Kullanıcı onay verdikten sonra, web uygulaması bir erişim jetonu almak için gereken yetkilendirme kodunu alır.
+1. Azure AD tarafından verilen yetkilendirme kodunu kullanarak, web uygulaması Azure AD'nin yetkilendirme kodunu, istemci uygulamasıyla ilgili ayrıntıları (Application ID ve yeniden yönlendirme URI) ve istenen kaynağı (uygulama kimliği) içeren belirteç bitiş noktasına bir istek gönderir Web API için URI).
+1. Yetkilendirme kodu ve web uygulaması ve web API'si hakkındaki bilgiler Azure AD tarafından doğrulanır. Azure AD, başarılı bir doğrulama üzerine iki belirteç döndürür: JWT erişim belirteci ve JWT yenileme belirteci.
+1. HTTPS üzerinden, web uygulaması, web API'ya isteğin Yetkilendirme başlığında "Taşıyıcı" ibaresi bulunan JWT dizesini eklemek için döndürülen JWT erişim belirteci kullanır. Web API sonra JWT belirteci doğrular ve doğrulama başarılı olursa, istenen kaynak döndürür.
 
 ## <a name="code-samples"></a>Kod örnekleri
 
-Web uygulaması için kod örneklerine Web API senaryolarına bakın. Ve sık sık kontrol edin. yeni örnekler sık sık eklenir. Web [API 'sine Web uygulaması](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
+Web Uygulaması ndan Web API senaryolarına yönelik kod örneklerine bakın. Ve sık sık tekrar kontrol edin - yeni örnekler sık sık eklenir. [Web Uygulaması Web API](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity)için .
 
 ## <a name="app-registration"></a>Uygulama kaydı
 
-Bir uygulamayı Azure AD v 1.0 uç noktasıyla kaydetmek için bkz. [uygulamayı kaydetme](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+Bir uygulamayı Azure AD v1.0 bitiş noktasına kaydetmek için [bkz.](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 
-* Tek kiracılı-hem uygulama kimliği hem de temsilci Kullanıcı kimliği durumları Için, Web uygulaması ve Web API 'SI, Azure AD 'de aynı dizine kaydedilmelidir. Web API 'SI, Web uygulamasının kaynaklarına erişimini sınırlamak için kullanılan bir izin kümesini açığa çıkarmak üzere yapılandırılabilir. Yetkilendirilmiş bir kullanıcı kimliği türü kullanılıyorsa, Web uygulamasının Azure portal **diğer uygulamalar Için izinler** açılan menüsünde istenen izinleri seçmesini gerekir. Uygulama kimliği türü kullanılıyorsa bu adım gerekli değildir.
-* Çok kiracılı-Birincisi, Web uygulaması işlevsel olması gereken izinleri belirtecek şekilde yapılandırılmıştır. Bu gerekli izinler listesi, hedef dizindeki bir kullanıcı veya yönetici uygulamaya izin verdiği zaman bir iletişim kutusunda gösterilir. Bu, kuruluş tarafından kullanılabilir hale gelir. Bazı uygulamalar yalnızca, kuruluştaki herhangi bir kullanıcının izin verebileceği Kullanıcı düzeyi izinler gerektirir. Diğer uygulamalar, kuruluştaki bir kullanıcının onay veremediği yönetici düzeyinde izinler gerektirir. Bu izin düzeyini gerektiren uygulamalara yalnızca bir dizin Yöneticisi izin verebilir. Kullanıcı veya yönetici, Web uygulamasının ve Web API 'sinin her ikisi de kendi dizinine kaydedilir.
+* Tek kiracı - Hem uygulama kimliği hem de temsilci kullanıcı kimliği örnekleri için, web uygulaması ve web API'sı Azure AD'de aynı dizine kaydedilmelidir. Web API' si, web uygulamasının kaynaklarına erişimini sınırlamak için kullanılan bir dizi izini ortaya çıkaracak şekilde yapılandırılabilir. Devralınan bir kullanıcı kimliği türü kullanılıyorsa, web uygulamasının **İzinler'den** Azure portalındaki diğer uygulamalar açılır menüsüne istenen izinleri seçmesi gerekir. Uygulama kimlik türü kullanılıyorsa bu adım gerekli değildir.
+* Çok kiracı - İlk olarak, web uygulaması işlevsel olması için gereken izinleri belirtmek için yapılandırılmıştır. Bu gerekli izin listesi, hedef dizindeki bir kullanıcı veya yönetici uygulamaya onay verdiğinde bir iletişim kutusunda gösterilir ve bu da uygulamayı kuruluşunun kullanımına sunar. Bazı uygulamalar yalnızca, kuruluştaki herhangi bir kullanıcının izin verebileceği kullanıcı düzeyinde izinler gerektirir. Diğer uygulamalar, kuruluştaki bir kullanıcının izin veremeyeceği yönetici düzeyinde izinler gerektirir. Yalnızca bir dizin yöneticisi, bu düzeyde izin gerektiren uygulamalara izin verebilir. Kullanıcı veya yönetici izin verdiğinde, web uygulaması ve web API'si dizine kaydedilir.
 
-## <a name="token-expiration"></a>Belirteç süre sonu
+## <a name="token-expiration"></a>Belirteç sona ermesi
 
-Web uygulaması, bir JWT erişim belirteci almak için yetkilendirme kodunu kullandığında, ayrıca bir JWT yenileme belirteci alır. Erişim belirtecinin süresi dolmuşsa, yenileme belirteci kullanıcıyı yeniden oturum açmalarına gerek kalmadan yeniden kimlik doğrulaması yapmak için kullanılabilir. Bu yenileme belirteci daha sonra kullanıcının kimliğini doğrulamak için kullanılır, bu da yeni bir erişim belirteci ve yenileme belirteci ile sonuçlanır.
+Web uygulaması jwt erişim belirteci almak için yetkilendirme kodunu kullandığında, aynı zamanda bir JWT yenileme belirteci alır. Erişim belirteci süresi dolduğunda, yenileme belirteci yeniden oturum açmalarına gerek kalmadan kullanıcının yeniden kimlik doğruluğunu yeniden doğrulamak için kullanılabilir. Bu yenileme belirteci daha sonra kullanıcının kimliğini doğrulamak için kullanılır ve bu da yeni bir erişim belirteci ve yenibelirtere neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Diğer [uygulama türleri ve senaryolar](app-types.md) hakkında daha fazla bilgi edinin
-- Azure AD [kimlik doğrulaması temelleri](v1-authentication-scenarios.md) hakkında bilgi edinin
+- Diğer Uygulama [türleri ve senaryoları](app-types.md) hakkında daha fazla bilgi edinin
+- Azure AD [kimlik doğrulama temelleri](v1-authentication-scenarios.md) hakkında bilgi edinin

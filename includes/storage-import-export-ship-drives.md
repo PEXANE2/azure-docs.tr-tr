@@ -8,19 +8,18 @@ ms.topic: include
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 5972f5745a2a01cbb7f23cc0523b2aef75e08a61
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7ecc36218df23d81c4646612b5474a1465f428eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673556"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282486"
 ---
-Azure veri merkezi için paket göndermeye FedEx, UPS veya DHL kullanılabilir. FedEx/DHL dışındaki bir taşıyıcı kullanmak istiyorsanız, Azure veri kutusu işlemleri ekibi ile iletişime geçin `adbops@microsoft.com`
+Paketi Azure veri merkezine sevk etmek için FedEx, UPS veya DHL kullanılabilir. FedEx/DHL dışında bir operatör kullanmak istiyorsanız,`adbops@microsoft.com`
 
-- Geçerli bir FedEx, UPS veya DHL taşıyıcı sağlayan Microsoft sürücüleri geri gönderin için kullanacağı hesap. 
-    
-    - Bir FedEx, UPS veya DHL hesap numarası, sürücüleri geri Amerika ve Avrupa'da konumlardan sevkiyat için gereklidir. 
-    - DHL hesap numarası geri Asya ve Avustralya konumlardan sürücüleri sevkiyat için tercih edilir. 
-    - Bir hesabı yoksa, oluşturun bir [FedEx](https://www.fedex.com/us/oadr/) veya [DHL](http://www.dhl.com/) taşıyıcı hesap.
-- Paketlerinizi sevkiyat değiştirirken izlemeniz gereken [Microsoft Azure hizmet koşulları](https://azure.microsoft.com/support/legal/services-terms/).
-- Düzgün bir şekilde sizin durumdaki potansiyel hasarı ve işleme gecikmeleri önlemek için diskleri paketi.
+* Microsoft'un sürücüleri geri sevk etmek için kullanacağı geçerli bir FedEx, UPS veya DHL taşıyıcı hesap numarası sağlayın.
+  * ABD ve Avrupa lokasyonlarından geri gönderi ler için bir FedEx, UPS veya DHL hesap numarası gereklidir.
+    * Asya ve Avustralya konumlarından geri dönüş etekleri için bir DHL hesap numarası tercih edilir.
+    * Hesap numaranız yoksa, bir [FedEx](https://www.fedex.com/us/oadr/) veya [DHL](http://www.dhl.com/) taşıyıcı hesabı oluşturun.
+* Paketlerinizi sevk ederken [Microsoft Azure Hizmet Koşulları'na](https://azure.microsoft.com/support/legal/services-terms/)uymanız gerekir.
+* Olası hasarları ve işleme deki gecikmeleri önlemek için disklerinizi düzgün bir şekilde paketleyebilirsiniz.

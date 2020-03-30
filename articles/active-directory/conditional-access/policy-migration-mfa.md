@@ -1,6 +1,6 @@
 ---
-title: Koşullu erişim ilkelerini geçirme-Azure Active Directory
-description: Bu makalede, Azure portal çok faktörlü kimlik doğrulaması gerektiren klasik bir ilkenin nasıl geçirileceği gösterilmektedir.
+title: Koşullu Erişim ilkelerini geçir - Azure Etkin Dizini
+description: Bu makalede, Azure portalında çok faktörlü kimlik doğrulaması gerektiren klasik bir ilkenin nasıl geçirilen bir görünüm gösterilmektedir.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,64 +12,64 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d637ac464b689a25ce5d5a79cf47da0c85d38d0f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74846053"
 ---
-# <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Azure portal klasik bir ilkeyi geçirme
+# <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Azure portalında klasik bir ilke yi geçirme
 
-Bu makalede, bir bulut uygulaması için **çok faktörlü kimlik doğrulaması** gerektiren klasik bir ilkenin nasıl geçirileceği gösterilmektedir. Bir önkoşul olmamasına karşın, klasik ilkelerinizi geçirmeye başlamadan önce [Azure Portal klasik Ilkeleri geçirmeyi](policy-migration.md) okumanız önerilir.
+Bu makalede, bir bulut uygulaması için **çok faktörlü kimlik doğrulaması** gerektiren klasik bir ilkenin nasıl geçirilen nasıl geçirilir. Ön koşul olmasa da, klasik ilkelerinizi geçiş yapmaya başlamadan önce [Azure portalında geçir](policy-migration.md) klasik ilkeleri okumanızı öneririz.
 
-![Salesforce uygulaması için MFA gerektiren klasik ilke ayrıntıları](./media/policy-migration/33.png)
+![Salesforce uygulaması için MFA gerektiren klasik politika ayrıntıları](./media/policy-migration/33.png)
 
 Geçiş işlemi aşağıdaki adımlardan oluşur:
 
-1. Yapılandırma ayarlarını almak için [Klasik Ilkeyi açın](#open-a-classic-policy) .
-1. Klasik ilkenizi değiştirmek için yeni bir Azure AD koşullu erişim ilkesi oluşturun. 
-1. Klasik ilkeyi devre dışı bırakın.
+1. Yapılandırma ayarlarını almak için [klasik ilkeyi açın.](#open-a-classic-policy)
+1. Klasik ilkenizi değiştirmek için yeni bir Azure AD Koşullu Erişim ilkesi oluşturun. 
+1. Klasik politikayı devre dışı kılmış olur.
 
-## <a name="open-a-classic-policy"></a>Klasik bir ilke açın
+## <a name="open-a-classic-policy"></a>Klasik bir ilke açma
 
-1. [Azure Portal](https://portal.azure.com), **koşullu erişim** > **Azure Active Directory** > **güvenlik** ' e gidin.
-1. **Klasik ilkeler**' i seçin.
+1. Azure [portalında,](https://portal.azure.com) **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**gidin.
+1. Seçin, **Klasik ilkeler**.
 
    ![Klasik ilkeler görünümü](./media/policy-migration-mfa/12.png)
 
-1. Klasik ilkeler listesinde, geçirmek istediğiniz ilkeyi seçin. Yeni bir koşullu erişim ilkesiyle yeniden oluşturabilmeniz için yapılandırma ayarlarını belgeleyin.
+1. Klasik ilkeler listesinde, geçirmek istediğiniz ilkeyi seçin. Yapılandırma ayarlarını yeni bir Koşullu Erişim ilkesiyle yeniden oluşturabilmeniz için belgeleyin.
 
-## <a name="create-a-new-conditional-access-policy"></a>Yeni bir koşullu erişim ilkesi oluşturma
+## <a name="create-a-new-conditional-access-policy"></a>Yeni bir Koşullu Erişim ilkesi oluşturma
 
-1. [Azure Portal](https://portal.azure.com), **koşullu erişim** > **Azure Active Directory** > **güvenlik** ' e gidin.
-1. Yeni bir koşullu erişim ilkesi oluşturmak için **Yeni ilke**' yi seçin.
-1. **Yeni** sayfada, **ad** metin kutusuna ilkeniz için bir ad yazın.
-1. **Atamalar** bölümünde **Kullanıcılar ve gruplar**' a tıklayın.
-   1. Klasik ilkenizde tüm kullanıcılar ' ı seçtiyseniz, **tüm kullanıcılar**' a tıklayın. 
-   1. Klasik ilkenizde seçili gruplarınız varsa, **Kullanıcı ve Grup Seç**' e tıklayın ve ardından gerekli kullanıcılar ve gruplar ' ı seçin.
-   1. Dışlanan gruplarınız varsa, **Dışla** sekmesine tıklayın ve ardından gerekli kullanıcıları ve grupları seçin. 
-   1. **Bitti** 'yi seçin
-1. **Atama** bölümünde **bulut uygulamaları veya eylemleri**' ne tıklayın.
-1. **Bulut uygulamaları veya eylemler** sayfasında, aşağıdaki adımları uygulayın:
-   1. **Uygulama Seç**' e tıklayın.
-   1. **Seç**'e tıklayın.
-   1. **Seç** sayfasında, bulut uygulamanızı seçin ve ardından **Seç**' e tıklayın.
-   1. **Bulut uygulamaları** sayfasında **bitti**' ye tıklayın.
-1. **Multi-Factor Authentication** ' ın seçili olmasını istiyorsanız:
-   1. **Erişim denetimleri** bölümünde, **izin ver**' e tıklayın.
-   1. **İzin** sayfasında, **erişim ver**' e tıklayın ve ardından **çok faktörlü kimlik doğrulaması iste**' ye tıklayın.
-   1. **Seç**'e tıklayın.
-1. İlkenizi **etkinleştirmek için tıklayın** ve ardından **Kaydet**' i seçin.
+1. Azure [portalında,](https://portal.azure.com) **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**gidin.
+1. Yeni bir Koşullu Erişim ilkesi oluşturmak için **Yeni ilkeyi**seçin.
+1. **Yeni** sayfada, **Ad** metin kutusunda, ilkeniz için bir ad yazın.
+1. **Atamalar** bölümünde, **Kullanıcılar ve gruplar'ı**tıklatın.
+   1. Klasik ilkenizde tüm kullanıcılar seçildiyse, **Tüm kullanıcılar'ı**tıklatın. 
+   1. Klasik politikanızda seçili gruplar varsa, **kullanıcıları ve grupları seçin'i**tıklatın ve ardından gerekli kullanıcı ve grupları seçin.
+   1. Dışlanan gruplar adediniz varsa, **Dışla** sekmesini tıklatın ve ardından gerekli kullanıcıları ve grupları seçin. 
+   1. **Bitti'yi** seçin
+1. **Atama** bölümünde, **Bulut uygulamaları veya eylemleri'ni**tıklatın.
+1. Bulut **uygulamaları veya eylemleri** sayfasında aşağıdaki adımları gerçekleştirin:
+   1. **Uygulamaları Seç'i**tıklatın.
+   1. **Seç'i**tıklatın.
+   1. **Seç** sayfasında bulut uygulamanızı seçin ve ardından **Seç'i**tıklatın.
+   1. Bulut **uygulamaları** **sayfasında, Bitti'yi**tıklatın.
+1. Çok **faktörlü kimlik doğrulamasını gerektirir:**
+   1. Access **denetimleri** **bölümünde, Ver'i**tıklatın.
+   1. **Hibe** sayfasında, **Access'i Ver'i**tıklatın ve ardından **çok faktörlü kimlik doğrulamayı gerektir'i**tıklatın.
+   1. **Seç'i**tıklatın.
+1. İlkenizin etkinlemesini etkinleştirmek için **Üzerine'yi** tıklatın ve ardından **Kaydet'i**seçin.
 
-   ![Koşullu erişim ilkesi oluşturma](./media/policy-migration-mfa/conditional-access-policy-migration.png)
+   ![Koşullu Erişim ilkesi oluşturma](./media/policy-migration-mfa/conditional-access-policy-migration.png)
 
-## <a name="disable-the-classic-policy"></a>Klasik ilkeyi devre dışı bırak
+## <a name="disable-the-classic-policy"></a>Klasik politikayı devre dışı
 
-Klasik ilkenizi devre dışı bırakmak için **Ayrıntılar** görünümünde **devre dışı bırak** ' a tıklayın.
+Klasik ilkenizi devre dışı kabmak için **Ayrıntılar** görünümünde **Devre Dışı Nı** tıklatın.
 
-![Klasik ilkeleri devre dışı bırak](./media/policy-migration-mfa/14.png)
+![Klasik ilkeleri devre dışı](./media/policy-migration-mfa/14.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Klasik ilke geçişi hakkında daha fazla bilgi için, [Azure Portal klasik Ilkeleri geçirme](policy-migration.md)bölümüne bakın.
-- [Yeni ilke kararlarının etkisini öğrenmek için koşullu erişim için yalnızca rapor modunu kullanın.](concept-conditional-access-report-only.md)
+- Klasik ilke geçişi hakkında daha fazla bilgi için Azure [portalındaki klasik ilkeleri Geçir'e](policy-migration.md)bakın.
+- [Yeni ilke kararlarının etkisini belirlemek için Koşullu Erişim için yalnızca rapor modunu kullanın.](concept-conditional-access-report-only.md)

@@ -1,24 +1,24 @@
 ---
-title: Şablonlarda Kullanıcı tanımlı işlevler
-description: Bir Azure Resource Manager şablonunda Kullanıcı tanımlı işlevlerin nasıl tanımlanacağını ve kullanılacağını açıklar.
+title: Şablonlarda kullanıcı tanımlı işlevler
+description: Azure Kaynak Yöneticisi şablonunda kullanıcı tanımlı işlevlerin nasıl tanımlandığını ve kullanılacağını açıklar.
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943213"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki Kullanıcı tanımlı işlevler
+# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonundaki kullanıcı tanımlı işlevler
 
-Şablonunuz içinde kendi işlevlerinizi oluşturabilirsiniz. Bu işlevler, şablonunuzda kullanıma sunulmuştur. Kullanıcı tanımlı işlevler, şablonunuzda otomatik olarak kullanılabilen [Standart şablon işlevlerinden](template-functions.md) ayrıdır. Şablonunuzda tekrar tekrar kullanılan karmaşık deyimleriniz varsa kendi işlevlerinizi oluşturun.
+Şablonunuzda kendi işlevlerinizi oluşturabilirsiniz. Bu işlevler şablonunuzda kullanılabilir. Kullanıcı tanımlı işlevler, şablonunuzda otomatik olarak kullanılabilen [standart şablon işlevlerinden](template-functions.md) ayrıdır. Şablonunuzda art arda kullanılan karmaşık ifadeleriniz olduğunda kendi işlevlerinizi oluşturun.
 
-Bu makalede, Azure Resource Manager şablonunuzda Kullanıcı tanımlı işlevlerin nasıl ekleneceği açıklanmaktadır.
+Bu makalede, Azure Kaynak Yöneticisi şablonunuzda kullanıcı tanımlı işlevlerin nasıl ekleyeceğiniz açıklanmaktadır.
 
-## <a name="define-the-function"></a>İşlevi tanımlayın
+## <a name="define-the-function"></a>İşlevi tanımla
 
-İşlevleriniz, şablon işlevleriyle adlandırma çakışmalarını önlemek için bir ad alanı değeri gerektirir. Aşağıdaki örnek, benzersiz bir ad döndüren bir işlevi göstermektedir:
+İşlevleriniz, şablon işlevleriyle çakışmaları adlandırmayı önlemek için bir ad alanı değeri gerektirir. Aşağıdaki örnekte benzersiz bir ad döndüren bir işlev gösterilmektedir:
 
 ```json
 "functions": [
@@ -42,9 +42,9 @@ Bu makalede, Azure Resource Manager şablonunuzda Kullanıcı tanımlı işlevle
 ],
 ```
 
-## <a name="use-the-function"></a>İşlevini kullanma
+## <a name="use-the-function"></a>İşlevi kullanma
 
-Aşağıdaki örnek, Kullanıcı tanımlı bir işlev içeren bir şablonu gösterir. Bir depolama hesabı için benzersiz bir ad almak üzere bu işlevi kullanır. Şablon, işleve parametre olarak geçen **storageNamePrefix** adlı bir parametreye sahiptir.
+Aşağıdaki örnekte, kullanıcı tanımlı bir işlev içeren bir şablon gösterilmektedir. Bir depolama hesabı için benzersiz bir ad almak için bu işlevi kullanır. Şablon, işlev için bir parametre olarak geçtiği **storageNamePrefix** adlı bir parametreye sahiptir.
 
 ```json
 {
@@ -95,16 +95,16 @@ Aşağıdaki örnek, Kullanıcı tanımlı bir işlev içeren bir şablonu göst
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Bir Kullanıcı işlevi tanımlarken bazı kısıtlamalar vardır:
+Bir kullanıcı işlevini tanımlarken bazı kısıtlamalar vardır:
 
 * İşlev değişkenlere erişemez.
-* İşlevi yalnızca işlevinde tanımlanan parametreleri kullanabilir. Kullanıcı tanımlı bir işlev içinde [Parameters](template-functions-deployment.md#parameters) işlevini kullandığınızda, bu işlevin parametreleriyle sınırlandırılırsınız.
-* İşlev, Kullanıcı tanımlı diğer işlevleri çağıramaz.
-* İşlev, [başvuru](template-functions-resource.md#reference) işlevini veya [liste](template-functions-resource.md#list) işlevlerinden hiçbirini kullanamaz.
-* İşlevin parametreleri varsayılan değerlere sahip olamaz.
+* İşlev yalnızca işlevde tanımlanan parametreleri kullanabilir. Kullanıcı tanımlı bir işlev içindeki [parametreler](template-functions-deployment.md#parameters) işlevini kullandığınızda, bu işlevin parametreleri ile sınırlısınız.
+* İşlev, kullanıcı tarafından tanımlanan diğer işlevleri çağıramaz.
+* İşlev [başvuru](template-functions-resource.md#reference) işlevini veya [liste](template-functions-resource.md#list) işlevlerinden herhangi birini kullanamaz.
+* İşlev için parametreler varsayılan değerlere sahip olamaz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kullanıcı tanımlı işlevlerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-* Kullanılabilir şablon işlevlerinin bir listesi için, bkz. [Azure Resource Manager şablon işlevleri](template-functions.md).
+* Kullanıcı tanımlı işlevler için kullanılabilir özellikler hakkında bilgi edinmek için [bkz.](template-syntax.md)
+* Kullanılabilir şablon işlevlerinin listesi için [Azure Kaynak Yöneticisi şablon işlevlerine](template-functions.md)bakın.

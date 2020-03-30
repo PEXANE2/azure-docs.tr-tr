@@ -1,113 +1,112 @@
 ---
-title: HTTPS uç noktası | Azure Marketi
-description: Bir HTTPS uç noktası için lider yönetimini yapılandırın.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: HTTPS Bitiş Noktası | Azure Marketi
+description: Bir HTTPS bitiş noktası için müşteri adayı yönetimini yapılandırın.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.author: pabutler
-ms.openlocfilehash: 817e431f5386b10345d414190e8bda0954ef2aca
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825223"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288606"
 ---
-# <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS uç noktası kullanarak müşteri adayı yönetimini yapılandırma
+# <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS bitiş noktasını kullanarak müşteri adayı yönetimini yapılandırma
 
-Azure Marketi ve AppSource müşteri adaylarını işlemek için bir HTTPS uç noktası kullanabilirsiniz. Bu müşteri adayları, bir Müşteri Ilişkileri yönetimi (CRM) sistemine yazılamayacağını veya bir e-posta bildirimi olarak gönderilmesini sağlayabilirsiniz. Bu makalede, [Microsoft Flow](https://powerapps.microsoft.com/automate-processes/) Automation hizmetini kullanarak lider yönetiminin nasıl yapılandırılacağı açıklanır.
+Azure Marketi ve AppSource müşteri adaylarını işlemek için bir HTTPS bitiş noktası kullanabilirsiniz. Bu müşteri adayları, Müşteri İlişkileri Yönetimi (CRM) sistemine yazılabilir veya e-posta bildirimi olarak gönderilebilir. Bu makalede, [Microsoft Flow](https://powerapps.microsoft.com/automate-processes/) otomasyon hizmetini kullanarak müşteri adayı yönetiminin nasıl yapılandırılacayacağı anlatılıyor.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Microsoft Flow kullanarak akış oluşturma
+## <a name="create-a-flow-using-microsoft-flow"></a>Microsoft Flow'u kullanarak akış oluşturma
 
-1. [Flow](https://flow.microsoft.com/) Web sayfasını açın. **Oturum aç '** ı seçin veya ücretsiz **kaydolun** ' ı seçerek ücretsiz bir akış hesabı oluşturun.
+1. [Akış](https://flow.microsoft.com/) web sayfasını açın. Ücretsiz Akış hesabı oluşturmak için **Kaydol** veya **Ücretsiz Kaydol'u** seçin.
 
-2. Oturum açın ve menü çubuğunda **Akışlarım** ' ı seçin.
+2. Oturum açın ve menü çubuğunda **akışlarım'ı** seçin.
 
     ![Akışlarım](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-3. **Boş + oluştur**seçeneğini belirleyin.
+3. Boştan **+ Oluştur'u**seçin.
 
-    ![boş oluştur](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![Sıfırdan oluştur](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-4. **Boş oluştur**' u seçin.
+4. **Boştan Oluştur'u**seçin.
 
-    ![boş oluştur](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    ![Sıfırdan oluştur](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
 
-5. **Bağlayıcıları ve Tetikleyicileri ara** alanına, istek bağlayıcısını bulmak için "istek" yazın.
-6. **Tetikleyiciler**altında, **bir http isteği alındığında**öğesini seçin. 
+5. Arama **bağlayıcıları ve tetikleyiciler** alanında, İstek bağlayıcısını bulmak için "istek" yazın.
+6. **Tetikleyiciler**altında, **bir HTTP isteği aldığında**seçin. 
 
-    ![Alınan HTTP isteği tetikleyicisini seçin](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![Alınan HTTP isteğini seçin](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-7. **Istek GÖVDESI JSON şemasını**yapılandırmak için aşağıdaki adımlardan birini kullanın:
+7. **İstek Gövdesi JSON Schema'yı**yapılandırmak için aşağıdaki adımlardan birini kullanın:
 
-   - Bu makalenin sonundaki [JSON şemasını](#json-schema) , **Istek gövdesi JSON şeması** metin kutusuna kopyalayın.
-   - **Şema oluşturmak için örnek yük kullanma** öğesini seçin. **Örnek JSON yükü girin veya yapıştırın** metin kutusunda [JSON örneğine](#json-example)yapıştırın. Şemayı oluşturmak için **bitti** ' yi seçin.
+   - Bu makalenin sonundaki [JSON şeasını](#json-schema) **İstek Gövdesi JSON Schema** metin kutusuna kopyalayın.
+   - **Şema oluşturmak için örnek yük kullanma** öğesini seçin. Örnek **bir JSON yük metin kutusunu girin veya yapıştırın,** [JSON örneğine](#json-example)yapıştırın. Şemayı oluşturmak için **Bitti'yi** seçin.
 
    >[!Note]
-   >Akışta bu noktada, bir CRM sistemine bağlanabilir veya bir e-posta bildirimi yapılandırabilirsiniz.
+   >Akış bu noktada ya bir CRM sistemine bağlanmak veya bir e-posta bildirimi yapılandırmak.
 
-### <a name="to-connect-to-a-crm-system"></a>Bir CRM sistemine bağlanmak için
+### <a name="to-connect-to-a-crm-system"></a>CRM sistemine bağlanmak için
 
-1. **+ Yeni adım**' ı seçin.
-2. Yeni bir kayıt oluşturma eylemiyle tercih ettiğiniz CRM sistemini seçin. Aşağıdaki ekran yakalama, Dynamics 365 ' i gösterir. örnek olarak **Yeni bir kayıt oluşturur** .
+1. **+ Yeni adım**’ı seçin.
+2. Yeni bir kayıt oluşturmak için eylemle seçtiğiniz CRM sistemini seçin. Aşağıdaki ekran yakalama **Dinamikleri 365** gösterir - Örnek olarak yeni bir kayıt oluşturun.
 
-    ![Yeni bir kayıt oluştur](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
+    ![Yeni kayıt oluşturma](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
 
-3. Bağlayıcının bağlantı girişleri olan **kuruluş adını** belirtin. **Varlık adı** açılır listesinden **müşteri adayları** ' nı seçin.
+3. Bağlayıcınızın bağlantı girişleri olan **Kuruluş Adı'nı** sağlayın. **Varlık Adı** açılır listesinden **Müşteri Adayları'nı** seçin.
 
-    ![Müşteri adaylarını seçin](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
+    ![Müşteri adaylarını seçme](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
 
-4. Flow, müşteri adayı bilgilerini sağlamak için bir form gösterir. Dinamik içerik eklemeyi seçerek giriş isteğinden öğeleri eşleyebilirsiniz. Aşağıdaki ekran yakalama, bir örnek olarak **Offertitle** gösterir.
+4. Akış, müşteri adayı bilgileri sağlamak için bir form gösterir. Dinamik içerik eklemeyi seçerek giriş isteğindeki öğeleri eşleyebilirsiniz. Aşağıdaki ekran yakalama, **OfferTitle'ı** örnek olarak gösterir.
 
-    ![Dinamik içerik Ekle](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
+    ![Dinamik içerik ekle](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 
-5. İstediğiniz alanları eşleyin ve sonra akışınızı kaydetmek için **Kaydet** ' i seçin.
+5. İstediğiniz alanları eşle ve ardından akışınızı kaydetmek için **Kaydet'i** seçin.
 
-6. İstekte bir HTTP POST URL 'SI oluşturulur. Bu URL 'YI kopyalayın ve HTTPS uç noktası olarak kullanın.
+6. İstekte bir HTTP POST URL'si oluşturulur. Bu URL'yi kopyalayın ve HTTPS bitiş noktası olarak kullanın.
 
-    ![HTTP Post URL 'SI](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
+    ![HTTP Mesaj URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
-### <a name="to-set-up-email-notification"></a>E-posta bildirimi ayarlamak için
+### <a name="to-set-up-email-notification"></a>E-posta bildirimini ayarlamak için
 
-1. **+ Yeni adım**' ı seçin.
-2. **Eylem seçin**altında **Eylemler**' i seçin.
+1. **+ Yeni adım**’ı seçin.
+2. Bir **eylem seçin** **altında, Eylemler'i**seçin.
 3. **Eylemler** altında **E-posta gönder**’i seçin.
 
     ![E-posta eylemi ekleme](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
 
-4. **E-posta gönder**' de, aşağıdaki gerekli alanları yapılandırın:
+4. **E-posta**gönder'de, aşağıdaki gerekli alanları yapılandırın:
 
-   - En az bir geçerli **e-posta** adresi girin.
-   - **Konu** akışı, aşağıdaki ekran yakalamadaki **Leadsource** gibi dinamik içerik ekleme seçeneği sunar.
+   - **Için** - En az bir geçerli e-posta adresi girin.
+   - **Konu** - Akış, aşağıdaki ekran yakalamada **LeadSource** gibi Dinamik içerik ekleme seçeneği sunar.
 
-     ![Dinamik içerik kullanarak e-posta eylemi ekleme](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
+     ![Dinamik içeriği kullanarak e-posta eylemi ekleme](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
 
-   - **Gövde** -dinamik içerik listesinden, e-postanın gövdesinde istediğiniz bilgileri ekleyin. Örneğin, soyadı, ad, e-posta ve şirket.
+   - **Gövde** - Dinamik içerik listesinden, e-postanın gövdesine istediğiniz bilgileri ekleyin. Örneğin, Soyadı, İlkAdı, E-posta ve Şirket.
 
-   E-posta bildirimini ayarlamayı tamamladığınızda, aşağıdaki ekran yakalamadaki örneğe benzer şekilde görünür.
+   E-posta bildirimini ayarlamayı bitirdiğinizde, aşağıdaki ekran yakalamaörneğinde örnek gibi görünür.
 
    ![E-posta eylemi ekleme](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
-5. Akışınızı son vermek için **Kaydet** ' i seçin.
-6. İstekte bir HTTP POST URL 'SI oluşturulur. Bu URL 'YI kopyalayın ve HTTPS uç noktası olarak kullanın.
+5. Akışınızı tamamlamak için **Kaydet'i** seçin.
+6. İstekte bir HTTP POST URL'si oluşturulur. Bu URL'yi kopyalayın ve HTTPS bitiş noktası olarak kullanın.
 
-    ![HTTP Post URL 'SI](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
+    ![HTTP Mesaj URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Teklifinizi, HTTPS uç noktasına müşteri adayları gönderecek şekilde yapılandırma
+## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Müşteri adaylarını HTTPS bitiş noktasına gönderecek şekilde teklifinizi yapılandırın
 
-Teklifiniz için lider yönetimi bilgilerini yapılandırırken, **müşteri adayı hedefi** Için **https uç noktası** ' nı seçin ve ÖNCEKI adımda kopyaladığınız http post URL 'sine yapıştırın.  
+Teklifiniz için müşteri adayı yönetimi bilgilerini yapılandırdığınızda, **Müşteri Adayı Hedefi** için HTTPS Bitiş **Noktası'nı** seçin ve önceki adımda kopyaladığınız HTTP POST URL'ye yapıştırın.  
 
-![Dinamik içerik Ekle](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
+![Dinamik içerik ekle](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-Müşteri adayları oluşturulduğunda, Microsoft, sizin yapılandırdığınız CRM sistemine veya e-posta adresine yönlendirilmek üzere müşteri adaylarını akışa gönderir.
+Müşteri adayları oluşturulduğunda, Microsoft, yapılandırılan CRM sistemine veya e-posta adresine yönlendirilen Akış'a müşteri adayları gönderir.
 
-## <a name="json-schema-and-example"></a>JSON şeması ve örneği
+## <a name="json-schema-and-example"></a>JSON şema ve örnek
 
-JSON test örneği aşağıdaki şemayı kullanır:
+JSON test örneği aşağıdaki şema kullanır:
 
-### <a name="json-schema"></a>JSON şeması
+### <a name="json-schema"></a>JSON şema
 
 ``` json
 {
@@ -166,7 +165,7 @@ JSON test örneği aşağıdaki şemayı kullanır:
 }
 ```
 
-Aşağıdaki JSON örneğini, MS akışında bir test olarak kullanmak üzere kopyalayabilir ve düzenleyebilirsiniz.
+MS Akışınızda test olarak kullanmak üzere aşağıdaki JSON örneğini kopyalayabilir ve edinebilirsiniz.
 
 ### <a name="json-example"></a>JSON örneği
 
@@ -188,4 +187,4 @@ Aşağıdaki JSON örneğini, MS akışında bir test olarak kullanmak üzere ko
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce yapmadıysanız, Bulut İş Ortağı Portalı müşteri [adaylarını](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) yapılandırın.
+Bunu daha önce yapmadıysanız, Bulut İş Ortağı Portalı'ndaki müşteri [müşteri adaylarını](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) yapılandırın.

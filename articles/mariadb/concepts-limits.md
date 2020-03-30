@@ -1,28 +1,28 @@
 ---
-title: Sınırlamalar-MariaDB için Azure veritabanı
-description: Bu makalede, MariaDB için Azure veritabanı 'nda bağlantı ve depolama motoru seçeneklerinin sayısı gibi sınırlamalar açıklanmaktadır.
+title: Sınırlamalar - MariaDB için Azure Veritabanı
+description: Bu makalede, MariaDB için Azure Veritabanı'nda bağlantı sayısı ve depolama motoru seçenekleri gibi sınırlamalar açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: c982181dee34a7eb0715d5e1271ef5ed794f3809
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.date: 3/18/2020
+ms.openlocfilehash: bb907ee59891e5a9a1ffc9c8c6eee34d3e71ad2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79296753"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531949"
 ---
-# <a name="limitations-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı sınırlamaları
-Aşağıdaki bölümlerde, kapasitesi, depolama altyapısı desteği, destek ayrıcalığına, veri işleme ifadesi desteği ve veritabanı hizmeti işlevsel sınırları açıklanmaktadır.
+# <a name="limitations-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanında Sınırlamalar
+Aşağıdaki bölümlerde veritabanı hizmetinde kapasite, depolama motoru desteği, ayrıcalık desteği, veri işleme bildirimi desteği ve işlevsel sınırlar açıklanmıştır.
 
 ## <a name="server-parameters"></a>Sunucu parametreleri
 
-Çeşitli popüler sunucu parametrelerinin en düşük ve en yüksek değerleri, fiyatlandırma katmanı ve sanal çekirdekler tarafından belirlenir. Sınırlar için aşağıdaki tablolara bakın.
+Birkaç popüler sunucu parametrelerinin minimum ve maksimum değerleri fiyatlandırma katmanı ve vCores tarafından belirlenir. Sınırlar için aşağıdaki tablolara bakın.
 
 ### <a name="max_connections"></a>max_connections
 
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
+|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
 |---|---|---|---|---|
 |Temel|1|50|10|50|
 |Temel|2|100|10|100|
@@ -32,27 +32,27 @@ Aşağıdaki bölümlerde, kapasitesi, depolama altyapısı desteği, destek ayr
 |Genel Amaçlı|16|2500|10|5000|
 |Genel Amaçlı|32|5000|10|10000|
 |Genel Amaçlı|64|10000|10|20000|
-|Bellek için İyileştirilmiş|2|600|10|800|
-|Bellek için İyileştirilmiş|4|1250|10|2500|
-|Bellek için İyileştirilmiş|8|2500|10|5000|
-|Bellek için İyileştirilmiş|16|5000|10|10000|
-|Bellek için İyileştirilmiş|32|10000|10|20000|
+|Bellek İçin İyileştirilmiş|2|600|10|800|
+|Bellek İçin İyileştirilmiş|4|1250|10|2500|
+|Bellek İçin İyileştirilmiş|8|2500|10|5000|
+|Bellek İçin İyileştirilmiş|16|5000|10|10000|
+|Bellek İçin İyileştirilmiş|32|10000|10|20000|
 
-Bağlantı sınırı aştıklarında aşağıdaki hata iletisini alabilirsiniz:
-> 1040 (08004). hata: Çok fazla sayıda bağlantı
+Bağlantılar sınırı aştığında, aşağıdaki hatayı alabilirsiniz:
+> HATA 1040 (08004): Çok fazla bağlantı
 
 > [!IMPORTANT]
-> En iyi deneyim için, bağlantıları verimli bir şekilde yönetmek üzere ProxySQL gibi bir bağlantı havuzlayıcı kullanmanızı öneririz.
+> En iyi deneyim için, bağlantıları verimli bir şekilde yönetmek için ProxySQL gibi bir bağlantı havuzu kullanmanızı öneririz.
 
-MariaDB 'ye yeni istemci bağlantıları oluşturma zaman alır ve bir kez kurulduktan sonra bile bu bağlantılar veritabanı kaynaklarını kaplar. Çoğu uygulama, bu durumu çözer birçok kısa süreli bağlantı ister. Sonuç olarak gerçek iş yükünüz için daha az kaynak kullanılabilir ve performansı azaltıldı. Boştaki bağlantıları azaltan ve var olan bağlantıları yeniden kullanan bir bağlantı havuzlayıcı bunun önlenmesine yardımcı olur. ProxySQL 'i ayarlama hakkında bilgi edinmek için [Blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)ziyaret edin.
+MariaDB'ye yeni istemci bağlantıları oluşturmak zaman alır ve kurulduktan sonra, bu bağlantılar boşta yken bile veritabanı kaynaklarını kaplar. Çoğu uygulama, bu durumu biraraya getiren birçok kısa süreli bağlantı isteğinde dir. Sonuç, performansın düşmesine yol açan gerçek iş yükünüz için daha az kaynak kullanılabilir. Boşta kalan bağlantıları azaltan ve varolan bağlantıları yeniden kullanan bir bağlantı havuzu bunu önlemeye yardımcı olur. ProxySQL kurulumu hakkında bilgi edinmek için [blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)ziyaret edin.
 
-## <a name="query_cache_size"></a>query_cache_size
+### <a name="query_cache_size"></a>query_cache_size
 
-Sorgu önbelleği varsayılan olarak kapalıdır. Sorgu önbelleğini etkinleştirmek için `query_cache_type` parametresini yapılandırın. 
+Sorgu önbelleği varsayılan olarak kapatılır. Sorgu önbelleğini etkinleştirmek için `query_cache_type` parametreyi yapılandırın. 
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) gözden geçirin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) inceleyin.
 
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
+|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -62,17 +62,17 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 |Genel Amaçlı|16|0|0|134217728|
 |Genel Amaçlı|32|0|0|134217728|
 |Genel Amaçlı|64|0|0|134217728|
-|Bellek için İyileştirilmiş|2|0|0|33554432|
-|Bellek için İyileştirilmiş|4|0|0|67108864|
-|Bellek için İyileştirilmiş|8|0|0|134217728|
-|Bellek için İyileştirilmiş|16|0|0|134217728|
-|Bellek için İyileştirilmiş|32|0|0|134217728|
+|Bellek İçin İyileştirilmiş|2|0|0|33554432|
+|Bellek İçin İyileştirilmiş|4|0|0|67108864|
+|Bellek İçin İyileştirilmiş|8|0|0|134217728|
+|Bellek İçin İyileştirilmiş|16|0|0|134217728|
+|Bellek İçin İyileştirilmiş|32|0|0|134217728|
 
-## <a name="sort_buffer_size"></a>sort_buffer_size
+### <a name="sort_buffer_size"></a>sort_buffer_size
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) gözden geçirin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) inceleyin.
 
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
+|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -82,17 +82,17 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 |Genel Amaçlı|16|524288|32768|33554432|
 |Genel Amaçlı|32|524288|32768|33554432|
 |Genel Amaçlı|64|524288|32768|33554432|
-|Bellek için İyileştirilmiş|2|524288|32768|8388608|
-|Bellek için İyileştirilmiş|4|524288|32768|16777216|
-|Bellek için İyileştirilmiş|8|524288|32768|33554432|
-|Bellek için İyileştirilmiş|16|524288|32768|33554432|
-|Bellek için İyileştirilmiş|32|524288|32768|33554432|
+|Bellek İçin İyileştirilmiş|2|524288|32768|8388608|
+|Bellek İçin İyileştirilmiş|4|524288|32768|16777216|
+|Bellek İçin İyileştirilmiş|8|524288|32768|33554432|
+|Bellek İçin İyileştirilmiş|16|524288|32768|33554432|
+|Bellek İçin İyileştirilmiş|32|524288|32768|33554432|
 
-## <a name="join_buffer_size"></a>join_buffer_size
+### <a name="join_buffer_size"></a>join_buffer_size
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) gözden geçirin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) inceleyin.
 
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
+|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -102,17 +102,17 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 |Genel Amaçlı|16|262144|128|2147483648|
 |Genel Amaçlı|32|262144|128|4294967295|
 |Genel Amaçlı|64|262144|128|4294967295|
-|Bellek için İyileştirilmiş|2|262144|128|536870912|
-|Bellek için İyileştirilmiş|4|262144|128|1073741824|
-|Bellek için İyileştirilmiş|8|262144|128|2147483648|
-|Bellek için İyileştirilmiş|16|262144|128|4294967295|
-|Bellek için İyileştirilmiş|32|262144|128|4294967295|
+|Bellek İçin İyileştirilmiş|2|262144|128|536870912|
+|Bellek İçin İyileştirilmiş|4|262144|128|1073741824|
+|Bellek İçin İyileştirilmiş|8|262144|128|2147483648|
+|Bellek İçin İyileştirilmiş|16|262144|128|4294967295|
+|Bellek İçin İyileştirilmiş|32|262144|128|4294967295|
 
-## <a name="max_heap_table_size"></a>max_heap_table_size
+### <a name="max_heap_table_size"></a>max_heap_table_size
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) gözden geçirin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) inceleyin.
 
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
+|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -122,17 +122,17 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 |Genel Amaçlı|16|16777216|16384|2147483648|
 |Genel Amaçlı|32|16777216|16384|4294967295|
 |Genel Amaçlı|64|16777216|16384|4294967295|
-|Bellek için İyileştirilmiş|2|16777216|16384|536870912|
-|Bellek için İyileştirilmiş|4|16777216|16384|1073741824|
-|Bellek için İyileştirilmiş|8|16777216|16384|2147483648|
-|Bellek için İyileştirilmiş|16|16777216|16384|4294967295|
-|Bellek için İyileştirilmiş|32|16777216|16384|4294967295|
+|Bellek İçin İyileştirilmiş|2|16777216|16384|536870912|
+|Bellek İçin İyileştirilmiş|4|16777216|16384|1073741824|
+|Bellek İçin İyileştirilmiş|8|16777216|16384|2147483648|
+|Bellek İçin İyileştirilmiş|16|16777216|16384|4294967295|
+|Bellek İçin İyileştirilmiş|32|16777216|16384|4294967295|
 
-## <a name="tmp_table_size"></a>tmp_table_size
+### <a name="tmp_table_size"></a>tmp_table_size
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) gözden geçirin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) inceleyin.
 
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
+|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -142,63 +142,63 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 |Genel Amaçlı|16|16777216|1024|536870912|
 |Genel Amaçlı|32|16777216|1024|1073741824|
 |Genel Amaçlı|64|16777216|1024|1073741824|
-|Bellek için İyileştirilmiş|2|16777216|1024|134217728|
-|Bellek için İyileştirilmiş|4|16777216|1024|268435456|
-|Bellek için İyileştirilmiş|8|16777216|1024|536870912|
-|Bellek için İyileştirilmiş|16|16777216|1024|1073741824|
-|Bellek için İyileştirilmiş|32|16777216|1024|1073741824|
+|Bellek İçin İyileştirilmiş|2|16777216|1024|134217728|
+|Bellek İçin İyileştirilmiş|4|16777216|1024|268435456|
+|Bellek İçin İyileştirilmiş|8|16777216|1024|536870912|
+|Bellek İçin İyileştirilmiş|16|16777216|1024|1073741824|
+|Bellek İçin İyileştirilmiş|32|16777216|1024|1073741824|
 
-## <a name="storage-engine-support"></a>Depolama altyapısı desteği
+## <a name="storage-engine-support"></a>Depolama motoru desteği
 
 ### <a name="supported"></a>Destekleniyor
-- [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
-- [BELLEK](https://mariadb.com/kb/en/library/memory-storage-engine/)
+- [ınnodb](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
+- [Bellek](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
 ### <a name="unsupported"></a>Desteklenmeyen
-- [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [KARA DELIK](https://mariadb.com/kb/en/library/blackhole/)
-- [ARŞIVLIYORSANıZ](https://mariadb.com/kb/en/library/archive/)
+- [Myısam](https://mariadb.com/kb/en/library/myisam-storage-engine/)
+- [Blackhole](https://mariadb.com/kb/en/library/blackhole/)
+- [Arşiv](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>Ayrıcalık desteği
 
 ### <a name="unsupported"></a>Desteklenmeyen
-- DBA rol: birçok sunucu parametreleri ve ayarları yanlışlıkla sunucu performansının düşmesine neden veya DBMS ACID özelliklerini negate. Bu nedenle, bir ürün düzeyinde SLA ve hizmet bütünlüğü korumak için bu hizmeti DBA rol kullanıma sunmuyor. Yeni bir veritabanı örneği oluşturulduğunda bu oluşturulur, varsayılan kullanıcı hesabı, veritabanı yönetilen örneğine DDL ve DML deyimleri çoğunu gerçekleştirmek bu kullanıcı sağlar.
-- Süper ayrıcalık: benzer [süper ayrıcalık](https://mariadb.com/kb/en/library/grant/#global-privileges) da kısıtlıdır.
-- DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, bir mysqldump gerçekleştirirken `CREATE DEFINER` komutlarını el ile veya `--skip-definer` komutunu kullanarak kaldırın.
+- DBA rolü: Birçok sunucu parametreve ayarı yanlışlıkla sunucu performansını düşürebilir veya DBMS'nin ACID özelliklerini inkâr edebilir. Bu nedenle, hizmet bütünlüğünü ve SLA'yı ürün düzeyinde korumak için bu hizmet DBA rolünü ortaya çıkarmaz. Yeni bir veritabanı örneği oluşturulduğunda oluşturulan varsayılan kullanıcı hesabı, kullanıcının yönetilen veritabanı örneğinde DDL ve DML ekstrelerinin çoğunu gerçekleştirmesine olanak tanır.
+- SÜPER ayrıcalık: Benzer super [ayrıcalık](https://mariadb.com/kb/en/library/grant/#global-privileges) da sınırlıdır.
+- DEFINER: Oluşturmak için süper ayrıcalıklar gerektirir ve sınırlıdır. Bir yedekleme kullanarak veri alma, `CREATE DEFINER` el ile veya bir `--skip-definer` mysqldump gerçekleştirirken komutu kullanarak komutları kaldırın.
 
-## <a name="data-manipulation-statement-support"></a>Veri işleme ifadesi desteği
+## <a name="data-manipulation-statement-support"></a>Veri işleme bildirimi desteği
 
 ### <a name="supported"></a>Destekleniyor
-- `LOAD DATA INFILE` desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bir UNC yoluna (SMB üzerinden bağlanmış Azure depolama) yönlendirilmelidir.
+- `LOAD DATA INFILE`desteklenir, ancak `[LOCAL]` parametre belirtilmeli ve bir UNC yoluna yönlendirilmelidir (SMB aracılığıyla monte edilmiş Azure depolama).
 
 ### <a name="unsupported"></a>Desteklenmeyen
 - `SELECT ... INTO OUTFILE`
 
-## <a name="functional-limitations"></a>İşlev sınırlamaları
+## <a name="functional-limitations"></a>Fonksiyonel sınırlamalar
 
-### <a name="scale-operations"></a>Ölçeklendirme işlemleri
-- Temel fiyatlandırma katmanları gelen ve giden dinamik ölçeklendirme şu anda desteklenmiyor.
-- Sunucu depolama boyutunu küçültme desteklenmiyor.
+### <a name="scale-operations"></a>Ölçek işlemleri
+- Temel fiyatlandırma katmanlarına ve temel fiyatlandırma katmanlarından dinamik ölçeklendirme şu anda desteklenmez.
+- Azalan sunucu depolama boyutu desteklenmez.
 
-### <a name="server-version-upgrades"></a>Sunucu sürümü yükseltme
-- Ana veritabanı altyapısı sürümleri arasında otomatik geçişi şu anda desteklenmiyor.
+### <a name="server-version-upgrades"></a>Sunucu sürümü yükseltmeleri
+- Ana veritabanı altyapısı sürümleri arasında otomatik geçiş şu anda desteklenmez.
 
 ### <a name="point-in-time-restore"></a>belirli bir noktaya geri yükleme
-- PITR özelliğini kullanırken, yeni sunucuya bağlı olduğu sunucusuyla aynı yapılandırmaları ile oluşturulur.
-- Silinen bir sunucuya geri yükleme desteklenmiyor.
+- PITR özelliğini kullanırken, yeni sunucu dayandığı sunucuyla aynı yapılandırmalarla oluşturulur.
+- Silinen bir sunucunun geri dinlenmesi desteklenmez.
 
 ### <a name="subscription-management"></a>Abonelik yönetimi
-- Önceden oluşturulmuş sunucuları, abonelik ve kaynak grubu genelinde dinamik olarak taşıma işlemi şu anda desteklenmiyor.
+- Önceden oluşturulmuş sunucuları abonelik ve kaynak grubu arasında dinamik olarak taşımak şu anda desteklenmez.
 
-### <a name="vnet-service-endpoints"></a>Sanal ağ hizmet uç noktaları
-- Yalnızca genel amaçlı ve bellek için iyileştirilmiş sunucuları için sanal ağ hizmet uç noktaları desteğidir.
+### <a name="vnet-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
+- VNet hizmet uç noktaları için destek yalnızca Genel Amaç ve Bellek Optimize Edilmiş sunucular içindir.
 
 ### <a name="storage-size"></a>Depolama boyutu
-- Fiyatlandırma Katmanı başına depolama boyutu sınırları için lütfen [fiyatlandırma katmanlarına](concepts-pricing-tiers.md) bakın.
+- Fiyatlandırma katmanı başına depolama boyutu sınırları için lütfen [fiyatlandırma katmanlarına](concepts-pricing-tiers.md) bakın.
 
-## <a name="current-known-issues"></a>Bilinen geçerli sorunlar
-- MariaDB sunucu örneği, bağlantı kurulduktan sonra yanlış sunucu sürümünü görüntülüyor. Doğru sunucu örneği altyapısı sürümünü almak için `select version();` komutunu kullanın.
+## <a name="current-known-issues"></a>Güncel bilinen sorunlar
+- MariaDB sunucu örneği bağlantı kurulduktan sonra yanlış sunucu sürümünü görüntüler. Doğru sunucu örneği motoru sürümünü almak `select version();` için komutu kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Her hizmet katmanında kullanılabilen özellikler](concepts-pricing-tiers.md)
+- [Her hizmet katmanında neler mevcuttur?](concepts-pricing-tiers.md)
 - [Desteklenen MariaDB veritabanı sürümleri](concepts-supported-versions.md)

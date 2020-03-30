@@ -3,12 +3,12 @@ title: Azure VM yedekleme için destek matrisi
 description: Azure Yedekleme hizmetiyle Azure VM'leri yedeklerken destek ayarlarının ve sınırlamaların bir özetini sağlar.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247910"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389299"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -115,7 +115,6 @@ DPM/MABS diskinde kurtarma noktaları | Dosya sunucuları için 64, uygulama sun
 **Geri yükleme** | **Desteklenen**
 --- | ---
 İşletim sistemleri arasında dosyaları geri alma | Yedeklenmiş VM ile aynı (veya uyumlu) işletim sistemi olan herhangi bir makinedeki dosyaları geri yükleyebilirsiniz. Uyumlu [işletim sistemi tablosuna](backup-azure-restore-files-from-vm.md#system-requirements)bakın.
-Klasik VM'lerde dosyaları geri alma | Desteklenmiyor.
 Şifreli VM'lerden dosyaları geri alma | Desteklenmiyor.
 Ağ tarafından kısıtlanan depolama hesaplarındaki dosyaları geri alma | Desteklenmiyor.
 Windows Depolama Alanları'nı kullanarak VM'lerde dosyaları geri alma | Aynı VM'de desteklenmeyen geri yükleme.<br/><br/> Bunun yerine, uyumlu bir VM dosyaları geri yükleyin.

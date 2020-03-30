@@ -1,6 +1,6 @@
 ---
-title: StorSimple sanal dizisi işleri görüntüleme ve yönetme | Microsoft Docs
-description: StorSimple cihaz Yöneticisi hizmeti işleri sayfasında ve nasıl StorSimple sanal dizisi için yeni ve güncel işleri izlemek için kullanılacağını açıklar.
+title: StorSimple Virtual Array işlerini görüntüleyin ve yönetin | Microsoft Dokümanlar
+description: StorSimple Aygıt Yöneticisi hizmeti İşler sayfasını ve StorSimple Virtual Array için en son ve güncel işleri izlemek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,54 +15,54 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60302509"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple sanal dizisi için işleri görüntülemek için StorSimple cihaz Yöneticisi hizmetini kullanma
+# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple Virtual Array'in işlerini görüntülemek için StorSimple Device Manager hizmetini kullanın
 ## <a name="overview"></a>Genel Bakış
-**İşleri** görüntüleme ve StorSimple cihaz Yöneticisi hizmetinize bağlı olan sanal diziler üzerinde çalışmaya işlerini yönetmek için tek bir merkezi portal dikey penceresinde sağlar. Birden çok sanal cihaz için çalışan, tamamlanan ve başarısız işleri görüntüleyebilirsiniz. Sonuçları bir tablo biçiminde gösterilir.
+**Jobs** blade, StorSimple Device Manager hizmetinize bağlı sanal dizilerde başlatılan işleri görüntülemek ve yönetmek için tek bir merkezi portal sağlar. Birden çok sanal aygıt için çalışan, tamamlanan ve başarısız olan işleri görüntüleyebilirsiniz. Sonuçlar bir tabular biçimde sunulur.
 
-![İşleri dikey penceresi](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+![İşler bıçak](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 
-Alanlarını filtreleyerek, ilgilenen işleri hızlıca bulabilirsiniz:
+Aşağıdaki gibi alanlarda filtre uygulayarak ilgilendiğiniz işleri hızlı bir şekilde bulabilirsiniz:
 
-* **Zaman aralığı** – işleri filtrelenebilir göre tarih ve saat aralığı.
-* **Cihazları** – işleri başlatılan hizmetinize bağlı olarak belirli bir cihazdaki. Filtrelenen işler, ardından aşağıdaki özniteliklere bağlı tabloda verilmiştir:
+* **Zaman aralığı** – İşler tarih ve saat aralığına göre filtrelenebilir.
+* **Cihazlar** – İşler, hizmetinize bağlı belirli bir cihazda başlatılır. Filtre uygulanmış işler daha sonra aşağıdaki özniteliklere göre tablolanır:
   
-  * **Adı** – iş ad **tüm**, **yedekleme**, **kopya**, **yük devretme**, **güncelleştirmeleriniindir**, veya **Güncelleştirmeleri Yükle**.
-  * **Durum** – işleri olabilir **tüm**, **sürüyor**, **başarılı**, veya **başarısız**, veya **iptaledildi**.
-  * **Varlık** – işleri bir birim, paylaşım veya cihaz ile ilişkili olabilir.
-  * **Cihaz** – iş başlatıldı cihazın adı.
-  * **Başlangıç zamanı** – işin başlama zamanı.
-  * **Süre** – süresince işin çalıştırıldığı üzerinde.
-* **Durum** – tüm, çalışan, tamamlandı veya başarısız işler için arama yapabilirsiniz.
-* **İş türü** – iş türü all, yedekleme, geri yükleme, yük devretme olması, güncelleştirmeleri karşıdan yüklemek veya güncelleştirmeleri yükleyin.
+  * **Adı** – İş adı **Tüm**olabilir , **Yedekleme**, **Klon**, **Fail over**, **Güncellemeler indir**, veya **güncelleştirmeleri yükleyin**.
+  * **Durum** – İşler **Tüm**olabilir , **Devam Ediyor**, **Başarılı**, veya **Başarısız**, veya **İptal .**
+  * **Varlık** – İşler bir birim, paylaşım veya aygıtla ilişkilendirilebilir.
+  * **Aygıt** – İşin başlatıldıği aygıtın adı.
+  * **Başladı** – İşin başladığı zaman.
+  * **Süre** – İşin yürütüldolduğu süre.
+* **Durum** – Tüm, çalışan, tamamlanmış veya başarısız işleri arayabilirsiniz.
+* **İş türü** – İş türü tümü olabilir, yedekleme, geri yükleme, başarısız, güncelleştirmeleri karşıdan yükleme veya güncelleştirmeleri yükleme.
 
-İşlerin listesini her 30 saniyede bir yenilenir.
+İş listesi her 30 saniyede bir yenilenir.
 
 ## <a name="view-job-details"></a>İş ayrıntılarını görüntüleme
 Herhangi bir işin ayrıntılarını görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-view-job-details"></a>İş ayrıntılarını görüntülemek için
-1. Üzerinde **işleri** dikey penceresinde, ilgilendiğiniz bir sorgu uygun filtreleri ile çalıştırarak işi görüntüle. Tamamlanmış veya çalışan işler için arama yapabilirsiniz.
-2. Bir iş işleri Tablo listesinden seçin.
+1. **İşler** bıçağında, uygun filtrelere sahip bir sorgu çalıştırarak ilgilendiğiniz işi(ler) görüntüleyin. Tamamlanmış veya çalışan işleri arayabilirsiniz.
+2. Tabular iş listesinden bir iş seçin.
    
-    ![İş dikey penceresi](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
-3. Sayfanın en altında tıklayın **ayrıntıları**.
-4. İçinde **ayrıntıları** iletişim kutusu, durum, Ayrıntılar ve süresi istatistikleri görüntüleyebilirsiniz. Örnek olarak aşağıdaki çizimde **yedekleme işinin ayrıntılarını** iletişim kutusu.
+    ![İş bıçağı](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+3. Sayfanın alt kısmında **Ayrıntılar'ı**tıklatın.
+4. **Ayrıntılar** iletişim kutusunda durum, ayrıntıları ve zaman istatistiklerini görüntüleyebilirsiniz. Aşağıdaki resimde Yedekleme İş **Ayrıntıları** iletişim kutusunun bir örneği gösterilmektedir.
    
     ![İş ayrıntıları](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
-#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Sanal makine hiper yönetici içine duraklatıldığında iş hataları
-Bir işi olduğunda StorSimple Virtual Array'iniz ve cihaza (sanal makine hiper yöneticide sağlanır) ilerleme 15 dakikadan daha duraklatılır, işi başarısız oluyor. Bu StorSimple Virtual Array sürenizi nedeniyle Microsoft Azure saati ile eşitlenmemiş yapılıyor. 
+#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Sanal makine hipervizörde duraklatıldığında iş hataları
+StorSimple Virtual Array'inizde bir iş devam ediyorsa ve aygıt (hipervizörde bulunan sanal makine) 15 dakikadan uzun bir süre duraklatılmışsa, iş başarısız olur. Bunun nedeni, StorSimple Virtual Array saatinizin Microsoft Azure zamanıyla eşitlenmemekten kaynaklanmaktadır. 
 
-Aşağıdaki hatayı görürsünüz: "Cihaz saatiniz tarafından 15 dakikadan daha fazla Microsoft Azure saati ile eşitlenmemiş. Hiper Yönetici ve süreleri bir NTP sunucusuyla eşitlenmiş ve cihaz emin olun. Hiçbir bağlantı sorunu olmadığını doğrulayın. Bağlantı sorunlarını gidermek için tanılama testleri yerel web kullanıcı arabiriminden sanal cihazınızın çalıştırın."
+Aşağıdaki hatayı görürsünüz: "Cihazınızın süresi Microsoft Azure süresiyle 15 dakikadan fazla eşitlenmemiştir. Hipervizörün ve aygıt sürelerinin bir NTP sunucusuyla senkronize olduğundan emin olun. Bağlantı sorunları olmadığını doğrulayın. Bağlantı sorunlarını gidermek için sanal cihazınızın yerel web arama sürümünden tanılama testleri çalıştırın."
 
-Bu hatalar, yedekleme, geri yükleme, güncelleştirme ve yük devretme işleri için geçerli. Sanal makinenizi Hyper-V sağladıysanız, makine zaman sonunda, hiper yönetici ile eşitler. Bu durumda, iş yeniden başlatabilirsiniz.
+Bu hatalar yedekleme, geri yükleme, güncelleştirme ve başarısız işler için geçerlidir. Sanal makineniz Hyper-V'de sağlanmışsa, makine sonunda zamanı hipervizörünüzle senkronize eder. Bu olduğunda, işinizi yeniden başlatabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[StorSimple Virtual Array'iniz yönetmek için yerel web UI'ı kullanmayı öğrenin](storsimple-ova-web-ui-admin.md).
+[StorSimple Virtual Array'inizi yönetmek için yerel web kullanıcı arama ayını nasıl kullanacağınızı öğrenin.](storsimple-ova-web-ui-admin.md)
 

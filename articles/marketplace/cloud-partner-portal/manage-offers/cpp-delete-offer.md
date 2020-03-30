@@ -1,77 +1,76 @@
 ---
-title: Market tekliflerini silme | Azure Marketi
-description: Bulut İş Ortağı Portalı kullanarak Azure ve AppSource marketlerindeki teklifleri silme
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Pazar yeri tekliflerini sil | Azure Marketi
+description: Bulut İş Ortağı Portalını kullanarak Azure ve AppSource Pazar yerlerine ilişkin teklifleri silme
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pabutler
-ms.openlocfilehash: 6a75fbb0c4b9c364342a406a8076128346943101
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: fa8ee834bd6d9261c47c540e9517c200c894b6c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826775"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286464"
 ---
-# <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Azure Marketi ve AppSource tekliflerini veya SKU 'Larını silme
+# <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Azure Marketi ve AppSource tekliflerini veya SDO'ları silme
 
-Çeşitli nedenlerle teklifinizin Microsoft Market 'ten geri çekmeye karar verebilir ve bu iki şekilde olabilir:
+Çeşitli nedenlerden dolayı, teklifinizi iki şekilde alabileceğiniz Microsoft pazar tarihinden geri çekmeye karar verebilirsiniz:
 
-- *Teklif kaldırma* , yeni müşterilerin teklifinizi satın alıp dağıtmamasını sağlar, ancak lisans sözleşmenize ve ilgili kanunlarına göre desteklemeniz gereken mevcut müşterileri etkilemez. 
-- *Teklif sonlandırma* , siz ve mevcut müşterileriniz arasındaki hizmet ve/veya lisans anlaşmasını sonlandırma işlemidir. 
+- *Teklif kaldırma,* yeni müşterilerin teklifinizi artık satın alamayamamasını veya dağıtmamasını, ancak lisans sözleşmenize ve ilgili yasalara göre desteklemeniz gereken mevcut müşteriler üzerinde hiçbir etkisi olmamasını sağlar. 
+- *Teklif indama,* siz ve mevcut müşterileriniz arasındaki hizmet ve/veya lisans sözleşmesini sona erdirme işlemidir. 
 
-Teklif kaldırma ve sonlandırma ile ilgili rehberlik ve ilkeler, [Microsoft Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/?LinkID=699560) ve [katılım ilkeleri](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) ( [askıya alma ve kaldırma sunan](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)bölüm) tarafından yönetilir. 
+Teklif kaldırma ve sonlandırmayla ilgili rehberlik ve ilkeler [Microsoft Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560) ve Katılım [İlkeleri](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) 'ne tabidir [(askıya alma ve kaldırma teklifi](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)bölümü). 
 
-Bu makalede, desteklenen farklı silme senaryoları ve her bir işlemi gerçekleştirmek için gereken adımlar hakkında bilgi sağlar.  
-
-> [!NOTE]
-> Yalnızca **Düzenleyici** sekmesinin araç çubuğundaki **Sil** düğmesini seçerek, yayımlanmamış bir teklifi silebilirsiniz.
-
-
-## <a name="delete-a-published-sku-from-the-azure-marketplace"></a>Yayımlanmış bir SKU 'YU Azure Marketi 'nden silme
-
-Yayınlanmış bir SKU 'YU Azure Marketi 'nden aşağıdaki adımları kullanarak silebilirsiniz:
-
-1.  [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
-2.  **Tüm teklifler** sayfasında teklifinizi seçin.  Teklifinizin **Düzenleyici** sekmesinde gösterilmesi gerekir.
-3.  Sol araç çubuğunda **SKU 'lar** sekmesini seçin. 
-4.  Silmek istediğiniz SKU 'YU seçin ve **Sil** düğmesine tıklayın.
-5.  Teklifi Azure Marketi 'ne yeniden [yayımlayın](./cpp-publish-offer.md) .
-
-Değiştirilen teklif Azure Marketi 'nde yayımlandıktan sonra, seçilen SKU artık Azure Marketi 'nde listelenmeyecektir ve Azure portal.
-
-
-## <a name="roll-back-to-a-previous-sku-version"></a>Önceki bir SKU sürümüne geri dönme
-
-Aşağıdaki adımları kullanarak yayımlanmış bir SKU 'nun geçerli sürümünü Azure Marketi 'nden silebilirsiniz. İşlem tamamlandığında, SKU önceki sürümüne geri döndürülür.
-
-1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
-2. **Tüm teklifler** sayfasında teklifinizi seçin.  Teklifinizin **Düzenleyici** sekmesinde gösterilmesi gerekir.
-3. Sol araç çubuğunda **SKU 'lar** sekmesini seçin. 
-4. İlgili çözüm varlığının en son sürümünü disk sürümleri listesinden silin.  Teklif türüne bağlı olarak, bu alan **disk sürümü**, **paket sürümleri**veya benzer bir varlık olabilir. 
-5. Teklifi Azure Marketi 'ne yeniden [yayımlayın](./cpp-publish-offer.md) .
-
-Değiştirilen teklif, Adzure marketi 'nde yayımlandıktan sonra, listelenen SKU 'nun geçerli sürümü listelenmez. Azure Marketi 'nde ve Azure portal.  SKU 'SU önceki sürümüne geri döndürülür.
-
-
-## <a name="delete-a-live-offer"></a>Canlı bir teklifi silme
-
-Canlı bir teklifi kaldırmak için çeşitli yordamsal, iş ve yasal yönleri vardır. Azure Marketi 'nden canlı bir teklifi kaldırmak için destek ekibinden rehberlik almak üzere aşağıdaki adımları izleyin:
-
-1.  [Bir olay oluştur](https://go.microsoft.com/fwlink/?linkid=844975) sayfasını kullanarak veya [bulut iş ortağı portalı](https://cloudpartner.azure.com/)sağ üst köşesinde bulunan **destek** ' e tıklayarak bir destek bileti oluşturun.
-
-2.  **Sorun türü** listesinde özel teklif türünü seçin ve **Kategori** listesinden **yayımlanmış teklifi kaldır** ' ı seçin.
-
-3.  İsteği gönderir.
-
-Destek ekibi, teklif silme sürecinde size rehberlik eder.
+Bu makalede, farklı desteklenen silme senaryoları ve her gerçekleştirmek için gereken adımlar hakkında görüşmeler.  
 
 > [!NOTE]
-> Bir teklif (veya SKU) silindiğinde, bu teklifin (veya SKU) geçerli satınalmaları etkilenmeyecektir. Bu satın almalar daha önce olduğu gibi çalışmaya devam edecektir. Ancak, silinen teklifler veya SKU 'Lar gelecekteki satın alma işlemleri için kullanılamaz.
+> **Editör** sekmesinin araç çubuğundaki **Sil** düğmesini seçerek yayınlanmamış bir teklifi silebilirsiniz.
+
+
+## <a name="delete-a-published-sku-from-the-azure-marketplace"></a>Azure Marketinden yayımlanmış bir SKU'yu silme
+
+Aşağıdaki adımları kullanarak Azure Marketi'nden yayınlanan bir SKU'yu silebilirsiniz:
+
+1.  Bulut İş [Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
+2.  Tüm **teklifler** sayfasında teklifinizi seçin.  Teklifiniz **Düzenleyici** sekmesinde görüntülenmelidir.
+3.  Sol araç çubuğunda **SK'ler** sekmesini seçin. 
+4.  Silmek istediğiniz SKU'yu seçin ve **Sil** düğmesini tıklatın.
+5.  Teklifi Azure Marketi'nde [yeniden yayınlayın.](./cpp-publish-offer.md)
+
+Değiştirilen teklif Azure Marketi'nde yayınlandıktan sonra, seçili SKU artık Azure Marketi ve Azure portalında listelenmez.
+
+
+## <a name="roll-back-to-a-previous-sku-version"></a>Önceki SKU sürümüne geri dön
+
+Burada yayınlanan bir SKU'nun geçerli sürümünü Azure Marketi'nden silebilirsiniz. İşlem tamamlandığında, SKU önceki sürümüne geri alınır.
+
+1. Bulut İş [Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
+2. Tüm **teklifler** sayfasında teklifinizi seçin.  Teklifiniz **Düzenleyici** sekmesinde görüntülenmelidir.
+3. Sol araç çubuğunda **SK'ler** sekmesini seçin. 
+4. İlişkili çözüm varlığının en son sürümünü disk sürümleri listesinden silin.  Teklif türüne bağlı olarak, bu alan **Disk Sürümü,** **Paket Sürümleri**veya benzer bir varlık olabilir. 
+5. Teklifi Azure Marketi'nde [yeniden yayınlayın.](./cpp-publish-offer.md)
+
+Değiştirilen teklif TheAzure Marketplace'te yayınlandıktan sonra, listelenen SKU'nun geçerli sürümü artık listelenmez. Azure Marketi'nde ve Azure portalında.  SKU önceki sürümüne geri alınır.
+
+
+## <a name="delete-a-live-offer"></a>Canlı teklifi silme
+
+Canlı bir teklifi kaldırmak için çeşitli usul, iş ve yasal yönleri vardır. Azure Marketi'nden canlı bir teklifi kaldırmak için destek ekibinden rehberlik almak için aşağıdaki adımları izleyin:
+
+1.  [Olay oluştur](https://go.microsoft.com/fwlink/?linkid=844975) sayfasını kullanarak veya Bulut İş [Ortağı Portalı'nın](https://cloudpartner.azure.com/)sağ üst **köşesindeki Destek'i** tıklatarak destek bileti yükseltin.
+
+2.  **Sorun türü** listesinde belirli teklif türünü seçin ve **Kategori** listesinde yayınlanmış bir **teklifi kaldır'ı** seçin.
+
+3.  İsteğini gönderin.
+
+Destek ekibi teklif silme işlemi boyunca size rehberlik eder.
+
+> [!NOTE]
+> Bir teklifin (veya SKU)'nın silmesi, bu teklifin (veya SKU) geçerli satın alımlarını etkilemez. Bu satın almalar eskisi gibi çalışmaya devam edecektir. Ancak, silinen teklifler veya SDO gelecekteki satın almaişlemleri için kullanılamaz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifleri yönetmek için kullanılan temel işlemlere alışdıktan sonra, bir Microsoft [Market teklifinin](../cpp-marketplace-offers.md)örneğini oluşturmaya hazırlanın.
+Teklifleri yönetmek için kullanılan temel işlemleri tanıdıktan sonra, Microsoft [pazar yeri teklifinin](../cpp-marketplace-offers.md)bir örneğini oluşturmaya hazırsınız.

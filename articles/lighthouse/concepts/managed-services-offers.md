@@ -1,43 +1,43 @@
 ---
 title: Azure Market’teki yönetilen hizmetler teklifleri
-description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
-ms.date: 12/16/2019
+description: Yönetilen hizmetler, hizmet sağlayıcıların Azure Marketi'ndeki müşterilere kaynak yönetimi teklifleri satmasına olanak tanır.
+ms.date: 03/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b4f0d7457a74afe710a48f429cfe47535a9b122
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2d6e39f753736c0582e9d91870a99b66ae41255b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453579"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500791"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure Market’teki yönetilen hizmetler teklifleri
 
-Bu makalede, [Azure Marketi](https://azuremarketplace.microsoft.com)'Nde yeni **yönetilen hizmetler** teklif türü açıklanmaktadır. Yönetilen hizmetler teklifi, Azure tarafından atanan kaynak yönetimine sahip müşterilere kaynak yönetimi hizmetleri sunmanıza olanak tanır. Bu teklifleri tüm potansiyel müşteriler için veya yalnızca bir veya daha fazla belirli müşteriye kullanılabilir hale getirebilirsiniz. Müşterileri bu yönetilen hizmetlerle ilgili maliyetlerle doğrudan faturalandırınızdan, Microsoft tarafından ücretlendirilmez.
+Bu makalede, [Azure Marketi'ndeki](https://azuremarketplace.microsoft.com)yeni Yönetilen **Hizmetler** teklif türü açıklanmaktadır. Yönetilen hizmetler, Azure temsilci kaynak yönetimi ile müşterilere kaynak yönetimi hizmetleri sunmanıza olanak tanır. Bu teklifleri tüm potansiyel müşteriler veya yalnızca bir veya daha fazla belirli müşteri için kullanılabilir hale getirebilirsiniz. Bu yönetilen hizmetlerle ilgili maliyetler için doğrudan müşterilere fatura kesildiğinden, Microsoft tarafından herhangi bir ücret alınmaz.
 
 ## <a name="understand-managed-services-offers"></a>Yönetilen hizmet tekliflerini anlama
 
-Yönetilen hizmetler, Azure tarafından atanan kaynak yönetimi için müşterileri ekleme sürecini kolaylaştırır. Bir müşteri Azure Marketi 'nde bir teklif satın aldığında, hangi aboneliklerin ve/veya kaynak gruplarının eklendi olması gerektiğini belirleyebilecektir. Aboneliğin öncelikle **Microsoft. ManagedServices** kaynak sağlayıcısını el ile kaydederek ekleme için yetkilendirilmiş olması gerektiğini unutmayın.
+Yönetilen hizmetler, Azure temsilci kaynak yönetimi için müşterilerin biniş sürecini kolaylaştırıyor. Bir müşteri Azure Marketi'nde bir teklif satın aldığında, hangi aboneliklerin ve/veya kaynak gruplarının dahil edilmesi gerektiğini belirtebilir. Aboneliğin öncelikle **Microsoft.ManagedServices** kaynak sağlayıcısını el ile kaydederek onboarding için yetkilendirilmesi gerektiğini unutmayın.
 
-Bundan sonra kuruluşunuzdaki kullanıcılar, [bulut iş ortağı portalı](https://cloudpartner.azure.com/)teklifi oluştururken tanımladığınız erişime göre kuruluşunuzun kiracısından bu kaynaklar için yönetim görevleri gerçekleştirebilir. Bu işlem, Azure tarafından atanan kaynak yönetimi kullanılarak müşteri kaynaklarına erişimi olacak Azure AD kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde ve erişim düzeyini tanımlayan rollerle birlikte yapılır. Bir dizi Kullanıcı veya uygulama hesabı yerine bir Azure AD grubuna izinler atayarak, erişim gereksinimleriniz değiştiğinde bireysel kullanıcı ekleyebilir veya kaldırabilirsiniz.
+Bundan sonra, kuruluşunuzdaki kullanıcılar, [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)teklifi oluştururken tanımladığınız erişime göre, kuruluşunuzun kiracısı içinden bu kaynaklar için yönetim görevlerini gerçekleştirebilecektir. Bu işlem, Azure temsilci kaynak yönetimini kullanarak müşteri kaynaklarına erişimi olacak Azure AD kullanıcılarını, gruplarını ve hizmet ilkelerini belirten bir bildirim ve erişim düzeylerini tanımlayan roller aracılığıyla yapılır. Bir dizi bireysel kullanıcı veya uygulama hesabı yerine bir Azure REKLAM grubuna izin atayarak, erişim gereksinimleriniz değiştiğinde tek tek kullanıcıları ekleyebilir veya kaldırabilirsiniz.
 
-## <a name="public-and-private-offers"></a>Ortak ve özel teklifler
+## <a name="public-and-private-offers"></a>Genel ve özel teklifler
 
-Her yönetilen hizmet teklifi bir veya daha fazla plan içerir. Planlar özel veya genel olabilir. 
+Yönetilen her hizmet teklifi bir veya daha fazla plan içerir. Planlar özel veya genel olabilir. 
 
-Teklifinizi belirli müşterilerle sınırlandırmak istiyorsanız, özel bir plan yayımlayabilirsiniz. Bunu yaptığınızda, plan yalnızca sağladığınız belirli abonelik kimlikleri için satın alınabilir. Daha fazla bilgi için bkz. [özel teklifler](../../marketplace/private-offers.md).
+Teklifinizi belirli müşterilerle sınırlamak istiyorsanız, özel bir plan yayımlayabilirsiniz. Bunu yaptığınızda, plan yalnızca sağladığınız belirli] abonelik iyelikleri için satın alınabilir. Daha fazla bilgi için [Özel tekliflere](../../marketplace/private-offers.md)bakın.
 
-Genel planlar, hizmetlerinizi yeni müşterilere yükseltemenizi sağlar. Bunlar genellikle müşterinin kiracısına sınırlı erişim istediğinizde daha uygundur. Bir müşteriyle ilişki kurduktan sonra, kuruluşunuza ek erişim vermeye karar verirse, bu, yalnızca söz konusu müşteri için yeni bir özel plan yayımlayarak veya [Azure Resource Manager şablonları kullanarak daha fazla erişim sağlamak için bunları](../how-to/onboard-customer.md)ekleyebilirsiniz.
+Genel planlar, hizmetlerinizi yeni müşterilere tanıtmanıza izin sağlar. Bunlar genellikle müşterinin kiracısına sınırlı erişim gerektiren durumlarda daha uygundur. Bir müşteriyle ilişki kurduktan sonra, kuruluşunuza ek erişim vermeye karar verirlerse, bunu yalnızca o müşteri için yeni bir özel plan yayımlayarak veya [Azure Kaynak Yöneticisi şablonlarını kullanarak daha fazla erişim için bunları](../how-to/onboard-customer.md)ekleyerek yapabilirsiniz.
 
-Uygunsa, hem genel hem de özel planları aynı teklifine dahil edebilirsiniz.
+Uygunsa, hem genel hem de özel planları aynı teklife dahil edebilirsiniz.
 
 > [!IMPORTANT]
-> Bir plan ortak olarak yayımlandıktan sonra, özel olarak değiştiremezsiniz. Hangi müşterilerin teklif ve temsilci kaynaklarınızı kabul edeceğini denetlemek için özel bir plan kullanın. Ortak bir plan sayesinde, kullanılabilirliği belirli müşterilerle veya hatta belirli sayıda müşteriye kısıtlayamazsınız (ancak bunu yapmak isterseniz planı tamamen satmaya devam edebilirsiniz). Bir müşteri teklifi kabul ettiğinde, her zaman bir müşteriye erişebilseniz ve [erişiminizi kaldırmasını](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)istemek için şu anda temsilcileri reddetme veya kaldırma mekanizması yoktur.
+> Bir plan genel olarak yayımlandıktan sonra, bunu özel olarak değiştiremezsiniz. Hangi müşterilerin teklifinizi kabul edip kaynakları temsilci olarak verebileceğini denetlemek için özel bir plan kullanın. Genel bir planla, belirli müşterilerle veya hatta belirli sayıda müşteriyle kullanılabilirliği kısıtlayamazsınız (ancak bunu yapmayı seçerseniz planı tamamen satmayı durdurabilirsiniz). Bir müşteri teklifi kabul ettikten sonra, teklifi yayınladığınızda [Yönetilen Hizmetler Kaydı Atama Silme Rolüne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) Rol **Tanımı** kümesine bir **Yetkilendirme** dahil ettiğinizde bir [temsilciye erişimi kaldırabilirsiniz.](../how-to/onboard-customer.md#remove-access-to-a-delegation) Ayrıca müşteriye ulaşabilir ve [erişiminizi kaldırmalarını isteyebilirsiniz.](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)
 
 ## <a name="publish-managed-service-offers"></a>Yönetilen hizmet tekliflerini yayımlama
 
-Yönetilen bir hizmet teklifini yayımlamayı öğrenmek için bkz. [Azure Market 'Te yönetilen hizmetler teklifi yayımlama](../how-to/publish-managed-services-offers.md). Bulut İş Ortağı Portalı kullanarak Azure Marketi 'Nde yayımlama hakkında genel bilgi için bkz. [Azure Market ve Appsource Yayımlama Kılavuzu](../../marketplace/marketplace-publishers-guide.md) ve [Azure ve appsource Market tekliflerini yönetme](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md).
+Yönetilen bir hizmet teklifini nasıl yayımlayacağınızı öğrenmek [için](../how-to/publish-managed-services-offers.md)bkz. Bulut İş Ortağı Portalını kullanarak Azure Marketi'nde yayımlama hakkında genel bilgi için [Azure Marketi ve AppSource Yayımlama Kılavuzu'na](../../marketplace/marketplace-publishers-guide.md) bakın ve [Azure ve AppSource Marketplace tekliflerini yönetin.](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Temsilcili kaynak yönetimi](azure-delegated-resource-management.md) ve [çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
-- [Yönetilen hizmet tekliflerini](../how-to/publish-managed-services-offers.md) Azure Market 'te yayımlayın.
+- Azure [temsilci kaynak yönetimi](azure-delegated-resource-management.md) ve [kiracılar arası yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
+- [Azure Marketi'nde yönetilen hizmet tekliflerini yayımlayın.](../how-to/publish-managed-services-offers.md)

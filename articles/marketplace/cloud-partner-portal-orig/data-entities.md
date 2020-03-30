@@ -1,23 +1,21 @@
 ---
-title: Veri varlıkları
-description: Bu CPP ve PC makalesine bağlı olan bu makalede kullanım dışı bırakıldı. "veri varlıklarına genel bakış" idi.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+title: Veri Varlıkları
+description: Bu CPP makalede deprecated ve PC makaleye bağlı; "Veri varlıklarına genel bakış."
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 729693b4f887f41140b2df852e70a744edbc060d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5fcddcf978fe3776d02e035b72cfea332726330b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819962"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276011"
 ---
-# <a name="data-entities"></a>Veri varlıkları
+# <a name="data-entities"></a>Veri Varlıkları
 
-[Bulut iş ortağı portalı](https://cloudpartner.azure.com/) artık finans ve operasyon teklifleri için Dynamics 365 oluşturma ve yönetimini desteklememektedir. Bunun yerine, bu işlevsellik Microsoft [Iş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için bkz. [Yeni Dynamics 365 for Operations teklifini oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
+[Cloud İş Ortağı Portalı](https://cloudpartner.azure.com/) artık Dynamics 365 for Finance and Operations tekliflerinin oluşturulmasını ve yönetimini desteklememektedir. Bunun yerine, bu işlev Microsoft [İş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşındı. Daha fazla bilgi için, [Operasyonlar için yeni bir Dynamics 365 oluştur teklifine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)bakın.
 
-Yeni bir Dynamics 365 for Operations teklifi oluşturmadan önce, [Iş Ortağı Merkezi hesabı oluştur](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ' u okuyup **genel bakış** sayfası seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/directory) açmanız gerekir. Teklifinizi oluşturmak için [Yeni Dynamics 365 for Operations teklifini oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) bölümündeki yönergeleri izleyin.
+Operasyonlar için yeni bir Dynamics 365 teklifi oluşturmadan önce, [Bir İş Ortağı Merkezi hesabı oluştur'u](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) okumalı ve ardından seçilen Genel **Bakış** sayfasıyla Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/directory) açmalısınız. Teklifinizi oluşturmak [için Operasyonlar için yeni bir Dynamics 365 oluştur'daki](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) yönergeleri izleyin.

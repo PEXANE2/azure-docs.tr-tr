@@ -9,47 +9,47 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 79cf4b2edd1a25df427cf15f9ee7f2f331ebd2df
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774646"
 ---
-1. **Kaynak oluştur** > **Tümünü gör**' e tıklayın.
+1. **Kaynak** > Oluştur'u tıklatın**Tümlerini Görün**.
 
     > [!div class="mx-imgBorder"]
-    > ![arama eşlemesi](../media/setup-seeall.png)
+    > ![Arama Eşleme](../media/setup-seeall.png)
 
-1. Arama kutusunda *eşleme* araması yapın ve klavyenizde *ENTER* tuşuna basın. Sonuçlardan **eşleme** kaynağı ' na tıklayın.
-
-    > [!div class="mx-imgBorder"]
-    > ![başlatma eşlemesi](../media/setup-launch.png)
-
-1. **Eşleme** başlatıldıktan sonra, ayrıntıları anlamak için sayfayı gözden geçirin. Hazırlanıyor, **Oluştur**' a tıklayın.
+1. Arama kutusunda *Akran* araması yapın ve klavyenizde *Enter* tuşuna basın. Sonuçlardan, **Peering** kaynağını tıklatın.
 
     > [!div class="mx-imgBorder"]
-    > ![eşleme oluşturma](../media/setup-create.png)
+    > ![Fırlatma Eşleme](../media/setup-launch.png)
 
-1. **Eşleme oluştur** sayfasında, **temel bilgiler** sekmesinde, alanları aşağıda gösterildiği gibi doldurun.
+1. **Peering** başlatıldıktan sonra, ayrıntıları anlamak için sayfayı gözden geçirin. Hazır olduğunuzda **Oluştur'u**tıklatın.
 
     > [!div class="mx-imgBorder"]
-    > ![eşleme temelleri](../media/setup-basics-tab.png)
+    > ![Eşleme Oluşturma](../media/setup-create.png)
 
-    * Azure **aboneliğinizi**seçin.
-    * **Kaynak grubu**için, açılan listeden var olan bir kaynak grubunu seçebilir veya **Yeni oluştur**' a tıklayarak yeni bir grup oluşturabilirsiniz. Bu örnek için yeni bir kaynak grubu oluşturacağız.
-    * **Ad** , kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir.
-    * Yukarıdaki adımda var olan bir kaynak grubunu seçtiyseniz **bölge** otomatik olarak seçilir. Yeni bir kaynak grubu oluşturmayı seçerseniz, kaynağın bulunmasını istediğiniz Azure bölgesini de seçmeniz gerekir. Doğu ABD
+1. **Temel Bilgiler** sekmesinin altında, **Bir Eşleme Oluştur** sayfasında, aşağıda gösterildiği gibi alanları doldurun.
+
+    > [!div class="mx-imgBorder"]
+    > ![Peering Temelleri](../media/setup-basics-tab.png)
+
+    * Azure **Aboneliğinizi**seçin.
+    * **Kaynak grubu**için, açılan kaynak grubundan varolan bir kaynak grubu seçebilir veya **yeni oluştur'u**tıklatarak yeni bir grup oluşturabilirsiniz. Bu örnek için yeni bir kaynak grubu oluşturacağız.
+    * **Ad** kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir.
+    * Yukarıdaki adımda varolan bir kaynak grubu seçtiyseniz **bölge** otomatik olarak seçilir. Yeni bir kaynak grubu oluşturmayı seçtiyseniz, kaynağın ikamet etmesini istediğiniz Azure bölgesini de seçmeniz gerekir. Doğu ABD
 
         > [!NOTE]
-        > Kaynak grubunun bulunduğu bölge, Microsoft ile eşleme oluşturmak istediğiniz konumdan bağımsızdır. Ancak, en yakın Azure bölgelerinde bulunan kaynak grupları içindeki eşleme kaynaklarınızı düzenlemek en iyi uygulamadır. Örneğin: Ashburn içindeki eşlemeler için *Doğu ABD* veya *Doğu ABD2* içinde bir kaynak grubu oluşturabilirsiniz
+        > Kaynak grubunun bulunduğu bölge, Microsoft ile eşleme oluşturmak istediğiniz konumdan bağımsızdır. Ancak, en yakın Azure bölgelerinde bulunan kaynak grupları içinde bakan kaynaklarınızı düzenlemek en iyi yöntemdir. Örneğin: Ashburn'deki bakışlar için *Doğu ABD* veya Doğu *US2'de* bir kaynak grubu oluşturabilirsiniz
 
-    * **EŞDÜZEY ASN** alanında ASN 'nizi seçin.
+    * **Eş ASN** alanında ASN'nizi seçin.
 
         > [!IMPORTANT]
-        > * Bir eşleme isteği göndermeden önce yalnızca "Onaylandı" olarak bir ASN 'yi seçebilirsiniz. PeerAsn isteğinizi gönderdikten sonra, ASN ilişkisinin "onaylanmış" olması için 12 saat bekleyin. Seçtiğiniz ASN, doğrulama bekliyor ise, bir hata iletisi görürsünüz. 
-        > * Seçmeniz gereken ASN 'yi görmüyorsanız, doğru aboneliği seçtiğinizden emin olun. Bu durumda, [EŞDÜZEY ASN 'Yi Azure aboneliğine ilişkilendir](../howto-subscription-association-portal.md)' i kullanarak peerasn oluşturmuş olup olmadığınızı kontrol edin.
+        > * Bir eşleme isteği göndermeden önce yalnızca "Onaylı" olarak Doğrulama Durumu olan bir ASN seçebilirsiniz. PeerAsn isteğinizi gönderdiyseniz, ASN ilişkisinin "Onaylandı" olması için 12 saat kadar bekleyin. Seçtiğiniz ASN onay bekliyorsa bir hata iletisi görürsünüz. 
+        > * Seçmeniz gereken ASN'yi görmüyorsanız, doğru aboneliği seçip seçmediğinizi kontrol edin. Bu nedenle, Azure Aboneliği'ne Eş [Eş ASN'yi](../howto-subscription-association-portal.md)kullanarak PeerAsn'ı zaten oluşturmuş olup olmadığını kontrol edin.
 
         > [!div class="mx-imgBorder"]
-        > ![eşleme temelleri doldurulmuş](../media/setup-direct-basics-filled-tab.png)
+        > ![Peering Temelleri dolu](../media/setup-direct-basics-filled-tab.png)
 
-    * Ileri ' ye tıklayın: devam etmek için **yapılandırma >** .
+    * İleri ' ye tıklayın **: Yapılandırma >** devam etmek.

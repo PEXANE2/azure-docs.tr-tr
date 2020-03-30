@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: 264b169eefde18880f50feae2554aa3ca7037b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368171"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389044"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) ile modelleri yeniden eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -54,14 +54,14 @@ Bir modeli yeniden eğitmek için, bir başlangıç modeli gerekir. Bu bölümde
    Bu örnekte, veriler bir [Azure veri deposunda](how-to-access-data.md)depolanır. Zaten bir veri mağazanız yoksa, **Yeni veri deposu'nü**seçerek şimdi bir tane oluşturabilirsiniz.
 
 1. Verilerinize giden yolu belirtin. Ayrıca veri mağazanıza göz atmak için **Gözat yolunu** da seçebilirsiniz. 
-1. Tuvalin üst kısmında **Çalıştır'ı** seçin.
+1. Tuvalin üst kısmında **Gönder'i** seçin.
     
    > [!NOTE]
    > Bu ardışık işlem için varsayılan bir işlem ayarladıysanız, ardışık işlem otomatik olarak çalışır. Aksi takdirde, şimdi bir tane ayarlamak için ayarlar bölmesindeki istemleri izleyebilirsiniz.
 
 ### <a name="find-your-trained-model"></a>Eğitimli modelinizi bulun
 
-Tasarımcı, eğitimli modeller de dahil olmak üzere tüm boru hattı çıktılarını varsayılan depolama hesabına kaydeder. Ayrıca, eğitimli modele doğrudan tasarımcıdan erişebilirsiniz:
+Tasarımcı, eğitimli modeller de dahil olmak üzere tüm boru hattı çıktılarını varsayılan depolama hesabına kaydeder. Ancak, eğitimli modellere doğrudan tasarımcıdan da erişebilirsiniz:
 
 1. Boru hattının çalışmasını bekleyin.
 1. Tren **Modeli** modülünü seçin.

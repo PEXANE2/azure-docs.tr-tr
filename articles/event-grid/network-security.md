@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid kaynakları için ağ güvenliği
-description: Bu makalede özel uç noktalardan erişimin nasıl yapılandırılacağı açıklanmaktadır
+title: Azure Olay Ağı kaynakları için ağ güvenliği
+description: Bu makalede, özel uç noktalardan erişim yapılandırmak için nasıl açıklanır
 services: event-grid
 author: VidyaKukke
 ms.service: event-grid
@@ -8,96 +8,96 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
 ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79300160"
 ---
-# <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
-Bu makalede, Azure Event Grid ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
+# <a name="network-security-for-azure-event-grid-resources"></a>Azure Olay Ağı kaynakları için ağ güvenliği
+Bu makalede, Azure Olay İzonesi ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
 
-- Çıkış için hizmet etiketleri (Önizleme)
-- Giriş için IP güvenlik duvarı kuralları (Önizleme)
-- Giriş için özel uç noktalar (Önizleme)
+- Çıkış için servis etiketleri (önizleme)
+- Giriş için IP Güvenlik Duvarı kuralları (önizleme)
+- Giriş için özel uç noktaları (önizleme)
 
 
 ## <a name="service-tags"></a>Hizmet etiketleri
-Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](../virtual-network/service-tags-overview.md).
+Hizmet etiketi, belirli bir Azure hizmetinin IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketinin kapsadığı adres önekleri yönetir ve adresler değiştikçe servis etiketini otomatik olarak günceller ve sık sık ağ güvenliği kurallarına yönelik güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için [Hizmet etiketleriyle ilgili genel bakış](../virtual-network/service-tags-overview.md)adabakın.
 
-Hizmet etiketlerini, [ağ güvenlik grupları](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik Duvarı](../firewall/service-tags.md)'nda ağ erişim denetimleri tanımlamak için kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Hizmet etiketi adını (örneğin, **AzureEventGrid**) bir kuralın uygun *kaynak* veya *hedef* alanında belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
+[Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik Duvarı'nda](../firewall/service-tags.md)ağ erişim denetimlerini tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adresleri yerine hizmet etiketlerini kullanın. Bir kuralın uygun *kaynak* veya *hedef* alanında hizmet etiketi adını (örneğin **AzureEventGrid)** belirterek, ilgili hizmetin trafiğine izin verebilir veya reddedebilirsiniz.
 
-| Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
+| Hizmet etiketi | Amaç | Gelen veya giden kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir misiniz? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid. <br/><br/>*Note:* Bu etiket yalnızca ABD Orta Güney, ABD Doğu, ABD Doğu 2, ABD Batı 2 ve ABD Orta Azure Event Grid uç noktaları içerir. | Her ikisi de | Hayır | Hayır |
+| AzureEventGrid | Azure Olay Ağıt. <br/><br/>*Not:* Bu etiket, yalnızca ABD Güney Orta, ABD Doğu, ABD Doğu 2, ABD Batı 2 ve US Central'daki Azure Olay Izgara uç noktalarını kapsar. | Her ikisi de | Hayır | Hayır |
 
 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
-Azure Event Grid konularda ve etki alanlarında yayımlama için IP tabanlı erişim denetimlerini destekler. IP tabanlı denetimlerle, yayımcıları bir konu veya etki alanıyla yalnızca onaylanmış bir makine ve bulut hizmetleri kümesiyle sınırlayabilirsiniz. Bu özellik Event Grid tarafından desteklenen [kimlik doğrulama mekanizmalarını](security-authentication.md) tamamlar.
+Azure Olay Ağı, konulara ve etki alanlarında yayımlamak için IP tabanlı erişim denetimlerini destekler. IP tabanlı denetimlerle, yayımcılarını bir konu veya etki alanıyla yalnızca onaylı bir makine ve bulut hizmetleri kümesiyle sınırlandırabilirsiniz. Bu özellik, Olay Grid tarafından desteklenen [kimlik doğrulama mekanizmalarını](security-authentication.md) tamamlar.
 
-Varsayılan olarak, konu ve etki alanına, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca BIR dizi IP adresı veya IP adresi aralığı ile sınırlayabilirsiniz. Başka herhangi bir IP adresinden kaynaklanan yayımcılar reddedilir ve 403 (yasak) yanıtı alacaktır.
+Varsayılan olarak, istek geçerli kimlik doğrulama ve yetkilendirme ile birlikte geldiği sürece, konu ve etki alanına internetten erişilebilir. IP güvenlik duvarı ile, [cidr (Classless Etki Alanı Yönlendirmesi)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IP adresi kümesi veya IP adresi aralıklarıyla daha da kısıtlayabilirsiniz. Başka bir IP adresinden kaynaklanan yayıncılar reddedilir ve 403 (Yasak) yanıt alırsınız.
 
 
 ## <a name="private-endpoints"></a>Özel uç noktalar
-[Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanarak doğrudan sanal ağınızdan, genel İnternet üzerinden geçmeden [özel bir bağlantı](../private-link/private-link-overview.md) üzerinden konulara ve etki alanlarına olay girişi sağlayabilirsiniz. Özel uç nokta, VNet 'iniz içindeki bir Azure hizmeti için özel bir ağ arabirimidir. Konu veya etki alanınız için özel bir uç nokta oluşturduğunuzda, sanal ağınızdaki istemciler ve Event Grid kaynağınız arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve Event Grid hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
+Genel internet üzerinden geçmeden özel bir bağlantı üzerinden [güvenli](../private-link/private-link-overview.md) bir şekilde sanal ağınızdan konulara ve etki alanlarınıza doğrudan olayların girişine izin vermek için [özel uç noktaları](../private-link/private-endpoint-overview.md) kullanabilirsiniz. Özel bitiş noktası, VNet'inizdeki bir Azure hizmeti için özel bir ağ arabirimidir. Konunuz veya etki alanınız için özel bir bitiş noktası oluşturduğunuzda, VNet'inizdeki istemciler ile Olay Izgara kaynağınız arasında güvenli bağlantı sağlar. Özel bitiş noktasına VNet'inizin IP adresi aralığından bir IP adresi atanır. Özel bitiş noktası ile Olay Izgara hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
 
 ![Mimari diyagramı](./media/network-security/architecture-diagram.png)
 
-Event Grid kaynağınız için özel uç noktalar kullanmak şunları yapmanıza olanak sağlar:
+Olay Izgara kaynağınız için özel uç noktaları kullanmak şunları yapmanızı sağlar:
 
-- Genel internet 'in aksine Microsoft omurga ağı üzerinden bir VNet 'ten konuya veya etki alanına güvenli erişim.
-- VPN veya ExpressRoutes kullanarak VNet 'e bağlanan şirket içi ağlardan özel eşleme ile güvenli bir şekilde bağlanın.
+- Genel internetyerine Microsoft omurga ağı üzerinden bir VNet'ten konunuza veya etki alanınıza güvenli erişim.
+- VPN veya ExpressRoutes kullanarak VNet'e bağlanan şirket içi ağlardan özel bakışlarla güvenli bir şekilde bağlanın.
 
-VNet 'iniz içindeki bir konu veya etki alanı için özel bir uç nokta oluşturduğunuzda, kaynak sahibine onay için bir izin isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda kaynağın sahibiyseniz, bu onay isteği otomatik olarak onaylanır. Aksi takdirde, bağlantı onaylanana kadar **bekleme** durumunda olur. VNet 'teki uygulamalar, başka şekilde kullandıkları aynı bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak, Özel uç nokta üzerinden Event Grid hizmetine sorunsuz bir şekilde bağlanabilir. Kaynak sahipleri, Azure portal kaynağın **Özel uç noktaları** sekmesinden izin isteklerini ve özel uç noktaları yönetebilir.
+VNet'inizde bir konu veya etki alanı için özel bir bitiş noktası oluşturduğunuzda, kaynak sahibine onay için bir onay isteği gönderilir. Özel bitiş noktasının oluşturulmasını isteyen kullanıcı da kaynağın sahibiyse, bu onay isteği otomatik olarak onaylanır. Aksi takdirde, bağlantı onaylanana kadar **bekleme** durumundadır. VNet'teki uygulamalar, aksi takdirde kullanacakları aynı bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak Özel bitiş noktası üzerinden Olay Izgara hizmetine sorunsuz bir şekilde bağlanabilir. Kaynak sahipleri, Azure portalındaki kaynağın **Özel uç noktaları** sekmesi aracılığıyla onay isteklerini ve özel uç noktaları yönetebilir.
 
-### <a name="connect-to-private-endpoints"></a>Özel uç noktalara bağlan
-Özel uç nokta kullanılarak VNet 'teki yayımcılar, genel uç noktaya bağlanan istemciler için konu veya etki alanı için aynı bağlantı dizesini kullanmalıdır. DNS çözümlemesi, VNet 'ten gelen bağlantıları özel bir bağlantı üzerinden konuya veya etki alanına otomatik olarak yönlendirir. Event Grid, varsayılan olarak, Özel uç noktalar için gerekli güncelleştirmeyle VNet 'e bağlı [Özel BIR DNS bölgesi](../dns/private-dns-overview.md) oluşturur. Ancak, kendi DNS sunucunuzu kullanıyorsanız, DNS yapılandırmanızda ek değişiklikler yapmanız gerekebilir.
+### <a name="connect-to-private-endpoints"></a>Özel uç noktalara bağlanma
+Özel bitiş noktasını kullanan bir VNet'teki yayıncılar, konu veya etki alanı için ortak bitiş noktasına bağlanan istemcilerle aynı bağlantı dizesini kullanmalıdır. DNS çözümü, vnet'ten konuya veya etki alanına özel bir bağlantı üzerinden bağlantıları otomatik olarak yönlendirir. Olay Grid varsayılan olarak, özel uç noktalar için gerekli güncelleştirme ile VNet bağlı özel bir [DNS bölgesi](../dns/private-dns-overview.md) oluşturur. Ancak, kendi DNS sunucunuzu kullanıyorsanız, DNS yapılandırmanızda ek değişiklikler yapmanız gerekebilir.
 
 ### <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
-Özel bir uç nokta oluşturduğunuzda, kaynağın DNS CNAME kaydı, öneki `privatelink`alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, özel bağlantının alt etki alanına karşılık gelen özel bir DNS bölgesi oluşturulur. 
+Özel bir bitiş noktası oluşturduğunuzda, kaynağın DNS CNAME kaydı öneki `privatelink`olan bir alt etki alanında başka bir adla güncelleştirilir. Varsayılan olarak, özel bağlantının alt etki alanına karşılık gelen özel bir DNS bölgesi oluşturulur. 
 
-Konuyu veya etki alanı uç noktası URL 'sini özel uç noktayla VNet dışından çözdüğünde, hizmetin genel uç noktasına dönüşür. Özel uç noktasını barındıran **VNET dışından** çözümlendiğinde ' Topica ' için DNS kaynak kayıtları şu şekilde olur:
+Konuyu veya etki alanı bitiş noktası URL'sini Özel bitiş noktasıyla VNet'in dışından çözdüğünüzde, bu url hizmetin genel bitiş noktasına kadar çözülür. Özel bitiş noktasını barındıran **VNet dışından** çözüldüğünde 'topicA' için DNS kaynak kayıtları aşağıdakiolacaktır:
 
 | Adı                                          | Tür      | Değer                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | Azure Traffic Manager profili \<\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<azure trafik yöneticisi profili\>
 
-[IP güvenlik duvarını](#ip-firewall)kullanarak genel uç nokta aracılığıyla VNET dışındaki bir istemcinin erişimini reddedebilir veya kontrol edebilirsiniz. 
+[IP güvenlik duvarını](#ip-firewall)kullanarak genel bitiş noktası üzerinden VNet dışındaki bir istemcinin erişimini reddedebilir veya denetleyebilirsiniz. 
 
-Özel uç noktasını barındıran VNet 'ten çözümlendiğinde, konu veya etki alanı uç noktası URL 'SI özel uç noktanın IP adresini çözümler. Özel uç noktasını barındıran **VNET 'in içinden** çözümlendiğinde ' Topica ' konusunun DNS kaynak kayıtları şu şekilde olur:
+Özel bitiş noktasını barındıran VNet'ten çözüldüğünde, konu veya etki alanı bitiş noktası URL'si özel bitiş noktasının IP adresine giderilir. Özel bitiş noktasını barındıran **VNet'in içinden** çözüldüğünde ,'topicA' konusuna ait DNS kaynak kayıtları aşağıdakiolacaktır:
 
 | Adı                                          | Tür      | Değer                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5
 
-Bu yaklaşım, Özel uç noktaları ve VNet dışındaki istemcileri barındıran VNet 'teki istemciler için aynı bağlantı dizesini kullanarak konuya veya etki alanına erişim sağlar.
+Bu yaklaşım, özel uç noktaları barındıran VNet'teki istemciler ve VNet dışındaki istemciler için aynı bağlantı dizesini kullanarak konuya veya etki alanına erişim sağlar.
 
-Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler konu veya etki alanı uç noktası için FQDN 'yi özel uç nokta IP adresine çözümleyebilir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek üzere yapılandırın veya `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` için bir kayıtları özel uç nokta IP adresiyle yapılandırın.
+Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler konu veya etki alanı bitiş noktası için FQDN'yi özel bitiş noktası IP adresine kadar çözebilir. Özel bağlantı alt etki alanınızı VNet için özel DNS bölgesine devretmek için DNS `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` sunucunuzu yapılandırın veya A kayıtlarını özel bitiş noktası IP adresiyle yapılandırın.
 
-Önerilen DNS bölge adı `privatelink.eventgrid.azure.net`.
+Önerilen DNS bölge `privatelink.eventgrid.azure.net`adı.
 
-### <a name="private-endpoints-and-publishing"></a>Özel uç noktalar ve yayımlama
+### <a name="private-endpoints-and-publishing"></a>Özel uç noktalar ve yayıncılık
 
-Aşağıdaki tabloda özel uç nokta bağlantısının çeşitli durumları ve yayımlamanın etkileri açıklanmaktadır:
+Aşağıdaki tabloda özel uç nokta bağlantısının çeşitli durumları ve yayımlama üzerindeki etkileri açıklanmaktadır:
 
-| Bağlantı durumu   |  Başarıyla Yayımla (Evet/Hayır) |
+| Bağlantı Durumu   |  Başarılı bir şekilde yayımlayın (Evet/Hayır) |
 | ------------------ | -------------------------------|
-| Onaylandı           | Yes                            |
-| Reddedildi           | Hayır                             |
+| Onaylandı           | Evet                            |
+| Reddedilen           | Hayır                             |
 | Beklemede            | Hayır                             |
-| Bağlantısı kesildi       | Hayır                             |
+| Bağlantı kesildi       | Hayır                             |
 
-Yayımlamanın başarılı olması için özel uç nokta bağlantı durumunun **onaylanması**gerekir. Bir bağlantı reddedilirse, Azure portal kullanılarak onaylanamaz. Tek olasılık, bağlantıyı silmek ve bunun yerine yeni bir tane oluşturmaktır.
+Yayımlamanın başarılı olabilmek için özel uç nokta bağlantı durumunun **onaylanması**gerekir. Bir bağlantı reddedilirse, Azure portalı kullanılarak onaylanamaz. Tek olasılık bağlantıyı silmek ve bunun yerine yeni bir olasılık oluşturmaktır.
 
 ## <a name="pricing-and-quotas"></a>Fiyatlandırma ve kotalar
-**Özel uç noktalar** yalnızca Premium katman konuları ve etki alanları ile kullanılabilir. Event Grid, konuya veya etki alanına göre 64 'e kadar özel uç nokta bağlantısının oluşturulmasına izin verir. Temel katmandan Premium katmana yükseltmek için bkz. [fiyatlandırma katmanını güncelleştirme](update-tier.md) makalesi.
+**Özel uç noktalar** yalnızca premium katman konuları ve etki alanlarıyla kullanılabilir. Olay Grid, konu veya etki alanı başına 64 özel uç nokta bağlantısı oluşturulmasına izin verir. Temel katmandan premium katmana yükseltmek için [fiyatlandırma katmanını güncelleştir](update-tier.md) makalesine bakın.
 
-**IP güvenlik duvarı** özelliği, Event Grid hem temel hem de Premium katmanlarında kullanılabilir. Her konu veya etki alanı için 16 adede kadar IP güvenlik duvarı kuralına izin veririz.
+**IP Firewall** özelliği, Event Grid'in hem temel hem de birinci sınıf katmanlarında kullanılabilir. Konu veya etki alanı başına en fazla 16 IP Firewall kuralı oluşturulmasına izin veririz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Genel internet üzerinden erişimi yalnızca belirli bir IP adresi veya IP adresi aralığı kümesinden kısıtlamak için, Event Grid kaynağınız için IP güvenlik duvarını yapılandırabilirsiniz. Adım adım yönergeler için bkz. [IP güvenlik duvarını yapılandırma](configure-firewall.md).
+Olay Izgara kaynağınız için IP güvenlik duvarını, yalnızca belirli bir IP Adresi kümesinden veya IP Adresi aralıklarından genel internet üzerinden erişimi kısıtlamak için yapılandırabilirsiniz. Adım adım talimatlar için IP [güvenlik duvarını yapılandır'a](configure-firewall.md)bakın.
 
-Yalnızca seçili sanal ağlardan erişimi kısıtlamak için özel uç noktaları yapılandırabilirsiniz. Adım adım yönergeler için bkz. [Özel uç noktaları yapılandırma](configure-private-endpoints.md).
+Yalnızca seçili sanal ağlardan erişimi kısıtlamak için özel uç noktaları yapılandırabilirsiniz. Adım adım yönergeler için [bkz.](configure-private-endpoints.md)

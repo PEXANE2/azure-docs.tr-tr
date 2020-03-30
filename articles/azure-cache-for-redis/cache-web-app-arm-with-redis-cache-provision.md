@@ -1,6 +1,6 @@
 ---
-title: Redsıs için Azure önbelleği ile Web uygulaması sağlama
-description: Redsıs için Azure Cache ile Web uygulaması dağıtmak üzere Azure Resource Manager şablonu kullanın.
+title: Redis için Azure Önbelleği ile Web Uygulaması Sağlama
+description: Redis için Azure Önbelleği ile web uygulamasını dağıtmak için Azure Kaynak Yöneticisi şablonunu kullanın.
 services: app-service
 author: yegu-ms
 ms.service: app-service
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
 ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433388"
 ---
-# <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Şablon kullanarak Redsıs için bir Web uygulaması ve Azure önbelleği oluşturma
+# <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Şablon kullanarak Redis için Bir Web Uygulaması ve Azure Önbelleği oluşturma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu konu başlığında, Reda için Azure Cache ile Azure Web uygulaması dağıtan bir Azure Resource Manager şablonu oluşturmayı öğreneceksiniz. Hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağını nasıl tanımlayacağınızı öğreneceksiniz. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz.
+Bu konuda, Redis için Azure Önbelleği ile bir Azure Web Uygulaması dağıtan bir Azure Kaynak Yöneticisi şablonu oluşturmayı öğreneceksiniz. Hangi kaynakların dağıtılanını nasıl tanımladığınızı ve dağıtım yürütüldüğünde belirtilen parametreleri nasıl tanımladığınızı öğreneceksiniz. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz.
 
-Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md). Önbellek kaynak türleri için JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Cache kaynak türleri](/azure/templates/microsoft.cache/allversions).
+Şablon oluşturma hakkında daha fazla bilgi için [bkz.](../azure-resource-manager/templates/template-syntax.md) Önbellek kaynak türleri için JSON sözdizimi ve özellikleri hakkında bilgi edinmek için [Bkz. Microsoft.Cache kaynak türleri.](/azure/templates/microsoft.cache/allversions)
 
-Tüm şablon için bkz. [redsıs şablonu Için Azure Cache Ile Web uygulaması](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
+Şablonun tamamı için [Redis için Azure Önbelleği içeren Web Uygulaması'na](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json)bakın.
 
-## <a name="what-you-will-deploy"></a>Ne dağıtacaksınız
-Bu şablonda şunları dağıtacaksınız:
+## <a name="what-you-will-deploy"></a>Ne dağıtacağınız
+Bu şablonda:
 
-* Azure Web Uygulaması
-* Redis için Azure Cache
+* Azure Web App
+* Redis için Azure Önbelleği
 
 Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıklayın:
 
-[![Azure’a dağıtma](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![Azure'a Dağıt](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Belirtme parametreleri
+## <a name="parameters-to-specify"></a>Belirtecek parametreler
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Adlar için değişkenler
-Bu şablon, kaynakların adlarını oluşturmak için değişkenleri kullanır. Kaynak grubu kimliğini temel alan bir değer oluşturmak için [Uniquestring](../azure-resource-manager/templates/template-functions-string.md#uniquestring) işlevini kullanır.
+Bu şablon, kaynakların adlarını oluşturmak için değişkenler kullanır. Kaynak grubu kimliğine dayalı bir değer oluşturmak için [uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) işlevini kullanır.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -52,10 +52,10 @@ Bu şablon, kaynakların adlarını oluşturmak için değişkenleri kullanır. 
 ## <a name="resources-to-deploy"></a>Dağıtılacak kaynaklar
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### <a name="azure-cache-for-redis"></a>Redis için Azure Cache
-Web uygulamasıyla birlikte kullanılan redo için Azure önbelleğini oluşturur. Önbelleğin adı **CacheName** değişkeninde belirtilir.
+### <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
+Web uygulamasıyla birlikte kullanılan Redis için Azure Önbelleği oluşturur. Önbelleğin adı **önbellek Adı** değişkeninde belirtilir.
 
-Şablon, kaynak grubuyla aynı konumda bulunan önbelleği oluşturur.
+Şablon önbelleği kaynak grubuyla aynı konumda oluşturur.
 
     {
       "name": "[variables('cacheName')]",
@@ -77,9 +77,9 @@ Web uygulamasıyla birlikte kullanılan redo için Azure önbelleğini oluşturu
 
 
 ### <a name="web-app"></a>Web uygulaması
-**WebSiteName** değişkeninde belirtilen ada sahip Web uygulaması oluşturur.
+**WebSiteName** değişkeninde belirtilen adla web uygulaması oluşturur.
 
-Web uygulamasının Redsıs için Azure önbelleğiyle çalışmasını sağlayan uygulama ayarı özellikleriyle yapılandırıldığını unutmayın. Bu uygulama ayarları, dağıtım sırasında belirtilen değerlere göre dinamik olarak oluşturulur.
+Web uygulamasının Redis için Azure Önbelleği ile çalışmasını sağlayan uygulama ayar özellikleriyle yapılandırıldığına dikkat edin. Bu uygulama ayarları dağıtım sırasında sağlanan değerlere göre dinamik olarak oluşturulur.
 
     {
       "apiVersion": "2015-08-01",

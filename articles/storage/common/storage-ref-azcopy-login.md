@@ -1,6 +1,6 @@
 ---
-title: AzCopy oturum açma | Microsoft Docs
-description: Bu makale, AzCopy login komutu için başvuru bilgileri sağlar.
+title: azcopy giriş | Microsoft Dokümanlar
+description: Bu makalede, azcopy giriş komutu için referans bilgileri verilmektedir.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,29 +8,29 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905291"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295399"
 ---
 # <a name="azcopy-login"></a>azcopy oturum açma
 
-Azure depolama kaynaklarına erişmek için Azure Active Directory 'de oturum açar.
+Azure Depolama kaynaklarına erişmek için Azure Etkin Dizini'nde oturum açın.
 
-## <a name="synopsis"></a>Özeti
+## <a name="synopsis"></a>Özet
 
-Azure depolama kaynaklarına erişmek için Azure Active Directory oturum açın.
+Azure Depolama kaynaklarına erişmek için Azure Etkin Dizini'nde oturum açın.
 
-Azure depolama hesabınıza yetki vermek için, depolama alanı, üst kaynak grubu veya üst abonelik bağlamında, Kullanıcı hesabınıza **Depolama Blobu veri katılımcısı** rolünü atamanız gerekir.
+Azure Depolama hesabınıza yetki verilabilmesi için, Depolama hesabı, ana kaynak grubu veya üst abonelik bağlamında Kullanıcı hesabınıza **Depolama Blob Veri Katılımcısı** rolünü atamanız gerekir.
 
-Bu komut, işletim sistemi yerleşik mekanizmalarını kullanarak geçerli kullanıcı için şifrelenmiş oturum açma bilgilerini önbelleğe alacak.
+Bu komut, işletim sistemi yerleşik mekanizmalarını kullanarak geçerli kullanıcı için şifrelenmiş giriş bilgilerini önbelleğe alacaktır.
 
 Daha fazla bilgi için lütfen örneklere bakın.
 
 > [!IMPORTANT]
-> Bir ortam değişkenini komut satırını kullanarak ayarlarsanız, bu değişken komut satırı geçmişinizde okunabilir olacaktır. Komut satırı geçmişinizden kimlik bilgilerini içeren değişkenleri temizlemeyi göz önünde bulundurun. Değişkenlerin geçmişinizde görünmesini önlemek için, kullanıcıya kimlik bilgilerini istemek ve ortam değişkenini ayarlamak için bir komut dosyası kullanabilirsiniz.
+> Komut satırını kullanarak bir ortam değişkeni ayarlarsanız, bu değişken komut satırı geçmişinizde okunabilir. Komut satırı geçmişinizden kimlik bilgilerini içeren değişkenleri temizlemeyi düşünün. Değişkenlerin geçmişinizde görünmesini engellemek için, kullanıcıdan kimlik bilgilerini almak ve ortam değişkenini ayarlamak için bir komut dosyası kullanabilirsiniz.
 
 ```azcopy
 azcopy login [flags]
@@ -38,88 +38,88 @@ azcopy login [flags]
 
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
-- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
-- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
+- [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve Blob depolama ile veri aktarımı](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarımı](storage-use-azcopy-files.md)
+- [AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Örnekler
 
-Varsayılan AAD kiracı KIMLIĞI ortak olarak ayarlanan şekilde etkileşimli olarak oturum açın:
+Varsayılan AAD kiracı kimliği ortak olarak ayarlanmış ile etkileşimli giriş yapın:
 
 ```azcopy
 azcopy login
 ```
 
-Belirtilen kiracı KIMLIĞIYLE etkileşimli olarak oturum açın:
+Belirtilen kiracı kimliğiyle etkileşimli olarak oturum açın:
 
 ```azcopy
 azcopy login --tenant-id "[TenantID]"
 ```
 
-Bir sanal makinenin (VM) sistem tarafından atanan kimliğini kullanarak oturum açın:
+Sanal Makinenin (VM) sistem tarafından atanan kimliğini kullanarak oturum açın:
 
 ```azcopy
 azcopy login --identity
 ```
 
-Bir VM 'nin Kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin Istemci KIMLIĞINI kullanarak oturum açın:
+Bir VM'nin kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin İstemci Kimliğini kullanarak oturum açın:
 
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
 
-Bir VM 'nin Kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin nesne KIMLIĞINI kullanarak oturum açın:
+Bir VM'nin kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin Nesne Kimliğini kullanarak oturum açın:
 
 ```azcopy
 azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
-Bir VM 'nin Kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin kaynak KIMLIĞINI kullanarak oturum açın:
+Bir VM'nin kullanıcı tarafından atanan kimliğini ve hizmet kimliğinin Kaynak Kimliğini kullanarak oturum açın:
 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-İstemci parolasını kullanarak hizmet sorumlusu olarak oturum açın. Ortam değişkenini gizli tabanlı hizmet sorumlusu kimlik doğrulaması için istemci parolası AZCOPY_SPA_CLIENT_SECRET ayarlayın.
+İstemci sırrını kullanarak servis sorumlusu olarak oturum açın. Gizli tabanlı hizmet ana auth için istemci gizli AZCOPY_SPA_CLIENT_SECRET ortam değişkeni ayarlayın.
 
 ```azcopy
 azcopy login --service-principal
 ```
 
-Bir sertifika ve parola kullanarak hizmet sorumlusu olarak oturum açın. Ortam değişkenini sertifika tabanlı hizmet sorumlusu yetkilendirmesi için sertifikanın parolasıyla AZCOPY_SPA_CERT_PASSWORD ayarlayın.
+Sertifika ve parola kullanarak hizmet sorumlusu olarak giriş yapın. Cert tabanlı hizmet temel yetkilendirmesi için ortam değişkenini AZCOPY_SPA_CERT_PASSWORD sertifikanın parolasına ayarlayın.
 
 ```azcopy
 azcopy login --service-principal --certificate-path /path/to/my/cert
 ```
 
-/Path/to/My/CERT ' i bir PEM veya PKCS12 dosyasının yolu olarak kabul ettiğinizden emin olun. AzCopy, sertifikanızı almak için sistem sertifika deposuna ulaşmıyor.
+PeM veya PKCS12 dosyasına giden bir yol olarak /path/to/my/cert'i ele aldığından emin olun. AzCopy sertifikanızı almak için sistem sertifika deposuna ulaşmaz.
 
-Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması yapılırken sertifika-yol zorunludur.
+--sertifika tabanlı hizmet ana para sıfatı yapılırken sertifika-yol zorunludur.
 
 ## <a name="options"></a>Seçenekler
 
 |Seçenek|Açıklama|
 |--|--|
-|--aad-uç nokta|Kullanılacak Azure Active Directory uç noktası. Varsayılan değer (https://login.microsoftonline.com), genel Azure bulutu için doğrudur. Ulusal bir bulutta kimlik doğrulanırken bu parametreyi ayarlayın. Bkz. [Azure AD kimlik doğrulaması uç noktaları](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
-Yönetilen Hizmet Kimliği için bu bayrak gerekli değildir.|
-|--Uygulama kimliği dizesi|Kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI. Hizmet sorumlusu kimlik doğrulaması için gereklidir.|
-|--Sertifika-yol dizesi|SPN kimlik doğrulaması için sertifika yolu. Sertifika tabanlı hizmet sorumlusu kimlik doğrulaması için gereklidir.|
-|-h,--yardım|Oturum açma komutu için yardım içeriğini göster.|
+|--aad uç noktası|Kullanılacak Azure Etkin Dizin bitiş noktası. Varsayılan (`https://login.microsoftonline.com`) herkese açık Azure bulutu için doğrudur. Ulusal bir bulutta kimlik doğrulaması yaparken bu parametreyi ayarlayın. Bkz. [Azure AD kimlik doğrulama bitiş noktaları.](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)
+Yönetilen Hizmet Kimliği için bu bayrak gerekmez.|
+|--uygulama-id dizesi|Kullanıcı tarafından atanan kimliğin başvuru kimliği. Hizmet müdürü auth için gereklidir.|
+|--sertifika-yol dizesi|SPN kimlik doğrulaması için sertifikaya giden yol. Sertifika tabanlı hizmet ana para sıfatı için gereklidir.|
+|-h, --yardım|Giriş komutu için yardım içeriğini göster.|
 |--kimlik|yönetilen hizmet kimliği (MSI) olarak da bilinen sanal makinenin kimliğini kullanarak oturum açın.|
-|--Identity-Client-id dizesi|Kullanıcı tarafından atanan kimliğin istemci KIMLIĞI.|
-|--Identity-Object-id dizesi|Kullanıcı tarafından atanan kimliğin nesne KIMLIĞI.|
-|--Identity-Resource-id dizesi|Kullanıcı tarafından atanan kimliğin kaynak KIMLIĞI.|
-|--hizmet-asıl|Bir sertifika veya gizli dizi kullanarak SPN (hizmet sorumlusu adı) aracılığıyla oturum açın. İstemci parolası veya sertifika parolasının uygun ortam değişkenine yerleştirilmesi gerekir. Ortam değişkenlerinin adlarını ve açıklamalarını görmek için `AzCopy env` yazın.|
-|--Kiracı kimliği dizesi| OAuth cihaz etkileşimli oturum açma için kullanılacak Azure Active Directory kiracı KIMLIĞI.|
+|--kimlik-istemci-kimlik dizesi|Kullanıcı tarafından atanan kimliğin istemci kimliği.|
+|--kimlik-nesne-id dizesi|Kullanıcı tarafından atanan kimliğin nesne kimliği.|
+|--kimlik-kaynak-id dizesi|Kullanıcı tarafından atanan kimliğin kaynak kimliği.|
+|--hizmet-anapara|Bir sertifika veya gizli kullanarak SPN (Hizmet Ana Adı) üzerinden giriş yapın. İstemci gizli veya sertifika parolası uygun ortam değişkenine yerleştirilmelidir. Çevre `AzCopy env` değişkenlerinin adlarını ve açıklamalarını görmek için yazın.|
+|--kiracı-id dizesi| OAuth aygıt etkileşimli giriş için kullanılacak Azure etkin dizin kiracı kimliği.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
 |Seçenek|Açıklama|
 |---|---|
-|--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
-|--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
+|--kap-mbps uint32|Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.|
+|--çıkış türü dize|Komutçıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer "metin"dir.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

@@ -1,44 +1,44 @@
 ---
-title: Redsıs için Azure önbelleğinde veri kaybına sorun giderme
-description: Anahtarların kısmi kaybı, anahtar süre sonu veya anahtarların tam kaybı gibi Redsıs için Azure önbelleğiyle ilgili veri kaybı sorunlarını çözmeyi öğrenin.
+title: Redis için Azure Cache'de veri kaybı sorunlarını giderme
+description: Redis için Azure Önbelleği ile ilgili veri kaybı sorunlarını (kısmi anahtar kaybı, anahtar son kullanma tarihi veya tam anahtar kaybı gibi) nasıl çözeceğinizi öğrenin.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75530910"
 ---
-# <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğinde veri kaybına sorun giderme
+# <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Redis için Azure Cache'de veri kaybı sorunlarını giderme
 
-Bu makalede Redsıs için Azure önbelleğinde oluşabilecek gerçek veya algılanan veri kayıplarının nasıl tanılanması anlatılmaktadır.
+Bu makalede, Redis için Azure Önbelleğinde oluşabilecek gerçek veya algılanan veri kayıplarının nasıl tanılandığı açıklanmaktadır.
 
 > [!NOTE]
-> Bu kılavuzdaki sorun giderme adımlarından bazıları Redsıs komutları çalıştırma ve çeşitli performans ölçümlerini izleme yönergelerini içerir. Daha fazla bilgi ve yönergeler için [ek bilgi](#additional-information) bölümündeki makalelere bakın.
+> Bu kılavuzdaki sorun giderme adımlarından bazıları Redis komutlarını çalıştırmak ve çeşitli performans ölçümlerini izlemek için yönergeler içerir. Daha fazla bilgi ve talimatlar için [Ek bilgi](#additional-information) bölümündeki makalelere bakın.
 >
 
 ## <a name="partial-loss-of-keys"></a>Anahtarların kısmi kaybı
 
-Redsıs için Azure önbelleği, bellekte depolandıktan sonra anahtarları rastgele olarak silmez. Ancak, süre sonu veya çıkarma ilkelerine ve açık anahtar silme komutlarına yanıt olarak anahtarları kaldırır. Premium veya standart Azure önbelleğindeki ana düğüme, redin örneği için yazılmış anahtarlar aynı zamanda bir çoğaltmada doğrudan kullanılabilir olmayabilir. Veriler, ana bilgisayardan çoğaltmaya zaman uyumsuz ve engellenmeyen bir şekilde çoğaltılır.
+Redis için Azure Önbelleği, anahtarlar bellekte depolandıktan sonra rasgele silemiyor. Ancak, son kullanma veya çıkarma ilkelerine yanıt olarak anahtarları ve açık anahtar silme komutlarını kaldırır. Redis örneğinde Premium veya Standart Azure Önbelleğinde ana düğüme yazılmış olan anahtarlar da hemen bir yinelemede kullanılamayabilir. Veriler, ana bilgisayardan yinelemeye asynchronous ve engelleyici olmayan bir şekilde çoğaltılır.
 
-Bu anahtarların önbelleğinizi kaybolduğunu fark ederseniz, aşağıdaki olası nedenleri kontrol edin:
+Anahtarların önbelleğinizden kaybolduğunu fark ederseniz, aşağıdaki olası nedenleri kontrol edin:
 
 | Nedeni | Açıklama |
 |---|---|
-| [Anahtar süre sonu](#key-expiration) | Anahtarlar, üzerinde ayarlanan zaman aşımları nedeniyle kaldırılır. |
-| [Anahtar çıkarma](#key-eviction) | Anahtarlar bellek baskısı altında kaldırılır. |
+| [Anahtar sona erme](#key-expiration) | Anahtarlar, üzerlerine ayarlanan zaman çıkışları nedeniyle kaldırılır. |
+| [Anahtar tahliye](#key-eviction) | Anahtarlar bellek baskısı altında kaldırılır. |
 | [Anahtar silme](#key-deletion) | Anahtarlar açık silme komutları tarafından kaldırılır. |
-| [Zaman uyumsuz çoğaltma](#async-replication) | Veri çoğaltma gecikmeleri nedeniyle anahtarlar çoğaltma üzerinde kullanılamaz. |
+| [Async çoğaltma](#async-replication) | Veri çoğaltma gecikmeleri nedeniyle bir yinelemede anahtarlar kullanılamaz. |
 
-### <a name="key-expiration"></a>Anahtar süre sonu
+### <a name="key-expiration"></a>Anahtar sona erme
 
-Anahtar bir zaman aşımı atanmışsa ve bu süre geçtiğinde Redsıs için Azure önbelleği bir anahtarı otomatik olarak kaldırır. Redsıs anahtar süre sonu hakkında daha fazla bilgi için, [süre](https://redis.io/commands/expire) sonu komut belgelerine bakın. Ayrıca, zaman aşımı değerleri [set](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [GETSET](https://redis.io/commands/getset)ve diğer **\*Store** komutları kullanılarak ayarlanabilir.
+Redis için Azure Önbelleği, anahtara bir zaman dilimi atanmışsa ve bu süre geçmişse, anahtarı otomatik olarak kaldırır. Redis anahtar süresi hakkında daha fazla bilgi için [EXPIRE](https://redis.io/commands/expire) komut belgelerine bakın. Zaman dışı [değerler,](https://redis.io/commands/set) [SET , SETEX](https://redis.io/commands/setex), [GETSET](https://redis.io/commands/getset)ve diğer ** \*STORE** komutları kullanılarak da ayarlanabilir.
 
-Kaç anahtarın dolduğunu gösteren istatistikleri almak için, [Info](https://redis.io/commands/info) komutunu kullanın. `Stats` bölümü, süre dolma anahtarlarının toplam sayısını gösterir. `Keyspace` bölümü, zaman aşımları ve ortalama zaman aşımı değeri olan anahtarların sayısı hakkında daha fazla bilgi sağlar.
+Kaç tuşun süresinin dolduğunu istatistiklere almak için [INFO](https://redis.io/commands/info) komutunu kullanın. Bölüm, `Stats` süresi dolmuş toplam anahtar sayısını gösterir. Bölüm, `Keyspace` zaman zaman ları olan anahtar sayısı ve ortalama zaman kaybı değeri hakkında daha fazla bilgi sağlar.
 
 ```
 # Stats
@@ -50,13 +50,13 @@ expired_keys:46583
 db0:keys=3450,expires=2,avg_ttl=91861015336
 ```
 
-Ayrıca, anahtarın eksik olduğu zaman arasında bir bağıntı olup olmadığını ve zaman aşımına uğradı anahtarların bir ani bir şekilde olduğunu görmek için önbelleğiniz için tanılama ölçümlerine bakabilirsiniz. Bu tür sorunların hatalarını ayıklamak için anahtar alanı bildirimleri veya **izleyicisini** kullanma hakkında bilgi için [redsıs anahtar alanı isabetsizliği hata ayıklamanın](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) ek başlığına bakın.
+Önbelleğinizin tanılama ölçümlerine de bakarak, anahtarın kaybolduğu zaman ile süresi dolmuş anahtarlarda ani artış arasında bir korelasyon olup olmadığını görebilirsiniz. Bu tür sorunları hata ayıklamak için anahtar alanı bildirimleri veya **MONITOR** kullanma hakkında bilgi için [Redis Anahtar Alanı Misses Hata Ayıklama](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) Ekine bakın.
 
-### <a name="key-eviction"></a>Anahtar çıkarma
+### <a name="key-eviction"></a>Anahtar tahliye
 
-Redin için Azure önbelleği, verileri depolamak için bellek alanı gerektirir. Gerektiğinde kullanılabilir belleği boşaltmak için anahtarları temizler. [Info](https://redis.io/commands/info) komutunda **used_memory** veya **used_memory_rss** değerleri yapılandırılmış **MaxMemory** ayarına yaklaşımında, redsıs için Azure önbelleği, [önbellek ilkesine](https://redis.io/topics/lru-cache)göre bellekten anahtar çıkarma işlemi başlatır.
+Redis için Azure Önbelleği, verileri depolamak için bellek alanı gerektirir. Gerektiğinde kullanılabilir belleği boşaltmak için anahtarları temizler. [INFO](https://redis.io/commands/info) komutundaki **used_memory** veya **used_memory_rss** değerleri yapılandırılmış **maksimum bellek** ayarına yaklaştığında, Redis için Azure Önbelleği [önbellek ilkesine](https://redis.io/topics/lru-cache)dayalı olarak anahtarları bellekten çıkarmaya başlar.
 
-Çıkarılan anahtarların sayısını [Info](https://redis.io/commands/info) komutunu kullanarak izleyebilirsiniz:
+[INFO](https://redis.io/commands/info) komutunu kullanarak tahliye edilen anahtarların sayısını izleyebilirsiniz:
 
 ```
 # Stats
@@ -64,11 +64,11 @@ Redin için Azure önbelleği, verileri depolamak için bellek alanı gerektirir
 evicted_keys:13224
 ```
 
-Ayrıca, anahtarın eksik olduğu zaman arasında bir bağıntı olup olmadığını ve çıkarılan anahtarların bir ani bir şekilde olduğunu görmek için önbelleğiniz için tanılama ölçümlerine bakabilirsiniz. Bu tür sorunların hatalarını ayıklamak için anahtar alanı bildirimleri veya **izleyicisini** kullanma hakkında bilgi için [redsıs anahtar alanı isabetsizliği hata ayıklamanın](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) ek başlığına bakın.
+Önbelleğinizin tanıölçümlerine de bakabilir ve anahtarın kaybolduğu zaman ile tahliye edilen anahtarlarda ani artış arasında bir korelasyon olup olmadığını görebilirsiniz. Bu tür sorunları hata ayıklamak için anahtar alanı bildirimleri veya **MONITOR** kullanma hakkında bilgi için [Redis Anahtar Alanı Misses Hata Ayıklama](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) Ekine bakın.
 
 ### <a name="key-deletion"></a>Anahtar silme
 
-Redsıs istemcileri Redsıs için Azure Cache 'ten anahtar açıkça kaldırmak üzere [del](https://redis.io/commands/del) veya [hdel](https://redis.io/commands/hdel) komutunu verebilir. [Info](https://redis.io/commands/info) komutunu kullanarak silme işlemlerinin sayısını izleyebilirsiniz. **Del** veya **hdel** komutları çağrılırsa, `Commandstats` bölümünde listelenecektir.
+Redis istemcileri, Redis için Azure Önbelleğinden anahtarları açıkça kaldırmak için [DEL](https://redis.io/commands/del) veya [HDEL](https://redis.io/commands/hdel) komutunu verebilir. [Info](https://redis.io/commands/info) komutunu kullanarak silme işlemlerinin sayısını izleyebilirsiniz. **DEL** veya **HDEL** komutları çağrıldıysa, `Commandstats` bunlar bölümde listelenir.
 
 ```
 # Commandstats
@@ -78,23 +78,23 @@ cmdstat_del:calls=2,usec=90,usec_per_call=45.00
 cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 ```
 
-### <a name="async-replication"></a>Zaman uyumsuz çoğaltma
+### <a name="async-replication"></a>Async çoğaltma
 
-Standart veya Premium katmanda Redsıs örneği için herhangi bir Azure önbelleği, bir ana düğüm ve en az bir çoğaltma ile yapılandırılır. Veriler, bir arka plan işlemi kullanılarak ana bilgisayardan bir kopyaya zaman uyumsuz olarak kopyalanır. [Redis.io](https://redis.io/topics/replication) Web sitesi, redsıs veri çoğaltmasının genel olarak nasıl çalıştığını açıklar. İstemcilerin redde sık yazacağı senaryolarda, bu çoğaltmanın anlık olduğu garanti edildiğinden kısmi veri kaybı oluşabilir. Örneğin *, bir istemci kendisine bir anahtar* yazdığında, ancak arka plan işleminin bu anahtarı çoğaltmaya gönderme şansı *olmadan önce* , çoğaltma yeni ana öğe olarak geçtiğinde anahtar kaybedilir.
+Standart veya Premium katmanındaki Redis örneği için herhangi bir Azure Önbelleği, bir ana düğüm ve en az bir yinelemeyle yapılandırılır. Veriler, arka plan işlemi kullanılarak ana bilgisayardan eşzamanlı olarak bir yinelemeye kopyalanır. [redis.io](https://redis.io/topics/replication) web sitesi Redis veri çoğaltma genel olarak nasıl çalıştığını açıklar. İstemcilerin Redis'e sık sık yazdıkları senaryolarda, bu çoğaltmanın anlık olacağı garanti olduğundan kısmi veri kaybı oluşabilir. Örneğin, bir istemci anahtarı *yazdıktan sonra* asıl gider, ancak arka plan işlemi bu anahtarı yinelemeye gönderme şansı olmadan *önce,* yineleme yeni ana olarak devraldığında anahtar kaybolur.
 
-## <a name="major-or-complete-loss-of-keys"></a>Anahtarların büyük veya tamamen kaybolması
+## <a name="major-or-complete-loss-of-keys"></a>Büyük veya tam anahtar kaybı
 
-En fazla veya tüm anahtarlar önbelleğinizi kaybolduysa, aşağıdaki olası nedenleri kontrol edin:
+Önbelleğinizden anahtarların çoğu veya tümü kaybolduysa, aşağıdaki olası nedenleri kontrol edin:
 
 | Nedeni | Açıklama |
 |---|---|
-| [Anahtar Temizleme](#key-flushing) | Anahtarlar el ile temizlendi. |
-| [Yanlış veritabanı seçimi](#incorrect-database-selection) | Redo için Azure önbelleği varsayılan olmayan bir veritabanı kullanacak şekilde ayarlanmıştır. |
-| [Redsıs örneği hatası](#redis-instance-failure) | Redsıs sunucusu kullanılamıyor. |
+| [Anahtar yıkama](#key-flushing) | Anahtarlar elle temizlendi. |
+| [Yanlış veritabanı seçimi](#incorrect-database-selection) | Redis için Azure Önbelleği varsayılan olmayan bir veritabanı kullanacak şekilde ayarlanmıştır. |
+| [Redis örnek hatası](#redis-instance-failure) | Redis sunucusu kullanılamıyor. |
 
-### <a name="key-flushing"></a>Anahtar Temizleme
+### <a name="key-flushing"></a>Anahtar yıkama
 
-İstemciler, *tek* bir veritabanındaki tüm anahtarları kaldırmak Için [flushdb](https://redis.io/commands/flushdb) komutunu çağırabilir veya bir redsıs önbelleğindeki *tüm veritabanlarından tüm* anahtarları kaldırmak için [flushall](https://redis.io/commands/flushall) ' a çağrı yapabilir. Anahtarların temizlenmiş olup olmadığını öğrenmek için, [Info](https://redis.io/commands/info) komutunu kullanın. `Commandstats` bölümünde, **Temizleme** komutunun çağrılıp çağrılmayacağı gösterilmektedir:
+İstemciler, redis önbelleğindeki tüm *single* *veritabanlarındaki* tüm anahtarları kaldırmak için [FLUSHDB](https://redis.io/commands/flushdb) komutunu arayabilir veya [FLUSHALL'ı](https://redis.io/commands/flushall) arayabilir. Anahtarların temizlenip temizlenmediğini öğrenmek için [INFO](https://redis.io/commands/info) komutunu kullanın. Bölüm, `Commandstats` **FLUSH** komutundan herhangi biri çağrılıp çağrılmadığını gösterir:
 
 ```
 # Commandstats
@@ -106,19 +106,19 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Yanlış veritabanı seçimi
 
-Redsıs için Azure önbelleği varsayılan olarak **DB0** veritabanını kullanır. Başka bir veritabanına geçiş yaparsanız (örneğin, **DB1**) ve bundan sonra anahtarları okumaya çalışırsanız, redin Için Azure önbelleği bunları orada bulamaz. Her veritabanı mantıksal olarak ayrı bir birimdir ve farklı bir veri kümesi tutar. Diğer kullanılabilir veritabanlarını kullanmak ve bunların her birinde anahtarları aramak için [Seç](https://redis.io/commands/select) komutunu kullanın.
+Redis için Azure Önbelleği varsayılan olarak **db0** veritabanını kullanır. Başka bir veritabanına (örneğin, **db1)** geçer ve anahtarları okumaya çalışırsanız, Redis için Azure Önbelleği bunları orada bulamaz. Her veritabanı mantıksal olarak ayrı bir birimdir ve farklı bir veri kümesi tutar. Diğer kullanılabilir veritabanlarını kullanmak ve her birinde anahtarları aramak için [SELECT](https://redis.io/commands/select) komutunu kullanın.
 
-### <a name="redis-instance-failure"></a>Redsıs örneği hatası
+### <a name="redis-instance-failure"></a>Redis örnek hatası
 
-Redsıs, bellek içi veri deposudur. Veriler redo önbelleğini barındıran fiziksel veya sanal makinelerde tutulur. Temel katmandaki Redsıs örneği için bir Azure önbelleği yalnızca tek bir sanal makinede (VM) çalışır. Bu VM kapalıysa, önbellekte depoladığınız tüm veriler kaybolur. 
+Redis bir bellek içi veri deposudur. Veriler Redis önbelleğini barındıran fiziksel veya sanal makinelerde tutulur. Temel katmandaki Redis örneği için bir Azure Önbelleği yalnızca tek bir sanal makinede (VM) çalışır. Bu VM düştüyse, önbellekte depoladığınız tüm veriler kaybolur. 
 
-Standart ve Premium katmanlardaki önbellekler, çoğaltılan bir yapılandırmada iki VM kullanarak veri kaybına karşı daha fazla esneklik sunar. Bu tür bir önbellekteki ana düğüm başarısız olduğunda, çoğaltma düğümü verileri otomatik olarak sunacak şekilde alır. Bu sanal makineler, aynı anda kullanılamaz duruma gelme olasılığını en aza indirmek için hatalar ve güncelleştirmeler için ayrı etki alanlarında bulunur. Ancak büyük bir veri merkezi kesintisi olursa VM 'Ler yine de devam edebilir. Bu nadir durumlarda verileriniz kaybedilir.
+Standart ve Premium katmanlarda önbellekler, çoğaltılmış bir yapılandırmada iki VM kullanarak veri kaybına karşı çok daha yüksek esneklik sağlar. Böyle bir önbellekteki ana düğüm başarısız olduğunda, yineleme düğümü verileri otomatik olarak sunmak için devralır. Bu VM'ler, her ikisinin de aynı anda kullanılamaması olasılığını en aza indirmek için hatalar ve güncelleştirmeler için ayrı etki alanlarında bulunur. Ancak, büyük bir veri merkezi kesintisi gerçekleşirse, VM'ler yine de birlikte batabilir. Verileriniz bu nadir durumlarda kaybolur.
 
-Bu altyapı hatalarıyla karşı verilerinizin korunmasını artırmak için [redsıs veri kalıcılığı](https://redis.io/topics/persistence) ve [coğrafi çoğaltma](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) kullanmayı göz önünde bulundurun.
+Verilerinizin bu altyapı hatalarına karşı korunmasını iyileştirmek için [Redis veri kalıcılığını](https://redis.io/topics/persistence) ve [coğrafi çoğaltmayı](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) kullanmayı düşünün.
 
-## <a name="additional-information"></a>Ek Bilgi
+## <a name="additional-information"></a>Ek bilgiler
 
 - [Redis için Azure Cache sunucu tarafı sorunlarını giderme](cache-troubleshoot-server.md)
-- [Redne teklif teklifi ve boyutu için Azure önbelleği kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [Redsıs için Azure önbelleğini izleme](cache-how-to-monitor.md)
-- [Redsıs komutlarını nasıl çalıştırabilirim?](cache-faq.md#how-can-i-run-redis-commands)
+- [Redis sunan ve boyutu için hangi Azure Önbelleğini kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [Redis için Azure Önbelleği nasıl izlenir?](cache-how-to-monitor.md)
+- [Redis komutlarını nasıl çalıştırabilirim?](cache-faq.md#how-can-i-run-redis-commands)

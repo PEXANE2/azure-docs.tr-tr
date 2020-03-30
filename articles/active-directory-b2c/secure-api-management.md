@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C kullanarak bir Azure API Management API 'sinin güvenliğini sağlama
-description: Azure API Management API uç noktasının güvenliğini sağlamak için Azure Active Directory B2C tarafından verilen erişim belirteçlerini nasıl kullanacağınızı öğrenin.
+title: Azure Active Directory B2C'yi kullanarak Azure API Yönetimi API'nizi güvenli hale
+description: Azure API Yönetimi API bitiş noktasını güvence altına almak için Azure Active Directory B2C tarafından verilen erişim belirteçlerini nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,89 +11,89 @@ ms.date: 08/31/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186939"
 ---
-# <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C ile Azure API Management API 'sinin güvenliğini sağlama
+# <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C ile Azure API Yönetimi API'nizi güvenli hale
 
-Azure API Management (APıM) API 'nize erişimi, Azure Active Directory B2C (Azure AD B2C) ile kimliği doğrulanan istemcilere nasıl kısıtlayacağınızı öğrenin. Bu makaledeki adımları izleyerek, erişimi yalnızca geçerli bir Azure AD B2C verilen erişim belirteci içeren isteklerle sınırlayan APıM 'de bir gelen ilke oluşturun ve test edin.
+Azure API Yönetimi (APIM) API'nize erişimi Azure Active Directory B2C (Azure AD B2C) ile kimlik doğrulaması yapılan istemcilerle nasıl kısıtladığınızı öğrenin. APIM'de yalnızca geçerli bir Azure AD B2C tarafından verilmiş erişim jetonunu içeren bu isteklere erişimi kısıtlayan bir gelen ilkesi oluşturmak ve sınamak için bu makaledeki adımları izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımlarla devam etmeden önce aşağıdaki kaynaklara sahip olmanız gerekir:
+Bu makaledeki adımlara devam etmeden önce aşağıdaki kaynaklara ihtiyacınız var:
 
 * [Azure AD B2C kiracı](tutorial-create-tenant.md)
-* Kiracınızda [kayıtlı uygulama](tutorial-register-applications.md)
+* [Kiracınızda kayıtlı başvuru](tutorial-register-applications.md)
 * Kiracınızda [oluşturulan kullanıcı akışları](tutorial-create-user-flows.md)
-* Azure API Management 'de [YAYıMLANMıŞ API](../api-management/import-and-publish.md)
-* Güvenli erişimi test etmek için [Postman](https://www.getpostman.com/) (isteğe bağlı)
+* Azure API Yönetimi'nde [yayınlanan API](../api-management/import-and-publish.md)
+* Güvenli erişimi test etmek için [postacı](https://www.getpostman.com/) (isteğe bağlı)
 
-## <a name="get-azure-ad-b2c-application-id"></a>Azure AD B2C uygulama KIMLIĞI al
+## <a name="get-azure-ad-b2c-application-id"></a>Azure AD B2C uygulama kimliğini alın
 
-Azure API Management 'de Azure AD B2C bir API 'yi güvenli hale getirmeye çalıştığınızda, APıM içinde oluşturduğunuz [gelen ilke](../api-management/api-management-howto-policies.md) için birkaç değere ihtiyacınız vardır. İlk olarak, Azure AD B2C kiracınızda daha önce oluşturduğunuz bir uygulamanın uygulama KIMLIĞINI kaydedin. Önkoşullarda oluşturduğunuz uygulamayı kullanıyorsanız, *webbapp1*IÇIN uygulama kimliği ' ni kullanın.
+Azure AD B2C ile Azure API Yönetimi'nde bir API'yi güvenli hale aldığınızda, APIM'de oluşturduğunuz [gelen ilke](../api-management/api-management-howto-policies.md) için birkaç değere gereksinim duyarsınız. İlk olarak, daha önce oluşturduğunuz bir uygulamanın uygulama kimliğini Azure AD B2C kiracınıza kaydedin. Ön koşullarda oluşturduğunuz uygulamayı kullanıyorsanız, *webbapp1*için uygulama kimliğini kullanın.
 
-Uygulama KIMLIĞINI almak için geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
+Uygulama kimliğini almak için geçerli **Uygulamalar** deneyimini veya yeni birleştirilmiş **Uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin.](https://aka.ms/b2cappregintro)
 
 #### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Yönet**altında **uygulamalar**' ı seçin.
-1. Değeri *WebApp1* veya daha önce oluşturduğunuz başka bir uygulama IÇIN **uygulama kimliği** sütununa kaydedin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçin ve ardından Azure AD B2C kiracınızı içeren dizin'i seçin.
+1. Sol menüde **Azure AD B2C'yi**seçin. Veya **Tüm hizmetleri** seçin ve **Azure AD B2C'yi**arayın ve seçin.
+1. **Yönet**altında, **Uygulamaları**seçin.
+1. *Webapp1* veya daha önce oluşturduğunuz başka bir uygulama için **APPLICATION ID** sütunundaki değeri kaydedin.
 
 #### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **sahip olunan uygulamalar** sekmesini seçin.
-1. Değeri, *WebApp1* için **uygulama (istemci) kimliği** sütununa veya daha önce oluşturduğunuz başka bir uygulamaya kaydedin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçin ve ardından Azure AD B2C kiracınızı içeren dizin'i seçin.
+1. Sol menüde **Azure AD B2C'yi**seçin. Veya **Tüm hizmetleri** seçin ve **Azure AD B2C'yi**arayın ve seçin.
+1. **Uygulama kayıtları (Önizleme) seçeneğini**belirleyin, ardından Sahip **olunan uygulamalar** sekmesini seçin.
+1. *Webapp1* veya daha önce oluşturduğunuz başka bir uygulama için **Uygulama (istemci) kimliği** sütununa değeri kaydedin.
 
 * * *
 
-## <a name="get-token-issuer-endpoint"></a>Belirteç Verenin uç noktasını al
+## <a name="get-token-issuer-endpoint"></a>Belirteç veren bitiş noktasını alın
 
-Sonra, Azure AD B2C Kullanıcı akışlarınızdan biri için iyi bilinen yapılandırma URL 'sini alın. Ayrıca, Azure API Management 'da desteklemek istediğiniz belirteç verenin uç nokta URI 'sine ihtiyacınız vardır.
+Ardından, Azure AD B2C kullanıcı akışlarından birinin tanınmış config URL'sini alın. Azure API Yönetimi'nde desteklemek istediğiniz belirteç veren uç noktası URI'ye de ihtiyacınız var.
 
-1. [Azure portal](https://portal.azure.com)Azure AD B2C kiracınıza gidin.
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin.
-1. Mevcut bir ilkeyi seçin (örneğin *B2C_1_signupsignin1*) ve ardından **Kullanıcı akışını Çalıştır**' ı seçin.
-1. Sayfanın üst kısmındaki **Kullanıcı akış** başlığının altında görüntülenen köprüye URL 'yi kaydedin. Bu URL, Kullanıcı akışına yönelik OpenID Connect iyi bilinen bulma uç noktasıdır ve Azure API Management gelen ilkesini yapılandırırken sonraki bölümde kullanılır.
+1. [Azure portalında](https://portal.azure.com)Azure AD B2C kiracınıza göz atın.
+1. **İlkeler** **altında, Kullanıcı akışlarını (ilkeler)** seçin.
+1. Varolan bir ilke seçin, örneğin *B2C_1_signupsignin1,* sonra **kullanıcı akışını çalıştır'ı**seçin.
+1. URL'yi sayfanın üst kısmındaki **Kullanıcı akışı** başlığı altında görüntülenen köprüye kaydedin. Bu URL, kullanıcı akışı için OpenID Connect iyi bilinen keşif bitiş noktasıdır ve Azure API Yönetimi'nde gelen ilkeyi yapılandırDığınızda bir sonraki bölümde kullanırsınız.
 
-    ![Azure portal Şimdi Çalıştır sayfasında iyi bilinen URI Köprüsü](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
+    ![Azure portalının Çalıştır şimdi sayfasında tanınmış URI köprü](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
 
-1. OpenID Connect iyi bilinen yapılandırma sayfasına gitmek için köprüyü seçin.
-1. Tarayıcınızda açılan sayfada `issuer` değerini kaydedin, örneğin:
+1. OpenID Connect tanınmış yapılandırma sayfasına göz atmak için köprüseçin.
+1. Tarayıcınızda açılan sayfada, örneğin değeri `issuer` kaydedin:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-    Bu değeri, API 'nizi Azure API Management yapılandırırken bir sonraki bölümde kullanırsınız.
+    API'nizi Azure API Yönetimi'nde yapılandırırken bu değeri bir sonraki bölümde kullanırsınız.
 
-Artık bir sonraki bölümde kullanılmak üzere kaydedilmiş iki URL 'ye sahip olmanız gerekir: OpenID Connect iyi bilinen yapılandırma uç noktası URL 'SI ve veren URI. Örnek:
+Şimdi bir sonraki bölümde kullanılmak üzere iki URL'niz olmalıdır: OpenID Connect iyi bilinen yapılandırma uç noktası URL'si ve veren URI. Örnek:
 
 ```
 https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
 https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 ```
 
-## <a name="configure-inbound-policy-in-azure-api-management"></a>Azure API Management gelen ilkesini yapılandırma
+## <a name="configure-inbound-policy-in-azure-api-management"></a>Azure API Yönetimi'nde gelen ilkeyi yapılandırma
 
-Artık, API çağrılarını doğrulayan Azure API Management gelen ilkesini eklemeye hazırsınız. Erişim belirtecinde hedef kitleyi ve veren 'i doğrulayan bir [JWT doğrulama](../api-management/api-management-access-restriction-policies.md#ValidateJWT) ilkesi ekleyerek, yalnızca geçerli BELIRTECE sahip API çağrılarının kabul edilmesini sağlayabilirsiniz.
+Artık Azure API Yönetimi'nde API çağrılarını doğrulayan gelen ilkeyi eklemeye hazırsınız. Bir erişim belirtecinde hedef kitleyi ve vereni doğrulayan bir [JWT doğrulama](../api-management/api-management-access-restriction-policies.md#ValidateJWT) ilkesi ekleyerek, yalnızca geçerli bir belirteç içeren API çağrılarının kabul edilmesini sağlayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)Azure API Management örneğinizi inceleyin.
+1. [Azure portalında](https://portal.azure.com)Azure API Yönetimi örneğinize göz atın.
 1. **API’ler** seçeneğini belirleyin.
-1. Azure AD B2C güvenliğini sağlamak istediğiniz API 'YI seçin.
+1. Azure AD B2C ile güvenli hale getirmek istediğiniz API'yi seçin.
 1. **Tasarım** sekmesini seçin.
-1. **Gelen işlem**altında, ilke kodu düzenleyicisini açmak için **\</\>** ' yı seçin.
-1. Aşağıdaki `<validate-jwt>` etiketini `<inbound>` ilkesinin içine yerleştirin.
+1. **Gelen işleme**altında, ** \< / ** ilke kodu düzenleyicisini açmak için seçin.
+1. Aşağıdaki `<validate-jwt>` etiketi ilkenin `<inbound>` içine yerleştirin.
 
-    1. `<openid-config>` öğesindeki `url` değerini ilkenizin tanınmış yapılandırma URL 'siyle güncelleştirin.
-    1. `<audience>` öğesini, daha önce B2C kiracınızda oluşturduğunuz uygulamanın uygulama KIMLIĞIYLE güncelleştirin (örneğin, *WebApp1*).
-    1. `<issuer>` öğesini daha önce kaydettiğiniz belirteç veren uç noktasıyla güncelleştirin.
+    1. İlkinizin `url` tanınmış `<openid-config>` yapılandırma URL'si ile öğedeki değeri güncelleştirin.
+    1. B2C kiracınızda daha önce oluşturduğunuz uygulamanın Uygulama Kimliği ile `<audience>` öğeyi güncelleştirin (örneğin, *webapp1).*
+    1. Öğeyi `<issuer>` daha önce kaydettiğiniz belirteç veren uç noktasıyla güncelleştirin.
 
     ```xml
     <policies>
@@ -117,59 +117,59 @@ Artık, API çağrılarını doğrulayan Azure API Management gelen ilkesini ekl
 
 ## <a name="validate-secure-api-access"></a>Güvenli API erişimini doğrulama
 
-API 'nize yalnızca kimliği doğrulanmış çağıranlar erişebildiğinden emin olmak için, API 'yi [Postman](https://www.getpostman.com/)Ile çağırarak Azure API Management yapılandırmanızı doğrulayabilirsiniz.
+Yalnızca kimlik doğrulaması yapılan arayanların API'nize erişebilmesini sağlamak için, [Postacı](https://www.getpostman.com/)ile API'yi arayarak Azure API Yönetimi yapılandırmanızı doğrulayabilirsiniz.
 
-API 'yi çağırmak için hem Azure AD B2C tarafından verilen bir erişim belirtecine hem de bir APıM abonelik anahtarına ihtiyacınız vardır.
+API'yi aramak için hem Azure AD B2C tarafından verilen bir erişim belirteci hem de Bir APIM abonelik anahtarı gerekir.
 
 ### <a name="get-an-access-token"></a>Bir erişim belirteci alma
 
-İlk olarak, Postman 'daki `Authorization` üst bilgisinde kullanmak üzere Azure AD B2C tarafından verilen bir belirtece ihtiyacınız vardır. Kaydolma/oturum açma Kullanıcı akışınız için **Şimdi Çalıştır** özelliğini kullanarak bir tane, önkoşullardan biri olarak oluşturmuş olmanız gerekir.
+Postacı'daki `Authorization` üstbilgide kullanmak için öncelikle Azure AD B2C tarafından verilen bir belirteç gerekir. Ön koşullardan biri olarak oluşturmanız gereken kaydolma/kaydolma kullanıcı akışınızın **Şimdi Çalıştır** özelliğini kullanarak bir tane alabilirsiniz.
 
-1. [Azure portal](https://portal.azure.com)Azure AD B2C kiracınıza gidin.
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin.
-1. Mevcut bir kaydolma/oturum açma Kullanıcı akışı seçin, örneğin *B2C_1_signupsignin1*.
-1. **Uygulama**için *WebApp1*öğesini seçin.
-1. **Yanıt URL 'si**için `https://jwt.ms`seçin.
-1. **Kullanıcı akışını Çalıştır**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)Azure AD B2C kiracınıza göz atın.
+1. **İlkeler** **altında, Kullanıcı akışlarını (ilkeler)** seçin.
+1. Varolan bir kaydolma/kaydolma kullanıcı akışını seçin( örneğin, örneğin *B2C_1_signupsignin1.*
+1. **Uygulama**için, *webapp1*seçin.
+1. **Yanıtla URL** `https://jwt.ms`için , seçin.
+1. **Kullanıcı akışını çalıştır'ı**seçin.
 
-    ![Azure portal oturum açmak için Kullanıcı akış sayfasını Çalıştır](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
+    ![Azure portalında kaydolma için kullanıcı akışı sayfasını çalıştırın](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
 
-1. Oturum açma işlemini tamamlayın. `https://jwt.ms`yönlendirilmelisiniz.
-1. Tarayıcınızda görünen kodlanmış belirteç değerini kaydedin. Bu belirteç değerini Postman 'daki yetkilendirme üst bilgisi için kullanırsınız.
+1. Oturum açma işlemini tamamlayın. 'ye `https://jwt.ms`yönlendirilmelisiniz.
+1. Tarayıcınızda görüntülenen kodlanmış belirteç değerini kaydedin. Bu belirteç değerini Postacı'daki Yetkilendirme üstbilgisi için kullanırsınız.
 
-    ![Jwt.ms üzerinde görünen kodlanmış belirteç değeri](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
+    ![jwt.ms'da görüntülenen kodlanmış belirteç değeri](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
 
-### <a name="get-api-subscription-key"></a>API abonelik anahtarını al
+### <a name="get-api-subscription-key"></a>API abonelik anahtarını alın
 
-Yayımlanmış bir API 'yi çağıran bir istemci uygulaması (Bu durumda Postman), HTTP isteklerinde API 'ye geçerli bir API Management abonelik anahtarı içermelidir. Postman HTTP isteğinize dahil edilecek bir abonelik anahtarı almak için:
+Yayımlanmış bir API çağıran bir istemci uygulaması (bu durumda, Postacı), API'deki HTTP isteklerine geçerli bir API Yönetimi abonelik anahtarı içermelidir. Postacı HTTP isteğinize eklemek için bir abonelik anahtarı almak için:
 
-1. [Azure Portal](https://portal.azure.com)Azure API Management hizmet örneğinize gidin.
-1. **Abonelikler**'i seçin.
-1. **Ürün**için üç noktayı seçin ve ardından **anahtarları göster/gizle**' yi seçin.
-1. Ürünün **BIRINCIL anahtarını** kaydedin. Postman 'daki HTTP talebinizdeki `Ocp-Apim-Subscription-Key` üst bilgisi için bu anahtarı kullanırsınız.
+1. [Azure portalındaki](https://portal.azure.com)Azure API Yönetimi hizmet örneğinize göz atın.
+1. **Abonelikleri**seçin.
+1. Ürün için elipsleri **seçin: Sınırsız**, ardından **Göster/Gizle tuşlarını**seçin.
+1. Ürünün **BIRINCIL ANAHTARINI** kaydedin. Postman'daki HTTP `Ocp-Apim-Subscription-Key` isteğinizdeki üstbilgi için bu anahtarı kullanırsınız.
 
-![Azure portal anahtarları göster/gizle seçiliyken abonelik anahtarı sayfası](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
+![Azure portalında seçilen Göster/gizle anahtarları içeren abonelik anahtar sayfası](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
-### <a name="test-a-secure-api-call"></a>Güvenli bir API çağrısını test etme
+### <a name="test-a-secure-api-call"></a>Güvenli bir API çağrısını test edin
 
-Erişim belirteci ve APıM abonelik anahtarı kaydedildiğinde, artık API 'ye güvenli erişimi doğru şekilde yapılandırıp yapılandırmadığınızı test etmeye hazırsınız demektir.
+Erişim jetonu ve APIM abonelik anahtarı kaydedilirken, API'ye güvenli erişimi doğru şekilde yapılandırıp yapılandırmadığınızı test etmeye hazırsınız.
 
-1. [Postman](https://www.getpostman.com/)'da yeni bir `GET` isteği oluşturun. İstek URL 'SI için, önkoşullardan biri olarak yayımladığınız API 'nin hoparlör listesi uç noktasını belirtin. Örnek:
+1. `GET` [Postacı'da](https://www.getpostman.com/)yeni bir istek oluşturun. İstek URL'si için, yayınladığınız API'nin konuşmacılistesini ön koşullardan biri olarak belirtin. Örnek:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
-1. Sonra, aşağıdaki üst bilgileri ekleyin:
+1. Ardından, aşağıdaki üstbilgi ekleyin:
 
     | Anahtar | Değer |
     | --- | ----- |
-    | `Authorization` | Daha önce kaydettiğiniz, `Bearer ` ön eki olan kodlanmış belirteç değeri ("taşıyıcı" den sonra boşluk dahil) |
-    | `Ocp-Apim-Subscription-Key` | Daha önce kaydettiğiniz APıM abonelik anahtarı |
+    | `Authorization` | Önceden kaydettiğiniz, önceden önceden belirlenmiş kodlanmış `Bearer ` belirteç değeri ("Taşıyıcı"dan sonraki alanı içerir) |
+    | `Ocp-Apim-Subscription-Key` | Daha önce kaydettiğiniz APIM abonelik anahtarı |
 
-    **Get** Request URL 'Si ve **başlıklarınız** şuna benzer görünmelidir:
+    **GET** istek URL'niz ve **Üstbilginiz** benzer görünmelidir:
 
-    ![GET isteği URL 'sini ve üstbilgilerini gösteren Postman Kullanıcı arabirimi](media/secure-apim-with-b2c-token/postman-01-headers.png)
+    ![GET istek URL'sini ve üstbilgilerini gösteren Postacı Kullanıcı UI](media/secure-apim-with-b2c-token/postman-01-headers.png)
 
-1. İsteği yürütmek için Postman 'daki **Gönder** düğmesini seçin. Her şeyi doğru şekilde yapılandırdıysanız, bir konferans hoparlörleri koleksiyonu ile bir JSON yanıtı (burada kesilmiş olarak gösterilir) sunulur:
+1. İsteği yürütmek için Postacı'da **Gönder** düğmesini seçin. Her şeyi doğru şekilde yapılandırmışsanız, konferans konuşmacılarından oluşan bir koleksiyoniçeren bir JSON yanıtı ile birlikte sunulmalıdır (burada kesilmiş olarak gösterilmiştir):
 
     ```JSON
     {
@@ -196,15 +196,15 @@ Erişim belirteci ve APıM abonelik anahtarı kaydedildiğinde, artık API 'ye g
     [...]
     ```
 
-### <a name="test-an-insecure-api-call"></a>Güvenli olmayan bir API çağrısını test etme
+### <a name="test-an-insecure-api-call"></a>Güvenli olmayan bir API çağrısını test edin
 
-Başarılı *bir istek* YAPTıK, API 'nize yapılan çağrıların beklenen şekilde reddedildiğini sağlamak için hata durumunu test edin. Testi gerçekleştirmenin bir yolu, belirteç değerindeki birkaç karakteri eklemek veya değiştirmek, ardından aynı `GET` isteğini daha önce çalıştırmak.
+Başarılı bir istekte bulunduğunuza göre, *geçersiz* bir belirteçle API'nize yapılan çağrıların beklendiği gibi reddedildiğinden emin olmak için hata durumunu test edin. Testi gerçekleştirmenin bir yolu, belirteç değerindebirkaç karakter eklemek veya değiştirmek, `GET` ardından öncekiyle aynı isteği gerçekleştirmektir.
 
-1. Geçersiz bir belirtecin benzetimini yapmak için belirteç değerine birkaç karakter ekleyin. Örneğin, belirteç değerine "GEÇERSIZ" ekleyin:
+1. Geçersiz bir belirteci simüle etmek için belirteç değerine birkaç karakter ekleyin. Örneğin, belirteç değerine "GEÇERSIZ" ekleyin:
 
-    ![Postman Kullanıcı arabiriminin üstbilgiler bölümü, GEÇERSIZ belirtece eklenmiş olarak gösteriliyor](media/secure-apim-with-b2c-token/postman-02-invalid-token.png)
+    ![Postacı UI'nin GEÇERSIZ gösteren başlıkları bölümü belirteci eklendi](media/secure-apim-with-b2c-token/postman-02-invalid-token.png)
 
-1. İsteği yürütmek için **Gönder** düğmesini seçin. Geçersiz bir belirteçle, beklenen sonuç `401` yetkisiz bir durum kodudur:
+1. İsteği yürütmek için **Gönder** düğmesini seçin. Geçersiz bir belirteç ile beklenen `401` sonuç yetkisiz bir durum kodudur:
 
     ```JSON
     {
@@ -213,11 +213,11 @@ Başarılı *bir istek* YAPTıK, API 'nize yapılan çağrıların beklenen şek
     }
     ```
 
-`401` durum kodunu görürseniz, yalnızca Azure AD B2C tarafından verilen geçerli erişim belirtecine sahip çağıranların Azure API Management API 'nize başarılı bir istek yapacadığını doğruladınız.
+`401` Durum kodunu görürseniz, yalnızca Azure AD B2C tarafından verilen geçerli bir erişim jetonu olan arayanların Azure API Yönetimi API'nize başarılı isteklerde bulunabileceğini doğruladınız.
 
-## <a name="support-multiple-applications-and-issuers"></a>Birden çok uygulamayı ve verenler destekleme
+## <a name="support-multiple-applications-and-issuers"></a>Birden çok uygulamayı ve vereni destekleme
 
-Birçok uygulama genellikle tek bir REST API etkileşim kurar. API 'nizin birden çok uygulama için tasarlanan belirteçleri kabul etmesine olanak tanımak için, uygulama kimliklerini APıM gelen ilkesindeki `<audiences>` öğesine ekleyin.
+Çeşitli uygulamalar genellikle tek bir REST API ile etkileşim. API'nizin birden çok uygulama için tasarlanmış belirteçleri kabul etmesini `<audiences>` sağlamak için, uygulama kimliklerini APIM gelen ilkesindeki öğeye ekleyin.
 
 ```XML
 <!-- Accept tokens intended for these recipient applications -->
@@ -227,7 +227,7 @@ Birçok uygulama genellikle tek bir REST API etkileşim kurar. API 'nizin birden
 </audiences>
 ```
 
-Benzer şekilde, birden çok belirteç verenler desteklemek için, APıM gelen ilkesindeki `<issuers>` öğesine uç nokta URI 'Leri ekleyin.
+Benzer şekilde, birden çok belirteç vereni desteklemek için, apim gelen ilkesindeki `<issuers>` öğeye uç nokta URI'lerini ekleyin.
 
 ```XML
 <!-- Accept tokens from multiple issuers -->
@@ -237,17 +237,17 @@ Benzer şekilde, birden çok belirteç verenler desteklemek için, APıM gelen i
 </issuers>
 ```
 
-## <a name="migrate-to-b2clogincom"></a>B2clogin.com 'e geçiş
+## <a name="migrate-to-b2clogincom"></a>b2clogin.com'a geçirin
 
-Eski `login.microsoftonline.com` uç noktası tarafından verilen belirteçleri doğrulayan bir APıM API 'SI varsa, API 'yi ve bunu çağıran uygulamaları [b2clogin.com](b2clogin.md)tarafından verilen belirteçleri kullanacak şekilde geçirmeniz gerekir.
+Eski `login.microsoftonline.com` bitiş noktası tarafından verilen belirteçleri doğrulayan bir APIM API'niz varsa, API'yi ve onu [b2clogin.com](b2clogin.md)tarafından verilen belirteçleri kullanmak için arayan uygulamaları geçirmeniz gerekir.
 
 Aşamalı bir geçiş gerçekleştirmek için bu genel işlemi izleyebilirsiniz:
 
-1. Hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçler için APıM gelen ilkenize destek ekleyin.
-1. Uygulamalarınızı b2clogin.com uç noktasından belirteçleri almak için tek seferde güncelleştirin.
-1. Tüm uygulamalarınız b2clogin.com ' dan belirteçleri doğru bir şekilde aldıktan sonra, API 'den login.microsoftonline.com tarafından verilen belirteçler desteğini kaldırın.
+1. Hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçler için APIM gelen ilkesine destek ekleyin.
+1. b2clogin.com uç noktasından belirteçler elde etmek için uygulamalarınızı teker teker güncelleyin.
+1. Tüm uygulamalarınız b2clogin.com belirteçleri doğru bir şekilde aldıktan sonra, API'den login.microsoftonline.com verilen belirteçler için desteği kaldırın.
 
-Aşağıdaki örnek APıM gelen ilkesi, hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçlerin nasıl kabul edileceği gösterilmektedir. Ayrıca, iki uygulamadan API isteklerini destekler.
+Aşağıdaki örnek APIM gelen ilkesi, hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçlerin nasıl kabul edilebildiğini göstermektedir. Ayrıca, iki uygulamadan gelen API isteklerini destekler.
 
 ```XML
 <policies>
@@ -273,6 +273,6 @@ Aşağıdaki örnek APıM gelen ilkesi, hem b2clogin.com hem de login.microsofto
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure API Management ilkeleri hakkında daha fazla bilgi için [APIM ilke başvurusu dizinine](../api-management/api-management-policies.md)bakın.
+Azure API Yönetimi ilkeleri yle ilgili ek ayrıntılar için [APIM ilke başvuru dizinine](../api-management/api-management-policies.md)bakın.
 
-Owin tabanlı Web API 'Lerini ve uygulamalarını b2clogin.com 'ye geçirme hakkında bilgi edinmek için [OWIN tabanlı Web API 'sini b2clogin.com 'e geçirin](multiple-token-endpoints.md).
+OWIN tabanlı web API'leri ve bunların uygulamaları hakkında [owin tabanlı bir web API'sini b2clogin.com](multiple-token-endpoints.md)geçir'e b2clogin.com için bilgi bulabilirsiniz.

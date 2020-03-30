@@ -1,7 +1,7 @@
 ---
-title: Otomatik makine öğreniminde model yorumlenebilirliği
+title: Otomatik makine öğrenmesinde model birlikte çalışabilirliği
 titleSuffix: Azure Machine Learning
-description: Otomatikleştirilmiş ML modelinizin Özellik önemini nasıl belirlediğini ve Azure Machine Learning SDK kullanırken tahmine dayalı hale getirmek için nasıl açıklamalar alabileceğinizi öğrenin.
+description: Azure Machine Learning SDK'yı kullanırken otomatik ML modelinizin özelliğin önemini nasıl belirlediği ve öngörülerde nasıl öngörüde bulunabildiğini öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,39 +10,39 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: b2c7825b10feab45df9cb89dbe2b82da1c143866
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e6fa3b9705fcd718f802b73560e7703b008af2b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129756"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064003"
 ---
-# <a name="model-interpretability-in-automated-machine-learning"></a>Otomatik makine öğreniminde model yorumlenebilirliği
+# <a name="model-interpretability-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde model birlikte çalışabilirliği
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi (ML) için yorumlanabilirliğini özelliklerini nasıl etkinleştireceğinizi öğreneceksiniz. Otomatikleştirilmiş ML, uygulanan özellik önemini anlamanıza yardımcı olur. 
+Bu makalede, Azure Machine Learning'de otomatik makine öğrenimi (ML) için yorumlanabilirlik özelliklerini nasıl etkinleştirdiğinizi öğreneceksiniz. Otomatik ML, tasarlanmış özelliğin önemini anlamanıza yardımcı olur. 
 
-1\.0.85 kümesinden sonra tüm SDK sürümleri varsayılan olarak `model_explainability=True`. SDK sürüm 1.0.85 ve önceki sürümlerinde, kullanıcıların model yorumlenebilirliğini kullanabilmesi için `AutoMLConfig` nesnesinde `model_explainability=True` ayarlaması gerekir. 
+Varsayılan olarak 1.0.85'ten `model_explainability=True` sonra tüm SDK sürümleri. SDK sürüm 1.0.85 ve önceki sürümlerde `AutoMLConfig` kullanıcıların model yorumlanabilirliğini kullanabilmek için nesneyi ayarlamaları `model_explainability=True` gerekir. 
 
 Bu makalede şunları öğreneceksiniz:
 
-- En iyi model veya herhangi bir model için eğitim sırasında yorumlenebilirlik gerçekleştirin.
-- Veri ve açıklamaları desenlerdeki desenleri görmenizi sağlayacak görselleştirmeleri etkinleştirin.
-- Çıkarım veya Puanlama sırasında yorumlenebilirlik uygulayın.
+- En iyi model veya herhangi bir model için eğitim sırasında yorumlanabilirlik gerçekleştirin.
+- Verilerdeki ve açıklamalartaki desenleri görmenize yardımcı olmak için görselleştirmeleri etkinleştirin.
+- Çıkarım veya puanlama sırasında yorumlanabilirliği uygulayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Yorumlenebilirlik özellikleri. Gerekli paketleri almak için `pip install azureml-interpret azureml-contrib-interpret` çalıştırın.
-- Otomatik ML denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya [Otomatik ml denemeleri](how-to-configure-auto-train.md)'yi nasıl yapılandıracağınızı öğrenin.
+- Yorumlanabilirlik özellikleri. Gerekli `pip install azureml-interpret azureml-contrib-interpret` paketleri almak için çalıştırın.
+- Otomatik ML deneyleri oluşturma bilgisi. Azure Machine Learning SDK'nın nasıl kullanılacağı hakkında daha fazla bilgi için bu [regresyon modeli eğitimini](tutorial-auto-train-models.md) tamamlayın veya otomatik ML denemelerini nasıl [yapılandıracağımız](how-to-configure-auto-train.md)hakkında bilgi alın.
 
-## <a name="interpretability-during-training-for-the-best-model"></a>En iyi model için eğitim sırasında yorumlenebilirlik
+## <a name="interpretability-during-training-for-the-best-model"></a>En iyi model için eğitim sırasında yorumlanabilirlik
 
-Mühendislik uygulanmış özellikler için açıklamaları içeren `best_run`açıklamayı alın.
+Mühendislik özellikleriiçin `best_run`açıklamalar içeren açıklamayı alın.
 
-### <a name="download-engineered-feature-importance-from-artifact-store"></a>Yapıt deposundan uygulanan özellik önem derecesini indirin
+### <a name="download-engineered-feature-importance-from-artifact-store"></a>Yapı mağazasından mühendislik özelliğini indirin
 
-`best_run`yapıt deposundan uygulanan özellik açıklamalarını indirmek için `ExplanationClient` kullanabilirsiniz. 
+Tasarlanan `ExplanationClient` özellik açıklamalarını yapı nın artifakı `best_run`deposundan indirmek için kullanabilirsiniz. 
 
 ```python
 from azureml.explain.model._internal.explanation_client import ExplanationClient
@@ -52,11 +52,11 @@ engineered_explanations = client.download_model_explanation(raw=False)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-## <a name="interpretability-during-training-for-any-model"></a>Herhangi bir model için eğitim sırasında yorumlenebilirlik 
+## <a name="interpretability-during-training-for-any-model"></a>Herhangi bir model için eğitim sırasında yorumlanabilirlik 
 
-Model açıklamalarını hesaplarken ve bunları görselleştirebileceğiniz zaman, bir otomatik ML modeli için mevcut model açıklaması ile sınırlı değilsiniz. Ayrıca, farklı test verileriyle modelinize yönelik bir açıklama alabilirsiniz. Bu bölümdeki adımlarda, test verilerinize göre uygulanan özellik önemini nasıl hesaplabileceğiniz ve görselleştirebileceğiniz gösterilmektedir.
+Model açıklamalarını hesaplayıp görselleştirdiğinizde, otomatik bir ML modeli için varolan bir model açıklamasıyla sınırlı değildir. Ayrıca farklı test verileri ile modeliniz için bir açıklama alabilirsiniz. Bu bölümdeki adımlar, test verilerinize dayalı olarak mühendislik özelliğinin önemini nasıl hesaplayacağınızı ve görselleştirdiğinizi gösterir.
 
-### <a name="retrieve-any-other-automl-model-from-training"></a>Eğitimin diğer tüm oto modellerini al
+### <a name="retrieve-any-other-automl-model-from-training"></a>Eğitimden başka bir AutoML modeli alma
 
 ```python
 automl_run, fitted_model = local_run.get_output(metric='accuracy')
@@ -64,13 +64,13 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>Model açıklamalarını ayarlama
 
-Uygulanan açıklamaları almak için `automl_setup_model_explanations` kullanın. `fitted_model` aşağıdaki öğeleri oluşturabilir:
+Tasarlanmış `automl_setup_model_explanations` açıklamaları almak için kullanın. Aşağıdaki `fitted_model` öğeleri oluşturabilirsiniz:
 
-- Eğitilen veya test örneklerinden öne çıkan veriler
-- Uygulanan özellik adı listeleri
-- Sınıflandırma senaryolarında etiketli sütunlarınızda findable sınıfları
+- Eğitimli veya test örneklerinden öne çıkan veriler
+- Tasarlanmış özellik ad listeleri
+- Sınıflandırma senaryolarında etiketli sütununuzda bulunabilen sınıflar
 
-`automl_explainer_setup_obj`, yukarıdaki listeden tüm yapıları içerir.
+Yukarıdaki `automl_explainer_setup_obj` listedeki tüm yapıları içerir.
 
 ```python
 from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
@@ -80,15 +80,15 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
                                                              task='classification')
 ```
 
-### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>Özellik önemi için benzeme açıklama 'ı başlatın
+### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>Özelliğin önemi için Mimic Explainer'ı başlatma
 
-Oto ml modelleriyle ilgili bir açıklama oluşturmak için `MimicWrapper` sınıfını kullanın. Mmıısarmalayıcı 'yi şu parametrelerle başlatabilirsiniz:
+AutoML modelleri için bir açıklama `MimicWrapper` oluşturmak için sınıfı kullanın. MimicWrapper'ı şu parametrelerle başolarak alabilirsiniz:
 
-- Açıklama Kurulum nesnesi
+- Açıklayıcı kurulum nesnesi
 - Çalışma alanınız
-- `fitted_model` otomatikleştirilmiş ML modelinin yedeği olarak davranan bir LightGBM modeli
+- `fitted_model` Otomatik ML modeline vekil olarak hareket eden LightGBM modeli
 
-Mımısarmalayıcı Ayrıca, uygulanan açıklamalarının karşıya yükleneceği `automl_run` nesnesini alır.
+MimicWrapper ayrıca, `automl_run` tasarlanmış açıklamaların yüklendiği nesneyi de alır.
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -102,24 +102,24 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
                          classes=automl_explainer_setup_obj.classes)
 ```
 
-### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Uygulanan özellik önemini hesaplamak ve görselleştirmek için MimicExplainer kullanın
+### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Engineered özelliğinin önemini hesaplamak ve görselleştirmek için MimicExplainer'ı kullanın
 
-Oluşturulan mühendislik özelliklerine yönelik özellik önemini elde etmek için, dönüştürülmüş test örnekleriyle birlikte `explain()` yöntemi ' ni çağırabilirsiniz. Ayrıca, oluşturulan özelliklerin özellik önem değerlerinin Pano görselleştirmesini otomatik ML özellikleri tarafından görüntülemek için `ExplanationDashboard` kullanabilirsiniz.
+Oluşturulan mühendislik `explain()` özellikleri için özellik önem almak için dönüştürülmüş test örnekleri ile MimicWrapper yöntemi arayabilirsiniz. Ayrıca otomatik `ExplanationDashboard` ML featurizers tarafından oluşturulan mühendislik özelliklerinin özellik önem değerlerinin pano görselleştirme görüntülemek için kullanabilirsiniz.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>Çıkarım sırasında yorumlenebilirlik
+### <a name="interpretability-during-inference"></a>Çıkarım sırasında yorumlanabilirlik
 
-Bu bölümde, önceki bölümde yer alan açıklamaları hesaplamak için kullanılan açıklama ile otomatik bir ML modeli oluşturmayı öğreneceksiniz.
+Bu bölümde, önceki bölümdeaçıklamaları hesaplamak için kullanılan açıklayıcı ile otomatik bir ML modelinin nasıl işlevselleştirilecek olduğunu öğrenirsiniz.
 
-### <a name="register-the-model-and-the-scoring-explainer"></a>Modeli ve Puanlama açıklama kaydetme
+### <a name="register-the-model-and-the-scoring-explainer"></a>Modeli ve puanlama açıklamasını kaydedin
 
-' İ kullanarak, uygulanan özellik önem değerlerini, çıkarım sırasında hesaplayacağımız Puanlama açıklama oluşturmak için `TreeScoringExplainer` kullanın. Puanlama açıklama daha önce hesaplanan `feature_map` başlatırsınız. 
+Çıkarım `TreeScoringExplainer` zamanında mühendislik özelliği önem değerlerini hesaplayacak puanlama açıklayıcısını oluşturmak için kullanın. Daha önce hesaplanan puanlama `feature_map` açıklayıcısını başlangıç olarak açıklarsınız. 
 
-Puanlama Açıklama ' nı kaydedin ve sonra modeli ve Puanlama Açıklama ' ı Model Yönetimi hizmetiyle kaydedin. Aşağıdaki kodu çalıştırın:
+Puanlama açıklamasını kaydedin ve ardından modeli ve puanlama açıklamasını Model Yönetim Hizmeti'ne kaydedin. Aşağıdaki kodu çalıştırın:
 
 ```python
 from azureml.interpret.scoring.scoring_explainer import TreeScoringExplainer, save
@@ -139,9 +139,9 @@ automl_run.upload_file('scoring_explainer.pkl', 'scoring_explainer.pkl')
 scoring_explainer_model = automl_run.register_model(model_name='scoring_explainer', model_path='scoring_explainer.pkl')
 ```
 
-### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>Hizmeti ayarlamak için Conda bağımlılıklarını oluşturun
+### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>Hizmeti ayarlamak için conda bağımlılıklarını oluşturma
 
-Ardından, dağıtılan model için kapsayıcıda gerekli ortam bağımlılıklarını oluşturun. Lütfen, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerdiğinden, > = 1.0.45 sürümüne sahip olan azureml-varsayılan değer bir PIP bağımlılığı olarak listelenmelidir.
+Ardından, dağıtılan model için kapsayıcıda gerekli ortam bağımlılıklarını oluşturun. Modeli web hizmeti olarak barındırmak için gereken işlevselliği içerdiğinden, >= 1,0,45 sürümüolan azureml varsayılanlarının pip bağımlılığı olarak listelemesi gerektiğini lütfen unutmayın.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -164,7 +164,7 @@ with open("myenv.yml","r") as f:
 
 ### <a name="deploy-the-service"></a>Hizmeti dağıtma
 
-Önceki adımlardan Conda dosyasını ve Puanlama dosyasını kullanarak hizmeti dağıtın.
+Conda dosyasını ve önceki adımlardaki puanlama dosyasını kullanarak hizmeti dağıtın.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -191,7 +191,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>Test verileriyle çıkarım
 
-Otomatikleştirilmiş ML modelinden tahmin edilen değeri görmek için bazı test verileriyle çıkarım. Öngörülen değer için uygulanan özellik önem derecesini görüntüleyin.
+Otomatik ML modelinden öngörülen değeri görmek için bazı test verileri ile çıkarım. Öngörülen değer için tasarlanmış özellik önemini görüntüleyin.
 
 ```python
 if service.state == 'Healthy':
@@ -206,12 +206,12 @@ if service.state == 'Healthy':
     print(output['engineered_local_importance_values'])
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Eğitim sırasında veri ve açıklamaları desenlerdeki desenleri keşfetmeyi görselleştirin
+### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Eğitim zamanında verilerdeki ve açıklamalardaki desenleri keşfetmek için görselleştirin
 
-Özellik önem grafiğini [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda görselleştirebilirsiniz. Otomatik ML çalıştırıldıktan sonra, belirli bir çalışmayı görüntülemek için **model ayrıntılarını görüntüle** ' yi seçin. Açıklama görselleştirme panosunu görmek için **açıklamalar** sekmesini seçin.
+[Azure Machine Learning stüdyosunda](https://ml.azure.com)çalışma alanınızda özellik önem grafiğini görselleştirebilirsiniz. Otomatik ML çalıştırmanız tamamlandıktan sonra, belirli bir çalıştırmayı görüntülemek için **model ayrıntılarını görüntüle'yi** seçin. Açıklama görselleştirme panosunu görmek için **Açıklamalar** sekmesini seçin.
 
-[![Machine Learning Yorumlenebilirlik mimarisi](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Makine Öğrenimi Yorumlanabilirlik Mimarisi](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Otomatik makine öğrenimi dışında Azure Machine Learning SDK 'sının alanlarında model açıklamalarını ve özellik önemini nasıl etkinleştirebilirim hakkında daha fazla bilgi için, bkz. [yorumda bulunan kavram makalesi](how-to-machine-learning-interpretability.md).
+Azure Machine Learning SDK'nın otomatik makine öğrenimi dışındaki alanlarında model açıklamalarını ve özellik önemini nasıl etkinleştirebileceğiniz hakkında daha fazla bilgi için [yorumlanabilirlik hakkındaki kavram makalesine](how-to-machine-learning-interpretability.md)bakın.
