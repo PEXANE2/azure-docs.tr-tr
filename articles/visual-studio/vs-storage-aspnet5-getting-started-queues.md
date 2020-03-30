@@ -1,6 +1,6 @@
 ---
-title: Visual Studio kullanarak kuyruk depolamayı kullanmaya başlama (ASP.NET Core)
-description: Visual Studio 'da bir ASP.NET Core projesinde Azure kuyruk depolamayı kullanmaya başlama
+title: Visual Studio (ASP.NET Core) kullanarak sıra depolama ya da sıra depolama ile başlayın
+description: Visual Studio'daki ASP.NET Core projesinde Azure sıra depolamasını kullanmaya nasıl başlarsınız?
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,29 +14,29 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5cdf6f2644788674df91b533c9444fc88ab30b09
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72300033"
 ---
-# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Kuyruk depolama ve Visual Studio bağlı hizmetler 'i kullanmaya başlama (ASP.NET Core)
+# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Sıra depolama ve Visual Studio bağlantılı hizmetler (ASP.NET Core) ile başlayın
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-Bu makalede, Visual Studio **bağlı hizmetler** özelliğini kullanarak bir ASP.NET Core projesinde Azure Storage hesabı oluşturduktan veya başvurduktan sonra Visual Studio 'Da Azure kuyruk depolama hizmetini kullanmaya nasıl başlacağınız açıklanır. **Bağlı hizmetler** işlemi, projenizde Azure depolama 'ya erişmek ve depolama hesabı için bağlantı dizesini proje yapılandırma dosyalarınıza eklemek üzere uygun NuGet paketlerini yükleyerek ekler. (Azure depolama hakkında genel bilgi için bkz. [depolama belgeleri](https://azure.microsoft.com/documentation/services/storage/) .)
+Bu makalede, Visual Studio **Connected Services** özelliğini kullanarak bir ASP.NET Core projesinde bir Azure depolama hesabı oluşturduktan veya başvurulan sonra Visual Studio'da Azure Kuyruk depolama alanını kullanmaya nasıl başlanırsınız. **Bağlı Hizmetler** işlemi, projenizdeki Azure depolama alanına erişmek için uygun NuGet paketlerini yükler ve depolama hesabının bağlantı dizesini proje yapılandırma dosyalarınıza ekler. (Azure Depolama hakkında genel bilgi için [Depolama belgelerine](https://azure.microsoft.com/documentation/services/storage/) bakın.)
 
-Azure kuyruk depolama, HTTP veya HTTPS kullanılarak kimliği doğrulanmış çağrılar aracılığıyla dünyanın her yerinden erişilebilen çok sayıda iletiyi depolamaya yönelik bir hizmettir. Tek bir kuyruk iletisi en fazla 64 kilobayt (KB) olabilir ve bir kuyruk, depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Ayrıca, kuyrukları programlama yoluyla düzenleme hakkındaki ayrıntılar için bkz. [.NET kullanarak Azure kuyruk depolama ile çalışmaya başlama](../storage/queues/storage-dotnet-how-to-use-queues.md) .
+Azure sıra depolama, HTTP veya HTTPS kullanarak kimlik doğrulaması yapılan aramalar aracılığıyla dünyanın her yerinden erişilebilen çok sayıda ileti depolamak için bir hizmettir. Tek bir sıra iletisi 64 kilobayt (KB) boyutuna kadar olabilir ve bir kuyruk, bir depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Ayrıca [bkz.](../storage/queues/storage-dotnet-how-to-use-queues.md)
 
-Başlamak için önce depolama hesabınızda bir Azure kuyruğu oluşturun. Bu makale daha sonra ' de C# bir sıranın nasıl oluşturulacağını ve sıra iletilerini ekleme, değiştirme, okuma ve kaldırma gibi temel sıra işlemlerinin nasıl gerçekleştirileceğini gösterir.  Kod, .NET için Azure Storage Istemci kitaplığı 'nı kullanır. ASP.NET hakkında daha fazla bilgi için bkz. [ASP.net](https://www.asp.net).
+Başlamak için önce depolama hesabınızda bir Azure kuyruğu oluşturun. Bu makalede, C#'da bir sıranın nasıl oluşturulup gerçekleştirilebildiğiniz ve sıra iletilerini ekleme, değiştirme, okuma ve kaldırma gibi temel sıra işlemlerinin nasıl gerçekleştirildirilen gösterilmektedir.  Kod, .NET için Azure Depolama İstemci Kitaplığı'nı kullanır. ASP.NET hakkında daha fazla bilgi için [ASP.NET.](https://www.asp.net)
 
-Bazı Azure depolama API 'Leri zaman uyumsuzdur ve bu makaledeki kodda zaman uyumsuz yöntemlerin kullanıldığı varsayılır. Daha fazla bilgi için bkz. [zaman uyumsuz programlama](https://docs.microsoft.com/dotnet/csharp/async) .
+Azure Depolama API'lerinden bazıları eşzamanlıdır ve bu makaledeki kod, async yöntemlerinin kullanıldığını varsayar. Daha fazla bilgi için [Asynchronous programlamaya](https://docs.microsoft.com/dotnet/csharp/async) bakın.
 
 ## <a name="access-queues-in-code"></a>Koddaki erişim kuyrukları
 
-ASP.NET Core projelerindeki kuyruklara erişmek için, Azure kuyruk depolama 'ya erişen herhangi bir C# kaynak dosyasına aşağıdaki öğeleri ekleyin. İzleyen bölümlerde kodun önünde bu kodun tümünü kullanın.
+ASP.NET Core projelerindeki kuyruklara erişmek için, Azure sıra depolama alanına erişen c# kaynak dosyasına aşağıdaki öğeleri ekleyin. Bu kodun tümünün ardından gelen bölümlerde kodun önünde kullanın.
 
-1. Gerekli `using` deyimlerini ekleyin:
+1. Gerekli `using` ifadeleri ekleyin:
     ```cs
     using Microsoft.Framework.Configuration;
     using Microsoft.WindowsAzure.Storage;
@@ -45,29 +45,29 @@ ASP.NET Core projelerindeki kuyruklara erişmek için, Azure kuyruk depolama 'ya
     using LogLevel = Microsoft.Framework.Logging.LogLevel;
     ```
 
-1. Depolama hesabı bilgilerinizi temsil eden `CloudStorageAccount` nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın:
+1. Depolama `CloudStorageAccount` hesabı bilgilerinizi temsil eden bir nesne alın. Azure hizmet yapılandırmasından depolama bağlantısı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın:
 
     ```cs
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Depolama hesabınızdaki sıra nesnelerine başvurmak için `CloudQueueClient` nesnesi alın:
+1. Depolama `CloudQueueClient` hesabınızdaki sıra nesnelerine başvurmak için bir nesne alın:
 
     ```cs
     // Create the CloudQueueClient object for the storage account.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. Belirli bir kuyruğa başvurmak için `CloudQueue` nesnesi alın:
+1. Belirli `CloudQueue` bir kuyruğa başvurmak için bir nesne alın:
 
     ```cs
     // Get a reference to the CloudQueue named "messagequeue"
     CloudQueue messageQueue = queueClient.GetQueueReference("messagequeue");
     ```
 
-### <a name="create-a-queue-in-code"></a>Kodda kuyruk oluşturma
+### <a name="create-a-queue-in-code"></a>Kodda sıra oluşturma
 
-Kodda Azure kuyruğu oluşturmak için `CreateIfNotExistsAsync` ' ı çağırın:
+Kodda Azure kuyruğuoluşturmak için: `CreateIfNotExistsAsync`
 
 ```cs
 // Create the CloudQueue if it does not exist.
@@ -76,7 +76,7 @@ await messageQueue.CreateIfNotExistsAsync();
 
 ## <a name="add-a-message-to-a-queue"></a>Kuyruğa ileti ekleme
 
-Var olan bir kuyruğa ileti eklemek için yeni bir `CloudQueueMessage` nesnesi oluşturun ve sonra `AddMessageAsync` yöntemini çağırın. Bir `CloudQueueMessage` nesnesi, bir dizeden (UTF-8 biçiminde) veya bir bayt dizisinden oluşturulabilir.
+Varolan bir kuyruğa ileti `CloudQueueMessage` eklemek için yeni `AddMessageAsync` bir nesne oluşturun ve ardından yöntemi çağırın. Bir `CloudQueueMessage` nesne bir dize (UTF-8 biçiminde) veya bayt dizisinden oluşturulabilir.
 
 ```cs
 // Create a message and add it to the queue.
@@ -84,9 +84,9 @@ CloudQueueMessage message = new CloudQueueMessage("Hello, World");
 await messageQueue.AddMessageAsync(message);
 ```
 
-## <a name="read-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi okuyun
+## <a name="read-a-message-in-a-queue"></a>Kuyruktaki iletiyi okuma
 
-@No__t-0 yöntemini çağırarak sıradan kaldırmadan bir kuyruğun önündeki iletiye göz atmayı sağlayabilirsiniz:
+`PeekMessageAsync` Yöntemi çağırarak sıranın önündeki iletiye kuyruktan çıkarmadan göz atabilirsiniz:
 
 ```cs
 // Peek the next message in the queue.
@@ -95,12 +95,12 @@ CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 ## <a name="read-and-remove-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi okuma ve kaldırma
 
-Kodunuz, iki adımda kuyruktan bir iletiyi kaldırabilir (sıradan çıkarabilirsiniz).
+Kodunuz iki adımda bir iletiyi kuyruktan kaldırabilir (sırayı kaldırabilir).
 
-1. Sıradaki bir sonraki iletiyi almak için `GetMessageAsync` çağırın. @No__t-0 ' dan döndürülen bir ileti, bu kuyruktaki diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır.
-1. İletiyi kuyruktan kaldırma işleminin tamamlanabilmesi için `DeleteMessageAsync` ' ı çağırın.
+1. Sıradaki `GetMessageAsync` bir sonraki iletiyi almak için arayın. Döndürülen `GetMessageAsync` ileti, bu kuyruktan gelen diğer kod okuma iletileri için görünmez olur. Varsayılan olarak bu ileti 30 saniye görünmez kalır.
+1. İletiyi kuyruktan kaldırmayı bitirmek `DeleteMessageAsync`için .
 
-Bir iletinin iki adımlı kaldırılma süreci, donanım veya yazılım arızasından dolayı kodunuzun bir iletiyi işleyememesi durumunda kodunuzun başka bir örneğinin aynı iletiyi alıp yeniden denemesini sağlar. Aşağıdaki kod, ileti işlendikten sonra `DeleteMessageAsync` ' i çağırır:
+Bir iletinin iki adımlı kaldırılma süreci, donanım veya yazılım arızasından dolayı kodunuzun bir iletiyi işleyememesi durumunda kodunuzun başka bir örneğinin aynı iletiyi alıp yeniden denemesini sağlar. İleti işlendikten hemen sonra aşağıdaki kod çağrıları: `DeleteMessageAsync`
 
 ```cs
 // Get the next message in the queue.
@@ -112,9 +112,9 @@ CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
 await messageQueue.DeleteMessageAsync(retrievedMessage);
 ```
 
-## <a name="additional-options-for-dequeuing-messages"></a>Dequeuing iletileri için ek seçenekler
+## <a name="additional-options-for-dequeuing-messages"></a>İletileri sıraya alma için ek seçenekler
 
-İleti alımı bir kuyruktan özelleştirmenin iki yolu vardır. İlk olarak toplu iletiler alabilirsiniz (en fazla 32). İkinci olarak daha uzun veya daha kısa bir görünmezlik süresi ayarlayarak kodunuzun her iletiyi tamamen işlemesi için daha az veya daha fazla zaman tanıyabilirsiniz. Aşağıdaki kod örneği, tek bir çağrıda 20 ileti almak için `GetMessages` yöntemini kullanır. Sonra her iletiyi bir `foreach` döngüsü kullanarak işler. Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır. Beş dakikalık zamanlayıcının tüm iletiler için aynı anda başlayacağını unutmayın, bu nedenle, beş dakika geçtikten sonra silinmeyen tüm iletiler yeniden görünür hale gelir.
+Bir kuyruktan ileti alma özelleştirmek için iki yolu vardır. İlk olarak toplu iletiler alabilirsiniz (en fazla 32). İkinci olarak daha uzun veya daha kısa bir görünmezlik süresi ayarlayarak kodunuzun her iletiyi tamamen işlemesi için daha az veya daha fazla zaman tanıyabilirsiniz. Aşağıdaki kod örneği, `GetMessages` tek bir aramada 20 ileti almak için yöntemi kullanır. Daha sonra her iletiyi bir `foreach` döngü kullanarak işler. Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır. Beş dakikalık zamanlayıcının tüm iletiler için aynı anda başladığını, böylece beş dakika geçtikten sonra silinmemiş iletilerin yeniden görünür hale geldiğini unutmayın.
 
 ```cs
 // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
@@ -129,7 +129,7 @@ foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.From
 
 ## <a name="get-the-queue-length"></a>Kuyruk uzunluğu alma
 
-Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz. @No__t-0 yöntemi kuyruk hizmetini ileti sayısı dahil olmak üzere sıra özniteliklerini almayı ister. @No__t-0 özelliği, kuyruk hizmeti çağrılmadan `FetchAttributes` yönteminin aldığı son değeri döndürür.
+Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz. Yöntem, `FetchAttributes` ileti sayısı da dahil olmak üzere sıra özniteliklerini almak için sıra hizmeti sorar. Özellik, `ApproximateMethodCount` sıra hizmetini çağırmadan `FetchAttributes` yöntem tarafından alınan son değeri döndürür.
 
 ```cs
 // Fetch the queue attributes.
@@ -142,9 +142,9 @@ int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
-## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Ortak kuyruk API 'Leri ile Async-Await modelini kullanın
+## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Ortak sıra API'leri ile Async-Await deseni kullanma
 
-Bu örnek, `Async` ile biten ortak kuyruk API 'Leri ile Async-Await modelinin nasıl kullanılacağını gösterir. Zaman uyumsuz bir yöntem kullanıldığında, Async-Await model, çağrı tamamlanana kadar yerel yürütmeyi askıya alır. Bu davranış, geçerli iş parçacığının performans sorunlarını önlemeye yardımcı olan diğer işleri yapmasına izin verir ve uygulamanızın genel yanıt hızını artırır.
+Bu örnek, 'ile biten ortak sıra API'leri `Async`ile async-await deseni nasıl kullanılacağını gösterir. Bir async yöntemi kullanıldığında, async-await deseni arama tamamlanana kadar yerel yürütmeyi askıya atanır. Bu davranış, geçerli iş parçacığının performans darboğazlarını önlemeye yardımcı olan ve uygulamanızın genel yanıt verme yeteneğini artıran başka işler yapmasına olanak tanır.
 
 ```cs
 // Create a message to add to the queue.
@@ -165,7 +165,7 @@ Console.WriteLine("Deleted message");
 
 ## <a name="delete-a-queue"></a>Bir kuyruk silme
 
-Bir kuyruğu ve içerdiği tüm iletileri silmek için, kuyruk nesnesi üzerinde `Delete` yöntemini çağırın:
+Bir kuyruğve içinde bulunan tüm iletileri silmek için, sıra nesnesindeki `Delete` yöntemi arayın:
 
 ```cs
 // Delete the queue.

@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makine PowerShell örnekleri
-description: Azure sanal makine PowerShell örnekleri
+title: Azure Sanal Makine PowerShell Örnekleri
+description: Azure Sanal Makine PowerShell Örnekleri
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,34 +15,34 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.openlocfilehash: 903860dfd1e30f7941770efd759227a1349d41ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035243"
 ---
-# <a name="azure-virtual-machine-powershell-samples"></a>Azure sanal makine PowerShell örnekleri
+# <a name="azure-virtual-machine-powershell-samples"></a>Azure Virtual Machine PowerShell örnekleri
 
-Aşağıdaki tabloda, Linux sanal makineleri oluşturup yöneten PowerShell betikleri örneklerinin bağlantıları yer almaktadır.
+Aşağıdaki tablo, Linux sanal makineleri oluşturan ve yöneten PowerShell komut dosyası örneklerine bağlantılar içerir.
 
 | | |
 |---|---|
-|**Sanal makineler oluşturma**||
-| [Tam olarak yapılandırılmış bir sanal makine oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir kaynak grubu, sanal makine ve tüm ilgili kaynakları oluşturur.|
-| [Docker etkin bir VM oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir sanal makine oluşturur, bu VM 'yi bir Docker Konağı olarak yapılandırır ve NGıNX kapsayıcısını çalıştırır. |
-| [VM oluşturma ve yapılandırma betiği çalıştırma](./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir sanal makine oluşturur ve NGıNX yüklemek için Azure Özel Betik uzantısı 'nı kullanır. |
-| [WordPress yüklü bir VM oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir sanal makine oluşturur ve WordPress 'yi yüklemek için Azure Özel Betik uzantısı 'nı kullanır. |
-| [Yönetilen işletim sistemi diskinden VM oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Mevcut bir yönetilen diski işletim sistemi diski olarak ekleyerek bir sanal makine oluşturur. |
-| [Anlık görüntüden VM oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Önce anlık görüntüden yönetilen bir disk oluşturup sonra yeni yönetilen diski işletim sistemi diski olarak ekleyerek bir anlık görüntüden sanal makine oluşturur. |
-|**Depolamayı yönetme**||
-| [Aynı veya farklı bir abonelikte bulunan bir VHD 'den yönetilen disk oluşturma](../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Özelleştirilmiş bir VHD 'den işletim sistemi diski olarak veya bir veri VHD 'sinden, aynı veya farklı bir abonelikte bir veri diski olarak yönetilen bir disk oluşturur.  |
-| [Anlık görüntüden yönetilen disk oluşturma](../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir anlık görüntüden yönetilen disk oluşturur. |
-| [Bir anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Yönetilen bir anlık görüntüyü, farklı bir bölgedeki depolama hesabına VHD olarak dışa aktarır. |
-| [Yönetilen bir diskin VHD 'sini bir depolama hesabına dışarı aktarma](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Yönetilen bir diskin temel VHD 'sini farklı bir bölgedeki depolama hesabına dışarı aktarır. |
-| [Bir VHD 'den anlık görüntü oluşturma](../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir VHD 'den anlık görüntü oluşturur ve daha sonra bu anlık görüntüyü kullanarak birden fazla özdeş yönetilen disk oluşturur.  |
-| [Bir anlık görüntüyü aynı veya farklı bir aboneliğe kopyalama](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Anlık görüntüyü, üst anlık görüntüyle aynı bölgedeki aynı veya farklı bir aboneliğe kopyalar. |
+|**Sanal makineler oluşturun**||
+| [Tam olarak yapılandırılmış bir sanal makine oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir kaynak grubu, sanal makine ve ilgili tüm kaynaklar oluşturur.|
+| [Docker etkinken bir VM oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Sanal bir makine oluşturur, bu VM'yi Docker ana bilgisayar olarak yapılandırır ve bir NGINX kapsayıcısı çalıştırır. |
+| [VM oluşturma ve yapılandırma komut dosyası çalıştırma](./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Sanal bir makine oluşturur ve NGINX'i yüklemek için Azure Özel Komut Dosyası uzantısını kullanır. |
+| [WordPress yüklü bir VM oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Sanal bir makine oluşturur ve WordPress'i yüklemek için Azure Özel Komut Dosyası uzantısını kullanır. |
+| [Yönetilen bir işletim sistemi diskinden VM oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Varolan yönetilen bir diski işletim sistemi diski olarak ekleyerek sanal bir makine oluşturur. |
+| [Anlık görüntüden VM oluşturma](./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Anlık görüntüden önce anlık görüntüden yönetilen bir disk oluşturup ardından yeni yönetilen diski işletim sistemi diski olarak ekleyerek sanal bir makine oluşturur. |
+|**Depolamayı yönetin**||
+| [Aynı veya farklı bir abonelikte bir VHD'den yönetilen bir disk oluşturma](../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | İşletim sistemi diski olarak özel leştirilmiş bir VHD'den veya veri diski olarak veri VHD'sinden aynı veya farklı bir abonelikte yönetilen bir disk oluşturur.  |
+| [Anlık görüntüden yönetilen disk oluşturma](../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Anlık görüntüden yönetilen bir disk oluşturur. |
+| [Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Yönetilen anlık görüntü'ü VHD olarak farklı bir bölgedeki depolama hesabına dışa aktarım. |
+| [Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Yönetilen bir diskin temel VHD'sini farklı bir bölgedeki depolama hesabına dışa aktarım. |
+| [VHD’den anlık görüntü oluşturma](../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir VHD'den anlık görüntü oluşturur ve ardından bu anlık görüntüden birden çok özdeş yönetilen diski hızla oluşturmak için kullanır.  |
+| [Anlık görüntünün aynı veya farklı bir aboneye kopyalanması](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Anlık görüntü, üst anlık görüntüyle aynı bölgede bulunan aynı veya farklı bir aboneliği kopyalar. |
 |**Sanal makineleri izleme**||
-| [Azure Izleyici günlükleri ile VM izleme](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bir sanal makine oluşturur, Log Analytics aracısını yükleyip VM 'yi bir Log Analytics çalışma alanına kaydeder.  |
-| [Yönetilen bir diski aynı veya farklı bir aboneliğe kopyalama](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Yönetilen bir diski, ana yönetilen diskle aynı bölgedeki aynı veya farklı bir aboneliğe kopyalar.
-| [PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Belirtilen abonelikte VM adı, kaynak grubu adı, bölge, sanal ağ, alt ağ, özel IP adresi, işletim sistemi türü ve VM 'lerin genel IP adresini içeren bir CSV oluşturur.
+| [Azure Monitör günlükleriyle bir VM izleme](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Sanal bir makine oluşturur, Log Analytics aracısını yükler ve VM'yi log analytics çalışma alanına kaydeder.  |
+| [Yönetilen bir diski aynı veya farklı bir aboneye kopyalama](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Yönetilen bir diski, üst yönetilen diskle aynı bölgede bulunan aynı veya farklı bir abonelik için kopyalar.
+| [PowerShell ile abonelikteki tüm VM'ler hakkında bilgi toplama](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Sağlanan abonelikte VM Adı, Kaynak Grubu Adı, Bölge, Sanal Ağ, AltAğ, Özel IP Adresi, İşletim Sistemi Türü ve Genel IP Adresi içeren bir csv oluşturur.
 | | |

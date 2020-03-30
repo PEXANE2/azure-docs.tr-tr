@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files için performans kıyaslama test sonuçları | Microsoft Docs
-description: Birim düzeyindeki Azure NetApp Files için performans kıyaslama testlerinin sonuçlarını açıklar.
+title: Azure NetApp Dosyaları için performans karşılaştırma sıyrık test sonuçları | Microsoft Dokümanlar
+description: Azure NetApp Files için ses düzeyinde performans ölçüt testlerinin sonuçlarını açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,81 +15,81 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
 ms.openlocfilehash: 1d6b43110046f26d8c8070b19587366588eee7b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68881750"
 ---
-# <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>Azure NetApp Files için performans kıyaslama test sonuçları
+# <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>Azure NetApp Files için performans kıyaslamaları test sonuçları
 
-Bu makalede, birim düzeyindeki Azure NetApp Files yönelik performans kıyaslama testlerinin sonuçları açıklanmaktadır. 
+Bu makalede, Ses düzeyinde Azure NetApp Dosyaları için performans ölçüt testlerinin sonuçları açıklanmaktadır. 
 
 ## <a name="sample-application-used-for-the-tests"></a>Testler için kullanılan örnek uygulama
 
-Performans testleri Azure NetApp Files kullanarak örnek bir uygulamayla çalıştırıldı. Uygulama aşağıdaki özelliklere sahiptir: 
+Performans testleri Azure NetApp Dosyaları kullanılarak örnek bir uygulama ile çalıştırıldı. Uygulama aşağıdaki özelliklere sahiptir: 
 
 * Bulut için oluşturulmuş Linux tabanlı bir uygulama
-* Gerektiğinde işlem gücünü artırmak için eklenen sanal makineler (VM) ile doğrusal şekilde ölçeklendirebilir
-* Data Lake için hızlı erişilebilirliği gerektirir
-* Bazen rastgele ve bazen sıralı olan g/ç desenleri vardır 
-    * Rastgele bir model, büyük miktarlarda g/ç için düşük gecikme süresi gerektirir. 
-    * Sıralı bir model, büyük miktarda bant genişliği gerektirir. 
+* Gerektiğinde bilgi işlem gücünü artırmak için eklenen sanal makinelerle (VM) doğrusal ölçeklendirilebilir
+* Veri gölünün hızlı erişilebilirliğini gerektirir
+* Bazen rasgele ve bazen sıralı G/Ç desenleri var 
+    * Rasgele bir desen, büyük miktarda G/Ç için düşük gecikme süresi gerektirir. 
+    * Sıralı desen büyük miktarda bant genişliği gerektirir. 
 
-## <a name="about-the-workload-generator"></a>İş yükü Oluşturucu hakkında
+## <a name="about-the-workload-generator"></a>İş yükü jeneratörü hakkında
 
-Sonuçlar Vdbench Özet dosyalarından gelir. [Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html) , depolama performansını doğrulamak için disk g/ç iş yükleri üreten bir komut satırı yardımcı programıdır. Kullanılan istemci-sunucu yapılandırması ölçeklenebilir.  Tek bir karışık ana/istemci ve 14 adanmış istemci VM 'Leri içerir.
+Sonuçlar Vdbench özet dosyalarından gelir. [Vdbench,](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html) depolama performansını doğrulamak için disk G/Ç iş yüklerini oluşturan bir komut satırı yardımcı programıdır. Kullanılan istemci-sunucu yapılandırması ölçeklenebilir.  Tek bir karma ana/istemci ve 14 özel istemci VM içerir.
 
 ## <a name="about-the-tests"></a>Testler hakkında
 
-Testler, örnek uygulamanın sahip olabileceği limitleri ve sınırlara kadar eğen olan yanıt süresini tanımlamak için tasarlanmıştır.  
+Testler, örnek uygulamanın sahip olabileceği sınırları ve sınırlara kadar kıvrılan yanıt süresini belirlemek üzere tasarlanmıştır.  
 
 Aşağıdaki testler çalıştırıldı: 
 
-* 100% 8-KiB rastgele okuma
+* 100% 8-KiB rasgele okuyun
 * 100% 8-KiB rastgele yazma
 * 100% 64-KiB sıralı okuma
-* 100% 64-KiB sıralı yazma
-* 50% 64-KiB sıralı okuma, 50% 64-KiB sıralı yazma
-* 50% 8-KiB rastgele okuma, 50% 8-KiB rastgele yazma
+* %100 64-KiB sıralı yazma
+* %50 64-KiB sıralı okuma, %50 64-KiB sıralı yazma
+* %50 8-KiB rasgele okuma, %50 8-KiB rastgele yazma
 
 ## <a name="bandwidth"></a>Bant genişliği
 
-Azure NetApp Files birden çok [hizmet düzeyi](azure-netapp-files-service-levels.md)sunar. Her hizmet düzeyi, TiB tarafından sağlanan kapasite (birim kotası) başına farklı miktarda bant genişliği sunar. Bir birim için bant genişliği sınırı, hizmet düzeyi ve birim kotasının birleşimine göre sağlanır. Bant genişliği sınırı, gerçekleşen gerçek aktarım hızı miktarını belirlemede yalnızca bir faktördür.  
+Azure NetApp Files birden çok [hizmet düzeyi](azure-netapp-files-service-levels.md)sunar. Her hizmet düzeyi, verilen kapasitenin TiB'si başına farklı bir bant genişliği (hacim kotası) sunar. Bir birim için bant genişliği sınırı, hizmet düzeyi ve birim kotasının birleşimine göre sağlanır. Bant genişliği sınırı, gerçek iş miktarının gerçekleştirileceğini belirlemede yalnızca bir faktördür.  
 
-Şu anda, test edilen tek bir birimde bir iş yükü tarafından gerçekleştirilen en yüksek aktarım hızı 4.500 MIB 'dir.  Premium hizmet düzeyiyle, 70,31 TiB 'nin bir birim kotası, bu aktarım hızını aşağıdaki hesaplama uyarınca sağlamak için yeterli bant genişliği sağlayacaktır: 
+Şu anda, 4.500 MiB test tek bir ses karşı bir iş yükü tarafından elde edilen en yüksek iş hacmidir.  Premium hizmet düzeyi ile, 70,31 TiB'lik bir hacim kotası, aşağıdaki hesaplama başına bu iş hacmini gerçekleştirmek için yeterli bant genişliği sağlayacaktır: 
 
 ![Bant genişliği formülü](../media/azure-netapp-files/azure-netapp-files-bandwidth-formula.png)
 
 ![Kota ve hizmet düzeyi](../media/azure-netapp-files/azure-netapp-files-quota-service-level.png)
 
-## <a name="throughput-intensive-workloads"></a>Verimlilik yoğun iş yükleri
+## <a name="throughput-intensive-workloads"></a>İş yükü yoğun
 
-Vdbench kullanılan işleme testi ve 12xD32s v3 depolama VM 'lerinin bir birleşimi. Testteki örnek birim aşağıdaki işleme numaralarına ulaşıldı:
+İş testinde Vdbench ve 12xD32s V3 depolama VM'lerinin bir kombinasyonu kullanılmıştır. Testteki örnek hacmi aşağıdaki iş hacmi sayılarını elde etti:
 
-![Aktarım hızı testi](../media/azure-netapp-files/azure-netapp-files-throughput-test.png)
+![Elde testi](../media/azure-netapp-files/azure-netapp-files-throughput-test.png)
 
-## <a name="io-intensive-workloads"></a>G/ç yoğun iş yükleri
+## <a name="io-intensive-workloads"></a>Yoğun gİzme iş yükleri
 
-Vdbench kullanılan g/ç testi ve 12xD32s v3 depolama VM 'lerinin bir birleşimi. Testteki örnek birim şu g/ç numaralarına ulaşıldı:
+G/Ç testinde Vdbench ve 12xD32s V3 depolama VM'lerinin bir kombinasyonu kullanılmıştır. Testteki örnek hacmi aşağıdaki G/Ç sayılarını elde etti:
 
-![G/ç testi](../media/azure-netapp-files/azure-netapp-files-io-test.png)
+![G/Ç testi](../media/azure-netapp-files/azure-netapp-files-io-test.png)
 
 ## <a name="latency"></a>Gecikme süresi
 
-Test VM 'Leri ve Azure NetApp Files birimi arasındaki mesafe, g/ç performansını etkiler.  Aşağıdaki grafik iki farklı VM kümesi için ıOPS ile gecikme süresi yanıt eğrilerini karşılaştırır.  Bir sanal makine kümesi Azure NetApp Files yakındır ve diğer küme daha fazla dışarıda olur.  Daha fazla VM kümesi için artan gecikme süresi, belirli bir paralellik düzeyinde elde edilen ıOPS miktarı üzerinde bir etkiye sahiptir.  Ne olursa olsun, bir birime yönelik okumalar aşağıda gösterildiği gibi 300.000 ıOPS 'yi aşabilirler: 
+Test VM'leri ile Azure NetApp Dosyaları hacmi arasındaki mesafe, G/Ç performansı üzerinde etkili dir.  Aşağıdaki grafik, iki farklı VM kümesi için IOPS ile gecikme yanıt eğrilerini karşılaştırır.  Bir VM kümesi Azure NetApp Dosyaları'nın yakınında, diğeri ise daha uzaktadır.  VM'lerin daha fazla kümesi için artan gecikme, belirli bir paralellik düzeyinde elde edilen IOPS miktarı üzerinde bir etkiye sahiptir.  Ne olursa olsun, bir ses ekarşı okur aşağıda gösterildiği gibi 300.000 IOPS aşabilir: 
 
-![Gecikme süresi](../media/azure-netapp-files/azure-netapp-files-latency-study.png)
+![Gecikme çalışması](../media/azure-netapp-files/azure-netapp-files-latency-study.png)
 
 ## <a name="summary"></a>Özet
 
-Gecikme süresine duyarlı iş yükleri (veritabanları) tek milisaniyelik yanıt süresine sahip olabilir. İşlem performansı, tek bir birim için 300k ıOPS üzerinde olabilir.
+Gecikmeye duyarlı iş yükleri (veritabanları) bir milisaniyelik yanıt süresine sahip olabilir. İşlem performansı tek bir birim için 300k IOPS üzerinde olabilir.
 
-Aktarım hızı duyarlı uygulamalar (akış ve görüntüleme için), 4.5 GiB/sn aktarım hızına sahip olabilir.
+İşme ile ilgili uygulamalar (akış ve görüntüleme için) 4.5GiB/s iş lenebilir.
 
-## <a name="example-scripts"></a>Örnek betikler
+## <a name="example-scripts"></a>Örnek komut dosyaları
 
-Aşağıdaki örnek betikler yalnızca tanıtım amaçlı amaçlıdır.  Bunlar, üretim amacıyla kullanılmamalıdır.  
+Aşağıdaki örnek komut dosyaları yalnızca gösteri amaçlıdır.  Bunlar üretim amaçlı kullanılmamalıdır.  
 
     #
     #This script makes the following assumptions about the environment

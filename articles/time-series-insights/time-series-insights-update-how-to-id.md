@@ -1,6 +1,6 @@
 ---
-title: Zaman serisi KIMLIĞI seçmek için en iyi uygulamalar-Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights önizlemede zaman serisi KIMLIĞI seçerken en iyi yöntemler hakkında bilgi edinin.
+title: Zaman Serisi Kimliği seçmek için en iyi uygulamalar - Azure Time Series Insights | Microsoft Dokümanlar
+description: Azure Zaman Serisi Öngörüleri Önizlemesinde Zaman Serisi Kimliği seçerken en iyi uygulamalar hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083535"
 ---
-# <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman serisi kimliği seçmeye yönelik en iyi uygulamalar
+# <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman Serisi kimliği seçmek için en iyi uygulamalar
 
-Bu makale, Azure Time Series Insights önizleme ortamınız için zaman serisi KIMLIĞININ önemini ve bir tane seçmek için en iyi yöntemleri özetler.
+Bu makalede, Azure Zaman Serisi Öngörüler Önizleme ortamınız için Zaman Serisi Kimliğinin önemi ve birini seçmek için en iyi uygulamalar özetlenmiştir.
 
 ## <a name="choose-a-time-series-id"></a>Zaman Serisi Kimliği
 
-Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Zaman serisi kimliği seçerek bir veritabanı için bir bölüm anahtarı seçme gibi olur. Time Series Insights bir önizleme ortamı oluşturduğunuzda bu gereklidir. 
+Uygun bir Time Series kimliği seçmek çok önemlidir. Zaman Serisi Kimliği seçmek, veritabanı için bir bölüm anahtarı seçmeye benzer. Bir Zaman Serisi Öngörüönizleme ortamı oluşturduğunuzda gereklidir. 
 
 > [!IMPORTANT]
-> Zaman serisi kimlikleri şunlardır:
-> * *Büyük/küçük harfe duyarlı* bir özellik: harf ve karakter casler, aramalarda, karşılaştırmalar, güncelleştirmelerde ve bölümleme sırasında kullanılır.
-> * *Sabit* bir özellik: oluşturulduktan sonra değiştirilemez.
+> Zaman Serisi D'leri şunlardır:
+> * *Büyük/küçük harf duyarlı* bir özellik: harf ve karakter kovanları aramalarda, karşılaştırmalarda, güncelleştirmelerde ve bölümleme de kullanılır.
+> * *Değişmez* bir özellik: oluşturulduktan sonra değiştirilemez.
 
 > [!TIP]
-> Olay kaynağınız bir IoT Hub ise, zaman serisi KIMLIĞINIZ büyük olasılıkla ***ıothub-Connection-Device-ID***olacaktır.
+> Olay kaynağınız bir IoT hub'ıysa, Zaman Serisi kimliğiniz büyük olasılıkla ***iothub-connection-device-id***olacaktır.
 
-İzlenecek en iyi anahtar uygulamalar şunlardır:
+İzlenen en iyi uygulamalar şunlardır:
 
-* Birçok farklı değere sahip bir bölüm anahtarı seçin (örneğin, yüzlerce veya binlerce). Çoğu durumda bu, JSON 'unuzdaki cihaz KIMLIĞI, algılayıcı KIMLIĞI veya etiket KIMLIĞI olabilir.
-* Zaman serisi KIMLIĞI, [zaman serisi modelinizin](./time-series-insights-update-tsm.md)yaprak düğüm düzeyinde benzersiz olmalıdır.
-* Zaman serisi KIMLIĞININ Özellik adı dizesinin karakter sınırı 128 ' dir. Zaman serisi KIMLIĞININ Özellik değeri için, karakter sınırı 1.024 ' dir.
-* Zaman serisi KIMLIĞI için benzersiz bir özellik değeri eksikse, null değer olarak değerlendirilir ve Benzersizlik kısıtlamasının aynı kuralına uyar.
-* Zaman serisi KIMLIĞINIZ olarak en fazla *üç* anahtar özelliği de seçebilirsiniz. Kombinasyonu, zaman serisi KIMLIĞINI temsil eden bir bileşik anahtar olacaktır.  
+* Birçok farklı değere (örneğin, yüzlerce veya binlerce) sahip bir bölüm anahtarı seçin. Çoğu durumda, bu JSON cihazınızın kimliği, sensör kimliği veya etiket kimliği olabilir.
+* Zaman Serisi [Kimliği, Zaman Serisi Modelinizin](./time-series-insights-update-tsm.md)yaprak düğümü düzeyinde benzersiz olmalıdır.
+* Time Series ID'nin özellik adı dizesi için karakter sınırı 128'dir. Zaman Serisi Kimliği'nin özellik değeri için karakter sınırı 1.024'dür.
+* Zaman Serisi Kimliği için benzersiz bir özellik değeri eksikse, null değer olarak kabul edilir ve benzersizlik kısıtlamasının aynı kuralını izler.
+* Ayrıca, Zaman Serisi Kimliğiniz olarak en fazla *üç* önemli özellik seçebilirsiniz. Bunların birleşimi Zaman Serisi Kimliğini temsil eden bileşik bir anahtar olacaktır.  
   > [!NOTE]
-  > Üç anahtar özelliği dize olmalıdır.
-  > Tek seferde bir özellik yerine bu bileşik anahtarla sorgu yapmanız gerekir.
+  > Üç temel özelliğiniz dizeleri olmalıdır.
+  > Aynı anda bir özellik yerine bu bileşik anahtara karşı sorgulamanız gerekir.
 
 ## <a name="select-more-than-one-key-property"></a>Birden fazla anahtar özelliği seçin
 
-Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar özelliği seçmeyi anlatmaktadır.  
+Aşağıdaki senaryolarda, Zaman Serisi Kimliğiniz olarak birden fazla anahtar özelliği nseçimi açıklayınız.  
 
-### <a name="example-1-time-series-id-with-a-unique-key"></a>Örnek 1: benzersiz bir anahtarla zaman serisi KIMLIĞI
+### <a name="example-1-time-series-id-with-a-unique-key"></a>Örnek 1: Benzersiz bir anahtara sahip Zaman Serisi Kimliği
 
-* Varlıkların eski varlıkları var. Her birinin benzersiz bir anahtarı vardır.
-* Bir filo özelliği **DeviceID**tarafından benzersiz şekilde tanımlanır. Başka bir Fleet için, Unique özelliği **ObjectID**' dir. Ne filo, diğer filo 'in benzersiz özelliğini içermez. Bu örnekte, benzersiz anahtarlar olarak iki anahtar, **DeviceID** ve **ObjectID**seçersiniz.
-* Null değerleri kabul ediyoruz ve bir özelliğin olay yükünde varlık olmaması, null değer olarak sayılır. Bu aynı zamanda, her olay kaynağındaki verilerin benzersiz bir zaman serisi KIMLIĞI olduğu iki olay kaynağına veri göndermeyi işlemenin uygun yoludur.
+* Eski mal filolarınız var. Her birinin benzersiz bir anahtarı vardır.
+* Bir filo benzersiz özellik **deviceId**tarafından tanımlanır. Başka bir filo için, benzersiz özellik **objectId**olduğunu. İki filo da diğer filonun eşsiz özelliğini içermez. Bu örnekte, benzersiz anahtarlar olarak **deviceId** ve **objectId**olmak üzere iki anahtar seçersiniz.
+* Null değerlerini kabul ediyoruz ve bir mülkün olay yükündeki varlığının olmaması null bir değer olarak sayılır. Bu, her olay kaynağındaki verilerin benzersiz bir Zaman Serisi kimliğine sahip olduğu iki olay kaynağına veri gönderme işlemlerini işlemenin de uygun yoludur.
 
-### <a name="example-2-time-series-id-with-a-composite-key"></a>Örnek 2: bileşik bir anahtarla zaman serisi KIMLIĞI
+### <a name="example-2-time-series-id-with-a-composite-key"></a>Örnek 2: Bileşik anahtarlı Zaman Serisi Kimliği
 
-* Birden çok özellik varlıklar aynı filosundan içinde benzersiz olması gerekir. 
-* Her odada akıllı binalar ve sensörler dağıtımı sunuyoruz. Her odada, genellikle **Sensorıd**için aynı değerlere sahip olursunuz. Örnekler şunlardır **sensor1**, **Sensor2**ve **SENSOR3**.
-* Binasında, **Flrrm**özelliğindeki sitelerde zemin ve oda numaraları çakışıyor. Bu sayıların **1a**, **2B**ve **3A**gibi değerleri vardır.
-* **Redmond**, **Barselona**ve **Tokyo**gibi değerleri içeren bir özellik, **konum**vardır. Benzersizlik oluşturmak için aşağıdaki üç özelliği zaman serisi KIMLIK anahtarlarınız olarak belirlersiniz: **Sensorıd**, **flrrm**ve **Location**.
+* Aynı varlık filosu içinde benzersiz olması için birden çok özelliğin olmasını gerektirirsiniz. 
+* Akıllı binalar üreticisisiniz ve her odaya sensör yerleştirin. Her odada, genellikle **sensorId**için aynı değerlere sahip. Örnekler **sensor1**, **sensor2**, ve **sensor3**.
+* Binanız mülkiyet **flrRm**siteler arasında örtüşen zemin ve oda numaraları vardır. Bu sayıların **1a,** **2b**ve **3a**gibi değerleri var.
+* **Redmond,** **Barselona**ve **Tokyo**gibi değerleri içeren bir özellik, **yer,** var. Benzersizlik oluşturmak için, aşağıdaki üç özelliği Time Series ID tuşlarınız olarak belirlersiniz: **sensorId**, **flrRm**, ve **konum.**
 
-Örnek Ham olay:
+Örnek ham olay:
 
 ```JSON
 {
@@ -72,7 +72,7 @@ Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar ö
 }
 ```
 
-Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz: 
+Azure portalında bileşik anahtarı aşağıdaki gibi girebilirsiniz: 
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
@@ -82,4 +82,4 @@ Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz:
 
 * [Veri modelleme](./time-series-insights-update-tsm.md)hakkında daha fazla bilgi edinin.
 
-* [Azure Time Series Insights Preview ortamınızı](./time-series-insights-update-plan.md)planlayın.
+* Azure [Zaman Serisi Öngörüleri Önizleme ortamınızı](./time-series-insights-update-plan.md)planlayın.

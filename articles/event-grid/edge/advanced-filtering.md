@@ -1,6 +1,6 @@
 ---
-title: Gelişmiş filtreleme-Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge Event Grid Gelişmiş filtreleme.
+title: Gelişmiş filtreleme - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
+description: IoT Edge'deki Event Grid'de gelişmiş filtreleme.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72992567"
 ---
 # <a name="advanced-filtering"></a>Gelişmiş filtreleme
-Event Grid, JSON yükünde herhangi bir özellikte filtre belirtilmesine izin verir. Bu filtreler `AND` koşulları kümesi olarak modellenir ve her bir dış koşul isteğe bağlı iç `OR` koşullara sahiptir. Her `AND` koşulu için aşağıdaki değerleri belirtirsiniz:
+Olay Grid json yükü herhangi bir özellik üzerinde filtreler belirtme sağlar. Bu filtreler, her dış `AND` koşulun isteğe bağlı iç `OR` koşullara sahip olduğu koşullar kümesi olarak modellenir. Her `AND` koşul için aşağıdaki değerleri belirtirsiniz:
 
-* `OperatorType`-karşılaştırma türü.
-* `Key`-filtrenin uygulanacağı özelliğin JSON yolu.
-* `Value`-filtrenin çalıştırıldığı başvuru değeri (veya) `Values`-filtrenin çalıştırıldığı başvuru değerleri kümesi.
+* `OperatorType`- Karşılaştırma türü.
+* `Key`- Filtreyi uygulayacağınız özelliğe json yolu.
+* `Value`- Filtrenin çalıştırıldığı başvuru değeri (veya) `Values` - Filtrenin çalıştırıldığı referans değerleri kümesi.
 
 ## <a name="json-syntax"></a>JSON sözdizimi
 
-Gelişmiş bir filtrenin JSON sözdizimi aşağıdaki gibidir:
+Gelişmiş bir filtre için JSON sözdizimi aşağıdaki gibidir:
 
 ```json
 {
@@ -44,57 +44,57 @@ Gelişmiş bir filtrenin JSON sözdizimi aşağıdaki gibidir:
 }
 ```
 
-## <a name="filtering-on-array-values"></a>Dizi değerlerinde filtreleme
+## <a name="filtering-on-array-values"></a>Dizi değerlerine filtreleme
 
-Event Grid, bugün bir değer dizisinde filtrelemeyi desteklemez. Gelen bir olayda gelişmiş filtre anahtarı için bir dizi değeri varsa, eşleşen işlem başarısız olur. Gelen olay, olay aboneliğiyle eşleşmeyen bir şekilde sona erer.
+Olay Grid bugün bir dizi değerüzerinde filtreleme desteklemez. Gelen bir olay gelişmiş filtre anahtarı için bir dizi değeri varsa, eşleşen işlem başarısız olur. Gelen olay, olay aboneliğiyle eşleşmez.
 
-## <a name="and-or-not-semantics"></a>AND-OR-semantiğini
+## <a name="and-or-not-semantics"></a>VE-OR-DEĞİL semantik
 
-Daha önce verilen JSON örneğinde bir dizi `AdvancedFilters` olduğunu fark edin. Her `AdvancedFilter` dizi öğesini bir `AND` koşulu olarak düşünün.
+Daha önce verilen json örneğinde bir `AdvancedFilters` dizi olduğuna dikkat edin. Her `AdvancedFilter` dizi öğesini `AND` bir koşul olarak düşünün.
 
-Birden çok değeri destekleyen işleçler (`NumberIn`, `NumberNotIn`, `StringIn`, vb.) için, her bir değer bir `OR` koşulu olarak kabul edilir. Bu nedenle, `StringBeginsWith("a", "b", "c")` `a` veya `b` ya da `c`ile başlayan herhangi bir dize değeriyle eşleşir.
+Birden çok değeri (, , `NumberIn` `NumberNotIn`, `StringIn`vb.) destekleyen işleçler `OR` için, her değer bir koşul olarak kabul edilir. Yani, `StringBeginsWith("a", "b", "c")` bir ya `a` da ya `b` `c`da ile başlayan herhangi bir dize değeri eşleşecektir.
 
 > [!CAUTION]
-> NOT işleci-`NumberNotIn` ve `StringNotIn`, `Values` alanında verilen her bir değer için ve koşulları gibi davranır.
+> NOT operatörleri `NumberNotIn` - `StringNotIn` ve `Values` sahada verilen her değer üzerinde AND koşulları olarak şekilde.
 >
-> Bunu yapmamaları, filtrenin bir kabul etme filtresi olmasını ve filtreleme amacını ertelemesini ister.
+> Bunu yapmamak filtreyi Tümlerini Kabul Et filtresi yapar ve filtreleme amacını yenecektir.
 
 ## <a name="floating-point-rounding-behavior"></a>Kayan nokta yuvarlama davranışı
 
-Event Grid, tüm sayısal değerleri işlemek için `decimal` .NET türünü kullanır. Olay aboneliği JSON öğesinde belirtilen sayı değerleri kayan nokta yuvarlama davranışına tabi değil.
+Olay Grid `decimal` tüm sayısal değerleri işlemek için .NET türünü kullanır. JSON aboneliğinde belirtilen sayı değerleri kayan nokta yuvarlama davranışına tabi değildir.
 
 ## <a name="case-sensitivity-of-string-filters"></a>Dize filtrelerinin büyük/küçük harf duyarlılığı
 
-Tüm dize karşılaştırmaları büyük/küçük harfe duyarlıdır. Bu davranışı bugün değiştiremenin bir yolu yoktur.
+Tüm dize karşılaştırmaları büyük/küçük harf duyarsızdır. Bugün bu davranışı değiştirmenin bir yolu yok.
 
-## <a name="allowed-advanced-filter-keys"></a>İzin verilen gelişmiş filtre anahtarları
+## <a name="allowed-advanced-filter-keys"></a>İzin verilen gelişmiş filtre tuşları
 
-`Key` özelliği iyi bilinen bir en üst düzey özellik olabilir veya birden çok noktalı bir JSON yolu olabilir, burada her nokta iç içe geçmiş bir JSON nesnesine adımlamayı belirtir.
+Özellik `Key` ya iyi bilinen bir üst düzey özellik olabilir veya her nokta iç içe json nesnesine adım anlamına gelen birden çok nokta ile bir json yolu olabilir.
 
-Event Grid, JSONPath belirtiminin aksine, anahtardaki `$` karakteri için özel bir anlamı yoktur.
+Olay Izgara'nın JSONPath `$` belirtiminin aksine, Anahtar'daki karakter için özel bir anlamı yoktur.
 
-### <a name="event-grid-schema"></a>Olay Kılavuzu şeması
+### <a name="event-grid-schema"></a>Olay ızgara şeması
 
-Event Grid şemasındaki olaylar için:
+Olay Izgara şemasındaki olaylar için:
 
 * Kimlik
-* Konu
+* Konu başlığı
 * Özne
-* Türü
-* Veri sürümü
-* Data. Prop1
-* Data. prop * Prop2. Prop3. Prop4. Prop5
+* Olay türü
+* DataVersion
+* Data.Prop1
+* Data.Prop*Prop2.Prop3.Prop4.Prop5
 
 ### <a name="custom-event-schema"></a>Özel olay şeması
 
-`Key`, yük üzerinde herhangi bir zarf şemasını zorlayamasından Event Grid dolayı özel olay şemasındaki hiçbir kısıtlama yoktur.
+Olay Izgara yük `Key` üzerinde herhangi bir zarf şema zorlamaz beri özel olay şema üzerinde herhangi bir kısıtlama yoktur.
 
 ## <a name="numeric-single-value-filter-examples"></a>Sayısal tek değerli filtre örnekleri
 
-* NumberGreaterThan
+* NumberGreaterthan
 * NumberGreaterThanOrEquals
-* NumberLessThan
-* Numberlessals
+* Sayısız
+* NumberLessThanOrEquals
 
 ```json
 {
@@ -125,10 +125,10 @@ Event Grid şemasındaki olaylar için:
 }
 ```
 
-## <a name="numeric-range-value-filter-examples"></a>Sayısal Aralık-değer Filtre örnekleri
+## <a name="numeric-range-value-filter-examples"></a>Sayısal aralık değeri filtresi örnekleri
 
-* Numberın
-* Numbernotın
+* NumberIn
+* NumberNotin
 
 ```json
 {
@@ -149,13 +149,13 @@ Event Grid şemasındaki olaylar için:
 }
 ```
 
-## <a name="string-range-value-filter-examples"></a>Dize aralığı-değer Filtre örnekleri
+## <a name="string-range-value-filter-examples"></a>String aralığı değeri filtresi örnekleri
 
 * StringContains
 * StringBeginsWith
 * StringEndsWith
-* Stringın
-* Stringnotın
+* Stringin
+* StringNotin
 
 ```json
 {

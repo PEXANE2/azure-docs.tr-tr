@@ -1,6 +1,6 @@
 ---
-title: Azure CDN-Verizon Premium kuralları altyapısı ile HTTP davranışını geçersiz kılma
-description: Kural altyapısı, belirli içerik türlerinin teslimini engelleme, önbelleğe alma ilkesi tanımlama ve HTTP üstbilgilerini değiştirme gibi Verizon Premium 'dan HTTP isteklerinin nasıl Azure CDN işlendiğini özelleştirmenizi sağlar.
+title: Azure CDN ile HTTP davranışını geçersiz kılma - Verizon Premium kuralları motoru
+description: Kurallar altyapısı, belirli içerik türlerinin teslimini engellemek, önbelleğe alma ilkesi tanımlamak ve HTTP üstbilgilerini değiştirmek gibi HTTP isteklerinin Verizon Premium'dan Azure CDN tarafından nasıl işlendiğini özelleştirmenize olanak tanır.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,96 +8,96 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082951"
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Verizon Premium kural altyapısından Azure CDN kullanarak HTTP davranışını geçersiz kılın
+# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Verizon Premium kuralları altyapısından Azure CDN'yi kullanarak HTTP davranışını geçersiz kılma
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure CDN Rules altyapısı, HTTP isteklerinin işlenme biçimini özelleştirmenize olanak sağlar. Örneğin, belirli içerik türlerinin teslimini engelleme, önbelleğe alma ilkesi tanımlama veya bir HTTP üst bilgisini değiştirme. Bu öğreticide, CDN varlıklarının önbelleğe alma davranışını değiştiren bir kuralın nasıl oluşturulacağı gösterilmektedir. Kural altyapısı sözdizimi hakkında daha fazla bilgi için bkz. [Azure CDN kuralları altyapısı başvurusu](cdn-verizon-premium-rules-engine-reference.md).
+Azure CDN kuralları altyapısı, HTTP isteklerinin nasıl işleneceğini özelleştirmenize olanak tanır. Örneğin, belirli içerik türlerinin teslimini engellemek, önbelleğe alma ilkesi tanımlamak veya bir HTTP üstbilgisini değiştirmek. Bu öğretici, CDN varlıklarının önbelleğe alma davranışını değiştiren bir kuralın nasıl oluşturulacağımı gösterir. Kurallar altyapısı sözdizimi hakkında daha fazla bilgi için Azure [CDN kuralları altyapısı başvurusuna](cdn-verizon-premium-rules-engine-reference.md)bakın.
 
-## <a name="access"></a>Access
+## <a name="access"></a>Erişim
 
-Kural altyapısına erişmek için, önce Azure CDN yönetim sayfasına erişmek üzere **CDN profili** sayfasının en üstünden **Yönet** ' i seçmeniz gerekir. Uç noktanızın dinamik site hızlandırma (DSA) için iyileştirildiğine bağlı olarak, kurallar altyapısına uç nokta türü için uygun kurallar kümesiyle erişirsiniz:
+Kurallar altyapısına erişmek için, Azure CDN yönetim sayfasına erişmek için önce **CDN profil** sayfasının üst kısmından **Yönet'i** seçmeniz gerekir. Bitiş noktanızın dinamik site hızlandırma (DSA) için optimize edilip edilmediğine bağlı olarak, son nokta türünüze uygun kurallar kümesiyle kurallar motoruna erişebilirsiniz:
 
-- Genel Web tesliminde veya diğer DSA olmayan iyileştirmede iyileştirilmiş uç noktalar:
+- Genel web teslimi veya DSA dışındaki diğer optimizasyon için optimize edilmiş uç noktaları:
     
-    **Http büyük** sekmesini seçin ve ardından **Rules Engine**' i seçin.
+    HTTP **Büyük** sekmesini seçin, ardından **Kurallar Motoru'nu**seçin.
 
-    ![HTTP için kural altyapısı](./media/cdn-rules-engine/cdn-http-rules-engine.png)
+    ![HTTP için kurallar motoru](./media/cdn-rules-engine/cdn-http-rules-engine.png)
 
-- DSA için iyileştirilmiş uç noktalar:
+- DSA için optimize edilmiş uç noktalar:
     
-    **ADN** sekmesini seçin ve ardından **Rules Engine**' i seçin.
+    **ADN** sekmesini seçin, ardından **Kurallar Motoru'nu**seçin.
     
-    ADN, Verizon tarafından DSA içeriğini belirtmek için kullanılan bir terimdir. Burada oluşturduğunuz kurallar, profilinizde DSA için iyileştirilmiş olmayan herhangi bir uç nokta tarafından yok sayılır.
+    ADN, Verizon tarafından DSA içeriğini belirtmek için kullanılan bir terimdir. Burada oluşturduğunuz kurallar, profilinizde DSA için optimize edilmiş olmayan uç noktalar tarafından yoksayılır.
 
-    ![DSA için kural altyapısı](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![DSA için kurallar motoru](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
 ## <a name="tutorial"></a>Öğretici
 
-1. **CDN profili** sayfasında **Yönet**' i seçin.
+1. **CDN profil** sayfasından **Yönet'i**seçin.
    
     ![CDN profili Yönet düğmesi](./media/cdn-rules-engine/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
 
-2. **Http büyük** sekmesini seçin ve ardından **Rules Engine**' i seçin.
+2. HTTP **Büyük** sekmesini seçin, ardından **Kurallar Motoru'nu**seçin.
    
     Yeni bir kural için seçenekler görüntülenir.
    
     ![CDN yeni kural seçenekleri](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > Birden çok kuralın listelenme sırası, bunların nasıl işlendiğini etkiler. Sonraki bir kural, önceki bir kural tarafından belirtilen eylemleri geçersiz kılabilir.
+   > Birden çok kuralın listelenme sırası, bunların nasıl işleneceğini etkiler. Sonraki bir kural önceki kural tarafından belirtilen eylemleri geçersiz kılabilir.
    >
 
-3. **Ad/açıklama** metin kutusuna bir ad girin.
+3. **Ad / Açıklama** metin kutusuna bir ad girin.
 
-4. Kuralın geçerli olduğu isteklerin türünü belirler. **Her zaman**varsayılan eşleşme koşulunu kullanın.
+4. Kuralın geçerli olduğu istek türünü tanımlayın. Varsayılan eşleşme koşulunu kullanın, **Her zaman**.
    
-   ![CDN kuralı eşleşme koşulu](./media/cdn-rules-engine/cdn-request-type.png)
+   ![CDN kural maç durumu](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!NOTE]
-   > Açılan listede birden fazla eşleşme koşulu vardır. Şu anda seçili olan eşleştirme koşulu hakkında daha fazla bilgi için, sol tarafında mavi bilgilendirici simgesini seçin.
+   > Açılan listede birden çok eşleşme koşulu mevcuttur. Şu anda seçili eşleşme koşulu hakkında bilgi için, solundaki mavi bilgi simgesini seçin.
    >
-   >  Koşullu ifadelerin ayrıntılı bir listesi için bkz. [Rules Engine Koşullu ifadeler](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   >  Koşullu ifadelerin ayrıntılı bir listesi [için, Kurallar altyapısı koşullu ifadelere](cdn-verizon-premium-rules-engine-reference-match-conditions.md)bakın.
    >  
-   > Eşleşme koşullarının ayrıntılı bir listesi için bkz. [kural altyapısı eşleştirme koşulları](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   > Maç koşullarının ayrıntılı bir listesi için [Kurallar motoru eşleşme koşullarına](cdn-verizon-premium-rules-engine-reference-match-conditions.md)bakın.
    >
    >
 
-5. Yeni bir özellik eklemek için **Özellikler**' in yanındaki **+** düğmesini seçin.  Sol taraftaki açılan listede, **en yüksek kullanım süresini zorla**' yı seçin.  Görüntülenen metin kutusuna **300**girin. Kalan varsayılan değerleri değiştirmeyin.
+5. Yeni bir özellik eklemek **+** için **Özellikler'in**yanındaki düğmeyi seçin.  Soldaki açılır durumda Force **Internal Max-Age'i**seçin.  Görünen metin kutusuna **300**girin. Kalan varsayılan değerleri değiştirmeyin.
    
    ![CDN kural özelliği](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
-   > Açılan listede birden çok özellik bulunur. Şu anda seçili olan özellik hakkında daha fazla bilgi için, sol tarafında mavi bilgilendirici simgesini seçin.
+   > Açılır listede birden çok özellik mevcuttur. Şu anda seçili özellik hakkında bilgi için, solundaki mavi bilgi simgesini seçin.
    >
-   > **Zorlamalı Iç maksimum yaş**IÇIN, CDN Edge düğümünün varlığı kaynaktan yenilediğinde, varlığın `Cache-Control` ve `Expires` üst bilgileri denetlemek için geçersiz kılınır. Bu örnekte, CDN Edge düğümü, varlığı kaynağın kaynağından yenilemelerinden önce 300 saniye veya 5 dakika boyunca varlığını önbelleğe alır.
+   > **Force Internal Max-Age**için, `Cache-Control` CDN kenar düğümü varlığı nakıştan yenilediğinde varlığın ve `Expires` üstbilginin denetimi geçersiz kılınır. Bu örnekte, CDN kenar düğümü kıymeti kaynağından yenilemeden önce kıymeti 300 saniye veya 5 dakika olarak önbelleğe alır.
    >
-   > Özelliklerin ayrıntılı bir listesi için bkz. [Rules Engine özellikleri](cdn-verizon-premium-rules-engine-reference-features.md).
+   > Özelliklerin ayrıntılı bir listesi için [Kurallar motoru özelliklerine](cdn-verizon-premium-rules-engine-reference-features.md)bakın.
    >
    >
 
-6. Yeni kuralı kaydetmek için **Ekle** ' yi seçin.  Yeni kural artık onay bekliyor. Onaylandıktan sonra durum, **bekleyen XML** 'den **etkin XML**'e değişir.
+6. Yeni kuralı kaydetmek için **Ekle'yi** seçin.  Yeni kural şimdi onay bekliyor. Onaylandıktan sonra, durum Bekleyen **XML'den Etkin XML'e** dönüşür. **Active XML**
    
    > [!IMPORTANT]
-   > Kuralların Azure CDN yayılması 10 dakika kadar sürebilir.
+   > Kural değişikliklerinin Azure CDN'de yayılması 10 dakika kadar sürebilir.
    >
    >
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure CDN genel bakış](cdn-overview.md)
+- [Azure CDN'ye genel bakış](cdn-overview.md)
 - [Kural altyapısı başvurusu](cdn-verizon-premium-rules-engine-reference.md)
 - [Kural altyapısı eşleştirme koşulları](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Kural altyapısı koşullu ifadeleri](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Kural altyapısı özellikleri](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Azure Fridays: Azure CDN güçlü yeni Premium özellikler](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video)
+- [Azure Cumaları: Azure CDN'nin güçlü yeni premium özellikleri](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video)

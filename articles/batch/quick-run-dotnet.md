@@ -1,6 +1,6 @@
 ---
 title: Azure Hızlı Başlangıç - Batch işi çalıştırma - .NET
-description: Batch .NET istemci kitaplığı ile bir C# uygulamadan Azure Batch örnek işi ve görevleri hızlıca çalıştırın.
+description: Toplu İşlem .NET istemci kitaplığı yla c# uygulamasından bir Azure Toplu Iş örneği iş ve görevleri hızla çalıştırın.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -11,10 +11,10 @@ ms.date: 11/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77017216"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Hızlı Başlangıç: .NET API ile ilk Azure Batch işinizi çalıştırma
@@ -27,13 +27,13 @@ Bu hızlı başlangıç, Azure Batch .NET API üzerinde derlenmiş bir C# uygula
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)ya da Linux, MacOS veya Windows Için [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) . 
+* [Visual Studio 2017 veya sonraki sürümlerinde](https://www.visualstudio.com/vs)veya Linux, macOS veya Windows için [.NET Core 2.1.](https://www.microsoft.com/net/download/dotnet-core/2.1) 
 
 * Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın. 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Visual Studio `BatchDotNetQuickstart.sln` çözüm dosyasını içeren dizine gidin.
 
-Çözüm dosyasını Visual Studio'da açın ve `Program.cs` içindeki kimlik bilgisi dizelerini hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örneğin:
+Çözüm dosyasını Visual Studio'da açın ve `Program.cs` içindeki kimlik bilgisi dizelerini hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örnek:
 
 ```csharp
 // Batch account credentials
@@ -227,7 +227,7 @@ for (int i = 0; i < inputFiles.Count; i++)
 batchClient.JobOperations.AddTask(JobId, tasks);
 ```
 
-### <a name="view-task-output"></a>Görev çıkışını görüntüleme
+### <a name="view-task-output"></a>Görev çıktısını görüntüleme
 
 Uygulama, tamamlandığından emin olmak üzere görevleri izlemek için bir [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor) oluşturur. Daha sonra uygulama, [CloudTask.ComputeNodeInformation](/dotnet/api/microsoft.azure.batch.cloudtask.computenodeinformation) özelliğini kullanarak her bir tamamlanmış görevin oluşturduğu `stdout.txt` dosyasını gösterir. Görev başarıyla çalıştırıldığında, görev komutunun çıkışı `stdout.txt` dosyasına yazılır:
 

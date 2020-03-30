@@ -1,7 +1,7 @@
 ---
-title: Yaklaşım Bilişsel Beceri
+title: Duygusal bilişsel beceri
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde bulunan metinden pozitif negatif bir yaklaşım puanı ayıklayın.
+description: Azure Bilişsel Arama'daki bir AI zenginleştirme boru hattındaki metinden olumlu-negatif duyarlılık puanı çıkarın.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,52 +9,52 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3aab703b9c5ffcb5f3280060417ce32fcec2fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72791906"
 ---
-# <a name="sentiment-cognitive-skill"></a>Yaklaşım Bilişsel Beceri
+# <a name="sentiment-cognitive-skill"></a>Duygusal bilişsel beceri
 
-Yaklaşım **yeteneği,** yapılandırılmamış metinleri pozitif negatif bir Continuum boyunca değerlendirir ve her kayıt için 0 ile 1 arasında bir sayısal puan döndürür. Puanın 1’e yakın olması yaklaşımın olumlu olduğunu, 0’a yakın olması ise olumsuz olduğunu gösterir. Bu beceri bilişsel hizmetler 'de [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sunulan makine öğrenimi modellerini kullanır.
+**Sentiment** becerisi, yapılandırılmamış metni pozitif-negatif süreklilik boyunca değerlendirir ve her kayıt için 0 ile 1 arasında sayısal bir puan verir. 1'e yakın puanlar olumlu, 0'a yakın puanlar ise olumsuz duyguları gösterir. Bu beceri, Bilişsel Hizmetlerde [Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sağlanan makine öğrenimi modellerini kullanır.
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşleme sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla Bilgi Al algoritması ekleyerek kapsamı genişlettikçe, [faturalandırılabilir Bilişsel Hizmetler kaynağı eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir. Bilişsel Hizmetler'de API'leri ararken ve Azure Bilişsel Arama'da belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk ettirilir. Belgelerden metin çıkarma için herhangi bir ücret yoktur.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik becerilerin yürütülmesi, mevcut [Bilişsel Hizmetler ödeme-as-you gitmek fiyat](https://azure.microsoft.com/pricing/details/cognitive-services/)tahsil edilir. Görüntü çıkarma fiyatlandırması [Azure Bilişsel Arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmıştır.
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. yetenekler. Text. Sentimentbecerisi
+Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 5000 karakter olmalıdır. Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
+Bir kaydın maksimum boyutu 5000 karakter olarak [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülmelidir. Verilerinizi duygu çözümleyicisine göndermeden önce ayırmanız gerekiyorsa, [Metin Bölme becerisini](cognitive-search-skill-textsplit.md)kullanın.
 
 
-## <a name="skill-parameters"></a>Yetenek parametreleri
+## <a name="skill-parameters"></a>Beceri parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre Adı |                      |
 |----------------|----------------------|
-| defaultLanguageCode | seçim Açıkça dil belirtmeyen belgelere uygulanacak dil kodu. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/text-analytics/text-analytics-supported-languages.md) görün |
+| defaultLanguageCode | (isteğe bağlı) Dili açıkça belirtmeyin belgelere uygulanacak dil kodu. <br/> [Desteklenen dillerin tam listesine](../cognitive-services/text-analytics/text-analytics-supported-languages.md) bakın |
 
-## <a name="skill-inputs"></a>Beceri girişleri 
+## <a name="skill-inputs"></a>Beceri girdileri 
 
-| Giriş adı | Açıklama |
+| Giriş Adı | Açıklama |
 |--------------------|-------------|
-| metin | Çözümlenecek metin.|
-| languageCode  |  Seçim Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/>[Desteklenen dillerin tam listesini](../cognitive-services/text-analytics/text-analytics-supported-languages.md)görüntüleyin.|
+| metin | İncelenecek metin.|
+| languageCode  |  (İsteğe bağlı) Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, varsayılan değer "en"dir. <br/>[Desteklenen dillerin tam listesine](../cognitive-services/text-analytics/text-analytics-supported-languages.md)bakın.|
 
-## <a name="skill-outputs"></a>Yetenek çıkışları
+## <a name="skill-outputs"></a>Beceri çıktıları
 
-| Çıkış adı | Açıklama |
+| Çıktı Adı | Açıklama |
 |--------------------|-------------|
-| ınızı | Çözümlenen metnin yaklaşımını temsil eden 0 ile 1 arasında bir değer. 0 ' a yakın değerlerde negatif yaklaşım vardır, 0,5 ' a yakın nötr yaklaşım vardır ve 1 ' e yakın değerler pozitif yaklaşım vardır.|
+| puan | Analiz edilen metnin duyarlılığını temsil eden 0 ile 1 arasındaki değer. 0'a yakın değerler olumsuz, 0,5'e yakın nötr duyguya ve 1'e yakın değerler olumlu duygulara sahiptir.|
 
 
-##  <a name="sample-definition"></a>Örnek tanım
+##  <a name="sample-definition"></a>Örnek tanımı
 
 ```json
 {
@@ -111,12 +111,12 @@ Parametreler büyük/küçük harfe duyarlıdır.
 ```
 
 ## <a name="notes"></a>Notlar
-Boşsa, bu kayıtlar için bir yaklaşım puanı döndürülmez.
+Boşsa, bu kayıtlar için bir duyarlılık puanı döndürülmez.
 
-## <a name="error-cases"></a>Hata durumları
-Bir dil desteklenmiyorsa bir hata oluşturulur ve bir yaklaşım puanı döndürülmez.
+## <a name="error-cases"></a>Hata örnekleri
+Bir dil desteklenmezse, bir hata oluşturulur ve hiçbir duyarlılık puanı döndürülür.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure HANA büyük örnekler denetim Azure portal Microsoft Docs
-description: Portal aracılığıyla Azure HANA büyük örneklerini nasıl tanımlayabileceğinizi ve bunlarla etkileşime girebileceğinizi açıklar
+title: Azure HANA Büyük Örnekleri Azure portalı üzerinden kontrol | Microsoft Dokümanlar
+description: Portal aracılığıyla Azure HANA Büyük Örneklerini nasıl tanımlayabileceğinizi ve bunlarla nasıl etkileşimde ebileceğinizi açıklar
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,147 +16,147 @@ ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70099810"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portalı üzerinden Azure HANA Büyük Örnekler denetimi
-Bu belge, [Hana büyük örneklerinin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) [Azure Portal](https://portal.azure.com) nasıl sunulduğunu ve sizin Için dağıtılan Hana büyük örnek birimleri ile Azure Portal aracılığıyla hangi etkinliklerin yapılabileceğini anlatmaktadır. Azure portal 'daki HANA büyük örneklerin görünürlüğü, şu anda genel önizlemede olan HANA büyük örnekleri için bir Azure Kaynak sağlayıcısı aracılığıyla sunulmaktadır
+Bu belge, [HANA Büyük Örnekleri'nin](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) [Azure portalında](https://portal.azure.com) nasıl sunulduğunu ve sizin için dağıtılan HANA Büyük Örnek birimleriyle Azure portalı üzerinden hangi etkinliklerin gerçekleştirilebileceğini kapsar. Azure portalındaki HANA Büyük Örneklerinin görünürlüğü, şu anda genel önizlemede olan HANA Büyük Örnekleri için bir Azure kaynak sağlayıcısı aracılığıyla sağlanır
 
-## <a name="register-hana-large-instance-resource-provider"></a>HANA büyük örnek kaynak sağlayıcısını Kaydet
-Genellikle HANA büyük örnek dağıtımları için kullandığınız Azure aboneliğiniz, HANA büyük örnek kaynak sağlayıcısı için kaydedilir. Ancak, HANA büyük örnek birimleri dağıttığınızı göremiyorsanız, kaynak sağlayıcısını Azure aboneliğinize kaydetmeniz gerekir. HANA büyük örnek kaynak sağlayıcısını kaydetmenin iki yolu vardır
+## <a name="register-hana-large-instance-resource-provider"></a>HANA Büyük Örnek Kaynak Sağlayıcısını Kaydedin
+Genellikle HANA Büyük Örnek dağıtımları için kullandığınız Azure aboneliğiniz HANA Büyük Örnek Kaynak Sağlayıcısı'na kaydedilir. Ancak, HANA Büyük Örnek birimlerini dağıtdığınızı göremiyorsanız, Kaynak Sağlayıcısı'nı Azure aboneliğinize kaydettirmelisiniz. HANA Büyük Örnek Kaynak sağlayıcısını kaydetmenin iki yolu vardır
 
-### <a name="register-through-cli-interface"></a>CLı arabirimine kaydol
-Azure CLı arabirimi aracılığıyla HANA büyük örnek dağıtımı için kullanılan Azure aboneliğinizde oturum açmanız gerekir. Aşağıdaki komutla HANA büyük örnek sağlayıcısını kaydedebilirsiniz (yeniden):
+### <a name="register-through-cli-interface"></a>CLI arabirimi üzerinden kaydolun
+Azure CLI arabirimi üzerinden HANA Büyük Örnek dağıtımı için kullanılan Azure aboneliğinizde oturum açmanız gerekir. HANA Büyük Örnek Sağlayıcı'yı bu komutla yeniden kaydedebilirsiniz:
     
     az provider register --namespace Microsoft.HanaOnAzure
 
-Daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli)
+Daha fazla bilgi için [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli) makalesine bakın
 
 
-### <a name="register-through-azure-portal"></a>Azure portal kaydetme
-Azure portal aracılığıyla HANA büyük örnek kaynak sağlayıcısını kaydedebilirsiniz (yeniden). Aboneliğinizi Azure portal ' de listeetmeniz ve HANA büyük örnek birimlerinizi dağıtmak için kullanılan aboneliğe çift tıklamanız gerekir. Aboneliğinizin Genel Bakış sayfasında, aşağıda gösterildiği gibi "kaynak sağlayıcıları" öğesini seçin ve arama penceresine "HANA" yazın. 
+### <a name="register-through-azure-portal"></a>Azure portalı üzerinden kaydolun
+Azure portalı üzerinden HANA Büyük Örnek Kaynak Sağlayıcısı'nı yeniden kaydedebilirsiniz. Aboneliğinizi Azure portalında listeleniz ve HANA Büyük Örnek biriminizi(ler) dağıtmak için kullanılan aboneliğe çift tıklamanız gerekir. Aboneliğinizin genel bakış sayfasında yer aldığınızbir sayfada, aşağıda gösterildiği gibi "Kaynak sağlayıcıları" seçeneğini belirleyin ve arama penceresine "HANA" yazın. 
 
-![Azure portal aracılığıyla HLI RP 'yi kaydetme](./media/hana-li-portal/portal-register-hli-rp.png)
+![Azure portalı üzerinden HLI RP'ye kaydolun](./media/hana-li-portal/portal-register-hli-rp.png)
 
-Gösterilen ekran görüntüsünde, kaynak sağlayıcı zaten kaydettirildi. Kaynak sağlayıcısı henüz kayıtlı değilse, "yeniden Kaydet" veya "kaydolun" düğmesine basın.
+Gösterilen ekran görüntüsünde, kaynak sağlayıcısı zaten kayıtlıydı. Kaynak sağlayıcısının henüz kaydedilmemiş olması durumunda "yeniden kaydol" veya "kaydol" tuşuna basın.
 
-Daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell)
-
-
-## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>Azure portal HANA büyük örnek birimlerinin görüntülenmesi
-Bir HANA büyük örnek dağıtım isteği gönderilirken, HANA büyük örneklerine da bağlanmakta olduğunuz Azure aboneliğini belirtmeniz istenir. HANA büyük örnek birimlerinde çalıştırılan SAP uygulama katmanını dağıtmak için kullandığınız aboneliğin aynısını kullanmak önerilir.
-İlk HANA büyük örnekleriniz dağıtıldıktan sonra, HANA büyük örnekleriniz için dağıtım isteğinde gönderdiğiniz Azure aboneliğinde yeni bir [Azure Kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) oluşturulur.  Yeni kaynak grubu, belirli bir abonelikte dağıttığınız tüm HANA büyük örnek birimlerinizi listelecektir.
-
-Yeni Azure kaynak grubunu bulmak için, Azure portal sol gezinti bölmesinde gezinerek aboneliğinizdeki kaynak grubunu listeleyin
-
-![Azure portal gezinti bölmesi](./media/hana-li-portal/portal-resource-group.png)
-
-Kaynak grupları listesinde, listede, HANA büyük örneklerinin dağıtılmasından önce kullandığınız abonelikte filtre uygulamanız gerekebilir
-
-![Azure portal kaynak gruplarını filtrele](./media/hana-li-portal/portal-filtering-subscription.png)
-
-Doğru aboneliğe filtreledikten sonra, hala kaynak grupları için uzun bir listeniz olabilir. "Xxx" in **-T050**gibi üç basamak olduğu **-TxXx** sonrası bir tane bulun. 
-
-Kaynak grubunu bulduğunuz için ayrıntılarını listeleyin. Aldığınız liste şöyle görünebilir:
-
-![Azure portal içindeki HLI listesi](./media/hana-li-portal/portal-hli-units-list.png)
-
-Listelenen tüm birimler, aboneliğinizde dağıtılan tek bir HANA büyük örnek birimini temsil eder. Bu durumda, aboneliğinizde dağıtılan sekiz farklı HANA büyük örnek birimine göz atabilirsiniz.
-
-Aynı Azure aboneliği altında birkaç HANA büyük örnek kiracılar dağıttıysanız, birden çok Azure Kaynak grubu bulacaksınız 
+Daha fazla bilgi için [Azure kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell) makalesine bakın
 
 
-## <a name="look-at-attributes-of-single-hli-unit"></a>Tek bir HLı birimin özniteliklerine bakın
-HANA büyük örnek birimleri listesinde, tek bir birime tıklayıp tek bir HANA büyük örnek biriminin ayrıntılarına ulaşabilirsiniz. 
+## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>AZURE portalında HANA Büyük Örnek birimlerinin görüntülenmesi
+HANA Büyük Örnek dağıtım isteği gönderirken, HANA Büyük Örnekleri'ne bağlandığınız Azure aboneliğini de belirtmeniz istenir. HANA Büyük Örnek birimlerine karşı çalışan SAP uygulama katmanını dağıtmak için kullandığınız aboneliği kullanmanız önerilir.
+İlk HANA Büyük Örnekleriniz dağıtılırken, HANA Büyük Örneği(ler) için dağıtım isteğinde gönderdiğiniz Azure aboneliğinde yeni bir [Azure kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) oluşturulur.  Yeni kaynak grubu, belirli abonelikte dağıttığınız tüm HANA Büyük Örnek birimlerinizi listeler.
 
-Genel bakış ekranında, ' daha fazla göster 'e tıkladıktan sonra birimin bir sunumunu alıyorsunuz, şöyle görünür:
+Yeni Azure kaynak grubunu bulmak için, Azure portalının sol gezinti bölmesinde gezinerek aboneliğinizdeki kaynak grubunu listelersiniz
 
-![Bir HLI biriminin genel bakışını göster](./media/hana-li-portal/portal-show-overview.png)
+![Azure portalında gezinti bölmesi](./media/hana-li-portal/portal-resource-group.png)
 
-Gösterilen farklı özniteliklere bakarak, bu öznitelikler Azure VM özniteliklerinden çok farklı şekilde görünür. Sol taraftaki başlıkta, kaynak grubu, Azure bölgesi, abonelik adı ve KIMLIğIN yanı sıra eklediğiniz bazı Etiketler gösterilir. Varsayılan olarak, HANA büyük örnek birimlerinin atanmış etiketi yoktur. Üstbilginin sağ tarafında, birimin adı dağıtım tamamlandığında atanan olarak listelenir. İşletim sisteminin yanı sıra IP adresi de gösterilir. VM 'Lerde olduğu gibi, CPU iş parçacığı sayısı ve bellek sayısıyla birlikte HANA büyük örnek birim türü de gösterilir. Farklı HANA büyük örnek birimleri hakkında daha fazla ayrıntı burada gösterilmektedir:
+Kaynak grupları listesinde, listeleniyorsanız, HANA Büyük Örnekleri'nin dağıtılması için kullandığınız aboneliğe filtre uygulamanız gerekebilir
 
-- [HLI için kullanılabilen SKU’lar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
-- [SAP HANA (büyük örnekler) depolama mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
+![Azure portalındaki kaynak gruplarını filtreleme](./media/hana-li-portal/portal-filtering-subscription.png)
 
-Sağ alt taraftaki ek veriler, HANA büyük örnek damgasının düzeltmesidir. Olası değerler şunlardır:
+Doğru aboneliği filtreledikten sonra, kaynak gruplarının uzun bir listesi ne kadar olabilir. "xxx" **-T050**gibi üç basamaklı **-Txxx** bir post-fix ile arayın. 
 
-- Düzeltme 3
-- Düzeltme 4
+Kaynak grubunu bulduğunuzda, ayrıntılarını listele. Aldığınız liste aşağıdaki gibi görünebilir:
 
-Düzeltme 4 ' te, Azure VM 'Leri ve düzeltme 4 damgaları veya satırları 'nda dağıtılan HANA büyük örnek birimleri arasındaki ağ gecikme süresi ile birlikte sunulan en son mimari büyük örnek geliştirmedir.
-Dağıtılan her bir HANA büyük örnek birimi için otomatik olarak oluşturulan Azure yakınlık yerleşimi grubunun adına genel bakış alanının sağ alt köşesinde bulunan başka bir çok önemli bilgi bulunur. SAP uygulama katmanını barındıran Azure VM 'Leri dağıtıldığında bu yakınlık yerleşimi grubuna başvurulması gerekir. HANA büyük örnek birimiyle ilişkili [Azure yakınlık yerleşimi grubunu](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) kullanarak, Azure VM 'Lerinin Hana büyük örnek birimine yakın bir yerde dağıtıldığından emin olun. Aynı Azure veri merkezinde barındırılan HANA büyük örnek birimlerinin SAP uygulama katmanını bulmak için yakınlık yerleşimi gruplarının nasıl kullanılabileceği, [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarında açıklanacaktır ](sap-proximity-placement-scenarios.md).
+![Azure portalında HLI listesi](./media/hana-li-portal/portal-hli-units-list.png)
 
-Üstbilginin sağ sütunundaki ek bir alan, HANA büyük örnek biriminin güç durumu hakkında bilgi verir.
+Listelenen tüm birimler, aboneliğinizde dağıtılan tek bir HANA Büyük Örnek birimini temsil ediyor. Bu durumda, aboneliğinizde dağıtılan sekiz farklı HANA Büyük Örnek birimine bakAbilirsiniz.
+
+Aynı Azure aboneliği altında birden fazla HANA Büyük Örnek kiracısı dağıttıysanız, birden çok Azure kaynak grubu bulursunuz 
+
+
+## <a name="look-at-attributes-of-single-hli-unit"></a>Tek HLI Biriminin özelliklerine bakın
+HANA Büyük Örnek birimleri listesinde, tek bir üniteyi tıklayabilir ve tek HANA Büyük Örnek biriminin ayrıntılarına ulaşabilirsiniz. 
+
+Genel bakış ekranında, 'Daha fazlasını göster'i tıklattıktan sonra, ünitenin aşağıdaki gibi görünen bir sunusunu elde eeyseniz:
+
+![Bir HLI birimine genel bakış](./media/hana-li-portal/portal-show-overview.png)
+
+Gösterilen farklı özniteliklere bakıldığında, bu öznitelikler Azure VM özniteliklerinden çok farklı görünüyor. Sol taraftaki üstbilgide Kaynak grubunu, Azure bölgesini, abonelik adını ve kimliğinin yanı sıra eklediğiniz bazı etiketleri gösterir. Varsayılan olarak, HANA Büyük Örnek birimlerinin atanmış etiketi yoktur. Üstbilginin sağ tarafında, dağıtım yapıldığında birimin adı atanmış olarak listelenir. Ip adresinin yanı sıra işletim sistemi de gösterilir. VM'lerde olduğu gibi, CPU iş parçacığı ve bellek sayısına sahip HANA Büyük örnek birim türü de gösterilir. Farklı HANA Büyük Örnek birimleri hakkında daha fazla bilgi, burada gösterilmiştir:
+
+- [HLI için kullanılabilir SKU'lar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
+- [SAP HANA (Büyük Örnekler) depolama mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
+
+Sağ alt taraftaki ek veriler HANA Büyük Örnek damgasının revizyonudur. Olası değerler şunlardır:
+
+- Revizyon 3
+- Revizyon 4
+
+Revizyon 4, Azure VM'leri ile Revizyon 4 damgalarında veya satırlarında dağıtılan HANA Büyük örnek birimleri arasında ağ gecikmesinde önemli iyileştirmeler içeren HANA Büyük Örnekleri'nin en son mimarisidir.
+Başka bir çok önemli bilgi, genel bakışın sağ alt köşesinde, dağıtılan her HANA Büyük Örnek birimi için otomatik olarak oluşturulan Azure Yakınlık Yerleşim Grubu'nun adı ile bulunur. SAP uygulama katmanını barındıran Azure VM'leri dağıtılırken bu Yakınlık Yerleşim Grubu'na başvurulması gerekir. HANA Büyük Örnek birimiyle ilişkili [Azure yakınlık yerleşim grubunu](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) kullanarak, Azure VM'lerinin HANA Büyük Örnek birimine yakın bir yerde dağıtıldığınızdan emin olabilirsiniz. Sapma 4 barındırılan HANA Büyük Örnek birimleriyle aynı Azure veri merkezinde SAP uygulama katmanını bulmak için yakınlık yerleşim işlemi gruplarının kullanılabilir ışığı, [SAP uygulamalarıyla en iyi ağ gecikmesi için Azure Yakınlık ışı Bulma Grupları'](sap-proximity-placement-scenarios.md)nda anlatılıyor.
+
+Üstbilginin sağ sütunundaki ek bir alan, HANA Büyük örnek biriminin güç durumu hakkında bilgi verir.
 
 > [!NOTE]
-> Güç durumu, donanım biriminin açık veya kapalı olup olmadığını açıklar. Çalışır duruma sahip olan işletim sistemi hakkında bilgi vermez. Bir HANA büyük örnek birimini yeniden başlattığınızda, birim durumunun başlangıç durumuna geçmeye **başlamak**için değiştiği küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır**başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
+> Güç durumu, donanım biriminin açık mı yoksa kapalı mı olduğunu açıklar. İşletim sisteminin çalışır durumda olması hakkında bilgi vermez. Bir HANA Büyük Örnek birimini yeniden başlattığınızda, birimin durumunun **Başlangıç**durumuna geçmeye **başlayarak** değiştiği küçük bir zaman yaşayacaksınız. **Başlangıç** durumunda olmak, işletim sistemi başlangıç veya işletim sistemi tamamen başlatıldı anlamına gelir. Sonuç olarak, ünitenin yeniden başlatıldıktan sonra, durum **Başlatıldı'ya**geçer girmez üniteye hemen giriş yapmayı bekleyemezsiniz.
 > 
 
-' Daha fazla ' düğmesine basarsanız ek bilgiler gösterilir. Bir ek bilgi, HANA büyük örnek damgasının, ' de dağıtılan birimin düzeltmesini görüntülüyor. HANA büyük örnek damgalarının farklı düzeltmeleri için [Azure 'da SAP HANA nedir (büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) makalesine bakın
+'Daha fazla bilgi gör' tuşuna baslarsanız, ek bilgiler gösterilir. Ek bir bilgi HANA Büyük Örnek damgası revizyonu görüntüleniyor, birim konuşlandırıldı var. HANA Büyük Örnek pullarının farklı düzeltmeleri için [Azure'da SAP HANA (Büyük Örnekler) nedir](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) makalesine bakın
 
-## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>Tek bir HANA büyük örnek biriminin etkinliklerini denetleme 
-HANA büyük örnek birimlerine genel bir bakış vermekten daha fazla, belirli bir birimin etkinliklerini denetleyebilirsiniz. Etkinlik günlüğü şöyle görünebilir:
+## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>Tek bir HANA Büyük Örnek biriminin faaliyetlerini denetleyin 
+HANA Büyük Örnek birimlerine genel bir bakış vermenin ötesinde, belirli birimin faaliyetlerini kontrol edebilirsiniz. Bir etkinlik günlüğü şu şekilde görünebilir:
 
-![Azure portal gezinti bölmesi](./media/hana-li-portal/portal-activity-list.png)
+![Azure portalında gezinti bölmesi](./media/hana-li-portal/portal-activity-list.png)
 
-Kaydedilen ana etkinliklerden biri bir birimin yeniden başlatılmalardır. Listelenen veriler, etkinliğin durumunu, etkinliğin tetiklendiği zaman damgasını, etkinliğin tetiklendiği abonelik KIMLIĞINI ve etkinliği tetikleyen Azure kullanıcısını içerir. 
+Kaydedilen ana faaliyetlerden biri bir birimin yeniden başlatılmasıdır. Listelenen veriler, etkinliğin durumunu, etkinliğin tetiklendiği zaman damgasını, etkinliğin tetiklendiği abonelik kimliğini ve etkinliği tetikleyen Azure kullanıcısını içerir. 
 
-Kaydedilen başka bir etkinlik, Azure meta verilerinde bulunan birimde değişir. Yeniden başlatmanın başlatılmasının yanı sıra, **yazma Hanaınstances**etkinliğini görebilirsiniz. Bu tür bir etkinlik, HANA büyük örnek biriminde hiçbir değişiklik gerçekleştirmez, ancak Azure 'daki birimin meta verilerinde yapılan değişiklikleri belgeyor. Listelenen örnekte bir etiketi ekledik ve sildik (sonraki bölüme bakın).
+Kaydedilen bir diğer etkinlik de Azure meta verilerindeki birimdeki değişikliklerdir. Başlatılan yeniden başlatmanın yanı sıra, **YAZMA HANAInstances**etkinliğini görebilirsiniz. Bu tür bir etkinlik HANA Büyük Örnek biriminde hiçbir değişiklik gerçekleştirmez, ancak Azure'daki birimin meta verilerindeki değişiklikleri belgeletir. Listelenen durumda, bir etiket ekledik ve sildik (sonraki bölüme bakın).
 
-## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>Bir HANA büyük örnek birimine Azure etiketi ekleme ve silme
-Başka bir olasılık da HANA büyük örnek birimine bir [etiket](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) eklemektir. Etiketlerin atanma yöntemi, sanal makinelere etiket atamaya farklı değildir. VM 'Lerde olduğu gibi, Etiketler Azure meta verilerinde mevcuttur ve HANA büyük örnekleri için VM 'Lerle aynı kısıtlamalara sahiptir.
+## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>HANA Büyük Örnek birimine Azure etiketi ekleme ve silme
+Sahip olduğunuz bir diğer olasılık da HANA Büyük Örnek birimine bir [etiket](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) eklemektir. Etiketlerin atanma şekli, Etiketleri VM'lere atamaktan farklı değildir. VM'lerde olduğu gibi, etiketler Azure meta verilerinde bulunur ve HANA Büyük Örnekleri için, VM'ler için etiketlerle aynı kısıtlamalara sahiptir.
 
-Etiketlerin silinmesi VM 'lerle aynı şekilde çalışmaktadır. Her iki etkinlik de bir etiketi uygulamak ve silmek, belirli bir HANA büyük örnek biriminin etkinlik günlüğünde listelenir.
+Etiketleri silme, VM'lerde olduğu gibi çalışır. Her iki etkinlik, bir etiket uygulama ve silme belirli HANA Büyük Örnek biriminin etkinlik günlüğünde listelenir.
 
-## <a name="check-properties-of-a-hana-large-instance-unit"></a>HANA büyük örnek biriminin özelliklerini denetleme
-Bölüm **özellikleri** , örnekleri size geldiğinde alacağınız önemli bilgileri içerir. Bu, destek durumlarında gerekebilecek veya depolama anlık görüntü yapılandırmasını ayarlarken ihtiyaç duyduğunuz tüm bilgileri alacağınız bir bölümdür. Bu bölümde, örneğinizin çevresindeki verilerin bir koleksiyonu, örneğin Azure ve depolama arka ucu arasındaki bağlantı. Bölümün en üstü şöyle görünür:
+## <a name="check-properties-of-a-hana-large-instance-unit"></a>HANA Büyük Örnek biriminin özelliklerini denetleme
+**Özellikler** bölümü, örnekler size teslim edildiğinde aldığınız önemli bilgileri içerir. Destek durumlarda gerektirebileceğiniz veya depolama anlık görüntü yapılandırmasını ayarlarken ihtiyaç duyduğunuz tüm bilgileri aldığınız bir bölümdür. Bu nedenle, bu bölüm örneğiniz etrafında veri topluluğu, örneğin Azure'a bağlantısı ve depolama arka ucudur. Bölümün üst kısmı aşağıdaki gibi görünür:
 
 
-![Azure portal içindeki HLI özelliklerinin üst bölümü](./media/hana-li-portal/portal-properties-top.png)
+![Azure portalındaki HLI özelliklerinin üst kısmı](./media/hana-li-portal/portal-properties-top.png)
 
-İlk birkaç veri öğesi, genel bakış ekranında zaten gördünüz. Ancak verilerin önemli bir kısmı, ilk dağıtılan birimler kullanıma alındığı için aldığınız ExpressRoute bağlantı hattı KIMLIĞIDIR. Bazı destek durumlarında, bu verileri isteyip istemediğiniz sorulur. Ekran görüntüsünün en altında önemli bir veri girişi gösterilmektedir. Görüntülenen veriler, depolama alanınızı HANA büyük örnek yığınında kiracınızda yalıtarak NFS depolama kafasının IP adresidir . Bu IP adresi, [depolama anlık görüntü yedeklemeleri için yapılandırma dosyasını](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)düzenlediğinizde de gereklidir. 
+İlk birkaç veri öğesi, zaten genel bakış ekranında gördüm. Ancak verilerin önemli bir kısmı, ilk konuşlandırılan birimler teslim edilirken aldığınız ExpressRoute Circuit KIMLIĞI'dir. Bazı destek durumlarında, bu veriler istenebilir. Önemli bir veri girişi ekran görüntüsünün alt kısmında gösterilir. Görüntülenen veriler, HANA Büyük Örnek yığınındaki deponuzu **kiracınıza** yalıtan NFS depolama şefinin IP adresidir. Depolama [anlık görüntü yedeklemeleri için yapılandırma dosyasını](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)düzenlemeyaptığınızda bu IP adresi de gereklidir. 
 
-Özellik bölmesinde aşağı kaydırdığınızda, HANA büyük örnek biriminiz için benzersiz bir kaynak KIMLIĞI veya dağıtıma atanan abonelik KIMLIĞI gibi ek veriler alırsınız.
+Özellik bölmesinde aşağı kaydırdığınızda, HANA Büyük Örnek biriminiz için benzersiz bir kaynak kimliği veya dağıtıma atanan abonelik kimliği gibi ek veriler elde elabilirsiniz.
 
-## <a name="restart-a-hana-large-instance-unit-through-azure-portal"></a>Azure portal aracılığıyla bir HANA büyük örnek birimini yeniden başlatın
-Linux işletim sisteminin yeniden başlatılmasını başlatırken, IŞLETIM sistemi yeniden başlatmayı başarıyla bitiremediği çeşitli durumlar vardı. Yeniden başlatmaya zorlamak için, Microsoft işlemlerinin HANA büyük örnek biriminin güç yeniden başlatılmasını gerçekleştirmesini sağlamak üzere bir hizmet isteği açmanız gerekir. Bir HANA büyük örnek biriminin güç yeniden başlatılmasının işlevselliği artık Azure portal tümleşiktir. HANA büyük örnek biriminin genel bakış bölümünde olduğu gibi, veri bölümünün üstünde yeniden başlatma düğmesini görürsünüz
+## <a name="restart-a-hana-large-instance-unit-through-azure-portal"></a>Azure portalı üzerinden HANA Büyük Örnek birimini yeniden başlatın
+Linux işletim sisteminin yeniden başlatılmasıbaşlatılırken, işletim sisteminin yeniden başlatmayı başarıyla tamamlayamadığı çeşitli durumlar vardı. Yeniden başlatmayı zorlamak için, Microsoft işlemlerinin HANA Büyük Örnek biriminin güç yeniden başlatmasını sağlamak için bir hizmet isteği açmanız gerekiyordu. HANA Büyük Örnek biriminin güç yeniden başlatma işlevi artık Azure portalına entegre edilmiştir. HANA Büyük Örnek biriminin genel bakış bölümünde olduğunuz için, veri bölümünün üstünde yeniden başlatma düğmesini görürsünüz
 
-![Azure portal #1 adımı yeniden başlatın](./media/hana-li-portal/portal-restart-first-step.png)
+![Azure portalında adımı #1 yeniden başlatın](./media/hana-li-portal/portal-restart-first-step.png)
 
-Yeniden Başlat düğmesine basarken birimi gerçekten yeniden başlatmak isteyip istemediğiniz sorulur. "Evet" düğmesine basarak onaylamanız durumunda birim yeniden başlatılır.
+Yeniden başlatma düğmesine bastığınızda, üniteyi gerçekten yeniden başlatmak isteyip istemediğiniz sorulur. "Evet" düğmesine basarak onayladığınız gibi, ünite yeniden başlatılacaktır.
 
 > [!NOTE]
-> Yeniden başlatma işleminde, birim durumunun başlangıç durumuna geçmeye **başlamak**için değiştiği küçük bir zaman yaşarsınız. **Başlatılmış** durumunda işletim sistemi başlatıldığı veya işletim sisteminin tamamen başlatılmış olduğu anlamına gelir. Sonuç olarak, birim yeniden başlatıldıktan sonra durum **başlatılır**başlatılmaz hemen sonra birimde oturum açmanız beklenmemelidir.
+> Yeniden başlatma işleminde, birimin durumunun **Başlangıç**durumuna geçmeye **başlayarak** değiştiği küçük bir zaman yaşayacaksınız. **Başlangıç** durumunda olmak, işletim sistemi başlangıç veya işletim sistemi tamamen başlatıldı anlamına gelir. Sonuç olarak, ünitenin yeniden başlatıldıktan sonra, durum **Başlatıldı'ya**geçer girmez üniteye hemen giriş yapmayı bekleyemezsiniz.
 
 > [!IMPORTANT]
-> HANA büyük örnek biriminizdeki bellek miktarına bağlı olarak, donanımın ve işletim sisteminin yeniden başlatılması ve yeniden başlatılması bir saate kadar sürebilir
+> HANA Büyük Örnek biriminizdeki bellek miktarına bağlı olarak, donanımın yeniden başlatılması ve yeniden başlatılması ve işletim sisteminin bir saat kadar sürebilir
 
 
-## <a name="open-a-support-request-for-hana-large-instances"></a>HANA büyük örnekleri için bir destek isteği açın
-HANA büyük örnek birimlerinin Azure portal, özel olarak yalnızca bir HANA büyük örnek birimi için destek istekleri de oluşturabilirsiniz. **Yeni destek isteği** bağlantısını takip ettiğiniz için 
+## <a name="open-a-support-request-for-hana-large-instances"></a>HANA büyük Örnekleri için bir destek isteği açın
+HANA Büyük Örnek birimlerinin Azure portalı ekranından, özellikle HANA büyük Örnek birimi için destek istekleri oluşturabilirsiniz. Bağlantıyı takip ettikçe **Yeni destek isteği** 
 
-![hizmet isteği adımını başlatma #1 Azure portal](./media/hana-li-portal/portal-initiate-support-request.png)
+![Azure portalında hizmet isteği adım #1 başlatma](./media/hana-li-portal/portal-initiate-support-request.png)
 
-Bir sonraki ekranda listelenen SAP HANA Büyük Örnekleri hizmetini almak için aşağıda gösterildiği gibi ' tüm hizmetler ' i seçmeniz gerekebilir
+SAP HANA Büyük Örnekleri'nin hizmetini bir sonraki ekranda listelemek için aşağıda gösterildiği gibi 'Tüm Hizmetler'i seçmeniz gerekebilir
 
-![Azure portal tüm hizmetleri seçin](./media/hana-li-portal/portal-create-service-request.png)
+![Azure portalındaki tüm hizmetleri seçin](./media/hana-li-portal/portal-create-service-request.png)
 
-Hizmetler listesinde, hizmet **SAP HANA büyük örnek**' i bulabilirsiniz. Bu hizmeti seçerken, belirli sorun türlerini gösterildiği gibi seçebilirsiniz:
+Hizmetler listesinde, hizmet **SAP HANA Büyük Örnek**bulabilirsiniz. Bu hizmeti seçerken, gösterildiği gibi belirli sorun türlerini seçebilirsiniz:
 
 
-![Azure portal sorun sınıfını seçin](./media/hana-li-portal/portal-select-problem-class.png)
+![Azure portalında sorun sınıfı seçin](./media/hana-li-portal/portal-select-problem-class.png)
 
-Farklı sorun türlerinin her birinde, sorununuzun daha fazla niteleyebileceği bir sorun alt türü seçmeniz önerilir. Alt türü seçtikten sonra, şimdi konuyu adı verebilirsiniz. Seçim süreciyle işiniz bittiğinde, oluşturma işleminin bir sonraki adımına geçebilirsiniz. **Çözümler** bölümünde, Hana büyük örnekleri etrafında, sorununuzun çözümüne yönelik bir işaretçi veren bir belge gösterilir. Önerilen belgelerde sorun için bir çözüm bulamıyorsanız bir sonraki adıma geçebilirsiniz. Bir sonraki adımda, sorunun VM 'Ler mi yoksa HANA büyük örnek birimleri ile mi olduğunu sorulur. Bu bilgiler, Destek isteğini doğru uzmanlarına yönlendirmenize yardımcı olur. 
+Farklı sorun türlerinin her birinin altında, sorununuzu daha fazla karakterize etmek için seçmeniz gereken bir dizi sorun alt türü sunulur. Alt türü seçtikten sonra, artık özne yi adlandırabilirsiniz. Seçim işlemini bitirdikten sonra, oluşturmanın bir sonraki adımına geçebilirsiniz. **Çözümler** bölümünde, HANA Büyük Örnekleri etrafında belgelere işaret edilirsiniz, bu da sorununuzun çözümüne işaret verebilir. Önerilen belgelerde sorununuzun bir çözüm bulamıyorsanız, bir sonraki adıma gidersiniz. Bir sonraki adımda, sorunun VM'lerde mi yoksa HANA Büyük Örnek birimleriyle mi olduğu sorulur. Bu bilgiler, destek isteğini doğru uzmanlara yönlendirmeye yardımcı olur. 
 
-![Azure portal destek çalışmasının ayrıntıları](./media/hana-li-portal/portal-support-request-details.png)
+![Azure portalında destek durumu ayrıntıları](./media/hana-li-portal/portal-support-request-details.png)
 
-Soruları cevaplayın ve ek ayrıntılar sağladıkça, Destek isteğini gözden geçirmek ve göndermek için bir sonraki adıma geçebilirsiniz.
+Soruları yanıtladıkça ve ek ayrıntılar verdikçe, destek isteğini gözden geçirmek ve göndermek için bir sonraki adımı atabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure 'da SAP HANA (büyük örnekler) izleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
+- [Azure'da SAP HANA (büyük örnekler) nasıl izlenir?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 - [HANA tarafından izleme ve sorun giderme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)
 

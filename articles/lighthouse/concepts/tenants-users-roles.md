@@ -1,48 +1,51 @@
 ---
-title: Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
-description: Azure Active Directory kiracılar, kullanıcılar ve roller kavramlarını ve bunların Azure Use senaryolarında nasıl kullanılabileceğini anlayın.
-ms.date: 01/16/2020
+title: Azure Deniz Feneri senaryolarında kiracılar, roller ve kullanıcılar
+description: Azure Etkin Dizin kiracıları, kullanıcıları ve rolleri kavramlarını ve Azure Deniz Feneri senaryolarında nasıl kullanılabileceğini anlayın.
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 7540e17fd80f9a1d8e996295000c126614b838d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156344"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246900"
 ---
-# <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure açık senaryolarındaki kiracılar, roller ve kullanıcılar
+# <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Deniz Feneri senaryolarında kiracılar, roller ve kullanıcılar
 
-[Azure 'un Temsilcili kaynak yönetimine](azure-delegated-resource-management.md)yönelik olarak müşterileri eklemeden önce, Azure Active Directory (Azure AD) kiracılarının, kullanıcıların ve rollerinin nasıl çalıştığını ve Azure açık thouse senaryolarında nasıl kullanılabileceğini anlamak önemlidir.
+[Azure temsilci kaynak yönetimi](azure-delegated-resource-management.md)için müşterilere binmeden önce, Azure Etkin Dizin (Azure AD) kiracılarının, kullanıcılarının ve rollerinin nasıl çalıştığını ve Azure Deniz Feneri senaryolarında nasıl kullanılabileceğini anlamak önemlidir.
 
-*Kiracı* , Azure AD 'nin adanmış ve güvenilir bir örneğidir. Genellikle, her kiracı tek bir kuruluşu temsil eder. Azure Temsilcili kaynak yönetimi, kaynakların bir kiracıdan başka bir kiracıya mantıksal olarak projeksiyonunu sağlar. Bu, yönetim kiracısındaki (bir hizmet sağlayıcısına ait olan) kullanıcıların, bir müşterinin kiracısındaki Temsilcili kaynaklara erişmesine olanak sağlar veya [birden çok kiracıya sahip kuruluşların yönetim işlemlerini merkezileştirmelerini](enterprise.md)sağlar.
+*Kiracı,* Azure AD'nin adanmış ve güvenilir bir örneğidir. Genellikle, her kiracı tek bir kuruluşu temsil eder. Azure temsilci kaynak yönetimi, kaynakların bir kiracıdan başka bir kiracıya mantıksal olarak projeksiyonuna olanak tanır. Bu, yönetici kiracıdaki (bir hizmet sağlayıcısına ait olan) kullanıcıların müşterinin kiracısında ki temsilci kaynaklarına erişmesine veya [birden çok kiracıya sahip işletmelerin yönetim işlemlerini merkezileştirmesine](enterprise.md)olanak tanır.
 
-Bu mantıksal projeksiyonu başarmak için, müşteri kiracısındaki abonelik (veya bir veya daha fazla kaynak grubu), Azure tarafından yetkilendirilen kaynak yönetimi için *eklendi* olmalıdır. Bu ekleme işlemi, [Azure Resource Manager şablonlar aracılığıyla](../how-to/onboard-customer.md) veya [Azure Market 'e genel veya özel bir teklif yayınlayarak](../how-to/publish-managed-services-offers.md)yapılabilir.
+Bu mantıksal projeksiyonu gerçekleştirmek için, müşteri kiracısında bulunan bir abonelik (veya abonelik içindeki bir veya daha fazla kaynak grubu) Azure temsilcikaynak yönetimi için *gemide* olmalıdır. Bu onboarding işlemi, [Azure Kaynak Yöneticisi şablonları aracılığıyla](../how-to/onboard-customer.md) veya [Azure Marketi'ne genel veya özel bir teklif yayımlayarak](../how-to/publish-managed-services-offers.md)yapılabilir.
 
-Seçtiğiniz ekleme yöntemine ne olursa *yetkilendirmeler*tanımlamanız gerekecektir. Her yetkilendirme, yönetim kiracısında, temsilcili kaynaklara erişimi olacak bir kullanıcı hesabı ve bu kullanıcıların her birinin bu kaynaklar için sahip olacağı izinleri ayarlayan yerleşik bir rol belirler.
+Hangi onboarding yöntemini seçerseniz seçin, *yetkilendirmeleri*tanımlamanız gerekir. Her yetkilendirme, yönetici kiracıda, devredilen kaynaklara erişimi olacak bir kullanıcı hesabı ve bu kullanıcıların her birinin bu kaynaklar için sahip olacağı izinleri belirleyen yerleşik bir rol belirtir.
 
-## <a name="role-support-for-azure-delegated-resource-management"></a>Azure tarafından atanan kaynak yönetimi için rol desteği
+## <a name="role-support-for-azure-delegated-resource-management"></a>Azure temsilci kaynak yönetimi için rol desteği
 
-Bir yetkilendirme tanımlarken, her kullanıcı hesabına [rol tabanlı erişim denetimi (RBAC) yerleşik rollerinin](../../role-based-access-control/built-in-roles.md)biri atanmalıdır. Özel roller ve [Klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
+Yetkilendirme tanımlanırken, her kullanıcı hesabına rol [tabanlı erişim denetimi (RBAC) yerleşik rollerinden](../../role-based-access-control/built-in-roles.md)biri atanmalıdır. Özel roller ve [klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
 
-Aşağıdaki özel durumlarla birlikte, tüm [yerleşik roller](../../role-based-access-control/built-in-roles.md) Şu anda Azure tarafından atanan kaynak yönetimi ile desteklenmektedir:
+Tüm [yerleşik roller](../../role-based-access-control/built-in-roles.md) şu anda Azure temsilci kaynak yönetimiyle aşağıdaki istisnalar dışında desteklenir:
 
-- [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolü desteklenmiyor.
-- [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) iznine sahip yerleşik roller desteklenmez.
-- [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) yerleşik rolü desteklenir, ancak yalnızca [Müşteri kiracısında yönetilen bir kimliğe rol atamanın](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)sınırlı amacı için geçerlidir. Genellikle bu rol tarafından verilen başka hiçbir izin uygulanmaz. Bu rolle bir Kullanıcı tanımlarsanız, bu kullanıcının yönetilen kimliklere atayabileceği yerleşik rolleri de belirtmeniz gerekir.
+- [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolü desteklenmez.
+- [DataActions](../../role-based-access-control/role-definitions.md#dataactions) izniyle yerleşik roller desteklenmez.
+- [Kullanıcı Erişim Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) yerleşik rolü desteklenir, ancak yalnızca müşteri [kiracısında yönetilen bir kimliğe rol atamak](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)için sınırlı bir amaç için. Genellikle bu rol tarafından verilen başka izinler geçerli olmayacaktır. Bu role sahip bir kullanıcı tanımlarsanız, bu kullanıcının yönetilen kimliklere atayabileceği yerleşik rolü(ler) de belirtmeniz gerekir.
 
 > [!NOTE]
-> Uygun yeni bir yerleşik rol Azure 'a eklendikten sonra, [Azure Resource Manager şablonları kullanarak bir müşteriyi](../how-to/onboard-customer.md)eklerken atanabilir. [Yönetilen bir hizmet teklifi yayımlanırken](../how-to/publish-managed-services-offers.md)bulut iş ortağı portalı yeni eklenen rol kullanılabilir hale gelmeden önce bir gecikme olabilir.
+> Azure'a geçerli bir yeni yerleşik rol eklendikten sonra, [Azure Kaynak Yöneticisi şablonlarını kullanarak bir müşteriye binerken](../how-to/onboard-customer.md)atanabilir. Yönetilen bir [hizmet teklifini yayınlarken,](../how-to/publish-managed-services-offers.md)yeni eklenen rolün Bulut İş Ortağı Portalı'nda kullanıma sunulması gecikme olabilir.
 
-## <a name="best-practices-for-defining-users-and-roles"></a>Kullanıcıları ve rolleri tanımlamaya yönelik en iyi uygulamalar
+## <a name="best-practices-for-defining-users-and-roles"></a>Kullanıcıları ve rolleri tanımlamak için en iyi uygulamalar
 
-Yetkilendirmeleri oluştururken aşağıdaki en iyi yöntemleri öneririz:
+Yetkilendirmelerinizi oluştururken, aşağıdaki en iyi uygulamaları öneririz:
 
-- Çoğu durumda, tek bir kullanıcı hesabı serisi yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna izin atamak isteyeceksiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayınlamak zorunda kalmadan bireysel kullanıcılar için erişim eklemenize veya kaldırmanıza olanak sağlar.
-- Kullanıcıların yalnızca işini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun, böylece yanlışlıkla oluşan hatalar olasılığını azaltmaya yardımcı olur. Daha fazla bilgi için bkz. [Önerilen güvenlik uygulamaları](../concepts/recommended-security-practices.md).
-- Gerekirse, daha sonra [temsilciye erişimi kaldırabilmeniz için](../how-to/onboard-customer.md#remove-access-to-a-delegation) , [yönetilen hizmetler kayıt ataması silme rolüne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) sahip bir kullanıcı ekleyin. Bu rol atanmamışsa, atanan kaynaklar yalnızca müşterinin kiracısındaki bir kullanıcı tarafından kaldırılabilir.
-- [Azure Portal müşterileri sayfasını görüntülemesi](../how-to/view-manage-customers.md) gereken tüm kullanıcıların [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olduğundan emin olun.
+- Çoğu durumda, bir dizi tek tek kullanıcı hesabı yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna izin atamak istersiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayımlamak zorunda kalmadan tek tek kullanıcılara erişim eklemenize veya kaldırmanıza olanak tanır.
+- Kullanıcıların yalnızca işlerini tamamlamak için gereken izinlere sahip olmaları ve yanlışlıkla hata olasılığını azaltmalarına yardımcı olmak için en az ayrıcalık ilkesine uymayı unutmayın. Daha fazla bilgi için önerilen [güvenlik uygulamalarına](../concepts/recommended-security-practices.md)bakın.
+- Gerekirse daha sonra [temsilciye erişimi kaldırabilmeniz için](../how-to/onboard-customer.md#remove-access-to-a-delegation) Yönetilen Hizmetler Kaydı Atama Silme [Rolü'ne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) sahip bir kullanıcı ekleyin. Bu rol atanmazsa, devredilen kaynaklar yalnızca müşterinin kiracısındaki bir kullanıcı tarafından kaldırılabilir.
+- [Azure portalında Müşterilerim sayfasını görüntülemesi](../how-to/view-manage-customers.md) gereken herhangi bir kullanıcının [Okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne (veya Okuyucu erişimini içeren başka bir yerleşik role) sahip olduğundan emin olun.
+
+> [!IMPORTANT]
+> Bir Azure REKLAM grubu için izin eklemek için **Grup türü** **Office 365** **değil, Güvenlik** olmalıdır. Grup oluşturulduğunda bu seçenek seçilir. Daha fazla bilgi için [bkz.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure tarafından [atanan kaynak yönetimi için önerilen güvenlik uygulamaları](recommended-security-practices.md)hakkında bilgi edinin.
-- Müşterilerinizi [Azure Resource Manager şablonları kullanarak](../how-to/onboard-customer.md) veya [Azure Market 'e özel veya genel olarak yönetilen bir hizmet teklifi yayımlayarak](../how-to/publish-managed-services-offers.md), Azure tarafından atanan kaynak yönetimine ekleyin.
+- Azure [temsilci kaynak yönetimi için önerilen güvenlik uygulamaları](recommended-security-practices.md)hakkında bilgi edinin.
+- Müşterilerinizi [Azure Kaynak Yöneticisi şablonlarını kullanarak](../how-to/onboard-customer.md) veya Azure [Marketi'nde özel veya genel olarak yönetilen bir hizmet teklifi yayınlayarak](../how-to/publish-managed-services-offers.md)Azure'a devredilen kaynak yönetimine dahil edin.

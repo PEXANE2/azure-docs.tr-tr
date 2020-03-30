@@ -1,7 +1,7 @@
 ---
-title: IntelliJ Azure Toolkit (Önizleme) ile Spark işinde hata ayıklama-HDInsight
-description: Uygulamalarda hata ayıklamak için Azure Toolkit for IntelliJ HDInsight araçlarını kullanma kılavuzu
-keywords: Uzaktan IntelliJ, uzaktan hata ayıklama IntelliJ, SSH, IntelliJ, HDInsight, hata ayıklama IntelliJ, hata ayıklama
+title: IntelliJ Azure Araç Seti ile Hata Ayıklama Kıvılcımı işi (önizleme) - HDInsight
+description: Uygulamaları hata ayıklamak için IntelliJ için Azure Araç Setinde HDInsight Araçlarını kullanma kılavuzu
+keywords: hata ayıklama uzaktan intellij, uzaktan hata ayıklama intellij, ssh, intellij, hdinsight, hata ayıklama intellij, hata ayıklama
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,139 +10,139 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494597"
 ---
-# <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ Spark iş hata ayıklaması başarısız oldu (Önizleme)
+# <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>IntelliJ için Azure Araç Seti ile hata ayıklama hatası (önizleme)
 
-Bu makalede **Spark hata ayıklama** uygulamalarını çalıştırmak için [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) 'de HDInsight araçlarının nasıl kullanılacağına ilişkin adım adım yönergeler sunulmaktadır.
+Bu makalede, **Spark Hatası Hata Ayıklama** uygulamalarını çalıştırmak [için IntelliJ için Azure Araç Kiti'nde](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) HDInsight Araçları'nın nasıl kullanılacağı hakkında adım adım kılavuz luluk sağlanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Oracle Java geliştirme seti](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Bu öğretici, Java sürüm 8.0.202 kullanır.
+* [Oracle Java Geliştirme kiti](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Bu öğretici, Java sürümü 8.0.202 kullanır.
   
-* IntelliJ fıkrı. Bu makalede [IntelliJ fikir Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)kullanılmaktadır.
+* IntelliJ IDEA. Bu makalede [IntelliJ IDEA Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)kullanabı vardır.
   
-* Azure Toolkit for IntelliJ. Bkz. [Azure Toolkit for IntelliJ yükleme](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
+* IntelliJ için Azure Araç Seti. Bkz. [IntelliJ için Azure Araç Kiti'ni yükleme.](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)
 
-* HDInsight kümenize bağlanın. Bkz. [HDInsight kümenize bağlanma](apache-spark-intellij-tool-plugin.md).
+* HDInsight kümenize bağlanın. Bkz. [HDInsight kümenize bağlan.](apache-spark-intellij-tool-plugin.md)
 
-* Microsoft Azure Depolama Gezgini. Bkz. [indirme Microsoft Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/).
+* Microsoft Azure Depolama Gezgini. Bkz. [Microsoft Azure Depolama Gezgini'ni İndirin.](https://azure.microsoft.com/features/storage-explorer/)
 
-## <a name="create-a-project-with-debugging-template"></a>Hata ayıklama şablonuyla proje oluşturma
+## <a name="create-a-project-with-debugging-template"></a>Hata ayıklama şablonu içeren bir proje oluşturma
 
-Hata ayıklamaya devam etmek için bir Spark 2.3.2 projesi oluşturun, bu belgede hata ayıklama örnek dosyası alın.
+Hata hata ayıklama devam etmek için bir spark2.3.2 proje oluşturun, bu belgede örnek dosya hata ayıklama hata ayıklama almak.
 
-1. IntelliJ IDEA’yı açın. **Yeni proje** penceresini açın.
+1. IntelliJ IDEA’yı açın. Yeni **Proje** penceresini açın.
 
-   a. Sol bölmeden **Azure Spark/HDInsight** ' ı seçin.
+   a. Sol bölmeden **Azure Spark/HDInsight'ı** seçin.
 
-   b. Ana pencereden **hata hata ayıklama örneği (Önizleme) (Scala) Ile Spark projesi** öğesini seçin.
+   b. Ana pencereden **Hata Görevi Hata Ayıklama Örneği(Önizleme)(Scala) ile Spark Project'i** seçin.
 
-     ![IntelliJ hata ayıklama projesi oluşturma](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
+     ![Intellij Hata ayıklama projesi oluşturma](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. **İleri**’yi seçin.
+   c. **Sonraki'ni**seçin.
 
-2. **Yeni proje** penceresinde aşağıdaki adımları uygulayın:
+2. Yeni **Proje** penceresinde aşağıdaki adımları yapın:
 
-   ![IntelliJ yeni proje Spark sürümü Seç](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
+   ![Intellij Yeni Proje Spark sürümü seçin](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
 
-   a. Bir proje adı ve proje konumu girin.
+   a. Proje adı ve proje konumu girin.
 
-   b. **Proje SDK 'sı** açılan listesinde **Spark 2.3.2** kümesi için **Java 1,8** ' ı seçin.
+   b. Project **SDK** açılır listesinde, **Spark 2.3.2** kümesi için **Java 1.8'i** seçin.
 
-   c. **Spark sürümü** açılan listesinde **Spark 2.3.2 (Scala 2.11.8)** öğesini seçin.
+   c. **Spark Sürüm** açılır listesinde, **Spark 2.3.2(Scala 2.11.8)** seçeneğini belirleyin.
 
-   d. **Son**’u seçin.
+   d. **Bitiş'i**seçin.
 
-3. Kodunuzu projede açmak için **src** > **Main** > **Scala** ' yı seçin. Bu örnek, **AgeMean_Div ()** betiğini kullanır.
+3. Projede kodunuzu açmak için **src** > **main** > **scala'yı** seçin. Bu örnekte **AgeMean_Div()** komut dosyası kullanır.
 
-## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>HDInsight kümesinde Spark Scala/Java uygulaması çalıştırma
+## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>HDInsight kümesinde Bir Kıvılcım Scala/Java uygulamasını çalıştırma
 
-Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları uygulayarak uygulamayı bir Spark kümesinde çalıştırın:
+Bir kıvılcım Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları yaparak uygulamayı bir Kıvılcım kümesi üzerinde çalıştırın:
 
-1. **Yapılandırma Ekle** ' ye tıklayarak **Çalıştır/hata ayıklama yapılandırmaları** penceresini açın.
+1. **Çalıştır/Hata Ayıklama Yapılandırmaları** penceresini açmak için **Yapılandırma Ekle'yi** tıklatın.
 
-   ![HDI IntelliJ yapılandırma Ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
+   ![HDI Intellij Yapılandırma ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunda artı işaretini ( **+** ) seçin. Sonra **HDInsight üzerinde Apache Spark** seçeneğini belirleyin.
+2. **Çalıştır/Hata Ayıklama Yapılandırmaları** iletişim kutusunda artı işaretini (**+**. Ardından **HDInsight'ta Apache Spark** seçeneğini seçin.
 
-   ![IntelliJ yeni yapılandırma Ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
+   ![Intellij Yeni yapılandırma ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Küme sekmesinde **Uzaktan Çalıştır** ' a geçiş yapın. **ad**, **Spark kümesi**ve **ana sınıf adı**bilgilerini girin. Araçlarımız **Yürüticiler**ile hata ayıklamayı destekler. **Numexectors**, varsayılan değer 5 ' tir ve 3 ' ten daha yüksek bir değere ayarlanmamalıdır. Çalışma süresini azaltmak için **spark. yarn. maxAppAttempts** 'Yi **iş yapılandırmalarına** ekleyebilir ve değeri 1 olarak ayarlayabilirsiniz. Yapılandırmayı kaydetmek için **Tamam** düğmesine tıklayın.
+3. Küme **sekmesinde Uzaktan Çalıştır'a** geç. **Ad,** **Kıvılcım kümesi**ve Ana **sınıf adı**için bilgi girin. Araçlarımız **Uygulayıcılar**ile hata ayıklama destekler. **NumExectors**, varsayılan değeri 5 ve daha iyi 3 daha yüksek ayarlamak istiyorum. Çalışma süresini azaltmak için **iş Yapılandırmalarına** **spark.iplik.maxAppGirişimleri** ekleyebilir ve değeri 1 olarak ayarlayabilirsiniz. Yapılandırmayı kaydetmek için **Tamam** düğmesini tıklatın.
 
-   ![IntelliJ hata ayıklama yapılandırmasını yeni Çalıştır](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
+   ![Intellij Çalıştır hata ayıklama yapılandırmaları yeni](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
-4. Yapılandırma artık verdiğiniz adla birlikte kaydedilir. Yapılandırma ayrıntılarını görüntülemek için yapılandırma adını seçin. Değişiklik yapmak için, **konfigürasyonları Düzenle**' yi seçin.
+4. Yapılandırma artık sağladığınız adla kaydedilir. Yapılandırma ayrıntılarını görüntülemek için yapılandırma adını seçin. Değişiklik yapmak için **Yapılandırmaları Düzenleme'yi**seçin.
 
-5. Yapılandırma ayarlarını tamamladıktan sonra, projeyi uzak kümede çalıştırabilirsiniz.
+5. Yapılandırma ayarlarını tamamladıktan sonra, projeyi uzak kümeye karşı çalıştırabilirsiniz.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi uzaktan çalıştırma düğmesi](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
+   ![Intellij Hata Ayıklama Uzaktan Kıvılcım İş Uzaktan çalıştırma düğmesi](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
 
-6. Çıkış penceresinden uygulama KIMLIĞI ' ni kontrol edebilirsiniz.
+6. Çıkış penceresinden uygulama kimliğini kontrol edebilirsiniz.
 
-   ![IntelliJ hata ayıklama uzak Spark Işi uzak çalıştırma sonucu](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
+   ![Intellij Hata Ayıklama Uzaktan Kıvılcım İş Uzaktan çalıştırma sonucu](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
 
-## <a name="download-failed-job-profile"></a>Başarısız iş profilini indir
+## <a name="download-failed-job-profile"></a>Başarısız iş profilini indirin
 
-İş gönderimi başarısız olursa, daha fazla hata ayıklama için başarısız iş profilini yerel makineye indirebilirsiniz.
+İş gönderme başarısız olursa, daha fazla hata ayıklama için yerel makineye başarısız iş profili indirebilirsiniz.
 
-1. **Microsoft Azure Depolama Gezgini**açın, başarısız iş Için kümenin HDInsight hesabını bulun, ilgili konumdan başarısız iş kaynaklarını indirin: **\hdp\parlak 2-Events\\. spark-hatalarıyla\\\<uygulama KIMLIĞI** yerel bir klasöre >. **Etkinlik** penceresinde indirme ilerleme durumu gösterilir.
+1. **Microsoft Azure Depolama Gezgini'ni**açın, başarısız iş için kümenin HDInsight hesabını bulun, başarısız iş kaynaklarını ilgili konumdan indirin: **\hdp\spark2-events\\.spark-failures\\\<uygulama kimliği yerel** bir klasöre>. **Etkinlikler** penceresi karşıdan yükleme ilerlemesini gösterir.
 
-   ![İndirme hatası Azure Depolama Gezgini](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   ![Azure Depolama Gezgini indirme hatası](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
-   ![İndirme başarılı Azure Depolama Gezgini](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
+   ![Azure Depolama Gezgini indirme başarısı](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
 
-## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Yerel hata ayıklama ortamını yapılandırma ve hatada hata ayıklama
+## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Yerel hata ayıklama ortamını yapılandırma ve hata hata ayıklama
 
-1. Orijinal projeyi açın veya yeni bir proje oluşturun ve özgün kaynak kodla ilişkilendirin. Şu anda hata ayıklama hatası için yalnızca Spark 2.3.2 sürümü destekleniyor.
+1. Özgün projeyi açın veya yeni bir proje oluşturun ve özgün kaynak koduyla ilişkilendirin. Yalnızca spark2.3.2 sürümü şu anda hata ayıklama hatası için desteklenir.
 
-1. IntelliJ ıDEA **Spark hata ayıklama** yapılandırma dosyası oluşturun, **Spark iş hatası bağlam konumu** alanı için önceden indirilen başarısız iş kaynaklarından FTD dosyasını seçin.
+1. IntelliJ IDEA'da, Bir **Kıvılcım Hatası Hata Ayıklama** config dosyası oluşturun, **Spark İş Hatası Bağlamı konum** alanı için önceden indirilen başarısız iş kaynaklarından FTD dosyasını seçin.
 
-   ![Crete hata yapılandırması](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   ![girit arıza yapılandırması](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
-1. Araç çubuğundaki yerel çalıştırma düğmesine tıklayın, hata Çalıştır penceresinde görüntülenir.
+1. Araç çubuğundaki yerel çalıştır düğmesini tıklatın, hata Çalıştır penceresinde görüntülenir.
 
-   ![çalışma-hata-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   ![run-failure-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
 
-   ![çalışma-hata-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   ![run-failure-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
-1. Günlük gösterdiği için kesme noktası ayarlayın, sonra da IntelliJ 'deki normal Scala/Java projeleriniz gibi yerel hata ayıklama yapmak için yerel hata ayıklama düğmesine tıklayın.
+1. Günlük gösterdiği gibi kesme noktasını ayarlayın, ardından IntelliJ'deki normal Scala / Java projeleriniz gibi yerel hata ayıklama yapmak için yerel hata ayıklama düğmesini tıklatın.
 
-1. Hata ayıkladıktan sonra, proje başarıyla tamamlanırsa, başarısız işi HDInsight kümesinde Spark uygulamanıza yeniden gönderebilirsiniz.
+1. Hata ayıklamadan sonra, proje başarıyla tamamlanırsa, başarısız işi HDInsight kümesindeki kıvılcımınıza yeniden gönderebilirsiniz.
 
-## <a name="seealso"></a>Sonraki adımlar
+## <a name="next-steps"></a><a name="seealso"></a>Sonraki adımlar
 
-* [Genel Bakış: Apache Spark uygulamalarda hata ayıkla](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Genel Bakış: Hata Ayıklama Apache Spark uygulamaları](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
 ### <a name="demo"></a>Tanıtım
 
-* Scala projesi oluşturma (video): [Apache Spark Scala uygulamaları oluşturma](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Uzaktan hata ayıklama (video): [HDInsight kümesinde Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Scala projesi oluşturma (video): [Apache Spark Scala Uygulamaları Oluşturma](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Uzaktan hata ayıklama (video): [Bir HDInsight kümesinde Apache Spark uygulamalarını uzaktan hata ayıklamak için IntelliJ için Azure Araç Kiti'ni kullanın](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Senaryolar
 
-* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
-* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak derleme sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [BI ile Apache Spark: HDInsight'ta Spark'ı BI araçlarıyla kullanarak etkileşimli veri analizi yapın](apache-spark-use-bi-tools.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak bina sıcaklığını analiz etmek için HDInsight'ta Kıvılcım'ı kullanın](apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning ile Apache Spark: Gıda denetimi sonuçlarını tahmin etmek için HDInsight'ta Kıvılcım'ı kullanın](apache-spark-machine-learning-mllib-ipython.md)
+* [HDInsight'ta Apache Spark kullanarak web sitesi günlük analizi](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Uygulamaları oluşturma ve çalıştırma
 
 * [Scala kullanarak tek başına uygulama oluşturma](../hdinsight-apache-spark-create-standalone-application.md)
-* [Apache Livy kullanarak Apache Spark kümesinde işleri uzaktan çalıştırma](apache-spark-livy-rest-interface.md)
+* [Apache Livy'yi kullanarak apache Spark kümesinde işleri uzaktan çalıştırın](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Araçlar ve uzantılar
 
-* [HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ kullanma](apache-spark-intellij-tool-plugin.md)
-* [VPN aracılığıyla Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Hortonçalışmalar korumalı alanı ile IntelliJ için HDInsight araçlarını kullanma](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Apache Spark uygulamalar oluşturmak için Azure Toolkit for Eclipse HDInsight araçlarını kullanma](../hdinsight-apache-spark-eclipse-tool-plugin.md)
-* [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
+* [BIR HDInsight kümesi için Apache Spark uygulamaları oluşturmak için IntelliJ için Azure Araç Kiti'ni kullanın](apache-spark-intellij-tool-plugin.md)
+* [Vpn üzerinden Apache Spark uygulamalarını uzaktan hata ayıklamak için IntelliJ için Azure Araç Kiti'ni kullanın](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Hortonworks Sandbox ile IntelliJ için HDInsight Araçlarını Kullanın](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
+* [Apache Spark uygulamaları oluşturmak için Eclipse için Azure Araç Setinde HDInsight Araçlarını kullanın](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [HDInsight'ta Apache Spark kümesine sahip Apache Zeppelin dizüstü bilgisayarları kullanma](apache-spark-zeppelin-notebook.md)
+* [HDInsight için Apache Spark kümesinde Jupyter dizüstü bilgisayar için çekirdekler mevcuttur](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 

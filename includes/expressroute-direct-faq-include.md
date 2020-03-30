@@ -9,36 +9,36 @@ ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
 ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73182294"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct nedir?
 
-ExpressRoute Direct, müşterilere Microsoft’un dünya çapında stratejik noktalara yerleştirilmiş eşleme konumlarından oluşan küresel ağına doğrudan bağlanabilme olanağı sağlar. ExpressRoute Direct, ölçek üzerinde etkin/etkin bağlantıyı destekleyen iki 100 veya 10 Gbps bağlantı sağlar. 
+ExpressRoute Direct, müşterilere Microsoft’un dünya çapında stratejik noktalara yerleştirilmiş eşleme konumlarından oluşan küresel ağına doğrudan bağlanabilme olanağı sağlar. ExpressRoute Direct, ölçekte Active/Active bağlantısını destekleyen çift 100 veya 10 Gbps bağlantı sağlar. 
 
-### <a name="how-do-customers-connect-to-expressroute-direct"></a>Müşteriler ExpressRoute Direct 'e nasıl bağlanır? 
+### <a name="how-do-customers-connect-to-expressroute-direct"></a>Müşteriler ExpressRoute Direct'e nasıl bağlanır? 
 
-ExpressRoute Direct 'ten faydalanmak için müşterilerin ExpressRoute yönlendiricilerine bağlantı alması için yerel taşıyıcılar ve ortak konum sağlayıcılarıyla birlikte çalışması gerekecektir.
+Müşterilerin ExpressRoute Direct'den yararlanmak için ExpressRoute yönlendiricilerine bağlantı sağlamak için yerel operatörleri ve ortak konum sağlayıcılarıyla birlikte çalışmaları gerekir.
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>Şu anda ExpressRoute Direct 'i hangi konumlarda destekliyor? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Şu anda ExpressRoute Direct'i destekleyen konumlar nelerdir? 
 
-Lütfen [konum sayfasında](../articles/expressroute/expressroute-locations-providers.md)kullanılabilirliği denetleyin. 
+Lütfen [konum sayfasındaki](../articles/expressroute/expressroute-locations-providers.md)kullanılabilirliği kontrol edin. 
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>ExpressRoute Direct için SLA nedir?
 
-ExpressRoute Direct, [ExpressRoute 'un kurumsal sınıf](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)aynısını kullanır. 
+ExpressRoute Direct, [ExpressRoute'un](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)aynı kurumsal sınıfını kullanacaktır. 
 
-### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Müşterilerin ExpressRoute Direct ile hangi senaryolar dikkate alınmalıdır?  
+### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Müşteriler ExpressRoute Direct ile hangi senaryoları göz önünde bulundurmalıdır?  
 
-ExpressRoute Direct, müşterilere Microsoft Global omurgaya doğrudan 100 veya 10 Gbps bağlantı noktası çiftleri sağlar. Müşterilerimize en yüksek avantajları sağlayacak senaryolar şunlardır: büyük miktarda veri alma, düzenlenen pazarlar için fiziksel yalıtım ve işleme gibi veri bloğu senaryosu için adanmış kapasite. 
+ExpressRoute Direct, müşterilere Microsoft küresel omurgasına doğrudan 100 veya 10 Gbps bağlantı noktası çifti sağlar. Müşterilere en büyük avantajları sağlayacak senaryolar şunlardır: Büyük veri alımı, düzenlenmiş pazarlar için fiziksel yalıtım ve işleme gibi patlama senaryosu için özel kapasite. 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>ExpressRoute Direct için faturalandırma modeli nedir? 
 
-ExpressRoute Direct, bağlantı noktası çifti için sabit bir miktar olarak faturalandırılır. Standart devreler ek bir saat olmaksızın dahil edilir ve Premium, hafif bir eklenti ücretine sahip olur. Çıkış, eşleme konumunun bölgesine bağlı olarak her bir devre temelinde faturalandırılır.
+ExpressRoute Direct bağlantı noktası çifti için sabit bir tutarda faturalandırılır. Standart devreler ek saat olmadan dahil edilecek ve premium hafif bir eklenti ücreti ne olacak. Çıkış, bakan konumun bölgesine göre devre bazında faturalandırılır.
 
-### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>ExpressRoute doğrudan bağlantı noktası çiftleri için faturalandırma ne zaman başlar?
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>ExpressRoute Direct bağlantı noktası çiftleri için faturalandırma ne zaman başlar?
 
-ExpressRoute Direct 'in bağlantı noktası çiftleri 45 gün boyunca ExpressRoute doğrudan kaynağının oluşturulmasına veya bağlantıların 1 veya her ikisinin de etkinleştirilmediğinde, hangisi önce geldiğini faturalandırılır. 45 günlük yetkisiz kullanım süresi, müşterilerin çapraz bağlantı sürecini birlikte bulundurma sağlayıcısıyla tamamçalıştırmasına izin vermek için verilir.
+ExpressRoute Direct'in bağlantı noktası çiftleri, ExpressRoute Direct kaynağının oluşturulmasından 45 gün sonra veya bağlantıların 1'i veya her ikisi etkinleştirildiğinde (hangisi önce gerçekleşirse) faturalandırılır. Müşterilerin ortak konum sağlayıcısıyla çapraz bağlantı işlemini tamamlamasına olanak sağlamak için 45 günlük yetkisiz kullanım süresi verilir.

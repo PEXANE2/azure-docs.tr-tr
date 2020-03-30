@@ -1,6 +1,6 @@
 ---
-title: StorSimple Sanal dizisi için yük devretme ve olağanüstü durum kurtarma
-description: StorSimple Sanal dizinizi yük devretme hakkında daha fazla bilgi edinin.
+title: StorSimple Virtual Array için failover ve olağanüstü durum kurtarma
+description: StorSimple Virtual Array'inizin nasıl başarısız olduğu hakkında daha fazla bilgi edinin.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,169 +16,169 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77467224"
 ---
-# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure portal aracılığıyla StorSimple Sanal diziniz için olağanüstü durum kurtarma ve cihaz yük devretmesi
+# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure portalı aracılığıyla StorSimple Sanal Diziniz için olağanüstü durum kurtarma ve cihaz yükü devretme
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, başka bir sanal diziye yük devretmek için ayrıntılı adımlar da dahil olmak üzere Microsoft Azure StorSimple Sanal diziniz için olağanüstü durum kurtarma açıklanmaktadır. Yük devretme, verilerinizi veri merkezindeki bir *kaynak* cihazdan *hedef* cihaza taşımanızı sağlar. Hedef cihaz aynı veya farklı bir coğrafi konumda bulunabilir. Cihaz yük devretmesi tüm cihaza yöneliktir. Yük devretme sırasında kaynak cihaz için bulut verileri, hedef cihazın sahipliğini değiştirir.
+Bu makalede, microsoft Azure StorBasit Sanal Dizinizin olağanüstü durum kurtarma durumu, başka bir sanal dizide başarısız olmak için ayrıntılı adımları da içeren açıklanmaktadır. Bir failover, verilerinizi veri merkezindeki bir *kaynak* aygıttan *hedef* aygıta taşımanızı sağlar. Hedef aygıt aynı veya farklı bir coğrafi konumda bulunabilir. Cihaz arızası tüm aygıt içindir. Başarısız olma sırasında, kaynak aygıtın bulut verileri sahipliğini hedef aygıtın sahipliğini değiştirir.
 
-Bu makale yalnızca StorSimple Sanal dizileri için geçerlidir. 8000 serisi bir cihazın yükünü devretmek için, [StorSimple cihazınızın cihaz yük devretmesi ve olağanüstü durum kurtarma](storsimple-device-failover-disaster-recovery.md)bölümüne gidin.
+Bu makale yalnızca StorSimple Sanal Diziler için geçerlidir. 8000 serisi bir cihazda başarısız olmak [için, StorSimple cihazınızın Aygıt arızave olağanüstü kurtarma bölümüne](storsimple-device-failover-disaster-recovery.md)gidin.
 
-## <a name="what-is-disaster-recovery-and-device-failover"></a>Olağanüstü durum kurtarma ve cihaz yük devretmesi nedir?
+## <a name="what-is-disaster-recovery-and-device-failover"></a>Olağanüstü durum kurtarma ve aygıt arızası nedir?
 
-Olağanüstü durum kurtarma (DR) senaryosunda, birincil cihaz çalışmayı durduruyor. Bu senaryoda, başarısız cihazla ilişkili bulut verilerini başka bir cihaza taşıyabilirsiniz. Birincil cihazı *kaynak* olarak kullanabilir ve *hedef*olarak başka bir cihaz belirtebilirsiniz. Bu işlem, *Yük devretme*olarak adlandırılır. Yük devretme sırasında, kaynak cihazdaki tüm birimler veya Paylaşımlar sahipliği değiştirir ve hedef cihaza aktarılır. Verilerin filtrelemesine izin verilmez.
+Olağanüstü durum kurtarma (DR) senaryosunda, birincil aygıt çalışmayı durdurur. Bu senaryoda, başarısız aygıtla ilişkili bulut verilerini başka bir aygıta taşıyabilirsiniz. Birincil aygıtı *kaynak* olarak kullanabilir ve *hedef*olarak başka bir aygıt belirtebilirsiniz. Bu işlem *failover*olarak adlandırılır. Başarısız olma sırasında, kaynak aygıttaki tüm birimler veya hisseler sahipliği ni değiştirir ve hedef aygıta aktarılır. Verilerin filtrelanmasına izin verilmez.
 
-DR, ısı haritası tabanlı katmanlama ve izleme kullanılarak tam bir cihaz geri yüklemesi olarak modellenir. Bir ısı haritası, okuma ve yazma desenlerine göre verilere bir ısı değeri atanarak tanımlanır. Bu ısı haritası daha sonra en düşük ısı verisi öbeklerini önce buluta, yüksek ısı (en çok kullanılan) verilerini yerel katmanda parçalar. Bir DR sırasında StorSimple, verileri buluttan geri yüklemek ve yeniden oluşturmak için ısı haritasını kullanır. Cihaz, son son yedekteki tüm birimleri/paylaşımları (dahili olarak belirlendiği şekilde) getirir ve bu yedeklemeden geri yükleme gerçekleştirir. Sanal dizi tüm DR sürecini düzenler.
+DR, ısı haritası tabanlı katmanlama ve izleme kullanılarak tam bir cihaz geri yüklemesi olarak modellenmiştir. Isı haritası, okuma ve yazma desenlerine dayalı verilere Bir ısı değeri atayarak tanımlanır. Bu ısı haritası daha sonra yerel katmanda yüksek ısı (en çok kullanılan) veri öbek tutarken buluta ilk en düşük ısı veri parçaları katmanları. Dr sırasında StorSimple, buluttaki verileri geri yüklemek ve yeniden sulamak için ısı haritasını kullanır. Aygıt, son yedeklemedeki tüm birimleri/paylaşımları (dahili olarak belirlendiği gibi) getirir ve bu yedeklemeden geri yükleme gerçekleştirir. Sanal dizi tüm DR işlemini yönetir.
 
 > [!IMPORTANT]
-> Kaynak cihaz, cihaz yük devretmesinin sonunda silinir ve bu nedenle yeniden çalışma desteklenmez.
+> Kaynak aygıt aygıt failover sonunda silinir ve bu nedenle bir failback desteklenmez.
 > 
 > 
 
-Olağanüstü durum kurtarma cihaz yük devretme özelliği aracılığıyla düzenlenir ve **cihazlar** dikey penceresinden başlatılır. Bu dikey pencere, StorSimple Aygıt Yöneticisi hizmetinize bağlı olan tüm StorSimple cihazlarını tablo halinde depolar. Her cihaz için kolay adı, durumu, sağlanan ve en yüksek kapasiteyi, türü ve modeli görebilirsiniz.
+Olağanüstü durum kurtarma, cihaz arıza özelliği ile planlanır ve **Cihazlar** bıçağından başlatılır. Bu bıçak, StorSimple Device Manager hizmetinize bağlı tüm StorSimple aygıtlarını titreştirer. Her aygıt için, dostu adı, durumu, verilen ve maksimum kapasiteyi, türünü ve modelini görebilirsiniz.
 
-## <a name="prerequisites-for-device-failover"></a>Cihaz yük devretmesi önkoşulları
+## <a name="prerequisites-for-device-failover"></a>Cihaz yük devretme önkoşulları
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Bir cihaz yük devretmesi için aşağıdaki önkoşulların sağlandığından emin olun:
+Bir aygıt başarısızlığı için, aşağıdaki ön koşulların karşılandığından emin olun:
 
-* Kaynak cihazın **devre dışı bırakılmış** bir durumda olması gerekir.
-* Hedef cihazın Azure portal **ayarlanmaya** uygun olarak gösterilmesi gerekir. Aynı veya daha yüksek kapasiteye sahip bir hedef sanal dizi sağlayın. Hedef sanal diziyi yapılandırmak ve başarıyla kaydetmek için yerel Web Kullanıcı arabirimini kullanın.
+* Kaynak aygıtın **devre dışı bırakılmış** durumda olması gerekir.
+* Hedef aygıtın Azure portalında **kuruluma hazır** olarak gösterilmesi gerekir. Aynı veya daha yüksek kapasitede bir hedef sanal dizi sağlama. Hedef sanal diziyi yapılandırmak ve başarıyla kaydetmek için yerel web UI'sini kullanın.
   
   > [!IMPORTANT]
-  > Kayıtlı sanal cihazı hizmet aracılığıyla yapılandırmaya çalışmayın. Hizmet aracılığıyla hiçbir cihaz yapılandırması gerçekleştirilmemelidir.
+  > Kayıtlı sanal aygıtı hizmet aracılığıyla yapılandırmaya çalışmayın. Hizmet aracılığıyla hiçbir aygıt yapılandırması gerçekleştirilmemelidir.
   > 
   > 
-* Hedef cihaz, kaynak cihazla aynı ada sahip olamaz.
-* Kaynak ve hedef cihazın aynı türde olması gerekir. Yalnızca bir dosya sunucusu olarak yapılandırılmış bir sanal dizinin yükünü başka bir dosya sunucusuna devretmek için kullanabilirsiniz. Aynı değer bir Iscsı sunucusu için de geçerlidir.
-* Bir dosya sunucusu DR için, hedef cihazı kaynak ile aynı etki alanına katmenizi öneririz. Bu yapılandırma, paylaşma izinlerinin otomatik olarak çözümlenmesini sağlar. Yalnızca aynı etki alanındaki bir hedef cihaza yük devretme desteklenir.
-* DR için kullanılabilir hedef aygıtlar, kaynak cihazla karşılaştırıldığında aynı veya daha büyük kapasiteye sahip cihazlardır. Hizmetinize bağlı olan ancak yeterli alan ölçütlerini karşılamayan cihazlar hedef cihaz olarak kullanılamaz.
+* Hedef aygıt kaynak aygıtla aynı ada sahip olamaz.
+* Kaynak ve hedef aygıt aynı türde olmalıdır. Yalnızca başka bir dosya sunucusu için bir dosya sunucusu olarak yapılandırılan sanal bir dizi üzerinde başarısız olabilir. Aynı durum bir iSCSI sunucusu için de geçerlidir.
+* Bir dosya sunucusu DR için, hedef aygıtı kaynakla aynı etki alanına katılmanızı öneririz. Bu yapılandırma, paylaşım izinlerinin otomatik olarak çözülmesini sağlar. Yalnızca aynı etki alanında bir hedef aygıta failover desteklenir.
+* DR için kullanılabilir hedef aygıtlar, kaynak aygıtla karşılaştırıldığında aynı veya daha büyük kapasiteye sahip aygıtlardır. Hizmetinize bağlı olan ancak yeterli alan ölçütlerini karşılamayan aygıtlar hedef aygıtlar olarak kullanılamaz.
 
 ### <a name="other-considerations"></a>Diğer konular
 
-* Planlı Yük devretme için:
+* Planlı bir arıza için:
   
-  * Kaynak cihazdaki tüm birimleri veya paylaşımları çevrimdışına almanız önerilir.
-  * Cihazın bir yedeğini alıp veri kaybını en aza indirmek için yük devretmeye devam etmenizi öneririz.
-* Planlanmamış bir yük devretme için cihaz, verileri geri yüklemek için en son yedeği kullanır.
+  * Kaynak aygıttaki tüm birimleri veya paylaşımları çevrimdışı almanızı öneririz.
+  * Veri kaybını en aza indirmek için aygıtın yedeğini almanızı ve ardından başarısız olmaya devam etmenizi öneririz.
+* Planlanmamış bir hata için aygıt, verileri geri yüklemek için en son yedeklemeyi kullanır.
 
-### <a name="device-failover-prechecks"></a>Cihaz yük devretme öndenetimleri
+### <a name="device-failover-prechecks"></a>Cihaz arıza ön kontrolleri
 
-DR başlamadan önce cihaz önceden denetimler gerçekleştirir. Bu denetimler, DR geldiğinde herhangi bir hata oluşkullanılmadığından emin olmanıza yardımcı olur. Ön denetimler şunları içerir:
+DR başlamadan önce, cihaz ön kontrolleri gerçekleştirir. Bu denetimler, DR başladığında hata oluşmamasını sağlamaya yardımcı olur. Ön kontroller şunlardır:
 
-* Depolama hesabı doğrulanıyor.
-* Azure ile bulut bağlantısı denetleniyor.
-* Hedef cihazdaki kullanılabilir alan denetleniyor.
-* Bir Iscsı sunucusu kaynak cihaz biriminde olup olmadığı denetleniyor
+* Depolama hesabını doğruluyor.
+* Azure'a bulut bağlantısını denetleme.
+* Hedef aygıttaki kullanılabilir alanı kontrol etme.
+* iSCSI sunucu kaynak aygıt biriminin
   
   * geçerli ACR adları.
-  * geçerli ıQN (220 karakteri aşmıyor).
-  * geçerli CHAP parolaları (12-16 karakter uzunluğunda).
+  * geçerli IQN (220 karakteri geçmez).
+  * geçerli CHAP şifreleri (12-16 karakter uzunluğunda).
 
-Önceki ön denetimlerden herhangi biri başarısız olursa, DR ile devam edemezsiniz. Bu sorunları giderin ve ardından DR 'yi yeniden deneyin.
+Önceki ön kontrollerden herhangi biri başarısız olursa, DR ile devam edemezsiniz. Bu sorunları giderin ve dr yeniden deneyin.
 
-DR başarıyla tamamlandıktan sonra, kaynak cihazdaki bulut verilerinin sahipliği hedef cihaza aktarılır. Kaynak cihaz daha sonra portalda artık kullanılamaz. Kaynak cihazdaki tüm birimlere/paylaşımlara erişim engellenir ve hedef cihaz etkin hale gelir.
-
-> [!IMPORTANT]
-> Cihaz artık kullanılamıyor olsa da, konak sisteminde sağladığınız sanal makine halen kaynak tüketiyor. DR başarıyla tamamlandıktan sonra, bu sanal makineyi konak sisteminizden silebilirsiniz.
-> 
-> 
-
-## <a name="fail-over-to-a-virtual-array"></a>Sanal diziye yük devretme
-
-Bu yordamı çalıştırmadan önce, StorSimple Aygıt Yöneticisi hizmetinize başka bir StorSimple Sanal dizisi sağlamanızı, yapılandırmanızı ve kaydetmenizi öneririz.
+DR başarıyla tamamlandıktan sonra, kaynak aygıttaki bulut verilerinin sahipliği hedef aygıta aktarılır. Kaynak aygıt artık portalda kullanılamaz. Kaynak aygıttaki tüm birimlere/paylaşımlara erişim engellenir ve hedef aygıt etkin hale gelir.
 
 > [!IMPORTANT]
+> Aygıt artık kullanılamasa da, ana bilgisayar sisteminde sağlanan sanal makine hala kaynak tüketiyor. DR başarıyla tamamlandıktan sonra, bu sanal makineyi ana bilgisayar sisteminizden silebilirsiniz.
 > 
-> * StorSimple 8000 serisi cihazdan 1200 sanal cihazına yük devredemezsiniz.
-> * Federal bilgi Işleme standardı (FIPS) etkinleştirilmiş bir sanal cihazdan başka bir FIPS etkin cihaza veya kamu portalında dağıtılan FIPS olmayan bir cihaza yük devreolursunuz.
+> 
+
+## <a name="fail-over-to-a-virtual-array"></a>Sanal bir dizide başarısız
+
+Bu yordamı çalıştırmadan önce StorSimple Device Manager hizmetinize başka bir StorSimple Virtual Array sağlamanızı, yapılandırmanızı ve kaydetmenizi öneririz.
+
+> [!IMPORTANT]
+> 
+> * StorSimple 8000 serisi bir cihazdan 1200 sanal aygıta geçemezsiniz.
+> * Federal Bilgi İşlem Standardı (FIPS) etkinleştirilmiş bir sanal cihazdan başka bir FIPS etkinleştirilmiş aygıta veya Hükümet portalında dağıtılan FIPS olmayan bir aygıta geçebilirsiniz.
 
 
-Bir hedef StorSimple Sanal cihazına cihaz geri yüklemek için aşağıdaki adımları gerçekleştirin.
+Aygıtı hedef StorSimple sanal aygıtına geri yüklemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Cihaz yük devretmesi için önkoşulları](#prerequisites)karşılayan bir hedef cihaz sağlayın ve yapılandırın. Yerel Web Kullanıcı arabirimi aracılığıyla cihaz yapılandırmasını tamamlayıp StorSimple Aygıt Yöneticisi hizmetinize kaydedin. Bir dosya sunucusu oluşturuyorsanız, [dosya sunucusu olarak ayarlanan](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device)1. adıma gidin. Bir Iscsı sunucusu oluşturuyorsanız, [iSCSI sunucusu olarak ayarlanan](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device)1. adıma gidin.
+1. [Aygıt başarısızlığı için ön koşulları](#prerequisites)karşılayan bir hedef aygıtı sağlama ve yapılandırma. Yerel web kullanıcı aracı üzerinden aygıt yapılandırmasını tamamlayın ve StorSimple Device Manager hizmetinize kaydedin. Bir dosya sunucusu oluşturuyorsanız, dosya sunucusu olarak ayarlanan adım [1'e](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device)gidin. Bir iSCSI sunucusu oluşturuyorsanız, [iSCSI sunucusu olarak ayarlanan](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device)adım 1'e gidin.
 
-2. Konakta birimleri/paylaşımları çevrimdışı duruma getirin. Birimleri/paylaşımları çevrimdışına almak için, ana bilgisayar için işletim sistemine özgü yönergelere bakın. Zaten çevrimdışı değilse, aşağıdakileri yaparak cihazdaki tüm birimleri/paylaşımları çevrimdışı duruma getirmeniz gerekir.
+2. Ana bilgisayarda birimleri/paylaşımları çevrimdışı alın. Birimleri/paylaşımları çevrimdışına almak için, ana bilgisayar için işletim sistemine özgü yönergelere bakın. Zaten çevrimdışı değilse, aşağıdakileri yaparak aygıttaki tüm birimleri/paylaşımları çevrimdışı almanız gerekir.
    
-    1. **Cihazlar** dikey penceresine gidin ve cihazınızı seçin.
+    1. **Cihazlar** blade gidin ve cihazınızı seçin.
    
-    2. Ayarlar ' a gidin **> > paylaşımlarını yönetin** (veya **> birimleri yönetme > ayarları**). 
+    2. > **Paylaşımları Yönet > Ayarlar'a** gidin (veya > Birimleri > **Ayarları).** 
    
-    3. Bir Share/Volume seçin, sağ tıklayın ve **Çevrimdışına Al**' ı seçin. 
+    3. Bir paylaşım/birim seçin, sağ tıklatın ve **çevrimdışı kaldır'ı**seçin. 
    
-    4. Onay istendiğinde, **bu paylaşımdan çevrimdışı duruma getirmenin etkilerini anlıyorum.** 
+    4. Onay istendiğinde, bu paylaşımı çevrimdışı almanın etkisini anladığımı kontrol **edin.** 
    
-    5. **Çevrimdışına Al**' a tıklayın.
+    5. **Çevrimdışı Kaldır'ı**tıklatın.
 
-3. StorSimple Aygıt Yöneticisi hizmetinizde **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, kaynak cihazınızı seçin ve tıklayın.
+3. StorSimple Device Manager hizmetinizde, **Yönetim > Cihazları'na**gidin. **Cihazlar** bıçağında kaynak cihazınızı seçin ve tıklatın.
 
-4. **Cihaz panosu** dikey penceresinde **devre dışı bırak**' a tıklayın.
+4. **Cihazınızın pano bıyış** bıçağında **Devre dışı bırak'ı**tıklatın.
 
-5. **Devre dışı bırakma** dikey penceresinde onaylamanız istenir. Cihaz devre dışı bırakma işlemi geri alınamaz *kalıcı* bir işlemdir. Ayrıca, paylaşımlara/birimlerinizi konakta çevrimdışına almanız de anımsatılır. Onaylamak için cihaz adını yazın ve **devre dışı bırak**' a tıklayın.
+5. Devre **Dışı Bırakma** bıçağında, onay için istenir. Aygıt devre dışı bırakılsın, geri alınamayan *kalıcı* bir işlemdir. Ayrıca, paylaşımlarınızı/birimlerinizi ana bilgisayarda çevrimdışı almanız da hatırlatılır. Devre dışı'yı onaylamak için aygıt adını yazın ve **devre dışı bırakın'ı**tıklatın.
    
     ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
-6. Devre dışı bırakma başlatılır. Devre dışı bırakma işlemi başarıyla tamamlandıktan sonra bir bildirim alırsınız.
+6. Devre dışı bırakma başlar. Devre dışı bırakma başarıyla tamamlandıktan sonra bir bildirim alırsınız.
    
     ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
-7. Cihazlar sayfasında, cihaz durumu artık **devre dışı**olarak değiştirilir.
+7. Aygıtlar sayfasında, aygıt durumu artık **Devre Dışı Bırakılmış**olarak değişecektir.
     ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
-8. **Cihazlar** dikey penceresinde, yük devretme için devre dışı bırakılmış kaynak cihazı seçin ve tıklayın. 
-9. **Cihaz panosu** dikey penceresinde **Yük devret**' e tıklayın. 
-10. Yük **devretme cihazı** dikey penceresinde aşağıdakileri yapın:
+8. **Cihazlar** bıçağında, devre dışı bırakılan kaynak aygıtı seçin ve tıklatın. 
+9. Aygıt **pano** çubuğunda, **Üzerinde Başarısız'ı**tıklatın. 
+10. Aygıt bıçak **üzerinde Fail'de** aşağıdakileri yapın:
     
-    1. Kaynak cihaz alanı otomatik olarak doldurulur. Kaynak cihaz için toplam veri boyutunu aklınızda yapın. Veri boyutu, hedef cihazdaki kullanılabilir kapasiteden daha az olmalıdır. Kaynak cihazla ilişkili cihaz adı, toplam kapasite ve yük devredilen paylaşımların adları gibi ayrıntıları gözden geçirin.
+    1. Kaynak aygıt alanı otomatik olarak doldurulur. Kaynak aygıtın toplam veri boyutuna dikkat edin. Veri boyutu, hedef aygıttaki kullanılabilir kapasiteden daha az olmalıdır. Aygıt adı, toplam kapasite ve üzerinde başarısız olan paylaşımların adları gibi kaynak aygıtla ilişkili ayrıntıları gözden geçirin.
 
-    2. Kullanılabilir cihazların açılan listesinden bir **hedef cihaz**seçin. Yalnızca yeterli kapasiteye sahip cihazlar açılan listede görüntülenir.
+    2. Kullanılabilir aygıtların açılır listesinden bir **Hedef aygıtı**seçin. Açılan listede yalnızca yeterli kapasiteye sahip aygıtlar görüntülenir.
 
-    3. **Bu işlemin hedef cihaza veri yük devredebildiğini anladım**. 
+    3. Bu **işlemin hedef aygıta veri üzerinde başarısız olacağını anladığımı**kontrol edin. 
 
-    4. **Yük devretme**' ye tıklayın.
+    4. **Üzerinden Başarısız'ı**tıklatın.
     
         ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
-11. Bir yük devretme işi başlatılır ve bir bildirim alırsınız. Yük devretmeyi izlemek için **cihazlara > işlere** gidin.
+11. Başarısız bir iş başlatır ve bir bildirim alırsınız. Failover'ı izlemek için **Aygıtlar > İşler'e** gidin.
     
      ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
-12. **İşler** dikey penceresinde, kaynak cihaz için oluşturulmuş bir yük devretme işi görürsünüz. Bu iş, DR ön denetimleri gerçekleştirir.
+12. **İşler** bıçağında, kaynak aygıt için oluşturulan bir başarısız iş görürsünüz. Bu iş DR ön kontrollerini gerçekleştirir.
     
     ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
-     DR ön denetimleri başarılı olduktan sonra, yük devretme işi kaynak cihazınızda bulunan her bir paylaşıma/birime ait geri yükleme işlerini oluşturacak.
+     DR ön denetimleri başarılı olduktan sonra, başarısız iş kaynak cihazınızda bulunan her paylaşım/birim için geri yükleme işleri yumurtlar.
     
     ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
-13. Yük devretme tamamlandıktan sonra **cihazlar** dikey penceresine gidin.
+13. Arıza tamamlandıktan sonra **Cihazlar** bıçağına gidin.
     
-    1. Yük devretme işlemi için hedef cihaz olarak kullanılan StorSimple cihazını seçin ve tıklayın.
-    2. **Ayarlar > yönetim > paylaşımlar** (veya iSCSI sunucusu varsa **birimler** ) bölümüne gidin. **Paylaşımlar** dikey penceresinde, eski cihazdan tüm paylaşımları (birimler) görüntüleyebilirsiniz.
+    1. Başarısızlık işlemi için hedef aygıt olarak kullanılan StorSimple aygıtını seçin ve tıklatın.
+    2. **Paylaşımlar > Ayarlar > Yönetimi'ne** (veya iSCSI sunucusuvarsa **Birimlere)** gidin. **Paylaşımlar** bıçağında, eski cihazdaki tüm paylaşımları (birimleri) görüntüleyebilirsiniz.
         ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Bağlanmaya çalışan tüm uygulamaların yeni cihaza yeniden yönlendirilmesi için [BIR DNS diğer adı oluşturmanız](https://support.microsoft.com/kb/168322) gerekecektir.
+14. Bağlanmaya çalışan tüm uygulamaların yeni aygıta yönlendirilebilmeleri için [bir DNS takma adı oluşturmanız](https://support.microsoft.com/kb/168322) gerekir.
 
 ## <a name="errors-during-dr"></a>DR sırasında hatalar
 
 **DR sırasında bulut bağlantısı kesintisi**
 
-DR başladıktan sonra ve cihaz geri yükleme işlemi tamamlanmadan önce bulut bağlantısı kesintiye uğramışsa, DR başarısız olur. Bir hata bildirimi alırsınız. DR için hedef cihaz kullanılamıyor olarak işaretlendi *.* Gelecekteki DRs için aynı hedef cihazı kullanamazsınız.
+DR başladıktan sonra ve aygıt geri yüklemesi tamamlanmadan önce bulut bağlantısı bozulursa, DR başarısız olur. Bir hata bildirimi alırsınız. DR için hedef aygıt *kullanılamaz* olarak işaretlenir. Gelecekteki DR'ler için aynı hedef aygıtı kullanamazsınız.
 
-**Uyumlu hedef cihaz yok**
+**Uyumlu hedef aygıtlar yok**
 
-Kullanılabilir hedef cihazlarda yeterli alan yoksa, uyumlu hedef cihaz bulunmadığını belirten bir hata görürsünüz.
+Kullanılabilir hedef aygıtların yeterli alanı yoksa, uyumlu hedef aygıtlar olmadığı nda bir hata görürsünüz.
 
-**Ön denetim sorunları**
+**Ön kontrol hataları**
 
-Öndenetimlerden biri karşılanmıyorsa, önceden denetim başarısızlıklarını görürsünüz.
+Ön denetimlerden biri karşılanmadıysa, ön kontrol hataları görürsünüz.
 
-## <a name="business-continuity-disaster-recovery-bcdr"></a>İş sürekliliği olağanüstü durum kurtarma (BCDR)
+## <a name="business-continuity-disaster-recovery-bcdr"></a>İş sürekliliği felaket kurtarma (BCDR)
 
-Azure veri merkezinin tamamı çalışmayı durdurduğu zaman bir iş sürekliliği olağanüstü durum kurtarma (BCDR) senaryosu oluşur. Bu, StorSimple Aygıt Yöneticisi hizmetinizi ve ilişkili StorSimple cihazlarını etkileyebilir.
+Tüm Azure veri merkezi çalışmayı durdurduğunda bir iş sürekliliği olağanüstü durum kurtarma (BCDR) senaryosu oluşur. Bu, StorSimple Aygıt Yöneticisi hizmetinizi ve ilişkili StorSimple aygıtlarını etkileyebilir.
 
-Yalnızca bir olağanüstü durum yaşanmadan önce kayıtlı olan StorSimple cihazları varsa, bu StorSimple cihazlarının silinmesi gerekebilir. Olağanüstü durum sonrasında bu cihazları yeniden oluşturabilir ve yapılandırabilirsiniz.
+Bir felaket meydana gelmeden hemen önce kaydedilmiş StorSimple aygıtları varsa, bu StorSimple aygıtlarının silinmesi gerekebilir. Felaketten sonra, bu aygıtları yeniden oluşturabilir ve yapılandırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Yerel Web Kullanıcı arabirimini kullanarak StorSimple Sanal dizinizi yönetme](storsimple-ova-web-ui-admin.md)hakkında daha fazla bilgi edinin.
+[StorSimple Sanal Dizinizi yerel web Kullanıcı Birliğini kullanarak nasıl yöneteceğimiz](storsimple-ova-web-ui-admin.md)hakkında daha fazla bilgi edinin.
 

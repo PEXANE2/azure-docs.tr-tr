@@ -5,29 +5,29 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
 ms.openlocfilehash: 4fe159660421113e0f0ac0586ae7e4a22d5bcda7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77474126"
 ---
-### <a name="query-the-storage-queue"></a>Depolama kuyruğunu sorgulama
+### <a name="query-the-storage-queue"></a>Depolama sırasını sorgula
 
-Aşağıdaki örnekte olduğu gibi, hesabınızdaki depolama kuyruklarını görüntülemek için [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) komutunu kullanabilirsiniz:
+Aşağıdaki örnekte [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) olduğu gibi, hesabınızdaki Depolama kuyruklarını görüntülemek için komutu kullanabilirsiniz:
 
 ```azurecli-interactive
 az storage queue list --output tsv
 ```
 
-Bu komutun çıktısı, işlev çalıştırıldığında oluşturulan kuyruk olan `outqueue`adlı bir sıra içerir.
+Bu komutun çıktısı, `outqueue`işlev çalıştırıldığında oluşturulan sıra olan "" adlı bir sıra içerir.
 
-Daha sonra, bu kuyruktaki iletileri görüntülemek için [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) komutunu kullanın, örneğin:
+Ardından, bu [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) örnekteki gibi bu kuyruktaki iletileri görüntülemek için komutu kullanın:
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
 ```
 
-Döndürülen dize, işlevi test etmek için gönderdiğiniz iletiyle aynı olmalıdır.
+Döndürülen dize, işlevi sınamak için gönderdiğiniz iletiyle aynı olmalıdır.
 
 > [!NOTE]  
-> Önceki örnek, Base64 olan döndürülen dizenin kodunu çözer. Bunun nedeni, kuyruk depolama bağlamalarının Azure depolama 'ya [Base64 dizeleri](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding)olarak yazma ve okuma.
+> Önceki örnekbase64 gelen döndürülen dize deşifre. Bunun nedeni, Sıra depolama bağlamalarının Azure Depolama'ya [base64 dizeleri](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding)olarak yazıp okumasidır.

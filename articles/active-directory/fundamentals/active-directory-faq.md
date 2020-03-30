@@ -1,6 +1,6 @@
 ---
-title: Sık sorulan sorular (SSS) - Azure Active Directory | Microsoft Docs
-description: Ortak hakkında sorular ve cevaplar Azure ve Azure Active Directory, parola yönetimi ve uygulama erişimi.
+title: Sık sorulan sorular (SSS) - Azure Etkin Dizini | Microsoft Dokümanlar
+description: Azure ve Azure Etkin Dizini, parola yönetimi ve uygulama erişimi hakkında sık sorulan sorular ve yanıtlar.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,13 +14,13 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063637"
 ---
-# <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Etkin Dizini hakkında sık sorulan sorular
 Azure Active Directory (Azure AD), kimlik, erişim yönetimi ve güvenliği tüm yönleriyle kapsayan bir hizmet olarak kimlik (IDaaS) çözümüdür.
 
 Daha fazla bilgi için bkz. [Azure Active Directory nedir?](active-directory-whatis.md).
@@ -29,7 +29,7 @@ Daha fazla bilgi için bkz. [Azure Active Directory nedir?](active-directory-wha
 ## <a name="access-azure-and-azure-active-directory"></a>Azure ve Azure Active Directory erişimi
 **S: Azure portalında Azure AD'ye erişmeye çalıştığımda neden "Abonelik bulunamadı" yanıtını alıyorum?**
 
-**Y:** Azure portalına erişmek için her kullanıcının bir Azure aboneliğiyle birlikte izinleri olmalıdır. Ücretli bir Office 365 veya Azure AD aboneliğiniz varsa, tek seferlik etkinleştirme adımı için [https://aka.ms/accessAAD](https://aka.ms/accessAAD) sayfasına gidin. Aksi takdirde, ücretsiz bir [Azure hesabı](https://azure.microsoft.com/pricing/free-trial/) veya ücretli aboneliği etkinleştirmeniz gerekir.
+**Y:** Azure portalına erişmek için her kullanıcının bir Azure aboneliğiyle birlikte izinleri olmalıdır. Ücretli bir Office 365 veya Azure AD [https://aka.ms/accessAAD](https://aka.ms/accessAAD) aboneliğiniz varsa, tek seferlik etkinleştirme adımıiçin gidin. Aksi takdirde, ücretsiz bir [Azure hesabı](https://azure.microsoft.com/pricing/free-trial/) veya ücretli aboneliği etkinleştirmeniz gerekir.
 
 Daha fazla bilgi için bkz.
 
@@ -46,20 +46,20 @@ Enterprise Mobility + Security gibi ücretli Azure AD hizmetleri, kurumsal ölç
 
 ---
 
-**S: sahip ve genel yönetici arasındaki farklar nelerdir?**
+**S: Sahibi ve Genel Yönetici arasındaki farklar nelerdir?**
 
-Y **:** Varsayılan olarak, bir Azure aboneliğine kaydolan kişiye Azure kaynakları için sahip rolü atanır. Sahibi, bir Microsoft hesabı ya da Azure aboneliğinin ilişkili olduğu dizinden bir iş veya Okul hesabı kullanabilirsiniz.  Bu rol Azure portaldaki hizmetleri yönetme yetkisine sahiptir.
+**A:** Varsayılan olarak, Bir Azure aboneliğine kaydolan kişiye Azure kaynakları için Sahip rolü atanır. İçerik Sahibi, Azure aboneliğinin ilişkili olduğu dizinden bir Microsoft hesabı veya bir çalışma veya okul hesabı kullanabilir.  Bu rol Azure portaldaki hizmetleri yönetme yetkisine sahiptir.
 
-Başkalarının aynı aboneliği kullanarak oturum açması ve hizmetlere erişmesi gerekiyorsa, bu kullanıcılara uygun [yerleşik rolü](../../role-based-access-control/built-in-roles.md)de atayabilirsiniz. Daha fazla bilgi için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Başkalarının aynı aboneliği kullanarak oturum açmaları ve hizmetlere erişmeleri gerekiyorsa, onlara uygun [yerleşik rolü](../../role-based-access-control/built-in-roles.md)atayabilirsiniz. Daha fazla bilgi için [RBAC ve Azure portalını kullanarak erişimi yönet'e](../../role-based-access-control/role-assignments-portal.md)bakın.
 
-Varsayılan olarak, bir Azure aboneliği için kaydolan kişi dizin için genel Yönetici rolüne atanır. Genel yönetici, tüm Azure AD directory özelliklerine erişebilir. Azure AD dizin ve kimlikle ilgili özelliklerin yönetilmesine yönetici rolleri farklı bir dizi vardır. Bu Yöneticiler, Azure portalında çeşitli özelliklere erişim gerekir. Yönetici rolü, oluşturma veya kullanıcıları Düzenle, diğerlerine yönetici rolleri atama, kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme veya etki alanlarını yönetme gibi yapabileceklerini belirler.  Azure AD dizin yöneticileri ve rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rollerine Kullanıcı atama](active-directory-users-assign-role-azure-portal.md) ve [Azure Active Directory yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md).
+Varsayılan olarak, bir Azure aboneliğiiçin kaydolan kişiye dizin için Global Administrator rolü atanır. Global Administrator tüm Azure AD dizin özelliklerine erişebilir. Azure AD, dizin ve kimlikle ilgili özellikleri yönetmek için farklı yönetici rolleri kümesine sahiptir. Bu yöneticiler Azure portalındaki çeşitli özelliklere erişebilirler. Yöneticinin rolü, kullanıcıları oluşturma veya yönetme, başkalarına yönetim rolleri atama, kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme veya etki alanlarını yönetme gibi neler yapabileceklerini belirler.  Azure REKLAM dizin yöneticileri ve rolleri hakkında daha fazla bilgi için [bkz.](active-directory-users-assign-role-azure-portal.md) [Assigning administrator roles in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
 
 Ayrıca, Enterprise Mobility + Security gibi ücretli Azure AD hizmetleri, kurumsal ölçekte kapsamlı yönetim ve güvenlik çözümleriyle Office 365 ve Microsoft Azure gibi diğer web hizmetlerini tamamlar.
 
 ---
 **S: Azure AD kullanıcı lisanslarımın ne zaman sona ereceğini gösteren bir rapor var mı?**
 
-**C:** Hayır.  Bu özellik şu an kullanılamıyor.
+**A:** №.  Bu özellik şu an kullanılamıyor.
 
 ---
 
@@ -82,14 +82,14 @@ Daha fazla bilgi için bkz. [Şirket içi kimliklerinizi Azure Active Directory 
 
 **Y:** Çoklu oturum açmayı (SSO) yalnızca şirket içi dizininiz ve Azure AD arasında ayarlamanız yeterlidir. Bulut uygulamalarınıza Azure AD üzerinden eriştiğiniz sürece, hizmet otomatik olarak kullanıcılarınızı şirket içi kimlik bilgileriyle doğru şekilde kimlik doğrulaması gerçekleştirmeye yönlendirir.
 
-Şirket içinden SSO uygulamak, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) gibi Federasyon çözümleriyle veya parola karması eşitlemesini yapılandırarak kolayca elde edilebilir. Azure AD Connect yapılandırma sihirbazını kullanarak her iki seçeneği de kolayca dağıtabilirsiniz.
+SSO'nun şirket içinde uygulanması, Active Directory Federation Services (AD FS) gibi federasyon çözümleri yle veya şifre karma senkronizasyonu yapılandırılarak kolayca elde edilebilir. Azure AD Connect yapılandırma sihirbazını kullanarak her iki seçeneği de kolayca dağıtabilirsiniz.
 
 Daha fazla bilgi için bkz. [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](../hybrid/whatis-hybrid-identity.md).
 
 ---
 **S: Azure AD, kuruluşumdaki kullanıcılar için bir self servis portal sağlar mı?**
 
-**Y:** Evet, AD size kullanıcı self servis ve uygulama erişimi için [Azure AD Erişim Paneli](https://myapps.microsoft.com)'ni sağlar. Office 365 müşterisiyseniz, [office 365 portalında](https://portal.office.com)aynı yeteneklerin birçoğunu bulabilirsiniz.
+**Y:** Evet, AD size kullanıcı self servis ve uygulama erişimi için [Azure AD Erişim Paneli](https://myapps.microsoft.com)'ni sağlar. Office 365 müşterisiyseniz, [Office 365 portalında](https://portal.office.com)aynı özelliklerin çoğunu bulabilirsiniz.
 
 Daha fazla bilgi için bkz. [Erişim Paneli'ne Giriş](../user-help/active-directory-saas-access-panel-introduction.md).
 
@@ -102,7 +102,7 @@ Daha fazla bilgi için bkz. [Bulutta şirket içi kimlik altyapınızı ve eşit
 
 ---
 ## <a name="password-management"></a>Parola yönetimi
-**S: Azure AD parola geri yazma özelliğini parola eşitleme olmadan kullanabilir miyim? (Bu senaryoda, Azure AD self servis parola sıfırlama (SSPR) ile parola geri yazma ve bu parolaları bulutta depolamama kullanımı mümkün midir?)**
+**S: Azure AD parola yazma'yı parola eşitlemeden kullanabilir miyim? (Bu senaryoda, parola geri yazma yla Azure AD self servis parola sıfırlama (SSPR) kullanmak ve parolaları bulutta depolamamak mümkün mü?)**
 
 **Y:** Geri yazmayı etkinleştirmek için Active Directory parolalarınızı Azure AD ile eşitlemeniz gerekmez. Birleştirilmiş bir ortamda Azure AD çoklu oturum açma (SSO), kullanıcının kimliğini doğrulamak için şirket içi dizini kullanır. Bu senaryoda, şirket içi parolanın Azure AD'de izlenmesi gerekmez.
 
@@ -118,7 +118,7 @@ Daha fazla bilgi için bkz. [Parola yönetimine başlarken](../authentication/qu
 
 **Y:** Evet, parola geri yazma özelliğini etkinleştirdiyseniz bir yönetici tarafından gerçekleştirilen parola işlemleri, şirket içi ortamınıza geri yazılır.  
 
-<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questionsauthenticationactive-directory-passwords-faqmd"></a>Parola ile ilgili daha fazla soru yanıtı için bkz. [Parola yönetimi ile ilgili sık sorulan sorular](../authentication/active-directory-passwords-faq.md).
+<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>Parola ile ilgili daha fazla soru yanıtı için bkz. [Parola yönetimi ile ilgili sık sorulan sorular](../authentication/active-directory-passwords-faq.md).
 ---
 **S:  Parolamı değiştirirken mevcut Office 365/Azure AD parolamı hatırlayamazsam ne olur?**
 
@@ -146,7 +146,7 @@ Bu durum, parolaların “Parola” ve “123456” değerlerinin çeşitlemeler
 
 İstekleri filtreleyen ve botnetlere karşı koruma sağlayıp tüm B2C kiracılarına uygulanan bir ağ geçidine sahibiz.
 
-## <a name="application-access"></a>Uygulamaya erişim
+## <a name="application-access"></a>Uygulama erişimi
 
 **S: Azure AD ile önceden tümleştirilmiş olan uygulamaların ve özelliklerinin listesini nereden bulabilirim?**
 
@@ -174,7 +174,7 @@ Daha fazla bilgi için bkz.
 * Birleştirilmiş uygulamalarda doğrudan oturum açma
 * Birleştirilmiş, parola tabanlı veya var olan uygulamalara yönelik ayrıntılı bağlantılar
 
-Daha fazla bilgi için bkz. [uygulamalar Için son kullanıcı deneyimleri](../manage-apps/end-user-experiences.md).
+Daha fazla bilgi [için, uygulamalar için Son kullanıcı deneyimlerine](../manage-apps/end-user-experiences.md)bakın.
 
 ---
 **S: Azure AD, uygulamalar için kimlik doğrulaması ve çoklu oturum açmaya ne gibi farklı yollarla olanak tanır?**
@@ -185,7 +185,7 @@ Daha fazla bilgi için bkz.
 
 * [Azure AD için Kimlik Doğrulama Senaryoları](../develop/authentication-scenarios.md)
 * [Active Directory kimlik doğrulama protokolleri](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-* [Azure AD 'de uygulamalar için çoklu oturum açma](../manage-apps/what-is-single-sign-on.md)
+* [Azure AD'deki uygulamalar için tek oturum açma](../manage-apps/what-is-single-sign-on.md)
 
 ---
 **S: Şirket içi olarak çalıştırdığım uygulamaları ekleyebilir miyim?**
@@ -197,7 +197,7 @@ Daha fazla bilgi için bkz. [Şirket içi uygulamalara güvenli uzaktan erişim 
 ---
 **S: Belirli bir uygulamaya erişen kullanıcılar için çok faktörlü kimlik doğrulamasını nasıl isteyebilirim?**
 
-Y **:** Azure AD koşullu erişimi sayesinde her bir uygulama için benzersiz bir erişim ilkesi atayabilirsiniz. İlkenizde, çok faktörlü kimlik doğrulamasını her zaman veya kullanıcılar yerel ağa bağlı olmadığında gerekli kılabilirsiniz.  
+**A:** Azure AD Koşullu Erişim ile her uygulama için benzersiz bir erişim ilkesi atayabilirsiniz. İlkenizde, çok faktörlü kimlik doğrulamasını her zaman veya kullanıcılar yerel ağa bağlı olmadığında gerekli kılabilirsiniz.  
 
 Daha fazla bilgi için bkz. [Office 365'e ve Azure Active Directory'ye bağlı diğer uygulamalara erişimi güvence altına alma](../active-directory-conditional-access-azure-portal.md).
 
@@ -211,4 +211,4 @@ Daha fazla bilgi için bkz. [Azure Active Directory ile SaaS uygulamalarına kul
 ---
 **S:  Azure AD ile güvenli bir LDAP bağlantısı oluşturabilir miyim?**
 
-**Y:** Hayır. Azure AD, Hafif Dizin Erişim Protokolü (LDAP) protokolünü veya doğrudan Güvenli LDAP desteklemez. Ancak, Azure AD kiracınızda LDAP bağlantısı elde etmek için Azure ağ üzerinden düzgün şekilde yapılandırılmış ağ güvenlik grupları ile Azure AD Domain Services (Azure AD DS) örneğinin etkinleştirilmesi mümkündür. Daha fazla bilgi için bkz. https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**Y:** Hayır. Azure AD, Hafif Dizin Erişim Protokolü (LDAP) protokolünü veya Secure LDAP'yi doğrudan desteklemez. Ancak, LDAP bağlantısı elde etmek için Azure Ağını üzerinden düzgün yapılandırılmış ağ güvenlik gruplarıyla Azure AD Etki Alanı Hizmetleri (Azure AD DS) örneğini Azure AD kiracınızda etkinleştirmek mümkündür. Daha fazla bilgi için bkz. https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.

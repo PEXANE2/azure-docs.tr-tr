@@ -1,7 +1,7 @@
 ---
-title: Uygulamalarda arama gezinmesi için model filtreleri
+title: Uygulamalarda arama navigasyonu için facet filtreleri
 titleSuffix: Azure Cognitive Search
-description: Microsoft Azure üzerinde barındırılan bir bulut arama hizmeti olan Azure Bilişsel Arama 'deki sorgularda arama sonuçlarını azaltmak için ölçütleri Kullanıcı güvenliği kimliği, coğrafi konum veya sayısal değerlere göre filtreleyin.
+description: Microsoft Azure'da barındırılan bir bulut arama hizmeti olan Azure Bilişsel Arama'daki sorgularda arama sonuçlarını azaltmak için kullanıcı güvenlik kimliğine, coğrafi konuma veya sayısal değerlere göre filtreleme ölçütlerine filtre uygulayın.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,51 +9,51 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792888"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir model filtresi oluşturma 
+# <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da bir fason filtresi oluşturma 
 
-Çok yönlü gezinme, bir arama uygulamasındaki sorgu sonuçları için, uygulamanızın belge gruplarına (örneğin, Kategoriler veya markalar) arama kapsamını belirlemek için Kullanıcı arabirimi denetimleri sağladığı ve Azure Bilişsel Arama veri yapısını sağladığı bir arama uygulamasında kendi kendine yönlendirilmiş filtreleme için kullanılır. deneyimini geri yüklemek için. Bu makalede, sağlamak istediğiniz arama deneyimini yedekleyen çok yönlü bir gezinti yapısı oluşturmaya yönelik temel adımları hızlıca gözden geçirin. 
+Faceted navigasyon, uygulamanızın belge gruplarına (örneğin kategoriler veya markalar) arama yı kapsamlandırmak için kullanıcı arabirimi denetimleri sunduğu bir arama uygulamasında sorgu sonuçlarında kendi kendini yönlendirmiş filtreleme için kullanılır ve Azure Bilişsel Arama veri yapısını sağlar deneyimi geri getirmek için. Bu makalede, sağlamak istediğiniz arama deneyimini destekleyen yönlü bir gezinti yapısı oluşturmak için temel adımları hızla gözden geçirin. 
 
 > [!div class="checklist"]
-> * Filtreleme ve Faks oluşturma için alanları seçin
-> * Alanda öznitelikleri ayarla
+> * Filtreleme ve yüzleme için alanları seçin
+> * Alandaki öznitelikleri ayarlama
 > * Dizin oluşturma ve verileri yükleme
-> * Bir sorguya model filtreleri ekleme
+> * Sorguya fason filtreler ekleme
 > * Sonuçları işleme
 
-Modeller dinamiktir ve sorgu üzerinde döndürülür. Arama yanıtları, sonuçlarda gezinmek için kullanılan model kategorileriyle birlikte getirir. Modellerle ilgili bilginiz yoksa, aşağıdaki örnek bir model Gezinti yapısının bir temsilidir.
+Fasonlar dinamiktir ve sorguda döndürülür. Arama yanıtları, sonuçlarda gezinmek için kullanılan fason kategorileri de beraberinde getirir. Eğer yönlerini aşina değilseniz, aşağıdaki örnek bir fason navigasyon yapısının bir örneğidir.
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-Çok yönlü gezinmede yeni ve daha fazla ayrıntı istiyor musunuz? Bkz. [Azure bilişsel arama 'da çok yönlü gezintiyi uygulama](search-faceted-navigation.md).
+Yeni yönlü navigasyon ve daha fazla ayrıntı istiyorum? Azure [Bilişsel Arama'da yönlü gezinmeyi nasıl uygulayacağınızda](search-faceted-navigation.md)görün.
 
 ## <a name="choose-fields"></a>Alanları seçin
 
-Modeller, tek değer alanları ve koleksiyonlar üzerinden hesaplanabilir. Çok yönlü gezinmede en iyi şekilde çalışan alanlar düşük kardinalite sahiptir: arama corpminizdeki belgeleri (örneğin, bir renk, ülke/bölge veya marka adı) tekrarlayan çok az sayıda benzersiz değer. 
+Fasonlar, tek değer alanları ve koleksiyonlar üzerinden hesaplanabilir. Yönlü gezinmede en iyi çalışan alanlar düşük ciddiyetliliğe sahiptir: arama şirketinizdeki belgelerde yinelenen az sayıda farklı değer (örneğin, renklerin, ülkelerin/bölgelerin veya marka adlarının listesi). 
 
-`facetable` özniteliğini `true`olarak ayarlayarak, dizin oluşturduğunuzda, bir alan temelinde, her zaman bir alan temelinde etkinleştirilir. Ayrıca, arama uygulamanızın son kullanıcının seçtiği modelleri temel alarak bu alanlara filtre yapabilmesi için `filterable` özniteliğini bu alanlar için `true` olarak ayarlamanız gerekir. 
+Özniteliği 'ne ayarlayarak `facetable` dizin oluştururken faceting alan bazında `true`etkinleştirilir. Arama uygulamanızın son `filterable` kullanıcının `true` seçtiği yönlerini temel alan bu alanlara filtre uygulayabilmesi için genellikle bu tür alanlara özniteliği de ayarlamanız gerekir. 
 
-REST API kullanarak bir dizin oluştururken, çok yönlü gezintide kullanılabilecek bir [alan türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , varsayılan olarak `facetable` olarak işaretlenir:
+REST API'yi kullanarak bir dizin oluştururken, yönlü gezinmede kullanılabilecek `facetable` herhangi bir alan [türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) varsayılan olarak işaretlenir:
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Sayısal alan türleri: `Edm.Int32`, `Edm.Int64`, `Edm.Double`
++ Sayısal alan tipleri: `Edm.Int32` `Edm.Int64`, ,`Edm.Double`
 + Yukarıdaki türlerin koleksiyonları (örneğin, `Collection(Edm.String)` veya `Collection(Edm.Double)`)
 
-Çok yönlü gezintide `Edm.GeographyPoint` veya `Collection(Edm.GeographyPoint)` alanlarını kullanamazsınız. Modeller düşük önem taşıyan alanlarda en iyi şekilde çalışır. Coğrafi koordinatların çözümlenme nedeniyle, her iki ortak ordinonun kümesi, belirli bir veri kümesinde eşit olacaktır. Bu nedenle, coğrafi koordinatlara yönelik modeller desteklenmez. Konuma göre model için bir şehir veya bölge alanı gerekir.
+Yüzyüze `Edm.GeographyPoint` gezinmede kullanamazsınız veya `Collection(Edm.GeographyPoint)` alanlar. Fatlar en iyi düşük kardinallik alanlarında çalışır. Coğrafi koordinatların çözünürlüğü nedeniyle, belirli bir veri kümesinde herhangi iki koordinat kümesinin eşit olması nadirdir. Bu nedenle, fasonlar coğrafi koordinatlar için desteklenmez. Konuma göre bir şehir veya bölge alanı gerekir.
 
-## <a name="set-attributes"></a>Öznitelikleri ayarla
+## <a name="set-attributes"></a>Öznitelikleri ayarlama
 
-Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindeki ayrı alan tanımlarına eklenir. Aşağıdaki örnekte, düşük önem taşıyan alanlar, her zaman, `category` (otel, Motel, Hostel), `tags`ve `rating`' den oluşur. Bu alanlarda, tanım amaçları için aşağıdaki örnekte açıkça ayarlanmış `filterable` ve `facetable` öznitelikleri vardır. 
+Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindeki tek tek alan tanımlarına eklenir. Aşağıdaki örnekte, düşük kardinallik ile alanlar, yüz yüze `category` için yararlı, oluşur: (otel, motel, hostel), `tags`ve `rating`. Bu alanlar `filterable` açıklayıcı `facetable` amaçlar için aşağıdaki örnekte açıkça ayarlanmış ve öznitelikleri vardır. 
 
 > [!Tip]
-> Performans ve depolama iyileştirmesi için en iyi uygulama olarak, bir model olarak asla kullanılmamalıdır. Özellikle, bir KIMLIK veya ürün adı gibi benzersiz değerler için dize alanları, çok yönlü olan gezinmede yanlışlıkla (ve verimsiz) kullanılmasını engellemek için `"facetable": false` olarak ayarlanmalıdır.
+> Performans ve depolama optimizasyonu için en iyi uygulama olarak, hiçbir zaman bir fason olarak kullanılmaması gereken alanlar için yüzleme kapatın. Özellikle, kimlik veya ürün adı gibi benzersiz değerlere sahip dize alanları, bunların yüzlü gezinmede yanlışlıkla (ve etkisiz) kullanımını önlemek için `"facetable": false` ayarlanmalıdır.
 
 
 ```json
@@ -77,15 +77,15 @@ Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindek
 ```
 
 > [!Note]
-> Bu dizin tanımı [, REST API kullanılarak Azure bilişsel arama dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-rest-api)işleminden kopyalanır. Bu, alan tanımlarındaki yararlanmayan farklılıkları dışında aynıdır. `filterable` ve `facetable` öznitelikleri `category`, `tags`, `parkingIncluded`, `smokingAllowed`ve `rating` alanlarında açıkça eklenir. Uygulamada, `filterable` ve `facetable`, REST API kullanılırken bu alanlarda varsayılan olarak etkinleştirilir. .NET SDK kullanırken, bu özniteliklerin açıkça etkinleştirilmesi gerekir.
+> Bu dizin [tanımı, REST API kullanılarak Bir Azure Bilişsel Arama dizini oluşturma'dan](https://docs.microsoft.com/azure/search/search-create-index-rest-api)kopyalanır. Alan tanımlarında yüzeysel farklılıklar dışında aynıdır. Ve `filterable` `facetable` öznitelikleri açıkça , `category` `tags`, `parkingIncluded` `smokingAllowed`, `rating` , ve alanlara eklenir. Uygulamada `filterable` ve `facetable` REST API kullanırken bu alanlarda varsayılan olarak etkin olacaktır. .NET SDK kullanılırken, bu özniteliklerin açıkça etkinleştirilmesi gerekir.
 
-## <a name="build-and-load-an-index"></a>Dizin oluşturma ve yükleme
+## <a name="build-and-load-an-index"></a>Bir dizin oluşturma ve yükleme
 
-Ara (ve belirgin) bir adım sorgu oluşturmadan önce [dizini derleyip doldurmanız](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) gerekir. Bu adımdan daha fazla bahsedin. Dizinin kullanılabilir olup olmadığını belirlemenin bir yolu, [portaldaki](https://portal.azure.com)dizinler listesini denetleyerek.
+Bir ara (ve belki de bariz) adım oluşturmak ve bir sorgu formüle etmeden önce [dizin doldurmak](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) olmasıdır. Biz bütünlük için burada bu adım söz. Dizin kullanılabilir olup olmadığını belirlemek için bir yolu [portalda](https://portal.azure.com)dizinler listesini kontrol etmektir.
 
-## <a name="add-facet-filters-to-a-query"></a>Bir sorguya model filtreleri ekleme
+## <a name="add-facet-filters-to-a-query"></a>Sorguya fason filtreler ekleme
 
-Uygulama kodu ' nda, arama ifadeleri, modeller, filtreler, Puanlama profilleri gibi geçerli bir sorgunun tüm parçalarını belirten bir sorgu oluşturun ve bir isteği formülleştirmek için kullanılan her şey vardır. Aşağıdaki örnek, konaklama, derecelendirme ve diğer değişiklik türlerini temel alan model gezintisi oluşturan bir istek oluşturur.
+Uygulama kodunda, bir isteği formüle etmek için kullanılan arama ifadeleri, fatektler, filtreler, puanlama profilleri dahil olmak üzere geçerli bir sorgunun tüm bölümlerini belirten bir sorgu oluşturun. Aşağıdaki örnek, konaklama türüne, derecelendirmeye ve diğer olanaklara göre farklı bir gezinme oluşturan bir istek oluşturur.
 
 ```csharp
 var sp = new SearchParameters()
@@ -96,33 +96,33 @@ var sp = new SearchParameters()
 };
 ```
 
-### <a name="return-filtered-results-on-click-events"></a>Tıklama olaylarına göre filtrelenmiş sonuçları döndür
+### <a name="return-filtered-results-on-click-events"></a>Tıklama olaylarında filtreuygulanmış sonuçları döndürme
 
-Son Kullanıcı bir model değerine tıkladığında, Click olayının işleyicisi kullanıcının hedefini gerçekleştirmek için bir filtre ifadesi kullanmalıdır. `category` modeli verildiğinde, "Motel" kategorisini tıklatmak, bu türün konaklamaları seçen bir `$filter` ifadesi ile uygulanır. Kullanıcı yalnızca Motels gösterilmesi gerektiğini belirtmek için "Motel" öğesini tıkladığında, uygulamanın gönderdiği sonraki sorgu `$filter=category eq 'motel'`içerir.
+Son kullanıcı bir fason değeri tıklattığında, tıklama olayının işleyicisi kullanıcının amacını gerçekleştirmek için bir filtre ifadesi kullanmalıdır. Bir `category` fason göz önüne alındığında, kategori "motel" `$filter` tıklayarak bu tür konaklama seçer bir ifade ile uygulanır. Bir kullanıcı yalnızca motellerin gösterilmesi gerektiğini belirtmek için "motel"i tıklattığında, `$filter=category eq 'motel'`uygulamanın gönderdiği bir sonraki sorguyu içerir.
 
-Aşağıdaki kod parçacığı, bir Kullanıcı kategori modeli 'nden bir değer seçerse filtreye kategori ekler.
+Kullanıcı kategori fatondan bir değer seçerse, aşağıdaki kod snippet'i filtreye kategori ekler.
 
 ```csharp
 if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Kullanıcı `tags`gibi bir koleksiyon alanı için bir model değerine tıklarsa, örneğin "Pool" değeri, uygulamanız şu filtre sözdizimini kullanmalıdır: `$filter=tags/any(t: t eq 'pool')`
+Kullanıcı `tags`bir koleksiyon alanı için bir fason değerine tıklarsa , örneğin "havuz" değeri, uygulamanız aşağıdaki filtre sözdizimini kullanmalıdır:`$filter=tags/any(t: t eq 'pool')`
 
-## <a name="tips-and-workarounds"></a>İpuçları ve geçici çözümler
+## <a name="tips-and-workarounds"></a>İpuçları ve geçici çözüm
 
-### <a name="initialize-a-page-with-facets-in-place"></a>Özellikleri yerinde bir sayfa başlatın
+### <a name="initialize-a-page-with-facets-in-place"></a>Yerinde yönleri olan bir sayfayı başlatma
 
-Özellikleri yerinde bir sayfa başlatmak istiyorsanız, sayfayı bir başlangıç modeli yapısına göre temel almak için sayfa başlatmanın bir parçası olarak bir sorgu gönderebilirsiniz.
+Yerinde yönleri olan bir sayfayı başlatmak istiyorsanız, sayfanın başlangıç bölümünün bir parçası olarak sayfanın ilk yönlü yapısıyla tohumlama için bir sorgu gönderebilirsiniz.
 
-### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Filtrelenmiş sonuçlardan zaman uyumsuz bir model gezinti yapısını koruma
+### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Filtre uygulanmış sonuçlardan oluşan bir yönlü gezinme yapısını eşit bir şekilde koruyun
 
-Azure Bilişsel Arama 'de model gezintisi ile ilgili güçlüklerden biri yalnızca geçerli sonuçlar için mevcut olan bir modeldir. Uygulamada, bir statik model kümesinin tutulması yaygın bir yöntemdir. böylece Kullanıcı, arama içeriği aracılığıyla alternatif yolları araştırmak için adımları yeniden izleyerek geri gidebilir. 
+Azure Bilişsel Arama'da farklı gezinmenin zorluklarından biri, yalnızca geçerli sonuçlar için farklı yönlerin mevcut olmasıdır. Uygulamada, kullanıcının arama içeriği aracılığıyla alternatif yolları keşfetmek için adımları izleyerek ters yönde gezinmesi için statik bir yön kümesini korumak yaygındır. 
 
-Bu, yaygın olarak kullanılan bir kullanım durumu olsa da, model Gezinti yapısının Şu anda kullanıma hazır olarak sağladığı bir şey değildir. Statik modeller isteyen geliştiriciler genellikle iki filtrelenmiş sorgu vererek sınırlamanın etrafında çalışır: sonuçlara kapsamlı bir kapsam, diğer bir deyişle, gezinme amacıyla bir statik model listesi oluşturmak için kullanılır.
+Bu yaygın bir kullanım örneği olmasına rağmen, şu anda facet navigasyon yapısı out-of-the-box sağlayan bir şey değil. Statik yönler isteyen geliştiriciler genellikle iki filtreuygulanmış sorgu ları vererek sınırlama etrafında çalışır: biri sonuçlara yönelik, diğeri navigasyon amacıyla statik bir faturlar listesi oluşturmak için kullanılır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Azure Bilişsel Arama filtreler](search-filters.md)
-+ [Dizin REST API oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [Belgelerde ara REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Azure Bilişsel Arama'daki Filtreler](search-filters.md)
++ [Dizin REST API oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents)

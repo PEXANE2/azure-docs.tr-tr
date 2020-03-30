@@ -1,6 +1,6 @@
 ---
-title: Azure 'da paylaşılan görüntülerle ilgili sorunları giderme
-description: Paylaşılan görüntü galerileriyle ilgili sorunları nasıl giderebileceğinizi öğrenin.
+title: Azure'da paylaşılan görüntülerle ilgili sorunları giderme sorunları
+description: Paylaşılan resim galerileriyle ilgili sorunları nasıl gidereceklerini öğrenin.
 services: virtual-machine-windows
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
@@ -17,17 +17,17 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 8ca47912a73a9d6e0502bd7847720154775c631f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034670"
 ---
-# <a name="troubleshooting-shared-image-galleries"></a>Paylaşılan görüntü galerilerini sorun giderme
+# <a name="troubleshooting-shared-image-galleries"></a>Paylaşılan görüntü galerisi sorunlarını giderme
 
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../../includes/virtual-machines-common-shared-image-troubleshooting.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Paylaşılan görüntü galerileri](shared-image-galleries.md)hakkında daha fazla bilgi edinin.
+[Paylaşılan resim galerileri](shared-image-galleries.md)hakkında daha fazla bilgi edinin.

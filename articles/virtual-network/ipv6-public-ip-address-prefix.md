@@ -1,7 +1,7 @@
 ---
-title: Azure sanal ağı 'nda genel IPv6 adresi ön eki
+title: Azure sanal ağında genel IPv6 adres öneki
 titlesuffix: Azure Virtual Network
-description: Azure sanal ağ 'da genel IPv6 adresi ön eki hakkında bilgi edinin.
+description: Azure sanal ağında genel IPv6 adres öneki hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,44 +13,44 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
 ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72965166"
 ---
-# <a name="reserved-public-ipv6-address-prefix-preview"></a>Ayrılmış genel IPv6 adresi ön eki (Önizleme)
+# <a name="reserved-public-ipv6-address-prefix-preview"></a>Ayrılmış genel IPv6 adresi öneki (Önizleme)
 
-Azure 'da, Internet bağlantısı olmadığından, ikili yığın (IPv4 + IPv6) sanal ağları (VNet) ve sanal makineler (VM 'Ler) varsayılan olarak güvenlidir. Azure Yük dengeleyicileri ve sanal makinelerinize, Azure 'dan edindiğiniz genel IPv6 adresleriyle kolayca bir IPv6 Internet bağlantısı ekleyebilirsiniz.
+Azure'da, çift yığın (IPv4+IPv6) sanal ağlar (VNet) ve sanal makineler (VM' ler) Internet bağlantılarına sahip olmadıkları ndan varsayılan olarak güvenlidir. Azure'dan elde ettiğiniz genel IPv6 adresleriyle Azure Yük Bakiyeleri ve VM'lerinize kolayca IPv6 Internet bağlantısı ekleyebilirsiniz.
 
-Ayrılan genel IP 'Ler, seçtiğiniz bir Azure bölgesiyle ve Azure aboneliğiniz ile ilişkilendirilir. Bir ayrılmış (statik) IPv6 genel IP 'sini aboneliğinizdeki herhangi bir Azure yük dengeleyiciden veya VM arasında taşıyabilirsiniz. IPv6 genel IP 'nin ilişkilendirmesini tamamen çözebilir ve siz de kullanıma aldığınızda kullanım için bu IP 'nin tutulması gerekir.
+Rezerve ettiğiniz tüm genel IP'ler, seçtiğiniz bir Azure bölgesi yle ve Azure aboneliğinizle ilişkilidir. Ayrılmış (statik) bir IPv6 genel IP'sini aboneliğinizdeki Azure Yük Dengeleyicileri veya VM'lerden herhangi biri arasında taşıyabilirsiniz. IPv6 genel IP'sini tamamen ayrıştırabilirsiniz ve hazır olduğunuzda kullanımınız için kullanılacaktır.
 
 > [!WARNING]
-> Genel IP adreslerinizi yanlışlıkla silmemek için dikkatli kullanın. Genel bir IP silindiğinde aboneliğinizden kaldırılır ve bunu kurtaramazsınız (Azure desteğinin yardımıyla bile olmasa da).
+> Genel IP adreslerinizi yanlışlıkla silmemek için dikkatli olun. Herkese açık bir IP'yi silerseniz aboneliğinizden kaldırır ve aboneliğinizi kurtaramazsınız (Azure desteği yardımıyla bile).
 
-Ayrı IPv6 adreslerini ayırmaya ek olarak, kullanım için Azure IPv6 adreslerinin (IP öneki olarak bilinir) bitişik aralıklarını ayırabilirsiniz.  Ayrı IP adreslerine benzer şekilde, ayrılmış ön ekler tercih ettiğiniz bir Azure bölgesiyle ve Azure aboneliğiniz ile ilişkilendirilir. Öngörülebilir ve bitişik bir adres aralığının birçok kullanımı vardır. Örneğin, şirketiniz tarafından Azure 'da barındırılan uygulamalarınızın IP *beyaz listesini* büyük ölçüde basitleştirerek, statik IP aralıkları şirket içi güvenlik duvarlarıyla kolayca programlanabilir hale getirebilirsiniz.  Gerektiğinde IP önekinizden bağımsız genel IP 'Ler oluşturabilir ve bunları daha sonra yeniden kullanabilmeniz için bu genel IP 'Leri ayrılmış aralığa *geri döndürürsünüz* . IP Önekinizdeki tüm IP adresleri, ön ekine sildiğiniz zaman kadar özel kullanım için ayrılmıştır.
+Tek tek IPv6 adreslerini ayırmanın yanı sıra, kullanımınız için bitişik Azure IPv6 adresleri (IP öneki olarak bilinir) aralıklarını ayırabilirsiniz.  Tek tek IP adreslerine benzer şekilde, ayrılmış önekler seçtiğiniz bir Azure bölgesiyle ve Azure aboneliğinizle ilişkilendirilir. Öngörülebilir, bitişik bir adres aralığının rezerve edileb'sinin birçok kullanımı vardır. Örneğin, statik IP aralıklarınız şirket içi güvenlik duvarlarına kolayca programlanabildiği için, Azure tarafından barındırılan uygulamalarınızın şirketiniz ve müşterileriniz tarafından IP *beyaz listesini* büyük ölçüde basitleştirebilirsiniz.  Gerektiğinde IP önekinizden tek tek genel IP'ler oluşturabilirsiniz ve bu *returned* bireysel Genel IP'leri sildiğinizde, bunları daha sonra yeniden kullanabilmeniz için ayrılmış aralığınıza döndürülürler. IP Önek'inizdeki tüm IP adresleri, önekinizi silene kadar özel kullanımınız için ayrılmıştır.
 
 > [!Important]
-> Azure sanal ağ için IPv6 Şu anda genel önizleme aşamasındadır. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Sanal Ağı için IPv6 şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="ipv6-prefix-sizes"></a>IPv6 ön ek boyutları
+## <a name="ipv6-prefix-sizes"></a>IPv6 önek boyutları
 Aşağıdaki genel IP öneki boyutları kullanılabilir:
 
--  En düşük IPv6 ön ek boyutu:/127 = 2 Adres
--  En fazla IPv6 ön ek boyutu:/124 = 16 adres
+-  Minimum IPv6 Önek boyutu: /127 = 2 adres
+-  Maksimum IPv6 Önek boyutu: /124 = 16 adres
 
-Ön ek boyutu, sınıfsız etki alanları arası yönlendirme (CıDR) Maske boyutu olarak belirtilir. Örneğin,/128 maskesi, IPv6 adresleri 128 bitten oluşan tek bir IPv6 adresini temsil eder.
+Önek boyutu Sınıfsız Etki Alanları Yönlendirme (CIDR) maske boyutu olarak belirtilir. Örneğin, /128 maskesi, IPv6 adresleri 128 bit'den oluştuğundan tek bir IPv6 adresini temsil eder.
 
 ## <a name="pricing"></a>Fiyatlandırma
  
-Tek tek IP adresleri ve IP aralıkları olmak üzere Azure genel IP 'Leri kullanımıyla ilişkili maliyetler için bkz. [genel IP adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/).
+Hem tek tek IP adresleri hem de IP aralıkları olan Azure Genel IP'leri kullanmaya ilişkin maliyetler için [Genel IP Adresi fiyatlandırması'na](https://azure.microsoft.com/pricing/details/ip-addresses/)bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
-IPv6, Azure 'daki uygulamanızı (VM 'ler veya yük dengeleyiciler) silip yeniden dağıtıyorsanız IPv6 adresinin değiştirileceği anlamına gelen temel genel IP 'lerde yalnızca "dinamik" ayırma ile desteklenir. Standart IPv6 genel IP 'si yalnızca statik (ayrılmış) ayırmayı destekler, ancak standart Iç yük dengeleyiciler, atandıkları alt ağ içinden dinamik ayırmayı de destekleyebilir.  
+IPv6, Temel Genel IP'lerde yalnızca Uygulamanızı (VM'ler veya yük dengeleyicileri) Azure'da siler ve yeniden dağıttığınızda IPv6 adresinin değişeceği anlamına gelen "dinamik" ayırma yla desteklenir. Standart Internal yük dengeleyicileri de atandıkları alt ağ içinden dinamik ayırmayı destekleyebilir, ancak Standart IPv6 Public IP'nin desteği yalnızca statik (ayrılmış) tahsisidir.  
 
-En iyi uygulama olarak, IPv6 uygulamalarınız için standart genel IP 'Leri ve standart yük dengeleyicileri kullanmanızı öneririz.
+En iyi uygulama olarak, IPv6 uygulamalarınız için Standart Genel IP'leri ve Standart Yük Dengeleyicileri kullanmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Genel bir [IPv6 adresi ön eki](ipv6-reserve-public-ip-address-prefix.md)ayırın.
+- Genel bir [IPv6 adresi öneki](ipv6-reserve-public-ip-address-prefix.md)ayırın.
 - [IPv6 adresleri](ipv6-overview.md)hakkında daha fazla bilgi edinin.
-- Azure 'da [genel IP 'leri](virtual-network-public-ip-address.md) (IPv4 ve IPv6) oluşturma ve kullanma hakkında bilgi edinin.
+- Azure'da genel IP'leri (Hem IPv4 hem de IPv6) [nasıl oluşturup kullanacağınız](virtual-network-public-ip-address.md) hakkında bilgi edinin.

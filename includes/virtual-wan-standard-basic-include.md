@@ -9,17 +9,17 @@ ms.date: 10/20/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 732c08a1d97735ef1df04abbed548fd4af4e3411
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73491696"
 ---
-| **Sanal WAN türü** | **Hub türü** | **Kullanılabilir yapılandırma** |
+| **Sanal WAN türü** | **Hub türü** | **Kullanılabilir yapılandırmalar** |
 |---|---|---|
-|Temel | Temel | Siteden siteye VPN |
-| Standart | Standart | ExpressRoute<br>Kullanıcı VPN (P2S)<br>VPN (siteden siteye)<br> Sanal hub aracılığıyla hub ve VNet 'ten VNet 'e geçiş |
+|Temel | Temel | Yalnızca siteden siteye VPN |
+| Standart | Standart | ExpressRoute<br>Kullanıcı VPN (P2S)<br>VPN (siteden siteye)<br> Sanal hub üzerinden geçiş hub'ları ve VNet'ten VNet'e geçiş |
 
 >[!NOTE]
->Temel sürümünden standart sürümüne yükseltebilirsiniz, ancak standart 'den temel 'e geri dönemezsiniz.
+>Temel'den Standard'a yükseltebilirsiniz, ancak Standart'tan Temel'e geri dönemezsiniz.
 >

@@ -1,6 +1,6 @@
 ---
-title: Azure 'da Windows VM 'lerinde güvenlik ilkelerini zorunlu tutun
-description: Azure Resource Manager Windows sanal makinesine ilke uygulama
+title: Azure'da Windows VM'lerinde ilkelerle güvenliği uygulayın
+description: Bir Azure Kaynak Yöneticisi Windows Sanal Makine'ye ilke nasıl uygulanır?
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
 ms.openlocfilehash: a2ee5f36b7dba03bea3cc219651804c5039115d5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74032967"
 ---
-# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Azure Resource Manager ile Windows VM 'lerine ilke uygulama
-Bir kuruluş, ilkeleri kullanarak kuruluş genelinde çeşitli kuralları ve kuralları zorunlu kılabilir. İstenen davranışın uygulanması, kuruluşun başarısına katkıda bulunmaya karşın riski azaltmaya yardımcı olabilir. Bu makalede, kuruluşunuzun sanal makineleri için istenen davranışı tanımlamak üzere Azure Resource Manager ilkelerini nasıl kullanabileceğinizi betimliyoruz.
+# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Azure Kaynak Yöneticisi ile Windows VM'lerine ilkeler uygulama
+İlkeleri kullanarak, bir kuruluş kuruluş kuruluş genelinde çeşitli kuralları ve kuralları uygulayabilir. İstenilen davranışın uygulanması, kuruluşun başarısına katkıda bulunmakla birlikte riski azaltmaya yardımcı olabilir. Bu makalede, kuruluşunuzun Sanal Makineleri için istenen davranışı tanımlamak için Azure Kaynak Yöneticisi ilkelerini nasıl kullanabileceğinizi açıklıyoruz.
 
-İlkelere giriş için bkz. [Azure ilkesi nedir?](../../governance/policy/overview.md).
+İlkelere giriş için Azure [İlkesi nedir'e bakın.](../../governance/policy/overview.md)
 
-## <a name="permitted-virtual-machines"></a>İzin verilen sanal makineler
-Kuruluşunuzun sanal makinelerinin bir uygulamayla uyumlu olduğundan emin olmak için izin verilen işletim sistemlerini kısıtlayabilirsiniz. Aşağıdaki ilke örneğinde yalnızca Windows Server 2012 R2 Datacenter sanal makinelerinin oluşturulmasını sağlayabilirsiniz:
+## <a name="permitted-virtual-machines"></a>İzin Verilen Sanal Makineler
+Kuruluşunuz için sanal makinelerin bir uygulamayla uyumlu olduğundan emin olmak için izin verilen işletim sistemlerini kısıtlayabilirsiniz. Aşağıdaki ilke örneğinde, yalnızca Windows Server 2012 R2 Datacenter Sanal Makineleri'nin oluşturulmasına izin verirsiniz:
 
 ```json
 {
@@ -79,7 +79,7 @@ Kuruluşunuzun sanal makinelerinin bir uygulamayla uyumlu olduğundan emin olmak
 }
 ```
 
-Yukarıdaki ilkeyi herhangi bir Windows Server Datacenter görüntüsüne izin verecek şekilde değiştirmek için bir joker karakter kullanın:
+Önceki ilkeyi herhangi bir Windows Server Datacenter görüntüsüne izin vermek için değiştirmek için joker karakter kullanın:
 
 ```json
 {
@@ -88,7 +88,7 @@ Yukarıdaki ilkeyi herhangi bir Windows Server Datacenter görüntüsüne izin v
 }
 ```
 
-Herhangi bir Windows Server 2012 R2 Datacenter veya daha yüksek görüntüye izin vermek için yukarıdaki ilkeyi değiştirmek üzere anyOf kullanın:
+Herhangi bir Windows Server 2012 R2 Datacenter veya daha yüksek görüntü izin vermek için önceki ilkeyi değiştirmek için anyOf kullanın:
 
 ```json
 {
@@ -105,7 +105,7 @@ Herhangi bir Windows Server 2012 R2 Datacenter veya daha yüksek görüntüye iz
 }
 ```
 
-İlke alanları hakkında bilgi için bkz. [ilke diğer adları](../../governance/policy/concepts/definition-structure.md#aliases).
+İlke alanları hakkında bilgi [için, İlke takma adlarına](../../governance/policy/concepts/definition-structure.md#aliases)bakın.
 
 ## <a name="managed-disks"></a>Yönetilen diskler
 
@@ -155,11 +155,11 @@ Yönetilen disklerin kullanımını gerektirmek için aşağıdaki ilkeyi kullan
 }
 ```
 
-## <a name="images-for-virtual-machines"></a>Sanal makineler için görüntüler
+## <a name="images-for-virtual-machines"></a>Sanal Makineler için Görüntüler
 
-Güvenlik nedenleriyle, ortamınızda yalnızca onaylanan özel görüntülerin dağıtılmasını zorunlu kılabilirsiniz. Onaylanan görüntüleri içeren kaynak grubunu ya da onaylanan belirli görüntüleri belirtebilirsiniz.
+Güvenlik nedenleriyle, ortamınızda yalnızca onaylı özel görüntülerin dağıtılmasını gerektirebilirsiniz. Onaylanan görüntüleri içeren kaynak grubunu veya belirli onaylı görüntüleri belirtebilirsiniz.
 
-Aşağıdaki örnek, onaylanan bir kaynak grubundan görüntüleri gerektirir:
+Aşağıdaki örnek, onaylanmış bir kaynak grubundan görüntüler gerektirir:
 
 ```json
 {
@@ -186,7 +186,7 @@ Aşağıdaki örnek, onaylanan bir kaynak grubundan görüntüleri gerektirir:
 } 
 ```
 
-Aşağıdaki örnek, onaylanan görüntü kimliklerini belirtir:
+Aşağıdaki örnekte onaylı resim kimlikleri belirtin:
 
 ```json
 {
@@ -195,9 +195,9 @@ Aşağıdaki örnek, onaylanan görüntü kimliklerini belirtir:
 }
 ```
 
-## <a name="virtual-machine-extensions"></a>Sanal makine uzantıları
+## <a name="virtual-machine-extensions"></a>Sanal Makine uzantıları
 
-Belirli uzantı türlerinin kullanımını sağlamak isteyebilirsiniz. Örneğin, bir uzantı belirli özel sanal makine görüntüleriyle uyumlu olmayabilir. Aşağıdaki örnek, belirli bir uzantının nasıl engelleyeceğinizi gösterir. Hangi uzantının engelleneceğini belirleyen yayımcıyı ve türünü kullanır.
+Belirli türdeki uzantıların kullanımını yasaklamak isteyebilirsiniz. Örneğin, bir uzantı belirli özel sanal makine görüntüleriyle uyumlu olmayabilir. Aşağıdaki örnek, belirli bir uzantıntı nasıl engellenir gösterir. Hangi uzantıyı engelleyecek lerini belirlemek için yayımcı ve türü kullanır.
 
 ```json
 {
@@ -227,7 +227,7 @@ Belirli uzantı türlerinin kullanımını sağlamak isteyebilirsiniz. Örneğin
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hibrit Kullanım Teklifi
 
-Şirket içi lisansınız varsa, Lisans ücretini sanal makinelerinize kaydedebilirsiniz. Lisansa sahip olmadığınız zaman, seçeneğini yasaklamalısınız. Aşağıdaki ilke, Azure hibrit kullanım avantajı 'nın (AHUB) yasaklıyor kullanımını kullanır:
+Şirket içi lisansınız olduğunda, lisans ücretini sanal makinelerinize kaydedebilirsiniz. Lisansın yoksa, seçeneği yasaklamanız gerekir. Aşağıdaki ilke, Azure Karma Kullanım Avantajı'nın (AHUB) kullanımını yasaklar:
 
 ```json
 {
@@ -250,6 +250,6 @@ Belirli uzantı türlerinin kullanımını sağlamak isteyebilirsiniz. Örneğin
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bir ilke kuralı tanımladıktan sonra (önceki örneklerde gösterildiği gibi), ilke tanımını oluşturmanız ve bir kapsama atamanız gerekir. Kapsam bir abonelik, kaynak grubu veya kaynak olabilir. İlke atamak için bkz. [kaynak ilkeleri atamak ve yönetmek için Azure Portal kullanma](../../governance/policy/assign-policy-portal.md), [Ilke atamak için PowerShell kullanma](../../governance/policy/assign-policy-powershell.md)veya [Ilke atamak için Azure CLI kullanma](../../governance/policy/assign-policy-azurecli.md).
-* Kaynak ilkelerine giriş için bkz. [Azure ilkesi nedir?](../../governance/policy/overview.md).
+* Bir ilke kuralı tanımladıktan sonra (önceki örneklerde gösterildiği gibi), ilke tanımını oluşturmanız ve bir kapsama atamanız gerekir. Kapsam bir abonelik, kaynak grubu veya kaynak olabilir. İlkeler atamak için kaynak [ilkeleri atamak ve yönetmek için Azure portalını kullan](../../governance/policy/assign-policy-portal.md)'ı kullanma [(ilkeleri atamak için PowerShell'i kullanın](../../governance/policy/assign-policy-powershell.md)veya ilkeleri [atamak için Azure CLI'yi kullanın.](../../governance/policy/assign-policy-azurecli.md)
+* Kaynak ilkelerine giriş için Azure [İlkesi nedir'](../../governance/policy/overview.md)e bakın.
 * Kuruluşların abonelikleri etkili bir şekilde yönetmek için Resource Manager'ı nasıl kullanabileceği hakkında yönergeler için bkz. [Azure kurumsal iskelesi: öngörücü abonelik idaresi](/azure/architecture/cloud-adoption-guide/subscription-governance).

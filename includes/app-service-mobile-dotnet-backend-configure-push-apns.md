@@ -5,16 +5,16 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857523"
 ---
-**.Net arka ucuC#()** :
+**.NET arka uç (C#)**:
   
-1. Visual Studio 'da sunucu projesine sağ tıklayın ve **NuGet Paketlerini Yönet**' e tıklayın, için `Microsoft.Azure.NotificationHubs`arama yapın ve ardından **Install**' a tıklayın. Bu, arka ucunuzdaki bildirimleri göndermek için Notification Hubs kitaplığını kurar.
-2. Arka ucun Visual Studio projesinde, **Controllers** > **TodoItemController.cs**' ı açın. Dosyanın en üstüne aşağıdaki `using` ifadeyi ekleyin:
+1. Visual Studio'da sunucu projesini sağ tıklatın ve **NuGet Paketlerini Yönet'i** `Microsoft.Azure.NotificationHubs`tıklatın, ardından **Yükle'yi**tıklatın. Bu, arka uçunuzdan bildirim göndermek için Bildirim Hub'ları kitaplığını yükler.
+2. Arka uç Visual Studio projesinde, açık **Denetleyiciler** > **TodoItemController.cs.** Dosyanın üst kısmında aşağıdaki `using` ifadeyi ekleyin:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -65,11 +65,11 @@ ms.locfileid: "68857523"
 
 4. Sunucu projesini yeniden yayımlayın.
 
-**Node.js arka ucu**:
+**Düğüm.js arka uç**:
 
 1. Arka uç projenizi ayarlayın.    
 
-2. TodoItem. js tablo betiğini şu kodla değiştirin:
+2. Todoitem.js tablo komut dosyasını aşağıdaki kodla değiştirin:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -110,4 +110,4 @@ ms.locfileid: "68857523"
     module.exports = table;
     ```
 
-3. Yerel bilgisayarınızda dosyayı düzenlediğinizde, sunucu projesini yeniden yayımlayın.
+3. Dosyayı yerel bilgisayarınızda düzenlerken sunucu projesini yeniden yayımlayın.

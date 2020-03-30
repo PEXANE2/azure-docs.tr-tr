@@ -1,6 +1,6 @@
 ---
-title: Azure savunma oturumu izleme ve yönetimi | Microsoft Docs
-description: Bu makalede, devam eden bir oturum seçip bağlantıyı kesmeyi veya silmeyi öğrenin.
+title: Azure Bastion oturum izleme ve yönetimi | Microsoft Dokümanlar
+description: Bu makalede, devam eden bir oturumu nasıl seçip zorla bağlantıyı kesecek veya silebilirsiniz öğrenin.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,49 +8,49 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76981098"
 ---
-# <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure savunma için oturum izleme ve yönetimi
+# <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure Bastion için oturum izleme ve yönetim
 
-Savunma hizmeti, sanal ağınıza sağlandıktan ve dağıtıldıktan sonra, bu sanal ağdaki herhangi bir VM 'ye sorunsuz bir şekilde bağlanmak için kullanabilirsiniz. Kullanıcılar iş yüklerine bağlandıklarında, uzak oturumları izlemek ve hızlı yönetim eylemleri almak için Azure savunma kullanılabilir. Azure savunma oturumu izleme, hangi kullanıcıların hangi VM 'lere bağlandığını görüntülemenize olanak sağlar. Kullanıcının bağlı olduğu IP 'yi, ne kadar bağlı olduğunu ve ne zaman bağlandığını gösterir. Oturum yönetimi deneyimi, devam eden bir oturum seçmenizi sağlar ve kullanıcının devam eden oturumla bağlantısını kesmek için bir oturum kesmeyi zorunlu tutar veya siler.
+Bastion hizmeti sanal ağınızda sağlanıp dağıtıldıktan sonra, bu sanal ağdaki herhangi bir VM'ye sorunsuz bir şekilde bağlanmak için bu hizmeti kullanabilirsiniz. Kullanıcılar iş yüklerine bağlandıkça, Azure Bastion uzak oturumları izlemek ve hızlı yönetim eylemleri yapmak için kullanılabilir. Azure Bastion oturum izleme, hangi kullanıcıların hangi VM'lere bağlı olduğunu görüntülemenizi sağlar. Kullanıcının bağlı olduğu IP'yi, ne kadar süredir bağlı olduklarını ve ne zaman bağlandıklarını gösterir. Oturum yönetimi deneyimi, kullanıcının devam eden oturumla bağlantısını kesmek için devam eden bir oturum seçmenize ve oturumu zorla kesmenize veya silmenize olanak tanır.
 
-## <a name="monitor"></a>Uzak oturumları izleme
+## <a name="monitor-remote-sessions"></a><a name="monitor"></a>Uzak oturumları izleme
 
-1. [Azure Portal](https://portal.azure.com)Azure savunma kaynağınız ' ne gidin ve Azure savunma sayfasından **Oturumlar** ' ı seçin.
+1. Azure [portalında](https://portal.azure.com)Azure Bastion kaynağınıza gidin ve Azure Bastion sayfasından **Oturumlar'ı** seçin.
 
-   ![bağlanabilecek](./media/session-monitoring/sessions.png)
+   ![Oturum](./media/session-monitoring/sessions.png)
 2. **Oturumlar** sayfasında, devam eden uzak oturumları sağ tarafta görebilirsiniz.
 
-   ![oturumu görüntüle](./media/session-monitoring/view-session.png)
-3. Güncelleştirilmiş uzak oturum listesini görmek için **Yenile** ' yi seçin. Yenile ' yi seçtiğinizde, Azure savunma en son izleme bilgilerini alıp portalda yenilemeyecektir.
+   ![oturumu görüntüleme](./media/session-monitoring/view-session.png)
+3. Güncelleştirilmiş uzak oturumlistesini görmek için **Yenile'yi** seçin. Yenile'yi seçtiğinizde, Azure Bastion en son izleme bilgilerini getirir ve portalda yeniler.
 
-   ![yenileyebilir](./media/session-monitoring/refresh.png)
+   ![refresh](./media/session-monitoring/refresh.png)
 
 >[!IMPORTANT]
-> Oturum izlemenin çalışması için Ağ Geçidi Yöneticisi 'nden gelen trafik için 4443 bağlantı noktasını etkinleştirin.
+> Oturum izlemenin çalışması için Ağ Geçidi Yöneticisi'nden gelen trafik için bağlantı noktası 4443'ü etkinleştirin.
 >
 
-## <a name="view"></a>Devam eden bir uzak oturumu silme veya zorla kesme
+## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>Devam eden bir uzak oturumu silme veya zorla kesme
 
-Bir dizi oturum (ler) seçebilir ve bunları zorla kesebilirsiniz. Aşağıdaki adımlarda, uzak oturumları silme işlemleri gösterilmektedir:
+Bir oturum(lar) kümesi seçebilir ve bunları zorla kesebilirsiniz. Aşağıdaki adımlar, uzak oturumları nasıl sildiğinizi gösterir:
 
-1. Azure savunma kaynağınız ' ne gidin ve Azure savunma sayfasından **Oturumlar** ' ı seçin.
+1. Azure Bastion kaynağınıza gidin ve Azure Bastion sayfasından **Oturumlar'ı** seçin.
 
-   ![geçmek](./media/session-monitoring/navigate.png)
-2. Oturumlar ' ı seçtikten sonra, uzak oturumların bir listesini görürsünüz.
+   ![navigate](./media/session-monitoring/navigate.png)
+2. Oturumları seçtikten sonra, uzak oturumların listesini görürsünüz.
 
-   ![oturumları listeleme](./media/session-monitoring/list.png)
-3. Belirli bir uzak oturumu seçin, sonra oturum satırının sağ tarafındaki üç üç noktayı seçin ve **Sil**' i seçin.
+   ![liste oturumları](./media/session-monitoring/list.png)
+3. Belirli bir uzak oturumu seçin, ardından oturum satırının sağ ucundaki üç elipsi seçin ve sonra **Sil'i**seçin.
 
    ![delete](./media/session-monitoring/delete.png)
-4. Sil ' i seçtiğinizde, uzak oturumun bağlantısı kesilir ve Kullanıcı uzak oturumdaki "bağlantınız kesildi" iletisini gösterilir.
+4. Sil'i seçtiğinizde, uzak oturumun bağlantısı kesilir ve kullanıcıya uzak oturumda "Bağlantınız kesildi" iletisi gösterilir.
 
-   ![ayır](./media/session-monitoring/disconnect.png)
+   ![Bağlantıyı kes](./media/session-monitoring/disconnect.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Savunma [hakkında SSS](bastion-faq.md)makalesini okuyun.
+[Bastion SSS'yi](bastion-faq.md)okuyun.

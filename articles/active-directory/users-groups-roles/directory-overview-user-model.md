@@ -1,5 +1,5 @@
 ---
-title: Kullanıcılar, gruplar, lisanslama ve rollere genel bakış-Azure AD | Microsoft Docs
+title: Kullanıcılara, gruplara, lisanslama ve rollere genel bakış - Azure AD | Microsoft Dokümanlar
 description: Azure Active Directory'deki kullanıcılar ile atanan lisanslar, yönetici rolleri ve grup üyelikleri arasındaki ilişki
 keywords: ''
 author: curtand
@@ -15,10 +15,10 @@ services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77046332"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Büyük kuruluşlar için kullanıcılar, gruplar, lisanslama ve roller
@@ -31,7 +31,7 @@ Bu makale Azure AD yöneticilerine gruplar, lisanslar, dağıtılan kurumsal uyg
 
 ## <a name="assign-users-to-groups"></a>Kullanıcıları gruplara atama
 
-Azure AD'deki grupları kullanarak çok sayıda kullanıcıya lisans atayabilir veya dağıtılan kurumsal uygulamalara kullanıcı erişimi verebilirsiniz. Azure AD 'de Genel yönetici hariç tüm yönetici rollerini atamak için grupları kullanabilir veya SaaS uygulamaları veya SharePoint siteleri gibi dış kaynaklara erişim izni verebilirsiniz.
+Azure AD'deki grupları kullanarak çok sayıda kullanıcıya lisans atayabilir veya dağıtılan kurumsal uygulamalara kullanıcı erişimi verebilirsiniz. Grupları Azure AD'deki Global Administrator dışındaki tüm yönetici rollerini atamak için kullanabilir veya SaaS uygulamaları veya SharePoint siteleri gibi harici kaynaklara erişim izni verebilirsiniz.
 
 Daha fazla esneklik sağlamak veya grup üyeliği yönetim yükünü azaltmak için Azure AD'deki [dinamik grupları](groups-create-rule.md) kullanarak grup üyeliklerinin otomatik olarak verilmesini ve alınmasını sağlayabilirsiniz. Bir veya daha fazla dinamik gruba üye olan her benzersiz kullanıcı için bir Azure AD Premium P1 lisansına ihtiyacınız vardır.
 
@@ -52,7 +52,7 @@ Yeterli sayıda lisans olmadığında veya aynı anda atanamayan hizmet planlar�
 
  Rol adı | İzin özeti
  --------- | -------------------
- **Uygulama Yöneticisi** | Kurumsal uygulamalar ve uygulama kayıtları ekleyip yönetebilir, uygulama proxy'si ayarlarını yapılandırabilir. Uygulama yöneticileri, koşullu erişim ilkelerini ve cihazlarını görüntüleyebilir, ancak yönetmez.
+ **Uygulama Yöneticisi** | Kurumsal uygulamalar ve uygulama kayıtları ekleyip yönetebilir, uygulama proxy'si ayarlarını yapılandırabilir. Uygulama Yöneticileri Koşullu Erişim ilkelerini ve aygıtlarını görüntüleyebilir, ancak bunları yönetemez.
  **Bulut Uygulaması Yöneticisi** | Kurumsal uygulamalar ve kurumsal uygulama kayıtları ekleyip yönetebilir. Bu rol, Uygulama Yöneticisi rolünün tüm izinlerine sahiptir ancak uygulama proxy'si ayarlarını yönetemez.
 **Uygulama Geliştirici** | Uygulama kayıtlarını ekleyip yönetebilir ancak kurumsal uygulamaları yönetemez ve uygulama proxy'si yapılandıramaz.
 

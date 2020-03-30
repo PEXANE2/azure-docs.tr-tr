@@ -1,6 +1,6 @@
 ---
-title: "Sanal hub 'ın geçerli yollarını görüntüleme: Azure sanal WAN | Microsoft Docs"
-description: Azure sanal WAN 'da bir sanal hub için geçerli yolları görüntüle
+title: "Sanal hub'ın etkili rotalarını görüntüleyin: Azure Virtual WAN | Microsoft Dokümanlar"
+description: Azure Virtual WAN'da sanal bir hub için etkili rotalar
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73515856"
 ---
-# <a name="view-effective-routes-of-a-virtual-hub"></a>Bir sanal hub 'ın geçerli yollarını görüntüleme
+# <a name="view-effective-routes-of-a-virtual-hub"></a>Sanal hub'ın etkili rotalarını görüntüleme
 
-Sanal WAN hub 'ınızın tüm yollarını Azure portal görüntüleyebilirsiniz. Rotaları görüntülemek için sanal hub 'a gidin ve ardından **yönlendirme-> geçerli yolları görüntüle**' yi seçin.
+Sanal WAN hub'ınızın tüm rotalarını Azure portalında görüntüleyebilirsiniz. Rotaları görüntülemek için sanal hub'a gidin ve ardından **Yönlendirme -> Etkili Rotaları**Görüntüleyin'i seçin.
 
-## <a name="understand"></a>Rotaları anlama
+## <a name="understanding-routes"></a><a name="understand"></a>Yolları anlama
 
-Aşağıdaki örnek sanal WAN yönlendirmesinin nasıl göründüğünü daha iyi anlamanıza yardımcı olabilir.
+Aşağıdaki örnek, Sanal WAN yönlendirmesinin nasıl göründüğünü daha iyi anlamanıza yardımcı olabilir.
 
-Bu örnekte, üç hub ile sanal bir WAN sunuyoruz. İlk hub Doğu ABD bölgedeyse, ikinci hub Batı Avrupa bölgedeyse ve üçüncü hub Batı ABD bölgesidir. Sanal bir WAN 'da tüm Hub 'lar birbirine bağlı. Bu örnekte, Doğu ABD ve Batı Avrupa hub 'larının şirket içi dallardan (bağlı bileşenler) ve Azure sanal ağlarının (bağlı bileşenler) bağlantılarının olduğunu varsayacağız.
+Bu örnekte, üç hub'ı olan sanal bir WAN'imiz vardır. İlk merkez Doğu ABD bölgesinde, ikinci merkez Batı Avrupa bölgesinde, üçüncü merkez ise Batı ABD bölgesindedir. Sanal BIR WAN'da tüm hub'lar birbirine bağlıdır. Bu örnekte, Doğu ABD ve Batı Avrupa hub'larının şirket içi şubelerden (spokes) ve Azure sanal ağlarından (sözcüler) bağlantıları olduğunu varsayacağız.
 
-Ağ sanal gereci (10.4.0.6) ile bir Azure VNet bağlı alanı (10.4.0.0/16) VNet 'e daha fazla eşlenmez (10.5.0.0/16). Merkez yol tablosu hakkında daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan [ek bilgilere](#abouthubroute) bakın.
+Bir Ağ Sanal Cihazı (10.4.0.0.6) içeren bir Azure VNet konuşması (10.4.0.0/16) vnet'e (10.5.0.0/16) daha fazla bakar. Hub rota tablosu hakkında daha fazla bilgi için bu makalede daha sonra [ek bilgilere](#abouthubroute) bakın.
 
-Bu örnekte, Batı Avrupa dalı 1 ' in Doğu ABD hub 'a ve Batı Avrupa hub 'ına bağlı olduğunu da varsaydık. Doğu ABD bir ExpressRoute bağlantı hattı, dalı 2 ' yi Doğu ABD hub 'ına bağlar.
+Bu örnekte, Batı Avrupa Şube 1'in indoğu ABD merkezinin yanı sıra Batı Avrupa merkezine de bağlı olduğunu varsayıyoruz. Doğu ABD'deki bir ExpressRoute devresi, Şube 2'yi Doğu ABD merkezine bağlar.
 
-![çizimindeki](./media/effective-routes-virtual-hub/diagram.png)
+![şema](./media/effective-routes-virtual-hub/diagram.png)
 
-## <a name="view"></a>Geçerli yolları görüntüle
+## <a name="view-effective-routes"></a><a name="view"></a>Etkili rotaları görüntüleme
 
-Portalda ' etkin yolları görüntüle ' seçeneğini belirlediğinizde, Doğu ABD hub ['ına ait merkez yolu tablosunda](#routetable) gösterilen çıktıyı üretir.
+Portalda 'Etkili Rotaları Görüntüle'yi seçtiğinizde, Doğu ABD Hub hub'ı için [Hub rota tablosunda](#routetable) gösterilen çıktıyı üretir.
 
-Bunu perspektife koymak için, ilk satır Doğu ABD hub 'ın, VPN *sonraki atlama türü* bağlantısı (' sonraki atlama ' VPN Gateway örnek0 IP 10.1.0.6, Instance1 IP 10.1.0.7) nedeniyle 10.20.1.0/24 (dal 1) yolunu öğrenmiş olduğunu gösterir. *Yol* kaynağı kaynak kimliğine işaret eder. *As yolu* , Branch 1 Için as yolunu gösterir.
+Bunu bir perspektife koymak için, ilk satır Doğu ABD hub VPN *Sonraki atlama türü* bağlantısı ('Sonraki hop' VPN Gateway Instance0 IP 10.1.0.6, Instance1 IP 10.1.0.7) nedeniyle 10.20.1.0/24 (Şube 1) rota öğrendim anlamına gelir. *Rota Kaynağı* kaynak kimliğine işaret ediyor. *AS Yolu,* Şube 1 için AS Yolunu gösterir.
 
-### <a name="routetable"></a>Merkez yol tablosu
+### <a name="hub-route-table"></a><a name="routetable"></a>Hub rota tablosu
 
-"Yol olarak" görüntülemek için tablonun altındaki kaydırma çubuğunu kullanın.
+"AS Yolu"nu görüntülemek için tablonun altındaki kaydırma çubuğunu kullanın.
 
-| **Koy** |  **Sonraki atlama türü** | **Sonraki atlama** |  **Yol kaynağı** |**AS yolu** |
+| **Ön ek** |  **Sonraki atlama türü** | **Sonraki atlama** |  **Rota Kökeni** |**AS Yolu** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
-|10.4.0.0/16|Sanal ağ bağlantısı| Bağlantı üzerine |  |  |
-|10.5.0.0/16| IP Adresi| 10.4.0.6|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|0.0.0.0/0| IP Adresi| `<Azure Firewall IP>` |/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|10.22.1.0/16| Uzak Merkez|10.8.0.6, 10.8.0.7|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_| 4848-22000 |
-|10.9.0.0/16| Uzak Merkez|  Bağlantı üzerine |/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_1| |
+| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20000|
+|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
+|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
+|10.4.0.0/16|Sanal Ağ Bağlantısı| Bağlantı üzerine |  |  |
+|10.5.0.0/16| IP Adresi| 10.4.0.6|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
+|0.0.0.0/0| IP Adresi| `<Azure Firewall IP>` |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
+|10.22.1.0/16| Uzak Hub|10.8.0.6, 10.8.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_| 4848-22000 |
+|10.9.0.0/16| Uzak Hub|  Bağlantı üzerine |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_1| |
 
 >[!NOTE]
-> Doğu ABD ve Batı Avrupa hub 'ları örnek topolojide birbirleriyle iletişim kurmadığında, öğrenilen yol (10.9.0.0/16) mevcut olmaz. Hub 'lar yalnızca doğrudan kendisine bağlı olan ağları duyurur.
+> Örneğin topolojide Doğu ABD ve Batı Avrupa merkezleri birbirleriyle iletişim kurmasa, öğrenilen rota (10.9.0.0/16) olmazdı. Hub'lar yalnızca doğrudan kendilerine bağlı ağların reklamını yapıyor.
 >
 
-## <a name="additional"></a>Ek bilgi
+## <a name="additional-information"></a><a name="additional"></a>Ek bilgiler
 
-### <a name="abouthubroute"></a>Merkez yol tablosu hakkında
+### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Hub rota tablosu hakkında
 
-Sanal hub yolu oluşturabilir ve yolu sanal hub yolu tablosuna uygulayabilirsiniz. Sanal hub rota tablosuna birden fazla rota uygulayabilirsiniz. Bu, hedef VNet için bir IP adresi (genellikle bir bağlı olan VNet 'teki ağ sanal gereci (NVA)) yoluyla bir yol ayarlamanıza olanak sağlar. NVA 'lar hakkında daha fazla bilgi için bkz. [bir sanal hub 'dan NVA 'ya trafiği yönlendirme](virtual-wan-route-table-portal.md).
+Sanal hub rotası oluşturabilir ve rotayı sanal hub rota tablosuna uygulayabilirsiniz. Sanal hub rota tablosuna birden fazla rota uygulayabilirsiniz. Bu, bir IP adresi (genellikle bir vnet'teki Network Virtual Appliance (NVA) üzerinden hedef VNet için bir rota belirlemenize olanak tanır. NV'ler hakkında daha fazla bilgi [için, sanal hub'dan NVA'ya giden Rota trafiğine](virtual-wan-route-table-portal.md)bakın.
 
-### <a name="aboutdefaultroute"></a>Varsayılan yol hakkında (0.0.0.0/0)
+### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Varsayılan rota hakkında (0.0.0.0/0)
 
-Bir sanal hub, bağlantıda ' Enabled ' olduğunda, bir sanal ağa, siteden siteye VPN 'e ve bir ExpressRoute bağlantısına, öğrenilen bir varsayılan yolu yaymaya olanak tanır. Bu bayrak, bir sanal ağ bağlantısını, bir VPN bağlantısını veya bir ExpressRoute bağlantısını düzenlediğinizde görülebilir. Hub VNet, ExpressRoute ve VPN bağlantılarında varsayılan olarak ' Enableınternetsecurity ' her zaman false 'tur.
+Sanal hub, öğrenilen varsayılan bir rotayı sanal ağa, siteden siteye VPN'e ve bayrak bağlantıda 'Etkinleştirilmiş' sa ExpressRoute bağlantısına yayma yeteneğine sahiptir. Sanal ağ bağlantısını, VPN bağlantısını veya ExpressRoute bağlantısını siz de edindiğinizde bu bayrak görünür. Hub VNet, ExpressRoute ve VPN bağlantılarında varsayılan olarak 'InternetSecurity'yi etkinleştirme' her zaman yanlıştır.
 
-Varsayılan yol, sanal WAN hub 'ında değil. Hub 'da bir güvenlik duvarı dağıtımının bir sonucu olarak veya başka bir bağlı sitede Zorlamalı tünel etkinse, varsayılan yol sanal WAN hub tarafından zaten öğrenilmiş ise yayılır.
+Varsayılan rota sanal WAN hub'ında kaynaklanmaz. Hub'a bir güvenlik duvarı nın dağıtılması sonucunda sanal WAN hub'ı tarafından zaten öğrenilmişse veya bağlı başka bir site tünel imal etmeyi zorlamışsa varsayılan rota yayılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

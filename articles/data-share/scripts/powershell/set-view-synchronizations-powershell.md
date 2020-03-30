@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell betiği: Azure veri paylaşımının sistem ayarlarını ayarlama ve görüntüleme | Microsoft Docs'
-description: Bu PowerShell betiği, paylaşma eşitleme ayarlarını ayarlar ve alır.
+title: 'PowerShell komut dosyası: Azure Veri Paylaşımı sychronization ayarlarını ayarlayın ve görüntüleyin| Microsoft Dokümanlar'
+description: Bu PowerShell komut dosyası, hisse eşitleme ayarlarını ayarlar ve alır.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: b8d01a383e816bfc73413d21e9cc8d51d326ab14
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70307175"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Gönderilen veri paylaşımının kullanımını izlemek için PowerShell 'i kullanma
+# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Gönderilen veri paylaşımının kullanımını izlemek için PowerShell'i kullanın
 
-Bu PowerShell betiği, paylaşma eşitleme ayarlarını ayarlar ve alır.
+Bu PowerShell komut dosyası, hisse eşitleme ayarlarını ayarlar ve alır.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -48,12 +48,12 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [New-Azdatasharesynitizationsetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | Bir paylaşma eşitlemesi oluşturun. |
-| [Get-Azdatasharesynitizationsetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Bir paylaşma eşitlemesinin eşitleme ayarlarını alır. |
+| [Yeni-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | Hisse eşitlemesi oluşturun. |
+| [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Paylaşım eşitlemenin eşitleme ayarlarını alır. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
 
-Ek Azure veri paylaşımının PowerShell betiği örnekleri, [Azure veri paylaşımında PowerShell örnekleri](../../samples-powershell.md)bölümünde bulunabilir.
+Ek Azure Veri Paylaşımı PowerShell komut dosyası örnekleri [Azure Veri Paylaşımı PowerShell örneklerinde](../../samples-powershell.md)bulunabilir.

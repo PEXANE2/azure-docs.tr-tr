@@ -1,6 +1,6 @@
 ---
-title: Azure VM 'Leri arasında bağlantı sorunlarını giderme | Microsoft Docs
-description: Azure VM 'Ler arasındaki bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
+title: Azure VM'ler arasındaki bağlantı sorunlarını giderme | Microsoft Dokümanlar
+description: Azure VM'ler arasındaki bağlantı sorunlarını nasıl gidereceklerini öğrenin.
 services: virtual-network
 documentationcenter: na
 author: chadmath
@@ -15,69 +15,69 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71056811"
 ---
-# <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 'Ler arasında bağlantı sorunlarını giderme
+# <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM’leri arasında bağlantı sorunlarını giderme
 
-Azure sanal makineler (VM 'Ler) arasında bağlantı sorunlarıyla karşılaşabilirsiniz. Bu makalede, bu sorunu çözmenize yardımcı olacak sorun giderme adımları sunulmaktadır. 
+Azure sanal makineleri (VM' ler) arasında bağlantı sorunları yaşayabilirsiniz. Bu makalede, bu sorunu çözmenize yardımcı olacak sorun giderme adımları sağlar. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="symptom"></a>Belirti
 
-Bir Azure VM, başka bir Azure VM 'ye bağlanamaz.
+Bir Azure VM başka bir Azure VM'ye bağlanamaz.
 
 ## <a name="troubleshooting-guidance"></a>Sorun giderme rehberi 
 
-1. [NIC 'nin yanlış yapılandırılmış olup olmadığını denetleyin](#step-1-check-whether-nic-is-misconfigured)
-2. [Ağ trafiğinin NSG veya UDR tarafından engellenip engellenmeyeceğini denetleyin](#step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr)
-3. [Ağ trafiğinin VM Güvenlik Duvarı tarafından engellenip engellenmeyeceğini denetleyin](#step-3-check-whether-network-traffic-is-blocked-by-vm-firewall)
-4. [VM uygulamasının veya hizmetinin bağlantı noktasında dinleme yapıp yapmadığını denetleyin](#step-4-check-whether-vm-app-or-service-is-listening-on-the-port)
-5. [Sorunun SNAT 'den kaynaklanıp kaynaklanmadığını denetleyin](#step-5-check-whether-the-problem-is-caused-by-snat)
-6. [Klasik VM için trafiğin ACL 'Ler tarafından engellenip engellenmeyeceğini denetleyin](#step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm)
-7. [Uç noktanın klasik VM için oluşturulup oluşturulmayacağını denetleyin](#step-7-check-whether-the-endpoint-is-created-for-the-classic-vm)
-8. [Bir VM ağ paylaşımıyla bağlantı kurmak için deneyin](#step-8-try-to-connect-to-a-vm-network-share)
-9. [Sanal ağlar arası bağlantıyı denetle](#step-9-check-inter-vnet-connectivity)
+1. [NIC'nin yanlış yapılandırılıp yapılmadığını kontrol edin](#step-1-check-whether-nic-is-misconfigured)
+2. [Ağ trafiğinin NSG veya UDR tarafından engellenip engellenmediğini denetleme](#step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr)
+3. [Ağ trafiğinin VM güvenlik duvarı tarafından engellenip engellenmediğini denetleme](#step-3-check-whether-network-traffic-is-blocked-by-vm-firewall)
+4. [VM uygulamasının veya hizmetinin bağlantı noktasında dinleyip dinlemediğini kontrol edin](#step-4-check-whether-vm-app-or-service-is-listening-on-the-port)
+5. [Sorunun SNAT'ten kaynaklanıp kaynaklanıp kaynaklanıp kaynaklmadığını denetleme](#step-5-check-whether-the-problem-is-caused-by-snat)
+6. [Klasik VM için aLAKs lar tarafından trafiğin engellenip engellenmediğini kontrol edin](#step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm)
+7. [Klasik VM için bitiş noktasının oluşturulup oluşturulmadığını kontrol edin](#step-7-check-whether-the-endpoint-is-created-for-the-classic-vm)
+8. [VM ağ paylaşımına bağlanmayı deneyin](#step-8-try-to-connect-to-a-vm-network-share)
+9. [Inter-Vnet bağlantısını kontrol edin](#step-9-check-inter-vnet-connectivity)
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 
-Sorunu gidermek için aşağıdaki adımları izleyin. Her adımı tamamladıktan sonra, sorunun çözümlenip çözümlenmediğini denetleyin. 
+Sorunu gidermek için aşağıdaki adımları izleyin. Her adımı tamamladıktan sonra, sorunun çözülüp çözülmediğini denetleyin. 
 
-### <a name="step-1-check-whether-nic-is-misconfigured"></a>1\. adım: NIC 'nin yanlış yapılandırılmış olup olmadığını denetleyin
+### <a name="step-1-check-whether-nic-is-misconfigured"></a>Adım 1: NIC'nin yanlış yapılandırılıp yapılmadığını kontrol edin
 
-[Azure WINDOWS VM için ağ arabirimini sıfırlama](../virtual-machines/windows/reset-network-interface.md)bölümündeki adımları izleyin. 
+Azure Windows [VM için ağ arabirimini sıfırlama adımlarını](../virtual-machines/windows/reset-network-interface.md)izleyin. 
 
-Ağ arabirimini (NIC) değiştirdikten sonra sorun oluşursa, aşağıdaki adımları izleyin:
+Sorun, ağ arabirimini (NIC) değiştirdikten sonra oluşursa, aşağıdaki adımları izleyin:
 
-**Çoklu NIC VM 'Leri**
+**Çok NİkL'LER**
 
 1. Bir NIC ekleyin.
-2. Hatalı NIC 'deki sorunları giderin veya Hatalı NIC 'yi kaldırın.  Sonra NIC 'ı yeniden ekleyin.
+2. Kötü NIC sorunları düzeltmek veya kötü NIC kaldırın.  Sonra NIC'i tekrar ekleyin.
 
-Daha fazla bilgi için bkz. [sanal makinelere ağ arabirimleri ekleme veya sanal makinelere kaldırma](virtual-network-network-interface-vm.md).
+Daha fazla bilgi için [bkz.](virtual-network-network-interface-vm.md)
 
-**Tek NIC sanal makinesi** 
+**Tek NİkVV** 
 
-- [Windows VM 'yi yeniden dağıtma](../virtual-machines/windows/redeploy-to-new-node.md)
-- [Linux VM 'yi yeniden dağıtma](../virtual-machines/linux/redeploy-to-new-node.md)
+- [Windows VM'yi yeniden dağıtma](../virtual-machines/windows/redeploy-to-new-node.md)
+- [Linux VM'yi yeniden dağıtın](../virtual-machines/linux/redeploy-to-new-node.md)
 
-### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>2\. adım: Ağ trafiğinin NSG veya UDR tarafından engellenip engellenmeyeceğini denetleyin
+### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Adım 2: Ağ trafiğinin NSG veya UDR tarafından engellenip engellenmediğini kontrol edin
 
-Trafik akışını engelleyen bir ağ güvenlik grubu (NSG) veya Kullanıcı tanımlı yol (UDR) olup olmadığını öğrenmek için [ağ IZLEYICISI IP akışı doğrulama](../network-watcher/network-watcher-ip-flow-verify-overview.md) ve [NSG akış günlüğünü](../network-watcher/network-watcher-nsg-flow-logging-overview.md) kullanın.
+Trafik akışını engelleyen bir Ağ Güvenlik Grubu (NSG) veya Kullanıcı Tanımlı Rota (UDR) olup olmadığını belirlemek için [Ağ İzleyiciip Akış Doğrulamasını](../network-watcher/network-watcher-ip-flow-verify-overview.md) ve [NSG Akış Günlüğe kaydetmeyi](../network-watcher/network-watcher-nsg-flow-logging-overview.md) kullanın.
 
-### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>3\. adım: Ağ trafiğinin VM Güvenlik Duvarı tarafından engellenip engellenmeyeceğini denetleyin
+### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>Adım 3: Ağ trafiğinin VM güvenlik duvarı tarafından engellenip engellenmediğini kontrol edin
 
-Güvenlik duvarını devre dışı bırakın ve ardından sonucu test edin. Sorun çözümlenirse, güvenlik duvarı ayarlarını doğrulayın ve sonra güvenlik duvarını yeniden etkinleştirin.
+Güvenlik duvarını devre dışı bırakıp sonucu test edin. Sorun çözülürse, güvenlik duvarı ayarlarını doğrulayın ve ardından güvenlik duvarını yeniden etkinleştirin.
 
-### <a name="step-4-check-whether-vm-app-or-service-is-listening-on-the-port"></a>4\. Adım: VM uygulamasının veya hizmetinin bağlantı noktasında dinleme yapıp yapmadığını denetleyin
+### <a name="step-4-check-whether-vm-app-or-service-is-listening-on-the-port"></a>Adım 4: VM uygulamasının veya hizmetinin bağlantı noktasında dinleyip dinlemediğini kontrol edin
 
-VM uygulamasının veya hizmetinin bağlantı noktasında dinleme yapıp yapmadığını denetlemek için aşağıdaki yöntemlerden birini kullanabilirsiniz.
+VM uygulamasının veya hizmetinin bağlantı noktasında dinleyip dinlemediğini kontrol etmek için aşağıdaki yöntemlerden birini kullanabilirsiniz.
 
-- Sunucunun bu bağlantı noktasında dinleme yapıp yapmadığını denetlemek için aşağıdaki komutları çalıştırın.
+- Sunucunun o bağlantı noktasında dinleyip dinlemediğini kontrol etmek için aşağıdaki komutları çalıştırın.
 
 **Windows VM**
 
@@ -87,27 +87,27 @@ VM uygulamasının veya hizmetinin bağlantı noktasında dinleme yapıp yapmad�
 
     netstat -l
 
-- Bağlantı noktasını test etmek için sanal makinede **Telnet** komutunu çalıştırın. Test başarısız olursa, uygulama veya hizmet Bu bağlantı noktasını dinlemek üzere yapılandırılmamıştır.
+- Bağlantı noktasını test etmek için sanal makinenin üzerinde **telnet** komutunu çalıştırın. Test başarısız olursa, uygulama veya hizmet bu bağlantı noktasını dinleyecek şekilde yapılandırılmamıştır.
 
-### <a name="step-5-check-whether-the-problem-is-caused-by-snat"></a>5\. Adım: Sorunun SNAT 'den kaynaklanıp kaynaklanmadığını denetleyin
+### <a name="step-5-check-whether-the-problem-is-caused-by-snat"></a>Adım 5: Sorunun SNAT'ten kaynaklanıp kaynaklanıp kaynaklanıp kaynaklmadığını kontrol edin
 
-Bazı senaryolarda VM, Azure dışındaki kaynaklara bağımlılığı olan bir yük dengeleme çözümünün arkasına yerleştirilir. Bu senaryolarda, aralıklı bağlantı sorunlarıyla karşılaşırsanız, bu sorun [SNAT bağlantı noktası tükenmesi](../load-balancer/load-balancer-outbound-connections.md)yüzünden olabilir. Bu sorunu çözmek için yük dengeleyicinin arkasındaki ve NSG veya ACL ile güvenli olan her bir sanal makine için bir VIP (veya klasik için ıLPıP) oluşturun. 
+Bazı senaryolarda, VM, Azure dışındaki kaynaklara bağımlı bir yük dengesi çözümünün arkasına yerleştirilir. Bu senaryolarda, aralıklı bağlantı sorunları yla karşılaşırsanız, sorun [SNAT bağlantı noktası tükenmesi](../load-balancer/load-balancer-outbound-connections.md)neden olabilir. Sorunu çözmek için, yük dengeleyicisinin arkasında ve NSG veya ACL ile güvenli olan her VM için bir VIP (veya klasik için ILPIP) oluşturun. 
 
-### <a name="step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm"></a>6\. Adım: Klasik VM için trafiğin ACL 'Ler tarafından engellenip engellenmeyeceğini denetleyin
+### <a name="step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm"></a>Adım 6: Klasik VM için aLAKs lar tarafından trafiğin engellenip engellenmediğini kontrol edin
 
-Bir erişim denetim listesi (ACL), sanal makine uç noktası için trafiği seçmeli olarak izin verme veya reddetme yeteneği sağlar. Daha fazla bilgi için bkz. [bir uç noktada ACL 'Yi yönetme](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
+Erişim denetim listesi (ACL), sanal makine bitiş noktası trafiğine seçici olarak izin verme veya reddetme olanağı sağlar. Daha fazla bilgi için, [bitiş noktasında ACL'yi yönet'e](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)bakın.
 
-### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>7\. Adım: Uç noktanın klasik VM için oluşturulup oluşturulmayacağını denetleyin
+### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>Adım 7: Klasik VM için bitiş noktasının oluşturulup oluşturulmadığını kontrol edin
 
-Klasik dağıtım modelini kullanarak Azure 'da oluşturduğunuz tüm VM 'Ler, aynı bulut hizmetindeki veya sanal ağdaki diğer sanal makinelerle özel bir ağ kanalı üzerinden otomatik olarak iletişim kurabilir. Ancak, diğer sanal ağlardaki bilgisayarların gelen ağ trafiğini bir sanal makineye yönlendirmek için uç noktalar gerekir. Daha fazla bilgi için bkz. [uç noktaları ayarlama](../virtual-machines/windows/classic/setup-endpoints.md).
+Klasik dağıtım modelini kullanarak Azure'da oluşturduğunuz tüm SANAL'lar, aynı bulut hizmetindeki veya sanal ağdaki diğer sanal makinelerle özel bir ağ kanalı üzerinden otomatik olarak iletişim kurabilir. Ancak, diğer sanal ağlardaki bilgisayarlar, gelen ağ trafiğini sanal bir makineye yönlendirmek için uç noktalar gerektirir. Daha fazla bilgi için [uç noktaları nasıl ayarlayınız'](../virtual-machines/windows/classic/setup-endpoints.md)a bakın.
 
-### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>8\. Adım: Bir VM ağ paylaşımıyla bağlantı kurmak için deneyin
+### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Adım 8: VM ağ paylaşımına bağlanmayı deneyin
 
-Bir VM ağ paylaşımıyla bağlantı bağlanamazsanız, bu sorun VM 'de kullanılamayan NIC 'lerden kaynaklanıyor olabilir. Kullanılamayan NIC 'Leri silmek için bkz [. kullanılamayan NIC 'leri silme](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
+Bir VM ağ payına bağlanamıyorsanız, sorun VM'deki kullanılamayan NIC'lerden kaynaklanabilir. Kullanılamayan NIC'leri silmek [için, kullanılamayan NIC'leri nasıl silebilirsiniz](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
 
-### <a name="step-9-check-inter-vnet-connectivity"></a>9\. Adım: Sanal ağlar arası bağlantıyı denetle
+### <a name="step-9-check-inter-vnet-connectivity"></a>Adım 9: Inter-Vnet bağlantısını kontrol edin
 
-Trafik akışını engelleyen bir NSG veya UDR olup olmadığını öğrenmek için [ağ IZLEYICISI IP akışı doğrulama](../network-watcher/network-watcher-ip-flow-verify-overview.md) ve [NSG akış günlüğünü](../network-watcher/network-watcher-nsg-flow-logging-overview.md) kullanın. Ayrıca, sanal ağ yapılandırmanızı [burada](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)da doğrulayabilirsiniz.
+Trafik akışını engelleyen bir NSG veya UDR olup olmadığını belirlemek için [Ağ İzleyiciip Akış Doğrula](../network-watcher/network-watcher-ip-flow-verify-overview.md) ve [NSG Akış Günlüğü'ni](../network-watcher/network-watcher-nsg-flow-logging-overview.md) kullanın. Inter-Vnet yapılandırmanızı [buradan](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)da doğrulayabilirsiniz.
 
-### <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
+### <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

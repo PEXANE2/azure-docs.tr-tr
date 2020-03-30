@@ -1,6 +1,6 @@
 ---
-title: Büyük veri kümeleri için Azure veri aktarımı seçenekleri, orta ila yüksek ağ bant genişliği | Microsoft Docs
-description: Ortamınızda yüksek ağ bant genişliğine sahip olduğunuzda ve büyük veri kümelerini aktarmayı planladığınızda veri aktarımı için bir Azure çözümü seçme hakkında bilgi edinin.
+title: Büyük veri kümeleri için azure veri aktarım seçenekleri, orta ve yüksek ağ bant genişliği| Microsoft Dokümanlar
+description: Ortamınızda orta ve yüksek ağ bant genişliğine sahipseniz ve büyük veri kümeleri aktarmayı planlıyorsanız, veri aktarımı için nasıl bir Azure çözümü seçeceğinizi öğrenin.
 services: storage
 author: alkohli
 ms.service: storage
@@ -9,103 +9,103 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900358"
 ---
-# <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Orta ila yüksek ağ bant genişliğine sahip büyük veri kümeleri için veri aktarımı
+# <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Bant genişliği orta veya yüksek olduğunda büyük veri kümeleri için veri aktarımı
  
-Bu makalede, ortamınızda yüksek ağ bant genişliğine sahip olduğunuzda ve büyük veri kümelerini aktarmayı planlarken veri aktarımı çözümlerine genel bir bakış sağlanır. Makalede ayrıca önerilen veri aktarımı seçenekleri ve bu senaryonun ilgili anahtar özelliği matrisi de açıklanmaktadır.
+Bu makalede, ortamınızda orta ve yüksek ağ bant genişliği varsa ve büyük veri kümeleri aktarmayı planlıyorsanız veri aktarım çözümlerine genel bir bakış sağlar. Makalede ayrıca önerilen veri aktarım seçenekleri ve bu senaryo için ilgili anahtar yetenek matrisi açıklanmaktadır.
 
-Tüm kullanılabilir veri aktarımı seçeneklerine genel bir bakış için bkz. [Azure veri aktarımı çözümü seçme](storage-choose-data-transfer-solution.md).
+Kullanılabilir tüm veri aktarım seçeneklerine genel bir bakış anlamak için [Azure veri aktarım çözümünün seçin'e](storage-choose-data-transfer-solution.md)gidin.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Büyük veri kümeleri, TBs 'nin PBs sırasındaki veri boyutlarına başvurur. Orta ila yüksek ağ bant genişliği 100 Mbps ila 10 Gbps anlamına gelir.
+Büyük veri kümeleri, TB'ler sırasına göre pb'lere veri boyutlarına başvurur. Orta ve yüksek ağ bant genişliği 100 Mbps ile 10 Gbps arasında dır.
 
-## <a name="recommended-options"></a>Önerilen Seçenekler
+## <a name="recommended-options"></a>Önerilen seçenekler
 
-Bu senaryoda önerilen seçenekler, orta düzeyde ağ bant genişliğine veya yüksek ağ bant genişliğine sahip olup olmadığına bağlıdır.
+Bu senaryoda önerilen seçenekler, orta ağ bant genişliğine veya yüksek ağ bant genişliğine sahip olup olmadığınıza bağlıdır.
 
-### <a name="moderate-network-bandwidth-100-mbps---1-gbps"></a>Orta ağ bant genişliği (100 Mbps-1 Gbps)
+### <a name="moderate-network-bandwidth-100-mbps---1-gbps"></a>Orta ağ bant genişliği (100 Mbps - 1 Gbps)
 
-Orta düzeyde ağ bant genişliği sayesinde, ağ üzerinden veri aktarımı süresini proje yapmanız gerekir.
+Orta ağ bant genişliği yle, ağ üzerinden veri aktarım süresini yansıtmanız gerekir.
 
-Saati tahmin etmek ve bunu temel alarak, çevrimdışı bir aktarım veya ağ aktarımı arasında seçim yapmak için aşağıdaki tabloyu kullanın. Tabloda, çeşitli kullanılabilir ağ bant genişlikleri (% 90 kullanım varsayılıyor) için ağ veri aktarımı için öngörülen süre gösterilmektedir.  
+Saati tahmin etmek için aşağıdaki tabloyu kullanın ve buna göre, çevrimdışı aktarım arasında veya ağ aktarımı üzerinden seçim yapın. Tablo, çeşitli kullanılabilir ağ bant genişlikleri için (%90 kullanım varsayarak) ağ veri aktarımı için öngörülen zamanı gösterir.  
 
-![Ağ aktarımı veya çevrimdışı aktarım](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
+![Ağ aktarım veya çevrimdışı aktarım](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
-- Ağ aktarımının çok yavaş olması için yansıtıldıysanız fiziksel bir cihaz kullanmanız gerekir. Bu durumda önerilen seçenekler, Azure Data Box ailesi veya Azure Içeri/dışarı aktarma 'dan kendi disklerinizi kullanarak çevrimdışı aktarma cihazlarıdır.
+- Ağ aktarımın çok yavaş olması öngörülüyorsa, fiziksel bir aygıt kullanmanız gerekir. Bu durumda önerilen seçenekler, Azure Veri Kutusu ailesinden çevrimdışı aktarım aygıtları veya kendi disklerinizi kullanarak Azure İçe Aktarma/Dışa Aktarma'dır.
 
-    - **Azure Data Box ailesi çevrimdışı aktarımlar için** : Microsoft tarafından sağlanan Data Box cihazlarındaki cihazları, zaman, ağ kullanılabilirliği veya maliyetlerle sınırlı olduğunuzda Azure 'a büyük miktarlarda veri taşımak için kullanın. Robocopy gibi araçları kullanarak şirket içi verileri kopyalayın. Aktarım için tasarlanan veri boyutuna bağlı olarak Data Box Disk, Data Box veya Data Box Heavy arasından seçim yapabilirsiniz.
-    - **Azure içeri/dışarı aktarma** – büyük miktarlarda verileri Azure Blob depolama ve Azure dosyaları 'na güvenli bir şekilde aktarmak için kendi disk sürücülerinizi göndererek Azure Içeri/dışarı aktarma hizmetini kullanın. Bu hizmet Ayrıca, Azure Blob depolamadan disk sürücülerine veri aktarmak ve şirket içi sitelerinize göndermek için de kullanılabilir.
+    - **Çevrimdışı aktarımlar için Azure Veri Kutusu ailesi** – Zaman, ağ kullanılabilirliği veya maliyetlerle sınırlı olduğunuzda büyük miktarda veriyi Azure'a taşımak için Microsoft tarafından sağlanan Veri Kutusu aygıtlarından aygıtlar kullanın. Robocopy gibi araçları kullanarak şirket içi verileri kopyalayın. Aktarım için amaçlanan veri boyutuna bağlı olarak, Veri Kutusu Diski, Veri Kutusu veya Veri Kutusu Ağır'dan seçim yapabilirsiniz.
+    - **Azure İçe Aktar/Dışa Aktarma** – Azure Blob depolama ve Azure Dosyalarına büyük miktarda veri almak için kendi disk sürücülerinizi göndererek Azure İçe Alma/Dışa Aktarma hizmetini kullanın. Bu hizmet, Azure Blob depolama dan disk sürücülerine veri aktarmak ve şirket içi sitelerinize aktarmak için de kullanılabilir.
 
-- Ağ aktarımının makul olması için tasarlanan her türlü, [yüksek ağ bant genişliğine](#high-network-bandwidth)göre ayrıntılı olan aşağıdaki araçlardan herhangi birini kullanabilirsiniz.
+- Ağ aktarımının makul olması öngörülüyorsa, [Yüksek ağ bant genişliğinde](#high-network-bandwidth)ayrıntılı olarak belirtilen araçlardan herhangi birini kullanabilirsiniz.
 
 
-### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>Yüksek ağ bant genişliği (1 Gbps-100 Gbps)
+### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>Yüksek ağ bant genişliği (1 Gbps - 100 Gbps)
 
 Kullanılabilir ağ bant genişliği yüksekse, aşağıdaki araçlardan birini kullanın.
 
-- **AzCopy** -bu komut satırı aracını, En Iyi performansla Azure Blob 'Larına, dosyalarına ve tablo depolamasına verileri kolayca kopyalamak için kullanın. AzCopy eşzamanlılık ve paralellik destekler ve kesintiye uğradığında kopyalama işlemlerini sürdürülemez.
-- **Azure depolama REST API 'leri/SDK 'lar** – bir uygulama oluştururken, uygulamayı Azure Storage REST API 'lerinde geliştirebilir ve birden çok dilde sunulan Azure SDK 'larını kullanabilirsiniz.
-- **Çevrimiçi aktarımlar için Azure Data Box ailesi** – Data Box Edge ve Data Box Gateway, verileri Azure 'a ve dışına taşıyabileceği çevrimiçi ağ cihazlarıdır. Karşıya yüklemeden önce sürekli alma ve verilerin önceden işlenmesi için eşzamanlı bir gereksinim olduğunda Data Box Edge fiziksel cihaz kullanın. Data Box Gateway, aynı veri aktarımı özelliklerine sahip bir cihazın sanal sürümüdür. Her durumda, veri aktarımı cihaz tarafından yönetilir.
-- **Azure Data Factory** – Data Factory bir aktarım işleminin ölçeğini genişletmek için ve düzenleme ve kurumsal sınıf izleme özelliklerine ihtiyaç duyuyorsanız kullanılmalıdır. Çeşitli Azure Hizmetleri, şirket içi veya ikisinin bir birleşimi arasında düzenli olarak dosya aktarmak için Data Factory kullanın. Data Factory ile, farklı verilerden veri alıp veri taşıma ve veri dönüştürme işlemlerini otomatik hale getirmek için veri odaklı iş akışları (işlem hatları olarak adlandırılır) oluşturabilir ve zamanlayabilirsiniz.
+- **AzCopy** - Azure Blobs, Files ve Table depolama alanına en iyi performansla verileri kolayca kopyalamak için bu komut satırı aracını kullanın. AzCopy eşzamanlılık ve paralellik ve kesildiğinde kopyalama işlemlerine devam etme yeteneğini destekler.
+- **Azure Depolama REST API'leri/SDK'ları** – Bir uygulama geliştirirken, uygulamayı Azure Depolama REST API'lerine karşı geliştirebilir ve birden çok dilde sunulan Azure SDK'larını kullanabilirsiniz.
+- **Çevrimiçi aktarımlar için Azure Veri Kutusu ailesi** – Veri Kutusu Kenarı ve Veri Kutusu Ağ Geçidi, verileri Azure'a girip çıkarabilen çevrimiçi ağ aygıtlarıdır. Veri Kutusu Kenarı fiziksel aygıtını, yüklemeden önce verilerin sürekli olarak alınması ve ön işlenmesi için aynı anda ihtiyaç duyulduğunda kullanın. Veri Kutusu Ağ Geçidi, aynı veri aktarım özelliklerine sahip aygıtın sanal bir sürümüdür. Her durumda, veri aktarımı aygıt tarafından yönetilir.
+- **Azure Veri Fabrikası** – Veri Fabrikası, bir aktarım işlemini ölçeklendirmek ve düzenleme ve kurumsal sınıf izleme özelliklerine ihtiyaç duyulduğunda kullanılmalıdır. Dosyaları birkaç Azure hizmeti, şirket içi veya ikisinin birleşimi arasında düzenli olarak aktarmak için Veri Fabrikası'nı kullanın. Veri Fabrikası ile, birbirinden farklı veri depolarından veri yutup veri hareketi ve veri dönüşümasyonuna otomatikleştiren veri tabanlı iş akışları (ardışık işler olarak adlandırılır) oluşturabilir ve zamanlayabilirsiniz.
 
-## <a name="comparison-of-key-capabilities"></a>Anahtar özellikleri karşılaştırması
+## <a name="comparison-of-key-capabilities"></a>Anahtar özelliklerin karşılaştırılması
 
-Aşağıdaki tablolarda önerilen seçenekler için önemli olanaklarla ilgili farklılıklar özetlenmektedir.
+Aşağıdaki tablolar, önerilen seçenekler için anahtar yetenekleri farklılıklarını özetler.
 
 ### <a name="moderate-network-bandwidth"></a>Orta ağ bant genişliği
 
-Çevrimdışı veri aktarımı kullanıyorsanız, önemli özelliklerde farkları anlamak için aşağıdaki tabloyu kullanın.
+Çevrimdışı veri aktarımını kullanıyorsanız, temel özelliklerdeki farklılıkları anlamak için aşağıdaki tabloyu kullanın.
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    İçeri/Dışarı Aktarma                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    Veri boyutu                        |    35 TBs 'ye kadar                 |    Cihaz başına 80 TBs 'ye kadar                       |    Cihaz başına 800 TB 'a kadar               |    Değişken                            |
-|    Veri türü                        |    Azure Blob 'Ları                  |    Azure Blob 'Ları<br>Azure Dosyaları                    |    Azure Blob 'Ları<br>Azure Dosyaları            |    Azure Blob 'Ları<br>Azure Dosyaları          |
-|    Form faktörü                      |    sipariş başına 5 SSD             |    1 X 50-lbs. sipariş başına masaüstü boyutunda cihaz    |    1 X ~ 500-lbs. sipariş başına büyük cihaz    |    Sipariş başına en fazla 10 HDD/SSD        |
-|    İlk kurulum saati               |    Düşük <br>(15 dakika)            |    Düşük-orta <br> (< 30 dakika)               |    Orta<br>(1-2 saat)               |    Orta-zor<br>değişken |
-|    Verileri Azure 'a gönderme               |    Evet                          |    Evet                                           |    Evet                                   |    Evet                                 |
-|    Azure 'dan verileri dışarı aktarma           |    Hayır                           |    Hayır                                            |    Hayır                                    |    Evet                                 |
-|    Şifreleme                       |    AES 128 bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128 bit                         |
-|    Donanım                         |     Microsoft tarafından sağlanan          |    Microsoft tarafından sağlanan                            |    Microsoft tarafından sağlanan                    |    Müşteri sağlandı                   |
-|    Ağ arabirimi                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
-|    İş ortağı tümleştirmesi              |    Belirli Kullanıcılar                         |    [Geniş](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Geniş](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Belirli Kullanıcılar                                |
-|    Sevkiyat                         |    Microsoft tarafından yönetilen            |    Microsoft tarafından yönetilen                             |    Microsoft tarafından yönetilen                     |    Müşteri tarafından yönetilen                    |
-| Veri taşırken kullanın         |Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Coğrafi sınırların tamamında, örneğin ABD-AB|
+|    Veri boyutu                        |    35 TB'a kadar                 |    Cihaz başına 80 TB'a kadar                       |    Cihaz başına 800 TB'a kadar               |    Değişken                            |
+|    Veri türü                        |    Azure Blobları                  |    Azure Blobları<br>Azure Dosyaları                    |    Azure Blobları<br>Azure Dosyaları            |    Azure Blobları<br>Azure Dosyaları          |
+|    Form faktörü                      |    Sipariş başına 5 SSD             |    1 x 50-lbs. sipariş başına masaüstü boyutlu aygıt    |    1 X ~500-lbs. sipariş başına büyük cihaz    |    Sipariş başına en fazla 10 HDD/SSD        |
+|    İlk kurulum süresi               |    Düşük <br>(15 dakika)            |    Düşük ve orta <br> (<30 dakika)               |    Orta<br>(1-2 saat)               |    Orta ve zor<br>(değişken) |
+|    Azure'a veri gönderme               |    Evet                          |    Evet                                           |    Evet                                   |    Evet                                 |
+|    Verileri Azure’dan dışarı aktarma           |    Hayır                           |    Hayır                                            |    Hayır                                    |    Evet                                 |
+|    Şifreleme                       |    AES 128-bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128-bit                         |
+|    Donanım                         |     Microsoft sağlanan          |    Microsoft sağlanan                            |    Microsoft sağlanan                    |    Müşteri sağlanan                   |
+|    Ağ arabirimi                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
+|    İş ortağı tümleştirmesi              |    Bazıları                         |    [Yüksek](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Yüksek](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Bazıları                                |
+|    Sevkiyat                         |    Microsoft yönetilen            |    Microsoft yönetilen                             |    Microsoft yönetilen                     |    Müşteri yönetimi                    |
+| Veri taşınırken kullanma         |Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Coğrafi sınırların ötesinde, örneğin ABD'den AB'ye|
 |    Fiyatlandırma                          |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
-Çevrimiçi veri aktarımı kullanıyorsanız, yüksek ağ bant genişliği için aşağıdaki bölümdeki tabloyu kullanın.
+Çevrimiçi veri aktarımını kullanıyorsanız, yüksek ağ bant genişliği için aşağıdaki bölümdeki tabloyu kullanın.
 
 ### <a name="high-network-bandwidth"></a>Yüksek ağ bant genişliği
 
-|                                     |    Araçlar AzCopy, <br>Azure PowerShell, <br>Azure CLI             |    Azure depolama REST API 'Leri, SDK 'Lar                   |    Data Box Gateway veya Data Box Edge          |    Azure Data Factory                                            |
+|                                     |    Araçlar azmin, <br>Azure PowerShell, <br>Azure CLI             |    Azure Depolama REST API'leri, SDK'lar                   |    Veri Kutusu Ağ Geçidi veya Veri Kutusu Kenarı          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
-|    Veri türü                  |    Azure Blobları, Azure dosyaları, Azure tabloları    |    Azure Blobları, Azure dosyaları, Azure tabloları    |    Azure Blobları, Azure dosyaları                           |   Veri depoları ve biçimleri için 70 ' ten fazla veri Bağlayıcısı destekler    |
-|    Form faktörü                |    Komut satırı araçları                        |    Programlı arabirim                    |    Microsoft bir sanal <br>veya fiziksel cihaz     |    Azure portal hizmet                                            |
-|    İlk bir kerelik kurulum     |    Kolay               |    Orta                       |    Kolay (< 30 dakika)-Orta (1-2 saat)            |    Yaygın                                                          |
-|    Verileri önceden işleme              |    Hayır                                        |    Hayır                                        |    Evet (Edge işlem Ile)                               |    Evet                                                                |
-|    Diğer bulutlardan aktar       |    Hayır                                        |    Hayır                                        |    Hayır                                                    |    Evet                                                                |
-|    Kullanıcı türü                        |    BT uzmanı veya geliştirme                                       |    Geliştirme                                       |    BT Uzmanı                                                |    BT Uzmanı                                                             |
+|    Veri türü                  |    Azure Blobs, Azure Dosyaları, Azure Tablolar    |    Azure Blobs, Azure Dosyaları, Azure Tablolar    |    Azure Blobs, Azure Dosyaları                           |   Veri depoları ve biçimleri için 70'den fazla veri bağlayıcısı destekler    |
+|    Form faktörü                |    Komut satırı araçları                        |    Programlı arayüz                    |    Microsoft sanal bir <br>veya fiziksel cihaz     |    Azure portalında hizmet                                            |
+|    İlk tek seferlik kurulum     |    Kolay               |    Orta                       |    Kolay (<30 dakika) orta (1-2 saat)            |    Geniş                                                          |
+|    Veri ön işleme              |    Hayır                                        |    Hayır                                        |    Evet (Kenar hesaplamaile)                               |    Evet                                                                |
+|    Diğer bulutlardan aktarma       |    Hayır                                        |    Hayır                                        |    Hayır                                                    |    Evet                                                                |
+|    Kullanıcı türü                        |    BT Pro veya dev                                       |    Geliştirme                                       |    BT Profesyoneli                                                |    BT Profesyoneli                                                             |
 |    Fiyatlandırma                          |    Ücretsiz, veri çıkış ücretleri geçerlidir         |    Ücretsiz, veri çıkış ücretleri geçerlidir         |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İçeri/dışarı aktarma ile veri aktarmayı öğrenin](/azure/storage/common/storage-import-export-data-to-blobs).
-- Nasıl yapılacağını öğrenin
+- [Alma/Dışa Aktarma ile veri aktarımı yapmayı öğrenin.](/azure/storage/common/storage-import-export-data-to-blobs)
+- Nasıl yapılacağını anlama
 
-    - [Data Box disk verileri aktarın](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
-    - [Data Box verileri aktarın](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
-- [AzCopy ile veri aktarma](/azure/storage/common/storage-use-azcopy-v10).
+    - [Veri Kutusu Diski ile veri aktarımı.](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)
+    - [Veri Kutusu ile veri aktarımı.](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+- [AzCopy ile veri aktarımı.](/azure/storage/common/storage-use-azcopy-v10)
 - Nasıl yapılacağını anlayın:
-    - [Data Box Gateway verileri aktarın](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
-    - [Azure 'a göndermeden önce Data Box Edge verileri dönüştürün](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).
-- [Azure Data Factory ile veri aktarmayı öğrenin](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal).
-- Veri aktarmak için REST API 'Lerini kullanma
+    - [Veri Kutusu Ağ Geçidi ile veri aktarımı.](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)
+    - [Azure'a göndermeden önce Verileri Veri Kutusu Kenarı ile dönüştürün.](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)
+- [Azure Veri Fabrikası ile nasıl veri aktarılamayı öğrenin.](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)
+- Veri aktarmak için REST API'lerini kullanın
 
-    - [.NET 'te](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [Java 'da](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+    - [Java üzerinde](https://docs.microsoft.com/java/api/overview/azure/storage)

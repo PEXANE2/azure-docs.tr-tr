@@ -1,22 +1,22 @@
 ---
-title: Web uygulaması güvenlik duvarını etkinleştirme-Azure CLı
-description: Azure CLı kullanarak bir uygulama ağ geçidinde Web uygulaması güvenlik duvarıyla Web trafiğini kısıtlamayı öğrenin.
+title: Web Uygulaması Güvenlik Duvar'ı etkinleştir - Azure CLI
+description: Azure CLI'yi kullanarak bir uygulama ağ geçidindeki Web Uygulaması Güvenlik Duvarı ile web trafiğini nasıl kısıtlayın öğrenin.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 78a8eaa75ec5eea33e27217f07439aae16ec4742
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4882ac51af271625b8e61d862890beb6d5f63213
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502278"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240073"
 ---
-# <a name="enable-web-application-firewall-using-the-azure-cli"></a>Azure CLı kullanarak Web uygulaması güvenlik duvarını etkinleştirme
+# <a name="enable-web-application-firewall-using-the-azure-cli"></a>Azure CLI'yi kullanarak Web Uygulaması Güvenlik Duvarını etkinleştirme
 
-Bir [Web uygulaması güvenlik duvarı](ag-overview.md) (WAF) ile bir uygulama ağ geçidinde trafiği kısıtlayabilirsiniz. WAF, uygulamanızı korumak için [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) kurallarını kullanır. Bu kurallar SQL ekleme, siteler arası betik saldırıları ve oturum ele geçirme gibi saldırılara karşı korumayı içerir.
+Bir uygulama ağ geçidindeki trafiği [Bir Web Uygulaması Güvenlik Duvarı](ag-overview.md) (WAF) ile kısıtlayabilirsiniz. WAF, uygulamanızı korumak için [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) kurallarını kullanır. Bu kurallar SQL ekleme, siteler arası betik saldırıları ve oturum ele geçirme gibi saldırılara karşı korumayı içerir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -26,27 +26,27 @@ Bu makalede şunları öğreneceksiniz:
 > * Sanal makine ölçek kümesi oluşturma
 > * Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
 
-![Web uygulaması güvenlik duvarı örneği](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
+![Web Uygulaması Güvenlik Duvarı örneği](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
 İsterseniz, [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.4 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI sürümü 2.0.4 veya sonraki sürümlerini çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. *az group create* komutuyla [myResourceGroupAG](/cli/azure/group#az-group-create) adlı bir Azure kaynak grubu oluşturun.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
 ```
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
-Sanal ağ ve alt ağlar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır. *Myvnet* adlı bir sanal ağ ve *myagsubnet*adlı bir alt ağ oluşturun. ardından *Myagpublicıpaddress*adlı BIR genel IP adresi oluşturun.
+Sanal ağ ve alt ağlar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır. *myVNet* adında bir sanal ağ ve *myAGSubnet*adında bir alt ağ oluşturun. sonra *myAGPublicIPAddress*adlı genel bir IP adresi oluşturun.
 
 ```azurecli-interactive
 az network vnet create \
@@ -72,7 +72,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>WAF ile uygulama ağ geçidi oluşturma
 
-[myAppGateway](/cli/azure/network/application-gateway) adlı uygulama ağ geçidini oluşturmak için *az network application-gateway create* komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Application Gateway, *Myagsubnet* ve *Myagpublicıpaddress*öğesine atanır.
+*myAppGateway* adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi *myAGSubnet* ve *myAGPublicIPAddress*atanır.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -99,7 +99,7 @@ az network application-gateway waf-config set \
 
 Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra şu yeni özellikleri görürsünüz:
 
-- *appGatewayBackendPool* -bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
+- *appGatewayBackendPool*: Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
 - *appGatewayBackendHttpSettings*: İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
 - *appGatewayHttpListener*: *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
 - *appGatewayFrontendIP*: *appGatewayHttpListener*’a *myAGPublicIPAddress*’i atar.
@@ -139,11 +139,11 @@ az vmss extension set \
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
 
-Bu makalede, uygulama ağ geçidi, algılama ve önleme amaçlarıyla verileri depolamak için bir depolama hesabı kullanır. Ayrıca Azure Izleyici günlüklerini veya Olay Hub 'ını kullanarak verileri kaydedebilirsiniz. 
+Bu makalede, uygulama ağ geçidi algılama ve önleme amacıyla verileri depolamak için bir depolama hesabı kullanır. Verileri kaydetmek için Azure Monitor günlüklerini veya Etkinlik Hub'Larını da kullanabilirsiniz. 
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-*New-AzureRmStorageAccount* komutuyla [myagstore1](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) adlı bir depolama hesabı oluşturun.
+[New-AzureRmStorageAccount](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) komutuyla *myagstore1* adlı bir depolama hesabı oluşturun.
 
 ```azurecli-interactive
 az storage account create \
@@ -156,7 +156,7 @@ az storage account create \
 
 ### <a name="configure-diagnostics"></a>Tanılama yapılandırma
 
-Tanılamayı ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog ve ApplicationGatewayFirewallLog günlüklerine verileri kaydedecek şekilde yapılandırın. `<subscriptionId>` abonelik tanımlayıcından değiştirin ve ardından [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)komutuyla tanılamayı yapılandırın.
+Tanılamayı ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog ve ApplicationGatewayFirewallLog günlüklerine verileri kaydedecek şekilde yapılandırın. Abonelik `<subscriptionId>` tanımlayıcınızla değiştirin ve ardından az monitör [tanılama ayarları oluşturarak](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)tanılamayı yapılandırın.
 
 ```azurecli-interactive
 appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
@@ -170,9 +170,9 @@ az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
+Uygulama ağ geçidinin genel IP adresini almak için [az ağ public-ip show'u](/cli/azure/network/public-ip#az-network-public-ip-show)kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \

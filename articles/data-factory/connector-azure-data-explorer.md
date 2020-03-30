@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini veri kopyalama
-description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak verileri Azure Veri Gezgini kopyalama hakkında bilgi edinin.
+title: Azure Veri Gezgini'ne veya Azure Veri Gezgini'nden veri kopyalama
+description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopyalama etkinliği kullanarak verileri Azure Veri Gezgini'ne veya Azure Veri Gezgini'nden nasıl kopyalayabilirsiniz öğrenin.
 services: data-factory
 ms.author: orspodek
 author: linda33wj
@@ -13,76 +13,76 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
 ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77460986"
 ---
-# <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Veri Gezgini veri kopyalama
+# <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Azure Veri Gezgini'ne veya Azure Veri Gezgini'nden kopyalama
 
-Bu makalede, [Azure Veri Gezgini](../data-explorer/data-explorer-overview.md)veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanır. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
+Bu makalede, Azure Veri Gezgini'ne veya [Azure Veri Gezgini'nden](../data-explorer/data-explorer-overview.md)veri kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğine genel bir bakış sunan [kopya etkinliğine genel bakış](copy-activity-overview.md) makalesiüzerine kuruludur.
 
 >[!TIP]
->Azure Data Factory ve Azure Veri Gezgini tümleştirmesi için, [azure Azure Data Factory Veri Gezgini tümleştirme](../data-explorer/data-factory-integration.md)hakkında daha fazla bilgi edinin.
+>Azure Veri Fabrikası ve Genel Olarak Azure Veri Gezgini tümleştirmesi için Azure [Veri Gezgini'ni Azure Veri Fabrikası ile tümleştir'den](../data-explorer/data-factory-integration.md)daha fazla bilgi edinin.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Azure Veri Gezgini Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu Azure Veri Gezgini bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Desteklenen herhangi bir kaynak veri deposundan Azure Veri Gezgini veri kopyalayabilirsiniz. Ayrıca, Azure Veri Gezgini verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak veya havuz olarak desteklediği veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Desteklenen herhangi bir kaynak veri deposundan verileri Azure Veri Gezgini'ne kopyalayabilirsiniz. Verileri Azure Veri Gezgini'nden desteklenen herhangi bir lavabo veri deposuna da kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak veya lavabo olarak desteklediği veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 >[!NOTE]
->Şirket içinde barındırılan tümleştirme çalışma zamanını kullanarak şirket içi veri deposu aracılığıyla veya Azure Veri Gezgini 'den veri kopyalama, sürüm 3,14 ve sonrasında desteklenir.
+>Kendi kendine barındırılan tümleştirme çalışma zamanı kullanılarak şirket içi bir veri deposu aracılığıyla Azure Veri Gezgini'ne veya Azure Veri Gezgini'nden veri kopyalama, sürüm 3.14 ve sonraki sürümlerde desteklenir.
 
-Azure Veri Gezgini Bağlayıcısı ile şunları yapabilirsiniz:
+Azure Veri Gezgini bağlayıcısı ile aşağıdakileri yapabilirsiniz:
 
-* Bir **hizmet sorumlusu**ile Azure Active Directory (Azure AD) uygulama belirteci kimlik doğrulamasını kullanarak verileri kopyalayın.
-* Kaynak olarak, bir KQL (kusto) sorgusu kullanarak verileri alın.
-* Havuz olarak, hedef tabloya veri ekleyin.
+* Azure Active Directory (Azure AD) uygulama belirteç kimlik doğrulamasını kullanarak bir **hizmet yöneticisiyle**verileri kopyalayın.
+* Kaynak olarak, bir KQL (Kusto) sorgusu kullanarak veri alın.
+* Lavabo olarak, verileri hedef tabloya ekin.
 
 ## <a name="getting-started"></a>Başlarken
 
 >[!TIP]
->Azure Veri Gezgini Bağlayıcısı hakkında yönergeler için bkz. [bir veritabanından azure Veri Gezgini Azure Data Factory ve toplu kopyalama](../data-explorer/data-factory-template.md) [kullanarak Azure Veri Gezgini verileri kopyalama](../data-explorer/data-factory-load-data.md)
+>Azure Veri Gezgini bağlayıcısının bir bölümü için Azure [Veri Fabrikası'nı kullanarak Azure Veri Gezgini'ne verileri](../data-explorer/data-factory-load-data.md) kopyala'ya ve [veritabanından Azure Veri Gezgini'ne toplu kopya bölümüne](../data-explorer/data-factory-template.md)bakın.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, Azure Veri Gezgini Connector 'a özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
+Aşağıdaki bölümlerde, Azure Veri Gezgini bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-Azure Veri Gezgini Bağlayıcısı hizmet sorumlusu kimlik doğrulamasını kullanır. Hizmet sorumlusu almak ve izin vermek için aşağıdaki adımları izleyin:
+Azure Veri Gezgini bağlayıcısı hizmet temel kimlik doğrulamasını kullanır. Bir hizmet sorumlusu almak ve izin vermek için aşağıdaki adımları izleyin:
 
-1. Uygulamanızı [bir Azure AD kiracısıyla kaydetme](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)bölümündeki adımları izleyerek Azure Active Directory bir uygulama varlığını kaydedin. Bağlı hizmetini tanımlamak için kullandığınız şu değerleri not edin:
+1. [Uygulamanızı Azure AD kiracısıyla kaydettirme](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)adımlarını izleyerek bir uygulama kuruluşunu Azure Etkin Dizini'ne kaydedin. Bağlantılı hizmeti tanımlamak için kullandığınız aşağıdaki değerlere dikkat edin:
 
     - Uygulama Kimliği
     - Uygulama anahtarı
     - Kiracı Kimliği
 
-2. Hizmet sorumlusuna Azure Veri Gezgini 'de doğru izinleri verin. Roller ve izinler ve izinleri yönetme hakkında ayrıntılı bilgi için bkz. [Azure Veri Gezgini veritabanını yönetme izinleri](../data-explorer/manage-database-permissions.md) . Genel olarak şunları yapmanız gerekir:
+2. Hizmet sorumlusuna Azure Veri Gezgini'nde doğru izinleri verin. Bkz. Roller ve izinler ve izinleri yönetme hakkında ayrıntılı bilgi için [Azure Veri Gezgini veritabanı izinlerini yönetin.](../data-explorer/manage-database-permissions.md) Genel olarak şunları belirtmelisiniz:
 
-    - **Kaynak olarak**, veritabanınıza en azından **veritabanı Görüntüleyicisi** rolü verin
-    - **Havuz olarak**, veritabanınıza en azından **veritabanı** alma rolünü verin
+    - **Kaynak olarak,** veritabanınıza en azından **Veritabanı görüntüleyici** rolünü verir
+    - **Lavabo olarak,** veritabanınıza en azından **Veritabanı alma** rolü vermek
 
 >[!NOTE]
->Yazmak için Data Factory Kullanıcı arabirimini kullandığınızda, oturum açma Kullanıcı hesabınız Azure Veri Gezgini kümelerini, veritabanlarını ve tablolarını listelemek için kullanılır. Bu işlemler için izniniz yoksa el ile adı girin.
+>Yazar olarak Veri Fabrikası Kullanıcı UI'sini kullandığınızda, oturum açma kullanıcı hesabınız Azure Veri Gezgini kümelerini, veritabanlarını ve tabloları listelemek için kullanılır. Bu işlemler için izniniz yoksa, adı el ile girin.
 
-Azure Veri Gezgini bağlı hizmeti için aşağıdaki özellikler desteklenir:
+Azure Veri Gezgini bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Type** özelliği **AzureDataExplorer**olarak ayarlanmalıdır. | Yes |
-| endpoint | `https://<clusterName>.<regionName>.kusto.windows.net`biçimiyle Azure Veri Gezgini kümesinin uç nokta URL 'SI. | Yes |
-| database | Veritabanının adı. | Yes |
-| tenant | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority ID" olarak bilinir. Azure portal, fare işaretçisini, sağ üst köşesine getirerek alın. | Yes |
-| servicePrincipalId | Uygulamanın istemci kimliği belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama istemci kimliği" olarak bilinir. | Yes |
-| servicePrincipalKey | Uygulama anahtarını belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama anahtarı" olarak bilinir. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan güvenli verilere başvurun](store-credentials-in-key-vault.md). | Yes |
+| type | **Tür** özelliği **AzureDataExplorer**olarak ayarlanmalıdır. | Evet |
+| endpoint | Azure Veri Gezgini kümesinin bitiş noktası `https://<clusterName>.<regionName>.kusto.windows.net`URL'si, biçimi . | Evet |
+| database | Veritabanının adı. | Evet |
+| Kiracı | Uygulamanızın bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı kimliği) belirtin. Bu, [Kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Yetki Kimliği" olarak bilinir. Azure portalının sağ üst köşesindeki fare işaretçisini gezdirerek alın. | Evet |
+| hizmetPrincipalId | Uygulamanın istemci kimliğini belirtin. Bu, [Kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama istemci kimliği" olarak bilinir. | Evet |
+| servicePrincipalKey | Uygulamanın anahtarını belirtin. Bu, [Kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama anahtarı" olarak bilinir. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için **SecureString** olarak işaretleyin veya [Azure Key Vault'ta depolanan güvenli verilere başvurun.](store-credentials-in-key-vault.md) | Evet |
 
-**Bağlı hizmet özellikleri örneği:**
+**Bağlantılı hizmet özellikleri örneği:**
 
 ```json
 {
@@ -105,18 +105,18 @@ Azure Veri Gezgini bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [Azure Data Factory veri kümeleri](concepts-datasets-linked-services.md). Bu bölümde, Azure Veri Gezgini veri kümesinin desteklediği özellikler listelenmiştir.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Azure Veri Fabrikası'ndaki Veri Kümeleri'ne](concepts-datasets-linked-services.md)bakın. Bu bölümde, Azure Veri Gezgini veri kümesinin desteklediği özellikler listeleneb.)
 
-Verileri Azure Veri Gezgini kopyalamak için, veri kümesinin Type özelliğini **AzureDataExplorerTable**olarak ayarlayın.
+Verileri Azure Veri Gezgini'ne kopyalamak için, veri kümesinin tür özelliğini **AzureDataExplorerTable**olarak ayarlayın.
 
 Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Type** özelliği **AzureDataExplorerTable**olarak ayarlanmalıdır. | Yes |
-| tablo | Bağlı hizmetin başvurduğu tablonun adı. | Havuz için Evet; Kaynak için Hayır |
+| type | **Tür** özelliği **AzureDataExplorerTable**olarak ayarlanmalıdır. | Evet |
+| tablo | Bağlı hizmetin başvurulması gereken tablonun adı. | Lavabo için evet; Kaynak için hayır |
 
-**Veri kümesi özellikleri örneği:**
+**Dataset özellikleri örneği:**
 
 ```json
 {
@@ -137,21 +137,21 @@ Aşağıdaki özellikler desteklenir:
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için, bkz. Azure Data Factory işlem [hatları ve etkinlikleri](concepts-pipelines-activities.md). Bu bölümde Azure Veri Gezgini kaynakları ve havuzları desteğinin özelliklerinin bir listesi verilmiştir.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için Azure [Veri Fabrikası'ndaki Boru Hatları ve etkinliklerine](concepts-pipelines-activities.md)bakın. Bu bölümde, Azure Veri Gezgini kaynaklarının ve lavabolarının desteklediği özelliklerin bir listesi sağlanmaktadır.
 
 ### <a name="azure-data-explorer-as-source"></a>Kaynak olarak Azure Veri Gezgini
 
-Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağındaki **Type** özelliğini **AzureDataExplorerSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Azure Veri Gezgini'nden veri kopyalamak için, Kopyalama etkinlik kaynağındaki **tür** özelliğini **AzureDataExplorerSource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği: **AzureDataExplorerSource** olarak ayarlanmalıdır | Yes |
-| sorgu | Bir [KQL biçiminde](/azure/kusto/query/)verilen salt okunurdur bir istek. Özel KQL sorgusunu başvuru olarak kullanın. | Yes |
-| queryTimeout | Sorgu isteğinin zaman aşımına uğramadan önce beklenecek bekleme süresi. Varsayılan değer 10 dakikadır (00:10:00); izin verilen en büyük değer 1 saattir (01:00:00). | Hayır |
-| Kesilmesi | Döndürülen sonuç kümesinin kesilme edilip edilmeyeceğini belirtir. Varsayılan olarak, sonuç 500.000 kayıt veya 64 megabayt (MB) sonra kesilir. Etkinliğin doğru davranış sağlamak için kesme kesinlikle önerilir. |Hayır |
+| type | Kopyalama etkinlik kaynağının **tür** özelliği şu şekilde ayarlanmalıdır: **AzureDataExplorerSource** | Evet |
+| sorgu | [KQL formatında](/azure/kusto/query/)verilen salt okunur istek. Başvuru olarak özel KQL sorgusunu kullanın. | Evet |
+| Querytimeout | Sorgu isteğinin zaman ları dolmadan önceki bekleme süresi. Varsayılan değer 10 dkdır (00:10:00); izin verilen maksimum değer 1 saattir (01:00:00). | Hayır |
+| noTruncation | Döndürülen sonuç kümesini druncate olup olmadığını gösterir. Varsayılan olarak, sonuç 500.000 kayıt veya 64 megabayt (MB) sonra kesilir. Etkinliğin doğru davranışını sağlamak için kesilme şiddetle önerilir. |Hayır |
 
 >[!NOTE]
->Varsayılan olarak, Azure Veri Gezgini kaynağı 500.000 kayıt veya 64 MB boyutunda bir boyut sınırına sahiptir. Tüm kayıtları kesme olmadan almak için sorgunuzun başlangıcında `set notruncation;` belirtebilirsiniz. Daha fazla bilgi için bkz. [sorgu sınırları](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
+>Varsayılan olarak, Azure Veri Gezgini kaynağının 500.000 kayıt veya 64 MB'lık bir boyut sınırı vardır. Kesilmeden tüm kayıtları almak için, sorgunuzun başında belirtebilirsiniz. `set notruncation;` Daha fazla bilgi için [Sorgu sınırlarına](https://docs.microsoft.com/azure/kusto/concepts/querylimits)bakın.
 
 **Örnek:**
 
@@ -186,15 +186,15 @@ Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağında
 ]
 ```
 
-### <a name="azure-data-explorer-as-sink"></a>Havuz olarak Azure Veri Gezgini
+### <a name="azure-data-explorer-as-sink"></a>Lavabo olarak Azure Veri Gezgini
 
-Verileri Azure Veri Gezgini kopyalamak için kopyalama etkinliği havuzundan tür özelliğini **AzureDataExplorerSink**olarak ayarlayın. Aşağıdaki özellikler, kopyalama etkinliği **havuzu** bölümünde desteklenir:
+Verileri Azure Veri Gezgini'ne kopyalamak için, kopyalama etkinliğindeki tür özelliğini **AzureDataExplorerSink**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **lavabo** bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun **Type** özelliği: **AzureDataExplorerSink**olarak ayarlanmalıdır. | Yes |
-| ınestionmappingname | Kusto tablosundaki önceden oluşturulmuş [eşlemenin](/azure/kusto/management/mappings#csv-mapping) adı. Sütunları kaynaktan Azure Veri Gezgini eşlemek için (CSV/JSON/avro biçimleri dahil olmak üzere [tüm desteklenen kaynak depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats)için geçerlidir), kopyalama etkinliği [sütun eşlemesini](copy-activity-schema-and-type-mapping.md) (örtük olarak ada veya açıkça yapılandırılmış olarak) ve/veya Azure Veri Gezgini eşlemelerini kullanabilirsiniz. | Hayır |
-| additionalProperties | Azure Veri Gezgini havuzu tarafından henüz ayarlanmayan alma özelliklerinden herhangi birini belirtmek için kullanılabilecek bir özellik paketi. Özel olarak, Alım etiketlerini belirtmek yararlı olabilir. Azure verilerinden daha fazla bilgi edinin [verileri araştırma belgesi](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html). | Hayır |
+| type | Kopyalama etkinliği lavabonun **türü** özelliği şu şekilde ayarlanmalıdır: **AzureDataExplorerSink**. | Evet |
+| ingestionMappingName | Kusto masasında önceden oluşturulmuş bir [eşlemenin](/azure/kusto/management/mappings#csv-mapping) adı. Sütunları kaynaktan Azure Veri Gezgini'ne (CSV/JSON/Avro biçimleri de dahil olmak üzere [desteklenen tüm kaynak depoları ve biçimleri](copy-activity-overview.md#supported-data-stores-and-formats)için geçerlidir) eşlemek için, kopyalama etkinliği [sütuneşlemesi](copy-activity-schema-and-type-mapping.md) (örtülü olarak veya açıkça yapılandırılmış olarak) ve/veya Azure Veri Gezgini eşlemelerini kullanabilirsiniz. | Hayır |
+| ek Özellikler | Azure Veri Gezgini Büzerek tarafından zaten ayarlanamamakta olan yutma özelliklerinden herhangi birini belirtmek için kullanılabilen bir özellik çantası. Özellikle, yutma etiketleri belirtmek için yararlı olabilir. [Azure Veri Satmasını Vereme dokümanından](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)daha fazla bilgi edinin. | Hayır |
 
 **Örnek:**
 
@@ -229,12 +229,12 @@ Verileri Azure Veri Gezgini kopyalamak için kopyalama etkinliği havuzundan tü
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
 
-Özellikler hakkında daha fazla bilgi için bkz. [arama etkinliği](control-flow-lookup-activity.md).
+Özellikler hakkında daha fazla bilgi için [Bkz. Arama etkinliği.](control-flow-lookup-activity.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Data Factory içindeki kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+* Azure Veri Fabrikası'ndaki kopyalama etkinliğinin kaynak ve lavabo olarak desteklediği veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
 
-* [Azure Data Factory verileri Azure Veri Gezgini kopyalama](/azure/data-explorer/data-factory-load-data)hakkında daha fazla bilgi edinin.
+* [Azure Veri Fabrikası'ndan Azure Veri Gezgini'ne kadar verileri](/azure/data-explorer/data-factory-load-data)kopyalama hakkında daha fazla bilgi edinin.

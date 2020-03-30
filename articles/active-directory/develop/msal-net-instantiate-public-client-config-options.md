@@ -1,7 +1,7 @@
 ---
-title: Ortak istemci uygulaması örneğini oluşturma (MSAL.NET) | Mavisi
+title: Bir kamu istemcisi uygulamasını anında kullanıma (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullanarak yapılandırma seçenekleriyle ortak bir istemci uygulamasını nasıl örnekleyeceğinizi öğrenin.
+description: .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı'nı kullanarak yapılandırma seçenekleriyle ortak istemci uygulamasını anında nasıl anons edebilirsiniz öğrenin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,25 +14,25 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083600"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET kullanarak yapılandırma seçenekleriyle ortak bir istemci uygulaması örneğini oluşturma
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET kullanarak yapılandırma seçenekleriyle ortak istemci uygulamasını anında
 
-Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) kullanılarak [genel bir istemci uygulamasının](msal-client-applications.md) nasıl oluşturulacağı açıklanır.  Uygulama, bir ayar dosyasında tanımlanan yapılandırma seçenekleriyle birlikte oluşturulur.
+Bu makalede, .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı kullanarak ortak istemci [uygulamasının](msal-client-applications.md) anlık olarak nasıl hazırlanıletkileri açıklanmaktadır.  Uygulama, ayarlar dosyasında tanımlanan yapılandırma seçenekleriyle anında doldurulabilir.
 
-Uygulamayı başlatmadan önce, uygulamanızın Microsoft Identity platformu ile tümleştirilebilmesi için öncelikle [kaydetmeniz](quickstart-register-app.md) gerekir. Kayıttan sonra, aşağıdaki bilgiler (Azure portal bulunabilir) gerekebilir:
+Bir uygulamayı başlatmadan önce, uygulamanızın Microsoft kimlik platformuyla tümleştirilebilmeleri için uygulamanızı [kaydetmeniz](quickstart-register-app.md) gerekir. Kayıt olduktan sonra aşağıdaki bilgilere ihtiyacınız olabilir (Azure portalında bulunabilir):
 
-- İstemci KIMLIĞI (bir GUID 'YI temsil eden dize)
-- Kimlik sağlayıcısı URL 'SI (örnek olarak adlandırılır) ve uygulamanız için oturum açma hedef kitlesi. Bu iki parametre, her topluca yetkili olarak bilinir.
-- Yalnızca kuruluşunuz için bir iş kolu uygulaması yazıyorsanız (tek kiracılı uygulama olarak da adlandırılır) kiracı KIMLIĞI.
-- Web uygulamaları için ve bazen genel istemci uygulamaları için (uygulamanızın bir aracı kullanması gerektiğinde), kimlik sağlayıcısının güvenlik belirteçleriyle uygulamanızı geri yükleyeceğim yeniden yönlendirilebilir.
+- İstemci kimliği (GUID'i temsil eden bir dize)
+- Kimlik sağlayıcı URL (örneğin adı) ve uygulamanız için oturum açma hedef kitlesi. Bu iki parametre topluca otorite olarak bilinir.
+- Yalnızca kuruluşunuz için bir iş başvurusu satırı yazıyorsanız kiracı kimliği (tek kiracılı uygulama olarak da adlandırılır).
+- Web uygulamaları ve bazen kamu istemcisi uygulamaları için (özellikle uygulamanızın bir broker kullanması gerektiğinde), kimlik sağlayıcısının güvenlik belirteçleri ile uygulamanıza geri döneceği redirectUri'yi de ayarlamış olacaksınız.
 
 
-.NET Core konsol uygulaması aşağıdaki *appSettings. JSON* yapılandırma dosyasına sahip olabilir:
+Bir .NET Core konsol uygulaması aşağıdaki *appsettings.json* yapılandırma dosyasına sahip olabilir:
 
 ```json
 {
@@ -48,7 +48,7 @@ Uygulamayı başlatmadan önce, uygulamanızın Microsoft Identity platformu ile
 }
 ```
 
-Aşağıdaki kod, .NET yapılandırma çerçevesini kullanarak bu dosyayı okur:
+Aşağıdaki kod .NET yapılandırma çerçevesini kullanarak bu dosyayı okur:
 
 ```csharp
 public class SampleConfiguration

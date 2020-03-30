@@ -1,62 +1,62 @@
 ---
-title: Azure Cosmos DB 'de çok bölgeli dağıtımlar için maliyeti iyileştirin
-description: Bu makalede Azure Cosmos DB içinde çok bölgeli dağıtımların maliyetlerinin nasıl yönetileceği açıklanmaktadır.
+title: Azure Cosmos DB'deki çok bölgeli dağıtımlar için maliyeti optimize edin
+description: Bu makalede, Azure Cosmos DB'deki çok bölgeli dağıtımmaliyetlerinin nasıl yönetilen olduğu açıklanmaktadır.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72753313"
 ---
-# <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Çok bölgeli maliyeti Azure Cosmos DB iyileştirin
+# <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de birden çok bölgenin maliyetini iyileştirme
 
-Azure Cosmos hesabınıza dilediğiniz zaman bölge ekleyebilir ve bu hesaptaki bölgeleri dilediğiniz zaman kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, hesabınızla ilişkili her bölgede ayrılır. Saat başına sağlanan aktarım hızı, Azure Cosmos hesabınız için tüm veritabanları ve kapsayıcılar genelinde yapılandırılan RU/sn 'nin toplamı `T` ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı `N` ve sağlanan toplam belirli bir saat için Cosmos hesabınız için aktarım hızı şuna eşittir:
+Azure Cosmos hesabınıza istediğiniz zaman bölgeler ekleyebilir ve kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcılar için yapılandırdığınız iş, hesabınızla ilişkili her bölgede ayrılmıştır. Saatte sağlanan iş ortası, Azure Cosmos hesabınız için tüm veritabanları ve kapsayıcılar arasında yapılandırılan `T` RU/s toplamı ise ve veritabanı `N`hesabınızla ilişkili Azure bölgelerinin sayısı ise , belirli bir saat için Cosmos hesabınız için sağlanan toplam iş ortası eşittir:
 
-1. Azure Cosmos hesabınız tek bir yazma bölgesiyle yapılandırıldıysa `T x N RU/s`. 
+1. `T x N RU/s`Azure Cosmos hesabınız tek bir yazma bölgesiyle yapılandırılırsa. 
 
-1. Azure Cosmos hesabınız, yazma işlemleri yapabilen tüm bölgelerle yapılandırıldıysa `T x (N+1) RU/s`. 
+1. `T x (N+1) RU/s`Azure Cosmos hesabınız, yazma işlemlerini işleyebilen tüm bölgelerle yapılandırılırsa. 
 
-100 RU/s başına tek bir yazma bölgesi maliyeti $0.008/saat ve çok sayıda yazılabilir bölge maliyeti ile sağlanan aktarım hızı, her 100 RU/sn başına saat $0,016/saat ile sağlandı. Daha fazla bilgi için bkz. Azure Cosmos DB [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/).
+Tek yazma bölgesinde sağlanan aktarım hızı saniyede 100 RU ile saat başına 0,008 ABD doları, birden fazla yazılabilir bölgede sağlanan aktarım hızı saniyede 100 RU ile saat başına 0,016 ABD doları ile ücretlendirilir. Daha fazla bilgi için Azure Cosmos DB [Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın.
 
-## <a name="costs-for-multiple-write-regions"></a>Birden çok yazma bölgesinin maliyeti
+## <a name="costs-for-multiple-write-regions"></a>Birden çok yazma bölgesi için maliyetler
 
-Çoklu ana sistemde, yazma işlemleri için net kullanılabilir ru, `N` yazma bölgesi sayısı olan `N` süreleri artırır. Tek bölge yazmalarından farklı olarak, her bölge artık yazılabilir ve çakışma çözümünü desteklemelidir. Yazarlar için iş yükü miktarı artmıştır. Maliyet Planlama noktasından, dünyanın her yerindeki yazma `M` RU/sn almak için bir kapsayıcıda veya veritabanı düzeyinde M `RUs` sağlamanız gerekir. Daha sonra istediğiniz kadar bölge ekleyebilir ve bunları dünya genelindeki yazma `M` RU) gerçekleştirmek üzere yazma işlemleri için kullanabilirsiniz. 
+Çok analı sistemde, yazma işlemleri için kullanılabilir `N` net `N` RUs yazma bölgelerinin sayısı nın olduğu süreleri artırır. Tek bir bölge yazmanın aksine, her bölge artık yazılabilir ve çakışma çözümünü desteklemelidir. Yazarlar için iş yükü miktarı artmıştır. Maliyet planlama açısından, dünya çapında `M` ru /s yazma ları gerçekleştirmek için, `RUs` bir konteyner veya veritabanı düzeyinde M sağlamanız gerekir. Daha sonra istediğiniz kadar bölge ekleyebilir ve bunları dünya `M` çapında ki RU değer yazılarını gerçekleştirmek için yazmak için kullanabilirsiniz. 
 
 ### <a name="example"></a>Örnek
 
-Batı ABD, aktarım hızı 10.000 RU/sn ile sağlanan ve bu ay 1 TB veri depolayan bir kapsayıcınızı düşünün. Her biri aynı depolama ve aktarım hızı ile Doğu ABD, Kuzey Avrupa ve Doğu Asya üç bölge eklediğinizi ve küresel olarak dağıtılan uygulamanızdan dört bölgedeki kapsayıcılara yazmak istediğinizi varsayalım. Aylık toplam faturanız (31 gün varsayılarak), şu şekildedir:
+Batı ABD'de 10K RU/s ile sağlanan bir konteyner var düşünün ve bu ay veri 1 TB depolar. Doğu ABD, Kuzey Avrupa ve Doğu Asya olmak üzere üç bölge eklediğinizi varsayalım, her biri aynı depolama ve üretim emeğe sahip ve küresel olarak dağıtılan uygulamanızdan dört bölgede de kapsayıcılara yazma olanağı istiyorsunuz. Bir ay daki toplam aylık faturanız (31 gün varsayarak) aşağıdaki gibidir:
 
-|**Öğe**|**Kullanım (aylık)**|**Derecelendir**|**Aylık maliyet**|
+|**Öğe**|**Kullanım (aylık)**|**Fiyat**|**Aylık Maliyet**|
 |----|----|----|----|
-|Batı ABD kapsayıcı için üretilen iş faturası (birden fazla yazma bölgesi) |10.000 RU/s * 24 * 31 |$0,016/saat başına 100 RU/sn |$1.190,40 |
-|3 ek bölge için üretilen iş faturası Doğu ABD, Kuzey Avrupa ve Doğu Asya (birden fazla yazma bölgesi) |(3 + 1) * 10.000 RU/s * 24 * 31 |$0,016/saat başına 100 RU/sn |$4.761,60 |
-|Batı ABD’deki kapsayıcı için depolama faturası |1 TB (veya 1.024 GB) |$0,25/GB |$256 |
-|3 ek bölge (Doğu ABD, Kuzey Avrupa ve Doğu Asya) için depolama faturası |3 * 1 TB (veya 3.072 GB) |$0,25/GB |$768 |
-|**Toplamda**|||**$6.976** |
+|Batı ABD'de konteyner için iş mesuliyet faturası (birden çok yazma bölgesi) |10K RU/s * 24 * 31 |$0.016 /saat başına 100 RU/s |1.190,40 $ |
+|Doğu ABD, Kuzey Avrupa ve Doğu Asya (birden fazla yazma bölgesi) |(3 + 1) * 10K RU/s * 24 * 31 |$0.016 /saat başına 100 RU/s |4.761,60 TL |
+|Batı ABD'de konteyner için depolama faturası |1 TB (veya 1.024 GB) |$0.25/TR |256 DOLAR |
+|Doğu ABD, Kuzey Avrupa ve Doğu Asya - 3 ek bölge için depolama faturası |3 * 1 TB (veya 3.072 GB) |$0.25/TR |768 DOLAR |
+|**Toplam**|||**6.976 dolar** |
 
-## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Bölge bazında üretilen iş kullanımını geliştirme
+## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Bölge bazında iş ortası kullanımını geliştirin
 
-Kullanım dışı bir veya daha fazla veya daha fazla bölge (örneğin, bir veya daha fazla), verimlilik kullanımını geliştirmek için aşağıdaki adımları uygulayabilirsiniz:  
+Örneğin, az kullanılan veya aşırı kullanılan bölgeler gibi verimsiz kullanımınız varsa, iş ortası kullanımını iyileştirmek için aşağıdaki adımları atabilirsiniz:  
 
-1. İlk olarak yazma bölgesinde sağlanan üretilen işi (ru) iyileştirdiğinizden emin olun ve ardından oku-Bölgesi ' nden değişiklik akışını kullanarak RUs 'in okuma bölgelerinde en fazla kullanımını yapın. 
+1. Önce yazma bölgesinde sağlanan iş akışını (RUS) optimize ettiğinizden ve daha sonra okuma bölgesinden gelen değişiklik akışını vb. kullanarak okuma bölgelerindeKI RUs'lardan maksimum şekilde kullandığınızdan emin olun. 
 
-2. Birden çok yazma bölgesi okuma ve yazma işlemleri, Azure Cosmos hesabıyla ilişkili tüm bölgelerde ölçeklendirilebilir. 
+2. Birden çok yazma bölgesi okunur ve yazılabilir, Azure Cosmos hesabıyla ilişkili tüm bölgeler arasında ölçeklenebilir. 
 
-3. Bölgelerinizdeki etkinliği izleyin ve okuma ve yazma aktarım hızını ölçeklendirmek için isteğe bağlı olarak bölge ekleyebilir ve kaldırabilirsiniz.
+3. Bölgelerinizdeki etkinliği izleyin ve okuma ve yazma işlerinizi ölçeklendirmek için talep üzerine bölgeler ekleyip kaldırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha sonra, aşağıdaki makalelerle Azure Cosmos DB maliyet iyileştirmesi hakkında daha fazla bilgi edinebilirsiniz:
+Daha sonra aşağıdaki makalelerle Azure Cosmos DB'de maliyet optimizasyonu hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Geliştirme ve test Için iyileştirme](optimize-dev-test.md) hakkında daha fazla bilgi edinin
-* [Azure Cosmos DB Faturanızı Anlama](understand-your-bill.md) hakkında daha fazla bilgi edinin
-* [Verimlilik maliyetini iyileştirme](optimize-cost-throughput.md) hakkında daha fazla bilgi edinin
-* [Depolama maliyetini iyileştirme](optimize-cost-storage.md) hakkında daha fazla bilgi edinin
-* [Okuma ve yazma maliyetlerini iyileştirme](optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
-* [Sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
+* [Geliştirme ve test için Optimizasyon](optimize-dev-test.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB faturanızı anlama](understand-your-bill.md) hakkında daha fazla bilgi edinin
+* [İş memat maliyetini optimize etme](optimize-cost-throughput.md) hakkında daha fazla bilgi edinin
+* [Depolama maliyetini optimize etme](optimize-cost-storage.md) hakkında daha fazla bilgi edinin
+* [Okuma ve yazma maliyetini optimize etme](optimize-cost-reads-writes.md) hakkında daha fazla bilgi edinin
+* [Sorguların maliyetini optimize etme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
 

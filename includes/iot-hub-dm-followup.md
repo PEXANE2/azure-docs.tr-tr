@@ -9,24 +9,24 @@ ms.date: 02/17/2019
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 2514325c93f0f72aa979f871e86e465093479402
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69558726"
 ---
-## <a name="customize-and-extend-the-device-management-actions"></a>Cihaz yönetim eylemlerini özelleştirme ve genişletme
+## <a name="customize-and-extend-the-device-management-actions"></a>Cihaz yönetimi eylemlerini özelleştirme ve genişletme
 
-IoT çözümlerinizi tanımlı cihaz yönetim desenleri kümesini genişletebilir veya cihaz ikizi ve buluttan cihaza yöntem temel sürümlerini kullanarak özel desenleri etkinleştirebilir. Bazı cihaz yönetim eylemlerine örnek olarak fabrika sıfırlaması, üretici yazılımı güncelleştirmesi, yazılım güncelleştirmesi, güç yönetimi, ağ ve bağlantı yönetimi ve veri şifreleme dahildir.
+IoT çözümleriniz, aygıt ikizi ve buluttan aygıta yöntem ilkellerini kullanarak tanımlı aygıt yönetim desenleri kümesini genişletebilir veya özel desenler ietkinleştirebilir. Aygıt yönetimi eylemlerine diğer örnekler arasında fabrika sıfırlama, firmware güncelleştirmesi, yazılım güncelleştirmesi, güç yönetimi, ağ ve bağlantı yönetimi ve veri şifreleme sayılabilir.
 
-## <a name="device-maintenance-windows"></a>Cihaz bakımı pencereleri
+## <a name="device-maintenance-windows"></a>Cihaz bakım pencereleri
 
-Genellikle cihazları, kesintileri ve kapalı kalma süresini en aza indiren bir zamanda eylemleri gerçekleştirecek şekilde yapılandırırsınız. Cihaz bakımı pencereleri, bir cihazın yapılandırmasını güncelleştirmesi gereken zamanı tanımlamak için yaygın olarak kullanılan bir modeldir. Arka uç çözümleriniz, cihazınızda bir bakım penceresi sağlayan bir ilkeyi tanımlamak ve etkinleştirmek için Device ikizi 'ın istenen özelliklerini kullanabilir. Bir cihaz, bakım penceresi ilkesini aldığında, ilkenin durumunu raporlamak için Device ikizi 'ın bildirilen özelliğini kullanabilir. Arka uç uygulaması daha sonra cihaz ikizi sorgularını kullanarak cihazların ve her ilkenin uyumluluğuna karşı test edebilir.
+Genellikle, aygıtları kesintileri ve kapalı kalma süresini en aza indiren bir anda eylemler gerçekleştirecek şekilde yapılandırırsınız. Aygıt bakım pencereleri, aygıtın yapılandırmasını güncelleştirmesi gereken zamanı tanımlamak için yaygın olarak kullanılan bir desendir. Arka uç çözümleriniz, aygıtınızda bakım penceresi sağlayan bir ilke tanımlamak ve etkinleştirmek için aygıt ikizinin istenen özelliklerini kullanabilir. Bir aygıt bakım penceresi ilkesini aldığında, iipolitikasının durumunu bildirmek için aygıt ikizinin bildirilen özelliğini kullanabilir. Arka uç uygulaması daha sonra aygıtların ve her ilkenin uyumluluğunu kanıtlamak için aygıt ikiz sorgularını kullanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir cihazda Uzaktan yeniden başlatmanın tetiklenmesi için doğrudan bir yöntem kullandınız. Bildirilen özellikleri cihazdan en son yeniden başlatma zamanını raporlamak için kullandınız ve cihazın buluttan en son yeniden başlatma zamanını bulması için cihazı ikizi sorguladı.
+Bu öğreticide, aygıtta uzaktan yeniden başlatmayı tetiklemek için doğrudan bir yöntem kullandınız. Aygıttan gelen son yeniden başlatma saatini bildirmek için bildirilen özellikleri kullandınız ve aygıtın buluttan son yeniden başlatma saatini bulmak için aygıt ikizini sorguladınız.
 
-AIR üretici yazılımı güncelleştirmesi üzerinden uzak gibi IoT Hub ve cihaz yönetim desenleriyle çalışmaya devam etmek için bkz. [nasıl yapılır bir bellenim güncelleştirmesi](../articles/iot-hub/tutorial-firmware-update.md).
+IoT Hub ve hava firmware güncellemesi üzerinden uzaktan gibi cihaz yönetimi desenleri ile çalışmaya başlamak için, [bir firmware güncelleştirmesi nasıl yapılacağını](../articles/iot-hub/tutorial-firmware-update.md)görün.
 
-IoT çözümünüzü genişletmeyi ve birden çok cihazda Yöntem çağrılarını zamanlamayı öğrenmek için bkz. [zamanlama ve yayınlama işleri](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md).
+IoT çözümünüzü nasıl genişleteceğimize ve yöntem çağrılarını birden çok cihazda nasıl zamanlayabilirsiniz öğrenmek için [Zamanlama ve yayın işlerine](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)bakın.

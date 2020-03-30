@@ -1,7 +1,7 @@
 ---
-title: Adlandırılmış varlık tanıma bilişsel yeteneği
+title: İsimli Varlık Tanıma bilişsel beceri
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde bulunan metin, konum ve kuruluş için adlandırılmış varlıkları ayıklayın.
+description: Azure Bilişsel Arama'daki bir AI zenginleştirme ardışık noktasındaki metinden kişi, konum ve kuruluş için adlandırılmış varlıkları ayıklayın.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,58 +9,58 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 127155e492b556ce1ce02b67cf0b0846b99ebcd4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72791945"
 ---
-#    <a name="named-entity-recognition-cognitive-skill"></a>Adlandırılmış varlık tanıma bilişsel yeteneği
+#    <a name="named-entity-recognition-cognitive-skill"></a>İsimli Varlık Tanıma bilişsel beceri
 
-**Adlandırılmış varlık tanıma** yeteneği, adlandırılmış varlıkları metinden ayıklar. Kullanılabilir varlıklar `person`, `location` ve `organization`türlerini içerir.
+**Adlandırılmış Varlık Tanıma** becerisi, metinden adlandırılmış varlıkları ayıklar. Kullanılabilir varlıklar türleri `person`içerir `location` `organization`ve .
 
 > [!IMPORTANT]
-> Adlandırılmış varlık tanıma yeteneği artık [Microsoft. yetenekler. Text. Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md)tarafından değiştirilmiştir. Destek 15 Şubat 2019 tarihinde durdurulur ve API, 2 Mayıs 2019 tarihinde üründen kaldırılmıştır. Desteklenen bir yeteneğe geçiş yapmak için kullanım dışı bilişsel [arama becerilerinin](cognitive-search-skill-deprecated.md) önerilerini izleyin.
+> Adlandırılmış varlık tanıma becerisi artık [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)ile değiştirilerek durdurulur. Destek 15 Şubat 2019'da durduruldu ve API 2 Mayıs 2019'da üründen kaldırıldı. Desteklenen bir beceriye geçiş yapmak için [Deprecated bilişsel arama becerileri](cognitive-search-skill-deprecated.md) önerileri izleyin.
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşleme sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla Bilgi Al algoritması ekleyerek kapsamı genişlettikçe, [faturalandırılabilir Bilişsel Hizmetler kaynağı eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir. Bilişsel Hizmetler'de API'leri ararken ve Azure Bilişsel Arama'da belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk ettirilir. Belgelerden metin çıkarma için herhangi bir ücret yoktur.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik becerilerin yürütülmesi, mevcut [Bilişsel Hizmetler ödeme-as-you gitmek fiyat](https://azure.microsoft.com/pricing/details/cognitive-services/)tahsil edilir. Görüntü çıkarma fiyatlandırması [Azure Bilişsel Arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmıştır.
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. yetenekler. Text. Namedentityrecognitionbeceri
+Microsoft.Skills.Text.NamedEntityTanıma Beceri
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
+Bir kaydın maksimum boyutu 50.000 karakter olarak [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçüldü. Verilerinizi anahtar tümcecik çıkarıcıya göndermeden önce ayırmanız gerekiyorsa, [Metin Bölme becerisini](cognitive-search-skill-textsplit.md)kullanmayı düşünün.
 
-## <a name="skill-parameters"></a>Yetenek parametreleri
+## <a name="skill-parameters"></a>Beceri parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| kategoriler    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"`, `"Location"`, `"Organization"`. Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
-|defaultLanguageCode |  Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `de, en, es, fr, it`|
-| minimumPrecision  | 0 ile 1 arasında bir sayı. Duyarlık bu değerden düşükse varlık döndürülmez. Varsayılan değer 0 ' dır.|
+| kategoriler    | Ayıklanması gereken kategoriler dizisi.  Olası kategori `"Person"`türleri: `"Organization"`, , `"Location"`. Kategori sağlanmadıysa, tüm türler döndürülür.|
+|defaultLanguageCode |  Giriş metninin dil kodu. Aşağıdaki diller desteklenir:`de, en, es, fr, it`|
+| minimum Hassasiyet  | 0 ile 1 arasında bir sayı. Kesinlik bu değerden daha düşükse, varlık döndürülmez. Varsayılan değer, 0'dur.|
 
-## <a name="skill-inputs"></a>Beceri girişleri
+## <a name="skill-inputs"></a>Beceri girdileri
 
 | Giriş adı      | Açıklama                   |
 |---------------|-------------------------------|
 | languageCode  | İsteğe bağlı. `"en"` varsayılan değerdir.  |
-| metin          | Çözümlenecek metin.          |
+| metin          | Çözümlemek için metin.          |
 
-## <a name="skill-outputs"></a>Yetenek çıkışları
+## <a name="skill-outputs"></a>Beceri çıktıları
 
-| Çıkış adı     | Açıklama                   |
+| Çıktı adı     | Açıklama                   |
 |---------------|-------------------------------|
-| elemanları      | Her bir dizenin bir kişinin adını temsil ettiği dizeler dizisi. |
-| yerlerini  | Her bir dizenin bir konumu temsil ettiği dizeler dizisi. |
-| organizations  | Her bir dizenin bir kuruluşu temsil ettiği dizeler dizisi. |
-| varlıklar | Karmaşık türlerden oluşan dizi. Her karmaşık tür aşağıdaki alanları içerir: <ul><li>kategori (`"person"`, `"organization"`veya `"location"`)</li> <li>değer (gerçek varlık adı)</li><li>fark (metinde bulunduğu konum)</li><li>güvenirlik (değerin gerçek bir varlık olduğunu belirten, bu güveni temsil eden 0 ile 1 arasında bir değer)</li></ul> |
+| Kişi      | Her dize bir kişinin adını temsil dizeleri bir dizi. |
+| Konum  | Her dize bir konumu temsil eder dizeleri bir dizi. |
+| organizations  | Her dize bir organizasyonu temsil eden dizeleri dizisi. |
+| Varlık | Karmaşık türleri bir dizi. Her karmaşık tür aşağıdaki alanları içerir: <ul><li>kategori`"person"`( `"organization"`, `"location"`, veya )</li> <li>değeri (gerçek varlık adı)</li><li>ofset (Metinde bulunduğu yer)</li><li>güven (0 ile 1 arasındaki değer, değerin gerçek bir varlık olduğu güvenini gösterir)</li></ul> |
 
-##  <a name="sample-definition"></a>Örnek tanım
+##  <a name="sample-definition"></a>Örnek tanımı
 
 ```json
   {
@@ -150,11 +150,11 @@ Parametreler büyük/küçük harfe duyarlıdır.
 ```
 
 
-## <a name="error-cases"></a>Hata durumları
-Belge için dil kodu desteklenmiyorsa bir hata döndürülür ve hiçbir varlık ayıklanmaz.
+## <a name="error-cases"></a>Hata örnekleri
+Belgenin dil kodu desteklenmezse, bir hata döndürülür ve hiçbir varlık ayıklanır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Varlık tanıma yeteneği](cognitive-search-skill-entity-recognition.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Varlık Tanıma Becerisi](cognitive-search-skill-entity-recognition.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde uzamsal işlevler
-description: Azure Cosmos DB uzamsal SQL sistem işlevleri hakkında bilgi edinin.
+description: Azure Cosmos DB'deki uzamsal SQL sistem işlevleri hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 1d523b09cb3d7142a6c375a0ffde77f8ca1153b0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349443"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>Uzamsal işlevler (Azure Cosmos DB)
 
-Cosmos DB, Jeo-uzamsal sorgulamak için aşağıdaki açık Jeo-uzamsal Consortium (OGC) yerleşik işlevleri destekler. 
+Cosmos DB, jeouzamsal sorgulama için aşağıdaki Açık Jeouzamsal Konsorsiyum (OGC) yerleşik işlevlerini destekler. 
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>İşlevler
 
-Aşağıdaki skaler İşlevler, uzamsal nesne giriş değeri bir işlem gerçekleştirmek ve bir sayısal veya Boolean değeri döndürür.  
+Aşağıdaki skaler işlevler uzamsal nesne giriş değeri üzerinde bir işlem gerçekleştirir ve sayısal veya Boolean değeri döndürün.  
   
 |||||
 |-|-|-|-|
@@ -30,7 +30,7 @@ Aşağıdaki skaler İşlevler, uzamsal nesne giriş değeri bir işlem gerçekl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
-- [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
-- [Toplar](sql-query-aggregates.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Kullanıcı Tanımlı Fonksiyonlar](sql-query-udfs.md)
+- [Toplamalar](sql-query-aggregates.md)

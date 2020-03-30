@@ -1,39 +1,39 @@
 ---
-title: JavaScript SDK 'sını kullanma
-description: Azure Mobile Apps için v kullanma
+title: JavaScript SDK'yı kullanma
+description: Azure Mobil Uygulamalarda v Nasıl Kullanılır?
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
 ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 029b01f3aacc928ebdae0e8fe90871437afccea5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461530"
 ---
-# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Azure için JavaScript istemci kitaplığı 'nı kullanma Mobile Apps
+# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Azure Mobil Uygulamaları için JavaScript istemci kitaplığını kullanma
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu kılavuz, [Azure Mobile Apps için JavaScript SDK 'Sı]kullanarak genel senaryolar gerçekleştirmenizi öğretir. Azure Mobile Apps 'yi yeni kullanıyorsanız, ilk olarak [azure Mobile Apps hızlı başlangıç] tamamladıktan sonra arka uç oluşturun ve bir tablo oluşturun. Bu kılavuzda, HTML/JavaScript Web uygulamalarında mobil arka ucunu kullanmaya odaklanıyoruz.
+Bu kılavuz, Azure Mobil Uygulamaları için en son [JavaScript SDK'sını]kullanarak sık karşılaşılan senaryoları gerçekleştirmenizi öğretir. Azure Mobil Apps'ta yeniyseniz, bir arka uç oluşturmak ve bir tablo oluşturmak için önce [Azure Mobile Apps Hızlı Başlat'ı] tamamlayın. Bu kılavuzda, HTML/JavaScript Web uygulamalarında mobil arka uç kullanmaya odaklanıyoruz.
 
 ## <a name="supported-platforms"></a>Desteklenen platformlar
-Tarayıcı desteğini büyük tarayıcıların güncel ve son sürümleriyle sınırlandırıyoruz: Google Chrome, Microsoft Edge, Microsoft Internet Explorer ve Mozilla Firefox.  SDK 'nın herhangi bir görece modern tarayıcıyla çalışmasını bekledik.
+Tarayıcı desteğini, büyük tarayıcıların mevcut ve son sürümleriyle sınırlandırıyoruz: Google Chrome, Microsoft Edge, Microsoft Internet Explorer ve Mozilla Firefox.  Biz SDK herhangi bir nispeten modern tarayıcı ile çalışması bekliyoruz.
 
-Paket Universal JavaScript modülü olarak dağıtılır, bu nedenle Globals, AMD ve CommonJS biçimlerini destekler.
+Paket Evrensel JavaScript Modülü olarak dağıtılır, böylece globals, AMD ve CommonJS biçimlerini destekler.
 
-## <a name="Setup"></a>Kurulum ve Önkoşullar
-Bu kılavuzda, bir tablo ile arka uç oluşturduğunuzu varsayılmaktadır. Bu kılavuzda, tablonun bu öğreticilerde bulunan tablolarla aynı şemaya sahip olduğu varsayılır.
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>Kurulum ve ön koşullar
+Bu kılavuz, bir tablo ile bir arka uç oluşturduğunuzvarsa. Bu kılavuz, tablonun bu öğreticilerde tablolarla aynı şema olduğunu varsayar.
 
-Azure Mobile Apps JavaScript SDK 'sını yüklemek `npm` komutu aracılığıyla yapılabilir:
+Azure Mobil Apps JavaScript SDK'nın `npm` yüklenmesi aşağıdaki komut üzerinden yapılabilir:
 
 ```
 npm install azure-mobile-apps-client --save
 ```
 
-Kitaplık Ayrıca, Browserbelirt ve WebPack gibi CommonJS ortamlarında ve bir AMD kitaplığı olarak bir ES2015 modülü olarak da kullanılabilir.  Örnek:
+Kitaplık, Browserify ve Webpack gibi CommonJS ortamlarında es2015 modülü ve AMD kitaplığı olarak da kullanılabilir.  Örnek:
 
 ```javascript
 // For ECMAScript 5.1 CommonJS
@@ -42,7 +42,7 @@ var WindowsAzure = require('azure-mobile-apps-client');
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
-Doğrudan CDN 'umuza indirerek SDK 'nın önceden oluşturulmuş bir sürümünü de kullanabilirsiniz:
+Doğrudan CDN'mizden indirerek SDK'nın önceden oluşturulmuş bir sürümünü de kullanabilirsiniz:
 
 ```html
 <script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.min.js"></script>
@@ -50,53 +50,53 @@ Doğrudan CDN 'umuza indirerek SDK 'nın önceden oluşturulmuş bir sürümün�
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Nasıl yapılır: kullanıcıların kimliğini doğrulama
-Azure App Service, farklı dış kimlik sağlayıcıları kullanarak uygulama kullanıcılarının kimlik doğrulamasını ve yetkilendiriyi destekler: Facebook, Google, Microsoft hesabı ve Twitter. Belirli işlemlere erişimi yalnızca kimliği doğrulanmış kullanıcılarla kısıtlamak için tablolar üzerinde izinler belirleyebilirsiniz. Ayrıca, sunucu betiklerine yetkilendirme kuralları uygulamak için kimliği doğrulanmış kullanıcıların kimliğini de kullanabilirsiniz. Daha fazla bilgi için [kimlik doğrulaması ile çalışmaya başlama] öğreticisine bakın.
+## <a name="how-to-authenticate-users"></a><a name="auth"></a>Nasıl yapılır: Kullanıcıların kimliğini doğrula
+Azure App Service, uygulama kullanıcılarının facebook, Google, Microsoft Hesabı ve Twitter gibi çeşitli dış kimlik sağlayıcılarını kullanarak kimlik doğrulamayı ve yetkilendirmeyi destekler. Belirli işlemlere erişimi yalnızca kimlik doğrulaması yapılan kullanıcılarla sınırlamak için izinleri tablolarda ayarlayabilirsiniz. Sunucu komut dosyasında yetkilendirme kuralları nı uygulamak için kimlik doğrulaması yapılan kullanıcıların kimliğini de kullanabilirsiniz. Daha fazla bilgi için kimlik [doğrulama öğreticisiyle başlayın'] a bakın.
 
-İki kimlik doğrulama akışı desteklenir: sunucu akışı ve istemci akışı.  Sunucu akışı, sağlayıcının web kimlik doğrulama arabirimini temel aldığından en basit kimlik doğrulama deneyimini sağlar. İstemci akışı, sağlayıcıya özgü SDK 'Ları temel aldığından, tek oturum açma gibi cihaza özgü yetenekler ile daha derin tümleştirme sağlar.
+İki kimlik doğrulama akışı desteklenir: sunucu akışı ve istemci akışı.  Sunucu akışı, sağlayıcının web kimlik doğrulama arabirimine dayandığı için en basit kimlik doğrulama deneyimini sağlar. İstemci akışı, sağlayıcıya özgü SDK'lara dayandığı için tek oturum açma gibi cihaza özgü özelliklerle daha derin tümleştirme sağlar.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Nasıl yapılır: mobil App Service dış yeniden yönlendirme URL 'Leri için yapılandırma.
-Birçok JavaScript uygulaması türü, OAuth UI akışlarını işlemek için bir geri döngü özelliği kullanır.  Bu yetenekler şunlardır:
+### <a name="how-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>Nasıl yapilir: Harici yönlendirme URL'leri için Mobil Uygulama Hizmetinizi yapılandırın.
+JavaScript uygulamalarının çeşitli türleri, OAuth UI akışlarını işlemek için bir geri dönüş özelliği kullanır.  Bu özellikler şunları içerir:
 
 * Hizmetinizi yerel olarak çalıştırma
-* Ionic çerçevesiyle canlı yeniden yükleme kullanma
-* Kimlik doğrulaması için App Service yeniden yönlendiriliyor.
+* İonik Çerçeve ile Canlı Yeniden Yükleme kullanma
+* Kimlik doğrulaması için Uygulama Hizmetine yönlendirme.
 
-Varsayılan olarak, App Service kimlik doğrulaması yalnızca mobil uygulama arka ucunuzun erişimine izin verecek şekilde yapılandırıldığından, yerel olarak çalıştırmak sorunlara yol açabilir. Sunucuyu yerel olarak çalıştırırken kimlik doğrulamasını etkinleştirmek üzere App Service ayarlarını değiştirmek için aşağıdaki adımları kullanın:
+Varsayılan olarak, Uygulama Hizmeti kimlik doğrulaması yalnızca Mobil Uygulama arka uçunuzdan erişime izin verecek şekilde yapılandırıldığından, yerel olarak çalışmak sorunlara neden olabilir. Sunucuyu yerel olarak çalıştırırken kimlik doğrulamasını etkinleştirmek için Uygulama Hizmeti ayarlarını değiştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure portalında]’nda oturum açın
-2. Mobil uygulama arka ucunuza gidin.
-3. **GELIŞTIRME araçları** menüsünde **Kaynak Gezgini** ' ni seçin.
-4. Yeni bir sekmede veya penceresinde mobil uygulama arka ucunuzun kaynak Gezginini açmak için **Git** ' e tıklayın.
-5. Uygulamanızın **config** > **authsettings öğesine tıklayın** düğümünü genişletin.
-6. Kaynağı düzenlemeyi etkinleştirmek için **Düzenle** düğmesine tıklayın.
-7. Null olması gereken **Allowedexternalredirecturls** öğesini bulun. URL 'nizi bir diziye ekleyin:
+1. [Azure portalında] oturum açın
+2. Mobil Uygulama arka uçunuza gidin.
+3. **GELİşTİrME ARAÇLARI** menüsünde **Kaynak gezgini'ni** seçin.
+4. Mobil Uygulamanızın arka ucunu yeni bir sekmede veya pencerede açmak için **Kaynak** Gezgini'ni aç'ı tıklatın.
+5. Uygulamanız için **config** > **authsettings** düğümünüzü genişletin.
+6. Kaynağın düzenlenmesini etkinleştirmek için **Düzenle** düğmesini tıklatın.
+7. İzin **verilenExternalRedirectUrls** öğesini bulun, null olmalıdır. URL'lerinizi bir diziye ekleyin:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
 
-    Dizideki URL 'leri hizmetinizin URL 'Leriyle değiştirin, bu örnekte yerel Node. js örnek hizmeti için `http://localhost:3000`. Ayrıca, uygulamanızın nasıl yapılandırıldığına bağlı olarak Ripple hizmeti veya diğer bir URL için `http://localhost:4400` de kullanabilirsiniz.
-8. Sayfanın üst kısmında **oku/yaz**' a tıklayın ve ardından değişikliklerinizi kaydetmek için **Yerleştir** ' e tıklayın.
+    Dizideki URL'leri, bu örnekte yerel Düğüm.js örnek `http://localhost:3000` hizmeti için olan hizmetURL'leriyle değiştirin. Uygulamanızın nasıl `http://localhost:4400` yapılandırıldığına bağlı olarak Ripple hizmeti veya başka bir URL için de kullanabilirsiniz.
+8. Sayfanın üst kısmında **Oku/Yaz'ı**tıklatın, ardından güncellemelerinizi kaydetmek için **PUT'u** tıklatın.
 
-CORS beyaz listesi ayarlarına aynı geri döngü URL 'Lerini de eklemeniz gerekir:
+Ayrıca CORS beyaz liste ayarlarına aynı geri dönüş URL'lerini eklemeniz gerekir:
 
-1. [Azure portalında]geri gidin.
-2. Mobil uygulama arka ucunuza gidin.
-3. **API** menüsünde **CORS** ' ye tıklayın.
-4. Her URL 'YI boş **Izin verilen** kaynaklar metin kutusuna girin.  Yeni bir metin kutusu oluşturulur.
-5. **Kaydet** 'e tıklayın
+1. [Azure portalına]geri dön.
+2. Mobil Uygulama arka uçunuza gidin.
+3. **API** menüsünde **CORS'u** tıklatın.
+4. Boş İzin Verilen **Başlangıçlar** metin kutusuna her URL'yi girin.  Yeni bir metin kutusu oluşturulur.
+5. **KAYDET'i** tıklatın
 
-Arka uç güncelleştirildikten sonra uygulamanızdaki yeni geri döngü URL 'Lerini kullanabilirsiniz.
+Arka uç güncellemelerinden sonra, uygulamanızdaki yeni geri dönüş URL'lerini kullanabilirsiniz.
 
 <!-- URLs. -->
-[Azure Mobile Apps hızlı başlangıç]: app-service-mobile-cordova-get-started.md
-[Kimlik doğrulaması ile çalışmaya başlama]: app-service-mobile-cordova-get-started-users.md
+[Azure Mobil Uygulamalar Hızlı Başlangıç]: app-service-mobile-cordova-get-started.md
+[Kimlik doğrulamayı kullanmaya başlama]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure portalında]: https://portal.azure.com/
-[Azure Mobile Apps için JavaScript SDK 'Sı]: https://www.npmjs.com/package/azure-mobile-apps-client
+[Azure Mobil Uygulamalar için JavaScript SDK]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

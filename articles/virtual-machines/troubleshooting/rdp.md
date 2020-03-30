@@ -1,6 +1,6 @@
 ---
-title: Azure 'da Windows VM 'Leri için RDP sorunlarını giderme | Microsoft Docs
-description: Windows VM 'Leri için Azure 'da RDP sorunlarını giderin.
+title: Azure'daki Windows VM'leri için RDP sorunlarını giderme | Microsoft Dokümanlar
+description: Windows VM'ler için Azure'da RDP sorunlarını giderin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,35 +15,35 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71057281"
 ---
-# <a name="troubleshoot-rdp-issues"></a>RDP sorunlarını giderme
+# <a name="troubleshoot-rdp-issues"></a>SORUN Giderme RDP sorunları
 
-Bu bölümde, bir VM bağlantısı için RDP oluşturmayla ilgili aşağıdaki sorunlar ele alınmıştır:
+VM'ye bağlantı kurmak için RDP oluşturma yla ilgili aşağıdaki sorunlar bu bölümde ele alınmıştır:
 
 - [RDP’yi sıfırlama](reset-rdp.md)
 - [RDP sorunlarını giderme](troubleshoot-rdp-connection.md)
 - [RDP sorunlarını gidermeyle ilgili ayrıntılar](detailed-troubleshoot-rdp.md)
-- [DHCP devre dışı bırakıldığı için RDP hatası sorunlarını giderme](troubleshoot-rdp-dhcp-disabled.md)
-- [NSG ayarı nedeniyle RDP hatasıyla ilgili sorun giderme](troubleshoot-rdp-nsg-problem.md)
+- [DHCP’nin devre dışı bırakılması kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-dhcp-disabled.md)
+- [NSG ayarından kaynaklanan RDP hatasına yönelik sorun giderme](troubleshoot-rdp-nsg-problem.md)
 - [Belirli hatalarda sorun giderme](troubleshoot-specific-rdp-errors.md)
-- [Lisans sunucusu hatası yok sorunlarını giderme](troubleshoot-rdp-no-license-server.md)
-- [Uzak Masaüstü Hizmetleri sorunlarını giderme](troubleshoot-remote-desktop-services-issues.md)
-- [İç hata sorunlarını giderme](Troubleshoot-rdp-internal-error.md)
-- [Bağlantı kesilme sorunlarını giderme](troubleshoot-rdp-intermittent-connectivity.md)
-- [Genel hata sorunlarını giderme](troubleshoot-rdp-general-error.md)
-- [Kimlik doğrulama hatalarını giderme](troubleshoot-authentication-error-rdp-vm.md)
+- [Lisans sunucusu yok hatalarında sorun giderme](troubleshoot-rdp-no-license-server.md)
+- [Uzak masaüstü hizmetleri ile ilgili sorunları giderme](troubleshoot-remote-desktop-services-issues.md)
+- [İç hata sorununu giderme](Troubleshoot-rdp-internal-error.md)
+- [Sık sık bağlantı kesilmesi sorununu giderme](troubleshoot-rdp-intermittent-connectivity.md)
+- [Genel hata sorununu giderme](troubleshoot-rdp-general-error.md)
+- [Kimlik doğrulama sorunlarını giderme](troubleshoot-authentication-error-rdp-vm.md)
 - [Azure VM RDP bağlantı sorunlarını olay kimliğine göre giderme](event-id-troubleshoot-vm-rdp-connecton.md)
-- [Statik IP nedeniyle VM 'de RDP hatasıyla ilgili sorunları giderme](troubleshoot-rdp-static-ip.md)
-- [NIC devre dışı bırakıldığından VM 'de RDP hatasıyla ilgili sorunları giderin](troubleshoot-rdp-nic-disabled.md)
-- [Güvenli moddan kaynaklanan RDP hatası sorunlarını giderme](troubleshoot-rdp-safe-mode.md)
+- [Sanal makinede statik IP kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-static-ip.md)
+- [Sanal makinede NIC’nin devre dışı bırakılması kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-nic-disabled.md)
+- [Güvenli Mod’dan kaynaklanan RDP hatalarına yönelik sorun giderme](troubleshoot-rdp-safe-mode.md)
 - [Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakın](disable-guest-os-firewall-windows.md)
-- [Konuk işletim sisteminde bir güvenlik duvarı kuralını etkinleştirme veya devre dışı bırakma](enable-disable-firewall-rule-guest-os.md)
+- [Konuk işletim sisteminde güvenlik duvarı kuralını etkinleştirme veya devre dışı bırakma](enable-disable-firewall-rule-guest-os.md)
 - [Konuk işletim sistemi güvenlik duvarı gelen trafiği engelliyor](guest-os-firewall-blocking-inbound-traffic.md)
 - [Konuk işletim sistemi güvenlik duvarı yanlış yapılandırılmış](guest-os-firewall-misconfigured.md) 
-- [Netvsc. sys nedeniyle oluşan RDP hatası sorunlarını giderme](troubleshoot-rdp-driver-netvsc.md)
+- [netvsc.sys dosyasından kaynaklanan RDP hatalarına yönelik sorun giderme](troubleshoot-rdp-driver-netvsc.md)
 

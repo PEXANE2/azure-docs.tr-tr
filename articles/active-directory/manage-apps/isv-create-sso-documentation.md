@@ -1,6 +1,6 @@
 ---
-title: Uygulamanız için çoklu oturum açma belgeleri oluşturun & yayımlayın
-description: Azure Active Directory tümleştirilirken bağımsız yazılım satıcıları için rehberlik
+title: Uygulamanız için tek oturum açma belgeleri oluşturma & yayımlama
+description: Azure Active Directory ile tümleştirme konusunda bağımsız yazılım satıcıları için kılavuz
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,52 +13,52 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232273"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Uygulamanız için çoklu oturum açma belgeleri oluşturun ve yayımlayın   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Başvurunuz için tek oturum açma belgeleri oluşturma ve yayımlama   
 
 ## <a name="documentation-on-your-site"></a>Sitenizdeki belgeler
 
-Benimseme kolaylığı, kurumsal yazılım kararlarında önemli bir faktördür. Kolayca takip eden belgeleri Temizleme, müşterilerinizin benimseme yolculuğunda müşterilerinizi destekler ve destek maliyetlerini azaltır. Binlerce yazılım satıcısı ile birlikte çalışarak, Microsoft nelerin çalıştığını gördük.
+Benimsenmesi kolaylığı kurumsal yazılım kararlarında önemli bir faktördür. Kolay takip edilmesi kolay belgeler, müşterilerinizin evlat edinme yolculuğunda desteklemesini sağlar ve destek maliyetlerini azaltır. Binlerce yazılım satıcısıyla çalışan Microsoft, neyin işe yaradığını gördü.
 
-Sitenizdeki tüm belgelerinize, en azından aşağıdaki öğeleri eklemesi önerilir.
+Sitenizdeki belgelerinizin en az aşağıdaki öğeleri içermenizi öneririz.
 
-* SSO işlevselliğine giriş
+* SSO işlevselliğinize giriş
 
   * Desteklenen protokoller
 
   * Sürüm ve SKU
 
-  * Belge bağlantılarıyla desteklenen kimlik sağlayıcıları listesi
+  * Dokümantasyon bağlantıları ile desteklenen Kimlik Sağlayıcıları listesi
 
-* Uygulamanız için lisans bilgileri
+* Başvurunuz için lisans bilgileri
 
-* SSO 'yu yapılandırmak için rol tabanlı erişim denetimi
+* SSO'nun yapılandırılması için rol tabanlı erişim denetimi
 
-* SSO yapılandırma adımları
+* SSO Yapılandırma Adımları
 
-  * Sağlayıcıdan beklenen değerler içeren SAML için Kullanıcı arabirimi yapılandırma öğeleri
+  * SamL için sağlayıcıdan beklenen değerlerle arabirimi yapılandırma elemanları
 
-  * Kimlik sağlayıcılarına geçirilecek hizmet sağlayıcı bilgileri
+  * Hizmet sağlayıcı bilgileri kimlik sağlayıcılarına iletilecek
 
-* Eğer OıDC/OAuth ise
+* Eğer OIDC/OAuth
 
-  * Business gerekçeler ile onay için gereken izinlerin listesi
+  * İş gerekçeleri ile rıza için gerekli izinlerin listesi
 
 * Pilot kullanıcılar için test adımları
 
-* Hata kodları ve iletileri dahil sorun giderme bilgileri
+* Hata kodları ve iletiler de dahil olmak üzere sorun giderme bilgileri
 
 * Müşteriler için destek mekanizmaları
 
-## <a name="documentation-on-the-microsoft-site"></a>Microsoft sitesindeki belgeler
+## <a name="documentation-on-the-microsoft-site"></a>Microsoft Sitesindeki Belgeler
 
-Uygulamanızı Azure Marketi 'nde da yayımlayan Azure Active Directory Uygulama galerisinde, Microsoft, adım adım işlemi açıklayan, karşılıklı müşterilerimiz için belge oluşturacaktır. [Burada](https://aka.ms/appstutorial)bir örnek görebilirsiniz. Bu belge, galeriye gönderiminiz temel alınarak oluşturulur ve GitHub hesabınızı kullanarak uygulamanızda değişiklik yaparsanız onu kolayca güncelleştirebilirsiniz.
+Uygulamanızı Azure Marketi'nde de yayınlayan Azure Active Directory Application Gallery ile listelediğinizde, Microsoft ortak müşterilerimiz için adım adım süreci açıklayan belgeler oluşturur. [Burada](https://aka.ms/appstutorial)bir örnek görebilirsiniz. Bu dokümantasyon galeriye gönderdiğinize bağlı olarak oluşturulur ve GitHub hesabınızı kullanarak uygulamanızda değişiklik yaparsanız kolayca güncelleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[Uygulamanızı Azure AD uygulama galerisinde listeleme](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[Uygulamanızı Azure AD Uygulama Galerisi'nde listele](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

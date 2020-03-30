@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SQL Server yönelik güvenlik konuları | Microsoft Docs
-description: Bu konu, bir Azure sanal makinesinde çalışan SQL Server güvenliğini sağlamaya yönelik genel rehberlik sağlar.
+title: Azure'da SQL Server için Güvenlik Hususları | Microsoft Dokümanlar
+description: Bu konu, Bir Azure Sanal Makine'de çalışan SQL Server güvenliğini sağlamak için genel kılavuz sağlar.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -16,99 +16,99 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77031365"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server yönelik güvenlik konuları
+# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Sanal Makineler'de SQL Server için Güvenlikle İlgili Dikkat Edilmesi Gerekenler
 
-Bu konu, bir Azure sanal makinesindeki (VM) SQL Server örneklerine güvenli erişim sağlamaya yardımcı olan genel güvenlik yönergelerini içerir.
+Bu konu, bir Azure sanal makinesinde (VM) SQL Server örneklerine güvenli erişim kurulmasına yardımcı olan genel güvenlik yönergelerini içerir.
 
-Azure, bir sanal makinede çalışan SQL Server ile uyumlu bir çözüm oluşturmanıza olanak sağlayan çeşitli sektör düzenlemeleri ve standartları ile uyumludur. Azure ile yönetmelik uyumluluğu hakkında daha fazla bilgi için bkz. [Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/).
+Azure, sanal bir makinede çalışan SQL Server ile uyumlu bir çözüm oluşturmanıza olanak tanıyan çeşitli endüstri yönetmeliklerine ve standartlarına uygundur. Azure ile mevzuata uygunluk hakkında bilgi için [Azure Güven Merkezi'ne](https://azure.microsoft.com/support/trust-center/)bakın.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="control-access-to-the-sql-vm"></a>SQL VM 'ye erişimi denetleme
+## <a name="control-access-to-the-sql-vm"></a>SQL VM'ye erişimi kontrol etme
 
-SQL Server sanal makinenizi oluştururken, makineye kimlerin erişebileceğini ve SQL Server ne kadar dikkatli bir şekilde kontrol etmeyi göz önünde bulundurun. Genel olarak, aşağıdakileri yapmalısınız:
+SQL Server sanal makinenizi oluştururken, makineye ve SQL Server'a kimlerin erişebildiğini nasıl dikkatle kontrol ettiğinizi düşünün. Genel olarak, aşağıdakileri yapmalısınız:
 
-- SQL Server erişimini yalnızca gerekli uygulamalar ve istemcilerle sınırlayın.
+- SQL Server'a erişimi yalnızca gereksinim duyulan uygulama ve istemcilerle sınırlandırın.
 - Kullanıcı hesaplarını ve parolaları yönetmek için en iyi uygulamaları izleyin.
 
-Aşağıdaki bölümler, bu noktalarda düşünce hakkında öneriler sağlar.
+Aşağıdaki bölümlerde bu noktalar üzerinden düşünme önerileri sağlar.
 
 ## <a name="secure-connections"></a>Güvenli bağlantılar
 
-Galeri görüntüsüne sahip SQL Server bir sanal makine oluşturduğunuzda, **SQL Server bağlantı** seçeneği size **Yerel (VM içinde)** , **özel (sanal ağ Içinde)** veya **Genel (Internet)** seçimi sağlar.
+Bir galeri görüntüsü içeren bir SQL Server sanal makine oluşturduğunuzda, **SQL Server Bağlantı** seçeneği size Yerel **(VM içinde)**, **Özel (Sanal Ağ içinde)** veya **Genel (Internet)** seçeneğini sunar.
 
 ![SQL Server bağlantısı](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
-En iyi güvenlik için senaryonuz için en kısıtlayıcı seçeneği belirleyin. Örneğin, aynı VM 'de SQL Server erişen bir uygulama çalıştırıyorsanız, **Yerel** , en güvenli seçenektir. SQL Server erişmesi gereken bir Azure uygulaması çalıştırıyorsanız, **özel** , yalnızca belirtilen [Azure sanal ağı](../../../virtual-network/virtual-networks-overview.md)içinde SQL Server iletişimin güvenliğini sağlar. SQL Server VM için **genel** (internet) erişime ihtiyacınız varsa, saldırı yüzeyi alanını azaltmak için bu konudaki diğer en iyi yöntemleri izlediğinizden emin olun.
+En iyi güvenlik için senaryonuz için en kısıtlayıcı seçeneği seçin. Örneğin, aynı VM'de SQL Server'a erişen bir uygulama çalıştırıyorsanız, **Yerel** en güvenli seçimdir. SQL Server'a erişim gerektiren bir Azure uygulaması çalıştırıyorsanız, **Private** yalnızca belirtilen [Azure Sanal Ağı](../../../virtual-network/virtual-networks-overview.md)içinde SQL Server'a iletişimi güvence altına alar. SQL Server VM'ye **Ortak** (internet) erişimine ihtiyacınız varsa, saldırı yüzey alanınızı azaltmak için bu konudaki diğer en iyi uygulamaları takip ettiğinizden emin olun.
 
-Portalda seçilen seçenekler, sanal makinenize ağ trafiğine izin vermek veya bu trafiği reddetmek için VM 'nin [ağ güvenlik grubu](../../../virtual-network/security-overview.md) 'nda (NSG) gelen güvenlik kurallarını kullanır. SQL Server bağlantı noktasına giden trafiğe izin vermek için yeni gelen NSG kurallarını değiştirebilir veya oluşturabilirsiniz (varsayılan 1433). Ayrıca, bu bağlantı noktası üzerinden iletişim kurmaya izin verilen belirli IP adreslerini de belirtebilirsiniz.
+Portaldaki seçili seçenekler, sanal makinenize ağ trafiğine izin vermek veya reddetmek için VM'nin [ağ güvenlik grubunda](../../../virtual-network/security-overview.md) (NSG) gelen güvenlik kurallarını kullanır. SQL Server bağlantı noktasına (varsayılan 1433) trafik izni vermek için yeni gelen NSG kurallarını değiştirebilir veya oluşturabilirsiniz. Ayrıca, bu bağlantı noktası üzerinden iletişim kurmasına izin verilen belirli IP adreslerini de belirtebilirsiniz.
 
 ![Ağ güvenlik grubu kuralları](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 
-Ağ trafiğini kısıtlamak için NSG kurallarına ek olarak, sanal makinede Windows güvenlik duvarını da kullanabilirsiniz.
+Ağ trafiğini kısıtlamak için NSG kurallarına ek olarak, sanal makinede Windows Güvenlik Duvarı'nı da kullanabilirsiniz.
 
-Klasik dağıtım modeliyle uç noktalar kullanıyorsanız, bu dosyaları kullanmıyorsanız sanal makinedeki tüm uç noktaları kaldırın. ACL 'Leri uç noktalarla kullanma hakkında yönergeler için bkz. [bir uç noktada ACL 'Yi yönetme](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). Bu, Kaynak Yöneticisi kullanan VM 'Ler için gerekli değildir.
+Klasik dağıtım modeliyle uç noktaları kullanıyorsanız, kullanmazsanız sanal makinedeki uç noktaları kaldırın. Uç noktaları olan ACL'leri kullanma yla ilgili talimatlar için, [acl'yi bitiş noktasında yönet'e](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)bakın. Bu, Kaynak Yöneticisi'ni kullanan VM'ler için gerekli değildir.
 
-Son olarak, Azure sanal makinenizde SQL Server veritabanı altyapısının örneği için şifrelenmiş bağlantıları etkinleştirmeyi düşünün. SQL Server örneğini imzalı bir sertifika ile yapılandırın. Daha fazla bilgi için bkz. veritabanı altyapısı ve [bağlantı dizesi söz dizimine](https://msdn.microsoft.com/library/ms254500.aspx) [şifreli bağlantıları etkinleştirme](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) .
+Son olarak, Azure sanal makinenizde SQL Server Veritabanı Altyapısı örneğine göre şifreli bağlantıları etkinleştirmeyi düşünün. SQL sunucu örneğini imzalı bir sertifikayla yapılandırın. Daha fazla bilgi için veritabanı altyapısı ve [Bağlantı Dize Sözdizimine](https://msdn.microsoft.com/library/ms254500.aspx) [Şifreli Bağlantıları Etkinleştir'e](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) bakın.
 
 ## <a name="encryption"></a>Şifreleme
 
-Yönetilen diskler sunucu tarafı şifrelemesi ve Azure disk şifrelemesi sunar. [Sunucu tarafı şifrelemesi](/azure/virtual-machines/windows/disk-encryption) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. [Azure disk şifrelemesi](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) , BitLocker ya da dm-crypt teknolojisini kullanır ve hem işletim sistemini hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
+Yönetilen diskler Sunucu Tarafı Şifrelemeve Azure Disk Şifrelemesi sunar. [Sunucu Tarafı](/azure/virtual-machines/windows/disk-encryption) Şifrelemesi, kuruluş güvenliği ve uyumluluk taahhütlerinizi karşılamak için verilerinizi sağlar ve verilerinizi korur. [Azure Disk Şifreleme,](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) Bitlocker veya DM-Crypt teknolojisini kullanır ve hem işletim sistemi hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
 
-## <a name="use-a-non-default-port"></a>Varsayılan olmayan bir bağlantı noktası kullan
+## <a name="use-a-non-default-port"></a>Varsayılan olmayan bir bağlantı noktası kullanma
 
-Varsayılan olarak, SQL Server iyi bilinen bir bağlantı noktasını dinler, 1433. Daha yüksek güvenlik için, 1401 gibi varsayılan olmayan bir bağlantı noktasını dinlemek üzere SQL Server yapılandırın. Azure portal SQL Server Galeri görüntüsü sağlarsanız, bu bağlantı noktasını **SQL Server ayarları** dikey penceresinde belirtebilirsiniz.
+Varsayılan olarak, SQL Server 1433 gibi iyi bilinen bir bağlantı noktasını dinler. Artırılmış güvenlik için SQL Server'ı 1401 gibi varsayılan olmayan bir bağlantı noktasında dinleyecek şekilde yapılandırın. Azure portalında bir SQL Server galeri görüntüsü sağlarsanız, bu bağlantı noktasını **SQL Server ayarları** bıçağında belirtebilirsiniz.
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Bunu sağlamaktan sonra yapılandırmak için iki seçeneğiniz vardır:
+Bunu sağlamadan sonra yapılandırmak için iki seçeneğiniz var:
 
-- Kaynak Yöneticisi VM 'Ler için, [SQL sanal makineler](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)kaynağından **güvenlik** ' i seçebilirsiniz. Bu, bağlantı noktasını değiştirme seçeneği sağlar.
+- Kaynak Yöneticisi VM'leri için [SQL sanal makineler kaynağından](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) **Güvenlik'i** seçebilirsiniz. Bu, bağlantı noktasını değiştirmek için bir seçenek sağlar.
 
   ![Portalda TCP bağlantı noktası değişikliği](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 
-- Klasik VM 'Ler veya Portal ile sağlanmayan SQL Server VM 'Ler için, sanal makineye uzaktan bağlanarak bağlantı noktasını el ile yapılandırabilirsiniz. Yapılandırma adımları için bkz. [belirli BIR TCP bağlantı noktasını dinlemek Için sunucu yapılandırma](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port). Bu el ile tekniği kullanırsanız, bu TCP bağlantı noktasında gelen trafiğe izin vermek için bir Windows güvenlik duvarı kuralı da eklemeniz gerekir.
+- Klasik VM'ler veya portalla birlikte sağlanmamış SQL Server VM'leri için, VM'ye uzaktan bağlanarak bağlantı noktasını el ile yapılandırabilirsiniz. Yapılandırma adımları için [bkz.](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port) Bu el tekniğini kullanıyorsanız, bu TCP bağlantı noktasında gelen trafiğe izin vermek için bir Windows Güvenlik Duvarı kuralı eklemeniz gerekir.
 
 > [!IMPORTANT]
-> SQL Server bağlantı noktası genel internet bağlantılarına açıksa, varsayılan olmayan bir bağlantı noktası belirtilmesi iyi bir fikirdir.
+> SQL Server bağlantı bağlantı bağlantı bağlantınızın genel internet bağlantılarına açık olup olmadığının varsayılan olmayan bir bağlantı noktası belirtilmesi iyi bir fikirdir.
 
-SQL Server varsayılan olmayan bir bağlantı noktasında dinlerken, bağlantı noktasını, bağlandığınızda belirtmeniz gerekir. Örneğin, sunucu IP adresinin 13.55.255.255 olduğu ve SQL Server bağlantı noktası 1401 üzerinde dinlediği bir senaryoyu düşünün. SQL Server bağlanmak için bağlantı dizesinde `13.55.255.255,1401` belirtirsiniz.
+SQL Server varsayılan olmayan bir bağlantı noktasında dinliyorsa, bağlandığınızda bağlantı noktasını belirtmeniz gerekir. Örneğin, sunucu IP adresinin 13.55.255.255 olduğu ve SQL Server'ın 1401 no'cbağlantı noktasında dinlediği bir senaryo düşünün. SQL Server'a bağlanmak için `13.55.255.255,1401` bağlantı dizesinde belirtirsiniz.
 
 ## <a name="manage-accounts"></a>Hesapları yönetme
 
-Saldırganların hesap adlarını veya parolaları kolayca tahmin etmesini istemezsiniz. Yardım almak için aşağıdaki ipuçlarını kullanın:
+Saldırganların hesap adlarını veya parolaları kolayca tahmin etmesini istemezsin. Yardım etmek için aşağıdaki ipuçlarını kullanın:
 
-- **Yönetici**olarak adlandırılmayan benzersiz bir yerel yönetici hesabı oluşturun.
+- **Yönetici**adında olmayan benzersiz bir yerel yönetici hesabı oluşturun.
 
-- Tüm hesaplarınız için karmaşık güçlü parolalar kullanın. Güçlü parola oluşturma hakkında daha fazla bilgi için bkz. [güçlü parola oluşturma](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) makalesi.
+- Tüm hesaplarınız için karmaşık güçlü parolalar kullanın. Güçlü bir parola oluşturma hakkında daha fazla bilgi için [bkz.](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password)
 
-- Varsayılan olarak, Azure SQL Server sanal makine kurulumu sırasında Windows kimlik doğrulamasını seçer. Bu nedenle, **sa** oturumu devre dışıdır ve kurulum tarafından bir parola atanır. **Sa** oturumunun kullanılması veya etkinleştirilmesi önerilir. SQL oturum açmanın olması gerekiyorsa, aşağıdaki stratejilerden birini kullanın:
+- Varsayılan olarak Azure, SQL Server Virtual Machine kurulumu sırasında Windows Kimlik Doğrulaması'nı seçer. Bu nedenle, **SA** giriş devre dışı bırakılır ve bir parola kurulum tarafından atanır. **SA** girişinin kullanılmamasını veya etkinleştirilmemesini öneririz. SQL oturum açmanız gerekiyorsa, aşağıdaki stratejilerden birini kullanın:
 
-  - **Sysadmin** üyeliğine sahip benzersiz bir ada sahıp bir SQL hesabı oluşturun. Bunu, sağlama sırasında **SQL kimlik doğrulamasını** etkinleştirerek portaldan yapabilirsiniz.
+  - **Sysadmin** üyeliği olan benzersiz bir ada sahip bir SQL hesabı oluşturun. Bunu, sağlama sırasında **SQL Kimlik Doğrulaması'nı** etkinleştirerek portaldan yapabilirsiniz.
 
     > [!TIP] 
-    > Sağlama sırasında SQL kimlik doğrulamasını etkinleştirmezseniz, kimlik doğrulama modunu **SQL Server ve Windows kimlik doğrulama modu**olarak el ile değiştirmeniz gerekir. Daha fazla bilgi için bkz. [sunucu kimlik doğrulama modunu değiştirme](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode).
+    > Sağlama sırasında SQL Kimlik Doğrulamasını etkinleştirmezseniz, kimlik doğrulama modunu el ile **SQL Server ve Windows Kimlik Doğrulama Modu**olarak değiştirmeniz gerekir. Daha fazla bilgi için [Sunucu Kimlik Doğrulama Modunu Değiştir'e](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)bakın.
 
-  - **Sa** oturumunu kullanmanız gerekiyorsa, sağlama ve yeni bir güçlü parola atama sonrasında oturum açmayı etkinleştirin.
+  - **SA** oturum açma yı kullanmanız gerekiyorsa, sağlama dan sonra girişi etkinleştirin ve yeni bir güçlü parola atayın.
 
 ## <a name="additional-best-practices"></a>Diğer en iyi uygulamalar
 
-Bu konu başlığı altında açıklanan uygulamalara ek olarak, hem geleneksel şirket içi güvenlik uygulamalarından en iyi güvenlik uygulamalarını hem de sanal makine güvenlik en iyi yöntemlerini incelemenizi ve uygulamanızı öneririz. 
+Bu konuda açıklanan uygulamalara ek olarak, hem geleneksel şirket içi güvenlik uygulamalarının hem de sanal makine güvenliği en iyi uygulamalarının güvenlik en iyi uygulamalarını gözden geçirmenizi ve uygulamanızı öneririz. 
 
-Şirket içi güvenlik uygulamaları hakkında daha fazla bilgi için bkz. [SQL Server yüklemesinde güvenlik konuları](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) ve [Güvenlik Merkezi](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database). 
+Şirket içi güvenlik uygulamaları hakkında daha fazla bilgi için, [SQL Server Yüklemesi](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) ve [Güvenlik merkezi](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)için Güvenlik Hususları'na bakın. 
 
-Sanal makine güvenliği hakkında daha fazla bilgi için bkz. [sanal makineler güvenliğine genel bakış](/azure/security/fundamentals/virtual-machines-overview).
+Sanal makine güvenliği hakkında daha fazla bilgi için [sanal makineler güvenlik genel bakış](/azure/security/fundamentals/virtual-machines-overview)bakın.
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Performansla ilgili en iyi yöntemleri de ilgileniyorsanız, bkz. [Azure sanal makinelerinde SQL Server Için En Iyi performans uygulamaları](virtual-machines-windows-sql-performance.md).
+Performans la ilgili en iyi uygulamalarla da ilgileniyorsanız, [Azure Sanal Makinelerde SQL Server için En İyi Performans Uygulamaları'na](virtual-machines-windows-sql-performance.md)bakın.
 
-Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer konular için bkz. [Azure sanal makinelerine genel bakış SQL Server](virtual-machines-windows-sql-server-iaas-overview.md). SQL Server sanal makineleri hakkında sorularınız olursa [Sık Sorulan Sorular](virtual-machines-windows-sql-server-iaas-faq.md) bölümüne bakın.
+Azure VM'lerde SQL Server'ı çalıştırmakla ilgili diğer konular için [Azure Sanal Makinelere genel bakışta SQL Server'a](virtual-machines-windows-sql-server-iaas-overview.md)bakın. SQL Server sanal makineleri hakkında sorularınız olursa [Sık Sorulan Sorular](virtual-machines-windows-sql-server-iaas-faq.md) bölümüne bakın.
 
