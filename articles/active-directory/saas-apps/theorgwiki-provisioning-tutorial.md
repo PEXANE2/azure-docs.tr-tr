@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Orgwiki 'yi yapılandırma | Microsoft Docs"
-description: Kullanıcı hesaplarını otomatik olarak sağlamak ve bunun için Orgwiki 'ye kaldırmak üzere Azure Active Directory yapılandırmayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için TheOrgWiki'yi yapılandırın | Microsoft Dokümanlar"
+description: Azure Active Directory'yi, kullanıcı hesaplarını TheOrgWiki'ye otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,115 +16,115 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 2b0b11ae89e1f0d150b84f49b04a8badcb44e82c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063163"
 ---
-# <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için TheOrgWiki 'yi yapılandırma
+# <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için TheOrgWiki'yi yapılandırın
 
-Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Orgwiki 'ye otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için, The Orgwiki ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları TheOrgWiki'ye otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için TheOrgWiki ve Azure Active Directory 'de (Azure AD) gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
 * Azure AD kiracısı.
-* [Bir OrgWiki kiracısı](https://www.theorgwiki.com/welcome/).
-* Yönetici izinlerine sahip olan bir kullanıcı hesabı.
+* [Bir OrgWiki kiracı](https://www.theorgwiki.com/welcome/).
+* Yönetici izinleri ile TheOrgWiki bir kullanıcı hesabı.
 
-## <a name="assign-users-to-theorgwiki"></a>Kullanıcıları Orgwiki 'ye atama
+## <a name="assign-users-to-theorgwiki"></a>Kullanıcıları TheOrgWiki'ye atama
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen atama adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için atamalar adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların TheOrgWiki 'ye erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları bir Orgwiki 'ye atayabilirsiniz:
+Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların TheOrgWiki'ye erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki talimatları izleyerek TheOrgWiki'ye atayabilirsiniz:
 
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-theorgwiki"></a>Orgwiki 'ye Kullanıcı atamaya yönelik önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-theorgwiki"></a>TheOrgWiki'ye kullanıcı atamak için önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için, tek bir Azure AD kullanıcısının TheOrgWiki 'ye atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik kullanıcı sağlama yapılandırmasını sınamak için TheOrgWiki'ye tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı Orgwiki 'ye atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bir kullanıcıyı TheOrgWiki'ye atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
 
-## <a name="set-up-theorgwiki-for-provisioning"></a>Sağlama için TheOrgWiki 'yi ayarlama
+## <a name="set-up-theorgwiki-for-provisioning"></a>Tedarik için TheOrgWiki'yi ayarlayın
 
-Orgwiki 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Orgwiki üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
+TheOrgWiki'yi Azure AD ile otomatik kullanıcı sağlama için yapılandırmadan önce, TheOrgWiki'de SCIM sağlamayı etkinleştirmeniz gerekir.
 
-1. [Theorgwiki Yönetici konsolunuza](https://www.theorgwiki.com/login/)oturum açın. **Yönetici Konsolu**' na tıklayın.
+1. [TheOrgWiki Yönetici Konsolunuzda](https://www.theorgwiki.com/login/)oturum açın. Yönetici **Konsolu'na**tıklayın.
 
-    ![TheOrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/login.png)
+    ![Theorgwiki SCIM ekle](media/theorgwiki-provisioning-tutorial/login.png)
 
-2. Yönetici Konsolu 'nda **Ayarlar sekmesine**tıklayın. 
+2. Yönetici Konsolunda **Ayarlar sekmesine**tıklayın. 
 
-    ![TheOrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/settings.png)
+    ![Theorgwiki SCIM ekle](media/theorgwiki-provisioning-tutorial/settings.png)
     
-3. **Hizmet hesaplarına**gidin.
+3. Hizmet **Hesaplarına**gidin.
 
-    ![TheOrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
+    ![Theorgwiki SCIM ekle](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
-4. **+ Hizmet hesabı**' na tıklayın. **Hizmet hesabı türü**altında **belirteç tabanlı**' i seçin. **Kaydet** düğmesine tıklayın.
+4. **+Servis Hesabı'na**tıklayın. **Hizmet Hesap Türü**altında, **Token Tabanlı'yı**seçin. **Kaydet**'e tıklayın.
 
-    ![TheOrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/auth.png)
+    ![Theorgwiki SCIM ekle](media/theorgwiki-provisioning-tutorial/auth.png)
 
-5.  **Etkin belirteçleri**kopyalayın. Bu değer, Azure portal TheOrgWiki uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+5.  Etkin **Belirteçleri**kopyalayın. Bu değer, Azure portalındaki TheOrgWiki uygulamanızın Sağlama sekmesindeki Gizli Belirteç alanına girilir.
      
-    ![TheOrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/token.png)
+    ![Theorgwiki SCIM ekle](media/theorgwiki-provisioning-tutorial/token.png)
 
-## <a name="add-theorgwiki-from-the-gallery"></a>Galeriden TheOrgWiki ekleme
+## <a name="add-theorgwiki-from-the-gallery"></a>Galeriden TheOrgWiki ekle
 
-Azure AD ile otomatik Kullanıcı sağlamak üzere Orgwiki 'yi yapılandırmak için Azure AD uygulama galerisindeki Orgwiki 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+TheOrgWiki'yi Azure AD ile otomatik kullanıcı sağlama için yapılandırmak için, Yönetilen SaaS uygulamaları listenize Azure AD uygulama galerisinden TheOrgWiki eklemeniz gerekir.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **theorgwiki**yazın, sonuçlar panelinde **theorgwiki** ' yi seçin. 
+4. Arama kutusuna, **TheOrgWiki**girin , sonuçlar panelinde **TheOrgWiki** seçin. 
 
     ![Sonuçlar listesinde TheOrgWiki](common/search-new-app.png)
 
-5. Sizi Orgwiki 'nin oturum açma sayfasına yönlendirecek olan **orgwiki** düğmesini seçin. 
+5. Sizi **TheOrgWiki'nin** giriş sayfasına yönlendirecek Olan TheOrgWiki için Kaydolun düğmesini seçin. 
 
-    ![TheOrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/image00.png)
+    ![Theorgwiki SCIM ekle](media/theorgwiki-provisioning-tutorial/image00.png)
 
-6.  Sağ üst köşede **oturum aç**' ı seçin.
+6.  Sağ üst köşede **Giriş'i**seçin.
 
-    ![TheOrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/image02.png)
+    ![Theorgwiki SCIM ekle](media/theorgwiki-provisioning-tutorial/image02.png)
 
-7. Orgwiki bir Openıdconnect uygulaması olduğu için, Microsoft iş hesabınızı kullanarak OrgWiki 'de oturum açmayı seçin.
+7. TheOrgWiki bir OpenIDConnect uygulaması olduğundan, Microsoft iş hesabınızı kullanarak OrgWiki'ye giriş yapmayı seçin.
 
-    ![TheOrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/image03.png)
+    ![Theorgwiki SCIM ekle](media/theorgwiki-provisioning-tutorial/image03.png)
     
-8. Başarılı bir kimlik doğrulamasından sonra uygulama, kiracınıza otomatik olarak eklenir ve TheOrgWiki hesabınıza yönlendirilirsiniz.
+8. Başarılı bir kimlik doğrulamadan sonra, uygulama otomatik olarak kiracınıza eklenir ve TheOrgWiki hesabınıza yönlendirilirsiniz.
 
-    ![OrgWiki SCıM Ekle](media/theorgwiki-provisioning-tutorial/image04.png)
+    ![OrgWiki Ekle SCIM](media/theorgwiki-provisioning-tutorial/image04.png)
 
-## <a name="configure-automatic-user-provisioning-to-theorgwiki"></a>Otomatik Kullanıcı sağlamayı, Orgwiki 'ye yapılandırma 
+## <a name="configure-automatic-user-provisioning-to-theorgwiki"></a>TheOrgWiki için otomatik kullanıcı sağlama yapılandırma 
 
-Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Kullanıcı ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları anlatılmaktadır.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TheOrgWiki'deki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
 
 
-### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>Azure AD 'de TheOrgWiki için otomatik Kullanıcı sağlamayı yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>Azure AD'de TheOrgWiki için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Theorgwiki**' yi seçin.
+2. Uygulamalar listesinde **TheOrgWiki'yi**seçin.
 
     ![Uygulamalar listesindeki OrgWiki bağlantısı](common/all-applications.png)
 
@@ -132,58 +132,58 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` girin. 
+5. Yönetici **Kimlik Bilgileri** bölümü `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` altında, **Kiracı URL'ye**giriş . 
 
     Örnek: `https://test1.theorgwiki.com/api/v2/scim/v2/`
 
 > [!NOTE]
-> Alt **etki alanı değeri** yalnızca, TheOrgWiki için ilk kaydolma işlemi sırasında ayarlanabilir.
+> **Alt Etki Alanı Değeri** yalnızca TheOrgWiki için ilk kayıt işlemi sırasında ayarlanabilir.
  
-6. Daha önce Orgwiki 'den aldığınız **gizli belirteç** alanında belirteç değerini girin. Azure AD 'nin bir Orgwiki 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, TheOrgWiki hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+6. TheOrgWiki'den daha önce aldığınız **Gizli Belirteç** alanına belirteç değerini girdiniz. Azure AD'nin TheOrgWiki'ye bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, TheOrgWiki hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+7. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet** düğmesine tıklayın.
+8. **Kaydet**'e tıklayın.
 
-9. **Eşlemeler** bölümünde **Kullanıcı Azure Active Directory Kullanıcıları Orgwiki olarak eşitler**' ı seçin.
+9. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını TheOrgWiki ile Senkronize Et'i**seçin.
 
-    ![TheOrgWiki Kullanıcı eşlemeleri](media/theorgwiki-provisioning-tutorial/usermapping.png)
+    ![TheOrgWiki Kullanıcı Haritalamaları](media/theorgwiki-provisioning-tutorial/usermapping.png)
 
-10. **Öznitelik eşleme** bölümünde Azure AD 'Den TheOrgWiki 'ye eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için TheOrgWiki içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+10. Azure AD'den TheOrgWiki'ye senkronize edilen kullanıcı özniteliklerini **Atföz-Haritalama** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için TheOrgWiki'deki kullanıcı hesaplarıyla eşleşecek şekilde kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![TheOrgWiki Kullanıcı öznitelikleri](media/theorgwiki-provisioning-tutorial/userattribute.png).
+    ![Theorgwiki Kullanıcı Özellikleri](media/theorgwiki-provisioning-tutorial/userattribute.png).
 
-11. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+11. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-12. ' Orgwiki ' için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+12. TheOrgWiki için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Ayarı** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-13. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek orgwiki 'ye sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+13. **Ayarlar** bölümünde **Kapsam'da** istenen değerleri seçerek OrgWiki'ye sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-14. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+14. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin sonraki eşitlemeler daha uzun sürer. Kullanıcıların ve/veya grupların sağlaması için ne kadar süreceğine ilişkin daha fazla bilgi için bkz. [kullanıcıları sağlamak için ne kadar sürer](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. İlk eşitlemenin gerçekleştirilimi sonraki eşitlemelerden daha uzun sürer. Kullanıcıların ve/veya grupların sağlanmasının ne kadar süreceğü hakkında daha fazla bilgi için, [kullanıcıların sağlanmasının ne kadar süreceğini](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)görün.
 
-İlerleme durumunu izlemek ve sağlama etkinliğinizdeki bağlantıları izlemek için **geçerli durum** bölümünü kullanabilirsiniz. bu Işlem, Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklar. Daha fazla bilgi için bkz. [Kullanıcı hazırlama durumunu denetleme](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Azure AD sağlama günlüklerini okumak için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+TheOrgWiki'deki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemedurumunu izlemek ve sağlama faaliyet raporunuza gelen bağlantıları izlemek için **Geçerli Durum** bölümünü kullanabilirsiniz. Daha fazla bilgi için [bkz.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) Azure AD sağlama günlüklerini okumak için [otomatik kullanıcı hesabı sağlama hakkında raporlama'ya](../app-provisioning/check-status-user-account-provisioning.md)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md).
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamayı yönetme.](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri incelemeyi ve sağlama etkinliğinde rapor almayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md).
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporlar alacağınızı öğrenin.](../app-provisioning/check-status-user-account-provisioning.md)

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a54b096019e9e38bc800ae313016a430062dab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46c48d6f7d751e6d767921fad21e6213c6b1203b
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74964336"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384033"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Öğretici: Atlassian Cloud'u Azure Active Directory ile tümleştirin
 
@@ -31,7 +30,7 @@ Bu eğitimde, Atlassian Cloud'u Azure Active Directory (Azure AD) ile nasıl ent
 * Kullanıcılarınızın Azure AD hesaplarıyla Atlassian Cloud'da otomatik olarak oturum açabilmelerini etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -47,7 +46,7 @@ Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz
 
 * Atlassian Cloud **SP ve IDP'yi** destekliyor
 * Atlassian Cloud [Otomatik kullanıcı sağlama ve deprovisioning](atlassian-cloud-provisioning-tutorial.md) destekler
-
+* Atlassian Cloud'u yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>Galeriden Atlassian Bulutu Ekleme
 
 Atlassian Cloud'un Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Atlassian Cloud'u eklemeniz gerekir.
@@ -93,7 +92,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     d. **Röle Durumu** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<instancename>.atlassian.net`
 
     > [!NOTE]
-    > Önceki değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL'si ile güncelleştirin. Bu gerçek değerleri, daha sonra **yapılandırılan Atlassian Cloud Tek İşaret-On** öğreticiaçık **atlassian Cloud SAML Yapılandırma** ekranından alırsınız.
+    > Önceki değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL'si ile güncelleştirin. Bu gerçek değerleri, daha **Atlassian Cloud SAML Configuration** sonra **atlassian Cloud SSO'nun** 7.
 
 1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
@@ -222,8 +221,12 @@ Access Paneli'ndeki Atlassian Bulut döşemesini seçtiğinizde, SSO'yu kurduğu
 
 - [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Atlassian Cloud'u deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Atlassian Cloud'u gelişmiş görünürlük ve kontrollerle nasıl koruyabilen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

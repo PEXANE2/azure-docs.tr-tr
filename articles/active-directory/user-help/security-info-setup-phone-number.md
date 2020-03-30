@@ -1,6 +1,6 @@
 ---
-title: Telefon numaranızı doğrulama yönteminiz olarak ayarlama-Azure AD
-description: Kimlik doğrulama yönteminiz olarak telefon numaranızı ve mobil cihazınızı kullanarak kimliğinizi doğrulamak için güvenlik bilgileriniz (Önizleme) sayfasını ayarlama.
+title: Telefon numaranızı doğrulama yönteminiz olarak ayarlama - Azure AD
+description: Doğrulama yönteminiz olarak telefon numaranızı ve mobil cihazınızı kullanarak kimliğinizi doğrulamak için Güvenlik bilgilerinizi (önizleme) sayfanızı nasıl ayarlayabilirsiniz?
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,121 +12,121 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: e85be9140aabe5b66e63d3ccdd4a3ea907a1d6fc
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062413"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>Doğrulama yönteminiz olarak bir telefon numarası ayarlama
 
-İki öğeli doğrulama ve parola sıfırlama yöntemlerinizi eklemek için aşağıdaki adımları izleyebilirsiniz. İlk kez ayarladıktan sonra güvenlik bilgilerini eklemek, güncelleştirmek veya silmek için **güvenlik** bilgileri sayfasına dönebilirsiniz.
+İki faktörlü doğrulama ve parola sıfırlama yöntemlerinizi eklemek için aşağıdaki adımları izleyebilirsiniz. Bunu ilk kez ayarladıktan sonra, güvenlik bilgilerinizi eklemek, güncellemek veya silmek için **Güvenlik bilgileri** sayfasına dönebilirsiniz.
 
-Bunu iş veya okul hesabınızda oturum açtıktan hemen sonra ayarlamanız istenirse, [oturum açma sayfası istemi makalesindeki güvenlik bilgilerinizi ayarlama](security-info-setup-signin.md) makalesindeki ayrıntılı adımlara bakın.
+İş veya okul hesabınızda oturum açtıktan hemen sonra bunu ayarlamanız istenirse, [oturum açma sayfası istem makalesinden güvenlik bilgilerinizi](security-info-setup-signin.md) ayarla'daki ayrıntılı adımlara bakın.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 > [!Note]
-> Güvenlik bilgileri telefon uzantılarının kullanımını desteklemiyor. Doğru biçimi ekseniz bile, + 1 4255551234X12345, çağrı yerleştirilmadan önce uzantılar kaldırılır.
+> Güvenlik bilgileri telefon uzantılarını kullanmayı desteklemez. Uygun biçimi +1 4255551234X12345 ekleseniz bile, uzantılar çağrı yerleştirilmeden önce kaldırılır.
 >
-> Telefon seçeneği görmüyorsanız, kuruluşunuz bu seçeneği doğrulama için kullanmanıza izin vermiyor olabilir. Bu durumda, daha fazla yardım almak için başka bir yöntem seçmeniz veya kuruluşunuzun yardım masasına başvurmanız gerekir.
+> Bir telefon seçeneği görmüyorsanız, kuruluşunuzun doğrulama için bu seçeneği kullanmanıza izin vermemesi mümkündür. Bu durumda, daha fazla yardım için başka bir yöntem seçmeniz veya kuruluşunuzun yardım masasına başvurmanız gerekir.
 
-## <a name="security-verification-versus-password-reset-authentication"></a>Güvenlik doğrulaması ve parola sıfırlama kimlik doğrulaması
+## <a name="security-verification-versus-password-reset-authentication"></a>Parola sıfırlama kimlik doğrulaması ile güvenlik doğrulama
 
-Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, her ikisi için tüm yöntemler kullanılamaz.
+Güvenlik bilgileri yöntemleri hem iki faktörlü güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, tüm yöntemler her ikisi için de kullanılamaz.
 
 | Yöntem | Kullanıldığı yerler |
 | ------ | -------- |
-| Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| Telefon görüşmeleri | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
-| Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Doğrulayıcı uygulama | İki faktörlü doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| SMS mesajları | İki faktörlü doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon | İki faktörlü doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Güvenlik anahtarı | İki faktörlü doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| E-posta hesabı | Parola sıfırlama kimlik doğrulaması yalnızca. İki faktörlü doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Güvenlik soruları | Parola sıfırlama kimlik doğrulaması yalnızca. İki faktörlü doğrulama için başka bir yöntem seçmeniz gerekir. |
 
-## <a name="set-up-phone-calls-from-the-security-info-page"></a>Güvenlik bilgileri sayfasından telefon çağrılarını ayarlama
+## <a name="set-up-phone-calls-from-the-security-info-page"></a>Güvenlik bilgileri sayfasından telefon görüşmeleri ayarlama
 
-Kuruluşunuzun ayarlarına bağlı olarak, telefon çağrılarını güvenlik bilgileri yöntemlerinizin biri olarak kullanabilirsiniz.
+Kuruluşunuzun ayarlarına bağlı olarak, telefon görüşmelerini güvenlik bilgileri yöntemlerinizden biri olarak kullanabilirsiniz.
 
 >[!Note]
->Telefon araması yerine bir kısa mesaj almak istiyorsanız, [SMS mesajı kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-text-msg.md) makalesini izleyin.
+>Telefon görüşmesi yerine kısa mesaj almak istiyorsanız, kısa mesaj makalesini [kullanmak için güvenlik bilgilerini ayarla'daki](security-info-setup-text-msg.md) adımları izleyin.
 
-### <a name="to-set-up-phone-calls"></a>Telefon görüşmelerini ayarlamak için
+### <a name="to-set-up-phone-calls"></a>Telefon görüşmeleri ayarlamak için
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın https://myprofile.microsoft.com/ ve sayfanıza gidin.
 
-    ![, Vurgulanan güvenlik bilgisi bağlantılarını gösteren profilim sayfası](media/security-info/securityinfo-myprofile-page.png)
+    ![Vurgulanan Güvenlik bilgi bağlantılarını gösteren Profil sayfam](media/security-info/securityinfo-myprofile-page.png)
 
-2. Sol gezinti bölmesinden veya **güvenlik bilgileri** bloğundaki bağlantıdan **güvenlik bilgileri** ' ni seçin ve ardından **güvenlik bilgileri** sayfasından **Yöntem Ekle** ' yi seçin.
+2. Sol gezinti bölmesinden veya **Güvenlik bilgileri** bloğundaki bağlantıdan **Güvenlik bilgilerini** seçin ve ardından Güvenlik **bilgileri** sayfasından **ekle yöntemini** seçin.
 
-    ![Vurgulanan yöntem ekleme seçeneğiyle güvenlik bilgileri sayfası](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Vurgulanan Ekle yöntemi seçeneği ile güvenlik bilgileri sayfası](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. **Yöntem Ekle** sayfasında, açılan listeden **Telefon** ' i seçin ve ardından **Ekle**' yi seçin.
+3. Yöntem **ekle** sayfasında açılan listeden **Telefon'u** seçin ve sonra **Ekle'yi**seçin.
 
-    ![Telefon seçiliyken Yöntem kutusu Ekle](media/security-info/securityinfo-myprofile-addphonetext.png)
+    ![Telefon seçili yöntem kutusu ekleme](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. **Telefon** sayfasında, mobil cihazınızın telefon numarasını yazın, **beni çağır**' ı seçin ve ardından **İleri**' yi seçin.
+4. **Telefon** sayfasında, mobil cihazınızın telefon numarasını yazın, **Beni Ara'yı**seçin ve **sonra İleri'yi**seçin.
 
-    ![Telefon numarası ekleyin ve telefon görüşmeleri seçin](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
+    ![Telefon numarası ekleyin ve telefon görüşmelerini seçin](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
-5. Doğrulama telefon aramasını yanıtlayın, girdiğiniz telefon numarasına gönderilir ve yönergeleri izleyin.
+5. Girdiğiniz telefon numarasına gönderilen doğrulama telefon görüşmesini yanıtlayın ve talimatları izleyin.
 
-    Sayfa, başarınızı gösterecek şekilde değişir.
+    Sayfa, başarınızı göstermek için değişir.
 
     ![Başarı bildirimi, telefon numarasını bağlama, telefon görüşmeleri alma seçeneği ve hesabınız](media/security-info/securityinfo-myprofile-phonetext-success.png)
 
-    Güvenlik bilgileriniz güncellenir ve iki adımlı doğrulama veya parola sıfırlama kullanırken kimliğinizi doğrulamak için telefon çağrılarını kullanabilirsiniz. Varsayılan yönteminizin telefon araması yapmak istiyorsanız, bu makalenin [varsayılan güvenlik bilgileri yönteminizi değiştirme](#change-your-default-security-info-method) bölümüne bakın.
+    Güvenlik bilgileriniz güncellenir ve iki aşamalı doğrulama veya parola sıfırlama kullanırken kimliğinizi doğrulamak için telefon görüşmelerini kullanabilirsiniz. Telefon görüşmeleri yapmak istiyorsanız varsayılan yöntem, bu makalenin [varsayılan güvenlik bilgileri yöntemi](#change-your-default-security-info-method) ni değiştir bölümüne bakın.
 
-## <a name="delete-phone-calls-from-your-security-info-methods"></a>Güvenlik bilgileri yöntemlerinizin telefon çağrılarını silme
+## <a name="delete-phone-calls-from-your-security-info-methods"></a>Güvenlik bilgileri yöntemlerinizden telefon aramalarını silme
 
-Artık telefon çağrılarını bir güvenlik bilgisi yöntemi olarak kullanmak istemiyorsanız, **güvenlik bilgileri** sayfasından kaldırabilirsiniz.
+Artık telefon görüşmelerini güvenlik bilgisi yöntemi olarak kullanmak istemiyorsanız, bu çağrıyı **Güvenlik bilgileri** sayfasından kaldırabilirsiniz.
 
 >[!Important]
->Telefon çağrılarını yanlışlıkla silerseniz geri alma yöntemi yoktur. Bu makalenin [telefon aramalarını ayarlama](#set-up-phone-calls-from-the-security-info-page) bölümündeki adımları izleyerek yöntemi tekrar eklemeniz gerekir.
+>Telefon aramalarını yanlışlıkla silerseniz, geri alabilirsiniz. Bu makalenin [telefon görüşmelerini ayarla](#set-up-phone-calls-from-the-security-info-page) bölümündeki adımları izleyerek yöntemi yeniden eklemeniz gerekir.
 
 ### <a name="to-delete-phone-calls"></a>Telefon aramalarını silmek için
 
-1. **Güvenlik bilgileri** sayfasında, **Telefon** seçeneğinin yanındaki **Sil** bağlantısını seçin.
+1. Güvenlik **bilgileri** sayfasında, **Telefon** seçeneğinin yanındaki **Sil** bağlantısını seçin.
 
-    ![Güvenlik bilgileri 'nden telefon yöntemini silmeye yönelik bağlantı](media/security-info/securityinfo-myprofile-phonetext-delete.png)
+    ![Telefon yöntemini güvenlik bilgisinden silmek için bağlantı](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. **Telefon** numarasını silmek için onay kutusundan **Evet** ' i seçin. Telefon numaranız silindikten sonra güvenlik bilgileriniz kaldırılır ve **güvenlik bilgileri** sayfasından kaybolur. **Telefon** varsayılan yönteminiz ise, varsayılan olarak bir kullanılabilir yönteme geçiş yapılır.
+2. **Telefon** numarasını silmek için onay kutusundan **Evet'i** seçin. Telefon numaranız silindikten sonra güvenlik bilgilerinizden kaldırılır ve Güvenlik **bilgileri** sayfasından kaybolur. **Telefon** varsayılan yönteminizse, varsayılan yöntem kullanılabilir başka bir yönteme değiştirilir.
 
-## <a name="change-your-default-security-info-method"></a>Varsayılan güvenlik bilgileri yönteminizi değiştirme
+## <a name="change-your-default-security-info-method"></a>Varsayılan güvenlik bilgi yönteminizi değiştirme
 
-Telefon aramalarının, iki öğeli doğrulama veya parola sıfırlama istekleri kullanarak iş veya okul hesabınızda oturum açtığınızda kullanılan varsayılan yöntem olmasını istiyorsanız, **güvenlik bilgileri** sayfasından ayarı yapabilirsiniz.
+İki faktörlü doğrulama kullanarak veya parola sıfırlama isteklerini kullanarak iş veya okul hesabınızda oturum açtığınızda kullanılan varsayılan yöntem olarak telefon görüşmelerinin kullanılmasını istiyorsanız, bunu **Güvenlik bilgileri** sayfasından ayarlayabilirsiniz.
 
-### <a name="to-change-your-default-security-info-method"></a>Varsayılan güvenlik bilgileri yönteminizi değiştirmek için
+### <a name="to-change-your-default-security-info-method"></a>Varsayılan güvenlik bilgi yönteminizi değiştirmek için
 
-1. **Güvenlik bilgileri** sayfasında, **varsayılan oturum açma yöntemi** bilgisinin yanındaki bağlantıyı **Değiştir** ' i seçin.
+1. Güvenlik **bilgileri** sayfasında, Varsayılan oturum açma **yöntemi** bilgilerinin yanındaki **Değiştir** bağlantısını seçin.
 
-    ![Varsayılan oturum açma yönteminin bağlantısını değiştir](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+    ![Varsayılan oturum açma yöntemi için bağlantıyı değiştirme](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Kullanılabilir yöntemlerin aşağı açılan listesinden **telefon araması ( *_your_phone_number_* )** öğesini seçin ve ardından **Onayla**' yı seçin.
+2. Kullanılabilir yöntemlerin açılır listesinden **Telefon - arama (*_your_phone_number)_*** seçeneğini belirleyin ve ardından **Onayla'yı**seçin.
 
     ![Varsayılan oturum açma yöntemini seçin](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    **Telefon araması ( *_your_phone_number_* )** için oturum açma değişiklikleri için kullanılan varsayılan yöntem.
+    **Telefon - arama*_(your_phone_number_*)** oturum açma değişiklikleri için kullanılan varsayılan yöntem.
 
 ## <a name="additional-security-info-methods"></a>Ek güvenlik bilgileri yöntemleri
 
-Kuruluşunuzun, kimliğinizi doğrulamak için size ne olduğuna bağlı olarak kimliğinizi nasıl öğrendiğini öğrenmek için ek seçenekleriniz vardır. Seçeneklere şunlar dahildir:
+Yapmaya çalıştığınız şeye bağlı olarak, kuruluşunuzun kimliğinizi doğrulamak için sizinle nasıl iletişim kurduklarına ilişkin ek seçenekleriniz vardır. Seçeneklere şunlar dahildir:
 
-- **Authenticator uygulaması.** İki adımlı doğrulama veya parola sıfırlama için bir onay bildirimi ya da rastgele oluşturulmuş bir onay kodu almak üzere bir Authenticator uygulaması indirin ve kullanın. Microsoft Authenticator uygulamasını ayarlama ve kullanma hakkında adım adım yönergeler için bkz. [güvenlik bilgilerini bir Authenticator uygulaması kullanmak Için ayarlama](security-info-setup-auth-app.md).
+- **Kimlik doğrulayıcı uygulaması.** Onay bildirimi veya iki aşamalı doğrulama veya parola sıfırlama için rasgele oluşturulmuş bir onay kodu almak için bir kimlik doğrulayıcı uygulamasını indirin ve kullanın. Microsoft Authenticator uygulamasını nasıl ayarlayıp kullanacağıyla ilgili adım adım talimatlar için, [kimlik doğrulayıcı uygulamasını kullanmak için güvenlik bilgilerini ayarlama'ya](security-info-setup-auth-app.md)bakın.
 
-- **Mobil cihaz metni.** Mobil cihaz numaranızı girin ve iki adımlı doğrulama veya parola sıfırlama için kullanacağınız kodu bir metin alın. Bir SMS mesajı (SMS) ile kimliğinizi doğrulamaya yönelik adım adım yönergeler için bkz. [güvenlik bilgilerini ayarlama hakkında bilgi iletisi (SMS)](security-info-setup-text-msg.md).
+- **Mobil cihaz metni.** Mobil cihaz numaranızı girin ve iki aşamalı doğrulama veya parola sıfırlama için kullanacağınız bir kod metin alın. Kısa mesaj (SMS) ile kimliğinizi nasıl doğrulayabilirsiniz hakkında adım adım talimatlar için, [bkz.](security-info-setup-text-msg.md)
 
-- **Güvenlik anahtarı.** Microsoft uyumlu güvenlik anahtarınızı kaydedin ve iki adımlı doğrulama veya parola sıfırlama için PIN ile birlikte kullanın. Bir güvenlik anahtarı ile kimliğinizi doğrulama hakkında adım adım yönergeler için bkz. Güvenlik [anahtarı kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-security-key.md).
+- **Güvenlik anahtarı.** Microsoft uyumlu güvenlik anahtarınızı kaydedin ve iki aşamalı doğrulama veya parola sıfırlama için bir PIN ile birlikte kullanın. Bir güvenlik anahtarıyla kimliğinizi nasıl doğrulayabilirsiniz hakkında adım adım talimatlar için güvenlik [anahtarını kullanmak için güvenlik bilgilerini ayarlama'ya](security-info-setup-security-key.md)bakın.
 
-- **E-posta adresi.** Parola sıfırlama için bir e-posta almak üzere iş veya okul e-posta adresinizi girin. Bu seçenek, iki adımlı doğrulama için kullanılamaz. E-postanızı ayarlama hakkında adım adım yönergeler için bkz. [e-posta kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-email.md).
+- **E-posta adresi.** Parola sıfırlama için bir e-posta almak için iş veya okul e-posta adresinizi girin. Bu seçenek iki aşamalı doğrulama için kullanılamaz. E-postanızı nasıl ayarlayınız hakkında adım adım talimatlar için, [e-postayı kullanmak için güvenlik bilgilerini ayarlama'ya](security-info-setup-email.md)bakın.
 
-- **Güvenlik soruları.** Yöneticiniz tarafından kuruluşunuz için oluşturulan bazı güvenlik sorularını yanıtlayın. Bu seçenek yalnızca parola sıfırlama için kullanılabilir ve iki adımlı doğrulama için kullanılamaz. Güvenlik sorularınızı ayarlama hakkında adım adım yönergeler için Güvenlik [sorularını kullanmak üzere güvenlik bilgilerini ayarlama](security-info-setup-questions.md) makalesine bakın.
+- **Güvenlik soruları.** Yöneticiniz tarafından kuruluşunuz için oluşturulan bazı güvenlik sorularını yanıtlayın. Bu seçenek yalnızca parola sıfırlama için kullanılabilir ve iki aşamalı doğrulama için kullanılamaz. Güvenlik sorularınızı nasıl ayarlayaceksiniz hakkında adım adım talimatlar için güvenlik soruları makalesini [kullanmak için güvenlik bilgilerini ayarla'ya](security-info-setup-questions.md) bakın.
 
     >[!Note]
-    >Bu seçeneklerden bazıları eksikse, kuruluşunuzun bu yöntemlere izin vermediği için büyük olasılıkla olasıdır. Bu durumda, daha fazla yardım için kullanılabilir bir yöntem seçmeniz veya yöneticinize başvurmanız gerekir.
+    >Bu seçeneklerden bazıları eksikse, bunun nedeni büyük olasılıkla kuruluşunuz bu yöntemlere izin vermesin. Bu durumda, kullanılabilir bir yöntem seçmeniz veya daha fazla yardım için yöneticinize başvurmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md) makalesindeki adımları izleyin.
+- [Parola sıfırlama portalından](https://passwordreset.microsoftonline.com/) parolanızı kaybettiyseniz veya unuttuysanız sıfırlayın veya iş [veya okul parolanızı sıfırla makalenizdeki](active-directory-passwords-update-your-own-password.md) adımları izleyin.
 
-- [Microsoft hesabı makalesinde oturum açma](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) sorunları için sorun giderme ipuçları ve yardım alın.
+- [Microsoft hesap makalenizde oturum açamıyorum'da](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) sorun giderme ipuçları alın ve oturum açma sorunları için yardım alın.

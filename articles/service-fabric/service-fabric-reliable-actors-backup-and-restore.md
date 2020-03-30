@@ -1,24 +1,24 @@
 ---
-title: Azure Service Fabric aktörleri yedekleme ve geri yükleme
-description: Azure Service Fabric aktörlerinizi yedekleme ve geri yükleme işlemlerinin nasıl uygulanacağını öğrenin.
+title: Azure Hizmet Kumaşı aktörlerini yedekleme ve geri yükleme
+description: Azure Hizmet Kumaşı aktörlerinizde yedekleme yi nasıl uygulayacağınızı ve geri yükleyin öğrenin.
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75370468"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Yedekleme ve geri yükleme Reliable Actors uygulama
+# <a name="implement-reliable-actors-backup-and-restore"></a>Güvenilir Aktörler yedekleme ve geri yükleme uygulayın
 
 > [!NOTE]
-> Microsoft, güvenilir durum bilgisi olan hizmetler ve Reliable Actors veri yedeklemesini yapılandırmak için [düzenli yedekleme ve geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md) kullanmayı önerir. 
+> Microsoft, Güvenilir Durum hizmetleri ve Güvenilir Aktörler'in veri yedeklemesini yapılandırmak için Periyodik yedekleme yi kullanmanızı [ve geri yüklemenizi](service-fabric-backuprestoreservice-quickstart-azurecluster.md) önerir. 
 > 
 
-Aşağıdaki örnekte, özel bir aktör hizmeti, `ActorService`' de zaten mevcut olan uzaktan iletişim dinleyicisinden yararlanarak aktör verilerini yedeklemek için bir yöntem sunar:
+Aşağıdaki örnekte, özel bir aktör hizmeti, halihazırda mevcut olan remoting dinleyicisi'nden `ActorService`yararlanarak aktör verilerini yedekleme yöntemini ortaya çıkarır:
 
 ```csharp
 public interface IMyActorService : IService
@@ -94,7 +94,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-Bu örnekte, `IMyActorService`, `IService` (C#) ve `Service` (Java) uygulayan ve daha sonra `MyActorService`tarafından uygulanan bir uzaktan iletişim sözleşmedir. Bu uzaktan iletişim sözleşmesi eklendiğinde `IMyActorService` Yöntemler artık `ActorServiceProxy`aracılığıyla bir uzaktan iletişim proxy 'si oluşturularak bir istemci tarafından da kullanılabilir:
+`IMyActorService` Bu örnekte, `IService` (C#) ve (Java) uygulayan `Service` ve daha sonra `MyActorService`. Bu remoting sözleşme ekleyerek, `IMyActorService` yöntemler artık bir remoting proxy oluşturarak `ActorServiceProxy`istemci için kullanılabilir:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -109,10 +109,10 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Reliable Actors hakkında daha fazla bilgi için aşağıdaki makaleleri okuyun:
-* [Aktör durumu yönetimi](service-fabric-reliable-actors-state-management.md)
+Güvenilir Aktörler hakkında daha fazla bilgi için aşağıdaki makaleleri okuyun:
+* [Aktör devlet yönetimi](service-fabric-reliable-actors-state-management.md)
 * [Aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md)
-* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Aktörler API başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET örnek kodu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

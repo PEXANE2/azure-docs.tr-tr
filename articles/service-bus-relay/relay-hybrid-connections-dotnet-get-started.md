@@ -1,6 +1,6 @@
 ---
-title: .NET WebSockets Azure Relay Karma Bağlantılar-
-description: Azure Relay Karma Bağlantılar C# WebSockets için bir konsol uygulaması yazma.
+title: Azure Röle Karma Bağlantıları - .NET'te WebSockets
+description: Azure Relay Hybrid Connections WebSockets için c# konsolu uygulaması yazın.
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 13612f8ffa343e483165a8dbdd54d1b2b1f5e2cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75355188"
 ---
-# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET 'te Relay Karma Bağlantılar WebSockets kullanmaya başlama
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET'teki Röle Hibrit Bağlantılar WebSockets ile başlayın
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Bu hızlı başlangıçta, Azure Relay içinde Karma Bağlantılar WebSockets kullanarak ileti gönderen ve alan .NET gönderici ve alıcı uygulamaları oluşturacaksınız. Genel olarak Azure Relay hakkında bilgi edinmek için bkz. [Azure Relay](relay-what-is-it.md). 
+Bu hızlı başlangıçta, Azure Röle'de Karma Bağlantılar WebSockets'i kullanarak ileti gönderen ve alan .NET gönderen ve alıcı uygulamaları oluşturursunuz. Azure Rölesi hakkında genel bilgi edinmek için Azure [Röle'ye](relay-what-is-it.md)bakın. 
 
-Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
+Bu hızlı başlangıçta, aşağıdaki adımları atarsınız:
 
 1. Azure portalını kullanarak Geçiş ad alanı oluşturma.
 2. Azure portalını kullanarak o ad alanında karma bağlantı oluşturma.
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
 * [Visual Studio 2015 veya üzeri](https://www.visualstudio.com). Bu öğreticideki örneklerde Visual Studio 2017 kullanılmaktadır.
-* Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* Azure aboneliği. Hesabınız yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
 ## <a name="create-a-namespace"></a>Ad alanı oluşturma
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
@@ -64,10 +64,10 @@ Geçiş hizmetine ileti göndermek Visual Studio kullanarak bir C# konsol uygula
 
     ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-Tebrikler, tamamlanmış bir Karma Bağlantılar uygulaması oluşturdunuz!
+Tebrikler, tam bir Karma Bağlantılar uygulaması oluşturduk!
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, ileti göndermek ve almak için WebSockets kullanan .NET istemci ve sunucu uygulamaları oluşturdunuz. Azure Relay Karma Bağlantılar özelliği, ileti göndermek ve almak için HTTP kullanmayı da destekler. Azure Relay Karma Bağlantılar ile HTTP 'yi nasıl kullanacağınızı öğrenmek için bkz. [http hızlı](relay-hybrid-connections-http-requests-dotnet-get-started.md)başlangıcı.
+Bu hızlı başlangıçta, ileti göndermek ve almak için WebSockets'i kullanan .NET istemcisi ve sunucu uygulamaları oluşturdunuz. Azure Röle'nin Karma Bağlantılar özelliği, ileti göndermek ve almak için HTTP'yi kullanmayı da destekler. Azure Relay Karma Bağlantıları ile HTTP'yi nasıl kullanacağınızı öğrenmek için [HTTP quickstart'a](relay-hybrid-connections-http-requests-dotnet-get-started.md)bakın.
 
-Bu hızlı başlangıçta, istemci ve sunucu uygulamaları oluşturmak için .NET Framework kullandınız. Node. js kullanarak istemci ve sunucu uygulamalarının nasıl yazılacağını öğrenmek için bkz. [Node. js WebSockets hızlı başlangıç](relay-hybrid-connections-node-get-started.md) veya [Node. js http hızlı](relay-hybrid-connections-http-requests-dotnet-get-started.md)başlangıcı.
+Bu hızlı başlatmada, istemci ve sunucu uygulamaları oluşturmak için .NET Framework'u kullandınız. Node.js kullanarak istemci ve sunucu uygulamaları yazmayı öğrenmek için, [Node.js WebSockets quickstart](relay-hybrid-connections-node-get-started.md) veya [Node.js HTTP quickstart](relay-hybrid-connections-http-requests-dotnet-get-started.md)bakın.
 

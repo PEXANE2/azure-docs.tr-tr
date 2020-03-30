@@ -1,6 +1,6 @@
 ---
-title: Hesap yönetimi-Azure VMware çözümleri (AVS) portalı
-description: Azure VMware Solutions (AVS) portalındaki hesapların nasıl yönetileceğini açıklar
+title: Hesap yönetimi - CloudSimple portalına göre Azure VMware Çözümü
+description: CloudSimple portalına göre Azure VMware Çözümü'ndeki hesapların nasıl yönetilebildiğini açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,33 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1fd7cb1c55fb664828448cef0b67ea9b16323bdf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025376"
 ---
-# <a name="manage-accounts-on-the-azure-vmware-solutions-avs-portal"></a>Azure VMware Solutions (AVS) portalındaki hesapları yönetme
+# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>CloudSimple portalına göre Azure VMware Çözümü'ndeki hesapları yönetme
 
-AVS hizmetinizi oluştururken, AVS 'de bir hesap oluşturur. Hesap, hizmetin bulunduğu Azure aboneliğiniz ile ilişkilendirilir. Abonelikte sahip ve katkıda bulunan rollerine sahip tüm kullanıcıların AVS portalına erişimi vardır. AVS hizmetiyle ilişkili Azure abonelik KIMLIĞI ve kiracı KIMLIĞI hesaplar sayfasında bulunur.
+CloudSimple hizmetinizi oluşturduğunuzda, CloudSimple'da bir hesap oluşturur. Hesap, hizmetin bulunduğu Azure aboneliğinizle ilişkilidir. Abonelikte sahip ve katılımcı rolleri olan tüm kullanıcılar CloudSimple portalına erişebilir. CloudSimple hizmetiyle ilişkili Azure abonelik kimliği ve kiracı kimliği Hesaplar sayfasında bulunur.
 
-AVS portalındaki hesapları yönetmek için [portala erişin](access-cloudsimple-portal.md) ve yan menüdeki **Hesap** ' ı seçin.
+CloudSimple portalındaki hesapları yönetmek için [portala erişin](access-cloudsimple-portal.md) ve yan menüden **Hesap'ı** seçin.
 
-Şirketinizin AVS yapılandırması hakkındaki bilgileri görüntülemek için **Özet** ' i seçin. Bulut yapılandırmanızın geçerli kapasitesi, AVS özel bulutları, toplam depolama, vSphere kümesi yapılandırması, düğüm sayısı ve işlem çekirdekleri dahil olmak üzere gösterilir. Geçerli yapılandırma tüm ihtiyaçlarınızı karşılamıyorsa ek düğümler satın almak için bir bağlantı eklenmiştir.
+Şirketinizin CloudSimple yapılandırması hakkındaki bilgileri görüntülemek için **Özet'i** seçin. Özel Bulutlar sayısı, toplam depolama, vSphere küme yapılandırması, düğüm sayısı ve işlem çekirdeği sayısı da dahil olmak üzere bulut yapılandırmanızın geçerli kapasitesi gösterilir. Geçerli yapılandırma tüm gereksinimlerinizi karşılamazsa ek düğüm satın almak için bir bağlantı dahildir.
 
 ## <a name="email-alerts"></a>E-posta uyarıları
 
-AVS özel bulut yapılandırmasında değişiklikler hakkında bilgilendirmek istediğiniz kişilerin e-posta adreslerini ekleyebilirsiniz.
+Özel Bulut yapılandırmasındaki değişiklikler hakkında bildirmek istediğiniz kişilerin e-posta adreslerini ekleyebilirsiniz.
 
-1. **Ek e-posta uyarıları** alanında **Yeni Ekle**' ye tıklayın.
+1. Ek **e-posta uyarıları** alanında **yeni ekle'yi**tıklatın.
 2. E-posta adresini girin.
-3. Return tuşuna basın.  
+3. İade tuşuna basın.  
 
-Bir girişi kaldırmak için **X**' e tıklayın.
+Bir girişi kaldırmak için **X'i**tıklatın.
 
-## <a name="avs-operator-access"></a>AVS İşletmen erişimi
+## <a name="cloudsimple-operator-access"></a>CloudSimple operatör erişimi
 
-Operatör erişim ayarı, AVS 'nin bir destek mühendisine oturum açmaya izin vererek sorun gidermeye yardımcı olmaya olanak tanır. Ayar varsayılan olarak etkindir. Müşteri hesabınızda oturum açarken destek mühendisi tarafından gerçekleştirilen tüm eylemler, **etkinlik** > **Denetim** sayfasında gözden geçirmeniz için kaydedilir ve kullanılabilir.
+Operatör erişim ayarı, bir destek mühendisinin CloudSimple portalınızda oturum açmasına izin vererek CloudSimple'ın sorun gidermede size yardımcı olmasını sağlar.  Ayar varsayılan olarak etkinleştirilir. Müşteri hesabınıza giriş yapıldığında destek mühendisi tarafından gerçekleştirilen tüm eylemler kaydedilir ve **Etkinlik** > **Denetimi** sayfasında incelemeniz için kullanılabilir.
 
-Erişimi açmak veya kapatmak için **AVS işleci erişimi etkin** ' i tıklatın.
+Erişimi açmak veya kapatmak için **CloudSimple operatör erişiminin geçişini tıklatın.**

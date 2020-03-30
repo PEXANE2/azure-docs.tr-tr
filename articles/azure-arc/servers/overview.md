@@ -1,96 +1,96 @@
 ---
-title: Sunucular için Azure Arc (Önizleme) genel bakış
-description: Azure 'un dışında barındırılan makineleri Azure kaynağı olarak yönetmek üzere sunucular için Azure Arc 'ı nasıl kullanacağınızı öğrenin.
+title: Sunucular için Azure Arc (önizleme) Genel Bakış
+description: Azure dışında barındırılan makineleri azure kaynağı gibi yönetmek için sunucular için Azure Arc'ı nasıl kullanacağınızı öğrenin.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 02/24/2020
+keywords: azure otomasyonu, DSC, powershell, istenilen durum yapılandırması, güncelleme yönetimi, değişiklik izleme, envanter, runbooks, python, grafik, hibrid
+ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 85a6f8dcb9f551d81a607adc9ae482f4025d804f
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241377"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366359"
 ---
-# <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (Önizleme)
+# <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (önizleme)
 
-Sunucular için Azure Arc (Önizleme), yerel Azure sanal makinelerini yönetme sürecinize benzer şekilde, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenizi sağlar. Bir karma makine Azure 'a bağlıyken, bağlı bir makine olur ve Azure 'da kaynak olarak kabul edilir. Her bağlı makinenin bir kaynak KIMLIĞI vardır, bir aboneliğin içindeki bir kaynak grubunun parçası olarak yönetilir ve Azure Ilkesi gibi standart Azure yapılarından ve Etiketler uygulayarak faydalanır.
+Sunucular için Azure Arc (önizleme), kurumsal ağınızda veya diğer bulut sağlayıcınızda, yerel Azure sanal makinelerini nasıl yönettiğinize benzer şekilde Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenize olanak tanır. Karma bir makine Azure'a bağlandığında, bağlı bir makine haline gelir ve Azure'da kaynak olarak kabul edilir. Bağlı her makinenin bir Kaynak Kimliği vardır, abonelik içindeki kaynak grubunun bir parçası olarak yönetilir ve Azure İlkesi ve uygulama etiketleri gibi standart Azure yapılarından yararlanır.
 
-Bu deneyimi Azure dışında barındırılan karma makinelerinizle birlikte sunmak için Azure 'a bağlanmayı planladığınız her makinede Azure bağlı makine aracısının yüklü olması gerekir. Bu aracı başka bir işlevsellik sunmaz ve Azure [Log Analytics aracısının](../../azure-monitor/platform/log-analytics-agent.md)yerini almaz. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.
+Azure dışında barındırılan karma makinelerinizle bu deneyimi sunmak için Azure'a bağlanmayı planladığınız her makineye Azure Bağlı Makine aracısının yüklenmesi gerekir. Bu aracı başka bir işlev sunmuyor ve Azure [Günlük Analizi aracısının](../../azure-monitor/platform/log-analytics-agent.md)yerini almıyor. Makinede çalışan işletim sistemlerini ve iş yüklerini proaktif olarak izlemek, Otomasyon runbook'larını veya Update Management gibi çözümleri kullanarak yönetmek veya [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics aracısı gereklidir.
 
 >[!NOTE]
->Bu önizleme sürümü değerlendirme amaçlarına yöneliktir ve kritik üretim makinelerini yönetmemenizi öneririz.
+>Bu önizleme sürümü değerlendirme amaçlıdır ve kritik üretim makinelerini yönetmemenizi öneririz.
 >
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-Sunucular için Azure Arc (Önizleme) bağlı makinelerle aşağıdaki senaryoları destekler:
+Sunucular için Azure Arc (önizleme) bağlı makinelerle aşağıdaki senaryoları destekler:
 
-- Azure sanal makineleri için ilke atamayla aynı deneyimi kullanarak [Azure ilke Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md) atayın.
-- Log Analytics Aracısı tarafından toplanan ve Log Analytics çalışma alanında depolanan ve makine, [kaynak bağlamı](../../azure-monitor/platform/design-logs-deployment.md#access-mode) günlük erişimini desteklemek Için KULLANıLABILECEK kaynak kimliği gibi, makineye özgü özellikler içeriyor.
+- Azure sanal makineleri için ilke atamayla aynı deneyimi kullanarak [Azure İlkesi konuk yapılandırmaları](../../governance/policy/concepts/guest-configuration.md) atayın.
+- Log Analytics aracısı tarafından toplanan ve makinenin kayıtlı olduğu Log Analytics çalışma alanında depolanan günlük verileri, [kaynak bağlam](../../azure-monitor/platform/design-logs-deployment.md#access-mode) günlüğü erişimini desteklemek için kullanılabilecek Kaynak Kimliği gibi makineye özgü özellikler içerir.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Sunucular için Azure Arc (Önizleme) ile yalnızca belirli bölgeler desteklenir:
+Sunucular için Azure Arc (önizleme) ile yalnızca belirli bölgeler desteklenir:
 
-- WestUS2
+- BatıUS2
 - WestEurope
-- Westasıya
+- Batı Asya
 
-Çoğu durumda, yükleme betiğini oluştururken seçtiğiniz konum coğrafi olarak makinenizin konumuna en yakın olan Azure bölgesi olmalıdır. Bekleyen veriler, belirttiğiniz bölgeyi içeren Azure Coğrafya içinde depolanır ve bu da veri yerleşimi gereksinimleriniz varsa bölge seçiminizi de etkileyebilir. Makinenizin bağlandığı Azure bölgesi bir kesinti nedeniyle etkileniyorsa, bağlı makine etkilenmez, ancak Azure 'u kullanan yönetim işlemleri tamamlanmayabilir. Bölgesel bir kesinti durumunda esnekliği için, coğrafi olarak yedekli bir hizmet sağlayan birden çok konumunuz varsa, her konumdaki makineleri farklı bir Azure bölgesine bağlamak en iyisidir.
+Çoğu durumda, yükleme komut dosyasını oluştururken seçtiğiniz konum, coğrafi olarak makinenizin konumuna en yakın Azure bölgesi olmalıdır. Istirahatteki veriler, belirttiğiniz bölgeyi içeren Azure coğrafyası içinde depolanır ve bu da veri ikamet gereksinimleriniz varsa bölge seçiminizi etkileyebilir. Makinenizin bağlı olduğu Azure bölgesi bir kesintiden etkileniyorsa, bağlı makine etkilenmez, ancak Azure'u kullanarak yönetim işlemleri tamamlanamayabilir. Bölgesel bir kesinti durumunda esneklik için, coğrafi olarak gereksiz bir hizmet sağlayan birden fazla konumunuz varsa, her konumdaki makineleri farklı bir Azure bölgesine bağlamak en iyisidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure bağlı makine Aracısı için desteklenir: 
+Windows ve Linux işletim sisteminin aşağıdaki sürümleri Azure Bağlantılı Makine aracısı için resmi olarak desteklenir: 
 
-- Windows Server 2012 R2 ve üzeri (Windows Server Core dahil)
-- Ubuntu 16,04 ve 18,04
+- Windows Server 2012 R2 ve üstü (Windows Server Core dahil)
+- Ubuntu 16.04 ve 18.04
 - CentOS Linux 7
-- SUSE Linux Enterprise Server (SLES) 15
-- Red Hat Enterprise Linux (RHEL) 7
+- SUSE Linux Kurumsal Sunucu (SLES) 15
+- Kırmızı Şapka Kurumsal Linux (RHEL) 7
 - Amazon Linux 7
 
 >[!NOTE]
->Windows için bağlı makine aracısının bu önizleme sürümü yalnızca Ingilizce dilini kullanmak üzere yapılandırılmış Windows Server 'ı destekler.
+>Windows için Connected Machine aracısının bu önizleme sürümü yalnızca İngilizce dilini kullanacak şekilde yapılandırılan Windows Server'ı destekler.
 >
 
 ### <a name="required-permissions"></a>Gerekli izinler
 
-- Makineleri eklemek için, **Azure bağlı makine ekleme** rolünün bir üyesidir.
+- Yerleşik makinelerde, Azure Bağlantılı Makine **Yerleşik** rolünün bir üyesisiniz.
 
-- Bir makineyi okumak, değiştirmek, yeniden eklemek ve silmek için, **Azure bağlı makine kaynak yöneticisi** rolünün bir üyesi olursunuz. 
+- Bir makineyi okumak, değiştirmek, yeniden kullanmak ve silmek için **Azure Bağlı Makine Kaynak Yöneticisi** rolünün bir üyesisiniz. 
 
-### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
+### <a name="azure-subscription-and-service-limits"></a>Azure abonelik ve hizmet sınırları
 
-Makinelerinizi sunucular için Azure Arc (Önizleme) ile yapılandırmadan önce, bağlanacak makine sayısını planlamak için Azure Resource Manager [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirmeniz gerekir.
+Makinelerinizi sunucular için Azure Arc ile yapılandırmadan önce (önizleme), bağlanacak makine sayısını planlamak için Azure Kaynak Yöneticisi [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirmelisiniz.
 
-## <a name="tls-12-protocol"></a>TLS 1.2 Protokolü
+## <a name="tls-12-protocol"></a>TLS 1.2 protokolü
 
-Azure 'a aktarılan verilerin güvenliğini sağlamak için, makineyi Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. 
+Azure'a aktarılan verilerin güvenliğini sağlamak için, makineyi Aktarım Katmanı Güvenliği (TLS) 1,2'yi kullanacak şekilde yapılandırmanızı şiddetle öneririz. TLS/Secure Sockets Layer'ın (SSL) eski sürümlerinin savunmasız olduğu tespit edilmiştir ve hala geriye dönük uyumluluğa izin vermek için **çalışırken, bunlar önerilmez.** 
 
-|Platform/dili | Destek | Daha Fazla Bilgi |
+|Platform / Dil | Destek | Daha Fazla Bilgi |
 | --- | --- | --- |
-|Linux | Linux dağıtımları, TLS 1,2 desteği için [OpenSSL](https://www.openssl.org) 'yi kullanır. | OpenSSL sürümünüzü doğrulamak için [OpenSSL changelog](https://www.openssl.org/news/changelog.html) ' yı denetleyin.|
-| Windows Server 2012 R2 ve üzeri | Desteklenen ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.|
+|Linux | Linux dağıtımları TLS 1.2 desteği için [OpenSSL'ye](https://www.openssl.org) güvenme eğilimindedir. | OpenSSL sürümünüzün desteklenir olduğunu doğrulamak için [OpenSSL Changelog'u](https://www.openssl.org/news/changelog.html) kontrol edin.|
+| Windows Server 2012 R2 ve üzeri | Desteklenen ve varsayılan olarak etkinleştirildi. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)hala kullandığınızı doğrulamak için.|
 
-### <a name="networking-configuration"></a>Ağ yapılandırması
+### <a name="networking-configuration"></a>Ağ Yapılandırması
 
-Linux ve Windows için bağlı makine Aracısı, TCP bağlantı noktası 443 üzerinden Azure Arc ile güvenli bir şekilde iletişim kurar. Makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, ağ yapılandırma gereksinimlerini anlamak için aşağıdaki gereksinimleri gözden geçirin.
+Linux ve Windows için Connected Machine aracısı, giden giden aracıyı TCP bağlantı noktası 443 üzerinden Azure Arc'a güvenli bir şekilde iletır. Makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya proxy sunucusu üzerinden bağlanırsa, ağ yapılandırma gereksinimlerini anlamak için aşağıdaki gereksinimleri gözden geçirin.
 
-Giden bağlantı, güvenlik duvarınız veya ara sunucunuz tarafından kısıtlanıyorsa, aşağıda listelenen URL 'Lerin engellenmediğinden emin olun. Aracının hizmetle iletişim kurması için gereken IP aralıklarına veya etki alanı adlarına izin verirseniz, aşağıdaki hizmet etiketlerine ve URL 'Lere erişime de izin vermeniz gerekir.
+Giden bağlantı güvenlik duvarınız veya proxy sunucunuz tarafından kısıtlanmışsa, aşağıda listelenen URL'lerin engellenmediğinden emin olun. Yalnızca aracının hizmetle iletişim kurabilmesi için gereken IP aralıklarına veya alan adlarına izin verirseniz, aşağıdaki Hizmet Etiketleri ve URL'lerine erişime de izin vermelisiniz.
 
 Hizmet Etiketleri:
 
 - AzureActiveDirectory
 - AzureTrafficManager
 
-Adresleri
+Url 'leri:
 
 | Aracı kaynağı | Açıklama |
 |---------|---------|
@@ -99,20 +99,20 @@ Adresleri
 |dc.services.visualstudio.com|Application Insights|
 |agentserviceapi.azure-automation.net|Konuk Yapılandırması|
 |*-agentservice-prod-1.azure-automation.net|Konuk Yapılandırması|
-|*. his.hybridcompute.azure-automation.net|Karma kimlik hizmeti|
+|*.his.hybridcompute.azure-automation.net|Hibrit Kimlik Servisi|
 
-Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft, her bir Azure hizmetini ve kullandığı IP aralıklarını içeren haftalık güncelleştirmeler yayımlar. Daha fazla bilgi için [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)gözden geçirin.
+Her hizmet etiketi/bölgesi için IP adreslerinin listesi için JSON dosyasına bakın - [Azure IP Aralıkları ve Hizmet Etiketleri – Genel Bulut](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft, her Azure Hizmeti ve kullandığı IP aralıklarını içeren haftalık güncelleştirmeler yayımlar. Daha fazla bilgi için [Hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)inceleyin.
 
-Hizmetlerin çoğu şu anda bir hizmet etiketi kaydına sahip olmadığından, önceki tablodaki URL 'Ler hizmet etiketi IP adresi aralığı bilgilerine ek olarak gereklidir. Bu nedenle, IP adresleri değişikliğe tabidir. Güvenlik Duvarı yapılandırmanız için IP adresi aralıkları gerekliyse, tüm Azure hizmetlerine erişime izin vermek için **Azurecyüksek** hizmet etiketinin kullanılması gerekir. Bu URL 'Lerin güvenlik izlemesini veya denetimini devre dışı bırakmayın, diğer Internet trafiğinden yaptığınız gibi bunlara izin verin.
+Hizmetlerin çoğunda şu anda Hizmet Etiketi kaydı olmadığından, önceki tablodaki URL'ler Service Tag IP adres aralığı bilgilerine ek olarak gereklidir. Bu nedenle, IP adresleri değiştirilebilir. Güvenlik duvarı yapılandırmanız için IP adresi aralıkları gerekiyorsa, tüm Azure hizmetlerine erişimsağlamak için **AzureCloud** Hizmet Etiketi kullanılmalıdır. Bu URL'lerin güvenlik izlemesini veya denetimini devre dışı bırakmayın, diğer Internet trafiğinde olduğu gibi bunlara izin verin.
 
-### <a name="register-azure-resource-providers"></a>Azure Kaynak sağlayıcılarını kaydetme
+### <a name="register-azure-resource-providers"></a>Azure kaynak sağlayıcılarını kaydedin
 
-Sunucular için Azure Arc (Önizleme), bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
+Sunucular için Azure Arc (önizleme), bu hizmeti kullanmak için aboneliğinizdeki aşağıdaki Azure kaynak sağlayıcılarına bağlıdır:
 
-- **Microsoft. HybridCompute**
-- **Microsoft. GuestConfiguration**
+- **Microsoft.HybridCompute**
+- **Microsoft.GuestConfiguration**
 
-Bunlar kayıtlı değilse, aşağıdaki komutları kullanarak bunları kaydedebilirsiniz:
+Kayıtlı değillerse, bunları aşağıdaki komutları kullanarak kaydedebilirsiniz:
 
 Azure PowerShell:
 
@@ -123,7 +123,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
 Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Azure CLı:
+Azure CLI:
 
 ```azurecli-interactive
 az account set --subscription "{Your Subscription Name}"
@@ -131,33 +131,34 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Ayrıca, [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)altındaki adımları izleyerek Azure Portal kaynak sağlayıcılarını kaydedebilirsiniz.
+Ayrıca, Azure portalı altındaki adımları izleyerek kaynak sağlayıcılarını Azure [portalına](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)kaydedebilirsiniz.
 
-## <a name="connected-machine-agent"></a>Bağlı makine Aracısı
+## <a name="connected-machine-agent"></a>Bağlı Makine temsilcisi
 
-Windows ve Linux için Azure bağlı makine Aracısı paketini aşağıda listelenen konumlardan indirebilirsiniz.
+Windows ve Linux için Azure Bağlantılı Makine aracı paketini aşağıda listelenen konumlardan indirebilirsiniz.
 
-- Microsoft Indirme merkezi 'nden [Windows agent Windows Installer paketi](https://aka.ms/AzureConnectedMachineAgent) .
-- Linux aracı paketi, dağıtım için tercih edilen paket biçimi kullanılarak Microsoft 'un [paket deposundan](https://packages.microsoft.com/) dağıtılır (. RPM veya. DEB).
+- Microsoft Download [Center'dan Windows aracısı Windows Installer paketi.](https://aka.ms/AzureConnectedMachineAgent)
+- Linux aracı paketi, dağıtım için tercih edilen paket biçimi kullanılarak Microsoft'un [paket deposundan](https://packages.microsoft.com/) dağıtılır (. RPM veya . DEB).
 
 >[!NOTE]
->Bu önizleme sırasında, Ubuntu 16,04 veya 18,04 için uygun olan yalnızca bir paket yayımlanmıştır.
+>Bu önizleme sırasında, Ubuntu 16.04 veya 18.04 için uygun olan tek bir paket piyasaya sürüldü.
 
-Windows ve Linux için Azure bağlı makine Aracısı, gereksinimlerinize bağlı olarak, en son sürüme el ile veya otomatik olarak yükseltilebilir. Windows için, aracı güncelleştirmesi [apt](https://help.ubuntu.com/lts/serverguide/apt.html) komut satırı aracı kullanılarak Windows Update ve Ubuntu kullanılarak otomatik olarak gerçekleştirilebilir.
+Windows ve Linux için Azure Bağlantılı Makine aracısı, gereksinimlerinize bağlı olarak el ile veya otomatik olarak en son sürüme yükseltilebilir. Daha fazla bilgi için [buraya](manage-agent.md) bakın
 
 ### <a name="agent-status"></a>Aracı durumu
 
-Bağlı makine Aracısı, her 5 dakikada bir hizmete düzenli bir sinyal iletisi gönderir. Bunlardan biri 15 dakika boyunca alınmıyorsa, makine çevrimdışı kabul edilir ve portalda durum otomatik olarak **kesilir** . Bağlı makine aracısından sonraki bir sinyal iletisi alındıktan sonra, durumu otomatik olarak **bağlı**olarak değiştirilir.
+Bağlı Makine aracısı her 5 dakikada bir servise düzenli bir sinyal iletisi gönderir. Biri 15 dakika boyunca alınmazsa, makine çevrimdışı olarak kabul edilir ve durum otomatik olarak portalda **Bağlantı kesilir.** Bağlı Makine aracısından sonraki bir sinyal iletisi alındıktan sonra, durumu otomatik olarak **Bağlı**olarak değiştirilir.
 
-## <a name="install-and-configure-agent"></a>Aracıyı yükle ve yapılandır
+## <a name="install-and-configure-agent"></a>Aracıyı yükleme ve yapılandırma
 
-Karma ortamınızdaki makineleri doğrudan Azure ile bağlamak, gereksinimlerinize bağlı olarak farklı yöntemler kullanılarak gerçekleştirilebilir. Aşağıdaki tabloda, kuruluşunuz için en uygun olanı belirleyen her bir yöntem vurgulanmaktadır.
+Karma ortamınızdaki makineleri doğrudan Azure'a bağlamak gereksinimlerinize bağlı olarak farklı yöntemler kullanılarak gerçekleştirilebilir. Aşağıdaki tablo, kuruluşunuz için en uygun olanın her yöntemi vurgular.
 
 | Yöntem | Açıklama |
 |--------|-------------|
-| Biriyle | [Azure Portal makinelerinden gelen bağlantı](onboard-portal.md)adımlarını izleyerek aracıyı tek veya az sayıda makineye el ile yükleyebilirsiniz.<br> Azure portal, aracının yüklenmesi ve yapılandırma adımlarını otomatik hale getirmek için bir betik oluşturup makinede çalıştırabilirsiniz.|
-| Ölçekte | [Hizmet sorumlusu kullanarak, Connect makinelerini](onboard-service-principal.md)izleyen birden çok makine için aracıyı yükleyip yapılandırın.<br> Bu yöntem, makineleri etkileşimli olmayan bir şekilde bağlamak için bir hizmet sorumlusu oluşturur.|
+| Etkileşimli | [Azure portalından Connect makinelerindeki](onboard-portal.md)adımları izleyen aracıyı tek veya az sayıda makineye el ile yükleyin.<br> Azure portalından, aracının yükleme ve yapılandırma adımlarını otomatikleştirmek için bir komut dosyası oluşturabilir ve makinede çalıştırabilirsiniz.|
+| Ölçekte | [Bir Servis Sorumlusu kullanarak Connect makinelerini](onboard-service-principal.md)izleyen birden çok makine için aracıyı yükleyin ve yapılandırın.<br> Bu yöntem, makineleri etkileşimli olmayan bir şekilde bağlamak için bir hizmet ilkesi oluşturur.|
+| Ölçekte | [Windows PowerShell DSC'yi kullanarak](onboard-dsc.md)yöntemi izleyen birden çok makine için aracıyı yükleyin ve yapılandırın.<br> Bu yöntem, powershell DSC ile etkileşimli olmayan makineleri bağlamak için bir hizmet ilkesi kullanır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sunucular için Azure Arc 'ı değerlendirmeye başlamak üzere (Önizleme), [Azure Portal Azure 'a karma makineler bağlama](onboard-portal.md)makalesini izleyin. 
+- Sunucular için Azure Arc'ı değerlendirmeye başlamak için (önizleme), [karma makineleri Azure portalından Azure'a bağlayın makalesini](onboard-portal.md)izleyin. 

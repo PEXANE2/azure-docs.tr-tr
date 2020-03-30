@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute şablonu: ExpressRoute bağlantı hattı oluşturma'
-description: ExpressRoute bağlantı hattı oluşturma, sağlama, silme ve sağlamayı kaldırma.
+title: 'Azure ExpressRoute Şablonu: ExpressRoute devresi oluşturma'
+description: Bir ExpressRoute devresi oluşturun, sağlama, silme ve silme.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,42 +9,42 @@ ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
 ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981147"
 ---
-# <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak bir ExpressRoute devresi oluşturma
+# <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak ExpressRoute devresi oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-circuit-arm.md)
+> * [Azure portalında](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Powershell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video - Azure portalı](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasik)](expressroute-howto-circuit-classic.md)
 >
 
-Azure PowerShell kullanarak Azure Resource Manager şablonu dağıtarak bir ExpressRoute devresi oluşturmayı öğrenin. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi belgeleri](/azure/azure-resource-manager/) ve [şablon başvurusu](/azure/templates/microsoft.network/expressroutecircuits).
+Azure PowerShell'i kullanarak bir Azure Kaynak Yöneticisi şablonu dağıtarak ExpressRoute devresi oluşturmayı öğrenin. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için [Kaynak Yöneticisi belgelerine](/azure/azure-resource-manager/) ve [şablon başvurusuna](/azure/templates/microsoft.network/expressroutecircuits)bakın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Gözden geçirme [önkoşulları](expressroute-prerequisites.md) ve [iş akışları](expressroute-workflows.md) yapılandırmaya başlamadan önce.
-* Yeni ağ kaynakları oluşturma izni olduğundan emin olun. Doğru izinlere sahip değilsiniz, hesap yöneticinize başvurun.
-* Yapabilecekleriniz [video görüntüleme](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) adımları daha iyi anlamak için başlamadan önce.
+* Yapılandırmaya başlamadan önce [ön koşulları](expressroute-prerequisites.md) ve [iş akışlarını](expressroute-workflows.md) gözden geçirin.
+* Yeni ağ kaynakları oluşturmak için izinlere sahip olduğundan emin olun. Doğru izinlere sahip değilseniz hesap yöneticinize başvurun.
+* Adımları daha iyi anlamak için videoyu başlamadan önce [görüntüleyebilirsiniz.](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 
-## <a name="create"></a>Oluşturma ve bir ExpressRoute bağlantı hattı sağlama
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute devresi oluşturma ve sağlama
 
-[Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) Kaynak Yöneticisi şablonu için iyi bir koleksiyon içerir. ExpressRoute bağlantı hattı oluşturmak için [mevcut şablonlardan](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) birini kullanırsınız.
+[Azure Quickstart şablonları,](https://azure.microsoft.com/resources/templates/) iyi bir Kaynak Yöneticisi şablonu koleksiyonuna sahiptir. Bir ExpressRoute [devresi](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) oluşturmak için varolan şablonlardan birini kullanırsınız.
 
 [!code-json[create-azure-expressroute-circuit](~/quickstart-templates/101-expressroute-circuit-create/azuredeploy.json)]
 
-Daha fazla ilgili şablon görmek için [burada](https://azure.microsoft.com/resources/templates/?term=expressroute)öğesini seçin.
+Daha fazla ilgili şablongörmek için [burayı](https://azure.microsoft.com/resources/templates/?term=expressroute)seçin.
 
-Bir şablonu dağıtarak bir ExpressRoute devresi oluşturmak için:
+Bir şablon dağıtarak bir ExpressRoute Devresi oluşturmak için:
 
-1. Aşağıdaki kod bloğundan **deneyin** ' i seçin ve ardından Azure Cloud Shell 'de oturum açmak için yönergeleri izleyin.
+1. Aşağıdaki kod bloğundan **deneyin'i** seçin ve ardından Azure Bulutu kabuğunda oturum açma yönergelerini izleyin.
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"
@@ -64,35 +64,35 @@ Bir şablonu dağıtarak bir ExpressRoute devresi oluşturmak için:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU katmanı** , bir ExpressRoute devresinin [Yerel](expressroute-faqs.md#expressroute-local), standart veya [Premium](expressroute-faqs.md#expressroute-premium)olup olmadığını belirler. *Yerel*, *Standart* veya *Premium*belirtebilirsiniz.
-   * **SKU ailesi** Faturalandırma türünü belirler. Belirtebileceğiniz *Metereddata* ölçülen veri planı için ve *Unlimiteddata* sınırsız veri planı için. Fatura türünden değiştirebilirsiniz *Metereddata* için *Unlimiteddata*, ancak türünden değiştiremezsiniz *Unlimiteddata* için *Metereddata*. *Yerel* devre yalnızca *limiteddata* ' dır.
-   * **Eşdüzey hizmet sağlama konumu** nerede sizin eşlemeyi Microsoft ile fiziksel konumu.
+   * **SKU katmanı,** ExpressRoute devresi [Yerel,](expressroute-faqs.md#expressroute-local)Standart veya [Premium](expressroute-faqs.md#expressroute-premium)olup olmadığını belirler. *Yerel,* *Standart* veya *Premium*belirtebilirsiniz.
+   * Fatura türünü **SKU ailesi** belirler. Tarifeli veri planı için *Ölçülü Verileri* ve sınırsız veri planı için Sınırsız *Veri* belirtebilirsiniz. Fatura türünü *Metereddata'dan* *Unlimiteddata'ya*değiştirebilirsiniz, ancak türü *Unlimiteddata'dan* *Metereddata'ya*değiştiremezsiniz. *Yerel* devre yalnızca *Sınırsız veridir.*
+   * **Eşleyen Konum,** Microsoft ile birlikte bakacağınız fiziksel konumdur.
 
      > [!IMPORTANT]
-     > Eşleme konumu gösteren [fiziksel konum](expressroute-locations.md) nerede sizin eşlemeyi Microsoft ile. Bu **değil** başvuran Azure ağ kaynak sağlayıcısı bulunduğu coğrafi konum "Location" özelliğine bağlı. Bunlar ilişkili değildir, ancak bir ağ kaynağı sağlayıcı eşleme konumu bağlantı hattının coğrafi olarak yakın seçmek için iyi bir uygulamadır.
+     > Eşleyen Konum, Microsoft ile birlikte bakmakta olduğunuz [fiziksel konumu](expressroute-locations.md) gösterir. Bu, Azure Ağ Kaynak Sağlayıcısı'nın bulunduğu coğrafyayı ifade eden "Konum" özelliğiyle bağlantılı **değildir.** Bunlar ilişkili olmasa da, coğrafi olarak devrenin Eşleyen Konumu'na yakın bir Ağ Kaynak Sağlayıcısı seçmek iyi bir uygulamadır.
 
-    Kaynak grubu adı, **RG** eklenmiş hizmet veri yolu ad alanı adıdır.
+    Kaynak grubu adı **rg** eklenen servis veri günü ad alanı adıdır.
 
-2. Seçin **kopyalama** PowerShell betiğini kopyalanacak.
-3. Kabuk konsoluna sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+2. PowerShell komut dosyasını kopyalamak için **Kopyala'yı** seçin.
+3. Kabuk konsoluna sağ tıklayın ve ardından **Yapıştır'ı**seçin.
 
-Bir olay hub 'ı oluşturmak birkaç dakika sürer.
+Bir olay merkezi oluşturmak birkaç dakika sürer.
 
-Azure PowerShell, bu öğreticide şablonu dağıtmak için kullanılır. Diğer şablon dağıtım yöntemleri için bkz.:
+Azure PowerShell bu öğreticide şablonu dağıtmak için kullanılır. Diğer şablon dağıtım yöntemleri için bkz:
 
-* [Azure Portal kullanarak](../azure-resource-manager/templates/deploy-portal.md).
-* [Azure CLI kullanarak](../azure-resource-manager/templates/deploy-cli.md).
+* [Azure portalını kullanarak](../azure-resource-manager/templates/deploy-portal.md).
+* [Azure CLI'yi kullanarak.](../azure-resource-manager/templates/deploy-cli.md)
 * [REST API kullanarak](../azure-resource-manager/templates/deploy-rest.md).
 
-## <a name="delete"></a>Sağlama kaldırmayı ve bir ExpressRoute bağlantı hattı siliniyor
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Bir ExpressRoute bağlantı hattının sağlamasını kaldırma ve silme
 
-ExpressRoute devreniz seçerek silebilirsiniz **Sil** simgesi. Aşağıdaki bilgileri not edin:
+**Delete** simgesini seçerek ExpressRoute devrenizi silebilirsiniz. Aşağıdaki bilgileri not edin:
 
-* ExpressRoute bağlantı hattınızdaki tüm sanal ağların bağlantısını kaldırmanız gerekir. Bu işlem başarısız olursa, herhangi bir sanal ağa bağlantı hattına bağlı olup olmadığını denetleyin.
-* ExpressRoute bağlantı hattı Hizmet Sağlayıcısı sağlama durumu ise **sağlama** veya **sağlanan** kendi tarafında bağlantı hattını sağlamasını kaldırmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Kaynak ayırmanıza ve hizmeti sağlayıcısı devreyi sağlamayı kaldırma tamamlandıktan ve bize bildiren kadar faturalandırılırsınız devam ediyoruz.
-* Hizmet sağlayıcısı devreyi sağlamayı durdurduğunda varsa (Hizmet Sağlayıcısı sağlama durumu ayarlamak **sağlanmadı**), bağlantı hattının silebilirsiniz. Bu durumda bağlantı hattının faturalandırılması durdurulur.
+* ExpressRoute bağlantı hattınızdaki tüm sanal ağların bağlantısını kaldırmanız gerekir. Bu işlem başarısız olursa, herhangi bir sanal ağların devreye bağlı olup olmadığını kontrol edin.
+* ExpressRoute devre servis sağlayıcısı sağlama durumu **Hükmünde** veya **Provisioned** ise, devreyi kendi taraflarında devreyi devreyi devreyi devreden çıkarmak için servis sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcı devreyi devreyi devreyi tamamlayıp bizi bize iletene kadar kaynak ayırmaya ve size fatura landırmaya devam ediyoruz.
+* Hizmet sağlayıcısı devreyi devreyi devreyi devreyi iptal ettiyse (servis sağlayıcı sağlama durumu **değil**olarak ayarlanır), devreyi silebilirsiniz. Bu durumda bağlantı hattının faturalandırılması durdurulur.
 
-Aşağıdaki PowerShell komutunu çalıştırarak ExpressRoute devrenizi silebilirsiniz:
+ExpressRoute devrenizi aşağıdaki PowerShell komutunu çalıştırarak silebilirsiniz:
 
 ```azurepowershell-interactive
 $circuitName = Read-Host -Prompt "Enter the same circuit name that you used earlier"
@@ -103,7 +103,7 @@ Remove-AzExpressRouteCircuit -ResourceGroupName $resourceGroupName -Name $circui
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlantı hattınızı oluşturduktan sonra sonraki adımlara devam edin:
+Devrenizi oluşturduktan sonra aşağıdaki sonraki adımlarla devam edin:
 
-* [ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme](expressroute-howto-routing-portal-resource-manager.md)
-* [Sanal ağınız, ExpressRoute devresine bağlama](expressroute-howto-linkvnet-arm.md)
+* [ExpressRoute devreniz için yönlendirme oluşturma ve değiştirme](expressroute-howto-routing-portal-resource-manager.md)
+* [Sanal ağınızı ExpressRoute devrenize bağla](expressroute-howto-linkvnet-arm.md)

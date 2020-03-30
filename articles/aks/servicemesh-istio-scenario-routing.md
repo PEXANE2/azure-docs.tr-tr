@@ -1,90 +1,90 @@
 ---
-title: Azure Kubernetes Service (aks) içinde istio ile akıllı yönlendirme ve kanarya yayınları
-description: Azure Kubernetes Service (aks) kümesinde akıllı yönlendirme ve kanarya yayınları dağıtma sağlamak için ampo 'ı nasıl kullanacağınızı öğrenin
+title: Azure Kubernetes Hizmetinde (AKS) Istio ile akıllı yönlendirme ve kanarya yayınları
+description: Bir Azure Kubernetes Hizmeti (AKS) kümesinde akıllı yönlendirme sağlamak ve kanarya sürümlerini dağıtmak için Istio'nun nasıl kullanılacağını öğrenin
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78272997"
 ---
-# <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içinde istio ile akıllı yönlendirme ve kanarya sürümlerini kullanma
+# <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Istio ile akıllı yönlendirme ve kanarya sürümlerini kullanın
 
-[Istio][istio-github] , bir Kubernetes kümesindeki mikro hizmetlerde anahtar bir işlevsellik kümesi sağlayan açık kaynaklı bir hizmet kafesidir. Bu özellikler trafik yönetimi, hizmet kimliği ve güvenlik, ilke zorlama ve Observability içerir. Istio hakkında daha fazla bilgi için resmi [nedir?][istio-docs-concepts] belgesine bakın.
+[Istio,][istio-github] Bir Kubernetes kümesindeki mikro hizmetler de önemli bir işlevsellik kümesi sağlayan açık kaynak kodlu bir hizmet kafesidir. Bu özellikler arasında trafik yönetimi, hizmet kimliği ve güvenliği, ilke zorlama ve gözlemlenebilirlik yer almaktadır. Istio hakkında daha fazla bilgi için resmi [Istio nedir?][istio-docs-concepts]
 
-Bu makalede, Istio 'nun trafik yönetimi işlevselliğinin nasıl kullanılacağı gösterilmektedir. Akıllı yönlendirme ve kanarya sürümlerini araştırmak için örnek bir aks oylama uygulaması kullanılır.
+Bu makalede, Istio'nun trafik yönetimi işlevini nasıl kullanacağınızı gösterilmektedir. Örnek bir AKS oylama uygulaması akıllı yönlendirme ve kanarya bültenleri keşfetmek için kullanılır.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Uygulamayı dağıtma
 > * Uygulamayı güncelleştirme
-> * Uygulamanın kanarya bir sürümünü kullanıma alma
-> * Dağıtımı sonlandırma
+> * Uygulamanın bir kanarya sürümü dışarı rulo
+> * Lansmanı sonuçlandırın
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 > [!NOTE]
-> Bu senaryo, Istio sürüm `1.3.2`karşı test edilmiştir.
+> Bu senaryo Istio sürümüne `1.3.2`karşı test edilmiştir.
 
-Bu makalede açıklanan adımlarda, RBAC etkinleştirilmiş bir AKS kümesi (Kubernetes `1.13` ve üzeri) oluşturdunuz ve kümeyle `kubectl` bir bağlantı oluşturmuş olduğunuz varsayılır. Ayrıca, kümenizde yüklü olan Ida gerekir.
+Bu makalede ayrıntılı adımlar bir AKS kümesi (Kubernetes `1.13` ve yukarıda, RBAC etkin) oluşturduk ve küme ile bir `kubectl` bağlantı kurduk varsayalım. Ayrıca Istio'nun kümenizde yüklü olması gerekir.
 
-Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, aks [hızlı][aks-quickstart] başlangıcı ' na bakın ve [aks kılavuzuna Istio 'yu yükleyebilirsiniz][istio-install] .
+Bu öğelerden herhangi biriyle ilgili yardıma ihtiyacınız varsa, AKS kılavuzunda [AKS hızlı başlat][aks-quickstart] ın ve [Istio'yu yükleyin.][istio-install]
 
 ## <a name="about-this-application-scenario"></a>Bu uygulama senaryosu hakkında
 
-Örnek AKS oylama uygulaması, kullanıcılara iki oylama seçeneği (**kediler** veya **köpekler**) sağlar. Her seçenek için oy sayısını sürekli olarak sürdüren bir depolama bileşeni vardır. Ayrıca, her bir seçenek için oy saçılması etrafında ayrıntılar sağlayan bir analiz bileşeni de vardır.
+Örnek AKS oylama uygulaması kullanıcılara iki oylama seçeneği **(Kediler** veya **Köpekler)** sağlar. Her seçenek için oy sayısını kalıcı bir depolama bileşeni vardır. Ayrıca, her seçenek için kullanılan oylar hakkında ayrıntılı bilgi sağlayan bir analiz bileşeni de vardır.
 
-Bu uygulama senaryosunda, analiz bileşeninin oylama uygulamasının ve sürüm `1.0` sürüm `1.0` dağıtarak başlar. Analytics bileşeni, Oy sayısı için basit sayımlar sağlar. Oylama uygulaması ve analiz bileşeni, Reddir tarafından desteklenen depolama bileşeninin sürüm `1.0` ile etkileşime geçin.
+Bu uygulama senaryosunda, oylama uygulamasının sürümünü `1.0` ve `1.0` analiz bileşeninin sürümünü dağıtarak başlarsınız. Analiz bileşeni oy sayısı için basit sayımlar sağlar. Oylama uygulaması ve analiz bileşeni, `1.0` Redis tarafından desteklenen depolama bileşeninin sürümüyle etkileşime girerek.
 
-Analiz bileşenini, sayımlar ve artık toplam ve yüzdeleri sağlayan `1.1`sürümüne yükseltirsiniz.
+Analitik bileşenini, sayımlar `1.1`ve şimdi toplamlar ve yüzdeler sağlayan sürüme yükseltirsiniz.
 
-Bir kanarya sürümü aracılığıyla uygulamanın kullanıcı `2.0` test bir alt kümesi. Bu yeni sürüm, bir MySQL veritabanı tarafından desteklenen bir depolama bileşeni kullanır.
+Kullanıcıların bir alt kümesi `2.0` bir kanarya sürümü ile uygulamanın sürümünü test. Bu yeni sürüm, MySQL veritabanı tarafından desteklenen bir depolama bileşeni kullanır.
 
-Sürüm `2.0`, kullanıcılarınızın alt kümesinde beklendiği gibi çalıştığından emin olduktan sonra, sürüm `2.0` tüm kullanıcılarınıza dağıtabilirsiniz.
+Sürümün `2.0` kullanıcı alt kümenizde beklendiği gibi çalıştığından emin olduğunuzda, `2.0` sürümü tüm kullanıcılarınıza dağıtabilirsiniz.
 
 ## <a name="deploy-the-application"></a>Uygulamayı dağıtma
 
-Uygulamayı Azure Kubernetes Service (AKS) kümenize dağıtarak başlayalım. Aşağıdaki diyagramda, bu bölümün sonuna kadar hangi çalışmaların çalıştığı gösterilmektedir-bu durum, çalışan ağ geçidi aracılığıyla hizmet verilen gelen isteklerle tüm bileşenlerin sürümü `1.0`:
+Uygulamayı Azure Kubernetes Hizmeti (AKS) kümenize dağıtarak başlayalım. Aşağıdaki diyagram, bu bölümün sonunda neyin çalıştığını `1.0` gösterir - Gelen isteklere sahip tüm bileşenlerin Sürümü Istio giriş ağ geçidi üzerinden servis edilir:
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-01.png)
+![AKS Oylama uygulaması bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-01.png)
 
-Bu makaleyle birlikte izlemeniz gereken yapıtlar [Azure-Samples/aks-oylama-App][github-azure-sample] GitHub deposunda bulunabilir. Yapıtları indirebilir veya depoyu şu şekilde klonlayabilirsiniz:
+Bu makaleyle birlikte izlemeniz gereken yapılar [Azure Örnekleri/aks oylama uygulaması][github-azure-sample] GitHub repo'sunda kullanılabilir. Yapıları indirebilir veya repo'yu aşağıdaki gibi kopyalayabilirsiniz:
 
 ```console
 git clone https://github.com/Azure-Samples/aks-voting-app.git
 ```
 
-İndirilen/kopyalanan depolarda aşağıdaki klasöre geçin ve sonraki tüm adımları bu klasörden çalıştırın:
+İndirilen / klonlanmış repo'da aşağıdaki klasöre değiştirin ve bu klasörden sonraki tüm adımları çalıştırın:
 
 ```console
 cd aks-voting-app/scenarios/intelligent-routing-with-istio
 ```
 
-İlk olarak, AKS kümenizde `voting` adlı örnek AKS oylama uygulaması için aşağıdaki gibi bir ad alanı oluşturun:
+İlk olarak, aşağıdaki gibi adlı `voting` örnek AKS oylama uygulaması için AKS kümenizde bir ad alanı oluşturun:
 
 ```console
 kubectl create namespace voting
 ```
 
-Ad alanını `istio-injection=enabled`etiketleyin. Bu etiket, bu ad alanındaki tüm yığınlarınızın tüm yığınlarınıza otomatik olarak istik-proxy 'leri eklemesini sağlar.
+Ad alanını ' `istio-injection=enabled`ile etiketle. Bu etiket, Istio'ya istio-proxies'i bu ad alanında tüm bölmelerinize otomatik olarak yan araba olarak enjekte etmesini bildirir.
 
 ```console
 kubectl label namespace voting istio-injection=enabled
 ```
 
-Şimdi AKS oylama uygulaması için bileşenleri oluşturalım. Bu bileşenleri, önceki adımda oluşturulan `voting` ad alanında oluşturun.
+Şimdi AKS Oylama uygulaması için bileşenleri oluşturalım. Bu bileşenleri önceki `voting` adımda oluşturulan ad alanında oluşturun.
 
 ```console
 kubectl apply -f kubernetes/step-1-create-voting-app.yaml --namespace voting
 ```
 
-Aşağıdaki örnek çıktıda oluşturulan kaynaklar gösterilmektedir:
+Aşağıdaki örnek çıktı, oluşturulan kaynakları gösterir:
 
 ```output
 deployment.apps/voting-storage-1-0 created
@@ -96,15 +96,15 @@ service/voting-app created
 ```
 
 > [!NOTE]
-> IBU, Pod ve hizmetler etrafında bazı özel gereksinimlere sahiptir. Daha fazla bilgi için bkz. [pods ve hizmet belgeleri Için Istio gereksinimleri][istio-requirements-pods-and-services].
+> Istio pods ve hizmetler etrafında bazı özel gereksinimleri vardır. Daha fazla bilgi [için, Podlar ve Hizmetler belgeleri için Istio Gereksinimleri'ne][istio-requirements-pods-and-services]bakın.
 
-Oluşturulan Pod 'leri görmek için [kubectl Get Pod][kubectl-get] komutunu aşağıdaki gibi kullanın:
+Oluşturulan bölmeleri görmek için [kubectl get pods][kubectl-get] komutunu aşağıdaki gibi kullanın:
 
 ```console
 kubectl get pods -n voting --show-labels
 ```
 
-Aşağıdaki örnek çıktıda, `voting-app` Pod 'un üç örneği ve `voting-analytics` ve `voting-storage` pods 'nin tek bir örneği gösterilmektedir. Her birinin iki kapsayıcısı vardır. Bu kapsayıcılardan biri bileşendir ve diğeri `istio-proxy`.
+Aşağıdaki örnek çıktı, bölmenin `voting-app` üç örneği ve hem bölmenin `voting-analytics` `voting-storage` hem de bölmenin tek bir örneğini gösterir. Kapsüllerin her birinde iki konteyner var. Bu kapsayıcılardan biri bileşen, diğeri `istio-proxy`ise:
 
 ```output
 NAME                                    READY     STATUS    RESTARTS   AGE   LABELS
@@ -115,7 +115,7 @@ voting-app-1-0-956756fd-wsxvt           2/2       Running   0          39s   app
 voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app=voting-storage,pod-template-hash=5d8fcc89c4,version=1.0
 ```
 
-Pod hakkındaki bilgileri görmek için, Pod `voting-analytics` seçmek üzere etiket seçicileri ile [kubectl açıklagöster][kubectl-describe] komutunu kullanacağız. Pod 'da bulunan iki kapsayıcının ayrıntılarını göstermek için çıktıyı filtreleyeceğiz:
+Pod hakkındaki bilgileri görmek için, pod'u seçmek için etiket seçicileri olan `voting-analytics` [kubectl describe pod][kubectl-describe] komutunu kullanırız. Bölmede bulunan iki kapsayıcının ayrıntılarını göstermek için çıktıyı filtreleriz:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -135,73 +135,73 @@ Pod hakkındaki bilgileri görmek için, Pod `voting-analytics` seçmek üzere e
 
 ::: zone-end
 
-Bu [ağ geçidini][istio-reference-gateway] ve [sanal hizmeti][istio-reference-virtualservice]oluşturana kadar oylama uygulamasına bağlanamazsınız. Bu Istio kaynakları, trafiği varsayılan Istio ağ geçidinden uygulamamıza yönlendirir.
+Istio [Ağ Geçidi][istio-reference-gateway] ve [Sanal Hizmet'i][istio-reference-virtualservice]oluşturmadan oylama uygulamasına bağlanamazsınız. Bu Istio kaynakları trafiği varsayılan Istio giriş ağ geçidinden uygulamamıza yönlendirir.
 
 > [!NOTE]
-> **Ağ geçidi** , hizmet ağı tarafında gelen veya giden http ve TCP trafiğini alan bir bileşendir.
+> **Ağ Geçidi,** gelen veya giden HTTP ve TCP trafiğini alan servis kafesinin kenarındaki bir bileşendir.
 > 
-> Bir **sanal hizmet** , bir veya daha fazla hedef hizmet için bir yönlendirme kuralları kümesi tanımlar.
+> **Sanal Hizmet,** bir veya daha fazla hedef hizmet için bir yönlendirme kuralları kümesi tanımlar.
 
-Ağ geçidini ve sanal hizmet YAML 'yi dağıtmak için `kubectl apply` komutunu kullanın. Bu kaynakların dağıtıldığı ad alanını belirtmeyi unutmayın.
+Ağ `kubectl apply` Geçidi ve Sanal Hizmet yaml dağıtmak için komutu kullanın. Bu kaynakların dağıtılan ad alanını belirtmeyi unutmayın.
 
 ```console
 kubectl apply -f istio/step-1-create-voting-app-gateway.yaml --namespace voting
 ```
 
-Aşağıdaki örnek çıktı yeni ağ geçidini ve oluşturulmakta olan sanal hizmeti gösterir:
+Aşağıdaki örnek çıktı, oluşturulan yeni Ağ Geçidi ve Sanal Hizmet'i gösterir:
 
 ```output
 virtualservice.networking.istio.io/voting-app created
 gateway.networking.istio.io/voting-app-gateway created
 ```
 
-Aşağıdaki komutu kullanarak, Istio giriş ağ geçidinin IP adresini alın:
+Aşağıdaki komutu kullanarak Istio Ingress Ağ Geçidi'nin IP adresini edinin:
 
 ```output
 kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
-Aşağıdaki örnek çıktıda, giriş ağ geçidinin IP adresi gösterilmektedir:
+Aşağıdaki örnek çıktı, Giriş Ağ Geçidi'nin IP adresini gösterir:
 
 ```output
 20.188.211.19
 ```
 
-Bir tarayıcı açın ve IP adresini yapıştırın. Örnek AKS oylama uygulaması görüntülenir.
+Bir tarayıcı açın ve IP adresine yapıştırın. Örnek AKS oylama uygulaması görüntülenir.
 
-![IKS oylama uygulaması, ampo 'un etkin olduğu AKS kümesinde çalışıyor.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
+![Istio cluster'Da çalışan AKS Oylama uygulaması AKS kümesini etkinleştirildi.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
 
-Ekranın alt kısmındaki bilgiler, uygulamanın `voting-storage` (redo) `voting-app` ve sürüm `1.0` `1.0` sürümünü kullandığını gösterir.
+Ekranın alt kısmındaki bilgiler, `1.0` uygulamanın `voting-app` `1.0` `voting-storage` (Redis) sürümünü ve sürümünü kullandığını gösterir.
 
 ## <a name="update-the-application"></a>Uygulamayı güncelleştirme
 
-Analiz bileşeninin yeni bir sürümünü dağıtalım. Bu yeni sürüm `1.1` her kategori için sayıma ek olarak toplamları ve yüzdeleri görüntüler.
+Analiz bileşeninin yeni bir sürümünü dağıtalım. Bu yeni `1.1` sürüm, her kategori için sayıma ek olarak toplamları ve yüzdeleri görüntüler.
 
-Aşağıdaki diyagramda, bu bölümün sonunda ne olacağı gösterilmektedir-`voting-analytics` bileşenimizin yalnızca `1.1` sürümü `voting-app` bileşeninden yönlendirilen trafiğe sahiptir. `voting-analytics` bileşenimizin sürüm `1.0` çalışmaya devam ediyor ve `voting-analytics` hizmeti tarafından başvurulduğu halde, Ise proxy 'leri bu bilgisayardan gelen ve giden trafiğe izin vermez.
+Aşağıdaki diyagram, bu bölümün sonunda ne çalışır durumda `1.1` olacağını `voting-analytics` gösterir - bileşenimizin `voting-app` yalnızca sürümü bileşenden yönlendirilen trafiktir. Bileşenimizin `1.0` `voting-analytics` sürümü devam etse ve `voting-analytics` hizmet tarafından başvurulsa da, Istio vekilleri trafiğe izin vermez ve ondan.
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-02.png)
+![AKS Oylama uygulaması bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-02.png)
 
-`voting-analytics` bileşeninin sürüm `1.1` dağıtalım. `voting` ad alanında bu bileşeni oluşturun:
+Bileşenin `1.1` `voting-analytics` sürümünü dağıtalım. Bu bileşeni `voting` ad alanında oluşturun:
 
 ```console
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
-Aşağıdaki örnek çıktıda oluşturulan kaynaklar gösterilmektedir:
+Aşağıdaki örnek çıktı, oluşturulan kaynakları gösterir:
 
 ```output
 deployment.apps/voting-analytics-1-1 created
 ```
 
-Örnek AKS oylama uygulamasını bir tarayıcıda yeniden açarak, önceki adımda elde edilen Istio giriş ağ geçidinin IP adresini kullanın.
+Önceki adımda elde edilen Istio Ingress Gateway IP adresini kullanarak örnek AKS oylama uygulamasını bir tarayıcıda yeniden açın.
 
-Tarayıcınız aşağıda gösterilen iki görünüm arasında alternatifler vardır. `voting-analytics` bileşeni için yalnızca tek etiketli seçiciyle (`app: voting-analytics`) bir Kubernetes [hizmeti][kubernetes-service] kullandığınızdan, Kubernetes, bu seçiciyle eşleşen Pod 'ler arasında hepsini bir kez deneme için varsayılan davranışı kullanır. Bu durumda, hem sürüm `1.0` hem de `voting-analytics` pods `1.1`.
+Tarayıcınız aşağıda gösterilen iki görünüm arasında geçiş yapar. Bileşen için yalnızca tek bir etiket seçici () ile bir`app: voting-analytics`Kubernetes Hizmeti kullandığınızdan, Kubernetes bu seçiciyle eşleşen bölmeler arasında yuvarlanma varsayılan davranışını kullanır. [Service][kubernetes-service] `voting-analytics` Bu durumda, hem sürümü `1.0` `1.1` hem `voting-analytics` de pods olduğunu.
 
-![AKS oylama uygulamamız üzerinde çalışan analiz bileşeninin sürüm 1,0.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
+![AKS Oylama uygulamamızda çalışan analiz bileşeninin Sürüm 1.0.0.0.'ı.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
 
-![AKS oylama uygulamamız üzerinde çalışan analiz bileşeninin sürüm 1,1.](media/servicemesh/istio/scenario-routing-update-app-01.png)
+![AKS Oylama uygulamamızda çalışan analiz bileşeninin Sürüm 1.1.](media/servicemesh/istio/scenario-routing-update-app-01.png)
 
-`voting-analytics` bileşeninin iki sürümü arasındaki geçişi aşağıdaki gibi görselleştirebilirsiniz. Kendi Istik giriş ağ geçidinizin IP adresini kullanmayı unutmayın.
+`voting-analytics` Bileşenin iki sürümü arasındaki geçişi aşağıdaki gibi görselleştirebilirsiniz. Kendi Istio Ingress Ağ Geçidinizin IP adresini kullanmayı unutmayın.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -221,7 +221,7 @@ Tarayıcınız aşağıda gösterilen iki görünüm arasında alternatifler var
 
 ::: zone-end
 
-Aşağıdaki örnek çıktıda, sürümler arasında site anahtarları olarak döndürülen Web sitesinin ilgili bölümü gösterilmektedir:
+Aşağıdaki örnek çıktı, site sürümler arasında geçiş yaptıkça döndürülen web sitesinin ilgili bölümünü gösterir:
 
 ```output
   <div id="results"> Cats: 2 | Dogs: 4 </div>
@@ -231,24 +231,24 @@ Aşağıdaki örnek çıktıda, sürümler arasında site anahtarları olarak d�
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-### <a name="lock-down-traffic-to-version-11-of-the-application"></a>Trafiği uygulamanın 1,1 sürümüne kilitle
+### <a name="lock-down-traffic-to-version-11-of-the-application"></a>Trafiğin uygulamanın 1.1 sürümüne kilitleme
 
-Şimdi, trafiği yalnızca `voting-analytics` bileşeninin `1.1` sürümüne ve `voting-storage` bileşeninin `1.0` sürümüne kilitleyelim. Daha sonra diğer tüm bileşenler için yönlendirme kuralları tanımlarsınız.
+Şimdi `1.1` trafiği `voting-analytics` yalnızca bileşenin sürümüne ve `1.0` `voting-storage` bileşenin sürümüne kilitleyelim. Daha sonra tüm diğer bileşenler için yönlendirme kuralları tanımlarsınız.
 
-> * Bir **sanal hizmet** , bir veya daha fazla hedef hizmet için bir yönlendirme kuralları kümesi tanımlar.
-> * Bir **hedef kural** , trafik ilkelerini ve sürüme özgü ilkeleri tanımlar.
-> * Bir **ilke** , iş yükleri üzerinde hangi kimlik doğrulama yöntemlerinin kabul edilebilir olduğunu tanımlar.
+> * **Sanal Hizmet,** bir veya daha fazla hedef hizmet için bir yönlendirme kuralları kümesi tanımlar.
+> * **Hedef Kuralı** trafik ilkelerini ve sürüm özel ilkeleri tanımlar.
+> * **İlke,** iş yükünde hangi kimlik doğrulama yöntemlerinin kabul edilebilmiş olabileceğini tanımlar.
 
-`voting-app` sanal hizmet tanımını değiştirmek ve diğer bileşenlere yönelik [hedef kuralları][istio-reference-destinationrule] ve [sanal hizmetleri][istio-reference-virtualservice] eklemek için `kubectl apply` komutunu kullanın. Hizmetler arasındaki tüm iletişim güvenliğini karşılıklı TLS ve istemci sertifikaları kullanarak güvence altına almak için `voting` ad alanına bir [ilke][istio-reference-policy] ekleyeceksiniz.
+`kubectl apply` Sanal `voting-app` Hizmet tanımını değiştirmek ve diğer bileşenler için Hedef [Kuralları][istio-reference-destinationrule] ve Sanal [Hizmetler][istio-reference-virtualservice] eklemek için komutu kullanın. Hizmetler arasındaki tüm iletişimin `voting` karşılıklı TLS ve istemci sertifikaları kullanılarak güvence altına alınmıştır sağlamak için ad alanına bir [İlke][istio-reference-policy] eklersiniz.
 
-* Ilke, `voting` ad alanındaki hizmetleriniz arasında karşılıklı TLS 'nin uygulanmasını sağlamak için `STRICT` olarak ayarlanmıştır `peers.mtls.mode`.
-* Ayrıca, tüm hedef kurallarımızda `trafficPolicy.tls.mode` `ISTIO_MUTUAL` olarak ayarlandık. İstio, güçlü kimlikler içeren hizmetler sağlar ve karşılıklı olarak yönettiği karşılıklı TLS ve istemci sertifikalarını kullanarak hizmetler arasındaki iletişimin güvenliğini sağlar.
+* Politika, `peers.mtls.mode` hizmetleriniz `STRICT` arasında `voting` ad alanı içinde karşılıklı TLS uygulanmasını sağlamak için ayarlanmıştır.
+* Ayrıca tüm `trafficPolicy.tls.mode` Hedef `ISTIO_MUTUAL` Kurallarımızda da yerimizi alıyoruz. Istio, güçlü kimliklere sahip hizmetler sunar ve karşılıklı TLS ve Istio'nun şeffaf bir şekilde yönettiği istemci sertifikalarını kullanarak hizmetler arasındaki iletişimi sağlar.
 
 ```console
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
 ```
 
-Aşağıdaki örnek çıktıda yeni Ilke, hedef kuralları ve güncelleştirilmekte/oluşturulan sanal hizmetler gösterilmektedir:
+Aşağıdaki örnek çıktı, güncelleştirilen/oluşturulan yeni İlke, Hedef Kuralları ve Sanal Hizmetler'i gösterir:
 
 ```output
 virtualservice.networking.istio.io/voting-app configured
@@ -260,11 +260,11 @@ destinationrule.networking.istio.io/voting-storage created
 virtualservice.networking.istio.io/voting-storage created
 ```
 
-AKS oylama uygulamasını bir tarayıcıda yeniden açarsanız, `voting-app` bileşeni tarafından yalnızca `voting-analytics` bileşeninin yeni sürüm `1.1` kullanılır.
+AKS Oylama uygulamasını bir tarayıcıda yeniden açarsanız, `1.1` `voting-analytics` `voting-app` bileşenin yalnızca yeni sürümü bileşen tarafından kullanılır.
 
-![AKS oylama uygulamamız üzerinde çalışan analiz bileşeninin sürüm 1,1.](media/servicemesh/istio/scenario-routing-update-app-01.png)
+![AKS Oylama uygulamamızda çalışan analiz bileşeninin Sürüm 1.1.](media/servicemesh/istio/scenario-routing-update-app-01.png)
 
-Artık yalnızca `voting-analytics` bileşeninizin sürüm `1.1` şu şekilde yönlendirildiğini görselleştirebilirsiniz. Kendi Istio giriş ağ geçidinizin IP adresini kullanmayı unutmayın:
+Artık yalnızca bileşeninizin sürümüne `1.1` aşağıdaki gibi `voting-analytics` yönlendirildiğinize göre görüntüleyebilirsiniz. Kendi Istio Ingress Ağ Geçidinizin IP adresini kullanmayı unutmayın:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -284,7 +284,7 @@ Artık yalnızca `voting-analytics` bileşeninizin sürüm `1.1` şu şekilde y�
 
 ::: zone-end
 
-Aşağıdaki örnek çıktı, döndürülen Web sitesinin ilgili bölümünü gösterir:
+Aşağıdaki örnek çıktı, döndürülen web sitesinin ilgili bölümünü gösterir:
 
 ```output
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -294,13 +294,13 @@ Aşağıdaki örnek çıktı, döndürülen Web sitesinin ilgili bölümünü g�
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-Şimdi de, tüm hizmetlerimiz arasındaki iletişimleri güvenli hale getirmek için IBU ' ın karşılıklı TLS kullandığını doğrulayalim. Bunun için, aşağıdaki biçimi alan `istioctl` Client binary üzerinde [AuthN TLS-Check][istioctl-authn-tls-check] komutunu kullanacağız.
+Şimdi Istio'nun her bir hizmet arasında iletişimi sağlamak için karşılıklı TLS kullandığını doğrulayalım. Bunun için `istioctl` aşağıdaki formu alan istemci ikilisindeki [authn tls-check][istioctl-authn-tls-check] komutunu kullanacağız.
 
 ```console
 istioctl authn tls-check <pod-name[.namespace]> [<service>]
 ```
 
-Bu komut kümesi, bir ad alanında olan ve bir etiket kümesiyle eşleşen tüm yığınlardan belirtilen hizmetlere erişim hakkında bilgi sağlar:
+Bu komut kümesi, ad alanında bulunan ve bir etiket kümesiyle eşleşen tüm bölmelerden belirtilen hizmetlere erişim hakkında bilgi sağlar:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -320,7 +320,7 @@ Bu komut kümesi, bir ad alanında olan ve bir etiket kümesiyle eşleşen tüm 
 
 ::: zone-end
 
-Aşağıdaki örnek çıktıda, yukarıdaki sorgularımızın her biri için karşılıklı TLS 'nin zorunlu olduğu gösterilmektedir. Çıktı Ayrıca, karşılıklı TLS 'yi zorlayan Ilke ve hedef kurallarını da gösterir:
+Aşağıdaki örnek çıktı, yukarıdaki sorgularımızın her biri için karşılıklı TLS'nin zorlanmış olduğunu göstermektedir. Çıktı, karşılıklı TLS'yi zorlayan İlke ve Hedef Kuralları'nı da gösterir:
 
 ```output
 # mTLS configuration between istio ingress pods and the voting-app service
@@ -348,27 +348,27 @@ HOST:PORT                                        STATUS     SERVER     CLIENT   
 voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS       default/voting     voting-storage/voting
 ```
 
-## <a name="roll-out-a-canary-release-of-the-application"></a>Uygulamanın kanarya bir sürümünü kullanıma alma
+## <a name="roll-out-a-canary-release-of-the-application"></a>Uygulamanın bir kanarya sürümü dışarı rulo
 
-Şimdi `voting-app`, `voting-analytics`ve `voting-storage` bileşenlerinin yeni bir sürümünü `2.0` dağıtalım. Yeni `voting-storage` bileşeni redin yerine MySQL kullanır ve `voting-app` ve `voting-analytics` bileşenleri, bu yeni `voting-storage` bileşeni kullanmasına izin verecek şekilde güncelleştirilir.
+`2.0` Şimdi `voting-app`, ve `voting-analytics` `voting-storage` bileşenlerinin yeni bir sürümünü dağıtalım. Yeni `voting-storage` bileşen Redis yerine MySQL kullanır `voting-app` `voting-analytics` ve bileşenler bu yeni `voting-storage` bileşeni kullanmalarına izin verecek şekilde güncelleştirilir.
 
-`voting-app` bileşen artık Özellik bayrağı işlevini desteklemektedir. Bu özellik bayrağı, bir kullanıcı alt kümesi için istio 'nun kanarya yayın yeteneğini test etmenize olanak tanır.
+Bileşen `voting-app` artık özellik bayrağı işlevselliğini destekler. Bu özellik bayrağı, Istio'nun kanarya serbest bırakma yeteneğini bir kullanıcı alt kümesi için test etmenizi sağlar.
 
-Aşağıdaki diyagramda, bu bölümün sonunda ne çalıştırdıklarınız gösterilmektedir.
+Aşağıdaki diyagram, bu bölümün sonunda ne çalışıyor olacak gösterir.
 
-* `voting-app` bileşeninin sürüm `1.0`, `1.0` bileşenin `voting-analytics` bileşeni ve sürüm `voting-storage` sürümü `1.1` birbirleriyle iletişim kurabilir.
-* `voting-app` bileşeninin sürüm `2.0`, `2.0` bileşenin `voting-analytics` bileşeni ve sürüm `voting-storage` sürümü `2.0` birbirleriyle iletişim kurabilir.
-* `voting-app` bileşeninin sürüm `2.0` yalnızca belirli bir özellik bayrağı ayarlanmış olan kullanıcılar tarafından erişilebilir. Bu değişiklik, tanımlama bilgisi aracılığıyla bir özellik bayrağı kullanılarak yönetilir.
+* `voting-app` Bileşenin sürümü, `1.0` `1.1` `voting-analytics` bileşenin sürümü `1.0` ve `voting-storage` bileşenin sürümü birbiriyle iletişim kurabiliyor.
+* `voting-app` Bileşenin sürümü, `2.0` `2.0` `voting-analytics` bileşenin sürümü `2.0` ve `voting-storage` bileşenin sürümü birbiriyle iletişim kurabiliyor.
+* Bileşenin `2.0` `voting-app` sürümüne yalnızca belirli bir özellik bayrağı kümesi olan kullanıcılar erişebilir. Bu değişiklik, çerez aracılığıyla bir özellik bayrağı kullanılarak yönetilir.
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-03.png)
+![AKS Oylama uygulaması bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-03.png)
 
-İlk olarak, bu yeni bileşenler için istio hedef kurallarını ve sanal hizmetlerini karşılamak olarak güncelleştirin. Bu güncelleştirmeler, trafiği yeni bileşenlere doğru bir şekilde yönlendirmemenizi ve kullanıcıların beklenmeyen bir erişim almaz olmasını sağlar:
+İlk olarak, bu yeni bileşenleriçin hizmet vermek için Istio Hedef Kuralları ve Sanal Hizmetler'i güncelleştirin. Bu güncelleştirmeler, trafiği yeni bileşenlere yanlış yönlendirmemenizi ve kullanıcıların beklenmeyen erişim almamasını sağlar:
 
 ```console
 kubectl apply -f istio/step-3-add-routing-for-2.0-components.yaml --namespace voting
 ```
 
-Aşağıdaki örnek çıktıda, güncelleştirilmekte olan hedef kurallar ve sanal hizmetler gösterilmektedir:
+Aşağıdaki örnek çıktı, Hedef Kuralları'nın ve Sanal Hizmetlerin güncelleştirildiğini gösterir:
 
 ```output
 destinationrule.networking.istio.io/voting-app configured
@@ -379,13 +379,13 @@ destinationrule.networking.istio.io/voting-storage configured
 virtualservice.networking.istio.io/voting-storage configured
 ```
 
-Ardından, yeni sürüm `2.0` bileşenleri için Kubernetes nesnelerini ekleyelim. Ayrıca, `voting-storage` hizmetini MySQL için `3306` bağlantı noktasını içerecek şekilde güncelleştirebilirsiniz:
+Ardından, yeni sürüm `2.0` bileşenleri için Kubernetes nesnelerini ekleyelim. Ayrıca `voting-storage` MySQL için `3306` bağlantı noktası içerecek şekilde hizmeti güncelleştirin:
 
 ```console
 kubectl apply -f kubernetes/step-3-update-voting-app-with-new-storage.yaml --namespace voting
 ```
 
-Aşağıdaki örnek çıktıda, Kubernetes nesnelerinin başarıyla güncelleştirildiği veya oluşturulduğu gösterilmektedir:
+Aşağıdaki örnek çıktı, Kubernetes nesnelerinin başarıyla güncelleştirilen veya oluşturulduğunu gösterir:
 
 ```output
 service/voting-storage configured
@@ -396,43 +396,43 @@ deployment.apps/voting-analytics-2-0 created
 deployment.apps/voting-app-2-0 created
 ```
 
-Tüm sürüm `2.0` Pod 'leri çalıştırmaya kadar bekleyin. `voting` ad alanındaki tüm düğüm üzerindeki değişiklikleri izlemek için `-w` Watch anahtarıyla [kubectl Get Pod][kubectl-get] komutunu kullanın:
+Tüm sürüm `2.0` bölmeleri çalışana kadar bekleyin. Ad alanındaki tüm bölmelerde değişiklik `-w` izlemek için saat anahtarı ile `voting` [kubectl get pods][kubectl-get] komutunu kullanın:
 
 ```console
 kubectl get pods --namespace voting -w
 ```
 
-Artık oylama uygulamasının sürüm `1.0` ve sürüm `2.0` (Canary) arasında geçiş yapabiliyor olmanız gerekir. Ekranın alt kısmındaki Özellik bayrağı değiştirme bir tanımlama bilgisi ayarlar. Bu tanımlama bilgisi, `voting-app` sanal hizmeti tarafından, kullanıcıları yeni sürüme `2.0`yönlendirmek için kullanılır.
+Artık oylama uygulamasının sürümü ve `1.0` sürümü `2.0` (kanarya) arasında geçiş yapabilmeniz gerekir. Ekranın alt kısmında özellik bayrağı geçiş bir çerez ayarlar. Bu `voting-app` çerez, kullanıcıları yeni sürüme `2.0`yönlendirmek için Sanal Hizmet tarafından kullanılır.
 
-![AKS oylama uygulaması-Özellik bayrağının 1,0 sürümü ayarlanmamış.](media/servicemesh/istio/scenario-routing-canary-release-01.png)
+![AKS Oylama uygulamasının Sürüm 1.0 - özellik bayrağı AYARLANMAZ.](media/servicemesh/istio/scenario-routing-canary-release-01.png)
 
-![AKS oylama uygulaması-Özellik bayrağının 2,0 sürümü ayarlanır.](media/servicemesh/istio/scenario-routing-canary-release-02.png)
+![AKS Oylama uygulamasının Sürüm 2.0 - özellik bayrağı ayarlanır.](media/servicemesh/istio/scenario-routing-canary-release-02.png)
 
-Oy sayıları, uygulamanın sürümleri arasında farklılık görüntüler. Bu fark, iki farklı depolama arka ucu kullandığınızı vurgular.
+Oy sayımları uygulamanın sürümleri arasında farklıdır. Bu fark, iki farklı depolama arka uçları kullandığınızı vurgular.
 
-## <a name="finalize-the-rollout"></a>Dağıtımı sonlandırma
+## <a name="finalize-the-rollout"></a>Lansmanı sonuçlandırın
 
-Kanarya sürümünü başarıyla sınadıktan sonra, `voting-app` sanal hizmetini, tüm trafiği `voting-app` bileşeninin `2.0` sürümüne yönlendirecek şekilde güncelleştirin. Daha sonra tüm kullanıcılar, özellik bayrağının ayarlanmış olup olmamasına bakılmaksızın uygulamanın sürüm `2.0` görür:
+Kanarya sürümünü başarıyla test ettikten sonra, `voting-app` tüm trafiği `voting-app` bileşenin `2.0` sürümüne yönlendirmek için Sanal Hizmet'i güncelleştirin. Tüm kullanıcılar, `2.0` özellik bayrağının ayarlanıp ayarlanmadığına bakılmaksızın uygulamanın sürümünü görür:
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-04.png)
+![AKS Oylama uygulaması bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-04.png)
 
-Artık etkin olmasını istemediğiniz bileşenlerin sürümlerini kaldırmak için tüm hedef kurallarını güncelleştirin. Ardından, bu sürümlere başvurmayı durdurmak için tüm sanal Hizmetleri güncelleştirin.
+Artık etkin olmasını istemediğiniz bileşenlerin sürümlerini kaldırmak için tüm Hedef Kuralları'nı güncelleştirin. Ardından, bu sürümlere başvurmayı durdurmak için tüm Sanal Hizmetler'i güncelleştirin.
 
-Artık bileşenlerin eski sürümlerinden hiçbirine hiç trafik olmadığından, bu bileşenlere yönelik tüm dağıtımları güvenle silebilirsiniz.
+Bileşenlerin eski sürümlerinden herhangi birinde artık trafik olmadığından, artık bu bileşenlerin tüm dağıtımlarını güvenle silebilirsiniz.
 
-![AKS oylama uygulama bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-05.png)
+![AKS Oylama uygulaması bileşenleri ve yönlendirme.](media/servicemesh/istio/scenario-routing-components-05.png)
 
-Artık AKS oylama uygulamasının yeni bir sürümünü başarıyla tamamladınız.
+Artık AKS Oylama Uygulaması'nın yeni bir sürümünü başarıyla kullanıma çıkardınız.
 
 ## <a name="clean-up"></a>Temizleme 
 
-Bu senaryoda kullandığımız AKS oylama uygulamasını, aşağıdaki gibi `voting` ad alanını silerek AKS kümenizdeki bir şekilde kaldırabilirsiniz:
+Bu senaryoda kullandığımız AKS oylama `voting` uygulamasını, ad alanını aşağıdaki gibi silerek AKS kümenizden kaldırabilirsiniz:
 
 ```console
 kubectl delete namespace voting
 ```
 
-Aşağıdaki örnek çıktı, AKS oylama uygulamasının tüm bileşenlerinin AKS kümenizdeki kaldırıldığını gösterir.
+Aşağıdaki örnek çıktı, AKS oylama uygulamasının tüm bileşenlerinin AKS kümenizden kaldırıldığını gösterir.
 
 ```output
 namespace "voting" deleted
@@ -440,7 +440,7 @@ namespace "voting" deleted
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Istio BookInfo uygulama örneğini][istio-bookinfo-example]kullanarak ek senaryolar keşfedebilirsiniz.
+[Istio Bookinfo Application örneğini][istio-bookinfo-example]kullanarak ek senaryoları keşfedebilirsiniz.
 
 <!-- LINKS - external -->
 [github-azure-sample]: https://github.com/Azure-Samples/aks-voting-app

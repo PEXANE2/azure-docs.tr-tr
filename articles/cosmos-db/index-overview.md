@@ -1,29 +1,29 @@
 ---
 title: Azure Cosmos DB’de dizin oluşturma
-description: Dizin oluşturmanın Azure Cosmos DB, Aralık, uzamsal, bileşik dizinler gibi farklı türlerde dizinlerin nasıl çalıştığını anlayın.
+description: Azure Cosmos DB'de dizin oluşturmanın nasıl çalıştığını, Aralık, Uzamsal, bileşik dizinler gibi farklı türde dizinlerin desteklenmesini anlayın.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: thweiss
 ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873633"
 ---
-# <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB Dizin oluşturma-genel bakış
+# <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de dizin oluşturma - Genel bakış
 
-Azure Cosmos DB, şema veya dizin yönetimiyle uğraşmak zorunda kalmadan uygulamanızda yineleme yapmanızı sağlayan şemadan bağımsız bir veritabanıdır. Varsayılan olarak, Azure Cosmos DB herhangi bir şemayı tanımlamaya veya ikincil dizinleri yapılandırmaya gerek kalmadan, [kapsayıcıdaki](databases-containers-items.md#azure-cosmos-containers) tüm öğeler için her özelliği otomatik olarak dizine ekler.
+Azure Cosmos DB, şema veya dizin yönetimiyle uğraşmak zorunda kalmadan uygulamanızı yinelenebilmenizi sağlayan şema-agnostik bir veritabanıdır. Varsayılan olarak, Azure Cosmos DB, herhangi bir şema tanımlamak veya ikincil dizinleri yapılandırmak zorunda kalmadan [kapsayıcınızdaki](databases-containers-items.md#azure-cosmos-containers) tüm öğeleriçin her özelliği otomatik olarak dizine dizine alır.
 
-Bu makalenin amacı, Azure Cosmos DB verileri nasıl dizinleyen ve sorgu performansını artırmak için dizinleri nasıl kullandığını açıklamaktır. [Dizin oluşturma ilkelerinin](index-policy.md)nasıl özelleştirileceğine ilişkin araştırmadan önce bu bölümden gitmeniz önerilir.
+Bu makalenin amacı Azure Cosmos DB'nin verileri nasıl dizine aldığını ve sorgu performansını geliştirmek için dizinleri nasıl kullandığını açıklamaktır. [Dizin oluşturma ilkelerini](index-policy.md)nasıl özelleştireceklerini keşfetmeden önce bu bölümden geçmen önerilir.
 
 ## <a name="from-items-to-trees"></a>Öğelerden ağaçlara
 
-Bir öğe kapsayıcıda her depolandığında, içeriği bir JSON belgesi olarak yansıtıldıktan sonra ağaç gösterimine dönüştürülür. Bu, söz konusu öğenin her özelliğinin bir ağaçta düğüm olarak temsil edildiği anlamına gelir. Sözde kök düğüm, öğenin tüm ilk düzey özelliklerine üst öğe olarak oluşturulur. Yaprak düğümleri bir öğe tarafından taşınan gerçek skaler değerleri içerir.
+Bir öğe her kapsayıcıda depolansa, içeriği JSON belgesi olarak yansıtılır ve ardından ağaç gösterimine dönüştürülür. Bunun anlamı, o öğenin her özelliğinin bir ağaçta düğüm olarak temsil edilmesidir. Sözde kök düğümü, öğenin tüm birinci düzey özelliklerine üst öğe olarak oluşturulur. Yaprak düğümleri, bir öğe tarafından taşınan gerçek skaler değerleri içerir.
 
-Örnek olarak, şu öğeyi göz önünde bulundurun:
+Örnek olarak, bu öğeyi göz önünde bulundurun:
 
 ```json
     {
@@ -39,17 +39,17 @@ Bir öğe kapsayıcıda her depolandığında, içeriği bir JSON belgesi olarak
     }
 ```
 
-Aşağıdaki ağaç tarafından temsil edilir:
+Aşağıdaki ağaç tarafından temsil edilecektir:
 
 ![Ağaç olarak temsil edilen önceki öğe](./media/index-overview/item-as-tree.png)
 
-Dizilerin ağaçta nasıl kodlandığını unutmayın: dizideki her giriş dizideki bu girdinin diziniyle etiketlenmiş bir ara düğüm alır (0, 1 vb.).
+Dizilerin ağaçta nasıl kodlandırılmalarına dikkat edin: Bir dizideki her giriş, dizi içindeki bu girişin dizisini (0, 1 vb.) içeren bir ara düğüm alır.
 
-## <a name="from-trees-to-property-paths"></a>Ağaçlardan Özellik yollarına
+## <a name="from-trees-to-property-paths"></a>Ağaçlardan mülkiyet yollarına
 
-Azure Cosmos DB öğeleri ağaçlara dönüştürmesinin nedeni, özelliklerin bu ağaçlar içindeki yollarıyla başvurulmasını sağlar. Bir özelliğin yolunu almak için, ağacı kök düğümden bu özelliğe çapraz geçiş yapabilir ve her bir çapraz düğüm etiketini birleştirebilirsiniz.
+Azure Cosmos DB'nin öğeleri ağaca dönüştürmesinin nedeni, özelliklerin bu ağaçlardaki yolları tarafından başvurulmasına izin vermesidir. Bir özelliğin yolunu almak için, ağacı kök düğümden bu özelliğe geçiş yapabilir ve her çapraz düğümün etiketlerini birleştiririz.
 
-Yukarıda açıklanan örnek öğeden her bir özelliğin yolları aşağıda verilmiştir:
+Aşağıda, yukarıda açıklanan örnek öğedeki her özellik için yollar verilmiştir:
 
     /locations/0/country: "Germany"
     /locations/0/city: "Berlin"
@@ -60,15 +60,15 @@ Yukarıda açıklanan örnek öğeden her bir özelliğin yolları aşağıda ve
     /exports/0/city: "Moscow"
     /exports/1/city: "Athens"
 
-Bir öğe yazıldığında, Azure Cosmos DB her bir özelliğin yolunu ve karşılık gelen değerini etkin bir şekilde dizine ekler.
+Bir öğe yazıldığında, Azure Cosmos DB her özelliğin yolunu ve karşılık gelen değerini etkili bir şekilde dizine dizine eder.
 
 ## <a name="index-kinds"></a>Dizin türleri
 
-Azure Cosmos DB Şu anda üç tür dizini desteklemektedir.
+Azure Cosmos DB şu anda üç tür dizin destekler.
 
-### <a name="range-index"></a>Aralık dizini
+### <a name="range-index"></a>Aralık Endeksi
 
-**Aralık** dizini sıralı ağaç benzeri yapıyı temel alır. Aralık Dizin türü için kullanılır:
+**Aralık** dizini sıralı ağaç benzeri bir yapıyı temel alıyor. Aralık dizini türü için kullanılır:
 
 - Eşitlik sorguları:
 
@@ -90,101 +90,101 @@ Azure Cosmos DB Şu anda üç tür dizini desteklemektedir.
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (`>`, `<`, `>=`, `<=`, `!=`için geçerlidir)
+  (, `>`, `<` `>=`, `<=` `!=`, ) için çalışır
 
-- Bir özelliğin varlığı denetleniyor:
+- Bir özelliğin varlığını denetleme:
 
    ```sql
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- Dize öneki eşleşiyor (CONTAINS anahtar sözcüğü Aralık dizininden yararlanamaz):
+- String öneki eşleşmeleri (İçERİğİ anahtar kelime aralık dizini kaldıraç olmaz):
 
    ```sql
    SELECT * FROM c WHERE STARTSWITH(c.property, "value")
    ```
 
-- `ORDER BY` sorguları:
+- `ORDER BY`Sorgu:
 
    ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN` sorguları:
+- `JOIN`Sorgu:
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-Aralık dizinleri, skaler değerlerde (dize veya sayı) kullanılabilir.
+Aralık dizinleri skaler değerler (dize veya sayı) üzerinde kullanılabilir.
 
-### <a name="spatial-index"></a>Uzamsal dizin
+### <a name="spatial-index"></a>Uzamsal indeks
 
-**Uzamsal** dizinler,-Points, çizgiler, çokgenler ve MultiPolygon gibi Jeo-uzamsal nesnelerde verimli sorgular sağlar. Bu sorgular ST_DISTANCE, ST_WITHIN, ST_INTERSECTS anahtar sözcüklerini kullanır. Aşağıda, uzamsal dizin türü kullanan bazı örnekler verilmiştir:
+**Uzamsal** endeksler, noktalar, çizgiler, çokgenler ve çokgenler gibi jeouzamsal nesneler üzerinde etkin sorgular sağlar. Bu sorgular ST_DISTANCE, ST_WITHIN ST_INTERSECTS anahtar kelimeler kullanır. Mekansal dizin türünü kullanan bazı örnekler şunlardır:
 
-- Jeo-uzamsal uzaklık sorguları:
+- Jeouzamsal mesafe sorguları:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- Sorgular içindeki Jeo uzamsal:
+- Sorgular içinde coğrafi:
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-- Jeo-uzamsal Kesiştirme sorguları:
+- Jeouzamsal kesişme sorguları:
 
    ```sql
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-Uzamsal dizinler, doğru biçimli [geojson](geospatial.md) nesnelerinde kullanılabilir. Noktaları, LineStrings, çokgenler ve MultiPolygon Şu anda desteklenmektedir.
+Uzamsal dizinler doğru biçimlendirilmiş [GeoJSON](geospatial.md) nesnelerinde kullanılabilir. Noktalar, LineString'ler, Çokgenler ve Çokgenler şu anda desteklenir.
 
 ### <a name="composite-indexes"></a>Bileşik dizinler
 
-**Bileşik** dizinler, birden çok alanda işlem gerçekleştirirken verimliliği artırır. Bileşik dizin türü için kullanılır:
+**Bileşik** endeksler, birden çok alanda işlem gerçekleştirirken verimliliği artırır. Bileşik dizin türü için kullanılır:
 
-- birden çok özelliklerde sorgu `ORDER BY`:
+- `ORDER BY`birden çok özellik üzerinde sorgular:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Filtre ve `ORDER BY`olan sorgular. Filter özelliği `ORDER BY` yan tümcesine eklenirse, bu sorgular bileşik bir dizin kullanabilir.
+- Filtreli sorgular `ORDER BY`ve . Filtre özelliği `ORDER BY` yan tümceye eklenirse, bu sorgular bileşik dizin kullanabilir.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
 ```
 
-- En az bir özelliğin eşitlik filtresi olduğu iki veya daha fazla özelliğe filtre içeren sorgular
+- En az bir özelliğin eşitlik filtresi olduğu iki veya daha fazla özellik üzerinde filtre içeren sorgular
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Bir filtre koşulunun Dizin türünde kullanıldığı sürece sorgu altyapısı, kalanı taramadan önce bunu değerlendirir. Örneğin, gibi bir SQL sorgunuz varsa `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Bir filtre yüklemi dizin türünde kullandığı sürece, sorgu motoru geri kalanını taramadan önce bunu ilk olarak değerlendirir. Örneğin, gibi bir SQL sorgusu varsa`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
-* Yukarıdaki sorgu önce dizin kullanılarak firstName = "Andrew" olan girdileri filtreleyecek. Ardından, CONTAINS filtre koşulunu değerlendirmek için firstName = "Andrew" girdilerini sonraki bir işlem hattı aracılığıyla geçirin.
+* Yukarıdaki sorgu ilk indeks kullanarak firstName = "Andrew" girişleri için filtre olacaktır. Daha sonra, Contains filtre yüklemini değerlendirmek için sonraki bir ardışık boru hattından tüm firstName = "Andrew" girişlerini geçirir.
 
-* Dizini kullanan ek filtre koşulları ekleyerek dizini (ör. IÇERIR) kullanmayan işlevleri kullanırken, sorguları hızlandırabilir ve tam kapsayıcı taramalarından kaçınabilirsiniz. Filter yan tümceleri sırası önemli değildir. Sorgu altyapısı, hangi koşulların daha seçmeli olduğunu anlayabilir ve sorguyu uygun şekilde çalıştıracaktır.
+* Dizin kullanan ek filtre yüklemleri ekleyerek sorguları hızlandırabilir ve dizin kullanmayan işlevleri (örn. İçERİk) kullanırken tam kapsayıcı taramalarından kaçınabilirsiniz. Filtre yan tümcelerinin sırası önemli değildir. Sorgu motoru hangi yüklemlerin daha seçici olduğunu çözecek ve sorguyu buna göre çalıştıracaktır.
 
 
 ## <a name="querying-with-indexes"></a>Dizinlerle sorgulama
 
-Verileri dizinlerken ayıklanan yollar, bir sorgu işlenirken dizinde arama yapmayı kolaylaştırır. Dizine alınmış yolların listesini içeren bir sorgunun `WHERE` yan tümcesini eşleştirerek sorgu koşulu ile eşleşen öğeleri çok hızlı bir şekilde tanımlamak mümkündür.
+Verileri dizine alırken çıkarılan yollar, sorguyu işlerken dizini aramayı kolaylaştırır. Sorgu `WHERE` nun yan tümcesini dizine eklenmiş yolların listesiyle eşleştirerek, sorgu yüklemiyle eşleşen öğeleri çok hızlı bir şekilde tanımlamak mümkündür.
 
-Örneğin, aşağıdaki sorguyu göz önünde bulundurun: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Sorgu koşulu (herhangi bir konumda ülke olarak "Fransa" bulunduğu öğeler üzerinde filtreleme) aşağıdaki kırmızı renkle eşleşen yol ile eşleşir:
+Örneğin, aşağıdaki sorguyu `SELECT location FROM location IN company.locations WHERE location.country = 'France'`göz önünde bulundurun: . Sorgu yüklemi (herhangi bir konumun ülkesi olarak "Fransa" olduğu öğelerüzerinde filtreleme) aşağıdaki kırmızı renkle vurgulanan yolla eşleşir:
 
-![Ağaç içindeki belirli bir yolu eşleştirme](./media/index-overview/matching-path.png)
+![Ağaç içinde belirli bir yolu eşleştirme](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Tek bir özelliğe göre siparişlerin *her zaman* bir Aralık dizinine ihtiyacı olan ve başvurduğu yolun bir tane yoksa başarısız olacağı bir `ORDER BY` yan tümcesi. Benzer şekilde, birden çok özelliğe göre siparişlerin *her zaman* bir bileşik dizine ihtiyacı olan bir `ORDER BY` sorgusu.
+> Tek `ORDER BY` bir özellik tarafından sipariş veren bir yan tümce *her zaman* bir aralık dizini gerekir ve başvurur yolu yoksa başarısız olur. Benzer şekilde, `ORDER BY` birden çok özellik tarafından sipariş edilen bir sorgu *her zaman* bileşik dizin gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Aşağıdaki makalelerde dizin oluşturma hakkında daha fazla bilgi edinin:
 
 - [Dizin oluşturma ilkesi](index-policy.md)
-- [Dizin oluşturma ilkesini yönetme](how-to-manage-indexing-policy.md)
+- [Dizin oluşturma ilkesi nasıl yönetilir?](how-to-manage-indexing-policy.md)

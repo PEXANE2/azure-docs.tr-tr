@@ -1,6 +1,6 @@
 ---
-title: Veri akışı birleşim dönüşümünü eşleme
-description: Azure Data Factory eşleme veri akışı yeni dal dönüştürmesi
+title: Veri akışı birleşimi dönüşümeşleme
+description: Azure Veri Fabrikası haritalama veri akışı Yeni Şube Dönüşümü
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,40 +9,40 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/12/2019
 ms.openlocfilehash: adba1eb61676dbebcb356490b14b279ebe69c644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930155"
 ---
-# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Data Factory eşleme veri akışı birleşim dönüştürmesi
+# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Veri Fabrikası eşleme veri akışı birliği dönüşümü
 
-Birleşim birden çok veri akışını birleştirme dönüşümünde yeni çıkış olarak bu akışların SQL birleşimi ile tek bir birleştirir. Her giriş akışındaki tüm şema, bir JOIN anahtarına gerek duymadan veri akışınız içinde birleştirilir.
+Birleşim, birden çok veri akışını, Bu akışların SQL Birliği ile birleştirir. Her giriş akışındaki şemaların tümü, bir birleştirme anahtarına gerek kalmadan veri akışınızın içinde birleştirilir.
 
-Her iki kaynak veri da dahil olmak üzere, her bir yapılandırılmış satırın yanındaki "+" simgesini, hem de veri akışınızda mevcut dönüşümlerden Akışlar ' ı seçerek ayarlar tablosunda n-sayıda akışı birleştirebilirsiniz.
+Hem kaynak verileri hem de veri akışınızdaki varolan dönüşümlerden gelen akışlar da dahil olmak üzere, yapılandırılan her satırın yanındaki "+" simgesini seçerek ayarlar tablosundaki n-akış sayısını birleştirebilirsiniz.
 
-![Birleşim dönüşümü](media/data-flow/union.png "Birleşim")
+![Birlik dönüşümü](media/data-flow/union.png "Birleşim")
 
-Bu durumda, birden fazla kaynaktan farklı meta verileri birleştirebilir (Bu örnekte, üç farklı kaynak dosyası) ve bunları tek bir akışta birleştirebilirsiniz:
+Bu durumda, birden çok kaynaktan (bu örnekte, üç farklı kaynak dosyası) farklı meta verileri birleştirebilir ve bunları tek bir akışta birleştirebilirsiniz:
 
-![Union dönüşümüne genel bakış](media/data-flow/union111.png "Birleşim 1")
+![Birlik dönüşümüne genel bakış](media/data-flow/union111.png "Birlik 1")
 
-Bunu başarmak için, eklemek istediğiniz tüm kaynağı ekleyerek birleşim ayarlarına ek satırlar ekleyin. Ortak arama veya bir JOIN anahtarına gerek yoktur:
+Bunu başarmak için, eklemek istediğiniz tüm kaynağı ekleyerek Birlik Ayarları'na ek satırlar ekleyin. Ortak bir arama veya birleştirme anahtarına gerek yoktur:
 
-![Birleşim dönüştürme ayarları](media/data-flow/unionsettings.png "Birleşim ayarları")
+![Birleşim dönüşüm ayarları](media/data-flow/unionsettings.png "Birlik ayarları")
 
-Birleşiminizden sonra bir seçme dönüşümü ayarlarsanız, örtüşen alanları veya headerless kaynaklarından isimsiz olmayan alanları yeniden adlandırabilirsiniz. Üç farklı kaynaktan bu örnekteki meta verileri 132 toplam sütun ile birleştirme bölümüne bakmak için "ıncele" düğmesine tıklayın:
+Birliğinizden sonra bir Select dönüşümü ayarlarsanız, üstbilgisiz kaynaklardan adverişsiz üst üste binen alanları veya alanları yeniden adlandırabilirsiniz. Bu örnekte üç farklı kaynaktan 132 toplam sütuniçeren birleştirme meta verilerini görmek için "İncele"yi tıklatın:
 
-![Birleşim dönüşümü son](media/data-flow/union333.png "Birleşim 3")
+![Birlik dönüşüm finali](media/data-flow/union333.png "Birlik 3")
 
 ## <a name="name-and-position"></a>Ad ve konum
 
-"Ada göre birleşim" seçeneğini belirlediğinizde her bir sütun değeri, yeni bir birleştirilmiş meta veri şeması ile her bir kaynaktaki karşılık gelen sütuna bırakılır.
+"Ada göre birleşim" seçeneğini seçtiğinizde, her sütun değeri yeni bir bir leştirilmiş meta veri şemasıyla her kaynaktan karşılık gelen sütuna düşer.
 
-"Konuma göre birleşim" seçeneğini belirlerseniz her bir sütun değeri, her bir kaynaktaki verilerin aynı akışa eklendiği yeni bir Birleşik veri akışına neden olur.
+"Konuma göre birleştirme" seçeneğini seçerseniz, her sütun değeri karşılık gelen her kaynaktan özgün konuma düşer ve her kaynaktan gelen verilerin aynı akışa eklendiği yeni bir veri akışıyla sonuçlanır:
 
-![Birleşim çıkışı](media/data-flow/unionoutput.png "Birleşim çıkışı")
+![Birlik çıktısı](media/data-flow/unionoutput.png "Sendika Çıktısı")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[JOIN](data-flow-join.md) ve [Exists](data-flow-exists.md)dahil benzer dönüşümleri keşfedebilir.
+[Join](data-flow-join.md) and [Exists](data-flow-exists.md)gibi benzer dönüşümleri keşfedin.

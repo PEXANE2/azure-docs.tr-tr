@@ -1,6 +1,6 @@
 ---
-title: PowerShell ile Azure Stream Analytics işlerini izleme ve yönetme
-description: Bu makalede, Azure Stream Analytics işlerini yönetmek ve izlemek için Azure PowerShell ve cmdlet'leri kullanmayı açıklar.
+title: PowerShell ile Azure Akış Analizi işlerini izleyin ve yönetin
+description: Bu makalede, Azure Akış Analizi işlerini izlemek ve yönetmek için Azure PowerShell ve cmdlets nasıl kullanılacağı açıklanmaktadır.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,19 +8,19 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: 7781f35fe7c17e4a0f307f559945caf648b23f6a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431696"
 ---
-# <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>İzleme ve Stream Analytics işlerini Azure PowerShell cmdlet'leriyle yönetme
-İzleme ve Azure PowerShell cmdlet'leri ve powershell betikleri ile temel bir Stream Analytics görevleri yürütme Stream Analytics kaynaklarını yönetme hakkında bilgi edinin.
+# <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell cmdlets ile Stream Analytics işlerini izleme ve yönetme
+Temel Stream Analytics görevlerini yürüten Azure PowerShell cmdlets ve powershell komut dosyası yla Stream Analytics kaynaklarını nasıl izleyeceğinizi ve yönettiğinizi öğrenin.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics için Azure PowerShell cmdlet'lerini çalıştırmak için Önkoşullar
-* Aboneliğinizde bir Azure kaynak grubu oluşturun. Örnek Azure PowerShell Betiği verilmiştir. Azure PowerShell için bilgi [yüklemek ve Azure PowerShell yapılandırma](/powershell/azure/overview);  
+## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics için Azure PowerShell cmdlets çalıştırmak için ön koşullar
+* Aboneliğinizde bir Azure Kaynak Grubu oluşturun. Aşağıda örnek bir Azure PowerShell komut dosyası verem. Azure PowerShell bilgileri için Azure [PowerShell'i Yükle ve yapılandırma](/powershell/azure/overview)(  
 
 Azure PowerShell 0.9.8:  
 
@@ -50,16 +50,16 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> Stream Analytics işleri programlı olarak oluşturulmuş varsayılan olarak etkin izleme yok.  Azure portalında izlemeyi, iş öğeleri Izleyici sayfasına giderek ve Etkinleştir düğmesine tıklayarak veya [Azure Stream Analytics-izleme Stream Analytics işlerinde](stream-analytics-monitor-jobs.md)bulunan adımları programlı bir şekilde uygulayarak yapabilirsiniz.
+> Programlı olarak oluşturulan Akış Analizi işleri varsayılan olarak izlemeyi etkinleştirmez.  İş Monitörü sayfasına gidip Etkinleştir düğmesini tıklatarak Azure Portalı'nda izlemeyi el ile etkinleştirebilir veya [Azure Stream Analytics - Monitor Stream Analytics İş Lerini Programlı olarak](stream-analytics-monitor-jobs.md)takip ederek bunu programlı olarak yapabilirsiniz.
 > 
 > 
 
-## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Stream Analytics için Azure PowerShell cmdlet'leri
-Aşağıdaki Azure PowerShell cmdlet'lerini, Azure Stream Analytics işlerini yönetmek ve izlemek için kullanılabilir. Azure PowerShell farklı olduğuna dikkat edin. 
-**Listelenen örnekler için Azure PowerShell 0.9.8, ilk komut olduğundan ikinci komut, Azure PowerShell 1.0 için olur.** Azure PowerShell 1,0 komutlarının her zaman komutta "az" olması gerekir.
+## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Akış Analizi için Azure PowerShell cmdlets
+Aşağıdaki Azure PowerShell cmdlets'leri, Azure Akış Analizi işlerini izlemek ve yönetmek için kullanılabilir. Azure PowerShell'in farklı sürümleri olduğunu unutmayın. 
+**Listelenen örneklerde ilk komut Azure PowerShell 0.9.8 için, ikinci komut Azure PowerShell 1.0 içindir.** Azure PowerShell 1.0 komutları her zaman komutta "Az" olacaktır.
 
-### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
-Azure aboneliği veya belirtilen kaynak grubunda tanımlanan tüm Stream Analytics işlerini listeler ve bir kaynak grubu içindeki belirli bir işin iş bilgilerini alır.
+### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
+Azure aboneliğinde veya belirtilen kaynak grubunda tanımlanan tüm Akış Analizi işlerini listeler veya kaynak grubu içindeki belirli bir iş hakkında iş bilgileri alır.
 
 **Örnek 1**
 
@@ -75,7 +75,7 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsJob
 ```
 
-Bu PowerShell komutunu Azure aboneliğinde tüm Stream Analytics işleri hakkında bilgi döndürür.
+Bu PowerShell komutu, Azure aboneliğindeki tüm Akış Analizi işleri hakkında bilgi verir.
 
 **Örnek 2**
 
@@ -91,7 +91,7 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 ```
 
-Bu PowerShell komutunu kaynak grubunda varsayılan orta ABD StreamAnalytics tüm Stream Analytics işleri hakkında bilgi döndürür.
+Bu PowerShell komutu, StreamAnalytics-Default-Central-US kaynak grubundaki tüm Stream Analytics işleri hakkında bilgi verir.
 
 **Örnek 3**
 
@@ -107,10 +107,10 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob
 ```
 
-Bu PowerShell komutunu kaynak grubunda varsayılan orta ABD StreamAnalytics StreamingJob Stream Analytics işi hakkında bilgi döndürür.
+Bu PowerShell komutu, StreamAnalytics-Default-Central-US kaynak grubunda Akış Analizi işi StreamingJob hakkında bilgi verir.
 
-### <a name="get-azurestreamanalyticsinput--get-azstreamanalyticsinput"></a>Get-AzureStreamAnalyticsInput | Get-AzStreamAnalyticsInput
-Belirtilen bir Stream Analytics işinde tanımlanan girişleri listeler veya belirli bir giriş bilgilerini alır.
+### <a name="get-azurestreamanalyticsinput--get-azstreamanalyticsinput"></a>AzureStreamAnalyticsInput | Get-AzStreamAnalyticsInput
+Belirli bir Akış Analizi işinde tanımlanan tüm girişleri listeler veya belirli bir giriş hakkında bilgi alır.
 
 **Örnek 1**
 
@@ -126,7 +126,7 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 ```
 
-Bu PowerShell komutunu StreamingJob iş içinde tanımlanan tüm girişleri hakkında bilgi döndürür.
+Bu PowerShell komutu, Akışİş işinde tanımlanan tüm girişler hakkında bilgi verir.
 
 **Örnek 2**
 
@@ -142,10 +142,10 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name EntryStream
 ```
 
-Bu PowerShell komutunu StreamingJob iş içinde tanımlanan EntryStream adlı giriş hakkında bilgi döndürür.
+Bu PowerShell komutu, Akışİş işinde tanımlanan EntryStream adlı giriş le ilgili bilgileri döndürür.
 
-### <a name="get-azurestreamanalyticsoutput--get-azstreamanalyticsoutput"></a>Get-AzureStreamAnalyticsOutput | Get-AzStreamAnalyticsOutput
-Belirtilen bir Stream Analytics işinde tanımlanan çıkışları listeler veya belirli bir çıktısına hakkındaki bilgileri alır.
+### <a name="get-azurestreamanalyticsoutput--get-azstreamanalyticsoutput"></a>AzureStreamAnalyticsOutput | Get-AzStreamAnalyticsOutput
+Belirli bir Akış Analizi işinde tanımlanan tüm çıktıları listeler veya belirli bir çıktı hakkında bilgi alır.
 
 **Örnek 1**
 
@@ -161,7 +161,7 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 ```
 
-Bu PowerShell komutunu StreamingJob iş içinde tanımlanan çıkış hakkında bilgi döndürür.
+Bu PowerShell komutu, Akışİş işinde tanımlanan çıktılar hakkında bilgi verir.
 
 **Örnek 2**
 
@@ -177,10 +177,10 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name Output
 ```
 
-Bu PowerShell komutunu StreamingJob iş içinde tanımlanan çıkış adlı çıktı hakkında bilgi döndürür.
+Bu PowerShell komutu, Akışİş işinde tanımlanan Çıktı adlı çıktı hakkında bilgi verir.
 
-### <a name="get-azurestreamanalyticsquota--get-azstreamanalyticsquota"></a>Get-AzureStreamAnalyticsQuota | Get-AzStreamAnalyticsQuota
-Akış birimleri belirli bir bölgede, kota hakkındaki bilgileri alır.
+### <a name="get-azurestreamanalyticsquota--get-azstreamanalyticsquota"></a>AzureStreamAnalyticsKota | Get-AzStreamAnalyticsKota
+Belirli bir bölgedeki akış birimlerinin kotası hakkında bilgi alır.
 
 **Örnek 1**
 
@@ -196,10 +196,10 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsQuota �Location "Central US" 
 ```
 
-Bu PowerShell komutunu Orta ABD bölgesinde kota ve akış birimi kullanımı hakkında bilgi döndürür.
+Bu PowerShell komutu, Orta ABD bölgesindeki akış birimlerinin kotası ve kullanımı hakkında bilgi verir.
 
-### <a name="get-azurestreamanalyticstransformation--get-azstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | Get-AzStreamAnalyticsTransformation
-Stream Analytics işinde tanımlanan belirli bir dönüştürme hakkında bilgi alır.
+### <a name="get-azurestreamanalyticstransformation--get-azstreamanalyticstransformation"></a>AzureStreamAnalyticsDönüşümü | Get-AzStreamAnalyticsTransformation
+Bir Akış Analizi işinde tanımlanan belirli bir dönüşüm hakkında bilgi alır.
 
 **Örnek 1**
 
@@ -215,18 +215,18 @@ Azure PowerShell 1.0:
 Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �Name StreamingJob
 ```
 
-Bu PowerShell komutunu StreamingJob adlı StreamingJob işinde dönüştürme hakkında bilgi döndürür.
+Bu PowerShell komutu, Akışİş'te Akışİş adı verilen dönüşüm hakkında bilgi verir.
 
-### <a name="new-azurestreamanalyticsinput--new-azstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzStreamAnalyticsInput
-Bir Stream Analytics işi içinde yeni bir giriş oluşturur veya mevcut bir belirtilen giriş güncelleştirir.
+### <a name="new-azurestreamanalyticsinput--new-azstreamanalyticsinput"></a>Yeni AzureStreamAnalyticsInput | Yeni-AzStreamAnalyticsInput
+Bir Akış Analizi işi içinde yeni bir girdi oluşturur veya varolan bir belirtilen girişi güncelleştirir.
 
-Giriş adını .json dosyası veya komut satırında belirtilebilir. Her ikisi de belirtilirse, komut satırında adı bir dosya ile aynı olmalıdır.
+Girişin adı .json dosyasında veya komut satırında belirtilebilir. Her ikisi de belirtilirse, komut satırındaki ad dosyadakiyle aynı olmalıdır.
 
-Zaten var olan ve zorla parametresini belirtmeyen bir giriş belirtirseniz cmdlet, var olan girişin değiştirilmesini isteyip istemediğinizi sorar.
+Zaten var olan bir giriş belirtir seniz ve Kuvvet parametresini belirtmezseniz, cmdlet varolan girdinin değiştirilip değiştirilmeyeceğini sorar.
 
-Zorla parametresini belirtirseniz ve var olan bir giriş adı belirtirseniz, giriş onay olmadan değişir.
+Kuvvet parametresini belirtir ve varolan bir giriş adı belirtirseniz, giriş onay olmadan değiştirilir.
 
-JSON dosya yapısı ve içerikleri hakkında ayrıntılı bilgi için [Stream Analytics yönetimi REST API başvuru kitaplığının][stream.analytics.rest.api.reference] [giriş (Azure Stream Analytics) oluşturma][msdn-rest-api-create-stream-analytics-input] bölümüne bakın.
+JSON dosya yapısı ve içeriği hakkında ayrıntılı bilgi [için, Akış Analizi Yönetimi REST API Başvuru Kitaplığı'nın][stream.analytics.rest.api.reference] [Giriş Oluştur (Azure Akışı Analizi)][msdn-rest-api-create-stream-analytics-input] bölümüne bakın.
 
 **Örnek 1**
 
@@ -242,7 +242,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" 
 ```
 
-Bu PowerShell komutunu, söz konusu Input.json dosyasından yeni bir giriş oluşturur. Giriş tanımı dosyasında belirtilen ada sahip mevcut bir giriş zaten tanımlıysa, cmdlet değiştirmek gerekip gerekmediğini sorar.
+Bu PowerShell komutu, Input.json dosyasından yeni bir giriş oluşturur. Giriş tanımı dosyasında belirtilen ada sahip varolan bir giriş zaten tanımlanmışsa, cmdlet bunu değiştirip değiştirmeme mi soracaktır.
 
 **Örnek 2**
 
@@ -258,7 +258,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream
 ```
 
-Bu PowerShell komutunu yeni bir giriş EntryStream adlı işi oluşturur. Bu ada sahip mevcut bir giriş zaten tanımlıysa, cmdlet değiştirmek gerekip gerekmediğini sorar.
+Bu PowerShell komutu EntryStream adlı işte yeni bir giriş oluşturur. Bu ada sahip varolan bir giriş zaten tanımlanmışsa, cmdlet değiştirip değiştirmememi sorar.
 
 **Örnek 3**
 
@@ -274,18 +274,18 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob �File "C:\Input.json" �Name EntryStream -Force
 ```
 
-Bu PowerShell komut dosyasındaki tanımıyla EntryStream adlı mevcut giriş kaynağı tanımını değiştirir.
+Bu PowerShell komutu, entrystream adı verilen varolan giriş kaynağının tanımının yerine dosyadaki tanımla birlikte gelir.
 
-### <a name="new-azurestreamanalyticsjob--new-azstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzStreamAnalyticsJob
-Microsoft Azure'da yeni bir Stream Analytics işi oluşturur veya mevcut bir belirtilen iş tanımını güncelleştirir.
+### <a name="new-azurestreamanalyticsjob--new-azstreamanalyticsjob"></a>Yeni AzureStreamAnalyticsJob | Yeni-AzStreamAnalyticsJob
+Microsoft Azure'da yeni bir Akış Analizi işi oluşturur veya varolan belirtilen işin tanımını güncelleştirir.
 
-İş adı bir .json dosyası veya komut satırında belirtilebilir. Her ikisi de belirtilirse, komut satırında adı bir dosya ile aynı olmalıdır.
+İşin adı .json dosyasında veya komut satırında belirtilebilir. Her ikisi de belirtilirse, komut satırındaki ad dosyadakiyle aynı olmalıdır.
 
-Zaten var olan ve zorlama parametresini belirtmeyen bir iş adı belirtirseniz cmdlet, var olan işin değiştirilmesini ister.
+Zaten var olan bir iş adı belirtir seniz ve Kuvvet parametresini belirtmezseniz, cmdlet varolan işin değiştirilip değiştirilmeyeceğini sorar.
 
-Zorla parametresini belirtir ve var olan bir iş adı belirtirseniz, iş tanımı onay olmadan değiştirilmez.
+Kuvvet parametresini belirtir ve varolan bir iş adı belirtirseniz, iş tanımı onay olmadan değiştirilir.
 
-JSON dosya yapısı ve içerikleri hakkında ayrıntılı bilgi için [Stream Analytics yönetimi REST API başvuru kitaplığının][stream.analytics.rest.api.reference] [Stream Analytics iş oluşturma][msdn-rest-api-create-stream-analytics-job] bölümüne bakın.
+JSON dosya yapısı ve içeriği hakkında ayrıntılı bilgi için, [Stream Analytics Management REST API Başvuru Kitaplığı'nın][stream.analytics.rest.api.reference] [Akış Analizi İşi Oluştur][msdn-rest-api-create-stream-analytics-job] bölümüne bakın.
 
 **Örnek 1**
 
@@ -301,7 +301,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" 
 ```
 
-Bu PowerShell komutunu JobDefinition.json tanımında yeni bir proje oluşturur. İş tanımı dosyasında belirtilen ada sahip mevcut bir proje zaten tanımlıysa, cmdlet değiştirmek gerekip gerekmediğini sorar.
+Bu PowerShell komutu JobDefinition.json'daki tanımdan yeni bir iş oluşturur. İş tanımı dosyasında belirtilen ada sahip varolan bir iş zaten tanımlanmışsa, cmdlet değiştirip değiştirmeme mi soracaktır.
 
 **Örnek 2**
 
@@ -317,18 +317,18 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\JobDefinition.json" �Name StreamingJob -Force
 ```
 
-Bu PowerShell komutunu StreamingJob iş tanımını değiştirir.
+Bu PowerShell komutu, StreamingJob için iş tanımının yerini alır.
 
-### <a name="new-azurestreamanalyticsoutput--new-azstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzStreamAnalyticsOutput
-Bir Stream Analytics işi içinde yeni bir çıktı oluşturur veya mevcut bir çıktı güncelleştirir.  
+### <a name="new-azurestreamanalyticsoutput--new-azstreamanalyticsoutput"></a>Yeni AzureStreamAnalyticsOutput | Yeni-AzStreamAnalyticsOutput
+Bir Akış Analizi işi içinde yeni bir çıktı oluşturur veya varolan bir çıktıyı güncelleştirir.  
 
-Çıktı adı bir .json dosyası veya komut satırında belirtilebilir. Her ikisi de belirtilirse, komut satırında adı bir dosya ile aynı olmalıdır.
+Çıktının adı .json dosyasında veya komut satırında belirtilebilir. Her ikisi de belirtilirse, komut satırındaki ad dosyadakiyle aynı olmalıdır.
 
-Zaten var olan ve zorla parametresini belirtmeyen bir çıkış belirtirseniz cmdlet, var olan çıkışın değiştirilmesini isteyip istemediğinizi sorar.
+Zaten var olan bir çıktı belirtir seniz ve Kuvvet parametresini belirtmezseniz, cmdlet varolan çıktıyı değiştirip değiştirmemenizi sorar.
 
-Zorla parametresini belirtirseniz ve var olan bir çıktı adı belirtirseniz, çıkış, onay olmadan değişir.
+Kuvvet parametresini belirtir ve varolan bir çıktı adı belirtirseniz, çıktı onay olmadan değiştirilir.
 
-JSON dosya yapısı ve içerikleri hakkında ayrıntılı bilgi için [Stream Analytics yönetimi REST API başvuru kitaplığının][stream.analytics.rest.api.reference] [çıkış oluştur (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] bölümüne bakın.
+JSON dosya yapısı ve içeriği hakkında ayrıntılı bilgi [için, Akış Analizi Yönetimi REST API Başvuru Kitaplığı'nın][stream.analytics.rest.api.reference] [Çıktı Oluştur (Azure Akışı Analizi)][msdn-rest-api-create-stream-analytics-output] bölümüne bakın.
 
 **Örnek 1**
 
@@ -344,7 +344,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output
 ```
 
-Bu PowerShell komutunu StreamingJob işinde "çıkış" adlı yeni bir çıktı oluşturur. Bu ada sahip mevcut bir çıkış tanımlanmış olması durumunda, cmdlet değiştirmek gerekip gerekmediğini sorar.
+Bu PowerShell komutu, Akışİş işinde "çıktı" adı verilen yeni bir çıktı oluşturur. Bu ada sahip varolan bir çıktı zaten tanımlanmışsa, cmdlet değiştirip değiştirmememi sorar.
 
 **Örnek 2**
 
@@ -360,18 +360,18 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Output.json" �JobName StreamingJob �Name output -Force
 ```
 
-Bu PowerShell komutunu StreamingJob işinde "çıkış" tanımını değiştirir.
+Bu PowerShell komutu, Akışİş'teki "çıktı" tanımının yerini alır.
 
-### <a name="new-azurestreamanalyticstransformation--new-azstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzStreamAnalyticsTransformation
-Bir Stream Analytics işi içinde yeni bir dönüşüm oluşturur veya mevcut dönüştürmeyi güncelleştirir.
+### <a name="new-azurestreamanalyticstransformation--new-azstreamanalyticstransformation"></a>Yeni AzureStreamAnalyticsTransformation | Yeni-AzStreamAnalyticsDönüşüm
+Bir Akış Analizi işinde yeni bir dönüşüm oluşturur veya varolan dönüşümü güncelleştirir.
 
-Dönüşümü adı, .json dosyası veya komut satırında belirtilebilir. Her ikisi de belirtilirse, komut satırında adı bir dosya ile aynı olmalıdır.
+Dönüştürmenin adı .json dosyasında veya komut satırında belirtilebilir. Her ikisi de belirtilirse, komut satırındaki ad dosyadakiyle aynı olmalıdır.
 
-Zaten var olan ve zorlama parametresini belirtmeyen bir dönüşüm belirtirseniz cmdlet, var olan dönüşümün değiştirilmesini isteyip istemediğinizi sorar.
+Zaten var olan bir dönüşüm belirtir ve Kuvvet parametresini belirtmezseniz, cmdlet varolan dönüşümün yerine gelip geçmeme mi soracaktır.
 
-Zorla parametresini belirtirseniz ve var olan bir dönüştürme adı belirtirseniz, dönüştürme onay olmadan değiştirilmez.
+Kuvvet parametresini belirtir ve varolan bir dönüşüm adı belirtirseniz, dönüşüm onay olmadan değiştirilir.
 
-JSON dosya yapısı ve içerikleri hakkında ayrıntılı bilgi için, [Stream Analytics yönetimi REST API başvuru kitaplığı][stream.analytics.rest.api.reference]' nın [dönüştürme (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] bölümüne bakın.
+JSON dosya yapısı ve içeriği hakkında ayrıntılı bilgi [için, Akış Analizi Yönetimi REST API Başvuru Kitaplığı'nın][stream.analytics.rest.api.reference] [Dönüşüm Oluştur (Azure Akışı Analizi)][msdn-rest-api-create-stream-analytics-transformation] bölümüne bakın.
 
 **Örnek 1**
 
@@ -387,7 +387,7 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform
 ```
 
-Bu PowerShell komutunu StreamingJobTransform StreamingJob işinde adlı yeni bir dönüşüm oluşturur. Bu ada sahip mevcut bir dönüştürme zaten tanımlanmış, cmdlet değiştirmek gerekip gerekmediğini isteyin.
+Bu PowerShell komutu, StreamingJob işinde StreamingJobTransform adında yeni bir dönüşüm oluşturur. Varolan bir dönüşüm zaten bu adla tanımlanmışsa, cmdlet bu ada değiştirip değiştirmeme mi soracaktır.
 
 **Örnek 2**
 
@@ -403,11 +403,11 @@ Azure PowerShell 1.0:
 New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US �File "C:\Transformation.json" �JobName StreamingJob �Name StreamingJobTransform -Force
 ```
 
- Bu PowerShell komutunu StreamingJob iş StreamingJobTransform tanımında değiştirir.
+ Bu PowerShell komutu, StreamingJob iş akışında StreamingJobTransform tanımının yerini alır.
 
 ### <a name="remove-azurestreamanalyticsinput--remove-azstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzStreamAnalyticsInput
-Zaman uyumsuz olarak bir Microsoft Azure Stream Analytics işinde belirli bir giriş siler.  
-Zorla parametresini belirtirseniz, giriş onaysız olarak silinir.
+Microsoft Azure'daki bir Akış Analizi işinden belirli bir girişi eş senkronize olarak siler.  
+Kuvvet parametresini belirtirseniz, giriş onay olmadan silinir.
 
 **Örnek 1**
 
@@ -423,11 +423,11 @@ Azure PowerShell 1.0:
 Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EventStream
 ```
 
-Bu PowerShell komutunu kullanarak işin içinde StreamingJob giriş EventStream kaldırır.  
+Bu PowerShell komutu, Akışİş iş giriş EventStream kaldırır.  
 
-### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzStreamAnalyticsJob
-Zaman uyumsuz olarak Microsoft azure'da özel bir Stream Analytics işi siler.  
-Zorla parametresini belirtirseniz, iş onay olmadan silinir.
+### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Kaldır-AzureStreamAnalyticsJob | Kaldır-AzStreamAnalyticsJob
+Microsoft Azure'daki belirli bir Akış Analizi işini eş senkronize olarak siler.  
+Kuvvet parametresini belirtirseniz, iş onay olmadan silinir.
 
 **Örnek 1**
 
@@ -443,11 +443,11 @@ Azure PowerShell 1.0:
 Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
 ```
 
-Bu PowerShell komutunu StreamingJob işi kaldırır.  
+Bu PowerShell komutu Akışİş işini kaldırır.  
 
 ### <a name="remove-azurestreamanalyticsoutput--remove-azstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzStreamAnalyticsOutput
-Zaman uyumsuz olarak bir Microsoft Azure Stream Analytics işinde belirli bir çıktısına siler.  
-Zorla parametresini belirtirseniz, çıkış onay olmadan silinir.
+Microsoft Azure'daki bir Akış Analizi işinden belirli bir çıktıyı eşzamanlı olarak siler.  
+Kuvvet parametresini belirtirseniz, çıktı onay olmadan silinir.
 
 **Örnek 1**
 
@@ -463,10 +463,10 @@ Azure PowerShell 1.0:
 Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
 ```
 
-Bu PowerShell komut çıktı StreamingJob işinde çıkış kaldırır.  
+Bu PowerShell komutu, Akışİş iş çıktısını kaldırır.  
 
-### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzStreamAnalyticsJob
-Zaman uyumsuz olarak dağıtır ve Microsoft Azure'da bir Stream Analytics işi başlatır.
+### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Başlangıç-AzureStreamAnalyticsJob | Başlangıç-AzStreamAnalyticsJob
+Microsoft Azure'da bir Akış Analizi işini eş senkronize olarak dağıtır ve başlatır.
 
 **Örnek 1**
 
@@ -482,10 +482,10 @@ Azure PowerShell 1.0:
 Start-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob -OutputStartMode CustomTime -OutputStartTime 2012-12-12T12:12:12Z
 ```
 
-Bu PowerShell komutunu StreamingJob özel çıkış başlangıç saati ile 12:12:12 12 Aralık 2012'ye ayarlayın bir iş başladığı UTC.
+Bu PowerShell komutu, 12 Aralık 2012, 12:12:12 UTC olarak ayarlanmış özel bir çıktı başlangıç saati ile iş StreamingJob'u başlatır.
 
-### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Durdur-AzureStreamAnalyticsJob | Stop-AzStreamAnalyticsJob
-Zaman uyumsuz olarak Microsoft Azure'da çalışan bir Stream Analytics işini durdurur ve kullanılmakta olan kaynakları serbest bırakır. İş düzenleme ve yeniden başlatılacak şekilde iş tanımı ve meta verileri Azure portalı ve yönetim API'leri aracılığıyla, aboneliğiniz kapsamındaki kullanılabilir kalır. Durduruldu durumundaki bir iş için ücretlendirilmez.
+### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzStreamAnalyticsJob
+Asynchronously Microsoft Azure'da çalışan bir Akış Analizi iş durdurur ve kullanılan kaynakları ayırır. İş tanımı ve meta veriler, hem Azure portalı hem de yönetim API'leri aracılığıyla aboneliğinizde kullanılabilir kalır, ancak iş düzenlenebilir ve yeniden başlatılabilir. Durdurulan eyaletteki bir iş için ücret lendirilmezsiniz.
 
 **Örnek 1**
 
@@ -501,10 +501,10 @@ Azure PowerShell 1.0:
 Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �Name StreamingJob 
 ```
 
-Bu PowerShell komutunu StreamingJob işini durdurur.  
+Bu PowerShell komutu Akışİş işini durdurur.  
 
 ### <a name="test-azurestreamanalyticsinput--test-azstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzStreamAnalyticsInput
-Stream Analytics için belirtilen bir giriş bağlanma olanağı sınar.
+Stream Analytics'in belirli bir girişe bağlanma yeteneğini sınar.
 
 **Örnek 1**
 
@@ -520,10 +520,10 @@ Azure PowerShell 1.0:
 Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name EntryStream
 ```
 
-Bu PowerShell komutunu StreamingJob içinde giriş EntryStream bağlantı durumunu sınar.  
+Bu PowerShell komutu, StreamingJob'daki Giriş Girişi Akışının bağlantı durumunu sınar.  
 
 ### <a name="test-azurestreamanalyticsoutput--test-azstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzStreamAnalyticsOutput
-Stream Analytics belirli bir çıktıya bağlanma olanağı sınar.
+Stream Analytics'in belirli bir çıktıya bağlanma yeteneğini sınar.
 
 **Örnek 1**
 
@@ -539,13 +539,13 @@ Azure PowerShell 1.0:
 Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US �JobName StreamingJob �Name Output
 ```
 
-Bu PowerShell komutunu StreamingJob çıkış bağlantı durumunu çıktı sınar.  
+Bu PowerShell komutu, StreamingJob'daki çıktı çıktısının bağlantı durumunu sınar.  
 
 ## <a name="get-support"></a>Destek alın
-Daha fazla yardım için deneyin bizim [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+Daha fazla yardım için [Azure Akışı Analizi forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
+* [Azure Akış Analizine Giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: d0a28bafef887bf0c40aa88eba1873f82cf36fd7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 5d1dc90832a399aa9ee253b2c7962b8536c1926a
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346090"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383013"
 ---
-# <a name="cli-example-upload-a-local-file-to-a-container"></a>CLI örneği: Yerel bir dosyayı kapsayıcıya yükleme 
+# <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Azure CLI örneği: Yerel bir dosyayı kapsayıcıya yükleme
 
 Bu makaledeki Azure CLI betiğinde, yerel bir dosyanın bir depolama kapsayıcısına nasıl yükleneceği gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
 * Varlıkları yönetmeyi gözden [geçirin.](manage-asset-concept.md)
@@ -34,7 +34,7 @@ Bu makaledeki Azure CLI betiğinde, yerel bir dosyanın bir depolama kapsayıcı
 
 ## <a name="example-script"></a>Örnek betik
 
-```Azure CLI 
+```azurecli-interactive
 #!/bin/bash
 # Update the following variables for your own settings:
 storageAccountName=build2018storage

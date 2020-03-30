@@ -1,75 +1,75 @@
 ---
-title: Azure için verileri avere vFXT 'ye taşıma
-description: Azure için avere vFXT ile kullanılmak üzere yeni bir depolama birimine veri ekleme
+title: Azure için verileri Avere vFXT'ye taşıma
+description: Azure için Avere vFXT ile kullanılmak üzere yeni bir depolama birimine veri ekleme
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153727"
 ---
-# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verileri vFXT kümesine taşıma-Parallel Data ınest
+# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>VFXT kümesine veri taşıma - Paralel veri alma
 
-Yeni bir vFXT kümesi oluşturduktan sonra ilk göreviniz, verileri Azure 'daki yeni bir depolama birimine taşımak olabilir. Ancak, veri taşıma yöntemi bir istemciden basit bir kopyalama komutu yayınlıyorsa, büyük olasılıkla bir kopya performansı görürsünüz. Tek iş parçacıklı kopyalama, verileri avere vFXT kümesinin arka uç depolamasına kopyalamak için iyi bir seçenek değildir.
+Yeni bir vFXT kümesi oluşturduktan sonra, ilk göreviniz verileri Azure'daki yeni bir depolama birimine taşımak olabilir. Ancak, verileri taşıma her zamanki yönteminiz bir istemciden basit bir kopyalama komutu veriyorsa, büyük olasılıkla yavaş bir kopyalama performansı görürsünüz. Tek iş parçacığı kopyalama, verileri Avere vFXT kümesinin arka uç depolamasına kopyalamak için iyi bir seçenek değildir.
 
-Azure kümesi için avere vFXT, ölçeklenebilir bir çoklu istemci önbelleğiyle, verileri kopyalamak için en hızlı ve en verimli yol birden çok istemcidir. Bu teknik, dosyaların ve nesnelerin giriş alımını paralelleştirme.
+Azure kümesi için Avere vFXT ölçeklenebilir çok istemcili bir önbellek olduğundan, verileri kopyalamanın en hızlı ve en verimli yolu birden çok istemciyle dir. Bu teknik, dosya ve nesnelerin yutulması paralelleştirir.
 
-![Çoklu istemci, çok iş parçacıklı veri hareketini gösteren diyagram: sol üst tarafta, şirket içi donanım depolamada bir simgenin bundan sonra gelen birden çok oku vardır. Oklar dört istemci makineye işaret noktasıdır. Her bir istemci makineden üç ok avere vFXT 'ye doğru işaret. Avere vFXT 'den birden çok ok, blob Storage ' a işaret noktasıdır.](media/avere-vfxt-parallel-ingest.png)
+![Çok istemcili, çok iş parçacığı veri hareketini gösteren diyagram: Sol üstte, şirket içi donanım depolama için bir simgenin birden çok ok gelir. Oklar dört istemci makinesini işaret ediyor. Her istemci makineden üç ok Avere vFXT doğru işaret. Avere vFXT'den birden fazla ok Blob depolama alanını işaret eder.](media/avere-vfxt-parallel-ingest.png)
 
-Verileri bir depolama sisteminden diğerine aktarmak için yaygın olarak kullanılan ``cp`` veya ``copy`` komutları, tek seferde yalnızca bir dosyayı kopyalamak için tek iş parçacıklı işlemlerdir. Bu, dosya sunucusunun tek seferde yalnızca bir dosya olduğu anlamına gelir. Bu, kümenin kaynakları için bir atık olur.
+Verileri ``cp`` ``copy`` bir depolama sisteminden diğerine aktarmak için yaygın olarak kullanılan komutlar, aynı anda yalnızca bir dosyayı kopyalayan tek iş parçacığı işlemleridir. Bu, dosya sunucusunun aynı anda yalnızca bir dosya yutturdösü anlamına gelir ve bu da kümenin kaynaklarının boşa harcadığı anlamına gelir.
 
-Bu makalede, verileri avere vFXT kümesine taşımak için çok istemci, çok iş parçacıklı dosya kopyalama sistemi oluşturma stratejileri açıklanmaktadır. Birden çok istemci ve basit kopyalama komutları kullanılarak etkili veri kopyalama için kullanılabilen dosya aktarımı kavramlarını ve karar noktalarını açıklar.
+Bu makalede, verileri Avere vFXT kümesine taşımak için çok istemcili, çok iş parçacığı dosya kopyalama sistemi oluşturma stratejileri açıklanmaktadır. Birden çok istemci ve basit kopyalama komutları kullanarak verimli veri kopyalama için kullanılabilecek dosya aktarım kavramlarını ve karar noktalarını açıklar.
 
-Ayrıca yardımcı olabilecek bazı yardımcı programları da açıklar. ``msrsync`` yardımcı programı, bir veri kümesini demetlere bölme ve ``rsync`` komutlarını kullanma sürecini kısmen otomatikleştirebilmek için kullanılabilir. ``parallelcp`` betiği, kaynak dizini okuyan ve komutları otomatik olarak kopyalama ile ilgili başka bir yardımcı programdır. Ayrıca, ``rsync`` Aracı, hala veri tutarlılığı sağlayan daha hızlı bir kopya sağlamak için iki aşamada kullanılabilir.
+Ayrıca yardımcı olabilecek bazı yardımcı programları açıklar. Yardımcı ``msrsync`` program, bir veri kümesini kovalara bölme ve komutları kullanma ``rsync`` işlemini kısmen otomatikleştirmek için kullanılabilir. Komut ``parallelcp`` dosyası, kaynak dizinini okuyan ve kopyalama komutlarını otomatik olarak veren başka bir yardımcı programdır. Ayrıca, ``rsync`` araç hala veri tutarlılığı sağlayan daha hızlı bir kopyasını sağlamak için iki aşamada kullanılabilir.
 
-Bir bölüme gitmek için bağlantıya tıklayın:
+Bir bölüme atlamak için bağlantıyı tıklatın:
 
-* [El ile kopyalama örneği](#manual-copy-example) -Copy komutları kullanılarak kapsamlı bir açıklama
-* [İki aşamalı rsync örneği](#use-a-two-phase-rsync-process)
-* [Kısmen otomatikleştirilen (msrsync) örneği](#use-the-msrsync-utility)
+* [El ile kopyalama örneği](#manual-copy-example) - Kopyalama komutlarını kullanarak ayrıntılı bir açıklama
+* [İki fazlı rsync örneği](#use-a-two-phase-rsync-process)
+* [Kısmen otomatik (msrsync) örneği](#use-the-msrsync-utility)
 * [Paralel kopya örneği](#use-the-parallel-copy-script)
 
-## <a name="data-ingestor-vm-template"></a>Veri alma VM şablonu
+## <a name="data-ingestor-vm-template"></a>Veri yutma VM şablonu
 
-GitHub üzerinde, bu makalede bahsedilen paralel veri alma araçlarıyla otomatik olarak bir VM oluşturmak için bir Kaynak Yöneticisi şablonu kullanılabilir.
+Bu makalede belirtilen paralel veri alma araçlarıyla otomatik olarak bir VM oluşturmak için GitHub'da bir Kaynak Yöneticisi şablonu kullanılabilir.
 
-![BLOB depolama, donanım depolama ve Azure dosya kaynaklarından her biri birden çok ok gösteren diyagram. Oklar bir "veri alma sanal makinesini" işaret ettikten sonra, avere vFXT 'ye işaret eden birden çok ok](media/avere-vfxt-ingestor-vm.png)
+![blob depolama, donanım depolama ve Azure dosya kaynaklarından her biri birden çok ok gösteren diyagram. Oklar bir "veri yutuveya vm" işaret ve oradan, birden fazla ok Avere vFXT işaret](media/avere-vfxt-ingestor-vm.png)
 
-Veri alma sanal makinesi, yeni oluşturulan VM 'nin avere vFXT kümesini takar ve önyükleme betiğini kümeden indirdiği bir öğreticinin parçasıdır. Ayrıntılar için [veri alımı Sanal](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) makinesini okuyun.
+Veri yutma VM yeni oluşturulan VM Avere vFXT küme bağlar ve kümeden bootstrap komut indirir bir öğretici parçasıdır. Ayrıntılar için [Bootstrap'ı veri alma vm'ini](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) okuyun.
 
 ## <a name="strategic-planning"></a>Stratejik planlama
 
-Verileri paralel olarak kopyalamak için bir strateji tasarlarken dosya boyutu, dosya sayısı ve Dizin derinliği içindeki avantajları anlamanız gerekir.
+Verileri paralel olarak kopyalamak için bir strateji tasarlarken, dosya boyutu, dosya sayısı ve dizin derinliğindeki dengeleri anlamanız gerekir.
 
-* Dosyalar küçük olduğunda, ilgilendiğiniz ölçüm, saniye başına dosya olur.
-* Dosyalar büyükse (10 MIBI veya üzeri), ilgilendiğiniz ölçüm bayt/saniye olur.
+* Dosyalar küçük olduğunda, ilgi ölçüsü saniyedeki dosyalardır.
+* Dosyalar büyükolduğunda (10MiBi veya daha büyük), ilgi ölçüsü saniyede bayttır.
 
-Her kopyalama işleminin bir işleme hızı ve dosya-aktarım hızı vardır ve bu, kopyalama komutunun uzunluğu ve dosya boyutu ile dosya sayısı düzenleme ile ölçülebilir. Hızların nasıl ölçülmesi, bu belgenin kapsamı dışındadır, ancak küçük veya büyük dosyalarla ilgilenip işlenmeyeceğinizi anlamak önemlidir.
+Her kopyalama işleminde, kopyalama komutunun uzunluğunun zamanlaması ve dosya boyutunun ve dosya sayısının çarpanabinat edilmesiyle ölçülebilen bir işlem hızı ve dosya aktarılabilen bir hız vardır. Oranların nasıl ölçüleceğini açıklamak bu belgenin kapsamı dışındadır, ancak küçük veya büyük dosyalarla mı uğraşacağınız önemlidir.
 
-## <a name="manual-copy-example"></a>El ile kopyalama örneği
+## <a name="manual-copy-example"></a>Manuel kopyalama örneği
 
-Önceden tanımlanmış dosya veya yol kümelerine yönelik olarak, arka planda birden fazla kopyalama komutu çalıştırarak, bir istemcide çok iş parçacıklı bir kopyayı el ile oluşturabilirsiniz.
+Önceden tanımlanmış dosya veya yol kümelerine karşı arka planda aynı anda birden fazla kopya komutu çalıştırarak istemciüzerinde çok iş parçacığı kopyasını el ile oluşturabilirsiniz.
 
-Linux/UNIX ``cp`` komutu, sahiplik ve mtime meta verilerini korumak için ``-p`` bağımsız değişkenini içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef FileSystem 'a gönderilen dosya sistemi çağrılarının sayısını artırır.)
+Linux/UNIX ``cp`` komutu, ``-p`` sahipliği ve mtime meta verilerini korumak için bağımsız değişkeni içerir. Aşağıdaki komutlara bu bağımsız değişkenin eklenmesi isteğe bağlıdır. (Bağımsız değişken ekleme, istemciden gönderilen dosya sistemi çağrılarının sayısını meta veri değişikliği için hedef dosya sistemine artırır.)
 
-Bu basit örnek, paralel olarak iki dosya kopyalar:
+Bu basit örnek iki dosyayı paralel olarak kopyalar:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Bu komutu verdikten sonra, `jobs` komutu iki iş parçacığının çalıştığını gösterir.
+Bu komutu verdikten `jobs` sonra, komut iki iş parçacığının çalıştığını gösterir.
 
 ### <a name="predictable-filename-structure"></a>Öngörülebilir dosya adı yapısı
 
-Dosya adları tahmin edilebilir ise, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz.
+Dosya adlarınız öngörülebilirse, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz.
 
-Örneğin, dizininiz `1000``0001` sıralı olarak numaralandırılmış 1000 dosya içeriyorsa, her bir kopyalanan 100 dosyasını izleyen on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
+Örneğin, dizininiz sırayla `0001` numaralandırılan 1000 dosya `1000`içeriyorsa, her biri 100 dosyayı kopyalayan on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -86,9 +86,9 @@ cp /mnt/source/file9* /mnt/destination1/
 
 ### <a name="unknown-filename-structure"></a>Bilinmeyen dosya adı yapısı
 
-Dosya adlandırma yapınız tahmin edilebilir değilse, dosyaları dizin adlarına göre gruplandırabilirsiniz.
+Dosya adlandırma yapınız öngörülebilir değilse, dosyaları dizin adlarıyla gruplandırmayapabilirsiniz.
 
-Bu örnek, arka plan görevleri olarak çalıştırılan ``cp`` komutlarına göndermek için tüm dizinleri toplar:
+Bu örnek, arka plan görevleri ``cp`` olarak çalıştırılan komutlara göndermek için tüm dizinleri toplar:
 
 ```bash
 /root
@@ -100,7 +100,7 @@ Bu örnek, arka plan görevleri olarak çalıştırılan ``cp`` komutlarına gö
 |-/dir1d
 ```
 
-Dosyalar toplandıktan sonra, alt dizinleri ve tüm içeriğini yinelemeli olarak kopyalamak için paralel kopyalama komutlarını çalıştırabilirsiniz:
+Dosyalar toplandıktan sonra, alt dizinleri ve tüm içeriğini özyinelemeli olarak kopyalamak için paralel kopyalama komutları çalıştırabilirsiniz:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
@@ -111,11 +111,11 @@ cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
-### <a name="when-to-add-mount-points"></a>Bağlama noktaları ne zaman eklenir
+### <a name="when-to-add-mount-points"></a>Montaj noktaları ne zaman eklenir?
 
-Tek bir hedef dosya sistemi bağlama noktasına karşı çok sayıda paralel iş parçacığına sahip olduktan sonra, daha fazla iş parçacığı eklemenin daha fazla verimlilik vermediği bir nokta olacaktır. (Aktarım hızı, veri türlerine bağlı olarak dosya/saniye veya bayt/saniye cinsinden ölçülecektir.) Ya da daha kötüleşiyor, iş parçacığı, bazen üretilen iş azalmasına neden olabilir.
+Tek bir hedef filesystem montaj noktasına doğru giden yeterli paralel iş parçacığı na sahip olduktan sonra, daha fazla iş parçacığı eklemenin daha fazla iş parçacığı vermediği bir nokta olacaktır. (İşlem, veri türünüze bağlı olarak dosya/saniye veya bayt/saniye olarak ölçülecektir.) Veya daha kötüsü, aşırı iş parçacığı bazen bir iş çıkarma bozulmasına neden olabilir.
 
-Bu durumda, aynı uzak dosya sistemi bağlama yolunu kullanarak diğer vFXT kümesi IP adreslerine istemci tarafı bağlama noktaları ekleyebilirsiniz:
+Bu durumda, aynı uzak dosya sistemi montaj yolunu kullanarak diğer vFXT küme IP adreslerine istemci tarafı montaj noktaları ekleyebilirsiniz:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -124,7 +124,7 @@ Bu durumda, aynı uzak dosya sistemi bağlama yolunu kullanarak diğer vFXT küm
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-İstemci tarafı bağlama noktaları eklemek, ek `/mnt/destination[1-3]` bağlama noktalarına daha fazla paralellik elde etmenizi sağlar.
+İstemci tarafı montaj noktaları eklemek, ek `/mnt/destination[1-3]` montaj noktalarına ek kopyalama komutları atarak daha fazla paralellik elde etmenizi sağlar.
 
 Örneğin, dosyalarınız çok büyükse, farklı hedef yolları kullanmak için kopyalama komutlarını tanımlayabilir ve kopyayı gerçekleştiren istemciden paralel olarak daha fazla komut gönderebilirsiniz.
 
@@ -140,11 +140,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-Yukarıdaki örnekte, üç hedef bağlama noktası, istemci dosyası kopyalama işlemlerine yöneliktir.
+Yukarıdaki örnekte, üç hedef montaj noktası da istemci dosya kopyalama işlemleri tarafından hedeflenmektedir.
 
-### <a name="when-to-add-clients"></a>İstemcilerin ne zaman ekleneceği
+### <a name="when-to-add-clients"></a>İstemci ne zaman eklenir?
 
-Son olarak, istemcinin özelliklerine ulaştınız, daha fazla kopyalama iş parçacığı veya ek bağlama noktası eklenmesi ek dosya/sn veya bayt/sn artışı vermez. Bu durumda, kendi dosya kopyalama işlemi kümelerini çalıştıran aynı bağlama noktaları kümesiyle başka bir istemciyi dağıtabilirsiniz.
+Son olarak, istemcinin yeteneklerine ulaştığınızda, daha fazla kopya iş parçacığı veya ek montaj noktaları eklemek ek dosya/sn veya bayt/sn artışı oluşturmaz. Bu durumda, kendi dosya kopyalama işlemleri kümelerini çalıştıracak aynı montaj noktaları kümesine sahip başka bir istemci dağıtabilirsiniz.
 
 Örnek:
 
@@ -168,9 +168,9 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ### <a name="create-file-manifests"></a>Dosya bildirimleri oluşturma
 
-Yukarıdaki yaklaşımlar anlaşıldıktan sonra (hedef başına birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ erişimli kaynak dosya başına birden çok istemci), şu öneriyi göz önünde bulundurun: dosya bildirimleri oluşturun ve sonra bunları kopyayla birlikte kullanın birden çok istemci arasındaki komutlar.
+Yukarıdaki yaklaşımları (hedef başına birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ tarafından erişilebilen kaynak dosya sistemi başına birden çok istemci) anladıktan sonra şu öneriyi göz önünde bulundurun: Dosya bildirimleri oluşturun ve bunları kopyayla kullanın birden çok istemci arasında komutları.
 
-Bu senaryo, dosya veya dizinlerin bildirimlerini oluşturmak için UNIX ``find`` komutunu kullanır:
+Bu senaryo, dosyaların ``find`` veya dizinlerin bildirimlerini oluşturmak için UNIX komutunu kullanır:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -185,9 +185,9 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Bu sonucu bir dosyaya yeniden yönlendir: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Bu sonucu bir dosyaya yönlendirin:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Ardından, dosyaları saymak ve alt dizinlerin boyutlarını belirleyebilmek için BASH komutlarını kullanarak bildirimde yineleyebilirsiniz.
+Ardından dosyaları saymak ve alt dizinlerin boyutlarını belirlemek için BASH komutlarını kullanarak manifestoyu yineleyebilirsiniz:
 
 ```bash
 ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l` `du -sh ${i}`"; done
@@ -226,7 +226,7 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Son olarak, gerçek dosya kopyalama komutlarını istemcilere kopyalamanız gerekir.
+Son olarak, istemcilere gerçek dosya kopyalama komutları zanaat gerekir.
 
 Dört istemciniz varsa, şu komutu kullanın:
 
@@ -234,19 +234,19 @@ Dört istemciniz varsa, şu komutu kullanın:
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-Beş istemciniz varsa, şöyle bir şey kullanın:
+Beş istemciniz varsa, şuna benzer bir şey kullanın:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-Ve altı.... Gerektiğinde extrapogeç.
+Ve altı için .... Gerektiği gibi tahmin edin.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-`find` komutundan çıktının bir parçası olarak elde edilen düzey dört dizine ait yol adlarına sahip *n istemcilerinden her* biri için bir tane olmak üzere *n* sonuç dosyası alacaksınız.
+Komuttan çıktının bir parçası olarak elde edilen düzey dört dizinlerine yol adlarına sahip *N* istemcilerinizin her biri için bir tane olan N sonuçlanan dosyaları alırsınız. *N* `find`
 
 Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 
@@ -254,48 +254,48 @@ Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-Yukarıdaki, her biri her satırda bir kopyalama komutu olan *N* dosya sağlayacak ve bu, istemcide Bash betiği olarak çalıştırılabilirler.
+Yukarıdaki n *dosyaları,* her satır başına bir kopya komutu ile, istemci üzerinde bir BASH komut dosyası olarak çalıştırılabilir verecektir.
 
-Amaç, birden çok istemcide paralel olarak bu betiklerin birden çok iş parçacığını her istemci için aynı anda çalıştırmaktır.
+Amaç, birden çok istemcide paralel olarak istemci başına aynı anda bu komut birden çok komut iş parçacığı çalıştırmaktır.
 
-## <a name="use-a-two-phase-rsync-process"></a>İki aşamalı bir rsync işlemi kullanın
+## <a name="use-a-two-phase-rsync-process"></a>İki fazlı rsync işlemi kullanma
 
-Standart ``rsync`` yardımcı programı, veri bütünlüğünü güvence altına almak için çok sayıda dosya oluşturma ve yeniden adlandırma işlemi oluşturduğundan Azure System için avere vFXT aracılığıyla bulut depolamayı doldurmak için iyi çalışmaz. Ancak, dosya bütünlüğünü denetleyen ikinci bir çalıştırma ile izlerseniz daha dikkatli kopyalama yordamını atlamak için ``rsync`` ile ``--inplace`` seçeneğini güvenle kullanabilirsiniz.
+Standart ``rsync`` yardımcı program, veri bütünlüğünü garanti etmek için çok sayıda dosya oluşturma ve yeniden adlandırma işlemleri oluşturduğundan, Azure için Avere vFXT üzerinden bulut depolamayı doldurmak için iyi çalışmaz. Ancak, dosya bütünlüğünü denetleyen ikinci bir çalıştırmayla bunu izlerseniz, daha dikkatli kopyalama yordamını atlamak için ``--inplace`` seçeneği ``rsync`` güvenle kullanabilirsiniz.
 
-Standart bir ``rsync`` kopyalama işlemi geçici bir dosya oluşturur ve verileri veriyle doldurur. Veri aktarımı başarıyla tamamlanırsa, geçici dosya özgün dosya adı olarak yeniden adlandırılır. Bu yöntem, kopyalama sırasında dosyalara erişilmesi durumunda bile tutarlılığı güvence altına alır. Ancak bu yöntem, önbellekten dosya hareketini yavaşlatan daha fazla yazma işlemi oluşturur.
+Standart ``rsync`` bir kopyalama işlemi geçici bir dosya oluşturur ve verilerle doldurur. Veri aktarımı başarıyla tamamlanırsa, geçici dosya özgün dosya adı ile yeniden adlandırılır. Bu yöntem, kopya sırasında dosyalara erişilmiş olsa bile tutarlılığı garanti eder. Ancak bu yöntem, önbellek te dosya hareketini yavaşlatan daha fazla yazma işlemi oluşturur.
 
-``--inplace`` seçeneği yeni dosyayı doğrudan son konumuna yazar. Dosyaların aktarım sırasında tutarlı olması garanti edilmez, ancak daha sonra kullanmak üzere bir depolama sistemini kullandıysanız bu önemli değildir.
+Seçenek, ``--inplace`` yeni dosyayı doğrudan son konumuna yazar. Dosyaların aktarım sırasında tutarlı olacağı garanti edilmez, ancak daha sonra kullanılmak üzere bir depolama sistemi kullanıyorsanız bu önemli değildir.
 
-İkinci ``rsync`` işlem, ilk işlemde bir tutarlılık denetimi görevi görür. Dosyalar zaten kopyalandığı için ikinci aşama, hedefteki dosyaların kaynaktaki dosyalarla eşleştiğinden emin olmak için hızlı bir taradır. Herhangi bir dosya eşleşmezse, bunlar yeniden kopyalanır.
+İkinci ``rsync`` işlem, ilk işlemde tutarlılık denetimi görevi görededir. Dosyalar zaten kopyalandığından, ikinci aşama, hedefteki dosyaların kaynaktaki dosyalarla eşleştirdiğinden emin olmak için hızlı bir tarayındır. Herhangi bir dosya eşleşmiyorsa, bunlar kopyalanır.
 
-Her iki aşamayı de tek bir komutta verebilirsiniz:
+Her iki aşamayı tek bir komutla birlikte düzenleyebilirsiniz:
 
 ```bash
 rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 ```
 
-Bu yöntem, iç dizin yöneticisinin işleyebileceği dosya sayısına kadar veri kümelerinde basit ve zaman etkin bir yöntemdir. (Bu genellikle 3 düğümlü bir küme için 200.000.000 dosya, altı düğümlü bir küme için 500.000.000 dosyaları vb.)
+Bu yöntem, iç dizin yöneticisinin işleyebilir dosya sayısına kadar veri kümeleri için basit ve zaman etkili bir yöntemdir. (Bu genellikle 3 düğümlü küme için 200 milyon dosya, altı düğümlü küme için 500 milyon dosya vb.)
 
-## <a name="use-the-msrsync-utility"></a>Msrsync yardımcı programını kullanma
+## <a name="use-the-msrsync-utility"></a>msrsync yardımcı programını kullanma
 
-``msrsync`` Aracı, verileri avere kümesi için bir arka uç çekirdek filine taşımak için de kullanılabilir. Bu araç birden çok paralel ``rsync`` işlemi çalıştırarak bant genişliği kullanımını iyileştirmek için tasarlanmıştır. <https://github.com/jbd/msrsync>'de GitHub 'dan kullanılabilir.
+Araç ``msrsync`` ayrıca, verileri Avere kümesi için bir arka uç çekirdek filer'ına taşımak için de kullanılabilir. Bu araç, birden çok paralel ``rsync`` işlem çalıştırarak bant genişliği kullanımını en iyi duruma getirmek için tasarlanmıştır. GitHub'dan <https://github.com/jbd/msrsync>edinilebilir.
 
-``msrsync``, kaynak dizinini ayrı "demetlere" ayırır ve sonra her bir Bucket üzerinde bireysel ``rsync`` süreçlerini çalıştırır.
+``msrsync``kaynak dizini ayrı "kovalara" ayırır ve ``rsync`` her kovada tek tek işlemleri çalıştırır.
 
-Dört çekirdekli bir VM kullanan ön test, 64 işlemleri kullanırken en iyi verimliliği gösteriyordu. İşlem sayısını 64 olarak ayarlamak için ``-p`` ``msrsync`` seçeneğini kullanın.
+Dört çekirdekli VM kullanılarak yapılan ön testler, 64 proses kullanırken en iyi verimi gösterdi. İşlem ``msrsync`` sayısını ``-p`` 64 olarak ayarlamak için seçeneği kullanın.
 
-``msrsync`` komutlarla ``--inplace`` bağımsız değişkenini de kullanabilirsiniz. Bu seçeneği kullanırsanız, veri bütünlüğünü sağlamak için ikinci bir komut (yukarıda açıklanan [rsync](#use-a-two-phase-rsync-process)ile olduğu gibi) çalıştırmayı göz önünde bulundurun.
+Bağımsız değişkeni ``--inplace`` ``msrsync`` komutlarla da kullanabilirsiniz. Bu seçeneği kullanıyorsanız, veri bütünlüğünü sağlamak için ikinci bir komut çalıştırmayı (yukarıda açıklanan [rsync'de](#use-a-two-phase-rsync-process)olduğu gibi) çalıştırmayı düşünün.
 
-``msrsync``, yerel birimlerden yalnızca ve bu birimlere yazabilir. Kaynak ve hedef, kümenin sanal ağındaki yerel başlatmalar olarak erişilebilir olmalıdır.
+``msrsync``yalnızca yerel birimlere ve yerel birimlerden yazabilirsiniz. Kümenin sanal ağında yerel bağlar olarak kaynak ve hedef erişilebilir olmalıdır.
 
-Bir Azure bulut birimini bir avere kümesiyle doldurmak üzere ``msrsync`` kullanmak için şu yönergeleri izleyin:
+Bir ``msrsync`` Azure bulut hacmini Bir Avere kümesiyle doldurmak için aşağıdaki yönergeleri izleyin:
 
-1. ``msrsync`` ve önkoşullarını (rsync ve Python 2,6 veya üzeri) yükleyip
-1. Kopyalanacak toplam dosya ve dizin sayısını belirleme.
+1. Yükleme ``msrsync`` ve önkoşulları (rsync ve Python 2.6 veya sonrası)
+1. Kopyalanacak toplam dosya ve dizin sayısını belirleyin.
 
-   Örneğin, avere yardımcı programını ``prime.py`` bağımsız değişkenlerle ```prime.py --directory /path/to/some/directory``` kullanın (URL <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>indirerek kullanılabilir).
+   Örneğin, Avere yardımcı ``prime.py`` programını ```prime.py --directory /path/to/some/directory``` bağımsız değişkenlerle kullanın <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>(url indirerek kullanılabilir).
 
-   ``prime.py``kullanmıyorsanız, GNU ``find`` aracıyla birlikte öğe sayısını aşağıdaki şekilde hesaplayabilirsiniz:
+   Kullanmıyorsanız, ``prime.py``GNU ``find`` aracıyla madde sayısını aşağıdaki gibi hesaplayabilirsiniz:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -303,29 +303,29 @@ Bir Azure bulut birimini bir avere kümesiyle doldurmak üzere ``msrsync`` kulla
    find <path> |wc -l                 # (counts both)
    ```
 
-1. İşlem başına öğe sayısını öğrenmek için öğe sayısını 64 göre bölün. Komutu çalıştırdığınızda demetlerin boyutunu ayarlamak için bu sayıyı ``-f`` seçeneğiyle kullanın.
+1. İşlem başına madde sayısını belirlemek için madde sayısını 64'e bölün. Komutu ``-f`` çalıştırdığınızda kovaların boyutunu ayarlamak için seçeneği ile bu numarayı kullanın.
 
-1. Dosyaları kopyalamak için ``msrsync`` komutunu verme:
+1. Dosyaları ``msrsync`` kopyalamak için komutu verme:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   ``--inplace``kullanıyorsanız, verilerin doğru şekilde kopyalanıp kopyalanmayacağını denetlemek için seçeneği olmadan ikinci bir yürütme ekleyin:
+   Kullanıyorsanız, ``--inplace``verilerin doğru kopyalandığından denetleme seçeneği olmadan ikinci bir yürütme ekleyin:
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   Örneğin, bu komut, 11.000 64 dosyalarını/test/source-Repository 'den/mnt/vfxt/Repository dizinine taşımak için tasarlanmıştır:
+   Örneğin, bu komut 64 işlemdeki 11.000 dosyayı /test/kaynak deposundan /mnt/vfxt/depoya taşımak üzere tasarlanmıştır:
 
    ``msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository && msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository``
 
-## <a name="use-the-parallel-copy-script"></a>Paralel kopya betiğini kullanın
+## <a name="use-the-parallel-copy-script"></a>Paralel kopya komut dosyasını kullanma
 
-``parallelcp`` betiği, verileri vFXT kümenizin arka uç depolamasına taşımak için de yararlı olabilir.
+Komut ``parallelcp`` dosyası, vFXT kümenizin arka uç depolamasına veri taşımak için de yararlı olabilir.
 
-Aşağıdaki komut dosyası yürütülebilir `parallelcp`ekler. (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa ``parallel`` ayrı olarak yüklemelisiniz.)
+Aşağıdaki komut dosyası yürütülebilir `parallelcp`ekler. (Bu komut dosyası Ubuntu için tasarlanmıştır; başka ``parallel`` bir dağıtım kullanıyorsanız, ayrı olarak yüklemeniz gerekir.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -379,12 +379,12 @@ EOM
 
 ### <a name="parallel-copy-example"></a>Paralel kopya örneği
 
-Bu örnek, avere kümesinden kaynak dosyaları kullanarak ``glibc`` derlemek için paralel kopyalama betiğini kullanır.
+Bu örnek, Avere kümesinden kaynak dosyaları kullanarak derlemek ``glibc`` için paralel kopya komut dosyasını kullanır.
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
-Kaynak dosyalar avere kümesi bağlama noktasında depolanır ve nesne dosyaları yerel sabit sürücüde depolanır.
+Kaynak dosyalar Avere küme montaj noktasında, nesne dosyaları ise yerel sabit diskte depolanır.
 
-Bu betik, yukarıdaki paralel kopya betiğini kullanır. ``-j`` seçeneği, paralel hale getirme kazanmak için ``parallelcp`` ve ``make`` kullanılır.
+Bu komut dosyası yukarıda paralel kopyalama komut dosyası kullanır. ``-j`` Seçenek ile ``parallelcp`` ve ``make`` paralelleştirme kazanmak için kullanılır.
 
 ```bash
 sudo apt-get update

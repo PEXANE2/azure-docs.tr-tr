@@ -1,94 +1,94 @@
 ---
-title: Node. js uygulamalarını yapılandırma
-description: Uygulamanız için önceden oluşturulmuş bir Node. js kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
+title: Node.js uygulamalarını yapılandır
+description: Uygulamanız için önceden oluşturulmuş bir Düğüm.js kapsayıcısını nasıl yapılandıracaklarınızı öğrenin. Bu makalede, en yaygın yapılandırma görevleri gösterir.
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252733"
 ---
-# <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Azure App Service için Linux Node. js uygulaması yapılandırma
+# <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Azure Uygulama Hizmeti için Bir Linux Node.js uygulamasını yapılandırma
 
-Node. js uygulamaları tüm gerekli NPM bağımlılıklarıyla dağıtılmalıdır. App Service dağıtım altyapısı (kudu), bir [Git deposu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)dağıtırken sizin için `npm install --production` otomatik olarak çalışır veya derleme işlemlerine sahip bir [ZIP paketi](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) üzerinde geçiş yapar. Ancak, [FTP/S](../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)kullanarak dosyalarınızı dağıtırsanız, gerekli paketleri el ile yüklemeniz gerekir.
+Node.js uygulamaları gerekli tüm NPM bağımlılıklarıyla dağıtılmalıdır. Uygulama Hizmeti dağıtım motoru (Kudu), `npm install --production` [bir Git deposu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)veya yapı işlemlerinin açık olduğu bir [Zip paketini](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) dağıttığınızda sizin için otomatik olarak çalışır. Ancak, dosyalarınızı [FTP/S](../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)kullanarak dağıtıyorsanız, gerekli paketleri el ile yüklemeniz gerekir.
 
-Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Node. JS geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [MongoDB öğreticisi Ile](tutorial-nodejs-mongodb-app.md) [Node. js hızlı başlangıç](quickstart-nodejs.md) ve Node. js ' yi izleyin.
+Bu kılavuz, App Service'te yerleşik bir Linux kapsayıcısı kullanan Node.js geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure Uygulama Hizmeti'ni hiç kullanmadıysanız, önce [MongoDB öğreticisiyle](tutorial-nodejs-mongodb-app.md) [Node.js quickstart](quickstart-nodejs.md) ve Node.js'yi izleyin.
 
-## <a name="show-nodejs-version"></a>Node. js sürümünü göster
+## <a name="show-nodejs-version"></a>Düğüm.js sürümünü göster
 
-Geçerli Node. js sürümünü göstermek için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+Geçerli Node.js sürümünü göstermek için [Bulut Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Desteklenen tüm Node. js sürümlerini göstermek için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+Desteklenen tüm Node.js sürümlerini göstermek için [Bulut Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep NODE
 ```
 
-## <a name="set-nodejs-version"></a>Node. js sürümünü ayarla
+## <a name="set-nodejs-version"></a>Düğüm.js sürümünü ayarla
 
-Uygulamanızı [desteklenen bir Node. js sürümüne](#show-nodejs-version)ayarlamak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+Uygulamanızı desteklenen bir [Düğüm.js sürümüne](#show-nodejs-version)ayarlamak için Bulut [Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "NODE|10.14"
 ```
 
-Bu ayar, çalışma zamanında ve kudu içinde otomatik paket geri yükleme sırasında kullanılacak Node. js sürümünü belirtir.
+Bu ayar, hem çalışma zamanında hem de Kudu'daki otomatik paket geri yükleme sırasında kullanılacak Node.js sürümünü belirtir.
 
 > [!NOTE]
-> Projenizin `package.json`Node. js sürümünü ayarlamanız gerekir. Dağıtım altyapısı, desteklenen tüm Node. js sürümlerini içeren ayrı bir kapsayıcıda çalışır.
+> Node.js sürümünü projenizde `package.json`ayarlamalısınız. Dağıtım altyapısı, desteklenen tüm Node.js sürümlerini içeren ayrı bir kapsayıcıda çalışır.
 
-## <a name="customize-build-automation"></a>Derleme Otomasyonu 'nu özelleştirme
+## <a name="customize-build-automation"></a>Yapı otomasyonu özelleştirme
 
-Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
+Uygulamanızı Git veya zip paketlerini yapı otomasyonu açık ken kullanırsanız, Uygulama Hizmeti aşağıdaki sırayla otomasyon adımları oluşturur:
 
-1. `PRE_BUILD_SCRIPT_PATH`tarafından belirtilmişse özel betiği çalıştırın.
-1. `npm install`, NPM `preinstall` ve `postinstall` betikleri içeren ve ayrıca `devDependencies`yüklenen bayraklar olmadan çalıştırın.
-1. *Package. JSON*içinde bir derleme betiği belirtilmişse `npm run build` çalıştırın.
-1. Bir derleme: Azure betiği *Package. JSON*içinde belirtilmişse `npm run build:azure` Çalıştır.
-1. `POST_BUILD_SCRIPT_PATH`tarafından belirtilmişse özel betiği çalıştırın.
+1. 'ye göre belirtilirse özel komut dosyası çalıştırın `PRE_BUILD_SCRIPT_PATH`
+1. NPM `preinstall` ve `postinstall` komut dosyaları içeren ve aynı zamanda `devDependencies`yükler herhangi bir bayrak olmadan çalıştırın. `npm install`
+1. Paketinizde bir yapı komut dosyası belirtilmişse `npm run build` *çalıştırın.json*.
+1. Paketinizde bir yapı:azure komut dosyası belirtilmişse `npm run build:azure` *çalıştırın.json*.
+1. 'ye göre belirtilirse özel komut dosyası çalıştırın `POST_BUILD_SCRIPT_PATH`
 
 > [!NOTE]
-> [NPM belgeleri](https://docs.npmjs.com/misc/scripts)bölümünde açıklandığı gibi, `prebuild` ve `postbuild` olarak adlandırılan betikler, belirtilmişse sırasıyla `build`ve sonrasında çalışır. `preinstall` ve `postinstall` sırasıyla `install`önce ve sonra çalıştırın.
+> [npm dokümanlarında](https://docs.npmjs.com/misc/scripts)açıklandığı gibi, `prebuild` belirtilmişse, `build`sırasıyla, önce ve sonra adlı ve `postbuild` çalıştırılan komut dosyaları. `preinstall`ve `postinstall` sırasıyla `install`önce ve sonra çalıştırın.
 
-`PRE_BUILD_COMMAND` ve `POST_BUILD_COMMAND`, varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için `PRE_BUILD_COMMAND`tanımlayın. Oluşturma sonrası komutları çalıştırmak için `POST_BUILD_COMMAND`tanımlayın.
+`PRE_BUILD_COMMAND`ve `POST_BUILD_COMMAND` varsayılan olarak boş olan ortam değişkenleridir. Önceden yapı komutları çalıştırmak `PRE_BUILD_COMMAND`için tanımlayın. Yapı sonrası komutları çalıştırmak `POST_BUILD_COMMAND`için.
 
-Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
+Aşağıdaki örnekte, iki değişken virgülle ayrılmış bir dizi komuta göre belirtilir.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Derleme Otomasyonu 'nu özelleştirmek için ek ortam değişkenleri için bkz. [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+Yapı otomasyonu özelleştirmek için ek ortam değişkenleri için [Bkz. Oryx yapılandırması.](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)
 
-App Service nasıl çalıştığı ve Linux 'ta Node. js uygulamaları derleme hakkında daha fazla bilgi için bkz. [Oryx belgeleri: node. js uygulamaları nasıl algılanır ve oluşturulur](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md).
+Uygulama Hizmeti'nin Linux'ta Node.js uygulamalarını nasıl çalıştırıp oluşturduğu hakkında daha fazla bilgi için [Oryx belgelerine bakın: Node.js uygulamaları nasıl algılanır ve oluşturulur.](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md)
 
-## <a name="configure-nodejs-server"></a>Node. js sunucusunu yapılandırma
+## <a name="configure-nodejs-server"></a>Node.js sunucusuyapıla
 
-Node. js kapsayıcıları, bir üretim işlem yöneticisi olan [PM2](https://pm2.keymetrics.io/)ile gelir. Uygulamanızı PM2 veya NPM ile veya özel bir komutla başlayacak şekilde yapılandırabilirsiniz.
+Düğüm.js kapları [pm2](https://pm2.keymetrics.io/)ile birlikte gelir , bir üretim süreci yöneticisi. Uygulamanızı PM2 ile başlayacak, NPM ile veya özel bir komutla yapılandırabilirsiniz.
 
-- [Özel komut Çalıştır](#run-custom-command)
-- [NPM başlangıcını Çalıştır](#run-npm-start)
-- [PM2 ile Çalıştır](#run-with-pm2)
+- [Özel komutu çalıştır](#run-custom-command)
+- [Npm başlat](#run-npm-start)
+- [PM2 ile çalıştırın](#run-with-pm2)
 
-### <a name="run-custom-command"></a>Özel komut Çalıştır
+### <a name="run-custom-command"></a>Özel komutu çalıştır
 
-App Service, uygulamanızı *Run.sh*gibi bir yürütülebilir dosya gibi özel bir komut kullanarak başlatabilir. Örneğin, `npm run start:prod`çalıştırmak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+Uygulama Hizmeti, *uygulamanızı run.sh*gibi yürütülebilir bir komut kullanarak başlatabilir. Örneğin, çalıştırmak `npm run start:prod`için, [Bulut Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
 ```
 
-### <a name="run-npm-start"></a>NPM başlangıcını Çalıştır
+### <a name="run-npm-start"></a>Npm başlat
 
-Uygulamanızı `npm start`kullanarak başlatmak için, yalnızca bir `start` betiğin *Package. JSON* dosyasında bulunduğundan emin olun. Örnek:
+Uygulamanızı kullanarak `npm start`başlatmak için, `start` bir komut dosyasının *package.json* dosyasında olduğundan emin olun. Örnek:
 
 ```json
 {
@@ -101,29 +101,29 @@ Uygulamanızı `npm start`kullanarak başlatmak için, yalnızca bir `start` bet
 }
 ```
 
-Projenizde özel bir *Package. JSON* kullanmak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+Projenizde özel bir *package.json* kullanmak için Bulut [Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
 ```
 
-### <a name="run-with-pm2"></a>PM2 ile Çalıştır
+### <a name="run-with-pm2"></a>PM2 ile çalıştırın
 
-Projenizde ortak Node. js dosyalarından biri bulunduğunda kapsayıcı, uygulamanızı otomatik olarak PM2 ile başlatır:
+Kapsayıcı, projenizde yaygın Node.js dosyalarından biri bulunduğunda uygulamanızı otomatik olarak PM2 ile başlatır:
 
 - *bin/www*
-- *Server. js*
-- *App. js*
-- *index. js*
-- *hostingstart. js*
-- Şu [PM2 dosyalarından](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)biri: *Process. JSON* ve *ekosystem. config. js*
+- *server.js*
+- *app.js*
+- *index.js*
+- *hostingstart.js*
+- Aşağıdaki [PM2 dosyalarından](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)biri : *process.json* ve *ecosystem.config.js*
 
-Ayrıca, aşağıdaki uzantılara sahip özel bir başlangıç dosyası da yapılandırabilirsiniz:
+Özel bir başlangıç dosyasını aşağıdaki uzantılarla da yapılandırabilirsiniz:
 
-- Bir *. js* dosyası
-- *. JSON*, *. config. js*, *. YAML*veya *. yıml* uzantılı bir [PM2 dosyası](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+- Bir *.js* dosyası
+- Uzantısı *.json*, *.config.js*, *.yaml*veya *.yml* olan bir [PM2 dosyası](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
 
-Özel bir başlangıç dosyası eklemek için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+Özel bir başlangıç dosyası eklemek için [Bulut Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
@@ -132,11 +132,11 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 ## <a name="debug-remotely"></a>Uzaktan hata ayıklama
 
 > [!NOTE]
-> Uzaktan hata ayıklama Şu anda önizleme aşamasındadır.
+> Uzaktan hata ayıklama şu anda Önizleme'de.
 
-Bir *. config. js, *. yıml veya *. YAML*kullanarak çalıştırmanız dışında, [PM2 ile çalışacak](#run-with-pm2)şekilde yapılandırırsanız, Node. js uygulamanızı [Visual Studio Code](https://code.visualstudio.com/) uzaktan hata ayıklaması yapabilirsiniz.
+*.config.js, *.yml veya *.yaml*kullanarak çalıştırdığınız zamanlar dışında, [PM2 ile çalışacak](#run-with-pm2)şekilde yapılandırırsanız, Düğüm.js uygulamanızı [Visual Studio Code'da](https://code.visualstudio.com/) uzaktan hata ayıklayabilirsiniz.
 
-Çoğu durumda, uygulamanız için ek yapılandırma gerekmez. Uygulamanız bir *Process. JSON* dosyası (varsayılan veya özel) ile ÇALıŞıYORSA, JSON kökünde bir `script` özelliği olmalıdır. Örnek:
+Çoğu durumda, uygulamanız için ekstra yapılandırma gerekmez. Uygulamanız bir *process.json* dosyasıyla (varsayılan veya özel) `script` çalıştırılırsa, JSON kökünde bir özelliğe sahip olmalıdır. Örnek:
 
 ```json
 {
@@ -146,25 +146,25 @@ Bir *. config. js, *. yıml veya *. YAML*kullanarak çalıştırmanız dışınd
 }
 ```
 
-Uzaktan hata ayıklama için Visual Studio Code ayarlamak için [App Service uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)kurun. Uzantı sayfasındaki yönergeleri izleyin ve Visual Studio Code Azure 'da oturum açın.
+Uzaktan hata ayıklama için Visual Studio Kodu ayarlamak [için, Uygulama Hizmeti uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)yükleyin. Uzantı sayfasındaki yönergeleri izleyin ve Visual Studio Code'da Azure'da oturum açın.
 
-Azure Gezgini 'nde, hata ayıklamak istediğiniz uygulamayı bulun, sağ tıklayın ve **Uzaktan hata ayıklamayı Başlat**' ı seçin. Uygulamanızı etkinleştirmek için **Evet** ' e tıklayın. App Service, sizin için bir tünel proxy 'si başlatır ve hata ayıklayıcıyı iliştirir. Daha sonra uygulamaya istek yapabilir ve hata ayıklayıcıyı kesme noktalarında duraklatarak görebilirsiniz.
+Azure gezgininde hata ayıklamak istediğiniz uygulamayı bulun, sağ tıklatın ve **Uzaktan Hata Ayıklama başlat'ı**seçin. Uygulamanız için etkinleştirmek için **Evet'i** tıklatın. Uygulama Hizmeti sizin için bir tünel proxy'si başlatır ve hata ayıklamayı ekler. Daha sonra uygulamaya istekte bulunabilir ve hata ayıklamanın kesme noktalarında duraklatma sını görebilirsiniz.
 
-Hata ayıklama işlemi tamamlandıktan sonra, **bağlantıyı kes**' i seçerek hata ayıklayıcıyı durdurun. İstendiğinde, uzaktan hata ayıklamayı devre dışı bırakmak için **Evet** ' e tıklamanız gerekir. Daha sonra devre dışı bırakmak için, Azure Gezgini 'nde uygulamanızı tekrar sağ tıklayın ve **Uzaktan hata ayıklamayı devre dışı bırak**' ı seçin.
+Hata ayıklama ile tamamlandıktan sonra, **Bağlantı Kesme'yi**seçerek hata ayıklamayı durdurun. İstendiğinde, uzaktan hata ayıklamayı devre dışı kışamdırmak için **Evet'i** tıklatmalısınız. Daha sonra devre dışı kalmak için Azure gezgininde uygulamanızı yeniden tıklatın ve **Uzaktan Hata Ayıklama'yı devre dışı bırakın'ı**seçin.
 
-## <a name="access-environment-variables"></a>Ortam değişkenlerine erişim
+## <a name="access-environment-variables"></a> Ortam değişkenlerine erişme
 
-App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart Node. js modelini kullanarak bunlara erişebilirsiniz. Örneğin, `NODE_ENV`adlı bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
+Uygulama Hizmeti'nde, [uygulama ayarlarınızı](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) uygulama kodunuzu dışında ayarlayabilirsiniz. Daha sonra standart Düğüm.js deseni kullanarak onlara erişebilirsiniz. Örneğin, adlı `NODE_ENV`bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
 
 ```javascript
 process.env.NODE_ENV
 ```
 
-## <a name="run-gruntbowergulp"></a>Grsıt/Bower/Gulp çalıştırma
+## <a name="run-gruntbowergulp"></a>Koş Homurtu/Bower/Gulp
 
-Varsayılan olarak, kudu bir Node 'u algıladığında `npm install --production` çalışır. js uygulaması dağıtılır. Uygulamanız Grsıt, Bower veya Gulp gibi popüler Otomasyon araçlarından herhangi birini gerektiriyorsa, çalıştırmak için [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) sağlamanız gerekir.
+Varsayılan olarak, Kudu bir Düğüm.js uygulamasının dağıtılmış olduğunu tanıdığında çalışır. `npm install --production` Uygulamanız Grunt, Bower veya Gulp gibi popüler otomasyon araçlarından herhangi birini gerektiriyorsa, çalıştırmak için özel bir [dağıtım komut dosyası](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) sağlamanız gerekir.
 
-Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için bunları *Package. JSON* içindeki bağımlılıklara eklemeniz gerekir. Örnek:
+Deponuzun bu araçları çalıştırmasını sağlamak için, bunları *package.json'daki* bağımlılıklara eklemeniz gerekir. Örnek:
 
 ```json
 "dependencies": {
@@ -175,16 +175,16 @@ Bu araçları çalıştırmak üzere deponuzu etkinleştirmek için bunları *Pa
 }
 ```
 
-Yerel bir terminal penceresinden dizini depo kökinizle değiştirin ve aşağıdaki komutları çalıştırın:
+Yerel bir terminal penceresinden, dizini depo kökünüzle değiştirin ve aşağıdaki komutları çalıştırın:
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-Depo kökünde Şu anda iki ek dosya vardır: *. Deployment* ve *Deploy.sh*.
+Depo kökünüzde artık iki ek dosya vardır: *.deployment* ve *deploy.sh.*
 
-*Deploy.sh* açın ve şuna benzeyen `Deployment` bölümünü bulun:
+*deploy.sh* açın ve `Deployment` aşağıdaki gibi görünen bölümü bulun:
 
 ```bash
 ##################################################################################################################################
@@ -192,17 +192,17 @@ Depo kökünde Şu anda iki ek dosya vardır: *. Deployment* ve *Deploy.sh*.
 # ----------
 ```
 
-Bu bölüm, çalışan `npm install --production`biter. `Deployment` bölümünün *sonunda* gerekli aracı çalıştırmak için gereken kod bölümünü ekleyin:
+Bu bölüm çalışma `npm install --production`ile sona erer. Bölümün sonunda gerekli aracı çalıştırmak için gereken kod bölümünü ekleyin: *at the end* `Deployment`
 
 - [Bower](#bower)
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
-[Ortalama. js](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)örneğinde, dağıtım komut dosyasının da özel bir `npm install` komutu çalıştırdığı bir örneğe bakın.
+Dağıtım komut dosyasının da özel `npm install` bir komut çalıştırdığı [MEAN.js örneğinde](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)bir örneğe bakın.
 
 ### <a name="bower"></a>Bower
 
-Bu kod parçacığı `bower install`çalıştırır.
+Bu parçacık çalışır. `bower install`
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/bower.json" ]; then
@@ -215,7 +215,7 @@ fi
 
 ### <a name="gulp"></a>Gulp
 
-Bu kod parçacığı `gulp imagemin`çalıştırır.
+Bu parçacık çalışır. `gulp imagemin`
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
@@ -228,7 +228,7 @@ fi
 
 ### <a name="grunt"></a>Grunt
 
-Bu kod parçacığı `grunt`çalıştırır.
+Bu parçacık çalışır. `grunt`
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/Gruntfile.js" ]; then
@@ -239,11 +239,11 @@ if [ -e "$DEPLOYMENT_TARGET/Gruntfile.js" ]; then
 fi
 ```
 
-## <a name="detect-https-session"></a>HTTPS oturumunu Algıla
+## <a name="detect-https-session"></a>HTTPS oturumunu algıla
 
-App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini denetlemesi gerekiyorsa `X-Forwarded-Proto` üst bilgisini inceleyin.
+App Service'te, [SSL sonlandırma](https://wikipedia.org/wiki/TLS_termination_proxy) ağı yük dengeleyicilerinde gerçekleşir, böylece tüm HTTPS istekleri uygulamanıza şifrelenmemiş HTTP istekleri olarak ulaşır. Uygulama mantığınızın kullanıcı isteklerinin şifreli olup olmadığını denetlemesi gerekiyorsa, üstbilgide inceleme. `X-Forwarded-Proto`
 
-Popüler Web çerçeveleri, standart uygulama hiyerarşinizdeki `X-Forwarded-*` bilgilerine erişmenizi sağlar. [Express](https://expressjs.com/)'te [güven proxy 'leri](https://expressjs.com/guide/behind-proxies.html)kullanabilirsiniz. Örnek:
+Popüler web çerçeveleri, `X-Forwarded-*` standart uygulama deseninizdeki bilgilere erişmenizi sağlar. [Express'te](https://expressjs.com/)güven [vekillerini](https://expressjs.com/guide/behind-proxies.html)kullanabilirsiniz. Örnek:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -257,27 +257,27 @@ if (req.secure) {
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>SSH oturumunu tarayıcıda aç
+## <a name="open-ssh-session-in-browser"></a>Tarayıcıda SSH oturumunu açma
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Çalışan bir Node. js uygulaması App Service farklı davrandığı veya hatalara sahip olduğunda, aşağıdakileri deneyin:
+Çalışan bir Düğüm.js uygulaması Uygulama Hizmeti'nde farklı davrantığında veya hataları varsa, aşağıdakileri deneyin:
 
-- [Günlük akışına erişin](#access-diagnostic-logs).
-- Uygulamayı üretim modunda yerel olarak test edin. App Service, Node. js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örnek:
-    - *Package. JSON*' a bağlı olarak, üretim modu (`dependencies` vs. `devDependencies`) için farklı paketler yüklenebilir.
-    - Bazı Web çerçeveleri, statik dosyaları üretim modunda farklı şekilde dağıtabilir.
-    - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.
-- Uygulamanızı geliştirme modunda App Service çalıştırın. Örneğin, [Ortalama. js](https://meanjs.org/)' de, [`NODE_ENV` uygulama ayarını ayarlayarak](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)uygulamanızı çalışma zamanında geliştirme moduna ayarlayabilirsiniz.
+- [Günlük akışına erişin.](#access-diagnostic-logs)
+- Uygulamayı üretim modunda yerel olarak test edin. Uygulama Hizmeti, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin yerel üretim modunda beklendiği gibi çalıştığından emin olmanız gerekir. Örnek:
+    - *Package.json*bağlı olarak, farklı paketler üretim modu için`dependencies` yüklenebilir ( vs). `devDependencies`
+    - Bazı web çerçeveleri statik dosyaları üretim modunda farklı şekilde dağıtabilir.
+    - Bazı web çerçeveleri üretim modunda çalışırken özel başlangıç komut dosyaları kullanabilir.
+- Uygulamanızı Uygulama Hizmeti'nde geliştirme modunda çalıştırın. Örneğin, [MEAN.js'de,](https://meanjs.org/) [uygulama ayarını ayarlayarak `NODE_ENV` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)uygulamanızı çalışma süresi içinde geliştirme moduna ayarlayabilirsiniz.
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: MongoDB ile Node. js uygulaması](tutorial-nodejs-mongodb-app.md)
+> [Öğretici: MongoDB ile Node.js uygulaması](tutorial-nodejs-mongodb-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service Linux SSS](app-service-linux-faq.md)
+> [Uygulama Hizmeti Linux SSS](app-service-linux-faq.md)

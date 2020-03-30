@@ -8,99 +8,101 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8752585e731f905636f57d31741e2be67f7140b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335033"
 ---
-<a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** üzerinden yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
+### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları - Azure Kaynak Yöneticisi
+Aşağıdaki sınırlar yalnızca abonelik başına bölge başına **Azure Kaynak Yöneticisi** aracılığıyla yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre](../articles/networking/check-usage-against-limits.md)nasıl görüntüleyebilirsiniz öğrenin.
 
 > [!NOTE]
-> Son zamanlarda tüm varsayılan limitleri en yüksek sınırlara yükseltireceğiz. En fazla limit sütunu yoksa, kaynak, ayarlanabilir sınırlara sahip değildir. Geçmişte desteklenen bu limitlere sahipseniz ve aşağıdaki tablolarda güncelleştirilmiş limitleri görmüyorsanız, [ücretsiz olarak çevrimiçi müşteri destek isteği açın](../articles/azure-resource-manager/templates/error-resource-quota.md)
+> Yakın zamanda tüm varsayılan limitleri maksimum limitlerine yükselttik. Maksimum sınır sütunu yoksa, kaynağın ayarlanabilir sınırları yoktur. Geçmişte destek le bu limitleri artırdıysanız ve aşağıdaki tablolarda güncelleştirilmiş sınırlar görmüyorsanız, [ücretsiz olarak çevrimiçi müşteri destek isteği açın](../articles/azure-resource-manager/templates/error-resource-quota.md)
 
-| Kaynak | Varsayılan/en yüksek sınır | 
+| Kaynak | Sınır | 
 | --- | --- |
 | Sanal ağlar |1000 |
 | Sanal ağ başına alt ağ sayısı |3,000 |
-| Sanal ağ başına sanal ağ eşlemeleri |500 |
-| [Sanal ağ başına sanal ağ geçitleri (VPN ağ geçitleri)](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
-| [Sanal ağ başına sanal ağ geçitleri (ExpressRoute ağ geçitleri)](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
+| Sanal ağ başına sanal ağ eşlemesi |500 |
+| [Sanal ağ başına sanal ağ ağ geçitleri (VPN ağ geçitleri)](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
+| [Sanal ağ başına sanal ağ ağ geçitleri (ExpressRoute ağ geçitleri)](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
 | Sanal ağ başına DNS sunucuları |20 |
-| Sanal ağ başına özel IP adresleri |65.536 |
+| Sanal ağ başına özel IP adresi |65.536 |
 | Ağ arabirimi başına özel IP adresleri |256 |
 | Sanal makine başına özel IP adresleri |256 |
 | Ağ arabirimi başına genel IP adresleri |256 |
 | Sanal makine başına genel IP adresleri |256 |
-| [Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500.000 |
+| [Sanal bir makinenin veya rol örneğinin NIC başına eşzamanlı TCP veya UDP akışları](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500.000 |
 | Ağ arabirim kartları |65.536 |
-| Ağ Güvenlik Grupları |5\.000 |
+| Ağ Güvenlik Grupları |5.000 |
 | NSG başına NSG kuralları |1000 |
-| Bir güvenlik grubundaki kaynak veya hedef için belirtilen IP adresleri ve aralıklar |4,000 |
+| Bir güvenlik grubunda kaynak veya hedef için belirtilen IP adresleri ve aralıkları |4.000 |
 | Uygulama güvenliği grupları |3,000 |
 | IP yapılandırması başına uygulama güvenlik grupları, NIC başına |20 |
-| Uygulama güvenlik grubu başına IP yapılandırması |4,000 |
-| Bir ağ güvenlik grubunun tüm güvenlik kuralları dahilinde belirtilenebilir uygulama güvenlik grupları |100 |
-| Kullanıcı tanımlı yol tabloları |200 |
-| Yol tablosu başına Kullanıcı tanımlı yollar |400 |
-| Azure VPN Gateway başına Noktadan siteye kök sertifika |20 |
-| Sanal ağ dokunmalar |100 |
-| Ağ arabirimi sanal ağ başına yapılandırmalara dokunun |100 |
+| Uygulama güvenlik grubuna göre IP yapılandırmaları |4.000 |
+| Ağ güvenlik grubunun tüm güvenlik kuralları içinde belirtilebilen uygulama güvenlik grupları |100 |
+| Kullanıcı tanımlı rota tabloları |200 |
+| Rota tablosu başına kullanıcı tanımlı rotalar |400 |
+| Azure VPN Ağ Geçidi'ne göre siteden siteye kök sertifikalar |20 |
+| Sanal ağ TAPs |100 |
+| Sanal ağ TAP başına ağ arabirimi TAP yapılandırmaları |100 |
 
-#### <a name="publicip-address"></a>Genel IP adresi sınırları
+#### <a name="public-ip-address-limits"></a><a name="publicip-address"></a>Genel IP adresi sınırları
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
-| Genel IP adresleri<sup>1</sup> | Temel için 10. | Desteğe başvurun. |
-| Statik genel IP adresleri<sup>1</sup> | Temel için 10. | Desteğe başvurun. |
-| Standart genel IP adresleri<sup>1</sup> | 10 | Desteğe başvurun. |
-| Genel IP Ön Ekleri | bir abonelikte standart genel IP sayısıyla sınırlı | Desteğe başvurun. |
+| Genel IP adresleri<sup>1</sup> | Basic için 10. | Desteğe başvurun. |
+| Statik Genel IP adresleri<sup>1</sup> | Basic için 10. | Desteğe başvurun. |
+| Standart Genel IP adresleri<sup>1</sup> | 10 | Desteğe başvurun. |
+| Genel IP Ön Ekleri | bir abonelikteki Standart Genel IP sayısıyla sınırlıdır | Desteğe başvurun. |
 | Genel IP öneki uzunluğu | /28 | Desteğe başvurun. |
 
-<sup>1</sup> Genel IP adresleri için varsayılan sınırlar, ücretsiz deneme, Kullandıkça öde, CSP gibi teklif kategorisi türüne göre farklılık gösterir. Örneğin, Kurumsal Anlaşma abonelikler için varsayılan değer 1000 ' dir.
+<sup>1.1.2</sup> Genel IP adresleri için varsayılan sınırlar, Ücretsiz Deneme, Ödeme-As-You-Go, CSP gibi teklif kategori türüne göre değişir. Örneğin, Kurumsal Sözleşme abonelikleri için varsayılan değer 1000'dir.
 
-#### <a name="load-balancer"></a>Yük dengeleyici sınırları
-Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resource Manager ile yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
+#### <a name="load-balancer-limits"></a><a name="load-balancer"></a>Yük dengeleyici limitleri
+Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resource Manager ile yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre](../articles/networking/check-usage-against-limits.md)nasıl görüntüleyebilirsiniz öğrenin.
 
-**Standart Load Balancer**
+**Standart Yük Dengeleyici**
 
-| Kaynak                                | Varsayılan/en yüksek sınır         |
+| Kaynak                                | Sınır         |
 |-----------------------------------------|-------------------------------|
 | Yük dengeleyiciler                          | 1000                         |
-| Kaynak başına kurallar                      | 1,500                         |
-| NIC başına kural (bir NIC 'deki tüm IP 'lerde) | 300                           |
-| Ön uç IP yapılandırması              | 600                           |
-| Arka uç havuzu boyutu                       | 1\.000 IP yapılandırması, tek bir sanal ağ |
-| Yüksek kullanılabilirlik bağlantı noktaları                 | iç ön uç başına 1       |
-| Load Balancer başına giden kuralları         | 20                            |
+| Kaynak başına kurallar                      | 1.500                         |
+| NIC başına kurallar (NIC'deki tüm IP'ler arasında) | 300                           |
+| Frontend IP yapılandırmaları              | 600                           |
+| Arka uç havuz boyutu                       | 1.000 IP yapılandırması, tek sanal ağ |
+| Yüksek kullanılabilirlik bağlantı noktaları                 | Dahili ön uç başına 1       |
+| Yük Dengeleyicibaşına giden kurallar        | 20                            |
+| [TCP boşta zaman adabı](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 dakika/30 dakika          |
 
 
-**Temel Load Balancer**
+**Temel Yük Dengeleyici**
 
-| Kaynak                                | Varsayılan/en yüksek sınır        |
+| Kaynak                                | Sınır        |
 |-----------------------------------------|------------------------------|
 | Yük dengeleyiciler                          | 1000                        |
 | Kaynak başına kurallar                      | 250                          |
-| NIC başına kural (bir NIC 'deki tüm IP 'lerde) | 300                          |
-| Ön uç IP yapılandırması              | 200                          |
-| Arka uç havuzu boyutu                       | 300 IP yapılandırması, tek kullanılabilirlik kümesi |
-| Load Balancer başına kullanılabilirlik kümeleri     | 150                          |
+| NIC başına kurallar (NIC'deki tüm IP'ler arasında) | 300                          |
+| Frontend IP yapılandırmaları              | 200                          |
+| Arka uç havuz boyutu                       | 300 IP yapılandırması, tek kullanılabilirlik seti |
+| Yük Dengeleyicisi başına kullanılabilirlik kümeleri     | 150                          |
 
-#### <a name="virtual-networking-limits-classic"></a>Aşağıdaki sınırlar yalnızca abonelik başına **Klasik** dağıtım modeliyle yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
+<a name="virtual-networking-limits-classic"></a>Aşağıdaki sınırlar yalnızca abonelik başına **klasik** dağıtım modeli aracılığıyla yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre](../articles/networking/check-usage-against-limits.md)nasıl görüntüleyebilirsiniz öğrenin.
 
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
 | Sanal ağlar |100 |100 |
 | Yerel ağ siteleri |20 |50 |
 | Sanal ağ başına DNS sunucuları |20 |20 |
-| Sanal ağ başına özel IP adresleri |4\.096 |4\.096 |
-| Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı |500.000, iki veya daha fazla NIC için 1.000.000 ' e kadar. |500.000, iki veya daha fazla NIC için 1.000.000 ' e kadar. |
-| Ağ güvenlik grupları (NSG 'ler) |200 |200 |
+| Sanal ağ başına özel IP adresi |4,096 |4,096 |
+| Sanal bir makinenin veya rol örneğinin NIC başına eşzamanlı TCP veya UDP akışları |500,000, iki veya daha fazla NIC için 1.000.000'e kadar. |500,000, iki veya daha fazla NIC için 1.000.000'e kadar. |
+| Ağ Güvenlik Grupları (NSGs) |200 |200 |
 | NSG başına NSG kuralları |1000 |1000 |
-| Kullanıcı tanımlı yol tabloları |200 |200 |
-| Yol tablosu başına Kullanıcı tanımlı yollar |400 |400 |
+| Kullanıcı tanımlı rota tabloları |200 |200 |
+| Rota tablosu başına kullanıcı tanımlı rotalar |400 |400 |
 | Genel IP adresleri (dinamik) |500 |500 |
 | Ayrılmış genel IP adresleri |500 |500 |
 | Dağıtım başına genel VIP |5 |Desteğe başvurun |
-| Dağıtım başına özel VIP (İç Yük Dengeleme) |1 |1 |
-| Uç nokta erişim denetim listeleri (ACL 'Ler) |50 |50 |
+| Dağıtım başına özel VIP (dahili yük dengeleme) |1 |1 |
+| Uç nokta erişim denetim listeleri (AÇS) |50 |50 |

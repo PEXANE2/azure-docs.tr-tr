@@ -1,6 +1,6 @@
 ---
-title: Azure VM için şablon indirme
-description: Kaynak Yöneticisi dağıtım modelindeki dağıtımların otomatikleştirilmesine yardımcı olmak için bir VM için Template'i indirin
+title: Azure VM şablonu indirin
+description: Kaynak Yöneticisi dağıtım modelindeki dağıtımları otomatikleştirmek için VM şablonlarını indirin
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,35 +15,35 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: c73026515f0d7fde4e2f82838696700b1bb17c77
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033558"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM için şablon indirme
-Portal veya PowerShell kullanarak Azure 'da bir VM oluşturduğunuzda, sizin için otomatik olarak bir Kaynak Yöneticisi şablonu oluşturulur. Bu şablonu, bir dağıtımı hızlı bir şekilde yinelemek için kullanabilirsiniz. Şablon, bir kaynak grubundaki tüm kaynaklarla ilgili bilgiler içerir. Bu, bir sanal makine için, şablonda ağ kaynakları dahil olmak üzere o kaynak grubundaki VM 'nin desteğiyle oluşturulan her şeyi içerdiği anlamına gelir.
+Portalı veya PowerShell'i kullanarak Azure'da bir VM oluşturduğunuzda, sizin için otomatik olarak bir Kaynak Yöneticisi şablonu oluşturulur. Dağıtımı hızla çoğaltmak için bu şablonu kullanabilirsiniz. Şablon, bir kaynak grubundaki tüm kaynaklar hakkında bilgi içerir. Sanal bir makine için bu, şablonun ağ kaynakları da dahil olmak üzere bu kaynak grubunda VM'yi desteklemek için oluşturulan her şeyi içerdiği anlamına gelir.
 
-## <a name="download-the-template-using-the-portal"></a>Portalı kullanarak şablonu indirme
-1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
-2. Sol bir menü, **sanal makineler**' i seçin.
+## <a name="download-the-template-using-the-portal"></a>Portalı kullanarak şablonu indirin
+1. [Azure portalına](https://portal.azure.com/)giriş yapın.
+2. Bir sol menü, **Sanal Makineler**seçin.
 3. Listeden sanal makineyi seçin.
-4. **Şablonu dışarı aktar**' ı seçin.
-5. Üstteki menüden **İndir** ' i seçin ve. zip dosyasını yerel bilgisayarınıza kaydedin.
-6. . Zip dosyasını açın ve dosyaları bir klasöre ayıklayın. . Zip dosyası şunları içerir:
+4. **Dışa Aktar şablonu'nun**
+5. Üstteki menüden **İndir'i** seçin ve .zip dosyasını yerel bilgisayarınıza kaydedin.
+6. .zip dosyasını açın ve dosyaları bir klasöre ayıklayın. .zip dosyası şunları içerir:
    
-   * Parameters. JSON
-   * Template. JSON
+   * parametreler.json
+   * template.json
 
-Template. JSON dosyası şablondur.
+template.json dosyası şablondur.
 
-## <a name="download-the-template-using-powershell"></a>PowerShell kullanarak şablonu indirme
-. JSON şablon dosyasını [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) cmdlet 'ini kullanarak da indirebilirsiniz. . Json dosyasının dosya adını ve yolunu sağlamak için `-path` parametresini kullanabilirsiniz. Bu örnek, **Myresourcegroup** adlı kaynak grubunun şablonunun yerel bilgisayarınızdaki **c:\users\public\downloads** klasörüne nasıl indirileceği gösterilmektedir.
+## <a name="download-the-template-using-powershell"></a>PowerShell'i kullanarak şablonu indirin
+[Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) cmdlet'i kullanarak .json şablon dosyasını da indirebilirsiniz. .json `-path` dosyasının dosya adını ve yolunu sağlamak için parametreyi kullanabilirsiniz. Bu örnek, **myResourceGroup** adlı kaynak grubunun şablonunu yerel bilgisayarınızdaki **C:\users\public\downloads** klasörüne nasıl indirdiğinizi gösterir.
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şablonları kullanarak kaynak dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Template izlenecek yol](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Şablonları kullanarak kaynakları dağıtma hakkında daha fazla bilgi edinmek için [Kaynak Yöneticisi şablonu gözden geçirin.](../../azure-resource-manager/resource-manager-template-walkthrough.md)
 

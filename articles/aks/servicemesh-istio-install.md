@@ -1,45 +1,45 @@
 ---
-title: Azure Kubernetes Service (AKS) ' de Istio 'yu kurma
-description: Azure Kubernetes Service (AKS) kümesinde hizmet ağı oluşturma ve kullanma hakkında bilgi edinin
+title: Azure Kubernetes Hizmetinde (AKS) Istio'ya Yükleme
+description: Azure Kubernetes Hizmeti (AKS) kümesinde bir hizmet ağı oluşturmak için Istio'yi nasıl yükleyip kullanacağınızı öğrenin
 author: paulbouwer
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136372"
 ---
-# <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Istio 'yu yükleyip kullanma
+# <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Istio'yı Azure Kubernetes Hizmetinde (AKS) yükleyin ve kullanın
 
-[Istio][istio-github] , bir Kubernetes kümesindeki mikro hizmetlerde anahtar bir işlevsellik kümesi sağlayan açık kaynaklı bir hizmet kafesidir. Bu özellikler trafik yönetimi, hizmet kimliği ve güvenlik, ilke zorlama ve Observability içerir. Istio hakkında daha fazla bilgi için resmi [nedir?][istio-docs-concepts] belgesine bakın.
+[Istio,][istio-github] Bir Kubernetes kümesindeki mikro hizmetler de önemli bir işlevsellik kümesi sağlayan açık kaynak kodlu bir hizmet kafesidir. Bu özellikler arasında trafik yönetimi, hizmet kimliği ve güvenliği, ilke zorlama ve gözlemlenebilirlik yer almaktadır. Istio hakkında daha fazla bilgi için resmi [Istio nedir?][istio-docs-concepts]
 
-Bu makalede, Istio 'un nasıl yükleneceği gösterilmektedir. Istio `istioctl` istemci ikilisi istemci makinenize yüklenir ve ıKS bileşenleri AKS 'deki bir Kubernetes kümesine yüklenir.
+Bu makalede, Istio nasıl yüklenir gösterir. Istio `istioctl` istemci ikilisi istemci makinenize yüklenir ve Istio bileşenleri AKS'deki bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Aşağıdaki yönergeler, Istio sürüm `1.4.0`referans.
+> Aşağıdaki talimatlar referans Istio sürümü `1.4.0`.
 >
-> Istio `1.4.x` yayınları, Kubernetes sürümleriyle `1.13`, `1.14`, `1.15`karşı Istio ekibi tarafından test edilmiştir. [GitHub-Istio yayımları][istio-github-releases]üzerinde ek istio sürümleri, [istio haberleri][istio-release-notes] ve desteklenen Kubernetes sürümlerinin her biri hakkında bilgi edinmek IÇIN bkz. [Genel SSS][istio-faq].
+> Istio `1.4.x` bültenleri Kubernetes sürümleri `1.13`karşı Istio ekibi `1.14`tarafından `1.15`test edilmiştir , . Sen GitHub ek Istio sürümleri bulabilirsiniz [- Istio Bültenleri,][istio-github-releases] [Istio Haberler][istio-release-notes] ve [Istio Genel SSS][istio-faq]de desteklenen Kubernetes sürümleri her bültenleri hakkında bilgi .
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Istio istioctl istemci ikilisini indirme ve yükleme
-> * AKS 'e Istio 'yu yükler
+> * Istio istioctl istemci ikilisini indirin ve kurun
+> * Istio'yı AKS'ye yükleyin
 > * Istio yüklemesini doğrulama
 > * Eklentilere erişin
-> * AKS 'ten Istio 'dan kaldırma
+> * IStio'u AKS'den kaldırın
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede açıklanan adımlarda, RBAC etkinleştirilmiş bir AKS kümesi (Kubernetes `1.13` ve üzeri) oluşturdunuz ve kümeyle `kubectl` bir bağlantı oluşturmuş olduğunuz varsayılır. Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın.
+Bu makalede ayrıntılı adımlar, bir AKS kümesi (Kubernetes `1.13` ve yukarıda, RBAC etkin) oluşturduğunuzve küme ile bir `kubectl` bağlantı kurduk varsayalım. Bu öğelerden herhangi biriyle ilgili yardıma ihtiyacınız varsa, [AKS quickstart'ına][aks-quickstart]bakın.
 
-AKS kümenizde Istio çalıştırmaya yönelik ek kaynak gereksinimlerini anlamak için, [Istio performans ve ölçeklenebilirlik](https://istio.io/docs/concepts/performance-and-scalability/) belgelerini okuduğunuzdan emin olun. Çekirdek ve bellek gereksinimleri, belirli iş yükünüze göre farklılık gösterecektir. Kuruluma uygun sayıda düğüm ve VM boyutu seçin.
+AKS kümenizde Istio'yu çalıştırmak için ek kaynak gereksinimlerini anlamak için [Istio Performans ve Ölçeklenebilirlik](https://istio.io/docs/concepts/performance-and-scalability/) belgelerini okuduğunuzdan emin olun. Çekirdek ve bellek gereksinimleri, özel iş yükünüze bağlı olarak değişir. Kurulumunuza uygun sayıda düğüm ve VM boyutu seçin.
 
-Bu makale, Istio yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nihai sonuç, resmi Istio yükleme [kılavuzundaki][istio-install-istioctl]yapıda aynıdır.
+Bu makalede, Istio yükleme kılavuzunu birkaç ayrı adıma ayırır. Sonuçta resmi Istio kurulum [kılavuzu][istio-install-istioctl]olarak yapı olarak aynıdır.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -59,11 +59,11 @@ Bu makale, Istio yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nihai 
 
 ::: zone-end
 
-## <a name="install-the-istio-components-on-aks"></a>AKS 'e Istio bileşenlerini yükler
+## <a name="install-the-istio-components-on-aks"></a>Istio bileşenlerini AKS'ye yükleyin
 
-[Grafana][grafana] ve [kiali][kiali] 'nin bir parçası olarak ilerliyoruz. Grafana, analiz ve izleme panoları sağlar ve Kiali bir hizmet ağı Observability panosu sağlar. Kurulumumuzda, bu bileşenlerin her biri [gizli][kubernetes-secrets]olarak sağlanması gereken kimlik bilgilerini gerektirir.
+Istio kurulumuzun bir parçası olarak [Grafana][grafana] ve [Kiali'yi][kiali] kuracağız. Grafana analiz ve izleme panoları sağlar ve Kiali bir hizmet örgü gözlem panosu sağlar. Kurulumumuzda, bu bileşenlerin her biri [Gizli][kubernetes-secrets]olarak sağlanmalıdır kimlik bilgileri gerektirir.
 
-Istio bileşenlerini yükleyebilmemiz için, hem Grafana hem de Kiali için gizli dizileri oluşturuyoruz. Bu gizli diziler, IBU tarafından kullanılacak `istio-system` ad alanına yüklenmelidir, bu nedenle ad alanını da oluşturmanız gerekir. `kubectl create` aracılığıyla ad alanını oluştururken `--save-config` seçeneğini kullandığımızda, bu nesnenin gelecekte bu nesne üzerinde `kubectl apply` çalıştırabilmesi gerekir.
+Istio bileşenlerini yüklemeden önce hem Grafana hem de Kiali için sırları yaratmalıyız. Bu sırların Istio `istio-system` tarafından kullanılacak ad alanına yüklenmesi gerekir, bu yüzden de ad alanını oluşturmamız gerekir. Istio yükleyicisi gelecekte bu `kubectl create` nesne üzerinde çalıştırabilirsiniz, `kubectl apply` böylece üzerinden ad alanı oluştururken `--save-config` seçeneği kullanmanız gerekir.
 
 ```console
 kubectl create namespace istio-system --save-config
@@ -87,18 +87,18 @@ kubectl create namespace istio-system --save-config
 
 ::: zone-end
 
-### <a name="install-istio-components"></a>Istio bileşenlerini yükler
+### <a name="install-istio-components"></a>Istio bileşenlerini yükleyin
 
-AKS kümenizdeki Grafana ve Kiali gizli dizilerini başarıyla oluşturduğumuzdan, bu durumda Istio bileşenlerinin yüklenmesi zaman alabilir. 
+Artık AKS kümemizde Grafana ve Kiali sırlarını başarıyla yarattığımıza göre, Istio bileşenlerini yükleme nin zamanı geldi. 
 
-Istio için [Helm][helm] yükleme yaklaşımı gelecekte kullanım dışı olacaktır. Yeni yükleme yaklaşımı, `istioctl` istemci ikilisini, [istio yapılandırma profillerini][istio-configuration-profiles]ve yeni [istio denetim düzlemi belirtimini ve API][istio-control-plane]'yi kullanır. Bu yeni yaklaşım, Istio 'yu yüklemek için kullanacağız.
+Istio için [Helm][helm] kurulum yaklaşımı gelecekte küçümsülecektir. Istio için yeni kurulum `istioctl` yaklaşımı, istemci ikili, [Istio yapılandırma profilleri][istio-configuration-profiles]ve yeni [Istio kontrol düzlemi spec ve api][istio-control-plane]kaldıraçları . Bu yeni yaklaşım, Istio'yı yüklemek için kullanacağımız şey.
 
 > [!NOTE]
-> IBU Şu anda Linux düğümlerinde çalıştırılmak üzere zamanlanmalıdır. Kümenizde Windows Server düğümleriniz varsa, Istio 'ların yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığından emin olmanız gerekir. Düğümlerin doğru düğümlere zamanlandığından emin olmak için [düğüm seçicileri][kubernetes-node-selectors] kullanacağız.
+> Istio şu anda Linux düğümleri üzerinde çalışacak şekilde zamanlanmış olmalıdır. Kümenizde Windows Server düğümleri varsa, Istio bölmelerinin yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığını sağlamalısınız. Bölmelerin doğru düğümlere zamanlanmış olduğundan emin olmak için [düğüm seçicileri][kubernetes-node-selectors] kullanırız.
 
 > [!CAUTION]
-> [SDS (gizli bulma hizmeti)][istio-feature-sds] ve [istio CNI][istio-feature-cni] istio özellikleri şu anda [Alpha][istio-feature-stages]içinde olduğundan, bunlar etkinleştirilmeden önce düşünülmelidir. Ayrıca, [Service Account Token Volume Projection][kubernetes-feature-sa-projected-volume] Kubernetes ÖZELLIĞI (SDS için bir gereksinim) geçerli aks sürümlerinde etkin değildir.
-Aşağıdaki içerikle `istio.aks.yaml` adlı bir dosya oluşturun. Bu dosya, UBO 'ın yapılandırılması için [istio denetim düzlemi belirtim][istio-control-plane] ayrıntılarını tutacaktır.
+> [SDS (gizli keşif hizmeti)][istio-feature-sds] ve [Istio CNI][istio-feature-cni] Istio özellikleri Alpha şu anda [,][istio-feature-stages]bu yüzden bu etkinleştirmeden önce verilmelidir düşündüm. Buna ek olarak, [Servis Hesabı Belirteç Hacim][kubernetes-feature-sa-projected-volume] ProjeksiyonKubernetes özelliği (SDS için bir gereklilik) geçerli AKS sürümlerinde etkinleştirilmez.
+Aşağıdaki içerikle `istio.aks.yaml` birlikte çağrılan bir dosya oluşturun. Bu dosya Istio yapılandırmak için [Istio kontrol düzlemi spec][istio-control-plane] ayrıntıları nı tutar.
 
 ```yaml
 apiVersion: install.istio.io/v1alpha2
@@ -131,13 +131,13 @@ spec:
       enabled: true
 ```
 
-`istioctl apply` komutunu ve yukarıdaki `istio.aks.yaml` Istio denetim düzlemi özellikleri dosyasını kullanarak istio 'yu aşağıdaki şekilde yüklersiniz:
+Aşağıdaki gibi komutu `istioctl apply` ve yukarıdaki `istio.aks.yaml` Istio kontrol düzlemi spec dosyasını kullanarak istio yükleyin:
 
 ```console
 istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
-Yükleyici bir dizi [crds][kubernetes-crd] dağıtır ve ardından bu istio yapılandırması için tanımlanan tüm ilgili nesneleri yüklemek üzere bağımlılıkları yönetir. Aşağıdaki çıktı kod parçacığına benzer bir şey görmeniz gerekir.
+Yükleyici bir dizi CRD dağıtacak ve ardından Istio'nun bu yapılandırması için tanımlanan ilgili nesnelerin tümünün yüklenmesini sağlamak için [bağımlılıkları][kubernetes-crd] yönetir. Aşağıdaki çıkış parçacığı gibi bir şey görmeniz gerekir.
 
 ```console
 Applying manifests for these components:
@@ -232,25 +232,25 @@ service/istio-ingressgateway created
 ...
 ```
 
-Bu noktada, AKS kümenize Istio 'u dağıttık. Başarılı bir Istio dağıtımına sahip olduğunuzdan emin olmak için, bir sonraki bölüme ilerleyip bu [yüklemeyi doğrulayalım](#validate-the-istio-installation).
+Bu noktada, Istio'yu AKS kümenize dağıttınız. Istio'nun başarılı bir şekilde konuşlandırıldığından emin olmak için, [Istio yüklemesini doğrulamak](#validate-the-istio-installation)için bir sonraki bölüme geçelim.
 
 ## <a name="validate-the-istio-installation"></a>Istio yüklemesini doğrulama
 
-Önce beklenen hizmetlerin oluşturulduğunu onaylayın. Çalışan hizmetleri görüntülemek için [kubectl Get svc][kubectl-get] komutunu kullanın. `istio-system` ad alanını sorgulayın, burada, Istio ve eklenti bileşenlerinin `istio` Helm grafiği tarafından yüklendiği yer:
+İlk olarak beklenen hizmetlerin oluşturulduğunu doğrulayın. Çalışan hizmetleri görüntülemek için svc komutu [almak kubectl][kubectl-get] kullanın. Istio ve eklenti bileşenlerinin `istio-system` `istio` Miğfer grafiği tarafından yüklendiği ad alanını sorgulayın:
 
 ```console
 kubectl get svc --namespace istio-system --output wide
 ```
 
-Aşağıdaki örnek çıktıda Şu anda çalışıyor olması gereken hizmetler gösterilmektedir:
+Aşağıdaki örnek çıktı, şimdi çalışıyor olması gereken hizmetleri gösterir:
 
-- `istio-*` Hizmetleri
+- `istio-*`Hizmetleri
 - `jaeger-*`, `tracing`ve `zipkin` eklenti izleme hizmetleri
-- `prometheus` eklentisi ölçüm hizmeti
-- `grafana` eklentisi Analizi ve izleme panosu hizmeti
-- `kiali` eklentisi hizmet ağı Pano hizmeti
+- `prometheus`eklenti ölçümleri hizmeti
+- `grafana`eklenti analizi ve izleme panosu hizmeti
+- `kiali`eklenti hizmeti örgü panosu hizmeti
 
-`istio-ingressgateway` `<pending>`dış IP 'si gösteriyorsa, Azure ağ tarafından bir IP adresi atanmadan birkaç dakika bekleyin.
+Harici `istio-ingressgateway` bir ip, `<pending>`bir IP adresi Azure ağ tarafından atanana kadar birkaç dakika bekleyin gösterirse.
 
 ```console
 NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                                      AGE   SELECTOR
@@ -271,18 +271,18 @@ tracing                  ClusterIP      10.0.249.95    <none>           9411/TCP
 zipkin                   ClusterIP      10.0.154.89    <none>           9411/TCP                                                                                                                     94s   app=jaeger
 ```
 
-Ardından, gerekli yığınların oluşturulduğunu onaylayın. [Kubectl Get Pod][kubectl-get] komutunu kullanın ve `istio-system` ad alanını sorgulayın:
+Ardından, gerekli bölmelerin oluşturulduğunu doğrulayın. [Kubectl get pods][kubectl-get] komutunu kullanın `istio-system` ve yine ad alanını sorgula:
 
 ```console
 kubectl get pods --namespace istio-system
 ```
 
-Aşağıdaki örnek çıktı, çalıştıran Pod 'leri göstermektedir:
+Aşağıdaki örnek çıktı, çalışan bölmeleri gösterir:
 
-- `istio-*` Pod
-- `prometheus-*` eklenti ölçümleri Pod
-- `grafana-*` eklentisi Analizi ve izleme panosu Pod
-- `kiali` eklentisi hizmet ağı panosu Pod
+- `istio-*` bakla
+- `prometheus-*` eklenti ölçümleri bölmesi
+- `grafana-*` eklenti analizi ve izleme panosu bölmesi
+- `kiali` eklenti hizmeti örgü pano bölmesi
 
 ```console
 NAME                                          READY   STATUS    RESTARTS   AGE
@@ -299,19 +299,19 @@ kiali-59b7fd7f68-92zrh                        1/1     Running   0          95s
 prometheus-7c7cf9dbd6-rjxcv                   1/1     Running   0          94s
 ```
 
-Tüm FID 'ler `Running`durumunu göstermelidir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
+Tüm bölmeler bir durum `Running`göstermelidir. Kapsüllerinizde bu durum yoksa, bunu öğrenene kadar bir iki dakika bekleyin. Herhangi bir bölme bir sorun bildiriyorsa, çıktılarını ve durumlarını gözden geçirmek için [kubectl describe pod][kubectl-describe] komutunu kullanın.
 
-## <a name="accessing-the-add-ons"></a>Eklentilere erişme
+## <a name="accessing-the-add-ons"></a>Eklentilere erişim
 
-Yukarıdaki kurulumla, daha fazla işlevsellik sağlayan bir dizi eklenti yüklenmiş. Eklentiler için Web uygulamaları, bir dış IP adresi aracılığıyla **herkese açık bir şekilde gösterilmez** . 
+Istio tarafından yukarıdaki kurulumumuza ek işlevsellik sağlayan bir dizi eklenti yüklendi. Eklentiler için web uygulamaları harici bir ip adresi üzerinden herkese açık **değildir.** 
 
-Eklenti kullanıcı arabirimlerine erişmek için `istioctl dashboard` komutunu kullanın. Bu komut, [kubectl bağlantı noktasından ileri][kubectl-port-forward] ve rastgele bir bağlantı noktasından yararlanarak istemci makineniz ile aks kümenizdeki ilgili Pod arasında güvenli bir bağlantı oluşturur. Daha sonra, eklenti Web uygulamasını varsayılan tarayıcınızda otomatik olarak açar.
+Eklenti kullanıcı arabirimlerine erişmek için `istioctl dashboard` komutu kullanın. Bu komut, istemci makineniz ile AKS kümenizdeki ilgili bölme arasında güvenli bir bağlantı oluşturmak için [kubectl port ileri][kubectl-port-forward] ve rasgele bir bağlantı noktası ndan yararlanır. Daha sonra varsayılan tarayıcınızda eklenti web uygulamasını otomatik olarak açar.
 
-Bu makalenin önceki kısımlarında yer aldığı için kimlik bilgilerini belirterek Grafana ve Kiali için ek bir güvenlik katmanı ekledik.
+Bu makalede daha önce onlar için kimlik bilgilerini belirterek Grafana ve Kiali için ek bir güvenlik katmanı ekledik.
 
 ### <a name="grafana"></a>Grafana
 
-Istio için analiz ve izleme panoları [Grafana][grafana]tarafından sağlanır. İstendiğinde, Grafana gizli anahtarı aracılığıyla oluşturduğunuz kimlik bilgilerini kullanmayı unutmayın. Grafana panosunu güvenli şekilde açmak için aşağıdaki adımları izleyin:
+Istio için analiz ve izleme panoları [Grafana][grafana]tarafından sağlanmaktadır. Grafana sırrı aracılığıyla oluşturduğunuz kimlik bilgilerini istendiğinde daha önce kullanmayı unutmayın. Grafana panosunu aşağıdaki gibi güvenli bir şekilde açın:
 
 ```console
 istioctl dashboard grafana
@@ -319,7 +319,7 @@ istioctl dashboard grafana
 
 ### <a name="prometheus"></a>Prometheus
 
-[Ceso ölçümleri Prometheus][prometheus]tarafından sağlanmaktadır. Prometheus panosunu şu şekilde güvenli şekilde açın:
+Istio için ölçümler [Prometheus][prometheus]tarafından sağlanmaktadır. Prometheus panosunu aşağıdaki gibi güvenli bir şekilde açın:
 
 ```console
 istioctl dashboard prometheus
@@ -327,7 +327,7 @@ istioctl dashboard prometheus
 
 ### <a name="jaeger"></a>Jaeger
 
-Istio 'da izleme, [Jaeger][jaeger]tarafından sağlanır. Şu şekilde Jaeger panosunu güvenli şekilde açın:
+Istio içinde Izleme [Jaeger][jaeger]tarafından sağlanmaktadır. Jaeger panosunu aşağıdaki gibi güvenli bir şekilde açın:
 
 ```console
 istioctl dashboard jaeger
@@ -335,7 +335,7 @@ istioctl dashboard jaeger
 
 ### <a name="kiali"></a>Kiali
 
-Bir hizmet ağı Observability panosu [Kiali][kiali]tarafından sağlanır. İstendiğinde Kiali gizli dizisi aracılığıyla oluşturduğunuz kimlik bilgilerini kullanmayı unutmayın. Kiali panosunu güvenli şekilde aşağıdaki gibi açın:
+Bir hizmet örgü gözlem panosu [Kiali][kiali]tarafından sağlanmaktadır. İstendiğinde Kiali sırrı aracılığıyla oluşturduğunuz kimlik bilgilerini kullanmayı unutmayın. Kiali panosunu aşağıdaki gibi güvenli bir şekilde açın:
 
 ```console
 istioctl dashboard kiali
@@ -343,20 +343,20 @@ istioctl dashboard kiali
 
 ### <a name="envoy"></a>Envoy
 
-[Envoy][envoy] proxy 'lerine yönelik basit bir arabirim mevcuttur. Belirtilen Pod 'da çalışan bir Envoy proxy 'si için yapılandırma bilgileri ve ölçümler sağlar. Aşağıdaki gibi, Envoy arabirimini güvenli şekilde açın:
+[Elçi][envoy] vekilleri için basit bir arayüz mevcuttur. Belirli bir bölmede çalışan bir Elçi proxy'si için yapılandırma bilgileri ve ölçümleri sağlar. Elçi arabirimini aşağıdaki gibi güvenli bir şekilde açın:
 
 ```console
 istioctl dashboard envoy <pod-name>.<namespace>
 ```
 
-## <a name="uninstall-istio-from-aks"></a>AKS 'ten Istio 'dan kaldırma
+## <a name="uninstall-istio-from-aks"></a>IStio'u AKS'den kaldırın
 
 > [!WARNING]
-> Çalışan bir sistemden Istio 'un silinmesi, hizmetleriniz arasında trafik ile ilgili sorunlar oluşmasına neden olabilir. Devam etmeden önce sisteminizin ilerlemeden düzgün şekilde çalışmaya yönelik hükümler oluşturduğunuzdan emin olun.
+> Istio'nun çalışan bir sistemden silmesi, hizmetleriniz arasında trafikle ilgili sorunlara neden olabilir. Devam etmeden önce Istio olmadan sisteminizin hala doğru çalışması için hükümler yaptığınızdan emin olun.
 
-### <a name="remove-istio-components-and-namespace"></a>Istio bileşenlerini ve ad alanını kaldır
+### <a name="remove-istio-components-and-namespace"></a>Istio bileşenlerini ve ad alanını kaldırma
 
-AKS kümenizdeki ICU 'yi kaldırmak için, `istio.aks.yaml` Istio denetim düzlemi belirtimi dosyası ile `istioctl manifest generate` komutunu kullanın. Bu, yüklü tüm bileşenleri ve `istio-system` ad alanını kaldırmak için `kubectl delete` yönelttireceğiz dağıtılan bildirimi oluşturur.
+ISTio'yu AKS kümenizden kaldırmak `istioctl manifest generate` için `istio.aks.yaml` Istio kontrol düzlemi spec dosyasının komutunu kullanın. Bu, yüklenen tüm bileşenleri ve `kubectl delete` `istio-system` ad alanını kaldırmak için boruyla çalışacağımız dağıtılmış bildirimi oluşturur.
 
 ```console
 istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
@@ -364,9 +364,9 @@ istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostde
 kubectl delete -f istio-components-aks -R
 ```
 
-### <a name="remove-istio-crds-and-secrets"></a>Istio CRDs ve gizli dizileri kaldır
+### <a name="remove-istio-crds-and-secrets"></a>Istio CRD'leri ve Sırları Kaldırın
 
-Yukarıdaki komutlar tüm Istio bileşenlerini ve ad alanını siler, ancak yine de üretilmiş olan Istio gizli dizileri ile hala ayrıldık. 
+Yukarıdaki komutlar tüm Istio bileşenleri ve ad alanı silmek, ama biz hala oluşturulan Istio sırları ile bırakılır. 
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -388,22 +388,22 @@ Yukarıdaki komutlar tüm Istio bileşenlerini ve ad alanını siler, ancak yine
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki belgelerde, bir kanarya yayını kullanıma sunmak üzere akıllı yönlendirme sağlamak için istio 'yu nasıl kullanabileceğiniz açıklanmaktadır:
+Aşağıdaki belgeler, bir kanarya sürümü dışarı rulo akıllı yönlendirme sağlamak için Istio nasıl kullanabileceğinizi açıklar:
 
 > [!div class="nextstepaction"]
 > [AKS Istio akıllı yönlendirme senaryosu][istio-scenario-routing]
 
-Istio 'nun daha fazla yükleme ve yapılandırma seçeneklerini araştırmak için aşağıdaki resmi Istio yönergelerine bakın:
+Istio için daha fazla kurulum ve yapılandırma seçeneğini keşfetmek için aşağıdaki resmi Istio kılavuzuna bakın:
 
-- [İstio-Yükleme Kılavuzu][istio-installation-guides]
+- [Istio - kurulum kılavuzları][istio-installation-guides]
 
-Ayrıca şunları kullanarak ek senaryolar izleyebilirsiniz:
+Ayrıca aşağıdakileri kullanarak ek senaryolar da izleyebilirsiniz:
 
-- [İstio BookInfo uygulama örneği][istio-bookinfo-example]
+- [Istio Bookinfo Uygulama örneği][istio-bookinfo-example]
 
-Application Insights ve Istio kullanarak AKS uygulamanızı nasıl izleyeceğinizi öğrenmek için aşağıdaki Azure Izleyici belgelerine bakın:
+Uygulama Öngörüleri ve Istio'yu kullanarak AKS uygulamanızı nasıl izleyeceğinizi öğrenmek için aşağıdaki Azure Monitör belgelerine bakın:
 
-- [Kubernetes barındırılan uygulamalar için sıfır izleme uygulaması izleme][app-insights]
+- [Kubernetes için sıfır enstrümantasyon uygulama izleme uygulamaları barındırılan][app-insights]
 
 <!-- LINKS - external -->
 [istio]: https://istio.io

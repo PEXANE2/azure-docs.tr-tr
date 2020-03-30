@@ -1,7 +1,7 @@
 ---
-title: Web tarayıcıları kullanma (MSAL.NET) | Mavisi
+title: Web tarayıcılarını kullanma (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanırken belirli hususlar hakkında bilgi edinin.
+description: .NET (MSAL.NET için Microsoft Kimlik Doğrulama Kitaplığı ile Xamarin Android kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,76 +14,76 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262743"
 ---
-# <a name="using-web-browsers-msalnet"></a>Web tarayıcıları kullanma (MSAL.NET)
+# <a name="using-web-browsers-msalnet"></a>Web tarayıcılarını kullanma (MSAL.NET)
 
-Etkileşimli kimlik doğrulaması için Web tarayıcıları gereklidir. Varsayılan olarak, MSAL.NET, Xamarin. iOS ve Xamarin. Android üzerindeki [sistem Web tarayıcısını](#system-web-browser-on-xamarinios-xamarinandroid) destekler. Ancak, [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) ve [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) uygulamalarında gereksinimlerinize (UX, çoklu oturum açma (SSO) ve güvenlik için ihtiyacı vardır) bağlı olarak [Katıştırılmış Web tarayıcısını de etkinleştirebilirsiniz](#enable-embedded-webviews-on-ios-and-android) . Aynı şekilde, grafik varlığına veya Android 'de Chrome özel sekmelerini destekleyen bir tarayıcıya göre [dinamik olarak](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) hangi Web tarayıcısını kullanacağınızı seçebilirsiniz. MSAL.NET yalnızca .NET Core masaüstü uygulamalarında sistem tarayıcısını destekler.
+Etkileşimli kimlik doğrulaması için web tarayıcıları gereklidir. Varsayılan olarak, MSAL.NET Xamarin.iOS ve Xamarin.Android [sistem web tarayıcısını](#system-web-browser-on-xamarinios-xamarinandroid) destekler. Ancak, [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) ve [Xamarin.Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) uygulamalarında gereksinimlerinize (UX, tek oturum açma (SSO) güvenlik gereksinimi) bağlı olarak [Gömülü Web tarayıcısını da etkinleştirebilirsiniz.](#enable-embedded-webviews-on-ios-and-android) Ayrıca, Chrome'un varlığına veya [Android'de](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) Chrome özel sekmelerini destekleyen bir tarayıcıya bağlı olarak dinamik olarak hangi web tarayıcısını kullanacağınızı seçebilirsiniz. MSAL.NET sadece .NET Core masaüstü uygulamalarında sistem tarayıcısını destekler.
 
-## <a name="web-browsers-in-msalnet"></a>MSAL.NET 'de Web tarayıcıları
+## <a name="web-browsers-in-msalnet"></a>MSAL.NET'deki web tarayıcıları
 
-### <a name="interaction-happens-in-a-web-browser"></a>Bir Web tarayıcısında etkileşim gerçekleşir
+### <a name="interaction-happens-in-a-web-browser"></a>Etkileşim bir Web tarayıcısında gerçekleşir
 
-Bir belirteci etkileşimli olarak alırken, iletişim kutusunun içeriği kitaplık tarafından, ancak STS (güvenlik belirteci hizmeti) tarafından sağlanmadığında anlaşılması önemlidir. Kimlik doğrulama uç noktası, bir Web tarayıcısında veya Web denetiminde işlenen etkileşimi denetleyen bazı HTML ve JavaScript 'ı geri gönderir. STS 'nin HTML etkileşimini işlemesine izin vermek birçok avantaj sunar:
+Etkileşimli olarak bir belirteç edinirken, iletişim kutusunun içeriğinin kitaplık tarafından değil, STS (Güvenlik Belirteci Hizmeti) tarafından sağlandığını anlamak önemlidir. Kimlik doğrulama bitiş noktası, etkileşimi kontrol eden bazı HTML ve JavaScript'i geri gönderir ve bu da bir web tarayıcısında veya web denetiminde işlenir. STS'nin HTML etkileşimini ele almasına izin vermenin birçok avantajı vardır:
 
-- Parola (yazılmışsa), uygulama veya kimlik doğrulama kitaplığı tarafından hiçbir şekilde depolanmaz.
-- Diğer kimlik sağlayıcılarına yeniden yönlendirmeler sağlar (örneğin, bir iş okul hesabı veya MSAL ile bir kişisel hesap veya Azure AD B2C olan bir sosyal hesap ile oturum açma için).
-- STS 'nin koşullu erişimi denetlemesine olanak tanır. Örneğin, kullanıcının kimlik doğrulama aşamasında birden çok faktörlü kimlik doğrulaması (MFA), veya telefonunda bir Windows Hello PIN 'i girme ya da telefonlarındaki bir kimlik doğrulama uygulamasında çağrılması gibi). Gerekli çok faktörlü kimlik doğrulamasının henüz ayarlanamadığı durumlarda Kullanıcı aynı iletişim kutusunda tam zamanında ayarlayabilir.  Kullanıcı cep telefonu numarasını girer ve bir kimlik doğrulama uygulaması yüklemek ve hesaplarını eklemek için bir QR etiketi taramak için tasarlanmıştır. Bu sunucu odaklı etkileşim harika bir deneyimdir!
-- Parolanın süresi dolduğunda kullanıcının bu iletişim kutusunda parolasını değiştirmesine izin verir (eski parola ve yeni parola için ek alanlar sağlar).
-- Kiracının markalanmasını veya Azure AD Kiracı Yöneticisi/uygulama sahibi tarafından denetlenen uygulamayı (görüntüleri) mümkün.
-- Kullanıcıların, kimlik doğrulamasından sonra yalnızca kendi adında kaynakları/kapsamları erişimine izin vermesini sağlar.
+- Parola (bir tane yazdıysa) uygulama veya kimlik doğrulama kitaplığı tarafından hiçbir zaman depolanmaz.
+- Diğer kimlik sağlayıcılarına yeniden yönlendirmeler sağlar (örneğin, iş okulu hesabıyla veya MSAL'da kişisel bir hesapla veya Azure AD B2C'li bir sosyal hesapla giriş yapın).
+- Örneğin, kullanıcının kimlik doğrulama aşamasında (Windows Hello pini girilmesi veya telefonlarında çağrılması veya telefonlarındaki bir kimlik doğrulama uygulamasında) birden çok faktörlü kimlik doğrulaması (MFA) yapmasını sağlayarak STS Koşullu Erişimi denetlemesini sağlar. Gerekli çok faktörlü kimlik doğrulamanın henüz ayarlanmadığı durumlarda, kullanıcı aynı iletişim kutusunda tam zamanında ayarlayabilir.  Kullanıcı cep telefonu numarasını girer ve bir kimlik doğrulama uygulaması yüklemek ve hesaplarını eklemek için bir QR etiketit için yönlendirilir. Bu sunucu odaklı etkileşim büyük bir deneyim!
+- Parolanın süresi dolduğunda kullanıcının aynı iletişim kutusunda parolasını değiştirmesine izin verir (eski parola ve yeni parola için ek alanlar sağlar).
+- Azure AD kiracı yöneticisi / uygulama sahibi tarafından kontrol edilen kiracının veya uygulamanın (görüntülerin) markalanmasını sağlar.
+- Kullanıcıların, uygulamanın kimlik doğrulamadan hemen sonra kendi adlarındaki kaynaklara/ kapsamlara erişmesini izin vermelerini sağlar.
 
-### <a name="embedded-vs-system-web-ui"></a>Katıştırılmış vs sistemi Web Kullanıcı arabirimi
+### <a name="embedded-vs-system-web-ui"></a>Gömülü vs Sistem Web UI
 
-MSAL.NET, çok katmanlı bir kitaplıktır ve bir kullanıcı arabirimi denetiminde bir tarayıcıyı barındırmak için çerçeveye özgü koda sahiptir (örneğin, .net klasik BT 'de WinForms kullanır, Xamarin 'te yerel mobil denetimleri kullanır vb.). Bu denetime Web Kullanıcı arabirimi `embedded` denir. Alternatif olarak, MSAL.NET, sistem IŞLETIM sistemi tarayıcısını de başlatabilir.
+MSAL.NET çok çerçeveli bir kitaplıktır ve bir tarayıcıyı ui denetiminde barındıracak çerçeveye özgü bir koda sahiptir (örneğin, .Net Classic'te WinForms kullanır, Xamarin'de yerel mobil denetimler vb.) Bu denetime `embedded` web arabirimi denir. Alternatif olarak, MSAL.NET da sistem işletim sistemi tarayıcısı başlatmak mümkün.
 
-Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle sistem tarayıcısıdır. Sistem tarayıcısı, daha önce oturum açmış olan kullanıcıları hatırlama konusunda daha iyidir. Bu davranışı değiştirmeniz gerekiyorsa `WithUseEmbeddedWebView(bool)` kullanın
+Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle sistem tarayıcısıdır. Sistem tarayıcısı, daha önce oturum açmış olan kullanıcıları hatırlamakta daha iyidir. Bu davranışı değiştirmeniz gerekiyorsa,`WithUseEmbeddedWebView(bool)`
 
 ### <a name="at-a-glance"></a>Bir bakışta
 
-| Çerçeve        | eklenen | Sistem | Varsayılan |
+| Framework        | Katıştırılmış | Sistem | Varsayılan |
 | ------------- |-------------| -----| ----- |
-| .NET klasik     | Yes | Evet ^ | eklenen |
-| .NET Core     | Hayır | Evet ^ | Sistem |
-| .NET Standard | Hayır | Evet ^ | Sistem |
-| UWP | Yes | Hayır | eklenen |
-| Xamarin.Android | Yes | Yes  | Sistem |
-| Xamarin.iOS | Yes | Yes  | Sistem |
-| Xamarin.Mac| Yes | Hayır | eklenen |
+| .NET Klasik     | Evet | Evet^ | Katıştırılmış |
+| .NET Core     | Hayır | Evet^ | Sistem |
+| .NET Standard | Hayır | Evet^ | Sistem |
+| UWP | Evet | Hayır | Katıştırılmış |
+| Xamarin.Android | Evet | Evet  | Sistem |
+| Xamarin.iOS | Evet | Evet  | Sistem |
+| Xamarin.Mac| Evet | Hayır | Katıştırılmış |
 
-^ "http://localhost" yeniden yönlendirme URI 'SI gerektirir
+^ Gerektirirhttp://localhost" " URI yönlendirme
 
-## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Xamarin. iOS, Xamarin. Android üzerinde sistem Web tarayıcısı
+## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Xamarin.iOS, Xamarin.Android sistem web tarayıcısı
 
-Varsayılan olarak, MSAL.NET, Xamarin. iOS, Xamarin. Android ve .NET Core üzerinde sistem Web tarayıcısını destekler. Kullanıcı arabirimi sağlayan tüm platformlar (yani .NET Core) için, Web tarayıcısı denetimi ekleme kitaplığı tarafından bir iletişim kutusu sağlanır. MSAL.NET, UWP platformu için .NET masaüstü ve WAB için gömülü web görünümünü de kullanır. Bununla birlikte, varsayılan olarak Xamarin iOS ve Xamarin Android uygulamaları için **sistem Web tarayıcısını** kullanır. İOS 'ta, Işletim sisteminin (iOS12, iOS11 ve önceki sürümler) sürümüne bağlı olarak kullanılacak web görünümünü de seçer.
+Varsayılan olarak, MSAL.NET Xamarin.iOS, Xamarin.Android ve .NET Core sistem web tarayıcısını destekler. UI sağlayan tüm platformlar için (yani .NET Core değil), kitaplık tarafından bir web tarayıcıdenetimi katıştırma iletişim ilerler. MSAL.NET ayrıca UWP platformu için .NET Desktop ve WAB için gömülü bir web görünümü de kullanır. Ancak, varsayılan olarak Xamarin iOS ve Xamarin Android uygulamaları için **sistem web tarayıcısı** yararlanır. iOS'ta, İşletim Sistemi'nin (iOS12, iOS11 ve daha önceki) sürümüne bağlı olarak kullanılacak web görünümünü bile seçer.
 
-Sistem tarayıcısının kullanılması, bir aracı (Şirket portalı/Authenticator) gerekmeden, SSO durumunu diğer uygulamalarla ve Web uygulamalarıyla paylaşmanın önemli avantajlarından yararlanır. Varsayılan olarak, Xamarin iOS ve Xamarin Android platformları için MSAL.NET içinde Sistem tarayıcısı kullanılmıştır çünkü bu platformlarda, sistem Web tarayıcısı ekranın tamamını kaplar ve Kullanıcı deneyimi daha iyidir. Sistem Web görünümü bir iletişim kutusundan ayırt edilemez. Ancak iOS 'ta, kullanıcının uygulamayı geri çağırması için izin vermesi gerekebilir, bu durum sinir bozucu olabilir.
+Sistem tarayıcısı kullanarak diğer uygulamalar ve web uygulamaları ile bir broker (Şirket portalı / Authenticator) gerek kalmadan SSO devlet paylaşımı önemli bir avantaja sahiptir. Sistem tarayıcısı, varsayılan olarak, Xamarin iOS ve Xamarin Android platformları için MSAL.NET kullanıldı çünkü, bu platformlarda, sistem web tarayıcısı tüm ekranı kaplar ve kullanıcı deneyimi daha iyidir. Sistem web görünümü bir iletişim kutusundan ayırt edilemez. Ancak iOS'ta, kullanıcının tarayıcının uygulamayı geri çağırması için izin vermesi gerekebilir, bu da rahatsız edici olabilir.
 
-## <a name="system-browser-experience-on-net-core"></a>.NET Core 'da sistem tarayıcı deneyimi
+## <a name="system-browser-experience-on-net-core"></a>.NET Core'da sistem tarayıcısı deneyimi
 
-.NET Core 'da MSAL.NET, sistem tarayıcısını ayrı bir işlem olarak başlatır. MSAL.NET bu tarayıcı üzerinde denetime sahip değildir ancak kullanıcı kimlik doğrulamasını tamamladıktan sonra, Web sayfası, MSAL.NET 'in URI 'yi ele geçirebilir şekilde yeniden yönlendirilir.
+.NET Core'da MSAL.NET ayrı bir işlem olarak sistem tarayıcısını başlatacaktır. MSAL.NET bu tarayıcı üzerinde denetimi yoktur, ancak kullanıcı kimlik doğrulaması bittikten sonra, web sayfası MSAL.NET Uri'yi durdurabilecek şekilde yönlendirilir.
 
-Ayrıca, .NET klasik için yazılmış uygulamaları bu tarayıcıyı kullanacak şekilde yapılandırmak için
+.NET Classic için yazılmış uygulamaları da bu tarayıcıyı kullanmak üzere yapılandırabilirsiniz.
 
 ```csharp
 await pca.AcquireTokenInteractive(s_scopes)
          .WithUseEmbeddedWebView(false)
 ```
 
-MSAL.NET, kullanıcının uzaklaşacağını algılayamaz veya yalnızca tarayıcıyı kapatır. Bu tekniği kullanan uygulamaların bir zaman aşımı (`CancellationToken`aracılığıyla) tanımlanması önerilir. Kullanıcıdan parolayı değiştirmesi veya Multi-Factor-Authentication gerçekleştirmesi istenen durumlarda dikkate almanız gereken en az birkaç dakika boyunca bir zaman aşımı önerilir.
+MSAL.NET kullanıcının uzağa gitup gitmeyeceğini veya tarayıcıyı kapatıp kapatmadiğini algılayamaz. Bu tekniği kullanan uygulamaların bir zaman ayarı `CancellationToken`tanımlaması (üzerinden) teşvik edilir. Kullanıcıdan parolayı değiştirmesi veya çok faktörlü kimlik doğrulaması gerçekleştirmesi istendiği durumları dikkate almak için en az birkaç dakikalık bir zaman dilimi öneririz.
 
-### <a name="how-to-use-the-default-os-browser"></a>Varsayılan işletim sistemi tarayıcısını kullanma
+### <a name="how-to-use-the-default-os-browser"></a>Varsayılan İşletim Sistemi Tarayıcısı nasıl kullanılır?
 
-MSAL.NET `http://localhost:port` dinlemesi ve Kullanıcı kimlik doğrulaması yapıldığında AAD tarafından gönderilen kodun zaman denetimini yapması gerekir (Ayrıntılar için bkz. [yetkilendirme kodu](v2-oauth2-auth-code-flow.md) )
+MSAL.NET kullanıcı kimlik `http://localhost:port` doğrulaması yapıldığında AAD'nin gönderdiği kodu dinlemesi ve engellemesi gerekir (Ayrıntılar için [Yetkilendirme koduna](v2-oauth2-auth-code-flow.md) bakın)
 
 Sistem tarayıcısını etkinleştirmek için:
 
-1. Uygulama kaydı sırasında `http://localhost` yeniden yönlendirme URI 'si olarak yapılandırın (Şu anda B2C tarafından desteklenmez)
-2. PublicClientApplication oluşturduğunuzda, bu yeniden yönlendirme URI 'sini belirtin:
+1. Uygulama kaydı sırasında, `http://localhost` yeniden yönlendirme uriolarak yapılandırın (şu anda B2C tarafından desteklenmez)
+2. PublicClientApplication'ınızı oluşturunuzu yaptığınızda, şu yönlendirmeyi belirtin:
 
 ```csharp
 IPublicClientApplication pca = PublicClientApplicationBuilder
@@ -94,19 +94,19 @@ IPublicClientApplication pca = PublicClientApplicationBuilder
 ```
 
 > [!Note]
-> `http://localhost`yapılandırırsanız dahili MSAL.NET rastgele bir açık bağlantı noktası bulur ve onu kullanır.
+> Yapılandırırsanız, `http://localhost`dahili olarak MSAL.NET rasgele bir açık bağlantı noktası bulur ve kullanır.
 
 ### <a name="linux-and-mac"></a>Linux ve MAC
 
-Linux 'ta MSAL.NET, xdg-Open aracını kullanarak varsayılan işletim sistemi tarayıcısını açar. Sorunu gidermek için, aracı bir terminalden çalıştırın, örneğin `xdg-open "https://www.bing.com"`  
-Mac 'te, tarayıcı `open <url>` çağırarak açılır
+Linux'ta MSAL.NET, xdg açık aracını kullanarak varsayılan işletim sistemi tarayıcısını açar. Sorun gidermek için, örneğin bir terminalden aracı çalıştırın,`xdg-open "https://www.bing.com"`  
+Mac'te, tarayıcı çağırılarak açılır`open <url>`
 
 ### <a name="customizing-the-experience"></a>Deneyimi özelleştirme
 
 > [!NOTE]
-> Özelleştirme, MSAL.NET 4.1.0 veya üzeri sürümlerde kullanılabilir.
+> Özelleştirme 4.1.0 veya daha sonra MSAL.NET kullanılabilir.
 
-MSAL.NET, bir belirteç alındığında veya hata durumunda HTTP iletisiyle yanıt verebilir. Bir HTML iletisi görüntüleyebilir veya istediğiniz URL 'ye yeniden yönlendirebilirsiniz:
+MSAL.NET bir belirteç aldığında veya hata durumunda bir HTTP iletisi ile yanıt verebiliyor. Bir HTML iletisi görüntüleyebilir veya seçtiğiniz bir url'ye yönlendirebilirsiniz:
 
 ```csharp
 var options = new SystemWebViewOptions() 
@@ -121,9 +121,9 @@ await pca.AcquireTokenInteractive(s_scopes)
          .ExecuteAsync();
 ```
 
-### <a name="opening-a-specific-browser-experimental"></a>Belirli bir tarayıcıyı açma (deneysel)
+### <a name="opening-a-specific-browser-experimental"></a>Belirli bir tarayıcıyı açma (Deneysel)
 
-MSAL.NET tarayıcıyı açan yöntemi özelleştirebilirsiniz. Örneğin, varsayılan tarayıcı kullanılması yerine, belirli bir tarayıcıyı açmaya zorlayabilirsiniz:
+tarayıcıyı açma MSAL.NET şekilde özelleştirebilirsiniz. Örneğin varsayılan tarayıcı ne olursa olsun kullanmak yerine, belirli bir tarayıcıyı açmaya zorlayabilirsiniz:
 
 ```csharp
 var options = new SystemWebViewOptions() 
@@ -132,35 +132,35 @@ var options = new SystemWebViewOptions()
 }
 ```
 
-### <a name="uwp-doesnt-use-the-system-webview"></a>UWP, System WebView 'u kullanmıyor
+### <a name="uwp-doesnt-use-the-system-webview"></a>UWP Sistem Web görünümü kullanmaz
 
-Ancak, masaüstü uygulamaları için, bir Sistem WebView 'u başlatmak, kullanıcı tarayıcıyı gördüğü için, başka sekmelerin açık olduğu şekilde bir alt türe sahip kullanıcı deneyimine yol açar. Kimlik doğrulaması gerçekleştiği zaman, kullanıcılar bu pencereyi kapatmasını isteyen bir sayfa alır. Kullanıcı dikkat halinde ödeme yapmazsa, tüm işlemi kapatabilir (kimlik doğrulamasıyla ilgisi olmayan diğer sekmeler dahil). Masaüstü üzerindeki sistem tarayıcısını kullanmak ayrıca, yerel bağlantı noktalarını açıp dinlemeden, uygulama için gelişmiş izinler gerektirebilecek olması gerekir. Bir geliştirici, Kullanıcı veya yönetici olarak bu gereksinim hakkında daha fazla bilgi alabilirsiniz.
+Ancak masaüstü uygulamalariçin, bir System Webview başlatılması, kullanıcı tarayıcıyı gördüğünden, diğer sekmelerin zaten açılmış olabileceği bir alt kullanıcı deneyimine yol açar. Kimlik doğrulama gerçekleştiğinde, kullanıcılardan bu pencereyi kapatmalarını isteyen bir sayfa alır. Kullanıcı dikkat etmezse, tüm işlemi (kimlik doğrulamayla ilgisi olmayan diğer sekmeler dahil) kapatabilir. Masaüstünde sistem tarayıcısı yararlanarak da yerel bağlantı noktaları açılması ve uygulama için gelişmiş izinler gerektirebilir onları dinleme gerektirir. Geliştirici, kullanıcı veya yönetici olarak bu gereksinim konusunda isteksiz olabilirsiniz.
 
-## <a name="enable-embedded-webviews-on-ios-and-android"></a>İOS ve Android 'de katıştırılmış Web görünümlerini etkinleştirme
+## <a name="enable-embedded-webviews-on-ios-and-android"></a>iOS ve Android'de gömülü web görüntülemelerini etkinleştirme
 
-Ayrıca, Xamarin. iOS ve Xamarin. Android uygulamalarında katıştırılmış Web görünümlerini de etkinleştirebilirsiniz. MSAL.NET 2.0.0-Preview ile başlayarak, MSAL.NET ayrıca **Embedded** WebView seçeneğinin kullanılmasını destekler. ADAL.NET için, gömülü Web görünümü desteklenen tek seçenektir.
+Xamarin.iOS ve Xamarin.Android uygulamalarında gömülü web görünümlerini de etkinleştirebilirsiniz. 2.0.0 önizlemeMSAL.NET ile başlayan MSAL.NET, **gömülü** web görünümü seçeneğini de destekler. ADAL.NET için, gömülü web görünümü desteklenen tek seçenektir.
 
-Xamarin 'i hedefleyen MSAL.NET kullanan bir geliştirici olarak, katıştırılmış Web görünümleri veya sistem tarayıcıları kullanmayı seçebilirsiniz. Bu, hedeflemek istediğiniz kullanıcı deneyimine ve güvenlik kaygıına bağlı olarak sizin seçimidir.
+Xamarin'i hedefleyen MSAL.NET kullanan bir geliştirici olarak, gömülü web görünümlerini veya sistem tarayıcılarını kullanmayı seçebilirsiniz. Bu, hedeflemek istediğiniz kullanıcı deneyimine ve güvenlik endişelerine bağlı olarak sizin seçiminizdir.
 
-Şu anda MSAL.NET, Android ve iOS aracılarını henüz desteklememektedir. Bu nedenle, çoklu oturum açma (SSO) sağlamanız gerekiyorsa, Sistem tarayıcısı yine de daha iyi bir seçenek olabilir. Katıştırılmış Web tarayıcısıyla aracıları destekleme MSAL.NET kapsamınızdan bulunur.
+Şu anda, MSAL.NET henüz Android ve iOS brokerdestek lemiyor. Bu nedenle, tek oturum açma (SSO) sağlamanız gerekiyorsa, sistem tarayıcısı yine de daha iyi bir seçenek olabilir. Gömülü web tarayıcısı ile destekleyici broker biriktirme listesi MSAL.NET.
 
-### <a name="differences-between-embedded-webview-and-system-browser"></a>Katıştırılmış WebView ve sistem tarayıcısı arasındaki farklılıklar
-MSAL.NET ' de ekli Web görünümü ve sistem tarayıcısı arasında bazı görsel farklılıklar vardır.
+### <a name="differences-between-embedded-webview-and-system-browser"></a>Gömülü web görünümü ve sistem tarayıcısı arasındaki farklar
+MSAL.NET gömülü web görünümü ve sistem tarayıcısı arasında bazı görsel farklılıklar vardır.
 
-**Katıştırılmış Web görünümü kullanılarak MSAL.NET ile etkileşimli oturum açma:**
+**Gömülü Web Görünümü'ni kullanarak MSAL.NET ile etkileşimli oturum açma:**
 
-![eklenen](media/msal-net-web-browsers/embedded-webview.png)
+![katıştırılmış](media/msal-net-web-browsers/embedded-webview.png)
 
-**Sistem tarayıcısını kullanarak MSAL.NET ile etkileşimli oturum açma:**
+**Sistem Tarayıcısı'nı kullanarak MSAL.NET ile etkileşimli oturum açma:**
 
 ![Sistem tarayıcısı](media/msal-net-web-browsers/system-browser.png)
 
-### <a name="developer-options"></a>Geliştirici seçenekleri
+### <a name="developer-options"></a>Geliştirici Seçenekleri
 
-MSAL.NET kullanan bir geliştirici olarak, STS 'den etkileşimli iletişim kutusunu görüntülemek için çeşitli seçenekleriniz vardır:
+MSAL.NET kullanan bir geliştirici olarak, STS'den etkileşimli iletişim kutusunu görüntülemek için çeşitli seçenekleriniz vardır:
 
-- **Sistem tarayıcısı.** Sistem tarayıcısı kitaplıkta varsayılan olarak ayarlanır. Android kullanıyorsanız, hangi tarayıcıların kimlik doğrulaması için desteklendiği hakkında belirli bilgiler için [sistem tarayıcılarını](msal-net-system-browser-android-considerations.md) okuyun. Android 'de sistem tarayıcısını kullanırken, cihazın Chrome özel sekmelerini destekleyen bir tarayıcısı olması önerilir.  Aksi takdirde, kimlik doğrulaması başarısız olabilir.
-- **Katıştırılmış Web görünümü.** MSAL.NET içinde yalnızca katıştırılmış Web görünümü kullanmak için `AcquireTokenInteractively` Parameters Builder bir `WithUseEmbeddedWebView()` yöntemi içerir.
+- **Sistem tarayıcısı.** Sistem tarayıcısı kitaplıkta varsayılan olarak ayarlanır. Android kullanıyorsanız, kimlik doğrulama için hangi tarayıcıların desteklendiğine ilişkin belirli bilgiler için [sistem tarayıcılarını](msal-net-system-browser-android-considerations.md) okuyun. Android'de sistem tarayıcısını kullanırken, cihazın Chrome özel sekmelerini destekleyen bir tarayıcıya sahip olduğunu öneririz.  Aksi takdirde, kimlik doğrulama başarısız olabilir.
+- **Gömülü web görünümü.** Yalnızca MSAL.NET gömülü web görünümünü `AcquireTokenInteractively` kullanmak için `WithUseEmbeddedWebView()` parametre oluşturucusu bir yöntem içerir.
 
     iOS
 
@@ -180,23 +180,23 @@ MSAL.NET kullanan bir geliştirici olarak, STS 'den etkileşimli iletişim kutus
                 .ExecuteAsync();
     ```
 
-#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Xamarin. iOS üzerinde katıştırılmış Web tarayıcısı veya sistem tarayıcısı arasından seçim yapma
+#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Xamarin.iOS'ta gömülü web tarayıcısı veya sistem tarayıcısı arasında seçim yapmak
 
-İOS uygulamanızda, `AppDelegate.cs` `ParentWindow` `null`için başlatabilirsiniz. İOS 'ta kullanılmıyor
+iOS uygulamanızda, `AppDelegate.cs` 'nin ' `ParentWindow` ini başolarak `null` iOS'ta kullanılmaz
 
 ```csharp
 App.ParentWindow = null; // no UI parent on iOS
 ```
 
-#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Xamarin. Android üzerinde katıştırılmış Web tarayıcısı veya sistem tarayıcısı arasından seçim yapma
+#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Xamarin.Android'de gömülü web tarayıcısı veya sistem tarayıcısı arasında seçim yapmak
 
-Android uygulamanızda, `MainActivity.cs` kimlik doğrulama sonucunun geri dönmesi için üst etkinliği ayarlayabilirsiniz:
+Android uygulamanızda, `MainActivity.cs` kimlik doğrulama sonucunun geri dönebilmeleri için üst etkinliği ayarlayabilirsiniz:
 
 ```csharp
  App.ParentWindow = this;
 ```
 
-Sonra `MainPage.xaml.cs`:
+Sonra: `MainPage.xaml.cs`
 
 ```csharp
 authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
@@ -205,16 +205,16 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
                       .ExecuteAsync();
 ```
 
-#### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Xamarin. Android üzerinde özel sekmelerin varlığını algılama
+#### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Xamarin.Android'de özel sekmelerin varlığını algılama
 
-Tarayıcıda çalışan uygulamalarla SSO 'yu etkinleştirmek için sistem Web tarayıcısını kullanmak istiyorsanız, ancak özel sekme desteği olan bir tarayıcıya sahip olmayan Android cihazlara yönelik kullanıcı deneyimiyle ilgili endişeli varsa, `IPublicClientApplication``IsSystemWebViewAvailable()` yöntemini çağırarak karar verme seçeneğiniz vardır. Bu yöntem, PackageManager özel sekmeleri algılarsa ve aygıtta algılanmadığında `false` `true` döndürür.
+Eğer tarayıcıda çalışan uygulamalar ile SSO etkinleştirmek için sistem web tarayıcısı kullanmak istiyorsanız, ancak özel sekme desteği ile bir tarayıcı olmayan Android `IsSystemWebViewAvailable()` cihazlar `IPublicClientApplication`için kullanıcı deneyimi hakkında endişe duyuyorsanız, yöntemi arayarak karar verme seçeneğiniz var. PackageManager `true` özel sekmeleri algılarsa ve `false` aygıtta algılanmamışsa bu yöntem döndürür.
 
-Bu yöntemin döndürdüğü değere ve gereksinimlerinize bağlı olarak, bir karar verebilir:
+Bu yöntemle döndürülen değere ve gereksinimlerinize bağlı olarak bir karar verebilirsiniz:
 
-- Kullanıcıya özel bir hata iletisi döndürebilirsiniz. Örneğin: "Lütfen, kimlik doğrulamaya devam etmek için Chrome 'ı yükleyip" veya-
-- Katıştırılmış WebView seçeneğine geri dönebilmeniz ve Kullanıcı arabirimini gömülü bir Web görünümü olarak başlatmanız gerekebilir.
+- Kullanıcıya özel bir hata iletisi döndürebilirsiniz. Örneğin: "Kimlik doğrulamasına devam etmek için lütfen Chrome'u yükleyin" -OR-
+- Katıştılmış web görünümü seçeneğine geri dönebilir ve ui'yi gömülü bir web görünümü olarak başlatabilirsiniz.
 
-Aşağıdaki kod katıştırılmış WebView seçeneğini göstermektedir:
+Aşağıdaki kod, gömülü web görünümü seçeneğini gösterir:
 
 ```csharp
 bool useSystemBrowser = app.IsSystemWebviewAvailable();
@@ -225,7 +225,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
                       .ExecuteAsync();
 ```
 
-#### <a name="net-core-doesnt-support-interactive-authentication-with-an-embedded-browser"></a>.NET Core, ekli bir tarayıcıyla etkileşimli kimlik doğrulamayı desteklemez
+#### <a name="net-core-doesnt-support-interactive-authentication-with-an-embedded-browser"></a>.NET Core, gömülü bir tarayıcıyla etkileşimli kimlik doğrulamasını desteklemez
 
-.NET Core için belirteçleri etkileşimli olarak alma, gömülü Web görünümleriyle değil yalnızca sistem Web tarayıcısı aracılığıyla kullanılabilir. Aslında, .NET Core Kullanıcı arabirimini henüz sağlamıyor.
-Gözatma deneyimini sistem web tarayıcısıyla özelleştirmek istiyorsanız, [ıwithcustomuı](scenario-desktop-acquire-token.md#withcustomwebui) arabirimini uygulayabilir ve hatta kendi tarayıcınızı sağlayabilirsiniz.
+.NET Core için, jeton satın alma etkileşimli olarak sadece sistem web tarayıcısı üzerinden kullanılabilir, gömülü web görünümleri ile değil. Nitekim, .NET Core henüz UI sağlamaz.
+Sistem web tarayıcısı ile tarama deneyimini özelleştirmek istiyorsanız, [IWithCustomUI](scenario-desktop-acquire-token.md#withcustomwebui) arabirimini uygulayabilir ve hatta kendi tarayıcınızı bile sağlayabilirsiniz.

@@ -1,95 +1,95 @@
 ---
-title: Azure IoT Central uygulamanızda cihaz verilerini çözümleme | Microsoft Docs
-description: Azure IoT Central uygulamanızda cihaz verilerini çözümleyin.
-author: ankitgup
+title: Azure IoT Merkezi uygulamanızdaki aygıt verilerini analiz edin | Microsoft Dokümanlar
+description: Azure IoT Central uygulamanızdaki aygıt verilerini analiz edin.
+author: ankitscribbles
 ms.author: ankitgup
 ms.date: 11/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7627421317458eb0ff9637b3497df11dacfddbff
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023863"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158291"
 ---
-# <a name="how-to-use-analytics-to-analyze-device-data"></a>Cihaz verilerini çözümlemek için Analytics 'i kullanma
+# <a name="how-to-use-analytics-to-analyze-device-data"></a>Cihaz verilerini analiz etmek için analitik nasıl kullanılır?
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
 
 
-Azure IoT Central, geçmiş eğilimleri çözümlemek ve cihazlarınızdan çeşitli Telemetriler ilişkilendirmek için zengin analiz özellikleri sağlar. Başlamak için sol bölmedeki **analiz** ' i ziyaret edin.
+Azure IoT Central, geçmiş eğilimleri analiz etmek ve aygıtlarınızdaki çeşitli telemeleri ilişkilendirmek için zengin analiz özellikleri sağlar. Başlamak için sol bölmedeki **Analytics'i** ziyaret edin.
 
-## <a name="understanding-the-analytics-ui"></a>Analytics Kullanıcı arabirimini anlama
-Analiz Kullanıcı arabirimi üç ana bileşenden oluşur:
-- **Veri yapılandırma paneli:** Yapılandırma panelinde, verileri çözümlemek istediğiniz cihaz grubunu seçerek başlatın. Ardından, çözümlemek istediğiniz Telemetriyi seçin ve her telemetri için toplama yöntemini seçin. Denetime **göre bölme** , cihaz özelliklerini boyut olarak kullanarak verileri gruplandırmaya yardımcı olur.
+## <a name="understanding-the-analytics-ui"></a>Analitik UI'yi Anlama
+Analytics kullanıcı arabirimi üç ana bileşenden oluşur:
+- **Veri yapılandırma paneli:** Yapılandırma panelinde, verileri çözümlemek istediğiniz aygıt grubunu seçerek başlayın. Ardından, çözümlemek istediğiniz telemetriyi seçin ve her telemetri için toplama yöntemini seçin. **Split By** denetimi, aygıt özelliklerini boyut olarak kullanarak verilerin gruplandırmasına yardımcı olur.
 
-- **Zaman denetimi:** Veri çözümlemek istediğiniz süreyi seçmek için zaman denetimi kullanılır. Zaman aralığını seçmek için zaman kaydırıcısının iki ucundan birini sürükleyebilirsiniz. Zaman denetimi Ayrıca, verileri toplamak için kullanılan demetini veya Aralık boyutunu denetleyen bir **Aralık boyutu** kaydırıcısının de bulunur. 
+- **Zaman kontrolü:** Zaman denetimi, verileri çözümlemek istediğiniz süreyi seçmek için kullanılır. Zaman aralığını seçmek için zamanın her iki ucunu sürükleyebilirsiniz. Zaman denetimi, kovayı veya verileri toplamak için kullanılan aralık boyutunu kontrol eden bir **Interval boyutu** kaydırıcısı da vardır. 
 
-- **Grafik denetimi:** Grafik denetimi, verileri çizgi grafik olarak görselleştirir. Grafik göstergesine etkileşimde bulunarak belirli satırların görünürlüğünü değiştirebilirsiniz. 
+- **Grafik denetimi:** Grafik denetimi verileri bir çizgi grafiği olarak görselleştirir. Grafik göstergesiyle etkileşimkurarak belirli satırların görünürlüğünü geçiş yapabilirsiniz. 
 
 
-  ![Analytics Kullanıcı arabirimine genel bakış](media/howto-create-analytics/analyticsui.png)
+  ![Analitik UI Genel Bakış](media/howto-create-analytics/analyticsui.png)
 
 
 ## <a name="querying-your-data"></a>Verilerinizi sorgulama
 
-Bir **cihaz grubunu**ve çözümlemek istediğiniz Telemetriyi seçerek başlamanız gerekir. İşiniz bittiğinde, verileri görselleştirmeye başlamak için **Çözümle** ' yi seçin.
+Bir **aygıt grubu**ve analiz etmek istediğiniz telemetriyi seçerek başlamanız gerekir. İşinizi bitirdikten sonra, verilerinizi görselleştirmeye başlamak için **Analiz** et'i seçin.
 
-- **Cihaz grubu:** [Cihaz grubu](tutorial-use-device-groups.md) , cihazlarınızın Kullanıcı tanımlı grubudur. Örneğin, Oakland 'deki tüm soğutma veya tüm sürüm 2,0 rüzgar türbines.
+- **Cihaz grubu:** [Aygıt grubu,](tutorial-use-device-groups.md) aygıtlarınızın kullanıcı tanımlı grubudur. Örneğin, Oakland tüm Buzdolapları, ya da Tüm sürüm 2.0 rüzgar türbinleri.
 
-- **Telemetri:** Çözümlemek ve araştırmak istediğiniz Telemetriyi seçin. Birlikte çözümlemek için birden çok Telemetriler seçebilirsiniz. Varsayılan toplama yöntemi, sırasıyla dize veri türü için sayısal ve sayı için Average olarak ayarlanır. Sayısal veri türleri için desteklenen toplama yöntemleri ortalama, en yüksek, en düşük, sayı ve toplam toplamdır.  Dize veri türü için desteklenen toplama yöntemleri Count.
+- **Telemetri:** Analiz etmek ve keşfetmek istediğiniz telemetriyi seçin. Birlikte çözümlemek için birden çok telemetries seçebilirsiniz. Varsayılan toplama yöntemi, sırasıyla sayısal için Ortalama ve dize veri türü için Sayma olarak ayarlanır. Sayısal veri türleri için desteklenen toplama yöntemleri Ortalama, Maksimum, Minimum, Sayım ve, Toplam'dır.  Dize veri türü için desteklenen toplama yöntemleri sayılır.
 
-- **Bölme ölçütü:** ' Bölünmüş ' denetim, cihaz özelliklerini boyut olarak kullanarak verileri gruplandırmaya yardımcı olur. Cihaz ve bulut özelliklerinin değerleri, telemetriyle birlikte ve cihaz tarafından gönderildiğinde birleştirilir. Bulut veya cihaz özelliği güncellendiyse, telemetri grafik üzerinde farklı değerlere göre gruplanmış olarak görüntülenir.
+- **Bölün:** 'Bölüne' denetimi, aygıt özelliklerini boyut olarak kullanarak verilerin gruplandırmasına yardımcı olur. Aygıt ve bulut özelliklerinin değerleri, cihaz tarafından gönderildiği anda ve ne zaman gönderildiği yle birlikte birleştirilir. Bulut veya aygıt özelliği güncelleştirilmişse, grafikte farklı değerlere göre gruplanmış telemetriyi görürsünüz.
 
     > [!TIP]
-    > Her bir cihaz için verileri ayrı olarak görüntülemek için ' bölünmüş ' denetimde cihaz kimliği ' ni seçin.
+    > Her aygıtın verilerini ayrı ayrı görüntülemek için 'Bölünerek' denetiminde Aygıt Kimliği'ni seçin.
 
 ## <a name="interacting-with-your-data"></a>Verilerinizle etkileşim kurma
 
-Verilerinizi sorguladıktan sonra çizgi grafik üzerinde görselleştirmeyi başlatabilirsiniz. Telemetriyi gösterebilir/gizleyebilirsiniz, zaman süresini değiştirebilir, bir veri kılavuzunda Telemetriyi görüntüleyebilirsiniz.
+Verilerinizi sorguladıktan sonra, çizgi grafiğinde görselleştirmeye başlayabilirsiniz. Telemetriyi gösterebilir/gizleyebilir, süreyi değiştirebilir, veri ızgarasında telemetrigörüntüleyebilirsiniz.
 
-- **Zaman Düzenleyicisi bölmesi:** Varsayılan olarak, geçen bir günden verileri alacağız. Zaman süresini değiştirmek için zaman kaydırıcısının her iki ucundan birini sürükleyebilirsiniz. Takvim denetimini, önceden tanımlanmış zaman demetlerinden birini seçmek veya özel bir zaman aralığı seçmek için de kullanabilirsiniz. Zaman denetimi Ayrıca, verileri toplamak için kullanılan demetini veya Aralık boyutunu denetleyen bir **Aralık boyutu** kaydırıcısının de bulunur.
+- **Zaman editörü paneli:** Varsayılan olarak, son bir günden veri alacağız. Zaman süresini değiştirmek için zaman kaydırıcısının her iki ucunu sürükleyebilirsiniz. Takvim denetimini önceden tanımlanmış zaman kovalarından birini seçmek veya özel bir zaman aralığı seçmek için de kullanabilirsiniz. Zaman denetimi, kovayı veya verileri toplamak için kullanılan aralık boyutunu kontrol eden bir **Interval boyutu** kaydırıcısı da vardır.
 
-    ![Zaman Düzenleyicisi](media/howto-create-analytics/timeeditorpanel.png)
+    ![Zaman Editörü](media/howto-create-analytics/timeeditorpanel.png)
 
-    - **İç tarih aralığı kaydırıcı aracı**: iki uç nokta denetimini istediğiniz zaman aralığında sürükleyerek kullanın. Bu iç tarih aralığı, dış tarih aralığı kaydırıcı denetimi tarafından sınırlandırılır.
+    - **İç tarih aralığı kaydırıcı aracı**: İki uç nokta denetimini istediğiniz zaman aralığında sürükleyerek kullanın. Bu iç tarih aralığı dış tarih aralığı kaydırıcı kontrolü ile sınırlandırılmıştır.
     
    
-    - **Dış tarih aralığı kaydırıcı denetimi**: bitiş tarihi aralığını seçmek için uç nokta denetimlerini kullanın. Bu, iç tarih aralığı denetiminizdeki kullanılabilir olacak.
+    - **Dış tarih aralığı kaydırıcı sıcası denetimi**: İç tarih aralığı denetiminiz için kullanılabilecek dış tarih aralığını seçmek için bitiş noktası denetimlerini kullanın.
 
-    - **Artırın ve azaltın tarih aralığı düğmeleri**: artışa veya sürenizi span istediğiniz aralığı için herhangi bir düğmeyi seçerek.
+    - **Tarih aralığı düğmelerini artırın ve azaltın**: İstediğiniz aralık için düğmelerden birini seçerek zaman aralığınızı artırın veya azaltın.
 
-    - **Aralık boyutu kaydırıcısı**: aynı zaman dilimi boyunca aralıkların ölçeğini ve ölçeğini yakınlaştırmak için kullanın. Bu eylem büyük saat dilimleri arasında hareket daha kesin bir denetim sağlar. Bu uygulamayı, verilerin ayrıntılı, yüksek çözünürlüklü görünümlerini, hatta milisaniyeye doğru bir şekilde görmek için kullanabilirsiniz. Kaydırıcının varsayılan başlangıç noktası, Seçiminizdeki verilerin en uygun görünümü olarak ayarlanır, bu da çözümleme, sorgu hızı ve ayrıntı düzeyi dengeler.
+    - **Aralık boyutu kaydırıcı**: Aynı zaman aralığında aralıkları yakınlaştırmak ve uzaklaştırmak için kullanın. Bu eylem, büyük zaman dilimleri arasındaki hareketin daha hassas denetimini sağlar. Verilerinizin parçalı, yüksek çözünürlüklü görünümlerini milisaniyelere kadar bile olsa görmek için kullanabilirsiniz. Kaydırıcının varsayılan başlangıç noktası, çözünürlük, sorgu hızı ve parçalı lığı dengeleyen seçiminizdeki verilerin en uygun görünümü olarak ayarlanır.
     
-    - **Tarih aralığı Seçicisi**: Bu Web denetimiyle, istediğiniz tarih ve saat aralıklarını kolayca seçebilirsiniz. Ayrıca, farklı saat dilimleri arasında geçiş yapmak için denetimi de kullanabilirsiniz. Geçerli çalışma alanınıza uygulanacak değişiklikleri yaptıktan sonra Kaydet ' i seçin.
+    - **Tarih aralığı seçici**: Bu web denetimi ile istediğiniz tarih ve saat aralıklarını kolayca seçebilirsiniz. Denetimi farklı saat dilimleri arasında geçiş yapmak için de kullanabilirsiniz. Geçerli çalışma alanınıza uygulanacak değişiklikleri yaptıktan sonra Kaydet'i seçin.
 
     > [!TIP]
-    > Aralık boyutu, seçilen zaman aralığına göre dinamik olarak belirlenir. Daha az zaman yayılmaları, verileri birkaç saniyelik çok parçalı aralıklarla toplama olanağı sağlar.
+    > Aralık boyutu, seçilen zaman aralığına göre dinamik olarak belirlenir. Daha küçük zaman aralıkları, verilerin birkaç saniyeye kadar çok parçalı aralıklarla toplanmasını sağlar.
 
 
-- **Grafik göstergesi:** Grafik göstergesi, seçili Telemetriyi grafikte gösterir. Göstergedeki her bir öğenin üzerine giderek grafiğe odaklanmak için bu öğeyi üzerine gelebilmeniz gerekir. ' Split By ' kullanılırken telemetri, seçilen boyutun ilgili değerlerine göre gruplandırılır. Grup adına tıklayarak belirli bir Telemetriyi veya tüm grubu görünürlüğünü değiştirebilirsiniz.  
+- **Grafik Efsanesi:** Grafik göstergesi, grafikte seçilen telemetriyi gösterir. Grafik üzerinde odak haline getirmek için gösterge üzerinde her öğe üzerinde gezinmek olabilir. 'By Böleni' kullanırken, telemetri seçili boyutun ilgili değerlerine göre gruplandırılır. Grup adını tıklatarak her bir telemetrinin veya tüm grubun görünürlüğünü geçiş yapabilirsiniz.  
 
 
-- **Y ekseni biçim denetimi:** y ekseni modu, kullanılabilir y ekseni görünüm seçenekleri boyunca geçiş yapar. Bu denetim yalnızca farklı Telemetriler görselleştirildiği zaman kullanılabilir. Y eksenini üç moddan birini seçerek ayarlayabilirsiniz:
+- **Y ekseni biçim denetimi:** y ekseni modu kullanılabilir y ekseni görünüm seçenekleri ile döngüleri. Bu denetim yalnızca farklı telemetries görselleştiriliyor zaman kullanılabilir. Üç moddan birini seçerek y eksenini ayarlayabilirsiniz:
 
-    - **Yığılmış:** Her telemetri için bir grafik yığılır ve grafiklerin her birinin kendi y ekseni vardır. Bu mod varsayılan olarak ayarlanır.
+    - **Yığılmış:** Her telemetri için bir grafik istiflenir ve grafiklerin her birinin kendi y ekseni vardır. Bu mod varsayılan olarak ayarlanır.
     - **Paylaşılan:** Her telemetri için bir grafik aynı y eksenine karşı çizilir.
-    - **Çakışma:** Y ekseni verileri, seçilen satıra göre değişen y ekseninde birden çok satırı yığmak için kullanın.
+    - **Çakışma:** Seçilen satıra göre y ekseni verileri değişirken, aynı y ekseninde birden çok satırı yığınlamak için kullanın.
 
-  ![Farklı görselleştirme modlarıyla y ekseni genelinde veri düzenleme](media/howto-create-analytics/yaxiscontrol.png)
+  ![Farklı görselleştirme modları ile verileri y ekseni boyunca düzenleme](media/howto-create-analytics/yaxiscontrol.png)
 
-- **Yakınlaştırma denetimi:** Yakınlaştırma, verilerinize daha fazla ayrıntıya erişmenizi sağlar. Sonuç kümesi içinde odaklanmak istediğiniz bir zaman dilimi bulursanız, alanı almak için fare işaretçinizi kullanın ve seçtiğiniz uç noktaya sürükleyin. Ardından seçili alana sağ tıklayıp Yakınlaştır ' a tıklayın.
+- **Yakınlaştırma denetimi:** Yakınlaştırma, verilerinize daha fazla girmenizi sağlar. Sonuç setinizin içinde odaklanmak istediğiniz bir zaman dilimi bulursanız, alanı kapmak için fare işaretçinizi kullanın ve ardından seçtiğiniz son noktaya sürükleyin. Ardından seçili alana sağ tıklayın ve Yakınlaştır'ı tıklatın.
 
-  ![Verileri yakınlaştırın](media/howto-create-analytics/zoom.png)
+  ![Verilere yakınlaştırma](media/howto-create-analytics/zoom.png)
 
-Üç nokta altında verilerle etkileşimde bulunmak için daha fazla grafik denetimi vardır.
+Elipsaltında, verilerle etkileşim kurmak için daha fazla grafik denetimi vardır.
 
-- **Görüntüleme Kılavuzu:** Sonuçlarınız, her bir veri noktası için belirli bir değeri görüntülemenize olanak sağlayan bir tablo biçiminde kullanılabilir.
+- **Görüntü ızgarası:** Sonuçlarınız, her veri noktası için belirli değeri görüntülemenizi sağlayan bir tablo biçiminde kullanılabilir.
 
-- **Bir Işaret bırakın:** ' Bırakma Işaretleyicisi ' denetimi, grafikteki belirli veri noktalarını bağlamak için bir yol sağlar. Farklı zaman dönemlerinde birden çok satır için verileri karşılaştırmaya çalışırken yararlı olur.
+- **Bir İşaretçi Bırak:** 'Drop Marker' denetimi, grafikteki belirli veri noktalarını sabitlemenin bir yolunu sağlar. Farklı zaman dilimleri arasında birden çok satır için verileri karşılaştırmaya çalışırken yararlıdır.
 
-  ![Analizlerinizin kılavuz görünümünü gösterme](media/howto-create-analytics/additionalchartcontrols.png)
+  ![Analitiğiniz için ızgara görünümünü gösterme](media/howto-create-analytics/additionalchartcontrols.png)

@@ -1,53 +1,85 @@
 ---
-title: Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma | Microsoft Docs
-description: Ubuntu 16,04 Azure Marketi sanal makinelerinde kurulum yönergelerini Azure IoT Edge
-author: gregman-msft
-manager: arjmands
+title: Azure IoT Edge'i Ubuntu Sanal Makinelerde Çalıştırın | Microsoft Dokümanlar
+description: Ubuntu 18.04 LTS Sanal Makineler için Azure IoT Edge kurulum talimatları
+author: toolboc
+manager: veyalla
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/09/2019
-ms.author: philmea
-ms.openlocfilehash: 49a783e1360aeddc8eeaadba442acf578d9d6f7f
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 03/19/2020
+ms.author: pdecarlo
+ms.openlocfilehash: 64e2787aa282e75893fa34e6de1373e6afed09fe
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046038"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349622"
 ---
-# <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
+# <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge'i Ubuntu Sanal Makinelerde Çalıştırın
 
-Azure IOT Edge çalışma zamanı, ne bir cihaz ile IOT Edge cihazı kapatır ' dir. Çalışma zamanı, cihaz olarak endüstriyel sunucusu olarak büyük veya küçük bir Raspberry Pi üzerinde dağıtılabilir. Bir cihaz IOT Edge çalışma zamanı ile yapılandırıldıktan sonra iş mantığı buluttan dağıttıktan başlayabilirsiniz.
+Azure IoT Edge çalışma zamanı, aygıtı IoT Edge aygıtına dönüştüren şeydir. Çalışma süresi Raspberry Pi kadar küçük veya endüstriyel sunucu kadar büyük aygıtlarda dağıtılabilir. Bir aygıt IoT Edge çalışma zamanı ile yapılandırıldıktan sonra, buluttan iş mantığı dağıtmaya başlayabilirsiniz.
 
-IoT Edge çalışma zamanının nasıl çalıştığı ve hangi bileşenlerin dahil olduğu hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
+IoT Edge çalışma zamanı nın nasıl çalıştığı ve hangi bileşenlerin dahil edildiği hakkında daha fazla bilgi edinmek için azure [IoT Edge çalışma süresini ve mimarisini anlayın.](iot-edge-runtime.md)
 
-Bu makalede, [Ubuntu Azure Marketi teklifinin](https://aka.ms/azure-iot-edge-ubuntuvm)önceden yapılandırılmış Azure IoT Edge kullanılarak ubuntu 16,04 sanal makinesinde Azure IoT Edge çalışma zamanını çalıştırma adımları listelenmektedir.
+Bu makalede, Azure IoT Edge çalışma zamanı yüklenmiş ve önceden sağlanan aygıt bağlantı dizesi kullanılarak yapılandırılan bir Ubuntu 18.04 LTS sanal makinedağıtmak için adımlar listelenir. Dağıtım, [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) proje deposunda tutulan [bulut](../virtual-machines/linux/using-cloud-init.md
+) giriş tabanlı [Azure Kaynak Yöneticisi şablonu](../azure-resource-manager/templates/overview.md) kullanılarak gerçekleştirilir.
 
-İlk önyüklemede, Ubuntu VM üzerindeki Azure IoT Edge Azure IoT Edge çalışma zamanının en son sürümünü önceden yükler. Ayrıca, bağlantı dizesini ayarlamak için bir komut dosyası içerir ve sonra, Azure VM portalı veya Azure komut satırı aracılığıyla uzaktan tetiklenebilecek, bir SSH veya uzaktan başlatmadan IoT Edge cihazını kolayca yapılandırıp bağlayabilmenizi sağlayan çalışma zamanını yeniden başlatacak. Masaüstü oturumu. Bu betik, IoT Edge istemcisi tam yükleninceye kadar bağlantı dizesini ayarlamayı bekleyecek ve bu sayede otomasyonu oluşturmak zorunda kalmazsınız.
+İlk önyüklemede, Ubuntu 18.04 LTS sanal makine [azure IoT Edge çalışma zamanının en son sürümünü bulut lar aracılığıyla yükler.](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt) Ayrıca, çalışma süresi başlamadan önce sağlanan bir bağlantı dizesini ayarlar ve IoT Edge aygıtını SSH veya uzak masaüstü oturumu başlatmaya gerek kalmadan kolayca yapılandırmanızı ve bağlamanızı sağlar. 
 
-## <a name="deploy-from-the-azure-marketplace"></a>Azure Marketi 'nden dağıtma
+## <a name="deploy-using-deploy-to-azure-button"></a>Azure Düğmesine Dağıt'ı kullanarak dağıtma
 
-1. [Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) market teklifinde Azure IoT Edge gidin veya [Azure Marketi](https://azuremarketplace.microsoft.com/) 'Nde "ubuntu 'da" Azure IoT Edge arayarak
-2. **Şimdi al** ' ı seçin ve ardından İleri Iletişim kutusunda **devam edin** .
-3. Azure portal bir kez **Oluştur** ' u seçin ve VM 'yi dağıtmak için Sihirbazı izleyin.
-    * Bir VM 'yi ilk kez deniyorsanız, bir parola kullanmak ve genel gelen bağlantı noktası menüsünde SSH 'yi etkinleştirmek en kolay yoldur.
-    * Yoğun kaynak iş yükünüz varsa, daha fazla CPU ve/veya bellek ekleyerek sanal makine boyutunu yükseltmeniz gerekir.
-4. Sanal makine dağıtıldıktan sonra, IoT Hub bağlanacak şekilde yapılandırın:
-    1. Cihaz Bağlantı dizenizi, IoT Hub oluşturulan IoT Edge cihazınızdan kopyalayın (Bu işlemi tanımıyorsanız [Azure Portal yordamda bağlantı dizesini alma '](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) yı takip edebilirsiniz)
-    1. Azure portal yeni oluşturduğunuz sanal makine kaynağını seçin ve **komutu Çalıştır** seçeneğini açın
-    1. **Runshellscrıpt** seçeneğini belirleyin
-    1. Aşağıdaki betiği, cihaz bağlantı dizeniz ile komut penceresi aracılığıyla yürütün: `/etc/iotedge/configedge.sh "{device_connection_string}"`
-    1. **Çalıştır** 'ı seçin
-    1. Birkaç dakika bekleyin ve ekranın bağlantı dizesinin başarıyla ayarlandığını belirten bir başarı iletisi sağlaması gerekir.
+[Azure'a Dağıt Düğmesi,](../azure-resource-manager/templates/deploy-to-azure-button.md) GitHub'da tutulan [Azure Kaynak Yöneticisi şablonlarının](../azure-resource-manager/templates/overview.md) kolaydağıtımını sağlar.  Bu [bölümde, iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) proje deposunda yer alan Azure'a Dağıt düğmesinin kullanımı gösterilecek.  
 
-## <a name="deploy-from-the-azure-portal"></a>Azure portal dağıtma
 
-Azure portal, "Azure IoT Edge" araması yapın ve sanal makine oluşturma iş akışını başlatmak için **Ubuntu Server 16,04 LTS + Azure IoT Edge çalışma zamanını** seçin. Buradan, yukarıdaki "Azure Marketi 'nden dağıtma" yönergelerindeki adım 3 ve 4 ' ü doldurun.
+1. iotedge-vm-deploy Azure Kaynak Yöneticisi şablonu kullanarak Azure IoT Edge özellikli bir Linux VM dağıtacağız.  Başlamak için aşağıdaki düğmeyi tıklatın:
 
-## <a name="deploy-from-azure-cli"></a>Azure CLı 'dan dağıtma
+    [![iotedge-vm-deploy için Azure Düğmesine dağıt](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
-1. Masaüstünüzde Azure CLı kullanıyorsanız, oturum açarak başlayın:
+1. Yeni başlatılan pencerede, kullanılabilir form alanlarını doldurun:
+
+    > [!div class="mx-imgBorder"]
+    > [![iotedge-vm-deploy şablonu gösteren ekran görüntüsü](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
+
+    **Abonelik**: Sanal makineyi dağıtmak için etkin Azure aboneliği.
+
+    **Kaynak grubu**: Sanal makineyi ve ilişkili kaynakları içeren varolan veya yeni oluşturulan Kaynak Grubu.
+
+    **DNS Etiket Öneki**: Sanal makinenin ana bilgisayar adını önek için kullanılan seçtiğiniz gerekli değerdir.
+
+    **Yönetici Kullanıcı Adı**: Dağıtımda kök ayrıcalıkları sağlanacak kullanıcı adı.
+
+    **Aygıt Bağlantı Dizesi**: Hedefleneneniz [IoT Hub'ı](../iot-hub/about-iot-hub.md)içinde oluşturulan bir aygıt için [aygıt bağlantısı dizesi.](how-to-register-device.md)
+
+    **VM Boyutu**: Dağıtılacak sanal makinenin [boyutu](../cloud-services/cloud-services-sizes-specs.md)
+
+    **Ubuntu OS Sürümü**: Ubuntu OS sürümü temel sanal makineye kurulacak.
+
+    **Konum**: Sanal makineyi dağıtmak için [coğrafi bölge,](https://azure.microsoft.com/global-infrastructure/locations/) bu değer varsayılan olarak seçili Kaynak Grubu'nun konumuna dönüşür.
+
+    **Kimlik Doğrulama Türü**: Tercihinize bağlı olarak **sshPublicKey** veya **şifreyi** seçin.
+
+    **Yönetici Şifresi veya Anahtarı**: Kimlik Doğrulama Türü seçimine bağlı olarak SSH Ortak Anahtarının değeri veya parolanın değeri.
+
+    Tüm alanlar doldurulduğunda, şartları kabul etmek için sayfanın altındaki onay kutusunu seçin ve dağıtıma başlamak için **Satın Al'ı** seçin.
+
+1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Seçilen kaynak grubuna sanal bir makine kaynağı dağıtılmış olmalıdır.  Makine adı dikkat edin, bu biçimde `vm-0000000000000`olmalıdır. Ayrıca, biçiminde `<dnsLabelPrefix>`olması gereken ilişkili **DNS Adı'na**dikkat edin. `<location>`.cloudapp.azure.com.
+
+    **DNS Adı,** Azure portalı içinde yeni dağıtılan sanal makinenin **Genel Bakış** bölümünden elde edilebilir.
+
+    > [!div class="mx-imgBorder"]
+    > [![iotedge vm dns adını gösteren ekran görüntüsü](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
+
+1. Kurulumdan sonra bu VM'ye SSH yapmak istiyorsanız, komutla ilişkili **DNS Adını** kullanın:`ssh <adminUsername>@<DNS_Name>`
+
+## <a name="deploy-from-azure-cli"></a>Azure CLI'den dağıtma
+
+1. Azure CLI iot uzantısını aşağıdakilerle yüklediğinizden emin olun:
+    ```azurecli-interactive
+    az extension add --name azure-iot
+    ```
+
+1. Ardından, masaüstünüzde Azure CLI kullanıyorsanız, oturum açarak başlayın:
 
    ```azurecli-interactive
    az login
@@ -60,46 +92,81 @@ Azure portal, "Azure IoT Edge" araması yapın ve sanal makine oluşturma iş ak
       az account list --output table
       ```
 
-   1. Kullanmak istediğiniz aboneliğin abonelik alanı ' nı kopyalayın.
+   1. Kullanmak istediğiniz abonelik için SubscriptionID alanını kopyalayın.
 
-   1. Çalışma aboneliğinizi yeni kopyaladığınız KIMLIKLE ayarlayın:
+   1. Çalışma aboneliğinizi kopyaladığınız kimlikle ayarlayın:
 
       ```azurecli-interactive
-      az account set -s {SubscriptionId}
+      az account set -s <SubscriptionId>
       ```
 
-1. Yeni bir kaynak grubu oluşturun (veya sonraki adımlarda mevcut bir tane belirtin):
+1. Yeni bir kaynak grubu oluşturun (veya sonraki adımlarda varolan bir tane belirtin):
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
 
-1. Sanal makine için kullanım koşullarını kabul edin. Önce koşulları gözden geçirmek istiyorsanız, [Azure Marketi 'Nden dağıtma](#deploy-from-the-azure-marketplace)' daki adımları izleyin.
-
-   ```azurecli-interactive
-   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
-   ```
-
 1. Yeni bir sanal makine oluşturun:
 
-   ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
-   ```
-
-1. Cihaz bağlantı dizesini ayarlayın (Bu işleme alışkın değilseniz, [bağlantı dizesini Azure CLI yordamıyla alma](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) işlemini izleyebilirsiniz):
+    **Kimlik doğrulama türü** `password`kullanmak için aşağıdaki örneğe bakın:
 
    ```azurecli-interactive
-   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
+   az group deployment create \
+   --name edgeVm \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-Kurulumdan sonra bu VM 'ye SSH eklemek istiyorsanız, Publicıpaddress komutunu şu komutla kullanın: `ssh azureuser@{publicIpAddress}`
+    Bir SSH tuşu ile kimlik doğrulaması yapmak için, bunu `sshPublicKey`bir kimlik doğrulama **Türü** belirterek yapabilirsiniz, sonra **adminPasswordOrKey** parametresindeki SSH anahtarının değerini sağlayabilirsiniz.  Aşağıda bir örnek gösterilmiştir.
+
+    ```azurecli-interactive
+    #Generate the SSH Key
+    ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
+
+    #Create a VM using the iotedge-vm-deploy script
+    az group deployment create \
+    --name edgeVm \
+    --resource-group IoTEdgeResources \
+    --template-uri "https://aka.ms/iotedge-vm-deploy" \
+    --parameters dnsLabelPrefix='my-edge-vm1' \
+    --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+    --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+    --parameters authenticationType='sshPublicKey' \
+    --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
+     
+    ```
+
+1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Seçilen kaynak grubuna sanal bir makine kaynağı dağıtılmış olmalıdır.  Makine adı dikkat edin, bu biçimde `vm-0000000000000`olmalıdır. Ayrıca, biçiminde `<dnsLabelPrefix>`olması gereken ilişkili **DNS Adı'na**dikkat edin. `<location>`.cloudapp.azure.com.
+
+    **DNS Adı,** **kamu SSH** girişinin bir parçası olarak **çıktılar** bölümünde, önceki adımın JSON biçimli çıktısından elde edilebilir.  Bu girişin değeri, SSH için yeni dağıtılan makineye kullanılabilir.
+
+    ```bash
+    "outputs": {
+      "public SSH": {
+        "type": "String",
+        "value": "ssh <adminUsername>@<DNS_Name>"
+      }
+    }
+    ```
+
+    **DNS Adı,** Azure portalı içinde yeni dağıtılan sanal makinenin **Genel Bakış** bölümünden de elde edilebilir.
+
+    > [!div class="mx-imgBorder"]
+    > [![iotedge vm dns adını gösteren ekran görüntüsü](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
+
+1. Kurulumdan sonra bu VM'ye SSH yapmak istiyorsanız, komutla ilişkili **DNS Adını** kullanın:`ssh <adminUsername>@<DNS_Name>`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çalışma zamanının yüklü olduğu bir IoT Edge cihazınıza sahip olduğunuza göre, [IoT Edge modülleri dağıtabilirsiniz](how-to-deploy-modules-portal.md).
+Artık çalışma zamanı yüklü bir IoT Edge aygıtınız olduğuna göre, [IoT Edge modüllerini dağıtabilirsiniz.](how-to-deploy-modules-portal.md)
 
-IoT Edge çalışma zamanının düzgün şekilde yüklenmesiyle ilgili sorun yaşıyorsanız, [sorun giderme](troubleshoot.md) sayfasına göz atın.
+IoT Edge çalışma zamanının düzgün yüklenmesiyle ilgili sorunlar yaşıyorsanız, [sorun giderme](troubleshoot.md) sayfasına göz atın.
 
-Mevcut bir yüklemeyi en yeni IoT Edge sürümüne güncelleştirmek için bkz. [IoT Edge güvenlik cini ve çalışma zamanını güncelleştirme](how-to-update-iot-edge.md).
+Varolan bir yüklemeyi IoT Edge'in en yeni sürümüne güncelleştirmek için [bkz.](how-to-update-iot-edge.md)
 
-VM 'ye SSH veya diğer gelen bağlantılar aracılığıyla erişmek için bağlantı noktaları açmak isterseniz, [bir LINUX VM 'ye bağlantı noktalarını ve uç noktaları açma](../virtual-machines/linux/nsg-quickstart.md) hakkında Azure sanal makine belgelerine bakın
+VM'ye SSH veya diğer gelen bağlantılar üzerinden erişmek için bağlantı noktaları açmak istiyorsanız, bir [Linux VM bağlantı noktalarını ve bitiş noktalarını açmayla](../virtual-machines/linux/nsg-quickstart.md) ilgili Azure Sanal Makineler belgelerine bakın

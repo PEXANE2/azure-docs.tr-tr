@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight kullanarak Hive sorunlarını giderme
-description: Apache Hive ve Azure HDInsight ile çalışma hakkında sık sorulan soruların yanıtlarını alın.
+title: Azure HDInsight'ı kullanarak Sorun Giderme Kovanı
+description: Apache Hive ve Azure HDInsight ile çalışma yla ilgili sık sorulan soruların yanıtlarını alın.
 keywords: Azure HDInsight, Hive, SSS, sorun giderme kılavuzu, sık sorulan sorular
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,47 +9,47 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895229"
 ---
-# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Hive sorunlarını giderme
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Hive sorunlarını giderme
 
-Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular ve bunların çözümlerini öğrenin.
+Apache Ambari'de Apache Hive yükleri ile çalışırken en önemli sorular ve onların çözümleri hakkında bilgi edinin.
 
-## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Nasıl yaparım? bir Hive meta veri deposu dışarı aktarıp başka bir kümeye içeri aktarsın mı?
+## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Hive metastore'u nasıl dışa aktarıp başka bir kümeye aktarıyorum?
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Güvenli Kabuk (SSH) istemcisi kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için [ek okuma](#additional-reading-end).
+1. Güvenli Kabuk (SSH) istemcisi kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için [ek okumaya](#additional-reading-end)bakın.
 
-2. Meta veri deposunu dışarı aktarmak istediğiniz HDInsight kümesinde aşağıdaki komutu çalıştırın:
+2. Metastore'u dışa aktarmak istediğiniz HDInsight kümesinde aşağıdaki komutu çalıştırın:
 
     ```apache
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-   Bu komut allatables. SQL adlı bir dosya oluşturur.
+   Bu komut allatables.sql adlı bir dosya oluşturur.
 
-3. Alltables. SQL dosyasını yeni HDInsight kümesine kopyalayın ve ardından aşağıdaki komutu çalıştırın:
+3. Alltables.sql dosyasını yeni HDInsight kümesine kopyalayın ve ardından aşağıdaki komutu çalıştırın:
 
     ```apache
     hive -f alltables.sql
     ```
 
-Çözüm adımlarında bulunan kod, yeni kümedeki veri yollarının Eski kümedeki veri yollarıyla aynı olduğunu varsayar. Veri yolları farklıysa, oluşturulan `alltables.sql` dosyasını değişiklikleri yansıtacak şekilde el ile düzenleyebilirsiniz.
+Çözüm adımlarında kod, yeni kümedeki veri yollarının eski kümedeki veri yolları ile aynı olduğunu varsayar. Veri yolları farklıysa, oluşturulan `alltables.sql` dosyayı değişiklikleri yansıtacak şekilde el ile değiştirebilirsiniz.
 
 ### <a name="additional-reading"></a>Ek okuma
 
-- [SSH kullanarak bir HDInsight kümesine bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [SSH kullanarak HDInsight kümesine bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Nasıl yaparım? bir kümede Hive günlükleri bulunamıyor mu?
+## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Bir kümedeki Hive günlüklerini nasıl bulurum?
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. SSH kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için **ek okuma**.
+1. SSH kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için **ek okumaya**bakın.
 
 2. Hive istemci günlüklerini görüntülemek için aşağıdaki komutu kullanın:
 
@@ -57,7 +57,7 @@ Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular 
    /tmp/<username>/hive.log
    ```
 
-3. Hive meta veri deposu günlüklerini görüntülemek için aşağıdaki komutu kullanın:
+3. Hive metastore günlüklerini görüntülemek için aşağıdaki komutu kullanın:
 
    ```apache
    /var/log/hive/hivemetastore.log
@@ -71,25 +71,25 @@ Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular 
 
 ### <a name="additional-reading"></a>Ek okuma
 
-- [SSH kullanarak bir HDInsight kümesine bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [SSH kullanarak HDInsight kümesine bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Bir kümedeki belirli yapılandırmalara sahip Hive kabuğunu Nasıl yaparım? mi başlatın?
+## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Hive kabuğunu bir kümeüzerinde belirli yapılandırmalarla nasıl başlatırım?
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Hive kabuğunu başlattığınızda bir yapılandırma anahtar-değer çifti belirtin. Daha fazla bilgi için [ek okuma](#additional-reading-end).
+1. Hive kabuğunu başlattığınızda yapılandırma anahtar değeri çiftini belirtin. Daha fazla bilgi için [ek okumaya](#additional-reading-end)bakın.
 
    ```apache
    hive -hiveconf a=b
    ```
 
-2. Hive kabuğu 'ndaki tüm etkin konfigürasyonları listelemek için aşağıdaki komutu kullanın:
+2. Hive kabuğundaki tüm etkili yapılandırmaları listelemek için aşağıdaki komutu kullanın:
 
    ```apache
    hive> set;
    ```
 
-   Örneğin, konsolunda hata ayıklama günlüğü etkin olarak Hive kabuğu 'nu başlatmak için aşağıdaki komutu kullanın:
+   Örneğin, konsolda hata ayıklama günlüğü etkinken Kovan kabuğunu başlatmak için aşağıdaki komutu kullanın:
 
    ```apache
    hive -hiveconf hive.root.logger=ALL,console
@@ -97,13 +97,13 @@ Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular 
 
 ### <a name="additional-reading"></a>Ek okuma
 
-- [Hive yapılandırma özellikleri](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
+- [Kovan yapılandırma özellikleri](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Küme kritik yolundaki Apache Tez DAG verilerini çözümlemek Nasıl yaparım??
+## <a name="how-do-i-analyze-apache-tez-dag-data-on-a-cluster-critical-path"></a><a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Apache Tez DAG verilerini küme kritik bir yolda nasıl analiz edebilirim?
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Küme açısından kritik bir grafikte Apache Tez yönlendirilmiş bir Çevrimsiz grafiği (DAG) analiz etmek için SSH kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için [ek okuma](#additional-reading-end).
+1. Apache Tez'in yönettiği asiklik grafiği (DAG) küme açısından kritik bir grafikte analiz etmek için, SSH kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için [ek okumaya](#additional-reading-end)bakın.
 
 2. Komut isteminde aşağıdaki komutu çalıştırın:
 
@@ -111,7 +111,7 @@ Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular 
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
    ```
 
-3. Tez DAG 'yi çözümlemek için kullanılabilecek diğer Çözümleyicileri listelemek için aşağıdaki komutu kullanın:
+3. Tez DAG'ı analiz etmek için kullanılabilecek diğer çözümleyicileri listelemek için aşağıdaki komutu kullanın:
 
    ```apache
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
@@ -119,24 +119,24 @@ Apache ambarı 'nda Apache Hive yükleri ile çalışırken önde gelen sorular 
 
    İlk bağımsız değişken olarak örnek bir program sağlamanız gerekir.
 
-   Geçerli program adları şunları içerir:
-    - **Containerreuseanalyzer**: bir dag 'de kapsayıcı yeniden kullanım ayrıntılarını yazdırma
-    - **Kritikpath**: bir dag 'nin kritik yolunu bulma
-    - **LocalityAnalyzer**: konum AYRıNTıLARıNı bir dag 'da yazdırma
-    - **Karıştırılmış Letimeanalyzer**: bir dag 'de karıştırma süresi ayrıntılarını çözümleme
-    - **SkewAnalyzer**: bir dag 'de eğme ayrıntılarını çözümleme
-    - **Yavaşlatma Nodeanalyzer**: bir dag 'de düğüm ayrıntılarını yazdırma
-    - **Yavaştaskidentifier**: bir dag 'de yavaş görev ayrıntılarını yazdırma
-    - **SlowestVertexAnalyzer**: en yavaş köşe AYRıNTıLARıNı bir dag 'da Yazdır
-    - **SpillAnalyzer**: bir dag 'de taşma ayrıntılarını yazdırma
-    - **TaskConcurrencyAnalyzer**: görev eşzamanlılık AYRıNTıLARıNı bir dag 'da yazdırma
-    - **Vertexlevelcriticalhandle Pathanalyzer**: bir dag 'de köşe düzeyinde kritik yolu bulma
+   Geçerli program adları şunlardır:
+    - **ContainerReuseAnalyzer**: Bir DAG'da konteyner yeniden yazdırma kullanabilirsiniz
+    - **CriticalPath**: Bir DAG kritik yolu bulun
+    - **LocalityAnalyzer**: Yerellik ayrıntılarını BIR DAG'da yazdır
+    - **ShuffleTimeAnalyzer**: Bir DAG'deki karıştırma zaman ayrıntılarını analiz edin
+    - **SkewAnalyzer**: Bir DAG çarpık ayrıntıları analiz
+    - **SlowNodeAnalyzer**: Bir DAG'da düğüm ayrıntılarını yazdır
+    - **SlowTaskIdentifier**: Yavaş görev ayrıntılarını BIR DAG'da yazdırma
+    - **SlowestVertexAnalyzer**: Bir DAG'de en yavaş tepe noktası ayrıntılarını yazdırın
+    - **SpillAnalyzer**: Bir DAG yazdırma kdökme ayrıntıları
+    - **TaskConcurrencyAnalyzer**: Görev eşzamanlılık ayrıntılarını bir DAG'ye yazdırın
+    - **VertexLevelCriticalPathAnalyzer**: Bir DAG vertex düzeyinde kritik yolu bulun
 
 ### <a name="additional-reading"></a>Ek okuma
 
-- [SSH kullanarak bir HDInsight kümesine bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [SSH kullanarak HDInsight kümesine bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Tez DAG verilerini bir kümeden indirmek Nasıl yaparım? mi?
+## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Tez DAG verilerini bir kümeden nasıl indirebilirim?
 
 #### <a name="resolution-steps"></a>Çözüm adımları
 
@@ -150,23 +150,23 @@ Tez DAG verilerini toplamanın iki yolu vardır:
   hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId>
   ```
 
-- Ambarı tez görünümünü kullanın:
+- Ambari Tez görünümünü kullanın:
 
-  1. Ambarı 'na gidin.
-  2. Tez görünümüne gidin (sağ üst köşedeki kutucuklar simgesi altında).
-  3. Görüntülemek istediğiniz DAG 'yi seçin.
-  4. **Verileri indir**' i seçin.
+  1. Ambari'ye git.
+  2. Tez görünümüne gidin (sağ üst köşedeki kutucuk simgesinin altında).
+  3. Görüntülemek istediğiniz DAG'yi seçin.
+  4. **Veri İndir'i**seçin.
 
-### <a name="additional-reading-end"></a>Ek okuma
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>Ek okuma
 
-[SSH kullanarak bir HDInsight kümesine bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
+[SSH kullanarak HDInsight kümesine bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-- Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+- [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
-- [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın. Azure topluluğunu doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)yı gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.

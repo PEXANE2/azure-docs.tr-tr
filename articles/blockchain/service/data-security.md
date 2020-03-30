@@ -1,33 +1,33 @@
 ---
-title: Azure blok zinciri hizmeti güvenliği
-description: Azure blok zinciri hizmeti veri erişimi ve güvenlik kavramları
+title: Azure Blockchain Hizmeti güvenliği
+description: Azure Blockchain Hizmeti veri erişimi ve güvenlik kavramları
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982238"
 ---
-# <a name="azure-blockchain-service-security"></a>Azure blok zinciri hizmeti güvenliği
+# <a name="azure-blockchain-service-security"></a>Azure Blockchain Hizmeti güvenliği
 
-Azure Blok Zinciri Hizmeti, verilerinizi güvende tutup bunların kullanılabilir olmasını sağlamak için çeşitli Azure özelliklerini kullanır. Verilerin güvenli hale getirilmesi için yalıtım, şifreleme ve kimlik doğrulaması olanaklarından faydalanılır.
+Azure Blockchain Hizmeti, verilerinizi güvende ve kullanılabilir tutmak için çeşitli Azure özellikleri kullanır. Veriler yalıtım, şifreleme ve kimlik doğrulama kullanılarak güvenlidir.
 
 ## <a name="isolation"></a>Yalıtım
 
-Azure blok zinciri hizmeti kaynakları özel bir sanal ağda yalıtılmıştır. Her işlem ve doğrulama düğümü bir sanal makinedir (VM). Bir sanal ağdaki VM 'Ler, farklı bir sanal ağdaki VM 'Ler ile doğrudan iletişim kuramaz. Yalıtım, sanal ağ içinde iletişimin özel kalmasını sağlar. Azure sanal ağ yalıtımı hakkında daha fazla bilgi için bkz. [Azure genel bulutundaki yalıtım](../../security/fundamentals/isolation-choices.md#networking-isolation).
+Azure Blockchain Hizmet kaynakları özel bir sanal ağda yalıtılır. Her hareket ve doğrulama düğümü sanal bir makinedir (VM). Bir sanal ağdaki VM'ler farklı bir sanal ağdaki VM'lere doğrudan iletişim kuramaz. Yalıtım, iletişimin sanal ağ içinde gizli kalmasını sağlar. Azure sanal ağ yalıtımı hakkında daha fazla bilgi için [Azure Genel Bulutu'nda yalıtıma](../../security/fundamentals/isolation-choices.md#networking-isolation)bakın.
 
 ![VNET diyagramı](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>Şifreleme
 
-Kullanıcı verileri Azure depolama 'da depolanır. Kullanıcı verileri, güvenlik ve gizlilik için hareket halindeyken ve geri kalanında şifrelenir. Daha fazla bilgi için bkz. [Azure depolama Güvenlik Kılavuzu](../../storage/blobs/security-recommendations.md).
+Kullanıcı verileri Azure depolama alanında depolanır. Kullanıcı verileri güvenlik ve gizlilik için hareket halinde ve istirahatte şifrelenir. Daha fazla bilgi için bkz: [Azure Depolama güvenlik kılavuzu.](../../storage/blobs/security-recommendations.md)
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
-İşlemler, blok zinciri düğümlerine bir RPC uç noktası aracılığıyla gönderilebilir. İstemciler, Kullanıcı kimlik doğrulamasını işleyen ve SSL üzerinden verileri şifreleyen bir ters ara sunucu kullanarak bir işlem düğümüyle iletişim kurar.
+Hareketler bir RPC bitiş noktası üzerinden blockchain düğümlerine gönderilebilir. İstemciler, kullanıcı kimlik doğrulamasını işleyen ve Verileri SSL üzerinden şifreleyen bir ters proxy sunucusu kullanarak bir işlem düğümüyle iletişim kurar.
 
 ![Kimlik doğrulama diyagramı](./media/data-security/authentication.png)
 
@@ -35,28 +35,28 @@ RPC erişimi için üç kimlik doğrulama modu vardır.
 
 ### <a name="basic-authentication"></a>Temel kimlik doğrulama
 
-Temel kimlik doğrulaması, Kullanıcı adını ve parolasını içeren bir HTTP kimlik doğrulama üstbilgisi kullanır. Kullanıcı adı, blok zinciri düğümünün adıdır. Parola, bir üye veya düğümün sağlanması sırasında ayarlanır. Parola Azure portal veya CLı kullanılarak değiştirilebilir.
+Temel kimlik doğrulama, kullanıcı adı ve parolayı içeren bir HTTP kimlik doğrulama üstbilgisini kullanır. Kullanıcı adı blockchain düğümünün adıdır. Parola, bir üye veya düğümün sağlanması sırasında ayarlanır. Parola, Azure portalı veya CLI kullanılarak değiştirilebilir.
 
 ### <a name="access-keys"></a>Erişim tuşları
 
-Erişim anahtarları, uç nokta URL 'sinde bulunan rastgele oluşturulmuş bir dize kullanır. İki erişim anahtarı, anahtar döndürmeyi etkinleştirmeye yardımcı olur. Anahtarlar Azure portal ve CLı 'dan yeniden oluşturulabilir.
+Erişim anahtarları, bitiş noktası URL'sinde bulunan rasgele oluşturulan bir dize kullanır. İki erişim anahtarı, anahtar döndürmeyi etkinleştirmenize yardımcı olur. Anahtarlar Azure portalından ve CLI'den yeniden oluşturulabilir.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Active Directory (Azure AD), kullanıcının kimlik doğrulamasının Azure AD Kullanıcı kimlik bilgilerini kullanarak Azure AD tarafından doğrulandığını talep tabanlı bir kimlik doğrulama mekanizması kullanır. Azure AD, bulut tabanlı kimlik yönetimi sağlar ve müşterilerin bulutta tüm kurumsal ve erişim uygulamalarına tek bir kimlik kullanmasına izin verir. Azure blok zinciri hizmeti, Azure AD etkinleştirme KIMLIK Federasyonu, çoklu oturum açma ve Multi-Factor Authentication ile tümleşir. Kullanıcıları, grupları ve uygulama rollerini blok zinciri üyesi ve düğüm erişimi için kuruluşunuza atayabilirsiniz.
+Azure Etkin Dizin (Azure AD), kullanıcının Azure AD kullanıcı kimlik bilgilerini kullanarak Azure AD tarafından kimlik doğrulaması yaptığı bir talep tabanlı kimlik doğrulama mekanizması kullanır. Azure AD bulut tabanlı kimlik yönetimi sağlar ve müşterilerin tüm kuruluş genelinde tek bir kimlik kullanmasına ve buluttaki uygulamalara erişmesine olanak tanır. Azure Blockchain Hizmeti, Kimlik federasyonu, tek oturum açma ve çok faktörlü kimlik doğrulama sağlayan Azure AD ile tümleşir. Blockchain üyesi ve düğüm erişimi için kuruluşunuzdaki kullanıcıları, grupları ve uygulama rollerini atayabilirsiniz.
 
-Azure AD İstemci proxy 'si [GitHub](https://github.com/Microsoft/azure-blockchain-connector/releases)' da kullanılabilir. İstemci proxy 'si, kullanıcıyı Azure AD oturum açma sayfasına yönlendirir ve başarılı kimlik doğrulamasından sonra bir taşıyıcı belirteci edinir. Daha sonra Kullanıcı, geth veya Truffle gibi bir Ethereum istemci uygulamasını istemci proxy 'sinin uç noktasına bağlar. Son olarak, bir işlem gönderildiğinde, istemci proxy 'si http üstbilgisindeki taşıyıcı belirtecini çıkartır ve ters proxy, OAuth protokolünü kullanarak belirteci doğrular.
+Azure AD istemci proxy'si [GitHub'da](https://github.com/Microsoft/azure-blockchain-connector/releases)kullanılabilir. İstemci proxy, kullanıcıyı Azure AD oturum açma sayfasına yönlendirir ve başarılı kimlik doğrulaması üzerine bir taşıyıcı belirteci elde eder. Daha sonra, kullanıcı Geth veya Truffle gibi bir Ethereum istemci uygulamasını istemci proxy'nin bitiş noktasına bağlar. Son olarak, bir işlem gönderildiğinde, istemci proxy taşıyıcı belirteci http üstbilgide enjekte eder ve ters proxy OAuth protokolü kullanarak belirteci doğrular.
 
 ## <a name="keys-and-ethereum-accounts"></a>Anahtarlar ve Ethereum hesapları
 
-Bir Azure blok zinciri hizmeti üyesi sağlanırken, bir Ethereum hesabı ve ortak ve özel anahtar çifti oluşturulur. Özel anahtar, işlemleri blok zincirine göndermek için kullanılır. Ethereum hesabı, ortak anahtarın karmasının son 20 bayttır. Ethereum hesabına cüzdan da denir.
+Bir Azure Blockchain Hizmeti üyesi sağlarken, bir Ethereum hesabı ve ortak ve özel anahtar çifti oluşturulur. Özel anahtar, blockchain'e işlem göndermek için kullanılır. Ethereum hesabı, ortak anahtarın esrarının son 20 baytı. Ethereum hesabına cüzdan da denir.
 
-Özel ve ortak anahtar çifti, JSON biçiminde bir anahtar dosyası olarak depolanır. Özel anahtar, blok zinciri defter hizmeti oluşturulduğunda girilen parola kullanılarak şifrelenir.
+Özel ve ortak anahtar çifti JSON formatında bir anahtar dosyası olarak depolanır. Blockchain genel muhasebe hizmeti oluşturulduğunda girilen parola kullanılarak özel anahtar şifrelenir.
 
-Özel anahtarlar, işlemleri dijital olarak imzalamak için kullanılır. Özel blok zincirleriyle, özel bir anahtar tarafından imzalanan akıllı sözleşme, İmzalayanın kimliğini temsil eder. İmza geçerliliğini doğrulamak için alıcı, imzalayanın ortak anahtarını imzadan hesaplanan adresle karşılaştırabilirler.
+İşlemleri dijital olarak imzalamak için özel anahtarlar kullanılır. Özel blockchain'lerde, özel bir anahtar tarafından imzalanmış akıllı bir sözleşme imzalayankişinin kimliğini temsil eder. İmzanın geçerliliğini doğrulamak için alıcı, imzalayankişinin ortak anahtarını imzadan hesaplanan adresle karşılaştırabilir.
 
-Constellation anahtarları, bir çekirdek düğümünü benzersiz bir şekilde tanımlamak için kullanılır. Constellation anahtarları, düğüm sağlama sırasında oluşturulur ve çekirdekte özel bir işlemin privateFor parametresinde belirtilir.
+Takımyıldız tuşları, bir Quorum düğümini benzersiz olarak tanımlamak için kullanılır. Takımyıldız anahtarları düğüm sağlama sırasında oluşturulur ve Quorum'daki özel bir işlemin parametresi için özel olarak belirtilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. [Azure blok zinciri hizmeti için Azure Active Directory erişimini yapılandırma](configure-aad.md).
+[Azure Blockchain Hizmeti için Azure Etkin Dizin erişimini nasıl yapılandırabilirsiniz.](configure-aad.md)

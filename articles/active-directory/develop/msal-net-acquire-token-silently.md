@@ -1,7 +1,7 @@
 ---
-title: Önbellekten belirteç alma (MSAL.NET)
+title: Önbellekten bir belirteç edinme (MSAL.NET)
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullanarak bir erişim belirtecini sessizce (belirteç önbelleğinden) nasıl edinebileceğinizi öğrenin.
+description: .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı'nı kullanarak sessizce (belirteç önbelleğinden) bir erişim belirteci nasıl elde edeceğinizi öğrenin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,19 +14,19 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 90189a1d7fd6421b7a24940e8c6ed615fa0df6d6
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084842"
 ---
-# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>MSAL.NET kullanarak belirteç önbelleğinden belirteç alma
+# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>MSAL.NET kullanarak belirteç önbelleğinden bir belirteç alma
 
-.NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullanarak bir erişim belirteci aldığınızda, belirteç önbelleğe alınır. Uygulamanın bir belirtece ihtiyacı olduğunda, kabul edilebilir bir belirtecin önbellekte olup olmadığını doğrulamak için öncelikle `AcquireTokenSilent` yöntemini çağırmalıdır. Çoğu durumda, önbellekteki bir belirtece göre daha fazla kapsam içeren başka bir belirteç elde etmek mümkündür. Ayrıca, kullanım süresi dolmak üzere (belirteç önbelleği de bir yenileme belirteci içerdiğinden) bir belirteci yenilemek mümkündür.
+.NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı'nı kullanarak bir erişim belirteci aldığınızda, belirteç önbelleğe alınmış olur. Uygulamanın bir belirteci gerektiğinde, önce `AcquireTokenSilent` yöntemin önbellekte kabul edilebilir bir belirteç olup olmadığını doğrulamak için araması gerekir. Çoğu durumda, önbellekteki bir belirteç temel alınarak daha fazla kapsama alanı olan başka bir belirteç elde etmek mümkündür. Bir belirteci son kullanma tarihine yaklaşırken yenilemek de mümkündür (belirteç önbelleği de yenileme belirteci içerdiğinden).
 
-Önerilen model öncelikle `AcquireTokenSilent` yöntemini çağırmalıdır.  `AcquireTokenSilent` başarısız olursa, diğer yöntemleri kullanarak bir belirteç alın.
+Önerilen desen önce `AcquireTokenSilent` yöntemi aramaktır.  Başarısız `AcquireTokenSilent` olursa, diğer yöntemleri kullanarak bir belirteç edinin.
 
-Aşağıdaki örnekte, uygulama ilk olarak belirteç önbelleğinden bir belirteç edinmeye çalışır.  `MsalUiRequiredException` bir özel durum oluşturulursa, uygulama bir belirteci etkileşimli olarak alır. 
+Aşağıdaki örnekte, uygulama ilk olarak belirteç önbelleğinden bir belirteç elde etmeye çalışır.  Bir `MsalUiRequiredException` özel durum atılırsa, uygulama etkileşimli bir şekilde bir belirteç kazanır. 
 
 ```csharp
 AuthenticationResult result = null;

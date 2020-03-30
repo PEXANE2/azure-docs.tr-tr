@@ -1,6 +1,6 @@
 ---
-title: Birden çok kiracı etkileşiminin özellikleri-Azure AD | Microsoft Docs
-description: Kiracılarınızı tamamen bağımsız kaynaklar olarak tanımlayarak Azure etkin kiracı Kiracılarınızı yönetin
+title: Birden çok kiracı etkileşiminin özellikleri - Azure AD | Microsoft Dokümanlar
+description: Azure Etkin kiracılarınızı, kiracılarınızı tamamen bağımsız kaynaklar olarak anlayarak yönetin
 services: active-tenant
 documentationcenter: ''
 author: curtand
@@ -15,39 +15,39 @@ ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562267"
 ---
-# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Birden çok Azure Active Directory kiracının nasıl etkileşime gireceğini anlayın
+# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Birden çok Azure Etkin Dizin kiracılarının nasıl etkileşimde olduğunu anlama
 
-Azure Active Directory (Azure AD) ' de, her kiracı tam olarak bağımsız bir kaynaktır: yönettiğiniz diğer kiracılardan mantıksal olarak bağımsız bir eş. Kiracılar arasında üst-alt ilişkisi yoktur. Kiracılar arasındaki bu bağımsızlık kaynak bağımsızlık, yönetim bağımsızlık ve eşitleme bağımsızlığı bulunur.
+Azure Etkin Dizini'nde (Azure AD) her kiracı tamamen bağımsız bir kaynaktır: yönettiğiniz diğer kiracılardan mantıksal olarak bağımsız bir eş. Kiracılar arasında ebeveyn-alt ilişkisi yoktur. Kiracılar arasındaki bu bağımsızlık kaynak bağımsızlığını, idari bağımsızlığı ve senkronizasyon bağımsızlığını içerir.
 
-## <a name="resource-independence"></a>Kaynak bağımsızlık
-* Bir kiracıda bir kaynak oluşturur veya silerseniz, dış kullanıcıların kısmi özel durumu ile başka bir Kiracıdaki herhangi bir kaynak üzerinde hiçbir etkisi olmaz. 
-* Etki alanı adlarınızın birini tek bir kiracı ile kullanırsanız, başka bir kiracıyla kullanılamaz.
+## <a name="resource-independence"></a>Kaynak bağımsızlığı
+* Bir kiracıda bir kaynak oluşturur veya silerseniz, dış kullanıcılar dışında kısmi istisna dışında, başka bir kiracıdaki herhangi bir kaynak üzerinde hiçbir etkisi yoktur. 
+* Alan adlarından birini bir kiracıyla kullanıyorsanız, başka bir kiracıyla kullanılamaz.
 
-## <a name="administrative-independence"></a>Yönetim bağımsızlık
-' Contoso ' kiracının yönetici olmayan kullanıcısı bir test kiracısı ' test ' i oluşturursa:
+## <a name="administrative-independence"></a>İdari bağımsızlık
+Kiracının 'Contoso' yönetim dışı kullanıcısı bir test kiracısı 'Test' oluşturursa, o zaman:
 
-* Varsayılan olarak, bir kiracı oluşturan kullanıcı, bu yeni kiracıya bir dış Kullanıcı olarak eklenir ve bu kiracıya genel yönetici rolü atanır.
-* ' Test ' Yöneticisi özel olarak onlara bu ayrıcalıkları vermediği takdirde, ' contoso ' kiracının yöneticilerinin ' test ' kiracısında doğrudan yönetim ayrıcalıkları yoktur. Ancak ' contoso ' yöneticileri, ' test ' ' in oluşturduğu kullanıcı hesabını denetlerse kiracıya erişimi denetleyebilir.
-* Bir Kiracıdaki bir kullanıcı için yönetici rolü ekler/kaldırırsanız, değişiklik kullanıcının başka bir kiracıda sahip olduğu yönetici rollerini etkilemez.
+* Varsayılan olarak, kiracı oluşturan kullanıcı bu yeni kiracıya dış kullanıcı olarak eklenir ve bu kiracıda genel yönetici rolü atanır.
+* Kiracı 'Contoso' yöneticileri, 'Test' yöneticisi onlara bu ayrıcalıkları özel olarak vermedikçe, kiracı 'Test'e doğrudan yönetim ayrıcalıkları yoktur. Ancak, 'Contoso' yöneticileri, 'Test'i oluşturan kullanıcı hesabını denetlerse kiracı 'Test'e erişimi denetleyebilir.
+* Bir kiracıda bir kullanıcı için yönetici rolü ekler/kaldırırsanız, değişiklik kullanıcının başka bir kiracıda sahip olduğu yönetici rollerini etkilemez.
 
-## <a name="synchronization-independence"></a>Eşitleme bağımsızlığı
-Her bir Azure AD kiracısını, her birinin tek bir örneğinden eşitlenmiş verileri almak için bağımsız olarak yapılandırabilirsiniz:
+## <a name="synchronization-independence"></a>Senkronizasyon bağımsızlığı
+Aşağıdakilerden birinin tek bir örneğinden veri eşitlemek için her Azure AD kiracısını bağımsız olarak yapılandırabilirsiniz:
 
-* Azure AD Connect Aracı, verileri tek bir AD ormanıyla eşitler.
-* Forefront Identity Manager için Azure Active kiracı Bağlayıcısı, verileri bir veya daha fazla şirket içi ormanla ve/veya Azure dışı AD veri kaynaklarıyla eşitlemeye yöneliktir.
+* Verileri tek bir AD ormanıyla eşitlemek için Azure AD Connect aracı.
+* Verileri bir veya daha fazla şirket içi ormanla ve/veya Azure'a ait olmayan REKLAM veri kaynaklarıyla senkronize etmek için Ön Ön Plan Kimlik Yöneticisi için Azure Etkin kiracı Bağlayıcısı.
 
 ## <a name="add-an-azure-ad-tenant"></a>Azure AD kiracısı ekleme
-Azure portal bir Azure AD kiracısı eklemek için Azure AD Genel Yöneticisi olan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın ve sol tarafta **Yeni**' yi seçin.
+Azure portalına bir Azure AD kiracısı eklemek için, Azure AD global yöneticisi olan bir hesapla [Azure portalında](https://portal.azure.com) oturum açın ve solda **Yeni'yi**seçin.
 
 > [!NOTE]
-> Diğer Azure kaynaklarından farklı olarak, kiracılarınız bir Azure aboneliğinin alt kaynakları değildir. Azure aboneliğiniz iptal edildiğinde veya dolmuşsa, kiracı verilerinize Azure PowerShell, Microsoft Graph API 'sini veya Microsoft 365 Yönetim merkezini kullanarak erişmeye devam edebilirsiniz. Ayrıca [, başka bir aboneliği kiracı ile ilişkilendirebilirsiniz](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> Diğer Azure kaynaklarının aksine, kiracılarınız Bir Azure aboneliğinin alt kaynakları değildir. Azure aboneliğiniz iptal edildiyse veya süresi dolduysa, Azure PowerShell, Microsoft Graph API veya Microsoft 365 yönetici merkezini kullanarak kiracı verilerinize erişebilirsiniz. [Ayrıca kiracı ile başka bir abonelik ilişkilendirebilirsiniz.](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure AD lisanslama sorunlarına ve en iyi yöntemlere ilişkin geniş bir genel bakış için bkz. [Azure etkin kiracı lisanslama nedir?](../fundamentals/active-directory-licensing-whatis-azure-portal.md).
+Azure AD lisanslama sorunlarına ve en iyi uygulamalara genel bir bakış için [bkz.](../fundamentals/active-directory-licensing-whatis-azure-portal.md)

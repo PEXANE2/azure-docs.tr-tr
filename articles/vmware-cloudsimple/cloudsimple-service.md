@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-hizmet
-description: AVS hizmeti ve kavramlarına genel bir bakış sağlar.
+title: CloudSimple tarafından Azure VMware Çözümü - Hizmet
+description: CloudSimple hizmetine ve kavramlarına genel bakış sağlar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,21 +8,21 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d09c8c34093e7d33122f934138ff9fdf4842508e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d128a248c2e6e1e2e35e3b633975ba081e77f028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024970"
 ---
-# <a name="avs-service-overview"></a>AVS hizmetine genel bakış
+# <a name="cloudsimple-service-overview"></a>CloudSimple hizmetine genel bakış
 
-AVS hizmeti, AVS tarafından Azure VMware çözümünü kullanmanıza olanak sağlar. Hizmetin oluşturulması, düğümleri satın almanızı, düğümleri ayırmanızı ve AVS özel bulutları oluşturmanızı sağlar. AVS hizmetini, AVS hizmetinin kullanılabildiği her bir Azure bölgesinde oluşturursunuz. Hizmet, AVS tarafından Azure VMware çözümünün Edge ağını tanımlar. Edge ağı, AVS özel Bulutlarınıza VPN, ExpressRoute ve internet bağlantısı içeren hizmetleri destekler.
+CloudSimple hizmeti, CloudSimple tarafından Azure VMware Solution'ı tüketmenizi sağlar.  Hizmeti oluşturmak düğümleri satın almanızı, düğümleri rezerve etmenizi ve Özel Bulutlar oluşturmanıza olanak tanır.  CloudSimple hizmetinin kullanılabildiği her Azure bölgesinde CloudSimple hizmetini oluşturursunuz. Hizmet, CloudSimple tarafından Azure VMware Solution'ın kenar ağını tanımlar. Kenar ağı, Özel Bulutları'nıza VPN, ExpressRoute ve internet bağlantısı içeren hizmetleri destekler.
 
 ## <a name="gateway-subnet"></a>Ağ geçidi alt ağı
 
-Bir ağ geçidi alt ağı her bir AVS hizmeti için gereklidir ve oluşturulduğu bölgeye özeldir. Ağ geçidi alt ağı, Edge ağı oluşturulurken kullanılır ve bir/28 CıDR bloğu gerektirir. Ağ geçidi alt ağ adresi alanı benzersiz olmalıdır. Bu, AVS ortamıyla iletişim kuran herhangi bir ağla çakışmamalıdır. AVS ile iletişim kuran ağlarda şirket içi ağlar ve Azure sanal ağı vardır. Bir ağ geçidi alt ağı oluşturulduktan sonra silinemez. Ağ geçidi alt ağı, hizmet silindiğinde kaldırılır.
+CloudSimple hizmeti başına bir ağ geçidi alt ağı gereklidir ve oluşturulduğu bölgeye özgüdür. Ağ geçidi alt ağı oluşturulurken kullanılır ve /28 CIDR bloğu gerektirir.  Ağ geçidi alt ağ adresi alanı benzersiz olmalıdır. CloudSimple ortamıyla iletişim kuranabilecek herhangi bir ağla örtüşmemelidir. CloudSimple ile iletişim sağlayan ağlar şirket içi ağları ve Azure sanal ağı içerir.  Bir ağ geçidi alt ağı oluşturulduktan sonra silinemez.  Hizmet silindiğinde ağ geçidi alt ağı kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure 'da BIR AVS hizmeti oluşturmayı](quickstart-create-cloudsimple-service.md)öğrenin.
+* [Azure'da CloudSimple hizmetini](quickstart-create-cloudsimple-service.md)nasıl oluşturabilirsiniz öğrenin.

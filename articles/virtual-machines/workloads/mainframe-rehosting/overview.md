@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makinelerinde Ana bilgisayar yeniden barındırma
-description: Microsoft Azure üzerindeki sanal makineleri (VM 'Ler) kullanarak IBM Z tabanlı sistemler gibi ana bilgisayar iş yüklerinizi yeniden barındırın.
+title: Azure sanal makinelerde ana bilgisayar yeniden barındırma
+description: Microsoft Azure'da sanal makineleri (VM' ler) kullanarak IBM Z tabanlı sistemler gibi ana bilgisayar iş yüklerinizi yeniden barındırın.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -11,115 +11,115 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76289807"
 ---
-# <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure sanal makinelerinde Ana bilgisayar yeniden barındırma
+# <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure sanal makinelerde ana bilgisayar yeniden barındırma
 
-İş yüklerini anabilgisayar ortamlarından buluta geçirmek, altyapınızı modernleştirin ve genellikle maliyetlerde tasarruf etmenizi sağlar. Birçok iş yükü, yalnızca küçük kod değişiklikleriyle (veritabanlarının adlarını güncelleştirme gibi) Azure’a aktarılabilir.
+İş yüklerini ana bilgisayar ortamlarından buluta geçirmek, altyapınızı modernize etmenizi ve genellikle maliyetlerden tasarruf etmenizi sağlar. Birçok iş yükü, yalnızca küçük kod değişiklikleriyle (veritabanlarının adlarını güncelleştirme gibi) Azure’a aktarılabilir.
 
-Genellikle, *ana* terimi büyük bir bilgisayar sistemi anlamına gelir. Özellikle de şu anda kullanılmakta olan büyük çoğunluğu, MVS, DOS, Vo, OS/390 veya Z/OS çalıştıran IBM sistem Z sunucularıdır veya IBM Plug uyumlu sistemlerdir.
+Genel olarak konuşursak, *ana bilgisayar* terimi büyük bir bilgisayar sistemi anlamına gelir. Özellikle, şu anda kullanılmakta olan büyük çoğunluğu, MVS, DOS, VSE, OS/390 veya z/OS çalıştıran IBM System Z sunucuları veya IBM plug-uyumlu sistemlerdir.
 
-Bir Azure sanal makinesi (VM), tek bir örnekteki belirli bir uygulama için kaynakları yalıtmak ve yönetmek için kullanılır. IBM z/OS gibi ana bilgisayarlar bu amaçla mantıksal bölümler (LPARS) kullanır. Ana bilgisayar, ilişkili COBOL programlarının bulunduğu bir CICS Region ve IBM DB2 veritabanı için ayrı bir litibarı kullanabilir. [Azure 'daki tipik n katmanlı bir uygulama](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) , Azure VM 'leri her katman için alt ağlara ayrılabilir bir sanal ağa dağıtır.
+Azure sanal makinesi (VM), belirli bir uygulamanın kaynaklarını tek bir örnekte yalıtmak ve yönetmek için kullanılır. IBM z/OS gibi ana bilgisayarlar bu amaçla Mantıksal Bölümler (LPARS) kullanır. Bir ana bilgisayar, ilişkili COBOL programlarına sahip bir CICS bölgesi için bir LPAR ve IBM Db2 veritabanı için ayrı bir LPAR kullanabilir. [Azure'daki](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) tipik bir n katmanlı uygulama, Azure VM'lerini her katman için alt ağlara bölilebilen sanal bir ağa dağır.
 
-Azure VM 'Leri, kaldırma ve kaydırma senaryolarını destekleyen ana bilgisayar öykünme ortamlarını ve derleyicileri çalıştırabilir. Geliştirme ve test, genellikle bir ana bilgisayardan Azure dev/test ortamına geçiş yapmak için ilk iş yükleri arasında yapılır. Öykünecek ortak sunucu bileşenleri, aşağıdaki şekilde gösterildiği gibi çevrimiçi işlem işlemi (OLTP), toplu işlem ve veri alma sistemlerini içerir.
+Azure VM'ler, kaldırma ve kaydırma senaryolarını destekleyen ana bilgisayar öykünme ortamlarını ve derleyicileri çalıştırabilir. Geliştirme ve sınama genellikle bir ana bilgisayardan Azure geliştirme/test ortamına geçiş yapmak için ilk iş yükleri arasındadır. Öykünebileceğiniz ortak sunucu bileşenleri arasında çevrimiçi işlem işlemi (OLTP), toplu iş ve aşağıdaki şekilde veri alma sistemleri yer alır.
 
-![Azure 'daki öykünme ortamları, z/OS tabanlı sistemleri çalıştırmanızı sağlar.](media/01-overview.png)
+![Azure'daki öykünme ortamları z/OS tabanlı sistemleri çalıştırmanızı sağlar.](media/01-overview.png)
 
-Bazı anabilgisayar iş yükleri, Azure 'a göreli olarak geçirilebilir, diğerleri ise iş ortağı çözümü kullanılarak Azure 'da yeniden barındırılabilir. Bir iş ortağı çözümü seçme hakkında ayrıntılı kılavuz için, [Azure anabilgisayar geçiş merkezi](https://azure.microsoft.com/migration/mainframe/) size yardımcı olabilir.
+Bazı ana bilgisayar iş yükleri göreceli kolaylıkla Azure'a geçirilebilirken, diğerleri iş ortağı çözümü kullanılarak Azure'da yeniden barındırılabilir. Azure [Ana Bilgisayar Geçiş merkezi,](https://azure.microsoft.com/migration/mainframe/) iş ortağı çözümü seçme hakkında ayrıntılı rehberlik için yardımcı olabilir.
 
 ## <a name="mainframe-migration"></a>Ana bilgisayar geçişi
 
-Yeniden barındırma, yeniden oluşturma, değiştirme veya devre dışı bırakma IaaS veya PaaS? Ana bilgisayar uygulamanıza yönelik doğru geçiş stratejisini öğrenmek için Azure Mimari Merkezi [ana bilgisayar geçiş](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) kılavuzuna bakın.
+Yeniden ev sahipliği mi, yeniden inşa etmek, değiştirmek veya emekli olmak mı? IaaS mı PaaS mı? Ana bilgisayar uygulamanız için doğru geçiş stratejisini belirlemek için Azure Mimari Merkezi'ndeki [Ana Bilgisayar geçiş](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) kılavuzuna bakın.
 
-## <a name="micro-focus-rehosting-platform"></a>Mikro odak yeniden barındırma platformu
+## <a name="micro-focus-rehosting-platform"></a>Micro Focus yeniden barındırma platformu
 
-Micro Focus Enterprise Server, kullanılabilir en büyük anabilgisayar yeniden barındırma platformlarından biridir. Azure 'da daha az pahalı bir x86 platformunda z/OS iş yüklerinizi çalıştırmak için kullanabilirsiniz.
+Micro Focus Enterprise Server mevcut en büyük ana bilgisayar barındırma platformlarından biridir. Azure'da daha ucuz bir x86 platformunda z/OS iş yüklerinizi çalıştırabilirsiniz.
 
-Kullanmaya başlamak için:
+Başlamak için:
 
-- [Azure 'da Enterprise Server ve Enterprise Developer 'ı yükler](./microfocus/set-up-micro-focus-azure.md)
-- [Azure 'da Kurumsal Geliştirici için CICS BankDemo ayarlama](./microfocus/demo.md)
-- [Azure 'da bir Docker kapsayıcısında kurumsal sunucu çalıştırma](./microfocus/run-enterprise-server-container.md)
+- [Azure'da Kurumsal Sunucu ve Kurumsal Geliştirici Yükleme](./microfocus/set-up-micro-focus-azure.md)
+- [Azure'da Kurumsal Geliştirici için CICS BankDemo'u ayarlama](./microfocus/demo.md)
+- [Azure'da Docker Konteynerinde Enterprise Server'ı Çalıştırın](./microfocus/run-enterprise-server-container.md)
 
 
-## <a name="tmaxsoft-openframe-on-azure"></a>Azure 'da TmaxSoft OpenFrame
+## <a name="tmaxsoft-openframe-on-azure"></a>Azure'da TmaxSoft OpenFrame
 
-TmaxSoft OpenFrame, Asansör ve kaydırma senaryolarında kullanılan popüler bir anabilgisayar yeniden barındırma çözümüdür. Azure 'daki bir OpenFrame ortamı geliştirme, tanıtımlar, testler veya üretim iş yükleri için uygundur.
+TmaxSoft OpenFrame, kaldırma ve kaydırma senaryolarında kullanılan popüler bir ana bilgisayar barındırma çözümüdür. Azure'daki OpenFrame ortamı geliştirme, demolar, testler veya üretim iş yükleri için uygundur.
 
-Kullanmaya başlamak için:
+Başlamak için:
 
-- [TmaxSoft OpenFrame ile çalışmaya başlama](./tmaxsoft/get-started.md)
-- [EKitap 'ı indirin](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
+- [TmaxSoft OpenFrame ile başlayın](./tmaxsoft/get-started.md)
+- [E-kitabı indirin](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-## <a name="ibm-zdt-120"></a>IBM zD & T 12,0
+## <a name="ibm-zdt-120"></a>IBM zD&T 12.0
 
-IBM Z geliştirme ve test ortamı (IBM zD & T), Azure 'da, Z/OS tabanlı uygulamaların geliştirilmesi, test edilmesi ve tanıtımları için kullanabileceğiniz üretim dışı bir ortam oluşturur.
+IBM Z Geliştirme ve Test Ortamı (IBM zD&T), Azure'da z/OS tabanlı uygulamaların geliştirilmesi, test edilmesi ve demoları için kullanabileceğiniz üretim dışı bir ortam ayarlar.
 
-Azure 'daki öykünme ortamı, uygulama geliştiricileri denetimli dağıtımlar (Adcd) ile farklı türlerde Z örnekleri barındırabilir. ZD & T Personal Edition, zD & T Parallel sysplex ve zD & T Enterprise Edition 'ı Azure 'da ve Azure Stack çalıştırabilirsiniz.
+Azure'daki öykünme ortamı, Uygulama Geliştiricileri Kontrollü Dağıtımlar (ADCD'ler) aracılığıyla farklı türde Z örnekleribarındırabilir. Azure ve Azure Yığını'nda ZD&T Personal Edition, zD&T Parallel Sysplex ve zD&T Enterprise Edition çalıştırabilirsiniz.
 
-Kullanmaya başlamak için:
+Başlamak için:
 
-- [Azure 'da IBM zD & T 12,0 'yi ayarlama](./ibm/install-ibm-z-environment.md)
-- [ZD & T üzerinde ADCD ayarlama](./ibm/demo.md)
+- [Azure'da IBM zD&T 12.0'ı ayarlama](./ibm/install-ibm-z-environment.md)
+- [ZD&T'de ADCD'yi ayarlama](./ibm/demo.md)
 
-## <a name="ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale
+## <a name="ibm-db2-purescale-on-azure"></a>Azure'da IBM DB2 pureScale
 
-IBM DB2 pureScale ortamı, Azure için bir veritabanı kümesi sağlar. Bu, özgün ortamla aynı değildir, ancak Paralel Sysplex kurulumunda çalışan z/ç için IBM DB2 olarak benzer kullanılabilirlik ve ölçek sunar.
+IBM DB2 pureScale ortamı Azure için bir veritabanı kümesi sağlar. Orijinal ortamla aynı değildir, ancak Paralel Sysplex kurulumunda çalışan z/OS için IBM DB2 ile benzer kullanılabilirlik ve ölçek sağlar.
 
-Başlamak için bkz. [Azure 'Da IBM DB2 pureScale](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
+Başlamak için [Azure'da IBM DB2 pureScale'e](/azure/virtual-machines/linux/ibm-db2-purescale-azure)bakın.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Ana bilgisayar iş yüklerini Azure altyapısına hizmet olarak (IaaS) geçirdiğinizde, Azure VM 'Leri dahil olmak üzere çeşitli isteğe bağlı, ölçeklenebilir bilgi işlem kaynakları arasından seçim yapabilirsiniz. Azure, bir dizi [Linux](/azure/virtual-machines/linux/overview) ve [Windows](/azure/virtual-machines/windows/overview) VM sunar.
+Ana bilgisayar iş yüklerini hizmet olarak Azure altyapısına (IaaS) geçirdiğinizde, Azure VM'leri de dahil olmak üzere isteğe bağlı, ölçeklenebilir bilgi işlem kaynakları nın çeşitli türleri arasından seçim yapabilirsiniz. Azure, çeşitli [Linux](/azure/virtual-machines/linux/overview) ve [Windows](/azure/virtual-machines/windows/overview) VM'leri sunar.
 
-### <a name="compute"></a>Bilgi İşlem
+### <a name="compute"></a>İşlem
 
-Azure işlem gücü favorably, ana bilgisayarın kapasitesine göre karşılaştırılır. Bir anabilgisayar iş yükünü Azure 'a taşımayı düşünüyorsanız, ana bilgisayar ölçüsünü saniyede 1.000.000 yönerge (MIPS) ile sanal CPU 'Lara karşılaştırın. 
+Azure işlem gücü, bir ana bilgisayarın kapasitesiyle olumlu karşılaştırır. Bir ana bilgisayar iş yükünü Azure'a taşımayı düşünüyorsanız, saniyede bir milyon talimatın (MIPS) ana bilgisayar metrik ölçüsünün sanal CPU'larla karşılaştırın. 
 
-[Ana bilgisayar işlem ve Azure 'a taşımayı](./concepts/mainframe-compute-azure.md)öğrenin.
+[Ana bilgisayar bilgiişlemini Azure'a](./concepts/mainframe-compute-azure.md)nasıl taşıyabilirsiniz öğrenin.
 
-### <a name="high-availability-and-failover"></a>Yüksek kullanılabilirlik ve yük devretme
+### <a name="high-availability-and-failover"></a>Yüksek kullanılabilirlik ve başarısız
 
-Azure taahhüt tabanlı hizmet düzeyi sözleşmeleri (SLA 'Lar) sağlar. Birden çok-nines kullanılabilirliği varsayılandır ve SLA 'Lar hizmetlerin yerel veya coğrafi tabanlı çoğaltmasıyla iyileştirilebilir. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
+Azure, taahhüt tabanlı hizmet düzeyi anlaşmaları (SLA'lar) sunar. Çoklu dokuzlu kullanılabilirlik varsayılandır ve SLA'lar hizmetlerin yerel veya coğrafi tabanlı çoğaltılmasıyla optimize edilebilir. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
 
-VM gibi Azure IaaS ile belirli sistem işlevleri, Yük Devretme Kümelemesi örnekleri ve kullanılabilirlik kümeleri gibi yük devretme desteği sağlar. Azure platformu hizmet olarak platform (PaaS) kaynaklarını kullandığınızda, Platform yük devretmeyi otomatik olarak işler. [Azure SQL veritabanı](/azure/sql-database/sql-database-technical-overview) ve [Azure Cosmos DB](/azure/cosmos-db/introduction)örnekler de vardır.
+VM gibi Azure IaaS ile, belirli sistem işlevleri başarısız destek sağlar (örneğin, başarısız kümeleme örnekleri ve kullanılabilirlik kümeleri). Azure platform'u hizmet (PaaS) kaynakları olarak kullandığınızda, platform otomatik olarak başarısız olur. Bunlara örnek olarak [Azure SQL Veritabanı](/azure/sql-database/sql-database-technical-overview) ve Azure [Cosmos DB](/azure/cosmos-db/introduction)verilebilir.
 
 ### <a name="scalability"></a>Ölçeklenebilirlik
 
-Ana bilgisayarlar genellikle ölçeği büyütme, bulut ortamları ölçeği genişletme. Azure, gereksinimlerinizi karşılayacak bir dizi [Linux](/azure/virtual-machines/linux/sizes) ve [Windows](/azure/virtual-machines/windows/sizes) boyutu sunar. Bulut Ayrıca, tam Kullanıcı belirtimleriyle eşleşecek şekilde ölçeği artırır veya küçültün. Kullanım tabanlı bir faturalandırma modeli kapsamında isteğe bağlı olarak işlem gücü, depolama ve hizmet [ölçeği](/azure/architecture/best-practices/auto-scaling) .
+Ana bilgisayarlar genellikle ölçeklendirilirken, bulut ortamları ölçeklendirilir. Azure, ihtiyaçlarınızı karşılamak için çeşitli [Linux](/azure/virtual-machines/linux/sizes) ve [Windows](/azure/virtual-machines/windows/sizes) boyutları sunar. Bulut ayrıca, tam kullanıcı belirtimlerini eşleşecek şekilde yukarı veya aşağı ölçeklendirilir. Kullanım tabanlı faturalandırma modeli [scale](/azure/architecture/best-practices/auto-scaling) altında talep üzerine güç, depolama ve hizmetleri ölçeklendirin.
 
 ### <a name="storage"></a>Depolama
 
-Bulutta, esnek ve ölçeklenebilir bir depolama seçenekleriniz vardır ve yalnızca ihtiyacınız olanlar için ödeme yaparsınız. [Azure depolama](/azure/storage/common/storage-introduction) , veri nesneleri için yüksek düzeyde ölçeklenebilir bir nesne deposu, bulut için bir dosya sistemi hizmeti, güvenilir bir mesajlaşma deposu ve bir NoSQL deposu sunar. VM 'Ler için, yönetilen ve yönetilmeyen diskler kalıcı ve güvenli disk depolama alanı sağlar.
+Bulutta, esnek, ölçeklenebilir depolama seçenekleri sunar ve yalnızca ihtiyacınız olan şey için ödeme yapmışsınızdır. [Azure Depolama,](/azure/storage/common/storage-introduction) veri nesneleri için büyük ölçüde ölçeklenebilir bir nesne deposu, bulut için bir dosya sistemi hizmeti, güvenilir bir mesajlaşma mağazası ve bir NoSQL mağazası sunar. VM'ler için yönetilen ve yönetilmeyen diskler kalıcı, güvenli disk depolama sağlar.
 
-[Ana bilgisayar depolamayı Azure 'a taşımayı](./concepts/mainframe-storage-azure.md)öğrenin.
+[Ana bilgisayar depolama alanını Azure'a](./concepts/mainframe-storage-azure.md)nasıl taşıyacağım öğrenin.
 
 ### <a name="backup-and-recovery"></a>Yedekleme ve kurtarma
 
-Kendi olağanüstü durum kurtarma sitenizin saklanması pahalı bir önerde olabilir. Azure, yerel veya bölgesel düzeylerde [yedekleme](/azure/backup/backup-introduction-to-azure-backup), [Kurtarma](/azure/site-recovery/site-recovery-overview)ve [Artıklık](/azure/storage/common/storage-redundancy) için kolay ve ekonomik ve uygun maliyetli seçeneklere sahiptir veya coğrafi artıklık aracılığıyla yapılır.
+Kendi olağanüstü durum kurtarma sitesi bakımı pahalı bir teklif olabilir. Azure, yerel veya bölgesel düzeylerde veya coğrafi artıklık yoluyla [yedekleme,](/azure/backup/backup-introduction-to-azure-backup) [kurtarma](/azure/site-recovery/site-recovery-overview)ve [artıklık](/azure/storage/common/storage-redundancy) için uygulanması kolay ve uygun maliyetli seçeneklere sahiptir.
 
-## <a name="azure-government-for-mainframe-migrations"></a>Ana bilgisayar geçişleri için Azure Kamu
+## <a name="azure-government-for-mainframe-migrations"></a>Ana bilgisayar geçişleri için Azure Genel
 
-Birçok genel sektör varlığı, ana bilgisayarlarını daha modern ve esnek bir platforma taşımak için çok sevecekti. Microsoft Azure Kamu, genel Microsoft Azure platformunun (Federal, eyalet ve yerel kamu sistemleri için paketlenmiş) fiziksel olarak ayrılmış bir örneğidir. Özellikle Birleşik Devletler kamu kurumları ve iş ortakları için birinci sınıf güvenlik, koruma ve uyumluluk hizmetleri sağlar.
+Birçok kamu sektörü kuruluşu ana bilgisayar uygulamalarını daha modern ve esnek bir platforma taşımak ister. Microsoft Azure Kamu, federal, eyalet ve yerel yönetim sistemleri için paketlenmiş olan genel Microsoft Azure platformunun fiziksel olarak ayrılmış bir örneğidir. Özellikle Amerika Birleşik Devletleri devlet kurumları ve ortakları için birinci sınıf güvenlik, koruma ve uyumluluk hizmetleri sağlar.
 
-Azure Kamu, bu tür bir ortama ihtiyacı olan sistemler için Fedratin yüksek etkisi için (P-ATO) çalıştırmak üzere geçici bir yetki elde edin.
+Azure Hükümeti, bu tür ortama ihtiyaç duyan sistemler için FedRAMP High Impact için Geçici Çalışma Yetkisi (P-ATO) kazanmıştır.
 
-Başlamak için, [anabilgisayar uygulamaları için Microsoft Azure Kamu Bulutu](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/)indirin.
+Başlamak [için ana bilgisayar uygulamaları için Microsoft Azure Devlet bulutu indirin.](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İş ortaklarımıza](partner-workloads.md) , anabilgisayar uygulamalarınızı geçirmenize veya yeniden barındırmanıza yardımcı olmak için sorun. 
+[Ortaklarımızdan](partner-workloads.md) ana bilgisayar uygulamalarınızı geçirmenize veya yeniden barındırmanıza yardımcı olmasını isteyin. 
 
 Ayrıca bkz:
 
-- [Anabilgisayar konuları hakkında teknik incelemeler](mainframe-white-papers.md)
+- [Ana bilgisayar konuları hakkında teknik incelemeler](mainframe-white-papers.md)
 - [Ana bilgisayar geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Sorun giderme](/azure/virtual-machines/troubleshooting/)
-- [Azure geçişine Demystifying ana bilgisayar](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+- [Azure geçişiiçin ana bilgisayarın mymystifying](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->
 [microfocus-get-started]: /microfocus/get-started.md
