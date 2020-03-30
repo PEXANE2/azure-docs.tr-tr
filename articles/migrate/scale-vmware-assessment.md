@@ -1,103 +1,99 @@
 ---
-title: Azure geçişi ile Azure 'a geçiş için çok sayıda VMware VM 'yi değerlendirin | Microsoft Docs
-description: Azure geçişi hizmeti kullanılarak Azure 'a geçiş için çok sayıda VMware VM 'lerinin nasıl değerlendirileneceğini açıklar.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
-ms.date: 07/12/2019
-ms.author: hamusa
-ms.openlocfilehash: f76134ffc6a7becb9b5719dcb3d826130b7cfa86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+title: Azure Geçişi ile Azure'a geçiş için çok sayıda VMware VM'yi değerlendirin
+description: Azure Geçiş hizmetini kullanarak Azure'a geçiş için çok sayıda VMware VM'nin nasıl değerlendirildiğini açıklar.e
+ms.topic: how-to
+ms.date: 03/23/2020
+ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453272"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336866"
 ---
-# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda VMware VM 'lerini değerlendirin
+# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure'a geçiş için çok sayıda VMware VM'yi değerlendirin
 
 
-Bu makalede, Azure geçişi sunucu değerlendirmesi Aracı kullanılarak Azure 'a geçiş için şirket içi VMware VM 'lerinin büyük sayılarının (1000-35000) nasıl değerlendirireceğiniz açıklanır.
+Bu makalede, Azure Geçir Sunucu Değerlendirmesi aracını kullanarak Azure'a geçiş için şirket içi VMware VM'lerin çok sayıda (1000-35.000) nasıl değerlendirileceğimi açıklanmaktadır.
 
-[Azure geçişi](migrate-services-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir. 
+[Azure Geçiş,](migrate-services-overview.md) uygulamaları, altyapıyı ve iş yüklerini Microsoft Azure'a keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan bir araç merkezi sağlar. Hub, Azure Geçiş araçlarını ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir. 
 
 Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
-> * Ölçek ölçeğinde değerlendirme planlayın.
-> * Azure izinlerini yapılandırın ve VMware 'yi değerlendirme için hazırlayın.
-> * Bir Azure geçişi projesi oluşturun ve bir değerlendirme oluşturun.
-> * Taşımayı planlarken değerlendirmesi gözden geçirin.
+> * Ölçekte değerlendirme planı.
+> * Azure izinlerini yapılandırın ve VMware'i değerlendirmeye hazırlayın.
+> * Bir Azure Geçiş projesi oluşturun ve bir değerlendirme oluşturun.
+> * Geçiş planı planlarken değerlendirmeyi gözden geçirin.
 
 
 > [!NOTE]
-> Ölçeği değerlendirmek için birkaç VM 'yi değerlendirmek üzere kavram kanıtı denemek istiyorsanız, [öğretici serimizi](tutorial-prepare-vmware.md) izleyin
+> Ölçekte değerlendirmeden önce birkaç VM'yi değerlendirmek için bir kavram kanıtı denemek istiyorsanız, [öğretici serimizi](tutorial-prepare-vmware.md) takip edin
 
 ## <a name="plan-for-assessment"></a>Değerlendirme planı
 
-Çok sayıda VMware VM değerlendirmesi için planlama yaparken, göz önünde bulundurmanız gereken birkaç nokta vardır:
+Çok sayıda VMware VM'nin değerlendirilmesi için planlama yaparken, düşünmen gereken birkaç şey vardır:
 
-- **Azure geçişi projelerini planlayın**: Azure geçişi projelerinin nasıl dağıtılacağını öğrenin. Örneğin, Veri merkezleriniz farklı coğrafi bölgelerde ise ya da bulma, değerlendirme veya geçişle ilgili meta verileri farklı bir Coğrafya 'da depolamanız gerekirse, birden çok proje gerekebilir. 
-- **Gereçler planı**: Azure geçişi, sanal makineleri sürekli olarak bulmaya yönelik BIR VMware VM olarak dağıtılan şirket Içi bir Azure geçiş gereci kullanır. Gereç, VM 'Leri, diskleri veya ağ bağdaştırıcılarını ekleme gibi ortam değişikliklerini izler. Ayrıca, Azure 'a bunlarla ilgili meta veriler ve performans verileri de gönderir. Dağıtım yapmanız gereken kaç gereç olduğunu bilmeniz gerekir.
-- **Bulma için hesapları planlayın**: Azure geçişi gereci, değerlendirme ve geçiş Için VM 'leri bulmak üzere vCenter Server erişimi olan bir hesap kullanır. 10.000 ' den fazla VM keşfetuyorsanız, birden çok hesap ayarlayın.
+- **Azure Geçiş projelerini planlayın**: Azure Geçiş projelerini nasıl dağıtılayacağından öğrenin. Örneğin, veri merkezleriniz farklı coğrafyalardaysa veya bulma, değerlendirme veya geçişle ilgili meta verileri farklı bir coğrafyada depolamanız gerekiyorsa, birden çok projeye ihtiyacınız olabilir. 
+- **Plan cihazları**: Azure Geçir, VM'leri sürekli olarak keşfetmek için VMware VM olarak dağıtılan şirket içi Azure Geçiş cihazını kullanır. Cihaz, VM, disk veya ağ bağdaştırıcıları ekleme gibi ortam değişikliklerini izler. Ayrıca, bunlarla ilgili meta verileri ve performans verilerini Azure'a da gönderir. Kaç tane cihaz dağıtmanız gerektiğini bulmanız gerekiyor.
+- **Keşif için hesap planı**: Azure Geçir cihazı, değerlendirme ve geçiş için VM'leri keşfetmek için vCenter Server erişimiolan bir hesap kullanır. 10.000'den fazla VM keşfediyorsanız, birden çok hesap ayarlayın.
 
 
-## <a name="planning-limits"></a>Planlama limitleri
+## <a name="planning-limits"></a>Planlama sınırları
  
-Planlama için bu tabloda özetlenen limitleri kullanın.
+Planlama için bu tabloda özetlenen sınırları kullanın.
 
 **Planlama** | **Limitler**
 --- | --- 
-**Azure geçişi projeleri** | Bir projede en fazla 35.000 VM 'yi değerlendirin.
-**Azure geçişi gereci** | Bir gereç, bir vCenter Server en fazla 10.000 VM bulabilir.<br/> Bir gereç yalnızca tek bir vCenter Server bağlanabilir.<br/> Bir gereç, yalnızca tek bir Azure geçişi projesiyle ilişkilendirilebilir.<br/>  Herhangi bir sayıda gereç, tek bir Azure geçişi projesiyle ilişkilendirilebilir. <br/><br/> 
-**Grup** | Tek bir gruba en fazla 35.000 VM ekleyebilirsiniz.
-**Azure geçişi değerlendirmesi** | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
+**Azure Geçiş projeleri** | Bir projede en fazla 35.000 VM'yi değerlendirin.
+**Azure Geçişi gereci** | Bir cihaz vCenter Server'da en fazla 10.000 VM keşfedebilir.<br/> Bir cihaz yalnızca tek bir vCenter Server'a bağlanabilir.<br/> Bir cihaz yalnızca tek bir Azure Geçiş projesiyle ilişkilendirilebilir.<br/>  Herhangi bir sayıda cihaz tek bir Azure Geçiş projesiyle ilişkilendirilebilir. <br/><br/> 
+**Grup** | Tek bir grupta en fazla 35.000 VM ekleyebilirsiniz.
+**Azure Geçir değerlendirmesi** | Tek bir değerlendirmede en fazla 35.000 VM'yi değerlendirebilirsiniz.
 
-Bu limitlerin göz önünde bulundurularak bazı örnek dağıtımlar verilmiştir:
+Bu sınırlamaları göz önünde bulundurarak, bazı örnek dağıtımlar şunlardır:
 
 
-**vCenter sunucusu** | **Sunucudaki VM 'Ler** | **Öneri** | **Eylem**
+**vCenter server** | **Sunucudaki VM'ler** | **Öneri** | **Eylem**
 ---|---|---
-Bir | < 10.000 | Bir Azure geçişi projesi.<br/> Tek gereç.<br/> Bulma için bir vCenter hesabı. | Gereci ayarlama, bir hesapla vCenter Server bağlanma.
-Bir | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | Her 10.000 VM için gereç ayarlayın.<br/><br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
-Birden çok | < 10.000 |  Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Bulma için bir vCenter hesabı. | Gereçlerini ayarlama, bir hesapla vCenter Server bağlama.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
-Birden çok | > 10.000 | Bir Azure geçişi projesi.<br/> Birden çok gereç.<br/> Birden çok vCenter hesabı. | VCenter Server bulma < 10.000 VM 'Leri varsa, her vCenter Server için bir gereç kurun.<br/><br/> VCenter Server bulma > 10.000 VM 'Ler için, her 10.000 sanal makine için bir gereç kurun.<br/> VCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 ' den az VM 'ye sınırlamak için envanteri bölün.<br/> Her bir gereci bir hesapla vCenter Server 'a bağlayın.<br/> Farklı gereçlerle keşfedilen makineler arasında bağımlılıkları çözümleyebilirsiniz.
+Bir | < 10.000 | Bir Azure Geçiş projesi.<br/> Bir cihaz.<br/> Keşif için bir vCenter hesabı. | Cihazı kurun, bir hesapla vCenter Server'a bağlanın.
+Bir | > 10.000 | Bir Azure Geçiş projesi.<br/> Birden fazla alet.<br/> Birden çok vCenter hesabı. | Her 10.000 VM için cihaz ayarlayın.<br/><br/> vCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 VM'den az ile sınırlamak için envanteri bölün.<br/> Her cihazı bir hesapla vCenter sunucusuna bağlayın.<br/> Farklı cihazlarla keşfedilen makinelerdeki bağımlılıkları analiz edebilirsiniz.
+Birden çok | < 10.000 |  Bir Azure Geçiş projesi.<br/> Birden fazla alet.<br/> Keşif için bir vCenter hesabı. | Cihazları ayarlayın, bir hesapla vCenter Server'a bağlanın.<br/> Farklı cihazlarla keşfedilen makinelerdeki bağımlılıkları analiz edebilirsiniz.
+Birden çok | > 10.000 | Bir Azure Geçiş projesi.<br/> Birden fazla alet.<br/> Birden çok vCenter hesabı. | vCenter Server keşfi 10.000 VM <, her vCenter Server için bir cihaz ayarlayın.<br/><br/> vCenter Server 10.000 VM> keşfederse, her 10.000 VM için bir cihaz ayarlayın.<br/> vCenter hesaplarını ayarlayın ve bir hesabın erişimini 10.000 VM'den az ile sınırlamak için envanteri bölün.<br/> Her cihazı bir hesapla vCenter sunucusuna bağlayın.<br/> Farklı cihazlarla keşfedilen makinelerdeki bağımlılıkları analiz edebilirsiniz.
 
 
-## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Çok kiracılı bir ortamda bulmayı planlayın
+## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Çok kiracılı bir ortamda keşif planı
 
-Çok kiracılı bir ortam için planlama yapıyorsanız, vCenter Server bulmayı kapsam içinde tanımlayabilirsiniz.
+Çok kiracılı bir ortam planlıyorsanız, keşfi vCenter Server'da kapsama alabilirsiniz.
 
-- Gereç bulma kapsamını bir vCenter Server veri merkezi, kümeler veya küme klasörü, ana bilgisayarlar veya konaklar klasörü veya ayrı VM 'Ler olarak ayarlayabilirsiniz.
-- Ortamınız kiracılar arasında paylaşılmışsa ve her kiracıyı ayrı olarak bulmak istiyorsanız, gerecin bulma için kullandığı vCenter hesabına erişim kapsamını belirleyebilirsiniz. 
-    - Kiracılar Konakları paylaşıyorsa VM klasörlerine göre kapsam yapmak isteyebilirsiniz. VCenter hesabının vCenter VM klasör düzeyinde erişimi varsa Azure geçişi VM 'Leri bulamaz. Bulma işlemini VM klasörlerine göre yapmak istiyorsanız, vCenter hesabının bir VM düzeyinde salt okuma erişimi olduğundan emin olarak bunu yapabilirsiniz. Bulma işleminin kapsamını belirleme hakkında daha fazla bilgiyi [burada](tutorial-assess-vmware.md#set-the-scope-of-discovery) bulabilirsiniz.
+- Cihaz bulma kapsamını vCenter Server veri merkezleri, kümeler veya kümeler klasörü, ana bilgisayarlar veya ana bilgisayarlar klasörüne veya tek tek VM'lere ayarlayabilirsiniz.
+- Ortamınız kiracılar arasında paylaşılırsa ve her kiracıyı ayrı ayrı keşfetmek istiyorsanız, cihazın keşif için kullandığı vCenter hesabına erişimi kapsam dışı kullanabilirsiniz. 
+    - Kiracılar ana bilgisayarları paylaşıyorsa VM klasörlerine göre kapsama almak isteyebilirsiniz. VCenter hesabı vCenter VM klasör ü düzeyinde verilen erişime sahipse Azure Geçir VM'leri keşfedemez. Keşifinizi VM klasörlerine göre kapsamda görmek istiyorsanız, bunu vCenter hesabının VM düzeyinde atanan salt okunur erişime sahip olmasını sağlayarak yapabilirsiniz. [Daha fazla bilgi edinin](set-discovery-scope.md).
 
-## <a name="prepare-for-assessment"></a>Değerlendirme için hazırlanma
+## <a name="prepare-for-assessment"></a>Değerlendirmeye hazırlanın
 
-Sunucu değerlendirmesi için Azure ve VMware 'yi hazırlayın. 
+Azure ve VMware'i sunucu değerlendirmesi için hazırlayın. 
 
-1. [VMware desteği gereksinimlerini ve sınırlamalarını](migrate-support-matrix-vmware.md)doğrulayın.
-2. Azure hesabınız için Azure geçişi ile etkileşime geçmek üzere izinleri ayarlayın.
-3. VMware 'i değerlendirme için hazırlayın.
+1. [VMware destek gereksinimlerini ve sınırlamalarını](migrate-support-matrix-vmware.md)doğrulayın.
+2. Azure hesabınıziçin Azure Geçiş ile etkileşim kurma izinleri ayarlayın.
+3. VMware'i değerlendirmeye hazırlayın.
 
-Bu ayarları yapılandırmak için [Bu öğreticideki](tutorial-prepare-vmware.md) yönergeleri izleyin.
+Bu ayarları yapılandırmak için [bu öğreticideki](tutorial-prepare-vmware.md) yönergeleri izleyin.
 
 
 ## <a name="create-a-project"></a>Proje oluşturma
 
-Planlama gereksinimlerinize uygun olarak şunları yapın:
+Planlama gereksinimlerinize uygun olarak aşağıdakileri yapın:
 
-1. Bir Azure geçişi projesi oluşturun.
-2. Azure geçişi sunucu değerlendirmesi aracını projelere ekleyin.
+1. Bir Azure Geçiş projeleri oluşturun.
+2. Projelere Azure Geçir Sunucusu Değerlendirmesi aracını ekleyin.
 
-[Daha fazla bilgi](how-to-add-tool-first-time.md)
+[Daha fazlasını öğrenin](how-to-add-tool-first-time.md)
 
-## <a name="create-and-review-an-assessment"></a>Değerlendirme oluşturma ve gözden geçirme
+## <a name="create-and-review-an-assessment"></a>Bir değerlendirme oluşturma ve gözden geçirme
 
-1. VMware VM 'Leri için değerlendirmeler oluşturun.
-1. Geçiş planlaması hazırlığı sırasında değerlendirmeleri gözden geçirin.
+1. VMware VM'ler için değerlendirmeler oluşturun.
+1. Göç planlamasına hazırlık değerlendirmelerini gözden geçirin.
 
 
-Bu ayarları yapılandırmak için [Bu öğreticideki](tutorial-assess-vmware.md) yönergeleri izleyin.
+Bu ayarları yapılandırmak için [bu öğreticideki](tutorial-assess-vmware.md) yönergeleri izleyin.
     
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -105,9 +101,9 @@ Bu ayarları yapılandırmak için [Bu öğreticideki](tutorial-assess-vmware.md
 Bu makalede şunları yapacaksınız:
  
 > [!div class="checklist"] 
-> * VMware VM 'Leri için Azure geçişi değerlendirmelerinin ölçeklendirilmesi planlanmaktadır
-> * Değerlendirme için Azure ve VMware hazırlandı
-> * Bir Azure geçişi projesi oluşturdunuz ve değerlendirmeler çalıştırıldı
-> * Geçişe hazırlanmayla ilgili değerlendirmeler gözden geçirildi.
+> * VMware VM'ler için Azure Geçiş değerlendirmelerini ölçeklendirmesi planlanıyor
+> * Değerlendirme için Hazırlanmış Azure ve VMware
+> * Bir Azure Geçiş projesi oluşturdu ve değerlendirmeler igüncelleştirme
+> * Göçe hazırlık değerlendirmelerini gözden geçirdi.
 
-Şimdi, değerlendirmelerin nasıl hesaplanacağını ve [değerlendirmelerin nasıl değiştirileceğini](how-to-modify-assessment.md) [öğrenin](concepts-assessment-calculation.md) .
+Şimdi, değerlendirmelerin nasıl hesaplandığı ve [değerlendirmelerin](how-to-modify-assessment.md)nasıl değiştirilebildiğini [öğrenin.](concepts-assessment-calculation.md)

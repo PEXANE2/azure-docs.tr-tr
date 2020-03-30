@@ -1,135 +1,135 @@
 ---
-title: Azure geçişi gereç hakkında SSS
-description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın.
+title: Azure Geçiş cihazı SSS
+description: Azure Geçiş cihazı yla ilgili sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 3d0844b980ac418c5c334c2535c40dc5f3caeb16
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 2ef7de3b31cb11a71ec9379232fc5ff1022cf666
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939313"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336982"
 ---
-# <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
+# <a name="azure-migrate-appliance-common-questions"></a>Azure Geçiş cihazı: Sık sorulan sorular
 
-Bu makalede, Azure geçişi gereci hakkında sık sorulan sorular yanıtlanmaktadır. Başka sorularınız varsa şu kaynakları kontrol edin:
+Bu makalede, Azure Geçiş cihazı yla ilgili sık sorulan sorular yanıtlanmaktadır. Başka sorularınız varsa, şu kaynakları denetleyin:
 
-- Azure geçişi hakkında [genel sorular](resources-faq.md)
-- [Bulma, değerlendirme ve bağımlılık görselleştirmesiyle](common-questions-discovery-assessment.md) ilgili sorular
-- [Sunucu geçişi](common-questions-server-migration.md) hakkında sorular
-- [Azure geçişi forumundaki](https://aka.ms/AzureMigrateForum) soruların yanıtlarını alın
+- Azure Geçiş hakkında [genel sorular](resources-faq.md)
+- [Keşif, değerlendirme ve bağımlılık görselleştirme](common-questions-discovery-assessment.md) ile ilgili sorular
+- Sunucu [geçişi](common-questions-server-migration.md) ile ilgili sorular
+- [Azure Geçiş forumunda](https://aka.ms/AzureMigrateForum) soruları yanıtlayın
 
-## <a name="what-is-the-azure-migrate-appliance"></a>Azure geçişi gereci nedir?
+## <a name="what-is-the-azure-migrate-appliance"></a>Azure Geçiş cihazı nedir?
 
-Azure geçişi gereci, Azure geçişi: Sunucu değerlendirmesi aracının şirket içi sunucuları keşfetmek ve değerlendirmek için kullandığı hafif bir gereç. Azure geçişi: sunucu geçiş aracı Ayrıca şirket içi VMware VM 'lerinin aracısız geçişi için gereci kullanır.
+Azure Geçir cihazı, Azure Geçiş: Sunucu Değerlendirme aracının şirket içi sunucuları keşfetmek ve değerlendirmek için kullandığı hafif bir cihazdır. Azure Geçiş: Sunucu Geçişi aracı, cihaza şirket içi VMware VM'lerin aracısız geçişi için de kullanılır.
 
-Azure geçişi gereci hakkında daha fazla bilgi edinebilirsiniz:
+Azure Geçiş cihazı hakkında daha fazla bilgi aşağıda vereb
 
-- Gereç, şirket içinde bir VM veya fiziksel makine olarak dağıtılır.
-- Gereç, şirket içi makineleri bulur ve sürekli olarak makine meta verilerini ve performans verilerini Azure geçişi 'ne gönderir.
-- Gereç keşfi aracısız. Bulunan makinelerde hiçbir şey yüklü değil.
+- Cihaz, vm veya fiziksel makine olarak şirket içinde dağıtılır.
+- Cihaz şirket içi makineleri keşfeder ve sürekli olarak Azure Geçiş'e makine meta verileri ve performans verileri gönderir.
+- Cihaz keşfi aracısızdır. Keşfedilen makinelere hiçbir şey yüklenmesin.
 
-Gereç hakkında [daha fazla bilgi edinin](migrate-appliance.md) .
+Cihaz hakkında [daha fazla bilgi edinin.](migrate-appliance.md)
 
-## <a name="how-does-the-appliance-connect-to-azure"></a>Gereç Azure 'a nasıl bağlanır?
+## <a name="how-does-the-appliance-connect-to-azure"></a>Cihaz Azure'a nasıl bağlanır?
 
-Gereç Internet üzerinden veya ortak/Microsoft eşlemesi ile Azure ExpressRoute kullanarak bağlanabilir.
+Cihaz internet üzerinden veya Azure ExpressRoute kullanarak genel/Microsoft bakışlarıyla bağlanabilir.
 
-## <a name="does-appliance-analysis-affect-performance"></a>Gereç Analizi performansı etkiler mi?
+## <a name="does-appliance-analysis-affect-performance"></a>Cihaz analizi performansı etkiler mi?
 
-Azure, Gereç profillerini şirket içi makineleri performans verilerini ölçmek için sürekli olarak geçirin. Bu profil oluşturma, profili oluşturulmuş makinelerde neredeyse performans etkisine sahip değildir.
+Azure Geçir cihazı profilleri, performans verilerini ölçmek için sürekli olarak şirket içi makinelerde dir. Bu profil oluşturmanın profilli makineler üzerinde neredeyse hiç performans etkisi yoktur.
 
-## <a name="can-i-harden-the-appliance-vm"></a>Gereç sanal makinesini kullanabilir miyim?
+## <a name="can-i-harden-the-appliance-vm"></a>VM cihazını sertleştirir miyim?
 
-Gereç sanal makinesini oluşturmak için indirilen şablonu kullandığınızda, Azure geçişi gereci için gerekli olan iletişim ve güvenlik duvarı kurallarını yerinde bırakırsanız şablona bileşen ekleyebilirsiniz (örneğin, virüsten koruma).
+İndirilen şablonu vm cihazını oluşturmak için kullandığınızda, Azure Geçiş cihazı için gerekli olan iletişim ve güvenlik duvarı kurallarını yerinde bırakırsanız şablona bileşenler (örneğin antivirüs) ekleyebilirsiniz.
 
-## <a name="what-network-connectivity-is-required"></a>Hangi ağ bağlantısı gerekir?
+## <a name="what-network-connectivity-is-required"></a>Hangi ağ bağlantısı gereklidir?
 
-Azure geçişi gereci için ağ bağlantısı gereksinimleri hakkında bilgi için aşağıdaki makalelere bakın:
+Azure Geçiş cihazı için ağ bağlantısı gereksinimleri hakkında bilgi için aşağıdaki makalelere bakın:
 
-- **VMware değerlendirmesi**: [URL erişimi](migrate-appliance.md#url-access) ve [bağlantı noktası erişimi](migrate-support-matrix-vmware.md#port-access)
-- **VMware aracısız geçişi**: [URL erişimi](migrate-appliance.md#url-access) ve [bağlantı noktası erişimi](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hyper-V değerlendirmesi**: [URL erişimi](migrate-appliance.md#url-access) ve [bağlantı noktası erişimi](migrate-support-matrix-hyper-v.md#port-access)
+- **VMware değerlendirmesi**: [URL erişimi](migrate-appliance.md#url-access) ve bağlantı [noktası erişimi](migrate-support-matrix-vmware.md#port-access)
+- **VMware aracısız geçiş**: [URL erişimi](migrate-appliance.md#url-access) ve bağlantı [noktası erişimi](migrate-support-matrix-vmware-migration.md#agentless-ports)
+- **Hyper-V değerlendirmesi**: [URL erişimi](migrate-appliance.md#url-access) ve bağlantı [noktası erişimi](migrate-support-matrix-hyper-v.md#port-access)
 
-## <a name="what-data-does-the-appliance-collect"></a>Gereç hangi verileri toplar?
+## <a name="what-data-does-the-appliance-collect"></a>Cihaz hangi verileri topluyor?
 
-Azure geçişi gerecinin VM 'lerde topladığı veriler hakkında bilgi edinmek için aşağıdaki makalelere bakın:
+Azure Geçiş cihazının Sanal Cihazlarda topladığı veriler hakkında bilgi için aşağıdaki makalelere bakın:
 
-- **VMware VM**: [performans verileri](migrate-appliance.md#collected-performance-data-vmware) ve [meta veriler](migrate-appliance.md#collected-metadata-vmware)
-- **Hyper-V VM**: [performans verileri](migrate-appliance.md#collected-performance-data-hyper-v) ve [meta veriler](migrate-appliance.md#collected-metadata-hyper-v)
+- **VMware VM**: Toplanan verileri [gözden geçirin.](migrate-appliance.md#collected-data---vmware) [
+- **Hyper-V VM**: Toplanan verileri [gözden geçirin.](migrate-appliance.md#collected-data---hyper-v)
 
 ## <a name="how-is-data-stored"></a>Veriler nasıl depolanır?
 
-Azure geçişi gereci tarafından toplanan veriler, Azure geçişi projesini oluşturduğunuz Azure konumunda depolanır.
+Azure Geçir cihazı tarafından toplanan veriler, Azure Geçir projesini oluşturduğunuz Azure konumunda depolanır.
 
-Verilerin nasıl depolandığı hakkında daha fazla bilgi aşağıdadır:
+Verilerin nasıl depolandırıştırılabildikleri hakkında daha fazla bilgi aşağıda vereb
 
-- Toplanan veriler, CosmosDB 'de bir Microsoft aboneliğine güvenli bir şekilde depolanır. Azure geçişi projesini sildiğinizde veriler silinir. Depolama, Azure geçişi tarafından işlenir. Toplanan veriler için özel olarak bir depolama hesabı seçemezsiniz.
-- [Bağımlılık görselleştirmesi](concepts-dependency-visualization.md)kullanıyorsanız, toplanan veriler Azure aboneliğinizde oluşturulan bir Azure Log Analytics çalışma alanındaki Birleşik Devletler depolanır. Aboneliğinizdeki Log Analytics çalışma alanını sildiğinizde veriler silinir.
+- Toplanan veriler, CosmosDB'de bir Microsoft aboneliğinde güvenli bir şekilde depolanır. Azure Geçir projesini sildiğinizde veriler silinir. Depolama, Azure Geçiş tarafından işlenir. Toplanan veriler için özel olarak bir depolama hesabı seçemezsiniz.
+- [Bağımlılık görselleştirmesini](concepts-dependency-visualization.md)kullanıyorsanız, toplanan veriler Abd'de Azure aboneliğinizde oluşturulan bir Azure Log Analytics çalışma alanında depolanır. Aboneliğinizdeki Günlük Analizi çalışma alanını sildiğinizde veriler silinir.
 
-## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Sürekli profil oluşturma sırasında karşıya ne kadar veri yüklendi?
+## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Sürekli profil oluşturma sırasında ne kadar veri yüklenir?
 
-Azure geçişi 'ne gönderilen verilerin hacmi birden çok parametreye bağlıdır. Örnek olarak, 10 makineye sahip bir Azure geçişi projesi (her biri bir disk ve bir NIC ile) günde yaklaşık 50 MB veri gönderir. Bu değer yaklaşık değerlerdir; Gerçek değer, disklerin ve NIC 'Lerin veri noktalarının sayısına bağlı olarak değişir. Makinelerin, disklerin veya NIC 'lerin sayısı arttıkça, gönderilen verilerdeki artış doğrusal değildir.
+Azure Geçiş'e gönderilen veri hacmi birden çok parametreye bağlıdır. Örnek olarak, 10 makinesi (her biri bir disk ve bir NIC'si olan) bir Azure Geçiş projesi günde yaklaşık 50 MB veri gönderir. Bu değer yaklaşıktır; gerçek değer, diskler ve NIC'ler için veri noktalarının sayısına bağlı olarak değişir. Makine, disk veya NIC sayısı artarsa, gönderilen verilerdeki artış doğrusal değildir.
 
-## <a name="is-data-encrypted-at-rest-and-in-transit"></a>Veriler, bekleyen ve aktarım sırasında şifrelenir mi?
+## <a name="is-data-encrypted-at-rest-and-in-transit"></a>Veriler istirahatte ve aktarımsırasında şifreleniyor mu?
 
-Evet, her ikisi için:
+Evet, her ikisi için de:
 
-- Meta veriler, HTTPS üzerinden Internet üzerinden Azure geçişi hizmetine güvenli bir şekilde gönderilir.
-- Meta veriler bir [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) veritabanında ve [Azure Blob depolamada](../storage/common/storage-service-encryption.md) bir Microsoft aboneliğine depolanır. Meta veriler, depolama için bekleyen bir şekilde şifrelenir.
-- Bağımlılık Analizi verileri de aktarım sırasında şifrelenir (güvenli HTTPS tarafından). Bu, aboneliğinizdeki bir Log Analytics çalışma alanında depolanır. Veriler, bağımlılık analizi için geri kalanında şifrelenir.
+- Meta veriler, HTTPS üzerinden Internet üzerinden Azure Geçir hizmetine güvenli bir şekilde gönderilir.
+- Meta veriler bir [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) veritabanında ve Microsoft aboneliğinde [Azure Blob depolama](../storage/common/storage-service-encryption.md) alanında depolanır. Meta veriler depolama için istirahatte şifrelenir.
+- Bağımlılık analizi için veriler de aktarım sırasında şifrelenir (güvenli HTTPS ile). Aboneliğinizde bir Log Analytics çalışma alanında depolanır. Veriler bağımlılık analizi için istirahatte şifrelenir.
 
-## <a name="how-does-the-appliance-connect-to-vcenter-server"></a>Gereç vCenter Server nasıl bağlanır?
+## <a name="how-does-the-appliance-connect-to-vcenter-server"></a>Cihaz vCenter Server'a nasıl bağlanır?
 
-Bu adımlar, gerecin VMware vCenter Server nasıl bağlandığını anlatmaktadır:
+Bu adımlar, cihazın VMware vCenter Server'a nasıl bağlandığı açıklanabilir:
 
-1. Gereç, gereci ayarlarken verdiğiniz kimlik bilgilerini kullanarak vCenter Server (bağlantı noktası 443) öğesine bağlanır.
-2. Gereç, vCenter Server tarafından yönetilen VM 'Lerle ilgili meta verileri toplamak üzere vCenter Server sorgulamak için VMware PowerCLI kullanır.
-3. Gereç, sanal makineler (çekirdek, bellek, diskler, NIC 'Ler) ve geçmiş ay için her bir VM 'nin performans geçmişi hakkında yapılandırma verileri toplar.
-4. Toplanan meta veriler, değerlendirme için Azure geçişi: Sunucu değerlendirmesi aracına (HTTPS üzerinden Internet üzerinden) gönderilir.
+1. Cihaz, cihazı kurarken sağladığınız kimlik bilgilerini kullanarak vCenter Server'a (bağlantı noktası 443) bağlanır.
+2. Cihaz vCenter Server tarafından yönetilen VM'ler hakkında meta veri toplamak için vCenter Server'ı sorgulamak için VMware PowerCLI kullanır.
+3. Cihaz, VM'ler (çekirdekler, bellek, diskler, NIC'ler) ve her Bir VM'nin son bir aydaki performans geçmişi hakkında yapılandırma verileri toplar.
+4. Toplanan meta veriler, değerlendirme için Azure Geçiş: Sunucu Değerlendirme aracına (HTTPS üzerinden internet üzerinden) gönderilir.
 
-## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure geçişi gereci birden çok vCenter sunucusuna mi bağlanabilir?
+## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Geçiş cihazı birden çok vCenter Sunucusuna bağlanabilir mi?
 
-Hayır. [Azure geçişi](migrate-appliance.md) gereci ve vCenter Server arasında bire bir eşleme var. Birden çok vCenter Server örneğinde VM 'Leri saptamak için birden çok gereç dağıtmanız gerekir. 
+Hayır. [Azure Geçir cihazı](migrate-appliance.md) ile vCenter Server arasında bire bir eşleme vardır. Birden çok vCenter Server örneğinde VM'leri bulmak için birden çok cihaz dağıtmanız gerekir. 
 
-## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Bir Azure geçişi projesi birden çok gereçte sahip olabilir mi?
-Bir projede birden fazla gereç eklenmiş olabilir. Ancak, bir gereç yalnızca bir projeyle ilişkilendirilebilir. 
+## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Geçiş projesinde birden çok cihaz olabilir mi?
+Bir projede birden çok cihaz eklenebilir. Ancak, bir cihaz yalnızca bir projeyle ilişkilendirilebilir. 
 
 
-## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Bir gereç ile kaç VM veya sunucu keşfedebilirim?
+## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Bir cihazla kaç VM veya sunucu keşfedebilirim?
 
-En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç ile en fazla 250 fiziksel sunucu bulabilirsiniz. Şirket içi ortamınızda daha fazla makineniz varsa, [Hyper-V değerlendirmesi ölçekleme](scale-hyper-v-assessment.md), [VMware değerlendirmesi ölçekleme](scale-vmware-assessment.md)ve [fiziksel sunucu değerlendirmesini ölçeklendirme](scale-physical-assessment.md)hakkında bilgi edinin.
+10.000 VM'ye kadar VM', 5.000'e kadar Hyper-V VM ve tek bir cihazla 250'ye kadar fiziksel sunucu keşfedebilirsiniz. Şirket içi ortamınızda daha fazla makineniz varsa, [Hyper-V değerlendirmesini ölçeklendirme,](scale-hyper-v-assessment.md) [VMware değerlendirmesini ölçeklendirme](scale-vmware-assessment.md)ve [fiziksel sunucu değerlendirmesini ölçeklendirme](scale-physical-assessment.md)hakkında bilgi edinin.
 
-## <a name="can-i-delete-an-appliance"></a>Bir gereci silebilir miyim?
+## <a name="can-i-delete-an-appliance"></a>Bir cihazı silebilir miyim?
 
-Şu anda, bir gereci projeden silme desteklenmez.
+Şu anda, bir cihazın projeden silmesi desteklenmez.
 
-Gereci silmenin tek yolu, Gereç ile ilişkili Azure geçişi projesini içeren kaynak grubunu silmektir.
+Cihazı silmenin tek yolu, cihazla ilişkili Azure Geçiş projesini içeren kaynak grubunu silmektir.
 
-Ancak, kaynak grubu silindiğinde diğer kayıtlı gereçler, bulunan envanter, değerlendirmeler ve proje ile ilişkili kaynak grubundaki diğer tüm Azure bileşenleri de silinir.
+Ancak, kaynak grubunun silinmesinde, kaynak grubundaki diğer kayıtlı cihazları, keşfedilen envanteri, değerlendirmeleri ve projeyle ilişkili kaynak grubundaki diğer tüm Azure bileşenlerini de silinir.
 
-## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Gereci farklı bir abonelik ya da projeyle kullanabilir miyim?
+## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Cihazı farklı bir abonelik veya proje ile kullanabilir miyim?
 
-Bulmayı başlatmak için gereci kullandıktan sonra, gereci farklı bir Azure aboneliğiyle kullanılmak üzere yeniden yapılandıramazsınız ve farklı bir Azure geçişi projesinde kullanamazsınız. Ayrıca, farklı bir vCenter Server örneğindeki VM 'Leri de keşfedeceksiniz. Bu görevler için yeni bir gereç ayarlayın.
+Cihazı keşif başlatmak için kullandıktan sonra, cihazı farklı bir Azure aboneliğiyle kullanacak şekilde yeniden yapılandıramaz ve farklı bir Azure Geçiş projesinde kullanamazsınız. VM'leri farklı bir vCenter Server örneğinde de keşfedemezsiniz. Bu görevler için yeni bir cihaz ayarlayın.
 
-## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Gereci bir Azure VM üzerinde ayarlayabilir miyim?
+## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Cihazı Azure VM'de ayarlayabilir miyim?
 
-Hayır. Şu anda bu seçenek desteklenmez. 
+Hayır. Şu anda, bu seçenek desteklenmez. 
 
-## <a name="can-i-discover-on-an-esxi-host"></a>ESXi konağında bulunabilir miyim?
+## <a name="can-i-discover-on-an-esxi-host"></a>Bir ESXi sunucusunda keşfedebilir miyim?
 
-Hayır. VMware VM 'lerini öğrenmek için vCenter Server sahip olmanız gerekir.
+Hayır. VMware VM'leri keşfetmek için vCenter Server'a sahip olmalısınız.
 
-## <a name="how-do-i-update-the-appliance"></a>Nasıl yaparım? gereç güncelleştirilsin mi?
+## <a name="how-do-i-update-the-appliance"></a>Cihazı nasıl güncelleyebilirim?
 
-Varsayılan olarak, Gereç ve yüklü aracıları otomatik olarak güncelleştirilir. Gereç, güncelleştirmeleri 24 saatte bir denetler. Başarısız olan güncelleştirmeler yeniden denenir. 
+Varsayılan olarak, cihaz ve yüklü aracıları otomatik olarak güncelleştirilir. Cihaz her 24 saatte bir güncellemeleri kontrol eder. Başarısız güncelleştirmeler yeniden denendir. 
 
-Yalnızca Gereç ve gereç aracıları bu otomatik güncelleştirmeler tarafından güncelleştirilir. İşletim sistemi, Azure tarafından otomatik güncelleştirme geçişi tarafından güncelleştirilmedi. İşletim sistemini güncel tutmak için Windows güncelleştirmelerini kullanın.
+Bu otomatik güncellemeler yalnızca cihaz ve cihaz temsilcileri tarafından güncellenir. İşletim sistemi Azure Geçiş otomatik güncelleştirmeleri tarafından güncelleştirilmeyecek. İşletim sistemini güncel tutmak için Windows Güncelleştirmeleri'ni kullanın.
 
-## <a name="can-i-check-agent-health"></a>Aracı sistem durumunu denetleyebilir miyim?
+## <a name="can-i-check-agent-health"></a>Ajan sağlığını kontrol edebilir miyim?
 
-Evet. Portalda Azure geçişi: Sunucu değerlendirmesi veya Azure geçişi: sunucu geçiş aracı için **Aracı sistem durumu** sayfasına gidin. Burada, aracıda Azure ile bulma ve değerlendirme aracıları arasındaki bağlantı durumunu kontrol edebilirsiniz.
+Evet. Portalda, Azure Geçişi: Sunucu Değerlendirmesi veya Azure Geçişi: Sunucu Geçişi aracı için **Aracı durumu** sayfasına gidin. Burada, Azure ile cihazdaki keşif ve değerlendirme aracıları arasındaki bağlantı durumunu kontrol edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure geçişi 'ne genel bakış](migrate-services-overview.md)konusunu okuyun.
+Azure [Geçiş genel görünümünü](migrate-services-overview.md)okuyun.

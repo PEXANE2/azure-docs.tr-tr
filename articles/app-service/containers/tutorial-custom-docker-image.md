@@ -1,37 +1,37 @@
 ---
-title: 'Öğretici: özel görüntü oluşturma ve çalıştırma'
-description: Azure App Service üzerinde çalışabilecek özel bir Linux görüntüsü oluşturmayı, Azure Container Registry 'ye dağıtmayı ve App Service içinde çalıştırmayı öğrenin.
+title: 'Öğretici: Özel bir resim oluşturun ve çalıştırın'
+description: Azure Uygulama Hizmeti'nde çalıştırılabilen, Azure Konteyner Kayıt Şirketlerine dağıtabilen ve Uygulama Hizmeti'nde çalıştırabilen özel bir Linux görüntüsünü nasıl oluşturabileceğinizi öğrenin.
 keywords: azure app service, web uygulaması, linux, docker, kapsayıcı
 author: msangapu-msft
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a6c9eb354bce09a5f652895f4af34df1f6750bec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239269"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045754"
 ---
-# <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Öğretici: özel bir görüntü oluşturma ve özel bir kayıt defterinden App Service çalıştırma
+# <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Öğretici: Özel bir resim oluşturun ve özel bir kayıt defterinden Uygulama Hizmeti'nde çalıştırın
 
-[App Service](app-service-linux-intro.md) , LINUX 'ta PHP 7,3 ve Node. js 10,14 gibi belirli sürümleri destekleyen yerleşik Docker görüntüleri sağlar. App Service, yerleşik görüntüleri ve özel görüntüleri bir hizmet olarak platform olarak barındırmak için Docker kapsayıcı teknolojisini kullanır. Bu öğreticide, özel bir görüntü oluşturmayı ve App Service içinde çalıştırmayı öğreneceksiniz. Bu desen, yerleşik görüntülerin sizin tercih ettiğiniz dili içermediği veya uygulamanızın yerleşik görüntülerde sağlanmayan belirli bir yapılandırma gerektirdiği durumlarda yararlı olur.
+[App Service,](app-service-linux-intro.md) PHP 7.3 ve Node.js 10.14 gibi belirli sürümler için linux'ta yerleşik Docker görüntüleri sağlar. App Service, hem yerleşik görüntüleri hem de özel görüntüleri bir hizmet olarak platform olarak barındırmak için Docker konteyner teknolojisini kullanır. Bu öğreticide, özel bir resim oluşturmayı ve Uygulama Hizmeti'nde çalıştırmayı öğrenirsiniz. Bu desen, yerleşik görüntülerin sizin tercih ettiğiniz dili içermediği veya uygulamanızın yerleşik görüntülerde sağlanmayan belirli bir yapılandırma gerektirdiği durumlarda yararlı olur.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Özel bir kapsayıcı kayıt defterine özel bir görüntü dağıtma
-> * Özel görüntüyü App Service Çalıştır
+> * Özel görüntüyü Uygulama Hizmeti'nde çalıştırma
 > * Ortam değişkenlerini yapılandırma
-> * Görüntüyü güncelleştirme ve yeniden dağıtma
+> * Görüntüyü güncelleştirin ve yeniden dağıtın
 > * Tanılama günlüklerine erişim
 > * SSH kullanarak kapsayıcıya bağlanma
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -49,7 +49,7 @@ cd docker-django-webapp-linux
 
 ## <a name="build-the-image-from-the-docker-file"></a>Docker dosyasından görüntüyü oluşturma
 
-Git deposunda _Dockerfile_ dosyasına göz atın. Bu dosya, uygulamanızı çalıştırmak için gereken Python ortamını açıklar. Görüntü ayrıca, kapsayıcı ile konak arasında güvenli iletişim için bir [SSH](https://www.ssh.com/ssh/protocol/) sunucusu ayarlar.
+Git deposunda _Dockerfile_ dosyasına göz atın. Bu dosya, uygulamanızı çalıştırmak için gereken Python ortamını açıklar. Görüntü ayrıca, kapsayıcı ile konak arasında güvenli iletişim için bir [SSH](https://www.ssh.com/ssh/protocol/) sunucusu ayarlar. _Dockerfile'daki_son satır, `ENTRYPOINT ["init.sh"]`SSH hizmetini ve Python sunucusunu başlatmak için çağrıda bulununur. `init.sh`
 
 ```Dockerfile
 FROM python:3.4
@@ -73,17 +73,19 @@ COPY init.sh /usr/local/bin/
     
 RUN chmod u+x /usr/local/bin/init.sh
 EXPOSE 8000 2222
+
+#service SSH start
 #CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000"]
 ENTRYPOINT ["init.sh"]
 ```
 
-`docker build` komutuyla Docker görüntüsünü oluşturun.
+`docker build` Docker görüntüsünü komutla oluşturun.
 
 ```bash
 docker build --tag mydockerimage .
 ```
 
-Docker kapsayıcısını çalıştırarak derlemenin çalışmasını test edin. [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) komutunu gönderin ve bu komuta görüntünün adını ve etiketini geçirin. `-p` bağımsız değişkenini kullanarak bağlantı noktasını belirttiğinizden emin olun.
+Docker kapsayıcısını çalıştırarak derlemenin çalışmasını test edin. Komutu [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) ver ve görüntünün adını ve etiketini ona geçirin. `-p` bağımsız değişkenini kullanarak bağlantı noktasını belirttiğinizden emin olun.
 
 ```bash
 docker run -p 8000:8000 mydockerimage
@@ -97,7 +99,7 @@ docker run -p 8000:8000 mydockerimage
 
 ## <a name="deploy-app-to-azure"></a>Uygulamayı Azure’da dağıtma
 
-Yeni oluşturduğunuz görüntüyü kullanan bir uygulama oluşturmak için, bir kaynak grubu oluşturan, görüntüyü gönderen ve sonra App Service planı Web uygulaması oluşturan Azure CLı komutlarını çalıştırın.
+Oluşturduğunuz resmi kullanan bir uygulama oluşturmak için, kaynak grubu oluşturan, görüntüyü iten ve ardından çalıştırmak için App Service planı web uygulamasını oluşturan Azure CLI komutlarını çalıştırırsınız.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -105,21 +107,21 @@ Yeni oluşturduğunuz görüntüyü kullanan bir uygulama oluşturmak için, bir
 
 ### <a name="create-an-azure-container-registry"></a>Azure Container Registry oluşturma
 
-Cloud Shell'de, [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) komutunu kullanarak bir Azure Container Registry oluşturun.
+Bulut Kabuğu'nda, [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) bir Azure Kapsayıcı Kayıt Defteri oluşturmak için komutu kullanın.
 
 ```azurecli-interactive
 az acr create --name <azure-container-registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
 ```
 
-### <a name="sign-in-to-azure-container-registry"></a>Azure Container Registry oturum açın
+### <a name="sign-in-to-azure-container-registry"></a>Azure Konteyner Kayıt Defterinde Oturum Aç
 
-Bir görüntüyü kayıt defterine göndermek için, özel kayıt defteri ile kimlik doğrulaması yapmanız gerekir. Cloud Shell, oluşturduğunuz kayıt defterinden kimlik bilgilerini almak için [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) komutunu kullanın.
+Bir resmi kayıt defterine itmek için, özel kayıt defteriyle birlikte kimlik doğrulamanız gerekir. Bulut Kabuğu'nda, [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) oluşturduğunuz kayıt defterinden kimlik bilgilerini almak için komutu kullanın.
 
 ```azurecli-interactive
 az acr credential show --name <azure-container-registry-name>
 ```
 
-Çıktı, Kullanıcı adıyla birlikte iki parola ortaya koyar.
+Çıktı, kullanıcı adı ile birlikte iki parola yı gösterir.
 
 ```json
 {
@@ -137,17 +139,17 @@ az acr credential show --name <azure-container-registry-name>
 }
 ```
 
-Aşağıdaki örnekte gösterildiği gibi, yerel Terminal pencerenize `docker login` komutunu kullanarak Azure Container Registry oturum açın. *\<Azure-Container-Registry-name >* ve *\<registry-username >* kayıt defteriniz için değerlerle değiştirin. İstendiğinde, önceki adımda bulunan parolalardan birini yazın.
+Yerel terminal pencerenizden, aşağıdaki örnekte gösterildiği gibi `docker login` komutu kullanarak Azure Konteyner Kayıt Defteri'nde oturum açın. * \<Azure-container-registry-name>* ve * \<kayıt defteri kullanıcı adı>* kayıt defterinizin değerleriyle değiştirin. İstendiğinde, önceki adımdaki parolalardan birini yazın.
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
 ```
 
-Oturum açmanın başarılı olduğunu doğrulayın.
+Girişin başarılı olduğunu doğrulayın.
 
 ### <a name="push-image-to-azure-container-registry"></a>Azure Container Registry’ye görüntü gönderme
 
-Azure Container Registry için yerel görüntünüzü etiketleyin. Örnek:
+Azure Kapsayıcı Kayıt Defteri için yerel resminizi etiketleyin. Örnek:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -158,7 +160,7 @@ docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimag
 docker push <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
 
-Cloud Shell geri dönüp gönderim işleminin başarılı olduğunu doğrulayın.
+Bulut Kabuğu'nda, itme başarılı olduğundan doğrulayın.
 
 ```azurecli-interactive
 az acr repository list -n <azure-container-registry-name>
@@ -178,7 +180,7 @@ Aşağıdaki çıktıyı almalısınız.
 
 ### <a name="create-web-app"></a>Web uygulaması oluşturma
 
-Cloud Shell’de, [](app-service-linux-intro.md)`myAppServicePlan` komutuyla [ App Service planında bir `az webapp create`web uygulaması](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) oluşturun. _\<app-name >_ değerini benzersiz bir uygulama adıyla değiştirin ve _Azure-Container-registry-name >_ kayıt defteri adınızla\<.
+Bulut Kabuğu'nda, [web app](app-service-linux-intro.md) `myAppServicePlan` [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) Uygulama Hizmeti planında komutla birlikte bir web uygulaması oluşturun. _ \<Uygulama adı>_ benzersiz bir uygulama adı yla, _ \<azure-konteyner-kayıt defteri adı>'yi_ de kayıt defteri adınız ile değiştirin.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -203,21 +205,21 @@ Web uygulaması oluşturulduğunda Azure CLI aşağıda yer alan çıktıdaki gi
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Web uygulamasında kayıt defteri kimlik bilgilerini yapılandırma
 
-Özel görüntüyü çekmek App Service için kayıt defteriniz ve görüntünüz hakkında bilgi gerekir. Cloud Shell, [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) komutuyla bunları sağlayın. *\<app-name >* , *\<Azure kapsayıcısı-kayıt defteri-adı >* , _\<registry-username >_ ve _\<Password >_ değiştirin.
+App Service'in özel görüntüyü çekebilmesi için kayıt defteriniz ve resminiz hakkında bilgi gerekir. Bulut Kabuğu'nda, komutu [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) sağlayın. * \<Uygulama adı>, * * \<azure-konteyner-kayıt defteri-adı>, * _ \<kayıt defteri-kullanıcı adı>_ ve _ \<parola>_ değiştirin.
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
 ```
 
 > [!NOTE]
-> Docker Hub 'dan farklı bir kayıt defteri kullanırken, `--docker-registry-server-url` `https://` olarak biçimlendirilmesi ve kayıt defterinin tam etki alanı adı gelmelidir.
+> Docker Hub dışındaki bir kayıt `--docker-registry-server-url` defteri kullanırken, `https://` kayıt defterinin tam nitelikli alan adı tarafından izlenecek şekilde biçimlendirilmelidir.
 >
 
 ### <a name="configure-environment-variables"></a>Ortam değişkenlerini yapılandırma
 
-Çoğu Docker görüntüsü, 80 dışında bir bağlantı noktası gibi özel ortam değişkenleri kullanır. App Service, `WEBSITES_PORT` uygulama ayarını kullanarak görüntünüzün kullandığı bağlantı noktası hakkında bilgi sahibi olursunuz. [Bu öğreticideki Python örneği](https://github.com/Azure-Samples/docker-django-webapp-linux) için GitHub sayfası, `WEBSITES_PORT` olarak _8000_ ayarlamanız gerektiğini gösterir.
+Docker görüntülerinin çoğu, 80'den farklı bir bağlantı noktası gibi özel ortam değişkenleri kullanır. Uygulama Hizmeti'ne uygulama ayarını kullanarak resminizin kullandığı bağlantı noktası hakkında `WEBSITES_PORT` bilgi verirsiniz. [Bu öğreticideki Python örneği](https://github.com/Azure-Samples/docker-django-webapp-linux) için GitHub sayfası, `WEBSITES_PORT` olarak _8000_ ayarlamanız gerektiğini gösterir.
 
-Uygulama ayarlarını belirlemek için Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanın. Uygulama ayarları büyük/küçük harfe duyarlıdır ve boşlukla ayrılmıştır.
+Uygulama ayarlarını ayarlamak [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) için Bulut Kabuğu'ndaki komutu kullanın. Uygulama ayarları büyük/küçük harfe duyarlıdır ve boşlukla ayrılmıştır.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_PORT=8000
@@ -228,7 +230,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 Web uygulamasına göz atarak uygulamanın çalıştığını doğrulayın (`http://<app-name>.azurewebsites.net`).
 
 > [!NOTE]
-> Uygulamaya ilk kez eriştiğinizde, App Service görüntünün tamamını çekmesini gerektirdiğinden bu işlem biraz zaman alabilir. Tarayıcı zaman aşımına uğrarsa sayfayı yenilemeniz yeterlidir.
+> Uygulamaya ilk kez erişinizde, Uygulama Hizmeti'nin tüm görüntüyü çekmesi gerektiğinden, bu uygulama biraz zaman alabilir. Tarayıcı zaman ları doluyorsa, sayfayı yenilemeniz.
 
 ![Web uygulaması bağlantı noktası yapılandırmasını test etme](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
@@ -246,17 +248,17 @@ Git deponuzda app/templates/app/index.html dosyasını açın. İlk HTML öğesi
   </nav>
 ```
 
-Python dosyasını değiştirdikten ve kaydettikten sonra, yeni Docker görüntüsünü yeniden oluşturup göndermeniz gerekir. Ardından değişikliklerin geçerlilik kazanması için web uygulamasını yeniden başlatın. Bu öğreticide daha önce kullandığınız komutları kullanın. [Docker dosyasından görüntü oluşturma](#build-the-image-from-the-docker-file) ve [Azure Container Registry için görüntü gönderme](#push-image-to-azure-container-registry)bölümüne başvurabilirsiniz. [Web uygulamasını test etme](#test-the-web-app) başlığı altındaki yönergeleri izleyerek web uygulamasını test edin.
+Python dosyasını değiştirdikten ve kaydettikten sonra, yeni Docker görüntüsünü yeniden oluşturup göndermeniz gerekir. Ardından değişikliklerin geçerlilik kazanması için web uygulamasını yeniden başlatın. Bu öğreticide daha önce kullandığınız komutları kullanın. [Docker dosyasından görüntü oluştur'a](#build-the-image-from-the-docker-file) başvurabilir ve [görüntüyü Azure Kapsayıcı Kayıt Defteri'ne itebilirsiniz.](#push-image-to-azure-container-registry) [Web uygulamasını test etme](#test-the-web-app) başlığı altındaki yönergeleri izleyerek web uygulamasını test edin.
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="enable-ssh-connections"></a>SSH bağlantılarını etkinleştir
+## <a name="enable-ssh-connections"></a>SSH bağlantılarını etkinleştirme
 
-SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Kapsayıcınıza SSH bağlantısı sağlamak için özel görüntünüzün yapılandırılması gerekir. Gerekli yapılandırmaya zaten sahip olan örnek depoya göz atalım.
+SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Kapsayıcınıza SSH bağlantısını etkinleştirmek için özel görüntünüzbunun için yapılandırılmalıdır. Zaten gerekli yapılandırmaya sahip örnek deposuna bir göz atalım.
 
-* [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile)'da AŞAĞıDAKI kod SSH sunucusunu yükledikten sonra oturum açma kimlik bilgilerini de ayarlar.
+* [Dockerfile'da,](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile)aşağıdaki kod SSH sunucusunu yükler ve oturum açma kimlik bilgilerini de ayarlar.
 
     ```Dockerfile
     ENV SSH_PASSWD "root:Docker!"
@@ -268,21 +270,21 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Kapsay
     ```
 
     > [!NOTE]
-    > Bu yapılandırma kapsayıcıya dış bağlantılar kurulmasına izin vermez. SSH yalnızca Kudu/SCM Sitesi aracılığıyla kullanılabilir. Kudu/SCM sitesinin kimliği, Azure hesabınızla doğrulanır.
+    > Bu yapılandırma kapsayıcıya dış bağlantılar kurulmasına izin vermez. SSH yalnızca Kudu/SCM Sitesi aracılığıyla kullanılabilir. Kudu/SCM sitesi Azure hesabınızla birlikte kimlik doğrulanır.
 
-* [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) , depodaki [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) dosyasını */etc/ssh/* dizinine kopyalar.
+* [Dockerfile,](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) dosyasını */etc/ssh/directory* adresindeki depoda kopyalar.
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
-* [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L22) , kapsayıcıda 2222 numaralı bağlantı noktasını kullanıma sunar. Bu, yalnızca özel sanal ağın köprü ağı içinde yer alan kapsayıcıların erişebildiği dahili bir bağlantı noktasıdır. 
+* [Dockerfile,](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L22) konteynerdeki 2222 bağlantı noktasını ortaya çıkarır. Bu, yalnızca özel sanal ağın köprü ağı içinde yer alan kapsayıcıların erişebildiği dahili bir bağlantı noktasıdır. 
 
     ```Dockerfile
     EXPOSE 8000 2222
     ```
 
-* [Giriş BETIĞI](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5) SSH sunucusunu başlatır.
+* [Giriş komut dosyası](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5) SSH sunucusunu başlatır.
 
     ```bash
     #!/bin/bash
@@ -291,7 +293,7 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Kapsay
 
 ### <a name="open-ssh-connection-to-container"></a>Kapsayıcıya SSH bağlantısı açma
 
-SSH bağlantısı yalnızca `https://<app-name>.scm.azurewebsites.net`adresinden erişilebilen kudu sitesi aracılığıyla kullanılabilir.
+SSH bağlantısı na sadece Kudu sitesinden ulaşılabilir. `https://<app-name>.scm.azurewebsites.net`
 
 Bağlanmak için, `https://<app-name>.scm.azurewebsites.net/webssh/host` adresine göz atın ve Azure hesabınızla oturum açın.
 
@@ -320,7 +322,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-Tebrikler! App Service bir özel Linux kapsayıcısı yapılandırdınız.
+Tebrikler! App Service'te özel bir Linux kapsayıcısı yapılandırıldınız.
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
@@ -330,21 +332,21 @@ Tebrikler! App Service bir özel Linux kapsayıcısı yapılandırdınız.
 
 > [!div class="checklist"]
 > * Özel bir kapsayıcı kayıt defterine özel bir görüntü dağıtma
-> * Özel görüntüyü App Service Çalıştır
+> * Özel görüntüyü Uygulama Hizmeti'nde çalıştırma
 > * Ortam değişkenlerini yapılandırma
-> * Görüntüyü güncelleştirme ve yeniden dağıtma
+> * Görüntüyü güncelleştirin ve yeniden dağıtın
 > * Tanılama günlüklerine erişim
 > * SSH kullanarak kapsayıcıya bağlanma
 
-Özel bir DNS adını uygulamanıza nasıl eşleyeceğinizi öğrenmek için bir sonraki öğreticiye ilerleyin.
+Özel bir DNS adının uygulamanızla nasıl eşleştinolduğunu öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: özel DNS adını uygulamanıza eşleyin](../app-service-web-tutorial-custom-domain.md)
+> [Öğretici: Uygulamanıza özel DNS adını haritalandırın](../app-service-web-tutorial-custom-domain.md)
 
-Ya da diğer kaynaklara göz atın:
-
-> [!div class="nextstepaction"]
-> [Özel kapsayıcıyı yapılandırma](configure-custom-container.md)
+Veya diğer kaynaklara göz atın:
 
 > [!div class="nextstepaction"]
-> [Öğretici: çok Kapsayıcılı WordPress uygulaması](tutorial-multi-container-app.md)
+> [Özel kapsayıcı yapılandırma](configure-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [Öğretici: Multi-konteyner WordPress uygulaması](tutorial-multi-container-app.md)
