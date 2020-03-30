@@ -1,20 +1,19 @@
 ---
 title: Bulut İş Ortağı Portalı yönetimi | Azure Marketi
-description: Kullanım dışı olan CPP makalesi, PC makalesine işaret eden; "Azure Marketi için Bulut İş Ortağı Portalı hesapları yönetmek için kullanılabilir işlem türlerini açıklar."
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+description: Deprecated CPP makale, PC makaleye işaret; "Azure Marketi için Bulut İş Ortağı Portalı için hesapları yönetmek için kullanılabilecek işlem türlerini açıklar."
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 4d586e45b0d86bedce61eef69a87d3fc187cf279
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: ce7e56352533072c625d0ea54a77fa6c4860f2e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666401"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288453"
 ---
 # <a name="cloud-partner-portal-management"></a>Bulut İş Ortağı Portalı yönetimi
 
-Bu işlevsellik Microsoft [Iş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için bkz. [Iş Ortağı Merkezi 'Nde ticari Market hesabınızı yönetme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Bu işlev Microsoft İş [Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için, [İş Merkezi'ndeki Ticari Pazar Hesabınızı nasıl yönetebilirsiniz'](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)e bakın.

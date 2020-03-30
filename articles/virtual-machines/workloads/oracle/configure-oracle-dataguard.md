@@ -1,6 +1,6 @@
 ---
-title: Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama | Microsoft Docs
-description: Oracle Data Guard 'ı hızlı bir şekilde Azure ortamınızda çalışır duruma alın.
+title: Bir Azure Linux sanal makinesinde Oracle Data Guard uygulayın | Microsoft Dokümanlar
+description: Oracle Data Guard'ı Azure ortamınızda hızla çalışır hale getirin.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 52723ca53b9156dd8e8183d92d8d4a350750c936
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7a165935e2c232167a0752272d244ce98bf6aff2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100102"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534414"
 ---
-# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Data Guard 'ı uygulama 
+# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Data Guard uygulamasını 
 
-Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını yönetmek veya bu kaynakları oluşturmak için kullanılır. Bu makalede, Azure Marketi 'nin Azure Marketi görüntüsünden bir Oracle Database 12c veritabanı dağıtmak için Azure CLı 'nin nasıl kullanılacağı açıklanır. Bu makalede, bir Azure sanal makinesine (VM) Data Guard 'ı nasıl yükleyeceğiniz ve yapılandırabileceğiniz adım adım gösterilir.
+Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını yönetmek veya bu kaynakları oluşturmak için kullanılır. Bu makalede, Azure Marketi görüntüsünden oracle database 12c veritabanıdağıtmak için Azure CLI'nin nasıl kullanılacağı açıklanmaktadır. Bu makalede, bir Azure sanal makine (VM) üzerinde Veri Koruma'yı nasıl yükleyip yapılandırabileceğiniz ilerler adım adım gösterilmektedir.
 
-Başlamadan önce, Azure CLı 'nin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure CLI yükleme kılavuzu](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Başlamadan önce Azure CLI'nin yüklü olduğundan emin olun. Daha fazla bilgi için [Azure CLI yükleme kılavuzuna](https://docs.microsoft.com/cli/azure/install-azure-cli)bakın.
 
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama
 ### <a name="assumptions"></a>Varsayımlar
 
-Oracle Data Guard 'ı yüklemek için aynı Kullanılabilirlik kümesinde iki Azure VM oluşturmanız gerekir:
+Oracle Data Guard'ı yüklemek için, aynı kullanılabilirlik kümesinde iki Azure VM oluşturmanız gerekir:
 
-- Birincil VM (myVM1) çalışan bir Oracle örneğine sahiptir.
-- Bekleme sanal makinesi (myVM2) yalnızca Oracle yazılımının yüklü olduğu bir.
+- Birincil VM (myVM1) çalışan bir Oracle örneği vardır.
+- Bekleme VM (myVM2) yalnızca Oracle yazılımı yüklenir.
 
-VM 'Leri oluşturmak için kullandığınız Market görüntüsü Oracle: Oracle-Database-Ee: 12.1.0.2: Latest.
+VM'leri oluşturmak için kullandığınız Market görüntüsü Oracle:Oracle-Database-Ee:12.1.0.2:2:son sürümdür.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 
-[Az Login](/cli/azure/reference-index) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
+[Az giriş](/cli/azure/reference-index) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```azurecli
 az login
@@ -47,7 +47,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[az group create](/cli/azure/group) komutunu kullanarak bir kaynak grubu oluşturun. Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
+[az group create](/cli/azure/group) komutunu kullanarak bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir kapsayıcıdır. 
 
 Aşağıdaki örnek `westus` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur:
 
@@ -55,9 +55,9 @@ Aşağıdaki örnek `westus` konumunda `myResourceGroup` adlı bir kaynak grubu 
 az group create --name myResourceGroup --location westus
 ```
 
-### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluştur
+### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
-Bir kullanılabilirlik kümesi oluşturmak isteğe bağlıdır, ancak bunu yapmanızı öneririz. Daha fazla bilgi için bkz. [Azure kullanılabilirlik kümeleri yönergeleri](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Kullanılabilirlik kümesi oluşturmak isteğe bağlıdır, ancak bunu öneririz. Daha fazla bilgi için Azure [kullanılabilirlik yönergelerine](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)bakın.
 
 ```azurecli
 az vm availability-set create \
@@ -69,11 +69,11 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-[Az VM Create](/cli/azure/vm) komutunu kullanarak bir VM oluşturun. 
+[az vm oluşturma](/cli/azure/vm) komutunu kullanarak bir VM oluşturun. 
 
-Aşağıdaki örnek, ve `myVM1` `myVM2`adlı iki sanal makine oluşturur. Varsayılan anahtar konumunda zaten mevcut değilse, SSH anahtarları da oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, iki VMs `myVM1` `myVM2`adlı oluşturur ve. Varsayılan anahtar konumunda zaten yoksa, SSH anahtarları da oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
-MyVM1 oluştur (birincil):
+myVM1 (birincil):
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -85,9 +85,9 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler gösterir. Değerini aklınızda edin `publicIpAddress`. Bu adresi sanal makineye erişmek için kullanırsınız.
+VM'yi oluşturduktan sonra, Azure CLI aşağıdaki örneğe benzer bilgileri gösterir. Değerini not `publicIpAddress`edin. VM'ye erişmek için bu adresi kullanırsınız.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -100,7 +100,8 @@ VM 'yi oluşturduktan sonra, Azure CLı aşağıdaki örneğe benzer bilgiler g�
 }
 ```
 
-MyVM2 oluşturma (bekleme):
+myVM2 (bekleme):
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -112,13 +113,13 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-MyVM2 `publicIpAddress` oluşturduktan sonra değerini aklınızda edin.
+myVM2'yi `publicIpAddress` oluşturduktan sonra değerini not edin.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>Bağlantı için TCP bağlantı noktasını açın
+### <a name="open-the-tcp-port-for-connectivity"></a>Bağlantı için TCP bağlantı noktasını açma
 
 Bu adım, Oracle veritabanına uzaktan erişime izin veren dış uç noktaları yapılandırır.
 
-MyVM1 için bağlantı noktasını açın:
+myVM1 için bağlantı noktasını açın:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -128,9 +129,9 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-Sonuç aşağıdaki yanıta benzer görünmelidir:
+Sonuç aşağıdaki yanıta benzer olmalıdır:
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -149,7 +150,7 @@ Sonuç aşağıdaki yanıta benzer görünmelidir:
 }
 ```
 
-MyVM2 için bağlantı noktasını açın:
+myVM2 için bağlantı noktasını açın:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -161,17 +162,17 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>Sanal makineye bağlanma
 
-Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini, sanal makinenizin `publicIpAddress` değeri ile değiştirin.
+Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini sanal `publicIpAddress` makinenizin değeriyle değiştirin.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
 ```
 
-### <a name="create-the-database-on-myvm1-primary"></a>Veritabanını myVM1 (birincil) üzerinde oluşturma
+### <a name="create-the-database-on-myvm1-primary"></a>myVM1(birincil) veritabanını oluşturma
 
-Oracle yazılımı Market görüntüsünde zaten yüklüdür, bu nedenle sonraki adım veritabanını yüklemektir. 
+Oracle yazılımı zaten Marketplace görüntü yüklü, bu nedenle bir sonraki adım veritabanıyüklemektir. 
 
-Oracle superuser 'a geçin:
+Oracle süper kullanıcısına geçin:
 
 ```bash
 $ sudo su - oracle
@@ -198,9 +199,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Çıktılar aşağıdaki yanıta benzer görünmelidir:
 
-```bash
+Çıktılar aşağıdaki yanıta benzer olmalıdır:
+
+```output
 Copying database files
 1% complete
 2% complete
@@ -237,7 +239,7 @@ $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 $ ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-İsteğe bağlı olarak, bu ayarların gelecekteki oturum açma işlemleri için kaydedilmesini sağlamak üzere/Home/Oracle/,bashrc dosyasına ORACLE_HOME ve ORACLE_SID ekleyebilirsiniz:
+İsteğe bağlı olarak, /home/oracle/.bashrc dosyasına ORACLE_HOME ve ORACLE_SID ekleyebilirsiniz, böylece bu ayarlar gelecekteki oturum açmalar için kaydedilir:
 
 ```bash
 # add oracle home
@@ -246,9 +248,9 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-## <a name="configure-data-guard"></a>Data Guard 'ı yapılandırma
+## <a name="configure-data-guard"></a>Veri Korumayı Yapılandırma
 
-### <a name="enable-archive-log-mode-on-myvm1-primary"></a>MyVM1 (birincil) üzerinde arşiv günlüğü modunu etkinleştir
+### <a name="enable-archive-log-mode-on-myvm1-primary"></a>myVM1'de arşiv günlüğü modunu etkinleştirme (birincil)
 
 ```bash
 $ sqlplus / as sysdba
@@ -263,14 +265,15 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
-Günlüğe kaydetmeyi zorla ' yı etkinleştirin ve en az bir günlük dosyasının mevcut olduğundan emin olun:
+
+Kuvvet günlüğe kaydetmeyi etkinleştirin ve en az bir günlük dosyasının bulunduğundan emin olun:
 
 ```bash
 SQL> ALTER DATABASE FORCE LOGGING;
 SQL> ALTER SYSTEM SWITCH LOGFILE;
 ```
 
-Bekleme yineleme günlükleri oluştur:
+Bekleme redo günlükleri oluşturun:
 
 ```bash
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 50M;
@@ -279,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-Flashback 'ı etkinleştirin (Bu, kurtarmayı çok daha kolay hale getirir) ve\_bekleme\_dosya yönetimini otomatik olarak ayarlar. Bundan sonra SQL * Plus 'den çıkın.
+Flashback'i açın (kurtarmayı çok daha kolay\_hale\_getirir) ve STANDBY FILE MANAGEMENT'ı otomatik olarak ayarlayın. Bundan sonra SQL*Plus'tan çıkın.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -287,11 +290,11 @@ SQL> ALTER SYSTEM SET STANDBY_FILE_MANAGEMENT=AUTO;
 SQL> EXIT;
 ```
 
-### <a name="set-up-service-on-myvm1-primary"></a>MyVM1 'de hizmet ayarlama (birincil)
+### <a name="set-up-service-on-myvm1-primary"></a>myVM1'de hizmet ayarlama (birincil)
 
-$ORACLE _HOME \ Network \ admin klasöründe bulunan tnsnames. ora dosyasını düzenleyin veya oluşturun.
+$ORACLE_HOME\network\admin klasöründe bulunan tnsnames.ora dosyasını edin veya oluşturun.
 
-Aşağıdaki girdileri ekleyin:
+Aşağıdaki girişleri ekleyin:
 
 ```bash
 cdb1 =
@@ -315,9 +318,9 @@ cdb1_stby =
   )
 ```
 
-$ORACLE _HOME \ Network \ admin klasöründe bulunan Listener. ora dosyasını düzenleyin veya oluşturun.
+$ORACLE_HOME\network\admin klasöründe bulunan dinleyici.ora dosyasını edin veya oluşturun.
 
-Aşağıdaki girdileri ekleyin:
+Aşağıdaki girişleri ekleyin:
 
 ```bash
 LISTENER =
@@ -340,12 +343,14 @@ SID_LIST_LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-Data Guard Aracısı 'nı etkinleştir:
+Veri Koruma Aracısını Etkinleştirin:
+
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
+
 Dinleyiciyi başlatın:
 
 ```bash
@@ -353,23 +358,23 @@ $ lsnrctl stop
 $ lsnrctl start
 ```
 
-### <a name="set-up-service-on-myvm2-standby"></a>MyVM2 (bekleme) üzerinde hizmet ayarlama
+### <a name="set-up-service-on-myvm2-standby"></a>myVM2'de hizmet ayarlama (bekleme)
 
-SSH to myVM2:
+MyVM2 için SSH:
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
 ```
 
-Oracle olarak oturum açın:
+Oracle olarak giriş yapın:
 
 ```bash
 $ sudo su - oracle
 ```
 
-$ORACLE _HOME \ Network \ admin klasöründe bulunan tnsnames. ora dosyasını düzenleyin veya oluşturun.
+$ORACLE_HOME\network\admin klasöründe bulunan tnsnames.ora dosyasını edin veya oluşturun.
 
-Aşağıdaki girdileri ekleyin:
+Aşağıdaki girişleri ekleyin:
 
 ```bash
 cdb1 =
@@ -393,9 +398,9 @@ cdb1_stby =
   )
 ```
 
-$ORACLE _HOME \ Network \ admin klasöründe bulunan Listener. ora dosyasını düzenleyin veya oluşturun.
+$ORACLE_HOME\network\admin klasöründe bulunan dinleyici.ora dosyasını edin veya oluşturun.
 
-Aşağıdaki girdileri ekleyin:
+Aşağıdaki girişleri ekleyin:
 
 ```bash
 LISTENER =
@@ -426,14 +431,15 @@ $ lsnrctl start
 ```
 
 
-### <a name="restore-the-database-to-myvm2-standby"></a>Veritabanını myVM2 'e geri yükleme (bekleme)
+### <a name="restore-the-database-to-myvm2-standby"></a>Veritabanını myVM2'ye geri yükleme (bekleme)
 
-Aşağıdaki içeriklerle/tmp/initcdb1_stby.ora parametre dosyasını oluşturun:
+Parametre dosyasını /tmp/initcdb1_stby.ora'yı aşağıdaki içeriklerle oluşturun:
+
 ```bash
 *.db_name='cdb1'
 ```
 
-Klasör oluştur:
+Klasörler oluşturun:
 
 ```bash
 mkdir -p /u01/app/oracle/oradata/cdb1/pdbseed
@@ -447,7 +453,8 @@ Parola dosyası oluşturma:
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
-Veritabanını myVM2 üzerinde Başlat:
+
+myVM2 veritabanını başlatın:
 
 ```bash
 $ export ORACLE_SID=cdb1
@@ -463,7 +470,8 @@ RMAN aracını kullanarak veritabanını geri yükleyin:
 $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
 ```
 
-RMAN 'da aşağıdaki komutları çalıştırın:
+RMAN'da aşağıdaki komutları çalıştırın:
+
 ```bash
 DUPLICATE TARGET DATABASE
   FOR STANDBY
@@ -474,16 +482,19 @@ DUPLICATE TARGET DATABASE
   NOFILENAMECHECK;
 ```
 
-Komut tamamlandığında aşağıdakine benzer iletiler görmeniz gerekir. RMAN 'dan çıkın.
-```bash
+Komut tamamlandığında aşağıdakine benzer iletileri görmeniz gerekir. RMAN'dan çıkın.
+
+```output
 media recovery complete, elapsed time: 00:00:00
 Finished recover at 29-JUN-17
 Finished Duplicate Db at 29-JUN-17
+```
 
+```bash
 RMAN> EXIT;
 ```
 
-İsteğe bağlı olarak, bu ayarların gelecekteki oturum açma işlemleri için kaydedilmesini sağlamak üzere/Home/Oracle/,bashrc dosyasına ORACLE_HOME ve ORACLE_SID ekleyebilirsiniz:
+İsteğe bağlı olarak, /home/oracle/.bashrc dosyasına ORACLE_HOME ve ORACLE_SID ekleyebilirsiniz, böylece bu ayarlar gelecekteki oturum açmalar için kaydedilir:
 
 ```bash
 # add oracle home
@@ -492,16 +503,16 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-Data Guard Aracısı 'nı etkinleştir:
+Veri Koruma Aracısını Etkinleştirin:
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
 
-### <a name="configure-data-guard-broker-on-myvm1-primary"></a>MyVM1 üzerinde Data Guard Broker 'ı yapılandırma (birincil)
+### <a name="configure-data-guard-broker-on-myvm1-primary"></a>MyVM1'de Veri Koruma Aracısı yapılandırın (birincil)
 
-Data Guard Manager 'ı başlatın ve SYS ve Password kullanarak oturum açın. (İşletim sistemi kimlik doğrulamasını kullanmayın.) Şunları yapın:
+Data Guard Manager'ı başlatın ve SYS ve parola kullanarak oturum açın. (İşletim sistemi kimlik doğrulaması kullanmayın.) Aşağıdakileri gerçekleştirin:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -520,6 +531,7 @@ Enabled.
 ```
 
 Yapılandırmayı gözden geçirin:
+
 ```bash
 DGMGRL> SHOW CONFIGURATION;
 
@@ -536,13 +548,13 @@ Configuration Status:
 SUCCESS   (status updated 26 seconds ago)
 ```
 
-Oracle Data Guard kurulumunu tamamladınız. Sonraki bölümde, bağlantının nasıl test yapılacağı ve üzerinde geçiş yapılacağı gösterilmektedir.
+Oracle Data Guard kurulumlarını tamamladınız. Sonraki bölümde, bağlantıyı nasıl test edip geçiş yapacaklarınızı gösterir.
 
-### <a name="connect-the-database-from-the-client-machine"></a>Veritabanını istemci makinesinden bağla
+### <a name="connect-the-database-from-the-client-machine"></a>Veritabanını istemci makinesinden bağlama
 
-İstemci makinenizde tnsnames. ora dosyasını güncelleştirin veya oluşturun. Bu dosya genellikle $ORACLE _HOME \ Network \ admin ' dir.
+İstemci makinenizde tnsnames.ora dosyasını güncelleştirin veya oluşturun. Bu dosya genellikle $ORACLE_HOME\network\admin adresindedir.
 
-MyVM1 ve myVM2 için IP adreslerini `publicIpAddress` değerlerinizle değiştirin:
+IP adreslerini myVM1 ve myVM2 değerlerinizle `publicIpAddress` değiştirin:
 
 ```bash
 cdb1=
@@ -572,7 +584,7 @@ cdb1_stby=
   )
 ```
 
-SQL * Plus 'ı başlatın:
+SQL*Plus'ı başlatın:
 
 ```bash
 $ sqlplus sys/OraPasswd1@cdb1
@@ -586,11 +598,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 
 SQL>
 ```
-## <a name="test-the-data-guard-configuration"></a>Data Guard yapılandırmasını test etme
 
-### <a name="switch-over-the-database-on-myvm1-primary"></a>MyVM1 üzerinde veritabanı üzerinde geçiş (birincil)
+## <a name="test-the-data-guard-configuration"></a>Veri Koruması yapılandırmasını test edin
 
-Birincil bilgisayardan bekleme moduna geçmek için (cdb1):
+### <a name="switch-over-the-database-on-myvm1-primary"></a>myVM1(birincil) veritabanında geçiş
+
+Birincil den bekleme (cdb1 cdb1_stby) geçmek için:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -614,9 +627,9 @@ Switchover succeeded, new primary is "cdb1_stby"
 DGMGRL>
 ```
 
-Artık bekleyen veritabanına bağlanabilirsiniz.
+Artık bekleme veritabanına bağlanabilirsiniz.
 
-SQL * Plus 'ı başlatın:
+SQL*Plus'ı başlatın:
 
 ```bash
 
@@ -632,9 +645,10 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-### <a name="switch-over-the-database-on-myvm2-standby"></a>MyVM2 (bekleme) üzerinde veritabanı üzerinde geçiş yapma
+### <a name="switch-over-the-database-on-myvm2-standby"></a>myVM2'deki veritabanını değiştirme (bekleme)
 
-Üzerinde geçiş yapmak için, myVM2 üzerinde şunu çalıştırın:
+Geçiş yapmak için myVM2'de aşağıdakileri çalıştırın:
+
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
 DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
@@ -656,9 +670,9 @@ Database mounted.
 Switchover succeeded, new primary is "cdb1"
 ```
 
-Artık, birincil veritabanına bağlanabilmelisiniz.
+Bir kez daha, artık birincil veritabanına bağlanmak gerekir.
 
-SQL * Plus 'ı başlatın:
+SQL*Plus'ı başlatın:
 
 ```bash
 
@@ -674,12 +688,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-Oracle Linux üzerinde Data Guard yükleme ve yapılandırmasını tamamladınız.
+Oracle Linux'ta Data Guard'ın kurulumunu ve yapılandırmasını tamamladınız.
 
 
 ## <a name="delete-the-virtual-machine"></a>Şu sanal makineyi silin:
 
-VM 'ye artık ihtiyacınız kalmadığında, kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
+VM'ye artık ihtiyacınız olmadığında, kaynak grubunu, VM'i ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -687,6 +701,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Öğretici: Yüksek oranda kullanılabilir sanal makineler oluşturma](../../linux/create-cli-complete.md)
+[Öğretici: Yüksek kullanılabilir sanal makineler oluşturun](../../linux/create-cli-complete.md)
 
-[VM dağıtımı Azure CLı örneklerini keşfet](../../linux/cli-samples.md)
+[VM dağıtım Azure CLI örneklerini keşfedin](../../linux/cli-samples.md)

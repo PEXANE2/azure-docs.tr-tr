@@ -1,78 +1,78 @@
 ---
-title: Ağ güvenlik grupları, Azure Site Recovery ile | Microsoft Docs
-description: Ağ güvenlik grupları Azure Site Recovery ile olağanüstü durum kurtarma ve geçiş için kullanmayı açıklar
+title: Azure Site Kurtarma ile Ağ Güvenlik Grupları | Microsoft Dokümanlar
+description: Olağanüstü durum kurtarma ve geçiş için Azure Site Kurtarma ile Ağ Güvenlik Gruplarının nasıl kullanılacağını açıklar
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0c06283080a4ee51f863714e4c515672299b420d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773028"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292371"
 ---
-# <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Recovery ile ağ güvenlik grupları
+# <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Kurtarma ile Ağ Güvenlik Grupları
 
-Ağ güvenlik grupları, ağ trafiğini bir sanal ağ içindeki kaynaklarla sınırlama için kullanılır. A [ağ güvenlik grubu (NSG)](../virtual-network/security-overview.md#network-security-groups) izin veren veya kaynak veya hedef IP adresi, bağlantı noktası ve protokole göre gelen veya giden ağ trafiği reddeden güvenlik kurallarının bir listesini içerir.
+Ağ Güvenlik Grupları, ağ trafiğini sanal ağdaki kaynaklarla sınırlamak için kullanılır. [Ağ Güvenlik Grubu (NSG),](../virtual-network/security-overview.md#network-security-groups) kaynak veya hedef IP adresi, bağlantı noktası ve protokole dayalı gelen veya giden ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir.
 
-Resource Manager dağıtım modelinde Nsg'leri alt ağları veya tek tek Ağ arabirimleriyle ilişkilendirilebilir. Bir NSG bir alt ağ ile ilişkilendirildiğinde kurallar alt ağa bağlı tüm kaynaklar için geçerli olur. Trafik de NSG'yi ağ arabirimine zaten ilişkili bir NSG'si sahip bir alt ağ ile ilişkilendirilmesi yoluyla daha da kısıtlanabilir.
+Kaynak Yöneticisi dağıtım modeli altında, NSG'ler alt ağlarla veya tek tek ağ arabirimleriyle ilişkilendirilebilir. Bir NSG bir alt ağ ile ilişkilendirildiğinde kurallar alt ağa bağlı tüm kaynaklar için geçerli olur. Trafik, bir NSG'yi zaten ilişkili bir NSG'ye sahip bir alt ağ içindeki tek ağ arabirimleriyle ilişkilendirerek de sınırlandırılabilir.
 
-Bu makalede, ağ güvenlik grupları Azure Site Recovery ile nasıl kullanabileceğiniz açıklanır.
+Bu makalede, Azure Site Kurtarma ile Ağ Güvenlik Grupları'nı nasıl kullanabileceğiniz açıklanmaktadır.
 
-## <a name="using-network-security-groups"></a>Ağ güvenlik gruplarını kullanma
+## <a name="using-network-security-groups"></a>Ağ Güvenlik Gruplarını Kullanma
 
-Tek bir alt ağı olabilir sıfır veya bir ilişkili NSG. Bir ağ arabirimine bulundurabilirsiniz sıfır veya bir ilişkili NSG. Bu nedenle, bir NSG bir alt ağ için önce ve sonra başka bir NSG sanal makinenin ağ arabirimine ilişkilendirerek bir sanal makine için çift trafiği kısıtlama etkin olabilir. NSG kuralları uygulama bu durumda trafik yönü ve uygulanan güvenlik kuralları önceliğini bağlıdır.
+Tek bir alt ağ sıfır veya bir ilişkili NSG olabilir. Tek bir ağ arabirimi de sıfır veya bir, ilişkili NSG olabilir. Yani, bir NSG'yi önce bir alt ağa, sonra da VM'nin ağ arabirimine başka bir NSG'yi ilişkilendirerek sanal bir makine için çift trafik kısıtlamasına sahip olabilirsiniz. Bu durumda NSG kurallarının uygulanması trafiğin yönü ve uygulanan güvenlik kurallarının önceliğine bağlıdır.
 
-Bir sanal makine ile basit bir örnek gibi göz önünde bulundurun:
--   Sanal makine içine yerleştirilir **Contoso alt**.
--   **Contoso alt** ilişkili olduğu **alt ağın NSG**.
--   VM ağ arabirimi ile ilişkili ayrıca **VM NSG**.
+Aşağıdaki gibi bir sanal makine ile basit bir örnek düşünün:
+-    Sanal makine **Contoso Subnet**içine yerleştirilir.
+-    **Contoso Subnet** **Subnet NSG**ile ilişkilidir.
+-    VM ağ arabirimi ayrıca **VM NSG**ile ilişkilidir.
 
-![Site Recovery ile NSG](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
+![Site Kurtarma ile NSG](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
 
-Bu örnekte, gelen trafik için alt ağın NSG önce değerlendirilir. Alt ağ NSG'de izin verdiği trafik sonrasında VM NSG tarafından değerlendirilir. Geriye doğru VM ilk değerlendirilen NSG ile giden trafik için geçerlidir. VM NSG'de izin verdiği trafik sonrasında alt ağ NSG tarafından değerlendirilir.
+Bu örnekte, gelen trafik için önce Subnet NSG değerlendirilir. Subnet NSG ile izin verilen herhangi bir trafik daha sonra VM NSG tarafından değerlendirilir. Ters giden trafik için geçerlidir, vm NSG ilk değerlendirilmektedir. VM NSG ile izin verilen herhangi bir trafik daha sonra Subnet NSG tarafından değerlendirilir.
 
-Bu, ayrıntılı bir güvenlik kuralı uygulama için sağlar. Örneğin, gelen internet erişimi birkaç uygulama altında yer alan VM'ler (örneğin, ön uç Vm'leri) bir alt ağ için izin ver, ancak diğer vm'lere (örneğin, veritabanı ve diğer arka uç VM) gelen internet erişimi kısıtlamak isteyebilirsiniz. Bu durumda alt ağ internet trafiğe izin veren NSG üzerinde daha esnek bir kuralı vardır ve VM NSG erişimi vermeyerek belirli VM erişimini kısıtlamak. Aynı giden trafik için uygulanabilir.
+Bu, tanecikli güvenlik kuralı uygulamasına izin verir. Örneğin, bir alt ağ altında birkaç uygulama VM'sine (ön uç VM'leri gibi) gelen internet erişimine izin vermek, ancak gelen internet erişimini diğer VM'lere (veritabanı ve diğer arka uç VM'ler gibi) kısıtlamak isteyebilirsiniz. Bu durumda, Internet trafiğine izin veren Subnet NSG üzerinde daha yumuşak bir kural alabilirsiniz ve VM NSG'ye erişimi reddederek belirli VM'lere erişimi kısıtlayabilirsiniz. Aynı giden trafik için de uygulanabilir.
 
-Bu tür NSG yapılandırmalarını ayarlama, doğru öncelikleri için uygulandığından emin olun [güvenlik kuralları](../virtual-network/security-overview.md#security-rules). Kurallar öncelik sırasına göre işleme alınır ve düşük rakamlı kurallar daha yüksek önceliğe sahip olduğundan yüksek rakamlı kurallardan önce uygulanır. Trafik bir kuralla eşleştiğinde işlem durur. Bunun sonucunda yüksek önceliğe sahip olan kurallarla aynı özniteliklere sahip olan önceliği daha düşük olan (yüksek rakamlı) kurallar işleme alınmaz.
+Bu tür NSG yapılandırmaları ayarlarken, doğru önceliklerin [güvenlik kurallarına](../virtual-network/security-overview.md#security-rules)uygulandığından emin olun. Kurallar öncelik sırasına göre işleme alınır ve düşük rakamlı kurallar daha yüksek önceliğe sahip olduğundan yüksek rakamlı kurallardan önce uygulanır. Trafik bir kuralla eşleştiğinde işlem durur. Bunun sonucunda yüksek önceliğe sahip olan kurallarla aynı özniteliklere sahip olan önceliği daha düşük olan (yüksek rakamlı) kurallar işleme alınmaz.
 
-Her zaman ağ güvenlik gruplarının hem bir ağ arabirimine hem de alt ağa uygulandığının farkında olmayabilirsiniz. Görüntüleyerek bir ağ arabirimine uygulanmış olan toplu kuralları doğrulayabilirsiniz [geçerli güvenlik kuralları](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) bir ağ arabirimi. Ayrıca [IP akışı doğrulama](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) özelliği [Azure Ağ İzleyicisi](../network-watcher/network-watcher-monitoring-overview.md) iletişim bir ağ arabirimine gelen veya izin verilip verilmeyeceğini belirlemek için. Bu araç iletişime izin verilip verilmediğini ve trafiğe izin veren veya onu reddeden ağ güvenlik kuralının hangisi olduğunu belirler.
+Her zaman ağ güvenlik gruplarının hem bir ağ arabirimine hem de alt ağa uygulandığının farkında olmayabilirsiniz. Ağ arabiriminin [etkili güvenlik kurallarını](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) görüntüleyerek ağ arabirimine uygulanan toplu kuralları doğrulayabilirsiniz. Azure Ağ İzleyicisi'ndeki [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) IP [akışı doğrulama](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) özelliğini, bir ağ arabirimine veya ağ arabiriminden iletişime izin verilip verilmediğini belirlemek için de kullanabilirsiniz. Bu araç iletişime izin verilip verilmediğini ve trafiğe izin veren veya onu reddeden ağ güvenlik kuralının hangisi olduğunu belirler.
 
-## <a name="on-premises-to-azure-replication-with-nsg"></a>Şirket içi NSG ile Azure'a çoğaltma
+## <a name="on-premises-to-azure-replication-with-nsg"></a>NSG ile Azure çoğaltma için şirket içi
 
-Azure Site kurtarma sağlayan olağanüstü durum kurtarma ve azure'a geçiş için şirket içi [Hyper-V sanal makinelerini](hyper-v-azure-architecture.md), [VMware sanal makinelerini](vmware-azure-architecture.md), ve [fiziksel sunucuları](physical-azure-architecture.md). Tüm şirket içi Azure senaryoları için çoğaltma verileri gönderilen ve bir Azure depolama hesabında depolanır. Çoğaltma sırasında herhangi bir sanal makine ücreti ödeme yapmayın. Azure'a yük devretme çalıştırdığınızda, Site Recovery, Azure Iaas sanal makineleri otomatik olarak oluşturur.
+Azure Site Kurtarma, şirket içi [Hyper-V sanal makineleri,](hyper-v-azure-architecture.md) [VMware sanal makineleri](vmware-azure-architecture.md)ve [fiziksel sunucular](physical-azure-architecture.md)için olağanüstü durum kurtarma ve Azure'a geçiş sağlar. Azure senaryolarının tüm şirket içi için çoğaltma verileri bir Azure Depolama hesabına gönderilir ve depolanır. Çoğaltma sırasında sanal makine ücreti ödemezsiniz. Azure'da bir hata yaptığınızda, Site Kurtarma otomatik olarak Azure IaaS sanal makineleri oluşturur.
 
-Azure'a yük devretmenin ardından VM'ler oluşturulduktan sonra Nsg'ler sanal ağ ve VM ağ trafiği sınırlamak için kullanılabilir. Site Recovery, yük devretme işleminin bir parçası olarak Nsg'ler oluşturmaz. Yük devretmeyi başlatmadan önce gerekli Azure Nsg'ler oluşturmanızı öneririz. Daha sonra Nsg'leri VM'lerin yükünü otomatik olarak yük devretme sırasında başarısız Otomasyon betikleri ile Site Recovery'nin güçlü kullanarak ilişkilendirebilirsiniz [kurtarma planları](site-recovery-create-recovery-plans.md).
+Sanal M'ler Azure'a geçildikten sonra oluşturulduktan sonra, NSG'ler ağ trafiğini sanal ağ ve SANAL'larla sınırlamak için kullanılabilir. Site Kurtarma, başarısız işlemin bir parçası olarak NSG'ler oluşturmaz. Başarısız olmadan önce gerekli Azure NSG'lerini oluşturmanızı öneririz. Daha sonra, Otomasyon komut dosyalarını Site Kurtarma'nın güçlü [kurtarma planlarıyla](site-recovery-create-recovery-plans.md)kullanarak NSG'leri başarısız olurken, başarısız olduğu için NSG'leri otomatik olarak başarısız lığa bağlayabilirsiniz.
 
-Örneğin, yük devretme sonrasında VM yapılandırmasına benzer [Örnek senaryo](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) yukarıda ayrıntılı:
--   Oluşturabileceğiniz **Contoso VNet** ve **Contoso alt** hedef Azure bölgesi planlama DR bir parçası olarak.
--   Ayrıca oluşturabilir ve her ikisi de yapılandırma **alt ağın NSG** yanı **VM NSG** bölümü aynı DR planlama olarak.
--   **Alt ağ NSG'SİNDE** ardından hemen ile ilişkilendirilebilir **Contoso alt**gibi hem NSG hem de alt ağ zaten kullanılabilir.
--   **VM NSG** kurtarma planlarını kullanarak yük devretme sırasında VM ile ilişkili olabilir.
+Örneğin, başarısız sonrası VM yapılandırması yukarıda açıklanan [örnek senaryoya](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) benziyorsa:
+-    **Contoso VNet** ve **Contoso Subnet'i** hedef Azure bölgesinde DR planlamasının bir parçası olarak oluşturabilirsiniz.
+-    Ayrıca, aynı DR planlamasının bir parçası olarak hem **Subnet NSG** hem de **VM NSG** oluşturabilir ve yapılandırabilirsiniz.
+-    **Subnet NSG** sonra hemen **Contoso Subnet**ile ilişkili olabilir , Hem NSG ve alt ağ zaten mevcuttur gibi.
+-    **VM NSG** kurtarma planları kullanarak başarısız sırasında VM ile ilişkili olabilir.
 
-Nsg'ler oluşturulup yapılandırıldıktan sonra çalışmasını öneririz. bir [yük devretme testi](site-recovery-test-failover-to-azure.md) doğrulamak için komut dosyası NSG ilişkileri ve yük devretme sonrasında VM bağlantısı.
+NSG'ler oluşturulduktan ve yapılandırıldıktan sonra, komut dosyası yla yazılmış NSG ilişkilendirmelerini ve başarısız lık sonrası VM bağlantısını doğrulamak için bir [test başarısızlığı](site-recovery-test-failover-to-azure.md) çalıştırmanızı öneririz.
 
-## <a name="azure-to-azure-replication-with-nsg"></a>NSG ile azure'dan Azure'a çoğaltma
+## <a name="azure-to-azure-replication-with-nsg"></a>NSG ile Azure'dan Azure'a çoğaltma
 
-Azure Site kurtarma sağlayan olağanüstü durum kurtarma [Azure sanal makineleri](azure-to-azure-architecture.md). Azure Vm'leri için çoğaltmayı etkinleştirdiğinizde Site Recovery çoğaltma üzerinde hedef bölge (alt ağlar ve ağ geçidi alt ağları dahil) sanal ağlar oluşturma ve kaynak arasında gerekli eşlemeleri oluşturabilir ve hedef sanal ağları. Ayrıca, önceden hedef tarafı ağlar ve alt ağlar oluşturmak ve aynı çoğaltmayı etkinleştirirken kullanabilirsiniz. Site Recovery oluşturmaz herhangi bir VM üzerinde hedef Azure bölgesi öncesinde [yük devretme](azure-to-azure-tutorial-failover-failback.md).
+Azure Site Kurtarma, [Azure sanal makinelerin](azure-to-azure-architecture.md)olağanüstü kurtarma sını sağlar. Azure Sanal M'leri için çoğaltmayı etkinleştirirken, Site Kurtarma hedef bölgede yineleme sanal ağları (alt ağlar ve ağ geçidi alt ağları dahil) oluşturabilir ve kaynak ve hedef sanal ağlar arasında gerekli eşlemeleri oluşturabilir. Ayrıca, hedef yan ağları ve alt ağları önceden oluşturabilir ve çoğaltmayı etkinleştirirken aynı şeyi kullanabilirsiniz. Site [Kurtarma, başarısız](azure-to-azure-tutorial-failover-failback.md)olmadan önce hedef Azure bölgesinde herhangi bir VM oluşturmaz.
 
-Azure VM çoğaltma için NSG kurallarını Azure bölgesi kaynağı üzerinde izin verdiğinden emin olun [giden bağlantı](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) çoğaltma trafiği için. Ayrıca test ve gerekli kurallar bu doğrulayabilirsiniz [örnek NSG yapılandırma](azure-to-azure-about-networking.md#example-nsg-configuration).
+Azure VM çoğaltma için, kaynak Azure bölgesindeki NSG kurallarının çoğaltma trafiği için [giden bağlantıya](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) izin verdiğinden emin olun. Ayrıca, bu [örnek NSG yapılandırması](azure-to-azure-about-networking.md#example-nsg-configuration)aracılığıyla bu gerekli kuralları sınayabilir ve doğrulayabilirsiniz.
 
-Site Recovery oluşturma veya yük devretme işleminin bir parçası olarak Nsg'ler çoğaltmak desteklemez. Yük devretmeyi başlatmadan önce hedef Azure bölgeniz gerekli Nsg oluşturmanızı öneririz. Daha sonra Nsg'leri VM'lerin yükünü otomatik olarak yük devretme sırasında başarısız Otomasyon betikleri ile Site Recovery'nin güçlü kullanarak ilişkilendirebilirsiniz [kurtarma planları](site-recovery-create-recovery-plans.md).
+Site Kurtarma, başarısız işlemin bir parçası olarak NSG'ler oluşturmaz veya çoğaltmaz. Başarısız olmadan önce hedef Azure bölgesinde gerekli NSG'leri oluşturmanızı öneririz. Daha sonra, Otomasyon komut dosyalarını Site Kurtarma'nın güçlü [kurtarma planlarıyla](site-recovery-create-recovery-plans.md)kullanarak NSG'leri başarısız olurken, başarısız olduğu için NSG'leri otomatik olarak başarısız lığa bağlayabilirsiniz.
 
-Dikkate [Örnek senaryo](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) daha önce açıklanan:
--   Site Recovery kopyaları oluşturabilir **Contoso VNet** ve **Contoso alt** hedef VM için çoğaltma etkinleştirildiğinde Azure bölgesi.
--   İstenen kopyalarını oluşturabilirsiniz **alt ağın NSG** ve **VM NSG** (adlandırılmış, örneğin, **hedef alt ağın NSG** ve **hedef VM NSG**, sırasıyla) için hedef bölgede yapılması gereken herhangi bir ek kuralın verme hedef Azure bölgesi.
--   **Hedef alt ağın NSG** ardından olabilir hem NSG hem de alt ağ zaten kullanılabildiğinden azureresourcemanager hemen hedef bölge alt ağ ile ilişkili.
--   **Hedef VM NSG** kurtarma planlarını kullanarak yük devretme sırasında VM ile ilişkili olabilir.
+Daha önce açıklanan [örnek senaryo](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) göz önüne alındığında:
+-    Site Kurtarma, VM için çoğaltma etkinleştirildiğinde hedef Azure bölgesinde **Contoso VNet** ve **Contoso Subnet'in** kopyalarını oluşturabilir.
+-    Hedef Azure bölgesinde, hedef Azure bölgesinde **Subnet NSG** ve **VM NSG'nin** (sırasıyla **Hedef Altağ NSG** ve **Hedef VM NSG**olarak adlandırılır) istenilen kopyalarını oluşturarak hedef bölgede gereken ek kurallara izin verebilirsiniz.
+-    **Hedef Subnet NSG,** hem NSG hem de alt ağ zaten mevcut olduğundan, hedef bölge alt ağıyla hemen ilişkilendirilebilir.
+-    **Hedef VM NSG** kurtarma planları kullanarak başarısız sırasında VM ile ilişkili olabilir.
 
-Nsg'ler oluşturulup yapılandırıldıktan sonra çalışmasını öneririz. bir [yük devretme testi](azure-to-azure-tutorial-dr-drill.md) doğrulamak için komut dosyası NSG ilişkileri ve yük devretme sonrasında VM bağlantısı.
+NSG'ler oluşturulduktan ve yapılandırıldıktan sonra, komut dosyası yla yazılmış NSG ilişkilendirmelerini ve başarısız lık sonrası VM bağlantısını doğrulamak için bir [test başarısızlığı](azure-to-azure-tutorial-dr-drill.md) çalıştırmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
--   Daha fazla bilgi edinin [ağ güvenlik grupları](../virtual-network/security-overview.md#network-security-groups).
--   NSG hakkında daha fazla bilgi [güvenlik kuralları](../virtual-network/security-overview.md#security-rules).
--   Daha fazla bilgi edinin [geçerli güvenlik kuralları](../virtual-network/diagnose-network-traffic-filter-problem.md) için bir NSG.
--   Daha fazla bilgi edinin [kurtarma planları](site-recovery-create-recovery-plans.md) uygulama yük devretme otomatikleştirmek için.
+-    [Ağ Güvenlik Grupları](../virtual-network/security-overview.md#network-security-groups)hakkında daha fazla bilgi edinin.
+-    NSG güvenlik [kuralları](../virtual-network/security-overview.md#security-rules)hakkında daha fazla bilgi edinin.
+-    Bir NSG için [etkili güvenlik kuralları](../virtual-network/diagnose-network-traffic-filter-problem.md) hakkında daha fazla bilgi edinin.
+-    Uygulama başarısızlığını otomatikleştirmek için [kurtarma planları](site-recovery-create-recovery-plans.md) hakkında daha fazla bilgi edinin.

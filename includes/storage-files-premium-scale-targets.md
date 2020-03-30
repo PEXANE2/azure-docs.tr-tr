@@ -5,29 +5,29 @@ ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
 ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71180079"
 ---
-#### <a name="additional-premium-file-share-level-limits"></a>Ek Premium dosya paylaşma düzeyi limitleri
+#### <a name="additional-premium-file-share-level-limits"></a>Ek premium dosya paylaşım düzeyi sınırları
 
 |Alan  |Hedef  |
 |---------|---------|
-|En küçük boyut artış/azaltma    |1 GiB      |
-|Temel IOPS    |GiB başına 1 ıOPS, 100.000 'e kadar|
-|IOPS patlama    |GiB başına 3x ıOPS, 100.000 'e kadar|
-|Çıkış oranı         |60 MIB/s + 0,06 * sağlanan GiB        |
-|Giriş oranı| 40 MIB/s + 0,04 * sağlanan GiB |
+|Minimum boyut artış/azalma    |1 GİB      |
+|Temel IOPS    |GiB başına 1 IOPS, 100.000'e kadar|
+|IOPS patlama    |GiB başına 3x IOPS, 100.000'e kadar|
+|Çıkış oranı         |60 MiB/s + 0,06 * karşılıklı GİB        |
+|Giriş hızı| 40 MiB/s + 0,04 * karşılıklı GİB |
 
 #### <a name="file-level-limits"></a>Dosya düzeyi sınırları
 
 |Alan  |Premium dosya  |Standart dosya |
 |---------|---------|---------|
-|Size                  |1 TiB         |1 TiB|
-|Dosya başına en fazla ıOPS     |5,000         |1000|
-|Eşzamanlı tutamaçlar    |2,000         |2,000|
-|Çıkış  |300 MIB/sn|      Bkz. standart dosya işleme değerleri|
-|Giriş  |200 MIB/sn| Bkz. standart dosya işleme değerleri|
-|Aktarım hızı| Premium dosya giriş/çıkış değerlerini gör| En fazla 60 MIB/sn|
+|Boyut                  |1 TiB         |1 TiB|
+|Dosya başına Maksimum IOPS     |5.000         |1000|
+|Eşzamanlı tutamaçları    |2.000         |2.000|
+|Çıkış  |300 MiB/sn|      Standart dosya iş girdisi değerlerine bakın|
+|Giriş  |200 MiB/sn| Standart dosya iş girdisi değerlerine bakın|
+|Aktarım hızı| Bkz. premium dosya girişi/çıkış değerleri| 60 MiB/sn'ye kadar|

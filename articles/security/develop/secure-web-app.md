@@ -1,7 +1,7 @@
 ---
-title: Güvenli bir Web uygulaması geliştirme | Microsoft Docs
-description: Bu basit örnek uygulama, Azure 'da geliştirme yaparken uygulamanızı ve kuruluşunuzun güvenlik duruşunu geliştiren en iyi güvenlik uygulamalarını uygular.
-keywords: yana
+title: Güvenli bir web uygulaması geliştirin | Microsoft Dokümanlar
+description: Bu basit örnek uygulama, Azure'da geliştirdiğinizde uygulamanızı ve kuruluşunuzun güvenlik duruşunu iyileştiren en iyi güvenlik uygulamalarını uygular.
+keywords: yok
 services: security
 documentationcenter: na
 author: isaiah-msft
@@ -16,189 +16,203 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934907"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385223"
 ---
-# <a name="develop-a-secure-web-app"></a>Güvenli bir Web uygulaması geliştirme
+# <a name="develop-a-secure-web-app"></a>Güvenli web uygulaması geliştirme
 
-Bu örnek, Azure 'da uygulama geliştirmeye yönelik güvenlik kaynaklarına bağlantılar içeren bir Web sayfası görüntüleyen basit bir Python uygulamasıdır. Uygulama, Azure 'da uygulama geliştirirken uygulamanızın ve kuruluşunuzun güvenlik duruşunuzun artırılmasına yardımcı olabilecek en iyi güvenlik uygulamalarını uygular.
+Bu örnek, Azure'da uygulama geliştirmek için güvenlik kaynaklarına bağlantılar içeren bir web sayfası görüntüleyen basit bir Python uygulamasıdır. Uygulama, Azure'da uygulamalar geliştirdiğinizde uygulamanızın ve kuruluşunuzun güvenlik duruşunu iyileştirmeye yardımcı olabilecek en iyi güvenlik uygulamalarını uygular.
 
-Uygulama bileşenlerinin düzgün yapılandırıldığından emin olmak için bu makalede açıklanan adımları sırayla izlemelisiniz. Veritabanı, Azure App Service, Azure Key Vault örneği ve Azure Application Gateway örneği birbirlerine bağlıdır.
+Uygulama bileşenlerinin düzgün şekilde yapılandırıldığından emin olmak için bu makalede açıklanan adımları sırayla izlemeniz gerekir. Veritabanı, Azure Uygulama Hizmeti, Azure Anahtar Kasası örneği ve Azure Uygulama Ağ Geçidi örneği birbirine bağlıdır.
 
-Dağıtım betikleri altyapıyı ayarlar. Dağıtım betiklerini çalıştırdıktan sonra, bileşenleri ve Hizmetleri birbirine bağlamak için Azure portal el ile yapılandırma yapmanız gerekir.
+Dağıtım komut dosyaları altyapıyı ayarlar. Dağıtım komut dosyalarını çalıştırdıktan sonra, bileşenleri ve hizmetleri birbirine bağlamak için Azure portalında bazı el ile yapılandırma yapmanız gerekir.
 
-Örnek uygulama, kendi uygulamalarında güvenlik önlemleri uygulamak isteyen yeni başlayanlar için Azure 'da uygulama geliştirmeye yöneliktir.
+Örnek uygulama, uygulamalarında güvenlik önlemleri uygulamak isteyen Azure'da yeni başlayanlar için hedeflenmiştir.
 
-Bu uygulamayı geliştirirken ve dağıttığınızda şunları öğreneceksiniz:
+Bu uygulamayı geliştirirken ve dağıtAbiliyorsanız, şunları öğreneceksiniz:
 
-- Azure Key Vault bir örnek oluşturun, bu dosyadan gizli dizileri depolayın ve alın.
-- PostgreSQL için Azure veritabanı 'nı dağıtın, güvenli parolalar ayarlayın ve ona erişimi yetkilendirin.
-- Linux için Azure Web Apps 'da bir alp Linux kapsayıcısı çalıştırın ve Azure kaynakları için yönetilen kimlikleri etkinleştirin.
-- [OWASP Top 10 RuleSet](https://coreruleset.org/)kullanan bir güvenlik duvarı ile Azure Application Gateway örneği oluşturun ve yapılandırın.
-- Azure hizmetlerini kullanarak geçişte ve bekleyen verilerin şifrelenmesini etkinleştirin.
+- Bir Azure Anahtar Kasası örneği oluşturun, ondan sırları depolayın ve alın.
+- PostgreSQL için Azure Veritabanı'nı dağıtın, güvenli parolalar ayarlayın ve bu veritabanına erişim yetkisi verin.
+- Linux için Azure Web Apps'ta bir Alpine Linux kapsayıcısı çalıştırın ve Azure kaynakları için yönetilen kimlikleri etkinleştirin.
+- [OWASP Top 10 Ruleset](https://coreruleset.org/)kullanan bir güvenlik duvarıyla bir Azure Uygulama Ağ Geçidi örneği oluşturun ve yapılandırın.
+- Azure hizmetlerini kullanarak aktarım sırasında ve istirahatte veri şifrelemesini etkinleştirin.
 
-Bu uygulamayı geliştirip dağıttıktan sonra, açıklanan yapılandırma ve güvenlik ölçüleriyle birlikte aşağıdaki örnek Web uygulamasını ayarlamış olursunuz.
+Bu uygulamayı geliştirip dağıttıktan sonra, açıklanan yapılandırma ve güvenlik önlemleriyle birlikte aşağıdaki örnek web uygulamasını kurmuş olabilirsiniz.
 
-![Örnek Web uygulaması](./media/secure-web-app/demo-app.png)
+![Örnek web uygulaması](./media/secure-web-app/demo-app.png)
 
 ## <a name="architecture"></a>Mimari
-Uygulama, üç katman içeren tipik bir n katmanlı uygulamadır. İzleme ve gizli yönetim bileşenleriyle tümleşik olan ön uç, arka uç ve veritabanı katmanı burada gösterilmektedir:
+
+Uygulama, üç katmanlı tipik bir n katmanı uygulamasıdır. İzleme ve gizli yönetim bileşenleritümleşik ön uç, arka uç ve veritabanı katmanı burada gösterilmiştir:
 
 ![Uygulama mimarisi](./media/secure-web-app/architecture.png)
 
-Mimari aşağıdaki bileşenlerden oluşur:
+Mimari şu bileşenlerden oluşur:
 
-- [Azure Application Gateway](../../application-gateway/index.yml). Uygulama mimarimiz için ağ geçidini ve güvenlik duvarını sağlar.
-- [Linux üzerinde Azure Web Apps](../../app-service/containers/app-service-linux-intro.md). Bir Linux ortamında Python uygulamasını çalıştırmak için kapsayıcı çalışma zamanı sağlar.
-- [Azure Key Vault](../../key-vault/index.yml). Uygulamanın gizli dizilerini depolar ve şifreler ve bunların çevresindeki erişim ilkelerinin oluşturulmasını yönetir.
-- [PostgreSQL Için Azure veritabanı](https://azure.microsoft.com/services/postgresql/). Uygulama verilerini güvenli bir şekilde depolar.
-- [Azure Güvenlik Merkezi](../../security-center/index.yml) ve [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Uygulamamızın işlemi üzerinde izleme ve uyarılar sağlar.
+- [Azure Uygulama Ağ Geçidi](../../application-gateway/index.yml). Uygulama mimarimiz için ağ geçidi ve güvenlik duvarı sağlar.
+- [Linux'ta Azure Web Uygulamaları](../../app-service/containers/app-service-linux-intro.md). Python uygulamasını Linux ortamında çalıştırmak için kapsayıcı çalışma süresini sağlar.
+- [Azure Anahtar Kasası](../../key-vault/index.yml). Uygulamamızın sırlarını saklar ve şifreler ve bunların etrafında erişim politikaları oluşturulmasını yönetir.
+- [PostgreSQL için Azure Veritabanı](https://azure.microsoft.com/services/postgresql/). Uygulamamızın verilerini güvenli bir şekilde saklar.
+- [Azure Güvenlik Merkezi](../../security-center/index.yml) ve [Azure Uygulama Öngörüleri.](../../azure-monitor/app/app-insights-overview.md) Uygulamamızın işleyişinde izleme ve uyarılar sağlar.
 
 ## <a name="threat-model"></a>Tehdit modeli
-Tehdit modellemesi, işletmenizin ve uygulamanızın olası güvenlik tehditlerini tanımlama ve daha sonra uygun bir risk azaltma planının yerinde olmasını sağlama işlemidir.
 
-Bu örnek, güvenli örnek uygulama için tehdit modellemesini uygulamak üzere [Microsoft Threat Modeling Tool](threat-modeling-tool.md) kullandı. Bileşenleri ve veri akışlarını diyagram oluşturarak, geliştirme sürecinde sorunları ve tehditleri erkenden ayırt edebilirsiniz. Bu, daha sonra zaman ve para tasarrufu sağlar.
+Tehdit modelleme, işletmenize ve uygulamanıza yönelik olası güvenlik tehditlerini belirleme ve ardından uygun bir azaltma planının uygulanmasını sağlama işlemidir.
 
-Örnek uygulama için tehdit modelidir:
+Bu örnek, güvenli örnek uygulama için tehdit modellemesi uygulamak için [Microsoft Tehdit Modelleme Aracı'nı](threat-modeling-tool.md) kullanmıştır. Bileşenleri ve veri akışlarını diyagramlayarak, geliştirme sürecinin başlarında sorunları ve tehditleri tanımlayabilirsiniz. Bu daha sonra zaman ve para tasarrufu sağlar.
+
+Bu örnek uygulama için tehdit modeli:
 
 ![Tehdit modeli](./media/secure-web-app/threat-model.png)
 
-Tehdit modelleme aracının ürettiği bazı örnek tehditler ve olası güvenlik açıkları aşağıdaki ekran görüntüsünde gösterilmiştir. Tehdit modeli, sunulan saldırı yüzeyine genel bir bakış sunar ve geliştiricilerin sorunları nasıl azaltacağını düşündüğünü ister.
+Tehdit modelleme aracının oluşturduğu bazı örnek tehditler ve olası güvenlik açıkları aşağıdaki ekran görüntüsünde gösterilir. Tehdit modeli, maruz kalan saldırı yüzeyine genel bir bakış sağlar ve geliştiricileri sorunları nasıl azaltacakları konusunda düşünmeye teşvik eder.
 
-![Tehdit modeli çıkışı](./media/secure-web-app/threat-model-output.png)
+![Tehdit modeli çıktısı](./media/secure-web-app/threat-model-output.png)
 
-Örneğin, önceki tehdit modeli çıktısına SQL ekleme, Kullanıcı girişlerini silerek ve PostgreSQL için Azure veritabanı 'nda saklı işlevler kullanılarak azaltılmaktadır. Bu hafifletme, veri okuma ve yazma işlemleri sırasında sorguların rastgele yürütülmesini önler.
+Örneğin, önceki tehdit modeli çıkışındaki SQL enjeksiyonu, kullanıcı girişlerinin temizlenmesi ve PostgreSQL için Azure Veritabanı'nda depolanan işlevler kullanılarak azaltılır. Bu azaltma, veri okuma ve yazma sırasında sorguların rasgele yürütülmesini engeller.
 
-Geliştiriciler tehdit modeli çıktısındaki tehditleri her birini azaltacak şekilde sistemin genel güvenliğini geliştirir.
+Geliştiriciler, tehdit modeli çıkışındaki tehditlerin her birini azaltarak sistemin genel güvenliğini artırır.
 
 ## <a name="deployment"></a>Dağıtım
-Aşağıdaki seçenekler Azure App Service Linux çalıştırmanızı sağlar:
 
-- Azure 'da destekleyici teknolojilerle oluşturulan önceden oluşturulmuş Microsoft kapsayıcıları listesinden bir kapsayıcı seçin (Python, Ruby, PHP, Java, Node. js, .NET Core).
-- Özel olarak oluşturulmuş bir kapsayıcı kullanın. Görüntünün kaynağı olarak kendi kapsayıcı kayıt defterlerinden birini seçin ve HTTP 'yi destekleyen birçok teknoloji üzerine derleyin.
+Aşağıdaki seçenekler, Azure Uygulama Hizmeti'nde Linux çalıştırmanızı sağlar:
 
-Bu örnekte, WebApp 'yi App Service dağıtmaya ve kaynakları oluşturmaya yönelik dağıtım betiğini çalıştıracaksınız.
+- Azure'da destekleyici teknolojilerle oluşturulmuş önceden oluşturulmuş Microsoft kapsayıcıları listesinden (Python, Ruby, PHP, Java, Node.js, .NET Core) bir kapsayıcı seçin.
+- Özel olarak üretilen bir kapsayıcı kullanın. Görüntünün kaynağı olarak kendi konteyner kayıt defterlerinizi seçin ve HTTP'yi destekleyen birçok kullanılabilir teknoloji üzerine inşa edin.
+
+Bu örnekte, webapp'ı Uygulama Hizmeti'ne dağıtacak ve kaynakları oluşturacak dağıtım komut dosyasını çalıştırırsınız.
 
 Uygulama aşağıda gösterilen farklı dağıtım modellerini kullanabilir:
 
-![Dağıtım veri akışı diyagramı](./media/secure-web-app/deployment.png)
+![Dağıtım veri akış diyagramı](./media/secure-web-app/deployment.png)
 
-Azure 'da uygulama dağıtmanın birçok yolu vardır; örneğin:
+Azure'da uygulamaları dağıtmanın birçok yolu vardır:
 
 - Azure Resource Manager şablonları
 - PowerShell
 - Azure CLI
-- Azure portal
+- Azure portalında
 - Azure DevOps
 
-Kullanılan uygulama:
+Bu uygulama kullanılır:
 
-- Kapsayıcı görüntülerini oluşturmak ve derlemek için [Docker](https://docs.docker.com/) .
-- Dağıtım için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
-- Kapsayıcı kayıt defteri olarak [Docker Hub 'ı](https://hub.docker.com/) .
+- [Docker](https://docs.docker.com/) oluşturmak ve konteyner görüntüleri oluşturmak için.
+- Dağıtım için [Azure CLI.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- Konteyner kayıt defteri olarak [Docker Hub.](https://hub.docker.com/)
 
 ## <a name="security-considerations"></a>Güvenlik konuları
 
 ### <a name="network"></a>Ağ
-Örnek uygulama, ağ içine ve dışına akan geçiş içi veriler için uçtan uca SSL şifrelemesi kullanır. Ağ Geçidi, kendinden imzalı bir sertifika ile yapılandırılır.
-> [!IMPORTANT]
-> Bu gösteride otomatik olarak imzalanan bir sertifika kullanılır. Bir üretim ortamında, doğrulanmış bir sertifika yetkilisinden (CA) sertifikalar almalısınız.
 
-Uygulama güvenlik duvarı, ağ trafiğinde kötü amaçlı trafik algılandığında gelen trafiği ve uyarıları yöneticileri de inceler.
-Application Gateway, tehdit modelinde bulunan DDoS ve SQL ekleme tehditleri olasılığını azaltır.
+Örnek uygulama, ağa giren ve çıkan akıgeçiş verileri için uçtan uca SSL şifrelemesi kullanır. Ağ geçidi, kendi imzalı bir sertifikayla yapılandırılır.
+> [!IMPORTANT]
+> Bu gösteride kendi imzalı bir sertifika kullanılır. Üretim ortamında, doğrulanmış bir Sertifika Yetkilisi'nden (CA) sertifika almanız gerekir.
+
+Uygulama güvenlik duvarı ayrıca gelen trafiği denetler ve ağ trafiğinde kötü amaçlı trafik algılandığında yöneticileri uyarır.
+Uygulama Ağ Geçidi, tehdit modelinde bulunan DDoS ve SQL enjeksiyon tehditleri olasılığını azaltır.
 
 ### <a name="identity"></a>Kimlik
-Portalda oturum açmak için örnek uygulama, kaynaklara erişim atanan Azure Active Directory (Azure AD) yöneticileri için Multi-Factor Authentication kullanır.
-Örnek uygulama, Azure Key Vault gizli dizileri okuma ve alma izinleri elde etmek için Yönetilen kimlikler kullanır ve bu da uygulamanın gizli dizileri okumak için sabit kod kimlik bilgileri ve belirteçleri olması gerekmez. Azure AD, Yönetilen kimlikler kullanıldığında uygulamanın, gizli dizileri okuması ve değiştirmesi gereken hizmet sorumlularını otomatik olarak oluşturur.
 
-Azure kaynakları ve MFA için Yönetilen kimlikler, öngörülerin sistemde ayrıcalık kazanmasına ve ayrıcalıklarını uygulamasına zorlamalarını zorlaştırır. Bu tehdit tehdit modelinde kullanıma alındı.
-Uygulama OAuth kullanır ve bu, OAuth uygulamasında kayıtlı kullanıcıların uygulamada oturum açmasına olanak tanır.
+Portalda oturum açmak için örnek uygulama, kaynaklara erişim atanmış Azure Etkin Dizin (Azure AD) yöneticileri için Çok Faktörlü Kimlik Doğrulaması'nı kullanır.
+Örnek uygulama, Azure Key Vault'tan sırları okuma ve alma izinleri elde etmek için yönetilen kimlikleri kullanır ve uygulamanın sırları okumak için kod kimlik bilgileri ne gerek duymamasını sağlar. Azure AD, yönetilen kimlikler kullanıldığında uygulamanın okuması gereken hizmet ilkelerini otomatik olarak oluşturur ve sırları değiştirir.
+
+Azure kaynakları ve MFA için yönetilen kimlikler, düşmanların ayrıcalık kazanmasını ve sistemdeki ayrıcalıklarını yükseltmesini zorlaştırır. Bu tehdit, tehdit modelinde işaret edildi.
+Uygulama, OAuth uygulamasına kayıtlı kullanıcıların uygulamada oturum açmalarına olanak tanıyan OAuth'u kullanır.
 
 ### <a name="storage"></a>Depolama
-PostgreSQL veritabanındaki veriler, PostgreSQL için Azure veritabanı tarafından REST 'te otomatik olarak şifrelenir. Veritabanı, yalnızca dağıtılan App Service Web uygulamasının doğru kimlik doğrulama kimlik bilgileriyle veritabanı kaynaklarına erişebilmesi için App Service IP adreslerini yetkilendirir.
 
-### <a name="logging-and-auditing"></a>Günlüğe kaydetme ve denetleme
-Uygulama, oluşan ölçümleri, günlükleri ve özel durumları izlemek için Application Insights kullanarak günlüğe kaydetmeyi uygular. Bu günlüğe kaydetme, geliştiriciler ve işlemler ekip üyelerine uygulamanın durumu hakkında bilgi vermek için yeterli uygulama meta verileri sağlar. Ayrıca güvenlik olayları durumunda geri izlemek için yeterli veri sağlar.
+PostgreSQL veritabanındaki veriler, PostgreSQL için Azure Veritabanı tarafından otomatik olarak şifrelenir. Veritabanı, yalnızca dağıtılan App Service web uygulamasının doğru kimlik doğrulama kimlik bilgileriyle veritabanı kaynaklarına erişebilmeleri için App Service IP adreslerini yetkilendiriyor.
+
+### <a name="logging-and-auditing"></a>Günlük kaydı ve denetim
+
+Uygulama, oluşan ölçümleri, günlükleri ve özel durumları izlemek için Uygulama Öngörüleri'ni kullanarak günlüğe kaydetmeyi uygular. Bu günlük, geliştiricileri ve operasyon ekibi üyelerini uygulamanın durumu hakkında bilgilendirmek için yeterli uygulama meta verisi sağlar. Ayrıca, güvenlik olayları durumunda geri dönmek için yeterli veri sağlar.
 
 ## <a name="cost-considerations"></a>Maliyetle ilgili konular
-Henüz bir Azure hesabınız yoksa, ücretsiz bir hesap oluşturabilirsiniz. Kullanmaya başlamak için [ücretsiz hesap sayfasına](https://azure.microsoft.com/free/) gidin, ücretsiz bir Azure hesabıyla neler yapabileceğinizi öğrenin ve 12 ay boyunca hangi ürünlerin ücretsiz olduğunu öğrenebilirsiniz.
 
-Örnek uygulamadaki kaynakları güvenlik özellikleriyle dağıtmak için bazı Premium özellikler için ödeme yapmanız gerekir. Uygulamanın ölçeklendirilen ve Azure tarafından sunulan ücretsiz katmanların ve denemelerin uygulama gereksinimlerini karşılayacak şekilde yükseltilmesi gerekir, maliyetleriniz artırılabilir. Maliyetlerinizi tahmin etmek için Azure [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/) ' nı kullanın.
+Zaten bir Azure hesabınız yoksa, ücretsiz bir hesap oluşturabilirsiniz. Başlamak için [ücretsiz hesap sayfasına](https://azure.microsoft.com/free/) gidin, ücretsiz bir Azure hesabıyla neler yapabileceğinizi görün ve hangi ürünlerin 12 ay boyunca ücretsiz olduğunu öğrenin.
+
+Güvenlik özellikleriyle örnek uygulamadaki kaynakları dağıtmak için bazı premium özellikler için ödeme yapmanız gerekir. Uygulama ölçeklendirildikçe ve Azure tarafından sunulan ücretsiz katmanlar ve denemeler uygulama gereksinimlerini karşılamak için yükseltilmesi gerektiğinden, maliyetleriniz artabilir. Maliyetlerinizi tahmin etmek için Azure [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
 ## <a name="deploy-the-solution"></a>Çözümü dağıtma
-### <a name="prerequisites"></a>Önkoşullar
-Uygulamayı çalışır duruma getirmek için şu araçları yüklemeniz gerekir:
 
-- Uygulama kodunu değiştirmek ve görüntülemek için bir kod Düzenleyicisi. [Visual Studio Code](https://code.visualstudio.com/) açık kaynak bir seçenektir.
-- Geliştirme bilgisayarınızda [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latest,) .
-- Sisteminizde [Git](https://git-scm.com/) . Git, kaynak kodu yerel olarak kopyalamak için kullanılır.
-- [JQ](https://stedolan.github.io/jq/), JSON 'u Kullanıcı dostu bir şekilde sorgulamak IÇIN bir UNIX aracıdır.
+### <a name="prerequisites"></a>Ön koşullar
 
-Örnek uygulamanın kaynaklarını dağıtmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa, örnek uygulamayı test etmek için [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/) .
+Uygulamayı çalışır hale getirmek için aşağıdaki araçları yüklemeniz gerekir:
 
-Bu araçları yükledikten sonra, uygulamayı Azure 'da dağıtmaya hazırsınız demektir.
+- Uygulama kodunu değiştirmek ve görüntülemek için bir kod düzenleyicisi. [Visual Studio Code](https://code.visualstudio.com/) açık kaynak seçeneğidir.
+- Geliştirme bilgisayarınızda [Azure CLI.](/cli/azure/install-azure-cli)
+- Sisteminizde [git.](https://git-scm.com/) Git, kaynak kodunu yerel olarak klonlamak için kullanılır.
+- [jq](https://stedolan.github.io/jq/), kullanıcı dostu bir şekilde JSON sorgulama kiçin bir UNIX aracı.
 
-### <a name="environment-setup"></a>Ortam kurulumu
-Ortamı ve aboneliği ayarlamak için Dağıtım betiklerini çalıştırın:
+Örnek uygulamanın kaynaklarını dağıtmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa, örnek uygulamayı test etmek için [ücretsiz bir hesap oluşturabilirsiniz.](https://azure.microsoft.com/free/)
 
-1. Kaynak kodu deposunu kopyalamak için şu git komutunu kullanın:
+Bu araçları yükledikten sonra uygulamayı Azure'da dağıtmaya hazırsınız.
 
-   ``` git
+### <a name="environment-setup"></a>Ortamı ayarlama
+
+Ortamı ve aboneliği ayarlamak için dağıtım komut dosyalarını çalıştırın:
+
+1. Kaynak kod deposunu klonlamak için şu Git komutunu kullanın:
+
+   ```shell
    git clone https://github.com/Azure-Samples/sample-linux-python-app tutorial-project
    ```
-2. Dizine geçiş yapmak için şu komutu kullanın:
 
-   ```
+2. Dizine geçmek için şu komutu kullanın:
+
+   ```shell
    cd tutorial-project/scripts
    ```
 
-3. Betikler klasöründe, kullanmakta olduğunuz platforma özgü dosyalar vardır (Windows veya Linux). Azure CLı zaten yüklü olduğundan, bu CLı komutunu çalıştırarak komut isteminde Azure hesabında oturum açın:
+3. Komut dosyaları klasöründe kullandığınız platforma (Windows veya Linux) özgü dosyalar vardır. Azure CLI zaten yüklenmiş olduğundan, bu Azure CLI komutunu çalıştırarak komut isteminde Azure hesabında oturum açın:
 
-   ``` azurecli
+   ```azurecli-interactive
    az login
    ```
 
-Tarayıcı açılır, kimlik bilgilerinizle oturum açın. Oturum açtıktan sonra, kaynakları komut isteminden dağıtmaya başlayabilirsiniz.
+Tarayıcı açılır, kimlik bilgilerinizle oturum açar. Oturum açtıktan sonra, komut isteminden kaynakları dağıtmaya başlayabilirsiniz.
 
-Dağıtım betikleri `deploy-powershell.ps1` ve `deploy-bash.sh` tüm uygulamayı dağıtan kodu içerir.
+Dağıtım komut `deploy-powershell.ps1` dosyaları `deploy-bash.sh` ve tüm uygulamayı dağıtan kod içerir.
 Çözümü dağıtmak için:
 
-1. PowerShell kullanıyorsanız, bölge ve kaynak grubu `deploy-powershell.ps1` adını uygun Azure `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` bölgeleriyle ve kaynak grubu için bir adla değiştirme yazarak dosyayı çalıştırın.
-2. Linux `deploy-bash.sh` üzerinde çalışıyorsanız dosyayı yazarak `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`dosyayı yürütülebilir yapmanız gerekebilir.`chmod +x deploy-bash.sh`
+1. PowerShell'deyseniz, bölge `deploy-powershell.ps1` ve `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` kaynak grup adını uygun Azure bölgeleri ve kaynak grubu için bir adla değiştirerek dosyayı çalıştırın
+2. Linux'ta ysanız dosyayı `deploy-bash.sh` yazarak `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`çalıştırın, dosyayı yazarak yürütülebilir hale getirmeniz gerekebilir`chmod +x deploy-bash.sh`
 
-Aşağıdaki örneklerde, anahtar bileşenlerinin parçacıkları gösterilmektedir. Dağıtım dosyalarını çalıştırarak örnekleri tek tek veya bileşenlerin geri kalanı ile dağıtabilirsiniz.
+Aşağıdaki örneklerde, anahtar bileşenlerin parçacıkları sergilenebilmektedir. Dağıtı dosyalarını çalıştırarak örnekleri tek tek veya bileşenlerin geri kalanıyla birlikte dağıtabilirsiniz.
 
 ### <a name="implementation-guidance"></a>Uygulama kılavuzu
-Dağıtım betiği dört aşamaya bölünebilir bir betiktir. Her aşama, [mimari diyagramında](#architecture)olan bir Azure kaynağını dağıtır ve yapılandırır.
 
-Dört aşama şunlardır:
+Dağıtım komut dosyası, dört aşamaya ayrılabilen bir komut dosyasıdır. Her [aşama, mimari diyagramında](#architecture)yer alan bir Azure kaynağını dağıtır ve yapılandırır.
 
-- Azure Key Vault dağıtın.
-- PostgreSQL için Azure veritabanı 'nı dağıtın.
-- Linux üzerinde Azure Web Apps dağıtın.
-- Web uygulaması güvenlik duvarı ile Application Gateway dağıtın.
+Dört aşama:
 
-Her aşama, daha önce dağıtılan kaynaklardaki yapılandırmayı kullanarak bir önceki sürümünden sonra oluşturulur.
+- Azure Anahtar Kasası'nı dağıtın.
+- PostgreSQL için Azure Veritabanı'nı dağıtın.
+- Azure Web Uygulamalarını Linux'ta dağıtın.
+- Uygulama Ağ Geçidi'ni web uygulaması güvenlik duvarıyla dağıtın.
 
-Uygulama adımlarını tamamlayabilmeniz için, [Önkoşullar](#prerequisites)altında listelenen araçları yüklediğinizden emin olun.
+Her aşama, önceden dağıtılan kaynaklardan gelen yapılandırmayı kullanarak bir önceki aşamaya göre inşa edilir.
 
-#### <a name="deploy-azure-key-vault"></a>Azure Key Vault dağıt
-Bu bölümde, gizli dizileri ve sertifikaları depolamak için kullanılan bir Azure Key Vault örneği oluşturup dağıtırsınız.
+Uygulama adımlarını tamamlamak [için, Önkoşullar](#prerequisites)altında listelenen araçları yüklediğinizden emin olun.
 
-Dağıtımı tamamladıktan sonra, Azure üzerinde dağıtılan bir Azure Key Vault örneğiniz vardır.
+#### <a name="deploy-azure-key-vault"></a>Azure Anahtar Kasası Dağıtma
 
-Azure CLı kullanarak Azure Key Vault dağıtmak için:
+Bu bölümde, sırları ve sertifikaları depolamak için kullanılan bir Azure Anahtar Kasası örneği oluşturabilir ve dağıtabilirsiniz.
 
-1. Azure Key Vault değişkenlerini bildirin.
-2. Azure Key Vault sağlayıcıyı kaydedin.
+Dağıtımı tamamladıktan sonra, Azure'da dağıtılan bir Azure Anahtar Kasası örneğine sahip siniz.
+
+Azure CLI'yi kullanarak Azure Anahtar Kasası'nı dağıtmak için:
+
+1. Azure Anahtar Kasası için değişkenleri bildirin.
+2. Azure Anahtar Kasası sağlayıcısını kaydedin.
 3. Örnek için kaynak grubu oluşturun.
-4. Adım 3 ' te oluşturulan kaynak grubunda Azure Key Vault örneğini oluşturun.
+4. Adım 3'te oluşturulan kaynak grubunda Azure Anahtar Kasası örneğini oluşturun.
 
-   ``` azurecli
+   ```powershell-interactive
 
     function Get-Hash() {
         return (New-Guid).Guid.Split('-')[4]
@@ -233,24 +247,26 @@ Azure CLı kullanarak Azure Key Vault dağıtmak için:
        --verbose
 
    ```
-Kaynaklara erişmek için Key Vault kullanan uygulamalarda Azure kaynakları için Yönetilen kimlikler kullanmak en iyi uygulamadır. Key Vault erişim tuşları kodda veya yapılandırmada depolanmıyorsa güvenlik sonrası artar.
 
-#### <a name="deploy-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nı dağıtma
-PostgreSQL için Azure veritabanı aşağıdaki şekilde çalışmaktadır, önce veritabanı sunucusunu oluşturun, ardından şema ve verilerin depolandığı veritabanını oluşturun.
+Kaynaklara erişmek için Key Vault kullanan uygulamalarda Azure kaynakları için yönetilen kimlikleri kullanmak en iyi yöntemdir. Key Vault'un erişim anahtarları kodda veya yapılandırmada depolandığında güvenlik duruşunuz artar.
 
-Dağıtımı tamamladıktan sonra, Azure üzerinde çalışan bir PostgreSQL sunucunuz ve veritabanınız vardır.
+#### <a name="deploy-azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanını Dağıtma
 
-Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nı dağıtmak için:
+PostgreSQL için Azure Veritabanı aşağıdaki şekilde çalışır, önce veritabanı sunucusunu oluşturun, ardından şemayı ve verileri depolamak için veritabanını oluşturun.
 
-1. Azure CLı ve Azure abonelik kurulumunuzu içeren bir Terminal açın.
-2. Veritabanına erişmek için kullanılan güvenli bir Kullanıcı adı ve parola kombinasyonu oluşturun. (Bunlar, bunları kullanan uygulamalar için Azure Key Vault depolanmalıdır.)
+Dağıtımı tamamladıktan sonra, Azure'da çalışan bir PostgreSQL sunucunuz ve veritabanınız olur.
+
+Azure CLI'yi kullanarak PostgreSQL için Azure Veritabanı'nı dağıtmak için:
+
+1. Azure CLI ve Azure abonelik kurulumunuzla bir terminal açın.
+2. Veritabanına erişmek için kullanılan güvenli bir kullanıcı adı ve parola birleşimi oluşturun. (Bunlar, bunları kullanan uygulamalar için Azure Key Vault'ta depolanmalıdır.)
 3. PostgreSQL sunucu örneğini oluşturun.
-4. Adım 3 ' te oluşturduğunuz sunucu örneğinde bir veritabanı oluşturun.
-5. PostgreSQL örneğinde PostgreSQL betikleri çalıştırın.
+4. Adım 3'te oluşturduğunuz sunucu örneğinde bir veritabanı oluşturun.
+5. PostgreSQL örneğinde PostgreSQL komut dosyalarını çalıştırın.
 
-Aşağıdaki kod, yukarıdaki Keykasasını dağıtma adımında Azure Keykasasında depolanan PGUSERNAME ve PGPASSWORD gizli dizilerini kullanır.
+Aşağıdaki kod, yukarıdaki anahtar atlama adımından Azure KeyVault'ta depolanan PGUSERNAME ve PGPASSWORD sırlarına dayanır.
 
-   ``` azurecli
+   ```powershell-interactive
    $pgUsername = $(az keyvault secret show --name PGUSERNAME --vault-name $kvName --query value) -replace '"',''
    $pgPassword = $(az keyvault secret show --name PGPASSWORD --vault-name $kvName --query value) -replace '"',''
 
@@ -291,31 +307,31 @@ Aşağıdaki kod, yukarıdaki Keykasasını dağıtma adımında Azure Keykasas�
        --verbose
    ```
 
-Veritabanını dağıttıktan sonra, kimlik bilgilerini ve bağlantı dizesini Azure Key Vault depolamanız gerekir.
-Betikler klasöründe, çalıştırdığınızda depolanan işlevleri oluşturan pl `functions.sql` /pgsql kodunu içeren bir dosya vardır. Bu dosyayı çalıştırmak, SQL ekleme işlemini sınırlamaya yönelik girişleri sıralar.
+Veritabanını dağıttıktan sonra kimlik bilgilerini ve bağlantı dizesini Azure Key Vault'ta depolamanız gerekir.
+Komut dosyaları klasöründe, çalıştırdığınızda depolanan işlevleri oluşturan PL/pgSQL kodunu içeren bir `functions.sql` dosya vardır. Bu dosyanın çalıştırılması, SQL enjeksiyonu sınırlamak için girişleri parametreize eder.
 
-PostgreSQL, veritabanına bağlanmak için kullanılan adlı `psql` bir araçla birlikte paketlenmiştir. Çalıştırmak `functions.sql`için yerel makinenizden PostgreSQL için Azure veritabanı örneğine bağlanmanız ve oradan çalıştırmanız gerekir. Psql aracının yüklenmesi, her işletim sisteminde PostgreSQL için varsayılan yüklemeye dahildir.
-Daha fazla bilgi için bkz. [psql belgeleri](https://www.postgresql.org/docs/9.3/app-psql.html).
+PostgreSQL veritabanına bağlanmak için `psql` kullanılan bir araç ile birlikte verilir. Çalıştırmak `functions.sql`için, yerel makinenizden PostgreSQL örneği için Azure Veritabanı'na bağlanmanız ve buradan çalıştırmanız gerekir. Psql aracının yüklenmesi, her işletim sisteminde PostgreSQL için varsayılan yüklemeye dahildir.
+Daha fazla bilgi için [psql Belgeleri'ne](https://www.postgresql.org/docs/9.3/app-psql.html)bakın.
 
-Azure Cloud Shell `psql` araç da içerir. Cloud Shell simgesini seçerek doğrudan Azure portal Cloud Shell kullanabilirsiniz.
+Azure Bulut Kabuğu `psql` aracı da içerir. Bulut Kabuğu Simgesini seçerek Bulut Kabuğu'nu doğrudan Azure portalından kullanabilirsiniz.
 
-PostgreSQL örneğine uzaktan erişimi etkinleştirmek için PostgreSQL içindeki IP adresini yetkilendirmeniz gerekir.
-**Bağlantı güvenliği** sekmesine giderek, **Istemci IP 'si Ekle**seçeneğini belirleyerek ve yeni ayarları kaydederek bu erişimi etkinleştirirsiniz.
+PostgreSQL örneğine uzaktan erişimi etkinleştirmek için PostgreSQL'deki IP adresini yetkilendirmeniz gerekir.
+**Bağlantı güvenlik** sekmesine giderek, istemci IP **Ekle'yi**seçerek ve yeni ayarları kaydederek bu erişimi etkinleştirin.
 
-![İstemci IP 'yi yetkilendir](./media/secure-web-app/add-client-ip-postgres.png)
+![İstemci IP'yi yetkilendirme](./media/secure-web-app/add-client-ip-postgres.png)
 
-Yerel psql aracı yerine Cloud Shell kullanıyorsanız, Cloud Shell erişime izin vermek için **Azure hizmetlerine erişime Izin ver** ' i ve değerini **Açık** olarak değiştirin ' i seçin.
+Yerel psql aracı yerine Cloud Shell kullanıyorsanız, **Azure hizmetlerine erişime izin ver'i** seçin ve Cloud Shell erişiminiz için değerini **ON** olarak değiştirin.
 
-Daha sonra, Azure portal PostgreSQL örneğinin **bağlantı dizeleri** sekmesinden bağlantı dizesi parametreleriyle aşağıdaki psql komutunu çalıştırarak örneğe bağlanın.
-Boş küme ayraçlarını, veritabanının bağlantı dizesi dikey penceresindeki parametrelerle ve parola Azure Key Vault parolasıyla değiştirin.
+Ardından, Azure portalındaki PostgreSQL örneğinin **Bağlantı dizeleri** sekmesinden bağlantı dize parametreleri ile aşağıdaki psql komutunu çalıştırarak örneğe bağlanın.
+Boş ayraçları veritabanının Bağlantı String bıçağındaki parametrelerle ve parolayla Azure Key Vault'un parolasıyla değiştirin.
 
-```sql
+```shell
 psql "host={} port=5432 dbname=hellodb user={} password=PGPASSWORD sslmode=require"
 ```
 
-Veritabanına bağlı olduğunuzdan emin olduktan sonra aşağıdaki PL/pgSQL betiğini çalıştırın. Betik, veritabanına veri eklemek için kullanılan saklı işlevleri oluşturur.
+Veritabanına bağlı olduğunuzdan emin olduktan sonra aşağıdaki PL/pgSQL komut dosyasını çalıştırın. Komut dosyası, veritabanına veri eklemek için kullanılan depolanan işlevleri oluşturur.
 
-```sql
+```shell
 CREATE OR REPLACE FUNCTION insert_visitor(country VARCHAR(40), browser VARCHAR(40), operating_system VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO visitor(
@@ -332,7 +348,6 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
-
 CREATE OR REPLACE FUNCTION insert_azure_document(title VARCHAR(40), url VARCHAR(100), category VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO azure_document(
@@ -348,29 +363,29 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
+PostgreSQL için SSL ve Sertifika Yetkilisi (CA) doğrulaması nasıl ayarlandığı hakkında daha fazla bilgi için, [PostgreSQL için Azure Veritabanı'nda SSL bağlantısını yapılandırın.](/azure/postgresql/concepts-ssl-connection-security)
 
-PostgreSQL için SSL ve sertifika yetkilisi (CA) doğrulamasını ayarlama hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'NDA SSL bağlantısını yapılandırma](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
+Bir kök sertifikası kapsayıcıya dahildir. Sertifikayı almak için atılan adımlar şunlardır:
 
-Kapsayıcıda bir kök sertifika bulunur. Sertifikayı elde etmek için uygulanan adımlar şunlardır:
+1. [Sertifika](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)Yetkilisi'nden sertifika dosyasını indirin.
+2. [OpenSSL'yi makinenize indirin ve kurun.](/azure/postgresql/concepts-ssl-connection-security)
+3. Sertifika dosyanızın kodunu çöz:
 
-1. Sertifika [yetkilisinden](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)sertifika dosyasını indirin.
-2. [Makinenizde OpenSSL indirin ve yükleyin](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
-3. Sertifika dosyanızın kodunu çözün:
-
-   ```powershell
+   ```shell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-PostgreSQL için SSL güvenliğini yapılandırma hakkında daha fazla bilgi için bkz. [SSL bağlantısı güvenliği yapılandırma](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
+PostgreSQL için SSL güvenliğini yapılandırmak için nasıl daha fazla bilgi için burada [SSL Bağlantı Güvenliği'ni yapılandırın.](/azure/postgresql/concepts-ssl-connection-security)
 
-#### <a name="deploy-azure-web-apps-on-linux"></a>Linux üzerinde Azure Web Apps dağıtma
-Azure, Python, Ruby, C#ve Java gibi yaygın olarak kullanılan diller için önceden oluşturulmuş bir kapsayıcı ve resim kümesi sağladığından Azure App Service en üstünde Linux hizmetlerini kolayca oluşturabilirsiniz. Azure Ayrıca, Azure App Service platformunda neredeyse tüm programlama dillerinin çalıştırılmasına izin veren özel kapsayıcıları destekler.
+#### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Uygulamalarını Linux'ta dağıtma
 
-Dağıtılan uygulama, en son Ubuntu Linux dağıtımında çalışan basit bir Python uygulamasıdır. Kimlik bilgileri yönetimi ve veri depolama için önceki bölümlerde oluşturulan Azure Key Vault ve PostgreSQL örneklerine bağlanır.
+Azure, Python, Ruby, C#ve Java gibi yaygın olarak kullanılan diller için önceden oluşturulmuş kapsayıcılar ve görüntüler sağladığından, Azure Uygulama Hizmeti'nin üstüne Linux hizmetlerini kolayca oluşturabilirsiniz. Azure, hemen hemen tüm programlama dillerinin Azure Uygulama Hizmeti platformunda çalışmasına izin veren özel kapsayıcıları da destekler.
 
-Aşağıdaki Docker dosyası, uygulamanın kök klasöründe verilmiştir:
+Dağıtılan uygulama en son Ubuntu Linux dağıtımı üzerinde çalışan basit bir Python uygulamasıdır. Kimlik bilgisi yönetimi ve veri depolama için önceki bölümlerde oluşturulan Azure Key Vault ve PostgreSQL örneklerine bağlanır.
 
-``` docker
+Aşağıdaki Docker dosyası uygulamanın kök klasöründe sağlanır:
+
+```dockerfile
 # Docker file for the basic web app
 # Using the latest Alpine Linux
 
@@ -421,17 +436,17 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-Yukarıdaki Dockerfile, üzerinde Azure Container Registry `mcr.microsoft.com/samples/basic-linux-app`barındırılan kapsayıcıyı oluşturmak için kullanılır.
+Yukarıdaki Dockerfile, Azure Kapsayıcı Kayıt Defteri'nde `mcr.microsoft.com/samples/basic-linux-app`barındırılan kapsayıcıyı oluşturmak için kullanılır.
 
 Aşağıdaki kod:
 
-1. App Service örneğinin değişkenlerini ve adlarını bildirir.
-2. App Service planı için kaynak grubunu oluşturur.
-3. Linux kapsayıcıları örneği üzerinde bir Azure Web Apps sağlar.
-4. Web uygulaması kapsayıcısı için günlüğe kaydetmeyi etkinleştir.
-5. Kapsayıcının uygulama ayarlarındaki bazı uygulama yapılandırmasını ayarlar.
+1. Uygulama Hizmeti örneğinin değişkenlerini ve adlarını bildirir.
+2. Uygulama Hizmeti planı için kaynak grubu oluşturur.
+3. Linux kapsayıcıları örneğinde Bir Azure Web Uygulamaları sağlar.
+4. Web uygulaması kapsayıcısı için günlüğe kaydetmeyi sağlar.
+5. Kapsayıcının uygulama ayarlarında bazı uygulama yapılandırmaları ayarlar.
 
-   ```
+   ```powershell-interactive
    Write-Host "Retrieving the Azure Key Vault URL"
    $kvURI = $(az keyvault show --name $kvName --query properties.vaultUri)
 
@@ -500,36 +515,36 @@ Aşağıdaki kod:
            --end-ip-address $outboundIps[$i] `
            --verbose
    }
-
    ```
 
-Bu betik, kod veya yapılandırmada gizli dizileri kodlamadan Azure Key Vault etkileşimde bulunmak için MSI ile birlikte kullanılabilecek App Service örneği için atanmış bir kimlik oluşturur.
+Bu komut dosyası, kod veya yapılandırmada sert kodlama sırları olmadan Azure Key Vault ile etkileşim kurmak için MSI ile kullanılabilecek Uygulama Hizmeti örneği için atanmış bir kimlik oluşturur.
 
-Erişim ilkesi sekmesinde atanan kimliği yetkilendirmek için portalda Azure Key Vault örneğine gidin. **Yeni erişim Ilkesi Ekle**' yi seçin. **Asıl seçin**altında, oluşturulan App Service örneğinin adına benzer bir uygulama adı arayın.
-Uygulamaya bağlı bir hizmet sorumlusu görünür olmalıdır. Aşağıdaki ekran görüntüsünde gösterildiği gibi, seçin ve erişim ilkesi sayfasını kaydedin.
+Erişim ilkesi sekmesinde atanan kimliği yetkilendirmek için portaldaki Azure Anahtar Kasası örneğine gidin. **Yeni erişim ilkesi ekle'yi**seçin. **Select principal**altında, oluşturulan Uygulama Hizmeti örneğinin adına benzer uygulama adını arayın.
+Uygulamaya bağlı bir hizmet ilkesi görünür olmalıdır. Aşağıdaki ekran görüntüsünde gösterildiği gibi, seçin ve erişim ilkesi sayfasını kaydedin.
 
-Uygulamanın yalnızca anahtarları alması gerektiğinden gizli dizi seçeneklerinde **Al** iznini seçin ve verilen ayrıcalıkları azaltırken erişime izin verir.
+Uygulamanın yalnızca anahtarları alması gerektiğinden, verilen ayrıcalıkları azaltırken erişime izin vererek sırlar seçeneklerinden izin **al'ı** seçin.
 
-![Key Vault erişim Ilkesi](./media/secure-web-app/kv-access-policy.png)
+![Anahtar Vault Erişim Politikası](./media/secure-web-app/kv-access-policy.png)
 
 *Key Vault erişim ilkesi oluşturma*
 
-Erişim ilkesini kaydedin ve sonra ilkeleri güncelleştirmek için **erişim ilkeleri** sekmesindeki yeni değişikliği kaydedin.
+Erişim ilkesini kaydedin ve ilkeleri güncelleştirmek için **Access İlkeleri** sekmesindeki yeni değişikliği kaydedin.
 
-#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Web uygulaması güvenlik duvarı etkinken Application Gateway dağıtma
-Web Apps 'te, Hizmetleri doğrudan Internet 'teki dış dünya için kullanıma sunmanın önerilmez.
-Yük Dengeleme ve güvenlik duvarı kuralları, gelen trafik üzerinde daha fazla güvenlik ve denetim sağlar ve bunu yönetmenize yardımcı olur.
+#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Web uygulaması güvenlik duvarı etkinleştirilmiş Uygulama Ağ Geçidi'ni dağıtma
 
-Application Gateway örneği dağıtmak için:
+Web uygulamalarında, hizmetleri doğrudan internet üzerinden dış dünyaya maruz bırakmanız önerilmez.
+Yük dengeleme ve güvenlik duvarı kuralları, gelen trafik üzerinde daha fazla güvenlik ve denetim sağlar ve bunu yönetmenize yardımcı olur.
+
+Uygulama Ağ Geçidi örneğini dağıtmak için:
 
 1. Uygulama ağ geçidini barındırmak için kaynak grubu oluşturun.
-2. Ağ geçidine iliştirilecek bir sanal ağ sağlayın.
-3. Sanal ağda ağ geçidi için bir alt ağ oluşturun.
-4. Genel bir IP adresi sağlayın.
-5. Uygulama ağ geçidini sağlayın.
-6. Ağ geçidinde Web uygulaması güvenlik duvarını etkinleştirin.
+2. Ağ geçidine bağlanmak için sanal bir ağ sağlama.
+3. Sanal ağdaki ağ geçidi için bir alt ağ oluşturun.
+4. Genel bir IP adresi sağlama.
+5. Uygulama ağ geçidini sağlama.
+6. Ağ geçidinde web uygulaması güvenlik duvarını etkinleştirin.
 
-   ``` azurecli
+   ```powershell-interactive
    az keyvault certificate create --vault-name $kvName `
        --name $certName `
        --policy `@policy.json `
@@ -556,15 +571,15 @@ Application Gateway örneği dağıtmak için:
 
 Önceki komut dosyası:
 
-1. Azure 'da otomatik olarak imzalanan yeni bir sertifika oluşturur.
-2. Otomatik olarak imzalanan sertifikayı Base64 ile kodlanmış bir dosya olarak indirir.
-3. Otomatik olarak imzalanan sertifika için bir parola oluşturur.
-4. Sertifikayı parolayla imzalanmış bir PFX dosyası olarak dışarı aktarır.
-5. Sertifikanın parolasını Azure Key Vault depolar.
+1. Azure'da kendi imzalı yeni bir sertifika oluşturur.
+2. Kendi imzalı sertifikayı base64 kodlanmış bir dosya olarak karşıdan yükler.
+3. Kendi imzalı sertifika için bir parola oluşturur.
+4. Sertifikayı parolayla imzalanmış bir PFX dosyası olarak dışa aktarır.
+5. Sertifikanın parolasını Azure Key Vault'ta saklar.
 
-Bu bölüm, uygulama ağ geçidini dağıtır:
+Bu bölümde uygulama ağ geçidi dağıdır:
 
-```powershell
+```powershell-interactive
 # Create a virtual network required by the gateway
 Write-Host "Creating the Azure Virtual Network: $($vnetName)"
 az network vnet create --name $vnetName `
@@ -662,174 +677,175 @@ az network application-gateway http-settings update --gateway-name $gwName `
     --verbose
 ```
 
-Dağıtımı tamamladıktan sonra, Web uygulaması güvenlik duvarı 'nın etkin olduğu bir uygulama ağ geçidiniz vardır.
+Dağıtımı tamamladıktan sonra, web uygulaması güvenlik duvarı etkin leştirilmiş bir uygulama ağ geçidiniz vardır.
 
-Ağ Geçidi örneği, HTTPS için 443 bağlantı noktasını kullanıma sunar. Bu yapılandırma, uygulamamıza yalnızca HTTPS üzerinden 443 numaralı bağlantı noktası üzerinden erişilebilmesini sağlar.
+Ağ geçidi örneği HTTPS için 443 bağlantı noktasını ortaya çıkarır. Bu yapılandırma, uygulamamıza yalnızca HTTPS üzerinden 443 bağlantı noktasından erişilmesini sağlar.
 
-Kullanılmayan bağlantı noktalarını engelleme ve saldırı yüzeyi pozlamasını sınırlandırma en iyi güvenlik yöntemidir.
+Kullanılmayan bağlantı noktalarını engellemek ve saldırı yüzeyine maruz kalmanın sınırlandırılması en iyi güvenlik uygulamasıdır.
 
-#### <a name="add-network-security-groups-to-the-app-service-instance"></a>App Service örneğine ağ güvenlik grupları ekleme
+#### <a name="add-network-security-groups-to-the-app-service-instance"></a>Uygulama Hizmeti örneğine ağ güvenlik grupları ekleme
 
-App Service örnekleri, sanal ağlarla tümleştirilebilir. Bu tümleştirme, uygulamanın gelen ve giden trafiği yöneten ağ güvenlik grubu ilkeleriyle yapılandırılmasını sağlar.
+Uygulama Hizmeti örnekleri sanal ağlarla tümleştirilebilir. Bu tümleştirme, uygulamanın gelen ve giden trafiğini yöneten ağ güvenliği grubu ilkeleriyle yapılandırılmasını sağlar.
 
-1. Bu özelliği etkinleştirmek için, Azure App Service örneği dikey penceresinde **Ayarlar**' ın altında **ağ**' ı seçin. Sağ bölmede, **VNET tümleştirmesi**altında, **yapılandırmak Için buraya tıklayın ' ı**seçin.
+1. Bu özelliği etkinleştirmek için, **Ayarlar**altında Azure Uygulaması hizmet örneği bıçak üzerinde **Ağ'ı**seçin. Sağ bölmede, **VNet Tümleştirmesi**altında, **yapılandırmak için buraya tıklayın'ı**seçin.
 
-   ![Yeni sanal ağ tümleştirmesi](./media/secure-web-app/app-vnet-menu.png)
+   ![Yeni sanal ağ entegrasyonu](./media/secure-web-app/app-vnet-menu.png)
 
-    *App Service için yeni sanal ağ tümleştirmesi*
-1. Sonraki sayfada **VNET Ekle (Önizleme)** öğesini seçin.
+    *App Service için yeni sanal ağ entegrasyonu*
 
-1. Sonraki menüde, dağıtımda `hello-vnet`oluşturulan sanal ağı seçin. Yeni bir alt ağ oluşturabilir veya var olan bir alt ağı seçebilirsiniz.
-   Bu durumda yeni bir alt ağ oluşturun. **Adres aralığını** **10.0.3.0/24** olarak ayarlayın ve alt ağ **App-subnet**olarak adlandırın.
+1. Bir sonraki sayfada **VNET Ekle 'yi (önizleme)** seçin.
+
+1. Sonraki menüde, dağıtımda oluşturulan ve .' `hello-vnet`ile başlayan sanal ağı seçin. Yeni bir alt ağ oluşturabilir veya varolan bir alt ağ seçebilirsiniz.
+   Bu durumda, yeni bir alt ağ oluşturun. Adres **aralığını** **10.0.3.0/24** olarak ayarlayın ve alt **net app-subnet'inadını**belirleyin.
 
    ![App Service sanal ağ yapılandırması](./media/secure-web-app/app-vnet-config.png)
 
     *App Service için sanal ağ yapılandırması*
 
-Sanal ağ tümleştirmesini etkinleştirmiş olduğunuza göre, uygulamamıza ağ güvenlik grupları ekleyebilirsiniz.
+Artık sanal ağ tümleştirmesini etkinleştirdiğinize göre, uygulamamıza ağ güvenlik grupları ekleyebilirsiniz.
 
-1. Arama kutusunu kullanarak **ağ güvenlik grupları**' nı arayın. Sonuçlarda **ağ güvenlik grupları** ' nı seçin.
+1. Arama kutusunu kullanın, **ağ güvenlik gruplarını**arayın. Sonuçlarda **Ağ güvenlik gruplarını** seçin.
 
-    ![Ağ güvenlik grupları ara](./media/secure-web-app/nsg-search-menu.png)
+    ![Ağ güvenlik gruplarını arama](./media/secure-web-app/nsg-search-menu.png)
 
-    *Ağ güvenlik grupları ara*
+    *Ağ güvenlik gruplarını arama*
 
-2. Sonraki menüde **Ekle**' yi seçin. NSG ve bulunduğu **kaynak grubunun** **adını** girin. Bu NSG, uygulama ağ geçidinin alt ağına uygulanır.
+2. Sonraki menüde **Ekle'yi**seçin. NSG'nin **adını** ve bulunması gereken **Kaynak grubunu** girin. Bu NSG, uygulama ağ geçidinin alt ağına uygulanacaktır.
 
     ![NSG oluşturma](./media/secure-web-app/nsg-create-new.png)
 
     *NSG oluşturma*
 
-3. NSG oluşturulduktan sonra, bunu seçin. Dikey penceresinde, **Ayarlar**altında **gelen güvenlik kuralları**' nı seçin. 443 numaralı bağlantı noktası üzerinden Application Gateway 'e gelen bağlantılara izin vermek için bu ayarları yapılandırın.
+3. NSG oluşturulduktan sonra seçin. Bıçaklarında, **Ayarlar**altında **Gelen Güvenlik kurallarını**seçin. Bu ayarları, bağlantı noktası 443 üzerinden uygulama ağ geçidine gelen bağlantılara izin verecek şekilde yapılandırın.
 
-   ![NSG 'yi yapılandırma](./media/secure-web-app/nsg-gateway-config.png)
+   ![NSG'yi yapılandırın](./media/secure-web-app/nsg-gateway-config.png)
 
-   *NSG 'yi yapılandırma*
+   *NSG'yi yapılandırın*
 
-4. Ağ Geçidi NSG için giden kuralları ' nda, hizmet etiketini `AppService`hedefleyen bir kural oluşturarak App Service örneğine giden bağlantılara izin veren bir kural ekleyin:
+4. Ağ geçidi NSG için giden kurallarda, hizmet etiketini `AppService`hedefleyen bir kural oluşturarak Uygulama Hizmeti örneğine giden bağlantılara izin veren bir kural ekleyin:
 
    ![NSG için giden kuralları ekleme](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
    *NSG için giden kuralları ekleme*
 
-    Ağ geçidinin bir sanal ağa giden kuralları göndermesini sağlamak için başka bir giden kuralı ekleyin.
+    Ağ geçidinin giden kuralları sanal ağa göndermesine izin vermek için başka bir giden kural ekleyin.
 
-   ![Başka bir giden kuralı ekle](./media/secure-web-app/nsg-outbound-vnet.png)
+   ![Başka bir giden kuralı ekleme](./media/secure-web-app/nsg-outbound-vnet.png)
 
-    *Başka bir giden kuralı ekle*
+    *Başka bir giden kuralı ekleme*
 
-5. NSG alt ağları dikey penceresinde **ilişkilendir**' i seçin, dağıtımda oluşturulan sanal ağı seçin ve **GW-subnet**adlı ağ geçidi alt ağını seçin. NSG alt ağa uygulanır.
+5. NSG'nin alt ağlarında, **Ilişkilendir'i**seçin , dağıtımda oluşturulan sanal ağı seçin ve **gw-subnet**adlı ağ geçidi alt ünü seçin. NSG alt ağa uygulanır.
 
-6. App Service örneği için bu kez, önceki adımda olduğu gibi başka bir NSG oluşturun. Bir ad verin. Application Gateway NSG için yaptığınız gibi 443 numaralı bağlantı noktası için gelen kuralını ekleyin.
+6. Önceki adımda olduğu gibi, bu kez App Service örneği için başka bir NSG oluşturun. Ona bir isim ver. Uygulama ağ geçidi NSG için yaptığınız gibi bağlantı noktası 443 için gelen kuralı ekleyin.
 
-   Bu uygulama için durum bilgisi olmayan bir App Service Ortamı örneği üzerinde dağıtılan bir App Service örneğiniz varsa, App Service NSG 'nizin gelen güvenlik gruplarında 454-455 bağlantı noktalarını açarak Azure hizmet durumu araştırmalarını sağlamak için gelen kuralları ekleyebilirsiniz. Yapılandırma şu şekildedir:
+   Bir Uygulama Hizmeti Ortamı örneğinde dağıtılan bir Uygulama Hizmeti örneğiniz varsa, ki bu uygulama için geçerli değildir, Uygulama Hizmeti NSG'nizin gelen güvenlik gruplarında 454-455 bağlantı noktalarını açarak Azure Hizmet Durumu sondalarına izin vermek için gelen kurallar ekleyebilirsiniz. Yapılandırma şu şekildedir:
 
-   ![Azure hizmet durumu araştırmaları için kurallar ekleme](./media/secure-web-app/nsg-create-healthprobes.png)
+   ![Azure Hizmet Durumu sondaları için kurallar ekleme](./media/secure-web-app/nsg-create-healthprobes.png)
 
-    *Azure hizmet durumu araştırmaları için kurallar ekleme (yalnızca App Service Ortamı)*
+    *Azure Hizmet Durumu sondaları için kurallar ekleme (yalnızca Uygulama Hizmet Ortamı)*
 
-7. Giden güvenlik kurallarında, App Service örneğinin PostgreSQL veritabanıyla iletişim kurmasına izin veren yeni bir giden güvenlik kuralı oluşturun. Bunu şu şekilde yapılandırın:
+7. Giden güvenlik kurallarında, Uygulama Hizmeti örneğinin PostgreSQL veritabanıyla iletişim kurmasını sağlayan yeni bir giden güvenlik kuralı oluşturun. Şu şekilde yapılandırın:
 
    ![Giden PostgreSQL bağlantılarına izin verme kuralı](./media/secure-web-app/nsg-outbound-postgresql.png)
 
-   *Giden PostgreSQL bağlantılarına izin vermek için bir kural ekleyin*
+   *Giden PostgreSQL bağlantılarına izin vermek için kural ekleme*
 
-Saldırı yüzeyini sınırlandırmak için App Service ağ ayarlarını yalnızca uygulama ağ geçidinin uygulamaya erişmesine izin verecek şekilde değiştirin.
-Bunu, App Service ağı sekmesine giderek, **IP kısıtlamaları** sekmesini seçerek ve yalnızca uygulama ağ geçidi 'nin IP 'si hizmete doğrudan erişmesini sağlayan bir izin verme kuralı oluşturarak yapabilirsiniz.
+Saldırı yüzeyini sınırlamak için, Uygulama Hizmeti ağ ayarlarını yalnızca uygulama ağ geçidinin uygulamaya erişmesine izin verecek şekilde değiştirin.
+Bunu, App Service ağ sekmesine giderek, **IP Kısıtlamaları** sekmesini seçerek ve yalnızca uygulama ağ geçidinin IP'sinin hizmete doğrudan erişmesine izin veren bir kural oluşturarak yaparsınız.
 
-Ağ geçidinin IP adresini genel bakış sayfasından alabilirsiniz. **IP adresı CIDR** sekmesinde IP adresini şu biçimde girin: `<GATEWAY_IP_ADDRESS>/32`.
+Genel bakış sayfasından ağ geçidinin IP adresini alabilirsiniz. IP **Adresi CIDR** sekmesine, ip adresini bu `<GATEWAY_IP_ADDRESS>/32`biçimde girin: .
 
 ![Yalnızca ağ geçidine izin ver](./media/secure-web-app/app-allow-gw-only.png)
 
-*Yalnızca ağ geçidi IP 'nin App Service erişmesine izin ver*
+*Uygulama Hizmetine erişmek için yalnızca ağ geçidi IP'sine izin ver*
 
+#### <a name="implement-azure-active-directory-oauth"></a>Azure Active Directory OAuth'u uygulayın
 
-#### <a name="implement-azure-active-directory-oauth"></a>Azure Active Directory OAuth 'ı Uygula
+Örnek web uygulaması sayfasında dağıtılan Azure belgeleri, uygulamamızda korunması gereken kaynaklardır. Farklı kimlik doğrulama akışları kullanarak web, masaüstü ve mobil uygulamalar için kimlik doğrulamasını uygulamak için Azure Active Directory 'i (Azure AD) kullanabilirsiniz.
+Uygulama, tek kiracılı Azure AD kullanıcı listemize eklenen kullanıcıların profillerini okumasına olanak tanıyan **Microsoft ile Giriş'i**kullanır.
 
-Örnek Web uygulaması sayfasında dağıtılmış olan Azure belgeleri, uygulamamızda koruma gerektiren kaynaklardır. Farklı kimlik doğrulama akışlarını kullanarak Web, masaüstü ve mobil uygulamalar için kimlik doğrulaması uygulamak üzere Azure Active Directory (Azure AD) kullanabilirsiniz.
-Uygulama, **Microsoft Ile oturum açma**kullanır ve uygulamanın, tek KIRACıLı Azure AD kullanıcısının listesine eklenmiş kullanıcıların profillerini okumasına olanak tanır.
+Azure portalında, uygulamayı gerekli kimlik bilgilerini kullanacak şekilde yapılandırın:
 
-Azure portal, uygulamayı gerekli kimlik bilgilerini kullanacak şekilde yapılandırın:
-
-1. **Azure Active Directory**' yi seçin veya arama kutusunu kullanarak arayın.
+1. **Azure Etkin Dizini'ni**seçin veya arama kutusunu kullanarak bu dizinde arama yapın.
 
 2. **Yeni kayıt**seçin:
 
-   ![Kayıt oluştur](./media/secure-web-app/ad-auth-create.png)
+   ![Kayıt oluşturma](./media/secure-web-app/ad-auth-create.png)
 
    *Azure AD uygulama kaydı oluşturma*
 
-3. Sonraki sayfada, uygulama adını girin. **Desteklenen hesap türleri**altında **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
-    **Yeniden yönlendirme URI 'si**altında, uygulamanın, belirteç uç noktasıyla birlikte çalıştırılacağı temel etki alanını girin. Örneğin: *GATEWAY_HASH*. cloudapp.net/Token.
+3. Bir sonraki sayfaya uygulama adını girin. **Desteklenen hesap türleri**altında, yalnızca bu kuruluş **dizinindeki Hesapları**seçin.
+    **Redirect URI**altında, uygulamanın artı bir belirteç bitiş noktası ile çalışacak temel etki alanını girin. Örneğin: *GATEWAY_HASH*.cloudapp.net/token.
 
    ![Azure AD uygulama kaydını yapılandırma](./media/secure-web-app/ad-auth-type.png)
 
    *Azure AD uygulama kaydını yapılandırma*
 
-4. Kayıtlı uygulamayı ve bilgilerini gösteren bir ekran görüntülenir. Bu bilgileri Azure Key Vault örneğine eklemeniz gerekir.
-   1. Uygulama (istemci) KIMLIĞINI kopyalayın ve Key Vault olarak `CLIENTID`kaydedin.
-   2. Önceki adımda girdiğiniz yeniden yönlendirme URI 'sini kopyalayın ve farklı `REDIRECTURI`kaydedin.
-   3. *Name*. microsoftonline.com biçiminde olan Azure AD varsayılan dizin adını kopyalayın ve Key Vault olarak `TENANT`kaydedin.
-   4. Daha önce oluşturduğunuz Azure AD uygulamasının **sertifikalar & gizlilikler** sekmesine gidin ve aşağıdaki ekran görüntüsünde gösterildiği gibi **yeni istemci parolası**' nı seçin. Bir sona erme tarihi ayarlayın ve ardından oluşturulan değeri kopyalayın ve Key Vault olarak `CLIENTSECRET`kaydedin.
+4. Size kayıtlı uygulamayı ve bilgilerini gösteren bir ekran sunulur. Bu bilgileri Azure Anahtar Kasası örneğine eklemeniz gerekir.
+   1. Uygulama (istemci) kimliğini kopyalayın ve Key `CLIENTID`Vault'a 'olarak kaydedin.
+   2. Önceki adımda girdiğiniz yeniden yönlendirme URI'yi `REDIRECTURI`kopyalayın ve '' olarak kaydedin.
+   3. Biçim *adı*.microsoftonline.com olan Azure AD varsayılan dizin adını kopyalayın ve `TENANT`Anahtar Kasası'na 'olarak kaydedin.
+   4. Daha önce oluşturduğunuz Azure AD uygulamasının **Sertifikalar & Sırları** sekmesine gidin ve aşağıdaki ekran görüntüsünde gösterildiği gibi **Yeni istemci sırrını**seçin. Bir son kullanma tarihi ayarlayın ve ardından oluşturulan değeri `CLIENTSECRET`kopyalayın ve Key Vault'a 'olarak kaydedin.
 
-      ![Azure AD yetkilendirme parolası](./media/secure-web-app/ad-auth-secrets.png)
+      ![Azure AD yetkilendirme sırrı](./media/secure-web-app/ad-auth-secrets.png)
 
-      *Azure AD yetkilendirme parolası*
+      *Azure AD yetkilendirme sırrı*
 
-   5. Herhangi bir komut satırı/çevrimiçi aracı kullanarak güvenli bir rastgele gizli anahtar oluşturun. Key Vault olarak `FLASKSECRETKEY`kaydedin. Uygulama çerçevesi, oturum oluşturmak için bu anahtarı kullanır.
-        Gizli anahtar oluşturmayı öğrenmek için bkz. [Flask oturumları](http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
+   5. Herhangi bir komut satırı/çevrimiçi aracı kullanarak güvenli bir rasgele gizli anahtar oluşturun. Olarak Key Vault `FLASKSECRETKEY`içine kaydedin. Uygulama çerçevesi oturumoluşturmak için bu anahtarı kullanır.
+        Gizli bir anahtarı niçin oluşturacağınızı öğrenmek için [Flask Sessions'a](http://flask.pocoo.org/docs/1.0/quickstart/#sessions)bakın.
 
-5. Oturum açma 'yı yapılandırdıktan sonra, kaynakta oturum açmalarına olanak tanımak için Azure AD bağlantısına Kullanıcı eklemeniz gerekir. Bunları eklemek için Azure AD 'deki **Kullanıcılar** sekmesine gidin, **tüm kullanıcılar**' ı seçin ve ardından **Yeni Kullanıcı** veya **Yeni Konuk Kullanıcı**' yı seçin. Sınama için, Konuk kullanıcı ekleyebilir ve kullanıcıyı dizine davet edebilirsiniz. Ya da uygulamanın üzerinde çalıştığı etki alanı doğrulandıktan sonra yeni bir kullanıcı ekleyebilirsiniz. Bu örnekte, yalnızca Azure AD kiracısında kayıtlı olan kullanıcılar erişim için kaydedilebilir. Çoklu kiracılı oturum açma erişimi hakkında daha fazla bilgi için belgelerine bakın.
+5. Oturum açma işlemlerini yapılandırıldıktan sonra, kaynakta oturum açmalarına izin vermek için kullanıcıları Azure AD bağlantısına eklemeniz gerekir. Bunları eklemek için Azure AD'deki **Kullanıcılar** sekmesine gidin, **Tüm kullanıcıları**seçin ve ardından Yeni kullanıcı veya **Yeni** **konuk kullanıcıyı**seçin. Sınama için bir konuk kullanıcı ekleyebilir ve kullanıcıyı dizine davet edebilirsiniz. Veya uygulamanın üzerinde çalıştığınıalan doğrulanmışsa yeni bir kullanıcı ekleyebilirsiniz. Bu örnekte, yalnızca Azure AD kiracısında kayıtlı kullanıcılar erişim için kaydedilebilir. Çok kiracılı oturum açma erişimi hakkında bilgi için belgelere bakın.
 
    ![Kullanıcıları varsayılan etki alanına ekleme](./media/secure-web-app/ad-auth-add-user.png)
 
-   *Varsayılan Azure Active Directory etki alanına kullanıcı ekleme*
+   *Kullanıcıları varsayılan Azure Etkin Dizin etki alanına ekleme*
 
-Key Vault için Azure AD yapılandırma ve gizli dizileri ekledikten sonra, kullanıcıların Azure OAuth kimlik doğrulaması kullanılarak uygulama üzerinde kimlik doğrulaması yapılabilir.
-Uygulama kodunda, bu Azure Active Directory kimlik doğrulama kitaplığı (ADAL) tarafından işlenir.
+Key Vault'a Azure AD yapılandırmasını ve sırlarını ekledikten sonra, kullanıcılar Azure OAuth kimlik doğrulaması kullanarak uygulamaya kimlik doğrulaması yapabilir.
+Uygulama kodunda, bu işlem Azure Etkin Dizin Kimlik Doğrulama Kitaplığı (ADAL) tarafından işlenir.
 
-Gizli dizileri Key Vault ve uygulamanın gizli dizileri ve veritabanına erişimi varsa, uygulama hizmetine ağ geçidinin uygulama URL 'si aracılığıyla ulaşılırsa (https://GATEWAY_HASH.cloudapp.net), dikey penceresinden alabilirsiniz.
+Sırlar Key Vault'ta ve uygulama nın sırlara ve veritabanına erişimi olduktan sonra, uygulamahttps://GATEWAY_HASH.cloudapp.net)hizmetine ağ geçidinin başvuru URL'si (, bıçağından alabileceğiniz) üzerinden ulaşılabilir.
 
-Azure AD 'de oturum açtığınızda, "Kullanıcı oturum açmaya çalıştığınız dizinde kayıtlı değil" ifadesini içeren bir hata alırsınız ve Kullanıcı eklemeniz gerekir. Kullanıcı eklemek için, Azure AD 'nin **Kullanıcılar** sekmesine gidin ve Kullanıcı bilgilerini davet ederek kullanıcıyı bir Konuk Kullanıcı olarak e-posta adresini **davet et** dikey penceresinde Azure AD 'ye girerek kullanıcıyı el ile ekleyin.
+Azure AD'de oturum açtığınızda, "Kullanıcı oturum açmaya çalıştığınız dizine kayıtlı değil" yazan bir hata alırsanız, kullanıcıyı eklemeniz gerekir. Kullanıcıyı eklemek için Azure AD'nin **Kullanıcılar** sekmesine gidin ve bilgilerini girerek kullanıcıyı el ile ekleyin veya konuk kullanıcı olarak e-posta adresini **Davet Konuk** bıçağında Azure AD'ye girerek kullanıcıyı davet edin.
 
-#### <a name="deploy-application-insights"></a>Application Insights dağıt
-Uygulama dağıtıldığına ve çalışır durumda olduğuna göre, uygulama içinde oluşan hataları günlüğe kaydetme ve izleme veri toplama ile birlikte işlemeniz gerekir.
-Günlüğe kaydetme ve izleme veri koleksiyonu, uygulamada gerçekleşen denetim olaylarına bir görünüm sağlar.
+#### <a name="deploy-application-insights"></a>Application Insights'ı dağıtma
+Uygulama dağıtılmış ve çalıştığına göre, günlüğe kaydetme ve veri toplamayı izlemeyle birlikte uygulama içinde oluşan hataları işlemeniz gerekir.
+Günlüğe kaydetme ve izleme veri toplama, uygulamada meydana gelen denetim olaylarına bir görünüm sağlar.
 
-Application Insights, kullanıcılar veya sistem tarafından oluşturulabilecek günlükleri toplayan bir hizmettir.
+Application Insights, kullanıcılar veya sistem tarafından oluşturulabilen günlükleri toplayan bir hizmettir.
 
-Application Insights bir örnek oluşturmak için:
+Uygulama Öngörüleri örneği oluşturmak için:
 
-1. Azure portal arama kutusunu kullanarak **Application Insights** arayın.
-2. **Application Insights**seçin. Örnek oluşturmak için burada gösterilen ayrıntıları sağlayın.
+1. Azure portalındaki arama kutusunu kullanarak **Uygulama Öngörüleri'ni** arayın.
+2. **Application Insights**’ı seçin. Bir örnek oluşturmak için burada gösterilen ayrıntıları sağlayın.
 
-   ![Application Insights örneği oluşturma](./media/secure-web-app/app-insights-data.png)
+   ![Uygulama Öngörüleri örneği oluşturma](./media/secure-web-app/app-insights-data.png)
 
-Dağıtım tamamlandıktan sonra bir Application Insights örneğiniz olur.
+Dağıtım tamamlandıktan sonra bir Uygulama Öngörüleri örneğine sahip olursunuz.
 
-Uygulama öngörüleri örneğini oluşturduktan sonra, uygulamanın buluta Günlükler göndermesini sağlayan izleme anahtarına sahip olması gerekir. Bunu, Application Insights anahtarını alarak ve Azure 'un Application Insights için sağladığı uygulama kitaplıklarında kullanarak yapabilirsiniz. En iyi yöntem, anahtarları ve gizli dizileri güvenli tutmak için Azure Key Vault depokullanmaktır.
+Applications Insights örneğini oluşturduktan sonra, uygulamayı buluta günlük göndermenize olanak tanıyan enstrümantasyon anahtarından haberdar etmeniz gerekir. Bunu, Uygulama Öngörüleri anahtarını alarak ve Azure'un Uygulama Öngörüleri için sağladığı uygulama kitaplıklarında kullanarak yaparsınız. En iyi yöntem, anahtarları ve sırları güvende tutmak için Azure Key Vault'ta depolamaktır.
 
-Temel örnek uygulama için, Application Insights örneğini oluşturduktan sonra, uygulamanın buluta Günlükler göndermesini sağlayan izleme anahtarına sahip olması gerekir.
-Key Vault ' de bir `APPINSIGHTSKEY` gizli dizi belirleyin ve değerini izleme anahtarı olarak ayarlayın. Bunun yapılması uygulamanın Application Insights Günlükler ve ölçümler göndermesini sağlar.
+Temel örnek uygulama için, Applications Insights örneğini oluşturduktan sonra, uygulamayı buluta günlük göndermenize olanak tanıyan enstrümantasyon anahtarından haberdar etmeniz gerekir.
+Key Vault'ta `APPINSIGHTSKEY` bir sır ayarlayın ve değerini enstrümantasyon anahtarı olarak ayarlayın. Bunu yapmak, uygulamanın Uygulama Öngörüleri'ne günlükler ve ölçümler göndermesine olanak tanır.
 
-#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Azure Active Directory için çok faktörlü kimlik doğrulaması uygulama
-Yöneticiler, portaldaki abonelik hesaplarının korunduğundan emin olmalıdır. Abonelik, oluşturduğunuz kaynakları yönettiği için saldırılara açıktır. Aboneliği korumak için, aboneliğin **Azure Active Directory** sekmesinde Multi-Factor Authentication 'ı etkinleştirin.
+#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Azure Etkin Dizini için Çok Faktörlü Kimlik Doğrulama'yı uygulama
 
-Azure AD, belirli ölçütlere uyan bir kullanıcıya veya kullanıcı grubuna uygulanan ilkelere göre çalışır.
-Azure, portalda oturum açmak için yöneticilerin iki öğeli kimlik doğrulamasının gerekli olduğunu belirten bir varsayılan ilke oluşturur.
-Bu ilkeyi etkinleştirdikten sonra, Azure portal oturumunuzu kapatıp yeniden açmanız istenebilir.
+Yöneticilerin portaldaki abonelik hesaplarının korunduğundan emin olması gerekir. Abonelik, oluşturduğunuz kaynakları yönettiği için saldırılara karşı savunmasızdır. Aboneliği korumak için, aboneliğin **Azure Etkin Dizin** sekmesinde Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirin.
 
-Yönetici oturum açma işlemleri için MFA 'yı etkinleştirmek için:
+Azure AD, belirli bir ölçüte uyan bir kullanıcıya veya kullanıcı gruplarına uygulanan ilkelere göre çalışır.
+Azure, yöneticilerin portalda oturum açmak için iki faktörlü kimlik doğrulamasına ihtiyaç duyduğunu belirten bir varsayılan ilke oluşturur.
+Bu ilkeyi etkinleştirdikten sonra, oturum açmanız ve Azure portalında tekrar oturum açmanız istenebilir.
 
-1. Azure portal **Azure Active Directory** sekmesine gidin
-2. Güvenlik kategorisi altında koşullu erişim ' i seçin. Şu ekranı görürsünüz:
+Yönetici oturum açmaları için MFA'yı etkinleştirmek için:
 
-   ![Koşullu erişim-Ilkeler](./media/secure-web-app/ad-mfa-conditional-add.png)
+1. Azure portalındaki **Azure Etkin Dizin** sekmesine gidin
+2. Güvenlik kategorisi altında koşullu erişimi seçin. Şu ekranı görürsünüz:
 
-Yeni bir ilke oluşturamıyoruz:
+   ![Koşullu Erişim - İlkeler](./media/secure-web-app/ad-mfa-conditional-add.png)
+
+Yeni bir ilke oluşturamıyorsanız:
 
 1. **MFA** sekmesine gidin.
-2. Ücretsiz denemeye abone olmak için Azure AD Premium **ücretsiz deneme** bağlantısını seçin.
+2. Ücretsiz deneme sürümüne abone olmak için Azure AD Premium **Free deneme sürümünü** seçin.
 
    ![Azure AD Premium ücretsiz deneme sürümü](./media/secure-web-app/ad-trial-premium.png)
 
@@ -837,137 +853,143 @@ Koşullu erişim ekranına geri dönün.
 
 1. Yeni ilke sekmesini seçin.
 2. İlke adını girin.
-3. MFA 'yı etkinleştirmek istediğiniz kullanıcıları veya grupları seçin.
-4. **Erişim denetimleri**altında, **izin** sekmesini seçin ve ardından **Multi-Factor Authentication** (isterseniz diğer ayarlar) iste ' yi seçin.
+3. MFA'yı etkinleştirmek istediğiniz kullanıcıları veya grupları seçin.
+4. **Access denetimleri** **altında, Hibe** sekmesini seçin ve ardından çok **faktörlü kimlik doğrulamasını (ve** isterseniz diğer ayarları) talep et'i seçin.
 
    ![MFA gerektirme](./media/secure-web-app/ad-mfa-conditional-add.png)
 
-Ekranın üst kısmındaki onay kutusunu seçerek ilkeyi etkinleştirebilir veya **koşullu erişim** sekmesinden bunu yapabilirsiniz. İlke etkinleştirildiğinde, kullanıcıların portalda oturum açması için MFA gerekir.
+Ekranın üst kısmındaki onay kutusunu seçerek ilkeyi etkinleştirebilir veya **Koşullu Erişim** sekmesinde bunu yapabilirsiniz. İlke etkinleştirildiğinde, kullanıcıların portalda oturum açabilmesi için MFA'ya ihtiyaç duyar.
 
-Tüm Azure yöneticileri için MFA gerektiren bir temel ilke vardır. Bunu portalda hemen etkinleştirebilirsiniz. Bu ilkeyi etkinleştirmek, geçerli oturumu geçersiz kılabilir ve yeniden oturum açmanızı zorlayabilir.
+Tüm Azure yöneticileri için MFA gerektiren bir temel ilke vardır. Hemen portalda etkinleştirebilirsiniz. Bu ilkeyi etkinleştirmek geçerli oturumu geçersiz kakabilir ve sizi yeniden oturum açmaya zorlayabilir.
 
-Temel ilke etkinleştirilmemişse:
-1.  **Yöneticiler IÇIN MFA gerektir**' i seçin.
-2.  **İlkeyi hemen kullan**' ı seçin.
+Temel ilke etkin değilse:
 
-   ![İlkeyi hemen kullan ' ı seçin](./media/secure-web-app/ad-mfa-conditional-enable.png)
+1. **Yöneticiler için MFA'yı**gerektir'i seçin.
+2. **Hemen Kullan ilkesini**seçin.
 
-#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>Azure Sentinel kullanarak uygulama ve kaynakları izleme
+   ![Hemen Kullan ilkesini seçin](./media/secure-web-app/ad-mfa-conditional-enable.png)
 
-Bir uygulama büyüdükçe, kaynaklardan alınan tüm güvenlik sinyallerinin ve ölçümlerin toplanmasını ve bunları eyleme dayalı bir şekilde yararlı hale getirmek zor olur.
+#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>Uygulamaları ve kaynakları izlemek için Azure Sentinel'i kullanın
 
-Azure Sentinel, verileri toplamak, olası tehdit türlerini algılamak ve güvenlik olaylarına görünürlük sağlamak için tasarlanmıştır.
-El ile müdahale beklerken, Azure Sentinel, uyarıları ve olay yönetimi süreçlerini açmak için önceden yazılmış PlayBook 'ları kullanabilir.
+Bir uygulama büyüdükçe, kaynaklardan alınan tüm güvenlik sinyallerini ve ölçümlerini toplamak ve bunları eylem odaklı bir şekilde kullanışlı hale getirmek zorlaşır.
 
-Örnek uygulama, Azure Sentinel 'in izleye, birkaç kaynaktan oluşur.
-Azure Sentinel 'i ayarlamak için, önce çeşitli kaynaklardan toplanan tüm verileri depolayan bir Log Analytics çalışma alanı oluşturmanız gerekir.
+Azure Sentinel, veri toplamak, olası tehdit türlerini algılamak ve güvenlik olaylarında görünürlük sağlamak üzere tasarlanmıştır.
+Azure Sentinel, el ile müdahale beklerken, uyarıları ve olay yönetimi işlemlerini başlatmak için önceden yazılmış oyun kitaplarına güvenebilir.
+
+Örnek uygulama, Azure Sentinel'in izleyebileceği çeşitli kaynaklardan oluşur.
+Azure Sentinel'i ayarlamak için öncelikle çeşitli kaynaklardan toplanan tüm verileri depolayan bir Log Analytics çalışma alanı oluşturmanız gerekir.
 
 Bu çalışma alanını oluşturmak için:
 
-1. Azure portal arama kutusunda, **Log Analytics**aratın. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portalındaki arama **kutusunda, Log Analytics'i**arayın. **Günlük Analizi çalışma alanlarını**seçin.
 
-   ![Log Analytics çalışma alanlarını ara](./media/secure-web-app/sentinel-log-analytics.png)
+   ![Günlük Analizi çalışma alanlarını ara](./media/secure-web-app/sentinel-log-analytics.png)
 
-    *Log Analytics çalışma alanlarını ara*
+    *Günlük Analizi çalışma alanlarını ara*
 
-2. Sonraki sayfada **Ekle** ' yi seçin ve ardından çalışma alanı için bir ad, kaynak grubu ve konum sağlayın.
+2. Sonraki sayfada **Ekle'yi** seçin ve ardından çalışma alanı için bir ad, kaynak grubu ve konum sağlayın.
    ![Log Analytics çalışma alanı oluşturma](./media/secure-web-app/sentinel-log-analytics-create.png)
 
    *Log Analytics çalışma alanı oluşturma*
 
-3. **Azure Sentinel**aramak için arama kutusunu kullanın.
+3. **Azure Sentinel'i**aramak için arama kutusunu kullanın.
 
-   ![Azure Sentinel 'i arayın](./media/secure-web-app/sentinel-add.png)
+   ![Azure Sentinel'i arama](./media/secure-web-app/sentinel-add.png)
 
-    *Azure Sentinel 'i arayın*
+    *Azure Sentinel'i arama*
 
-4. **Ekle** ' yi seçin ve daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
+4. **Ekle'yi** seçin ve ardından daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
 
-   ![Log Analytics çalışma alanı ekleme](./media/secure-web-app/sentinel-workspace-add.png)
+   ![Günlük Analizi çalışma alanı ekleme](./media/secure-web-app/sentinel-workspace-add.png)
 
-    *Log Analytics çalışma alanı ekleme*
+    *Günlük Analizi çalışma alanı ekleme*
 
-5. **Azure Sentinel-veri bağlayıcıları** sayfasında, **yapılandırma**altında, **veri bağlayıcıları**' nı seçin. Azure Sentinel 'de analize yönelik Log Analytics depolama örneğine bağlayabileceğiniz bir Azure hizmetleri dizisi görürsünüz.
+5. Azure **Sentinel - Veri bağlayıcıları** sayfasında, **Yapılandırma** **altında, Veri bağlayıcılarını**seçin. Azure Sentinel'de analiz için Log Analytics depolama örneğine bağlayabileceğiniz bir dizi Azure hizmeti görürsünüz.
 
-   ![Log Analytics veri bağlayıcıları](./media/secure-web-app/sentinel-connectors.png)
+   ![Günlük Analytics veri bağlayıcıları](./media/secure-web-app/sentinel-connectors.png)
 
-    *Azure Sentinel 'e veri Bağlayıcısı ekleme*
+    *Azure Sentinel'e veri bağlayıcısı ekleme*
 
-   Örneğin, uygulama ağ geçidini bağlamak için şu adımları uygulayın:
+   Örneğin, uygulama ağ geçidini bağlamak için aşağıdaki adımları izleyin:
 
-   1. Azure Application Gateway örneği dikey penceresini açın.
-   2. Altında **izleme**seçin **tanılama ayarları**.
-   3. **Tanılama ayarı Ekle**' yi seçin.
+   1. Azure Uygulama Ağ Geçidi örnek bıçaklarını açın.
+   2. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
+   3. **Tanıayar ayarı ekle'yi**seçin.
 
-      ![Application Gateway tanılamayı Ekle](./media/secure-web-app/sentinel-gateway-connector.png)
+      ![Uygulama Ağ Geçidi tanılama ekleme](./media/secure-web-app/sentinel-gateway-connector.png)
 
-      *Application Gateway tanılamayı Ekle*
+      *Uygulama Ağ Geçidi tanılama ekleme*
 
-   4. **Tanılama ayarları** sayfasında, oluşturduğunuz Log Analytics çalışma alanını seçin ve ardından toplamak istediğiniz tüm ölçümleri seçin ve Azure Sentinel 'e gönderin. **Kaydet**’i seçin.
+   4. **Tanılama ayarları** sayfasında, oluşturduğunuz Günlük Analizi çalışma alanını seçin ve ardından toplayıp Azure Sentinel'e göndermek istediğiniz tüm ölçümleri seçin. **Kaydet'i**seçin.
 
-        ![Azure Sentinel bağlayıcı ayarları](./media/secure-web-app/sentinel-connector-settings.png)
+        ![Azure Sentinel konektör ayarları](./media/secure-web-app/sentinel-connector-settings.png)
 
-        *Azure Sentinel bağlayıcı ayarları*
+        *Azure Sentinel konektör ayarları*
 
-  Kaynaktaki ölçümler Azure Sentinel ' dir; burada bunları sorgulayabilir ve araştırabilirsiniz.
+  Kaynaktan alınan ölçümler, sorgulayıp araştırabileceğiniz Azure Sentinel'dedir.
 
-   Azure Key Vault, genel IP adresi, PostgreSQL için Azure veritabanı ve hesabınızdaki tanılama günlüklerini destekleyen hizmetlerin yanı sıra aynı ölçümleri ekleyin.
+   Azure Key Vault, genel IP adresi, PostgreSQL için Azure Veritabanı ve hesabınızdaki tanılama günlüklerini destekleyen tüm hizmetler için tanı ayarlarına aynı ölçümleri ekleyin.
 
-Ölçümleri ayarladıktan sonra Azure Sentinel 'in analiz edilecek verileri vardır.
+Ölçümleri ayarladıktan sonra Azure Sentinel'in çözümleme verileri vardır.
 
-## <a name="evaluate-and-verify"></a>Değerlendirin ve doğrulayın
-Mimariyi geliştirip dağıttıktan sonra, kodun ve dağıtılan hizmetlerin güvenlik standartlarını karşıladığından emin olmanız gerekir. Yazılım doğrulamak için uygulayabileceğiniz bazı adımlar şunlardır:
+## <a name="evaluate-and-verify"></a>Değerlendirme ve doğrulama
+
+Mimariyi geliştirip dağıttıktan sonra, kodun ve dağıtılan hizmetlerin güvenlik standartlarını karşıladığından emin olmanız gerekir. Yazılımı doğrulamak için atabileceğiniz bazı adımlar şunlardır:
 
 - Statik kod analizi
 - Güvenlik açığı taraması
 - Uygulama bağımlılıklarında güvenlik açıklarını bulma ve düzeltme
 
-Bunlar, güvenli geliştirmede en iyi uygulamalar için temel yapı taşlarıdır.
+Bunlar güvenli geliştirme de en iyi uygulamalar için temel yapı taşlarıdır.
 
 ### <a name="static-code-analysis"></a>Statik kod analizi
-Örnek uygulama için, statik analiz araçlarıyla doğrulama, taınt denetimi ve veri akışı analizi gibi teknikleri kullanarak uygulama kodunda güvenlik açıklarını bulmayı içerir. Python statik analiz araçları, uygulamanızın güvenli olmasını sağlar.
 
-**Linting**
+Örnek uygulama için, statik analiz araçlarıyla doğrulama, kusurlu kontrol ve veri akışı analizi gibi teknikler kullanarak uygulama kodundaki güvenlik açıklarını bulmayı içerir. Python statik analiz araçları, uygulamanızın güvenli olduğuna daha fazla güven verir.
 
-Python bir kitaplık olan PyFlakes, burada gösterildiği gibi uygulamalardan ölü kodu ve kullanılmayan işlevleri kaldırmanıza yardımcı olur:
+**Lint uygulama**
+
+Python linting kitaplığı PyFlakes, burada gösterildiği gibi, ölü kodu ve kullanılmayan işlevleri uygulamalardan kaldırmanıza yardımcı olur:
 
 ![PyFlakes](./media/secure-web-app/pyflakes.png)
 
-Çalışma zamanı sırasında kodunuzu temizleyicinizi ve daha az hata haline getirmek için ipuçları ve olası değişiklikler sağlar.
+Linting, çalışma süresi sırasında kodunuzu daha temiz ve daha az hataya yatkın hale getirebilecek ipuçları ve olası değişiklikler sağlar.
 
 **PyLint**
 
-PyLint bu proje için en çok değer sağladı. Sunucu üzerinde çalışan kodun güvenli olduğundan emin olmak için kod standardı denetimleri, hata denetimi ve yeniden düzenleme ipuçları gerçekleştirir. Kodunuzu güncelleştirmek için PyLint kullanarak, aşağıdaki görüntülerde gösterildiği gibi hataları ortadan kaldırabilir ve Pylınt derecelendirmesini geliştirebilirsiniz.
+PyLint bu proje için en fazla değeri sağladı. Sunucuda çalışan kodun güvenli olduğundan emin olmak için kod standardı denetimleri, hata denetimi ve yeniden düzenleme ipuçları gerçekleştirir. Kodunuzu güncelleştirmek için PyLint'i kullanarak hataları ortadan kaldırabilir ve aşağıdaki resimlerde belirtildiği gibi PyLint derecelendirmesini geliştirebilirsiniz.
 
-![PyLint öncesinde](./media/secure-web-app/before-pylint.png)
+![PyLint'ten önce](./media/secure-web-app/before-pylint.png)
 
-*PyLint öncesinde*
+*PyLint'ten önce*
 
-Yardım araçları tarafından bulunan kod hatalarından bazılarını düzelttikten sonra, kodun hatalara açık olmadığından daha fazla güvenleriniz vardır. Hataların düzeltilmesi, kod üretim ortamlarına dağıtıldığında oluşabilecek güvenlik risklerini önemli ölçüde azaltır.
+Linting araçları tarafından bulunan bazı kod hatalarını düzelttindikten sonra, kodun hatalara yatkın olmadığına daha fazla güvenirsiniz. Hataları ngidermek, kod üretim ortamlarına dağıtıldığında oluşabilecek güvenlik risklerini önemli ölçüde azaltır.
 
-![Pylint sonrasında](./media/secure-web-app/after-pylint.png)
+![Pylint'ten sonra](./media/secure-web-app/after-pylint.png)
 
-*PyLint sonrasında*
+*PyLint'ten sonra*
 
 ### <a name="vulnerability-scanning"></a>Güvenlik açığı taraması
-[OWASP 'nın zap](https://www.zaproxy.org/) Aracı, güvenlik açıklarına yönelik örnek uygulamayı denetlemek için kullanabileceğiniz açık kaynaklı bir Web uygulaması güvenlik açığı tarayıcılarıdır. Aracı örnek uygulamada çalıştırmak, bazı olası hataları ve saldırı vektörlerini ortaya çıkarır.
+
+[OWASP'nin ZAP](https://www.zaproxy.org/) aracı, güvenlik açıkları için örnek uygulamayı denetlemek için kullanabileceğiniz açık kaynaklı bir web uygulaması güvenlik açığı tarayıcısidir. Aracı örnek uygulamada çalıştırmak bazı olası hataları ve saldırı vektörlerini ortaya çıkarır.
 
 ![ZAP aracı](./media/secure-web-app/zap-tool.png)
 
 *ZAP aracı*
 
-### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Uygulama bağımlılıklarındaki güvenlik açıklarını bulma ve çözme
-Uygulama bağımlılıklarını bulmak ve onarmak için [OWASP 'Nin bağımlılık denetimini](https://www.owasp.org/index.php/OWASP_Dependency_Check)kullanabilirsiniz.
+### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Uygulama bağımlılıklarında güvenlik açıklarını bulma ve düzeltme
 
-Güvenlik, bağımlılıkları denetleyen benzer bir uygulamadır. [GitHub](https://github.com/pyupio/safety)'da bulabilirsiniz. İyi bilinen güvenlik açığı veritabanlarında bulunan güvenlik açıkları için güvenlik taramaları.
+Uygulama bağımlılıklarını bulmak ve düzeltmek için [OWASP'nin Bağımlılık Denetimi'ni](https://www.owasp.org/index.php/OWASP_Dependency_Check)kullanabilirsiniz.
 
-![Stok](./media/secure-web-app/pysafety.png)
+Güvenlik, bağımlılıkları kontrol eden benzer bir uygulamadır. [GitHub'da](https://github.com/pyupio/safety)bulabilirsiniz. Tanınmış güvenlik açığı veritabanlarında bulunan güvenlik açıkları için güvenlik taramaları.
 
-*Stok*
+![Güvenlik](./media/secure-web-app/pysafety.png)
+
+*Güvenlik*
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki makaleler güvenli uygulamalar tasarlamanıza, geliştirmenize ve dağıtmanıza yardımcı olabilir.
 
-- [Tasarıma](secure-design.md)
+Aşağıdaki makaleler, güvenli uygulamalar tasarlamanıza, geliştirmenize ve dağıtmanıza yardımcı olabilir.
+
+- [Tasarım](secure-design.md)
 - [Geliştirme](secure-develop.md)
 - [Dağıt](secure-deploy.md)

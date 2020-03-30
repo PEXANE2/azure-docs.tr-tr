@@ -1,88 +1,96 @@
 ---
-title: Konuk yapılandırma ilkeleri oluşturma
-description: Azure PowerShell ile Windows veya Linux VM 'Leri için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
-ms.date: 12/16/2019
+title: Windows için Konuk Yapılandırma ilkeleri oluşturma
+description: Windows için Azure İlkesi Konuk Yapılandırma ilkesini nasıl oluşturabilirsiniz öğrenin.
+ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79264589"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365476"
 ---
-# <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
+# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
-Konuk yapılandırması, Azure makinelerini denetlemeye yönelik yapılandırmayı oluşturmak için [Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) (DSC) kaynak modülünü kullanır. DSC yapılandırması, makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
+Özel ilkeler oluşturmadan önce, [Azure İlkesi Konuk Yapılandırması](../concepts/guest-configuration.md)sayfasındaki kavramsal genel bakış bilgilerini okumak iyi bir fikirdir.
+ 
+Linux için Konuk Yapılandırma ilkeleri oluşturma hakkında bilgi edinmek [için, Linux için Konuk Yapılandırma ilkeleri oluşturma](./guest-configuration-create-linux.md) sayfasına bakın
 
-[Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md) , yalnızca makineler içindeki ayarları denetlemek için kullanılabilir. Makinelerin içindeki ayarların düzeltilmesi henüz kullanılamamaktadır.
+Windows denetlerken, Konuk Yapılandırma [istenilen durum yapılandırması](/powershell/scripting/dsc/overview/overview) (DSC) kaynak modülü ve yapılandırma dosyası kullanır. DSC yapılandırması, makinenin içinde olması gereken durumu tanımlar.
+Yapılandırmanın değerlendirilmesi başarısız olursa, ilke efekti **auditIfNotExists** tetiklenir ve makine **uyumlu değil**olarak kabul edilir.
 
-Bir Azure makinesinin durumunu doğrulamak üzere kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
+[Azure İlkesi Konuk Yapılandırması](../concepts/guest-configuration.md) yalnızca makinelerin içindeki ayarları denetlemek için kullanılabilir. Makinelerin içindeki ayarların düzeltilmesi henüz mevcut değil.
+
+Azure veya Azure olmayan bir makinenin durumunu doğrulamak için kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
 
 > [!IMPORTANT]
-> Konuk yapılandırması olan özel ilkeler bir önizleme özelliğidir.
+> Konuk Yapılandırması ile özel ilkeler bir Önizleme özelliğidir.
 
-## <a name="add-the-guestconfiguration-resource-module"></a>GuestConfiguration kaynak modülünü ekleme
+## <a name="install-the-powershell-module"></a>PowerShell modüllerini yükleyin
 
-Konuk yapılandırma ilkesi oluşturmak için kaynak modülünün eklenmesi gerekir. Bu kaynak modülü, [Azure Cloud Shell](https://shell.azure.com)ile veya [Azure PowerShell Core Docker görüntüsüyle](https://hub.docker.com/r/azuresdk/azure-powershell-core)yerel olarak yüklü PowerShell ile kullanılabilir.
+Konuk Yapılandırma yapı oluşturma, yapının otomatik test, bir ilke tanımı oluşturma ve ilke yayımlama, Tamamen PowerShell Konuk Yapılandırma modülü kullanılarak otomatikleştirilmiş. Modül, PowerShell 6.2 veya daha sonra yerel olarak çalışan Windows, macOS veya Linux çalıştıran bir makineye veya [Azure Cloud Shell](https://shell.azure.com)ile veya Azure [PowerShell Core Docker görüntüsüyle](https://hub.docker.com/r/azuresdk/azure-powershell-core)yüklenebilir.
 
 > [!NOTE]
-> **Guestconfiguration** modülü yukarıdaki ortamlarda çalışırken, Windows PowerShell 5,1 ' de bir DSC yapılandırması derlemek için gereken adımlar tamamlanmalıdır.
+> Yapılandırmaların derlemesi henüz Linux'ta desteklenmedi.
 
 ### <a name="base-requirements"></a>Temel gereksinimler
 
-Konuk yapılandırması kaynak modülü için aşağıdaki yazılımlar gereklidir:
+Modülün kurulabileceği işletim sistemleri:
 
-- PowerShell. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/scripting/install/installing-powershell) izleyin.
+- Linux
+- macOS
+- Windows
+
+Konuk Yapılandırma kaynak modülü aşağıdaki yazılımı gerektirir:
+
+- PowerShell 6.2 veya sonrası. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/scripting/install/installing-powershell) izleyin.
 - Azure PowerShell 1.5.0 veya üzeri. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
+  - Yalnızca 'Az.Accounts' ve 'Az.Resources' modülleri gereklidir.
 
-### <a name="install-the-module"></a>Modülü yükler
+### <a name="install-the-module"></a>Modülü yükleyin
 
-Konuk yapılandırması, DSC yapılandırmaları oluşturmak ve bunları Azure Ilkesine yayımlamak için **guestconfiguration** kaynak modülünü kullanır:
+**GuestConfiguration** modüllerini PowerShell'e yüklemek için:
 
-1. Bir PowerShell isteminden aşağıdaki komutu çalıştırın:
+1. PowerShell komut isteminden aşağıdaki komutu çalıştırın:
 
    ```azurepowershell-interactive
    # Install the Guest Configuration DSC resource module from PowerShell Gallery
    Install-Module -Name GuestConfiguration
    ```
 
-1. Modülün içeri aktarıldığını doğrulayın:
+1. Modülün alındığını doğrulayın:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported GuestConfiguration module
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Özel Konuk yapılandırma yapılandırması ve kaynakları oluşturma
+## <a name="guest-configuration-artifacts-and-policy-for-windows"></a>Windows için Konuk Yapılandırma yapıları ve ilkesi
 
-Konuk yapılandırması için özel bir ilke oluşturmanın ilk adımı DSC yapılandırmasını oluşturmaktır. DSC kavramlarına ve terimlere genel bakış için bkz. [POWERSHELL DSC 'ye genel bakış](/powershell/scripting/dsc/overview/overview).
+Konuk Yapılandırma, Windows'da ne denetlersin yazmak için powershell istenilen durum yapılandırmasını bir dil soyutlama olarak kullanır. Aracı PowerShell 6.2'nin bağımsız bir örneğini yükler, bu nedenle Windows PowerShell 5.1'de PowerShell DSC kullanımıyla çakışma olmaz ve PowerShell 6.2 veya sonraki leri önceden yükleme zorunluluğu yoktur.
 
-Yapılandırmanızda yalnızca Konuk yapılandırma Aracısı yüklemesine sahip olan kaynaklar gerekiyorsa, yalnızca bir yapılandırma MOF dosyası yazmanız gerekir. Ek betik çalıştırmanız gerekiyorsa, özel bir kaynak modülü yazmanız gerekir.
+DSC kavramları ve terminolojisi hakkında genel bir bakış için [PowerShell DSC Genel Bakış](/powershell/scripting/dsc/overview/overview)bölümüne bakın.
 
-### <a name="requirements-for-guest-configuration-custom-resources"></a>Konuk yapılandırması özel kaynakları için gereksinimler
+### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Konuk Yapılandırma modülleri Windows PowerShell DSC modüllerinden nasıl farklıdır?
 
-Konuk yapılandırması bir makineyi denetleyemiyorsa, önce doğru durumda olup olmadığını anlamak için `Test-TargetResource` çalışır. İşlevin döndürdüğü Boole değeri, Konuk atamasının Azure Resource Manager durumunun uyumlu olup olmadığını belirler. Boolean, yapılandırmadaki herhangi bir kaynak için `$false`, sağlayıcı `Get-TargetResource`çalışacaktır. Boolean `$true`, `Get-TargetResource` çağrılmaz.
+Konuk Yapılandırma bir makineyi denetlediğinde, ilk olarak doğru durumda olup olmadığını belirlemek için çalışır. `Test-TargetResource` İşlev tarafından döndürülen boolean değeri, Konuk Atama için Azure Kaynak Yöneticisi durumunun Uyumlu/Uyumlu olmaması gerektiğini belirler. Daha sonra `Get-TargetResource` sağlayıcı, her ayarın geçerli durumunu döndürmek için çalışır, böylece hem makinenin neden uyumlu olmadığı yla ilgili ayrıntılar kullanılabilir, hem de geçerli durumu uyumlu olduğunu onaylamak için kullanılabilir.
 
-#### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
+### <a name="get-targetresource-requirements"></a>Get-TargetResource gereksinimleri
 
-Konuk yapılandırmasının özel bir yapılandırmayı kullanması için tek gereksinim, yapılandırmanın adının kullanıldığı her yerde tutarlı olmasını sağlar. Bu ad gereksinimi, içerik paketi için. zip dosyasının adını, içerik paketi içinde depolanan MOF dosyasındaki yapılandırma adını ve konuk atama adı olarak bir Kaynak Yöneticisi şablonunda kullanılan yapılandırma adını içerir.
+İşlev, `Get-TargetResource` Windows İstenen Durum Yapılandırması için gerekli olmayan Konuk Yapılandırması için özel gereksinimlere sahiptir.
 
-#### <a name="get-targetresource-requirements"></a>Get-TargetResource gereksinimleri
-
-İşlev `Get-TargetResource`, Windows Istenen durum yapılandırması için gerekli olmayan konuk yapılandırması için özel gereksinimlere sahiptir.
-
-- Döndürülen Hashtable, **nedenler**adlı bir özellik içermelidir.
+- Döndürülen karma tablo, **Nedenler**adlı bir özelliği içermelidir.
 - Nedenler özelliği bir dizi olmalıdır.
-- Dizideki her öğe, **kod** ve **tümcecik**adlı anahtarlar içeren bir Hashtable olmalıdır.
+- Dizideki her **öğe, Kod** ve **Tümcecik**adlı anahtarlarla bir karma tablo olmalıdır.
 
-Nedenler özelliği, bir makine uyumsuz olduğunda bilgilerin nasıl sunulduğunu standartlaştırmak üzere hizmet tarafından kullanılır. Kaynağın uyumlu olmadığı bir "Neden" gibi nedenlerle her bir öğeyi düşünebilirsiniz. Bir kaynak bir nedenle uyumsuz olabileceğinden, bu özellik bir dizidir.
+Nedenler özelliği, bir makine uyumlu olmadığında bilgilerin nasıl sunulduğunu standartlaştırmak için hizmet tarafından kullanılır. Nedenler'deki her öğeyi kaynağın uyumlu olmamasının bir "nedeni" olarak düşünebilirsiniz. Kaynak birden fazla nedenden dolayı uyumsuz olabileceğinden, özellik bir dizidir.
 
-Hizmet tarafından Özellikler **kodu** ve **tümceciği** bekleniyor. Özel bir kaynak yazarken, **ifadenin**değeri olarak kaynağın uyumlu olmadığı bir nedenden dolayı göstermek istediğiniz metni (genellikle stdout) ayarlayın. **Kodun** belirli biçimlendirme gereksinimleri vardır, böylece raporlama, denetimi gerçekleştirmek için kullanılan kaynakla ilgili bilgileri açıkça görüntüleyebilir. Bu çözüm, Konuk yapılandırmasını Genişletilebilir hale getirir. Çıkış yakalanıp **tümcecik** özelliği için bir dize değeri olarak döndürülemedikçe, bir makineyi denetlemek için herhangi bir komut çalıştırılabilir.
+Özellikler **Kod** ve **Tümcecik** hizmet tarafından bekleniyor. Özel bir kaynak yazarken, kaynağın **Tümcecik**değeri olarak uyumlu olmamasının nedeni olarak göstermek istediğiniz metni (genellikle stdout) ayarlayın. **Raporlamanın** denetimi yapmak için kullanılan kaynak hakkındaki bilgileri açıkça görüntüleyebilmeleri için kod belirli biçimlendirme gereksinimlerine sahiptir. Bu çözüm, Konuk Yapılandırması genişletilebilir hale getirir. Tümevarı, **Tümcecik** özelliği için bir dize değeri olarak döndürülebildiği sürece herhangi bir komut çalıştırılabilir.
 
-- **Kod** (dize): kaynağın adı, tekrarlanması ve bir tanımlayıcı olarak boşluk olmayan kısa bir ad. Bu üç değer, boşluk olmadan iki nokta ile sınırlandırılmalıdır.
-  - Bir örnek `registry:registry:keynotpresent`
-- **Tümcecik** (dize): ayarın neden uyumlu olmadığını açıklamak için okunabilir metin.
-  - Bir örnek `The registry key $key is not present on the machine.`
+- **Kod** (string): Kaynağın adı, yinelenen ve daha sonra neden için bir tanımlayıcı olarak boşluk ları olmayan kısa bir ad. Bu üç değer, boşluk suz olarak iki nokta ile sınırlandırılmalıdır.
+  - Bir örnek olacaktır`registry:registry:keynotpresent`
+- **Tümcecik** (string): Ayarın neden uyumlu olmadığını açıklamak için insan tarafından okunabilir metin.
+  - Bir örnek olacaktır`The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -94,40 +102,39 @@ return @{
     reasons = $reasons
 }
 ```
+### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
 
-#### <a name="scaffolding-a-guest-configuration-project"></a>Konuk yapılandırma projesi yapı iskelesi
+Özel yapılandırmanın adı her yerde tutarlı olmalıdır. İçerik paketinin .zip dosyasının adı, MOF dosyasındaki yapılandırma adı ve Kaynak Yöneticisi şablonundaki konuk atama adı aynı olmalıdır.
 
-Örnek koddan çalışmaya başlama ve çalışma sürecini hızlandırmak isteyen geliştiriciler için, **Konuk yapılandırma projesi** adlı bir topluluk projesi [plaster](https://github.com/powershell/plaster) PowerShell modülü için şablon olarak mevcuttur. Bu araç, çalışan bir yapılandırma ve örnek kaynak dahil olmak üzere bir projeyi ve projeyi doğrulamak için bir dizi [pester](https://github.com/pester/pester) testini de kapsayan bir projeyi dolandırarak kullanılabilir. Şablon, Konuk yapılandırma paketini oluşturma ve doğrulamaya otomatik hale getirmek için Visual Studio Code görev çalıştıranlar de içerir. Daha fazla bilgi için bkz. GitHub proje [Konuk yapılandırma projesi](https://github.com/microsoft/guestconfigurationproject).
+### <a name="scaffolding-a-guest-configuration-project"></a>İskele Bir Konuk Yapılandırma projesi
 
-### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux üzerinde özel konuk yapılandırma yapılandırması
+Başlangıç sürecini hızlandırmak ve örnek koddan çalışmak isteyen geliştiriciler **Konuk Yapılandırma Projesi**adında bir topluluk projesi yükleyebilirler. Proje, [Alçı](https://github.com/powershell/plaster) PowerShell modülü için bir şablon yükler. Bu araç, çalışan bir yapılandırma ve örnek kaynak ve projeyi doğrulamak için bir dizi [Pester](https://github.com/pester/pester) testi içeren bir projeyi iskelek için kullanılabilir. Şablon ayrıca, Konuk Yapılandırma paketini otomatikleştirmek ve doğrulamak için Visual Studio Code için görev koşucularını da içerir. Daha fazla bilgi için GitHub projesi [Konuk Yapılandırma Projesi'ne](https://github.com/microsoft/guestconfigurationproject)bakın.
 
-Linux üzerinde Konuk yapılandırması için DSC yapılandırması, altyapıyı [Chef InSpec](https://www.chef.io/inspec/) tanımının adını sağlamak için `ChefInSpecResource` kaynağını kullanır. **Ad** , tek gerekli kaynak özelliğidir.
+Genel olarak yapılandırmalarla çalışma hakkında daha fazla bilgi için [bkz.](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)
 
-Aşağıdaki örnek **temel**olarak adlandırılan bir yapılandırma oluşturur, **guestconfiguration** kaynak modülünü içeri aktarır ve InSpec tanımının adını **Linux-patch-Baseline**olarak ayarla `ChefInSpecResource` kaynağını kullanır:
+### <a name="expected-contents-of-a-guest-configuration-artifact"></a>Konuk Yapılandırma artifakının beklenen içeriği
 
-```powershell
-# Define the DSC configuration and import GuestConfiguration
-Configuration baseline
-{
-    Import-DscResource -ModuleName 'GuestConfiguration'
+Tamamlanan paket, Azure İlkesi tanımlarını oluşturmak için Konuk Yapılandırma tarafından kullanılır. Paket aşağıdakilerden oluşur:
 
-    ChefInSpecResource 'Audit Linux patch baseline'
-    {
-        Name = 'linux-patch-baseline'
-    }
-}
+- MOF olarak derlenmiş DSC yapılandırması
+- Modüller klasörü
+  - GuestConfiguration modülü
+  - DscNativeResources modülü
+  - (Windows) MOF tarafından gerekli DSC kaynak modülleri
 
-# Compile the configuration to create the MOF files
-baseline
-```
+PowerShell cmdlets paketi oluşturmada yardımcı olur.
+Kök düzeyi klasörü veya sürüm klasörü gerekmez.
+Paket biçimi bir .zip dosyası olmalıdır.
 
-Daha fazla bilgi için bkz. [yazma, derleme ve yapılandırma uygulama](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
+### <a name="storing-guest-configuration-artifacts"></a>Konuk Yapılandırma yapılarını depolama
 
-### <a name="custom-guest-configuration-configuration-on-windows"></a>Windows 'da özel konuk yapılandırma yapılandırması
+.zip paketi, yönetilen sanal makineler tarafından erişilebilen bir konumda depolanmalıdır.
+Bunlara örnek olarak GitHub depoları, Azure Repo'su veya Azure depolama alanı verilebilir. Paketi herkese açık hale getirmemeyi tercih ederseniz, URL'ye bir [SAS belirteci](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ekleyebilirsiniz.
+Bu yapılandırma yalnızca pakete erişmek ve hizmetle iletişim kurmamak için geçerli olsa da, özel ağdaki makineler için [hizmet bitiş noktası](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) nı da uygulayabilirsiniz.
 
-Azure Ilke Konuk yapılandırması için DSC yapılandırması yalnızca Konuk yapılandırma Aracısı tarafından kullanılır; Windows PowerShell Istenen durum yapılandırması ile çakışmaz.
+## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Windows için özel bir Konuk Yapılandırma denetim ilkesi oluşturarak adım adım
 
-Aşağıdaki örnek, **Denetimbitlocker**adlı bir yapılandırma oluşturur, **guestconfiguration** kaynak modülünü içeri aktarır ve çalışan bir hizmeti denetlemek için `Service` kaynağını kullanır:
+Bir DSC yapılandırması oluşturun. Aşağıdaki PowerShell komut dosyası örneği **AuditBitLocker**adlı bir yapılandırma oluşturur, **PsDscResources** kaynak modüllerini içeri aktarır ve çalışan bir hizmet için denetim için `Service` kaynağı kullanır. Yapılandırma komut dosyası bir Windows veya macOS makinesinden yürütülebilir.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -135,114 +142,197 @@ Configuration AuditBitLocker
 {
     Import-DscResource -ModuleName 'PSDscResources'
 
-    Service 'Ensure BitLocker service is present and running'
-    {
-        Name = 'BDESVC'
-        Ensure = 'Present'
-        State = 'Running'
+    Node AuditBitlocker {
+      Service 'Ensure BitLocker service is present and running'
+      {
+          Name = 'BDESVC'
+          Ensure = 'Present'
+          State = 'Running'
+      }
     }
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker
+AuditBitLocker -out ./Config
 ```
 
-Daha fazla bilgi için bkz. [yazma, derleme ve yapılandırma uygulama](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
+Komut `Node AuditBitlocker` teknik olarak gerekli değildir, ancak varsayılan `AuditBitlocker.mof` yerine adlı `localhost.mof`bir dosya üretir. .mof dosya adının yapılandırmayı izlemesi, ölçekte çalışırken birçok dosyayı düzenlemeyi kolaylaştırır.
 
-## <a name="create-guest-configuration-custom-policy-package"></a>Konuk yapılandırması özel ilke paketi oluştur
+MOF derlendikten sonra, destekleyen dosyalar birlikte paketlenmelidir. Tamamlanan paket, Azure İlkesi tanımlarını oluşturmak için Konuk Yapılandırma tarafından kullanılır.
 
-MOF derlendikten sonra destekleyici dosyaların birlikte paketlenmesi gerekir. Tamamlanmış paket, Azure Ilke tanımlarını oluşturmak için konuk yapılandırması tarafından kullanılır. Paket aşağıdakilerden oluşur:
+Cmdlet `New-GuestConfigurationPackage` paketi oluşturur. Windows içeriği `New-GuestConfigurationPackage` oluştururken cmdlet parametreleri:
 
-- MOF olarak derlenen DSC yapılandırması
-- Modüller klasörü
-  - GuestConfiguration modülü
-  - Dscnativeresonakl modülü
-  - 'Un Chef InSpec tanımına ve ek içeriğe sahip bir klasör
-  - Pencerelerin Yerleşik olmayan DSC kaynak modülleri
+- **Adı**: Konuk Yapılandırma paket adı.
+- **Yapılandırma**: Derlenmiş DSC yapılandırma belgesi tam yol.
+- **Yol**: Çıktı klasörü yolu. Bu parametre isteğe bağlıdır. Belirtilmemişse, paket geçerli dizinde oluşturulur.
 
-`New-GuestConfigurationPackage` cmdlet 'i paketi oluşturur. Özel bir paket oluşturmak için aşağıdaki biçim kullanılır:
+Önceki adımda verilen yapılandırmayı kullanarak bir paket oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}' `
-    -Path '{OutputFolder}' -Verbose
+New-GuestConfigurationPackage `
+  -Name 'AuditBitlocker' `
+  -Configuration './Config/AuditBitlocker.mof'
 ```
 
-`New-GuestConfigurationPackage` cmdlet 'inin parametreleri:
+Yapılandırma paketini oluşturduktan sonra ancak Azure'da yayımlamadan önce, paketi iş istasyonunuzdan veya CI/CD ortamınızdan sınatabilirsiniz. GuestConfiguration cmdlet, `Test-GuestConfigurationPackage` Azure makinelerinde kullanılan la aynı aracıyı geliştirme ortamınızda içerir. Bu çözümü kullanarak, faturalı bulut ortamlarına bırakmadan önce yerel olarak tümleştirme sınama yapabilirsiniz.
 
-- **Ad**: Konuk yapılandırma paketi adı.
-- **Yapılandırma**: derlenen DSC yapılandırma belgesi tam yolu.
-- **Yol**: çıkış klasörü yolu. Bu parametre isteğe bağlıdır. Belirtilmezse, paket geçerli dizinde oluşturulur.
-- **Chefprofilepath**: InSpec profile tam yolu. Bu parametre yalnızca Linux 'u denetlemek için içerik oluşturulurken desteklenir.
+Aracı aslında yerel ortamı değerlendirdiğinden, çoğu durumda denetim yapmayı planladığınız aynı işletim sistemi platformunda Test-cmdlet çalıştırmanız gerekir.
 
-Tamamlanmış paketin, yönetilen sanal makineler tarafından erişilebilen bir konumda depolanması gerekir. GitHub depoları, bir Azure deposu veya Azure Storage örnekleri gösterilebilir. Paketi genel yapmayı tercih ediyorsanız, URL 'ye bir [SAS belirteci](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ekleyebilirsiniz.
-Ayrıca, özel bir ağdaki makineler için [hizmet uç noktası](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) da uygulayabilirsiniz, ancak bu yapılandırma yalnızca pakete erişim için geçerlidir ve hizmetle iletişim kurmamakla kalmaz.
+Cmdlet `Test-GuestConfigurationPackage` parametreleri:
 
-## <a name="test-a-guest-configuration-package"></a>Konuk yapılandırma paketini test etme
+- **Adı**: Konuk Yapılandırma ilkesi adı.
+- **Parametre**: Karma formatta sağlanan ilke parametreleri.
+- **Yol**: Konuk Yapılandırma paketinin tam yolu.
 
-Yapılandırma paketini oluşturduktan ve Azure 'a yayımlamadan önce, iş istasyonunuzdan veya CI/CD ortamınızdan paketin işlevlerini test edebilirsiniz. GuestConfiguration modülü, Azure makinelerinde kullanıldığı gibi geliştirme ortamınızda aynı aracıyı yükleyen bir cmdlet `Test-GuestConfigurationPackage` içerir. Bu çözümü kullanarak, faturalandırılan test/QA/üretim ortamlarına bırakmadan önce tümleştirme testini yerel olarak gerçekleştirebilirsiniz.
+Önceki adımtarafından oluşturulan paketi test etmek için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
-Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
+Test-GuestConfigurationPackage `
+  -Path ./AuditBitlocker.zip
 ```
 
-`Test-GuestConfigurationPackage` cmdlet 'inin parametreleri:
-
-- **Ad**: Konuk yapılandırma ilkesi adı.
-- **Parametre**: Hashtable biçiminde belirtilen ilke parametreleri.
-- **Yol**: Konuk yapılandırma paketinin tam yolu.
-
-Cmdlet 'i PowerShell ardışık düzeninde girişi de destekler. `New-GuestConfigurationPackage` cmdlet 'inin çıkışını `Test-GuestConfigurationPackage` cmdlet 'ine boru.
+Cmdlet ayrıca PowerShell boru hattından girişi destekler. `New-GuestConfigurationPackage` Cmdlet çıkışını cmdlet'e `Test-GuestConfigurationPackage` boru.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
+New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Parametrelerle test etme hakkında daha fazla bilgi için, [özel konuk yapılandırma ilkelerindeki parametreleri kullanarak](#using-parameters-in-custom-guest-configuration-policies)aşağıdaki bölüme bakın.
-
-## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Azure Ilke tanımı ve girişim dağıtım dosyalarını oluşturma
-
-Konuk yapılandırması özel ilke paketi oluşturulduktan ve makineler tarafından erişilebilen bir konuma yüklendikten sonra, Azure Ilkesi için konuk yapılandırma ilkesi tanımını oluşturun. `New-GuestConfigurationPolicy` cmdlet 'i, genel olarak erişilebilen bir konuk yapılandırması özel ilke paketini alır ve bir **Auditınotexists** ve **deployifnotexists** ilke tanımı oluşturur. İlke tanımlarının her ikisini de içeren bir ilke girişim tanımı da oluşturulur.
-
-Aşağıdaki örnek, Windows için bir konuk yapılandırması özel ilke paketinden belirtilen yolda ilke ve girişim tanımlarını oluşturur ve bir ad, açıklama ve sürüm sağlar:
+Bir sonraki adım, dosyayı blob depolama alanına yayımlamaktır. Aşağıdaki komut dosyası, bu görevi otomatikleştirmek için kullanabileceğiniz bir işlev içerir. `publish` İşlevde kullanılan komutlar `Az.Storage` modülü gerektirir.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPolicy
+function publish {
+    param(
+    [Parameter(Mandatory=$true)]
+    $resourceGroup,
+    [Parameter(Mandatory=$true)]
+    $storageAccountName,
+    [Parameter(Mandatory=$true)]
+    $storageContainerName,
+    [Parameter(Mandatory=$true)]
+    $filePath,
+    [Parameter(Mandatory=$true)]
+    $blobName
+    )
+
+    # Get Storage Context
+    $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
+        -Name $storageAccountName | `
+        ForEach-Object { $_.Context }
+
+    # Upload file
+    $Blob = Set-AzStorageBlobContent -Context $Context `
+        -Container $storageContainerName `
+        -File $filePath `
+        -Blob $blobName `
+        -Force
+
+    # Get url with SAS token
+    $StartTime = (Get-Date)
+    $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
+    $SAS = New-AzStorageBlobSASToken -Context $Context `
+        -Container $storageContainerName `
+        -Blob $blobName `
+        -StartTime $StartTime `
+        -ExpiryTime $ExpiryTime `
+        -Permission rl `
+        -FullUri
+
+    # Output
+    return $SAS
+}
+
+# replace the $storageAccountName value below, it must be globally unique
+$resourceGroup        = 'policyfiles'
+$storageAccountName   = 'youraccountname'
+$storageContainerName = 'artifacts'
+
+$uri = publish `
+  -resourceGroup $resourceGroup `
+  -storageAccountName $storageAccountName `
+  -storageContainerName $storageContainerName `
+  -filePath ./AuditBitlocker.zip `
+  -blobName 'AuditBitlocker'
+```
+
+Konuk Yapılandırma özel ilke paketi oluşturulduktan ve yüklendikten sonra Konuk Yapılandırma ilkesi tanımını oluşturun. Cmdlet `New-GuestConfigurationPolicy` özel bir ilke paketi alır ve bir ilke tanımı oluşturur.
+
+Cmdlet `New-GuestConfigurationPolicy` parametreleri:
+
+- **ContentUri**: Misafir Yapılandırması içerik paketinin genel http(ler) uri.
+- **DisplayName**: İlke ekran adı.
+- **Açıklama**: İlke açıklaması.
+- **Parametre**: Karma formatta sağlanan ilke parametreleri.
+- **Sürüm**: İlke sürümü.
+- **Yol**: İlke tanımlarının oluşturulduğu hedef yolu.
+- **Platform**: Konuk Yapılandırma politikası ve içerik paketi için hedef platformu (Windows/Linux).
+
+Aşağıdaki örnek, özel bir ilke paketinden belirli bir yolda ilke tanımlarını oluşturur:
+
+```azurepowershell-interactive
+New-GuestConfigurationPolicy `
     -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
     -DisplayName 'Audit BitLocker Service.' `
     -Description 'Audit if BitLocker is not enabled on Windows machine.' `
-    -Path '.\policyDefinitions' `
+    -Path './policies' `
     -Platform 'Windows' `
-    -Version 1.2.3.4 `
+    -Version 1.0.0 `
     -Verbose
 ```
 
-`New-GuestConfigurationPolicy` cmdlet 'inin parametreleri:
+Aşağıdaki dosyalar tarafından `New-GuestConfigurationPolicy`oluşturulur:
 
-- **ContentUri**: Konuk yapılandırması içerik paketinin genel HTTP URI 'si.
-- **DisplayName**: ilke görünen adı.
-- **Açıklama**: ilke açıklaması.
-- **Parametre**: Hashtable biçiminde belirtilen ilke parametreleri.
-- **Sürüm**: ilke sürümü.
-- **Yol**: ilke tanımlarının oluşturulduğu hedef yol.
-- **Platform**: Konuk yapılandırma ilkesi ve içerik paketi için hedef platform (Windows/Linux).
+- **auditIfNotExists.json**
+- **deployIfNotExists.json**
+- **Initiative.json**
 
-Aşağıdaki dosyalar `New-GuestConfigurationPolicy`tarafından oluşturulmuştur:
+Cmdlet çıktısı, ilke dosyalarının girişim görüntü adını ve yolunu içeren bir nesneyi döndürür.
 
-- **Auditınotexists. JSON**
-- **deployIfNotExists. JSON**
-- **Girişim. JSON**
+Son olarak, `Publish-GuestConfigurationPolicy` cmdlet kullanarak ilke tanımlarını yayımlayın. Cmdlet'te yalnızca JSON dosyalarının konumunu gösteren **Yol** parametresi `New-GuestConfigurationPolicy`vardır.
 
-Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu içeren bir nesne döndürür.
+Yayımla komutunu çalıştırmak için Azure'da ilkeler oluşturmak için erişime ihtiyacınız vardır. Belirli yetkilendirme gereksinimleri [Azure İlkelerine Genel Bakış](../overview.md) sayfasında belgelenmiştir. En iyi yerleşik rol **Kaynak İlkesi Katkıda Bulunan'** dır.
 
-Özel bir ilke projesi için bu komutu kullanmak istiyorsanız, bu dosyalarda değişiklik yapabilirsiniz. Bir örnek, makineler için belirli bir etiketin mevcut olup olmadığını değerlendirmek için ' If ' bölümünü değiştiriyor. İlke oluşturma hakkında ayrıntılı bilgi için bkz. [Program aracılığıyla ilke oluşturma](./programmatically-create.md).
+```azurepowershell-interactive
+Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
+```
 
-### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Özel Konuk yapılandırma ilkelerinde parametreleri kullanma
+Cmdlet `Publish-GuestConfigurationPolicy` PowerShell boru hattından gelen yolu kabul eder. Bu özellik, ilke dosyalarını oluşturabileceğiniz ve bunları tek bir borulu komut kümesinde yayımlayabileceğiniz anlamına gelir.
 
-Konuk yapılandırması, çalışma zamanında bir yapılandırmanın özelliklerini geçersiz kılmayı destekler. Bu özellik, paketteki MOF dosyasındaki değerlerin statik olarak değerlendirilmesi gerekmediği anlamına gelir. Geçersiz kılma değerleri Azure Ilkesi aracılığıyla sağlanır ve yapılandırmaların nasıl yazıldığı veya derlendiğini etkilemez.
+```azurepowershell-interactive
+New-GuestConfigurationPolicy `
+ -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
+  -DisplayName 'Audit BitLocker service.' `
+  -Description 'Audit if the BitLocker service is not enabled on Windows machine.' `
+  -Path './policies' `
+ | Publish-GuestConfigurationPolicy
+```
 
-Cmdlet 'ler `New-GuestConfigurationPolicy` ve `Test-GuestConfigurationPolicyPackage` **Parametreler**adlı bir parametre içerir. Bu parametre, her bir parametre hakkında tüm ayrıntıları içeren bir Hashtable tanımı alır ve her bir Azure Ilke tanımını oluşturmak için kullanılan dosyaların tüm gerekli bölümlerini otomatik olarak oluşturur.
+Azure'da oluşturulan ilkeyle, son adım girişimi atamaktır. [Girişimi Portal](../assign-policy-portal.md), [Azure CLI](../assign-policy-azurecli.md)ve Azure [PowerShell](../assign-policy-powershell.md)ile nasıl ataysüreceğinizi görün.
 
-Aşağıdaki örnek, kullanıcının Ilke ataması sırasında bir hizmetler listesinden seçtiği bir hizmeti denetlemek için bir Azure Ilkesi oluşturur.
+> [!IMPORTANT]
+> Konuk Yapılandırma ilkeleri **her zaman** _AuditIfNotExists ve DeployIfNotExists_ ilkelerini birleştiren girişimi kullanarak atanmalıdır. _DeployIfNotExists_ Yalnızca _AuditIfNotExists_ ilkesi atanmışsa, ön koşullar dağıtılmazsa ve ilke her zaman '0' sunucularının uyumlu olduğunu gösterir.
+
+_DeployIfNotExists_ efekti ile bir ilke tanımı atamak ek bir erişim düzeyi gerektirir. En az ayrıcalık vermek için, **Kaynak İlkesi Katkıda Bulunan'ı**genişleten özel bir rol tanımı oluşturabilirsiniz. Aşağıdaki örnekte, _Microsoft.Authorization/roleAssignments/write_adlı ek izinle **Kaynak İlkesi Katılımcısı DINE** adlı bir rol oluşturulur.
+
+```azurepowershell-interactive
+$subscriptionid = '00000000-0000-0000-0000-000000000000'
+$role = Get-AzRoleDefinition "Resource Policy Contributor"
+$role.Id = $null
+$role.Name = "Resource Policy Contributor DINE"
+$role.Description = "Can assign Policies that require remediation."
+$role.Actions.Clear()
+$role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
+$role.AssignableScopes.Clear()
+$role.AssignableScopes.Add("/subscriptions/$subscriptionid")
+New-AzRoleDefinition -Role $role
+```
+
+### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Özel Konuk Yapılandırma ilkelerinde parametreleri kullanma
+
+Konuk Yapılandırma, çalışma zamanında bir Yapılandırmanın geçersiz kılma özelliklerini destekler. Bu özellik, paketteki MOF dosyasındaki değerlerin statik olarak kabul edilmesi gerekmez anlamına gelir. Geçersiz kılma değerleri Azure İlkesi aracılığıyla sağlanır ve Yapılandırmaların nasıl yazLandığını veya derleniş olduğunu etkilemez.
+
+Cmdlets `New-GuestConfigurationPolicy` ve `Test-GuestConfigurationPolicyPackage` **Parametreler**adlı bir parametre içerir. Bu parametre, her parametreyle ilgili tüm ayrıntıları içeren karma bir tanım alır ve Azure İlkesi tanımı için kullanılan her dosyanın gerekli bölümlerini oluşturur.
+
+Aşağıdaki örnek, kullanıcının ilke ataması sırasında bir listeden seçtiği bir hizmeti denetlemek için bir ilke tanımı oluşturur.
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(
@@ -264,126 +354,62 @@ New-GuestConfigurationPolicy
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
     -Parameters $PolicyParameterInfo `
-    -Platform 'Windows' `
-    -Version 1.2.3.4 `
-    -Verbose
+    -Version 1.0.0
 ```
-
-Linux ilkeleri için, yapılandırmanızda **Attributesymlcontent** özelliğini ekleyin ve değerleri gerektiği gibi üzerine yazın. Konuk yapılandırma Aracısı, öznitelikleri depolamak için InSpec tarafından kullanılan YAML dosyasını otomatik olarak oluşturur. Aşağıdaki örneğe bakın.
-
-```powershell
-Configuration FirewalldEnabled {
-
-    Import-DscResource -ModuleName 'GuestConfiguration'
-
-    Node FirewalldEnabled {
-
-        ChefInSpecResource FirewalldEnabled {
-            Name = 'FirewalldEnabled'
-            AttributesYmlContent = "DefaultFirewalldProfile: [public]"
-        }
-    }
-}
-```
-
-Her ek parametre için diziye bir Hashtable ekleyin. İlke dosyalarında, Konuk yapılandırması configurationName öğesine eklenen ve kaynak türünü, adı, özelliği ve değeri tanımlayan Özellikler görürsünüz.
-
-```json
-{
-    "apiVersion": "2018-11-20",
-    "type": "Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments",
-    "name": "[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "guestConfiguration": {
-            "name": "[parameters('configurationName')]",
-            "version": "1.*",
-            "configurationParameter": [{
-                "name": "[Service]windowsService;Name",
-                "value": "[parameters('ServiceName')]"
-            }]
-        }
-    }
-}
-```
-
-## <a name="publish-to-azure-policy"></a>Azure Ilkesinde Yayımla
-
-**Guestconfiguration** kaynak modülü, Azure 'da `Publish-GuestConfigurationPolicy` cmdlet 'i aracılığıyla tek bir adımla hem ilke tanımlarını hem de girişim tanımını oluşturmak için bir yol sunar.
-Cmdlet 'i yalnızca `New-GuestConfigurationPolicy`tarafından oluşturulan üç JSON dosyasının konumunu işaret eden **Path** parametresine sahiptir.
-
-```azurepowershell-interactive
-Publish-GuestConfigurationPolicy -Path '.\policyDefinitions' -Verbose
-```
-
-`Publish-GuestConfigurationPolicy` cmdlet 'i PowerShell işlem hattının yolunu kabul eder. Bu özellik, ilke dosyalarını oluşturabileceğiniz ve bunları tek bir dizi komut dosyası içinde yayımlayabileceği anlamına gelir.
-
-```azurepowershell-interactive
-New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' -DisplayName 'Audit BitLocker service.' -Description 'Audit if the BitLocker service is not enabled on Windows machine.' -Path '.\policyDefinitions' -Platform 'Windows' -Version 1.2.3.4 -Verbose | ForEach-Object {$_.Path} | Publish-GuestConfigurationPolicy -Verbose
-```
-
-Azure 'da oluşturulan ilke ve girişim tanımlarıyla, son adım girişimi atayacaktır. Bkz. girişim, [Portal](../assign-policy-portal.md), [Azure CLI](../assign-policy-azurecli.md)ve [Azure PowerShell](../assign-policy-powershell.md)nasıl atanır.
-
-> [!IMPORTANT]
-> Konuk yapılandırma ilkelerine **her zaman** _Auditınotexists_ ve _deployifnotexists_ ilkelerini birleştiren girişim kullanılarak atanmalıdır. Yalnızca _Auditınotexists_ ilkesi atanırsa, Önkoşullar dağıtılır ve ilke her zaman ' 0 ' sunucularının uyumlu olduğunu gösterir.
 
 ## <a name="policy-lifecycle"></a>İlke yaşam döngüsü
 
-Özel içerik paketinizi kullanarak özel bir Azure Ilkesi yayımladıktan sonra, yeni bir sürüm yayınlamak istiyorsanız, güncelleştirilmeleri gereken iki alan vardır.
+İlke için bir güncelleştirme yayımlamak istiyorsanız, dikkat gerektiren iki alan vardır.
 
-- **Sürüm**: `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir. Özelliği, uzantının paketin güncelleştirildiğini tanıması için, yeni ilke dosyasındaki Konuk yapılandırma atamasının sürümünü güncelleştirir.
-- **contentHash**: bu özellik `New-GuestConfigurationPolicy` cmdlet 'i tarafından otomatik olarak güncelleştirilir. Bu, `New-GuestConfigurationPackage`tarafından oluşturulan paketin karma değeridir. Özelliği, yayımladığınız `.zip` dosyası için doğru olmalıdır. Yalnızca **contentUri** özelliği güncelleştirilirse (örneğin, birisi portalın ilke tanımında el ile değişiklik yapabildiği durumlarda), uzantı içerik paketini kabul etmez.
+- **Sürüm**: Cmdlet'i `New-GuestConfigurationPolicy` çalıştırdığınızda, şu anda yayınlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir. Özellik, konuk yapılandırma atamasının sürümünü güncelleştiren aracının güncelleştirilmiş paketi tanıması için güncelleştirir.
+- **contentHash**: Bu özellik `New-GuestConfigurationPolicy` cmdlet tarafından otomatik olarak güncellenir. Bu tarafından `New-GuestConfigurationPackage`oluşturulan paketin karma değeri. Özellik, yayımladırdığınız `.zip` dosya için doğru olmalıdır. Yalnızca **contentUri** özelliği güncelleştirilirse, Uzantı içerik paketini kabul etmez.
 
-Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açıklanan süreci tekrarlamanız ve güncelleştirilmiş bir sürüm numarası sağlamaktır. Bu işlem, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin garanti eder.
+Güncelleştirilmiş bir paketi serbest bırakmanın en kolay yolu, bu makalede açıklanan işlemi yinelemek ve güncelleştirilmiş bir sürüm numarası sağlamaktır. Bu işlem, tüm özelliklerin doğru şekilde güncelleştirildiğini garanti eder.
 
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows grup ilkesi içeriğini Azure Ilke Konuk yapılandırması 'na dönüştürme
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows Grubu İlkesi içeriğini Azure İlkesi Konuk Yapılandırmasına dönüştürme
 
-Konuk yapılandırması, Windows makinelerini denetlerken, PowerShell Istenen durum yapılandırması sözdiziminin bir uygulamasıdır. DSC topluluğu, içe aktarılmış grup ilkesi şablonlarını DSC biçimine dönüştürmek için araç yayımladı. Yukarıda açıklanan Konuk yapılandırma cmdlet 'leriyle birlikte bu aracı kullanarak Windows grup ilkesi içeriğini ve paketini dönüştürebilir/Azure Ilkesi için onu denetlemek üzere yayımlayabilirsiniz. Aracı kullanma hakkında ayrıntılı bilgi için [hızlı başlangıç: Grup ILKESI DSC 'ye dönüştürme](/powershell/scripting/dsc/quickstarts/gpo-quickstart)makalesine bakın.
-İçerik dönüştürüldükten sonra, bir paket oluşturmak ve Azure Ilkesi olarak yayımlamak için yukarıdaki adımlar, her DSC içeriğiyle aynı olacaktır.
+Konuk Yapılandırma, Windows makineleri denetlerken, PowerShell İstenen Durum Yapılandırma sözdiziminin bir uygulamasıdır. DSC topluluğu, dışa aktarılan Grup İlkesi şablonlarını DSC biçimine dönüştürmek için araç yayımladı. Bu aracı yukarıda açıklanan Konuk Yapılandırma cmdlet'leriyle birlikte kullanarak Windows Grubu İlkesi içeriğini dönüştürebilir ve Azure İlkesi'nin denetlenesi için paketleyebilir/yayımlayabilirsiniz. Aracı kullanma yla ilgili ayrıntılar için [Quickstart: Grup İlkesi'ni DSC'ye dönüştürün makalesine](/powershell/scripting/dsc/quickstarts/gpo-quickstart)bakın.
+İçerik dönüştürüldükten sonra, bir paket oluşturmak ve Azure İlkesi olarak yayımlamak için yukarıdaki adımlar, herhangi bir DSC içeriğiyle aynıdır.
 
-## <a name="optional-signing-guest-configuration-packages"></a>Isteğe bağlı: Konuk yapılandırma paketleri Imzalanıyor
+## <a name="optional-signing-guest-configuration-packages"></a>İsteğe bağlı: Konuk Yapılandırma paketlerini imzalama
 
-Konuk yapılandırması özel ilkeleri varsayılan olarak SHA256 karmasını kullanarak ilke paketinin, denetlenen sunucu tarafından okunarak ' de yayınlanma sırasında değiştirildiğini doğrular.
-İsteğe bağlı olarak, müşteriler paketleri imzalamak ve konuk yapılandırma uzantısını yalnızca imzalı içeriğe izin verecek şekilde zorlamak için bir sertifika da kullanabilir.
+Konuk Yapılandırma özel ilkeleri, ilke paketinin değişmediğini doğrulamak için SHA256 karma sını kullanır.
+İsteğe bağlı olarak, müşteriler paketleri imzalamak ve Konuk Yapılandırma uzantısını yalnızca imzalı içeriğe izin vermeye zorlamak için bir sertifika da kullanabilir.
 
-Bu senaryoyu etkinleştirmek için, gerçekleştirmeniz gereken iki adım vardır. İçerik paketini imzalamak için cmdlet 'ini çalıştırın ve kodun imzalanmasını gerektirecek makinelere bir etiket ekleyin.
+Bu senaryoyu etkinleştirmek için tamamlamanız gereken iki adım vardır. İçerik paketini imzalamak için cmdlet'i çalıştırın ve kodun imzalanması nı gerektiren makinelere bir etiket eklendi.
 
-Imza doğrulama özelliğini kullanmak için, paketi yayımlanmadan önce imzalamak üzere `Protect-GuestConfigurationPackage` cmdlet 'ini çalıştırın. Bu cmdlet ' kod Imzalama ' sertifikası gerektirir.
+İmza Doğrulama özelliğini kullanmak `Protect-GuestConfigurationPackage` için, paketi yayımlanmadan önce imzalamak için cmdlet'i çalıştırın. Bu cmdlet bir 'Kod İmzalama' sertifikası gerektirir.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert") }
 Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Certificate $Cert -Verbose
 ```
 
-`Protect-GuestConfigurationPackage` cmdlet 'inin parametreleri:
+Cmdlet `Protect-GuestConfigurationPackage` parametreleri:
 
-- **Yol**: Konuk yapılandırma paketinin tam yolu.
-- **Sertifika**: paketi imzalamak için kod imzalama sertifikası. Bu parametre yalnızca Windows için içerik imzalanırken desteklenir.
-- **Privategpgkeypath**: özel GPG anahtar yolu. Bu parametre yalnızca Linux için içerik imzalanırken desteklenir.
-- **Publicgpgkeypath**: genel GPG anahtar yolu. Bu parametre yalnızca Linux için içerik imzalanırken desteklenir.
+- **Yol**: Konuk Yapılandırma paketinin tam yolu.
+- **Sertifika**: Paketi imzalamak için kod imzalama sertifikası. Bu parametre yalnızca Windows için içerik imzalarken desteklenir.
 
-GuestConfiguration Aracısı, sertifika ortak anahtarının Windows makinelerde "güvenilen kök sertifika yetkilileri" içinde ve Linux makinelerdeki `/usr/local/share/ca-certificates/extra` yolunda bulunmasını bekler. İmzalanan içeriğin doğrulanması için düğüm için, özel ilkeyi uygulamadan önce makineye ortak anahtarı yükler. Bu işlem, VM içindeki herhangi bir teknik veya Azure Ilkesi kullanılarak gerçekleştirilebilir. Burada örnek bir şablon [verilmiştir](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
-Key Vault erişim ilkesi, dağıtım sırasında Işlem Kaynak sağlayıcısının sertifikalara erişmesine izin vermelidir. Ayrıntılı adımlar için bkz. [Azure Resource Manager sanal makineler için Key Vault ayarlama](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
+GuestConfiguration aracısı, sertifika ortak anahtarının Windows makinelerinde "Güvenilir Kök Sertifikası Yetkilileri"nde ve Linux makinelerinde yolda `/usr/local/share/ca-certificates/extra` bulunmasını bekler. Düğümün imzalı içeriği doğrulamak için özel ilkeyi uygulamadan önce sertifika ortak anahtarını makineye yükleyin. Bu işlem, VM içindeki herhangi bir teknik kullanılarak veya Azure İlkesi kullanılarak yapılabilir. Burada bir örnek şablon [sağlanmaktadır.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)
+Key Vault erişim ilkesi, Bilgi İşlem kaynak sağlayıcısının dağıtımlar sırasında sertifikalara erişmesine izin vermelidir. Ayrıntılı adımlar için Azure [Kaynak Yöneticisi'ndeki sanal makineler için Anahtar Kasası Ayarlama'ya](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)bakın.
 
-Aşağıda, bir imzalama sertifikasından ortak anahtarı dışarı aktarmak için makineye aktarmak üzere bir örnek verilmiştir.
+Aşağıda, ortak anahtarı imzalama sertifikasından dışa aktarmak ve makineye aktarmak için bir örnek verilmiştir.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Linux makinelerle kullanılmak üzere GPG anahtarları oluşturmaya yönelik iyi bir başvuru, GitHub 'daki bir makale tarafından sağlanır ve [Yeni BIR gpg anahtarı](https://help.github.com/en/articles/generating-a-new-gpg-key)oluşturur.
+İçeriğiniz yayınlandıktan sonra, kod imzalamanın gerekli olduğu tüm sanal makinelere ad `GuestConfigPolicyCertificateValidation` ve değer `enabled` içeren bir etiket ekleyerek. Etiketlerin Azure İlkesi'ni kullanarak ölçekte nasıl teslim edilebildiğini öğrenmek için [Etiket örneklerine](../samples/built-in-policies.md#tags) bakın. Bu etiket yerleştirildikten sonra, `New-GuestConfigurationPolicy` cmdlet kullanılarak oluşturulan ilke tanımı, Konuk Yapılandırma uzantısı aracılığıyla gereksinimi sağlar.
 
-İçeriğiniz yayımlandıktan sonra, kod imzasının gerekli olması gereken tüm sanal makinelere ad `GuestConfigPolicyCertificateValidation` ve değer `enabled` içeren bir etiket ekleyin. Etiketlerin Azure Ilkesi kullanılarak nasıl ölçeklenebilmesini için [etiket örneklerine](../samples/built-in-policies.md#tags) bakın. Bu etiket oluşturulduktan sonra, `New-GuestConfigurationPolicy` cmdlet 'i kullanılarak oluşturulan ilke tanımı, Konuk yapılandırma uzantısı aracılığıyla gereksinimi mümkün bir şekilde sunar.
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Sorun giderme Konuk Yapılandırma ilkesi atamaları (Önizleme)
 
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Konuk yapılandırma ilkesi atamaları sorunlarını giderme (Önizleme)
+Azure İlkesi Konuk Yapılandırma atamalarının sorun gidermesinde yardımcı olmak için önizlemede kullanılabilen bir araç. Araç önizleme de ve modül adı [Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)olarak PowerShell Galerisi'nde yayınlanmıştır.
 
-Azure Ilke Konuk yapılandırması atamaları sorunlarını gidermeye yardımcı olmak için Önizleme sürümünde bir araç sunulmaktadır. Araç önizlemededir ve modül adı [Konuk yapılandırması sorun giderici](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)olarak PowerShell Galerisi yayımlandı.
-
-Bu araçtaki cmdlet 'ler hakkında daha fazla bilgi için yerleşik Kılavuzu göstermek üzere PowerShell 'deki Get-Help komutunu kullanın. Araç sık sık güncelleştirmeler alırken bu, en son bilgileri almanın en iyi yoludur.
+Bu araçtaki cmdletler hakkında daha fazla bilgi için, yerleşik kılavuzu göstermek için PowerShell'deki Yardım Al komutunu kullanın. Araç sık sık güncelleştirmeler alırken, en son bilgileri almanın en iyi yolu bu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Konuk yapılandırması](../concepts/guest-configuration.md)olan VM 'leri denetleme hakkında bilgi edinin.
-- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
-- [Uyumluluk verilerini nasıl alabileceğinizi](get-compliance-data.md)öğrenin.
+- [Konuk Yapılandırması](../concepts/guest-configuration.md)ile VM'leri denetleme hakkında bilgi edinin.
+- [İlkeleri programlı bir şekilde nasıl oluşturlayacağımı](programmatically-create.md)anlayın.
+- Uyumluluk verilerini nasıl [alacağınızı](get-compliance-data.md)öğrenin.

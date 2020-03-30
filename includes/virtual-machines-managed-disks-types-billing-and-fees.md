@@ -9,27 +9,27 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 2303d36e93cecfca03894a8b0e55458c03b13d78
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73413019"
 ---
-**Giden veri aktarımları**: [giden veri aktarımları](https://azure.microsoft.com/pricing/details/bandwidth/) (Azure veri merkezlerinden çıkan veriler) bant genişliği kullanımı için faturalandırılır.
+**Giden veri aktarımları**: [Giden veri aktarımları](https://azure.microsoft.com/pricing/details/bandwidth/) (Azure veri merkezlerinden çıkan veriler) bant genişliği kullanımı için faturalandırmaya tabidir.
 
-**İşlemler**: Standart yönetilen bir diskte gerçekleştirdiğiniz işlem sayısı için faturalandırılırsınız. Standart SSD 'Ler için, 256 kıb aktarım hızına eşit veya daha küçük olan her g/ç işlemi tek bir g/ç işlemi olarak kabul edilir. 256 Kigb 'den büyük g/ç işlemleri, 256 KiB boyutundaki birden fazla g/ç işlemi olarak kabul edilir. Standart HDD 'Ler için, her GÇ işlemi, g/ç boyutundan bağımsız olarak tek bir işlem olarak değerlendirilir.
+**Hareketler**: Standart yönetilen bir diskte gerçekleştirdiğiniz hareket sayısı için faturalandırılırsınız. Standart SSD'ler için, 256 KiB'den daha az veya 256 KiB'den daha az veya eşit olan her G/Ç işlemi tek bir G/Ç işlemi olarak kabul edilir. 256 KiB'den büyük i/ç işlemleri, 256 KiB boyutunda birden fazla G/Ç olarak kabul edilir. Standart HDD'ler için, Her IO işlemi, G/Ç boyutundan bağımsız olarak tek bir işlem olarak kabul edilir.
 
-İşlem maliyetleri dahil olmak üzere yönetilen disklere yönelik fiyatlandırma hakkında ayrıntılı bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks).
+Yönetilen Diskler için işlem maliyetleri de dahil olmak üzere fiyatlandırma hakkında ayrıntılı bilgi [için](https://azure.microsoft.com/pricing/details/managed-disks)bkz.
 
-### <a name="ultra-disk-vm-reservation-fee"></a>Ultra disk VM ayırma ücreti
+### <a name="ultra-disk-vm-reservation-fee"></a>Ultra disk VM rezervasyon ücreti
 
-Azure VM 'Leri, Ultra disklerle uyumlu olup olmadığını gösterebilir. Bir ultra disk uyumlu VM, performansı iyileştirmek ve gecikme süresini azaltmak için işlem VM örneği ve blok depolama ölçek birimi arasında ayrılmış bant genişliği kapasitesini ayırır. Bu özelliği sanal makineye eklemek, yalnızca bir ultra disk iliştirmeden VM 'de Ultra disk özelliğini etkinleştirdiyseniz uygulanan bir rezervasyon ücretine neden olur. Ultra disk uyumlu VM 'ye bir ultra disk eklendiğinde, bu ücret uygulanmaz. Bu ücret, VM 'de sağlanan vCPU başına. 
+Azure VM'ler, ultra disklerle uyumlu olup olmadıklarını belirtme özelliğine sahiptir. Ultra disk uyumlu VM, performansı optimize etmek ve gecikme süresini azaltmak için işlem VM örneği ile blok depolama ölçeği birimi arasında özel bant genişliği kapasitesi ayırır. VM'de bu özelliğin eklenmesi, yalnızca VM'de ultra disk özelliğini ultra disk eklemeden etkinleştirdiyseniz uygulanan bir rezervasyon ücretiyle sonuçlanır. Ultra disk uyumlu VM'ye bir ultra disk takıldığında, bu ücret uygulanmaz. Bu ücret VM'de sağlanan vCPU başına dır. 
 
 > [!Note]
-> [Kısıtlanmış çekırdek VM boyutları](../articles/virtual-machines/linux/constrained-vcpu.md)için, rezervasyon ücreti, kısıtlı çekirdekler değil, gerçek vCPU sayısına dayanır. Standard_E32-8s_v3 için, ayırma ücreti 32 çekirdekleri temel alır. 
+> [Kısıtlı çekirdek VM boyutları](../articles/virtual-machines/linux/constrained-vcpu.md)için rezervasyon ücreti, kısıtlı çekirdeklere değil, gerçek vCPUs sayısına bağlıdır. Standard_E32-8s_v3 için rezervasyon ücreti 32 çekirdek esas alınacaktır. 
 
-Ultra disk fiyatlandırma ayrıntıları için [Azure diskleri fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/managed-disks/) bakın.
+Ultra disk fiyatlandırma ayrıntıları için [Azure Diskleri fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/managed-disks/) bakın.
 
-### <a name="azure-disk-reservation"></a>Azure disk ayırma
+### <a name="azure-disk-reservation"></a>Azure disk rezervasyonu
 
-Disk ayırma, indirimli bir yıllık disk depolama alanı satın alma seçeneğidir ve toplam maliyetinizi azaltır. Bir disk ayırması satın alırken, bir yıllık dönem için Doğu ABD 2 bölgede bulunan 10 P30 (1TiB) Premium SSDs gibi bir hedef bölgede belirli bir disk SKU 'SU seçersiniz. Ayırma deneyimi, ayrılmış sanal makine (VM) örneklerine benzerdir. Tasarruf etmenizi en üst düzeye çıkarmak için VM ve disk ayırmalarını paketleyebilirsiniz. Azure disk rezervasyonu şimdilik, P30 (1TiB) ile P80 (32 TiB) arasında Premium SSD SKU 'Ları için tüm üretim bölgelerinde bir yıl taahhüt planı sunar. Ayrılmış diskler fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure diskleri fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/managed-disks/).
+Disk rezervasyonu, bir yıllık disk depolama işlemini indirimli olarak peşin satın alma seçeneğidir ve toplam maliyetinizi düşürür. Bir disk rezervasyonu satın alırken, bir yıl için Doğu ABD 2 bölgesinde 10 P30 (1TiB) premium SSD gibi hedef bölgede belirli bir Disk SKU'su seçersiniz. Rezervasyon deneyimi, ayrılmış sanal makine (VM) örneklerine benzer. Tasarruflarınızı en üst düzeye çıkarmak için VM ve Disk rezervasyonlarını paketleyebilirsiniz. Azure Diskleri Rezervasyon, şimdilik tüm üretim bölgelerinde P30 (1TiB) ile P80 (32 TiB) arasında premium SSD SDO'lar için bir yıllık taahhüt planı sunmaktadır. Ayrılmış Diskler fiyatlandırması hakkında daha fazla bilgi için [Azure Diskleri fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/managed-disks/)bakın.

@@ -1,53 +1,53 @@
 ---
-title: Android 'den Windows sanal masaüstüne bağlanma-Azure
-description: Android istemcisini kullanarak Windows sanal masaüstüne bağlanma.
+title: Android'den Windows Sanal Masaüstüne bağlanın - Azure
+description: Android istemcisini kullanarak Windows Sanal Masaüstüne nasıl bağlanabilirsiniz?
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99d52077d84ab8a9495f92d9c75fb742ff988ba8
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d2990c82efbcdac7d453f920301787b8c83db1e9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128263"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295370"
 ---
 # <a name="connect-with-the-android-client"></a>Android istemcisiyle bağlanma
 
-> İçin geçerlidir: Android 4,1 ve üzeri, Kmeos 53 ve üzeri ile Kmebooks.
+> Geçerli olan: Android 4.1 ve sonrası, ChromeOS 53 ve sonraki Chromebook'lar.
 
 >[!NOTE]
-> Android istemcisinden Windows sanal masaüstü kaynaklarına erişme özelliği şu anda önizleme aşamasındadır.
+> Android istemcisinden Windows Sanal Masaüstü kaynaklarına erişebilme özelliği şu anda önizlemede mevcuttur.
 
-Windows sanal masaüstü kaynaklarına, indirilebilir istemcimizi kullanarak Android cihazınızdan erişebilirsiniz. Google Play Store destekleyen Kmebook cihazlarında Android istemcisini de kullanabilirsiniz. Bu kılavuz, Android istemcisini nasıl ayarlayacağınızı bildirir.
+İndirilebilir istemcimiz ile Android cihazınızdan Windows Sanal Masaüstü kaynaklarına erişebilirsiniz. Android istemcisini Google Play Store'u destekleyen Chromebook cihazlarında da kullanabilirsiniz. Bu kılavuz, Android istemcisini nasıl kuracağınızı size söyleyecektir.
 
-## <a name="install-the-android-client"></a>Android istemcisini yükler
+## <a name="install-the-android-client"></a>Android istemcisini yükleme
 
-Kullanmaya başlamak için, istemcisini Android cihazınıza [indirin](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android) ve yükleyin.
+Başlamak için istemciyi Android cihazınıza [indirin](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) ve yükleyin.
 
-## <a name="subscribe-to-a-feed"></a>Bir akışa abone olma
+## <a name="subscribe-to-a-feed"></a>Özet akışına abone ol
 
-Android cihazınıza erişebileceğiniz yönetilen kaynakların listesini almak için yöneticiniz tarafından sunulan akışa abone olun.
+Android cihazınızda erişebileceğiniz yönetilen kaynakların listesini almak için yöneticiniz tarafından sağlanan özet akışına abone olun.
 
-Bir akışa abone olmak için:
+Özet akışına abone olmak için:
 
-1. Bağlantı merkezi 'nde **+** ' a ve ardından **uzak kaynak akışı**' na dokunun.
-2. Akış **URL 'si alanına AKıŞ** URL 'sini girin. Akış URL 'SI ya bir URL ya da bir e-posta adresi olabilir.
-   - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın, genellikle <https://rdweb.wvd.microsoft.com>.
-   - E-posta kullanmak için e-posta adresinizi girin. Yöneticiniz sunucuyu bu şekilde yapılandırdıysa istemci, e-posta adresinizle ilişkili bir URL arar.
-3. **İleri**' ye dokunun.
+1. Bağlantı Merkezi'nde, **+** **Uzak Kaynak Akışı'na**dokunun.
+2. Özet akışı URL'sini **Feed URL** alanına girin. Özet akışı URL'si bir URL veya e-posta adresi olabilir.
+   - Bir URL kullanıyorsanız, yöneticinizin size verdiği <https://rdweb.wvd.microsoft.com>URL'yi kullanın.
+   - E-postakullanmak için e-posta adresinizi girin. Yöneticiniz sunucuyu bu şekilde yapılandırırsa, istemci e-posta adresinizle ilişkili bir URL arar.
+3. **NEXT'e**dokunun.
 4. İstendiğinde kimlik bilgilerinizi sağlayın.
-   - **Kullanıcı adı**için, Kullanıcı adına kaynaklara erişim izni verin.
-   - **Parola**için Kullanıcı adıyla ilişkili parolayı verin.
-   - Ayrıca, yöneticinizin kimlik doğrulamasını bu şekilde yapılandırdıysa ek etmenler sağlamanız istenebilir.
+   - **Kullanıcı adı**için, kaynaklara erişmek için izin veren kullanıcı adı verin.
+   - **Parola**için, kullanıcı adı ile ilişkili parolayı verin.
+   - Yöneticiniz kimlik doğrulamasını bu şekilde yapılandırırsa ek etkenler sağlamanız da isdenedilebilir.
 
-Abone olduktan sonra bağlantı merkezi, uzak kaynakları görüntülemelidir.
+Abone olduktan sonra Bağlantı Merkezi uzak kaynakları görüntülemelidir.
 
-Akışa abone olduktan sonra akışın içeriği düzenli aralıklarla otomatik olarak güncelleştirilecek. Kaynaklar, yöneticiniz tarafından yapılan değişikliklere göre eklenebilir, değiştirilebilir veya kaldırılabilir.
+Bir özet akışına abone olduktan sonra, özet akışının içeriği düzenli olarak otomatik olarak güncellenir. Kaynaklar, yöneticiniz tarafından yapılan değişikliklere göre eklenebilir, değiştirilebilir veya kaldırılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Android istemcisini kullanma hakkında daha fazla bilgi edinmek için [Android istemcisini kullanmaya başlama](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/)konusunu inceleyin.
+Android istemcisini nasıl kullanacağınız hakkında daha fazla bilgi edinmek için Android [istemcisiyle başlayın'a](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/)göz atın.

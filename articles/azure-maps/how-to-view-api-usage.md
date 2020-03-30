@@ -1,69 +1,69 @@
 ---
-title: Azure Maps API kullanım ölçümlerini görüntüleme | Microsoft Azure haritaları
-description: Bu makalede, Azure portal Microsoft Azure Maps API çağrılarınız için ölçümleri görüntülemeyi öğreneceksiniz.
-author: farah-alyasari
-ms.author: v-faalya
+title: Azure Haritalar API kullanım ölçümlerini görüntüleyin | Microsoft Azure Haritaları
+description: Bu makalede, Azure portalında Microsoft Azure Haritalar API çağrılarınızın ölçümlerini nasıl görüntüleyebilirsiniz.
+author: philmea
+ms.author: philmea
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cc9834f4e1df1a68f78230ec587254c72aeabbcf
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0eb117af712b3b1f63a3f99c96cba9775f8e3996
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335159"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Azure Haritalar API'si kullanım ölçümlerini görüntüleme
 
-Bu makalede, Azure haritalar hesabınız için [Azure Portal](https://portal.azure.com)API kullanım ölçümlerini nasıl görüntüleyebileceğiniz gösterilmektedir. Ölçümler, özelleştirilebilir bir süre boyunca uygun bir grafik biçiminde gösterilir.
+Bu makalede, Azure Haritalar hesabınız için API kullanım ölçümlerini [Azure portalında](https://portal.azure.com)nasıl görüntüleyebilirsiniz. Ölçümler, özelleştirilebilir bir süre boyunca uygun bir grafik biçiminde gösterilir.
 
-## <a name="view-metric-snapshot"></a>Ölçüm anlık görüntüsünü görüntüle
+## <a name="view-metric-snapshot"></a>Metrik anlık görüntü görüntüleme
 
-Haritalar hesabınızın **genel bakış** sayfasında bazı ortak ölçümleri görebilirsiniz. Bu, şu anda *toplam istek*, *Toplam hata*ve seçilebilir bir süre boyunca *kullanılabilirliği* gösteriyor.
+Haritalar hesabınızın **Genel Bakış** sayfasında bazı yaygın ölçümleri görebilirsiniz. Şu anda seçilebilir bir süre boyunca *Toplam İstekler,* *Toplam Hatalar*ve *Kullanılabilirlik* gösterir.
 
-![Azure Maps kullanım ölçümlerine genel bakış](media/how-to-view-api-usage/portal-overview.png)
+![Azure Haritalar kullanım ölçümlerine genel bakış](media/how-to-view-api-usage/portal-overview.png)
 
-Belirli analize yönelik bu grafikleri özelleştirmeniz gerekiyorsa sonraki bölüme geçin.
+Bu grafikleri özel çözümlemesiniz için özelleştirmeniz gerekiyorsa bir sonraki bölüme devam edin.
 
 ## <a name="view-detailed-metrics"></a>Ayrıntılı ölçümleri görüntüleme
 
 1. [Portalda](https://portal.azure.com)Azure aboneliğinizde oturum açın.
 
-2. Sol taraftaki **tüm kaynaklar** menü öğesine tıklayın ve *Azure haritalar hesabınıza*gidin.
+2. Sol taraftaki **Tüm kaynaklar** menüsü öğesini tıklatın ve Azure *Haritalar Hesabınıza*gidin.
 
-3. Haritalar hesabınız açıkken, sol taraftaki **ölçümler** menüsüne tıklayın.
+3. Haritalar hesabınız açıldıktan sonra soldaki **Ölçümler** menüsüne tıklayın.
 
-4. **Ölçümler** bölmesinde, aşağıdaki seçeneklerden birini seçin:
+4. **Ölçümler** bölmesine aşağıdaki seçeneklerden birini seçin:
 
-   1. **Kullanılabilirlik** -bir süre içinde API kullanılabilirliği *ortalamasını* gösterir.
-   2. **Kullanım** -hesabınız Için kullanım *sayısını* gösterir.
+   1. **Kullanılabilirlik** - bir süre içinde API kullanılabilirlik *ortalamasını* gösterir.
+   2. **Kullanım** - hesabınız için kullanım *Sayısı'nın* nasıl olduğunu gösterir.
 
       ![Azure Haritalar kullanım ölçümleri bölmesi](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Ardından, **son 24 saat (otomatik)** öğesine tıklayarak *zaman aralığını* seçebilirsiniz. Varsayılan olarak, zaman aralığı 24 saat olarak ayarlanır. ' İ tıkladıktan sonra, tüm seçilebilir zaman aralıklarını görürsünüz. *Zaman parçalı yapısını* seçebilir ve aynı açılan kutuda saati *Yerel* veya *GMT* olarak göstermeyi seçebilirsiniz. **Apply (Uygula)** düğmesine tıklayın.
+5. Ardından, **Son 24 saat (Otomatik)** seçeneğini tıklatarak *Saat aralığını* seçebilirsiniz. Varsayılan olarak, zaman aralığı 24 saat olarak ayarlanır. Tıklattıktan sonra, tüm seçilebilir zaman aralıklarını görürsünüz. Zaman parçalı *nı* seçebilir ve saati *yerel* veya *GMT* olarak aynı açılır durumda göstermeyi seçebilirsiniz. **Uygula**’ya tıklayın.
 
-    ![Azure haritalar ölçümleri zaman aralığı](media/how-to-view-api-usage/time-range.png)
+    ![Azure Haritalar ölçümleri zaman aralığı](media/how-to-view-api-usage/time-range.png)
 
-6. Ölçümünüzün eklendikten sonra, Bu ölçüyle ilgili özelliklerden **filtre ekleyebilirsiniz** . Ardından, grafiğe yansıtılmasını istediğiniz özelliğin değerini seçin.
+6. Metriğinizi ekledikten sonra, bu metriğin ilgili özelliklerinden **filtre ekleyebilirsiniz.** Ardından, grafikte yansıtılan görmek istediğiniz özelliğin değerini seçin.
 
-    ![Azure Haritalar kullanım ölçümleri filtresi](media/how-to-view-api-usage/filter.png)
+    ![Azure Haritalar kullanım ölçümleri Filtresi](media/how-to-view-api-usage/filter.png)
 
-7. Ayrıca, seçtiğiniz ölçüm özelliğine göre ölçümünüzün **bölünmesini de uygulayabilirsiniz** . Grafiğin, bu özelliğin her değeri için birden çok grafiğe bölünmesine izin verir. Aşağıdaki resimde, her grafiğin rengi grafiğin altında gösterilen özellik değerine karşılık gelir.
+7. Ayrıca, seçtiğiniz metrik özelliğine göre metrik için **bölme uygulayabilirsiniz.** Grafiğin, o özelliğin her değeri için birden çok grafiğe bölünmesini sağlar. Aşağıdaki resimde, her grafiğin rengi grafiğin alt kısmında gösterilen özellik değerine karşılık gelir.
 
     ![Azure Haritalar kullanım ölçümleri bölme](media/how-to-view-api-usage/splitting.png)
 
-8. Ayrıca, en üstteki **ölçüm Ekle** düğmesine tıklayarak da aynı grafikteki birden fazla ölçümü gözlemleyebilirsiniz.
+8. Ayrıca, üstteki **Metrik Ekle** düğmesine tıklayarak aynı grafikte birden çok ölçüm gözlemlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanım için kullanımı izlemek istediğiniz Azure Maps API 'Leri hakkında daha fazla bilgi edinin:
+Aşağıdakiler için kullanımı izlemek istediğiniz Azure Haritalar API'ları hakkında daha fazla bilgi edinin:
 > [!div class="nextstepaction"] 
-> [Azure Haritalar Web SDK 'Sı nasıl yapılır](how-to-use-map-control.md)
+> [Azure Haritalar Web SDK Nasıl Yapılsın](how-to-use-map-control.md)
 
 > [!div class="nextstepaction"] 
-> [Azure Haritalar Android SDK nasıl yapılır?](how-to-use-android-map-control-library.md)
+> [Azure Haritalar Android SDK Nasıl-Nasıl](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
-> [Azure haritalar REST API belgeleri](https://docs.microsoft.com/rest/api/maps)
+> [Azure Haritalar REST API belgeleri](https://docs.microsoft.com/rest/api/maps)

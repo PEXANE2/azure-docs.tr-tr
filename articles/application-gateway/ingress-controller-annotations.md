@@ -1,43 +1,43 @@
 ---
-title: Application Gateway giriş denetleyicisi ek açıklamaları
-description: Bu makalede, Application Gateway giriş denetleyicisine özgü ek açıklamaların belgelerini bulabilirsiniz.
+title: Uygulama Ağ Geçidi Denetleyicisi ek açıklamaları
+description: Bu makalede, Uygulama Ağ Geçidi Giriş Denetleyicisi'ne özgü ek açıklamalar la ilgili belgeler sağlanmaktadır.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a3583a5efd120733ce7f6b71a7594b5636593f99
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279968"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335817"
 ---
-# <a name="annotations-for-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisi için ek açıklamalar 
+# <a name="annotations-for-application-gateway-ingress-controller"></a>Uygulama Ağ Geçidi Denetleyicisi için ek açıklamalar 
 
-## <a name="introductions"></a>Senaryoya
+## <a name="introductions"></a>Tanıtım
 
-Kubernetes giriş kaynağına, rastgele anahtar/değer çiftleri ile açıklama eklenebilir. AGIC, program Application Gateway özellikleriyle ilgili ek açıklamaları kullanır ve bu, giriş YAML aracılığıyla yapılandırılamaz. Giriş ek açıklamaları, bir giriş kaynağından türetilmiş tüm HTTP ayarına, arka uç havuzlarına ve dinleyicilerine uygulanır.
+Kubernetes Ingress kaynağı rasgele anahtar/değer çiftleri ile açıklamalı olabilir. AGIC, Giriş YAML üzerinden yapılandırılabilen Uygulama Ağ Geçidi özelliklerini programlamak için ek açıklamalara dayanır. Giriş ek açıklamaları, giriş kaynağından türetilen tüm HTTP ayarına, arka uç havuzlarına ve dinleyicilere uygulanır.
 
-## <a name="list-of-supported-annotations"></a>Desteklenen ek açıklamaların listesi
+## <a name="list-of-supported-annotations"></a>Desteklenen ek açıklamalar listesi
 
-Bir giriş kaynağının AGIC tarafından gözlenecek olması için `kubernetes.io/ingress.class: azure/application-gateway`ile **açıklanmalıdır** . Bu durumda yalnızca AGIC, söz konusu giriş kaynağıyla birlikte çalışır.
+Bir Giriş kaynağının AGIC tarafından gözlemlemesi için açıklamalı `kubernetes.io/ingress.class: azure/application-gateway`olması **gerekir.** Ancak o zaman AGIC söz konusu Ingress kaynağı ile çalışacaktır.
 
-| Ek açıklama anahtarı | Değer türü | Varsayılan Değer | İzin Verilen Değerler
+| Ek Açıklama Anahtarı | Değer Türü | Varsayılan Değer | İzin Verilen Değerler
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
-| [appgw.ingress.kubernetes.io/ssl-redirect](#ssl-redirect) | `bool` | `false` | |
+| [appgw.ingress.kubernetes.io/ssl-redirect](#tls-redirect) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining](#connection-draining) | `bool` | `false` | |
-| [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32` (saniye) | `30` | |
+| [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32`(saniye) | `30` | |
 | [appgw.ingress.kubernetes.io/cookie-based-affinity](#cookie-based-affinity) | `bool` | `false` | |
-| [appgw.ingress.kubernetes.io/request-timeout](#request-timeout) | `int32` (saniye) | `30` | |
+| [appgw.ingress.kubernetes.io/request-timeout](#request-timeout) | `int32`(saniye) | `30` | |
 | [appgw.ingress.kubernetes.io/use-private-ip](#use-private-ip) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/backend-protocol](#backend-protocol) | `string` | `http` | `http`, `https` |
 
-## <a name="backend-path-prefix"></a>Arka uç yolu ön eki
+## <a name="backend-path-prefix"></a>Arka Uç Yolu Öneki
 
-Bu ek açıklama, bir giriş kaynağında belirtilen arka uç yolunun bu ek açıklamada belirtilen önekle yeniden yazılabilir olmasını sağlar. Bu, kullanıcıların uç noktaları bir hizmet kaynağında kullanıma sunmak için kullanılan uç nokta adlarından farklı olan hizmetleri kullanıma sunmasına olanak tanır.
+Bu ek açıklama, giriş kaynağında belirtilen arka uç yolunun bu ek açıklamada belirtilen önek ile yeniden yazılmasını sağlar. Bu, kullanıcıların bir hizmeti giriş kaynağında ortaya çıkarmak için kullanılan uç nokta adlarından uç noktaları farklı olan hizmetleri ortaya çıkarmalarına olanak tanır.
 
 ### <a name="usage"></a>Kullanım
 
@@ -65,14 +65,14 @@ spec:
           serviceName: go-server-service
           servicePort: 80
 ```
-Yukarıdaki örnekte, ek açıklama `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` `go-server-ingress-bkprefix` adlı bir giriş kaynağı tanımladık. Ek açıklama, uygulama ağ geçidine, `/test/``/hello` yol için bir yol ön eki geçersiz kılma sağlayacak bir HTTP ayarı oluşturmasını söyler.
+Yukarıdaki örnekte, bir ek açıklama `go-server-ingress-bkprefix` ile adlı bir `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` giriş kaynağı tanımladık. Ek açıklama, bir YOL öneki geçersiz kılınacak bir HTTP ayarı oluşturmak `/hello` `/test/`için uygulama ağ geçidi söyler.
 
 > [!NOTE] 
-> Yukarıdaki örnekte yalnızca bir kural tanımlanmış. Ancak, ek açıklamalar tüm giriş kaynağına uygulanabilir, bu nedenle, bir Kullanıcı birden çok kural tanımlıysa, belirtilen yolların her biri için arka uç yolu ön eki ayarlanır. Bu nedenle, bir kullanıcı farklı yol önekleri (aynı hizmet için bile) ile farklı kurallar istiyorsa farklı giriş kaynakları tanımlamanız gerekir.
+> Yukarıdaki örnekte tanımlanan tek bir kural var. Ancak, ek açıklamalar tüm giriş kaynağı için geçerlidir, bu nedenle bir kullanıcı birden çok kural tanımlasaydı, arka uç yolu öneki belirtilen yolların her biri için ayarlanır. Bu nedenle, bir kullanıcı farklı yol önekleri (aynı hizmet için bile) farklı kurallar istiyorsa, farklı giriş kaynakları tanımlamak gerekir.
 
-## <a name="ssl-redirect"></a>SSL yeniden yönlendirme
+## <a name="tls-redirect"></a>TLS Yönlendirme
 
-Application Gateway [,](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) http url 'lerinin OTOMATIK olarak https karşılıklarına yönlendirileceği şekilde yapılandırılabilir. Bu ek açıklama mevcut olduğunda ve TLS düzgün yapılandırıldığında, Kubernetes giriş denetleyicisi [yeniden yönlendirme yapılandırması olan bir yönlendirme kuralı](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) oluşturur ve değişiklikleri Application Gateway uygular. Oluşturulan yeniden yönlendirme HTTP `301 Moved Permanently`olacaktır.
+Uygulama Ağ Geçidi, HTTP URL'lerini HTTPS'deki karşılıklarına otomatik olarak yönlendirecek şekilde [yapılandırılabilir.](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) Bu ek açıklama mevcut olduğunda ve TLS düzgün yapılandırılmışolduğunda, Kubernetes Ingress denetleyicisi [yeniden yönlendirme yapılandırması içeren bir yönlendirme kuralı](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) oluşturur ve değişiklikleri Uygulama Ağ Geçidinize uygular. Oluşturulan yönlendirme HTTP `301 Moved Permanently`olacaktır.
 
 ### <a name="usage"></a>Kullanım
 
@@ -105,10 +105,10 @@ spec:
           servicePort: 80
 ```
 
-## <a name="connection-draining"></a>Bağlantı boşaltma
+## <a name="connection-draining"></a>Bağlantı Boşaltma
 
-`connection-draining`: Bu ek açıklama kullanıcıların bağlantı boşaltma etkinleştirilip etkinleştirilmeyeceğini belirlemesine izin verir.
-`connection-draining-timeout`: Bu ek açıklama, kullanıcıların boşaltma arka uç uç noktasına istekleri sona erdirme süresinin Application Gateway ardından bir zaman aşımı belirtmesini sağlar.
+`connection-draining`: Bu ek açıklama, kullanıcıların bağlantı boşaltmayı etkinleştirip etkinleştirmeyeceklerini belirtmelerine olanak tanır.
+`connection-draining-timeout`: Bu ek açıklama, kullanıcıların Uygulama Ağ Geçidi'nin istekleri boşalan arka uç bitiş noktasına sonlandıracağı bir zaman alacaktır.
 
 ### <a name="usage"></a>Kullanım
 
@@ -139,9 +139,9 @@ spec:
           servicePort: 80
 ```
 
-## <a name="cookie-based-affinity"></a>Tanımlama bilgisi tabanlı benzeşim
+## <a name="cookie-based-affinity"></a>Çerez Bazlı Affinity
 
-Bu ek açıklama, tanımlama bilgisi tabanlı Benzeşimin etkinleştirilip etkinleştirilmeyeceğini belirtmenizi sağlar.
+Bu ek açıklama, çerez tabanlı yakınlığı etkinleştirmek için olup olmadığını belirtmenize olanak sağlar.
 
 ### <a name="usage"></a>Kullanım
 
@@ -172,7 +172,7 @@ spec:
 
 ## <a name="request-timeout"></a>İstek Zaman Aşımı
 
-Bu ek açıklama, yanıt alınmadığında Application Gateway isteğin başarısız olacağı saniye cinsinden istek zaman aşımını belirtmenizi sağlar.
+Bu ek açıklama, yanıt alınmazsa Uygulama Ağ Geçidi'nin isteği başarısız edeceği saniyeler içinde istek zaman anına belirtmeye olanak tanır.
 
 ### <a name="usage"></a>Kullanım
 
@@ -201,13 +201,13 @@ spec:
           servicePort: 80
 ```
 
-## <a name="use-private-ip"></a>Özel IP kullan
+## <a name="use-private-ip"></a>Özel IP kullanın
 
-Bu ek açıklama, Application Gateway özel IP 'si üzerinde bu uç noktanın kullanıma sunulmayacağını belirtmemizi sağlar.
+Bu ek açıklama, bu bitiş noktasını Uygulama Ağ Geçidi'nin Özel IP'si üzerinde ortaya çıkarılıp açıklamayacağımızı belirtmemizi sağlar.
 
 > [!NOTE]
-> * Application Gateway aynı bağlantı noktasında birden çok IP 'yi desteklemez (örnek: 80/443). Ek açıklama `appgw.ingress.kubernetes.io/use-private-ip: "false"` giriş ve `HTTP` `appgw.ingress.kubernetes.io/use-private-ip: "true"` bir diğeri, Application Gateway güncelleştirmede AGC 'nin başarısız olmasına neden olur.
-> * Özel IP 'si olmayan Application Gateway için `appgw.ingress.kubernetes.io/use-private-ip: "true"` ile birlikte giriş yok sayılır. Bu, `NoPrivateIP` uyarı ile bu giriş için denetleyici günlüklerine ve giriş olaylarına yansıtılır.
+> * Uygulama Ağ Geçidi aynı bağlantı noktasında birden çok IP desteklemez (örnek: 80/443). Ek açıklama `appgw.ingress.kubernetes.io/use-private-ip: "false"` ve başka `appgw.ingress.kubernetes.io/use-private-ip: "true"` bir `HTTP` giriş agic Uygulama Ağ Geçidi güncelleştirmede başarısız neden olur.
+> * Özel BIR IP'si olmayan Uygulama Ağ `appgw.ingress.kubernetes.io/use-private-ip: "true"` Geçidi için Ingresses ile birlikte yoksayılır. Bu uyarı ile `NoPrivateIP` bu girişler için denetleyici günlükleri ve giriş olayları yansıtılır.
 
 
 ### <a name="usage"></a>Kullanım
@@ -235,13 +235,13 @@ spec:
           servicePort: 80
 ```
 
-## <a name="backend-protocol"></a>Arka uç Protokolü
+## <a name="backend-protocol"></a>Arka Uç Protokolü
 
-Bu ek açıklama, Application Gateway pods ile görüşülürken kullanması gereken Protokolü belirtmemizi sağlar. Desteklenen protokoller: `http`, `https`
+Bu ek açıklama, Uygulama Ağ Geçidi'nin Podlarla konuşurken kullanması gereken protokolü belirtmemizi sağlar. Desteklenen Protokoller: `http`,`https`
 
 > [!NOTE]
-> * Application Gateway ' de otomatik olarak imzalanan sertifikalar desteklenirken Şu anda AGIC yalnızca, iyi bilinen bir CA tarafından imzalanan sertifika kullanırken `https` destekler.
-> * 80 numaralı bağlantı noktasını 443 HTTPS ile kullandığınızdan emin olun.
+> * Şu anda Uygulama Ağ Geçidi'nde kendi imzalı sertifikalar `https` desteklenirken, AGIC yalnızca Pods tanınmış bir CA tarafından imzalanmış sertifikayı kullandığında desteklenir.
+> * HTTPS ile 80 portu ve Pod'larda HTTP ile 443 bağlantı noktasını kullanmadığından emin olun.
 
 ### <a name="usage"></a>Kullanım
 ```yaml

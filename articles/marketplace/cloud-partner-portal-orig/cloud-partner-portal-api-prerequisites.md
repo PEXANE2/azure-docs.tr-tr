@@ -1,72 +1,71 @@
 ---
-title: API önkoşulları | Azure Marketi
-description: Önkoşullar Bulut İş Ortağı Portalı API 'Leri kullanarak.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: API Ön Koşulları | Azure Marketi
+description: Önkoşullar, Bulut İş Ortağı Portalı API'lerini kullanarak fro.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d3c2d89d3c3561e86047529e5b284e4481fc1652
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819696"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288572"
 ---
-<a name="api-prerequisites"></a>API önkoşulları
+<a name="api-prerequisites"></a>API Ön Koşulları
 ================
 
-Bulut İş Ortağı Portalı API 'Leri kullanmanız gereken iki adet gerekli program varlığı vardır: bir hizmet sorumlusu ve bir Azure Active Directory (Azure AD) erişim belirteci.
+Bulut İş Ortağı Portal API'lerini kullanmanız için gereken iki programatik varlık vardır: bir hizmet yöneticisi ve Bir Azure Etkin Dizin (Azure AD) erişim belirteci.
 
 
-<a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Azure Active Directory kiracınızda hizmet sorumlusu oluşturma
+<a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Azure Etkin Dizin kiracınızda bir hizmet ilkesi oluşturma
 ----------------------------------------------------------------
 
-İlk olarak, Azure AD kiracınızda bir hizmet sorumlusu oluşturmanız gerekir. Bu kiracıya, Bulut İş Ortağı Portalı kendi izin kümesi atanır. Kodunuz, kişisel kimlik bilgilerinizi kullanmak yerine bu kiracı olarak kullanan API 'Leri çağırır.  Hizmet sorumlusu oluşturma hakkında tam bir açıklama için bkz. [Portal 'ı kullanarak kaynaklara erişebilen Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+Öncelikle, Azure AD kiracınızda bir hizmet ilkesi oluşturmanız gerekir. Bu kiracıya Bulut İş Ortağı Portalı'nda kendi izinleri atanır. Kodunuz, kişisel kimlik bilgilerinizi kullanmak yerine bu kiracı olarak kullanan API'leri çağırır.  Bir hizmet ilkesi oluşturmanın tam açıklaması için, [kaynaklara erişebilen bir Azure Etkin Dizin uygulaması ve hizmet ilkesi oluşturmak için portalı kullan'a](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)bakın.
 
 
-<a name="add-the-service-principal-to-your-account"></a>Hizmet sorumlusunu hesabınıza ekleyin
+<a name="add-the-service-principal-to-your-account"></a>Hizmet ilkesini hesabınıza ekleme
 -----------------------------------------
 
-Kiracınızda hizmet sorumlusunu oluşturduğunuza göre, onu Bulut İş Ortağı Portalı hesabınıza bir kullanıcı olarak ekleyebilirsiniz. Bir kullanıcı gibi, hizmet sorumlusu de Portal için bir sahip veya katılımcı olabilir.
+Kiracınızda hizmet ilkesini oluşturduğunuza göre, bunu Bulut İş Ortağı Portalı hesabınıza kullanıcı olarak ekleyebilirsiniz. Tıpkı bir kullanıcı gibi, hizmet sorumlusu da portalın sahibi veya katılımcısı olabilir.
 
-Hizmet sorumlusunu eklemek için aşağıdaki adımları kullanın:
+Hizmet ilkesini eklemek için aşağıdaki adımları kullanın:
 
-1. Bulut İş Ortağı Portalı oturum açın. 
-2. Sol menü çubuğunda **Kullanıcılar** ' a tıklayın ve **Kullanıcı Ekle**' yi seçin.
+1. Bulut İş Ortağı Portalı'nda oturum açın. 
+2. Sol menü çubuğundaki **Kullanıcılar'a** tıklayın ve **Kullanıcı Ekle'yi**seçin.
 
    ![Portala kullanıcı ekleme](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
 
-3. **Tür** açılır listesinden **hizmet sorumlusu** ' nı seçin ve aşağıdaki ayrıntıları ekleyin:
+3. **Tür** açılır tarihinden **Hizmet Sorumlusu'nu** seçin ve aşağıdaki ayrıntıları ekleyin:
 
--   Hizmet sorumlusu için **kolay bir ad** (örneğin `spAccount`).
--   **Uygulama kimliği**. Bu tanımlayıcıyı bulmak için [Azure portalına](https://portal.azure.com)gidin, **Azure Active Directory**' a tıklayın, **uygulama kayıtları**' i seçin ve uygulamanıza tıklayın.
--   Azure AD kiracınız için **DIZIN kimliği**olarak da BILINEN **Kiracı kimliği**. Bu tanımlayıcıyı, [Azure portal](https://portal.azure.com)Azure Active Directory sayfasında, **Özellikler**altında bulabilirsiniz.
--   Hizmet sorumlusu nesnenizin **nesne kimliği** . Bu tanımlayıcıyı Azure portal edinebilirsiniz. **Azure Active Directory**' e gidin, **uygulama kayıtları**' i seçin, uygulamanıza tıklayın ve **yerel dizinde yönetilen uygulama**altında uygulama adı ' na tıklayın. Ardından, nesne KIMLIĞINI bulmak için **Özellikler** sayfasına gidin. Uygulamanızdaki ilk nesne KIMLIĞINI yakalayıp olmadığından ve bunun yerine yönetilen uygulamadaki nesne KIMLIĞI olmadığından emin olun.
--   RBAC için kullanılacak hesapla ilişkili **rol** .
+-   Hizmet sorumlusu için bir Friendly `spAccount` **Name,** örneğin.
+-   **Başvuru Kimliği**. Bu tanımlayıcıyı bulmak için [Azure Portalı'na](https://portal.azure.com)gidin , **Azure Active Directory'yi**tıklatın, **Uygulama kayıtlarını**seçin ve uygulamanızı tıklatın.
+-   Azure AD kiracınız için **Dizin Kimliği**olarak da bilinen Kiracı **Kimliği.** Bu tanımlayıcıyı Azure Etkin Dizin sayfasında, **Özellikler** [altında, Azure portalında](https://portal.azure.com)bulabilirsiniz.
+-   Hizmet ana nesnenizin **Nesne Kimliği.** Bu tanımlayıcıyı Azure portalından alabilirsiniz. Azure **Active Directory'ye**gidin, **Uygulama kayıtlarını**seçin, uygulamanızı tıklayın ve **yerel dizinde Yönetilen uygulama**altında uygulama adını tıklayın. Ardından, Nesne Kimliğini bulmak için **Özellikler** sayfasına gidin. Uygulamanızdaki ilk Nesne Kimliğini değil, yönetilen uygulamadaki Nesne Kimliğini aldığınızdan emin olun.
+-   RBAC için kullanılacak hesapla ilişkili **rol.**
 
-     ![Portala yönetilen uygulama ekleme](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
+     ![Portala yönetilen bir uygulama ekleme](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-1. Hizmet sorumlusunu hesabınıza eklemek için **Ekle** ' ye tıklayın.
+1. Hizmet ilkesini hesabınıza eklemek için **Ekle'yi** tıklatın.
 
-   ![Hizmet sorumlusu ekleme](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
+   ![Hizmet ilkesi ekleme](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
 
-<a name="get-an-azure-ad-access-token"></a>Azure AD erişim belirteci alın
+<a name="get-an-azure-ad-access-token"></a>Azure AD erişim belirteci alma
 ----------------------------
 
-Bulut İş Ortağı Portalı API 'Leri, kimlik doğrulaması sırasında aşağıdaki varlıkları ve protokolleri kullanır:
+Bulut İş Ortağı Portalı API'leri kimlik doğrulama sırasında aşağıdaki varlıkları ve protokolleri kullanır:
 
-- Kaynaklara erişim istemek için bir JSON Web Token (JWT) taşıyıcı belirteci
+- Kaynaklara erişim istemek için bir JSON Web Belirteci (JWT) taşıyıcısı belirteci
 - Kimliği doğrulamak için [OpenID Connect](https://openid.net/connect/) (OIDC) protokolü
 - Kimlik yetkilisi olarak [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
-Program aracılığıyla JWT belirtecini almak için iki prensibi yaklaşım vardır:
+Programlı bir JWT belirteci edinme için iki ilke yaklaşımı vardır:
 
-- .NET için Microsoft kimlik doğrulama kitaplığı 'nı ([msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)) kullanın.  Bu üst düzey yaklaşım .NET geliştiricileri için önerilir. 
-- Şu formu alan Azure AD OAuth **belirteç** uç noktasına BIR **http post** isteği oluşturun:
+- .NET ([MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)için Microsoft Kimlik Doğrulama Kitaplığını kullanın.  Bu üst düzey yaklaşım .NET geliştiricileri için önerilir. 
+- Formu alan Azure AD oauth **belirteç** bitiş noktasına **bir HTTP POST** isteğinde bulunun:
 
 ``` HTTP
 POST https://login.microsoftonline.com/<tenant-id>/oauth2/token
@@ -76,7 +75,7 @@ POST https://login.microsoftonline.com/<tenant-id>/oauth2/token
     resource: https://cloudpartner.azure.com
 ```
 
-Şimdi, API istekleri için yetkilendirme üstbilgisinin bir parçası olarak bu belirteci geçirebilirsiniz.
+Şimdi, bu belirteci API istekleri için yetkilendirme üstbilgisinin bir parçası olarak geçirebilirsiniz.
 
 ``` HTTP
 GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview 
@@ -84,6 +83,6 @@ GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview
     Authorization: Bearer <access-token>
 ```
 > [!NOTE]
-> Bu başvurudaki tüm API 'Ler için, yetkilendirme üst bilgisi her zaman geçti olarak kabul edilir, bu nedenle açıkça bahsedilmez.
+> Bu başvurudaki tüm API'ler için, yetkilendirme üstbilgisinin her zaman geçtiği varsayıldığından açıkça belirtilmez.
 
-İstekinizdeki kimlik doğrulama hatalarıyla karşılaşırsanız bkz. [kimlik doğrulama hatalarını giderme](./cloud-partner-portal-api-troubleshooting-authentication-errors.md).
+İsteğinizde kimlik doğrulama hatalarıyla karşılanırsanız, [Sorun Giderme kimlik doğrulama hatalarına](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)bakın.

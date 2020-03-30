@@ -1,93 +1,93 @@
 ---
-title: Azure haritalar 'ı kullanarak verimli bir şekilde arama Arama Hizmeti | Microsoft Azure haritaları
-description: Microsoft Azure haritaları kullanarak Arama Hizmeti için en iyi yöntemleri uygulamayı öğrenin.
-author: farah-alyasari
-ms.author: v-faalya
+title: Azure Haritalar Arama Hizmeti için en iyi uygulamalar | Microsoft Azure Haritaları
+description: Microsoft Azure Haritalar'daki Arama Hizmetini kullanırken en iyi uygulamaları nasıl uygulayacağınızı öğrenin.
+author: philmea
+ms.author: philmea
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 82e0339e02fa2fb27e7b2ca24f65934e3ce4fe23
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335317"
 ---
-# <a name="best-practices-for-azure-maps-search-service"></a>Azure haritalar için en iyi uygulamalar Arama Hizmeti
+# <a name="best-practices-for-azure-maps-search-service"></a>Azure Haritalar Arama Hizmeti için en iyi uygulamalar
 
-Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) çeşitli yetenekler sunan API 'leri içerir. Örneğin, arama adresi API 'SI, belirli bir konum etrafında ilgilendiğiniz noktaları (POı) veya verileri bulabilir. 
+Azure Haritalar [Arama Hizmeti,](https://docs.microsoft.com/rest/api/maps/search) çeşitli özellikler sunan API'ler içerir. Örneğin, Arama Adresi API'si ilgi çekici noktaları (İçN) veya belirli bir konum la ilgili verileri bulabilir. 
 
-Bu makalede Arama Hizmeti Azure Maps 'tan veri çağırdığınızda ses uygulamalarının nasıl uygulanacağı açıklanır. Şunları öğrenirsiniz:
+Bu makalede, Azure Haritalar Arama Hizmeti'nden veri aradığınızda ses uygulamalarının nasıl uygulanacağı açıklanmaktadır. Şunları öğrenirsiniz:
 
 * İlgili eşleşmeleri döndürmek için sorgular oluşturun.
-* Arama sonuçlarını sınırlayın.
+* Arama sonuçlarını sınırlandırın.
 * Sonuç türleri arasındaki farkları öğrenin.
-* Adres Arama-Yanıt yapısını okuyun.
+* Adres arama yanıt yapısını okuyun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure haritalar hizmeti API 'Lerine çağrı yapmak için bir Azure Maps hesabına ve bir anahtara ihtiyacınız vardır. Daha fazla bilgi için bkz. [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ve [birincil anahtar edinme](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+Azure Haritalar hizmet API'lerine arama yapmak için bir Azure Haritalar hesabına ve bir anahtara ihtiyacınız var. Daha fazla bilgi için [bkz.](quick-demo-map-app.md#create-an-account-with-azure-maps) [Get a primary key](quick-demo-map-app.md#get-the-primary-key-for-your-account) 
 
-Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
+Azure Haritalar'da kimlik doğrulama hakkında bilgi için azure [haritalarda kimlik doğrulamayı yönet'e](./how-to-manage-authentication.md)bakın.
 
 > [!TIP]
-> Arama Hizmeti sorgulamak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanarak Rest çağrıları oluşturabilirsiniz. İsterseniz dilediğiniz API geliştirme ortamını de kullanabilirsiniz.
+> Arama Hizmeti'ni sorgulamak [için,](https://www.getpostman.com/apps) REST aramaları oluşturmak için Postacı uygulamasını kullanabilirsiniz. Veya tercih ettiğiniz herhangi bir API geliştirme ortamını kullanabilirsiniz.
 
-## <a name="best-practices-to-geocode-addresses"></a>Kodlamayı adreslerine yönelik en iyi uygulamalar
+## <a name="best-practices-to-geocode-addresses"></a>Coğrafi kod adreslerine en iyi uygulamalar
 
-Azure haritalar Arama Hizmeti kullanarak tam veya kısmi bir adres aradığınızda, API arama sorgunuzun anahtar sözcüklerini okur. Ardından, adresin boylam ve enlem koordinatlarını döndürür. Bu işleme *geokodlamaya*denir. 
+Azure Haritalar Arama Hizmeti'ni kullanarak tam veya kısmi bir adres aradığınızda, API arama sorgunuzdaki anahtar kelimeleri okur. Daha sonra adresin boylam ve enlem koordinatlarını döndürür. Bu işleme *coğrafi kodlama*denir. 
 
-Bir ülkede coğrafi kod özelliği, yol verilerinin kullanılabilirliğine ve coğrafi kodlama hizmetinin duyarlığına bağlıdır. Azure 'un coğrafi kodlama özelliklerini ülkeye veya bölgeye göre Maps hakkında daha fazla bilgi için bkz. [coğrafi kodlama kapsamı](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
+Bir ülkede coğrafi kod alabilme yeteneği, yol verilerinin kullanılabilirliğine ve coğrafi kodlama hizmetinin hassasiyetine bağlıdır. Ülkeye veya bölgeye göre Azure Haritalar coğrafi kodlama özellikleri hakkında daha fazla bilgi için [Bkz.](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)
 
-### <a name="limit-search-results"></a>Arama sonuçlarını sınırla
+### <a name="limit-search-results"></a>Arama sonuçlarını sınırlama
 
- Azure haritalar arama API 'SI, arama sonuçlarını uygun şekilde sınırlamanıza yardımcı olabilir. Kullanıcılara ilgili verileri görüntüleyebilmeniz için sonuçları sınırlayabilirsiniz.
+ Azure Haritalar Arama API'si, arama sonuçlarını uygun şekilde sınırlamanıza yardımcı olabilir. Kullanıcılarınızın ilgili verilerini görüntüleyebilmeniz için sonuçları sınırlandırın.
 
 > [!NOTE]
-> Arama API 'Leri, bu makalede ele aldığı kadar çok parametreyi destekler.
+> Arama API'leri, bu makalede tartışılan parametrelerden daha fazla parametreyi destekler.
 
-#### <a name="geobiased-search-results"></a>Geobıased arama sonuçları
+#### <a name="geobiased-search-results"></a>Coğrafi taraflı arama sonuçları
 
-Kullanıcı için ilgili alana sonuç olarak, her zaman mümkün olduğunca fazla konum ayrıntısı ekleyin. Bazı giriş türlerini belirterek arama sonuçlarını kısıtlamak isteyebilirsiniz:
+Geobias sonuçları kullanıcınız için ilgili alana eklemek için, her zaman mümkün olduğunca çok sayıda konum bilgisi ekleyin. Bazı giriş türlerini belirterek arama sonuçlarını kısıtlamak isteyebilirsiniz:
 
-* `countrySet` parametresini ayarlayın. Örneğin, `US,FR`ayarlayabilirsiniz. Varsayılan olarak, API tüm dünyayı arar, bu nedenle gereksiz sonuçlar döndürebilir. Sorgunuzun `countrySet` parametresi yoksa arama yanlış sonuçlar döndürebilir. Örneğin, *Bellevue* adlı bir şehirde arama, her iki ülkede de *Bellevue*adlı BIR şehir Içerdiği için ABD ve Fransa 'dan sonuçları döndürür.
+* Parametreyi `countrySet` ayarlayın. `US,FR`Örneğin, bunu ayarlayabilirsiniz. Varsayılan olarak, API tüm dünyayı arar, böylece gereksiz sonuçlar döndürebilir. Sorgunuzun parametresi yoksa, `countrySet` arama yanlış sonuçlar döndürebilir. Örneğin, *Bellevue* adlı bir şehir için yapılan arama, her iki ülkede de *Bellevue*adında bir şehir içerdiğinden ABD ve Fransa'dan sonuçları döndürür.
 
-* Sınırlayıcı kutuyu ayarlamak için `btmRight` ve `topleft` parametrelerini kullanabilirsiniz. Bu parametreler, aramayı haritadaki belirli bir alanla kısıtlar.
+* Sınırlayıcı `btmRight` kutuyu `topleft` ayarlamak için parametreleri ve parametreleri kullanabilirsiniz. Bu parametreler aramayı haritadaki belirli bir alanla sınırlandırın.
 
-* Sonuçlara ilişkin ilgi alanını etkilemek için `lat` ve `lon` koordinat parametrelerini tanımlayın. Arama alanının yarıçapını ayarlamak için `radius` parametresini kullanın.
+* Sonuçlar için alaka alanını etkilemek için `lat` parametreleri tanımlayın ve `lon` koordine edin. Arama `radius` alanının yarıçapını ayarlamak için parametreyi kullanın.
 
 
-#### <a name="fuzzy-search-parameters"></a>Benzer arama parametreleri
+#### <a name="fuzzy-search-parameters"></a>Bulanık arama parametreleri
 
-Bir arama sorgusuna yönelik Kullanıcı girdlerinizi bilmiyorsanız, Azure haritalar [arama, benzer API 'yi](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kullanmanızı öneririz. API, POı aramasını ve coğrafi kodlamayı kurallı *tek satırlık bir aramada*birleştirir: 
+Bir arama sorgusu için kullanıcı girişlerinizi bilmiyorsanız Azure Haritalar [Arama Bulanık API'sini](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kullanmanızı öneririz. API, POI arama ve coğrafi kodlamayı kanonik *tek satırlı bir aramada*birleştirir: 
 
-* `minFuzzyLevel` ve `maxFuzzyLevel` parametreleri, sorgu parametreleri kullanıcının istediği bilgilerle tam olarak eşleşmediği zaman bile ilgili eşleşmeleri döndürmeye yardımcı olur. Performansı en üst düzeye çıkarmak ve olağandışı sonuçları azaltmak için arama sorgularını `minFuzzyLevel=1` ve `maxFuzzyLevel=2`varsayılanlarına ayarlayın. 
+* Ve `minFuzzyLevel` `maxFuzzyLevel` parametreler, sorgu parametreleri kullanıcının istediği bilgilerle tam olarak eşleşmese bile ilgili eşleşmeleri döndürmeye yardımcı olur. Performansı en üst düzeye çıkarmak ve olağandışı sonuçları `minFuzzyLevel=1` `maxFuzzyLevel=2`azaltmak için, arama sorgularını varsayılan olarak ve . 
 
-    Örneğin, `maxFuzzyLevel` parametresi 2 olarak ayarlandığında, arama terimi *restrant* ile *eşleştirilir.* Gerektiğinde varsayılan benzer düzeyleri geçersiz kılabilirsiniz. 
+    Örneğin, `maxFuzzyLevel` parametre 2 olarak ayarlandığında, arama terimi *restrant* *restoranla*eşleşir. Gerektiğinde varsayılan bulanık düzeyleri geçersiz kılabilirsiniz. 
 
-* Sonuç türlerinin tam kümesini önceliklendirmek için `idxSet` parametresini kullanın. Sonuçların tam bir kümesini önceliklendirmek için, virgülle ayrılmış dizinlerin bir listesini gönderebilirsiniz. Listenizde, öğe sırası önemi yoktur. Azure haritalar aşağıdaki dizinleri destekler:
+* Sonuç `idxSet` türlerinin tam kümesine öncelik vermek için parametreyi kullanın. Tam bir sonuç kümesine öncelik vermek için, virgülle ayrılmış dizinler listesi gönderebilirsiniz. Listenizde, madde sırası önemli değil. Azure Haritalar aşağıdaki dizinleri destekler:
 
-    * `Addr` - **adres aralıkları**: cadde başı ve sonundan alınan adres noktaları. Bu noktaların adres aralıkları olarak temsil edilir.
-    * `Geo` - **coğrafi**bölümler: arazi idari bölümleri. Bir Coğrafya, örneğin bir ülke, eyalet veya şehir olabilir.
-    * `PAD` - **noktası adresleri**: cadde adı ve sayı içeren adresler. Nokta adreslerini bir dizinde bulabilirsiniz. Bir örnek, *Soquel Dr 2501*' dir. Bir nokta adresi adresler için kullanılabilen en yüksek doğruluk düzeyini sağlar.  
-    * `POI` - **Ilgi noktaları**: dikkat edilecek veya ilgi çekici olabilecek bir haritanın noktaları. [Arama adresi API 'Si](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) POI döndürmez.  
-    * Haritada  - **Streets**: Streets `Str`.
-    * `XStr` - **çapraz Streets veya kesişimler**: ardımları veya Iki sokatin kesiştiği yerleri.
+* `Addr` - **Adres aralıkları**: Caddenin başından ve sonundan enterpolasyonyapılan adres noktaları. Bu noktalar adres aralıkları olarak temsil edilir.
+* `Geo` - **Coğrafyalar**: Arazinin idari bölümleri. Bir coğrafya bir ülke, devlet veya şehir olabilir, örneğin.
+* `PAD` - **Nokta adresleri**: Sokak adı ve numarası içeren adresler. Nokta adresleri bir dizinde bulunabilir. Bir örnek *Soquel Dr 2501*olduğunu. Bir nokta adresi, adresler için kullanılabilen en yüksek doğruluk düzeyini sağlar.  
+* `POI` - **İlgi çekici noktalar**: Dikkat edilmesi gereken veya ilginç olabilecek bir haritaüzerindeki noktalar. [Arama Adresi API'si](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) İçN'leri döndürmez.  
+* `Str` - **Sokaklar**: Haritadaki sokaklar.
+* `XStr` - **Çapraz sokaklar veya kavşaklar**: Kavşaklar veya iki caddenin kesiştiği yerler.
 
 
 #### <a name="usage-examples"></a>Kullanım örnekleri
 
-* `idxSet=POI`-yalnızca arama POI. 
+* `idxSet=POI`- Yalnızca İçN'leri arayın. 
 
-* yalnızca `idxSet=PAD,Addr` arama adresleri. `PAD`, nokta adresini gösterir ve `Addr` adres aralığını gösterir.
+* `idxSet=PAD,Addr`- Yalnızca arama adresleri. `PAD`nokta adresini gösterir `Addr` ve adres aralığını gösterir.
 
-### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Coğrafya varlık türü için ters coğrafi kod ve filtre
+### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Bir coğrafya varlık türü için ters geocode ve filtre
 
-[Arama adresi ters API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)'sinde ters coğrafi kod araması yaptığınızda hizmet, yönetim alanlarının çokgenler döndürebilir. Aramayı belirli Coğrafya varlık türlerine göre daraltmak için, isteklerinizin `entityType` parametresini ekleyin. 
+[Arama Adresi Ters API'sinde](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)ters coğrafi kod araması yaptığınızda, hizmet yönetim alanları için çokgenleri döndürebilir.Aramayı belirli coğrafya varlık türlerine daraltmak için isteklerinize `entityType` parametre ekleyin. 
 
-Elde edilen yanıt, Coğrafya KIMLIĞI ve eşleşen varlık türü içerir. Birden fazla varlık sağlarsanız, uç nokta *kullanılabilir en küçük varlığı*döndürür. [Arama Çokgen hizmeti](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)aracılığıyla Coğrafya geometrisini almak için döndürülen geometri kimliğini kullanabilirsiniz.
+Elde edilen yanıt, coğrafya kimliğini ve eşleşen varlık türünü içerir. Birden fazla varlık sağlarsanız, bitiş noktası *kullanılabilir en küçük varlığı*döndürür. Geri dönen geometri kimliğini kullanarak coğrafyanın geometrisini [Arama Çokgen hizmeti](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)aracılığıyla elde edebilirsiniz.
 
 #### <a name="sample-request"></a>Örnek istek
 
@@ -114,7 +114,6 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
                 "municipality": "Redmond",
                 "country": "United States",
                 "countryCodeISO3": "USA",
-                },
                 "countrySubdivisionName": "Washington"
             },
             "position": "47.639454,-122.130455",
@@ -129,18 +128,18 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 }
 ```
 
-### <a name="set-the-results-language"></a>Sonuçlar dilini ayarlama
+### <a name="set-the-results-language"></a>Sonuç dilini ayarlama
 
-Döndürülen arama sonuçlarının dilini ayarlamak için `language` parametresini kullanın. İstek dili ayarlanmamışsa varsayılan Arama Hizmeti ülke veya bölgedeki en yaygın dili kullanır. Belirtilen dilde hiçbir veri yoksa, varsayılan dil kullanılır. 
+Döndürülen `language` arama sonuçlarının dilini ayarlamak için parametreyi kullanın. İstek dili ayarlamıyorsa, varsayılan olarak Arama Hizmeti ülke veya bölgedeki en yaygın dili kullanır. Belirtilen dilde veri yoksa varsayılan dil kullanılır. 
 
-Daha fazla bilgi için bkz. [Azure Maps desteklenen diller](https://docs.microsoft.com/azure/azure-maps/supported-languages).
+Daha fazla bilgi için Azure [Haritalar desteklenen dillere](https://docs.microsoft.com/azure/azure-maps/supported-languages)bakın.
 
 
-### <a name="use-predictive-mode-automatic-suggestions"></a>Tahmine dayalı modu kullanın (otomatik öneriler)
+### <a name="use-predictive-mode-automatic-suggestions"></a>Tahmin modunu kullanma (otomatik öneriler)
 
-Kısmi sorgularla ilgili daha fazla eşleşme bulmak için `typeahead` parametresini `true`olarak ayarlayın. Bu sorgu kısmi giriş olarak yorumlanır ve arama tahmine dayalı moda girer. `typeahead` parametresini `true`olarak ayarlamazsanız, hizmet ilgili tüm bilgilerin geçtiğini varsayar.
+Kısmi sorgular için daha fazla `typeahead` eşleşme bulmak `true`için parametreyi ' ye ayarlayın Bu sorgu kısmi giriş olarak yorumlanır ve arama tahmin moduna girer. Parametreyi `typeahead` `true`ayarlamazsanız, hizmet ilgili tüm bilgilerin aktarıldığını varsayar.
 
-Aşağıdaki örnek sorguda, arama adresi hizmeti *mikro*için sorgulanır. Burada `typeahead` parametresi `true`olarak ayarlanır. Yanıt, arama hizmetinin sorguyu kısmi sorgu olarak yorumdığını gösterir. Yanıt, otomatik olarak önerilen bir sorgunun sonuçlarını içerir.
+Aşağıdaki örnek sorguda, Arama Adresi hizmeti *Microso*için sorgulanır. Burada, `typeahead` parametre `true`ayarlanır. Yanıt, arama hizmetinin sorguyu kısmi sorgu olarak yorumladığını gösterir. Yanıt, otomatik olarak önerilen bir sorgunun sonuçlarını içerir.
 
 #### <a name="sample-query"></a>Örnek sorgu
 
@@ -406,21 +405,21 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 ```
 
 
-### <a name="encode-a-uri-to-handle-special-characters"></a>Özel karakterleri işlemek için bir URI kodla 
+### <a name="encode-a-uri-to-handle-special-characters"></a>Özel karakterleri işlemek için bir URI kodlama 
 
-Çapraz cadde adreslerini bulmak için, adresin özel karakterlerini işlemek üzere URI 'yi kodlamanız gerekir. Bu adresi göz önünde bulundurun: *1. aven& UNION Street, Seattle*. Burada, isteği göndermeden önce ampersan karakterini (`&`) kodlayın. 
+Cadde ler arası adresleri bulmak için, adresteki özel karakterleri işlemek için URI'yi kodlamanız gerekir. Bu adres örneğini göz önünde bulundurun: *1st Avenue & Union Street, Seattle.* Burada, isteği göndermeden önce`&`amper ve karakteri kodlayın. 
 
-Karakter verilerini bir URI içinde kodlamanızı öneririz. Bir URI 'de, bir yüzde işareti (`%`) ve karakterlerin UTF-8 koduna karşılık gelen iki karakterlik bir onaltılık değer kullanarak tüm karakterleri kodlayabilirsiniz.
+Karakter verilerini uri'de kodlamanızı öneririz. URI'de, tüm karakterleri bir yüzde işareti (`%`) ve karakterlerin UTF-8 koduna karşılık gelen iki karakterli hexadecimal değeri kullanarak kodlarsınız.
 
 #### <a name="usage-examples"></a>Kullanım örnekleri
 
-Bu adresle başla:
+Bu adresle başlayın:
 
 ```
 query=1st Avenue & E 111th St, New York
 ```
 
-Adresi kodla:
+Adresi kodlayın:
 
 ```
 query=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
@@ -433,7 +432,7 @@ JavaScript veya TypeScript:
 encodeURIComponent(query)
 ```
 
-C#veya Visual Basic:
+C# veya Visual Basic:
 ```csharp
 Uri.EscapeDataString(query)
 ```
@@ -443,7 +442,7 @@ Java:
 URLEncoder.encode(query, "UTF-8") 
 ```
 
-Python
+Python:
 ```Python
 import urllib.parse 
 urllib.parse.quote(query)
@@ -455,42 +454,41 @@ C++:
 curl_easy_escape(query)
 ```
 
-PHP
+Php:
 ```PHP
 urlencode(query)
 ```
 
-Söyleniş
+Yakut:
 ```Ruby
 CGI::escape(query) 
 ```
 
-SWIFT
+Swift:
 ```Swift
 query.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) 
 ```
 
-Sayfasına
+Devam et:
 ```Go
 import ("net/url") 
 url.QueryEscape(query)
 ```
 
 
-## <a name="best-practices-for-poi-searching"></a>POı arama için en iyi uygulamalar
+## <a name="best-practices-for-poi-searching"></a>İçN arama için en iyi uygulamalar
 
-Bir POı aramasında, ada göre POı sonuçları isteyebilirsiniz. Örneğin, bir işi adına göre arama yapabilirsiniz. 
+İçN aramasında, İçN sonuçlarını ada göre isteyebilirsiniz. Örneğin, bir işletmeyi ada göre arayabilirsiniz. 
 
-Uygulamanızın kapsama ihtiyacı olan ülkeleri belirtmek için `countrySet` parametresini kullanmanızı kesinlikle öneririz. Varsayılan davranış, dünyanın tamamında arama yapmak için kullanılır. Bu geniş arama gereksiz sonuçlar döndürebilir ve arama uzun zaman alabilir.
+Uygulamanızın kapsama ihtiyacı olduğu `countrySet` ülkeleri belirtmek için parametreyi kullanmanızı şiddetle öneririz. Varsayılan davranış tüm dünyayı aramaktır. Bu geniş arama gereksiz sonuçlar döndürebilir ve arama uzun sürebilir.
 
-### <a name="brand-search"></a>Marka araması
+### <a name="brand-search"></a>Marka arama
 
-Sonuçların ve yanıttaki bilgilerin uygunluğunu artırmak için, bir POı arama yanıtı, marka bilgilerini içerir. Yanıtı ayrıştırmak için bu bilgileri kullanabilirsiniz.
+Sonuçların ve yanıttaki bilgilerin alaka düzeyini artırmak için, bir İçN arama yanıtı marka bilgilerini içerir. Yanıtı ayrışdırmak için bu bilgileri kullanabilirsiniz.
 
-Bir istekte, virgülle ayrılmış bir marka adları listesi gönderebilirsiniz. `brandSet` parametresini ayarlayarak sonuçları belirli markalara kısıtlamak için listeyi kullanın. Listenizde, öğe sırası önemi yoktur. Birden çok marka listesi sağladığınızda, döndürülen sonuçlar listelerden en az birine ait olmalıdır.
+İstekte, virgülle ayrılmış bir marka adı listesi gönderebilirsiniz. Parametreyi ayarlayarak sonuçları belirli markalarla `brandSet` sınırlamak için listeyi kullanın. Listenizde, madde sırası önemli değildir. Birden çok marka listesi sağladığınızda, döndürülen sonuçlar listelerinizden en az birine ait olmalıdır.
 
-Marka aramasını araştırmak için bir [POI kategorisi arama](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) isteği oluşturalım. Aşağıdaki örnekte, Redmond, Washington 'daki Microsoft Kampüsü yakınlarında gaz istasyonlara bakacağız. Yanıt, döndürülen her bir POı için marka bilgilerini gösterir.
-
+Marka aramasını keşfetmek için bir İçN kategorisi arama isteği [yapalım.](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) Aşağıdaki örnekte, Redmond, Washington'daki Microsoft kampüsünün yakınında benzin istasyonları arıyoruz. Yanıt, döndürülen her İçN'nin marka bilgilerini gösterir.
 
 #### <a name="sample-query"></a>Örnek sorgu
 
@@ -741,9 +739,9 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 ```
 
 
-### <a name="airport-search"></a>Havaalanı araması
+### <a name="airport-search"></a>Havaalanı arama
 
-Arama POI API 'sini kullanarak, resmi kodlarını kullanarak havaalanları arayabilirsiniz. Örneğin, Seattle-Tacoma Uluslararası Havaalanı 'yi bulmak için *Sea* 'yi kullanabilirsiniz: 
+Arama İçi API'sını kullanarak, havaalanlarını resmi kodlarını kullanarak arayabilirsiniz. Örneğin, Seattle-Tacoma Uluslararası Havaalanı'nı bulmak için *SEA'yi* kullanabilirsiniz: 
 
 ```HTTP
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=SEA 
@@ -751,13 +749,13 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 
 ### <a name="nearby-search"></a>Yakındaki arama
 
-Belirli bir konumun etrafında POı sonuçları almak için, [YAKıNDAKI API ara](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)' yı kullanmayı deneyebilirsiniz. Uç nokta yalnızca POı sonuçları döndürüyor. Arama sorgu parametresinde almaz. 
+Belirli bir konum etrafında İçN sonuçlarını almak için [Yakındaki Arama API'sini](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)kullanmayı deneyebilirsiniz. Bitiş noktası yalnızca PoI sonuçlarını döndürür. Bir arama sorgusu parametre almaz. 
 
-Sonuçları sınırlandırmak için, yarıçapı ayarlamanızı öneririz.
+Sonuçları sınırlamak için yarıçapı ayarlamanızı öneririz.
 
 ## <a name="understanding-the-responses"></a>Yanıtları anlama
 
-Azure Maps Arama Hizmeti bir adres arama isteği yaparak Seattle 'da bir adres bulalim. Aşağıdaki istek URL 'sinde, `countrySet` parametresini ABD 'deki adresi arayacak şekilde `US` olarak ayarlayacağız.
+Azure Haritalar Arama Hizmeti'ne adres arama isteğinde bulunarak Seattle'da bir adres bulalım. Aşağıdaki istek URL'sinde, `countrySet` abd'deki `US` adresi aramak için parametreyi ayarladık.
 
 ### <a name="sample-query"></a>Örnek sorgu
 
@@ -767,29 +765,29 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="supported-types-of-results"></a>Desteklenen sonuç türleri
 
-* **Nokta adresi**: bir haritada cadde adı ve sayı olan belirli bir adrese sahip olan bir haritaya işaret eder. Nokta adresi adresler için en yüksek doğruluk düzeyini sağlar. 
+* **Nokta Adresi**: Sokak adı ve numarası olan belirli bir adrese sahip haritadaki noktalar. Nokta Adresi, adresler için en yüksek doğruluk düzeyini sağlar. 
 
-* **Adres aralığı**: cadde başı ve sonundan alınan adres noktalarının aralığıdır.  
+* **Adres Aralığı**: Sokağın başından ve sonundan enterpolasyona tabi olan adres noktalarıaralığı.  
 
-* **Coğrafya**: bir harita üzerindeki, Örneğin ülke, eyalet veya şehir gibi yönetim bölümlerini temsil eden alanlardır. 
+* **Coğrafya**: Bir arazinin, örneğin, ülke, eyalet veya şehir gibi idari bölümlerini temsil eden haritadaki alanlar. 
 
-* **POI**: bir haritaya dikkat çekici ve ilginç olabilecek bir haritada işaret ediyor.
+* **POI**: Dikkat edilmesi gereken ve ilginç olabilecek bir haritadaki noktalar.
 
-* **Cadde**: haritadaki Streets. Adresler, adresi içeren sokak 'nin Enlem ve boylam koordinatları olarak çözümlenir. Ev numarası işlenmeyebilir. 
+* **Sokak**: Haritadaki sokaklar. Adresler, adresi içeren sokağın enlem ve boylam koordinatlarına göre çözülür. Ev numarası işlenmemiş olabilir. 
 
-* **Çapraz cadde**: kesişmeler. Çapraz Streets, iki cadde kesişikinin kesişimlerini temsil eder.
+* **Cross Street**: Kavşaklar. Çapraz sokaklar, iki caddenin kesiştiği kavşakları temsil eder.
 
 ### <a name="response"></a>Yanıt
 
-Yanıt yapısına göz atalım. Aşağıdaki yanıtta, sonuç nesnelerinin türleri farklıdır. Dikkatlice bakarsanız, üç tür sonuç nesnesi görürsünüz:
+Tepki yapısına bakalım. Aşağıdaki yanıtta, sonuç nesnelerinin türleri farklıdır. Dikkatlice bakarsanız, üç tür sonuç nesnesi görürsünüz:
 
-* Nokta adresi
-* Caddesi
-* Çapraz cadde
+* Nokta Adresi
+* Sokak
+* Çapraz Sokak
 
-Adres aramasının POI döndürmediğine dikkat edin.  
+Adres aramasının İçN'leri döndürmediğini unutmayın.  
 
-Her yanıt nesnesi için `Score` parametresi, eşleşen puanın aynı yanıttaki diğer nesnelerin puanlarıyla ilişkisini gösterir. Yanıt nesnesi parametreleri hakkında daha fazla bilgi için bkz. [arama adresini al](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress).
+Her `Score` yanıt nesnesinin parametresi, eşleşen skorun aynı yanıttaki diğer nesnelerin puanlarıyla nasıl ilişkili olduğunu gösterir. Yanıt nesnesi parametreleri hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)
 
 ```JSON
 {
@@ -951,12 +949,12 @@ Her yanıt nesnesi için `Score` parametresi, eşleşen puanın aynı yanıttaki
 }
 ```
 
-### <a name="geometry"></a>Geometrisi
+### <a name="geometry"></a>Geometri
 
-*Geometri* yanıt türü, `geometry` ve `id`altındaki `dataSources` nesnesinde döndürülen geometri kimliğini içerebilir. Örneğin, bir GeoJSON biçiminde geometri verileri istemek için [arama Çokgen hizmetini](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) kullanabilirsiniz. Bu biçimi kullanarak bir varlık kümesi için bir şehir veya Havaalanı ana hattı edinebilirsiniz. Daha sonra bu sınır verilerini kullanarak [bir bölge alanı ayarlayabilir](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) veya [geometrisi içinde POI araması](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)yapabilirsiniz.
+*Geometri'nin* yanıt türü, altındaki `dataSources` `geometry` nesnede döndürülen geometri `id`kimliğini ve . Örneğin, GeoJSON biçiminde geometri verilerini istemek için [Arama Çokgen hizmetini](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) kullanabilirsiniz. Bu biçimi kullanarak, bir dizi varlık için bir şehir veya havaalanı anahattı alabilirsiniz. Daha sonra geometri içinde [bir geofence](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) veya [Arama İçN'ler](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)kurmak için bu sınır verilerini kullanabilirsiniz.
 
 
-[Arama adresi](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) API 'Si veya [arama belirsiz](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) API 'si için yanıtlar, `geometry` ve `id`altındaki `dataSources` nesnesine döndürülen geometri kimliğini içerebilir:
+[Arama Adresi](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) API'si veya [Arama Bulanıkı](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) API'si için yanıtlar, `geometry` aşağıdaki `id` `dataSources` nesnede döndürülen geometri kimliğini içerebilir:
 
 
 ```JSON 
@@ -969,5 +967,10 @@ Her yanıt nesnesi için `Score` parametresi, eşleşen puanın aynı yanıttaki
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure haritalar arama hizmeti istekleri oluşturmayı](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)öğrenin.
-* Azure haritalar [arama HIZMETI API belgelerini](https://docs.microsoft.com/rest/api/maps/search)inceleyin. 
+Daha fazla bilgi için lütfen bkz:
+
+> [!div class="nextstepaction"]
+> [Azure Haritalar Arama Hizmeti istekleri nasıl oluşturur?](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+
+> [!div class="nextstepaction"]
+> [Arama Hizmeti API belgeleri](https://docs.microsoft.com/rest/api/maps/search)

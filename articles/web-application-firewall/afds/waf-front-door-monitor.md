@@ -1,49 +1,49 @@
 ---
-title: Azure Web uygulaması güvenlik duvarı izleme ve günlüğe kaydetme
-description: Frontkapısı izleme ve günlüğe kaydetme ile Web uygulaması güvenlik duvarını (WAF) öğrenin
+title: Azure Web Uygulaması Güvenlik Duvarı izleme ve günlüğe kaydetme
+description: FrontDoor izleme ve günlük ile Web Uygulama Güvenlik Duvarı (WAF) öğrenin
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 3446df6effd85a07beb463c1caa40c5826a9e019
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4488fadf5db3b32049b5dce4bbee1fa76c320e96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934704"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284152"
 ---
-# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web uygulaması güvenlik duvarı izleme ve günlüğe kaydetme 
+# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web Uygulaması Güvenlik Duvarı izleme ve günlüğe kaydetme 
 
-Azure Web uygulaması güvenlik duvarı (WAF) izleme ve günlüğe kaydetme, Azure Izleyici ve Azure Izleyici günlükleri ile günlüğe kaydetme ve tümleştirme aracılığıyla sağlanır.
+Azure Web Uygulaması Güvenlik Duvarı (WAF) izleme ve günlüğe kaydetme, Azure Monitor ve Azure Monitor günlükleriyle günlüğe kaydetme ve tümleştirme yoluyla sağlanır.
 
 ## <a name="azure-monitor"></a>Azure İzleyici
 
-Frontkapısı günlüğü olan WAF, [Azure izleyici](../../azure-monitor/overview.md)ile tümleşiktir. Azure Izleyici, WAF uyarıları ve günlükleri dahil olmak üzere tanılama bilgilerini izlemenizi sağlar. WAF izlemesini, portaldaki ön kapı kaynağı içinde, **Tanılama** sekmesi altında veya doğrudan Azure İzleyici hizmeti aracılığıyla yapılandırabilirsiniz.
+FrontDoor günlüğü ile WAF [Azure Monitor](../../azure-monitor/overview.md)ile entegre edilmiştir. Azure Monitor, WAF uyarıları ve günlükleri de dahil olmak üzere tanılama bilgilerini izlemenize olanak tanır. WAF izlemeyi, Portaldaki Ön Kapı kaynağında **Tanılama** sekmesi altındaki portalda veya doğrudan Azure Monitor hizmeti aracılığıyla yapılandırabilirsiniz.
 
-Azure portal, ön kapı kaynak türü ' ne gidin. Sol taraftaki **izleme**/**ölçümleri** sekmesinden, WAF kurallarıyla eşleşen Isteklerin sayısını Izlemek Için **webapplicationfirewallrequestcount** ekleyebilirsiniz. Özel filtreler, eylem türleri ve kural adlarına göre oluşturulabilir.
+Azure portalından Ön Kapı kaynak türüne gidin. Soldaki **İzleme**/**Ölçümleri** sekmesinden, WAF kurallarıyla eşleşen istek sayısını izlemek için **WebApplicationFirewallRequestCount** ekleyebilirsiniz. Özel filtreler eylem türleri ve kural adlarına göre oluşturulabilir.
 
-![Wafmetrik](../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png)
+![WAFMetrics](../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png)
 
-## <a name="logs-and-diagnostics"></a>Günlükler ve Tanılamalar
+## <a name="logs-and-diagnostics"></a>Günlükler ve tanılama
 
-Ön kapılı WAF algıladığı her tehdit için ayrıntılı raporlama sağlar. Günlük kaydı Azure Tanılama günlükleri ile tümleştirilir ve uyarılar json biçiminde kaydedilir. Bu Günlükler, [Azure izleyici günlükleri](../../azure-monitor/insights/azure-networking-analytics.md)ile tümleştirilebilir.
+Ön Kapılı WAF, algılayadaki her tehdit hakkında ayrıntılı raporlama sağlar. Günlük kaydı Azure Tanılama günlükleri ile tümleştirilir ve uyarılar json biçiminde kaydedilir. Bu günlükler Azure [Monitor günlükleriyle](../../azure-monitor/insights/azure-networking-analytics.md)tümleştirilebilir.
 
 ![WAFDiag](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
 
-FrontdoorAccessLog, müşteri arka uçlarına iletilen tüm istekleri günlüğe kaydeder. FrontdoorWebApplicationFirewallLog, bir WAF kuralıyla eşleşen tüm istekleri günlüğe kaydeder.
+FrontdoorAccessLog, müşteri arka uçlarına iletilen tüm istekleri kaydeder. FrontdoorWebApplicationFirewallLog bir WAF kuralı eşleşen herhangi bir istek günlükleri.
 
-Aşağıdaki örnek sorgu, engellenen isteklerde WAF günlüklerini edinir:
+Aşağıdaki örnek sorgu, engellenen istekler üzerindeki WAF günlüklerini alır:
 
 ``` WAFlogQuery
 AzureDiagnostics
 | where ResourceType == "FRONTDOORS" and Category == "FrontdoorWebApplicationFirewallLog"
-| where action_s == "Block"
+| where action_name_s == "Block"
 
 ```
 
-WAF günlüğünde günlüğe kaydedilen bir istek örneği aşağıda verilmiştir:
+WAF günlüğünde günlüğe kaydedilmiş bir istek örneği aşağıda verilmiştir:
 
 ``` WAFlogQuerySample
 {
@@ -66,7 +66,7 @@ WAF günlüğünde günlüğe kaydedilen bir istek örneği aşağıda verilmiş
 
 ``` 
 
-Aşağıdaki örnek sorgu AccessLogs girdilerini edinir:
+Aşağıdaki örnek sorgu AccessLogs girişlerini alır:
 
 ``` AccessLogQuery
 AzureDiagnostics
@@ -74,7 +74,7 @@ AzureDiagnostics
 
 ```
 
-Erişim günlüğünde günlüğe kaydedilen bir istek örneği aşağıda verilmiştir:
+Access günlüğünde günlüğe kaydedilmiş bir isteğin bir örneği aşağıda verilmiştir:
 
 ``` AccessLogSample
 {
@@ -105,4 +105,4 @@ Erişim günlüğünde günlüğe kaydedilen bir istek örneği aşağıda veril
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ön kapı](../../frontdoor/front-door-overview.md)hakkında daha fazla bilgi edinin.
+- [Ön Kapı](../../frontdoor/front-door-overview.md)hakkında daha fazla bilgi edinin.

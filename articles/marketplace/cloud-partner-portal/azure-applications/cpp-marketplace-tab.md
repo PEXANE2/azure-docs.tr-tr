@@ -1,96 +1,95 @@
 ---
-title: Azure Uygulama teklifi marketi sekmesi
-description: Azure Uygulama teklifinin pazarlama varlıklarını belirlemek için Market sekmesini kullanın.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure uygulaması teklif Marketplace sekmesi
+description: Azure uygulama teklifi için pazarlama varlıklarını tanımlamak için Market sekmesini kullanın.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827573"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281774"
 ---
-# <a name="azure-application-marketplace-tab"></a>Azure Uygulama marketi sekmesi
+# <a name="azure-application-marketplace-tab"></a>Azure uygulaması Market sekmesi
 
-Azure uygulamanızı anlatmak ve pazarlama varlıkları sağlamak için Market sekmesini kullanın. Bu sekme aşağıdaki formları içerir: genel bakış, pazarlama yapıtları, müşteri adayı yönetimi ve yasal.
+Azure uygulamanızı açıklamak ve pazarlama varlıkları sağlamak için Market sekmesini kullanın. Bu sekme aşağıdaki formları içerir: Genel Bakış, Pazarlama Eserleri, Müşteri Adayı Yönetimi ve Yasal.
 
-## <a name="overview-form"></a>Genel Bakış formu
+## <a name="overview-form"></a>Genel bakış formu
 
-Genel Bakış formu, sonraki ekran yakalama bölümünde gösterilen gerekli ve isteğe bağlı alanlara sahiptir. Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
+Genel Bakış formu, bir sonraki ekran çekiminde gösterilen gerekli ve isteğe bağlı alanlara sahiptir. Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
 
-![Genel Bakış formu](./media/azureapp-marketplace-overview.png)
+![Genel bakış formu](./media/azureapp-marketplace-overview.png)
 
-Aşağıdaki tabloda, teklif için bir storefront oluşturmak üzere kullanılacak ayarlar açıklanmaktadır.   Bir yıldız işaretiyle eklenen alanlar gereklidir.
-
-|      Alan         |    Açıklama    |
-|  ---------------   |  ---------------  |
-| **Başlık\***        | Teklifin başlığı. Market 'te göze çarpacak olarak görüntülenecektir. En fazla 50 karakter uzunluğunda olur. |
-| **Özet\***      | Teklifin kısa özeti. En fazla 100 karakter uzunluğunda olur.           |
-| **Uzun Özet\*** | Teklifin daha uzun Özeti (ancak Özet ile aynı olabilir). En fazla 256 karakter uzunluğunda olur.           |
-| **Açıklama\***  | Teklifin açıklaması. En fazla 3000 karakter uzunluğunda olur. &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt; ve üst bilgi etiketleri dahil basit HTML biçimlendirmesine izin verilir.  |
-| **Pazarlama tanımlayıcısı\*** | Bu teklifle ilişkilendirilecek benzersiz bir URL, genellikle kuruluşunuzun ve çözüm adı, maksimum uzunluk 50 karakter içerir. Hizmetiniz için kısa ve kolay bir pazarlama tanımlayıcısı seçin. Bu, bu teklif için Market URL 'Lerinde kullanılacaktır. Örneğin, yayımcı KIMLIĞINIZ "contoso" ise ve pazarlama tanımınız "sampleApp" ise, Azure Marketi 'nde teklifinizin URL 'SI https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp olacaktır.  
-| **Abonelik kimliklerini önizleme\*** | Ön görüntüleyicilerin bir den 100 abonelik tanımlayıcılarından birini ekleyin. Bu beyaz listeye alınan abonelikler, yayımlandıktan sonra, kullanıma hazır hale gelmeden önce, kullanıma alındıktan sonra teklifinizin erişimine sahip olur.          |
-| **Faydalı bağlantılar**    | İsteğe bağlı olarak, tekliflerinizin kullanıcıları için destek, belgeler, forumlar vb. gibi çeşitli kaynaklara bağlantı sağlayabilirsiniz.  Belgelerinize en az bir bağlantı eklemeniz önerilir.            |
-| **Önerilen Kategoriler (en fazla 5)\*** | Bir ila beş kategori seçin. Seçili kategoriler, teklifinizi Azure Marketi 'nde ve Azure portalında bulunan ürün kategorileriyle eşlemek için kullanılır. Bunlar, tarayıcı sayfalarında ve ürün ayrıntıları sayfasında gösterilir. |
-|  |  |
-
-
-## <a name="marketing-artifacts"></a>Pazarlama yapıtları
-
-Pazarlama yapıtları formu, sonraki ekran yakalama bölümünde gösterilen gerekli ve isteğe bağlı alanlara sahiptir. Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
-
-![Pazarlama yapıtları formu](./media/azureapp-marketplace-artifacts.png)
-
-Aşağıdaki tabloda, pazarlama yapıtları açıklanmaktadır.
+Aşağıdaki tabloda, teklif için bir vitrin oluşturmak için kullanılacak ayarlar açıklanmaktadır.   Yıldız işaretiyle eklenen alanlar gereklidir.
 
 |      Alan         |    Açıklama    |
 |  ---------------   |  ---------------  |
-| **Küçük\***        | Küçük logo: PNG biçiminde 40x40 piksel     |
-| **Orta\***       | Orta Logo: PNG biçiminde 90x90 piksel    |
-| **Büyük\***        | Büyük Logo: 115x115 piksel, PNG biçiminde   |
-| **Geniş\***         | Geniş amblem: 255x115 piksel, PNG biçiminde    |
-| **Hero**           | İsteğe bağlı Hero logosu: 815x290 piksel PNG biçiminde. **Note:** Hero simgesi karşıya yüklendikten sonra silinemez. |
-| **Ekran görüntüleri (en fazla 5)** |        Ekran görüntüleri, ürün ayrıntıları sayfanızda görüntülenir. Bu uygulamalar, uygulamanızın ne yaptığını ve nasıl çalıştığını görsel olarak iletmenin iyi bir yoludur. Örneğin, mimari diyagramlarını gösterebilir veya örnek durum çizimlerini kullanabilirsiniz. Ekran görüntüleri isteğe bağlıdır ve SKU başına 5 ile sınırlı olursunuz. Bir ekran görüntüsü eklemek için:<ul><li>Ekran görüntüsü penceresini açmak için **+ ekran görüntüsü Ekle** ' yi seçin</li><li>**Ad** -bir ad/başlık girin (en fazla 100 karakter uzunluğunda).</li><li>**Karşıya yükle** -görüntüyü karşıya yükleyin. Bu, PNG biçiminde olmalıdır ve boyut 533 x 324 pikseldir.</li></ul>           |
-| **Video ekle**      | İsteğe bağlı, videolar ürün ayrıntıları sayfanızda görüntülenir. Uygulamanızın ne yaptığını ve nasıl çalıştığını görsel olarak iletmenin iyi bir yoludur. Video eklemek için: <ul><li>Video penceresini açmak için **+ video ekle** ' yi seçin</li><li>**Ad** -bir ad/başlık girin (en fazla 100 karakter uzunluğunda).</li><li>**Bağlantı** -videoyu barındıran sitenin URL 'sini girin (YouTube veya Vimeo)</li><li>**Küçük resim** -küçük resim yükleyin. Bu, PNG biçiminde olmalıdır ve boyut 533 x 324 pikseldir.</li></ul>          |
+| **Başlık\***        | Teklifin başlığı. Bu pazarda belirgin görüntülenir. Maksimum uzunluk 50 karakterdir. |
+| **Özet\***      | Teklifin kısa özeti. Maksimum uzunluk 100 karakterdir.           |
+| **Uzun Özet\*** | Teklifin daha uzun özeti (özetle aynı olabilir). Maksimum uzunluk 256 karakterdir.           |
+| **Açıklama\***  | Teklifin açıklaması. Maksimum uzunluk 3000 karakterdir. &gt; &lt;P, em,&gt; &lt;ul&gt;, li &lt;&gt;, &lt;ol&gt; ve üstbilgi etiketleri de dahil olmak üzere &lt;basit HTML biçimlendirmeye izin verilir.  |
+| **Pazarlama Tanımlayıcısı\*** | Bu teklifle ilişkilendirilen benzersiz bir URL, genellikle kuruluş ve çözüm adınızı, maksimum uzunluk 50 karakteri içerir. Hizmetiniz için kısa ve samimi bir pazarlama tanımlayıcısı seçin. Bu teklif için pazar URL'lerinde kullanılacaktır. Örneğin, yayıncı kimliğiniz "contoso" ise ve pazarlama tanımlayıcınız "sampleApp" ise, Azure Market'teki teklifinizin URL'sihttps://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Abonelik IYT'lerini Önizleme\*** | Bir den 100'e kadar abonelik tanımlayıcıları previewers ekleyin. Beyaz listedeki bu abonelikler, yayınlanmadan önce, yayınlanmadan önce önizlemede kullanılabilirken teklifinize erişebilir.          |
+| **Faydalı Linkler**    | İsteğe bağlı olarak, teklifinizin kullanıcıları için destek, dokümantasyon, forum, vb. gibi çeşitli kaynaklara bağlantılar sağlayabilirsiniz.  Belgelerinize en az bir bağlantı eklemeniz önerilir.            |
+| **Önerilen Kategoriler (Max 5)\*** | Bir ila beş kategori seçin. Seçili kategoriler, teklifinizi Azure Marketi ve Azure Portalı'nda bulunan ürün kategorilerine haritalamak için kullanılır. Bunlar gözatma sayfalarında ve ürün ayrıntıları sayfanızda gösterilir. |
 |  |  |
 
 
-### <a name="artifact-examples-in-azure-marketplace"></a>Azure Marketi 'ndeki yapıt örnekleri
+## <a name="marketing-artifacts"></a>Pazarlama Eserleri
 
-Sonraki ekranda yakalama bir Market arama sonucu örneğini gösterir.
+Pazarlama Eserleri formu, bir sonraki ekran yakalamada gösterilen gerekli ve isteğe bağlı alanlara sahiptir. Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
 
-![Market teklif arama sonucu](./media/azureapp-marketplace-example-browse.png)
+![Pazarlama eserler formu](./media/azureapp-marketplace-artifacts.png)
 
-Aşağıdaki görüntüde, bir müşteri, arama sonucunda teklifin kutucuğuna tıkladıktan sonra teklifin Market 'te nasıl görüntülendiğini gösterir.
+Aşağıdaki tabloda pazarlama yapıları açıklanmaktadır.
 
-![Market teklif arama sonucu ayrıntıları](./media/azureapp-marketplace-example-details.png)
+|      Alan         |    Açıklama    |
+|  ---------------   |  ---------------  |
+| **Küçük\***        | Küçük logo: PNG formatında 40x40 piksel     |
+| **Orta\***       | Orta logo: PNG formatında 90x90 piksel    |
+| **Büyük\***        | Büyük logo: PNG formatında 115x115 piksel   |
+| **Geniş\***         | Geniş logo: PNG formatında 255x115 piksel    |
+| **Kahraman**           | İsteğe bağlı kahraman logosu: PNG formatında 815x290 piksel. **Not:** Kahraman simgesi yüklendikten sonra silinemez. |
+| **Ekran Görüntüleri (Max 5)** |        Ekran görüntüleri ürün ayrıntıları sayfanızda görüntülenir. Bunlar, uygulamanızın ne yaptığını ve nasıl çalıştığını görsel olarak iletmek için iyi bir yoldur. Örneğin, mimari diyagramları gösterebilir veya büyük/küçük harf çizimleri kullanabilirsiniz. Ekran görüntüleri isteğe bağlıdır ve SKU başına 5 ile sınırlıdır. Ekran görüntüsü eklemek için:<ul><li>Ekran Görüntüsü penceresini açmak için **ekran görüntüsü ekle +** seçin</li><li>**Ad** - Bir ad/başlık girin (Maksimum uzunluk 100 karakter.)</li><li>**Upload** - Resmi yükleyin. PNG formatında olmalıdır ve boyutu 533 x 324 pikseldir.</li></ul>           |
+| **Video ekleme**      | İsteğe bağlı olarak, videolar ürün ayrıntıları sayfanızda görüntülenir. Uygulamanızın ne yaptığını ve nasıl çalıştığını görsel olarak iletmek için iyi bir yoldur. Video eklemek için: <ul><li>Video penceresini açmak için **+ Video Ekle'yi** seçin</li><li>**Ad** - Bir ad/başlık girin (Maksimum uzunluk 100 karakter.)</li><li>**Bağlantı** - Videoyu barındıran sitenin URL'sini girin (YouTube veya Vimeo)</li><li>**Küçük resim** - Küçük resmi yükleyin. PNG formatında olmalıdır ve boyutu 533 x 324 pikseldir.</li></ul>          |
+|  |  |
 
 
-### <a name="artifact-examples-in-azure-portal"></a>Azure portalında yapıt örnekleri
+### <a name="artifact-examples-in-azure-marketplace"></a>Azure Marketi'nde artefakt örnekleri
 
-Aşağıdaki ekran yakalama, bir teklifin Azure portalında nasıl görüntülendiğini gösterir. Bu örnekteki uygulama teklifi, **> geliştirme ve Test > Jenkins > her şeyin Market**'e göz atarak bulunur. Jenkins teklifi bir logo, başlık ve yayımcı görünen adını gösterir.
+Sonraki ekran yakalama, Bir Market arama sonucunun bir örneğini gösterir.
 
-![Azure portal tekliflere gözatın](./media/azureapp-portalbrowse-artifacts-jenkins.png)
+![Pazar yeri teklif arama sonucu](./media/azureapp-marketplace-example-browse.png)
 
-Sonraki ekran yakalama, bir Kullanıcı Jenkins seçtiğinde uygulamayla ilgili ayrıntılı bilgileri gösterir.
+Aşağıdaki resim, bir müşteri arama sonucu teklifin döşemesini tıklattıktan sonra teklifin Market'te nasıl görüntülendiğini gösterir.
 
-![Azure portal 'de teklif ayrıntıları](./media/azureapp-portal-artifacts-jenkins-details.png)
+![Marketplace teklif arama sonucu ayrıntıları](./media/azureapp-marketplace-example-details.png)
+
+
+### <a name="artifact-examples-in-azure-portal"></a>Azure Portalı'nda artefakt örnekleri
+
+Aşağıdaki ekran görüntüleri, bir teklifin Azure Portalı'nda nasıl görüntülendiğini gösterir. Bu örnekte uygulama teklifi **Pazar>Her şey dev + Test>Jenkins>** tarama tarafından bulunur. Jenkins teklifi bir logo, başlık ve yayıncı ekran adını gösterir.
+
+![Azure portalında tekliflere göz atın](./media/azureapp-portalbrowse-artifacts-jenkins.png)
+
+Bir sonraki ekran yakalama, kullanıcı Jenkins'i seçtiğinde uygulama hakkında ayrıntılı bilgileri gösterir.
+
+![Azure portalında teklif ayrıntıları](./media/azureapp-portal-artifacts-jenkins-details.png)
 
 
 ### <a name="logo-guidelines"></a>Logo yönergeleri
 
-Bulut İş Ortağı Portalı yüklenen tüm logolar, yönergeleri izlemelidir:
+Bulut İş Ortağı Portalı'na yüklenen tüm logolar aşağıdaki kurallara uymalıdır:
 
-- Azure tasarımının basit bir renk paleti vardır. Logonuz üzerinde birincil ve ikincil renk sayısını düşük tutun.
-- Azure portalının Tema renkleri beyaz ve siyahtır. Bu renkleri logolarınızın arka plan rengi olarak kullanmaktan kaçının. Logolarınızın Azure portal göre önemli olmasını sağlayacak bir renk kullanın. Basit birincil renkleri öneririz. Saydam bir arka plan kullanıyorsanız, logoların/metnin beyaz, siyah veya mavi olmadığından emin olun.
-- Logonuz üzerinde gradyan arka plan kullanmayın.
-- Logonuz üzerinde, şirketinizin veya marka adınızın bile metin yerleştirmekten kaçının. Logonuzun görünüm "düz" olmalıdır ve gradyanları kullanmaktan kaçınmalıdır.
-- Logoyu uzamayın.
+- Azure tasarımının basit bir renk paleti vardır. Logonuzdaki birincil ve ikincil renk sayısını düşük tutun.
+- Azure Portalı'nın tema renkleri beyaz ve siyahtır. Logolarınız için arka plan rengi olarak bu renkleri kullanmaktan kaçının. Logolarınızı Azure portalında öne çıkaracak bir renk kullanın. Basit birincil renkleri öneririz. Saydam bir arka plan kullanıyorsanız, logoların/metnin beyaz, siyah veya mavi olmadığından emin olun.
+- Logonuzda degrade arka plan kullanmayın.
+- Logoya metin, hatta şirketiniz veya marka adınızı bile koymaktan kaçının. Görünüm ve logo hissediyorum "düz" olmalı ve degradeler kaçınmalısınız.
+- Logoyu esnetme.
 
 
 #### <a name="hero-logo"></a>Kahraman logosu
@@ -98,36 +97,36 @@ Bulut İş Ortağı Portalı yüklenen tüm logolar, yönergeleri izlemelidir:
 Hero logosu isteğe bağlıdır.
 
 >[!IMPORTANT]
->Karşıya yüklendikten sonra Hero logosunu silemezsiniz.
+>Hero logosu yüklendikten sonra silemezsiniz.
 
-Bir Hero logosu için aşağıdaki yönergeleri kullanın:
+Hero logosu için aşağıdaki yönergeleri kullanın:
 
 - Siyah, beyaz ve saydam arka planlara izin verilmez.
-- Amblem için arka plan olarak herhangi bir açık renk kullanmaktan kaçının. Yayımcının görünen adı, plan başlığı ve teklif uzun Özeti, beyaz yazı tipi renginde görüntülenir ve arka planda bir süre önce gelmelidir.
-- Logoyu tasarlarken çoğu metni kullanmaktan kaçının. Teklif listelendiğinde yayımcı adı, plan başlığı, teklif uzun Özeti ve bir oluştur düğmesi, logo içine programlı bir şekilde katıştırılır.
-- Hero logosunun sağ tarafında kullanılmayan dikdörtgen bir boşluk ekleyin. Bu boş alan 415x100 pikseldir ve soldan 370 piksel arasındadır.
+- Logo için arka plan olarak herhangi bir açık renk kullanmaktan kaçının. Yayımcı ekran adı, plan başlığı ve teklif uzun özeti beyaz yazı tipi renginde görüntülenir ve arka plana karşı öne çıkmalıdır.
+- Logoyu tasarlarken çoğu metni kullanmaktan kaçının. Yayıncı adı, plan başlığı, teklif uzun özeti ve oluşturma düğmesi, teklif listelendiğinde logonun içine programlı olarak gömülür.
+- Kahraman logonuzun sağ tarafına kullanılmayan dikdörtgen bir boşluk ekleyin. Bu boş alan 415x100 pikseldir ve soldan 370 piksel den uzaktır.
 
 
-## <a name="lead-management"></a>Müşteri adayı yönetimi
+## <a name="lead-management"></a>Müşteri Yönetimi
 
-Lider Yönetimi formu, müşteri adayı yönetimini yapılandırmak için isteğe bağlı bir alana sahiptir. Müşteri adayı yönetimini yapılandırmak için, açılan listeden lider hedefini seçin. Sonraki ekran yakalama, kullanılabilir hedefleri gösterir.
+Müşteri Adayı Yönetimi formu, müşteri adayı yönetimini yapılandırmak için isteğe bağlı bir alana sahiptir. Müşteri adayı yönetimini yapılandırmak için açılır listeden Müşteri Adayı hedefini seçin. Sonraki ekran yakalama kullanılabilir hedefleri gösterir.
 
-![Müşteri adayı yönetim hedefini seçin](./media/azureapp-marketplace-leadmgmt.png)
+![Müşteri adayı yönetimi hedefini seçin](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->Bu iletiyi görmek için bilgi simgesini seçin: "müşteri adaylarınızın depolanacağı sistemi seçin. CRM sisteminize [buradan](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) nasıl bağlanacağınızı öğrenin. "
+>Bu iletiyi görmek için bilgi simgesini seçin: "Müşteri adaylarınızın depolandığı sistemi seçin. CRM [sisteminize](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) nasıl bağlanıp bağlanılabildiğini buradan öğrenin."
 
-Daha fazla bilgi için bkz. [müşteri adaylarını yapılandırma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads).
+Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)
 
 
-## <a name="legal"></a>Yasal Bilgiler
+## <a name="legal"></a>Yasal Bildirim
 
-Her teklif için gereken yasal belgeleri sağlamak için yasal formu kullanın.
+Her teklif için gerekli yasal belgeleri sağlamak için Yasal formu kullanın.
 
 Şu bilgileri belirtin:
 
-- **Gizlilik ILKESI URL\*** -uygulamanızın gizlilik ilkesine bir bağlantı girin.
-- **Kullanım koşulları\*** -uygulamanız için kullanım koşulları 'nı girin. Müşterilerinizin uygulamanızı deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
+- **Gizlilik politikası\* URL'si** - Uygulamanızın gizlilik politikasına bir bağlantı girin.
+- **Kullanım\* koşulları** - Uygulamanız için kullanım koşullarını girin. Müşterilerin uygulamanızı denemeden önce bu koşulları kabul etmeleri gerekir.
 
 ![Yasal form](./media/azureapp-marketplace-legal.png)
 

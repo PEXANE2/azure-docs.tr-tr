@@ -1,47 +1,47 @@
 ---
-title: Gelişmiş tehdit koruması-MariaDB için Azure veritabanı
-description: Gelişmiş tehdit koruması, veritabanına ilişkin olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
+title: Gelişmiş Tehdit Koruması - MariaDB için Azure Veritabanı
+description: Gelişmiş Tehdit Koruması, veritabanına yönelik olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 164457444fc097c0b1322909110f705726df1083
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 8485907eba75f80c8f0ed4fd0cc7368c6147b9fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772854"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532187"
 ---
-# <a name="azure-database-for-mariadb-advanced-threat-protection"></a>MariaDB Gelişmiş tehdit koruması için Azure veritabanı
+# <a name="azure-database-for-mariadb-advanced-threat-protection"></a>MariaDB Gelişmiş Tehdit Koruması için Azure Veritabanı
 
-MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar.
+MariaDB için Azure Veritabanı için Gelişmiş Tehdit Koruması, veritabanlarına erişmek veya veritabanlarından yararlanmak için olağandışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar.
 
 > [!IMPORTANT]
-> Gelişmiş tehdit koruması genel önizlemede.
+> Gelişmiş Tehdit Koruması genel önizlemede.
 
-Gelişmiş tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birleşik bir paket olan gelişmiş veri güvenliği sunumunun bir parçasıdır. Gelişmiş tehdit korumasına [Azure Portal](https://portal.azure.com)aracılığıyla erişilebilir ve yönetebilirsiniz. Özelliği, Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için kullanılabilir.
+Gelişmiş Tehdit Koruması, gelişmiş güvenlik yetenekleri için birleşik bir paket olan Gelişmiş Veri Güvenliği teklifinin bir parçasıdır. Gelişmiş Tehdit Koruması'na [Azure portalı](https://portal.azure.com)üzerinden erişilebilir ve yönetilebilir. Bu özellik Genel Amaçlı ve Bellek Optimize Edilmiş sunucular için kullanılabilir.
 
 > [!NOTE]
-> Gelişmiş tehdit koruması özelliği şu Azure Kamu ve bağımsız bulut **bölgelerinde kullanılamaz:** US gov Teksas, US gov Arizona, US gov Iowa, US, gov Virginia, US DOD Doğu, US DOD orta, Almanya Orta, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için lütfen [bölgeye göre sunulan ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.
+> Gelişmiş Tehdit Koruması özelliği aşağıdaki Azure devlet ve egemen bulut bölgelerinde **kullanılamaz:** US Gov Texas, US Gov Arizona, US Gov Iowa, ABD, Gov Virginia, US DoD East, US DoD Central, Germany Central, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için [lütfen bölgeye göre mevcut ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.
 
 
-## <a name="what-is-advanced-threat-protection"></a>Gelişmiş tehdit koruması nedir?
+## <a name="what-is-advanced-threat-protection"></a>Gelişmiş Tehdit Koruması Nedir?
 
-MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, müşterilerin anormal etkinliklerde güvenlik uyarıları sunarak meydana gelebilecek olası tehditleri algılamasına ve yanıt vermesine olanak tanıyan yeni bir güvenlik katmanı sağlar. Kullanıcılar şüpheli veritabanı etkinliklerine ve potansiyel güvenlik açıklarına ek olarak anormal veritabanı erişimi ve sorgu düzenlerine bir uyarı alırlar. MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, şüpheli etkinliklerin ayrıntılarını içeren ve tehdidi araştırmak ve hafifletmek için eylem öneren [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile ilgili uyarıları tümleştirir. MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, bir güvenlik uzmanı veya gelişmiş güvenlik izleme sistemlerini yönetmek zorunda kalmadan, olası tehditleri veritabanına kolayca adreslamanızı sağlar. 
+MariaDB için Azure Veritabanı için Gelişmiş Tehdit Koruması, müşterilerin anormal etkinliklerde güvenlik uyarıları sağlayarak olası tehditleri algılamasını ve bunlara yanıt vermesine olanak tanıyan yeni bir güvenlik katmanı sağlar. Kullanıcılar, şüpheli veritabanı etkinlikleri ve olası güvenlik açıklarının yanı sıra anormal veritabanı erişimi ve sorgu desenleri hakkında bir uyarı alır. MariaDB için Azure Veritabanı için Gelişmiş Tehdit Koruması, uyarıları şüpheli etkinliğin ayrıntılarını içeren ve tehdidi nasıl araştırıp azaltacağı konusunda harekete geçmenizi öneren [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleştirir. MariaDB için Azure Veritabanı için Gelişmiş Tehdit Koruması, bir güvenlik uzmanı olmaya veya gelişmiş güvenlik izleme sistemlerini yönetmeye gerek kalmadan veritabanına yönelik olası tehditleri ele almamayı kolaylaştırır. 
 
-![Gelişmiş tehdit koruması kavramı](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
+![Gelişmiş Tehdit Koruma Konsepti](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
 
-## <a name="advanced-threat-protection-alerts"></a>Gelişmiş tehdit koruması uyarıları 
-MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar ve aşağıdaki uyarıları tetikleyebilirler:
-- **Olağan olmayan konumdan erişim**: Bu uyarı, bir kişinin MariaDB sunucusu için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bu, bir kullanıcının, bir olağan dışı coğrafi konumdan MariaDB sunucusu Için Azure veritabanı 'nda oturum açtığı yerdir. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
-- **Olağan dışı Azure veri merkezi 'Nden erişim**: Bu uyarı, bir kullanıcının sunucuda en son dönemde görülen olağan dışı bir Azure veri merkezinden sunucuda oturum açtığı MariaDB sunucusu Için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bazı durumlarda, uyarı meşru bir eylem (Azure 'da yeni uygulamanız Power BI) algılar. Diğer durumlarda, uyarı Azure kaynağı/hizmetinden kaynaklanan kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
-- **Bilmediğiniz sorumludan erişim**: Bu uyarı, Kullanıcı olağan dışı bir sorumlu (MariaDB kullanıcısı Için Azure veritabanı) kullanarak sunucuda oturum açmış olan MariaDB sunucusu Için Azure veritabanı 'na erişim modelinde bir değişiklik olduğunda tetiklenir. Bazı durumlarda uyarı güvenli işlemleri (yeni uygulama ve geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
+## <a name="advanced-threat-protection-alerts"></a>Gelişmiş Tehdit Koruması uyarıları 
+MariaDB için Azure Veritabanı için Gelişmiş Tehdit Koruması, veritabanlarına erişmek veya veritabanından yararlanmak için olağandışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar ve aşağıdaki uyarıları tetikleyebilir:
+- **Olağandışı konumdan erişim**: Bu uyarı, mariadb sunucusu için Azure Veritabanı'na erişim deseninde bir değişiklik olduğunda tetiklenir ve burada birisi alışılmadık bir coğrafi konumdan MariaDB sunucusu için Azure Veritabanı'nda oturum açmıştır. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
+- **Olağandışı Azure veri merkezinden erişim**: Bu uyarı, mariadb sunucusu için Azure Veritabanı'na erişim deseninde bir değişiklik olduğunda tetiklenir ve burada birisi son dönemde bu sunucuda görülen alışılmadık bir Azure veri merkezinden sunucuya oturum açmıştır. Bazı durumlarda, uyarı yasal bir eylem algılar (Azure' daki yeni uygulamanız, Power BI). Diğer durumlarda, uyarı Azure kaynağı/hizmetinden kaynaklanan kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
+- **Yabancı anaparadan erişim**: Bu uyarı, birinin alışılmadık bir temel (MariaDB kullanıcısı için Azure Veritabanı) kullanarak sunucuda oturum açtığı MariaDB sunucusu için Azure Veritabanı'na erişim deseninde bir değişiklik olduğunda tetiklenir. Bazı durumlarda uyarı güvenli işlemleri (yeni uygulama ve geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.
 - **Zararlı olabilecek bir uygulamadan erişim**: Bu uyarı, zararlı olabilecek bir uygulama veritabanına erişmeye çalıştığında tetiklenir. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, yarı yaygın saldırı araçlarının kullandığı saldırıları algılar.
-- **Deneme yanılma Azure veritabanı 'Nı MariaDB kimlik bilgileri için zorlama**: Bu uyarı, farklı kimlik bilgileri ile olağan dışı yüksek sayıda başarısız oturum açma işlemi olduğunda tetiklenir. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı deneme yanılma saldırılarını algılar.
+- **MariaDB kimlik bilgileri için Kaba kuvvet Azure Veritabanı**: Bu uyarı, farklı kimlik bilgilerine sahip anormal yüksek sayıda başarısız giriş olduğunda tetiklenir. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı deneme yanılma saldırılarını algılar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
-* Fiyatlandırma hakkında daha fazla bilgi için bkz. [MariaDB Için Azure veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/) 
-* Azure portal kullanarak [MariaDB Gelişmiş tehdit koruması Için Azure veritabanı](howto-database-threat-protection-portal.md) 'nı yapılandırma  
+* Fiyatlandırma hakkında daha fazla bilgi için [MariaDB Fiyatlandırması için Azure Veritabanı sayfasına](https://azure.microsoft.com/pricing/details/mariadb/) bakın 
+* Azure portalını kullanarak [MariaDB Gelişmiş Tehdit Koruması için Azure Veritabanını](howto-database-threat-protection-portal.md) yapılandırın  

@@ -1,23 +1,23 @@
 ---
-title: Performans önerileri-MySQL için Azure veritabanı
-description: Bu makalede MySQL için Azure veritabanı 'nda performans önerisi özelliği açıklanmaktadır
+title: Performans önerileri - MySQL için Azure Veritabanı
+description: Bu makalede, MySQL için Azure Veritabanı'ndaki Performans Önerisi özelliği açıklanmaktadır
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: f957459cf20a018ae53ba6ec90fb478dd0c69044
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c7779d82ddd6e5fd1bf7fcd983937ea6c10dab1c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770909"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537083"
 ---
-# <a name="performance-recommendations-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda performans önerileri
+# <a name="performance-recommendations-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’ndaki Performans Önerileri
 
-**Uygulama hedefi:** MySQL için Azure veritabanı 5,7
+**Aşağıdakiler için geçerlidir:** MySQL 5.7 için Azure Veritabanı
 
-Performans önerileri özelliği, gelişmiş performans için özelleştirilmiş öneriler oluşturmak üzere veritabanlarınızı analiz eder. Bu önerileri oluşturmak için analiz, şema dahil çeşitli veritabanı özelliklerine bakar. Performans önerileri özelliğini tam olarak kullanmak için sunucunuzda [sorgu deposunu](concepts-query-store.md) etkinleştirin. Performans şeması KAPALıYSA, sorgu deposu ' nu açmak performance_schema ve özellik için gereken performans şeması gereçlerinin bir alt kümesini sunar. Herhangi bir performans önerisi uygulandıktan sonra, bu değişikliklerin etkisini değerlendirmek için performansı sınamalısınız.
+Performans Önerileri özelliği, gelişmiş performans için özelleştirilmiş öneriler oluşturmak için veritabanlarınızı analiz eder. Önerileri üretmek için, analiz şema da dahil olmak üzere çeşitli veritabanı özellikleri bakar. Performans Önerileri özelliğini tam olarak kullanmak için sunucunuzdaki [Sorgu Mağazası'nı](concepts-query-store.md) etkinleştirin. Performans şeması KAPALI ise, Sorgu Mağazası'nı açmak performance_schema ve özellik için gereken performans şeması araçlarının bir alt kümesini sağlar. Herhangi bir performans önerisi uyguladıktan sonra, bu değişikliklerin etkisini değerlendirmek için performansı test etmeniz gerekir.
 
 ## <a name="permissions"></a>İzinler
 
@@ -27,25 +27,25 @@ Performans Önerileri özelliğini kullanarak analiz çalıştırmak için **Sah
 
 [Performans Önerileri](concepts-performance-recommendations.md) özelliği, performansı iyileştirme potansiyeli olan dizinleri tanımlamak için sunucunuzdaki iş yüklerini analiz eder.
 
-MySQL sunucunuzun Azure portal sayfasındaki menü çubuğunun **akıllı performans** bölümünde **performans önerilerini** açın.
+MySQL sunucunuz için Azure portal sayfasındaki menü çubuğunun **Akıllı Performans** bölümünden **Performans Önerileri** açın.
 
 ![Performans Önerileri giriş sayfası](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-**Çözümle** ' yi seçin ve analiz işlemini başlatmak için bir veritabanı seçin. İş yükünüze bağlı olarak, çözümlemenin tamamlanması birkaç dakika sürebilir. Analiz tamamlanınca portalda bir bildirim olur. Analiz, veritabanınızı ayrıntılı bir şekilde inceleme işlemini gerçekleştirir. Yoğun olmayan dönemler sırasında analiz gerçekleştirmenizi öneririz.
+**Çözümle'yi** seçin ve çözümlemeye başlayacak bir veritabanı seçin. İş yükünüze bağlı olarak, çözümlemenin tamamlanması birkaç dakika sürebilir. Analiz tamamlanınca portalda bir bildirim olur. Analiz veritabanınızın derin bir incelemesini gerçekleştirir. Yoğun olmayan dönemlerde analiz yapmanızı öneririz.
 
-**Öneriler** penceresi, varsa önerilerin bir listesini ve bu öneriyi oluşturan ılgılı sorgu kimliğini gösterir. Sorgu KIMLIĞIYLE, sorgu hakkında daha fazla bilgi edinmek için [MySQL. query_store](concepts-query-store.md#mysqlquery_store) görünümünü kullanabilirsiniz.
+**Öneriler** penceresi, varsa önerilerin listesini ve bu öneriyi oluşturan ilgili sorgu kimliğini gösterir. Sorgu kimliği ile, sorgu hakkında daha fazla bilgi edinmek için [mysql.query_store](concepts-query-store.md#mysqlquery_store) görünümünü kullanabilirsiniz.
 
-![Performans önerileri yeni sayfa](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+![Performans Önerileri yeni sayfa](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Öneriler otomatik olarak uygulanmaz. Öneriyi uygulamak için, sorgu metnini kopyalayın ve tercih ettiğiniz istemciden çalıştırın. Öneriyi değerlendirmek için sınamayı ve izlemeyi unutmayın.
+Öneriler otomatik olarak uygulanmaz. Öneriyi uygulamak için sorgu metnini kopyalayın ve seçtiğiniz istemciden çalıştırın. Öneriyi değerlendirmek için test etmeyi ve izlemeyi unutmayın.
 
 ## <a name="recommendation-types"></a>Öneri türleri
 
-Şu anda yalnızca *Dizin önerileri oluşturma* desteklenir.
+Şu anda yalnızca *Diziliş Oluştur* önerileri desteklenir.
 
 ### <a name="create-index-recommendations"></a>Dizin önerileri oluşturma
 
-*Dizin önerilerini oluşturma* , iş yükünde en sık çalıştırılan veya zaman alan sorguları hızlandırmak için yeni dizinler önerir. Bu öneri türü, [sorgu deposunun](concepts-query-store.md) etkinleştirilmesini gerektirir. Sorgu deposu sorgu bilgilerini toplar ve çözümlemenin öneriyi yapmak için kullandığı ayrıntılı sorgu çalışma zamanı ve sıklık istatistiklerini sağlar.
+*Dizin oluşturma* önerileri, iş yükünde en sık çalışan veya zaman alan sorguları hızlandırmak için yeni dizinler önerir. Bu öneri türü, [Sorgu Deposu'nun](concepts-query-store.md) etkinleştirilmesini gerektirir. Sorgu Deposu sorgu bilgilerini toplar ve çözümlemenin öneriyi yapmak için kullandığı ayrıntılı sorgu çalışma zamanı ve sıklık istatistiklerini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- MySQL için Azure veritabanı 'nda [izleme ve ayarlama](concepts-monitoring.md) hakkında daha fazla bilgi edinin.
+- MySQL için Azure Veritabanı'nda [izleme ve aetme](concepts-monitoring.md) hakkında daha fazla bilgi edinin.

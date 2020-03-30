@@ -1,27 +1,27 @@
 ---
-title: Haritaya denetim ekleme | Microsoft Azure haritaları
-description: Microsoft Azure Maps içindeki bir haritaya yakınlaştırma denetimi, sıklık denetimi, döndürme denetimi ve stil Seçici ekleme.
-author: farah-alyasari
-ms.author: v-faalya
+title: Haritaya denetim ekleme | Microsoft Azure Haritaları
+description: Microsoft Azure Haritalar'daki bir haritaya yakınlaştırma denetimi, adım denetimi, döndürme denetimi ve stil seçici ekleme nasıl eklenir.
+author: philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e386c136e7d0258d00c22c627dfa5047ba803169
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209775"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334555"
 ---
 # <a name="add-controls-to-a-map"></a>Haritaya denetim ekleme
 
-Bu makalede, bir haritaya denetimleri nasıl ekleyeceğiniz gösterilir. Ayrıca, tüm denetimlerle ve [Stil seçiciyle](https://docs.microsoft.com/azure/azure-maps/choose-map-style)bir harita oluşturmayı öğreneceksiniz.
+Bu makalede, bir haritaya denetimleri nasıl ekleyeceğiniz gösterilmektedir. Ayrıca, tüm denetimleri ve stil [seçiciile](https://docs.microsoft.com/azure/azure-maps/choose-map-style)bir harita oluşturmayı da öğreneceksiniz.
 
-## <a name="add-zoom-control"></a>Yakınlaştırma denetimi Ekle
+## <a name="add-zoom-control"></a>Yakınlaştırma denetimi ekleme
 
-Bir yakınlaştırma denetimi, haritada ve dışarı yakınlaştırmak için düğmeler ekler. Aşağıdaki kod örneği, bir [Zoomcontrol](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) sınıfının bir örneğini oluşturur ve haritanın sağ alt köşesine ekler.
+Yakınlaştırma denetimi, haritayı yakınlaştırmak ve uzaklaştırmak için düğmeler ekler. Aşağıdaki kod örneği [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) sınıfının bir örneğini oluşturur ve haritanın sağ alt köşesine ekler.
 
 ```javascript
 //Construct a zoom control and add it to the map.
@@ -30,16 +30,16 @@ map.controls.add(new atlas.control.ZoomControl(), {
 });
 ```
 
-Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Yakınlaştırma denetimi ekleme' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>yakınlaştırma denetimi ekleme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Yakınlaştırma denetimi ekleme' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Azure Haritalar ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>ile <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>yakınlaştırma denetimi ekleme</a> kalemine bakın.
 </iframe>
 
-## <a name="add-pitch-control"></a>Aralıklı Denetim Ekle
+## <a name="add-pitch-control"></a>Pitch control ekle
 
-Bir aralıklı denetim, aralığı ufuk ile eşlemek için sıklık için düğmeler ekler. Aşağıdaki kod örneği, bir, [Manchcontrol](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) sınıfının bir örneğini oluşturur. Haritanın sağ üst köşesine olan Manchcontrol öğesini ekler.
+Bir adım kontrolü ufka göre harita için perde yatırma katıyor düğmeler ekler. Aşağıdaki kod örneği [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) sınıfının bir örneğini oluşturur. PitchControl'i haritanın sağ üst köşesine ekler.
 
 ```javascript
 //Construct a pitch control and add it to the map.
@@ -48,16 +48,16 @@ map.controls.add(new atlas.control.PitchControl(), {
 });
 ```
 
-Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Aralıklı denetim ekleme' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>bir aralıklı denetim ekleme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Pitch control ekleme' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Azure Haritalar ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>tarafından <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>bir adım denetimi ekleme</a> kalemine bakın.
 </iframe>
 
-## <a name="add-compass-control"></a>Pusula denetimi Ekle
+## <a name="add-compass-control"></a>Pusula denetimi ekleme
 
-Pusula denetimi eşlemeyi döndürmek için bir düğme ekler. Aşağıdaki kod örneği, [pusula denetimi](/javascript/api/azure-maps-control/atlas.control.compasscontrol) sınıfının bir örneğini oluşturur ve haritanın sol alt köşesine ekler.
+Pusula denetimi, haritayı döndürmek için bir düğme ekler. Aşağıdaki kod örneği [Pusula Denetimi](/javascript/api/azure-maps-control/atlas.control.compasscontrol) sınıfının bir örneğini oluşturur ve haritanın sol alt köşesine ekler.
 
 ```javascript
 //Construct a compass control and add it to the map.
@@ -66,66 +66,79 @@ map.controls.add(new atlas.control.Compass(), {
 });
 ```
 
-Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Döndürme denetimi ekleme' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>bir döndürme denetimi ekleme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Döndürme denetimi ekleme' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Azure Haritalar ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>tarafından <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>döndürme denetimi ekleme</a> kalemine bakın.
 </iframe>
 
-## <a name="a-map-with-all-controls"></a>Tüm denetimlerle bir eşleme
+## <a name="a-map-with-all-controls"></a>Tüm denetimleri içeren bir harita
 
-Aşağıdaki kod örneği, haritanın sağ alt köşesine stil Seçici, yakınlaştırma, sıklık ve pusula denetimleri ekler. Bunların nasıl otomatik olarak yığdığına dikkat edin. Betikteki Denetim nesnelerinin sırası haritada görünme sırasını belirler. Haritadaki denetimlerin sırasını değiştirmek için, komut dosyasında sırasını değiştirebilirsiniz.
+Birden çok denetim bir diziye konulabilir ve haritaya aynı anda eklenebilir ve geliştirmeyi kolaylaştırmak için haritanın aynı alanına yerleştirebilir. Aşağıdaki, bu yaklaşımı kullanarak haritaya standart gezinti denetimleri ekler.
+
+```javascript
+map.controls.add([
+    new atlas.control.ZoomControl(),
+    new atlas.control.CompassControl(),
+    new atlas.control.PitchControl(),
+    new atlas.control.StyleControl()
+], {
+    position: "top-right"
+});
+```
+
+Aşağıdaki kod örneği, haritanın sağ üst köşesine yakınlaştırma, pusula, pitch ve stil seçici denetimlerini ekler. Otomatik olarak nasıl istiflediklerine dikkat edin. Komut dosyasındaki denetim nesnelerinin sırası, haritada görünme sırasını belirler. Haritadaki denetimlerin sırasını değiştirmek için dizideki sıralarını değiştirebilirsiniz.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Tüm denetimlerle bir harita' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>Tüm denetimlerle Haritayı</a> görüntüleyin.
+<iframe height='500' scrolling='no' title='Tüm kontrolleri içeren bir harita' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Azure Haritalar tarafından yapılan<a href='https://codepen.io/azuremaps'>@azuremaps</a>tüm denetimlerin yer ettiği Kalem Bir <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>haritasına</a> bakın .
 </iframe>
 
-Stil Seçici denetimi [stylecontrol](/javascript/api/azure-maps-control/atlas.control.stylecontrol) sınıfı tarafından tanımlanır. Stil seçici denetimini kullanma hakkında daha fazla bilgi için bkz. [harita stili seçme](choose-map-style.md).
+Stil seçici denetimi [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) sınıfı tarafından tanımlanır. Stil seçici denetimini kullanma hakkında daha fazla bilgi için [bkz.](choose-map-style.md)
 
 ## <a name="customize-controls"></a>Denetimleri özelleştirme
 
-Denetimleri özelleştirmek için çeşitli seçenekleri test eden bir araç aşağıda verilmiştir.
+Burada denetimleri özelleştirmek için çeşitli seçenekleri test etmek için bir araçtır.
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Gezinti denetimi seçenekleri" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>Gezinti denetimi seçeneklerine</a> bakın.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Navigasyon kontrol seçenekleri" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a göre Kalem <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>Gezintisi denetim seçeneklerine</a> bakın .<a href='https://codepen.io/azuremaps'>@azuremaps</a>
 </iframe>
 
-Özelleştirilmiş gezinti denetimleri oluşturmak istiyorsanız, `atlas.Control` sınıfından genişleyen bir sınıf oluşturun veya bir HTML öğesi oluşturun ve harita div üzerinde konumlandırın. Bu UI denetiminin Haritayı taşımak için haritalar `setCamera` işlevini çağırması gerekir. 
+Özelleştirilmiş gezinti denetimleri oluşturmak istiyorsanız, `atlas.Control` sınıftan yayılan bir sınıf oluşturun veya bir HTML öğesi oluşturun ve harita divinin üzerine yerleştirin. Bu UI denetiminin `setCamera` haritayı taşımak için haritalar işlevini aramasını sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Pusula denetimi](/javascript/api/azure-maps-control/atlas.control.compasscontrol)
+> [Pusula Kontrolü](/javascript/api/azure-maps-control/atlas.control.compasscontrol)
 
 > [!div class="nextstepaction"]
-> [Süchcontrol](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 
+> [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 
 
 > [!div class="nextstepaction"]
 > [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 
 
 > [!div class="nextstepaction"]
-> [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 
+> [Yakınlaştırma Denetimi](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 
 
 Tam kod için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
-> [PIN Ekle](./map-add-pin.md)
+> [Pin ekleme](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Açılan pencere Ekle](./map-add-popup.md)
+> [Açılır pencere ekleme](./map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [Çizgi katmanı Ekle](map-add-line-layer.md)
+> [Çizgi katmanı ekleme](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Çokgen katmanı Ekle](map-add-shape.md)
+> [Çokgen katmanı ekleme](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Kabarcık katmanı ekleme](map-add-bubble-layer.md)
+> [Baloncuk katmanı ekleme](map-add-bubble-layer.md)
 

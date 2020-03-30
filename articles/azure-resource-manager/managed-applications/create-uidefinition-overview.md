@@ -1,20 +1,20 @@
 ---
-title: Portal bölmesi için Createuıdefinition. JSON dosyası
-description: Azure portal için Kullanıcı arabirimi tanımlarının nasıl oluşturulacağını açıklar. Azure yönetilen uygulamaları tanımlarken kullanılır.
+title: Portal bölmesi için CreateUiDefinition.json dosyası
+description: Azure portalı için kullanıcı arabirimi tanımlarının nasıl oluşturulacak olduğunu açıklar. Azure Yönetilen Uygulamaları tanımlarken kullanılır.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5fcc87e894cfab0075b33835a0673b133c629b73
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650883"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294902"
 ---
-# <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefinition. JSON
+# <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure tarafından yönetilen uygulamanın oluşturma deneyimi için CreateUiDefinition.json
 
-Bu belge, yönetilen bir uygulama oluştururken Kullanıcı arabirimini tanımlamak için Azure portal tarafından kullanılan **Createuıdefinition. JSON** dosyasının temel kavramlarını tanıtır.
+Bu belge, Azure portalının yönetilen bir uygulama oluştururken kullanıcı arabirimini tanımlamak için kullandığı **createUiDefinition.json** dosyasının temel kavramlarını tanıtır.
 
 Şablon aşağıdaki gibidir
 
@@ -32,33 +32,33 @@ Bu belge, yönetilen bir uygulama oluştururken Kullanıcı arabirimini tanımla
 }
 ```
 
-Createuıdefinition her zaman üç özellik içerir: 
+CreateUiDefinition her zaman üç özellik içerir: 
 
-* işleyici
+* Işleyicisi
 * version
 * parametreler
 
-İşleyicinin her zaman `Microsoft.Azure.CreateUIDef`ve desteklenen en son sürüm `0.1.2-preview`.
+İşleyici her zaman `Microsoft.Azure.CreateUIDef`olmalıdır ve en son `0.1.2-preview`desteklenen sürümü .
 
-Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler `basics`, `steps`ve `outputs`. Temel bilgiler ve adımlar özellikleri, Azure portal görüntülenecek metin kutuları ve açılan [öğeler](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıkış değerlerini Azure Resource Manager dağıtım şablonunun parametreleriyle eşlemek için kullanılır.
+Parametreler özelliğinin şeması, belirtilen işleyici ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler `basics`, `steps`, `outputs`ve . Temel ve adım özellikleri, Azure portalında görüntülenecek metin kutuları ve açılır bırakmalar gibi [öğeleri](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıktı değerlerini Azure Kaynak Yöneticisi dağıtım şablonunun parametreleri ile eşlemek için kullanılır.
 
-`$schema` dahil edilmesi önerilir, ancak isteğe bağlıdır. Belirtilmişse `version` değeri `$schema` URI içindeki sürümle eşleşmelidir.
+Dahil `$schema` etmek önerilir, ancak isteğe bağlıdır. Belirtilirse, değer `version` `$schema` URI içindeki sürümle eşleşmelidir.
 
-Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir, ardından bunu önizlemek için [Createuıdefinition korumalı](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) alanında test edebilirsiniz. Korumalı alan hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için Portal arabiriminizi test](test-createuidefinition.md)etme.
+CreateUiDefinition oluşturmak için bir JSON düzenleyicisi kullanabilirsiniz sonra önizleme için [createUiDefinition Sandbox](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) test edin. Kum havuzu hakkında daha fazla bilgi için Azure [Yönetilen Uygulamalar için portal arabiriminizi test edin.](test-createuidefinition.md)
 
 ## <a name="basics"></a>Temel Bilgiler
 
-Temel bilgiler, Azure portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Portal, `basics`belirtilen öğeleri görüntülemenin yanı sıra, kullanıcıların abonelik, kaynak grubu ve dağıtımın konumunu seçmesi için öğeleri çıkarır. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım çapındaki parametreleri sorgulayan öğeler bu adımda ilerlemelidir.
+Temel bilgiler, Azure portalı dosyayı parşattığında oluşturulan ilk adımdır. Belirtilen öğeleri görüntülemenin yanı `basics`sıra, portal kullanıcıların dağıtım için abonelik, kaynak grubu ve konumu seçmeleri için öğeler enjekte eder. Mümkün olduğunda, bir kümenin veya yönetici kimlik bilgilerinin adı gibi dağıtım genişliğindeki parametreleri sorgulayan öğeler bu adımda gitmeli.
 
 ## <a name="steps"></a>Adımlar
 
-Steps özelliği, her biri bir veya daha fazla öğe içeren temel kavramlar sonrasında görüntülenecek sıfır veya daha fazla ek adım içerebilir. Dağıtılan uygulamanın rol veya katmanına göre adımları eklemeyi düşünün. Örneğin, ana düğüm girişleri için bir adım ve bir kümedeki çalışan düğümlerine yönelik bir adım ekleyin.
+Adımlar özelliği, her biri bir veya daha fazla öğe içeren temel bilgilerden sonra görüntülenecek sıfır veya daha fazla ek adım içerebilir. Dağıtılan uygulamanın rolü veya katmanı başına adımlar eklemeyi düşünün. Örneğin, ana düğüm girişleri için bir adım ve bir kümedeki alt düğümler için bir adım ekleyin.
 
 ## <a name="outputs"></a>Çıkışlar
 
-Azure portal, `basics` ve `steps` öğeleri Azure Resource Manager dağıtım şablonunun parametrelerine eşlemek için `outputs` özelliğini kullanır. Bu sözlüğün anahtarları, şablon parametrelerinin adlarıdır ve değerler başvurulan öğelerden çıkış nesnelerinin özellikleridir.
+Azure portalı, `outputs` Azure Kaynak Yöneticisi `basics` `steps` dağıtım şablonunun parametrelerini ve öğelerini eşlemek için özelliği kullanır. Bu sözlüğün anahtarları şablon parametrelerinin adlarıdır ve değerler başvurulan öğelerden çıktı nesnelerinin özellikleridir.
 
-Yönetilen uygulama kaynak adını ayarlamak için, çıktılar özelliğinde `applicationResourceName` adlı bir değer eklemelisiniz. Bu değeri ayarlamazsanız, uygulama ad için bir GUID atar. Kullanıcı arabirimine, kullanıcıdan bir ad isteyen bir metin kutusu ekleyebilirsiniz.
+Yönetilen uygulama kaynak adını ayarlamak için çıktıözelliğine adlandırılmış `applicationResourceName` bir değer eklemeniz gerekir. Bu değeri ayarlamazsanız, uygulama ad için bir GUID atar. Kullanıcı arabirimine kullanıcıdan bir ad isteyen bir textbox ekleyebilirsiniz.
 
 ```json
 "outputs": {
@@ -72,7 +72,7 @@ Yönetilen uygulama kaynak adını ayarlamak için, çıktılar özelliğinde `a
 
 ## <a name="resource-types"></a>Kaynak türleri
 
-Kullanılabilir konumları yalnızca dağıtılacak kaynak türlerini destekleyen konumlara göre filtrelemek için kaynak türlerinin bir dizisini sağlayın. Birden çok kaynak türü sağlarsanız, yalnızca tüm kaynak türlerini destekleyen konumlar döndürülür. Bu özellik isteğe bağlıdır.
+Kullanılabilir konumları yalnızca dağıtılabilmek için kaynak türlerini destekleyen konumlara filtre lemek için, kaynak türlerinin bir dizisini sağlayın. Birden fazla kaynak türü sağlarsanız, yalnızca tüm kaynak türlerini destekleyen konumlar döndürülür. Bu özellik isteğe bağlıdır.
 
 ```json
 {
@@ -87,15 +87,15 @@ Kullanılabilir konumları yalnızca dağıtılacak kaynak türlerini destekleye
 
 ## <a name="functions"></a>İşlevler
 
-Createuıdefinition, öğelerin girdileri ve çıkışları ve conditionals gibi özelliklerle çalışmak için [işlevler](create-uidefinition-functions.md) sağlar. Bu işlevler, Azure Resource Manager şablon işlevleri için hem söz dizimi hem de işlevselliğe benzer.
+CreateUiDefinition, öğelerin girdi ve çıktılarıyla çalışmak için [işlevler](create-uidefinition-functions.md) ve koşullu özellikler sağlar. Bu işlevler hem sözdiziminde hem de işlevsellikte Azure Kaynak Yöneticisi şablon işlevlerine benzer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Createuıdefinition. json dosyasının kendisi basit bir şemaya sahiptir. Gerçek derinliği, desteklenen tüm öğe ve işlevlerden gelir. Bu öğeler, daha ayrıntılı olarak açıklanmıştır:
+createUiDefinition.json dosyasının kendisi basit bir şema vardır. Bunun gerçek derinliği desteklenen tüm öğeleri ve işlevleri geliyor. Bu öğeler daha ayrıntılı olarak açıklanmıştır:
 
-- [Elements](create-uidefinition-elements.md)
-- [İşlevler](create-uidefinition-functions.md)
+- [Öğeler](create-uidefinition-elements.md)
+- [Işlev](create-uidefinition-functions.md)
 
-Createuıdefinition için geçerli bir JSON şeması şurada bulunabilir: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json.
+CreateUiDefinition için geçerli bir JSON şeması `https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json`burada mevcuttur: .
 
-Örnek bir kullanıcı arabirimi dosyası için bkz. [Createuıdefinition. JSON](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json).
+Örnek bir kullanıcı arabirimi dosyası için [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json)'a bakın.

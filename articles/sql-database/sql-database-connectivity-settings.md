@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı ve veri ambarı için bağlantı ayarları
-description: Bu belgede, Azure SQL için TLS sürüm seçimi ve proxy ile yeniden yönlendirme ayarı açıklanmaktadır
+title: Azure SQL Veritabanı ve Veri Ambarı için bağlantı ayarları
+description: Bu belge, TLS sürüm seçimini ve Azure SQL için Proxy ve Yönlendirme ayarını açıklar
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -9,49 +9,46 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd239106bfd3ac785cffbf1365f298da565179ec
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79366096"
 ---
-# <a name="azure-sql-connectivity-settings"></a>Azure SQL bağlantı ayarları
+# <a name="azure-sql-connectivity-settings"></a>Azure SQL Bağlantı Ayarları
 > [!NOTE]
-> Özellikler yalnızca **ABD Batı 2, ABD Doğu, ABD Orta Güney** Şu anda diğer bölgelerle kullanılabilir
-
-> [!NOTE]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
+> Bu makale, Azure SQL sunucusu ve Azure SQL sunucusunda oluşturulan SQL Veritabanı ve SQL Veri Ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
 
 > [!IMPORTANT]
-> Bu makale **Azure SQL veritabanı yönetilen örneği** *için uygulanmıyor*
+> Bu makale, **Azure SQL Veritabanı Yönetilen Örnek** için geçerli *değildir*
 
-Bu makalede, sunucu düzeyinde Azure SQL veritabanı bağlantısını denetleyen ayarlar açıklanır. Bu ayarlar, sunucuyla ilişkili **Tüm** SQL VERITABANı ve SQL veri ambarı veritabanları için geçerlidir.
+Bu makalede, sunucu düzeyinde Azure SQL Veritabanına bağlantıyı denetleyen ayarlar tanıtılmaktadır. Bu ayarlar, sunucuyla ilişkili **tüm** SQL Veritabanı ve SQL Veri Ambarı veritabanları için geçerlidir.
 
 > [!NOTE]
-> Bu ayarlar uygulandıktan sonra, **hemen etkili olur** ve her bir ayar için gereksinimleri karşılamayan istemcileriniz için bağlantı kaybına neden olabilir.
+> Bu ayarlar uygulandıktan sonra, **hemen etkili olurlar** ve her ayar için gereksinimleri karşılamadıkları takdirde müşterileriniz için bağlantı kaybına neden olabilir.
 
-Bağlantı ayarlarına aşağıdaki ekran görüntüsünde gösterildiği gibi **güvenlik duvarları ve sanal ağlar** dikey penceresinden erişilebilir:
+Bağlantı ayarlarına, aşağıdaki ekran görüntüsünde gösterildiği gibi **Güvenlik Duvarları ve sanal ağlar** bıçağından erişilebilir:
 
  ![Bağlantı ayarlarının ekran görüntüsü][1]
 
 
 ## <a name="deny-public-network-access"></a>Ortak ağ erişimini reddetme
-Azure portal, **genel ağ erişimini reddet** ayarı **Evet**olarak ayarlandığında yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar **Hayır**olarak ayarlandığında, istemciler özel veya genel uç nokta kullanarak bağlanabilir.
+Azure portalında, **Genel Ağ erişimini Reddet** ayarı **Evet**olarak ayarlandığında, yalnızca özel uç noktalar üzerinden bağlantılara izin verilir. Bu ayar **Hayır**olarak ayarlandığında, istemciler özel veya genel bitiş noktasını kullanarak bağlanabilir.
 
-**Evet**'e **ortak ağ erişimini reddet** ayarı yapıldıktan sonra, genel uç nokta kullanan istemcilerden gelen oturum açma girişimleri aşağıdaki hatayla başarısız olur:
+Ortak **ağ erişimini** **Evet'e**ayarı yaptıktan sonra, ortak bitiş noktasını kullanan istemcilerden giriş denemeleri aşağıdaki hatayla başarısız olur:
 
 ```output
 Error 47073
 An instance-specific error occurred while establishing a connection to SQL Server. The public network interface on this server is not accessible. To connect to this server, use the Private Endpoint from inside your virtual network.
 ```
 
-## <a name="change-public-network-access-via-powershell"></a>PowerShell aracılığıyla genel ağ erişimini değiştirme
+## <a name="change-public-network-access-via-powershell"></a>PowerShell ile Ortak Ağ Erişimini Değiştirme
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Aşağıdaki betik [Azure PowerShell modülünü](/powershell/azure/install-az-ps)gerektiriyor.
+> PowerShell Azure Kaynak Yöneticisi modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirme az.sql modülü içindir. Bu cmdlets için [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın. Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Aşağıdaki komut dosyası [Azure PowerShell modülgerektirir.](/powershell/azure/install-az-ps)
 
-Aşağıdaki PowerShell betiği, mantıksal sunucu düzeyinde **genel ağ erişim** özelliğinin nasıl `Get` ve `Set` gösterir:
+Aşağıdaki PowerShell komut dosyası, `Set` mantıksal sunucu düzeyinde Public Network Access özelliğinin nasıl yapılacağını ve **Public Network Access** özelliğinin nasıl yapılacağını `Get` gösterir:
 
 ```powershell
 #Get the Public Network Access property
@@ -63,12 +60,12 @@ $SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
 Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Enabled" 
 ```
 
-## <a name="change-public-network-access-via-cli"></a>CLı aracılığıyla ortak ağ erişimini değiştirme
+## <a name="change-public-network-access-via-cli"></a>CLI ile Ortak Ağ Erişimini Değiştirme
 > [!IMPORTANT]
-> Bu bölümdeki tüm betikler [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gerektirir.
+> Bu bölümdeki tüm komut dosyaları [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gerektirir.
 
-### <a name="azure-cli-in-a-bash-shell"></a>Bash kabuğu 'nda Azure CLı
-Aşağıdaki CLı betiği, bir bash kabuğu 'ndaki **genel ağ erişiminin** nasıl değiştirileceğini göstermektedir:
+### <a name="azure-cli-in-a-bash-shell"></a>Bir bash kabuk azure CLI
+Aşağıdaki CLI komut dosyası, **Genel Ağ Erişiminin** bash kabuğunda nasıl değiştirilebildiğini gösterir:
 
 ```azurecli-interactive
 
@@ -82,14 +79,14 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 
 ## <a name="connection-policy"></a>Bağlantı ilkesi
-[Bağlantı ilkesi](sql-database-connectivity-architecture.md#connection-policy) , istemcilerin Azure SQL Server nasıl bağlanacağını belirler. 
+[Bağlantı ilkesi,](sql-database-connectivity-architecture.md#connection-policy) istemcilerin Azure SQL Server'a nasıl bağlandığını belirler. 
 
-## <a name="change-connection-policy-via-powershell"></a>Bağlantı ilkesini PowerShell aracılığıyla değiştirme
+## <a name="change-connection-policy-via-powershell"></a>PowerShell ile Bağlantı politikasını değiştir
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Aşağıdaki betik [Azure PowerShell modülünü](/powershell/azure/install-az-ps)gerektiriyor.
+> PowerShell Azure Kaynak Yöneticisi modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirme az.sql modülü içindir. Bu cmdlets için [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın. Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Aşağıdaki komut dosyası [Azure PowerShell modülgerektirir.](/powershell/azure/install-az-ps)
 
-Aşağıdaki PowerShell betiği, PowerShell kullanılarak bağlantı ilkesinin nasıl değiştirileceğini göstermektedir:
+Aşağıdaki PowerShell komut dosyası, PowerShell'i kullanarak bağlantı ilkesinin nasıl değiştirilebildiğini gösterir:
 
 ```powershell
 # Get SQL Server ID
@@ -105,12 +102,12 @@ $id="$sqlserverid/connectionPolicies/Default"
 Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
-## <a name="change-connection-policy-via-azure-cli"></a>Azure CLı aracılığıyla bağlantı ilkesini değiştirme
+## <a name="change-connection-policy-via-azure-cli"></a>Azure CLI ile Bağlantı ilkesini değiştirme
 > [!IMPORTANT]
-> Bu bölümdeki tüm betikler [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gerektirir.
+> Bu bölümdeki tüm komut dosyaları [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)gerektirir.
 
-### <a name="azure-cli-in-a-bash-shell"></a>Bash kabuğu 'nda Azure CLı
-Aşağıdaki CLı betiği, bir bash kabuğu 'nda bağlantı ilkesinin nasıl değiştirileceğini göstermektedir: 
+### <a name="azure-cli-in-a-bash-shell"></a>Bir bash kabuk azure CLI
+Aşağıdaki CLI komut dosyası, bir bash kabuğundaki bağlantı ilkesinin nasıl değiştirilebildiğini gösterir: 
 
 ```azurecli-interactive
 # Get SQL Server ID
@@ -126,8 +123,8 @@ az resource show --ids $ids
 az resource update --ids $ids --set properties.connectionType=Proxy
 ```
 
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Windows komut isteminden Azure CLı
-Aşağıdaki CLı betiği, bir Windows komut isteminden (Azure CLı yüklü) bağlantı ilkesinin nasıl değiştirileceğini gösterir.
+### <a name="azure-cli-from-a-windows-command-prompt"></a>Windows komut isteminden Azure CLI
+Aşağıdaki CLI komut dosyası, bağlantı ilkesinin Windows komut isteminden (Azure CLI yüklü olarak) nasıl değiştirilebildiğini gösterir.
 
 ```azurecli
 # Get SQL Server ID and set URI
@@ -141,8 +138,8 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure SQL veritabanı 'nda bağlantının nasıl çalıştığına ilişkin bir genel bakış için [Azure SQL bağlantı mimarisi](sql-database-connectivity-architecture.md) ' ne bakın.
-- Azure SQL veritabanı sunucusu için Azure SQL veritabanı bağlantı ilkesini değiştirme hakkında daha fazla bilgi için bkz. [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- Azure SQL Veritabanı'nda bağlantının nasıl çalıştığına genel bir bakış için [Azure SQL Bağlantı Mimarisi'ne](sql-database-connectivity-architecture.md) bakın
+- Azure SQL Veritabanı sunucusu için Azure SQL Veritabanı bağlantı ilkesini nasıl değiştireceğiniz hakkında bilgi için [conn-policy'ye](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)bakın.
 
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/manage-connectivity-settings.png

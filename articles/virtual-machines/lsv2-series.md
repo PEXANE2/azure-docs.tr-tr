@@ -1,6 +1,6 @@
 ---
-title: Lsv2-Series-Azure sanal makineleri
-description: Lsv2 serisi VM 'Ler için Özellikler.
+title: Lsv2 serisi - Azure Sanal Makineler
+description: Lsv2 serisi VM'ler için teknik özellikler.
 services: virtual-machines
 author: sasha-melamed
 ms.service: virtual-machines
@@ -8,69 +8,69 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164041"
 ---
 # <a name="lsv2-series"></a>Lsv2 serisi
 
-Lsv2-Series, yüksek performans, düşük gecikme süresi ve [AMD EPIC<sup>TM</sup> 7551 işlemcisi](https://www.amd.com/en/products/epyc-7000-series) üzerinde çalışan yerel NVMe depolama alanını, 2.55 GHz 'nin tüm çekirdek artışı ve en fazla 3,0 GHz sürümü ile birlikte sunar. Lsv2 serisi VM 'Ler, eşzamanlı bir çoklu iş parçacığı yapılandırmasında 8 ile 80 vCPU boyutunda olacak şekilde gelir.  Her vCPU için 8 GiB bellek ve 8 vCPU başına, L80s v2 'de bulunan 19.2 TB 'a kadar (10 x 1.92 TB) bir 1.92 TB NVMe SSD M. 2 cihaz vardır.
+Lsv2 serisi yüksek iş kolu, düşük gecikme, doğrudan 2.55GHz tüm çekirdek desteği ve 3.0GHz maksimum destek ile [AMD EPYC<sup>TM</sup> 7551 işlemci](https://www.amd.com/en/products/epyc-7000-series) üzerinde çalışan yerel NVMe depolama eşlenen özellikleri. Lsv2 serisi VM'ler aynı anda çoklu iş parçacığı yapılandırmasında 8 ile 80 vCPU arasında boyutlarda gelir.  VCPU başına 8 GiB bellek ve 8 vCPUs başına bir 1.92TB NVMe SSD M.2 cihazı vardır ve L80s v2'de 19.2 TB'ye (10x1.92TB) kadar bellek mevcuttur.
 
 > [!NOTE]
-> Lsv2 serisi VM 'Ler, dayanıklı veri disklerini kullanmak yerine doğrudan VM 'ye eklenen düğümdeki yerel diski kullanacak şekilde iyileştirilmiştir. Bu, iş yükleriniz için daha fazla IOPS/aktarım hızı sağlar. Lsv2 ve LS Serisi, dayanıklı veri disklerine yönelik IOPS ulaşılabilir arttırmak için yerel bir önbellek oluşturulmasını desteklemez.
+> Lsv2 serisi VM'ler, dayanıklı veri diskleri kullanmak yerine doğrudan VM'ye bağlı düğümdeki yerel diski kullanmak için optimize edilmiştir. Bu, iş yükleri için daha fazla IOS / iş elde etmenizi sağlar. Lsv2 ve Ls serisi, dayanıklı veri diskleri tarafından elde edilebilen IOP'leri artırmak için yerel bir önbellek oluşturulmasını desteklemez.
 >
-> Yerel diskin yüksek aktarım hızı ve IOPS, Lsv2 serisi VM 'Leri Apache Cassandra ve MongoDB gibi NoSQL depoları için ideal hale getirir. Bu, tek bir VM 'nin arızası durumunda Kalıcılık sağlamak için verileri birden çok VM arasında çoğaltır.
+> Yerel diskin yüksek iş verisi ve IOPs lsv2 serisi VM'ler, tek bir VM'nin başarısız olması durumunda kalıcılık elde etmek için birden çok VM'de verileri çoğaltan Apache Cassandra ve MongoDB gibi NoSQL depoları için idealdir.
 >
-> Daha fazla bilgi için bkz. [Windows](../virtual-machines/windows/storage-performance.md) veya [Linux](../virtual-machines/linux/storage-performance.md)için Lsv2 serisi sanal makinelerde performansı iyileştirme.  
+> Daha fazla bilgi için Windows [veya](../virtual-machines/windows/storage-performance.md) [Linux](../virtual-machines/linux/storage-performance.md)için Lsv2 serisi sanal makinelerde performansı optimize etme 'ye bakın.  
 
 ACU: 150-175
 
-Premium Depolama: desteklenir
+Premium Depolama: Desteklenen
 
-Premium depolama önbelleği: desteklenmiyor
+Premium Depolama önbelleğe alma: Desteklenmiyor
 
-Dinamik Geçiş: desteklenmiyor
+Canlı Geçiş: Desteklenmiyor
 
-Güncelleştirmeleri koruyan bellek: desteklenmiyor
+Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
 
-| Boyut | Sanal işlemci | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış maksimum veri diski verimlilik (IOPS/MBps)<sup>4</sup> | En fazla veri diski | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut | Sanal işlemci | Bellek (GİB) | Geçici disk<sup>1</sup> (GiB) | NVMe Diskler<sup>2</sup> | NVMe Disk iş özeti<sup>3</sup> (IOPS/MBps oku) | Maksimum caçrlanmamış veri diski veri girişi (IOS/MBps)<sup>4</sup> | Maksimum Veri Diskleri | Max NIC ' ler / Beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4X 1.92 TB  | 1,5 milyon/8000    | 32000/640  | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 d/14000   | 48000/960  | 32 | 8/16000 + |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8X 1.92 TB  | 2.9 a/16000   | 64000/1280 | 32 | 8/16000 + |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8 d/20000 | 80000/1400 | 32 | 8/16000 + |
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x1.92 TB  | 1.5M/8000    | 32000/640  | 32 | 8 / 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x1.92 TB  | 2.2M/14000   | 48000/960  | 32 | 8 / 16000+ |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.9M/16000   | 64000/1280 | 32 | 8 / 16000+ |
+| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1.92TB | 3.8M/20000 | 80000/1400 | 32 | 8 / 16000+ |
 
-<sup>1</sup> Lsv2 serisi VM 'ler, işletim sistemi disk belleği/takas dosyası kullanımı için standart bir SCSI tabanlı geçici kaynak diskine sahiptir (D: Windows 'Ta, Linux üzerinde/dev/sdb). Bu disk, her 8 vCPU için 80 GiB depolama, 4.000 ıOPS ve 80 MBps aktarım hızı sağlar (örneğin, Standard_L80s_v2 40.000 ıOPS ve 800 MBPS ' te 800 GiB sağlar). Bu, NVMe sürücülerinin uygulama kullanımına tamamen ayrılmasını sağlar. Bu disk geçici bir işlemdir ve tüm veriler durdurma/serbest bırakma durumunda kaybedilir.
+<sup>1</sup> Lsv2 serisi VM'ler işletim sistemi sayfalama/takas dosya kullanımı için standart bir SCSI tabanlı geçici kaynak diskine sahiptir (D: Windows'da, /dev/sdb on Linux). Bu disk, her 8 vCPUs için 80 GiB depolama, 4.000 IOPS ve 80 MBps aktarım hızı sağlar (örneğin Standard_L80s_v2 40.000 IOPS ve 800 MBPS'de 800 GiB sağlar). Bu, NVMe sürücülerinin tamamen uygulama kullanımına adanmasını sağlar. Bu disk Geçicidir ve tüm veriler stop/deallocate'da kaybolur.
 
-<sup>2</sup> yerel NVMe diski kısa ömürlü, VM 'nizi durdurur/serbest bırakırsanız bu disklerde veri kaybolacaktır.
+<sup>2</sup> Yerel NVMe Diskleri geçicidir, VM'nizi durdurur/kullanırsanız bu disklerde veriler kaybolur.
 
-<sup>3</sup> Hyper-V NVMe Direct teknolojisi, Konuk VM alanı ile güvenli bir şekilde eşlenmiş yerel NVMe sürücülerine kısıtlı erişim sağlar.  En yüksek performansı elde etmek için Azure Marketi 'nden en son WS2019 Build veya Ubuntu 18,04 ya da 16,04 kullanılması gerekir.  Yazma performansı, GÇ boyutu, sürücü yükü ve kapasite kullanımına göre farklılık gösterir.
+<sup>3</sup> Hyper-V NVMe Direct teknolojisi, konuk VM alanına güvenli bir şekilde eşlenen yerel NVMe sürücülere sorunsuz erişim sağlar.  Maksimum performans elde etmek için Azure Marketi'nden en son WS2019 veya Ubuntu 18.04 veya 16.04'ü kullanmak gerekir.  Yazma performansı IO boyutuna, sürücü yüküne ve kapasite kullanımına bağlı olarak değişir.
 
-<sup>4</sup> Lsv2 serisi VM 'Ler, Lsv2 iş yüklerini avantajına sahip olmadığından veri diski için konak önbelleği sunmaz.  Ancak, Lsv2 VM 'Leri Azure 'un kısa ömürlü VM OS disk seçeneğine (en fazla 30 GiB) uyum sağlayabilir.
+<sup>4</sup> Lsv2 serisi VM'ler, Lsv2 iş yüklerinden yararlanamadığı için veri diski için ana bilgisayar önbelleği sağlamaz.  Ancak Lsv2 VM'ler Azure'un Geçici VM OS disk seçeneğini (en fazla 30 GiB) barındırabilir.
 
-64 ' den fazla vCPU içeren <sup>5</sup> VM, desteklenen bu konuk işletim sistemlerinden birini gerektirir:
+64 vCP'den fazla vCP's's i olan <sup>5</sup> VM bu desteklenen konuk işletim sistemlerinden birini gerektirir:
 
-- Windows Server 2016 veya üzeri
-- Ubuntu 16,04 LTS veya üzeri, Azure ayarlanmış çekirdekle (4,15 çekirdek veya üzeri)
-- SLES 12 SP2 veya üzeri
-- RHEL veya CentOS Sürüm 6,7 ile 6,10, Microsoft tarafından sunulan LIS paketi 4.3.1 (veya üzeri) yüklü
-- RHEL veya CentOS Sürüm 7,3, Microsoft tarafından sunulan LIS paketi 4.2.1 (veya üzeri) yüklü
-- RHEL veya CentOS Sürüm 7,6 veya üzeri
-- UEK4 veya üzeri ile Oracle Linux
-- Arka bağlantı noktaları çekirdeği, 10. ve üzeri ile 9.
-- 4,14 çekirdekine sahip CoreOS veya üzeri
+- Windows Server 2016 veya sonrası
+- Ubuntu 16.04 LTS veya daha sonraki, Azure ayarlı çekirdekli (4,15 çekirdek veya daha sonraki)
+- SLES 12 SP2 veya sonrası
+- Microsoft tarafından sağlanan LIS paketi 4.3.1 (veya daha sonra) yüklü olan RHEL veya CentOS sürüm 6.7 ile 6.10
+- Microsoft tarafından sağlanan LIS paketi 4.2.1 (veya daha sonra) yüklü OLAN RHEL veya CentOS sürüm 7.3
+- RHEL veya CentOS sürüm 7.6 veya sonrası
+- UEK4 veya sonrası ile Oracle Linux
+- Debian 9 backports çekirdek, Debian 10 veya daha sonra
+- CoreOS 4.14 çekirdek veya daha sonra
 
 ## <a name="size-table-definitions"></a>Boyut tablosu tanımları
 
 - Depolama kapasitesi GiB veya 1024^3 bayt cinsinden gösterilmiştir. GB (1000^3 bayt) ile ölçülen diskleri GiB (1024^3 bayt) ile ölçülen disklerle karşılaştırırken GiB cinsinden verilen kapasite rakamlarının daha küçük görünebileceğini unutmayın. Örneğin: 1023 GiB = 1098,4 GB
 - Disk aktarım hızı, saniye başına giriş/çıkış işlemi sayısı (IOPS) ve MB/sn (MB/sn = 10^6 bayt/sn) üzerinden ölçülür.
-- Sanal makinelerinize en iyi performansı elde etmek istiyorsanız, vCPU başına veri disklerinin sayısını 2 disk ile sınırlamanız gerekir.
-- **Beklenen ağ bant** genişliği tüm ormanlarda tüm NIC 'lerde [sanal makine türü başına ayrılan en yüksek bant genişliğine sahip](../virtual-network/virtual-machine-network-throughput.md) olur. Üst sınırlar garanti edilmez, ancak hedeflenen uygulama için doğru VM türünün seçilmesine ilişkin kılavuzluk sağlamak için tasarlanmıştır. Gerçek ağ performansı, ağ tıkanıklığı, uygulama yükleri ve ağ ayarları gibi çeşitli faktörlere bağlıdır. Ağ aktarım hızını iyileştirme hakkında bilgi için bkz. [Windows ve Linux için ağ aktarım hızını iyileştirme](../virtual-network/virtual-network-optimize-network-bandwidth.md). Linux veya Windows üzerinde beklenen ağ performansını gerçekleştirmek için belirli bir sürümü seçmeniz veya VM’nizi en iyi duruma getirmeniz gerekebilir. Daha fazla bilgi için bkz. [Sanal makine aktarım hızını güvenilir bir şekilde test etme](../virtual-network/virtual-network-bandwidth-testing.md).
+- VM'leriniz için en iyi performansı elde etmek istiyorsanız, veri diski sayısını vCPU başına 2 diskle sınırlamanız gerekir.
+- **Beklenen ağ bant genişliği,** tüm HEDEFLER için tüm NIC'ler arasında [VM türüne göre ayrılan](../virtual-network/virtual-machine-network-throughput.md) maksimum toplanan bant genişliğidir. Üst sınırlar garanti edilmez, ancak hedeflenen uygulama için doğru VM türünün seçilmesine ilişkin kılavuzluk sağlamak için tasarlanmıştır. Gerçek ağ performansı, ağ tıkanıklığı, uygulama yükleri ve ağ ayarları gibi çeşitli faktörlere bağlıdır. Ağ aktarım hızını iyileştirme hakkında bilgi için bkz. [Windows ve Linux için ağ aktarım hızını iyileştirme](../virtual-network/virtual-network-optimize-network-bandwidth.md). Linux veya Windows üzerinde beklenen ağ performansını gerçekleştirmek için belirli bir sürümü seçmeniz veya VM’nizi en iyi duruma getirmeniz gerekebilir. Daha fazla bilgi için bkz. [Sanal makine aktarım hızını güvenilir bir şekilde test etme](../virtual-network/virtual-network-bandwidth-testing.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
+Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.

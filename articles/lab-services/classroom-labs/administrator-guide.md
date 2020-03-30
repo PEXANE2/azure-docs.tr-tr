@@ -1,6 +1,6 @@
 ---
-title: Yönetici Kılavuzu Azure Lab Services | Microsoft Docs
-description: Bu kılavuz, Azure Lab Services kullanarak laboratuvar hesapları oluşturan ve yöneten yöneticilere yardımcı olur.
+title: Azure Lab Hizmetleri - Yönetici kılavuzu | Microsoft Dokümanlar
+description: Bu kılavuz, Azure Laboratuvar Hizmetlerini kullanarak laboratuvar hesapları oluşturan ve yöneten yöneticilere yardımcı olur.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,235 +13,251 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 318f16df6ac10be5909b255f2f1988be028d0eef
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78162442"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370846"
 ---
-# <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services Yönetici Kılavuzu
-Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yöneticileri, genellikle okulunuzun laboratuvar hesabını ayarlamaktan sorumludur. Laboratuvar hesabı kurulduktan sonra, Yöneticiler veya eğitimciler laboratuvar hesabı içinde bulunan derslik laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarına ve bunları oluşturmaya yönelik kılavuza yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
+# <a name="azure-lab-services---administrator-guide"></a>Azure Lab Hizmetleri - Yönetici kılavuzu
+Bir üniversitenin bulut kaynaklarını yöneten Bilgi Teknolojisi (BT) yöneticileri genellikle okullarının laboratuvar hesabını kurmakla yükümlüdür. Bir laboratuvar hesabı kurulduktan sonra, yöneticiler veya eğitimciler laboratuvar hesabında bulunan sınıf laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarının üst düzey bir genel bakışı ve bunları oluşturma kılavuzu sağlanmaktadır.
 
 ![Laboratuvar hesabındaki Azure kaynaklarının üst düzey görünümü](../media/administrator-guide/high-level-view.png)
 
-- Sınıf laboratuvarları Azure Lab Services sahip bir Azure aboneliği içinde barındırılır.
-- Laboratuvar hesapları, paylaşılan görüntü Galerisi ve görüntü sürümleri aboneliğiniz dahilinde barındırılır.
-- Laboratuvar hesabınıza ve paylaşılan görüntü galerinize aynı kaynak grubunda sahip olabilirsiniz. Bu diyagramda, farklı kaynak gruplarında yer alırlar. 
+- Sınıf laboratuvarları, Azure Lab Services'e ait bir Azure aboneliği nde barındırılır.
+- Laboratuvar hesapları, paylaşılan resim galerisi ve resim sürümleri aboneliğiniz içinde barındırılır.
+- Laboratuvar hesabınızı ve paylaşılan resim galerisini aynı kaynak grubunda bulabilirsiniz. Bu diyagramda, farklı kaynak gruplarında dırlar. 
 
 ## <a name="subscription"></a>Abonelik
-Üniversiteniz bir veya daha fazla Azure aboneliğine sahip. Laboratuvar hesapları da dahil olmak üzere, içinde kullanılan tüm Azure resources\services için faturalandırma ve güvenliği yönetmek üzere bir abonelik kullanılır.
+Üniversitenizde bir veya daha fazla Azure aboneliği vardır. Abonelik, laboratuvar hesapları da dahil olmak üzere içinde kullanılan tüm Azure kaynakları\hizmetleri için faturalandırma ve güvenliği yönetmek için kullanılır.
 
-Laboratuvar hesabı ve aboneliği arasındaki ilişki önemlidir çünkü:
+Bir laboratuvar hesabı ile aboneliği arasındaki ilişki önemlidir, çünkü:
 
-- Faturalandırma, laboratuvar hesabını içeren abonelikle raporlanır.
-- Kullanıcılara aboneliğin Azure Active Directory (AD) kiracısındaki Azure Lab Services erişim izni verebilirsiniz. Bir kullanıcıyı laboratuvar hesabı sahip\katkıda bulunan, derslik Laboratuvarı oluşturan veya derslik laboratuvar sahibi olarak ekleyebilirsiniz.
+- Faturalandırma, laboratuvar hesabını içeren abonelik aracılığıyla bildirilir.
+- Aboneliğin Azure Etkin Dizini (AD) kiracısı tarafından Azure Lab Hizmetleri'ne erişme izni verebilirsiniz. Bir kullanıcıyı laboratuvar hesabı sahibi\katılımcı, sınıf laboratuarı oluşturucusu veya sınıf laboratuarı sahibi olarak ekleyebilirsiniz.
 
-Sınıf laboratuvarları ve bunların sanal makineleri (VM 'Ler) Azure Lab Services sahip olunan bir abonelikte sizin için yönetilir ve barındırılır.
+Sınıf laboratuvarları ve sanal makineleri (VM'ler), Azure Lab Hizmetleri'ne ait bir abonelik içinde sizin için yönetilir ve barındırılır.
 
 ## <a name="resource-group"></a>Kaynak grubu
-Bir abonelik bir veya daha fazla kaynak grubu içeriyor. Kaynak grupları, aynı çözüm içinde birlikte kullanılan Azure kaynakları mantıksal gruplandırmaları oluşturmak için kullanılır.  
+Abonelik bir veya daha fazla kaynak grubu içerir. Kaynak grupları, aynı çözüm içinde birlikte kullanılan Azure kaynaklarının mantıksal gruplandırmalarını oluşturmak için kullanılır.  
 
-Laboratuvar hesabı oluşturduğunuzda, laboratuvar hesabını içeren kaynak grubunu yapılandırmanız gerekir. 
+Bir laboratuvar hesabı oluşturduğunuzda, laboratuvar hesabını içeren kaynak grubunu yapılandırmanız gerekir. 
 
-[Paylaşılan görüntü Galerisi](#shared-image-gallery)oluştururken de bir kaynak grubu gereklidir. Laboratuvar hesabınızı ve paylaşılan görüntü galerinizi iki ayrı kaynak grubuna yerleştirerek, görüntü galerisini farklı çözümler arasında paylaşmayı planlıyorsanız bu durum tipik bir çözümdür. Ya da, bunları aynı kaynak grubuna koyabilirsiniz.
+Paylaşılan bir [resim galerisi](#shared-image-gallery)oluştururken bir kaynak grubu da gereklidir. Laboratuvar hesabınızı ve paylaşılan resim galerini iki ayrı kaynak grubuna koymayı seçebilirsiniz, bu da resim galerisini farklı çözümler arasında paylaşmayı planlıyorsanız tipiktir. Veya, bunları aynı kaynak grubuna koymayı seçebilirsiniz.
 
-Bir laboratuvar hesabı oluşturduğunuzda, paylaşılan bir görüntü galerisini aynı anda otomatik olarak oluşturup ekleyebilirsiniz.  Bu seçenek, laboratuvar hesabı ve paylaşılan görüntü galerisinin ayrı kaynak gruplarında oluşturulmasını de sonuçlanır. Bu öğreticide açıklanan adımları kullanırken bu davranışı görürsünüz: [Laboratuvar hesabı oluşturma sırasında paylaşılan görüntü Galerisi 'Ni yapılandırma](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation). Bu makalenin en üstündeki resim da bu yapılandırmayı kullanır. 
+Bir laboratuvar hesabı oluşturduğunuzda, paylaşılan bir resim galerisini aynı anda otomatik olarak oluşturabilir ve ekleyebilirsiniz.  Bu seçenek, laboratuvar hesabı ve paylaşılan resim galerisinin ayrı kaynak gruplarında oluşturulmasıyla sonuçlanır. Bu öğreticide açıklanan adımları kullanırken bu davranışı görürsünüz: [Laboratuvar hesabı oluşturma sırasında paylaşılan resim galerisini yapılandırın.](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation) Bu makalenin üst kısmındaki görüntü de bu yapılandırmayı kullanır. 
 
-Bir laboratuvar hesabının veya paylaşılan görüntü galerisinin kaynak grubunu oluşturulduktan sonra değiştirmek mümkün *olmadığından* , kaynak gruplarınızın yapısını planlamak için zaman zaman önüne yatırım yapmanızı öneririz. Bu kaynaklar için kaynak grubunu değiştirmeniz gerekiyorsa, laboratuvar hesabınızı ve \ veya paylaşılan görüntü galerinizi silip yeniden oluşturmanız gerekir.
+Bir laboratuvar hesabınızın veya paylaşılan resim galerisinin kaynak grubunu oluşturulduktan sonra değiştirmenin mümkün *olmadığından,* kaynak gruplarınızın yapısını planlamak için önceden zaman ayırmanızı öneririz. Bu kaynakların kaynak grubunu değiştirmeniz gerekiyorsa, laboratuvar hesabınızı ve\veya paylaşılan resim galerisini silmeniz ve yeniden oluşturmanız gerekir.
 
 ## <a name="lab-account"></a>Laboratuvar hesabı
-Laboratuvar hesabı bir veya daha fazla sınıf Laboratuvarı için kapsayıcı görevi görür. Azure Lab Services kullanmaya başlarken, yalnızca tek bir laboratuar hesabı olması yaygındır. Laboratuvar kullanımınız ölçeklenirken daha sonra daha fazla laboratuvar hesabı oluşturmayı tercih edebilirsiniz.
+Laboratuvar hesabı, bir veya daha fazla sınıf laboratuarı için bir konteyner görevi görehizmet eder. Azure Laboratuvar Hizmetleri'ne başlarken, yalnızca tek bir laboratuvar hesabına sahip olmak yaygındır. Laboratuvar kullanımınız ölçeklendikçe, daha sonra daha fazla laboratuvar hesabı oluşturmayı seçebilirsiniz.
 
-Aşağıdaki listede birden çok laboratuvar hesabının faydalı olabileceği senaryolar vurgulanmıştır:
+Aşağıdaki liste, birden fazla laboratuvar hesabının yararlı olabileceği senaryoları vurgular:
 
-- **Sınıf laboratuvarları genelinde farklı ilke gereksinimlerini yönetme** 
+- **Sınıf laboratuvarları arasında farklı ilke gereksinimlerini yönetme** 
     
-    Bir laboratuvar hesabı ayarlarken, laboratuvar hesabı altındaki *Tüm* sınıf laboratuvarları için uygulanan ilkeler ayarlarsınız, örneğin:
-    - Sınıf laboratuvarının erişebileceği paylaşılan kaynaklarla Azure sanal ağı. Örneğin, bir sanal ağ içindeki paylaşılan bir veri kümesine erişmesi gereken bir derslik Laboratuvarı kümesine sahip olabilirsiniz.
-    - Sınıf laboratuvarlarının VM oluşturmak için kullanabileceği sanal makine (VM) görüntüleri. Örneğin, Linux Market görüntüsü [için veri bilimi VM'si](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) erişmesi gereken bir derslik Laboratuvarı kümesine sahip olabilirsiniz. 
+    Bir laboratuvar hesabı ayarladığınızda, laboratuvar hesabının altındaki *tüm* sınıf laboratuvarları için geçerli olan ilkeler ayarlarsınız, örneğin:
+    - Sınıf laboratuvarının erişebileceği paylaşılan kaynaklara sahip Azure sanal ağı. Örneğin, sanal ağ içinde paylaşılan veri kümesine erişmeniz gereken bir sınıf laboratuarları kümeniz olabilir.
+    - Sınıf laboratuvarları VM'ler oluşturmak için kullanabileceği sanal makine (VM) görüntüleri. Örneğin, Linux Marketplace görüntüsü [için Veri Bilimi VM'sine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) erişmeniz gereken bir sınıf laboratuvarı setiniz olabilir. 
     
-    Bir diğerinden benzersiz ilke gereksinimlerine sahip derslabs varsa, bu derslik laboratuvarlarını ayrı ayrı yönetmek için ayrı laboratuvar hesapları oluşturmak yararlı olabilir.
+    Birbirinden benzersiz ilke gereksinimleri olan sınıf laboratuvarlarınız varsa, bu sınıf laboratuvarlarını ayrı ayrı yönetmek için ayrı laboratuvar hesapları oluşturmak yararlı olabilir.
 
-- **Laboratuvar hesabına göre bütçeyi ayır**
+- **Laboratuvar hesabına göre ayrı bütçe**
   
-    Tek bir laboratuar hesabı aracılığıyla tüm sınıf Laboratuvarı maliyetlerini raporlamak yerine, daha net bir şekilde ayrılmış bütçe gerekebilir. Örneğin, bir bütçeyi Departmanlar arasında ayırmak için University 'in Math departmanı, bilgisayar bilimi departmanı ve benzeri laboratuvar hesapları oluşturabilirsiniz.  Daha sonra [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)'ni kullanarak her bir laboratuvar hesabının maliyetini görüntüleyebilirsiniz.
+    Tüm sınıf laboratuvar maliyetlerini tek bir laboratuvar hesabı üzerinden raporlamak yerine, daha net bir şekilde ayrılmış bir bütçeye ihtiyacınız olabilir. Örneğin, bütçeyi bölümler arasında ayırmak için üniversitenizin Matematik bölümü, Bilgisayar Bilimleri bölümü vb. için laboratuvar hesapları oluşturabilirsiniz.  Daha sonra [Azure Maliyet Yönetimi'ni](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)kullanarak her bir laboratuvar hesabının maliyetini görüntüleyebilirsiniz.
     
-- **Active\production Labs 'den pilot Labs 'i yalıtma**
+- **Pilot laboratuvarları aktif üretim laboratuvarlarından izole edin**
   
-    Active\production Labs 'i etkilemeden laboratuvar hesabı için ilke değişikliklerini pilot yapmak istediğiniz durumlar olabilir. Bu senaryoda, pilot çalışması amaçlarıyla ayrı bir laboratuvar hesabı oluşturmak, değişiklikleri yalıtmanızı sağlar. 
+    Etkin üretim laboratuvarlarını etkilemeden bir laboratuvar hesabı için ilke değişikliklerini pilot yapmak istediğiniz durumlar olabilir. Bu tür senaryolarda, pilot uygulama amacıyla ayrı bir laboratuvar hesabı oluşturmak değişiklikleri yalıtmanıza olanak tanır. 
 
-## <a name="classroom-lab"></a>Sınıf Laboratuvarı
-Bir sınıf Laboratuvarı, her biri tek bir öğrenciye atanan sanal makineler (VM) içerir. Genel olarak şunları yapabilirsiniz:
+## <a name="classroom-lab"></a>Sınıf laboratuvarı
+Sınıf laboratuarı, her biri tek bir öğrenciye atanan sanal makineler (VM' ler) içerir. Genel olarak, şunları bekleyebilirsiniz:
 
-- Her sınıf için bir derslik Laboratuvarı olmalıdır.
-- Her bir Yarıyılı: (veya sınıfınızın sunulduğu her zaman çerçevesinde) yeni bir sınıf Laboratuvarı kümesi oluşturun. Genellikle aynı görüntü gereksinimlerine sahip sınıflar için, Labs ve semeyenlerin tamamında görüntüleri yeniden kullanmak üzere [paylaşılan bir görüntü Galerisi](#shared-image-gallery) kullanmanız gerekir.
+- Her sınıf için bir sınıf laboratuvarınız olsun.
+- Her dönem yeni bir sınıf laboratuvarı kümesi oluşturun (veya sınıfınızın sunulduğu her zaman dilimi için). Genellikle aynı görüntü gereksinimlerine sahip sınıflar için, görüntüleri laboratuarlar ve dönemler arasında yeniden kullanmak için paylaşılan bir [resim galerisi](#shared-image-gallery) kullanmanız gerekir.
 
-Sınıf Laboratuvarlarınızı nasıl yapılandıracağınızı belirlerken aşağıdaki noktaları göz önünde bulundurun:
+Sınıf laboratuvarlarınızı nasıl yapılandırılacaklarını belirlerken aşağıdaki noktaları göz önünde bulundurun:
 
-- **Bir sınıf laboratuvarında bulunan tüm VM 'ler yayımlanan aynı görüntüyle dağıtılır**. 
+- **Sınıf laboratuarındaki tüm VM'ler, yayınlanan görüntüyle dağıtılır**
 
-    Sonuç olarak, farklı laboratuvar görüntülerinin aynı anda yayımlanmasını gerektiren bir sınıfınız varsa, her biri için ayrı sınıf laboratuvarları oluşturulmalıdır.
+    Sonuç olarak, farklı laboratuvar görüntülerinin aynı anda yayınlanmasını gerektiren bir sınıfvarsa, her biri için ayrı sınıf laboratuarları oluşturulmalıdır.
   
-- **Kullanım kotası laboratuvar düzeyinde ayarlanır ve laboratuvardaki tüm kullanıcılar için geçerlidir**. 
+- **Kullanım kotası laboratuvar düzeyinde ayarlanır ve laboratuardaki tüm kullanıcılar için geçerlidir**
     
-    Kullanıcılara farklı kotalar ayarlamak için ayrı bir derslik Laboratuvarı oluşturmanız gerekir. Ancak, kotayı ayarladıktan sonra belirli bir kullanıcıya daha fazla saat eklemek mümkündür.
+    Kullanıcılar için farklı kotalar ayarlamak için ayrı sınıf laboratuarları oluşturmanız gerekir. Ancak, kotayı ayarladıktan sonra belirli bir kullanıcıya daha fazla saat eklemek mümkündür.
   
-- **Başlatma veya kapatılma zamanlaması laboratuvar düzeyinde ayarlanır ve laboratuvardaki tüm VM 'lere uygulanır**. 
+- **Başlatma veya kapatma zamanlaması laboratuar düzeyinde ayarlanır ve laboratuardaki tüm VM'ler için geçerlidir**
 
-    Önceki noktaya benzer şekilde, kullanıcılar için farklı zamanlamalar ayarlamanız gerekiyorsa ayrı sınıf laboratuvarları oluşturmanız gerekir. 
+    Önceki noktaya benzer şekilde, kullanıcılar için farklı zamanlamalar ayarlamanız gerekiyorsa, ayrı sınıf laboratuarları oluşturmanız gerekir. 
 
-## <a name="shared-image-gallery"></a>Paylaşılan görüntü Galerisi
-Paylaşılan görüntü Galerisi bir laboratuvar hesabına iliştirilir ve görüntüleri depolamak için merkezi bir depo işlevi görür. Bir eğitimci, bir ders laboratuvarının şablon sanal makinesinden (VM) dışa aktarmaya seçerse, bir görüntü galeriye kaydedilir. Bir eğitimci, şablon VM 'de değişiklik yaptığında ve dışarı aktardığında, önceki sürümler korunurken görüntünün yeni sürümleri kaydedilir.
+## <a name="shared-image-gallery"></a>Paylaşılan resim galerisi
+Paylaşılan bir resim galerisi bir laboratuar hesabına eklenir ve görüntüleri depolamak için merkezi bir depo görevi görehizmet eder. Bir eğitimci sınıf laboratuvarının şablon sanal makinesinden (VM) dışa aktarmayı seçtiğinde bir resim galeriye kaydedilir. Bir eğitimci vm şablonunda ve dışa aktarımlarda her değişiklik yaptığında, önceki sürümleri korurken görüntünün yeni sürümleri kaydedilir.
 
-Eğitmenler, yeni bir sınıf Laboratuvarı oluştururken paylaşılan görüntü galerisinden bir görüntü sürümü yayımlayabilir. Galeri bir görüntünün birden çok sürümünü depolayabilse de, eğitimciler yalnızca Laboratuvar oluşturma sırasında en son sürümü seçebilir.
+Eğitmenler, yeni bir sınıf laboratuvarı oluşturduklarında paylaşılan resim galerisinden bir resim sürümünü yayımlayabilir. Galeri bir resmin birden çok sürümünü depolayabilse de, eğitimciler yalnızca laboratuvar oluşturma sırasında en son sürümü seçebilir.
 
-Paylaşılan görüntü Galerisi yalnızca birkaç derslik laboratuvarından başlayarak hemen ihtiyacınız olmayan isteğe bağlı bir kaynaktır. Ancak, paylaşılan görüntü galerisinin kullanılması, daha fazla sınıf Laboratuvarı sağlamak için ölçeklendirerek yararlı olan birçok avantaja sahiptir:
+Paylaşılan resim galerisi, yalnızca birkaç sınıf laboratuvarıyla başlarken hemen ihtiyaç duymayabileceğiniz isteğe bağlı bir kaynaktır. Ancak, paylaşılan resim galerisini kullanmak, daha fazla sınıf laboratuvarına sahip olmak için ölçeklendikçe yararlı olan birçok avantaja sahiptir:
 
-- **Bir şablon VM görüntüsünün sürümlerini kaydetmenizi ve yönetmenizi sağlar**.
+- **Şablon VM görüntüsünün sürümlerini kaydetmenizi ve yönetmenize olanak tanır**
 
-    Ortak Market galerisindeki bir görüntüye özel bir görüntü oluşturmak veya değişiklikler (yazılım, yapılandırma vb.) yapmak yararlı olabilir.  Örneğin, eğitimciler 'in farklı software\araçları yüklenmesi gerekir. Öğrencilerin, bu önkoşulların kendilerine ait önkoşulları el ile yüklemesini gerektirmek yerine, şablon VM görüntüsünün farklı sürümleri paylaşılan bir görüntü galerisine aktarılabilir. Bu görüntü sürümleri, yeni sınıf laboratuvarları oluştururken kullanılabilir.
-- **Sınıf laboratuvarları genelinde şablon VM görüntülerinin sharing\yeniden kullanılmasını mümkün**.
+    Genel Market galerisinden bir görüntüye özel bir görüntü oluşturmak veya değişiklikler yapmak (yazılım, yapılandırma vb.) yararlıdır.  Örneğin, eğitimcilerin farklı yazılım\araç yüklemesini gerektirmesi yaygındır. Öğrencilerin bu ön koşulları kendi başlarına el ile yüklemelerini gerektirmek yerine, vm şablonunun farklı sürümleri paylaşılan bir resim galerisine aktarılabilir. Bu görüntü sürümleri daha sonra yeni sınıf laboratuarları oluştururken kullanılabilir.
+- **Şablon VM görüntülerinin sınıf laboratuarlarında paylaşılmasını\yeniden kullanılmasını sağlar**
 
-    Yeni bir sınıf Laboratuvarı oluşturduğunuz her seferinde görüntüyü sıfırdan yapılandırmanız gerekmiyorsa görüntüyü kaydedebilir ve yeniden kullanabilirsiniz. Örneğin, aynı görüntüde olması gereken birden çok sınıf sunulursa, bu görüntünün yalnızca bir kez oluşturulması ve paylaşılan görüntü galerisine aktarılması gerekir, böylece sınıf laboratuvarları arasında paylaşılabilir.
-- **Çoğaltma aracılığıyla görüntü kullanılabilirliğini sağlar**.
+    Yeni bir sınıf laboratuvarı oluşturduğunuzda görüntüyü sıfırdan yapılandırmak zorunda kalmamak için görüntüyü kaydedebilir ve yeniden kullanabilirsiniz. Örneğin, aynı görüntüye gereksinim duyan birden çok sınıf sunuluyorsa, bu görüntünün sınıf laboratuarlarında paylaşılabilmesi için yalnızca bir kez oluşturulması ve paylaşılan resim galerisine dışa aktarılması gerekir.
+- **Çoğaltma yoluyla görüntü kullanılabilirliğini sağlar**
 
-    Bir sınıf laboratuvarında paylaşılan görüntü galerisine kaydettiğinizde, görüntünüz [aynı coğrafya içindeki diğer bölgelere](https://azure.microsoft.com/global-infrastructure/regions/)otomatik olarak çoğaltılır. Bir bölge için kesinti olması durumunda, başka bir bölgeden bir görüntü çoğaltmasından dolayı görüntünün sınıf laboratuvarınızda yayımlanması etkilenmez.  VM 'Lerin birden çok çoğaltmalardan yayımlanması performansa da yardımcı olabilir.
+    Bir sınıf laboratuvarından paylaşılan görüntü galerisine kaydettiğinizde, resminiz otomatik olarak [aynı coğrafyadaki](https://azure.microsoft.com/global-infrastructure/regions/)diğer bölgelere çoğaltılır. Bir bölge için bir kesinti olması durumunda, başka bir bölgeden görüntü çoğaltma kullanılabildiğinden, görüntüyü sınıf laboratuvarınıza yayımlamak etkilenmez.  Birden çok yinelemeden VM yayımlama da performans ile yardımcı olabilir.
 
-Paylaşılan görüntüleri mantıksal olarak gruplamak için birkaç seçeneğiniz vardır:
+Paylaşılan görüntüleri mantıksal olarak gruplandırmak için birkaç seçeneğiniz vardır:
 
-- Birden çok paylaşılan görüntü galerisi oluşturun. Her laboratuvar hesabı yalnızca bir paylaşılan görüntü galerisine bağlanabilir, bu nedenle bu seçenek ayrıca birden çok laboratuvar hesabı oluşturmanızı gerektirir.
-- Veya, birden çok laboratuvar hesabı tarafından paylaşılan tek bir paylaşılan görüntü Galerisi de kullanabilirsiniz. Bu durumda, her laboratuvar hesabı yalnızca içerdiği sınıf laboratuvarları için geçerli olan görüntüleri etkinleştirebilir.
+- Birden çok paylaşılan resim galerisi oluşturun. Her laboratuvar hesabı yalnızca paylaşılan bir resim galerisine bağlanabilir, bu nedenle bu seçenek birden çok laboratuvar hesabı oluşturmanızı da gerektirir.
+- Veya, birden çok laboratuvar hesabı tarafından paylaşılan tek bir paylaşılan resim galerisi kullanabilirsiniz. Bu durumda, her laboratuvar hesabı yalnızca içerdiği sınıf laboratuarları için geçerli olan görüntüleri etkinleştirebilir.
 
 ## <a name="naming"></a>Adlandırma
-Azure Lab Services kullanmaya başlarken, kaynak grupları, laboratuvar hesapları, sınıf laboratuvarları ve paylaşılan görüntü Galerisi için adlandırma kuralları oluşturmanızı öneririz. Oluşturduğunuz adlandırma kuralları, kuruluşunuzun ihtiyaçlarına göre benzersiz olacaktır, ancak aşağıdaki tabloda genel yönergeler özetlenmektedir.
+Azure Laboratuvar Hizmetleri'ne başladığınızda, kaynak grupları, laboratuvar hesapları, sınıf laboratuarları ve paylaşılan resim galerisi için adlandırma kuralları oluşturmanızı öneririz. Oluşturduğunuz adlandırma kuralları kuruluşunuzun gereksinimlerine özgü olsa da, aşağıdaki tablo genel yönergeleri özetler.
 
 | Kaynak türü | Rol | Önerilen düzen | Örnekler |
 | ------------- | ---- | ----------------- | -------- | 
-| Kaynak grubu | Bir veya daha fazla laboratuvar hesabı ve bir veya daha fazla paylaşılan görüntü Galerisi içerir | \<kuruluş kısa adı\>-\<ortamı\>-RG<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam** , kaynak için pilot veya üretim gibi ortamı tanımlar</li><li>**RG** , kaynak türü: kaynak grubu için bir temsil eder.</li></ul> | contosoüniversıtylabs-RG<br/>contosoüniversıtylabs-pilot-RG<br/>contosoüniversıtylabs-prod-RG |
-| Laboratuvar hesabı | Bir veya daha fazla Laboratuvarı içerir | \<kuruluş kısa adı\>-\<ortamı\>-La<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam** , kaynak için pilot veya üretim gibi ortamı tanımlar</li><li>**La** , kaynak türü: Laboratuvar hesabı için temsil eder.</li></ul> | contosoüniversıtylabs-La<br/>mathdeptlabs-La<br/>bilimsel deptlabs-pilot-La<br/>bilimsel deptlabs-prod-La |
-| Sınıf Laboratuvarı | Bir veya daha fazla sanal makine içeriyor |\<sınıf adı\>-\<zaman dilimi\>-\<eğitimci tanımlayıcı\><ul><li>**Sınıf adı** , laboratuvarın desteklediği sınıfın adını tanımlar.</li><li>**Zaman çerçevesi** , sınıfın sunulduğu zaman dilimini tanımlar.</li>**Eğitim tanımlayıcısı** , laboratuvarın sahibi olan eğitimci 'yi tanımlar.</li></ul> | CS1234-fall2019-johntikan<br/>CS1234-spring2019-johntikan | 
-| Paylaşılan görüntü Galerisi | Bir veya daha fazla VM görüntüsü sürümü içeriyor | \<kuruluş kısa adı\>Galerisi | contosoüniversıtylabsgallery |
+| Kaynak grubu | Bir veya daha fazla laboratuvar hesabı ve bir veya daha fazla paylaşılan resim galerisi içerir | \<organizasyon kısa\>-\<\>ad ortamı -rg<ul><li>**Kuruluş kısa adı,** kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam,** Pilot veya Üretim gibi kaynağın ortamını tanımlar</li><li>**Rg** kaynak türünü temsil ediyor: kaynak grubu.</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-pilot-rg<br/>contosouniversitylabs-prod-rg |
+| Laboratuvar hesabı | Bir veya daha fazla laboratuvar içerir | \<organizasyon kısa\>-\<\>ad ortamı -la<ul><li>**Kuruluş kısa adı,** kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam,** Pilot veya Üretim gibi kaynağın ortamını tanımlar</li><li>**La** kaynak türü anlamına gelir: laboratuvar hesabı.</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-pilot-la<br/>sciencedeptlabs-prod-la |
+| Sınıf laboratuvarı | Bir veya daha fazla VM içerir |\<sınıf\>-\<adı\>-\<zaman dilimi eğitimci tanımlayıcısı\><ul><li>**Sınıf adı,** laboratuarın desteklediği sınıfın adını tanımlar.</li><li>**Zaman dilimi,** sınıfın sunulduğu zaman dilimini tanımlar.</li>**Eğitim tanımlayıcısı,** laboratuvarın sahibi olan eğiticiyi tanımlar.</li></ul> | CS1234-sonbahar2019-johndoe<br/>CS1234-spring2019-johndoe | 
+| Paylaşılan resim galerisi | Bir veya daha fazla VM görüntü sürümü içerir | \<organizasyon kısa\>ad galerisi | contosouniversitylabsgallery |
 
-Diğer Azure kaynaklarını adlandırma hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](/azure/architecture/best-practices/naming-conventions).
+Diğer Azure kaynaklarını adlandırma hakkında daha fazla bilgi için Azure [kaynakları için adlandırma kurallarına](/azure/architecture/best-practices/naming-conventions)bakın.
 
-## <a name="regions-or-locations"></a>Bölgeler veya konumlar
-Azure Lab Services ' kaynaklarınızı ayarlarken, kaynağı barındıracak veri merkezinin bölgesini (veya konumunu) sağlamanız gerekir. Aşağıda, bölgenin laboratuvar dağıtımınızda kullanılan kaynakların her birini nasıl etkilediği hakkında daha fazla ayrıntı verilmiştir:
+## <a name="regionslocations"></a>Bölgeler\yerler
 
-- **Kaynak grubu**
+Azure Laboratuvar Hizmetleri'nizin kaynaklarını ayarlarken, kaynağı barındıracak veri merkezinin bir bölgesini (veya konumunu) sağlamanız gerekir. Aşağıda, bölgenin bir laboratuvar kurma yla ilgili kaynakların her birini nasıl etkilediğine ilişkin daha fazla ayrıntı veredetir.
 
-    Bölge, kaynak grubuyla ilgili bilgilerin depolandığı veri merkezini belirtir. Kaynak grubu içinde yer alan Azure kaynakları, üst öğesinden farklı bölgelerde olabilir.
-- **Laboratuvar hesabı veya sınıf Laboratuvarı**
+### <a name="resource-group"></a>Kaynak grubu
 
-    Laboratuvar hesabının konumu, bu kaynağın bölgesini gösterir.  
+Bölge, kaynak grubu hakkındaki bilgilerin depolandığı veri merkezini belirtir. Kaynak grubunda bulunan azure kaynakları, üst lerinden farklı bölgelerde olabilir.
+
+### <a name="lab-account"></a>Laboratuvar hesabı
+
+Bir laboratuvar hesabının konumu, bu kaynağın bulunduğu bölgeyi gösterir.  
+
+### <a name="classroom-lab"></a>Sınıf laboratuvarı
     
-    Sınıf laboratuvarları sayesinde, Azure Lab Services otomatik olarak her laboratuvarın dağıtıldığı bölgeyi kullanılabilir kapasiteye göre seçer.  Özellikle Azure Lab Services, [Laboratuvar hesabıyla aynı coğrafya içinde olan bölgelerde](https://azure.microsoft.com/global-infrastructure/regions)kullanılabilirliği arar. 
-    
-    Bir yönetici, laboratuvar oluşturucularının derslik laboratuvarının konumunu seçmesine izin veriyorsa, seçim için kullanılabilir konumlar laboratuvar oluştururken kullanılabilir bölgesel kapasiteye dayanır.
+Bir sınıf laboratuvarının bulunduğu konum aşağıdaki etkenlere göre değişir:
 
-    Derslik laboratuvarının konumu Ayrıca hangi VM işlem boyutlarının seçilebilir olduğunu de belirler. Belirli bilgi işlem boyutları yalnızca belirli konumlarda kullanılabilir.
-- **Paylaşılan görüntü Galerisi**
+  - **Laboratuvar hesabı sanal ağa (VNet) bakar**
+  
+    Bir laboratuvar hesabı, aynı bölgede olduklarında [bir VNet ile eşlenebilir.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)  Bir laboratuvar hesabına VNet ile bakıldığında, sınıf laboratuarları hem laboratuvar hesabı hem de VNet ile aynı bölgede otomatik olarak oluşturulur.
 
-    Bölge, hedef bölgelere otomatik olarak çoğaltılmadan önce ilk görüntü sürümünün depolandığı kaynak bölgeyi gösterir.
+    > [!NOTE]
+    > Bir laboratuvar hesabına Bir VNet ile bakıldığında, **laboratuvar oluşturucusunun laboratuvar konumunu seçmesine izin** verme ayarı devre dışı bırakılır. Makalede bu ayar hakkında ek bilgiler bulunabilir: [Laboratuvar oluşturucusu laboratuvar için yer seçmek için izin ver.](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)
     
-Genel bir kural, bir kaynağın bölgesini kullanıcılarına en yakın bir kaynak olarak ayarlamak. Derslik laboratuvarları için öğrencilerinize en yakın derslik Laboratuvarı oluşturulması anlamına gelir. Öğrencilerin dünyanın her yerinden bulunduğu çevrimiçi kurslar için, merkezi olarak bulunan bir derslik laboratuvarı oluşturmak üzere en iyi kararlarınızı kullanmanız gerekir. Ya da bir sınıfı, öğrencilerinizin bölgesine göre birden çok sınıf laboratuvarlarına bölebilirsiniz.
+  - **Hiçbir VNet bakılır ***ve*** laboratuvar oluşturucuları laboratuvar konumunu seçmek için izin verilmez**
+  
+    Laboratuvar hesabı **no** ile baktı *hiçbir* VNet ve [laboratuvar yaratıcıları laboratuvar konumu seçmek için izin **verilmez** ](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)olduğunda, sınıf laboratuvarları otomatik olarak kullanılabilir VM kapasitesine sahip bir bölgede oluşturulur.  Azure Lab Hizmetleri [özellikle, laboratuvar hesabıyla aynı coğrafyada bulunan bölgelerde](https://azure.microsoft.com/global-infrastructure/regions)kullanılabilirlik arar.
+
+  - **Hiçbir VNet bakılır ***ve*** laboratuvar oluşturucuları laboratuvar konumunu seçmek için izin verilir**
+       
+    **Hiçbir** VNet baktı ve [laboratuvar yaratıcıları laboratuvar konumunu seçmek için izin verildiğinde,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)laboratuvar oluşturucu tarafından seçilebilir konumlar kullanılabilir kapasiteye göre bağlıdır.
+
+Genel kural, kaynağın bölgesini kullanıcılarına en yakın olana ayarlamaktır. Sınıf laboratuvarları için bu, öğrencilerinize en yakın sınıf laboratuarıoluşturmak anlamına gelir. Öğrencilerin tüm dünyada bulunduğu çevrimiçi kurslar için, merkezi bir şekilde bulunan bir sınıf laboratuvarı oluşturmak için en iyi kararınızı kullanmanız gerekir. Veya bir sınıfı öğrencilerinizin bölgesine göre birden çok sınıf laboratuvarına bölün.
+
+### <a name="shared-image-gallery"></a>Paylaşılan resim galerisi
+
+Bölge, hedef bölgelere otomatik olarak çoğaltılmadan önce ilk görüntü sürümünün depolandığı kaynak bölgeyi gösterir.
 
 ## <a name="vm-sizing"></a>VM boyutlandırma
-Yöneticiler veya laboratuvar oluşturucuları bir sınıf Laboratuvarı oluşturduklarında, derslerinden ihtiyaçlarına göre aşağıdaki VM boyutları arasından seçim yapabilir. Kullanılabilir işlem boyutlarının, laboratuvar hesabınızın bulunduğu bölgeye bağlı olduğunu unutmayın:
+Yöneticiler veya laboratuvar oluşturucuları bir sınıf laboratuvarı oluşturduklarında, sınıflarının gereksinimlerine göre aşağıdaki VM boyutları arasından seçim yapabilirler. Kullanılabilir işlem boyutlarının laboratuvar hesabınızın bulunduğu bölgeye bağlı olduğunu unutmayın:
 
-| Boyut | 34 | Önerilen kullanım |
-| ---- | ----- | ------------- |
-| Küçük| <ul><li>2 çekirdek</li><li>3,5 GB RAM</li></ul> | Bu boyut, komut satırı, Web tarayıcısı, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları için idealdir. |
-| Orta | <ul><li>4 çekirdek</li><li>7 GB RAM</li></ul> | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. |
-| Orta (Iç Içe sanallaştırma) | <ul><li>4 çekirdek</li><li>16 GB RAM</li></ul> | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.  Bu boyut, iç içe sanallaştırmayı da destekler. |
-| Büyük | <ul><li>8 çekirdek</li><li>32 GB RAM</li></ul> | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir.  Bu boyut, iç içe sanallaştırmayı da destekler. |
-| Küçük GPU (görselleştirme) | <ul><li>6 çekirdek</li><li>56 GB RAM</li> | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
-| Küçük GPU (Işlem) | <ul><li>6 çekirdek</li><li>56 GB RAM</li></ul> |Bu boyut, yapay zeka ve derin öğrenme gibi bilgisayar yoğunluklu uygulamalar için idealdir. |
-| Orta ölçekli GPU (görselleştirme) | <ul><li>12 çekirdek</li><li>112 GB RAM</li></ul> | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
+| Boyut | Özellikler | Seriler | Önerilen kullanım |
+| ---- | ----- | ------ | ------------- |
+| Küçük| <ul><li>2 Çekirdek</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut en iyi komut satırı için uygundur, web tarayıcısı açılış, düşük trafik web sunucuları, küçük ve orta veritabanları. |
+| Orta | <ul><li>4 Çekirdek</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için en uygun uyrdu. |
+| Orta (İç içe sanallaştırma) | <ul><li>4 Çekirdek</li><li>16 GB RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için en uygun uyrdu.  Bu boyut iç içe sanallaştırmayı da destekler. |
+| Büyük | <ul><li>8 Çekirdek</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, daha hızlı CPU'lar, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekleri gerektiren uygulamalar için en uygunudur.  Bu boyut iç içe sanallaştırmayı da destekler. |
+| Küçük GPU (Görselleştirme) | <ul><li>6 Çekirdek</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Bu boyut en iyi uzaktan görselleştirme, akış, oyun, OpenGL ve DirectX gibi çerçeveleri kullanarak kodlama için uygundur. |
+| Küçük GPU (İşlem) | <ul><li>6 Çekirdek</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut en iyi Yapay Zeka ve Derin Öğrenme gibi bilgisayar yoğun uygulamalar için uygundur. |
+| Orta GPU (Görselleştirme) | <ul><li>12 Çekirdek</li><li>112 GB RAM</li></ul>  | [Standard_NC12](https://docs.microsoft.com/azure/virtual-machines/nc-series) | Bu boyut en iyi uzaktan görselleştirme, akış, oyun, OpenGL ve DirectX gibi çerçeveleri kullanarak kodlama için uygundur. |
 
-## <a name="manage-identity"></a>Kimliği Yönet
-[Azure 'un rol tabanlı erişim denetimini](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve sınıf laboratuvarlarına erişim sağlamak için aşağıdaki roller atanabilir:
+## <a name="manage-identity"></a>Kimliği yönetme
+[Azure'un rol tabanlı erişim denetimini](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve sınıf laboratuvarlarına erişim sağlamak için aşağıdaki roller atanabilir:
 
-- **Laboratuvar hesabı sahibi**
+- **Laboratuvar hesap sahibi**
 
-    Laboratuvar hesabını oluşturan yönetici, laboratuvar hesabının **sahip** rolüne otomatik olarak eklenir.  **Sahip** rolüne atanan bir yönetici şunları yapabilir:
+    Laboratuvar hesabını oluşturan yönetici otomatik olarak laboratuvar hesabının **Sahibi** rolüne eklenir.  **Sahibi** rolü atanan bir yönetici şunları yapabilir:
      - Laboratuvar hesabının ayarlarını değiştirin.
-     - Diğer yöneticilere, laboratuvar hesabına sahipler veya katkıda bulunanlar olarak erişim izni verin. 
-     - Eğitimciler, oluşturucular, sahipler veya katkıda bulunanlar olarak ders laboratuvarlarına erişim izni verin.
+     - Diğer yöneticilerin laboratuvar hesabına sahip veya katkıda bulunan olarak erişmelerini saðlar. 
+     - Eğitimcilere sınıf laboratuvarlarına yaratıcı, sahip veya katkıda bulunan olarak erişim hakkı verin.
      - Laboratuvar hesabındaki tüm sınıf laboratuvarlarını oluşturun ve yönetin.
 
-- **Laboratuvar hesabı Katılımcısı**
+- **Laboratuvar hesabı katılımcısı**
 
-    **Katkıda** bulunan rolüne atanan bir yönetici şunları yapabilir:
+    **Katılımcı** rolüatanan bir yönetici şunları yapabilir:
     - Laboratuvar hesabının ayarlarını değiştirin.
     - Laboratuvar hesabı içindeki tüm sınıf laboratuvarlarını oluşturun ve yönetin.
     
-    Ancak, diğer kullanıcılara laboratuvar hesapları veya sınıf laboratuvarları için erişim *izni veremeyiz* .
+    Ancak, diğer kullanıcılara laboratuvar hesaplarına veya sınıf laboratuarlarına erişim izni *veremezler.*
 
-- **Sınıf Laboratuvarı Oluşturucu**
+- **Sınıf laboratuvarı oluşturucusu**
 
-    Bir laboratuar hesabı içinde sınıf laboratuvarları oluşturmak için, bir eğitimci, **Laboratuvar Oluşturucu** rolünün bir üyesi olmalıdır.  Bir eğitimci bir sınıf Laboratuvarı oluşturduğunda, otomatik olarak laboratuvarın sahibi olarak eklenir.  [ **Laboratuvar Oluşturucu** rolüne kullanıcı ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)hakkında öğreticiye bakın. 
+    Bir laboratuvar hesabı içinde sınıf laboratuvarları oluşturmak için, bir eğitimci **Ninotor Oluşturucu** rolünün bir üyesi olmalıdır.  Bir eğitimci bir sınıf laboratuvarı oluşturduğunda, otomatik olarak laboratuvarın sahibi olarak eklenir.  [ **Laboratuvar Oluşturucurolüne** nasıl bir kullanıcı ekleyeceğiniz](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)le ilgili öğreticiye bakın. 
 
-- **Derslik Laboratuvarı owner\katkıda bulunan**
+- **Sınıf laboratuarı sahibi\katılımcı**
   
-    Bir eğitimci, bir laboratuvarın **sahibi** veya **katkıda bulunan** rolü üyesi olduklarında bir sınıf laboratuvarının ayarlarını görüntüleyebilir ve değiştirebilir; Ayrıca, laboratuvar hesabının **okuyucu** rolünün bir üyesi olmaları gerekir.
+    Bir eğitimci, bir laboratuvarın **Sahibi** veya **Katılımcı** rolünün üyesi olduklarında sınıf laboratuvarının ayarlarını görüntüleyebilir ve değiştirebilir; ayrıca laboratuvar hesabının **Reader** rolünün bir üyesi olmalıdır.
 
-    Laboratuvarın **sahibi** ve **katkıda bulunan** rolleri arasındaki önemli bir fark *, katkıda bulunan* diğer kullanıcılara Laboratuvarı yönetmek için başka kullanıcılara erişim izni veremeyiz.
+    Bir laboratuvarın **Sahibi** ve **Katılımcı** rolleri arasındaki temel fark, bir katılımcının diğer kullanıcılara laboratuvarı yönetme erişimi *verememesidir* - yalnızca sahipleri diğer kullanıcılara laboratuvarı yönetme erişimi verebilir.
     
-    Ayrıca, bir *eğitimci,* Ayrıca **Laboratuvar Oluşturucu** rolünün bir üyesi olmadıkları takdirde yeni sınıf laboratuvarları oluşturamaz.
+    Buna ek olarak, bir eğitimci, **Lab Creator** rolünün bir üyesi olmadıkça yeni sınıf laboratuvarları *oluşturamaz.*
 
-- **Paylaşılan görüntü Galerisi**
+- **Paylaşılan resim galerisi**
     
-    Bir laboratuvar hesabına paylaşılan bir görüntü Galerisi eklediğinizde, laboratuvar hesabı sahiplerikatkıda bulunanlar ve Lab creators\owners\katkıda bulunanlar ' ı otomatik olarak galerideki görüntüleri görüntülemek ve kaydetmek için erişim verilir. 
+    Paylaşılan bir resim galerisini bir laboratuvar hesabına eklediğinizde, laboratuvar hesabı sahipleri\katkıda bulunanlar ve laboratuvar oluşturucuları\sahipleri\katkıda bulunanlara galerideki görüntüleri görüntüleme ve kaydetme erişimi otomatik olarak verilir. 
 
-Rol atamaya yardımcı olacak bazı ipuçları aşağıda verilmiştir:
-   - Genellikle, yalnızca Yöneticiler laboratuvar hesabının **sahibi** veya **katkıda bulunan** rollerinin üyesi olmalıdır; birden fazla owner\contributor. olabilir
+Rolleri atamaya yardımcı olacak bazı ipuçları aşağıda verilmiştir:
+   - Genellikle, yalnızca yöneticiler bir laboratuvar hesabının **Sahibi** veya **Katılımcı** rollerinin üyeleri olmalıdır; birden fazla sahibi\katkıda bulunabilir.
 
-   - Yeni sınıf laboratuvarları oluşturma ve oluşturdukları laboratuvarları yönetme olanağı veren bir eğitimci sağlamak için; yalnızca **Laboratuvar Oluşturucu** rolüne erişim atamanız gerekir.
+   - Bir eğitimciye yeni sınıf laboratuvarları oluşturma ve oluşturdukları laboratuvarları yönetme becerisi kazandırmak; yalnızca **Lab Creator** rolüne erişim atamanız gerekir.
    
-   - Bir eğitimci sağlamak için, belirli sınıf laboratuvarlarını yönetme yeteneği, ancak yeni Labs oluşturma yeteneği *yoktur* ; yönetebilecekleri her bir sınıf laboratuvarın **sahibi** veya **katkıda bulunan** rolüne erişim atamanız gerekir.  Örneğin, hem bir çoklu yönetici Laboratuvarı hem de bir eğitim Yardımcısı ile bir sınıf laboratuvarına sahip olmak isteyebilirsiniz.  Bir [sınıfa bir sınıf laboratuvarına sahip olarak Kullanıcı ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)kılavuzuna bakın.
+   - Bir eğitimciye belirli sınıf laboratuvarlarını yönetme yeteneği vermek, ancak yeni laboratuvarlar oluşturma becerisi *vermek;* yönetecekleri sınıf laboratuvarlarının her biri için **Sahibi** veya **Katılımcı** rolüne erişim atamalısınız.  Örneğin, hem bir profesörün hem de bir öğretim görevlisinin bir sınıf laboratuvarının ortak sahibi olması için izin vermek isteyebilirsiniz.  [Bir kullanıcıyı sınıf laboratuvarına sahip olarak](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)nasıl ekleyeceğiniz kılavuzuna bakın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
 ### <a name="azure-lab-services"></a>Azure Lab Services
-Azure Lab Services fiyatlandırması aşağıdaki makalede açıklanmıştır: [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
+Azure Lab Hizmetleri fiyatlandırması aşağıdaki makalede açıklanmıştır: [Azure Lab Hizmetleri fiyatlandırması.](https://azure.microsoft.com/pricing/details/lab-services/)
 
-Ayrıca, görüntü sürümlerini depolamak ve yönetmek için kullanmayı planlıyorsanız paylaşılan görüntü galerisinin fiyatlandırmasını göz önünde bulundurmanız gerekir. 
+Ayrıca, görüntü sürümlerini depolamak ve yönetmek için kullanmayı planlıyorsanız, paylaşılan resim galerisinin fiyatlandırmasını da göz önünde bulundurmanız gerekir. 
 
-### <a name="shared-image-gallery"></a>Paylaşılan görüntü Galerisi
-Paylaşılan bir görüntü galerisi oluşturup laboratuvar hesabınıza ekleme ücretsizdir. Bir görüntü sürümü galeriye kaydedilinceye kadar maliyetler tahakkuk etmemektedir. Genellikle, paylaşılan bir görüntü Galerisi kullanma fiyatlandırması oldukça göz ardı edilebilir, ancak Azure Lab Services fiyatlandırmasına dahil olmadığından nasıl hesaplanacağını anlamak önemlidir.  
+### <a name="shared-image-gallery"></a>Paylaşılan resim galerisi
+Paylaşılan bir resim galerisi oluşturmak ve laboratuvar hesabınıza eklemek ücretsizdir. Bir resim sürümünü galeriye kaydedene kadar maliyetler tahakkuk etmez. Genellikle, paylaşılan bir resim galerisini kullanma fiyatlandırması oldukça önemsizdir, ancak Azure Lab Hizmetleri fiyatlandırmasına dahil olmadığından nasıl hesaplandığı anlamak önemlidir.  
 
-### <a name="storage-charges"></a>Depolama ücretleri
-Görüntü sürümlerini depolamak için, paylaşılan bir görüntü Galerisi standart HDD ile yönetilen diskleri kullanır. Kullanılan HDD tarafından yönetilen diskin boyutu, depolanan görüntü sürümünün boyutuna bağlıdır. Fiyatlandırma: [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/)' nı görüntülemek için aşağıdaki makaleye bakın.
+#### <a name="storage-charges"></a>Depolama ücretleri
+Görüntü sürümlerini depolamak için paylaşılan bir resim galerisi standart HDD yönetilen diskler kullanır. Kullanılan HDD yönetilen diskin boyutu, depolanan görüntü sürümünün boyutuna bağlıdır. Fiyatlandırmayı görüntülemek için aşağıdaki makaleye bakın: [Yönetilen diskler fiyatlandırması.](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 
-### <a name="replication-and-network-egress-charges"></a>Çoğaltma ve ağ çıkış ücretleri
-Bir sınıf laboratuvarının şablon sanal makinesini (VM) kullanarak bir görüntü sürümünü kaydettiğinizde Azure Lab Services önce onu bir kaynak bölgede depolar ve sonra kaynak görüntü sürümünü bir veya daha fazla hedef bölgeye otomatik olarak çoğaltır. Azure Lab Services, kaynak görüntü sürümünü sınıf laboratuvarının bulunduğu [coğrafya içindeki](https://azure.microsoft.com/global-infrastructure/regions/) tüm hedef bölgelere otomatik olarak çoğalttığını unutmayın. Örneğin, sınıf laboratuvarınız ABD Coğrafya 'içindeyse, bir görüntü sürümü ABD içinde mevcut olan sekiz bölgenin her birine çoğaltılır
+#### <a name="replication-and-network-egress-charges"></a>Çoğaltma ve ağ çıkış ücretleri
+Bir sınıf laboratuvarının şablon sanal makinesini (VM) kullanarak bir resim sürümünü kaydettiğinizde, Azure Lab Hizmetleri önce bir kaynak bölgede depolar ve ardından kaynak görüntü sürümünü otomatik olarak bir veya daha fazla hedef bölgeye çoğaltır. Azure Laboratuvar Hizmetleri'nin kaynak görüntü sürümünü sınıf laboratuvarının bulunduğu [coğrafyadaki](https://azure.microsoft.com/global-infrastructure/regions/) tüm hedef bölgelere otomatik olarak çoğalttığına dikkat etmek önemlidir. Örneğin, sınıf laboratuvarınız ABD coğrafyasındaysa, bir görüntü sürümü ABD içinde bulunan sekiz bölgenin her birine çoğaltılır.
 
-Bir görüntü sürümü kaynak bölgeden ek hedef bölgelere çoğaltıldığında bir ağ çıkış ücreti oluşur. Ücretlendirilen miktar, görüntünün verileri ilk başta kaynak bölgeden dışarıya aktarıldığında görüntü sürümünün boyutunu temel alır.  Fiyatlandırma ayrıntıları için aşağıdaki makaleye bakın: [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/).
+Bir görüntü sürümü kaynak bölgeden ek hedef bölgelere çoğaltıldığında ağ çıkış ücreti oluşur. Tahsil edilen tutar, görüntünün verileri ilk olarak kaynak bölgeden giden olarak aktarıldığında görüntü sürümünün boyutuna bağlıdır.  Fiyatlandırma ayrıntıları için aşağıdaki makaleye bakın: [Bant genişliği fiyatlandırma ayrıntıları.](https://azure.microsoft.com/pricing/details/bandwidth/)
 
-[Eğitim çözümleri](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) müşterileri, çıkış ücretlerini ödemekten alınmaz olabilir. Daha fazla bilgi edinmek için hesap yöneticinize konuşun.  Daha fazla bilgi için, bkz. bağlantılı belgedeki **SSS** bölümüne, özellikle de "akademik müşteriler için hangi veri aktarımı programlarının var olduğunu ve nasıl hak alabilirim?" sorusuna bakın.
+[Eğitim çözümleri](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) müşterilerin çıkış ücretleri ödemekten feragat edilebilir. Daha fazla bilgi edinmek için hesap yöneticinizle konuşun.  Daha fazla bilgi için, özellikle "Akademik müşteriler için hangi veri aktarım programları var ve nasıl hak kazanırım?" sorusuna bağlı belgedeki **SSS** bölümüne bakın.
 
-### <a name="pricing-example"></a>Fiyatlandırma örneği
-Yukarıda açıklanan fiyatlandırmayı açıklamak için, şablon VM görüntümizi paylaşılan görüntü galerisine kaydetme örneğine bakalım. Aşağıdaki senaryolar varsayılmaktadır:
+#### <a name="pricing-example"></a>Fiyatlandırma örneği
+Yukarıda açıklanan fiyatlandırmayı özetlemek için, şablon vm görüntümüzün paylaşılan resim galerisine kaydedilmesine bir örnek verelim. Aşağıdaki senaryoları varsayalım:
 
-- Bir özel VM Görüntünüz vardır.
-- Görüntünün iki sürümünü kaydediyorsunuz.
-- Laboratuvarınız ABD 'de ve toplam sekiz bölgeye sahiptir.
-- Her görüntü sürümü 32 GB boyutdir; Sonuç olarak, HDD ile yönetilen disk fiyatı ayda $1,54 ' dir.
+- Bir özel VM görüntü var.
+- Görüntünün iki versiyonunu kaydediyorsun.
+- Laboratuvarınız, toplam sekiz bölgesi olan Abd'de.
+- Her görüntü sürümü boyutu 32 GB; sonuç olarak, HDD tarafından yönetilen disk fiyatı ayda 1,54 TL'dir.
 
-Toplam maliyet Şu şekilde tahmin edilir:
+Toplam maliyet olarak tahmin edilir:
 
-Görüntü sayısı × sürüm sayısı × yönetilen disk fiyatı
+Görüntü sayısı × sürüm sayısı × çoğaltma sayısı × yönetilen disk fiyatı
 
-Bu örnekte, maliyet Şu şekilde olur:
+Bu örnekte, maliyet:
 
-1 özel görüntü (32 GB) x 2 sürüm x 8 ABD Bölge x $1,54 = $24,64/ay
+1 özel resim (32 GB) x 2 versiyonx 8 ABD bölgeleri x $1.54 = $24.64 aylık
 
-### <a name="cost-management"></a>Maliyet yönetimi
-Laboratuvar hesabı yöneticisinin, gereksiz görüntü sürümlerini Galeriden düzenli olarak silerek maliyetleri yönetmesi önemlidir. 
+#### <a name="cost-management"></a>Maliyet yönetimi
+Laboratuvar hesabı yöneticisinin, gereksiz resim sürümlerini galeriden düzenli olarak silerek maliyetleri yönetmesi önemlidir. 
 
-Maliyetleri azaltmanın bir yolu olarak belirli bölgelere yönelik çoğaltmayı silmelisiniz (paylaşılan görüntü galerisinde Bu seçenek mevcuttur). Çoğaltma değişiklikleri, Azure laboratuvar hizmeti 'nin paylaşılan görüntü galerisinde kaydedilmiş görüntülerden VM yayımlama yeteneğinin olumsuz etkileri olabilir.
+Maliyetleri azaltmanın bir yolu olarak çoğaltmayı belirli bölgelere silmemeniz gerekir (bu seçenek paylaşılan resim galerisinde bulunur). Çoğaltma değişiklikleri, Azure Lab Hizmeti'nin paylaşılan bir resim galerisinde kaydedilen resimlerden VM yayımlama becerisi üzerinde olumsuz etkilere yol açabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Laboratuvar hesabı ve laboratuvar oluşturmaya yönelik adım adım yönergeler için öğreticiye bakın: [öğretici: Laboratuvar hesabı ayarlama](tutorial-setup-lab-account.md)
+Bir laboratuvar hesabı ve laboratuvar oluşturmak için adım adım talimatlar için öğreticiye bakın: [Kılavuzu Ayarla](tutorial-setup-lab-account.md)

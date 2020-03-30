@@ -1,47 +1,47 @@
 ---
-title: Azure Red Hat Openshıft 4,3 kümesi oluşturma | Microsoft Docs
-description: Azure Red Hat OpenShift 4,3 ile küme oluşturma
+title: Azure Kırmızı Şapka OpenShift 4.3 Kümesi Oluşturma | Microsoft Dokümanlar
+description: Azure Red Hat OpenShift 4.3 ile küme oluşturma
 author: lamek
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-keywords: Aro, OpenShift, az Aro, Red hat, CLI
-ms.openlocfilehash: 23d7c950396c36925ce50d746195916292d360ad
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+keywords: aro, openshift, az aro, kırmızı şapka, cli
+ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79201051"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349429"
 ---
-# <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4,3 kümesi oluşturma, erişme ve yönetme
+# <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4.3 Cluster oluşturma, erişme ve yönetme
 
 > [!IMPORTANT]
-> Azure Red Hat Openshıft 4,3 'nin şu anda yalnızca Doğu ABD özel önizlemede kullanılabildiğini lütfen unutmayın. Özel Önizleme kabulü yalnızca davet tarafından yapılır. Lütfen bu özelliği etkinleştirmeyi denemeden önce aboneliğinizi kaydettiğinizden emin olun: [Azure Red Hat OpenShift özel önizleme kaydı](https://aka.ms/aro-preview-register)
+> Azure Red Hat OpenShift 4.3'ün şu anda yalnızca Doğu ABD'de özel önizlemede kullanılabildiğini lütfen unutmayın. Özel önizleme kabul sadece davetiye ile. Lütfen bu özelliği etkinleştirmeye çalışmadan önce aboneliğinizi kaydettiğinizden emin olun: [Azure Red Hat OpenShift Özel Önizleme Kaydı](https://aka.ms/aro-preview-register)
 
 > [!NOTE]
-> Önizleme özellikleri Self-Service ' dir ve olduğu gibi sağlanır ve hizmet düzeyi sözleşmesi (SLA) ve sınırlı garantiden çıkarılır. Bu nedenle, Özellikler üretim kullanımı için tasarlanmamıştır.
+> Önizleme özellikleri self servistir ve olduğu gibi ve mevcut olduğu şekilde sağlanır ve hizmet düzeyi sözleşmesi (SLA) ve sınırlı garanti dışında dır. Bu nedenle, özellikler üretim kullanımı için değildir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure Red Hat OpenShift 4,3 kümesi oluşturmak için şunlar gerekir:
+Bir Azure Red Hat OpenShift 4.3 kümesi oluşturmak için aşağıdakilere ihtiyacınız olacak:
 
-- Azure CLı sürüm 2.0.72 veya üzeri
+- Azure CLI sürümü 2.0.72 veya üzeri
   
-- ' Az Aro ' uzantısı
+- 'az aro' uzantısı
 
-- Her biri ağ güvenlik grubu iliştirilmemiş iki boş alt ağ içeren bir sanal ağ.  Kümeniz bu alt ağlara dağıtılacak.
+- Her biri ağ güvenlik grubu eklenmemiş iki boş alt ağ içeren bir sanal ağ.  Kümeniz bu alt ağlara dağıtılacak.
 
-- Sizin için otomatik olarak bir AAD uygulaması ve hizmet sorumlusu oluşturmak üzere `az aro create` için bir küme AAD uygulaması (istemci KIMLIĞI ve gizli dizi) ve hizmet sorumlusu ya da yeterli AAD izinleri.
+- Bir küme AAD uygulaması (istemci kimliği ve gizli) ve hizmet `az aro create` sorumlusu veya otomatik olarak sizin için bir AAD uygulaması ve hizmet anadili oluşturmak için yeterli AAD izinleri.
 
-- RP hizmet sorumlusu ve küme hizmeti sorumlusu, her birinin küme sanal ağı üzerinde katkıda bulunan rolüne sahip olması gerekir.  Sanal ağ üzerinde "Kullanıcı Erişim Yöneticisi" rolüne sahipseniz `az aro create`, rol atamalarını sizin için otomatik olarak ayarlar.
+- RP hizmet sorumlusu ve küme hizmet sorumlusunun her biri küme sanal ağında Katılımcı rolüne sahip olmalıdır.  Sanal ağda "Kullanıcı Erişim Yöneticisi" rolü `az aro create` varsa, rol atamaları sizin için otomatik olarak ayarlar.
 
-### <a name="install-the-az-aro-extension"></a>' Az Aro ' uzantısını yükler
-`az aro` uzantısı, Azure CLı kullanarak doğrudan komut satırından Azure Red Hat OpenShift kümelerini oluşturmanıza, erişimlerinize ve silmesine izin verir.
+### <a name="install-the-az-aro-extension"></a>'az aro' uzantısını yükleyin
+Uzantı, `az aro` Azure CLI'yi kullanarak Azure Red Hat OpenShift kümelerini doğrudan komut satırından oluşturmanıza, erişmenize ve silmenize olanak tanır.
 
 > [!Note] 
-> `az aro` uzantısı, önizleme aşamasında CurrentY. Gelecekteki bir sürümde değiştirilmiş veya kaldırılmış olabilir.
-> `az aro` uzantısı önizlemesini kabul etmek için `Microsoft.RedHatOpenShift` kaynak sağlayıcısını kaydetmeniz gerekir.
+> Uzantı `az aro` önizlemede günceldir. Gelecekteki bir sürümde değiştirilebilir veya kaldırılabilir.
+> Uzantı önizlemesini `az aro` kabul etmek için kaynak `Microsoft.RedHatOpenShift` sağlayıcısını kaydetmeniz gerekir.
 > 
 >    ```console
 >    az provider register -n Microsoft.RedHatOpenShift --wait
@@ -53,7 +53,7 @@ Azure Red Hat OpenShift 4,3 kümesi oluşturmak için şunlar gerekir:
    az login
    ```
 
-2. `az aro` uzantısını yüklemek için şu komutu çalıştırın:
+2. Uzantıyı yüklemek için `az aro` aşağıdaki komutu çalıştırın:
 
    ```console
    az extension add -n aro --index https://az.aroapp.io/preview
@@ -69,9 +69,9 @@ Azure Red Hat OpenShift 4,3 kümesi oluşturmak için şunlar gerekir:
    ...
    ```
   
-### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>İki boş alt ağ içeren bir sanal ağ oluşturun
+### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>İki boş alt ağ içeren bir sanal ağ oluşturma
 
-İki boş alt ağ içeren bir sanal ağ oluşturmak için bu adımları izleyin.
+İki boş alt ağ içeren bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
 1. Aşağıdaki değişkenleri ayarlayın.
 
@@ -79,7 +79,15 @@ Azure Red Hat OpenShift 4,3 kümesi oluşturmak için şunlar gerekir:
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
+   PULL_SECRET="<optional-pull-secret>"
    ```
+   >[!NOTE]
+   > İsteğe bağlı çekme sırrı, kümenizin ek içerikle birlikte Red Hat kapsayıcı kayıtlarına erişmesini sağlar.
+   >
+   > Copy Pull Secret'a https://cloud.redhat.com/openshift/install/azure/installer-provisioned gidip tıklatarak çekme sırrınıza *erişin.*
+   >
+   > Red Hat hesabınızda oturum açmanız veya iş e-postanızla yeni bir Red Hat hesabı oluşturmanız ve şart ve koşulları kabul etmeniz gerekir.
+ 
 
 2. Kümeniz için bir kaynak grubu oluşturun.
 
@@ -111,7 +119,7 @@ Azure Red Hat OpenShift 4,3 kümesi oluşturmak için şunlar gerekir:
    done
    ```
 
-5. Sanal ağınızda ve alt ağlarınızın özel bağlantı hizmeti için ağ ilkelerini devre dışı bırakın. Bu, ARO hizmetinin kümeye erişmesi ve onu yönetmesi için bir gereksinimdir.
+5. Özel Bağlantı Hizmeti ağ ilkelerini sanal ağınızda ve alt ağlarınızda devre dışı k.s. Bu, ARO hizmetinin kümeye erişmeve yönetmesi için bir gerekliliktir.
 
    ```console
    az network vnet subnet update \
@@ -124,7 +132,7 @@ Azure Red Hat OpenShift 4,3 kümesi oluşturmak için şunlar gerekir:
 
 ## <a name="create-a-cluster"></a>Küme oluşturma
 
-Bir küme oluşturmak için aşağıdaki komutu çalıştırın.
+Küme oluşturmak için aşağıdaki komutu çalıştırın.
 
 ```console
 az aro create \
@@ -132,21 +140,22 @@ az aro create \
   -n "$CLUSTER" \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
-  --worker-subnet "$CLUSTER-worker"
+  --worker-subnet "$CLUSTER-worker" \
+  --pull-secret "$PULL_SECRET"
 ```
 
 >[!NOTE]
-> Genellikle bir küme oluşturmak yaklaşık 35 dakika sürer.
+> Normalde bir küme oluşturmak için yaklaşık 35 dakika sürer.
 
 ## <a name="access-the-cluster-console"></a>Küme konsoluna erişin
 
-Küme konsolu URL 'sini (`https://console-openshift-console.apps.<random>.<location>.aroapp.io/`) Azure Red Hat OpenShift 4,3 küme kaynağı altında bulabilirsiniz. Kaynağı görüntülemek için aşağıdaki komutu çalıştırın:
+Azure Red Hat OpenShift 4.3 küme kaynağının altında küme konsolu URL'sini (formun) `https://console-openshift-console.apps.<random>.<location>.aroapp.io/`bulabilirsiniz. Kaynağı görüntülemek için aşağıdaki komutu çalıştırın:
 
 ```console
 az aro list -o table
 ```
 
-`kubeadmin` kullanıcısını kullanarak kümede oturum açabilirsiniz.  `kubeadmin` kullanıcısının parolasını bulmak için aşağıdaki komutu çalıştırın:
+`kubeadmin` Kullanıcıyı kullanarak kümeye giriş yapabilirsiniz.  Kullanıcının parolasını bulmak için `kubeadmin` aşağıdaki komutu çalıştırın:
 
 ```dotnetcli
 az aro list-credentials -g "$RESOURCEGROUP" -n "$CLUSTER"
@@ -154,7 +163,7 @@ az aro list-credentials -g "$RESOURCEGROUP" -n "$CLUSTER"
 
 ## <a name="delete-a-cluster"></a>Küme silme
 
-Kümeyi silmek için aşağıdaki komutu çalıştırın.
+Bir kümeyi silmek için aşağıdaki komutu çalıştırın.
 
 ```console
 az aro delete -g "$RESOURCEGROUP" -n "$CLUSTER"

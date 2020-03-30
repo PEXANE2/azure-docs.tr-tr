@@ -1,159 +1,159 @@
 ---
 title: Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2
-description: Bu makalede, otomatik ölçeklendirme ve bölgesel olarak yedekli özellikler içeren Azure Uygulama Standard_v2 ve WAF_v2 SKU açıklanır.
+description: Bu makalede, Otomatik ölçekleme ve Bölge yedekli özellikleri içeren Azure Uygulama Standard_v2 ve WAF_v2 SKU tanıtın.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280020"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371271"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
-Application Gateway ve Web uygulaması güvenlik duvarı (WAF), bir Standard_v2 ve WAF_v2 SKU 'SU altında da mevcuttur. V2 SKU 'SU performans iyileştirmeleri sunar ve otomatik ölçeklendirme, bölge artıklığı ve statik VIP 'ler için destek gibi kritik yeni özellikler için destek ekler. Standart ve WAF SKU 'SU altındaki mevcut özellikler, yeni v2 SKU 'sunda, [karşılaştırma](#differences-with-v1-sku) bölümünde listelenen birkaç özel durum ile devam eder.
+Uygulama Ağ Geçidi ve Web Uygulama Güvenlik Duvarı (WAF) de bir Standard_v2 ve WAF_v2 SKU altında mevcuttur. v2 SKU performans geliştirmeleri sunar ve otomatik ölçekleme, bölge artıklığı ve statik VIP'ler için destek gibi kritik yeni özellikler için destek ekler. Standart ve WAF SKU kapsamındaki mevcut özellikler, [karşılaştırma](#differences-with-v1-sku) bölümünde listelenen birkaç istisna dışında yeni v2 SKU'da desteklenmeye devam etmektedir.
 
-Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
+Yeni v2 SKU aşağıdaki geliştirmeleri içerir:
 
-- **Otomatik ölçeklendirme**: otomatik ölçeklendirme SKU 'su altındaki Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Bu SKU, doğru esneklik sunar. Standard_v2 ve WAF_v2 SKU 'sunda Application Gateway, her ikisi de sabit kapasitede (otomatik ölçeklendirme devre dışı) ve otomatik ölçeklendirme etkinleştirilmiş modda işleyebilir. Sabit kapasite modu, tutarlı ve öngörülebilir iş yüklerine sahip senaryolar için faydalıdır. Otomatik ölçeklendirme modu, uygulama trafiğinden varyansı gösteren uygulamalarda faydalıdır.
-- **Bölge artıklığı**: bir Application Gateway veya WAF dağıtımı birden fazla kullanılabilirlik alanları yayılabilir, her Traffic Manager bölgede ayrı Application Gateway örneklerinin sağlanması gereksinimini ortadan kaldırabilir. Application Gateway örneklerinin dağıtıldığı tek bir bölge veya birden çok bölge seçebilirsiniz. Bu, bölge hatasına daha dayanıklı hale gelir. Uygulamalar için arka uç havuzu, kullanılabilirlik alanları arasında benzer şekilde dağıtılabilir.
+- **Otomatik ölçeklendirme**: Otomatik ölçeklendirme SKU altında Uygulama Ağ Geçidi veya WAF dağıtımları, değişen trafik yükü desenlerine bağlı olarak ölçeklenebilir veya küçültülebilir. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Bu SKU gerçek esneklik sunar. Standard_v2 ve WAF_v2 SKU'da, Application Gateway hem sabit kapasitede (otomatikleştirilmiş devre denme) hem de otomatik ölçekleme etkin modunda çalışabilir. Sabit kapasite modu, tutarlı ve öngörülebilir iş yüklerine sahip senaryolar için yararlıdır. Otomatik ölçekleme modu, uygulama trafiğinde varyans gören uygulamalarda yararlıdır.
+- **Bölge artıklığı**: Bir Uygulama Ağ Geçidi veya WAF dağıtımı, her bölgede bir Trafik Yöneticisi ile ayrı Uygulama Ağ Geçidi örnekleri sağlama gereksinimini ortadan kaldırarak birden çok Kullanılabilirlik Bölgesi'ni kapsayabilir. Uygulama Ağ Geçidi örneklerinin dağıtıldığı tek bir bölge veya birden çok bölge seçebilirsiniz, bu da onu bölge hatasına karşı daha esnek hale getirir. Uygulamalar için arka uç havuzu da benzer şekilde kullanılabilirlik bölgeleri arasında dağıtılabilir.
 
-  Bölge yedekliliği yalnızca Azure bölgelerinin kullanılabildiği durumlarda kullanılabilir. Diğer bölgelerde, diğer tüm özellikler desteklenir. Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik alanları nedir?](../availability-zones/az-overview.md#services-support-by-region)
-- **STATIK VIP**: Application Gateway v2 SKU 'SU statik VIP türünü özel olarak destekler. Bu, bir yeniden başlatma işleminden sonra bile, uygulama ağ geçidi ile ilişkili VIP 'nin dağıtımın yaşam döngüsü açısından değişmemesini sağlar.  V1 'de statik bir VIP yok, bu nedenle uygulama ağ geçidi aracılığıyla uygulama hizmetleri 'ne etki alanı adı yönlendirmesi için IP adresi yerine Application Gateway URL 'sini kullanmanız gerekir.
-- **Üstbilgi yeniden yazma**: Application Gateway, v2 SKU 'SU ile http isteği ve yanıt üst bilgilerini eklemenize, kaldırmanıza veya güncelleştirmenize olanak tanır. Daha fazla bilgi için bkz. [http üst bilgilerini Application Gateway yeniden yazma](rewrite-http-headers.md)
-- **Key Vault tümleştirme**: Application Gateway v2, https etkin dinleyicilerine eklenen sunucu sertifikaları için Key Vault tümleştirme desteği sağlar. Daha fazla bilgi için bkz. [Key Vault sertifikalarla SSL sonlandırması](key-vault-certs.md).
-- **Azure Kubernetes hizmeti giriş denetleyicisi**: Application Gateway v2 giriş denetleyicisi, Azure Application Gateway aks kümesi olarak bilinen bir Azure Kubernetes hizmeti (aks) için giriş olarak kullanılmasına izin verir. Daha fazla bilgi için bkz. [Application Gateway giriş denetleyicisi nedir?](ingress-controller-overview.md).
-- **Performans iyileştirmeleri**: v2 SKU 'su standart/WAF SKU 'su ile karşılaştırıldığında daha iyi SSL yük boşaltma performansı sunar.
-- **Daha hızlı dağıtım ve güncelleştirme zamanı** V2 SKU 'SU, standart/WAF SKU 'suna kıyasla daha hızlı dağıtım ve güncelleştirme süresi sağlar. Bu, WAF yapılandırma değişikliklerini de içerir.
+  Bölge artıklığı yalnızca Azure Bölgeleri'nin kullanılabildiği yerlerde kullanılabilir. Diğer bölgelerde, diğer tüm özellikler desteklenir. Daha fazla bilgi için [Azure'daki Kullanılabilirlik Bölgeleri nelerdir?](../availability-zones/az-overview.md#services-support-by-region)
+- **Statik VIP**: Application Gateway v2 SKU sadece statik VIP türünü destekler. Bu, uygulama ağ geçidiyle ilişkili VIP'nin yeniden başlatmadan sonra bile dağıtımın yaşam döngüsü için değişmemesini sağlar.  v1'de statik bir VIP yoktur, bu nedenle uygulama ağ geçidi aracılığıyla Uygulama Hizmetleri'ne alan adı yönlendirmesi için IP adresi yerine uygulama ağ geçidi URL'sini kullanmanız gerekir.
+- **Üstbilgi Yeniden Yazma**: Uygulama Ağ Geçidi, http istek ve yanıt üstbilgilerini v2 SKU ile eklemenize, kaldırmanıza veya güncelleştirmenize olanak tanır. Daha fazla bilgi için, [Uygulama Ağ Geçidi ile HTTP üstbilgilerini yeniden yazma](rewrite-http-headers.md)
+- **Key Vault Tümleştirmesi**: Application Gateway v2, HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault ile tümleştirmeyi destekler. Daha fazla bilgi için [Key Vault sertifikalarıile SSL sonlandırma'ya](key-vault-certs.md)bakın.
+- **Azure Kubernetes Hizmet Giriş Denetleyicisi**: Uygulama Ağ Geçidi v2 Giriş Denetleyicisi, Azure Uygulama Ağ Geçidi'nin AKS Kümesi olarak bilinen Azure Kubernetes Hizmeti (AKS) için giriş olarak kullanılmasını sağlar. Daha fazla bilgi için [bkz: Uygulama Ağ Geçidi Giriş Denetleyicisi nedir?](ingress-controller-overview.md)
+- **Performans geliştirmeleri**: v2 SKU, Standart/WAF SKU ile karşılaştırıldığında 5 kata kadar daha iyi SSL boşaltma performansı sunar.
+- **Daha hızlı dağıtım ve güncelleştirme süresi** V2 SKU, Standart/WAF SKU ile karşılaştırıldığında daha hızlı dağıtım ve güncelleme süresi sağlar. Bu, WAF yapılandırma değişikliklerini de içerir.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Standard_v2 ve WAF_v2 SKU 'SU şu bölgelerde kullanılabilir: Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Fransa Orta, UK Batı, Japonya Doğu, Japonya Batı, Avustralya Doğu , Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Doğu Asya, Kore Orta, Kore Güney, UK Güney, Orta Hindistan, Batı Hindistan, Güney Hindistan.
+sku Standard_v2 ve WAF_v2 aşağıdaki bölgelerde mevcuttur: Kuzey Orta ABD, Güney Orta ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Fransa Orta, İngiltere Batı, Japonya Doğu, Japonya Batı, Avustralya Doğu , Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Doğu Asya, Kore Merkez, Kore Güney, İngiltere Güney, Orta Hindistan, Batı Hindistan, Güney Hindistan.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-V2 SKU 'SU ile, fiyatlandırma modeli tüketim ile çalıştırılır ve artık örnek sayılarına veya boyutlara eklenmez. V2 SKU fiyatlandırması iki bileşene sahiptir:
+v2 SKU ile fiyatlandırma modeli tüketime göre yönlendirilir ve artık örnek sayılarına veya boyutlara bağlı değildir. v2 SKU fiyatlandırmaiki bileşenden oluşur:
 
-- **Sabit fiyat** -bu, bir Standard_v2 veya WAF_v2 ağ geçidi sağlamak için saatlik (veya kısmi saat) fiyatıdır. Lütfen 0 ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun.
-- **Kapasite birim fiyatı** -bu, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı bir maliyettir. Kapasite Birimi ücreti de saatlik veya kısmi olarak hesaplanır. Kapasite birimi işlem biriminin, kalıcı bağlantıların ve aktarım hızının üç boyutu vardır. İşlem birimi, tüketilen işlemci kapasitesinin bir ölçüsüdür. İşlem birimini etkileyen faktörler, TLS bağlantısı/sn, URL yeniden yazma hesaplamaları ve WAF kural işleme. Kalıcı bağlantı, belirli bir fatura aralığındaki uygulama ağ geçidine kurulan TCP bağlantılarının bir ölçümüdür. Aktarım hızı, belirli bir fatura aralığında sistem tarafından işlenen ortalama megabit/sn 'dir.  Faturalandırma, ayrılmış örnek sayısının üzerinde her şey için bir kapasite birimi düzeyinde yapılır.
+- **Sabit fiyat** - Bu, bir Standard_v2 veya WAF_v2 Ağ Geçidi sağlamak için saatlik (veya kısmi saat) fiyattır. Lütfen 0 ek minimum örnek hala her zaman sabit fiyat ile birlikte hizmetin yüksek kullanılabilirlik sağlar unutmayın.
+- **Kapasite Birim fiyatı** - Sabit maliyete ek olarak tahsil edilen tüketim eki maliyettir. Kapasite birim ücreti de saatlik veya kısmi saatlik olarak hesaplanır. Kapasite biriminin üç boyutu vardır : işlem birimi, kalıcı bağlantılar ve iş ortası. İşlem birimi, tüketilen işlemci kapasitesinin bir ölçüsüdür. Bilgi işlem birimini etkileyen etkenler TLS bağlantıları/sn, URL Yeniden Yazma hesaplamaları ve WAF kural işlemedir. Kalıcı bağlantı, belirli bir fatura aralığında uygulama ağ geçidine kurulan TCP bağlantılarının bir ölçüsüdür. İş verme işlemi, sistem tarafından belirli bir fatura aralığında işlenen ortalama Megabit/sn'dir.  Faturalandırma, ayrılmış örnek sayısının üzerindeki herhangi bir şey için Kapasite Birimi düzeyinde yapılır.
 
-Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
+Her kapasite birimi en fazla oluşur: 1 işlem birimi veya 2500 kalıcı bağlantı veya 2,22 Mbps'lik iş ortası.
 
-İşlem birimi Kılavuzu:
+İşlem birimi kılavuzu:
 
-- **Standard_v2** -her işlem BIRIMI, RSA 2048 BIT anahtar TLS sertifikası ile saniyede yaklaşık 50 bağlantı kapasitesine sahiptir.
-- **WAF_v2** -her işlem birimi,% 70-30 oranında 70 trafik karması için saniyede yaklaşık 10 eşzamanlı isteği destekleyebilir. WAF performansı şu anda yanıt boyutundan etkilenmez.
+- **Standard_v2** - RsA 2048 bit anahtar TLS sertifikası ile her işlem birimi saniyede yaklaşık 50 bağlantı kapasitesine sahiptir.
+- **WAF_v2** - Her bilgi işlem birimi, %70-30 trafik karışımı için saniyede yaklaşık 10 eşzamanlı isteği destekleyebilir ve %70'i 2 KB GET/POST'tan daha az istekte bulunabilir ve daha yüksek kalır. WAF performansı şu anda yanıt boyutundan etkilenmez.
 
 > [!NOTE]
 > Her örnek şu anda yaklaşık 10 kapasite birimini destekleyebilir.
-> Bir işlem biriminin işleyebileceği isteklerin sayısı, TLS sertifikası anahtar boyutu, anahtar değişim algoritması, üst bilgi yeniden oluşturma gibi çeşitli ölçütlere ve WAF gelen istek boyutu durumuna bağlıdır. İşlem birimi başına istek hızını belirlemede uygulama testleri gerçekleştirmenizi öneririz. Hem Kapasite birimi hem de işlem birimi, faturalandırma başlamadan önce bir ölçüm olarak kullanılabilir hale getirilir.
+> Bir bilgi işlem biriminin işleyebilir isteklerinin sayısı TLS sertifika anahtar boyutu, anahtar değişimi algoritması, üstbilgi yeniden yazma ve WAF gelen istek boyutu durumunda gibi çeşitli ölçütlere bağlıdır. Bilgi işlem birimi başına istek oranını belirlemek için uygulama testleri yapmanızı öneririz. Hem kapasite birimi hem de işlem birimi, faturalandırma başlamadan önce metrik olarak kullanıma sunulacaktır.
 
-Aşağıdaki tabloda örnek fiyatlar gösterilmektedir ve yalnızca çizim amaçlıdır.
+Aşağıdaki tabloda örnek fiyatlar gösterilmektedir ve yalnızca illüstrasyon amaçlıdır.
 
-**ABD Doğu fiyatlandırma**:
+**ABD Doğu Fiyatlandırma:**
 
-|              SKU adı                             | Sabit fiyat ($/hr)  | Kapasite birim fiyatı ($/CU-hr)   |
+|              SKU Adı                             | Sabit fiyat ($/sa)  | Kapasite Birim fiyatı ($/CU-hr)   |
 | ------------------------------------------------- | ------------------- | ------------------------------- |
-| Standard_v2                                       |    0,20             | 0,0080                          |
-| WAF_v2                                            |    0,36             | 0,0144                          |
+| Standard_v2                                       |    0,20             | 0.0080                          |
+| WAF_v2                                            |    0.36             | 0.0144                          |
 
-Daha fazla fiyatlandırma bilgisi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/application-gateway/). 
+Daha fazla fiyatlandırma bilgisi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/application-gateway/)bakın. 
 
 **Örnek 1**
 
-Bir Application Gateway Standard_v2, el ile ölçekleme modunda, beş örnek sabit kapasiteye sahip otomatik ölçeklendirme olmadan sağlanır.
+Bir Uygulama Ağ Geçidi Standard_v2, beş örnekli sabit kapasiteye sahip manuel ölçekleme modunda otomatik ölçekleme yapılmadan sağlanmıştır.
 
-Sabit fiyat = (saat) * $0,20 = $148,8 <br>
-Kapasite birimleri = 744 (saat) * her örnek için 10 Kapasite birimi * 5 örnek * Kapasite birimi başına $0,008 saat = $297,6
+Sabit fiyat = 744(saat) * $0.20 = $148.8 <br>
+Kapasite birimleri = 744 (saat) * Örnek başına 10 kapasite birimi * 5 örnek * kapasite birim saati başına $0,008 = $297.6
 
-Toplam Fiyat = $148,8 + $297,6 = $446,4
+Toplam fiyat = $148.8 + $297.6 = $446.4
 
 **Örnek 2**
 
-Bir Application Gateway standard_v2, sıfır minimum örnek ve bu süre boyunca 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır. Bağlantıların kısa süreli olduğu varsayıldığında, fiyatınızın şöyle olması gerekir:
+Bir Uygulama Ağ Geçidi standard_v2, sıfır minimum örnekle bir ay süreyle sağlanır ve bu süre zarfında ortalama 8,88 Mbps veri aktarımı olan 25 yeni SSL bağlantısı/sn alır. Bağlantıların kısa ömürlü olduğunu varsayarsak, fiyatınız:
 
-Sabit fiyat = (saat) * $0,20 = $148,8
+Sabit fiyat = 744(saat) * $0.20 = $148.8
 
-Kapasite birim fiyatı = ünle (saatler) * en fazla (25/50 bağlantı için işlem birimi/sn, 8.88/2.22 Kapasite birimi üretilen iş birimi) * $0,008 = 744 * 4 * 0,008 = $23,81
+Kapasite birim fiyatı = 744(saat) * Max (bağlantılar/sn için 25/50 işlem birimi, 8,88/2,22 kapasite birimi) * $0.008 = 744 * 4 * 0.008 = $23.81
 
-Toplam Fiyat = $148.8 + 23.81 = $172,61
+Toplam fiyat = $148.8+23.81 = $172.61
 
-Gördüğünüz gibi, tüm örnek için değil yalnızca dört Kapasite birimi için faturalandırılırsınız. 
+Gördüğünüz gibi, tüm örnek için değil, yalnızca dört Kapasite Birimi için faturalandırılırsınız. 
 
 > [!NOTE]
-> Max işlevi, bir değer çiftindeki en büyük değeri döndürür.
+> Max işlevi, bir çift değerdeki en büyük değeri döndürür.
 
 
 **Örnek 3**
 
-Bir Application Gateway standard_v2, en az beş örnek içeren bir ayda sağlanır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
+Bir Uygulama Ağ Geçidi standard_v2, en az beş örnekle bir ay süreyle verilir. Trafik olmadığını ve bağlantıların kısa ömürlü olduğunu varsayarsak, fiyatınız:
 
-Sabit fiyat = (saat) * $0,20 = $148,8
+Sabit fiyat = 744(saat) * $0.20 = $148.8
 
-Kapasite birim fiyatı = ünle (saatler) * en fazla (0/50 bağlantı için işlem birimi/sn, aktarım için 0/2.22 Kapasite birimi) * $0,008 = 744 * 50 * 0,008 = $297,60
+Kapasite birim fiyatı = 744(saat) * Max (bağlantılar/sn için 0/50 işlem birimi, işlem için 0/2,22 kapasite birimi) * $0.008 = 744 * 50 * 0.008 = $297.60
 
-Toplam Fiyat = $148.80 + 297.60 = $446,4
+Toplam fiyat = $148.80+297.60 = $446.4
 
-Bu durumda, hiçbir trafik olmasa bile beş örnek tümüyle faturalandırılırsınız.
+Bu durumda, trafik olmamasına rağmen beş örneğin tamamı için faturalandırılırsınız.
 
 **Örnek 4**
 
-Bir Application Gateway standard_v2 en az beş örnek içeren bir ayda sağlanır, ancak bu kez ortalama 125 Mbps veri aktarımı ve saniye başına 25 SSL bağlantısı vardır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
+Bir Uygulama Ağ Geçidi standard_v2, en az beş örnekle bir ay süreyle sağlanmıştır, ancak bu sefer ortalama 125 mbps veri aktarımı ve saniyede 25 SSL bağlantısı vardır. Trafik olmadığını ve bağlantıların kısa ömürlü olduğunu varsayarsak, fiyatınız:
 
-Sabit fiyat = (saat) * $0,20 = $148,8
+Sabit fiyat = 744(saat) * $0.20 = $148.8
 
-Kapasite birim fiyatı = ünle (saatler) * en fazla (25/50 bağlantı için işlem birimi/sn, üretilen iş için 125/2.22 Kapasite birimi) * $0,008 = 744 * 57 * 0,008 = $339,26
+Kapasite birim fiyatı = 744(saat) * Max (bağlantılar/sn için 25/50 işlem birimi, 125/2,22 kapasite birimi, 125/2,22 kapasite birimi) * $0.008 = 744 * 57 * 0.008 = $339.26
 
-Toplam Fiyat = $148.80 + 339.26 = $488,06
+Toplam fiyat = $148.80+339.26 = $488.06
 
-Bu durumda, tam beş örnek ve yedi Kapasite birimi (örneğin 7/10) için faturalandırılırsınız.  
+Bu durumda, tam beş örnek için faturalandırılır, artı yedi Kapasite Birimleri (bir örneğin 7/10).  
 
 **Örnek 5**
 
-Bir ay için Application Gateway WAF_v2 sağlandı. Bu süre boyunca 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır ve saniye başına 80 istek olur. Bağlantıların kısa süreli olduğu varsayıldığında ve uygulama için işlem birimi hesaplaması işlem birimi başına 10 RPS 'yi destekliyorsa, fiyatlarınız şöyle olacaktır:
+Bir Uygulama Ağ Geçidi WAF_v2 bir ay süreyle sağlanmaktadır. Bu süre zarfında, 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır ve saniyede 80 istekte bulunmaz. Bağlantıların kısa ömürlü olduğunu ve uygulama için bilgi işlem birimi hesaplamasının işlem birimi başına 10 RPS'yi desteklediğini varsayarsak, fiyatınız şu olacaktır:
 
-Sabit fiyat = (saat) * $0,36 = $267,84
+Sabit fiyat = 744(saat) * $0.36 = $267.84
 
-Kapasite birim fiyatı = ünl (saatler) * en fazla (işlem birimi en fazla (bağlantı için 25/50/sn, 80/10 WAF RPS), 8.88/2.22 Kapasite birimi üretilen iş birimi) * $0,0144 = 744 * 8 * 0,0144 = $85,71
+Kapasite birim fiyatı = 744(saat) * Max (iletişim birimi Max(25/50 bağlantılar/sn için, 80/10 WAF RPS), 8,88/2,22 kapasite birimi iş artışı için) * $0.0144 = 744 * 8 * 0.0144 = $85.71
 
-Toplam Fiyat = $267,84 + $85,71 = $353,55
+Toplam fiyat = $267.84 + $85.71 = $353.55
 
 > [!NOTE]
-> Max işlevi, bir değer çiftindeki en büyük değeri döndürür.
+> Max işlevi, bir çift değerdeki en büyük değeri döndürür.
 
-## <a name="scaling-application-gateway-and-waf-v2"></a>Application Gateway ve WAF v2 ölçeklendiriliyor
+## <a name="scaling-application-gateway-and-waf-v2"></a>Ölçekleme Uygulama Ağ Geçidi ve WAF v2
 
-Application Gateway ve WAF, iki modda ölçeklenebilen şekilde yapılandırılabilir:
+Uygulama Ağ Geçidi ve WAF iki modda ölçeklenecek şekilde yapılandırılabilir:
 
-- **Otomatik ölçeklendirme** -otomatik ölçeklendirme etkinken, Application Gateway ve WAF v2 SKU 'larının uygulama trafiği gereksinimlerine göre ölçeği artırma veya azaltma. Bu mod, uygulamanız için daha iyi esneklik sunar ve uygulama ağ geçidi boyutunu veya örnek sayısını tahmin etme gereksinimini ortadan kaldırır. Bu mod ayrıca, ağ geçidinin beklenen maksimum trafik yükü için en yüksek sağlanan kapasiteye çalışmasına gerek duymadan maliyeti kaydetmenizi sağlar. En az ve isteğe bağlı olarak en büyük örnek sayısını belirtmeniz gerekir. En düşük kapasite, Application Gateway ve WAF v2 'nin, trafik yokluğunda bile belirtilen minimum örnek sayısının altına düşmemesini sağlar. Her örnek 10 ek ayrılmış Kapasite birimi olarak sayılır. Sıfır, ayrılmış kapasite olmadığını belirtir ve doğası halinde tamamen otomatik ölçeklendirin. Lütfen sıfır ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun. İsteğe bağlı olarak, Application Gateway belirtilen örnek sayısını aşmamasını sağlayan en büyük örnek sayısını belirtebilirsiniz. Ağ Geçidi tarafından hizmet verilen trafik miktarı için faturalandırılmaya devam edeceksiniz. Örnek sayıları 0 ile 125 arasında değişebilir. En fazla örnek sayısı için varsayılan değer, belirtilmemişse 20 ' dir.
-- **El ile** -ağ geçidinin otomatik ölçeklendirme Meyeceği el ile modunu seçebilirsiniz. Bu modda, Application Gateway veya WAF 'nin işleyebileceğinden daha fazla trafik varsa, bu durum trafik kaybına neden olabilir. El ile moduyla, örnek sayısını belirtmek zorunludur. Örnek sayısı 1 ile 125 arasında örnek farklılık gösterebilir.
+- **Otomatik ölçeklendirme** - Otomatik ölçeklendirme etkinken, Uygulama Ağ Geçidi ve WAF v2 SKUs'lar uygulama trafiği gereksinimlerine göre yukarı veya aşağı ölçeklendirin. Bu mod, uygulamanız için daha iyi esneklik sağlar ve uygulama ağ geçidi boyutunu veya örnek sayısını tahmin etme gereksinimini ortadan kaldırır. Bu mod ayrıca, beklenen maksimum trafik yükü için en yüksek öngörülen kapasitede çalışmasını gerektirmeyerek maliyetten tasarruf etmenizi sağlar. En az ve isteğe bağlı olarak en yüksek örnek sayısı belirtmeniz gerekir. Minimum kapasite, Trafik olmamasında bile Uygulama Ağ Geçidi ve WAF v2'nin belirtilen minimum örnek sayısının altına düşmemesini sağlar. Her örnek 10 ek ayrılmış Kapasite Birimi olarak sayılır. Sıfır hiçbir ayrılmış kapasite anlamına eder ve doğada tamamen otomatikolarak. Sıfır ek minimum örneğin hala her zaman sabit fiyatla birlikte verilen hizmetin yüksek kullanılabilirliğini garanti ettiğini lütfen unutmayın. Ayrıca isteğe bağlı olarak, Uygulama Ağ Geçidi'nin belirtilen örnek sayısının ötesine geçmemesini sağlayan en büyük örnek sayısı da belirtebilirsiniz. Ağ Geçidi tarafından sunulan trafik miktarı için faturalandırılamaya devam eceksiniz. Örnek sayıları 0 ile 125 arasında değişebilir. En yüksek örnek sayısı için varsayılan değer belirtilmemişse 20'dir.
+- **Manuel** - Ağ geçidinin otomatik ölçeklenmeyeceği Manuel modu alternatif olarak seçebilirsiniz. Bu modda, Uygulama Ağ Geçidi veya WAF'ın işleyebileceğinden daha fazla trafik varsa, trafik kaybına neden olabilir. Manuel modda, örnek sayısını belirtmek zorunludur. Örnek sayısı 1 ile 125 arasında değişebilir.
 
-## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>V1 SKU 'SU ve v2 SKU 'SU arasındaki Özellik Karşılaştırması
+## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>v1 SKU ve v2 SKU arasında özellik karşılaştırması
 
-Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırılır.
+Aşağıdaki tablo, her SKU ile kullanılabilir özellikleri karşılaştırır.
 
-|                                                   | V1 SKU 'SU   | v2 SKU 'SU   |
+|                                                   | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Otomatik ölçeklendirme                                       |          | &#x2713; |
 | Bölge artıklığı                                   |          | &#x2713; |
 | Statik VIP                                        |          | &#x2713; |
-| Azure Kubernetes hizmeti (AKS) giriş denetleyicisi |          | &#x2713; |
+| Azure Kubernetes Service (AKS) Giriş denetleyicisi |          | &#x2713; |
 | Azure Anahtar Kasası tümleştirme                       |          | &#x2713; |
-| HTTP (S) üstbilgilerini yeniden yaz                           |          | &#x2713; |
+| HTTP(S) üstbilgilerini yeniden yazın                           |          | &#x2713; |
 | URL tabanlı yönlendirme                                 | &#x2713; | &#x2713; |
 | Birden çok site barındırma                             | &#x2713; | &#x2713; |
-| Trafiği yeniden yönlendirme                               | &#x2713; | &#x2713; |
+| Trafik yeniden yönlendirme                               | &#x2713; | &#x2713; |
 | Web Uygulaması Güvenlik Duvarı (WAF)                    | &#x2713; | &#x2713; |
 | WAF özel kuralları                                  |          | &#x2713; |
 | Güvenli Yuva Katmanı (SSL) sonlandırma            | &#x2713; | &#x2713; |
-| Uçtan uca SSL şifrelemesi                         | &#x2713; | &#x2713; |
+| Uçuça SSL şifreleme                         | &#x2713; | &#x2713; |
 | Oturum benzeşimi                                  | &#x2713; | &#x2713; |
 | Özel hata sayfaları                                | &#x2713; | &#x2713; |
 | WebSocket desteği                                 | &#x2713; | &#x2713; |
@@ -161,30 +161,30 @@ Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırıl
 | Bağlantı boşaltma                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
-> Otomatik ölçeklendirme v2 SKU 'SU artık arka uç havuzundaki tüm kaynakların sistem durumunu otomatik olarak izlemek için [varsayılan sistem durumu araştırmalarını](application-gateway-probe-overview.md#default-health-probe) destekler ve sağlıksız olarak kabul edilen arka uç üyelerini vurgulayacaktır. Varsayılan sistem durumu araştırması, özel araştırma yapılandırması olmayan arka uçlara otomatik olarak yapılandırılır. Daha fazla bilgi edinmek için bkz. [Application Gateway 'de sistem durumu araştırmaları](application-gateway-probe-overview.md).
+> Otomatik ölçekleme v2 SKU şimdi otomatik olarak arka uç havuzunda tüm kaynakların sağlığını izlemek ve sağlıksız olarak kabul edilir bu arka uç üyeleri vurgulamak için [varsayılan sağlık sondaları](application-gateway-probe-overview.md#default-health-probe) destekler. Varsayılan sistem durumu sondası, özel sonda yapılandırması olmayan arka uçlar için otomatik olarak yapılandırılır. Daha fazla bilgi edinmek için [uygulama ağ geçidindeki sistem durumu sondalarına](application-gateway-probe-overview.md)bakın.
 
-## <a name="differences-with-v1-sku"></a>V1 SKU 'SU farkları
+## <a name="differences-with-v1-sku"></a>v1 SKU ile farklar
 
 |Fark|Ayrıntılar|
 |--|--|
-|Kimlik doğrulama sertifikası|Desteklenmiyor.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca SSL 'ye genel bakış](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Aynı alt ağda Standard_v2 ve standart Application Gateway karıştırma|Desteklenmiyor|
-|Application Gateway alt ağında Kullanıcı tanımlı yol (UDR)|Desteklenmiyor|
-|Gelen bağlantı noktası aralığı için NSG| Standard_v2 SKU için-65200-65535<br>Standart SKU için-65503-65534 arası.<br>Daha fazla bilgi için bkz. [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
-|Azure tanılama 'da performans günlükleri|Desteklenmiyor.<br>Azure ölçümleri kullanılmalıdır.|
-|Faturalama|Faturalama 1 Temmuz 2019 tarihinde başlayacak şekilde zamanlandı.|
-|FIPS modu|Bunlar şu anda desteklenmiyor.|
-|Yalnızca ıLB modu|Bu şu anda desteklenmiyor. Ortak ve ıLB modu birlikte desteklenir.|
-|Netizleyici tümleştirmesi|Desteklenmiyor.|
-|Azure Güvenlik Merkezi tümleştirmesi|Henüz bulunmamaktadır.
+|Kimlik doğrulama sertifikası|Desteklenmiyor.<br>Daha fazla bilgi için, [Uygulama Ağ Geçidi ile SSL sonuna kadar Genel Bakış](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)bakın.|
+|Aynı alt ağda Standard_v2 ve Standart Uygulama Ağ Geçidi'ni karıştırma|Desteklenmiyor|
+|Uygulama Ağ Geçidi alt netinde Kullanıcı Tanımlı Rota (UDR)|Desteklenen (belirli senaryolar). Önizlemede.<br> Desteklenen senaryolar hakkında daha fazla bilgi için Bkz. [Uygulama Ağ Geçidi yapılandırmagenel bakışı.](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)|
+|Gelen bağlantı noktası aralığı için NSG| - Standard_v2 SKU için 65200 - 65535<br>- Standart SKU için 65503 - 65534.<br>Daha fazla bilgi için [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)bölümüne bakın.|
+|Azure tanılamada performans günlükleri|Desteklenmiyor.<br>Azure ölçümleri kullanılmalıdır.|
+|Faturalandırma|Faturalandırmanın 1 Temmuz 2019'da başlaması planlanmaktadır.|
+|FIPS modu|Bunlar şu anda desteklenmez.|
+|ILB yalnızca modu|Bu şu anda desteklenmiyor. Ortak ve ILB modu birlikte desteklenir.|
+|Netwatcher entegrasyonu|Desteklenmiyor.|
+|Azure Güvenlik Merkezi tümleştirmesi|Henüz mevcut değil.
 
 ## <a name="migrate-from-v1-to-v2"></a>v1'den v2'ye geçiş
 
-PowerShell Galerisi 'nde, v1 Application Gateway/WAF 'den v2 otomatik ölçeklendirme SKU 'suna geçiş yapmanıza yardımcı olması için bir Azure PowerShell betiği kullanılabilir. Bu betik, yapılandırmayı v1 ağ Geçidinizden kopyalamanıza yardımcı olur. Trafik geçişi hala sizin sorumluluğunuzdadır. Daha fazla bilgi için bkz. [v1 'den v2 'ye Azure Application Gateway geçirme](migrate-v1-v2.md).
+PowerShell galerisinde v1 Application Gateway/WAF'ınızdan v2 Otomatik Ölçekleme SKU'ya geçiş inizi yardımcı olacak bir Azure PowerShell komut dosyası mevcuttur. Bu komut dosyası, v1 ağ geçidinizden yapılandırmayı kopyalamanıza yardımcı olur. Trafik göçü hala sizin sorumluluğunuzdadır. Daha fazla bilgi için bkz: [Azure Uygulama Ağ Geçidi'ni v1'den v2'ye geçirin.](migrate-v1-v2.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı başlangıç: Azure Application Gateway ile doğrudan web trafiği-Azure portal](quick-create-portal.md)
-- [Azure PowerShell kullanarak, ayrılmış bir sanal IP adresine sahip bir otomatik ölçeklendirme, bölge yedekli uygulama ağ geçidi oluşturma](tutorial-autoscale-ps.md)
-- [Application Gateway](overview.md)hakkında daha fazla bilgi edinin.
+- [Hızlı başlangıç: Azure Application Gateway ile doğrudan web trafiği - Azure portalı](quick-create-portal.md)
+- [Azure PowerShell'i kullanarak ayrılmış sanal IP adresiyle otomatik ölçekleme, bölge yedekli uygulama ağ geçidi oluşturma](tutorial-autoscale-ps.md)
+- [Uygulama Ağ Geçidi](overview.md)hakkında daha fazla bilgi edinin.
 - [Azure Güvenlik Duvarı](../firewall/overview.md)hakkında daha fazla bilgi edinin.

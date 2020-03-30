@@ -1,7 +1,7 @@
 ---
-title: Azure Search .NET SDK sürüm 3 ' e yükseltin
+title: Azure Arama .NET SDK sürümü3'e yükseltin
 titleSuffix: Azure Cognitive Search
-description: Kodu eski sürümlerden Azure Search .NET SDK sürüm 3 ' e geçirin. Nelerin yeni olduğunu ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
+description: Kodu eski sürümlerden Azure Arama .NET SDK sürüm 3'e geçirin. Yeniliklerin ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,13 +10,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792975"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK sürüm 3 ' e yükseltin
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Arama .NET SDK sürümü3'e yükseltin
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -25,53 +25,53 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-[Azure Search .NET SDK 'sının](https://aka.ms/search-sdk)sürüm 2,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 3 ' ü kullanacak şekilde yükseltmenize yardımcı olur.
+[Azure Arama .NET SDK](https://aka.ms/search-sdk)sürümü 2.0 önizlemesini veya daha eski sürümünü kullanıyorsanız, bu makale, uygulamanızı sürüm 3'ü kullanmak üzere yükseltmenize yardımcı olur.
 
-Örnek içeren SDK hakkında daha genel bir anlatım için bkz. [.NET uygulamasından Azure Search kullanma](search-howto-dotnet-sdk.md).
+Örnekler de dahil olmak üzere SDK'nın daha genel bir gözden geçirme için [,.NET Uygulamasından Azure Arama'nın nasıl kullanılacağına](search-howto-dotnet-sdk.md)bakın.
 
-Azure Search .NET SDK 'nın 3. sürümü önceki sürümlerden bazı değişiklikler içerir. Bunlar çoğunlukla düşüktür, bu nedenle kodunuzun değiştirilmesi yalnızca en az çaba gerektirir. Kodunuzu yeni SDK sürümünü kullanacak şekilde değiştirme hakkında yönergeler için bkz. [yükseltme adımları](#UpgradeSteps) .
+Azure Arama .NET SDK sürümü 3 önceki sürümlerden bazı değişiklikler içerir. Bunlar çoğunlukla küçüktür, bu nedenle kodunuzu değiştirmek yalnızca en az çaba yı gerektirmelidir. Yeni SDK sürümünü kullanmak için kodunuzu nasıl değiştireceğinize ilişkin yönergeler için [yükseltme adımları'na](#UpgradeSteps) bakın.
 
 > [!NOTE]
-> Sürüm 1.0.2-Preview veya daha eski bir sürümünü kullanıyorsanız, önce sürüm 1,1 ' e yükseltmeniz ve ardından sürüm 3 ' e yükseltmeniz gerekir. Yönergeler için bkz. [Azure Search .NET SDK sürüm 1,1 ' e yükseltme](search-dotnet-sdk-migration-version-1.md) .
+> Sürüm 1.0.2-önizleme veya daha eski kullanıyorsanız, önce sürüm 1.1'e yükseltmeniz ve ardından sürüm 3'e yükseltmeniz gerekir. Talimatlar için [Azure Arama .NET SDK sürüm 1.1'e yükseltme](search-dotnet-sdk-migration-version-1.md) ye bakın.
 >
-> Azure Search hizmet örneğiniz, en son sürüm dahil olmak üzere birkaç REST API sürümü destekler. Artık en son bir sürüm olmadığında bir sürümü kullanmaya devam edebilirsiniz, ancak kodunuzu en yeni sürümü kullanmak için geçirmeniz önerilir. REST API kullanırken, API sürümü parametresi aracılığıyla her istekte API sürümünü belirtmeniz gerekir. .NET SDK kullanıldığında, kullanmakta olduğunuz SDK sürümü REST API ilgili sürümünü belirler. Daha eski bir SDK kullanıyorsanız, hizmet daha yeni bir API sürümünü destekleyecek şekilde yükseltilse bile, bu kodu hiçbir değişiklik yapmadan çalıştırmaya devam edebilirsiniz.
+> Azure Arama hizmeti örneğiniz, en sonuncusu da dahil olmak üzere birkaç REST API sürümü destekler. Bir sürümü artık en son sürüm olmadığında kullanmaya devam edebilirsiniz, ancak en yeni sürümü kullanmak için kodunuzu geçirmenizi öneririz. REST API'sini kullanırken, api sürüm parametresi aracılığıyla her istekteki API sürümünü belirtmeniz gerekir. .NET SDK'yı kullanırken, kullandığınız SDK sürümü REST API'nin ilgili sürümünü belirler. Eski bir SDK kullanıyorsanız, hizmet daha yeni bir API sürümünü desteklemek üzere yükseltilse bile bu kodu hiçbir değişiklik olmadan çalıştırmaya devam edebilirsiniz.
 
 <a name="WhatsNew"></a>
 
-## <a name="whats-new-in-version-3"></a>Sürüm 3 ' teki yenilikler
-Azure Search .NET SDK 'nın 3. sürümü, Azure Search REST API, özellikle 2016-09-01 olan en son genel kullanılabilir sürümünü hedefler. Bu, aşağıdakiler de dahil olmak üzere bir .NET uygulamasından Azure Search birçok yeni özelliği kullanmayı mümkün kılar:
+## <a name="whats-new-in-version-3"></a>Sürüm 3'teki yenilikler
+Azure Arama .NET SDK sürümü 3, Azure Arama REST API'sinin özellikle 2016-09-01 olmak üzere genel olarak kullanılabilen en son sürümünü hedefler. Bu, bir .NET uygulamasından Azure Arama'nın birçok yeni özelliğinin kullanımını mümkün kılar:
 
 * [Özel çözümleyiciler](https://aka.ms/customanalyzers)
-* [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md) ve [Azure Tablo depolama](search-howto-indexing-azure-tables.md) Dizin Oluşturucu desteği
-* [Alan eşlemeleri](search-indexer-field-mappings.md) aracılığıyla Dizin Oluşturucu özelleştirmesi
-* ETags, Dizin tanımlarının, dizin oluşturucularının ve veri kaynaklarının güvenli eşzamanlı güncelleştirilmesini sağlamak için desteklenir
-* Model sınıfınızı dekorasyon ve yeni `FieldBuilder` sınıfını kullanarak Dizin alanı tanımlarını bildirimli olarak oluşturma desteği.
-* .NET Core ve .NET taşınabilir profili 111 için destek
+* [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md) ve [Azure Tablo Depolama](search-howto-indexing-azure-tables.md) dizinleyici desteği
+* [Alan eşlemeleri](search-indexer-field-mappings.md) ile Dizinleyici özelleştirme
+* Dizin tanımlarının, dizin oluşturma nın ve veri kaynaklarının güvenli bir şekilde eşzamanlı olarak güncellenmesini sağlamak için ETags desteği
+* Model sınıfınızı süsleyerek ve yeni `FieldBuilder` sınıfı kullanarak dizin alan tanımlarını bildirimsel olarak oluşturma desteği.
+* .NET Core ve .NET Taşınabilir Profil 111 desteği
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
-İlk olarak, NuGet Paket Yöneticisi konsolunu kullanarak veya proje başvurularınız ' a sağ tıklayıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz `Microsoft.Azure.Search` güncelleştirin. Visual Studio 'da.
+İlk olarak, NuGet `Microsoft.Azure.Search` Paket Yöneticisi Konsolunu kullanmak veya proje referanslarınıza sağ tıklayarak ve "NuGet Paketlerini Yönet"i seçerek NuGet başvurunuzu güncelleyin. Visual Studio'da.
 
-NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin. Kodunuzun nasıl yapılandırıldığına bağlı olarak, başarıyla yeniden oluşturulabilir. Öyleyse başlamaya hazırsınız demektir!
+NuGet yeni paketleri ve bunların bağımlılıklarını indirdikten sonra projenizi yeniden oluşturun. Kodunuzu nasıl yapılandırıldığına bağlı olarak, başarılı bir şekilde yeniden oluşturulabilir. Eğer öyleyse, gitmeye hazırsın!
 
-Derlemeniz başarısız olursa, aşağıdaki gibi bir yapı hatası görmeniz gerekir:
+Yapınız başarısız olursa, aşağıdaki gibi bir yapı hatası görmeniz gerekir:
 
     Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
 
-Sonraki adım bu derleme hatasını düzeltemedi. Hataya neden olan ve nasıl düzeltileceğini gösteren Ayrıntılar için [sürüm 3 ' teki son değişikliklere](#ListOfChanges) bakın.
+Bir sonraki adım, bu yapı hatasını düzeltmektir. Hataya neyin neden olduğu ve nasıl düzeltilenle ilgili ayrıntılar için [sürüm 3'teki değişiklikleri kesme](#ListOfChanges) ye bakın.
 
-Eski yöntemler veya özelliklerle ilgili ek derleme uyarıları görebilirsiniz. Uyarılar, kullanım dışı özellik yerine, nelerin kullanılacağı hakkında yönergeler içerir. Örneğin, uygulamanız `IndexingParameters.Base64EncodeKeys` özelliğini kullanıyorsa, şöyle bir uyarı almanız gerekir `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Eski yöntemler veya özelliklerle ilgili ek yapı uyarıları görebilirsiniz. Uyarılar, amortismana uymak yerine ne kullanılacağına ilişkin yönergeleri içerir. Örneğin, uygulamanız özelliği `IndexingParameters.Base64EncodeKeys` kullanıyorsa,`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
-Herhangi bir derleme hatasını düzelttikten sonra, isterseniz yeni işlevlerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz. SDK 'daki yeni özellikler, [sürüm 3 ' teki](#WhatsNew)Yenilikler bölümünde ayrıntılı olarak açıklanmıştır.
+Herhangi bir yapı hatasını düzelttikte, isterseniz yeni işlevselliklerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz. SDK'daki yeni özellikler [sürüm 3'teki yeniliklerde](#WhatsNew)ayrıntılı olarak açıklanmaktadır.
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-3"></a>Sürüm 3 ' teki son değişiklikler
-Sürüm 3 ' te, uygulamanızı yeniden oluşturmak için ek olarak kod değişikliği gerektirebilecek az sayıda Son değişiklik vardır.
+## <a name="breaking-changes-in-version-3"></a>Sürüm 3'teki değişiklikleri kesme
+Uygulamanızı yeniden oluşturmaya ek olarak kod değişiklikleri gerektirebilecek sürüm 3'te az sayıda son dakika değişikliği vardır.
 
-### <a name="indexesgetclient-return-type"></a>Indexes. GetClient dönüş türü
-`Indexes.GetClient` yöntemi yeni bir dönüş türüne sahiptir. Daha önce `SearchIndexClient`döndürüldü, ancak bu, sürüm 2,0-Önizleme sürümünde `ISearchIndexClient` olarak değiştirilmiştir ve bu değişiklik 3 ' e kadar geçiş yapar. Bu, `ISearchIndexClient`bir sahte uygulama döndürerek birim testleri için `GetClient` yöntemini sahte yapmak isteyen müşterileri desteklemek içindir.
+### <a name="indexesgetclient-return-type"></a>Dizinler.GetClient iade türü
+Yöntemin `Indexes.GetClient` yeni bir iade türü vardır. Daha önce, `SearchIndexClient`döndürülür , ancak `ISearchIndexClient` bu sürüm 2.0-önizleme olarak değiştirildi ve bu değişiklik sürüm 3'e taşınır. Bu, birim testleri için `GetClient` yöntemle alay etmek isteyen müşterileri, `ISearchIndexClient`sahte bir uygulama döndürerek desteklemektir.
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -80,14 +80,14 @@ Kodunuz şuna benziyorsa:
 SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştirebilirsiniz:
+Herhangi bir yapı hatasını düzeltmek için bunu şu şekilde değiştirebilirsiniz:
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>Analiz Zeradı, veri türü ve diğerleri artık dizelere örtük olarak dönüştürülebilir değildir
-Azure Search .NET SDK 'da `ExtensibleEnum`türetilen birçok tür vardır. Daha önce bu türler `string`türüne örtük olarak dönüştürülebilir. Ancak, bu sınıfların `Object.Equals` uygulamasında bir hata keşfedildi ve bu örtük dönüştürmeyi devre dışı bırakmak için gereken hata düzeltiliyor. `string` açık dönüştürmeye hala izin veriliyor.
+### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>AnalyzerName, DataType ve diğerleri artık dolaylı olarak dizeleri dönüştürülebilir
+Azure Arama .NET SDK'da ' dan `ExtensibleEnum`türetilen birçok türü vardır. Daha önce bu tür tüm örtülü `string`türüne dönüştürülebilir edildi. Ancak, bu sınıflar için `Object.Equals` uygulamada bir hata keşfedildi ve hata sabitleme bu örtülü dönüşüm devre dışı bırakılması gerekli. Açık dönüştürmeye `string` hala izin verilir.
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -108,7 +108,7 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştirebilirsiniz:
+Herhangi bir yapı hatasını düzeltmek için bunu şu şekilde değiştirebilirsiniz:
 
 ```csharp
 const string CustomTokenizerName = "my_tokenizer"; 
@@ -126,27 +126,27 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-### <a name="removed-obsolete-members"></a>Artık kullanılmayan Üyeler kaldırıldı
+### <a name="removed-obsolete-members"></a>Eski üyeler kaldırıldı
 
-Sürüm 2,0 ' de eski olarak işaretlenen ve sürüm 3 ' te kaldırılan yöntemlerle veya özelliklerle ilgili derleme hataları görebilirsiniz. Bu tür hatalarla karşılaşırsanız, bu sorunları çözmek için aşağıdaki adımları uygulayın:
+Sürüm 2.0 önizlemesinde eski olarak işaretlenmiş ve daha sonra sürüm 3'te kaldırılan yöntemler veya özelliklerle ilgili yapı hataları görebilirsiniz. Bu tür hatalarla karşılaşırsanız, bunları şu şekilde çözebilirsiniz:
 
-- Bu oluşturucuyu kullanıyorsanız: `ScoringParameter(string name, string value)`bunun yerine şunu kullanın: `ScoringParameter(string name, IEnumerable<string> values)`
-- `ScoringParameter.Value` özelliğini kullanıyorsanız, bunun yerine `ScoringParameter.Values` özelliğini veya `ToString` metodunu kullanın.
-- `SearchRequestOptions.RequestId` özelliğini kullanıyorsanız, bunun yerine `ClientRequestId` özelliğini kullanın.
+- Bu oluşturucu kullanıyorsanız: `ScoringParameter(string name, string value)`, bunun yerine bu kullanın:`ScoringParameter(string name, IEnumerable<string> values)`
+- `ScoringParameter.Value` Özelliği kullanıyorsanız, `ScoringParameter.Values` bunun yerine özelliği `ToString` veya yöntemi kullanın.
+- `SearchRequestOptions.RequestId` Özelliği kullanıyorsanız, `ClientRequestId` bunun yerine özelliği kullanın.
 
-### <a name="removed-preview-features"></a>Önizleme özellikleri kaldırıldı
+### <a name="removed-preview-features"></a>Kaldırılan önizleme özellikleri
 
-Sürüm 2,0 ' den sürüm 3 ' e yükseltiyorsanız, bu özellikler hala önizlemede olduğundan blob Dizin oluşturucular için JSON ve CSV ayrıştırma desteğinin kaldırıldığını unutmayın. Özellikle, `IndexingParametersExtensions` sınıfının aşağıdaki yöntemleri kaldırılmıştır:
+Sürüm 2.0-önizlemeden sürüm 3'e yükseltiyorsanız, Bu özellikler hala önizlemede olduğundan Blob Indexers için JSON ve CSV ayrıştırma desteğinin kaldırıldığını unutmayın. Özellikle, `IndexingParametersExtensions` sınıfın aşağıdaki yöntemleri kaldırıldı:
 
 - `ParseJson`
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Uygulamanızın bu özelliklere sabit bir bağımlılığı varsa, Azure Search .NET SDK 'sının 3. sürümüne yükseltme yapamazsınız. 2,0-Preview sürümünü kullanmaya devam edebilirsiniz. Ancak, lütfen **Üretim uygulamalarında önizleme SDK 'larını kullanmanızı önermiyoruz**. Önizleme özellikleri yalnızca değerlendirme amaçlıdır ve değişebilir.
+Uygulamanız bu özelliklere sıkı bir bağımlılık içeriyorsa, Azure Arama .NET SDK'nın 3 sürümüne yükseltilemezsiniz. Sürüm 2.0-önizleme'yi kullanmaya devam edebilirsiniz. Ancak, **üretim uygulamalarında önizleme SDK'larını kullanmanızı önermediğimizi**lütfen unutmayın. Önizleme özellikleri yalnızca değerlendirme amaçlıdır ve değişebilir.
 
 ## <a name="conclusion"></a>Sonuç
-Azure Search .NET SDK 'yı kullanma hakkında daha fazla ayrıntıya ihtiyacınız varsa bkz. [.NET nasıl yapılır](search-howto-dotnet-sdk.md).
+Azure Arama .NET SDK'yı kullanma hakkında daha fazla ayrıntıya ihtiyacınız [varsa,.NET Nasıl Sunulur'a](search-howto-dotnet-sdk.md)bakın.
 
-SDK 'daki geri bildirimlerinize hoş geldiniz. Sorunlarla karşılaşırsanız [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)hakkında yardım almak için bize danışabilirsiniz. Bir hata bulursanız, [Azure .NET SDK GitHub deposunda](https://github.com/Azure/azure-sdk-for-net/issues)bir sorun oluşturabilirsiniz. Sorun başlığınız "[Azure Search]" ile öneklediğinizden emin olun.
+SDK hakkındaki görüşlerinizi bekliyoruz. Sorunlarla karşılaşırsanız, [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)konusunda bizden yardım istemekte çekinmeyin. Bir hata bulursanız, [Azure .NET SDK GitHub deposunda](https://github.com/Azure/azure-sdk-for-net/issues)bir sorun dosyalayabilirsiniz. Sorun başlığınızı "[Azure Arama]" ile önek yaptığınızdan emin olun.
 
-Azure Search kullandığınız için teşekkürler!
+Azure Arama'yı kullandığınız için teşekkür ederiz!

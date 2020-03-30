@@ -1,97 +1,97 @@
 ---
-title: Sanal ağınıza Azure Veri Gezgini dağıtma
-description: Azure Veri Gezgini sanal ağınıza dağıtmayı öğrenin
+title: Azure Veri Gezgini'ni Sanal Ağınıza Dağıtma
+description: Azure Veri Gezgini'ni Sanal Ağınıza nasıl dağıttığınızı öğrenin
 author: basaba
 ms.author: basaba
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: dbc17620cda836ec0ac5c4ebc5a709fb0605c958
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096755"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240034"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>Sanal ağınıza Azure Veri Gezgini dağıtma
+# <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Azure Veri Gezgini kümesini Sanal Ağınıza dağıtma
 
-Bu makalede, bir Azure Veri Gezgini kümesini özel bir Azure sanal ağına dağıtırken mevcut olan kaynaklar açıklanmaktadır. Bu bilgiler, sanal ağınızdaki (VNet) bir alt ağa bir küme dağıtmanıza yardımcı olur. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağ nedir?](/azure/virtual-network/virtual-networks-overview)
+Bu makalede, bir Azure Veri Gezgini kümesini özel bir Azure Sanal Ağına dağıttığınızda mevcut olan kaynaklar açıklanmaktadır. Bu bilgiler, sanal ağınızdaki (VNet) bir kümeyi bir alt ağa dağıtmanıza yardımcı olur. Azure Sanal Ağlar hakkında daha fazla bilgi için [bkz.](/azure/virtual-network/virtual-networks-overview)
 
-   ![VNET diyagramı](media/vnet-deployment/vnet-diagram.png)
+   ![vnet diyagramı](media/vnet-deployment/vnet-diagram.png)
 
-Azure Veri Gezgini, bir kümenin sanal ağınızdaki (VNet) bir alt ağa dağıtılmasını destekler. Bu özellik şunları yapmanızı sağlar:
+Azure Veri Gezgini, Sanal Ağınızda (VNet) bir kümeyi bir alt ağa dağıtmayı destekler. Bu özellik şunları yapmanızı sağlar:
 
-* Azure Veri Gezgini kümesi trafiğinden [ağ güvenlik grubu](/azure/virtual-network/security-overview) (NSG) kurallarını zorunlu tutun.
+* Azure Veri Gezgini küme trafiğinizde [Ağ Güvenlik Grubu](/azure/virtual-network/security-overview) (NSG) kurallarını uygulayın.
 * Şirket içi ağınızı Azure Veri Gezgini kümesinin alt ağına bağlayın.
-* [Hizmet uç noktaları](/azure/virtual-network/virtual-network-service-endpoints-overview)ile veri bağlantısı kaynaklarınızı ([Olay Hub](/azure/event-hubs/event-hubs-about) 'ı ve [Event Grid](/azure/event-grid/overview)) güvenli hale getirin.
+* Veri bağlantı kaynaklarınızı[(Olay Hub'ı](/azure/event-hubs/event-hubs-about) ve [Olay İzolesi)](/azure/event-grid/overview)hizmet bitiş noktalarıyla güvence altına ala.r'a. [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview)
 
-## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>VNet 'iniz içindeki Azure Veri Gezgini kümenize erişin
+## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>VNet'inizde Azure Veri Gezgini kümenize erişin
 
-Azure Veri Gezgini kümenize, her hizmet için aşağıdaki IP adreslerini kullanarak erişebilirsiniz (motor ve veri yönetimi hizmetleri):
+Azure Veri Gezgini kümenize her hizmet için aşağıdaki IP adreslerini (motor ve veri yönetimi hizmetleri) kullanarak erişebilirsiniz:
 
-* **Özel IP**: VNET 'in içindeki kümeye erişmek için kullanılır.
-* **Genel IP**: yönetim ve Izleme için sanal ağ dışından kümeye erişmek için kullanılır ve kümeden başlayan giden bağlantıların kaynak adresi olarak.
+* **Özel IP**: VNet içindeki kümeye erişmek için kullanılır.
+* **Public IP**: Yönetim ve izleme için VNet dışından kümeye erişmek için kullanılır ve kümeden başlayan giden bağlantılar için kaynak adresi olarak kullanılır.
 
-Hizmete erişmek için aşağıdaki DNS kayıtları oluşturulmuştur: 
+Hizmete erişmek için aşağıdaki DNS kayıtları oluşturulur: 
 
-* `[clustername].[geo-region].kusto.windows.net` (motor) `ingest-[clustername].[geo-region].kusto.windows.net` (veri yönetimi) her hizmet için genel IP ile eşleştirilir. 
+* `[clustername].[geo-region].kusto.windows.net`(motor) `ingest-[clustername].[geo-region].kusto.windows.net` (veri yönetimi) her hizmet için genel IP eşlenir. 
 
-* `private-[clustername].[geo-region].kusto.windows.net` (motor) `private-ingest-[clustername].[geo-region].kusto.windows.net` (veri yönetimi) her hizmet için özel IP ile eşleştirilir.
+* `private-[clustername].[geo-region].kusto.windows.net`(motor) `private-ingest-[clustername].[geo-region].kusto.windows.net` (veri yönetimi) her hizmet için özel IP eşlenir.
 
-## <a name="plan-subnet-size-in-your-vnet"></a>VNet 'iniz içindeki alt ağ boyutunu planlayın
+## <a name="plan-subnet-size-in-your-vnet"></a>VNet'inizde alt net boyutunu planlayın
 
-Azure Veri Gezgini kümesini barındırmak için kullanılan alt ağın boyutu alt ağ dağıtıldıktan sonra değiştirilemez. Sanal ortamınızda Azure Veri Gezgini, iç yük dengeleyiciler (motor ve veri yönetimi) için her bir sanal makine için bir özel IP adresi ve iki özel IP adresi kullanır. Azure ağ, her alt ağ için beş IP adresi de kullanır. Azure Veri Gezgini, veri yönetimi hizmeti için iki sanal makine sağlar. Altyapı hizmeti VM 'Leri, Kullanıcı Yapılandırması ölçek kapasitesi başına sağlanır.
+Azure Veri Gezgini kümesini barındırmak için kullanılan alt ağın boyutu, alt ağ dağıtıldıktan sonra değiştirilemez. Azure Veri Gezgini, VNet'inizde her VM için bir özel IP adresi ve dahili yük dengeleyicileri (motor ve veri yönetimi) için iki özel IP adresi kullanır. Azure ağı, her alt ağ için beş IP adresi de kullanır. Azure Veri Gezgini, veri yönetimi hizmeti için iki VM'yi karşılar. Motor hizmeti VM'leri kullanıcı yapılandırma ölçeği kapasitesine göre sağlanmıştır.
 
 Toplam IP adresi sayısı:
 
 | Kullanım | Adres sayısı |
 | --- | --- |
-| Altyapı hizmeti | örnek başına 1 |
+| Motor servisi | Örnek başına 1 |
 | Veri yönetimi hizmeti | 2 |
 | İç yük dengeleyiciler | 2 |
 | Azure ayrılmış adresler | 5 |
-| **Toplamda** | **#engine_instances + 9** |
+| **Toplam** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
-> Azure Veri Gezgini dağıtıldıktan sonra değiştirilemediğinden alt ağ boyutu önceden planlanmalıdır. Bu nedenle gereken alt ağ boyutunu buna göre ayırın.
+> Azure Veri Gezgini dağıtıldıktan sonra değiştirilemediğinden alt ağ boyutu önceden planlanmalıdır. Bu nedenle, rezerv buna göre subnet boyutu gerekli.
 
-## <a name="service-endpoints-for-connecting-to-azure-data-explorer"></a>Azure Veri Gezgini bağlanmak için hizmet uç noktaları
+## <a name="service-endpoints-for-connecting-to-azure-data-explorer"></a>Azure Veri Gezgini'ne bağlanmak için hizmet bitiş noktaları
 
-[Azure hizmet uç noktaları](/azure/virtual-network/virtual-network-service-endpoints-overview) , Azure çok kiracılı kaynaklarınızı sanal ağınıza güvenli hale getirmenizi sağlar.
-Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı için temel alınan kaynakları kısıtlayarak [Olay Hub 'ı](/azure/event-hubs/event-hubs-about) veya [Event Grid](/azure/event-grid/overview) veri bağlantıları ayarlamanıza olanak sağlar.
+[Azure Hizmet Bitiş Noktaları,](/azure/virtual-network/virtual-network-service-endpoints-overview) Azure çok kiracılı kaynaklarınızı sanal ağınıza korumanızı sağlar.
+Azure Veri Gezgini kümesini alt ağınıza dağıtmak, Azure Veri Gezgini alt ağının temel kaynaklarını kısıtlarken [Olay Hub'ı](/azure/event-hubs/event-hubs-about) veya [Olay Ağıtı](/azure/event-grid/overview) ile veri bağlantıları kurmanızı sağlar.
 
 > [!NOTE]
-> [Depolama](/azure/storage/common/storage-introduction) ve [Event Hub] Ile eventgrid kurulumu kullanılırken, abonelikte kullanılan depolama hesabı, [güvenlik duvarı yapılandırmasında](/azure/storage/common/storage-network-security)güvenilen Azure platformu Hizmetleri 'ne izin verirken Azure Veri Gezgini 'nin alt ağı Ile kilitlenebilir, ancak olay hub 'ı güvenilen [Azure platform hizmetleri](/azure/event-hubs/event-hubs-service-endpoints)'ni desteklemediğinden hizmet uç noktasını etkinleştiremez.
+> [Depolama](/azure/storage/common/storage-introduction) ve [Olay Hub] ile EventGrid kurulumlarını kullanırken, abonelikte kullanılan depolama [hesabı, güvenlik duvarı yapılandırmasında](/azure/storage/common/storage-network-security)güvenilen Azure platform hizmetlerine izin verirken Hizmet bitiş noktalarıyla Azure Veri Gezgini'nin alt ağına kilitlenebilir, ancak Olay Hub'ı güvenilir [Azure platform hizmetlerini](/azure/event-hubs/event-hubs-service-endpoints)desteklemediği için Hizmet Bitiş Noktası'nı etkinleştiremez.
 
 ## <a name="dependencies-for-vnet-deployment"></a>VNet dağıtımı için bağımlılıklar
 
-### <a name="network-security-groups-configuration"></a>Ağ güvenlik grupları yapılandırması
+### <a name="network-security-groups-configuration"></a>Ağ Güvenlik Grupları yapılandırması
 
-[Ağ güvenlik grupları (NSG)](/azure/virtual-network/security-overview) , bir sanal ağ içindeki ağ erişimini denetleme olanağı sağlar. Azure Veri Gezgini iki uç nokta kullanılarak erişilebilir: HTTPs (443) ve TDS (1433). Aşağıdaki NSG kurallarının, kümenizin yönetimi, izlenmesi ve düzgün çalışması için bu uç noktalara erişime izin verecek şekilde yapılandırılması gerekir.
+[Ağ Güvenlik Grupları (NSG),](/azure/virtual-network/security-overview) Bir VNet içinde ağ erişimini denetleme olanağı sağlar. Azure Veri Gezgini'ne iki uç nokta kullanılarak erişilebilir: HTTS (443) ve TDS (1433). Aşağıdaki NSG kuralları, kümenizin yönetimi, izlenmesi ve düzgün çalışması için bu uç noktalara erişime izin verecek şekilde yapılandırılmalıdır.
 
 #### <a name="inbound-nsg-configuration"></a>Gelen NSG yapılandırması
 
-| **Kullanma**   | **Kaynak**   | **Alıcı**   | **Protokol**   |
+| **Kullanma**   | **Kimden**   | **Hedef**   | **Protokolü**   |
 | --- | --- | --- | --- |
-| Yönetim  |[ADX yönetim adresleri](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (servicetag) | ADX alt ağı: 443  | TCP  |
-| Sistem durumunu izleme  | [ADX sistem durumu izleme adresleri](#health-monitoring-addresses)  | ADX alt ağı: 443  | TCP  |
-| ADX iç iletişimi  | ADX alt ağı: tüm bağlantı noktaları  | ADX alt ağı: tüm bağlantı noktaları  | Tümü  |
-| Azure yük dengeleyiciye izin ver (sistem durumu araştırması)  | AzureLoadBalancer  | ADX alt ağı: 80443  | TCP  |
+| Yönetim  |[ADX yönetim adresleri](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | ADX alt ağ:443  | TCP  |
+| Sistem durumu izleme  | [ADX sistem durumu izleme adresleri](#health-monitoring-addresses)  | ADX alt ağ:443  | TCP  |
+| ADX dahili iletişim  | ADX subnet: Tüm bağlantı noktaları  | ADX subnet:Tüm bağlantı noktaları  | Tümü  |
+| Azure yük bakiyesi gelene izin ver (sistem durumu sondası)  | AzureLoadBalancer  | ADX alt ağ:80.443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Giden NSG yapılandırması
 
-| **Kullanma**   | **Kaynak**   | **Alıcı**   | **Protokol**   |
+| **Kullanma**   | **Kimden**   | **Hedef**   | **Protokolü**   |
 | --- | --- | --- | --- |
-| Azure Storage bağımlılığı  | ADX alt ağı  | Depolama alanı: 443  | TCP  |
-| Azure Data Lake bağımlılığı  | ADX alt ağı  | AzureDataLake: 443  | TCP  |
-| EventHub alma ve hizmet izleme  | ADX alt ağı  | EventHub: 443, 5671  | TCP  |
-| Ölçümleri yayımlama  | ADX alt ağı  | AzureMonitor: 443 | TCP  |
-| Azure Izleyici yapılandırması indirmesi  | ADX alt ağı  | [Azure izleyici yapılandırma uç noktası adresleri](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
-| Active Directory (varsa) | ADX alt ağı | AzureActiveDirectory: 443 | TCP |
-| Sertifika yetkilisi | ADX alt ağı | Internet: 80 | TCP |
-| İç iletişim  | ADX alt ağı  | ADX alt ağı: tüm bağlantı noktaları  | Tümü  |
-| `sql\_request` ve `http\_request` eklentileri için kullanılan bağlantı noktaları  | ADX alt ağı  | Internet: özel  | TCP  |
+| Azure Depolamaya Bağımlılık  | ADX alt ağı  | Depolama:443  | TCP  |
+| Azure Veri Gölü'ne bağımlılık  | ADX alt ağı  | AzureDataGölü:443  | TCP  |
+| EventHub alımı ve hizmet izleme  | ADX alt ağı  | OlayHub:443.5671  | TCP  |
+| Ölçümleri Yayımla  | ADX alt ağı  | AzureMonitör:443 | TCP  |
+| Azure Monitor yapılandırma indirme  | ADX alt ağı  | [Azure Monitör yapılandırma bitiş noktası adresleri](#azure-monitor-configuration-endpoint-addresses):443 | TCP  |
+| Aktif Dizin (varsa) | ADX alt ağı | AzureActiveDirectory:443 | TCP |
+| Sertifika yetkilisi | ADX alt ağı | İnternet:80 | TCP |
+| İç iletişim  | ADX alt ağı  | ADX Subnet:Tüm Bağlantı Noktaları  | Tümü  |
+| Kullanılan `sql\_request` bağlantı noktaları `http\_request` ve eklentiler  | ADX alt ağı  | Internet:Özel  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>İlgili IP adresleri
 
@@ -100,7 +100,7 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Bölge | Adresler |
 | --- | --- |
 | Orta Avustralya | 20.37.26.134 |
-| Avustralya Central2 | 20.39.99.177 |
+| Avustralya Merkez2 | 20.39.99.177 |
 | Doğu Avustralya | 40.82.217.84 |
 | Güneydoğu Avustralya | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
@@ -108,11 +108,11 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Doğu Kanada | 40.80.255.12 |
 | Orta Hindistan | 40.81.249.251 |
 | Orta ABD | 40.67.188.68 |
-| EUAP Orta ABD | 40.89.56.69 |
+| ORTA ABD EUAP | 40.89.56.69 |
 | Doğu Asya | 20.189.74.103 |
 | Doğu ABD | 52.224.146.56 |
 | Doğu ABD 2 | 52.232.230.201 |
-| Doğu ABD2 EUAP | 52.253.226.110 |
+| Doğu US2 EUAP | 52.253.226.110 |
 | Orta Fransa | 40.66.57.91 |
 | Güney Fransa | 40.82.236.24 |
 | Doğu Japonya | 20.43.89.90 |
@@ -147,11 +147,11 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Doğu Kanada | 168.61.212.201 |
 | Orta Hindistan | 23.99.5.162 |
 | Orta ABD | 168.61.212.201 |
-| EUAP Orta ABD | 168.61.212.201 |
+| ORTA ABD EUAP | 168.61.212.201 |
 | Doğu Asya | 168.63.212.33 |
 | Doğu ABD | 137.116.81.189 |
 | Doğu ABD 2 | 137.116.81.189 |
-| EUAP Doğu ABD 2 | 137.116.81.189 |
+| Doğu ABD 2 EUAP | 137.116.81.189 |
 | Orta Fransa | 23.97.212.5 |
 | Güney Fransa | 23.97.212.5 |
 | Doğu Japonya | 138.91.19.129 |
@@ -173,39 +173,39 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 | Batı ABD | 23.99.5.162 |
 | Batı ABD 2 | 23.99.5.162 |    
 
-#### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Izleyici yapılandırma uç noktası adresleri
+#### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitör yapılandırma bitiş noktası adresleri
 
 | Bölge | Adresler |
 | --- | --- |
-| Avustralya Orta | 52.148.86.165 |
-| Avustralya Orta 2 | 52.148.86.165 |
-| Avustralya Doğu | 52.148.86.165 |
-| Avustralya Güneydoğu | 52.148.86.165 |
-| Brezilya Güney | 13.68.89.19 |
-| Kanada Orta | 13.90.43.231 |
-| Kanada Doğu | 13.90.43.231 |
+| Orta Avustralya | 52.148.86.165 |
+| Orta Avustralya 2 | 52.148.86.165 |
+| Doğu Avustralya | 52.148.86.165 |
+| Güneydoğu Avustralya | 52.148.86.165 |
+| Güney Brezilya | 13.68.89.19 |
+| Orta Kanada | 13.90.43.231 |
+| Doğu Kanada | 13.90.43.231 |
 | Orta Hindistan | 13.71.25.187 |
 | Orta ABD | 52.173.95.68 |
-| EUAP Orta ABD | 13.90.43.231 |
+| ORTA ABD EUAP | 13.90.43.231 |
 | Doğu Asya | 13.75.117.221 |
 | Doğu ABD | 13.90.43.231 |
 | Doğu ABD 2 | 13.68.89.19 |    
-| EUAP Doğu ABD 2 | 13.68.89.19 |
-| Fransa Orta | 52.174.4.112 |
-| Fransa Güney | 52.174.4.112 |
-| Japonya Doğu | 13.75.117.221 |
-| Japonya Batı | 13.75.117.221 |
-| Kore Orta | 13.75.117.221 |
-| Kore Güney | 13.75.117.221 |
+| Doğu ABD 2 EUAP | 13.68.89.19 |
+| Orta Fransa | 52.174.4.112 |
+| Güney Fransa | 52.174.4.112 |
+| Doğu Japonya | 13.75.117.221 |
+| Batı Japonya | 13.75.117.221 |
+| Güney Kore - Orta | 13.75.117.221 |
+| Güney Kore - Güney | 13.75.117.221 |
 | Orta Kuzey ABD | 52.162.240.236 |
 | Kuzey Avrupa | 52.169.237.246 |
 | Güney Afrika Kuzey | 13.71.25.187 |
 | Güney Afrika Batı | 13.71.25.187 |
-| Orta Güney ABD | 13.84.173.99 |
+| Güney Orta ABD | 13.84.173.99 |
 | Güney Hindistan | 13.71.25.187 |
 | Güneydoğu Asya | 52.148.86.165 |
-| UK Güney | 52.174.4.112 |
-| UK Batı | 52.169.237.246 |
+| Güney Birleşik Krallık | 52.174.4.112 |
+| Batı Birleşik Krallık | 52.169.237.246 |
 | Orta Batı ABD | 52.161.31.69 |
 | Batı Avrupa | 52.174.4.112 |
 | Batı Hindistan | 13.71.25.187 |
@@ -214,11 +214,11 @@ Azure Veri Gezgini kümesini alt ağa dağıtmak, Azure Veri Gezgini alt ağı i
 
 ## <a name="expressroute-setup"></a>ExpressRoute kurulumu
 
-Şirket içi ağı Azure sanal ağı 'na bağlamak için ExpressRoute 'u kullanın. Ortak bir kurulum, Sınır Ağ Geçidi Protokolü (BGP) oturumu aracılığıyla varsayılan yolun (0.0.0.0/0) tanıtılmalıdır. Bu, sanal ağdan gelen trafiği, trafiği bırakan müşterinin Şirket içi ağına iletilecek şekilde zorlar ve giden akışların kesilmesine neden olur. Bu varsayılanı aşmak için [Kullanıcı tanımlı yol (UDR)](/azure/virtual-network/virtual-networks-udr-overview#user-defined) (0.0.0.0/0) yapılandırılabilir ve sonraki atlama *Internet*olur. UDR, BGP üzerinden öncelikli olduğundan trafik Internet 'e gidecek.
+Şirket içi ağı Azure Sanal Ağı'na bağlamak için ExpressRoute'u kullanın. Ortak bir kurulum, Kenarlık Ağ Geçidi Protokolü (BGP) oturumu aracılığıyla varsayılan rotanın (0.0.0.0/0) reklamını yapmaktır. Bu, Sanal Ağ'dan çıkan trafiği müşterinin öncül ağına iletilmesi için zorlar ve bu da trafiği bırakabilir ve giden akışların kırılmasına neden olur. Bu varsayılanı aşmak [için, Kullanıcı Tanımlı Rota (UDR)](/azure/virtual-network/virtual-networks-udr-overview#user-defined) (0.0.0.0/0) yapılandırılabilir ve sonraki atlama *Internet*olacaktır. UDR BGP'den önce geldiğinden, trafik Internet'e gidecektir.
 
-## <a name="securing-outbound-traffic-with-firewall"></a>Giden trafiğin güvenliğini güvenlik duvarıyla sağlama
+## <a name="securing-outbound-traffic-with-firewall"></a>Güvenlik duvarı yla giden trafiği güvence altına alma
 
-[Azure Güvenlik Duvarı](/azure/firewall/overview) veya etki alanı adlarını sınırlamak için herhangi bir Sanal Gereç kullanarak giden trafiği güvenli hale getirmek istiyorsanız güvenlik duvarında aşağıdaki tam etki alanı ADLARıNA (FQDN) izin verilmelidir.
+Alan adlarını sınırlamak için [Azure Güvenlik Duvarı'nı](/azure/firewall/overview) veya herhangi bir sanal cihazı kullanarak giden trafiği güvence altına almak istiyorsanız, güvenlik duvarına aşağıdaki Tam Nitelikli Alan Adları'na (FQDN) izin verilmelidir.
 
 ```
 prod.warmpath.msftcloudes.com:443
@@ -246,163 +246,17 @@ adl.windows.com:80
 crl3.digicert.com:80
 ```
 
-Ayrıca, asimetrik yolların sorunlarını engellemek için [Yönetim adresleri](#azure-data-explorer-management-ip-addresses) ve [sistem durumu izleme adresleriyle](#health-monitoring-addresses) bir sonraki atlama *Internet* ile alt ağda [yol tablosu](/azure/virtual-network/virtual-networks-udr-overview) tanımlamanız gerekir.
+Ayrıca, asimetrik rota sorunlarını önlemek için alt ağdaki [rota tablosunu](/azure/virtual-network/virtual-networks-udr-overview) [yönetim adresleri](#azure-data-explorer-management-ip-addresses) ve sonraki hop *Internet* ile sistem durumu [izleme adresleriyle](#health-monitoring-addresses) tanımlamanız gerekir.
 
-Örneğin, **Batı ABD** bölge Için aşağıdaki udrs tanımlanmalıdır:
+Örneğin, **Batı ABD** bölgesi için aşağıdaki ÜT'ler tanımlanmalıdır:
 
-| Adı | Adres Ön Eki | Sonraki atlama |
+| Adı | Adres Ön Eki | Sonraki Hop |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |
 
-## <a name="deploy-azure-data-explorer-cluster-into-your-vnet-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak sanal ağınıza Azure Veri Gezgini kümesi dağıtma
+## <a name="deploy-azure-data-explorer-cluster-into-your-vnet-using-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonunu kullanarak Azure Veri Gezgini kümesini VNet'inize dağıtma
 
-Azure Veri Gezgini kümesini sanal ağınıza dağıtmak için, VNet Azure Resource Manager şablonunuzda [azure Veri Gezgini kümesini dağıtma](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) ' yı kullanın.
+Azure Veri Gezgini kümesini sanal ağınıza dağıtmak için, VNet Azure Kaynak Yöneticisi [şablonunuzda Azure Veri Gezgini kümesini dağıt'ı](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) kullanın.
 
-Bu şablon küme, sanal ağ, alt ağ, ağ güvenlik grubu ve genel IP adreslerini oluşturur.
-
-## <a name="troubleshooting"></a>Sorun giderme
-
-Bu bölümde, [sanal ağınıza](/azure/virtual-network/virtual-networks-overview)dağıtılan bir küme için bağlantı, işlemsel ve küme oluşturma sorunlarını nasıl giderebileceğinizi öğreneceksiniz.
-
-### <a name="access-issues"></a>Erişim sorunları
-
-Ortak (cluster.region.kusto.windows.net) veya özel (private-cluster.region.kusto.windows.net) uç noktasını kullanarak kümeye erişirken bir sorun yaşıyorsanız ve sanal ağ kurulumuyla ilgili olduğunu düşünüyorsanız, için aşağıdaki adımları gerçekleştirin sorunu giderin.
-
-#### <a name="check-tcp-connectivity"></a>TCP bağlantısını denetle
-
-İlk adım Windows veya Linux işletim sistemi kullanılarak TCP bağlantısının denetlenmesini içerir.
-
-# <a name="windows"></a>[Windows](#tab/windows)
-
-   1. Kümeye bağlanan makineye [Tcping](https://www.elifulkerson.com/projects/tcping.php) 'yi indirin.
-   2. Aşağıdaki komutu kullanarak kaynak makineden hedefe ping gönderin:
-
-    ```cmd
-     C:\> tcping -t yourcluster.kusto.windows.net 443 
-    
-     ** Pinging continuously.  Press control-c to stop **
-    
-     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
-     ```
-
-# <a name="linux"></a>[Linux](#tab/linux)
-
-   1. Kümeye bağlanan makineye *netcat* 'yi yükler
-
-    ```bash
-    $ apt-get install netcat
-     ```
-
-   2. Aşağıdaki komutu kullanarak kaynak makineden hedefe ping gönderin:
-
-     ```bash
-     $ netcat -z -v yourcluster.kusto.windows.net 443
-    
-     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
-     ```
----
-
-Test başarılı olmazsa aşağıdaki adımlarla devam edin. Test başarılı olursa, sorun bir TCP bağlantı sorunu nedeniyle değildir. Sorun gidermek için [İşlemsel sorunlara](#cluster-creation-and-operations-issues) gidin.
-
-#### <a name="check-the-network-security-group-nsg"></a>Ağ güvenlik grubunu (NSG) denetleme
-
-   Kümenin alt ağına bağlı [ağ güvenlik grubu](/azure/virtual-network/security-overview) 'nun (NSG), bağlantı noktası 443 için ISTEMCI makinenin IP 'sinden erişime izin veren bir gelen kuralı olduğunu kontrol edin.
-
-#### <a name="check-route-table"></a>Rota tablosunu denetle
-
-   Kümenin alt ağının güvenlik duvarı (' 0.0.0.0/0 ' varsayılan yolunu içeren bir [yol tablosu](/azure/virtual-network/virtual-networks-udr-overview) ile alt ağ) için Zorlamalı tünel kurulumuna sahip olması durumunda, makine IP adresinin VirtualNetwork/Internet 'e bir [sonraki atlama türü](/azure/virtual-network/virtual-networks-udr-overview) ile bir yol içerdiğinden emin olun. Asimetrik yol sorunlarını engellemek için bu gereklidir.
-
-### <a name="ingestion-issues"></a>Alma sorunları
-
-Alma sorunları yaşıyorsanız ve sanal ağ kurulumuyla ilgili olduğunu düşünüyorsanız, aşağıdaki adımları gerçekleştirin.
-
-#### <a name="check-ingestion-health"></a>Alma durumunu denetle
-
-    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
-
-#### <a name="check-security-rules-on-data-source-resources"></a>Veri kaynağı kaynaklarında güvenlik kurallarını denetleme
-
-Ölçümler, veri kaynağından (*Işlenen olaylar* (Event/IoT Hub 'ları) ölçüm) hiçbir olayın işlenmediğini gösteriyorsa, veri kaynağı kaynaklarının (Olay Hub 'ı veya depolama alanı), güvenlik duvarı kurallarında veya hizmet uç noktalarında kümenin alt ağından erişime izin verecek şekilde emin olun.
-
-#### <a name="check-security-rules-configured-on-clusters-subnet"></a>Kümenin alt ağında yapılandırılan güvenlik kurallarını denetle
-
-Kümenin alt ağının NSG, UDR ve Güvenlik Duvarı kurallarının düzgün şekilde yapılandırıldığından emin olun. Ayrıca, tüm bağımlı uç noktalar için ağ bağlantısını test edin. 
-
-### <a name="cluster-creation-and-operations-issues"></a>Küme oluşturma ve işlemler sorunları
-
-Küme oluşturma veya işlem sorunları yaşıyorsanız ve sanal ağ kurulumuyla ilgili olduğunu düşünüyorsanız, sorunu gidermek için aşağıdaki adımları izleyin.
-
-#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>REST API ile sanal ağı tanılayın
-
-[Armclient](https://chocolatey.org/packages/ARMClient) , REST API PowerShell kullanarak çağırmak için kullanılır. 
-
-1. ARMClient ile oturum açma
-
-   ```powerShell
-   armclient login
-   ```
-
-1. Tanılama işlemini çağır
-
-    ```powershell
-    $subscriptionId = '<subscription id>'
-    $clusterName = '<name of cluster>'
-    $resourceGroupName = '<resource group name>'
-    $apiversion = '2019-11-09'
-    
-    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
-    ```
-
-1. Yanıtı denetleyin
-
-    ```powershell
-    HTTP/1.1 202 Accepted
-    ...
-    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
-    ...
-    ```
-
-1. İşlemin tamamlanmasını bekle
-
-    ```powershell
-    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
-    
-    {
-      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
-      "name": "{operation-name}",
-      "status": "[Running/Failed/Completed]",
-      "startTime": "{start-time}",
-      "endTime": "{end-time}",
-      "properties": {...}
-    }
-    ```
-    
-   *Durum* özelliği tamamlanana kadar bekleyin, sonra *Özellikler* *alanı şunu göstermelidir*:
-
-    ```powershell
-    {
-      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
-      "name": "{operation-name}",
-      "status": "Completed",
-      "startTime": "{start-time}",
-      "endTime": "{end-time}",
-      "properties": {
-        "Findings": [...]
-      }
-    }
-    ```
-
-*Bulmalar* özelliği boş bir sonuç gösteriyorsa, tüm ağ testlerinin geçirildiği ve hiçbir bağlantı kesilmediği anlamına gelir. Şu şekilde bir hata gösteriyorsa: *' {dependencyName}: {Port} ' giden bağımlılığı karşılanmıyor (giden)* , küme bağımlı hizmet uç noktalarına ulaşamıyor. Sorunlarını gidermek için aşağıdaki adımları izleyin.
-
-#### <a name="check-network-security-group-nsg"></a>Ağ güvenlik grubu (NSG) denetimi
-
-[Ağ güvenlik grubunun](/azure/virtual-network/security-overview) , [VNET dağıtımı bağımlılıklarındaki](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment) yönergeler temelinde doğru yapılandırıldığından emin olun
-
-#### <a name="check-route-table"></a>Rota tablosunu denetle
-
-Kümenin alt ağının güvenlik duvarı için zorla (varsayılan yolu ' 0.0.0.0/0 ' olan bir [rota tablosu](/azure/virtual-network/virtual-networks-udr-overview) olan alt ağ), [Yönetim IP adreslerinin](#azure-data-explorer-management-ip-addresses) ve [sistem durumu izleme IP adreslerinin](#health-monitoring-addresses) [sonraki atlama türü](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *Internet*'e sahip bir yol içerdiğinden ve *' Yönetim-IP/32 '* ve *' sağlık-izleme-IP/32 '* için [kaynak adresi ön ekine](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route) sahip olduğundan emin olun. Asimetrik yol sorunlarını engellemek için bu gereklidir.
-
-#### <a name="check-firewall-rules"></a>Güvenlik duvarı kurallarını denetle
-
-Tünel alt ağına giden trafiği bir güvenlik duvarına zorlarsanız, güvenlik duvarı [ile giden trafiğin güvenliğini sağlama](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall)bölümünde açıklandığı gibi, güvenlik duvarı yapılandırmasında tüm bağımlılıklar FQDN 'sine (örneğin, *. blob.Core.Windows.net*) izin verildiğinden emin olun.
+Bu şablon küme, sanal ağ, alt ağ, ağ güvenlik grubu ve ortak IP adreslerini oluşturur.

@@ -1,127 +1,141 @@
 ---
 title: Güvenlik ve veri gizliliği
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama, SOC 2, HIPAA ve diğer sertifikalarla uyumludur. Filtre ifadelerinde Kullanıcı ve grup güvenlik tanımlayıcılarıyla bağlantı ve veri şifreleme, kimlik doğrulama ve kimlik erişimi.
+description: Azure Bilişsel Arama, SOC 2, HIPAA ve diğer sertifikalarla uyumludur. Filtre ifadelerinde kullanıcı ve grup güvenlik tanımlayıcıları aracılığıyla bağlantı ve veri şifreleme, kimlik doğrulama ve kimlik erişimi.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/25/2020
+ms.openlocfilehash: 713a9762206b5083268fd48136cd8077c296c690
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79282841"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289303"
 ---
-# <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Bilişsel Arama güvenlik ve veri gizliliği
+# <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da güvenlik ve veri gizliliği
 
-Kapsamlı güvenlik özellikleri ve erişim denetimleri, özel içeriğin bu şekilde kalmasını sağlamak için Azure Bilişsel Arama yerleşik olarak bulunur. Bu makalede, Azure Bilişsel Arama 'da yerleşik olarak bulunan güvenlik özellikleri ve standartlar uyumluluğu numaralandırılır.
+Kapsamlı güvenlik özellikleri ve erişim denetimleri, özel içeriğin bu şekilde kalmasını sağlamak için Azure Bilişsel Arama'da yerleşiktir. Bu makalede, Azure Bilişsel Arama'da yerleşik güvenlik özellikleri ve standartlar adedi ne kadar dır.
 
-Azure Bilişsel Arama güvenlik mimarisi fiziksel güvenlik, şifrelenmiş aktarımlar, şifrelenmiş depolama ve platform genelinde standartlar uyumluluğuna yayılmıştır. Azure Bilişsel Arama yalnızca kimliği doğrulanmış istekleri kabul eder. İsteğe bağlı olarak, güvenlik filtreleri aracılığıyla içeriğe göre Kullanıcı başına erişim denetimleri ekleyebilirsiniz. Bu makalede her katmandaki güvenliğe dokunduğunda, birincil olarak Azure Bilişsel Arama 'da verilerin ve işlemlerin güvenliğinin nasıl sağlandığı üzerine odaklanılmıştır.
+Azure Bilişsel Arama güvenlik mimarisi fiziksel güvenlik, şifreli aktarımlar, şifreli depolama ve platform genelinde standartlara uygunluk kapsar. Azure Bilişsel Arama, operasyonel olarak yalnızca kimlik doğrulama isteklerini kabul eder. İsteğe bağlı olarak, güvenlik filtreleri aracılığıyla içerik üzerindeki kullanıcı başına erişim denetimleri ekleyebilirsiniz. Bu makale, her katmandaki güvenliğe değinmektedir, ancak öncelikle Azure Bilişsel Arama'da verilerin ve işlemlerin nasıl güvence altına alındığına odaklanır.
 
-## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Standartlar uyumluluğu: ISO 27001, SOC 2, HIPAA
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Standartlara uygunluk: ISO 27001, SOC 2, HIPAA
 
-Azure Bilişsel Arama, [haziran 2018 ' de duyurulduğu](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)için aşağıdaki standartlara yönelik olarak sertifikalandırilmiştir:
+Azure Bilişsel Arama, [Haziran 2018'de duyurulduğu](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)üzere aşağıdaki standartlar için onaylanmaktadır:
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
-+ [SOC 2 tür 2 uyumluluğu](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Tam rapor için [Azure ve Azure Kamu SOC 2 tür II raporuna](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)gidin. 
-+ [Sağlık sigortası taşınabilirlik ve Sorumluluk Yasası (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-+ [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
-+ [HıTRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI DSS düzeyi 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Avustralya ıRAP Unsınıflandırılmamış DLD](https://asd.gov.au/infosec/irap/certified_clouds.htm)
++ [SOC 2 Tip 2 uyumluluğu](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Raporun tamamı için [Azure ve Azure Devlet SOC 2 Türü II Raporu'na](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)gidin. 
++ [Sağlık Sigortası Taşınabilirlik ve Sorumluluk Yasası (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
++ [GxP (21 CFR Bölüm 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
++ [PCI DSS Düzey 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Avustralya IRAP Sınıflandırılmamış DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
-Standart uyumluluk, genel olarak kullanılabilen özellikler için geçerlidir. Önizleme özellikleri, genel kullanılabilirliğe geçiş yaparken sertifikalıdır ve katı standartlar gereksinimlerine sahip çözümlerde kullanılmamalıdır. Uyumluluk sertifikası Microsoft Azure uyumluluğu ve [Güven Merkezi](https://www.microsoft.com/en-us/trustcenter) ['ne genel bakış](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) bölümünde belgelenmiştir. 
+Standartlara uygunluk genel olarak kullanılabilir özellikler için geçerlidir. Önizleme özellikleri genel kullanılabilirliğe geçiş sırasında sertifikalandırılır ve katı standart gereksinimleriolan çözümlerde kullanılmamalıdır. Uyumluluk [sertifikası, Microsoft Azure uyumluluğuna](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ve [Güven Merkezi'ne](https://www.microsoft.com/en-us/trustcenter)Genel Bakış olarak belgelenmiştir. 
 
-## <a name="encrypted-transmission-and-storage"></a>Şifrelenmiş iletim ve depolama
+## <a name="encrypted-transmission-and-storage"></a>Şifreli iletim ve depolama
 
-Şifreleme, tüm dizin oluşturma işlem hattının tamamında genişletiliyor: bağlantılardan, iletimden ve Azure Bilişsel Arama depolanan dizinli verilere kadar.
+Şifreleme, bağlantılardan iletime ve Azure Bilişsel Arama'da depolanan dizine bağlı verilere kadar tüm dizin oluşturma ardışık alanı boyunca uzanır.
 
 | Güvenlik katmanı | Açıklama |
 |----------------|-------------|
-| Aktarım sırasında şifreleme <br>(HTTPS/SSL/TLS) | Azure Bilişsel Arama, HTTPS bağlantı noktası 443 ' de dinler. Platform genelinde Azure Hizmetleri bağlantıları şifrelenir. <br/><br/>Tüm istemciden hizmete Azure Bilişsel Arama etkileşimleri SSL/TLS 1,2 özellikli bir hizmettir.  Hizmetinize SSL bağlantıları için TLSv 1.2 kullandığınızdan emin olun.|
-| Bekleme sırasında şifreleme <br>Microsoft tarafından yönetilen anahtarlar | Şifreleme, dizin oluşturma işleminin tamamlanma süresi veya dizin boyutu üzerinde ölçülebilir bir etkisi olmadan dizin oluşturma işleminde tamamen internalized. Tam olarak şifrelenmemiş bir dizine yönelik artımlı güncelleştirmeler de dahil olmak üzere tüm dizin oluşturma işleminde otomatik olarak gerçekleşir (2018 Ocak 'tan önce oluşturulmuştur).<br><br>Dahili olarak, şifreleme, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanılarak [Azure depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)tabanlıdır.<br><br> Şifreleme, Microsoft tarafından dahili olarak yönetilen sertifika ve şifreleme anahtarları ve evrensel olarak uygulanarak Azure Bilişsel Arama için dahili olarak kullanılır. Şifrelemeyi kapatamaz veya kapatamaz, kendi anahtarlarınızı yönetebilir veya kullanabilir ya da portalda veya program aracılığıyla şifreleme ayarlarını görüntüleyebilirsiniz.<br><br>Bekleyen şifreleme, 24 Ocak 2018 ' de duyuruldu ve tüm bölgelerde ücretsiz katman dahil tüm hizmet katmanlarına uygulanıyor. Tam şifreleme için, bu tarihten önce oluşturulan dizinlerin, şifrelemenin gerçekleşmesi için bırakılması ve yeniden oluşturulması gerekir. Aksi takdirde, yalnızca 24 Ocak 'tan sonra eklenen yeni veriler şifrelenir.|
-| Bekleme sırasında şifreleme <br>Müşteri tarafından yönetilen anahtarlar | Müşteri tarafından yönetilen anahtarlarla şifreleme artık 2019 Ocak 'ta veya sonrasında oluşturulan arama hizmetleri için genel kullanıma sunulmuştur. Bu, ücretsiz (paylaşılan) hizmetlerde desteklenmez.<br><br>Azure Bilişsel Arama dizinleri ve eş anlamlı haritalar artık Azure Key Vault ' de müşteri anahtarları yönetilen anahtarlarıyla geri alınabilir. Daha fazla bilgi için bkz. [Azure 'da şifreleme anahtarlarını yönetme bilişsel arama](search-security-manage-encryption-keys.md).<br><br>Bu özellik, bekleyen varsayılan şifrelemeyi değiştirmez, ancak buna ek olarak uygulanır.<br><br>Bu özelliğin etkinleştirilmesi, dizin boyutunu artırır ve sorgu performansını düşürür. Tarih gözlemlerini temel alarak sorgu süreleriyle %30 oranında %60 oranında bir artış görmeniz beklenir, ancak gerçek performans, Dizin tanımına ve sorgu türlerine göre değişir. Bu performans etkisi nedeniyle, bu özelliği yalnızca gerçekten gereken dizinlerde etkinleştirmenizi öneririz.
+| Aktarım sırasında şifreleme <br>(HTTPS/SSL/TLS) | Azure Bilişsel Arama, HTTPS bağlantı noktası 443'ü dinler. Platform genelinde, Azure hizmetlerine bağlantılar şifrelenir. <br/><br/>Tüm istemciden hizmete Azure Bilişsel Arama etkileşimleri SSL/TLS 1.2 özelliklidir.  Hizmetinizin SSL bağlantıları için TLSv1.2 kullandığınızdan emin olun.|
+| Bekleme sırasında şifreleme <br>Microsoft yönetilen anahtarlar | Şifreleme, dizin oluşturma işleminde tamamen içselleştirilmiştir ve tamamlanma süresi veya dizin boyutu üzerinde ölçülebilir bir etkisi yoktur. Tam olarak şifrelenmemiş (Ocak 2018'den önce oluşturulan) bir dizin için artımlı güncelleştirmeler de dahil olmak üzere tüm dizin oluşturmada otomatik olarak oluşur.<br><br>Dahili olarak şifreleme, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanılarak Azure Depolama Hizmeti Şifrelemesi'ne dayanır. [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)<br><br> Şifreleme, Microsoft tarafından dahili olarak yönetilen ve evrensel olarak uygulanan sertifikalar ve şifreleme anahtarlarıyla Azure Bilişsel Arama'ya dahilidir. Şifrelemeyi açamaz veya kapatamazsınız, kendi anahtarlarınızı yönetemez veya değiştiremezsiniz veya portaldaki veya programlı olarak şifreleme ayarlarını görüntüleyemezsiniz.<br><br>24 Ocak 2018'de duyurulan şifreleme, tüm bölgelerde ki ücretsiz katman da dahil olmak üzere tüm hizmet katmanları için geçerlidir. Tam şifreleme için, şifrelemenin oluşması için bu tarihten önce oluşturulan dizinlerin düşürülmesi ve yeniden oluşturulması gerekir. Aksi takdirde, yalnızca 24 Ocak'tan sonra eklenen yeni veriler şifrelenir.|
+| Bekleme sırasında şifreleme <br>Müşteri tarafından yönetilen anahtarlar | Müşteri tarafından yönetilen anahtarlarla şifreleme artık ocak 2019'da veya sonrasında oluşturulan arama hizmetleri için genel olarak kullanılabilir. Ücretsiz (paylaşılan) hizmetlerde desteklenmez.<br><br>Azure Bilişsel Arama dizinleri ve eşanlamlı haritalar artık Azure Key Vault'ta müşteri tarafından yönetilen anahtarlarla birlikte şifrelenebilir. Daha fazla bilgi için Azure [Bilişsel Arama'da şifreleme anahtarlarını yönet'e](search-security-manage-encryption-keys.md)bakın.<br><br>Bu özellik, varsayılan şifrelemenin yerine istirahatte değil, buna ek olarak uygulanır.<br><br>Bu özelliği etkinleştirmek dizin boyutunu artırır ve sorgu performansını düşürür. Bugüne kadarki gözlemlere dayanarak, gerçek performans dizin tanımına ve sorgu türlerine bağlı olarak değişse de, sorgu sürelerinde %30-60'lık bir artış görmeyi bekleyebilirsiniz. Bu performans etkisi nedeniyle, bu özelliği yalnızca gerçekten gerektiren dizinlerde etkinleştirmenizi öneririz.
 
-## <a name="azure-wide-user-access-controls"></a>Azure genelindeki Kullanıcı erişimi denetimleri
+## <a name="azure-wide-user-access-controls"></a>Azure genelinde kullanıcı erişim denetimleri
 
-Birkaç güvenlik mekanizması Azure genelinde kullanılabilir ve bu nedenle otomatik olarak oluşturduğunuz Azure Bilişsel Arama kaynaklarında kullanılabilir.
+Azure genelinde çeşitli güvenlik mekanizmaları kullanılabilir ve böylece oluşturduğunuz Azure Bilişsel Arama kaynakları tarafından otomatik olarak kullanılabilir.
 
-+ [Silmeyi engellemek için abonelikte veya kaynak düzeyinde kilitler](../azure-resource-manager/management/lock-resources.md)
-+ [Bilgilere ve yönetim işlemlerine erişimi denetlemek için rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)
++ [Silinmesini önlemek için abonelik veya kaynak düzeyinde kilitler](../azure-resource-manager/management/lock-resources.md)
++ [Bilgiye ve yönetim işlemlerine erişimi denetlemek için rol tabanlı Erişim Denetimi (RBAC)](../role-based-access-control/overview.md)
 
-Tüm Azure Hizmetleri, erişim düzeylerini her hizmet arasında tutarlı olarak ayarlamak için rol tabanlı erişim denetimlerini (RBAC) destekler. Örneğin, yönetici anahtarı gibi hassas verileri görüntüleme, sahip ve katkıda bulunan rolleriyle kısıtlıdır, ancak hizmet durumunu görüntülemek herhangi bir rolün üyeleri tarafından kullanılabilir. RBAC, sahip, katkıda bulunan ve okuyucu rolleri sağlar. Varsayılan olarak, tüm hizmet yöneticileri sahip rolünün üyeleridir.
+Tüm Azure hizmetleri, tüm hizmetlerde sürekli erişim düzeylerini ayarlamak için rol tabanlı erişim denetimlerini (RBAC) destekler. Örneğin, yönetici anahtarı gibi hassas verileri görüntülemek, Sahibi ve Katılımcı rolleri ile sınırlıdır. Ancak, görüntüleme hizmeti durumu herhangi bir rolün üyeleri tarafından kullanılabilir. RBAC, Sahibi, Katılımcısı ve Okuyucu rollerini sağlar. Varsayılan olarak, tüm hizmet yöneticileri Sahibi rolünün üyeleridir.
 
 <a name="service-access-and-authentication"></a>
 
-## <a name="service-access-and-authentication"></a>Hizmet erişimi ve kimlik doğrulaması
+## <a name="endpoint-access"></a>Uç nokta erişimi
 
-Azure Bilişsel Arama, Azure platformunun güvenlik korumalarını devralırken, kendi anahtar tabanlı kimlik doğrulamasını da sağlar. Bir API anahtarı rastgele oluşturulan rakamlardan ve harflerden oluşan bir dizedir. Anahtar türü (yönetici veya sorgu), erişim düzeyini belirler. Geçerli bir anahtarın gönderilmesi, isteğin güvenilir bir varlıktan kaynaklandığı kanıtları kabul edilir. 
+### <a name="public-access"></a>Genel erişim
 
-Arama hizmetinize iki tür anahtara göre etkinleştirilen iki erişim düzeyi vardır:
+Azure Bilişsel Arama, Azure platformunun güvenlik önlemlerini devralır ve kendi anahtar tabanlı kimlik doğrulamasını sağlar. Api-tuşu rasgele oluşturulan sayılar ve harflerden oluşan bir dizedir. Anahtar türü (yönetici veya sorgu) erişim düzeyini belirler. Geçerli bir anahtarın gönderilmesi, isteğin güvenilir bir varlıktan kaynaklandığının kanıtı olarak kabul edilir. 
 
-* Yönetici erişimi (hizmette yapılan tüm okuma/yazma işlemleri için geçerli)
-* Sorgu erişimi (bir dizinin belgeler koleksiyonuna karşı sorgular gibi salt okuma işlemleri için geçerli)
+Arama hizmetinize iki tür anahtar tarafından etkinleştirilen iki erişim düzeyi vardır:
 
-Hizmet sağlandığında *yönetici anahtarları* oluşturulur. *Birincil* ve *İkincil* olarak tasarlanan iki yönetici anahtarı vardır, ancak bunlar aslında değiştirilebilir. Her hizmette iki yönetici anahtarı bulunur, bu sayede hizmetinize erişimi kaybetmeksizin bir veya daha fazla dağıtım yapabilirsiniz. Azure Güvenlik en iyi uygulamaları başına [yönetici anahtarını](search-security-api-keys.md#regenerate-admin-keys) düzenli aralıklarla yeniden oluşturabilirsiniz, ancak toplam yönetici anahtar sayısına ekleyemezsiniz. Arama hizmeti başına en fazla iki yönetici anahtarı vardır.
+* Yönetici erişimi (hizmete karşı herhangi bir okuma-yazma işlemi için geçerlidir)
+* Sorgu erişimi (bir dizinin belge koleksiyonuna karşı sorgular gibi salt okunur işlemler için geçerlidir)
 
-*Sorgu anahtarları* gerekli olarak oluşturulur ve sorgular veren istemci uygulamalar için tasarlanmıştır. En çok 50 sorgu anahtarı oluşturabilirsiniz. Uygulama kodu ' nda, belirli bir dizinin belgeler koleksiyonuna salt okuma erişimi sağlamak için arama URL 'sini ve sorgu API 'si anahtarını belirtirsiniz. Bir arada, uç nokta, salt okuma erişimi için bir API anahtarı ve bir hedef dizin, istemci uygulamanızdan bağlantının kapsamını ve erişim düzeyini tanımlar.
+*Hizmet* sağlandığında yönetici anahtarları oluşturulur. Onları düz tutmak için *birincil* ve *ikincil* olarak belirlenmiş iki yönetici anahtarları vardır, ama aslında değiştirilebilir. Her hizmetin iki yönetici anahtarı vardır, böylece hizmetinize erişimikaybetmeden bir tanesini devredebilirsiniz. Yönetici [anahtarını](search-security-api-keys.md#regenerate-admin-keys) Azure güvenlik en iyi uygulamalarına göre düzenli aralıklarla yeniden oluşturabilirsiniz, ancak toplam yönetici anahtar sayısına ekleyemezsiniz. Arama hizmeti başına en fazla iki yönetici anahtarı vardır.
 
-Her istekte bir zorunlu anahtar, bir işlem ve bir nesneden oluşan her istekte kimlik doğrulaması gerekir. Birlikte zincirleme yaparken, iki izin düzeyi (tam veya salt okuma) ve bağlam (örneğin, dizin üzerinde bir sorgu işlemi), hizmet işlemlerinde tam SPI güvenliği sağlamak için yeterlidir. Anahtarlar hakkında daha fazla bilgi için bkz. [API anahtarları oluşturma ve yönetme](search-security-api-keys.md).
+*Sorgu anahtarları* gerektiği gibi oluşturulur ve sorgu veren istemci uygulamaları için tasarlanmıştır. En fazla 50 sorgu anahtarı oluşturabilirsiniz. Uygulama kodunda, belirli bir dizinin belge koleksiyonuna salt okunur erişime izin vermek için arama URL'sini ve sorgu api anahtarını belirtirsiniz. Birlikte, bitiş noktası, salt okunur erişim için api anahtarı ve hedef dizini istemci uygulamanızdan bağlantının kapsamını ve erişim düzeyini tanımlar.
+
+Her istek zorunlu anahtar, bir işlem ve bir nesneden oluştuğu her istek te kimlik doğrulaması gereklidir. Birlikte zincirlendiğinde, iki izin düzeyi (tam veya salt okunur) ve bağlam (örneğin, bir dizindeki sorgu işlemi) hizmet işlemlerinde tam spektrum güvenliği sağlamak için yeterlidir. Anahtarlar hakkında daha fazla bilgi için [api tuşlarını oluştur ve yönet'](search-security-api-keys.md)e bakın.
+
+### <a name="restricted-access"></a>Kısıtlı erişim
+
+Bir kamu hizmetiniz varsa ve hizmetin kullanımını kısıtlamak istediğinizde, Management REST API sürümünde IP kısıtlama kuralını kullanabilirsiniz: 2020-03-13, [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2020-03-13/createorupdate-service#iprule-). IpRule, arama hizmetinize erişim izni vermek istediğiniz IP adreslerini tek tek veya bir aralıkta tanımlayarak hizmetinize erişimi kısıtlamanızı sağlar. 
+
+### <a name="private-access"></a>Özel erişim
+
+Azure Bilişsel Arama için [Özel Bitiş Noktaları,](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) sanal ağdaki bir istemcinin [Özel Bağlantı](https://docs.microsoft.com/azure/private-link/private-link-overview)üzerinden arama dizinindeki verilere güvenli bir şekilde erişmesine olanak tanır. Özel bitiş noktası, arama hizmetiniz için sanal ağ adres alanından bir IP adresi kullanır. İstemci ve arama hizmeti arasındaki ağ trafiği sanal ağ üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden geçerek genel internetten maruz kalmayı ortadan kaldırır.
+
+[Azure Sanal Ağı (VNet),](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) şirket içi ağınızın yanı sıra Internet ile kaynaklar arasında güvenli iletişim sağlar. 
 
 ## <a name="index-access"></a>Dizin erişimi
 
-Azure Bilişsel Arama, tek bir dizin, güvenli kılınabilir bir nesne değildir. Bunun yerine, bir dizin erişimi, hizmet katmanında (okuma veya yazma erişimi) bir işlemin içeriğiyle birlikte belirlenir.
+Azure Bilişsel Arama'da, tek bir dizin securable nesne değildir. Bunun yerine, bir dizin erişimi hizmet katmanı (okuma veya yazma erişimi) ve bir işlem bağlamında belirlenir.
 
-Son Kullanıcı erişimi için, bir sorgu anahtarı kullanarak bağlanmak üzere sorgu istekleri yapılandırabilirsiniz, bu da tüm istekleri salt okunurdur ve uygulamanız tarafından kullanılan belirli bir dizini içerir. Bir sorgu isteğinde, Dizin bağlama veya birden çok dizine aynı anda erişme kavramı yoktur, bu nedenle tüm istekler tanım ile tek bir dizin hedefleyin. Bu nedenle, sorgu isteğinin kendisi (bir anahtar ve tek bir hedef dizin), güvenlik sınırını tanımlar.
+Son kullanıcı erişimi için, sorgu isteklerini, herhangi bir isteğin salt okunur olmasını sağlayan bir sorgu anahtarı kullanarak bağlanmak üzere yapılandırabilir ve uygulamanız tarafından kullanılan belirli dizini ekleyebilirsiniz. Sorgu isteğinde, dizinleri birleştirme veya birden çok dizine aynı anda erişme kavramı yoktur, bu nedenle tüm istekler tanım olarak tek bir dizini hedeflemez. Bu nedenle, sorgu isteğinin kendisi (anahtar artı tek bir hedef dizini) yapısı güvenlik sınırını tanımlar.
 
-Dizinlere yönetici ve geliştirici erişimi farklılaştırılabilir: her ikisi de hizmet tarafından yönetilen nesneleri oluşturmak, silmek ve güncelleştirmek için yazma erişimine ihtiyaç duyar. Hizmetinize yönetici anahtarına sahip olan herkes aynı hizmette bulunan herhangi bir dizini okuyabilir, değiştirebilir veya silebilir. Dizinlerin yanlışlıkla veya kötü amaçlı olarak silinmesine karşı koruma için, kod varlıkları için şirket içi kaynak denetiminiz, istenmeyen bir dizin silme veya değiştirme işlemi için bir çözüm oluşturur. Azure Bilişsel Arama, kullanılabilirliği sağlamak için küme içinde yük devretmeye sahiptir, ancak dizinleri oluşturmak veya yüklemek için kullanılan özel kodunuzu depolamaz veya yürütmez.
+Yönetici ve geliştiricinin dizinlere erişimi farklılaşmaz: hizmet tarafından yönetilen nesneleri oluşturmak, silmek ve güncelleştirmek için her ikisinin de yazma erişimine ihtiyacı vardır. Hizmetinizin yönetici anahtarı olan herkes aynı hizmetteki herhangi bir dizini okuyabilir, değiştirebilir veya silebilir. Dizinlerin yanlışlıkla veya kötü amaçlı silinmesine karşı koruma için, kod varlıkları için şirket içi kaynak denetiminiz istenmeyen bir dizin silme veya değiştirmenin geri döndürülmesinin çözümüdür. Azure Bilişsel Arama kullanılabilirliği sağlamak için küme içinde başarısız olmuştur, ancak dizin oluşturmak veya yüklemek için kullanılan özel kodunuzu depolamaz veya yürütmez.
 
-Dizin düzeyinde güvenlik sınırları gerektiren çok kiracılı çözümler için, bu tür çözümler genellikle müşterilerin Dizin yalıtımını işlemek için kullanacağı bir orta katman içerir. Çok kiracılı kullanım durumu hakkında daha fazla bilgi için bkz. [çok kiracılı SaaS uygulamaları ve Azure bilişsel arama Için tasarım desenleri](search-modeling-multitenant-saas-applications.md).
+Dizin düzeyinde güvenlik sınırları gerektiren çoklu hizmet çözümleri için, bu tür çözümler genellikle müşterilerin dizin yalıtımını işlemek için kullandıkları bir orta katman içerir. Çok kiracılı kullanım örneği hakkında daha fazla bilgi için, [çok kiracılı SaaS uygulamaları ve Azure Bilişsel Arama için Tasarım desenleri](search-modeling-multitenant-saas-applications.md)bölümüne bakın.
 
-## <a name="admin-access"></a>Yönetici erişimi
+## <a name="authentication"></a>Kimlik doğrulaması
 
-[Rol tabanlı erişim (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , hizmet ve içeriği üzerinde denetimlere erişip erişemeyeceğinizi belirler. Azure Bilişsel Arama hizmetinde bir sahibiniz veya katılımcısı varsa, hizmette nesne oluşturmak, güncelleştirmek veya silmek için portalı veya PowerShell **az. Search** modülünü kullanabilirsiniz. [Azure bilişsel arama Management REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)de kullanabilirsiniz.
+### <a name="admin-access"></a>Yönetici erişimi
 
-## <a name="user-access"></a>Kullanıcı erişimi
+[Rol tabanlı erişim (RBAC),](https://docs.microsoft.com/azure/role-based-access-control/overview) hizmet ve içeriği üzerindeki denetimlere erişip erişemeyeceğiniz belirlenir. Azure Bilişsel Arama hizmetinde Sahip veya Katılımcıysanız, hizmetteki nesneleri oluşturmak, güncelleştirmek veya silmek için portalı veya PowerShell **Az.Search** modülünü kullanabilirsiniz. [Ayrıca Azure Bilişsel Arama Yönetimi REST API'yi](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)de kullanabilirsiniz.
 
-Varsayılan olarak, bir dizine kullanıcı erişimi, sorgu isteğindeki erişim anahtarı tarafından belirlenir. Çoğu geliştirici, istemci tarafı arama istekleri için [*sorgu anahtarları*](search-security-api-keys.md) oluşturur ve atar. Sorgu anahtarı, Dizin içerisindeki tüm içeriğe okuma erişimi verir.
+### <a name="user-access"></a>Kullanıcı erişimi
 
-İçerik üzerinde ayrıntılı, Kullanıcı başına denetim istiyorsanız, sorgularda güvenlik filtreleri derleyebilir ve belirli bir güvenlik kimliğiyle ilişkili belgeleri getirebilirsiniz. Kimlik tabanlı erişim denetimi, önceden tanımlanmış roller ve rol atamaları yerine, belgelerin ve içeriğin arama sonuçlarını kimliklere göre kırpan bir *filtre* olarak uygulanır. Aşağıdaki tabloda yetkisiz içeriğin arama sonuçlarını kırpma için iki yaklaşım açıklanmaktadır.
+Varsayılan olarak, bir dizin kullanıcı erişimi sorgu isteği üzerinde erişim anahtarı tarafından belirlenir. Çoğu geliştirici istemci tarafındaki arama istekleri için [*sorgu anahtarları*](search-security-api-keys.md) oluşturur ve atar. Sorgu anahtarı, dizindeki tüm içeriğe okuma erişimi sağlar.
+
+İçerik üzerinde parçalı, kullanıcı başına denetime ihtiyaç duyarsanız, sorgularınıza güvenlik filtreleri oluşturabilir ve belirli bir güvenlik kimliğiyle ilişkili belgeleri döndürebilirsiniz. Önceden tanımlanmış roller ve rol atamaları yerine, kimlik tabanlı erişim denetimi, kimlikleri temel alan belgelerin ve içeriğin arama sonuçlarını kesen bir *filtre* olarak uygulanır. Aşağıdaki tabloda, yetkisiz içeriğin arama sonuçlarını kırpmak için iki yaklaşım açıklanmaktadır.
 
 | Yaklaşım | Açıklama |
 |----------|-------------|
-|[Kimlik filtrelerine göre güvenlik kırpması](search-security-trimming-for-azure-search.md)  | Kullanıcı kimliği erişim denetimi uygulamak için temel iş akışını belgeler. Bir dizine güvenlik tanımlayıcıları eklenmesini ve sonra yasaklanmış içeriğin sonuçlarını kırpmak için bu alana karşı filtrelemeyi açıklar. |
-|[Azure Active Directory kimliklerine göre güvenlik kırpması](search-security-trimming-for-azure-search-with-aad.md)  | Bu makale, Azure bulut platformunda [ücretsiz hizmetlerden](https://azure.microsoft.com/free/) biri olan Azure ACTIVE DIRECTORY (AAD) ' den kimlik alma adımlarını sağlayan önceki makaleye genişletilir. |
+|[Kimlik filtrelerine dayalı güvenlik kırpma](search-security-trimming-for-azure-search.md)  | Kullanıcı kimliği erişim denetimini uygulamak için temel iş akışını belgeler. Bir dizin için güvenlik tanımlayıcıları eklemeyi kapsar ve ardından yasaklı içeriğin sonuçlarını kırpmak için bu alana karşı filtreleme açıklar. |
+|[Azure Etkin Dizin kimliklerine dayalı güvenlik kırpma](search-security-trimming-for-azure-search-with-aad.md)  | Bu makale, Azure bulut platformundaki [ücretsiz hizmetlerden](https://azure.microsoft.com/free/) biri olan Azure Active Directory'den (AAD) kimlik alma adımları sağlayarak önceki makalede genişletir. |
 
-## <a name="table-permissioned-operations"></a>Tablo: permissioned işlemler
+## <a name="table-permissioned-operations"></a>Tablo: İzin verilen işlemler
 
-Aşağıdaki tabloda, Azure Bilişsel Arama 'de izin verilen işlemler özetlenmektedir ve hangi anahtarın belirli bir işleme erişim kilidi vardır.
+Aşağıdaki tablo, Azure Bilişsel Arama'da izin verilen işlemleri ve belirli bir işlemiçin hangi anahtarın kilidini açtığını özetler.
 
 | İşlem | İzinler |
 |-----------|-------------------------|
 | Hizmet oluşturma | Azure abonelik sahibi|
-| Hizmeti ölçeklendirme | Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan  |
-| Hizmet silme | Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan |
-| Hizmette nesne oluşturun, değiştirin, silin: <br>Dizinler ve bileşen bölümleri (çözümleyici tanımları, Puanlama profilleri, CORS seçenekleri dahil), Dizin oluşturucular, veri kaynakları, eş anlamlılar, öneri araçları. | Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan  |
-| Dizin sorgulama | Yönetici veya sorgu anahtarı (RBAC uygulanamaz) |
-| İstatistik, sayı ve nesne listesi döndürme gibi sistem bilgilerini sorgulama. | Yönetici anahtarı, kaynak üzerinde RBAC (sahip, katkıda bulunan, okuyucu) |
-| Yönetici anahtarlarını yönetme | Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan. |
-| Sorgu anahtarlarını Yönet |  Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan.  |
+| Bir hizmeti ölçeklendirin | Yönetici anahtarı, RBAC Sahibi veya Kaynakta Katkıda Bulunan  |
+| Bir hizmeti silme | Yönetici anahtarı, RBAC Sahibi veya Kaynakta Katkıda Bulunan |
+| Hizmetteki nesneleri oluşturma, değiştirme, silme: <br>Dizinler ve bileşen parçaları (çözümleyici tanımları, puanlama profilleri, CORS seçenekleri dahil), dizinleyiciler, veri kaynakları, eşanlamlılar, önericiler. | Yönetici anahtarı, RBAC Sahibi veya Kaynakta Katkıda Bulunan  |
+| Dizin sorgusu | Yönetici veya sorgu anahtarı (RBAC geçerli değildir) |
+| Dönen istatistikler, sayımlar ve nesne listeleri gibi sistem bilgilerini sorgulayın. | Yönetici anahtarı, kaynak üzerinde RBAC (Sahibi, Katkıda Bulunan, Okuyucu) |
+| Yönetici anahtarlarını yönetme | Kaynakta yönetici anahtarı, RBAC Sahibi veya Katkıda Bulunan. |
+| Sorgu tuşlarını yönetme |  Kaynakta yönetici anahtarı, RBAC Sahibi veya Katkıda Bulunan.  |
 
 ## <a name="physical-security"></a>Fiziksel güvenlik
 
-Microsoft veri merkezleri, sektör lideri fiziksel güvenlik sağlar ve kapsamlı standartlar ve yönetmeliklerle uyumludur. Daha fazla bilgi edinmek için [küresel veri merkezleri](https://www.microsoft.com/cloud-platform/global-datacenters) sayfasına gidin veya veri merkezi güvenliği hakkında kısa bir video izleyin.
+Microsoft veri merkezleri sektör lideri fiziksel güvenlik sağlar ve kapsamlı bir standart ve düzenleme portföyüyle uyumludır. Daha fazla bilgi edinmek için [Global veri merkezleri](https://www.microsoft.com/cloud-platform/global-datacenters) sayfasına gidin veya veri merkezi güvenliği yle ilgili kısa bir video izleyin.
 
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Kullanmaya başlama .NET (bir dizin oluşturmak için bir yönetici anahtarı kullanmayı gösterir)](search-create-index-dotnet.md)
-+ [Kullanmaya başlama REST (bir dizin oluşturmak için bir yönetici anahtarı kullanmayı gösterir)](search-create-index-rest-api.md)
-+ [Azure Bilişsel Arama filtreleri kullanılarak kimlik tabanlı erişim denetimi](search-security-trimming-for-azure-search.md)
-+ [Azure Bilişsel Arama filtrelerini kullanarak kimlik tabanlı erişim denetimi Active Directory](search-security-trimming-for-azure-search-with-aad.md)
-+ [Azure Bilişsel Arama filtreler](search-filters.md)
++ [.NET'e başlayın (dizin oluşturmak için yönetici anahtarını kullanarak gösterir)](search-create-index-dotnet.md)
++ [REST'e başlayın (dizin oluşturmak için yönetici anahtarını kullanarak gösterilir)](search-create-index-rest-api.md)
++ [Azure Bilişsel Arama filtrelerini kullanarak kimlik tabanlı erişim denetimi](search-security-trimming-for-azure-search.md)
++ [Azure Bilişsel Arama filtrelerini kullanarak Etkin Dizin kimlik tabanlı erişim denetimi](search-security-trimming-for-azure-search-with-aad.md)
++ [Azure Bilişsel Arama'daki Filtreler](search-filters.md)

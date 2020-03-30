@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67189059"
 ---
-Önceki örnekte oturum açma, istemci uygulama her başlatıldığında kimlik sağlayıcısı hem de arka uç Azure hizmeti bağlantı gerektiren standart gösterdi. Bu yöntem verimsizdir ve birçok müşteri, uygulamanız aynı anda başlatmaya çalışırsanız kullanımı ile ilgili sorunlar olabilir. Daha iyi bir yaklaşım, Azure hizmet tarafından döndürülen yetkilendirme belirteci önbelleğe almak ve bir sağlayıcı tabanlı oturum açma kullanmadan önce bu ilk kullanmaya çalıştığınızda oluşturmaktır.
+Önceki örnekte, istemcinin uygulama her başlatınca hem kimlik sağlayıcısına hem de arka uçAzure hizmetiyle iletişim kurmasını gerektiren standart bir oturum açma gösterilmektedir. Bu yöntem verimsizdir ve birçok müşteri uygulamanızı aynı anda başlatmaya çalışırsa kullanımla ilgili sorunlarla karşılayabilirsiniz. Daha iyi bir yaklaşım, Azure hizmeti tarafından döndürülen yetkilendirme belirteci önbelleğe almak ve sağlayıcı tabanlı oturum açma kullanmadan önce bunu kullanmaya çalışmaktır.
 
 > [!NOTE]
-> Arka uç istemcisi tarafından yönetilen ya da hizmetle yönetilen kimlik doğrulama kullanmanıza bakılmaksızın Azure hizmeti tarafından verilen belirteç önbelleğe alabilir. Bu öğretici, hizmet tarafından yönetilen kimlik doğrulaması kullanır.
+> İstemci tarafından yönetilen veya hizmet tarafından yönetilen kimlik doğrulaması kullanıp kullanmadığınıza bakılmaksızın, arka uç Azure hizmeti tarafından verilen belirteci önbelleğe alabilirsiniz. Bu öğretici, hizmet tarafından yönetilen kimlik doğrulaması kullanır.
 >
 >
 
-1. ToDoActivity.java dosyasını açın ve aşağıdaki import deyimlerini ekleyin:
+1. ToDoActivity.java dosyasını açın ve aşağıdaki alma ekstrelerini ekleyin:
 
     ```java
     import android.content.Context;
@@ -26,7 +26,7 @@ ms.locfileid: "67189059"
     import android.content.SharedPreferences.Editor;
     ```
 
-2. Aşağıdaki üye ekleme `ToDoActivity` sınıfı.
+2. Aşağıdaki üyeleri sınıfa `ToDoActivity` ekleyin.
 
     ```java
     public static final String SHAREDPREFFILE = "temp";
@@ -34,7 +34,7 @@ ms.locfileid: "67189059"
     public static final String TOKENPREF = "tkn";
     ```
 
-3. Aşağıdaki tanım ToDoActivity.java dosyasında, ekleme `cacheUserToken` yöntemi.
+3. ToDoActivity.java dosyasında, `cacheUserToken` yöntem için aşağıdaki tanımı ekleyin.
 
     ```java
     private void cacheUserToken(MobileServiceUser user)
@@ -47,14 +47,14 @@ ms.locfileid: "67189059"
     }
     ```
 
-    Bu yöntem kullanıcı kimliği ve belirteç özel olarak işaretlenmiş bir tercih dosyasında depolar. Cihazdaki diğer uygulamaların belirtecine erişimi yoktur, bu önbelleğe erişimi korur. Uygulama için korumalı tercihi. Birisi cihaza erişim kazanırsa, ancak bunlar arasında başka yollarla belirteç önbelleğe erişim kazanabilmesi mümkündür.
+    Bu yöntem, kullanıcı kimliğini ve belirteci özel olarak işaretlenmiş bir tercih dosyasında depolar. Bu, aygıttaki diğer uygulamaların belirtemeye erişimi olmaması için önbelleğe erişimi korumalıdır. Uygulama için tercih sandboxed. Ancak, birisi aygıta erişirse, belirteç önbelleğine başka yollarla erişebilmek mümkündür.
 
    > [!NOTE]
-   > Belirteç şifreleme ile verilerinize erişim belirteci yüksek oranda gizli olarak kabul edilir ve birisi cihaz erişim elde, daha iyi koruyabilirsiniz. Tamamen güvenli bir çözümü bu öğreticinin kapsamı dışındadır ancak ve güvenlik gereksinimlerinize bağlıdır.
+   > Belirteci şifreleme yle daha da koruyabilirsiniz, verilerinize giriş belirteç erişimi son derece hassas kabul edilirse ve birisi aygıta erişebilirse. Ancak tamamen güvenli bir çözüm bu öğreticinin kapsamı dışındadır ve güvenlik gereksinimlerinize bağlıdır.
    >
    >
 
-4. Aşağıdaki tanım ToDoActivity.java dosyasında, ekleme `loadUserTokenCache` yöntemi.
+4. ToDoActivity.java dosyasında, `loadUserTokenCache` yöntem için aşağıdaki tanımı ekleyin.
 
     ```java
     private boolean loadUserTokenCache(MobileServiceClient client)
@@ -75,7 +75,7 @@ ms.locfileid: "67189059"
     }
     ```
 
-5. İçinde *ToDoActivity.java* dosyası, değiştirin `authenticate` ve `onActivityResult` belirteç önbelleği kullanan aşağıdaki fiyatlarla yöntemleri. Google dışında bir hesap kullanmak istiyorsanız, oturum açma sağlayıcısı değiştirin.
+5. *ToDoActivity.java* dosyasında, belirteç önbelleği kullanan aşağıdakilerle `authenticate` ve `onActivityResult` yöntemleri değiştirin. Google dışında bir hesap kullanmak istiyorsanız oturum açma sağlayıcısını değiştirin.
 
     ```java
     private void authenticate() {
@@ -114,4 +114,4 @@ ms.locfileid: "67189059"
     }
     ```
 
-6. Uygulama ve test kimlik doğrulaması kullanarak geçerli bir hesap oluşturun. Çalıştırın, en az iki kere. İlk çalıştırma sırasında oturum açın ve belirteç önbelleği oluşturmak için bir istem almanız gerekir. Bundan sonra her farklı çalıştır kimlik doğrulaması için belirteç önbelleği yüklemeyi dener. Oturum açmak için gerekli olmamalıdır.
+6. Geçerli bir hesap kullanarak uygulamayı oluşturun ve kimlik doğrulamasını test edin. En az iki kez çalıştırın. İlk çalıştırma sırasında, oturum açma ve belirteç önbelleği oluşturma istemleri almanız gerekir. Bundan sonra, her çalıştırma kimlik doğrulaması için belirteç önbelleğini yüklemeye çalışır. Oturum açmanız gerekmez.

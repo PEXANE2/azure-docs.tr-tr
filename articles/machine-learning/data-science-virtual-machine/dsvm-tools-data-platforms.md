@@ -10,71 +10,71 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: bfae8147c348c76fa0e406fec283144ebc26e86b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270114"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282333"
 ---
-# <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Veri bilimi sanal makinesi üzerinde desteklenen veri platformları
+# <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makine'de desteklenen veri platformları
 
-Veri Bilimi Sanal Makinesi (DSVM) ile analizlerinizi çok çeşitli veri platformları için oluşturabilirsiniz. Uzak Veri platformları arabirimlerine ek olarak, DSVM prototip oluşturma ve hızlı geliştirme için yerel bir örnek sağlar.
+Veri Bilimi Sanal Makinesi (DSVM) ile analizlerinizi çok çeşitli veri platformlarına karşı oluşturabilirsiniz. Uzak veri platformlarına arayüzlere ek olarak, DSVM hızlı geliştirme ve prototipleme için yerel bir örnek sağlar.
 
-DSVM 'de aşağıdaki veri platformu araçları desteklenir.
+Aşağıdaki veri platformu araçları DSVM'de desteklenir.
 
-## <a name="sql-server-developer-edition"></a>SQL Server Developer sürümü
+## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
 
 | | |
 | ------------- | ------------- |
-| Nedir?   | Yerel bir ilişkisel veritabanı      |
-| Desteklenen DSVM sürümleri      | Windows: SQL Server 2017, Windows 2019 (Önizleme): SQL Server 2019      |
-| Tipik kullanımları      | Yerel olarak daha küçük veri kümesi ile hızlı geliştirme <br/> Veritabanında R çalıştırın   |
-| Örneklere bağlantılar      |    Yeni bir York City veri kümesinin küçük bir örneği SQL veritabanına yüklenir:<br/>  `nyctaxi` <br/> Microsoft Machine Learning Server ve veritabanı içi analizlerini gösteren Jupyter örneği şurada bulunabilir:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| DSVM 'deki ilgili araçlar       | SQL Server Management Studio <br/> ODBC/JDBC sürücüleri<br/> pyodbc, RODBC<br />Apache ayrıntıya      |
+| Bu nedir?   | Yerel ilişkisel veritabanı örneği      |
+| Desteklenen DSVM sürümleri      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
+| Tipik kullanımlar      | Daha küçük veri kümesi ile yerel olarak hızlı gelişme <br/> Veritabanı nda R çalıştır   |
+| Örneklere bağlantılar      |    New York'taki bir veri kümesinin küçük bir örneği SQL veritabanına yüklenir:<br/>  `nyctaxi` <br/> Microsoft Machine Learning Server ve veritabanı içi analizlerini gösteren jupyter örneğine şu adresi bulabilirsiniz:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
+| DSVM ile ilgili araçlar       | SQL Server Management Studio <br/> ODBC/JDBC sürücüleri<br/> pyodbc, RODBC<br />Apache Drill      |
 
 > [!NOTE]
-> SQL Server Developer sürümü yalnızca geliştirme ve test amaçları için kullanılabilir. Bir lisans ya da bir üretim ortamında çalıştırmak için SQL Server Vm'leri gerekir.
+> SQL Server Developer Edition yalnızca geliştirme ve test amacıyla kullanılabilir. Üretimde çalıştırmak için bir lisansa veya SQL Server VM'lerden birine ihtiyacınız vardır.
 
 
 ### <a name="setup"></a>Kurulum
 
-Veritabanı sunucusu zaten önceden yapılandırılmıştır ve SQL Server ilişkili Windows Hizmetleri (`SQL Server (MSSQLSERVER)`gibi) otomatik olarak çalışacak şekilde ayarlanır. Tek el ile yapılan adım, Microsoft Machine Learning Server kullanarak veritabanı Içi analizlerin etkinleştirilmesini içerir. SQL Server Management Studio (SSMS) ' de bir kerelik eylem olarak aşağıdaki komutu çalıştırarak analizlerinizi etkinleştirebilirsiniz. Makine Yöneticisi olarak oturum açtıktan sonra SSMS 'de yeni bir sorgu açarak ve seçilen veritabanının `master`olduğundan emin olduktan sonra bu komutu çalıştırın:
+Veritabanı sunucusu zaten önceden yapılandırılmıştır ve SQL Server ile `SQL Server (MSSQLSERVER)`ilgili Windows hizmetleri (benzeri) otomatik olarak çalışacak şekilde ayarlanmıştır. Tek manuel adım, Microsoft Machine Learning Server'ı kullanarak veritabanı içi analizleri etkinleştirmektir. Aşağıdaki komutu SQL Server Management Studio'da (SSMS) tek seferlik bir eylem olarak çalıştırarak analitiği etkinleştirebilirsiniz. Makine yöneticisi olarak oturum açtıktan sonra bu komutu çalıştırın, SSMS'te `master`yeni bir sorgu açın ve seçili veritabanının aşağıdakilerden emin olun:
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
         (Replace %COMPUTERNAME% with your VM name.)
        
-SQL Server Management Studio çalıştırmak için program listesinde "SQL Server Management Studio" araması yapabilir veya Windows Search kullanarak dosyayı bulup çalıştırabilirsiniz. Kimlik bilgileri istendiğinde, **Windows kimlik doğrulaması** ' nı seçin ve **SQL Server adı** alanında makine adını veya ```localhost``` kullanın.
+SQL Server Management Studio'yu çalıştırmak için program listesinde "SQL Server Management Studio"yu arayabilir veya bulmak ve çalıştırmak için Windows Arama'yı kullanabilirsiniz. Kimlik bilgileri istendiğinde, **Windows Kimlik Doğrulaması'nı** seçin ve makine adını veya ```localhost``` SQL Server **Name** alanında kullanın.
 
-### <a name="how-to-use-and-run-it"></a>Kullanma ve çalıştırma
+### <a name="how-to-use-and-run-it"></a>Nasıl kullanılır ve çalıştırın
 
-Varsayılan olarak, varsayılan veritabanı örneğiyle veritabanı sunucusu otomatik olarak çalışır. Yerel SQL Server veritabanına erişmek için VM üzerinde SQL Server Management Studio gibi araçlar kullanın. Yerel yönetici hesaplarının, veritabanında Yönetici erişimi vardır.
+Varsayılan olarak, varsayılan veritabanı örneği olan veritabanı sunucusu otomatik olarak çalışır. SQL Server veritabanına yerel olarak erişmek için VM'deki SQL Server Management Studio gibi araçları kullanabilirsiniz. Yerel yönetici hesaplarıveritabanında yönetici erişimine sahiptir.
 
-Ayrıca, DSVM, Python ve Machine Learning Server dahil olmak üzere birden çok dilde yazılan uygulamalardan SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı ile konuşmak için ODBC ve JDBC sürücülerle birlikte gelir.
+Ayrıca, DSVM, Python ve Machine Learning Server dahil olmak üzere birden çok dilde yazılmış uygulamalardan SQL Server, Azure SQL veritabanları ve Azure SQL Veri Ambarı ile konuşmak için ODBC ve JDBC sürücüleri ile birlikte gelir.
 
-### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>DSVM 'de nasıl yapılandırılır ve yüklenir? 
+### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Nasıl yapılandırılır ve DSVM yüklü? 
 
- SQL Server, standart şekilde yüklenir. `C:\Program Files\Microsoft SQL Server`' de bulunabilir. Veritabanı Içi Machine Learning Server örneği `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`konumunda bulunur. DSVM Ayrıca, `C:\Program Files\Microsoft\R Server\R_SERVER`yüklenen ayrı bir tek başına Machine Learning Server örneğine sahiptir. Bu iki Machine Learning Server örneği kitaplıkları paylaşmaz.
+ SQL Server standart şekilde yüklenir. Bu da `C:\Program Files\Microsoft SQL Server`bulunabilir . Veritabanı içi Machine Learning Server örneğinde `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`bulunur. DSVM de yüklü ayrı bir bağımsız Machine Learning Server `C:\Program Files\Microsoft\R Server\R_SERVER`örneği vardır. Bu iki Machine Learning Server örneği kitaplıkları paylaşmaz.
 
 
-## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (tek başına)
+## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (Tek Başına)
 
 | | |
 | ------------- | ------------- |
-| Nedir?   | Popüler Apache Spark platformunun tek başına (işlem içi tek düğümlü) örneği; hızlı, büyük ölçekli veri işleme ve makine öğrenimi için bir sistem     |
+| Bu nedir?   | Popüler Apache Spark platformunun tek başına (tek düğüm işlem) örneği; hızlı, büyük ölçekli veri işleme ve makine öğrenimi için bir sistem     |
 | Desteklenen DSVM sürümleri      | Linux     |
-| Tipik kullanımları      | * Azure HDInsight gibi büyük Spark kümelerinde daha küçük bir veri kümesiyle ve daha sonra dağıtımıyla Spark/PySpark uygulamalarının hızla geliştirilmesi<br/> * Test Microsoft Machine Learning Server Spark bağlamı <br />* ML uygulamaları derlemek için parlak ml veya Microsoft 'un açık kaynaklı bir [Mmlspark](https://github.com/Azure/mmlspark) kitaplığı kullanın |
-| Örneklere bağlantılar      |    Jupyter örneği: <br />&nbsp;&nbsp;* ~/Notebooks/parlak ml/pyspark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (Spark bağlamı):/Dsvm/Samples/Mrs/mrsmini Contextsample.exe |
-| DSVM 'deki ilgili araçlar       | PySpark, Scala<br/>Jupyter (Spark/PySpark çekirdekleri)<br/>Microsoft Machine Learning Server, parlak r, parlak LYR <br />Apache ayrıntıya      |
+| Tipik kullanımlar      | * Daha küçük bir veri seti ile Yerel olarak Spark/PySpark uygulamalarının hızlı gelişimi ve daha sonra Azure HDInsight gibi büyük Spark kümelerinde dağıtım<br/> * Test Microsoft Machine Learning Server Kıvılcım bağlam <br />* ML uygulamaları oluşturmak için SparkML veya Microsoft'un açık kaynak [MMLSpark](https://github.com/Azure/mmlspark) kitaplığını kullanın |
+| Örneklere bağlantılar      |    Jupyter örnek: <br />&nbsp;&nbsp;* ~/dizüstü bilgisayarlar/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/dizüstü bilgisayarlar/MMLSpark <br /> Microsoft Machine Learning Server (Spark bağlamı): /dsvm/samples/MRS/MRSSparkContextSample.R |
+| DSVM ile ilgili araçlar       | PySpark, Scala<br/>Jupyter (Kıvılcım / PySpark Çekirdekleri)<br/>Microsoft Machine Learning Server, SparkR, Sparklyr <br />Apache Drill      |
 
-### <a name="how-to-use-it"></a>Kullanımı
-`spark-submit` veya `pyspark` komutunu çalıştırarak Spark işlerini komut satırına gönderebilirsiniz. Yeni bir not defteri ile Spark çekirdek oluşturarak, Jupyter Not Defteri de oluşturabilirsiniz.
+### <a name="how-to-use-it"></a>Nasıl kullanılır?
+Spark işlerini komut satırında `spark-submit` veya `pyspark` komutu çalıştırarak gönderebilirsiniz. Ayrıca, Spark çekirdeğiyle yeni bir dizüstü bilgisayar oluşturarak bir Jupyter dizüstü bilgisayar oluşturabilirsiniz.
 
-R 'den Spark kullanarak, DSVM 'de bulunan parlak r, parlak LYR ve Microsoft Machine Learning Server gibi kitaplıkları kullanabilirsiniz. Önceki tabloda örnekleri işaretçileri bakın.
+Spark from R'yi, DSVM'de bulunan SparkR, Sparklyr ve Microsoft Machine Learning Server gibi kitaplıkları kullanarak kullanabilirsiniz. Önceki tablodaki örneklerin işaretçilerine bakın.
 
 ### <a name="setup"></a>Kurulum
-Ubuntu Linux DSVM sürümünde Microsoft Machine Learning Server bir Spark bağlamında çalışmadan önce, yerel tek düğümlü Hadoop ve Yarn örneğini etkinleştirmek için bir kerelik kurulum adımını doldurmanız gerekir. Varsayılan olarak, Hadoop Hizmetleri yüklendi ancak DSVM'nin devre dışı. Bunları etkinleştirmek için, ilk kez kök olarak aşağıdaki komutları çalıştırın:
+Ubuntu Linux DSVM sürümünde Microsoft Machine Learning Server'da Spark bağlamında çalışmadan önce, yerel bir tek düğüm Hadoop HDFS ve İplik örneğini etkinleştirmek için tek seferlik bir kurulum adımLarını tamamlamanız gerekir. Varsayılan olarak, Hadoop hizmetleri yüklenir, ancak DSVM'de devre dışı bırakılır. Bunları etkinleştirmek için, aşağıdaki komutları ilk kez kök olarak çalıştırın:
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
     cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
@@ -84,20 +84,20 @@ Ubuntu Linux DSVM sürümünde Microsoft Machine Learning Server bir Spark bağl
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```çalıştırarak Hadoop ile ilgili hizmetleri artık ihtiyacınız kalmadığında durdurabilirsiniz.
+Artık çalıştırarak ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```bunlara ihtiyacınız olmadığında Hadoop ile ilgili hizmetleri durdurabilirsiniz.
 
-Bir uzak Spark bağlamında (DSVM 'deki tek başına Spark örneği), `/dsvm/samples/MRS` dizininde sağlandığını ve kullanılabilir olduğunu gösteren bir örnek.
+Mrs'in uzak bir Kıvılcım bağlamında (DSVM'deki tek tek Kıvılcım örneği) nasıl geliştirilip test edilebildiğini `/dsvm/samples/MRS` gösteren bir örnek sağlanır ve dizinde kullanılabilir.
 
 
-### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>DSVM 'de nasıl yapılandırılır ve yüklenir? 
-|Platform|Yükleme konumu ($SPARK_HOME)|
+### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Nasıl yapılandırılır ve DSVM yüklü? 
+|Platform|Konum Yükle ($SPARK_HOME)|
 |:--------|:--------|
-|Linux   | /dsvm/Tools/Spark-X.X.X-bin-hadoopX.X|
+|Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-Microsoft MMLSpark Machine-Learning kitaplıklarını kullanarak Azure Blob depolama veya Azure Data Lake Storage verilere erişmek için kitaplıklar, $SPARK _HOME/jars. Bu jar dosyaları dışındaki, Spark başlatıldığında otomatik olarak yüklenir. Spark, varsayılan olarak yerel diskte verileri kullanır. 
+Microsoft MMLSpark makine öğrenimi kitaplıklarını kullanarak Azure Blob depolama veya Azure Veri Gölü Depolama'dan verilere erişmek için kitaplıklar $SPARK_HOME/jar'larda önceden yüklenir. Spark başlatıldığında bu JA'lar otomatik olarak yüklenir. Varsayılan olarak, Spark yerel diskteki verileri kullanır. 
 
-DSVM 'deki Spark örneğinin blob depolamada veya Azure Data Lake Storage depolanan verilere erişmesi için, $SPARK _HOME/conf/Core-site.xml.Template. içinde bulunan şablona göre `core-site.xml` dosyasını oluşturmanız ve yapılandırmanız gerekir. Ayrıca blob depolamaya ve Azure Data Lake Storage erişmek için uygun kimlik bilgilerine sahip olmanız gerekir. (Şablon dosyalarının BLOB depolama ve Azure Data Lake Storage yapılandırmalarına yönelik yer tutucuları kullandığına unutmayın.)
+DSVM'deki Kıvılcım örneğinin Blob depolamaveya Azure Veri Gölü Depolama'da depolanan verilere `core-site.xml` erişmesi için dosyayı $SPARK_HOME/conf/core-site.xml.template'de bulunan şablona göre oluşturmanız ve yapılandırmanız gerekir. Blob depolama ve Azure Veri Gölü Depolama erişmek için uygun kimlik bilgilerine de sahip olmalısınız. (Şablon dosyalarının Blob depolama ve Azure Veri Gölü Depolama yapılandırmaları için yer tutucular kullandığını unutmayın.)
 
-Azure Data Lake Storage hizmeti kimlik bilgileri oluşturma hakkında daha ayrıntılı bilgi için bkz. [Azure Data Lake Storage 1. Ile kimlik doğrulama](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Blob Storage veya Azure Data Lake Storage kimlik bilgileri Core-site. xml dosyasına girildikten sonra, bu kaynaklarda depolanan verilere wasb://veya adl://URI öneki aracılığıyla başvurabilirsiniz.
+Azure Veri Gölü Depolama hizmeti kimlik bilgilerini oluşturma hakkında daha ayrıntılı bilgi için Bkz. [Azure Veri Gölü Depolama Gen1 ile Kimlik Doğrulama](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Blob depolama veya Azure Veri Gölü Depolama kimlik bilgileri core-site.xml dosyasına girilen sonra, wasb:// veya adl:// URI öneki aracılığıyla bu kaynaklarda depolanan verilere başvurulayabilirsiniz.
 

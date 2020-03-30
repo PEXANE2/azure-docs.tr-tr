@@ -1,31 +1,30 @@
 ---
-title: API konuları | Azure Marketi
-description: Market API 'Leri kullanılırken sürüm oluşturma, hata işleme ve yetkilendirme sorunları.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: API Hususlar | Azure Marketi
+description: Pazar apilerini kullanırken sürüm, hata işleme ve yetkilendirme sorunları.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 07cdb5e44dde0ca655191111d0a23dbab85b4cb2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4e04f521ed2023dfb9cd562549cb2e1bcd319b8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819734"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288640"
 ---
-# <a name="api-considerations"></a>API konuları
+# <a name="api-considerations"></a>API Hususlar
 
 
-<a name="api-versioning"></a>API sürümü oluşturma
+<a name="api-versioning"></a>API sürüm
 --------------
 
-API 'nin aynı anda kullanılabilen birden fazla sürümü olabilir. İstemciler, sorgu dizesinin bir parçası olarak `api-version` parametresini sağlayarak hangi sürümü çağırmak istediğinizi belirtmelidir.
+API'nin aynı anda kullanılabilen birden çok sürümü olabilir. İstemciler, sorgu dizesinin `api-version` bir parçası olarak parametreyi sağlayarak hangi sürümü kullanmak istediklerini belirtmelidir.
 
    `GET https://cloudpartner.azure.com/api/offerTypes?api-version=2017-10-31`
 
-Bilinmeyen veya geçersiz API sürümüne sahip bir isteğin yanıtı bir HTTP kodudur 400. Bu hata, yanıt gövdesinde bilinen API sürümlerinin koleksiyonunu döndürür.
+Bilinmeyen veya geçersiz API sürümü olan bir isteğe yanıt bir HTTP kodu 400'dür. Bu hata, yanıt gövdesinde bilinen API sürümlerinin koleksiyonunu döndürür.
 
 ``` json
     {
@@ -39,13 +38,13 @@ Bilinmeyen veya geçersiz API sürümüne sahip bir isteğin yanıtı bir HTTP k
 <a name="errors"></a>Hatalar
 ------
 
-API, karşılık gelen HTTP durum kodlarıyla ve isteğe bağlı olarak JSON olarak serileştirildiği yanıtta ek bilgilerle hatalara yanıt verir.
-Bir hata aldığınızda, özellikle 400 sınıfı bir hata, temeldeki nedeni düzeltmeden önce isteği yeniden denemeyin. Örneğin, yukarıdaki örnek yanıtta, isteği yeniden göndermeden önce API sürümü parametresini onarın.
+API, ilgili HTTP durum kodlarındaki hatalara yanıt verir ve isteğe bağlı olarak, yanıttaki ek bilgiler JSON olarak serihale getirirken.
+Bir hata aldığınızda, özellikle 400 sınıflık bir hata, temel nedeni düzeltmeden önce isteği yeniden denemeyin. Örneğin, yukarıdaki örnek yanıtta, isteği yeniden göndermeden önce API sürüm parametresini düzeltin.
 
-<a name="authorization-header"></a>Yetkilendirme üst bilgisi
+<a name="authorization-header"></a>Yetkilendirme üstbilgi
 --------------------
 
-Bu başvurudaki tüm API 'Ler için, yetkilendirme üst bilgisini Azure Active Directory (Azure AD) tarafından alınan taşıyıcı belirteçle birlikte geçirmeniz gerekir. Bu üst bilgi, geçerli bir yanıt almak için gereklidir; Yoksa `401 Unauthorized` bir hata döndürülür. 
+Bu başvurudaki tüm API'ler için, Yetkilendirme üstbilgisini Azure Active Directory'den (Azure AD) alınan taşıyıcı belirteciyle birlikte geçirmeniz gerekir. Bu üstbilginin geçerli bir yanıt alması gerekir; yoksa, bir `401 Unauthorized` hata döndürülür. 
 
 ``` HTTP
   GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview

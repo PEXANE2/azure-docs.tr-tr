@@ -1,130 +1,130 @@
 ---
-title: Azure Logic Apps tümleştirme hizmeti ortamlarını yönetme
-description: Azure Logic Apps için tümleştirme hizmeti ortamınızda (ıSE) ağ durumunu kontrol edin ve Logic Apps, bağlantılar, özel bağlayıcılar ve tümleştirme hesaplarını yönetin
+title: Azure Logic Apps'ta entegrasyon hizmeti ortamlarını yönetme
+description: Azure Logic Apps için ağ durumunu kontrol edin ve mantıksal uygulamaları, bağlantıları, özel bağlayıcıları ve tümleştirme hesaplarını entegrasyon hizmet ortamınızda (ISE) yönetin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284206"
 ---
-# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınızı (ıSE) yönetme
+# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps'ta entegrasyon hizmet ortamınızı (ISE) yönetme
 
-Bu makalede, [tümleştirme hizmeti ortamınız (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)için yönetim görevlerinin nasıl gerçekleştirileceği gösterilmektedir, örneğin:
+Bu makalede, [entegrasyon hizmet ortamınız (İmKB)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)için yönetim görevlerinin nasıl gerçekleştirildi gösterilmektedir, örneğin:
 
-* Mantıksal uygulamalar, bağlantılar, tümleştirme hesapları ve çalışma ortamınızdaki bağlayıcılar gibi kaynakları yönetin.
-* ISE 'nin ağ sistem durumunu kontrol edin.
-* Kapasite ekleyin, ıSE 'nizi yeniden başlatın veya ıSE 'yi silin, bu konudaki adımları izleyin. Bu yapıtları ıSE 'nize eklemek için bkz. [Integration Service ortamınıza yapıt ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md).
+* İmKB'inizdeki mantık uygulamaları, bağlantılar, tümleştirme hesapları ve bağlayıcılar gibi kaynakları yönetin.
+* İmKB ağ durumunu kontrol edin.
+* Kapasite ekleyin, İmKB'nizi yeniden başlatın veya İmKB'nizi silin, bu konudaki adımları izleyin. Bu yapıları İmKB'nize eklemek [için](../logic-apps/add-artifacts-integration-service-environment-ise.md)bkz.
 
-## <a name="view-your-ise"></a>ISE 'nizi görüntüleme
+## <a name="view-your-ise"></a>İmKB'inizi görüntüleyin
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-1. Portalın arama kutusuna "tümleştirme hizmeti ortamları" yazın ve ardından **tümleştirme hizmeti ortamları**' nı seçin.
+1. Portalın arama kutusuna "tümleştirme hizmeti ortamları" girin ve ardından **Tümleştirme Hizmeti Ortamlarını**seçin.
 
-   ![Tümleştirme hizmeti ortamlarını bulun](./media/ise-manage-integration-service-environment/find-integration-service-environment.png)
+   ![Entegrasyon hizmeti ortamlarını bulma](./media/ise-manage-integration-service-environment/find-integration-service-environment.png)
 
-1. Sonuçlar listesinden tümleştirme hizmeti ortamınızı seçin.
+1. Sonuç listesinden, entegrasyon hizmeti ortamınızı seçin.
 
-   ![Tümleştirme hizmeti ortamını seçin](./media/ise-manage-integration-service-environment/select-integration-service-environment.png)
+   ![Entegrasyon hizmeti ortamını seçin](./media/ise-manage-integration-service-environment/select-integration-service-environment.png)
 
-1. Şirket içinde Logic Apps, bağlantılar, bağlayıcılar veya tümleştirme hesapları bulmak için sonraki bölümlere devam edin.
+1. İmKB'inizde mantık uygulamaları, bağlantılar, bağlayıcılar veya tümleştirme hesaplarını bulmak için sonraki bölümlere devam edin.
 
 <a name="check-network-health"></a>
 
-## <a name="check-network-health"></a>Ağ durumunu denetle
+## <a name="check-network-health"></a>Ağ durumunu denetleme
 
-ISE menüsünde **Ayarlar**' ın altında **ağ durumu**' nu seçin. Bu bölmede, alt ağlarınızın sistem durumu ve diğer hizmetlere giden bağımlılıklarınız gösterilir.
+İmKB menünüzde **Ayarlar**altında **Ağ durumunu**seçin. Bu bölme, alt ağlarınız ve diğer hizmetlere giden bağımlılıklarınızın sistem durumunu gösterir.
 
-![Ağ durumunu denetle](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
+![Ağ durumunu denetleme](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
 
 <a name="find-logic-apps"></a>
 
-## <a name="manage-your-logic-apps"></a>Mantıksal uygulamalarınızı yönetin
+## <a name="manage-your-logic-apps"></a>Mantık uygulamalarınızı yönetme
 
-ISE 'de olan Logic Apps 'i görüntüleyebilir ve yönetebilirsiniz.
+İmKB'inizdeki mantık uygulamalarını görüntüleyebilir ve yönetebilirsiniz.
 
-1. ISE menüsünde, **Ayarlar**' ın altında **Logic Apps**' i seçin.
+1. İmKB menünüzde **Ayarlar**altında **Mantık uygulamalarını**seçin.
 
-   ![Mantıksal uygulamaları görüntüleme](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
+   ![Mantık uygulamalarını görüntüleme](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Artık ihtiyacınız olmayan Logic Apps 'i kaldırmak için bu Logic Apps ' i seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. İmKB'nizde artık ihtiyacınız olmayan mantık uygulamalarını kaldırmak için bu mantık uygulamalarını seçin ve ardından **Sil'i**seçin. Silmek istediğinizi doğrulamak için **Evet'i**seçin.
 
 <a name="find-api-connections"></a>
 
 ## <a name="manage-api-connections"></a>API bağlantılarını yönetme
 
-ISE 'de çalışan Logic Apps tarafından oluşturulan bağlantıları görüntüleyebilir ve yönetebilirsiniz.
+İmKB'nizde çalışan mantık uygulamaları tarafından oluşturulan bağlantıları görüntüleyebilir ve yönetebilirsiniz.
 
-1. ISE menüsünde **Ayarlar**' ın altında **API bağlantıları**' nı seçin.
+1. İmKB menünüzde **Ayarlar**altında **API bağlantılarını**seçin.
 
-   ![API bağlantılarını görüntüle](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+   ![API bağlantılarını görüntüleme](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
 
-1. Artık ihtiyacınız olmayan bağlantıları kaldırmak için bu bağlantıları seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. İmKB'nizde artık ihtiyacınız olmayan bağlantıları kaldırmak için bu bağlantıları seçin ve ardından **Sil'i**seçin. Silmek istediğinizi doğrulamak için **Evet'i**seçin.
 
 <a name="manage-api-connectors"></a>
 
-## <a name="manage-ise-connectors"></a>ISE bağlayıcılarını yönetme
+## <a name="manage-ise-connectors"></a>İmKB konektörlerini yönetme
 
-ISE 'nize dağıtılan API bağlayıcılarını görüntüleyebilir ve yönetebilirsiniz.
+İmKB'nize dağıtılan API bağlayıcılarını görüntüleyebilir ve yönetebilirsiniz.
 
-1. ISE menüsünde, **Ayarlar**' ın altında, **yönetilen bağlayıcılar**' ı seçin.
+1. İmKB menünüzde **Ayarlar**altında **Yönetilen bağlayıcıları**seçin.
 
-   ![Yönetilen bağlayıcıları görüntüleme](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
+   ![Yönetilen konektörleri görüntüleme](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
 
-1. ISE 'de kullanılabilir olmasını istemediğiniz bağlayıcıları kaldırmak için bu bağlayıcıları seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. İmKB'nizde bulunmasını istemediğiniz bağlayıcıları kaldırmak için bu bağlayıcıları seçin ve ardından **Sil'i**seçin. Silmek istediğinizi doğrulamak için **Evet'i**seçin.
 
 <a name="find-custom-connectors"></a>
 
-## <a name="manage-custom-connectors"></a>Özel bağlayıcıları yönetme
+## <a name="manage-custom-connectors"></a>Özel konektörleri yönetme
 
-ISE 'nize dağıttığınız özel bağlayıcıları görüntüleyebilir ve yönetebilirsiniz.
+İmKB'nize dağıttığınız özel konektörleri görüntüleyebilir ve yönetebilirsiniz.
 
-1. ISE menüsünde **Ayarlar**' ın altında **özel bağlayıcılar**' ı seçin.
+1. Ise menünüzde **Ayarlar**altında **Özel bağlayıcıları**seçin.
 
    ![Özel bağlayıcıları bulma](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Artık ihtiyacınız olmayan özel bağlayıcıları kaldırmak için bu Bağlayıcılar ' ı seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+1. İmKB'nizde artık ihtiyacınız olmayan özel bağlayıcıları kaldırmak için bu bağlayıcıları seçin ve ardından **Sil'i**seçin. Silmek istediğinizi doğrulamak için **Evet'i**seçin.
 
 <a name="find-integration-accounts"></a>
 
 ## <a name="manage-integration-accounts"></a>Tümleştirme hesaplarını yönetme
 
-1. ISE menüsünde **Ayarlar**' ın altında **tümleştirme hesapları**' nı seçin.
+1. İmKB menünüzde **Ayarlar**altında **Tümleştirme hesaplarını**seçin.
 
-   ![Tümleştirme hesaplarını bul](./media/ise-manage-integration-service-environment/ise-find-integration-accounts.png)
+   ![Tümleştirme hesaplarını bulma](./media/ise-manage-integration-service-environment/ise-find-integration-accounts.png)
 
-1. Artık gerekmeyen tümleştirme hesaplarını ıSE bilgisayarınızdan kaldırmak için bu tümleştirme hesaplarını seçin ve **Sil**' i seçin.
+1. Artık gerekmediğinde bayrışmama hesaplarını İmKB'nizden kaldırmak için bu tümleştirme hesaplarını seçin ve ardından **Sil'i**seçin.
 
 <a name="add-capacity"></a>
 
-## <a name="add-ise-capacity"></a>ISE kapasitesi ekleme
+## <a name="add-ise-capacity"></a>ISE kapasitesi ekleyin
 
-Premium ıSE temel birimi sabit kapasiteye sahiptir, bu nedenle daha fazla işleme ihtiyacınız varsa, oluşturma sırasında veya daha sonra daha fazla ölçek birimi ekleyebilirsiniz. Geliştirici SKU 'SU ölçek birimleri ekleme özelliğini içermez.
+Premium ISE taban ünitesi sabit kapasiteye sahiptir, bu nedenle daha fazla iş elde etme gereksinimi duyarsanız, oluşturma sırasında veya sonrasında daha fazla ölçek birimi ekleyebilirsiniz. Geliştirici SKU ölçek birimleri ekleme özelliğiiçermez.
 
-1. [Azure Portal](https://portal.azure.com), Ise 'ye gidin.
+1. Azure [portalında](https://portal.azure.com)ISE'nize gidin.
 
-1. ISE 'nizin kullanım ve performans ölçümlerini gözden geçirmek için, ıSE menüsünde **genel bakış**' ı seçin.
+1. İmKB'nizin kullanım ve performans ölçümlerini gözden geçirmek için İmKB menünüzde **Genel Bakış'ı**seçin.
 
-   ![ISE için kullanımı görüntüleme](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
+   ![İmKB için kullanımı görüntüleyin](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
 
-1. **Ayarlar**altında **ölçeği Genişlet**' i seçin. **Yapılandır** bölmesinde, şu seçeneklerden birini seçin:
+1. **Ayarlar**altında, **Ölçeklendir'i**seçin. **Yapıla** bölmede şu seçeneklerden birini seçin:
 
-   * [**El ile ölçeklendirme**](#manual-scale): kullanmak istediğiniz işleme birimi sayısına göre ölçeklendirin.
-   * [**Özel otomatik ölçeklendirme**](#custom-autoscale): çeşitli ölçütlerden seçerek ve bu ölçütü karşılamak için eşik koşullarını belirterek performans ölçümlerine göre ölçeklendirin.
+   * [**El ile ölçek**](#manual-scale): Kullanmak istediğiniz işlem birimlerinin sayısına göre ölçeklendirin.
+   * [**Özel otomatik ölçek**](#custom-autoscale): Çeşitli ölçütlerden seçerek ve bu ölçütleri karşılamak için eşik koşullarını belirterek performans ölçümlerini temel alın.
 
    ![İstediğiniz ölçekleme türünü seçin](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 
-### <a name="manual-scale"></a>El ile ölçeklendirme
+### <a name="manual-scale"></a>Manuel ölçek
 
-1. **El ile ölçek**seçeneğini belirledikten sonra **ek kapasite**için, kullanmak istediğiniz ölçekleme birimi sayısını seçin.
+1. **Ek kapasite**için El **Ile ölçeklendirmeyi**seçtikten sonra, kullanmak istediğiniz ölçeklendirme birimlerinin sayısını seçin.
 
    ![İstediğiniz ölçekleme türünü seçin](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
@@ -134,50 +134,50 @@ Premium ıSE temel birimi sabit kapasiteye sahiptir, bu nedenle daha fazla işle
 
 ### <a name="custom-autoscale"></a>Özel otomatik ölçeklendirme
 
-1. Otomatik **Otomatik ölçeklendirme**seçeneğini belirledikten sonra **Otomatik ölçeklendirme ayarı adı**için, ayarınız için bir ad girin ve isteğe bağlı olarak, ayarın ait olduğu Azure kaynak grubunu seçin.
+1. **Otomatik Ölçek ayarı adı**için Özel otomatik **ölçeklendirmeyi**seçtikten sonra, ayarınız için bir ad sağlayın ve isteğe bağlı olarak, ayarın ait olduğu Azure kaynak grubunu seçin.
 
-   ![Otomatik ölçeklendirme ayarı için ad belirtin ve kaynak grubunu seçin](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
+   ![Otomatik ölçek lendirme ayarı için ad sağlayın ve kaynak grubunu seçin](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
 
-1. **Varsayılan** koşul için, **ölçüm temelinde ölçek** ' i veya **belirli bir örnek sayısına göre ölçeklendirin**' ı seçin.
+1. **Varsayılan** koşul için, bir metrik veya ölçek belirli bir **örnek sayısına** **dayalı Ölçek** seçin.
 
-   * Örnek tabanlı ' i seçerseniz, işleme birimlerinin numarasını 0 ile 10 arasında bir değer olacak şekilde girin.
+   * Örnek tabanlı seçerseniz, 0'dan 10'a kadar bir değer olan işlem birimlerinin numarasını girin.
 
-   * Ölçüm tabanlı ' i seçerseniz, aşağıdaki adımları izleyin:
+   * Metrik tabanlı seçerseniz, aşağıdaki adımları izleyin:
 
-     1. **Kurallar** bölümünde **Kural Ekle**' yi seçin.
+     1. **Kurallar** bölümünde kural **ekle'yi**seçin.
 
-     1. **Kural ölçekleme** bölmesinde, kural tetiklendiğinde gerçekleştirilecek ölçütlerinizi ve eyleminizi ayarlayın.
+     1. Ölçek **kuralı** bölmesinde, kural tetiklendiğinde ölçütlerinizi ve eyleminizi ayarlayın.
 
-     1. **Örnek sınırları**için şu değerleri belirtin:
+     1. **Örneğin sınırları**için, şu değerleri belirtin:
 
-        * **En az**: kullanılacak en düşük işleme birimi sayısı
-        * **Maksimum**: kullanılacak en fazla işleme birimi sayısı
-        * **Varsayılan**: kaynak ölçümleri okunurken herhangi bir sorun meydana geliyorsa ve geçerli kapasite varsayılan kapasitenin altındaysa, otomatik ölçeklendirme varsayılan işlem birimi sayısına göre ölçeklendirilir. Ancak, geçerli kapasite varsayılan kapasiteyi aşarsa, otomatik ölçeklendirme içinde ölçeklenmez.
+        * **Minimum**: Kullanılacak minimum işlem birimi sayısı
+        * **Maksimum**: Kullanılacak maksimum işlem birimi sayısı
+        * **Varsayılan**: Kaynak ölçümlerini okurken herhangi bir sorun meydana gelirse ve geçerli kapasite varsayılan kapasitenin altındaysa, otomatik ölçeklendirme varsayılan işlem birimi sayısına ölçeklenir. Ancak, geçerli kapasite varsayılan kapasiteyi aşarsa, otomatik ölçeklendirme ölçeklenmez.
 
-1. Başka bir koşul eklemek için **Ölçek koşulu Ekle**' yi seçin.
+1. Başka bir koşul eklemek için **ölçek koşulekle'yi**seçin.
 
-1. Otomatik ölçeklendirme ayarlarınızla işiniz bittiğinde değişikliklerinizi kaydedin.
+1. Otomatik ölçek ayarlarınızı bitirdiğinizde, değişikliklerinizi kaydedin.
 
 <a name="restart-ISE"></a>
 
-## <a name="restart-ise"></a>ISE 'yi yeniden Başlat
+## <a name="restart-ise"></a>İmKB'yi Yeniden Başlat
 
-DNS sunucunuzu veya DNS sunucusu ayarlarını değiştirirseniz, ıSE 'nin bu değişiklikleri görebilmesi için ıSE 'nizi yeniden başlatmanız gerekir. Bir Premium SKU 'nun yeniden başlatılması, geri dönüştürme sırasında tek seferde yeniden başlayan artıklık ve bileşenler nedeniyle kapalı kalma süresine neden olmaz. Ancak, bir geliştirici SKU 'SU mevcut olmadığından kesinti yaşar. Daha fazla bilgi için bkz. [Ise SKU 'ları](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
+DNS sunucu veya DNS sunucu ayarlarınızı değiştirirseniz, İmKB'nin bu değişiklikleri alabilmeleri için İmKB'nizi yeniden başlatmanız gerekir. Premium SKU ISE'nin yeniden başlatılması, artıklık ve geri dönüşüm sırasında birer birer yeniden başlayan bileşenler nedeniyle kesintiye neden olmaz. Ancak, bir Geliştirici SKU ISE, fazlalık olmadığı için kapalı kalma süresiyle karşılar. Daha fazla bilgi için Ise [SUS'lara](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)bakın.
 
-1. [Azure Portal](https://portal.azure.com), Ise 'ye gidin.
+1. Azure [portalında](https://portal.azure.com)ISE'nize gidin.
 
-1. ISE menüsünde **genel bakış**' ı seçin. Genel Bakış araç çubuğunda **yeniden başlatın**.
+1. İmKB menüsünde **Genel Bakış'ı**seçin. Genel Bakış araç çubuğunda, **Yeniden Başlat.**
 
-   ![Tümleştirme hizmeti ortamını yeniden Başlat](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
+   ![Tümleştirme hizmet ortamını yeniden başlatın](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
 
 <a name="delete-ise"></a>
 
-## <a name="delete-ise"></a>ISE 'yi Sil
+## <a name="delete-ise"></a>ISE'yi silin
 
-Artık ihtiyacınız olmayan bir ıSE veya bir ıSE içeren bir Azure Kaynak grubu silmeden önce, bu öğeler silmeyi engelleyebileceğinden, bu kaynakları içeren Azure Kaynak grubunda veya Azure sanal ağınızda ilke veya kilit olmadığından emin olun.
+Artık ihtiyacınız olmayan bir İmKB'yi veya Bir EŞey içeren bir Azure kaynak grubunu silmeden önce, bu kaynakları içeren Azure kaynak grubunda veya Azure sanal ağınızda bu öğelersilinmesini engelleyebildiği için hiçbir ilkeniz veya kilitleriniz olup olmadığını denetleyin.
 
-ISE 'nizi sildikten sonra, Azure Sanal ağınızı veya alt ağlarını silmeyi denemeden önce 9 saate kadar beklemeniz gerekebilir.
+İmKB'nizi sildikten sonra, Azure sanal ağınızı veya alt ağlarınızı silmeyi denemeden önce 9 saat kadar beklemeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tümleştirme hizmeti ortamlarına kaynak ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [Entegrasyon hizmeti ortamlarına kaynak ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md)

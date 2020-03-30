@@ -1,20 +1,19 @@
 ---
-title: Azure Marketi ve AppSource tercih edilen çözümler
-description: Market 'teki tercih edilen çözümlere ve bunların nasıl seçildikleri konusuna genel bakış
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+title: Azure Market ve AppSource tercih edilen çözümler
+description: Market içinde tercih edilen çözümlere ve nasıl seçildiklerine genel bakış
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: ellacroi
-ms.openlocfilehash: 9c481d7781ff35623655b472dbcfae6d50ada40a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 83ac4a3e69cac8a83e41ad52c9b93a1b61de7ed6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827820"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285087"
 ---
-# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Azure Market ve AppSource 'ta tercih edilen çözümler
+# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketi ve AppSource'da Tercih Edilen Çözümler
 
-Microsoft 'un tercih ettiği bir çözüm, kalitesi, performansı ve belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele alma yeteneği için seçilen bir bulut uygulamasıdır. Microsoft uzmanlarından oluşan bir ekip, belirli kanıtlanmış yeteneklere ve yeteneklere sahip iş ortaklarının çözümlerini doğrular. Bu çözümler, bulut Market storets, Azure Marketi ve AppSource 'ta ve Azure portal. AppSource 'ta tercih edilen çözümler sektör verticilerine göre keşfedilebilir. Azure Marketi 'nde tercih edilen çözümler ve Azure portal yatay çözüm kategorileri arasında bulunabilir.
+Microsoft'un tercih ettiği çözüm, belirli bir endüstri dikey veya çözüm alanında müşteri gereksinimlerini karşılamak için kalite, performans ve yeteneği için seçilen bir bulut uygulamasıdır. Microsoft uzmanlarından oluşan bir ekip, kanıtlanmış belirli yetkinliklere ve özelliklere sahip iş ortaklarının çözümlerini doğrular. Bu çözümler bulut pazarı vitrinlerimizde, Azure Marketi'nde ve AppSource'da ve Azure portalında yer almaktadır. AppSource'ta tercih edilen çözümler, endüstri dikeyleri tarafından keşfedilebilir. Azure Marketi ve Azure portalında tercih edilen çözümler yatay çözüm kategorilerinde bulunabilir.

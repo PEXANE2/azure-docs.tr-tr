@@ -1,77 +1,77 @@
 ---
-title: Geçici bağlantı hataları-MySQL için Azure veritabanı
-description: Geçici bağlantı hatalarını işleme ve MySQL için Azure veritabanı 'na verimli bir şekilde bağlanma hakkında bilgi edinin.
-keywords: MySQL bağlantısı, bağlantı dizesi, bağlantı sorunları, geçici hata, bağlantı hatası, etkin bağlanma
+title: Geçici bağlantı hataları - MySQL için Azure Veritabanı
+description: Geçici bağlantı hatalarını nasıl işleyeceğinizi ve MySQL için Azure Veritabanı'na verimli bir şekilde nasıl bağlanılacağınızı öğrenin.
+keywords: mysql bağlantısı,bağlantı dizesi,bağlantı sorunları,geçici hata,bağlantı hatası,verimli bağlanma
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: d91048c52794869b5db1467a3456ca58e703d1ad
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 3/18/2020
+ms.openlocfilehash: 79c5c7e485cc9cb03757b8a981cef92d79b81c3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719934"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537185"
 ---
-# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na geçici hataları işleyin ve verimli bir şekilde bağlanın
+# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Geçici hataları işleme ve MySQL için Azure Veritabanı'na verimli bir şekilde bağlanma
 
-Bu makalede, geçici hataların nasıl işleneceğini ve MySQL için Azure veritabanı 'na verimli bir şekilde nasıl bağlanabileceğinizi açıklamaktadır.
+Bu makalede, geçici hataların nasıl işleyeceğiniz ve MySQL için Azure Veritabanı'na verimli bir şekilde nasıl bağlanılacağı açıklanmaktadır.
 
 ## <a name="transient-errors"></a>Geçici hatalar
 
-Geçici arıza olarak da bilinen geçici bir hata, kendisini çözecek bir hatadır. Genellikle bu hatalar, bırakılmakta olan veritabanı sunucusuna bağlantı olarak bildirimde yer vardır. Ayrıca sunucuya yeni bağlantılar açılamaz. Geçici hatalar, örneğin, donanım veya ağ hatası oluştuğunda meydana gelebilir. Başka bir nedenden dolayı PaaS hizmetinin kullanıma alınmış yeni bir sürümü olabilir. Bu olayların çoğu, sistem tarafından 60 saniyeden daha az bir süre içinde otomatik olarak azalır. Bulutta uygulama tasarlamaya ve geliştirmeye yönelik en iyi yöntem geçici hataların beklenmektedir. Her zaman herhangi bir bileşende ve bu durumları işlemek için uygun mantığın yerine gelebileceğini varsayın.
+Geçici hata olarak da bilinen geçici hata, kendi kendini çözecek bir hatadır. Genellikle bu hatalar bırakılan veritabanı sunucusuna bir bağlantı olarak tezahür eder. Ayrıca bir sunucuya yeni bağlantılar açılamaz. Geçici hatalar örneğin donanım veya ağ hatası oluştuğunda oluşabilir. Başka bir nedeni dışarı haddelenmiş olan bir PaaS hizmetinin yeni bir sürümü olabilir. Bu olayların çoğu sistem tarafından 60 saniyeden kısa bir sürede otomatik olarak azaltılır. Bulutta uygulama tasarlamak ve geliştirmek için en iyi uygulama geçici hatalar beklemektir. Herhangi bir bileşende herhangi bir zamanda gerçekleşebileceğini ve bu durumları işlemek için uygun mantığa sahip olabileceklerini varsayalım.
 
 ## <a name="handling-transient-errors"></a>Geçici hataları işleme
 
-Geçici hatalar, yeniden deneme mantığı kullanılarak işlenmelidir. Göz önünde bulundurulması gereken durumlar:
+Geçici hatalar yeniden deneme mantığı kullanılarak ele alınmalıdır. Göz önünde bulundurulması gereken durumlar:
 
-* Bir bağlantıyı açmaya çalıştığınızda bir hata oluşur
-* Sunucu tarafında boştaki bir bağlantı bırakılır. Bir komut verilmenize çalıştığınızda yürütülemiyor
-* Şu anda bir komutun yürütüldüğü etkin bir bağlantı bırakılır.
+* Bağlantıyı açmaya çalıştığınızda bir hata oluşur
+* Sunucu tarafına boşta bağlantı bırakılır. Bir komut vermeye çalıştığınızda yürütülemez
+* Şu anda bir komutuyguluyor etkin bir bağlantı bırakılır.
 
-İlk ve ikinci durum, işlemek için oldukça ileri bir işlemdir. Bağlantıyı tekrar açmayı deneyin. Başarılı olduğunuzda, geçici hata sistem tarafından azaltılmıştır. MySQL için Azure veritabanınızı yeniden kullanabilirsiniz. Bağlantıyı yeniden denemeden önce beklemeleri önerilir. İlk yeniden denemeler başarısız olursa geri dönün. Bu şekilde, sistem hata durumu aşmak için kullanılabilen tüm kaynakları kullanabilir. İzlenecek iyi bir örüntü şunlardır:
+Birinci ve ikinci durumda oldukça düz ele almak için vardır. Bağlantıyı yeniden açmaya çalışın. Başarılı olduğunuzda, geçici hata sistem tarafından azaltıldı. MySQL için Azure Veritabanınızı yeniden kullanabilirsiniz. Bağlantıyı yeniden denemeden önce beklemenizi öneririz. İlk yeniden denemeler başarısız olursa geri çek. Bu şekilde sistem hata durumunu aşmak için kullanılabilir tüm kaynakları kullanabilirsiniz. Takip etmek için iyi bir desen:
 
-* İlk yeniden denemeden önce 5 saniye bekleyin.
-* Aşağıdaki her yeniden denemede, bekleme süresini 60 saniyeye kadar artırın.
-* Uygulamanızın işlemi başarısız olduğu noktada en fazla yeniden deneme sayısını ayarlayın.
+* İlk denemenizden önce 5 saniye bekleyin.
+* Her bir yeniden deneme için, 60 saniyeye kadar bekleme yi katlanarak artırır.
+* Uygulamanızın işlemin başarısız olduğunu düşündüğü en yüksek yeniden deneme sayısını ayarlayın.
 
-Etkin bir işlem başarısız olursa, kurtarmanın doğru şekilde işlenmesi daha zordur. İki durum vardır: işlem, doğası halinde salt okunurdur, bağlantıyı yeniden açmak ve işlemi yeniden denemek güvenlidir. Ancak işlem veritabanına yazıyorsanız, işlemin geri alınması veya geçici hata yapılmadan önce başarılı olup olmadığını belirlemelisiniz. Bu durumda, yalnızca veritabanı sunucusundan kayıt onayını almamış olabilirsiniz.
+Etkin bir işlemle bağlantı başarısız olduğunda, kurtarmaişlemini doğru şekilde işlemek daha zordur. İki durum vardır: Hareket yalnızca salt okunursa, bağlantıyı yeniden açmak ve hareketi yeniden denemek güvenlidir. Ancak hareket veritabanına da yazıyorsa, hareketin geri alınıp alınıp alınıp alınıp alınmayacağına veya geçici hata gerçekleşmeden önce başarılı olup olmadığını belirlemeniz gerekir. Bu durumda, veritabanı sunucusundan taahhüt bildirimi ni almamış olabilirsiniz.
 
-Bunu yapmanın bir yolu, istemci üzerinde tüm yeniden denemeler için kullanılan benzersiz bir KIMLIK oluşturmak içindir. Bu benzersiz KIMLIĞI işlemin bir parçası olarak sunucuya geçirin ve benzersiz bir kısıtlamaya sahip bir sütunda saklayın. Bu şekilde işlemi güvenle yeniden deneyebilirsiniz. Önceki işlem geri alınırsa ve istemci tarafından oluşturulan benzersiz KIMLIK sistemde henüz yoksa başarılı olur. Önceki işlem başarıyla tamamlandığından, benzersiz KIMLIK daha önce depolanıyorsa yinelenen bir anahtar ihlaline işaret eder.
+Bunu yapmanın bir yolu, tüm yeniden denemeler için kullanılan istemci üzerinde benzersiz bir kimlik oluşturmaktır. Bu benzersiz kimliği işlemin bir parçası olarak sunucuya aktarın ve benzersiz bir kısıtlaması olan bir sütunda saklarsınız. Bu şekilde hareketi güvenli bir şekilde yeniden deneyebilirsiniz. Önceki işlem geri alındıysa ve istemci tarafından oluşturulan benzersiz kimlik sistemde henüz yoksa başarılı olur. Önceki işlem başarıyla tamamlandığı için, benzersiz kimlik daha önce depolanmışsa yinelenen anahtar ihlalini gösteren başarısız olur.
 
-Programınız, üçüncü taraf ara yazılım aracılığıyla MySQL için Azure veritabanı ile iletişim kurduğunda, satıcıdan geçici hatalar için yeniden deneme mantığı içerip içermediğini öğrenin.
+Programınız MySQL için Azure Veritabanı ile üçüncü taraf ara yazılımlar aracılığıyla iletişim kurduğunda, satıcıya ara yazılımın geçici hatalar için yeniden deneme mantığı içerip içermediğini sorun.
 
-Yeniden deneme mantığını test ettiğinizden emin olun. Örneğin, MySQL için Azure veritabanı sunucusu için işlem kaynaklarını ölçeklendirirken veya azaltılarken kodunuzu yürütmeyi deneyin. Uygulamanız herhangi bir sorun olmadan bu işlem sırasında karşılaşılan kısa kapalı kalma süresini işlemelidir.
+Mantığınızı yeniden denediğinizi test ettiğinizden emin olun. Örneğin, MySQL sunucusu için Azure Veritabanınızın bilgi işlem kaynaklarını ölçeklerken veya küçülterek kodunuzu yürütmeyi deneyin. Uygulamanız, bu işlem sırasında karşılaşılan kısa kapalı kalma süresini sorunsuz bir şekilde ele almalıdır.
 
-## <a name="connect-efficiently-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na verimli bir şekilde bağlanma
+## <a name="connect-efficiently-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanına verimli bir şekilde bağlanma
 
-Veritabanı bağlantıları sınırlı bir kaynaktır; bu nedenle, MySQL için Azure veritabanı 'na erişmek üzere bağlantı havuzunun etkili bir şekilde kullanılmasını sağlamak performansı iyileştirir. Aşağıdaki bölümde, MySQL için Azure veritabanı 'na daha etkin bir şekilde erişmek üzere bağlantı havuzunun veya kalıcı bağlantıların nasıl kullanılacağı açıklanmaktadır.
+Veritabanı bağlantıları sınırlı bir kaynaktır, bu nedenle MySQL için Azure Veritabanı'na erişmek için bağlantı havuzundan etkin bir şekilde yararlanmak performansı en iyi duruma getirir. Aşağıdaki bölümde MySQL için Azure Veritabanı'na daha etkili bir şekilde erişmek için bağlantı havuzu veya kalıcı bağlantıların nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="access-databases-by-using-connection-pooling-recommended"></a>Bağlantı havuzu kullanarak veritabanlarına erişin (önerilir)
 
-Veritabanı bağlantılarını yönetmek, uygulamanın performansı üzerinde önemli bir etkiye sahip olabilir. Uygulamanızın performansını iyileştirmek için, hedefin, anahtar kodu yollarında bağlantıların oluşturulması ve zaman sayısını azaltmanız gerekir. MySQL için Azure veritabanı 'na bağlanmak üzere veritabanı bağlantı havuzunun veya kalıcı bağlantıların kullanılması önemle önerilir. Veritabanı bağlantı havuzu, veritabanı bağlantılarının oluşturulmasını, yönetilmesini ve ayrılmasını işler. Bir program bir veritabanı bağlantısı istediğinde, yeni bir bağlantı oluşturmak yerine var olan boştaki veritabanı bağlantılarının ayrılmasını önceliklendirir. Program veritabanı bağlantısını kullanmayı bitirdikten sonra, bağlantı yalnızca kapatılmak yerine daha fazla kullanım için hazırlanmak üzere kurtarılır.
+Veritabanı bağlantılarını yönetmek, uygulamanın bir bütün olarak performansı üzerinde önemli bir etkiye sahip olabilir. Uygulamanızın performansını optimize etmek için, amaç bağlantıların oluşturulan sayısını ve anahtar kod yollarında bağlantı kurma süresini azaltmak olmalıdır. MySQL için Azure Veritabanı'na bağlanmak için veritabanı bağlantısı havuzu veya kalıcı bağlantıları kullanmanızı şiddetle öneririz. Veritabanı bağlantısı havuzu, veritabanı bağlantılarının oluşturulmasını, yönetimini ve tahsisini işler. Bir program veritabanı bağlantısı istediğinde, yeni bir bağlantı oluşturmak yerine varolan boşta veritabanı bağlantılarının tahsisine öncelik verir. Program veritabanı bağlantısını kullanarak tamamlandıktan sonra, bağlantı yalnızca kapatılmadan daha fazla kullanıma hazırlık olarak kurtarılır.
 
-Daha iyi bir çizim için, bu makale örnek olarak JAVA kullanan [bir örnek kod parçası](./sample-scripts-java-connection-pooling.md) sağlar. Daha fazla bilgi için bkz. [Apache Common DBCP](https://commons.apache.org/proper/commons-dbcp/).
+Daha iyi bir illüstrasyon için, bu makalede örnek olarak JAVA kullanan [örnek kod bir parça](./sample-scripts-java-connection-pooling.md) sağlar. Daha fazla bilgi için [Apache ortak DBCP'ye](https://commons.apache.org/proper/commons-dbcp/)bakın.
 
 > [!NOTE]
-> Sunucu, kaynakları boşaltmak için bir süre boşta durumunda olan bir bağlantıyı kapatmak üzere bir zaman aşımı mekanizması yapılandırır. Bunları kullanırken kalıcı bağlantıların verimliliğini sağlamak için doğrulama sistemini ayarladığınızdan emin olun. Daha fazla bilgi için bkz. [kalıcı bağlantıların verimliliğini sağlamak için istemci tarafında doğrulama sistemlerini yapılandırma](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).
+> Sunucu, kaynakları boşaltmak için bir süredir boşta olan bir bağlantıyı kapatmak için bir zaman aramekanizması yapılandırır. Kalıcı bağlantılarıkullanırken etkinliğini sağlamak için doğrulama sistemini kurduğunuzdan emin olun. Daha fazla bilgi için, [kalıcı bağlantıların etkinliğini sağlamak için istemci tarafındaki doğrulama sistemlerini yapılandırın.](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections)
 
-## <a name="access-databases-by-using-persistent-connections-recommended"></a>Kalıcı bağlantılar kullanarak veritabanlarına erişin (önerilir)
+## <a name="access-databases-by-using-persistent-connections-recommended"></a>Kalıcı bağlantıları kullanarak veritabanlarına erişin (önerilir)
 
-Kalıcı bağlantı kavramı bağlantı havuzlarından benzerdir. Kısa bağlantıların kalıcı bağlantılarla değiştirilmesi kodda yalnızca küçük değişiklikler yapılmasını gerektirir, ancak çoğu tipik uygulama senaryosunda performansı iyileştirmek açısından önemli bir etkiye sahiptir.
+Kalıcı bağlantı kavramı, bağlantı birleştirme kavramına benzer. Kısa bağlantıları kalıcı bağlantılarla değiştirmek için kodda yalnızca küçük değişiklikler yapmak gerektir, ancak birçok tipik uygulama senaryosunda performansı artırma açısından önemli bir etkisi vardır.
 
-## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>Wait ve retry mekanizmasını kısa bağlantılarla kullanarak veritabanlarına erişin
+## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>Kısa bağlantılarla bekleme ve yeniden deneme mekanizmasını kullanarak veritabanlarına erişin
 
-Kaynak sınırlamalarınız varsa, veritabanlarına erişmek için veritabanı havuzunu veya kalıcı bağlantıları kullanmanızı kesinlikle öneririz. Uygulamanız, eşzamanlı bağlantı sayısı üst sınırına yaklaşımında kısa bağlantılar kullanıyorsa ve bağlantı hatalarıyla karşılaşırsanız, bekle ve yeniden deneme mekanizmasını deneyebilirsiniz. İlk denemeden sonra kısa bir bekleme süresi ile uygun bir bekleme süresi ayarlayabilirsiniz. Bundan sonra, olayları birden çok kez beklemeyi deneyebilirsiniz.
+Kaynak sınırlamalarınız varsa, veritabanlarına erişmek için veritabanı havuzu veya kalıcı bağlantıları kullanmanızı şiddetle öneririz. Uygulamanız eşzamanlı bağlantı sayısındaki üst sınıra yaklaştığınızda kısa bağlantılar kullanıyorsa ve bağlantı hataları yla karşılaşırsanız, bekleme ve yeniden deneme mekanizmasını deneyebilirsiniz. İlk denemeden sonra daha kısa bir bekleme süresiyle uygun bir bekleme süresi ayarlayabilirsiniz. Bundan sonra, olayları birden çok kez beklemeyi deneyebilirsiniz.
 
-## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Kalıcı bağlantıların verimliliğini onaylamak için istemcilerdeki doğrulama mekanizmalarını yapılandırın
+## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Kalıcı bağlantıların etkinliğini onaylamak için istemcilerde doğrulama mekanizmalarını yapılandırın
 
-Sunucu, kaynakları boşaltmak için bir süre boşta durumunda olan bir bağlantıyı kapatmak üzere bir zaman aşımı mekanizması yapılandırır. İstemci veritabanına yeniden eriştiğinde, istemci ile sunucu arasında yeni bir bağlantı isteği oluşturmaya eşdeğerdir. Kullanım sürecinde bağlantıların verimliliğini sağlamak için istemcide bir doğrulama mekanizması yapılandırın. Aşağıdaki örnekte gösterildiği gibi, bu doğrulama mekanizmasını yapılandırmak için Tomcat JDBC bağlantı havuzunu kullanabilirsiniz.
+Sunucu, kaynakları boşaltmak için bir süredir boşta olan bir bağlantıyı kapatmak için bir zaman aramekanizması yapılandırır. İstemci veritabanına yeniden eriştiğinde, istemci ve sunucu arasında yeni bir bağlantı isteği oluşturmaya eşdeğerdir. Bağlantıların kullanımı sırasında ki etkinliğini sağlamak için istemci üzerinde bir doğrulama mekanizması yapılandırın. Aşağıdaki örnekte gösterildiği gibi, bu doğrulama mekanizmasını yapılandırmak için Tomcat JDBC bağlantı havuzunu kullanabilirsiniz.
 
-Testonödünç Alım parametresini ayarlayarak, yeni bir istek olduğunda, bağlantı havuzu kullanılabilir boştaki bağlantıların verimliliğini otomatik olarak doğrular. Böyle bir bağlantı etkin ise, bu bağlantı havuzu doğrudan geri döndürülür. Bağlantı havuzu daha sonra yeni bir etkin bağlantı oluşturur ve bunu döndürür. Bu işlem veritabanına verimli bir şekilde erişilmesini sağlar. 
+TestOnBorrow parametresini ayarlayarak, yeni bir istek olduğunda, bağlantı havuzu kullanılabilir boşta bağlantıların etkinliğini otomatik olarak doğrular. Böyle bir bağlantı etkili olursa, doğrudan döndürülen bağlantı havuzu bağlantıyı geri çeker. Bağlantı havuzu daha sonra yeni bir etkili bağlantı oluşturur ve döndürür. Bu işlem, veritabanına verimli bir şekilde erişilmesini sağlar. 
 
-Belirli ayarlar hakkında bilgi için bkz. [JDBC bağlantı havuzu resmi giriş belgesi](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes). Genellikle şu üç parametreyi ayarlamanız gerekir: Testonödünç (true olarak ayarlanır), ValidationQuery (SELECT 1 olarak ayarlanır) ve ValidationQueryTimeout (1 olarak ayarlanır). Belirli örnek kod aşağıda gösterilmiştir:
+Belirli ayarlar hakkında bilgi için [JDBC bağlantı havuzu resmi giriş belgesine](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)bakın. Esas olarak aşağıdaki üç parametreyi ayarlamanız gerekir: TestOnBorrow (doğru olarak ayarlanmış), ValidationQuery (SELECT 1'e ayarlanmıştır) ve ValidationQueryTimeout (1 olarak ayarlanır). Belirli örnek kod aşağıda gösterilmiştir:
 
 ```java
 public class SimpleTestOnBorrowExample {

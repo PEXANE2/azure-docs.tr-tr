@@ -9,17 +9,17 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188584"
 ---
-## <a name="deleting-personal-information"></a>Kişisel bilgi siliniyor
+## <a name="deleting-personal-information"></a>Kişisel bilgileri silme
 
 [!INCLUDE [gdpr-intro-sentence.md](gdpr-intro-sentence.md)]
 
-İçeri/dışarı aktarma için ilgili kişisel bilgiler (portal ve API) içeri aktarma sırasında hizmet ve işlem dışarı aktarma. Bu işlemler sırasında kullanılan verileri içerir:
+Kişisel bilgiler, ithalat ve ihracat işlemleri sırasında ithalat/ihracat hizmeti (portal ve API üzerinden) ile ilgilidir. Bu işlemler sırasında kullanılan veriler şunlardır:
 
 - Kişi adı
 - Telefon numarası
@@ -27,22 +27,22 @@ ms.locfileid: "67188584"
 - Açık adres
 - Şehir
 - Posta kodu
-- Eyalet
+- Durum
 - Ülke/İl/Bölge
 - Sürücü kimliği
 - Taşıyıcı hesap numarası
 - Kargo takip numarası
 
-İçeri/dışarı aktarma işi oluşturulduğunda, kullanıcılara kişi bilgileri ve teslimat adresi sağlar. Kişisel bilgileri, en fazla iki farklı konumlarda depolanır: işi ve isteğe bağlı olarak portal ayarları. Etiketli, onay kutusunu işaretlerseniz kişisel bilgileri portal ayarlarında yalnızca depolanan **taşıyıcı ve iade adresini varsayılan olarak Kaydet** sırasında *iade sevkiyat bilgilerini* bölümünü dışa aktarma işlemi.
+Bir alma/dışa aktarım işi oluşturulduğunda, kullanıcılar iletişim bilgilerini ve bir sevkiyat adresi sağlar. Kişisel bilgiler en fazla iki farklı konumda saklanır: işte ve isteğe bağlı olarak portal ayarlarında. Kişisel bilgiler yalnızca, ihracat sürecinin *İade gönderi bilgileri* bölümünde varsayılan olarak etiketlenmiş onay kutusunu, operatör **kaydet ve iade adresini** kontrol ederseniz portal ayarlarında depolanır.
 
-Kişisel bilgilerini aşağıdaki yollarla silinebilir:
+Kişisel iletişim bilgileri aşağıdaki yollarla silinebilir:
 
-- İş ile kaydedilen veriler iş silinir. Kullanıcılar işleri el ile silebilir ve tamamlanan işleri otomatik olarak 90 gün sonra silinir. REST API ya da Azure portal aracılığıyla işleri el ile silebilirsiniz. Azure portalında işi silmek için içeri/dışarı aktarma işinize gidin ve tıklayın *Sil* komut çubuğundan. Bir REST API aracılığıyla içeri/dışarı aktarma işini silme konusunda daha fazla ayrıntı için başvurmak [içeri/dışarı aktarma işini Sil](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md).
+- İşle birlikte kaydedilen veriler iş ile birlikte silinir. Kullanıcılar işleri el ile silebilir ve tamamlanan işler 90 gün sonra otomatik olarak silinir. Rest API veya Azure portalı aracılığıyla işleri el ile silebilirsiniz. Azure portalındaki işi silmek için içe aktarma/dışa aktarma işine gidin ve komut çubuğundan *Sil'i* tıklatın. REST API üzerinden bir alma/dışa aktarma işi nasıl silinir hakkında ayrıntılı bilgi için, [bir alma/dışa aktarma işini sil'e](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)bakın.
 
-- Kişi bilgileri portal ayarları kaydedildi, portal ayarlarını silerek kaldırılabilir. Portal ayarları, aşağıdaki adımları izleyerek silebilirsiniz:
-  - [Azure Portal](https://portal.azure.com) oturum açın.
-  - Tıklayarak *ayarları* simgesi ![Azure ayarlar simgesi](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
-  - Tıklayın *tüm ayarları dışarı aktar* (geçerli ayarlarınızı kaydetmek için bir `.json` dosyası).
-  - Tıklayın *tüm ayarları ve özel panoları Sil* kaydedilmiş ilgili bilgiler dahil olmak üzere, tüm ayarlarını silmek için.
+- Portal ayarlarında kaydedilen iletişim bilgileri, portal ayarları silinerek kaldırılabilir. Aşağıdaki adımları izleyerek portal ayarlarını silebilirsiniz:
+  - [Azure portalında](https://portal.azure.com)oturum açın.
+  - *Ayarlar* simgesi ![Azure Ayarları Simgesi'ne tıklayın](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
+  - *Tüm ayarları Dışa Aktar'ı* tıklatın `.json` (geçerli ayarlarınızı bir dosyaya kaydetmek için).
+  - Kaydedilmiş kişi bilgileri de dahil olmak üzere tüm ayarları silmek için *tüm ayarları ve özel panoları* sil'i tıklatın.
 
-Daha fazla bilgi için Microsoft Privacy ilke gözden geçirme [Güven Merkezi](https://www.microsoft.com/trustcenter)
+Daha fazla bilgi için Güven [Merkezi'ndeki](https://www.microsoft.com/trustcenter) Microsoft Gizlilik ilkesini inceleyin

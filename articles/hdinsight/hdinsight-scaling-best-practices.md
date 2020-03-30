@@ -1,67 +1,67 @@
 ---
-title: Küme boyutlarını ölçeklendirme-Azure HDInsight
-description: Azure HDInsight 'taki iş yükünüzü eşleştirmek için bir Apache Hadoop kümesi esnek ölçeklendirme
+title: Küme boyutlarını ölçeklendir - Azure HDInsight
+description: Azure HDInsight'ta iş yükünüze uyacak şekilde bir Apache Hadoop kümesini elastik olarak ölçeklendirin
 author: ashishthaps
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/26/2020
-ms.openlocfilehash: a88682cd2217850e336afc2f9ef5af84c0d8cb82
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 96a72541255ad0059abe5ad280f1728518dbf68c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79272233"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234744"
 ---
-# <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
+# <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirin
 
-HDInsight, kümelerinizdeki çalışan düğümlerinin sayısını artırma ve azaltma seçeneği sunarak esneklik sağlar. Bu esneklik, bir kümeyi saat veya hafta sonları ile küçültmenize ve yoğun iş talepleri sırasında genişletmenize olanak tanır.
+HDInsight, kümelerinizdeki işçi düğümlerinin sayısını ölçeklendirme ve küçültme seçeneği sunarak esneklik sağlar. Bu esneklik, saat sonra veya hafta sonları bir küme küçültmek ve yoğun iş talepleri sırasında genişletmek için izin verir.
 
-Dönemsel toplu işleme sahipseniz, bu işlemden önce HDInsight kümesi birkaç dakika kadar ölçeklendirilebilir ve bu sayede kümenizin yeterli bellek ve CPU gücü vardır.  Daha sonra, işlem yapıldıktan sonra, kullanım yeniden geçtikten sonra HDInsight kümesini daha az çalışan düğümüne ölçeklendirebilirsiniz.
+Periyodik toplu işlem varsa, HDInsight kümesi bu işlemden birkaç dakika önce ölçeklendirilebilir, böylece kümeniz yeterli bellek ve CPU gücüne sahiptir. Daha sonra, işlem yapıldıktan ve kullanım tekrar düştükten sonra, HDInsight kümesini daha az alt düğüme ölçeklendirebilirsiniz.
 
-Aşağıda özetlenen yöntemlerden birini kullanarak bir kümeyi el ile ölçeklendirebilir veya CPU, bellek ve diğer ölçümlere yanıt olarak sistemin otomatik olarak ölçeğini ve kapatılmasını sağlamak için otomatik [ölçeklendirme](hdinsight-autoscale-clusters.md) seçeneklerini kullanabilirsiniz.
+Aşağıda özetlenen yöntemlerden birini kullanarak bir kümeyi el ile ölçeklendirebilir veya sistemin CPU, bellek ve diğer ölçümlere yanıt olarak otomatik olarak yukarı ve aşağı ölçeklendirmesini sağlamak için [otomatik ölçeklendirme](hdinsight-autoscale-clusters.md) seçeneklerini kullanabilirsiniz.
 
 > [!NOTE]  
-> Yalnızca HDInsight sürümü 3.1.3 veya üzeri olan kümeler desteklenir. Kümenizin sürümünden emin değilseniz Özellikler sayfasını kontrol edebilirsiniz.
+> Yalnızca HDInsight sürüm 3.1.3 veya üzeri olan kümeler desteklenir. Kümenizin sürümünden emin değilseniz, Özellikler sayfasını kontrol edebilirsiniz.
 
 ## <a name="utilities-to-scale-clusters"></a>Kümeleri ölçeklendirmek için yardımcı programlar
 
-Microsoft, kümeleri ölçeklendirmek için aşağıdaki yardımcı programları sağlar:
+Microsoft kümeleri ölçeklendirmek için aşağıdaki yardımcı programları sağlar:
 
-|Utility | Açıklama|
+|Yardımcı program | Açıklama|
 |---|---|
-|[PowerShell az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<küme adı >-Targetınstancecount \<newsize >|
-|[PowerShell Azurerd](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<küme adı >-Targetınstancecount \<newsize >|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --kaynak grubu \<kaynak grubu >--ad \<küme adı >--workernode-Count \<newsize >|
-|[Azure klasik CLı](hdinsight-administer-use-command-line.md)|Azure HDInsight küme yeniden boyutlandırma \<clusterName > \<hedef örnek sayısı > |
-|[Azure portalında](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Küme Adı> \<-TargetInstanceCount NewSize>|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Küme Adı> \<-TargetInstanceCount NewSize>|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight yeniden boyutlandırma](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --kaynak \<grubu \<Kaynak grubu> --ad \<Küme Adı> --işçi node sayısı NewSize>|
+|[Azure Klasik CLI](hdinsight-administer-use-command-line.md)|azure hdinsight küme \<resize \<clusterName> Hedef Örnek Sayısı> |
+|[Azure portalında](https://portal.azure.com)|HDInsight küme bölmenizi açın, sol menüde **Küme boyutunu** seçin, ardından Küme boyutu bölmesinde, alt düğüm sayısını yazın ve Kaydet'i seçin.|  
 
-![Azure portal ölçeği kümesi seçeneği](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+![Azure portal ölçeği kümeleme seçeneği](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
-Bu yöntemlerin herhangi birini kullanarak, HDInsight kümenizi dakikalar içinde yukarı veya aşağı ölçeklendirebilirsiniz.
+Bu yöntemlerden herhangi birini kullanarak, HDInsight kümenizi birkaç dakika içinde yukarı veya aşağı ölçeklendirebilirsiniz.
 
 > [!IMPORTANT]  
-> * Klasik Azure CLı kullanım dışıdır ve yalnızca klasik dağıtım modeliyle kullanılmalıdır. Diğer tüm dağıtımlar için [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'yi kullanın.  
-> * PowerShell Azurerd modülü kullanım dışıdır.  Lütfen mümkün olan her durumda [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) kullanın.
+> * Azure klasik CLI'si amortismana hazırdır ve yalnızca klasik dağıtım modeliyle kullanılmalıdır. Diğer tüm dağıtımlar için [Azure CLI'yi](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanın.  
+> * PowerShell AzureRM modülü amortismana dahil edildi.  Lütfen mümkün olduğunca [Az modüllerini](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) kullanın.
 
-## <a name="impact-of-scaling-operations"></a>Ölçeklendirme işlemlerinin etkisi
+## <a name="impact-of-scaling-operations"></a>Ölçekleme işlemlerinin etkisi
 
-Çalışan HDInsight kümenize düğüm **eklediğinizde** (ölçeği büyütme), bekleyen veya çalışan tüm işler etkilenmez. Yeni işler, ölçeklendirme işlemi çalışırken güvenle gönderilebilir. Ölçeklendirme işlemi herhangi bir nedenle başarısız olursa, bu hata, kümenizi işlevsel bir durumda bırakmak için işlenir.
+Çalışan HDInsight kümenize düğüm **eklediğinizde** (ölçeklendirin), bekleyen veya çalışan işler etkilenmez. Ölçekleme işlemi çalışırken yeni işler güvenli bir şekilde gönderilebilir. Ölçekleme işlemi herhangi bir nedenle başarısız olursa, hata kümenizi işlevsel bir durumda bırakmak için ele alınır.
 
-Düğümleri **kaldırırsanız** (ölçeği Azalt), ölçeklendirme işlemi tamamlandığında bekleyen veya çalışan tüm işler başarısız olur. Bu hata, ölçeklendirme sürecinde bazı hizmetlerin yeniden başlatılması nedeniyle oluşur. Ayrıca, bir el ile ölçeklendirme işlemi sırasında kümenizin güvenli modda takılmasına da bir risk vardır.
+Düğümleri **kaldırırsanız** (küçültün), ölçeklendirme işlemi tamamlandığında bekleyen veya çalışan işler başarısız olur. Bu hata, ölçekleme işlemi sırasında yeniden başlayan bazı hizmetlerden kaynaklanmaktadır. Ayrıca, kümenizin el ile ölçekleme işlemi sırasında güvenli modda sıkışıp kalma riski de vardır.
 
-Veri düğümlerinin sayısını değiştirmenin etkisi, HDInsight tarafından desteklenen her küme türü için farklılık gösterir:
+HDInsight tarafından desteklenen her küme türü için veri düğümlerinin sayısını değiştirmenin etkisi değişir:
 
 * Apache Hadoop
 
-    Bekleyen veya çalışan bir işi etkilemeden, çalışan bir Hadoop kümesinde çalışan düğümlerinin sayısını sorunsuzca artırabilirsiniz. İşlem devam ederken yeni işler de gönderilebilir. Ölçeklendirme işlemindeki başarısızlık, kümenin her zaman işlevsel bir durumda bırakılması için düzgün şekilde işlenir.
+    Bekleyen veya çalışan işleri etkilemeden çalışan bir Hadoop kümesindeki işçi düğümlerinin sayısını sorunsuz bir şekilde artırabilirsiniz. Operasyon devam ederken yeni işler de sunulabilir. Ölçeklendirme işlemindeki hatalar, kümenin her zaman işlevsel bir durumda kalması için incelikle işlenir.
 
-    Bir Hadoop kümesi, veri düğümleri sayısını azaltarak aşağı ölçeklendirilirse, kümedeki hizmetlerin bazıları yeniden başlatılır. Bu davranış, tüm çalışan ve bekleyen işlerin ölçeklendirme işleminin tamamlanmasından sonra başarısız olmasına neden olur. Ancak, işlem tamamlandıktan sonra işleri yeniden gönderebilirsiniz.
+    Bir Hadoop kümesi veri düğümlerinin sayısını azaltarak küçültüldüğünde, kümedeki bazı hizmetler yeniden başlatılır. Bu davranış, ölçekleme işlemi tamamlandığında tüm çalışan ve bekleyen işlerin başarısız olmasını neden olur. Ancak, işlem tamamlandıktan sonra işleri yeniden gönderebilirsiniz.
 
 * Apache HBase
 
-    Çalışırken HBase kümenize düğümleri sorunsuzca ekleyebilir veya kaldırabilirsiniz. Bölgesel sunucular, ölçeklendirme işleminin tamamlanması birkaç dakika içinde otomatik olarak dengelenir. Ancak, kümenin baş düğümüne ' da oturum açarak ve bir komut istemi penceresinden aşağıdaki komutları çalıştırarak bölgesel sunucuları el ile dengeleyebilirsiniz:
+    Çalışırken HBase kümenize sorunsuz bir şekilde düğüm ekleyebilir veya kaldırabilirsiniz. Bölgesel Sunucular, ölçekleme işlemini tamamladıktan sonra birkaç dakika içinde otomatik olarak dengelenir. Ancak, kümenin başdüğümüne giriş yaparak ve komut istemi penceresinden aşağıdaki komutları çalıştırarak bölgesel sunucuları el ile dengeleyebilirsiniz:
 
     ```bash
     pushd %HBASE_HOME%\bin
@@ -69,58 +69,58 @@ Veri düğümlerinin sayısını değiştirmenin etkisi, HDInsight tarafından d
     balancer
     ```
 
-    HBase kabuğunu kullanma hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Apache HBase örneği ile çalışmaya başlama](hbase/apache-hbase-tutorial-get-started-linux.md).
+    HBase kabuğunu kullanma hakkında daha fazla bilgi için [HDInsight'ta Apache HBase örneğine başlayın' a](hbase/apache-hbase-tutorial-get-started-linux.md)bakın.
 
 * Apache Storm
 
-    Veri düğümlerini, çalışırken fırtınası kümenize sorunsuzca ekleyebilir veya kaldırabilirsiniz. Ancak, ölçeklendirme işleminin başarılı bir şekilde tamamlanmasından sonra topolojiyi yeniden dengelemeniz gerekir.
+    Çalışırken Fırtına kümenize sorunsuz bir şekilde veri düğümleri ekleyebilir veya kaldırabilirsiniz. Ancak, ölçekleme işleminin başarıyla tamamlanmasından sonra, topolojiyi yeniden dengelemeniz gerekir.
 
-    Yeniden dengeleme iki şekilde sağlanabilir:
+    Yeniden dengeleme iki şekilde gerçekleştirilebilir:
 
-  * Fırtınası Web Kullanıcı arabirimi
-  * Komut satırı arabirimi (CLı) aracı
+  * Fırtına web UI
+  * Komut satırı arabirimi (CLI) aracı
 
     Daha fazla bilgi için [Apache Storm belgelerine](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) bakın.
 
-    Fırtınası Web Kullanıcı arabirimi HDInsight kümesinde kullanılabilir:
+    Storm web UI HDInsight kümesinde kullanılabilir:
 
-    ![HDInsight fırtınası ölçeği yeniden dengeleme](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    ![HDInsight Fırtına ölçeği yeniden dengeleme](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
-    Aşağıda, fırtınası topolojisini yeniden dengelemek için örnek bir CLı komutu verilmiştir:
+    Fırtına topolojisini yeniden dengelemek için örnek bir CLI komutu aşağıda verilmiştir:
 
-    ```cli
+    ```console
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-## <a name="how-to-safely-scale-down-a-cluster"></a>Bir kümenin güvenle ölçeğini azaltma
+## <a name="how-to-safely-scale-down-a-cluster"></a>Bir kümeyi güvenli bir şekilde küçültme
 
-### <a name="scale-down-a-cluster-with-running-jobs"></a>Çalışan işler ile küme ölçeğini azaltma
+### <a name="scale-down-a-cluster-with-running-jobs"></a>Çalışan işlerde kümeyi küçültme
 
-Bir ölçek azaltma işlemi sırasında çalışan işlerinizin başarısız olmasına engel olmak için üç şeyi deneyebilirsiniz:
+Çalışan işlerinizin küçültme işlemi sırasında başarısız olmasını önlemek için üç şey deneyebilirsiniz:
 
-1. Kümenizin ölçeğini ölçeklendirmeden önce işlerin tamamlanmasını bekleyin.
-1. İşleri el ile sonlandırın.
-1. Ölçeklendirme işlemi tamamlandıktan sonra işleri yeniden gönderin.
+1. Kümenizi ölçeklemeden önce işlerin tamamlanmasını bekleyin.
+1. İşleri el ile bitirin.
+1. Ölçekleme işlemi tamamlandıktan sonra işleri yeniden gönderin.
 
-Bekleyen ve çalışan işlerin bir listesini görmek için, aşağıdaki adımları izleyerek YARN **Kaynak Yöneticisi Kullanıcı arabirimini**kullanabilirsiniz:
+Bekleyen ve çalışan işlerin listesini görmek için aşağıdaki adımları izleyerek İplik **Kaynak Yöneticisi UI'yi**kullanabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com/), kümenizi seçin.  Yönergeler için bkz. [liste ve kümeleri gösterme](./hdinsight-administer-use-portal-linux.md#showClusters) . Küme yeni bir portal sayfasında açılır.
-2. Ana görünümden, **ambarı giriş** > **küme panoları** ' na gidin. Küme kimlik bilgilerinizi girin.
-3. Ambarı kullanıcı arabiriminden, sol taraftaki menüdeki hizmetler listesinden **Yarn** ' yi seçin.  
-4. YARN sayfasında **hızlı bağlantılar** ' ı seçin ve etkin baş düğümünün üzerine gelin, sonra **ResourceManager Kullanıcı arabirimi**' ni seçin.
+1. Azure [portalından](https://portal.azure.com/)kümenizi seçin.  Bkz. Yönergeler için [liste ve gösteri kümeleri.](./hdinsight-administer-use-portal-linux.md#showClusters) Küme yeni bir portal sayfasında açılır.
+2. Ana görünümden,**Ambari ana kümesi** **panolarına** > gidin. Küme kimlik bilgilerinizi girin.
+3. Ambari UI'den, sol menüdeki hizmetler listesinde **İplik'i** seçin.  
+4. İPLik sayfasından **Hızlı Bağlantılar'ı** seçin ve etkin kafa düğümünün üzerine gidin, ardından **ResourceManager UI'yi**seçin.
 
-    ![Apache ambarı hızlı bağlantılar ResourceManager Kullanıcı arabirimi](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    ![Apache Ambari hızlı bağlantılar ResourceManager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-ResourceManager Kullanıcı arabirimine doğrudan `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`erişebilirsiniz.
+Kaynak Yöneticisi UI'ye doğrudan `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`erişebilirsiniz.
 
-İşlerin bir listesini geçerli durumuyla birlikte görürsünüz. Ekran görüntüsünde Şu anda çalışan bir iş vardır:
+Mevcut durumlarıyla birlikte bir iş listesi görüyorsunuz. Ekran görüntüsünde, şu anda çalışan bir iş var:
 
 ![ResourceManager UI uygulamaları](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
 
-Çalışan uygulamayı el ile sonlandırmak için SSH kabuğundan aşağıdaki komutu yürütün:
+Çalışan uygulamayı el ile öldürmek için SSH kabuğundan aşağıdaki komutu uygulayın:
 
 ```bash
 yarn application -kill <application_id>
@@ -132,50 +132,50 @@ yarn application -kill <application_id>
 yarn application -kill "application_1499348398273_0003"
 ```
 
-### <a name="getting-stuck-in-safe-mode"></a>Güvenli modda takılarak
+### <a name="getting-stuck-in-safe-mode"></a>Güvenli modda sıkışıp kalma
 
-Bir kümenin ölçeğini ölçeklendirirseniz, HDInsight, her zaman ek çalışan düğümlerini kullanımdan kaldırmak için Apache ambarı yönetim arabirimlerini kullanır. Bu tarihten sonra HDInsight, kümeyi güvenle ölçeklendirir. , Ölçeklendirme işlemi sırasında güvenli moda gider ve ölçekleme tamamlandıktan sonra bu duruma gelmesi gerekir. Ancak, bazı durumlarda,-çoğaltma altındaki dosya bloğu nedeniyle bir ölçeklendirme işlemi sırasında, bu işlem güvenli modda takıldığında.
+Bir kümeyi küçülttünüzde, HDInsight, HDFS bloklarını diğer çevrimiçi alt düğümlere kopyalayan ek işçi düğümlerini devre dışı bırakmak için Apache Ambari yönetim arabirimlerini kullanır. Bundan sonra, HDInsight kümeyi güvenli bir şekilde küçülter. HDFS ölçekleme işlemi sırasında güvenli moda gider ve ölçekleme bittikten sonra çıkması gerekiyordu. Ancak bazı durumlarda, HDFS dosya bloğu altında çoğaltma nedeniyle ölçekleme işlemi sırasında güvenli modda sıkışıp kalır.
 
-Varsayılan olarak,, her bir dosya bloğunun kaç kopyasının kullanılabilir olduğunu denetleyen 1 `dfs.replication` ayarıyla yapılandırılır. Bir dosya bloğunun her kopyası, kümenin farklı bir düğümünde depolanır.
+Varsayılan olarak, HDFS, her `dfs.replication` dosya bloğunun kaç kopyasının kullanılabilir olduğunu denetleyen 1 ayarı ile yapılandırılır. Dosya bloğunun her kopyası kümenin farklı bir düğümünde depolanır.
 
-Ne zaman, beklenen sayıda blok kopyası yoksa, Kip güvenli moda girer ve ambarı uyarı oluşturur. , Bir ölçeklendirme işlemi için güvenli moda girerse, ancak gerekli düğüm sayısı çoğaltma için algılanmadığından güvenli moddan çıkamıyorsa, küme güvenli modda kalabilir.
+HDFS beklenen blok kopya sayısının mevcut olmadığını algıladığında, HDFS güvenli moduna girer ve Ambari uyarılar üretir. HDFS ölçekleme işlemi için güvenli mod girer, ancak gerekli düğüm sayısı çoğaltma için algılanmadığından güvenli moddan çıkamıyorsa, küme güvenli modda sıkışıp kalabilir.
 
-### <a name="example-errors-when-safe-mode-is-turned-on"></a>Güvenli Mod açıkken oluşan örnek hatalar
+### <a name="example-errors-when-safe-mode-is-turned-on"></a>Güvenli mod açık olduğunda örnek hatalar
 
-```
+```output
 org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create directory /tmp/hive/hive/819c215c-6d87-4311-97c8-4f0b9d2adcf0. Name node is in safe mode.
 ```
 
-```
+```output
 org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-`/var/log/hadoop/hdfs/` klasöründen, ne zaman güvenli moda girmediğini görmek için, küme ölçeklendiği zaman yakınında, ad düğümü günlüklerini gözden geçirebilirsiniz. Günlük dosyaları `Hadoop-hdfs-namenode-<active-headnode-name>.*`olarak adlandırılır.
+Kümenin güvenli moda ne zaman `/var/log/hadoop/hdfs/` girdiğini görmek için kümenin ölçeklendirildiğinde, klasörden ad düğümü günlüklerini gözden geçirebilirsiniz. Günlük dosyaları . `Hadoop-hdfs-namenode-<active-headnode-name>.*`
 
-Önceki hataların kök nedeni, Hive 'in sorguları çalıştırırken, geçici dosyalara bir süre içinde bağlı olmasına bağlıdır. IBir güvenli moda girdiğinde Hive, IBU öğesine yazamadığından sorguları çalıştıramıyor. Çalışma alanındaki geçici dosyalar, tek tek çalışan düğümü VM 'lerine bağlı olan yerel sürücüde bulunur ve en az üç çoğaltmadan diğer çalışan düğümleri arasında çoğaltılır.
+Önceki hataların temel nedeni, Hive'ın sorguları çalıştırırken HDFS'deki geçici dosyalara bağımlı olmasıdır. HDFS güvenli moduna girdiğinde, Hive, HDFS'ye yazamadığı için sorguları çalıştıramaz. HDFS'deki geçici dosyalar, tek tek işçi düğümü VM'lere monte edilen yerel sürücüde bulunur ve en az üç yinelemede diğer alt düğümler arasında çoğaltılır.
 
-### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode"></a>HDInsight 'ın güvenli modda takılmasını engelleme
+### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode"></a>HDInsight'ın güvenli modda sıkışıp kalması nasıl engellenir?
 
-HDInsight 'ın güvenli modda ayrılmasının birkaç yolu vardır:
+HDInsight'ın güvenli modda bırakılmasını önlemenin birkaç yolu vardır:
 
-* HDInsight 'ı ölçeklendirmeden önce tüm Hive işlerini durdurun. Alternatif olarak, Hive işlerinin çalıştırıldığı ile çakışmaktan kaçınmak için ölçek azaltma sürecini zamanlayın.
-* Ölçeği ölçeklendirmeden önce, Hive 'nin sıfırdan `tmp` dizin dosyalarını el ile temizleyin.
-* HDInsight 'ı yalnızca üç çalışan düğümüne (minimum) ölçeklendirin. Bir çalışan düğümü kadar düşük bir şekilde gitmemeye özen gösterin.
-* Gerekirse güvenli moddan çıkmak için komutunu çalıştırın.
+* HDInsight'ı ölçeklemeden önce tüm Hive işlerini durdurun. Alternatif olarak, çalışan Hive işleri ile çakışan önlemek için ölçek aşağı işlemi zamanlayın.
+* Aşağı ölçekleme önce HDFS Hive'S scratch `tmp` directory dosyaları el ile temizleyin.
+* HDInsight'ı yalnızca en az üç alt düğüme küçültün. Tek bir işçi düğümü kadar düşük gitmekten kaçının.
+* Gerekirse güvenli mod bırakmak için komutu çalıştırın.
 
-Aşağıdaki bölümlerde bu seçenekler açıklanır.
+Aşağıdaki bölümlerde bu seçenekleri açıklayınız.
 
-#### <a name="stop-all-hive-jobs"></a>Tüm Hive işlerini durdur
+#### <a name="stop-all-hive-jobs"></a>Tüm Kovan işlerini durdurun
 
-Bir çalışan düğümüne ölçeklendirmeden önce tüm Hive işlerini durdurun. İş yükünüz zamanlanırsa, Hive işi yapıldıktan sonra ölçeği aşağı doğru yürütün.
+Tek bir işçi düğümüne kadar ölçeklemeden önce tüm Hive işlerini durdurun. İş yükünüz zamanlanmışsa, Hive işi bittikten sonra küçültün.
 
-Ölçeklendirmeden önce Hive işleri durdurulduğunda, tmp klasöründeki (varsa) karalama dosyalarının sayısını en aza indirmenize yardımcı olur.
+Ölçeklemeden önce Kovan işlerini durdurma, tmp klasöründeki çizilme dosyalarının sayısını en aza indirmeye yardımcı olur (varsa).
 
-#### <a name="manually-clean-up-hives-scratch-files"></a>Hive 'nin karalama dosyalarını el ile Temizleme
+#### <a name="manually-clean-up-hives-scratch-files"></a>Hive'ın karalama dosyalarını el ile temizleyin
 
-Hive geçici dosyaların arkasında bırakılırsa, güvenli moddan kaçınmak için ölçeği ölçeklendirmeden önce bu dosyaları el ile temizleyebilirsiniz.
+Hive geçici dosyaları geride bıraktıysa, güvenli moddan kaçınmak için bu dosyaları ölçeklemeden önce el ile temizleyebilirsiniz.
 
-1. `hive.exec.scratchdir` yapılandırma özelliğine bakarak Hive geçici dosyaları için hangi konumun kullanıldığını kontrol edin. Bu parametre `/etc/hive/conf/hive-site.xml`içinde ayarlanır:
+1. Yapılandırma özelliğine `hive.exec.scratchdir` bakarak Kovan geçici dosyaları için hangi konumun kullanıldığını denetleyin. Bu parametre içinde `/etc/hive/conf/hive-site.xml`ayarlanır:
 
     ```xml
     <property>
@@ -184,14 +184,14 @@ Hive geçici dosyaların arkasında bırakılırsa, güvenli moddan kaçınmak i
     </property>
     ```
 
-1. Hive hizmetlerini durdurun ve tüm sorguların ve işlerin tamamlandığından emin olun.
-2. Yukarıda bulunan karalama dizininin içeriğini listeleyin ve herhangi bir dosya içerip içermediğinden `hdfs://mycluster/tmp/hive/`.
+1. Kovan hizmetlerini durdurun ve tüm sorguların ve işlerin tamamlandığından emin olun.
+2. Herhangi bir dosya bulunıp içermeden görmek `hdfs://mycluster/tmp/hive/` için yukarıda bulunan karalama dizininin içeriğini listeleyin:
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     ```
 
-    Dosyalar mevcut olduğunda örnek bir çıktı aşağıda verilmiştir:
+    Dosyalar var olduğunda örnek çıktı aşağıda veda edebilirsiniz:
 
     ```output
     sshuser@scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
@@ -203,37 +203,37 @@ Hive geçici dosyaların arkasında bırakılırsa, güvenli moddan kaçınmak i
     -rw-r--r--   3 hive hdfs         26 2017-07-06 20:30 hdfs://mycluster/tmp/hive/hive/c108f1c2-453e-400f-ac3e-e3a9b0d22699/inuse.info
     ```
 
-3. Hive 'nin bu dosyalarla yapıldığını biliyorsanız, bunları kaldırabilirsiniz. Hive 'nin Yarn ResourceManager UI sayfasına bakarak herhangi bir sorgu içermediğinden emin olun.
+3. Hive'ın bu dosyalarla yapıldığını biliyorsanız, bunları kaldırabilirsiniz. Hive'ın İplik Kaynak Yöneticisi UI sayfasına bakarak herhangi bir sorgusu olmadığından emin olun.
 
-    Dosyaları bir sunucudan kaldırmak için örnek komut satırı:
+    Dosyaları HDFS'den kaldırmak için örnek komut satırı:
 
     ```bash
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
 
-#### <a name="scale-hdinsight-to-three-or-more-worker-nodes"></a>HDInsight 'ı üç veya daha fazla çalışan düğümüne ölçeklendirin
+#### <a name="scale-hdinsight-to-three-or-more-worker-nodes"></a>HDInsight'ı üç veya daha fazla alt düğüme ölçeklendirin
 
-En az üç çalışan düğümüne ölçeklendirirken kümeleriniz güvenli modda takılıyorsa ve önceki adımlar çalışmazsa, en az üç çalışan düğümü tutarak kümenizin güvenli moda tamamen devam etmesinden kaçınabilirsiniz.
+Kümeleriniz üçten az alt düğüme ölçeklenirken sık sık güvenli modda sıkışıp kalıyorsa ve önceki adımlar çalışmıyorsa, kümenizin en az üç alt düğüm tutarak güvenli moda tamamen girmesini önleyebilirsiniz.
 
-Üç çalışan düğümünü koruma, yalnızca bir çalışan düğümüne ölçeklendirmeden daha maliyetlidir, ancak kümenizin güvenli modda takılmasını önler.
+Üç alt düğüm tutma, yalnızca bir alt düğüme ölçekleme yapmaktan daha maliyetlidir, ancak kümenizin güvenli modda sıkışıp kalmamasını önler.
 
-### <a name="scale-hdinsight-down-to-one-worker-node"></a>HDInsight 'ı bir çalışan düğümüne kadar ölçeklendirin
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>HDInsight'ı tek bir çalışan düğümüne küçült
 
-Küme 1 düğüme azaltılabilen bile, çalışan düğümü 0 devam eder. Çalışan düğümü 0, hiçbir şekilde kullanımdan kaldırılamıyor.
+Küme 1 düğüme küçültülse bile, işçi düğümü 0 yine de hayatta kalır. İşçi düğümü 0 asla kullanımdan kaldırılamaz.
 
-#### <a name="run-the-command-to-leave-safe-mode"></a>Güvenli moddan çıkmak için komutu çalıştırın
+#### <a name="run-the-command-to-leave-safe-mode"></a>Güvenli mod bırakmak için komutu çalıştırın
 
-Son seçenek, güvenli mod bırak komutunun yürütülmektir. Güvenli moda girme nedeninin, çoğaltma altındaki Hive dosyası nedeniyle olduğunu biliyorsanız, güvenli moddan çıkmak için aşağıdaki komutu çalıştırabilirsiniz:
+Son seçenek, güvenli mod komutunu çalıştırmaktır. HDFS'nin güvenli mod girme nedeninin Hive dosyasının altında çoğaltma olduğunu biliyorsanız, güvenli moddan ayrılmak için aşağıdaki komutu uygulayabilirsiniz:
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 ```
 
-### <a name="scale-down-an-apache-hbase-cluster"></a>Apache HBase kümesinin ölçeğini azaltma
+### <a name="scale-down-an-apache-hbase-cluster"></a>Apache HBase kümesini küçültme
 
-Bir ölçeklendirme işlemi tamamlandıktan sonra bölge sunucuları birkaç dakika içinde otomatik olarak dengelenir. Bölge sunucularını el ile dengelemek için aşağıdaki adımları izleyin:
+Bölge sunucuları, ölçekleme işlemini tamamladıktan sonra birkaç dakika içinde otomatik olarak dengelenir. Bölge sunucularını el ile dengelemek için aşağıdaki adımları tamamlayın:
 
-1. SSH kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. SSH'yi kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. HBase kabuğunu başlatın:
 
@@ -249,5 +249,5 @@ Bir ölçeklendirme işlemi tamamlandıktan sonra bölge sunucuları birkaç dak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure HDInsight kümelerini otomatik ölçeklendirme](hdinsight-autoscale-clusters.md)
-* [Azure HDInsight 'a giriş](hadoop/apache-hadoop-introduction.md)
+* [Azure HDInsight kümelerini otomatik olarak ölçeklendirin](hdinsight-autoscale-clusters.md)
+* [Azure HDInsight'a Giriş](hadoop/apache-hadoop-introduction.md)

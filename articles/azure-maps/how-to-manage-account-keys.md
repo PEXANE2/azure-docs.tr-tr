@@ -1,56 +1,56 @@
 ---
-title: Azure haritalar hesabınızı Azure portal yönetme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları hesabınızı yönetmek için Azure portal nasıl kullanacağınızı öğreneceksiniz.
-author: farah-alyasari
-ms.author: v-faalya
+title: Azure Haritalar hesabınızı Azure portalında yönetme | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar hesabınızı yönetmek için Azure portalını nasıl kullanacağınızı öğreneceksiniz.
+author: philmea
+ms.author: philmea
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209979"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335544"
 ---
-# <a name="manage-your-azure-maps-account"></a>Azure haritalar hesabınızı yönetme
+# <a name="manage-your-azure-maps-account"></a>Azure Haritalar hesabınızı yönetme
 
-Azure haritalar hesabınızı Azure portal aracılığıyla yönetebilirsiniz. Hesabınızı aldıktan sonra, Web sitenizde veya mobil uygulamanızda API 'Leri uygulayabilirsiniz.
+Azure Haritalar hesabınızı Azure portalı üzerinden yönetebilirsiniz. Bir hesabınız olduktan sonra, WEB sitenizde veya mobil uygulamanızda API'leri uygulayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="create-a-new-account"></a>Yeni hesap oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-2. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin.
+2. Azure portalın sol üst köşesinde bulunan **Kaynak oluştur**’u seçin.
 
-3. **Haritalar**arayın ve seçin. Ardından **Oluştur**’u seçin.
+3. **Haritaları**arayın ve seçin. Ardından **Oluştur**’u seçin.
 
-4. Yeni hesabınızın bilgilerini girin.
+4. Yeni hesabınıza ait bilgileri girin.
 
-[![Azure portal Azure Maps hesabı bilgilerini girin](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
+[![Azure portalına Azure Haritalar hesap bilgilerini girin](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>Hesap silme
 
-Azure portal bir hesabı silebilirsiniz. Hesaba genel bakış sayfasına gidin ve **Sil**' i seçin.
+Azure portalından bir hesabı silebilirsiniz. Hesaba genel bakış sayfasına gidin ve **Sil'i**seçin.
 
-[![Azure portal Azure Maps hesabınızı silme](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
+[![Azure portalındaki Azure Haritalar hesabınızı silme](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
-Daha sonra bir onay sayfası görürsünüz. Adını yazarak hesabınızın silinmesini doğrulayabilirsiniz.
+Daha sonra bir onay sayfası görürsünüz. Hesabınızın silinmesini adını yazarak onaylayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar ile kimlik doğrulamasını ayarlayın ve Azure Maps abonelik anahtarını nasıl alabileceğinizi öğrenin:
+Azure Haritalar ile kimlik doğrulaması ayarlayın ve Azure Haritalar abonelik anahtarını nasıl elde edebilirsiniz öğrenin:
 > [!div class="nextstepaction"]
-> [Kimlik doğrulamasını Yönet](how-to-manage-authentication.md)
+> [Kimlik doğrulamasını yönetme](how-to-manage-authentication.md)
 
-Azure haritalar hesabı fiyatlandırma katmanını yönetmeyi öğrenin:
+Azure Haritalar hesap fiyatlandırma katmanını nasıl yönetebilirsiniz öğrenin:
 > [!div class="nextstepaction"] 
 > [Fiyatlandırma katmanını yönetme](how-to-manage-pricing-tier.md)
 
-Azure haritalar hesabınız için API kullanım ölçümlerini nasıl görebileceğinizi öğrenin:
+Azure Haritalar hesabınıziçin API kullanım ölçümlerini nasıl göreceğinizi öğrenin:
 > [!div class="nextstepaction"] 
-> [Kullanım ölçümlerini görüntüle](how-to-view-api-usage.md)
+> [Kullanım ölçümlerini görüntüleme](how-to-view-api-usage.md)

@@ -1,6 +1,6 @@
 ---
-title: Dosyaları Azure Cloud Shell Sürdür | Microsoft Docs
-description: Azure Cloud Shell dosyalarının sürekli olarak devam edip etmediğini gösteren yönergeler.
+title: Azure Bulut Uyp'ta dosyaları devam etti | Microsoft Dokümanlar
+description: Azure Bulut Su ağılının dosyaları nasıl devam ettigini günüz.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,95 +14,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252109"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297596"
 ---
-# <a name="persist-files-in-azure-cloud-shell"></a>Dosyaları Azure Cloud Shell Sürdür
-Cloud Shell, dosyaları oturumlarda kalıcı hale getirmek için Azure dosya depolama kullanır. İlk başlangıçta Cloud Shell, dosyaları oturumlardaki kalıcı hale getirmek için yeni veya var olan bir dosya paylaşımından ilişkilendiremenizi ister.
+# <a name="persist-files-in-azure-cloud-shell"></a>Azure Bulut Uyp'ta dosyaları devam etti
+Bulut Kabuğu, oturumlar arasında dosyaları sürdürmek için Azure Dosya depolamasını kullanır. İlk başlangıçta Bulut Shell, oturumlar arasında kalıcı dosyalar için yeni veya varolan bir dosya paylaşımını ilişkilendirmenizi ister.
 
 > [!NOTE]
-> Bash ve PowerShell aynı dosya paylaşımının aynısını paylaşır. Cloud Shell otomatik bağlama ile yalnızca bir dosya paylaşımının ilişkilendirilmesi olabilir.
+> Bash ve PowerShell aynı dosya paylaşımını paylaşır. Cloud Shell'de otomatik montajla yalnızca bir dosya paylaşımı ilişkilendirilebilir.
 
 > [!NOTE]
-> Azure Storage güvenlik duvarı, Cloud Shell depolama hesapları için desteklenmez.
+> Bulut kabuğu depolama hesapları için Azure depolama güvenlik duvarı desteklenmez.
 
-## <a name="create-new-storage"></a>Yeni depolama alanı oluştur
+## <a name="create-new-storage"></a>Yeni depolama alanı oluşturma
 
-Temel ayarları kullandığınızda ve yalnızca bir abonelik seçtiğinizde, Cloud Shell desteklenen bölgede sizin adınıza en yakın üç kaynak oluşturur:
+Temel ayarları kullandığınızda ve yalnızca bir abonelik seçtiğinizde, Cloud Shell size en yakın desteklenen bölgede sizin adınıza üç kaynak oluşturur:
 * Kaynak grubu: `cloud-shell-storage-<region>`
-* Depolama hesabı: `cs<uniqueGuid>`
-* Dosya paylaşma: `cs-<user>-<domain>-com-<uniqueGuid>`
+* Depolama hesabı:`cs<uniqueGuid>`
+* Dosya paylaşımı:`cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![Abonelik ayarı](media/persisting-shell-storage/basic-storage.png)
 
-Dosya paylaşma, `$Home` dizininizde `clouddrive` olarak takar. Bu tek seferlik bir eylemdir ve dosya paylaşımının sonraki oturumlarda otomatik olarak takar. 
+Dosya paylaşımı dizininizdeki `clouddrive` `$Home` gibi bağlanır. Bu tek seferlik bir eylemdir ve dosya paylaşımı sonraki oturumlarda otomatik olarak bağlanır. 
 
-Dosya paylaşımında Ayrıca, `$Home` dizininizdeki verileri otomatik olarak sürdüren, sizin için oluşturulan 5 GB bir görüntü de bulunur. Bu hem Bash hem PowerShell için geçerlidir.
+Dosya paylaşımı, dizininizdeki `$Home` verileri otomatik olarak devam eden sizin için oluşturulan 5 GB'lık bir görüntü de içerir. Bu hem Bash hem de PowerShell için geçerlidir.
 
-## <a name="use-existing-resources"></a>Mevcut kaynakları kullan
+## <a name="use-existing-resources"></a>Varolan kaynakları kullanma
 
-Gelişmiş seçeneğini kullanarak, mevcut kaynakları ilişkilendirebilirsiniz. Bir Cloud Shell bölgesi seçerken aynı bölgede birlikte bulunan bir yedekleme depolama hesabı seçmeniz gerekir. Örneğin, atanan bölgeniz Batı ABD, Batı ABD içinde bulunan bir dosya paylaşımının de ilişkilendirilmesi gerekir.
+Gelişmiş seçeneği kullanarak, varolan kaynakları ilişkilendirebilirsiniz. Bulut Bulutbölgesi seçerken, aynı bölgede birlikte bulunan bir destek depolama hesabı seçmeniz gerekir. Örneğin, atanan bölgeniz Batı ABD ise, Batı ABD'de de bulunan bir dosya paylaşımını ilişkilendirmeniz gerekir.
 
-Depolama kurulumu istemi göründüğünde, ek seçenekleri görüntülemek için **Gelişmiş ayarları göster** ' i seçin. Doldurulmuş depolama seçenekleri için yerel olarak yedekli depolama (LRS), coğrafi olarak yedekli depolama (GRS) ve bölgesel olarak yedekli depolama (ZRS) hesapları için filtre. 
+Depolama kurulum istemi göründüğünde, ek seçenekleri görüntülemek için **gelişmiş ayarları göster'i** seçin. Yerel olarak yedekli depolama (LRS), coğrafi yedekli depolama (GRS) ve bölge yedekli depolama (ZRS) hesapları için doldurulan depolama seçenekleri filtresi. 
 
 > [!NOTE]
-> Yedekleme dosya paylaşımınız için ek dayanıklılık için GRS veya ZRS depolama hesaplarının kullanılması önerilir. Hangi artıklık türü, hedeflerinize ve fiyat tercihlerinize bağlıdır. [Azure depolama hesapları için çoğaltma seçenekleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
+> DESTEK dosya paylaşımınız için ek esneklik için GRS veya ZRS depolama hesaplarının kullanılması önerilir. Hangi fazlalık türü hedeflerinize ve fiyat tercihinize bağlıdır. [Azure Depolama hesapları için çoğaltma seçenekleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
-![Kaynak grubu ayarı](media/persisting-shell-storage/advanced-storage.png)
+![Kaynak grup ayarı](media/persisting-shell-storage/advanced-storage.png)
 
-## <a name="securing-storage-access"></a>Depolama erişiminin güvenliğini sağlama
-Güvenlik için, her kullanıcının kendi depolama hesabını sağlaması gerekir.  Rol tabanlı erişim denetimi (RBAC) için, kullanıcıların depolama hesabı düzeyinde katkıda bulunan erişimi veya üzeri olması gerekir.
+## <a name="securing-storage-access"></a>Depolama erişimini güvence altına alma
+Güvenlik için, her kullanıcı kendi depolama hesabını sağlamalıdır.  Rol tabanlı erişim denetimi (RBAC) için, kullanıcıların depolama hesabı düzeyinde katılımcı erişimine veya üzerinde olması gerekir.
 
-Cloud Shell, bir depolama hesabında, belirtilen bir abonelikte Azure dosya paylaşımından yararlanır. Devralınan izinler nedeniyle, abonelikte yeterli erişim haklarına sahip olan kullanıcılar, abonelikte bulunan tüm depolama hesaplarına ve dosya paylaşımlarına erişebilecektir.
+Bulut Shell, belirli bir abonelik içinde bir depolama hesabında Azure Dosya Paylaşımı kullanır. Devralınan izinler sayesinde, aboneliğin yeterli erişim haklarına sahip kullanıcılar tüm depolama hesaplarına ve abonelikte bulunan dosya paylaşımlarına erişebilecektir.
 
-Kullanıcılar, depolama hesabındaki veya abonelik düzeyindeki izinleri ayarlayarak dosyalarına erişimi kilitlemelidir.
+Kullanıcılar, izinleri depolama hesabında veya abonelik düzeyinde ayarlayarak dosyalarına erişimi kilitlemelidir.
 
 ## <a name="supported-storage-regions"></a>Desteklenen depolama bölgeleri
-Geçerli bölgenizi bulmak için bash 'de `env` çalıştırıp `ACC_LOCATION`veya PowerShell Run `$env:ACC_LOCATION`değişkenini bulabilirsiniz. Dosya paylaşımları, `$Home` dizininizi kalıcı hale getirmek için oluşturduğunuz 5 GB bir görüntü alır.
+Geçerli bölgenizi bulmak için `env` Bash'te çalışabilir `ACC_LOCATION`ve değişkeni `$env:ACC_LOCATION`veya PowerShell run'ı bulabilirsiniz. Dosya paylaşımları, dizininizde `$Home` kalıcı lık elde etmek için oluşturulan 5 GB'lık bir görüntü alır.
 
-Cloud Shell makineler aşağıdaki bölgelerde mevcuttur:
+Bulut Shell makineleri aşağıdaki bölgelerde bulunur:
 
 |Alan|Bölge|
 |---|---|
-|Kuzey ve Güney Amerika|Doğu ABD, Orta Güney ABD, Batı ABD|
+|Kuzey ve Güney Amerika|Doğu ABD, Güney Orta ABD, Batı ABD|
 |Avrupa|Kuzey Avrupa, Batı Avrupa|
 |Asya Pasifik|Hindistan Orta, Güneydoğu Asya|
 
-Müşterilerin, bekleyen verilerinin belirli bir bölgede depolanmasını şart olmadığı durumlar dışında, müşteriler bir birincil bölge seçmelidir. Böyle bir gereklilik varsa, ikincil bir depolama bölgesinin kullanılması gerekir.
+Müşteriler, verilerinin belirli bir bölgede depolanması şartı yoksa birincil bir bölge seçmelidir. Böyle bir gereksinimleri varsa, ikincil bir depolama bölgesi kullanılmalıdır.
 
 ### <a name="secondary-storage-regions"></a>İkincil depolama bölgeleri
-İkincil bir depolama bölgesi kullanılırsa, ilişkili Azure depolama hesabı, bunları bağlamak istediğiniz Cloud Shell makine olarak farklı bir bölgede bulunur. Örneğin, Gamze depolama hesabını Kanada Doğu, ikincil bir bölgede yer alan olarak ayarlayabilir, ancak bağlanan makine hala birincil bölgede yer alır. Rest 'teki veriler Kanada 'da bulunur, ancak Birleşik Devletler işlenir.
+İkincil bir depolama bölgesi kullanılıyorsa, ilişkili Azure depolama hesabı, bunları monte ettiğiniz Bulut Bulut suması makinesi olarak farklı bir bölgede bulunur. Örneğin, Jane depolama hesabını ikinci bir bölge olan Kanada Doğu'da bulunacak şekilde ayarlayabilir, ancak monte ettiği makine hala birincil bir bölgede bulunuyor. Onun verileri Kanada'da bulunur, ancak Amerika Birleşik Devletleri'nde işlenir.
 
 > [!NOTE]
-> Bir ikincil bölge kullanılıyorsa, Cloud Shell için dosya erişimi ve başlangıç zamanı daha yavaş olabilir.
+> İkincil bir bölge kullanılırsa, Cloud Shell için dosya erişimi ve başlangıç süresi daha yavaş olabilir.
 
-Bir Kullanıcı, dosya paylaşımının konumunu görmek için PowerShell 'de `(Get-CloudDrive | Get-AzStorageAccount).Location` çalıştırabilir.
+Bir kullanıcı, `(Get-CloudDrive | Get-AzStorageAccount).Location` Dosya Paylaşımı'nın konumunu görmek için PowerShell'de çalıştırılabilir.
 
-## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure Kaynak ilkesiyle kaynak oluşturmayı kısıtlama
-Cloud Shell içinde oluşturduğunuz depolama hesapları `ms-resource-usage:azure-cloud-shell`olarak etiketlenir. Kullanıcıların Cloud Shell depolama hesapları oluşturmalarına izin vermemek istiyorsanız, bu özel etiket tarafından tetiklenen [Etiketler için bir Azure Kaynak ilkesi](../azure-policy/json-samples.md) oluşturun.
+## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure kaynak ilkesiyle kaynak oluşturmayı kısıtlama
+Cloud Shell'de oluşturduğunuz depolama `ms-resource-usage:azure-cloud-shell`hesapları . Kullanıcıların Bulut Bulut'ta depolama hesapları oluşturmasına izin vermek istiyorsanız, bu belirli etiket tarafından tetiklenen etiketler için bir [Azure kaynak ilkesi](../azure-policy/json-samples.md) oluşturun.
 
-## <a name="how-cloud-shell-storage-works"></a>Cloud Shell depolama nasıl kullanılır 
-Aşağıdaki yöntemlerin her ikisinde de dosyaları Cloud Shell devam ettirir: 
-* Dizin içindeki tüm içerikleri kalıcı hale getirmek için `$Home` dizininizin disk görüntüsünü oluşturma. Disk görüntüsü, `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img``acc_<User>.img` olarak belirtilen dosya paylaşımınızda kaydedilir ve değişiklikleri otomatik olarak eşitler. 
-* Belirtilen dosya paylaşımınızı doğrudan dosya paylaşma etkileşimi için `$Home` dizininize `clouddrive` olarak bağlama. `/Home/<User>/clouddrive` `fileshare.storage.windows.net/fileshare`eşlenir.
+## <a name="how-cloud-shell-storage-works"></a>Cloud Shell depolama nasıl çalışır? 
+Bulut Kabuğu, dosyaları aşağıdaki yöntemlerin her ikisi yle de devam eder: 
+* Dizininizin içindeki tüm `$Home` içeriği devam etmek için dizininizin bir disk görüntüsünü oluşturma. Disk görüntüsü, belirtilen dosya paylaşımınıza `acc_<User>.img` `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`şu şekilde kaydedilir ve değişiklikleri otomatik olarak eşitler. 
+* Doğrudan dosya paylaşımı `clouddrive` etkileşimi `$Home` için dizininizde olduğu gibi belirtilen dosya paylaşımınızı montaj. `/Home/<User>/clouddrive`' ye `fileshare.storage.windows.net/fileshare`eşlenir.
  
 > [!NOTE]
-> SSH anahtarları gibi `$Home` dizininizdeki tüm dosyalar, bağlı dosya paylaşımınızda saklanan Kullanıcı diski yansımanızda kalıcıdır. `$Home` dizininizde ve bağlı dosya paylaşımında bilgileri kalıcı hale getirmek için en iyi yöntemleri uygulayın.
+> Dizininizdeki `$Home` SSH anahtarları gibi tüm dosyalar, monte edilmiş dosya paylaşımınızda depolanan kullanıcı diski resminizde kalıcıdır. Dizin ve monte edilmiş dosya `$Home` paylaşımında bilgileri kalıcı olarak uyguladığınızda en iyi uygulamaları uygulayın.
 
-## <a name="clouddrive-commands"></a>CloudDrive komutları
+## <a name="clouddrive-commands"></a>clouddrive komutları
 
-### <a name="use-the-clouddrive-command"></a>`clouddrive` komutunu kullanın
-Cloud Shell, Cloud Shell 'e bağlı dosya paylaşımından el ile güncelleştirmenizi sağlayan `clouddrive`adlı bir komutu çalıştırabilirsiniz.
-"CloudDrive" komutu çalıştırılarak ![](media/persisting-shell-storage/clouddrive-h.png)
+### <a name="use-the-clouddrive-command"></a>Komutu `clouddrive` kullanma
+Bulut Kabuğu'nda, Cloud Shell'e monte edilen dosya paylaşımını el ile güncelleştirmenizi sağlayan " adlı " komutu `clouddrive`çalıştırabilirsiniz.
 
-### <a name="list-clouddrive"></a>Liste `clouddrive`
-`clouddrive`olarak hangi dosya paylaşımının takıldığını saptamak için `df` komutunu çalıştırın. 
+!["clouddrive" komutunu çalıştırma](media/persisting-shell-storage/clouddrive-h.png)
 
-CloudDrive dosya yolu, URL 'deki depolama hesabı adınızı ve dosya paylaşımınızı gösterir. Örneğin, `//storageaccountname.file.core.windows.net/filesharename`
+### <a name="list-clouddrive"></a>Liste`clouddrive`
+Hangi dosya paylaşımının , `clouddrive`olarak `df` monte edildiğini bulmak için komutu çalıştırın. 
+
+clouddrive'a giden dosya yolu, depolama hesabı adınızı ve dosya paylaşımınızı URL'de gösterir. Örneğin, `//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df
@@ -116,57 +117,57 @@ shm                                                    65536       0      65536 
 justin@Azure:~$
 ```
 
-### <a name="mount-a-new-clouddrive"></a>Yeni bir CloudDrive takın
+### <a name="mount-a-new-clouddrive"></a>Yeni bir bulut sürücüsüne binin
 
-#### <a name="prerequisites-for-manual-mounting"></a>El ile bağlama önkoşulları
-`clouddrive mount` komutunu kullanarak Cloud Shell ilişkili dosya paylaşımının güncelleştirilmesini sağlayabilirsiniz.
+#### <a name="prerequisites-for-manual-mounting"></a>Manuel montaj için ön koşullar
+Komutu kullanarak Bulut Kabuğu ile ilişkili dosya paylaşımını `clouddrive mount` güncelleştirebilirsiniz.
 
-Var olan bir dosya paylaşımından bağlama yaparsanız, depolama hesaplarının Select Cloud Shell bölgesinde bulunması gerekir. `env` çalıştırıp `ACC_LOCATION`denetleyerek konumu alın.
+Varolan bir dosya paylaşımını bağlarsanız, depolama hesapları nın seçtiğiniz Bulut Bulut bölgesinde bulunması gerekir. Çalıştırarak `env` ve kontrol ederek `ACC_LOCATION`konumu alın.
 
-#### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` komutu
+#### <a name="the-clouddrive-mount-command"></a>Komut `clouddrive mount`
 
 > [!NOTE]
-> Yeni bir dosya paylaşma oluşturuyorsanız, `$Home` dizininiz için yeni bir Kullanıcı görüntüsü oluşturulur. Önceki `$Home` görüntünüz önceki dosya paylaşımınızda tutulur.
+> Yeni bir dosya paylaşımı düzenliyorsanız, dizininiz `$Home` için yeni bir kullanıcı resmi oluşturulur. Önceki `$Home` resminiz önceki dosya paylaşımınızda tutulur.
 
-`clouddrive mount` komutunu aşağıdaki parametrelerle çalıştırın:
+Komutu `clouddrive mount` aşağıdaki parametrelerle çalıştırın:
 
 ```
 clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareName
 ```
 
-Daha fazla ayrıntı görüntülemek için, `clouddrive mount -h`aşağıda gösterildiği gibi çalıştırın:
+Daha fazla ayrıntı `clouddrive mount -h`görüntülemek için, burada gösterildiği gibi çalıştırın:
 
-![' CloudDrive Mount 'komutunu çalıştırma](media/persisting-shell-storage/mount-h.png)
+!['clouddrive mount' komutunu çalıştırma](media/persisting-shell-storage/mount-h.png)
 
-### <a name="unmount-clouddrive"></a>CloudDrive bağlantısını kaldır
-Cloud Shell bağlanan bir dosya paylaşımının bağlantısını dilediğiniz zaman kaldırabilirsiniz. Cloud Shell bağlı bir dosya paylaşımının kullanılmasını gerektirdiğinden, bir sonraki oturumda başka bir dosya paylaşma oluşturmanız ve bağlamanız istenir.
+### <a name="unmount-clouddrive"></a>Unmount clouddrive
+Bulut Shell'e monte edilmiş bir dosya paylaşımını istediğiniz zaman atlayabilirsiniz. Cloud Shell'in kullanılmak üzere monte edilmiş bir dosya paylaşımı nı gerektirmesi nedeniyle, bir sonraki oturumda başka bir dosya paylaşımı oluşturmanız ve takmanız istenir.
 
 1. `clouddrive unmount` öğesini çalıştırın.
-2. İstemleri kabul edin ve onaylayın.
+2. İstemleri onaylayın ve onaylayın.
 
-Dosya paylaşımınız, el ile silmediğiniz takdirde mevcut olmaya devam edecektir. Cloud Shell artık sonraki oturumlarda bu dosya paylaşımının aranmayacak. Daha fazla ayrıntı görüntülemek için, `clouddrive unmount -h`aşağıda gösterildiği gibi çalıştırın:
+El ile silmediğiniz sürece dosya paylaşımınız var olmaya devam edecektir. Cloud Shell artık sonraki oturumlarda bu dosya paylaşımını aramaz. Daha fazla ayrıntı `clouddrive unmount -h`görüntülemek için, burada gösterildiği gibi çalıştırın:
 
-![' CloudDrive unmount'komutunu çalıştırma](media/persisting-shell-storage/unmount-h.png)
+!['clouddrive unmount' komutunu çalıştırma](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Bu komutu çalıştırmak hiçbir kaynağı silmez, bir kaynak grubu, depolama hesabı veya Cloud Shell eşlenen dosya paylaşımının el ile silinmesi, `$Home` Dizin disk görüntünüzü ve dosya paylaşımınızda bulunan tüm dosyaları siler. Bu eylem geri alınamaz.
-## <a name="powershell-specific-commands"></a>PowerShell 'e özgü komutlar
+> Bu komutu çalıştırmak hiçbir kaynağı silmese de, Bulut Kabuğu'na eşlenen bir kaynak grubunu, depolama hesabını `$Home` veya dosya paylaşımını el ile silmek dizin diski görselinizi ve dosya paylaşımınızdaki dosyaları siler. Bu eylem geri alınamaz.
+## <a name="powershell-specific-commands"></a>PowerShell'e özel komutlar
 
-### <a name="list-clouddrive-azure-file-shares"></a>Azure dosya paylaşımlarını `clouddrive` listeleme
-`Get-CloudDrive` cmdlet 'i, şu anda Cloud Shell `clouddrive` tarafından takılan Azure dosya paylaşma bilgilerini alır. <br>
-Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png) çalıştıran ![
+### <a name="list-clouddrive-azure-file-shares"></a>Azure `clouddrive` dosya paylaşımlarını listele
+Cmdlet, `Get-CloudDrive` Bulut `clouddrive` Kabuğu'nda şu anda monte edilen Azure dosya paylaşım bilgilerini alır. <br>
+![Get-CloudDrive'ı Çalıştırma](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
-### <a name="unmount-clouddrive"></a>`clouddrive` çıkarın
-Cloud Shell bağlanan bir Azure dosya paylaşımının bağlantısını dilediğiniz zaman kaldırabilirsiniz. Azure dosya paylaşımında kaldırılan bir sonraki oturumda yeni bir Azure dosya paylaşma oluşturmanız ve bağlamanız istenir.
+### <a name="unmount-clouddrive"></a>Unmount`clouddrive`
+Bulut Shell'e monte edilmiş bir Azure dosya paylaşımını istediğiniz zaman atlayabilirsiniz. Azure dosya paylaşımı kaldırıldıysa, bir sonraki oturumda yeni bir Azure dosya paylaşımı oluşturmanız ve takmanız istenir.
 
-`Dismount-CloudDrive` cmdlet 'i, geçerli depolama hesabından bir Azure dosya paylaşımının serbest bir şekilde çıkarır. `clouddrive` çıkarma geçerli oturumu sonlandırır. Kullanıcıdan bir sonraki oturum sırasında yeni bir Azure dosya paylaşımının oluşturulması ve bağlanması istenir.
-Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png) ![çalışıyor
+Cmdlet, `Dismount-CloudDrive` geçerli depolama hesabından bir Azure dosya paylaşımını açar. Geçerli oturumu `clouddrive` sonlandırmak. Kullanıcıdan bir sonraki oturumda yeni bir Azure dosya paylaşımı oluşturması ve takması istenir.
+![Sökme-CloudDrive'ı Çalıştırma](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-Note: bir dosyada bir işlev tanımlamanız ve PowerShell cmdlet 'lerinden çağırmak gerekiyorsa, nokta işlecinin dahil olması gerekir. Örneğin:. .\MyFunctions.ps1
+Not: Bir dosyada bir işlev tanımlamanız ve PowerShell cmdlets'ten aramanız gerekiyorsa, nokta işleci nin eklenmesi gerekir. Örneğin: . .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Hızlı başlangıç Cloud Shell](quickstart.md) <br>
-[Microsoft Azure dosyaları depolama hakkında bilgi edinin](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[Bulut Kabuğu Hızlı Başlat](quickstart.md) <br>
+[Microsoft Azure Dosyaları depolama hakkında bilgi edinin](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [Depolama etiketleri hakkında bilgi edinin](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

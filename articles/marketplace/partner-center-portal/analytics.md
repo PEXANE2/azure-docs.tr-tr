@@ -1,37 +1,36 @@
 ---
-title: Iş Ortağı Merkezi 'nde ticari Market için analiz
-description: Satışları izlemek, performansı değerlendirmek ve Market tekliflerinizi iyileştirmek için analitik raporlara erişme konusuna genel bakış.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: İş Ortağı Merkezi'ndeki Ticari Pazar Için Analitik
+description: Satışları izlemek, performansı değerlendirmek ve pazar yeri tekliflerinizi optimize etmek için analitik raporlara erişime genel bakış.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 9d7887894e796c71f0a92402e0a26fccc4d03f75
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f1db4479d04b8f81f95b95c5277efb35210745b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431937"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279785"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analiz
+# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>İş Ortağı Merkezi'ndeki Ticari Pazar Için Analitik
 
-Satışları izlemek, performansı değerlendirmek ve Market 'teki tekliflerinizi iyileştirmek için Microsoft Iş Ortağı Merkezi 'ndeki analitik raporlara nasıl erişebileceğinizi öğrenin. İş ortağı olarak, Iş Ortağı Merkezi tarafından desteklenen veri görselleştirme ve Öngörüler grafiklerini kullanarak teklif listelerinizi izleyebilir ve satışlarınızı en üst düzeye çıkarmak için kullanabileceğiniz yolları bulabilirsiniz. Geliştirilmiş analiz araçları, performans sonuçları üzerinde işlem yapma ve müşterilerinizle ve satıcılarınızla daha iyi ilişkiler elde etme olanağı sağlar.
+Satışlarını izlemek, performansı değerlendirmek ve pazardaki tekliflerinizi optimize etmek için Microsoft İş Ortağı Merkezi'ndeki analitik raporlara nasıl eriştiğinizi öğrenin. İş ortağı olarak, İş Ortağı Merkezi tarafından desteklenen veri görselleştirme ve öngörü grafiklerini kullanarak teklif listelerinizi izleyebilir ve satışlarınızı en üst düzeye çıkarmanın yollarını bulabilirsiniz. Geliştirilmiş analiz araçları, performans sonuçlarına göre hareket etmenizi ve müşterileriniz ve satıcılarınızla daha iyi ilişkiler kurmanızı sağlar.
 
-## <a name="partner-center-analytics-tools"></a>İş ortağı merkezi analiz araçları
+## <a name="partner-center-analytics-tools"></a>İş Ortağı Merkezi analiz araçları
 
-Iş ortağı merkezi analiz araçlarına erişmek için, ticari Market altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
+İş Ortağı Merkezi analiz araçlarına erişmek için, Ticari Pazar altında **[Analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
 
 >[!NOTE]
-> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
+> Analitik terminolojinin ayrıntılı tanımları [için, Ticari Pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Teklifinizin Market etkinliklerini özetleyen grafikler, eğilimler ve veri değerleri için bkz. [ticari Market Analytics 'Te Özet Panosu](./summary-dashboard.md).
-- Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](./orders-dashboard.md).
-- Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](./usage-dashboard.md).
-- Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](./customer-dashboard.md).
-- Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'Te panoyu indirme](./downloads-dashboard.md).
-- Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [ticari Market Analytics 'Te derecelendirmeler ve İncelemeler panosu](./ratings-reviews.md).
-- Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
+- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri için, [Ticari Pazar analitiğinde Özet Panosu'na](./summary-dashboard.md)bakın.
+- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [Ticari Pazar analitiğinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
+- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [Ticari Pazar analitiğinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
+- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [Ticari Pazar analitiğinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
+- Son 30 gün içinde indirme isteklerinizin bir listesi için, [Ticari Pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
+- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [Commercial Marketplace analitiğinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.
+- Ticari Pazar yeri analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, Ticari Pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.

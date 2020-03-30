@@ -1,36 +1,36 @@
 ---
-title: Hava durumu kapsamı | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritalar 'da Hava durumu kapsamı hakkında bilgi edineceksiniz.
-author: farah-alyasari
-ms.author: v-faalya
+title: Hava durumu | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar'da Hava Durumu kapsamı hakkında bilgi edineceksiniz.
+author: philmea
+ms.author: philmea
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fdae00a07b364252ae6d297a6df5eb242beac262
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207953"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333578"
 ---
-# <a name="azure-maps-weather-coverage"></a>Azure haritalar Hava durumu kapsamı
+# <a name="azure-maps-weather-coverage"></a>Azure Haritalar hava durumu kapsamı
 
-Bu makalede Azure haritalar [Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeatherService)için kapsam bilgileri sağlanmaktadır. Azure haritalar Hava durumu veri Hizmetleri, radar kutucukları, geçerli hava durumu koşulları, hava durumu tahminleri ve bir rota üzerinde hava durumu gibi ayrıntıları getirir.
+Bu makalede, Azure Haritalar [Hava durumu hizmetleri](https://aka.ms/AzureMapsWeatherService)için kapsam bilgileri verilmektedir. Azure Haritalar Hava durumu veri hizmetleri, radar kutucukları, mevcut hava koşulları, hava tahminleri ve bir rota boyunca hava durumu gibi ayrıntıları döndürür.
 
-Azure haritalar tüm ülkeler ve bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir.
+Azure Haritalar, tüm ülkeler ve bölgeler için aynı düzeyde bilgi ve doğruluğa sahip değildir.
 
-Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu bilgileri hakkında bilgi verilmektedir.
+Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyebileceğiniz hakkında bilgi sağlar.
 
 | Sembol | Anlamı |
 |--------|---------|
-|*       |Yol, geçerli koşullar, saatlik tahmin, çeyrek günlük tahmin ve günlük tahmin API 'Leri ile hava durumunu ele alır |
+|*       |Rota Boyunca Hava Durumunu Kapsar, Geçerli Koşullar, Saatlik Tahmini, Çeyrek Günlük Tahmini ve Günlük Tahmin API'leri |
 
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-| Ülke/bölge              |  Uydu kutucukları | Dakika tahmini, radar kutucukları | Farklı | 
+| Ülke/bölge              |  Uydu Karoları | Dakika Tahmini, Radar Karoları | Diğer* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Anguilla                                 | ✓ |   |  ✓| 
 | Antarktika                               | ✓ |   |  ✓|
@@ -44,7 +44,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Bolivya                                  | ✓ |   |  ✓| 
 | Bonaire                                  | ✓ |   |  ✓| 
 | Brezilya                                   | ✓ |   |  ✓| 
-| İngiliz Virgin Adaları                   | ✓ |   |  ✓| 
+| Britanya Virjin Adaları                   | ✓ |   |  ✓| 
 | Kanada                                   | ✓ | ✓ |  ✓| 
 | Kayman Adaları                           | ✓ |   |  ✓| 
 | Şili                                    | ✓ |   |  ✓| 
@@ -74,11 +74,11 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Paraguay                                 | ✓ |   |  ✓| 
 | Peru                                     | ✓ |   |  ✓| 
 | Porto Riko                              | ✓ |   |  ✓| 
-| Saint Barthélimy                         | ✓ |   |  ✓| 
+| Aziz Barthélemy                         | ✓ |   |  ✓| 
 | Saint Kitts ve Nevis                    | ✓ |   |  ✓| 
 | Saint Lucia                              | ✓ |   |  ✓| 
-| Saint Marmara                             | ✓ |   |  ✓| 
-| Saint Pierre ve Miquelon                | ✓ |   |  ✓| 
+| Saint Martin                             | ✓ |   |  ✓| 
+| Aziz Pierre ve Miquelon                | ✓ |   |  ✓| 
 | Saint Vincent ve Grenadinler         | ✓ |   |  ✓| 
 | Sint Eustatius                           | ✓ |   |  ✓|  
 | Sint Maarten                             | ✓ |   |  ✓| 
@@ -86,8 +86,8 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Surinam                                 | ✓ |   |  ✓| 
 | Trinidad ve Tobago                      | ✓ |   |  ✓| 
 | Turks ve Caicos Adaları                 | ✓ |   |  ✓| 
-| ABD harici Adaları                    | ✓ |   |  ✓| 
-| ABD Virgin Adaları                      | ✓ |   |  ✓| 
+| ABD Dış Adaları                    | ✓ |   |  ✓| 
+| ABD Virjin Adaları                      | ✓ |   |  ✓| 
 | Amerika Birleşik Devletleri                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
@@ -95,7 +95,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
 
-| Ülke/bölge              |  Uydu kutucukları | Dakika tahmini, radar kutucukları | Farklı | 
+| Ülke/bölge              |  Uydu Karoları | Dakika Tahmini, Radar Karoları | Diğer* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Cezayir                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
@@ -109,7 +109,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Cabo Verde                  | ✓               |                              |        ✓| 
 | Orta Afrika Cumhuriyeti    | ✓               |                              |        ✓| 
 | Çad                        | ✓               |                              |        ✓| 
-| Komorolar                     | ✓               |                              |        ✓| 
+| Komorlar                     | ✓               |                              |        ✓| 
 | Kongo (KDC)                 | ✓               |                              |        ✓|
 | Fildişi Sahili               | ✓               |                              |        ✓| 
 | Cibuti                    | ✓               |                              |        ✓| 
@@ -118,12 +118,12 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Eritre                     | ✓               |                              |        ✓| 
 | eSwatini                    | ✓               |                              |        ✓| 
 | Etiyopya                    | ✓               |                              |        ✓| 
-| Fransız Güney toprakları | ✓               |                              |        ✓| 
+| Fransız Güney Toprakları | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
 | Gambiya                      | ✓               |                              |        ✓| 
 | Gana                       | ✓               |                              |        ✓| 
 | Gine                      | ✓               |                              |        ✓| 
-| Gine Bissau               | ✓               |                              |        ✓| 
+| Gine-Bissau               | ✓               |                              |        ✓| 
 | İran                        | ✓               |                              |        ✓| 
 | Irak                        | ✓               |                              |        ✓| 
 | İsrail                      | ✓               |                              |        ✓| 
@@ -150,12 +150,12 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Katar                       | ✓               |                              |        ✓| 
 | Reunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
-| Saint Helena, Ascension ve Tristan da Cunha        | ✓               |                              |        ✓| 
-| Sao Tome ve Principe       | ✓               |                              |        ✓| 
+| St Helena, Yükseliş, Tristan da Cunha        | ✓               |                              |        ✓| 
+| São Tomé ve Príncipe       | ✓               |                              |        ✓| 
 | Suudi Arabistan                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
-| Seyş                  | ✓               |                              |        ✓| 
-| Sierra Taone                | ✓               |                              |        ✓| 
+| Seyşeller                  | ✓               |                              |        ✓| 
+| Sierra Leone                | ✓               |                              |        ✓| 
 | Somali                     | ✓               |                              |        ✓| 
 | Güney Afrika                | ✓               |                              |        ✓| 
 | Güney Sudan                 | ✓               |                              |        ✓| 
@@ -174,15 +174,15 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 
 ## <a name="asia-pacific"></a>Asya Pasifik
 
-| Ülke/bölge              |  Uydu kutucukları | Dakika tahmini, radar kutucukları | Farklı | 
+| Ülke/bölge              |  Uydu Karoları | Dakika Tahmini, Radar Karoları | Diğer* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afganistan                       | ✓ |   |  ✓| 
 | Amerikan Samoası                    | ✓ |   |  ✓| 
 | Avustralya                         | ✓ | ✓ |  ✓| 
 | Bangladeş                        | ✓ |   |  ✓| 
 | Butan                            | ✓ |   |  ✓| 
-| İngiliz Hint Okyanusu Toprakları    | ✓ |   |  ✓| 
-| Barış                            | ✓ |   |  ✓| 
+| Britanya Hint Okyanusu Toprakları    | ✓ |   |  ✓| 
+| Brunei                            | ✓ |   |  ✓| 
 | Kamboçya                          | ✓ |   |  ✓| 
 | Çin                             | ✓ | ✓ |  ✓| 
 | Christmas Adası                  | ✓ |   |  ✓| 
@@ -192,7 +192,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Fransız Polinezyası                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
 | Heard Adası ve McDonald Adaları | ✓ |   |  ✓| 
-| Hong Kong SAR                     | ✓ |   |  ✓| 
+| Hong Kong ÖİB                     | ✓ |   |  ✓| 
 | Hindistan                             | ✓ |   |  ✓| 
 | Endonezya                         | ✓ |   |  ✓| 
 | Japonya                             | ✓ | ✓ |  ✓| 
@@ -221,7 +221,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Papua Yeni Gine                  | ✓ |   |  ✓| 
 | Filipinler                       | ✓ |   |  ✓| 
 | Pitcairn Adaları                  | ✓ |   |  ✓| 
-| Devleti                             | ✓ |   |  ✓| 
+| Samoa                             | ✓ |   |  ✓| 
 | Singapur                         | ✓ |   |  ✓| 
 | Solomon Adaları                   | ✓ |   |  ✓| 
 | Sri Lanka                         | ✓ |   |  ✓| 
@@ -241,7 +241,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 
 ## <a name="europe"></a>Avrupa
 
-| Ülke/bölge              |  Uydu kutucukları | Dakika tahmini, radar kutucukları | Farklı | 
+| Ülke/bölge              |  Uydu Karoları | Dakika Tahmini, Radar Karoları | Diğer* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|
 | Arnavutluk                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
@@ -254,7 +254,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Bulgaristan               | ✓ |   |  ✓| 
 | Hırvatistan                | ✓ | ✓ |  ✓| 
 | Kıbrıs                 | ✓ |   |  ✓| 
-| Czechia                | ✓ | ✓ |  ✓| 
+| Çekya                | ✓ | ✓ |  ✓| 
 | Danimarka                | ✓ | ✓ |  ✓| 
 | Estonya                | ✓ | ✓ |  ✓| 
 | Faroe Adaları          | ✓ |   |  ✓| 
@@ -299,4 +299,4 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Türkiye                 | ✓ |   |  ✓| 
 | Ukrayna                | ✓ |   |  ✓| 
 | Birleşik Krallık         | ✓ | ✓ |  ✓| 
-| Vatikan şehri           | ✓ |   |  ✓| 
+| Vatikan           | ✓ |   |  ✓| 

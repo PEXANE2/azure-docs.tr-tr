@@ -1,66 +1,66 @@
 ---
-title: PII algılama Bilişsel Beceri (Önizleme)
+title: PII Algılama bilişsel beceri (önizleme)
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama 'de bir zenginleştirme ardışık düzeninde bulunan metinden kişisel olarak tanımlanabilir bilgileri ayıklayın ve maskesini kaldırın. Bu yetenek Şu anda genel önizlemededir.
+description: Azure Bilişsel Arama'daki zenginleştirme boru hattındaki metinden kişisel olarak tanımlanabilir bilgileri ayıklayın ve maskeleyin. Bu beceri şu anda genel önizlemede.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 7011d971ddb1888b312173a42ecd4a50f0954395
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f21200bc6f5b25f3330f5bb87c0843caa5a84e56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298889"
 ---
-#   <a name="pii-detection-cognitive-skill"></a>PII algılama Bilişsel Beceri
+#    <a name="pii-detection-cognitive-skill"></a>PII Algılama bilişsel beceri
 
 > [!IMPORTANT] 
-> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
+> Bu beceri şu anda genel önizlemede. Önizleme işlevi hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın. Şu anda portal veya .NET SDK desteği yok.
 
-**PII algılama** yeteneği, kişisel olarak tanımlanabilir bilgileri bir giriş metinden ayıklar ve bu metni çeşitli yollarla maskelemeniz için size bir seçenek sunar. Bu beceri bilişsel hizmetler 'de [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sunulan makine öğrenimi modellerini kullanır.
+**KIŞISEL Algılama** becerisi, giriş metninden kişisel olarak tanımlayıcı bilgileri ayıklar ve bu metinden çeşitli şekillerde gizleme seçeneği sunar. Bu beceri, Bilişsel Hizmetlerde [Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sağlanan makine öğrenimi modellerini kullanır.
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşleme sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla Bilgi Al algoritması ekleyerek kapsamı genişlettikçe, [faturalandırılabilir Bilişsel Hizmetler kaynağı eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir. Bilişsel Hizmetler'de API'leri ararken ve Azure Bilişsel Arama'da belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk ettirilir. Belgelerden metin çıkarma için herhangi bir ücret yoktur.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik becerilerin yürütülmesi, mevcut [Bilişsel Hizmetler ödeme-as-you gitmek fiyat](https://azure.microsoft.com/pricing/details/cognitive-services/)tahsil edilir. Görüntü çıkarma fiyatlandırması [Azure Bilişsel Arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmıştır.
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. yetenekler. Text. PIIDetectionSkill
+Microsoft.Skills.Text.PIIDetectionSkill
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Verileri beceriye göndermeden önce bölmeniz gerekirse, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
+Bir kaydın maksimum boyutu 50.000 karakter olarak [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçüldü. Verilerinizi beceriye göndermeden önce ayırmanız gerekiyorsa, [Metin Bölme becerisini](cognitive-search-skill-textsplit.md)kullanmayı düşünün.
 
-## <a name="skill-parameters"></a>Yetenek parametreleri
+## <a name="skill-parameters"></a>Beceri parametreleri
 
-Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
+Parametreler büyük/küçük harf duyarlıdır ve hepsi isteğe bağlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| defaultLanguageCode | Giriş metninin dil kodu. Şimdilik yalnızca `en` desteklenir. |
-| minimumPrecision | 0,0 ile 1,0 arasında bir değer. Güven puanı (`piiEntities` çıktısında), küme `minimumPrecision` değerinden düşükse, varlık döndürülmez veya maskelenmez. Varsayılan değer 0,0 ' dir. |
-| maskingMode | Giriş metninde algılanan PII 'yi maskelemek için çeşitli yollar sağlayan bir parametre. Aşağıdaki seçenekler desteklenir: <ul><li>`none` (varsayılan): Bu, hiçbir maskeleme gerçekleştirilmeyeceği ve `maskedText` çıkışının döndürülmeyeceği anlamına gelir. </li><li> `redact`: Bu seçenek, algılanan varlıkları giriş metinden kaldırır ve bunları hiçbir şeyle değiştirmez. Bu durumda, `piiEntities` çıkışındaki kaydırın, maskelenmiş metin değil, özgün metinle ilişkili olacağını unutmayın. </li><li> `replace`: Bu seçenek, algılanan varlıkların `maskingCharacter` parametresinde verilen karakterle yerini alır.  Karakter, algılanan varlığın uzunluğuna yinelenir, böylece uzaklıklar hem giriş metnine hem de çıkış `maskedText`doğru şekilde karşılık gelir.</li></ul> |
-| maskingCharacter | `maskingMode` parametresi `replace`olarak ayarlandıysa metni maskelenecek olan karakter. Aşağıdaki seçenekler desteklenir: `*` (varsayılan), `#`, `X`. Bu parametre yalnızca `maskingMode` `replace`olarak ayarlanmamışsa `null` olabilir. |
+| defaultLanguageCode |    Giriş metninin dil kodu. Şimdilik, sadece `en` desteklenir. |
+| minimum Hassasiyet | 0,0 ile 1,0 arasındaki bir değer. Güven puanı `piiEntities` (çıktıdaki) ayarlanan `minimumPrecision` değerden daha düşükse, varlık döndürülmez veya maskelenir. Varsayılan değer 0.0'dır. |
+| maskelemeMode | Giriş metninde algılanan KIŞISEL'i maskelemek için çeşitli yollar sağlayan bir parametre. Aşağıdaki seçenekler desteklenir: <ul><li>`none`(varsayılan): Bu, maskeleme yapılmayan ve çıkıÅ `maskedText` ın iade edilmeye </li><li> `redact`: Bu seçenek, algılanan varlıkları giriş metninden kaldırır ve bunları hiçbir şeyle değiştirmez. Bu durumda, `piiEntities` çıktıdaki ofsetin maskeli metinle değil, özgün metinle ilişkili olacağını unutmayın. </li><li> `replace`: Bu seçenek, algılanan varlıkları `maskingCharacter` parametrede verilen karakterle değiştirir.  Uzaklıkların hem giriş metnine hem de çıktıya `maskedText`doğru bir şekilde karşılık verilebilsin diye karakter algılanan varlığın uzunluğuna tekrarlanır.</li></ul> |
+| maskelemeKarakter | `maskingMode` Parametre ' ye ayarlanmışsa metni maskelemek için `replace`kullanılacak karakter. Aşağıdaki seçenekler desteklenir: `*` `#`(varsayılan), `X`. Bu parametre yalnızca `null` `maskingMode` ' olarak `replace`ayarlanmazsa olabilir. |
 
 
-## <a name="skill-inputs"></a>Beceri girişleri
+## <a name="skill-inputs"></a>Beceri girdileri
 
 | Giriş adı      | Açıklama                   |
 |---------------|-------------------------------|
-| languageCode  | İsteğe bağlı. `en` varsayılan değerdir.  |
-| metin          | Çözümlenecek metin.          |
+| languageCode    | İsteğe bağlı. `en` varsayılan değerdir.  |
+| metin          | Çözümlemek için metin.          |
 
-## <a name="skill-outputs"></a>Yetenek çıkışları
+## <a name="skill-outputs"></a>Beceri çıktıları
 
-| Çıkış adı     | Açıklama                   |
+| Çıktı adı      | Açıklama                   |
 |---------------|-------------------------------|
-| piiEntities | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>metin (ayıklanan olarak gerçek PII)</li> <li>type</li><li>subType</li><li>Score (daha yüksek değer, gerçek bir varlık olma olasılığı daha yüksektir)</li><li>fark (giriş metnine)</li><li>length</li></ul> </br> [Olası türler ve alt türler burada bulunabilir.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
-| maskedText | `maskingMode`, `none`dışında bir değere ayarlanırsa, bu çıktı, seçili `maskingMode`açıklandığı şekilde giriş metninde gerçekleştirilen maskelemenin dize sonucu olur.  `maskingMode` `none`olarak ayarlanırsa, bu çıkış mevcut olmayacaktır. |
+| piiEntities | Aşağıdaki alanları içeren karmaşık türleri dizisi: <ul><li>metin (Çıkarılan gerçek KIŞISEL Bilgiler)</li> <li>type</li><li>Alt</li><li>skor (Daha yüksek değer, gerçek bir varlık olma olasılığının daha yüksek olduğu anlamına gelir)</li><li>ofset (giriş metnine)</li><li>length</li></ul> </br> [Olası türleri ve alt Türleri burada bulabilirsiniz.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| maskeliMetin | Başka `maskingMode` bir değere `none`ayarlanmışsa, bu çıktı, seçili `maskingMode`metinde açıklandığı gibi yapılan maskelemenin dize sonucu olacaktır.  `maskingMode` Ayarlanmışsa, bu çıktı mevcut olmayacaktır. `none` |
 
-##  <a name="sample-definition"></a>Örnek tanım
+##    <a name="sample-definition"></a>Örnek tanımı
 
 ```json
   {
@@ -85,7 +85,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
     ]
   }
 ```
-##  <a name="sample-input"></a>Örnek giriş
+##    <a name="sample-input"></a>Örnek giriş
 
 ```json
 {
@@ -101,7 +101,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 }
 ```
 
-##  <a name="sample-output"></a>Örnek çıktı
+##    <a name="sample-output"></a>Örnek çıktı
 
 ```json
 {
@@ -127,15 +127,16 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 }
 ```
 
+Bu becerinin çıktısındaki varlıklar için döndürülen uzaklıkların doğrudan [Text Analytics API'sinden](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)döndürüldİğİni unutmayın , yani bunları özgün dizeiçin kullanıyorsanız, doğru içeriği ayıklamak için [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) sınıfını .NET'te kullanmanız gerekir.  [Daha fazla bilgi burada bulabilirsiniz.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
 ## <a name="error-and-warning-cases"></a>Hata ve uyarı durumları
-Belge dil kodu desteklenmiyorsa bir uyarı döndürülür ve hiçbir varlık ayıklanmaz.
-Metniniz boşsa bir uyarı üretilir.
-Metniniz 50.000 karakterden fazlaysa, yalnızca ilk 50.000 karakter analiz edilir ve bir uyarı verilir.
+Belgenin dil kodu desteklenmezse, bir uyarı döndürülür ve hiçbir varlık ayıklanır.
+Metniniz boşsa, bir uyarı üretilir.
+Metniniz 50.000 karakterden büyükse, yalnızca ilk 50.000 karakter analiz edilir ve bir uyarı verilir.
 
-Beceri bir uyarı döndürürse, çıkış `maskedText` boş olabilir.  Bu, çıkışın daha sonraki yeteneklere giriş için var olmasını beklediğinizi, istenen şekilde çalışmayacağı anlamına gelir. Beceri tanımınızı yazarken bunu aklınızda bulundurun.
+Beceri bir uyarı döndürürse, çıktı `maskedText` boş olabilir.  Bu, bu çıktının daha sonraki becerilere girdi için var olmasını beklerseniz, beklendiği gibi çalışmayacağı anlamına gelir. Skillset tanımınızı yazarken bunu aklınızda bulundurun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)

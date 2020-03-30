@@ -1,32 +1,30 @@
 ---
-title: AppSource desteği | Mavisi
+title: AppSource desteği | Azure
 description: AppSource için destek bilgileri ve bağlantılar.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/02/2018
-ms.author: ellacroi
-ms.openlocfilehash: 2b150f48e0eab0d83ec50a269f171a0bbfa4ed80
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e0b3e93a36a1704417942a709d25e174d93f7328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827722"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284951"
 ---
-# <a name="support-for-appsource"></a>AppSource desteği  
+# <a name="support-for-appsource"></a>AppSource Desteği  
 AppSource için destek seçenekleri.  
 
 ## <a name="technical"></a>Teknik  
 
 | Destek kanalı | Açıklama |  
 |:--- |:--- |  
-| MSDN forumları: [Social.msdn.Microsoft.com/forums/Azure/Home?Forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "MSDN forumlarında Azure AD") adresinde bulunan Azure Active Directory | Microsoft Developer Network Forumu. |  
-| StackOverflow: [StackOverflow.com/Questions/Tagged/Azure-Active-Directory](https://stackoverflow.com/questions/tagged/azure-active-directory "StackOverflow üzerinde Azure AD") konumunda bulunan Azure Active Directory | Stack Overflow, Azure Active Directory (Azure AD) ile ilgili her şey hakkında çözüm almak ve soru sormak için ortam. |  
+| MSDN Forumları: [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'da](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "MSDN forumlarında Azure REKLAM") bulunan Azure Etkin Dizin | Microsoft Developer Network forumu. |  
+| StackOverflow: azure active directory [stackoverflow.com/questions/tagged/azure-active-directory'de](https://stackoverflow.com/questions/tagged/azure-active-directory "Stackoverflow üzerinde Azure AD") bulunan | Azure Active Directory (Azure AD) ile ilgili her şey hakkında çözüm bulmak ve sorular sormak için Taşma ortamını yığınına geçin. |  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Marketi ve AppSource yayımcı Kılavuzu](./marketplace-publishers-guide.md) sayfasını ziyaret edin.  
+Azure [Marketi ve AppSource Publisher Guide](./marketplace-publishers-guide.md) sayfasını ziyaret edin.  
  
 ---
