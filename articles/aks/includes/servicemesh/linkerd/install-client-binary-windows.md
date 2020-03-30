@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: b7d832ba375925d30a976dfde63a776b5d0742bb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593757"
 ---
-## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Linkerd linkerd istemci ikilisini indirin ve yükleyin
+## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>İndirin ve Linkerd linkerd istemci ikili yükleyin
 
-Windows üzerinde PowerShell tabanlı bir kabukta, Linkerd sürümünü şu şekilde indirmek için `Invoke-WebRequest` kullanın:
+Windows'da PowerShell tabanlı bir `Invoke-WebRequest` kabukta, Linkerd yayınını aşağıdaki gibi indirmek için kullanın:
 
 ```powershell
 # Specify the Linkerd version that will be leveraged throughout these instructions
@@ -23,7 +23,7 @@ $LINKERD_VERSION="stable-2.6.0"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-windows.exe" -OutFile "linkerd2-cli-$LINKERD_VERSION-windows.exe"
 ```
 
-`linkerd` istemci ikili dosyası, istemci makinenizde çalışır ve Linkerd hizmet ağıyla etkileşime girebilmeniz için izin verir. Windows üzerinde PowerShell tabanlı bir kabuğa Linkerd `linkerd` istemci ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `linkerd` istemci ikilisini bir Linkerd klasörüne kopyalar ve ardından, `PATH`üzerinden (geçerli kabukta) ve kalıcı olarak (kabukta yeniden başlatmalar arasında) kullanılabilir hale getirir. Bu komutları çalıştırmak için yükseltilmiş (yönetici) ayrıcalıklarına ihtiyacınız yoktur ve kabuğunu yeniden başlatmanız gerekmez.
+İstemci `linkerd` ikilisi istemci makinenizde çalışır ve Linkerd servis ağıyla etkileşim kurmanızı sağlar. Windows'da PowerShell tabanlı bir `linkerd` kabuk linkerd istemci ikili yüklemek için aşağıdaki komutları kullanın. Bu komutlar `linkerd` istemci ikilisini Bir Bağlayıcı klasöre kopyalar ve sonra hem hemen (geçerli kabukta) hem `PATH`de kalıcı olarak (kabuk yeniden başlatmalar arasında) sizin aracılığınızla kullanılabilir hale getirir. Bu komutları çalıştırmak için yükseltilmiş (Yönetici) ayrıcalıklara ihtiyacınız yoktur ve kabuğunuzu yeniden başlatmanız gerekmez.
 
 ```powershell
 # Copy linkerd.exe to C:\Linkerd

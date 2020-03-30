@@ -1,7 +1,7 @@
 ---
-title: Azure AD kiracı uygulaması taleplerini (PowerShell) özelleştirme
+title: Azure AD kiracı uygulama taleplerini özelleştirme (PowerShell)
 titleSuffix: Microsoft identity platform
-description: Bu sayfada Azure Active Directory talep eşleştirmesi açıklanmaktadır.
+description: Bu sayfada Azure Active Directory claims eşleme açıklanmaktadır.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,43 +14,43 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263198"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
 > [!NOTE]
-> Bu özellik, bugün Portal üzerinden sunulan [talep özelleştirmelerinin](active-directory-saml-claims-customization.md) yerini alır ve yerini alır. Aynı uygulamada, bu belgede ayrıntılı grafik/PowerShell yöntemine ek olarak portalı kullanarak talepleri özelleştirirseniz, bu uygulama için verilen belirteçler portalda yapılandırmayı yoksayar. Bu belgede açıklanan yöntemler aracılığıyla yapılan yapılandırmaların portala yansıtılmayacak.
+> Bu özellik, bugün portal üzerinden sunulan [talep özelleştirmesinin](active-directory-saml-claims-customization.md) yerini alır ve bunun yerini alır. Aynı uygulamada, bu belgede ayrıntılı olarak açıklanan Grafik/PowerShell yöntemine ek olarak portalı kullanarak talepleri özelleştiriseniz, bu uygulama için verilen belirteçler portaldaki yapılandırmayı yoksayacaktır. Bu belgede ayrıntılı yöntemlerle yapılan yapılandırmalar portala yansıtılmayacaktır.
 
-Bu özellik kiracı yöneticileri tarafından kiracısındaki belirli bir uygulama için belirteçlerde bulunan talepleri özelleştirmek üzere kullanılır. Talep eşleme ilkelerini kullanarak şunları yapabilirsiniz:
+Bu özellik, kiracı yöneticileri tarafından, kiracılarında belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirmek için kullanılır. Talep-eşleme ilkelerini şu şekilde kullanabilirsiniz:
 
-- Belirteçlere hangi taleplerin ekleneceğini seçin.
-- Zaten mevcut olmayan talep türleri oluşturun.
+- Hangi taleplerin jetonlara dahil olduğunu seçin.
+- Zaten var olmayan talep türleri oluşturun.
 - Belirli taleplerde yayılan verilerin kaynağını seçin veya değiştirin.
 
 > [!NOTE]
-> Bu özellik şu anda genel önizlemededir. Değişiklikleri geri almaya veya kaldırmaya hazırlıklı olun. Bu özellik, genel önizleme sırasında herhangi bir Azure Active Directory (Azure AD) aboneliğinde kullanılabilir. Ancak özellik genel kullanıma sunulduğunda, özelliğin bazı yönleri bir Azure AD Premium aboneliği gerektirebilir. Bu özellik, WS-beslenir, SAML, OAuth ve OpenID Connect protokolleri için talep eşleme ilkelerinin yapılandırılmasını destekler.
+> Bu özellik şu anda genel önizlemede. Değişiklikleri geri almaya veya kaldırmaya hazırlıklı olun. Bu özellik, genel önizleme sırasında herhangi bir Azure Etkin Dizin (Azure AD) aboneliğinde kullanılabilir. Ancak, özellik genel kullanıma sunulduğunda, özelliğin bazı yönleri bir Azure REKLAM premium aboneliği gerektirebilir. Bu özellik, WS-Fed, SAML, OAuth ve OpenID Connect protokolleri için talep eşleme ilkelerinin yapılandırılmalarını destekler.
 
-## <a name="claims-mapping-policy-type"></a>Talep eşleme ilkesi türü
+## <a name="claims-mapping-policy-type"></a>Talepler eşleme ilkesi türü
 
-Azure AD 'de bir **ilke** nesnesi, tek tek uygulamalarda veya bir kuruluştaki tüm uygulamalarda zorlanan bir kural kümesini temsil eder. Her ilke türünün, atandığı nesnelere uygulanan bir özellikler kümesi ile benzersiz bir yapısı vardır.
+Azure AD'de, **Bir İlke** nesnesi tek tek uygulamalarda veya bir kuruluştaki tüm uygulamalarda uygulanan bir kural kümesini temsil eder. Her tür ilke, daha sonra atandıkları nesnelere uygulanan bir dizi özellik içeren benzersiz bir yapıya sahiptir.
 
-Talep eşleme ilkesi, belirli uygulamalar için verilen belirteçlerde yayılan talepleri değiştiren bir **ilke** nesnesi türüdür.
+Talep eşleme ilkesi, belirli uygulamalar için verilen belirteçlerde yayılan talepleri değiştiren bir **İlke** nesnesidir.
 
-## <a name="claim-sets"></a>Talep kümeleri
+## <a name="claim-sets"></a>Talep setleri
 
-Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepler kümesi vardır.
+Jetonlarda nasıl ve ne zaman kullanıldıklarını tanımlayan belirli talep kümeleri vardır.
 
-| Talep kümesi | Açıklama |
+| Talep seti | Açıklama |
 |---|---|
-| Çekirdek talep kümesi | , İlkeden bağımsız olarak her belirteçte bulunur. Bu talepler de kısıtlı olarak değerlendirilir ve değiştirilemez. |
-| Temel talep kümesi | Belirteçleri için varsayılan olarak yayılan talepleri içerir (çekirdek talep kümesine ek olarak). Talepler eşleme ilkelerini kullanarak temel talepleri atlayabilir veya değiştirebilirsiniz. |
-| Kısıtlı talep kümesi | İlke kullanılarak değiştirilemez. Veri kaynağı değiştirilemez ve bu talepler oluşturulurken hiçbir dönüştürme uygulanmaz. |
+| Çekirdek talep seti | İlke ne olursa olsun her belirteç te bulunur. Bu talepler de kısıtlanmış olarak kabul edilir ve değiştirilemez. |
+| Temel talep kümesi | Belirteçler için varsayılan olarak yayılan talepleri içerir (temel talep kümesine ek olarak). Talep eşleme ilkelerini kullanarak temel talepleri atlayabilir veya değiştirebilirsiniz. |
+| Kısıtlı talep kümesi | İlke kullanılarak değiştirilemez. Veri kaynağı değiştirilemez ve bu talepleri oluştururken hiçbir dönüşüm uygulanmaz. |
 
-### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tablo 1: JSON Web Token (JWT) sınırlı talep kümesi
+### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tablo 1: JSON Web Belirteci (JWT) sınırlı talep seti
 
 | Talep türü (ad) |
 | ----- |
@@ -59,25 +59,25 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | access_token |
 | account_type |
 | acr |
-| actor |
-| actortoken |
-| aio |
-| AltSecId |
-| AMR |
+| Aktör |
+| aktörtoken |
+| Aıo |
+| altsecid |
+| amr |
 | app_chain |
 | app_displayname |
 | app_res |
 | appctx |
 | appctxsender |
-| appid |
-| appidadcr |
-| assertion |
+| Appıd |
+| appidacr |
+| Iddia |
 | at_hash |
-| AUD |
+| aud |
 | auth_data |
 | auth_time |
 | authorization_code |
-| AZP |
+| azp |
 | azpacr |
 | c_hash |
 | ca_enf |
@@ -86,13 +86,13 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
-| CNF |
-| code |
+| Cnf |
+| kod |
 | denetimler |
 | credential_keys |
-| csr |
+| Kss |
 | csr_type |
-| deviceid |
+| Deviceıd |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
@@ -100,10 +100,10 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | e-posta |
 | endpoint |
 | enfpolids |
-| poz |
+| Exp |
 | expires_on |
 | grant_type |
-| graph |
+| Grafik |
 | group_sids |
 | gruplar |
 | hasgroups |
@@ -116,17 +116,17 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| iat |
+| ıat |
 | identityprovider |
-| idp |
+| ıdp |
 | in_corp |
-| instance |
+| örnek |
 | ipaddr |
 | isbrowserhostedapp |
-| iss |
+| ıss |
 | jwk |
 | key_id |
-| key_type |
+| Key_type |
 | mam_compliance_url |
 | mam_enrollment_url |
 | mam_terms_of_use_url |
@@ -134,17 +134,17 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | mdm_enrollment_url |
 | mdm_terms_of_use_url |
 | nameid |
-| NBF |
+| nbf |
 | netbios_name |
-| nonce |
-| oid |
+| Nonce |
+| Oıd |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
 | password |
 | platf |
-| siyalar |
+| polids |
 | pop_jwk |
 | preferred_username |
 | previous_refresh_token |
@@ -156,36 +156,36 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| resource |
-| role |
+| kaynak |
+| rol |
 | roles |
 | scope |
-| scp |
-| sid |
-| imza |
+| Scp |
+| Sid |
+| Imza |
 | signin_state |
 | src1 |
 | src2 |
-| sub |
-| tbıd |
+| Alt |
+| tbid |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| tid |
-| Tokenautosize etkin |
-| trustedfortemsilciyi |
+| Tid |
+| tokenAutologonEtkin |
+| güvenilir fordelegation |
 | unique_name |
-| upn |
+| Upn |
 | user_setting_sync_url |
 | kullanıcı adı |
-| uti |
-| ver |
+| Uti |
+| Ver |
 | verified_primary_email |
 | verified_secondary_email |
-| WDS |
+| wids |
 | win_ver |
 
-### <a name="table-2-saml-restricted-claim-set"></a>Tablo 2: SAML kısıtlı talep kümesi
+### <a name="table-2-saml-restricted-claim-set"></a>Tablo 2: SAML kısıtlı talep seti
 
 | Talep türü (URI) |
 | ----- |
@@ -236,289 +236,289 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier`|
 |`http://schemas.microsoft.com/identity/claims/scope`|
 
-## <a name="claims-mapping-policy-properties"></a>Talep eşleme ilkesi özellikleri
+## <a name="claims-mapping-policy-properties"></a>İddialar eşleme ilkesi özellikleri
 
-Hangi taleplerin yayıldığını ve verilerin nereden geldiğini denetlemek için, bir talep eşleme ilkesinin özelliklerini kullanın. Bir ilke ayarlanmamışsa sistem, çekirdek talep kümesi, temel talep kümesi ve uygulamanın almak üzere seçtiği tüm [isteğe bağlı talepler](active-directory-optional-claims.md) içeren belirteçler yayınlar.
+Hangi iddiaların yayıldığı ve verilerin nereden geldiğini denetlemek için, bir talep eşleme ilkesinin özelliklerini kullanın. Bir ilke ayarlanmazsa, sistem temel talep kümesini, temel talep kümesini ve uygulamanın almayı seçtiği [isteğe bağlı talepleri](active-directory-optional-claims.md) içeren belirteçleri alır.
 
-### <a name="include-basic-claim-set"></a>Temel talep kümesini dahil et
+### <a name="include-basic-claim-set"></a>Temel talep kümesini ekleme
 
-**Dize:** Includebasicclaimset
+**Dize:** IncludeBasicClaimSet
 
-**Veri türü:** Boole (true veya false)
+**Veri türü:** Boolean (Doğru veya Yanlış)
 
-**Özet:** Bu özellik, temel talep kümesinin bu ilkeden etkilenen belirteçlere dahil edilip edilmeyeceğini belirler.
+**Özet:** Bu özellik, temel talep kümesinin bu ilkeden etkilenen belirteçlere dahil edilip edilemeyeceğini belirler.
 
-- True olarak ayarlanırsa, temel talep kümesindeki tüm talepler, ilkeden etkilenen belirteçlerde dağıtılır. 
-- False olarak ayarlanırsa, temel talep kümesindeki talepler, aynı ilkenin talep şeması özelliğine tek eklenmedikleri takdirde, belirteçlerde değildir.
+- True olarak ayarlanırsa, temel talep kümesindeki tüm talepler ilkeden etkilenen belirteçlerde yayılır. 
+- False olarak ayarlanırsa, aynı politikanın hak iddialarına ayrı ayrı eklenmedikleri sürece, temel talep kümesindeki talepler belirteçlerde yer almaz.
 
 > [!NOTE] 
-> Çekirdek talep kümesindeki talepler, bu özelliğin ne şekilde ayarlandığına bakılmaksızın her belirteçte mevcuttur. 
+> Temel talep kümesindeki talepler, bu özelliğin ne olarak ayarlıolduğundan bağımsız olarak her belirteçte mevcuttur. 
 
-### <a name="claims-schema"></a>Talep şeması
+### <a name="claims-schema"></a>İddialar şema
 
-**Dize:** ClaimsSchema
+**Dize:** İddialar Schema
 
-**Veri türü:** Bir veya daha fazla talep şeması girişi içeren JSON blobu
+**Veri türü:** Bir veya daha fazla iddia şema girişleri ile JSON blob
 
-**Özet:** Bu özellik, temel talep kümesine ve çekirdek talep kümesine ek olarak, ilkeden etkilenen belirteçlerde hangi taleplerin mevcut olduğunu tanımlar.
-Bu özellikte tanımlanan her talep şeması girişi için bazı bilgiler gereklidir. Verilerin nereye geldiğini (**değer** veya **kaynak/kimlik çiftinin**) ve verilerin hangi talebe göre (**talep türü**) yayınlandığını belirtin.
+**Özet:** Bu özellik, temel talep kümesi ne kadar önemli, temel talep kümesi ve temel talep kümesine ek olarak, poliçeden etkilenen belirteçlerde hangi taleplerin mevcut olduğunu tanımlar.
+Bu özellikte tanımlanan her hak talebi girişi için belirli bilgiler gereklidir. Verilerin nereden geldiğini **(Değer** veya **Kaynak/Kimlik çifti)** ve verilerin hangi talepte bulunduğuna (**Talep Türü)** belirtin.
 
-### <a name="claim-schema-entry-elements"></a>Talep şeması giriş öğeleri
+### <a name="claim-schema-entry-elements"></a>Hak iddia şema giriş öğeleri
 
-**Değer:** Value öğesi, bir statik değeri, talepteki veri olarak tanımlar.
+**Değer:** Değer öğesi, talepte yayılacak veri olarak statik bir değer tanımlar.
 
-**Kaynak/kimlik çifti:** Kaynak ve KIMLIK öğeleri, talepteki verilerin kaynağını belirler. 
+**Kaynak/Kimlik çifti:** Kaynak ve Kimlik öğeleri, talepteki verilerin nereden geldiğini tanımlar. 
 
-Kaynak öğeyi aşağıdaki değerlerden birine ayarlayın: 
+Kaynak öğesini aşağıdaki değerlerden birine ayarlayın: 
 
-- "Kullanıcı": talepteki veriler, kullanıcı nesnesindeki bir özelliktir. 
-- "uygulama": talepteki veriler, uygulama (istemci) hizmet sorumlusu üzerindeki bir özelliktir. 
-- "kaynak": talepteki veriler, kaynak hizmeti sorumlusu üzerindeki bir özelliktir.
-- "hedef kitle": talepteki veriler, belirtecin hedef kitlesi olan hizmet sorumlusu üzerindeki bir özelliktir (istemci ya da kaynak hizmet sorumlusu).
-- "Şirket": talepteki veriler, kaynak kiracının şirket nesnesindeki bir özelliktir.
-- "dönüşüm": talepteki veriler talep dönüşümden (Bu makalenin ilerleyen kısımlarında "talep dönüştürme" bölümüne bakın).
+- "kullanıcı": Talepteki veriler Kullanıcı nesnesi üzerindeki bir özelliktir. 
+- "uygulama": Talepteki veriler, uygulama (istemci) hizmet sorumlusundaki bir özelliktir. 
+- "kaynak": Talepteki veriler kaynak hizmeti ilkesindeki bir özelliktir.
+- "hedef kitle": Talepteki veriler, hizmet ilkesindeki belirteç (istemci veya kaynak hizmeti ilkesi) olan bir özelliktir.
+- "şirket": Talepteki veriler, kaynak kiracısının Şirket nesnesi üzerindeki bir özelliktir.
+- "dönüşüm": Talepteki veriler talep dönüşümündendir (bu makalenin ilerleyen bölümlerinde "Talep dönüşümü" bölümüne bakın).
 
-Kaynak dönüşümde ise, dönüştürme işlemi **kimliği** öğesi bu talep tanımına da dahil olmalıdır.
+Kaynak dönüşümise, **TransformationID** öğesi de bu talep tanımına dahil edilmelidir.
 
-ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığını tanımlar. Aşağıdaki tabloda her kaynak değeri için geçerli olan KIMLIK değerleri listelenmektedir.
+Kimlik öğesi, kaynaktaki hangi özelliğin talep için değer sağladığını tanımlar. Aşağıdaki tabloda, Kaynak'ın her değeri için geçerli olan kimlik değerleri listelenir.
 
-#### <a name="table-3-valid-id-values-per-source"></a>Tablo 3: kaynak başına geçerli KIMLIK değerleri
+#### <a name="table-3-valid-id-values-per-source"></a>Tablo 3: Kaynak başına geçerli kimlik değerleri
 
 | Kaynak | Kimlik | Açıklama |
 |-----|-----|-----|
-| Kullanıcı | Soyadı | Aile Adı |
-| Kullanıcı | givenName | Verilen Ad |
-| Kullanıcı | DisplayName | Görünen Ad |
-| Kullanıcı | uzantının | Uzantının |
+| Kullanıcı | surname | Aile Adı |
+| Kullanıcı | givenname | Verilen Ad |
+| Kullanıcı | Displayname | Görünen Ad |
+| Kullanıcı | Objectıd | ObjectID |
 | Kullanıcı | posta | E-posta Adresi |
-| Kullanıcı | userPrincipalName | Kullanıcı Asıl Adı |
-| Kullanıcı | Bölüm|Bölüm|
-| Kullanıcı | onpremisessamaccountname | Şirket içi SAM hesap adı |
-| Kullanıcı | NetbiosName| NetBIOS adı |
-| Kullanıcı | DN | DNS etki alanı adı |
-| Kullanıcı | onpremisesecurityidentifier | Şirket içi güvenlik tanımlayıcısı |
-| Kullanıcı | tadı| Kuruluş adı |
-| Kullanıcı | StreetAddress | Açık adres |
-| Kullanıcı | PostalCode | Posta kodu |
-| Kullanıcı | preferredlanguange | Tercih edilen dil |
-| Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |
-| Kullanıcı | mailNickname | Posta takma adı |
-| Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
-| Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
-| Kullanıcı | extensionattribute3 | Uzantı özniteliği 3 |
-| Kullanıcı | extensionattribute4 | Uzantı özniteliği 4 |
-| Kullanıcı | extensionattribute5 | Uzantı özniteliği 5 |
-| Kullanıcı | extensionattribute6 | Uzantı özniteliği 6 |
-| Kullanıcı | extensionattribute7 | Uzantı özniteliği 7 |
-| Kullanıcı | extensionattribute8 | Uzantı özniteliği 8 |
-| Kullanıcı | extensionattribute9 | Uzantı özniteliği 9 |
-| Kullanıcı | extensionattribute10 | Uzantı özniteliği 10 |
-| Kullanıcı | extensionattribute11 | Uzantı özniteliği 11 |
-| Kullanıcı | extensionattribute12 | Uzantı özniteliği 12 |
-| Kullanıcı | extensionattribute13 | Uzantı özniteliği 13 |
-| Kullanıcı | extensionattribute14 | Uzantı özniteliği 14 |
-| Kullanıcı | extensionattribute15 | Uzantı özniteliği 15 |
-| Kullanıcı | diğer posta | Diğer posta |
+| Kullanıcı | Userprincipalname | Kullanıcı Asıl Adı |
+| Kullanıcı | bölüm|Bölüm|
+| Kullanıcı | onpremisessamaccountname | Şirket içi SAM Hesap Adı |
+| Kullanıcı | netbiosname| NetBios Adı |
+| Kullanıcı | dnsdomainname | DNS Etki Alanı Adı |
+| Kullanıcı | öncül güvenlik tanımlayıcı | Şirket Içi Güvenlik Tanımlayıcısı |
+| Kullanıcı | Şirketadı| Organizasyon Adı |
+| Kullanıcı | Streetaddress | Adres |
+| Kullanıcı | Postakodu | Posta Kodu |
+| Kullanıcı | tercihlanguange | Tercih Edilen Dil |
+| Kullanıcı | inpremisesuserprincipalname | Şirket içi UPN |
+| Kullanıcı | Mailnickname | Posta Takma Adı |
+| Kullanıcı | extensionattribute1 | Uzatma Özniteliği 1 |
+| Kullanıcı | extensionattribute2 | Uzatma Özniteliği 2 |
+| Kullanıcı | extensionattribute3 | Uzatma Özniteliği 3 |
+| Kullanıcı | extensionattribute4 | Uzatma Özniteliği 4 |
+| Kullanıcı | extensionattribute5 | Uzatma Özniteliği 5 |
+| Kullanıcı | extensionattribute6 | Uzatma Özniteliği 6 |
+| Kullanıcı | extensionattribute7 | Uzatma Özniteliği 7 |
+| Kullanıcı | extensionattribute8 | Uzatma Özniteliği 8 |
+| Kullanıcı | extensionattribute9 | Uzatma Özniteliği 9 |
+| Kullanıcı | extensionattribute10 | Uzatma Özniteliği 10 |
+| Kullanıcı | extensionattribute11 | Uzantı Özniteliği 11 |
+| Kullanıcı | extensionattribute12 | Uzantı Özniteliği 12 |
+| Kullanıcı | extensionattribute13 | Uzantı Özniteliği 13 |
+| Kullanıcı | extensionattribute14 | Uzantı Özniteliği 14 |
+| Kullanıcı | extensionattribute15 | Uzatma Özniteliği 15 |
+| Kullanıcı | othermail | Diğer Postalar |
 | Kullanıcı | ülke | Ülke |
 | Kullanıcı | city | Şehir |
 | Kullanıcı | durum | Durum |
-| Kullanıcı | JobTitle | İş Unvanı |
-| Kullanıcı | EmployeeID | Çalışan KIMLIĞI |
-| Kullanıcı | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
-| uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
-| uygulama, kaynak, hedef kitle | objected | Uzantının |
-| uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
-| Şirket | tenantcountry | Kiracının ülkesi |
+| Kullanıcı | iş unvanı | İş Unvanı |
+| Kullanıcı | Employeeıd | Çalışan Kimlik Numarası |
+| Kullanıcı | fakstelefon numarası | Faks Telefon Numarası |
+| uygulama, kaynak, hedef kitle | Displayname | Görünen Ad |
+| uygulama, kaynak, hedef kitle | Itiraz | ObjectID |
+| uygulama, kaynak, hedef kitle | etiketler | Hizmet Müdürü Etiketi |
+| Şirket | kiracı ülke | Kiracının ülkesi |
 
-**Dönüştürme kimliği:** Dönüşümtionıd öğesi yalnızca kaynak öğe "dönüşüm" olarak ayarlandıysa sağlanmalıdır.
+**DönüşümKimliği:** TransformationID öğesi yalnızca Kaynak öğe "dönüştürme" olarak ayarlanmışsa sağlanmalıdır.
 
-- Bu öğe, bu talep için verilerin nasıl oluşturulduğunu tanımlayan **Claimstrans,** özelliğindeki dönüştürme girişinin ID öğesiyle aynı olmalıdır.
+- Bu öğe, Bu talep için verilerin nasıl oluşturulduğunu tanımlayan **ClaimsTransformation** özelliğindeki dönüşüm girişinin kimlik öğesiyle eşleşmelidir.
 
-**Talep türü:** **Jwtclaimtype** ve **samlclaimtype** öğeleri, bu talep şeması girişinin hangi talebe başvurduğunu tanımlar.
+**Talep Türü:** **JwtClaimType** ve **SamlClaimType** öğeleri, bu iddia şeması girişinin hangi iddiayı ifade ettiğine işaret eder.
 
-- JwtClaimType, JWTs 'de yayınlankullanılacak talebin adını içermelidir.
-- SamlClaimType, SAML belirteçlerine yayınlaneklenecek talebin URI 'sini içermelidir.
+- JwtClaimType, JWT'lerde yayımlanacak iddianın adını içermelidir.
+- SamlClaimType, SAML belirteçlerinde yayılan iddianın URI'sini içermelidir.
 
 > [!NOTE]
-> Kısıtlanmış talep kümesindeki taleplerin adları ve URI 'Leri talep türü öğeleri için kullanılamaz. Daha fazla bilgi için, bu makalenin devamındaki "özel durumlar ve kısıtlamalar" bölümüne bakın.
+> Kısıtlı talep kümesindeki taleplerin adları ve URI'leri, talep türü öğeleri için kullanılamaz. Daha fazla bilgi için bu makalenin ilerleyen bölümlerinde "Özel Durumlar ve kısıtlamalar" bölümüne bakın.
 
 ### <a name="claims-transformation"></a>Talepleri dönüştürme
 
-**Dize:** Claimstranssize
+**Dize:** İddiaDönüşümü
 
-**Veri türü:** JSON blobu, bir veya daha fazla dönüştürme girdisi 
+**Veri türü:** JSON blob, bir veya daha fazla dönüşüm girişleri ile 
 
-**Özet:** Bu özelliği, talep şemasında belirtilen talepler için çıkış verilerini oluşturmak üzere kaynak verilere ortak dönüşümler uygulamak için kullanın.
+**Özet:** Kaynak verilere yaygın dönüşümler uygulamak, Talep Şeması'nda belirtilen talepler için çıktı verilerini oluşturmak için bu özelliği kullanın.
 
-**Kimliği:** Transformation Tionıd talep şeması girişinde bu dönüşüm girişine başvurmak için ID öğesini kullanın. Bu değer, bu ilkedeki her bir dönüştürme girişi için benzersiz olmalıdır.
+**Kimlik Numarası:** TransformID Talepleri Şeması girişindeki bu dönüşüm girişine başvurmak için KIMLIK öğesini kullanın. Bu değer, bu ilke deki her dönüşüm girişi için benzersiz olmalıdır.
 
-**Dönüştürme yöntemi:** Dönüştürme Tionmethod öğesi, talep için verileri oluşturmak üzere hangi işlemin gerçekleştirildiğini tanımlar.
+**Dönüşüm Yöntemi:** TransformationMethod öğesi, talep için veri oluşturmak için hangi işlemin gerçekleştirildiyi tanımlar.
 
-Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Giriş ve çıkışları **ınputclaim**, **InputParameters** ve **outputclaim** öğelerini kullanarak tanımlayın.
+Seçilen yönteme göre, bir dizi girdi ve çıktı bekleniyor. **Giriş Talepleri,** **GirişParametreleri** ve **Çıktılar Talepleri** öğelerini kullanarak giriş ve çıktıları tanımlayın.
 
-#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tablo 4: dönüştürme yöntemleri ve beklenen girişler ve çıktılar
+#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tablo 4: Dönüşüm yöntemleri ve beklenen girdi ve çıktılar
 
-|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
+|Dönüşüm Yöntemi|Beklenen giriş|Beklenen çıkış|Açıklama|
 |-----|-----|-----|-----|
-|Birleştir|dize1, dize2, ayırıcı|OutputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: "foo@bar.com", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|posta|OutputClaim|Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: "foo@bar.com", outputClaim: "foo" sonucunu elde ediyor. \@ işareti yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
+|Birleştir|string1, string2, ayırıcı|outputClaim|Arada bir ayırıcı kullanarak giriş dizelerini birleştirir. Örneğin: string1:"foo@bar.com, string2:"sandbox" , ayırıcı:"." çıktılarıClaim:" "foo@bar.com.sandbox|
+|ExtractMailPrefix|posta|outputClaim|E-posta adresinin yerel kısmını ayıklar. Örneğin: posta:"foo@bar.com" outputClaim sonuçları:"foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
 
-**Inputclaim:** Bir talep şeması girdisinden bir dönüşüme veri geçirmek için ınputclaim öğesi kullanın. İki özniteliğe sahiptir: **ClaimTypeReferenceId** ve **dönüştürülebilir tionclaimtype**.
+**GirişTalepleri:** Bir inputclaims öğesini kullanarak verileri bir hak talebi şeması girişinden dönüştürmeye aktarın. İki özelliği vardır: **ClaimTypeReferenceId** ve **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** , uygun giriş talebini bulmak için talep ŞEMASı girişinin ID öğesiyle birleştirilir. 
-- Bu girişe benzersiz bir ad vermek için **dönüştürme Işlemi ClaimType** kullanılır. Bu ad, dönüşüm yöntemi için beklenen girdilerden biriyle eşleşmelidir.
+- **ClaimTypeReferenceId** uygun giriş iddiasını bulmak için hak şema girişinin kimlik öğesi ile birleştirilir. 
+- **TransformationClaimType** bu girişe benzersiz bir ad vermek için kullanılır. Bu ad, dönüştürme yöntemi için beklenen girişlerden biriyle eşleşmelidir.
 
-**InputParameters:** Bir dönüşüme sabit değer geçirmek için InputParameters öğesi kullanın. İki özniteliğe sahiptir: **değer** ve **kimlik**.
+**GirişParametreleri:** Dönüşüme sabit bir değer aktarmak için Bir Giriş Parametreleri öğesini kullanın. İki özelliği vardır: **Değer** ve **kimlik.**
 
-- **Değer** geçirilecek gerçek sabit değerdir.
-- Girişe benzersiz bir ad vermek için **kimlik** kullanılır. Ad, dönüşüm yöntemi için beklenen girdilerden biriyle eşleşmelidir.
+- **Değer,** geçirilecek gerçek sabit değerdir.
+- **Kimlik,** girişe benzersiz bir ad vermek için kullanılır. Ad, dönüştürme yöntemi için beklenen girişlerden biriyle eşleşmelidir.
 
-**Outputclaim:** Bir dönüştürme tarafından oluşturulan verileri tutmak ve bir talep şeması girişine bağlamak için bir Outputclaim öğesi kullanın. İki özniteliğe sahiptir: **ClaimTypeReferenceId** ve **dönüştürülebilir tionclaimtype**.
+**Çıktılar:** Dönüşüm tarafından oluşturulan verileri tutmak ve bir hak talebi şeması girişine bağlamak için bir Çıktılar öğesi kullanın. İki özelliği vardır: **ClaimTypeReferenceId** ve **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** , uygun çıkış talebini bulmak için talep ŞEMASı girişinin kimliğiyle birleştirilir.
-- **Dönüştürme** , çıkışa benzersiz bir ad vermek için kullanılır. Ad, dönüştürme yöntemi için beklenen çıktılardan biriyle eşleşmelidir.
+- **ClaimTypeReferenceId** uygun çıktı iddiasını bulmak için hak talebi şema girişinin kimliği ile birleştirilir.
+- **TransformationClaimType** çıktıya benzersiz bir ad vermek için kullanılır. Ad, dönüştürme yöntemi için beklenen çıktılardan biriyle eşleşmelidir.
 
-### <a name="exceptions-and-restrictions"></a>Özel durumlar ve kısıtlamalar
+### <a name="exceptions-and-restrictions"></a>İstisnalar ve kısıtlamalar
 
-**SAML NameID ve UPN:** NameID ve UPN değerlerini ve izin verilen talep dönüştürmelerini kaynak olarak belirten öznitelikler sınırlıdır. İzin verilen değerleri görmek için bkz. Tablo 5 ve tablo 6.
+**SAML NameID ve UPN:** NameID ve UPN değerlerini kaynak ladığınız öznitelikler ve izin verilen talep dönüşümleri sınırlıdır. İzin verilen değerleri görmek için tablo 5 ve tablo 6'ya bakın.
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tablo 5: SAML NameID için veri kaynağı olarak izin verilen öznitelikler
 
 |Kaynak|Kimlik|Açıklama|
 |-----|-----|-----|
 | Kullanıcı | posta|E-posta Adresi|
-| Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
-| Kullanıcı | onpremisessamaccountname|Şirket Içi Sam hesap adı|
-| Kullanıcı | EmployeeID|Çalışan KIMLIĞI|
-| Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
-| Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
-| Kullanıcı | extensionattribute3 | Uzantı özniteliği 3 |
-| Kullanıcı | extensionattribute4 | Uzantı özniteliği 4 |
-| Kullanıcı | extensionattribute5 | Uzantı özniteliği 5 |
-| Kullanıcı | extensionattribute6 | Uzantı özniteliği 6 |
-| Kullanıcı | extensionattribute7 | Uzantı özniteliği 7 |
-| Kullanıcı | extensionattribute8 | Uzantı özniteliği 8 |
-| Kullanıcı | extensionattribute9 | Uzantı özniteliği 9 |
-| Kullanıcı | extensionattribute10 | Uzantı özniteliği 10 |
-| Kullanıcı | extensionattribute11 | Uzantı özniteliği 11 |
-| Kullanıcı | extensionattribute12 | Uzantı özniteliği 12 |
-| Kullanıcı | extensionattribute13 | Uzantı özniteliği 13 |
-| Kullanıcı | extensionattribute14 | Uzantı özniteliği 14 |
-| Kullanıcı | extensionattribute15 | Uzantı özniteliği 15 |
+| Kullanıcı | Userprincipalname|Kullanıcı Asıl Adı|
+| Kullanıcı | onpremisessamaccountname|On Premises Sam Hesap Adı|
+| Kullanıcı | Employeeıd|Çalışan Kimlik Numarası|
+| Kullanıcı | extensionattribute1 | Uzatma Özniteliği 1 |
+| Kullanıcı | extensionattribute2 | Uzatma Özniteliği 2 |
+| Kullanıcı | extensionattribute3 | Uzatma Özniteliği 3 |
+| Kullanıcı | extensionattribute4 | Uzatma Özniteliği 4 |
+| Kullanıcı | extensionattribute5 | Uzatma Özniteliği 5 |
+| Kullanıcı | extensionattribute6 | Uzatma Özniteliği 6 |
+| Kullanıcı | extensionattribute7 | Uzatma Özniteliği 7 |
+| Kullanıcı | extensionattribute8 | Uzatma Özniteliği 8 |
+| Kullanıcı | extensionattribute9 | Uzatma Özniteliği 9 |
+| Kullanıcı | extensionattribute10 | Uzatma Özniteliği 10 |
+| Kullanıcı | extensionattribute11 | Uzantı Özniteliği 11 |
+| Kullanıcı | extensionattribute12 | Uzantı Özniteliği 12 |
+| Kullanıcı | extensionattribute13 | Uzantı Özniteliği 13 |
+| Kullanıcı | extensionattribute14 | Uzantı Özniteliği 14 |
+| Kullanıcı | extensionattribute15 | Uzatma Özniteliği 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tablo 6: SAML NameID için izin verilen dönüştürme yöntemleri
 
-| Dönüştürme Tionmethod | Kısıtlamalar |
+| Dönüşüm Yöntemi | Kısıtlamalar |
 | ----- | ----- |
-| ExtractMailPrefix | Yok |
-| Birleştir | Katılmakta olan sonekin, kaynak kiracının doğrulanmış bir etki alanı olması gerekir. |
+| ExtractMailPrefix | None |
+| Birleştir | Birleşen sonek, kaynak kiracısının doğrulanmış bir etki alanı olmalıdır. |
 
 ### <a name="custom-signing-key"></a>Özel imzalama anahtarı
 
-Bir talep eşleme ilkesinin etkili olması için hizmet sorumlusu nesnesine özel bir imzalama anahtarı atanmalıdır. Bu, belirteçlerin talep eşleme ilkesinin Oluşturucusu tarafından değiştirildiğini ve uygulamaların kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korunmasını sağlar. Özel bir imzalama anahtarı eklemek için, uygulama nesneniz için bir simetrik anahtar kimlik bilgisi oluşturmak üzere `new-azureadapplicationkeycredential` Azure PowerShell cmdlet 'ini kullanabilirsiniz. Bu Azure PowerShell cmdlet 'i hakkında daha fazla bilgi için, bkz. [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Bir talep eşleme ilkesinin etkili olabilmesi için hizmet ana nesnesine özel bir imzalama anahtarı atanması gerekir. Bu, belirteçlerin talep eşleme ilkesinin yaratıcısı tarafından değiştirildiğinin kabul edilmesini sağlar ve uygulamaları kötü amaçlı aktörler tarafından oluşturulan talep eşleme ilkelerine karşı korur. Özel bir imzalama anahtarı eklemek için, Uygulama nesneniz için `new-azureadapplicationkeycredential` simetrik bir anahtar kimlik bilgisi oluşturmak için Azure PowerShell cmdlet'ini kullanabilirsiniz. Bu Azure PowerShell cmdlet hakkında daha fazla bilgi için [New-AzureADApplicationKeyCredential'a](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)bakın.
 
-Talep eşlemesi etkin olan uygulamalar, `appid={client_id}` [OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek belirteç imzalama anahtarlarını doğrulamalıdır. Aşağıda, kullanmanız gereken OpenID Connect meta veri belgesinin biçimi verilmiştir: 
+Uygulama eşleme etkin olan `appid={client_id}` [uygulamalar, OpenID Connect meta veri isteklerine](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)ekleyerek belirteç imzalama anahtarlarını doğrulamalıdır. Kullanmanız gereken OpenID Connect meta veri belgesinin biçimi aşağıdaverilmiştir: 
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
 ```
 
-### <a name="cross-tenant-scenarios"></a>Çapraz kiracı senaryoları
+### <a name="cross-tenant-scenarios"></a>Kiracı lar arası senaryolar
 
-Talep eşleme ilkeleri Konuk kullanıcılar için uygulanmaz. Konuk Kullanıcı, hizmet sorumlusuna atanmış bir talep eşleme ilkesiyle bir uygulamaya erişmeyi denediğinde, varsayılan belirteç verilir (ilkenin hiçbir etkisi yoktur).
+Talep eşleme ilkeleri konuk kullanıcılar için geçerli değildir. Konuk kullanıcı, hizmet ilkesine atanmış bir talep eşleme ilkesiyle bir uygulamaya erişmeye çalışırsa, varsayılan belirteç verilir (politikanın etkisi yoktur).
 
-## <a name="claims-mapping-policy-assignment"></a>Talep eşleme ilkesi ataması
+## <a name="claims-mapping-policy-assignment"></a>İlke ataması için talepler eşleme
 
-Talep eşleme ilkeleri, yalnızca hizmet sorumlusu nesnelerine atanabilir.
+Talep eşleme ilkeleri yalnızca hizmet ana nesnelerine atanabilir.
 
-### <a name="example-claims-mapping-policies"></a>Örnek talep eşleme ilkeleri
+### <a name="example-claims-mapping-policies"></a>Örnek talepler eşleme ilkeleri
 
-Azure AD 'de, belirli hizmet sorumluları için belirteçlerde yayılan talepleri özelleştirebilmeniz için birçok senaryo mümkündür. Bu bölümde, talep eşleme ilkesi türünü nasıl kullanacağınızı belirlemenize yardımcı olabilecek birkaç yaygın senaryoya kılavuzluk ederiz.
+Azure AD'de, belirli hizmet ilkeleri için belirteçlerde yayılan talepleri özelleştirebildiğinizde birçok senaryo mümkündür. Bu bölümde, talep eşleme ilkesi türünü nasıl kullanacağınızı kavramanıza yardımcı olabilecek birkaç yaygın senaryodan geçiyoruz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki örneklerde, hizmet sorumluları için ilkeleri oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma hakkında bilgi](quickstart-create-new-tenant.md) almanızı öneririz.
+Aşağıdaki örneklerde, hizmet ilkeleri için ilkeler oluşturur, günceller, bağlantı verir ve silebilirsiniz. Azure AD'de yeniyseniz, bu örneklere geçmeden önce [Azure AD kiracısını nasıl alacağınızı öğrenmenizi](quickstart-create-new-tenant.md) öneririz.
 
-Başlamak için aşağıdaki adımları uygulayın:
+Başlamak için aşağıdaki adımları yapın:
 
-1. En son [Azure AD PowerShell modülü genel önizleme sürümünü](https://www.powershellgallery.com/packages/AzureADPreview)indirin.
-1. Azure AD yönetici hesabınızda oturum açmak için Connect komutunu çalıştırın. Her yeni oturumu başlattığınızda bu komutu çalıştırın.
+1. En son [Azure AD PowerShell Modülü genel önizleme yayınını indirin.](https://www.powershellgallery.com/packages/AzureADPreview)
+1. Azure AD yönetici hesabınızda oturum açabilmek için Bağlan komutunu çalıştırın. Yeni bir oturum başlatmak her zaman bu komutu çalıştırın.
 
    ``` powershell
    Connect-AzureAD -Confirm
    ```
-1. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için aşağıdaki komutu çalıştırın. İlkelerinizin beklenen şekilde oluşturulduğunu denetlemek için, aşağıdaki senaryolarda işlemlerden en çok işlem sonrasında bu komutu çalıştırmanızı öneririz.
+1. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için aşağıdaki komutu çalıştırın. İlkelerinizin beklendiği gibi oluşturulmakta olup olmadığını kontrol etmek için, aşağıdaki senaryolarda çoğu işlemden sonra bu komutu çalıştırmanızı öneririz.
 
    ``` powershell
    Get-AzureADPolicy
    ```
 
-#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Örnek: bir hizmet sorumlusuna verilen belirteçlerden temel talepleri atlamak için bir ilke oluşturun ve atayın
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Örnek: Hizmet ilkesine verilen belirteçlerden gelen temel talepleri atlayacak bir ilke oluşturma ve atama
 
-Bu örnekte, bağlı hizmet sorumlularına verilen belirteçlerden temel talep kümesini kaldıran bir ilke oluşturursunuz.
+Bu örnekte, bağlı hizmet ilkelerine verilen belirteçlerden temel talep kümesini kaldıran bir ilke oluşturursunuz.
 
-1. Talep eşleme ilkesi oluşturun. Belirli hizmet sorumlularına bağlı olan bu ilke, temel talep kümesini belirteçlerden kaldırır.
-   1. İlkeyi oluşturmak için şu komutu çalıştırın: 
+1. Talep eşleme ilkesi oluşturun. Belirli hizmet ilkelerine bağlı bu ilke, belirteçlerden ayarlanan temel talebi kaldırır.
+   1. İlkeoluşturmak için şu komutu çalıştırın: 
     
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
-   2. Yeni ilkenize bakmak ve ilke ObjectID 'yi almak için aşağıdaki komutu çalıştırın:
+   2. Yeni ilkenizi görmek ve ObjectId ilkesini almak için aşağıdaki komutu çalıştırın:
     
       ``` powershell
       Get-AzureADPolicy
       ```
-1. İlkeyi hizmet sorumlusuna atayın. Ayrıca hizmet sorumlunun ObjectID 'sini almanız gerekir.
-   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [MICROSOFT Graph API 'sini sorgulayabilirsiniz](/graph/traverse-the-graph). Veya [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer)' nde Azure AD hesabınızda oturum açın.
-   2. Hizmet sorumlunuz ObjectID 'niz varsa, aşağıdaki komutu çalıştırın:  
+1. İlkeyi hizmet müdürünüze atayın. Ayrıca hizmet müdürünün ObjectId'ini de almanız gerekir.
+   1. Kuruluşunuzun tüm hizmet ilkelerini görmek için [Microsoft Graph API'sini](/graph/traverse-the-graph)sorgulayabilirsiniz. Veya [Microsoft Graph Explorer'da](https://developer.microsoft.com/graph/graph-explorer)Azure REKLAM hesabınızda oturum açın.
+   2. Hizmet müdürünüzin ObjectId'ini aldığınızda aşağıdaki komutu çalıştırın:  
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Örnek: bir hizmet sorumlusu tarafından verilen belirteçlere talepler olarak EmployeeID ve TenantCountry dahil etmek için bir ilke oluşturun ve atayın
+#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Örnek: Bir hizmet sorumlusuna verilen belirteçlerde talep olarak EmployeeID ve TenantCountry'i içerecek bir ilke oluşturma ve atama
 
-Bu örnekte, EmployeeID ve TenantCountry ' ı bağlı hizmet sorumlularına verilen belirteçlere ekleyen bir ilke oluşturacaksınız. ÇalışanNo, hem SAML belirteçlerinde hem de JWTs 'de ad talep türü olarak yayınlanır. TenantCountry, hem SAML belirteçlerinde hem de JWTs 'de ülke talep türü olarak yayınlanır. Bu örnekte, belirteçlere temel talepler kümesini eklemeye devam ediyoruz.
+Bu örnekte, Bağlı hizmet ilkelerine verilen belirteçlere EmployeeID ve TenantCountry'i ekleyen bir ilke oluşturursunuz. EmployeeID, hem SAML belirteçlerinde hem de JWT'lerde ad talebi türü olarak yayımlanır. TenantCountry, hem SAML belirteçlerinde hem de JWT'lerde ülke talep türü olarak yayımlanır. Bu örnekte, belirteçlerde ayarlanan temel talepleri eklemeye devam ediyoruz.
 
-1. Talep eşleme ilkesi oluşturun. Bu ilke, belirli hizmet sorumlularıyla bağlantılı olarak, ÇalışanNo ve TenantCountry taleplerini belirteçlere ekler.
-   1. İlkeyi oluşturmak için aşağıdaki komutu çalıştırın:  
+1. Talep eşleme ilkesi oluşturun. Belirli hizmet ilkelerine bağlı bu ilke, EmployeeID ve TenantCountry taleplerini belirteçlere ekler.
+   1. İlke oluşturmak için aşağıdaki komutu çalıştırın:  
      
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
-   2. Yeni ilkenize bakmak ve ilke ObjectID 'yi almak için aşağıdaki komutu çalıştırın:
+   2. Yeni ilkenizi görmek ve ObjectId ilkesini almak için aşağıdaki komutu çalıştırın:
      
       ``` powershell  
       Get-AzureADPolicy
       ```
-1. İlkeyi hizmet sorumlusuna atayın. Ayrıca hizmet sorumlunun ObjectID 'sini almanız gerekir. 
-   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [MICROSOFT Graph API 'sini sorgulayabilirsiniz](/graph/traverse-the-graph). Veya [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer)' nde Azure AD hesabınızda oturum açın.
-   2. Hizmet sorumlunuz ObjectID 'niz varsa, aşağıdaki komutu çalıştırın:  
+1. İlkeyi hizmet müdürünüze atayın. Ayrıca hizmet müdürünün ObjectId'ini de almanız gerekir. 
+   1. Kuruluşunuzun tüm hizmet ilkelerini görmek için [Microsoft Graph API'sini](/graph/traverse-the-graph)sorgulayabilirsiniz. Veya [Microsoft Graph Explorer'da](https://developer.microsoft.com/graph/graph-explorer)Azure REKLAM hesabınızda oturum açın.
+   2. Hizmet müdürünüzin ObjectId'ini aldığınızda aşağıdaki komutu çalıştırın:  
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Örnek: bir hizmet sorumlusuna verilen belirteçlerde talep dönüştürmesi kullanan bir ilke oluşturma ve atama
+#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Örnek: Hizmet ilkesine verilen belirteçlerde talep dönüşümü kullanan bir ilke oluşturma ve atama
 
-Bu örnekte, bağlantılı hizmet sorumlularına verilen JWTs 'e "JoinedData" özel talebi yayan bir ilke oluşturacaksınız. Bu talep, kullanıcı nesnesindeki extensionAttribute1 özniteliğinde depolanan verileri ". Sandbox" ile birleştirerek oluşturulmuş bir değer içerir. Bu örnekte, belirteçlerde ayarlanan temel talepler hariç tutuyoruz.
+Bu örnekte, bağlı hizmet ilkelerine verilen JWT'lere özel bir "JoinedData" iddiası yayılan bir ilke oluşturursunuz. Bu talep, kullanıcı nesnesi üzerinde extensionattribute1 özniteliği nde depolanan verileri ".sandbox" ile birleştirerek oluşturulan bir değer içerir. Bu örnekte, belirteçlerde belirlenen temel talepleri hariç tutarız.
 
-1. Talep eşleme ilkesi oluşturun. Bu ilke, belirli hizmet sorumlularıyla bağlantılı olarak, ÇalışanNo ve TenantCountry taleplerini belirteçlere ekler.
-   1. İlkeyi oluşturmak için aşağıdaki komutu çalıştırın:
+1. Talep eşleme ilkesi oluşturun. Belirli hizmet ilkelerine bağlı bu ilke, EmployeeID ve TenantCountry taleplerini belirteçlere ekler.
+   1. İlke oluşturmak için aşağıdaki komutu çalıştırın:
      
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
-   2. Yeni ilkenize bakmak ve ilke ObjectID 'yi almak için aşağıdaki komutu çalıştırın: 
+   2. Yeni ilkenizi görmek ve ObjectId ilkesini almak için aşağıdaki komutu çalıştırın: 
      
       ``` powershell
       Get-AzureADPolicy
       ```
-1. İlkeyi hizmet sorumlusuna atayın. Ayrıca hizmet sorumlunun ObjectID 'sini almanız gerekir. 
-   1. Tüm kuruluşunuzun hizmet sorumlularını görmek için [MICROSOFT Graph API 'sini sorgulayabilirsiniz](/graph/traverse-the-graph). Veya [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer)' nde Azure AD hesabınızda oturum açın.
-   2. Hizmet sorumlunuz ObjectID 'niz varsa, aşağıdaki komutu çalıştırın: 
+1. İlkeyi hizmet müdürünüze atayın. Ayrıca hizmet müdürünün ObjectId'ini de almanız gerekir. 
+   1. Kuruluşunuzun tüm hizmet ilkelerini görmek için [Microsoft Graph API'sini](/graph/traverse-the-graph)sorgulayabilirsiniz. Veya [Microsoft Graph Explorer'da](https://developer.microsoft.com/graph/graph-explorer)Azure REKLAM hesabınızda oturum açın.
+   2. Hizmet müdürünüzin ObjectId'ini aldığınızda aşağıdaki komutu çalıştırın: 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
@@ -526,4 +526,4 @@ Bu örnekte, bağlantılı hizmet sorumlularına verilen JWTs 'e "JoinedData" ö
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-SAML belirtecinde verilen talepleri Azure portal aracılığıyla özelleştirmeyi öğrenmek için bkz. [nasıl yapılır: kurumsal uygulamalar IÇIN SAML belirtecinde verilen talepleri özelleştirme](active-directory-saml-claims-customization.md)
+Azure portalı aracılığıyla SAML belirtecinde verilen talepleri nasıl özelleştirebilirsiniz öğrenmek [için bkz: Kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme](active-directory-saml-claims-customization.md)

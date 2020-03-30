@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid olay şeması
-description: Tüm olaylar için mevcut olan özellikleri ve şemayı açıklar. Olaylar, beş gerekli dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur.
+title: Azure Olay Izgara olay şeması
+description: Tüm olaylar için mevcut olan özellikleri ve şemayı açıklar.Olaylar, gerekli beş dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -9,28 +9,28 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244842"
 ---
-# <a name="azure-event-grid-event-schema"></a>Azure Event Grid olay şeması
+# <a name="azure-event-grid-event-schema"></a>Azure Olay Izgara olay şeması
 
-Bu makalede, tüm olaylar için mevcut olan özellikler ve şema açıklanmaktadır. Olaylar, beş gerekli dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur. Özellikler, herhangi bir yayımcının tüm olayları için ortaktır. Veri nesnesi, her yayımcıya özgü özelliklere sahiptir. Sistem konuları için, bu özellikler kaynak sağlayıcısına (örneğin, Azure depolama veya Azure Event Hubs) özgüdür.
+Bu makalede, tüm olaylar için mevcut özellikleri ve şema açıklanır.Olaylar, gerekli beş dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur. Özellikler, herhangi bir yayımcıdaki tüm olaylar için ortaktür. Veri nesnesi, her yayımcıya özgü özelliklere sahiptir. Sistem konuları için bu özellikler Azure Depolama veya Azure Etkinlik Hub'ları gibi kaynak sağlayıcısına özgüdir.
 
-Olay kaynakları, çeşitli olay nesnelerine sahip olabilen bir dizide Azure Event Grid olayları gönderir. Olayları bir Event Grid konusuna naklederken, dizi toplam boyutu 1 MB olabilir. Dizideki her olay 64 KB (genel kullanılabilirlik) veya 1 MB (Önizleme) ile sınırlıdır. Bir olay veya dizi boyut limitinden büyükse, yanıt **413 yükünü çok büyük**olarak alırsınız.
+Olay kaynakları, birden çok olay nesnesi olan bir dizideki olayları Azure Olay Izgarası'na gönderir. Olayları bir olay ızgarası konusuna gönderirken, dizinin toplam boyutu 1 MB'a kadar olabilir. Dizideki her olay 64 KB (Genel Kullanılabilirlik) veya 1 MB (önizleme) ile sınırlıdır. Bir olay veya dizi boyut sınırlamından büyükse, **413 Payload Too Large**yanıtını alırsınız.
 
 > [!NOTE]
-> 64 KB 'a kadar olan bir olay, genel kullanım (GA) Hizmet Düzeyi Sözleşmesi (SLA) ile ele alınmıştır. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. 
+> 64 KB'ye kadar boyut landırma olayı Genel Kullanılabilirlik (GA) Hizmet Düzeyi Sözleşmesi (SLA) kapsamındadır. 1 MB'a kadar boyutlandırma etkinliği desteği şu anda önizlemededir. 64 KB üzerindeki olaylar 64-KB artışlarla ücretlendirilir. 
 
-Event Grid, olayları tek bir olaya sahip olan bir dizide abonelere gönderir. Bu davranış daha sonra değişebilir.
+Olay Grid, olayları tek bir olay olan bir dizideki abonelere gönderir. Bu davranış gelecekte değişebilir.
 
-Event Grid olayı ve her bir Azure yayımcısının veri yükünün [olay şeması deposunda](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane)JSON şemasını bulabilirsiniz.
+Olay Izgara etkinliği için JSON şemasını ve her Azure yayımcısının veri yükünü [Event Schema deposunda](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane)bulabilirsiniz.
 
 ## <a name="event-schema"></a>Olay şeması
 
-Aşağıdaki örnek, tüm olay yayımcıları tarafından kullanılan özellikleri gösterir:
+Aşağıdaki örnek, tüm olay yayımcılar tarafından kullanılan özellikleri gösterir:
 
 ```json
 [
@@ -49,7 +49,7 @@ Aşağıdaki örnek, tüm olay yayımcıları tarafından kullanılan özellikle
 ]
 ```
 
-Örneğin, bir Azure Blob depolama olayı için yayımlanan şema:
+Örneğin, bir Azure Blob depolama olayı için yayınlanan şema:
 
 ```json
 [
@@ -81,39 +81,39 @@ Aşağıdaki örnek, tüm olay yayımcıları tarafından kullanılan özellikle
 
 ## <a name="event-properties"></a>Olay özellikleri
 
-Tüm olaylar en üst düzey verilere sahiptir:
+Tüm olaylar aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Gerekli | Açıklama |
 | -------- | ---- | -------- | ----------- |
-| konu başlığı | string | Hayır, ancak dahil ediliyorsa, KIMLIK Azure Resource Manager Event Grid konusuyla aynı olmalıdır. Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| subject | string | Yes | Olay konusunun yayımcı tanımlı yolu. |
-| eventType | string | Yes | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Yes | Etkinliğin benzersiz tanımlayıcısı. |
-| data | object | Hayır | Kaynak sağlayıcısına özel olay verileri. |
-| dataVersion | string | Hayır, ancak boş bir değerle damgalı olacak. | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Gerekli değildir, ancak dahil ediliyorsa Event Grid şeması `metadataVersion` tam olarak eşleşmelidir (Şu anda yalnızca `1`). Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Hayır, ancak dahil edilirse, Olay Izgara konusu Azure Kaynak Yöneticisi Kimliği ile tam olarak eşleşmelidir. Dahil edilmezse, Olay Izgarası etkinliğe damgalanır. | Olay kaynağına tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| Konu | string | Evet | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Evet | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Evet | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Evet | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Hayır | Kaynak sağlayıcısına özgü olay verileri. |
+| dataVersion | string | Hayır, ama boş bir değerle damgalanır. | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Gerekli değil, ancak dahil edilirse, Olay Izgara Şeması `metadataVersion` tam `1`olarak eşleşmelidir (şu anda, yalnızca). Dahil edilmezse, Olay Izgarası etkinliğe damgalanır. | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
-Veri nesnesindeki özellikler hakkında bilgi edinmek için bkz. olay kaynağı:
+Veri nesnesindeki özellikler hakkında bilgi edinmek için olay kaynağına bakın:
 
 * [Azure abonelikleri (yönetim işlemleri)](event-schema-subscriptions.md)
-* [Container Registry](event-schema-container-registry.md)
+* [Konteyner Kayıt Defteri](event-schema-container-registry.md)
 * [Blob depolama](event-schema-blob-storage.md)
-* [Event Hubs](event-schema-event-hubs.md)
-* [IoT Hub’ı](event-schema-iot-hub.md)
+* [Etkinlik Hub'ları](event-schema-event-hubs.md)
+* [IoT Hub](event-schema-iot-hub.md)
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Kaynak grupları (yönetim işlemleri)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
 * [Azure SignalR](event-schema-azure-signalr.md)
-* [Azure Machine Learning](event-schema-machine-learning.md)
+* [Azure Makine Öğrenimi](event-schema-machine-learning.md)
 
-Özel konularda, olay yayımcısı veri nesnesini belirler. En üst düzey veriler standart kaynak tanımlı olaylarla aynı alanlara sahip olmalıdır.
+Özel konular için olay yayımcısı veri nesnesini belirler. Üst düzey veriler, standart kaynak tanımlı olaylarla aynı alanlara sahip olmalıdır.
 
-Olayları özel konulara yayımlarken, etkinliklerinizin etkinlikleri oluşturun ve bu da abonelerin olayla ilgilenip ilgilenmediğini bilmesini kolaylaştırır. Aboneler olayları filtrelemek ve yönlendirmek için konuyu kullanır. Örneğin, abonelerin bu yolun segmentlerine göre filtreleyebilmesi için olayın gerçekleştiği yolu sağlamayı düşünün. Yol, abonelerin olayları en dar veya genel olarak filtrelemesine olanak sağlar. Örneğin, konu içinde `/A/B/C` gibi üç segment yolu sağlarsanız, aboneler çok sayıda olay almak için `/A` ilk kesime göre filtreleyebilirsiniz. Bu aboneler `/A/B/C` veya `/A/D/E`gibi konularla olayları alır. Diğer aboneler, daha dar bir olay kümesini almak için `/A/B` göre filtreleyebilirler.
+Etkinlikleri özel konulara yayınlarken, etkinliklerinizin etkinlikleriiçin, abonelerin etkinlikle ilgilenip ilgilenmediklerini bilmelerini kolaylaştıran konular oluşturun. Aboneler olayları filtrelemek ve yönlendirmek için konuyu kullanır. Abonelerin bu yolun bölümlerine göre filtre uygulayabilmesi için, olayın gerçekleştiği yer için yol sağlamayı düşünün. Yol, abonelerin olayları dar veya genel olarak filtrelemesini sağlar. Örneğin, konu gibi `/A/B/C` üç segmentli bir yol sağlarsanız, aboneler `/A` geniş bir olay kümesi elde etmek için ilk kesime göre filtre uygulayabilir. Bu aboneler gibi `/A/B/C` konular `/A/D/E`ile olaylar olsun ya da . Diğer aboneler daha `/A/B` dar bir olay kümesi almak için filtre uygulayabilir.
 
-Bazen konusu ne olduğu hakkında daha fazla ayrıntı istiyor. Örneğin, bir kapsayıcıya dosya eklendiğinde **depolama hesapları** yayımcısı konu `/blobServices/default/containers/<container-name>/blobs/<file>` sağlar. Bir abone, bu kapsayıcının tüm olaylarını almak için `/blobServices/default/containers/testcontainer` yol tarafından filtreleyip depolama hesabındaki diğer kapsayıcıları alamaz. Abone Ayrıca yalnızca metin dosyalarıyla çalışmak üzere sonek `.txt` filtreleyebilir veya yönlendirebilir.
+Bazen deneğinin ne olduğu hakkında daha fazla detaya ihtiyacı vardır. Örneğin, **Depolama Hesapları** yayımcısı, `/blobServices/default/containers/<container-name>/blobs/<file>` bir dosya kapsayıcıya eklendiğinde konuyu sağlar. Bir abone, depolama hesabındaki diğer kapsayıcılar için tüm olayları almak için yolu `/blobServices/default/containers/testcontainer` filtreleyebilir. Bir abone, yalnızca metin dosyalarıyla çalışmak `.txt` için sonek tarafından filtreleyebilir veya yönlendirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
+* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.

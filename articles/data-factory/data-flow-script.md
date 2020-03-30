@@ -1,42 +1,42 @@
 ---
-title: Veri akışı betiği eşleniyor
-description: Data Factory veri akışı betiği arka plan koduna genel bakış
+title: Veri akışı komut dosyalarını eşleme
+description: Veri Fabrikası'nın veri akışı komut dosyası kod arkası diline genel bakış
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/10/2019
-ms.openlocfilehash: d861a4355158dfe18ac3aa40a7f98dc11ebda90b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 92421125ecb5f4336922c6e6b4508fcdaf92be6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930249"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246407"
 ---
-# <a name="data-flow-script-dfs"></a>Veri akışı betiği (DFS)
+# <a name="data-flow-script-dfs"></a>Veri akışı komut dosyası (DFS)
 
-Veri akışı betiği (DFS), bir eşleme veri akışında bulunan dönüştürmeleri yürütmek için kullanılan bir kodlama diline benzer şekilde temel alınan meta verileridir. Her dönüşüm, işi düzgün şekilde çalıştırmak için gerekli bilgileri sağlayan bir dizi özellik tarafından temsil edilir. Betik, tarayıcı kullanıcı arabiriminin üst şeridinde "komut dosyası" düğmesine tıklanarak ADF 'den görünür ve düzenlenebilir.
+Veri akışı komut dosyası (DFS), eşleme veri akışına dahil edilen dönüşümleri yürütmek için kullanılan kodlama diline benzer temel meta veridir. Her dönüşüm, işi düzgün çalıştırmak için gerekli bilgileri sağlayan bir dizi özellik tarafından temsil edilir. Komut dosyası, tarayıcı nın üst şeridindeki "komut dosyası" düğmesine tıklayarak ADF'den görünür ve değiştirilebilir.
 
-![Betik düğmesi](media/data-flow/scriptbutton.png "Betik düğmesi")
+![Komut dosyası düğmesi](media/data-flow/scriptbutton.png "Komut dosyası düğmesi")
 
-Örneğin, bir kaynak dönüşümünde `allowSchemaDrift: true,`, hizmetin, şema projeksiyonda içerilmese bile veri akışındaki kaynak veri kümesinden tüm sütunları içermesini söyler.
+Örneğin, `allowSchemaDrift: true,` bir kaynak dönüşümünde, şema projeksiyonuna dahil edilmeseler bile hizmete kaynak veri kümesindeki tüm sütunları veri akışına dahil etmesini söyler.
 
 ## <a name="use-cases"></a>Uygulama alanları
-DFS, Kullanıcı arabirimi tarafından otomatik olarak üretilir. Betiği görüntülemek ve özelleştirmek için betik düğmesine tıklayabilirsiniz. Ayrıca ADF Kullanıcı arabirimi dışında betikler oluşturabilir ve ardından bunu PowerShell cmdlet 'ine geçirebilirsiniz. Karmaşık veri akışları hata ayıklarken, akışlarınızın UI grafik gösterimini taramak yerine, arka plan kod dosyasını taramayı daha kolay bulabilirsiniz.
+DFS otomatik olarak kullanıcı arabirimi tarafından üretilir. Komut dosyasını görüntülemek ve özelleştirmek için Komut Dosyası düğmesini tıklatabilirsiniz. Ayrıca ADF UI dışında komut dosyaları oluşturabilir ve sonra PowerShell cmdlet içine geçirebilirsiniz. Karmaşık veri akışlarını hata ayıklarken, akışlarınızın UI grafik gösterimini taramak yerine komut dosyası kodunu niçin taramak daha kolay olabilir.
 
-Örnek kullanım örnekleri aşağıda verilmiştir:
-- Oldukça benzer, yani "damgalama" veri akışları gibi çok sayıda veri akışı program aracılığıyla.
-- Kullanıcı arabiriminde yönetilmesi zor olan karmaşık ifadeler veya doğrulama sorunlarına neden olur.
-- Hata ayıklama ve yürütme sırasında döndürülen çeşitli hataları daha iyi anlama.
+Aşağıda birkaç örnek kullanım örneği verilmiştir:
+- Programlı olarak oldukça benzer birçok veri akışları üreten, yani "damgalama-out" veri akışları.
+- UI'de yönetilmesi zor olan veya doğrulama sorunlarına neden olan karmaşık ifadeler.
+- Hata ayıklama ve yürütme sırasında döndürülen çeşitli hataları daha iyi anlamak.
 
-PowerShell veya API ile kullanmak üzere bir veri akışı betiği oluşturduğunuzda, biçimlendirilen metni tek bir satıra daraltmanız gerekir. Sekmeleri ve newlines kaçış karakterleri olarak tutabilirsiniz. Ancak metin bir JSON özelliğinin içine sığacak şekilde biçimlendirilmelidir. Alt kısımdaki komut dosyası düzenleyici Kullanıcı arabiriminde, betiği sizin için tek bir satır olarak biçimlendirilecek bir düğme vardır.
+PowerShell veya API ile kullanmak üzere bir veri akışı komut dosyası oluşturduğunuzda, biçimlendirilmiş metni tek bir satıra daraltmanız gerekir. Sekmeleri ve yeni satırları kaçış karakterleri olarak tutabilirsiniz. Ancak metin bir JSON mülküne sığacak şekilde biçimlendirilmelidir. Alt taki komut dosyası düzenleyicisi UI'de, komut dosyasını sizin için tek bir satır olarak biçimlendirecek bir düğme vardır.
 
-![Kopyala düğmesi](media/data-flow/copybutton.png "Kopyala düğmesini")
+![Kopyala düğmesini](media/data-flow/copybutton.png "Kopyala düğmesini")
 
-## <a name="how-to-add-transforms"></a>Dönüşümler ekleme
-Dönüşümler eklemek için üç temel adım gerekir: çekirdek dönüştürme verilerini ekleme, giriş akışını yeniden yönlendirme ve ardından çıkış akışını yeniden yönlendirme. Bu, bir örnekte en kolay şekilde görülebilir.
-Aşağıdaki gibi veri akışını havuza almak için basit bir kaynakla başlayabiliriz:
+## <a name="how-to-add-transforms"></a>Dönüşümler nasıl eklenir?
+Dönüşümler eklemek üç temel adım gerektirir: çekirdek dönüşüm verilerini ekleme, giriş akışını yeniden yönlendirme ve çıktı akışını yeniden yönlendirme. Bu bir örnekte en kolay görülebilir.
+Aşağıdaki gibi veri akışını batırmak için basit bir kaynakla başladığımızı varsayalım:
 
 ```
 source(output(
@@ -50,12 +50,12 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Türeme dönüştürmesi eklemeye karar verirse, öncelikle `upperCaseTitle`adlı yeni bir büyük sütun eklemek için basit bir ifadeye sahip olan temel dönüşüm metnini oluşturmanız gerekir:
+Türe dönüştürme eklemeye karar verirsek, öncelikle yeni bir büyük harf sütunu eklemek için basit `upperCaseTitle`bir ifadeye sahip olan çekirdek dönüştürme metnini oluşturmamız gerekir:
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
 
-Ardından, var olan DFS 'yi aldık ve dönüşümü ekliyoruz:
+Daha sonra, varolan DFS almak ve dönüşüm ekleyin:
 ```
 source(output(
         movieId as string,
@@ -69,7 +69,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Şimdi, yeni dönüştürmenin ne kadar (Bu durumda `source1`) gelmesini istediğinizi tanımlayarak ve akışın adını yeni dönüştürmeye kopyalayarak gelen akışı yeniden yönlendirdik:
+Ve şimdi gelen akışı, yeni dönüşümün hangi dönüşümün sonra gelmesini istediğimizi belirleyerek (bu durumda) `source1`ve akışın adını yeni dönüşüme kopyalayarak yeniden yönlendiriyoruz:
 ```
 source(output(
         movieId as string,
@@ -83,7 +83,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Son olarak, bu yeni dönüşümden sonra gelmesi istediğimiz dönüşümü tanımlıyoruz ve giriş akışını (Bu durumda `sink1`) yeni dönüştürtiğimiz çıkış akışı adıyla değiştirin:
+Son olarak, bu yeni dönüşümden sonra gelmek istediğimiz dönüşümü tanımlıyoruz ve `sink1`giriş akışını (bu durumda) yeni dönüşümümüzün çıktı akışı adı ile değiştiriyoruz:
 ```
 source(output(
         movieId as string,
@@ -98,7 +98,7 @@ deriveTransformationName sink(allowSchemaDrift: true,
 ```
 
 ## <a name="dfs-fundamentals"></a>DFS temelleri
-DFS, kaynaklar, havuzlar ve yeni sütun ekleyebilen, verileri filtreleyip verileri birleştirebilen ve çok daha fazlasını içeren bir dizi bağlantılı dönüşümden oluşur. Genellikle, bir veya daha fazla kaynak ile başlayan betik, bir veya daha fazla dönüştürme ile izlenir ve bir veya daha fazla havuz ile sona eriyor.
+DFS, kaynaklar, lavabolar ve yeni sütunlar ekleyebilir, veri filtre, veri birleştirme ve çok daha fazlası dahil olmak üzere bağlı dönüşümler, bir dizi oluşur. Genellikle, bir veya daha fazla kaynakile başlayan komut dosyası birçok dönüşümleri takip ve bir veya daha fazla lavabo ile biten.
 
 Kaynakların hepsi aynı temel yapıya sahiptir:
 ```
@@ -107,7 +107,7 @@ source(
 ) ~> source_name
 ```
 
-Örneğin, üç sütunlu (Movieıd, title, tarzlar) bir basit kaynak şöyle olacaktır:
+Örneğin, üç sütun (movieId, başlık, türler) ile basit bir kaynak olacaktır:
 ```
 source(output(
         movieId as string,
@@ -125,19 +125,53 @@ name_of_incoming_stream transformation_type(
 ) ~> new_stream_name
 ```
 
-Örneğin, bir sütunu (başlık) alan ve büyük harfli bir sürümle üzerine yazan basit bir türet dönüşümü aşağıdaki gibidir:
+Örneğin, bir sütun (başlık) alır ve bir büyük harf sürümü ile üzerine yazılar basit bir türedönüştürme aşağıdaki gibi olacaktır:
 ```
 source1 derive(
   title = upper(title)
 ) ~> derive1
 ```
 
-Ve şemaya sahip olmayan bir havuz yalnızca şu şekilde olabilir:
+Ve şeması olmayan bir lavabo basitçe şöyle olurdu:
 ```
 derive1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
+## <a name="script-snippets"></a>Komut dosyası parçacıkları
+
+### <a name="aggregated-summary-stats"></a>Toplu özet istatistikleri
+Veri akışınıza "SummaryStats" adı verilen bir Toplu dönüştürme ekleyin ve ardından varolan SummaryStats'ın yerine komut dosyanızdaki toplam işlev için aşağıdaki koda yapıştırın. Bu, veri profili özet istatistikleri için genel bir desen sağlar.
+
+```
+aggregate(each(match(true()), $$+'_NotNull' = countIf(!isNull($$)), $$ + '_Null' = countIf(isNull($$))),
+        each(match(type=='double'||type=='integer'||type=='short'||type=='decimal'), $$+'_stddev' = round(stddev($$),2), $$ + '_min' = min ($$), $$ + '_max' = max($$), $$ + '_average' = round(avg($$),2), $$ + '_variance' = round(variance($$),2)),
+        each(match(type=='string'), $$+'_maxLength' = max(length($$)))) ~> SummaryStats
+```
+Verilerinizdeki benzersiz satır sayısını ve farklı satır sayısını saymak için aşağıdaki örneği de kullanabilirsiniz. Aşağıdaki örnek, ValueDistAgg adı verilen Toplu dönüştürme ile bir veri akışına yapıştırılabilir. Bu örnekte "başlık" adlı bir sütun kullanılır. Değer sayımları almak için kullanmak istediğiniz verilerinizdeki dize sütunuyla "başlık" yerine aldığınızdan emin olun.
+
+```
+aggregate(groupBy(title),
+    countunique = count()) ~> ValueDistAgg
+ValueDistAgg aggregate(numofunique = countIf(countunique==1),
+        numofdistinct = countDistinct(title)) ~> UniqDist
+```
+
+### <a name="include-all-columns-in-an-aggregate"></a>Tüm sütunları toplu olarak ekleme
+Bu, toplam lar oluşturuyorken kalan sütunları çıktı meta verilerinizde nasıl tutabileceğinizi gösteren genel bir toplu desendir. Bu durumda, adı ```first()``` "film" olmayan her sütundaki ilk değeri seçmek için işlevi kullanırız. Bunu kullanmak için DistinctRows adlı bir Toplu dönüşüm oluşturun ve sonra bunu varolan DistinctRows toplu komut dosyasının üzerine dosyanıza yapıştırın.
+
+```
+aggregate(groupBy(movie),
+    each(match(name!='movie'), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="create-row-hash-fingerprint"></a>Satır karma parmak izi oluşturma 
+Üç sütundan oluşan bir karma oluşturan yeni ```DWhash``` bir ```sha1``` türemiş sütun oluşturmak için veri akışı komut dosyanızda bu kodu kullanın.
+
+```
+derive(DWhash = sha1(Name,ProductNumber,Color))
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Veri akışlarına genel bakış makalesini](concepts-data-flow-overview.md) kullanarak veri akışlarını inceleyin
+[Veri akışlarına genel bakış makalesinden](concepts-data-flow-overview.md) yola başlayarak Veri Akışlarını keşfedin

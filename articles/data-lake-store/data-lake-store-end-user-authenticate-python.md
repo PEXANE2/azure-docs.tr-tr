@@ -1,6 +1,6 @@
 ---
-title: 'Son Kullanıcı kimlik doğrulaması: Azure Active Directory kullanarak Azure Data Lake Storage 1. Python | Microsoft Docs'
-description: Python ile Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması elde etme hakkında bilgi edinin
+title: 'Son kullanıcı kimlik doğrulaması: Azure Active Directory kullanarak Azure Veri Gölü Depolama Gen1 ile Python | Microsoft Dokümanlar'
+description: Python ile Azure Active Directory'yi kullanarak Azure Veri Gölü Depolama Gen1 ile son kullanıcı kimlik doğrulaması nasıl elde edilemeyi öğrenin
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,43 +12,43 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c69f6c1f587285c5c52280c4c49008764d5b20d8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265603"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Veri Gölü Depolama Gen1 ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
-> * [Java kullanma](data-lake-store-end-user-authenticate-java-sdk.md)
-> * [.NET SDK’yı kullanma](data-lake-store-end-user-authenticate-net-sdk.md)
+> * [Java'yı kullanma](data-lake-store-end-user-authenticate-java-sdk.md)
+> * [.NET SDK’sını kullanma](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Python’u kullanma](data-lake-store-end-user-authenticate-python.md)
-> * [REST API’sini kullanma](data-lake-store-end-user-authenticate-rest-api.md)
+> * [REST API kullanma](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 > 
 
-Bu makalede, Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması yapmak için Python SDK 'sını kullanma hakkında bilgi edineceksiniz. Son Kullanıcı kimlik doğrulaması, daha fazla iki kategoriye ayrılabilir:
+Bu makalede, Azure Veri Gölü Depolama Gen1 ile son kullanıcı kimlik doğrulaması yapmak için Python SDK'yı nasıl kullanacağınızı öğreneceksiniz. Son kullanıcı kimlik doğrulaması iki kategoriye ayrılabilir:
 
-* Multi-Factor Authentication olmadan son kullanıcı kimlik doğrulaması
-* Multi-Factor Authentication ile son kullanıcı kimlik doğrulaması
+* Çok faktörlü kimlik doğrulamaolmadan son kullanıcı kimlik doğrulaması
+* Çok faktörlü kimlik doğrulama ile son kullanıcı kimlik doğrulaması
 
-Bu seçeneklerin her ikisi de bu makalede ele alınmıştır. Python kullanarak Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması için bkz. [Python kullanarak Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-python.md).
+Bu seçeneklerin her ikisi de bu makalede ele alınmıştır. Python kullanarak Data Lake Storage Gen1 ile servise hizmet kimlik doğrulaması için [Python'u kullanarak Data Lake Storage Gen1 ile hizmete hizmet kimlik doğrulaması'na](data-lake-store-service-to-service-authenticate-python.md)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Python**. Python’u [buradan](https://www.python.org/downloads/) indirebilirsiniz. Bu makalede Python 3.6.2 kullanılmıştır.
 
-* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Bir Azure Active Directory "yerel" uygulaması oluşturun**. [Azure Active Directory kullanarak Data Lake Storage 1. Ile Son Kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md)adımlarını tamamlamış olmanız gerekir.
+* **Azure Etkin Dizini "Yerel" Uygulama Oluşturun.** [Azure Etkin Dizini'ni kullanarak Veri Gölü Depolama Gen1 ile Son kullanıcı kimlik doğrulamaadımlarını](data-lake-store-end-user-authenticate-using-active-directory.md)tamamlamış olmalısınız.
 
 ## <a name="install-the-modules"></a>Modülleri yükleme
 
-Python kullanarak Data Lake Storage 1. çalışmak için üç modül yüklemeniz gerekir.
+Python kullanarak Veri Gölü Depolama Gen1 ile çalışmak için üç modül yüklemeniz gerekir.
 
 * `azure-mgmt-resource` modülü, Active Directory gibi şeyler için Azure modüllerini içerir.
-* Azure Data Lake Storage 1. hesap yönetimi işlemlerini içeren `azure-mgmt-datalake-store` modülü. Bu modülle ilgili daha fazla bilgi için bkz. [Azure Data Lake Storage 1. Management Module Reference](/python/api/azure-mgmt-datalake-store/).
-* Azure Data Lake Storage 1. dosya sistemi işlemlerini içeren `azure-datalake-store` modülü. Bu modülle ilgili daha fazla bilgi için bkz. [Azure-datalake-Store FileSystem Module Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* Azure `azure-mgmt-datalake-store` Veri Gölü Depolama Gen1 hesap yönetimi işlemlerini içeren modül. Bu modül hakkında daha fazla bilgi için [Azure Veri Gölü Depolama Gen1 Yönetimi modülü başvurusuna](/python/api/azure-mgmt-datalake-store/)bakın.
+* Azure `azure-datalake-store` Veri Gölü Depolama Gen1 dosya sistemi işlemlerini içeren modül. Bu modül hakkında daha fazla bilgi için [azure-datalake-store Filesystem modülü başvurusuna](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)bakın.
 
 Modülleri yüklemek için aşağıdaki komutları kullanın.
 
@@ -60,7 +60,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>Yeni Python uygulaması oluşturma
 
-1. Tercih ettiğiniz IDE 'de, yeni bir Python uygulaması oluşturun, örneğin, **Mysample.py**.
+1. Seçtiğiniz IDE'de, **örneğin, mysample.py**yeni bir Python uygulaması oluşturun.
 
 2. Gerekli modülleri içeri aktarmak için aşağıdaki kod parçacığını ekleyin
 
@@ -86,11 +86,11 @@ pip install azure-datalake-store
 
 3. Değişiklikleri örneğim.py uygulamasına kaydedin.
 
-## <a name="end-user-authentication-with-multi-factor-authentication"></a>Multi-Factor Authentication ile son kullanıcı kimlik doğrulaması
+## <a name="end-user-authentication-with-multi-factor-authentication"></a>Çok faktörlü kimlik doğrulama ile son kullanıcı kimlik doğrulaması
 
 ### <a name="for-account-management"></a>Hesap yönetimi için
 
-Data Lake Storage 1. hesapta hesap yönetimi işlemleri için Azure AD 'de kimlik doğrulaması yapmak üzere aşağıdaki kod parçacığını kullanın. Aşağıdaki kod parçacığını uygulamanızda multi-factor authentication ile kimlik doğrulaması gerçekleştirmek için kullanabilirsiniz. Mevcut bir Azure AD **Yerel** uygulaması için aşağıdaki değerleri girin.
+Veri Gölü Depolama Gen1 hesabındahesap yönetimi işlemleri için Azure AD ile kimlik doğrulaması yapmak için aşağıdaki snippet'i kullanın. Aşağıdaki kod parçacığını uygulamanızda multi-factor authentication ile kimlik doğrulaması gerçekleştirmek için kullanabilirsiniz. Varolan bir Azure AD **yerel** uygulaması için aşağıdaki değerleri sağlayın.
 
     authority_host_url = "https://login.microsoftonline.com"
     tenant = "FILL-IN-HERE"
@@ -107,17 +107,17 @@ Data Lake Storage 1. hesapta hesap yönetimi işlemleri için Azure AD 'de kimli
 
 ### <a name="for-filesystem-operations"></a>Dosya sistemi işlemleri için
 
-Data Lake Storage 1. bir hesapta dosya sistemi işlemleri için Azure AD 'de kimlik doğrulaması yapmak üzere bunu kullanın. Aşağıdaki kod parçacığını uygulamanızda multi-factor authentication ile kimlik doğrulaması gerçekleştirmek için kullanabilirsiniz. Mevcut bir Azure AD **Yerel** uygulaması için aşağıdaki değerleri girin.
+Veri Gölü Depolama Gen1 hesabındaki dosya sistemi işlemleri için Azure AD ile kimlik doğrulaması yapmak için bunu kullanın. Aşağıdaki kod parçacığını uygulamanızda multi-factor authentication ile kimlik doğrulaması gerçekleştirmek için kullanabilirsiniz. Varolan bir Azure AD **yerel** uygulaması için aşağıdaki değerleri sağlayın.
 
     adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
 
-## <a name="end-user-authentication-without-multi-factor-authentication"></a>Multi-Factor Authentication olmadan son kullanıcı kimlik doğrulaması
+## <a name="end-user-authentication-without-multi-factor-authentication"></a>Çok faktörlü kimlik doğrulamaolmadan son kullanıcı kimlik doğrulaması
 
-Bu kullanım dışıdır. Daha fazla bilgi için bkz. [Python SDK kullanarak Azure kimlik doğrulaması](/azure/python/python-sdk-azure-authenticate).
+Bu amortismana lı. Daha fazla bilgi için [Python SDK'yı kullanarak Azure Kimlik Doğrulaması'na](/azure/python/python-sdk-azure-authenticate)bakın.
    
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Python kullanarak Azure Data Lake Storage 1. kimlik doğrulaması yapmak için son kullanıcı kimlik doğrulamasını nasıl kullanacağınızı öğrendiniz. Artık Azure Data Lake Storage 1. ile çalışmak için Python kullanma hakkında konuşabilecek aşağıdaki makalelere bakabilirsiniz.
+Bu makalede, Python kullanarak Azure Veri Gölü Depolama Gen1 ile kimlik doğrulaması yapmak için son kullanıcı kimlik doğrulamasını nasıl kullanacağınızı öğrendiniz. Artık Azure Veri Gölü Depolama Gen1 ile çalışmak için Python'un nasıl kullanılacağı hakkında aşağıdaki makalelere bakabilirsiniz.
 
-* [Python kullanarak Data Lake Storage 1. hesap yönetimi işlemleri](data-lake-store-get-started-python.md)
-* [Python kullanarak Data Lake Storage 1. veri işlemleri](data-lake-store-data-operations-python.md)
+* [Python kullanarak Veri Gölü Depolama Gen1 hesap yönetimi işlemleri](data-lake-store-get-started-python.md)
+* [Python kullanarak Veri Gölü Depolama Gen1 veri işlemleri](data-lake-store-data-operations-python.md)
 

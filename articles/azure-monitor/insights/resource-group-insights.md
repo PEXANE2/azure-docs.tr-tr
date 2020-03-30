@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici kaynak grubu öngörüleri | Microsoft Docs
-description: Azure Izleyici ile kaynak grubu düzeyinde dağıtılmış uygulamalarınızın ve hizmetlerinizin sistem durumunu ve performansını anlayın
+title: Azure Monitör Kaynak Grubu Öngörüleri | Microsoft Dokümanlar
+description: Azure Monitor ile Kaynak Grubu düzeyinde dağıtılmış uygulamalarınızın ve hizmetlerinizin sistem durumunu ve performansını anlama
 ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
@@ -8,115 +8,115 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663547"
 ---
-# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Izleyici ile kaynak gruplarını izleme (Önizleme)
+# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor ile kaynak gruplarını izleme (önizleme)
 
-Modern uygulamalar genellikle karmaşık ve yüksek oranda bir hizmet sunmak için birlikte çalışan çok sayıda ayrı bölümden dağıtılır. Bu karmaşıklığı tanıma, Azure Izleyici, kaynak grupları için izleme öngörüleri sağlar. Bu, bireysel kaynaklarınızın karşılaştığı tüm sorunları önceliklendirmenizi ve tanılamayı kolaylaştırır ve kaynak grubunun sistem durumu ve performansına&mdash;ve uygulamanızın bir bütün olarak&mdash;.
+Modern uygulamalar genellikle karmaşık tır ve bir hizmeti sunmak için birlikte çalışan birçok ayrı kısık parçayla son derece dağıtılır. Bu karmaşıklığı tanıyan Azure Monitor, kaynak grupları için izleme öngörüleri sağlar. Bu, kaynak grubunun&mdash;ve uygulamanızın&mdash;bir bütün olarak sağlık durumu ve performansı yla ilgili bağlam sunarken, bireysel kaynaklarınızın karşılaştığı sorunları değerlendirmeyi ve tanılamayı kolaylaştırır.
 
-## <a name="access-insights-for-resource-groups"></a>Kaynak grupları için Öngörüler 'e erişin
+## <a name="access-insights-for-resource-groups"></a>Kaynak grupları için öngörülere erişin
 
-1. Sol taraftaki Gezinti çubuğundan **kaynak grupları** ' nı seçin.
-2. Araştırmak istediğiniz kaynak gruplarınızdan birini seçin. (Aboneliğe göre filtrelemeye göre çok sayıda kaynak grubunuz varsa bazen yararlı olabilir.)
-3. Bir kaynak grubuna yönelik Öngörüler 'e erişmek için herhangi bir kaynak grubunun sol taraftaki menüsünde **Öngörüler** ' e tıklayın.
+1. Sol taraftaki gezinti çubuğundan **Kaynak grupları** seçin.
+2. Keşfetmek istediğiniz kaynak gruplarından birini seçin. (Abonelişe göre filtreleme sağlayan çok sayıda kaynak grubunuz varsa bazen yararlı olabilir.)
+3. Bir kaynak grubunun istatistiklerine erişmek için, herhangi bir kaynak grubunun sol tarafındaki menüde **Öngörüler'i** tıklatın.
 
-![Kaynak grubu öngörülerine Genel Bakış sayfasının ekran görüntüsü](./media/resource-group-insights/0001-overview.png)
+![Kaynak grubu öngörülerine genel bakış sayfasının ekran görüntüsü](./media/resource-group-insights/0001-overview.png)
 
-## <a name="resources-with-active-alerts-and-health-issues"></a>Etkin uyarıları ve sistem durumu sorunlarını içeren kaynaklar
+## <a name="resources-with-active-alerts-and-health-issues"></a>Etkin uyarılar ve sistem durumu sorunları olan kaynaklar
 
-Genel Bakış sayfası, kaç uyarının tetiklendiğinin ve hala etkin olduğunu, her kaynağın geçerli Azure Kaynak Durumu gösterir. Bu bilgiler birlikte, sorun yaşayan kaynakları hızlıca belirlemenize yardımcı olabilir. Uyarılar kodunuzdaki sorunları ve altyapınızı nasıl yapılandırdığınızı tespit etmenize yardımcı olur. Tek tek uygulamalarınıza özgü olmayan Azure platformu ile yüzey sorunu Azure Kaynak Durumu.
+Genel bakış sayfası, her kaynağın geçerli Azure Kaynak Durumu ile birlikte kaç uyarının ateşlendiğini ve hala etkin olduğunu gösterir. Birlikte, bu bilgiler sorunlarla karşılaşan kaynakları hızla noktalamanıza yardımcı olabilir. Uyarılar, kodunuzdaki sorunları ve altyapınızı nasıl yapılandırdığınızı algılamanıza yardımcı olur. Azure Kaynak Durumu yüzeyleri, bireysel uygulamalarınıza özgü olmayan Azure platformunun kendisiyle ilgili bir sorundur.
 
 ![Azure Kaynak Durumu bölmesinin ekran görüntüsü](./media/resource-group-insights/0002-overview.png)
 
 ### <a name="azure-resource-health"></a>Azure Kaynak Durumu
 
-Azure Kaynak Durumu görüntülemek için tablonun üzerindeki **Azure Kaynak durumu göster** kutusunu işaretleyin. Bu sütun, sayfanın hızlı yüklenmesine yardımcı olmak için varsayılan olarak gizlidir.
+Azure Kaynak Durumu'nu görüntülemek için tablonun üstündeki **Azure Kaynak Durumu Göster** kutusunu işaretleyin. Bu sütun, sayfanın hızlı bir şekilde yüklenmesine yardımcı olmak için varsayılan olarak gizlenir.
 
-![Kaynak sistem durumu grafı eklenmiş ekran görüntüsü](./media/resource-group-insights/0003-overview.png)
+![Kaynak durumu grafiği eklendi](./media/resource-group-insights/0003-overview.png)
 
-Varsayılan olarak, kaynaklar uygulama katmanına ve kaynak türüne göre gruplandırılır. **Uygulama katmanı** , kaynak türlerinin yalnızca kaynak grubu öngörüleri Genel Bakış sayfasının bağlamı içinde bulunan basit bir kategorileştirildi. Uygulama kodu, işlem altyapısı, ağ, depolama + veritabanları ile ilgili kaynak türleri vardır. Yönetim Araçları kendi uygulama katmanlarını alır ve diğer her kaynak **diğer** uygulama katmanına ait olarak kategorize edilir. Bu gruplandırma, uygulamanızın hangi alt sistemlerinin sağlıklı ve sağlıksız olduğunu görmenize yardımcı olabilir.
+Varsayılan olarak, kaynaklar uygulama katmanına ve kaynak türüne göre gruplandırılır. **Uygulama katmanı,** kaynak türlerinin yalnızca kaynak grubu öngörüleri genel bakış sayfası bağlamında bulunan basit bir kategorilendirmesidir. Uygulama kodu, bilgi işlem altyapısı, ağ oluşturma, depolama + veritabanları ile ilgili kaynak türleri vardır. Yönetim araçları kendi uygulama katmanlarını alır ve diğer tüm kaynaklar **Diğer** uygulama katmanına ait olarak sınıflandırılır. Bu gruplandırma, uygulamanızın hangi alt sistemlerinin sağlıklı ve sağlıksız olduğunu bir bakışta görmenize yardımcı olabilir.
 
-## <a name="diagnose-issues-in-your-resource-group"></a>Kaynak grubunuzda sorunları tanılayın
+## <a name="diagnose-issues-in-your-resource-group"></a>Kaynak grubunuzdaki sorunları tanılama
 
-Kaynak grubu öngörüleri sayfası, sorunları tanılamanıza yardımcı olacak çeşitli diğer araçlar sağlar
+Kaynak grubu öngörüleri sayfası, sorunları tanılamanıza yardımcı olacak kapsama birkaç başka araç sağlar
 
    |         |          |
    | ---------------- |:-----|
-   | [**Larınız**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Uyarılarınızı görüntüleyin, oluşturun ve yönetin. |
-   | [**Ölçümler**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Ölçüm tabanlı verilerinizi görselleştirin ve araştırın.    |
-   | [**Etkinlik günlükleri**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Azure 'da oluşan abonelik düzeyindeki olaylar.  |
-   | [**Uygulama eşlemesi**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Performans sorunlarını veya hata etkin noktalarını belirlemek için dağıtılmış uygulamanızın topolojisine gidin. |
+   | [**Uyarılar**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Uyarılarınızı görüntüleyin, oluşturun ve yönetin. |
+   | [**Ölçümler**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Metrik tabanlı verilerinizi görselleştirin ve keşfedin.    |
+   | [**Etkinlik günlükleri**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Azure'da gerçekleşen abonelik düzeyi olayları.  |
+   | [**Uygulama haritası**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Performans darboğazlarını veya başarısız etkin noktalarını belirlemek için dağıtılmış uygulamanızın topolojisine gidin. |
 
-## <a name="failures-and-performance"></a>Başarısızlıklar ve performans
+## <a name="failures-and-performance"></a>Hatalar ve performans
 
-Uygulamanızın yavaş çalıştığını fark etmişseniz veya kullanıcılar hata bildirdiyseniz ne olur? Sorunları yalıtmak için tüm kaynaklarınızın içinde arama yapmak zaman alır.
+Uygulamanızın yavaş çalıştığını veya kullanıcıların hata bildirdiğini fark ettiyseniz ne olur? Sorunları yalıtmak için tüm kaynaklarınızı aramak zaman alır.
 
-**Performans** ve **hatalar** sekmeleri, birçok ortak kaynak türü için performans ve başarısızlık tanılama görünümlerini bir araya getirerek bu işlemi basitleştirir.
+**Performans** ve **Hatalar** sekmeleri, birçok yaygın kaynak türü için performans ve hata tanılama görünümlerini bir araya getirerek bu işlemi basitleştirir.
 
-Çoğu kaynak türü, Azure Izleyici çalışma kitabı şablonlarının bir galerisini açar. Oluşturduğunuz her çalışma kitabı özelleştirilebilir, kaydedilebilir, takımınızla paylaşılabilir ve ileride benzer sorunları tanılamak için yeniden kullanılabilir.
+Çoğu kaynak türü, Azure Monitörçalışma Kitabı şablonlarından oluşan bir galeri açar. Oluşturduğunuz her çalışma kitabı özelleştirilebilir, kaydedilebilir, ekibinizle paylaşılabilir ve gelecekte benzer sorunları tanılamak için yeniden kullanılabilir.
 
-### <a name="investigate-failures"></a>Sorunları araştırın
+### <a name="investigate-failures"></a>Hataları araştırma
 
-Arızalar sekmesini sınamak için sol taraftaki menüde **Araştır** ' ın altındaki **başarısızlık** ' ı seçin.
+Hatalar sekmesini test etmek için sol menüde **Araştır** altında **Hatalar'ı** seçin.
 
-Seçiminiz yapıldıktan sonra, sol taraftaki menü çubuğu değişir ve size yeni seçenekler sunar.
+Seçiminiz yapıldıktan sonra sol taraftaki menü çubuğu değişir ve size yeni seçenekler sunar.
 
-![Hata genel bakış bölmesinin ekran görüntüsü](./media/resource-group-insights/00004-failures.png)
+![Hata genel bakış bölmesi ekran görüntüsü](./media/resource-group-insights/00004-failures.png)
 
-App Service seçildiğinde, Azure Izleyici çalışma kitabı şablonlarının bir galerisiyle karşılaşırsınız.
+Uygulama Hizmeti seçildiğinde, azure monitör çalışma kitabı şablonlarından oluşan bir galeri sunulur.
 
 ![Uygulama çalışma kitabı galerisinin ekran görüntüsü](./media/resource-group-insights/0005-failure-insights-workbook.png)
 
-Hata öngörüleri şablonunu seçmek çalışma kitabını açar.
+Failure Insights şablonu seçimi çalışma kitabını açar.
 
 ![Hata raporunun ekran görüntüsü](./media/resource-group-insights/0006-failure-visual.png)
 
-Satırlardan herhangi birini seçebilirsiniz. Seçim daha sonra bir grafik Ayrıntıları görünümünde görüntülenir.
+Satırlardan herhangi birini seçebilirsiniz. Seçim daha sonra grafik ayrıntıları görünümünde görüntülenir.
 
 ![Hata ayrıntılarının ekran görüntüsü](./media/resource-group-insights/0007-failure-details.png)
 
-Çalışma kitapları, özel raporlar ve görselleştirmeler oluşturmanın kolayca tüketilebilir bir biçimde soyutlaştırılması zor çalışmalardır. Bazı kullanıcılar yalnızca önceden oluşturulmuş parametreleri ayarlamak isteyebilir, ancak çalışma kitapları tamamen özelleştirilebilir.
+Çalışma kitapları, özel raporlar ve görselleştirmeler oluşturmanın zor çalışmalarını kolayca tüketilebilir bir biçimde özetler. Bazı kullanıcılar yalnızca önceden oluşturulmuş parametreleri ayarlamak istese de, çalışma kitapları tamamen özelleştirilebilir.
 
-Bu çalışma kitabının dahili olarak nasıl çalıştığını öğrenmek için üstteki çubukta **Düzenle** ' yi seçin.
+Bu çalışma kitabının dahili olarak nasıl çalıştığını anlamak için üst çubuktaki **Edit'i** seçin.
 
-![Ek düzenleme seçeneğinin ekran görüntüsü](./media/resource-group-insights/0008-failure-edit.png)
+![Ek edit seçeneğinin ekran görüntüsü](./media/resource-group-insights/0008-failure-edit.png)
 
-Çalışma kitabının çeşitli öğelerinin yakınında bir dizi **düzenleme** kutusu görünür. İşlem tablosunun altındaki **düzenleme** kutusunu seçin.
+Çalışma kitabının çeşitli öğelerinin yakınında bir dizi **Edit** kutusu görünür. İşlemler tablosunun altındaki **Edit** kutusunu seçin.
 
-![Düzenleme kutularının ekran görüntüsü](./media/resource-group-insights/0009-failure-edit-graph.png)
+![Kutularını edit ekran görüntüsü](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-Bu, tablo görselleştirmesini yönlendiren temel alınan günlük sorgusunu ortaya koyar.
+Bu, tablo görselleştirme sürüş altında yatan günlük sorgusu ortaya çıkarır.
 
- ![Günlük sorgusu penceresinin ekran görüntüsü](./media/resource-group-insights/0010-failure-edit-query.png)
+ ![Günlük sorgu penceresinin ekran görüntüsü](./media/resource-group-insights/0010-failure-edit-query.png)
 
-Sorguyu doğrudan değiştirebilirsiniz. Ya da bunu bir başvuru olarak kullanabilir ve kendi özel parametreli çalışma kitabınızı tasarlarken bu kaynaktan ödünç alabilirsiniz.
+Sorguyu doğrudan değiştirebilirsiniz. Ya da bir referans olarak kullanabilirsiniz ve kendi özel parametreli çalışma kitabı tasarlarken ondan ödünç.
 
-### <a name="investigate-performance"></a>Performansı araştır
+### <a name="investigate-performance"></a>Performansı araştırma
 
-Performans kendi çalışma kitabı galerisini sunar. App Service önceden oluşturulmuş uygulama performansı çalışma kitabı aşağıdaki görünümü sunmaktadır:
+Performans, kendi çalışma kitapları galerisini sunar. Uygulama Hizmeti için önceden oluşturulmuş Uygulama Performansı çalışma kitabı aşağıdaki görünümü sunar:
 
  ![Performans görünümünün ekran görüntüsü](./media/resource-group-insights/0011-performance.png)
 
-Bu durumda, Düzenle ' yi seçerseniz bu görselleştirme kümesinin Azure Izleyici ölçümleri tarafından gücünün olduğunu görürsünüz.
+Bu durumda, düzenlemeyi seçerseniz, bu görselleştirme kümesinin Azure Monitör Ölçümleri tarafından desteklendiğini görürsünüz.
 
- ![Azure ölçümleriyle performans görünümünün ekran görüntüsü](./media/resource-group-insights/0012-performance-metrics.png)
+ ![Azure Ölçümleri ile performans görünümünün ekran görüntüsü](./media/resource-group-insights/0012-performance-metrics.png)
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="enabling-access-to-alerts"></a>Uyarılara erişimi etkinleştirme
 
-Kaynak grupları için Azure Izleyici 'deki uyarıları görmek için, bu aboneliğin sahibi veya katkıda bulunan rolü olan birinin, abonelikteki herhangi bir kaynak grubuna ait kaynak grupları için Azure Izleyicisini açması gerekir. Bu, okuma erişimi olan herkesin, abonelikteki tüm kaynak grupları için kaynak grupları için Azure Izleyici 'deki uyarıları görmesini sağlar. Bir sahip veya katkıda bulunan rolüne sahipseniz, bu sayfayı birkaç dakika içinde yenileyin.
+Kaynak Grupları için Azure Monitor'daki uyarıları görmek için, bu abonelik için Sahip veya Katılımcı rolüne sahip bir kişinin abonelikteki herhangi bir kaynak grubu için Kaynak Grupları için Azure Monitörü açması gerekir. Bu, okuma erişimi olan herkesin abonelikteki tüm kaynak grupları için Kaynak Grupları için Azure Monitor'da uyarıları görmesini sağlar. Sahibi veya Katılımcı rolünüz varsa, bu sayfayı birkaç dakika içinde yenileyin.
 
-Kaynak grupları için Azure Izleyici, uyarı durumunu almak için Azure Izleyici uyarıları yönetim sistemine bağımlıdır. Her kaynak grubu ve abonelik için varsayılan olarak uyarı yönetimi yapılandırılmamıştır ve yalnızca sahip veya katkıda bulunan rolü olan birisi tarafından etkinleştirilebilir. Bu, şu şekilde etkinleştirilebilir:
-* Abonelikteki herhangi bir kaynak grubu için kaynak grupları için Azure Izleyici açılıyor.
-* Ya da aboneliğe gidip **kaynak sağlayıcıları**' na tıklayıp **Uyarılar Için kaydol. Yönetim**' e tıklayın.
+Kaynak Grupları için Azure Monitörü, uyarı durumunu almak için Azure Monitor Uyarıları Yönetimi sistemine güvenir. Uyarılar Yönetimi varsayılan olarak her kaynak grubu ve abonelik için yapılandırılmamıştır ve yalnızca Sahibi veya Katılımcı rolü olan biri tarafından etkinleştirilebilir. Aşağıdakiler tarafından etkinleştirilebilir:
+* Abonelikteki herhangi bir kaynak grubu için Kaynak Grupları için Azure Monitörü açma.
+* Veya aboneye giderek, **Kaynak Sağlayıcıları**tıklayarak, ardından **Alerts.Management için Kaydol'u**tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Izleyici çalışma kitapları](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure Monitör Çalışma Kitapları](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 - [Azure Kaynak Durumu](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Izleyici uyarıları](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Monitör Uyarıları](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

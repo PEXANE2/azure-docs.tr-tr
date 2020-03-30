@@ -1,37 +1,37 @@
 ---
-title: Bir Service Fabric kümesini içinde veya dışarı ölçeklendirin
-description: Her düğüm türü/sanal makine ölçek kümesi için otomatik ölçek kuralları ayarlayarak, talebe eşleştirmek için bir Service Fabric kümesini içinde veya dışarı ölçeklendirin. Bir Service Fabric küme düğümleri ekleyebilir veya kaldırabilirsiniz
+title: Service Fabric kümesini içinde veya dışında ölçeklendirin
+description: Her düğüm türü/sanal makine ölçeği kümesi için otomatik ölçek kuralları ayarlayarak talebi eşleşecek şekilde Hizmet Kumaşı kümesini ölçeklendirin. Service Fabric kümesine düğüm ekleme veya kaldırma
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258739"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Bir kümenin ölçeğini daraltma veya genişletme
 
 > [!WARNING]
-> Ölçeklendirmeye başlamadan önce bu bölümü okuyun
+> Ölçeklendirmeden önce bu bölümü okuyun
 
-İşlem kaynaklarını kaynak olarak ölçeklendirme uygulama iş yükünüz kasıtlı olarak planlanmasını gerektirir, neredeyse her zaman bir üretim ortamında tamamlanması için bir saatten daha uzun sürer ve iş yükünüzü ve iş bağlamını anlamanız gerekir; Aslında bu etkinliği daha önce yapmadıysanız, bu belgenin geri kalanına devam etmeden önce [Service Fabric küme kapasitesi planlama konularını](service-fabric-cluster-capacity.md)okuyup öğrenerek başlamanız önerilir. Bu istenmeyen LiveSite sorunlarını önlemek için önerilir ve ayrıca bir üretim dışı ortamda karşı gerçekleştirmeye karar işlemleri başarıyla test önerilir. Dilediğiniz zaman, [üretim sorunlarını rapor edebilir veya Azure için ücretli destek isteyebilirsiniz](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure). Mühendislerin yeterli bağlama sahip bu işlemleri gerçekleştirmek için ayrılan, bu makalede ölçeklendirme işlemleri açıklanmaktadır, ancak karar verin ve işlemleri, kullanım örneği için uygun olduğunu anlamak; hangi kaynakları ölçeklendirme (CPU, depolama, bellek) gibi hangi yönü (yatay veya dikey olarak) ölçeklendirmek için ve hangi işlemleri (kaynak şablonu dağıtımı, Portal, PowerShell/CLI) gerçekleştirin.
+Uygulama iş yükünü kaynak kaynak hesaplama küçşenmesi kasıtlı planlama gerektirir, neredeyse her zaman bir üretim ortamı için tamamlamak için bir saatten daha uzun sürer ve iş yükü ve iş bağlamını anlamak gerektirir; aslında bu etkinliği daha önce hiç yapmadıysanız, bu belgenin geri kalan kısmını devam etmeden önce [Service Fabric küme kapasite planlama hususlarını](service-fabric-cluster-capacity.md)okuyup anlamanız önerilir. Bu öneri, istenmeyen LiveSite sorunlarını önlemek içindir ve ayrıca gerçekleştirmeye karar verdiğiniz işlemleri üretim dışı bir ortama karşı başarıyla test etmeniz önerilir. İstediğiniz zaman [üretim sorunlarını bildirebilir veya Azure için ücretli destek isteyebilirsiniz.](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure) Uygun içeriğe sahip bu işlemleri gerçekleştirmek üzere ayrılan mühendisler için, bu makalede ölçekleme işlemleri açıklanır, ancak hangi işlemlerin kullanım durumunuz için uygun olduğuna karar vermeniz ve anlamanız gerekir; ölçeklendirecek kaynaklar (CPU, Depolama, Bellek), ölçeklendirecek hangi yön (Dikey veya Yatay) ve hangi işlemlerin gerçekleştirilmesi (Kaynak Şablonu dağıtımı, Portal, PowerShell/CLI) gibi.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Bir Service Fabric kümesini otomatik ölçeklendirme kurallarını kullanarak içe veya dışa ölçeklendirme veya el ile
-Sanal makine ölçek kümeleri, dağıtmak ve sanal makine koleksiyonunu bir küme olarak yönetmek için kullanabileceğiniz bir Azure işlem kaynağıdır. Bir Service Fabric kümesinde tanımlanan her düğüm türü ayrı bir sanal makine ölçek kümesi ayarlanır. Her düğüm türü, ölçeklendirilebilir veya out bağımsız olarak, farklı bağlantı noktası kümeleri açık olan ve farklı kapasite ölçümleri yapılabilir. [Service Fabric node Types](service-fabric-cluster-nodetypes.md) belgesinde bunun hakkında daha fazla bilgi edinin. Kümenizdeki Service Fabric düğüm türleri arka uçta sanal makine ölçek kümeleri yapıldığından, her düğüm türü/sanal makine ölçek kümesi için otomatik ölçek kuralları ayarlamanız gerekir.
+## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Bir Service Fabric kümesini otomatik ölçek kurallarını kullanarak veya el ile ölçeklendirin
+Sanal makine ölçek kümeleri, sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullanabileceğiniz bir Azure bilgi işlem kaynağıdır. Hizmet Kumaşı kümesinde tanımlanan her düğüm türü ayrı bir sanal makine ölçeği kümesi olarak ayarlanır. Her düğüm türü daha sonra bağımsız olarak ölçeklenebilir veya dışarı çıkarılabilir, farklı bağlantı noktaları kümeleri açık olabilir ve farklı kapasite ölçütlerine sahip olabilir. Service Fabric düğüm [türleri](service-fabric-cluster-nodetypes.md) belgesinde bu konuda daha fazla bilgi edinin. Kümenizdeki Servis Kumaş düğüm türleri arka uçtaki sanal makine ölçeği kümelerinden yapıldığından, her düğüm türü/sanal makine ölçeği kümesi için otomatik ölçek kuralları ayarlamanız gerekir.
 
 > [!NOTE]
-> Bu kümeyi oluşturan yeni Vm'leri eklemek için yeterli çekirdek aboneliğinizin olması gerekir. Model doğrulama yoktur şu anda, herhangi bir kota sınırları ulaşırsanız dağıtım zamanı hatası alabilmeniz. Ayrıca tek bir düğüm türü VMSS başına 100 düğüm yalnızca aşamaz. VMSS kullanıcının hedeflenen ölçeğe ulaşmak için ve otomatik ölçeklendirme başlatamaz eklemeniz gerekebilir automagically VMSS'ın ekleyin. VMSS 'leri canlı bir kümeye yerinde eklemek zorlu bir görevdir ve bu durum genellikle, kullanıcıların oluşturma zamanında sağlanan uygun düğüm türleriyle yeni kümeler sağlaması ile sonuçlanır; [küme kapasitesini](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) uygun şekilde planlayın. 
+> Aboneliğiniz, bu kümeyi oluşturan yeni VM'leri eklemek için yeterli çekiye sahip olmalıdır. Şu anda model doğrulaması yoktur, bu nedenle kota sınırlarından herhangi biri vurulursa dağıtım süresi hatası alırsınız. Ayrıca tek bir düğüm türü sadece VMSS başına 100 düğüm geçemez. Hedeflenen ölçek elde etmek için VMSS eklemeniz gerekebilir ve otomatik ölçeklendirme Otomatik olarak VMSS's ekleyebilir. VMSS'nin yerinde canlı kümeye eklenmesi zor bir görevdir ve genellikle bu, kullanıcıların oluşturma zamanında sağlanan uygun düğüm türleri ile yeni kümeler sağlamasıyla sonuçlanır; buna göre [küme kapasitesini planlayın.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) 
 > 
 > 
 
-## <a name="choose-the-node-typevirtual-machine-scale-set-to-scale"></a>Düğüm türü/sanal makine ölçek kümesi ölçeği seçin
-Şu anda, portalı kullanarak bir Service Fabric kümesi oluşturma, bize bu nedenle düğüm türlerini listelemek ve bunlara otomatik ölçeklendirme kurallarını eklemek için Azure PowerShell (1.0 +) kullanmak için sanal makine ölçek kümeleri için otomatik ölçeklendirme kurallarını belirtmek mümkün değildir.
+## <a name="choose-the-node-typevirtual-machine-scale-set-to-scale"></a>Ölçeklendirilecek düğüm türünü/Sanal Makine ölçeğini seçin
+Şu anda, Bir Hizmet Kumaş Kümesi oluşturmak için portalı kullanarak sanal makine ölçeği kümeleri için otomatik ölçek kurallarını belirtemediğinizde, düğüm türlerini listelemek ve sonra bunlara otomatik ölçek kuralları eklemek için Azure PowerShell'i (1,0+) kullanmamıza izin verin.
 
-Kümeyi oluşturan sanal makine ölçek kümesi listesini almak için aşağıdaki cmdlet'leri çalıştırın:
+Kümenizi oluşturan sanal makine ölçeği kümesinin listesini almak için aşağıdaki cmdlets'i çalıştırın:
 
 ```powershell
 Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
@@ -39,35 +39,35 @@ Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/Virtu
 Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
 ```
 
-## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Düğüm türü/sanal makine ölçek kümesi için otomatik ölçek kuralları ayarla
-Kümenizin birden çok düğüm türü varsa, ölçeğini ölçeklendirmek istediğiniz her düğüm türü/sanal makine ölçek kümesi (ın veya out) için yineleyin. Otomatik ölçeklendirmeyi ayarlamadan önce sahip olmanız gereken düğüm sayısını dikkate alın. Birincil düğüm türü için gereken düğüm sayısı alt sınırı seçmiş olduğunuz güvenilirlik düzeyi tarafından yönetilir. [Güvenilirlik düzeyleri](service-fabric-cluster-capacity.md)hakkında daha fazla bilgi edinin.
+## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Düğüm türü/sanal makine ölçeği kümesi için otomatik ölçek kuralları ayarlama
+Kümenizde birden çok düğüm türü varsa, ölçeklendirmek istediğiniz her düğüm türü/sanal makine ölçeği kümeleri (içinde veya dışında) için bunu yineleyin. Otomatik ölçeklendirmeyi ayarlamadan önce sahip olmanız gereken düğüm sayısını dikkate alın. Birincil düğüm türü için gereken düğüm sayısı alt sınırı seçmiş olduğunuz güvenilirlik düzeyi tarafından yönetilir. [Güvenilirlik düzeyleri](service-fabric-cluster-capacity.md)hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
-> Birincil düğüm ölçeklendirme değerinden daha düşük sayı yap kararsız küme yazın veya taşıyın. Bu, sistem hizmetleri ve uygulamalarınız için veri kaybına neden olabilir.
+> Birincil düğüm türünü en küçük sayıdan daha aza ölçeklemek kümeyi kararsız hale getirir veya aşağı indirir. Bu, uygulamalarınız ve sistem hizmetleri için veri kaybına neden olabilir.
 > 
 > 
 
-Şu anda otomatik ölçeklendirme özelliği için Service Fabric uygulamalarınızı raporlama yükleri tarafından yönlendirilen değil. Bu nedenle şu anda size otomatik ölçeklendirme tamamen tarafından yayılan her sanal makinenin performans sayaçlarını kullanan ölçek kümesi örnekleri.  
+Şu anda otomatik ölçek özelliği, uygulamalarınızın Service Fabric'e bildirdiği yükler tarafından yönlendirilmez. Yani şu anda aldığınız otomatik ölçek, sanal makine ölçeği kümesi örneklerinin her biri tarafından yayılan performans sayaçları tarafından yönlendirilir.  
 
-[Her bir sanal makine ölçek kümesi için otomatik ölçeklendirmeyi ayarlamak için](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)bu yönergeleri izleyin.
+[Her sanal makine ölçeği kümesi için otomatik ölçek ayarlamak için](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)bu yönergeleri izleyin.
 
 > [!NOTE]
-> Ölçek azaltma senaryosunda, düğüm türü bir Gold veya gümüş [dayanıklılık düzeyine][durability] sahip olmadığı takdirde, [Remove-ServiceFabricNodeState cmdlet 'ini](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) uygun düğüm adıyla çağırmanız gerekir. Bronz dayanıklılık için, aynı anda birden fazla düğümün ölçeğini azaltma önerilmez.
+> Bir ölçek küçültme senaryosunda, düğüm türünüz altın veya gümüş [dayanıklılık düzeyine][durability] sahip değilse, uygun düğüm adı ile [Remove-ServiceFabricNodeState cmdlet'i](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) aramanız gerekir. Bronz dayanıklılık için, aynı anda birden fazla düğümü küçültmek önerilmez.
 > 
 > 
 
-## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>VM 'Leri bir düğüm türüne/sanal makine ölçek kümesine el ile ekleme
+## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Düğüm türüne/sanal makine ölçeği kümesine vm'leri el ile ekleme
 
 Ölçeği genişlettiğinizde, ölçek kümesine daha fazla sanal makine örneği eklersiniz. Bu örnekler, Service Fabric tarafından kullanılan düğümler haline gelir. Service Fabric, ölçek kümesine ne zaman daha fazla örnek eklendiğini bilir (ölçek genişletilerek) ve otomatik olarak tepki verir. 
 
 > [!NOTE]
-> VM 'Lerin eklenmesi zaman alır, bu nedenle eklemeleri anlık olarak beklememeyi beklemez. Bu nedenle, çoğaltma/hizmet örnekleri için VM kapasitesini kullanabilmek üzere 10 dakikadan fazla süre önce kapasiteyi daha iyi bir şekilde eklemeyi planlayın.
+> VM'lerin eklenmesi zaman alır, bu nedenle eklemelerin anlık olmasını beklemeyin. Bu nedenle, vm kapasitesi, yinelemelerin/hizmet örneklerinin yerleştirilebilmesi için kullanılabilir hale gelmeden önce 10 dakikadan fazla bir süre için kapasite eklemeyi planlayın.
 > 
 
 ### <a name="add-vms-using-a-template"></a>Şablon kullanarak VM ekleme
-Her bir düğüm türündeki VM sayısını değiştirmek için [hızlı başlangıç şablonu galerisindeki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) örnek/yönergeleri izleyin. 
+Her düğüm türündeki VM sayısını değiştirmek için [quickstart şablon galerisindeki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) örnek/yönergeleri izleyin. 
 
-### <a name="add-vms-using-powershell-or-cli-commands"></a>PowerShell veya CLı komutlarını kullanarak VM ekleme
+### <a name="add-vms-using-powershell-or-cli-commands"></a>PowerShell veya CLI komutlarını kullanarak VM ekleme
 Aşağıdaki kod, ada göre bir ölçek kümesi alır ve ölçek kümesinin **kapasitesini** 1 artırır.
 
 ```powershell
@@ -87,16 +87,16 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 ```
 
-## <a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>VM 'Leri bir düğüm türünden/sanal makine ölçek kümesinden el ile kaldırma
-Düğüm türünde ölçeklendirirseniz, sanal makine örneklerini ölçek kümesinden kaldırırsınız. Düğüm türü dayanıklılık düzeyi ise, Service Fabric ne olduğunu farkında değildir ve bir düğümün kayıp olduğunu bildirir. Daha sonra Service Fabric, küme için kötü bir durum olduğunu bildirir. Bu hatalı durumu engellemek için, düğümü kümeden açıkça kaldırmanız ve düğüm durumunu kaldırmanız gerekir.
+## <a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>VM'leri düğüm türünden/sanal makine ölçeği kümesinden el ile kaldırma
+Düğüm türünde ölçeklendirildiğinde, VM örneklerini ölçek kümesinden kaldırırsınız. Düğüm türü Bronz dayanıklılık düzeyi ise, Servis Kumaşı ne olduğundan habersizdir ve düğümün kaybolduğunu bildirir. Daha sonra Service Fabric, küme için kötü bir durum olduğunu bildirir. Bu kötü durumu önlemek için düğümü kümeden açıkça kaldırmanız ve düğüm durumunu kaldırmanız gerekir.
 
-Service Fabric sistem hizmetleri kümenizdeki birincil düğüm türünde çalışır. Birincil düğüm türünü ölçeklendirirken, hiçbir zaman örnek sayısını [güvenilirlik katmanının](service-fabric-cluster-capacity.md) ne kadar düşük olduğuna göre ölçeklendirin. 
+Hizmet kumaş sistemi hizmetleri kümenizdeki birincil düğüm türünde çalışır. Birincil düğüm türünü ölçeklendirirken, hiçbir zaman örnek sayısını [güvenilirlik katmanının](service-fabric-cluster-capacity.md) gerektirdiğinden daha azına ölçeklendirmeyin. 
  
-Bir durum bilgisi olan hizmet için belirli bir sayıda olması her zaman en çok kullanılabilirliği sürdürmek ve hizmetinizi durumunu korumak için düğümleri gerekir. Çok az düğüm sayısını bölüm/hizmet hedef çoğaltma kümesi sayısı eşittir ihtiyacınız vardır.
+Devlet hizmeti için, kullanılabilirliğini korumak ve hizmetinizin durumunu korumak için her zaman belirli sayıda düğüme ihtiyacınız vardır. En azından, bölüm/hizmetin hedef yineleme kümesi sayısına eşit düğüm sayısına ihtiyacınız vardır.
 
 ### <a name="remove-the-service-fabric-node"></a>Service Fabric düğümünü kaldırma
 
-Düğüm durumunu el ile kaldırma adımları yalnızca *bronz* dayanıklılık katmanı olan düğüm türleri için geçerlidir.  *Gümüş* ve *altın* dayanıklılık katmanı için, bu adımlar platform tarafından otomatik olarak yapılır. Dayanıklılık hakkında daha fazla bilgi için bkz. [küme kapasitesi planlamasını Service Fabric][durability].
+Düğüm durumunu el ile kaldırma adımları yalnızca *Bronz* dayanıklılık katmanına sahip düğüm türleri için geçerlidir.  *Gümüş* ve *Altın* dayanıklılık katmanı için bu adımlar platform tarafından otomatik olarak yapılır. Dayanıklılık hakkında daha fazla bilgi için bkz. [Service Fabric küme kapasitesi planlaması][durability].
 
 Küme düğümlerini yükseltme ve hata etki alanlarına eşit olarak dağıtarak eşit bir şekilde kullanılmalarını sağlamak için önce en son oluşturulan düğümün kaldırılması gerekir. Başka bir deyişle düğümler, oluşturma sırasının tersine kaldırılmalıdır. En son oluşturulan düğüm, `virtual machine scale set InstanceId` özelliğinin değeri en yüksek olandır. Aşağıdaki kod örnekleri en son oluşturulan düğümü döndürür.
 
@@ -122,7 +122,7 @@ sfctl: `sfctl node transition --node-transition-type Stop`
 PowerShell: `Remove-ServiceFabricNodeState`  
 sfctl: `sfctl node remove-state`
 
-Bu üç adım düğüme uygulandıktan sonra ölçek kümesinden kaldırılabilir. [Bronz][durability]dışında herhangi bir dayanıklılık katmanı kullanıyorsanız, ölçek kümesi örneği kaldırıldığında bu adımlar sizin için yapılır.
+Bu üç adım düğüme uygulandıktan sonra ölçek kümesinden kaldırılabilir. [Bronz][durability]’un yanı sıra dayanıklılık katmanları kullanıyorsanız ölçek kümesi örneği kaldırıldığında bu adımlar sizin için uygulanır.
 
 Aşağıdaki kod bloğu, en son oluşturulan düğümü alır, düğümü devre dışı bırakır, durdurur ve kümeden kaldırır.
 
@@ -203,7 +203,7 @@ sfctl node remove-state --node-name _nt1vm_5
 > **Devre dışı bırakma durumunu denetleme**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
-> **Durdurma durumunu denetleme**
+> **Durdurma durumunu denetle**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
@@ -228,31 +228,31 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
-## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Service Fabric Explorer'ın davranışlarla karşılaşabilirsiniz
-Bir kümenin ölçeğini artırdığınızda, Service Fabric Explorer (sanal makine ölçek kümesi örnekleri) ve kümenin parçası olan düğüm sayısını yansıtır.  Ancak, bir kümeyi aşağı ölçeklendirdiğiniz zaman, [kaldırma-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) 'yi uygun düğüm adıyla çağırmadığınız müddetçe, kaldırılan düğümü/VM örneğini düzgün olmayan bir durumda görürsünüz.   
+## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Service Fabric Explorer'da gözlemlenebilecek davranışlar
+Bir kümeyi ölçeklendirdiğinizde, Hizmet Kumaş ı Gezgini kümenin bir parçası olan düğüm sayısını (sanal makine ölçeği kümesi örnekleri) yansıtır.  Ancak, bir kümeyi küçülttüyseniz, uygun düğüm adı ile [Remove-ServiceFabricNodeState cmd'yi](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) aramadığınız sürece, sağlıksız bir durumda görüntülenen kaldırılan düğüm/VM örneğini görürsünüz.   
 
-Bu davranış için açıklaması aşağıda verilmiştir.
+İşte bu davranışın açıklaması.
 
-Service Fabric Explorer'da listelenen bir yansıma Service Fabric sistem hizmetlerinin düğümlerdir (FM özellikle) kümesi vardı/sahip düğüm sayısını hakkında bilir. Sanal makine ölçek kümesini ölçeklendirme, sanal makine silinmiş, ancak FM sistem hizmeti hala gördüğü (silindikten sonra VM eşlendi) düğüme geri dönün. Bu nedenle Service Fabric Explorer (sistem durumu hata veya bilinmeyen olabilir, ancak) düğüm görüntülemeye devam eder.
+Service Fabric Explorer'da listelenen düğümler, Service Fabric sistem hizmetlerinin (özellikle FM) kümenin sahip olduğu/sahip olduğu düğüm sayısı hakkında ne bildiğini bir yansımasıdır. Sanal makine ölçeğini küçültttükten sonra VM silindi ancak FM sistem hizmeti yine de düğümün (silinen VM'ye eşlenen) geri geleceğini düşünüyor. Yani Hizmet Kumaş Explorer bu düğümü görüntülemeye devam ediyor (ancak sistem durumu hata veya bilinmiyor olabilir).
 
-Bir düğüm, bir VM kaldırıldığında kaldırıldığını emin olmak için iki seçeneğiniz vardır:
+VM kaldırıldığında düğümün kaldırıldığından emin olmak için iki seçeneğiniz var:
 
-1. Altyapı tümleştirmesinde size, kümedeki düğüm türleri için Silver veya Gold bir dayanıklılık düzeyi seçin. Ölçeği aşağı olduğunda, ardından otomatik olarak düğümleri bizim Sistem Hizmetleri (FM) durumundan kaldırır.
-[Dayanıklılık düzeylerinin ayrıntılarına](service-fabric-cluster-capacity.md) bakın
+1. Kümenizdeki düğüm türleri için altyapı tümleştirmesi sağlayan bir dayanıklılık düzeyi Altın veya Gümüş seçin. Bu da küçülttüldüğünde sistem hizmetlerimizden (FM) düğümleri otomatik olarak kaldırır.
+Burada [dayanıklılık düzeyleri ile ilgili ayrıntılara](service-fabric-cluster-capacity.md) bakın
 
-2. VM örneği azaltıldıktan sonra [Remove-ServiceFabricNodeState cmdlet 'ini](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)çağırmanız gerekir.
+2. VM örneği küçültüldükten sonra [Remove-ServiceFabricNodeState cmdlet'i](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)aramanız gerekir.
 
 > [!NOTE]
-> Service Fabric kümeleri yedekleme kullanılabilirliği sürdürmek ve durumu "çekirdek koruma olarak." başvurulan - korumak için her zaman olması için düğümleri belirli sayıda gerektirir Bu nedenle, ilk olarak [durumlarınızın tam yedeklemesini](service-fabric-reliable-services-backup-restore.md)gerçekleştirmediğiniz müddetçe kümedeki tüm makineleri kapatmak genellikle güvenli değildir.
+> Service Fabric kümeleri kullanılabilirliğini korumak ve durumu korumak için her zaman belirli sayıda düğümün dolmasını gerektirir - "yeterli çoğunluk sağlamak" olarak adlandırılır. Bu nedenle, [ilk durum tam](service-fabric-reliable-services-backup-restore.md)bir yedekleme gerçekleştirmedikçe kümedeki tüm makineleri kapatmak için genellikle güvenli değildir.
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Küme kapasitesini planlama, Küme yükseltme ve hizmetlerini bölümleme hakkında da bilgi için aşağıdakileri okuyun:
+Küme kapasitesini planlama, küme yükseltme ve hizmetleri bölümleme hakkında da bilgi edinmek için aşağıdakileri okuyun:
 
 * [Küme kapasitenizi planlayın](service-fabric-cluster-capacity.md)
 * [Küme yükseltmeleri](service-fabric-cluster-upgrade.md)
-* [Maksimum ölçek için durum bilgisi olan hizmetleri bölümle](service-fabric-concepts-partitioning.md)
+* [Maksimum ölçek için bölüm durumu hizmetleri](service-fabric-concepts-partitioning.md)
 
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png

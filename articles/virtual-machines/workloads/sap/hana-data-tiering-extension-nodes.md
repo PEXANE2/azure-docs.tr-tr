@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SAP HANA yönelik veri katmanlama ve genişletme düğümleri (büyük örnekler) | Microsoft Docs
-description: Azure 'da SAP HANA yönelik veri katmanlaması ve uzantı düğümleri (büyük örnekler).
+title: Azure'da SAP HANA için veri katmanlama ve uzantı düğümleri (Büyük Örnekler) | Microsoft Dokümanlar
+description: Azure'da SAP HANA için veri katmanlama ve uzantı düğümleri (Büyük Örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,25 +14,25 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617156"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA veri katmanlama ve uzantı düğümlerini kullanma
 
-SAP, farklı SAP NetWeaver sürümleri ve SAP BW/4HANA SAP BW için bir veri katmanlama modeli destekler. Veri katmanlama modeli hakkında daha fazla bilgi için bkz. SAP Document [SAP BW/4HANA ve SAP BW SAP HANA uzantı düğümleri Ile Hana](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
-HANA büyük örnekle, SSS ve SAP blog belgelerinde açıklandığı gibi SAP HANA uzantısı düğümlerinin seçenek-1 yapılandırmasını kullanabilirsiniz. 2\. seçenek, aşağıdaki HANA büyük örnek SKU 'Larında ayarlanabilir: S72m, S192, S192m, S384 ve S384m. 
+SAP, sap BW için farklı SAP NetWeaver sürümleri ve SAP BW/4HANA için bir veri katmanlama modelini destekler. Veri katmanlama modeli hakkında daha fazla bilgi için, [SAP HANA uzantılı HANA'daki SAP belge SAP BW/4HANA ve SAP BW'ye](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)bakın.
+HANA Büyük Örneği ile, SSS ve SAP blog belgelerinde açıklandığı gibi SAP HANA uzantılı düğümlerin seçenek-1 yapılandırmasını kullanabilirsiniz. S72m, S192, S192m, S384 ve S384m: Opsiyon-2 yapılandırmaları aşağıdaki HANA Büyük Örnek SKUs ile ayarlanabilir. 
 
-Belgelere baktığınızda, avantajı hemen görünür olmayabilir. Ancak SAP boyutlandırma yönergelerine baktığınızda, seçenek-1 ve seçenek-2 SAP HANA uzantı düğümlerini kullanarak bir avantaj görebilirsiniz. Örnekler şunlardır:
+Belgelere baktığınızda, avantaj hemen görünmeyebilir. Ancak SAP boyutlandırma yönergelerine baktığınızda, seçenek-1 ve opsiyon-2 SAP HANA uzantıdüğümlerini kullanarak bir avantaj görebilirsiniz. Örnekler aşağıdadır:
 
-- SAP HANA boyutlandırma yönergeleri genellikle bellek olarak iki veri birimi miktarına gerek duyar. SAP HANA örneğinizi sık erişimli verilerle çalıştırdığınızda, verilerin yalnızca yüzde 50 veya daha az olması gerekir. Belleğin geri kalanı, işini SAP HANA için ideal olarak tutulur.
-- Bu, SAP BW bir veritabanı çalıştıran bir HANA büyük örnek S192 biriminde, yalnızca 1 TB veri hacminin bulunduğu anlamına gelir.
-- Ayrıca, S192 HANA büyük örnek SKU 'SU olan-1 ' in ek SAP HANA uzantısı düğümü kullanıyorsanız, veri hacmi için ek 2 TB kapasiteli bir kapasite sağlar. 2\. seçenek yapılandırmasında, yarı veri hacmi için ek 4 TB alırsınız. Sık erişimli düğümle karşılaştırıldığında, "normal" uzantı düğümünün tam bellek kapasitesi,-1 seçeneği için veri depolamak için kullanılabilir. Çift bellek, seçenek-2 SAP HANA uzantısı düğüm yapılandırmasındaki veri hacmi için kullanılabilir.
-- Verileriniz için 3 TB kapasiteli bir kapasiteye ve 1. seçenek için de sık erişimli 1:2 oranına sahip olursunuz. 5 TB veri ve seçenek-2 uzantı düğümü yapılandırmasıyla 1:4 oranına sahip olursunuz.
+- SAP HANA boyutlandırma yönergeleri genellikle bellek olarak veri hacmi nin iki katı gerektirir. SAP HANA örneğini sıcak verilerle çalıştırdığınızda, verilerle dolu belleğin yalnızca yüzde 50'si veya daha azına sahip olursunuz. Belleğin geri kalanı ideal sap HANA işini yaparken tutulur.
+- Yani bir SAP BW veritabanı çalıştıran bellek 2 TB ile BIR HANA Büyük Örnek S192 biriminde, veri hacmi olarak sadece 1 TB var.
+- Seçenek-1'in ek bir SAP HANA uzantı düğümü, ayrıca bir S192 HANA Büyük Örnek SKU kullanıyorsanız, veri hacmi için ek bir 2-TB kapasite sağlar. Seçenek-2 yapılandırmasında, sıcak veri hacmi için ek bir 4 TB alırsınız. Sıcak düğümle karşılaştırıldığında, "sıcak" uzantı düğümünün tam bellek kapasitesi seçenek-1 için veri depolamak için kullanılabilir. Çift bellek seçenek-2 SAP HANA uzantı nodyapılandırmaveri hacmi için kullanılabilir.
+- Verileriniz için 3 TB kapasiteye ve seçenek-1 için 1:2 sıcaktan sıcaka oranına sahipsiniz. 5 TB veri ve seçenek-2 uzantı nodyapılandırması ile 1:4 oranı var.
 
-Veri hacmi bellek ile karşılaştırıldığında, ne kadar yüksek olursa, istediğiniz ısınma verileri disk depolama alanında depolanır.
+Bellekle karşılaştırıldığında veri hacmi ne kadar yüksekse, istediğiniz sıcak verinin disk depolamada depolanması olasılığı da o kadar yüksek tir.
 
 **Sonraki adımlar**
-- [Azure 'da SAP HANA (büyük örnekler) mimarisine](hana-architecture.md) başvurun
+- [Azure'da SAP HANA (Büyük Örnekler) mimarisine](hana-architecture.md) bakın

@@ -1,6 +1,6 @@
 ---
-title: Özel parametrelerle Azure Izleyici çalışma kitapları
-description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
+title: Özel parametrelere sahip Azure Monitör çalışma kitapları
+description: Önceden oluşturulmuş ve özel parametreli çalışma kitaplarıyla karmaşık raporlamayı basitleştirin
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,138 +10,138 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658288"
 ---
-# <a name="interactive-workbooks"></a>Etkileşimli çalışma kitapları
+# <a name="interactive-workbooks"></a>Etkileşimli Çalışma Kitapları
 
-Çalışma kitapları yazarların tüketicilere yönelik etkileşimli raporlar ve deneyimler oluşturmalarına olanak tanır. Etkileşim, çeşitli yollarla desteklenir.
+Çalışma kitapları, yazarların tüketicileri için etkileşimli raporlar ve deneyimler oluşturmasına olanak sağlar. Etkileşim çeşitli şekillerde desteklenir.
 
-## <a name="parameter-changes"></a>Parametre değişiklikleri
-Bir çalışma kitabı kullanıcısı bir parametreyi güncelleştirdiğinde, parametresini kullanan herhangi bir denetim otomatik olarak yenilenir ve yeni durumu yansıtacak şekilde yeniden çizer. Azure portal raporlarının çoğu etkileşimi destekler. Çalışma kitapları bunu en az Kullanıcı çabalarıyla çok basit bir şekilde sağlar.
+## <a name="parameter-changes"></a>Parametre Değişiklikleri
+Çalışma kitabı kullanıcısı bir parametreyi güncellediğinde, parametreyi kullanan tüm denetimler yeni durumu yansıtacak şekilde otomatik olarak yenilenir ve yeniden çizer. Azure portalı raporlarının çoğu etkileşimi bu şekilde destekler. Çalışma kitapları en az kullanıcı çabası ile çok düz bir şekilde bu sağlar.
 
-[Çalışma kitaplarında parametreler](workbooks-parameters.md) hakkında daha fazla bilgi edinin
+[Çalışma Kitaplarındaki Parametreler](workbooks-parameters.md) hakkında daha fazla bilgi edinin
 
-## <a name="grid-row-clicks"></a>Kılavuz satırı tıklamaları
-Çalışma kitapları yazarların bir kılavuzdaki bir satırı tıklatmak, izleyen grafikleri satır içeriğine göre güncelleştirmesine olanak tanır. 
+## <a name="grid-row-clicks"></a>Izgara satır tıklamaları
+Çalışma kitapları, yazarların ızgaradaki bir satırı tıklatmanın sonraki grafikleri satırın içeriğine göre güncellediği senaryolar oluşturmalarına olanak tanır. 
 
-Örneğin, bir Kullanıcı bir istek listesini ve hata sayısı gibi bazı istatistikleri gösteren bir kılavuza sahip olabilir. Bu, bir isteğe karşılık gelen bir satıra tıklanmayacak şekilde ayarlanabileceğinden, yalnızca bu isteğe filtre uygulamak için ayrıntılı grafiklerin güncelleştirilmesine neden olur.
+Örneğin, bir kullanıcı istekleri ve hata sayıları gibi bazı istatistikleri listesini gösteren bir ızgara olabilir. Bir isteğe karşılık gelen bir satırı tıklatmak, sadece bu isteğe filtre lemek için güncelleştirme altında ayrıntılı grafikler neden olacak şekilde ayarlayabilirsiniz.
 
-### <a name="setting-up-interactivity-on-grid-row-click"></a>Kılavuz satırı üzerinde etkileşim kurma
-1. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına bir günlük sorgusu denetimi eklemek için _Sorgu Ekle_ bağlantısını kullanın. 
-3. Sorgu türünü _günlük_, kaynak türü (örneğin, Application Insights) ve hedeflenecek kaynakları seçin.
-4. Analiz etmek için KQL 'i girmek üzere sorgu düzenleyicisini kullanın
+### <a name="setting-up-interactivity-on-grid-row-click"></a>Kılavuz satırında etkileşim ayarlama
+1. İş kitabını _düzenleme_ araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına günlük sorgusu denetimi eklemek için _sorgu ekle_ bağlantısını kullanın. 
+3. Sorgu türünü _Günlük,_ kaynak türü (örneğin, Uygulama Öngörüleri) ve hedefalacak kaynakları olarak seçin.
+4. Çözümlemesiniz için KQL'yi girmek için Sorgu düzenleyicisini kullanın
     ```kusto
     requests
     | summarize AllRequests = count(), FailedRequests = countif(success == false) by Request = name
     | order by AllRequests desc    
     ```
-5. sonuçları görmek için `Run query`
-6. Sorgu altbilgisindeki _Gelişmiş ayarlar_ simgesine tıklayın (simge dişli gibi görünür). Bu, Gelişmiş ayarlar bölmesini açar 
-7. Ayarı denetleyin: `When an item is selected, export a parameter`
-    1. Dışarı aktarılacak alan: `Request`
-    2. Parametre adı: `SelectedRequest`
-    3. Varsayılan değer: `All requests`
+5. `Run query`sonuçları görmek için
+6. Sorgu altbilgisindeki _Gelişmiş Ayarlar_ simgesine tıklayın (simge dişli ye benzer). Bu gelişmiş ayarlar bölmesini açar 
+7. Ayarı kontrol edin:`When an item is selected, export a parameter`
+    1. Dışa aktarılabilmek için alan:`Request`
+    2. Parametre adı:`SelectedRequest`
+    3. Varsayılan değer:`All requests`
     
-    ![Alanları parametre olarak dışarı aktarmaya yönelik ayarlarla gelişmiş düzenleyiciyi gösteren resim](./media/workbooks-interactive/advanced-settings.png)
+    ![Parametreler olarak alanları dışa aktarma ayarlarıile gelişmiş düzenleyiciyi gösteren resim](./media/workbooks-interactive/advanced-settings.png)
 
 8. `Done Editing` öğesine tıklayın.
-9. 2 ve 3. adımları kullanarak başka bir sorgu denetimi ekleyin.
-10. Analiz etmek için KQL 'i girmek üzere sorgu düzenleyicisini kullanın
+9. 2 ve 3 adımlarını kullanarak başka bir sorgu denetimi ekleyin.
+10. Çözümlemesiniz için KQL'yi girmek için Sorgu düzenleyicisini kullanın
     ```kusto
     requests
     | where name == '{SelectedRequest}' or 'All Requests' == '{SelectedRequest}'
     | summarize ['{SelectedRequest}'] = count() by bin(timestamp, 1h)
     ```
-11. sonuçları görmek için `Run query`.
-12. _Görselleştirmeyi_ `Area chart` olarak değiştir
-12. İlk kılavuzdaki bir satıra tıklayın. Aşağıdaki alan grafiğinin seçili istek için nasıl filtreleyeceğini aklınızda bulabilirsiniz.
+11. `Run query`sonuçları görmek için.
+12. _Görselleştirmeyi_ değiştir`Area chart`
+12. İlk Kılavuzdaki bir satıra tıklayın. Aşağıdaki alan grafiğinin seçili isteğe nasıl filtre uygulayabildiğini unutmayın.
 
-Elde edilen rapor, düzenleme modunda şöyle görünür:
+Elde edilen rapor, edit modunda şuna benzer:
 
-![Kılavuz satırı tıklamalarını kullanarak etkileşimli bir deneyim oluşturmayı gösteren resim](./media/workbooks-interactive//grid-click-create.png)
+![Kılavuz satır tıklamalarını kullanarak oluşturmayı etkileşimli bir deneyim gösteren resim](./media/workbooks-interactive//grid-click-create.png)
 
-Aşağıdaki görüntüde, aynı ilkelere bağlı olarak okuma modunda daha ayrıntılı bir etkileşimli rapor gösterilmektedir. Raporda, parametreleri dışarı aktarmak için tıklama tıklamaları kullanılır. Bu, sırasıyla iki grafikte ve bir metin bloğunda kullanılır.
+Aşağıdaki resimde, aynı ilkelere dayalı okuma modunda daha ayrıntılı bir etkileşimli rapor gösterilmektedir. Rapor, sırayla iki grafik ve bir metin bloğunda kullanılan parametreleri dışa aktarmak için ızgara tıklamalarını kullanır.
 
-![Kılavuz satırı tıklamalarını kullanarak etkileşimli bir deneyim oluşturmayı gösteren resim](./media/workbooks-interactive/grid-click-read-mode.png)
+![Kılavuz satır tıklamalarını kullanarak oluşturmayı etkileşimli bir deneyim gösteren resim](./media/workbooks-interactive/grid-click-read-mode.png)
 
 ### <a name="exporting-the-contents-of-an-entire-row"></a>Tüm satırın içeriğini dışa aktarma
-Bazı durumlarda, yalnızca belirli bir sütun yerine seçili satırın tüm içeriğinin dışarı aktarılması tercih edilir. Bu gibi durumlarda, yukarıdaki 7,1 adımında `Field to export` özelliğini ayarını yok olarak bırakın. Çalışma kitapları, tüm satır içeriğini parametresine JSON olarak dışa aktarır. 
+Bazen yalnızca belirli bir sütun yerine seçili satırın tüm içeriğini dışa aktarmak istenir. Bu gibi durumlarda, `Field to export` yukarıdaki adım 7.1'de mülkü açık bırakın. Çalışma kitapları tüm satır içeriğini json olarak parametreye dışa aktaracaktır. 
 
-Başvuran KQL denetiminde, JSON 'u ayrıştırmak ve ayrı sütunlara erişmek için `todynamic` işlevini kullanın.
+Başvuru kql denetimi, json `todynamic` ayrışdırmak ve tek tek sütunlara erişmek için işlevi kullanın.
 
- ## <a name="grid-cell-clicks"></a>Izgara hücresi tıklamaları
-Çalışma kitapları, yazarların `link renderer`adlı özel bir tür kılavuz sütunu Oluşturucu aracılığıyla etkileşim eklemesine olanak tanır. Bağlantı Oluşturucu, bir kılavuz hücresini hücrenin içeriğine göre köprüye dönüştürür. Çalışma kitapları, kaynak genel bakış dikey pencereleri, özellik paketi görüntüleyicileri, uygulama öngörüleri arama, kullanım, işlem izleme vb. gibi birçok bağlantı Oluşturucu türünü destekler.
+ ## <a name="grid-cell-clicks"></a>Izgara Hücre Tıklamaları
+Çalışma kitapları, yazarların özel `link renderer`bir ızgara sütun uyrucu türü aracılığıyla etkileşim eklemelerine olanak sağlar. Bağlantı işleyicisi, ızgara hücresini hücrenin içeriğine göre bir köprüye dönüştürür. Çalışma kitapları, kaynak genel bakış bıçakları, özellik çantası görüntüleyiciler, App Insights arama, kullanım, işlem izleme, vb. açılmasına izin verenler de dahil olmak üzere birçok bağlantı görüntüleyicisini destekler.
 
-### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>Kılavuz hücre tıklamalarını kullanarak etkileşimi ayarlama
-1. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
-2. Çalışma kitabına bir günlük sorgusu denetimi eklemek için _Sorgu Ekle_ bağlantısını kullanın. 
-3. Sorgu türünü _günlük_, kaynak türü (örneğin, Application Insights) ve hedeflenecek kaynakları seçin.
-4. Analiz etmek için KQL 'i girmek üzere sorgu düzenleyicisini kullanın
+### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>Izgara hücre tıklamalarını kullanarak etkileşim ayarlama
+1. İş kitabını _düzenleme_ araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
+2. Çalışma kitabına günlük sorgusu denetimi eklemek için _sorgu ekle_ bağlantısını kullanın. 
+3. Sorgu türünü _Günlük,_ kaynak türü (örneğin, Uygulama Öngörüleri) ve hedefalacak kaynakları olarak seçin.
+4. Çözümlemesiniz için KQL'yi girmek için Sorgu düzenleyicisini kullanın
     ```kusto
     requests
     | summarize Count = count(), Sample = any(pack_all()) by Request = name
     | order by Count desc
     ```
-5. sonuçları görmek için `Run query`
-6. Ayarlar bölmesini açmak için _sütun ayarları_ ' na tıklayın.
-7. _Sütunlar_ bölümünde, şunu ayarlayın:
-    1. _Örnek_ sütun oluşturucu: `Link`, açılacak görünüm: `Cell Details`, bağlantı etiketi: `Sample`
-    2. _Count_ -Column işleyici: `Bar`, Color paleti: `Blue`, minimum değer: `0`
-    3. _İstek_ sütunu oluşturucu: `Automatic`
-    4. Değişiklikleri uygulamak için _Kaydet ve Kapat_ ' a tıklayın
-8. Kılavuzdaki `Sample` bağlantılarından birine tıklayın. Bu, Örneklenmiş bir isteğin ayrıntılarıyla birlikte bir özellik bölmesi açar.
+5. `Run query`sonuçları görmek için
+6. Ayarlar bölmesini açmak için _Sütun Ayarları'nı_ tıklatın.
+7. _Sütunlar_ bölümünde, ayarlayın:
+    1. _Örnek_ - Sütun `Link`İşleyici: , `Cell Details`Açmak için görüntüle: , Bağlantı Etiketi:`Sample`
+    2. _Sayı_ - Sütun `Bar`İşleyicisi: `Blue`, Renk paleti: , Minimum değer:`0`
+    3. _İstek_ - Sütun İşleyicisi:`Automatic`
+    4. Değişiklikleri uygulamak için _Kaydet ve Kapat'ı_ tıklatın
+8. Izgaradaki `Sample` bağlantılardan birine tıklayın. Bu, örneklenmiş bir isteğin ayrıntılarını içeren bir özellik bölmesi açar.
 
-    ![Kılavuz hücre tıklamalarını kullanarak etkileşimli bir deneyim oluşturmayı gösteren resim](./media/workbooks-interactive/grid-cell-click-create.png)
+    ![Izgara hücre tıklamalarını kullanarak oluşturmayı etkileşimli bir deneyim gösteren resim](./media/workbooks-interactive/grid-cell-click-create.png)
 
-### <a name="link-renderer-actions"></a>Bağlantı Oluşturucu eylemleri
-| Bağlantı eylemi | Tıklama eylemi |
+### <a name="link-renderer-actions"></a>Bağlantı Renderer Eylemler
+| Bağlantı eylemi | Tıklama üzerine eylem |
 |:------------- |:-------------|
-| `Generic Details` | Bir özellik Kılavuzu bağlam dikey penceresinde satır değerlerini gösterir |
-| `Cell Details` | Bir özellik Kılavuzu bağlam dikey penceresinde hücre değerini gösterir. Hücre (örneğin, konum, rol örneği vs. gibi istek özelliklerine sahip JSON) içeren dinamik bir tür içerdiğinde yararlı olur. |
-| `Cell Details` | Bir özellik Kılavuzu bağlam dikey penceresinde hücre değerini gösterir. Hücre (örneğin, konum, rol örneği vs. gibi istek özelliklerine sahip JSON) içeren dinamik bir tür içerdiğinde yararlı olur. |
-| `Custom Event Details` | Hücrede özel olay KIMLIĞI (ItemId) ile Application Insights arama ayrıntılarını açar |
-| `* Details` | Bağımlılıklar, özel durumlar, sayfa görünümleri, istekler ve izlemeler dışında özel olay ayrıntılarına benzer. |
-| `Custom Event User Flows` | Hücredeki özel olay adında özetlenen Application Insights Kullanıcı Akışları deneyimini açar |
-| `* User Flows` | Özel durum, sayfa görünümleri ve istekler hariç özel olay Kullanıcı Akışları benzer |
-| `User Timeline` | Kullanıcı zaman çizelgesini hücrede Kullanıcı KIMLIĞI (user_Id) ile açar |
-| `Session Timeline` | Hücredeki değer için Application Insights arama deneyimini açar (örneğin, ABC hücresindeki değer olan ' abc ' metnini arayın) |
-| `Resource overview` | Hücredeki kaynak KIMLIĞI değerini temel alarak, kaynağın genel görünümünü portalda açın |
+| `Generic Details` | Özellik ızgara bağlam bıçaksatır değerlerini gösterir |
+| `Cell Details` | Özellik ızgara bağlam bıçak hücre değerini gösterir. Hücre bilgi içeren dinamik bir tür içerdiğinde yararlıdır (örneğin, konum, rol örneği, vb. gibi istek özelliklerine sahip json). |
+| `Cell Details` | Özellik ızgara bağlam bıçak hücre değerini gösterir. Hücre bilgi içeren dinamik bir tür içerdiğinde yararlıdır (örneğin, konum, rol örneği, vb. gibi istek özelliklerine sahip json). |
+| `Custom Event Details` | Hücredeki özel olay kimliği (itemId) ile Uygulama Öngörüleri arama ayrıntılarını açar |
+| `* Details` | Bağımlılıklar, özel durumlar, sayfa görünümleri, istekler ve izlemeler dışında Özel Olay Ayrıntıları'na benzer. |
+| `Custom Event User Flows` | Uygulama Öngörüleri Kullanıcı Akışları deneyimini hücredeki özel olay adı üzerinde döner açar |
+| `* User Flows` | Özel Etkinlik Kullanıcı Akışlarına benzer özel durumlar, sayfa görünümleri ve istekleri dışında |
+| `User Timeline` | Hücrede kullanıcı kimliği (user_Id) ile kullanıcı zaman çizelgesini açar |
+| `Session Timeline` | Hücredeki değer için Application Insights arama deneyimini açar (örneğin, hücredeki değerin ABC olduğu 'abc' metnini arayın) |
+| `Resource overview` | Hücredeki kaynak kimliği değerini temel alan kaynağın genel görünümünü portalda açma |
 
-## <a name="conditional-visibility"></a>Koşullu görünürlük
-Çalışma kitabı, kullanıcıların belirli denetimleri parametre değerlerine göre görünmesine veya kaybolmasına olanak sağlar. Bu, yazarların, kullanıcı girişine veya telemetri durumuna göre raporların farklı görünmesini sağlar. Örnek, tüketicilere yalnızca bir Özet gösterir, ancak yanlış bir şeyler olduğunda tam ayrıntıları gösterir.
+## <a name="conditional-visibility"></a>Koşullu Görünürlük
+Çalışma kitabı, kullanıcıların parametrelerin değerlerine bağlı olarak belirli denetimlerin görünmesini veya kaybolmasını sağlar. Bu, yazarların kullanıcı girişine veya telemetri durumuna göre raporların farklı görünmesini sağlar. Bir örnek, tüketicilere her şey yolunda yken sadece bir özet göstermek, ancak bir sorun olduğunda tüm ayrıntıları göstermektir.
 
-### <a name="setting-up-interactivity-using-conditional-visibility"></a>Koşullu görünürlük kullanarak etkileşim kurma
-1. İki etkileşimli denetim ayarlamak için `Setting up interactivity on grid row click` bölümündeki adımları izleyin.
-2. En üste yeni bir parametre ekleyin:
-    1. Ad: `ShowDetails`
-    2. Parametre türü: `Drop down`
-    3. Gerekli: `checked`
-    4. Veri al: `JSON`
-    5. JSON girişi: `["Yes", "No"]`
-    6. Değişiklikleri uygulamak için Kaydet.
-3. Parametre değerini `Yes` olarak ayarla
-4. Alan grafiğinin sorgu denetiminde _Gelişmiş ayarlar_ simgesine (dişli simgesi) tıklayın
-5. Ayarı denetleyin `Make this item conditionally visible`
-    1. Bu öğe `ShowDetails` parametre değeri `equals` görünür `Yes`
-6. Değişiklikleri uygulamak için _düzenlemeleri bitti_ ' ye tıklayın.
-7. Okuma moduna girmek için çalışma kitabı araç çubuğunda _Düzenle bitti_ ' ye tıklayın.
-8. `ShowDetails` parametre değerini `No`olarak değiştirin. Aşağıdaki grafiğin kaybolduğuna dikkat edin.
+### <a name="setting-up-interactivity-using-conditional-visibility"></a>Koşullu görünürlüğü kullanarak etkileşim ayarlama
+1. İki etkileşimli `Setting up interactivity on grid row click` denetim ayarlamak için bölümdeki adımları izleyin.
+2. En üstte yeni bir parametre ekleyin:
+    1. Adı:`ShowDetails`
+    2. Parametre türü:`Drop down`
+    3. Gerekli:`checked`
+    4. Veri alın:`JSON`
+    5. JSON Girişi:`["Yes", "No"]`
+    6. Değişiklikleri işlemek için kaydedin.
+3. Parametre değerini`Yes`
+4. Alan grafiğiyle sorgu denetiminde _Gelişmiş Ayarlar_ simgesini (vites simgesi) tıklatın
+5. Ayarı kontrol edin`Make this item conditionally visible`
+    1. Bu öğe görünür `ShowDetails` ise `equals` parametre değeri`Yes`
+6. Değişiklik işlemek için _Bitti Düzenlemesi'ni_ tıklatın.
+7. Okuma moduna girmek için çalışma kitabı araç çubuğunda _Bitti Düzenleme'yi_ tıklatın.
+8. Parametrenin `ShowDetails` değerini ' `No`ye çevirin Aşağıdaki grafiğin kaybolduğuna dikkat edin.
 
-Aşağıdaki görüntüde `ShowDetails` olduğu görünen durum gösterilmektedir `Yes`
+Aşağıdaki resimde görünür durumda `ShowDetails` nerede olduğunu gösterir`Yes`
 
 ![Grafiğin görünür olduğu koşullu görünürlüğü gösteren resim](./media/workbooks-interactive/conditional-visibility.png)
 
-Aşağıdaki görüntüde `ShowDetails` `No` gizli durum gösterilmektedir
+Aşağıdaki resimde gizli servis `ShowDetails` talebi`No`
 
-![Grafiğin gizli olduğu koşullu görünürlüğü gösteren resim](./media/workbooks-interactive/conditional-invisible.png)
+![Grafiğin gizlendiği koşullu görünürlüğü gösteren resim](./media/workbooks-interactive/conditional-invisible.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
-* Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.
+* Çalışma kitapları hakkında daha fazla bilgi [edinmeye başlayın](workbooks-visualizations.md) birçok zengin görselleştirme seçeneği.
+* Çalışma kitabı kaynaklarınıza erişimi [kontrol](workbooks-access-control.md) edin ve paylaşın.

@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79199888"
 ---
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
@@ -69,7 +69,7 @@ Visual Studio'da yeni bir **Konsol Uygulaması (.NET Framework)** projesi oluşt
         Console.WriteLine(await response.Content.ReadAsStringAsync());        Console.ReadLine();
     }
     ```
-4. Aşağıdaki kod satırını `Main` sınıfındaki `Program` yöntemine ekleyin.
+4. Aşağıdaki kod satırını `Program` sınıfındaki `Main` yöntemine ekleyin.
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();

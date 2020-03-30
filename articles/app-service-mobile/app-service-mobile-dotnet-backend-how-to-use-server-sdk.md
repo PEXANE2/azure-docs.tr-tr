@@ -1,7 +1,7 @@
 ---
-title: .NET arka uç sunucu SDK 'Sı ile çalışma
-description: Azure App Service Mobile Apps için .NET arka uç sunucu SDK ile nasıl çalışacağınızı öğrenin.
-keywords: App Service, Azure App Service, mobil uygulama, mobil hizmet, ölçek, ölçeklenebilir, uygulama dağıtımı, Azure uygulama dağıtımı
+title: .NET arka uç sunucusu SDK ile çalışma
+description: Azure App Service Mobile Apps için .NET arka uç sunucusu SDK ile nasıl çalışacağınızı öğrenin.
+keywords: uygulama hizmeti, azure uygulama hizmeti, mobil uygulama, mobil hizmet, ölçek, ölçeklenebilir, uygulama dağıtımı, azure uygulama dağıtımı
 author: conceptdev
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.tgt_pltfrm: mobile-multiple
@@ -9,75 +9,75 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250146"
 ---
-# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps .NET arka uç sunucu SDK 'Sı ile çalışma
+# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobil Uygulamaları için .NET arka uç sunucusu SDK ile çalışın
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
 
-Bu konu başlığında, .NET arka uç sunucu SDK 'sının anahtar Azure App Service Mobile Apps senaryolarında nasıl kullanılacağı gösterilmektedir. Azure Mobile Apps SDK, ASP.NET uygulamanızdan mobil istemcilerle çalışmanıza yardımcı olur.
+Bu konu, önemli Azure App Service Mobile Apps senaryolarında .NET arka uç sunucusu SDK'nın nasıl kullanılacağını gösterir. Azure Mobil Uygulamalar SDK, ASP.NET uygulamanızdan mobil istemcilerle çalışmanıza yardımcı olur.
 
 > [!TIP]
-> [Azure Mobile Apps için .NET Server SDK][2] , GitHub 'da açık kaynaktır. Depo, tüm sunucu SDK birimi test paketi ve bazı örnek projeler dahil olmak üzere tüm kaynak kodlarını içerir.
+> [Azure Mobile Apps için .NET sunucusu SDK,][2] GitHub'da açık kaynak koddur. Depo, tüm sunucu SDK birim test paketi ve bazı örnek projeler de dahil olmak üzere tüm kaynak kodunu içerir.
 >
 >
 
-## <a name="reference-documentation"></a>Başvuru belgeleri
-Sunucu SDK 'Sı için başvuru belgeleri şurada bulunur: [Azure Mobile Apps .net başvurusu][1].
+## <a name="reference-documentation"></a>Referans belgeleri
+Sunucu SDK için başvuru belgeleri burada bulunur: [Azure Mobile Apps .NET Başvuru][1].
 
-## <a name="create-app"></a>Nasıl yapılır: .NET mobil uygulaması arka ucu oluşturma
-Yeni bir proje başlatıyorsanız, [Azure portalında] ya da Visual Studio kullanarak bir App Service uygulaması oluşturabilirsiniz. App Service uygulamayı yerel olarak çalıştırabilir veya projeyi bulut tabanlı App Service mobil uygulamanızda yayımlayabilirsiniz.
+## <a name="how-to-create-a-net-mobile-app-backend"></a><a name="create-app"></a>Nasıl yapilir: .NET Mobile App arka uç oluşturma
+Yeni bir projeye başlıyorsanız, [Azure portalını] veya Visual Studio'yu kullanarak bir Uygulama Hizmeti uygulaması oluşturabilirsiniz. Uygulama Hizmeti uygulamasını yerel olarak çalıştırabilir veya projeyi bulut tabanlı App Service mobil uygulamanızda yayınlayabilirsiniz.
 
-Mevcut bir projeye mobil özellikleri ekliyorsanız, [SDK 'Yı indirme ve başlatma](#install-sdk) bölümüne bakın.
+Varolan bir projeye mobil özellikler ekliyorsanız, İndir bölümüne bakın ve SDK bölümünü [başlatın.](#install-sdk)
 
-### <a name="create-a-net-backend-using-the-azure-portal"></a>Azure portal kullanarak bir .NET arka ucu oluşturun
-App Service mobil arka uç oluşturmak için [hızlı başlangıç öğreticisini][3] izleyin veya şu adımları izleyin:
+### <a name="create-a-net-backend-using-the-azure-portal"></a>Azure portalını kullanarak bir .NET arka uç oluşturma
+Bir Uygulama Hizmeti mobil arka uç oluşturmak [için, Quickstart öğreticiizleyin][3] veya aşağıdaki adımları izleyin:
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
-*Başlarken* dikey penceresine geri döndüğünüzde **tablo API 'Si oluştur**altında **arka uç diliniz**olarak **C#** öğesini seçin. **İndir**' e tıklayın, sıkıştırılmış proje dosyalarını yerel bilgisayarınıza ayıklayın ve Visual Studio 'da çözümü açın.
+*Başlangıç* bıçağına geri dön, **tablo API'si oluştur**altında, Arka **uç diliniz**olarak **C#'ı** seçin. **İndir'i**tıklatın, sıkıştırılmış proje dosyalarını yerel bilgisayarınıza ayıklayın ve Çözümü Visual Studio'da açın.
 
-### <a name="create-a-net-backend-using-visual-studio-2017"></a>Visual Studio 2017 kullanarak .NET arka ucu oluşturma
+### <a name="create-a-net-backend-using-visual-studio-2017"></a>Visual Studio 2017'yi kullanarak .NET arka uç oluşturma
 
-Visual Studio 'dan Azure Mobile Apps projesi yayımlamak için Visual Studio Yükleyicisi aracılığıyla Azure iş yükünü yükler. SDK 'Yı yükledikten sonra, aşağıdaki adımları kullanarak bir ASP.NET uygulaması oluşturun:
+Visual Studio'dan Azure Mobil Uygulamalar projesinde yayımlamak için Visual Studio Yükleyici aracılığıyla Azure iş yükünü yükleyin. SDK'yı yükledikten sonra, aşağıdaki adımları kullanarak bir ASP.NET uygulaması oluşturun:
 
-1. **Yeni proje** iletişim kutusunu açın ( **dosya** > **Yeni** > **projesi...** ).
-2. **Görsel C#**  ' i genişletin ve **Web**' i seçin.
-3. **ASP.NET Web uygulaması (.NET Framework)** seçeneğini belirleyin.
-4. Proje adını girin. Daha sonra, **Tamam**'a tıklayın.
-5. Şablonlar listesinden **Azure mobil uygulaması** ' nı seçin.
-6. Çözümü oluşturmak için **Tamam** ' ı tıklatın.
-7. **Çözüm Gezgini** projeye sağ tıklayın ve **Yayımla...** öğesini seçin ve ardından yayımlama hedefi olarak **App Service** seçin.
-8. Kimlik doğrulaması yapmak için istemleri izleyin ve yayımlanacak yeni veya mevcut bir Azure App Service seçin.
+1. Yeni **Proje** iletişim kutusunu açın **(Dosya** > **Yeni** > **Proje...'den).**
+2. **Visual C#** seçeneğini genişletin ve **Web'i**seçin.
+3. **Web Uygulaması (.NET Framework) ASP.NET**seçin.
+4. Proje adını doldurun. Ardından **Tamam**'a tıklayın.
+5. Şablonlar listesinden **Azure Mobil Uygulamasını** seçin.
+6. Çözümü oluşturmak için **Tamam'ı** tıklatın.
+7. **Solution Explorer'daki** projeye sağ tıklayın ve **Yayımla'yı seçin...** **App Service**
+8. Kimlik doğrulama istemlerini izleyin ve yayımlanacak yeni veya varolan bir Azure Uygulama Hizmeti seçin.
 
-### <a name="create-a-net-backend-using-visual-studio-2015"></a>Visual Studio 2015 kullanarak .NET arka ucu oluşturma
+### <a name="create-a-net-backend-using-visual-studio-2015"></a>Visual Studio 2015'i kullanarak .NET arka uç oluşturma
 
-Visual Studio 'da bir Azure Mobile Apps projesi oluşturmak için [.net Için Azure SDK 'sını][4] (sürüm 2.9.0 veya üzeri) yükler. SDK 'Yı yükledikten sonra, aşağıdaki adımları kullanarak bir ASP.NET uygulaması oluşturun:
+Visual Studio'da bir Azure Mobil Uygulamalar projesi oluşturmak [için .NET için .NET][4] (sürüm 2.9.0 veya sonraki sürüm) için Azure SDK'yı yükleyin. SDK'yı yükledikten sonra, aşağıdaki adımları kullanarak bir ASP.NET uygulaması oluşturun:
 
-1. **Yeni proje** iletişim kutusunu açın ( **dosya** > **Yeni** > **projesi...** ).
-2. **Görsel C#**  > **Şablonlar** ' ı genişletin ve **Web**' i seçin.
+1. Yeni **Proje** iletişim kutusunu açın **(Dosya** > **Yeni** > **Proje...'den).**
+2. **Şablonları** > **Görsel C#** genişletin ve **Web'i**seçin.
 3. **ASP.NET Web Uygulaması**'nı seçin.
-4. Proje adını girin. Daha sonra, **Tamam**'a tıklayın.
-5. *ASP.NET 4.5.2 şablonları*altında **Azure mobil uygulaması**' nı seçin. Bulutta bulunan **Konağı** denetleyerek bu projeyi yayımlayacağınız bulutta bir mobil arka uç oluşturun.
-6. **Tamam** düğmesine tıklayın.
+4. Proje adını doldurun. Ardından **Tamam**'a tıklayın.
+5. *4.5.2 Şablonları ASP.NET*altında **Azure Mobil Uygulamasını**seçin. Bu projeyi yayımlayabileceğiniz bulutta bir mobil arka uç oluşturmak için **bulutta Ana Bilgisayar'ı** denetleyin.
+6. **Tamam**'a tıklayın.
 
-## <a name="install-sdk"></a>Nasıl yapılır: SDK 'Yı Indirme ve başlatma
-SDK [NuGet.org]' de kullanılabilir. Bu paket, SDK 'Yı kullanmaya başlamak için gereken temel işlevselliği içerir. SDK 'yı başlatmak için **HttpConfiguration** nesnesi üzerinde eylemler gerçekleştirmeniz gerekir.
+## <a name="how-to-download-and-initialize-the-sdk"></a><a name="install-sdk"></a>Nasıl yapılsın: SDK'yı indirin ve başlatma
+SDK [NuGet.org]mevcuttur. Bu paket, SDK'yı kullanmaya başlamak için gereken temel işlevselliği içerir. SDK'yı başlatmanız için **HttpConfiguration** nesnesi üzerinde eylem gerçekleştirmeniz gerekir.
 
 ### <a name="install-the-sdk"></a>SDK yükle
-SDK 'yı yüklemek için, Visual Studio 'da sunucu projesine sağ tıklayın, **NuGet Paketlerini Yönet**' i seçin, [Microsoft. Azure. Mobile. Server] paketini arayın ve ardından **Install**' a tıklayın.
+SDK'yı yüklemek için Visual Studio'daki sunucu projesine sağ tıklayın, **NuGet Paketlerini Yönet'i**seçin, [Microsoft.Azure.Mobile.Server] paketini arayın ve ardından **Yükle'yi**tıklatın.
 
-### <a name="server-project-setup"></a>Sunucu projesini Başlat
-.NET arka uç sunucu projesi, OWıN başlangıç sınıfı ekleyerek diğer ASP.NET projelerine benzer şekilde başlatılır. `Microsoft.Owin.Host.SystemWeb`NuGet paketine başvurultığınızdan emin olun. Visual Studio 'ya bu sınıfı eklemek için, sunucu projenize sağ tıklayın ve >
-**Yeni öğe** **Ekle** ' yi ve ardından **Web** > **genel** > **owın başlangıç sınıfı**' nı seçin.  Aşağıdaki öznitelikle bir sınıf oluşturulur:
+### <a name="initialize-the-server-project"></a><a name="server-project-setup"></a>Sunucu projesini başlatma
+Bir .NET arka uç sunucu projesi, bir OWIN başlangıç sınıfı ekleyerek diğer ASP.NET projelerine benzer şekilde başharfe çevrilir. NuGet paketine `Microsoft.Owin.Host.SystemWeb`başvurulduğunuzdan emin olun. Visual Studio'da bu sınıfı eklemek için sunucu projenize sağ tıklayın ve**Yeni Öğe** **Ekle'yi** >
+seçin, ardından **Web** > **Genel** > **OWIN Başlangıç sınıfı.**  Bir sınıf aşağıdaki öznitelik ile oluşturulur:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
-OWıN başlangıç sınıfınızın `Configuration()` yönteminde Azure Mobile Apps ortamını yapılandırmak için bir **HttpConfiguration** nesnesi kullanın.
-Aşağıdaki örnek, eklenen hiçbir özellik olmadan sunucu projesini başlatır:
+OWIN `Configuration()` başlangıç sınıfınızın yönteminde, Azure Mobil Uygulamalar ortamını yapılandırmak için bir **HttpConfiguration** nesnesi kullanın.
+Aşağıdaki örnek, hiçbir ek özelliği ile sunucu proje sini başlatır:
 
     // in OWIN startup class
     public void Configuration(IAppBuilder app)
@@ -91,13 +91,13 @@ Aşağıdaki örnek, eklenen hiçbir özellik olmadan sunucu projesini başlatı
         app.UseWebApi(config);
     }
 
-Bireysel özellikleri etkinleştirmek için, **ApplyTo**çağrılmadan önce **mobileappconfiguration** nesnesinde genişletme yöntemlerini çağırmanız gerekir. Örneğin, aşağıdaki kod, başlatma sırasında özniteliği `[MobileAppController]` olan tüm API denetleyicilerine varsayılan yolları ekler:
+Tek tek özellikleri etkinleştirmek **için, ApplyTo'yu**aramadan önce **MobileAppConfiguration** nesnesindeki uzantı yöntemlerini aramanız gerekir. Örneğin, aşağıdaki kod, başlatma sırasında özniteliği `[MobileAppController]` olan tüm API denetleyicilerine varsayılan yolları ekler:
 
     new MobileAppConfiguration()
         .MapApiControllers()
         .ApplyTo(config);
 
-Azure portal sunucu hızlı başlangıcı, **UseDefaultConfiguration () öğesini**çağırır. Bu, aşağıdaki kuruluma eşdeğerdir:
+Azure portalından sunucu hızlı **başlatı() UseDefaultConfiguration()** olarak adlandırıyor. Bu, aşağıdaki kuruluma eşdeğerdir:
 
         new MobileAppConfiguration()
             .AddMobileAppHomeController()             // from the Home package
@@ -113,53 +113,53 @@ Azure portal sunucu hızlı başlangıcı, **UseDefaultConfiguration () öğesin
 
 Kullanılan uzantı yöntemleri şunlardır:
 
-* `AddMobileAppHomeController()`, varsayılan Azure Mobile Apps giriş sayfasını sağlar.
-* `MapApiControllers()`, `[MobileAppController]` özniteliğiyle donatılmış olan WebAPI denetleyicileri için özel API özellikleri sağlar.
-* `AddTables()`, `/tables` uç noktaların tablo denetleyicilerine eşleşmesini sağlar.
-* `AddTablesWithEntityFramework()`, Entity Framework tabanlı denetleyicileri kullanarak `/tables` uç noktaların eşlenmesinin kısa bir tarafındır.
-* `AddPushNotifications()`, Notification Hubs için cihazları kaydetmenin basit bir yöntemini sağlar.
-* `MapLegacyCrossDomainController()`, yerel geliştirme için standart CORS üstbilgileri sağlar.
+* `AddMobileAppHomeController()`varsayılan Azure Mobil Uygulamalar giriş sayfasını sağlar.
+* `MapApiControllers()`öznitelik ile `[MobileAppController]` dekore WebAPI denetleyicileri için özel API yetenekleri sağlar.
+* `AddTables()`uç noktaların `/tables` tablo denetleyicilerine eşlenemesini sağlar.
+* `AddTablesWithEntityFramework()`Entity Framework tabanlı denetleyicileri `/tables` kullanarak uç noktaları eşleme için kısa bir eldir.
+* `AddPushNotifications()`Bildirim Hub'ları için aygıtları kaydetmek için basit bir yöntem sağlar.
+* `MapLegacyCrossDomainController()`yerel kalkınma için standart CORS başlıkları sağlar.
 
 ### <a name="sdk-extensions"></a>SDK uzantıları
-Aşağıdaki NuGet tabanlı uzantı paketleri, uygulamanız tarafından kullanılabilecek çeşitli mobil özellikler sağlar. **Mobileappconfiguration** nesnesini kullanarak başlatma sırasında uzantıları etkinleştirirsiniz.
+Aşağıdaki NuGet tabanlı uzantı paketleri, uygulamanız tarafından kullanılabilecek çeşitli mobil özellikler sağlar. **MobileAppConfiguration** nesnesini kullanarak başlatma sırasında uzantıları etkinleştirin.
 
-* [Microsoft. Azure. Mobile. Server. QuickStart] temel Mobile Apps kurulumunu destekler. Başlatma sırasında **UseDefaultConfiguration** genişletme yöntemi çağırarak yapılandırmaya eklenir. Bu uzantı, şu uzantıları içerir: bildirimler, kimlik doğrulama, varlık, tablolar, etki alanları arası ve giriş paketleri. Bu paket, Azure portal kullanılabilir Mobile Apps hızlı başlangıç tarafından kullanılır.
-* [Microsoft. Azure. Mobile. Server. Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) , *Bu mobil uygulamanın varsayılan olarak Web sitesi kökünün çalışır ve çalışıyor sayfasını* uygular. **Addmobileapphomecontroller** uzantı yöntemini çağırarak yapılandırmaya ekleyin.
-* [Microsoft. Azure. Mobile. Server. Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) , verilerle çalışmaya yönelik sınıfları içerir ve veri işlem hattını ayarlar. **Addtables** uzantı yöntemini çağırarak yapılandırmaya ekleyin.
-* [Microsoft. Azure. Mobile. Server. Entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) , Entity Framework SQL veritabanındaki verilere erişmesine olanak sağlar. **Addtableswithentityframework** genişletme yöntemini çağırarak yapılandırmaya ekleyin.
-* [Microsoft. Azure. Mobile. Server. Authentication] , belirteçleri doğrulamak için kullanılan owın ara yazılımı için kimlik doğrulaması ve ayar sağlar. **Addappserviceauthentication** ve **ıappbuilder**çağırarak yapılandırmaya ekleyin. **Useappserviceauthentication** uzantı yöntemleri.
-* [Microsoft. Azure. Mobile. Server. Notifications] anında iletme bildirimleri sunar ve bir anında kayıt uç noktası tanımlar. **Addpushnotifications** genişletme yöntemini çağırarak yapılandırmaya ekleyin.
-* [Microsoft. Azure. Mobile. Server. CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) , mobil uygulamanızdan eski Web tarayıcılarına veri sunan bir denetleyici oluşturur. **MapLegacyCrossDomainController** Extension metodunu çağırarak yapılandırmaya ekleyin.
-* [Microsoft. Azure. Mobile. Server. Login] , özel kimlik doğrulama senaryolarında kullanılan bir statik yöntem olan AppServiceLoginHandler. CreateToken () yöntemini sağlar.
+* [Microsoft.Azure.Mobile.Server.Quickstart] temel Mobil Uygulamalar kurulumlarını destekler. Başlatma sırasında **UseDefaultConfiguration** uzantı yöntemini çağırarak yapılandırmaya eklendi. Bu uzantı aşağıdaki uzantıları içerir: Bildirimler, Kimlik Doğrulama, Varlık, Tablolar, Çapraz etki alanı ve Ev paketleri. Bu paket, Azure portalında bulunan Mobile Apps Quickstart tarafından kullanılır.
+* [Microsoft.Azure.Mobile.Server.Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) *varsayılan olarak bu mobil uygulamanın* web sitesi kökü için sayfayı çalışır durumda dır. **AddMobileAppHomeController** uzantı yöntemini arayarak yapılandırmaya ekleyin.
+* [Microsoft.Azure.Mobile.Server.Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) veri ile çalışmak ve veri ardışık alanı kurmak için sınıflar içerir. **AddTables uzantı** yöntemini çağırarak yapılandırmaya ekleyin.
+* [Microsoft.Azure.Mobile.Server.Entity,](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) Varlık Çerçevesi'nin SQL Veritabanındaki verilere erişmesini sağlar. **AddTablesWithEntityFramework** uzantı yöntemini arayarak yapılandırmaya ekleyin.
+* [Microsoft.Azure.Mobile.Server.Authentication] Kimlik doğrulamayı etkinleştirin ve belirteçleri doğrulamak için kullanılan OWIN aracını ayarlar. **AddAppServiceAuthentication** ve **IAppBuilder'ı**arayarak yapılandırmaya ekleyin. **UseAppServiceAuthentication uzantı** yöntemleri.
+* [Microsoft.Azure.Mobile.Server.Notifications] Anında iletme bildirimlerini etkinleştirir ve anında iletme kaydı bitiş noktasını tanımlar. **AddPushBildirimlers** uzantı yöntemini çağırarak yapılandırmaya ekleyin.
+* [Microsoft.Azure.Mobile.Server.CrossDomain,](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) Mobil Uygulamanızdan eski web tarayıcılarına veri sunan bir denetleyici oluşturur. **MapLegacyCrossDomainController** uzantı yöntemini arayarak yapılandırmaya ekleyin.
+* [Microsoft.Azure.Mobile.Server.Login,] özel kimlik doğrulama senaryoları sırasında kullanılan statik bir yöntem olan AppServiceLoginHandler.CreateToken() yöntemini sağlar.
 
-## <a name="publish-server-project"></a>Nasıl yapılır: sunucu projesini yayımlama
-Bu bölümde, .NET arka uç projenizi Visual Studio 'dan nasıl yayımlayacağınız gösterilmektedir. Ayrıca, arka uç projenizi [Git](../app-service/deploy-local-git.md) ' i veya burada bulunan diğer yöntemlerden birini kullanarak dağıtabilirsiniz.
+## <a name="how-to-publish-the-server-project"></a><a name="publish-server-project"></a>Nasıl yapılır: Sunucu projesini yayımlama
+Bu bölümde, .NET arka uç projenizi Visual Studio'dan nasıl yayınlayacağınızı gösterir. Ayrıca, arka uç projenizi [Git'i](../app-service/deploy-local-git.md) veya orada bulunan diğer yöntemlerden herhangi birini kullanarak da dağıtabilirsiniz.
 
-1. Visual Studio 'da NuGet paketlerini geri yüklemek için projeyi yeniden derleyin.
-2. Çözüm Gezgini, projeye sağ tıklayın, **Yayımla**' ya tıklayın. İlk kez yayımladığınızda, bir yayımlama profili tanımlamanız gerekir. Tanımlı bir profiliniz zaten varsa, bunu seçip **Yayımla**' ya tıklayabilirsiniz.
-3. Bir yayımlama hedefi seçmek isteyip istemediğiniz sorulursa Microsoft Azure > **App Service** **İleri**' ye tıklayın, sonra (gerekirse) Azure kimlik bilgilerinizle oturum açın.
-   Visual Studio, yayımlama ayarlarınızı doğrudan Azure 'dan indirir ve güvenli bir şekilde depolar.
+1. Visual Studio'da, NuGet paketlerini geri yüklemek için projeyi yeniden oluşturabilirsiniz.
+2. Çözüm Gezgini'nde projeyi sağ tıklatın, **Yayımla'yı**tıklatın. İlk yayımlama da bir yayımlama profili tanımlamanız gerekir. Zaten tanımlanmış bir profiliniz varsa, profili seçebilir ve **Yayımla'yı**tıklatın.
+3. Yayımlama hedefi seçmeniz istenirse, Azure kimlik bilgilerinizle (gerekirse) Oturum Aç'ı microsoft **Azure App Service** > **Next'i**tıklatın.
+   Visual Studio, yayımlama ayarlarınızı doğrudan Azure'dan indirir ve güvenli bir şekilde saklar.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
-4. **Aboneliğinizi**seçin, **Görünüm**' den **kaynak türü** ' nü seçin, **mobil uygulama**' yı genişletin ve mobil uygulama arka ucunuza ve ardından **Tamam**' a tıklayın.
+4. **Aboneliğinizi**seçin, **Görünüm'den** **Kaynak Türü'nü** seçin, **Mobil Uygulama'yı**genişletin ve Mobil Uygulama arka uçunuzu tıklatın, ardından **Tamam'ı**tıklatın.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-2.png)
-5. Yayımlama profili bilgilerini doğrulayın ve **Yayımla**' ya tıklayın.
+5. Yayımlama profil bilgilerini doğrulayın ve **Yayımla'yı**tıklatın.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-3.png)
 
-    Mobil uygulama arka ucunuz başarıyla yayımlandığında, başarıyı belirten bir giriş sayfası görürsünüz.
+    Mobil Uygulama arka sayfanız başarılı bir şekilde yayımlandığında, başarıyı gösteren bir açılış sayfası görürsünüz.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## <a name="define-table-controller"></a>Nasıl yapılır: tablo denetleyicisi tanımlama
-Mobil istemcilere bir SQL tablosu göstermek için bir tablo denetleyicisi tanımlayın.  Bir tablo denetleyicisini yapılandırmak için üç adım gerekir:
+## <a name="how-to-define-a-table-controller"></a><a name="define-table-controller"></a>Nasıl yapılır: Tablo denetleyicisi tanımlan
+SQL tablosunu mobil istemcilere maruz bırakmak için bir Tablo Denetleyicisi tanımlayın.  Tablo Denetleyicisi'ni yapılandırmak üç adım gerektirir:
 
-1. Veri Aktarımı nesnesi (DTO) sınıfı oluşturun.
+1. Veri Aktarım Nesnesi (DTO) sınıfı oluşturun.
 2. Mobil DbContext sınıfında bir tablo başvurusu yapılandırın.
-3. Tablo denetleyicisi oluşturun.
+3. Bir tablo denetleyicisi oluşturun.
 
-Veri Aktarımı nesnesi (DTO), `EntityData`devralan düz C# bir nesnedir.  Örnek:
+Veri Aktarım Nesnesi (DTO), 'den devralan düz bir C# nesnesidir. `EntityData`  Örnek:
 
     public class TodoItem : EntityData
     {
@@ -167,7 +167,7 @@ Veri Aktarımı nesnesi (DTO), `EntityData`devralan düz C# bir nesnedir.  Örne
         public bool Complete {get; set;}
     }
 
-DTO, tabloyu SQL veritabanı içinde tanımlamak için kullanılır.  Veritabanı girişini oluşturmak için, kullandığınız DbContext 'e bir `DbSet<>` özelliği ekleyin.  Azure Mobile Apps için varsayılan proje şablonunda, DbContext, `Models\MobileServiceContext.cs`olarak adlandırılır:
+DTO, SQL veritabanıiçindeki tabloyu tanımlamak için kullanılır.  Veritabanı girişini oluşturmak için, `DbSet<>` kullanmakta olduğunuz DbContext'a bir özellik ekleyin.  Azure Mobil Uygulamaları için varsayılan proje şablonunda `Models\MobileServiceContext.cs`DbContext şu şekilde adlandırılır:
 
     public class MobileServiceContext : DbContext
     {
@@ -188,79 +188,79 @@ DTO, tabloyu SQL veritabanı içinde tanımlamak için kullanılır.  Veritaban�
         }
     }
 
-Azure SDK 'Sı yüklüyse, artık aşağıdaki gibi bir şablon tablo denetleyicisi oluşturabilirsiniz:
+Azure SDK yüklüyse, artık aşağıdaki gibi bir şablon tablo denetleyicisi oluşturabilirsiniz:
 
-1. Denetleyiciler klasörüne sağ tıklayın ve > denetleyicisi **Ekle** **...** seçeneğini belirleyin.
-2. **Azure Mobile Apps tablo denetleyicisi** seçeneğini belirleyin ve ardından **Ekle**' ye tıklayın.
-3. **Denetleyici Ekle** iletişim kutusunda:
-   * **Model sınıfı** açılan menüsünde Yeni DTO ' ı seçin.
-   * **DbContext** açılan menüsünde, mobil hizmet DbContext sınıfını seçin.
-   * Denetleyici adı sizin için oluşturulur.
-4. **Ekle**'ye tıklayın.
+1. Denetleyiciler klasörüne sağ tıklayın ve > **Denetleyici Ekle'yi seçin...**. **Add**
+2. Azure **Mobil Uygulamalar Tablo Denetleyicisi** seçeneğini seçin ve ardından **Ekle'yi**tıklatın.
+3. Denetleyici **Ekle** iletişim kutusunda:
+   * Model **sınıfı** açılır düşüşünde yeni DTO'nuzu seçin.
+   * **DbContext** açılır düşüşünde, Mobil Hizmet DbContext sınıfını seçin.
+   * Denetleyici adı sizin için oluşturuldu.
+4. **Ekle**’ye tıklayın.
 
-Hızlı başlangıç sunucu projesi basit bir **TodoItemController**için bir örnek içerir.
+Quickstart sunucu projesi basit bir **TodoItemController**için bir örnek içerir.
 
-### <a name="adjust-pagesize"></a>Nasıl yapılır: tablo disk belleği boyutunu ayarlama
-Azure Mobile Apps, varsayılan olarak istek başına 50 kayıt döndürür.  Sayfalama, istemcinin kullanıcı ARABIRIMI iş parçacığını veya sunucusunu çok uzun süredir bağlamamasını sağlar ve iyi bir kullanıcı deneyimi sağlar. Tablo disk belleği boyutunu değiştirmek için, "izin verilen sorgu boyutu" sunucu tarafı ve istemci tarafı sayfa boyutu, sunucu tarafı "izin verilen sorgu boyutu" `EnableQuery` özniteliği kullanılarak ayarlanır:
+### <a name="how-to-adjust-the-table-paging-size"></a><a name="adjust-pagesize"></a>Nasıl yapılsın: Tablo sayfalama boyutunu ayarlama
+Varsayılan olarak, Azure Mobile Apps istek başına 50 kayıt döndürür.  Sayfalama, istemcinin kullanıcı arabirimi iş parçacığıveya sunucuyu çok uzun süre bağlamamasını sağlayarak iyi bir kullanıcı deneyimi sağlar. Tablo sayfalama boyutunu değiştirmek için, sunucu tarafı "izin verilen sorgu boyutu" ve istemci tarafı sayfa boyutunu artırmak `EnableQuery` sunucu tarafı "izin verilen sorgu boyutu" öznitelik kullanılarak ayarlanır:
 
     [EnableQuery(PageSize = 500)]
 
-PageSize 'nın, istemci tarafından istenen boyuttan büyük veya daha büyük olduğundan emin olun.  İstemci sayfa boyutunu değiştirme hakkında ayrıntılı bilgi için, belirli istemciye nasıl bir şekilde bakın.
+PageSize'ın istemci tarafından istenen boyuttan aynı veya daha büyük olduğundan emin olun.  İstemci sayfa boyutunu değiştirme yle ilgili ayrıntılar için belirli istemci HOWTO belgelerine bakın.
 
-## <a name="how-to-define-a-custom-api-controller"></a>Nasıl yapılır: özel bir API denetleyicisi tanımlama
-Özel API denetleyicisi, bir uç nokta açığa çıkarmak için mobil uygulamanızın arka ucuna en temel işlevselliği sağlar. [MobileAppController] özniteliğini kullanarak mobil 'e özgü bir API denetleyicisi kaydedebilirsiniz. `MobileAppController` özniteliği rotayı kaydeder, Mobile Apps JSON serileştiricisini ayarlar ve [istemci sürümü denetimini](app-service-mobile-client-and-server-versioning.md)etkinleştirir.
+## <a name="how-to-define-a-custom-api-controller"></a>Nasıl yapılsın: Özel bir API denetleyicisi tanımlayın
+Özel API denetleyicisi, bir bitiş noktası ortaya çıkararak Mobil Uygulama arka ucunuz için en temel işlevselliği sağlar. [MobileAppController] özelliğini kullanarak mobil cihazlara özel bir API denetleyicisi kaydedebilirsiniz. Öznitelik `MobileAppController` rotayı kaydeder, Mobil Uygulamalar JSON serializer'ı ayarlar ve [istemci sürüm denetimini](app-service-mobile-client-and-server-versioning.md)açar.
 
-1. Visual Studio 'da denetleyiciler klasörüne sağ tıklayın, ardından > **denetleyicisi** **Ekle** ' ye tıklayın, **Web API 2 denetleyicisi&mdash;boş** ' ı seçin ve **Ekle**' ye tıklayın.
-2. `CustomController`gibi bir **Denetleyici adı**sağlayın ve **Ekle**' ye tıklayın.
-3. Yeni denetleyici sınıf dosyasında aşağıdaki using ifadesini ekleyin:
+1. Visual Studio'da Denetleyiciler klasörüne sağ tıklayın, ardından**Denetleyici** **Ekle'yi** > tıklatın, **Web API 2 Controller&mdash;Boş'u** seçin ve **Ekle'yi**tıklatın.
+2. Denetleyici **adı**,örneğin, `CustomController`ve **Ekle'yi**tıklatın.
+3. Yeni denetleyici sınıfı dosyasında aşağıdaki leri kullanarak ifade yi ekleyin:
 
         using Microsoft.Azure.Mobile.Server.Config;
-4. Aşağıdaki örnekte olduğu gibi, **[Mobileappcontroller]** özniteliğini API denetleyicisi sınıf tanımına uygulayın:
+4. Aşağıdaki örnekte olduğu gibi API denetleyici sınıf tanımına **[MobileAppController]** atniteliğiuygulayın:
 
         [MobileAppController]
         public class CustomController : ApiController
         {
               //...
         }
-5. App_Start/Startup.MobileApp.cs dosyasında, aşağıdaki örnekte olduğu gibi **Mapapicontrolleyiciler** uzantı yöntemine bir çağrı ekleyin:
+5. App_Start/Startup.MobileApp.cs dosyasında, aşağıdaki örnekte olduğu gibi **MapApiControllers** uzantı yöntemine bir çağrı ekleyin:
 
         new MobileAppConfiguration()
             .MapApiControllers()
             .ApplyTo(config);
 
-`MapApiControllers()`yerine `UseDefaultConfiguration()` uzantısı yöntemini de kullanabilirsiniz. **Mobileappcontrollerattribute** uygulanmış herhangi bir denetleyiciye istemciler tarafından erişilebilir, ancak herhangi bir mobil uygulama istemci SDK 'sını kullanan istemciler tarafından doğru şekilde tüketilmeyebilir.
+Uzantı yöntemini `UseDefaultConfiguration()` de '' yerine `MapApiControllers()`kullanabilirsiniz. **MobileAppControllerAttribute** uygulanan olmayan herhangi bir denetleyici hala istemciler tarafından erişilebilir, ancak doğru herhangi bir Mobil App istemciSDK kullanarak istemciler tarafından tüketilen olmayabilir.
 
-## <a name="how-to-work-with-authentication"></a>Nasıl yapılır: kimlik doğrulamasıyla çalışma
-Azure Mobile Apps, mobil arka ucunuzun güvenliğini sağlamak için App Service kimlik doğrulaması/yetkilendirme kullanır.  Bu bölümde, .NET arka uç sunucu projenizde aşağıdaki kimlik doğrulama ile ilgili görevlerin nasıl gerçekleştirileceği gösterilmektedir:
+## <a name="how-to-work-with-authentication"></a>Nasıl yapılır: Kimlik doğrulamayla çalışma
+Azure Mobile Apps, mobil arka uçunuzu güvence altına almak için Uygulama Hizmeti Kimlik Doğrulaması / Yetkilendirme'yi kullanır.  Bu bölümde, .NET arka uç sunucu projenizde aşağıdaki kimlik doğrulamayla ilgili görevlerin nasıl gerçekleştirilişiyi gösterir:
 
-* [Nasıl yapılır: sunucu projesine kimlik doğrulaması ekleme](#add-auth)
-* [Nasıl yapılır: uygulamanız için özel kimlik doğrulaması kullanma](#custom-auth)
-* [Nasıl yapılır: kimliği doğrulanmış kullanıcı bilgilerini alma](#user-info)
-* [Nasıl yapılır: yetkili kullanıcılar için veri erişimini kısıtlama](#authorize)
+* [Nasıl yapilir: Sunucu projesine kimlik doğrulama ekleme](#add-auth)
+* [Nasıl kullanılır: Uygulamanız için özel kimlik doğrulaması kullanın](#custom-auth)
+* [Nasıl yapılsın: Kimlik doğrulaması kullanıcı bilgilerini alma](#user-info)
+* [Nasıl kullanılır: Yetkili kullanıcılar için veri erişimini kısıtlama](#authorize)
 
-### <a name="add-auth"></a>Nasıl yapılır: sunucu projesine kimlik doğrulaması ekleme
-**Mobileappconfiguration** nesnesini genişleterek ve owın ara yazılımını yapılandırarak sunucu projenize kimlik doğrulama ekleyebilirsiniz. [Microsoft. Azure. Mobile. Server. QuickStart] paketini yüklediğinizde ve **UseDefaultConfiguration** genişletme yöntemini çağırdığınızda, adım 3 ' e atlayabilirsiniz.
+### <a name="how-to-add-authentication-to-a-server-project"></a><a name="add-auth"></a>Nasıl yapilir: Sunucu projesine kimlik doğrulama ekleme
+**MobileAppConfiguration** nesnesini genişleterek ve OWIN ara yazılımını yapılandırarak sunucu projenize kimlik doğrulama sı ekleyebilirsiniz. [Microsoft.Azure.Mobile.Server.Quickstart] paketini yüklediğinizde ve **UseDefaultConfiguration** uzantı yöntemini aradiğinizde, adım 3'e atlayabilirsiniz.
 
-1. Visual Studio 'da [Microsoft. Azure. Mobile. Server. Authentication] paketini yükledikten sonra.
-2. Startup.cs proje dosyasında, **yapılandırma** yönteminin başına aşağıdaki kod satırını ekleyin:
+1. Visual Studio'da [Microsoft.Azure.Mobile.Server.Authentication paketini] yükleyin.
+2. proje Startup.cs, **Yapılandırma** yönteminin başında aşağıdaki kod satırını ekleyin:
 
         app.UseAppServiceAuthentication(config);
 
     Bu OWIN ara yazılım bileşeni, ilişkili App Service ağ geçidi tarafından verilen belirteçleri doğrular.
-3. Kimlik doğrulaması gerektiren herhangi bir denetleyiciye veya yönteme `[Authorize]` özniteliğini ekleyin.
+3. `[Authorize]` Özniteliği kimlik doğrulaması gerektiren herhangi bir denetleyiciye veya yönteme ekleyin.
 
-Mobile Apps arka ucunuza istemcilerin kimliğini doğrulama hakkında bilgi edinmek için bkz. [uygulamanıza kimlik doğrulaması ekleme](app-service-mobile-ios-get-started-users.md).
+Mobil Uygulamalar arka uçunuzda istemcilerin kimliğini niçin doğruleyeceğinizi öğrenmek için [uygulamanıza kimlik doğrulama ekleme](app-service-mobile-ios-get-started-users.md)'ye bakın.
 
-### <a name="custom-auth"></a>Nasıl yapılır: uygulamanız için özel kimlik doğrulaması kullanma
+### <a name="how-to-use-custom-authentication-for-your-application"></a><a name="custom-auth"></a>Nasıl kullanılır: Uygulamanız için özel kimlik doğrulaması kullanın
 > [!IMPORTANT]
-> Özel kimlik doğrulamasını etkinleştirmek için, önce Azure portal App Service bir sağlayıcı seçmeden App Service kimlik doğrulamasını etkinleştirmeniz gerekir. Bu, WEBSITE_AUTH_SIGNING_KEY ortam değişkenini barındırılırken etkinleştirir.
+> Özel kimlik doğrulamasını etkinleştirmek için, Azure portalında Uygulama Hizmetiniz için bir sağlayıcı seçmeden önce Uygulama Hizmeti Kimlik Doğrulaması'nı etkinleştirmeniz gerekir. Bu, barındırıldığında WEBSITE_AUTH_SIGNING_KEY ortam değişkenini etkinleştirecektir.
 > 
 > 
-> App Service kimlik doğrulaması/yetkilendirme sağlayıcılarından birini kullanmak istemiyorsanız, kendi oturum açma sisteminizi uygulayabilirsiniz. Kimlik doğrulama belirteci oluşturmaya yardımcı olmak için [Microsoft. Azure. Mobile. Server. Login] paketini yükler.  Kullanıcı kimlik bilgilerini doğrulamak için kendi kodunuzu girin. Örneğin, bir veritabanında sallanan ve karma hale getirilmiş parolalara karşı kontrol edebilirsiniz. Aşağıdaki örnekte, `isValidAssertion()` metodu (başka bir yerde tanımlanır) Bu denetimlerden sorumludur.
+> Uygulama Hizmeti Kimlik Doğrulama/Yetkilendirme sağlayıcılarından birini kullanmak istemiyorsanız, kendi giriş sisteminizi uygulayabilirsiniz. Kimlik doğrulama belirteç oluşturmakonusunda yardımcı olmak için [Microsoft.Azure.Mobile.Server.Login] paketini yükleyin.  Kullanıcı kimlik bilgilerini doğrulamak için kendi kodunuzu sağlayın. Örneğin, bir veritabanında tuzlu ve hashed parolalara karşı denetleyebilirsiniz. Aşağıdaki örnekte, `isValidAssertion()` yöntem (başka bir yerde tanımlanmış) bu denetimlerden sorumludur.
 
-Özel kimlik doğrulaması, bir ApiController oluşturarak ve `register` ve `login` eylemleri ortaya çıkaran şekilde gösterilir. İstemci, kullanıcıdan bilgileri toplamak için özel bir kullanıcı arabirimi kullanmalıdır.  Daha sonra bilgiler, standart bir HTTP POST çağrısıyla API 'ye gönderilir. Sunucu onaylama işlemi doğrulandıktan sonra `AppServiceLoginHandler.CreateToken()` yöntemi kullanılarak bir belirteç verilir.  ApiController `[MobileAppController]` özniteliğini **kullanmamalıdır** .
+Özel kimlik doğrulaması, bir ApiController oluşturarak ve teşhir `register` ve `login` eylemlerle ortaya çıkar. İstemci, bilgileri kullanıcıdan toplamak için özel bir kullanıcı aracı kullanmalıdır.  Bilgiler daha sonra standart bir HTTP POST çağrısıyla API'ye gönderilir. Sunucu iddiayı doğruladıktan sonra, `AppServiceLoginHandler.CreateToken()` yöntem kullanılarak bir belirteç verilir.  ApiController özniteliği **kullanmamalıdır.** `[MobileAppController]`
 
-Örnek bir `login` eylemi:
+Örnek `login` bir eylem:
 
         public IHttpActionResult Post([FromBody] JObject assertion)
         {
@@ -283,7 +283,7 @@ Mobile Apps arka ucunuza istemcilerin kimliğini doğrulama hakkında bilgi edin
             }
         }
 
-Önceki örnekte, LoginResult ve LoginResultUser, gerekli özellikleri açığa çıkarıseri hale getirilebilir nesnelerdir. İstemci, oturum açma yanıtlarının formun JSON nesneleri olarak döndürülmesini bekliyor:
+Önceki örnekte, LoginResult ve LoginResultUser gerekli özellikleri açığa serileştirilebilir nesnelerdir. İstemci, oturum açma yanıtlarının formun JSON nesneleri olarak döndürülmesini bekler:
 
         {
             "authenticationToken": "<token>",
@@ -292,31 +292,31 @@ Mobile Apps arka ucunuza istemcilerin kimliğini doğrulama hakkında bilgi edin
             }
         }
 
-`AppServiceLoginHandler.CreateToken()` yöntemi bir *hedef kitle* ve *veren* parametresi içerir. Bu parametrelerin her ikisi de, HTTPS şeması kullanılarak uygulama kökinizin URL 'sine ayarlanır. Benzer şekilde, *SecretKey* değerini uygulamanızın İmzalama anahtarının değeri olacak şekilde ayarlamanız gerekir. İmzalama anahtarını, anahtarları krem etmek ve kullanıcıların kimliğine bürünmek için kullanılabilecek şekilde dağıtmayın. App Service ' de barındırılırken imzalama anahtarını, *\_kimlik doğrulama\_imzalama\_anahtar* ortam değişkenine başvurarak alabilirsiniz. Yerel bir hata ayıklama bağlamında gerekliyse, anahtarı almak ve uygulamayı bir uygulama ayarı olarak depolamak için [kimlik doğrulamasında yerel hata ayıklama](#local-debug) bölümündeki yönergeleri izleyin.
+Yöntem, `AppServiceLoginHandler.CreateToken()` bir *hedef kitle* ve *veren* parametre içerir. Bu parametrelerin her ikisi de HTTPS düzenini kullanarak uygulama kökünüzün URL'sine ayarlanır. Benzer *şekilde, uygulamanızın* imzalama anahtarının değeri olarak secretKey'i ayarlamanız gerekir. Anahtarlarını darp etmek ve kullanıcıları taklit etmek için kullanılabilen imza anahtarını istemciye dağıtmayın. *Web sitesi\_AUTH\_SIGNING\_KEY* ortam değişkenine başvurarak App Service'de barındırılan imza anahtarını elde edebilirsiniz. Yerel hata ayıklama bağlamında gerekirse, anahtarı almak ve uygulama ayarı olarak depolamak için [kimlik doğrulama bölümüyle Yerel hata ayıklama](#local-debug) yönergelerini izleyin.
 
-Verilen belirteç diğer talepleri ve bir süre sonu tarihini de içerebilir.  En düşük düzeyde, verilen belirtecin bir konu (**Sub**) talebi içermesi gerekir.
+Verilen belirteç, diğer talepleri ve son kullanma tarihini de içerebilir.  En az, verilen belirteç bir konu **(alt)** iddia içermelidir.
 
-Kimlik doğrulama yolunu aşırı yükleyerek standart istemci `loginAsync()` yöntemini destekleyebilirsiniz.  İstemci oturum açmak için `client.loginAsync('custom');` çağırırsa, yönlendirmenize `/.auth/login/custom`olması gerekir.  `MapHttpRoute()`kullanarak özel kimlik doğrulama denetleyicisinin yolunu ayarlayabilirsiniz:
+Kimlik doğrulama rotasını `loginAsync()` aşırı yükleyerek standart istemci yöntemini destekleyebilirsiniz.  İstemci `client.loginAsync('custom');` oturum açmak için ararsa, rotanız `/.auth/login/custom`.  Özel kimlik doğrulama denetleyicisinin rotasını `MapHttpRoute()`aşağıdakileri kullanarak ayarlayabilirsiniz:
 
     config.Routes.MapHttpRoute("custom", ".auth/login/custom", new { controller = "CustomAuth" });
 
 > [!TIP]
-> `loginAsync()` yaklaşımını kullanmak, kimlik doğrulama belirtecinin hizmete yapılan her sonraki çağrıya eklenmesini sağlar.
+> Yaklaşımın `loginAsync()` kullanılması, kimlik doğrulama belirtecinin hizmete sonraki her çağrıya eklenmesini sağlar.
 >
 >
 
-### <a name="user-info"></a>Nasıl yapılır: kimliği doğrulanmış kullanıcı bilgilerini alma
-App Service tarafından bir kullanıcının kimliği doğrulandığında, .NET arka uç kodunuzda atanan kullanıcı KIMLIĞINE ve diğer bilgilere erişebilirsiniz. Kullanıcı bilgileri, arka uçta yetkilendirme kararları oluşturmak için kullanılabilir. Aşağıdaki kod bir istekle ilişkili kullanıcı KIMLIĞINI edinir:
+### <a name="how-to-retrieve-authenticated-user-information"></a><a name="user-info"></a>Nasıl yapılsın: Kimlik doğrulaması kullanıcı bilgilerini alma
+Bir kullanıcının App Service tarafından kimliği doğrulandığında, atanan kullanıcı kimliğine ve diğer bilgilere .NET arka uç kodunuzdan erişebilirsiniz. Kullanıcı bilgileri arka uçta yetkilendirme kararları için kullanılabilir. Aşağıdaki kod, bir istekle ilişkili kullanıcı kimliğini alır:
 
     // Get the SID of the current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
     string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-SID, sağlayıcıya özgü Kullanıcı KIMLIĞINDEN türetilir ve belirli bir Kullanıcı ve oturum açma sağlayıcısı için statiktir.  SID, geçersiz kimlik doğrulama belirteçleri için null.
+SID sağlayıcıya özgü kullanıcı kimliğinden türetilmiştir ve belirli bir kullanıcı ve oturum açma sağlayıcısı için statiktir.  SID geçersiz kimlik doğrulama belirteçleri için null.
 
-App Service Ayrıca, oturum açma sağlayıcınızdan belirli talepler istemeniz de sağlar. Her kimlik sağlayıcısı, kimlik sağlayıcısı SDK 'sını kullanarak daha fazla bilgi sağlayabilir.  Örneğin, arkadaşlar bilgileri için Facebook Graph API kullanabilirsiniz.  Azure portal sağlayıcı dikey penceresinde istenen talepleri belirtebilirsiniz. Bazı talepler kimlik sağlayıcısı ile ek yapılandırma gerektirir.
+Uygulama Hizmeti, oturum açma sağlayıcınızdan belirli taleplerde bulunmanızı da sağlar. Her kimlik sağlayıcısı, kimlik sağlayıcısı SDK'yı kullanarak daha fazla bilgi sağlayabilir.  Örneğin, arkadaş bilgileri için Facebook Graph API'yi kullanabilirsiniz.  Azure portalında sağlayıcı bıçak ta istenen talepleri belirtebilirsiniz. Bazı talepler, kimlik sağlayıcısıyla ek yapılandırma gerektirir.
 
-Aşağıdaki kod, Facebook Graph API karşı istek yapmak için gereken erişim belirtecini içeren oturum açma kimlik bilgilerini almak için **Getappserviceıdentityasync** genişletme yöntemini çağırır:
+Aşağıdaki kod, Facebook Graph API'ye karşı istekte bulunmak için gereken erişim belirteci içeren giriş kimlik bilgilerini almak için **GetAppServiceIdentityAsync** uzantısı yöntemini çağırır:
 
     // Get the credentials for the logged-in user.
     var credentials =
@@ -340,10 +340,10 @@ Aşağıdaki kod, Facebook Graph API karşı istek yapmak için gereken erişim 
         var fbInfo = await resp.Content.ReadAsStringAsync();
     }
 
-**Getappserviceıdentityasync** genişletme yöntemini sağlamak üzere `System.Security.Principal` için bir using bildirimi ekleyin.
+`System.Security.Principal` **GetAppServiceIdentityAsync** uzantı yöntemini sağlamak için bir kullanım ifadesi ekleyin.
 
-### <a name="authorize"></a>Nasıl yapılır: yetkili kullanıcılar için veri erişimini kısıtlama
-Önceki bölümde, kimliği doğrulanmış bir kullanıcının kullanıcı KIMLIĞINI nasıl alacağınızı gösterdik. Bu değere göre verilere ve diğer kaynaklara erişimi kısıtlayabilirsiniz. Örneğin, tablolara bir UserID sütunu eklemek ve sorgu sonuçlarının Kullanıcı KIMLIĞINE göre filtrelenmesi, döndürülen verileri yalnızca yetkili kullanıcılara sınırlamak için basit bir yoldur. Aşağıdaki kod yalnızca SID, TodoItem tablosundaki UserID sütunundaki değerle eşleştiğinde veri satırlarını döndürür:
+### <a name="how-to-restrict-data-access-for-authorized-users"></a><a name="authorize"></a>Nasıl kullanılır: Yetkili kullanıcılar için veri erişimini kısıtlama
+Önceki bölümde, kimlik doğrulaması yapılan bir kullanıcının kullanıcı kimliğini nasıl alabileceğimizi gösterdik. Bu değere dayalı olarak verilere ve diğer kaynaklara erişimi kısıtlayabilirsiniz. Örneğin, tablolara userId sütunu eklemek ve sorgu sonuçlarını kullanıcı kimliğine göre filtrelemek, döndürülen verileri yalnızca yetkili kullanıcılarla sınırlamanın basit bir yoludur. Aşağıdaki kod, yalnızca SID TodoItem tablosundaki UserId sütunundaki değerle eşleştiğinde veri satırlarını döndürür:
 
     // Get the SID of the current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
@@ -352,20 +352,20 @@ Aşağıdaki kod, Facebook Graph API karşı istek yapmak için gereken erişim 
     // Only return data rows that belong to the current user.
     return Query().Where(t => t.UserId == sid);
 
-`Query()` yöntemi, filtrelemeyi işlemek için LINQ tarafından işlenebilen bir `IQueryable` döndürür.
+Yöntem, `Query()` filtreleme işlemek için LINQ tarafından manipüle edilebilir bir `IQueryable` döndürür.
 
-## <a name="how-to-add-push-notifications-to-a-server-project"></a>Nasıl yapılır: sunucu projesine anında iletme bildirimleri ekleme
-**Mobileappconfiguration** nesnesini genişleterek ve bir Notification Hubs istemcisi oluşturarak sunucu projenize anında iletme bildirimleri ekleyin.
+## <a name="how-to-add-push-notifications-to-a-server-project"></a>Nasıl yapilir: Sunucu projesine anında iletme bildirimleri ekleme
+**MobileAppConfiguration** nesnesini genişleterek ve bir Bildirim Hub'ları istemcisi oluşturarak sunucu projenize anında iletme bildirimleri ekleyin.
 
-1. Visual Studio 'da sunucu projesine sağ tıklayın ve **NuGet Paketlerini Yönet**' e tıklayın, `Microsoft.Azure.Mobile.Server.Notifications`arayın ve ardından **Install**' a tıklayın.
-2. Notification Hubs istemci kitaplığını içeren `Microsoft.Azure.NotificationHubs` paketini yüklemek için bu adımı tekrarlayın.
-3. App_Start/Startup.MobileApp.cs ' de, başlatma sırasında **Addpushnotifications ()** uzantı yöntemine bir çağrı ekleyin:
+1. Visual Studio'da sunucu projesini sağ tıklatın ve **NuGet Paketlerini Yönet'i** `Microsoft.Azure.Mobile.Server.Notifications`tıklatın, ardından **Yükle'yi**tıklatın.
+2. Bildirim Hub'ları `Microsoft.Azure.NotificationHubs` istemci kitaplığını içeren paketi yüklemek için bu adımı yineleyin.
+3. App_Start/Startup.MobileApp.cs ve başlatma sırasında **AddPushBildirimler()** uzantısı yöntemine bir çağrı ekleyin:
 
         new MobileAppConfiguration()
             // other features...
             .AddPushNotifications()
             .ApplyTo(config);
-4. Notification Hubs istemcisi oluşturan aşağıdaki kodu ekleyin:
+4. Bildirim Hub'ları istemcisi oluşturan aşağıdaki kodu ekleyin:
 
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
@@ -381,15 +381,15 @@ Aşağıdaki kod, Facebook Graph API karşı istek yapmak için gereken erişim 
         NotificationHubClient hub = NotificationHubClient
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-Artık Notification Hubs istemcisini, kayıtlı cihazlara anında iletme bildirimleri göndermek için kullanabilirsiniz. Daha fazla bilgi için bkz. [uygulamanıza anında iletme bildirimleri ekleme](app-service-mobile-ios-get-started-push.md). Notification Hubs hakkında daha fazla bilgi edinmek için bkz. [Notification Hubs genel bakış](../notification-hubs/notification-hubs-push-notification-overview.md).
+Artık bildirim hub istemcisini kullanarak kayıtlı aygıtlara anında iletme bildirimleri gönderebilirsiniz. Daha fazla bilgi için bkz. [Uygulamanıza anında iletme bildirimleri ekleme](app-service-mobile-ios-get-started-push.md). Bildirim Hub'ları hakkında daha fazla bilgi edinmek için [Bildirim Hub'larına Genel Bakış'a](../notification-hubs/notification-hubs-push-notification-overview.md)bakın.
 
-## <a name="tags"></a>Nasıl yapılır: etiketleri kullanarak hedeflenen gönderimi etkinleştirme
-Notification Hubs, etiketleri kullanarak belirli kayıtlara hedeflenmiş bildirimler göndermenizi sağlar. Birkaç etiket otomatik olarak oluşturulur:
+## <a name="how-to-enable-targeted-push-using-tags"></a><a name="tags"></a>Nasıl Kullanılır: Etiketleri kullanarak hedefli itmeyi etkinleştirme
+Bildirim Hub'ları, etiketleri kullanarak belirli kayıtlara hedefli bildirimler göndermenize olanak tanır. Birkaç etiket otomatik olarak oluşturulur:
 
-* Yükleme KIMLIĞI belirli bir cihazı tanımlar.
-* Kimliği doğrulanmış SID 'yi temel alan Kullanıcı kimliği belirli bir kullanıcıyı tanımlar.
+* Yükleme Kimliği belirli bir aygıtı tanımlar.
+* Kimlik doğrulaması SID'yi temel alan Kullanıcı Kimliği belirli bir kullanıcıyı tanımlar.
 
-Yükleme KIMLIĞINE **MobileServiceClient**üzerinde **ınstalyüklemekimliği** özelliğinden erişilebilir.  Aşağıdaki örnek, Notification Hubs ' deki belirli bir yüklemeye etiket eklemek için bir yükleme KIMLIĞININ nasıl kullanılacağını gösterir:
+Yükleme kimliğine **MobileServiceClient'daki** **installationId** özelliğinden erişilebilir.  Aşağıdaki örnek, Bildirim Hub'larında belirli bir yüklemeye etiket eklemek için yükleme kimliğinin nasıl kullanılacağını gösterir:
 
     hub.PatchInstallation("my-installation-id", new[]
     {
@@ -401,12 +401,12 @@ Yükleme KIMLIĞINE **MobileServiceClient**üzerinde **ınstalyüklemekimliği**
         }
     });
 
-Anında iletme bildirimi kaydı sırasında istemci tarafından sağlanan Etiketler, yükleme oluşturulurken arka uç tarafından yoksayılır. Bir istemcinin yüklemeye Etiketler eklemesini sağlamak için, önceki kalıbı kullanarak Etiketler ekleyen özel bir API oluşturmanız gerekir.
+Anında bildirim kaydı sırasında istemci tarafından sağlanan tüm etiketler, yükleme oluşturulurken arka uç tarafından yoksayılır. İstemcinin yüklemeye etiket eklemesini sağlamak için, önceki deseni kullanarak etiket ekleyen özel bir API oluşturmanız gerekir.
 
-Bir örnek için App Service Mobile Apps tamamlanan hızlı başlangıç örneğinde [istemci tarafından eklenmiş anında iletme bildirimi etiketleri][5] bölümüne bakın.
+Uygulama Hizmeti Mobil Uygulamaları'nda [İstemci tarafından eklenen anında iletme bildirim etiketlerini][5] görün örnek olarak hızlı başlatma örneğini tamamlamıştır.
 
-## <a name="push-user"></a>Nasıl yapılır: kimliği doğrulanmış bir kullanıcıya anında iletme bildirimleri gönderme
-Kimliği doğrulanmış bir Kullanıcı anında iletme bildirimlerini kaydettiğinde, kayda otomatik olarak bir kullanıcı KIMLIĞI etiketi eklenir. Bu etiketi kullanarak, bu kişi tarafından kaydedilen tüm cihazlara anında iletme bildirimleri gönderebilirsiniz. Aşağıdaki kod, isteği yapan kullanıcının SID 'sini alır ve bu kişiye ait her cihaz kaydına bir şablon anında iletme bildirimi gönderir:
+## <a name="how-to-send-push-notifications-to-an-authenticated-user"></a><a name="push-user"></a>Nasıl yapılsın: Kimlik doğrulaması yapılan bir kullanıcıya anında iletme bildirimleri gönderme
+Kimlik doğrulaması yapılan bir kullanıcı anında iletme bildirimleri için kaydolduğunda, kullanıcı kimliği etiketi otomatik olarak kayda eklenir. Bu etiketi kullanarak, o kişi tarafından kayıtlı tüm aygıtlara anında iletme bildirimleri gönderebilirsiniz. Aşağıdaki kod, kullanıcının isteği yapan SID'sini alır ve bu kişi için her aygıt kaydına bir şablon anında iletme bildirimi gönderir:
 
     // Get the current user SID and create a tag for the current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
@@ -419,37 +419,37 @@ Kimliği doğrulanmış bir Kullanıcı anında iletme bildirimlerini kaydettiğ
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-Kimliği doğrulanmış bir istemciden anında iletme bildirimleri için kaydolurken, kayıt denenmeden önce kimlik doğrulamanın tamam olduğundan emin olun. Daha fazla bilgi için bkz. .NET arka ucu için App Service Mobile Apps tamamlanan hızlı başlangıç örneğinde [kullanıcılara gönderim][6] .
+Kimlik doğrulaması yapılan bir istemciden gelen anında iletme bildirimleri için kaydolurken, kayıt denemeden önce kimlik doğrulamanın tamamlandığından emin olun. Daha fazla bilgi için ,.NET arka uç için hızlı başlatma örneğini tamamlayan App Service Mobile Apps'taki [kullanıcılara itin'e][6] bakın.
 
-## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Nasıl yapılır: .NET Server SDK hata ayıklama ve sorunlarını giderme
-Azure App Service, ASP.NET uygulamaları için çeşitli hata ayıklama ve sorun giderme teknikleri sağlar:
+## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Nasıl yapılacağını: Hata ayıklama ve .NET Server SDK sorun giderme
+Azure Uygulama Hizmeti, ASP.NET uygulamalar için çeşitli hata ayıklama ve sorun giderme teknikleri sağlar:
 
-* [Azure App Service izleme](../app-service/web-sites-monitor.md)
-* [Azure App Service tanılama günlüğünü etkinleştirme](../app-service/troubleshoot-diagnostic-logs.md)
-* [Visual Studio 'da Azure App Service sorunlarını giderme](../app-service/troubleshoot-dotnet-visual-studio.md)
+* [Azure Uygulama Hizmetini İzleme](../app-service/web-sites-monitor.md)
+* [Azure Uygulama Hizmetinde Tanısal Günlük'e Olanak Tanılama](../app-service/troubleshoot-diagnostic-logs.md)
+* [Visual Studio'da Azure Uygulama Hizmeti sorun giderme](../app-service/troubleshoot-dotnet-visual-studio.md)
 
-### <a name="logging"></a>Günlüğe kaydetme
-Standart ASP.NET Trace yazma kullanarak App Service tanılama günlüklerine yazabilirsiniz. Günlüklere yazmadan önce, mobil uygulama arka ucunuzdaki tanılamayı etkinleştirmeniz gerekir.
+### <a name="logging"></a>Günlüğe Kaydetme
+Standart ASP.NET izleme yazısını kullanarak Uygulama Hizmeti tanılama günlüklerine yazabilirsiniz. Günlüklere yazabilmeniz için Mobil Uygulama arka uçunuzda tanılamayı etkinleştirmeniz gerekir.
 
 Tanılamayı etkinleştirmek ve günlüklere yazmak için:
 
-1. [Uygulama günlüğünü etkinleştirme (Windows)](../app-service/troubleshoot-diagnostic-logs.md#enable-application-logging-windows)bölümündeki adımları izleyin.
-2. Aşağıdaki using ifadesini kod dosyanıza ekleyin:
+1. [Uygulama günlüğe kaydetme (Windows)](../app-service/troubleshoot-diagnostic-logs.md#enable-application-logging-windows)adımlarını izleyin.
+2. Kod dosyanıza aşağıdaki ifadesini ekleyin:
 
         using System.Web.Http.Tracing;
-3. .NET arka ucunu tanılama günlüklerine yazmak için aşağıdaki gibi bir izleme yazıcısı oluşturun:
+3. .NET arka ucundan tanı günlüklerine yazmak için aşağıdaki gibi bir izleme yazarı oluşturun:
 
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
-4. Sunucu projenizi yeniden yayımlayın ve kod yolunu günlüğe kaydetme ile yürütmek için mobil uygulama arka ucuna erişin.
-5. [Erişim günlüğü dosyalarında](../app-service/troubleshoot-diagnostic-logs.md#access-log-files)açıklandığı gibi günlükleri indirip değerlendirin.
+4. Sunucu projenizi yeniden yayımlayın ve günlük le kod yolunu yürütmek için Mobil Uygulama arka ucuna erişin.
+5. [Access günlük dosyalarında](../app-service/troubleshoot-diagnostic-logs.md#access-log-files)açıklandığı gibi günlükleri indirin ve değerlendirin.
 
-### <a name="local-debug"></a>Kimlik doğrulamasıyla yerel hata ayıklama
-Değişiklikleri buluta yayımlamadan önce test etmek için uygulamanızı yerel olarak çalıştırabilirsiniz. Azure Mobile Apps arka uçlarının çoğunda, Visual Studio 'da *F5* tuşuna basın. Ancak, kimlik doğrulaması kullanılırken bazı ek hususlar vardır.
+### <a name="local-debugging-with-authentication"></a><a name="local-debug"></a>Kimlik doğrulama ile yerel hata ayıklama
+Değişiklikleri bulutta yayımlamadan önce test etmek için uygulamanızı yerel olarak çalıştırabilirsiniz. Azure Mobil Uygulamaların çoğu arka uçlarında Visual Studio'da yken *F5* tuşuna basın. Ancak, kimlik doğrulaması kullanırken bazı ek hususlar vardır.
 
-App Service kimlik doğrulaması/yetkilendirme yapılandırılmış bir bulut tabanlı mobil uygulamanıza sahip olmanız gerekir ve istemciniz, alternatif oturum açma Konağı olarak belirtilen bulut uç noktasına sahip olmalıdır. Gereken belirli adımlar için istemci platformunuzun belgelerine bakın.
+Uygulama Hizmeti Kimlik Doğrulaması/Yetkilendirme yapılandırılmış bulut tabanlı bir mobil uygulamanız olmalıdır ve istemcinizin alternatif giriş ana bilgisayarı olarak bulut bitiş noktası belirtilmelidir. Gerekli belirli adımlar için istemci platformuiçin belgelere bakın.
 
-Mobil arka ucunuzun [Microsoft. Azure. Mobile. Server. Authentication] 'ın yüklü olduğundan emin olun. Ardından, uygulamanızın OWıN başlangıç sınıfında `MobileAppConfiguration` `HttpConfiguration`uygulandıktan sonra aşağıdakileri ekleyin:
+Mobil arka uçunuzda [Microsoft.Azure.Mobile.Server.Authentication] yüklü olduğundan emin olun. Daha sonra, uygulamanızın OWIN başlangıç sınıfında, aşağıdakileri ekleyin, `MobileAppConfiguration` `HttpConfiguration`sonra sizin için uygulandı:
 
         app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions()
         {
@@ -459,15 +459,15 @@ Mobil arka ucunuzun [Microsoft. Azure. Mobile. Server. Authentication] 'ın yük
             TokenHandler = config.GetAppServiceTokenHandler()
         });
 
-Yukarıdaki örnekte, HTTPS şemasını kullanarak Web. config dosyanızdaki *Authaudience* ve *authıssuer* uygulama ayarlarını uygulama köklerinizin URL 'si olacak şekilde yapılandırmanız gerekir. Benzer şekilde, *Authsigningkey* ' i uygulamanızın İmzalama anahtarının değeri olacak şekilde ayarlamanız gerekir.
-İmzalama anahtarını almak için:
+Önceki örnekte, HTTPS düzenini kullanarak Web.config dosyanızdaki *authAudience* ve *authIssuer* uygulama ayarlarını uygulama kökünüzün URL'si olacak şekilde yapılandırmanız gerekir. Benzer *şekilde, authSigningKey'i* uygulamanızın imzalama anahtarının değeri olarak ayarlamanız gerekir.
+İmza anahtarını almak için:
 
-1. [Azure portalında] içinde uygulamanıza gidin
-2. **Araçlar**, **kudu**, **Git**öğesine tıklayın.
-3. Kudu yönetim sitesinde **ortam**' a tıklayın.
-4. *Web sitesi\_kimlik doğrulaması\_imzalama\_anahtarı*için değeri bulur.
+1. [Azure portalında] uygulamanıza gidin
+2. **Araçlar**, **Kudu**, **Git**tıklatın .
+3. Kudu Management sitesinde **Çevre'yi**tıklatın.
+4. *WEB SİTESİ\_\_AUTH\_İmZA ANAHTARI*için değeri bulun.
 
-Yerel uygulama yapılandırma uygulamanızda *Authsigningkey* parametresi için imzalama anahtarını kullanın.  Mobil arka ucunuz, yerel olarak çalıştırıldığında belirteçleri doğrulamak için, istemcinin bulut tabanlı uç noktadan belirtecini alacağı anlamına gelir.
+Yerel uygulama config *authSigningKey* parametresi için imza anahtarını kullanın.  Mobil arka ucunuz artık yerel olarak çalışırken belirteçleri doğrulayan ve istemcinin bulut tabanlı bitiş noktasından belirteci elde ettiği donanıma sahip.
 
 [1]: https://msdn.microsoft.com/library/azure/dn961176.aspx
 [2]: https://github.com/Azure/azure-mobile-apps-net-server
@@ -477,9 +477,9 @@ Yerel uygulama yapılandırma uygulamanızda *Authsigningkey* parametresi için 
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
 [Azure portalında]: https://portal.azure.com
 [NuGet.org]: https://www.nuget.org/
-[Microsoft. Azure. Mobile. Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
-[Microsoft. Azure. Mobile. Server. QuickStart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
-[Microsoft. Azure. Mobile. Server. Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
-[Microsoft. Azure. Mobile. Server. Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
-[Microsoft. Azure. Mobile. Server. Notifications]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+[Microsoft.Azure.Mobile.Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
+[Microsoft.Azure.Mobile.Server.Quickstart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
+[Microsoft.Azure.Mobile.Server.Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
+[Microsoft.Azure.Mobile.Server.Giriş]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
+[Microsoft.Azure.Mobile.Server.Bildirimler]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx

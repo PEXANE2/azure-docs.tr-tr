@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü PowerShell-Azure
-description: Windows sanal masaüstü kiracı ortamı ayarlarken PowerShell ile ilgili sorunları giderme.
+title: Windows Sanal Masaüstü PowerShell - Azure
+description: Windows Sanal Masaüstü kiracı ortamını ayarlarken PowerShell ile ilgili sorunları giderme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,49 +9,49 @@ ms.date: 04/08/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 3fb5436c2b5c30c5336385792d0597bdcea2b538
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127476"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Sanal Masaüstü PowerShell
 
-PowerShell 'i Windows sanal masaüstü ile kullanırken oluşan hataları ve sorunları gidermek için bu makaleyi kullanın. PowerShell Uzak Masaüstü Hizmetleri hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü PowerShell](/powershell/module/windowsvirtualdesktop/).
+Windows Virtual Desktop ile PowerShell kullanırken hataları ve sorunları gidermek için bu makaleyi kullanın. Uzak Masaüstü Hizmetleri PowerShell hakkında daha fazla bilgi için [Windows Sanal Masaüstü Powershell'e](/powershell/module/windowsvirtualdesktop/)bakın.
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
-Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
+Windows Sanal Masaüstü Hizmeti'ni ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows Sanal Masaüstü Teknik Topluluğu'nu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) ziyaret edin.
 
-## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Windows sanal masaüstü kurulumu sırasında kullanılan PowerShell komutları
+## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Windows Sanal Masaüstü kurulumu sırasında kullanılan PowerShell komutları
 
-Bu bölümde, Windows sanal masaüstü ayarlanırken genellikle kullanılan PowerShell komutları listelenir ve bunları kullanırken oluşabilecek sorunları çözmeye yönelik yollar sağlanır.
+Bu bölümde, Windows Sanal Masaüstü'nü kurarken genellikle kullanılan PowerShell komutları listelenir ve bunları kullanırken oluşabilecek sorunları çözmenin yollarını sağlar.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Hata: Add-RdsAppGroupUser komutu--belirtilen UserPrincipalName zaten belirtilen konak havuzundaki bir RemoteApp uygulama grubuna atandı
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Hata: Add-RdsAppGroupUser komutu -- Belirtilen UserPrincipalName, belirtilen Ana Bilgisayar Havuzundaki RemoteApp uygulama grubuna zaten atanır
 
 ```Powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
 ```
 
-**Neden:** Kullanılan Kullanıcı adı, farklı türdeki bir uygulama grubuna zaten atandı. Kullanıcılar aynı oturum ana bilgisayar havuzunda hem uzak masaüstü hem de uzak uygulama grubuna atanamaz.
+**Sebep:** Kullanılan kullanıcı adı zaten farklı türde bir uygulama grubuna atanmıştır. Kullanıcılar, aynı oturum ana bilgisayar havuzu altında hem uzak bir masaüstü hem de uzak uygulama grubuna atanamaz.
 
-**Çözüm:** Kullanıcı hem uzak uygulamalara hem de uzak masaüstüne ihtiyaç duyuyorsa, farklı konak havuzları oluşturun veya Uzak masaüstüne Kullanıcı erişimi verin; bu, oturum ana bilgisayar VM üzerinde herhangi bir uygulamanın kullanılmasına izin verir.
+**Düzeltme:** Kullanıcının hem uzak uygulamalara hem de uzak masaüstüne ihtiyacı varsa, farklı ana bilgisayar havuzları oluşturun veya kullanıcıya uzak masaüstüne erişim izni vererek oturum ana bilgisayar VM'deki herhangi bir uygulamanın kullanımına izin verir.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Hata: Add-RdsAppGroupUser komutu--belirtilen UserPrincipalName, uzak masaüstü kiracısı ile ilişkili Azure Active Directory yok
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Hata: Add-RdsAppGroupUser komutu -- Belirtilen UserPrincipalName Uzak Masaüstü kiracıile ilişkili Azure Etkin Dizini'nde yok
 
 ```PowerShell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
 ```
 
-**Neden:** -UserPrincipalName tarafından belirtilen kullanıcı, Windows sanal masaüstü kiracısına bağlı Azure Active Directory bulunamıyor.
+**Sebep:** -UserPrincipalName tarafından belirtilen kullanıcı, Windows Sanal Masaüstü kiracısına bağlı Azure Etkin Dizini'nde bulunamaz.
 
-**Çözüm:** Aşağıdaki listedeki öğeleri onaylayın.
+**Düzeltme:** Aşağıdaki listedeki öğeleri onaylayın.
 
-- Kullanıcı Azure Active Directory eşitleniyor.
-- Kullanıcı, işletmeden müşteriye (B2C) veya işletmeden işletmeye (B2B) ticareti 'ne bağlı değildir.
-- Windows sanal masaüstü kiracısı, doğru Azure Active Directory bağlıdır.
+- Kullanıcı Azure Etkin Dizin'e senkronize edilir.
+- Kullanıcı, işletmeye tüketici (B2C) veya işletmelerarası (B2B) ticaretle bağlı değildir.
+- Windows Sanal Masaüstü kiracısı Azure Etkin Dizini'ni düzeltmeye bağlıdır.
 
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities--User, Yönetim hizmetini sorgulama yetkisine sahip değil
+### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities -- Kullanıcı yönetim hizmetini sorgulama yetkisine izin vermez
 
 ```PowerShell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
@@ -59,39 +59,39 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Neden:** -TenantName parametresi
 
-**Çözüm:** \<TenantName > ile Get-RdsDiagnosticActivities ile-TenantName adlı bir sorun.
+**Düzeltme:** -TenantName Name \<> ile Sorun Get-RdsDiagnosticActivities.
 
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities--Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
+### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities -- kullanıcı yönetim hizmetini sorgulama yetkisine izin vermez
 
 ```PowerShell
 Get-RdsDiagnosticActivities -Deployment -username <username>
 ```
 
-**Neden:** Dağıtım anahtarı kullanılıyor.
+**Sebep:** -Dağıtım anahtarını kullanma.
 
-**Çözüm:** -dağıtım anahtarı yalnızca dağıtım yöneticileri tarafından kullanılabilir. Bu yöneticiler genellikle Uzak Masaüstü Hizmetleri/Windows sanal masaüstü ekibinin üyeleridir. -Deployment anahtarını-TenantName \<, TenantName > ile değiştirin.
+**Düzeltme:** -Dağıtım anahtarı yalnızca dağıtım yöneticileri tarafından kullanılabilir. Bu yöneticiler genellikle Uzak Masaüstü Hizmetleri/Windows Sanal Masaüstü ekibinin üyeleridir. -Dağıtım anahtarını -TenantName \<TenantName> ile değiştirin.
 
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: New-RdsRoleAssignment--Kullanıcı Yönetim hizmetini sorgulama yetkisine sahip değil
+### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Yeni-RdsRoleAssignment -- kullanıcı yönetim hizmetini sorgulama yetkisine izin vermiyor
 
-**Neden 1:** Kullanılan hesabın kiracı üzerinde Uzak Masaüstü Hizmetleri sahip izinleri yok.
+**Neden 1:** Kullanılan hesabın kiracıda Uzak Masaüstü Hizmetleri Sahibi izinleri yoktur.
 
-**1. Çözüm:** Uzak Masaüstü Hizmetleri sahip izinlerine sahip bir kullanıcının rol atamasını yürütmesi gerekir.
+**Düzeltme 1:** Uzak Masaüstü Hizmetleri sahibi izinlerine sahip bir kullanıcının rol atamasını yürütmesi gerekir.
 
-**Neden 2:** Kullanılan hesap Uzak Masaüstü Hizmetleri sahip izinlerine sahip ancak kiracının Azure Active Directory bir parçası değil veya kullanıcının bulunduğu Azure Active Directory sorgulamak için izinlere sahip değil.
+**Neden 2:** Kullanılan hesap Uzak Masaüstü Hizmetleri sahibinin izinlerine sahiptir, ancak kiracının Azure Etkin Dizininin bir parçası değildir veya kullanıcının bulunduğu Azure Etkin Dizini sorgulama izni yoktur.
 
-**2. Çözüm:** Active Directory izinlere sahip bir kullanıcının rol atamasını yürütmesi gerekir.
+**Düzeltme 2:** Active Directory izinlerine sahip bir kullanıcının rol atamasını yürütmesi gerekir.
 
 >[!Note]
->New-RdsRoleAssignment, Azure Active Directory (AD) içinde olmayan bir kullanıcıya izin verebilir.
+>Yeni RdsRoleAssignment, Azure Etkin Dizini'nde (AD) bulunmayan bir kullanıcıya izin veremez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
-- Bir Windows sanal masaüstü ortamında kiracı ve konak havuzu oluştururken oluşan sorunları gidermek için bkz. [kiracı ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
-- Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
-- Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Windows sanal masaüstü hizmeti bağlantıları](troubleshoot-service-connection.md).
-- Uzak Masaüstü istemcileriyle ilgili sorunları gidermek için bkz [. uzak masaüstü Istemcisinde sorun giderme](troubleshoot-client.md)
-- Hizmet hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü ortamı](environment-setup.md).
-- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
-- Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../azure-resource-manager/management/view-activity-logs.md).
-- Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](../azure-resource-manager/templates/deployment-history.md).
+- Windows Sanal Masaüstü sorun giderme ve yükseltme parçalarına genel bakış için [Sorun Giderme genel bakışı, geri bildirim ve desteğe](troubleshoot-set-up-overview.md)bakın.
+- Windows Sanal Masaüstü ortamında kiracı ve ana bilgisayar havuzu oluştururken sorunları gidermek için [Bkz. Kiracı ve ana bilgisayar havuzu oluşturma.](troubleshoot-set-up-issues.md)
+- Windows Sanal Masaüstü'nde sanal makine (VM) yapılandırırken sorunları gidermek için [Oturum ana bilgisayar sanal makine yapılandırmasına](troubleshoot-vm-configuration.md)bakın.
+- Windows Sanal Masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için [Windows Sanal Masaüstü hizmet bağlantılarına](troubleshoot-service-connection.md)bakın.
+- Uzak Masaüstü istemcileriyle ilgili sorunları gidermek için Bkz. [Uzak Masaüstü istemcisi sorun giderme](troubleshoot-client.md)
+- Hizmet hakkında daha fazla bilgi edinmek için [Windows Sanal Masaüstü ortamına](environment-setup.md)bakın.
+- Bir sorun giderme öğreticisine geçmek için [Bkz. Öğretici: Kaynak Yöneticisi şablonu dağıtımları.](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
+- Denetim eylemleri hakkında bilgi edinmek için [Kaynak Yöneticisi ile Denetim işlemlerine](../azure-resource-manager/management/view-activity-logs.md)bakın.
+- Dağıtım sırasında hataları belirlemek için eylemler hakkında bilgi edinmek için [bkz.](../azure-resource-manager/templates/deployment-history.md)

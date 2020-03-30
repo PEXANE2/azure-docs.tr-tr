@@ -1,6 +1,6 @@
 ---
-title: Kimlik doğrulama oturumu yönetimini Yapılandırma-Azure Active Directory
-description: Kullanıcı oturum açma sıklığı ve tarayıcı oturumu kalıcılığı dahil olmak üzere Azure AD kimlik doğrulaması oturumu yapılandırmasını özelleştirin.
+title: Kimlik doğrulama oturumu yönetimini yapılandırma - Azure Etkin Dizini
+description: Kullanıcı oturum sıklığı ve tarayıcı oturumu kalıcılığı dahil olmak üzere Azure AD kimlik doğrulama oturumu yapılandırmasını özelleştirin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,123 +12,123 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263289"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma
+# <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu Erişim ile kimlik doğrulama oturumu yönetimini yapılandırma
 
-Karmaşık dağıtımlarda, kuruluşların kimlik doğrulama oturumlarını kısıtlama gereksinimi olabilir. Bazı senaryolarda şunlar bulunabilir:
+Karmaşık dağıtımlarda, kuruluşların kimlik doğrulama oturumlarını kısıtlaması gerekebilir. Bazı senaryolar şunları içerebilir:
 
-* Yönetilmeyen veya paylaşılan bir cihazdan kaynak erişimi
-* Dış bir ağdan hassas bilgilere erişim
-* Yüksek etki kullanıcıları
+* Yönetilmeyen veya paylaşılan bir aygıttan kaynak erişimi
+* Harici bir ağdan hassas bilgilere erişim
+* Yüksek etkili kullanıcılar
 * Kritik iş uygulamaları
 
-Koşullu erişim denetimleri, tüm kullanıcıları etkilemeden kuruluşunuzdaki belirli kullanım örneklerini hedefleyen ilkeler oluşturmanızı sağlar.
+Koşullu Erişim denetimleri, tüm kullanıcıları etkilemeden kuruluşunuzdaki belirli kullanım durumlarını hedefleyen ilkeler oluşturmanıza olanak sağlar.
 
-İlkenin nasıl yapılandırılacağı hakkında ayrıntılı bilgi almak için önce varsayılan yapılandırmayı inceleyelim.
+İlkenin nasıl yapılandırılabildiğini ayrıntılarına girmeden önce varsayılan yapılandırmayı inceleyelim.
 
 ## <a name="user-sign-in-frequency"></a>Kullanıcı oturum açma sıklığı
 
-Oturum açma sıklığı, bir kullanıcıdan bir kaynağa erişmeye çalışırken yeniden oturum açması istenmeden önce geçen süreyi tanımlar.
+Oturum açma sıklığı, bir kaynağa erişmeye çalışırken kullanıcıdan yeniden oturum açmasının istenmesinden önceki süreyi tanımlar.
 
-Kullanıcı oturum açma sıklığı için Azure Active Directory (Azure AD) varsayılan yapılandırması, 90 günlük bir toplama penceresidir. Kimlik bilgileri için kullanıcılardan genellikle yapılacak bir şey gibi görünse de, bu durum geri yüklenebilir: kimlik bilgilerini düşünmeden girmek için eğitilen kullanıcılar, bunları istemeden kötü amaçlı bir kimlik bilgisi istemine girebilirler.
+Kullanıcı oturum açma sıklığı için Azure Etkin Dizin (Azure AD) varsayılan yapılandırması 90 günlük bir yuvarlanma penceresidir. Kimlik bilgileri için kullanıcılarsoran genellikle mantıklı bir şey gibi görünüyor, ama geri tepebilir: düşünmeden kimlik bilgilerini girmek için eğitilmiş kullanıcılar istemeden kötü niyetli bir kimlik istemi onları sağlayabilir.
 
-Bir kullanıcının yeniden oturum açmasını istememe konusunda bir sorun olabilir, çünkü gerçekte BT ilkelerinin ihlal edilmesi oturumu iptal eder. Bir parola değişikliği, uyumsuz bir cihaz veya hesabı devre dışı bırakmak için bazı örnekler vardır (ancak bunlarla sınırlı değildir). Ayrıca, [PowerShell kullanarak kullanıcıların oturumlarını açıkça iptal](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)edebilirsiniz. Azure AD varsayılan yapılandırması, "oturumlarından oluşan güvenlik durusız" kullanıcılardan kimlik bilgilerini sağlamasını isteme "olarak değişir.
+Bir kullanıcının oturum açmasını istememesi endişe verici gelebilir, gerçekte BT politikalarının herhangi bir ihlali oturumu iptal eder. Bazı örnekler arasında parola değişikliği, uyumsuz bir aygıt veya hesap devre dışı edilme (ancak bunlarla sınırlı değildir). [PowerShell'i kullanarak kullanıcıların oturumlarını](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)da açıkça iptal edebilirsiniz. Azure AD varsayılan yapılandırması ,"oturumlarının güvenlik duruşu değişmediyse kullanıcılardan kimlik bilgilerini vermelerini istemeyin" olarak aşağı gelir.
 
-Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokollerini uygulamış olan uygulamalarla birlikte çalışarak. Aşağıdaki Web uygulamaları dahil olmak üzere Windows, Mac ve mobil için Microsoft Native uygulamaların çoğu ayarla uyumlu değil.
+Oturum açma sıklığı ayarı, standartlara uygun OAUTH2 veya OIDC protokollerini uygulayan uygulamalarla çalışır. Aşağıdaki web uygulamaları da dahil olmak üzere Windows, Mac ve Mobile için Microsoft'un yerel uygulamalarının çoğu ayarı uygun.
 
-- Word, Excel, PowerPoint online
+- Word, Excel, PowerPoint Online
 - OneNote Online
 - Office.com
-- O365 yönetim portalı
+- O365 Yönetici portalı
 - Exchange Online
 - SharePoint ve OneDrive
-- Takımlar Web istemcisi
+- Takımlar web istemcisi
 - Dynamics CRM Online
-- Azure portalı
+- Azure portalında
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Kullanıcı oturum açma sıklığı ve cihaz kimlikleri
 
-Azure AD 'ye katılmış, hibrit Azure AD 'ye katılmış veya Azure AD kayıtlı cihazlara sahipseniz, bir kullanıcı cihazlarından veya etkileşimli olarak oturum açtığında bu olay, oturum açma sıklığı ilkesini de karşılar. Aşağıdaki 2 örnekte, Kullanıcı oturum açma sıklığı 1 saat olarak ayarlanır:
+Azure AD'niz katıldıysa, karma Azure AD'niz katıldıysa veya Azure AD kayıtlı aygıtları, bir kullanıcı cihazının kilidini açtıysa veya etkileşimli olarak oturum açtıysa, bu olay sıklık ilkesinde oturum açma ilkesini de tatmin eder. Aşağıdaki 2 örnekte kullanıcı oturum açma sıklığı 1 saat olarak ayarlanır:
 
 Örnek 1:
 
-- 00:00 ' de, bir Kullanıcı Windows 10 Azure AD 'ye katılmış cihazından oturum açar ve SharePoint Online 'da depolanan bir belge üzerinde çalışmaya başlar.
-- Kullanıcı, bir saat boyunca cihazındaki aynı belge üzerinde çalışmaya devam eder.
-- 01:00 ' de, kullanıcıdan yönetici tarafından yapılandırılan koşullu erişim ilkesindeki oturum açma sıklığı gereksinimine göre yeniden oturum açması istenir.
+- Saat 00:00'da bir kullanıcı Windows 10 Azure AD aygıtına giriş yaptı ve SharePoint Online'da depolanan bir belge üzerinde çalışmaya başladı.
+- Kullanıcı, aygıtında aynı belge üzerinde bir saat boyunca çalışmaya devam ediyor.
+- Saat 01:00'de, kullanıcıdan, yöneticisi tarafından yapılandırılan Koşullu Erişim ilkesindeki oturum açma sıklığı gereksinimine bağlı olarak yeniden oturum açması istenir.
 
 Örnek 2:
 
-- 00:00 ' de, bir Kullanıcı Windows 10 Azure AD 'ye katılmış cihazından oturum açar ve SharePoint Online 'da depolanan bir belge üzerinde çalışmaya başlar.
-- 00:30 ' de, Kullanıcı kendi cihazını kilitlemesini alır ve keser.
-- 00:45 ' de, Kullanıcı kesmesinden geri döner ve cihazın kilidini açar.
-- 01:45 ' de, kullanıcıdan en son oturum açma işlemi 00:45 ' de gerçekleşmesinden bu yana yönetici tarafından yapılandırılan koşullu erişim ilkesindeki oturum açma sıklığı gereksinimine göre yeniden oturum açması istenir.
+- Saat 00:00'da bir kullanıcı Windows 10 Azure AD aygıtına giriş yaptı ve SharePoint Online'da depolanan bir belge üzerinde çalışmaya başladı.
+- Saat 00:30'da, kullanıcı kalkar ve cihazını kilitleme ye bir mola alır.
+- Saat 00:45'te, kullanıcı moladan döner ve aygıtın kilidini açar.
+- Saat 01:45'te, son oturum açma nın saat 00:45'te gerçekleştiğinden beri, kullanıcıdan, yönetici tarafından yapılandırılan Koşullu Erişim ilkesindeki oturum açma sıklığı gereksinimine bağlı olarak yeniden oturum açması istenir.
 
-## <a name="persistence-of-browsing-sessions"></a>Gözatma oturumlarının kalıcılığı
+## <a name="persistence-of-browsing-sessions"></a>Tarama oturumlarının kalıcılığı
 
-Kalıcı bir tarayıcı oturumu, kullanıcıların tarayıcı pencerelerini kapatıp yeniden açtıktan sonra oturum açmasına olanak tanır.
+Kalıcı bir tarayıcı oturumu, kullanıcıların tarayıcı pencerelerini kapatıp yeniden açtıktan sonra oturumda kalmalarını sağlar.
 
-Tarayıcı oturumu kalıcılığı için Azure AD varsayılan değeri, kişisel cihazlardaki kullanıcıların "oturum açık kal mı?" göstererek oturumu kalıcı olarak belirleyip kapatmayacağını seçmesine olanak sağlar. başarılı kimlik doğrulamasından sonra sor. Tarayıcı kalıcılığı AD FS ' de [Çoklu oturum açma ayarları AD FS](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-)makaledeki yönergeler kullanılarak yapılandırılmışsa, bu ilkeye uyum sağlayacak ve Azure AD oturumunun de kalıcı hale getirilecektir. Ayrıca kiracınızdaki kullanıcıların "oturum açmış durumda kal?" i görmesini da yapılandırabilirsiniz. [Azure AD oturum açma sayfanızı özelleştirme](../fundamentals/customize-branding.md)makalesindeki kılavuzu kullanarak Azure Portal içindeki şirket markası bölmesinde uygun ayarı değiştirerek istemde bulun.
+Tarayıcı oturumu kalıcılığı için Azure AD varsayılanı, kişisel cihazlardaki kullanıcıların oturuma devam edip etmemeyi "Oturumda kal" seçeneğini göstererek seçmesine olanak tanır. başarılı kimlik doğrulamasonra istemi. Ad [FS Tek Oturum](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+)Açma Ayarları makaledeki kılavuz kullanılarak AD FS'de tarayıcı kalıcılığı yapılandırılırsa, bu ilkeyi kullanır ve Azure REKLAM oturumuna devam edeceğiz. Ayrıca, kiracınızdaki kullanıcıların "Oturum açmış olarak kalın" adlı yapıyı görüp görmediğini de yapılandırabilirsiniz. makaledeki kılavuzu kullanarak Azure portalındaki şirket marka bölmesinde uygun ayarı değiştirerek Azure [REKLAM oturum açma sayfanızı özelleştirin.](../fundamentals/customize-branding.md)
 
 ## <a name="configuring-authentication-session-controls"></a>Kimlik doğrulama oturumu denetimlerini yapılandırma
 
-Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. Koşullu erişim hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure Active Directory Koşullu erişim nedir?](overview.md#license-requirements)
+Koşullu Erişim bir Azure AD Premium özelliğidir ve premium lisans gerektirir. Koşullu Erişim hakkında daha fazla bilgi edinmek istiyorsanız, [Azure Etkin Dizinde Koşullu Erişim nedir?](overview.md#license-requirements)
 
 > [!WARNING]
-> Şu anda genel önizleme aşamasında olan [yapılandırılabilir belirteç yaşam süresi](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, lütfen aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimiz, bu özelliğe ve diğeri yapılandırılabilir belirteç ömrü özelliğine sahip başka bir uygulamayla aynı şekilde desteklenmediğini unutmayın. Microsoft, yapılandırılabilir belirteç yaşam süresi özelliğini 1 Mayıs 2020 ' de devre dışı bırakmayı planlıyor ve koşullu erişim kimlik doğrulama oturumu Yönetimi özelliğiyle değiştirebilir.  
+> Şu anda genel önizlemede [bulunan yapılandırılabilir belirteç ömrü](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimizi lütfen unutmayın: biri bu özelliklere sahip diğeri de yapılandırılabilir belirteç ömrü özelliğine sahip. Microsoft, yapılandırılabilir belirteç ömrü özelliğini 1 Mayıs 2020'de devre dışı bırakıp Koşullu Erişim kimlik doğrulama oturumu yönetimi özelliğiyle değiştirmeyi planlıyor.  
 
-### <a name="policy-1-sign-in-frequency-control"></a>İlke 1: oturum açma sıklığı denetimi
+### <a name="policy-1-sign-in-frequency-control"></a>İlke 1: Oturum açma frekans kontrolü
 
-1. Yeni ilke oluştur
-1. Hedef bulut uygulamaları dahil olmak üzere müşterinin ortamı için gerekli tüm koşulları seçin.
-
-   > [!NOTE]
-   > En iyi kullanıcı deneyimi için Exchange Online ve SharePoint Online gibi anahtar Microsoft Office uygulamalar için eşit kimlik doğrulama istem sıklığı ayarlamanız önerilir.
-
-1. **Erişim denetimleri** > **oturumuna** gidin ve **oturum açma sıklığı** ' na tıklayın
-1. İlk metin kutusuna gereken gün ve saat değerlerini girin
-1. Açılan menüden **saat** veya **gün** değeri seçin
-1. İlkenizi kaydetme
-
-![Oturum açma sıklığı için yapılandırılmış koşullu erişim ilkesi](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
-
-Azure AD kayıtlı Windows cihazlarında cihazda oturum açın bir istem olarak kabul edilir. Örneğin, Office uygulamaları için oturum açma sıklığını 24 saat olarak yapılandırdıysanız, Azure AD kayıtlı Windows cihazlarındaki kullanıcılar cihazda oturum açarak oturum açma sıklığı ilkesini karşılar ve Office uygulamaları açılırken bir daha sorulmayacaktır.
-
-Aynı tarayıcı oturumunda çalışan farklı Web uygulamaları için farklı oturum açma sıklığı yapılandırdıysanız, aynı tarayıcı oturumunda çalışan tüm uygulamalar tek bir oturum belirtecini paylaştığından, her iki uygulama için de en katı ilkesi uygulanır.
-
-### <a name="policy-2-persistent-browser-session"></a>İlke 2: kalıcı tarayıcı oturumu
-
-1. Yeni ilke oluştur
-1. Tüm gerekli koşulları seçin.
+1. Yeni ilke oluşturma
+1. Hedef bulut uygulamaları da dahil olmak üzere müşterinin ortamı için gerekli tüm koşulları seçin.
 
    > [!NOTE]
-   > Lütfen bu denetimin koşul olarak "tüm bulut uygulamaları" seçmesini gerektirdiğini unutmayın. Tarayıcı oturumu kalıcılığı, kimlik doğrulama oturumu belirteci tarafından denetlenir. Bir tarayıcı oturumundaki tüm sekmeler tek bir oturum belirtecini paylaşır ve bu nedenle tümünün kalıcılık durumunu paylaşması gerekir.
+   > En iyi kullanıcı deneyimi için Exchange Online ve SharePoint Online gibi önemli Microsoft Office uygulamaları için eşit kimlik doğrulama istemi sıklığı ayarlaman önerilir.
 
-1. **Erişim denetimleri** > **oturumuna** gidin ve **kalıcı tarayıcı oturumu** ' na tıklayın.
-1. Açılan listeden bir değer seçin
-1. İlkenizi kaydetme
+1. Erişim **Denetimleri** > **Oturumu'na** gidin ve **Oturum açma sıklığını** tıklatın
+1. İlk metin kutusuna gün ve saatin gerekli değerini girin
+1. Açılır düşüşten **Saat** veya **Gün** değeri seçin
+1. İlkinizi kaydedin
 
-![Kalıcı tarayıcı için yapılandırılmış koşullu erişim ilkesi](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
+![Oturum açma sıklığı için yapılandırılan Koşullu Erişim ilkesi](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
+
+Azure AD'de kayıtlı Windows aygıtlarında aygıtta oturum açma komut istemi olarak kabul edilir. Örneğin, Oturum Açma sıklığını Office uygulamaları için 24 saat olarak yapılandırıldıysanız, Azure AD kayıtlı Windows cihazlarındaki kullanıcılar aygıtta oturum açarak Oturum Açma ilkesini karşılar ve Office uygulamalarını açarken tekrar istenmez.
+
+Aynı tarayıcı oturumunda çalışan farklı web uygulamaları için farklı Oturum açma sıklığını yapılandırmışsanız, aynı tarayıcı oturumunda çalışan tüm uygulamalar tek bir oturum belirteci paylaştığından, her iki uygulamaya da en katı ilke uygulanır.
+
+### <a name="policy-2-persistent-browser-session"></a>İlke 2: Kalıcı tarayıcı oturumu
+
+1. Yeni ilke oluşturma
+1. Gerekli tüm koşulları seçin.
+
+   > [!NOTE]
+   > Bu denetimin koşul olarak "Tüm Bulut Uygulamaları"nı seçmeniz gerektiğini lütfen unutmayın. Tarayıcı oturumu kalıcılığı kimlik doğrulama oturumu belirteci tarafından denetlenir. Tarayıcı oturumundaki tüm sekmeler tek bir oturum belirteci paylaşır ve bu nedenle hepsinin kalıcılık durumunu paylaşması gerekir.
+
+1. Access **Denetimleri** > **Oturumu'na** gidin ve **Kalıcı tarayıcı oturumuna** tıklayın
+1. Açılır bırakma dan bir değer seçin
+1. İlkenizi kaydedin
+
+![Kalıcı tarayıcı için yapılandırılan Koşullu Erişim ilkesi](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
 
 > [!NOTE]
-> Azure AD koşullu erişim 'de kalıcı tarayıcı oturumu yapılandırması "oturum açmış durumda kalsın" üzerine yazılacak. Her iki ilkeyi de yapılandırdıysanız, aynı kullanıcı için Azure portal Şirket markası bölmesinde ayarlama.
+> Azure AD Koşullu Access'teki Kalıcı Tarayıcı Oturumu yapılandırması "Oturumda kalın" yazısının üzerine yazılır. her iki ilkeyi de yapılandırmışsanız, aynı kullanıcı için Azure portalındaki şirket marka bölmesini ayarlama.
 
 ## <a name="validation"></a>Doğrulama
 
-İlkeyi nasıl yapılandırdığınıza bağlı olarak kullanıcıdan hedef uygulamaya ve diğer koşullara bir oturum açma benzetimi yapmak için ne yapılır aracını kullanın. Kimlik doğrulama oturumu yönetimi denetimleri, aracın sonucuna göre görünür.
+Kullanıcıdan hedef uygulamaya giriş imasını ve ilkenizi nasıl yapılandırdığınıza bağlı olarak diğer koşulları simüle etmek için What-If aracını kullanın. Kimlik doğrulama oturumu yönetim denetimleri aracın sonucu olarak gösterilir.
 
-![Koşullu erişim What If araç sonuçları](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![Koşullu Erişim Ne ise aracı sonuçları](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
 ## <a name="policy-deployment"></a>İlke dağıtımı
 
-İlkenizin beklenildiği gibi çalıştığından emin olmak için önerilen en iyi yöntem, üretime geçmeden önce test sağlamaktır. İdeal olarak, yeni ilkenizin istendiği gibi çalışıp çalışmadığını doğrulamak için bir test kiracısı kullanın. Daha fazla bilgi için [Azure Active Directory Koşullu erişim Için en iyi yöntemler](best-practices.md)makalesine bakın.
+İlkenizin beklendiği gibi çalıştığından emin olmak için, önerilen en iyi uygulama, politikayı üretime dönüştürmeden önce test etmektir. İdeal olarak, yeni politikanızın beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test kiracısı kullanın. Daha fazla bilgi için, [Azure Etkin Dizini'nde Koşullu Erişim için en iyi uygulamalar makalesine](best-practices.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz, [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md)makalesine bakın.
-* Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim Için en iyi yöntemler](best-practices.md)makalesine bakın.
+* Koşullu Erişim ilkesini nasıl yapılandırdığınızı bilmek istiyorsanız, [Azure Active Directory Koşullu Erişimi olan belirli uygulamalar için MFA'yı zorlar](app-based-mfa.md)makalesine bakın.
+* Ortamınız için Koşullu Erişim ilkelerini yapılandırmaya hazırsanız, [Azure Etkin Dizininde Koşullu Erişim için En İyi Uygulamalar](best-practices.md)makalesine bakın.

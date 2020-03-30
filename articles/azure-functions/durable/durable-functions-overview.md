@@ -1,56 +1,56 @@
 ---
-title: Dayanıklı İşlevler genel bakış-Azure
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısına giriş.
+title: Dayanıklı Fonksiyonlar Genel Bakış - Azure
+description: Azure İşlevler için Dayanıklı İşlevler uzantısına giriş.
 author: cgillum
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241349"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
-*Dayanıklı işlevler* , bir sunucusuz işlem ortamında durum bilgisi olan işlevler yazmanıza olanak sağlayan bir [Azure işlevleri](../functions-overview.md) uzantısıdır. Uzantı, Azure Işlevleri programlama modelini kullanarak [*varlık işlevleri*](durable-functions-entities.md) yazarak [*Orchestrator işlevlerini*](durable-functions-orchestrations.md) ve durum bilgisi olan varlıkları yazarak durum bilgisi olan iş akışları tanımlamanızı sağlar. Arka planda, uzantı durum, kontrol noktaları ve yeniden başlatma işlemlerini yönetip iş mantığınıza odaklanmanızı sağlar.
+*Dayanıklı Işlevler,* sunucusuz bir bilgi işlem ortamında durumlu işlevleri yazmanıza olanak tanıyan [Azure İşlevlerinin](../functions-overview.md) bir uzantısıdır. Uzantı, Azure İşlevleri programlama modelini kullanarak [*varlık işlevleri*](durable-functions-entities.md) yazarak [*düzenbaz işlevlerini*](durable-functions-orchestrations.md) ve düzel kişileri yazarak durumlu iş akışlarını tanımlamanızı sağlar. Arka planda, uzantı durumu, denetim noktalarını yönetir ve sizin için yeniden başlatArak iş mantığınıza odaklanmanızı sağlar.
 
-## <a name="language-support"></a>Desteklenen diller
+## <a name="supported-languages"></a><a name="language-support"></a>Desteklenen diller
 
-Dayanıklı İşlevler Şu anda aşağıdaki dilleri desteklemektedir:
+Dayanıklı İşlevler şu anda aşağıdaki dilleri destekler:
 
-* **C#** : hem [önceden derlenmiş sınıf kitaplıkları](../functions-dotnet-class-library.md) hem [ C# de betiği](../functions-reference-csharp.md).
-* **JavaScript**: yalnızca Azure işlevleri çalışma zamanının 2. x sürümü için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.7.0 gerektirir. 
-* **F#** : önceden derlenmiş sınıf kitaplıkları F# ve betiği. F#betik yalnızca Azure Işlevleri çalışma zamanının sürüm 1. x 'i için desteklenir.
+* **C#**: hem [önceden derlenmiş sınıf kitaplıkları](../functions-dotnet-class-library.md) hem de [C# komut dosyası.](../functions-reference-csharp.md)
+* **JavaScript**: yalnızca Azure Fonksiyonları çalışma zamanının 2.x sürümü için desteklenir. Dayanıklı Fonksiyonlar uzantısı veya daha sonraki bir sürümü sürüm 1.7.0 gerektirir. 
+* **F#**: önceden derlenmiş sınıf kitaplıkları ve F# komut dosyası. F# komut dosyası yalnızca Azure İşlevleri çalışma zamanının 1.x sürümü için desteklenir.
 
-Dayanıklı İşlevler tüm [Azure işlevleri dillerini](../supported-languages.md)destekleme amacını içerir. Ek dilleri desteklemek için işin en son durumunun [dayanıklı işlevler sorunlar listesine](https://github.com/Azure/azure-functions-durable-extension/issues) bakın.
+Dayanıklı İşlevler'in amacı tüm [Azure İşlevlerini dilleri](../supported-languages.md)desteklemedir. Ek dilleri desteklemek için işin en son durumu için [Dayanıklı İşlevler sorunları listesine](https://github.com/Azure/azure-functions-durable-extension/issues) bakın.
 
-Azure Işlevleri gibi, [Visual Studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md)ve [Azure Portal](durable-functions-create-portal.md)kullanarak dayanıklı işlevler geliştirmenize yardımcı olacak şablonlar vardır.
+Azure İşlevleri gibi, [Visual Studio 2019](durable-functions-create-first-csharp.md), Visual [Studio Code](quickstart-js-vscode.md)ve [Azure portalını](durable-functions-create-portal.md)kullanarak Dayanıklı İşlevler geliştirmenize yardımcı olacak şablonlar vardır.
 
 ## <a name="application-patterns"></a>Uygulama desenleri
 
-Dayanıklı İşlevler için birincil kullanım örneği sunucusuz uygulamalarda karmaşık, durum bilgisi olan düzenleme gereksinimlerini basitleştirir. Aşağıdaki bölümlerde Dayanıklı İşlevler avantajlarından faydalanabilecek tipik uygulama desenleri açıklanır:
+Dayanıklı Işlevler için birincil kullanım örneği, sunucusuz uygulamalarda karmaşık ve durumlu koordinasyon gereksinimlerini basitleştirmektir. Aşağıdaki bölümlerde Dayanıklı İşlevler yararlanabilir tipik uygulama desenleri açıklanabilir:
 
-* [İşlev Zinciri](#chaining)
-* [Fan-çıkış/fan](#fan-in-out)
-* [Zaman uyumsuz HTTP API 'Leri](#async-http)
+* [İşlev zinciri oluşturma](#chaining)
+* [Yelpaze dışarı/yelpaze içeri](#fan-in-out)
+* [Zaman uyumsuz HTTP API’leri](#async-http)
 * [İzleme](#monitoring)
 * [İnsan etkileşimi](#human)
-* [Toplayıcı (durum bilgisi olan varlıklar)](#aggregator)
+* [Toplayıcı (durum lu varlıklar)](#aggregator)
 
-### <a name="chaining"></a>Model #1: Işlev zinciri oluşturma
+### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>Desen #1: Fonksiyon zincirleme
 
-İşlev zincirleme modelinde, bir dizi işlev belirli bir sırada yürütülür. Bu düzende, bir işlevin çıktısı başka bir işlevin girişine uygulanır.
+İşlev zincirleme deseninde, bir dizi işlev belirli bir sırada yürütülür. Bu desende, bir işlevin çıktısı başka bir işlevin girişine uygulanır.
 
-![İşlev zincirleme deseninin diyagramı](./media/durable-functions-concepts/function-chaining.png)
+![Fonksiyon zincirleme deseninin diyagramı](./media/durable-functions-concepts/function-chaining.png)
 
-Aşağıdaki örnekte gösterildiği gibi, öz işlev zincirleme modelini uygulamak için Dayanıklı İşlevler kullanabilirsiniz.
+Aşağıdaki örnekte gösterildiği gibi işlev zincirleme deseni kısa bir şekilde uygulamak için Dayanıklı İşlevler kullanabilirsiniz.
 
-Bu örnekte, `F1`, `F2`, `F3`ve `F4` değerleri aynı işlev uygulamasındaki diğer işlevlerin adlarıdır. Normal kesinlik temelli kodlama yapılarını kullanarak denetim akışı uygulayabilirsiniz. Kod yukarıdan aşağı doğru çalışır. Kod, koşul ve döngüler gibi var olan dil denetim akışı semantiğini içerebilir. `try`/`catch`/`finally` bloklarına hata işleme mantığını dahil edebilirsiniz.
+Bu örnekte, `F1`değerler `F2` `F3`, `F4` , , ve aynı işlev uygulamasındaki diğer işlevlerin adlarıdır. Normal zorunlu kodlama yapılarını kullanarak kontrol akışını uygulayabilirsiniz. Kod yukarıdan aşağıya doğru yürütülür. Kod, koşullu lar ve döngüler gibi varolan dil denetimi akışı anlambilimini içerebilir. Bloklar `try` / `catch` / `finally` halinde hata işleme mantığı ekleyebilirsiniz.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -71,9 +71,9 @@ public static async Task<object> Run(
 }
 ```
 
-Diğer işlevleri ada göre çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için `context` parametresini kullanabilirsiniz. Kod `await`her çağırdığında, Dayanıklı İşlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki `await` çağrısından devam eder. Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
+`context` Diğer işlevleri ada göre çağırmak, parametreleri geçmek ve işlev çıktısını döndürmek için parametreyi kullanabilirsiniz. Kod her aradığında, `await`Dayanıklı Işlevler çerçevesi geçerli işlev örneğinin ilerlemesini kontrol eder. İşlem veya sanal makine yürütmenin ortasında geri dönüşüm yaparsa, işlev örneği `await` önceki çağrıdan devam eder. Daha fazla bilgi için, sonraki bölüme bakın, Desen #2: Fan out /fan.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -90,24 +90,24 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Diğer işlevleri ada göre çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için `context.df` nesnesini kullanabilirsiniz. Kod `yield`her çağırdığında, Dayanıklı İşlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki `yield` çağrısından devam eder. Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
+Nesneyi `context.df` diğer işlevleri ada göre çağırmak, parametreleri geçmek ve işlev çıktısını döndürmek için kullanabilirsiniz. Kod her aradığında, `yield`Dayanıklı Işlevler çerçevesi geçerli işlev örneğinin ilerlemesini kontrol eder. İşlem veya sanal makine yürütmenin ortasında geri dönüşüm yaparsa, işlev örneği `yield` önceki çağrıdan devam eder. Daha fazla bilgi için, sonraki bölüme bakın, Desen #2: Fan out /fan.
 
 > [!NOTE]
-> JavaScript 'teki `context` nesnesi tüm [işlev bağlamını](../functions-reference-node.md#context-object)temsil eder. Ana bağlamdaki `df` özelliğini kullanarak Dayanıklı İşlevler bağlamına erişin.
+> JavaScript'teki `context` nesne tüm [işlev bağlamını](../functions-reference-node.md#context-object)temsil eder. Ana bağlamüzerindeki özelliği `df` kullanarak Dayanıklı İşlevler bağlamına erişin.
 
 ---
 
-### <a name="fan-in-out"></a>#2 desenli desenler: fan çıkış/fan
+### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Desen #2: Fan out/fan
 
-Diğer bir deyişle, desenli çıkış/fan, birden çok işlevi paralel olarak yürütür ve sonra tüm işlevlerin bitmesini bekler. Genellikle, bazı toplama işleri işlevlerden döndürülen sonuçlar üzerinde yapılır.
+Desendeki fan/fan da, birden çok işlevi paralel olarak çalıştırır ve tüm işlevlerin tamamlanmasını beklersiniz. Genellikle, bazı toplama çalışmaları işlevleri döndürülen sonuçlar üzerinde yapılır.
 
 ![Fan çıkış/fan deseninin diyagramı](./media/durable-functions-concepts/fan-out-fan-in.png)
 
-Normal işlevlerle, işlevi bir sıraya birden çok ileti göndermesini sağlayarak dışarı aktarabilirsiniz. Geriye doğru zor, çok daha zordur. İçinde fanı için, normal bir işlevde, kuyruk tetiklenen işlevlerin ne zaman sona erdirmek için kod yazarsınız ve sonra işlev çıkışlarını depoladığınızda.
+Normal işlevlerle, işlevin kuyruğa birden çok ileti göndermesini sağlayarak dışarı çıkabilirsiniz. Geri dönmek çok daha zor. Normal bir işlevde, normal bir işlevde, sıra nın tetiklediği işlevlerin ne zaman sona erini izlemek için kod yazarsınız ve ardından işlev çıktılarını depolarsınız.
 
-Dayanıklı İşlevler uzantısı görece basit kodla bu düzene sahiptir:
+Dayanıklı İşlevler uzantısı bu deseni nispeten basit bir kodla işler:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -132,11 +132,11 @@ public static async Task Run(
 }
 ```
 
-Fanı-Out işi `F2` işlevinin birden çok örneğine dağıtılır. İş, dinamik bir görev listesi kullanılarak izlenir. çağrılan tüm işlevlerin bitmesini beklemek için `Task.WhenAll` çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işlevine geçirilir.
+Fan-out çalışması `F2` işlevin birden çok örneğine dağıtılır. Çalışma, dinamik bir görev listesi kullanılarak izlenir. `Task.WhenAll`tüm çağrılan işlevlerin tamamlanmasını beklemek için çağrılır. Daha sonra, `F2` işlev çıktıları dinamik görev listesinden toplanır `F3` ve işleve aktarılır.
 
-`Task.WhenAll` üzerinde `await` çağrısında gerçekleşen otomatik checkişaretleyici, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
+`await` Arama `Task.WhenAll` sırasında gerçekleşen otomatik denetim noktası, olası bir yarıyol çökmesi veya yeniden başlatma nın zaten tamamlanmış bir görevi yeniden başlatmayı gerektirmemesini sağlar.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -158,24 +158,24 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Fanı-Out işi `F2` işlevinin birden çok örneğine dağıtılır. İş, dinamik bir görev listesi kullanılarak izlenir. çağrılan tüm işlevlerin bitmesini beklemek için `context.df.Task.all` API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işlevine geçirilir.
+Fan-out çalışması `F2` işlevin birden çok örneğine dağıtılır. Çalışma, dinamik bir görev listesi kullanılarak izlenir. `context.df.Task.all`API tüm çağrılan işlevlerin tamamlanmasını beklemek için çağrılır. Daha sonra, `F2` işlev çıktıları dinamik görev listesinden toplanır `F3` ve işleve aktarılır.
 
-`context.df.Task.all` üzerinde `yield` çağrısında gerçekleşen otomatik checkişaretleyici, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
+`yield` Arama `context.df.Task.all` sırasında gerçekleşen otomatik denetim noktası, olası bir yarıyol çökmesi veya yeniden başlatma nın zaten tamamlanmış bir görevi yeniden başlatmayı gerektirmemesini sağlar.
 
 ---
 
 > [!NOTE]
-> Nadir koşullarda, bir etkinlik işlevi tamamlandıktan sonra ancak tamamlanma alanı düzenleme geçmişine kaydedilmeden önce, bir kilitlenme olması mümkündür. Bu durumda, etkinlik işlevi işlem kurtardıktan sonra baştan sonra yeniden çalıştırılır.
+> Nadir durumlarda, bir etkinlik işlevi tamamlandıktan sonra pencerede bir kilitlenme meydana gelebilir, ancak tamamlanmadan önce orkestrasyon geçmişine kaydedilir. Bu durumda, işlem kurtarıldıktan sonra etkinlik işlevi baştan yeniden çalıştırılır.
 
-### <a name="async-http"></a>Model #3: zaman uyumsuz HTTP API 'Leri
+### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>Desen #3: Async HTTP API'ler
 
-Zaman uyumsuz HTTP API 'SI stili, uzun süreli işlemlerin durumunu dış istemcilerle koordine etme sorununu ele alınmaktadır. Bu düzenin uygulanması için ortak bir yol, bir HTTP uç noktasının uzun süreli eylemi tetiklemesine sahip olunmalıdır. Daha sonra, istemciyi, işlem bittiğinde öğrenmek için yokladığı bir durum uç noktasına yönlendirin.
+Async HTTP API deseni, uzun süren işlemlerin durumunu dış istemcilerle koordine etme sorununu gidermektedir. Bu deseni uygulamanın yaygın bir yolu, bir HTTP bitiş noktasının uzun süren eylemi tetiklemekten geçer. Ardından, istemciyi işlem ne zaman tamamladığını öğrenmek için istemcinin yok ettiği durum bitiş noktasına yönlendirin.
 
-![HTTP API deseninin diyagramı](./media/durable-functions-concepts/async-http-api.png)
+![HTTP API deseni diyagramı](./media/durable-functions-concepts/async-http-api.png)
 
-Dayanıklı İşlevler, bu düzene yönelik **yerleşik destek** sağlar, bu sayede yazmanız gereken kod, uzun süre çalışan işlev yürütmeleri ile etkileşime geçmek için gerekir. Örneğin, Dayanıklı İşlevler hızlı başlangıç örnekleri ([C#](durable-functions-create-first-csharp.md) ve [JavaScript](quickstart-js-vscode.md)), yeni Orchestrator işlev örnekleri başlatmak IÇIN kullanabileceğiniz bir basit rest komutu gösterir. Bir örnek başlatıldıktan sonra uzantı, Orchestrator işlev durumunu sorgulayan Web kancası HTTP API 'Lerini kullanıma sunar. 
+Dayanıklı Işlevler, uzun süren işlev yürütmeleri ile etkileşimkurmak için yazmanız gereken kodu basitleştirerek ve hatta kaldırarak bu desen için **yerleşik destek** sağlar. Örneğin, Dayanıklı Fonksiyonlar quickstart örnekleri[(C#](durable-functions-create-first-csharp.md) ve [JavaScript)](quickstart-js-vscode.md)yeni orchestrator işlev örnekleri başlatmak için kullanabileceğiniz basit bir REST komutu gösterir. Bir örnek başladıktan sonra, uzantı, orkestratör işlev durumunu sorgulayan webhook HTTP API'lerini ortaya çıkarır. 
 
-Aşağıdaki örnekte, bir Orchestrator başlatan ve durumunu sorgulayan REST komutları gösterilmektedir. Anlaşılırsa, bazı protokol ayrıntıları örnekteki atlanır.
+Aşağıdaki örnekte, bir orkestratör başlatan ve durumunu sorgulayan REST komutları gösterilmektedir. Netlik için, bazı protokol ayrıntıları örnekten atlanır.
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -200,25 +200,25 @@ Content-Type: application/json
 {"runtimeStatus":"Completed","lastUpdatedTime":"2019-03-16T21:20:57Z", ...}
 ```
 
-Dayanıklı İşlevler Runtime, durumu sizin için yönettiğinden, kendi durum izleme mekanizmanızı uygulamanız gerekmez.
+Dayanıklı Işlevler çalışma süresi sizin için durumu yönettiğinden, kendi durum izleme mekanizmasınızı uygulamanız gerekmez.
 
-Dayanıklı İşlevler uzantısı, uzun süre çalışan düzenlemeleri yöneten yerleşik HTTP API 'Lerini kullanıma sunar. Bunun yerine kendi işlev tetikleyiclerinizi (HTTP, kuyruk veya Azure Event Hubs gibi) ve [Orchestration istemci bağlamasını](durable-functions-bindings.md#orchestration-client)kullanarak kendiniz uygulayabilirsiniz. Örneğin, sonlandırma tetiklenmesi için bir kuyruk iletisi kullanabilirsiniz. Ya da, kimlik doğrulaması için oluşturulmuş bir anahtar kullanan yerleşik HTTP API 'Leri yerine Azure Active Directory kimlik doğrulama ilkesi tarafından korunan bir HTTP tetikleyicisi kullanabilirsiniz.
+Dayanıklı İşlevler uzantısı, uzun süreli orkestrasyonları yöneten yerleşik HTTP API'lerini ortaya çıkarır. Alternatif olarak kendi işlev tetikleyicilerinizi (HTTP, kuyruk veya Azure Olay Hub'ları gibi) ve [düzenleme istemcisi bağlamayı](durable-functions-bindings.md#orchestration-client)kullanarak bu deseni kendiniz uygulayabilirsiniz. Örneğin, sonlandırmayı tetiklemek için bir sıra iletisi kullanabilirsiniz. Veya, kimlik doğrulaması için oluşturulmuş bir anahtar kullanan yerleşik HTTP API'leri yerine Azure Etkin Dizin kimlik doğrulama ilkesi yle korunan bir HTTP tetikleyicisi kullanabilirsiniz.
 
-Daha fazla bilgi için, Dayanıklı İşlevler uzantısını kullanarak HTTP üzerinden zaman uyumsuz, uzun süreli işlemleri nasıl sergilebileceğinizi anlatan [http özellikleri](durable-functions-http-features.md) makalesine bakın.
+Daha fazla bilgi için, Dayanıklı İşlevler uzantısını kullanarak HTTP üzerinden eşzamanlı ve uzun süren süreçleri nasıl ortaya çıkarabileceğinizi açıklayan [HTTP özellikleri](durable-functions-http-features.md) makalesine bakın.
 
-### <a name="monitoring"></a>#4 Model: Izleyici
+### <a name="pattern-4-monitor"></a><a name="monitoring"></a>Desen #4: Monitör
 
-İzleyici deseninin bir iş akışında esnek ve yinelenen bir işlem anlamına gelir. Belirli koşullar karşılanana kadar bir örnek yoklanıyor. Düzenli bir temizleme işi gibi temel bir senaryoya yönelik olarak normal bir [Zamanlayıcı tetikleyicisi](../functions-bindings-timer.md) kullanabilirsiniz, ancak aralığı statiktir ve örnek yaşam sürelerinin yönetilmesi karmaşık hale gelir. Esnek yineleme aralıkları oluşturmak, görev yaşam sürelerini yönetmek ve tek bir düzenleme işleminden birden çok izleme işlemi oluşturmak için Dayanıklı İşlevler kullanabilirsiniz.
+Monitör deseni, iş akışındaki esnek ve yinelenen bir işlemi ifade eder. Bir örnek, belirli koşullar yerine getirile kadar yoklamadır. Periyodik temizleme işi gibi temel bir senaryoyu gidermek için düzenli bir [zamanlayıcı tetikleyicisi](../functions-bindings-timer.md) kullanabilirsiniz, ancak aralığı statiktir ve örnek yaşam sürelerini yönetmek karmaşık hale gelir. Esnek yineleme aralıkları oluşturmak, görev yaşam sürelerini yönetmek ve tek bir düzenlemeden birden çok monitör işlemi oluşturmak için Dayanıklı İşlevler'i kullanabilirsiniz.
 
-İzleyici deseninin bir örneği, önceki zaman uyumsuz HTTP API senaryosunun tersine çevrilmeye yönelik bir örnektir. Bir dış istemcinin uzun süreli bir işlemi izlemeye yönelik bir uç nokta göstermek yerine, uzun süre çalışan izleyici bir dış uç nokta kullanır ve ardından bir durum değişikliği bekler.
+Monitör desenine bir örnek, önceki async HTTP API senaryosunu tersine çevirmektir. Uzun süren bir işlemi izlemek için harici bir istemciiçin bir bitiş noktası ortaya çıkarmak yerine, uzun soluklu monitör harici bir uç noktası tüketir ve ardından durum değişikliğini bekler.
 
-![İzleyici deseninin diyagramı](./media/durable-functions-concepts/monitor.png)
+![Monitör deseninin diyagramı](./media/durable-functions-concepts/monitor.png)
 
-Birkaç kod satırı içinde, rastgele uç noktaları gözlemleyecek birden çok izleyici oluşturmak için Dayanıklı İşlevler kullanabilirsiniz. İzleyiciler, bir koşul karşılandığında çalışmayı sonlandırabilir veya başka bir işlev, izleyicileri sonlandırmak için dayanıklı düzenleme istemcisini kullanabilir. Bir izleyicinin `wait` aralığını belirli bir koşula göre değiştirebilirsiniz (örneğin üstel geri alma) 
+Birkaç kod satırında, rasgele uç noktaları izleyen birden çok monitör oluşturmak için Dayanıklı İşlevler kullanabilirsiniz. Bir koşul karşılandığında monitörler yürütmeyi sonlandırabilir veya başka bir işlev monitörleri sonlandırmak için dayanıklı düzenleme istemcisini kullanabilir. Belirli bir duruma göre `wait` monitörün aralığını değiştirebilirsiniz (örneğin, üstel geri tepme.) 
 
-Aşağıdaki kod temel bir izleyiciyi uygular:
+Aşağıdaki kod temel bir monitör uygular:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -248,7 +248,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -278,21 +278,21 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Bir istek alındığında, bu iş KIMLIĞI için yeni bir düzenleme örneği oluşturulur. Örnek, bir koşul karşılanana ve döngünün çıkış yapılıncaya kadar bir durumu yoklar. Dayanıklı bir Zamanlayıcı yoklama aralığını denetler. Daha sonra, daha fazla iş gerçekleştirilebilir veya düzenleme sona erdirmek üzere. `nextCheck` `expiryTime`aştığında izleyici sona erer.
+Bir istek alındığı zaman, bu iş kimliği için yeni bir düzenleme örneği oluşturulur. Örnek, bir koşul karşılanana ve döngü çıkana kadar bir durumu yoklar. Dayanıklı bir zamanlayıcı yoklama aralığını denetler. Daha sonra, daha fazla iş yapılabilir veya orkestrasyon sona erebilir. `nextCheck` Aşıldığında, `expiryTime`monitör sona erer.
 
-### <a name="human"></a>#5 model: Insan etkileşimi
+### <a name="pattern-5-human-interaction"></a><a name="human"></a>Desen #5: İnsan etkileşimi
 
-Birçok otomatikleştirilmiş süreç, bazı insan etkileşimini içerir. İnsanlar yüksek düzeyde kullanılabilir olmadığından ve bulut hizmetleri olarak yanıt veremediği için otomatikleştirilmiş bir işlem içindeki insanların dahil olması önemlidir. Otomatik bir işlem, zaman aşımları ve maaş mantığı kullanılarak bu etkileşime izin verebilir.
+Birçok otomatik süreçler insan etkileşimi çeşit içerir. İnsanları otomatik bir işleme dahil etmek zordur, çünkü insanlar bulut hizmetleri kadar yüksek kullanılabilir ve duyarlı değildir. Otomatik leştirilmiş bir işlem, zaman ekmeleri ve telafi mantığı kullanarak bu etkileşime izin verebilir.
 
-Onay süreci, insan etkileşimini içeren bir iş sürecinin örneğidir. Belirli bir dolar tutarını aşan bir gider raporu için bir yöneticinin onayı gerekli olabilir. Yönetici, 72 saat içinde gider raporunu onaylamaz (örneğin, bu da yönetici tatilde durumunda olursa), bir yükseltme işlemi, başka birinden (Belki de yöneticinin Yöneticisi) onay almak için ' de açılır.
+Onay süreci, insan etkileşimini içeren bir iş sürecine bir örnektir. Belirli bir dolar tutarını aşan bir gider raporu için yöneticiden onay gerekebilir. Yönetici gider raporunu 72 saat içinde onaylamazsa (belki de yönetici tatile çıktı), bir yükseltme işlemi başka birinden (belki de yöneticinin yöneticisinin) onayını almak için devreye girmektedir.
 
-![İnsan etkileşimi deseninin diyagramı](./media/durable-functions-concepts/approval.png)
+![İnsan etkileşim deseninin diyagramı](./media/durable-functions-concepts/approval.png)
 
-Bu örnekte, bir Orchestrator işlevi kullanarak bir stili uygulayabilirsiniz. Orchestrator onay istemek için [dayanıklı bir Zamanlayıcı](durable-functions-timers.md) kullanır. Zaman aşımı oluşursa Orchestrator ilerletir. Orchestrator, bir insan etkileşimi tarafından oluşturulan bildirim gibi bir [dış olay](durable-functions-external-events.md)bekler.
+Bu örnekte bir orkestratör işlevi kullanarak deseni uygulayabilirsiniz. Orkestratör onay istemek için dayanıklı bir [zamanlayıcı](durable-functions-timers.md) kullanır. Zaman acısı oluşursa orkestratör yükselir. Orkestratör, insan etkileşimi tarafından oluşturulan bir bildirim gibi harici bir [olayı](durable-functions-external-events.md)bekler.
 
-Bu örnekler insan etkileşimi modelini göstermek için bir onay işlemi oluşturur:
+Bu örnekler, insan etkileşimi modelini göstermek için bir onay süreci oluşturur:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -319,9 +319,9 @@ public static async Task Run(
 }
 ```
 
-Dayanıklı Zamanlayıcı oluşturmak için `context.CreateTimer`çağırın. Bildirim `context.WaitForExternalEvent`tarafından alınır. Ardından `Task.WhenAny`, ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
+Dayanıklı zamanlayıcıyı oluşturmak `context.CreateTimer`için. Bildirim tarafından `context.WaitForExternalEvent`alınır. Daha `Task.WhenAny` sonra, yükseltme (zaman acısı önce olur) veya onay işleme (onay zaman ödemeden önce alınır) karar vermek için çağrılır.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -343,19 +343,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Dayanıklı Zamanlayıcı oluşturmak için `context.df.createTimer`çağırın. Bildirim `context.df.waitForExternalEvent`tarafından alınır. Ardından `context.df.Task.any`, ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
+Dayanıklı zamanlayıcıyı oluşturmak `context.df.createTimer`için. Bildirim tarafından `context.df.waitForExternalEvent`alınır. Daha `context.df.Task.any` sonra, yükseltme (zaman acısı önce olur) veya onay işleme (onay zaman ödemeden önce alınır) karar vermek için çağrılır.
 
 ---
 
-Dış istemci, [YERLEŞIK HTTP API 'lerini](durable-functions-http-api.md#raise-event)kullanarak olay bildirimini bekleyen bir Orchestrator işlevine teslim edebilir:
+Harici bir istemci, [yerleşik HTTP API'lerini](durable-functions-http-api.md#raise-event)kullanarak olay bildirimini bekleyen bir orkestratör işlevine sunabilir:
 
 ```bash
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-Aynı zamanda aynı işlev uygulamasındaki başka bir işlevden dayanıklı düzenleme istemcisi kullanılarak bir olay da oluşturulabilir:
+Bir olay aynı işlev uygulamasında başka bir işlevden dayanıklı orkestrasyon istemcisi kullanılarak da yükseltilebilir:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -368,7 +368,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -382,17 +382,17 @@ module.exports = async function (context) {
 
 ---
 
-### <a name="aggregator"></a>#6 Model: toplayıcı (durum bilgisi olan varlıklar)
+### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>Desen #6: Toplayıcı (durumlu varlıklar)
 
-Altıncı model, olay verilerini bir süre içinde tek bir adreslenebilir *varlığa*toplamak üzere kullanılır. Bu düzende, toplanan veriler birden çok kaynaktan gelebilir, toplu olarak teslim edilebilir veya uzun sürelerle dağılmış olabilir. Toplayıcı, ulaşan olay verileri üzerinde işlem yapması gerekebilir ve dış istemcilerin toplanan verileri sorgulaması gerekebilir.
+Altıncı desen, olay verilerini belirli bir süre içinde tek bir, adreslenebilir *varlığa*toplamayla ilgilidir. Bu desende, toplanan veriler birden çok kaynaktan gelebilir, toplu olarak teslim edilebilir veya uzun süreler boyunca dağıtılabilir. Toplayıcının olay verileri üzerinde harekete geçebileceği ve dış istemcilerin toplanan verileri sorgulaması gerekebilir.
 
 ![Toplayıcı diyagramı](./media/durable-functions-concepts/aggregator.png)
 
-Bu düzenin normal, durum bilgisiz işlevlerle uygulamaya çalışılması, eşzamanlılık denetiminin çok büyük bir zorluk haline gelmesi. Aynı anda aynı verileri değiştiren birden çok iş parçacığı hakkında endişelenmeniz gerekmez, ayrıca toplayıcı 'nın aynı anda yalnızca tek bir VM üzerinde çalışmasını sağlamaya de endişelenmeniz gerekir.
+Bu deseni normal, devletsiz işlevlerle uygulamaya çalışmanın zor yanı eşzamanlılık kontrolünün büyük bir sorun haline gelmesidir. Aynı anda aynı verileri değiştiren birden çok iş parçacığı hakkında endişelenmeniz gerekmez, aynı zamanda toplayıcının aynı anda yalnızca tek bir VM'de çalışmasını sağlama konusunda da endişelenmeniz gerekir.
 
-Bu kalıbı tek bir işlev olarak kolayca uygulamak için [dayanıklı varlıkları](durable-functions-entities.md) kullanabilirsiniz.
+Bu deseni tek bir işlev olarak kolayca uygulamak için [Dayanıklı varlıklar](durable-functions-entities.md) kullanabilirsiniz.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -415,7 +415,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Dayanıklı varlıklar, .NET ' de sınıflar olarak modellenebilir. Bu model, işlem listesi düzeltildiğinde ve büyük olursa yararlı olabilir. Aşağıdaki örnek, .NET sınıfları ve yöntemleri kullanılarak `Counter` varlığının eşdeğer bir uygulamasıdır.
+Dayanıklı varlıklar .NET'te sınıf olarak da modellenebilir. Bu model, işlem listesi sabitlenir ve büyük olursa yararlı olabilir. Aşağıdaki örnek, .NET sınıfları ve yöntemlerini kullanarak varlığın `Counter` eşdeğer bir uygulamasıdır.
 
 ```csharp
 public class Counter
@@ -435,7 +435,7 @@ public class Counter
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -459,9 +459,9 @@ module.exports = df.entity(function(context) {
 
 ---
 
-İstemciler, [varlık istemci bağlamasını](durable-functions-bindings.md#entity-client)kullanarak bir varlık işlevi için ("sinyal" olarak da bilinir) *işlemleri* sıraya alabilir.
+İstemciler, [varlık istemcisi bağlamayı](durable-functions-bindings.md#entity-client)kullanarak bir varlık işlevi için ("sinyalleme" olarak da bilinir) *işlemleri* sıraya ekleyebilir.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -479,9 +479,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Dinamik olarak oluşturulan proxy 'ler, sinyal varlıkları için tür açısından güvenli bir şekilde .NET içinde de kullanılabilir. Ayrıca, istemciler, düzenleme istemci bağlamasında [tür kullanımı uyumlu yöntemler](durable-functions-bindings.md#entity-client-usage) kullanarak bir varlık işlevinin durumunu da sorgulayabilir.
+> Dinamik olarak oluşturulan yakınlıklar, varlıkları tür güvenli bir şekilde sinyalleştirmek için .NET'te de kullanılabilir. Ayrıca, istemciler sinyale ek olarak, düzenleme istemcisi bağlamada [tür güvenli yöntemleri](durable-functions-bindings.md#entity-client-usage) kullanarak bir varlık işlevinin durumunu da sorgulayabilir.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -495,42 +495,42 @@ module.exports = async function (context) {
 
 ---
 
-Varlık işlevleri [Dayanıklı İşlevler 2,0](durable-functions-versions.md) ve üzeri sürümlerde kullanılabilir.
+Varlık işlevleri [Dayanıklı Fonksiyonlar 2.0](durable-functions-versions.md) ve üzeri mevcuttur.
 
 ## <a name="the-technology"></a>Teknoloji
 
-Arka planda Dayanıklı İşlevler uzantısı, GitHub 'daki açık kaynaklı ve kodda iş akışları oluşturmak için kullanılan açık kaynaklı bir kitaplık olan [dayanıklı görev çerçevesinin](https://github.com/Azure/durabletask)üzerine kurulmuştur. Azure Işlevleri gibi, Azure WebJobs 'ın sunucusuz bir gelişimi olduğundan, Dayanıklı İşlevler dayanıklı görev çerçevesinin sunucusuz bir gelişmidir. Microsoft ve diğer kuruluşlar, görev açısından kritik işlemleri otomatik hale getirmek için dayanıklı görev çerçevesini yoğun bir şekilde kullanır. Sunucusuz Azure Işlevleri ortamına yönelik doğal bir uyum.
+Arka planda, Dayanıklı İşlevler uzantısı, GitHub'da kod içinde iş akışları oluşturmak için kullanılan açık kaynak kitaplığı olan [Dayanıklı Görev Çerçevesi'nin](https://github.com/Azure/durabletask)üzerine inşa edilmiştir. Azure İşfonksiyonları nın Azure Web İşlerinin sunucusuz evrimi olduğu gibi, Dayanıklı İşlevler de Dayanıklı Görev Çerçevesi'nin sunucusuz evrimidir. Microsoft ve diğer kuruluşlar, görev açısından kritik işlemleri otomatikleştirmek için Dayanıklı Görev Çerçevesini kapsamlı bir şekilde kullanır. Sunucusuz Azure İşlevleri ortamı için doğal bir uyum sağlar.
 
 ## <a name="code-constraints"></a>Kod kısıtlamaları
 
-Güvenilir ve uzun süreli yürütme garantisi sağlamak için, Orchestrator işlevlerinin izlenmesi gereken bir dizi kodlama kuralı vardır. Daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) makalesi.
+Güvenilir ve uzun süreli yürütme garantileri sağlamak için, orkestratör işlevlerinin izlenmesi gereken bir dizi kodlama kuralı vardır. Daha fazla bilgi için [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) makalesine bakın.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
-Dayanıklı İşlevler Azure Işlevleri ile aynı faturalandırılır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/). Azure Işlevleri [Tüketim planında](../functions-scale.md#consumption-plan)Orchestrator işlevleri çalıştırıldığında, bazı fatura davranışları göz önünde bulundurulmalıdır. Bu davranışlar hakkında daha fazla bilgi için [dayanıklı işlevler faturalandırma](durable-functions-billing.md) makalesine bakın.
+Dayanıklı Işlevler, Azure İşlevleri ile aynı faturalandırılır. Daha fazla bilgi için Azure [İşlevler fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/)'na bakın. Azure İşlevler [Tüketim planında](../functions-scale.md#consumption-plan)orchestrator işlevlerini yürütürken, dikkat edilmesi gereken bazı faturalandırma davranışları vardır. Bu davranışlar hakkında daha fazla bilgi [için, Dayanıklı Işlevler faturalandırma](durable-functions-billing.md) makalesine bakın.
 
-## <a name="jump-right-in"></a>Hemen geç
+## <a name="jump-right-in"></a>Hemen atla
 
-Bu dile özgü hızlı başlangıç öğreticilerden birini tamamlayarak 10 dakikadan kısa bir süre içinde Dayanıklı İşlevler kullanmaya başlamanızı sağlayabilirsiniz:
+Bu dile özel hızlı başlangıç eğitimlerinden birini tamamlayarak Dayanıklı Fonksiyonlar'a 10 dakikadan kısa bir sürede başlayabilirsiniz:
 
-* [C#Visual Studio 2019 kullanma](durable-functions-create-first-csharp.md)
-* [Visual Studio Code kullanan JavaScript](quickstart-js-vscode.md)
+* [Visual Studio 2019'u kullanarak C#](durable-functions-create-first-csharp.md)
+* [Visual Studio Code kullanarak JavaScript](quickstart-js-vscode.md)
 
-Her iki hızlı başlangıçlarda, "Hello World" dayanıklı işlevini yerel olarak oluşturup test edersiniz. Ardından işlev kodunu Azure’da yayımlayacaksınız. Oluşturduğunuz işlev, diğer işlevlere yapılan çağrıları düzenler ve birbirine zincirler.
+Her iki quickstarts, yerel oluşturmak ve bir "merhaba dünya" dayanıklı fonksiyonu test. Ardından işlev kodunu Azure’da yayımlayacaksınız. Birlikte orkestralar ve zincirler oluşturduğunuz işlev diğer işlevleri çağırır.
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-Aşağıdaki videoda Dayanıklı İşlevler avantajları vurgulanmıştır:
+Aşağıdaki video, Dayanıklı Fonksiyonların yararlarını vurgulamaktadır:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Durable-Functions-in-Azure-Functions/player] 
 
-Dayanıklı İşlevler ve temel alınan teknolojinin daha ayrıntılı bir tartışması için aşağıdaki videoya bakın (.NET 'e odaklanılmıştır, ancak kavramlar desteklenen diğer diller için de geçerlidir):
+Dayanıklı Fonksiyonlar ve altta yatan teknoloji hakkında daha ayrıntılı bir tartışma için aşağıdaki videoya bakın (.NET'e odaklanmıştır, ancak kavramlar diğer desteklenen diller için de geçerlidir):
 
 > [!VIDEO https://channel9.msdn.com/Events/dotnetConf/2018/S204/player]
 
-Dayanıklı İşlevler [Azure işlevleri](../functions-overview.md)için gelişmiş bir uzantı olduğundan, tüm uygulamalar için uygun değildir. Diğer Azure düzenleme teknolojileriyle bir karşılaştırma için bkz. [Azure Işlevlerini karşılaştırma ve Azure Logic Apps](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps).
+Dayanıklı İşlevler Azure [İşlevler](../functions-overview.md)için gelişmiş bir uzantı olduğundan, tüm uygulamalar için uygun değildir. Diğer Azure düzenleme teknolojileriyle karşılaştırma kinlerini görmek için [Azure İşlerini ve Azure Mantıksal Uygulamalarını Karşılaştır'a](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [İşlev türlerini ve özellikleri Dayanıklı İşlevler](durable-functions-types-features-overview.md)
+> [Dayanıklı Fonksiyonlar fonksiyon türleri ve özellikleri](durable-functions-types-features-overview.md)

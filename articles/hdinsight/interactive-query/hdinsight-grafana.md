@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight üzerinde Grafana kullanma
-description: Azure HDInsight 'ta Apache Hadoop kümeleriyle Grafana panosuna erişmeyi öğrenin
+title: Azure HDInsight'ta Grafana'yı kullanma
+description: Azure HDInsight'ta Apache Hadoop kümeleriyle Grafana panosuna nasıl erişeceğinizi öğrenin
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,54 +8,54 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082872"
 ---
-# <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight 'ta erişim Grafana
+# <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight'ta Grafana'ya erişme
 
-[Grafana](https://grafana.com/) , popüler, açık kaynaklı bir grafik ve Pano Oluşturucu. Grafana özelliği zengin; yalnızca kullanıcıların özelleştirilebilir ve paylaşılabilir panolar oluşturmasına izin vermez, ayrıca şablonlu/komut dosyalı panolar, LDAP tümleştirmesi, birden çok veri kaynağı ve daha fazlasını sunar.
+[Grafana](https://grafana.com/) popüler, açık kaynak grafik ve pano oluşturucu. Grafana zengin özelliği; yalnızca kullanıcıların özelleştirilebilir ve paylaşılabilir panolar oluşturmasına izin vermekle kalmıyor, aynı zamanda şablonlu/komut dosyası lı panolar, LDAP entegrasyonu, birden çok veri kaynağı ve daha fazlasını da sunuyor.
 
-Şu anda Azure HDInsight 'ta Grafana, Spark, HBase, Kafka ve etkileşimli sorgu kümesi türleriyle desteklenir. Enterprise Security Pack etkin olan kümeler için desteklenmez.
+Şu anda Azure HDInsight'ta Grafana, Spark, HBase, Kafka ve Etkileşimli Sorgu küme türleri ile desteklenir. Kurumsal Güvenlik Paketi etkinleştirilmiş kümeler için desteklenmez.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop kümesi oluşturma
 
-Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md). **Küme türü**için **Spark**, **Kafka**, **HBase**veya **etkileşimli sorgu**' yı seçin.
+Bkz. [Azure portalını kullanarak Apache Hadoop kümeleri oluşturun.](../hdinsight-hadoop-create-linux-clusters-portal.md) **Küme türü için,** **Spark**, **Kafka**, **HBase**veya **İnteraktif Sorgu'u**seçin.
 
 ## <a name="access-the-grafana-dashboard"></a>Grafana panosuna erişin
 
-1. Bir Web tarayıcısından CLUSTERNAME öğesinin Kümenizin adı olduğu `https://CLUSTERNAME.azurehdinsight.net/grafana/` ' a gidin.
+1. Bir web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net/grafana/` CLUSTERNAME'nin kümenizin adı olduğu yere gidin.
 
-1. Hadoop kümesi Kullanıcı kimlik bilgilerini girin.
+1. Hadoop küme kullanıcı kimlik bilgilerini girin.
 
-1. Grafana panosu görüntülenir ve şu örneğe benzer şekilde görünür:
+1. Grafana panosu görüntülenir ve aşağıdaki örneğe benzer:
 
-    ![HDInsight Grafana Web panosu](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana panosu")
+    ![HDInsight Grafana web panosu](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana panosu")
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
+Bu uygulamayı kullanmaya devam etmeyecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 
-1. Üstteki **arama** kutusuna **HDInsight**yazın.
+1. Üstteki **Arama** kutusuna **HDInsight**yazın.
 
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
+1. **Hizmetler**altında **HDInsight kümelerini** seçin.
 
-1. Görüntülenen HDInsight kümeleri listesinde, oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
+1. Görünen HDInsight kümeleri listesinde, oluşturduğunuz kümenin yanındaki **...** kümesini seçin.
 
-1. **Sil**’i seçin. **Evet**’i seçin.
+1. **Sil**’i seçin. **Evet'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 HDInsight ile veri çözümleme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [HDInsight ile Apache Hive kullanın](../hadoop/hdinsight-use-hive.md).
+* [HDInsight ile Apache Hive kullanın.](../hadoop/hdinsight-use-hive.md)
 
-* [HDInsight Ile MapReduce kullanın](../hadoop/hdinsight-use-mapreduce.md).
+* [HDInsight ile MapReduce'ı kullanın.](../hadoop/hdinsight-use-mapreduce.md)
 
-* [HDInsight Için Visual Studio Hadoop araçları 'nı kullanmaya](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)başlayın.
+* [HDInsight için Visual Studio Hadoop araçlarını kullanmaya başlayın.](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)

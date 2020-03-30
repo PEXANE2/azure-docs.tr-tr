@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici çalışma kitapları metin parametreleri
-description: Önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın. Çalışma kitabı metin parametreleri hakkında daha fazla bilgi edinin.
+title: Azure Monitor çalışma kitapları metin parametreleri
+description: Önceden oluşturulmuş ve özel parametreli çalışma kitaplarıyla karmaşık raporlamayı basitleştirin. Çalışma kitabı metin parametreleri hakkında daha fazla bilgi edinin.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,80 +10,80 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658058"
 ---
 # <a name="workbook-text-parameters"></a>Çalışma kitabı metin parametreleri
 
-TextBox parametreleri, çalışma kitabı kullanıcılarından metin girişi toplamanın basit bir yolunu sağlar. Bu, girişi toplamak için bir açılan liste kullanımı pratik olmadığında kullanılır (örneğin, rastgele bir eşik veya genel filtreler). Çalışma kitapları, yazarların TextBox 'ın varsayılan değerini bir sorgudan almasını sağlar. Bu, ölçüm P95 göre varsayılan eşiği ayarlama gibi ilginç senaryolara olanak tanır.
+Textbox parametreleri, çalışma kitabı kullanıcılarından metin girişi toplamak için basit bir yol sağlar. Girişi toplamak için açılır bir uygulama olmadığında (örneğin, rasgele bir eşik veya genel filtreler) kullanılırlar. Çalışma kitapları, yazarların bir sorgudan textbox'ın varsayılan değerini almasına olanak sağlar. Bu, metnin p95'ine göre varsayılan eşiği ayarlama gibi ilginç senaryolara izin verir.
 
-Metin kutularının yaygın kullanımı, diğer çalışma kitabı denetimleri tarafından kullanılan iç değişkenlerdir. Bu, varsayılan değerler için bir sorgudan yararlanarak ve giriş denetiminin okuma modunda görünmez hale getirilmesi ile yapılır. Örneğin, bir Kullanıcı bir formülün (Kullanıcı değil) bir formülden gelmesini ve sonra eşiği sonraki sorgularda kullanmasını isteyebilir.
+Textboxes'ın yaygın kullanımı, diğer çalışma kitabı denetimleri tarafından kullanılan dahili değişkenler gibidir. Bu, varsayılan değerler için bir sorgudan yararlanarak ve giriş denetimini okuma modunda görünmez hale getirerek yapılır. Örneğin, bir kullanıcı bir formülden (kullanıcı değil) bir eşik gelmesini ve ardından sonraki sorgularda eşiği kullanmasını isteyebilir.
 
 ## <a name="creating-a-text-parameter"></a>Metin parametresi oluşturma
-1. Düzenleme modunda boş bir çalışma kitabıyla başlayın.
-2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
-3. Mavi _parametre Ekle_ düğmesine tıklayın.
-4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı: `SlowRequestThreshold`
-    2. Parametre türü: `Text`
-    3. Gerekli: `checked`
-    4. Sorgudan varsayılan değeri al: `unchecked`
-5. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
+1. Edit modunda boş bir çalışma kitabıyla başlayın.
+2. Çalışma kitabındaki bağlantılardan _parametre ekle'yi_ seçin.
+3. Mavi _Parametre Ekle_ düğmesine tıklayın.
+4. Açılan yeni parametre bölmesine girin:
+    1. Parametre adı:`SlowRequestThreshold`
+    2. Parametre türü:`Text`
+    3. Gerekli:`checked`
+    4. Sorgudan varsayılan değer alın:`unchecked`
+5. Parametreyi oluşturmak için araç çubuğundan 'Kaydet'i seçin.
 
-    ![Metin parametresinin oluşturulmasını gösteren resim](./media/workbooks-text/text-create.png)
+    ![Metin parametresi oluşturulmasını gösteren resim](./media/workbooks-text/text-create.png)
 
-Çalışma kitabının okuma modunda nasıl görüneceğine bu şekilde bakabilirsiniz.
+Çalışma kitabı okuma modunda böyle görünecektir.
 
-![Okuma modundaki bir metin parametresini gösteren resim](./media/workbooks-text/text-readmode.png)
+![Okuma modunda metin parametresi gösteren resim](./media/workbooks-text/text-readmode.png)
 
-## <a name="referencing-a-text-parameter"></a>Bir metin parametresine başvurma
-1. Mavi `Add query` bağlantısını seçerek çalışma kitabına bir sorgu denetimi ekleyin ve bir Application Insights kaynağı seçin.
-2. KQL kutusunda şu kod parçacığını ekleyin:
+## <a name="referencing-a-text-parameter"></a>Metin parametresi gönderme
+1. Mavi `Add query` bağlantıyı seçerek çalışma kitabına bir sorgu denetimi ekleyin ve bir Application Insights kaynağını seçin.
+2. KQL kutusuna, bu parçacığı ekleyin:
     ```kusto
     requests
     | summarize AllRequests = count(), SlowRequests = countif(duration >= {SlowRequestThreshold}) by name
     | extend SlowRequestPercent = 100.0 * SlowRequests / AllRequests
     | order by SlowRequests desc
     ```
-3. Aşağıdaki sorguyu etkin bir şekilde çalıştırdığınız sorgu denetimiyle birlikte 500 değeriyle birlikte metin parametresini kullanarak:
+3. Sorgu denetimi ile birleştiğinde 500 değeri olan metin parametresini kullanarak aşağıdaki sorguyu etkin bir şekilde çalıştırabilirsiniz:
     ```kusto
     requests
     | summarize AllRequests = count(), SlowRequests = countif(duration >= 500) by name
     | extend SlowRequestPercent = 100.0 * SlowRequests / AllRequests
     | order by SlowRequests desc
     ```
-4. Sonuçları görmek için sorguyu çalıştırın
+4. Sonuçları görmek için sorguyu çalıştır
 
-    ![KQL 'de başvurulan metin parametresini gösteren resim](./media/workbooks-text/text-reference.png)
+    ![KQL'de başvurulan metin parametresi gösteren resim](./media/workbooks-text/text-reference.png)
 
 
-## <a name="setting-default-values"></a>Varsayılan değerler ayarlanıyor
-1. Düzenleme modunda boş bir çalışma kitabıyla başlayın.
-2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
-3. Mavi _parametre Ekle_ düğmesine tıklayın.
-4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı: `SlowRequestThreshold`
-    2. Parametre türü: `Text`
-    3. Gerekli: `checked`
-    4. Sorgudan varsayılan değeri al: `checked`
-5. KQL kutusunda şu kod parçacığını ekleyin:
+## <a name="setting-default-values"></a>Varsayılan değerleri ayarlama
+1. Edit modunda boş bir çalışma kitabıyla başlayın.
+2. Çalışma kitabındaki bağlantılardan _parametre ekle'yi_ seçin.
+3. Mavi _Parametre Ekle_ düğmesine tıklayın.
+4. Açılan yeni parametre bölmesine girin:
+    1. Parametre adı:`SlowRequestThreshold`
+    2. Parametre türü:`Text`
+    3. Gerekli:`checked`
+    4. Sorgudan varsayılan değer alın:`checked`
+5. KQL kutusuna, bu parçacığı ekleyin:
     ```kusto
     requests
     | summarize round(percentile(duration, 95), 2)
     ```
-    Bu sorgu, uygulamadaki tüm istekler için metin kutusunun varsayılan değerini 95 yüzdebirlik süresine ayarlar.
-6. Sonucu görmek için sorguyu çalıştırın
-7. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
+    Bu sorgu, metin kutusunun varsayılan değerini uygulamadaki tüm istekler için yüzde 95'lik yüzdelik süreye ayarlar.
+6. Sonucu görmek için sorguyu çalıştır
+7. Parametreyi oluşturmak için araç çubuğundan 'Kaydet'i seçin.
 
-    ![KQL 'den varsayılan değere sahip bir metin parametresini gösteren resim](./media/workbooks-text/text-default-value.png)
+    ![KQL'den varsayılan değeri olan bir metin parametresi gösteren resim](./media/workbooks-text/text-default-value.png)
 
 > [!NOTE]
-> Bu örnek Application Insights verileri sorgularken, yaklaşım herhangi bir günlük tabanlı veri kaynağı için kullanılabilir-Log Analytics, Azure Kaynak Grafiği vb. olabilir.
+> Bu örnek Uygulama Öngörüleri verilerini sorgularken, bu yaklaşım günlük tabanlı veri kaynağı için kullanılabilir - Günlük Analizi, Azure Kaynak Grafiği, vb.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
-* Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.
+* Çalışma kitapları hakkında daha fazla bilgi [edinmeye başlayın](workbooks-visualizations.md) birçok zengin görselleştirme seçeneği.
+* Çalışma kitabı kaynaklarınıza erişimi [kontrol](workbooks-access-control.md) edin ve paylaşın.

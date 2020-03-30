@@ -1,43 +1,43 @@
 ---
-title: İOS SDK 'sını kullanma
-description: Azure için iOS SDK 'Yı kullanma Mobile Apps
+title: iOS SDK'yı kullanma
+description: Azure Mobil Uygulamalar için iOS SDK Nasıl Kullanılır?
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 1bf8f8e198f6c4a4a0af308262cd830685698a80
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249353"
 ---
-# <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure için iOS Istemci kitaplığı 'Nı kullanma Mobile Apps
+# <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure Mobil Uygulamalar için iOS İstemci Kitaplığı Nasıl Kullanılır?
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu kılavuzda, en son [Azure Mobile Apps IOS SDK 'sını][1]kullanarak genel senaryolar gerçekleştirmenizi öğretilir. Azure Mobile Apps 'yi yeni kullanıyorsanız, ilk olarak [azure Mobile Apps hızlı başlangıç] tamamladıktan sonra arka uç oluşturun, tablo oluşturun ve önceden oluşturulmuş bir IOS Xcode projesini indirin. Bu kılavuzda, istemci tarafı iOS SDK 'sına odaklanıyoruz. Arka uca yönelik sunucu tarafı SDK 'Sı hakkında daha fazla bilgi edinmek için bkz. Server SDK HOWTOs.
+Bu kılavuz, en son [Azure Mobil Uygulamaları iOS SDK'yı][1]kullanarak sık karşılaşılan senaryoları gerçekleştirmenizi öğretir. Azure Mobile Apps'ta yeniyseniz, bir arka uç oluşturmak, tablo oluşturmak ve önceden oluşturulmuş bir iOS Xcode projesini indirmek için önce [Azure Mobile Apps Hızlı Başlat'ı] tamamlayın. Bu kılavuzda, istemci tarafı iOS SDK'ya odaklanıyoruz. Arka uç için sunucu tarafındaki SDK hakkında daha fazla bilgi edinmek için Server SDK HOWTOs'a bakın.
 
-## <a name="reference-documentation"></a>Başvuru belgeleri
+## <a name="reference-documentation"></a>Referans belgeleri
 
-İOS istemci SDK 'Sı için başvuru belgeleri şurada bulunur: [Azure Mobile Apps IOS Istemci başvurusu][2].
+iOS istemcisi SDK için başvuru belgeleri burada bulunmaktadır: [Azure Mobile Apps iOS İstemci Başvurusu][2].
 
-## <a name="supported-platforms"></a>Desteklenen platformlar
+## <a name="supported-platforms"></a>Desteklenen Platformlar
 
-İOS SDK 'Sı, iOS sürümleri 8,0 veya üzeri için amaç-C projelerini, Swift 2,2 projelerini ve Swift 2,3 projelerini destekler.
+iOS SDK Objective-C projelerini, Swift 2.2 projelerini ve 8.0 veya sonraki iOS sürümleri için Swift 2.3 projelerini destekler.
 
-"Sunucu-akışı" kimlik doğrulaması, sunulan kullanıcı arabirimi için bir WebView kullanır.  Cihaz bir WebView Kullanıcı arabirimini sunmıyorsa, ürünün kapsamı dışında başka bir kimlik doğrulama yöntemi gerekir.  
-Bu SDK bu nedenle, Izleme türü veya benzer kısıtlanmış cihazlar için uygun değildir.
+"Sunucu akışı" kimlik doğrulaması, sunulan web hizmeti için bir Web Görünümü kullanır.  Aygıt bir WebView Web Hizmeti aracı sunamıyorsa, ürünün kapsamı dışında başka bir kimlik doğrulama yöntemi gerekir.  
+Bu nedenle Bu SDK, Watch tipi veya benzer şekilde kısıtlanmış aygıtlar için uygun değildir.
 
-## <a name="Setup"></a>Kurulum ve Önkoşullar
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>Kurulum ve Ön koşullar
 
-Bu kılavuzda, bir tablo ile arka uç oluşturduğunuzu varsayılmaktadır. Bu kılavuzda, tablonun bu öğreticilerde bulunan tablolarla aynı şemaya sahip olduğu varsayılır. Bu kılavuzda ayrıca kodunuzda `MicrosoftAzureMobile.framework` ve içeri aktarma `MicrosoftAzureMobile/MicrosoftAzureMobile.h`başvuru yaptığınız varsayılır.
+Bu kılavuz, bir tablo ile bir arka uç oluşturduğunuzvarsa. Bu kılavuz, tablonun bu öğreticilerde tablolarla aynı şema olduğunu varsayar. Bu kılavuz da kodunuzda, başvuru `MicrosoftAzureMobile.framework` ve `MicrosoftAzureMobile/MicrosoftAzureMobile.h`alma varsayar.
 
-## <a name="create-client"></a>Nasıl yapılır: Istemci oluşturma
+## <a name="how-to-create-client"></a><a name="create-client"></a>Nasıl yapılsın: İstemci oluşturma
 
-Projenizdeki bir Azure Mobile Apps arka uca erişmek için bir `MSClient`oluşturun. `AppUrl` uygulama URL 'siyle değiştirin. `gatewayURLString` ve `applicationKey` boş bırakabilirsiniz. Kimlik doğrulaması için bir ağ geçidi ayarlarsanız, `gatewayURLString` ağ geçidi URL 'siyle doldurun.
+Projenizde bir Azure Mobil Uygulaması arka ucuna erişmek için bir `MSClient`. Uygulama `AppUrl` URL'si ile değiştirin. Buradan `gatewayURLString` ayrılıp `applicationKey` boşalabilirsiniz. Kimlik doğrulaması için bir ağ geçidi `gatewayURLString` ayarladıysanız, ağ geçidi URL'sini doldurun.
 
 **Amaç-C**:
 
@@ -45,13 +45,13 @@ Projenizdeki bir Azure Mobile Apps arka uca erişmek için bir `MSClient`oluştu
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>Nasıl yapılır: tablo başvurusu oluşturma
+## <a name="how-to-create-table-reference"></a><a name="table-reference"></a>Nasıl yapılır: Tablo Başvurusu Oluşturma
 
 Verilere erişmek veya verileri güncelleştirmek için arka uç tablosuna başvuru oluşturun. `TodoItem` ifadesini tablonuzun adıyla değiştirin
 
@@ -61,15 +61,15 @@ Verilere erişmek veya verileri güncelleştirmek için arka uç tablosuna başv
 MSTable *table = [client tableWithName:@"TodoItem"];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>Nasıl yapılır: verileri sorgulama
+## <a name="how-to-query-data"></a><a name="querying"></a>Nasıl kullanılır: Veri Sorgula
 
-Veritabanı sorgusu oluşturmak için `MSTable` nesnesini sorgulayın. Aşağıdaki sorgu `TodoItem` tüm öğeleri alır ve her öğenin metnini günlüğe kaydeder.
+Veritabanı sorgusu oluşturmak için `MSTable` nesneyi sorgula. Aşağıdaki sorgu tüm öğeleri `TodoItem` alır ve her öğenin metnini kaydeder.
 
 **Amaç-C**:
 
@@ -85,7 +85,7 @@ Veritabanı sorgusu oluşturmak için `MSTable` nesnesini sorgulayın. Aşağıd
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 table.readWithCompletion { (result, error) in
@@ -99,11 +99,11 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>Nasıl yapılır: döndürülen verileri filtreleme
+## <a name="how-to-filter-returned-data"></a><a name="filtering"></a>Nasıl kullanılır: Döndürülen Verileri Filtrele
 
-Sonuçları filtrelemek için, kullanılabilecek birçok seçenek vardır.
+Sonuçları filtrelemek için birçok seçenek vardır.
 
-Bir koşul kullanarak filtrelemek için bir `NSPredicate` ve `readWithPredicate`kullanın. Aşağıdaki filtreler yalnızca tamamlanmamış Todo öğelerini bulmak için veri döndürdü.
+Bir yüklem kullanarak filtre lemek `NSPredicate` `readWithPredicate`için bir ve . Yalnızca eksik Todo öğelerini bulmak için aşağıdaki filtreler verileri döndürmüşoldu.
 
 **Amaç-C**:
 
@@ -122,7 +122,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 // Create a predicate that finds items where complete is false
@@ -139,9 +139,9 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>Nasıl yapılır: MSQuery kullanma
+## <a name="how-to-use-msquery"></a><a name="query-object"></a>Nasıl kullanılır: MSQuery kullanın
 
-Karmaşık bir sorgu (sıralama ve sayfalama dahil) gerçekleştirmek için, doğrudan veya bir koşul kullanarak `MSQuery` nesnesi oluşturun:
+Karmaşık bir sorgu (sıralama ve sayfalama dahil) `MSQuery` gerçekleştirmek için, doğrudan veya bir yüklem kullanarak bir nesne oluşturun:
 
 **Amaç-C**:
 
@@ -150,27 +150,27 @@ MSQuery *query = [table query];
 MSQuery *query = [table queryWithPredicate: [NSPredicate predicateWithFormat:@"complete == NO"]];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 let query = table.query()
 let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 ```
 
-`MSQuery`, birkaç sorgu davranışını denetlemenize olanak tanır.
+`MSQuery`birkaç sorgu davranışını denetlemenize olanak tanır.
 
 * Sonuçların sırasını belirtin
-* Döndürülecek alanları sınırla
-* Döndürülecek kayıt sayısını sınırla
-* Yanıt olarak toplam sayıyı belirtin
-* İstekte özel sorgu dizesi parametrelerini belirtin
-* Ek işlevler Uygula
+* Hangi alanların döndürülecek lerini sınırlama
+* Döndürülecek kaç kaydı sınırla
+* Yanıtolarak toplam sayı yı belirtin
+* İstekte özel sorgu dize parametrelerini belirtin
+* Ek işlevler uygulayın
 
-Nesne üzerinde `readWithCompletion` çağırarak bir `MSQuery` sorgusu yürütün.
+Nesneyi `MSQuery` arayarak `readWithCompletion` sorguyu yürütün.
 
-## <a name="sorting"></a>Nasıl yapılır: MSQuery ile verileri sıralama
+## <a name="how-to-sort-data-with-msquery"></a><a name="sorting"></a>Nasıl kullanılır: MSQuery ile Verileri Sırala
 
-Sonuçları sıralamak için bir örneğe bakalım. ' Text ' alanına göre artan ve sonra ' Tamam ' azalan şekilde sıralamak için, `MSQuery` gibi çağırın:
+Sonuçları sıralamak için bir örneğe bakalım. Artan alana göre sıralamak için 'metin' artan, daha `MSQuery` sonra 'tam' azalan, gibi çağırmak için:
 
 **Amaç-C**:
 
@@ -188,7 +188,7 @@ Sonuçları sıralamak için bir örneğe bakalım. ' Text ' alanına göre arta
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 query.orderByAscending("text")
@@ -204,9 +204,9 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>Nasıl yapılır: alanları sınırlama ve sorgu dizesi parametrelerini MSQuery ile genişletme
+## <a name="how-to-limit-fields-and-expand-query-string-parameters-with-msquery"></a><a name="selecting"></a><a name="parameters"></a>Nasıl kullanılır: MSQuery ile Alanları Sınırlandırın ve Sorgu Dize Parametrelerini Genişletin
 
-Bir sorguda döndürülecek alanları sınırlamak için **selectfields** özelliğindeki alanların adlarını belirtin. Bu örnek yalnızca metin ve tamamlanan alanları döndürür:
+Sorguda döndürülecek alanları sınırlamak için, **selectFields** özelliğindeki alanların adlarını belirtin. Bu örnek, yalnızca metni ve tamamlanan alanları döndürür:
 
 **Amaç-C**:
 
@@ -214,13 +214,13 @@ Bir sorguda döndürülecek alanları sınırlamak için **selectfields** özell
 query.selectFields = @[@"text", @"complete"];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 query.selectFields = ["text", "complete"]
 ```
 
-Sunucu isteğine ek sorgu dizesi parametreleri eklemek için (örneğin, özel bir sunucu tarafında komut dosyası onları kullandığından) `query.parameters` gibi doldurun:
+Sunucu isteğine ek sorgu dize parametreleri eklemek için (örneğin, özel bir `query.parameters` sunucu tarafı komut dosyası bunları kullandığından), aşağıdaki gibi doldurma:
 
 **Amaç-C**:
 
@@ -231,25 +231,25 @@ query.parameters = @{
 };
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>Nasıl yapılır: sayfa boyutunu yapılandırma
+## <a name="how-to-configure-page-size"></a><a name="paging"></a>Nasıl yapılandırılır: Sayfa Boyutunu Yapılandır
 
-Azure Mobile Apps ile sayfa boyutu, arka uç tablolarından bir kez çekilen kayıt sayısını denetler. `pull` veriye yönelik bir çağrı daha sonra, çekilecek daha fazla kayıt kalmayana kadar Bu sayfa boyutuna bağlı olarak verileri toplu olarak kaydeder.
+Azure Mobile Apps ile sayfa boyutu, arka uç tablolarından aynı anda çekilen kayıt sayısını denetler. Verilere yapılan `pull` bir çağrı, bu sayfa boyutuna bağlı olarak, çekilecek başka kayıt olmayana kadar verileri toplu olarak tamamlar.
 
-Aşağıda gösterildiği gibi, **Mspullsettings** kullanarak bir sayfa boyutu yapılandırmak mümkündür. Varsayılan sayfa boyutu 50 ' dir ve aşağıdaki örnek 3 ' e dönüşür.
+Aşağıda gösterildiği gibi **MSPullSettings** kullanarak bir sayfa boyutunu yapılandırmak mümkündür. Varsayılan sayfa boyutu 50'dir ve aşağıdaki örnek onu 3 olarak değiştirir.
 
-Performans nedenleriyle farklı bir sayfa boyutu yapılandırabilirsiniz. Çok sayıda küçük veri kaydı varsa, yüksek sayfa boyutu sunucu gidiş dönüşlerin sayısını azaltır.
+Performans nedenleriyle farklı bir sayfa boyutunu yapılandırabilirsiniz. Çok sayıda küçük veri kaydınız varsa, yüksek sayfa boyutu sunucu nun gidiş-dönüş sayısını azaltır.
 
-Bu ayar yalnızca istemci tarafındaki sayfa boyutunu denetler. İstemci, Mobile Apps arka ucunun desteklediğinden daha büyük bir sayfa boyutu isterse, arka ucun destekleyecek şekilde yapılandırıldığı sayfa boyutu üst sınıra göre belirlenir.
+Bu ayar yalnızca istemci tarafındaki sayfa boyutunu denetler. İstemci Mobil Uygulamalar arka uç desteklerinin daha büyük bir sayfa boyutu isterse, sayfa boyutu destekiçin yapılandırılan en üst uçta kapatılır.
 
-Bu ayar aynı zamanda *bayt boyutunda*değil veri kayıtlarının *sayısıdır* .
+Bu ayar aynı zamanda veri kayıtlarının *sayısıdır,* *bayt boyutu*değil.
 
-İstemci sayfa boyutunu artırırsanız, sunucudaki sayfa boyutunu da artırmanız gerekir. Bunu yapma adımları için ["nasıl yapılır: tablo disk belleği boyutunu ayarlama"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) bölümüne bakın.
+İstemci sayfa boyutunu artırırsanız, sunucudaki sayfa boyutunu da artırmanız gerekir. Bunu yapmak için adımlar için ["Nasıl tablo sayfalama boyutunu ayarlayın"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) konusuna bakın.
 
 **Amaç-C**:
 
@@ -263,7 +263,7 @@ Bu ayar aynı zamanda *bayt boyutunda*değil veri kayıtlarının *sayısıdır*
                            }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 let pullSettings = MSPullSettings(pageSize: 3)
@@ -274,13 +274,13 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>Nasıl yapılır: veri ekleme
+## <a name="how-to-insert-data"></a><a name="inserting"></a>Nasıl kullanılır: Veri Ekleme
 
-Yeni bir tablo satırı eklemek için bir `NSDictionary` oluşturun ve `table insert`çağırın. [Dinamik şema] etkinse, Azure App Service mobil arka uç otomatik olarak `NSDictionary`göre yeni sütunlar oluşturur.
+Yeni bir tablo satırı eklemek `NSDictionary` için `table insert`bir tane oluşturun ve çağırın. [Dinamik Şema] etkinse, Azure Uygulama Hizmeti mobil arka ucu otomatik `NSDictionary`olarak .
 
-`id` sağlanmazsa, arka uç otomatik olarak yeni bir benzersiz KIMLIK oluşturur. E-posta adreslerini, Kullanıcı adlarını veya kendi özel değerlerinizi KIMLIK olarak kullanmak için kendi `id` sağlayın. Kendi KIMLIĞINIZI sağlamak, kolayca katılımları ve iş odaklı veritabanı mantığını sağlar.
+`id` Sağlanmazsa, arka uç otomatik olarak yeni bir benzersiz kimlik oluşturur. E-posta `id` adreslerini, kullanıcı adlarınızı veya kendi özel değerlerinizi kimlik olarak kullanmak için kendi bilgilerinizi sağlayın. Kendi kimliğinizi sağlamak, birleştirmeleri ve iş odaklı veritabanı mantığını kolaylaştırabilir.
 
-`result` eklenen yeni öğeyi içerir. Sunucu mantığınıza bağlı olarak, sunucuya geçirilme ile karşılaştırıldığında ek veya değiştirilmiş veriler olabilir.
+Eklenen `result` yeni öğeyi içerir. Sunucu mantığınıza bağlı olarak, sunucuya aktarılanverilerle karşılaştırıldığında ek veya değiştirilmiş verilere sahip olabilir.
 
 **Amaç-C**:
 
@@ -295,7 +295,7 @@ NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"comple
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 let newItem = ["id": "custom-id", "text": "my new item", "complete": false]
@@ -308,9 +308,9 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>Nasıl yapılır: verileri değiştirme
+## <a name="how-to-modify-data"></a><a name="modifying"></a>Nasıl Kullanılır: Verileri Değiştirme
 
-Varolan bir satırı güncelleştirmek için bir öğeyi değiştirin ve `update`çağırın:
+Varolan bir satırı güncelleştirmek için `update`bir öğeyi değiştirin ve şu ları arayın:
 
 **Amaç-C**:
 
@@ -326,7 +326,7 @@ NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
@@ -341,7 +341,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 }
 ```
 
-Alternatif olarak, satır KIMLIĞINI ve güncelleştirilmiş alanı sağlayın:
+Alternatif olarak, satır kimliğini ve güncelleştirilmiş alanı sağlama:
 
 **Amaç-C**:
 
@@ -355,7 +355,7 @@ Alternatif olarak, satır KIMLIĞINI ve güncelleştirilmiş alanı sağlayın:
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
@@ -367,11 +367,11 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 }
 ```
 
-Güncelleştirme yapılırken `id` özniteliği en azından ayarlanmalıdır.
+En azından, `id` güncelleştirmeler yaparken öznitelik ayarlanmalıdır.
 
-## <a name="deleting"></a>Nasıl yapılır: verileri silme
+## <a name="how-to-delete-data"></a><a name="deleting"></a>Nasıl Kullanılır: Verileri Silme
 
-Bir öğeyi silmek için öğesi ile `delete` çağırın:
+Bir öğeyi silmek için, öğeyi çağırın: `delete`
 
 **Amaç-C**:
 
@@ -385,7 +385,7 @@ Bir öğeyi silmek için öğesi ile `delete` çağırın:
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
@@ -397,7 +397,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 }
 ```
 
-Alternatif olarak, bir satır KIMLIĞI sağlayarak silme:
+Alternatif olarak, bir satır kimliği sağlayarak silin:
 
 **Amaç-C**:
 
@@ -411,7 +411,7 @@ Alternatif olarak, bir satır KIMLIĞI sağlayarak silme:
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
@@ -423,13 +423,13 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 }
 ```
 
-En azından, silme yapılırken `id` özniteliği ayarlanmalıdır.
+En azından, `id` silme yaparken öznitelik ayarlanmalıdır.
 
-## <a name="customapi"></a>Nasıl yapılır: özel API çağırma
+## <a name="how-to-call-custom-api"></a><a name="customapi"></a>Nasıl yapılsın: Özel API'yi arayın
 
-Özel bir API ile herhangi bir arka uç işlevini kullanıma sunabilirsiniz. Bir tablo işlemiyle eşleşmesi gerekmez. Mesajlaşma üzerinde daha fazla denetim elde etmekle kalmaz, üstbilgileri okuyabilir/ayarlayabilir ve yanıt gövdesi biçimini değiştirebilirsiniz.
+Özel bir API ile, herhangi bir arka uç işlevselliğini ortaya çıkarabilirsiniz. Bir tablo işleminin haritasını çıkarmasına gerek yok. Yalnızca mesajlaşma üzerinde daha fazla kontrol elde etmekle kalmıyor, üstbilgi başlıklarını okuyabilir/ayarlayabilir ve yanıt gövdesi biçimini değiştirebilirsiniz.
 
-Özel bir API çağırmak için `MSClient.invokeAPI`çağırın. İstek ve yanıt içeriği JSON olarak değerlendirilir. Diğer medya türlerini kullanmak için [`invokeAPI`diğer aşırı yüklemesini kullanın ][5].  `POST` isteği yerine `GET` isteği yapmak için, parametre `HTTPMethod` `"GET"` ve parametre `body` `nil` olarak ayarlayın (GET istekleri ileti gövdelerine sahip olmadığından). Özel API 'niz diğer HTTP fiillerini destekliyorsa `HTTPMethod` uygun şekilde değiştirin.
+Özel bir API aramak `MSClient.invokeAPI`için. İstek ve yanıt içeriği JSON olarak kabul edilir. Diğer ortam türlerini kullanmak için, [diğer aşırı `invokeAPI`yüklemeyi kullanın. ][5]  `POST` İstek yerine `GET` istekte bulunmak için `HTTPMethod` `"GET"` parametreyi ve `body` `nil` parametreyi ayarla (GET istekleriileti gövdeleri olmadığından.) Özel API'niz diğer HTTP fiillerini destekliyorsa, uygun şekilde değiştirin. `HTTPMethod`
 
 **Amaç-C**:
 
@@ -448,7 +448,7 @@ En azından, silme yapılırken `id` özniteliği ayarlanmalıdır.
             }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 client.invokeAPI("sendEmail",
@@ -466,9 +466,9 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>Nasıl yapılır: platformlar arası bildirimler göndermek için gönderme şablonlarını kaydetme
+## <a name="how-to-register-push-templates-to-send-cross-platform-notifications"></a><a name="templates"></a>Nasıl yapilir: Platformlar arası bildirimler göndermek için itme şablonlarını kaydetme
 
-Şablonları kaydetmek için, istemci uygulamanızda **Client. Push registerDeviceToken** metodunu kullanarak şablonları geçirin.
+Şablonları kaydetmek için, istemci uygulamanızda **istemci.push registerDeviceToken** yöntemi ile şablonları geçirin.
 
 **Amaç-C**:
 
@@ -480,7 +480,7 @@ client.invokeAPI("sendEmail",
 }];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { (error) in
@@ -498,19 +498,19 @@ client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { 
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
-Tüm Etiketler güvenlik isteğinden çıkarılır.  Yüklemeler içindeki yüklemelere veya şablonlara Etiketler eklemek için bkz. [Azure için .net arka uç sunucu SDK 'sı Ile çalışma Mobile Apps][4].  Bu kayıtlı şablonları kullanarak bildirim göndermek için [Notification Hubs API][3]'lerle çalışın.
+Tüm etiketler güvenlik isteğinden çıkarılır.  Yüklemelere veya yüklemelere etiketler eklemek için Azure [Mobil Uygulamaları için .NET arka uç sunucusu SDK ile çalışma][4]'ya bakın.  Bu kayıtlı şablonları kullanarak bildirim göndermek için [Bildirim Hub'ları API'leri][3]ile çalışın.
 
-## <a name="errors"></a>Nasıl yapılır: hataları Işleme
+## <a name="how-to-handle-errors"></a><a name="errors"></a>Nasıl yapılır: Hataları işleme
 
-Azure App Service mobil arka ucunu çağırdığınızda, tamamlama bloğu bir `NSError` parametresi içerir. Bir hata oluştuğunda, bu parametre Nil değildir. Kodunuzda bu parametreyi denetlemeniz ve hatayı, önceki kod parçacıklarında gösterildiği gibi gereken şekilde işlemeniz gerekir.
+Azure Uygulama Hizmeti mobil arka ucunu aradiğinizde, `NSError` tamamlama bloğu bir parametre içerir. Bir hata oluştuğunda, bu parametre sıfır değildir. Kodunuzda, bu parametreyi denetlemeli ve önceki kod parçacıklarında gösterildiği gibi hatayı gerektiği gibi işlemeniz gerekir.
 
-Dosya [`<WindowsAzureMobileServices/MSError.h>`][6] `MSErrorResponseKey`, `MSErrorRequestKey`ve `MSErrorServerItemKey`sabitleri tanımlar. Hatayla ilgili daha fazla veri almak için:
+Dosya [`<WindowsAzureMobileServices/MSError.h>`][6] `MSErrorResponseKey`sabitleri tanımlar , `MSErrorRequestKey`ve `MSErrorServerItemKey`. Hatayla ilgili daha fazla veri almak için:
 
 **Amaç-C**:
 
@@ -518,13 +518,13 @@ Dosya [`<WindowsAzureMobileServices/MSError.h>`][6] `MSErrorResponseKey`, `MSErr
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 let serverItem = error.userInfo[MSErrorServerItemKey]
 ```
 
-Ayrıca, dosya her hata kodu için sabitleri tanımlar:
+Buna ek olarak, dosya her hata kodu için sabitleri tanımlar:
 
 **Amaç-C**:
 
@@ -532,34 +532,34 @@ Ayrıca, dosya her hata kodu için sabitleri tanımlar:
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>Nasıl yapılır: Active Directory Authentication Library ile kullanıcıların kimliğini doğrulama
+## <a name="how-to-authenticate-users-with-the-active-directory-authentication-library"></a><a name="adal"></a>Nasıl yapilir: Active Directory Authentication Library ile kullanıcıların kimliğini doğrula
 
-Azure Active Directory kullanarak uygulamanızdaki kullanıcıları imzalamak için Active Directory Authentication Library (ADAL) kullanabilirsiniz. Kimlik sağlayıcısı SDK 'sını kullanarak istemci akışı kimlik doğrulaması `loginWithProvider:completion:` yönteminin kullanılması tercih edilir.  İstemci akışı kimlik doğrulaması, daha yerel bir UX sağlar ve ek özelleştirmeye izin verir.
+Azure Active Directory kullanarak kullanıcıları uygulamanızda oturum haline getirmek için Etkin Dizin Kimlik Doğrulama Kitaplığını (ADAL) kullanabilirsiniz. Bir kimlik sağlayıcısı SDK kullanarak istemci akışı kimlik `loginWithProvider:completion:` doğrulaması yöntemi kullanarak tercih edilir.  İstemci akışı kimlik doğrulaması daha yerel bir UX hissi sağlar ve ek özelleştirme sağlar.
 
-1. [Active Directory oturum açma öğreticisini App Service nasıl yapılandıracağınızı][7] izleyerek AAD oturum açma için mobil uygulama arka ucunuzu yapılandırın. Yerel istemci uygulamasını kaydetme işleminin isteğe bağlı adımını tamamladığınızdan emin olun. İOS için, yeniden yönlendirme URI 'sinin `<app-scheme>://<bundle-id>`biçimde olması önerilir. Daha fazla bilgi için bkz. [adal iOS hızlı][8]başlangıcı.
-2. Cocoapods kullanarak ADAL 'yi yükler. Aşağıdaki tanımı içerecek şekilde Pod dosyanızı düzenleyerek **-projenizi** Xcode projenizin adıyla değiştirin:
+1. [Active Directory giriş][7] için Uygulama Hizmetini yapılandırma yı izleyerek AAD oturum açma için mobil uygulama arka uçunuzu yapılandırın. Yerel istemci uygulamasını kaydetmenin isteğe bağlı adımını tamamladıktan emin olun. iOS için, yeniden yönlendirme URI şeklinde `<app-scheme>://<bundle-id>`olduğunu öneririz. Daha fazla bilgi için [ADAL iOS hızlı başlatın.][8]
+2. Kakaopodlar kullanarak ADAL yükleyin. Podfilenizi aşağıdaki tanımı içerecek şekilde ve **YOUR-PROJECT'i** Xcode projenizin adıyla değiştirerek edin:
 
         source 'https://github.com/CocoaPods/Specs.git'
         link_with ['YOUR-PROJECT']
         xcodeproj 'YOUR-PROJECT'
 
-   ve pod:
+   ve Pod:
 
         pod 'ADALiOS'
 
-3. Terminal kullanarak, projenizi içeren dizinden `pod install` çalıştırın ve ardından oluşturulan Xcode çalışma alanını (proje değil) açın.
-4. Aşağıdaki kodu, kullanmakta olduğunuz dile göre uygulamanıza ekleyin. Her birinde şu değişiklikleri yapın:
+3. Terminali kullanarak, `pod install` projenizi içeren dizinden çalıştırın ve ardından oluşturulan Xcode çalışma alanını (projeyi değil) açın.
+4. Kullandığınız dile göre uygulamanıza aşağıdaki kodu ekleyin. Her birinde, şu değiştirmeleri yapın:
 
-   * Eklentiyi, uygulamanızı sağladığınız kiracının **adıyla değiştirin.** Biçim https://login.microsoftonline.com/contoso.onmicrosoft.comolmalıdır. Bu değer, [Azure portalında]Azure Active Directory etki alanı sekmesinden kopyalanabilir.
-   * **Insert-Resource-ID-burada** , mobil uygulama arka ucunuzun istemci kimliği ile değiştirin. İstemci KIMLIĞINI, portalda **Azure Active Directory ayarlar** ' ın altında bulunan **Gelişmiş** sekmesinden elde edebilirsiniz.
-   * **Ekle-ISTEMCI kimliği-** ' ni yerel istemci uygulamasından KOPYALADıĞıNıZ istemci kimliğiyle değiştirin.
-   * {1 & gt; **Insert-REDIRECT-URI** & lt; 1} ÖĞESINI, https şemasını kullanarak sitenizin */.Auth/login/done* uç noktasıyla değiştirin Bu değer, *https://contoso.azurewebsites.net/.auth/login/done* benzer olmalıdır.
+   * **INSERT-AUTHORITY-HERE'ı** başvurunuzu yaptığınız kiracının adı ile değiştirin. Biçimi olmalıdır. https://login.microsoftonline.com/contoso.onmicrosoft.com Bu değer, [Azure portalındaki]Azure Etkin Dizininizdeki Etki Alanı sekmesinden kopyalanabilir.
+   * **INSERT-RESOURCE-ID-HERE'ı** mobil uygulama arka ucunuz için istemci kimliğiyle değiştirin. Portaldaki **Azure Etkin Dizin Ayarları** altında **Gelişmiş** sekmesinden istemci kimliğini edinebilirsiniz.
+   * **INSERT-CLIENT-ID-HERE'ı** yerel istemci uygulamasından kopyaladığınız istemci kimliğiyle değiştirin.
+   * HTTPS şemasını kullanarak **INSERT-REDIRECT-URI-HERE'ı** sitenizin */.auth/login/done* endpoint'iyle değiştirin. Bu değer *https://contoso.azurewebsites.net/.auth/login/done*.
 
 **Amaç-C**:
 
@@ -597,7 +597,7 @@ Azure Active Directory kullanarak uygulamanızdaki kullanıcıları imzalamak i�
 }
 ```
 
-**Swift**:
+**Hızlı :**
 
 ```swift
 // add the following imports to your bridging header:
@@ -625,13 +625,13 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>Nasıl yapılır: iOS için Facebook SDK 'Sı ile kullanıcıların kimliğini doğrulama
+## <a name="how-to-authenticate-users-with-the-facebook-sdk-for-ios"></a><a name="facebook-sdk"></a>Nasıl yapılı: iOS için Facebook SDK ile kullanıcıların kimliğini doğrula
 
-Kullanıcıları Facebook kullanarak uygulamanıza imzalamak için iOS için Facebook SDK 'sını kullanabilirsiniz.  `loginWithProvider:completion:` yönteminin kullanılması, istemci akışı kimlik doğrulamasının kullanılması tercih edilir.  İstemci akışı kimlik doğrulaması, daha yerel bir UX sağlar ve ek özelleştirmeye izin verir.
+Facebook'u kullanarak uygulamanızda kullanıcıları oturum alamak için iOS için Facebook SDK'yı kullanabilirsiniz.  İstemci akışı kimlik doğrulaması kullanmak `loginWithProvider:completion:` yöntemi kullanmaya tercih edilir.  İstemci akışı kimlik doğrulaması daha yerel bir UX hissi sağlar ve ek özelleştirme sağlar.
 
-1. Facebook oturum açma öğreticisini [App Service nasıl yapılandıracağınızı][9] izleyerek Facebook oturum açma için mobil uygulama arka ucunuzu yapılandırın.
-2. İOS için Facebook SDK [-kullanmaya başlama][10] belgelerini uygulayarak IOS için Facebook SDK 'sını yükler. Uygulama oluşturmak yerine, mevcut kaydınız için iOS platformunu ekleyebilirsiniz.
-3. Facebook belgeleri, uygulama temsilcisinde bazı amaç-C kodu içerir. **Swift**kullanıyorsanız appdelegate. Swift için aşağıdaki çevirileri kullanabilirsiniz:
+1. Facebook oturum açma için Uygulama [Hizmeti'ni nasıl yapılandırAbilirsiniz][9] uygulamasını takip ederek Facebook oturum açma için mobil uygulama arka uçunuzu yapılandırın.
+2. iOS için Facebook SDK'sını takip ederek iOS için Facebook [SDK'yı yükleyin - Dokümantasyona Başlarken.][10] Bir uygulama oluşturmak yerine, iOS platformunu mevcut kaydınıza ekleyebilirsiniz.
+3. Facebook'un belgeleri, Uygulama Temsilcisi'nde bazı Objective-C kodlarını içerir. **Swift**kullanıyorsanız, AppDelegate.swift için aşağıdaki çevirileri kullanabilirsiniz:
 
     ```swift
     // Add the following import to your bridging header:
@@ -649,8 +649,8 @@ Kullanıcıları Facebook kullanarak uygulamanıza imzalamak için iOS için Fac
         return handled
     }
     ```
-4. Projenize `FBSDKCoreKit.framework` eklemenin yanı sıra `FBSDKLoginKit.framework` aynı şekilde bir başvuru da ekleyin.
-5. Aşağıdaki kodu, kullanmakta olduğunuz dile göre uygulamanıza ekleyin.
+4. Projenize eklemenin `FBSDKCoreKit.framework` yanı sıra, aynı `FBSDKLoginKit.framework` şekilde bir başvuru da ekleyin.
+5. Kullandığınız dile göre uygulamanıza aşağıdaki kodu ekleyin.
 
     **Amaç-C**:
 
@@ -680,7 +680,7 @@ Kullanıcıları Facebook kullanarak uygulamanıza imzalamak için iOS için Fac
     }
     ```
 
-    **Swift**:
+    **Hızlı :**
 
     ```swift
     // Add the following imports to your bridging header:
@@ -704,17 +704,17 @@ Kullanıcıları Facebook kullanarak uygulamanıza imzalamak için iOS için Fac
     }
     ```
 
-## <a name="twitter-fabric"></a>Nasıl yapılır: iOS için Twitter dokusuna sahip kullanıcıların kimliğini doğrulama
+## <a name="how-to-authenticate-users-with-twitter-fabric-for-ios"></a><a name="twitter-fabric"></a>Nasıl: iOS için Twitter Kumaş ı ile kullanıcıları doğrulamak
 
-Kullanıcıları Twitter kullanarak uygulamanıza imzalamak için iOS Fabric ' i kullanabilirsiniz. Daha yerel bir UX sağlar ve ek özelleştirmeye izin verdiğinden, istemci akışı kimlik doğrulaması `loginWithProvider:completion:` yönteminin kullanılması tercih edilir.
+Kullanıcıları Twitter'ı kullanarak uygulamanızda oturum alabilmek için iOS için Fabric'i kullanabilirsiniz. İstemci Akışı kimlik doğrulaması, daha yerel bir UX hissi sağladığı ndan ve ek özelleştirmeye olanak sağladığından, `loginWithProvider:completion:` yöntemi kullanmaya tercih edilir.
 
-1. [Twitter oturumu açma öğreticisini yapılandırmak için App Service nasıl yapılandırılacağını](../app-service/configure-authentication-provider-twitter.md) izleyerek, mobil uygulama arka ucunuzu Twitter için yapılandırın.
-2. [İOS için doku-Başlarken] belgelerini ve dallı bir paket ayarlamayı Izleyerek projenize doku ekleyin.
+1. Twitter oturum açma için mobil uygulama arka uçunuzu, Twitter oturum açma öğreticisi [için Uygulama Hizmeti'ni nasıl yapılandırAbilirsiniz'ı](../app-service/configure-authentication-provider-twitter.md) izleyerek yapılandırın.
+2. iOS için Kumaş - [Dokümantasyona Başlarken] ve TwitterKit'i kurarak projenize Kumaş ekleyin.
 
    > [!NOTE]
-   > Varsayılan olarak, doku sizin için bir Twitter uygulaması oluşturur. Aşağıdaki kod parçacıklarını kullanarak, daha önce oluşturduğunuz tüketici anahtarını ve tüketici gizliliğini kaydederek bir uygulama oluşturmaktan kaçınabilirsiniz.    Alternatif olarak, sağladığınız tüketici anahtarı ve tüketici gizli değerlerini [Yapı panosu]gördüğünüz değerlerle App Service değiştirebilirsiniz. Bu seçeneği belirlerseniz, geri çağırma URL 'sini `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`gibi bir yer tutucu değere ayarladığınızdan emin olun.
+   > Varsayılan olarak, Kumaş sizin için bir Twitter uygulaması oluşturur. Daha önce oluşturduğunuz Tüketici Anahtarı ve Tüketici Sırrı'nı aşağıdaki kod parçacıklarını kullanarak kaydederek uygulama oluşturmayı önleyebilirsiniz.    Alternatif olarak, Uygulama Hizmetine sağladığınız Tüketici Anahtarı ve Tüketici Sırrı değerlerini [Kumaş Panosunda]gördüğünüz değerlerle değiştirebilirsiniz. Bu seçeneği belirlerseniz, geri arama URL'sini yer tutucu değerine `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`ayarladığınızdan emin olun.
 
-    Daha önce oluşturduğunuz gizli dizileri kullanmayı seçerseniz, aşağıdaki kodu uygulama temsilcinizi ekleyin:
+    Daha önce oluşturduğunuz sırları kullanmayı seçerseniz, Uygulama Temsilcinize aşağıdaki kodu ekleyin:
 
     **Amaç-C**:
 
@@ -731,7 +731,7 @@ Kullanıcıları Twitter kullanarak uygulamanıza imzalamak için iOS Fabric ' i
     }
     ```
 
-    **Swift**:
+    **Hızlı :**
 
     ```swift
     import Fabric
@@ -745,7 +745,7 @@ Kullanıcıları Twitter kullanarak uygulamanıza imzalamak için iOS Fabric ' i
     }
     ```
 
-3. Aşağıdaki kodu, kullanmakta olduğunuz dile göre uygulamanıza ekleyin.
+3. Kullandığınız dile göre uygulamanıza aşağıdaki kodu ekleyin.
 
     **Amaç-C**:
 
@@ -768,7 +768,7 @@ Kullanıcıları Twitter kullanarak uygulamanıza imzalamak için iOS Fabric ' i
     }
     ```
 
-    **Swift**:
+    **Hızlı :**
 
     ```swift
     import TwitterKit
@@ -786,12 +786,12 @@ Kullanıcıları Twitter kullanarak uygulamanıza imzalamak için iOS Fabric ' i
     }
     ```
 
-## <a name="google-sdk"></a>Nasıl yapılır: iOS için Google oturum açma SDK 'Sı ile kullanıcıların kimliğini doğrulama
+## <a name="how-to-authenticate-users-with-the-google-sign-in-sdk-for-ios"></a><a name="google-sdk"></a>Nasıl yapilir: iOS için Google Oturum Açma SDK'lı kullanıcıların kimliğini doğrulayın
 
-Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS için Google oturum açma SDK 'sını kullanabilirsiniz.  Google son zamanlarda, OAuth güvenlik ilkelerine ilişkin değişiklikleri duyurdu.  Bu ilke değişikliklerinden sonra Google SDK 'nın kullanılması gerekir.
+Kullanıcıları bir Google hesabı kullanarak uygulamanızda oturum alabilmek için iOS için Google Oturum Açma SDK'sını kullanabilirsiniz.  Google son zamanlarda Kendi OAuth güvenlik politikalarında değişiklikler duyurdu.  Bu politika değişiklikleri, gelecekte Google SDK'nın kullanımını gerektirir.
 
-1. Google oturum açma öğreticisini [yapılandırma App Service nasıl yapılandıracağınızı](../app-service/configure-authentication-provider-google.md) izleyerek Google oturum açma için mobil uygulama arka ucunuzu yapılandırın.
-2. İOS için Google [oturum açma-tümleştirme](https://developers.google.com/identity/sign-in/ios/start-integrating) belgelerini uygulayarak IOS için Google SDK 'Yı yüklemeyi başlatın. "Arka uç sunucusuyla kimlik doğrulama" bölümünü atlayabilirsiniz.
+1. Google oturum açma için mobil uygulama arka uçunuzu, Google oturum açma öğreticisi [için Uygulama Hizmeti'ni nasıl yapılandırılatır'](../app-service/configure-authentication-provider-google.md) ı izleyerek yapılandırın.
+2. iOS için Google Oturum Açma'yı izleyerek iOS için Google SDK'yı yükleyin - Belgeleri [tümleştirmeye başlayın.](https://developers.google.com/identity/sign-in/ios/start-integrating) "Arka uç sunucusuyla kimlik doğrulaması" bölümünü atlayabilirsiniz.
 3. Kullandığınız dile göre temsilcinizin `signIn:didSignInForUser:withError:` yöntemine aşağıdakileri ekleyin.
 
     **Amaç-C**:
@@ -806,7 +806,7 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
     }];
     ```
 
-    **Swift**:
+    **Hızlı :**
 
     ```swift
     let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
@@ -815,7 +815,7 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
     }
     ```
 
-4. Uygulama temsilcinizdeki `application:didFinishLaunchingWithOptions:` aşağıdaki SERVER_CLIENT_ID eklediğinizden emin olun. Adım 1 ' de App Service yapılandırmak için kullandığınız KIMLIKLE "" öğesini değiştirin.
+4. Uygulama temsilcinize, "SERVER_CLIENT_ID"ı adım 1'de Uygulama Hizmeti'ni yapılandırmak için kullandığınız kimlikle değiştirerek aşağıdakileri `application:didFinishLaunchingWithOptions:` de eklediğinizden emin olun.
 
     **Amaç-C**:
 
@@ -823,13 +823,13 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
     [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
     ```
 
-     **Swift**:
+     **Hızlı :**
 
     ```swift
     GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
     ```
 
-5. Aşağıdaki kodu, kullanmakta olduğunuz dile göre `GIDSignInUIDelegate` protokolünü uygulayan bir UIViewController içinde uygulamanıza ekleyin.  Yeniden oturum açmadan önce oturumunuz açıldı ve kimlik bilgilerinizi yeniden girmeniz gerekmese de bir onay iletişim kutusu görürsünüz.  Bu yöntemi yalnızca oturum belirtecinin süresi dolduğunda çağırın.
+5. Kullandığınız dile göre `GIDSignInUIDelegate` protokolü uygulayan bir UIViewController'ta uygulamanız için aşağıdaki kodu ekleyin.  Yeniden oturum açmadan önce oturumunuz tamamlanır ve kimlik bilgilerinizi yeniden girmeniz gerekmese de bir onay iletişim kutusu görürsünüz.  Yalnızca oturum belirteci süresi dolduğunda bu yöntemi arayın.
 
    **Amaç-C**:
 
@@ -844,7 +844,7 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
     }
     ```
 
-   **Swift**:
+   **Hızlı :**
 
     ```swift
     // ...
@@ -884,7 +884,7 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
 <!-- Images. -->
 
 <!-- URLs. -->
-[Azure Mobile Apps hızlı başlangıç]: app-service-mobile-ios-get-started.md
+[Azure Mobil Uygulamalar Hızlı Başlangıç]: app-service-mobile-ios-get-started.md
 
 [Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-data
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
@@ -898,7 +898,7 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[Dinamik şema]: https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/dynamic-schema
+[Dinamik Şema]: https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/dynamic-schema
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965
@@ -906,8 +906,8 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
 [CLI to manage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-[Yapı panosu]: https://www.fabric.io/home
-[İOS için doku-Başlarken]: https://docs.fabric.io/ios/fabric/getting-started.html
+[Kumaş Pano]: https://www.fabric.io/home
+[iOS için Kumaş - Başlarken]: https://docs.fabric.io/ios/fabric/getting-started.html
 [1]: https://github.com/Azure/azure-mobile-apps-ios-client/blob/master/README.md#ios-client-sdk
 [2]: https://azure.github.io/azure-mobile-apps-ios-client/
 [3]: https://msdn.microsoft.com/library/azure/dn495101.aspx

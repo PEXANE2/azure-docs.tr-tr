@@ -1,6 +1,6 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketinin kaynak rollerini değiştirme-Azure Active Directory
-description: Azure Active Directory yetkilendirme yönetimi 'nde var olan bir erişim paketinin kaynak rollerini değiştirmeyi öğrenin.
+title: Azure AD yetkilendirme yönetiminde bir erişim paketi için kaynak rollerini değiştirme - Azure Etkin Dizini
+description: Azure Active Directory yetkilendirme yönetiminde varolan bir erişim paketinin kaynak rollerini nasıl değiştireceğinizi öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,171 +17,171 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261898"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin kaynak rollerini değiştirme
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için kaynak rollerini değiştirme
 
-Bir erişim paketi Yöneticisi olarak, bir erişim paketindeki kaynakları, kullanıcının yeni kaynaklara erişimini sağlama veya önceki kaynaklardan erişimleri kaldırma konusunda endişelenmeden dilediğiniz zaman değiştirebilirsiniz. Bu makalede, var olan bir erişim paketinin kaynak rollerinin nasıl değiştirileceği açıklanır.
+Erişim paketi yöneticisi olarak, kullanıcının yeni kaynaklara erişimini sağlama veya önceki kaynaklardan erişimlerini kaldırma endişesi duymadan istediğiniz zaman bir erişim paketindeki kaynakları değiştirebilirsiniz. Bu makalede, varolan bir erişim paketi için kaynak rollerinin nasıl değiştirilen açıklanmıştır.
 
-Bu videoda, erişim paketinin nasıl değiştirileceği hakkında bir genel bakış sunulmaktadır.
+Bu video, bir erişim paketinin nasıl değiştirileeceğine genel bir bakış sağlar.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3LD4Z]
 
-## <a name="check-catalog-for-resources"></a>Kaynak kataloğunu denetle
+## <a name="check-catalog-for-resources"></a>Kaynaklar için kataloğu denetleyin
 
-Bir erişim paketine kaynak eklemeniz gerekiyorsa, ihtiyacınız olan kaynakların katalogda kullanılabilir olup olmadığını denetlemeniz gerekir. Bir erişim paketi Yöneticisi kullanıyorsanız, kendilerine sahip olsanız bile bir kataloğa kaynak ekleyemezsiniz. Katalogda bulunan kaynakları kullanmaya kısıtlıdır.
+Bir erişim paketine kaynak eklemeniz gerekiyorsa, gereksinim duyduğunuz kaynakların katalogda bulunup bulunmadığını kontrol etmelisiniz. Bir erişim paketi yöneticisiyseniz, kataloğunuz ait olsa bile bir kataloğerekme kaynak ekleyemezsiniz. Katalogda bulunan kaynakları kullanmakla sınırlıdır.
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi, Katalog sahibi veya Access paket yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
 
-1. Sol menüde, **Katalog** ' a tıklayın ve ardından kataloğu açın.
+1. Sol menüde **Katalog'u** tıklatın ve ardından kataloğu açın.
 
-1. Sol taraftaki menüde, bu katalogdaki kaynakların listesini görmek için **kaynaklar** ' a tıklayın.
+1. Sol menüde, bu katalogdaki kaynak listesini görmek için **Kaynaklar'ı** tıklatın.
 
-    ![Bir katalogdaki kaynakların listesi](./media/entitlement-management-access-package-resources/catalog-resources.png)
+    ![Katalogdaki kaynakların listesi](./media/entitlement-management-access-package-resources/catalog-resources.png)
 
-1. Bir erişim paketi yöneticisidir ve kataloğa kaynak eklemeniz gerekiyorsa, Katalog sahibinden onları eklemesini isteyebilirsiniz.
+1. Bir erişim paketi yöneticisiyseniz ve kataloğa kaynak eklemeniz gerekiyorsa, katalog sahibinden bunları eklemesini isteyebilirsiniz.
 
 ## <a name="add-resource-roles"></a>Kaynak rolleri ekleme
 
-Kaynak rolü, bir kaynakla ilişkili izinlerin koleksiyonudur. Kaynakları kullanıcıların istemesi için kullanılabilir hale getirmenin yolu, erişim paketinize kaynak rolleri eklemektir. Gruplar, takımlar, uygulamalar ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
+Kaynak rolü, kaynakla ilişkili izinler topluluğudur. Kullanıcıların talep edilebetmesi için kaynakları kullanılabilir hale getirmenin yolu, erişim paketinize kaynak rolleri eklemektir. Gruplar, takımlar, uygulamalar ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi, Katalog sahibi veya Access paket yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
 
-1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
+1. Sol menüde, **Access paketlerini** tıklatın ve ardından erişim paketini açın.
 
-1. Sol taraftaki menüden **kaynak rolleri**' ne tıklayın.
+1. Sol menüde **Kaynak rolleri'ni**tıklatın.
 
-1. **Kaynak rolleri ekle** ' ye tıklayarak pakete erişmek için kaynak rolleri Ekle sayfasını açın.
+1. Paket sayfasına erişmek için kaynak ekle rollerini açmak için **kaynak rolleri ekle'yi** tıklatın.
 
-    ![Erişim paketi-kaynak rolleri ekleme](./media/entitlement-management-access-package-resources/resource-roles-add.png)
+    ![Erişim paketi - Kaynak rolleri ekleme](./media/entitlement-management-access-package-resources/resource-roles-add.png)
 
-1. Bir grup, takım, uygulama veya SharePoint sitesi eklemek istediğinize bağlı olarak, aşağıdaki kaynak rolü bölümlerinden birindeki adımları gerçekleştirin.
+1. Bir grup, takım, uygulama veya SharePoint sitesi eklemek isteyip istemediğinize bağlı olarak, aşağıdaki kaynak rol bölümlerinden birinde adımları gerçekleştirin.
 
-## <a name="add-a-group-or-team-resource-role"></a>Grup veya takım kaynağı rolü ekleme
+## <a name="add-a-group-or-team-resource-role"></a>Grup veya takım kaynak rolü ekleme
 
-Bir erişim paketi atandığında, yetkilendirme yönetiminin kullanıcıları Microsoft ekipteki bir gruba veya takıma otomatik olarak eklemesini sağlayabilirsiniz. 
+Yetki yönetimi, microsoft teams'da bir gruba veya bir ekibe bir erişim paketi atandığında kullanıcıları otomatik olarak ekleyebilirsiniz. 
 
-- Bir grup veya takım bir erişim paketinin parçası olduğunda ve bu erişim paketine bir Kullanıcı atandığında, zaten mevcut değilse Kullanıcı o gruba veya takıma eklenir.
-- Bir kullanıcının erişim paketi atamasının süresi dolarsa, o anda aynı grup veya takımı içeren başka bir erişim paketine bir atamaya sahip olmadıkları takdirde, bunlar gruptan veya takımdan kaldırılır.
+- Bir grup veya takım bir erişim paketinin parçası ysa ve kullanıcı bu erişim paketine atandığında, kullanıcı zaten mevcut değilse, bu gruba veya ekibe eklenir.
+- Bir kullanıcının erişim paketi atamasının süresi dolduğunda, aynı grubu veya ekibi içeren başka bir erişim paketine ataması olmadığı sürece grup veya takımdan kaldırılır.
 
-Herhangi bir [Azure AD güvenlik grubunu veya Office 365 grubunu](../fundamentals/active-directory-groups-create-azure-portal.md)seçebilirsiniz. Yöneticiler, kataloğa herhangi bir grup ekleyebilir; Katalog sahipleri, grubun sahibiyseniz, kataloğa herhangi bir grup ekleyebilir. Bir grup seçerken aşağıdaki Azure AD kısıtlamalarını aklınızda bulundurun:
+Herhangi bir [Azure AD güvenlik grubunu veya Office 365 Grubunu](../fundamentals/active-directory-groups-create-azure-portal.md)seçebilirsiniz. Yöneticiler herhangi bir grubu bir kataloğere ekleyebilir; katalog sahipleri, grubun sahibi yseler, kataloga herhangi bir grup ekleyebilir. Bir grup seçerken aşağıdaki Azure REKLAM kısıtlamalarını aklınızda bulundurun:
 
-- Konuk dahil bir Kullanıcı, bir grup veya takıma üye olarak eklendiğinde, bu grubun veya ekibin tüm diğer üyelerini görebilirler.
-- Azure AD, Azure AD Connect kullanılarak Windows Server Active Directory eşitlenen veya Exchange Online 'da bir dağıtım grubu olarak oluşturulan bir grubun üyeliğini değiştiremiyor.  
-- Dinamik grupların üyeliği üye ekleyerek veya kaldırarak güncelleştirilemez, bu nedenle dinamik grup üyelikleri yetkilendirme yönetimiyle kullanım için uygun değildir.
+- Konuk da dahil olmak üzere bir kullanıcı bir gruba veya ekibe üye olarak eklendiğinde, o grubun veya takımın diğer tüm üyelerini görebilir.
+- Azure AD, Azure AD Connect kullanarak Windows Server Active Directory'den senkronize edilen veya Exchange Online'da dağıtım grubu olarak oluşturulan bir grubun üyeliğini değiştiremez.  
+- Dinamik grupların üyeliği bir üye eklenerek veya kaldırılarak güncelleştirilemez, bu nedenle dinamik grup üyelikleri yetki yönetimi yle kullanıma uygun değildir.
 
-Daha fazla bilgi için bkz. grupları ve [Office 365 gruplarını ve Microsoft ekiplerini](https://docs.microsoft.com/microsoftteams/office-365-groups) [karşılaştırın](https://docs.microsoft.com/office365/admin/create-groups/compare-groups) .
+Daha fazla bilgi için grupları ve [Office 365 Gruplarını](https://docs.microsoft.com/microsoftteams/office-365-groups)ve Microsoft Takımlarını [Karşılaştır'a](https://docs.microsoft.com/office365/admin/create-groups/compare-groups) bakın.
 
-1. **Pakete erişmek için kaynak rolleri ekle** sayfasında, **gruplar ve takımlar** ' a tıklayarak Grup Seç bölmesini açın.
+1. Paket **sayfasına erişmek için kaynak rolleri ekle'de** Gruplar ve **Takımlar'ı** tıklatıp Gruplar bölmesini açın.
 
 1. Erişim paketine eklemek istediğiniz grupları ve takımları seçin.
 
-    ![Erişim paketi-kaynak rolleri ekleme-Grup seçme](./media/entitlement-management-access-package-resources/group-select.png)
+    ![Erişim paketi - Kaynak rolleri ekleme - Grupları seç](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. **Seç**'e tıklayın.
+1. **Seç'i**tıklatın.
 
-    Grubu veya takımı seçtiğinizde, **alt tür** sütunu aşağıdaki alt türlerinden birini listeler:
+    Grubu veya takımı seçtikten sonra, **Alt tür** sütunu aşağıdaki alt tiplerden birini listeler:
 
     |  |  |
     | --- | --- |
-    | Güvenlik | Kaynaklara erişim vermek için kullanılır. |
+    | Güvenlik | Kaynaklara erişim sağlamak için kullanılır. |
     | Dağıtım | Bir grup kişiye bildirim göndermek için kullanılır. |
-    | O365 | Ekipler etkin olmayan Office 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
-    | Takım | Ekipler etkin olan Office 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
+    | O365 | Takımlar etkin olmayan Office 365 Grubu. Şirketinizin içinde ve dışında kullanıcılar arasında işbirliği için kullanılır. |
+    | Takım | Takımlar etkin olan Office 365 Grubu. Şirketinizin içinde ve dışında kullanıcılar arasında işbirliği için kullanılır. |
 
-1. **Rol** listesinde **Owner** veya **member**' ı seçin.
+1. **Rol** **listesinde, Sahibi** veya **Üyesi'ni**seçin.
 
-    Genellikle üye rolünü seçersiniz. Sahip rolünü seçerseniz, kullanıcıların başka Üyeler veya sahipler eklemesine veya kaldırmasına izin verir.
+    Genellikle Üye rolünü seçersiniz. Sahip rolünü seçerseniz, bu kullanıcıların diğer üyeleri veya sahipleri eklemesine veya kaldırmasına olanak sağlar.
 
-    ![Erişim paketi-bir grup veya takım için kaynak rolü ekleme](./media/entitlement-management-access-package-resources/group-role.png)
+    ![Erişim paketi - Bir grup veya takım için kaynak rolü ekleme](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. **Ekle**'ye tıklayın.
+1. **Ekle**’ye tıklayın.
 
-    Erişim paketine mevcut atamaları olan tüm kullanıcılar, eklendiğinde bu grubun veya ekibin üyeleri otomatik olarak olur.
+    Erişim paketine varolan atamaları olan kullanıcılar, eklendiğinde otomatik olarak bu grubun veya ekibin üyesi olur.
 
 ## <a name="add-an-application-resource-role"></a>Uygulama kaynağı rolü ekleme
 
-Bir kullanıcıya erişim paketi atandığında, Azure AD 'nin hem SaaS uygulamaları hem de kuruluşunuzun Azure AD 'ye federe uygulamalar dahil olmak üzere bir Azure AD kurumsal uygulamasına erişimini otomatik olarak atamasını sağlayabilirsiniz. Federasyon çoklu oturum açma aracılığıyla Azure AD ile tümleştirilen uygulamalar için Azure AD, uygulamaya atanan kullanıcılar için Federasyon belirteçleri verir.
+Azure AD'nin, bir kullanıcıya bir erişim paketi atandığında hem SaaS uygulamaları hem de kuruluşunuzun Azure AD'ye aktarılan uygulamaları da dahil olmak üzere, kullanıcılara otomatik olarak bir Azure AD kurumsal uygulamasına erişim atamasını sağlayabilirsiniz. Azure AD ile federe tek oturum açma yoluyla tümleşen uygulamalarda, Azure AD uygulamaya atanan kullanıcılar için federasyon belirteçleri verir.
 
-Uygulamalar birden çok role sahip olabilir. Bir erişim paketine bir uygulama eklerken, bu uygulamanın birden fazla rolü varsa, bu kullanıcılar için uygun rolü belirtmeniz gerekir. Uygulama geliştiriyorsanız, bu rollerin uygulamalarınıza nasıl eklendiği hakkında daha fazla bilgi için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen rol talebini yapılandırma](../develop/active-directory-enterprise-app-role-management.md).
+Uygulamaların birden çok rolü olabilir. Bir erişim paketine uygulama eklerken, bu uygulamanın birden fazla rolü varsa, bu kullanıcılar için uygun rolü belirtmeniz gerekir. Uygulamalar geliştiriyorsanız, bu rollerin uygulamalarınıza nasıl eklendirilebildiği hakkında daha fazla bilgi edinebilirsiniz: [Kurumsal uygulamalar için SAML belirtecinde verilen rol iddiasını yapılandırın.](../develop/active-directory-enterprise-app-role-management.md)
 
-Uygulama rolü bir erişim paketinin parçası olduktan sonra:
+Bir uygulama rolü erişim paketinin bir parçası olduğunda:
 
-- Bir Kullanıcı bu erişim paketine atandığında, zaten mevcut değilse Kullanıcı söz konusu uygulama rolüne eklenir.
-- Bir kullanıcının erişim paketi atamasının süresi dolarsa, bu uygulama rolünü içeren başka bir erişim paketine atanması gerekmedikçe erişimleri uygulamadan kaldırılır.
+- Bir kullanıcıya bu erişim paketi atandığında, kullanıcı zaten mevcut değilse, bu uygulama rolüne eklenir.
+- Bir kullanıcının erişim paketi atamasının süresi dolduğunda, bu uygulama rolünü içeren başka bir erişim paketine ataması olmadığı sürece erişimleri uygulamadan kaldırılır.
 
-Bir uygulama seçerken bazı konular aşağıda verilmiştir:
+Bir uygulama seçerken göz önünde bulundurulması gereken bazı noktalar şunlardır:
 
-- Uygulamalarda Ayrıca, rollerine de atanmış gruplar bulunabilir.  Bir erişim paketindeki uygulama rolü yerine bir grup eklemeyi seçebilirsiniz, ancak bundan sonra uygulama kullanıcıya erişim portalındaki erişim paketinin bir parçası olarak görünmez.
+- Uygulamalar da rolleri atanmış gruplar olabilir.  Bir erişim paketinde uygulama rolü yerine bir grup eklemeyi seçebilirsiniz, ancak daha sonra uygulama, Access portalımdaki erişim paketinin bir parçası olarak kullanıcı tarafından görünmez.
 
-1. **Pakete erişmek için kaynak rolleri ekle** sayfasında **uygulamalar** ' a tıklayarak uygulama Seç bölmesini açın.
+1. Paket **sayfasına erişmek için kaynak rolleri** ekle'de, Uygulamaları Seç bölmesini açmak için **Uygulamalar'ı** tıklatın.
 
 1. Erişim paketine eklemek istediğiniz uygulamaları seçin.
 
-    ![Erişim paketi-kaynak rolleri ekleme-uygulama seçme](./media/entitlement-management-access-package-resources/application-select.png)
+    ![Erişim paketi - Kaynak rolleri ekleme - Uygulamaları seçin](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. **Seç**'e tıklayın.
+1. **Seç'i**tıklatın.
 
 1. **Rol** listesinde bir uygulama rolü seçin.
 
-    ![Erişim paketi-bir uygulama için kaynak rolü ekleme](./media/entitlement-management-access-package-resources/application-role.png)
+    ![Erişim paketi - Uygulama için kaynak rolü ekleme](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. **Ekle**'ye tıklayın.
+1. **Ekle**’ye tıklayın.
 
-    Erişim paketine mevcut atamalara sahip tüm kullanıcılara, eklendiğinde bu uygulamaya otomatik olarak erişim verilir.
+    Erişim paketine varolan atamaları olan kullanıcılara, eklendiğinde bu uygulamaya otomatik olarak erişim hakkı verilir.
 
-## <a name="add-a-sharepoint-site-resource-role"></a>SharePoint site kaynağı rolü ekleme
+## <a name="add-a-sharepoint-site-resource-role"></a>SharePoint sitesi kaynak rolü ekleme
 
-Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online site koleksiyonuna erişim paketi atandığında otomatik olarak erişim atayabilir.
+Azure AD, kullanıcılara bir erişim paketi atandığında bir SharePoint Online sitesine veya SharePoint Online site koleksiyonuna otomatik olarak erişim atayabilir.
 
-1. **Pakete erişmek için kaynak rolleri ekle** sayfasında **SharePoint siteleri** ' ne tıklayarak SharePoint Online siteleri Seç bölmesini açın.
+1. Paket **sayfasına erişmek için kaynak rolleri** ekle'de, Select SharePoint Online siteleri bölmesini açmak için **SharePoint sitelerini** tıklatın.
 
 1. Erişim paketine eklemek istediğiniz SharePoint Online sitelerini seçin.
 
-    ![Erişim paketi-kaynak rolleri ekleme-SharePoint Online siteleri seçin](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
+    ![Erişim paketi - Kaynak rolleri ekleme - SharePoint Online sitelerini seçin](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. **Seç**'e tıklayın.
+1. **Seç'i**tıklatın.
 
 1. **Rol** listesinde bir SharePoint Online site rolü seçin.
 
-    ![Erişim paketi-SharePoint Online sitesi için kaynak rolü ekleme](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
+    ![Erişim paketi - SharePoint Online sitesi için kaynak rolü ekleme](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. **Ekle**'ye tıklayın.
+1. **Ekle**’ye tıklayın.
 
-    Erişim paketine mevcut atamalara sahip olan tüm kullanıcılara, eklendiğinde bu SharePoint Online sitesine otomatik olarak erişim verilir.
+    Erişim paketine varolan atamaları olan kullanıcılara, eklendiğinde bu SharePoint Online sitesine otomatik olarak erişim hakkı verilir.
 
 ## <a name="remove-resource-roles"></a>Kaynak rollerini kaldırma
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi, Katalog sahibi veya Access paket yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
 
-1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
+1. Sol menüde, **Access paketlerini** tıklatın ve ardından erişim paketini açın.
 
-1. Sol taraftaki menüden **kaynak rolleri**' ne tıklayın.
+1. Sol menüde **Kaynak rolleri'ni**tıklatın.
 
-1. Kaynak rolleri listesinde, kaldırmak istediğiniz kaynak rolünü bulun.
+1. Kaynak rolleri listesinde kaldırmak istediğiniz kaynak rolünü bulun.
 
-1. Üç noktaya ( **...** ) ve ardından **kaynak rolünü kaldır**' a tıklayın.
+1. Elipsis 'i (**...**) tıklatın ve sonra **kaynak rolünü kaldır'ı**tıklatın.
 
-    Erişim paketine mevcut atamaları olan tüm kullanıcılar, kaldırıldığında bu kaynak rolü için otomatik olarak erişimi iptal eder.
+    Erişim paketinde varolan atamaları olan tüm kullanıcıların erişimi kaldırıldığında bu kaynak rolüne otomatik olarak iptal edilir.
 
 ## <a name="when-changes-are-applied"></a>Değişiklikler uygulandığında
 
-Yetkilendirme Yönetimi 'nde Azure AD, erişim paketinizdeki atama ve kaynaklara yönelik toplu değişiklikleri günde birkaç kez işleyecek. Bu nedenle, bir atama yaparsanız veya erişim paketinizin kaynak rollerini değiştirirseniz, bu değişikliğin Azure AD 'de yapılması ve bu değişiklikleri diğer Microsoft Online hizmetlerine veya bağlı SaaS uygulamasına yayılması için geçen süreyi 24 saate kadar sürebilir olmalıdır Yaptığınız değişiklik yalnızca birkaç nesneyi etkiliyorsa, değişikliğin Azure AD 'de uygulanması birkaç dakika sürer. Bu durumda, diğer Azure AD bileşenleri bu değişikliği algılayacak ve SaaS uygulamalarını güncelleştirmeyecektir. Değişiklik, binlerce nesneyi etkiliyorsa değişiklik daha uzun sürer. Örneğin, 2 uygulama ve 100 Kullanıcı Ataması olan bir erişim paketiniz varsa ve erişim paketine bir SharePoint site rolü eklemeye karar verirseniz, tüm kullanıcılar bu SharePoint sitesi rolünün parçası olana kadar bir gecikme olabilir. İlerlemeyi Azure AD denetim günlüğü, Azure AD sağlama günlüğü ve SharePoint site denetim günlükleri aracılığıyla izleyebilirsiniz.
+Yetkilendirme yönetiminde Azure AD, erişim paketlerinizdeki atama ve kaynaklar için toplu değişiklikleri günde birkaç kez işler. Bu nedenle, bir atama yaparsanız veya erişim paketinizin kaynak rollerini değiştirirseniz, bu değişikliğin Azure AD'de yapılması 24 saate kadar sürebilir ve bu değişiklikleri diğer Microsoft Çevrimiçi Hizmetleri'nde veya bağlı SaaS'a yaymak için gereken süre 24 saat kadar sürebilir Uygulama. Değişikliğiniz yalnızca birkaç nesneyi etkiliyorsa, değişikliğin Azure AD'de uygulanması yalnızca birkaç dakika sürer ve ardından diğer Azure AD bileşenleri bu değişikliği algılar ve SaaS uygulamalarını günceller. Değişikliğiniz binlerce nesneyi etkiliyorsa, değişiklik daha uzun sürer. Örneğin, 2 uygulama ve 100 kullanıcı ataması içeren bir erişim paketiniz varsa ve erişim paketine bir SharePoint site rolü eklemeye karar verirseniz, tüm kullanıcılar bu SharePoint site rolünün bir parçası olana kadar gecikme olabilir. İlerlemeyi Azure AD denetim günlüğünden, Azure AD sağlama günlüğünden ve SharePoint site denetim günlüklerinden izleyebilirsiniz.
 
-Ekibin bir üyesini kaldırdığınızda bu üye Office 365 Grubundan da kaldırılır. Ekibin sohbet işlevinden kaldırma işlemi geciktirilebilir. Daha fazla bilgi için bkz. [Grup üyeliği](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+Ekibin bir üyesini kaldırdığınızda bu üye Office 365 Grubundan da kaldırılır. Ekibin sohbet işlevinden kaldırma işlemi geciktirilebilir. Daha fazla bilgi için [Grup üyeliğine](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory kullanarak temel Grup oluşturma ve üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md)
-- [Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma](../develop/active-directory-enterprise-app-role-management.md)
-- [SharePoint Online 'a giriş](/sharepoint/introduction)
+- [Azure Etkin Dizini'ni kullanarak temel bir grup oluşturun ve üye ekleyin](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Nasıl verilir: Kurumsal uygulamalar için SAML belirteci verilen rol talebi yapılandırma](../develop/active-directory-enterprise-app-role-management.md)
+- [SharePoint Online'a Giriş](/sharepoint/introduction)

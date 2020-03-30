@@ -9,39 +9,39 @@ ms.date: 03/11/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117108"
 ---
 | Kaynak | Temel | Standart | Premium |
 |---|---|---|---|
-| Depolama<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| Maksimum görüntü katman boyutu | 200 GiB | 200 GiB | 200 GiB |
-| Dakika başına ReadOps<sup>2, 3</sup> | 1000 | 3\.000 | 10,000 |
-| Dakika başına WriteOps<sup>2, 4</sup> | 100 | 500 | 2\.000 |
-| İndirme bant genişliği (Mb/sn)<sup>2</sup> | 30 | 60 | 100 |
-| Karşıya yükleme bant genişliği (Mb/sn)<sup>2</sup> | 10 | 20 | 50 |
+| Depolama<sup>1</sup> | 10 GİB | 100 GiB| 500 GİB |
+| Maksimum görüntü katmanı boyutu | 200 GİB | 200 GİB | 200 GİB |
+| Dakikada ReadOps<sup>2, 3</sup> | 1000 | 3,000 | 10,000 |
+| Dakikada WriteOps<sup>2, 4</sup> | 100 | 500 | 2.000 |
+| Bant genişliği MBps<sup>2'yi</sup> indirin | 30 | 60 | 100 |
+| Bant genişliği MBps<sup>2'yi</sup> yükleme | 10 | 20 | 50 |
 | Web Kancaları | 2 | 10 | 500 |
-| Coğrafi çoğaltma | Yok | Yok | [Destekleniyor][geo-replication] |
-| İçerik güveni | Yok | Yok | [Destekleniyor][content-trust] |
+| Coğrafi çoğaltma | Yok | Yok | [Desteklenen][geo-replication] |
+| İçerik güveni | Yok | Yok | [Desteklenen][content-trust] |
 | Sanal ağ erişimi | Yok | Yok | [Önizleme][vnet] |
 | Özel bağlantı tümleştirmesi | Yok | Yok | [Önizleme][plink] |
 | Müşteri tarafından yönetilen anahtarlar | Yok | Yok | [Önizleme][cmk] |
-| Depo kapsamında izinler | Yok | Yok | [Önizleme][token]|
-| &bull; Belirteçler | Yok | Yok | 20.000 |
-| &bull; Kapsam eşlemesi | Yok | Yok | 20.000 |
-| Kapsam eşlemesi başına &bull; depo | Yok | Yok | 500 |
+| Depo kapsamı yla ilgili izinler | Yok | Yok | [Önizleme][token]|
+| &bull;Belirteç -leri | Yok | Yok | 20.000 |
+| &bull;Kapsam haritaları | Yok | Yok | 20.000 |
+| &bull;Kapsam haritası başına depolar | Yok | Yok | 500 |
 
 
-<sup>1</sup>Belirtilen depolama sınırları, her katmana *eklenen* depolama alanı miktarıdır. Bu sınırların üzerindeki görüntü depolama alanı için GiB başına günlük ek ücret ödersiniz. Fiyat bilgisi için bkz. [Azure Container Registry fiyatlandırması][pricing].
+<sup>1.1.2</sup> Belirtilen depolama sınırları, her katman için *dahil edilen* depolama miktarıdır. Bu sınırların üzerindeki görüntü depolama için GiB başına ek bir günlük ücret lendirilirsiniz. Fiyat bilgileri için Azure [Kapsayıcı Kayıt Defteri fiyatlandırması'na][pricing]bakın.
 
-<sup>2</sup>*ReadOps*, *WriteOps* ve *Bandwidth* en düşük tahminlerdir. Azure Container Registry, performansı kullanımın gerektirdiği oranda artırmayı hedefler.
+<sup>2</sup>*ReadOps*, *WriteOps*, ve *Bant genişliği* minimum tahminlerdir. Azure Kapsayıcı Kayıt Defteri, kullanımın gerektirdiği performansı artırmaya çalışır.
 
-<sup>3</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) görüntüdeki katmanların sayısı temel alınarak birden fazla okuma işlemine ve bildirim alma işlemine karşılık gelir.
+<sup>3.2.2</sup> [Docker çekme,](https://docs.docker.com/registry/spec/api/#pulling-an-image) görüntüdeki katman sayısına ve bildirim alma durumuna bağlı olarak birden çok okuma işlemi anlamına gelir.
 
-<sup>4</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) gönderilmesi gereken katan sayısı temel alınarak birden fazla yazma işlemine karşılık gelir. `docker push`, mevcut bir görüntü için bildirim alma olanağı tanıyan *ReadOps*’u içerir.
+<sup>4.2.2</sup> [Docker push,](https://docs.docker.com/registry/spec/api/#pushing-an-image) itilmesi gereken katman sayısına bağlı olarak birden çok yazma işlemi anlamına gelir. A, `docker push` varolan bir görüntü için bir bildirim almak için *ReadOps* içerir.
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265447"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Azure portalı kullanarak Azure Data Box Gateway paylaşımlarını yönetme 
@@ -43,22 +43,22 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
     Paylaşım adları yalnızca rakam, küçük harf ve kısa çizgiler içerebilir. Paylaşım adı 3 ile 63 karakter arası uzunlukta olmalı ve bir harf veya rakamla başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır.
 
-3. Paylaşım için **Tür** seçin. Tür **SMB** veya **NFS** olabilir; varsayılan tür SMB'dir. SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
+3. Paylaşım için **Tür** seçin. Tür **SMB** veya **NFS**olabilir, SMB varsayılan olarak. SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
 
 4. Paylaşımın duracağı **Depolama hesabını** sağlamanız gerekir. Henüz kapsayıcı yoksa, depolama hesabında paylaşım adıyla bir kapsayıcı oluşturulur. Kapsayıcı zaten varsa, bu var olan kapsayıcı kullanılır.  
 
-5. Blok blobundan, sayfa blobundan veya dosyadan **Depolama hizmeti**'ni seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, buradaki örnekte biz verilerin Azure'da blob blokları olarak tutulmasını istediğimiz için **Blok Blobunu** seçtik. **Sayfa Blobunu** seçerseniz, verilerinizi 512 bayt hizalı olduğundan emin olmalısınız. Örneğin VHDX her zaman 512 bayt hizalıdır.
+5. Blok blobundan, sayfa blobundan veya dosyadan **Depolama hizmeti**'ni seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, bu durumda, verilerin Azure'da blob blokları olarak yer alabilmesini istiyoruz, bu nedenle **Blob'u engelle'yi**seçiyoruz. **Sayfa Blobunu** seçerseniz, verilerinizi 512 bayt hizalı olduğundan emin olmalısınız. Örneğin VHDX her zaman 512 bayt hizalıdır.
 
    > [!IMPORTANT]
-   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge veya Data Box Gateway cihazından yararlanarak, bu sunucuda ayarlanmış bir şekilde kullanılabilirlik ilkesi olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Kullandığınız Azure Depolama hesabının üzerinde bir Azure Yığını Kenarı veya Veri Kutusu Ağ Geçidi aygıtıyla kullanıyorsanız, üzerinde geçici çözümegeçirim ilkeleri olmadığından emin olun. Daha fazla bilgi [için, blob depolama için değişmezlik ilkelerini ayarla ve yönetin.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)
 
 6. Bu adım SMB paylaşımı mı yoksa NFS paylaşımı mı oluşturduğunuza bağlıdır.
-    - **SMB paylaşımı oluşturuyorsanız** - **Tüm ayrıcalıklara sahip yerel kullanıcı** alanında **Yeni oluştur**'u veya **Var olanı kullan**'ı seçin. Yeni bir yerel kullanıcı oluşturuluyorsa, **kullanıcı adı** ve **parola** sağlayın, sonra da parolayı onaylayın. Bu, yerel kullanıcıya izinleri atar. Burada izinleri atadıktan sonra, Dosya Gezgini'ni kullanarak bu izinlerde değişiklik yapabilirsiniz.
+    - **Bir Kobİ payı oluşturuyorsanız** - **Tüm ayrıcalık yerel kullanıcı** alanında, yeni **oluştur** veya **varolan ı kullan'dan**birini seçin. Yeni bir yerel kullanıcı oluşturuyorsanız, **kullanıcı adı,** **parolayı**girin ve ardından parolayı onaylayın. Bu, yerel kullanıcıya izinleri atar. Burada izinleri atadıktan sonra, Dosya Gezgini'ni kullanarak bu izinlerde değişiklik yapabilirsiniz.
 
         ![SMB paylaşımı ekleme](media/data-box-gateway-manage-shares/add-share-2.png)
 
         Bu paylaşımın verileri için Yalnızca okuma işlemlerine izin ver'i işaretlerseniz, salt okuma kullanıcıları belirtebilirsiniz.
-    - **NFS paylaşımı oluşturuluyorsa** - Paylaşıma erişmesine **izin verilen istemcilerin IP adreslerini** sağlamanız gerekir.
+    - **Bir NFS payı oluşturuyorsanız** - Paylaşıma erişebilen **izin verilen istemcilerin IP adreslerini** sağlamanız gerekir.
 
         ![NFS paylaşımı ekleme](media/data-box-gateway-manage-shares/add-share-3.png)
 
@@ -72,7 +72,7 @@ Paylaşımı silmek için Azure portalda aşağıdaki adımları gerçekleştiri
 
     ![Paylaşımı seçme](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. **Sil**'e tıklayın. 
+2. **Sil'i**tıklatın. 
 
     ![Sil'e tıklayın](media/data-box-gateway-manage-shares/delete-2.png)
 
@@ -88,7 +88,7 @@ Paylaşım listesi silinen paylaşıma göre güncelleştirilir.
 Yenileme özelliği, şirket içi paylaşımın içeriğini yenilemenizi sağlar. Bir paylaşımı yenilediğinizde bloblar ve dosyalar dahil olmak üzere son yenileme işleminden sonra buluta eklenmiş olan tüm Azure nesnelerini bulmak için bir arama başlatılır. Ardından bu ek dosyalar kullanılarak cihazdaki şirket içi paylaşımın içeriği yenilenir. 
 
 > [!NOTE]
-> İzinler ve erişim denetim listeleri (ACL 'Ler) bir yenileme işlemi boyunca korunmaz. 
+> İzinler ve erişim denetim listeleri (ALA)'lar bir yenileme işlemi boyunca korunmaz. 
 
 Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
@@ -113,7 +113,7 @@ Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleşt
 Hata varsa bir uyarı görüntülenir. Uyarıda sorunun nedeni ve düzeltme adımları yer alır. Uyarıda ayrıca güncelleştirme veya silme işleminin başarısız olduğu dosyalar da dahil olmak üzere hatanın ayrıntılı bir özetinin yer aldığı bir dosyaya bağlantı da verilir.
 
 >[!IMPORTANT]
-> Bu sürümde, tek seferde birden fazla paylaşımdan daha fazlasını yenilemeyin.
+> Bu sürümde, aynı anda tek bir hisseden fazlasını yenilemeyin.
 
 ## <a name="sync-storage-keys"></a>Depolama anahtarlarını eşitleme
 
@@ -122,7 +122,7 @@ Depolama anahtarlarınız değiştirildiyse eşitlemeniz gerekir. Eşitleme, cih
 Depolama erişim anahtarınızı eşitlemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
 1. Kaynağınızın **Genel bakış** sayfasına gidin. 
-2. Paylaşımlar listesinden, eşitlemeniz gereken depolama hesabıyla ilişkili bir paylaşımı seçin ve tıklayın. **Eşitleme depolama anahtarı**' na tıklayın. 
+2. Paylaşımlar listesinden, eşitlemeniz gereken depolama hesabıyla ilişkili bir paylaşım seçin ve tıklatın. **Depolama alanını eşitle'yi**tıklatın. 
 
      ![Depolama anahtarını eşitleme 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 

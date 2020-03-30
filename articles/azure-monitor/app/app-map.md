@@ -1,93 +1,93 @@
 ---
-title: Azure Application Insights uygulama Haritası | Microsoft Docs
+title: Azure Uygulama Öngörülerinde Uygulama Haritası | Microsoft Dokümanlar
 description: Uygulama haritası ile karmaşık uygulama topolojilerini izleme
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666284"
 ---
-# <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: dağıtılmış uygulamaları önceliklendirme
+# <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: Triyaj Dağıtılmış Uygulamalar
 
-Uygulama Haritası, dağıtılmış uygulamanızın tüm bileşenlerinde performans sorunlarını veya hata etkin noktalarını ayarlamanıza yardımcı olur. Eşlemedeki her düğüm bir uygulama bileşenini veya bağımlılıklarını temsil eder; ve sistem durumu KPI 'si ve uyarı durumu içerir. Herhangi bir bileşenden, Application Insights olayları gibi daha ayrıntılı Tanılamalar 'e tıklayabilirsiniz. Uygulamanız Azure Hizmetleri kullanıyorsa, SQL Veritabanı Danışmanı önerileri gibi Azure tanılama 'ya de tıklayabilirsiniz.
+Uygulama Haritası, dağıtılmış uygulamanızın tüm bileşenlerinde performans darboğazlarını veya arıza etkin noktalarını tespit edilemenize yardımcı olur. Haritadaki her düğüm bir uygulama bileşenini veya bağımlılıklarını temsil eder; ve sağlık KPI ve uyarıları durumu vardır. Uygulama Öngörüleri olayları gibi daha ayrıntılı tanılama için herhangi bir bileşenden tıklatabilirsiniz. Uygulamanız Azure hizmetlerini kullanıyorsa, SQL Veritabanı Danışmanı önerileri gibi Azure tanılama larını da tıklatabilirsiniz.
 
-## <a name="what-is-a-component"></a>Bileşen nedir?
+## <a name="what-is-a-component"></a>Bileşen Nedir?
 
-Bileşenler, dağıtılmış/mikro hizmetler uygulamanızın bağımsız olarak dağıtılabilir parçalarından oluşur. Geliştiriciler ve işlemler ekiplerinde kod düzeyinde görünürlük veya bu uygulama bileşenleri tarafından oluşturulan telemetri erişimi vardır. 
+Bileşenler, dağıtılmış/mikro hizmetler uygulamanızın bağımsız olarak dağıtılabilir parçalarıdır. Geliştiriciler ve operasyon ekipleri kod düzeyinde görünürlüğe veya bu uygulama bileşenleri tarafından oluşturulan telemetriye erişime sahiptir. 
 
-* Bileşenler, takımınızın/kuruluşunuzun erişimi olmayan (kod veya telemetri) SQL, EventHub vb. gibi "gözlemlenen" dış bağımlılıklardan farklıdır.
-* Bileşenler herhangi bir sayıda sunucu/rol/kapsayıcı örneği üzerinde çalışır.
-* Bileşenler Application Insights izleme anahtarlarına (abonelikler farklıysa bile) veya tek bir Application Insights izleme anahtarına rapor veren farklı rollere sahip olabilir. Önizleme eşleme deneyimi, nasıl ayarlandıklarından bağımsız olarak bileşenleri gösterir.
+* Bileşenler, takımınızın/kuruluşunuzun erişemeyebilecekleri SQL, EventHub gibi "gözlenen" dış bağımlılıklardan farklıdır (kod veya telemetri).
+* Bileşenler herhangi bir sayıda sunucu/rol/kapsayıcı örneklerinde çalışır.
+* Bileşenler ayrı Application Insights enstrümantasyon anahtarları (abonelikler farklı olsa bile) veya farklı roller tek bir Application Insights enstrümantasyon anahtarına raporlama olabilir. Önizleme haritası deneyimi, bileşenlerin nasıl ayarlandıklarına bakılmaksızın gösterilir.
 
-## <a name="composite-application-map"></a>Bileşik uygulama eşlemesi
+## <a name="composite-application-map"></a>Kompozit Uygulama Haritası
 
-Tüm uygulama topolojisini ilgili uygulama bileşenlerinin birden çok düzeyinde görebilirsiniz. Bileşenler farklı Application Insights kaynaklar veya tek bir kaynaktaki farklı rollerdir. Uygulama Haritası, Application Insights SDK yüklü sunucular arasında yapılan HTTP bağımlılığı çağrılarını izleyerek bileşenleri bulur. 
+İlgili uygulama bileşenlerinin birden çok düzeyinde tam uygulama topolojisi görebilirsiniz. Bileşenler farklı Application Insights kaynakları veya tek bir kaynaktaki farklı roller olabilir. Uygulama haritası, Uygulama Öngörüleri SDK yüklü sunucular arasında yapılan HTTP bağımlılık çağrılarını izleyerek bileşenleri bulur. 
 
-Bu deneyim, bileşenlerin aşamalı keşfi ile başlar. Uygulama haritasını ilk kez yüklediğinizde, bu bileşenle ilgili bileşenleri bulacak bir sorgu kümesi tetiklenir. Sol üst köşedeki bir düğme, uygulamanızdaki bileşen sayısıyla birlikte güncelleştirilecek. 
+Bu deneyim bileşenlerin aşamalı keşfi ile başlar. Uygulama eşlesini ilk yüklediğinizde, bu bileşenle ilgili bileşenleri bulmak için bir sorgu kümesi tetiklenir. Sol üst köşedeki bir düğme, keşfedildikleri gibi uygulamanızdaki bileşenlerin sayısıyla güncellenir. 
 
-"Harita bileşenlerini Güncelleştir" seçeneğine tıkladığınızda, eşleme bu noktaya kadar bulunan tüm bileşenlerle yenilenir. Uygulamanızın karmaşıklığına bağlı olarak bu işlem birkaç dakika sürebilir.
+"Harita bileşenlerini güncelleştir" seçeneğini tıklattığınızda, harita bu noktaya kadar keşfedilen tüm bileşenlerle yenilenir. Uygulamanızın karmaşıklığına bağlı olarak, bu yükün yüklenmesi bir dakika sürebilir.
 
-Tüm bileşenlerin tek bir Application Insights kaynağı içinde rolleri varsa, bu bulma adımı gerekli değildir. Böyle bir uygulamanın ilk yükünün tüm bileşenleri olacaktır.
+Bileşenlerin tümü tek bir Application Insights kaynağındaki rollerse, bu bulma adımı gerekli değildir. Böyle bir uygulama için ilk yük tüm bileşenlerine sahip olacaktır.
 
-![Uygulama Haritası ekran görüntüsü](media/app-map/app-map-001.png)
+![Uygulama Haritası Ekran Görüntüsü](media/app-map/app-map-001.png)
 
-Bu deneyimle önemli amaçların biri, yüzlerce bileşen ile karmaşık topolojileri görselleştirebilmelidir.
+Bu deneyimin temel hedeflerinden biri, karmaşık topolojileri yüzlerce bileşenle görselleştirebilmektir.
 
-İlgili öngörüleri görmek için herhangi bir bileşene tıklayın ve bu bileşene ilişkin performans ve başarısızlık önceliklendirme deneyimine gidin.
+İlgili öngörüleri görmek için herhangi bir bileşene tıklayın ve bu bileşenin performans ve hata triajı deneyimine gidin.
 
-![Açılır](media/app-map/application-map-002.png)
+![Geçici Açılır Öğe](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Sorunları araştırın
+### <a name="investigate-failures"></a>Hataları araştırma
 
-Arızalar bölmesini başlatmak için **başarısızlığı araştır** ' ı seçin.
+Hataları **bölmesini** başlatmak için hataları araştır'ı seçin.
 
-![Sorunları araştır düğmesinin ekran görüntüsü](media/app-map/investigate-failures.png)
+![Araştırma hataları düğmesinin ekran görüntüsü](media/app-map/investigate-failures.png)
 
-![Başarısızlık deneyiminin ekran görüntüsü](media/app-map/failures.png)
+![Hata deneyiminin ekran görüntüsü](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Performansı araştır
+### <a name="investigate-performance"></a>Performansı araştırma
 
-Performans sorunlarını gidermek için, **performansı araştır**' ı seçin.
+Performans sorunlarını gidermek **için, araştırma performansını**seçin.
 
-![Araştır performans düğmesinin ekran görüntüsü](media/app-map/investigate-performance.png)
+![Performansı araştırma düğmesinin ekran görüntüsü](media/app-map/investigate-performance.png)
 
 ![Performans deneyiminin ekran görüntüsü](media/app-map/performance.png)
 
 ### <a name="go-to-details"></a>Ayrıntılara git
 
-Uçtan uca işlem deneyimini araştırmak için **ayrıntılara git** ' i seçin. Bu,, çağrı yığını düzeyine görünüm sunabilir.
+Arama yığını düzeyine kadar görünümler sunabilecek uçdan uca işlem deneyimini keşfetmek için **ayrıntılara git'i** seçin.
 
-![Ayrıntıya Git düğmesinin ekran görüntüsü](media/app-map/go-to-details.png)
+![Ayrıntılara git düğmesinin ekran görüntüsü](media/app-map/go-to-details.png)
 
 ![Uçtan uca işlem ayrıntılarının ekran görüntüsü](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-logs-analytics"></a>Günlükleri görüntüleme (Analiz)
+### <a name="view-logs-analytics"></a>Günlükleri Görüntüle (Analytics)
 
-Uygulama verilerinizi daha fazla sorgulamak ve araştırmak için **günlüklerde görüntüle (Analiz)** seçeneğine tıklayın.
+Uygulama verilerinizi daha fazla sorgulamak ve araştırmak için **Günlükler'de (Analytics) görünüm'e**tıklayın.
 
-![Analiz düğmesindeki görünümün ekran görüntüsü](media/app-map/view-logs.png)
+![Analitik düğmesinde görüntü ekran görüntüsü](media/app-map/view-logs.png)
 
-![Analiz deneyiminin ekran görüntüsü. Son 12 saat içindeki bir isteğin ortalama yanıt süresini özetleyen çizgi grafik.](media/app-map/log-analytics.png)
+![Analitik deneyiminin ekran görüntüsü. Satır grafiği, bir isteğin son 12 saat içinde ortalama yanıt süresini özetler.](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>Uyarılar
 
-Etkin uyarıları ve uyarıların tetiklenmesi için temel kuralları görüntülemek için, **Uyarılar**' ı seçin.
+Etkin uyarıları ve uyarıların tetiklenemesine neden olan temel kuralları görüntülemek için **uyarıları**seçin.
 
 ![Uyarılar düğmesinin ekran görüntüsü](media/app-map/alerts.png)
 
-![Analiz deneyiminin ekran görüntüsü](media/app-map/alerts-view.png)
+![Analitik deneyiminin ekran görüntüsü](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Bulut rolü adını ayarla
+## <a name="set-cloud-role-name"></a>Bulut rol adını ayarlama
 
-Uygulama Haritası, eşlemedeki bileşenleri tanımlamak için **bulut rolü adı** özelliğini kullanır. Application Insights SDK, bulut rolü adı özelliğini bileşenlere göre yayılan telemetrisine otomatik olarak ekler. Örneğin, SDK, bulut rolü adı özelliğine bir Web sitesi adı veya hizmet rolü adı ekler. Ancak, varsayılan değeri geçersiz kılmak isteyebileceğiniz durumlar vardır. Bulut rolü adını geçersiz kılmak ve uygulama eşlemesinde görüntülenecek öğeleri değiştirmek için:
+Uygulama Haritası, haritadaki bileşenleri tanımlamak için **bulut rol adı** özelliğini kullanır. Application Insights SDK, bileşenler tarafından yayılan telemetriye bulut rol adı özelliğini otomatik olarak ekler. Örneğin, SDK bulut rol adı özelliğine bir web sitesi adı veya hizmet rol adı ekler. Ancak, varsayılan değeri geçersiz kılmak isteyebileceğiniz durumlar vardır. Bulut rol adını geçersiz kılmak ve Uygulama Haritası'nda görüntülenenleri değiştirmek için:
 
-### <a name="netnet-core"></a>.NET/.NET Core
+### <a name="netnet-core"></a>.NET/.NET Çekirdek
 
-**Aşağıdaki gibi özel Telemetryınitializer yazın.**
+**Aşağıdaki gibi özel TelemetryInitializer yazın.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -110,9 +110,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET Apps: Active TelemetryConfiguration 'a Başlatıcı yükleme**
+**ASP.NET uygulamaları: Etkin TelemetriYapılandırmasına baş harflerini yükleyin**
 
-ApplicationInsights. config dosyasında:
+In ApplicationInsights.config :
 
 ```xml
     <ApplicationInsights>
@@ -124,7 +124,7 @@ ApplicationInsights. config dosyasında:
     </ApplicationInsights>
 ```
 
-ASP.NET Web Apps için alternatif bir yöntem, örneğin Global.aspx.cs içindeki başlatıcısı örnekleyemedi:
+web uygulamalarını ASP.NET için alternatif bir yöntem, koddaki baş harflerini anlık olarak Global.aspx.cs aşağıdakiler gibi:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -138,11 +138,11 @@ ASP.NET Web Apps için alternatif bir yöntem, örneğin Global.aspx.cs içindek
 ```
 
 > [!NOTE]
-> `ApplicationInsights.config` veya `TelemetryConfiguration.Active` kullanarak Başlatıcı ekleme ASP.NET Core uygulamaları için geçerli değildir. 
+> Kullanarak veya kullanarak `ApplicationInsights.config` `TelemetryConfiguration.Active` baş harf ekleme ASP.NET Core uygulamaları için geçerli değildir. 
 
-**ASP.NET Core uygulamalar: Başlatıcı yükleme TelemetryConfiguration**
+**ASP.NET Core uygulamaları: TelemetriConfiguration'a baş harflerini yükleyin**
 
-[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi, yeni bir `TelemetryInitializer` eklemek, bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `Startup.cs` sınıfınızın `ConfigureServices` yönteminde yapılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamaları için, `TelemetryInitializer` aşağıda gösterildiği gibi Bağımlılık Enjeksiyonu kabına ekleyerek yeni bir ekleme yapılır. Bu sizin `Startup.cs` `ConfigureServices` sınıf yöntemi yapılır.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -162,7 +162,7 @@ appInsights.defaultClient.context.tags["ai.cloud.role"] = "your role name";
 appInsights.defaultClient.context.tags["ai.cloud.roleInstance"] = "your role instance";
 ```
 
-### <a name="alternate-method-for-nodejs"></a>Node. js için alternatif Yöntem
+### <a name="alternate-method-for-nodejs"></a>Düğüm.js için alternatif yöntem
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -176,7 +176,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 ### <a name="java"></a>Java
 
-Application Insights Java SDK 2.5.0 ' den başlayarak, bulut rolü adını `ApplicationInsights.xml` dosyanıza `<RoleName>` ekleyerek belirtebilirsiniz, örn.
+Application Insights Java SDK 2.5.0 ile başlayarak, dosyanıza `<RoleName>` `ApplicationInsights.xml` örneğin.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -187,11 +187,11 @@ Application Insights Java SDK 2.5.0 ' den başlayarak, bulut rolü adını `Appl
 </ApplicationInsights>
 ```
 
-Spring Boot uygulamasını Application Insights Spring Boot Starter ile kullanırsanız, tek yapmanız gereken tek değişiklik, uygulama. Özellikler dosyasında uygulama için özel adınızı ayarlamanıza yöneliktir.
+Uygulama Öngörüleri İlkbahar Önyükleme başlatıcısı ile Bahar Önyükleme kullanıyorsanız, gerekli olan tek değişiklik application.properties dosyasındaki uygulama için özel adınızı ayarlamaktır.
 
 `spring.application.name=<name-of-app>`
 
-Spring Boot Starter, spring.application.name özelliği için girdiğiniz değere otomatik olarak bulut rolü adı atayacaktır.
+İlkbahar Önyükleme başlatıcısı, spring.application.name özelliği için girdiğiniz değere otomatik olarak bulut rol adı atar.
 
 ### <a name="clientbrowser-side-javascript"></a>İstemci/tarayıcı tarafı JavaScript
 
@@ -204,17 +204,17 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 ```
 
-### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Uygulama Haritası bağlamı içinde bulut rolü adını anlama
+### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Uygulama Haritası bağlamında bulut rol adının anlaşılması
 
-**Bulut rolü adı**hakkında ne kadar düşünürken, birden fazla bulut rolü adına sahip bir uygulama eşlemesine bakmak yararlı olabilir:
+**Bulut rol adı**hakkında nasıl düşüneceğiniz konusunda, birden çok bulut rol adı bulunan bir Uygulama Haritasına bakmak yararlı olabilir:
 
-![Uygulama Haritası ekran görüntüsü](media/app-map/cloud-rolename.png)
+![Uygulama Haritası Ekran Görüntüsü](media/app-map/cloud-rolename.png)
 
-Yukarıdaki uygulama haritasında yeşil kutular 'daki adların her biri, bu dağıtılan uygulamanın farklı yönleri için bulut rolü adı değerlerdir. Bu nedenle, bu uygulama için rolleri şunlardan oluşur: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
+Yeşil kutulardaki adların her biri yukarıdaki Uygulama Haritası'nda, bu özel dağıtılmış uygulamanın farklı yönleri için bulut rol adı değerleri yer alır. Yani bu uygulama için rolleri `Authentication` `acmefrontend`oluşur: , , `Inventory Management`, a `Payment Processing Worker Role`. 
 
-Bu uygulama, bu bulut rolü adlarının her biri aynı zamanda kendi izleme anahtarlarına sahip farklı bir benzersiz Application Insights kaynağını da temsil eder. Bu uygulamanın sahibi bu dört farklı Application Insights kaynağın her birine erişime sahip olduğundan, uygulama haritası temel alınan ilişkilerin bir haritasını birlikte birleştirilebilir.
+Bu uygulama söz konusu olduğunda, bu bulut rol adlarının her biri, kendi enstrümantasyon anahtarlarıyla farklı bir benzersiz Application Insights kaynağını da temsil eder. Bu uygulamanın sahibi bu dört farklı Application Insights kaynaklarının her birine erişebildiği için, Uygulama Haritası temel ilişkilerin bir haritasını bir araya getirebiliyor.
 
-[Resmi tanımlar](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93)için:
+Resmi [tanımlar](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93)için:
 
 ```
    [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
@@ -226,52 +226,52 @@ Bu uygulama, bu bulut rolü adlarının her biri aynı zamanda kendi izleme anah
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Alternatif olarak **, bulut** rolü **adı** , sorunun Web ön uçınızdan bir yerde olduğunu söylediğinden, Web ön uçınızı birden fazla yük dengeli sunucuda çalıştırıyor olabilirsiniz. böylece, kusto sorguları aracılığıyla bir katmanda detaya gidebilmek ve sorunun tüm Web ön uç sunucularını/örneklerini etkileyip etkilemediğini bilmenin yanı sıra son derece önemli olabilir.
+Alternatif olarak, **bulut rolü örneği,** **bulut rol adının** sorunun web ön uçunuzda bir yerde olduğunu söylediği senaryolar için yararlı olabilir, ancak web ön uçunuzu birden çok yük dengeli sunucuda çalıştırıyor olabilirsiniz, böylece Kusto sorguları aracılığıyla daha derin bir katmanda sondaj yapabilmek ve sorunun tüm web ön uç sunucularını/örneklerini mi etkilediğini bilmek son derece önemli olabilir.
 
-Bulut rol örneği için değeri geçersiz kılmak isteyebileceğiniz bir senaryo, uygulamanızın belirli bir sorunu bulmak için yeterli bilgi olmadığını bilmenin bir kapsayıcı ortamda çalışıyor olması olabilir.
+Bulut rolü örneği için değeri geçersiz kılmak isteyebileceğiniz bir senaryo, uygulamanız yalnızca tek bir sunucunun belirli bir sorunu bulmak için yeterli bilgi olmadığı kapsayıcı bir ortamda çalışıyorsa olabilir.
 
-Bulut rolü adı özelliğinin telemetri başlatıcılarla nasıl geçersiz kılındığı hakkında daha fazla bilgi için bkz. [Add Properties: Itelemetrybaşlatıcısı](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+Telemetri başharfleriyle bulut rol adı özelliğini nasıl geçersiz kılabilir hakkında daha fazla bilgi için [bkz: ITelemetryInitializer.](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Uygulama haritasını beklenen şekilde çalışacak bir sorun yaşıyorsanız, aşağıdaki adımları deneyin:
+Uygulama Haritası'nın beklendiği gibi çalışmasını sağlamakta sorun yaşıyorsanız, şu adımları deneyin:
 
 ### <a name="general"></a>Genel
 
 1. Resmi olarak desteklenen bir SDK kullandığınızdan emin olun. Desteklenmeyen/Topluluk SDK’ları bağıntıyı desteklemeyebilir.
 
-    Desteklenen SDK 'ların listesi için bu [makaleye](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) başvurun.
+    Desteklenen SDK'ların listesi için bu [makaleye](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) bakın.
 
 2. Tüm bileşenleri en son SDK sürümüne yükseltin.
 
-3. Azure Işlevleri ile C#kullanıyorsanız, [işlevleri v2](https://docs.microsoft.com/azure/azure-functions/functions-versions)'ye yükseltin.
+3. Azure Fonksiyonlarını C# ile kullanıyorsanız, [V2 Işlevleri'ne](https://docs.microsoft.com/azure/azure-functions/functions-versions)yükseltin.
 
-4. [Bulut rolü adının](#set-cloud-role-name) doğru şekilde yapılandırıldığını onaylayın.
+4. [Bulut rol adının](#set-cloud-role-name) doğru şekilde yapılandırıldığıdoğrulayın.
 
 5. Bir bağımlılık eksikse, bunun [otomatik olarak toplanan bağımlılıklar](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) listesinde bulunduğundan emin olun. Listede yoksa, bunu yine de [izleme bağımlılık çağrısı](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) kullanarak el ile izleyebilirsiniz.
 
 ### <a name="too-many-nodes-on-the-map"></a>Haritada çok fazla düğüm
 
-Uygulama Haritası, istek telemetrinizde bulunan her benzersiz bulut rolü adı için bir uygulama düğümü ve bağımlılık telemetrinizde her bir benzersiz tür, hedef ve bulut rolü birleşimi için bir bağımlılık düğümü oluşturur. Telemetrinizde 10.000 'den fazla düğüm varsa, uygulama haritası tüm düğümleri ve bağlantıları alıp haritalarınız tamamlanamayacak. Bu durumda, eşleme görüntülenirken bir uyarı iletisi görüntülenir.
+Uygulama Haritası, istek telemetrinizde bulunan her benzersiz bulut rol adı için bir uygulama düğümü ve bağımlılık telemetrinizde tür, hedef ve bulut rol adının her benzersiz birleşimi için bir bağımlılık düğümü oluşturur. Telemetrinizde 10.000'den fazla düğüm varsa, Uygulama Haritası tüm düğümleri ve bağlantıları getiremez, bu nedenle haritanız eksik kalır. Bu durumda, haritayı görüntülerken bir uyarı iletisi görüntülenir.
 
-Ayrıca, uygulama eşlemesi yalnızca aynı anda oluşturulan en fazla 1000 ayrı Gruplandırılmamış düğümü destekler. Uygulama Haritası, bağımlılıkları aynı türde ve çağıranlara sahip olan bir araya getirerek görsel karmaşıklıkları azaltır, ancak telemetrinizde çok sayıda benzersiz bulut rolü adı veya çok fazla bağımlılık türü varsa, bu gruplandırma yetersiz olur ve eşleme bunu yapamıyor işlenecek.
+Buna ek olarak, Uygulama Haritası yalnızca aynı anda işlenen en fazla 1000 ayrı gruplandırılmamış düğümü destekler. Uygulama Haritası, aynı türve arayanlara sahip bağımlılıkları gruplayarak görsel karmaşıklığı azaltır, ancak telemetrinizde çok fazla benzersiz bulut rol adı veya çok fazla bağımlılık türü varsa, bu gruplandırma yetersiz kalır ve harita Render.
 
-Bunu yapmak için, bulut rolü adı, bağımlılık türü ve bağımlılık hedefi alanlarını düzgün şekilde ayarlamak üzere araçlarınızı değiştirmeniz gerekir.
+Bunu düzeltmek için, bulut rol adını, bağımlılık türünü ve bağımlılık hedef alanlarını düzgün bir şekilde ayarlamak için enstrümantasyonunuzu değiştirmeniz gerekir.
 
-* Bağımlılık hedefi, bağımlılığın mantıksal adını temsil etmelidir. Çoğu durumda, bağımlılığın sunucu veya kaynak adı ile eşdeğerdir. Örneğin, HTTP bağımlılıkları durumunda ana bilgisayar adına ayarlanır. Bir istekten diğerine değişen benzersiz kimlikler veya parametreler içermemelidir.
+* Bağımlılık hedefi, bir bağımlılığın mantıksal adını temsil etmelidir. Çoğu durumda, bu bağımlılık sunucu veya kaynak adı eşdeğerdir. Örneğin, HTTP bağımlılıkları söz konusu olduğunda, ana bilgisayar adına ayarlanır. Bir istekten diğerine değişen benzersiz t'ler veya parametreler içermemelidir.
 
-* Bağımlılık türü, bağımlılığın mantıksal türünü temsil etmelidir. Örneğin, HTTP, SQL veya Azure blobu tipik bağımlılık türleridir. Benzersiz kimlikler içermemelidir.
+* Bağımlılık türü, mantıksal bağımlılık türünü temsil etmelidir. Örneğin, HTTP, SQL veya Azure Blob tipik bağımlılık türleridir. Benzersiz tbm'ler içermemelidir.
 
-* Bulut rolü adının amacı [yukarıdaki bölümde](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)açıklanmıştır.
+* Bulut rol adının amacı yukarıdaki [bölümde](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)açıklanmıştır.
 
 ## <a name="portal-feedback"></a>Portal geri bildirimi
 
 Geri bildirim sağlamak için geri bildirim seçeneğini kullanın.
 
-![MapLink-1 resmi](./media/app-map/14-updated.png)
+![MapLink-1 görüntüsü](./media/app-map/14-updated.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bağıntıdan nasıl çalıştığı hakkında daha fazla bilgi edinmek için Application Insights [telemetri bağıntı makalesine](correlation.md)başvurun.
-* [Uçtan uca işlem tanılama deneyimi](transaction-diagnostics.md) , sunucu tarafı telemetrisini tüm Application Insights izlenen bileşenlerinizin tamamında tek bir görünümde ilişkilendirir.
-* ASP.NET Core ve ASP.NET ' deki gelişmiş bağıntı senaryoları için [özel işlemleri izleme](custom-operations-tracking.md) makalesine başvurun.
+* Uygulama Öngörüleri'nde korelasyonun nasıl çalıştığı hakkında daha fazla bilgi edinmek için [telemetri korelasyon makalesine](correlation.md)başvurun.
+* [Uçtan uca işlem tanılama deneyimi,](transaction-diagnostics.md) tüm Application Insights tarafından izlenen bileşenleritek bir görünümde sunucu tarafı telemetrisini ilişkilendirer.
+* ASP.NET Core ve ASP.NET'daki gelişmiş korelasyon senaryoları [için parça özel işlemler](custom-operations-tracking.md) makalesine başvurun.

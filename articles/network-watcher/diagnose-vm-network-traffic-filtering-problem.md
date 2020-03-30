@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: bir VM ağı trafik filtresi sorununu tanılama-Azure portal'
+title: 'Hızlı başlatma: VM ağ trafiği filtresi sorununu tanıla - Azure portalı'
 titleSuffix: Azure Network Watcher
-description: Bu hızlı başlangıçta, Azure Ağ İzleyicisi’nin IP akış doğrulama özelliği kullanılarak sanal makine ağ trafiği filtreleme sorununun nasıl tanılanacağını öğrenirsiniz.
+description: Bu hızlı başlangıçta, Azure Ağ İzleyicisi'nin IP akış doğrulama özelliği kullanılarak sanal makine ağ trafiği filtreleme sorununun nasıl tanılanacağını öğrenirsiniz.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -18,17 +18,17 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241601"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak sanal makine ağ trafiği filtreleme sorununu tanılama
 
 Bu hızlı başlangıçta bir sanal makine (VM) dağıtır ve sonra bir IP adresi ve URL ile iletişimleri ve bir IP adresinden gelen iletişimleri denetlersiniz. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -37,7 +37,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 ## <a name="create-a-vm"></a>VM oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **+ Kaynak oluştur** seçeneğini belirleyin.
-2. **İşlem**' ı seçin ve ardından **Windows Server 2016 Datacenter** veya **Ubuntu Server**sürümünü seçin.
+2. **Bilgi İşlem'i**seçin ve ardından Windows **Server 2016 Datacenter'ı** veya **Ubuntu Server**sürümünü seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
     |Ayar|Değer|
@@ -47,7 +47,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
-    |Konum| **Doğu ABD**’yi seçin|
+    |Konum| **Doğu ABD'yi** seçin|
 
 4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
 5. **Ayarlar** bölümünde tüm varsayılanları kabul edin ve **Tamam**’ı seçin.
@@ -72,7 +72,7 @@ En az bir bölgede etkinleştirilmiş bir ağ izleyiciniz zaten varsa [IP akış
 
 Bir sanal makine oluşturduğunuzda Azure varsayılan olarak sanal makineye/sanal makineden ağ trafiğine izin verir veya ağ trafiğini reddeder. Daha sonra Azure’ın varsayılanlarını geçersiz kılarak ek trafik türlerine izin verebilir veya ek trafik türlerini reddedebilirsiniz.
 
-1. Portalda **Tüm hizmetler**’i seçin. **Tüm hizmetler** *filtresi* kutusunda *Ağ İzleyicisi*' ni girin. **Ağ İzleyicisi**, sonuçlarda görüntülendiğinde onu seçin.
+1. Portalda **Tüm hizmetler**’i seçin. **Tüm hizmetler** *Filtre* kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, sonuçlarda görüntülendiğinde onu seçin.
 2. **AĞ TANILAMA ARAÇLARI** altında **IP akışı doğrulama**’yı seçin.
 3. Aboneliğinizi seçin, aşağıdaki değerleri girin veya seçin ve sonra aşağıdaki resimde gösterildiği gibi **Denetle**’yi seçin:
 
@@ -85,14 +85,14 @@ Bir sanal makine oluşturduğunuzda Azure varsayılan olarak sanal makineye/sana
     | Yön         | Giden                                                                                          |
     | Yerel IP adresi  | 10.0.0.4                                                                                          |
     | Yerel bağlantı noktası      | 60000                                                                                                |
-    | Uzak IP adresi | 13.107.21.200-< www. Bing. com > adreslerinden biridir.                                             |
+    | Uzak IP adresi | 13.107.21.200 - <www.bing.com> adreslerinden biri.                                             |
     | Uzak bağlantı noktası       | 80                                                                                                |
 
     ![IP akışı doğrulama](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
 
     Birkaç saniye sonra döndürülen sonuç, **AllowInternetOutbound** adlı bir güvenlik kuralı tarafından erişime izin verildiğini size bildirir. Denetimi çalıştırmadan önce Doğu ABD bölgesinden başka bir bölgede mevcut bir ağ izleyiciniz varsa, denetimi çalıştırdığınızda Ağ İzleyicisi Doğu ABD bölgesinde otomatik olarak bir ağ izleyicisi oluşturmuştur.
 4. **Uzak IP adresi**’ni **172.31.0.100** olarak değiştirip 3. adımı tekrar tamamlayın. Döndürülen sonuç, **DefaultOutboundDenyAll** adlı bir güvenlik kuralı tarafından erişimin reddedildiğini size bildirir.
-5. **Yön**’ü **Gelen**, **Yerel bağlantı noktasını** **80** ve **Uzak bağlantı noktasını** **60000** olarak değiştirip 3. adımı tekrar tamamlayın. Döndürülen sonuç, **DefaultInboundDenyAll** adlı bir güvenlik kuralı tarafından erişimin reddedildiğini size bildirir.
+5. **Yön**’ü **Gelen**, **Yerel bağlantı noktasını****80** ve **Uzak bağlantı noktasını****60000** olarak değiştirip 3. adımı tekrar tamamlayın. Döndürülen sonuç, **DefaultInboundDenyAll** adlı bir güvenlik kuralı tarafından erişimin reddedildiğini size bildirir.
 
 Hangi güvenlik kurallarının bir sanal makineye/sanal makineden trafiğe izin verdiğini veya trafiği reddettiğini öğrendiğinize göre sorunların nasıl çözümleneceğini belirleyebilirsiniz.
 
@@ -108,7 +108,7 @@ Hangi güvenlik kurallarının bir sanal makineye/sanal makineden trafiğe izin 
 
     ![Güvenlik kuralı ön ekleri](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)
 
-    Listedeki öneklerden biri **12.0.0.0/6** olup bu, IP adreslerinin 12.0.0.1-15.255.255.254 aralığını kapsar. 13.107.21.200 bu adres aralığı içinde yer aldığından **AllowInternetOutBound** kuralı, giden trafiğe izin verir. Ayrıca, 2. adımdaki resimde bu kuralı geçersiz kılan daha yüksek öncelikli (daha küçük numaralı) bir kural da gösterilmemektedir. **Adres ön ekleri** kutusunu kapatın. 13.107.21.200 adresine giden iletişimi reddetmek için, IP adresine giden 80 numaralı bağlantı noktasını reddeden, daha yüksek önceliğe sahip bir güvenlik kuralı ekleyebilirsiniz.
+    Listedeki ön eklerden biri **12.0.0.0/6**'dır ve IP adreslerinin 12.0.0.1-15.255.255.254 aralığını kapsar. 13.107.21.200 bu adres aralığı içinde yer aldığından **AllowInternetOutBound** kuralı, giden trafiğe izin verir. Ayrıca, 2. adımdaki resimde bu kuralı geçersiz kılan daha yüksek öncelikli (daha küçük numaralı) bir kural da gösterilmemektedir. **Adres ön ekleri** kutusunu kapatın. 13.107.21.200 adresine giden iletişimi reddetmek için, IP adresine giden 80 numaralı bağlantı noktasını reddeden, daha yüksek önceliğe sahip bir güvenlik kuralı ekleyebilirsiniz.
 4. [IP akışı doğrulama](#use-ip-flow-verify) bölümündeki 4. adımda 172.131.0.100 için giden denetimi çalıştırdığınızda iletişimi **DefaultOutboundDenyAll** kuralının reddettiğini öğrendiniz. Bu kural, 2. adımdaki resimde gösterilen ve **HEDEF** olarak **0.0.0.0/0** adresini gösteren **DenyAllOutBound** kuralına eşittir. Adres, resimde gösterilen diğer **Giden kurallardan** herhangi birinin **HEDEF** aralığında olmadığından, bu kural 172.131.0.100 ile iletişimi reddeder. Giden iletişime izin vermek için, 80 numaralı bağlantı noktasına giden trafiğe izin veren, 172.131.0.100 adresine yönelik daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
 5. [IP akışı doğrulama](#use-ip-flow-verify) bölümündeki 5. adımda 172.131.0.100 adresinden gelen denetimi çalıştırdığınızda iletişimi **DefaultInboundDenyAll** kuralının reddettiğini öğrendiniz. Bu kural, 2. adımdaki resimde gösterilen **DenyAllInBound** kuralına eşittir. **DenyAllInBound** kuralı, 172.31.0.100 adresinden 80 numaralı bağlantı noktasının VM’ye gitmesine izin veren başka bir yüksek öncelikli kural bulunmadığı için uygulanır. Gelen iletişime izin vermek için, 172.31.0.100 adresinden gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
 
@@ -118,9 +118,9 @@ Bu hızlı başlangıçtaki denetimlerinde Azure yapılandırması test edilmiş
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki *Ara* kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. *KAYNAK GRUBU ADINI YAZIN:* için **myResourceGroup** girin ve **Sil**’i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

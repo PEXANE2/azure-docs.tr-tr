@@ -1,47 +1,47 @@
 ---
 title: Kısıtlanan istekler için yönergeler
-description: Azure Kaynak Grafiği tarafından daraltılan isteklerin önüne geçmek için, paralel olarak Grup, Stagger, sayfal ve sorgu yapmayı öğrenin.
+description: Taleplerin Azure Kaynak Grafiği tarafından daraltılmasını önlemek için paralel olarak gruplandırmayı, stagger, pajine ve sorgu yapmayı öğrenin.
 ms.date: 12/02/2019
 ms.topic: conceptual
 ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259857"
 ---
-# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
+# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak Grafiği'nde daraltılmış istekler için kılavuz
 
-Azure Kaynak Grafiği verilerinin programlı ve sık kullanımını oluştururken, azaltma işlemlerinin sorguların sonuçlarını nasıl etkilediğini göz önünde bulundurmanız gerekir. Verilerin istendiği şekilde değiştirilmesi, sizin ve kuruluşunuzun daralmasını ve Azure kaynaklarınızla ilgili zamanında verilerin akışını sürdürmenize yardımcı olabilir.
+Azure Kaynak Grafiği verilerinin programatik ve sık kullanımı oluşturulurken, azaltmanın sorguların sonuçlarını nasıl etkilediğine dikkat edilmelidir. Verilerin istenme şeklini değiştirmek, sizin ve kuruluşunuzun daraltılmasından kaçınmanıza ve Azure kaynaklarınız hakkındaki zamanında veri akışını sürdürmenize yardımcı olabilir.
 
-Bu makalede, Azure Kaynak Grafında sorguların oluşturulmasıyla ilgili dört alan ve desen ele alınmaktadır:
+Bu makalede, Azure Kaynak Grafiği'nde sorguların oluşturulmasıyla ilgili dört alan ve desen yer alıyor:
 
 - Azaltma üst bilgilerini anlama
 - Sorguları gruplandırma
-- Kademelendirme sorguları
-- Sayfalandırmaya etkisi
+- Sorguları kademelendirme
+- Pagination etkisi
 
 ## <a name="understand-throttling-headers"></a>Azaltma üst bilgilerini anlama
 
-Azure Kaynak Grafiği, her bir kullanıcı için kota numarasını bir zaman penceresine göre ayırır. Örneğin, bir Kullanıcı, daralmadan 5 saniyelik her pencerede en fazla 15 sorgu gönderebilir. Kota değeri birçok faktöre göre belirlenir ve değişikliğe tabidir.
+Azure Kaynak Grafiği, bir zaman penceresinden her kullanıcı için kota numarası ayırır. Örneğin, bir kullanıcı her 5 saniyelik pencerede en fazla 15 sorgu gönderebilir. Kota değeri birçok faktör tarafından belirlenir ve değişebilir.
 
-Her sorgu yanıtında, Azure Kaynak Grafiği iki daraltma üst bilgisi ekler:
+Her sorgu yanıtında, Azure Kaynak Grafiği iki azaltma üstbilgini ekler:
 
-- `x-ms-user-quota-remaining` (int): Kullanıcı için kalan Kaynak kotası. Bu değer sorgu sayısı ile eşlenir.
-- `x-ms-user-quota-resets-after` (SS: DD: SS): kullanıcının kota tüketimi sıfırlanana kadar geçen süre.
+- `x-ms-user-quota-remaining`(int): Kullanıcı için kalan kaynak kotası. Bu değer, sorgu sayısıiçin eşlenir.
+- `x-ms-user-quota-resets-after`(hh:mm:ss): Kullanıcının kota tüketimi sıfırlanana kadar geçen süre.
 
-Üst bilgilerin nasıl çalıştığını görmek için, `x-ms-user-quota-remaining: 10` ve `x-ms-user-quota-resets-after: 00:00:03`üst bilgi ve değerlerini içeren bir sorgu yanıtına bakalım.
+Üstbilginin nasıl çalıştığını göstermek için, üstbilgi ve değerleri olan bir `x-ms-user-quota-remaining: 10` sorgu `x-ms-user-quota-resets-after: 00:00:03`yanıtına bakalım ve.
 
-- Sonraki 3 saniye içinde, en fazla 10 sorgu kısıtlanmadan gönderilebilir.
-- 3 saniye içinde `x-ms-user-quota-remaining` ve `x-ms-user-quota-resets-after` değerleri sırasıyla `15` ve `00:00:05` sıfırlanacak.
+- Sonraki 3 saniye içinde, en fazla 10 sorgu daraltılmadan gönderilebilir.
+- 3 saniye içinde, `x-ms-user-quota-remaining` değerleri `x-ms-user-quota-resets-after` ve `00:00:05` sırasıyla `15` sıfırlanacaktır.
 
-Sorgu isteklerinde _geri_ dönmek üzere üst bilgileri kullanmanın bir örneğini görmek için bkz. [sorgudaki örnek paralel](#query-in-parallel).
+Sorgu isteklerini _geri almak_ için üstbilgi kullanma örneğini görmek için, [Sorgu'daki](#query-in-parallel)örneğe Paralel olarak bakın.
 
 ## <a name="grouping-queries"></a>Sorguları gruplandırma
 
-Sorguları aboneliğe, kaynak grubuna veya tek tek kaynağa göre gruplandırma, paralelleştirme sorgularıyla daha etkilidir. Daha büyük bir sorgunun kota maliyeti genellikle birçok küçük ve hedeflenen sorgunun kota maliyetinden düşüktür. Grup boyutunun _300_' den küçük olması önerilir.
+Sorguları abonelik, kaynak grubu veya tek tek kaynağa göre gruplandırma, sorguları paralelleştirmekten daha verimlidir. Daha büyük bir sorgunun kota maliyeti genellikle birçok küçük ve hedefli sorgunun kota maliyetinden daha düşüktür. Grup boyutu _300'den_az olması önerilir.
 
-- Kötü iyileştirilmiş bir yaklaşım örneği
+- Kötü optimize edilmiş bir yaklaşım örneği
 
   ```csharp
   // NOT RECOMMENDED
@@ -62,7 +62,7 @@ Sorguları aboneliğe, kaynak grubuna veya tek tek kaynağa göre gruplandırma,
   }
   ```
 
-- En iyi duruma getirilmiş gruplama yaklaşımının örnek #1
+- Örnek #1 en iyi gruplandırılmış gruplandırma yaklaşımı
 
   ```csharp
   // RECOMMENDED
@@ -85,7 +85,7 @@ Sorguları aboneliğe, kaynak grubuna veya tek tek kaynağa göre gruplandırma,
   }
   ```
 
-- Tek bir sorguda birden çok kaynak almak için en iyi duruma getirilmiş gruplama yaklaşımının örnek #2
+- Örnek #2 bir sorguda birden çok kaynak almak için en iyi duruma getirilmiş gruplandırma yaklaşımı
 
   ```kusto
   Resources | where id in~ ({resourceIdGroup}) | project name, type
@@ -113,23 +113,23 @@ Sorguları aboneliğe, kaynak grubuna veya tek tek kaynağa göre gruplandırma,
   }
   ```
 
-## <a name="staggering-queries"></a>Kademelendirme sorguları
+## <a name="staggering-queries"></a>Sorguları kademelendirme
 
-Kısıtlama zorlandığı için sorguların kademeli olmasını öneririz. Diğer bir deyişle, aynı anda 60 sorgu göndermek yerine sorguları dört saniyelik bir Windows 'a ayırır:
+Azaltma nın zorlanma biçimi nedeniyle, sorguların şaşırtıcı olmasını öneririz. Diğer bir şey, aynı anda 60 sorgu göndermek yerine, sorguları dört 5 saniyelik pencerelere dönüştürün:
 
-- Aşamalı olmayan sorgu zamanlaması
+- Şaşırtıcı olmayan sorgu zamanlaması
 
-  | Sorgu sayısı         | 60  | 0    | 0     | 0     |
+  | Sorgu Sayısı         | 60  | 0    | 0     | 0     |
   |---------------------|-----|------|-------|-------|
-  | Zaman aralığı (sn) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Zaman Aralığı (sn) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-- Aşamalı sorgu zamanlaması
+- Şaşırtıcı sorgu zamanlaması
 
-  | Sorgu sayısı         | 15  | 15   | 15    | 15    |
+  | Sorgu Sayısı         | 15  | 15   | 15    | 15    |
   |---------------------|-----|------|-------|-------|
-  | Zaman aralığı (sn) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Zaman Aralığı (sn) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Aşağıda, Azure Kaynak grafı sorgulanırken azaltma üst bilgilerinin önceden belirtilme örneği verilmiştir:
+Aşağıda, Azure Kaynak Grafiği'ni sorgularken azaltma üstbilgisini kullanmanın bir örneği verilmiştir:
 
 ```csharp
 while (/* Need to query more? */)
@@ -151,9 +151,9 @@ while (/* Need to query more? */)
 }
 ```
 
-### <a name="query-in-parallel"></a>Paralel olarak sorgula
+### <a name="query-in-parallel"></a>Paralel Sorgu
 
-Gruplandırmanın paralelleştirme üzerinde kullanılması önerilse de, sorguların kolayca gruplanamamasının zaman vardır. Bu durumlarda, paralel bir biçimde birden fazla sorgu göndererek Azure Kaynak grafiğini sorgulamak isteyebilirsiniz. Aşağıda, bu senaryolarda azaltma üst bilgilerine göre nasıl _geri_ alınacağını gösteren bir örnek verilmiştir:
+Paralelleştirme üzerinden gruplandırma önerilse de, sorguların kolayca gruplandırılabildiği zamanlar vardır. Bu gibi durumlarda, birden çok sorguyı paralel bir şekilde göndererek Azure Kaynak Grafiği'ni sorgulamak isteyebilirsiniz. Aşağıda, bu tür senaryolarda azaltma üstbilgilerine dayalı olarak nasıl _geri çekilene_ ilişkin bir örnek verilmiştir:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -187,11 +187,11 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>Sayfalandırma
 
-Azure Kaynak Graph tek bir sorgu yanıtında en fazla 1000 girişi döndürdüğünden, Aradığınız veri kümesini almak için sorgularınızın [sayfalanmasını](./work-with-data.md#paging-results) yapmanız gerekebilir. Ancak, bazı Azure Kaynak grafik istemcileri sayfalandırmayı diğerlerinden farklı işler.
+Azure Kaynak Grafiği tek bir sorgu yanıtında en fazla 1000 girişte döndürdİğİnden, aradığınız tüm veri kümesini almak için sorgularınızı [ayırmanız](./work-with-data.md#paging-results) gerekebilir. Ancak, bazı Azure Kaynak Grafiği istemcileri pagination'ı diğerlerinden farklı işler.
 
 - C# SDK’sı
 
-  ResourceGraph SDK kullanırken, önceki sorgu yanıtından döndürülen atlama belirtecini sonraki sayfalandırılmış sorguya geçirerek sayfalandırma yapmanız gerekir. Bu tasarım, tüm sayfalandırılmış çağrılardan sonuçları toplamanız ve bunları sonda bir araya getirmek için ihtiyacınız olduğu anlamına gelir. Bu durumda, oluşturduğunuz her sayfalandırılmış sorgu bir sorgu kotası alır:
+  ResourceGraph SDK kullanırken, bir önceki sorgu yanıtından sonraki paginated sorguya döndürülen atlama belirteci geçerek pagination işlemek gerekir. Bu tasarım, tüm paginated aramalardan sonuç toplamanız ve sonunda bunları birleştirmeniz gerektiği anlamına gelir. Bu durumda, gönderdiğiniz her paginated sorgu bir sorgu kotası alır:
 
   ```csharp
   var results = new List<object>();
@@ -214,9 +214,9 @@ Azure Kaynak Graph tek bir sorgu yanıtında en fazla 1000 girişi döndürdüğ
   }
   ```
 
-- Azure CLı/Azure PowerShell
+- Azure CLI / Azure PowerShell
 
-  Azure CLı veya Azure PowerShell kullanırken, Azure Kaynak grafiğine yönelik sorgular, en fazla 5000 girişi getirecek şekilde otomatik olarak sayfalandırılır. Sorgu sonuçları, tüm sayfalandırılmış çağrılardaki girişlerin birleştirilmiş bir listesini döndürür. Bu durumda, sorgu sonucundaki giriş sayısına bağlı olarak, tek bir sayfalandırılmış sorgu birden fazla sorgu kotası tüketebilir. Örneğin, aşağıdaki örnekte, bir sorgunun tek bir çalıştırması en fazla beş sorgu kotası tüketebilir:
+  Azure CLI veya Azure PowerShell kullanırken, Azure Kaynak Grafiği'ndeki sorgular en fazla 5000 giriş almak üzere otomatik olarak paginar. Sorgu sonuçları, tüm paginated aramalardan girişlerin birleşik bir listesini döndürer. Bu durumda, sorgu sonucuna giren giriş sayısına bağlı olarak, tek bir paginated sorgu birden fazla sorgu kotası tüketebilir. Örneğin, aşağıdaki örnekte, sorgunun tek bir çalışması en fazla beş sorgu kotası tüketebilir:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000
@@ -226,19 +226,19 @@ Azure Kaynak Graph tek bir sorgu yanıtında en fazla 1000 girişi döndürdüğ
   Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
-## <a name="still-get-throttled"></a>Hala kısıtlanıyor musunuz?
+## <a name="still-get-throttled"></a>Hala daraltılmış mı?
 
-Yukarıdaki önerileri kullandıktan sonra azaldıysanız, [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)' de ekibe başvurun.
+Yukarıdaki önerileri yaptıktan sonra daralıyorsanız, '' [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)adresinden ekibe başvurun.
 
-Şu ayrıntıları sağlayın:
+Bu ayrıntıları sağlayın:
 
-- Özel kullanım örneği ve iş sürücünüzün daha yüksek bir azaltma sınırı olması gerekir.
-- Kaç kaynak erişiminiz var? Tek bir sorgudan kaç tane döndürüldü?
-- Hangi kaynak türlerini ilgileniyorsunuz?
-- Sorgu deseninin anlamı nedir? Y saniye başına X sorgusu vb.
+- Daha yüksek bir azaltma sınırı için özel kullanım kılıfınız ve iş sürücünüzün ihtiyacı vardır.
+- Kaç kaynağa erişiminiz var? Tek bir sorgudan kaç tanesi döndürülür?
+- Ne tür kaynaklarla ilgileniyorsunuz?
+- Sorgu desenin nedir? Y saniyebaşına X sorguları vb.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Başlangıç sorgularında](../samples/starter.md)kullanılan dil.
-- Gelişmiş [sorgularda](../samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.
-- [Kaynakları araştırma](explore-resources.md)hakkında daha fazla bilgi edinin.
+- [Başlangıç sorgularında](../samples/starter.md)kullanılan dile bakın.
+- [Gelişmiş sorgularda](../samples/advanced.md)gelişmiş kullanımlara bakın.
+- Kaynakları nasıl [keşfedebilirsiniz](explore-resources.md)hakkında daha fazla bilgi edinin.

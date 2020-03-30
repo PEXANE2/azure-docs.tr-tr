@@ -1,64 +1,64 @@
 ---
-title: Azure dosya paylaşımlarını REST API geri yükleme
-description: Azure dosya paylaşımlarını veya belirli dosyaları Azure Backup tarafından oluşturulan bir geri yükleme noktasından geri yüklemek için REST API nasıl kullanacağınızı öğrenin
+title: REST API ile Azure dosya paylaşımlarını geri yükleme
+description: Azure Yedekleme tarafından oluşturulan bir geri yükleme noktasından Azure dosya paylaşımlarını veya belirli dosyaları geri yüklemek için REST API'yi nasıl kullanacağınızı öğrenin
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252512"
 ---
-# <a name="restore-azure-file-shares-using-rest-api"></a>REST API kullanarak Azure dosya paylaşımlarını geri yükleme
+# <a name="restore-azure-file-shares-using-rest-api"></a>REST API'yi kullanarak Azure Dosya Paylaşımlarını Geri Yükleme
 
-Bu makalede, REST API kullanılarak [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yükleneceği açıklanmaktadır.
+Bu makalede, REST API'sini kullanarak [Azure Yedekleme](https://docs.microsoft.com/azure/backup/backup-overview) tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yüklenilen geri yüklendiği açıklanmaktadır.
 
-Bu makalenin sonuna kadar, REST API kullanarak aşağıdaki işlemleri gerçekleştirmeyi öğreneceksiniz:
+Bu makalenin sonunda, REST API'yi kullanarak aşağıdaki işlemleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
-* Yedeklenen bir Azure dosya paylaşımının geri yükleme noktalarını görüntüleyin.
-* Tam bir Azure dosya paylaşımının geri yüklenmesi.
-* Dosya veya klasörleri tek tek geri yükleyin.
+* Yedeklenmiş bir Azure dosya paylaşımı için geri yükleme noktalarını görüntüleyin.
+* Tam bir Azure dosya paylaşımını geri yükleyin.
+* Tek tek dosyaları veya klasörleri geri yükleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Daha önce geri yüklemek istediğiniz yedeklenmiş bir dosya paylaşımınız olduğunu varsayalım. Bunu yapmazsanız, bir tane oluşturmayı öğrenmek için [REST API kullanarak yedekleme Azure dosya paylaşımının](backup-azure-file-share-rest-api.md) olup olmadığını denetleyin.
+Geri yüklemek istediğiniz yedeklenmiş bir dosya paylaşımınız olduğunu varsayıyoruz. Bunu yapmazsanız, nasıl oluşturulabileceğinizi öğrenmek için [REST API'yi kullanarak Yedekleme Azure dosya paylaşımını](backup-azure-file-share-rest-api.md) denetleyin.
 
-Bu makalede, aşağıdaki kaynakları kullanacağız:
+Bu makale için aşağıdaki kaynakları kullanacağız:
 
-* **Recoveryserviceskasası**: *azurefilesvault*
+* **RecoveryServicesVault**: *azurefilesvault*
 * **Kaynak grubu**: *azurefiles*
-* **Depolama hesabı**: *afsaccount*
-* **Dosya paylaşma**: *azurefiles*
+* **Depolama Hesabı**: *afsaccount*
+* **Dosya Paylaş**: *azurefiles*
 
-## <a name="fetch-containername-and-protecteditemname"></a>ContainerName ve korunabilir Dıtemname öğesini getir
+## <a name="fetch-containername-and-protecteditemname"></a>ContainerName ve ProtectedItemName getir
 
-Geri yükleme ile ilgili API çağrılarının çoğu için, {containerName} ve {korunabilir} URI parametreleri için değerleri geçirmeniz gerekir. Bu parametrelerin değerlerini almak için [backupkorunabilir tableıtems alma](https://docs.microsoft.com/rest/api/backup/protecteditems/get) işleminin yanıt gövdesinde ID özniteliğini kullanın. Bizim örneğimizde, korumak istediğimiz dosya paylaşımının KIMLIĞI:
+Geri yükleme ile ilgili API çağrılarının çoğunda{containerName} ve {protectedItemName} URI parametreleri için değerleri geçmeniz gerekir. Bu parametreleriçin değerleri almak için [GET backupprotectableitems](https://docs.microsoft.com/rest/api/backup/protecteditems/get) işleminin yanıt gövdesindeki kimlik özniteliğini kullanın. Örneğimizde, korumak istediğimiz dosya paylaşımının kimliği:
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
-Bu nedenle değerler aşağıdaki gibi çeviri yapar:
+Yani değerler aşağıdaki gibi çevirir:
 
-* {ContainerName}- *storagecontainer; depolama; azurefiles; afsaccount*
-* {Korunabilir}- *azurefileshare; azurefiles*
+* {containername} - *storagecontainer;storage;azurefiles;afsaccount*
+* {protectedItemName} - *azurefileshare;azurefiles*
 
-## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>Yedeklenen Azure dosya paylaşımının kurtarma noktalarını getir
+## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>Yedeklenen Azure dosya paylaşımı için kurtarma noktaları getir
 
-Yedeklenen dosya paylaşımının veya dosyalarının geri yüklenmesi için önce geri yükleme işlemini gerçekleştirmek üzere bir kurtarma noktası seçin. Yedeklenmiş bir öğenin kullanılabilir kurtarma noktaları, [Kurtarma noktası listesi](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API çağrısı kullanılarak listelenebilir. Bu, tüm ilgili değerleri içeren bir GET işlemidir.
+Yedeklenmiş dosya paylaşımını veya dosyalarını geri yüklemek için önce geri yükleme işlemini gerçekleştirmek için bir kurtarma noktası seçin. Yedeklenmiş bir öğenin kullanılabilir kurtarma [noktaları, Kurtarma Noktası Listesi](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API çağrısı kullanılarak listelenebilir. Tüm ilgili değerlere sahip bir GET operasyonu.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
 ```
 
-URI değerlerini şu şekilde ayarlayın:
+URI değerlerini aşağıdaki gibi ayarlayın:
 
 * {fabricName}: *Azure*
 * {vaultName}: *azurefilesvault*
-* {ContainerName}: *storagecontainer; depolama; azurefiles; afsaccount*
-* {Korunabilir}: *azurefileshare; azurefiles*
+* {containername}: *storagecontainer;storage;azurefiles;afsaccount*
+* {protectedItemName}: *azurefileshare;azurefiles*
 * {ResourceGroupName}: *azurefiles*
 
-GET URI 'sinin tüm gerekli parametreleri vardır. Ek bir istek gövdesi gerekmez.
+GET URI gerekli tüm parametrelere sahiptir. Ek bir istek organına gerek yok.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13
@@ -66,7 +66,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ### <a name="example-response"></a>Örnek yanıt
 
-URI 'yi al gönderildikten sonra 200 yanıtı döndürülür:
+GET URI gönderildikten sonra, 200 yanıt döndürülür:
 
 ```http
 HTTP/1.1" 200 None
@@ -139,38 +139,38 @@ HTTP/1.1" 200 None
   },
 ```
 
-Kurtarma noktası, yukarıdaki yanıtta {Name} alanı ile tanımlanır.
+Kurtarma noktası yukarıdaki yanıtta {name} alanı ile tanımlanır.
 
-## <a name="full-share-recovery-using-rest-api"></a>REST API kullanarak tam paylaşma kurtarması
+## <a name="full-share-recovery-using-rest-api"></a>REST API'yi kullanarak tam hisse kurtarma
 
-Özgün dosya paylaşımının tamamını veya alternatif bir konuma geri yüklemek için bu geri yükleme seçeneğini kullanın.
-Geri yükleme tetikleme bir POST isteğidir ve bu işlemi [tetikleyici geri yükleme](https://docs.microsoft.com/rest/api/backup/restores/trigger) REST API kullanarak gerçekleştirebilirsiniz.
+Orijinal veya alternatif bir konumda tam dosya paylaşımını geri yüklemek için bu geri yükleme seçeneğini kullanın.
+Geri yükleme tetikleme bir POST isteği ve [tetikleyici geri yükleme](https://docs.microsoft.com/rest/api/backup/restores/trigger) REST API kullanarak bu işlemi gerçekleştirebilirsiniz.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-{ContainerName} ve {korunabilir} değerleri [burada](#fetch-containername-and-protecteditemname) ayarlanmış ve Recoverypointıd yukarıda belirtilen kurtarma noktasının {Name} alanıdır.
+{containerName} ve {protectedItemName} değerleri [burada](#fetch-containername-and-protecteditemname) ayarlanan gibidir ve recoveryPointID yukarıda belirtilen kurtarma noktasının {name} alanıdır.
 
 ```http
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body"></a>İstek gövdesi oluştur
+### <a name="create-request-body"></a>İstek gövdesi oluşturma
 
-Azure dosya paylaşımında geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir:
+Azure dosya paylaşımı için geri yüklemeyi tetiklemek için istek gövdesinin bileşenleri şunlardır:
 
 Adı |  Tür   |   Açıklama
 --- | ---- | ----
-Özellikler | AzureFileShareRestoreRequest | RestoreRequestResource özellikleri
+Özellikler | AzureFileShareRestoreRequest | Geri YüklemeRequestResource özellikleri
 
-İstek gövdesinin ve diğer ayrıntıların tanımlarının tüm listesi için, [tetikleyici geri yükleme REST API belgesine](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
+İstek gövdesinin tanımlarının tam listesi ve diğer ayrıntılar [için, tetikleyici REST API belgesine](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
 
 ### <a name="restore-to-original-location"></a>Özgün konuma geri yükleme
 
 #### <a name="request-body-example"></a>İstek gövdesi örneği
 
-Aşağıdaki istek gövdesi, bir Azure dosya paylaşımının geri yüklemesini tetiklemek için gereken özellikleri tanımlar:
+Aşağıdaki istek gövdesi, Azure dosya paylaşımı geri yüklemesini tetiklemek için gereken özellikleri tanımlar:
 
 ```json
 {
@@ -184,17 +184,17 @@ Aşağıdaki istek gövdesi, bir Azure dosya paylaşımının geri yüklemesini 
 }
 ```
 
-### <a name="restore-to-alternate-location"></a>Alternatif konuma geri yükle
+### <a name="restore-to-alternate-location"></a>Alternatif konuma geri yükleme
 
 Alternatif konum kurtarma için aşağıdaki parametreleri belirtin:
 
-* **Targetresourceıd**: yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
-* **ad**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşma.
-* **Targetfolderpath**: verilerin geri yüklendiği dosya paylaşımının altındaki klasör.
+* **targetResourceId**: Yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
+* **ad**: Yedeklenen içeriğin geri yüklendiği hedef depolama hesabındaki dosya paylaşımı.
+* **targetFolderPath**: Dosya payının altındaki klasör, verilerin geri yüklendiği klasördür.
 
 #### <a name="request-body-example"></a>İstek gövdesi örneği
 
-Aşağıdaki istek gövdesi, *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımının *afaccount1* depolama hesabındaki *azurefiles1* dosya paylaşımında geri yükler.
+Aşağıdaki istek *gövdesi, afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımını *afaccount1* depolama hesabındaki *azurefiles1* dosya paylaşımına geri yükler.
 
 ```json
 {
@@ -219,12 +219,12 @@ Aşağıdaki istek gövdesi, *afsaccount* depolama hesabındaki *azurefiles* dos
 
 ### <a name="response"></a>Yanıt
 
-Geri yükleme işleminin tetiklenmesi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlem ayrı olarak izlenmesi gereken başka bir işlem oluşturur.
-Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
+Geri yükleme işleminin tetikleme işlemi [bir eşzamanlı işlemdir.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Bu işlem, ayrı olarak izlenmesi gereken başka bir işlem oluşturur.
+İki yanıt verir: başka bir işlem oluşturulduğunda 202 (Kabul) ve bu işlem tamamlandığında 200 (Tamam).
 
 #### <a name="response-example"></a>Yanıt örneği
 
-Bir geri yüklemeyi tetiklemek için *Post* URI 'sini gönderdikten sonra, ilk yanıt bir konum üst bilgisi veya Azure-Async-header ile 202 (kabul edilir) olur.
+*Post* URI'yi geri yüklemeyi tetiklemek için gönderdikten sonra, ilk yanıt 202 (Kabul) ve konum üstbilgisini veya Azure-async-üstbilgisini gösterir.
 
 ```http
 HTTP/1.1" 202
@@ -245,13 +245,13 @@ HTTP/1.1" 202
 'Date': 'Wed, 05 Feb 2020 07:43:47 GMT'
 ```
 
-Ardından, bir GET komutuyla konum üst bilgisini veya Azure-AsyncOperation üstbilgisini kullanarak elde edilen işlemi izleyin.
+Ardından, ortaya çıkan işlemi, GET komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak izleyin.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/68ccfbc1-a64f-4b29-b955-314b5790cfa9?api-version=2016-12-01
 ```
 
-İşlem tamamlandıktan sonra, yanıt gövdesinde elde edilen geri yükleme işinin KIMLIĞI ile 200 (Tamam) döndürür.
+İşlem tamamlandıktan sonra, yanıt gövdesinde ortaya çıkan geri yükleme işinin kimliğiyle birlikte 200 (Tamam) döndürür.
 
 ```http
 HTTP/1.1" 200
@@ -304,7 +304,7 @@ HTTP/1.1" 200
 }
 ```
 
-Alternatif konum kurtarma için yanıt gövdesi şöyle olacaktır:
+Alternatif konum kurtarma için yanıt gövdesi aşağıdaki gibi olacaktır:
 
 ```http
 {
@@ -350,37 +350,37 @@ Alternatif konum kurtarma için yanıt gövdesi şöyle olacaktır:
 }
 ```
 
-Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)açıklandığı şekilde izlenmelidir.
+Yedekleme işi uzun süren bir işlem olduğundan, [REST API belgesini kullanarak monitör işlerinde](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)açıklandığı gibi izlenmelidir.
 
-## <a name="item-level-recovery-using-rest-api"></a>REST API kullanarak öğe düzeyinde kurtarma
+## <a name="item-level-recovery-using-rest-api"></a>REST API'yi kullanarak madde düzeyi kurtarma
 
-Özgün veya alternatif konumdaki tek tek dosyaları veya klasörleri geri yüklemek için bu geri yükleme seçeneğini kullanabilirsiniz.
+Özgün veya alternatif bir konumda tek tek dosyaları veya klasörleri geri yüklemek için bu geri yükleme seçeneğini kullanabilirsiniz.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-{ContainerName} ve {korunabilir} değerleri [burada](#fetch-containername-and-protecteditemname) ayarlanmış ve Recoverypointıd yukarıda belirtilen kurtarma noktasının {Name} alanıdır.
+{containerName} ve {protectedItemName} değerleri [burada](#fetch-containername-and-protecteditemname) ayarlanan gibidir ve recoveryPointID yukarıda belirtilen kurtarma noktasının {name} alanıdır.
 
 ```http
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body"></a>İstek gövdesi oluştur
+### <a name="create-request-body"></a>İstek gövdesi oluşturma
 
-Azure dosya paylaşımında geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir:
+Azure dosya paylaşımı için geri yüklemeyi tetiklemek için istek gövdesinin bileşenleri şunlardır:
 
 Adı |  Tür   |   Açıklama
 --- | ---- | ----
-Özellikler | AzureFileShareRestoreRequest | RestoreRequestResource özellikleri
+Özellikler | AzureFileShareRestoreRequest | Geri YüklemeRequestResource özellikleri
 
-İstek gövdesinin ve diğer ayrıntıların tanımlarının tüm listesi için, [tetikleyici geri yükleme REST API belgesine](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
+İstek gövdesinin tanımlarının tam listesi ve diğer ayrıntılar [için, tetikleyici REST API belgesine](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
 
 ### <a name="restore-to-original-location"></a>Özgün konuma geri yükleme
 
-Aşağıdaki istek gövdesi, restore *. txt* dosyasını *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımında geri yüklemektir.
+Aşağıdaki istek *gövdesi, afsaccount* depolama *hesabındaki azurefiles* dosya paylaşımındaki *Restoretest.txt* dosyasını geri yüklemektir.
 
-Istek gövdesi oluştur
+İstek Gövdesi Oluştur
 
 ```json
 {
@@ -402,11 +402,11 @@ Istek gövdesi oluştur
 }
 ```
 
-### <a name="restore-to-alternate-location"></a>Alternatif konuma geri yükle
+### <a name="restore-to-alternate-location"></a>Alternatif konuma geri yükleme
 
-Aşağıdaki istek gövdesi, *afsaccount* depolama hesabındaki *Azurefiles* dosya paylaşımında *restoretest. txt* dosyasını *afaccount1* depolama hesabındaki *azurefiles1* dosya paylaşımının *restoredata* klasörüne geri yüklemektir.
+Aşağıdaki istek gövdesi, *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımındaki *Restoretest.txt* dosyasını, *afaccount1* depolama hesabındaki *azurefiles1* dosya paylaşımının *geri yükleme veri* klasörüne geri yüklemektir.
 
-İstek gövdesi oluştur
+İstek gövdesi oluşturma
 
 ```json
 {
@@ -431,8 +431,8 @@ Aşağıdaki istek gövdesi, *afsaccount* depolama hesabındaki *Azurefiles* dos
 }
 ```
 
-Yanıtın [tam paylaşma geri yüklemeleri](#full-share-recovery-using-rest-api)için yukarıda açıklanacak şekilde işlenmesi gerekir.
+Yanıt [tam hisse geri yüklemeleri](#full-share-recovery-using-rest-api)için yukarıda açıklandığı şekilde ele alınmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [REST API kullanarak Azure dosya paylaşımları yedeklemesini yönetme](manage-azure-file-share-rest-api.md)hakkında bilgi edinin.
+* [Rest API'yi kullanarak Azure dosya paylaşımlarını yedeklemeyi nasıl yöneteceğimiz](manage-azure-file-share-rest-api.md)öğrenin.

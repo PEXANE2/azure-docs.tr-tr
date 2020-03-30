@@ -1,81 +1,81 @@
 ---
 title: Dağıtım kimlik bilgilerini yapılandırma
-description: Azure App Service dağıtım kimlik bilgileri türlerini ve bunların nasıl yapılandırılacağını ve kullanılacağını öğrenin.
+description: Azure Uygulama Hizmeti'nde ne tür dağıtım kimlik bilgileri olduğunu ve bunları nasıl yapılandırıp kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266084"
 ---
-# <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
+# <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure Uygulama Hizmeti için dağıtım kimlik bilgilerini yapılandırma
+[Azure Uygulama Hizmeti,](https://go.microsoft.com/fwlink/?LinkId=529714) yerel [Git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure abonelik kimlik bilgilerinizle aynı değildir.
 
-* **Kullanıcı düzeyi kimlik bilgileri**: tüm Azure hesabı için bir kimlik bilgileri kümesi. Azure hesabının erişim iznine sahip olduğu herhangi bir abonelikte her türlü uygulama için App Service dağıtmak üzere kullanılabilir. Bu, Portal GUI 'de (uygulamanın [kaynak sayfasının](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) **genel bakış** ve **özellikleri** gibi) ortaya çıkacak olan varsayılan bir kümesidir. Bir kullanıcıya rol tabanlı Access Control (RBAC) veya coadmin (izinleri aracılığıyla uygulama erişimi verildiğinde, bu kullanıcı, erişim iptal edilene kadar kendi Kullanıcı düzeyi kimlik bilgilerini kullanabilir. Bu kimlik bilgilerini diğer Azure kullanıcılarıyla paylaşmayın.
+* **Kullanıcı düzeyindekimlik bilgileri:** Tüm Azure hesabı için bir kimlik bilgileri kümesi. Azure hesabının erişim izni olan herhangi bir uygulama için, herhangi bir abonelikte Uygulama Hizmeti'ne dağıtmak için kullanılabilir. Gui portalında su yüzüne çıkan varsayılan kümedir (uygulamanın [kaynak sayfasının](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) **Genel Görünümü** ve **Özellikleri** gibi). Bir kullanıcıya Role-Based Access Control (RBAC) veya coadmin izinleri aracılığıyla uygulama erişimi verildiğinde, bu kullanıcı erişim iptal edilene kadar kendi kullanıcı düzeyindeki kimlik bilgilerini kullanabilir. Bu kimlik bilgilerini diğer Azure kullanıcılarıyla paylaşmayın.
 
-* **Uygulama düzeyi kimlik bilgileri**: her bir uygulama için bir kimlik bilgileri kümesi. Yalnızca bu uygulamaya dağıtmak için kullanılabilir. Her uygulama için kimlik bilgileri, uygulama oluşturma sırasında otomatik olarak oluşturulur. Bunlar el ile yapılandırılamaz, ancak her zaman sıfırlanabilir. Bir kullanıcıya (RBAC) aracılığıyla uygulama düzeyi kimlik bilgilerine erişim izni verilmesi için, bu kullanıcının uygulamada katkıda bulunması veya daha yüksek olması gerekir (Web sitesi katılımcısı yerleşik rolü dahil). Okuyucuların bu kimlik bilgilerine yayımlamasına ve bu kimlik bilgilerine erişemediğine izin verilmez.
+* **Uygulama düzeyindekimlik bilgileri:** her uygulama için bir kimlik bilgileri kümesi. Yalnızca bu uygulamaya dağıtmak için kullanılabilir. Her uygulamanın kimlik bilgileri uygulama oluşturmada otomatik olarak oluşturulur. Bunlar el ile yapılandırılamaz, ancak her zaman sıfırlanabilir. Bir kullanıcıya (RBAC) uygulama düzeyindeki kimlik bilgilerine erişim hakkı verilebilmek için, bu kullanıcının uygulamada katkıda bulunan veya daha yüksek olması gerekir (Web Sitesi Katılımcısı yerleşik rolü dahil). Okuyucuların yayımlamasına izin verilmez ve bu kimlik bilgilerine erişemez.
 
-## <a name="userscope"></a>Kullanıcı düzeyi kimlik bilgilerini yapılandırma
+## <a name="configure-user-level-credentials"></a><a name="userscope"></a>Kullanıcı düzeyinde kimlik bilgilerini yapılandırma
 
-Kullanıcı düzeyi kimlik bilgilerinizi, herhangi bir uygulamanın [kaynak sayfasında](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)yapılandırabilirsiniz. Bu kimlik bilgilerini yapılandırdığınız uygulamayı ne olursa olsun, tüm uygulamalar ve Azure hesabınızdaki tüm abonelikler için geçerlidir. 
+Kullanıcı düzeyindeki kimlik bilgilerinizi herhangi bir uygulamanın [kaynak sayfasında](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)yapılandırabilirsiniz. Bu kimlik bilgilerini hangi uygulamada yapılandırdığınızdan bağımsız olarak, Azure hesabınızdaki tüm uygulamalar ve tüm abonelikler için geçerlidir. 
 
-### <a name="in-the-cloud-shell"></a>Cloud Shell
+### <a name="in-the-cloud-shell"></a>Bulut Kabuğunda
 
-[Cloud Shell](https://shell.azure.com)dağıtım kullanıcısını yapılandırmak için [az WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) komutunu çalıştırın. \<username > ve \<Password > bir dağıtım Kullanıcı Kullanıcı adı ve parolasıyla değiştirin. 
+[Bulut Kabuğu'ndaki](https://shell.azure.com)dağıtım kullanıcısını yapılandırmak için [az webapp dağıtım kullanıcı kümesi](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) komutunu çalıştırın. Kullanıcı \<adı> \<ve parola> dağıtım kullanıcı adı ve parolasıyla değiştirin. 
 
-- Kullanıcı adı Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için ' @ ' sembolünü içermemelidir. 
-- Parola en az sekiz karakter uzunluğunda olmalıdır ve şu üç öğeden ikisi vardır: harfler, rakamlar ve semboller. 
+- Kullanıcı adı Azure içinde benzersiz olmalıdır ve yerel Git itmeleri için '@' simgesi içermemelidir. 
+- Parola, aşağıdaki üç öğeden ikisi olan en az sekiz karakter uzunluğunda olmalıdır: harfler, sayılar ve semboller. 
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-JSON çıktısı parolayı `null`olarak gösterir. `'Conflict'. Details: 409` hatası alırsanız kullanıcı adını değiştirin. `'Bad Request'. Details: 400` hatası alırsanız daha güçlü bir parola kullanın. 
+JSON çıkışı parolayı `null`. `'Conflict'. Details: 409` hatası alırsanız kullanıcı adını değiştirin. `'Bad Request'. Details: 400` hatası alırsanız daha güçlü bir parola kullanın. 
 
 ### <a name="in-the-portal"></a>Portalda
 
-Azure portal, dağıtım kimlik bilgileri sayfasına erişebilmek için en az bir uygulamanız olması gerekir. Kullanıcı düzeyi kimlik bilgilerinizi yapılandırmak için:
+Azure portalında, dağıtım kimlik bilgileri sayfasına erişemeden önce en az bir uygulamanız olması gerekir. Kullanıcı düzeyindekimlik bilgilerinizi yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **\<Any_app** > **Dağıtım Merkezi** > **FTP** > **panosu**' nu seçin. > 
+1. Azure [portalında,](https://portal.azure.com)sol menüden, **Dağıtım merkezi** > **FTP** > **\<Pano'>**  >  **uygulama hizmetleri** > any_app>seçin.**Dashboard**
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Ya da git dağıtımını zaten yapılandırdıysanız **App Services** >  **&lt;Any_app >**  > **Dağıtım Merkezi** > **FTP/kimlik bilgileri**' ni seçin.
+    Veya, Git dağıtımını zaten yapılandırmışsanız, **Uygulama Hizmetleri** > **&lt;any_app>**  >  **Dağıtım merkezi** > **FTP/Credentials'ı**seçin.
 
     ![](./media/app-service-deployment-credentials/access-with-git.png)
 
-2. **Kullanıcı kimlik bilgileri**' ni seçin, Kullanıcı adını ve parolayı yapılandırın ve ardından **kimlik bilgilerini kaydet**' i seçin.
+2. **Kullanıcı Kimlik Bilgilerini**seçin, kullanıcı adını ve parolayı yapılandırın ve ardından Kimlik Bilgilerini **Kaydet'i**seçin.
 
-Dağıtım kimlik bilgilerinizi ayarladıktan sonra, *Git* dağıtım Kullanıcı adını uygulamanızın **genel bakış** sayfasında bulabilirsiniz,
+Dağıtım kimlik bilgilerinizi ayarladıktan sonra, uygulamanızın **Genel Bakış** sayfasında *Git* dağıtım kullanıcı adını bulabilirsiniz,
 
 ![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
-Git dağıtımı yapılandırılırsa, sayfada bir **Git/dağıtım Kullanıcı adı**gösterilir; Aksi takdirde, bir **FTP/Deployment Kullanıcı adı**.
+Git dağıtımı yapılandırılırsa, sayfada **git/dağıtım kullanıcı adı**gösterilmektedir; aksi takdirde, bir **FTP/dağıtım kullanıcı adı.**
 
 > [!NOTE]
-> Azure, Kullanıcı düzeyi dağıtım parolanızı göstermez. Parolayı unutursanız, bu bölümdeki adımları izleyerek kimlik bilgilerinizi sıfırlayabilirsiniz.
+> Azure, kullanıcı düzeyinde dağıtım parolanızı göstermez. Parolayı unutursanız, bu bölümdeki adımları izleyerek kimlik bilgilerinizi sıfırlayabilirsiniz.
 >
 > 
 
-## <a name="use-user-level-credentials-with-ftpftps"></a>FTP/FTPS ile Kullanıcı düzeyi kimlik bilgilerini kullanma
+## <a name="use-user-level-credentials-with-ftpftps"></a>FTP/FTPS ile kullanıcı düzeyinde kimlik bilgilerini kullanma
 
-Kullanıcı düzeyindeki kimlik bilgileri kullanılarak bir FTP/FTPS uç noktası için kimlik doğrulaması, şu biçimde bir Kullanıcı adı talep ediyor: `<app-name>\<user-name>`
+Kullanıcı düzeyindekimlik bilgilerini kullanarak FTP/FTPS bitiş noktasına doğrulanması aşağıdaki biçimde bir kullanıcı adı gerektirir:`<app-name>\<user-name>`
 
-Kullanıcı düzeyi kimlik bilgileri, belirli bir kaynak değil kullanıcıya bağlı olduğundan, oturum açma işlemini doğru uygulama uç noktasına yönlendirmek için Kullanıcı adının bu biçimde olması gerekir.
+Kullanıcı düzeyindeki kimlik bilgileri belirli bir kaynağa değil kullanıcıya bağlı olduğundan, oturum açma eylemini doğru uygulama bitiş noktasına yönlendirmek için kullanıcı adı bu biçimde olmalıdır.
 
-## <a name="appscope"></a>Uygulama düzeyi kimlik bilgilerini edinme ve sıfırlama
-Uygulama düzeyi kimlik bilgilerini almak için:
+## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Uygulama düzeyindeki kimlik bilgilerini alın ve sıfırla
+Uygulama düzeyindeki kimlik bilgilerini almak için:
 
-1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri** >  **&lt;Any_app** > **Dağıtım Merkezi** > **FTP/kimlik bilgileri**' ni seçin. > 
+1. Azure [portalında,](https://portal.azure.com)sol menüden **Uygulama Hizmetleri** > **&lt;any_app>**  >  **Dağıtım merkezi** > **FTP/Credentials'ı**seçin.
 
-2. **Uygulama kimlik bilgilerini**seçin ve Kullanıcı adını veya parolayı kopyalamak için **Kopyala** bağlantısını seçin.
+2. **Uygulama Kimlik Bilgilerini**seçin ve kullanıcı adını veya parolayı kopyalamak için **Kopyala** bağlantısını seçin.
 
-Uygulama düzeyi kimlik bilgilerini sıfırlamak için aynı iletişim kutusunda **kimlik bilgilerini Sıfırla** ' yı seçin.
+Uygulama düzeyindeki kimlik bilgilerini sıfırlamak için, aynı iletişim kutusunda **Kimlik Bilgilerini Sıfırla'yı** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamanızı [Yerel git](deploy-local-git.md) 'Ten veya [FTP/S](deploy-ftp.md)kullanarak dağıtmak için bu kimlik bilgilerini nasıl kullanacağınızı öğrenin.
+Uygulamanızı [yerel Git'den](deploy-local-git.md) veya [FTP/S'yi](deploy-ftp.md)kullanmak için bu kimlik bilgilerini nasıl kullanacağınızı öğrenin.

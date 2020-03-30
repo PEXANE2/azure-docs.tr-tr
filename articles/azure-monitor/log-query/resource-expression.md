@@ -1,40 +1,40 @@
 ---
-title: Azure Izleyici günlük sorgusundaki Resource () ifadesi | Microsoft Docs
-description: Kaynak ifadesi, birden çok kaynaktan veri almak için kaynak merkezli bir Azure Izleyici günlük sorgusunda kullanılır.
+title: azure monitor günlük sorgusunda kaynak() ifadesi | Microsoft Dokümanlar
+description: Kaynak ifadesi, birden çok kaynaktan veri almak için kaynak merkezli Azure Monitor günlük sorgusunda kullanılır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665708"
 ---
-# <a name="resource-expression-in-azure-monitor-log-query"></a>Azure Izleyici günlük sorgusunda Resource () ifadesi
+# <a name="resource-expression-in-azure-monitor-log-query"></a>Azure Monitor günlük sorgusunda kaynak() ifadesi
 
-`resource` ifadesi, diğer kaynaklardan verileri almak için [kaynak kapsamındaki](scope.md#query-scope) bir Azure izleyici sorgusunda kullanılır. 
+İfade, `resource` diğer kaynaklardan veri almak [için kaynağa kapsamlı bir](scope.md#query-scope) Azure Monitor sorgusunda kullanılır. 
 
 
 ## <a name="syntax"></a>Sözdizimi
 
-`resource(`*tanımlayıcı*`)`
+`resource(`*Tanımlayıcı*`)`
 
 ## <a name="arguments"></a>Bağımsız Değişkenler
 
-- *Tanımlayıcı*: bir KAYNAĞıN kaynak kimliği.
+- *Tanımlayıcı*: Kaynağın kaynak kimliği.
 
 | Tanımlayıcı | Açıklama | Örnek
 |:---|:---|:---|
-| Kaynak | Kaynakla ilgili verileri içerir. | Kaynak ("/Subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup/Providers/Microsoft.COMPUTE/virtualmachines/myvm") |
-| Kaynak grubu veya abonelik | Kaynak ve içerdiği tüm kaynaklar için verileri içerir.  | Kaynak ("/Subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup) |
+| Kaynak | Kaynak için veri içerir. | kaynak("/abonelikler/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourcesgroups/myresourcegroup/providers/microsoft.compute/virtualmachines/myvm") |
+| Kaynak Grubu veya Abonelik | Kaynak ve içerdiği tüm kaynaklar için veri içerir.  | kaynak("/abonelikler/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup) |
 
 
 ## <a name="notes"></a>Notlar
 
-* Kaynağa okuma erişiminizin olması gerekir.
+* Kaynağa erişimi okumuş olmalısınız.
 
 
 ## <a name="examples"></a>Örnekler
@@ -49,5 +49,5 @@ union (Heartbeat),(resource("/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sorgu kapsamı hakkındaki ayrıntılar için bkz. [Azure izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics](scope.md) .
+- Sorgu kapsamıyla ilgili ayrıntılar için [Azure Monitor Log Analytics'teki Günlük sorgusu kapsamı ve zaman aralığına](scope.md) bakın.
 - [Kusto sorgu dili](/azure/kusto/query/)için tam belgelere erişin.

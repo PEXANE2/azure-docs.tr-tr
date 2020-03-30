@@ -1,6 +1,6 @@
 ---
-title: Kopyalama etkinliğini izle
-description: Azure Data Factory kopyalama etkinliği yürütmesini izleme hakkında bilgi edinin.
+title: Kopyalama etkinliğini izleme
+description: Azure Veri Fabrikası'nda kopyalama etkinliği yürütmesini nasıl izleyeceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: jingwang
 ms.openlocfilehash: 6494352bf957af83b45488493bf12a094c730c09
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79125764"
 ---
-# <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izle
+# <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
 
-Bu makalede Azure Data Factory kopyalama etkinliği yürütmenin nasıl izleneceği özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
+Bu makalede, Azure Veri Fabrikası'nda kopyalama etkinliği yürütmenasıl izlenir. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
 ## <a name="monitor-visually"></a>Görsel olarak izleme
 
-Azure Data Factory bir işlem hattı oluşturup yayımladıktan sonra, bir tetikleyici ile ilişkilendirebilir veya bir geçici çalıştırmayı el ile başlatabilirsiniz. Azure Data Factory kullanıcı deneyiminde tüm işlem hattı çalıştırmalarının yerel olarak izlenmesini sağlayabilirsiniz. [Görsel olarak izleme Azure Data Factory](monitor-visually.md)genel olarak izleme Azure Data Factory hakkında bilgi edinin.
+Azure Veri Fabrikası'nda bir ardışık hatlar oluşturup yayımladıktan sonra, bir tetikleyiciyle ilişkilendirebilir veya geçici bir çalıştırmabaşlatabilirsiniz. Tüm ardışık hatlar çalışırınızı Azure Veri Fabrikası kullanıcı deneyiminde yerel olarak izleyebilirsiniz. Azure Veri Fabrikası izleme hakkında genel [olarak Görsel olarak azure veri fabrikasını görüntüleyebilirsiniz.](monitor-visually.md)
 
-Kopyalama etkinliği çalıştırmasını izlemek için data factory **yazarıza & Monitor** Kullanıcı arabirimine gidin. **İzleyici** sekmesinde, işlem hattı çalıştırmalarının bir listesini görürsünüz, işlem hattı çalıştırmasında etkinlik çalıştırmaları listesine erişmek için işlem **hattı adı** bağlantısına tıklayın.
+Kopyalama etkinliğini izlemek için veri fabrikanızın **Yazar & Monitor** Kullanıcı UI adresine gidin. **Monitör** sekmesinde, ardışık hatlar çalışır listesi görürsünüz, ardışık ardışık ardışık çalışma daki etkinlik çalışır listesine erişmek için **ardışık ad** bağlantısını tıklatın.
 
-![Kopyalama etkinliği çalıştırmasını izle](./media/copy-activity-overview/monitor-pipeline-run.png)
+![Kopyalama etkinliğini izleme](./media/copy-activity-overview/monitor-pipeline-run.png)
 
-Bu düzeyde, kopyalama etkinliği giriş, çıkış ve hata (kopyalama etkinliğinin başarısız olması durumunda), ayrıca süre/durum gibi istatistikler için bağlantılar bulabilirsiniz. Kopyalama etkinliği adının yanındaki **Ayrıntılar** düğmesine (eyegözlük) tıklamak, kopyalama etkinliği yürütmeyle ilgili ayrıntılı bilgiler verir. 
+Bu düzeyde, etkinlik girdisini, çıktısını ve hatalarını kopyalamabağlantıları (Kopyalama etkinliği çalıştırılmazsa) ve süre/durum gibi istatistikleri görebilirsiniz. Kopyalama etkinliği adının yanındaki **Ayrıntılar** düğmesini (gözlük) tıklattığınızda, kopyalama etkinliği yürütmeniz hakkında ayrıntılı bilgi verecektir. 
 
-![Kopyalama etkinliği çalıştırmasını izle](./media/copy-activity-overview/monitor-copy-activity-run.png)
+![Kopyalama etkinliğini izleme](./media/copy-activity-overview/monitor-copy-activity-run.png)
 
-Bu grafik izleme görünümünde Azure Data Factory, veri okuma/yazma birimi, kaynaktan kopyalanan veri sayısı/satır sayısı ve kopyalama senaryonuz için uygulanan yapılandırma işlemleri, kopyalama etkinliğinin ilgili süreler ve Ayrıntılar ve daha fazlası dahil olmak üzere kopyalama etkinliği yürütme bilgilerini sunar. Olası her ölçüm ve ayrıntılı açıklaması için [Bu tabloya](#monitor-programmatically) bakın. 
+Bu grafik izleme görünümünde, Azure Veri Fabrikası size veri okuma/yazma hacmi, kaynaktan batmaya kopyalanan dosya/satır sayısı, iş hacmi, kopyalama senaryonuz için uygulanan yapılandırmalar, kopyalama etkinliğinin ilgili süreler ve ayrıntılarla birlikte geçtiği adımlar ve daha fazlası dahil olmak üzere kopyalama etkinliği yürütme bilgilerini sunar. Her olası metrik ve ayrıntılı açıklamasında [bu tabloya](#monitor-programmatically) bakın. 
 
-Bazı senaryolarda, Data Factory bir kopyalama etkinliği çalıştırdığınızda örnekte gösterildiği gibi kopyalama etkinliği izleme görünümünün en üstünde **"performans ayarlama ipuçları"** görürsünüz. İpuçları, belirli bir kopya çalıştırması için ADF tarafından tanımlanan darboğazyı, kopyalama aktarım hızını artırmak için nelerin değişdiklerinin önerisiyle birlikte size bildirir. [Otomatik performans ayarlama ipuçları](copy-activity-performance-troubleshooting.md#performance-tuning-tips)hakkında daha fazla bilgi edinin.
+Bazı senaryolarda, Veri Fabrikası'nda bir Kopyalama etkinliği çalıştırdığınızda, örnekte gösterildiği gibi kopya etkinliği izleme görünümünün üst kısmında **"Performans alamı ipuçları"** görürsünüz. İpuçları, belirli kopyalama çalışması için ADF tarafından tanımlanan darboğaz ve kopyalama iş masını artırmak için neleri değiştireceğiniz konusunda önerilerde bulunmak. [Otomatik performans atonlama ipuçları](copy-activity-performance-troubleshooting.md#performance-tuning-tips)hakkında daha fazla bilgi edinin.
 
-En son **yürütme ayrıntıları ve süreleri** , kopyalama etkinliğinizin üzerinde geçtiği önemli adımları açıklar, bu, özellikle kopyalama performansının giderilmesi için kullanışlıdır. Kopya çalışmalarınızın performans sorunu en uzun süreye sahip bir süredir. Her aşamanın ne gösterdiği ve ayrıntılı sorun giderme kılavuzunu temsil etmesi için, [kopyalama etkinliği performansını sorun giderme](copy-activity-performance-troubleshooting.md) bölümüne bakın.
+Alttaki **yürütme ayrıntıları ve süreleri,** kopyalama etkinliğinizin geçtiği ve özellikle kopya performansını gidermede yararlı olan önemli adımları açıklar. Kopya çalıştırmanızın darboğazı en uzun süreye sahip olandır. Her aşamanın temsil için kopya etkinlik performansını ve ayrıntılı sorun giderme yönündeki [Sorun Giderme etkinlik](copy-activity-performance-troubleshooting.md) performansına bakın.
 
-**Örnek: Amazon S3 öğesinden Azure Data Lake Storage 2. 'e Kopyala**
+**Örnek: Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye kopyala**
 
-![Kopyalama etkinliği çalıştırma ayrıntılarını izle](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+![Kopyalama etkinliği çalıştırma ayrıntılarını izleme](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
 
-## <a name="monitor-programmatically"></a>Program aracılığıyla izleyin
+## <a name="monitor-programmatically"></a>Programlı olarak izleyin
 
-Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, Kullanıcı arabirimi izleme görünümünü oluşturmak için kullanılan **kopyalama etkinliği çalıştırma sonucu** > **çıktı** bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalışmalarının genel olarak nasıl izleneceği hakkında daha fazla bilgi için bkz. [programlı bir Azure Data Factory 'yi izleme](monitor-programmatically.md).
+Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, Kullanıcı Bulma Birimi izleme görünümünü işlemek için kullanılan **Kopyalama Etkinliği çalıştırsonuç** > **Çıktısı** bölümünde de döndürülür. Aşağıda döndürülebilecek özelliklerin tam listesi verilmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Genel olarak etkinlik çalışır nasıl izlenir hakkında bilgi [için](monitor-programmatically.md)bkz.
 
-| Özellik adı  | Açıklama | Çıkışdaki birim |
+| Özellik adı  | Açıklama | Çıktıdaki birim |
 |:--- |:--- |:--- |
-| dataRead | Kaynaktaki okunan gerçek veri miktarı. | Int64 değeri, bayt cinsinden |
-| dataWritten | Havuza yazılan/havuza kaydedilen verilerin gerçek bağlaması. Boyut, her veri deposunun verileri nasıl depoladığını birbirleriyle ilişkilendiren `dataRead` boyutundan farklı olabilir. | Int64 değeri, bayt cinsinden |
-| filesRead | Dosya tabanlı kaynaktan okunan dosya sayısı. | Int64 değeri (birim) |
-| filesWritten | Dosya tabanlı havuza yazılan/kaydedilen dosya sayısı. | Int64 değeri (birim) |
-| Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim) |
-| sinkPeakConnections | Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim) |
-| rowsRead | Kaynaktan okunan satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim) |
-| rowsCopied | Havuza kopyalanmış satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim) |
-| rowsSkipped | Atlanan uyumsuz satır sayısı. `enableSkipIncompatibleRow` true olarak ayarlayarak, uyumsuz satırların atlanmasını etkinleştirebilirsiniz. | Int64 değeri (birim) |
-| copyDuration | Kopya çalıştırmasının süresi. | Int32 değeri, saniye cinsinden |
-| üretilen iş | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
-| Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri (birim yok) |
-| sinkPeakConnections| Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı.| Int32 değeri (birim yok) |
-| sqlDwPolyBase | Veriler SQL veri ambarı 'na kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |
-| redshiftUnload | Redshift öğesinden veri kopyalanırken KALDıRMA kullanılıp kullanılmayacağını belirtir. | Boole |
-| hdfsDistcp | Veriler, ne zaman bir sunucudan kopyalanırsa kullanılır. | Boole |
-| effectiveIntegrationRuntime | Etkinlik çalıştırmasının gücü için kullanılan Integration Runtime (IR) veya çalışma zamanları `<IR name> (<region if it's Azure IR>)`biçiminde. | Metin (dize) |
-| usedDataIntegrationUnits | Kopyalama sırasında etkili veri tümleştirme birimi. | Int32 değeri |
-| usedParallelCopies | Kopyalama sırasında etkili parallelCopies. | Int32 değeri |
-| redirectRowPath | `redirectIncompatibleRowSettings` özelliğinde yapılandırdığınız blob depolamada atlanan uyumsuz satırların yolu. Bkz. [hata toleransı](copy-activity-overview.md#fault-tolerance). | Metin (dize) |
-| executionDetails | Kopyalama etkinliğinin aşamaları hakkında daha fazla ayrıntı ve ilgili adımlar, süreler, konfigürasyonlar vb. Bu bölümü değiştirebileceğinden, bu bölümü ayrıştırmayı önermiyoruz. Kopyalama performansını anlamanıza ve sorunlarını gidermenize nasıl yardımcı olduğunu daha iyi anlamak için, [görsel izleme](#monitor-visually) bölümüne bakın. | Dizi |
-| Perfönerisi | Performans ayarlama ipuçlarını kopyalayın. Ayrıntılar için [performans ayarlama ipuçlarına](copy-activity-performance-troubleshooting.md#performance-tuning-tips) bakın. | Dizi |
+| dataRead | Gerçek veri miktarı kaynaktan okunur. | Int64 değeri, bayt |
+| dataWritten | Lavaboya yazılmış/taahhüt edilen verilerin gerçek montajı. Her veri deposunun `dataRead` verileri nasıl depoladığını ilişkilendiren boyut, boyutundan farklı olabilir. | Int64 değeri, bayt |
+| dosyalarOkundu | Dosya tabanlı kaynaktan okunan dosya sayısı. | Int64 değeri (birim yok) |
+| dosyalarYazılı | Dosya tabanlı lavaboya yazılan/taahhüt edilen dosya sayısı. | Int64 değeri (birim yok) |
+| sourcePeakConnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan eşzamanlı bağlantıların en yüksek sayısı. | Int64 değeri (birim yok) |
+| sinkPeakConnections | Kopya etkinliği çalışması sırasında lavabo veri deposuna kurulan eşzamanlı bağlantıların en yüksek sayısı. | Int64 değeri (birim yok) |
+| satırokusOku | Kaynaktan okunan satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim yok) |
+| satırkopyalanmış | Batmak için kopyalanan satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim yok) |
+| satırlarAtlanır | Atlanan uyumsuz satır sayısı. Doğru ayarlayarak `enableSkipIncompatibleRow` uyumsuz satırların atlanmasını etkinleştirebilirsiniz. | Int64 değeri (birim yok) |
+| copyDuration | Kopyalama çalışmasının süresi. | Int32 değeri, saniye cinsinden |
+| aktarım hızı | Veri aktarım hızı. | Kayan nokta sayısı, KBps |
+| sourcePeakConnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan eşzamanlı bağlantıların en yüksek sayısı. | Int32 değeri (birim yok) |
+| sinkPeakConnections| Kopya etkinliği çalışması sırasında lavabo veri deposuna kurulan eşzamanlı bağlantıların en yüksek sayısı.| Int32 değeri (birim yok) |
+| sqlDwPolyBase | Veriler SQL Veri Ambarı'na kopyalandığında PolyBase'in kullanılıp kullanılmadığı. | Boole |
+| redshiftUnload | Veriler Redshift'ten kopyalandığında UNLOAD'ın kullanılıp kullanılmadığı. | Boole |
+| hdfsDistcp | Veriler HDFS'den kopyalandığında DistCp'nin kullanılıp kullanılmadığı. | Boole |
+| etkiliIntegrationRuntime | Tümleştirme çalışma zamanı (IR) veya etkinlik çalışmasını sağlamak için `<IR name> (<region if it's Azure IR>)`kullanılan çalışma süreleri biçiminde. | Metin (dize) |
+| usedDataIntegrationUnits | Kopyalama sırasında etkili Veri Tümleştirme Birimleri. | Int32 değeri |
+| kullanılan ParallelCopys | Kopya sırasında etkili parallelCopys. | Int32 değeri |
+| redirectRowPath | Özellikte yapılandırdığınız blob depolamasında atlanan uyumsuz satırların `redirectIncompatibleRowSettings` günlüğüne giden yol. Bkz. [Hata toleransı.](copy-activity-overview.md#fault-tolerance) | Metin (dize) |
+| yürütmeAyrıntılar | Kopyalama etkinliğinin geçtiği aşamalar ve ilgili adımlar, süreler, yapılandırmalar ve benzeri ayrıntılar hakkında daha fazla bilgi. Bu bölümü ayrışdırmanızı önermiyoruz, çünkü bu bölüm değişebilir. Kopya performansını anlamanıza ve sorun gidermenize nasıl yardımcı olduğunu daha iyi anlamak için [görsel olarak Monitör](#monitor-visually) bölümüne bakın. | Dizi |
+| perfTavsiye | Performans atonlama ipuçlarını kopyalayın. Ayrıntılar için [Performans alamı ipuçlarına](copy-activity-performance-troubleshooting.md#performance-tuning-tips) bakın. | Dizi |
 
 **Örnek:**
 
@@ -149,8 +149,8 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, Kullan
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir kopyalama etkinliği makalelere bakın:
+Diğer Kopyalama Etkinliği makalelerini görün:
 
-\- [kopyalama etkinliğine genel bakış](copy-activity-overview.md)
+\- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 
-\- [kopyalama etkinliği performansı](copy-activity-performance.md)
+\-[Etkinlik performansını kopyalama](copy-activity-performance.md)

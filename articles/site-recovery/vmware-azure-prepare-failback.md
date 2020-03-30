@@ -1,75 +1,75 @@
 ---
-title: VMware VM 'lerini yeniden koruma için hazırlama ve Azure Site Recovery yeniden çalışma
-description: Azure Site Recovery ile yük devretmeden sonra VMware VM 'lerinin geri dönmesi için hazırlanma
+title: Azure Site Kurtarma ile VMware VM'leri yeniden koruma ve geri ödeme için hazırlayın
+description: Azure Site Kurtarma ile başarısız olduktan sonra VMware VM'lerin geri başarısızlığına hazırlanın
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257192"
 ---
-# <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>VMware VM 'lerinin yeniden korunmasına ve yeniden çalışmaya hazırlanma
+# <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>VMware VM'lerin yeniden korunması ve geri tepmesi için hazırlanın
 
-Şirket içi VMware VM 'lerinin veya fiziksel sunucularının Azure 'a [yük devretmesinin](site-recovery-failover.md) ardından, yük devretme işleminden sonra oluşturulan Azure VM 'leri yeniden koruyorlar, böylece şirket içi siteye tekrar çoğaltılır. Azure 'dan şirket içine çoğaltma yaparak, daha sonra, hazırsanız Azure 'dan şirket içine yük devretme çalıştırarak yeniden yük devreder.
+Şirket içi VMware VM'leri veya fiziksel sunucuları Azure'da [başarısız](site-recovery-failover.md) olduktan sonra, başarısız olduktan sonra oluşturulan Azure VM'lerini yeniden korursunuz, böylece şirket içi siteye tekrar çoğaltılır. Azure'dan şirket içi çoğaltma ile, hazır olduğunuzda Azure'dan şirket başına bir arıza çalıştırarak geri başarısız olabilirsiniz.
 
-Devam etmeden önce, Azure 'dan şirket içi bir siteye yeniden yük devretme hakkında bu videoya hızlı bir genel bakış alın.<br /><br />
+Devam etmeden önce, Azure'dan şirket içi bir siteye nasıl geri dönüleceğine ilişkin bu videoyla hızlı bir genel bakış elde edin.<br /><br />
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
-## <a name="reprotectionfailback-components"></a>Yeniden koruma/yeniden çalışma bileşenleri
+## <a name="reprotectionfailback-components"></a>Yeniden koruma/geri tepme bileşenleri
 
-Azure 'dan yeniden koruma ve geri yük devredebilmeniz için birkaç bileşen ve ayar yapmanız gerekir.
+Azure'u yeniden koruyup geri alabilmeniz için bir dizi bileşenve ayarı yerine yerleştirmeniz gerekir.
 
-**Bileşen**| **Ayrıntılar**
+**Bileşen**| **Şey**
 --- | ---
-**Şirket içi yapılandırma sunucusu** | Şirket içi yapılandırma sunucusunun çalışıyor ve Azure 'a bağlı olması gerekir.<br/><br/> Geri aldığınız VM 'nin yapılandırma sunucusu veritabanında mevcut olması gerekir. Olağanüstü durum yapılandırma sunucusunu etkiliyorsa, yeniden çalışma 'nin çalıştığından emin olmak için aynı IP adresini geri yükleyin.<br/><br/>  Çoğaltılan makinelerin IP adresleri yük devretmede tutulursa, Azure VM makineleri ve yapılandırma sunucusunun yeniden çalışma NIC 'i arasında siteden siteye bağlantı (veya ExpressRoute bağlantısı) yapılmalıdır. Korunan IP adresleri için yapılandırma sunucusunun, kaynak makine bağlantısı için bir tane olmak üzere iki NIC olması ve bir diğeri de Azure yeniden çalışma bağlantısı olması gerekir. Bu, kaynak ve yük devredilen VM 'Ler için alt ağ adres aralıklarının çakışmasını önler.
-**Azure 'da işlem sunucusu** | Şirket içi sitenizde yük devredebilmeniz için önce Azure 'da bir işlem sunucusuna ihtiyacınız vardır.<br/><br/> İşlem sunucusu korumalı Azure VM 'den verileri alır ve şirket içi siteye gönderir.<br/><br/> İşlem sunucusu ile korumalı VM arasında düşük gecikmeli bir ağ olması gerekir, bu nedenle daha yüksek çoğaltma performansı için işlem sunucusunu Azure 'a dağıtmanızı öneririz.<br/><br/> Kavram kanıtı için, şirket içi işlem sunucusunu ve özel eşleme ile ExpressRoute 'u kullanabilirsiniz.<br/><br/> İşlem sunucusu, yük devredilen VM 'nin bulunduğu Azure ağında olmalıdır. İşlem sunucusu aynı zamanda şirket içi yapılandırma sunucusu ve ana hedef sunucusuyla iletişim kurabilmelidir.
-**Ana hedef sunucuyu ayır** | Ana hedef sunucu, yeniden çalışma verileri alır ve varsayılan olarak, bir Windows ana hedef sunucusu şirket içi yapılandırma sunucusunda çalışır.<br/><br/> Ana hedef sunucusunda en fazla 60 disk bağlı olabilir. Yeniden başarısız olan VM 'Ler toplam 60 disk sayısına sahip veya çok büyük miktarlarda trafiği geri yüklüyorsanız, yeniden çalışma için ayrı bir ana hedef sunucu oluşturun.<br/><br/> Makineler çoklu VM tutarlılığı için bir çoğaltma grubunda toplandıysa, VM 'Lerin hepsi Windows olmalıdır veya hepsi Linux olmalıdır. Neden? Bir çoğaltma grubundaki tüm VM 'Lerin aynı ana hedef sunucuyu kullanması ve ana hedef sunucunun, çoğaltılan makinelerindekilerle aynı işletim sistemine (aynı veya daha yüksek bir sürümle) sahip olması gerekir.<br/><br/> Ana hedef sunucu, disklerinde anlık görüntü içermemelidir, aksi takdirde yeniden koruma ve yeniden çalışma çalışmaz.<br/><br/> Ana hedefin bir Paravirtual SCSI denetleyicisi olamaz. Denetleyici yalnızca bir LSI Logic Controller olabilir. Bir LSI Logic Controller olmadan yeniden koruma başarısız olur.
-**Yeniden çalışma çoğaltma ilkesi** | Şirket içi siteye geri yinelemek için bir yeniden çalışma ilkesi gerekir. Bu ilke, Azure 'a bir çoğaltma ilkesi oluşturduğunuzda otomatik olarak oluşturulur.<br/><br/> İlke, yapılandırma sunucusu ile otomatik olarak ilişkilendirilir. Bu, 15 dakikalık bir RPO eşiğine, kurtarma noktası bekletmesini 24 saate ve uygulamayla tutarlı anlık görüntü sıklığını 60 dakika olarak ayarlar. İlke düzenlenemiyor. 
-**Siteden siteye VPN/ExpressRoute özel eşlemesi** | Yeniden koruma ve yeniden çalışma, verileri çoğaltmak için bir siteden siteye VPN bağlantısı veya ExpressRoute özel eşlemesi gerektirir. 
+**Şirket içi yapılandırma sunucusu** | Şirket içi yapılandırma sunucusu çalışıyor ve Azure'a bağlı olmalıdır.<br/><br/> Geri başarısız olduğunuz VM yapılandırma sunucusu veritabanında bulunması gerekir. Olağanüstü durum yapılandırma sunucusunu etkiliyorsa, hata geri almanın çalıştığından emin olmak için aynı IP adresiyle geri yükleyin.<br/><br/>  Çoğaltılan makinelerin IP adresleri başarısız bir şekilde tutulduysa, Azure VM makineleri ile yapılandırma sunucusunun geri dönüş NIC'i arasında siteden siteye bağlantı (veya ExpressRoute bağlantısı) oluşturulmalıdır. Tutulan IP adresleri için yapılandırma sunucusunun biri kaynak makine bağlantısı, diğeri de Azure geri dönüş bağlantısı olmak üzere iki NIC'e ihtiyacı vardır. Bu, kaynak için alt ağ adres aralıklarının çakışmasını önler ve VM'ler üzerinde başarısız olunmasını önler.
+**Azure'da işlem sunucusu** | Şirket içi sitenize geri dönebilmeniz için Azure'da bir işlem sunucusuna ihtiyacınız vardır.<br/><br/> İşlem sunucusu, korunan Azure VM'den veri alır ve şirket içi siteye gönderir.<br/><br/> İşlem sunucusu ve korumalı VM arasında düşük gecikmeli bir ağa ihtiyacınız vardır, bu nedenle işlem sunucusunu daha yüksek çoğaltma performansı için Azure'da dağıtmanızı öneririz.<br/><br/> Kavram kanıtı için, şirket içi işlem sunucusunu ve ExpressRoute'u özel bir bakışla kullanabilirsiniz.<br/><br/> İşlem sunucusu, VM üzerinde başarısız olanın bulunduğu Azure ağında olmalıdır. İşlem sunucusu ayrıca şirket içi yapılandırma sunucusu ve ana hedef sunucu ile iletişim kurabilmeli.
+**Ayrı ana hedef sunucusu** | Ana hedef sunucu failback verileri alır ve varsayılan olarak bir Windows ana hedef sunucusu şirket içi yapılandırma sunucusunda çalışır.<br/><br/> Ana hedef sunucuda en fazla 60 disk eklenebilir. Geri başarısız olan VM'ler toplam 60 diskten fazla toplua sahiptir veya büyük hacimlerde trafikte başarısız oluyorsanız, failback için ayrı bir ana hedef sunucu oluşturur.<br/><br/> Makineler çoklu VM tutarlılığı için bir çoğaltma grubuna toplanmışsa, VM'lerin tümü Windows olmalıdır veya tümü Linux olmalıdır. Neden? Çoğaltma grubundaki tüm VM'ler aynı ana hedef sunucuyu kullanmalıdır ve ana hedef sunucu çoğaltılan makinelerden aynı işletim sistemine (aynı veya daha yüksek sürümle) sahip olmalıdır.<br/><br/> Ana hedef sunucunun disklerinde anlık görüntü olmamalıdır, aksi takdirde yeniden koruma ve geri dönüş çalışmaz.<br/><br/> Ana hedefin Paravirtual SCSI denetleyicisi olamaz. Denetleyici yalnızca LSI Logic denetleyicisi olabilir. LSI Logic denetleyicisi olmadan yeniden koruma başarısız olur.
+**Failback çoğaltma ilkesi** | Şirket içi siteye geri dönmek için bir geri dönüş ilkesine ihtiyacınız vardır. Bu ilke, Azure'da bir çoğaltma ilkesi oluşturduğunuzda otomatik olarak oluşturulur.<br/><br/> İlke, yapılandırma sunucusu ile otomatik olarak ilişkilendirilir. 15 dakikalık bir RPO eşiğine, 24 saatlik kurtarma noktası tutma ve uygulama tutarlı anlık görüntü sıklığı 60 dakika olarak ayarlanır. İlke düzenlenemez. 
+**Siteden siteye VPN/ExpressRoute özel eşleme** | Yeniden koruma ve geri dönüş için siteden siteye VPN bağlantısına veya verileri çoğaltmak için ExpressRoute özel eşleme gerekir. 
 
 
-## <a name="ports-for-reprotectionfailback"></a>Yeniden koruma/yeniden çalışma için bağlantı noktaları
+## <a name="ports-for-reprotectionfailback"></a>Yeniden koruma/geri dönüş için bağlantı noktaları
 
-Yeniden koruma/yeniden çalışma için bir dizi bağlantı noktası açık olmalıdır. Aşağıdaki grafikte, bağlantı noktaları ve yeniden koruma/yeniden çalışma akışı gösterilmektedir.
+Bir dizi bağlantı noktası yeniden koruma/geri tepme için açık olmalıdır. Aşağıdaki grafik, bağlantı noktalarını ve yeniden koruma/geri tepme akışını göstermektedir.
 
-![Yük devretme ve yeniden çalışma için bağlantı noktaları](./media/vmware-azure-reprotect/failover-failback.png)
+![Arıza ve geri dönüş için bağlantı noktaları](./media/vmware-azure-reprotect/failover-failback.png)
 
 
-## <a name="deploy-a-process-server-in-azure"></a>Azure 'da bir işlem sunucusu dağıtma
+## <a name="deploy-a-process-server-in-azure"></a>Azure'da bir işlem sunucusu dağıtma
 
-1. Azure 'da yeniden çalışma için [bir işlem sunucusu ayarlayın](vmware-azure-set-up-process-server-azure.md) .
-2. Azure VM 'lerinin işlem sunucusuna erişebildiğinden emin olun. 
-3. Siteden siteye VPN bağlantısı veya ExpressRoute özel eşleme ağının, işlem sunucusundan şirket içi siteye veri göndermesini sağlamak için yeterli bant genişliğine sahip olduğundan emin olun.
+1. Hata geri almak için Azure'da [bir işlem sunucusu ayarlayın.](vmware-azure-set-up-process-server-azure.md)
+2. Azure VM'lerin işlem sunucusuna erişebilmesini sağlayın. 
+3. Siteden siteye VPN bağlantısının veya ExpressRoute özel izleme ağının işlem sunucusundan şirket içi siteye veri göndermek için yeterli bant genişliğine sahip olduğundan emin olun.
 
 ## <a name="deploy-a-separate-master-target-server"></a>Ayrı bir ana hedef sunucu dağıtma
 
-1. Ana hedef sunucu [gereksinimlerini ve sınırlamalarını](#reprotectionfailback-components)aklınızda edin.
-2. Yeniden korumak ve geri yüklemek istediğiniz VM 'lerin işletim sistemiyle eşleştirmek için bir [Windows](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers) veya [Linux](vmware-azure-install-linux-master-target.md) ana hedef sunucusu oluşturun.
-3. Ana hedef sunucu için Depolama vMotion ' ı kullandığınızdan emin olun veya yeniden çalışma başarısız olabilir. Diskler kullanılabilir olmadığından VM makinesi başlatılamıyor.
-    - Bunu engellemek için, ana hedef sunucuyu vMotion listenizden dışlayın.
-    - Bir ana hedef, yeniden korumadan sonra bir Depolama vMotion görevi içeriyorsa, ana hedef sunucuya bağlı korunan VM diskleri vMotion görevinin hedefine geçirilir. Bu işlemi yaptıktan sonra yeniden denemeye çalışırsanız, diskler bulunamadığı için disk kesilmesi başarısız olur. Daha sonra depolama hesaplarınızdaki diskleri bulmak zordur. Bu durumda, bunları el ile bulun ve sanal makineye ekleyin. Bundan sonra şirket içi VM önyüklenebilir.
+1. Ana hedef sunucu [gereksinimlerine ve sınırlamalarına](#reprotectionfailback-components)dikkat edin.
+2. Yeniden korumak ve geri başarısız olmak istediğiniz VM'lerin işletim sistemiyle eşleşecek bir [Windows](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers) veya [Linux](vmware-azure-install-linux-master-target.md) ana hedef sunucusu oluşturun.
+3. Ana hedef sunucu için Storage vMotion'ı kullanmadığınızdan emin olun veya geri dönüş başarısız olabilir. Diskler kullanılamadığı ndan VM makinesi başlatılamıyor.
+    - Bunu önlemek için ana hedef sunucuyu vMotion listenizden hariç tinleyin.
+    - Ana hedef yeniden korumadan sonra bir Depolama vMotion görevine girerse, ana hedef sunucuya bağlı korumalı VM diskleri vMotion görevinin hedefine taşınır. Bundan sonra başarısız olmaya çalışırsanız, diskler bulunamadığından disk ayırma başarısız olur. Daha sonra depolama hesaplarınızdaki diskleri bulmak zordur. Bu durumda, bunları el ile bulun ve VM'ye takın. Bundan sonra, şirket içi VM önyüklenebilir.
 
-4. Mevcut Windows ana hedef sunucusuna bir bekletme sürücüsü ekleyin. Yeni bir disk ekleyin ve sürücüyü biçimlendirin. Bekletme sürücüsü, VM 'nin şirket içi siteye geri çoğaltıldığı zaman noktalarını durdurmak için kullanılır. Bu kriterleri aklınızda edin. Bunlar karşılanmazsa, ana hedef sunucusu için sürücü listelenmez:
-    - Birim, çoğaltma hedefi gibi başka herhangi bir amaçla kullanılmaz ve kilit modunda değildir.
-    - Birim bir önbellek birimi değil. İşlem sunucusu ve ana hedef için özel yükleme birimi, bekletme birimi için uygun değil. İşlem sunucusu ve ana hedef bir birime yüklendiğinde, birim ana hedefin önbellek birimidir.
+4. Varolan Windows ana hedef sunucusuna bir bekletme sürücüsü ekleyin. Yeni bir disk ekleyin ve sürücüyü biçimlendirin. Bekletme sürücüsü, VM'nin şirket içi siteye geri kopyalandığında noktaları zamanında durdurmak için kullanılır. Bu ölçütleri not edin. Bunlar karşılanmıyorsa, sürücü ana hedef sunucu için listelenmez:
+    - Birim, çoğaltma hedefi gibi başka bir amaç için kullanılmaz ve kilit modunda değildir.
+    - Birim bir önbellek birimi değildir. İşlem sunucusu ve ana hedef için özel yükleme hacmi bekletme birimi için uygun değildir. İşlem sunucusu ve ana hedef bir birim üzerine yüklendiğinde, birim ana hedefin önbellek birimidir.
     - Birimin dosya sistemi türü FAT veya FAT32 değildir.
-    - Birim kapasitesi sıfır dışı.
-    - Windows için varsayılan bekletme birimi, R birimidir.
-    - Linux için varsayılan saklama birimi/mnt/retention
+    - Birim kapasitesi sıfır değil.
+    - Windows için varsayılan bekletme birimi R birimidir.
+    - Linux için varsayılan saklama hacmi /mnt/retention'dır.
 
-5. Mevcut bir işlem sunucusu kullanıyorsanız bir sürücü ekleyin. Yeni sürücü, son adımdaki gereksinimlere uymalıdır. Bekletme sürücüsü yoksa, portalda seçim açılan listesinde görünmez. Şirket içi ana hedefe bir sürücü ekledikten sonra, sürücünün portalda seçimde görünmesi 15 dakika kadar sürer. Sürücü 15 dakikadan sonra görünmezse yapılandırma sunucusunu yenileyebilirsiniz.
-6. Ana hedef sunucuda VMware araçları veya açık VM araçları 'nı yükler. Araçlar olmadan ana hedefin ESXi ana bilgisayarındaki veri depoları algılanamıyor.
-7. Diski ayarlayın. Enableuuıd = VMware 'deki ana hedef VM 'nin yapılandırma parametrelerinde true ayarı. Bu satır yoksa, ekleyin. Bu ayar, doğru bir şekilde takılabilmesi için VMDK için tutarlı bir UUID sağlamak üzere gereklidir.
-8. VCenter Server erişim gereksinimlerini denetle:
-    - Geri aldığınız VM, VMware vCenter Server tarafından yönetilen bir ESXi ana bilgisayarı üzerinde ise, çoğaltılan verileri sanal makinenin diskine yazmak için ana hedef sunucunun şirket içi VM sanal makine diski (VMDK) dosyasına erişmesi gerekir. Şirket içi VM veri deposunun, okuma/yazma erişimiyle ana hedef ana bilgisayara bağlandığından emin olun.
-    - VM, bir VMware vCenter Server tarafından yönetilen bir ESXi konağında değilse, Site Recovery yeniden koruma sırasında yeni bir sanal makine oluşturur. Bu VM, ana hedef sunucu VM 'sini oluşturduğunuz ESXi konağında oluşturulur. İstediğiniz konakta VM oluşturmak için ESXi konağını dikkatle seçin. VM’nin sabit diski, üzerinde ana hedef sunucunun çalıştığı ana bilgisayar tarafından erişilebilen bir veri deposunda olmalıdır.
-    - Diğer bir seçenek olan şirket içi VM yeniden çalışma için zaten mevcutsa, yeniden çalışma yapmadan önce onu silmektir. Yeniden çalışma daha sonra ana hedef ESXi ana bilgisayarı ile aynı konakta yeni bir VM oluşturur. Alternatif bir konuma geri döndüğünüzde, veriler aynı veri deposuna ve şirket içi ana hedef sunucusu tarafından kullanılan aynı ESXi ana bilgisayarına kurtarılır.
-9. VMware VM 'lerine geri yük devretmek için, makineyi yeniden koruyabilmeniz için önce ana hedef sunucunun çalıştırıldığı ana bilgisayarın bulunmasını tamamlamalısınız.
-10. Ana hedef VM 'nin kendisine bağlı en az bir sanal makine dosya sistemi (VMFS) veri deposu olduğunu belirten ESXi konağına bakın. Hiçbir VMFS veri deposu iliştirilmişse, yeniden koruma ayarlarında veri deposu girişi boştur ve devam edemezsiniz.
+5. Varolan bir işlem sunucusu kullanıyorsanız sürücü ekleyin. Yeni sürücü son adımda gereksinimleri karşılamalıdır. Bekletme sürücüsü yoksa, portaldaki seçim açılır listesinde görünmez. Şirket içi ana hedefe bir sürücü ekledikten sonra, sürücünün portaldaki seçimde görünmesi 15 dakika kadar sürer. Sürücü 15 dakika sonra görünmüyorsa yapılandırma sunucusunu yenileyebilirsiniz.
+6. Ana hedef sunucuya VMware araçlarını veya açık vm-araçlarını yükleyin. Araçlar olmadan, ana hedefin ESXi ana bilgisayarındaki veri depoları algılanamıyor.
+7. Diski ayarlayın. VMware'deki ana hedef VM'nin yapılandırma parametrelerinde EnableUUID=true ayarı. Bu satır yoksa, ekleyin. Bu ayar, VMDK'ya tutarlı bir UUID sağlamak için gereklidir, böylece doğru şekilde bağlanır.
+8. vCenter Server erişim gereksinimlerini kontrol edin:
+    - Geri başarısız olduğunuz VM, VMware vCenter Server tarafından yönetilen bir ESXi ana bilgisayarındaysa, çoğaltılan verileri sanal makinenin disklerine yazmak için ana hedef sunucunun şirket içi VM Sanal Makine Diski (VMDK) dosyasına erişmesi gerekir. Şirket içi VM veri deposunun okuma/yazma erişimine sahip ana hedef ana bilgisayara monte edilmiş olduğundan emin olun.
+    - VM bir VMware vCenter Server tarafından yönetilen bir ESXi ana bilgisayarda değilse, Site Kurtarma yeniden koruma sırasında yeni bir VM oluşturur. Bu VM, ana hedef sunucu VM'i oluşturduğunuz ESXi ana bilgisayarda oluşturulur. İstediğiniz ana bilgisayarda VM oluşturmak için ESXi ana bilgisayarını dikkatle seçin. VM’nin sabit diski, üzerinde ana hedef sunucunun çalıştığı ana bilgisayar tarafından erişilebilen bir veri deposunda olmalıdır.
+    - Başka bir seçenek, şirket içi VM zaten failback için varsa, bir failback yapmadan önce silmektir. Failback sonra ana hedef ESXi ana bilgisayar olarak aynı ana bilgisayarda yeni bir VM oluşturur. Alternatif bir konuma geri döndüğünüzde, veriler aynı veri deposuna ve şirket içi ana hedef sunucu tarafından kullanılan aynı ESXi ana bilgisayara kurtarılır.
+9. VMware VM'lere geri dönemeyen fiziksel makineler için, makineyi yeniden korumadan önce ana hedef sunucunun çalıştırdığı ana bilgisayarını bulmanız gerekir.
+10. Ana hedef VM'nin bağlı olduğu ESXi ana bilgisayarının en az bir sanal makine dosya sistemi (VMFS) veri deposu na sahip olup olmadığını kontrol edin. VMFS veri depoları eklenmişse, yeniden koruma ayarlarındaki veri deposu girişi boştur ve devam edemezsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir VM 'yi [yeniden koruma](vmware-azure-reprotect.md) .
+VM'yi [yeniden koruyun.](vmware-azure-reprotect.md)

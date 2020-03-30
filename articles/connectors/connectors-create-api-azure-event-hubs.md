@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs bağlanma
-description: Azure Event Hubs ve Azure Logic Apps kullanarak olayları izleyen ve yöneten otomatik görevler ve iş akışları oluşturun
+title: Azure Etkinlik Hub'larına bağlanma
+description: Azure Etkinlik Hub'ları ve Azure Mantık Uygulamaları kullanarak olayları izleyen ve yöneten otomatik görevler ve iş akışları oluşturun
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,175 +8,175 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247299"
 ---
-# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs ve Azure Logic Apps ile olayları izleyin, alın ve gönderin
+# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Etkinlik Hub'ları ve Azure Mantıksal Uygulamaları ile etkinlikleri izleme, alma ve gönderme
 
-Bu makalede, Azure Event Hubs Bağlayıcısı ile bir mantıksal uygulamanın içinden [azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) gönderilen olayları nasıl izleyebileceğinizi ve yönetebileceğinizi gösterir. Böylece, Olay Hub’ınızdan gelen olayları almaya, bu olayları denetlemeye ve göndermeye yönelik görevleri ve iş akışlarını otomatikleştiren mantıksal uygulamalar oluşturabilirsiniz. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Event Hubs Bağlayıcısı başvurusu](https://docs.microsoft.com/connectors/eventhubs/)</a>.
+Bu makalede, Azure Etkinlik Hub'ları bağlayıcısı olan bir mantık uygulaması içinden [Azure Etkinlik Hub'larına](../event-hubs/event-hubs-what-is-event-hubs.md) gönderilen etkinlikleri nasıl izleyip yönetebileceğiniz gösterilmektedir. Böylece, Olay Hub’ınızdan gelen olayları almaya, bu olayları denetlemeye ve göndermeye yönelik görevleri ve iş akışlarını otomatikleştiren mantıksal uygulamalar oluşturabilirsiniz. Bağlayıcıya özel teknik bilgiler için [Azure Etkinlik Hub'ları bağlayıcı referansına](https://docs.microsoft.com/connectors/eventhubs/)</a>bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* [Azure Event Hubs ad alanı ve Olay Hub 'ı](../event-hubs/event-hubs-create.md)
+* Azure [Etkinlik Hub'ları ad alanı ve Etkinlik Hub'ı](../event-hubs/event-hubs-create.md)
 
-* Olay Hub 'ınıza erişmek istediğiniz mantıksal uygulama. Mantıksal uygulamanızı Azure Event Hubs tetikleyicisiyle başlatmak için [boş bir mantıksal uygulama](../logic-apps/quickstart-create-first-logic-app-workflow.md)gerekir.
-Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin.
+* Etkinlik Hub'ınıza erişmek istediğiniz mantık uygulaması. Mantıksal uygulamanızı Azure Etkinlik Hub'ları tetikleyicisiyle başlatmak için boş bir [mantık uygulamasına](../logic-apps/quickstart-create-first-logic-app-workflow.md)ihtiyacınız vardır.
+Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları ve](../logic-apps/logic-apps-overview.md) Quickstart nedir'yi inceleyin: İlk [mantık uygulamanızı oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 <a name="permissions-connection-string"></a>
 
-## <a name="check-permissions-and-get-connection-string"></a>İzinleri denetle ve bağlantı dizesi al
+## <a name="check-permissions-and-get-connection-string"></a>İzinleri denetleyin ve bağlantı dizesi alın
 
-Mantıksal uygulamanızın Olay Hub 'ınıza erişebildiğinizden emin olmak için, izinlerinizi denetleyin ve Event Hubs ad alanınız için bağlantı dizesini alın.
+Mantık uygulamanızın Etkinlik Hub'ınıza erişebilmesini sağlamak için izinlerinizi kontrol edin ve Olay Hub'larınız için bağlantı dizesini alın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-1. Belirli bir olay hub 'ına değil Event Hubs *ad alanına*gidin. 
+1. Belirli bir Olay Hub'ı değil, Olay Hub'ları *ad alanınıza*gidin. 
 
-1. Ad alanı menüsünde, **Ayarlar**altında, **paylaşılan erişim ilkeleri**' ni seçin. **Talepler**altında, bu ad alanı Için izinleri **yönetme** izinlerine sahip olup olmadığınızı kontrol edin.
+1. Ad alanı menüsünde, **Ayarlar**altında **Paylaşılan erişim ilkelerini**seçin. **Talepler**altında, bu ad alanı için **Yönet** izinlerine sahip olup olmadığınızı denetleyin.
 
-   ![Olay Hub 'ı ad alanınız için izinleri yönetme](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
+   ![Etkinlik Hub ad alanınız için izinleri yönetme](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
-1. Daha sonra bağlantı bilgilerinizi el ile girmek istiyorsanız, Event Hubs ad alanınız için bağlantı dizesini alın.
+1. Bağlantı bilgilerinizi daha sonra el ile girmek istiyorsanız, Olay Hub'larınızın ad alanı nın bağlantı dizesini alın.
 
-   1. **İlke**altında **RootManageSharedAccessKey**öğesini seçin.
+   1. **İlke**altında **RootManageSharedAccessKey'i**seçin.
 
-   1. Birincil anahtarınızın bağlantı dizesini bulun. Kopyala düğmesini seçin ve daha sonra kullanmak üzere bağlantı dizesini kaydedin.
+   1. Birincil anahtarınızın bağlantı dizelerini bulun. Kopyalama düğmesini seçin ve bağlantı dizesini daha sonra kullanmak üzere kaydedin.
 
-      ![Event Hubs ad alanı bağlantı dizesini Kopyala](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
+      ![Olay Hub'larını ad alanı bağlantı dizelerini kopyalama](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > Bağlantı dizeniz Event Hubs ad alanınız veya belirli bir olay hub 'ı ile ilişkili olup olmadığını doğrulamak için, bağlantı dizesinin `EntityPath` parametresine sahip olmadığından emin olun. Bu parametreyi bulursanız, bağlantı dizesi belirli bir olay hub 'ı "varlığına" yöneliktir ve mantıksal uygulamanızla kullanılacak doğru dize değildir.
+      > Bağlantı dizenizin Olay Hub'larınız ad alanınızla mı yoksa belirli bir olay hub'ıyla `EntityPath`  mı ilişkili olduğunu doğrulamak için bağlantı dizesinin parametreye sahip olmadığından emin olun. Bu parametreyi bulursanız, bağlantı dizesi belirli bir Olay Hub'ı "varlık" içindir ve mantık uygulamanızla kullanılacak doğru dize değildir.
 
-1. Şimdi [Event Hubs tetikleyici ekleme](#add-trigger) veya [Event Hubs eylemi ekleme](#add-action)ile devam edin.
+1. Şimdi [olay hub'ları tetikleyici ekle](#add-trigger) veya olay [hub'ları eylemi ekle](#add-action)ile devam edin.
 
 <a name="add-trigger"></a>
 
-## <a name="add-event-hubs-trigger"></a>Event Hubs tetikleyicisi Ekle
+## <a name="add-event-hubs-trigger"></a>Olay Hub'ları tetikleyici ekle
 
-Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya belirli bir koşul karşılandığında tetiklenen bir [tetikleyiciyle](../logic-apps/logic-apps-overview.md#logic-app-concepts)başlamalıdır. Tetikleyici her tetiklendiğinde Logic Apps altyapısı bir mantıksal uygulama örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
+Azure Logic Apps'ta, her mantık uygulaması, belirli bir olay olduğunda veya belirli bir koşul yerine getirildiğinde ateş eden bir [tetikleyiciyle](../logic-apps/logic-apps-overview.md#logic-app-concepts)başlamalıdır. Tetikleyici her ateşleninher yerinde, Logic Apps motoru bir mantık uygulaması örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
 
-Bu örnek, Olay Hub 'ınıza yeni olaylar gönderildiğinde bir mantıksal uygulama iş akışını nasıl başlatakullanabileceğinizi gösterir. 
+Bu örnek, Olay Hub'ınıza yeni olaylar gönderildiğinde bir mantık uygulaması iş akışını nasıl başlatabileceğinizi gösterir. 
 
-1. Azure portal veya Visual Studio 'da, Logic Apps tasarımcısını açan boş bir mantıksal uygulama oluşturun. Bu örnek Azure portal kullanır.
+1. Azure portalında veya Visual Studio'da, Logic Apps Designer'ı açan boş bir mantık uygulaması oluşturun. Bu örnekte Azure portalı kullanır.
 
-1. Arama kutusuna filtreniz olarak "Olay Hub 'ları" yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **Olay Hub 'ında olaylar kullanılabilir olduğunda-Event Hubs**
+1. Arama kutusuna filtreniz olarak "olay hub'ları" girin. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **Olaylar Event Hub'ında kullanılabilirolduğunda - Olay Hub'ları**
 
    ![Tetikleyiciyi seçin](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
-1. Bağlantı ayrıntıları istenirse [Event Hubs bağlantınızı hemen oluşturun](#create-connection). 
+1. Bağlantı ayrıntıları için istenirseniz, [Olay Hub'ları bağlantınızı şimdi oluşturun.](#create-connection) 
 
-1. Tetikleyicide, izlemek istediğiniz olay hub 'ı hakkında bilgi sağlayın. Daha fazla özellik için **yeni parametre Ekle** listesini açın. Bir parametre seçilmesi, bu özelliği tetikleyici kartına ekler.
+1. Tetikleyicide, izlemek istediğiniz Olay Hub'ı hakkında bilgi sağlayın. Daha fazla özellik için **yeni parametre** ekle listesini açın. Bir parametre seçmek, bu özelliği tetik kartına ekler.
 
    ![Tetikleyici özellikleri](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay Hub 'ı adı** | Yes | İzlemek istediğiniz olay hub 'ının adı |
-   | **İçerik türü** | Hayır | Olayın içerik türü. Varsayılan değer: `application/octet-stream`. |
-   | **Tüketici grubu adı** | Hayır | Olayları okumak için kullanılacak [Olay Hub 'ı Tüketici grubu adı](../event-hubs/event-hubs-features.md#consumer-groups) . Belirtilmemişse, varsayılan Tüketici grubu kullanılır. |
-   | **En fazla olay sayısı** | Hayır | En fazla olay sayısı. Tetikleyici, bu özellik tarafından belirtilen bir ve olay sayısı arasında döndürülür. |
-   | **Aralık** | Yes | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı |
-   | **Sıklık** | Yes | Yinelenme için zaman birimi |
+   | **Olay Hub'ı adı** | Evet | İzlemek istediğiniz Olay Hub'ı adı |
+   | **İçerik türü** | Hayır | Etkinliğin içerik türü. Varsayılan değer: `application/octet-stream`. |
+   | **Tüketici grubu adı** | Hayır | Olayları okumak için kullanılacak [Event Hub tüketici grubunun adı.](../event-hubs/event-hubs-features.md#consumer-groups) Belirtilmemişse, varsayılan tüketici grubu kullanılır. |
+   | **Maksimum olay sayısı** | Hayır | En fazla olay sayısı. Tetikleyici, bir ile bu özellik tarafından belirtilen olay sayısı arasında döndürür. |
+   | **Interval** | Evet | İş akışının sıklığına bağlı olarak ne sıklıkta çalıştığını açıklayan pozitif bir tamsayı |
+   | **Frequency** | Evet | Nüks için zaman birimi |
    ||||
 
    **Ek özellikler**
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **İçerik şeması** | Hayır | Olay Hub 'ından okunan olaylara yönelik JSON içerik şeması. Örneğin, içerik şemasını belirtirseniz, mantıksal uygulamayı yalnızca şemayla eşleşen olaylar için tetikleyebilirsiniz. |
-   | **Minimum bölüm anahtarı** | Hayır | Okunacak minimum [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliğini girin. Varsayılan olarak, tüm bölümler okunurdur. |
-   | **En büyük bölüm anahtarı** | Hayır | Okunacak [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği üst sınırını girin. Varsayılan olarak, tüm bölümler okunurdur. |
-   | **Saat dilimi** | Hayır | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici UTC sapmasını kabul etmez. Uygulamak istediğiniz saat dilimini seçin. <p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
-   | **Başlangıç saati** | Hayır | Bu biçimde bir başlangıç saati sağlayın: <p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz<p>-veya-<p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme<p>Daha fazla bilgi için bkz. [Azure Logic Apps ile yinelenen görevler ve iş akışları oluşturma ve çalıştırma](../connectors/connectors-native-recurrence.md). |
+   | **İçerik şeması** | Hayır | Etkinlik Hub'ından okunacak etkinlikler için JSON içeriği şeması. Örneğin, içerik şemasını belirtirseniz, yalnızca şema ile eşleşen olaylar için mantık uygulamasını tetikleyebilirsiniz. |
+   | **Minimum bölme anahtarı** | Hayır | Okumak için minimum [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliğini girin. Varsayılan olarak, tüm bölümler okunur. |
+   | **Maksimum bölme tuşu** | Hayır | Okumak için maksimum [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliğini girin. Varsayılan olarak, tüm bölümler okunur. |
+   | **Saat dilimi** | Hayır | Bu tetikleyici UTC ofset kabul etmediğinden, yalnızca bir başlangıç saati belirttiğiniz zaman geçerlidir. Uygulamak istediğiniz saat dilimini seçin. <p>Daha fazla bilgi için bkz. Azure Mantık Uygulamaları ile yinelenen görevler ve iş akışları oluşturun ve [çalıştırın.](../connectors/connectors-native-recurrence.md) |
+   | **Başlangıç saati** | Hayır | Bu biçimde bir başlangıç zamanı sağlayın: <p>Saat dilimi seçerseniz YYYY-MM-DDThh:mm:ss<p>-veya-<p>Saat dilimi seçmezseniz YYYY-MM-DDThh:mm:ssZ<p>Daha fazla bilgi için bkz. Azure Mantık Uygulamaları ile yinelenen görevler ve iş akışları oluşturun ve [çalıştırın.](../connectors/connectors-native-recurrence.md) |
    ||||
 
-1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1. Bittiğinde, tasarımcı araç çubuğunda **Kaydet'i**seçin.
 
-1. Şimdi, tetikleyici sonuçlarıyla gerçekleştirmek istediğiniz görevler için mantıksal uygulamanıza bir veya daha fazla eylem eklemeye devam edin. 
+1. Şimdi, tetikleyici sonuçlarıyla gerçekleştirmek istediğiniz görevler için mantık uygulamanıza bir veya daha fazla eylem eklemeye devam edin. 
 
-   Örneğin, olayları bir kategori gibi belirli bir değere göre filtrelemek için, **olay Gönder** eyleminin yalnızca koşullarınızı karşılayan olayları göndermesi için bir koşul ekleyebilirsiniz. 
+   Örneğin, olayları kategori gibi belirli bir değere göre filtrelemek için, **olay** gönder eyleminin yalnızca durumunuzu karşılayan olayları göndermesi için bir koşul ekleyebilirsiniz. 
 
 > [!NOTE]
-> Tüm Olay Hub 'ı Tetikleyicileri *uzun yoklama* tetiklerdir, bu da bir tetikleyici tetiklendiğinde tetikleyicinin tüm olayları işlediği ve daha fazla olayın olay hub 'ında görünmesi için 30 saniye bekler.
-> 30 saniye içinde hiçbir olay alınmıyorsa, tetikleyici çalıştırması atlanır. Aksi takdirde, tetikleyici olay hub 'ınız boş olana kadar olayları okumaya devam eder.
-> Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirttiğiniz yinelenme aralığına göre yapılır.
+> Tüm Event Hub tetikleyicileri *uzun yoklama* tetikleyicileridir, bu da tetikleyici nin tüm olayları işlediği ve olay hub'ınızda daha fazla olayın görünmesi için 30 saniye beklediği anlamına gelir.
+> 30 saniye içinde hiçbir olay alınmazsa, tetikleyici çalıştırma atlanır. Aksi takdirde, tetikleyici Olay Hub'ınız boşalana kadar olayları okumaya devam edin.
+> Bir sonraki tetikleyici yoklaması, tetikleyicinin özelliklerinde belirttiğiniz yineleme aralığına göre gerçekleşir.
 
 <a name="add-action"></a>
 
-## <a name="add-event-hubs-action"></a>Event Hubs eylem Ekle
+## <a name="add-event-hubs-action"></a>Olay Hub'ları eylemi ekleme
 
-Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-concepts) , iş akışınızda bir tetikleyiciyi veya başka bir eylemi izleyen bir adımdır. Bu örnekte, mantıksal uygulama, Olay Hub 'ınızdaki yeni olayları denetleyen Event Hubs tetikleyicisiyle başlar.
+Azure Logic Apps'ta [eylem,](../logic-apps/logic-apps-overview.md#logic-app-concepts) iş akışınızda bir tetikleyici veya başka bir eylemi izleyen bir adımdır. Bu örnekte, mantık uygulaması Olay Hub'ınızdaki yeni olayları denetleyen bir Olay Hub'ları tetikleyicisiyle başlar.
 
-1. Azure portal veya Visual Studio 'da mantıksal uygulamanızı Logic Apps tasarımcısında açın. Bu örnek Azure portal kullanır.
+1. Azure portalında veya Visual Studio'da mantık uygulamanızı Logic Apps Designer'da açın. Bu örnekte Azure portalı kullanır.
 
-1. Tetikleyici veya eylem altında **yeni adım**' ı seçin.
+1. Tetikleyici veya eylem altında **Yeni adım'ı**seçin.
 
-   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. 
-   Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Varolan adımlar arasında eylem eklemek için farenizi bağlanan okun üzerine taşıyın. 
+   Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
 
-1. Arama kutusuna filtreniz olarak "Olay Hub 'ları" yazın.
-Eylemler listesinden şu eylemi seçin: **olay Gönder-Event Hubs**
+1. Arama kutusuna filtreniz olarak "olay hub'ları" girin.
+Eylemler listesinden şu eylemi seçin: **Olay gönder - Olay Hub'ları**
 
-   !["Olay Gönder" eylemini seçin](./media/connectors-create-api-azure-event-hubs/find-event-hubs-action.png)
+   !["Olay gönder" eylemini seçin](./media/connectors-create-api-azure-event-hubs/find-event-hubs-action.png)
 
-1. Bağlantı ayrıntıları istenirse [Event Hubs bağlantınızı hemen oluşturun](#create-connection). 
+1. Bağlantı ayrıntıları için istenirseniz, [Olay Hub'ları bağlantınızı şimdi oluşturun.](#create-connection) 
 
-1. Eylemde, göndermek istediğiniz olaylar hakkında bilgi sağlayın. Daha fazla özellik için **yeni parametre Ekle** listesini açın. Bir parametre seçilmesi bu özelliği eylem kartına ekler.
+1. Eylemde, göndermek istediğiniz olaylar hakkında bilgi sağlayın. Daha fazla özellik için **yeni parametre** ekle listesini açın. Bir parametre seçmek, bu özelliği eylem kartına ekler.
 
-   ![Olay Hub 'ı adını seçin ve olay içeriğini sağlayın](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
+   ![Olay Hub adını seçin ve etkinlik içeriği sağlayın](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Olay Hub 'ı adı** | Yes | Olayı göndermek istediğiniz olay hub 'ı |
-   | **İçerik** | Hayır | Göndermek istediğiniz olay için içerik |
-   | **Özelliklerinin** | Hayır | Gönderilen uygulama özellikleri ve değerler |
-   | **Bölüm anahtarı** | Hayır | Olayın gönderileceği [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği |
+   | **Olay Hub'ı adı** | Evet | Olayı göndermek istediğiniz Olay Hub'ı |
+   | **İçerik** | Hayır | Göndermek istediğiniz etkinliğin içeriği |
+   | **Özellikler** | Hayır | Gönderilecek uygulama özellikleri ve değerleri |
+   | **Bölüm anahtarı** | Hayır | Olayın nereye gönderilen [bölüm](../event-hubs/event-hubs-features.md#partitions) kimliği |
    ||||
 
-   Örneğin, Event Hubs tetikleyicinizden çıktıyı başka bir olay hub 'ına gönderebilirsiniz:
+   Örneğin, Olay Hub'ları tetikleyicinizden çıktıyı başka bir Olay Hub'ına gönderebilirsiniz:
 
    ![Olay örneği gönder](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action-example.png)
 
-1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1. Bittiğinde, tasarımcı araç çubuğunda **Kaydet'i**seçin.
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-your-event-hub"></a>Olay Hub 'ınıza bağlanın
+## <a name="connect-to-your-event-hub"></a>Etkinlik Merkezinize bağlanın
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)] 
 
-1. Bağlantı bilgileri istendiğinde, şu ayrıntıları sağlayın:
+1. Bağlantı bilgileri istendiğinde şu ayrıntıları sağlayın:
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı Adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | **Event Hubs ad alanı** | Yes | <*olayı-hub 'lar-ad alanı*> | Kullanmak istediğiniz Event Hubs ad alanını seçin. |
+   | **Bağlantı Adı** | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | **Olay Hub'ları Ad Alanı** | Evet | <*olay hub'ları-ad alanı*> | Kullanmak istediğiniz Etkinlik Hub'ları ad alanını seçin. |
    |||||  
 
    Örnek:
 
-   ![Olay Hub 'ı bağlantısı oluştur](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
+   ![Olay Hub bağlantısı oluşturma](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 
-   Bağlantı dizesini el ile girmek için **bağlantı bilgilerini el ile girin**' i seçin. 
-   [Bağlantı dizenizi bulmayı](#permissions-connection-string)öğrenin.
+   Bağlantı dizesini el ile girmek için **bağlantı bilgilerini El Ile girin'i**seçin. 
+   [Bağlantı dizenizi nasıl bulacağınızı](#permissions-connection-string)öğrenin.
 
-2. Henüz seçili değilse, kullanılacak Event Hubs ilkesini seçin. **Oluştur**’u seçin.
+2. Zaten seçilmemişse kullanılacak Olay Hub'ları ilkesini seçin. **Oluştur**’u seçin.
 
-   ![Olay Hub 'ı bağlantısı oluşturma, Bölüm 2](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-2.png)
+   ![Olay Hub bağlantısı oluşturma, bölüm 2](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-2.png)
 
-3. Bağlantınızı oluşturduktan sonra [Event Hubs tetikleyici Ekle](#add-trigger) veya [Event Hubs eylem Ekle](#add-action)' ye geçin.
+3. Bağlantınızı oluşturduktan [sonra, Olay Hub'ları Ekle tetikleyicisi](#add-trigger) veya [Olay Hub'ları Ekle eylemiyle](#add-action)devam edin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Swagger dosyasında açıklandığı şekilde Tetikleyiciler, Eylemler ve sınırlar gibi teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/eventhubs/)bakın.
+Tetikleyiciler, eylemler ve sınırlar gibi teknik ayrıntılar için, bağlayıcının Swagger dosyasında açıklandığı gibi, [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/eventhubs/)bakın.
 
 > [!NOTE]
-> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
+> [Bir entegrasyon hizmeti ortamındaki (İmKB)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)mantık uygulamaları için, bu bağlayıcının İmKB etiketli sürümü bunun yerine [İmKB ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

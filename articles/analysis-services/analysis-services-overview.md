@@ -1,6 +1,6 @@
 ---
 title: Azure Analysis Services nedir | Microsoft Docs
-description: Bulutta kurumsal düzeyde veri modelleri sağlayan, tam olarak yönetilen bir hizmet olarak platform (PaaS) Azure Analysis Services hakkında bilgi edinin.
+description: Bulutta kurumsal dereceli veri modelleri sağlayan hizmet olarak tam olarak yönetilen bir platform olan Azure Analiz Hizmetleri (PaaS) hakkında bilgi edinin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
@@ -8,17 +8,17 @@ ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240607"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services, bulutta kurumsal düzeyde veri modelleri sağlayan, tam yönetilen bir hizmet olarak platformdur (PaaS). Birden fazla veri kaynağından verileri birleştirmek, ölçümleri tanımlamak ve tek, güvenilen bir tablo biçiminde anlam veri modelinde verilerinizin güvenliğini sağlamak için gelişmiş karma ve modelleme özelliklerini kullanın. Veri modeli, kullanıcıların geçici veri analizi için büyük miktarlarda verilere gözatmasına yönelik daha kolay ve hızlı bir yol sağlar.
+Azure Analysis Services, bulutta kurumsal düzeyde veri modelleri sağlayan, tam yönetilen bir hizmet olarak platformdur (PaaS). Birden fazla veri kaynağından verileri birleştirmek, ölçümleri tanımlamak ve tek, güvenilen bir tablo biçiminde anlam veri modelinde verilerinizin güvenliğini sağlamak için gelişmiş karma ve modelleme özelliklerini kullanın. Veri modeli, kullanıcıların geçici veri analizi için büyük miktarlarda veriye göz atmaları için daha kolay ve daha hızlı bir yol sağlar.
 
 ![Veri kaynakları](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -34,7 +34,7 @@ Azure Analysis Services, birçok Azure hizmetiyle tümleştirildiğinden gelişm
 
 ## <a name="the-right-tier-when-you-need-it"></a>İhtiyacınız olduğunda doğru katman
 
-Azure Analysis Services; **Geliştirici**, **Temel** ve **Standart** katmanlarında sunulur. Her katmanda, plan maliyetleri, işleme gücüne, sorgu Işleme birimlerine (QPUs) ve bellek boyutuna göre farklılık gösterir. Sunucu oluşturduğunuzda, katman içinde bir plan seçersiniz. Aynı katman içinde planları yukarı veya aşağı doğru değişiklik yapabilir veya daha üst bir katmana yükseltebilirsiniz, ama üst katmandan daha alt bir katmana inemezsiniz.
+Azure Çözümleme Hizmetleri **Geliştirici,** **Temel**ve **Standart** katmanlarda kullanılabilir. Her katmanda, plan maliyetleri işlem gücüne, Sorgu İşlem Birimleri'ne (QPUs) ve bellek boyutuna göre değişir. Sunucu oluşturduğunuzda, katman içinde bir plan seçersiniz. Aynı katman içinde planları yukarı veya aşağı doğru değişiklik yapabilir veya daha üst bir katmana yükseltebilirsiniz, ama üst katmandan daha alt bir katmana inemezsiniz.
 
 ### <a name="developer-tier"></a>Geliştirici katmanı
 
@@ -47,7 +47,7 @@ Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek 
 
 ### <a name="basic-tier"></a>Temel katman
 
-Bu katman küçük tablolu modeller, sınırlı düzeyde kullanıcı eşzamanlılığı ve basit veri yenileme gereksinimlerine sahip olan üretim çözümleri için önerilir. Bu katmanda sorgu çoğaltma ölçeği genişletme *kullanılamıyor* . Perspektifler, çoklu bölümler ve DirectQuery tablolu model özellikleri bu katmanda *desteklenmez*.  
+Bu katman küçük tablolu modeller, sınırlı düzeyde kullanıcı eşzamanlılığı ve basit veri yenileme gereksinimlerine sahip olan üretim çözümleri için önerilir. Sorgu çoğaltma ölçeklendirmesi bu katman için *kullanılamaz.* Perspektifler, çoklu bölümler ve DirectQuery tablolu model özellikleri bu katmanda *desteklenmez*.  
 
 |Planlama  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
@@ -134,11 +134,11 @@ Toplam maliyet; seçtiğiniz bölge, katman, sorgu çoğaltmaları ve duraklatma
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services’ı temel alır
 
-Azure Analysis Services, SQL Server Analysis Services Enterprise Edition’da bulunan harika özelliklerin çoğu ile uyumludur. Azure Analysis Services, 1200 veya üzeri [uyumluluk düzeylerinde](analysis-services-compat-level.md) tablolu modelleri destekler. Tablolu modeller, Tablolu Model Betik Dili (TMSL) ve Tablolu Nesne Modeli (TOM) kodundaki tablolu meta veri nesne tanımları halinde geliştirilmiş ilişkisel modelleme yapılarıdır (model, tablolar, sütunlar). Bölümler, perspektifler, satır düzeyi güvenlik, çift yönlü ilişkiler ve çeviriler\*desteklenir. Çok boyutlu modeller ve *SharePoint için PowerPivot Azure Analysis Services desteklenmez.*
+Azure Analysis Services, SQL Server Analysis Services Enterprise Edition’da bulunan harika özelliklerin çoğu ile uyumludur. Azure Analysis Services, 1200 veya üzeri [uyumluluk düzeylerinde](analysis-services-compat-level.md) tablolu modelleri destekler. Tablolu modeller, Tablolu Model Betik Dili (TMSL) ve Tablolu Nesne Modeli (TOM) kodundaki tablolu meta veri nesne tanımları halinde geliştirilmiş ilişkisel modelleme yapılarıdır (model, tablolar, sütunlar). Bölümler, perspektifler, satır düzeyinde güvenlik, çift yönlü ilişkiler ve çeviriler\*desteklenir. Azure Çözümleme Hizmetlerinde Çok boyutlu modeller ve SharePoint için PowerPivot *desteklenmez.*
 
-Hem bellek içi hem de DirectQuery modlarında tablolu modeller desteklenir. Bellek içi modda (varsayılan) tablolu modeller birden çok veri kaynağını destekler. Model verileri yüksek oranda sıkıştırılmış ve bellek içinde önbelleğe alınmış olduğundan, bu mod büyük miktarlarda veriler üzerinde en hızlı sorgu yanıtını sağlar. Ayrıca, karmaşık veri kümeleri ve sorgular için en fazla esnekliği sağlar. Bölümleme, artımlı yükleri etkinleştirir, paralelleştirmeyi artırır ve bellek tüketimini azaltır. Hesaplanmış tablolar gibi diğer gelişmiş veri modelleme özellikleri ve tüm DAX işlevleri desteklenir. Veri kaynaklarından önbelleğe alınmış verileri güncelleştirmek için bellek içi modeller yenilenmelidir (işlenmelidir). Azure hizmet sorumlusu desteği sayesinde, PowerShell, TOM, TMSL ve REST kullanan katılımsız yenileme işlemleri, model verilerinizin her zaman güncel olduğundan emin olmanızı sağlar. 
+Hem bellek içi hem de DirectQuery modlarında tablolu modeller desteklenir. Bellek içi modda (varsayılan) tablolu modeller birden çok veri kaynağını destekler. Model verileri yüksek oranda sıkıştırılmış ve bellek içinde önbelleğe alınmış olduğundan, bu mod büyük miktarlarda veriler üzerinde en hızlı sorgu yanıtını sağlar. Ayrıca, karmaşık veri kümeleri ve sorgular için en fazla esnekliği sağlar. Bölümleme, artımlı yükleri etkinleştirir, paralelleştirmeyi artırır ve bellek tüketimini azaltır. Hesaplanmış tablolar gibi diğer gelişmiş veri modelleme özellikleri ve tüm DAX işlevleri desteklenir. Veri kaynaklarından önbelleğe alınmış verileri güncelleştirmek için bellek içi modeller yenilenmelidir (işlenmelidir). Azure hizmet temel desteği yle PowerShell, TOM, TMSL ve REST'i kullanarak gözetimsiz yenileme işlemleri, model verilerinizin her zaman güncel olduğundan emin olmak için esneklik sunar. 
 
-DirectQuery modu*, depolama ve sorgu yürütme için arka uç ilişkisel veritabanından yararlanır. Tek SQL Server çok büyük veri kümeleri, SQL Server veri ambarı, Azure SQL veritabanı, Azure SYNAPSE Analytics (SQL veri ambarı), Oracle ve Teradata veri kaynakları desteklenmektedir. Arka uç veri kümeleri, kullanılabilir sunucu kaynak belleğini aşabilir. Karmaşık veri modeli yenileme senaryoları gerekli değildir. Ayrıca, sınırlı veri kaynağı türleri, DAX formülü sınırlamaları gibi bazı kısıtlamalar vardır ve bazı gelişmiş veri modelleme özellikleri desteklenmez. Sizin için en iyi modu belirlemeden önce bkz. [Direct Query modu](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
+DirectQuery modu*, depolama ve sorgu yürütme için arka uç ilişkisel veritabanından yararlanır. Tek bir SQL Server, SQL Server Veri Ambarı, Azure SQL Veritabanı, Azure Synapse Analytics (SQL Veri Ambarı), Oracle ve Teradata veri kaynaklarında son derece büyük veri kümeleri desteklenir. Arka uç veri kümeleri, kullanılabilir sunucu kaynak belleğini aşabilir. Karmaşık veri modeli yenileme senaryoları gerekli değildir. Sınırlı veri kaynağı türleri, DAX formül sınırlamaları gibi bazı kısıtlamalar da vardır ve bazı gelişmiş veri modelleme özellikleri desteklenmez. Sizin için en iyi modu belirlemeden önce bkz. [Direct Query modu](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
 
 \* Özellik kullanılabilirliği katmana bağlıdır.
 
@@ -148,26 +148,26 @@ Azure Analysis Services’te tablolu modeller, basit metin dosyalarından Azure 
 
 ## <a name="compatibility-level"></a>Uyumluluk düzeyi
 
-Uyumluluk düzeyi Analysis Services altyapıdaki yayına özgü davranışları ifade eder. Azure Analysis Services, 1200 ve daha yüksek uyumluluk düzeylerinde tablo modellerini destekler. Daha fazla bilgi için bkz. [tablolu modeller Için uyumluluk düzeyi](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
+Uyumluluk düzeyi, Çözümhizmetleri altyapısındaki serbest bırakmaya özgü davranışları ifade eder. Azure Analysis Services, 1200 veya üzeri uyumluluk düzeylerinde tablolu modelleri destekler. Daha fazla bilgi [için, tabular modeller için Uyumluluk düzeyine](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)bakın.
 
 
 ## <a name="your-data-is-secure"></a>Verileriniz güvende
 
-Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenlik sağlar. Azure hizmeti olarak Analysis Services, Azure platformunun bir parçası olarak otomatik olarak etkinleştirilen **temel** hizmet reddi (DDoS) saldırıları sağlar. Daha fazla bilgi için bkz. [Azure DDoS koruması standardına genel bakış](../virtual-network/ddos-protection-overview.md). 
+Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenlik sağlar. Bir Azure hizmeti olarak, Çözümleme Hizmetleri, Azure platformunun bir parçası olarak otomatik olarak etkinleştirilen Dağıtılmış hizmet reddi (DDoS) saldırılarının **Temel** düzeyini sağlar. Daha fazla bilgi için [Azure DDoS Koruma Standardı'na genel bakış](../virtual-network/ddos-protection-overview.md)alameti dir. 
 
-Sunucu düzeyinde Analysis Services, güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve sunucu tarafı şifreleme sağlar. Veri modeli düzeyinde, Kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik, verilerinizin güvende olduğundan ve yalnızca bunu gördüğü kullanıcılar tarafından görülendiğinden emin olmanızı sağlar.
+Sunucu düzeyinde, Çözümleme Hizmetleri güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve Sunucu Tarafı Şifrelemesi sağlar. Veri modeli düzeyinde, kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik verilerinizin güvenli olduğundan ve yalnızca onu görmesi gereken kullanıcılar tarafından görülmesini sağlar.
 
 ### <a name="firewall"></a>Güvenlik duvarı
 
-Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, güvenlik duvarı koruması yeni sunucular için etkin değildir. Önerilen güvenlik duvarı koruması etkinleştirilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
+Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, yeni sunucular için güvenlik duvarı koruması etkinleştirilir. Güvenlik duvarı korumasının etkin olması önerilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 Kullanıcı kimlik doğrulaması, [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) tarafından işlenir. Kullanıcılar oturum açarken veritabanına rol tabanlı erişim ile bir kuruluş hesabı kimliği kullanır. Kullanıcı kimlikleri, sunucunun içinde bulunduğu abonelik için varsayılan Azure Active Directory’nin üyesi olmalıdır. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
 
 ### <a name="data-security"></a>Veri güvenliği
 
-Azure Analysis Services, Analysis Services veritabanları için depolamayı ve meta verileri kalıcı hale getirmek için Azure Blob depolamayı kullanır. Blob’daki veri dosyaları, [Azure Blob Sunucu Tarafı Şifrelemesi (SSE)](../storage/common/storage-service-encryption.md) kullanılarak şifrelenir. Doğrudan Sorgu modu kullanılırken yalnızca meta veriler depolanır. Gerçek verilere veri kaynağından şifrelenmiş protokol aracılığıyla sorgu zamanında erişilir.
+Azure Analysis Services, Analysis Services veritabanları için depolamayı ve meta verileri kalıcı hale getirmek için Azure Blob depolamayı kullanır. Blob içindeki veri dosyaları [Azure Blob Server Side Encryption (SSE)](../storage/common/storage-service-encryption.md)kullanılarak şifrelenir. Doğrudan Sorgu modu kullanılırken yalnızca meta veriler depolanır. Gerçek verilere veri kaynağından şifrelenmiş protokol aracılığıyla sorgu zamanında erişilir.
 
 [Şirket içi veri ağ geçidi](analysis-services-gateway.md) yüklenip yapılandırılarak şirket içi veri kaynaklarınızda bulunan verilere güvenli erişim gerçekleştirilir. Ağ geçitleri hem DirectQuery hem de bellek içi modlar için veri erişimi sağlar.
 
@@ -185,7 +185,7 @@ Tüm uyumluluk düzeylerindeki tablolu modeller, satır düzeyinde güvenliği d
 
 1400 uyumluluk düzeyindeki tablolu modeller, tablo düzeyinde güvenlik ile sütun düzeyinde güvenlik içeren nesne düzeyinde güvenliği destekler. Nesne düzeyinde güvenlik, TMSL veya TOM kullanılarak Model.bim dosyasındaki JSON tabanlı meta verilerde ayarlanır. Daha fazla bilgi almak için bkz. [Nesne düzeyinde güvenlik](https://docs.microsoft.com/analysis-services/tabular-models/object-level-security).
 
-### <a name="automation-through-service-principals"></a>Hizmet sorumluları aracılığıyla Otomasyon
+### <a name="automation-through-service-principals"></a>Servis müdürleri aracılığıyla otomasyon
 
 Hizmet sorumluları, katılımsız kaynak ve hizmet düzeyinde işlemler gerçekleştirmek için kiracınızın içinde oluşturduğunuz bir Azure Active Directory uygulama kaynağıdır. Hizmet sorumluları, veri yenileme, ölçek artırma/azaltma ve duraklatma/sürdürme gibi genel görevleri otomatik hale getirmek amacıyla Azure Otomasyonu, PowerShell katılımsız modu, özel istemci uygulamaları ve web uygulamaları ile birlikte kullanılır. Rol üyeliği aracılığıyla hizmet sorumlularına izinler atanır. Daha fazla bilgi almak için bkz. [Hizmet sorumlularıyla otomasyon](analysis-services-service-principal.md).
 
@@ -200,9 +200,9 @@ Azure Güvenliği hakkında daha fazla bilgi edinmek için bkz. [Microsoft Güve
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Analysis Services projeleriyle Visual Studio ile modeller geliştirin ve dağıtın. Analysis Services projeleri uzantısı, sizi hızla ve hızlı bir şekilde kullanmaya başlamanızı sağlayan şablonları ve sihirbazları içerir. Visual Studio 'da model yazma ortamı artık tablo 1400 ve daha yüksek modeller için modern veri kaynağı veri kaynağı sorgusu ve karma işlevselliği içerir. Power BI Masaüstü ve Excel 2016'daki Veri Al işlevini biliyorsanız, üst düzeyde özelleştirilmiş veri kaynağı sorguları oluşturmanın ne kadar kolay olduğunu zaten biliyor olmalısınız. 
+Analiz Hizmetleri projeleri ile Visual Studio ile modeller geliştirin ve dağıtın. Çözümleme Hizmetleri projeleri uzantısı, sizi hızlı bir şekilde ayağa kaldıran şablonlar ve sihirbazlar içerir. Visual Studio'daki model yazma ortamı artık 1400 ve daha yüksek modeller için modern Get Data veri kaynağı sorgusu ve mashup işlevselliğini içerir. Power BI Masaüstü ve Excel 2016'daki Veri Al işlevini biliyorsanız, üst düzeyde özelleştirilmiş veri kaynağı sorguları oluşturmanın ne kadar kolay olduğunu zaten biliyor olmalısınız. 
 
-Microsoft Analysis Services projeleri ücretsiz bir yüklenebilir VSıX paketi olarak sunulmaktadır. [Market'ten indirin](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Uzantı, ücretsiz topluluk sürümü de dahil olmak üzere herhangi bir Visual Studio 2017 ve üzeri sürümüyle birlikte çalışmaktadır.
+Microsoft Analysis Services Projects ücretsiz yüklenebilir VSIX paketi olarak kullanılabilir. [Market'ten indirin](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Uzantı, Visual Studio 2017 ve daha sonraki sürümleriyle birlikte çalışır ve ücretsiz Topluluk sürümü de dahil olmak üzere.
 
 ### <a name="sql-server-management-studio"></a>Sql Server Management Studio
 
@@ -210,7 +210,7 @@ Microsoft Analysis Services projeleri ücretsiz bir yüklenebilir VSıX paketi o
 
 ### <a name="powershell"></a>PowerShell
 
-Sunucu kaynakları oluşturma, sunucu işlemlerini askıya alma veya sürdürme veya hizmet düzeyi (katman) Azure PowerShell cmdlet 'lerini değiştirme gibi sunucu kaynak yönetimi görevleri. Rol üyeleri ekleme, işleme veya TMSL betiklerini çalıştırma gibi veritabanlarını yönetmeye yönelik diğer görevlerde, SqlServer modülündeki cmdlet'ler kullanılır. Daha fazla bilgi almak için bkz. [Azure Analysis Services’i PowerShell ile yönetme](analysis-services-powershell.md).
+Sunucu kaynakları oluşturma, sunucu işlemlerini askıya alma veya sürdürme veya hizmet düzeyini (katman) değiştirme gibi sunucu kaynak yönetimi görevleri Azure PowerShell cmdlets kullanır. Rol üyeleri ekleme, işleme veya TMSL betiklerini çalıştırma gibi veritabanlarını yönetmeye yönelik diğer görevlerde, SqlServer modülündeki cmdlet'ler kullanılır. Daha fazla bilgi almak için bkz. [Azure Analysis Services’i PowerShell ile yönetme](analysis-services-powershell.md).
 
 ### <a name="object-model-and-scripting"></a>Nesne modeli ve betik oluşturma
 
@@ -224,7 +224,7 @@ Power BI, Excel, Reporting Services ve üçüncü taraf araçlar gibi modern ver
 
 ## <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
 
-Azure Analysis Services, Azure ölçümleriyle tümleşiktir ve sunucularınızın performans ve durumunu izlemenize yardımcı olan çok sayıda kaynağa özgü ölçüm sağlar. Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-monitor.md). Ölçümleri [Azure kaynak tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) ile kaydedin. Azure [depolama](https://azure.microsoft.com/services/storage/)'ya günlükleri izleyip gönderin, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a aktarın [ve Azure 'Da bir hizmet olan](https://www.microsoft.com/cloud-platform/operations-management-suite)Azure [izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)dışarı aktarın. Daha fazla bilgi için bkz. [Tanılama günlüğüne kaydetmeyi ayarlama](analysis-services-logging.md).
+Azure Analysis Services, Azure ölçümleriyle tümleşiktir ve sunucularınızın performans ve durumunu izlemenize yardımcı olan çok sayıda kaynağa özgü ölçüm sağlar. Daha fazla bilgi için sunucu [ölçümlerini izleyin.](analysis-services-monitor.md) Ölçümleri [Azure kaynak tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) ile kaydedin. Günlükleri Azure [Depolama'ya](https://azure.microsoft.com/services/storage/)izleyin ve gönderin, [Azure Etkinlik Hub'larına](https://azure.microsoft.com/services/event-hubs/)aktarın ve [Azure'un](https://www.microsoft.com/cloud-platform/operations-management-suite)bir hizmeti olan [Azure Monitor günlüklerine](https://azure.microsoft.com/services/log-analytics/)aktarın. Daha fazla bilgi için bkz. [Tanılama günlüğüne kaydetmeyi ayarlama](analysis-services-logging.md).
 
 Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) kullanmayı destekler. SQL söz dizimine göre DMV’ler, sunucu örneği hakkında meta veri ve izleme bilgileri döndüren şema satır kümeleri ile arabirim oluşturur.
 
@@ -232,7 +232,7 @@ Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](https:
 
 Azure Analysis Services’e özgü belgeler buraya eklenir. Makaleleri bulmak için tarayıcı ekranınızın sol tarafındaki içindekiler bölümünü kullanın. 
 
-Azure Analysis Services tablosal modeller, SQL Server Analysis Services tablolu modellerle aynı olduğundan, [SQL Server Analysis Services belgelerindeki](https://docs.microsoft.com/analysis-services/analysis-services-overview)zengin bir paylaşılan veri modelleme öğreticileri, kavramsal, yordamsal, geliştirici ve başvuru makalelerinin bir kitaplığı vardır. SQL Server Analysis Services belgelerindeki makaleler, bunların Azure Analysis Services için de geçerli olup olmadığını başlığın altındaki bir APPLIES TO başlığı ile gösterir.
+Azure Analiz Hizmetleri tabular modelleri SQL Server Analysis Services'daki tabular modeller ile aynı olduğundan, [SQL Server Analysis Services belgelerinde](https://docs.microsoft.com/analysis-services/analysis-services-overview)paylaşılan veri modelleme öğreticileri, kavramsal, yordam, geliştirici ve başvuru makalelerinden oluşan geniş bir kitaplık vardır. SQL Server Analysis Services belgelerindeki makaleler, bunların Azure Analysis Services için de geçerli olup olmadığını başlığın altındaki bir APPLIES TO başlığı ile gösterir.
 
 ![Paylaşılan belgeler](./media/analysis-services-overview/aas-overview-applies-to.png)
 
@@ -248,7 +248,7 @@ Azure Analysis Services belgeleri ayrıca [GitHub Sorunları](https://docs.micro
 
 ## <a name="blogs"></a>Bloglar
 
-Her şey çok hızlı gelişiyor. [Power BI blogundan](https://powerbi.microsoft.com/blog/category/analysis-services/) ve [Azure blogundan](https://azure.microsoft.com/blog/)en son bilgileri alın.
+Her şey çok hızlı gelişiyor. [Power BI blogu](https://powerbi.microsoft.com/blog/category/analysis-services/) ve Azure [blogu](https://azure.microsoft.com/blog/)hakkında en son bilgileri alın.
 
 ## <a name="community"></a>Topluluk
 

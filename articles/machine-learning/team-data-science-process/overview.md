@@ -1,6 +1,6 @@
 ---
-title: Team Data Science Process nedir?
-description: Tahmine dayalı analiz çözümlerini ve akıllı uygulamalar sunmak için bir veri bilimi metodolojisidir sağlar.
+title: Ekip Veri Bilimi Süreci Nedir?
+description: Tahmine dayalı analitik çözümleri ve akıllı uygulamalar sunmak için veri bilimi metodolojisi sağlar.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,96 +12,96 @@ ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79088076"
 ---
-# <a name="what-is-the-team-data-science-process"></a>Team Data Science Process nedir?
+# <a name="what-is-the-team-data-science-process"></a>Ekip Veri Bilimi Süreci Nedir?
 
-Team Data Science işlem (TDSP), Tahmine dayalı analiz çözümlerini ve akıllı uygulamaları etkili bir şekilde sunmak için bir Çevik, yinelemeli bir veri bilimi metodolojisidir olur. TDSP, takım rollerinin en iyi şekilde nasıl çalıştığını önererek ekip işbirliğini ve öğrenilmesine yardımcı olur. TDSP, veri bilimi girişimlerinin başarıyla uygulanmasına yardımcı olmak için Microsoft ve diğer sektör liderlerinden en iyi uygulamaları ve yapıları içerir. Hedef, şirketlerin kendi analiz programlarının avantajlarını tam olarak hayata geçirmesine yardımcı olmaktır.
+Ekip Veri Bilimi Süreci (TDSP), tahmine dayalı analitik çözümleri ve akıllı uygulamaları verimli bir şekilde sunmak için çevik, yinelemeli bir veri bilimi metodolojisidir. TDSP, ekip rollerinin birlikte en iyi nasıl çalıştığını önererek ekip işbirliğini ve öğrenmeyi geliştirmeye yardımcı olur. TDSP, veri bilimi girişimlerinin başarılı bir şekilde uygulanmasına yardımcı olmak için Microsoft ve diğer endüstri liderlerinin en iyi uygulamalarını ve yapılarını içerir. Hedef, şirketlerin kendi analiz programlarının avantajlarını tam olarak hayata geçirmesine yardımcı olmaktır.
 
-Bu makalede TDSP ve ana bileşenlerini genel bir bakış sağlar. Burada, farklı araç türleriyle uygulanabilecek işlemin genel bir açıklamasını sunuyoruz. Proje görevlerini ve rolleri işlem yaşam döngüsü içinde ilgili daha ayrıntılı bir açıklama ek bağlantılı konularda sağlanır. Microsoft araçları ve TDSP ekiplerimiz uygulamak için kullandığımız altyapısı belirli bir kümesini kullanarak TDSP uygulama konusunda yönergeler de verilmektedir.
+Bu makalede, TDSP ve ana bileşenlerine genel bir bakış sağlanmış. Burada farklı türde araçlarla uygulanabilen sürecin genel bir açıklamasını salıyoruz. Projenin yaşam döngüsünde yer alan proje görevlerinin ve rollerinin daha ayrıntılı bir açıklaması, bağlantılı ek konularda sağlanır. TDSP'yi ekiplerimizde uygulamak için kullandığımız belirli bir Microsoft araçları ve altyapısı kümesini kullanarak TDSP'nin nasıl uygulanacağı konusunda da rehberlik sağlanır.
 
-## <a name="key-components-of-the-tdsp"></a>TDSP temel bileşenleri
+## <a name="key-components-of-the-tdsp"></a>TDSP'nin temel bileşenleri
 
-TDSP anahtar aşağıdaki bileşenlerden oluşur:
+TDSP aşağıdaki temel bileşenlerden oluşur:
 
-- **Veri bilimi yaşam döngüsü** tanımı
-- **Standartlaştırılmış bir proje yapısı**
+- Veri **bilimi yaşam döngüsü** tanımı
+- **Standartlaştırılmış proje yapısı**
 - Veri bilimi projeleri için **altyapı ve kaynaklar**
-- Proje yürütmesi için **Araçlar ve yardımcı programlar**
+- Proje yürütme için **araçlar ve yardımcı programlar**
 
 
 ## <a name="data-science-lifecycle"></a>Veri bilimi yaşam döngüsü
 
-Team Data Science işlem (TDSP), veri bilimi proje geliştirme yapısı için bir yaşam döngüsü sağlar. Yaşam döngüsü, başarılı projelerin izlediği tam adımları özetler.
+Ekip Veri Bilimi Süreci (TDSP), veri bilimi projelerinizin gelişimini yapılandırmak için bir yaşam döngüsü sağlar. Yaşam döngüsü, başarılı projelerin izlediği tüm adımları özetler.
 
-[Net DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [kdd](https://wikipedia.org/wiki/Data_mining#Process) veya kuruluşunuzun kendi özel süreci gibi başka bir veri bilimi yaşam döngüsü kullanıyorsanız, görev tabanlı TDSP 'yi bu geliştirme ömürleri bağlamında kullanmaya devam edebilirsiniz. Yüksek düzeyde, bu farklı yöntemleri çok ortaktır. 
+[CRISP-DM,](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) [KDD](https://wikipedia.org/wiki/Data_mining#Process) veya kuruluşunuzun kendi özel işlemi gibi başka bir veri bilimi yaşam döngüsü kullanıyorsanız, bu geliştirme yaşam döngüleri bağlamında görev tabanlı TDSP'yi kullanmaya devam edebilirsiniz. Yüksek düzeyde, bu farklı metodolojilerin çok ortak noktaları var. 
 
-Bu yaşam döngüsünü, akıllı uygulamalar bir parçası olarak gönderilen veri bilimi projeleri için tasarlanmıştır. Bu uygulamalar, Tahmine dayalı analiz için makine öğrenme veya yapay zeka modelleri dağıtın. Araştırmacı veri bilimi projeleri veya improvised Analytics projeleri, bu işlemi kullanmanın da avantajlarından yararlanabilir. Ancak, bu gibi durumlarda, bazı açıklanan adımları gerekmeyebilir.    
+Bu yaşam döngüsü, akıllı uygulamaların bir parçası olarak gönderi yapan veri bilimi projeleri için tasarlanmıştır. Bu uygulamalar, tahmine dayalı analitik için makine öğrenimi veya yapay zeka modellerini devreye sokar. Araştırmacı veri bilimi projeleri veya doğaçlama analiz projeleri de bu süreci kullanarak yararlanabilir. Ancak bu gibi durumlarda açıklanan bazı adımlargerekli olmayabilir.    
 
-Yaşam döngüsü projeleri genellikle genellikle yinelemeli olarak yürütme, önemli aşamalar açıklanmaktadır:
+Yaşam döngüsü, projelerin genellikle yineleyici olarak yürüttüğü başlıca aşamaları özetler:
 
-* **İş anlama**
-* **Veri alma ve anlama**
-* **Oluşturmanın**
+* **İş Anlayışı**
+* **Veri Toplama ve Anlama**
+* **Modelleme**
 * **Dağıtım**
-* **Müşteri kabulü**
+* **Müşteri Kabulü**
 
-**Team Data Science işlem yaşam döngüsünün**görsel bir gösterimi aşağıda verilmiştir. 
+Burada **Takım Veri Bilimi Süreci yaşam döngüsü**görsel bir temsilidir. 
 
-![TDSP Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![TDSP-Yaşam Döngüsü2](./media/overview/tdsp-lifecycle2.png) 
 
-TDSP yaşam döngüsünün her aşamasına yönelik hedefler, görevler ve belge yapıtları, [Team Data Science işlem yaşam döngüsü](lifecycle.md) konusunda açıklanmaktadır. Bu görevler ve yapıtları proje rolleri ile ilişkilendirilmiş:
+TDSP'de yaşam döngüsünün her aşamasıiçin hedefler, görevler ve dokümantasyon yapıları [Team Data Science Process yaşam döngüsü](lifecycle.md) konusunda açıklanmıştır. Bu görevler ve yapılar proje rolleri ile ilişkilidir:
 
-- Çözüm Mimarı
-- Proje Yöneticisi
+- Çözüm mimarı
+- Proje yöneticisi
 - Veri bilimcisi
 - Proje lideri 
 
-Aşağıdaki diyagramda görevlerinde (mavi) ve bu rolleri (dikey eksende) için yaşam döngüsü (yatay eksende) her aşaması ilişkili yapıları (yeşil içinde) bir kılavuz görünümünü sağlar. 
+Aşağıdaki diyagram, bu roller için (dikey eksende) yaşam döngüsünün her aşamasıyla (yatay eksende) ilişkili görevlerin (mavi renkte) ve yapıtların (yeşil renkte) Bir ızgara görünümünü sağlar. 
 
-[![TDSP-roller-ve-görevler](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP-roller ve görevleri](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
-## <a name="standardized-project-structure"></a>Standart Proje yapısı
+## <a name="standardized-project-structure"></a>Standartlaştırılmış proje yapısı
 
-Bir dizin yapısına paylaşın ve proje belgelerini şablonlarını kullanma tüm projeleri sahip, onların projeleri hakkında bilgi, takım üyeleri için kolaylaştırır. Tüm kod ve belgelere işbirliğini etkinleştirmek için Git, TFS veya Subversion gibi bir sürüm denetim sistemi (VC) depolanır. İzleme görevleri ve izleme sistemi Jıra, yarışı ve Azure DevOps gibi bir Çevik proje özelliklerinde, tek tek özellikler için kodun yakın izleme sağlar. Bu tür izleme de daha iyi maliyet tahminlerini almak takımların imkan tanır. TDSP, sürüm oluşturma, bilgi güvenliği ve işbirliği için VC'ler her proje için ayrı bir depo oluşturmanızı önerir. Tüm projeler için standartlaştırılmış yapısı kuruluş genelinde kurumsal bilgi yapı yardımcı olur.
+Tüm projelerin bir dizin yapısını paylaşması ve proje belgeleri için şablonlar kullanması, ekip üyelerinin projeleri hakkında bilgi bulmalarını kolaylaştırır. Tüm kod ve belgeler, ekip işbirliğini etkinleştirmek için Git, TFS veya Subversion gibi bir sürüm kontrol sisteminde (VCS) depolanır. Jira, Rally ve Azure DevOps gibi çevik bir proje izleme sistemindeki görevleri ve özellikleri izleme, tek tek özellikler için kodun daha yakından izlenmesine olanak tanır. Bu tür izleme, ekiplerin daha iyi maliyet tahminleri elde etmesini de sağlar. TDSP, VCS'deki her proje için sürüm oluşturma, bilgi güvenliği ve işbirliği için ayrı bir depo oluşturmanızı önerir. Tüm projeler için standartlaştırılmış yapı, kuruluş genelinde kurumsal bilgi nin oluşturulmasına yardımcı olur.
 
-Klasör yapısını ve standart olmayan konumlara gerekli belgeleri için şablonlar sağlar. Veri keşfi ve özellik ayıklama kodunu içeren ve bu modeli yinelemeler kayıt dosyaları bu klasör yapısını düzenler. Bu şablonlar, başkaları tarafından yapılan iş anlamak ve takıma yeni üyeler eklemek için takım üyeleri için kolaylaştırır. Belge şablonları markdown biçiminde görebilecek ve kolay bir işlemdir. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örneklere şunlar dahildir:
+Klasör yapısı için şablonlar ve standart konumlarda gerekli belgeler sağlarız. Bu klasör yapısı, veri arama ve özellik ayıklama için kod içeren dosyaları düzenler ve bu kayıt modeli yinelemeler. Bu şablonlar, ekip üyelerinin başkaları tarafından yapılan işleri anlamasını ve takımlara yeni üyeler eklemesini kolaylaştırır. Belge şablonlarını işaretleme biçiminde görüntülemek ve güncelleştirmek kolaydır. Sorunun iyi tanımlandığını ve teslim edilebilirlerin beklenen kaliteyi karşıladığını sağlamak için her proje için anahtar soruları içeren denetim listeleri sağlamak için şablonları kullanın. Örneklere şunlar dahildir:
 
-- projenin kapsamını ve iş sorununu belge için bir proje kurucu
-- Belge yapısı ve istatistikleri ham verilerin veri raporlarını
-- belge türetilmiş özellikleri için model raporları
-- ROC eğrileri veya MSE gibi performans ölçümlerini modeli
+- iş sorununu ve projenin kapsamını belgelemek için bir proje tüzüğü
+- ham verilerin yapısını ve istatistiklerini belgelemek için veri raporları
+- türetilen özellikleri belgelemek için model raporları
+- ROC eğrileri veya MSE gibi model performans ölçümleri
 
 
-[![TDSP-dizinler](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP dizinleri](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
-Dizin yapısı [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate)'dan kopyalanabilir.
+Dizin yapısı [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate)klonlanabilir.
 
-## <a name="infrastructure-and-resources-for-data-science-projects"></a>Altyapı ve veri bilimi projeleri için kaynaklar  
+## <a name="infrastructure-and-resources-for-data-science-projects"></a>Veri bilimi projeleri için altyapı ve kaynaklar  
 
-TDSP paylaşılan analiz ve depolama altyapısı gibi yönetmek için öneriler sağlar:
+TDSP, paylaşılan analiz ve depolama altyapılarını yönetmek için öneriler sunar:
 
 - veri kümelerini depolamak için bulut dosya sistemleri 
 - veritabanları
 - büyük veri (Hadoop veya Spark) kümeleri 
-- Machine learning hizmeti 
+- makine öğrenimi hizmeti 
 
-Ham ve işlenen veri kümelerinin depolandığı analiz ve depolama altyapısı, bulutta veya şirket içinde olabilir. Bu Altyapı yeniden üretilebilen analizi sağlar. Ayrıca, tutarsızlıklar ve gereksiz altyapı maliyetlerinden açabilir çoğaltma önler. Bu kaynaklara güvenli bir şekilde bağlanmak her takım üyesinin izin paylaşılan kaynakları sağlamak ve bunları izlemek için Araçlar sağlanır. Proje üyelerini tutarlı işlem ortamı oluşturmak için de iyi bir uygulamadır. Farklı ekip üyelerinin çoğaltabilir ve denemeleri doğrulayın.
+Ham ve işlenmiş veri kümelerinin depolandığı analitik ve depolama altyapısı bulutta veya şirket içinde olabilir. Bu altyapı tekrarlanabilir analiz sağlar. Ayrıca, tutarsızlıklara ve gereksiz altyapı maliyetlerine yol açabilecek yinelemeleri de önler. Paylaşılan kaynakları sağlamak, onları izlemek ve her ekip üyesinin bu kaynaklara güvenli bir şekilde bağlanmasına izin vermek için araçlar sağlanır. Ayrıca, proje üyelerinin tutarlı bir işlem ortamı oluşturması da iyi bir uygulamadır. Daha sonra farklı ekip üyeleri denemeleri çoğaltabilir ve doğrulayabilir.
 
-Birden fazla proje üzerinde çalışma ve çeşitli bulut analiz altyapısı bileşenleriyle paylaşımı takım örneği aşağıda verilmiştir.
+Aşağıda, birden çok proje üzerinde çalışan ve çeşitli bulut analizi altyapı bileşenlerini paylaşan bir ekibin bir örneği verilmiştir.
 
-[![TDSP-altyapı](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP altyapısı](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
-## <a name="tools-and-utilities-for-project-execution"></a>Araçlar ve yardımcı programlar için proje yürütme
+## <a name="tools-and-utilities-for-project-execution"></a>Proje yürütme için araçlar ve yardımcı programlar
 
-Çoğu kuruluş işlemde giriş zordur. Veri bilimi işlemi ve yaşam döngüsü Yardım düşük önündeki engelleri uygulamak ve kendi benimseme tutarlılığını artırmak için sağlanan araçları. TDSP araçları ve betikleri TDSP benimsenmesini ekip içinde hızlı giriş yapmak için başlangıç kümesi sağlar. Ayrıca, veri bilimi yaşam döngüsünü veri keşfi ve modelleme temel gibi ortak görevlerin bazıları otomatikleştirilmesine yardımcı olur. Kişilerin, ekip paylaşılan kod deposunda paylaşılan araçlar ve yardımcı programlar katkıda bulunmak için iyi tanımlanmış bir yapı mevcuttur. Bu kaynaklar, sonra ekip veya kuruluş içindeki diğer projeleri tarafından yararlanılabilir. TDSP araçları ve yardımcı programlar için bütün topluluk Katkıları etkinleştirmek de planları. TDSP yardımcı programları [GitHub](https://github.com/Azure/Azure-TDSP-Utilities)'dan kopyalanabilir.
+Çoğu kuruluşta süreçleri tanıtmak zordur. Veri bilimi süreci ve yaşam döngüsünü uygulamak için sağlanan araçlar, bunların benimsenmesinin önündeki engelleri düşürmeye ve tutarlılığının artmasına yardımcı olur. TDSP, TDSP'nin bir takım içinde benimsenmesini hızlandırmak için bir başlangıç araçları ve komut dosyaları sağlar. Ayrıca, veri arama ve temel modelleme gibi veri bilimi yaşam döngüsündeki bazı ortak görevlerin otomatiklenmesine yardımcı olur. Bireylerin, takımlarının paylaşılan kod deposuna paylaşılan araçlara ve yardımcı programlara katkıda bulunmaları için iyi tanımlanmış bir yapı sağlanır. Bu kaynaklar daha sonra takım veya kuruluş içindeki diğer projeler tarafından kullanılabilir. TDSP ayrıca araçların ve yardımcı programların tüm topluma katkılarını sağlamayı planlıyor. TDSP yardımcı programları [GitHub](https://github.com/Azure/Azure-TDSP-Utilities)klonlanabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ekip veri bilimi işlemi: roller ve görevler](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Bu işlemi standartlaştırın bir veri bilimi ekibi için anahtar personeli rollerini ve bunlarla ilişkili görevleri özetler. 
+[Ekip Veri Bilimi Süreci: Roller ve görevler](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Bu işlemi standartlaştıran bir veri bilimi ekibinin temel personel rollerini ve ilişkili görevlerini özetler. 

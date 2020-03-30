@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi yedekleme ilkelerini yönetme | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi hizmetini kullanarak bir StorSimple 8000 serisi cihazında el ile yedeklemeler, yedekleme zamanlamaları ve yedekleme bekletme oluşturmak ve yönetmek için nasıl kullanabileceğinizi açıklar.
+title: StorSimple 8000 serisi yedekleme politikalarını yönet | Microsoft Dokümanlar
+description: StorSimple 8000 serisi bir cihazda el ile yedeklemeler, yedekleme zamanlamaları ve yedekleme bekletme oluşturmak ve yönetmek için StorSimple Device Manager hizmetini nasıl kullanabileceğinizi açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,88 +15,88 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 607379f8645226a031646376df9ca18f4d3164bf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267800"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Yedekleme ilkelerini yönetmek için Azure portal StorSimple Aygıt Yöneticisi hizmetini kullanma
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Yedekleme ilkelerini yönetmek için Azure portalındaki StorSimple Device Manager hizmetini kullanma
 
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, StorSimple Aygıt Yöneticisi hizmeti **yedekleme ilkesi** dikey penceresinin, StorSimple birimleriniz için Yedekleme süreçlerini ve yedekleme bekletmesini denetlemek üzere nasıl kullanılacağı açıklanmaktadır. Ayrıca, el ile yedeklemenin nasıl tamamlandığını da açıklar.
+Bu öğretici, StorSimple birimleriniz için yedekleme işlemlerini ve yedekleme tutma işlemlerini denetlemek için StorSimple Device Manager hizmeti **Yedekleme ilkesinin** nasıl kullanılacağını açıklar. Ayrıca, el ile yedeklemenin nasıl tamamlanır olduğunu da açıklar.
 
-Bir birimi yedeklerken, yerel bir anlık görüntü veya bulut anlık görüntüsü oluşturmayı tercih edebilirsiniz. Yerel olarak sabitlenmiş bir birimi yedekliyorsanız, bir bulut anlık görüntüsü belirtmenizi öneririz. Çok sayıda dalgalanma sahip bir veri kümesiyle bağlanmış yerel olarak sabitlenmiş bir birimin çok sayıda yerel anlık görüntüsünü almak, yerel alandan hızlı bir şekilde çalışma yapmak için gereken bir durumla sonuçlanır. Yerel anlık görüntüleri al seçeneğini belirlerseniz, en son durumu yedeklemek için daha az günlük anlık görüntü kullanmanızı, bunları bir gün boyunca saklamayı ve sonra silmeyi öneririz.
+Bir birimi yedeklediğinizde, yerel bir anlık görüntü veya bulut anlık görüntüsü oluşturmayı seçebilirsiniz. Yerel olarak sabitlenmiş bir birimi yedekliyoruzsa, bir bulut anlık görüntüsü belirtmenizi öneririz. Yerel olarak sabitlenmiş bir birimin çok sayıda yerel anlık görüntüsünün alınması, çok fazla karmaşaya sahip bir veri setiile birleştiğinde, yerel alanın hızla bitebileceği bir duruma neden olur. Yerel anlık görüntüleri almayı seçerseniz, en son durumu yedeklemek için daha az günlük anlık görüntü almanızı, bunları bir gün tutmanızı ve sonra silmenizi öneririz.
 
-Yerel olarak sabitlenmiş bir birimin bulut anlık görüntüsünü aldığınızda, yalnızca değiştirilen verileri buluta kopyalar, burada yinelenenleri kaldırılmış ve sıkıştırılır.
+Yerel olarak sabitlenmiş bir birimin bulut anlık görüntüsünü aldığınızda, yalnızca değiştirilen verileri çoğaltılıp sıkıştırıldığı buluta kopyalarsınız.
 
-## <a name="the-backup-policy-blade"></a>Yedekleme ilkesi dikey penceresi
+## <a name="the-backup-policy-blade"></a>Yedekleme ilkesi blade
 
-StorSimple cihazınız için **yedekleme ilkesi** dikey penceresi, yedekleme ilkelerini yönetmenizi ve yerel ve bulut anlık görüntülerini zamanlamanıza izin verir. Yedekleme ilkeleri, bir birim koleksiyonu için yedekleme zamanlamalarını ve yedekleme bekletmesini yapılandırmak üzere kullanılır. Yedekleme ilkeleri, birden fazla birimin aynı anda anlık görüntüsünü alma olanağı sağlar. Bu, bir yedekleme ilkesi tarafından oluşturulan yedeklemelerin kilitlenmeyle tutarlı kopyalar olacağı anlamına gelir.
+StorSimple aygıtınız için **Yedekleme ilkesi,** yedekleme ilkelerini yönetmenize ve yerel ve bulut anlık görüntülerini zamanlamanıza olanak tanır. Yedekleme ilkeleri, bir birim koleksiyonu için yedekleme zamanlamalarını ve yedekleme bekletme işlemlerini yapılandırmak için kullanılır. Yedekleme ilkeleri, aynı anda birden çok cildin anlık görüntüsünü almanızı sağlar. Bu, yedekleme ilkesi tarafından oluşturulan yedeklemelerin kilitlenme tutarlı kopyaları olacağı anlamına gelir.
 
-Tablo listesi yedekleme ilkeleri, mevcut yedekleme ilkelerini aşağıdaki alanlardan bir veya daha fazlasına göre filtrelemenize de olanak tanır:
+Yedekleme ilkeleri tabular listesi, varolan yedekleme ilkelerini aşağıdaki alanlardan birine veya birkaçına göre filtrelemenize de olanak tanır:
 
-* **İlke adı** – ilkeyle ilişkili ad. Farklı ilke türleri şunlardır:
+* **İlke adı** – İlkeyle ilişkili ad. Farklı türde ilkeler şunlardır:
 
   * Kullanıcı tarafından açıkça oluşturulan zamanlanmış ilkeler.
-  * İlk olarak StorSimple Snapshot Manager oluşturulan içeri aktarılan ilkeler. Bunlar, ilkelerin içeri aktarıldığı StorSimple Snapshot Manager konağını tanımlayan bir etikettir.
+  * Başlangıçta StorSimple Snapshot Manager'da oluşturulan içe aktarılan ilkeler. Bunlar, ilkelerin aktarıldığı StorSimple Snapshot Manager ana bilgisayarını açıklayan bir etikete sahiptir.
 
   > [!NOTE]
-  > Toplu oluşturma sırasında otomatik veya varsayılan yedekleme ilkeleri artık etkin değildir.
+  > Otomatik veya varsayılan yedekleme ilkeleri artık birim oluşturma sırasında etkinleştirilir.
 
-* **Son başarılı yedekleme** – bu ilkeyle gerçekleştirilen son başarılı yedeklemenin tarihi ve saati.
+* **Son başarılı yedekleme** – Bu ilkeyle alınan son başarılı yedeklemenin tarih ve saati.
 
-* **Sonraki yedekleme** : Bu ilke tarafından başlatılacak bir sonraki zamanlanmış yedeklemenin tarihi ve saati.
+* **Sonraki yedekleme** – Bu ilke tarafından başlatılacak bir sonraki zamanlanmış yedeklemenin tarih ve saati.
 
-* **Birimler** : ilkeyle ilişkili birimler. Yedekleme ilkesiyle ilişkili tüm birimler, yedeklemeler oluşturulduğunda birlikte gruplandırılır.
+* **Birimler** – İlkeyle ilişkili birimler. Yedekleme ilkesiyle ilişkili tüm birimler, yedeklemeler oluşturulduğunda birlikte gruplandırılır.
 
-* **Zamanlamalar** : yedekleme ilkesiyle ilişkili zamanlamaların sayısı.
+* **Zamanlamalar** – Yedekleme ilkesiyle ilişkili zamanlama sayısı.
 
-Yedekleme ilkeleri için gerçekleştirebileceğiniz sık kullanılan işlemler şunlardır:
+Yedekleme ilkeleri için sık kullanılan işlemler şunlardır:
 
 * Yedekleme ilkesi ekleme
 * Zamanlama ekleme veya değiştirme
-* Birim ekleme veya kaldırma
+* Ses düzeyi ekleme veya kaldırma
 * Yedekleme ilkesini silme
-* El ile yedekleme yapın
+* Manuel yedekleme alın
 
 ## <a name="add-a-backup-policy"></a>Yedekleme ilkesi ekleme
 
-Yedeklemelerinizi otomatik olarak zamanlamak için bir yedekleme ilkesi ekleyin. Bir birimi ilk oluşturduğunuzda, biriminiz ile ilişkili bir varsayılan yedekleme ilkesi yoktur. Birim verilerini korumak için bir yedekleme ilkesi eklemeniz ve atamanız gerekir.
+Yedeklemelerinizi otomatik olarak zamanlamak için bir yedekleme ilkesi ekleyin. İlk bir birim oluşturduğunuzda, biriminizle ilişkili varsayılan yedekleme ilkesi yoktur. Birim verilerini korumak için bir yedekleme ilkesi eklemeniz ve atamanız gerekir.
 
-StorSimple cihazınız için bir yedekleme ilkesi eklemek üzere Azure portal aşağıdaki adımları gerçekleştirin. İlkeyi ekledikten sonra bir zamanlama tanımlayabilirsiniz (bkz. [bir zamanlama ekleme veya değiştirme](#add-or-modify-a-schedule)).
+StorSimple aygıtınız için yedekleme ilkesi eklemek için Azure portalında aşağıdaki adımları gerçekleştirin. İlkeyi ekledikten sonra bir zamanlama tanımlayabilirsiniz [(bkz.](#add-or-modify-a-schedule)
 
 [!INCLUDE [storsimple-8000-add-backup-policy-u2](../../includes/storsimple-8000-add-backup-policy-u2.md)]
 
 ## <a name="add-or-modify-a-schedule"></a>Zamanlama ekleme veya değiştirme
 
-StorSimple cihazınızda var olan bir yedekleme ilkesine eklenmiş bir zamanlama ekleyebilir veya düzenleyebilirsiniz. Bir zamanlamayı eklemek veya değiştirmek için Azure portal aşağıdaki adımları gerçekleştirin.
+StorSimple cihazınızda varolan bir yedekleme ilkesine bağlı bir zamanlama ekleyebilir veya değiştirebilirsiniz. Zamanlama eklemek veya değiştirmek için Azure portalında aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-8000-add-modify-backup-schedule](../../includes/storsimple-8000-add-modify-backup-schedule-u2.md)]
 
 
-## <a name="add-or-remove-a-volume"></a>Birim ekleme veya kaldırma
+## <a name="add-or-remove-a-volume"></a>Ses düzeyi ekleme veya kaldırma
 
-StorSimple cihazınızda bir yedekleme ilkesine atanan bir birim ekleyebilir veya kaldırabilirsiniz. Birim eklemek veya kaldırmak için Azure portal aşağıdaki adımları gerçekleştirin.
+StorSimple cihazınızda yedekleme ilkesine atanan bir birim ekleyebilir veya kaldırabilirsiniz. Bir birim eklemek veya kaldırmak için Azure portalında aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-8000-add-volume-backup-policy-u2](../../includes/storsimple-8000-add-remove-volume-backup-policy-u2.md)]
 
 
 ## <a name="delete-a-backup-policy"></a>Yedekleme ilkesini silme
 
-StorSimple cihazınızda bir yedekleme ilkesini silmek için Azure portal aşağıdaki adımları gerçekleştirin.
+StorSimple cihazınızdaki yedekleme ilkesini silmek için Azure portalında aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-8000-delete-backup-policy](../../includes/storsimple-8000-delete-backup-policy.md)]
 
-## <a name="take-a-manual-backup"></a>El ile yedekleme yapın
+## <a name="take-a-manual-backup"></a>Manuel yedekleme alın
 
-Tek bir birim için isteğe bağlı (el ile) yedekleme oluşturmak için Azure portal aşağıdaki adımları gerçekleştirin.
+Tek bir birim için isteğe bağlı (manuel) yedekleme oluşturmak için Azure portalında aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [storsimple-8000-create-manual-backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
+[StorSimple cihazınızı yönetmek için StorSimple Device Manager hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

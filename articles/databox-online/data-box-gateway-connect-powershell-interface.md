@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Gateway cihaza bağlanmak ve yönetmek için Windows PowerShell 'i kullanma
-description: Windows PowerShell arabirimi aracılığıyla Data Box Gateway nasıl bağlanabileceğinizi ve daha sonra yönetileceğini açıklar.
+title: Azure Veri Kutusu Ağ Geçidi aygıtına bağlanmak ve bunları yönetmek için Windows PowerShell'i kullanın
+description: Windows PowerShell arabirimi üzerinden Data Box Ağ Geçidi'ne nasıl bağlanıp yönetilmeye devam edilebildiğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
 ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260221"
 ---
-# <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Data Box Gateway cihazını yönetme
+# <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Windows PowerShell üzerinden Azure Veri Kutusu Ağ Geçidi aygıtını yönetme
 
-Azure Data Box Gateway çözümü, verileri ağ üzerinden Azure 'a göndermenizi sağlar. Bu makalede, Data Box Gateway cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
+Azure Veri Kutusu Ağ Geçidi çözümü, ağ üzerinden Azure'a veri göndermenize olanak tanır. Bu makalede, Veri Kutusu Ağ Geçidi aygıtınızın yapılandırma ve yönetim görevlerinden bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portalını, yerel web ui'sini veya Windows PowerShell arabirimini kullanabilirsiniz.
 
-Bu makale, PowerShell arabirimini kullanarak yaptığınız görevlere odaklanır.
+Bu makalede, PowerShell arabirimini kullanarak yaptığınız görevler üzerinde duruluyor.
 
-Bu makale aşağıdaki yordamları içerir:
+Bu makalede aşağıdaki yordamlar içerir:
 
-- PowerShell arabirimine bağlanma
+- PowerShell arabirimine bağlanın
 - Destek paketi oluşturma
 - Sertifikayı karşıya yükleme
-- DHCP dışı ortamda önyükleme
-- Cihaz bilgilerini görüntüle
+- DHCP olmayan ortamda önyükleme
+- Cihaz bilgilerini görüntüleme
 
-## <a name="connect-to-the-powershell-interface"></a>PowerShell arabirimine bağlanma
+## <a name="connect-to-the-powershell-interface"></a>PowerShell arabirimine bağlanın
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
@@ -41,11 +41,11 @@ Bu makale aşağıdaki yordamları içerir:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-## <a name="boot-up-in-non-dhcp-environment"></a>DHCP dışı ortamda önyükleme
+## <a name="boot-up-in-non-dhcp-environment"></a>DHCP olmayan ortamda önyükleme
 
 [!INCLUDE [Boot up in non-DHCP environment](../../includes/data-box-edge-gateway-boot-non-dhcp.md)]
 
-## <a name="view-device-information"></a>Cihaz bilgilerini görüntüle
+## <a name="view-device-information"></a>Cihaz bilgilerini görüntüleme
 
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanı özelliğini kullanın
-description: Azure Veri Gezgini veritabanı özelliğini kullanarak veritabanlarının nasıl ekleneceği hakkında bilgi edinin.
+title: Azure Veri Gezgini'nde veritabanları eklemek için takipçi veritabanı özelliğini kullanma
+description: Takipçi veritabanı özelliğini kullanarak Azure Veri Gezgini'nde veritabanlarının nasıl eklenebildiğini öğrenin.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabilehner
@@ -8,42 +8,42 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.openlocfilehash: f6dbdb54c1c5a5d477c3ccb988963758faab83b0
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79140023"
 ---
-# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanını kullanma
+# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Azure Veri Gezgini'nde veritabanları eklemek için takipçi veritabanını kullanma
 
-**İzleyici veritabanı** özelliği, farklı bir kümede bulunan bir veritabanını Azure Veri Gezgini kümenize eklemenize olanak tanır. **İzleyici veritabanı** *salt okuma* modunda iliştirilir, bu da verileri görüntülemeyi ve **öncü veritabanına**alınan verilerde sorgu çalıştırmayı mümkün hale getirir. İzleyici veritabanı, öncü veritabanlarındaki değişiklikleri eşitler. Eşitleme nedeniyle, veri kullanılabilirliğinin birkaç saniye boyunca birkaç dakika veri gecikmesi vardır. Gecikme süresinin uzunluğu, öncü veritabanı meta verilerinin genel boyutuna bağlıdır. Öncü ve izleyici veritabanları verileri getirmek için aynı depolama hesabını kullanır. Depolama, öncü veritabanına aittir. İzleyici veritabanı, verileri almak gerekmeden verileri görüntüler. Ekli veritabanı bir salt okuma veritabanı olduğundan, veritabanındaki veriler, tablolar ve ilkeler [önbelleğe alma ilkesi](#configure-caching-policy), [sorumlular](#manage-principals)ve [izinler](#manage-permissions)dışında değiştirilemez. Ekli veritabanları silinemez. Bunlar, öncü veya izleyici tarafından ayrılmaları gerekir ve bu öğeler silinebilir. 
+**Takipçi veritabanı** özelliği, Azure Veri Gezgini kümenize farklı bir kümede bulunan bir veritabanı eklemenize olanak tanır. **Takipçi veritabanı** *salt okunur* modunda eklenir, bu da verileri görüntülemeyi ve **lider veritabanına**yutulan verilerdeki sorguları çalıştırmayı mümkün kılar. Takipçi veritabanı, lider veritabanlarındaki değişiklikleri eşitler. Eşitleme nedeniyle, veri kullanılabilirliğinde birkaç saniye ile birkaç dakika arasında bir veri gecikmesi vardır. Gecikme süresinin uzunluğu, lider veritabanı meta verilerinin genel boyutuna bağlıdır. Lider ve takipçi veritabanları verileri almak için aynı depolama hesabını kullanır. Depolama lideri veritabanına aittir. Takipçi veritabanı, verileri yutmaya gerek kalmadan görüntüler. Ekteki veritabanı salt okunur veritabanı olduğundan, veritabanındaki veriler, tablolar ve ilkeler [önbelleğe alma ilkesi,](#configure-caching-policy) [ilkeleri](#manage-principals)ve [izinleri](#manage-permissions)dışında değiştirilemez. Ekli veritabanları silinemez. Bunlar lider veya takipçisi tarafından müstakil olmalı ve ancak o zaman silinebilir. 
 
-İzleme özelliğini kullanarak bir veritabanını farklı bir kümeye eklemek, kuruluşlar ve takımlar arasında veri paylaşmak için altyapı olarak kullanılır. Bu özellik, üretim ortamının üretim dışı kullanım çalışmalarından korunmasını sağlamak için işlem kaynaklarını ayırt etmek için yararlıdır. İzleme, Azure Veri Gezgini kümesinin maliyetini verilerde sorgular çalıştıran tarafla ilişkilendirmek için de kullanılabilir.
+Takipçi özelliğini kullanarak farklı bir kümeye veritabanı eklemek, kuruluşlar ve ekipler arasında veri paylaşmak için altyapı olarak kullanılır. Bu özellik, üretim ortamını üretim dışı kullanım durumlarına karşı korumak için bilgi işlem kaynaklarını ayırmak için yararlıdır. Takipçi, Azure Veri Gezgini kümesinin maliyetini verilerde sorgu çalıştıran tarafla ilişkilendirmek için de kullanılabilir.
 
-## <a name="which-databases-are-followed"></a>Hangi veritabanları izlensin?
+## <a name="which-databases-are-followed"></a>Hangi veritabanları takip edilir?
 
-* Bir küme bir veritabanını, birkaç veritabanını veya öncü bir kümenin tüm veritabanlarını izleyebilir. 
-* Tek bir küme, birden çok öncü kümeden veritabanlarını izleyebilir. 
-* Bir küme, hem izleyici veritabanlarını hem de öncü veritabanlarını içerebilir
+* Küme, bir veritabanını, birkaç veritabanını veya bir lider kümesinin tüm veritabanlarını izleyebilir. 
+* Tek bir küme, birden çok lider kümesinden veritabanlarını izleyebilir. 
+* Küme hem takipçi veritabanları nı hem de lider veritabanlarını içerebilir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-1. Öncü ve izleme için [küme ve DB oluşturun](/azure/data-explorer/create-cluster-database-portal) .
-1. Alım [bölümünde ele](/azure/data-explorer/ingest-data-overview)alınan çeşitli yöntemlerden birini kullanarak [verileri](/azure/data-explorer/ingest-sample-data) öncü veritabanına alma.
+1. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+1. Lider ve takipçi için [küme ve DB oluşturun.](/azure/data-explorer/create-cluster-database-portal)
+1. [Yutma genel bakışta](/azure/data-explorer/ingest-data-overview)tartışılan çeşitli yöntemlerden birini kullanarak lider veritabanına veri [yutma.](/azure/data-explorer/ingest-sample-data)
 
 ## <a name="attach-a-database"></a>Veritabanı ekleme
 
-Bir veritabanı eklemek için kullanabileceğiniz çeşitli yöntemler vardır. Bu makalede, veya Azure Resource Manager şablonu kullanarak C# bir veritabanı eklemeyi tartıştık. Bir veritabanı eklemek için, öncü kümede ve izleyici kümesinde izinlerinizin olması gerekir. İzinler hakkında daha fazla bilgi için bkz. [izinleri yönetme](#manage-permissions).
+Veritabanı eklemek için kullanabileceğiniz çeşitli yöntemler vardır. Bu makalede, C# veya Azure Kaynak Yöneticisi şablonu kullanarak bir veritabanı eklemeyi tartışıyoruz. Veritabanı eklemek için lider kümesi ve takipçi kümesinde izinlere sahip olmalısınız. İzinler hakkında daha fazla bilgi için, [izinleri yönetme'ye](#manage-permissions)bakın.
 
-### <a name="attach-a-database-using-c"></a>Kullanarak veritabanı iliştirmeC#
+### <a name="attach-a-database-using-c"></a>C kullanarak veritabanı ekleme #
 
-#### <a name="needed-nugets"></a>Gerekli nal
+#### <a name="needed-nugets"></a>Gerekli Nugets
 
-* [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)uygulamasını yükler.
-* [Kimlik doğrulaması Için Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)'ı yükler.
+* [Microsoft.Azure.Management.kusto'ya yükleyin.](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
+* [Microsoft.Rest.ClientRuntime.Azure.Authentication kimlik doğrulaması için yükleyin.](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)
 
-#### <a name="code-example"></a>Kod örneği
+#### <a name="code-example"></a>Kod Örneği
 
 ```Csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -77,16 +77,16 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
 ```
 
-### <a name="attach-a-database-using-python"></a>Python kullanarak veritabanı iliştirme
+### <a name="attach-a-database-using-python"></a>Python'u kullanarak veritabanı ekleme
 
-#### <a name="needed-modules"></a>Gerekli modüller
+#### <a name="needed-modules"></a>Gerekli Modüller
 
 ```
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
 
-#### <a name="code-example"></a>Kod örneği
+#### <a name="code-example"></a>Kod Örneği
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -125,9 +125,9 @@ attached_database_configuration_properties = AttachedDatabaseConfiguration(clust
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
 
-### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak veritabanı iliştirme
+### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak veritabanı ekleme
 
-Bu bölümde, bir [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md)kullanarak var olan bir kümenize 'a veritabanı eklemeyi öğreneceksiniz. 
+Bu bölümde, [bir Azure Kaynak Yöneticisi şablonu](../azure-resource-manager/management/overview.md)kullanarak varolan bir cluser'a veritabanı eklemeyi öğrenirsiniz. 
 
 ```json
 {
@@ -196,41 +196,41 @@ Bu bölümde, bir [Azure Resource Manager şablonu](../azure-resource-manager/ma
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma 
 
-[Azure Portal](https://portal.azure.com) veya PowerShell 'i kullanarak Azure Resource Manager şablonu dağıtabilirsiniz.
+Azure portalını kullanarak veya powershell'i kullanarak Azure Kaynak Yöneticisi [şablonuna](https://portal.azure.com) dağıtabilirsiniz.
 
-   ![Şablon dağıtımı](media/follower/template-deployment.png)
+   ![şablon dağıtımı](media/follower/template-deployment.png)
 
 
 |**Ayar**  |**Açıklama**  |
 |---------|---------|
-|İzleyici kümesi adı     |  İzleyici kümesinin adı; şablonun dağıtılacağı yer.  |
-|Ekli veritabanı yapılandırması adı    |    Eklenmiş veritabanı yapılandırma nesnesinin adı. Ad, küme düzeyinde benzersiz olan herhangi bir dize olabilir.     |
-|Veritabanı Adı     |      Takip edilecek veritabanının adı. Tüm öncü veritabanlarını izlemek isterseniz, ' * ' kullanın.   |
-|Öncü küme kaynak KIMLIĞI    |   Öncü kümenin kaynak KIMLIĞI.      |
-|Varsayılan asıl adlar değişiklik türü    |   Varsayılan asıl değişiklik türü. `Union`, `Replace` veya `None`olabilir. Varsayılan asıl değişiklik türü hakkında daha fazla bilgi için bkz. [asıl değişiklik türü denetim komutu](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
-|Konum   |   Tüm kaynakların konumu. Öncü ve izleyici aynı konumda olmalıdır.       |
+|Takipçi Küme Adı     |  Takipçi kümesinin adı; şablonun dağıtılanacağı yer.  |
+|Ekli Veritabanı Yapılandırmaları Adı    |    Ekteki veritabanı yapılandırmaları nesnenin adı. Ad küme düzeyinde benzersiz herhangi bir dize olabilir.     |
+|Veritabanı Adı     |      İzlenecek veritabanının adı. Liderin tüm veritabanlarını takip etmek istiyorsanız , '*' kullanın.   |
+|Lider Küme Kaynak Kimliği    |   Lider kümesinin kaynak kimliği.      |
+|Varsayılan İlkeler Değişiklik Türü    |   Varsayılan temel değişiklik türü. Olabilir `Union`, `Replace` `None`ya da . Varsayılan temel değişiklik türü hakkında daha fazla bilgi [için, asıl değişiklik türü denetim komutuna](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind)bakın.      |
+|Konum   |   Tüm kaynakların konumu. Lider ve takipçi aynı yerde olmalıdır.       |
  
-### <a name="verify-that-the-database-was-successfully-attached"></a>Veritabanının başarıyla eklendiğinden emin olun
+### <a name="verify-that-the-database-was-successfully-attached"></a>Veritabanının başarıyla bağlı olduğunu doğrulama
 
-Veritabanının başarıyla eklendiğinden emin olmak için, [Azure Portal](https://portal.azure.com)eklenen veritabanlarınızı bulun. 
+Veritabanının başarıyla eklenmiş olduğunu doğrulamak için, ekteki veritabanlarınızı [Azure portalında](https://portal.azure.com)bulun. 
 
-1. İzleyici kümesine gidin ve **veritabanları** ' nı seçin.
-1. Veritabanı listesinde yeni salt okuma veritabanlarını arayın.
+1. Takipçi kümesine gidin ve **Veritabanları'nı** seçin
+1. Veritabanı listesinde yeni Salt Okunur veritabanlarını arayın.
 
-    ![Salt okuma izleyici veritabanı](media/follower/read-only-follower-database.png)
+    ![Salt okunur takipçi veritabanı](media/follower/read-only-follower-database.png)
 
 Alternatif olarak:
 
-1. Öncü kümesine gidin ve **veritabanlarını** seçin
-2. İlgili veritabanlarının **başkalarıyla paylaşılan** olarak işaretlendiğinden emin olun > **Evet**
+1. Lider kümesine gidin ve **Veritabanları'nı** seçin
+2. İlgili veritabanlarının **BAŞKALARıYLA PAYLAŞILDI** > OLARAK İşaretLENİlMeSInDen**denetlemeYin Evet**
 
     ![Ekli veritabanlarını okuma ve yazma](media/follower/read-write-databases-shared.png)
 
-## <a name="detach-the-follower-database-using-c"></a>İzleme veritabanını kullanarak ayırmaC# 
+## <a name="detach-the-follower-database-using-c"></a>C kullanarak takipçi veritabanını ayırın # 
 
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Ekli izleyici veritabanını izleyici kümesinden ayır
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Ekteki takipçi veritabanını takipçi kümesinden ayırın
 
-İzleyici kümesi, ekli herhangi bir veritabanını şu şekilde ayırabilir:
+Takipçi kümesi bağlı herhangi bir veritabanını aşağıdaki gibi ayırabilir:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -252,9 +252,9 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Ekli izleyici veritabanını öncü kümeden ayır
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Bağlı takipçi veritabanını lider kümesinden ayırma
 
-Öncü küme, eklenen herhangi bir veritabanını şu şekilde ayırabilir:
+Lider kümesi ekli herhangi bir veritabanını aşağıdaki gibi ayırabilir:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -282,11 +282,11 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-## <a name="detach-the-follower-database-using-python"></a>Python kullanarak izleme veritabanını ayırma
+## <a name="detach-the-follower-database-using-python"></a>Python'u kullanarak takipçi veritabanını ayırın
 
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Ekli izleyici veritabanını izleyici kümesinden ayır
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Ekteki takipçi veritabanını takipçi kümesinden ayırın
 
-İzleyici kümesi, ekli herhangi bir veritabanını şu şekilde ayırabilir:
+Takipçi kümesi bağlı herhangi bir veritabanını aşağıdaki gibi ayırabilir:
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -315,9 +315,9 @@ attached_database_configurationName = "uniqueName"
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
 
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Ekli izleyici veritabanını öncü kümeden ayır
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Bağlı takipçi veritabanını lider kümesinden ayırma
 
-Öncü küme, eklenen herhangi bir veritabanını şu şekilde ayırabilir:
+Lider kümesi ekli herhangi bir veritabanını aşağıdaki gibi ayırabilir:
 
 ```python
 
@@ -354,37 +354,37 @@ cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceG
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 
-## <a name="manage-principals-permissions-and-caching-policy"></a>Sorumluları, izinleri ve önbelleğe alma ilkesini yönetme
+## <a name="manage-principals-permissions-and-caching-policy"></a>İlkeleri, izinleri ve önbelleğe alma ilkesini yönetme
 
-### <a name="manage-principals"></a>Sorumluları yönetme
+### <a name="manage-principals"></a>Müdürleri yönetme
 
-Bir veritabanı eklenirken **"varsayılan asıl adlar değiştirme türü"** ni belirtin. Varsayılan değer, [yetkili sorumlular](/azure/kusto/management/access-control/index#authorization) için öncü veritabanı koleksiyonunu tutuyor
+Veritabanı nı iliştirirken **"varsayılan ilkeler değişikliği türünü"** belirtin. Varsayılan, [yetkili ilkelerin](/azure/kusto/management/access-control/index#authorization) lider veritabanı koleksiyonunu tutmaktır
 
-|**Denetlenmesi** |**Açıklama**  |
+|**Tür** |**Açıklama**  |
 |---------|---------|
-|**Birleşim**     |   Ekli veritabanı sorumluları her zaman özgün veritabanı sorumlularını ek olarak, yeni asıl sorumluları da izleyici veritabanına ekler.      |
-|**Değiştirin**   |    Asıl veritabanından asıl öğeler devralınmaz. Eklenen veritabanı için yeni sorumlular oluşturulmalıdır.     |
-|**Seçim**   |   Ekli veritabanı sorumluları yalnızca, ek asıl olmayan özgün veritabanının sorumlularını içerir.      |
+|**Birleşim**     |   Ekli veritabanı ilkeleri her zaman özgün veritabanı ilkeleri artı takipçi veritabanına eklenen ek yeni ilkeler içerecektir.      |
+|**Değiştirmek**   |    Orijinal veritabanından ilkeler devri yok. Ekteki veritabanı için yeni ilkeler oluşturulmalıdır.     |
+|**Yok**   |   Ekli veritabanı ilkeleri, yalnızca ek ilkeleri olan özgün veritabanının ilkelerini içerir.      |
 
-Yetkili sorumlularını yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
+Yetkili ilkeleri yapılandırmak için denetim komutlarını kullanma hakkında daha fazla bilgi [için, bir takipçi kümesini yönetmek için Denetim komutlarına](/azure/kusto/management/cluster-follower)bakın.
 
 ### <a name="manage-permissions"></a>İzinleri yönet
 
-Salt okunurdur veritabanını yönetme izni tüm veritabanı türleriyle aynıdır. Bkz. [Azure Portal izinleri yönetme](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+Salt okunur veritabanı izninin yönetilmesi tüm veritabanı türleri için aynıdır. [Azure portalında izinleri yönetme'ye](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal)bakın.
 
 ### <a name="configure-caching-policy"></a>Önbelleğe alma ilkesini yapılandırma
 
-İzleyici veritabanı yöneticisi, bağlı veritabanının veya barındırma kümesindeki tablolarının herhangi birinin [önbellek ilkesini](/azure/kusto/management/cache-policy) değiştirebilir. Varsayılan değer veritabanı ve tablo düzeyinde önbelleğe alma ilkelerinin öncü veritabanı koleksiyonunu tutuyor. Örneğin, aylık raporlama çalıştırmak için öncü veritabanında 30 günlük önbelleğe alma ilkesine ve sorun giderme için yalnızca son verileri sorgulamak üzere izleyici veritabanında üç günlük önbelleğe alma ilkesine sahip olabilirsiniz. İzleyici veritabanı veya tablosunda önbelleğe alma ilkesini yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için, bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
+Takipçi veritabanı yöneticisi, ekteki veritabanının [önbelleğe alma ilkesini](/azure/kusto/management/cache-policy) veya barındırma kümesindeki tablolarından herhangi birini değiştirebilir. Varsayılan veritabanı ve tablo düzeyinde önbelleğe alma ilkeleri nin lider veritabanı koleksiyonunu tutmaktır. Örneğin, yalnızca sorun giderme için son verileri sorgulamak için, aylık raporlama yı çalıştırmak için lider veritabanında 30 günlük önbelleğe alma ilkesi ve takipçi veritabanında üç günlük önbelleğe alma ilkesiniz olabilir. Takipçi veritabanı veya tablodaki önbelleğe alma ilkesini yapılandırmak için denetim komutlarını kullanma hakkında daha fazla bilgi için, [takipçi kümesini yönetmek için Denetim komutlarına](/azure/kusto/management/cluster-follower)bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* İzleme ve öncü kümelerin aynı bölgede olması gerekir.
-* [Akış](/azure/data-explorer/ingest-data-streaming) alımı, izlenebilecek bir veritabanında kullanılamaz.
-* [Müşteri tarafından yönetilen anahtarlar](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) kullanılarak veri şifrelemesi hem öncü hem de izleyici kümelerinde desteklenmez. 
-* Ayırmayı yapmadan önce farklı bir kümeye bağlı bir veritabanını silemezsiniz.
-* Bir veritabanını kullanımdan çıkarmadan önce farklı bir kümeye eklenmiş bir kümeyi silemezsiniz.
-* Bağlı izleyici veya öncü veritabanı olan bir kümeyi durduramazsınız. 
+* Takipçi ve lider kümeleri aynı bölgede olmalıdır.
+* [Akış akışı,](/azure/data-explorer/ingest-data-streaming) izlenen bir veritabanında kullanılamaz.
+* [Müşteri yönetilen anahtarları](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) kullanarak veri şifreleme hem lider hem de takipçi kümelerinde desteklenmez. 
+* Ayırmadan önce farklı bir kümeye bağlı bir veritabanını silemezsiniz.
+* Ayırmadan önce farklı bir kümeye bağlı veritabanı olan bir kümeyi silemezsiniz.
+* Takipçi veya lider veritabanı(lar) eklenmiş bir kümeyi durduramazsınız. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* İzleme kümesi yapılandırma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
+* Takipçi küme yapılandırması hakkında bilgi için, [takipçi kümesini yönetmek için Denetim komutlarına](/azure/kusto/management/cluster-follower)bakın.

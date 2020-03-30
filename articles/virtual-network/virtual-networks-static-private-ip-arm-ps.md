@@ -1,6 +1,6 @@
 ---
-title: Statik özel IP adresi ile VM oluşturma-Azure PowerShell
-description: PowerShell kullanarak özel IP adresine sahip bir sanal makine oluşturmayı öğrenin.
+title: Statik özel IP adresine sahip bir VM oluşturma - Azure PowerShell
+description: PowerShell'i kullanarak özel IP adresine sahip sanal bir makineyi nasıl oluşturabilirsiniz öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -17,24 +17,24 @@ ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244764"
 ---
-# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell kullanarak statik bir özel IP adresi ile sanal makine oluşturma
+# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell'i kullanarak statik özel IP adresine sahip sanal bir makine oluşturun
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Statik bir özel IP adresi ile bir sanal makine (VM) oluşturabilirsiniz. Bir VM 'ye bir alt ağdan hangi adresin atandığını seçmek istiyorsanız, dinamik bir adres yerine statik bir özel IP adresi atayın. [Statik özel IP adresleri](virtual-network-ip-addresses-overview-arm.md#allocation-method)hakkında daha fazla bilgi edinin. Var olan bir VM 'ye atanan özel IP adresini dinamik veya genel IP adresleriyle çalışacak şekilde değiştirmek için bkz. [IP adreslerini ekleme, değiştirme veya kaldırma](virtual-network-network-interface-addresses.md).
+Statik özel IP adresine sahip sanal bir makine (VM) oluşturabilirsiniz. Bir alt ağdan hangi adresin VM'ye atandığını seçmek istiyorsanız, dinamik bir adres yerine statik bir özel IP adresi atayın. [Statik özel IP adresleri](virtual-network-ip-addresses-overview-arm.md#allocation-method)hakkında daha fazla bilgi edinin. Varolan bir VM'ye atanan özel bir IP adresini dinamikten statike değiştirmek veya genel IP adresleriyle çalışmak için [bkz.](virtual-network-network-interface-addresses.md)
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullanarak tamamlayabilirsiniz. Yerel bilgisayarınızı kullanmak için [Azure PowerShell yüklü](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)olduğundan emin olun. Azure Cloud Shell kullanmak için, takip eden herhangi bir komut kutusunun sağ üst köşesinde bulunan **deneyin** ' i seçin. Cloud Shell sizi Azure 'da oturum açar.
+Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Bulut Kabuğu'nu kullanarak tamamlayabilirsiniz. Yerel bilgisayarınızı kullanmak için Azure [PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)yüklü olduğundan emin olun. Azure Bulut Kabuğu'nu kullanmak için, aşağıdaki komut kutusunun sağ üst köşesinde **Bunu Dene'yi** seçin. Bulut Kabuğu sizi Azure'a imzalar.
 
-1. Cloud Shell kullanılıyorsa adım 2 ' ye atlayın. Bir komut oturumu açın ve `Connect-AzAccount`Azure 'da oturum açın.
-2. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, Doğu ABD Azure bölgesinde bir kaynak grubu oluşturur:
+1. Bulut Kabuğu'nu kullanıyorsanız, adım 2'ye geçin. Bir komut oturumu açın ve `Connect-AzAccount`Azure'da 'ile oturum açın
+2. [Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, Doğu ABD Azure bölgesinde bir kaynak grubu oluşturur:
 
    ```azurepowershell-interactive
    $RgName = "myResourceGroup"
@@ -42,7 +42,7 @@ Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullana
    New-AzResourceGroup -Name $RgName -Location $Location
    ```
 
-3. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) ve [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) komutlarıyla bir alt ağ yapılandırması ve sanal ağ oluşturun:
+3. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) ve [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) komutları ile bir alt ağ yapılandırması ve sanal ağ oluşturun:
 
    ```azurepowershell-interactive
    # Create a subnet configuration
@@ -62,7 +62,7 @@ Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullana
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-4. Sanal ağda bir ağ arabirimi oluşturun ve [New-Aznetworkınterfaceipconfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) ve [New-aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface) komutlarıyla alt ağdan ağ arabirimine özel bir IP adresi atayın:
+4. Sanal ağda bir ağ arabirimi oluşturun ve [Yeni-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) ve [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) komutları ile alt ağdan ağ arabirimine özel bir IP adresi atayın:
 
    ```azurepowershell-interactive
    $IpConfigName1 = "IPConfig-1"
@@ -79,7 +79,7 @@ Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullana
      -IpConfiguration $IpConfig1
    ```
 
-5. [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig)Ile bir VM yapılandırması oluşturun ve ardından VM 'yi [New-azvm](/powershell/module/az.Compute/New-azVM)ile oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir Kullanıcı adı ve parola girin:
+5. [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig)ile bir VM yapılandırması oluşturun ve sonra [New-AzVM](/powershell/module/az.Compute/New-azVM)ile VM oluşturun. İstendiğinde, VM için oturum açma kimlik bilgileri olarak kullanılacak bir kullanıcı adı ve parola sağlayın:
 
    ```azurepowershell-interactive
    $VirtualMachine = New-AzVMConfig -VMName MyVM -VMSize "Standard_DS3"
@@ -90,17 +90,17 @@ Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullana
    ```
 
 > [!WARNING]
-> İşletim sistemine özel IP adresi ayarları ekleyebilse de, [bir işletim sistemine özel IP adresi ekleme](virtual-network-network-interface-addresses.md#private)' yi okuduktan sonra yapmamasını öneririz.
+> İşletim sistemine özel IP adresi ayarları ekleyebilmenize rağmen, [işletim sistemine özel bir IP adresi ekle'yi](virtual-network-network-interface-addresses.md#private)okuyana kadar bunu yapmamanızı öneririz.
 > 
 > 
 > <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
 > 
 > [!IMPORTANT]
-> VM 'ye internet 'ten erişmek için, VM 'ye bir genel IP adresi atamanız gerekir. Dinamik bir özel IP adresi atamasını statik atamaya de değiştirebilirsiniz. Ayrıntılar için bkz. [IP adreslerini ekleme veya değiştirme](virtual-network-network-interface-addresses.md). Ayrıca, ağ güvenlik grubunu ağ arabirimine, içinde ağ arabirimini oluşturduğunuz alt ağa veya her ikisine ilişkilendirerek ağ trafiğini sanal makinemle sınırlandırmanıza önerilir. Ayrıntılar için bkz. [ağ güvenlik gruplarını yönetme](manage-network-security-group.md).
+> VM'ye internetten erişmek için VM'ye genel bir IP adresi atamalısınız. Dinamik bir özel IP adresi atamasını statik bir atamayla da değiştirebilirsiniz. Ayrıntılar için [IP adresi ekle veya değiştir'e](virtual-network-network-interface-addresses.md)bakın. Ayrıca, bir ağ güvenlik grubunu ağ arabirimiyle, ağ arabirimini oluşturduğunuz alt ağla veya her ikisiyle ilişkilendirerek ağ trafiğini VM'inizle sınırlamanız önerilir. Ayrıntılar için [ağ güvenlik gruplarını yönet'e](manage-network-security-group.md)bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
+Artık ihtiyaç duyulmadığında, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup'u](/powershell/module/az.resources/remove-azresourcegroup) kullanabilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -108,5 +108,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel IP adresleri](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) hakkında daha fazla bilgi edinin ve bir Azure sanal makinesine [STATIK bir özel IP adresi](virtual-network-network-interface-addresses.md#add-ip-addresses) atama.
+- Azure sanal makinesine statik özel [IP adresi](virtual-network-network-interface-addresses.md#add-ip-addresses) atama ve [özel IP adresleri](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) hakkında daha fazla bilgi edinin.
 - [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makineleri oluşturma hakkında daha fazla bilgi edinin.

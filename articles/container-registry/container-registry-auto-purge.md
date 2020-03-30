@@ -1,57 +1,57 @@
 ---
-title: Etiketleri ve bildirimleri temizleme
-description: Bir Azure Container Registry 'den yaş ve etiket filtresine göre birden çok etiketi ve bildirimi silmek için bir temizleme komutu kullanın ve isteğe bağlı olarak temizleme işlemlerini zamanlayın.
+title: Temizleme etiketleri ve bildirimleri
+description: Yaşa ve etiket filtresine göre azure kapsayıcı kayıt defterinden birden çok etiketi ve bildirimi silmek ve isteğe bağlı olarak temizleme işlemlerini zamanlamak için bir temizleme komutu kullanın.
 ms.topic: article
 ms.date: 08/14/2019
 ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79087335"
 ---
-# <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry 'den görüntüleri otomatik olarak Temizleme
+# <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure kapsayıcı kayıt defterinden görüntüleri otomatik olarak temizleme
 
-Bir Azure Container Registry 'yi bir geliştirme iş akışının parçası olarak kullandığınızda, kayıt defteri kısa bir süre sonra gerek duyulmayan görüntülerle veya diğer yapıtlarla hızlıca doldurabilir. Belirli bir süreden eski olan veya belirtilen bir ad filtresiyle eşleşen tüm etiketleri silmek isteyebilirsiniz. Birden çok yapıyı hızlıca silmek için bu makalede, isteğe bağlı veya [Zamanlanmış](container-registry-tasks-scheduled.md) bir ACR görevi olarak çalıştırabileceğiniz `acr purge` komutu tanıtılmaktadır. 
+Bir geliştirme iş akışının parçası olarak bir Azure kapsayıcı kayıt defteri kullandığınızda, kayıt defteri kısa bir süre sonra gerekli olmayan resimler veya diğer yapılarla hızla dolabilir. Belirli bir süreden eski olan tüm etiketleri silmek veya belirtilen ad filtresiyle eşleşmek isteyebilirsiniz. Birden çok yapıyı hızlı bir şekilde `acr purge` silmek için, bu makalede, isteğe bağlı veya zamanlanmış ACR Görevi olarak çalıştırabileceğiniz komut tanıtışlar. [scheduled](container-registry-tasks-scheduled.md) 
 
-`acr purge` komutu şu anda, GitHub 'daki [ACR-CLI](https://github.com/Azure/acr-cli) deposunda bulunan kaynak kodundan oluşturulan ortak bir kapsayıcı görüntüsünde (`mcr.microsoft.com/acr/acr-cli:0.1`) dağıtılır.
+Komut `acr purge` şu anda, GitHub'daki`mcr.microsoft.com/acr/acr-cli:0.1` [acr-cli](https://github.com/Azure/acr-cli) repo'daki kaynak kodundan oluşturulmuş ortak kapsayıcı görüntüsünde (), dağıtılır.
 
-Bu makalede ACR görev örneklerini çalıştırmak için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.69 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install]. 
+Bu makaledeki ACR görev örneklerini çalıştırmak için Azure Bulut Kabuğu'nu veya Azure CLI'nin yerel yüklemesini kullanabilirsiniz. Yerel olarak kullanmak isterseniz, sürüm 2.0.69 veya daha sonra gereklidir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install]. 
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 > [!WARNING]
-> `acr purge` komutunu dikkatli bir şekilde kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa etiketlenmemiş görüntüleri temizleyemezsiniz. Etiketlenmemiş görüntüleri silmek, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem](container-registry-image-tag-version.md)olan *benzersiz etiketleme* düzenini benimsede düşünün.
+> Komutu `acr purge` dikkatli kullanın-silinmiş görüntü verileri KURTARılamaz. Görüntüleri manifest sindirimiile çeken sistemleriniz varsa (görüntü adının aksine), etiketlenmemiş görüntüleri temizlememelisiniz. Etiketlenmemiş görüntülerin silmesi, bu sistemlerin resimleri kayıt defterinizden çekmesini önler. Bunun yerine manifesto tarafından çekerek, *benzersiz* bir etiketleme düzeni, [önerilen en iyi uygulama](container-registry-image-tag-version.md)benimseyerek düşünün.
 
-Azure CLı komutlarını kullanarak tek resim etiketlerini veya bildirimleri silmek istiyorsanız, bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
+Azure CLI komutlarını kullanarak tek resim etiketlerini veya manifestolarını silmek istiyorsanız, [Azure Kapsayıcı Kayıt Defteri'ndeki kapsayıcı resimlerini sil'e](container-registry-delete.md)bakın.
 
-## <a name="use-the-purge-command"></a>Temizle komutunu kullanma
+## <a name="use-the-purge-command"></a>Temizleme komutunu kullanma
 
-`acr purge` Container komutu, bir ad filtresiyle eşleşen ve belirtilen süreden eski olan bir depodaki resimleri etikete göre siler. Varsayılan olarak, temel alınan [Bildirimler](container-registry-concepts.md#manifest) ve katman verileri değil yalnızca etiket başvuruları silinir. Komutun Ayrıca bildirimleri silme seçeneği vardır. 
+Kapsayıcı `acr purge` komutu, ad filtresiyle eşleşen ve belirli bir süreden daha eski bir depodaki etiketlere göre görüntüleri siler. Varsayılan olarak, yalnızca etiket başvuruları silinir, temel [bildirimler](container-registry-concepts.md#manifest) ve katman verileri değil. Komutun manifestoları silme seçeneği de vardır. 
 
 > [!NOTE]
-> `acr purge`, `write-enabled` özniteliğinin `false`olarak ayarlandığı bir resim etiketini veya depoyu silmez. Bilgi için bkz. [Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme](container-registry-image-lock.md).
+> `acr purge`özniteliğin `write-enabled` ayarlandığı bir resim etiketini veya deposunu `false`silmez. Daha fazla bilgi için, [bir Azure kapsayıcı kayıt defterinde kapsayıcı görüntüsünü kilitle'ye](container-registry-image-lock.md)bakın.
 
-`acr purge`, bir [ACR görevinde](container-registry-tasks-overview.md)kapsayıcı komutu olarak çalışacak şekilde tasarlanmıştır ve böylece görevin çalıştırıldığı kayıt defteriyle otomatik olarak kimlik doğrulaması yapar ve eylemler orada gerçekleştirilir. Bu makaledeki görev örnekleri, tam bir kapsayıcı görüntüsü komutu yerine `acr purge` komutu [diğer adını](container-registry-tasks-reference-yaml.md#aliases) kullanır.
+`acr purge`[ACR Görevi'nde](container-registry-tasks-overview.md)kapsayıcı komutu olarak çalışacak şekilde tasarlanmıştır, böylece görevin çalıştığı ve eylemleri gerçekleştirdiği kayıt defteriyle otomatik olarak doğrulanır. Bu makaledeki görev örnekleri, tam nitelikli kapsayıcı görüntü komutu yerine `acr purge` komut diğer [adını](container-registry-tasks-reference-yaml.md#aliases) kullanır.
 
-`acr purge`çalıştırdığınızda, en azından aşağıdakileri belirtin:
+En azından çalıştırdığınızda `acr purge`aşağıdakileri belirtin:
 
-* `--filter`-depodaki etiketleri filtrelemek için bir depo ve *normal bir ifade* . Örnekler: `--filter "hello-world:.*"` `hello-world` deposundaki tüm etiketlerle eşleşir ve `1`ile başlayan etiketlerle eşleşir `--filter "hello-world:^1.*"`. Birden çok depo temizlemek için birden çok `--filter` parametresi geçirin.
-* `--ago`, resimlerin silindiği süreyi belirtmek için bir go stili [Duration dizesi](https://golang.org/pkg/time/) . Süre, her biri birim sonekine sahip bir veya daha fazla ondalık sayı dizisinden oluşur. Geçerli zaman birimleri günler için "d", saat için "h", dakika için "m" içerir. Örneğin, `--ago 2d3h6m` en son 2 gün, 3 saat ve 6 dakika önce değiştirilen tüm filtrelenmiş resimleri seçer ve `--ago 1.5h` en son 1,5 saat önce değiştirilmiş resimleri seçer.
+* `--filter`- Depodaki etiketleri filtrelemek için bir depo ve düzenli bir *ifade.* Örnekler: `--filter "hello-world:.*"` depodaki `hello-world` tüm etiketleri eşler `--filter "hello-world:^1.*"` ve `1`'' ile başlayan etiketleri eşler. Birden `--filter` çok depoları temizlemek için birden çok parametre geçirin.
+* `--ago`- Görüntülerin silindiği sürenin ötesinde bir süreyi belirtmek için Go stili [süre dizesi.](https://golang.org/pkg/time/) Süre, her biri birim soneki olan bir veya daha fazla ondalık sayı dizisinden oluşur. Geçerli zaman birimleri günler için "d", saat için "h", dakika lar için "m" içerir. Örneğin, `--ago 2d3h6m` değiştirilen tüm filtrelenmiş görüntüleri 2 günden fazla, 3 saat ve `--ago 1.5h` 6 dakika önce seçer ve 1,5 saatten daha uzun süre önce değiştirilen görüntüleri seçer.
 
-`acr purge`, isteğe bağlı çeşitli parametreleri destekler. Aşağıdaki ikisi bu makaledeki örneklerde kullanılmıştır:
+`acr purge`birkaç isteğe bağlı parametreyi destekler. Aşağıdaki iki bu makalede örneklerde kullanılır:
 
-* `--untagged`-ilişkili etiketleri (*etiketlenmemiş bildirimler*) olmayan bildirimlerin silineceğini belirtir.
-* `--dry-run`, hiçbir veri silinmediğini belirtir, ancak çıktı komutun bu bayrak olmadan çalıştırıldığı ile aynı olur. Bu parametre, korumak istediğiniz verileri yanlışlıkla silmediğinden emin olmak için bir temizleme komutunun test edilmesi için yararlıdır.
+* `--untagged`- İlişkili etiketleri *(etiketlenmemiş bildirimler)* olmayan bildirimlerin silindiğini belirtir.
+* `--dry-run`- Hiçbir verinin silindiğini belirtir, ancak çıktı, komut bu bayrak olmadan çalıştırılır gibi aynıdır. Bu parametre, korumak istediğiniz verileri yanlışlıkla silmediğinden emin olmak için bir temizleme komutunu sınamak için yararlıdır.
 
 Ek parametreler için `acr purge --help`çalıştırın. 
 
-`acr purge`, akan [çalıştırma](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlükleri](container-registry-tasks-logs.md) de dahil olmak üzere ACR görevleri komutlarının diğer özelliklerini destekler ve daha sonra alımı için de kaydedilir.
+`acr purge`akışlı ve daha sonra almak için kaydedilen [çalışma değişkenleri](container-registry-tasks-reference-yaml.md#run-variables) ve [görev çalıştırma günlükleri](container-registry-tasks-logs.md) de dahil olmak üzere ACR Görevleri komutlarının diğer özelliklerini destekler.
 
-### <a name="run-in-an-on-demand-task"></a>İsteğe bağlı bir görevde Çalıştır
+### <a name="run-in-an-on-demand-task"></a>İsteğe bağlı görevde çalıştırma
 
-Aşağıdaki örnek, `acr purge` komutunu talep üzerine çalıştırmak için [az ACR Run][az-acr-run] komutunu kullanır. Bu örnek, 1 günden daha önce değiştirilmiş olan *myregistry* içindeki `hello-world` deposundaki tüm resim etiketlerini ve bildirimlerini siler. Kapsayıcı komutu bir ortam değişkeni kullanılarak geçirilir. Görev, kaynak bağlamı olmadan çalışır.
+Aşağıdaki örnekte, isteğe bağlı komutu `acr purge` çalıştırmak için [az acr çalıştır][az-acr-run] komutu kullanır. Bu örnek, 1 günden daha uzun `hello-world` bir süre önce değiştirilen *nüfus defterimdeki* depodaki tüm resim etiketlerini ve bildirimlerini siler. Kapsayıcı komutu bir ortam değişkeni kullanılarak geçirilir. Görev kaynak bağlamı olmadan çalışır.
 
 ```azurecli
 # Environment variable for container command line
@@ -64,9 +64,9 @@ az acr run \
   /dev/null
 ```
 
-### <a name="run-in-a-scheduled-task"></a>Zamanlanmış bir görevde Çalıştır
+### <a name="run-in-a-scheduled-task"></a>Zamanlanmış bir görevde çalıştır
 
-Aşağıdaki örnek, günlük [Zamanlanmış ACR görevi](container-registry-tasks-scheduled.md)oluşturmak için [az ACR Task Create][az-acr-task-create] komutunu kullanır. Görev, `hello-world` deposunda 7 günden daha önce olan etiketleri temizler. Kapsayıcı komutu bir ortam değişkeni kullanılarak geçirilir. Görev, kaynak bağlamı olmadan çalışır.
+Aşağıdaki örnekte, günlük [zamanlanmış ACR görevi](container-registry-tasks-scheduled.md)oluşturmak için [az acr görev oluşturma][az-acr-task-create] komutu kullanır. Görev tasfiye etiketleri depoda `hello-world` 7 günden fazla önce değiştirildi. Kapsayıcı komutu bir ortam değişkeni kullanılarak geçirilir. Görev kaynak bağlamı olmadan çalışır.
 
 ```azurecli
 # Environment variable for container command line
@@ -80,13 +80,13 @@ az acr task create --name purgeTask \
   --context /dev/null
 ```
 
-Süreölçer tetikleyicisinin yapılandırıldığını görmek için [az ACR Task Show][az-acr-task-show] komutunu çalıştırın.
+Zamanlayıcı tetikleyicisinin yapılandırıldığını görmek için [az acr görev göster][az-acr-task-show] komutunu çalıştırın.
 
-### <a name="purge-large-numbers-of-tags-and-manifests"></a>Büyük sayıda etiketi ve bildirimi Temizleme
+### <a name="purge-large-numbers-of-tags-and-manifests"></a>Çok sayıda etiket ve manifeste temizleme
 
-Çok sayıda etiket ve bildirim temizleme birkaç dakika veya daha uzun sürebilir. Binlerce etiket ve bildirimi temizlemek için, komutun isteğe bağlı bir görev için varsayılan zaman aşımı süresi olan 600 saniye veya zamanlanan bir görevde 3600 saniye daha uzun süre çalışması gerekebilir. Zaman aşımı süresi aşılırsa, etiketlerin ve bildirimlerin yalnızca bir alt kümesi silinir. Büyük ölçekli bir temizleme işleminin tamamlandığından emin olmak için, değeri artırmak için `--timeout` parametresini geçirin. 
+Çok sayıda etiket ve bildirimin temizlenmesi birkaç dakika veya daha uzun sürebilir. Binlerce etiket ve bildirimi temizlemek için komutun isteğe bağlı bir görev için varsayılan zaman aşımı süresinden 600 saniye veya zamanlanmış bir görev için 3600 saniyeden daha uzun çalışması gerekebilir. Zaman aşımı süresi aşılırsa, yalnızca etiket ve bildirim alt kümesi silinir. Büyük ölçekli bir temizlemenin tamamlandığından emin `--timeout` olmak için, değeri artırmak için parametreyi geçirin. 
 
-Örneğin, aşağıdaki isteğe bağlı görev, 3600 saniyelik bir zaman aşımı süresi (1 saat) ayarlar:
+Örneğin, aşağıdaki isteğe bağlı görev 3600 saniye (1 saat) bir zaman zaman dilimi ayarlar:
 
 ```azurecli
 # Environment variable for container command line
@@ -100,15 +100,15 @@ az acr run \
   /dev/null
 ```
 
-## <a name="example-scheduled-purge-of-multiple-repositories-in-a-registry"></a>Örnek: bir kayıt defterinde birden çok depo için zamanlanmış temizleme
+## <a name="example-scheduled-purge-of-multiple-repositories-in-a-registry"></a>Örnek: Bir kayıt defterinde birden çok deponun zamanlanmış tasfiyesi
 
-Bu örnekte, bir kayıt defterinde düzenli olarak birden çok depo temizlemek için `acr purge` kullanımı gösterilmektedir. Örneğin, görüntüleri `samples/devimage1` ve depoları `samples/devimage2` veren bir geliştirme işlem hattına sahip olabilirsiniz. Geliştirme görüntülerini düzenli aralıklarla dağıtımlarınız için bir üretim deposuna aktarırsınız, böylece artık geliştirme görüntülerine gerek kalmaz. Haftalık olarak, `samples/devimage1` ve `samples/devimage2` depoları, gelecek haftaki iş için hazırlık aşamasında temizleyemezsiniz.
+Bu örnek, `acr purge` bir kayıt defterindeki birden çok depoyı düzenli olarak temizlemek için kullanarak geçer. Örneğin, görüntüleri `samples/devimage1` ve `samples/devimage2` depoları iten bir geliştirme ardışık hattınız olabilir. Geliştirme görüntülerini düzenli aralıklarla dağıtımlarınız için bir üretim deposuna aktarırsınız, böylece artık geliştirme görüntülerine ihtiyacınız olmaz. Haftalık bazda, önümüzdeki hafta `samples/devimage1` nın `samples/devimage2` çalışmasına hazırlık olarak, depoları ve depoları tasfiye emzebilirsiniz.
 
 ### <a name="preview-the-purge"></a>Temizlemeyi önizleyin
 
-Verileri silmeden önce, `--dry-run` parametresini kullanarak isteğe bağlı bir temizleme görevi çalıştırmayı öneririz. Bu seçenek, herhangi bir veriyi kaldırmadan komutun temizlendirilecektir etiketleri ve bildirimleri görmenizi sağlar. 
+Verileri silmeden önce, parametreyi `--dry-run` kullanarak isteğe bağlı temizleme görevi çalıştırmanızı öneririz. Bu seçenek, herhangi bir veri kaldırmadan komutun temizleyeceği etiketleri ve bildirimleri görmenizi sağlar. 
 
-Aşağıdaki örnekte, her bir depodaki filtre tüm etiketleri seçer. `--ago 0d` parametresi, filtrelerle eşleşen depolardaki tüm yaştaki görüntülerle eşleşir. Seçim ölçütlerini senaryonuz için gereken şekilde değiştirin. `--untagged` parametresi, etiketlerin yanı sıra bildirimlerin silineceğini gösterir. Kapsayıcı komutu, bir ortam değişkeni kullanılarak [az ACR Run][az-acr-run] komutuna geçirilir.
+Aşağıdaki örnekte, her depodaki filtre tüm etiketleri seçer. Parametre, `--ago 0d` filtrelerle eşleşen depolarda her yaştan görüntülerle eşleşir. Senaryonuz için gereken seçim ölçütlerini değiştirin. `--untagged` Parametre etiketlere ek olarak bildirimleri silmek için gösterir. Kapsayıcı komutu bir ortam değişkeni kullanılarak [az acr çalıştır][az-acr-run] komutuna geçirilir.
 
 ```azurecli
 # Environment variable for container command line
@@ -122,7 +122,7 @@ az acr run \
   /dev/null
 ```
 
-Seçim parametreleriyle eşleşen etiketleri ve bildirimleri görmek için komut çıkışını gözden geçirin. Komut `--dry-run`ile çalıştırıldığı için hiçbir veri silinmez.
+Seçim parametreleri ile eşleşen etiketleri ve bildirimleri görmek için komut çıktısını gözden geçirin. Komut ile çalıştırıldığı `--dry-run`için, hiçbir veri silinmez.
 
 Örnek çıktı:
 
@@ -146,9 +146,9 @@ Number of deleted manifests: 4
 [...]
 ```
 
-### <a name="schedule-the-purge"></a>Temizlemeyi zamanla
+### <a name="schedule-the-purge"></a>Temizlemeyi zamanlama
 
-Kuru çalıştırmayı doğruladıktan sonra, temizleme işlemini otomatikleştirmek için zamanlanmış bir görev oluşturun. Aşağıdaki örnek, önceki temizleme komutunu çalıştırmak için 1:00 UTC 'de Pazar günü bir haftalık görevi zamanlar:
+Kuru çalıştırmayı doğruladıktan sonra, temizlemeyi otomatikleştirmek için zamanlanmış bir görev oluşturun. Aşağıdaki örnek, önceki temizleme komutunu çalıştırmak için Pazar günü saat 1:00 UTC'de haftalık bir görev zamanlar:
 
 ```azurecli
 # Environment variable for container command line
@@ -163,13 +163,13 @@ az acr task create --name weeklyPurgeTask \
   --context /dev/null
 ```
 
-Süreölçer tetikleyicisinin yapılandırıldığını görmek için [az ACR Task Show][az-acr-task-show] komutunu çalıştırın.
+Zamanlayıcı tetikleyicisinin yapılandırıldığını görmek için [az acr görev göster][az-acr-task-show] komutunu çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Container Registry [resim verilerini silmeye](container-registry-delete.md) yönelik diğer seçenekler hakkında bilgi edinin.
+Azure Kapsayıcı Kayıt Defteri'nde [resim verilerini silmek](container-registry-delete.md) için diğer seçenekler hakkında bilgi edinin.
 
-Görüntü depolama hakkında daha fazla bilgi için bkz. [Azure Container Registry Container Image Storage](container-registry-storage.md).
+Görüntü depolama hakkında daha fazla bilgi için [Azure Kapsayıcı Kayıt Defteri'ndeki Kapsayıcı resim depolama](container-registry-storage.md)alanına bakın.
 
 <!-- LINKS - External -->
 

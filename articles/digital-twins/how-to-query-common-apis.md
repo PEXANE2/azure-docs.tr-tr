@@ -1,6 +1,6 @@
 ---
-title: Ortak sorgu desenleri-Azure dijital TWINS | Microsoft Docs
-description: Azure Digital TWINS yönetim API 'Leri için birkaç ortak API sorgulama deseni öğrenin.
+title: Ortak sorgu desenleri - Azure Digital Twins | Microsoft Dokümanlar
+description: Azure Digital Twins yönetim API'leri için çeşitli yaygın API sorgu desenleri öğrenin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,42 +9,42 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: 133c0e0dcc07afb85a0f3af9ae51d2207abac293
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589122"
 ---
-# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Ortak görevler için Azure dijital TWINS API 'Lerini sorgulama
+# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Ortak görevler için Azure Digital Twins API'leri nasıl sorgulanır?
 
-Bu makalede, Azure dijital TWINS örneğiniz için genel senaryoları yürütmeniz için sorgu desenleri gösterilmektedir. Bu, dijital TWINS örneğinizin zaten çalıştığını varsayar. Postman gibi herhangi bir REST istemcisini kullanabilirsiniz. 
+Bu makalede, Azure Dijital İkizler örneğiniz için sık karşılaşılan senaryoları yürütmenize yardımcı olacak sorgu desenleri gösterilmektedir. Bu, Dijital İkizler örneğinizin zaten çalıştığını varsayar. Postman gibi herhangi bir REST istemcisi kullanabilirsiniz. 
 
 [!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
 
 
 ## <a name="queries-for-spaces-and-types"></a>Boşluklar ve türler için sorgular
 
-Bu bölümde, sağlanan boşluklarınız hakkında daha fazla bilgi almak için örnek sorgular gösterilmektedir. Kimlik doğrulamalarının, örnek sorgularla birlikte HTTP isteklerini ALMASıNı sağlayın ve yer tutucuları kurulumdaki değerlerle değiştirin. 
+Bu bölümde, sağlanan alanlar hakkında daha fazla bilgi almak için örnek sorgular gösterilmektedir. Örnek sorgularla kimlik doğrulaması alın HTTP isteklerini yapın ve yer tutucuları kurulumunuzdaki değerlerle değiştirin. 
 
-- Kök düğümleri olan boşlukları al.
+- Kök düğümleri olan boşluklar alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
     ```
 
-- Ada göre bir boşluk alın ve cihazları, algılayıcıları, hesaplanan değerleri ve algılayıcı değerlerini ekleyin. 
+- Ada göre bir alan alın ve aygıtları, sensörleri, hesaplanmış değerleri ve sensör değerlerini ekleyin. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Üst öğe belirtilen alan KIMLIĞI olan ve [belirtilen alana göre](how-to-navigate-apis.md#api-navigation)iki ila beş seviyedeki, bir boşluk ve kendi cihaz/algılayıcı bilgilerini alın. 
+- Boşlukları ve cihaz/sensör bilgilerini alın, ebeveyni verilen boşluk kimliğidir ve [verilen alana göre](how-to-navigate-apis.md#api-navigation)2-5 seviyelerdedir. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
     ```
 
-- Verilen KIMLIĞE sahip alanı alın ve hesaplanan ve algılayıcı değerlerini dahil edin.
+- Verilen kimlikle alanı alın ve hesaplanmış ve sensör değerlerini ekleyin.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?ids=YOUR_SPACE_ID&includes=Values,sensors,SensorsValues
@@ -56,13 +56,13 @@ Bu bölümde, sağlanan boşluklarınız hakkında daha fazla bilgi almak için 
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- *Areaınsqmeters* adlı Özellik anahtarı ile boşluk alın ve değeri 30 ' dur. Ayrıca dize işlemleri yapabilirsiniz, örneğin, `name = X contains Y`Özellik anahtarını içeren boşluklar alabilirsiniz.
+- *AreaInSqMeters* adlı özellik anahtarı ile boşluk alın ve değeri 30'dur. Dize işlemleri de yapabilirsiniz, örneğin, özellik anahtarı `name = X contains Y`içeren boşluklar olsun.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30
     ```
 
-- Ad *sıcaklığını* ve ilişkili bağımlılıkları ve ontoloon 'un tüm adlarını alın.
+- Adı *Sıcaklık* ve ilişkili bağımlılıkları ve ontolojileri ile tüm adları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/types?names=Temperature&includes=space,ontologies,description,fullpath
@@ -71,147 +71,147 @@ Bu bölümde, sağlanan boşluklarınız hakkında daha fazla bilgi almak için 
 
 ## <a name="queries-for-roles-and-role-assignments"></a>Roller ve rol atamaları için sorgular
 
-Bu bölümde roller ve atamaları hakkında daha fazla bilgi almak için bazı sorgular gösterilmektedir. 
+Bu bölümde, roller ve atamaları hakkında daha fazla bilgi almak için bazı sorgular gösterilmektedir. 
 
-- Azure dijital TWINS tarafından desteklenen tüm rolleri alın.
+- Azure Digital Twins tarafından desteklenen tüm rolleri alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
 
-- Dijital TWINS örneğiniz içindeki tüm rol atamalarını alın. 
+- Dijital İkizler örneğinde tüm rol ödevlerini alın. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=down
     ```
 
-- Belirli bir yoldaki rol atamalarını alın.
+- Belirli bir yolda rol atamaları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
     ```
 
-## <a name="queries-for-devices"></a>Cihazlar için sorgular
+## <a name="queries-for-devices"></a>Aygıtlar için sorgular
 
-Bu bölümde, cihazlarınızla ilgili belirli bilgileri almak için yönetim API 'Lerini nasıl kullanabileceğinizi gösteren bazı örnekler gösterilmektedir. Tüm API çağrılarının kimliği doğrulanmış HTTP istekleri olması gerekir.
+Bu bölümde, aygıtlarınız hakkında belirli bilgiler almak için Yönetim API'lerini nasıl kullanabileceğinize ilişkin bazı örnekler gösterilmektedir. Tüm API çağrılarının kimlik doğrulaması HTTP isteklerini almalısınız.
 
-- Tüm cihazları al.
+- Tüm cihazları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices
     ```
 
-- Tüm cihaz durumlarını bul.
+- Tüm aygıt durumlarını bulun.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/devices/statuses
     ```
 
-- Belirli bir cihazı alın.
+- Belirli bir cihaz alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID
     ```
 
-- Kök alana bağlı tüm cihazları alın.
+- Tüm aygıtları kök alanına bağla.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?maxLevel=1
     ```
 
-- 2 ile 4 arasındaki düzeyler 'e eklenmiş tüm cihazları alın.
+- 2 ile 4 arasında olan seviyelerdeki boşluklara bağlı tüm aygıtları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4
     ```
 
-- Belirli bir alan KIMLIĞINE doğrudan bağlı tüm cihazları alın.
+- Tüm aygıtları doğrudan belirli bir uzay kimliğine iliştirin.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID
     ```
 
-- Belirli bir alana ve alt öğelere bağlı tüm cihazları alın.
+- Tüm aygıtları belirli bir alana ve onun soyundan gelenlere iliştirin.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down
     ```
 
-- Bir alanın alt öğesine ekli tüm cihazları al, bu alan hariç.
+- Bu alan hariç, bir alanın torunlarına bağlı tüm aygıtları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true
     ```
 
-- Bir alanın doğrudan alt öğelerine bağlı tüm cihazları alın.
+- Bir alanın doğrudan çocuklarına bağlı tüm aygıtları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true
     ```
 
-- Bir alanın üst öğelerinden birine bağlı tüm cihazları alın.
+- Bir alanın atalarından birine bağlı tüm cihazları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Up&maxLevel=-1&maxRelative=true
     ```
 
-- Düzeyi 5 ' ten küçük veya buna eşit olan bir alanın alt öğesine bağlı tüm cihazları alın.
+- 5'ten daha küçük veya eşit düzeyde bir alanın torunlarına bağlı tüm aygıtları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&maxLevel=5
     ```
 
-- KIMLIĞI *YOUR_SPACE_ID*olan alanla aynı düzeyde olan alanlara eklenmiş tüm cihazları alın.
+- Kimlik YOUR_SPACE_ID olan alanla aynı düzeydeki boşluklara bağlı tüm *aygıtları*alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- Cihazınız için IoT Hub cihaz bağlantı dizesini alın.
+- Aygıtınız için IoT Hub aygıt bağlantı dizesini alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString
     ```
 
-- Verilen algılayıcı dahil olmak üzere, belirtilen donanım KIMLIĞINE sahip cihazı alın.
+- Bağlı sensörler de dahil olmak üzere verilen donanım kimliğine sahip cihazı alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=sensors
     ```
 
-- Bu örnekte *hareket* ve *sıcaklık*gibi belirli veri türleri için algılayıcılar alın.
+- Bu durumda *Hareket* ve *Sıcaklık,* belirli veri türleri için sensörler alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/sensors?dataTypes=Motion,Temperature
     ```
 
-## <a name="queries-for-matchers-and-user-defined-functions"></a>Eşleştiriciler ve Kullanıcı tanımlı işlevler için sorgular 
+## <a name="queries-for-matchers-and-user-defined-functions"></a>Eşleştirme ve kullanıcı tanımlı işlevler için sorgular 
 
-- Tüm sağlanan eşleştiriciler ve kimliklerini alın.
+- Tüm uygun eşleşenleri ve kimliklerini alın.
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers
     ```
 
-- Alanlarla ilişkili boşluklar ve Kullanıcı tanımlı işlev dahil olmak üzere belirli bir eşleştirici hakkındaki ayrıntıları alın.
+- Belirli bir eşleştirme hakkında, onunla ilişkili boşluklar ve kullanıcı tanımlı işlev de dahil olmak üzere ayrıntıları alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID?includes=description, conditions, fullpath, userdefinedfunctions, space
     ```
 
-- Bir algılayıcı için bir eşleştirici değerlendirin ve hata ayıklama amacıyla günlüğe kaydetmeyi etkinleştirin. Bu HTTP GET iletisini döndürmek, eşleştirici ve sensörin veri türüne ait olup olmadığını söyler. 
+- Bir şimileyiciyi sensöre göre değerlendirin ve hata ayıklama amacıyla günlüğe kaydetmeyi etkinleştirin. Bu HTTP GET iletisinin dönüşü, eşleştirme ve sensörün veri türüne ait olup olmadığını bildirir. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID/evaluate/YOUR_SENSOR_ID?enableLogging=true
     ```
 
-- Kullanıcı tanımlı işlevlerin KIMLIĞINI alın. 
+- Kullanıcı tanımlı işlevlerin kimliğini alın. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions
     ```
 
-- Kullanıcı tanımlı belirli bir işlevin içeriğini al 
+- Belirli bir kullanıcı tanımlı işlevin içeriğini alma 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions/YOUR_USER_DEFINED_FUNCTION_ID/contents
@@ -220,15 +220,15 @@ Bu bölümde, cihazlarınızla ilgili belirli bilgileri almak için yönetim API
 
 ## <a name="queries-for-users"></a>Kullanıcılar için sorgular
 
-Bu bölümde, Azure dijital TWINS 'te kullanıcıları yönetmeye yönelik bazı örnek API sorguları gösterilmektedir. Yer tutucuları kurulumdaki değerlerle değiştirerek bir HTTP GET isteği yapın. 
+Bu bölümde, Azure Digital Twins'teki kullanıcıları yönetmek için bazı örnek API sorguları gösterilmektedir. Yer tutucuları kurulumunuzdaki değerlerle değiştirmek için bir HTTP GET isteğinde bulunun. 
 
-- Tüm kullanıcıları al. 
+- Tüm kullanıcıları alın. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/users
     ```
 
-- Belirli bir kullanıcıyı al.
+- Belirli bir kullanıcı alın.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/users/ANY_USER_ID
@@ -236,6 +236,6 @@ Bu bölümde, Azure dijital TWINS 'te kullanıcıları yönetmeye yönelik bazı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yönetim API 'niz ile kimlik doğrulaması yapmayı öğrenmek için, [API 'Lerle kimlik doğrulamasını](./security-authenticating-apis.md)okuyun.
+Yönetim API'nizle kimlik doğrulaması yapmayı öğrenmek için [API'lerle kimlik doğrulama'yı](./security-authenticating-apis.md)okuyun.
 
-API uç noktalarınız hakkında daha fazla bilgi edinmek için [dijital TWINS Swagger nasıl kullanacağınızı](./how-to-use-swagger.md)okuyun.
+API uç noktalarınız hakkında daha fazla bilgi edinmek [için Digital Twins Swagger'ı nasıl kullanacağınızı](./how-to-use-swagger.md)okuyun.

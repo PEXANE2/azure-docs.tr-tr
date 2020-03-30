@@ -1,29 +1,29 @@
 ---
-title: Azure CLı kullanarak Azure Cosmos DB kaynaklarını yönetme
-description: Azure Cosmos DB hesabınızı, veritabanınızı ve Kapsayıcılarınızı yönetmek için Azure CLı 'yi kullanın.
+title: Azure CLI'yi kullanarak Azure Cosmos DB kaynaklarını yönetme
+description: Azure Cosmos DB hesabınızı, veritabanınızı ve kapsayıcılarınızı yönetmek için Azure CLI'yi kullanın.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: mjbrown
 ms.openlocfilehash: 325840f8961fac49e599f1aa567ad8d4137820b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251888"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos kaynaklarını yönetme
+# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLI'yi kullanarak Azure Cosmos kaynaklarını yönetme
 
-Aşağıdaki kılavuzda Azure Cosmos DB hesaplarınız, veritabanlarınız ve kapsayıcılarınızı yönetme işleminin Azure CLI kullanılarak otomatikleştirilmesini sağlayan yaygın komutlar açıklanır. Tüm Azure Cosmos DB CLI komutlarına ait başvuru sayfalarına [Azure CLI Başvurusu](https://docs.microsoft.com/cli/azure/cosmosdb) sayfasından erişilebilir. Ayrıca, MongoDB, Gremlin, Cassandra ve Tablo API'si için Cosmos DB hesapları, veritabanları ve kapsayıcıları oluşturma ve yönetme dahil olmak üzere [Azure Cosmos DB Için Azure CLI örneklerinde](cli-samples.md)daha fazla örnek bulabilirsiniz.
+Aşağıdaki kılavuzda Azure Cosmos DB hesaplarınız, veritabanlarınız ve kapsayıcılarınızı yönetme işleminin Azure CLI kullanılarak otomatikleştirilmesini sağlayan yaygın komutlar açıklanır. Tüm Azure Cosmos DB CLI komutları için başvuru sayfaları [Azure CLI Başvurusu'nda](https://docs.microsoft.com/cli/azure/cosmosdb)mevcuttur. Ayrıca Azure [Cosmos DB için Azure CLI örneklerinde](cli-samples.md)(Cosmos DB hesaplarının nasıl oluşturulup yönetilene kadar) mongodb, Gremlin, Cassandra ve Table API için veritabanları ve kapsayıcılar gibi daha fazla örnek bulabilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı oluşturma
 
-Batı ABD 2 ve Doğu ABD 2 bölgelerinde SQL API 'SI, oturum tutarlılığı Azure Cosmos DB bir hesap oluşturun:
+SQL API, Batı ABD 2 ve Doğu ABD 2 bölgelerinde Oturum tutarlılığı içeren bir Azure Cosmos DB hesabı oluşturun:
 
 > [!IMPORTANT]
 > Azure Cosmos hesap adı küçük ve 31 karakterden az olmalıdır.
@@ -42,12 +42,12 @@ az cosmosdb create \
 
 ## <a name="add-or-remove-regions"></a>Bölge ekleme veya kaldırma
 
-İki bölgeyle bir Azure Cosmos hesabı oluşturun, bölge ekleyin ve bölge kaldırın.
+İki bölgeden bir Azure Cosmos hesabı oluşturun, bir bölge ekleyin ve bir bölgeyi kaldırın.
 
 > [!NOTE]
-> Aynı anda bölge ekleyemez veya kaldıramazsınız `locations` ve bir Azure Cosmos hesabının diğer özelliklerini değiştiremezsiniz. Bölgeleri değiştirmek, hesap kaynağında yapılan diğer değişiklikten farklı bir işlem olarak gerçekleştirilmelidir.
+> Bir Azure Cosmos hesabı `locations` için aynı anda bölgeler ekleyemez, kaldıramaz ve diğer özellikleri değiştiremezsiniz. Bölgeleri değiştirme, hesap kaynağındaki diğer değişikliklerden ayrı bir işlem olarak gerçekleştirilmelidir.
 > [!NOTE]
-> Bu komut, bölge eklemenize ve kaldırmanıza izin verir ancak yük devretme önceliklerini değiştirmenize veya el ile yük devretme tetiklemesine izin vermez. Bkz. [Yük devretme önceliğini ayarlama](#set-failover-priority) ve [El Ile yük devretmeyi tetikleme](#trigger-manual-failover).
+> Bu komut, bölgeler eklemenize ve kaldırmanıza izin verir, ancak hata yerine etme önceliklerini değiştirmenize veya el ile başarısız olmayı tetiklemenize izin vermez. Bkz. [Set failover önceliği](#set-failover-priority) ve [Tetikleme kılavuzu failover.](#trigger-manual-failover)
 
 ```azurecli-interactive
 resourceGroupName = 'myResourceGroup'
@@ -70,9 +70,9 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
     --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="enable-multiple-write-regions"></a>Birden çok yazma bölgesini etkinleştir
+## <a name="enable-multiple-write-regions"></a>Birden çok yazma bölgesini etkinleştirme
 
-Cosmos hesabı için çoklu yönetici 'yi etkinleştirme
+Cosmos hesabı için çoklu master'ı etkinleştirme
 
 ```azurecli-interactive
 # Update an Azure Cosmos account from single to multi-master
@@ -85,9 +85,9 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 ```
 
-## <a name="set-failover-priority"></a>Yük devretme önceliğini ayarla
+## <a name="set-failover-priority"></a>Başarısız önceliği ayarlama
 
-Otomatik yük devretme için yapılandırılmış bir Azure Cosmos hesabının yük devretme önceliğini ayarlama
+Otomatik hata için yapılandırılan bir Azure Cosmos hesabının başarısız önceliğini ayarlama
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
@@ -102,7 +102,7 @@ az cosmosdb failover-priority-change --ids $accountId \
     --failover-policies 'West US 2'=0 'South Central US'=1 'East US 2'=2
 ```
 
-## <a name="enable-automatic-failover"></a>Otomatik yük devretmeyi etkinleştir
+## <a name="enable-automatic-failover"></a>Otomatik arızayı etkinleştirme
 
 ```azurecli-interactive
 # Enable automatic failover on an existing account
@@ -115,10 +115,10 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-automatic-failover true
 ```
 
-## <a name="trigger-manual-failover"></a>El ile yük devretmeyi Tetikle
+## <a name="trigger-manual-failover"></a>Tetikleme kılavuzu failover
 
 > [!CAUTION]
-> Öncelik = 0 olan bölgenin değiştirilmesi, bir Azure Cosmos hesabı için el ile yük devretmeyi tetikler. Diğer herhangi bir öncelik değişikliği, yük devretmeyi tetiklemez.
+> Önceliği = 0 olan bölgeyi değiştirmek, Azure Cosmos hesabı için el ile başarısızlığa neden olur. Diğer öncelik değişikliği bir başarısızlık tetiklemez.
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
@@ -133,9 +133,9 @@ az cosmosdb failover-priority-change --ids $accountId \
     --failover-policies 'East US 2'=0 'South Central US'=1 'West US 2'=2
 ```
 
-## <a id="list-account-keys"></a>Tüm hesap anahtarlarını Listele
+## <a name="list-all-account-keys"></a><a id="list-account-keys"></a>Tüm hesap anahtarlarını listele
 
-Cosmos hesabı için tüm anahtarları alın.
+Cosmos hesabının tüm anahtarlarını al.
 
 ```azurecli-interactive
 # List all account keys
@@ -147,9 +147,9 @@ az cosmosdb keys list \
    -g $resourceGroupName
 ```
 
-## <a name="list-read-only-account-keys"></a>Salt okuma hesap anahtarlarını listeleme
+## <a name="list-read-only-account-keys"></a>Salt okunur hesap anahtarlarını listele
 
-Cosmos hesabı için salt okuma anahtarları alın.
+Cosmos hesabı için salt okunur anahtarları alın.
 
 ```azurecli-interactive
 # List read-only account keys
@@ -162,9 +162,9 @@ az cosmosdb keys list \
     --type read-only-keys
 ```
 
-## <a name="list-connection-strings"></a>Bağlantı dizelerini listeleme
+## <a name="list-connection-strings"></a>Bağlantı dizelerini listele
 
-Cosmos hesabı için bağlantı dizelerini alın.
+Cosmos hesabının bağlantı dizelerini alın.
 
 ```azurecli-interactive
 # List connection strings
@@ -177,7 +177,7 @@ az cosmosdb keys list \
     --type connection-strings
 ```
 
-## <a name="regenerate-account-key"></a>Hesap anahtarını yeniden oluştur
+## <a name="regenerate-account-key"></a>Hesap anahtarını yeniden oluşturma
 
 Cosmos hesabı için yeni bir anahtar oluşturun.
 
@@ -192,7 +192,7 @@ az cosmosdb keys regenerate \
 
 ## <a name="create-a-database"></a>Veritabanı oluşturma
 
-Cosmos veritabanı oluşturma.
+Bir Cosmos veritabanı oluşturun.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -205,9 +205,9 @@ az cosmosdb sql database create \
     -n $databaseName
 ```
 
-## <a name="create-a-database-with-shared-throughput"></a>Paylaşılan verimlilik ile veritabanı oluşturma
+## <a name="create-a-database-with-shared-throughput"></a>Paylaşılan iş tamına sahip bir veritabanı oluşturma
 
-Paylaşılan aktarım hızı ile Cosmos veritabanı oluşturma.
+Paylaşılan iş veri tabanına sahip bir Cosmos veritabanı oluşturun.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -222,9 +222,9 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
-## <a name="change-the-throughput-of-a-database"></a>Bir veritabanının verimini değiştirme
+## <a name="change-the-throughput-of-a-database"></a>Veritabanının iş verisini değiştirme
 
-Cosmos veritabanının verimini 1000 RU/s ile artırın.
+Bir Cosmos veritabanının veri tabanının veri veri tabanının veri veri tabanının veri sini 1000 RU/s artırın.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -250,7 +250,7 @@ az cosmosdb sql database throughput update \
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Varsayılan dizin ilkesi, bölüm anahtarı ve 400 RU/s ile Cosmos kapsayıcısı oluşturun.
+Varsayılan dizin ilkesi, bölüm tuşu ve 400 RU/s içeren bir Cosmos kapsayıcısı oluşturun.
 
 ```azurecli-interactive
 # Create a SQL API container
@@ -269,7 +269,7 @@ az cosmosdb sql container create \
 
 ## <a name="create-a-container-with-ttl"></a>TTL ile kapsayıcı oluşturma
 
-TTL etkin olan bir Cosmos kapsayıcısı oluşturun.
+TTL etkin leştirilmiş bir Cosmos kapsayıcıoluşturun.
 
 ```azurecli-interactive
 # Create an Azure Cosmos container with TTL of one day
@@ -286,9 +286,9 @@ az cosmosdb sql container update \
     --ttl = 86400
 ```
 
-## <a name="create-a-container-with-a-custom-index-policy"></a>Özel dizin ilkesiyle kapsayıcı oluşturma
+## <a name="create-a-container-with-a-custom-index-policy"></a>Özel dizin ilkesi olan bir kapsayıcı oluşturma
 
-Özel dizin ilkesi, uzamsal dizin, bileşik dizin, bölüm anahtarı ve 400 RU/sn ile Cosmos kapsayıcısı oluşturun.
+Özel dizin ilkesi, uzamsal dizin, bileşik dizin, bir bölüm anahtarı ve 400 RU/s içeren bir Cosmos kapsayıcısı oluşturun.
 
 ```azurecli-interactive
 # Create a SQL API container
@@ -338,9 +338,9 @@ az cosmosdb sql container create \
 rm -f "idxpolicy-$uniqueId.json"
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>Kapsayıcının verimini değiştirme
+## <a name="change-the-throughput-of-a-container"></a>Bir kapsayıcının iş kısmını değiştirme
 
-Cosmos kapsayıcısının verimini 1000 RU/s ile artırın.
+Bir Cosmos konteynerinin üretim ini 1000 RU/s artırın.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -368,8 +368,8 @@ az cosmosdb sql container throughput update \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLı hakkında daha fazla bilgi için bkz.
+Azure CLI hakkında daha fazla bilgi için bkz:
 
-- [Azure CLI'yı yükleme](/cli/azure/install-azure-cli)
+- [Azure CLI'yi yükle](/cli/azure/install-azure-cli)
 - [Azure CLI Başvurusu](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [Azure Cosmos DB için ek Azure CLı örnekleri](cli-samples.md)
+- [Azure Cosmos DB için ek Azure CLI örnekleri](cli-samples.md)

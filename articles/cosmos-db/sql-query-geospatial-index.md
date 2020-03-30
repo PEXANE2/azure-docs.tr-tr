@@ -1,40 +1,40 @@
 ---
-title: Azure Cosmos DB Jeo uzamsal verileri dizinle
-description: Uzamsal verileri Azure Cosmos DB ile dizinle
+title: Azure Cosmos DB ile coğrafi verileri dizinle
+description: Azure Cosmos DB ile uzamsal verileri dizine
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137912"
 ---
-# <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal verileri dizinle
+# <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB ile coğrafi verileri dizinle
 
-Azure Cosmos DB veritabanı altyapısını gerçekten şema belirsiz olacak şekilde tasarlıyoruz ve JSON için birinci sınıf desteğini sunduk. Azure Cosmos DB için en iyi duruma getirilmiş yazma veritabanı altyapısı, GeoJSON standardında temsil edilen uzamsal verileri yerel olarak anlamıştır.
+Azure Cosmos DB'nin veritabanı motorini gerçekten şema agnostik olacak ve JSON için birinci sınıf destek sağlayacak şekilde tasarladık. Azure Cosmos DB'nin yazma optimize veritabanı altyapısı, GeoJSON standardında temsil edilen uzamsal verileri yerel olarak anlar.
 
-Bir Nutshell 'de geometri, coğrafi olmayan koordinatlardan 2B düzlemin üzerine yansıtıldıysa, daha sonra **quadtree**kullanılarak hücrelere aşamalı olarak bölünür. Bu hücreler, noktaların yerini koruyan bir **Tepbert alanı doldurma eğrisi**içindeki hücrenin konumuna göre 1G ile eşleştirilir. Ayrıca, konum verileri dizinlendiğinde, **mozaik döşeme**olarak bilinen bir işlemden geçer, diğer bir deyişle, bir konumdan kesişen tüm hücreler Azure Cosmos DB dizininde anahtar olarak tanımlanır ve saklanır. Sorgu zamanında noktaları ve Çokgenleri gibi bağımsız değişkenleri ayrıca ilgili hücre kimliği aralıkları ayıklamak için grubun Mozaik ve dizinden veri almak için kullanılır.
+Özetle, geometri jeodezik koordinatlardan 2B düzleme yansıtılır ve daha sonra kademeli olarak bir **dörtağaç**kullanarak hücrelere bölünür. Bu hücreler, noktaların yerelliğini koruyan **Hilbert boşluk dolum eğrisi**içindeki hücrenin konumuna göre 1D'ye eşlenir. Ayrıca, konum verileri dizine eklendiğinde, **tessellation**olarak bilinen bir işlemden geçer, yani bir konumla kesişen tüm hücreler Azure Cosmos DB dizininde anahtar olarak tanımlanır ve depolanır. Sorgu sırasında, nokta ve Çokgenler gibi bağımsız değişkenler de ilgili hücre kimliği aralıklarını ayıklamak için tessellated, daha sonra dizin veri almak için kullanılır.
 
-/* (Tüm yollar) için uzamsal dizin içeren bir dizin oluşturma ilkesi belirtirseniz, kapsayıcıda bulunan tüm veriler etkili uzamsal sorgular için dizinlenir.
-
-> [!NOTE]
-> Azure Cosmos DB noktaların, LineStrings, çokgenler ve MultiPolygon dizinlemesini destekler
->
->
-
-## <a name="modifying-geospatial-data-type"></a>Jeo-uzamsal veri türünü değiştirme
-
-Kapsayıcıda, `geospatialConfig` Jeo-uzamsal verilerin nasıl dizine alınacağını belirtir. Kapsayıcı başına bir `geospatialConfig` belirtmelisiniz: Coğrafya veya geometri. Belirtilmemişse, `geospatialConfig` Coğrafya veri türü için varsayılan değer olarak kullanılır. `geospatialConfig`değiştirdiğinizde, kapsayıcıdaki tüm mevcut Jeo uzamsal verilerin yeniden dizinlenmesini sağlayacak.
+/* (tüm yollar) için uzamsal dizini içeren bir dizin oluşturma ilkesi belirtirseniz, kapsayıcıda bulunan tüm veriler verimli uzamsal sorgular için dizine eklenir.
 
 > [!NOTE]
-> Azure Cosmos DB Şu anda .NET SDK içindeki geospatialConfig üzerinde yapılan değişiklikleri yalnızca 3,6 ve üzeri sürümlerde desteklemektedir.
+> Azure Cosmos DB Puan, LineString, Çokgenler ve Çok Gen'lerin dizinesini destekler
+>
 >
 
-Aşağıda, `geospatialConfig` özelliğini ayarlayarak ve bir **BoundingBox**ekleyerek Jeo-uzamsal veri türünü `geometry` olarak değiştirme örneği verilmiştir:
+## <a name="modifying-geospatial-data-type"></a>Jeouzamsal veri türünü değiştirme
+
+Kapsayıcınızda, jeouzamsal verilerin nasıl dizine alınacağını `geospatialConfig` belirtir. Kapsayıcı başına `geospatialConfig` bir tane belirtmelisiniz: coğrafya veya geometri. Belirtilmemişse, `geospatialConfig` coğrafya veri türü varsayılan olacaktır. Modiyi `geospatialConfig`değiştirdiğinizde, kapsayıcıdaki tüm varolan jeouzamsal veriler yeniden dizine olur.
+
+> [!NOTE]
+> Azure Cosmos DB şu anda .NET SDK'daki geospatialConfig değişikliklerini yalnızca 3.6 ve üzeri sürümlerde desteklemektedir.
+>
+
+Burada `geometry` `geospatialConfig` özelliği ayarlayarak ve bir **sınırlayıcı Kutusu**ekleyerek jeouzamsal veri türünü değiştirmek için bir örnektir:
 
 ```csharp
     //Retrieve the container's details
@@ -64,11 +64,11 @@ Aşağıda, `geospatialConfig` özelliğini ayarlayarak ve bir **BoundingBox**ek
     await client.GetContainer("db", "spatial").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-## <a name="geography-data-indexing-examples"></a>Coğrafya veri dizin oluşturma örnekleri
+## <a name="geography-data-indexing-examples"></a>Coğrafya veri dizini örnekleri
 
-Aşağıdaki JSON kod parçacığında **Coğrafya** veri türü için etkin bir dizin oluşturma ilkesi gösterilmiştir. Coğrafya veri türü ile uzamsal veriler için geçerlidir ve uzamsal sorgulama için belgeler içinde bulunan coğrafi JSON noktası, Çokgen, MultiPolygon veya LineString dizimiyle dizin oluşturulur. Azure portal kullanarak dizin oluşturma ilkesini değiştiriyorsanız, kapsayıcıda uzamsal dizin oluşturmayı etkinleştirmek üzere dizin oluşturma ilkesi için aşağıdaki JSON 'u belirtebilirsiniz:
+Aşağıdaki JSON snippet, **coğrafya** veri türü için uzamsal dizin oluşturma etkin leştirilmiş bir dizin oluşturma ilkesi ni gösterir. Bu coğrafya veri türü ile uzamsal veriler için geçerlidir ve herhangi bir GeoJSON Point, Polygon, MultiPolygon veya LineString uzamsal sorgu için belgeler içinde bulunan dizin olacaktır. Azure portalını kullanarak dizin oluşturma ilkesini değiştiriyorsanız, kapsayıcınızda uzamsal dizin oluşturmayı etkinleştirmek için dizin oluşturma ilkesi için aşağıdaki JSON'u belirtebilirsiniz:
 
-**Coğrafya uzamsal dizin oluşturma ile kapsayıcı dizin oluşturma ilkesi JSON**
+**Coğrafya mekansal indeksleme ile konteyner indeksleme ilkesi JSON**
 
 ```json
     {
@@ -95,26 +95,26 @@ Aşağıdaki JSON kod parçacığında **Coğrafya** veri türü için etkin bir
 ```
 
 > [!NOTE]
-> ' % S'konum GeoJSON değeri belge içinde hatalı biçimlendirilmiş veya geçersiz ise, ardından uzamsal sorgulama için dizine değil. Konum değerleri ST_ISVALID ve ST_ISVALIDDETAILED kullanarak doğrulayabilirsiniz.
+> Belgeiçindeki konum GeoJSON değeri yanlış bilgilendirilmiş veya geçersizse, uzamsal sorgu için dizine alınmaz. ST_ISVALID ve ST_ISVALIDDETAILED kullanarak konum değerlerini doğrulayabilirsiniz.
 
-[Dizin oluşturma Ilkesini](how-to-manage-indexing-policy.md) Azure CLI, PowerShell veya HERHANGI bir SDK kullanarak da değiştirebilirsiniz.
+Azure CLI, PowerShell veya herhangi bir SDK'yı kullanarak [dizin oluşturma ilkesini de değiştirebilirsiniz.](how-to-manage-indexing-policy.md)
 
-## <a name="geometry-data-indexing-examples"></a>Geometri veri dizin oluşturma örnekleri
+## <a name="geometry-data-indexing-examples"></a>Geometri veri dizini örnekleri
 
-Coğrafya veri türü ile benzer olan **geometri** veri türü ile, dizine eklenecek ilgili yolları ve türleri belirtmeniz gerekir. Ayrıca, belirli bir yol için dizine eklenecek istenen alanı belirtmek için dizin oluşturma ilkesi içinde bir `boundingBox` belirtmeniz gerekir. Her Jeo-uzamsal yol kendi`boundingBox`gerektirir.
+Coğrafya veri türüne benzer **geometri** veri türünde, dizin için ilgili yolları ve türleri belirtmeniz gerekir. Ayrıca, bu belirli yol `boundingBox` için dizine eklenmesi istenen alanı belirtmek için dizin oluşturma ilkesi içinde bir de belirtmeniz gerekir. Her jeouzamsal`boundingBox`yol kendi gerektirir.
 
 Sınırlayıcı kutu aşağıdaki özelliklerden oluşur:
 
-- **XMin**: en düşük dizinli x koordinatı
-- **yMin**: en düşük dizinli y koordinatı
-- **xmax**: en fazla dizinli x koordinatı
-- **YMax**: en fazla dizinli y koordinatı
+- **xmin**: minimum endeksli x koordinat
+- **ymin**: minimum endeksli y koordinatı
+- **xmax**: maksimum endeksli x koordinat
+- **ymax**: maksimum endeksli y koordinatı
 
-Geometrik veriler sonsuz olabilecek bir düzlemi kapladığı için sınırlayıcı bir kutu gereklidir. Ancak uzamsal dizinler, sınırlı bir alan gerektirir. **Coğrafya** veri türü Için, Dünya sınırı ve bir sınırlayıcı kutu ayarlamanız gerekmez.
+Geometrik veriler sonsuz olabilecek bir düzlemi kapladığı için sınırlayıcı bir kutu gereklidir. Ancak uzamsal dizinler sınırlı bir alan gerektirir. **Coğrafya** veri türü için, Dünya sınırdır ve bir sınırlandırma kutusu ayarlamanız gerekmez.
 
-Verilerinizin tümünü (veya çoğunu) içeren bir sınırlayıcı kutu oluşturmalısınız. Yalnızca sınırlayıcı kutunun içindeki nesneler üzerinde hesaplanan işlemler, uzamsal dizin kullanabilir. Sorgu performansını olumsuz yönde etkilediği için sınırlayıcı kutuyu gerekenden önemli ölçüde daha büyük hale memelisiniz.
+Verilerinizin tümünün (veya çoğunun) tümünün (veya çoğunun) içeren bir sınırlayıcı kutusu oluşturmanız gerekir. Yalnızca sınırlayıcı kutunun içinde olan nesneler üzerinde hesaplanan işlemler uzamsal dizini kullanabilir. Sınırlayıcı kutusunu gerekenden önemli ölçüde daha büyük yapmamalısınız, çünkü bu sorgu performansını olumsuz etkileyecektir.
 
-**Geospatialconfig** ile **geometri** verilerinin `geometry`olarak dizinleyen örnek bir dizin oluşturma ilkesi aşağıda verilmiştir:
+Geometri **verilerini** **geospatialConfig** ile indeksleyen bir örnek `geometry`indeksleme ilkesi aşağıda verilmiştir:
 
 ```json
  {
@@ -150,15 +150,15 @@ Verilerinizin tümünü (veya çoğunu) içeren bir sınırlayıcı kutu oluştu
 }
 ```
 
-Yukarıdaki dizin oluşturma ilkesinde x koordinatları için (-10, 10) bir **sıçrama Dingbox** ve y koordinatları için (-20, 20) vardır. Yukarıdaki dizin oluşturma ilkesiyle kapsayıcı, tamamen bu bölgedeki tüm noktaları, çokgenler, MultiPolygon ve LineStrings dizinini dizinleyecek.
+Yukarıdaki dizin oluşturma ilkesi, x koordinatları için (-10, 10) ve y koordinatları için (-20, 20) **bir sınırlayıcı Kutusu** vardır. Yukarıdaki dizin oluşturma ilkesine sahip kapsayıcı, tamamen bu bölge içinde olan tüm Noktaları, Çokgenleri, ÇokGenleri ve LineString'leri dizine dizine alacaktır.
 
 > [!NOTE]
-> `geography` veri türü olan bir kapsayıcıya **sıçrama Dingbox** ile bir dizin oluşturma ilkesi eklemeye çalışırsanız, başarısız olur. Bir **sıçrama kutusu**eklemeden önce kapsayıcının **Geospatialconfig** öğesini `geometry` olarak değiştirmelisiniz. Veri ekleyebilir ve dizin oluşturma ilkenizin geri kalanını (yollar ve türler gibi), kapsayıcının Jeo uzamsal veri türünü seçmeden önce ya da sonra değiştirebilirsiniz.
+> Veri türüne sahip bir kapsayıcıya **sınırlayıcı Kutu** içeren bir dizin oluşturma ilkesi eklemeye çalışırsanız, başarısız olur. `geography` Bir **sınırlayıcı Kutusu**eklemeden önce **konteynerin geospatialConfig** değiştirmek `geometry` gerekir. Kapsayıcının jeouzamsal veri türünü seçmeden önce veya sonra veri ekleyebilir ve dizin oluşturma ilkenizin geri kalanını (yollar ve türler gibi) değiştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB'de Jeo-uzamsal destek kullanmaya başlamak öğrendiniz, sonra şunları yapabilirsiniz:
+Azure Cosmos DB'de coğrafi destekle nasıl başladığınızı öğrendiğiniz için, bir sonraki
 
-* [Azure Cosmos db sorgu](sql-query-getting-started.md) hakkında daha fazla bilgi edinin
-* [Azure Cosmos DB uzamsal verileri sorgulama](sql-query-geospatial-query.md) hakkında daha fazla bilgi edinin
-* [Azure Cosmos DB Jeo-uzamsal ve coğrafi JSON konumu verileri](sql-query-geospatial-intro.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB Sorgusu](sql-query-getting-started.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB ile uzamsal verileri sorgulama](sql-query-geospatial-query.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB'deki Geospatial ve GeoJSON konum verileri](sql-query-geospatial-intro.md) hakkında daha fazla bilgi edinin

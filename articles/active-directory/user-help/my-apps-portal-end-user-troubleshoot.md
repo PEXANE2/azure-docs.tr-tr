@@ -1,6 +1,6 @@
 ---
-title: Uygulamalarım portalı ile ilgili yardım alın-Azure Active Directory | Microsoft Docs
-description: Uygulamalarım portalında oturum açma ve ortak görevleri gerçekleştirme konusunda yardım alın.
+title: Uygulamalarım portalı - Azure Active Directory| Microsoft Dokümanlar
+description: Uygulamalarım portalında ortak görevlere kaydolma ve gerçekleştirme konusunda yardım alın.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,82 +13,82 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: f72dd5595d67ae989cec5681d22def9a2f929adf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253162"
 ---
-# <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Uygulamalarım portalındaki sorunları giderme
+# <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Uygulamalarım portalıyla ilgili sorun giderme
 
-**Uygulamalarım** portalı 'nda oturum açma veya kullanma ile ilgili sorun yaşıyorsanız yardım için yardım masasına veya yöneticinize tıklamadan önce bu sorun giderme ipuçlarını deneyin.
+**Uygulamalar** Portalım'da oturum açma veya kullanma yla ilgili sorunlar yaşıyorsanız, yardım masasına veya yöneticinize başvurmadan önce yardım masasına veya yöneticinize başvurmadan önce bu sorun giderme ipuçlarını deneyin.
 
-## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Uygulamalarım güvenli oturum açma uzantısını yüklerken sorun yaşıyorum
+## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Uygulamalarım Güvenli Oturum Açma Uzantısı'nı yüklerken sorun yaşıyorum
 
-Uygulamalarım güvenli oturum açma uzantısını yüklerken sorun yaşıyorsanız:
+Uygulamalarım Güvenli Oturum Açma Uzantısı'nı yüklerken sorun yaşıyorsanız:
 
-- Aşağıdakiler de dahil olmak üzere desteklenen bir tarayıcı kullandığınızdan emin olun:
+- Şular da dahil olmak üzere desteklenen bir tarayıcı kullandığınızdan emin olun:
 
-    - **Microsoft Edge.** Windows 10 yıldönümü sürümünde veya sonraki sürümlerde çalışır.
+    - **Microsoft Edge.** Windows 10 Anniversary Edition veya sonraki sürümde çalışma.
 
-    - **Google Chrome.** Windows 7 veya sonraki sürümlerde ve Mac OS X veya üzeri sürümlerde çalışır.
+    - **Google Chrome.** Windows 7 veya sonraki saatlerde ve Mac OS X veya daha sonra çalışma.
 
-    - **Mozilla Firefox 26,0 veya üzeri.** Windows XP SP2 veya sonraki sürümlerde ve Mac OS X 10,6 veya üzeri sürümlerde çalışır.
+    - **Mozilla Firefox 26.0 veya sonrası.** Windows XP SP2 veya sonraki saatlerde ve Mac OS X 10.6 veya sonraki saatlerde çalışır.
 
-    - **Internet Explorer 11.** Windows 7 veya sonraki sürümlerde (sınırlı destek) çalışıyor.
+    - **Internet Explorer 11.** Windows 7 veya sonraki saatlerde çalıştırma (sınırlı destek).
 
 - Tarayıcı uzantısı ayarlarınızın açık olduğundan emin olun.
 
-- Tarayıcınızı yeniden başlatmayı ve **uygulamalar** portalında yeniden oturum açmayı deneyin.
+- Tarayıcınızı yeniden başlatmayı ve **Uygulamalarım** portalında yeniden oturum açmayı deneyin.
 
-- Tarayıcınızın tanımlama bilgilerini temizlemeyi deneyin ve sonra yeniden başlatın ve **uygulamalar** portalında yeniden oturum açın.
+- Tarayıcınızın çerezlerini temizlemeyi deneyin ve ardından **Uygulamalarım** portalında yeniden başlatın ve oturum açın.
 
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>**Uygulamalarım** portalında oturum açamıyorum
 
-**Uygulamalarım** portalında oturum açarken sorun yaşıyorsanız aşağıdakileri deneyebilirsiniz:
+**Uygulamalarım** portalına oturum açarken sorun yaşıyorsanız, aşağıdakileri deneyebilirsiniz:
 
-- Doğru URL 'YI kullandığınızdan emin olun. Kuruluşunuz için https://myapps.microsoft.com/contoso.comgibi https://myapps.microsoft.com veya özelleştirilmiş bir sayfa olmalıdır.
+- Doğru URL'yi kullandığınızdan emin olun. Kuruluşunuz https://myapps.microsoft.com için özelleştirilmiş bir sayfa olmalıdır. https://myapps.microsoft.com/contoso.com
 
-- Parolanızın doğru olduğundan ve süresinin dolmadığından emin olun. Daha fazla bilgi için bkz. [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md).
+- Parolanızın doğru olduğundan ve süresinin dolmadığından emin olun. Daha fazla bilgi için [bkz: İş veya okul parolanızı sıfırla.](active-directory-passwords-update-your-own-password.md)
 
-- Doğrulama bilgilerinizin güncel ve doğru olduğundan emin olun. Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication benim Için ne anlama geliyor?](multi-factor-authentication-end-user.md) veya [güvenlik bilgileri yöntemlerinizi ile bilgilerinizi değiştirme](security-info-add-update-methods-overview.md).
+- Doğrulama bilgilerinizin güncel ve doğru olduğundan emin olun. Daha fazla bilgi için Azure [Çok Faktörlü Kimlik Doğrulama'nın benim için ne anlama geldiğini](multi-factor-authentication-end-user.md) görmek veya güvenlik bilgileri [yöntemlerinizi ve bilgilerinizi değiştirme](security-info-add-update-methods-overview.md).
 
-- **Uygulama** portalı URL 'Sini **Internet özellikleri > güvenlik > Güvenilen siteler** ayarına ekleyin.
-
-- Tarayıcınızın önbelleğini temizleyin ve yeniden oturum açmayı deneyin.
-
-## <a name="my-password-isnt-working"></a>Parolam çalışmıyor
-
-Parolanızı unuttuysanız, kuruluşunuzda hiç bir tane almadıysanız, hesabınız dışında bir hesap yoksa veya parolanızı değiştirmek istiyorsanız yardım 'a bakın. [Azure AD Parolamı unuttum](active-directory-passwords-update-your-own-password.md).
-
-## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Kendi parolamı sıfırlayabilmek istiyorum
-
-Kendi parolanızı sıfırlayabilmeniz için, yöneticinizin öncelikle kuruluşunuzun özelliğini açmanız ve ardından gerekli doğrulama yöntemlerinizi güncelleştirmeniz ve doğrulamanız gerekir. Doğrulama yöntemlerinizi güncelleştirme hakkında daha fazla bilgi için bkz. [self servis parola sıfırlama Için kaydolma](active-directory-passwords-reset-register.md).
-
-## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Bir uygulamayı başlattığımda erişim engellendi iletisi alıyorum
-
-**Uygulama** portalından bir uygulama başlattıktan sonra **erişim reddedildi** iletisi alıyorsanız, aşağıdakileri deneyebilirsiniz:
-
-- [Uygulamalarım güvenli oturum açma uzantısını](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) yüklediğinizden ve [desteklenen bir tarayıcı](my-apps-portal-end-user-access.md#supported-browsers)kullandığınızdan emin olun.
-
-- Uygulamanın doğru URL 'sini kullandığınızdan ve URL 'nin **Internet özellikleri > güvenlik > güvenilen siteler** listesinde olduğundan emin olun.
-
-- Parolanızın doğru olduğundan ve süresinin dolmadığından emin olun. Daha fazla bilgi için bkz. [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md).
-
-- Doğrulama bilgilerinizin güncel ve doğru olduğundan emin olun. Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication benim Için ne anlama geliyor?](multi-factor-authentication-end-user.md) veya [güvenlik bilgileri yöntemlerinizi ile bilgilerinizi değiştirme](security-info-add-update-methods-overview.md).
+- **Güvenlik > Güvenilen siteler** ayarı > Internet Properties'e **Uygulamam** portalı URL'sini ekleyin.
 
 - Tarayıcınızın önbelleğini temizleyin ve yeniden oturum açmayı deneyin.
 
-Uygulamanıza hala erişemiyorsanız, yardım almak için kuruluşunuzun yardım masasına başvurmanız gerekir.
+## <a name="my-password-isnt-working"></a>Şifrem çalışmıyor
+
+Parolanızı unuttuysanız, kuruluşunuzdan hiç almadıysanız, hesabınız kilitlendiyse veya parolanızı değiştirmek istiyorsanız, [Bkz. Yardım, Azure AD şifremi unuttum.](active-directory-passwords-update-your-own-password.md)
+
+## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Kendi şifremi sıfırlamak istiyorum
+
+Kendi parolanızı sıfırlayabilmek için yöneticinizin önce kuruluşunuz için özelliği açmanız ve ardından gerekli doğrulama yöntemlerinizi güncelleştirmeniz ve doğrulamanız gerekir. Doğrulama yöntemlerinizi nasıl güncelleştirin izlenmeye ilişkin daha fazla bilgi için self [servis parola sıfırlama için kaydolun'](active-directory-passwords-reset-register.md)a bakın.
+
+## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Bir uygulamayı başlattığımda Erişim Reddedildi iletisi alıyorum
+
+**Uygulamam** portalından bir uygulamayı başlattıktan sonra **Erişim Reddedildi** iletisi alıyorsanız, aşağıdakileri deneyebilirsiniz:
+
+- [Uygulamalarım Güvenli Oturum Açma Uzantısı'nı](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) yüklediğinizden ve desteklenen bir [tarayıcı](my-apps-portal-end-user-access.md#supported-browsers)kullandığınızdan emin olun.
+
+- Uygulama için doğru URL'yi kullandığınızdan ve URL'nin **Internet Özellikleri > Güvenlik > Güvenilen siteler** listenizde olduğundan emin olun.
+
+- Parolanızın doğru olduğundan ve süresinin dolmadığından emin olun. Daha fazla bilgi için [bkz: İş veya okul parolanızı sıfırla.](active-directory-passwords-update-your-own-password.md)
+
+- Doğrulama bilgilerinizin güncel ve doğru olduğundan emin olun. Daha fazla bilgi için Azure [Çok Faktörlü Kimlik Doğrulama'nın benim için ne anlama geldiğini](multi-factor-authentication-end-user.md) görmek veya güvenlik bilgileri [yöntemlerinizi ve bilgilerinizi değiştirme](security-info-add-update-methods-overview.md).
+
+- Tarayıcınızın önbelleğini temizleyin ve yeniden oturum açmayı deneyin.
+
+Bunları denedikten sonra hala uygulamanıza erişemiyorsanız, yardım için kuruluşunuzun Yardım masasına başvurmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**Uygulamalarım** portalında oturum açtıktan sonra profil ve hesap bilgilerinizi, Grup bilgilerinizi ve erişim gözden geçirme bilgilerini (izniniz varsa) güncelleştirebilirsiniz.
+**Uygulamalarım** portalında oturum açtıktan sonra, profil ve hesap bilgilerinizi, grup bilgilerinizi ve inceleme bilgilerine (izniniz varsa) erişebilirsiniz.
 
-- [Uygulamalarım portalındaki uygulamalara erişin ve bunları kullanın](my-apps-portal-end-user-access.md).
+- [Uygulamalarım portalındaki uygulamalara erişin ve bunları kullanın.](my-apps-portal-end-user-access.md)
 
-- [Profil bilgilerinizi değiştirin](my-apps-portal-end-user-update-profile.md).
+- [Profil bilgilerinizi değiştirin.](my-apps-portal-end-user-update-profile.md)
 
-- [Gruplarla ilgili bilgilerinizi görüntüleyin ve güncelleştirin](my-apps-portal-end-user-groups.md).
+- [Gruplarla ilgili bilgilerinizi görüntüleyin ve güncelleyin.](my-apps-portal-end-user-groups.md)
 
-- [Kendi erişim incelemelerinizi gerçekleştirin](my-apps-portal-end-user-access-reviews.md).
+- [Kendi erişim değerlendirmelerinizi gerçekleştirin.](my-apps-portal-end-user-access-reviews.md)

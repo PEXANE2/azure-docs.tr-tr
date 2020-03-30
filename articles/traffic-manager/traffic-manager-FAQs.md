@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Manager-SSS
-description: Bu makale Traffic Manager hakkında sık sorulan soruların yanıtlarını sağlar
+title: Azure Trafik Yöneticisi - SSS
+description: Bu makalede Trafik Yöneticisi hakkında sık sorulan soruların yanıtları sağlar
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -12,500 +12,500 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
 ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254371"
 ---
-# <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
+# <a name="traffic-manager-frequently-asked-questions-faq"></a>Trafik Yöneticisi Sık Sorulan Sorular (SSS)
 
-## <a name="traffic-manager-basics"></a>Traffic Manager temel bilgiler
+## <a name="traffic-manager-basics"></a>Trafik Yöneticisi temelleri
 
-### <a name="what-ip-address-does-traffic-manager-use"></a>Traffic Manager hangi IP adresi kullanır?
+### <a name="what-ip-address-does-traffic-manager-use"></a>Trafik Yöneticisi hangi IP adresini kullanır?
 
-[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Traffic Manager DNS düzeyinde çalışmaktadır. İstemcileri uygun hizmet uç noktasına yönlendirmek için DNS yanıtları gönderir. İstemciler daha sonra Traffic Manager aracılığıyla değil, doğrudan hizmet uç noktasına bağlanır.
+[Trafik Yöneticisi Nasıl Çalışır](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Trafik Yöneticisi DNS düzeyinde çalışır. İstemcileri uygun hizmet bitiş noktasına yönlendirmek için DNS yanıtları gönderir. İstemciler daha sonra Servis Yöneticisi aracılığıyla değil, doğrudan hizmet bitiş noktasına bağlanır.
 
-Bu nedenle Traffic Manager, istemcilerin bağlanması için bir uç nokta veya IP adresi sağlamaz. Hizmetiniz için statik IP adresi istiyorsanız, bu, Traffic Manager değil, hizmette yapılandırılması gerekir.
+Bu nedenle, Trafik Yöneticisi istemcilerin bağlanabilmek için bir bitiş noktası veya IP adresi sağlamaz. Hizmetiniz için statik IP adresi istiyorsanız, bu adres Trafik Yöneticisi'nde değil, hizmette yapılandırılmalıdır.
 
-### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Traffic Manager kullanılarak hangi türde trafik yönlendirilebilir?
-[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, bir Traffic Manager uç noktası, Azure içinde veya dışında barındırılan internet 'e yönelik herhangi bir hizmet olabilir. Bu nedenle Traffic Manager, genel İnternet 'ten gelen trafiği de internet 'e yönelik bir uç nokta kümesine yönlendirebilir. Özel bir ağ içinde (örneğin, [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)iç sürümü) veya kullanıcıların bu Iç ağlardan DNS istekleri yapmasını istiyorsanız, bu trafiği yönlendirmek için Traffic Manager kullanamazsınız.
+### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Trafik Yöneticisi kullanılarak ne tür trafik yönlendirilebilir?
+[Trafik Yöneticisi Nasıl Çalışır'da](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Trafik Yöneticisi bitiş noktası Azure'un içinde veya dışında barındırılan herhangi bir internet eki hizmet olabilir. Bu nedenle, Trafik Yöneticisi de internet karşı karşıya olan uç noktaları bir dizi kamu internet kaynaklanan trafik yönlendirebilirsiniz. Özel bir ağda bulunan uç noktalarınız (örneğin, [Azure Yük Bakiyesi'nin](../load-balancer/concepts-limitations.md#internalloadbalancer)dahili sürümü) varsa veya kullanıcıların bu tür dahili ağlardan DNS istekleri yapması varsa, bu trafiği yönlendirmek için Trafik Yöneticisi'ni kullanamazsınız.
 
-### <a name="does-traffic-manager-support-sticky-sessions"></a>"Sticky" oturumlarını Traffic Manager destekler mi?
+### <a name="does-traffic-manager-support-sticky-sessions"></a>Trafik Yöneticisi "yapışkan" oturumları destekliyor mu?
 
-[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Traffic Manager DNS düzeyinde çalışmaktadır. İstemcileri uygun hizmet uç noktasına yönlendirmek için DNS yanıtlarını kullanır. İstemciler, Traffic Manager aracılığıyla değil, hizmet uç noktasına doğrudan bağlanır. Bu nedenle, Traffic Manager istemci ile sunucu arasındaki HTTP trafiğini görmez.
+[Trafik Yöneticisi Nasıl Çalışır](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Trafik Yöneticisi DNS düzeyinde çalışır. İstemcileri uygun hizmet bitiş noktasına yönlendirmek için DNS yanıtlarını kullanır. İstemciler, Servis Yöneticisi aracılığıyla değil, doğrudan servis bitiş noktasına bağlanır. Bu nedenle, Trafik Yöneticisi istemci ve sunucu arasındaki HTTP trafiğini görmez.
 
-Ayrıca, Traffic Manager tarafından alınan DNS sorgusunun kaynak IP adresi, istemciye değil özyinelemeli DNS hizmetine aittir. Bu nedenle, Traffic Manager bağımsız istemcileri izlemenin bir yolu yoktur ve ' Sticky ' oturumlarını uygulayamaz. Bu sınırlama, tüm DNS tabanlı trafik yönetimi sistemleri için ortaktır ve Traffic Manager özgü değildir.
+Ayrıca, Trafik Yöneticisi tarafından alınan DNS sorgusunun kaynak IP adresi istemciye değil, özyinelemeli DNS hizmetine aittir. Bu nedenle, Trafik Yöneticisi tek tek istemcileri izlemek için bir yolu yoktur ve 'yapışkan' oturumları uygulayamaz. Bu sınırlama tüm DNS tabanlı trafik yönetim sistemlerinde yaygındır ve Trafik Yöneticisi'ne özgü değildir.
 
-### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Traffic Manager kullanırken neden HTTP hatası görüyorum?
+### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Trafik Yöneticisi'ni kullanırken neden bir HTTP hatası görüyorum?
 
-[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Traffic Manager DNS düzeyinde çalışmaktadır. İstemcileri uygun hizmet uç noktasına yönlendirmek için DNS yanıtlarını kullanır. İstemciler daha sonra Traffic Manager aracılığıyla değil, doğrudan hizmet uç noktasına bağlanır. Traffic Manager istemci ve sunucu arasında HTTP trafiği görmez. Bu nedenle, gördüğünüz herhangi bir HTTP hatası uygulamanızdan geliyor olmalıdır. İstemcinin uygulamaya bağlanması için tüm DNS çözümleme adımları tamamlanmıştır. Bu, uygulama trafik akışında Traffic Manager sahip olan herhangi bir etkileşimi içerir.
+[Trafik Yöneticisi Nasıl Çalışır](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Trafik Yöneticisi DNS düzeyinde çalışır. İstemcileri uygun hizmet bitiş noktasına yönlendirmek için DNS yanıtlarını kullanır. İstemciler daha sonra Servis Yöneticisi aracılığıyla değil, doğrudan hizmet bitiş noktasına bağlanır. Trafik Yöneticisi istemci ve sunucu arasındaki HTTP trafiğini görmez. Bu nedenle, gördüğünüz herhangi bir HTTP hatası uygulamanızdan geliyor olmalıdır. İstemcinin uygulamaya bağlanması için tüm DNS çözüm adımları tamamlanır. Trafik Yöneticisi'nin uygulama trafiği akışı yla ilgili herhangi bir etkileşimi içerir.
 
-Bu nedenle, daha fazla araştırma uygulamaya odaklanmalıdır.
+Daha fazla araştırma bu nedenle uygulama üzerinde durulmalıdır.
 
-İstemcinin tarayıcısından gönderilen HTTP ana bilgisayar üst bilgisi en yaygın sorun kaynağıdır. Uygulamanın, kullanmakta olduğunuz etki alanı adı için doğru ana bilgisayar üstbilgisini kabul edecek şekilde yapılandırıldığından emin olun. Azure App Service kullanan uç noktalar için, bkz. [Traffic Manager kullanarak Azure App Service bir Web uygulaması için özel etki alanı adı yapılandırma](../app-service/configure-domain-traffic-manager.md).
+İstemcinin tarayıcısından gönderilen HTTP ana bilgisayar üstbilgisi en yaygın sorun kaynağıdır. Uygulamanın, kullanmakta olduğunuz etki alanı adı için doğru ana bilgisayar üstbilgisini kabul edecek şekilde yapılandırıldığından emin olun. Azure Uygulama Hizmeti'ni kullanan son noktalar [için, Trafik Yöneticisi'ni kullanarak Azure Uygulama Hizmeti'ndeki bir web uygulaması için özel bir etki alanı adı yapılandırmaya](../app-service/configure-domain-traffic-manager.md)bakın.
 
-### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Traffic Manager kullanmanın performans etkisi nedir?
+### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Trafik Yöneticisi'ni kullanmanın performans etkisi nedir?
 
-[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Traffic Manager DNS düzeyinde çalışmaktadır. İstemciler hizmet uç noktalarınıza doğrudan bağlandıklarından, bağlantı kurulduktan sonra Traffic Manager kullanılırken performans etkisi yoktur.
+[Trafik Yöneticisi Nasıl Çalışır](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Trafik Yöneticisi DNS düzeyinde çalışır. İstemciler doğrudan hizmet uç noktalarınıza bağlandığından, bağlantı kurulduktan sonra Trafik Yöneticisi'ni kullanırken oluşan performans etkisi olmaz.
 
-Traffic Manager, DNS düzeyindeki uygulamalarla tümleştiğinden, DNS çözümleme zincirine ek bir DNS aramasının eklenmesi gerekir. DNS çözümleme süresi üzerinde Traffic Manager etkisi en düşük düzeydedir. Traffic Manager, ad sunucularından oluşan küresel bir ağı kullanır ve DNS sorgularının her zaman kullanılabilir en yakın ad sunucusuna yönlendirildiğinden emin olmak için [her noktaya yayın](https://en.wikipedia.org/wiki/Anycast) ağını kullanır. Ayrıca, DNS yanıtlarının önbelleğe alınması, Traffic Manager kullanılarak oluşan ek DNS gecikmesi yalnızca bir oturum kesri için geçerlidir.
+Traffic Manager DNS düzeyindeki uygulamalarla tümleştiğinden, DNS çözüm zincirine ek bir DNS araması eklenmesi gerekir. Trafik Yöneticisi'nin DNS çözünürlük süresi üzerindeki etkisi çok azdır. Traffic Manager, ad sunucularından oluşan genel bir ağ kullanır ve DNS sorgularının her zaman kullanılabilir en yakın ad sunucusuna yönlendirilmesini sağlamak için [anycast](https://en.wikipedia.org/wiki/Anycast) ağlarını kullanır. Buna ek olarak, DNS yanıtlarının önbelleğe aldaması, Trafik Yöneticisi kullanılarak ortaya çıkan ek DNS gecikmesinin yalnızca oturumların bir kısmı için geçerli olduğu anlamına gelir.
 
-Performans yöntemi, trafiği kullanılabilir en yakın uç noktaya yönlendirir. Net sonucu, bu yöntemle ilişkili genel performans etkisinin en az olması gerekir. DNS gecikmede herhangi bir artış, uç noktaya daha düşük ağ gecikme süresine göre denkleştirilir.
+Performans yöntemi trafiği kullanılabilir en yakın bitiş noktasına yönlendirir. Net sonuç, bu yöntemle ilişkili genel performans etkisinin en az olması gerektiğidir. DNS gecikmesindeki herhangi bir artış, bitiş noktasına daha düşük ağ gecikmesi ile dengelenmelidir.
 
-### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Traffic Manager ile hangi uygulama protokollerini kullanabilirim?
+### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Trafik Yöneticisi ile hangi uygulama protokollerini kullanabilirim?
 
-[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Traffic Manager DNS düzeyinde çalışmaktadır. DNS araması tamamlandıktan sonra, istemciler Traffic Manager aracılığıyla değil, doğrudan uygulama uç noktasına bağlanır. Bu nedenle, bağlantı herhangi bir uygulama protokolünü kullanabilir. İzleme protokolü olarak TCP ' yi seçerseniz, Traffic Manager uç nokta sistem durumu izleme herhangi bir uygulama protokolü kullanılmadan yapılabilir. Sistem durumunun bir uygulama protokolünü kullanarak doğrulanmasını seçerseniz, uç noktasının HTTP veya HTTPS GET isteklerine yanıt verebilmeleri gerekir.
+[Trafik Yöneticisi Nasıl Çalışır](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, Trafik Yöneticisi DNS düzeyinde çalışır. DNS araması tamamlandıktan sonra, istemciler uygulama bitiş noktasına Trafik Yöneticisi aracılığıyla değil, doğrudan bağlanır. Bu nedenle, bağlantı herhangi bir uygulama protokolü kullanabilirsiniz. İzleme protokolü olarak TCP'yi seçerseniz, Trafik Yöneticisi'nin uç nokta durumu izlemesi herhangi bir uygulama protokolü kullanmadan yapılabilir. Bir uygulama protokolü kullanarak sistem durumunun doğrulanmasını seçerseniz, bitiş noktasının HTTP veya HTTPS GET isteklerine yanıt verebilmesi gerekir.
 
-### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Traffic Manager, "Naked" etki alanı adıyla kullanabilir miyim?
+### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Trafik Yöneticisi'ni "çıplak" alan adı ile kullanabilir miyim?
 
-Evet. Tepesinde etki alanı adınız için bir Azure Traffic Manager profiline başvurmak üzere bir diğer ad kaydı oluşturma hakkında bilgi edinmek için bkz. [Traffic Manager ile tepesinde etki alanı adlarını desteklemek için bir diğer ad kaydı yapılandırma](../dns/tutorial-alias-tm.md).
+Evet. Azure Trafik Yöneticisi profiline başvurmak için alan adınız için bir diğer ad kaydının nasıl oluşturuldestekleyeceğini öğrenmek için, [Trafik Yöneticisi ile apeks alan adlarını desteklemek için bir takma ad kaydı yapılandır'a](../dns/tutorial-alias-tm.md)bakın.
 
-### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>DNS sorgularını işlerken istemci alt ağ adresini göz önüne Traffic Manager mı? 
+### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Trafik Yöneticisi, DNS sorgularını işlerken istemci alt net adresini dikkate alır mı? 
 
-Evet, aldığı DNS sorgusunun kaynak IP adresine ek olarak (genellikle DNS Çözümleyicisinin IP adresidir), coğrafi, performans ve alt ağ yönlendirme yöntemlerinin aramalarını gerçekleştirirken Traffic Manager, şu durumlarda istemci alt ağ adresini de dikkate alır. Bu, isteği Son Kullanıcı adına getiren çözümleyici tarafından sorguya dahil edilmiştir.  
-Özellikle, [RFC 7871 – DNS sorgularında Istemci alt ağı](https://tools.ietf.org/html/rfc7871) [(EDNS0)](https://tools.ietf.org/html/rfc2671) tarafından desteklenen çözümleyicilerine istemci alt ağ adresini geçirebilen bir uzantı mekanizması sağlar.
+Evet, aldığı DNS sorgusunun kaynak IP adresine (genellikle DNS çözümleyicisinin IP adresidir) ek olarak, Coğrafi, Performans ve Subnet yönlendirme yöntemleriiçin arama lar gerçekleştirirken, trafik yöneticisi istemci alt net adresini de dikkate alır son kullanıcı adına istekte bulunan çözümleyici tarafından sorguya dahil edilir.  
+Özellikle, [DNS Sorguları'ndaki RFC 7871 – Client Subnet,](https://tools.ietf.org/html/rfc7871) istemci alt net adresini destekleyen çözücülerden geçirebilen [DNS (EDNS0) için](https://tools.ietf.org/html/rfc2671) bir Uzantı Mekanizması sağlar.
 
-### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>DNS TTL nedir ve Kullanıcılarımı nasıl etkiler?
+### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>DNS TTL nedir ve kullanıcılarımı nasıl etkiler?
 
-Bir DNS sorgusu Traffic Manager olduğunda, yanıtta yaşam süresi (TTL) olarak adlandırılan bir değer ayarlar. Birimi saniye cinsinden olan bu değer, DNS çözümleyicilerine bu yanıtın ne kadar süre önbellekte tutulacağını gösterir. DNS çözümleyicilerine bu sonucu önbelleğe almaya garanti edilmediği sürece, önbelleğe alma Traffic Manager işlemi, DNS sunucularına gitmek yerine önbelleğin sonraki tüm sorgulara yanıt vermesini sağlar. Bu, yanıtları aşağıda gösterildiği gibi etkiler:
+Bir DNS sorgusu Trafik Yöneticisi'ne düştüğünde, zaman-to-live (TTL) adlı yanıtta bir değer ayarlar. Birimi saniye cinsinden olan bu değer, bu yanıtı ne kadar süreyle önbelleğe almak için DNS çözümleyicilerine aşağı doğru olduğunu gösterir. DNS çözümleyicilerinin bu sonucu önbelleğe almaları garanti edilmezken, önbelleğe alma, Trafik Yöneticisi DNS sunucularına gitmek yerine önbellekten sonraki sorgulara yanıt vermelerini sağlar. Bu, yanıtları aşağıdaki gibi etkiler:
 
-- daha yüksek bir TTL, Traffic Manager DNS sunucularında geçen sorguların sayısını azaltır ve bu, sunulan sorgu sayısı faturalandırılabilir bir kullanım olduğundan müşterinin maliyetini azaltabilir.
-- daha yüksek bir TTL, DNS araması yapmak için geçen süreyi azaltabilir.
-- daha yüksek bir TTL Ayrıca, verilerinizin araştırma aracıları aracılığıyla Traffic Manager en son sistem durumu bilgilerini yansıtmayacağı anlamına gelir.
+- daha yüksek bir TTL, Traffic Manager DNS sunucularına inen sorgu sayısını azaltır, bu da sunulan sorgu sayısı faturalandırılabilir bir kullanım olduğundan müşterinin maliyetini azaltabilir.
+- daha yüksek bir TTL, DNS araması yapmak için gereken süreyi potansiyel olarak azaltabilir.
+- daha yüksek bir TTL, verilerinizin Trafik Yöneticisi'nin sondalama aracıları aracılığıyla elde ettiği en son sağlık bilgilerini yansıtmadığı anlamına da gelir.
 
-### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Traffic Manager yanıtları için TTL 'yi ne kadar yüksek veya düşük bir şekilde ayarlayabilirim?
+### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Trafik Yöneticisi yanıtları için TTL'yi ne kadar yüksek veya düşük ayarlayabilirim?
 
-Her profil düzeyinde, DNS TTL değerini 0 saniye ve en fazla 2.147.483.647 saniye ( [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt )ile uyumlu maksimum Aralık) olarak ayarlayabilirsiniz. 0 TTL değeri, aşağı akış DNS çözümleyiclarının sorgu yanıtlarını önbelleğe belirtmeyeceği ve tüm sorguların çözümlenmek üzere Traffic Manager DNS sunucularına ulaşması beklenmediği anlamına gelir.
+Profil başına DNS TTL'yi 0 saniye ve 2.147.483.647 saniye [(RFC-1035](https://www.ietf.org/rfc/rfc1035.txt )ile uyumlu maksimum aralık) kadar düşük olarak ayarlayabilirsiniz. 0 TTL, akış aşağı DNS çözümleyicilerinin sorgu yanıtlarını önbelleğe almaması ve tüm sorguların çözüm için Trafik Yöneticisi DNS sunucularına ulaşmasının beklendiği anlamına gelir.
 
-### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Profilim 'e gelen sorguların hacmini nasıl anlayabilirim? 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Profilime gelen sorguların hacmini nasıl anlayabilirim? 
 
-Traffic Manager tarafından verilen ölçülerden biri, bir profil tarafından yanıtlanan sorgu sayısıdır. Bu bilgileri profil düzeyindeki bir toplamada alabilir veya belirli uç noktaların döndürüldüğü sorgu hacmini görmek için daha fazla ayırabilirsiniz. Ayrıca, sorgu yanıt birimi ayarladığınız koşulları aştığında size bildirimde bulunan uyarılar ayarlayabilirsiniz. Daha ayrıntılı bilgi için [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).
+Trafik Yöneticisi tarafından sağlanan ölçümlerden biri, bir profil tarafından yanıtlanan sorgu sayısıdır. Bu bilgileri profil düzeyinde toplama dan alabilirsiniz veya belirli uç noktalarıdöndürüldüğü sorguların hacmini görmek için daha fazla bölebilirsiniz. Ayrıca, sorgu yanıt hacmi belirlediğiniz koşulları geçerse sizi bilgilendirmek için uyarılar ayarlayabilirsiniz. Daha fazla bilgi [için, Trafik Yöneticisi ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).
 
-## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager coğrafi trafik yönlendirme yöntemi
+## <a name="traffic-manager-geographic-traffic-routing-method"></a>Trafik Yöneticisi Coğrafi trafik yönlendirme yöntemi
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Coğrafi yönlendirmenin yararlı olduğu bazı kullanım durumları nelerdir?
 
-Coğrafi yönlendirme türü, bir Azure müşterisinin kullanıcılarını coğrafi bölgelere göre ayırt etmek için ihtiyacı olan herhangi bir senaryoda kullanılabilir. Örneğin, coğrafi trafik yönlendirme yöntemini kullanarak belirli bölgelerdeki kullanıcılara diğer bölgelerden farklı bir kullanıcı deneyimi verebilirsiniz. Diğer bir örnek, belirli bir bölgedeki kullanıcıların yalnızca ilgili bölgedeki uç noktalarla sunulmasını gerektiren yerel veri egemenlik mantarihleriyle uyumlu değildir.
+Coğrafi yönlendirme türü, Azure müşterisinin kullanıcılarını coğrafi bölgelere göre ayırt etmesi gereken her senaryoda kullanılabilir. Örneğin, Coğrafi trafik yönlendirme yöntemini kullanarak, belirli bölgelerdeki kullanıcılara diğer bölgelerdekikullanıcılardan farklı bir kullanıcı deneyimi verebilirsiniz. Başka bir örnek, belirli bir bölgedeki kullanıcılara yalnızca o bölgedeki uç noktalarla hizmet sunulmasını gerektiren yerel veri egemenlik zorunluluklarına uymaktır.
 
-### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Performans yönlendirme yöntemini mi yoksa coğrafi yönlendirme yöntemini mi kullanmalıyım Nasıl yaparım? karar veriyor musunuz?
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Performans yönlendirme yöntemini mi yoksa Coğrafi yönlendirme yöntemini mi kullanmam gerektiğine nasıl karar veririm?
 
-Bu iki popüler yönlendirme yöntemi arasındaki önemli fark, birincil hedefiniz için en düşük gecikme süresini sağlayan uç noktaya trafik göndermek, ancak birincil hedefin coğrafi olarak bir coğrafi bölge zorlaması sağlamaktır belirli bir uç noktaya kasıtlı olarak yönlendirebilmeniz için çağıranlarınızın dilimi. Çakışma, coğrafi closeness ve daha düşük gecikme arasında bir bağıntı olduğundan, her zaman doğru olmamasına rağmen oluşur. Farklı bir Coğrafya 'da, çağıran için daha iyi bir gecikme deneyimi sağlayabilen bir uç nokta olabilir ve bu durumda performans yönlendirmenin kullanıcıyı bu uç noktaya gönderebilmesi, coğrafi yönlendirmenin her zaman onları her zaman için eşleştirmekte olduğunuz uç noktaya göndermesini sağlayabilirsiniz. coğrafi bölge. Daha ayrıntılı hale getirmek için aşağıdaki örneği göz önünde bulundurun-coğrafi yönlendirme ile, Asya 'daki tüm trafiği ABD 'de ve tüm ABD trafiğiyle Asya 'daki uç noktalara Gönder gibi yaygın olmayan eşlemeler yapabilirsiniz. Bu durumda, coğrafi yönlendirme, tam olarak sizin yapılandırdığınız ve performans iyileştirmesi dikkate alınmaz. 
+Bu iki popüler yönlendirme yöntemi arasındaki temel fark, Performans yönlendirme yönteminde birincil amacınızın trafiği arayanın en düşük gecikme sini sağlayabilecek bitiş noktasına göndermek olmasıdır, oysa Coğrafi yönlendirmede birincil hedef bir coğrafi arayanlarınız için çit, böylece onları kasten belirli bir bitiş noktasına yönlendirebilirsiniz. Bu her zaman doğru olmasa da, coğrafi yakınlık ve düşük gecikme arasında bir korelasyon olduğundan çakışma gerçekleşir. Arayan için daha iyi bir gecikme deneyimi sağlayabilecek farklı bir coğrafyada bir bitiş noktası olabilir ve bu durumda Performans yönlendirmesi kullanıcıyı bu uç noktaya gönderir, ancak Coğrafi yönlendirme her zaman onları eşlediğiniz bitiş noktasına gönderir coğrafi bölge. Daha da açık olmak için, aşağıdaki örneği göz önünde bulundurun - Coğrafi yönlendirme ile Asya'dan ABD'deki uç noktalara tüm trafiği göndermek ve Asya'daki tüm ABD trafiğini son noktalara göndermek gibi nadir olmayan eşlemeler yapabilirsiniz. Bu durumda, Coğrafi yönlendirme kasıtlı olarak tam olarak ne yapmak ve performans optimizasyonu yapmak için yapılandırdığınız şeyi yapacak bir göz değildir. 
 >[!NOTE]
->Hem performans hem de coğrafi yönlendirme özelliklerine ihtiyacınız olabilecek senaryolar olabilir, bu senaryolar için iç içe geçmiş profiller harika seçim olabilir. Örneğin, Kuzey Amerika tüm trafiği ABD 'de uç noktalara sahip bir iç içe geçmiş profile gönderirseniz ve bu trafiği bu küme içindeki en iyi uç noktaya göndermek için performans yönlendirmeyi kullandığınızda, coğrafi yönlendirmeye sahip bir üst profil ayarlayabilirsiniz. 
+>Bu senaryolar iç içe profiller için hem performans hem de coğrafi yönlendirme yeteneklerine ihtiyaç duyabileceğiniz senaryolar olabilir. Örneğin, Kuzey Amerika'daki tüm trafiği ABD'de uç noktaları olan iç içe yönelik bir profile gönderdiğiniz coğrafi yönlendirmeiçeren bir üst profil ayarlayabilir ve bu trafiği bu kümedeki en iyi bitiş noktasına göndermek için performans yönlendirmesini kullanabilirsiniz. 
 
-### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Coğrafi yönlendirme için Traffic Manager tarafından desteklenen bölgeler nelerdir?
+### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Coğrafi yönlendirme için Trafik Yöneticisi tarafından desteklenen bölgeler nelerdir?
 
-Traffic Manager tarafından kullanılan ülke/bölge hiyerarşisi [burada](traffic-manager-geographic-regions.md)bulunabilir. Bu sayfa herhangi bir değişiklikle güncel tutulurken, aynı bilgileri [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/)kullanarak program aracılığıyla da alabilirsiniz. 
+Trafik Yöneticisi tarafından kullanılan ülke/bölge hiyerarşisini [burada](traffic-manager-geographic-regions.md)bulabilirsiniz. Bu sayfa herhangi bir değişiklikle güncel tutulurken, [Azure Trafik Yöneticisi REST API'yi](https://docs.microsoft.com/rest/api/trafficmanager/)kullanarak aynı bilgileri programlı olarak da alabilirsiniz. 
 
-### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Traffic Manager bir kullanıcının sorgu nerede olduğunu nasıl belirleyebilir?
+### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Trafik yöneticisi, bir kullanıcının nereden sorgu yaptığını nasıl belirler?
 
-Traffic Manager sorgunun kaynak IP 'sini arar (Bu, büyük olasılıkla Kullanıcı adına sorgu yapan yerel bir DNS çözümleyicidir) ve konumu belirleyebilmek için bir iç IP ile bölge eşlemesi kullanır. Bu harita, internet 'teki değişikliklere yönelik olarak sürekli olarak güncelleştirilir. 
+Trafik Yöneticisi sorgunun kaynağı IP bakar (bu büyük olasılıkla kullanıcı adına sorgu yapan yerel bir DNS çözümleyici) ve konumu belirlemek için bölge haritası için bir iç IP kullanır. Bu harita, internetteki değişiklikleri hesaba katmak için sürekli olarak güncelleştirilir. 
 
-### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Traffic Manager her durumda kullanıcının tam coğrafi konumunu doğru bir şekilde belirleyebilsin mi?
+### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Trafik Yöneticisi'nin her durumda kullanıcının tam coğrafi konumunu doğru bir şekilde belirleyebileceği garanti midir?
 
-Hayır, Traffic Manager bir DNS sorgusunun kaynak IP adresinden çıkardığımız coğrafi bölgenin, her zaman aşağıdaki nedenlerden dolayı kullanıcının konumuna karşılık geldiğini garanti edemez:
+Hayır, Trafik Yöneticisi, bir DNS sorgusunun kaynak IP adresinden çıkardığımız coğrafi bölgenin aşağıdaki nedenlerden dolayı her zaman kullanıcının konumuna karşılık olacağını garanti edemez:
 
-- İlk olarak, önceki SSS bölümünde açıklandığı gibi, görtiğimiz kaynak IP adresi, Kullanıcı adına arama yapan bir DNS çözümleyicisine ait. DNS Çözümleyicisinin coğrafi konumu kullanıcının coğrafi konumu için iyi bir ara sunucu olsa da, DNS çözümleyici hizmetinin parmak izine ve müşterinin kullanmayı seçtiği belirli DNS çözümleyici hizmetine bağlı olarak farklı olabilir. Örnek olarak, Malezya 'da bulunan bir müşterinin cihaz ayarlarında, bu kullanıcı/cihaz için sorgu çözümlerini işlemek üzere Singapur 'daki DNS sunucusu bir DNS Çözümleyicisi hizmeti kullanır. Bu durumda Traffic Manager, yalnızca Singapur konumuna karşılık gelen çözümleyici 'nin IP adresini görebilirler. Ayrıca, bu sayfada istemci alt ağ adresi desteğiyle ilgili önceki SSS bölümüne bakın.
+- İlk olarak, önceki SSS açıklandığı gibi, gördüğümüz kaynak IP adresi kullanıcı adına arama yapan bir DNS çözümleyici olduğunu. DNS çözümleyicisinin coğrafi konumu kullanıcının coğrafi konumu için iyi bir proxy olsa da, DNS çözümleyici hizmetinin ayak izine ve müşterinin kullanmayı seçtiği belirli DNS çözümleyici hizmetine bağlı olarak da farklı olabilir. Örnek olarak, Malezya'da bulunan bir müşteri, cihazlarının ayarlarını belirtebilir ve Singapur'daki DNS sunucusu söz kullanıcı/aygıt için sorgu çözümleme çözümünü işlemek üzere seçilebilen bir DNS çözümleyici hizmeti kullanabilir. Bu durumda, Trafik Yöneticisi yalnızca Çözümleyicinin Singapur konumuna karşılık gelen IP adresini görebilir. Ayrıca, bu sayfada istemci alt net adresi desteği ile ilgili önceki SSS bakın.
 
-- İkincisi, Traffic Manager IP adresini coğrafi bölge çevirisi yapmak için bir iç eşleme kullanır. Bu harita doğrulanırken ve internet 'in gelişmiş olması için doğruluğu ve hesabını artırmak üzere sürekli olarak güncelleştirildiğinden, bilgilerinizin tüm IP 'nin coğrafi konumunun tam bir gösterimi olmaması de mümkün değildir. gideren.
+- İkinci olarak, Trafik Yöneticisi coğrafi bölge çevirisi için IP adresini yapmak için dahili bir harita kullanır. Bu harita doğruluğunu artırmak ve internetin gelişen doğası için hesap sürekli olarak doğrulanmış ve güncellenir iken, bilgilerimizin tüm IP coğrafi konumunun tam bir temsili olmaması hala olasılığı vardır Adres.
 
-###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Bir uç noktanın coğrafi yönlendirme için yapılandırılmış ile aynı bölgede fiziksel olarak bulunması gerekir mi?
+###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Coğrafi yönlendirme için yapılandırıldığı noktayla aynı bölgede bir uç noktanın fiziksel olarak bulunması gerekir mi?
 
-Hayır, uç noktanın konumu, hangi bölgelere eşleştirilebileceği konusunda hiçbir kısıtlama vermez. Örneğin, ABD-Orta Azure bölgesindeki bir uç noktanın, Hindistan 'a yönlendiren tüm kullanıcılara sahip olması olabilir.
+Hayır, bitiş noktasının konumu, hangi bölgelerin eşlenebileceğine herhangi bir kısıtlama getirmez. Örneğin, ABD-Orta Azure bölgesindeki bir bitiş noktası, Hindistan'daki tüm kullanıcıların bu bölgeye yönlendirilen olmasını sağlayabilir.
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Coğrafi yönlendirme yapmak üzere yapılandırılmamış bir profildeki uç noktalara coğrafi bölgeler atayabilir miyim?
 
-Evet, bir profilin yönlendirme yöntemi coğrafi değilse, bu profildeki uç noktalara coğrafi bölgeler atamak için [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) kullanabilirsiniz. Coğrafi olmayan yönlendirme türü profilleri söz konusu olduğunda bu yapılandırma yok sayılır. Bu tür bir profili daha sonra coğrafi yönlendirme türüne değiştirirseniz Traffic Manager bu eşlemeleri kullanabilir.
+Evet, bir profilin yönlendirme yöntemi coğrafi değilse, bu profildeki uç noktalara coğrafi bölgeler atamak için [Azure Trafik Yöneticisi REST API'yi](https://docs.microsoft.com/rest/api/trafficmanager/) kullanabilirsiniz. Coğrafi olmayan yönlendirme türü profilleri durumunda, bu yapılandırma yoksayılır. Böyle bir profili daha sonra coğrafi yönlendirme türüyle değiştirirseniz, Trafik Yöneticisi bu eşlemeleri kullanabilir.
 
-### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Mevcut bir profilin yönlendirme yöntemini coğrafi olarak değiştirmeyi denediğimde neden hata alıyorum?
+### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Varolan bir profilin yönlendirme yöntemini Coğrafi olarak değiştirmeye çalıştığımda neden hata alıyorum?
 
-Coğrafi yönlendirmeye sahip bir profil altındaki tüm uç noktalara en az bir bölge eşlenmiş olması gerekir. Var olan bir profili coğrafi yönlendirme türüne dönüştürmek için, ilk olarak coğrafi bölgeleri [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) kullanarak tüm uç noktalarına ilişkilendirmeniz gerekir. Bu, yönlendirme türünü coğrafi olarak değiştirmeden önce. Portalı kullanıyorsanız, önce uç noktaları silin, profilin yönlendirme yöntemini coğrafi olarak değiştirin ve sonra uç noktaları, coğrafi bölge eşlemeleriyle birlikte ekleyin.
+Coğrafi yönlendirmeiçeren bir profilin altındaki tüm uç noktaların en az bir bölgenin eşlenmiş olması gerekir. Varolan bir profili coğrafi yönlendirme türüne dönüştürmek için, yönlendirme türünü coğrafi olarak değiştirmeden önce Azure [Trafik Yöneticisi REST API'yi](https://docs.microsoft.com/rest/api/trafficmanager/) kullanarak coğrafi bölgeleri tüm uç noktalarıyla ilişkilendirmeniz gerekir. Portalı kullanıyorsanız, önce uç noktaları silin, profilin yönlendirme yöntemini coğrafi olarak değiştirin ve ardından uç noktaları coğrafi bölge eşlemeleriyle birlikte ekleyin.
 
-### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Müşterilerin coğrafi yönlendirmeyi etkin bir profil altında olan uç noktalar yerine iç içe geçmiş profiller oluşturması kesinlikle önerilir mi?
+### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Neden müşterilerin coğrafi yönlendirme etkin leştirilmiş bir profilin altında uç nokta yerine iç içe profiller oluşturması şiddetle tavsiye edilir?
 
-Bölge, coğrafi yönlendirme yöntemini kullanıyorsa, bir profil içinde yalnızca bir uç noktaya atanabilir. Bu uç nokta, kendisine bağlı bir alt profili olan iç içe bir tür değilse, herhangi bir trafiği göndermeyen bir alternatif olmadığından, bu uç nokta sağlıksız durumda Traffic Manager trafik göndermeye devam eder. Traffic Manager, atanan bölge sağlıksız olan uç noktaya atanmış bölgenin bir "üst" olduğunda bile başka bir uç noktaya yük devretmez (örneğin, Ispanya bölgesi olan bir uç nokta sağlıksız olursa, başka bir uç noktaya yük devredebiliriz Avrupa bölgesine atanmış bölgeleri içerir). Bu, Traffic Manager müşterinin profilinde kurulu olan coğrafi sınırlara karşılık olmasını sağlamak için yapılır. Bir uç nokta sağlıksız olduğunda başka bir uç noktaya yük devretme avantajı sağlamak için, coğrafi bölgelerin tek uç noktalar yerine, içindeki birden çok uç nokta ile iç içe geçmiş profillere atanması önerilir. Bu şekilde, iç içe geçmiş alt profildeki bir uç nokta başarısız olursa, trafiği aynı iç içe alt profil içindeki başka bir uç noktaya yük devredebilirler.
+Coğrafi yönlendirme yöntemini kullanıyorsa, bölge profil içinde yalnızca bir bitiş noktasına atanabilir. Bu uç nokta, alt profili eklenmiş iç içe bir tür değilse, bu bitiş noktası sağlıksız gidiyorsa, Trafik Yöneticisi herhangi bir trafik göndermeme alternatifi daha iyi olmadığından, trafik yöneticisi ona trafik göndermeye devam ediyor. Trafik Yöneticisi başka bir bitiş noktasına kadar başarısız olmaz, atanan bölge sağlıksız giden bitiş noktasına atanan bölgenin bir "ebeveyni" olsa bile (örneğin, İspanya bölgesi olan bir bitiş noktası sağlıksız giderse, başka bir bitiş noktasına başarısız olmayız bölge Avrupa ona atanmış) vardır. Bu, Trafik Yöneticisi'nin müşterinin profilinde kurduğu coğrafi sınırlara saygı göstermesini sağlamak için yapılır. Bir bitiş noktası sağlıksız gittiğinde başka bir uç noktaya geçmeavantajını elde etmek için, coğrafi bölgelerin tek tek uç noktaları yerine içinde birden çok uç nokta bulunan iç içe dönük profillere atanması önerilir. Bu şekilde, iç içe geçen alt profildeki bir bitiş noktası başarısız olursa, trafik aynı iç içe geçen alt profilin içindeki başka bir bitiş noktasına geçemez.
 
-### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>API sürümünde bu yönlendirme türünü destekleyen herhangi bir kısıtlama var mı?
+### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Bu yönlendirme türünü destekleyen API sürümünde herhangi bir kısıtlama var mı?
 
-Evet, yalnızca API sürüm 2017-03-01 ve üzeri, coğrafi yönlendirme türünü destekler. Eski API sürümleri, coğrafi yönlendirme türünün profillerini oluşturma veya uç noktalara coğrafi bölgeler atama için kullanılamaz. Bir Azure aboneliğinden profilleri almak için eski bir API sürümü kullanılırsa, coğrafi yönlendirme türünün herhangi bir profili döndürülmez. Ayrıca, eski API sürümleri kullanılırken, coğrafi bölge ataması olan bitiş noktalarına sahip olan herhangi bir profilde gösterilen coğrafi bölge ataması yoktur.
+Evet, yalnızca 2017-03-01 VE yeni sürüm Coğrafi yönlendirme türünü destekler. Daha eski API sürümleri, Coğrafi yönlendirme türüprofillerini oluşturmada veya coğrafi bölgeleri uç noktalara atamak için kullanılamaz. Azure aboneliğinden profilleri almak için eski bir API sürümü kullanılıyorsa, Coğrafi yönlendirme türüne ait herhangi bir profil döndürülmez. Ayrıca, eski API sürümlerini kullanırken, coğrafi bölge ataması olan uç noktaları olan herhangi bir profilin coğrafi bölge ataması gösterilmez.
 
-## <a name="traffic-manager-subnet-traffic-routing-method"></a>Traffic Manager alt ağ trafiği yönlendirme yöntemi
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>Trafik Yöneticisi Subnet trafik yönlendirme yöntemi
 
-### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Alt ağ yönlendirmesinin yararlı olduğu bazı kullanım durumları nelerdir?
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Alt ağ yönlendirmenin yararlı olduğu bazı kullanım durumları nelerdir?
 
-Alt ağ yönlendirme, DNS isteklerinin IP adresinin kaynak IP 'si tarafından tanımlanan belirli kullanıcı kümeleri için teslim ettiğiniz deneyimi ayırt etmenize olanak tanır. Kullanıcılar şirket HQ 'ınızdan bir Web sitesine bağlanıyorsa bir örnek farklı içerik gösterir. Diğeri ise belirli ISS 'lerden gelen kullanıcıları, yalnızca IPv6 kullanıldığında bu ISS 'Lerin alt düzey performansa sahip olması durumunda yalnızca IPv4 bağlantılarını destekleyen uç noktalara erişmelerini kısıtlamalardır.
-Alt ağ yönlendirme yöntemini kullanmanın başka bir nedeni, iç içe geçmiş bir profil kümesindeki diğer profillerle birlikte bulunur. Örneğin, kullanıcılarınıza coğrafi olarak sınırlama eklemek için coğrafi yönlendirme yöntemini kullanmak istiyorsanız, ancak belirli bir ISS için farklı bir yönlendirme yöntemi yapmak istiyorsanız, üst profil olarak bir profil geçiş alt ağı yönlendirme yöntemine sahip olabilir ve bu ISS 'yi belirli bir alt Pro 'yu kullanacak şekilde geçersiz kılabilirsiniz dosyasına ve diğer herkese yönelik standart coğrafi profile sahip olabilir.
+Alt ağ yönlendirme, DNS istekleri IP adresinin kaynak IP'si tarafından tanımlanan belirli kullanıcı kümeleri için sağladığınız deneyimi ayırt etmenizi sağlar. Kullanıcılar şirket merkezinizden bir web sitesine bağlanıyorsa, bir örnek farklı içerik göstermek tir. Bir diğeri, belirli ISS'lerden gelen kullanıcıları yalnızca IPv6 kullanıldığında alt par performansına sahipse yalnızca IPv4 bağlantılarını destekleyen uç noktalara erişmekiçin kısıtlamak olacaktır.
+Subnet yönlendirme yöntemini kullanmanın bir diğer nedeni de iç içe geçen profil kümesindeki diğer profillerle birlikte olmasıdır. Örneğin, kullanıcılarınızı coğrafi eskrim için Coğrafi yönlendirme yöntemini kullanmak, ancak belirli bir ISS için farklı bir yönlendirme yöntemi yapmak istiyorsanız, ana profil olarak bir profil ile Subnet yönlendirme yöntemine sahip olabilirsiniz ve iss'in belirli bir alt öğeyi kullanmasını geçersiz kılabilirsiniz profili ne olursa o kadar çok kişi var ve herkes için standart Coğrafi profile sahip.
 
-### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Traffic Manager son kullanıcının IP adresini nasıl bilir?
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Trafik Yöneticisi son kullanıcının IP adresini nasıl biliyor?
 
-Son Kullanıcı cihazları, genellikle DNS aramasını kendi adına bir DNS Çözümleyicisi kullanır. Bu çözümleyiciler giden IP 'si Traffic Manager kaynak IP olarak görüşeydir. Buna ek olarak, alt ağ yönlendirme yöntemi de istekle geçirilmiş bir EDNS0 genişletilmiş Istemci alt ağı (ECS) bilgisi olup olmadığını görmek için de görünür. ECS bilgileri mevcutsa, bu, yönlendirmeyi belirlemede kullanılan adrestir. ECS bilgileri yokluğunda, sorgunun kaynak IP 'si yönlendirme amacıyla kullanılır.
+Son kullanıcı aygıtları genellikle dns aramasını kendi adlarına yapmak için bir DNS çözümleyicisi kullanır. Bu tür çözücülerin giden IP'si, Trafik Yöneticisi'nin kaynak IP olarak gördüğü şeydir. Buna ek olarak, Subnet yönlendirme yöntemi de istek ile geçirilen EDNS0 Genişletilmiş İstemci Subnet (ECS) bilgi olup olmadığını görmek için görünüyor. ECS bilgileri varsa, yönlendirmeyi belirlemek için kullanılan adres tir. ECS bilgilerinin yokluğunda, sorgunun kaynak IP'si yönlendirme amacıyla kullanılır.
 
-### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Alt ağ yönlendirmeyi kullanırken IP adreslerini nasıl belirtirim?
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Subnet yönlendirmekullanırken IP adreslerini nasıl belirtebilirim?
 
-Bir uç nokta ile ilişkilendirilecek IP adresleri iki şekilde belirtilebilir. İlk olarak, aralığı belirtmek için bir başlangıç ve bitiş adresleriyle dört noktalı ondalık sekizli gösterimini kullanabilirsiniz (örneğin, 1.2.3.4-5.6.7.8 veya 3.4.5.6-3.4.5.6). İkinci olarak, aralığı belirtmek için CıDR gösterimini kullanabilirsiniz (örneğin, 1.2.3.0/24). Birden çok Aralık belirtebilir ve bir Aralık kümesinde her iki gösterim türünü de kullanabilirsiniz. Birkaç kısıtlama geçerlidir.
+Bitiş noktasıyla ilişkilendirilecek IP adresleri iki şekilde belirtilebilir. İlk olarak, aralığı belirtmek için (örneğin, 1.2.3.4-5.6.7.8 veya 3.4.5.6-3.4.5.6) bir başlangıç ve bitiş adresleri ile dört noktalı ondalık sekizli gösterimi kullanabilirsiniz. İkinci olarak, aralığı belirtmek için CIDR gösterimini kullanabilirsiniz (örneğin, 1.2.3.0/24). Birden çok aralık belirtebilir ve aralık kümesinde her iki gösterim türünü de kullanabilirsiniz. Birkaç kısıtlama uygulanır.
 
--    Her IP 'nin yalnızca tek bir uç noktaya eşlenmesi gerektiğinden, adres aralıklarının çakışamaz
--    Başlangıç adresi bitiş adresinden daha fazla olamaz
--    CıDR gösteriminde, '/' öncesindeki IP adresinin bu aralığın başlangıç adresi olması gerekir (örneğin, 1.2.3.0/24 geçerlidir ancak 1.2.3.4.4/24 geçerli DEĞILDIR)
+-    Her IP'nin yalnızca tek bir bitiş noktasına eşlemesi gerektiğinden, adres aralıklarının çakışması olamaz
+-    Başlangıç adresi bitiş adresinden fazla olamaz
+-    CIDR gösterimi durumunda, '/' öncesi IP adresi bu aralığın başlangıç adresi olmalıdır (örneğin, 1.2.3.0/24 geçerlidir ancak 1.2.3.4.4/24 geçerli DeğİlDİr)
 
-### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Alt ağ yönlendirmesi kullanırken bir geri dönüş uç noktası nasıl belirtebilir?
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Subnet yönlendirmekullanırken bir geri dönüş bitiş noktasını nasıl belirtebilirim?
 
-Alt ağ yönlendirme içeren bir profilde, alt ağa eşlenmiş bir uç noktanız varsa, diğer uç noktalarla eşleşmeyen istekler buraya yönlendirilir. Bir isteğin geldiği bir NXDOMAIN yanıtı döndürmesi ve herhangi bir uç noktaya eşlenmediğinden veya bir uç nokta ile eşlenmişse, ancak o uç nokta sağlıksız olduğundan, Traffic Manager profilinizde bu tür bir geri dönüş uç noktası olması önemle önerilir.
+Subnet yönlendirmesi olan bir profilde, üzerinde alt ağ eşlenmemiş bir bitiş noktanız varsa, diğer uç noktalarla eşleşmeyen tüm istek buraya yönlendirilir. Trafik Yöneticisi bir istek gelirse ve herhangi bir uç noktaya eşlenmez veya bir bitiş noktasına eşlenir, ancak bu bitiş noktası sağlıksız sayılsa, profilinizde böyle bir geri dönüş bitiş noktası olması önerilir.
 
-### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Bir alt ağ yönlendirme türü profilinde bir uç nokta devre dışıysa ne olur?
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Subnet yönlendirme türü profilinde bir bitiş noktası devre dışı bırakılırsa ne olur?
 
-Alt ağ yönlendirme içeren bir profilde, devre dışı bırakılmış bir uç noktanız varsa Traffic Manager, bu uç nokta ve sahip olduğu alt ağ eşlemeleri gibi davranır. IP adresi eşlemesiyle eşleştirileceği bir sorgu alınır ve uç nokta devre dışıysa Traffic Manager, bir geri dönüş uç noktası döndürür (biri eşlemeyle birlikte) veya böyle bir uç nokta yoksa bir NXDOMAIN yanıtı döndürür.
+Subnet yönlendirmesi olan bir profilde, bu devre dışı bırakılmış bir bitiş noktanız varsa, Trafik Yöneticisi bu uç nokta ve sahip olduğu alt net eşlemeleri yokmuş gibi çalışır. IP adresi eşlemesiyle eşleşen bir sorgu alınırsa ve bitiş noktası devre dışı bırakılırsa, Trafik Yöneticisi bir geri dönüş bitiş noktası (eşlemesi olmayan bir sorgu) döndürecek veya böyle bir bitiş noktası yoksa, bir NXDOMAIN yanıtı döndürecektir.
 
-## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Traffic Manager çok değerli trafik yönlendirme yöntemi
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Trafik Yöneticisi MultiValue trafik yönlendirme yöntemi
 
-### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Çok değerli yönlendirmenin yararlı olduğu bazı kullanım durumları nelerdir?
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>MultiValue yönlendirmenin yararlı olduğu bazı kullanım örnekleri nelerdir?
 
-Çoklu değer yönlendirme tek bir sorgu yanıtında birden çok sağlıklı uç nokta döndürüyor. Bunun başlıca avantajı, bir uç noktanın sağlıksız olması durumunda istemcinin başka bir DNS çağrısı yapmadan yeniden denemek için daha fazla seçeneğe (yukarı akış önbelleğinden aynı değeri döndürebileceğini) sahip olması anlamına gelir. Bu, kapalı kalma süresini en aza indirmek isteyen kullanılabilirlik duyarlı uygulamalar için geçerlidir.
-Çok değerli yönlendirme yöntemi için başka bir kullanım, bir uç noktanın hem IPv4 hem de IPv6 adresleri için "çift bağlantılı" olması ve çağrıyı yapana bir bağlantı başlattığında her iki seçeneği de seçim yapmak istediğinizde sağlar.
+MultiValue yönlendirme, tek bir sorgu yanıtında birden çok sağlıklı uç noktasını döndürür. Bunun en büyük avantajı, bir bitiş noktası sağlıksız ise, istemci başka bir DNS araması yapmadan yeniden denemek için daha fazla seçenek olmasıdır (bir yukarı önbellekten aynı değeri döndürebilir). Bu, kapalı kalma süresini en aza indirmek isteyen kullanılabilirlik duyarlı uygulamalar için geçerlidir.
+MultiValue yönlendirme yöntemiiçin başka bir kullanım bir bitiş noktası hem IPv4 ve IPv6 adresleri için "çift ev sahibi" ve bitiş noktasına bir bağlantı başlattığınızda seçim için arayan her iki seçenek vermek istiyorum.
 
-### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Çok değerli yönlendirme kullanıldığında kaç uç nokta döndürülüyor?
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>MultiValue yönlendirmesi kullanıldığında kaç uç nokta döndürülür?
 
-Döndürülecek en fazla uç nokta sayısını, bir sorgu alındığında birden çok sağlıklı uç noktasından daha fazla geri dönemeyeceğini belirtebilirsiniz. Bu yapılandırma için olası en yüksek değer 10 ' dur.
+Döndürülecek en fazla uç nokta sayısını belirtebilirsiniz ve bir sorgu alındığı zaman MultiValue bu kadar çok sağlıklı uç noktadan daha fazla döndürmez. Bu yapılandırma için mümkün olan en yüksek değer 10'dur.
 
-### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Çoklu küme yönlendirmesi kullanıldığında aynı uç nokta kümesini alacak mıyım?
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>MultiValue yönlendirmesi kullanıldığında aynı uç nokta kümesini alacak mıyım?
 
-Her sorguda aynı uç nokta kümesinin döndürülmeyeceğini garanti edemeyiz. Bu Ayrıca, bazı uç noktaların, yanıta dahil edilmeyeceği noktada sağlıksız bir şekilde gidebileceği gerçeden etkilenir
+Her sorguda aynı uç nokta kümesinin döndürüleceğini garanti edemeyiz. Bu da bazı uç noktaların sağlıksız gidebilir ve bu noktada yanıta dahil edilmeyecektir gerçeğinden de etkilenir
 
 ## <a name="real-user-measurements"></a>Gerçek Kullanıcı Ölçümleri
 
-### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Gerçek Kullanıcı Ölçümleri kullanmanın avantajları nelerdir?
+### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Gerçek Kullanıcı Ölçümlerini kullanmanın faydaları nelerdir?
 
-Performans yönlendirme yöntemini kullandığınızda Traffic Manager, son kullanıcılarınızın bağlantı için en iyi Azure bölgesini kaynak IP ve EDNS Istemci alt ağını inceleyerek (geçirilirse) ve hizmetin koruduğu ağ gecikmesi zekasına karşı kontrol ederek kullanır. Gerçek Kullanıcı Ölçümleri, bu tablo, son kullanıcılarınızın Azure 'a bağlandıklarında Son Kullanıcı ağlarını yeterince kapsadığından emin olmanın yanı sıra bu gecikme süresi tablosuna katkıda bulunmak için bunu Son Kullanıcı tabanınız için geliştirir. Bu, son kullanıcılarınızın yönlendirmesinde daha fazla doğruluk doğurur.
+Performans yönlendirme yöntemini kullandığınızda, Traffic Manager, kaynak IP ve EDNS İstemci Alt Net'ini inceleyerek (aktarılırsa) ve hizmetin koruduğu ağ gecikme zekasıyla karşılaştırarak son kullanıcınızın bağlanması gereken en iyi Azure bölgesini seçer. Gerçek Kullanıcı Ölçümleri, deneyimlerinin bu gecikme tablosuna katkıda bulunmasını ve bu tablonun son kullanıcı larınızın Azure'a bağlandığı son kullanıcı ağlarını yeterli şekilde kapsadığını sağlayarak bunu son kullanıcı tabanınız için geliştirir. Bu, son kullanıcınızın yönlendirmesinde daha yüksek bir doğruluk sağlar.
 
-### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Azure olmayan bölgelerle Gerçek Kullanıcı Ölçümleri kullanabilir miyim?
+### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Azure olmayan bölgelerde Gerçek Kullanıcı Ölçümleri kullanabilir miyim?
 
-Yalnızca Azure bölgelerine ulaşma gecikmede ölçü ve rapor Gerçek Kullanıcı Ölçümleri. Azure dışı bölgelerde barındırılan uç noktalarla performans tabanlı yönlendirme kullanıyorsanız, bu uç noktayla ilişkilendirilmesi için seçtiğiniz temsili Azure bölgesi hakkında daha fazla gecikme bilgisi alarak bu özellikten faydalanabilirsiniz.
+Gerçek Kullanıcı Ölçümleri, Azure bölgelerine ulaşmak için yalnızca gecikme gecikmesini ölçer ve raporlar. Azure olmayan bölgelerde barındırılan uç noktalarıyla performans tabanlı yönlendirme kullanıyorsanız, bu bitiş noktasıyla ilişkilendirilmeye yönelik olarak seçtiğiniz temsili Azure bölgesi hakkında daha fazla gecikme sonu bilgisi ne olursa olsun bu özellikten yararlanmaya devam edebilirsiniz.
 
-### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Gerçek Kullanıcı Ölçümleri hangi yönlendirme yöntemi avantajları?
+### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Gerçek Kullanıcı Ölçümlerinden hangi yönlendirme yöntemi yararlanır?
 
-Gerçek Kullanıcı Ölçümleri aracılığıyla elde edilen ek bilgiler yalnızca performans yönlendirme yöntemini kullanan profiller için geçerlidir. Gerçek Kullanıcı Ölçümleri bağlantı, Azure portal üzerinden görüntülediğinizde tüm profillerden kullanılabilir.
+Gerçek Kullanıcı Ölçümleri ile elde edilen ek bilgiler yalnızca performans yönlendirme yöntemini kullanan profiller için geçerlidir. Gerçek Kullanıcı Ölçümleri bağlantısı, Azure portalı üzerinden görüntülediğinizde tüm profillerden edinilebilir.
 
-### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Her profili ayrı Gerçek Kullanıcı Ölçümleri etkinleştirmem gerekir mi?
+### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Her profili ayrı ayrı Gerçek Kullanıcı Ölçümleri'ne etkinleştirmem gerekiyor mu?
 
-Hayır, her abonelik için yalnızca bir kez etkinleştirmeniz gerekir ve ölçülen ve raporlanan tüm gecikme bilgileri tüm profiller tarafından kullanılabilir.
+Hayır, abonelik başına yalnızca bir kez etkinleştirmeniz gerekir ve ölçülen ve bildirilen tüm gecikme bilgileri tüm profiller tarafından kullanılabilir.
 
-### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Nasıl yaparım? Aboneliğim için Gerçek Kullanıcı Ölçümleri devre dışı bırakmak istiyor musunuz?
+### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Aboneliğim için Gerçek Kullanıcı Ölçümlerini nasıl kapatırım?
 
-İstemci uygulamanızdan gecikme süresi ölçümlerini toplamayı ve geri göndermeyi durdurduğunuzda Gerçek Kullanıcı Ölçümleri ile ilgili tahakkuk eden ücretleri durdurabilirsiniz. Örneğin, Web sayfalarına katıştırılmış JavaScript 'i kullandığınızda, JavaScript 'i kaldırarak veya sayfa işlendiğinde çağrılmasını kapatarak bu özelliği kullanmayı durdurabilirsiniz.
+Müşteri uygulamanızdan gecikme süresi ölçümleri toplamayı ve geri göndermeyi bıraktığınızda Gerçek Kullanıcı Ölçümleri ile ilgili ücret tahakkuk etmeyi durdurabilirsiniz. Örneğin, web sayfalarına katıştırılmış javascript ölçümü yaparken, JavaScript'i kaldırarak veya sayfa işlendiğinde çağrısını kapatarak bu özelliği kullanmayı durdurabilirsiniz.
 
-Ayrıca, anahtarınızı silerek Gerçek Kullanıcı Ölçümleri kapatabilirsiniz. Anahtarı sildikten sonra, bu anahtarla Traffic Manager gönderilen ölçümler atılır.
+Ayrıca anahtarınızı silerek Gerçek Kullanıcı Ölçümleri'ni kapatabilirsiniz. Anahtarı sildikten sonra, bu anahtarla Trafik Yöneticisi'ne gönderilen ölçümler atılır.
 
-### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Gerçek Kullanıcı Ölçümleri Web sayfaları dışındaki istemci uygulamalarla kullanabilir miyim?
+### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Gerçek Kullanıcı Ölçümlerini web sayfaları dışındaki istemci uygulamalarıyla kullanabilir miyim?
 
-Evet, Gerçek Kullanıcı Ölçümleri, farklı Son Kullanıcı istemcileri türü aracılığıyla toplanan verileri almak için tasarlanmıştır. Bu SSS, yeni istemci uygulamaları türleri desteklendiğinden güncelleştirilecektir.
+Evet, Gerçek Kullanıcı Ölçümleri, farklı türde son kullanıcı istemcileri aracılığıyla toplanan verileri almak üzere tasarlanmıştır. Bu SSS, yeni istemci uygulama türleri desteklendikçe güncelleştirilir.
 
-### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Gerçek Kullanıcı Ölçümleri etkinleştirilmiş Web sayfası her işlendiğinde kaç ölçüm yapıldı?
+### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Gerçek Kullanıcı Ölçümlerim etkinleştirildiğinde web sayfam da kaç ölçüm yapılır?
 
-Gerçek Kullanıcı Ölçümleri, belirtilen ölçüm JavaScript 'i ile kullanıldığında, her sayfa işleme, altı ölçüyle sonuçlanır. Bunlar daha sonra Traffic Manager hizmetine geri bildirilir. Bu özellik için Traffic Manager hizmetine bildirilen ölçümlerin sayısına göre ücretlendirilirsiniz. Örneğin, ölçümler çekilirken ancak bildirilmeden önce Kullanıcı web sayfamızı uzaklaştığında, bu ölçümler faturalandırma amaçlarıyla dikkate alınmaz.
+JavaScript'in sağladığı ölçümle Gerçek Kullanıcı Ölçümleri kullanıldığında, her sayfa nın işlenmesi altı ölçüm alınmasıyla sonuçlanır. Bunlar daha sonra Trafik Yöneticisi hizmetine geri bildirilir. Trafik Yöneticisi hizmetine bildirilen ölçüm sayısına bağlı olarak bu özellik için ücretlendirilirsiniz. Örneğin, ölçümler alınırken ancak raporedilmeden önce kullanıcı web sayfanızdan uzaklaşıyorsa, bu ölçümler faturalandırma amacıyla dikkate alınmaz.
 
-### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Web sayfamda Gerçek Kullanıcı Ölçümleri betiği çalışmadan önce bir gecikme var mı?
+### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Gerçek Kullanıcı Ölçümleri komut dosyası web sayfamda çalıştırmadan önce bir gecikme var mı?
 
-Hayır, komut dosyası çağrılmadan önce programlanmış gecikme yok.
+Hayır, komut dosyası çağrılmadan önce programlanmış bir gecikme yok.
 
-### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Gerçek Kullanıcı Ölçümleri yalnızca ölçmek istediğim Azure bölgeleriyle kullanabilir miyim?
+### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Gerçek Kullanıcı Ölçümlerini yalnızca ölçmek istediğim Azure bölgeleriyle kullanabilir miyim?
 
-Hayır, her çağrıldığında Gerçek Kullanıcı Ölçümleri betiği, hizmet tarafından belirlendiği şekilde altı Azure bölgesinin bir kümesini ölçer. Bu, farklı çağrılar arasında değişiklik yapmak ve çok fazla sayıda çağırma gerçekleştiğinde, ölçüm kapsamının farklı Azure bölgelerine yayıldığı zaman.
+Hayır, her çağrıldığınızda, Gerçek Kullanıcı Ölçümleri komut dosyası, hizmet tarafından belirlenen altı Azure bölgesi kümesini ölçer. Bu küme, farklı çağırmalar arasında değişiklik yapılır ve bu tür çağrıların çok sayıda gerçekleştiğinde, ölçüm kapsamı farklı Azure bölgeleri arasında yayılır.
 
-### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Belirli bir numaraya yapılan ölçümlerin sayısını sınırlayabilir miyim?
+### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Yapılan ölçüm sayısını belirli bir sayıyla sınırlayabilir miyim?
 
-JavaScript ölçümü, Web sayfanıza katıştırılır ve ne zaman başlatılacağını ve bu denetimin ne zaman durdurulacağını kullanın. Traffic Manager hizmeti, Azure bölgelerinin bir listesi için bir istek aldığı sürece, bir dizi bölge döndürülür.
+JavaScript ölçümü web sayfanıza gömülüdür ve ne zaman başlatıp kullanmayı durdurabileceğiniz üzerinde tam kontrole devam elabilirsiniz. Trafik Yöneticisi hizmeti ölçülecek Azure bölgelerinin listesi için bir istek aldığı sürece, bir dizi bölge döndürülür.
 
-### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>İstemci uygulamamın Gerçek Kullanıcı Ölçümleri bir parçası olarak alınan ölçümleri görebilir miyim?
+### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Müşteri başvurum tarafından yapılan ölçümleri Gerçek Kullanıcı Ölçümleri kapsamında görebilir miyim?
 
-Ölçüm mantığı istemci uygulamanızdan çalıştırıldığı için, gecikme ölçümlerini görmek dahil olmak üzere neler olduğunu tam olarak denetleyebilirsiniz. Traffic Manager, aboneliğinize bağlı anahtarın altında alınan ölçümlerin toplam görünümünü raporlamaz.
+Ölçüm mantığı istemci uygulamanızdan çalıştırıladığından, gecikme ölçümlerini görmek de dahil olmak üzere neler olacağını tam olarak kontrol esiniz. Trafik Yöneticisi, aboneliğinize bağlı anahtar altında alınan ölçümlerin toplu görünümünü bildirmez.
 
-### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Traffic Manager tarafından sunulan ölçüm betiğini değiştirebilir miyim?
+### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Trafik Yöneticisi tarafından sağlanan ölçüm komut dosyasını değiştirebilir miyim?
 
-Web sayfanızda nelerin gömültüğünü kontrol ederken, gecikme sürelerini doğru şekilde ölçmesini ve raporlamayacağını sağlamak için ölçüm betiğiyle ilgili herhangi bir değişiklik yapmaktan kaçınıyoruz.
+Web sayfanızda gömülü olan ları kontrol ederken, gecikmeleri doğru bir şekilde ölçtürünve raporladığından emin olmak için ölçüm komut dosyasında herhangi bir değişiklik yapmanızı şiddetle tavsiye ediyoruz.
 
-### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Başkalarının Gerçek Kullanıcı Ölçümleri ile kullandığım anahtarı görmesi mümkün olacaktır mi?
+### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Başkalarının Gerçek Kullanıcı Ölçümleri ile kullandığım anahtarı görmesi mümkün olacak mı?
 
-Ölçüm betiğini bir Web sayfasına eklediğinizde başkalarının betiği ve Gerçek Kullanıcı Ölçümleri (RUM) anahtarınızı görmesi mümkün olacaktır. Ancak bu anahtarın abonelik Kimliğinizle farklı olduğunu ve yalnızca bu amaçla kullanılmak üzere Traffic Manager tarafından oluşturulduğunu bilmemiz önemlidir. RUM anahtarınızı bilmek, Azure hesap güvenliğinizi tehlikeye atabilir.
+Ölçüm komut dosyasını bir web sayfasına katıştırdığınızda, başkalarının komut dosyasını ve Gerçek Kullanıcı Ölçümleri (RUM) anahtarınızı görmesi mümkün olacaktır. Ancak bu anahtarın abonelik kimliğinizden farklı olduğunu ve Trafik Yöneticisi tarafından yalnızca bu amaçla kullanılmak üzere oluşturulduğunu bilmek önemlidir. RUM anahtarınızı bilmek Azure hesap güvenliğinizi tehlikeye atmayacaktır.
 
-### <a name="can-others-abuse-my-rum-key"></a>Diğerleri RUM anahtarımı kötüye kullanabilir mi?
+### <a name="can-others-abuse-my-rum-key"></a>Başkaları rum anahtarımı kötüye kullanabilir mi?
 
-Başkalarının Azure 'a yanlış bilgi göndermek için anahtarınızı kullanması mümkün olsa da, birkaç yanlış ölçüm, aldığımız diğer ölçümlerle birlikte hesaba götürülüyoruz. Anahtarlarınızı değiştirmeniz gerekiyorsa, anahtarı, eski anahtarın atılma noktasında yeniden oluşturabilirsiniz.
+Başkalarının azure'a yanlış bilgi göndermek için anahtarınızı kullanması mümkün olsa da, aldığımız diğer ölçümlerle birlikte dikkate alındığından birkaç yanlış ölçüm yönlendirmeyi değiştirmez. Anahtarlarınızı değiştirmeniz gerekiyorsa, eski anahtarın atıldığı noktada anahtarı yeniden oluşturabilirsiniz.
 
-### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Ölçüm JavaScript 'ı tüm Web sayfalarıma yerleştirmem gerekir mi?
+### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Tüm web sayfalarıma javascript ölçümü koymam gerekiyor mu?
 
-Gerçek Kullanıcı Ölçümleri, ölçüm sayısı artdıkça daha fazla değer sağlar. Bunu söylemenin, bunu tüm Web sayfalarınıza veya birkaç seçim yapmanız gerekip gerekmediğini belirten karardır. Önerimiz, bir kullanıcının bu sayfada beş saniye veya daha fazla yerde kalması beklenen en son ziyaret ettiğiniz sayfaya yerleştirilerek başlatılacak.
+Gerçek Kullanıcı Ölçümleri, ölçüm sayısı arttıkça daha fazla değer sağlar. Bunu söyledikten sonra, tüm web sayfalarınıza mı yoksa seçilmiş birkaç sayfanıza mı koymanız gerektiğine karar vermek sizin kararınızdır. Tavsiyemiz, kullanıcının o sayfada beş saniye veya daha uzun süre kalması beklenen en çok ziyaret edilen sayfanıza koyarak başlamaktır.
 
-### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Gerçek Kullanıcı Ölçümleri kullanırsam son kullanıcılarım hakkındaki bilgiler Traffic Manager tarafından tanımlanabilir mi?
+### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Gerçek Kullanıcı Ölçümleri kullanırsam son kullanıcılarla ilgili bilgiler Trafik Yöneticisi tarafından tanımlanabilir mi?
 
-Belirtilen ölçüm JavaScript 'i kullanıldığında Traffic Manager, son kullanıcının istemci IP adresi ve kullandıkları yerel DNS Çözümleyicisinin kaynak IP adresi için görünürlük sahibi olacaktır. Traffic Manager, istemci IP adresini yalnızca, ölçümleri Gönderen belirli son kullanıcıyı belirleyemeyecek şekilde kesildikten sonra kullanır.
+Sağlanan ölçüm JavaScript kullanıldığında, Trafik Yöneticisi son kullanıcının istemci IP adresi ve kullandıkları yerel DNS çözümleyicisinin kaynak IP adresi ne görünürlük olacaktır. Trafik Yöneticisi, istemci IP adresini yalnızca ölçümleri gönderen son kullanıcıyı tanımlayabilmek için kesildikten sonra kullanır.
 
-### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Gerçek Kullanıcı Ölçümleri Web sayfasının yönlendirme için Traffic Manager kullanıyor olması gerekiyor mu?
+### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Gerçek Kullanıcı Ölçümlerini ölçen web sayfasının yönlendirme için Trafik Yöneticisi'ni kullanması gerekiyor mu?
 
-Hayır, Traffic Manager kullanması gerekmez. Traffic Manager yönlendirme tarafı gerçek Kullanıcı ölçümü bölümünden ayrı olarak çalışır ve aynı Web özelliğinde olması gereken harika bir fikir olsa da, bunların olması gerekmez.
+Hayır, Trafik Yöneticisi'ni kullanmasına gerek yok. Trafik Yöneticisi yönlendirme tarafı Gerçek Kullanıcı Ölçümü bölümünden ayrı olarak çalışır ve her ikisi de aynı web özelliği olması harika bir fikir olsa da, onlar olması gerekmez.
 
-### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Azure bölgelerinde Gerçek Kullanıcı Ölçümleri kullanmak için herhangi bir hizmeti barındırmalıyım miyim?
+### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Gerçek Kullanıcı Ölçümleri ile kullanmak için Azure bölgelerinde herhangi bir hizmeti barındırmam gerekiyor mu?
 
-Hayır, Gerçek Kullanıcı Ölçümleri çalışması için Azure 'da herhangi bir sunucu tarafı bileşeni barındırmanıza gerek yoktur. Ölçüm JavaScript tarafından indirilen tek piksellik resim ve farklı Azure bölgelerinde çalışan hizmet Azure tarafından barındırılır ve yönetilir. 
+Hayır, gerçek kullanıcı ölçümleri için Azure'da sunucu tarafındaki herhangi bir bileşeni barındırmanız gerekmez. JavaScript ölçümü ve farklı Azure bölgelerinde çalıştıran hizmet tarafından indirilen tek piksellik görüntü Azure tarafından barındırılır ve yönetilir. 
 
-### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Gerçek Kullanıcı Ölçümleri kullandığım zaman Azure bant genişliği kullanımı artar mi?
+### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Gerçek Kullanıcı Ölçümleri'ni kullandığımda Azure bant genişliği kullanımım artar mı?
 
-Önceki cevap bölümünde belirtildiği gibi, Gerçek Kullanıcı Ölçümleri sunucu tarafı bileşenleri Azure tarafından sahiplenilir ve yönetilir. Bu, Gerçek Kullanıcı Ölçümleri kullandığınız için Azure bant genişliği kullanımınız artmayacak anlamına gelir. Bu, Azure ücretlerinden herhangi bir bant genişliği kullanımı içermez. Bir Azure bölgesine yönelik gecikmeyi ölçmeniz için yalnızca tek bir piksel görüntüsünü indirerek kullanılan bant genişliğini en aza indirdik. 
+Önceki yanıtta da belirtildiği gibi, Gerçek Kullanıcı Ölçümleri'nin sunucu tarafındaki bileşenleri Azure'a aittir ve azure tarafından yönetilir. Bu, Gerçek Kullanıcı Ölçümleri kullandığınız için Azure bant genişliği kullanımınızın artmayacağı anlamına gelir. Bu, Azure'un ücretleri dışında herhangi bir bant genişliği kullanımını içermez. Bir Azure bölgesinin gecikme süresini ölçmek için yalnızca tek bir piksel görüntü indirerek kullanılan bant genişliğini en aza indiririz. 
 
 ## <a name="traffic-view"></a>Trafik Görünümü
 
-### <a name="what-does-traffic-view-do"></a>Trafik Görünümü ne yapar?
+### <a name="what-does-traffic-view-do"></a>Trafik Görünümü ne işe yarar?
 
-Trafik Görünümü, kullanıcılarınız ve deneyiminin nasıl olduğu hakkında daha fazla bilgi anlamanıza yardımcı olan bir Traffic Manager özelliğidir. Bu, Traffic Manager tarafından alınan sorguları ve hizmetin aşağıdakileri sağlamak üzere sakladığı ağ gecikme bilgileri tablolarını kullanır:
+Traffic View, Traffic Manager'ın kullanıcılarınız ve deneyimlerinin nasıl olduğunu daha iyi anlamanıza yardımcı olan bir özelliğidir. Trafik Yöneticisi tarafından alınan sorguları ve hizmetin size aşağıdakileri sağlamak için koruduğu ağ gecikme sayıltma tabloları kullanır:
 
-- Kullanıcılarınızın Azure 'daki uç noktalarınıza bağlandığı bölgeler.
+- Kullanıcılarınızın Azure'daki uç noktalarınıza bağlandığı bölgeler.
 - Bu bölgelerden bağlanan kullanıcıların hacmi.
 - Yönlendirildikleri Azure bölgeleri.
-- Bu Azure bölgelerinde gecikme yaşar.
+- Bu Azure bölgelerine gecikme deneyimi.
 
-Bu bilgiler, indirmeniz için ham veriler olarak kullanılabilmesinin yanı sıra portaldaki coğrafi harita kaplamayı ve tablo görünümlerini kullanmanıza yardımcı olur.
+Bu bilgiler, portaldaki coğrafi harita kaplaması ve tabular görünümler aracılığıyla ve indirebildiğiniz ham veri olarak kullanılabilmenize ek olarak, bunları tüketmeniz için kullanılabilir.
 
-### <a name="how-can-i-benefit-from-using-traffic-view"></a>Trafik Görünümü kullanmanın avantajlarından faydalanabilirsiniz.
+### <a name="how-can-i-benefit-from-using-traffic-view"></a>Trafik Görünümü'nden nasıl yararlanabilirim?
 
-Trafik Görünümü, Traffic Manager profillerinin alacağı trafiğin genel görünümünü sağlar. Özellikle, Kullanıcı temelinizin, ortalama gecikme deneyiminin ne olduğunu ve ne kadar önemli olduğunu anlamak için kullanılabilir. Daha sonra bu bilgileri, örneğin, Azure parmak izini, bu kullanıcılara daha düşük gecikme süresine sahip bir bölgeye genişleterek, örneğin, odaklanmanız gereken alanları bulmak için kullanabilirsiniz. Trafik Görünümü kullanarak türetilebildiğiniz başka bir anlayış, farklı bölgelere trafik desenlerini görmektir. bu bölgeler, bu bölgelerde stok artırma veya azaltma kararları almanıza yardımcı olabilir.
+Trafik Görünümü, Trafik Yöneticisi profillerinizin aldığı trafiğin genel görünümünü sağlar. Özellikle, kullanıcı tabanınızın nereden bağlandığıve aynı derecede önemli ölçüde ortalama gecikme deneyiminin ne olduğunu anlamak için kullanılabilir. Daha sonra bu bilgileri, örneğin Azure ayak izinizi bu kullanıcılara daha düşük gecikme süreleriyle hizmet verebilecek bir bölgeye genişleterek odaklanmanız gereken alanları bulmak için kullanabilirsiniz. Trafik Görünümü'ni kullanarak elde edebilirsiniz başka bir bakış açısı, sırayla bu bölgelerde icat artan veya azalan karar vermenize yardımcı olabilir farklı bölgelere trafik desenleri görmektir.
 
-### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Azure izleyici aracılığıyla kullanılabilen Traffic Manager ölçümlerinden farklı Trafik Görünümü nedir?
+### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Trafik Görünümü, Azure monitörü aracılığıyla kullanılabilen Trafik Yöneticisi ölçümlerinden nasıl farklı?
 
-Azure Izleyici, profilinizin ve uç noktalarının aldığı trafiği bir toplama düzeyinde anlamak için kullanılabilir. Ayrıca sistem durumu denetimi sonuçlarını açığa çıkarmak için uç noktaların sistem durumunu izlemenize olanak sağlar. Bunların ötesine gidip son kullanıcının Azure 'a bölgesel düzeyde bağlanma deneyiminizi anladığınızda, bunu elde etmek için Trafik Görünümü kullanılabilir.
+Azure Monitör, profiliniz ve uç noktaları tarafından alınan trafiği toplu bir düzeyde anlamak için kullanılabilir. Ayrıca, sağlık kontrolü sonuçlarını ortaya çıkararak uç noktaların sistem durumunu izlemenizi sağlar. Bunların ötesine geçmeniz ve son kullanıcınızın Azure'a bölgesel düzeyde bağlanma deneyimini anlamanız gerektiğinde, Trafik Görünümü bunu başarmak için kullanılabilir.
 
-### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Trafik Görünümü EDNS Istemci alt ağ bilgilerini kullanır mi?
+### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Trafik Görünümü EDNS İstemci Alt net bilgilerini kullanıyor mu?
 
-Azure Traffic Manager tarafından sunulan DNS sorguları, yönlendirmenin doğruluğunu artırmak için ECS bilgilerini göz önünde bulundurun. Ancak kullanıcıların nereden bağlanıldığını gösteren veri kümesini oluştururken, Trafik Görünümü yalnızca DNS Çözümleyicisinin IP adresini kullanıyor.
+Azure Trafik Yöneticisi tarafından sunulan DNS sorguları, yönlendirmenin doğruluğunu artırmak için ECS bilgilerini dikkate alır. Ancak, kullanıcıların nereden bağladığını gösteren veri kümesini oluştururken, Trafik Görünümü yalnızca DNS çözümleyicisinin IP adresini kullanır.
 
-### <a name="how-many-days-of-data-does-traffic-view-use"></a>Kaç gün veri Trafik Görünümü kullanır?
+### <a name="how-many-days-of-data-does-traffic-view-use"></a>Trafik Görünümü kaç günlük veri kullanır?
 
-Trafik Görünümü, sizin tarafınızdan görüntülenmeden önce günün yedi gün öncesine ait verileri işleyerek çıktısını oluşturur. Bu bir taşıma penceresidir ve en son veriler her ziyaret edildiğinde kullanılacaktır.
+Trafik Görünümü, sizin tarafından görüntülendiğinde, önceki günden önceki yedi gündeki verileri işleyerek çıktısını oluşturur. Bu hareketli bir penceredir ve her ziyaretinizde en son veriler kullanılır.
 
 ### <a name="how-does-traffic-view-handle-external-endpoints"></a>Trafik Görünümü dış uç noktaları nasıl işler?
 
-Bir Traffic Manager profilinde Azure bölgelerinin dışında barındırılan dış uç noktaları kullandığınızda, bunun gecikme özelliklerine yönelik bir ara sunucu olan bir Azure bölgesine eşlenmenizi seçebilirsiniz (performans yönlendirme yöntemini kullanıyorsanız bu aslında gereklidir). Bu Azure bölge eşlemesine sahipse, Trafik Görünümü çıktısı oluşturulurken Azure bölgesinin gecikme ölçümleri kullanılacaktır. Hiçbir Azure bölgesi belirtilmemişse, bu dış uç noktaların verilerinde gecikme bilgileri boş olur.
+Trafik Yöneticisi profilinde Azure bölgeleri dışında barındırılan dış uç noktaları kullandığınızda, gecikme sonu özellikleriiçin bir proxy olan bir Azure bölgesine eşleninmeyi seçebilirsiniz (performans yönlendirme yöntemini kullanıyorsanız bunun gerekli olması gerekir). Bu Azure bölge eşleciliği varsa, Trafik Görünümü çıktısı oluşturulurken Azure bölgesinin gecikme ölçütleri kullanılır. Azure bölgesi belirtilmemişse, gecikme bilgileri bu dış uç noktaların verilerinde boş kalır.
 
-### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Aboneliğimde her profil için Trafik Görünümü etkinleştirmem gerekir mi?
+### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Aboneliğimdeki her profil için Trafik Görünümü'ni etkinleştirmem gerekiyor mu?
 
-Önizleme dönemi boyunca, Trafik Görünümü abonelik düzeyinde etkinleştirilmiştir. Genel kullanıma sunulmadan önce yaptığımız geliştirmelerin bir parçası olarak artık Trafik Görünümü bir profil düzeyinde etkinleştirebilirsiniz ve bu özelliğin daha ayrıntılı bir şekilde etkinleştirilmesini sağlayabilirsiniz. Varsayılan olarak, Trafik Görünümü profil için devre dışı bırakılır.
+Önizleme döneminde, Trafik Görünümü abonelik düzeyinde etkinleştirildi. Genel kullanılabilirlik ten önce yaptığımız iyileştirmelerin bir parçası olarak, artık trafik görünümünü profil düzeyinde etkinleştirerek bu özelliğin daha ayrıntılı olmasını sağlayabilirsiniz. Varsayılan olarak, Trafik Görünümü bir profil için devre dışı bırakılır.
 
 >[!NOTE]
->Önizleme sırasında bir abonelik düzeyinde Trafik Görünümü etkinleştirdiyseniz, bu aboneliğin altındaki her profil için yeniden etkinleştirmeniz gerekir.
+>Önizleme süresi boyunca bir abonelik düzeyinde Trafik Görünümü'ni etkinleştirdiyseniz, artık bu aboneliğin altındaki profillerin her biri için yeniden etkinleştirmeniz gerekir.
  
-### <a name="how-can-i-turn-off-traffic-view"></a>Trafik Görünümü nasıl kapatırım?
+### <a name="how-can-i-turn-off-traffic-view"></a>Trafik Görünümü'ni nasıl kapatabilirim?
 
-Portalı veya REST API kullanarak herhangi bir profil için Trafik Görünümü devre dışı bırakabilirsiniz. 
+Portal veya REST API'yi kullanarak herhangi bir profil için Trafik Görünümü'nu kapatabilirsiniz. 
 
-### <a name="how-does-traffic-view-billing-work"></a>Trafik Görünümü Faturalandırma nasıl çalışır?
+### <a name="how-does-traffic-view-billing-work"></a>Trafik Görünümü faturalandırma nasıl çalışır?
 
-Trafik Görünümü fiyatlandırması, çıktıyı oluşturmak için kullanılan veri noktalarının sayısını temel alır. Şu anda desteklenen tek veri türü, profilinizin aldığı sorgulardır. Ayrıca, yalnızca Trafik Görünümü etkinleştirildiğinde gerçekleştirilen işleme için faturalandırılırsınız. Bu, bir ay içinde Trafik Görünümü bir zaman dilimi için bir süre etkinleştirirseniz ve diğer saatlerde devre dışı bırakırsanız, yalnızca bir özelliğin faturanızda olması halinde işlenen veri noktalarının işlendiği anlamına gelir.
+Trafik Görünümü fiyatlandırması, çıktıyı oluşturmak için kullanılan veri noktalarının sayısını temel alır. Şu anda desteklenen tek veri türü profilinizin aldığı sorgulardır. Ayrıca, yalnızca Trafik Görünümü etkinleştirildiğinde yapılan işlem için faturalandırılırsınız. Bu, Trafik Görünümü'ni bir ay içinde bir süre etkinleştirir ve diğer zamanlarda kapatırsanız, yalnızca faturanıza yönelik özelliği etkinleştirilmiş olarak işlenen veri noktaları nın işlenir.
 
 ## <a name="traffic-manager-endpoints"></a>Traffic Manager uç noktaları
 
-### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Birden çok abonelikteki uç noktalarla Traffic Manager kullanabilir miyim?
+### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Trafik Yöneticisi'ni birden çok abonelikten son puanla kullanabilir miyim?
 
-Azure Web Apps ile birden çok abonelikteki uç noktaların kullanılması mümkün değildir. Azure Web Apps, Web Apps birlikte kullanılan herhangi bir özel etki alanı adının yalnızca tek bir abonelik içinde kullanılmasını gerektirir. Aynı etki alanı adına sahip birden çok abonelikten Web Apps kullanmak mümkün değildir.
+Azure Web Apps ile birden çok abonelikten uç noktaları kullanmak mümkün değildir. Azure Web Apps, Web Apps ile kullanılan özel alan adının yalnızca tek bir abonelik içinde kullanılmasını gerektirir. Web Apps'ı aynı alan adı taşıyan birden çok abonelikten kullanmak mümkün değildir.
 
-Diğer uç nokta türleri için birden fazla abonelikteki uç noktalarla Traffic Manager kullanmak mümkündür. Kaynak Yöneticisi, Traffic Manager profilini yapılandıran kişinin uç noktaya okuma erişimi olduğu sürece herhangi bir abonelikteki uç noktalar Traffic Manager eklenebilir. Bu izinler, [Azure Resource Manager rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/role-assignments-portal.md)kullanılarak verilebilir.
+Diğer uç nokta türleri için, trafik yöneticisini birden fazla abonelikten uç noktalarıyla kullanmak mümkündür. Kaynak Yöneticisi'nde, Trafik Yöneticisi profilini yapılandıran kişi bitiş noktasına erişimi okuduğu sürece, herhangi bir abonelikten uç noktalar Trafik Yöneticisi'ne eklenebilir. Bu izinler [Azure Kaynak Yöneticisi rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/role-assignments-portal.md)kullanılarak verilebilir.
 
-### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Bulut hizmeti ' hazırlama ' yuvaları ile Traffic Manager kullanabilir miyim?
+### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Trafik Yöneticisi'ni Bulut Hizmeti 'Evreleme' yuvalarıyla kullanabilir miyim?
 
-Evet. Bulut hizmeti ' hazırlama ' yuvaları, Traffic Manager dış uç noktalar olarak yapılandırılabilir. Sistem durumu denetimleri hala Azure Uç Noktaları ücret üzerinden ücretlendirilir.
+Evet. Bulut Hizmeti 'evreleme' yuvaları Trafik Yöneticisi'nde Dış uç nokta olarak yapılandırılabilir. Sistem durumu denetimleri hala Azure Uç Noktaları oranında ücretlendirilir.
 
-### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Traffic Manager IPv6 uç noktalarını destekliyor mu?
+### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Trafik Yöneticisi IPv6 uç noktalarını destekliyor mu?
 
-Traffic Manager şu anda IPv6 adreslenebilir ad sunucuları sağlamıyor. Ancak, IPv6 uç noktalarına bağlanan IPv6 istemcileri tarafından hala Traffic Manager kullanılabilir. İstemci DNS isteklerini Traffic Manager doğrudan yapmaz. Bunun yerine, istemci özyinelemeli bir DNS hizmeti kullanır. Yalnızca IPv6 istemcisi, istek IPv6 aracılığıyla özyinelemeli DNS hizmetine gönderilir. Ardından özyinelemeli hizmet, IPv4 kullanarak Traffic Manager ad sunucularıyla iletişim kurabilmelidir.
+Trafik Yöneticisi şu anda IPv6 adreslenebilir ad sunucuları sağlamaz. Ancak, Trafik Yöneticisi hala IPv6 uç noktalarına bağlanan IPv6 istemcileri tarafından kullanılabilir. İstemci DNS isteklerini doğrudan Trafik Yöneticisi'ne yapmaz. Bunun yerine, istemci özyinelemeli bir DNS hizmeti kullanır. Yalnızca IPv6 istemcisi, iPv6 üzerinden özyinelemeli DNS hizmetine istek gönderir. Daha sonra özyinelemeli hizmet IPv4 kullanarak Trafik Yöneticisi ad sunucuları na başvurabilmeli.
 
-Traffic Manager, uç noktanın DNS adı veya IP adresi ile yanıt verir. IPv6 uç noktasını desteklemek için iki seçenek vardır. Uç noktayı ilişkili bir AAAA kaydına sahip bir DNS adı olarak ekleyebilirsiniz ve Traffic Manager durum, bu uç noktayı denetler ve sorgu yanıtında bir CNAME kayıt türü olarak döndürür. Ayrıca, bu uç noktayı IPv6 adresini kullanarak doğrudan ekleyebilirsiniz ve Traffic Manager sorgu yanıtında bir AAAA türü kaydı döndürür.
+Trafik Yöneticisi bitiş noktasının DNS adı veya IP adresi ile yanıt verir. IPv6 bitiş noktasını desteklemek için iki seçenek vardır. Bitiş noktasını ilişkili bir AAAA kaydı olan bir DNS adı olarak ekleyebilirsiniz ve Trafik Yöneticisi bu bitiş noktasını sağlık denetimine eder ve sorgu yanıtında CNAME kayıt türü olarak döndürür. Ayrıca, iPv6 adresini kullanarak bu bitiş noktasını doğrudan ekleyebilirsiniz ve Trafik Yöneticisi sorgu yanıtında bir AAAA türü kaydı döndürecektir.
 
-### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Aynı bölgede birden fazla Web uygulamasıyla Traffic Manager kullanabilir miyim?
+### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Trafik Yöneticisi'ni aynı bölgede birden fazla Web Uygulamasıyla kullanabilir miyim?
 
-Genellikle Traffic Manager, trafiği farklı bölgelerde dağıtılan uygulamalara yönlendirmek için kullanılır. Ancak, aynı bölgede bir uygulamanın birden fazla dağıtımı olduğunda da kullanılabilir. Traffic Manager Azure uç noktaları aynı Azure bölgesindeki birden fazla Web uygulaması uç noktasının aynı Traffic Manager profiline eklenmesine izin vermez.
+Genellikle, Trafik Yöneticisi trafiği farklı bölgelerde dağıtılan uygulamalara yönlendirmek için kullanılır. Ancak, bir uygulamanın aynı bölgede birden fazla dağıtımı olduğunda da kullanılabilir. Trafik Yöneticisi Azure bitiş noktaları, aynı Azure bölgesinden birden fazla Web Uygulaması bitiş noktasının aynı Trafik Yöneticisi profiline eklenmesine izin vermez.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Traffic Manager profillerinin Azure uç noktalarını farklı bir kaynak grubuna veya aboneliğe taşımak Nasıl yaparım? istiyor musunuz?
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Trafik Yöneticisi profilimin Azure uç noktalarını farklı bir kaynak grubuna veya aboneye nasıl taşıyabilirim?
 
-Bir Traffic Manager profiliyle ilişkili Azure uç noktaları, kaynak kimlikleri kullanılarak izlenir. Uç nokta olarak kullanılan bir Azure kaynağı (örneğin, genel IP, klasik bulut hizmeti, WebApp veya iç içe geçmiş bir şekilde kullanılan başka bir Traffic Manager profili) farklı bir kaynak grubuna veya aboneliğe taşındığında, kaynak KIMLIĞI değişir. Şu anda bu senaryoda, Traffic Manager profilini önce silerek ve sonra uç noktaları Profile geri ekleyerek güncelleştirmeniz gerekir.
+Trafik Yöneticisi profiliyle ilişkili Azure uç noktaları, kaynak kimliklerini kullanarak izlenir. Son nokta olarak kullanılmakta olan bir Azure kaynağı (örneğin, Genel IP, Klasik Bulut Hizmeti, WebApp veya iç içe doğru kullanılan başka bir Trafik Yöneticisi profili) farklı bir kaynak grubuna veya aboneliğe taşındığında, kaynak kimliği değişir. Bu senaryoda, şu anda, önce silerek ve sonra profilin uç noktalarını geri ekleyerek Trafik Yöneticisi profilini güncelleştirmeniz gerekir.
 
 ## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager uç nokta izleme
 
-### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Azure bölge hatalarıyla Traffic Manager dayanıklı mi?
+### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Trafik Yöneticisi Azure bölge hatalarına karşı dirençli mi?
 
-Traffic Manager, Azure 'da yüksek oranda kullanılabilir uygulamalar tesliminin temel bir bileşenidir.
-Yüksek kullanılabilirlik sağlamak için Traffic Manager, daha fazla yüksek düzeyde kullanılabilirlik ve bölgesel hatalara dayanıklı olması gerekir.
+Traffic Manager, Azure'da yüksek oranda kullanılabilen uygulamaların tesliminin önemli bir bileşenidir.
+Yüksek kullanılabilirlik sağlamak için, Trafik Yöneticisi'nin olağanüstü yüksek düzeyde kullanılabilirlik düzeyine sahip olması ve bölgesel arızalara karşı dirençli olması gerekir.
 
-Tasarıma göre Traffic Manager bileşenleri, herhangi bir Azure bölgesinin tamamen başarısız olması halinde esnektir. Bu esnekliği tüm Traffic Manager bileşenleri için geçerlidir: DNS ad sunucuları, API, depolama katmanı ve uç nokta izleme hizmeti.
+Tasarım gereği, Traffic Manager bileşenleri herhangi bir Azure bölgesinin tamamen arızalanmasına karşı dayanıklıdır. Bu esneklik tüm Trafik Yöneticisi bileşenleri için geçerlidir: DNS ad sunucuları, API, depolama katmanı ve bitiş noktası izleme hizmeti.
 
-Tüm Azure bölgesinin kesintiye neden olması olası olmayan bir olayda, Traffic Manager normal şekilde çalışmaya devam etmesi beklenir. Birden çok Azure bölgesinde dağıtılan uygulamalar, trafiği uygulamasının kullanılabilir bir örneğine yönlendirmek için Traffic Manager güvenebilirler.
+Tüm Azure bölgesinde olası bir kesinti durumunda, Trafik Yöneticisi'nin normal şekilde çalışmaya devam etmesi beklenir. Birden çok Azure bölgesinde dağıtılan uygulamalar, trafiği uygulamalarının kullanılabilir bir örneğine yönlendirmek için Trafik Yöneticisi'ne güvenebilir.
 
-### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>Kaynak grubu konumu seçimi Traffic Manager nasıl etkiler?
+### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>Kaynak grubu konumu seçimi Trafik Yöneticisi'ni nasıl etkiler?
 
-Traffic Manager tek bir küresel hizmettir. Bölgesel değildir. Kaynak grubu konumunun seçimi, bu kaynak grubunda dağıtılan Traffic Manager profillerinin herhangi bir farklılık yapmaz.
+Trafik Yöneticisi tek ve küresel bir hizmettir. Bölgesel değil. Kaynak grubu konumunun seçimi, bu kaynak grubunda dağıtılan Trafik Yöneticisi profilleri için hiçbir fark yaratmaz.
 
-Azure Resource Manager, tüm kaynak gruplarının bu kaynak grubunda dağıtılan kaynakların varsayılan konumunu belirleyen bir konum belirtmesini gerektirir. Bir Traffic Manager profili oluşturduğunuzda, bu bir kaynak grubunda oluşturulur. Tüm Traffic Manager profilleri konum olarak **Global** kullanır ve kaynak grubu varsayılanını geçersiz kılar.
+Azure Kaynak Yöneticisi, tüm kaynak gruplarının, bu kaynak grubunda dağıtılan kaynaklar için varsayılan konumu belirleyen bir konum belirlemesini gerektirir. Bir Trafik Yöneticisi profili oluşturduğunuzda, bir kaynak grubunda oluşturulur. Tüm Trafik Yöneticisi profilleri, kaynak grubu varsayılanını geçersiz kılarak konum olarak **genel** kullanır.
 
-### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Nasıl yaparım? her uç noktanın geçerli sistem durumunu mı belirlemelisiniz?
+### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Her bitiş noktasının geçerli durumunu nasıl belirleyebilirim?
 
-Her uç noktanın geçerli izleme durumu, genel profilin yanı sıra Azure portal görüntülenir. Bu bilgiler ayrıca trafik Izleyicisi [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.trafficmanager)ve [platformlar arası Azure CLI](../cli-install-nodejs.md)aracılığıyla da kullanılabilir.
+Genel profile ek olarak her bitiş noktasının geçerli izleme durumu Azure portalında görüntülenir. Bu bilgiler ayrıca Traffic Monitor [REST API,](https://msdn.microsoft.com/library/azure/mt163667.aspx) [PowerShell cmdlets](https://docs.microsoft.com/powershell/module/az.trafficmanager)ve [çapraz platform Azure CLI](../cli-install-nodejs.md)üzerinden de kullanılabilir.
 
-Azure Izleyici 'yi, uç noktalarınızın durumunu izlemek ve bunların görsel bir gösterimini görmek için de kullanabilirsiniz. Azure Izleyici 'yi kullanma hakkında daha fazla bilgi için bkz. [Azure izleme belgeleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Ayrıca, uç noktalarınızın sistem durumunu izlemek ve bunların görsel bir temsilini görmek için Azure Monitor'u da kullanabilirsiniz. Azure Monitör'ü kullanma hakkında daha fazla bilgi için [Azure İzleme belgelerine](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)bakın.
 
 ### <a name="can-i-monitor-https-endpoints"></a>HTTPS uç noktalarını izleyebilir miyim?
 
-Evet. Traffic Manager, HTTPS üzerinde yoklama destekler. İzleme yapılandırmasında protokol olarak **https** yapılandırın.
+Evet. Trafik Yöneticisi HTTPS üzerinde sondalama destekler. **Https'yi** izleme yapılandırmasındaprotokol olarak yapılandırın.
 
-Traffic Manager aşağıdakiler dahil olmak üzere herhangi bir sertifika doğrulaması sağlayamaz:
+Trafik yöneticisi, şunları dahil olmak üzere herhangi bir sertifika doğrulaması sağlayamaz:
 
-* Sunucu tarafı sertifikalar doğrulanmadı
-* SNı sunucu tarafı sertifikalar doğrulanmadı
-* İstemci sertifikaları desteklenmez
+* Sunucu tarafındaki sertifikalar doğrulanmadı
+* SNI sunucu tarafındaki sertifikalar doğrulanmadı
+* İstemci sertifikaları desteklenmiyor
 
-### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Uç nokta eklerken bir IP adresi veya DNS adı kullanıyorum mi?
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Bitiş noktası eklerken IP adresi veya DNS adı kullanıyor muyum?
 
-Traffic Manager, bir DNS adı olarak bir IPv4 adresi ve bir IPv6 adresi olarak başvurmak için üç yol kullanarak uç noktaların eklenmesini destekler. Uç nokta bir IPv4 veya IPv6 adresi olarak eklenirse, sorgu yanıtı sırasıyla A veya AAAA kayıt türü olacaktır. Uç nokta bir DNS adı olarak eklendiyse, sorgu yanıtı CNAME kayıt türü olacaktır. Uç noktaların IPv4 veya IPv6 adresi olarak eklenmesine yalnızca uç nokta **External**türünde olduğunda izin verilir.
-Tüm yönlendirme yöntemleri ve izleme ayarları, üç uç nokta adresleme türü tarafından desteklenir.
+Trafik Yöneticisi, bunları başvurmak için üç yol kullanarak uç noktaları eklemeyi destekler – dns adı olarak, IPv4 adresi olarak ve IPv6 adresi olarak. Bitiş noktası IPv4 veya IPv6 adresi olarak eklenirse, sorgu yanıtı sırasıyla A veya AAAA kayıt türünde olacaktır. Bitiş noktası DNS adı olarak eklendiyse, sorgu yanıtı cname türünde olacaktır. Uç noktalarıi IPv4 veya IPv6 adresi olarak eklemeye yalnızca bitiş noktası **Harici**türündeyse izin verilir.
+Tüm yönlendirme yöntemleri ve izleme ayarları üç uç nokta adresleme türleri tarafından desteklenir.
 
-### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Uç nokta eklerken ne tür IP adresleri kullanabilirim?
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Bitiş noktası eklerken ne tür IP adresleri kullanabilirim?
 
-Traffic Manager, uç noktaları belirtmek için IPv4 veya IPv6 adresleri kullanmanıza izin verir. Aşağıda listelenen bazı kısıtlamalar vardır:
+Trafik Yöneticisi uç noktaları belirtmek için IPv4 veya IPv6 adreslerini kullanmanıza izin verir. Aşağıda listelenen birkaç kısıtlama vardır:
 
-- Ayrılmış özel IP adresi alanlarına karşılık gelen adreslere izin verilmez. Bu adresler, RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 ve RFC 5771 ' de çağrılan örnekleri içerir
+- Ayrılmış özel IP adresi alanlarına karşılık gelen adreslere izin verilmez. Bu adresler RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 ve RFC 5771'de sesverilenleri içerir.
 - Adres herhangi bir bağlantı noktası numarası içermemelidir (profil yapılandırma ayarlarında kullanılacak bağlantı noktalarını belirtebilirsiniz)
-- Aynı profilde iki uç nokta aynı hedef IP adresine sahip olamaz
+- Aynı profildeki hiçbir iki uç nokta aynı hedef IP adresine sahip olamaz
 
-### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Tek bir profil içinde farklı uç nokta adresleme türlerini kullanabilir miyim?
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Tek bir profildeki farklı uç nokta adresleme türlerini kullanabilir miyim?
 
-Hayır, Traffic Manager, IPv4 ve IPv6 adresleme türlerini karıştırabileceğiniz çok değerli yönlendirme türüne sahip bir profil olması dışında, bir profil içinde uç nokta adresleme türlerini karıştırtırabilmeniz için izin vermez
+Hayır, Trafik Yöneticisi, IPv4 ve IPv6 adresleme türlerini karıştırabileceğiniz MultiValue yönlendirme türüne sahip bir profil durumu dışında, profildeki uç nokta adresleme türlerini karıştırmanıza izin vermez
 
-### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Gelen sorgunun kayıt türü, uç noktaların adresleme türüyle ilişkili kayıt türünden farklı olduğunda ne olur?
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Gelen bir sorgunun kayıt türü, uç noktaların adresleme türüyle ilişkili kayıt türünden farklı olduğunda ne olur?
 
-Bir profille bir sorgu alındığında Traffic Manager önce, belirtilen yönlendirme yöntemine ve uç noktaların sistem durumuna göre döndürülmesi gereken bitiş noktasını bulur. Ardından, gelen sorguda istenen kayıt türüne ve aşağıdaki tabloya göre bir yanıt döndürmeden önce uç noktayla ilişkili kayıt türüne bakar.
+Bir profil karşı bir sorgu aldığında, Trafik Yöneticisi ilk olarak belirtilen yönlendirme yöntemine ve bitiş noktalarının sistem durumu durumuna göre döndürülmesi gereken bitiş noktasını bulur. Ardından, aşağıdaki tabloya dayalı bir yanıt döndürmeden önce gelen sorguda istenen kayıt türüne ve bitiş noktasıyla ilişkili kayıt türüne bakar.
 
-Çoklu değer dışında herhangi bir yönlendirme yöntemine sahip profiller için:
+MultiValue dışında herhangi bir yönlendirme yöntemi olan profiller için:
 
-|Gelen sorgu isteği|     Uç nokta türü|     Yanıt sağlanmış|
+|Gelen sorgu isteği|     Uç nokta türü|     Yanıt Sağlandı|
 |--|--|--|
-|KAYDEDILMEMIŞ |    A/AAAA/CNAME |    Hedef uç nokta| 
-|A |    A/CNAME |    Hedef uç nokta|
+|HERHANGI BIR |    A / AAAA / CNAME |    Hedef Bitiş Noktası| 
+|A |    A / CNAME |    Hedef Bitiş Noktası|
 |A |    AAAA |    NODATA |
-|AAAA |    AAAA/CNAME |    Hedef uç nokta|
+|AAAA |    AAAA / CNAME |    Hedef Bitiş Noktası|
 |AAAA |    A |    NODATA |
-|CNAME |    CNAME |    Hedef uç nokta|
-|CNAME     |A/AAAA |    NODATA |
+|CNAME |    CNAME |    Hedef Bitiş Noktası|
+|CNAME     |A / AAAA |    NODATA |
 |
 
-Yönlendirme yöntemi olan profillerin çoklu değer olarak ayarlandığı profiller için:
+Yönlendirme yöntemi multivalue olarak ayarlanmış profiller için:
 
-|Gelen sorgu isteği|     Uç nokta türü |    Yanıt sağlanmış|
+|Gelen sorgu isteği|     Uç nokta türü |    Yanıt Sağlandı|
 |--|--|--|
-|KAYDEDILMEMIŞ |    A ve AAAA karışımı |    Hedef uç noktalar|
-|A |    A ve AAAA karışımı |    Yalnızca A türünde hedef uç noktalar|
-|AAAA    |A ve AAAA karışımı|     Yalnızca AAAA türünde hedef uç noktalar|
-|CNAME |    A ve AAAA karışımı |    NODATA |
+|HERHANGI BIR |    A ve AAAA Karışımı |    Hedef Uç Noktaları|
+|A |    A ve AAAA Karışımı |    A türünün yalnızca Hedef Uç Noktaları|
+|AAAA    |A ve AAAA Karışımı|     Aaaa türünün yalnızca Hedef Uç Noktaları|
+|CNAME |    A ve AAAA Karışımı |    NODATA |
 
-### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Bir profili, iç içe geçmiş bir profilde IPv4/IPv6 ile ilgili belirtilen uç noktalarla kullanabilir miyim?
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>İç içe bir profilde IPv4 / IPv6 adresli uç noktaları olan bir profil kullanabilir miyim?
 
-Evet, birden çok değer türündeki bir profilin iç içe geçmiş bir profil kümesindeki bir üst profil olması özel durumla birlikte olabilirsiniz.
+Evet, multivalue türünden bir profilin iç içe geçen profil kümesinde bir üst profil olamayacağı dışında yapabilirsiniz.
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Traffic Manager profilimde bir Web uygulaması uç noktasını durdurdum, ancak yeniden başlattıktan sonra bile hiç trafik almadım. Bunu nasıl düzeltebilirim?
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Trafik Yöneticisi profilimde bir web uygulaması bitiş noktası nı durdurdum, ancak yeniden başlattıktan sonra bile herhangi bir trafik alamıyorum. Bunu nasıl düzeltebilirim?
 
-Bir Azure Web uygulaması uç noktası durdurulduğunda Traffic Manager sistem durumunu denetlemeyi durduruyor ve sistem durumu denetimlerini yalnızca uç noktanın yeniden başlatıldığını algıladıktan sonra yeniden başlatır. Bu gecikmeyi engellemek için, uç noktayı yeniden başlattıktan sonra bu uç noktayı Traffic Manager profilinde devre dışı bırakın ve yeniden etkinleştirin.
+Bir Azure web uygulaması bitiş noktası durdurulduğunda Trafik Yöneticisi sistem durumunu denetlemeyi durdurur ve sistem durumu denetimlerini yalnızca bitiş noktasının yeniden başlatıldığında niçin algıladığını algıladıktan sonra yeniden başlatır. Bu gecikmeyi önlemek için, bitiş noktasını yeniden başlattıktan sonra Trafik Yöneticisi profilindeki bitiş noktasını devre dışı edin ve yeniden etkinleştirin.
 
-### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Uygulamamın HTTP veya HTTPS desteği olmasa bile Traffic Manager kullanabilir miyim?
+### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>UygulamamDA HTTP veya HTTPS desteği olmasa bile Trafik Yöneticisi'ni kullanabilir miyim?
 
-Evet. İzleme protokolü olarak TCP belirtebilirsiniz ve Traffic Manager bir TCP bağlantısı başlatabilir ve uç noktadan bir yanıt bekleyebilir. Uç nokta bağlantı isteğine bağlantı kurmak için bir Yanıt ile yanıt verir, zaman aşımı süresi içinde, bu uç nokta sağlıklı olarak işaretlenir.
+Evet. İzleme protokolü olarak TCP belirtebilirsiniz ve Trafik Yöneticisi bir TCP bağlantısı başlatabilir ve bitiş noktasından bir yanıt bekleyebilir. Bitiş noktası, bağlantı kurmak için bir yanıtla bağlantı isteğini zaman ası psonu süresi içinde yanıtlarsa, bu bitiş noktası sağlıklı olarak işaretlenir.
 
-### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>TCP izlemesi kullanılırken uç noktadan hangi belirli yanıtlar gerekir?
+### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>TCP izleme kullanırken bitiş noktasından hangi özel yanıtlar gereklidir?
 
-TCP izleme kullanıldığında Traffic Manager, belirtilen bağlantı noktasında uç noktaya bir SYN isteği göndererek üç yönlü bir TCP el sıkışması başlatır. Ardından, uç noktadan bir süre için bir SYN-ACK yanıtı bekler (zaman aşımı ayarlarında belirtilir).
+TCP izleme kullanıldığında, Trafik Yöneticisi belirtilen bağlantı noktasında bitiş noktasına bir SYN isteği göndererek üç yönlü bir TCP el sıkışması başlatır. Daha sonra bir süre için bitiş noktasından bir SYN-ACK yanıtı bekler (zaman ayarı ayarlarında belirtilir).
 
-- İzleme ayarlarında belirtilen zaman aşımı süresi içinde bir SYN-ACK yanıtı alınmışsa, bu uç nokta sağlıklı olarak değerlendirilir. Bir FIN veya FIN-ACK, düzenli olarak bir yuva sonlandırdığında Traffic Manager beklenen yanıttır.
-- Belirtilen zaman aşımından sonra bir SYN-ACK yanıtı alınmışsa Traffic Manager bağlantıyı sıfırlamak için bir RST ile yanıt verir.
+- Syn-ACK yanıtı izleme ayarlarında belirtilen zaman sonu süresi içinde alınırsa, bu bitiş noktası sağlıklı kabul edilir. Bir FIN veya FIN-ACK, bir soketi düzenli olarak sonlandırdığinde Trafik Yöneticisi'nden beklenen yanıttır.
+- Belirtilen zaman anından sonra bir SYN-ACK yanıtı alınırsa, Trafik Yöneticisi bağlantıyı sıfırlamak için bir RST ile yanıt verir.
 
-### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Kullanıcılarınızın sağlıksız bir uç noktadan uzakta mi ne kadar hızlı hareket Traffic Manager?
+### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Trafik Yöneticisi kullanıcılarımı sağlıksız bir bitiş noktasından ne kadar hızlı uzaklaştırıyor?
 
-Traffic Manager, Traffic Manager profilinizin yük devretme davranışını şu şekilde denetlemenize yardımcı olabilecek birden çok ayar sağlar:
+Trafik Yöneticisi, Trafik Yöneticisi profilinizin başarısız davranışını aşağıdaki gibi denetlemenize yardımcı olabilecek birden çok ayar sağlar:
 
-- Yoklama aralığını 10 saniye olarak ayarlayarak Traffic Manager bitiş noktalarını daha sık yoklamalarını belirtebilirsiniz. Bu, sağlıksız durumda olan herhangi bir uç noktanın mümkün olan en kısa sürede algılanmamasını sağlar. 
-- bir sistem durumu denetimi isteğinin zaman aşımına uğramadan önce ne kadar bekleneceğini belirtebilirsiniz (minimum zaman aşımı değeri 5 sn olur).
-- uç nokta sağlıksız olarak işaretlenmeden önce kaç tane başarısızlık meydana gelebilir belirtebilirsiniz. Bu değer 0 olarak düşük olabilir. Bu durumda, ilk durum denetiminde başarısız olur almaz bitiş noktası sağlıksız olarak işaretlenir. Ancak, toleranslı başarısızlık sayısı için en düşük değer olan 0 ' ın kullanılması, yoklama sırasında oluşabilecek geçici sorunlar nedeniyle, uç noktaların dönüşten çıkmasına neden olabilir.
-- DNS yanıtının 0 ' dan düşük olması için yaşam süresi (TTL) belirtebilirsiniz. Bunun yapılması DNS çözümleyiclarının yanıtı önbelleğe alamaz ve her yeni sorgu Traffic Manager sahip olduğu en güncel sağlık bilgilerini içeren bir yanıt alır.
+- Sondalama Aralığını 10 saniye olarak ayarlayarak Trafik Yöneticisi'nin uç noktaları daha sık incelediğini belirtebilirsiniz. Bu, sağlıksız giden herhangi bir bitiş noktasının mümkün olan en kısa sürede algılanabilmesini sağlar. 
+- sağlık kontrolü isteğinin saatler bitmeden önce ne kadar bekleyeceğinizi belirtebilirsiniz (minimum zaman çıkış değeri 5 sn'dir).
+- bitiş noktası sağlıksız olarak işaretlendirilmeden önce kaç hata oluşabileceğini belirtebilirsiniz. Bu değer 0 olarak düşük olabilir ve bu durumda bitiş noktası ilk sistem durumu denetiminde başarısız olur olmaz sağlıksız olarak işaretlenir. Ancak, tolere edilen hata sayısı için en az 0 değerinin kullanılması, sondalama sırasında oluşabilecek geçici sorunlar nedeniyle uç noktaların döndürme dışına alınmasına neden olabilir.
+- DNS yanıtı için canlı süreyi (TTL) 0'a kadar düşürebilirsiniz. Bunu yapmak, DNS çözümleyicilerinin yanıtı önbelleğe alamadığı ve her yeni sorgunun Trafik Yöneticisi'nin sahip olduğu en güncel sistem durumu bilgilerini içeren bir yanıt alacağı anlamına gelir.
 
-Bu ayarları kullanarak Traffic Manager, bir uç nokta sağlıksız olduktan ve ilgili profilde bir DNS sorgusu yapıldıktan sonra 10 saniye içinde yük devretme sağlayabilir.
+Trafik Yöneticisi bu ayarları kullanarak, bir bitiş noktası sağlıksız hale geçtikten ve ilgili profile karşı bir DNS sorgusu yapıldıktan sonra 10 saniyenin altında arızalar sağlayabilir.
 
-### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Bir profildeki farklı uç noktalar için farklı izleme ayarlarını nasıl belirtirim?
+### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Bir profildeki farklı uç noktalar için farklı izleme ayarlarını nasıl belirtebilirim?
 
-Traffic Manager izleme ayarları her profil düzeyinde yapılır. Yalnızca bir uç nokta için farklı bir izleme ayarı kullanmanız gerekiyorsa, bu uç noktanın izleme ayarları üst profilden farklı olan [iç içe geçmiş bir profil](traffic-manager-nested-profiles.md) olarak bulunması yapılabilir.
+Trafik Yöneticisi izleme ayarları profil başına bir düzeydedir. Yalnızca bir bitiş noktası için farklı bir izleme ayarı kullanmanız gerekiyorsa, izleme ayarları üst profilden farklı olan [iç içe bir profil](traffic-manager-nested-profiles.md) olarak bu bitiş noktasına sahip olarak yapılabilir.
 
-### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Uç noktalarıma Traffic Manager sistem durumu denetimlerine HTTP üstbilgileri nasıl atayabilirim?
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>HTTP üstbilgilerini Trafik Yöneticisi sağlık kontrollerine uç noktalarıma nasıl atayabilirim?
 
-Traffic Manager, HTTP (S) sistem durumu denetimlerinde, uç noktalarınız için başlattığı özel üst bilgileri belirtmenize olanak tanır. Özel bir üst bilgi belirtmek istiyorsanız, bunu profil düzeyinde yapabilirsiniz (tüm uç noktalara uygulanabilir) veya bunu uç nokta düzeyinde belirtebilirsiniz. Her iki düzeyde de bir üst bilgi tanımlanmışsa, uç nokta düzeyinde belirtilen bir tane, profil düzeyini geçersiz kılar.
-Bunun yaygın bir kullanım durumu, Traffic Manager isteklerinin çok kiracılı bir ortamda barındırılan bir uç noktaya doğru şekilde yönlendirilebilmesi için konak üstbilgilerini belirtmektir. Bunun başka bir kullanım durumu, bir uç noktanın HTTP (S) istek günlüklerinden Traffic Manager isteklerini belirlemektir
+Trafik Yöneticisi, uç noktalarınıza başlattığı HTTP(S) sağlık denetimlerinde özel üstbilgi belirtmenize olanak tanır. Özel bir üstbilgi belirtmek isterseniz, bunu profil düzeyinde (tüm uç noktalara uygulanabilir) yapabilir veya bitiş noktası düzeyinde belirtebilirsiniz. Üstbilgi her iki düzeyde tanımlanırsa, bitiş noktası düzeyinde belirtilen bir profil düzeyi bir geçersiz kılar.
+Bunun için yaygın kullanım örneklerinden biri, Trafik Yöneticisi isteklerinin çok kiracılı bir ortamda barındırılan bir uç noktaya doğru yönlendirilebilmeleri için ana bilgisayar üstbilgilerini belirtmektir. Bunun bir diğer kullanım örneği de, bir uç noktanın HTTP(S) istek günlüklerinden Trafik Yöneticisi isteklerini tanımlamaktır
 
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>Uç nokta sistem durumu denetimleri hangi konak üstbilgisini kullanır?
+### <a name="what-host-header-do-endpoint-health-checks-use"></a>Uç nokta sağlık denetimleri ne ana bilgisayar üstbilgi kullanır?
 
-Özel bir ana bilgisayar üst bilgisi ayarı sağlanmazsa, Traffic Manager tarafından kullanılan ana bilgisayar üstbilgisi, varsa, profilde yapılandırılan uç nokta hedefinin DNS adıdır.
+Özel ana bilgisayar üstbilgia ayarı sağlanmadıysa, Traffic Manager tarafından kullanılan ana bilgisayar üstbilgisi, varsa profilde yapılandırılan bitiş noktası hedefinin DNS adıdır.
 
-### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Sistem durumu denetimlerinin kaynağı olan IP adresleri nelerdir?
+### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Sağlık kontrollerinin kaynaklandığı IP adresleri nelerdir?
 
-Traffic Manager sistem durumu denetimlerinin kaynağı olan IP adreslerini listeleyen JSON dosyasını görüntülemek için [buraya](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) tıklayın. Bu IP adreslerinden gelen bağlantılara sistem durumunu kontrol etmek üzere uç noktalarda izin verildiğinden emin olmak için JSON dosyasında listelenen IP 'Leri gözden geçirin.
+Trafik Yöneticisi sağlık denetimlerinin kaynaklanabileceği IP adreslerini listeleyen JSON dosyasını görüntülemek için [burayı](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) tıklatın. Bu IP adreslerinden gelen bağlantılara son noktalarda sistem durumunu denetlemek için izin verilen lerden emin olmak için JSON dosyasında listelenen IP'leri gözden geçirin.
 
-### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Uç noktadan kaç tane sistem durumu denetlemesi Traffic Manager bekleyebilir?
+### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Trafik Yöneticisi'nden son noktama kaç sağlık denetimi bekleyebilirim?
 
-Uç noktanıza ulaşan Traffic Manager durum denetimi sayısı aşağıdakilere bağlıdır:
+Bitiş noktanıza ulaşan Trafik Yöneticisi sağlık kontrollerinin sayısı aşağıdakilere bağlıdır:
 
-- İzleme aralığı (daha küçük Aralık) için ayarladığınız değer, belirli bir süre içinde uç noktanıza daha fazla istek giriş anlamına gelir.
-- durum denetimlerinin gerçekleştiği konum sayısı (bu denetimlerin önceki SSS bölümünde listelendiği IP adresleri).
+- izleme aralığı için belirlediğiniz değer (daha küçük aralık, belirli bir zaman diliminde bitiş noktanıza daha fazla istek inişi anlamına gelir).
+- sistem durumu kontrollerinin kaynaklandığı yerin sayısı (bu çeklerin beklendiği yerdeki IP adresleri önceki SSS'de listelenir).
 
-### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Uç noktalarımı bir veya daha fazla kaldığında nasıl bildirim alabilirim?
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Uç noktalarımdan biri düşerse nasıl bilgilendirilirim?
 
-Traffic Manager tarafından belirtilen ölçülerden biri, bir profildeki uç noktaların sistem durumudur. Bunu bir profil içindeki tüm uç noktaların toplamı olarak görebilirsiniz (örneğin, uç noktalarınızın %75 ' u) veya her bir uç nokta düzeyinde. Traffic Manager ölçümler Azure Izleyici aracılığıyla sunulur ve uç noktanızın sistem durumunda bir değişiklik olduğunda bildirimleri almak için [uyarı yeteneklerini](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) kullanabilirsiniz. Daha ayrıntılı bilgi için bkz. [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).  
+Trafik Yöneticisi tarafından sağlanan ölçümlerden biri, profildeki uç noktaların sistem durumudur. Bunu bir profildeki tüm uç noktaların toplamı olarak (örneğin, uç noktalarınızın %75'i sağlıklıdır) veya bitiş noktası düzeyinde görebilirsiniz. Trafik Yöneticisi ölçümleri Azure Monitor aracılığıyla ortaya çıkar ve bitiş noktanızın sistem durumu yla ilgili bir değişiklik olduğunda bildirim almak için [uyarı özelliklerini](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) kullanabilirsiniz. Daha fazla ayrıntı için [Trafik Yöneticisi ölçümlerine ve uyarılarına](traffic-manager-metrics-alerts.md)bakın.  
 
-## <a name="traffic-manager-nested-profiles"></a>İç içe geçmiş profiller Traffic Manager
+## <a name="traffic-manager-nested-profiles"></a>Trafik Yöneticisi iç içe profiller
 
-### <a name="how-do-i-configure-nested-profiles"></a>İç içe geçmiş profilleri yapılandırmak Nasıl yaparım??
+### <a name="how-do-i-configure-nested-profiles"></a>İç içe profilleri nasıl yapılandırıyorum?
 
-İç içe Traffic Manager profilleri hem Azure Resource Manager hem de klasik Azure REST API 'Leri, Azure PowerShell cmdlet 'ler ve platformlar arası Azure CLı komutları kullanılarak yapılandırılabilir. Bunlar da yeni Azure portal aracılığıyla desteklenir.
+İç içe trafik yöneticisi profilleri hem Azure Kaynak Yöneticisi hem de klasik Azure REST API'leri, Azure PowerShell cmdlets'leri ve çapraz platform Azure CLI komutları kullanılarak yapılandırılabilir. Ayrıca yeni Azure portalı üzerinden de desteklenirler.
 
-### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Trafik Yöneticisi kaç tane iç içe geçme katmansın destekler?
+### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Trafik Yöneticisi kaç kat iç içe geçmeyi destekler?
 
-Profilleri en fazla 10 düzey derinlikte iç içe geçirebilirsiniz. ' Döngüler ' kullanımına izin verilmez.
+10 düzeye kadar olan profilleri yuvalayabilirsiniz. 'Döngülere' izin verilmez.
 
-### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Aynı Traffic Manager profilinde, iç içe geçmiş alt profillerle diğer uç nokta türlerini karışık yapabilir miyim?
+### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Aynı Trafik Yöneticisi profilinde iç içe geçen alt profillerle diğer uç nokta türlerini karıştırabilir miyim?
 
-Evet. Bir profil içindeki farklı türlerin uç noktalarını nasıl birleştirebileceğiniz konusunda bir kısıtlama yoktur.
+Evet. Profildeki farklı türdeki uç noktaları birleştirme konusunda herhangi bir kısıtlama yoktur.
 
-### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Fatura modeli, Iç Içe geçmiş profiller için nasıl uygulanır?
+### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>İç içe profiller için faturalandırma modeli nasıl uygulanır?
 
-İç içe geçmiş profillerin kullanılması için negatif bir fiyatlandırma etkisi yoktur.
+İç içe profilkullanmanın olumsuz bir fiyatlandırma etkisi yoktur.
 
-Traffic Manager faturalandırma iki bileşene sahiptir: Endpoint durum denetimleri ve milyonlarca DNS sorgusu
+Trafik Yöneticisi faturalandırmanın iki bileşeni vardır: uç nokta sağlık denetimleri ve milyonlarca DNS sorgusu
 
-* Uç nokta sistem durumu denetimleri: bir üst profilde bitiş noktası olarak yapılandırıldığında bir alt profil için ücret alınmaz. Alt profildeki uç noktaların izlenmesi, her zamanki şekilde faturalandırılır.
-* DNS sorguları: her sorgu yalnızca bir kez sayılır. Alt profilden bir uç nokta döndüren üst profile yönelik bir sorgu, yalnızca üst profile karşı sayılır.
+* Bitiş noktası sistem durumu denetimleri: Üst profilde bitiş noktası olarak yapılandırıldığında alt profil için ücret alınmaz. Alt profildeki uç noktaların izlenmesi her zamanki gibi faturalandırılır.
+* DNS sorguları: Her sorgu yalnızca bir kez sayılır. Alt profilden bitiş noktası döndüren bir üst profile karşı bir sorgu yalnızca üst profile sayılır.
 
-Tüm ayrıntılar için [Traffic Manager fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/traffic-manager/)bakın.
+Tüm ayrıntılar için [Trafik Yöneticisi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/traffic-manager/)bakın.
 
-### <a name="is-there-a-performance-impact-for-nested-profiles"></a>İç içe geçmiş profiller için bir performans etkisi var mı?
+### <a name="is-there-a-performance-impact-for-nested-profiles"></a>İç içe profiller için bir performans etkisi var mı?
 
-Hayır. İç içe geçmiş profiller kullanılırken performans etkisi yoktur.
+Hayır. İç içe profiller kullanırken oluşan performans etkisi yoktur.
 
-Traffic Manager ad sunucuları her DNS sorgusunu işlerken profil hiyerarşisinde dahili olarak çapraz geçiş yapar. Üst profile yönelik bir DNS sorgusu, bir alt profilden gelen uç noktayla bir DNS yanıtı alabilir. Tek bir CNAME kaydı veya iç içe geçmiş profiller kullandığınızda kullanılır. Hiyerarşideki her profil için bir CNAME kaydı oluşturmaya gerek yoktur.
+Trafik Yöneticisi ad sunucuları, her DNS sorgusunu işlerken profil hiyerarşisini dahili olarak geçer. Üst profildeki bir DNS sorgusu, alt profilden bitiş noktası olan bir DNS yanıtı alabilir. Tek bir cname kaydı, ister tek bir profil ister iç içe profiller kullanıyor olun kullanılır. Hiyerarşideki her profil için cname kaydı oluşturmaya gerek yoktur.
 
-### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Traffic Manager bir üst profilde iç içe geçmiş bir uç noktanın durumunu nasıl hesaplamıştır?
+### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Trafik Yöneticisi, üst profilde iç içe bir uç noktanın durumunu nasıl hesaplar?
 
-Üst profil, alt öğe üzerinde doğrudan bir sistem durumu denetimi gerçekleştirmez. Bunun yerine, alt profilin genel durumunu hesaplamak için alt profilin uç noktalarının sistem durumu kullanılır. Bu bilgiler, iç içe geçmiş uç noktanın sistem durumunu belirlemede iç içe geçmiş profil hiyerarşisini yayIr. Üst profil, trafiğin alt öğeye yönlendirilip yönlendirilmeyeceğini anlamak için bu toplanmış durumu kullanır.
+Üst profil, doğrudan çocuk üzerinde sağlık denetimi yapmaz. Bunun yerine, alt profilin son noktalarının durumu, alt profilin genel durumunu hesaplamak için kullanılır. Bu bilgiler iç içe kalmış bitiş noktasının durumunu belirlemek için iç içe geçen profil hiyerarşisini yayıştırılır. Üst profil, trafiğin çocuğa yönlendirilip yönlendirilemeyeceğini belirlemek için bu toplu durumu kullanır.
 
-Aşağıdaki tabloda, iç içe geçmiş bir uç nokta için Traffic Manager sistem durumu denetimlerinin davranışı açıklanmaktadır.
+Aşağıdaki tabloda, iç içe bir uç nokta için Trafik Yöneticisi sağlık denetimlerinin davranışı açıklanmaktadır.
 
-| Alt profil Izleme durumu | Üst uç nokta Izleyici durumu | Notlar |
+| Alt Profil Monitörü durumu | Üst Uç Nokta Monitörü durumu | Notlar |
 | --- | --- | --- |
-| Devre dışı. Alt profil devre dışı bırakıldı. |Durduruldu |Üst uç nokta durumu durduruldu, devre dışı değil. Devre dışı durumu, üst profildeki uç noktayı devre dışı bırakmış olduğunu belirtecek şekilde ayrılmıştır. |
-| Düzey. En az bir alt profil uç noktası düşürülmüş bir durumda. |Çevrimiçi: alt profildeki çevrimiçi uç noktaların sayısı en az MinChildEndpoints değeridir.<BR>CheckingEndpoint: alt profildeki çevrimiçi ve CheckingEndpoint uç noktalarının sayısı en az MinChildEndpoints değeridir.<BR>Düşürülmüş: Aksi durumda. |Trafik, bir durum CheckingEndpoint uç noktasına yönlendirilir. MinChildEndpoints çok yüksek ayarlandıysa, uç nokta her zaman düşürülmüş olur. |
-| Çevrimiç. En az bir alt profil uç noktası çevrimiçi bir durumdur. Düşürülmüş durumunda uç nokta yok. |Yukarıdaki bölümüne bakın. | |
-| CheckingEndpoints. En az bir alt profil uç noktası ' CheckingEndpoint '. Uç nokta ' çevrimiçi ' veya ' düşürülmüş ' yok |Yukarıdaki gibi. | |
-| Olmadan. Tüm alt profil uç noktaları devre dışı veya durdurulmuş ya da bu profilde uç nokta yok. |Durduruldu | |
+| Devre dışı. Alt profil devre dışı bırakıldı. |Durduruldu |Üst uç nokta durumu Durduruldu, Devre Dışı bırakıldı. Devre Dışı Bırakma durumu, üst profildeki bitiş noktasını devre dışı ettiğinizi belirtmek için ayrılmıştır. |
+| Bozulmuş. En az bir alt profil bitiş noktası bozulmuş durumdadır. |Çevrimiçi: Alt profildeki Çevrimiçi uç noktaların sayısı en azından MinChildEndpoints değeridir.<BR>CheckEndpoint: Alt profildeki Çevrimiçi artı CheckEndpoint uç noktalarının sayısı en azından MinChildEndpoints değeridir.<BR>Bozulmuş: aksi takdirde. |Trafik, durum DenetimiBitiş Noktası'nın bitiş noktasına yönlendirilir. MinChildEndpoints çok yüksek ayarlanırsa, bitiş noktası her zaman bozulur. |
+| Çevrimiçi. En az bir alt profil bitiş noktası çevrimiçi durumdur. Bozulmuş durumda hiçbir bitiş noktası yoktur. |Yukarıya bakın. | |
+| Kontrol Bitiş Noktaları. En az bir alt profil bitiş noktası 'CheckEndpoint'tir. Hiçbir uç nokta 'Çevrimiçi' veya 'Bozulmuş' değildir |Yukarıdakiyle aynı. | |
+| Etkin olmayan. Tüm alt profil bitiş noktaları devre dışı bırakılır veya durdurulur veya bu profilin bitiş noktası yoktur. |Durduruldu | |
 
 ## <a name="next-steps"></a>Sonraki adımlar:
 
-- Traffic Manager [uç nokta izleme ve otomatik yük devretme](../traffic-manager/traffic-manager-monitoring.md)hakkında daha fazla bilgi edinin.
-- Traffic Manager [trafik yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
+- Trafik Yöneticisi [uç nokta izleme ve otomatik arıza](../traffic-manager/traffic-manager-monitoring.md)hakkında daha fazla bilgi edinin.
+- Trafik Yöneticisi [trafik yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.

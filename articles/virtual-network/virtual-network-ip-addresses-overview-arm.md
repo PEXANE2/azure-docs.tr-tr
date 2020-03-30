@@ -1,5 +1,5 @@
 ---
-title: Azure 'da IP adresi türleri
+title: Azure'da IP adresi türleri
 titlesuffix: Azure Virtual Network
 description: Azure’da genel ve özel IP adresleri hakkında bilgi edinin.
 services: virtual-network
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245193"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure’da IP adresi türleri ve ayırma yöntemleri
@@ -25,12 +25,12 @@ ms.locfileid: "79245193"
 Diğer Azure kaynaklarıyla, şirket içi ağınızla ve İnternet’le iletişim kurmak için Azure kaynaklarına IP adresleri atayabilirsiniz. Azure'da kullanabileceğiniz iki tür IP adresi vardır:
 
 * **Genel IP adresleri**: Genel kullanıma yönelik Azure hizmetleri dahil olmak üzere Internet ile iletişim için kullanılır.
-* **Özel IP adresleri**: Bir Azure sanal ağı (VNet) içinde ve şirket içi ağınızı Azure'a genişletmek için bir VPN ağ geçidi veya ExpressRoute bağlantı hattı kullanıyorsanız şirket içi ağınız içinde iletişim kurmak için kullanılır.
+* **Özel IP adresleri**: Ağınızı Azure'a genişletmek için vpn ağ geçidi veya ExpressRoute devresi kullandığınızda, bir Azure sanal ağı (VNet) ve şirket içi ağınızda iletişim kurmak için kullanılır.
 
 Ayrıca bir genel IP ön eki aracılığıyla statik genel IP adreslerinden oluşan bitişik bir aralık oluşturabilirsiniz. [Genel IP ön eki hakkında bilgi edinin.](public-ip-address-prefix.md)
 
 > [!NOTE]
-> Azure’da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Resource Manager ve klasik](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Bu makale, Microsoft’un çoğu yeni dağıtım için [klasik dağıtım modeli](virtual-network-ip-addresses-overview-classic.md) yerine önerdiği Resource Manager dağıtım modelini açıklamaktadır.
+> Azure'un kaynakları oluşturmak ve onlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik.](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  Bu makale, Microsoft’un çoğu yeni dağıtım için [klasik dağıtım modeli](virtual-network-ip-addresses-overview-classic.md) yerine önerdiği Resource Manager dağıtım modelini açıklamaktadır.
 > 
 
 Klasik dağıtım modeliyle ilgili bilginiz varsa [klasik ve Resource Manager IP adreslemesi arasındaki farkları](/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic#differences-between-resource-manager-and-classic-deployments) inceleyin.
@@ -63,26 +63,26 @@ Genel IP adresleri aşağıdaki SKU'lardan biriyle oluşturulur:
 SKU'ların kullanıma sunulmasından önce oluşturulan tüm genel IP adresleri Temel SKU genel IP adresleridir. SKU'ların kullanıma sunulması genel IP adresinin ait olmasını istediğiniz SKU'yu belirleme seçeneğini sunmuştur. Temel SKU adresleri:
 
 - Statik veya dinamik atama yöntemiyle atanmıştır.
-- 4-30 dakikalık, varsayılan 4 dakikalık, geçersiz giden kaynaklı Flow zaman aşımı süresi 4 dakikadan oluşan, ayarlanabilir bir gelen akış boşta kalma zaman aşımı süresi.
+- 4 dakika varsayılan olarak 4-30 dakikalık ayarlanabilir bir gelen gelen akış boşta zaman çıkışına ve sabit giden kaynaklı akış boşta kalma süresini 4 dakikaya sahip leyin.
 - Varsayılan olarak açıktır.  Ağ güvenlik grupları önerilir ancak gelen veya giden trafiği kısıtlamak için isteğe bağlıdır.
 - Ağ arabirimleri, VPN ağ geçitleri, uygulama ağ geçitleri ve İnternet'e yönelik yük dengeleyiciler gibi genel IP adresi atanabilecek bir Azure kaynağına atanmıştır.
-- Kullanılabilirlik bölgesi senaryolarını desteklemez.  Kullanılabilirlik bölgesi senaryolarında standart SKU genel IP 'yi kullanmanız gerekir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Kullanılabilirlik Bölgesi senaryolarını desteklemeyin.  Kullanılabilirlik Bölgesi senaryoları için Standart SKU genel IP'yi kullanmanız gerekir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 #### <a name="standard"></a>Standart
 
 Standart SKU genel IP adresleri:
 
-- Her zaman statik ayırma yöntemi kullanın.
-- 4-30 dakikalık, varsayılan 4 dakikalık, geçersiz giden kaynaklı Flow zaman aşımı süresi 4 dakikadan oluşan, ayarlanabilir bir gelen akış boşta kalma zaman aşımı süresi.
+- Her zaman statik ayırma yöntemini kullanın.
+- 4 dakika varsayılan olarak 4-30 dakikalık ayarlanabilir bir gelen gelen akış boşta zaman çıkışına ve sabit giden kaynaklı akış boşta kalma süresini 4 dakikaya sahip leyin.
 - Varsayılan olarak güvenlidir ve gelen trafiğe kapalıdır. İzin verilen trafiği bir [ağ güvenlik grubu](security-overview.md#network-security-groups) ile özellikle beyaz listeye almanız gerekir.
-- Ağ arabirimlerine, standart genel yük dengeleyicileri veya uygulama ağ geçitlerine atanır. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Bölge varsayılan olarak yedekli ve isteğe bağlı olarak, belirli bir kullanılabilirlik alanında daha fazla ve garanti edilebilir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Ağ arabirimlerine, Standart genel Yük Dengeleyicilerine veya Uygulama Ağ Geçitlerine atanmış. Standart Yük Dengeleyicisi hakkında daha fazla bilgi için [Azure Standart Yük Dengeleyicisi'ne](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)bakın.
+- Bölge varsayılan olarak gereksiz ve isteğe bağlı olarak zonal (zonal oluşturulabilir ve belirli bir kullanılabilirlik bölgesinde garanti). Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
 > Standart SKU kaynağıyla gelen iletişim, bir [ağ güvenlik grubu](security-overview.md#network-security-groups) oluşturup ilişkilendirene ve istenen gelen trafiğe açıkça izin verene kadar başarısız olur.
 
 > [!NOTE]
-> [Örnek meta veri hizmeti IDS](../virtual-machines/windows/instance-metadata-service.md)'leri kullanılırken yalnızca temel SKU 'Su olan genel IP adresleri kullanılabilir. Standart SKU desteklenmiyor.
+> [Örnek meta veri hizmeti IMDS'yi](../virtual-machines/windows/instance-metadata-service.md)kullanırken yalnızca temel SKU'lu Genel IP adresleri kullanılabilir. Standart SKU desteklenmez.
 
 ### <a name="allocation-method"></a>Ayırma yöntemi
 
@@ -106,14 +106,14 @@ Statik genel IP adresleri yaygın olarak aşağıdaki senaryolarda kullanılır:
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS ana bilgisayar adı çözümlemesi
-Bir genel IP kaynağı için DNS etki alanı ad etiketi belirtebilirsiniz; bu durumda, Azure tarafından yönetilen DNS sunucularında genel IP adresine yönelik olarak *etkialanıadetiketi*.*konum*.cloudapp.azure.com için bir eşleme oluşturulur. Örneğin, **Batı ABD** Azure *konumunda***etkialanıadetiketi** olarak *contoso* değerini içeren bir genel IP kaynağı oluşturursanız, **contoso.westus.cloudapp.azure.com** şeklindeki tam etki alanı adı (FQDN), kaynağın genel IP adresi olarak çözümlenir.
+Bir genel IP kaynağı için DNS etki alanı ad etiketi belirtebilirsiniz; bu durumda, Azure tarafından yönetilen DNS sunucularında genel IP adresine yönelik olarak *etkialanıadetiketi*.*konum*.cloudapp.azure.com için bir eşleme oluşturulur. Örneğin, **Batı ABD** Azure *konumunda**etkialanıadetiketi* olarak **contoso** değerini içeren bir genel IP kaynağı oluşturursanız, **contoso.westus.cloudapp.azure.com** şeklindeki tam etki alanı adı (FQDN), kaynağın genel IP adresi olarak çözümlenir.
 
 > [!IMPORTANT]
 > Oluşturulan her bir etki alanı ad etiketi kendi Azure konumunda benzersiz olmalıdır.  
 >
 
-### <a name="dns-best-practices"></a>DNS En Iyi yöntemleri
-Farklı bir bölgeye geçiş yapmanız gerekiyorsa, genel IP adresinizin FQDN 'sini geçiremezsiniz. En iyi uygulama olarak, Azure 'da genel IP adresini işaret eden özel bir etki alanı CNAME kaydı oluşturmak için FQDN 'yi kullanabilirsiniz. Farklı bir genel IP 'ye taşımanız gerekiyorsa, FQDN 'yi yeni adresle el ile güncelleştirmek zorunda kalmak yerine CNAME kaydına yönelik bir güncelleştirme gerekir. DNS kaydınız için [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) veya HARICI bir DNS sağlayıcısı kullanabilirsiniz. 
+### <a name="dns-best-practices"></a>DNS En İyi Uygulamalar
+Başka bir bölgeye geçiş yapmanız gerekirse, ortak IP Adresinizin FQDN'sini geçiremezsiniz. En iyi yöntem olarak, Azure'daki genel IP adresini gösteren özel bir etki alanı CNAME kaydı oluşturmak için FQDN'yi kullanabilirsiniz. Farklı bir genel IP'ye geçmeniz gerekiyorsa, FQDN'yi yeni adrese el ile güncelleştirmek yerine CNAME kaydında bir güncelleştirme gerekir. [Azure DNS'yi](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) veya DNS Kaydınız için harici bir DNS sağlayıcısı kullanabilirsiniz. 
 
 ### <a name="virtual-machines"></a>Sanal makineler
 
@@ -129,17 +129,17 @@ Herhangi bir [SKU](#sku) ile oluşturulmuş genel bir IP adresini bir [Azure Loa
 
 ### <a name="application-gateways"></a>Uygulama ağ geçitleri
 
-Genel bir IP adresini bir Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)’in **ön uç** yapılandırmasına atayarak ağ geçidiyle ilişkilendirebilirsiniz. Bu genel IP adresi yükü dengelenmiş bir VIP olarak işlev görür. Yalnızca *bir uygulama* ağ geçidi v1 ön uç yapılandırmasına ve yalnızca *statik* standart SKU adresini bir v2 ön uç yapılandırmasına atayabilirsiniz.
+Genel bir IP adresini bir Azure **Application Gateway**’in [ön uç](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırmasına atayarak ağ geçidiyle ilişkilendirebilirsiniz. Bu genel IP adresi yükü dengelenmiş bir VIP olarak işlev görür. Yalnızca bir uygulama ağ geçidi V1 ön uç yapılandırmasına *dinamik* bir temel genel IP adresi atayabilirsiniz ve v2 ön uç yapılandırmasına yalnızca *statik* standart SKU adresi atayabilirsiniz.
 
 ### <a name="at-a-glance"></a>Bir bakışta
 Aşağıdaki tabloda, genel bir IP adresinin en üst düzey bir kaynakla tam olarak hangi özellik üzerinden ilişkilendirilebileceği ve kullanılabilecek olası ayırma yöntemleri (dinamik veya statik) gösterilmiştir.
 
 | En üst düzey kaynak | IP Adresi ilişkilendirme | Dinamik | Statik |
 | --- | --- | --- | --- |
-| Sanal makine |Ağ arabirimi |Yes |Yes |
-| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Yes |Yes |
-| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Yes |Hayır |
-| Uygulama ağ geçidi |Ön uç yapılandırması |Evet (yalnızca v1) |Evet (yalnızca v2) |
+| Sanal makine |Ağ arabirimi |Evet |Evet |
+| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Evet |Evet |
+| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Evet |Hayır |
+| Uygulama ağ geçidi |Ön uç yapılandırması |Evet (yalnızca V1) |Evet (yalnızca V2) |
 
 ## <a name="private-ip-addresses"></a>Özel IP adresleri
 Özel IP adresleri, Azure kaynaklarının İnternet’ten erişilebilen bir IP adresi gerekmeksizin bir [sanal ağdaki](virtual-networks-overview.md) diğer kaynaklarla veya bir VPN ağ geçidi ya da ExpressRoute bağlantı hattı üzerinden bir şirket içi ağ ile iletişim kurmasına imkan tanır.
@@ -152,7 +152,7 @@ Azure Resource Manager dağıtım modelinde, özel IP adresleri aşağıdaki Azu
 
 ### <a name="allocation-method"></a>Ayırma yöntemi
 
-Kaynağın dağıtıldığı sana alt ağın adres aralığından özel bir IP adresi ayrılır. Azure her alt ağ adres aralığında ilk dört adresi ayırır, bu nedenle adresler kaynaklara atanamaz. Örneğin, alt ağın adres aralığı 10.0.0.0/16 ise, 10.0.0.0-10.0.0.3 ve 10.0.255.255 adresleri kaynaklara atanamaz. Alt ağın adres aralığı aynı anda yalnızca bir kaynağa atanabilir. 
+Kaynağın dağıtıldığı sana alt ağın adres aralığından özel bir IP adresi ayrılır. Azure her alt ağ adres aralığında ilk dört adresi ayırır, bu nedenle adresler kaynaklara atanamaz. Örneğin, alt netin adres aralığı 10.0.0.0/16 ise, 10.0.0.0-10.0.0.3 adresi ve 10.0.255.255 kaynaklara atanamaz. Alt ağın adres aralığı aynı anda yalnızca bir kaynağa atanabilir. 
 
 Özel IP adresi ayırmak için kullanılan iki yöntem vardır:
 
@@ -161,7 +161,7 @@ Kaynağın dağıtıldığı sana alt ağın adres aralığından özel bir IP a
 
 ### <a name="virtual-machines"></a>Sanal makineler
 
-**Windows** veya [Linux](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesinin bir veya birden çok [ağ arabirimine](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir veya birden çok özel IP adresi atanır. Her özel IP adresi için ayırma yöntemini dinamik veya statik olarak belirtebilirsiniz.
+[Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesinin bir veya birden çok **ağ arabirimine** bir veya birden çok özel IP adresi atanır. Her özel IP adresi için ayırma yöntemini dinamik veya statik olarak belirtebilirsiniz.
 
 #### <a name="internal-dns-hostname-resolution-for-virtual-machines"></a>İç DNS ana bilgisayar adı çözümlemesi (sanal makineler için)
 
@@ -173,16 +173,16 @@ Azure tarafından yönetilen DNS sunucularıyla yapılandırılan sanal makinele
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>İç yük dengeleyiciler (ILB) ve Uygulama ağ geçitleri
 
-Bir **Azure Internal Load Balancer**’ın (ILB) veya [Azure Application Gateway](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)’in [ön uç](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırmasına özel bir IP adresi atayabilirsiniz. Özel IP adresi, yalnızca kendi sanal ağı ve sanal ağa bağlı uzak ağlar tarafından erişilebilen bir iç uç nokta olarak çalışır. Ön uç yapılandırmasına dinamik veya statik bir özel IP adresi atayabilirsiniz.
+Bir [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)’ın (ILB) veya [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)’in **ön uç** yapılandırmasına özel bir IP adresi atayabilirsiniz. Özel IP adresi, yalnızca kendi sanal ağı ve sanal ağa bağlı uzak ağlar tarafından erişilebilen bir iç uç nokta olarak çalışır. Ön uç yapılandırmasına dinamik veya statik bir özel IP adresi atayabilirsiniz.
 
 ### <a name="at-a-glance"></a>Bir bakışta
 Aşağıdaki tabloda, özel bir IP adresinin en üst düzey bir kaynakla tam olarak hangi özellik üzerinden ilişkilendirilebileceği ve kullanılabilecek olası ayırma yöntemleri (dinamik veya statik) gösterilmiştir.
 
 | En üst düzey kaynak | IP adresi ilişkilendirme | Dinamik | Statik |
 | --- | --- | --- | --- |
-| Sanal makine |Ağ arabirimi |Yes |Yes |
-| Yük dengeleyici |Ön uç yapılandırması |Yes |Yes |
-| Uygulama ağ geçidi |Ön uç yapılandırması |Yes |Yes |
+| Sanal makine |Ağ arabirimi |Evet |Evet |
+| Yük dengeleyici |Ön uç yapılandırması |Evet |Evet |
+| Uygulama ağ geçidi |Ön uç yapılandırması |Evet |Evet |
 
 ## <a name="limits"></a>Sınırlar
 IP adresleme için uygulanan limitler, Azure’daki tüm [ağ limitlerinin](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) belirtildiği dizide bulunabilir. Limitler bölge ve abonelik başınadır. [Destek ekibiyle iletişime geçerek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) varsayılan limitleri iş ihtiyaçlarınıza göre en üst düzeye çıkarabilirsiniz.
@@ -191,5 +191,5 @@ IP adresleme için uygulanan limitler, Azure’daki tüm [ağ limitlerinin](../a
 Genel IP adreslerinin nominal bir ücreti olabilir. Azure'da IP adresi fiyatlandırması hakkında daha fazla bilgi edinmek için [IP adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses) sayfasını inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure portalını kullanarak statik genel IP’li VM dağıtma](virtual-network-deploy-static-pip-arm-portal.md)
+* [Azure portalını kullanarak statik genel IP ile VM dağıtma](virtual-network-deploy-static-pip-arm-portal.md)
 * [Azure portalını kullanarak statik özel IP adresli VM dağıtma](virtual-networks-static-private-ip-arm-pportal.md)

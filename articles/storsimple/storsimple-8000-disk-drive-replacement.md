@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi cihazındaki bir disk sürücüsünü değiştirme | Microsoft Docs
-description: Bir StorSimple birincil kasasında veya bir EBOD muhafazasında disk sürücüsünün nasıl değiştirileceğini açıklar.
+title: StorSimple 8000 serisi cihazda disk sürücüsüdeğiştirme | Microsoft Dokümanlar
+description: StorSimple birincil kasaveya EBOD muhafazası üzerindeki disk sürücüsünasıl değiştirilmeye başverir.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,100 +15,100 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267917"
 ---
-# <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazındaki bir disk sürücüsünü değiştirme
+# <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızın disk sürücüsünü değiştirme
 
 ## <a name="overview"></a>Genel Bakış
-Bu öğreticide, bir Microsoft Azure StorSimple cihazında hatalı çalışan veya başarısız bir sabit disk sürücüsünü nasıl kaldırabileceğiniz ve değiştireceğiniz açıklanmaktadır. Bir disk sürücüsünü değiştirmek için şunları yapmanız gerekir:
+Bu öğretici, Microsoft Azure StorSimple aygıtındaki arızalı veya arızalı bir sabit disk sürücüsümü nasıl kaldırabileceğinizi ve değiştirebileceğinizi açıklar. Bir disk sürücüsüni değiştirmek için şunları yapmanız gerekir:
 
-* Antideme kilidine katıl
-* Disk sürücüsünü kaldırma
-* Değiştirilen disk sürücüsünü yükler
+* Antitamper kilidi devre dışı
+* Disk sürücüsünün kaldırma
+* Yedek disk sürücüsüne yükleme
 
 > [!IMPORTANT]
-> Bir disk sürücüsünü kaldırmadan ve değiştirmeden önce, [StorSimple donanım bileşeni değiştirme](storsimple-8000-hardware-component-replacement.md)içindeki güvenlik bilgilerini gözden geçirin.
+> Bir disk sürücüsünün sökülüp değiştirilmesinden önce [StorSimple donanım bileşeni değiştirmede](storsimple-8000-hardware-component-replacement.md)güvenlik bilgilerini gözden geçirin.
  
 
-## <a name="disengage-the-antitamper-lock"></a>Antideme kilidine katıl
-Bu yordamda, bir disk sürücüsünü değiştirdiğiniz zaman StorSimple cihazındaki kolay kullanılabilir kilit açma işlemlerinin nasıl yapılacağı ve üzerinde boşta olduğu açıklanmaktadır. Yeniden kullanılabilir kilitler, sürücü taşıyıcı tanıtıcılarının içine alınır ve tanıtıcının mandal bölümünde küçük bir açıklık üzerinden erişilir. Diskler kilitli konuma ayarlanmış olan kilitler ile sağlanır.
+## <a name="disengage-the-antitamper-lock"></a>Antitamper kilidi devre dışı
+Bu yordam, disk sürücülerini değiştirdiğinizde StorSimple aygıtınızdaki antitamper kilitlerin nasıl devre dışı kalınabileceğini veya devre dışı kalınabileceğini açıklar. Antitamper kilitleri sürücü taşıyıcı kolları na takılır ve kolu mandal bölümünde küçük bir diyafram ile erişilir. Sürücüler kilitli konuma ayarlanmış kilitlerle birlikte verilir.
 
-#### <a name="to-unlock-the-antitamper-lock"></a>Antibir kilit kilidini açmak için
-1. Kilit anahtarını (Microsoft tarafından sunulan bir "wıerkanıtı" T10 screwdriver) tanıtıcıdaki açıklık ve yuvasına dikkatle ekleyin. 
+#### <a name="to-unlock-the-antitamper-lock"></a>Antitamper kilidi kilidini açmak için
+1. Kilit anahtarını (Microsoft'un sağladığı "kurcalamaya dayanıklı" T10 tornavida) saptaki diyafram açıklığına ve soketine dikkatlice takın. 
    
-   Antietkin kilit etkinleştirilirse, kırmızı gösterge açıklık içinde görünür.
+   Antitamper kilidi etkinleştirilirse, kırmızı gösterge diyafram görünür.
   
     ![Kilitli disk sürücüsü](./media/storsimple-disk-drive-replacement/IC741056.png)
    
-    **Şekil 1** Yetkisiz kilit, meşgul
+    **Şekil 1** Anti-kurcaper kilidi devreye girdi
    
    | Etiketle | Açıklama |
    |:--- |:--- |
-   | 1 |Gösterge açıklık |
-   | 2 |Antibir kilit |
-2. Kırmızı gösterge anahtarın üzerindeki açıklık içinde görünene kadar anahtarı saat yönünde bir yönde döndürün.
-3. Anahtarı kaldırın.
+   | 1 |Gösterge diyafram açıklığı |
+   | 2 |Antitamper kilidi |
+2. Kırmızı gösterge anahtarın üzerindeki diyafram açıklığında görünmeyene kadar anahtarı saat yönünün tersine döndürün.
+3. Anahtarı çıkarın.
    
-    ![Kilidi açılmış disk sürücüsü](./media/storsimple-disk-drive-replacement/IC741057.png)
+    ![Kilidi açılan disk sürücüsü](./media/storsimple-disk-drive-replacement/IC741057.png)
    
-    **Şekil 2** Kilidi açılmış disk sürücüsü
+    **Şekil 2** Kilidi açılan disk sürücüsü
 4. Disk sürücüsü artık kaldırılabilir.
 
-Kilidi ilerlemek için ters adımları izleyin.
+Kilidi devreye sokmak için adımları ters ten uygulayın.
 
-## <a name="remove-the-disk-drive"></a>Disk sürücüsünü kaldırma
-StorSimple cihazınız, RAID 10 benzeri bir depolama alanları yapılandırmasını destekler. Bu, bir hatalı disk, katı hal sürücüsü (SSD) veya sabit disk sürücüsü (HDD) ile normal şekilde çalışılabilmesini gerektirir.
+## <a name="remove-the-disk-drive"></a>Disk sürücüsünün kaldırma
+StorSimple aygıtınız RAID 10 benzeri depolama alanları yapılandırmasını destekler. Bu, bir başarısız disk, katı hal sürücüsü (SSD) veya sabit disk sürücüsü (HDD) ile normal olarak çalışabileceği anlamına gelir.
 
 > [!IMPORTANT]
-> * Sisteminizde birden fazla başarısız disk varsa, her zaman bir noktada sistemden birden fazla SSD veya HDD kaldırmayın. Bunun yapılması veri kaybına neden olabilir.
-> * Daha önce bir SSD içeren bir yuvaya bir değiştirme SSD yerleştirdiğinizden emin olun. Benzer şekilde, bir yedek HDD 'yi daha önce HDD içeren bir yuvaya yerleştirin.
-> * Azure portal, yuvalar 0 – 11 ' den numaralandırılır. Bu nedenle, Portal Yuva 2 ' deki bir diskin başarısız olduğunu gösteriyorsa, cihazda sol üstteki üçüncü yuvada başarısız olan diski arayın.
+> * Sisteminizde birden fazla başarısız disk varsa, herhangi bir zamanda birden fazla SSD veya HDD'yi sistemden çıkarmayın. Bunu yapmak veri kaybına neden olabilir.
+> * Daha önce SSD içeren bir yuvaya yeni bir SSD yerleştirdiğinizden emin olun. Benzer şekilde, daha önce hdd içeren bir yuvaya yedek bir HDD yerleştirin.
+> * Azure portalında yuvalar 0 - 11 arasında numaralandırılır. Bu nedenle, portal yuva 2'deki bir diskin başarısız olduğunu gösterirse, aygıtta başarısız olan diski sol üstten üçüncü yuvada arayın.
 > 
 > 
 
 Sistem çalışırken sürücüler kaldırılabilir ve değiştirilebilir.
 
-#### <a name="to-remove-a-drive"></a>Bir sürücüyü kaldırmak için
-1. Başarısız diski belirlemek için Azure portal, **donanım sağlığı > cihaz ayarlarınıza**gidin. Bir disk birincil kasada ve/veya bir EBOD muhafazasında (8600 modeli kullanıyorsanız) başarısız olabileceğinden, **paylaşılan bileşenler** altındaki disklerin durumuna ve **ebod paylaşılan bileşenleri**' ne bakın. İki kasada de başarısız olan bir disk, kırmızı bir durumla gösterilir.
-2. Birincil kutunun önünde veya EBOD Kasası ' nın önündeki sürücüleri bulun. 
-3. Diskin kilidi açıksa, sonraki adıma geçin. Disk kilitliyse, daha fazla kaldırma [kilidi](#disengage-the-antitamper-lock)ile olan yordamı izleyerek bu yordamın kilidini açın.
-4. Sürücü taşıyıcısı modülünde Siyah mandal ' a basın ve sürücü taşıyıcısı tutamağını kasanın önüne ve dışına çekin.
+#### <a name="to-remove-a-drive"></a>Sürücüyü kaldırmak için
+1. Azure portalında başarısız diski tanımlamak için cihazınızın **Ayarlar > Donanım health'e**gidin. Bir disk birincil kasada ve/veya EBOD kasasında (8600 model kullanıyorsanız) başarısız olabileceğinden, **Paylaşılan bileşenlerin** altındaki ve **EBOD paylaşılan bileşenlerin**altındaki disklerin durumuna bakın. Her iki muhafazadaki başarısız bir disk kırmızı bir durumla gösterilir.
+2. Sürücüleri birincil kasanın veya EBOD kasasının önündeki yerini bulun. 
+3. Diskin kilidi açıldıysa, bir sonraki adıma geçin. Disk kilitliyse, [antitamper kilidi devre dışı işlemini](#disengage-the-antitamper-lock)izleyerek kilidi açın.
+4. Sürücü taşıyıcı modülündeki siyah mandalı basın ve sürücü taşıyıcı kolunu şasinin önünden dışarı ve uzağa çekin.
    
-    ![Disk sürücüsü tanıtıcısı serbest bırakılıyor](./media/storsimple-disk-drive-replacement/IC741051.png)
+    ![Disk sürücü tutamacını serbest bırakma](./media/storsimple-disk-drive-replacement/IC741051.png)
    
-    **Şekil 3** Sürücü tanıtıcısı serbest bırakılıyor
-5. Sürücü taşıyıcı tutamacı tamamen genişletildiğinde, sürücü taşıyıcısı kasadan dışarı kaydırın. 
+    **Şekil 3** Sürücü tutamacını serbest bırakma
+5. Sürücü taşıyıcı kolu tamamen uzadığında, sürücü taşıyıcısını şasinin dışına kaydırın. 
    
-    ![Disk sürücüsünde kayan disk kalmadı](./media/storsimple-disk-drive-replacement/IC741052.png)
+    ![Disksürücüsünden kayan disk](./media/storsimple-disk-drive-replacement/IC741052.png)
    
-    **Şekil 4** Disk sürücüsünü taşıyıcının dışına kaydırma
+    **Şekil 4** Disk sürücüsünün taşıyıcıdan kaydırılmasını
 
-## <a name="install-the-replacement-disk-drive"></a>Değiştirilen disk sürücüsünü yükler
-StorSimple cihazınızda bir sürücü başarısız olduktan sonra dosyayı kaldırdıktan sonra, yeni bir sürücüyle değiştirmek için bu yordamı izleyin.
+## <a name="install-the-replacement-disk-drive"></a>Yedek disk sürücüsüne yükleme
+StorSimple aygıtınızda bir sürücü arızalı ve siz bunu kaldırdıktan sonra, yeni bir sürücüyle değiştirmek için bu yordamı uygulayın.
 
 #### <a name="to-insert-a-drive"></a>Sürücü eklemek için
-1. Aşağıdaki görüntüde gösterildiği gibi, sürücü taşıyıcısı tanıtıcısının tam olarak genişletildiğinden emin olun.
+1. Aşağıdaki resimde gösterildiği gibi sürücü taşıyıcı tutamacının tamamen uzadığından emin olun.
    
-    ![Tanıtıcı genişletilmiş disk sürücüsü](./media/storsimple-disk-drive-replacement/IC741044.png)
+    ![Tutamacı genişletilmiş disk sürücüsü](./media/storsimple-disk-drive-replacement/IC741044.png)
    
-    **Şekil 5** Tanıtıcı genişletilmiş sürücü
-2. Sürücü taşıyıcısı ' i kasaya kaydır.
+    **Şekil 5** Kolu uzatılmış sürücü
+2. Sürücü taşıyıcısını şasiye kadar kaydırın.
    
-    ![Diski disk sürücüsü taşıyıcısı içine kaydırma](./media/storsimple-disk-drive-replacement/IC741045.png)
+    ![Diski disk sürücü taşıyıcısına kaydırma](./media/storsimple-disk-drive-replacement/IC741045.png)
    
-    **Şekil 6**  Sürücü taşıyıcısı kasaya kaydırma
-3. Sürücü taşıyıcısı takıldığında sürücü taşıyıcısı, sürücü taşıyıcı tanıtıcısı kilitli bir konuma yaslanana kadar, sürücü taşıyıcısı gövdeye göndermeye devam ederken sürücü taşıyıcısı tanıtıcısını kapatın.
-4. Kilitleme vidalı 'yı saatin tersi yönde kapatarak, taşıyıcı tutamacının yerine getirmek için Microsoft tarafından sunulan kilit anahtarını kullanın.
-5. Değiştirme işleminin başarılı olduğunu ve sürücünün çalışır durumda olduğunu doğrulayın. Azure portal erişin ve **donanım sağlığı** > **cihaz ayarları** ' na gidin. **Paylaşılan bileşenler** veya **ebod paylaşılan bileşenleri**altında sürücü durumu yeşil olmalıdır ve iyi durumda olduğunu gösterir.
+    **Şekil 6**  Sürücü taşıyıcısını şasiye kaydırma
+3. Sürücü taşıyıcısı takılıyken, sürücü taşıyıcısını şasiye itmeye devam ederken sürücü taşıyıcı tutamacını kapatın, ta ki sürücü taşıyıcısı kilitlenmiş bir konuma gelene kadar.
+4. Kilit vidasını saat yönünde bir çeyrek dönüş çevirerek taşıyıcı kolunu yerine sabitlemek için Microsoft (kurcalamayadayanıklı Torx tornavida) tarafından sağlanan kilit anahtarını kullanın.
+5. Değiştirmenin başarılı olduğunu ve sürücünün çalışır durumda olduğunu doğrulayın. Azure portalına erişin ve **Aygıt ayarları** > **Donanım sağlığına**gidin. **Paylaşılan bileşenler** veya **EBOD paylaşılan bileşenler**altında, sürücü durumu sağlıklı olduğunu belirten yeşil olmalıdır.
 
    
    > [!NOTE]
-   > Değiştirme sonrasında disk durumunun yeşil olması birkaç saat sürebilir.
+   > Değiştirmeden sonra disk durumunun yeşile dönmesi birkaç saat sürebilir.
   
 ## <a name="next-steps"></a>Sonraki adımlar
-[StorSimple donanım bileşeni değiştirme](storsimple-8000-hardware-component-replacement.md)hakkında daha fazla bilgi edinin.
+[StorSimple donanım bileşen değiştirme](storsimple-8000-hardware-component-replacement.md)hakkında daha fazla bilgi edinin.
 

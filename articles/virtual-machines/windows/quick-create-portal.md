@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure portal bir Windows sanal makinesi oluşturma
+title: Quickstart - Azure portalında Windows VM oluşturma
 description: Bu hızlı başlangıçta Azure portalı kullanarak Windows sanal makinesi oluşturmayı öğrenirsiniz
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,17 +15,17 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240047"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalda Windows sanal makinesi oluşturma
 
-Azure sanal makineleri (VM’ler), Azure portalı üzerinden oluşturulabilir. Bu yöntem, sanal makineleri ve tüm ilgili kaynaklarını oluşturmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Bu hızlı başlangıçta, Azure 'da Windows Server 2019 çalıştıran bir sanal makineyi (VM) dağıtmak için Azure portal nasıl kullanılacağı gösterilmektedir. VM’ye RDP oluşturup IIS web sunucusunu yükleyerek VM’nizin çalıştığını görebilirsiniz.
+Azure sanal makineleri (VM’ler), Azure portalı üzerinden oluşturulabilir. Bu yöntem, sanal makineleri ve tüm ilgili kaynaklarını oluşturmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Bu hızlı başlangıç, Windows Server 2019'u çalıştıran Azure'da sanal bir makineyi (VM) dağıtmak için Azure portalını nasıl kullanacağınızı gösterir. VM’ye RDP oluşturup IIS web sunucusunu yükleyerek VM’nizin çalıştığını görebilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -34,13 +34,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
 1. Aramada **sanal makineler** yazın.
-1. **Hizmetler**altında **sanal makineler**' i seçin.
-1. **Sanal makineler** sayfasında **Ekle**' yi seçin. 
-1. **Temel Bilgiler** sekmesinde, **Proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun, ardından **Yeni oluştur** kaynak grubunu seçin. Ad için *Myresourcegroup* yazın. 
+1. **Hizmetler**altında, **Sanal makineleri**seçin.
+1. Sanal **makineler** sayfasında **Ekle'yi**seçin. 
+1. **Temel Bilgiler** sekmesinde, **Proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun, ardından **Yeni oluştur** kaynak grubunu seçin. Ad için *myResourceGroup* yazın. 
 
     ![VM'niz için yeni bir kaynak grubu oluşturma](./media/quick-create-portal/project-details.png)
 
-1. **Örnek ayrıntıları**' nın altında, **sanal makine adı** için *myvm* yazın ve **bölgeniz**Için *Doğu ABD* seçin ve ardından **görüntü**için *Windows Server 2019 Datacenter* ' u seçin. Diğer varsayılan değerleri bırakın.
+1. **Örnek ayrıntıları**altında, Sanal **makine adı** için *myVM* yazın ve **Bölgeniz**için *Doğu ABD'yi* seçin ve ardından **Görüntü**için Windows *Server 2019 Datacenter'ı* seçin. Diğer varsayılan değerleri bırakın.
 
     ![Örnek ayrıntıları bölümü](./media/quick-create-portal/instance-details.png)
 
@@ -48,7 +48,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     ![Kullanıcı adınızı ve parolanızı girin](./media/quick-create-portal/administrator-account.png)
 
-1. **Gelen bağlantı noktası kuralları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılır listeden **RDP (3389)** ve **http (80)** seçeneğini belirleyin.
+1. **Gelen bağlantı noktası kuralları altında,** **seçili bağlantı noktalarına izin ver'i** seçin ve ardından açılan bağlantı noktasından **RDP (3389)** ve **HTTP (80)** seçeneğini belirleyin.
 
     ![RDP ve HTTP için bağlantı noktaları açma](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -61,15 +61,15 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Sanal makine ile bir uzak masaüstü bağlantısı oluşturun. Bu yönergeler VM’nize bir Windows bilgisayarından nasıl bağlanacağınızı gösterir. Mac bilgisayarlarda, Mac App Store’dan bu [Uzak Masaüstü İstemcisi](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) gibi bir RDP istemcisi indirmeniz gerekir.
 
-1. Sanal makinenizin Genel Bakış sayfasında **Bağlan** düğmesine tıklayın. 
+1. Sanal makineniz için genel bakış sayfasındaki **Bağlan** düğmesini tıklatın. 
 
     ![Portaldan bir Azure sanal makinesine bağlanma](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. **Sanal makineye bağlan** sayfasında, bağlantı noktası 3389 ' den IP adresine göre bağlanmak için varsayılan seçenekleri tutun ve **RDP dosyasını indir**' e tıklayın.
+2. Sanal **makineye Bağlan** sayfasında, IP adresine göre bağlanmak için varsayılan seçenekleri bağlantı noktası 3389 üzerinden tutun ve **RDP dosyasını indir'i**tıklatın.
 
 2. İndirilen RDP dosyasını açın ve istendiğinde **Bağlan**’a tıklayın. 
 
-3. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını **localhost**\\*username* olarak yazın, sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam**’a tıklayın.
+3. **Windows Güvenliği** penceresinde **Diğer seçenekler**'i ve ardından **Başka bir hesap kullanın**'ı seçin. Kullanıcı adını **localhost**\\*kullanıcı adı*olarak yazın, sanal makine için oluşturduğunuz parolayı girin ve ardından **Tamam'ı**tıklatın.
 
 4. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıyı oluşturmak için **Evet** veya **Devam**’a tıklayın.
 
@@ -86,7 +86,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>IIS karşılama sayfasını görüntüleme
 
-Portalda VM 'yi seçin ve VM 'ye Genel Bakış ' da, kopyalamak için **tıklayın** ve sonra da bir tarayıcı sekmesine yapıştırın. Varsayılan IIS karşılama sayfası açılır ve şöyle görünür:
+Portalda, VM'yi seçin ve VM'ye genel bakışta, IP adresinin sağındaki **kopyalama** düğmesini kullanarak kopyalayın ve tarayıcı sekmesine yapıştırın. Varsayılan IIS karşılama sayfası açılır ve aşağıdaki gibi görünmelidir:
 
 ![Varsayılan IIS sitesi](./media/quick-create-powershell/default-iis-website.png)
 
@@ -94,7 +94,7 @@ Portalda VM 'yi seçin ve VM 'ye Genel Bakış ' da, kopyalamak için **tıklay�
 
 Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilişkili kaynakları silebilirsiniz. 
 
-Sanal makine için kaynak grubunu seçin ve **Sil**' i seçin. Kaynakları silmeyi tamamlayacak kaynak grubunun adını onaylayın.
+Sanal makine için kaynak grubunu seçin ve sonra **Sil'i**seçin. Kaynakları silmeyi bitirmek için kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

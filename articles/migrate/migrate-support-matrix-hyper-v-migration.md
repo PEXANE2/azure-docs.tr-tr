@@ -1,74 +1,74 @@
 ---
-title: Azure geçişi için Hyper-V geçişi desteği
-description: Azure geçişi ile Hyper-V geçişi desteği hakkında bilgi edinin.
+title: Azure Geçişi'nde Hyper-V geçişi desteği
+description: Azure Geçişi ile Hyper-V geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245830"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V geçişi için destek matrisi
 
-Bu makalede, Hyper-V VM 'lerini Azure geçişi ile geçirmeye yönelik destek ayarları ve sınırlamaları özetlenmektedir [: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) . Hyper-V VM 'lerini Azure 'a geçiş için değerlendirme hakkında bilgi arıyorsanız, [değerlendirme desteği matrisini](migrate-support-matrix-hyper-v.md)gözden geçirin.
+Bu makalede, Azure Geçişi ile Hyper-V VM'lerin geçişine yönelik destek ayarları ve sınırlamaları [özetlenmiştir: Sunucu Geçişi.](migrate-services-overview.md#azure-migrate-server-migration-tool) Azure'a geçiş için Hyper-V VM'leri değerlendirme hakkında bilgi arıyorsanız, [değerlendirme destek matrisini](migrate-support-matrix-hyper-v.md)gözden geçirin.
 
 ## <a name="migration-limitations"></a>Geçiş sınırlamaları
 
-Çoğaltma için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek istiyorsanız, 10 grup içinde çoğaltın.
+Çoğaltma için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine yiyebilmek istiyorsanız, 10'dan oluşan gruplar halinde çoğalTın.
 
 
 ## <a name="hyper-v-hosts"></a>Hyper-V konakları
 
-| **Destek**                | **Ayrıntılar**               
+| **Destek**                | **Şey**               
 | :-------------------       | :------------------- |
-| **Dağıtım**       | Hyper-V konağı tek başına olabilir veya bir kümede dağıtılabilir. <br/>Azure geçişi çoğaltma yazılımının (Hyper-V çoğaltma sağlayıcısı) Hyper-V konaklarında yüklü olması gerekir.|
-| **İzinler**           | Hyper-V konağında yönetici izinlerine sahip olmanız gerekir. |
-| **Konak işletim sistemi** | Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2. |
-| **URL erişimi** | Hyper-V konaklarındaki çoğaltma sağlayıcısı yazılımının bu URL 'LERE erişmesi gerekir:<br/><br/> -login.microsoftonline.com: Active Directory kullanarak erişim denetimi ve kimlik yönetimi.<br/><br/> -*. backup.windowsazure.com: çoğaltma veri aktarımı ve düzenlemesi. Hizmet URL 'Lerini geçirin.<br/><br/> -*. blob.core.windows.net: verileri depolama hesaplarına yükleyin.<br/><br/> -dc.services.visualstudio.com: iç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.<br/><br/> -time.windows.com: sistem ve genel saat arasındaki zaman eşitlemesini doğrular.
-| **Bağlantı noktası erişimi** |  VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443 ' deki giden bağlantılar.
+| **Dağıtım**       | Hyper-V ana bilgisayar tek başına veya bir kümede dağıtılabilir. <br/>Azure Geçir çoğaltma yazılımının (Hyper-V Çoğaltma sağlayıcısı) Hyper-V ana bilgisayarlarına yüklenmesi gerekir.|
+| **Izin**           | Hyper-V ana bilgisayarda yönetici izinlerine ihtiyacınız vardır. |
+| **Ana bilgisayar işletim sistemi** | Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2. |
+| **URL erişimi** | Hyper-V ana bilgisayarlarındaki çoğaltma sağlayıcı yazılımının bu URL'lere erişmesi gerekir:<br/><br/> - login.microsoftonline.com: Active Directory kullanarak erişim denetimi ve kimlik yönetimi.<br/><br/> - *.backup.windowsazure.com: Çoğaltma veri aktarımı ve koordinasyonu. Hizmet URL'lerini geçirin.<br/><br/> * .blob.core.windows.net: Depolama hesaplarına veri yükleyin.<br/><br/> - dc.services.visualstudio.com: Dahili izleme için kullanılan uygulama günlüklerini yükleyin.<br/><br/> - time.windows.com: Sistem ve küresel zaman arasındaki zaman eşitleme doğrular.
+| **Bağlantı noktası erişimi** |  VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443'teki giden bağlantılar.
 
 ## <a name="hyper-v-vms"></a>Hyper-V Sanal Makineleri
 
-| **Destek**                  | **Ayrıntılar**               
+| **Destek**                  | **Şey**               
 | :----------------------------- | :------------------- |
 | **İşletim sistemi** | Azure tarafından desteklenen tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri. |
-| **Azure için gereken değişiklikler** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir. Geçişten önce el ile ayarlamalar yapmanız gerekir. İlgili makaleler, bunun nasıl yapılacağı hakkında yönergeler içerir. |
-| **Linux önyüklemesi**                 | /Boot ayrılmış bir bölümse, işletim sistemi diskinde bulunmalı ve birden çok diske yayılmamalıdır.<br/> /Boot kök (/) bölümünün parçasıysa, '/' bölümünün işletim sistemi diskinde olması ve diğer disklere yayılmamamakta olması gerekir. |
-| **UEFı önyüklemesi**                  | Azure 'daki geçirilmiş VM otomatik olarak bir BIOS önyükleme VM 'sine dönüştürülür. VM yalnızca Windows Server 2012 ve üstünü çalıştırmalıdır. İşletim sistemi diski en fazla beş bölüm veya daha az olmalıdır ve işletim sistemi diskinin boyutu 300 GB 'tan az olmalıdır.
+| **Azure için gerekli değişiklikler** | Bazı VM'ler Azure'da çalıştırabilmeleri için değişiklik gerektirebilir. Geçişyapmadan önce el ile ayarlamalar yapmanız gerekir. İlgili makaleler, bunun nasıl yapılacağını anlatan yönergeler içerir. |
+| **Linux önyükleme**                 | /boot özel bir bölüm üzerindeyse, işletim sistemi diskinde yer almalı ve birden çok diske yayılmamalıdır.<br/> /boot kök (/) bölümünün bir parçasıysa, '/' bölümü işletim sistemi diskinde olmalı ve diğer disklere yayılmamalıdır. |
+| **UEFI önyükleme**                  | Azure'da geçirilen VM otomatik olarak BIOS önyükleme VM'sine dönüştürülür. VM Windows Server 2012 ve daha sonra yalnızca çalışıyor olmalıdır. Os diskenin en fazla beş veya daha az bölümü olmalı ve işletim sistemi diskinin boyutu 300 GB'dan az olmalıdır.
   |
-| **Disk boyutu**                  | işletim sistemi diski için 2 TB, veri diskleri için 4 TB.
+| **Disk boyutu**                  | Os diski için 2 TB, veri diskleri için 4 TB.
 | **Disk numarası** | VM başına en fazla 16 disk.
-| **Şifrelenmiş diskler/birimler**    | Geçiş için desteklenmez. |
+| **Şifreli diskler/birimler**    | Geçiş için desteklenmez. |
 | **RDM/geçiş diskleri**      | Geçiş için desteklenmez. |
-| **Paylaşılan disk** | Paylaşılan diskler kullanan VM 'Ler geçiş için desteklenmez.
-| **ALACAĞıNı**                        | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz. |
-| **ISCSı**                      | Iscsı hedefleri olan VM 'Ler geçiş için desteklenmez.
-| **Hedef disk**                | Azure VM 'lerine yalnızca yönetilen disklerle geçiş yapabilirsiniz. |
+| **Paylaşılan disk** | Paylaşılan diskleri kullanan VM'ler geçiş için desteklenmez.
+| **NFS**                        | VM'lerde birim olarak monte edilen NFS birimleri çoğaltılamaz. |
+| **Iscsı**                      | iSCSI hedefli VM'ler geçiş için desteklenmez.
+| **Hedef disk**                | Yalnızca yönetilen disklerle Azure VM'lerine geçiş yapabilirsiniz. |
 | **IPv6** | Desteklenmiyor.
-| **NIC ekibi oluşturma** | Desteklenmiyor.
-| **Azure Site Recovery** | VM, Azure Site Recovery ile çoğaltma için etkinleştirilmişse Azure geçişi geçiş sunucusu geçişini çoğaltamaz.
-| **Bağlantı Noktaları** | VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443 ' deki giden bağlantılar.
+| **NIC takım çalışması** | Desteklenmiyor.
+| **Azure Site Kurtarma** | VM, Azure Site Kurtarma ile çoğaltma için etkinleştirildiyse, Azure Geçir Sunucusu Geçişi'ni kullanarak çoğaltma yapamazsınız.
+| **Bağlantı Noktaları** | VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443'teki giden bağlantılar.
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 
-Azure 'a çoğaltılan tüm şirket içi VM 'Lerin bu tabloda özetlenen Azure VM gereksinimlerini karşılaması gerekir.
+Azure'da çoğaltılan tüm şirket içi VM'ler bu tabloda özetlenen Azure VM gereksinimlerini karşılamalıdır.
 
-**Bileşen** | **Gereksinimler** | **Ayrıntılar**
+**Bileşen** | **Gereksinimler** | **Şey**
 --- | --- | ---
-İşletim sistemi disk boyutu | 2\.048 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
-İşletim sistemi disk sayısı | 1 | Desteklenmiyorsa denetim başarısız olur.
-Veri diski sayısı | 16 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
-Veri diski boyutu | 4\.095 GB 'a kadar | Desteklenmiyorsa denetim başarısız olur.
+İşletim sistemi disk boyutu | 2.048 GB'a kadar. | Desteklenmezse denetim başarısız olur.
+İşletim sistemi disk sayısı | 1 | Desteklenmezse denetim başarısız olur.
+Veri diski sayısı | 16 ya da daha az. | Desteklenmezse denetim başarısız olur.
+Veri diskboyutu | 4.095 GB'a kadar | Desteklenmezse denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
-Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
-FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
-BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
-VM adı | 1 ile 63 karakter arasında.<br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
-Geçişten sonra Bağlan-Windows | Geçişten sonra Windows çalıştıran Azure VM 'lerine bağlanmak için:<br/> -Geçiş öncesinde, şirket içi VM 'de RDP 'yi mümkün. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/> Siteden siteye VPN erişimi için, RDP 'yi etkinleştirin ve **etki alanı ve özel** ağlar Için **izin verilen uygulamalar ve Özellikler** -> **Windows Güvenlik Duvarı** 'nda RDP 'ye izin verin. Ayrıca, işletim sisteminin SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](prepare-for-migration.md). |
-Geçişten sonra Bağlan-Linux | SSH kullanarak geçişten sonra Azure VM 'lerine bağlanmak için:<br/> Geçişten önce, şirket içi makinede, Secure Shell hizmetinin başlangıç olarak ayarlandığını ve Güvenlik Duvarı kurallarının bir SSH bağlantısına izin vermeyi kontrol edin.<br/> Yük devretmenin ardından Azure VM 'de, yük devredilen VM 'deki ağ güvenlik grubu kuralları için SSH bağlantı noktasına gelen bağlantılara ve bağlı olduğu Azure alt ağına izin verin. Ayrıca, VM için bir genel IP adresi ekleyin. |  
+Paylaşılan VHD | Desteklenmiyor. | Desteklenmezse denetim başarısız olur.
+FC diski | Desteklenmiyor. | Desteklenmezse denetim başarısız olur.
+BitLocker | Desteklenmiyor. | Bir makineiçin çoğaltmayı etkinleştirmeden önce BitLocker devre dışı edilmelidir.
+VM adı | 1 ile 63 arasında karakter.<br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayı ile başlayıp bitmelidir. |  Site Kurtarma'daki makine özelliklerindeki değeri güncelleştirin.
+Geçiş-Windows'dan sonra bağlan | Geçişten sonra Windows çalıştıran Azure VM'lere bağlanmak için:<br/> - Geçiş ten önce şirket içi VM'de RDP'yi etkinleştirin. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/> Siteden siteye VPN erişimi için RDP'yi etkinleştirin **ve Etki Alanı** ve Özel ağlar için Windows Güvenlik **Duvarı** -> **İzin Verilen uygulamalara ve özelliklere** izin verin. Buna ek olarak, işletim sisteminin SAN **ilkesinin OnlineAll**olarak ayarlı olup olmadığını kontrol edin. [Daha fazla bilgi edinin](prepare-for-migration.md). |
+Geçişten sonra bağlan-Linux | SSH kullanarak geçişten sonra Azure VM'lere bağlanmak için:<br/> Geçişten önce, şirket içi makinede Secure Shell hizmetinin Başlangıç olarak ayarlanıp ayarlılmadan ve güvenlik duvarı kurallarının SSH bağlantısına izin verdiğini kontrol edin.<br/> Azure VM'de başarısız olduktan sonra, VM üzerinden başarısız olan ağ güvenlik grubu kuralları ve bağlı olduğu Azure alt ağı için SSH bağlantı noktasına gelen bağlantılara izin verin. Ayrıca, VM için genel bir IP adresi ekleyin. |  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Geçiş için [Hyper-V VM 'Lerini geçirin](tutorial-migrate-hyper-v.md) .
+Geçiş için [Hyper-V VM'leri geçirin.](tutorial-migrate-hyper-v.md)

@@ -1,26 +1,26 @@
 ---
-title: Azure Izleyici 'de CollectD 'den veri toplayın | Microsoft Docs
-description: CollectD, uygulamalardan ve sistem düzeyi bilgilerden düzenli olarak veri toplayan açık kaynaklı bir Linux Daemon.  Bu makalede, Azure Izleyici 'de CollectD 'den veri toplama hakkında bilgi sağlanır.
+title: Azure Monitör'de CollectD'den veri toplama | Microsoft Dokümanlar
+description: CollectD, düzenli olarak uygulamalardan ve sistem düzeyi bilgilerinden veri toplayan açık kaynaklı bir Linux daemon'dur.  Bu makale, Azure Monitor'da CollectD'den veri toplama hakkında bilgi sağlar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670619"
 ---
-# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Izleyici 'de Linux aracılarında CollectD 'den veri toplama
-[Collectd](https://collectd.org/) , uygulamalardan ve sistem düzeyi bilgilerden düzenli olarak performans ölçümlerini toplayan açık kaynaklı bir Linux Daemon. Örnek uygulamalar Java Sanal Makinesi (JVM), MySQL Server ve NGINX ' i içerir. Bu makalede, Azure Izleyici 'de CollectD 'den performans verilerinin toplanması hakkında bilgi sağlanır.
+# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor'da Linux aracıları üzerinde Toplanan'dan veri toplama
+[CollectD,](https://collectd.org/) uygulamalardan ve sistem düzeyi bilgilerinden düzenli olarak performans ölçümleri toplayan bir açık kaynak Linux daemon'dur. Örnek uygulamalar Arasında Java Virtual Machine (JVM), MySQL Server ve Nginx sayılabilir. Bu makalede, Azure Monitor'da CollectD'den performans verileri toplama hakkında bilgi verilmektedir.
 
-Kullanılabilir eklentilerin tam listesi, [Eklentiler tablosunda](https://collectd.org/wiki/index.php/Table_of_Plugins)bulunabilir.
+Mevcut eklentilerin tam listesini [Tablo Eklentileri](https://collectd.org/wiki/index.php/Table_of_Plugins)bulunabilir.
 
-![CollectD genel bakış](media/data-sources-collectd/overview.png)
+![Toplanan genel bakış](media/data-sources-collectd/overview.png)
 
-Aşağıdaki CollectD yapılandırması, Linux için Log Analytics aracısına, CollectD verilerini Linux için Log Analytics aracısına yönlendirmenize dahildir.
+Aşağıdaki CollectD yapılandırması, Toplanan verileri Linux için Log Analytics temsilcisine yönlendirmek için Linux için Log Analytics aracısına dahildir.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -34,7 +34,7 @@ Aşağıdaki CollectD yapılandırması, Linux için Log Analytics aracısına, 
          </Node>
     </Plugin>
 
-Ayrıca, 5,5 öncesinde bir collectD sürümü kullanılıyorsa, bunun yerine aşağıdaki yapılandırmayı kullanın.
+Ayrıca, 5.5'ten önce collectD sürümlerini kullanıyorsanız, bunun yerine aşağıdaki yapılandırmayı kullanın.
 
     LoadPlugin write_http
 
@@ -45,12 +45,12 @@ Ayrıca, 5,5 öncesinde bir collectD sürümü kullanılıyorsa, bunun yerine a�
        </URL>
     </Plugin>
 
-CollectD yapılandırması, 26000 numaralı bağlantı noktası üzerinden performans ölçümü verilerini Linux için Log Analytics aracısına göndermek için varsayılan`write_http` eklentisini kullanır. 
+CollectD yapılandırması,`write_http` performans metrik verilerini 26000 portu üzerinden Linux için Log Analytics temsilcisine göndermek için varsayılan eklentiyi kullanır. 
 
 > [!NOTE]
 > Bu bağlantı noktası, gerekirse özel tanımlı bir bağlantı noktasına yapılandırılabilir.
 
-Linux için Log Analytics Aracısı Ayrıca, CollectD ölçümleri için 26000 numaralı bağlantı noktasını dinler ve ardından bunları Azure Izleyici şeması ölçümlerine dönüştürür. Linux yapılandırma `collectd.conf`için Log Analytics Aracısı aşağıda verilmiştir.
+Linux için Log Analytics aracısı, CollectD ölçümleri için 26000 bağlantı noktasında da dinler ve bunları Azure Monitor şema ölçümlerine dönüştürür. Aşağıdaki Linux yapılandırması `collectd.conf`için Log Analytics aracısıdır.
 
     <source>
       type http
@@ -63,59 +63,59 @@ Linux için Log Analytics Aracısı Ayrıca, CollectD ölçümleri için 26000 n
     </filter>
 
 > [!NOTE]
-> CollectD varsayılan olarak 10 saniyelik bir [aralıkta](https://collectd.org/wiki/index.php/Interval)değerleri okumak üzere ayarlanır. Bu işlem, Azure Izleyici günlüklerine gönderilen veri hacmini doğrudan etkilediği için, izleme gereksinimleri ile ilişkili maliyetler ve Azure Izleyici günlüklerinin kullanımı arasında iyi bir denge sağlamak için CollectD yapılandırması dahilinde bu zaman aralığını ayarlamanız gerekebilir.
+> Varsayılan olarak toplanan değerler 10 [saniyelik](https://collectd.org/wiki/index.php/Interval)aralıkta okunacak şekilde ayarlanır. Bu, Azure Monitör Günlükleri'ne gönderilen veri hacmini doğrudan etkilediğinden, izleme gereksinimleri ile ilişkili maliyetler ve Azure Monitör Günlükleri için kullanım arasında iyi bir denge oluşturmak için Bu aralığı CollectD yapılandırması içinde ayarlamanız gerekebilir.
 
 ## <a name="versions-supported"></a>Desteklenen sürümler
-- Azure Izleyici Şu anda CollectD sürüm 4,8 ve üstünü desteklemektedir.
-- CollectD ölçüm koleksiyonu için Log Analytics Agent for Linux v 1.1.0-bir veya üzeri gereklidir.
+- Azure Monitor şu anda CollectD sürüm 4.8 ve üzeri destekler.
+- Linux v1.1.0-217 veya üzeri için Log Analytics aracısı CollectD metrik koleksiyonu için gereklidir.
 
 
 ## <a name="configuration"></a>Yapılandırma
-Azure Izleyici 'de CollectD verilerinin toplanmasını yapılandırmak için temel adımlar aşağıda verilmiştir.
+Azure Monitor'da Toplanan verilerin toplanmasını yapılandırmak için temel adımlar aşağıda veda edilebedilir.
 
-1. Write_http eklentisini kullanarak, CollectD 'yi Linux için Log Analytics aracısına veri gönderecek şekilde yapılandırın.  
-2. Linux için Log Analytics Aracısı 'nı uygun bağlantı noktasındaki CollectD verilerini dinlemek üzere yapılandırın.
-3. CollectD ve Linux için Log Analytics Aracısı 'nı yeniden başlatın.
+1. write_http eklentisini kullanarak Linux için Log Analytics temsilcisine veri göndermek için CollectD'i yapılandırın.  
+2. Linux için Log Analytics aracısını, toplanan verileri uygun bağlantı noktasında dinlemek üzere yapılandırın.
+3. Linux için CollectD ve Log Analytics aracıyı yeniden başlatın.
 
-### <a name="configure-collectd-to-forward-data"></a>Verileri iletmek için CollectD 'yi yapılandırma 
+### <a name="configure-collectd-to-forward-data"></a>Verileri iletmek için Toplananı yapılandır 
 
-1. CollectD verilerini Linux için Log Analytics aracısına yönlendirmek için, `oms.conf` CollectD 'nin yapılandırma dizinine eklenmesi gerekir. Bu dosyanın hedefi, makinenizin Linux 'a göre değişir.
+1. Toplanan verileri Linux için Log Analytics temsilcisine yönlendirmek için CollectD'in yapılandırma dizinine eklenmesi `oms.conf` gerekir. Bu dosyanın hedefi makinenizin Linux dağıtımına bağlıdır.
 
-    CollectD yapılandırma dizininiz/etc/collectd.exe dizininde bulunuyorsa:
+    CollectD config dizininiz /etc/collectd.d/:
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
 
-    CollectD yapılandırma dizininiz/etc/collectd/collectd.exe dizininde bulunuyorsa:
+    CollectD config dizininiz /etc/collectd/collectd.conf.d/:
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >5,5 ' dan önceki CollectD sürümleri için `oms.conf` etiketleri yukarıda gösterildiği gibi değiştirmeniz gerekecektir.
+    >5.5'ten önce Toplanan sürümler için, `oms.conf` yukarıda gösterildiği gibi etiketleri değiştirmeniz gerekir.
     >
 
-2. Collectd. conf dosyasını istenen çalışma alanının omsagent yapılandırma dizinine kopyalayın.
+2. Toplanan kopya.conf istenilen çalışma alanının omsagent yapılandırma dizinine.
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. Aşağıdaki komutlarla, CollectD ve Linux için Log Analytics Aracısı 'nı yeniden başlatın.
+3. Aşağıdaki komutlarla Linux için CollectD ve Log Analytics aracısını yeniden başlatın.
 
-    sudo hizmeti toplanan sudo/seçenek/Microsoft/omsagent/bin/service_control yeniden başlatma
+    sudo hizmeti toplanan yeniden başlatma sudo /opt/microsoft/omsagent/bin/service_control yeniden başlatma
 
-## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD ölçümlerini Azure Izleyici şemasına dönüştürme
-Linux için Log Analytics Aracısı tarafından zaten toplanan altyapı ölçümleri ve CollectD tarafından toplanan yeni ölçümler arasında tanıdık bir modeli korumak için aşağıdaki şema eşlemesi kullanılır:
+## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Azure Monitör şema dönüştürmesine toplanan ölçümler
+Linux için Log Analytics aracısı tarafından zaten toplanan altyapı ölçümleri ile CollectD tarafından toplanan yeni ölçümler arasında tanıdık bir model sağlamak için aşağıdaki şema eşleme kullanılır:
 
-| CollectD ölçüm alanı | Azure Izleyici alanı |
+| Toplanan Metrik alan | Azure Monitör alanı |
 |:--|:--|
 | `host` | Bilgisayar |
 | `plugin` | None |
-| `plugin_instance` | Örnek adı<br>**Plugin_instance** *null* ise InstanceName = " *_Total*" |
+| `plugin_instance` | Örnek Adı<br>Eğer **plugin_instance** *null* ise InstanceName="*_Total*" |
 | `type` | ObjectName |
-| `type_instance` | CounterName<br>**Type_instance** *null* ise CounterName =**Blank** |
-| `dsnames[]` | CounterName |
+| `type_instance` | Countername<br>**type_instance** *null* ise CounterName=**boş** |
+| `dsnames[]` | Countername |
 | `dstypes` | None |
-| `values[]` | Onay değeri |
+| `values[]` | Karşı Değer |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
-* Syslog kayıtlarından verileri tek tek alanlara ayrıştırmak için [özel alanları](custom-fields.md) kullanın.
+* Syslog kayıtlarından tek tek alanlara ayrıştamak için [Özel Alanlar'ı](custom-fields.md) kullanın.

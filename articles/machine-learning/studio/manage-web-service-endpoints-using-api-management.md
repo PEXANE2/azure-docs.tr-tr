@@ -1,7 +1,7 @@
 ---
-title: API Management kullanarak Web hizmetlerini yönetme
+title: API Yönetimi'ni kullanarak web hizmetlerini yönetme
 titleSuffix: ML Studio (classic) - Azure
-description: API Management kullanarak AzureML web hizmetlerini yönetmek nasıl gösteren bir kılavuz. Kullanıcı erişimi, kullanımı azaltma ve izleme Panosu tanımlayarak, REST API uç noktalarını yönetin.
+description: API Yönetimi'ni kullanarak AzureML web hizmetlerinin nasıl yönetilendiğini gösteren bir kılavuz. Kullanıcı erişimini, kullanımı azaltmayı ve pano izlemesini tanımlayarak REST API uç noktalarınızı yönetin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,240 +11,240 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218018"
 ---
-# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management kullanarak Azure Machine Learning Studio (klasik) Web hizmetlerini yönetme
+# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Yönetimi'ni kullanarak Azure Machine Learning Studio (klasik) web hizmetlerini yönetme
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu kılavuzda, Azure Machine Learning Studio (klasik) Web hizmetlerinizi yönetmek için API Management kullanarak nasıl hızlı bir şekilde başlacağınız gösterilmektedir.
+Bu kılavuz, Azure Machine Learning Studio (klasik) web hizmetlerinizi yönetmek için API Yönetimi'ni kullanmaya nasıl hızlı bir şekilde başalacağınız gösterilmektedir.
 
 ## <a name="what-is-azure-api-management"></a>Azure API Management nedir?
-Azure API Management REST API uç noktalarınızın kullanıcı erişimi, kullanımı azaltma ve izleme Panosu tanımlayarak yönetmenizi sağlayan bir Azure hizmetidir. Daha fazla bilgi için bkz. [Azure API Management sitesi](https://azure.microsoft.com/services/api-management/) . Azure API Management kullanmaya başlamak için [içeri aktarma ve yayımlama kılavuzuna](/azure/api-management/import-and-publish)bakın. Bu kılavuzu temel alır, bu diğer Kılavuzu, ürünler, geliştirici abonelikleri ve kullanım yönelik Kompozit oluşturma bildirimi yapılandırmaları, fiyatlandırma katmanı, yanıt işleme, kullanıcı kimlik doğrulaması dahil olmak üzere diğer konuları kapsar.
+Azure API Yönetimi, kullanıcı erişimini, kullanımı azaltmayı ve pano izlemeyi tanımlayarak REST API uç noktalarınızı yönetmenize olanak tanıyan bir Azure hizmetidir. Daha fazla ayrıntı için [Azure API yönetim sitesine](https://azure.microsoft.com/services/api-management/) bakın. Azure API Yönetimi'ne başlamak için [alma ve yayımlama kılavuzuna](/azure/api-management/import-and-publish)bakın. Bu kılavuzun dayandığı bu diğer kılavuz, bildirim yapılandırmaları, katman fiyatlandırması, yanıt işleme, kullanıcı kimlik doğrulaması, ürün oluşturma, geliştirici abonelikleri ve kullanım panosu dahil olmak üzere daha fazla konuyu kapsar.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu kılavuzu tamamlamak için gerekir:
+## <a name="prerequisites"></a>Ön koşullar
+Bu kılavuzu tamamlamak için şunları yapmanız gerekir:
 
 * Bir Azure hesabı.
-* AzureML hesaptır.
-* Çalışma alanı, hizmet ve web hizmeti olarak AzureML deneme için apı_key. Bir AzureML denemesi oluşturma hakkında ayrıntılı bilgi için bkz. [Studio hızlı](create-experiment.md)başlangıcı. Bir Web hizmeti olarak bir Studio (klasik) denemesinin nasıl dağıtılacağı hakkında bilgi için bkz. bir Web hizmeti olarak bir AzureML denemesinin nasıl dağıtılacağı hakkında ayrıntılı bilgi için bkz. [Studio dağıtımı nasıl yapılır](deploy-a-machine-learning-web-service.md) . Alternatif olarak, ek A basit bir AzureML deneme test oluşturma ve bir web hizmeti olarak dağıtma hakkında yönergeler vardır.
+* AzureML hesabı.
+* Web hizmeti olarak dağıtılan bir AzureML denemesiiçin çalışma alanı, hizmet ve api_key. AzureML denemesini nasıl oluşturabilirsiniz hakkında ayrıntılı bilgi için [Studio quickstart'a](create-experiment.md)bakın. Bir Stüdyo (klasik) denemesini web hizmeti olarak nasıl dağıtılabildiğiniz hakkında bilgi için, AzureML denemesini web hizmeti olarak nasıl dağıtılanın nasıl dağıtılanın ayrıntıları için [Stüdyo dağıtımına](deploy-a-machine-learning-web-service.md) bakın. Alternatif olarak, Ek A'nın basit bir AzureML denemesini oluşturma ve test etme ve bunu bir web hizmeti olarak dağıtma yönergeleri vardır.
 
 ## <a name="create-an-api-management-instance"></a>API Management örneği oluşturma
 
-API Management örneği ile Azure Machine Learning web hizmetini yönetebilir.
+Azure Machine Learning web hizmetinizi bir API Yönetimi örneğiyle yönetebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 2. **+ Kaynak oluştur**’u seçin.
-3. Arama kutusuna "API Yönetimi" yazın ve ardından "API Yönetimi" kaynağı seçin.
-4. **Oluştur**'a tıklayın.
-5. **Ad** değeri, BENZERSIZ bir URL oluşturmak için kullanılır (Bu örnek "demoazureml" kullanır).
-6. Hizmet örneğiniz için bir **abonelik**, **kaynak grubu**ve **konum** seçin.
-7. **Kuruluş adı** için bir değer belirtin (Bu örnekte "demoazureml" kullanılır).
-8. **Yönetici e-** postanızı girin-Bu e-posta API Management sisteminden bildirimler için kullanılacaktır.
-9. **Oluştur**'a tıklayın.
+3. Arama kutusunda "API yönetimi" yazın ve ardından "API yönetimi" kaynağını seçin.
+4. **Oluştur'u**tıklatın.
+5. **Ad** değeri benzersiz bir URL oluşturmak için kullanılır (bu örnekte "demoazureml" kullanılır).
+6. Hizmet örneğiniz için **Abonelik,** **Kaynak grubu**ve **Konum'u** seçin.
+7. **Kuruluş adı** için bir değer belirtin (bu örnekte "demoazureml" kullan).
+8. Yönetici **e-postanızı** girin - bu e-posta API Yönetim sisteminden gelen bildirimler için kullanılacaktır.
+9. **Oluştur'u**tıklatın.
 
-Bu, oluşturulacak yeni bir hizmet 30 dakikaya kadar sürebilir.
+Yeni bir hizmetin oluşturulması 30 dakika kadar sürebilir.
 
-![hizmet oluşturma](./media/manage-web-service-endpoints-using-api-management/create-service.png)
+![oluşturma-hizmet](./media/manage-web-service-endpoints-using-api-management/create-service.png)
 
 
 ## <a name="create-the-api"></a>API oluşturma
-Hizmet örneği oluşturulduktan sonra sonraki adıma API oluşturmaktır. Bir API, istemci uygulamasından çağrılabilen işlemler grubundan oluşur. API işlemleri mevcut web hizmetlerine taşınır. Bu kılavuz, mevcut AzureML RRS ve BES web hizmetlerine proxy API'leri oluşturur.
+Hizmet örneği oluşturulduktan sonra, bir sonraki adım API'yi oluşturmaktır. Bir API, istemci uygulamasından çağrılabilen işlemler grubundan oluşur. API işlemleri mevcut web hizmetlerine taşınır. Bu kılavuz, varolan AzureML RRS ve BES web hizmetlerine proxy olan API'ler oluşturur.
 
 API oluşturmak için:
 
-1. Azure portal oluşturduğunuz hizmet örneğini açın.
-2. Sol gezinti bölmesinde **API 'ler**' i seçin.
+1. Azure portalında oluşturduğunuz hizmet örneğini açın.
+2. Sol gezinti bölmesinde **API'leri**seçin.
 
-   ![API yönetimi menüsü](./media/manage-web-service-endpoints-using-api-management/api-management.png)
+   ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
 
-1. **API Ekle**' ye tıklayın.
-2. Bir **Web API 'si adı** girin (Bu örnek, "AzureML tanıtım API 'si" kullanır).
-3. **Web hizmeti URL 'si**için "`https://ussouthcentral.services.azureml.net`" girin.
-4. Girin bir ** Web API URL'si soneki ". Bu, müşterilerin hizmeti örneğine (Bu örnekte "azureml-demo" kullanır) isteklerini göndermek için kullanacağı URL'yi son parçası olur.
-5. **Web API URL şeması**için **https**' yi seçin.
-6. **Ürünler**için **Starter**' ı seçin.
-7. **Kaydet** düğmesine tıklayın.
+1. **API Ekle'yi**tıklatın.
+2. Bir **Web API adı** girin (bu örnekte "AzureML Demo API" kullanır).
+3. **Web hizmeti URL'si**için , enter "`https://ussouthcentral.services.azureml.net`".
+4. **Web API URL soneki girin". Bu, müşterilerin hizmet örneğine istek göndermek için kullanacağı URL'nin son bölümü olur (bu örnekte "azureml-demo" kullanılır).
+5. **Web API URL düzeni**için **HTTPS'yi**seçin.
+6. **Ürünler**için **Başlangıç'ı**seçin.
+7. **Kaydet**'e tıklayın.
 
 
-## <a name="add-the-operations"></a>İşlem ekleme
+## <a name="add-the-operations"></a>İşlemleri ekleme
 
-İşlemleri eklenir ve bir API'ye yayımcı portalında yapılandırılır. Yayımcı portalına erişmek için API Management hizmetinizin Azure portal **Yayımcı portalı** ' na tıklayın, **API 'ler**, **işlemler**' i seçin ve sonra **İşlem Ekle**' ye tıklayın.
+İşlemler publisher portalındaki bir API'ye eklenir ve yapılandırılır. Yayımcı portalına erişmek için API Yönetimi hizmetiniz için Azure portalındaki **Publisher portalını** tıklatın, **API'leri**, **İşlemleri**seçin ve ardından **İşlem Ekle'yi**tıklatın.
 
 ![ekleme işlemi](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
-**Yeni işlem** penceresi görüntülenir ve **imza** sekmesi varsayılan olarak seçilir.
+**Yeni işlem** penceresi görüntülenir ve **İmza** sekmesi varsayılan olarak seçilir.
 
-## <a name="add-rrs-operation"></a>RRS işlem ekleme
-İlk AzureML RRS hizmeti için bir işlem oluşturun:
+## <a name="add-rrs-operation"></a>RRS İşlemi Ekle
+Önce AzureML RRS hizmeti için bir işlem oluşturun:
 
-1. **Http fiili**için **gönderi**' ı seçin.
-2. **URL şablonu**için "`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`" yazın.
-3. Bir **görünen ad** girin (Bu örnekte "RR yürütme" kullanılır).
+1. HTTP **fiili**için **POST'u**seçin.
+2. URL **şablonu**için`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`" yazın" yazın.
+3. Bir **Görüntü adı** girin (bu örnekte "RRS Execute" kullanır).
 
-   ![rrs-işlem-imza ekle](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
+   ![add-rrs-operasyon-imza](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-4. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-5. Bu işlemi kaydetmek için **Kaydet** ' e tıklayın.
+4. **Soldaki Yanıtlar** > **EKLE'ye** tıklayın ve **200 Ok'u**seçin.
+5. Bu işlemi kaydetmek için **Kaydet'i** tıklatın.
 
-   ![Ekle-rrs-işlem-yanıtı](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
+   ![add-rrs-operasyon-yanıt](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
-## <a name="add-bes-operations"></a>BES işlem ekleme
+## <a name="add-bes-operations"></a>BES İşlemleri Ekle
 
 > [!NOTE]
-> Çok benzer RRS işlemi ekleme olarak ekran görüntüleri burada BES işlemleri için dahil edilmez.
+> RRS işlemini eklemek için olanlara çok benzedikleri için ekran görüntüleri BES işlemleri için burada yer almaz.
 
-### <a name="submit-but-not-start-a-batch-execution-job"></a>Bir toplu işlem yürütme işi Gönder (ancak başlatma)
+### <a name="submit-but-not-start-a-batch-execution-job"></a>Toplu Yürütme işi gönderme (ancak başlatmama)
 
-1. API 'ye bir BES işlemi eklemek için **İşlem Ekle** ' ye tıklayın.
-2. **Http fiili**için **gönderi**' ı seçin.
-3. **URL şablonu**için "`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`" yazın.
-4. Bir **görünen ad** girin (Bu örnekte "bes gönder" kullanılır).
-5. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-6. **Kaydet** düğmesine tıklayın.
+1. API'ye BIR BES işlemi eklemek için **işlem ekle'yi** tıklatın.
+2. HTTP **fiili**için **POST'u**seçin.
+3. URL **şablonu**için`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`" yazın" yazın.
+4. Bir **Görüntü adı** girin (bu örnekte "BES Gönder" kullanır).
+5. **Soldaki Yanıtlar** > **EKLE'ye** tıklayın ve **200 Ok'u**seçin.
+6. **Kaydet**'e tıklayın.
 
-### <a name="start-a-batch-execution-job"></a>Toplu işlem yürütme işi başlatma
+### <a name="start-a-batch-execution-job"></a>Toplu Yürütme işini başlatma
 
-1. API 'ye bir BES işlemi eklemek için **İşlem Ekle** ' ye tıklayın.
-2. **Http fiili**için **gönderi**' ı seçin.
-3. **Http fiili**için "`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`" yazın.
-4. Bir **görünen ad** girin (Bu örnekte "bes Start" kullanılır).
-6. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-7. **Kaydet** düğmesine tıklayın.
+1. API'ye BIR BES işlemi eklemek için **işlem ekle'yi** tıklatın.
+2. HTTP **fiili**için **POST'u**seçin.
+3. HTTP **fiili**için ,`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`type " ".
+4. Bir **Görüntü adı** girin (bu örnekte "BES Start" kullanır).
+6. **Soldaki Yanıtlar** > **EKLE'ye** tıklayın ve **200 Ok'u**seçin.
+7. **Kaydet**'e tıklayın.
 
-### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>Durum ya da bir toplu iş yürütmeye ilişkin iş sonucunu Al
+### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>Toplu Yürütme işinin durumunu veya sonucunu alma
 
-1. API 'ye bir BES işlemi eklemek için **İşlem Ekle** ' ye tıklayın.
-2. **Http fiili**için **Al**' ı seçin.
-3. **URL şablonu**için "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`" yazın.
-4. Bir **görünen ad** girin (Bu örnekte "bes durumu" kullanılır).
-6. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-7. **Kaydet** düğmesine tıklayın.
+1. API'ye BIR BES işlemi eklemek için **işlem ekle'yi** tıklatın.
+2. HTTP **fiili**için **GET'i**seçin.
+3. URL **şablonu**için`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`" yazın" yazın.
+4. Bir **Görüntü adı** girin (bu örnekte "BES Durumu" kullanır).
+6. **Soldaki Yanıtlar** > **EKLE'ye** tıklayın ve **200 Ok'u**seçin.
+7. **Kaydet**'e tıklayın.
 
-### <a name="delete-a-batch-execution-job"></a>Bir toplu iş yürütme işini sil
+### <a name="delete-a-batch-execution-job"></a>Toplu Yürütme işini silme
 
-1. API 'ye bir BES işlemi eklemek için **İşlem Ekle** ' ye tıklayın.
-2. **Http fiili**için **Sil**' i seçin.
-3. **URL şablonu**için "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`" yazın.
-4. Bir **görünen ad** girin (Bu örnekte "bes Delete" kullanılır).
-5. Sola **ekle** > **yanıtlar** ' a tıklayın ve **200 Tamam**' ı seçin.
-6. **Kaydet** düğmesine tıklayın.
+1. API'ye BIR BES işlemi eklemek için **işlem ekle'yi** tıklatın.
+2. HTTP **fiili için** **DELETE'i**seçin.
+3. URL **şablonu**için`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`" yazın" yazın.
+4. Bir **Görüntü adı** girin (bu örnekte "BES Delete") bulunur.
+5. **Soldaki Yanıtlar** > **EKLE'ye** tıklayın ve **200 Ok'u**seçin.
+6. **Kaydet**'e tıklayın.
 
-## <a name="call-an-operation-from-the-developer-portal"></a>Geliştirici portalından işlem çağırma
+## <a name="call-an-operation-from-the-developer-portal"></a>Geliştirici portalından bir işlem çağrısı
 
-İşlemler görüntülemek ve bir API'nin işlemlerini test etmek için kullanışlı bir yol sağlayan doğrudan Geliştirici portalından çağrılabilir. Bu adımda, **AzureML demo TANıTıM API**'Sine eklenen **RR yürütme** yöntemini çağıracaksınız. 
+İşlemler, bir API'nin işlemlerini görüntülemek ve test etmek için uygun bir yol sağlayan Geliştirici portalından doğrudan çağrılabilir. Bu adımda, **AzureML Demo API'sine**eklenen **RRS Yürütme** yöntemini çağırırsınız. 
 
-1. **Geliştirici Portalı**' na tıklayın.
+1. **Geliştirici portalına**tıklayın.
 
-   ![Geliştirici Portalı](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
+   ![geliştirici portalı](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
-2. Üst menüden **API 'ler** ' e tıklayın ve ardından mevcut işlemleri görmek Için **AzureML demo tanıtım API 'si** ' ne tıklayın.
+2. Üst menüden **API'leri** tıklatın ve ardından kullanılabilir işlemleri görmek için **AzureML Demo API'sini** tıklatın.
 
    ![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
-3. İşlem için **RR yürütme** ' yi seçin. **Dene**'ye tıklayın.
+3. İşlem için **RRS Execute'ı** seçin. **Deneyin'e**tıklayın.
 
-   ![BT deneyin](./media/manage-web-service-endpoints-using-api-management/try-it.png)
+   ![deneyin-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. **İstek parametreleri**için, **çalışma alanınızı** ve **hizmetinizi**yazın, " **apiversion**için 2,0" ve **Ayrıntılar**için "true" yazın. **Çalışma alanınızı** ve **hizmetinizi** AzureML Web hizmeti panosunda bulabilirsiniz (bkz. Ek A 'da **Web hizmetini test** etme).
+4. **İstek parametreleri**için, **çalışma alanınızı** ve **hizmetinizi**yazın, **"apiversion**için 2.0" yazın ve **ayrıntılar**için "doğru" yazın. **Çalışma alanınızı** ve **hizmetinizi** AzureML web hizmeti panosunda bulabilirsiniz (bkz. Ek A'daki **web hizmetini test edin).**
 
-   **İstek üstbilgileri**için **üst bilgi Ekle** ' ye tıklayın ve "Content-Type" ve "Application/JSON" yazın. **Üst bilgi Ekle** ' ye tıklayın ve "yetkilendirme" ve "taşıyıcı *\<HIZMET API-Key\>* " yazın. API ANAHTARıNıZı AzureML Web hizmeti panosunda bulabilirsiniz (bkz. Ek A 'da **Web hizmetini test** etme).
+   **İstek üstbilgisi**için **üstbilgi ekle'yi** tıklatın ve "İçerik Türü" ve "uygulama/json" yazın. **Üstbilgi** yeniden ekle'yi tıklatın ve "Yetkilendirme" ve * \<"Hizmet\>API-KEY'inizi*taşıyan" yazın. API-KEY'inizi AzureML web hizmeti panosunda bulabilirsiniz (bkz. Ek A'daki **web hizmetini test edin).**
 
-   **İstek gövdesi**için `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`yazın.
+   **İstek gövdesi**için `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`, yazın.
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. **Gönder**' e tıklayın.
+5. **Gönder**’e tıklayın.
 
-   ![Gönder](./media/manage-web-service-endpoints-using-api-management/send.png)
+   ![gönderme](./media/manage-web-service-endpoints-using-api-management/send.png)
 
-Bir işlem çağrıldıktan sonra, geliştirici portalı, **Istenen URL** 'yi arka uç hizmetinden, **Yanıt durumuyla**, **Yanıt başlıklarından**ve **Yanıt içeriğiyle**görüntüler.
+Bir işlem çağrıldıktan sonra, geliştirici portalı arka uç hizmetinden **Istenen URL'yi,** Yanıt **durumunu,** Yanıt **üstbilgisini**ve yanıt **içeriğini**görüntüler.
 
 ![yanıt durumu](./media/manage-web-service-endpoints-using-api-management/response-status.png)
 
-## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Ek A - oluşturma ve sınama basit AzureML web hizmeti
-### <a name="creating-the-experiment"></a>Deneme oluşturma
-Aşağıda basit bir AzureML deneme oluşturma ve bir web hizmeti olarak dağıtma adımları verilmiştir. Rastgele metin sütunu giriş ve bir tamsayı olarak temsil edilen bir özellik kümesi döndürür web hizmeti alır. Örnek:
+## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Ek A - Basit bir AzureML web hizmeti oluşturma ve test etme
+### <a name="creating-the-experiment"></a>Denemeoluşturma
+Aşağıda basit bir AzureML denemesi oluşturma ve web hizmeti olarak dağıtma adımları verilmiştir. Web hizmeti rasgele metin sütunu olarak alır ve tamsayılar olarak temsil edilen bir dizi özellik döndürür. Örnek:
 
-| Metin | Karma metin |
+| Metin | Haşdi Metin |
 | --- | --- |
-| Bu iyi bir günüdür |1 1 2 2 0 2 0 1 |
+| Bugün güzel bir gün. |1 1 2 2 0 2 0 1 |
 
-İlk olarak, seçtiğiniz bir tarayıcıyı kullanarak şuraya gidin: [https://studio.azureml.net/](https://studio.azureml.net/) ve oturum açmak için kimlik bilgilerinizi girin. Ardından, yeni bir boş deneme oluşturun.
+İlk olarak, seçtiğiniz bir tarayıcıyı [https://studio.azureml.net/](https://studio.azureml.net/) kullanarak şu adresine gidin: ve oturum açmak için kimlik bilgilerinizi girin. Ardından, yeni bir boş deneme oluşturun.
 
-![Arama deneme şablonları](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
+![arama-deneme şablonları](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
-**Simplefeaturehashingdeneme**olarak yeniden adlandırın. **Kayıtlı veri kümelerini** genişletin ve **kitap incelemelerini Amazon 'ten** denemenize sürükleyin.
+**SimpleFeatureHashingExperiment**olarak yeniden adlandırın. **Kaydedilen Veri Kümelerini** genişletin ve **Amazon'daki Kitap İncelemelerini** denemenize sürükleyin.
 
-![Basit-özellik-karma-deneme](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
+![basit özellik-karma-deney](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
-**Veri dönüştürme** ve **düzenleme** ' yi genişletin ve veri **kümesindeki sütunları seçme** denemenize sürükleyin. **Veri kümesindeki sütunları seçmek**için **Amazon 'tan kitap incelemelerini** bağlayın.
+**Veri Dönüşümü** ve **Düzenlemeyi** genişletin ve **Dataset'teki Select Sütunlarını** denemenize sürükleyin. **Kitap Yorumlarını Amazon'dan** **Veri Kümesi'ndeki Sütunları Seçin'e**bağlayın.
 
-![Kitap İnceleme veri kümesi modülünü bir proje sütunları modülüne bağlama](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![Kitap incelemeleri veri seti modülünü Proje Sütunları modülüne bağlama](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
-**Veri kümesinde sütunları seç** ' e tıklayın ve ardından **sütun seçiciyi Başlat** ' a tıklayıp **col2**' ı seçin Bu değişiklikleri uygulamak için onay işaretine tıklayın.
+**Dataset'te Sütunları Seç'i** tıklatın ve ardından **Sütun Seçici'yi Başlat'ı** tıklatın ve **Col2'yi**seçin. Bu değişiklikleri uygulamak için onay işaretini tıklatın.
 
 ![Sütun adlarını kullanarak sütunları seçme](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
-**Metin analizi** genişletin ve **özellik karma** ' i deneme üzerine sürükleyin. **Veri kümesindeki sütunları seçme** **özelliğini karma Özellik**olarak bağlayın.
+**Metin Analizini** genişletin ve **Özellik Karmasını** denemenin üzerine sürükleyin. Karma özelliğine **veri kümesindeki Sütunları Seç'i** bağlayın. **Feature Hashing**
 
-![bağlanma-project-sütunları](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
+![connect-project-columns](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
-**Karma bit boyutu**için **3** yazın. Bu 8 (23) oluşturacak sütun.
+**Hashing bitboyutu** **için** 3 yazın. Bu, 8 (23) sütun oluşturur.
 
-![karma bitsize](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
+![karma-bit boyutu](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
-Bu noktada, denemeyi test etmek için **Çalıştır** ' ı tıklatın.
+Bu noktada, denemeyi sınamak için **Çalıştır'ı** tıklatmak isteyebilirsiniz.
 
-![Çalıştırma](./media/manage-web-service-endpoints-using-api-management/run.png)
+![Çalıştırmak](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Web hizmeti oluşturma
-Artık bir web hizmeti oluşturun. **Web hizmeti** 'ni genişletin ve **giriş** denemeniz üzerine sürükleyin. **Girişi** **özellik karmaya**bağlayın. Ayrıca, **çıktıyı** denemenize sürükleyin. **Çıktıyı** **özellik karma**'e bağlayın.
+Şimdi bir web hizmeti oluşturun. **Web Hizmeti'ni** genişletin ve **Girişi** denemenize sürükleyin. **Girişi** **Özellik Karmasına**Bağlayın. Ayrıca **çıktıyı** denemenize sürükleyin. **Çıkışı** **Özellik Karmasına**Bağlayın.
 
-![Çıkış-için-özellik-karma](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
+![çıkış-to-özellik-karma](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
-**Web hizmeti Yayımla**' ya tıklayın.
+**Web hizmetini yayımla'yı**tıklatın.
 
-![Yayımlama-web hizmeti](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
+![publish-web-service](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
-Denemeyi yayımlamak için **Evet** ' i tıklatın.
+Denemeyi yayınlamak için **Evet'i** tıklatın.
 
-![Evet-yayımlama](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
+![evet-to-yayın](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
-### <a name="test-the-web-service"></a>Web hizmetini test edin
-Bir AzureML web hizmeti, RSS (istek/yanıt hizmeti) ve BES (toplu yürütme hizmeti) uç noktalar oluşur. RSS, zaman uyumlu yürütme için ' dir. BES için zaman uyumsuz iş yürütme ' dir. Web hizmetinizi aşağıdaki örnek Python kaynağıyla test etmek için Python için Azure SDK 'sını indirip yüklemeniz gerekebilir (bkz: [Python nasıl yüklenir](/azure/python/python-sdk-azure-install)).
+### <a name="test-the-web-service"></a>Web hizmetini test etme
+AzureML web hizmeti RSS (istek/yanıt hizmeti) ve BES (toplu yürütme hizmeti) uç noktalarından oluşur. RSS senkron infaz içindir. BES, eşzamanlı iş yürütme içindir. Web hizmetinizi aşağıdaki örnek Python kaynağıyla test etmek için Python için Azure SDK'sını indirmeniz ve yüklemeniz gerekebilir (bkz. [Python nasıl yüklenir).](/azure/python/python-sdk-azure-install)
 
-Ayrıca, aşağıdaki örnek kaynağa yönelik denemenizin **çalışma alanı**, **hizmet**ve **api_key** olması gerekir. Web hizmeti panosunda denemeniz için **istek/yanıt** veya **toplu yürütme** ' ya tıklayarak çalışma alanını ve hizmeti bulabilirsiniz.
+Ayrıca aşağıdaki örnek kaynak için denemeçalışma **alanı,** **hizmet**ve **api_key** gerekir. Web hizmeti panosundaki denemeniz için **İstek/Yanıt** veya **Toplu Yürütme'yi** tıklatarak çalışma alanını ve hizmeti bulabilirsiniz.
 
-![Bul çalışma ve-hizmet](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
+![bul-çalışma alanı ve hizmet](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
-Web hizmeti panosunda denemenize tıklayarak **api_key** bulabilirsiniz.
+**Denemenizi** web hizmeti panosunda tıklayarak api_key bulabilirsiniz.
 
-![bulma API anahtarı](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
+![bul-api-anahtar](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
-#### <a name="test-rrs-endpoint"></a>Test RRS uç noktası
+#### <a name="test-rrs-endpoint"></a>TEST RRS bitiş noktası
 ##### <a name="test-button"></a>Test düğmesi
-RR uç noktasını test etmenin kolay bir yolu, Web hizmeti panosunda **Test** ' e tıklamanız.
+RRS bitiş noktasını test etmenin kolay bir yolu, web hizmeti panosunda **Test'i** tıklatmaktır.
 
 ![test](./media/manage-web-service-endpoints-using-api-management/test.png)
 
-Bu, **col2**için **iyi bir gün** yazın. Onay işaretine tıklayın.
+Yazın Bu **col2**için **iyi bir gün.** Onay işaretini tıklatın.
 
-![verileri girin](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
+![veri girin](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
-Benzer bir şey görürsünüz
+Böyle bir şey göreceksiniz
 
 ![örnek çıktı](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
 ##### <a name="sample-code"></a>Örnek Kod
-RRS, test etmek için başka bir istemci kodunuz içinden yoludur. Panoda **istek/yanıt** ' a tıklayıp en alta kaydırırsanız, Python ve R için C#örnek kod görürsünüz. Ayrıca, istek URI 'SI, üst bilgiler ve gövde dahil olmak üzere RR isteğinin söz dizimini görürsünüz.
+RRS'nizi test etmenin başka bir yolu da istemci kodunuzdur. Panoda **İstek/yanıt'ı** tıklatıp en altına kaydırırsanız, C#, Python ve R için örnek kod görürsünüz. Ayrıca, uri isteği, üstbilgi ve gövde de dahil olmak üzere RRS isteğinin sözdizimini de görürsünüz.
 
-Bu kılavuz, çalışan bir Python örnek gösterir. Denemeniz için **çalışma alanı**, **hizmet**ve **api_key** değiştirmeniz gerekir.
+Bu kılavuz, çalışan bir Python örneğini gösterir. Çalışma **alanı,** **hizmet**ve denemenizin **api_key** ile değiştirmeniz gerekir.
 
     import urllib2
     import json
@@ -273,10 +273,10 @@ Bu kılavuz, çalışan bir Python örnek gösterir. Denemeniz için **çalışm
         print(error.info())
         print(json.loads(error.read()))
 
-#### <a name="test-bes-endpoint"></a>Test BES uç noktası
-Panoda **toplu yürütme** ' ye tıklayın ve en alta kaydırın. Örnek kod için göreceğiniz C#, Python ve R'dir BES istekler bir iş gönderdiniz, bir işi başlatmak, durumu veya bir iş sonuçlarını almak ve bir işi silmek için söz dizimi de görürsünüz.
+#### <a name="test-bes-endpoint"></a>TEST BES bitiş noktası
+Panoda **Toplu Yürütme'yi** tıklatın ve en alta doğru ilerleyin. C#, Python ve R için örnek kodu görürsünüz. Ayrıca, BES'in iş gönderme, iş başlatma, bir işin durumunu veya sonuçlarını alma ve bir işi silme isteklerinin sözdizimini de görürsünüz.
 
-Bu kılavuz, çalışan bir Python örnek gösterir. Denemeniz için **çalışma alanı**, **hizmet**ve **api_key** değiştirmeniz gerekir. Ayrıca, **depolama hesabı adını**, **depolama hesabı anahtarını**ve **depolama kapsayıcısı adını**değiştirmeniz gerekir. Son olarak, **giriş dosyasının** konumunu ve **çıkış dosyasının**konumunu değiştirmeniz gerekecektir.
+Bu kılavuz, çalışan bir Python örneğini gösterir. Denemenizin **çalışma alanı,** **hizmet**ve **api_key** ile değiştirmeniz gerekir. Ayrıca, **depolama hesabı adını,** depolama **hesabı anahtarını**ve **depolama kapsayıcı adını**değiştirmeniz gerekir. Son olarak, **giriş dosyasının** konumunu ve **çıktı dosyasının**konumunu değiştirmeniz gerekir.
 
     import urllib2
     import json

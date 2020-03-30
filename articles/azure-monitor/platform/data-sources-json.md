@@ -1,34 +1,34 @@
 ---
-title: Azure Izleyici 'de özel JSON verileri toplama | Microsoft Docs
-description: Özel JSON veri kaynakları, Linux için Log Analytics Aracısı kullanılarak Azure Izleyici 'ye toplanabilir.  Bu özel veri kaynakları, bir dizi gibi JSON döndüren basit betikler veya Floentıd 'nin 300 + eklentilerinden biridir. Bu makalede, bu veri koleksiyonu için gereken yapılandırma açıklanmaktadır.
+title: Azure Monitör'de özel JSON verileri toplama | Microsoft Dokümanlar
+description: Özel JSON veri kaynakları, Linux için Log Analytics Agent kullanılarak Azure Monitor'da toplanabilir.  Bu özel veri kaynakları, curl veya FluentD'nin 300+ eklentisi gibi JSON'ı döndüren basit komut dosyaları olabilir. Bu makalede, bu veri toplama için gerekli yapılandırma açıklanır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77662170"
 ---
-# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Izleyici 'de Linux için Log Analytics Aracısı ile özel JSON veri kaynakları toplama
+# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Monitor'da Linux için Log Analytics aracısıyla özel JSON veri kaynakları toplama
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Özel JSON veri kaynakları, Linux için Log Analytics Aracısı kullanılarak [Azure izleyici](data-platform.md) 'ye toplanabilir.  Bu özel veri kaynakları, bir dizi gibi JSON döndüren basit betikler [veya](https://curl.haxx.se/) [floentıd 'nin 300 + eklentilerinden](https://www.fluentd.org/plugins/all)biridir. Bu makalede, bu veri koleksiyonu için gereken yapılandırma açıklanmaktadır.
+Özel JSON veri kaynakları, Linux için Log Analytics aracısı kullanılarak [Azure Monitor'da](data-platform.md) toplanabilir.  Bu özel veri [kaynakları, curl](https://curl.haxx.se/) veya [FluentD'nin 300+ eklentilerinden](https://www.fluentd.org/plugins/all)biri gibi JSON'u döndüren basit komut dosyaları olabilir. Bu makalede, bu veri toplama için gerekli yapılandırma açıklanır.
 
 
 > [!NOTE]
-> Özel JSON verileri için Log Analytics Agent for Linux v 1.1.0-TII + gereklidir
+> Linux v1.1.0-217+ için Log Analytics aracısı Özel JSON Verileri için gereklidir
 
 ## <a name="configuration"></a>Yapılandırma
 
 ### <a name="configure-input-plugin"></a>Giriş eklentisini yapılandırma
 
-Azure Izleyici 'de JSON verileri toplamak için giriş eklentisindeki bir Floentd etiketinin başlangıcına `oms.api.` ekleyin.
+Azure Monitor'da JSON verilerini `oms.api.` toplamak için, giriş eklentisine Bir FluentD etiketinin başlangıcına ekleyin.
 
-Örneğin, aşağıdaki `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`ayrı bir yapılandırma dosyası `exec-json.conf`.  Bu, her 30 saniyede bir kıvrımlı komutu çalıştırmak için Floentd eklentisini `exec` kullanır.  Bu komutun çıktısı, JSON çıktı eklentisi tarafından toplanır.
+Örneğin, aşağıdaki `exec-json.conf` `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`ayrı bir yapılandırma dosyası.  Bu, her 30 saniyede `exec` bir kıvrılma komutunu çalıştırmak için FluentD eklentisini kullanır.  Bu komutun çıktısı JSON çıkış eklentisi tarafından toplanır.
 
 ```
 <source>
@@ -52,12 +52,12 @@ Azure Izleyici 'de JSON verileri toplamak için giriş eklentisindeki bir Floent
   retry_wait 30s
 </match>
 ```
-`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` altına eklenen yapılandırma dosyası, aşağıdaki komutla onun sahipliğinin değiştirilmesini gerektirir.
+Altında `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` eklenen yapılandırma dosyasının sahipliğinin aşağıdaki komutla değiştirilmesi gerekir.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
-### <a name="configure-output-plugin"></a>Çıkış eklentisini yapılandırma 
-Aşağıdaki çıkış eklentisi yapılandırmasını `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` ' deki ana yapılandırmaya veya `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` yerleştirilmiş ayrı bir yapılandırma dosyası olarak ekleyin
+### <a name="configure-output-plugin"></a>Çıktı eklentisini yapılandırma 
+Aşağıdaki çıktı eklentisi yapılandırmasını ana `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` yapılandırmaya veya ayrı bir yapılandırma dosyasına yerleştirilen`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -74,19 +74,19 @@ Aşağıdaki çıkış eklentisi yapılandırmasını `/etc/opt/microsoft/omsage
 </match>
 ```
 
-### <a name="restart-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısını yeniden başlatma
+### <a name="restart-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracıyı yeniden başlatın
 Linux hizmeti için Log Analytics aracısını aşağıdaki komutla yeniden başlatın.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Çıktı
-Veriler Azure Izleyici 'de `<FLUENTD_TAG>_CL`kayıt türüyle toplanacaktır.
+Veriler Azure Monitor'da kayda uygun bir `<FLUENTD_TAG>_CL`..
 
-Örneğin, özel etiket Azure Izleyici 'de `tomcat_CL`kayıt türüyle `tag oms.api.tomcat`.  Bu türün tüm kayıtlarını aşağıdaki günlük sorgusuyla alabilirsiniz.
+Örneğin, Azure Monitor'da kayıt türüne `tag oms.api.tomcat` `tomcat_CL`sahip özel etiket .  Aşağıdaki günlük sorgusu ile bu tür tüm kayıtları alabilirsiniz.
 
     Type=tomcat_CL
 
-İç içe geçmiş JSON veri kaynakları desteklenir, ancak üst alanı temel alan dizine alınır. Örneğin, aşağıdaki JSON verileri `tag_s : "[{ "a":"1", "b":"2" }]`olarak bir günlük sorgusundan döndürülür.
+İç içe json veri kaynakları desteklenir, ancak ana alanın dışında dizine alınır. Örneğin, aşağıdaki JSON verileri günlük sorgusundan `tag_s : "[{ "a":"1", "b":"2" }]`.
 
 ```
 {

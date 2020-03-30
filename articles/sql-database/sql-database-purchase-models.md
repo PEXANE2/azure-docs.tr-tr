@@ -1,6 +1,6 @@
 ---
 title: Satın alma modelleri
-description: Azure SQL veritabanı için kullanılabilen satın alma modelleri hakkında bilgi edinin.
+description: Azure SQL Veritabanı için kullanılabilen satın alma modelleri hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,31 +12,31 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/09/2020
 ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255996"
 ---
-# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>VCore ve DTU satın alma modelleri arasında seçim yapın
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>vCore ve DTU satın alma modelleri arasında seçim yapın
 
-Azure SQL veritabanı, tam olarak yönetilen bir hizmet olarak SDK (PaaS) veritabanı altyapısını, performans ve maliyet gereksinimlerinize uyacak şekilde kolayca satın almanıza olanak tanır. Azure SQL veritabanı için seçtiğiniz dağıtım modeline bağlı olarak, sizin için uygun olan satın alma modelini seçebilirsiniz:
+Azure SQL Veritabanı, performans ve maliyet gereksinimlerinize uygun hizmet (PaaS) veritabanı altyapısı olarak tam olarak yönetilen bir platformu kolayca satın almanızı sağlar. Azure SQL Veritabanı için seçtiğiniz dağıtım modeline bağlı olarak, sizin için uygun satın alma modelini seçebilirsiniz:
 
-- [Sanal çekirdek (vCore) tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) (önerilir). Bu satın alma modeli, sağlanan bir işlem katmanı ve sunucusuz bir işlem katmanı arasında seçim sağlar. Sağlanan işlem katmanıyla birlikte, iş yükünüz için her zaman sağlanan işlem kaynaklarının tam miktarını seçin. Sunucusuz bilgi işlem katmanı ile, işlem kaynaklarını yapılandırılabilir bir işlem aralığı üzerinden otomatik ölçeklendirmeyi belirtirsiniz. Bu işlem katmanıyla birlikte, iş yükü etkinliğine göre veritabanını otomatik olarak duraklatabilir ve devam ettirebilirsiniz. Birim başına sanal çekirdek birim fiyatı, sağlanan işlem katmanında sunucusuz işlem katmanında olduğundan daha düşüktür.
-- [Veritabanı işlem birimi (DTU) tabanlı satın alma modeli](sql-database-service-tiers-dtu.md). Bu satın alma modeli, ortak iş yükleri için dengeli işlem ve depolama paketleri sağlar.
+- [Sanal çekirdek (vCore) tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) (önerilir). Bu satın alma modeli, sağlanan bir bilgi işlem katmanı ile sunucusuz bir bilgi işlem katmanı arasında bir seçim sağlar. Sağlanan işlem katmanıyla, iş yükünüz için her zaman sağlanan tam işlem kaynakları miktarını seçersiniz. Sunucusuz bilgi işlem katmanıyla, yapılandırılabilir bir işlem aralığı üzerinde bilgi işlem kaynaklarının otomatik olarak otomatikleştirini belirtirsiniz. Bu işlem katmanı yla, iş yükü etkinliğine bağlı olarak veritabanını otomatik olarak duraklatabilir ve devam ettirebilirsiniz. VCore birim zaman birimi başına fiyat, sağlanan işlem katmanında sunucusuz bilgi işlem katmanındakinden daha düşüktür.
+- [Veritabanı işlem birimi (DTU) tabanlı satın alma modeli.](sql-database-service-tiers-dtu.md) Bu satın alma modeli, ortak iş yükleri için dengeli paketlenmiş işlem ve depolama paketleri sağlar.
 
-Farklı Azure SQL veritabanı dağıtım modelleri için farklı satın alma modelleri mevcuttur:
+Farklı Azure SQL Veritabanı dağıtım modelleri için farklı satın alma modelleri mevcuttur:
 
-- [Azure SQL veritabanı](sql-database-technical-overview.md) 'ndaki [tek veritabanı](sql-database-single-databases-manage.md) ve [elastik havuz](sql-database-elastic-pool.md) dağıtım seçenekleri, [DTU tabanlı satın alma modeli](sql-database-service-tiers-dtu.md) ve [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md)sunar.
-- Azure SQL veritabanı 'ndaki [yönetilen örnek](sql-database-managed-instance.md) dağıtım seçeneği yalnızca [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md)sunar.
-- [Hiper ölçek hizmeti katmanı](sql-database-service-tier-hyperscale.md) , [sanal çekirdek tabanlı satın alma modelini](sql-database-service-tiers-vcore.md)kullanan tek veritabanları için kullanılabilir.
+- [Azure SQL Veritabanı'ndaki](sql-database-technical-overview.md) [tek veritabanı](sql-database-single-databases-manage.md) ve [esnek havuz](sql-database-elastic-pool.md) dağıtım seçenekleri hem [DTU tabanlı satın alma modelini](sql-database-service-tiers-dtu.md) hem de [vCore tabanlı satın alma modelini](sql-database-service-tiers-vcore.md)sunar.
+- Azure SQL Veritabanı'nda [yönetilen örnek](sql-database-managed-instance.md) dağıtım seçeneği yalnızca [vCore tabanlı satın alma modelini](sql-database-service-tiers-vcore.md)sunar.
+- [Hyperscale hizmet katmanı](sql-database-service-tier-hyperscale.md) [vCore tabanlı satın alma modelini](sql-database-service-tiers-vcore.md)kullanan tek veritabanları için kullanılabilir.
 
-Aşağıdaki tablo ve grafik, sanal çekirdek tabanlı ve DTU tabanlı satın alma modellerini karşılaştırın ve kontrast vardır:
+Aşağıdaki tablo ve grafik, vCore tabanlı ve DTU tabanlı satın alma modellerini karşılaştırın ve karşılaştırın:
 
-|**Satın alma modeli**|**Açıklama**|**En iyisi**|
+|**Satınalma modeli**|**Açıklama**|**En iyisi**|
 |---|---|---|
-|DTU tabanlı model|Bu model, işlem, depolama ve g/ç kaynaklarının paketlenmiş bir ölçüsünü temel alır. İşlem boyutları, tek veritabanları ve elastik havuzlar için elastik veritabanı işlem birimleri (eDTU 'Lar) için DTU 'lar halinde ifade edilir. DTU 'lar ve eDTU 'lar hakkında daha fazla bilgi için bkz. [DTU ve eDTU nedir?](sql-database-purchase-models.md#dtu-based-purchasing-model).|Basit, önceden yapılandırılmış kaynak seçenekleri isteyen müşteriler için en iyi seçenektir.|
-|vCore tabanlı model|Bu model, işlem ve depolama kaynaklarını bağımsız olarak seçmenizi sağlar. Sanal çekirdek tabanlı satın alma modeli, maliyet tasarrufu kazanmak için [SQL Server Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) kullanmanıza da olanak tanır.|Esneklik, denetim ve saydamlık değeri olan müşteriler için en iyi seçenektir.|
+|DTU tabanlı model|Bu model, birlikte paketlenmiş bir işlem, depolama ve G/Ç kaynaklarına dayanır. İşlem boyutları tek veritabanları için DUS'larda ve elastik havuzlar için elastik veritabanı işlem birimlerinde (elastik veri tabanı işlem birimleri) ifade edilir. DTUs ve eDTUs hakkında daha fazla bilgi için [bkz.](sql-database-purchase-models.md#dtu-based-purchasing-model)|Basit, önceden yapılandırılmış kaynak seçenekleri isteyen müşteriler için en iyisi.|
+|vCore tabanlı model|Bu model, işlem ve depolama kaynaklarını bağımsız olarak seçmenize olanak tanır. vCore tabanlı satın alma modeli, maliyet tasarrufu elde etmek [için SQL Server için Azure Karma Avantajı'nı](https://azure.microsoft.com/pricing/hybrid-benefit/) kullanmanıza da olanak tanır.|Esnekliğe, denetime ve saydamlığa değer veren müşteriler için en iyisi.|
 ||||  
 
 ![fiyatlandırma modeli karşılaştırması](./media/sql-database-service-tiers/pricing-model.png)
@@ -45,134 +45,134 @@ Aşağıdaki tablo ve grafik, sanal çekirdek tabanlı ve DTU tabanlı satın al
 
 ### <a name="provisioned-compute-costs"></a>Sağlanan işlem maliyetleri
 
-Sağlanan işlem katmanında, işlem maliyeti, uygulama için sağlanan toplam işlem kapasitesini yansıtır.
+Sağlanan işlem katmanında, işlem maliyeti uygulama için sağlanan toplam işlem kapasitesini yansıtır.
 
-İş Açısından Kritik hizmet katmanında, otomatik olarak en az 3 çoğaltma ayırdık. Bu ek işlem kaynakları ayırmasını yansıtmak için, sanal çekirdek tabanlı satın alma modelindeki fiyat İş Açısından Kritik hizmet katmanında yaklaşık 2.7 x Genel Amaçlı hizmet katmanında olduğundan daha yüksektir. Benzer şekilde, İş Açısından Kritik hizmet katmanındaki GB başına daha yüksek depolama fiyatı, SSD depolamanın daha yüksek GÇ sınırlarını ve düşük gecikme süresini yansıtır.
+Business Critical hizmet katmanında, en az 3 yinelemeyi otomatik olarak ayırırız. Bilgi işlem kaynaklarının bu ek tahsisini yansıtmak için, vCore tabanlı satın alma modelindeki fiyat, Business Critical hizmet katmanında Genel Amaçlı hizmet katmanındakinden yaklaşık 2,7 kat daha yüksektir. Aynı şekilde, Business Critical hizmet katmanındaki GB başına daha yüksek depolama fiyatı, Daha yüksek IO limitlerini ve SSD depolama alanının daha düşük gecikme süresini yansıtır.
 
-Her iki katman de yedeklemeler için standart depolama kullandığından, yedekleme depolama alanı İş Açısından Kritik hizmet katmanı ve Genel Amaçlı hizmet katmanı için aynıdır.
+Her iki katman da yedeklemeler için standart depolama alanı kullandığından, yedekleme depolama maliyeti İş Açısından Kritik hizmet katmanı ve Genel Amaçlı hizmet katmanı için aynıdır.
 
 ### <a name="serverless-compute-costs"></a>Sunucusuz işlem maliyetleri
 
-İşlem kapasitesinin nasıl tanımlandığı ve maliyetlerin sunucusuz bilgi işlem katmanı için nasıl hesaplandığı hakkında bir açıklama için bkz. [SQL veritabanı sunucusuz](sql-database-serverless.md).
+İşlem kapasitesinin nasıl tanımlandığı ve maliyetlerin sunucusuz bilgi işlem katmanı için nasıl hesaplandığı hakkında açıklama [için](sql-database-serverless.md)bkz.
 
 ## <a name="storage-costs"></a>Depolama maliyetleri
 
-Farklı depolama türleri farklı şekilde faturalandırılır. Veri depolama için, seçtiğiniz en fazla veritabanı veya havuz boyutuna bağlı olarak sağlanan depolama alanı için ücret ödersiniz. Bu maksimum değeri azaltmadığınız veya artıramadığınız takdirde maliyet değişmez. Yedekleme depolaması, örneğinizin otomatikleştirilmiş yedeklemeleriyle ilişkilidir ve dinamik olarak ayrılır. Yedeklemenizi artırma-saklama süresi, örneğiniz tarafından tüketilen yedekleme depolama alanını arttırır.
+Farklı depolama türleri farklı şekilde faturalandırılır. Veri depolama için, seçtiğiniz maksimum veritabanı veya havuz boyutuna bağlı olarak sağlanan depolama için ücretlendirilirsiniz. Bu maksimumu azaltmadığınız veya artırmadığınız sürece maliyet değişmez. Yedekleme depolama örneğinizin otomatik yedeklemeleri ile ilişkilidir ve dinamik olarak tahsis edilir. Yedekleme bekletme sürenizi artırmak, örneğiniz tarafından tüketilen yedekleme depolama alanını artırır.
 
-Varsayılan olarak, veritabanlarınızın 7 günlük otomatik yedeklemeleri, Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) standart BLOB depolama hesabına kopyalanır. Bu depolama, haftalık tam yedeklemeler, günlük değişiklik yedeklemeleri ve 5 dakikada bir kopyalanmış olan işlem günlüğü yedeklemeleri tarafından kullanılır. İşlem günlüklerinin boyutu, veritabanının değişim hızına bağlıdır. Veritabanı boyutunun yüzde 100 ' una eşit olan minimum depolama miktarı, ek ücret ödemeden sağlanır. Yedek depolamanın ek tüketimi ayda GB olarak ücretlendirilir.
+Varsayılan olarak, veritabanlarınızın 7 günlük otomatik yedeklemeleri okuma erişimi coğrafi yedekdepolama (RA-GRS) standart Blob depolama hesabına kopyalanır. Bu depolama, haftalık tam yedeklemeler, günlük diferansiyel yedeklemeler ve her 5 dakikada bir kopyalanan işlem günlüğü yedekleri tarafından kullanılır. Hareket günlüklerinin boyutu veritabanının değişim hızına bağlıdır. Veritabanı boyutunun yüzde 100'üne eşit minimum depolama miktarı ek ücret ödemeden sağlanır. Ek yedekleme depolama alanı tüketimi ayda GB olarak ücretlendirilir.
 
-Depolama fiyatları hakkında daha fazla bilgi için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfası.
+Depolama fiyatları hakkında daha fazla bilgi için [fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfasına bakın.
 
 ## <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
-Sanal çekirdek (vCore), mantıksal bir CPU 'YU temsil eder ve donanım kuşaklarını ve donanımın fiziksel özelliklerini (örneğin, çekirdek sayısı, bellek ve depolama boyutu) arasından seçim yapmanıza olanak sağlar. Sanal çekirdek tabanlı satın alma modeli esneklik, denetim, tek tek kaynak tüketiminin saydamlığını ve şirket içi iş yükü gereksinimlerini buluta çevirecek basit bir yol sunar. Bu model, iş yükü gereksinimlerinize göre işlem, bellek ve depolama kaynakları seçmenize olanak sağlar.
+Sanal çekirdek (vCore) mantıksal bir CPU'yu temsil eder ve size donanım nesilleri ile donanımın fiziksel özellikleri (örneğin, çekirdek sayısı, bellek ve depolama boyutu) arasında seçim yapma seçeneği sunar. vCore tabanlı satın alma modeli, bireysel kaynak tüketiminde esneklik, denetim, şeffaflık ve şirket içi iş yükü gereksinimlerini buluta çevirmenin basit bir yolunu sunar. Bu model, iş yükü gereksinimlerinize bağlı olarak hesaplama, bellek ve depolama kaynaklarını seçmenize olanak tanır.
 
-Sanal çekirdek tabanlı satın alma modelinde, [tek veritabanları](sql-database-single-database-scale.md), [elastik havuzlar](sql-database-elastic-pool.md)ve [yönetilen örnekler](sql-database-managed-instance.md)için [genel amaçlı](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) ve [iş açısından kritik](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) hizmet katmanları arasında seçim yapabilirsiniz. Tek veritabanları için [hiper ölçek hizmet katmanını](sql-database-service-tier-hyperscale.md)da seçebilirsiniz.
+vCore tabanlı satın alma modelinde, [tek veritabanları,](sql-database-single-database-scale.md) [elastik havuzlar](sql-database-elastic-pool.md)ve [yönetilen örnekler](sql-database-managed-instance.md)için [Genel Amaç](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) ve İş [Açısından Kritik](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) hizmet katmanları arasında seçim yapabilirsiniz. Tek veritabanları [için, Hiper Ölçekli hizmet katmanını](sql-database-service-tier-hyperscale.md)da seçebilirsiniz.
 
-Sanal çekirdek tabanlı satın alma modeli, işlem ve depolama kaynaklarını bağımsız olarak seçmenizi, şirket içi performansı eşleştirmeye ve fiyatı iyileştirmenize olanak tanır. Sanal çekirdek tabanlı satın alma modelinde şunları ödeyin:
+vCore tabanlı satın alma modeli, bilgisayar ve depolama kaynaklarını bağımsız olarak seçmenize, şirket içi performansı eşleştirmenize ve fiyatı optimize etmenizi sağlar. vCore tabanlı satın alma modelinde şunları ödlersiniz:
 
-- İşlem kaynakları (hizmet katmanı + sanal çekirdek sayısı ve bellek miktarı + donanım oluşturma).
-- Veri ve günlük depolama alanı türü ve miktarı.
-- Yedekleme depolaması (RA-GRS).
+- Kaynakları hesapla (hizmet katmanı + vCore sayısı ve bellek miktarı + donanım oluşturma).
+- Veri ve günlük depolama türü ve miktarı.
+- Yedekleme depolama (RA-GRS).
 
 > [!IMPORTANT]
-> İşlem kaynakları, g/ç ve veri ve günlük depolama, veritabanı veya elastik havuz başına ücretlendirilir. Yedekleme depolaması her bir veritabanı için ücretlendirilir. Yönetilen örnek ücretleri hakkında daha fazla bilgi için bkz. [yönetilen örnekler](sql-database-managed-instance.md).
-> **Bölge sınırlamaları:** Desteklenen bölgelerin geçerli listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Şu anda desteklenmeyen bir bölgede yönetilen bir örnek oluşturmak için [Azure Portal aracılığıyla bir destek isteği gönderin](quota-increase-request.md).
+> Bilgi işlem kaynakları, G/Ç ve veri ve günlük depolama veritabanı veya elastik havuz başına ücretlendirilir. Yedekleme depolama her veritabanı başına ücretlendirilir. Yönetilen örnek ücretleri hakkında daha fazla bilgi için [yönetilen örneklere](sql-database-managed-instance.md)bakın.
+> **Bölge sınırlamaları:** Desteklenen bölgelerin geçerli listesi [için, bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)bakın. Şu anda desteklenmeyen bir bölgede yönetilen bir örnek oluşturmak için [Azure portalı üzerinden bir destek isteği gönderin.](quota-increase-request.md)
 
-Tek veritabanınız veya elastik havuzunuz 300 ' den fazla DTU kullanıyorsa, sanal çekirdek tabanlı satın alma modeline dönüştürmek maliyetlerinizi azaltabilir. İstediğiniz API 'nizi veya Azure portal kullanarak, kapalı kalma süresi olmadan dönüştürme yapabilirsiniz. Ancak, dönüştürme gerekli değildir ve otomatik olarak yapılmaz. DTU tabanlı satın alma modeli, performans ve iş gereksinimlerinizi karşılıyorsa, uygulamayı kullanmaya devam etmelisiniz.
+Tek veritabanınız veya esnek havuzunuz 300'den fazla DSU tüketiyorsa, vCore tabanlı satın alma modeline dönüştürmek maliyetlerinizi düşürebilir. Seçtiğiniz API'yi kullanarak veya azure portalını kullanarak, kesinti olmadan dönüştürme yapabilirsiniz. Ancak, dönüştürme gerekli değildir ve otomatik olarak yapılmaz. DTU tabanlı satın alma modeli performans ve iş gereksinimlerinizi karşılıyorsa, kullanmaya devam etmelisiniz.
 
-DTU tabanlı satın alma modelinden sanal çekirdek tabanlı satın alma modeline dönüştürmek için aşağıdaki Thumb kurallarını kullanarak işlem boyutunu seçin:
+DTU tabanlı satın alma modelinden vCore tabanlı satın alma modeline dönüştürmek için, aşağıdaki başparmak kurallarını kullanarak işlem boyutunu seçin:
 
-- Standart katmandaki her 100 DTU, Genel Amaçlı hizmet katmanında en az 1 sanal çekirdek gerektirir.
-- Premium katmandaki her 125 DTU, İş Açısından Kritik hizmet katmanında en az 1 sanal çekirdek gerektirir.
+- Standart katmandaki her 100 DTÜ, Genel Amaçlı hizmet katmanında en az 1 vCore gerektirir.
+- Premium katmandaki her 125 DTI, Business Critical hizmet katmanında en az 1 vCore gerektirir.
 
 > [!NOTE]
-> VCore 'a yönelik DTU, boyutlandırma yönergeleri yaklaşık değerlerdir ve hedef veritabanı hizmet hedefi 'nin ilk tahminde yardımcı olmak için sağlanır. Hedef veritabanının en iyi yapılandırması iş yüküne bağımlıdır. 
+> DTU to vCore boyutlandırma yönergeleri yaklaşıktır ve hedef veritabanı hizmeti hedefinin ilk tahmininde yardımcı olmak için sağlanır. Hedef veritabanının en uygun yapılandırması iş yüküne bağlıdır. 
 > 
-> En iyi fiyat/performans oranının sağlanması, sanal çekirdek modelinin esnekliğinden yararlanarak vCore sayısını, [donanım oluşturmayı](sql-database-service-tiers-vcore.md#hardware-generations), [hizmet](sql-database-service-tiers-vcore.md#service-tiers) ve [işlem](sql-database-service-tiers-vcore.md#compute-tiers) katmanlarını, ayrıca [en fazla paralellik derecesi](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)gibi diğer veritabanı yapılandırma parametrelerini ayarlamayı gerektirebilir.
+> En uygun fiyat/performans oranının elde edilmesini sağlamak, vCores, [donanım üretimi,](sql-database-service-tiers-vcore.md#hardware-generations) [hizmet](sql-database-service-tiers-vcore.md#service-tiers) ve [bilgi işlem](sql-database-service-tiers-vcore.md#compute-tiers) katmanlarının yanı sıra maksimum paralellik derecesi gibi diğer veritabanı yapılandırma parametrelerinin ayarını ayarlamak için vCore modelinin [esnekliğinden yararlanmayı](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)gerektirebilir.
 
 ## <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
-Bir veritabanı işlem birimi (DTU), CPU, bellek, okuma ve yazma işlemlerinin karışan bir ölçüsünü temsil eder. DTU tabanlı satın alma modeli, farklı uygulama performansı düzeylerini sağlamak için, önceden yapılandırılmış işlem kaynakları ve dahil edilen depolama paketleri kümesi sunar. Her ay önceden yapılandırılmış bir paket ve sabit ödemeler basitliğini tercih ediyorsanız, DTU tabanlı model gereksinimleriniz için daha uygun olabilir.
+Veritabanı işlem birimi (DTU), CPU, bellek, okuma ve yazmanın karma ölçüsünü temsil eder. DTU tabanlı satın alma modeli, farklı uygulama performansı düzeylerini artırmak için önceden yapılandırılmış bilgi işlem kaynakları demetleri ve dahil depolama sunar. Her ay önceden yapılandırılmış bir paketin basitliğini ve sabit ödemeleri tercih ederseniz, DTU tabanlı model ihtiyaçlarınız için daha uygun olabilir.
 
-DTU tabanlı satın alma modelinde, [tek veritabanları](sql-database-single-database-scale.md) ve [elastik havuzlar](sql-database-elastic-pool.md)için temel, standart ve Premium hizmet katmanları arasında seçim yapabilirsiniz. DTU tabanlı satın alma modeli, [yönetilen örnekler](sql-database-managed-instance.md)için kullanılamaz.
+DTU tabanlı satın alma modelinde, hem [tek veritabanları](sql-database-single-database-scale.md) hem de esnek [havuzlar](sql-database-elastic-pool.md)için temel, standart ve premium hizmet katmanları arasında seçim yapabilirsiniz. DTU tabanlı satın alma modeli yönetilen [örnekler](sql-database-managed-instance.md)için kullanılamaz.
 
-### <a name="database-transaction-units-dtus"></a>Veritabanı işlem birimleri (DTU 'Lar)
+### <a name="database-transaction-units-dtus"></a>Veritabanı işlem birimleri (DTS)
 
-Bir [hizmet katmanındaki](sql-database-single-database-scale.md)belirli bir işlem boyutundaki tek bir veritabanı için, Microsoft bu veritabanı için belirli bir kaynak düzeyini garanti eder (Azure bulutundaki diğer herhangi bir veritabanından bağımsız olarak). Bu garanti, öngörülebilir bir performans düzeyi sağlar. Bir veritabanı için ayrılan kaynak miktarı, bir dizi DTU olarak hesaplanarak işlem, depolama ve g/ç kaynaklarının paketlenmiş bir ölçümüdür.
+Microsoft, bir [hizmet katmanı](sql-database-single-database-scale.md)içinde belirli bir bilgi işlem boyutunda tek bir veritabanı için, bu veritabanı için belirli bir düzeyde kaynak garanti eder (Azure bulutundaki diğer veritabanından bağımsız). Bu garanti öngörülebilir bir performans düzeyi sağlar. Bir veritabanı için ayrılan kaynak miktarı bir dizi DTÜ olarak hesaplanır ve birlikte bir işlem, depolama ve G/Ç kaynakları ölçüsüdür.
 
-Bu kaynaklar arasındaki oran başlangıçta gerçek dünya OLTP iş yüklerinden tipik olarak tasarlanan bir [çevrimiçi işlem işleme (OLTP) kıyaslama iş yüküne](sql-database-benchmark-overview.md) göre belirlenir. İş yükünüz bu kaynakların herhangi birinin miktarını aştığında, aktarım hızı kısıtlanıyor ve daha yavaş performans ve zaman aşımları elde edilir.
+Bu kaynaklar arasındaki oran, başlangıçta gerçek dünyadaki OLTP iş yüklerinin tipik bir parçası olarak tasarlanmış çevrimiçi bir [işlem işleme (OLTP) kıyaslama iş yükü](sql-database-benchmark-overview.md) tarafından belirlenir. İş yükünüz bu kaynaklardan herhangi birini aştığında, iş kaynağınız azaltılır ve bu da daha yavaş performans ve zaman aşımı sağlar.
 
-İş yükünüz tarafından kullanılan kaynaklar, Azure bulutundaki diğer SQL veritabanlarının kullanabildiği kaynakları etkilemez. Benzer şekilde, diğer iş yükleri tarafından kullanılan kaynaklar, SQL veritabanınızın kullanabildiği kaynakları etkilemez.
+İş yükünüz tarafından kullanılan kaynaklar, Azure bulutundaki diğer SQL veritabanlarının kullanabileceği kaynakları etkilemez. Benzer şekilde, diğer iş yükleri tarafından kullanılan kaynaklar, SQL veritabanınızın kullanılabilir kaynaklarını etkilemez.
 
-![sınırlayıcı kutusu](./media/sql-database-what-is-a-dtu/bounding-box.png)
+![sınırlayıcı kutu](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında Azure SQL veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örnek:
+DT'ler, farklı işlem boyutlarında ve hizmet katmanlarında Azure SQL veritabanları için ayrılan göreli kaynakları anlamak için en kullanışlı olanlardır. Örnek:
 
-- Bir veritabanının işlem boyutunu artırarak, bu veritabanı için kullanılabilir kaynak kümesini ikiye katlayarak DTU 'ları katlama.
-- 1750 DTU içeren bir Premium hizmet katmanı P11 veritabanı, 5 DTU ile temel bir hizmet katmanı veritabanından 350x daha fazla DTU işlem gücü sağlar.  
+- Bir veritabanının işlem boyutunu artırarak DSU'ları iki katına çıkarmak, bu veritabanıiçin kullanılabilir kaynak kümesini iki katına çıkarmak la eşittir.
+- 1750 DTU'lu birinci sınıf hizmet katmanı P11 veritabanı, 5 DTU'lu temel hizmet katmanı veritabanından 350 kat daha fazla DTU işlem gücü sağlar.  
 
-İş yükünüzün kaynak (DTU) tüketimi hakkında daha derin Öngörüler elde etmek için [Query-Performance Insights](sql-database-query-performance.md) ' ı kullanarak şunları yapın:
+İş yükünüzün kaynak (DTU) tüketimi hakkında daha derin bilgiler edinmek için [sorgu performansı öngörülerini](sql-database-query-performance.md) kullanarak şunları kullanın:
 
-- CPU/süre/yürütme sayısına göre en iyi sorguları, gelişmiş performans için ayarlanabilir olabilecek şekilde belirler. Örneğin, g/ç yoğun bir sorgu, kullanılabilir belleğin belirli bir hizmet katmanında ve işlem boyutunda daha iyi kullanımını sağlamak için [bellek içi iyileştirme tekniklerinden](sql-database-in-memory.md) yararlanabilir.
-- Metnin ayrıntılarını ve kaynak kullanımı geçmişini görüntülemek için bir sorgunun ayrıntılarına gidin.
-- [SQL veritabanı Danışmanı](sql-database-advisor.md)tarafından gerçekleştirilen eylemleri gösteren performans ayarlama önerilerine erişin.
+- Gelişmiş performans için ayarlanabilecek en üst sorguları CPU/süre/yürütme sayısına göre tanımlayın. Örneğin, G/Ç yoğun sorgu, belirli bir hizmet katmanında ve işlem boyutunda kullanılabilir belleği daha iyi kullanmak için [bellek içi optimizasyon tekniklerinden](sql-database-in-memory.md) yararlanabilir.
+- Metnini ve kaynak kullanım geçmişini görüntülemek için sorgunun ayrıntılarını inceleyin.
+- [SQL Database Advisor](sql-database-advisor.md)tarafından gerçekleştirilen eylemleri gösteren performans tuning önerilerine erişin.
 
-### <a name="elastic-database-transaction-units-edtus"></a>Elastik veritabanı işlem birimleri (eDTU 'lar)
+### <a name="elastic-database-transaction-units-edtus"></a>Elastik veritabanı işlem birimleri (eDTUs)
 
-Her zaman gerekebilen adanmış bir kaynak kümesi (DTU) sağlamak yerine her zaman kullanılabilir olan SQL veritabanları için bu veritabanlarını [elastik bir havuza](sql-database-elastic-pool.md)yerleştirebilirsiniz. Elastik havuzdaki veritabanları tek bir Azure SQL veritabanı sunucusunda bulunur ve bir kaynak havuzunu paylaşır.
+Her zaman kullanılabilir olan SQL veritabanları için, her zaman gerekli olmayan özel bir kaynak kümesi (DTS) sağlamak yerine, bu veritabanlarını esnek bir [havuza](sql-database-elastic-pool.md)yerleştirebilirsiniz. Elastik havuzdaki veritabanları tek bir Azure SQL Veritabanı sunucusundadır ve bir kaynak havuzunu paylaşır.
 
-Elastik havuzdaki paylaşılan kaynaklar elastik veritabanı işlem birimleri (eDTU 'lar) ile ölçülür. Elastik havuzlar, yaygın olarak değişen ve öngörülemeyen kullanım düzenlerine sahip birden çok veritabanına ilişkin performans hedeflerini yönetmek için basit ve uygun maliyetli bir çözüm sunar. Elastik havuz, tüm kaynakların havuzdaki bir veritabanı tarafından tüketilmeyeceğinden, havuzdaki her bir veritabanının her zaman gereken en düşük miktarda gerekli kaynağa sahip olmasını güvence altına alır.
+Elastik havuzdaki paylaşılan kaynaklar, elastik veritabanı işlem birimleri (eDTUs) ile ölçülür. Elastik havuzlar, çok çeşitli ve öngörülemeyen kullanım modellerine sahip birden çok veritabanıiçin performans hedeflerini yönetmek için basit ve uygun maliyetli bir çözüm sağlar. Esnek havuz, havuzdaki her veritabanının her zaman en az miktarda gerekli kaynağa sahip olmasını sağlarken, tüm kaynakların havuzdaki tek bir veritabanı tarafından tüketilememesini garanti eder.
 
-Bir havuza bir set fiyatı için dizi eDTU sayısı verilir. Elastik havuzda, bireysel veritabanları yapılandırılan sınırlar içinde otomatik ölçeklendirme yapabilir. Daha ağır bir yük altında bulunan bir veritabanı, talebi karşılamak için daha fazla eDTU tüketir. Daha hafif yük altındaki veritabanları, daha az eDTU kullanır. Yükü olmayan veritabanları eDTU 'yu tüketmez. Kaynaklar her veritabanı yerine tüm havuz için sağlandığından, elastik havuzlar yönetim görevlerinizi basitleştirir ve havuz için öngörülebilir bir bütçe sağlar.
+Bir havuza belirli bir fiyat için belirli sayıda eDTUs verilir. Elastik havuzda, tek tek veritabanları yapılandırılan sınırlar içinde otomatik ölçeklendirilebilir. Daha ağır bir yük altındaki bir veritabanı talebi karşılamak için daha fazla eDT'tüketir. Daha hafif yükler altındaki veritabanları daha az eDT'tüketir. Yük olmayan veritabanları eDTUs kullanmaz. Kaynaklar veritabanı başına değil, tüm havuz için sağlandığı için, elastik havuzlar yönetim görevlerinizi basitleştirir ve havuz için öngörülebilir bir bütçe sağlar.
 
-Mevcut bir havuza, veritabanı kapalı kalma süresi olmadan ve havuzdaki veritabanları üzerinde herhangi bir etkisi olmadan ek eDTU 'lar ekleyebilirsiniz. Benzer şekilde, artık ek eDTU 'lar gerekmiyorsa, bunları dilediğiniz zaman mevcut bir havuzdan kaldırın. Ayrıca, herhangi bir zamanda bir havuza veritabanları ekleyebilir veya havuzdan veritabanları çıkarabilirsiniz. Diğer veritabanları için eDTU 'ları ayırmak üzere bir veritabanının ağır bir yük altında kullanabileceği eDTU sayısını sınırlayın. Bir veritabanı, kaynakları tutarlı bir şekilde kullanıyorsa havuzun dışına taşıyın ve tahmin edilebilir miktarda gerekli kaynakla tek bir veritabanı olarak yapılandırın.
+Veritabanı kapalı kalma süresi olmayan ve havuzdaki veritabanları üzerinde hiçbir etkisi olmayan varolan bir havuza ek eDT'ler ekleyebilirsiniz. Benzer şekilde, artık ekstra eDTUs'a ihtiyacınız yoksa, bunları istediğiniz zaman varolan bir havuzdan kaldırın. Ayrıca istediğiniz zaman veritabanıları havuzdan çıkarabilirsiniz. EDT'leri diğer veritabanları için rezerve etmek için, bir veritabanının ağır bir yük altında kullanabileceği eDTUs sayısını sınırlayın. Bir veritabanı kaynakları sürekli olarak kullanıyorsa, bu kaynakları havuzdan dışarı taşıyın ve öngörülebilir miktarda gerekli kaynaklarla tek bir veritabanı olarak yapılandırın.
 
-### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Bir iş yükü için gereken DTU sayısını belirleme
+### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>İş yükünün ihtiyaç duyduğu DTU sayısını belirleme
 
-Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü Azure SQL veritabanı 'na geçirmek istiyorsanız, gereken DTU sayısını yaklaşık olarak tahmin etmek için [DTU hesaplayıcısını](https://dtucalculator.azurewebsites.net/) kullanın. Mevcut bir Azure SQL veritabanı iş yükü için, veritabanı kaynak tüketiminizi (DTU 'Lar) anlamak üzere [Query-Performance Insights](sql-database-query-performance.md) 'ı kullanın ve iş yükünüzü iyileştirmek için daha derin Öngörüler elde edin. [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümü (DMV), son saatin kaynak tüketimini görüntülemenize olanak sağlar. [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Katalog görünümü son 14 güne ait kaynak tüketimini görüntüler, ancak beş dakikalık Ortalamalar için daha düşük bir hassaside.
+Varolan bir şirket içi veya SQL Server sanal makine iş yükünü Azure SQL Veritabanı'na geçirmek istiyorsanız, gereken DTU sayısını yaklaşık olarak belirlemek için [DTU hesap makinesini](https://dtucalculator.azurewebsites.net/) kullanın. Varolan bir Azure SQL Veritabanı iş yükü için, veritabanı kaynak tüketiminizi (DTS) anlamak ve iş yükünüzü optimize etmek için daha derin öngörüler elde etmek için [sorgu performansı öngörülerini](sql-database-query-performance.md) kullanın. [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümü (DMV) son bir saat için kaynak tüketimini görüntülemenizi sağlar. [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) kataloğu görünümü, son 14 gün için kaynak tüketimini görüntüler, ancak beş dakikalık ortalamaların daha düşük bir sadakatinde.
 
 ### <a name="determine-dtu-utilization"></a>DTU kullanımını belirleme
 
-Bir veritabanının veya elastik havuzun DTU/eDTU sınırına göre DTU/eDTU kullanımının ortalama yüzdesini öğrenmek için aşağıdaki formülü kullanın:
+Bir veritabanının veya elastik havuzun DTU/eDTU sınırına göre DTU/eDTU kullanım ortalama yüzdesini belirlemek için aşağıdaki formülü kullanın:
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-Bu formülün giriş değerleri [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMVs 'den elde edilebilir. Diğer bir deyişle, bir veritabanının veya elastik havuzun DTU/eDTU sınırına yönelik DTU/eDTU kullanımının yüzdesini öğrenmek için aşağıdakilerden en büyük yüzde değerini seçin: `avg_cpu_percent`, `avg_data_io_percent`ve `avg_log_write_percent` belirli bir zaman noktasında.
+Bu formülün giriş değerleri [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV'lerden elde edilebilir. Başka bir deyişle, dtu/eDTU kullanım yüzdesini bir veritabanının veya elastik havuzun DTU/eDTU sınırına doğru `avg_cpu_percent` `avg_data_io_percent`belirlemek `avg_log_write_percent` için, aşağıdakilerden en büyük yüzde değerini seçin: , , ve belirli bir zamanda.
 
 > [!NOTE]
-> Bir veritabanının DTU sınırı, CPU, okuma, yazma ve veritabanı tarafından kullanılabilir bellek tarafından belirlenir. Ancak, SQL Server veritabanı altyapısı, performansı artırmak için genellikle veri önbelleği için kullanılabilir tüm belleği kullandığından, `avg_memory_usage_percent` değeri genellikle geçerli veritabanı yüküne bakılmaksızın %100 ' e yakın olur. Bu nedenle, bellek, DTU sınırını dolaylı olarak etkilese de, DTU kullanım formülünde kullanılmaz.
+> Bir veritabanının DTU sınırı CPU tarafından belirlenir, okur, yazar ve bellek veritabanı için kullanılabilir. Ancak, SQL Server veritabanı altyapısı genellikle performansı artırmak için veri önbelleği `avg_memory_usage_percent` için kullanılabilir tüm belleği kullandığından, geçerli veritabanı yüküne bakılmaksızın değer genellikle %100'e yakın olacaktır. Bu nedenle, bellek dtu sınırını dolaylı olarak etkilese de, DTU kullanım formülünde kullanılmaz.
 >
 
-### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Elastik bir kaynak havuzundan faydalanabilir iş yükleri
+### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Esnek bir kaynak havuzundan yararlanan iş yükleri
 
-Havuzlar, düşük kaynak kullanımı ortalaması olan veritabanları için uygundur ve görece seyrek kullanım ani artışları vardır. Daha fazla bilgi için bkz. [SQL veritabanı elastik havuzunu ne zaman düşünmeniz gerekir?](sql-database-elastic-pool.md).
+Havuzlar, kaynak kullanım ortalaması düşük ve nispeten seyrek kullanım ani olan veritabanları için uygundur. Daha fazla bilgi için, sql [veritabanı elastik havuzune ne zaman bakmalısınız?](sql-database-elastic-pool.md)
 
 ### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>DTU tabanlı satın alma modelinde donanım nesilleri
 
-DTU tabanlı satın alma modelinde, müşteriler veritabanları için kullanılan donanım üretimini seçemezsiniz. Belirli bir veritabanı, genellikle uzun bir süre boyunca belirli bir donanım oluşturma üzerinde kalır (genellikle birden çok ay için), bir veritabanının başka bir donanım oluşturmaya taşınmasına neden olabilecek bazı olaylar vardır.
+DTU tabanlı satın alma modelinde, müşteriler veritabanları için kullanılan donanım oluşturmayı seçemez. Belirli bir veritabanı genellikle belirli bir donanım oluşturma da uzun bir süre (genellikle birden çok ay için), bir veritabanı başka bir donanım nesil taşınacak neden olabilir belirli olaylar vardır.
 
-Örneğin, bir veritabanı farklı bir hizmet hedefine ölçeği artırılırsa veya azaltıyorsa ya da bir veri merkezindeki geçerli altyapı kapasite sınırlarına yaklaşıyorsa veya şu anda kullanılmakta olan donanımlar ise farklı bir donanım oluşturmaya taşınabilir. kullanım ömrü nedeniyle kullanımdan kaldırıldı.
+Örneğin, bir veritabanı farklı bir hizmet hedefine ölçeklendirildiyse veya küçültülse veya bir veri merkezindeki geçerli altyapı kapasite sınırlarına yaklaşıyorsa veya şu anda kullanılan donanım kullanılıyorsa farklı bir donanım sınıfına taşınabilir ömrünün sona ermesi nedeniyle kullanımdan kaldırılmıştır.
 
-Bir veritabanı farklı bir donanıma taşınırsa, iş yükü performansı değişebilir. DTU modeli, hizmet hedefi (DTU sayısı) aynı kaldığı sürece, [DTU kıyaslama](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) iş yükünün işleme ve yanıt süresinin, veritabanı farklı bir donanım oluşturmaya giderken önemli ölçüde aynı kalacağından emin olur. 
+Veritabanı farklı donanıma taşınırsa, iş yükü performansı değişebilir. DTU modeli, hizmet amacı (DTU sayısı) aynı kaldığı sürece, veritabanı farklı bir donanım nesle taşındığından, [DTU kıyaslama](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) iş yükünün üretim ve yanıt süresinin önemli ölçüde aynı kalacağını garanti eder. 
 
-Ancak, Azure SQL veritabanı 'nda çalışan çok sayıda müşteri iş yüklerinin tamamında, aynı hizmet hedefi için farklı donanımlar kullanmanın etkisi daha fazla olabilir. Farklı iş yükleri, farklı donanım yapılandırma ve özelliklerinden faydalanır. Bu nedenle, DTU kıyaslamalarından başka iş yükleri için, veritabanı bir donanım oluşturma işleminden diğerine taşınırsa performans farklılıklarını görmek mümkündür.
+Ancak, Azure SQL Veritabanı'nda çalışan çok sayıda müşteri iş yükü yelpazesinde, aynı hizmet hedefi için farklı donanım kullanmanın etkisi daha belirgin olabilir. Farklı iş yükleri farklı donanım yapılandırması ve özelliklerinden yararlanacaktır. Bu nedenle, DTU kıyaslaması dışındaki iş yükleri için, veritabanı bir donanım neslinden diğerine geçerse performans farklılıklarını görmek mümkündür.
 
-Örneğin, ağ gecikme süresine duyarlı bir uygulama, 5. nesil 'de hızlandırılmış ağ kullanımı nedeniyle 5. nesil Hardware vs. 4. nesil üzerinde daha iyi performans görebilir, ancak yoğun okuma GÇ kullanan bir uygulama, 4. nesil donanımı ve 5. nesil şu nedenlerle daha iyi performans sağlayabilir: 4. nesil üzerinde çekirdek oranına göre daha yüksek bellek.
+Örneğin, ağ gecikmesine duyarlı bir uygulama Gen5'te Hızlandırılmış Ağ kullanımı nedeniyle Gen5 donanımı ve Gen4'te daha iyi performans görebilir, ancak yoğun okuma IO'su kullanan bir uygulama Gen4 donanım vs. Gen5'te daha iyi performans görebilir Gen4'te çekirdek başına daha yüksek bellek.
 
-Donanım değişikliklerine duyarlı olan iş yükleri veya veritabanları için donanım oluşturma seçimini denetlemek isteyen müşteriler, veritabanı oluşturma ve ölçekleme sırasında tercih edilen donanım üretimini seçmek için [Vcore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) modelini kullanabilir. Sanal çekirdek modelinde her bir her bir hizmet hedefinin kaynak limitleri her bir donanım oluşturma işlemi için, hem [tek veritabanları](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) hem de [elastik havuzlar](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)için belgelenmiştir. Sanal çekirdek modelindeki donanım oluşturmaları hakkında daha fazla bilgi için bkz. [donanım nesilleri](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
+Donanım değişikliklerine duyarlı iş yüklerine sahip müşteriler veya veritabanı için donanım oluşturma seçimini denetlemek isteyen müşteriler, veritabanı oluşturma ve ölçekleme sırasında tercih ettikleri donanım oluşturmayı seçmek için [vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) modelini kullanabilir. vCore modelinde, her donanım üretimine ilişkin her hizmet hedefinin kaynak sınırları, hem [tek veritabanları](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) hem de esnek [havuzlar](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)için belgelenir. vCore modelinde donanım nesilleri hakkında [Hardware Generations](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)daha fazla bilgi için Donanım Nesilleri'ne bakın.
 
 ## <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 
-### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>DTU tabanlı bir hizmet katmanından sanal çekirdek tabanlı hizmet katmanına dönüştürmek için uygulamamı çevrimdışına alma yapmam gerekir mi?
+### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>DTU tabanlı bir hizmet katmanından vCore tabanlı hizmet katmanına dönüştürmek için başvurumu çevrimdışı na mı almam gerekiyor?
 
-Hayır. Uygulamayı çevrimdışına almanız gerekmez. Yeni hizmet katmanları, mevcut veritabanlarını standart, Premium hizmet katmanına ve diğer şekilde yükseltme sürecine benzer basit bir çevrimiçi dönüştürme yöntemi sunar. Azure portal, PowerShell, Azure CLı, T-SQL veya REST API kullanarak bu dönüştürmeyi başlatabilirsiniz. Bkz. [tek veritabanlarını yönetme](sql-database-single-database-scale.md) ve [elastik havuzları yönetme](sql-database-elastic-pool.md).
+Hayır. Uygulamayı çevrimdışına almanız gerekmez. Yeni hizmet katmanları, veritabanlarını standarttan premium hizmet katmanına yükseltme işlemine benzer basit bir çevrimiçi dönüştürme yöntemi sunar. Bu dönüştürmeyi Azure portalı, PowerShell, Azure CLI, T-SQL veya REST API'yi kullanarak başlatabilirsiniz. Bkz. [Tek veritabanlarını yönet](sql-database-single-database-scale.md) in ve [elastik havuzları yönetin.](sql-database-elastic-pool.md)
 
-### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modelindeki hizmet katmanından bir veritabanını DTU tabanlı satın alma modelindeki bir hizmet katmanına dönüştürebilir miyim?
+### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>VCore tabanlı satın alma modelindeki bir hizmet katmanından dtu tabanlı satın alma modelinde bir hizmet katmanına veritabanı dönüştürebilir miyim?
 
-Evet, Azure portal, PowerShell, Azure CLı, T-SQL veya REST API kullanarak veritabanınızı desteklenen herhangi bir performans hedefine kolayca dönüştürebilirsiniz. Bkz. [tek veritabanlarını yönetme](sql-database-single-database-scale.md) ve [elastik havuzları yönetme](sql-database-elastic-pool.md).
+Evet, Azure portalı, PowerShell, Azure CLI, T-SQL veya REST API'yi kullanarak veritabanınızı desteklenen herhangi bir performans hedefine kolayca dönüştürebilirsiniz. Bkz. [Tek veritabanlarını yönet](sql-database-single-database-scale.md) in ve [elastik havuzları yönetin.](sql-database-elastic-pool.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sanal çekirdek tabanlı satın alma modeli hakkında daha fazla bilgi için bkz. [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md).
-- DTU tabanlı satın alma modeli hakkında daha fazla bilgi için bkz. [DTU tabanlı satın alma modeli](sql-database-service-tiers-dtu.md).
+- vCore tabanlı satın alma modeli hakkında daha fazla bilgi için [vCore tabanlı satın alma modeline](sql-database-service-tiers-vcore.md)bakın.
+- DTU tabanlı satın alma modeli hakkında daha fazla bilgi için [DTU tabanlı satın alma modeline](sql-database-service-tiers-dtu.md)bakın.

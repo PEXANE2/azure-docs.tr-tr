@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: REST API 'Leri kullanarak Node. js içinde arama dizini oluşturma"
+title: "Quickstart: REST API'lerini kullanarak Düğüm.js'de bir arama dizini oluşturma"
 titleSuffix: Azure Cognitive Search
-description: Bu Node. js hızlı başlangıcı içinde, JavaScript ve REST API 'Leri kullanarak bir dizin oluşturma, veri yükleme ve Azure Bilişsel Arama sorguları çalıştırma hakkında bilgi edinin.
+description: Bu Düğüm.js hızlı başlangıcında, JavaScript ve REST API'lerini kullanarak Azure Bilişsel Arama'da nasıl dizin oluşturup veri yükleyip sorguları çalıştıracağımız hakkında bilgi edinin.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -10,80 +10,80 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77624002"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Node. js ' de Azure Bilişsel Arama dizini oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Quickstart: REST API'lerini kullanarak Düğüm.js'de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
-> * [C#](search-get-started-dotnet.md)
+> * [Javascript](search-get-started-nodejs.md)
+> * [C #](search-get-started-dotnet.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [Powershell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Bir Azure Bilişsel Arama dizini oluşturan, yükleyen ve sorgulayan bir Node. js uygulaması oluşturun. Bu makalede, uygulamanın adım adım nasıl oluşturulacağı gösterilmektedir. Alternatif olarak, [kaynak kodu ve verileri indirebilir](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) ve uygulamayı komut satırından çalıştırabilirsiniz.
+Azure Bilişsel Arama dizini oluşturan, yükleyen ve sorgulayan bir Düğüm.js uygulaması oluşturun. Bu makalede, uygulama adım adım nasıl oluşturulacak gösteriş. Alternatif olarak, [kaynak kodu ve verileri karşıdan yükleyebilir ve](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) uygulamayı komut satırından çalıştırabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı derlemek ve test etmek için aşağıdaki yazılım ve Hizmetleri kullandık:
+Bu hızlı başlangıcı oluşturmak ve test etmek için aşağıdaki yazılım ve hizmetleri kullandık:
 
 + [Node.js](https://nodejs.org)
 
-+ [NPM](https://www.npmjs.com) , Node. js tarafından yüklenmelidir
++ [NPM](https://www.npmjs.com) Node.js tarafından yüklenmelidir
 
-+ Bu makalede veya [deponun **hızlı başlangıç** dizininden örnek bir dizin yapısı ve eşleşen belgeler verilmiştir](https://github.com/Azure-Samples/azure-search-javascript-samples/)
++ Örnek dizin yapısı ve eşleşen belgeler bu makalede veya [repo'nun **hızlı başlangıç** dizininden](https://github.com/Azure-Samples/azure-search-javascript-samples/)
 
-+ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
++ [Bir Azure Bilişsel Arama hizmeti oluşturun](search-create-service-portal.md) veya geçerli aboneliğiniz altında [varolan bir hizmeti bulun.](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
 
 Önerilen:
 
 * [Visual Studio Code](https://code.visualstudio.com)
 
-* VSCode için [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) ve [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) uzantıları.
+* VSCode için [daha güzel](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) ve [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) uzantıları.
 
 <a name="get-service-info"></a>
 
-## <a name="get-keys-and-urls"></a>Anahtar ve URL 'Leri al
+## <a name="get-keys-and-urls"></a>Anahtarları ve URL'leri alın
 
-Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahtarı gerektirir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
+Hizmete yapılan aramalar için her istekte bir URL bitiş noktası ve erişim anahtarı gerekir. Her ikisiyle de bir arama hizmeti oluşturulur, bu nedenle aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetinize **genel bakış** sayfasında, arama hizmetinizin adını alın. Uç nokta URL 'sini inceleyerek hizmet adınızı doğrulayabilirsiniz. Uç nokta URL 'niz `https://mydemo.search.windows.net`, hizmet adınız `mydemo`olur.
+1. [Azure portalında oturum açın](https://portal.azure.com/)ve arama hizmetinize **Genel Bakış** sayfanızda arama hizmetinizin adını alın. Bitiş noktası URL'sini inceleyerek hizmet adınızı onaylayabilirsiniz. Bitiş noktası URL'niz olsaydı, `https://mydemo.search.windows.net`hizmet `mydemo`adınız .
 
-2. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar** > **Tuşları'nda,** hizmetteki tüm haklar için bir yönetici anahtarı alın. İki değiştirilebilir yönetici anahtarları, bir üzerinde rulo gerekir durumda iş sürekliliği için sağlanan vardır. Nesneleri ekleme, değiştirme ve silme isteklerinde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
+    Sorgu anahtarını da alın. Salt okunur erişimle sorgu isteklerini vermek en iyi yöntemdir.
 
-![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-nodejs/service-name-and-keys.png)
+![Hizmet adını ve yöneticive sorgu anahtarlarını alın](media/search-get-started-nodejs/service-name-and-keys.png)
 
-Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
+Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir api anahtarı gerektirir. Geçerli bir anahtar, istek bazında, isteği gönderen uygulama ile onu işleyen hizmet arasında güven oluşturur.
 
 ## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
-Bir PowerShell konsolunu veya Node. js ' yi yüklediğiniz başka bir ortamı açarak başlayın.
+Bir Powershell konsolu veya Node.js yüklediğiniz başka bir ortamı açarak başlayın.
 
-1. `quickstart` adı vererek bir geliştirme dizini oluşturun:
+1. Bir geliştirme dizini oluşturun, `quickstart` ona adını vererek:
 
     ```powershell
     mkdir quickstart
     cd quickstart
     ```
 
-2. `npm init`çalıştırarak NPM ile boş bir proje başlatın. Lisans dışında, "MıT" olarak ayarlamanız gereken varsayılan değerleri kabul edin. 
+2. Çalıştırarak NPM ile boş `npm init`bir proje başlatma. "MIT" olarak ayarlamanız gereken Lisans dışında varsayılan değerleri kabul edin. 
 
-1. Kod ve geliştirmeye yardımcı olacak paketler ekleyin:
+1. Koda bağlı olacak paketleri ekleyin ve geliştirmeye yardımcı olun:
 
     ```powershell
     npm install nconf node-fetch
     npm install --save-dev eslint eslint-config-prettier eslint-config-airbnb-base eslint-plugin-import prettier
     ```
 
-4. **Package. JSON** dosyanızın şuna benzer göründüğünü denetleyerek projeleri ve bağımlılıklarını yapılandırdığınızdan emin olun:
+4. **Package.json** dosyanızın aşağıdakilere benzer görünüp görünmediğini kontrol ederek projeleri ve bağımlılıklarını yapılandırdığınızı doğrulayın:
 
     ```json
     {
@@ -114,7 +114,7 @@ Bir PowerShell konsolunu veya Node. js ' yi yüklediğiniz başka bir ortamı a�
     }
     ```
 
-5. Arama hizmeti verilerinizi tutmak için bir **azure_search_config. JSON** dosyası oluşturun:
+5. Arama hizmeti verilerinizi tutmak için **azure_search_config** bir dosya oluşturun:
 
     ```json
     {
@@ -125,13 +125,13 @@ Bir PowerShell konsolunu veya Node. js ' yi yüklediğiniz başka bir ortamı a�
     }
     ```
 
-`[SERVICE_NAME]` değerini, arama hizmetinizin adıyla değiştirin. `[ADMIN_KEY]` ve `[QUERY_KEY]` daha önce kaydettiğiniz anahtar değerleriyle değiştirin. 
+`[SERVICE_NAME]` Değeri arama hizmetinizin adı ile değiştirin. Daha `[ADMIN_KEY]` `[QUERY_KEY]` önce kaydettiğiniz anahtar değerleri değiştirin. 
 
-## <a name="1---create-index"></a>1-Dizin oluşturma 
+## <a name="1---create-index"></a>1 - Dizin oluşturma 
 
-**Hotels_quickstart_index. JSON**dosyası oluşturun.  Bu dosya, Azure Bilişsel Arama 'nin bir sonraki adımda yüklediğiniz belgelerle nasıl çalıştığını tanımlar. Her alan bir `name` tanımlanır ve belirtilen bir `type`olur. Her alan Ayrıca, Azure Bilişsel Arama alan üzerinde arama, filtreleme, sıralama ve model kullanıp kullanamayacağını belirten bir dizi dizin özniteliklerine sahiptir. Alanların çoğu basit veri türleridir, ancak `AddressType` benzer şekilde, dizininizdeki zengin veri yapıları oluşturmanıza imkan tanıyan karmaşık türlerdir.  [Desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) ve [dizin öznitelikleri](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)hakkında daha fazla bilgi edinebilirsiniz. 
+Bir dosya **hotels_quickstart_index.json**oluşturun.  Bu dosya, Azure Bilişsel Arama'nın bir sonraki adımda yüklediğiniz belgelerle nasıl çalıştığını tanımlar. Her alan a `name` ile tanımlanır ve `type`belirtilmiş bir . Her alanın ayrıca Azure Bilişsel Arama'nın alan üzerinde arama yapıp yapamayacağını, filtreleyip sıralayamadığını ve yönünü belirleyip belirleyemeyeceğini belirten bir dizi dizin özniteliği de vardır. Alanların çoğu basit veri türleridir, ancak `AddressType` bazıları, dizininizde zengin veri yapıları oluşturmanıza olanak tanıyan karmaşık türlerdir.  [Desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) ve [dizin öznitelikleri](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)hakkında daha fazla bilgi edinebilirsiniz. 
 
-Aşağıdakileri **hotels_quickstart_index. JSON** dosyasına ekleyin veya [dosyayı indirin](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
+**hotels_quickstart_index.json'a** aşağıdakileri ekleyin veya [dosyayı indirin.](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json) 
 
 ```json
 {
@@ -266,9 +266,9 @@ Aşağıdakileri **hotels_quickstart_index. JSON** dosyasına ekleyin veya [dosy
 ```
     
 
-Genel olarak geçerli olacak koddan belirli bir senaryonun özelliklerini ayırmak iyi bir uygulamadır. **AzureSearchClient. js** dosyasında tanımlanan `AzureSearchClient` sınıfı, Istek URL 'lerinin nasıl oluşturulduğunu, Fetch API kullanarak istek yapmayı ve yanıtın durum koduna tepki vermesini bilecektir.
+Belirli bir senaryonun özelliklerini genel olarak uygulanabilir olan koddan ayırmak iyi bir uygulamadır. `AzureSearchClient` **AzureSearchClient.js** dosyasında tanımlanan sınıf, istek URL'lerinin nasıl oluşturacağını, API'yi getir'i kullanarak istekte bulunacağını ve yanıtın durum koduna nasıl tepki vereceğini bilir.
 
-**Düğüm getirme** paketini içeri aktarıp basit bir sınıf oluşturarak **AzureSearchClient. js** ' de çalışmaya başlayın. `AzureSearchClient` sınıfının değiştirilebilir bölümlerini, oluşturucusuna çeşitli yapılandırma değerlerini geçirerek yalıtın:
+Düğüm **getir** paketini içe aktararak ve basit bir sınıf oluşturarak **AzureSearchClient.js** üzerinde çalışmaya başlayın. `AzureSearchClient` Sınıfın değiştirilebilir bölümlerini, çeşitli yapılandırma değerlerini oluşturucuya geçirerek yalıtın:
 
 ```javascript
 const fetch = require('node-fetch');
@@ -289,16 +289,16 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Sınıfının ilk sorumluluğu, çeşitli isteklerin gönderileceği URL 'Leri oluşturmayı öğrenmektir. Sınıf oluşturucusuna geçirilen yapılandırma verilerini kullanan örnek yöntemleriyle bu URL 'Leri derleyin. Oluşturdukları URL 'nin bir API sürümüne özgü olduğunu ve bu sürümü belirten bir bağımsız değişken (Bu uygulamada, `2019-05-06`) olması gerektiğini unutmayın. 
+Sınıfın ilk sorumluluğu, çeşitli istekleri göndermek için URL'lerin nasıl yapılacağını bilmektir. Bu URL'leri, sınıf oluşturucuya geçen yapılandırma verilerini kullanan örnek yöntemleriyle oluşturun. Oluşturdukları URL'nin bir API sürümüne özgü olduğuna ve bu sürümü belirten `2019-05-06`bir bağımsız değişkene sahip olması gerektiğine dikkat edin (bu uygulamada). 
 
-Bu yöntemlerin ilki dizinin URL 'sini döndürür. Aşağıdaki yöntemi sınıf gövdesinin içine ekleyin:
+Bu yöntemlerden ilki, dizinin URL'sini döndürür. Sınıf gövdesi içinde aşağıdaki yöntemi ekleyin:
 
 ```javascript
 getIndexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
 
 ```
 
-`AzureSearchClient` sonraki sorumluluğu, Fetch API 'SI ile zaman uyumsuz bir istek yapıyor. Zaman uyumsuz statik yöntem `request` bir URL 'yi, HTTP yöntemini ("GET", "PUT", "POST", "DELETE"), istekte kullanılacak anahtarı ve isteğe bağlı bir JSON nesnesini belirten bir dize alır. `headers` değişkeni, "api-Key" HTTP istek üst bilgisi ile `queryKey` (yönetici anahtarı veya salt okuma sorgusu anahtarı) eşler. İstek seçenekleri her zaman kullanılacak `method` ve `headers`içerir. `bodyJson` `null`değilse, HTTP isteğinin gövdesi `bodyJson`dize gösterimine ayarlanır. `request` yöntemi, HTTP isteğini yürütmek için getirme API 'sinin taahhüdünü döndürür.
+Bir sonraki `AzureSearchClient` sorumluluk, Getir API'si ile eşzamanlı bir istekte bulunmaktır. Eşiz statik yöntem, `request` bir URL, HTTP yöntemini belirten bir dize ("GET", "PUT", "POST", "DELETE"), istekte kullanılacak anahtar ve isteğe bağlı JSON nesnesi alır. Değişken `headers` eşler `queryKey` (ister yönetici anahtarı veya salt okunur sorgu anahtarı) "api-key" HTTP istek üstbilgisine. İstek seçenekleri her `method` zaman kullanılacak ve `headers`. Değilse, `bodyJson` HTTP isteğinin gövdesi dize gösterimi `bodyJson`için ayarlanır. `null` Yöntem, `request` HTTP isteğini yürütmek için API'nin Söz'ü döndürür.
 
 ```javascript
 static async request(url, method, apiKey, bodyJson = null) {
@@ -330,7 +330,7 @@ static async request(url, method, apiKey, bodyJson = null) {
 }
 ```
 
-Tanıtım amacıyla, HTTP isteği başarılı değilse yalnızca bir özel durum oluşturur. Gerçek bir uygulamada büyük olasılıkla, arama hizmeti isteğinden `response` HTTP durum kodunu günlüğe kaydetme ve tanılama yapabilirsiniz. 
+HTTP isteği başarılı değilse demo amaçlı bir istisna atmasanız bile bir istisna hazırlanın. Gerçek bir uygulamada, büyük olasılıkla arama hizmeti isteği bazı günlük `response` ve HTTP durum kodu tanı yapmak istiyorsunuz. 
     
 ```javascript
 static throwOnHttpError(response) {
@@ -342,13 +342,13 @@ static throwOnHttpError(response) {
 }
 ```
 
-Son olarak, Azure Bilişsel Arama dizinini algılamaya, silmeye ve oluşturmaya yönelik yöntemleri ekleyin. Bu yöntemlerin hepsi aynı yapıya sahiptir:
+Son olarak, Azure Bilişsel Arama dizinini algılama, silme ve oluşturma yöntemlerini ekleyin. Bu yöntemlerin tümü aynı yapıya sahiptir:
 
-* İsteğin oluşturulacağı uç noktayı alın.
-* İsteği uygun uç nokta, HTTP fiili, API anahtarı ve uygunsa bir JSON gövdesi ile oluşturun. `indexExistsAsync()` ve `deleteIndexAsync()` bir JSON gövdesine sahip değildir, ancak `createIndexAsync(definition)`.
-* isteğin yanıtını `await`.  
-* Yanıtın durum kodu üzerinde işlem yapın.
-* Uygun bir değer (Boolean, `this`veya sorgu sonuçları) için bir Promise döndürün. 
+* İsteğin yapılacağı bitiş noktasını alın.
+* İsteği uygun bitiş noktası, HTTP fiili, API tuşu ve uygunsa Bir JSON gövdesi ile oluşturun. `indexExistsAsync()`ve `deleteIndexAsync()` bir JSON vücut yok, ama `createIndexAsync(definition)` yok.
+* `await`isteğe yanıt.  
+* Yanıtın durum koduna göre hareket edin.
+* Uygun bir değere (Boolean `this`veya sorgu sonuçları) bir Söz döndürün. 
 
 ```javascript
 async indexExistsAsync() { 
@@ -377,7 +377,7 @@ async createIndexAsync(definition) {
 }
 ```
 
-Yöntemlerinizin sınıfın içinde olduğunu ve sınıfı dışarı aktarıp çıkardığınızı doğrulayın. **AzureSearchClient. js** ' nin en dıştaki kapsamı:
+Yöntemlerinizin sınıfın içinde olduğunu ve sınıfı dışa aktardığınızı doğrulayın. **AzureSearchClient.js'nin** en dışkapsamı aşağıdaki olmalıdır:
 
 ```javascript
 const fetch = require('node-fetch');
@@ -389,12 +389,12 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Nesne odaklı bir sınıf, olası yeniden kullanılabilir **AzureSearchClient. js** modülü için iyi bir seçimdir, ancak **index. js**adlı bir dosyaya yerleştirmeniz gereken ana program için gerekli değildir. 
+Nesne yönelimli bir sınıf, yeniden kullanılabilir **AzureSearchClient.js** modülü için iyi bir seçimdi, ancak **index.js**adlı bir dosyaya koymanız gereken ana program için gerekli değildir. 
 
-**İndex. js** oluşturun ve şunu yaparak başlayın:
+**Index.js** oluşturun ve getirerek başlayın:
 
-* JSON, ortam değişkenleri veya komut satırı bağımsız değişkenleriyle yapılandırmayı belirtme esnekliği sağlayan **NConf** paketi.
-* **Hotels_quickstart_index. JSON** dosyasındaki veriler.
+* JSON, ortam değişkenleri veya komut satırı bağımsız değişkenleriyle yapılandırmayı belirtmeniz için esneklik sağlayan **nconf** paketi.
+* **hotels_quickstart_index.json** dosyasındaki veriler.
 * `AzureSearchClient` modülü.
 
 ```javascript
@@ -404,7 +404,7 @@ const indexDefinition = require('./hotels_quickstart_index.json');
 const AzureSearchClient = require('./AzureSearchClient.js');
 ```
 
-[ **NConf** paketi](https://github.com/indexzero/nconf) , yapılandırma verilerini ortam değişkenleri veya komut satırı gibi çeşitli biçimlerde belirtmenize olanak tanır. Bu örnek, **azure_search_config. JSON** dosyasını okumak ve dosyanın içeriğini bir sözlük olarak döndürmek için temel bir şekilde **NConf** kullanır. **NConf**'in `get(key)` işlevini kullanarak, yapılandırma bilgilerinin düzgün bir şekilde özelleştirildiğini hızlı bir şekilde denetleyebilirsiniz. Son olarak, işlev yapılandırmayı döndürür:
+[ **nconf** paketi,](https://github.com/indexzero/nconf) yapılandırma verilerini ortam değişkenleri veya komut satırı gibi çeşitli biçimlerde belirtmenize olanak tanır. Bu örnek, **dosyayı azure_search_config.json** okumak ve dosyanın içeriğini sözlük olarak döndürmek için temel bir şekilde **nconf** kullanır. **nconf'ın** `get(key)` işlevini kullanarak, yapılandırma bilgilerinin düzgün şekilde özelleştirildiğini hızlı bir şekilde kontrol edebilirsiniz. Son olarak, işlev yapılandırmayı döndürür:
 
 ```javascript
 function getAzureConfiguration() {
@@ -416,7 +416,7 @@ function getAzureConfiguration() {
 }
 ```
 
-`sleep` işlevi, belirli bir süre sonra çözümlenen bir `Promise` oluşturur. Bu işlevin kullanılması, zaman uyumsuz dizin işlemlerinin tamamlanmasını beklerken ve kullanılabilir hale geleken uygulamanın duraklatılmasını sağlar. Böyle bir gecikme eklemek, genellikle yalnızca tanıtımlar, testler ve örnek uygulamalar için gereklidir.
+İşlev, `sleep` belirli `Promise` bir süre sonra çözen bir işlev oluşturur. Bu işlevi kullanmak, eşzamanlı dizin işlemlerinin tamamlanmasını ve kullanılabilir hale gelmesini beklerken uygulamanın duraklatmasını sağlar. Böyle bir gecikme eklemek genellikle yalnızca demolarda, testlerde ve örnek uygulamalarda gereklidir.
 
 ```javascript
 function sleep(ms) {
@@ -428,12 +428,12 @@ function sleep(ms) {
 }
 ```
 
-Son olarak, ana zaman uyumsuz `run` işlevini belirtin ve çağırın. Bu işlev, `Promise`s 'nin çözümlenmesi için gereken şekilde bekleyen diğer işlevleri sırayla çağırır.
+Son olarak, ana asynchronous `run` işlevini belirtin ve çağırın. Bu işlev, s çözmek `Promise`için gerekli olarak bekleyen, sırayla diğer işlevleri çağırır.
 
-* Daha önce yazdığınız `getAzureConfiguration()` yapılandırmayı alın
-* Yapılandırmanızda değerler geçirerek yeni bir `AzureSearchClient` örneği oluşturma
-* Dizinin mevcut olup olmadığını denetleyin ve varsa silin
-* **Hotels_quickstart_index. JSON** öğesinden yüklenen `indexDefinition` kullanarak dizin oluşturma
+* Yapılandırmayı daha `getAzureConfiguration()` önce yazdığınız yapılandırmayla alma
+* Yapılandırmanızdan `AzureSearchClient` değerleri aktaran yeni bir örnek oluşturma
+* Dizinin var olup olmadığını kontrol edin ve varsa silmek
+* `indexDefinition` **hotels_quickstart_index.json'dan** yükleneni kullanarak bir dizin oluşturma
 
 ```javascript
 const run = async () => {
@@ -454,37 +454,37 @@ const run = async () => {
 run();
 ```
 
-`run()`için son çağrıyı unutmayın! Bir sonraki adımda `node index.js` çalıştırdığınızda programınızın giriş noktasıdır.
+Son çağrıyı `run()`unutma! Bir sonraki adımda çalıştırdığınızda `node index.js` programınızın giriş noktasıdır.
 
-`AzureSearchClient.indexExistsAsync()` ve `AzureSearchClient.deleteIndexAsync()` parametre almaz. Bu işlevler, `bodyJson` bağımsız değişken olmadan `AzureSearchClient.request()` çağırır. `AzureSearchClient.request()`içinde `bodyJson === null` `true`olduğu için `init` yapısı yalnızca HTTP fiili ("GET" ve `indexExistsAsync()` için "SIL") olarak ayarlanmıştır ve bu da istek anahtarını belirten üst bilgiler.`deleteIndexAsync()`  
+Buna `AzureSearchClient.indexExistsAsync()` dikkat `AzureSearchClient.deleteIndexAsync()` edin ve parametreleri almayın. Bu işlevler `AzureSearchClient.request()` `bodyJson` hiçbir bağımsız değişken ile çağırır. Içinde `AzureSearchClient.request()`, `bodyJson === null` `true`çünkü `init` , yapı sadece HTTP fiil ("GET" `indexExistsAsync()` için ve `deleteIndexAsync()`"DELETE" için) ve üstbilgileri, istek anahtarı nı belirtmek olarak ayarlanır.  
 
-Buna karşılık _`AzureSearchClient.createIndexAsync(indexDefinition)` yöntemi bir_ parametre alır. `index.js``run` işlevi, **hotels_quickstart_index. JSON** dosyasının içeriğini `AzureSearchClient.createIndexAsync(indexDefinition)` yöntemine geçirir. `createIndexAsync()` yöntemi bu tanımı `AzureSearchClient.request()`geçirir. `AzureSearchClient.request()`, `bodyJson === null` artık `false`olduğundan `init` yapısı yalnızca HTTP fiili ("PUT") ve üst bilgileri değil, `body` dizin tanım verilerine ayarlar.
+Buna karşılık, `AzureSearchClient.createIndexAsync(indexDefinition)` _yöntem_ bir parametre alır. İşlev, `run` dosya nın içeriğini **hotels_quickstart_index.json'ı** yönteme `AzureSearchClient.createIndexAsync(indexDefinition)` geçirir. `index.js` Yöntem `createIndexAsync()` bu tanımı `AzureSearchClient.request()`. Şimdi `AzureSearchClient.request()`olduğu `bodyJson === null` `false`için `init` yapı yalnızca HTTP fiilini ("PUT") ve üstbilgileri içermez, aynı zamanda dizin tanımı verilerini ayarlar. `body`
 
 ### <a name="prepare-and-run-the-sample"></a>Örneği hazırlama ve çalıştırma
 
-Aşağıdaki komutlar için bir Terminal penceresi kullanın.
+Aşağıdaki komutlar için bir terminal penceresi kullanın.
 
-1. **Package. JSON** dosyasını ve kodunuzun geri kalanını içeren klasöre gidin.
-1. Örnek için paketleri `npm install`ile birlikte yükler.  Bu komut, kodun bağımlı olduğu paketleri indirir.
-1. Programınızı `node index.js`çalıştırın.
+1. **package.json** dosyasını ve kodunuzun geri kalanını içeren klasöre gidin.
+1. Örnek için paketleri `npm install`' ile yükleyin.  Bu komut, kodun bağlı olduğu paketleri karşıdan yükler.
+1. Programınızı ' `node index.js`ile çalıştırın.
 
-Program tarafından gerçekleştirilen eylemleri açıklayan bir ileti serisi görmeniz gerekir. İsteklerle daha fazla ayrıntı görmek isterseniz, **AzureSearchClient. js**içindeki [`AzureSearchClient.request()`https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27) yönteminin başındaki satırların açıklamasını kaldırın. 
+Program tarafından gerçekleştirilen eylemleri açıklayan bir dizi ileti görmeniz gerekir. İsteklerin daha fazla ayrıntısını görmek istiyorsanız, `AzureSearchClient.request()` https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27) **AzureSearchClient.js'de**[yöntemin başındaki satırlar] yorumunu geri leyebilirsiniz. 
 
-Azure portal arama hizmetinize **Genel Bakış ' ı** açın. **Dizinler** sekmesini seçin. Aşağıdakine benzer bir şey görmeniz gerekir:
+Azure portalında arama hizmetinizin **Genel Görünümünü** açın. **Dizinler** sekmesini seçin. Aşağıdaki gibi bir şey görmeniz gerekir:
 
-![Azure portal, arama hizmetine genel bakış, dizinler sekmesinin ekran görüntüsü](media/search-get-started-nodejs/create-index-no-data.png)
+![Azure portalının ekran görüntüsü, arama hizmetine Genel Bakış, Dizinler sekmesi](media/search-get-started-nodejs/create-index-no-data.png)
 
-Sonraki adımda, dizine veri ekleyeceksiniz. 
+Bir sonraki adımda, dizin için veri eklersiniz. 
 
-## <a name="2---load-documents"></a>2-belge yükleme 
+## <a name="2---load-documents"></a>2 - Yükleme Belgeleri 
 
-Azure Bilişsel Arama 'de belgeler, sorguların dizin oluşturma ve çıkışlara yönelik giriş olan veri yapılarıdır. Bu tür verileri dizine NAKLETMENIZ gerekir. Bu, önceki adımda gerçekleştirilen işlemlerden farklı bir uç nokta kullanır. **AzureSearchClient. js** ' i açın ve `getIndexUrl()`sonra aşağıdaki yöntemi ekleyin:
+Azure Bilişsel Arama'da belgeler, hem dizin oluşturma hem de sorgulardan çıktı girişi olan veri yapılarıdır. Bu tür verileri dizin için GÖNDERMENiz gerekir. Bu, önceki adımda yapılan işlemlerden farklı bir bitiş noktası kullanır. **AzureSearchClient.js'yi** açın ve `getIndexUrl()`aşağıdaki yöntemi ekleyin:
 
 ```javascript
  getPostDataUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
 ```
 
-`AzureSearchClient.createIndexAsync(definition)`benzer şekilde, `AzureSearchClient.request()` çağıran ve otel verilerinde, gövdesi olarak geçen bir işleve ihtiyacınız vardır. **AzureSearchClient. js** ' de, `createIndexAsync(definition)`sonra `postDataAsync(hotelsData)` ekleyin:
+Gibi, `AzureSearchClient.createIndexAsync(definition)`onun vücut olması `AzureSearchClient.request()` için otel verilerini arar ve geçer bir fonksiyon gerekir. **AzureSearchClient.js** sonra `postDataAsync(hotelsData)` `createIndexAsync(definition)`eklemek:
 
 ```javascript
 async postDataAsync(hotelsData) {
@@ -496,7 +496,7 @@ async postDataAsync(hotelsData) {
 }
 ```
 
- Belge girişleri bir veritabanındaki satırlar, blob depolamada Bloblar veya bu örnekte olduğu gibi, diskteki JSON belgeleri olabilir. [Oteller. JSON](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels.json) dosyasını indirebilir ya da aşağıdaki içerikle kendi **oteller. JSON** dosyanızı oluşturabilirsiniz:
+ Belge girişleri veritabanındaki satırlar, Blob depolamasındaki lekeler veya bu örnekte olduğu gibi diskteki JSON belgeleri olabilir. [Hotels.json'ı](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels.json) indirebilir veya aşağıdaki içerikle kendi **hotels.json** dosyanızı oluşturabilirsiniz:
 
 ```json
 {
@@ -574,7 +574,7 @@ async postDataAsync(hotelsData) {
 
 ```
 
-Bu verileri programınıza yüklemek için, üst kısımdaki `hotelData` başvuruda bulunan satırı ekleyerek **index. js** ' yi değiştirin:
+Bu verileri programınıza yüklemek için, `hotelData` en üste atıfta bulunan satırı ekleyerek **index.js'yi** değiştirin:
 
 ```javascript
 const nconf = require('nconf');
@@ -583,7 +583,7 @@ const hotelData = require('./hotels.json');
 const indexDefinition = require('./hotels_quickstart_index.json');
 ```
 
-Şimdi **index. js**içindeki `run()` işlevini değiştirin. Dizinin kullanılabilir olması birkaç saniye sürebilir, bu nedenle `AzureSearchClient.postDataAsync(hotelData)`çağrılmadan önce 2 saniyelik bir duraklama ekleyin:
+Şimdi `run()` **index.js işlevini değiştirin.** Dizinin kullanılabilir olması birkaç saniye sürebilir, bu nedenle aramadan `AzureSearchClient.postDataAsync(hotelData)`önce 2 saniyelik bir duraklama ekleyin:
 
 ```javascript
 const run = async () => {
@@ -605,13 +605,13 @@ const run = async () => {
 }
 ```
 
-Programı `node index.js`yeniden çalıştırın. Adım 1 ' de gördüğenlerden biraz farklı bir ileti kümesi görmeniz gerekir. Bu kez _, Dizin mevcut_ olur ve uygulama yeni dizin oluşturmadan ve verileri kendisine göndermeksizin silme hakkında bir ileti görmeniz gerekir. 
+Programı yeniden çalıştırın. `node index.js` Adım 1'de gördükleriniz den biraz farklı bir ileti kümesi görmeniz gerekir. Bu kez, _dizin_ var ve uygulama yeni dizin oluşturmadan ve ona veri göndermeden önce dizini silme yle ilgili iletiyi görmeniz gerekir. 
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-Azure portal arama hizmetinize **genel bakış** bölümünde **dizinler** sekmesine dönün. Dizininiz artık dört belge içerir ve bir miktar depolama alanı tüketir (UI 'nin dizinin temel durumunu düzgün bir şekilde yansıtması birkaç dakika sürebilir). **Arama Gezgini**'ne alınacak dizin adına tıklayın. Bu sayfa, veri sorgularıyla denemeler yapmanıza olanak sağlar. `*&$count=true` bir sorgu dizesinde aramayı deneyin ve tüm belgelerinizi ve sonuç sayısını geri almanız gerekir. Sorgu dizesi `historic&highlight=Description&$filter=Rating gt 4` deneyin ve tek bir belgeyi geri almanız gerekir ve bu "geçmiş" kelimesiyle birlikte `<em></em>` etiketlere sarmalanır. [Azure bilişsel arama 'de bir sorgu oluşturma](https://docs.microsoft.com/azure/search/search-query-overview)hakkında daha fazla bilgi edinin. 
+Azure portalındaki arama hizmetinizin **Genel Görünümü'ndeki** **Dizinler** sekmesine geri dönün. Dizinşimdi dört belge içerir ve bir miktar depolama alanı tüketir (Kullanıcı Arabirimi'nin dizinin temel durumunu düzgün bir şekilde yansıtması birkaç dakika sürebilir). **Arama Gezgini'ne**götürülmek üzere dizin adını tıklatın. Bu sayfa, veri sorguları ile deneme yapmanızı sağlar. Bir sorgu dize `*&$count=true` arama deneyin ve tüm belgeleri ve sonuç sayısını geri almak gerekir. Sorgu dizesini `historic&highlight=Description&$filter=Rating gt 4` deneyin ve etiketlere `<em></em>` "tarihi" sözcüğü sarılı tek bir belgeyi geri almalısınız. [Azure Bilişsel Arama'da sorgu oluşturma](https://docs.microsoft.com/azure/search/search-query-overview)hakkında daha fazla bilgi edinin. 
 
-**İndex. js** ' i açarak ve bu kodu üst kısımdaki şekilde ekleyerek kodda bu sorguları yeniden oluşturun:
+**Index.js'yi** açarak ve bu kodu en üste ekleyerek bu sorguları kod halinde çoğaltın:
 
 ```javascript
 const queries = [
@@ -620,7 +620,7 @@ const queries = [
 ];
 ```
 
-Aynı **index. js** dosyasında, aşağıda gösterilen `doQueriesAsync()` işlevi yazın. Bu işlev bir `AzureSearchClient` nesnesi alır ve `AzureSearchClient.queryAsync` yöntemini `queries` dizisindeki her değere uygular. Yalnızca tüm sorgular çözümlendikten sonra çözümlenen tek bir `Promise` döndürmek için `Promise.all()` işlevini kullanır. `JSON.stringify(body, null, 4)` çağrısı sorgu sonucunu daha okunaklı olacak şekilde biçimlendirir.
+Aynı **index.js** dosyasında, `doQueriesAsync()` aşağıda gösterilen işlevi yazın. Bu işlev `AzureSearchClient` bir nesne alır `AzureSearchClient.queryAsync` ve `queries` dizideki değerlerin her birine yöntemi uygular. Yalnızca tüm `Promise.all()` sorgular çözüldüğünde çözüme kavuşturan bir single `Promise` döndürmek için işlevi kullanır. Sorgu sonucunu `JSON.stringify(body, null, 4)` daha okunabilir olacak şekilde biçimlendirme çağrısı.
 
 ```javascript
 async function doQueriesAsync(client) {
@@ -635,7 +635,7 @@ async function doQueriesAsync(client) {
 }
 ```
 
-`run()` işlevini, dizin oluşturucunun çalışması için yeterince uzun süre duraklatıp ve sonra `doQueriesAsync(client)` işlevini çağırmak için değiştirin:
+Dizinleyicinin `run()` çalışması için yeterince uzun süre duraklatmak `doQueriesAsync(client)` ve sonra işlevi çağırmak için işlevi değiştirin:
 
 ```javascript
 const run = async () => {
@@ -660,13 +660,13 @@ const run = async () => {
 }
 ```
 
-`AzureSearchClient.queryAsync(query)`uygulamak için, **AzureSearchClient. js**dosyasını düzenleyin. Arama farklı bir uç nokta gerektirir ve arama terimleri URL bağımsız değişkenleri haline gelir. bu nedenle, zaten yazdığınız `getIndexUrl()` ve `getPostDataUrl()` yöntemlerinin yanı sıra işlev `getSearchUrl(searchTerm)` ekleyin.
+Uygulamak `AzureSearchClient.queryAsync(query)`için **AzureSearchClient.js**dosyasını edin. Arama yapmak farklı bir bitiş noktası gerektirir ve arama terimleri URL bağımsız değişkenleri haline gelir, bu nedenle işlevi `getSearchUrl(searchTerm)` daha önce yazdığınız `getIndexUrl()` yöntemlerin `getPostDataUrl()` yanına ekleyin.
 
 ```javascript
 getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
  ```
 
-`queryAsync(searchTerm)` işlevi ayrıca **AzureSearchClient. js** ' de gider ve `postDataAsync(data)` ve diğer sorgulama işlevleriyle aynı yapıyı izler: 
+İşlev `queryAsync(searchTerm)` ayrıca **AzureSearchClient.js'de** de geçer `postDataAsync(data)` ve diğer sorgu işlevleriyle aynı yapıyı izler: 
 
 ```javascript
 async queryAsync(searchTerm) {
@@ -678,31 +678,31 @@ async queryAsync(searchTerm) {
 }
 ```
 
-Arama terimi URL 'nin bir parçası olduğundan, arama "GET" fiili ve gövde olmadan gerçekleştirilir. `queryAsync(searchTerm)`, yönetici anahtarını kullanan diğer işlevlerden farklı olarak `this.queryKey`kullandığından emin olun. Adın gösterdiği gibi sorgu anahtarları yalnızca dizini sorgulamak için kullanılabilir ve dizini herhangi bir şekilde değiştirmek için kullanılamaz. Bu nedenle, sorgu anahtarlarının istemci uygulamalarına dağıtılması daha güvenlidir.
+Arama terimi URL'nin bir parçası olduğundan, arama "GET" fiili ile yapılır ve gövde yoktur. Yönetici `queryAsync(searchTerm)` anahtarını kullanan diğer işlevlerin aksine, kullandığına `this.queryKey`dikkat edin. Sorgu anahtarları, adından da anlaşılacağı gibi, yalnızca dizin sorgulamak için kullanılabilir ve dizin herhangi bir şekilde değiştirmek için kullanılamaz. Bu nedenle sorgu anahtarları istemci uygulamalarına dağıtmak için daha güvenlidir.
 
-Programı `node index.js`çalıştırın. Şimdi, önceki adımlara ek olarak sorgular gönderilir ve sonuçlar konsola yazılır.
+Programı `node index.js`' yla çalıştırın. Şimdi, önceki adımlara ek olarak, sorgular gönderilir ve sonuçlar konsola yazılır.
 
 ### <a name="about-the-sample"></a>Örnek hakkında
 
-Örnek, Azure Bilişsel Arama Dizin oluşturma ve sorgulama hakkında temel bilgileri göstermek için yeterli miktarda otel verisi kullanır.
+Örnek, Azure Bilişsel Arama dizini oluşturma ve sorgulama temellerini göstermek için yeterli olan az miktarda otel verisi kullanır.
 
-**AzureSearchClient** sınıfı, arama hizmeti için yapılandırma, URL 'ler ve temel http isteklerini kapsar. **İndex. js** dosyası, Azure bilişsel arama hizmeti için yapılandırma verilerini, dizin oluşturma için karşıya yüklenecek otel verilerini ve `run` işlevinde, siparişlerde ve çeşitli işlemleri yürüten şekilde yükler.
+**AzureSearchClient** sınıfı, arama hizmeti için yapılandırmayı, URL'leri ve temel HTTP isteklerini kapsüller. **Index.js** dosyası, Azure Bilişsel Arama hizmetinin yapılandırma verilerini, dizin oluşturma için yüklenecek otel `run` verilerini ve işlevinde çeşitli işlemleri siparişlerve yürütür.
 
-`run` işlevinin genel davranışı, varsa Azure Bilişsel Arama dizinini silmek, dizini oluşturmak, bazı verileri eklemek ve bazı sorgular gerçekleştirmek için kullanılır.  
+İşlevin `run` genel davranışı, varsa Azure Bilişsel Arama dizinini silmek, dizin oluşturmak, bazı veriler eklemek ve bazı sorgular gerçekleştirmektir.  
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
-Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
+Sol navigasyon bölmesindeki **Tüm kaynaklar** veya **Kaynak grupları** bağlantısını kullanarak portaldaki kaynakları bulabilir ve yönetebilirsiniz.
 
-Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz. 
+Ücretsiz bir hizmet kullanıyorsanız, üç dizin, dizin ve veri kaynağıyla sınırlı olduğunuzu unutmayın. Sınırın altında kalmak için portaldaki tek tek öğeleri silebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu Node. js hızlı başlangıç sürümünde bir dizin oluşturmak, belgeler ile yüklemek ve sorguları çalıştırmak için bir dizi görev üzerinden çalıştık. Yapılandırmayı okuma ve sorguları tanımlama gibi mümkün olan en basit yol için bazı adımlar yaptık. Gerçek bir uygulamada, bu kaygıları esneklik ve kapsülleme sağlayacak ayrı modüller halinde yerleştirmek isteyeceksiniz. 
+Bu Düğüm.js hızlı başlatmada, bir dizin oluşturmak, belgelerle yüklemek ve sorguları çalıştırmak için bir dizi görev üzerinde çalıştınız. Yapılandırmayı okuma ve sorguları tanımlama gibi belirli adımları mümkün olan en basit şekilde yaptık. Gerçek bir uygulamada, bu endişeleri esneklik ve kapsülleme sağlayacak ayrı modüllere koymak isteyebilirsiniz. 
  
-Azure Bilişsel Arama 'de zaten bir arka plana sahipseniz, bu örneği, öneri araçları (tür kullanımı veya otomatik tamamlama sorguları), filtreler ve çok yönlü gezinme için bir Springboard olarak kullanabilirsiniz. Azure Bilişsel Arama 'de yeni başladıysanız, oluşturabileceğiniz özellikler hakkında daha fazla öğreticiyi anlamak için başka öğreticiler denemeyi öneririz. Daha fazla kaynak bulmak için [belge sayfamızı](https://azure.microsoft.com/documentation/services/search/) ziyaret edin. 
+Azure Bilişsel Arama'da zaten bir geçmişiniz varsa, bu örneği öneriyi önerenler (ileri de yazı veya otomatik tamamlama sorguları), filtreler ve yönlü gezinmeyi denemek için sıçrama tahtası olarak kullanabilirsiniz. Azure Bilişsel Arama'da yeniyseniz, neler oluşturabileceğinizi anlamak için diğer öğreticileri denemenizi öneririz. Daha fazla kaynak bulmak için [belge sayfamızı](https://azure.microsoft.com/documentation/services/search/) ziyaret edin. 
 
 > [!div class="nextstepaction"]
-> [JavaScript kullanarak bir Web sayfasından Azure Bilişsel Arama çağırma](https://github.com/liamca/azure-search-javascript-samples)
+> [Javascript kullanarak Bir Web Sayfasından Azure Bilişsel Arama'yı Arayın](https://github.com/liamca/azure-search-javascript-samples)

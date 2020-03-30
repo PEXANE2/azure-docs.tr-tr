@@ -1,24 +1,24 @@
 ---
-title: 'Hızlı başlangıç: ilk Azure CLı sorgunuz'
-description: Bu hızlı başlangıçta, Azure CLı için kaynak grafik uzantısını etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
+title: 'Hızlı başlatma: İlk Azure CLI sorgunuz'
+description: Bu hızlı başlangıçta, Azure CLI için Kaynak Grafiği uzantısını etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240670"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk kaynak grafik sorgunuzu çalıştırma
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Hızlı başlatma: Azure CLI'yi kullanarak ilk Kaynak Grafiği sorgunuzu çalıştırın
 
 Azure Kaynak Grafı’nı kullanmada ilk adım, [Azure CLI](/cli/azure/) uzantısının yüklü olup olmadığını kontrol etmektir. Bu hızlı başlangıç, Azure CLI yüklemenize uzantı ekleme işlemini incelemenizi sağlar. Uzantıyı Azure CLI ile, yerel veya [Azure Cloud Shell](https://shell.azure.com) aracılığıyla yüklü olarak kullanabilirsiniz.
 
 Bu işlemin sonunda, uzantıyı seçtiğiniz Azure CLI yüklemesine eklemiş ve ilk Kaynak Grafı sorgunuzu çalıştırmış olacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Azure CLI’sinin Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek için uzantı eklenmelidir. Bu uzantı; [Windows 10 üzerinde bash](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (ikisi de tek başına ve portalın içinde), [Azure CLI Docker resmi](https://hub.docker.com/r/microsoft/azure-cli/) dahil olmak üzere Azure CLI’sinin kullanılabildiği her yerde çalışır veya yerel olarak yüklenir.
 
-1. En son Azure CLı 'nın yüklü olup olmadığını denetleyin (en azından **2.0.76**). Henüz yüklenmiş değilse, [bu yönergeleri](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) izleyin.
+1. En son Azure CLI'sinin yüklü olup olmadığını kontrol edin (en az **2.0.76).** Henüz yüklenmiş değilse, [bu yönergeleri](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) izleyin.
 
 1. Seçtiğiniz Azure CLI ortamınızda, aşağıdaki komutu kullanarak içeri aktarın:
 
@@ -35,7 +35,7 @@ Azure CLI’sinin Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek iç
    az extension add --name resource-graph
    ```
 
-1. Uzantının yüklendiğini ve beklenen sürüm (en az **1.0.0**) olduğunu doğrulayın:
+1. Uzantın yüklü olduğunu ve beklenen sürüm olduğunu doğrulayın (en az **1.0.0):**
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -91,7 +91,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, kaynak grafiği uzantısını Azure CLı ortamınıza eklediniz ve ilk sorgunuzu çalıştırmalısınız. Kaynak grafik dili hakkında daha fazla bilgi edinmek için sorgu dili ayrıntıları sayfasına ilerleyin.
+Bu hızlı başlangıçta, Azure CLI ortamınıza Kaynak Grafiği uzantısını eklediniz ve ilk sorgunuzu çalıştırın. Kaynak grafik dili hakkında daha fazla bilgi edinmek için, sorgu dili ayrıntıları sayfasına devam edin.
 
 > [!div class="nextstepaction"]
 > [Sorgu dili hakkında daha fazla bilgi alın](./concepts/query-language.md)

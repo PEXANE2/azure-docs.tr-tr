@@ -1,45 +1,45 @@
 ---
-title: Azure Kubernetes hizmeti (AKS) denetleyici günlüklerini görüntüleme
-description: Azure Kubernetes Service (AKS) ' de Kubernetes ana düğümü için günlükleri etkinleştirme ve görüntüleme hakkında bilgi edinin
+title: Azure Kubernetes Hizmeti (AKS) denetleyici günlüklerini görüntüleyin
+description: Azure Kubernetes Hizmeti'ndeki (AKS) Kubernetes ana düğümünün günlüklerini nasıl etkinleştirip görüntüleyebilirsiniz öğrenin
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259389"
 ---
-# <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Kubernetes ana düğüm günlüklerini etkinleştirme ve gözden geçirme
+# <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme
 
-Azure Kubernetes hizmeti (AKS) ile, *kuas-apiserver* ve *kuin-Controller-Manager* gibi ana bileşenler yönetilen bir hizmet olarak sağlanır. *Kubelet* ve kapsayıcı çalışma zamanı 'nı çalıştıran düğümleri oluşturup yönetirsiniz ve uygulamalarınızı yönetilen Kubernetes API sunucusu aracılığıyla dağıtırsınız. Uygulamanızın ve hizmetlerinizin sorunlarını gidermenize yardımcı olmak için bu ana bileşenler tarafından oluşturulan günlükleri görüntülemeniz gerekebilir. Bu makalede, Kubernetes ana bileşenlerinden günlükleri etkinleştirmek ve sorgulamak için Azure Izleyici günlüklerinin nasıl kullanılacağı gösterilir.
+Azure Kubernetes Service (AKS) ile *kube-apiserver* ve *kube-controller-manager* gibi ana bileşenler yönetilen bir hizmet olarak sağlanır. *Kubelet* ve kapsayıcı çalışma süresini çalıştıran düğümleri oluşturur ve yönetir ve uygulamalarınızı yönetilen Kubernetes API sunucusu üzerinden dağıtırsınız. Uygulamanızı ve hizmetlerinizi gidermeye yardımcı olmak için, bu ana bileşenler tarafından oluşturulan günlükleri görüntülemeniz gerekebilir. Bu makalede, Kubernetes ana bileşenlerinden günlükleri etkinleştirmek ve sorgulamak için Azure Monitor günlüklerini nasıl kullanacağınızı gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, Azure hesabınızda çalışan mevcut bir AKS kümesi gerekir. Zaten bir AKS kümeniz yoksa, [Azure CLI][cli-quickstart] veya [Azure Portal][portal-quickstart]kullanarak bir tane oluşturun. Azure Izleyici günlükleri hem RBAC hem de RBAC olmayan AKS kümeleriyle birlikte kullanılabilir.
+Bu makalede, Azure hesabınızda çalışan varolan bir AKS kümesi gerektirir. Zaten bir AKS kümeniz yoksa, Azure [CLI][cli-quickstart] veya [Azure portalını][portal-quickstart]kullanarak bir tane oluşturun. Azure Monitor günlükleri hem RBAC hem de RBAC özellikli olmayan AKS kümeleriyle çalışır.
 
-## <a name="enable-diagnostics-logs"></a>Tanılama günlüklerini etkinleştir
+## <a name="enable-diagnostics-logs"></a>Tanılama günlüklerini etkinleştirme
 
-Azure Izleyici günlükleri, birden fazla kaynaktaki verileri toplayıp gözden geçirmesine yardımcı olmak için ortamınıza ilişkin Öngörüler sağlayan bir sorgu dili ve analiz altyapısı sağlar. Çalışma alanı, verileri harmanlamak ve analiz etmek için kullanılır ve Application Insights ve Güvenlik Merkezi gibi diğer Azure hizmetleriyle tümleştirilebilir. Günlükleri çözümlemek üzere farklı bir platform kullanmak için, bunun yerine bir Azure depolama hesabına veya Olay Hub 'ına tanılama günlükleri gönderilmesini seçebilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici günlükleri nedir?][log-analytics-overview].
+Azure Monitor günlükleri, birden çok kaynaktan veri toplamaya ve gözden geçirmeye yardımcı olmak için ortamınıza ilişkin öngörüler sağlayan bir sorgu dili ve analiz motoru sağlar. Bir çalışma alanı verileri harmanlamak ve çözümlemek için kullanılır ve Uygulama Öngörüleri ve Güvenlik Merkezi gibi diğer Azure hizmetleriyle tümleştirilebilir. Günlükleri çözümlemek için farklı bir platform kullanmak için, tanılama günlüklerini bir Azure depolama hesabına veya etkinlik merkezine göndermeyi seçebilirsiniz. Daha fazla bilgi için Azure [Monitor günlükleri nedir?][log-analytics-overview]
 
-Azure Izleyici günlükleri Azure portal etkinleştirilir ve yönetilir. AKS kümenizdeki Kubernetes ana bileşenleri için günlük toplamayı etkinleştirmek üzere, Azure portal bir Web tarayıcısında açın ve aşağıdaki adımları uygulayın:
+Azure Monitor günlükleri Azure portalında etkinleştirilir ve yönetilir. AKS kümenizdeki Kubernetes ana bileşenleri için günlük koleksiyonunu etkinleştirmek için, azure portalını bir web tarayıcısında açın ve aşağıdaki adımları tamamlayın:
 
-1. AıKS kümeniz için kaynak grubunu ( *Myresourcegroup*gibi) seçin. *MC_myResourceGroup_myAKSCluster_eastus*gibi bireysel aks kümesi kaynaklarınızı içeren kaynak grubunu seçmeyin.
-1. Sol taraftaki **Tanılama ayarları**' nı seçin.
-1. *Myakscluster*gibi aks kümenizi seçin ve ardından **Tanılama ayarı eklemeyi**seçin.
-1. *Myaksclusterlogs*gibi bir ad girin ve **Log Analytics gönder**seçeneğini belirleyin.
-1. Mevcut bir çalışma alanını seçin veya yenisini oluşturun. Bir çalışma alanı oluşturursanız, bir çalışma alanı adı, bir kaynak grubu ve bir konum sağlayın.
-1. Kullanılabilir Günlükler listesinde, etkinleştirmek istediğiniz günlükleri seçin. Ortak Günlükler *kuin-apiserver*, *kuin-Controller-Manager*ve *kuin-Scheduler*' ı kapsar. *Kuto-Audit* ve *cluster-otomatik Scaler*gibi ek günlükleri etkinleştirebilirsiniz. Toplama Log Analytics çalışma alanları etkinleştirildikten sonra, toplanan günlükleri döndürebilir ve değiştirebilirsiniz.
-1. Hazırsanız, seçili günlüklerin toplanmasını etkinleştirmek için **Kaydet** ' i seçin.
+1. *MYResourceGroup*gibi AKS kümenizin kaynak grubunu seçin. MC_myResourceGroup_myAKSCluster_eastus gibi tek tek AKS küme kaynaklarınızı içeren kaynak grubunu *seçmeyin.*
+1. Sol tarafta **Tanılama ayarlarını**seçin.
+1. *MYAKSCluster*gibi AKS kümenizi seçin ve **tanıayar eklemeyi**seçin.
+1. *myAKSClusterLogs*gibi bir ad girin, ardından **Günlük Analitiğine Gönder**seçeneğini seçin.
+1. Varolan bir çalışma alanı seçin veya yeni bir çalışma oluşturun. Bir çalışma alanı oluşturursanız, bir çalışma alanı adı, kaynak grubu ve bir konum sağlayın.
+1. Kullanılabilir günlükler listesinde, etkinleştirmek istediğiniz günlükleri seçin. Ortak günlükleri *kube-apiserver*, *kube-controller-manager*, ve *kube-scheduler*içerir. *Kube-audit* ve *cluster-autoscaler*gibi ek günlükleri etkinleştirebilirsiniz. Log Analytics çalışma alanları etkinleştirildikten sonra toplanan günlükleri iade edebilir ve değiştirebilirsiniz.
+1. Hazır olduğunuzda, seçili günlüklerin toplanmasını etkinleştirmek için **Kaydet'i** seçin.
 
-Aşağıdaki örnek Portal ekran görüntüsü *Tanılama ayarları* penceresini gösterir:
+Aşağıdaki örnek portal ekran görüntüsü *Tanılama ayarları* penceresini gösterir:
 
-![AKS kümesinin Azure Izleyici günlükleri için Log Analytics çalışma alanını etkinleştirin](media/view-master-logs/enable-oms-log-analytics.png)
+![AKS kümesinin Azure Monitör günlükleri için Günlük Analizi çalışma alanını etkinleştirme](media/view-master-logs/enable-oms-log-analytics.png)
 
-## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS kümesinde bir test Pod 'u zamanlama
+## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS kümesinde bir test bölmesi zamanlama
 
-Bazı günlükler oluşturmak için AKS kümenizde yeni bir pod oluşturun. Aşağıdaki örnek YAML bildirimi, temel bir NGıNX örneği oluşturmak için kullanılabilir. İstediğiniz düzenleyicide `nginx.yaml` adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
+Bazı günlükler oluşturmak için AKS kümenizde yeni bir bölme oluşturun. Aşağıdaki örnek YAML bildirimi temel bir NGINX örneği oluşturmak için kullanılabilir. Seçtiğiniz bir `nginx.yaml` düzenleyicide adı geçen bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -61,7 +61,7 @@ spec:
     - containerPort: 80
 ```
 
-[Kubectl Create][kubectl-create] komutuyla Pod oluşturun ve aşağıdaki örnekte gösterildiği gibi YAML Dosyanızı belirtin:
+[Kubectl oluşturma][kubectl-create] komutu ile pod oluşturun ve aşağıdaki örnekte gösterildiği gibi YAML dosyanızı belirtin:
 
 ```
 $ kubectl create -f nginx.yaml
@@ -69,13 +69,13 @@ $ kubectl create -f nginx.yaml
 pod/nginx created
 ```
 
-## <a name="view-collected-logs"></a>Toplanan günlükleri görüntüle
+## <a name="view-collected-logs"></a>Toplanan günlükleri görüntüleme
 
-Tanılama günlüklerinin etkinleştirilmesi ve Log Analytics çalışma alanında gösterilmesi birkaç dakika sürebilir. Azure portal, Log Analytics çalışma alanınız için *Myresourcegroup*gibi kaynak grubunu seçin ve ardından *Myakslogs*gibi Log Analytics kaynağını seçin.
+Tanılama günlüklerinin etkinleştirilmesi ve Log Analytics çalışma alanında görünmesi birkaç dakika sürebilir. Azure portalında, *myResourceGroup*gibi Günlük Analizi çalışma alanınız için kaynak grubunu seçin ve ardından *myAKSLogs*gibi günlük analiz kaynağınızı seçin.
 
-![AKS kümeniz için Log Analytics çalışma alanını seçin](media/view-master-logs/select-log-analytics-workspace.png)
+![AKS kümeniz için Günlük Analizi çalışma alanını seçin](media/view-master-logs/select-log-analytics-workspace.png)
 
-Sol taraftaki **Günlükler**' i seçin. *Kuin-apiserver*' i görüntülemek için, metin kutusuna aşağıdaki sorguyu girin:
+Sol tarafta, **Günlükler'i**seçin. *Kube-apiserver'ı*görüntülemek için metin kutusuna aşağıdaki sorguyu girin:
 
 ```
 AzureDiagnostics
@@ -83,7 +83,7 @@ AzureDiagnostics
 | project log_s
 ```
 
-API sunucusu için büyük olasılıkla çok sayıda günlük döndürüldü. Önceki adımda oluşturulan NGıNX Pod hakkındaki günlükleri görüntülemek için sorguyu aşağı eklemek üzere, aşağıdaki örnek sorguda gösterildiği gibi *pods/NGINX* için arama yapmak üzere ek bir *WHERE* ifadesini ekleyin:
+Birçok günlükleri büyük olasılıkla API sunucusu için döndürülür. Önceki adımda oluşturulan NGINX pod'u hakkındaki günlükleri görüntülemek için sorguyu kapsamak için, aşağıdaki örnek sorguda gösterildiği gibi *pod/nginx* aramak için ek bir *ifade* ekleyin:
 
 ```
 AzureDiagnostics
@@ -92,40 +92,40 @@ AzureDiagnostics
 | project log_s
 ```
 
-Aşağıdaki örnek ekran görüntüsünde gösterildiği gibi NGıNX Pod 'ağınız için belirli Günlükler görüntülenir:
+NGINX bölmeniz için belirli günlükler aşağıdaki örnek ekran görüntüsünde gösterildiği gibi görüntülenir:
 
-![Örnek NGıNX pod için Log Analytics sorgu sonuçları](media/view-master-logs/log-analytics-query-results.png)
+![Örnek NGINX pod için günlük analiz sorgu sonuçları](media/view-master-logs/log-analytics-query-results.png)
 
-Ek günlükleri görüntülemek için, etkinleştirdiğiniz ek günlüklere bağlı olarak *Kategori* adı sorgusunu *Kuto-Controller-Manager* veya *Kuto-Scheduler*olarak güncelleştirebilirsiniz. Daha sonra, aradığınız olayları iyileştirmek için ek *WHERE* deyimleri kullanılabilir.
+Ek günlükleri görüntülemek için, kategori *adı* için sorguyu *kube-controller-manager* veya *kube-scheduler'a,* etkinleştirdiğiniz ek günlüklere bağlı olarak güncelleştirebilirsiniz. *İfadelerin* daha sonra aradığınız olayları hassaslaştırmak için kullanılabildiği ek.
 
-Günlük verilerinizi sorgulama ve filtreleme hakkında daha fazla bilgi için bkz. [Log Analytics günlük araması ile toplanan verileri görüntüleme veya çözümleme][analyze-log-analytics].
+Günlük verilerinizin nasıl sorgulandığı ve filtrelenebildiğiniz hakkında daha fazla bilgi için, [günlük analizi günlük aramasıyla toplanan verileri görüntüleme veya analiz etme][analyze-log-analytics]bölümüne bakın.
 
-## <a name="log-event-schema"></a>Olay şemasını günlüğe kaydet
+## <a name="log-event-schema"></a>Günlük olay şeması
 
-Günlük verilerini çözümlemeye yardımcı olması için aşağıdaki tabloda her bir olay için kullanılan şemanın ayrıntıları verilmiştir:
+Günlük verilerini çözümlemeye yardımcı olmak için, aşağıdaki tablo her olay için kullanılan şemayı ayrıntılarıyla anlatır:
 
 | Alan adı               | Açıklama |
 |--------------------------|-------------|
-| *RESOURCEID*             | Günlüğü üreten Azure kaynağı |
-| *ışınızda*                   | Günlüğün karşıya yüklendiği zaman damgası |
-| *alan*               | Günlüğü oluşturan kapsayıcı/bileşen adı |
-| *operationName*          | Her zaman *Microsoft. ContainerService/Managedkümeler/diagnosticLogs/Read* |
-| *Properties. log*         | Bileşenden alınan günlüğün tam metni |
-| *Properties. Stream*      | *stderr* veya *stdout* |
-| *Properties. Pod*         | Günlüğün geldiği Pod adı |
-| *Properties. Containerıd* | Bu günlüğün geldiği Docker kapsayıcısının KIMLIĞI |
+| *Resourceıd*             | Günlüğü oluşturan azure kaynağı |
+| *time*                   | Günlüğün yüklendiği zaman ait zaman damgası |
+| *category*               | Günlüğü oluşturan kapsayıcının/bileşenin adı |
+| *operationName*          | Her zaman *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
+| *properties.log*         | Bileşenden günlüğün tam metni |
+| *properties.stream*      | *stderr* veya *stdout* |
+| *özellikleri.pod*         | Günlüğün geldiği bölme adı |
+| *properties.containerID* | Bu günlük gelen docker konteyner kimliği |
 
-## <a name="log-roles"></a>Günlük rolleri
+## <a name="log-roles"></a>Günlük Rolleri
 
 | Rol                     | Açıklama |
 |--------------------------|-------------|
-| *aksService*             | Denetim düzlemi işlemi için denetim günlüğünde görünen ad (hcpService 'ten) |
-| *MasterClient*           | MasterClientCertificate için denetim günlüğünde görünen ad, az aks Get-Credentials öğesinden aldığınız sertifika |
-| *nodeclient*             | Aracı düğümleri tarafından kullanılan ClientCertificate için görünen ad |
+| *aksService*             | Denetim düzlemi işlemi için denetim günlüğündeki görüntü adı (hcpService'den) |
+| *masterclient*           | MasterClientCertificate için denetim günlüğündeki ekran adı, az aks get-credentials'dan aldığınız sertifika |
+| *düğüm istemcisi*             | Aracı düğümleri tarafından kullanılan ClientCertificate'ın görüntü adı |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, AKS kümenizdeki Kubernetes ana bileşenlerine yönelik günlüklerin nasıl etkinleştirileceğini ve gözden geçirildiğini öğrendiniz. Daha fazla izlemek ve sorun gidermek için [Kubelet günlüklerini görüntüleyebilir][kubelet-logs] ve [SSH düğüm erişimini etkinleştirebilirsiniz][aks-ssh].
+Bu makalede, AKS kümenizdeki Kubernetes ana bileşenlerinin günlüklerini etkinleştirmeyi ve gözden geçirini öğrendiniz. Daha fazla izlemek ve sorun gidermek için [Kubelet günlüklerini görüntüleyebilir][kubelet-logs] ve [SSH düğümü erişimini etkinleştirebilirsiniz.][aks-ssh]
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

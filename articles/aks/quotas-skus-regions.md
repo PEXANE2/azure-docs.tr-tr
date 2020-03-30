@@ -1,21 +1,21 @@
 ---
-title: Azure Kubernetes Service (AKS) içinde kotalar, SKU 'Lar ve bölge kullanılabilirliği
-description: Azure Kubernetes hizmeti 'nin (AKS) varsayılan kotaları, sınırlı düğüm sanal makine SKU boyutları ve bölge kullanılabilirliği hakkında bilgi edinin.
+title: Azure Kubernetes Hizmetinde (AKS) kotalar, SDO'lar ve bölge kullanılabilirliği
+description: Varsayılan kotalar, kısıtlı düğüm VM SKU boyutları ve Azure Kubernetes Hizmetinin (AKS) bölge kullanılabilirliği hakkında bilgi edinin.
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: 03e7396932f0813ef4bd00d644dcdaddfe229e6a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252837"
 ---
-# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği
+# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği
 
-Tüm Azure Hizmetleri, kaynaklar ve özellikler için varsayılan limitleri ve kotaları ayarlar. Belirli sanal makine (VM) SKU 'Ları de kullanılmak üzere kısıtlanmıştır.
+Tüm Azure hizmetleri, kaynaklar ve özellikler için varsayılan sınırlar ve kotalar belirler. Bazı sanal makine (VM) SUS'lar da kullanım için sınırlıdır.
 
-Bu makalede, Azure Kubernetes hizmeti (AKS) kaynakları için varsayılan kaynak sınırları ve Azure bölgelerindeki AKS kullanılabilirliği ayrıntılı olarak açıklanır.
+Bu makalede, Azure Kubernetes Hizmeti (AKS) kaynakları için varsayılan kaynak sınırları ve AkS'nin Azure bölgelerinde kullanılabilirliği ayrıntılı olarak açıklanmaktadır.
 
 ## <a name="service-quotas-and-limits"></a>Hizmet kotaları ve limitleri
 
@@ -23,14 +23,14 @@ Bu makalede, Azure Kubernetes hizmeti (AKS) kaynakları için varsayılan kaynak
 
 ## <a name="provisioned-infrastructure"></a>Sağlanan altyapı
 
-Tüm diğer ağ, işlem ve depolama sınırları, sağlanan altyapıya uygulanır. İlgili sınırlar için bkz. [Azure aboneliği ve hizmet sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Tüm diğer ağ, işlem ve depolama sınırları, sağlanan altyapıya uygulanır. İlgili sınırlar için [Azure abonelik ve hizmet sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md)bakın.
 
 > [!IMPORTANT]
-> Bir AKS kümesini yükselttiğinizde, ek kaynaklar geçici olarak kullanılır. Bu kaynaklar, bir sanal ağ alt ağı veya sanal makine vCPU kotası içindeki kullanılabilir IP adreslerini içerir. Windows Server kapsayıcıları (Şu anda AKS ' de önizlemede) kullanıyorsanız, düğümlere en son güncelleştirmeleri uygulamak için yapılan tek onaylama yaklaşımı, bir yükseltme işlemi gerçekleştirmekte. Başarısız bir küme yükseltme işlemi, bu geçici kaynakları işlemek için kullanılabilir IP adresi alanına veya vCPU kotasına sahip olmadığınız anlamına gelebilir. Windows Server düğüm yükseltme işlemi hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
+> Bir AKS kümesini yükselttiğinde, ek kaynaklar geçici olarak tüketilir. Bu kaynaklar, sanal ağ alt ağındaki kullanılabilir IP adreslerini veya sanal makine vCPU kotası içerir. Windows Server kapsayıcıları kullanıyorsanız (şu anda AKS önizlemede), düğümlere en son güncelleştirmeleri uygulamak için onaylanan tek yaklaşım bir yükseltme işlemi gerçekleştirmektir. Başarısız küme yükseltme işlemi, bu geçici kaynakları işlemek için kullanılabilir IP adresi alanı veya vCPU kotası olmadığını gösterebilir. Windows Server düğüm yükseltme işlemi hakkında daha fazla bilgi için [AKS'de düğüm havuzunu yükseltme bölümüne][nodepool-upgrade]bakın.
 
-## <a name="restricted-vm-sizes"></a>Kısıtlanmış VM boyutları
+## <a name="restricted-vm-sizes"></a>Kısıtlı VM boyutları
 
-Bir AKS kümesindeki her düğüm, vCPU ve bellek gibi sabit bir işlem kaynakları içerir. Aks düğümü yetersiz işlem kaynakları içeriyorsa, Pod düzgün çalışmayabilir. Gerekli *kuyaların* ve uygulamalarınızın güvenilir bir şekilde zamanlanmasını sağlamak için **aks 'de aşağıdaki VM SKU 'larını kullanmayın**:
+AKS kümesindeki her düğüm, vCPU ve bellek gibi sabit miktarda işlem kaynağı içerir. Bir AKS düğümü yetersiz bilgi işlem kaynakları içeriyorsa, bölmeler düzgün çalışmayabilir. Gerekli *kube-sistem* bölmelerinin ve uygulamalarınızın güvenilir bir şekilde zamanlanabilmesini sağlamak için **AKS'de aşağıdaki VM SKU'ları kullanmayın:**
 
 - Standard_A0
 - Standard_A1
@@ -40,15 +40,15 @@ Bir AKS kümesindeki her düğüm, vCPU ve bellek gibi sabit bir işlem kaynakla
 - Standard_F1
 - Standard_F1s
 
-VM türleri ve bunların işlem kaynakları hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için boyutlar][vm-skus].
+VM türleri ve bunların bilgi işlem kaynakları hakkında daha fazla bilgi için [Azure'daki sanal makinelerin Boyutlar'ına][vm-skus]bakın.
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Kümeleri dağıtmak ve çalıştırmak için kullanabileceğiniz en son liste için bkz. [aks bölge kullanılabilirliği][region-availability].
+Kümeleri dağıtabileceğiniz ve çalıştırabileceğiniz en son liste için [AKS bölge kullanılabilirliğine][region-availability]bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı varsayılan limitler ve kotalar artırılabilir. Kaynağınız bir artışı destekliyorsa, bir [Azure destek isteği][azure-support] üzerinden artış Isteyin ( **sorun türü**için **Kota**' i seçin).
+Bazı varsayılan limitler ve kotalar artırılabilir. Kaynağınız bir artışı destekliyorsa, Azure [destek isteği][azure-support] aracılığıyla artışı isteyin **(Sorun türü**için , **Kota'yı**seçin).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

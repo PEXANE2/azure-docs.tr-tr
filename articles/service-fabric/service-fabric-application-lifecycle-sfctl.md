@@ -1,95 +1,95 @@
 ---
-title: Sfctl kullanarak Azure Service Fabric uygulamalarını yönetme
-description: Azure Service Fabric CLı kullanarak Azure Service Fabric kümesinden uygulama dağıtmayı ve kaldırmayı öğrenin
+title: Azure Hizmet Kumaşı uygulamalarını sfctl kullanarak yönetme
+description: Azure Hizmet Kumaşı CLI'yi kullanarak uygulamaları Azure Hizmet Kumaşı kümesinden nasıl dağıtıp kaldırabilirsiniz öğrenin
 author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259077"
 ---
-# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLı (sfctl) kullanarak bir Azure Service Fabric uygulamasını yönetme
+# <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Hizmet Kumaşı CLI (sfctl) kullanarak Azure Hizmet Kumaşı uygulamasını yönetme
 
-Azure Service Fabric kümesinde çalışan uygulamalar oluşturmayı ve silmeyi öğrenin.
+Azure Hizmet Kumaşı kümesinde çalışan uygulamaların nasıl oluşturulup silindiğini öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Service Fabric CLı 'yi yükler. Sonra Service Fabric kümenizi seçin. Daha fazla bilgi için bkz. [SERVICE fabrıc CLI kullanmaya başlama](service-fabric-cli.md).
+* Servis Kumaş CLI yükleyin. Ardından, Service Fabric kümenizi seçin. Daha fazla bilgi için Service [Fabric CLI ile başlayın.](service-fabric-cli.md)
 
-* Dağıtım için bir Service Fabric uygulama paketi hazırlayın. Bir uygulamayı yazma ve paketleme hakkında daha fazla bilgi için [Service Fabric uygulama modeliyle](service-fabric-application-model.md)ilgili okuyun.
+* Kullanıma hazır bir Service Fabric uygulama paketi hazır olsun. Bir uygulamanın nasıl yazılave paketlenebildiğini öğrenmek için [Service Fabric uygulama modeli](service-fabric-application-model.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="overview"></a>Genel Bakış
 
-Yeni bir uygulama dağıtmak için şu adımları izleyin:
+Yeni bir uygulama dağıtmak için şu adımları tamamlayın:
 
-1. Service Fabric görüntü deposuna bir uygulama paketi yükleyin.
-2. Uygulama türü sağlayın.
-3. Görüntü deposu içeriğini silin.
+1. Hizmet Kumaşı resim mağazasına bir uygulama paketi yükleyin.
+2. Bir uygulama türünü sağlama.
+3. Resim deposu içeriğini silin.
 4. Bir uygulama belirtin ve oluşturun.
-5. Hizmet belirtin ve oluşturun.
+5. Hizmetleri belirtin ve oluşturun.
 
-Mevcut bir uygulamayı kaldırmak için şu adımları izleyin:
+Varolan bir uygulamayı kaldırmak için şu adımları tamamlayın:
 
 1. Uygulamayı silin.
-2. İlişkili uygulama türünün sağlamasını kaldır.
+2. İlişkili uygulama türünü sağlama.
 
 ## <a name="deploy-a-new-application"></a>Yeni bir uygulama dağıtma
 
-Yeni bir uygulama dağıtmak için aşağıdaki görevleri doldurun:
+Yeni bir uygulama dağıtmak için aşağıdaki görevleri tamamlayın:
 
-### <a name="upload-a-new-application-package-to-the-image-store"></a>Yeni bir uygulama paketini görüntü deposuna yükleme
+### <a name="upload-a-new-application-package-to-the-image-store"></a>Resim mağazasına yeni bir uygulama paketi yükleme
 
-Uygulama oluşturmadan önce, uygulama paketini Service Fabric görüntü deposuna yükleyin.
+Bir uygulama oluşturmadan önce, uygulama paketini Service Fabric resim mağazasına yükleyin.
 
-Örneğin, uygulama paketiniz `app_package_dir` dizinimizde, dizini karşıya yüklemek için aşağıdaki komutları kullanın:
+Örneğin, uygulama paketiniz dizindeyse, `app_package_dir` dizini yüklemek için aşağıdaki komutları kullanın:
 
 ```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
-Büyük uygulama paketleri için, karşıya yükleme işleminin ilerlemesini göstermek üzere `--show-progress` seçeneğini belirtebilirsiniz.
+Büyük uygulama paketleri için, `--show-progress` yüklemenin ilerlemesini görüntüleme seçeneğini belirtebilirsiniz.
 
 ### <a name="provision-the-application-type"></a>Uygulama türünü sağlama
 
-Karşıya yükleme tamamlandığında, uygulamayı sağlayın. Uygulamayı sağlamak için aşağıdaki komutu kullanın:
+Yükleme tamamlandığında, uygulamayı hükmüne başvurun. Uygulamayı sağlamak için aşağıdaki komutu kullanın:
 
 ```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
-`application-type-build-path` değeri, uygulama paketinizi karşıya yüklediğiniz dizinin adıdır.
+`application-type-build-path` Değer, başvuru paketinizi yüklediğiniz dizinin adıdır.
 
 ### <a name="delete-the-application-package"></a>Uygulama paketini silme
 
-Uygulama başarıyla kaydedildikten sonra uygulama paketini kaldırmanız önerilir.  Uygulama paketlerini görüntü deposundan silme sistem kaynaklarını boşaltır.  Kullanılmayan uygulama paketlerinin tutulması disk depolama alanı tüketir ve uygulama performans sorunlarına yol açar. 
+Uygulama başarıyla kaydedildikten sonra uygulama paketini kaldırmanız önerilir.  Uygulama paketlerini görüntü deposundan silerse sistem kaynaklarını boşaltAr.  Kullanılmayan uygulama paketlerinin tutulması disk depolamayı tüketir ve uygulama performansı sorunlarına yol açar. 
 
-Görüntü deposundan uygulama paketini silmek için şu komutu kullanın:
+Uygulama paketini resim deposundan silmek için aşağıdaki komutu kullanın:
 
 ```shell
 sfctl store delete --content-path app_package_dir
 ```
 
-`content-path`, uygulamayı oluştururken karşıya yüklediğiniz dizinin adı olmalıdır.
+`content-path`uygulamayı oluşturduğunuzda yüklediğiniz dizinin adı olmalıdır.
 
 ### <a name="create-an-application-from-an-application-type"></a>Uygulama türünden uygulama oluşturma
 
-Uygulamayı sağlamadıktan sonra, aşağıdaki komutu kullanarak uygulamanızı adlandırın ve oluşturun:
+Uygulamayı oluşturduktan sonra, uygulamanızı adlandırmak ve oluşturmak için aşağıdaki komutu kullanın:
 
 ```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name`, uygulama örneği için kullanmak istediğiniz addır. Daha önce sağlanan uygulama bildiriminden ek parametreler edinebilirsiniz.
+`app-name`uygulama örneği için kullanmak istediğiniz addır. Daha önce sağlanan uygulama bildiriminden ek parametreler alabilirsiniz.
 
-Uygulama adının `fabric:/`önekiyle başlaması gerekir.
+Uygulama adı önek `fabric:/`ile başlamalıdır.
 
-### <a name="create-services-for-the-new-application"></a>Yeni uygulama için hizmet oluşturma
+### <a name="create-services-for-the-new-application"></a>Yeni uygulama için hizmetler oluşturma
 
-Bir uygulama oluşturduktan sonra uygulamadan hizmetler oluşturun. Aşağıdaki örnekte, uygulamamızda yeni bir durum bilgisiz hizmeti oluşturacağız. Bir uygulamadan oluşturabileceğiniz hizmetler, önceden sağlanan uygulama paketindeki bir hizmet bildiriminde tanımlanmıştır.
+Bir uygulama oluşturduktan sonra, uygulamadan hizmetler oluşturun. Aşağıdaki örnekte, uygulamamızdan yeni bir devletsiz hizmet oluşturuyoruz. Bir uygulamadan oluşturabileceğiniz hizmetler, önceden sağlanan uygulama paketindeki bir hizmet bildiriminde tanımlanır.
 
 ```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
@@ -105,42 +105,42 @@ sfctl application list
 sfctl service list --application-id TestApp
 ```
 
-Hizmetin sağlıklı olduğunu doğrulamak için, hem hizmetin hem de uygulamanın sistem durumunu almak için benzer komutları kullanın:
+Hizmetin sağlıklı olduğunu doğrulamak için, hem hizmetin hem de uygulamanın durumunu almak için benzer komutları kullanın:
 
 ```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-Sağlıklı hizmetler ve uygulamalar `Ok``HealthState` bir değere sahiptir.
+Sağlıklı hizmet ve uygulamaların `HealthState` bir `Ok`değeri vardır.
 
-## <a name="remove-an-existing-application"></a>Mevcut bir uygulamayı kaldır
+## <a name="remove-an-existing-application"></a>Varolan bir uygulamayı kaldırma
 
-Bir uygulamayı kaldırmak için aşağıdaki görevleri doldurun:
+Bir uygulamayı kaldırmak için aşağıdaki görevleri tamamlayın:
 
 ### <a name="delete-the-application"></a>Uygulamayı silme
 
-Uygulamayı silmek için şu komutu kullanın:
+Uygulamayı silmek için aşağıdaki komutu kullanın:
 
 ```shell
 sfctl application delete --application-id TestEdApp
 ```
 
-### <a name="unprovision-the-application-type"></a>Uygulama türünü sağlamayı kaldır
+### <a name="unprovision-the-application-type"></a>Uygulama türünü sağlama
 
-Uygulamayı sildikten sonra, artık gerekmiyorsa uygulama türünün sağlamasını kaldırabilirsiniz. Uygulama türünü sağlamayı kaldırmak için aşağıdaki komutu kullanın:
+Uygulamayı sildikten sonra, artık ihtiyacınız yoksa uygulama türünü unprovision'ı geri leyebilirsiniz. Uygulama türünü sağlamak için aşağıdaki komutu kullanın:
 
 ```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
-Tür adı ve tür sürümü, daha önce sağlanan uygulama bildirimindeki ad ve sürümle aynı olmalıdır.
+Tür adı ve tür sürümü, önceden sağlanan uygulama bildirimindeki ad ve sürümle eşleşmelidir.
 
-## <a name="upgrade-application"></a>Uygulamayı yükselt
+## <a name="upgrade-application"></a>Yükseltme uygulaması
 
-Uygulamanızı oluşturduktan sonra, uygulamanızın ikinci bir sürümünü sağlamak için aynı adım kümesini tekrarlayabilirsiniz. Ardından, Service Fabric bir uygulama yükseltmesinde uygulamanın ikinci sürümünü çalıştırmaya geçiş yapabilirsiniz. Daha fazla bilgi için [uygulama yükseltmeleri Service Fabric](service-fabric-application-upgrade.md)belgelerine bakın.
+Uygulamanızı oluşturduktan sonra, uygulamanızın ikinci bir sürümünü sağlamak için aynı adım kümesini yineleyebilirsiniz. Daha sonra, Service Fabric uygulama yükseltmesi ile uygulamanın ikinci sürümünü çalıştırmaya geçebilirsiniz. Daha fazla bilgi için [Service Fabric uygulama yükseltmeleri](service-fabric-application-upgrade.md)ile ilgili belgelere bakın.
 
-Bir yükseltme gerçekleştirmek için önce uygulamanın sonraki sürümünü, önceki ile aynı komutları kullanarak sağlayın:
+Yükseltme gerçekleştirmek için, önce olduğu gibi aynı komutları kullanarak uygulamanın bir sonraki sürümünü ilk hükmü:
 
 ```shell
 sfctl application upload --path ~/app_package_dir_2
@@ -148,22 +148,22 @@ sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
 ```
 
-Daha sonra, izlenen bir otomatik yükseltme gerçekleştirmek önerilir, aşağıdaki komutu çalıştırarak yükseltmeyi başlatın:
+Daha sonra izlenen otomatik yükseltme gerçekleştirmek için tavsiye edilir, aşağıdaki komutu çalıştırarak yükseltme başlatmak:
 
 ```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 
-Yükseltmeler, var olan parametreleri herhangi bir ayarla belirtilen şekilde geçersiz kılar. Gerekirse, uygulama parametreleri Upgrade komutuna bağımsız değişken olarak geçirilmelidir. Uygulama parametreleri JSON nesnesi olarak kodlanmalıdır.
+Yükseltmeler, belirtilen kümeyle varolan parametreleri geçersiz kılar. Uygulama parametreleri gerekirse yükseltme komutuna bağımsız değişken olarak geçirilmelidir. Uygulama parametreleri JSON nesnesi olarak kodlanmalıdır.
 
-Daha önce belirtilen parametreleri almak için `sfctl application info` komutunu kullanabilirsiniz.
+Daha önce belirtilen parametreleri almak için `sfctl application info` komutu kullanabilirsiniz.
 
-Uygulama yükseltmesi devam ederken, durum `sfctl application upgrade-status` komutu kullanılarak alınabilir.
+Bir uygulama yükseltmesi devam ederken, durum komutu `sfctl application upgrade-status` kullanılarak alınabilir.
 
-Son olarak, bir yükseltme devam ediyorsa ve iptal edilmesi gerekiyorsa, yükseltme işlemini geri almak için `sfctl application upgrade-rollback` kullanabilirsiniz.
+Son olarak, yükseltme devam ediyorsa ve iptal edilmesi `sfctl application upgrade-rollback` gerekiyorsa, yükseltmeyi geri almak için bu yükseltmeyi kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Service Fabric CLı temelleri](service-fabric-cli.md)
-* [Linux üzerinde Service Fabric kullanmaya başlama](service-fabric-get-started-linux.md)
+* [Servis Kumaş CLI temelleri](service-fabric-cli.md)
+* [Linux'ta Service Fabric ile başlarken](service-fabric-get-started-linux.md)
 * [Service Fabric uygulama yükseltmesi başlatma](service-fabric-application-upgrade.md)

@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware çözümü-özel bulutu VMware Site Recovery Manager kullanarak olağanüstü durum kurtarma sitesi olarak ayarlama
-description: CloudSimple özel bulutunuzu şirket içi VMware iş yükleri için olağanüstü durum kurtarma sitesi olarak ayarlamayı açıklar
+title: CloudSimple tarafından Azure VMware Çözümü - VMware Site Kurtarma Yöneticisi'ni kullanarak Özel Bulut'u olağanüstü durum kurtarma sitesi olarak ayarlama
+description: CloudSimple Private Cloud'unuzu şirket içi VMware iş yükleri için olağanüstü durum kurtarma sitesi olarak nasıl ayarlayişlerinizi açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -9,226 +9,226 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77565936"
 ---
-# <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager ile özel bulutu olağanüstü durum kurtarma hedefi olarak ayarlama
+# <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Özel Bulut'u VMware Site Kurtarma Yöneticisi ile olağanüstü durum kurtarma hedefi olarak ayarlama
 
-CloudSimple özel bulutunuzu, şirket içi VMware iş yükleri için olağanüstü durum kurtarma (DR) sitesi olarak kullanabilirsiniz.
+CloudSimple Private Cloud'unuzu şirket içi VMware iş yükleri için olağanüstü durum kurtarma (DR) sitesi olarak kullanabilirsiniz.
 
-DR çözümü, vSphere çoğaltmasını, VMware Site Recovery Manager 'ı (SRM) temel alır. Özel bulutunuzu, şirket içi kurtarma siteniz tarafından korunan bir birincil site olarak etkinleştirmek için benzer bir yaklaşım izlenebilir.
+DR çözümü vSphere Çoğaltma ve VMware Site Kurtarma Yöneticisi (SRM) dayanmaktadır. Özel Bulut'unuzun şirket içi kurtarma siteniz tarafından korunan birincil site olmasını sağlamak için benzer bir yaklaşım izlenebilir.
 
 CloudSimple çözümü:
 
-* Özellikle DR için bir veri merkezi ayarlama gereksinimini ortadan kaldırır.
-* , Dünya çapındaki coğrafi esnekliği için CloudSimple 'ın dağıtıldığı Azure konumlarından yararlanmanızı sağlar.
-* , DR oluşturmaya yönelik dağıtım maliyetlerini ve toplam sahiplik maliyetini azaltmaya yönelik bir seçenek sunar.
+* Dr için özel olarak bir veri merkezi kurma gereksinimini ortadan kaldırır.
+* CloudSimple'ın dünya çapında coğrafi esneklik için dağıtıldığı Azure konumları'ndan yararlanmanızı sağlar.
+* Dr'yi kurmak için dağıtım maliyetlerini ve toplam sahip olma maliyetini azaltma seçeneği sunar.
 
-CloudSimple çözümü şunları yapmanızı gerektirir:
+CloudSimple çözümü aşağıdakileri yapmanızgerektiğini gerektirir:
 
-* Özel bulutunuzda vSphere çoğaltmasını ve SRM 'yi yükler, yapılandırın ve yönetin.
-* Özel bulut korumalı site olduğunda, SRM için kendi lisanslarınızı sağlayın. Kurtarma sitesi olarak kullanıldığında CloudSimple sitesi için ek bir lisans gerekmez.
+* Özel Bulut'unuzda vSphere Çoğaltma ve SRM'yi yükleyin, yapılandırın ve yönetin.
+* Özel Bulut korunan site olduğunda SRM için kendi lisanslarınızı sağlayın. Kurtarma sitesi olarak kullanıldığında CloudSimple sitesi için ek SRM lisanslarına gerek yoktur.
 
-Bu çözümle, vSphere çoğaltma ve SRM üzerinde tam denetime sahip olursunuz. Tanıdık UI, API ve CLı arabirimleri, mevcut betiklerinizin ve araçlarınızın kullanımını sağlar.
+Bu çözüm ile vSphere çoğaltma ve SRM üzerinde tam kontrole sahip siniz. Tanıdık UI, API ve CLI arabirimleri, varolan komut dosyalarınızın ve araçlarınızın kullanımını sağlar.
 
-![Site Recovery Manager dağıtımı](media/srm-deployment.png)
+![Site Kurtarma Yöneticisi dağıtımı](media/srm-deployment.png)
 
-Özel bulut ve şirket içi ortamlarınızla uyumlu vRA ve SRM sürümlerini kullanabilirsiniz. Bu kılavuzdaki örneklerde vRA 6,5 ve SRM 6,5 kullanılır. Bu sürümler, CloudSimple tarafından desteklenen vSphere 6,5 ile uyumludur.
+Özel Bulut ve şirket içi ortamlarınızla uyumlu tüm vRA ve SRM sürümlerini kullanabilirsiniz. Bu kılavuzdaki örneklerde vRA 6.5 ve SRM 6.5 kullanılmaktadır. Bu sürümler CloudSimple tarafından desteklenen vSphere 6.5 ile uyumludur.
 
 ## <a name="deploy-the-solution"></a>Çözümü dağıtma
 
-Aşağıdaki bölümlerde özel bulutunuzda SRM kullanarak bir DR çözümünün nasıl dağıtılacağı açıklanır.
+Aşağıdaki bölümlerde, Özel Bulut'unuzda SRM kullanarak bir DR çözümünüzün nasıl dağıtılanılasınız açıklanmıştır.
 
-1. [VMware ürün sürümlerinin uyumlu olduğunu doğrulama](#verify-that-vmware-product-versions-are-compatible)
-2. [DR ortamınızın boyutunu tahmin etme](#estimate-the-size-of-your-dr-environment)
-3. [Ortamınız için özel bir bulut oluşturma](#create-a-private-cloud-for-your-environment)
-4. [SRM çözümü için özel bulut ağını ayarlama](#set-up-private-cloud-networking-for-the-srm-solution)
-5. [Şirket içi ağınız ile özel bulut arasında siteden siteye VPN bağlantısı kurun ve gerekli bağlantı noktalarını açın](#set-up-a-site-to-site-vpn-connection-between-your-on-premises-network-and-the-private-cloud-and-open-required-ports)
-6. [Özel bulutunuzda altyapı hizmetlerini ayarlama](#set-up-infrastructure-services-in-your-private-cloud)
-7. [Şirket içi ortamınıza vSphere çoğaltma gereci yüklemesi](#install-vsphere-replication-appliance-in-your-on-premises-environment)
-8. [Özel bulut ortamınıza vSphere çoğaltma gereci yüklemesi](#install-vsphere-replication-appliance-in-your-private-cloud-environment)
-9. [Şirket içi ortamınıza SRM sunucusu 'nı yüklemeyin](#install-srm-server-in-your-on-premises-environment)
-10. [Özel bulutunuzda SRM sunucusunu yükler](#install-srm-server-in-your-private-cloud)
+1. [VMware ürün sürümlerinin uyumlu olduğunu doğrulayın](#verify-that-vmware-product-versions-are-compatible)
+2. [DR ortamınızın boyutunu tahmin edin](#estimate-the-size-of-your-dr-environment)
+3. [Ortamınız için Özel Bulut Oluşturma](#create-a-private-cloud-for-your-environment)
+4. [SRM çözümü için Özel Bulut ağ larını ayarlama](#set-up-private-cloud-networking-for-the-srm-solution)
+5. [Şirket içi ağınız ile Özel Bulut arasında Siteden Siteye VPN bağlantısı kurun ve gerekli bağlantı noktalarını açın](#set-up-a-site-to-site-vpn-connection-between-your-on-premises-network-and-the-private-cloud-and-open-required-ports)
+6. [Özel Bulut'unuzda altyapı hizmetleri ayarlama](#set-up-infrastructure-services-in-your-private-cloud)
+7. [vSphere Çoğaltma cihazını şirket içi ortamınıza taşırınız](#install-vsphere-replication-appliance-in-your-on-premises-environment)
+8. [Özel Bulut ortamınıza vSphere Çoğaltma cihazını yükleyin](#install-vsphere-replication-appliance-in-your-private-cloud-environment)
+9. [SRM sunucusunu şirket içi ortamınızda yükleme](#install-srm-server-in-your-on-premises-environment)
+10. [SRM sunucusunu Özel Bulut'unuzda yükleme](#install-srm-server-in-your-private-cloud)
 
-### <a name="verify-that-vmware-product-versions-are-compatible"></a>VMware ürün sürümlerinin uyumlu olduğunu doğrulama
+### <a name="verify-that-vmware-product-versions-are-compatible"></a>VMware ürün sürümlerinin uyumlu olduğunu doğrulayın
 
-Bu kılavuzdaki konfigürasyonlar aşağıdaki uyumluluk gereksinimlerine tabidir:
+Bu kılavuzdaki yapılandırmalar aşağıdaki uyumluluk gereksinimlerine tabidir:
 
-* Aynı SRM sürümünün özel bulutunuzda ve şirket içi ortamınızda dağıtılması gerekir.
-* Aynı vSphere çoğaltma sürümünün özel bulutunuzda ve şirket içi ortamınızda dağıtılması gerekir.
-* Özel bulutunuzda ve şirket içi ortamınızda bulunan Platform Hizmetleri denetleyicisi 'nin (PSC) sürümleri uyumlu olmalıdır.
-* Özel bulutunuzda ve şirket içi ortamınızda vCenter 'ın sürümleri uyumlu olmalıdır.
-* SRM ve vSphere çoğaltmasının sürümleri birbirleriyle ve PSC ve vCenter sürümleriyle uyumlu olmalıdır.
+* SRM'nin aynı sürümü Özel Bulut'unuzda ve şirket içi ortamınızda dağıtılmalıdır.
+* vSphere Replication'Un aynı sürümü Özel Bulut'unuzda ve şirket içi ortamınızda dağıtılmalıdır.
+* Platform Hizmetleri Denetleyicisi'nin (PSC) Özel Bulut'unuzdaki sürümleri ve şirket içi ortamınız uyumlu olmalıdır.
+* Özel Bulut'unuzdaki vCenter sürümleri ve şirket içi ortamınız uyumlu olmalıdır.
+* SRM ve vSphere çoğaltma sürümleri birbirleriyle ve PSC ve vCenter sürümleri ile uyumlu olmalıdır.
 
-İlgili VMware belgelerinin ve uyumluluk bilgilerinin bağlantıları için [VMware Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/index.html) belgeleri ' ne gidin.
+İlgili VMware belgelerine ve uyumluluk bilgilerine bağlantılar için [VMware Site Kurtarma Yöneticisi](https://docs.vmware.com/en/Site-Recovery-Manager/index.html) belgelerine gidin.
 
-Özel bulutunuzda vCenter ve PSC sürümlerini bulmak için CloudSimple Portal ' ı açın. **Kaynaklar**' a gidin, özel bulutunuzu seçin ve **vSphere yönetim ağı** sekmesine tıklayın.
+Özel Bulut'unuzda vCenter ve PSC sürümlerini öğrenmek için CloudSimple portalını açın. **Kaynaklar'a**gidin, Özel Bulut'unuzu seçin ve **vSphere Management Network** sekmesini tıklatın.
 
-![Özel bulutta vCenter & PSC sürümleri](media/srm-resources.png)
+![özel bulutta vCenter & PSC sürümleri](media/srm-resources.png)
 
-### <a name="estimate-the-size-of-your-dr-environment"></a>DR ortamınızın boyutunu tahmin etme
+### <a name="estimate-the-size-of-your-dr-environment"></a>DR ortamınızın boyutunu tahmin edin
 
-1. Tanımlı şirket içi yapılandırmanızın desteklenen sınırlar dahilinde olduğunu doğrulayın. SRM 6,5 için sınırlar, VMware Bilgi Bankası makalesinde [Site Recovery Manager 6,5 için işlemsel sınırlara](https://kb.vmware.com/s/article/2147110)göre belgelenmiştir.
-2. İş yükü boyutunuzu ve RPO gereksinimlerinizi karşılayacak yeterli ağ bant genişliğine sahip olduğunuzdan emin olun. [VSphere çoğaltması için bant genişliği gereksinimlerinin hesaplanmasındaki](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html) VMware Bilgi Bankası makalesi bant genişliği sınırları hakkında rehberlik sağlar.
-3. Şirket içi ortamınızı korumak için, DR sitenizde gerekli olan kaynakları tahmin etmek üzere CloudSimple sizer aracını kullanın.
+1. Tanımlanan şirket içi yapılandırmanızın desteklenen sınırlar içinde olduğunu doğrulayın. SRM 6.5 için, sınırlar [Site Kurtarma Yöneticisi 6.5 için operasyonel limitler](https://kb.vmware.com/s/article/2147110)VMware bilgi bankası makalesinde belgelenmiştir.
+2. İş yükü boyutuve RPO gereksinimlerinizi karşılamak için yeterli ağ bant genişliğine sahip olduğundan emin olun. [vSphere Çoğaltma için bant genişliği gereksinimlerini hesaplama](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html) üzerine VMware bilgi temel makale bant genişliği sınırları hakkında rehberlik sağlar.
+3. Şirket içi ortamınızı korumak için DR sitenizde gereken kaynakları tahmin etmek için CloudSimple sizer aracını kullanın.
 
-### <a name="create-a-private-cloud-for-your-environment"></a>Ortamınız için özel bir bulut oluşturma
+### <a name="create-a-private-cloud-for-your-environment"></a>Ortamınız için Özel Bulut Oluşturma
 
-[Özel bulut oluşturma](create-private-cloud.md)' daki yönergeleri ve boyutlandırma önerilerini Izleyerek cloudsimple portalından özel bir bulut oluşturun.
+[Özel Bulut Oluştur'daki](create-private-cloud.md)yönergeleri ve boyutlandırma önerilerini izleyerek CloudSimple portalından özel bulut oluşturun.
 
-### <a name="set-up-private-cloud-networking-for-the-srm-solution"></a>SRM çözümü için özel bulut ağını ayarlama
+### <a name="set-up-private-cloud-networking-for-the-srm-solution"></a>SRM çözümü için Özel Bulut ağ larını ayarlama
 
-SRM çözümü için özel bulut ağı ayarlamak üzere CloudSimple portalına erişin.
+SRM çözümü için Özel Bulut ağı kurmak için CloudSimple portalına erişin.
 
-SRM çözümü ağı için bir VLAN oluşturun ve bir alt ağ CıDR atayın. Yönergeler için bkz. [VLAN/alt ağlar oluşturma ve yönetme](create-vlan-subnet.md).
+SRM çözüm ağı için bir VLAN oluşturun ve bir alt ağ CIDR atayın. Talimatlar için [VLANs/Subnets oluştur ve yönetme'ye](create-vlan-subnet.md)bakın.
 
-### <a name="set-up-a-site-to-site-vpn-connection-between-your-on-premises-network-and-the-private-cloud-and-open-required-ports"></a>Şirket içi ağınız ile özel bulut arasında siteden siteye VPN bağlantısı kurun ve gerekli bağlantı noktalarını açın
+### <a name="set-up-a-site-to-site-vpn-connection-between-your-on-premises-network-and-the-private-cloud-and-open-required-ports"></a>Şirket içi ağınız ile Özel Bulut arasında Siteden Siteye VPN bağlantısı kurun ve gerekli bağlantı noktalarını açın
 
-Şirket içi ağınız ile özel bulutunuz arasında siteden siteye bağlantı kurmak için. Yönergeler için bkz. [CloudSimple özel bulutunuzun VPN bağlantısını yapılandırma](set-up-vpn.md).
+Şirket içi ağınızla Özel Bulut'unuz arasında Site-Site bağlantısı kurmak için. Talimatlar için bkz. [CloudSimple Private Cloud'unuza VPN bağlantısı yapılandır.](set-up-vpn.md)
 
-### <a name="set-up-infrastructure-services-in-your-private-cloud"></a>Özel bulutunuzda altyapı hizmetlerini ayarlama
+### <a name="set-up-infrastructure-services-in-your-private-cloud"></a>Özel Bulut'unuzda altyapı hizmetleri ayarlama
 
-İş yüklerinizi ve araçlarınızı yönetmeyi kolaylaştırmak için özel buluttaki altyapı hizmetlerini yapılandırın.
+İş yüklerinizi ve araçlarınızı yönetmeyi kolaylaştırmak için Özel Bulut'taki altyapı hizmetlerini yapılandırın.
 
-Aşağıdakilerden birini yapmak istiyorsanız, [Azure AD 'Yi CloudSimple özel bulutu 'Nda vCenter için kimlik sağlayıcısı olarak kullanma](azure-ad.md) bölümünde anlatıldığı şekilde bir dış kimlik sağlayıcısı ekleyebilirsiniz:
+Aşağıdakilerden herhangi birini yapmak istiyorsanız, [CloudSimple Private Cloud'daki vCenter için kimlik sağlayıcısı olarak Azure AD'yi kullan'da](azure-ad.md) açıklandığı gibi harici bir kimlik sağlayıcısı ekleyebilirsiniz:
 
-* Şirket içi Active Directory (AD) özel bulutunuzda kullanıcıları belirler.
-* Tüm kullanıcılar için özel bulutunuzda bir AD ayarlayın.
-* Azure AD 'yi kullanın.
+* Özel Bulut'unuzda şirket içi Active Directory (AD) kullanıcıları belirleyin.
+* Tüm kullanıcılar için Özel Bulut'unuzda bir REKLAM ayarlayın.
+* Azure AD'yi kullanın.
 
-Özel buluttaki iş yükleriniz için IP adresi araması, IP adresi yönetimi ve ad çözümleme hizmetleri sağlamak istiyorsanız, [CloudSimple özel BULUTUNUZDA DNS ve DHCP uygulamalarını ve iş yüklerini ayarlama](dns-dhcp-setup.md)bölümünde açıklandığı gıbı bir DHCP ve DNS sunucusu ayarlayın.
+Özel Bulut'taki iş yüklerinizle IP adresi araması, IP adresi yönetimi ve ad çözümleme hizmetleri sağlamak için, [CloudSimple Private Cloud'unuzda DNS ve DHCP uygulamalarını ve iş yüklerini](dns-dhcp-setup.md)ayarla'da açıklandığı şekilde bir DHCP ve DNS sunucusu ayarlayın.
 
-*. Cloudsimple.io etki alanı, yönetim VM 'Leri ve özel buluttaki konaklar tarafından kullanılır. Bu etki alanına yönelik istekleri çözümlemek için DNS sunucusunda DNS iletmeyi, [koşullu Iletici oluşturma](on-premises-dns-setup.md#create-a-conditional-forwarder)bölümünde açıklandığı gibi yapılandırın.
+*.cloudsimple.io etki alanı, Özel Bulut'unuzda yönetim VM'leri ve ana bilgisayarları tarafından kullanılır. Bu etki alanına gelen istekleri gidermek için, [Koşullu İletme Oluştur'da](on-premises-dns-setup.md#create-a-conditional-forwarder)açıklandığı gibi DNS sunucusunda DNS iletmesini yapılandırın.
 
-### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>Şirket içi ortamınıza vSphere çoğaltma gereci yüklemesi
+### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>vSphere Çoğaltma Cihazını şirket içi ortamınıza taşırınız
 
-VMware belgelerini izleyerek şirket içi ortamınıza vSphere çoğaltma gereci (vRA) yüklemesini yapın. Yükleme bu üst düzey adımlardan oluşur:
+VMware belgelerini izleyerek şirket içi ortamınıza vSphere Çoğaltma Cihazı'nı (vRA) yükleyin. Yükleme şu üst düzey adımlardan oluşur:
 
-1. Şirket içi ortamınızı vRA yüklemesi için hazırlayın.
+1. Şirket içi ortamınızı vRA kurulumu için hazırlayın.
 
-2. Vmware.com adresinden VR ISO 'daki OVF 'yi kullanarak şirket içi ortamınızda vRA 'yi dağıtın. VRA 6,5 için, [Bu VMware blogu](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) ilgili bilgileri içerir.
+2. vmware.com'dan ITIBAREN VR ISO'daki OVF'yi kullanarak vRA'yı şirket içi ortamınızda dağıtın. vRA 6.5 için, [bu VMware blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) ilgili bilgilere sahiptir.
 
-3. Şirket içi vRA 'yi, şirket içi sitede vCenter çoklu oturum açma ile kaydedin. VSphere çoğaltma 6,5 hakkında ayrıntılı yönergeler için bkz. VMware Document [VMware vSphere çoğaltma 6,5 yükleme ve yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
+3. Şirket içi vRA'nızı şirket içi sitede vCenter Single Sign-On ile kaydedin. vSphere Replication 6.5 için ayrıntılı talimatlar için [VMware belge VMware vSphere Replication 6.5 Kurulum ve Yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)bakın.
 
-## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>Özel bulut ortamınıza vSphere çoğaltma gereci yüklemesi
+## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>Özel Bulut ortamınıza vSphere Çoğaltma cihazını yükleyin
 
-Başlamadan önce, aşağıdakilere sahip olduğunuzu doğrulayın:
+Başlamadan önce aşağıdakileri yaptığınızı doğrulayın:
 
-* Şirket içi ortamınızdaki alt ağlardan IP 'ye, özel bulutunuzun yönetim alt ağına ulaşılabilirlik
-* IP şirket içi vSphere ortamınızdaki çoğaltma alt ağından, özel bulutunuzun SRM çözüm alt ağına ulaşılabilirlik
+* Şirket içi ortamınızdaki alt ağlardan Özel Bulut'un yönetim alt ağına IP erişimi
+* Şirket içi vSphere ortamınızdaki çoğaltma alt netinden Özel Bulut'unuzun SRM çözüm alt ağına IP erişimi
 
-Yönergeler için bkz. [CloudSimple özel bulutunuzun VPN bağlantısını yapılandırma](set-up-vpn.md). Adımlar, şirket içi yüklemede olanlarla benzerdir.
+Talimatlar için bkz. [CloudSimple Private Cloud'unuza VPN bağlantısı yapılandır.](set-up-vpn.md) Adımlar, şirket içi kurulumiçin benzer.
 
-CloudSimple, vRA ve SRM yüklemesi sırasında IP adresleri yerine FQDN 'lerin kullanılmasını önerir. Özel bulutunuzda vCenter ve PSC 'nin FQDN 'sini bulmak için CloudSimple Portal ' ı açın. **Kaynaklar**' a gidin, özel bulutunuzu seçin ve **vSphere yönetim ağı** sekmesine tıklayın.
+CloudSimple, vRA ve SRM yüklemesi sırasında IP adresleri yerine FQDN'ler kullanılmasını önerir. Özel Bulut'unuzda vCenter ve PSC'nin FQDN'sini öğrenmek için CloudSimple portalını açın. **Kaynaklar'a**gidin, Özel Bulut'unuzu seçin ve **vSphere Management Network** sekmesini tıklatın.
 
-![Özel bulutta vCenter/PSC FQDN 'SI bulma](media/srm-resources.png)
+![Özel Bulutta vCenter/PSC'nin FQDN'sini bulma](media/srm-resources.png)
 
-CloudSimple, varsayılan ' cloudowner ' kullanıcısını kullanarak vRA ve SRM yüklememeyi gerektirir, bunun yerine yeni bir kullanıcı oluşturur. Bu işlem, özel bulut vCenter ortamınız için yüksek çalışma süresi ve kullanılabilirlik sağlanmasına yardımcı olmak üzere yapılır. Ancak, özel bulut vCenter 'daki varsayılan cloudowner kullanıcısı yönetici ayrıcalıklarına sahip yeni bir kullanıcı oluşturmak için yeterli ayrıcalıklara sahip değil.
+CloudSimple, varsayılan 'bulut sahibi' kullanıcısını kullanarak vRA ve SRM'yi yüklememenizi, bunun yerine yeni bir kullanıcı oluşturmanızı gerektirir. Bu, Özel Bulut vCenter ortamınız için yüksek çalışma süresi ve kullanılabilirlik sağlamaya yardımcı olmak için yapılır. Ancak, Private Cloud vCenter'daki varsayılan bulut sahibi kullanıcı, yönetim ayrıcalıklarına sahip yeni bir kullanıcı oluşturmak için yeterli ayrıcalıklara sahip değildir.
 
-VRA ve SRM yüklemeden önce, cloudowner kullanıcısının vCenter ayrıcalıklarını ilerletin ve sonra vCenter SSO etki alanında yönetici ayrıcalıklarına sahip bir kullanıcı oluşturmanız gerekir. Varsayılan özel bulut kullanıcısı ve izin modeli hakkında daha fazla bilgi için bkz. [özel bulut izin modelini öğrenme](learn-private-cloud-permissions.md).
+vRA ve SRM'yi yüklemeden önce, bulut sahibi kullanıcının vCenter ayrıcalıklarını yükseltmeniz ve ardından vCenter SSO etki alanında Yönetim ayrıcalıklarına sahip bir kullanıcı oluşturmanız gerekir. Varsayılan Özel Bulut kullanıcısı ve izin modeliyle ilgili ayrıntılar [için](learn-private-cloud-permissions.md)bkz.
 
-Yükleme bu üst düzey adımlardan oluşur:
+Yükleme şu üst düzey adımlardan oluşur:
 
-1. [Ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md).
-2. VSphere çoğaltma ve SRM yüklemesi için özel bulutunuzda bir kullanıcı oluşturun. [VCenter Kullanıcı arabiriminde aşağıda açıklanmıştır: vRA &AMP; SRM yüklemesi Için özel bulutta bir kullanıcı oluşturun](#vcenter-ui-create-a-user-in-private-cloud-for-vra-and-srm-installation).
-3. Özel bulut ortamınızı vRA yüklemesi için hazırlayın.
-4. Vmware.com adresinden VR ISO 'daki OVF 'yi kullanarak özel bulutunuzda vRA 'yi dağıtın. VRA 6,5 için, [Bu VMware bloguna](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) ilgili bilgiler vardır.
-5. VRA için güvenlik duvarı kurallarını yapılandırın. [Cloudsimple Portal 'da aşağıda açıklanmıştır: vRA Için güvenlik duvarı kurallarını yapılandırma](#cloudsimple-portal-configure-firewall-rules-for-vra).
-6. Özel bulut sitesinde özel bulut vRA 'yi vCenter çoklu oturum açma ile kaydedin.
-7. İki gereç arasında vSphere çoğaltma bağlantılarını yapılandırma. Güvenlik duvarları genelinde gerekli bağlantı noktalarının açıldığından emin olun. VSphere çoğaltma 6,5 için açık olması gereken bağlantı noktası numaraları listesi için [Bu VMware Bilgi Bankası makalesine](https://kb.vmware.com/s/article/2087769) bakın.
+1. [Ayrıcalıkları artırın.](escalate-private-cloud-privileges.md)
+2. vSphere Çoğaltma ve SRM yüklemesi için Özel Bulut'unuzda bir kullanıcı oluşturun. [Aşağıda vCenter UI'de açıklanmıştır: VRA & SRM kurulumu için Özel Bulut'ta bir kullanıcı oluşturun.](#vcenter-ui-create-a-user-in-private-cloud-for-vra-and-srm-installation)
+3. Özel Bulut ortamınızı vRA yüklemesi için hazırlayın.
+4. vmware.com'dan itibaren VR ISO'daki OVF'yi kullanarak ÖZEL Bulut'unuzda vRA dağıtın. vRA 6.5 [için, bu VMware blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) ilgili bilgilere sahiptir.
+5. vRA için güvenlik duvarı kurallarını yapılandırın. [CloudSimple portalında aşağıda açıklanmıştır: VRA için Güvenlik Duvarı kurallarını yapılandırın.](#cloudsimple-portal-configure-firewall-rules-for-vra)
+6. Özel Bulut sitesinde vCenter Tek Oturum Açma ile Özel Bulut vRA kaydolun.
+7. İki cihaz arasındaki vSphere Çoğaltma bağlantılarını yapılandırın. Güvenlik duvarları boyunca gerekli bağlantı noktalarının açıldığından emin olun. VSphere Replication 6.5 için açık olması gereken bağlantı noktası numaralarının listesi için [bu VMware bilgi bankası makalesine](https://kb.vmware.com/s/article/2087769) bakın.
 
-VSphere çoğaltma 6,5 için ayrıntılı yükleme yönergeleri için bkz. VMware Document [VMware vSphere replication 6,5 yükleme ve yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf).
+vSphere Replication 6.5 için ayrıntılı kurulum talimatları için [VMware belge VMware vSphere Çoğaltma 6.5 Kurulum ve Yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)bakın.
 
-#### <a name="vcenter-ui-create-a-user-in-private-cloud-for-vra-and-srm-installation"></a>vCenter Kullanıcı arabirimi: vRA ve SRM yüklemesi için özel bulutta Kullanıcı oluşturma
+#### <a name="vcenter-ui-create-a-user-in-private-cloud-for-vra-and-srm-installation"></a>vCenter UI: vRA ve SRM yüklemesi için Özel Bulut'ta bir kullanıcı oluşturma
 
-CloudSimple portalından ayrıcalıkların ilerleme işleminden sonra cloudowner Kullanıcı kimlik bilgilerini kullanarak vCenter 'da oturum açın.
+CloudSimple portalındaki ayrıcalıkları tırmandırdıktan sonra bulut sahibi kullanıcı kimlik bilgilerini kullanarak vCenter'da oturum açın.
 
-VCenter içinde `srm-soln-admin`yeni bir kullanıcı oluşturun ve vCenter 'daki Yöneticiler grubuna ekleyin.
-Cloudowner kullanıcısı olarak vCenter oturumunu kapatın ve *SRM-soln-yönetici* kullanıcısı olarak oturum açın.
+vCenter'da `srm-soln-admin`yeni bir kullanıcı oluşturun ve vCenter'daki yönetici grubuna ekleyin.
+bulut sahibi kullanıcısı olarak vCenter'dan çıkış ve *srm-soln-admin* kullanıcısı olarak oturum açın.
 
-#### <a name="cloudsimple-portal-configure-firewall-rules-for-vra"></a>CloudSimple Portal: vRA için güvenlik duvarı kurallarını yapılandırma
+#### <a name="cloudsimple-portal-configure-firewall-rules-for-vra"></a>CloudSimple portalı: vRA için güvenlik duvarı kurallarını yapılandırın
 
-Aralarında iletişim sağlamak için bağlantı noktalarını açmak üzere [güvenlik duvarı tablolarını ve kuralları ayarlama](firewall.md) bölümünde açıklandığı gibi güvenlik duvarı kurallarını yapılandırın:
+Güvenlik duvarı kurallarını, güvenlik [duvarı tablolarını ve kurallarını](firewall.md) açıklandığı şekilde, bağlantı noktalarını açmak ve aralarındaki iletişimi sağlamak için yapılandırın:
 
-* SRM çözümü ağı ve vCenter ve ESXi yönetim ağında bulunan vRA.
-* iki sitede vRA gereçleri.
+* vRA SRM çözüm ağında ve vCenter ve ESXi yönetim ağında ana bilgisayarları.
+* iki sitede vRA aletleri.
 
-VSphere çoğaltma 6,5 için açık olması gereken bağlantı noktası numaraları listesi için bu [VMware Bilgi Bankası makalesine](https://kb.vmware.com/s/article/2087769) bakın.
+VSphere Replication 6.5 için açık olması gereken bağlantı noktası numaralarının listesi için bu [VMware bilgi bankası makalesine](https://kb.vmware.com/s/article/2087769) bakın.
 
-### <a name="install-srm-server-in-your-on-premises-environment"></a>Şirket içi ortamınıza SRM sunucusu 'nı yüklemeyin
-
-Başlamadan önce aşağıdakileri doğrulayın:
-
-* vSphere çoğaltma gereci şirket içi ve özel bulut ortamlarınıza yüklenir.
-* Her iki sitedeki vSphere çoğaltma araçları birbirlerine bağlanır.
-* Ön koşullar ve en iyi uygulamalar hakkında VMware bilgilerini gözden geçirdiniz. SRM 6,5 için, VMware belge [Önkoşulları ve SRM 6,5 Için En Iyi uygulamalar](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)bölümüne başvurabilirsiniz.
-
-Bu [VMware belgesinde](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)açıklandığı gibi, dağıtım modelinde "platform hizmetleri denetleyicisi başına bir vCenter örneği Ile Iki site topolojisi" olan bir SRM sunucu yüklemesi gerçekleştirmek için VMware belgelerini izleyin. SRM 6,5 yükleme yönergeleri [Site Recovery Manager 'ı yükleyen](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)VMware belgesinde bulunabilir.
-
-### <a name="install-srm-server-in-your-private-cloud"></a>Özel bulutunuzda SRM sunucusunu yükler
+### <a name="install-srm-server-in-your-on-premises-environment"></a>SRM sunucusunu şirket içi ortamınızda yükleme
 
 Başlamadan önce aşağıdakileri doğrulayın:
 
-* vSphere çoğaltma gereci şirket içi ve özel bulut ortamlarınıza yüklenir.
-* Her iki sitedeki vSphere çoğaltma araçları birbirlerine bağlanır.
-* Ön koşullar ve en iyi uygulamalar hakkında VMware bilgilerini gözden geçirdiniz. SRM 6,5 için [Site Recovery Manager 6,5 sunucu yüklemesi Için önkoşulları ve En Iyi yöntemlere](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)başvurabilirsiniz.
+* vSphere Replication Appliance şirket içi ve Özel Bulut ortamlarınıza yüklenir.
+* Her iki sitedeki vSphere Çoğaltma Aletleri birbirine bağlıdır.
+* Ön koşullar ve en iyi uygulamalar hakkındaki VMware bilgilerini incelediniz. SRM 6.5 [için, SRM 6.5 için](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)VMware belge Önkoşulları ve En İyi Uygulamalar bakabilirsiniz.
 
-Aşağıdaki adımlarda özel bulut SRM yüklemesi açıklanır.
+Bu VMWare belgesinde açıklandığı gibi dağıtım modeli 'Platform Hizmetleri Denetleyicisi Başına Bir vCenter Örneği ile İki Site Topolojisi' srm sunucu yüklemegerçekleştirmek için [VMware belgelerini](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)izleyin. SRM 6.5 için kurulum talimatları VMware belge [Yükleme Site Kurtarma Yöneticisi](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)mevcuttur.
 
-1. [vCenter Kullanıcı arabirimi: SRM yüklemesi](#vcenter-ui-install-srm)
-2. [CloudSimple Portalı: SRM için güvenlik duvarı kurallarını yapılandırma](#cloudsimple-portal-configure-firewall-rules-for-srm)
-3. [vCenter Kullanıcı arabirimi: SRM yapılandırma](#vcenter-ui-configure-srm)
-4. [CloudSimple Portal: ön yükseltme ayrıcalıkları](#cloudsimple-portal-de-escalate-privileges)
+### <a name="install-srm-server-in-your-private-cloud"></a>SRM sunucusunu Özel Bulut'unuzda yükleme
 
-#### <a name="vcenter-ui-install-srm"></a>vCenter Kullanıcı arabirimi: SRM yüklemesi
+Başlamadan önce aşağıdakileri doğrulayın:
 
-SRM-soln-yönetici kimlik bilgilerini kullanarak vCenter 'a oturum açtıktan sonra, bu [VMware belgesinde](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)açıklandığı gibi dağıtım modelinde ' Iki site topolojisi, platform hizmetleri denetleyicisi başına bir vCenter örneğiyle birlikte bir SRM 6,5 yükleme yönergeleri [Site Recovery Manager 'ı yükleyen](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)VMware belgesinde bulunabilir.
+* vSphere Replication Appliance şirket içi ve Özel Bulut ortamlarınıza yüklenir.
+* Her iki sitedeki vSphere Çoğaltma Aletleri birbirine bağlıdır.
+* Ön koşullar ve en iyi uygulamalar hakkındaki VMware bilgilerini incelediniz. SRM 6.5 için Site [Kurtarma Yöneticisi 6.5 Sunucu Yüklemesi için Ön koşullar alabilirsiniz.](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
 
-#### <a name="cloudsimple-portal-configure-firewall-rules-for-srm"></a>CloudSimple Portalı: SRM için güvenlik duvarı kurallarını yapılandırma
+Aşağıdaki adımlar, Özel Bulut SRM yüklemesini açıklar.
 
-Güvenlik duvarı kurallarını, aralarında iletişime izin vermek için [güvenlik duvarı tabloları ve kuralları ayarlama](firewall.md) bölümünde açıklandığı şekilde yapılandırın:
+1. [vCenter UI: SRM yükle](#vcenter-ui-install-srm)
+2. [CloudSimple portalı: SRM için güvenlik duvarı kurallarını yapılandırma](#cloudsimple-portal-configure-firewall-rules-for-srm)
+3. [vCenter UI: SRM'yi yapılandır](#vcenter-ui-configure-srm)
+4. [CloudSimple portalı: ayrıcalıkları tırmandırma](#cloudsimple-portal-de-escalate-privileges)
 
-Özel bulutta SRM sunucusu ve vCenter/PSC.
+#### <a name="vcenter-ui-install-srm"></a>vCenter UI: SRM yükle
+
+srm-soln-admin kimlik bilgilerini kullanarak vCenter'a giriş yaptıktan sonra, bu VMWare belgesinde açıklandığı gibi dağıtım modeli 'Platform Hizmetleri Denetleyicisi Başına Bir vCenter Örneği ile İki SiteLi Topoloji' içinde SRM sunucu yüklemesini gerçekleştirmek için [VMware belgelerini](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)izleyin. SRM 6.5 için kurulum talimatları VMware belge [Yükleme Site Kurtarma Yöneticisi](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)mevcuttur.
+
+#### <a name="cloudsimple-portal-configure-firewall-rules-for-srm"></a>CloudSimple portalı: SRM için güvenlik duvarı kurallarını yapılandırma
+
+[Güvenlik duvarı tablolarını ve kurallarını ayarla'da](firewall.md) açıklandığı gibi güvenlik duvarı kurallarını, şu ikisi arasında iletişime izin verecek şekilde yapılandırın:
+
+SRM sunucusu ve özel bulutta vCenter / PSC.
 Her iki sitedeki SRM sunucuları
 
-VSphere çoğaltma 6,5 için açık olması gereken bağlantı noktası numaraları listesi için [Bu VMware Bilgi Bankası makalesine](https://kb.vmware.com/s/article/2087769) bakın.
+VSphere Replication 6.5 için açık olması gereken bağlantı noktası numaralarının listesi için [bu VMware bilgi bankası makalesine](https://kb.vmware.com/s/article/2087769) bakın.
 
-#### <a name="vcenter-ui-configure-srm"></a>vCenter Kullanıcı arabirimi: SRM yapılandırma
+#### <a name="vcenter-ui-configure-srm"></a>vCenter UI: SRM'yi yapılandır
 
-SRM özel buluta yüklendikten sonra, VMware Site Recovery Manager yükleme ve yapılandırma kılavuzunun bölümlerinde açıklandığı gibi aşağıdaki görevleri gerçekleştirin. SRM 6,5 için, yönergeler [Site Recovery Manager 'ı yükleyen](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)VMware belgesinde kullanılabilir.
+SRM özel buluta yüklendikten sonra, VMware Site Kurtarma Yöneticisi Yükleme ve Yapılandırma Kılavuzu bölümlerinde açıklandığı gibi aşağıdaki görevleri gerçekleştirin. SRM 6.5 için, talimatlar VMware belge [Yükleme Site Kurtarma Yöneticisi](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)mevcuttur.
 
-1. Korunan ve kurtarma sitelerindeki Site Recovery Manager sunucusu örneklerini bağlayın.
-2. Uzak Site Recovery Manager sunucu örneğine Istemci bağlantısı kurun.
-3. Site Recovery Manager lisans anahtarını yükler.
+1. Site Kurtarma Yöneticisi Sunucu Örneklerini Korumalı ve Kurtarma Sitelerinde bağlayın.
+2. Uzak Site Kurtarma Yöneticisi Sunucu Örneği'ne bir İstemci Bağlantısı kurun.
+3. Site Kurtarma Yöneticisi Lisans Anahtarını yükleyin.
 
-#### <a name="cloudsimple-portal-de-escalate-privileges"></a>CloudSimple Portal: ön yükseltme ayrıcalıkları
+#### <a name="cloudsimple-portal-de-escalate-privileges"></a>CloudSimple portalı: Ayrıcalıkları yükseltme
 
-Ayrıcalıkları devre dışı bırakmak için bkz. [yükseltme ayrıcalıkları](escalate-private-cloud-privileges.md#de-escalate-privileges).
+Ayrıcalıkları daha da arttırmak için, [ayrıcalıkları yükseltmebölümüne](escalate-private-cloud-privileges.md#de-escalate-privileges)bakın.
 
-## <a name="ongoing-management-of-your-srm-solution"></a>SRM çözümünüzün devam eden yönetimi
+## <a name="ongoing-management-of-your-srm-solution"></a>SRM çözümünüzün sürekli yönetimi
 
-Özel bulut ortamınızda vSphere çoğaltma ve SRM yazılımı üzerinde tam denetime sahip olursunuz ve gerekli yazılım yaşam döngüsü yönetimini gerçekleştirmesi beklenir. VSphere çoğaltmasını veya SRM 'i güncelleştirmeden veya yükseltmeden önce yazılımın yeni bir sürümünün özel bulut vCenter ve PSC ile uyumlu olduğundan emin olun.
+Özel Bulut ortamınızda vSphere Replication ve SRM yazılımı üzerinde tam kontrole sahipsiniz ve gerekli yazılım yaşam döngüsü yönetimini gerçekleştirmeniz beklenir. vSphere Replication veya SRM'yi güncellemeden veya güncellemeden önce yazılımın yeni sürümünün Private Cloud vCenter ve PSC ile uyumlu olduğundan emin olun.
 
 > [!NOTE]
-> CloudSimple Şu anda yönetilen bir DR hizmeti sunma seçeneklerini araştırmakta. 
+> CloudSimple şu anda yönetilen bir DR hizmeti sunmak için seçenekleri araştırıyor. 
 
-## <a name="multiple-replication-configuration"></a>Birden çok çoğaltma yapılandırması
+## <a name="multiple-replication-configuration"></a>Çoklu çoğaltma yapılandırması
 
- [Dizi tabanlı çoğaltma ve vSphere çoğaltma teknolojileri aynı anda SRM ile birlikte kullanılabilir](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) . Ancak, bunların ayrı bir VM kümesine uygulanmaları gerekir (belirli bir VM, dizi tabanlı çoğaltma veya vSphere çoğaltması tarafından korunabilir, ancak her ikisi birden değil). Ayrıca, CloudSimple sitesi birden çok korumalı site için bir kurtarma sitesi olarak yapılandırılabilir. Birden çok site yapılandırması hakkında bilgi için bkz. [SRM çok siteli seçenekler](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) .
+ Hem dizi tabanlı çoğaltma hem de vSphere çoğaltma teknolojileri aynı anda [SRM ile birlikte kullanılabilir.](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) Ancak, bunlar ayrı VM kümesine uygulanmalıdır (belirli bir VM dizi tabanlı çoğaltma veya vSphere çoğaltma ile korunabilir, ancak her ikisi birden değil). Ayrıca, CloudSimple sitesi birden çok korumalı site için bir kurtarma sitesi olarak yapılandırılabilir. Çok siteli yapılandırmalar hakkında bilgi için [SRM Çok Site seçeneklerine](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) bakın.
 
 ## <a name="references"></a>Başvurular
 
-* [VMware Site Recovery Manager belgeleri](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
-* [Site Recovery Manager 6,5 için işlemsel sınırlar](https://kb.vmware.com/s/article/2147110)
-* [VSphere çoğaltması için bant genişliği gereksinimleri hesaplanıyor](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html)
-* [VSphere çoğaltma 6,5 ' i dağıttığınızda OVF seçimleri](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
-* [VMware vSphere çoğaltma 6,5 yükleme ve yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
-* [SRM 6,5 için Önkoşullar ve En Iyi uygulamalar](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
-* [Platform Hizmetleri denetleyicisi başına bir vCenter Server örneği ile Iki siteli topolojide Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
-* [VMware Site Recovery Manager 6,5 yükleme ve yapılandırma kılavuzu](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)
-* [Dizi tabanlı çoğaltma ve vSphere çoğaltma ile SRM üzerinde VMware blogu](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)
-* [SRM çoklu site seçeneklerinde VMware blogu](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite)
-* [VSphere çoğaltması 5,8. x, 6. x ve 8 için açık olması gereken bağlantı noktası numaraları](https://kb.vmware.com/s/article/2147112)
+* [VMware Site Kurtarma Yöneticisi Belgeleri](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
+* [Site Kurtarma Yöneticisi 6.5 için operasyonel sınırlar](https://kb.vmware.com/s/article/2147110)
+* [vSphere Çoğaltma için bant genişliği gereksinimlerini hesaplama](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html)
+* [vSphere Çoğaltma 6.5 Dağıtırken OVF Seçenekleri](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
+* [VMware vSphere Çoğaltma 6.5 Kurulum ve Yapılandırma](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
+* [SRM 6.5 için Ön Koşullar ve En İyi Uygulamalar](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
+* [Platform Hizmetleri Denetleyicisi Başına Bir vCenter Server Örneği ile İki Siteli Topolojide Site Kurtarma Yöneticisi](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
+* [VMware Site Kurtarma Yöneticisi 6.5 Kurulum ve Yapılandırma Kılavuzu](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)
+* [VMware Blog SRM dizi tabanlı çoğaltma vs vSphere çoğaltma ile](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)
+* [SRM Çoklu site seçenekleri VMware blog](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite)
+* [vSphere Çoğaltma 5.8.x, 6.x ve 8 için açık olması gereken bağlantı noktası numaraları](https://kb.vmware.com/s/article/2147112)

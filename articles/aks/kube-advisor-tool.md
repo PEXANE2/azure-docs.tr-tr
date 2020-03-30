@@ -1,34 +1,34 @@
 ---
-title: En iyi uygulamaların uygulanması için Azure 'da Kubernetes dağıtımlarınızı denetleyin
-description: KUIN-Advisor kullanarak Azure Kubernetes Service 'teki dağıtımlarınızdaki en iyi yöntemlerin uygulanmasını nasıl denetleyeceğinizi öğrenin
+title: En iyi uygulamaların uygulanması için Azure'daki Kubernetes dağıtımlarınızı kontrol edin
+description: Kube-advisor'ı kullanarak Azure Kubernetes Hizmeti'ndeki dağıtımlarınızda en iyi uygulamaların uygulanıp uygulanabildiğini nasıl denetleriz öğrenin
 services: container-service
 author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
 ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595442"
 ---
-# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kümenizde Kubernetes en iyi uygulamaları denetleniyor
+# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kümenizdeki Kubernetes en iyi yöntemlerini denetleme
 
-Uygulamalarınızın en iyi performansını ve esnekliği sağlamak için Kubernetes dağıtımlarınızda izlemeniz gereken birkaç en iyi uygulama vardır. Kuin-Advisor aracını, bu önerileri takip eden dağıtımları aramak için kullanabilirsiniz.
+Uygulamalarınız için en iyi performansı ve esnekliği sağlamak için Kubernetes dağıtımlarınızda izlemeniz gereken en iyi uygulamalar vardır. Kube-advisor aracını, bu önerileri takip etmeyen dağıtımları aramak için kullanabilirsiniz.
 
-## <a name="about-kube-advisor"></a>Kuin-Advisor hakkında
+## <a name="about-kube-advisor"></a>Kube-danışman hakkında
 
-[Kuin-Advisor aracı][kube-advisor-github] , kümenizde çalıştırılmak üzere tasarlanan tek bir kapsayıcıdır. Dağıtım hakkında bilgi edinmek için Kubernetes API sunucusunu sorgular ve önerilen iyileştirmeler kümesini döndürür.
+[Kube-advisor aracı,][kube-advisor-github] kümenizde çalıştırılmak üzere tasarlanmış tek bir kapsayıcıdır. Kubernetes API sunucusunu dağıtımlarınız hakkında bilgi için sorgular ve önerilen bir dizi geliştirmeyi döndürür.
 
-Kumak-Advisor Aracı, Windows Uygulamaları ve Linux uygulamaları için pod özelliklerinin yanı sıra kaynak isteği ve limitleri rapor edebilir, ancak Kuto-Advisor aracının kendisi bir Linux pod üzerinde zamanlanmalıdır. Pod 'un yapılandırmasındaki [düğüm seçicisini][k8s-node-selector] kullanarak belirli bir işletim sistemine sahip bir düğüm havuzunda çalışacak bir pod zamanlayabilirsiniz.
+Kube-advisor aracı kaynak isteği ve Windows uygulamaları için PodSpecs yanı sıra Linux uygulamaları eksik sınırları rapor edebilirsiniz, ancak kube-danışman aracı kendisi bir Linux pod üzerinde zamanlanmış olmalıdır. Pod yapılandırmasında bir [düğüm seçici][k8s-node-selector] kullanarak belirli bir işletim sistemi ile bir düğüm havuzunda çalışacak bir bölme zamanlayabilirsiniz.
 
 > [!NOTE]
-> Kuin-Advisor Aracı, Microsoft tarafından en iyi çaba temelinde desteklenir. Sorun ve önerilerin GitHub 'da dosyalanmış olması gerekir.
+> Kube-advisor aracı, Microsoft tarafından en iyi çabayla desteklenir. Sorunlar ve öneriler GitHub üzerinde dosyalanmalıdır.
 
-## <a name="running-kube-advisor"></a>Kuto Danışmanı çalıştırma
+## <a name="running-kube-advisor"></a>Koşu kube-danışman
 
-Aracı, [rol tabanlı erişim denetimi (RBAC)](azure-ad-integration.md)için yapılandırılmış bir kümede çalıştırmak için aşağıdaki komutları kullanarak. İlk komut bir Kubernetes hizmet hesabı oluşturur. İkinci komut, aracı bu hizmet hesabını kullanarak bir pod içinde çalıştırır ve kaldırıldıktan sonra Pod 'yi silinmek üzere yapılandırır. 
+Aşağıdaki komutları kullanarak [rol tabanlı erişim denetimi (RBAC)](azure-ad-integration.md)için yapılandırılan bir küme üzerinde aracı çalıştırmak için. İlk komut bir Kubernetes hizmet hesabı oluşturur. İkinci komut, aracı bu hizmet hesabını kullanarak bir bölmede çalıştırır ve çıktıktan sonra bölmeyi silinmesi için yapılandırır. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -42,33 +42,33 @@ RBAC kullanmıyorsanız, komutu aşağıdaki gibi çalıştırabilirsiniz:
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
 ```
 
-Birkaç saniye içinde, dağıtımlarınıza yönelik olası geliştirmeleri açıklayan bir tablo görmeniz gerekir.
+Birkaç saniye içinde, dağıtımlarınızda olası iyileştirmeleri açıklayan bir tablo görmeniz gerekir.
 
-![Kuin-Advisor çıkışı](media/kube-advisor-tool/kube-advisor-output.png)
+![Kube-danışman çıktısı](media/kube-advisor-tool/kube-advisor-output.png)
 
 ## <a name="checks-performed"></a>Gerçekleştirilen denetimler
 
-Araç birkaç Kubernetes en iyi uygulamalarını doğrular ve bunların her biri önerilen düzeltmeleri vardır.
+Araç, her biri kendi önerilen düzeltmesi ile birkaç Kubernetes en iyi uygulamaları doğrular.
 
-### <a name="resource-requests-and-limits"></a>Kaynak istekleri ve limitleri
+### <a name="resource-requests-and-limits"></a>Kaynak istekleri ve sınırlar
 
-Kubernetes [, Pod belirtimlerinde kaynak istekleri ve sınırları][kube-cpumem]tanımlamayı destekler. İstek, kapsayıcıyı çalıştırmak için gereken en düşük CPU ve belleği tanımlar. Sınır, izin verilmesi gereken en fazla CPU ve belleği tanımlar.
+Kubernetes, [pod belirtimlerinde kaynak isteklerini ve sınırlarını tanımlamayı][kube-cpumem]destekler. İstek, kapsayıcıyı çalıştırmak için gereken minimum CPU ve belleği tanımlar. Sınır, izin verilmesi gereken maksimum CPU ve belleği tanımlar.
 
-Varsayılan olarak, Pod belirtimlerinde hiçbir istek veya sınır ayarlanır. Bu, düğümlerin aşırı zamanlanmasına ve kapsayıcıların ortaya çıkmasına neden olabilir. Kuin-Advisor Aracı, istek ve limitler olmadan Pod 'yi vurgular.
+Varsayılan olarak, pod belirtimlerinde hiçbir istek veya sınır ayarlanır. Bu düğümlerin aşırı planlanmış ve konteynerler açlıktan yol açabilir. Kube-advisor aracı, istek ve limitler belirlenmeden bölmeleri vurgular.
 
 ## <a name="cleaning-up"></a>Temizleme
 
-Kümenizin RBAC etkinse, aşağıdaki komutu kullanarak aracı çalıştırdıktan sonra `ClusterRoleBinding` temizleyebilirsiniz:
+Kümeniz RBAC etkinleştirilmişse, aşağıdaki `ClusterRoleBinding` komutu kullanarak aracı çalıştırdıktan sonra temizleyebilirsiniz:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-Aracı RBAC etkin olmayan bir kümeye karşı çalıştırıyorsanız, temizlik gerekmez.
+Aracı RBAC etkin olmayan bir kümeye karşı çalıştırıyorsanız, temizleme gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Kubernetes hizmeti ile ilgili sorunları giderme](troubleshooting.md)
+- [Azure Kubernetes Hizmeti ile ilgili sorun giderme sorunları](troubleshooting.md)
 
 <!-- RESOURCES -->
 

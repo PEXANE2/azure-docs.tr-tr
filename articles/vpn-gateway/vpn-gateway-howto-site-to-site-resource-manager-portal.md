@@ -1,5 +1,5 @@
 ---
-title: 'Şirket içi ağı Azure sanal ağına bağlama: siteden siteye VPN: Portal'
+title: 'Şirket içi ağı Azure sanal ağına bağlayın: Siteden Siteye VPN: Portal'
 description: Şirket içi ağınız ile bir Azure sanal ağı arasında genel İnternet üzerinden bir IPSec bağlantısı oluşturma adımları. Bu adımlar portalı kullanarak Siteden Siteye şirket içi ve dışı karışık VPN Gateway bağlantısı oluşturmanıza yardımcı olur.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244439"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure portalında Siteden Siteye bağlantı oluşturma
@@ -21,7 +21,7 @@ Bu makalede, Azure portalını kullanarak şirket içi ağınızdan VNet’e Sit
 
 > [!div class="op_single_selector"]
 > * [Azure portalında](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Powershell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
@@ -39,7 +39,7 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 * VPN cihazınız için dışarıya dönük genel bir IPv4 adresi olduğunu doğrulayın.
 * Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarıyla ilgili fazla bilginiz yoksa size bu ayrıntıları sağlayabilecek biriyle çalışmanız gerekir. Bu yapılandırmayı oluşturduğunuzda, Azure’un şirket içi konumunuza yönlendireceği IP adres aralığı ön eklerini oluşturmanız gerekir. Şirket içi ağınızın alt ağlarından hiçbiri, bağlanmak istediğiniz sanal ağ alt ağlarıyla çakışamaz. 
 
-### <a name="values"></a>Örnek değerler
+### <a name="example-values"></a><a name="values"></a>Örnek değerler
 
 Bu makaledeki örneklerde aşağıdaki değerler kullanılır. Bu değerleri kullanarak bir test ortamı oluşturabilir veya bu makaledeki örnekleri daha iyi anlamak için bunlara bakabilirsiniz. Genel olarak VPN Gateway ayarları hakkında daha fazla bilgi için [VPN Gateway Ayarları Hakkında](vpn-gateway-about-vpn-gateway-settings.md) konusunu inceleyin.
 
@@ -53,17 +53,17 @@ Bu makaledeki örneklerde aşağıdaki değerler kullanılır. Bu değerleri kul
 * **Sanal ağ geçidi adı:** VNet1GW
 * **Genel IP adresi adı:** VNet1GWpip
 * **VPN türü:** Rota tabanlı
-* **Bağlantı türü:** Siteden siteye (IPSec)
+* **Bağlantı türü:** Siteden siteye (IPsec)
 * **Ağ geçidi türü:** VPN
-* **Yerel ağ geçidi adı:** Site1
+* **Yerel ağ ağ geçidi adı:** Site1
 * **Bağlantı adı:** VNet1toSite1
 * **Ortak anahtar:** Bu örnekte abc123 kullanılır. Ancak, VPN donanımınızla uyumlu herhangi bir seçeneği kullanabilirsiniz. Önemli olan, değerin bağlantının her iki tarafında eşleşmesidir.
 
-## <a name="CreatVNet"></a>1. sanal ağ oluşturma
+## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1. Sanal ağ oluşturma
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="VNetGateway"></a>2. VPN Gateway oluşturma
+## <a name="2-create-the-vpn-gateway"></a><a name="VNetGateway"></a>2. VPN ağ geçidini oluşturma
 
 Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir.
 
@@ -71,33 +71,33 @@ Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ 
 
 ### <a name="example-settings"></a>Örnek ayarlar
 
-* **Örnek ayrıntıları > bölgesi:** Doğu ABD
-* Sanal **ağ > sanal ağ:** VNet1
-* **Örnek ayrıntıları > adı:** VNet1GW
-* **Örnek ayrıntıları > ağ geçidi türü:** SANAL
-* **Örnek ayrıntıları > VPN türü:** Rota tabanlı
-* **Sanal ağ > ağ geçidi alt ağ adres aralığı:** 10.1.255.0/27
-* Genel **IP adresi > genel IP adresi adı:** VNet1GWpip
+* **Bölge > örnek ayrıntıları:** Doğu ABD
+* **Sanal Ağ > Sanal ağ:** VNet1
+* **Örnek ayrıntıları > Adı:** VNet1GW
+* **Ağ Geçidi türü> örnek ayrıntıları:** Vpn
+* **VPN türü > örnek ayrıntılar:** Rota tabanlı
+* **Sanal Ağ > Ağ Geçidi alt net adres aralığı:** 10.1.255.0/27
+* **Genel IP adresi > Genel IP adresi adı:** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 
-## <a name="LocalNetworkGateway"></a>3. yerel ağ geçidini oluşturma
+## <a name="3-create-the-local-network-gateway"></a><a name="LocalNetworkGateway"></a>3. Yerel ağ ağ geçidini oluşturma
 
 Yerel ağ geçidi genellikle şirket içi konumunuz anlamına gelir. Siteye Azure’un başvuruda bulunmak için kullanabileceği bir ad verir, ardından bağlantı oluşturacağınız şirket içi VPN cihazının IP adresini belirtirsiniz. Ayrıca, VPN ağ geçidi üzerinden VPN cihazına yönlendirilecek IP adresi ön eklerini de belirtirsiniz. Belirttiğiniz adres ön ekleri, şirket içi adresinizde yer alan ön eklerdir. Şirket içi ağınız değişirse veya VPN cihazının genel IP adresini değiştirmeniz gerekirse değerleri daha sonra kolayca güncelleştirebilirsiniz.
 
 **Örnek değerler**
 
-* **Ad:** Site1
+* **Adı:** Site1
 * **Kaynak Grubu:** TestRG1
 * **Konum:** Doğu ABD
 
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="VPNDevice"></a>4. VPN cihazınızı yapılandırma
+## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4. VPN cihazınızı yapılandırın
 
 Bir şirket içi ağı ile Siteden Siteye bağlantılar için VPN cihazı gerekir. Bu adımda VPN cihazınızı yapılandıracaksınız. VPN cihazınızı yapılandırırken şunlar gerekir:
 
@@ -106,29 +106,29 @@ Bir şirket içi ağı ile Siteden Siteye bağlantılar için VPN cihazı gereki
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="CreateConnection"></a>5. VPN bağlantısını oluşturun
+## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5. VPN bağlantısını oluşturun
 
 Sanal ağ geçidiniz ile şirket içi VPN cihazınız arasında Siteden Siteye VPN bağlantısı oluşturun.
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="VerifyConnection"></a>6. VPN bağlantısını doğrulayın
+## <a name="6-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>6. VPN bağlantısını doğrulayın
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
-## <a name="connectVM"></a>Sanal makineye bağlanma
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>Sanal makineye bağlanma
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="reset"></a>VPN ağ geçidini sıfırlama
+## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>VPN ağ geçidini sıfırlama
 
 Bir veya daha fazla Siteden Siteye VPN tünelinde şirketler arası VPN bağlantısını kaybederseniz bir Azure VPN ağ geçidinin sıfırlanması yararlıdır. Bu durumda şirket içi VPN cihazlarınızın tümü düzgün çalışır, ancak Azure VPN ağ geçitleriyle IPsec tünelleri kuramaz. Adımlar için bkz. [VPN ağ geçidini sıfırlama](vpn-gateway-resetgw-classic.md).
 
-## <a name="resize"></a>Ağ geçidi SKU’sunu değiştirme (ağ geçidini yeniden boyutlandırma)
+## <a name="how-to-change-a-gateway-sku-resize-a-gateway"></a><a name="resize"></a>Ağ geçidi SKU’sunu değiştirme (ağ geçidini yeniden boyutlandırma)
 
 Bir ağ geçidi SKU'sunu değiştirme adımları için bkz. [Ağ geçidi SKU'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-## <a name="addconnect"></a>Bir VPN ağ geçidine başka bağlantı ekleme
+## <a name="how-to-add-an-additional-connection-to-a-vpn-gateway"></a><a name="addconnect"></a>Bir VPN ağ geçidine başka bağlantı ekleme
 
 Hiçbir adres alanının bağlantılar arasında çakışmaması şartıyla başka bağlantılar ekleyebilirsiniz.
 
@@ -144,5 +144,5 @@ Hiçbir adres alanının bağlantılar arasında çakışmaması şartıyla baş
 * Yüksek Oranda Kullanılabilir Etkin-Etkin bağlantılar hakkında bilgi için bkz. [Yüksek Oranda Kullanılabilir Şirket İçi ve Dışı ile Sanal Ağdan Sanal Ağa Bağlantı](vpn-gateway-highlyavailable.md).
 * Ağ trafiğini bir sanal ağ içindeki kaynaklarla sınırlama hakkında bilgi için bkz. [Ağ Güvenliği](../virtual-network/security-overview.md).
 * Azure, şirket içi ve İnternet kaynakları arasındaki trafiğin Azure tarafından nasıl yönlendirdiği hakkında bilgi için bkz. [Sanal ağ trafiği yönlendirme](../virtual-network/virtual-networks-udr-overview.md).
-* Azure Resource Manager şablonunu kullanarak siteden siteye VPN bağlantısı oluşturma hakkında bilgi için bkz. [Siteden Siteye VPN Bağlantısı Oluşturma](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/).
-* Azure Resource Manager şablonunu kullanarak sanal ağlar arası VPN bağlantısı oluşturma hakkında bilgi için bkz. [HBase coğrafi çoğaltmayı dağıtma](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/).
+* Azure Kaynak Yöneticisi şablonu kullanarak Siteden Siteye VPN bağlantısı oluşturma hakkında bilgi [için](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)bkz.
+* Azure Kaynak Yöneticisi şablonu kullanarak Vnet'e Vnet VPN bağlantısı oluşturma hakkında bilgi [için](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)bkz.

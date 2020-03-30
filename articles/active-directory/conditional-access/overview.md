@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Koşullu erişim nedir?
-description: Koşullu erişimin yeni kimlik temelli denetim düzlemi kalbinde nasıl olduğunu öğrenin.
+title: Azure Etkin Dizinde Koşullu Erişim Nedir?
+description: Conditional Access'in yeni kimlik odaklı kontrol düzleminin kalbinde nasıl olduğunu öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,95 +12,95 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240915"
 ---
 # <a name="what-is-conditional-access"></a>Koşullu Erişim nedir?
 
-Modern güvenlik çevre birimi artık bir kuruluşun ağının ötesinde Kullanıcı ve cihaz kimliğini içerir. Kuruluşlar bu kimlik sinyallerini, erişim denetimi kararlarının bir parçası olarak kullanabilir. 
+Modern güvenlik alanı artık bir kuruluşun ağının ötesine kullanıcı ve aygıt kimliğini içerecek şekilde genişletilir. Kuruluşlar bu kimlik sinyallerini erişim denetimi kararlarının bir parçası olarak kullanabilirler. 
 
-Koşullu erişim, sinyalleri bir araya getirmek, kararlar almak ve kuruluş ilkelerini zorlamak için Azure Active Directory tarafından kullanılan araçtır. Koşullu erişim, yeni kimlik temelli denetim düzlemi 'nin kalmadır.
+Koşullu Erişim, Azure Active Directory tarafından sinyalleri bir araya getirmek, kararlar almak ve kuruluş ilkelerini uygulamak için kullanılan araçtır. Conditional Access, yeni kimlik güdümlü kontrol uçağının kalbinde yer alan bir yerdir.
 
-![Kavramsal koşullu sinyal ve zorlaması alma kararı](./media/overview/conditional-access-signal-decision-enforcement.png)
+![Kavramsal Koşullu sinyal artı uygulama almak için karar](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-Koşullu erişim ilkeleri en basit deyişle, bir Kullanıcı bir kaynağa erişmek isterse, bir eylemi tamamlaması gerekir. Örnek: bir bordro Yöneticisi, bordro uygulamasına erişmek istiyor ve bu uygulamaya erişmek için Multi-Factor Authentication gerçekleştirmek istiyor.
+Koşullu Erişim ilkeleri en basit haliyle, bir kullanıcı bir kaynağa erişmek istiyorsa, bir eylemi tamamlaması gerekir. Örnek: Bordro yöneticisi bordro uygulamasına erişmek ister ve bu uygulamaya erişmek için çok faktörlü kimlik doğrulaması gerçekleştirmesi gerekir.
 
-Yöneticiler iki birincil hedefle başlatılacaktır:
+Yöneticiler iki temel hedefle karşı karşıyadır:
 
 - Kullanıcıların her yerde ve her zaman üretken olmasını sağlama
 - Kuruluşun varlıklarını koruma
 
-Koşullu erişim ilkelerini kullanarak, kuruluşunuzun güvenliğini sağlamak için gerektiğinde doğru erişim denetimlerini uygulayabilir ve gerek duyulmadığında kullanıcının yolunu takip edebilirsiniz.
+Koşullu Erişim ilkelerini kullanarak, kuruluşunuzun güvenliğini sağlamak ve gerekmediğinde kullanıcınızın yolundan uzak durmak için gerektiğinde doğru erişim denetimlerini uygulayabilirsiniz.
 
-![Kavramsal koşullu erişim işlemi akışı](./media/overview/conditional-access-overview-how-it-works.png)
+![Kavramsal Koşullu Erişim süreci akışı](./media/overview/conditional-access-overview-how-it-works.png)
 
-Koşullu erişim ilkeleri, ilk faktör kimlik doğrulaması tamamlandıktan sonra zorlanır. Koşullu erişim, kuruluşun hizmet reddi (DoS) saldırıları gibi senaryolar için ilk savunma hattı olarak tasarlanmamıştır, ancak erişimi anlamak için bu olaylardan gelen sinyalleri kullanabilir.
+Koşullu Erişim ilkeleri, ilk faktör kimlik doğrulaması tamamlandıktan sonra uygulanır. Koşullu Erişim, hizmet reddi (DoS) saldırıları gibi senaryolar için bir kuruluşun ilk savunma hattı olarak tasarlanmamıştır, ancak erişimi belirlemek için bu olaylardan gelen sinyalleri kullanabilir.
 
 ## <a name="common-signals"></a>Ortak sinyaller
 
-Bir ilke kararı verirken, Koşullu erişimin hesaba götürebileceğine ilişkin yaygın sinyaller aşağıdaki sinyalleri içerir:
+Koşullu Erişim'in bir ilke kararı verirken dikkate alabileceği yaygın sinyaller aşağıdaki sinyalleri içerir:
 
 - Kullanıcı veya grup üyeliği
    - İlkeler, yöneticilere erişim üzerinde ayrıntılı denetim sağlayan belirli kullanıcıları ve grupları hedefleyebilir.
-- IP konumu bilgileri
-   - Kuruluşlar, ilke kararları verirken kullanılabilecek güvenilen IP adresi aralıkları oluşturabilir. 
-   - Yöneticiler, trafiği engellemek veya buna izin vermek için tüm ülkelerin IP aralıklarını belirtebilir.
+- IP Konum bilgileri
+   - Kuruluşlar, ilke kararları verirken kullanılabilecek güvenilir IP adresi aralıkları oluşturabilir. 
+   - Yöneticiler, trafiğinengellenmesini veya trafiğe izin vermek için tüm ülke IP aralıklarını belirtebilir.
 - Cihaz
-   - Belirli platformları olan veya belirli bir durumla işaretlenmiş kullanıcılar, koşullu erişim ilkelerini zorlarken kullanılabilir.
+   - Koşullu Erişim ilkeleri zorlarken belirli platformlarda veya belirli bir durumla işaretlenmiş aygıtlara sahip kullanıcılar kullanılabilir.
 - Uygulama
-   - Belirli uygulamalara erişmeye çalışan kullanıcılar, farklı koşullu erişim ilkeleri tetikleyebilir. 
-- Gerçek zamanlı ve hesaplanan risk algılama
-   - Azure AD Kimlik Koruması ile tümleştirme sinyalleri, koşullu erişim ilkelerinin riskli oturum açma davranışını belirlemesine izin verir. İlkeler daha sonra kullanıcıların, risk düzeylerini azaltmak için parola değişiklikleri veya çok faktörlü kimlik doğrulaması gerçekleştirmesine zorlayabilir veya bir yönetici el ile eylem yapana kadar erişim engellenir.
-- Microsoft Cloud App Security (MCAS)
-   - Kullanıcı uygulama erişiminin ve oturumlarının gerçek zamanlı olarak izlenebilmesini ve denetlenmesini, bulut ortamınızda gerçekleştirilen ve erişim üzerinde görünürlük ve denetim işlemlerini arttırmayı ve bu işlemleri ele almasını sağlar.
+   - Belirli uygulamalara erişmeye çalışan kullanıcılar farklı Koşullu Erişim ilkelerini tetikleyebilir. 
+- Gerçek zamanlı ve hesaplanan risk tespiti
+   - Azure AD Kimlik Koruması ile Sinyal tümleştirmesi, Koşullu Erişim ilkelerinin riskli oturum açma davranışını tanımlamasına olanak tanır. İlkeler daha sonra kullanıcıları, risk düzeylerini azaltmak için parola değişiklikleri veya çok faktörlü kimlik doğrulaması gerçekleştirmeye veya yönetici el ile eyleme geçene kadar erişimlerinin engellenmesine zorlayabilir.
+- Microsoft Bulut Uygulama Güvenliği (MCAS)
+   - Kullanıcı uygulaması erişiminin ve oturumlarının gerçek zamanlı olarak izlenmesini ve kontrol edilmesini sağlayarak bulut ortamınıza erişim ve gerçekleştirilen etkinlikler üzerinde görünürlüğü ve denetimi artırır.
 
-## <a name="common-decisions"></a>Yaygın kararlar
+## <a name="common-decisions"></a>Ortak kararlar
 
-- Erişimi engelle
+- Hizmete erişimi
    - En kısıtlayıcı karar
 - Erişim verme
-   - En az kısıtlayıcı karar, aşağıdaki seçeneklerden birini veya birkaçını hala gerektirebilir:
-      - Multi-Factor Authentication gerektir
-      - Cihazın uyumlu olarak işaretlenmesini gerektir
-      - Karma Azure AD 'ye katılmış cihaz gerektir
-      - Onaylı istemci uygulaması gerektir
-      - Uygulama koruma ilkesi gerektir (Önizleme)
+   - En az kısıtlayıcı karar, yine de aşağıdaki seçeneklerden birini veya daha fazlasını gerektirebilir:
+      - Çok faktörlü kimlik doğrulama gerektirir
+      - Aygıtın uyumlu olarak işaretlemesi
+      - Karma Azure AD'nin birleştirilmiş aygıtı gerektirmesi
+      - Onaylı istemci uygulaması gerektirir
+      - Uygulama koruma ilkesi (önizleme) gerektirir
 
 ## <a name="commonly-applied-policies"></a>Yaygın olarak uygulanan ilkeler
 
-Birçok kuruluş, koşullu erişim ilkelerinin şu gibi yardımcı olabilecek yaygın erişim kaygılarına sahiptir:
+Birçok kuruluşun, Koşullu Erişim ilkelerinin şu konularda yardımcı olabileceğine dair ortak erişim kaygıları vardır:
 
-- Yönetici rollerine sahip kullanıcılar için Multi-Factor Authentication gerektirme
-- Azure yönetim görevleri için Multi-Factor Authentication gerektirme
-- Eski kimlik doğrulama protokollerini kullanmaya çalışan kullanıcılar için oturum açma işlemlerini engelleme
-- Azure Multi-Factor Authentication kaydı için güvenilir konumlar gerektirme
+- İdari rolleri olan kullanıcılar için çok faktörlü kimlik doğrulaması gerektirme
+- Azure yönetim görevleri için çok faktörlü kimlik doğrulama gerektirmesi
+- Eski kimlik doğrulama protokollerini kullanmaya çalışan kullanıcılar için oturum açma ları engelleme
+- Azure Çok Faktörlü Kimlik Doğrulama kaydı için güvenilir konumlar gerektirme
 - Belirli konumlardan erişimi engelleme veya verme
 - Riskli oturum açma davranışlarını engelleme
-- Belirli uygulamalar için kuruluş tarafından yönetilen cihazlar gerektirme
+- Belirli uygulamalar için kuruluş tarafından yönetilen aygıtlar gerektirme
 
 ## <a name="customer-case-studies"></a>Müşteri örnek olay incelemeleri
 
-Diğer kuruluşların otomatik erişim denetimi kararları tanımlamak ve uygulamak için Azure AD koşullu erişimini nasıl kullandığını öğrenin. Aşağıdaki öne çıkan hikayeler, bu müşteri ihtiyaçlarını nasıl karşıladığını gösterir.
+Otomatik erişim denetimi kararlarını tanımlamak ve uygulamak için diğer kuruluşların Azure AD Koşullu Erişimi nasıl kullandığını keşfedin. Aşağıdaki özellikli haberler, bu müşteri gereksinimlerinin nasıl karşılandığını gösterir.
 
-* [Wipro, müşteri görevlendirmeleri geliştirmek için Microsoft bulut güvenlik araçlarıyla Mobil üretkenlik sağlar.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Azure AD 'deki koşullu erişim ilkeleri, şirketin, kendi şirket verileri üzerinde denetimi sürdürirken---kendi kimlik bilgilerini kullanabilen---, şirket dışındaki güvenilen belgeleri, kaynakları ve uygulamaları paylaşmasını sağlar.
-* [Aramex teslimi sınırlı-küresel lojistik ve taşımacılık şirketi, kimlik ve erişim yönetimi çözümü ile buluta bağlı Office oluşturur](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Aramex 'in uzak çalışanları ile güvenli erişimin daha zor olduğundan emin olma. Şirket artık bu uzak çalışanların SaaS uygulamalarına Ağ dışından erişmesini sağlamak için koşullu erişim uyguluyor. Koşullu erişim kuralı, Multi-Factor Authentication uygulanıp zorlamayacağına ve yalnızca doğru kişilerin doğru erişime izin vermesini sağlar.
+* [Wipro, müşteri etkileşimlerini geliştirmek için Microsoft bulut güvenliği araçlarıyla mobil üretkenliği artırır.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Azure AD'deki Koşullu Erişim ilkeleri, şirketin kendi kimlik bilgilerini kullanabilen ---diğer yandan kendi kurumsal verileri üzerinde denetim sağlayarak belgeleri, kaynakları ve uygulamaları güvenilir dış kuruluşlarla paylaşmasını --- sağladı.
+* [Aramex teslimat sınırlı - Küresel lojistik ve taşımacılık şirketi kimlik ve erişim yönetimi çözümü ile buluta bağlı ofis oluşturur.](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en) Aramex'in uzak çalışanları için güvenli erişim sağlamak özellikle zordu. Şirket şimdi bu uzak çalışanların saas uygulamalarına ağ dışından erişmelerini sağlamak için Koşullu Erişim'i uyguluyor. Koşullu Erişim kuralı, Çok Faktörlü Kimlik Doğrulama'yı uygulayıp uygulamamaya karar vererek yalnızca doğru kişilere doğru erişimi sağlayacaktır.
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-[Microsoft 365 iş lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır. 
+Microsoft [365 İşletme lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşteriler de Koşullu Erişim özelliklerine erişebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bir koşullu erişim ilkesi parçasını parça olarak oluşturma](concept-conditional-access-policies.md)
+[Koşullu Erişim ilkesini parça parça oluşturma](concept-conditional-access-policies.md)
 
-Ortamınızda Koşullu erişimin nasıl uygulanacağını öğrenmek için, bkz. [Azure Active Directory Koşullu erişim dağıtımınızı planlayın](plan-conditional-access.md).
+Ortamınızda Koşullu Erişim'i nasıl uygulayacağınızı öğrenmek için Azure [Etkin Dizini'nde Koşullu Erişim dağıtımınızı](plan-conditional-access.md)planlayın'a bakın.
 
-[Kimlik koruması hakkında bilgi edinin](../identity-protection/overview-v2.md)
+[Kimlik Koruması hakkında bilgi edinin](../identity-protection/overview-v2.md)
 
 [Microsoft Cloud App Security hakkında bilgi edinin](/cloud-app-security/what-is-cloud-app-security)
 

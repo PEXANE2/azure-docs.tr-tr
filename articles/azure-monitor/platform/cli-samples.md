@@ -1,31 +1,31 @@
 ---
-title: Azure Izleyici CLı hızlı başlangıç örnekleri
-description: Azure Izleyici özellikleri için örnek CLı komutları. Azure Izleyici, uyarı bildirimleri göndermenizi, yapılandırılmış telemetri verileri değerlerine göre Web URL 'Lerini çağırmayı, otomatik ölçeklendirme Cloud Services, sanal makineler ve Web Apps sağlayan bir Microsoft Azure hizmetidir.
+title: Azure Monitör CLI hızlı başlangıç örnekleri
+description: Azure Monitor özellikleri için örnek CLI komutları. Azure Monitor, uyarı bildirimleri göndermenize, yapılandırılmış telemetri verilerinin değerlerine göre web URL'lerini aramanızı ve otomatik Bulut Hizmetleri, Sanal Makineler ve Web Uygulamaları oluşturmanıza olanak tanıyan bir Microsoft Azure hizmetidir.
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248937"
 ---
-# <a name="azure-monitor-cli-quick-start-samples"></a>Azure Izleyici CLı hızlı başlangıç örnekleri
-Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek komut satırı arabirimi (CLı) komutları gösterilmektedir. Azure Izleyici, Cloud Services, sanal makineleri ve Web Apps otomatik olarak ve yapılandırılmış telemetri verileri değerlerine göre uyarı bildirimleri göndermenizi veya Web URL 'Lerini çağırmayı sağlar.
+# <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitör CLI hızlı başlangıç örnekleri
+Bu makalede, Azure Monitor özelliklerine erişmenize yardımcı olmak için örnek komut satırı arabirimi (CLI) komutları gösterilmektedir. Azure Monitor, Bulut Hizmetlerini, Sanal Makineleri ve Web Uygulamalarını Otomatik Ölçeklendirmenize ve yapılandırılmış telemetri verilerinin değerlerine dayalı uyarı bildirimleri göndermenize veya web URL'lerini aramanıza olanak tanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure CLı 'yı henüz yüklemediyseniz [Azure CLI yükleme](/cli/azure/install-azure-cli)yönergelerini izleyin. Ayrıca, CLı 'yı tarayıcınızda etkileşimli bir deneyim olarak çalıştırmak için [Azure Cloud Shell](/azure/cloud-shell) de kullanabilirsiniz. [Azure IZLEYICI CLI başvurusu](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)'ndaki tüm kullanılabilir komutların tam başvurusuna bakın. 
+Azure CLI'yi zaten yüklemediyseniz, [Azure CLI'yi yükleme yönergelerini](/cli/azure/install-azure-cli)izleyin. CLI'yi tarayıcınızda etkileşimli bir deneyim olarak çalıştırmak için [Azure Cloud Shell'i](/azure/cloud-shell) de kullanabilirsiniz. [Azure Monitor CLI başvurusundaki](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)kullanılabilir tüm komutların tam başvurutarihine bakın. 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-İlk adım, Azure hesabınızda oturum açmak için kullanılır.
+İlk adım Azure hesabınıza giriş yapmaktır.
 
 ```azurecli
 az login
 ```
 
-Bu komutu çalıştırdıktan sonra ekrandaki yönergeler aracılığıyla oturum açmanız gerekir. Tüm komutlar varsayılan aboneliğiniz bağlamında çalışır.
+Bu komutu çalıştırdıktan sonra, ekrandaki talimatlar aracılığıyla oturum açmanız gerekir. Tüm komutlar varsayılan aboneliğiniz bağlamında çalışır.
 
 Geçerli aboneliğinizin ayrıntılarını listelemek için aşağıdaki komutu kullanın.
 
@@ -39,7 +39,7 @@ az account show
 az account set -s <Subscription ID or name>
 ```
 
-Desteklenen tüm Azure Izleyici komutlarının listesini görüntülemek için aşağıdakileri yapın.
+Desteklenen tüm Azure Monitor komutlarının listesini görüntülemek için aşağıdakileri gerçekleştirin.
 
 ```azurecli
 az monitor -h
@@ -47,7 +47,7 @@ az monitor -h
 
 ## <a name="view-activity-log-for-a-subscription"></a>Abonelik için etkinlik günlüğünü görüntüleme
 
-Etkinlik günlüğü olaylarının listesini görüntülemek için aşağıdakileri yapın.
+Etkinlik günlüğü olaylarının listesini görüntülemek için aşağıdakileri gerçekleştirin.
 
 ```azurecli
 az monitor activity-log list
@@ -59,19 +59,19 @@ Kullanılabilir tüm seçenekleri görüntülemek için aşağıdakileri deneyin
 az monitor activity-log list -h
 ```
 
-Günlükleri bir resourceGroup öğesine göre listeleyerek bir örnek aşağıda verilmiştir
+Burada bir kaynak Grubu tarafından günlükleri listelemek için bir örnek
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Günlükleri arayana göre listeleme örneği
+Arayanın günlüklerini listelemek için örnek
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Bir tarih aralığı içinde bir kaynak türü üzerinde çağırana göre günlükleri listeleme örneği
+Bir tarih aralığında, bir kaynak türünde arayanın günlüklerini listelemek için örnek
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \
@@ -82,16 +82,16 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 
 ## <a name="work-with-alerts"></a>Uyarılarla çalışma 
 > [!NOTE]
-> Şu anda CLı 'de yalnızca uyarılar (klasik) desteklenir. 
+> Şu anda CLI'de yalnızca uyarılar (klasik) desteklenir. 
 
-### <a name="get-alert-classic-rules-in-a-resource-group"></a>Bir kaynak grubunda uyarı (klasik) kuralları alın
+### <a name="get-alert-classic-rules-in-a-resource-group"></a>Kaynak grubunda uyarı (klasik) kuralları alma
 
 ```azurecli
 az monitor activity-log alert list --resource-group <group name>
 az monitor activity-log alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-metric-alert-classic-rule"></a>Ölçüm Uyarısı (klasik) kuralı oluşturma
+### <a name="create-a-metric-alert-classic-rule"></a>Metrik uyarı (klasik) kuralı oluşturma
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -111,14 +111,14 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 Günlük profilleriyle çalışmak için bu bölümdeki bilgileri kullanın.
 
-### <a name="get-a-log-profile"></a>Günlük profili al
+### <a name="get-a-log-profile"></a>Günlük profili oluşturma
 
 ```azurecli
 az monitor log-profiles list
 az monitor log-profiles show --name <profile name>
 ```
 
-### <a name="add-a-log-profile-with-retention"></a>Saklama ile bir günlük profili ekleme
+### <a name="add-a-log-profile-with-retention"></a>Bekletme ile günlük profili ekleme
 
 ```azurecli
 az monitor log-profiles create --name <profile name> --location <location of profile> \
@@ -129,7 +129,7 @@ az monitor log-profiles create --name <profile name> --location <location of pro
     --storage-account-id <storage account ID to store the logs in>
 ```
 
-### <a name="add-a-log-profile-with-retention-and-eventhub"></a>Bekletme ve EventHub ile bir günlük profili ekleme
+### <a name="add-a-log-profile-with-retention-and-eventhub"></a>Bekletme ve EventHub içeren bir günlük profili ekleme
 
 ```azurecli
 az monitor log-profiles create --name <profile name> --location <location of profile> \
@@ -151,13 +151,13 @@ az monitor log-profiles delete --name <profile name>
 
 Tanılama ayarlarıyla çalışmak için bu bölümdeki bilgileri kullanın.
 
-### <a name="get-a-diagnostic-setting"></a>Tanılama ayarı al
+### <a name="get-a-diagnostic-setting"></a>Tanılama ayarı alın
 
 ```azurecli
 az monitor diagnostic-settings list --resource <target resource ID>
 ```
 
-### <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur 
+### <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluşturma 
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -174,7 +174,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-### <a name="delete-a-diagnostic-setting"></a>Tanılama ayarını Sil
+### <a name="delete-a-diagnostic-setting"></a>Tanılama ayarını silme
 
 ```azurecli
 az monitor diagnostic-settings delete --name <diagnostic name> \
@@ -183,21 +183,21 @@ az monitor diagnostic-settings delete --name <diagnostic name> \
 
 ## <a name="autoscale"></a>Otomatik Ölçeklendirme
 
-Otomatik ölçeklendirme ayarlarıyla çalışmak için bu bölümdeki bilgileri kullanın. Bu örnekleri değiştirmeniz gerekir.
+Otomatik ölçek ayarlarıyla çalışmak için bu bölümdeki bilgileri kullanın. Bu örnekleri değiştirmeniz gerekir.
 
-### <a name="get-autoscale-settings-for-a-resource-group"></a>Bir kaynak grubu için otomatik ölçeklendirme ayarlarını al
+### <a name="get-autoscale-settings-for-a-resource-group"></a>Kaynak grubu için otomatik ölçek lendirme ayarlarını alma
 
 ```azurecli
 az monitor autoscale list --resource-group <group name>
 ```
 
-### <a name="get-autoscale-settings-by-name-in-a-resource-group"></a>Bir kaynak grubundaki otomatik ölçeklendirme ayarlarını ada göre al
+### <a name="get-autoscale-settings-by-name-in-a-resource-group"></a>Kaynak grubunda ada göre otomatik ölçeklendirme ayarlarını alma
 
 ```azurecli
 az monitor autoscale show --name <settings name> --resource-group <group name>
 ```
 
-### <a name="set-autoscale-settings"></a>Otomatik ölçeklendirme ayarlarını ayarla
+### <a name="set-autoscale-settings"></a>Otomatik ölçek ayarlarını ayarlama
 
 ```azurecli
 az monitor autoscale create --name <settings name> --resource-group <group name> \

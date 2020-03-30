@@ -1,52 +1,52 @@
 ---
-title: Azure Application Insights Funlar
-description: Müşterilerin uygulamanızla nasıl etkileşime alınacağını öğrenmek için funnels 'yi nasıl kullanabileceğinizi öğrenin.
+title: Azure Uygulama Öngörüleri Hunileri
+description: Müşterilerin uygulamanızla nasıl etkileşimde bulunduğunu keşfetmek için Hunileri nasıl kullanabileceğinizi öğrenin.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 89440a6385bab5b917a866b686e8d2ba828c92e5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671061"
 ---
-# <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights Funlarla müşterilerin uygulamanızı nasıl kullandığını öğrenin
+# <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights Hunileri ile müşterilerin uygulamanızı nasıl kullandığını keşfedin
 
-Müşteri deneyimini anlamak, işletmeniz için en önemli öneme sahiptir. Uygulamanız birden çok aşama içeriyorsa, çoğu müşterinin işlemin tamamında ilerlediğini veya işlemi bir noktada sonlandırdığını bilmeniz gerekir. Web uygulamasındaki bir dizi adımdan ilerleme, *huni*olarak bilinir. Kullanıcılarınıza Öngörüler elde etmek ve adım adım dönüştürme oranlarını izlemek için Azure Application Insights funnels 'yi kullanabilirsiniz. 
+Müşteri deneyimini anlamak işletmeniz için son derece önemlidir. Uygulamanız birden çok aşama içeriyorsa, çoğu müşterinin tüm işlem boyunca ilerleme kaydedip geçirmediğini veya bir noktada işlemi sonlandırdıklarını bilmeniz gerekir. Bir web uygulamasında bir dizi adımda ilerleme *huni*olarak bilinir. Kullanıcılarınız hakkında bilgi edinmek ve adım adım dönüşüm oranlarını izlemek için Azure Uygulama Öngörüleri Hunileri'ni kullanabilirsiniz. 
 
-## <a name="create-your-funnel"></a>Huni oluşturma
-Huni oluşturmadan önce yanıtlamak istediğiniz soruya karar verin. Örneğin, giriş sayfasını görüntüleme, müşteri profilini görüntüleme ve bilet oluşturma işlemlerinin kaç Kullanıcı tarafından yapıldığını öğrenmek isteyebilirsiniz. Bu örnekte, Fabrikam Fiber şirketinin sahipleri, başarıyla bir müşteri bileti oluşturan müşterilerin yüzdesini bilmesini istiyor.
+## <a name="create-your-funnel"></a>Huninizi oluşturun
+Huninizi oluşturmadan önce, yanıtlamak istediğiniz soruya karar verin. Örneğin, ana sayfayı kaç kullanıcının görüntülediğinizi, müşteri profilini görüntülediğinizi ve bir bilet oluşturduğunu bilmek isteyebilirsiniz. Bu örnekte, Fabrikam Fiber şirketinin sahipleri başarılı bir müşteri bileti oluşturan müşterilerin yüzdesini bilmek istiyor.
 
-Huni oluşturmak için gereken adımlar aşağıda verilmiştir.
+Hunilerini oluşturmak için atdıkları adımlar şunlardır.
 
-1. Application Insights funnels aracında **Yeni**' yi seçin.
-1. **Zaman aralığı** açılan menüsünde **son 90 gün**' yı seçin. **Komik** veya **paylaşılan komik**seçeneklerinden birini belirleyin.
-1. **Adım 1** aşağı açılan listesinden **Dizin**' i seçin. 
-1. 2\. **adım** listesinde **Müşteri**' yi seçin.
-1. 3\. **adım** listesinden **Oluştur**' u seçin.
-1. Huni için bir ad ekleyin ve **Kaydet**' i seçin.
+1. Application Insights Huniler aracında **Yeni'yi**seçin.
+1. Zaman **Aralığı** açılır menüsünden **Son 90 gün'ü**seçin. **Hunilerimi** veya Paylaşılan **hunilerimi**seçin.
+1. Adım **1** açılır listesinden **Dizin'i**seçin. 
+1. Adım **2** listesinden **Müşteri'yi**seçin.
+1. Adım **3** listesinden **Oluştur'u**seçin.
+1. Huniye bir ad ekleyin ve **Kaydet'i**seçin.
 
-Aşağıdaki ekran görüntüsünde, funnels aracının oluşturduğu veri türünün bir örneği gösterilmektedir. Fabrikam sahipleri, son 90 gün içinde, giriş sayfasını ziyaret eden müşterilerinin yüzde 54,3 ' inin bir müşteri bileti oluşturduğunu görebilirler. Ayrıca, kendi müşterilerinin 2.700, giriş sayfasındaki dizine geldiğini de görebilir. Bu, yenileme sorununa işaret edebilir.
+Aşağıdaki ekran görüntüsü, Huniler aracının oluşturduğu veri türünün bir örneğini gösterir. Fabrikam sahipleri, son 90 gün içinde ana sayfayı ziyaret eden müşterilerinin yüzde 54,3'ünün müşteri bileti oluşturduğunu görebiliyor. Ayrıca, müşterilerinin 2.700'ünün ana sayfadan dizin için geldiğini de görebiliyorlar. Bu, bir yenileme sorunu gösterebilir.
 
 
-![Verilerle funnels aracının ekran görüntüsü](media/usage-funnels/funnel1.png)
+![Veri ile Huniler aracının ekran görüntüsü](media/usage-funnels/funnel1.png)
 
-### <a name="funnels-features"></a>Funnels özellikleri
-Önceki ekran görüntüsünde beş Vurgulanan alan bulunur. Bunlar, Nednels özellikleridir. Aşağıdaki listede, ekran görüntüsünde karşılık gelen her alan hakkında daha fazla bilgi verilmektedir:
-1. Uygulamanız örneklenir ise, bir örnekleme başlığı görürsünüz. Başlığın seçilmesi, örnekleme 'nın nasıl açılacağını açıklayan bir bağlam bölmesi açar. 
-2. [Power BI](../../azure-monitor/app/export-power-bi.md ), huni 'nizi dışarı aktarabilirsiniz.
-3. Sağ tarafta daha fazla ayrıntı görmek için bir adım seçin. 
-4. Geçmiş dönüştürme grafiğinde, son 90 güne ait dönüştürme ücretleri gösterilmektedir. 
-5. Kullanıcılar aracına erişerek kullanıcılarınızı daha iyi anlayın. Her adımda filtre kullanabilirsiniz. 
+### <a name="funnels-features"></a>Huni özellikleri
+Önceki ekran görüntüsü beş vurgulanan alanları içerir. Bunlar Hunilerin özellikleridir. Aşağıdaki liste, ekran görüntüsündeki her ilgili alan hakkında daha fazla açıklama dır:
+1. Uygulamanız örneklenirse, bir örnekleme afişi görürsünüz. Banner'ı seçmek, örneklemenin nasıl kapatılabildiğini açıklayan bir bağlam bölmesi açar. 
+2. Huninizi [Power BI'ye](../../azure-monitor/app/export-power-bi.md )dışa aktarabilirsiniz.
+3. Sağdaki ayrıntıları görmek için bir adım seçin. 
+4. Geçmiş dönüşüm grafiği, son 90 gündeki dönüşüm oranlarını gösterir. 
+5. Kullanıcı aracına erişerek kullanıcılarınızı daha iyi anlayın. Her adımda filtrelerk kullanabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
   * [Kullanıma genel bakış](usage-overview.md)
   * [Kullanıcılar, Oturumlar ve Etkinlikler](usage-segmentation.md)
   * [Bekletme](usage-retention.md)
-  * [Çalışma kitapları](../../azure-monitor/app/usage-workbooks.md)
-  * [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
+  * [Çalışma Kitapları](../../azure-monitor/app/usage-workbooks.md)
+  * [Kullanıcı bağlamı ekleme](usage-send-user-context.md)
   * [Power BI’a aktarma](../../azure-monitor/app/export-power-bi.md )
 

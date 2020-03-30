@@ -1,35 +1,35 @@
 ---
-title: Azure Application Insights Aracısı API başvurusu
-description: Aracı API başvurusunu Application Insights. Get-Applicationınsiısmonitoringstatus. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, sanal makinelerde veya Azure üzerinde ASP.NET web uygulamaları ile çalışır.
+title: Azure Uygulama Öngörüleri AracıAP başvurusu
+description: Uygulama Öngörüleri Aracısı API başvurusu. Get-ApplicationInsightsMonitoringStatus. Web sitesini yeniden dağıtmadan web sitesinin performansını izleyin. Şirket içinde, sanal makinelerde veya Azure üzerinde ASP.NET web uygulamaları ile çalışır.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671265"
 ---
-# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights aracı API 'SI: Get-Applicationınsiısmonitoringstatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Uygulama Öngörüleri Aracısı API: Get-ApplicationInsightsMonitoringStatus
 
-Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
+Bu [makalede, Az.ApplicationMonitor PowerShell modülüüyesi](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)bir cmdlet açıklanır.
 
 ## <a name="description"></a>Açıklama
 
 Bu cmdlet Durum İzleyicisi hakkında sorun giderme bilgileri sağlar.
-Bu cmdlet 'i kullanarak izleme durumunu, PowerShell modülünün sürümünü araştırın ve çalışan işlemi inceleyin.
-Bu cmdlet, izleme için gerekli olan anahtar dosyaları hakkında sürüm bilgilerini ve bilgileri bildirir.
+PowerShell Modülü'nün izleme durumunu, sürümünü incelemek ve çalıştırma işlemini incelemek için bu cmdlet'i kullanın.
+Bu cmdlet, izleme için gerekli olan önemli dosyalar la ilgili sürüm bilgilerini ve bilgilerini raporedecektir.
 
 > [!IMPORTANT] 
-> Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
+> Bu cmdlet, Yönetici izinleri içeren bir PowerShell oturumu gerektirir.
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="example-application-status"></a>Örnek: uygulama durumu
+### <a name="example-application-status"></a>Örnek: Uygulama durumu
 
-Web sitelerinin izleme durumunu göstermek için komutu `Get-ApplicationInsightsMonitoringStatus` çalıştırın.
+Web sitelerinin izleme durumunu görüntülemek için komutu `Get-ApplicationInsightsMonitoringStatus` çalıştırın.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -66,16 +66,16 @@ AppAlreadyInstrumented : true
 ```
 
 Bu örnekte;
-- **Makine tanımlayıcısı** , sunucunuzu benzersiz şekilde tanımlamak için kullanılan anonım bir tanıtıcıdır. Bir destek isteği oluşturursanız, sunucunuza yönelik günlükleri bulmak için bu KIMLIĞE ihtiyacımız olacak.
-- **Varsayılan Web sItesI** IIS 'de durdurulur
-- **DemoWebApp111** , IIS 'de başlatılmış, ancak hiçbir istek almamıştı. Bu rapor, çalışan bir işlem (ProcessId: bulunamadı) olmadığını gösterir.
-- **DemoWebApp222** çalışıyor ve Izleniyor (belgelenmiş: true). Kullanıcı yapılandırmasına bağlı olarak, bu site için xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 Izleme anahtarı eşleştirildi.
-- **DemoWebApp333** , Application Insights SDK kullanılarak el ile işaretlendi. Durum İzleyicisi SDK algıladı ve bu siteyi izlemez.
+- **Makine Tanımlayıcısı,** sunucunuzu benzersiz olarak tanımlamak için kullanılan anonim bir kimliktir. Bir destek isteği oluşturursanız, sunucunuz için günlükleri bulmak için bu kimliğin gerekir.
+- **Varsayılan Web Sitesi** IIS'de Durduruldu
+- **DemoWebApp111** IIS'de başlatıldı, ancak herhangi bir istek almadı. Bu rapor, çalışma işlemi olmadığını gösterir (ProcessId: bulunamadı).
+- **DemoWebApp222** çalışıyor ve izleniyor (Instrumented: true). Kullanıcı yapılandırmadayanarak, Instrumentation Key xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 bu site için eşleşti.
+- **DemoWebApp333,** Application Insights SDK kullanılarak el ile işletilmiştir. Durum İzleyicisi SDK'yı algıladı ve bu siteyi izlemez.
 
 
-### <a name="example-powershell-module-information"></a>Örnek: PowerShell modülü bilgileri
+### <a name="example-powershell-module-information"></a>Örnek: PowerShell modül bilgileri
 
-Geçerli modülle ilgili bilgileri göstermek için komutu `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` çalıştırın:
+Geçerli modül `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` hakkında bilgi görüntülemek için komutu çalıştırın:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -127,9 +127,9 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>Örnek: çalışma zamanı durumu
+### <a name="example-runtime-status"></a>Örnek: Çalışma zamanı durumu
 
-Tüm dll 'Lerin yüklenip yüklenmediğini görmek için, izlenen bilgisayarda işlemi inceleyebilirsiniz. İzleme çalışıyorsa, en az 12 dll 'nin yüklenmesi gerekir.
+Tüm DL'lerin yüklenip yüklenmediğinizi görmek için işlem aracılı bilgisayarda inceleyebilirsiniz. İzleme çalışıyorsa, en az 12 DL yüklenmelidir.
 
 Komutu `Get-ApplicationInsightsMonitoringStatus -InspectProcess`çalıştırın:
 
@@ -169,33 +169,33 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="no-parameters"></a>(Parametre yok)
 
-Varsayılan olarak, bu cmdlet Web uygulamalarının izleme durumunu rapor eder.
-Uygulamanızın başarıyla işaretlenmiş olup olmadığını gözden geçirmek için bu seçeneği kullanın.
-Ayrıca, sitenizdeki hangi Izleme anahtarının eşleştiğini de inceleyebilirsiniz.
+Varsayılan olarak, bu cmdlet web uygulamalarının izleme durumunu bildirir.
+Uygulamanızın başarılı bir şekilde algılanmış olup olmadığını gözden geçirmek için bu seçeneği kullanın.
+Ayrıca, hangi Enstrümantasyon Anahtarının sitenizle eşleşebileceğini de inceleyebilirsiniz.
 
 
-### <a name="-powershellmodule"></a>-PowerShellModule
-**İsteğe bağlı**. İzleme için gerekli olan DLL 'lerin sürüm numaralarını ve yollarını raporlamak için bu anahtarı kullanın.
-Application Insights SDK dahil olmak üzere herhangi bir DLL sürümünü belirlemeniz gerekiyorsa bu seçeneği kullanın.
+### <a name="-powershellmodule"></a>-PowerShellModülü
+**İsteğe bağlı**. İzleme için gereken DL'lerin sürüm numaralarını ve yollarını bildirmek için bu anahtarı kullanın.
+Application Insights SDK de dahil olmak üzere herhangi bir DLL sürümünü tanımlamanız gerekiyorsa bu seçeneği kullanın.
 
-### <a name="-inspectprocess"></a>-Inspectprocess
+### <a name="-inspectprocess"></a>-İnceleme Süreci
 
-**İsteğe bağlı**. IIS 'in çalışıp çalışmadığını raporlamak için bu anahtarı kullanın.
-Ayrıca, gerekli dll 'Lerin IIS çalışma zamanına yüklenip yüklenmediğini anlamak için dış araçları da indirir.
+**İsteğe bağlı**. IIS'nin çalışıp çalışmadığını bildirmek için bu anahtarı kullanın.
+Ayrıca, gerekli DL'lerin IIS çalışma süresine yüklenip yüklenmeyeceğini belirlemek için harici araçlar indirir.
 
 
 Bu işlem herhangi bir nedenle başarısız olursa, bu komutları el ile çalıştırabilirsiniz:
-- ıisreset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | Findstr/I "ınstrumentationengine AI. ApplicationInsights
-- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "ınstrumentationengine AI ApplicationInsights"
+- iisreset.exe /durum
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. UygulamaInsights"
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
 
 
 ### <a name="-force"></a>-Force
 
-**İsteğe bağlı**. Yalnızca ınspectprocess ile kullanılır. Ek araçlar indirilmeden önce görüntülenen kullanıcı isteğini atlamak için bu anahtarı kullanın.
+**İsteğe bağlı**. Yalnızca InspectProcess ile kullanılır. Ek araçlar indirilmeden önce görünen kullanıcı istemini atlamak için bu anahtarı kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- Application Insights aracısıyla daha fazlasını yapın:
- - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ Application Insights Agent ile daha fazlasını yapın:
+ - Uygulama Öngörüleri [Aracısı'nın sorun giderme](status-monitor-v2-troubleshoot.md) kılavuzunu kullanın.

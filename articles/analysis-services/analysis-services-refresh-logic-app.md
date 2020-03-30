@@ -1,117 +1,117 @@
 ---
-title: Azure Analysis Services modelleri için Logic Apps ile yenileme | Microsoft Docs
-description: Bu makalede, Azure Logic Apps kullanılarak Azure Analysis Services için zaman uyumsuz yenilemenin nasıl kodleneceğini açıklar.
+title: Azure Analiz Hizmetleri modelleri için Logic Apps ile yenileyin | Microsoft Dokümanlar
+description: Bu makalede, Azure Mantık Uygulamaları kullanarak Azure Analiz Hizmetleri için eşzamanlı yenilemenin nasıl kodlanır.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126927"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps ile yenileme
 
-Logic Apps ve REST çağrılarını kullanarak, Azure Analysis tablolu modellerinizde, sorgu ölçeği için salt okuma çoğaltmalarının eşitlenmesi dahil otomatik veri yenileme işlemleri gerçekleştirebilirsiniz.
+Logic Apps ve REST çağrılarını kullanarak, sorgu ölçeklendirmesi için salt okunur yinelemelerin senkronizeleştirilmesi de dahil olmak üzere Azure Analizi tabular modellerinizde otomatik veri yenileme işlemleri gerçekleştirebilirsiniz.
 
-Azure Analysis Services ile REST API 'Leri kullanma hakkında daha fazla bilgi için bkz. [REST API Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md).
+Azure Analiz Hizmetleri ile REST API'lerini kullanma hakkında daha fazla bilgi edinmek için [REST API'si ile Eşzamanlı yenile'ye](analysis-services-async-refresh.md)bakın.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
-Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örneklerde Azure Analysis Services kimlik doğrulaması için bir hizmet sorumlusu (SPN) kullanılır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
+Tüm aramaların geçerli bir Azure Etkin Dizini (OAuth 2) belirteciyle kimlik doğrulaması yapılmalıdır.  Bu makaledeki örnekler, Azure Çözümleme Hizmetleri'nin kimliğini doğrulamak için bir Hizmet Sorumlusu (SPN) kullanır. Daha fazla bilgi için Azure [portalLarını kullanarak bir hizmet sorumlusu oluştur'a](../active-directory/develop/howto-create-service-principal-portal.md)bakın.
 
-## <a name="design-the-logic-app"></a>Mantıksal uygulamayı tasarlama
+## <a name="design-the-logic-app"></a>Mantık uygulamasını tasarla
 
 > [!IMPORTANT]
-> Aşağıdaki örneklerde Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını kabul edilir. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi Azure Analysis Services güvenlik duvarında beyaz listeye alınmalıdır. Bölge başına Azure Logic Apps IP aralıkları hakkında daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgilerine](../logic-apps/logic-apps-limits-and-config.md#configuration)bakın.
+> Aşağıdaki örnekler, Azure Çözümleme Hizmetleri güvenlik duvarının devre dışı bırakıldığını varsayar. Güvenlik duvarı etkinse, istek başlatıcısının genel IP adresi Azure Çözümleme Hizmetleri güvenlik duvarında beyaz listeye alınmalıdır. Azure Logic Apps BÖLGE İçİn IP aralıkları hakkında daha fazla bilgi edinmek [için Azure Mantık Uygulamaları için Sınırlar ve yapılandırma bilgilerine](../logic-apps/logic-apps-limits-and-config.md#configuration)bakın.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-#### <a name="create-a-service-principal-spn"></a>Hizmet sorumlusu oluşturma (SPN)
+#### <a name="create-a-service-principal-spn"></a>Hizmet Sorumlusu Oluşturma (SPN)
 
-Hizmet sorumlusu oluşturma hakkında bilgi edinmek için, bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
+Hizmet Sorumlusu oluşturma hakkında bilgi edinmek için Azure [portalını kullanarak bir hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md)'na bakın.
 
-#### <a name="configure-permissions-in-azure-analysis-services"></a>Azure Analysis Services izinlerini yapılandırma
+#### <a name="configure-permissions-in-azure-analysis-services"></a>Azure Çözümleme Hizmetlerinde izinleri yapılandırma
  
-Oluşturduğunuz hizmet sorumlusu sunucuda Sunucu Yöneticisi izinlerine sahip olmalıdır. Daha fazla bilgi için bkz. [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md).
+Oluşturduğunuz Hizmet Yöneticisi'nin sunucuda sunucu yöneticisi izinleri olmalıdır. Daha fazla bilgi için bkz. [sunucu yöneticisi rolüne bir hizmet sorumlusu ekle.](analysis-services-addservprinc-admins.md)
 
-### <a name="configure-the-logic-app"></a>Mantıksal uygulamayı yapılandırma
+### <a name="configure-the-logic-app"></a>Mantık Uygulamasını Yapılandırma
 
-Bu örnekte, mantıksal uygulama bir HTTP isteği alındığında tetiklemek üzere tasarlanmıştır. Bu, Azure Analysis Services modeli yenilemeyi tetiklemek için Azure Data Factory gibi bir Orchestration aracı kullanımını etkinleştirir.
+Bu örnekte, Bir HTTP isteği geldiğinde Mantık Uygulaması tetiklemek için tasarlanmıştır. Bu, Azure Veri Fabrikası gibi bir düzenleme aracının kullanılmasını sağlayarak Azure Çözümleme Hizmetleri modelinin yenilenmesini tetikler.
 
-Bir mantıksal uygulama oluşturduktan sonra:
+Bir Mantık Uygulaması oluşturduktan sonra:
 
-1. Mantıksal uygulama tasarımcısında, **BIR http isteği alındığında**ilk eylemi seçin.
+1. Mantık Uygulaması tasarımcısında, **bir HTTP isteği alındığı zaman**ilk eylemi seçin.
 
-   ![HTTP alındı etkinliği Ekle](./media/analysis-services-async-refresh-logic-app/1.png)
+   ![HTTP alınan etkinliği ekleme](./media/analysis-services-async-refresh-logic-app/1.png)
 
-Mantıksal uygulama kaydedildikten sonra bu adım HTTP POST URL 'SI ile doldurulur.
+Bu adım, Mantık Uygulaması kaydedildikten sonra HTTP POST URL ile doldurulur.
 
-2. Yeni bir adım ekleyin ve **http**araması yapın.  
+2. Yeni bir adım ekleyin ve **HTTP**için arama yapın.  
 
-   ![HTTP etkinliği Ekle](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![HTTP etkinliği ekleme](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![HTTP etkinliği Ekle](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![HTTP etkinliği ekleme](./media/analysis-services-async-refresh-logic-app/10.png)
 
-3. Bu eylemi eklemek için **http** 'yi seçin.
+3. Bu eylemi eklemek için **HTTP'yi** seçin.
 
-   ![HTTP etkinliği Ekle](./media/analysis-services-async-refresh-logic-app/2.png)
+   ![HTTP etkinliği ekleme](./media/analysis-services-async-refresh-logic-app/2.png)
 
-HTTP etkinliğini şu şekilde yapılandırın:
+HTTP etkinliğini aşağıdaki gibi yapılandırın:
 
 |Özellik  |Değer  |
 |---------|---------|
 |**Yöntem**     |POST         |
-|**KULLANıLMAMıŞSA**     | https://*sunucu bölgenizi*/Servers/*AAS sunucu adı*/models/*veritabanınızın adı*/yenilemeler <br /> <br /> Örneğin: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**Üst Bilgiler**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
-|**Gövde**     |   İstek gövdesini oluşturan hakkında daha fazla bilgi edinmek için, [REST API-Post/Refresh Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md#post-refreshes)bölümüne bakın. |
-|**Kimlik doğrulaması**     |Active Directory OAuth         |
-|**Kiracı**     |Azure Active Directory Tenantıd 'nizi girin         |
-|**Grubu**     |https://*. aşama zure. Windows. net         |
-|**İstemci KIMLIĞI**     |Hizmet asıl adı ClientID değerini girin         |
-|**Kimlik bilgisi türü**     |Gizli dizi         |
-|**Gizli dizi**     |Hizmet sorumlusu adı gizli anahtarını girin         |
+|**URI**     | sunucu*bölgenizi /sunucularınızı/**aas sunucu adınızı*/modellerinizi/ veritabanı adınızı /yenilenizi https://*your database name* <br /> <br /> Örneğin: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
+|**Üst Bilgiler**     |   İçerik Türü, uygulama/json <br /> <br />  ![Üst bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Gövde**     |   İstek gövdesi oluşturma hakkında daha fazla bilgi edinmek için [REST API - POST /refreshes ile Asynchronous yenile'](analysis-services-async-refresh.md#post-refreshes)ye bakın. |
+|**Kimlik doğrulaması**     |Aktif Dizin OAuth         |
+|**Kiracı**     |Azure Etkin Dizin KiracıKimliğinizi doldurun         |
+|**Hedef kitle**     |https://*.asazure.windows.net         |
+|**İstemci Kimliği**     |Hizmet Ana Adınızı Girin Müşteri Kimliği         |
+|**Kimlik Bilgisi Türü**     |Gizli dizi         |
+|**Gizli dizi**     |Hizmet Müdür Adınızı Gizli Girin         |
 
 Örnek:
 
 ![Tamamlanan HTTP etkinliği](./media/analysis-services-async-refresh-logic-app/7.png)
 
-Artık mantıksal uygulamayı test edin.  Mantıksal uygulama tasarımcısında **Çalıştır**' a tıklayın.
+Şimdi Mantık Uygulaması test edin.  Mantık Uygulaması tasarımcısında **Çalıştır'ı**tıklatın.
 
 ![Mantıksal uygulamayı test etme](./media/analysis-services-async-refresh-logic-app/8.png)
 
-## <a name="consume-the-logic-app-with-azure-data-factory"></a>Mantıksal uygulamayı Azure Data Factory kullanma
+## <a name="consume-the-logic-app-with-azure-data-factory"></a>Azure Veri Fabrikası ile Mantık Uygulamasını Tüketin
 
-Mantıksal uygulama kaydedildikten sonra, **http isteği alındığında** öğesini gözden geçirin ve ardından oluşturulan **http post URL 'sini** kopyalayın.  Bu, mantıksal uygulamayı tetiklemek için zaman uyumsuz çağrıyı yapmak üzere Azure Data Factory tarafından kullanılabilen URL 'dir.
+Mantık Uygulaması kaydedildikten sonra, **Bir HTTP isteği ne zaman etkinliği alınır** ve şimdi oluşturulan HTTP POST **URL'sini** kopyalayın.  Bu URL, Azure Veri Fabrikası tarafından Mantık Uygulamasını tetiklemek için eşzamanlı arama yapmak için kullanılabilecek URL'dir.
 
-Bu eylemi gerçekleştiren bir Web etkinliği Azure Data Factory örneği aşağıda verilmiştir.
+Aşağıda, bu eylemi yapan bir örnek Azure Veri Fabrikası Web Etkinliği verilmiştir.
 
-![Data Factory Web etkinliği](./media/analysis-services-async-refresh-logic-app/11.png)
+![Veri Fabrikası Web Etkinliği](./media/analysis-services-async-refresh-logic-app/11.png)
 
-## <a name="use-a-self-contained-logic-app"></a>Kendi içinde mantıksal uygulama kullanma
+## <a name="use-a-self-contained-logic-app"></a>Bağımsız Bir Mantık Uygulaması Kullanma
 
-Model yenilemeyi tetiklemek için Data Factory gibi bir Orchestration aracı kullanmayı planlamıyorsanız, mantıksal uygulamayı bir zamanlamaya göre yenilemeyi tetikleyecek şekilde ayarlayabilirsiniz.
+Model yenilemesini tetiklemek için Veri Fabrikası gibi bir Düzenleme aracı kullanmayı düşünmüyorsanız, zamanlamaya dayalı olarak yenilemeyi tetiklemek için mantık uygulamasını ayarlayabilirsiniz.
 
-Yukarıdaki örneği kullanarak, ilk etkinliği silip bir **zamanlama** etkinliği ile değiştirin.
+Yukarıdaki örneği kullanarak, ilk etkinliği silin ve **zamanlama** etkinliğiyle değiştirin.
 
-![Zamanlama etkinliği](./media/analysis-services-async-refresh-logic-app/12.png)
+![Etkinlik Programı](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![Zamanlama etkinliği](./media/analysis-services-async-refresh-logic-app/13.png)
+![Etkinlik Programı](./media/analysis-services-async-refresh-logic-app/13.png)
 
-Bu örnek, **yinelenme**kullanır.
+Bu **örnekte Yineleme**kullanılacaktır.
 
-Etkinlik eklendikten sonra aralığı ve sıklığı yapılandırın, sonra yeni bir parametre ekleyin ve **bu saatlere**seçin.
+Etkinlik eklendikten sonra, Aralık ve Sıklık'ı yapılandırın, ardından yeni bir parametre ekleyin ve **bu saatlerde**seçin.
 
-![Zamanlama etkinliği](./media/analysis-services-async-refresh-logic-app/16.png)
+![Etkinlik Programı](./media/analysis-services-async-refresh-logic-app/16.png)
 
-İstediğiniz saatleri seçin.
+Aranan saatleri seçin.
 
-![Zamanlama etkinliği](./media/analysis-services-async-refresh-logic-app/15.png)
+![Etkinlik Programı](./media/analysis-services-async-refresh-logic-app/15.png)
 
-Mantıksal uygulamayı kaydedin.
+Mantık Uygulamasını Kaydet.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

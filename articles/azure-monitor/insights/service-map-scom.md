@@ -1,146 +1,146 @@
 ---
-title: VM'ler için Azure İzleyici haritasını Operations Manager ile tümleştirin | Microsoft Docs
-description: VM'ler için Azure İzleyici Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, Operations Manager ' de otomatik olarak dağıtılmış uygulama diyagramları oluşturmak için harita özelliğinin kullanılması anlatılmaktadır.
+title: VMs Haritası için Azure Monitörünü Operasyon Yöneticisi ile Tümleştir | Microsoft Dokümanlar
+description: Sanal Ayarlar için Azure Monitor, Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak keşfeder ve hizmetler arasındaki iletişimi eşler. Bu makalede, Operations Manager'da otomatik olarak dağıtılmış uygulama diyagramları oluşturmak için Harita özelliğinin kullanılması anlatılmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
 ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663462"
 ---
-# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>VMs Map özelliği için Sistem Merkezi Operasyon Yöneticisini Azure Monitörile Tümleştir
 
-VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. Eşleme özelliği ve System Center Operations Manager arasındaki bu tümleştirmeyle, VM'ler için Azure İzleyici içindeki dinamik bağımlılık haritalarını temel alan Operations Manager otomatik olarak dağıtılmış uygulama diyagramları oluşturabilirsiniz. Bu makalede, System Center Operations Manager yönetim grubunuzun bu özelliği destekleyecek şekilde nasıl yapılandırılacağı açıklanmaktadır.
+Sanal Ayarlar için Azure Monitörü'nde, Azure'da veya çevrenizde çalışan Windows ve Linux sanal makinelerinde (VM) keşfedilen uygulama bileşenlerini görüntüleyebilirsiniz. Harita özelliği ve Sistem Merkezi Operasyon Yöneticisi arasındaki bu tümleştirme yle, İşlem Yöneticisi'nde, VM'ler için Azure Monitörü'ndeki dinamik bağımlılık eşlemlerini temel alan dağıtılmış uygulama diyagramları otomatik olarak oluşturabilirsiniz. Bu makalede, sistem merkezi operasyon yöneticisi yönetim grubunuzun bu özelliği destekleyecek şekilde nasıl yapılandırılabildiğini açıklanmaktadır.
 
 >[!NOTE]
->Zaten Hizmet Eşlemesi dağıttıysanız, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. VM'ler için Azure İzleyici Map özelliği, tek başına Hizmet Eşlemesi çözümünün yerini alacak şekilde tasarlanmıştır. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](vminsights-overview.md).
+>Hizmet Haritası'nı zaten dağıttıysanız, haritalarınızı VM'ler için Azure Monitörü'nde görüntüleyebilirsiniz ve bu özellikler VM durumunu ve performansını izlemek için ek özellikler içerir. VM'ler için Azure Monitor'un Harita özelliği, bağımsız Hizmet Haritası çözümünü değiştirmek için tasarlanmıştır. Daha fazla bilgi edinmek [için VM'lere genel bakış için Azure Monitor'a](vminsights-overview.md)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* System Center Operations Manager yönetim grubu (2012 R2 veya üzeri).
-* VM'ler için Azure İzleyici desteklemek için yapılandırılmış bir Log Analytics çalışma alanı.
-* Operations Manager tarafından izlenen bir veya daha fazla Windows ve Linux sanal makinesi veya fiziksel bilgisayar Log Analytics çalışma alanınıza veri gönderiyor. Bir Operations Manager yönetim grubuna raporlayan Linux sunucularının Azure Izleyici 'ye doğrudan bağlanacak şekilde yapılandırılması gerekir. Daha fazla bilgi için [Log Analytics aracısıyla günlük verilerini toplama](../platform/log-analytics-agent.md)bölümündeki genel bakışı gözden geçirin.
-* Log Analytics çalışma alanıyla ilişkili Azure aboneliğine erişimi olan bir hizmet sorumlusu. Daha fazla bilgi için [hizmet sorumlusu oluşturma](#create-a-service-principal)bölümüne gidin.
+* Bir Sistem Merkezi Operasyon Yöneticisi yönetim grubu (2012 R2 veya sonrası).
+* VM'ler için Azure Monitor'u destekleyecek şekilde yapılandırılan bir Günlük Analizi çalışma alanı.
+* Operations Manager tarafından izlenen ve Log Analytics çalışma alanınıza veri gönderen bir veya daha fazla Windows ve Linux sanal makinesi veya fiziksel bilgisayar. Bir Operasyon Yöneticisi yönetim grubuna rapor eden Linux sunucuları, doğrudan Azure Monitor'a bağlanacak şekilde yapılandırılmalıdır. Daha fazla bilgi için, [Log Analytics aracısıyla günlük verilerini topla'daki](../platform/log-analytics-agent.md)genel bakışı inceleyin.
+* Log Analytics çalışma alanıyla ilişkili Azure aboneliğine erişimi olan bir hizmet ilkesi. Daha fazla bilgi için [bir hizmet ilkesi oluştur'a](#create-a-service-principal)gidin.
 
-## <a name="install-the-service-map-management-pack"></a>Hizmet Eşlemesi yönetim paketini yükler
+## <a name="install-the-service-map-management-pack"></a>Hizmet Haritası yönetim paketini yükleme
 
-Microsoft. SystemCenter. ServiceMap yönetim paketi paketini (Microsoft. SystemCenter. ServiceMap. mpb) içeri aktararak Operations Manager ile eşleme özelliği arasındaki tümleştirmeyi etkinleştirirsiniz. Yönetim Paketi grubunu [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=55763)' nden indirebilirsiniz. Paket aşağıdaki yönetim paketlerini içerir:
+Microsoft.SystemCenter.ServiceMap yönetim paketi paketini (Microsoft.SystemCenter.ServiceMap.mpb) içeri girerek Operations Manager ve Harita özelliği arasındaki tümleştirmeyi etkinleştirebilirsiniz. Yönetim paketi paketini Microsoft [Download Center'dan](https://www.microsoft.com/download/details.aspx?id=55763)indirebilirsiniz. Paket aşağıdaki yönetim paketlerini içerir:
 
-* Microsoft Hizmet Eşlemesi uygulama görünümleri
-* Microsoft System Center Hizmet Eşlemesi Iç
-* Microsoft System Center Hizmet Eşlemesi geçersiz kılmaları
-* Microsoft System Center Hizmet Eşlemesi
+* Microsoft Hizmet Haritası Uygulama Görünümleri
+* Microsoft System Center Hizmet Haritası Dahili
+* Microsoft System Center Hizmet Haritası Geçersiz Kılar
+* Microsoft System Center Hizmet Haritası
 
 ## <a name="configure-integration"></a>Tümleştirmeyi yapılandırma
 
-Hizmet Eşlemesi yönetim paketini yükledikten sonra, **hizmet eşlemesi**yeni bir düğüm, Operations Manager işletim konsolunuzun **Yönetim** bölmesinde **Operations Management Suite** altında görüntülenir.
+Hizmet Haritası yönetim paketini yükledikten sonra, Operasyon Yöneticisi İşlemleri konsolunuzun **Yönetim** bölmesinde **Operasyon Yönetimi Paketi** altında yeni bir düğüm, Hizmet **Haritası**görüntülenir.
 
 >[!NOTE]
->[Operations Management Suite, Log Analytics dahil olan hizmetlerden oluşan bir koleksiyondur](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) . artık [Azure izleyici](../overview.md)'nin bir parçasıdır.
+>Operations Management Suite, Log Analytics'i içeren [bir hizmet topluluğuydu,](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) artık [Azure Monitor'un](../overview.md)bir parçasıdır.
 
-VM'ler için Azure İzleyici eşleme tümleştirmesini yapılandırmak için aşağıdakileri yapın:
+VMs Map tümleştirmesi için Azure Monitor'u yapılandırmak için aşağıdakileri yapın:
 
-1. Yapılandırma Sihirbazı 'nı açmak için **hizmet eşlemesi genel bakış** bölmesinde **çalışma alanı Ekle**' ye tıklayın.  
+1. Yapılandırma sihirbazını açmak **için, Hizmet Haritasıgenel Bakış** bölmesinde **çalışma alanı ekle'yi**tıklatın.  
 
-    ![Hizmet Eşlemesi Genel bakış bölmesi](media/service-map-scom/scom-configuration.png)
+    ![Hizmet Haritası Genel Bakış bölmesi](media/service-map-scom/scom-configuration.png)
 
-2. **Bağlantı yapılandırması** penceresinde kiracı adını veya kimliğini, uygulama kimliğini (Kullanıcı adı veya ClientID olarak da bilinir) ve hizmet sorumlusu parolasını girin ve ardından **İleri**' ye tıklayın. Daha fazla bilgi için hizmet sorumlusu oluşturma bölümüne gidin.
+2. Bağlantı **Yapılandırması** penceresinde, kiracı adı veya kimliği, uygulama kimliği (kullanıcı adı veya istemci kimliği olarak da bilinir) ve hizmet sorumlusunun parolasını girin ve **sonra İleri'yi**tıklatın. Daha fazla bilgi için bir hizmet ilkesi oluştur'a gidin.
 
-    ![Bağlantı yapılandırma penceresi](media/service-map-scom/scom-config-spn.png)
+    ![Bağlantı Yapılandırma penceresi](media/service-map-scom/scom-config-spn.png)
 
-3. **Abonelik seçimi** penceresinde Azure aboneliği, Azure Kaynak grubu (Log Analytics çalışma alanını içeren) ve Log Analytics çalışma alanı ' nı seçin ve ardından **İleri**' ye tıklayın.
+3. Abonelik **Seçimi** penceresinde, Azure aboneliğini, Azure kaynak grubunu (Günlük Analitiği çalışma alanını içeren grubu) ve Günlük Analitiği çalışma alanını seçin ve ardından **İleri'yi**tıklatın.
 
-    ![Operations Manager yapılandırma çalışma alanı](media/service-map-scom/scom-config-workspace.png)
+    ![Operasyon Yöneticisi Yapılandırma Çalışma Alanı](media/service-map-scom/scom-config-workspace.png)
 
-4. **Makine grubu seçim** penceresinde, Operations Manager eşitlemek Istediğiniz hizmet eşlemesi makine gruplarını seçersiniz. **Makine gruplarını Ekle/Kaldır**' a tıklayın, **kullanılabilir makine grupları**listesinden gruplar ' ı seçin ve **Ekle**' ye tıklayın.  Grupları seçmeyi tamamladığınızda, **Tamam** ' a tıklayarak işlemi sona erdirin.
+4. Makine **Grubu Seçimi** penceresinde, Operasyon Yöneticisi ile eşitlemek istediğiniz Servis Haritası Makine Gruplarını seçersiniz. **Makine Grupları Ekle/Kaldır'ı**tıklatın, **Kullanılabilir Makine Grupları**listesinden gruplar seçin ve **Ekle'yi**tıklatın.  Grupları seçmeyi bitirdiğinizde, bitirmek için **Tamam'ı** tıklatın.
 
-    ![Operations Manager yapılandırma makinesi grupları](media/service-map-scom/scom-config-machine-groups.png)
+    ![Operasyon Yöneticisi Yapılandırma Makine Grupları](media/service-map-scom/scom-config-machine-groups.png)
 
-5. **Sunucu seçimi** penceresinde, hizmet eşlemesi servers grubunu Operations Manager ile eşleme özelliği arasında eşitlemek istediğiniz sunucularla yapılandırırsınız. **Sunucu Ekle/Kaldır**' a tıklayın.
+5. Sunucu **Seçimi** penceresinde, Hizmet Haritası Sunucular Grubu'nu Operations Manager ve Harita özelliği arasında eşitlemek istediğiniz sunucularla yapılandırAbilirsiniz. **Sunucu Ekle/Kaldır'ı**tıklatın.
 
-    Bir sunucu için dağıtılmış uygulama diyagramı oluşturmak amacıyla tümleştirme için sunucu şu şekilde olmalıdır:
+    Tümleştirmenin bir sunucu için dağıtılmış bir uygulama diyagramı oluşturması için sunucunun aşağıdakiler olması gerekir:
 
-   * Operations Manager tarafından izlenen
-   * VM'ler için Azure İzleyici ile yapılandırılan Log Analytics çalışma alanına raporlamak için yapılandırılır
-   * Hizmet Eşlemesi Servers grubunda listelenmiştir
+   * Operasyon Müdürü tarafından izlenir
+   * VM'ler için Azure Monitor ile yapılandırılan Log Analytics çalışma alanına rapor vermek üzere yapılandırıldı
+   * Hizmet Haritası Sunucular Grubunda Listelenmiştir
 
-     ![Operations Manager yapılandırma grubu](media/service-map-scom/scom-config-group.png)
+     ![Operasyon Yöneticisi Yapılandırma Grubu](media/service-map-scom/scom-config-group.png)
 
-6. İsteğe bağlı: Log Analytics iletişim kurmak için tüm yönetim sunucuları kaynak havuzunu seçin ve ardından **çalışma alanı Ekle**' ye tıklayın.
+6. İsteğe bağlı: Günlük Analitiği ile iletişim kurmak için Tüm Yönetim Sunucuları Kaynak **Havuzu'nu**seçin ve ardından Çalışma Alanı Ekle'yi tıklatın.
 
-    ![Operations Manager yapılandırma kaynak havuzu](media/service-map-scom/scom-config-pool.png)
+    ![Operasyon Yöneticisi Yapılandırma Kaynak Havuzu](media/service-map-scom/scom-config-pool.png)
 
-    Log Analytics çalışma alanını yapılandırmak ve kaydettirmek bir dakika sürebilir. Yapılandırıldıktan sonra, Operations Manager ilk eşleme eşitlemesini başlatır.
+    Log Analytics çalışma alanını yapılandırmak ve kaydetmek bir dakika sürebilir. Yapılandırıldıktan sonra, Operations Manager ilk Harita eşitlemeyi başlatır.
 
-    ![Operations Manager yapılandırma kaynak havuzu](media/service-map-scom/scom-config-success.png)
+    ![Operasyon Yöneticisi Yapılandırma Kaynak Havuzu](media/service-map-scom/scom-config-success.png)
 
-## <a name="monitor-integration"></a>İzleme tümleştirmesi
+## <a name="monitor-integration"></a>Tümleştirmeyi izleyin
 
-Log Analytics çalışma alanı bağlandıktan sonra, Operations Manager Işletim konsolunun **izleme** bölmesinde yeni bir klasör hizmet eşlemesi görüntülenir.
+Log Analytics çalışma alanı bağlandıktan sonra, Operasyon Yöneticisi İşlemleri konsolunun **İzleme** bölmesinde yeni bir klasör, Hizmet Haritası görüntülenir.
 
-![Operations Manager Izleme bölmesi](media/service-map-scom/scom-monitoring.png)
+![Operasyon Yöneticisi İzleme bölmesi](media/service-map-scom/scom-monitoring.png)
 
-Hizmet Eşlemesi klasörü dört düğüme sahiptir:
+Hizmet Haritası klasöründe dört düğüm vardır:
 
-* **Etkin uyarılar**: Operations Manager Ile Azure izleyici arasındaki iletişimle ilgili tüm etkin uyarıları listeler.  
+* **Etkin Uyarılar**: Operations Manager ve Azure Monitor arasındaki iletişimle ilgili tüm etkin uyarıları listeler.  
 
   >[!NOTE]
-  >Bu uyarılar Operations Manager ile eşitlenen Log Analytics uyarıları değil, Hizmet Eşlemesi yönetim paketinde tanımlanan iş akışlarına göre yönetim grubunda oluşturulur.
+  >Bu uyarılar, Operasyon Yöneticisi ile senkronize edilen Log Analytics uyarıları değildir, Hizmet Haritası yönetim paketinde tanımlanan iş akışlarına göre yönetim grubunda oluşturulur.
 
-* **Sunucular**: VM'ler için Azure izleyici eşleme özelliğinden eşitlenecek şekilde yapılandırılan izlenen sunucuları listeler.
+* **Sunucular**: VMs Map özelliği için Azure Monitor'dan eşitlenecek şekilde yapılandırılan izlenen sunucuları listeler.
 
-    ![Operations Manager Izleme sunucuları bölmesi](media/service-map-scom/scom-monitoring-servers.png)
+    ![Operasyon Yöneticisi İzleme Sunucuları bölmesi](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Makine grubu bağımlılığı görünümleri**: harita özelliğinden eşitlenen tüm makine gruplarını listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir gruba tıklayabilirsiniz.
+* **Makine Grubu Bağımlılık Görünümleri**: Harita özelliğinden eşitlenen tüm makine gruplarını listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir grubu tıklatabilirsiniz.
 
-    ![Operations Manager dağıtılmış uygulama diyagramı](media/service-map-scom/scom-group-dad.png)
+    ![Operasyon Yöneticisi dağıtılan uygulama diyagramı](media/service-map-scom/scom-group-dad.png)
 
-* **Sunucu bağımlılığı görünümleri**: harita özelliğinden eşitlenen tüm sunucuları listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir sunucu ' ya tıklayabilirsiniz.
+* **Sunucu Bağımlılık Görünümleri**: Harita özelliğinden eşitlenen tüm sunucuları listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir sunucuyu tıklatabilirsiniz.
 
-    ![Operations Manager dağıtılmış uygulama diyagramı](media/service-map-scom/scom-dad.png)
+    ![Operasyon Yöneticisi dağıtılan uygulama diyagramı](media/service-map-scom/scom-dad.png)
 
-## <a name="edit-or-delete-the-workspace"></a>Çalışma alanını düzenleme veya silme
+## <a name="edit-or-delete-the-workspace"></a>Çalışma alanını düzenle veya silme
 
-Yapılandırılan çalışma alanını **hizmet eşlemesi genel bakış** bölmesi (**Yönetim** bölmesi > **Operations Management Suite** > **hizmet eşlemesi**) aracılığıyla düzenleyebilir veya silebilirsiniz.
+Yapılandırılan çalışma alanını **Hizmet Haritasıgenel bakış** bölmesi **(Yönetim** bölmesi > **Operations Management Suite** > **Service Map)** aracılığıyla düzenleyebilir veya silebilirsiniz.
 
 >[!NOTE]
->Operations Management Suite, artık [Azure izleyici](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)'nin bir parçası olan Log Analytics dahil olan [hizmetlerden oluşan bir koleksiyondur](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) .
+>Operations Management Suite, artık [Azure Monitor'un](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)bir parçası olan Log Analytics'i içeren [bir hizmet topluluğudur.](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)
 
-Bu geçerli sürümde yalnızca bir Log Analytics çalışma alanı yapılandırabilirsiniz.
+Bu geçerli sürümde yalnızca bir Log Analytics çalışma alanını yapılandırabilirsiniz.
 
-![Operations Manager düzenleme çalışma alanı bölmesi](media/service-map-scom/scom-edit-workspace.png)
+![Operasyon Yöneticisi Çalışma Alanı bölmesini edit](media/service-map-scom/scom-edit-workspace.png)
 
-## <a name="configure-rules-and-overrides"></a>Kuralları ve geçersiz kılmaları yapılandırma
+## <a name="configure-rules-and-overrides"></a>Kuralları ve geçersiz kılmaları yapılandır
 
-Bir kural, *Microsoft. SystemCenter. Servicemapımport. Rule*, düzenli aralıklarla VM'ler için Azure izleyici harita özelliğinden bilgi getirir. Eşitleme aralığını değiştirmek için kuralı geçersiz kılabilir ve değeri **ınterinterval**parametresi için değiştirebilirsiniz.
+*Microsoft.SystemCenter.ServiceMapImport.Rule*adlı bir kural, VMs Map özelliği için Azure Monitor'dan düzenli olarak bilgi getirir. Eşitleme aralığını değiştirmek için kuralı geçersiz kılabilir ve **IntervalMinutes**parametresi için değeri değiştirebilirsiniz.
 
-![Operations Manager Özellikler penceresi geçersiz kılınır](media/service-map-scom/scom-overrides.png)
+![İşlem yöneticisi özellik penceresini geçersiz kılar](media/service-map-scom/scom-overrides.png)
 
-* **Etkin**: otomatik güncelleştirmeleri etkinleştirin veya devre dışı bırakın.
-* **Interınminutes**: güncelleştirmeler arasındaki süreyi belirtir. Varsayılan Aralık bir saattir. Haritaları daha sık eşitlemek istiyorsanız, değeri değiştirebilirsiniz.
-* **TimeoutSeconds**: istek zaman aşımına uğramadan önceki sürenin uzunluğunu belirtir.
-* **Timewindowminutes**: verileri sorgulamak için zaman penceresini belirtir. Varsayılan değer, izin verilen en fazla Aralık olan 60 dakikadır.
+* **Etkin**: Otomatik güncelleştirmeleri etkinleştirin veya devre dışı.
+* **IntervalMinutes**: Güncelleştirmeler arasındaki süreyi belirtir. Varsayılan aralık bir saattir. Haritaları daha sık eşitlemek istiyorsanız, değeri değiştirebilirsiniz.
+* **TimeoutSeconds**: İstek zaman ları dolmadan önce süreyi belirtir.
+* **TimeWindowMinutes**: Verileri sorgulamak için zaman penceresini belirtir. Varsayılan değer 60 dakikadır ve bu da izin verilen en yüksek aralıktır.
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
-Geçerli tasarımda aşağıdaki sorunlar ve sınırlamalar sunulmaktadır:
+Geçerli tasarım aşağıdaki sorunları ve sınırlamaları sunar:
 
 * Yalnızca tek bir Log Analytics çalışma alanına bağlanabilirsiniz.
-* **Yazma** bölmesi aracılığıyla hizmet eşlemesi Servers grubuna el ile sunucu ekleyebilseniz de, bu sunucuların haritaları hemen eşitlenmez. Bir sonraki eşitleme çevrimi sırasında VM'ler için Azure İzleyici Map özelliğinden eşitlenir.
-* Yönetim paketi tarafından oluşturulan dağıtılmış uygulama diyagramlarında herhangi bir değişiklik yaparsanız, bu değişikliklerin büyük olasılıkla VM'ler için Azure İzleyici bir sonraki eşitlemede üzerine yazılır.
+* Hizmet Haritası Sunucular Grubu'na **Yazma** bölmesi aracılığıyla el ile sunucu lar ekleyebilirsiniz, ancak bu sunucular için haritalar hemen eşitlenmez. Bunlar, bir sonraki eşitleme döngüsü sırasında VMs Map özelliği için Azure Monitor'dan senkronize edilir.
+* Yönetim paketi tarafından oluşturulan Dağıtılmış Uygulama Diyagramlarında herhangi bir değişiklik yaparsanız, bu değişiklikler büyük olasılıkla Bir sonraki eşitlemede VM'ler için Azure Monitor ile birlikte üzerine yazılır.
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu oluşturma hakkında resmi Azure belgeleri için bkz.:
+Hizmet ilkesi oluşturma yla ilgili resmi Azure belgeleri için bkz:
 
-* [PowerShell kullanarak hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Azure CLı kullanarak hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [Azure portal kullanarak bir hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [PowerShell'i kullanarak bir hizmet ilkesi oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
+* [Azure CLI'yi kullanarak bir hizmet ilkesi oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Azure portalını kullanarak bir hizmet ilkesi oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
 ### <a name="feedback"></a>Geri Bildirim
-VM'ler için Azure İzleyici Map özelliği veya bu belgeler ile tümleştirme hakkında bizimle ilgili geri bildiriminiz var mı? Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.
+VMs Map özelliği için Azure Monitor ile tümleştirme veya bu dokümantasyon hakkında herhangi bir geri bildiriminiz var mı? Özellikler önerebileceğiniz veya mevcut önerileri oylayabileceğiniz [Kullanıcı Sesi sayfamızı](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)ziyaret edin.

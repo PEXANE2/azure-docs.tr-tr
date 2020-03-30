@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB diziler ve nesnelerle çalışma
-description: Azure Cosmos DB diziler ve nesneler oluşturmak için SQL sözdizimini öğrenin. Bu makalede, dizi nesnelerinde işlemler gerçekleştirmek için bazı örnekler de sağlanmaktadır
+title: Azure Cosmos DB'de diziler ve nesnelerle çalışma
+description: Azure Cosmos DB'de diziler ve nesneler oluşturmak için SQL sözdizimini öğrenin. Bu makalede, dizi nesneleri üzerinde işlemleri gerçekleştirmek için bazı örnekler de sağlar
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246558"
 ---
-# <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB diziler ve nesnelerle çalışma
+# <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB'de diziler ve nesnelerle çalışma
 
-Azure Cosmos DB SQL API 'sinin temel bir özelliği dizi ve nesne oluşturma 'dır.
+Azure Cosmos DB SQL API'nin önemli bir özelliği dizi ve nesne oluşturmadır.
 
 ## <a name="arrays"></a>Diziler
 
@@ -26,7 +26,7 @@ Aşağıdaki örnekte gösterildiği gibi diziler oluşturabilirsiniz:
     FROM Families f
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -45,23 +45,23 @@ Sonuçlar şunlardır:
     ]
 ```
 
-[Alt sorgu](sql-query-subquery.md) sonuçlarından bir dizi oluşturmak için [dizi ifadesini](sql-query-subquery.md#array-expression) de kullanabilirsiniz. Bu sorgu, bir dizideki tüm alt öğelerin verilen benzersiz adlarını alır.
+[Ayrıca,](sql-query-subquery.md#array-expression) [alt sorgunun](sql-query-subquery.md) sonuçlarından bir dizi oluşturmak için ARRAY ifadesini de kullanabilirsiniz. Bu sorgu, bir dizideki tüm farklı verilen çocukların adlarını alır.
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-## <a id="Iteration"></a>Mesinde
+## <a name="iteration"></a><a id="Iteration"></a>Yineleme
 
-SQL API 'si, FROM kaynağında [ın anahtar sözcüğüyle](sql-query-keywords.md#in) eklenen yeni bir yapı ile JSON dizileri üzerinde yineleme desteği sağlar. Aşağıdaki örnekte:
+SQL API, FROM kaynağındaki [IN anahtar kelimesi](sql-query-keywords.md#in) aracılığıyla eklenen yeni bir yapıyla JSON dizileri üzerinde yeniden derecelendirme desteği sağlar. Aşağıdaki örnekte:
 
 ```sql
     SELECT *
     FROM Families.children
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -90,14 +90,14 @@ Sonuçlar şunlardır:
     ]
 ```
 
-Sonraki sorgu, `Families` kapsayıcısında `children` üzerinde yineleme gerçekleştirir. Çıkış dizisi, önceki sorgudan farklı. Bu örnek `children`ayırır ve sonuçları tek bir diziye düzleştirir:  
+Sonraki sorgu `children` `Families` kapsayıcıüzerinde yineleme gerçekleştirir. Çıktı dizisi önceki sorgudan farklıdır. Bu örnek, `children`sonuçları böler ve tek bir diziye böler:  
 
 ```sql
     SELECT *
     FROM c IN Families.children
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -122,7 +122,7 @@ Sonuçlar şunlardır:
     ]
 ```
 
-Aşağıdaki örnekte gösterildiği gibi, her bir dizi girişi üzerinde daha fazla filtre uygulayabilirsiniz:
+Aşağıdaki örnekte gösterildiği gibi, dizinin her bir girişine daha fazla filtre uygulayabilirsiniz:
 
 ```sql
     SELECT c.givenName
@@ -130,7 +130,7 @@ Aşağıdaki örnekte gösterildiği gibi, her bir dizi girişi üzerinde daha f
     WHERE c.grade = 8
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [{
@@ -138,14 +138,14 @@ Sonuçlar şunlardır:
     }]
 ```
 
-Ayrıca, bir dizi yinelemesinin sonucunu toplayabilirsiniz. Örneğin, aşağıdaki sorgu tüm aileler arasındaki alt öğe sayısını sayar:
+Ayrıca, bir dizi yinelemesonucu üzerinde toplayabilir. Örneğin, aşağıdaki sorgu tüm aileler arasında çocuk sayısını sayar:
 
 ```sql
     SELECT COUNT(child)
     FROM child IN Families.children
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -159,4 +159,4 @@ Sonuçlar şunlardır:
 
 - [Başlarken](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Birleştirmeler](sql-query-join.md)
+- [Birleştirme](sql-query-join.md)

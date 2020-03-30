@@ -1,6 +1,6 @@
 ---
-title: Windows lisansını oturum ana bilgisayarına uygulama sanal makineleri-Azure
-description: Windows sanal masaüstü VM 'Leri için Windows lisansının nasıl uygulanacağını açıklar.
+title: Oturum barındırma sanal makineleri için Windows lisansı uygulama - Azure
+description: Windows Sanal Masaüstü SANAL M'leri için Windows lisansının nasıl uygulanacağı açıklanır.
 services: virtual-desktop
 author: ChristianMontoya
 ms.service: virtual-desktop
@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
 ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254241"
 ---
-# <a name="apply-windows-license-to-session-host-virtual-machines"></a>Windows lisansını oturum ana bilgisayarı sanal makinelerine Uygula
+# <a name="apply-windows-license-to-session-host-virtual-machines"></a>Oturum barındırma sanal makineleri için Windows lisansı uygulama
 
-Windows sanal masaüstü iş yüklerini çalıştırmaya uygun şekilde lisanslanan müşteriler, oturum ana bilgisayarları sanal makinelerine bir Windows lisansı uygulamaya ve bunları başka bir lisans için ödeme yapmadan çalıştırmaya uygundur. Daha fazla bilgi için bkz. [Windows sanal masaüstü fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+Windows Sanal Masaüstü iş yüklerini çalıştırmak için uygun şekilde lisans alan müşteriler, oturum barındırma sanal makinelerine Windows lisansı uygulayıp başka bir lisans için ödeme yapmadan çalıştırabilirsiniz. Daha fazla bilgi için [Windows Sanal Masaüstü fiyatlandırması'na](https://azure.microsoft.com/pricing/details/virtual-desktop/)bakın.
 
-## <a name="ways-to-use-your-windows-virtual-desktop-license"></a>Windows sanal masaüstü lisansınızı kullanmanın yolları
-Windows sanal masaüstü lisansı, bir konak havuzunda oturum ana bilgisayarı olarak kaydedilmiş ve Kullanıcı bağlantılarını alan herhangi bir Windows veya Windows Server sanal makinesine lisans uygulamanıza olanak tanır. Bu lisans, dosya paylaşma sunucuları, etki alanı denetleyicileri vb. çalıştıran sanal makinelere uygulanmaz.
+## <a name="ways-to-use-your-windows-virtual-desktop-license"></a>Windows Sanal Masaüstü lisansınızı kullanma yolları
+Windows Sanal Masaüstü lisanslama, ana bilgisayar havuzunda oturum ana bilgisayar olarak kayıtlı ve kullanıcı bağlantısı alan herhangi bir Windows veya Windows Server sanal makineye lisans uygulamanıza olanak tanır. Bu lisans, dosya paylaşım sunucuları, etki alanı denetleyicileri ve benzeri olarak çalışan sanal makineler için geçerli değildir.
 
-Windows sanal masaüstü lisansını kullanmanın birkaç yolu vardır:
-- [Azure Marketi](./create-host-pools-azure-marketplace.md)teklifini kullanarak bir konak havuzu ve onun oturum ana bilgisayarı sanal makinelerini oluşturabilirsiniz. Bu şekilde oluşturulan sanal makinelere otomatik olarak lisans uygulanır.
-- [GitHub Azure Resource Manager şablonunu](./create-host-pools-arm-template.md)kullanarak bir konak havuzu ve onun oturum ana bilgisayarı sanal makinelerini oluşturabilirsiniz. Bu şekilde oluşturulan sanal makinelere otomatik olarak lisans uygulanır.
-- Mevcut bir oturum ana bilgisayar sanal makinesine lisans uygulayabilirsiniz. Bunu yapmak için önce [PowerShell ile konak havuzu oluşturma](./create-host-pools-powershell.md) ' daki yönergeleri izleyerek bir konak havuzu ve Ilişkili VM 'ler oluşturun ve ardından bu makaleye geri dönüp lisansın nasıl uygulanacağını öğrenin.
+Windows Sanal Masaüstü lisansını kullanmanın birkaç yolu vardır:
+- [Azure Marketi teklifini](./create-host-pools-azure-marketplace.md)kullanarak bir ana bilgisayar havuzu ve oturum barındırma sanal makineleri oluşturabilirsiniz. Bu şekilde oluşturulan sanal makineler otomatik olarak lisans uygulanır.
+- [GitHub Azure Kaynak Yöneticisi şablonunu](./create-host-pools-arm-template.md)kullanarak bir ana bilgisayar havuzu ve oturum ana bilgisayar sanal makineleri oluşturabilirsiniz. Bu şekilde oluşturulan sanal makineler otomatik olarak lisans uygulanır.
+- Varolan bir oturum ana bilgisayar sanal makineye lisans uygulayabilirsiniz. Bunu yapmak için, önce [powershell ile bir ana bilgisayar havuzu](./create-host-pools-powershell.md) ve ilişkili VM'ler oluşturmak için bir ana bilgisayar havuzu oluşturma yönergeleriizleyin, sonra lisans nasıl uygulanacağını öğrenmek için bu makaleye dönün.
 
-## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Bir oturum ana bilgisayar VM 'sine bir Windows lisansı uygulama
-[En son Azure PowerShell yükleyip yapılandırdığınızdan](/powershell/azure/overview)emin olun. Windows lisansını uygulamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Oturum ana bilgisayar VM'ye Windows lisansı uygulama
+En son [Azure PowerShell'i yüklediğinizden ve yapılandırdığınızdan](/powershell/azure/overview)emin olun. Windows lisansını uygulamak için aşağıdaki PowerShell cmdlet'i çalıştırın:
 
 ```powershell
 $vm = Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>
@@ -35,13 +35,13 @@ $vm.LicenseType = "Windows_Client"
 Update-AzVM -ResourceGroupName <resourceGroupName> -VM $vm
 ```
 
-## <a name="verify-your-session-host-vm-is-utilizing-the-licensing-benefit"></a>Oturum Ana bilgisayar VM 'nizin lisans avantajını kullandığınızı doğrulayın
-VM 'nizi dağıttıktan sonra, lisans türünü doğrulamak için şu cmdlet 'i çalıştırın:
+## <a name="verify-your-session-host-vm-is-utilizing-the-licensing-benefit"></a>Oturum ana bilgisayarınızın VM'nin lisans avantajından yararlandığını doğrulayın
+VM'nizi dağıttıktan sonra, lisans türünü doğrulayın şu cmdlet ot'u çalıştırın:
 ```powershell
 Get-AzVM -ResourceGroupName <resourceGroupName> -Name <vmName>
 ```
 
-Uygulanan Windows lisansına sahip bir oturum ana makinesi, şöyle bir şey gösterir:
+Uygulamalı Windows lisansına sahip bir oturum ana bilgisayar VM size şöyle bir şey gösterecektir:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -49,7 +49,7 @@ Location                 : westus
 LicenseType              : Windows_Client
 ```
 
-Uygulanan Windows lisansı olmayan VM 'Ler şuna benzer bir şey gösterir:
+Uygulamalı Windows lisansı olmayan VM'ler size şöyle bir şey gösterir:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -57,7 +57,7 @@ Location                 : westus
 LicenseType              :
 ```
 
-Azure aboneliğinizde Windows lisansı uygulanmış tüm oturum ana bilgisayar VM 'lerinin listesini görmek için aşağıdaki cmdlet 'i çalıştırın:
+Azure aboneliğinizde Windows lisansı uygulanan tüm oturum ana bilgisayar VM'lerinin listesini görmek için aşağıdaki cmdlet'i çalıştırın:
 
 ```powershell
 $vms = Get-AzVM

@@ -1,6 +1,6 @@
 ---
-title: Küme performansını izleme-Azure HDInsight
-description: Azure HDInsight 'ta Apache Hadoop kümelerinin sistem durumunu ve performansını izleme.
+title: Küme performansını izleyin - Azure HDInsight
+description: Azure HDInsight'ta Apache Hadoop kümelerinin sistem durumu ve performansı nasıl izlenir?
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,123 +9,123 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082889"
 ---
-# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
+# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight'ta küme performansını izleme
 
-HDInsight kümesinin sistem durumunu ve performansını izlemek, en iyi performansı ve kaynak kullanımını sürdürmek için gereklidir. İzleme, küme yapılandırma hatalarını ve Kullanıcı kodu sorunlarını tespit etmenize ve adreslamanıza yardımcı olabilir.
+Bir HDInsight kümesinin sistem durumunu ve performansını izlemek, optimum performans ve kaynak kullanımını sürdürmek için çok önemlidir. İzleme, küme yapılandırma hatalarını ve kullanıcı kodu sorunlarını algılamanıza ve gidermenize de yardımcı olabilir.
 
-Aşağıdaki bölümlerde, kümelerinizde yükün nasıl izleneceği ve iyileştirgetirileceği, YARN kuyruklarınızın Apache Hadoop ve depolama azaltma sorunlarının algılanması açıklanır.
+Aşağıdaki bölümlerde kümelerinizdeki yükün nasıl izlendiği ve optimize edilebildiği açıklanır, Apache Hadoop İplik kuyrukları ve depolama azaltma sorunlarını algılar.
 
 ## <a name="monitor-cluster-load"></a>Küme yükünü izleme
 
-Küme üzerinde yük, tüm düğümlerde eşit şekilde dağıtıldığında Hadoop kümeleri en iyi performansı sunabilir. Bu işlem, tek tek düğümlerdeki RAM, CPU veya disk kaynaklarıyla sınırlandırılmadan işleme görevlerinin çalıştırılmasını sağlar.
+Hadoop kümeleri, kümeüzerindeki yük tüm düğümlere eşit olarak dağıtıldığında en iyi performansı sağlayabilir. Bu, işlem görevlerinin tek tek düğümlerde RAM, CPU veya disk kaynakları tarafından sınırlandırılmadan çalışmasını sağlar.
 
-Kümenizin düğümlerine ve bunların yüklenmesine ilişkin üst düzey bir görünüm almak için, [ambarı Web Kullanıcı arabiriminde](hdinsight-hadoop-manage-ambari.md)oturum açın ve ardından **konaklar** sekmesini seçin. Konaklar tam etki alanı adlarına göre listelenir. Her konağın işletim durumu renkli bir sistem durumu göstergesi ile gösterilir:
+Kümenizin düğümlerine ve yüklemelerine üst düzey bir bakış elde etmek için [Ambari Web UI'de](hdinsight-hadoop-manage-ambari.md)oturum açın ve ardından **Hosts** sekmesini seçin. Ev sahipleriniz tam nitelikli alan adlarına göre listelenir. Her ev sahibinin çalışma durumu renkli bir sistem durumu göstergesiyle gösterilir:
 
 | Renk | Açıklama |
 | --- | --- |
-| Kırmızı | Konaktaki en az bir ana bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
-| Orange | Konaktaki en az bir ikincil bileşen çalışmıyor. Etkilenen bileşenleri listeleyen araç ipucunu görmek için üzerine gelin. |
-| Renkle | Ambarı sunucusu ana bilgisayardan 3 dakikadan uzun bir sinyal almadı. |
-| Renkli | Normal çalışma durumu. |
+| Red | Ana bilgisayardaki en az bir ana bileşen aşağıda. Etkilenen bileşenleri listeleyen bir araç ucunu görmek için havada yat. |
+| Orange | Ana bilgisayardaki en az bir ikincil bileşen aşağıda. Etkilenen bileşenleri listeleyen bir araç ucunu görmek için havada yat. |
+| Yellow | Ambari Server 3 dakikadan uzun süredir ev sahibinden sinyal almamıştır. |
+| Yeşil | Normal çalışma durumu. |
 
-Ayrıca, her konak için çekirdek sayısını ve RAM miktarını ve disk kullanımını ve yük ortalamasını gösteren sütunları görürsünüz.
+Ayrıca, her ana bilgisayar için çekirdek sayısını ve RAM miktarını, disk kullanımını ve yükleme ortalamasını gösteren sütunlar da görürsünüz.
 
-![Apache ambarı ana bilgisayarları sekmesine genel bakış](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
+![Apache Ambari sekme genel bakış ev sahipliği yapıyor](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
-Bu konakta ve bunların ölçümlerinde çalışan bileşenlere ayrıntılı bir bakış için konak adlarından herhangi birini seçin. Ölçümler, kullanılabilir CPU kullanımı, yükleme, disk kullanımı, bellek kullanımı, ağ kullanımı ve işlem sayısı gibi seçilebilir bir zaman çizelgesi olarak gösterilir.
+Ana bilgisayarda çalışan bileşenlere ve bunların ölçümlerine ayrıntılı bir bakış için ana bilgisayar adlarından birini seçin. Ölçümler, CPU kullanımı, yük, disk kullanımı, bellek kullanımı, ağ kullanımı ve işlem sayısının seçilebilir bir zaman çizelgesi olarak gösterilir.
 
-![Apache ambarı ana bilgisayar ayrıntılarına genel bakış](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
+![Apache Ambari ev sahibi ayrıntılarına genel bakış](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
-Uyarıları ayarlama ve ölçümleri görüntüleme hakkındaki ayrıntılar için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md) .
+Uyarıları ayarlama ve ölçümleri görüntüleme yle ilgili ayrıntılar için [Apache Ambari Web UI'yi kullanarak HDInsight kümelerini yönet'e](hdinsight-hadoop-manage-ambari.md) bakın.
 
-## <a name="yarn-queue-configuration"></a>YARN kuyruğu yapılandırması
+## <a name="yarn-queue-configuration"></a>İplik sıra konfigürasyonu
 
-Hadoop 'un dağıtılmış platformunda çalışan çeşitli hizmetleri vardır. YARN (ancak başka bir kaynak Negotiator), bu hizmetleri koordine eder ve tüm yükün küme genelinde eşit olarak dağıtıldığından emin olmak için küme kaynaklarını ayırır.
+Hadoop dağıtılmış platformu nda çeşitli hizmetler sunmaktadır. YARN (Yet Another Resource Negotiator) bu hizmetleri koordine eder ve herhangi bir yükün küme boyunca eşit olarak dağıtıldığından emin olmak için küme kaynakları ayırır.
 
-YARN, JobTracker, kaynak yönetimi ve iş zamanlama/izlemenin iki sorumlulukını iki Daemon 'ları: genel Kaynak Yöneticisi ve uygulama başına ApplicationMaster (Har) olarak böler.
+YARN, JobTracker'ın iki sorumluluklarını, kaynak yönetimini ve iş planlama/izlemeyi iki daemon'a böler: küresel kaynak yöneticisi ve uygulama başına ApplicationMaster (AM).
 
-Kaynak Yöneticisi, saf bir *Zamanlayıcı*olur ve yalnızca tüm rekabet eden uygulamalar arasında kullanılabilir kaynakları hızlar. Kaynak Yöneticisi, tüm kaynakların her zaman kullanıldığı, SLA 'Lar, kapasite garantisi vb. gibi çeşitli sabitler için optimize edilmesini sağlar. ApplicationMaster Kaynak Yöneticisi Kaynakları görüşür ve kapsayıcıları ve kaynak tüketimini yürütmek ve izlemek için NodeManager 'lar ile birlikte kullanılır.
+Kaynak Yöneticisi saf bir *zamanlayıcıdır*ve yalnızca rakip tüm uygulamalar arasında kullanılabilir kaynakları tahkim eder. Kaynak Yöneticisi, SLA'lar, kapasite garantileri vb. gibi çeşitli sabitleri optimize ederek tüm kaynakların her zaman kullanımda olmasını sağlar. ApplicationMaster, Kaynak Yöneticisi'nden gelen kaynakları görüşür ve kapsayıcıları ve kaynak tüketimini yürütmek ve izlemek için NodeManager(ler) ile birlikte çalışır.
 
-Birden çok kiracı büyük bir kümeyi paylaşıyorsa, kümenin kaynakları için yarışmaya yer vardır. CapacityScheduler, istekleri sıraya alarak kaynak paylaşımında yardımcı olan takılabilir bir Zamanlayıcı 'dır. CapacityScheduler ayrıca kaynakların bir kuruluşun alt sıraları arasında paylaşıldığından, diğer uygulamaların sıralarının ücretsiz kaynakları kullanmasına izin verilmediğinden emin olmak için *hiyerarşik sıraları* destekler.
+Birden çok kiracı büyük bir kümeyi paylaştığında, kümenin kaynakları için rekabet vardır. CapacityScheduler, istekleri sıraya alarak kaynak paylaşımına yardımcı olan takılabilir bir zamanlayıcıdır. CapacityScheduler, diğer uygulamaların kuyruklarının boş kaynakları kullanmasına izin verilmeden önce kaynakların bir kuruluşun alt sıraları arasında paylaşılmasını sağlamak için *hiyerarşik kuyrukları* da destekler.
 
-YARN bu sıralara kaynak ayırmamızı sağlar ve kullanılabilir kaynaklarınızın tümünün atanıp atanmadığını gösterir. Kuyruklarınız hakkındaki bilgileri görüntülemek için, ambarı Web Kullanıcı arabiriminde oturum açın ve sonra üstteki menüden **Yarn kuyruk yöneticisi** ' ni seçin.
+YARN, bu kuyruklara kaynak ayırmamıza olanak tanır ve tüm kullanılabilir kaynaklarınızın atanıp atanmadığını gösterir. Kuyruklarınız hakkındaki bilgileri görüntülemek için Ambari Web Kullanıcı Aracı'nda oturum açın ve üst menüden **İPN Sıra Yöneticisi'ni** seçin.
 
-![Apache ambarı YARN Kuyruk Yöneticisi](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
+![Apache Ambari İplik Kuyruk Müdürü](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
-YARN kuyruğu Yöneticisi sayfası, her birine atanan kapasitenin yüzdesi ile birlikte sol taraftaki kuyrukların bir listesini gösterir.
+İPLik Sıra Yöneticisi sayfası, her birine atanan kapasite yüzdesi ile birlikte soldaki kuyruklarınızın listesini gösterir.
 
-![YARN kuyruğu Yöneticisi Ayrıntılar sayfası](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
+![İplik Sıra Yöneticisi ayrıntıları sayfası](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-Kuyruklarınızı daha ayrıntılı bir şekilde görmek için, ambarı panosundan soldaki listeden **Yarn** hizmetini seçin. Sonra **hızlı bağlantılar** açılan menüsünde, etkin düğümünüzün altında **Kaynak Yöneticisi Kullanıcı arabirimi** ' ni seçin.
+Ambari panosundan kuyruklarınıza daha ayrıntılı bir göz atmak için soldaki listeden **İplik** hizmetini seçin. Ardından **Hızlı Bağlantılar** açılır menüsünün altında, etkin düğümünuzun altındaki Kaynak **Yöneticisi UI'sini** seçin.
 
 ![Kaynak Yöneticisi UI menü bağlantıları](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
-Kaynak Yöneticisi Kullanıcı arabiriminde, sol taraftaki menüden **Zamanlayıcı** ' yı seçin. *Uygulama kuyrukları*altında kuyruklarınızın bir listesini görürsünüz. Burada, kuyruklarınızın her biri için kullanılan kapasiteyi, işlerin aralarında ne kadar iyi dağıtıldığını ve herhangi bir işin kaynak kısıtlamalı olup olmadığını görebilirsiniz.
+Kaynak Yöneticisi UI'sinde, sol menüden **Zamanlayıcı'yı** seçin. *Uygulama Kuyrukları*altında kuyruklarınızın listesini görürsünüz. Burada, her bir kuyruk için kullanılan kapasiteyi, işlerin aralarında ne kadar iyi dağıtıldığını ve herhangi bir işin kaynak kısıtlamalı olup olmadığını görebilirsiniz.
 
 ![Apache HAdoop Kaynak Yöneticisi UI menüsü](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
-## <a name="storage-throttling"></a>Depolama alanı azaltma
+## <a name="storage-throttling"></a>Depolama azaltma
 
-Kümenin performans sorunu depolama düzeyinde meydana gelebilir. Bu tür bir performans, çalışan görevleriniz depolama hizmetinden daha fazla GÇ gönderiyorsa meydana gelmiş olan giriş/çıkış (g/ç) işlemlerini *engelleme* nedeniyle en sık kullanılan sorun sayısıdır. Bu engelleme, geçerli IOs işlenene kadar işlenmek üzere bekleyen bir GÇ istekleri kuyruğu oluşturur. Bloklar, fiziksel sınır olmayan *depolama alanı azaltmasından*kaynaklanır, ancak bir hizmet düzeyi SÖZLEŞMESI (SLA) tarafından depolama hizmeti tarafından uygulanan bir sınır değildir. Bu sınır, tek bir istemcinin veya kiracının hizmeti tekeline almasını sağlar. SLA, Azure Storage için saniyedeki IOs (ıOPS) sayısını sınırlar. Ayrıntılar için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../storage/common/scalability-targets-standard-account.md).
+Bir kümenin performans darboğazı depolama düzeyinde gerçekleşebilir. Bu tür bir darboğaz, *blocking* en sık, çalışan görevleriniz depolama hizmetinin işleyebilir daha fazla IO gönderdiğinde meydana gelen giriş/çıkış (IO) işlemlerini engellemesidir. Bu engelleme, geçerli IO'lar işlenene kadar işlenmeyi bekleyen bir IO isteği kuyruğu oluşturur. Bloklar, fiziksel bir sınır değil, bir hizmet düzeyi sözleşmesi (SLA) tarafından depolama hizmeti tarafından dayatılan bir sınır olan *depolama azaltma*nedeniyledir. Bu sınır, tek bir istemcinin veya kiracının hizmeti tekeline alamamasını sağlar. SLA, Azure Depolama için saniyede iOs (IOPS) sayısını sınırlar - ayrıntılar [için, standart depolama hesapları için ölçeklenebilirlik ve performans hedeflerine](../storage/common/scalability-targets-standard-account.md)bakın.
 
-Azure Storage kullanıyorsanız, azaltma dahil olmak üzere depolama ile ilgili sorunları izleme hakkında bilgi için bkz. [izleyici, tanılama ve sorun giderme Microsoft Azure depolama](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
+Azure Depolama'yı kullanıyorsanız, azaltma da dahil olmak üzere depolama yla ilgili sorunları izlemek için [bkz.](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)
 
-Kümenizin yedekleme deposu Azure Data Lake Storage (ADLS) ise, azaltma bilgileriniz büyük olasılıkla bant genişliği limitlerinin nedenidir. Bu durumda azaltma, görev günlüklerinde azaltma hataları gözlemleyerek belirlenebilir. ADLS için, bu makalelerde uygun hizmet için daraltma bölümüne bakın:
+Kümenizin destek deposu Azure Veri Gölü Depolama (ADLS) ise, azaltma nız büyük olasılıkla bant genişliği sınırları nedeniyle dir. Bu durumda azaltma, görev günlüklerinde azaltma hataları gözlemleyerek tanımlanabilir. ADLS için, bu makalelerde uygun hizmet için azaltma bölümüne bakın:
 
-* [HDInsight ve Azure Data Lake Storage Apache Hive için performans ayarlama Kılavuzu](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [HDInsight ve Azure Data Lake Storage MapReduce için performans ayarlama Kılavuzu](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [HDInsight ve Azure Data Lake Storage Apache Storm için performans ayarlama Kılavuzu](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [HDInsight ve Azure Veri Gölü Depolama'da Apache Hive için performans alamı kılavuzu](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [HDInsight ve Azure Veri Gölü Depolama'da MapReduce için performans ayarı kılavuzu](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [HDInsight ve Azure Veri Gölü Depolama'da Apache Storm için performans alamı kılavuzu](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
-## <a name="troubleshoot-sluggish-node-performance"></a>Yavaş düğüm performansının sorunlarını giderme
+## <a name="troubleshoot-sluggish-node-performance"></a>Yavaş düğüm performansını giderme
 
-Bazı durumlarda, kümede yetersiz disk alanı nedeniyle ağır bir durum oluşabilir. Şu adımlarla araştırın:
+Bazı durumlarda, kümedeki düşük disk alanı nedeniyle halsizlik oluşabilir. Şu adımlarla araştırın:
 
-1. Düğümlerin her birine bağlanmak için [SSH komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın.
+1. Düğümlerin her birine bağlanmak için [ssh komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın.
 
-1. Aşağıdaki komutlardan birini çalıştırarak disk kullanımını kontrol edin:
+1. Aşağıdaki komutlardan birini çalıştırarak disk kullanımını denetleyin:
 
     ```bash
     df -h
     du -h --max-depth=1 / | sort -h
     ```
 
-1. Çıktıyı gözden geçirin ve `mnt` klasöründe veya diğer klasörlerde herhangi bir büyük dosyanın varlığını denetleyin. Genellikle, `usercache`ve `appcache` (mnt/Resource/Hadoop/Yarn/Local/usercache/Hive/APPCACHE/) klasörleri büyük dosyalar içerir.
+1. Çıktıyı gözden geçirin ve `mnt` klasörde veya diğer klasörlerde büyük dosyaların varlığını denetleyin. Genellikle, `usercache`ve `appcache` (mnt/resource/hadoop/ipn/local/usercache/hive/appcache/) klasörleri büyük dosyalar içerir.
 
-1. Büyük dosyalar varsa, geçerli bir iş dosyanın büyümesi veya başarısız olan bir önceki iş bu soruna katkıda bulunabilir. Bu davranışın geçerli bir işin neden olup olmadığını denetlemek için aşağıdaki komutu çalıştırın:
+1. Büyük dosyalar varsa, geçerli bir iş dosya büyümesine neden oluyor veya başarısız bir önceki iş bu soruna katkıda bulunmuş olabilir. Bu davranışın geçerli bir iş tarafından neden olup olmadığını denetlemek için aşağıdaki komutu çalıştırın:
 
     ```bash
     sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
     ```
 
-1. Bu komut belirli bir işi gösteriyorsa, aşağıdaki gibi bir komut kullanarak işi sonlandırmayı tercih edebilirsiniz:
+1. Bu komut belirli bir işi gösteriyorsa, aşağıdakilere benzeyen bir komut kullanarak işi sonlandırmayı seçebilirsiniz:
 
     ```bash
     yarn application -kill -applicationId <application_id>
     ```
 
-    `application_id` uygulama KIMLIĞIYLE değiştirin. Belirli bir iş belirtilmemişse, sonraki adıma gidin.
+    Uygulama `application_id` kimliğiyle değiştirin. Belirli bir iş belirtilmezse, bir sonraki adıma geçin.
 
-1. Yukarıdaki komut tamamlandıktan sonra veya belirli bir iş belirtilmemişse, aşağıdakine benzer bir komut çalıştırarak belirlediğiniz büyük dosyaları silin:
+1. Yukarıdaki komut tamamlandıktan sonra veya belirli bir iş belirtilmediyse, aşağıdakilere benzeyen bir komut çalıştırarak tanımladığınız büyük dosyaları silin:
 
     ```bash
     rm -rf filecache usercache
     ```
 
-Disk alanı sorunlarıyla ilgili daha fazla bilgi için bkz. [disk yetersiz alanı](./hadoop/hdinsight-troubleshoot-out-disk-space.md).
+Disk alanı sorunlarıyla ilgili daha fazla bilgi için disk [alanı dışında'na](./hadoop/hdinsight-troubleshoot-out-disk-space.md)bakın.
 
 > [!NOTE]  
-> Korumak istediğiniz büyük dosyalarınız varsa ancak düşük disk alanı sorununa katkıda bulunursa, HDInsight kümenizi ölçeklendirmeniz ve hizmetlerinizi yeniden başlatmanız gerekir. Bu yordamı tamamladıktan ve birkaç dakika bekledikten sonra, depolamanın serbest olduğunu ve düğümün olağan performansının geri yüklendiğini fark edeceksiniz.
+> Tutmak istediğiniz ancak düşük disk alanı sorununa katkıda bulunan büyük dosyalarınız varsa, HDInsight kümenizi ölçeklendirmeniz ve hizmetlerinizi yeniden başlatmanız gerekir. Bu yordamı tamamladıktan ve birkaç dakika bekledikten sonra, depolama alanının boşaltılmış olduğunu ve düğümün olağan performansının geri yüklenir olduğunu fark edeceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kümelerinizi sorun giderme ve izleme hakkında daha fazla bilgi için aşağıdaki bağlantıları ziyaret edin:
+Sorun giderme ve kümelerinizi izleme hakkında daha fazla bilgi için aşağıdaki bağlantıları ziyaret edin:
 
 * [HDInsight günlüklerini çözümleme](hdinsight-debug-jobs.md)
-* [Apache Hadoop YARN günlükleri ile uygulama hatalarını ayıklama](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Apache Hadoop İPlik günlükleri ile hata ayıklama uygulamaları](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Linux tabanlı HDInsight'ta Apache Hadoop hizmetleri için yığın dökümlerini etkinleştirin](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
