@@ -1,96 +1,96 @@
 ---
-title: SOIL Moisture heatmap oluştur
-description: Azure Farmınts 'de SOIL Moisture heatmap oluşturmayı açıklar
+title: Toprak Nem Isı Haritası oluşturun
+description: Azure FarmBeats'te Toprak Nem Isı Haritasınasıl üretilir açıklar
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75482575"
 ---
-# <a name="generate-soil-moisture-heatmap"></a>SOIL Moisture heatmap oluştur
+# <a name="generate-soil-moisture-heatmap"></a>Toprak Nem Isı Haritası oluşturun
 
-SOIL nemi, SOIL parçacıkları arasındaki boşlukların tutulduğu su. SOIL nemi heatmap, nemi verilerini herhangi bir derinlikte ve çiftlerinizin içinde yüksek çözünürlükte anlamanıza yardımcı olur. Doğru ve kullanılabilir bir SOIL nemi heatmap oluşturmak için aynı sağlayıcıdan alınan sensörlerden oluşan tek bir dağıtım gerekir. Farklı sağlayıcılar, SOIL nemi 'in ayarlama farklılıklarıyla birlikte ölçüldüğü fark eder. Heatmap, bu derinlikte dağıtılan sensörler kullanılarak belirli bir derinlik için oluşturulur.
+Toprak nemi, toprak parçacıkları arasındaki boşluklarda tutulan sudur.Toprak Nem Isı Haritası, çiftliklerinizdeki nem verilerini her derinlikte ve yüksek çözünürlükte anlamanıza yardımcı olur. Doğru ve kullanılabilir bir toprak nem ısı haritası oluşturmak için, aynı sağlayıcıdan sensörlerin tek tip dağıtım gereklidir. Farklı sağlayıcılar kalibrasyon farklılıkları ile birlikte toprak nem ölçülür şekilde farklılıklar olacaktır. Isı Haritası, bu derinlikte konuşlandırılan sensörler kullanılarak belirli bir derinlik için oluşturulur.
 
-Bu makalede, Azure Farmtts Hızlandırıcısı kullanılarak grubunuz için bir SOIL Moisture heatmap oluşturma işlemi açıklanmaktadır. Bu makalede, öğreneceksiniz nasıl yapılır:
+Bu makalede, Azure FarmBeats Hızlandırıcı'yı kullanarak çiftliğiniz için bir Toprak Nem Isı Haritası oluşturma işlemi açıklanmaktadır. Bu makalede, nasıl öğreneceksiniz:
 
-- [Gruplar oluşturma](#create-a-farm)
-- [Gruplara algılayıcılar ata](#get-soil-moisture-sensor-data-from-partner)
-- [SOIL Moisture heatmap oluştur](#generate-soil-moisture-heatmap)
+- [Çiftlikler Oluştur](#create-a-farm)
+- [Çiftliklere sensör atama](#get-soil-moisture-sensor-data-from-partner)
+- [Toprak Nem Isı Haritası oluşturun](#generate-soil-moisture-heatmap)
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Aşağıdakilerden emin olun:  
 
 - Azure aboneliği.
-- Azure Farmtts 'nin çalışan bir örneği.
-- Grup için en az üç Soil nemi sensöri vardır.
+- Azure FarmBeats'in çalışan bir örneği.
+- Çiftlik için en az üç toprak nem sensörü mevcuttur.
 
-## <a name="create-a-farm"></a>Grup oluştur
+## <a name="create-a-farm"></a>Çiftlik oluşturma
 
-Grup, bir SOIL nemi heatmap oluşturmak istediğiniz coğrafi bir alandır. [Gruplar API](https://aka.ms/FarmBeatsDatahubSwagger) 'Sini veya [Farmssink TS Hızlandırıcısı Kullanıcı arabirimini](manage-farms-in-azure-farmbeats.md#create-farms) kullanarak bir grup oluşturabilirsiniz.
+Bir çiftlik için bir toprak nem ısı haritası oluşturmak istediğiniz ilgi coğrafi bir alandır. [Farms API'yi](https://aka.ms/FarmBeatsDatahubSwagger) kullanarak veya [FarmsBeats Hızlandırıcı UI'de](manage-farms-in-azure-farmbeats.md#create-farms) bir çiftlik oluşturabilirsiniz
 
-## <a name="deploy-sensors"></a>Sensöri dağıt
+## <a name="deploy-sensors"></a>Sensörleri dağıtın
 
-Sunucu üzerinde SOIL nemi Sensörlerinizi fiziksel olarak dağıtmanız gerekir. Onaylı iş ortaklarımızdan SOIL nemi sensörlerinden ve [Teralytic](https://teralytic.com/)satın [](https://www.davisinstruments.com/product/enviromonitor-gateway/) alabilirsiniz. Grubunuzda fiziksel kurulum yapmak için sensör sağlayıcınızla birlikte koordine etmeniz gerekir.
+Çiftlikte ki toprak nem sensörlerini fiziksel olarak konuşlandırmanız gerekir. [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/) ve [Teralitik](https://teralytic.com/)- Bizim onaylı ortakların herhangi bir toprak nem sensörleri satın alabilirsiniz. Çiftliğinizdeki fiziksel kurulumu yapmak için sensör sağlayıcınızla işbirliği yapmalısınız.
 
-## <a name="get-soil-moisture-sensor-data-from-partner"></a>İş ortağından SOIL nemi algılayıcı verilerini al
+## <a name="get-soil-moisture-sensor-data-from-partner"></a>İş ortağından toprak nem sensörü verilerini alın
 
-Sensörler, verileri iş ortağı verileri panosuna başlattığında verileri Azure Farmfor olarak etkinleştirir. Bu, iş ortağı uygulamasından yapılabilir.
+Sensörler akış akışına, iş ortağı veri panosuna veri akışı na başladıkça, verileri Azure FarmBeats'e dönüştürür. Bu ortak uygulamadan yapılabilir.
 
-Örneğin, Davis sensörleri satın aldıysanız, hava durumu bağlantı hesabınızda oturum açıp veri akışını Azure Farm'e sağlamak için gereken kimlik bilgilerini sağlamanız gerekir. Gerekli kimlik bilgilerini almak için [sensör verilerini al](get-sensor-data-from-sensor-partner.md#get-sensor-data-from-sensor-partners)' daki yönergeleri izleyin.
+Örneğin, Davis sensörleri satın aldıysanız, hava durumu bağlantı hesabınıza giriş yapacak ve verilerin Azure FarmBeats'e aktamasını sağlamak için gerekli kimlik bilgilerini sağlayacaksınız. Gerekli kimlik bilgilerini almak için [sensör verilerini al'dan](get-sensor-data-from-sensor-partner.md#get-sensor-data-from-sensor-partners)talimatları izleyin.
 
-Kimlik bilgilerinizi girdikten ve iş ortağı uygulamasına **Gönder** ' i seçtikten sonra, verilerin Azure Farmtts 'de akışını sağlayabilirsiniz.
+Kimlik bilgilerinizi girdikten ve iş ortağı uygulamasında **Gönder'i** seçtikten sonra, verilerin Azure FarmBeats'e akmasını sağlayabilirsiniz.
 
-### <a name="assign-soil-moisture-sensors-to-the-farm"></a>Gruba SOIL nemi sensöri atama
+### <a name="assign-soil-moisture-sensors-to-the-farm"></a>Toprak nem sensörlerini çiftliğe atama
 
-Algılayıcı hesabınızı Azure farmınts 'e bağladıktan sonra, SOIL nemi sensörlerinden ilgi grubuna atamanız gerekir.
+Sensör hesabınızı Azure FarmBeats'e bağladıktan sonra, toprak nem sensörlerini ilgi çekici çiftliğe atamanız gerekir.
 
-1.  Giriş sayfasında, menüden **gruplar** ' ı seçin, **gruplar** listesi sayfası görüntülenir.
-2.  **Cihaz eklemek** > **myfarm** ' ı seçin.
-3.  **Cihaz Ekle** penceresi görüntülenir. Grubunuz için SOIL nemi sensörlerinden bağlantılı herhangi bir cihaz seçin.
+1.  Ana sayfada, menüden **Çiftlikler'i** seçin, **Çiftlikler** liste sayfası görüntülenir.
+2.  **MyFarm** > **Ekle Cihazlarını**seçin.
+3.  **Aygıt Ekle** penceresi görüntülenir. Çiftliğiniz için toprak nem sensörlerine bağlı herhangi bir cihaz seçin.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Proje Çiftlik Beats](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. **Cihaz Ekle**' yi seçin.     
+4. **Aygıt Ekle'yi**seçin.     
 
-## <a name="generate-soil-moisture-heatmap"></a>SOIL Moisture heatmap oluştur
+## <a name="generate-soil-moisture-heatmap"></a>Toprak Nem Isı Haritası oluşturun
 
-Bu adım, grubunuz için SOIL Moisture heatmap oluşturacak bir iş veya uzun süre çalışan bir işlem oluşturmaktır.
+Bu adım bir iş ya da çiftlik için Toprak Nem Isı Haritası üretecek uzun süren bir operasyon oluşturmaktır.
 
-1.  Giriş sayfasında, gruplar sayfasını görüntülemek için sol gezinti menüsünden **gruplar** ' a gidin.
-2.  **Myfarm**' ı seçin.
-3.  **Grup ayrıntıları** sayfasında **duyarlık eşlemesi oluştur**' u seçin.
-4.  Aşağı açılan menüden **Soil Moisture**' i seçin.
-5.  **SOIL Moisture** penceresinde **Bu hafta**' yı seçin.
-6.  **SOIL Moisture** **algılayıcısı ölçüsünü**seçin alanında, eşleme için kullanmak istediğiniz ölçüyü girin.
-    Algılayıcı ölçüsünü bulmak için **sensör**nemi algılayıcısı ' nı seçin. **Algılayıcı özellikleri**' nde **Ölçü adı** değerini kullanın.
+1.  Ana sayfada, çiftlikler **Farms** sayfasını görüntülemek için soldaki gezinti menüsünden Çiftlikler'e gidin.
+2.  **MyFarm'ı**seçin.
+3.  Çiftlik **Ayrıntıları** sayfasında **Hassas Harita Oluştur'u**seçin.
+4.  Açılan menüden **Toprak Nemi'ni**seçin.
+5.  Toprak **Nem** penceresinde, **Bu Hafta**seçin.
+6.  Toprak Nem Sensörü **Ölçümü'nü seçin,** **Sensor Measure**harita için kullanmak istediğiniz ölçüyünü girin.
+    Sensör ölçüsünü bulmak **için, Sensörlerde,** herhangi bir toprak nem sensörünü seçin. **Sensör Özellikleri'nde** **Ölçü Adı** değerini kullanın.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Proje Çiftlik Beats](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
-7.  **Haritaları oluştur**' u seçin.
-    İş ayrıntıları olan bir onay iletisi görüntülenir. Daha fazla bilgi için bkz. Işler içindeki Iş durumu.
+7.  **Harita Oluştur'u**seçin.
+    İş ayrıntılarını içeren bir onay iletisi görüntülenir. Daha fazla bilgi için İş İşlerinde İş Durumu'na bakın.
 
     >[!NOTE]
-    > İşin tamamlaması üç-dört saat sürer.
+    > İşi tamamlaması yaklaşık üç ila dört saat sürer.
 
-### <a name="download-the-soil-moisture-heatmap"></a>SOIL Moisture heatmap 'i indirin
+### <a name="download-the-soil-moisture-heatmap"></a>Toprak Nem Isı Haritası indir
 
 Aşağıdaki adımları kullanın:
 
-1. **İşler** sayfasında, son yordamda oluşturduğunuz Işin **iş durumunu** kontrol edin.
-2. İş durumu **başarılı**olarak gösterildiği zaman menüdeki **haritalar** ' ı seçin.
-3. < Soil-moisture_MyFarm_YYYY-aa-gg > biçiminde oluşturulduğu güne göre haritada arama yapın.
-4. **Ad** sütununda bir harita seçin, seçilen haritanın önizlemesine sahip bir açılır pencere görüntülenir.
-5. **Download** (İndir) seçeneğini belirleyin. Eşleme indirilir ve bilgisayarınızın yerel klasörüne depolanır.
+1. **İşler** sayfasında, son yordamda oluşturduğunuz iş için **İş Durumu'nu** denetleyin.
+2. İş durumu **Başarılı'yı**gösterdiğinde, menüde **Haritalar'ı** seçin.
+3. Haritayı, toprak moisture_MyFarm_YYYY-MM-DD> <biçiminde oluşturulduğu güne kadar arayın.
+4. **Ad** sütununda bir harita seçin, seçili haritanın önizlemesini içeren açılır pencere görüntülenir.
+5. **Download** (İndir) seçeneğini belirleyin. Harita indirilir ve bilgisayarınızın yerel klasörüne saklanır.
 
-    ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
+    ![Proje Çiftlik Beats](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir SOIL Moisture heatmap 'i başarıyla oluşturduğunuza göre, [algılayıcı yerleşimi oluşturma](generate-maps-in-azure-farmbeats.md#sensor-placement-map) ve [Geçmiş telemetri verilerini](ingest-historical-telemetry-data-in-azure-farmbeats.md)alma hakkında bilgi edinin. 
+Artık başarılı bir Toprak Nem Isı Haritası oluşturduk, [sensör yerleştirme](generate-maps-in-azure-farmbeats.md#sensor-placement-map) oluşturmak ve [tarihsel telemetri verileri yutmak](ingest-historical-telemetry-data-in-azure-farmbeats.md)öğrenin. 

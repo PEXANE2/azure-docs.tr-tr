@@ -1,29 +1,29 @@
 ---
-title: İle güvenli hizmet uzaktan iletişim iletişimleriC#
-description: Azure Service Fabric kümesinde çalışan güvenilir hizmetler için C# hizmet uzaktan iletişim tabanlı iletişimin güvenliğini nasıl sağlayacağınızı öğrenin.
+title: 'C ile güvenli hizmet remoting iletişim #'
+description: Azure Service Fabric kümesinde çalışan C# güvenilir hizmetler için hizmet remoting tabanlı iletişimi nasıl güvenli hale erdireceklerini öğrenin.
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609630"
 ---
-# <a name="secure-service-remoting-communications-in-a-c-service"></a>C# Hizmette güvenli hizmet uzaktan iletişim iletişimleri
+# <a name="secure-service-remoting-communications-in-a-c-service"></a>C# hizmetinde güvenli hizmet remoting iletişimi
 > [!div class="op_single_selector"]
 > * [Windows üzerinde C#](service-fabric-reliable-services-secure-communication.md)
 > * [Linux üzerinde Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Güvenlik, iletişimin en önemli yönlerinden biridir. Reliable Services uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz, önceden oluşturulmuş birkaç iletişim yığını ve aracı sağlar. Bu makalede, bir C# hizmette hizmet uzaktan iletişimini kullanırken güvenliğin nasıl artırılabileceği açıklanır. İçinde C#yazılmış güvenilir hizmetler için uzaktan iletişimin nasıl ayarlanacağını açıklayan mevcut bir [örnek](service-fabric-reliable-services-communication-remoting.md) üzerinde oluşturulur. 
+Güvenlik iletişimin en önemli yönlerinden biridir. Güvenilir Hizmetler uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz birkaç önceden oluşturulmuş iletişim yığını ve aracı sağlar. Bu makalede, c# hizmetinde hizmet remoting kullanırken güvenliği nasıl artırabileceğiniz açıklanmıştır. C# ile yazılmış güvenilir hizmetler için remoting'in nasıl ayarlanolacağını açıklayan varolan bir [örnek](service-fabric-reliable-services-communication-remoting.md) üzerine inşa edin. 
 
-Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenliğinin sağlanmasına yardımcı olmak için şu adımları izleyin:
+C# hizmetleriyle hizmet remotingini kullanırken bir hizmetin güvenliğini sağlamak için aşağıdaki adımları izleyin:
 
-1. Hizmetinize bir uzak yordam çağrısı için kullanılabilecek yöntemleri tanımlayan `IHelloWorldStateful`bir arabirim oluşturun. Hizmetiniz, `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` ad alanında belirtilen `FabricTransportServiceRemotingListener`kullanır. Bu, uzaktan iletişim özellikleri sağlayan bir `ICommunicationListener` uygulamasıdır.
+1. Hizmetinizde uzaktan `IHelloWorldStateful`yordam çağrısı için kullanılabilecek yöntemleri tanımlayan bir arabirim oluşturun. Hizmetiniz, ad alanında bildirilen, kullanır. `FabricTransportServiceRemotingListener` `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` Bu, `ICommunicationListener` remoting yetenekleri sağlayan bir uygulamadır.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -46,14 +46,14 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
         }
     }
     ```
-2. Dinleyici ayarlarını ve güvenlik kimlik bilgilerini ekleyin.
+2. Dinleyici ayarları ve güvenlik kimlik bilgileri ekleyin.
 
-    Hizmet iletişiminizin güvenli hale getirilmesine yardımcı olmak için kullanmak istediğiniz sertifikanın kümedeki tüm düğümlerde yüklü olduğundan emin olun. 
+    Hizmet iletişiminizin güvenliğini sağlamak için kullanmak istediğiniz sertifikanın kümedeki tüm düğümlere yüklü olduğundan emin olun. 
     
     > [!NOTE]
-    > Linux düğümlerinde, sertifikanın */var/lib/sfcerts* dizininde pek biçimli dosyalar olarak bulunması gerekir. Daha fazla bilgi edinmek için bkz. [Linux düğümlerinde X. 509.440 sertifikalarının konumu ve biçimi](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
+    > Linux düğümlerinde sertifikanın */var/lib/sfcerts* dizininde PEM biçimli dosyalar olarak bulunması gerekir. Daha fazla bilgi için, [Linux düğümlerinde X.509 sertifikalarının konumu ve biçimine](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)bakın. 
 
-    Dinleyici ayarlarını ve güvenlik kimlik bilgilerini sağlayabilmeniz için iki yol vardır:
+    Dinleyici ayarlarını ve güvenlik kimlik bilgilerini sağlamanın iki yolu vardır:
 
    1. Bunları doğrudan hizmet kodunda sağlayın:
 
@@ -88,9 +88,9 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
            return x509Credentials;
        }
        ```
-   2. Bunları bir [yapılandırma paketi](service-fabric-application-and-service-manifests.md)kullanarak sağlayın:
+   2. Bir [config paketi](service-fabric-application-and-service-manifests.md)kullanarak bunları sağlayın:
 
-       Settings. xml dosyasına adlandırılmış bir `TransportSettings` bölümü ekleyin.
+       settings.xml dosyasına adlandırılmış `TransportSettings` bir bölüm ekleyin.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -106,7 +106,7 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
        </Section>
        ```
 
-       Bu durumda `CreateServiceReplicaListeners` yöntemi şöyle görünür:
+       Bu durumda, `CreateServiceReplicaListeners` yöntem aşağıdaki gibi görünecektir:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -120,7 +120,7 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
        }
        ```
 
-        Settings. xml dosyasına bir `TransportSettings` bölümü eklerseniz, `FabricTransportRemotingListenerSettings` tüm ayarları varsayılan olarak bu bölümden yükler.
+        settings.xml `TransportSettings` dosyasına bir bölüm eklerseniz, `FabricTransportRemotingListenerSettings` varsayılan olarak bu bölümdeki tüm ayarları yüklersiniz.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -128,7 +128,7 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
             ...
         </Section>
         ```
-        Bu durumda `CreateServiceReplicaListeners` yöntemi şöyle görünür:
+        Bu durumda, `CreateServiceReplicaListeners` yöntem aşağıdaki gibi görünecektir:
 
         ```csharp
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -141,7 +141,7 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
             };
         }
         ```
-3. Güvenli bir hizmette yöntemleri, bir hizmet proxy 'si oluşturmak için `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` sınıfını kullanmak yerine, güvenli bir hizmet üzerinde çağırdığınızda, `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`kullanın. `SecurityCredentials`içeren `FabricTransportRemotingSettings`geçirin.
+3. Bir hizmet proxy oluşturmak için `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` sınıfı kullanmak yerine, remoting yığını nı kullanarak güvenli `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`bir hizmetteki yöntemleri çağırırsanız, kullanın. Pass `FabricTransportRemotingSettings`, içeren `SecurityCredentials`.
 
     ```csharp
 
@@ -171,7 +171,7 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
 
     ```
 
-    İstemci kodu bir hizmetin parçası olarak çalışıyorsa, Settings. xml dosyasından `FabricTransportRemotingSettings` yükleyebilirsiniz. Daha önce gösterildiği gibi, hizmet koduna benzer bir Merhaba Dünya Clienttransportsettings bölümü oluşturun. İstemci kodunda aşağıdaki değişiklikleri yapın:
+    İstemci kodu bir hizmetin parçası olarak `FabricTransportRemotingSettings` çalışıyorsa, settings.xml dosyasından yükleyebilirsiniz. Daha önce gösterildiği gibi hizmet koduna benzer bir HelloWorldClientTransportSettings bölümü oluşturun. İstemci kodunda aşağıdaki değişiklikleri yapın:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -184,9 +184,9 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
 
     ```
 
-    İstemci bir hizmetin parçası olarak çalışmıyorsa, client_name. exe ' nin bulunduğu konumda bir client_name. Settings. xml dosyası oluşturabilirsiniz. Ardından bu dosyada bir TransportSettings bölümü oluşturun.
+    İstemci bir hizmetin parçası olarak çalışmıyorsa, client_name.exe'nin bulunduğu konumda bir client_name.settings.xml dosyası oluşturabilirsiniz. Ardından bu dosyada bir TransportSettings bölümü oluşturun.
 
-    Hizmete benzer şekilde, Client Settings. xml/client_name. Settings. xml ' de bir `TransportSettings` bölümü eklerseniz, `FabricTransportRemotingSettings` bu bölümdeki tüm ayarları varsayılan olarak yükler.
+    Hizmete benzer şekilde, istemci `TransportSettings` settings.xml/client_name.settings.xml'e `FabricTransportRemotingSettings` bir bölüm eklerseniz, varsayılan olarak bu bölümdeki tüm ayarları yükler.
 
     Bu durumda, önceki kod daha da basitleştirilmiştir:  
 
@@ -200,4 +200,4 @@ Hizmetler ile C# hizmet uzaktan iletişimini kullanırken bir hizmetin güvenli�
     ```
 
 
-Sonraki adım olarak, [Reliable Services içinde OWIN Ile Web API 'sini](service-fabric-reliable-services-communication-webapi.md)okuyun.
+Bir sonraki adım olarak, [Güvenilir Hizmetler OWIN ile Web API](service-fabric-reliable-services-communication-webapi.md)okuyun.

@@ -1,79 +1,79 @@
 ---
 title: Linux kümeleri için disk şifrelemeyi etkinleştirme
-description: Bu makalede, Azure Resource Manager ve Azure Key Vault kullanarak Linux 'ta Azure Service Fabric küme düğümleri için disk şifrelemenin nasıl etkinleştirileceği açıklanır.
+description: Bu makalede, Azure Kaynak Yöneticisi ve Azure Anahtar Kasası kullanarak Linux'taki Azure Hizmet Dokusu küme düğümleri için disk şifrelemenin nasıl etkinleştirilen açıklanmaktadır.
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252824"
 ---
-# <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Linux 'ta Azure Service Fabric küme düğümleri için disk şifrelemeyi etkinleştirme 
+# <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Linux'ta Azure Service Fabric küme düğümleri için disk şifrelemesini etkinleştirme 
 > [!div class="op_single_selector"]
-> * [Linux için disk şifrelemesi](service-fabric-enable-azure-disk-encryption-linux.md)
-> * [Windows için disk şifrelemesi](service-fabric-enable-azure-disk-encryption-windows.md)
+> * [Linux için Disk Şifreleme](service-fabric-enable-azure-disk-encryption-linux.md)
+> * [Windows için Disk Şifreleme](service-fabric-enable-azure-disk-encryption-windows.md)
 >
 >
 
-Bu öğreticide, Linux 'ta Azure Service Fabric küme düğümlerinde disk şifrelemeyi nasıl etkinleştireceğinizi öğreneceksiniz. Düğüm türlerinin ve sanal makine ölçek kümelerinin her biri için bu adımları izlemeniz gerekir. Düğümleri şifrelemek için, sanal makine ölçek kümelerinde Azure Disk Şifrelemesi özelliğini kullanacağız.
+Bu eğitimde, Linux'taki Azure Service Fabric küme düğümlerinde disk şifrelemeyi nasıl etkinleştireceğinizi öğreneceksiniz. Düğüm türlerinin ve sanal makine ölçek kümelerinin her biri için aşağıdaki adımları izlemeniz gerekir. Düğümleri şifrelemek için, sanal makine ölçeği kümelerinde Azure Disk Şifreleme özelliğini kullanırız.
 
-Kılavuzda aşağıdaki konular ele alınmaktadır:
+Kılavuz aşağıdaki konuları kapsar:
 
-* Linux 'ta Service Fabric kümesi sanal makine ölçek kümelerinde disk şifrelemeyi etkinleştirirken dikkat etmeniz için önemli kavramlar.
-* Linux 'ta Service Fabric küme düğümlerinde disk Şifrelemeyi etkinleştirmeden önce izlenen adımlar.
-* Linux 'ta Service Fabric küme düğümlerinde disk şifrelemeyi etkinleştirmek için izlenecek adımlar.
+* Linux'ta Service Fabric küme sanal makine ölçek kümelerinde disk şifrelemesini etkinleştirirken dikkat edilmesi gereken temel kavramlar.
+* Linux'taki Service Fabric küme düğümlerinde disk şifrelemesini etkinleştirmeden önce izlenecek adımlar.
+* Linux'taki Service Fabric küme düğümlerinde disk şifrelemesini etkinleştirmek için izlenecek adımlar.
 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
  **Kendi kendine kayıt**
 
-Sanal makine ölçek kümesi için disk şifreleme önizlemesi, kendi kendine kayıt gerektirir. Aşağıdaki adımları kullanın:
+Sanal makine ölçeği kümesi için disk şifreleme önizlemesi kendi kendine kayıt gerektirir. Aşağıdaki adımları kullanın:
 
 1. Şu komutu çalıştırın: 
     ```powershell
     Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
     ```
-2. Durum, *kayıtlı*olana kadar yaklaşık 10 dakika bekleyin. Şu komutu çalıştırarak durumu kontrol edebilirsiniz:
+2. Durum *Kayıtlı'yı*okuyana kadar yaklaşık 10 dakika bekleyin. Aşağıdaki komutu çalıştırarak durumu kontrol edebilirsiniz:
     ```powershell
     Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
     Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
     ```
-**Azure Anahtar Kasası.**
+**Azure Key Vault**
 
-1. Ölçek kümesiyle aynı abonelikte ve bölgede bir Anahtar Kasası oluşturun. Ardından, PowerShell cmdlet 'ini kullanarak anahtar kasasında **Enabledfordiskencryption** erişim ilkesini seçin. İlkeyi aşağıdaki komutla Azure portal Key Vault Kullanıcı arabirimini kullanarak da ayarlayabilirsiniz:
+1. Ölçek kümesiyle aynı abonelik te ve bölgede bir anahtar kasaoluşturun. Ardından PowerShell cmdlet'ini kullanarak anahtar kasasındaki **EnabledForDiskEncryption** erişim ilkesini seçin. Azure portalındaki Key Vault UI'sini aşağıdaki komutla kullanarak da ilkeyi ayarlayabilirsiniz:
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
     ```
-2. Yeni şifreleme komutlarına sahip olan [Azure CLI](/cli/azure/install-azure-cli)'nin en son sürümünü yükler.
+2. Yeni şifreleme komutlarına sahip [Olan Azure CLI'nin](/cli/azure/install-azure-cli)en son sürümünü yükleyin.
 
-3. [Azure PowerShell sürümden Azure SDK 'sının](https://github.com/Azure/azure-powershell/releases) en son sürümünü yükler. Aşağıda, sanal makine ölçek kümesi Azure disk şifrelemesi cmdlet 'leri tarafından etkinleştirilir ([ayarlanır](/powershell/module/az.compute/set-azvmssdiskencryptionextension)), şifreleme durumunu alabilir ve ölçek kümesi örneğindeki şifrelemeyi[kaldırır (](/powershell/module/az.compute/get-azvmssvmdiskencryption)[devre dışı](/powershell/module/az.compute/disable-azvmssdiskencryption)).
+3. [Azure PowerShell sürümünden Azure SDK'nın](https://github.com/Azure/azure-powershell/releases) en son sürümünü yükleyin. Aşağıda, sanal makine ölçeğinde , şifrelemeyi etkinleştirmek ([ayarlamak) (set)](/powershell/module/az.compute/set-azvmssdiskencryptionextension)şifreleme durumunu ve ölçek kümesi örneğindeki şifrelemeyi kaldırmak[(devre dışı)](/powershell/module/az.compute/disable-azvmssdiskencryption)şifrelemeyi etkinleştirmek için Azure Disk Şifreleme cmdlets'i ayarlanır.[get](/powershell/module/az.compute/get-azvmssvmdiskencryption)
 
 
 | Komut | Sürüm |  Kaynak  |
 | ------------- |-------------| ------------|
-| Get-AzVmssDiskEncryptionStatus   | 1.0.0 veya üzeri | Az.Compute |
-| Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 veya üzeri | Az.Compute |
-| Disable-AzVmssDiskEncryption   | 1.0.0 veya üzeri | Az.Compute |
-| Get-AzVmssDiskEncryption   | 1.0.0 veya üzeri | Az.Compute |
-| Get-AzVmssVMDiskEncryption   | 1.0.0 veya üzeri | Az.Compute |
-| Set-AzVmssDiskEncryptionExtension   | 1.0.0 veya üzeri | Az.Compute |
+| Al-AzVmssDiskŞifreleme Durumu   | 1.0.0 veya sonrası | Az.Compute |
+| Al-AzVmssVMDiskŞifreleme Durumu   | 1.0.0 veya sonrası | Az.Compute |
+| Devre Dışı-AzVmssDiskŞifreleme   | 1.0.0 veya sonrası | Az.Compute |
+| Al-AzVmssDiskŞifreleme   | 1.0.0 veya sonrası | Az.Compute |
+| Al-AzVmssVMDiskŞifreleme   | 1.0.0 veya sonrası | Az.Compute |
+| Set-AzVmssDiskŞifreleme Uzantısı   | 1.0.0 veya sonrası | Az.Compute |
 
 
-## <a name="supported-scenarios-for-disk-encryption"></a>Disk şifrelemesi için desteklenen senaryolar
-* Sanal Makine Ölçek Kümeleri için şifreleme yalnızca yönetilen disklerle oluşturulan ölçek kümeleri için desteklenir. Yerel (veya yönetilmeyen) disk ölçek kümeleri için desteklenmez.
-* Hem şifreleme hem de devre dışı şifreleme, Linux 'ta sanal makine ölçek kümelerinde işletim sistemi ve veri birimlerinde desteklenir. 
-* Sanal Makine Ölçek Kümeleri için sanal makine (VM) yeniden görüntüsü ve yükseltme işlemleri geçerli önizlemede desteklenmiyor.
+## <a name="supported-scenarios-for-disk-encryption"></a>Disk şifreleme için desteklenen senaryolar
+* Sanal makine ölçek kümeleri için şifreleme yalnızca yönetilen disklerle oluşturulan ölçek kümeleri için desteklenir. Yerel (veya yönetilmeyen) disk ölçeği kümeleri için desteklenmez.
+* Hem şifreleme hem de devre dışı sayılsa şifreleme, Linux'taki sanal makine ölçeği kümelerinde işletim sistemi ve veri hacimleri için desteklenir. 
+* Sanal makine ölçek kümeleri için sanal makine (VM) yeniden görüntülenme ve yükseltme işlemleri geçerli önizlemede desteklenmez.
 
 
 ## <a name="create-a-new-cluster-and-enable-disk-encryption"></a>Yeni bir küme oluşturun ve disk şifrelemeyi etkinleştirin
 
-Bir küme oluşturmak ve bir Azure Resource Manager şablonu ve kendinden imzalı bir sertifika kullanarak disk şifrelemeyi etkinleştirmek için aşağıdaki komutları kullanın.
+Azure Kaynak Yöneticisi şablonu ve kendi imzalı sertifika kullanarak bir küme oluşturmak ve disk şifrelemesini etkinleştirmek için aşağıdaki komutları kullanın.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma  
 
@@ -93,11 +93,11 @@ az account set --subscription $subscriptionId
 
 ```
 
-### <a name="use-the-custom-template-that-you-already-have"></a>Zaten sahip olduğunuz özel şablonu kullanın 
+### <a name="use-the-custom-template-that-you-already-have"></a>Zaten sahip olduğunuz özel şablonu kullanma 
 
-Özel bir şablon yazmak gerekirse, [Azure Service Fabric kümesi oluşturma şablonu örnekleri](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) sayfasındaki şablonlardan birini kullanmanızı önemle tavsiye ederiz. 
+Özel bir şablon yazmanız gerekiyorsa, Azure Hizmet Dokusu küme oluşturma [şablonu örnekleri](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) sayfasındaki şablonlardan birini kullanmanızı şiddetle öneririz. 
 
-Zaten özel bir şablonunuz varsa, şablondaki ve parametre dosyasının sertifikayla ilgili üç parametrenin tümünün aşağıdaki gibi adlandırıldığını iki kez kontrol edin. Ayrıca değerlerinin null olduğundan emin olun:
+Zaten özel bir şablonunuz varsa, şablondaki ve parametre dosyasındaki sertifikayla ilgili üç parametrenin de aşağıdaki gibi adlandırıldığını iki kez denetleyin. Ayrıca, değerlerin aşağıdaki gibi null olduğundan emin olun:
 
 ```Json
    "certificateThumbprint": {
@@ -111,7 +111,7 @@ Zaten özel bir şablonunuz varsa, şablondaki ve parametre dosyasının sertifi
     },
 ```
 
-Linux 'ta sanal makine ölçek kümeleri için yalnızca veri diski şifrelemesi desteklendiğinden, bir Kaynak Yöneticisi şablonu kullanarak bir veri diski eklemeniz gerekir. Veri diski sağlama şablonunuzu aşağıdaki gibi güncelleştirin:
+Linux'taki sanal makine ölçek kümeleri için yalnızca veri diski şifrelemesi desteklendirilebildiği için, Kaynak Yöneticisi şablonu kullanarak bir veri diski eklemeniz gerekir. Veri diski sağlama şablonunuzu aşağıdaki gibi güncelleştirin:
 
 ```Json
    
@@ -153,7 +153,7 @@ New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOut
 
 ```
 
-Eşdeğer CLı komutu aşağıda verilmiştir. Declare deyimlerinin değerlerini uygun değerlerle değiştirin. CLı, önceki PowerShell komutunun desteklediği tüm diğer parametreleri destekler.
+Burada eşdeğer CLI komutu. Beyan ifadelerindeki değerleri uygun değerlerle değiştirin. CLI, önceki PowerShell komutunun desteklediği diğer tüm parametreleri destekler.
 
 ```azurecli
 declare certPassword=""
@@ -172,16 +172,16 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ```
 
-### <a name="mount-a-data-disk-to-a-linux-instance"></a>Bir Linux örneğine veri diski bağlama
-Bir sanal makine ölçek kümesi üzerinde şifrelemeye devam etmeden önce, eklenen veri diskinin doğru bağlandığından emin olun. Linux kümesi VM 'de oturum açın ve **Lsblk** komutunu çalıştırın. Çıktı, **bağlama noktası** sütununda eklenen veri diskini göstermelidir.
+### <a name="mount-a-data-disk-to-a-linux-instance"></a>Veri diskini Linux örneğine monte etme
+Sanal makine ölçeği kümesinde şifrelemeye devam etmeden önce, eklenen veri diskinin doğru şekilde monte edilmiş olduğundan emin olun. Linux kümesi VM'de oturum açın ve **LSBLK** komutunu çalıştırın. Çıktı, **Mount Point** sütununa eklenen veri diskini göstermelidir.
 
 
-### <a name="deploy-application-to-a-service-fabric-cluster-in-linux"></a>Linux 'ta bir Service Fabric kümesine uygulama dağıtma
-Kümenize bir uygulama dağıtmak için [hızlı başlangıç: Service Fabric Linux kapsayıcıları dağıtma](service-fabric-quickstart-containers-linux.md)bölümündeki adımları ve yönergeleri izleyin.
+### <a name="deploy-application-to-a-service-fabric-cluster-in-linux"></a>Uygulamayı Linux'taki Service Fabric kümesine dağıtma
+Bir uygulamayı kümenize dağıtmak için Quickstart'taki adımları ve kılavuzu [izleyin: Linux kaplarını Service Fabric'e dağıtın.](service-fabric-quickstart-containers-linux.md)
 
 
-### <a name="enable-disk-encryption-for-the-virtual-machine-scale-sets-created-previously"></a>Daha önce oluşturulan sanal makine ölçek kümeleri için disk şifrelemeyi etkinleştir
-Önceki adımlar aracılığıyla oluşturduğunuz sanal makine ölçek kümeleri için disk şifrelemeyi etkinleştirmek üzere aşağıdaki komutları çalıştırın:
+### <a name="enable-disk-encryption-for-the-virtual-machine-scale-sets-created-previously"></a>Daha önce oluşturulan sanal makine ölçek kümeleri için disk şifrelemeyi etkinleştirme
+Önceki adımlarda oluşturduğunuz sanal makine ölçeği kümeleri için disk şifrelemesini etkinleştirmek için aşağıdaki komutları çalıştırın:
  
 ```powershell
 $VmssName = "nt1vm"
@@ -201,9 +201,9 @@ az vmss encryption enable -g <resourceGroupName> -n <VMSS name> --disk-encryptio
 
 ```
 
-### <a name="validate-if-disk-encryption-is-enabled-for-a-virtual-machine-scale-set-in-linux"></a>Linux 'ta bir sanal makine ölçek kümesi için disk şifrelemenin etkinleştirilip etkinleştirilmediğini doğrulayın
-Bir sanal makine ölçek kümesinin tamamının veya bir ölçek kümesindeki herhangi bir örneğinin durumunu almak için aşağıdaki komutları çalıştırın.
-Ayrıca, Linux kümesi VM 'de oturum açabilir ve **Lsblk** komutunu çalıştırabilirsiniz. Çıktı, eklenen veri diskini **bağlama noktası** sütununda göstermelidir ve **tür** sütunu *Crypt*' i okumalı.
+### <a name="validate-if-disk-encryption-is-enabled-for-a-virtual-machine-scale-set-in-linux"></a>Linux'ta ayarlanmış sanal makine ölçeği için disk şifreleme etkinleştirilmişse doğrulama
+Tüm sanal makine ölçeği kümesinin veya bir ölçek kümesindeki herhangi bir örneğin durumunu almak için aşağıdaki komutları çalıştırın.
+Ayrıca, Linux kümesi VM'de oturum açabilir ve **LSBLK** komutunu çalıştırabilirsiniz. Çıktı, **Mount Point** sütununa eklenen veri diskini göstermeli ve **Tür** sütununda *Crypt'i*okumalıdır.
 
 ```powershell
 
@@ -220,8 +220,8 @@ az vmss encryption show -g <resourceGroupName> -n <VMSS name>
 
 ```
 
-### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>Service Fabric kümesinde bir sanal makine ölçek kümesi için disk şifrelemeyi devre dışı bırakma
-Aşağıdaki komutları çalıştırarak bir sanal makine ölçek kümesi için disk şifrelemeyi devre dışı bırakın. Disk şifrelemesini devre dışı bırakmak, tek bir örnek değil, tüm sanal makine ölçek kümesi için geçerli olduğunu unutmayın.
+### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>Service Fabric kümesinde ayarlanan sanal makine ölçeği için disk şifrelemeyi devre dışı bırak
+Aşağıdaki komutları çalıştırarak ayarlanan sanal makine ölçeği için disk şifrelemesini devre dışı bırak. Disk şifrelemesini devre dışı bırakmanın tek bir örnek için değil, tüm sanal makine ölçeği kümesi için geçerli olduğunu unutmayın.
 
 ```powershell
 $VmssName = "nt1vm"
@@ -237,4 +237,4 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu noktada, güvenli bir kümeniz olmalıdır ve Service Fabric küme düğümleri ve sanal makine ölçek kümeleri için disk şifrelemeyi etkinleştirmeyi ve devre dışı bırakmayı bilmeniz gerekir. Linux 'ta Service Fabric küme düğümleri hakkında benzer yönergeler için bkz. [Windows Için disk şifrelemesi](service-fabric-enable-azure-disk-encryption-windows.md). 
+Bu noktada, güvenli bir kümeye sahip olmalı ve Service Fabric küme düğümleri ve sanal makine ölçek kümeleri için disk şifrelemesini nasıl etkinleştirip devre dışı kacağınıbilmeniz gerekir. Linux'taki Service Fabric küme düğümleri ile ilgili benzer bir kılavuz [için Windows için Disk Şifreleme'ye](service-fabric-enable-azure-disk-encryption-windows.md)bakın. 

@@ -1,15 +1,15 @@
 ---
-title: Java SDK 'dan Maven 'e geçiş
+title: Java SDK'dan Maven'e geçiş
 description: Service Fabric Java SDK’sını kullanan eski JAVA uygulamalarını, Service Fabric Java bağımlılıklarını Maven’dan alacak şekilde güncelleştirin. Bu ayarları tamamlandıktan sonra eski Java uygulamalarınız oluşturmaya hazırdır.
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609817"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Eski Java Service Fabric uygulamanızı Maven’dan Java kitaplıklarını alacak şekilde güncelleştirme
@@ -79,8 +79,8 @@ Uygulamanız için Service Fabric Durum Bilgisi Olmayan Hizmet desteği.
   }
   ```
 
-### <a name="others"></a>Diğerleri
-#### <a name="transport"></a>Ulaşım
+### <a name="others"></a>Diğer
+#### <a name="transport"></a>Aktarım
 
 Service Fabric Java uygulaması için Aktarım katmanı desteği. Aktarım katmanında özellikle programlamadığınız sürece bu bağımlılığı Güvenilir Aktör veya Hizmet uygulamalarınız için özellikle eklemeniz gerekmez.
 
@@ -158,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-Şimdi, Maven 'ten bağımlılıkları getirmek için, **güncelleştirilmiş** ``build.gradle``, karşılık gelen bölümlere aşağıdaki gibi sahip olacaktır
+Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
 ```
 repositories {
         mavenCentral()
@@ -232,7 +232,7 @@ dependencies {
 .
 .
 ```
-Şimdi, Maven 'ten bağımlılıkları getirmek için, **güncelleştirilmiş** ``build.gradle``, karşılık gelen bölümlere aşağıdaki gibi sahip olacaktır
+Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
 ```
 repositories {
     mavenCentral()
@@ -304,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-Şimdi, Maven 'ten bağımlılıkları getirmek için, **güncelleştirilmiş** ``build.gradle``, karşılık gelen bölümlere aşağıdaki gibi sahip olacaktır
+Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
 ```
 repositories {
     mavenCentral()
@@ -404,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-Şimdi, Maven 'ten bağımlılıkları getirmek için, **güncelleştirilmiş** ``build.gradle``, karşılık gelen bölümlere aşağıdaki gibi sahip olacaktır
+Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
 ```
 repositories {
     mavenCentral()

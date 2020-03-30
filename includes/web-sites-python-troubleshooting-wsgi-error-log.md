@@ -9,20 +9,20 @@ ms.date: 06/11/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 020e59f029b09f3c7656f67039731e4141e68d31
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188975"
 ---
-Python uygulamanız başlatılırken bir hatayla karşılaştığında, yalnızca basit bir hata sayfası (örn. döndürülür "Bir iç sunucu hatası oluştuğundan sayfası görüntülenemiyor.").
+Python uygulamanızı başlatırken bir hatayla karşılaşırsa, yalnızca basit bir hata sayfası döndürülür (örn. "İç sunucu hatası oluştuğu için sayfa görüntülenemez.").
 
 Python uygulama hatalarını yakalamak için:
 
-1. Azure portalında, web uygulamanızı seçin **ayarları**.
-2. Üzerinde **ayarları** sekmesinde **uygulama ayarları**.
-3. Altında **uygulama ayarları**, aşağıdaki anahtar/değer çifti girin:
-    * Anahtar: WSGI_LOG
-    * Değer: D:\home\site\wwwroot\logs.txt (dosya adı tercih ettiğiniz girin)
+1. Azure portalında, web uygulamanızda **Ayarlar'ı**seçin.
+2. **Ayarlar** sekmesinde **Uygulama ayarlarını**seçin.
+3. **Uygulama ayarlarının**altında, aşağıdaki anahtar/değer çiftini girin:
+    * Anahtar : WSGI_LOG
+    * Değer : D:\home\site\wwwroot\logs.txt (dosya adı seçtiğiniz girin)
 
-Artık wwwroot klasörü logs.txt dosyasında hatalar görmeniz gerekir.
+Şimdi wwwroot klasöründe logs.txt dosyasında hataları görmeniz gerekir.

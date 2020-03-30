@@ -1,5 +1,5 @@
 ---
-title: Bölge temelli Windows VM oluşturma-Azure PowerShell
+title: Zonlu Bir Windows VM oluşturma - Azure PowerShell
 description: Azure PowerShell ile bir kullanılabilirlik alanında Windows sanal makinesi oluşturma
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: 5cecc6e43dfeda3838ae52fdd0c028a7739ff227
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75497953"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>PowerShell ile bir kullanılabilirlik alanında Windows sanal makinesi oluşturma
@@ -30,7 +30,7 @@ Kullanılabilirlik alanı kullanmak için, [desteklenen bir Azure bölgesinde](.
 
  
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 `Connect-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
@@ -41,7 +41,7 @@ Connect-AzAccount
 ## <a name="check-vm-sku-availability"></a>VM SKU kullanılabilirliğini denetleme
 VM boyutları veya SKU'ların kullanılabilirliği, bölge ve alanlara göre farklılık gösterebilir. Kullanılabilirlik Alanları kullanımını planlamanıza yardımcı olmak üzere, kullanılabilir VM SKU'larını Azure bölgesine ve alana göre listeleyebilirsiniz. Bu özellik, uygun bir VM boyutu seçmenizi ve alanlar arasında istenen dayanıklılığı elde etmenizi sağlar. Farklı VM türleri ve boyutları hakkında daha fazla bilgi için bkz. [VM Boyutlarına genel bakış](sizes.md).
 
-Kullanılabilir VM SKU 'Larını [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) komutuyla görüntüleyebilirsiniz. Aşağıdaki örnekte kullanılabilir VM SKU'ları *eastus2* bölgesinde içinde listelenmiştir:
+Kullanılabilir VM SKU'ları [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) komutu ile görüntüleyebilirsiniz. Aşağıdaki örnekte kullanılabilir VM SKU'ları *eastus2* bölgesinde içinde listelenmiştir:
 
 ```powershell
 Get-AzComputeResourceSku | where {$_.Locations.Contains("eastus2")};
@@ -68,7 +68,7 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bu örnekte, *eastus2* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturulur. 
+[Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)ile bir Azure kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bu örnekte, *eastus2* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturulur. 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS2
@@ -112,7 +112,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location e
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>Sanal makine için bir ağ kartı oluşturma 
-Sanal makine için [New-Aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) ile bir ağ kartı oluşturun. Ağ kartı, sanal makineyi bir alt ağa, ağ güvenliği grubuna ve genel IP adresine bağlar.
+Sanal makine için [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) ile bir ağ kartı oluşturun. Ağ kartı, sanal makineyi bir alt ağa, ağ güvenliği grubuna ve genel IP adresine bağlar.
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -135,7 +135,7 @@ $vmConfig = New-AzVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
     -Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile sanal makineyi oluşturun.
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile sanal makine oluşturun.
 
 ```powershell
 New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
@@ -143,7 +143,7 @@ New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 
 ## <a name="confirm-zone-for-managed-disk"></a>Yönetilen disk için bölgeyi onaylama
 
-VM’nin IP adresi kaynağını, VM ile aynı kullanılabilirlik alanında oluşturdunuz. Sanal makine için yönetilen disk kaynağı, aynı kullanılabilirlik alanında oluşturulur. Bunu [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)ile doğrulayabilirsiniz:
+VM’nin IP adresi kaynağını, VM ile aynı kullanılabilirlik alanında oluşturdunuz. Sanal makine için yönetilen disk kaynağı, aynı kullanılabilirlik alanında oluşturulur. [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)ile bunu doğrulayabilirsiniz:
 
 ```powershell
 Get-AzDisk -ResourceGroupName myResourceGroup
@@ -177,4 +177,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, kullanılabilirlik alanında nasıl sanal makine oluşturulacağını öğrendiniz. Azure VM 'Leri için [kullanılabilirlik](availability.md) hakkında daha fazla bilgi edinin.
+Bu makalede, kullanılabilirlik alanında nasıl sanal makine oluşturulacağını öğrendiniz. Azure VM'lerin [kullanılabilirliği](availability.md) hakkında daha fazla bilgi edinin.

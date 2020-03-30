@@ -9,40 +9,40 @@ ms.date: 09/20/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 1ec3ecdafb8e475f5f13372789528612ccd7b8b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66226051"
 ---
-## <a name="using-rbac-to-share-images"></a>Görüntüleri paylaşmak için RBAC kullanma
+## <a name="using-rbac-to-share-images"></a>Görüntüleri paylaşmak için RBAC'ı kullanma
 
-Rol tabanlı erişim denetimi (RBAC) kullanarak abonelikler arasında görüntüleri paylaşabilir. Bir görüntü sürümü bile abonelikler arasında okuma izni herhangi bir kullanıcı görüntü sürümünü kullanarak bir sanal makineyi dağıtmak mümkün olacaktır.
+Role Based Access Control (RBAC) kullanarak görüntüleri abonelikler arasında paylaşabilirsiniz. Abonelikler arasında bile bir resim sürümü için izinleri okuyan herhangi bir kullanıcı, görüntü sürümünü kullanarak bir Sanal Makine dağıtabilir.
 
-RBAC kullanarak kaynakları paylaşma hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimini yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+RBAC kullanarak kaynakların nasıl paylaşılabildiğini öğrenmek için [Bkz. RBAC ve Azure CLI kullanarak erişimi yönet.](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 
 
 ## <a name="list-information"></a>Liste bilgileri
 
-Konum, durum ve kullanılabilir resim galerileri kullanma hakkındaki diğer bilgileri alma [az sig listesi](/cli/azure/sig#az-sig-list).
+[Az sig listesini](/cli/azure/sig#az-sig-list)kullanarak kullanılabilir resim galerileri hakkında konum, durum ve diğer bilgileri alın.
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-İşletim sistemi türü ve durumu hakkında bilgiler dahil olmak üzere, kullanarak bir galeride görüntü tanımları listesi [az sig görüntü tanım listesi](/cli/azure/sig/image-definition#az-sig-image-definition-list).
+[Az sig resim tanım listesini](/cli/azure/sig/image-definition#az-sig-image-definition-list)kullanarak işletim sistemi türü ve durumu hakkında bilgiler de dahil olmak üzere bir galerideki resim tanımlarını listeleyin.
 
 ```azurecli-interactive 
 az sig image-definition list --resource-group myGalleryRG --gallery-name myGallery -o table
 ```
 
-Bir galeride bulunan paylaşılan görüntü sürümleri listesi kullanarak [az sig görüntü sürüm listesi](/cli/azure/sig/image-version#az-sig-image-version-list).
+[Az sig image-version listesini](/cli/azure/sig/image-version#az-sig-image-version-list)kullanarak paylaşılan resim sürümlerini galeride listeleyin.
 
 ```azurecli-interactive
 az sig image-version list --resource-group myGalleryRG --gallery-name myGallery --gallery-image-definition myImageDefinition -o table
 ```
 
-Kullanarak bir görüntü sürüm Kimliğini alın [az sig görüntü sürümü göster](/cli/azure/sig/image-version#az-sig-image-version-show).
+[az sig image-version show](/cli/azure/sig/image-version#az-sig-image-version-show)kullanarak bir resim sürümünün kimliğini alın.
 
 ```azurecli-interactive
 az sig image-version show \

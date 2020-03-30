@@ -1,6 +1,6 @@
 ---
-title: Azure 'da gerçek zamanlı ve akış işleme çözümü seçin
-description: Uygulamanızı Azure 'da derlemek için doğru gerçek zamanlı analiz ve akış işleme teknolojisini seçme hakkında bilgi edinin.
+title: Azure'da gerçek zamanlı ve akışlı işlem çözümü seçin
+description: Uygulamanızı Azure'da oluşturmak için doğru gerçek zamanlı analiz ve akış işleme teknolojisini nasıl seçeceğinizi öğrenin.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,51 +8,51 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75860257"
 ---
-# <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure 'da gerçek zamanlı analiz ve akış işleme teknolojisini seçin
+# <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure'da gerçek zamanlı analiz ve akış işleme teknolojisi seçin
 
-Azure 'da gerçek zamanlı analiz ve akış işleme için kullanılabilen çeşitli hizmetler vardır. Bu makale, uygulamanıza en uygun teknolojiyi belirlemek için gereken bilgileri sağlar.
+Azure'da gerçek zamanlı analiz ler ve akış işlemleri için çeşitli hizmetler mevcuttur. Bu makalede, hangi teknolojinin uygulamanız için en uygun olduğuna karar vermek için gereken bilgiler sağlandığınızı sağlar.
 
-## <a name="when-to-use-azure-stream-analytics"></a>Ne zaman kullanılacağı Azure Stream Analytics
+## <a name="when-to-use-azure-stream-analytics"></a>Azure Akış Analizi ne zaman kullanılır?
 
-Azure Stream Analytics, Azure 'da Stream Analytics için önerilen hizmettir. Aşağıdakiler dahil olmak üzere çok çeşitli senaryolar için tasarlanmıştır, ancak bunlarla sınırlı değildir:
+Azure Akış Analizi, Azure'daki akış analitiği için önerilen hizmettir. Aşağıdakileri içeren ancak bunlarla sınırlı olmayan çok çeşitli senaryolar içindir:
 
 * Veri görselleştirme için panolar
-* Zamana bağlı ve uzamsal desenler veya bozukluklar için gerçek zamanlı [Uyarılar](stream-analytics-set-up-alerts.md)
+* Zamansal ve mekansal desenler veya anomalilerden gerçek zamanlı [uyarılar](stream-analytics-set-up-alerts.md)
 * Ayıklama, Dönüştürme, Yükleme (ETL)
-* [Olay kaynağını belirleme kalıbı](/azure/architecture/patterns/event-sourcing)
+* [Olay Kaynak deseni](/azure/architecture/patterns/event-sourcing)
 * [IoT Edge](stream-analytics-edge.md)
 
-Uygulamanıza Azure Stream Analytics bir iş eklemek, zaten bildiğiniz SQL dilini kullanarak akış analizlerini Azure 'da çalışır duruma getirmenin en hızlı yoludur. Azure Stream Analytics bir iş hizmetidir, bu nedenle kümeleri yönetme süresini harcamanız gerekmez ve iş düzeyinde% 99,9 SLA ile kapalı kalma süresi konusunda endişelenmeniz gerekmez. Faturalandırma, başlangıç maliyetlerini düşük (bir akış birimi), ancak ölçeklenebilir (192 akış birimi kadar) olan iş düzeyinde de yapılır. Birkaç Stream Analytics işi çalıştırmak, bir kümeyi çalıştırmak ve sürdürmek olduğundan çok daha uygun maliyetli bir hesapdır.
+Uygulamanıza bir Azure Akışı Analizi işi eklemek, zaten bildiğiniz SQL dilini kullanarak Akış analitiğini Azure'da çalışır hale getirmek için en hızlı yoldur. Azure Akış Analizi bir iş hizmetidir, bu nedenle kümeleri yönetmek için zaman harcamak zorunda kalmamanız ve iş düzeyinde %99,9'luk bir SLA ile kapalı kalma süreniz konusunda endişelenmenize gerek yoktur. Faturalandırma da başlangıç maliyetlerini düşük (bir Akış Birimi) düşük, ancak ölçeklenebilir (en fazla 192 Akış Birimleri) yapma iş düzeyinde yapılır. Birkaç Stream Analytics işini çalıştırmak, bir kümeyi çalıştırmak ve sürdürmekten çok daha uygun maliyetlidir.
 
-Azure Stream Analytics, zengin kullanıma hazır bir deneyim içerir. Ek bir kurulum gerekmeden aşağıdaki özelliklerden hemen yararlanabilirsiniz:
+Azure Akış Analizi, zengin bir kutudan çıkma deneyimine sahiptir. Herhangi bir ek kurulum olmadan aşağıdaki özelliklerden hemen yararlanabilirsiniz:
 
-* [Pencereli toplamalar](stream-analytics-window-functions.md), zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi yerleşik zamana bağlı işleçler.
-* Yerel Azure [giriş](stream-analytics-add-inputs.md) ve [Çıkış](stream-analytics-define-outputs.md) bağdaştırıcıları
-* Bölge sınırlaması için Jeo-uzamsal başvuru verileriyle katılım dahil, yavaş değişen [başvuru verileri](stream-analytics-use-reference-data.md) (arama tabloları olarak da bilinir) için destek.
-* [Anomali algılama](stream-analytics-machine-learning-anomaly-detection.md) gibi tümleşik çözümler
-* Aynı sorguda birden çok kez pencere
-* Rastgele diziler halinde birden çok zamana bağlı işleç oluşturma yeteneği.
-* 100-ms ' den fazla Event Hubs giriş girişi, Event Hubs ve en yüksek aktarım hızı ile Event Hubs ağ gecikmesi de dahil olmak üzere çıkış girişi ' ne kadar
+* [Pencereli agregalar,](stream-analytics-window-functions.md)zamansal birleştirmeler ve zamansal analitik işlevler gibi yerleşik zamansal işleçler.
+* Yerel Azure [giriş](stream-analytics-add-inputs.md) ve [çıktı](stream-analytics-define-outputs.md) bağdaştırıcıları
+* Yavaş değişen [başvuru verileri](stream-analytics-use-reference-data.md) (arama tabloları olarak da bilinir), geofencing için jeouzamsal başvuru verileriyle birleştirme de dahil olmak üzere destek.
+* [Anomali Algılama](stream-analytics-machine-learning-anomaly-detection.md) gibi entegre çözümler
+* Aynı sorguda birden çok zaman penceresi
+* Rasgele diziler halinde birden çok zamansal işleç oluşturma yeteneği.
+* Etkinlik Hub'larına gelen girişten, sürekli yüksek verimde Olay Hub'larından ve Olay Hub'larına ağ gecikmesi de dahil olmak üzere Event Hub'larına çıkış inişine kadar 100 ms'lik uçtan uca gecikme
 
 ## <a name="when-to-use-other-technologies"></a>Diğer teknolojilerin ne zaman kullanılacağı
 
-### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>JavaScript dışındaki bir dilde UDF 'ler, Udalar ve özel seri hale getiriciler yazmak istiyorsunuz veyaC#
+### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>JavaScript veya C dışındaki bir dilde UDF'ler, UD'ler ve özel deserializers yazmak istiyorsunuz #
 
-Azure Stream Analytics, bulut işleri ve C# IoT Edge Işleri için JavaScript 'te Kullanıcı tanımlı IŞLEVLERI (UDF) veya Kullanıcı tanımlı TOPLAMALARı (uda) destekler. C#Kullanıcı tanımlı seri hale getiriciler da desteklenir. Java veya Python gibi diğer dillerde bir seri hale getirici, UDF veya UDA uygulamak istiyorsanız Spark yapılandırılmış akış kullanabilirsiniz. Ayrıca, kendi sanal makinelerinizde Event Hubs **Eventprocessorhost** ' u çalıştırarak rastgele akış işleme gerçekleştirebilirsiniz.
+Azure Akış Analizi, bulut işleri için JavaScript'te kullanıcı tanımlı işlevleri (UDF) veya kullanıcı tanımlı toplamaları (UDA) ve IoT Edge işleri için C# bilgilerini destekler. C# kullanıcı tanımlı deserializers da desteklenir. Java veya Python gibi diğer dillerde bir deserializer, UDF veya UDA uygulamak istiyorsanız, Spark Structured Streaming'i kullanabilirsiniz. Ayrıca rasgele akış işleme yapmak için kendi sanal makineleri üzerinde Olay Hub'ları **EventProcessorHost** çalıştırabilirsiniz.
 
-### <a name="your-solution-is-in-a-multi-cloud-or-on-premises-environment"></a>Çözümünüz çoklu bulut veya şirket içi bir ortamda
+### <a name="your-solution-is-in-a-multi-cloud-or-on-premises-environment"></a>Çözümünüz çok bulutlu veya şirket içi bir ortamda
 
-Azure Stream Analytics Microsoft 'un özel teknolojisidir ve yalnızca Azure 'da kullanılabilir. Çözümünüzün bulutlarda veya şirket içinde taşınabilir olmasını istiyorsanız Spark yapılandırılmış akış veya fırtınası gibi açık kaynaklı teknolojileri göz önünde bulundurun.
+Azure Akış Analizi, Microsoft'un tescilli teknolojisidir ve yalnızca Azure'da kullanılabilir. Çözümünüzün Bulutlar'da veya şirket içinde taşınabilir olması gerekiyorsa, Kıvılcım Yapılandırılmış Akış veya Fırtına gibi açık kaynaklı teknolojileri göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure portal kullanarak Stream Analytics işi oluşturun](stream-analytics-quick-create-portal.md)
-* [Azure PowerShell kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-powershell.md)
-* [Visual Studio 'Yu kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Visual Studio Code kullanarak Stream Analytics işi oluşturma](quick-create-vs-code.md)
+* [Azure portalını kullanarak Bir Akış Analizi işi oluşturun](stream-analytics-quick-create-portal.md)
+* [Azure PowerShell'i kullanarak Bir Akış Analizi işi oluşturun](stream-analytics-quick-create-powershell.md)
+* [Visual Studio'u kullanarak Bir Stream Analytics işi oluşturun](stream-analytics-quick-create-vs.md)
+* [Visual Studio Code'u kullanarak Bir Akış Analizi işi oluşturun](quick-create-vs-code.md)

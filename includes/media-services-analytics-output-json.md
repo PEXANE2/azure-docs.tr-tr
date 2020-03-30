@@ -5,37 +5,37 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188785"
 ---
-İş, algılanan ve izlenen yüzleri hakkında meta veriler içeren bir JSON çıktı dosyası üretir. Meta veriler, ayrı ayrı izlenmesi belirten bir yüz kimliği sayı yanı sıra yüz konumunu belirten koordinatları içerir. Yüz Kimliği numaraları atanan birden çok kimlikler bazı kişiler kaynaklanan koşullar altında tamamen çıplak yüz kayıp veya çerçevede çakışan sıfırlama eğilimlidir.
+İş, algılanan ve izlenen yüzler hakkında meta veriler içeren bir JSON çıktı dosyası üretir. Meta veriler, yüzlerin konumunu gösteren koordinatların yanı sıra o kişinin izini gösteren bir yüz kimliği numarasını içerir. Face ID numaraları, ön yüzün kaybolduğu veya çerçevede çakıştıldığında olduğu durumlarda sıfırlanma yatkınlığı yla karşı karşıya dır ve bu da bazı kişilerin birden fazla kimlik atanmasına neden olur.
 
-Çıkış JSON aşağıdaki öğeleri içerir:
+JSON çıktısı aşağıdaki öğeleri içerir:
 
-### <a name="root-json-elements"></a>Kök JSON öğeleri
+### <a name="root-json-elements"></a>Kök JSON elemanları
 
 | Öğe | Açıklama |
 | --- | --- |
-| version |Bu Video API'si sürümüne başvurur. |
-| Zaman Çizelgesi |Videoyu saniye başına "ticks". |
-| offset |Zaman damgaları için zaman uzaklığını budur. Video API'leri 1.0 sürümünde, bu her zaman 0 olacaktır. Gelecekte senaryoları destekliyoruz, bu değeri değiştirebilirsiniz. |
-| Genişlik, yüksek |Genişlik ve piksel cinsinden çıkış video çerçevenin yüksek.|
-| kare hızı |Videodaki saniye başına kare hızı. |
-| [parçaları](#fragments-json-elements) |Meta verileri ayarlama parçaları olarak adlandırılan farklı parçalara öbekli. Her parçada başlangıç, süre, aralık sayısı ve olaylar vardır. |
+| version |Bu, Video API sürümüanlamına gelir. |
+| Zaman ölçeği |Videonun saniyesinde "Keneler". |
+| uzaklık |Bu zaman damgaları için zaman mahsup edilir. Video API'lerinin sürüm 1.0'ında bu her zaman 0 olacaktır. Desteklediğimiz gelecek senaryolarda bu değer değişebilir. |
+| genişlik, yükseklik |Çıkış video çerçevesinin piksel genişliği ve en yüksek katı.|
+| Framerate |Videodaki saniye başına kare hızı. |
+| [Parça](#fragments-json-elements) |Meta veriler, parça adı verilen farklı bölümlere ayrılır. Her parçada başlangıç, süre, aralık sayısı ve olaylar vardır. |
 
-### <a name="fragments-json-elements"></a>Parçaları JSON öğeleri
+### <a name="fragments-json-elements"></a>Parçaları JSON elemanları
 
 |Öğe|Açıklama|
 |---|---|
-| start |"Ticks." ilk olay başlangıç saati |
-| Süresi |Uzunluğu parçasında "ticks." |
-| index | (Yalnızca Azure Media Redactor için geçerlidir) geçerli olay çerçeve dizinini tanımlar. |
-| interval |Her olay girişi parçasında "ticks." içinde aralığı |
-| etkinlikler |Her bir olay algılandı ve bu süre içinde izlenen yüzleri içerir. Olayların bir dizidir. Dış dizi bir zaman aralığını temsil eder. İç dizi belirtilen noktada gerçekleşen 0 veya daha fazla olaydan oluşur. Bir boş köşeli ayraç [] yok yüz algılandı anlamına gelir. |
-| id |İzlenmekte olan yüz kimliği. Bu sayı, yanlışlıkla bir yüz algılanmayan hale gelirse değişebilir. Belirli bir kişiye genel video boyunca aynı Kimliğe sahip olmalıdır, ancak bu (kapatma, vb.) algılama algoritması sınırlamaları nedeniyle garanti edilemez. |
-| x, y |Sol üst tarafında X ve Y koordinatları sınırlayıcı kutu normalleştirilmiş bir ölçek 0.0 ile 1.0, yüz tanıma. <br/>-X ve Y koordinatları her zaman yatay olarak göreli bir dikey görüntü (veya baş aşağı, iOS söz konusu olduğunda) varsa, buna göre koordinatlar sırasını değiştirmek zorunda. |
-| Genişlik, yükseklik |0\.0 ile 1.0 normalleştirilmiş bir ölçek kümesinde genişlik ve yükseklik yüz sınırlayıcı kutu. |
-| facesDetected |Bu JSON sonuçları sonunda bulunan ve algoritma videonun sırasında algılanan yüzlerin sayısı özetler. Bir yüzü algılanmayan hale gelirse, yanlışlıkla kimlikleri sıfırlanabilir olmadığından (örneğin, yüz tanıma hemen görünür ekranı kapattıktan sağlanabilir), bu sayı her zaman true videoda yüzlerin sayısı eşit değil. |
+| start |"Keneler"deki ilk olayın başlangıç saati. |
+| süre |Parçanın uzunluğu, "keneler"de. |
+| dizin | (Yalnızca Azure Media Redactor için geçerlidir) geçerli olayın kare dizini tanımlar. |
+| interval |Parça içindeki her olay girişinin aralığı , "kene" olarak adlandırılır. |
+| etkinlikler |Her olay, bu süre içinde algılanan ve izlenen yüzleri içerir. Bu bir dizi olay. Dış dizi bir zaman aralığını temsil eder. İç dizi belirtilen noktada gerçekleşen 0 veya daha fazla olaydan oluşur. Boş bir parantez [] hiçbir yüz algılanmadı anlamına gelir. |
+| id |İzlenen yüzün kimliği. Bir yüz fark edilmediğinde bu sayı yanlışlıkla değişebilir. Belirli bir birey genel video boyunca aynı kİmliğe sahip olmalıdır, ancak algılama algoritmasındaki sınırlamalar (oklüzyon, vb.) nedeniyle bu garanti edilemez. |
+| x, y |0.0 ile 1.0 arasında normalleştirilmiş bir ölçekte yüz sınırlayıcı kutunun sol üst X ve Y koordinatları. <br/>-X ve Y koordinatları her zaman manzaraya göredir, bu nedenle bir portre videonuz varsa (veya iOS durumunda baş aşağı), koordinatları buna göre aktarmanız gerekir. |
+| genişlik, yükseklik |0,0 ile 1,0 arasında normalleştirilmiş bir ölçekte yüz sınırlayıcı kutunun genişliği ve yüksekliği. |
+| facesAlgılanan |Bu, JSON sonuçlarının sonunda bulunur ve algoritmanın video sırasında algılayan yüz sayısını özetler. Bir yüz fark edilmezse (örn. yüz ekrandan çıkarsa, uzağa bakarsa) yanlışlıkla sıfırlanabildiği için, bu sayı her zaman videodaki gerçek yüz sayısına eşit olmayabilir. |

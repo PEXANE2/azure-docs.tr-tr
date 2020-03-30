@@ -5,47 +5,47 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188320"
 ---
-Bu adımda, el ile yük devretme kümesi Yöneticisi'ni ve SQL Server Management Studio kullanılabilirlik grubu dinleyicisi oluşturun.
+Bu adımda, Failover Cluster Manager ve SQL Server Management Studio'da kullanılabilirlik grubu dinleyicisini el ile oluşturursunuz.
 
-1. Birincil çoğaltmasını barındıran düğümü yük devretme kümesi Yöneticisi'ni açın.
+1. Failover Cluster Manager'ı birincil yinelemeyi barındıran düğümden açın.
 
-2. Seçin **ağları** düğüm ve Not küme ağ adı. Bu ad, PowerShell betik $ClusterNetworkName değişkeninde kullanılır.
+2. **Ağlar** düğümünü seçin ve ardından küme ağ adını not edin. Bu ad, PowerShell komut dosyasındaki $ClusterNetworkName değişkeninde kullanılır.
 
-3. Küme adını genişletin ve ardından **rolleri**.
+3. Küme adını genişletin ve ardından **Görevler'i**tıklatın.
 
-4. İçinde **rolleri** bölmesinde, kullanılabilirlik grubunun adına sağ tıklayın ve ardından **kaynak Ekle** > **istemci erişim noktası**.
+4. **Roller** bölmesinde, kullanılabilirlik grubu adını sağ tıklatın ve sonra Kaynak > **İstemci Erişim Noktası** **Ekle'yi**seçin.
    
-    ![Kullanılabilirlik grubu için istemci erişim noktası Ekle](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
+    ![Kullanılabilirlik grubu için İstemci Erişim Noktası Ekle](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 
-5. İçinde **adı** kutusunda, bu yeni bir dinleyici için bir ad oluşturun, **sonraki** iki kez tıkladıktan sonra **son**.  
-    Dinleyici veya kaynağı çevrimiçi bu noktada getirmek değil.
+5. **Ad** kutusunda, bu yeni dinleyici için bir ad oluşturun, **İleri'yi** iki kez tıklatın ve sonra **Bitir'i**tıklatın.  
+    Bu noktada dinleyiciyi veya kaynağı çevrimiçi duruma getirmeyin.
 
-6. Tıklayın **kaynakları** sekmesine ve ardından yeni oluşturduğunuz istemci erişim noktası genişletin. 
-    Kümenizdeki her bir küme ağı için IP adresi kaynağı görüntülenir. Bu yalnızca Azure çözümünü ise, yalnızca bir IP adresi kaynağı görüntülenir.
+6. **Kaynaklar** sekmesini tıklatın ve ardından yeni oluşturduğunuz istemci erişim noktasını genişletin. 
+    Kümenizdeki her küme ağı için IP adresi kaynağı görüntülenir. Bu yalnızca Azure çözümüyse, yalnızca bir IP adresi kaynağı görüntülenir.
 
 7. Aşağıdakilerden birini yapın:
    
-   * Karma bir çözüm yapılandırmak için:
+   * Karma bir çözümü yapılandırmak için:
      
-        a. Şirket içi alt ağa karşılık gelen IP adresi kaynağını sağ tıklayın ve ardından **özellikleri**. Ağ adı ve IP adresi adı not edin.
+        a. Şirket içi alt ağınıza karşılık gelen IP adresi kaynağına sağ tıklayın ve ardından **Özellikler'i**seçin. IP adresi adını ve ağ adını not edin.
    
-        b. Seçin **statik IP adresi**kullanılmayan IP adresi atayın ve ardından **Tamam**.
+        b. **Statik IP Adresi'ni**seçin, kullanılmayan bir IP adresi atayın ve ardından **Tamam'ı**tıklatın.
  
-   * Yalnızca Azure çözümünü yapılandırmak için:
+   * Yalnızca Azure çözümlerini yapılandırmak için:
 
-        a. Azure, alt ağa karşılık gelen IP adresi kaynağını sağ tıklayın ve ardından **özellikleri**.
+        a. Azure alt ağınıza karşılık gelen IP adresi kaynağına sağ tıklayın ve ardından **Özellikler'i**seçin.
        
        > [!NOTE]
-       > Dinleyici çakışan bir IP adresi DHCP tarafından seçilen nedeniyle çevrimiçine alınamıyor. daha sonra başarısız olursa, bu Özellikler penceresinde geçerli bir statik IP adresi yapılandırabilirsiniz.
+       > Dinleyici daha sonra DHCP tarafından seçilen çakışan bir IP adresi nedeniyle çevrimiçi duruma gelmezse, bu özellikler penceresinde geçerli bir statik IP adresi yapılandırabilirsiniz.
        > 
        > 
 
-       b. Aynı **IP adresi** Özellikler penceresi, değişiklik **IP adresi adı**.  
-        Bu ad, PowerShell betiğini $IPResourceName değişkeninde kullanılır. Çözümünüz birden fazla Azure sanal ağları kapsıyorsa, her IP kaynağı için bu adımı yineleyin.
+       b. Aynı **IP Adresi** özellikleri **penceresinde, IP Adresi Adını**değiştirin.  
+        Bu ad PowerShell komut dosyasının $IPResourceName değişkeninde kullanılır. Çözümünüz birden çok Azure sanal abuna yayılıyorsa, her BIR IP kaynağı için bu adımı yineleyin.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici 'de ölçümleri Azure Relay | Microsoft Docs
-description: Bu makalede, Azure Relay durumunu izlemek için Azure Izleyici 'yi nasıl kullanabileceğiniz hakkında bilgi verilmektedir.
+title: Azure Monitör'de Azure Röle ölçümleri | Microsoft Dokümanlar
+description: Bu makalede, Azure Röle durumunu izlemek için Azure Monitor'u nasıl kullanabileceğiniz hakkında bilgi verilmektedir.
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -15,81 +15,81 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 159249e2c997e4c414127992b08a83b488281e46
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273128"
 ---
-# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Relay ölçümleri 
-Azure Relay ölçümler, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm verileri kümesiyle, geçiş kaynaklarınızın genel durumunu yalnızca ad alanı düzeyinde değil, aynı zamanda varlık düzeyinde değerlendirebilirsiniz. Bu istatistikler Azure Relay durumunu izlemenize yardımcı olduklarından önemli olabilir. Ölçümler, Azure desteğine başvurun gerek kalmadan kök neden sorunlarını da yardımcı olabilir.
+# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitör'de Azure Röle ölçümleri 
+Azure Röle ölçümleri, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm veri kümesiyle, Yalnızca ad alanı düzeyinde değil, varlık düzeyinde de Röle kaynaklarınızın genel durumunu değerlendirebilirsiniz. Azure Röle durumunu izlemenize yardımcı oldukları ndan, bu istatistikler önemli olabilir. Ölçümler, Azure desteğine başvurmaya gerek kalmadan kök neden sorunlarının giderilmesine de yardımcı olabilir.
 
-Azure İzleyici, çeşitli Azure Hizmetleri genelinde izleme için birleştirilmiş bir kullanıcı arabirimi sağlar. Daha fazla bilgi için bkz. [Microsoft Azure 'de izleme](../monitoring-and-diagnostics/monitoring-overview.md) ve GitHub 'da [.net örneği ile Azure izleyici ölçümlerini alma](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) .
+Azure Monitor, çeşitli Azure hizmetlerinde izleme için birleşik kullanıcı arabirimleri sağlar. Daha fazla bilgi için Microsoft [Azure'da İzleme](../monitoring-and-diagnostics/monitoring-overview.md) ve GitHub'da .NET örneği [içeren Azure Monitörünü Al ölçütlerine](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) bakın.
 
 > [!IMPORTANT]
-> Bu makale, WCF Geçişi değil, yalnızca Azure Relay Karma Bağlantılar özelliği için geçerlidir. 
+> Bu makale, WCF Relay için değil, yalnızca Azure Röle'nin Karma Bağlantılar özelliği için geçerlidir. 
 
 ## <a name="access-metrics"></a>Erişim ölçümleri
 
-Azure İzleyici ölçümlerine erişim birden çok yol sağlar. Ölçümlere [Azure Portal](https://portal.azure.com)aracılığıyla erişebilir veya Azure Izleyici API 'LERINI (REST ve .net) ve Işlem yönetimi paketi ve Event Hubs gibi analiz çözümlerini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici tarafından toplanan verileri izleme](../azure-monitor/platform/data-platform.md).
+Azure Monitor ölçümlere erişmek için birden çok yol sağlar. Azure [portalı](https://portal.azure.com)üzerinden ölçümlere erişebilir veya Azure Monitor API'lerini (REST ve .NET) ve Operasyon Yönetimi Paketi ve Etkinlik Hub'ları gibi çözüm çözümlerini kullanabilirsiniz. Daha fazla bilgi için azure [monitor tarafından toplanan verileri izleme](../azure-monitor/platform/data-platform.md)'ye bakın.
 
-Ölçümler, varsayılan olarak etkindir ve en son 30 Günün verilerini erişebilir. Uzun bir süre saklamak istiyorsanız ölçüm verileri bir Azure depolama hesabına arşivleyebilir. Bu, Azure Izleyici 'de [Tanılama ayarları](../azure-monitor/platform/diagnostic-settings.md) 'nda yapılandırılır.
+Ölçümler varsayılan olarak etkinleştirilir ve en son 30 günlük verilere erişebilirsiniz. Verileri daha uzun süre saklamanız gerekiyorsa, metrik verileri bir Azure Depolama hesabına arşivleyebilirsiniz. Bu, Azure Monitor'daki [tanılama ayarlarında](../azure-monitor/platform/diagnostic-settings.md) yapılandırılır.
 
-## <a name="access-metrics-in-the-portal"></a>Portalda erişim ölçümlerini
+## <a name="access-metrics-in-the-portal"></a>Portaldaki erişim ölçümleri
 
-[Azure Portal](https://portal.azure.com)ölçümleri zaman içinde izleyebilirsiniz. Aşağıdaki örnek, başarılı istekleri ve hesap düzeyinde gelen istekleri görüntülemek gösterilmektedir:
+[Azure portalında](https://portal.azure.com)ölçümleri zaman içinde izleyebilirsiniz. Aşağıdaki örnekte, hesap düzeyinde başarılı isteklerin ve gelen isteklerin nasıl görüntülenenedöneceği gösterilmektedir:
 
 ![][1]
 
-Ad alanı aracılığıyla doğrudan ölçümleri de erişebilirsiniz. Bunu yapmak için, ad alanınızı seçin ve ardından * * ölçümler * * öğesine tıklayın. 
+Ölçümlere doğrudan ad alanı üzerinden de erişebilirsiniz. Bunu yapmak için, ad alanınızı seçin ve ardından **Ölçüler **'yi tıklatın. 
 
-Boyutları destekleyen ölçümler için, istenen boyut değeri ile filtrelemeniz gerekir.
+Boyutları destekleyen ölçümler için, istenen boyut değerine filtre uygulamanız gerekir.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
-Ölçümleri kullanarak Azure İzleyici'de önizleme şu an ücretsizdir. Ölçüm verilerini alma, ek çözümleri kullanırsanız, ancak bu çözümler tarafından faturalandırılırsınız. Örneğin, ölçüm verileri bir Azure depolama hesabına arşivleme, Azure Depolama tarafından faturalandırılır. Ayrıca, ölçüm verilerini gelişmiş analizler için Azure Izleyici günlüklerine kadıysanız Azure Izleyici günlükleri tarafından da faturalandırılırsınız.
+Azure Monitor'da ölçümleri kullanmak, önizleme sırasında şu anda ücretsizdir. Ancak, ölçümler verilerini sindiren ek çözümler kullanırsanız, bu çözümler tarafından faturalandırılabilir. Örneğin, metrik verileri bir Azure Depolama hesabına arşivlerseniz Azure Depolama tarafından faturalandırılırsınız. Gelişmiş analizler için metrik verileri Azure Monitor günlüklerine aktarıyorsanız, Azure Monitor günlükleri tarafından faturalandırılırsınız.
 
-Aşağıdaki ölçümler size sistem hizmetinizin genel bakış sunar. 
+Aşağıdaki ölçümler, hizmetinizin durumu hakkında genel bir bakış sağlar. 
 
 > [!NOTE]
-> Farklı bir adla geçildiği size çeşitli ölçümleri kullanımdan. Bu, başvurularını güncelleştirmek gerektirebilir. "Kullanım dışı" anahtar sözcüğüyle işaretli ölçümleri, bundan sonra desteklenmeyecek.
+> Farklı bir ad altında taşındıkları için birkaç ölçümü küçümsüyoruz. Bu, başvurularınızı güncelleştirmenizi gerektirebilir. "Amortismana" anahtar kelimesi ile işaretlenmiş ölçümler ileriye dönük olarak desteklenmeyen.
 
-Azure İzleyici, tüm ölçüm değerleri dakikada gönderilir. Zaman ayrıntı düzeyi ölçüm değerleri sunulduğu zaman aralığını tanımlar. Tüm Azure Relay ölçümleri için desteklenen zaman aralığı 1 dakikadır.
+Tüm ölçüm değerleri her dakika Azure Monitor'a gönderilir. Zaman tanecikleri, ölçüm değerlerinin sunulduğu zaman aralığını tanımlar. Tüm Azure Röle ölçümleri için desteklenen zaman aralığı 1 dakikadır.
 
-## <a name="connection-metrics"></a>Bağlantı ölçümü
+## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm Adı | Açıklama |
+| Metrik Adı | Açıklama |
 | ------------------- | ----------------- |
-| ListenerConnections-başarılı  | Belirli bir süre içinde Azure Relay yapılan başarılı dinleyici bağlantısı sayısı. <br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|ListenerConnections-ClientError |Belirli bir süre boyunca dinleyici bağlantılarında istemci hatalarının sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|ListenerConnections-Sunucuhatası |Belirli bir süre boyunca dinleyici bağlantılarında sunucu hatalarının sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|SenderConnections-başarılı |Belirli bir süre içinde yapılan başarılı gönderici bağlantısı sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|SenderConnections-ClientError |Belirli bir süre boyunca gönderici bağlantılarında istemci hatalarının sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|SenderConnections-Sunucuhatası |Belirli bir süre boyunca gönderici bağlantılarında sunucu hatalarının sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|ListenerConnections-TotalRequests |Belirli bir süre içindeki dinleyici bağlantılarının toplam sayısı.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|SenderConnections-TotalRequests |Belirli bir süre içinde göndericiler tarafından yapılan bağlantı istekleri.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|ActiveConnection sayısı |Etkin bağlantı sayısı. Bu değer bir zaman noktası değeridir.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|ActiveListeners |Etkin dinleyicilerinin sayısı. Bu değer bir zaman noktası değeridir.<br/><br/> Birim: sayısı <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|Listenerdisconnect |Belirtilen bir süre içinde bağlantısı kesilen dinleyicilerinin sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: toplam <br/> Boyut: EntityName|
-|Gönderenin bağlantısı kesiliyor |Belirli bir süre içinde bağlantısı kesilen gönderici sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+| DinleyiciBağlantıları-Başarı  | Belirli bir dönemde Azure Relay'e yapılan başarılı dinleyici bağlantılarının sayısı. <br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|DinleyiciConnections-ClientError |Belirli bir dönemde dinleyici bağlantılarındaki istemci hatalarının sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|DinleyiciConnections-ServerError |Belirli bir dönemde dinleyici bağlantılarındaki sunucu hatalarının sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|GönderenConnections-Başarı |Belirli bir dönemde yapılan başarılı gönderen bağlantı sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|GönderenBağlantılar-İstemci Hatası |Gönderen bağlantılarındaki istemci hatalarının sayısı belirli bir dönemde.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|GönderenConnections-ServerError |Gönderen bağlantılarındaki sunucu hatalarının belirli bir dönemdeki sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|DinleyiciBağlantıları-TotalRequests |Belirli bir dönemdeki dinleyici bağlantılarının toplam sayısı.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|GönderenBağlantılar-Toplam İstekler |Gönderenler tarafından belirli bir süre içinde yapılan bağlantı istekleri.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|Aktif Bağlantılar |Etkin bağlantıların sayısı. Bu değer, zaman içinde bir değerdir.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|ActiveListeners |Aktif dinleyici sayısı. Bu değer, zaman içinde bir değerdir.<br/><br/> Birim: Sayma <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|Dinleyici Keser |Belirli bir dönemde bağlantısı kesilen dinleyici sayısı.<br/><br/> Birim: Bayt <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
+|Gönderen Keser |Belirli bir dönemde bağlantısı kesilen gönderenlerin sayısı.<br/><br/> Birim: Bayt <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Bellek kullanım ölçümleri
 
-| Ölçüm Adı | Açıklama |
+| Metrik Adı | Açıklama |
 | ------------------- | ----------------- |
-|BytesTransferred |Belirtilen bir süre içinde aktarılan bayt sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: toplam <br/> Boyut: EntityName|
+|BaytTransfer |Belirli bir süre içinde aktarılan bayt sayısı.<br/><br/> Birim: Bayt <br/> Toplama Türü: Toplam <br/> Boyut: EntityName|
 
-## <a name="metrics-dimensions"></a>Ölçümleri boyutları
+## <a name="metrics-dimensions"></a>Metrik boyutları
 
-Azure Relay, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Boyutları için ölçümlerinizi eklemek isteğe bağlıdır. Ölçümleri, boyutları eklemezseniz, ad alanı düzeyinde belirtilir. 
+Azure Röle, Azure Monitor'daki ölçümler için aşağıdaki boyutları destekler. Ölçümlerinize boyut ekleme isteğe bağlıdır. Boyutlar eklemezseniz, ölçümler ad alanı düzeyinde belirtilir. 
 
 |Boyut adı|Açıklama|
 | ------------------- | ----------------- |
-|EntityName| Azure Relay ad alanı altındaki mesajlaşma varlıklarını destekler.|
+|Varlıkadı| Azure Relay, ad alanı altında ileti varlıklarını destekler.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. [Azure izlemeye genel bakış](../monitoring-and-diagnostics/monitoring-overview.md).
+Azure [İzleme genel görünümüne](../monitoring-and-diagnostics/monitoring-overview.md)bakın.
 
 [1]: ./media/relay-metrics-azure-monitor/relay-monitor1.png
 

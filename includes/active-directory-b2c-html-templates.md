@@ -6,14 +6,14 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
 ms.openlocfilehash: d43b879057001d62ea72bd2e011ad52957d47470
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189046"
 ---
 ## <a name="sample-templates"></a>Örnek şablonlar
-UI özelleştirmesi için örnek şablonları buradan bulabilirsiniz:
+Kullanıcı Arabirimi özelleştirmesi için örnek şablonları burada bulabilirsiniz:
 
 ```bash
 git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
@@ -21,13 +21,13 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 
 Bu proje aşağıdaki şablonları içerir:
 - [Okyanus Mavisi](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
-- [Kurşun Grisi](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
+- [Kayrak Gri](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
 
 Örneği kullanmak için:
 
-1. Yerel makinenizde depoyu kopyalayın. `/ocean_blue` veya `/slate_gray`bir şablon klasörü seçin.
-1. Şablon klasörü ve `/assets` klasörü altındaki tüm dosyaları önceki bölümlerde açıklandığı gibi BLOB depolama alanına yükleyin.
-1. Sonra, `/ocean_blue` veya `/slate_gray`kökündeki her bir `\*.html` dosyasını açın, göreli URL 'lerin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'Leriyle değiştirin. Örnek:
+1. Yerel makinenizdeki repoyu klonla. Bir şablon `/ocean_blue` klasörü seçin veya `/slate_gray`.
+1. Şablon klasörü ve `/assets` klasöraltındaki tüm dosyaları önceki bölümlerde açıklandığı şekilde Blob depolama alanına yükleyin.
+1. Ardından, her `\*.html` dosyayı kökünde `/ocean_blue` `/slate_gray`açın veya, tüm göreli URL örneklerini adım 2'ye yüklediğiniz css, resim ve yazı tipi dosyalarının URL'leri ile değiştirin. Örnek:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
@@ -36,6 +36,6 @@ Bu proje aşağıdaki şablonları içerir:
     ```html
     <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
     ```
-1. `\*.html` dosyalarını kaydedin ve BLOB depolamaya yükleyin.
-1. Şimdi, daha önce belirtildiği gibi, HTML dosyanıza işaret eden ilkeyi değiştirin.
-1. Eksik yazı tiplerini, görüntüleri veya CSS 'yi görürseniz, uzantılar ilkesinde veya \*. html dosyalarında başvurularınızı kontrol edin.
+1. Dosyaları `\*.html` kaydedin ve Blob depolama alanına yükleyin.
+1. Şimdi, daha önce de belirtildiği gibi HTML dosyanızı işaret ederek ilkeyi değiştirin.
+1. Eksik yazı tipleri, resimler veya CSS görürseniz, uzantılar ilkesinde ve \*.html dosyalarında başvurularınızı kontrol edin.

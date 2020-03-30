@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory 'de arama etkinliği
-description: Bir dış kaynaktan bir değer aramak için arama etkinliğini nasıl kullanacağınızı öğrenin. Bu çıkışa, izleyen etkinlikler tarafından daha fazla başvuru yapılabilir.
+title: Azure Veri Fabrikası'nda arama etkinliği
+description: Harici bir kaynaktan bir değer aramak için Arama etkinliğini nasıl kullanacağınızı öğrenin. Bu çıktı, başarılı etkinliklerle daha da başvurulabilir.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440467"
 ---
-# <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
+# <a name="lookup-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda arama etkinliği
 
-Arama etkinliği, Azure Data Factory tarafından desteklenen herhangi bir veri kaynağından bir veri kümesi alabilir. Aşağıdaki senaryoda kullanın:
-- Nesne adını sabit kodlamak yerine, sonraki bir etkinlikte hangi nesnelerin üzerinde çalışacağını dinamik olarak belirleme. Bazı nesne örnekleri dosya ve tablolardır.
+Arama etkinliği, Azure Veri Fabrikası tarafından desteklenen herhangi bir veri kaynağından bir veri kümesi alabilir. Aşağıdaki senaryoda kullanın:
+- Nesne adını sert kodlamak yerine sonraki bir etkinlikte hangi nesnelerin üzerinde çalışacağını dinamik olarak belirleyin. Bazı nesne örnekleri dosya ve tablolardır.
 
-Arama etkinliği, bir yapılandırma dosyasının veya tablosunun içeriğini okur ve döndürür. Ayrıca, bir sorgu veya saklı yordam yürütmenin sonucunu döndürür. Arama etkinliğinin çıktısı, tek bir değer ise sonraki bir kopya veya dönüştürme etkinliğinde kullanılabilir. Çıktı bir öznitelik dizisi ise, ForEach etkinliğinde kullanılabilir.
+Arama etkinliği, yapılandırma dosyasının veya tablonun içeriğini okur ve döndürür. Ayrıca, bir sorgu veya depolanan yordamyürütme sonucu döndürür. Arama etkinliğinden çıktı, singleton değeriyse sonraki bir kopyalama veya dönüştürme etkinliğinde kullanılabilir. Çıktı, bir dizi öznitelik varsa ForEach etkinliğinde kullanılabilir.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Aşağıdaki veri kaynakları arama etkinliği için desteklenir. Arama etkinliği tarafından döndürülebilecek en büyük satır sayısı, en fazla 2 MB boyutunda 5.000. Şu anda, zaman aşımından önce arama etkinliğinin en uzun süresi bir saattir.
+Aşağıdaki veri kaynakları Arama etkinliği için desteklenir. Arama etkinliği tarafından döndürülebilen en büyük satır sayısı 5.000'dir ve boyutu 2 MB'a kadardır. Şu anda, zaman aramadan önce Arama etkinliği için en uzun süre bir saattir.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -53,23 +53,23 @@ Aşağıdaki veri kaynakları arama etkinliği için desteklenir. Arama etkinli�
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Ad | Açıklama | Tür | Gerekli mi?
+Adı | Açıklama | Tür | Gerekli mi?
 ---- | ----------- | ---- | --------
-veri kümesi | Arama için veri kümesi başvurusu sağlar. İlgili her bağlayıcı makalesinin **veri kümesi özellikleri** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Evet
-source | Kopyalama etkinliği kaynağıyla aynı olan veri kümesine özgü kaynak özelliklerini içerir. İlgili her bağlayıcı makalesinin **etkinlik özelliklerini kopyalama** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Evet
-firstRowOnly | Yalnızca ilk satırın mi yoksa tüm satırların mi döndürülüp döndürülmeyeceğini gösterir. | Boole | Hayır. Varsayılan: `true`.
+Dataset | Arama için veri kümesi başvurusu sağlar. İlgili her bağlayıcı makalesinde **Dataset özellikleri** bölümünden ayrıntılar alın. | Anahtar/değer çifti | Evet
+source | Veri kümesine özgü kaynak özellikleri içerir, Kopyalama Etkinliği kaynağıyla aynıdır. İlgili her bağlayıcı makalesinde **Etkinlik kopyalama özelliklerinden** ayrıntıları alın. | Anahtar/değer çifti | Evet
+ilkSatırSadece | Yalnızca ilk satırı mı yoksa tüm satırları mı döndüreceklerini gösterir. | Boole | Hayır. Varsayılan değer: `true`.
 
 > [!NOTE]
 > 
-> * **ByteArray** türüne sahip kaynak sütunları desteklenmez.
-> * **Yapı** veri kümesi tanımlarında desteklenmiyor. Metin biçimli dosyalar için, sütun adını sağlamak üzere üst bilgi satırını kullanın.
-> * Arama kaynağınız bir JSON dosyası ise, JSON nesnesinin yeniden şekillendirilmesi için `jsonPathDefinition` ayarı desteklenmez. Tüm nesneler alınacaktır.
+> * **ByteArray türüne** sahip kaynak sütunlar desteklenmez.
+> * **Yapı** veri kümesi tanımlarında desteklenmez. Metin biçimindeki dosyalar için sütun adını sağlamak için üstbilgi satırını kullanın.
+> * Arama kaynağınız bir JSON dosyasıysa, JSON nesnesini yeniden şekillendirme `jsonPathDefinition` ayarı desteklenmez. Tüm nesneler geri alınacaktır.
 
-## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Sonraki bir etkinliğin arama etkinliği sonucunu kullanın
+## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Sonraki bir etkinlikte Arama etkinliği sonucunu kullanma
 
-Arama sonucu, etkinlik çalıştırma sonucunun `output` bölümünde döndürülür.
+Arama sonucu, etkinlik çalıştırma `output` sonucunun bölümünde döndürülür.
 
-* **`firstRowOnly` `true` (varsayılan) olarak ayarlandığında**, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Arama sonucu sabit bir `firstRow` anahtarı altında. Sonraki etkinlikteki sonucu kullanmak için `@{activity('MyLookupActivity').output.firstRow.TableName}`örüntüsünün kullanın.
+* **(varsayılan) `true` olarak ayarlandığında, `firstRowOnly` **çıktı biçimi aşağıdaki kodda gösterildiği gibi olur. Arama sonucu sabit `firstRow` bir anahtar altındadır. Sonraki etkinlikte sonucu kullanmak için, '' nin `@{activity('MyLookupActivity').output.firstRow.TableName}`deseni kullanın.
 
     ```json
     {
@@ -81,7 +81,7 @@ Arama sonucu, etkinlik çalıştırma sonucunun `output` bölümünde döndürü
     }
     ```
 
-* **`firstRowOnly` `false`olarak ayarlandığında** , çıkış biçimi aşağıdaki kodda gösterildiği gibidir. `count` alan, kaç kaydın döndürüleceğini gösterir. Ayrıntılı değerler sabit bir `value` dizisi altında görüntülenir. Böyle bir durumda, arama etkinliğinin ardından bir [foreach etkinliği](control-flow-for-each-activity.md)gelir. `value` diziyi, `@activity('MyLookupActivity').output.value`modelini kullanarak ForEach etkinlik `items` alanına geçirirsiniz. `value` dizisindeki öğelere erişmek için şu sözdizimini kullanın: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. `@{activity('lookupActivity').output.value[0].tablename}` bunun bir örneğidir.
+* **Ne `firstRowOnly` zaman `false`ayarlanır **, çıkış biçimi aşağıdaki kodda gösterildiği gibi. Alan, `count` kaç kaydın döndürüldüğünü gösterir. Ayrıntılı değerler sabit `value` bir dizi altında görüntülenir. Böyle bir durumda, Arama etkinliği bir [Foreach etkinliği](control-flow-for-each-activity.md)tarafından takip edilir. Diziyi `value` ForEach etkinlik `items` alanına ' nın deseni kullanarak `@activity('MyLookupActivity').output.value`geçirirsiniz. Dizideki öğelere `value` erişmek için aşağıdaki sözdizimini kullanın: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. `@{activity('lookupActivity').output.value[0].tablename}` bunun bir örneğidir.
 
     ```json
     {
@@ -99,16 +99,16 @@ Arama sonucu, etkinlik çalıştırma sonucunun `output` bölümünde döndürü
     } 
     ```
 
-### <a name="copy-activity-example"></a>Kopyalama etkinliği örneği
-Bu örnekte, kopyalama etkinliği verileri Azure SQL veritabanı örneğiniz içindeki bir SQL tablosundan Azure Blob depolama alanına kopyalar. SQL tablosunun adı, blob depolamada bir JSON dosyasında depolanır. Arama etkinliği çalışma zamanında tablo adını arar. JSON bu yaklaşım kullanılarak dinamik olarak değiştirilir. İşlem hatlarını veya veri kümelerini yeniden dağıtmanız gerekmez. 
+### <a name="copy-activity-example"></a>Etkinlik'i kopyala örneği
+Bu örnekte, Etkinliği Kopyala, Azure SQL Veritabanı örneğinizdeki bir SQL tablosundaki verileri Azure Blob depolama alanına kopyalar. SQL tablosunun adı Blob depolamasındaki bir JSON dosyasında depolanır. Arama etkinliği çalışma zamanında tablo adını arar. JSON bu yaklaşım kullanılarak dinamik olarak değiştirilir. Ardışık hatları veya veri kümelerini yeniden dağıtmanız gerekmez. 
 
-Bu örnek yalnızca ilk satır için arama gösterir. Tüm satırları aramak ve sonuçları ForEach etkinliğiyle zincirlemek için [Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama](tutorial-bulk-copy.md)içindeki örneklere bakın.
+Bu örnek, yalnızca ilk satırı arar. Tüm satırları aramak ve ForEach etkinliğiyle sonuçları zincirlemek için, [Azure Veri Fabrikası'nı kullanarak birden çok tabloyu toplu olarak kopyala'daki](tutorial-bulk-copy.md)örnekleri görün.
 
 ### <a name="pipeline"></a>İşlem hattı
-Bu işlem hattı iki etkinlik içerir: arama ve kopyalama. 
+Bu ardışık işlem iki etkinlik içerir: Arama ve Kopya. 
 
-- Arama etkinliği, Azure Blob depolama alanındaki bir konuma başvuran **Lookupdataset**öğesini kullanacak şekilde yapılandırılmıştır. Arama etkinliği, SQL tablosunun adını bu konumdaki bir JSON dosyasından okur. 
-- Kopyalama etkinliği, SQL tablosunun adı olan arama etkinliğinin çıkışını kullanır. **SourceDataset** 'teki **TableName** özelliği, arama etkinliğinin çıktısını kullanacak şekilde yapılandırılmıştır. Kopyalama etkinliği, verileri SQL tablosundan Azure Blob depolama alanındaki bir konuma kopyalar. Konum **Sinkdataset** özelliği tarafından belirtilir. 
+- Arama etkinliği, Azure Blob depolama sındaki bir konuma atıfta bulunan **LookupDataset'i**kullanacak şekilde yapılandırılmıştır. Arama etkinliği, bu konumdaki bir JSON dosyasından SQL tablosunun adını okur. 
+- Copy Activity, SQL tablosunun adı olan Arama etkinliğinin çıktısını kullanır. **SourceDataset'teki** **tabloAdı** özelliği, Arama etkinliğinden çıkan çıktıyı kullanacak şekilde yapılandırılır. Etkinlik kopyalarını SQL tablosundan Azure Blob depolamasındaki bir konuma kopyalar. Konum, **SinkDataset** özelliği tarafından belirtilir. 
 
 ```json
 {
@@ -165,7 +165,7 @@ Bu işlem hattı iki etkinlik içerir: arama ve kopyalama.
 ```
 
 ### <a name="lookup-dataset"></a>Arama veri kümesi
-**Arama** veri kümesi, **AzureStorageLinkedService** türü tarafından belirtilen Azure depolama Arama klasöründeki **SourceTable. JSON** dosyasıdır. 
+**Arama** veri kümesi, **AzureStorageLinkedService** türütarafından belirtilen Azure Depolama arama klasöründeki **kaynak tablo.json** dosyasıdır. 
 
 ```json
 {
@@ -188,8 +188,8 @@ Bu işlem hattı iki etkinlik içerir: arama ve kopyalama.
 }
 ```
 
-### <a name="source-dataset-for-copy-activity"></a>Kopyalama etkinliği için **kaynak** veri kümesi
-**Kaynak** veri KÜMESI, SQL tablosunun adı olan arama etkinliğinin çıkışını kullanır. Kopyalama etkinliği, verileri bu SQL tablosundan Azure Blob depolama alanındaki bir konuma kopyalar. Konum, **Havuz** veri kümesi tarafından belirtilir. 
+### <a name="source-dataset-for-copy-activity"></a>Kopyalama Etkinliği için **kaynak** veri kümesi
+**Kaynak** veri kümesi, SQL tablosunun adı olan Arama etkinliğinin çıktısını kullanır. Etkinlik kopyalarını bu SQL tablosundan Azure Blob depolamasındaki bir konuma kopyalayın. Konum **lavabo** veri kümesi tarafından belirtilir. 
 
 ```json
 {
@@ -207,8 +207,8 @@ Bu işlem hattı iki etkinlik içerir: arama ve kopyalama.
 }
 ```
 
-### <a name="sink-dataset-for-copy-activity"></a>Kopyalama etkinliği için **Havuz** veri kümesi
-Kopyalama etkinliği, verileri SQL tablosundan Azure Storage 'daki **CSV** klasörü içindeki **filebylookup. csv** dosyasına kopyalar. Dosya, **AzureStorageLinkedService** özelliği tarafından belirtilir. 
+### <a name="sink-dataset-for-copy-activity"></a>Kopyalama Etkinliği için **veri kümesini batırın**
+Etkinlik kopyalarını SQL tablosundan Azure Depolama'daki **csv** klasöründeki **filebylookup.csv** dosyasına kopyalar. Dosya **AzureStorageLinkedService** özelliği tarafından belirtilir. 
 
 ```json
 {
@@ -231,7 +231,7 @@ Kopyalama etkinliği, verileri SQL tablosundan Azure Storage 'daki **CSV** klas�
 ```
 
 ### <a name="azure-storage-linked-service"></a>Azure Storage bağlı hizmeti
-Bu depolama hesabı, SQL tablolarının adlarıyla birlikte JSON dosyasını içerir. 
+Bu depolama hesabı, SQL tablolarının adlarını içeren JSON dosyasını içerir. 
 
 ```json
 {
@@ -246,7 +246,7 @@ Bu depolama hesabı, SQL tablolarının adlarıyla birlikte JSON dosyasını iç
 ```
 
 ### <a name="azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti
-Bu Azure SQL veritabanı örneği, blob depolamaya kopyalanacak verileri içerir. 
+Bu Azure SQL Veritabanı örneği Blob depolamasına kopyalanacak verileri içerir. 
 
 ```json
 {
@@ -261,7 +261,7 @@ Bu Azure SQL veritabanı örneği, blob depolamaya kopyalanacak verileri içerir
 }
 ```
 
-### <a name="sourcetablejson"></a>SourceTable. JSON
+### <a name="sourcetablejson"></a>sourcetable.json
 
 #### <a name="set-of-objects"></a>Nesne kümesi
 
@@ -291,19 +291,19 @@ Bu Azure SQL veritabanı örneği, blob depolamaya kopyalanacak verileri içerir
 ]
 ```
 
-## <a name="limitations-and-workarounds"></a>Sınırlamalar ve geçici çözümler
+## <a name="limitations-and-workarounds"></a>Sınırlamalar ve geçici geçici işler
 
-Arama etkinliğinin ve önerilen geçici çözümlerin bazı sınırlamaları aşağıda verilmiştir.
+Arama etkinliğinin bazı sınırlamaları ve önerilen geçici çözüm geçici çözüm.
 
 | Sınırlama | Geçici çözüm |
 |---|---|
-| Arama etkinliğinin en fazla 5.000 satırı ve en fazla 2 MB boyutu vardır. | Dış işlem hattının, en fazla satır veya boyutu aşmayacak verileri alan bir iç işlem hattı üzerinden yineleyen iki düzeyli bir işlem hattı tasarlayın. |
+| Arama etkinliği en fazla 5.000 satıra ve en fazla 2 MB boyutuna sahiptir. | Dış ardışık boru hattının iç bir ardışık alan üzerinde titreştiği ve en büyük satırları veya boyutu aşmayan verileri aldığı iki düzeyli bir ardışık hat lar tasarla. |
 | | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
+Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
 
-- [İşlem hattı yürütme etkinliği](control-flow-execute-pipeline-activity.md)
+- [Boru Hattı etkinliğini yürütme](control-flow-execute-pipeline-activity.md)
 - [ForEach etkinliği](control-flow-for-each-activity.md)
-- [GetMetadata etkinliği](control-flow-get-metadata-activity.md)
+- [Meta veri etkinliğini alın](control-flow-get-metadata-activity.md)
 - [Web etkinliği](control-flow-web-activity.md)

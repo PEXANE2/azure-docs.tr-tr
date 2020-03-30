@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: alkohli
 ms.openlocfilehash: 94fe099984fae77c65658d7085a8540ff4f2448b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188827"
 ---
-Bu bölümde, Azure dosyaları, Azure blok BLOB'ları ve veri kutusu ağ geçidi/veri kutusu Edge hizmetine uygunsa Azure sayfa blobları için Azure depolama hizmeti için sınırlar ve gerekli adlandırma kurallarını açıklar. Depolama sınırları dikkatle gözden geçirin ve tüm önerilere uyun.
+Bu bölümde, Veri Kutusu Ağ Geçidi/Veri Kutusu Kenarı hizmetinde geçerli olduğu gibi Azure Depolama hizmetinin sınırları ve Azure Dosyaları, Azure blok blob'ları ve Azure sayfa lekeleri için gerekli adlandırma kuralları açıklanmaktadır. Depolama sınırlarını dikkatle gözden geçirin ve tüm önerileri uygulayın.
 
-Azure depolama hizmet sınırları ve adlandırma paylaşımları, kapsayıcılar ve dosyalar için en iyi yöntemler üzerinde en son bilgiler için bkz:
+Azure depolama hizmeti sınırları ve paylaşımları, kapsayıcıları ve dosyaları adlandırmak için en iyi uygulamalar hakkında en son bilgiler için şu bilgilere gidin:
 
-- [Adlandırma ve kapsayıcıları başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Kapsayıcıları adlandırma ve başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
 - [Paylaşımları adlandırma ve onlara başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Blok blobları ve sayfa blob kuralları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Blobs ve sayfa blob kuralları blok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
-> Herhangi bir dosya ya da Azure depolama hizmeti limitlerin ya da Azure dosya/Blob adlandırma kurallarına uygun olmayan dizin varsa, ardından bu dosyaları veya dizinleri veri kutusu ağ geçidi/veri kutusu Edge hizmeti aracılığıyla Azure Depolama'ya alınan değil.
+> Azure Depolama hizmet sınırlarını aşan veya Azure Files/Blob adlandırma kurallarına uymayan dosyalar veya dizinler varsa, bu dosyalar veya dizinler Veri Kutusu Ağ Geçidi/Veri Kutusu Kenarı hizmeti aracılığıyla Azure Depolama alanına alınmaz.

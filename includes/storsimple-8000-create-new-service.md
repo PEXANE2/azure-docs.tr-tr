@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 980cbe17e982edb3aa72c3b58908f13a3d63a639
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76021051"
 ---
 #### <a name="to-create-a-new-service"></a>Yeni hizmet oluşturmak için
@@ -19,7 +19,7 @@ ms.locfileid: "76021051"
 
     ![StorSimple Cihaz Yöneticisi oluşturma](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    _StorSimple Fiziksel_ ifadesini aratın. **StorSimple Fiziksel Cihaz Serisi**‘ni seçip tıklayın ve **Oluştur**’a tıklayın. Alternatif olarak, Azure portalında **+** seçeneğine tıklayın ve **Depolama** altında **StorSimple Fiziksel Cihaz Serisi**’ne tıklayın.
+    _StorSimple Fiziksel_ ifadesini aratın. **StorSimple Fiziksel Cihaz Serisi**‘ni seçip tıklayın ve **Oluştur**’a tıklayın. Alternatif olarak, Azure portalında tıklatın **+** ve ardından **Depolama**altında, **StorSimple Physical Device Series'i**tıklatın.
 
     ![StorSimple Cihaz Yöneticisi oluşturma](./media/storsimple-8000-create-new-service/createssdevman11.png)
 

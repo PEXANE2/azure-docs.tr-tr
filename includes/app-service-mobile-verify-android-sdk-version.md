@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188886"
 ---
-Sürmekte olan geliştirme nedeniyle, Android Studio'da yüklü Android SDK'sı sürüm kodu sürümünde eşleşmeyebilir. Bu öğreticide başvurulan Android SDK 26, yazma sırasında en son sürümüdür. SDK'sının daha yeni sürümleri görünür ve kullanılabilir en son sürümünü kullanmanızı öneririz, sürüm numarasını artırmanızı.
+Devam eden geliştirme nedeniyle, Android Studio'da yüklü olan Android SDK sürümü koddaki sürümle eşleşmeyebilir. Bu öğretici başvurulan Android SDK sürüm 26, yazma sırasında en son. SDK'nın yeni sürümleri göründükçe sürüm numarası artabilir ve mevcut en son sürümü kullanmanızı öneririz.
 
-Sürüm uyuşmazlığı iki belirtileri şunlardır:
+Sürüm uyuşmazlığı iki belirtisi şunlardır:
 
-- Derleme veya projeyi yeniden derleyin, Gradle hata iletileri gibi alabilirsiniz `Gradle sync failed: Failed to find target with hash string 'android-XX'`.
-- Standart Android nesneleri çözümlenmelidir kod temelinde `import` ifadeleri hata iletileri oluşturur.
+- Projeyi oluşturduğunuzda veya yeniden oluşturduğunuzda, '' gibi `Gradle sync failed: Failed to find target with hash string 'android-XX'`Gradle hata iletileri alabilirsiniz.
+- `import` Bildirimlere dayalı olarak çözülmesi gereken koddaki standart Android nesneleri hata iletileri oluşturuyor olabilir.
 
-Bunlardan biri görünürse, Android, Android Studio'da yüklü SDK sürümü indirilen projedeki SDK hedefi eşleşmeyebilir. Sürümü doğrulamak için aşağıdaki değişiklikleri yapın:
+Bunlardan biri görünürse, Android Studio'da yüklü olan Android SDK sürümü indirilen projenin SDK hedefiyle eşleşmeyebilir. Sürümü doğrulamak için aşağıdaki değişiklikleri yapın:
 
-1. Android Studio'da **Araçları** > **Android** > **SDK Yöneticisi**. SDK platformunu en son sürümü yüklü değilse, daha sonra yüklemek için tıklayın. Sürüm numarasını not edin.
+1. Android Studio'da **Araçlar** > **Android** > **SDK Manager'ı**tıklatın. SDK Platformu'nun en son sürümünü yüklemediyseniz, yüklemek için tıklatın. Sürüm numarasını not edin.
 
-2. Üzerinde **Proje Gezgini** sekmesindeki **Gradle betiklerini**, dosyayı açma **build.gradle (modül: uygulama)** . Emin **compileSdkVersion** ve **targetSdkVersion** yüklü en son SDK sürümüne ayarlanır. `build.gradle` Şuna benzeyebilir:
+2. Project **Explorer** sekmesinde, **Gradle Scripts**altında, dosya **build.gradle (Modül: uygulama)** açın. **CompileSdkVersion** ve **targetSdkVersion'un** en son SDK sürümüne ayarlandığından emin olun. Şuna `build.gradle` benzeyebilir:
 
     ```gradle
     android {

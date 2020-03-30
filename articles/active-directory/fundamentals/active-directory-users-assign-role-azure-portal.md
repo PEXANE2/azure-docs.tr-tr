@@ -1,6 +1,6 @@
 ---
-title: Kullanıcılar - Azure Active Directory dizin rolleri atama | Microsoft Docs
-description: Azure Active Directory ile kullanıcılara yönetici ve yönetici olmayan rol atama hakkında yönergeler.
+title: Kullanıcılara dizin rolleri atama - Azure Etkin Dizini | Microsoft Dokümanlar
+description: Azure Active Directory'si olan kullanıcılara yönetici ve yönetici olmayan rollerin nasıl atanacağına ilişkin yönergeler.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,66 +14,66 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2df52969ea79e5d1af132aa82c2ec1ceedb92b82
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422934"
 ---
-# <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory ile kullanıcılara yönetici ve yönetici olmayan rol atayın
-Kuruluşunuzdaki bir kullanıcı Azure Active Directory (Azure AD) kaynakları yönetme izni gerekiyorsa, kullanıcının uygun bir rol Azure AD'de kullanıcının gerçekleştirme izni gereken eylemler temelinde atamanız gerekir.
+# <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Etkin Dizini olan kullanıcılara yönetici ve yönetici olmayan roller atama
+Kuruluşunuzdaki bir kullanıcının Azure Etkin Dizin (Azure AD) kaynaklarını yönetmek için izin alması gerekiyorsa, kullanıcının gerçekleştirmek için izin alması gereken eylemlere bağlı olarak kullanıcıya Azure AD'de uygun bir rol atamanız gerekir.
 
-Kullanılabilir roller hakkında daha fazla bilgi için bkz: [Azure Active Directory'de yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md). Kullanıcı ekleme hakkında daha fazla bilgi için bkz. [Azure Active Directory'ye yeni kullanıcı ekleme](add-users-azure-active-directory.md).
+Kullanılabilir roller hakkında daha fazla bilgi için Azure [Etkin Dizini'nde yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md)'ya bakın. Kullanıcı ekleme hakkında daha fazla bilgi için [bkz.](add-users-azure-active-directory.md)
 
-## <a name="assign-roles"></a>Rol atama
-Bir kullanıcıya Azure AD rolleri atamak için yaygın bir yolu açıktır **dizin rolü** sayfasında bir kullanıcı için.
+## <a name="assign-roles"></a>Rolleri atama
+Azure AD rollerini bir kullanıcıya atamanın yaygın bir yolu, bir kullanıcının **Dizin rol** sayfasındadır.
 
-Ayrıca, Privileged Identity Management (PIM) kullanarak rolleri atayabilirsiniz. PIM kullanma hakkında daha ayrıntılı bilgi için bkz: [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
+Ayrıcalıklı Kimlik Yönetimi 'ni (PIM) kullanarak da roller atayabilirsiniz. PIM'nin nasıl kullanılacağı hakkında daha ayrıntılı bilgi için [Ayrıcalıklı Kimlik Yönetimi'ne](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)bakın.
 
 ### <a name="to-assign-a-role-to-a-user"></a>Bir kullanıcıya rol atamak için
-1. [Azure Portal](https://portal.azure.com/) gidin ve Dizin Için bir genel yönetici hesabı kullanarak oturum açın. 
+1. [Azure portalına](https://portal.azure.com/) gidin ve dizin için Global yönetici hesabını kullanarak oturum açın. 
 
-2. Arama yapın ve **Azure Active Directory**seçin.
+2. **Azure Active Directory**'yi bulun ve seçin.
 
-      ![Azure Active Directory arama Azure portal](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
+      ![Azure Active Directory için Azure portalı araması](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
 
 
 3. **Kullanıcılar**’ı seçin.
 
-4. Rol atamasını almak için arama yapın ve kullanıcıyı seçin. Örneğin, _Alain Charon_.
+4. Rol atamasını alan kullanıcıyı arayın ve seçin. Örneğin, _Alain Charon._
 
-      ![Tüm kullanıcılar sayfası-kullanıcı seçin](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
+      ![Tüm kullanıcılar sayfası - kullanıcı seçin](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
-5. **Alain Charon profili** sayfasında **atanan roller**' i seçin.
+5. **Alain Charon - Profil** **sayfasında, Atanan rolleri**seçin.
 
-    **Alain Charon - dizin rolü** sayfası görüntülenir.
+    **Alain Charon - Dizin rol** sayfası görüntülenir.
 
-6. **Atama Ekle**' yi seçin, Alain atanacak rolü seçin (örneğin, _Uygulama Yöneticisi_) ve ardından **Seç**' i seçin.
+6. **Atama Ekle'yi**seçin, Alain'e atamak için rolü seçin (örneğin, _Uygulama yöneticisi),_ ve sonra **Seç'i**seçin.
 
-    ![Atanan roller sayfası-seçili rol gösteriliyor](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+    ![Atanan roller sayfası - seçili rolü gösterme](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
-    Alain Charon için uygulama Yönetici rolüne atanır ve göründüğü **Alain Charon - dizin rolü** sayfası.
+    Uygulama yöneticisi rolü Alain Charon'a atanır ve **Alain Charon - Dizin rol** sayfasında görünür.
 
 ## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
-Bir kullanıcıdan rol atamasını kaldırmanız gerekirse, ayrıca, bunu yapabilirsiniz **Alain Charon - dizin rolü** sayfası.
+Rol atamasını bir kullanıcıdan kaldırmanız gerekiyorsa, bunu **Alain Charon - Dizin rol** sayfasından da yapabilirsiniz.
 
-### <a name="to-remove-a-role-assignment-from-a-user"></a>Bir kullanıcıdan bir rol atamasını kaldırmak için
+### <a name="to-remove-a-role-assignment-from-a-user"></a>Bir rol atamasını kullanıcıdan kaldırmak için
 
-1. Seçin **Azure Active Directory**seçin **kullanıcılar**, arayın ve kaldırılan bir rol ataması alma kullanıcıyı seçin. Örneğin, _Alain Charon_.
+1. **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından rol atamasını kaldıran kullanıcıyı arayın ve seçin. Örneğin, _Alain Charon._
 
-2. **Atanan roller**' i seçin, **Uygulama Yöneticisi**' ni seçin ve **Atamayı Kaldır**' ı seçin.
+2. **Atanan rolleri**seçin, **Uygulama yöneticisini**seçin ve sonra **atamayı kaldır'ı**seçin.
 
-    ![Atanan roller sayfası ve seçili rol ve Kaldır seçeneği gösteriliyor](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+    ![Seçili rolü ve kaldırma seçeneğini gösteren atanmış roller sayfası](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
-    Uygulama Yöneticisi rolü Alain Charon ' kaldırılır ve artık göründüğü **Alain Charon - dizin rolü** sayfası.
+    Uygulama yöneticisi rolü Alain Charon kaldırılır ve artık **Alain Charon - Dizin rol** sayfasında görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Ekleme veya kullanıcıları Sil](add-users-azure-active-directory.md)
+- [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md)
 
 - [Profil bilgileri ekleme veya değiştirme](active-directory-users-profile-azure-portal.md)
 
 - [Başka bir dizinden konuk kullanıcılar ekleme](../b2b/what-is-b2b.md)
 
-Veya temsilci atayarak, ilkeleri kullanarak ve kullanıcı hesapları paylaşma gibi diğer kullanıcı yönetim görevlerini gerçekleştirebilirsiniz. Diğer kullanılabilir eylemler hakkında daha fazla bilgi için bkz: [Azure Active Directory kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).
+Veya temsilci atama, ilkeleri kullanma ve kullanıcı hesaplarını paylaşma gibi diğer kullanıcı yönetimi görevlerini gerçekleştirebilirsiniz. Diğer kullanılabilir eylemler hakkında daha fazla bilgi için [Azure Etkin Dizin kullanıcı yönetimi belgelerine](../users-groups-roles/index.yml)bakın.
 
 

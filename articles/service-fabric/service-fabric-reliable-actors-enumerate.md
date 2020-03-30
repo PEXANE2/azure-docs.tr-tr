@@ -1,19 +1,19 @@
 ---
-title: Azure Service Fabric aktörleri listeleme
-description: Örnekleri kullanarak bir Azure Service Fabric uygulamasındaki Reliable Actors ve bunların meta verilerinin numaralandırılması hakkında bilgi edinin.
+title: Azure Hizmet Kumaşı'nda aktörleri sayısala
+description: Örnekler kullanarak Bir Azure Hizmet Kumaşı uygulamasında Güvenilir Aktörlerin numaralandırması ve bunların meta verileri hakkında bilgi edinin.
 author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645608"
 ---
-# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors listeleme
-Reliable Actors hizmeti, bir istemcinin, hizmetin barındırdığı aktörlerin meta verilerini listeletmesi için izin verir. Aktör hizmeti bölümlenmiş bir durum bilgisi olmayan hizmet olduğundan, bölüm başına listeleme gerçekleştirilir. Her bölümde birçok aktör olabileceği için, numaralandırma bir disk belleğine alınmış sonuçlar kümesi olarak döndürülür. Sayfalar, tüm sayfalar okunana kadar üzerine işlenir. Aşağıdaki örnek, bir aktör hizmetinin bir bölümündeki tüm etkin aktörlerin listesinin nasıl oluşturulacağını gösterir:
+# <a name="enumerate-service-fabric-reliable-actors"></a>Omerate Servis Kumaş Güvenilir Aktörler
+Güvenilir Aktörler hizmeti, istemcinin hizmetin barındırdığı aktörler le ilgili meta verileri sayısala masına olanak tanır. Aktör hizmeti bölümlenmiş bir durum hizmeti olduğundan, numaralandırma bölüm başına gerçekleştirilir. Her bölüm çok sayıda aktör içerebileceğinden, numaralandırma sayfalı sonuçlar kümesi olarak döndürülür. Tüm sayfalar okunana kadar sayfalar döngüye alınır. Aşağıdaki örnek, bir aktör hizmetinin tek bir bölümündeki tüm etkin aktörlerin listesini nasıl oluşturulur:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -59,9 +59,9 @@ while (continuationToken != null);
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Aktör durumu yönetimi](service-fabric-reliable-actors-state-management.md)
+* [Aktör devlet yönetimi](service-fabric-reliable-actors-state-management.md)
 * [Aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md)
-* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Aktörler API başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET örnek kodu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

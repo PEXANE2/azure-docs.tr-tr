@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde Alt DIZE
-description: Azure Cosmos DB 'de SQL sistem işlevi alt DIZESI hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde SUBSTRING
+description: Azure Cosmos DB'de SQL sistem fonksiyonu SUBSTRING hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303707"
 ---
-# <a name="substring-azure-cosmos-db"></a>Alt DIZE (Azure Cosmos DB)
- Belirtilen karakterin sıfır tabanlı konumunda başlayan bir dize ifadesi bölümünü döndürür ve belirtilen uzunlukta veya dizenin sonuna kadar devam eder.  
+# <a name="substring-azure-cosmos-db"></a>SUBSTRING (Azure Cosmos DB)
+ Dize ifadesinin belirtilen karakter sıfır tabanlı konumdan başlayan bir bölümünü döndürür ve belirtilen uzunluğa veya dize sonuna kadar devam ederse.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -29,18 +29,18 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
    Bir dize ifadesidir.
   
 *num_expr1*  
-   , Başlangıç karakterini göstermek için sayısal bir ifadedir. 0 değeri, *str_expr*ilk karakteridir.
+   Başlangıç karakterini belirtmek için sayısal bir ifadedir. 0 değeri *str_expr*ilk karakteridir.
   
 *num_expr2*  
-   Döndürülecek *str_expr* en fazla karakter sayısını göstermek için sayısal bir ifadedir. Boş dize ile 0 veya daha az bir değer elde edin.
+   Döndürülecek en fazla *str_expr* karakter sayısını belirtmek için sayısal bir ifadedir. 0 veya daha az bir değer boş dize ile sonuçlanır.
 
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir dize ifadesi döndürür.  
+  Dize ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, "abc" alt 1 ve 1 karakter uzunluğunu başlangıç döndürür.  
+  Aşağıdaki örnek, 1'den başlayarak ve 1 karakter uzunluğunda "abc" alt dizesini döndürür.  
   
 ```sql
 SELECT SUBSTRING("abc", 1, 1) AS substring  
@@ -54,10 +54,10 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 
 ## <a name="remarks"></a>Açıklamalar
 
-Başlangıç konumu `0`ise, bu sistem işlevi bir [Aralık dizininden](index-policy.md#includeexclude-strategy) yarar olur.
+Başlangıç konumu . [range index](index-policy.md#includeexclude-strategy) `0`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

@@ -1,37 +1,37 @@
 ---
-title: Azure DevOps kullanarak işlev uygulama kodunu sürekli Güncelleştir
-description: Azure Işlevleri 'ni hedefleyen bir Azure DevOps işlem hattı ayarlamayı öğrenin.
+title: Azure DevOps'leri kullanarak işlev uygulama kodunu sürekli güncelleştirin
+description: Azure İşlevlerini hedefleyen bir Azure DevOps ardışık hattını nasıl ayarladığınızı öğrenin.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 5e2fc8fb06248e2cdad9067c56647da6d9626b50
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255763"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps kullanarak sürekli teslim
 
-[Azure Pipelines](/azure/devops/pipelines/)kullanarak işlevinizi bir Azure işlevleri uygulamasına otomatik olarak dağıtabilirsiniz.
+Azure [Ardışık Hatlar'ı](/azure/devops/pipelines/)kullanarak işlevinizi otomatik olarak bir Azure İşlevler uygulamasına dağıtabilirsiniz.
 
-İşlem hattınızı tanımlamaya yönelik iki seçeneğiniz vardır:
+Ardışık hattınızı tanımlamak için iki seçeneğiniz var:
 
-- **YAML dosyası**: BIR YAML dosyası ardışık düzeni tanımlar. Dosya bir yapı adımları bölümüne ve bir sürüm bölümüne sahip olabilir. YAML dosyası uygulamayla aynı depoda olmalıdır.
-- **Şablon**: Şablonlar, uygulamanızı oluşturan veya dağıtan, kullanıma hazırlanmış görevlerdir.
+- **YAML dosyası**: Bir YAML dosyası boru hattını açıklar. Dosyada yapı adımları bölümü ve sürüm bölümü olabilir. YAML dosyası uygulamayla aynı repoda olmalıdır.
+- **Şablon**: Şablonlar, uygulamanızı oluşturan veya dağıtan hazır görevlerdir.
 
-## <a name="yaml-based-pipeline"></a>YAML tabanlı işlem hattı
+## <a name="yaml-based-pipeline"></a>YAML tabanlı boru hattı
 
-YAML tabanlı bir işlem hattı oluşturmak için, önce uygulamanızı derleyin ve ardından uygulamayı dağıtın.
+YAML tabanlı bir boru hattı oluşturmak için önce uygulamanızı oluşturun ve ardından uygulamayı dağıtın.
 
-### <a name="build-your-app"></a>Uygulamanızı oluşturun
+### <a name="build-your-app"></a>Uygulamanızı oluşturma
 
-Uygulamanızı nasıl derleyebilirsiniz Azure Pipelines uygulamanızın programlama diline bağlıdır. Her dilin bir dağıtım yapıtı oluşturan belirli derleme adımları vardır. Bir dağıtım yapıtı, işlev uygulamanızı Azure 'da dağıtmak için kullanılır.
+Uygulamanızı Azure Ardışık Programlar'da nasıl oluşturduğunuz uygulamanızın programlama diline bağlıdır. Her dil, bir dağıtım artifakı oluşturan belirli yapı adımları vardır. İşlev uygulamanızı Azure'da dağıtmak için bir dağıtım arteişi kullanılır.
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-.NET uygulaması derlemek üzere bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz:
+Bir .NET uygulaması oluşturmak için bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz:
 
 ```yaml
 pool:
@@ -60,9 +60,9 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Bir JavaScript uygulaması derlemek için bir YAML dosyası oluşturmak üzere aşağıdaki örneği kullanabilirsiniz:
+Bir JavaScript uygulaması oluşturmak için bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz:
 
 ```yaml
 pool:
@@ -90,9 +90,9 @@ steps:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Belirli bir Python sürümü için uygulama derlemek üzere bir YAML dosyası oluşturmak üzere aşağıdaki örneklerden birini kullanabilirsiniz. Python yalnızca Linux üzerinde çalışan işlev uygulamaları için desteklenir.
+Belirli bir Python sürümü için bir uygulama oluşturmak için bir YAML dosyası oluşturmak için aşağıdaki örneklerden birini kullanabilirsiniz. Python yalnızca Linux üzerinde çalışan işlev uygulamaları için desteklenir.
 
-**Sürüm 3,7**
+**Sürüm 3.7**
 
 ```yaml
 pool:
@@ -121,7 +121,7 @@ steps:
     artifactName: 'drop'
 ```
 
-**Sürüm 3,6**
+**Sürüm 3.6**
 
 ```yaml
 pool:
@@ -150,9 +150,9 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
-Bir PowerShell uygulamasını paketlemek üzere bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz. PowerShell yalnızca Windows Azure Işlevleri için desteklenir.
+PowerShell uygulamasını paketlemek için bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz. PowerShell yalnızca Windows Azure İşlevleri için desteklenir.
 
 ```yaml
 pool:
@@ -172,13 +172,13 @@ steps:
 
 ---
 
-### <a name="deploy-your-app"></a>Uygulamanızı dağıtın
+### <a name="deploy-your-app"></a>Uygulamanızı dağıtma
 
-Barındırma işletim sistemine bağlı olarak, YAML dosyanıza aşağıdaki YAML örneklerinden birini eklemeniz gerekir.
+Barındırma işletim sistemi bağlı olarak, YAML dosyanıza aşağıdaki YAML örneklerinden birini eklemeniz gerekir.
 
-#### <a name="windows-function-app"></a>Windows işlev uygulaması
+#### <a name="windows-function-app"></a>Windows fonksiyon uygulaması
 
-Bir Windows işlev uygulamasını dağıtmak için aşağıdaki kod parçacığını kullanabilirsiniz:
+Bir Windows işlev uygulaması dağıtmak için aşağıdaki snippet'i kullanabilirsiniz:
 
 ```yaml
 steps:
@@ -193,9 +193,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux işlev uygulaması
+#### <a name="linux-function-app"></a>Linux fonksiyon uygulaması
 
-Bir Linux işlev uygulamasını dağıtmak için aşağıdaki kod parçacığını kullanabilirsiniz:
+Bir Linux işlev uygulaması dağıtmak için aşağıdaki snippet'i kullanabilirsiniz:
 
 ```yaml
 steps:
@@ -211,61 +211,61 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-## <a name="template-based-pipeline"></a>Şablon tabanlı işlem hattı
+## <a name="template-based-pipeline"></a>Şablon tabanlı ardışık lık
 
-Azure DevOps 'daki şablonlar, bir uygulamayı oluşturan veya dağıtan önceden tanımlanmış görev gruplarıdır.
+Azure DevOps'teki şablonlar, bir uygulama oluşturan veya dağıtan önceden tanımlanmış görev gruplarıdır.
 
-### <a name="build-your-app"></a>Uygulamanızı oluşturun
+### <a name="build-your-app"></a>Uygulamanızı oluşturma
 
-Uygulamanızı nasıl derleyebilirsiniz Azure Pipelines uygulamanızın programlama diline bağlıdır. Her dilin bir dağıtım yapıtı oluşturan belirli derleme adımları vardır. Azure 'da işlev uygulamanızı güncelleştirmek için bir dağıtım yapıtı kullanılır.
+Uygulamanızı Azure Ardışık Programlar'da nasıl oluşturduğunuz uygulamanızın programlama diline bağlıdır. Her dil, bir dağıtım artifakı oluşturan belirli yapı adımları vardır. Azure'daki işlev uygulamanızı güncelleştirmek için bir dağıtım yapı kullanılır.
 
-Yerleşik yapı şablonlarını kullanmak için yeni bir derleme işlem hattı oluşturduğunuzda, tasarımcı şablonlarını kullanarak bir işlem hattı oluşturmak için **Klasik düzenleyiciyi kullan** ' ı seçin.
+Yerleşik yapı şablonlarını kullanmak için, yeni bir yapı denetim hattı oluşturduğunuzda, tasarımcı şablonlarını kullanarak bir ardışık yol üzerinde yardımcı oluşturmak için **klasik düzenleyiciyi kullanın'ı** seçin.
 
-![Azure Pipelines klasik düzenleyiciyi seçin](media/functions-how-to-azure-devops/classic-editor.png)
+![Azure Ardışık İşleri klasik düzenleyicisini seçin](media/functions-how-to-azure-devops/classic-editor.png)
 
-Kodunuzun kaynağını yapılandırdıktan sonra, Azure Işlevleri derleme şablonları ' nı arayın. Uygulama dilinizle eşleşen şablonu seçin.
+Kodunuzu yapılandırdıktan sonra Azure İşlevleri şablonları oluşturun. Uygulama dilinize uyan şablonu seçin.
 
-![Azure Işlevleri derleme şablonu seçin](media/functions-how-to-azure-devops/build-templates.png)
+![Azure İşlevler oluşturma şablonu seçin](media/functions-how-to-azure-devops/build-templates.png)
 
-Bazı durumlarda, yapı yapıtları belirli bir klasör yapısına sahiptir. **Yolları arşivlemek için kök klasör adını** seçin onay kutusunu seçmeniz gerekebilir.
+Bazı durumlarda yapı yapılarının belirli bir klasör yapısı vardır. **Yolları arşivlemek için Prepend kök klasör adını** seçmeniz gerekebilir.
 
-![Kök klasör adını sonuna eklenecek seçenek](media/functions-how-to-azure-devops/prepend-root-folder.png)
+![Kök klasör adını hazırlama seçeneği](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
 #### <a name="javascript-apps"></a>JavaScript uygulamaları
 
-JavaScript uygulamanızın Windows yerel modüllerine bağımlılığı varsa, aracı havuzu sürümünü **BARıNDıRıLAN VS2017**olarak güncelleştirmeniz gerekir.
+JavaScript uygulamanızın Windows yerel modüllerine bağımlılığı varsa, aracı havuzu sürümünü **Hosted VS2017**olarak güncelleştirmeniz gerekir.
 
-![Aracı havuzu sürümünü Güncelleştir](media/functions-how-to-azure-devops/change-agent.png)
+![Aracı havuzu sürümünü güncelleştirme](media/functions-how-to-azure-devops/change-agent.png)
 
-### <a name="deploy-your-app"></a>Uygulamanızı dağıtın
+### <a name="deploy-your-app"></a>Uygulamanızı dağıtma
 
-Yeni bir yayın işlem hattı oluşturduğunuzda, Azure Işlevleri yayın şablonu ' nu arayın.
+Yeni bir sürüm ardışık alanı oluşturduğunuzda, Azure İşlevleri sürüm şablonunu arayın.
 
-![Azure Işlevleri sürüm şablonunu arayın](media/functions-how-to-azure-devops/release-template.png)
+![Azure İşlevleri sürüm şablonunu arama](media/functions-how-to-azure-devops/release-template.png)
 
-Dağıtım yuvasına dağıtım, yayın şablonunda desteklenmez.
+Dağıtım yuvasına dağıtım, sürüm şablonunda desteklenmez.
 
-## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Azure CLı kullanarak derleme işlem hattı oluşturma
+## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Azure CLI'yi kullanarak yapı ardışık yapısı oluşturma
 
-Azure 'da bir derleme işlem hattı oluşturmak için `az functionapp devops-pipeline create` [komutunu](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)kullanın. Derleme işlem hattı, deponuzda yapılan tüm kod değişikliklerini derlemek ve serbest bırakmak için oluşturulur. Bu komut, derleme ve yayın işlem hattını tanımlayan yeni bir YAML dosyası oluşturur ve sonra deponuzda kaydeder. Bu komutun önkoşulları, kodunuzun konumuna bağlıdır.
+Azure'da yapı ardışık bir `az functionapp devops-pipeline create` yapı oluşturmak için [komutu](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)kullanın. Yapı ardışık hattı, repo'nuzda yapılan kod değişikliklerini oluşturmak ve serbest bırakmak için oluşturulur. Komut, yapı ve sürüm ardışık hattını tanımlayan ve sonra repo'nuza adatan yeni bir YAML dosyası oluşturur. Bu komutun ön koşulları kodunuzun konumuna bağlıdır.
 
-- Kodunuz GitHub 'da ise:
-
-    - Aboneliğiniz için **yazma** izinleriniz olmalıdır.
-
-    - Azure DevOps 'da proje yöneticisi olmanız gerekir.
-
-    - Yeterli izinlere sahip bir GitHub kişisel erişim belirteci (PAT) oluşturmak için izinleriniz olmalıdır. Daha fazla bilgi için bkz [. GITHUB Pat izin gereksinimleri.](https://aka.ms/azure-devops-source-repos)
-
-    - Otomatik olarak oluşturulan YAML dosyasını yürütmek için GitHub deponuzdaki Ana dala yürütmek için izinleriniz olmalıdır.
-
-- Kodunuz Azure Repos:
+- Kodunuz GitHub'daysa:
 
     - Aboneliğiniz için **yazma** izinleriniz olmalıdır.
 
-    - Azure DevOps 'da proje yöneticisi olmanız gerekir.
+    - Azure DevOps'te proje yöneticisi olmalısınız.
+
+    - Yeterli izinlere sahip bir GitHub kişisel erişim jetonu (PAT) oluşturmak için izinlere sahip olmalısınız. Daha fazla bilgi için [GitHub PAT izin gereksinimlerine bakın.](https://aka.ms/azure-devops-source-repos)
+
+    - Otomatik olarak oluşturulmuş YAML dosyasını işleyebilmeniz için GitHub deponuzdaki ana şubeye bağlanmak için izinleriniz olmalıdır.
+
+- Kodunuz Azure Deposu'ndaysa:
+
+    - Aboneliğiniz için **yazma** izinleriniz olmalıdır.
+
+    - Azure DevOps'te proje yöneticisi olmalısınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure işlevlerine genel bakış](functions-overview.md)konusunu gözden geçirin.
-- [Azure DevOps 'a genel bakış](/azure/devops/pipelines/)konusunu inceleyin.
+- Azure [İşlevleri genel görünümünü](functions-overview.md)gözden geçirin.
+- Azure [DevOps genel görünümünü](/azure/devops/pipelines/)inceleyin.

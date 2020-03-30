@@ -9,21 +9,21 @@ ms.date: 07/17/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188585"
 ---
-Diskleri sevkiyat sonra dönmek **içeri/dışarı aktarma** sayfasında Azure portalı. 
+Diskleri sevk ettikten sonra Azure portalındaki **İçe/Dışa Aktar** sayfasına dönün. 
 
 > [!IMPORTANT] 
-> İzleme numarası 2 hafta içinde iş oluşturma güncelleştirilmezse, işin süresi dolar. 
+> İzleme numarası, iş oluşturuldundan sonraki 2 hafta içinde güncelleştirimezse, işin süresi dolur. 
 
-Takip numarasını güncelleştirmek için aşağıdaki adımları gerçekleştirin.
+İzleme numarasını güncelleştirmek için aşağıdaki adımları gerçekleştirin.
  
-1. Seçin ve iş'e tıklayın.
-2. Tıklayın **güncelleştirme iş durumu ve sürücüleri gönderilir ve sonra izleme bilgilerinin**. 
-3. Karşı onay kutusunu işaretleyin **sevk edildi olarak işaretle**.
-4. Sağlamak **taşıyıcı** ve **izleme numarası**.
-5. Portal panosunda iş ilerleme durumunu izleyin. Her iş durumu açıklaması için Git [, iş durumunu görüntülemek](../articles/storage/common/storage-import-export-view-drive-status.md).
+1. İşi seçin ve tıklatın.
+2. **Sürücüler gönderildikten sonra iş durumunu ve izleme bilgilerini güncelleştir'i**tıklatın. 
+3. **Sevk edilirken İşaret'e**karşı onay kutusunu seçin.
+4. **Taşıyıcı** ve **Takip numarasını**sağlayın.
+5. Portal panosundaki iş ilerlemesini izleyin. Her iş durumunun açıklaması [için, iş durumunuzu görüntüleyin.](../articles/storage/common/storage-import-export-view-drive-status.md)

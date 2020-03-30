@@ -1,6 +1,6 @@
 ---
-title: Visual Studio için R Araçları Azure HDInsight 'tan iş gönderme
-description: R işlerini yerel Visual Studio makinenizden bir HDInsight kümesine gönderme.
+title: Visual Studio için R Tools'tan iş gönderme - Azure HDInsight
+description: Yerel Visual Studio makinenizden Bir HDInsight kümesine R işlerini gönderin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,66 +9,66 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435262"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Visual Studio için R Araçları’ndan iş gönderme
 
-[Visual Studio için R araçları](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (rtvs), hem [Visual Studio 2017](https://www.visualstudio.com/downloads/), hem de Visual [Studio 2015 güncelleştirme 3](https://go.microsoft.com/fwlink/?LinkId=691129) veya üzeri topluluk (ücretsiz), Professional ve Enterprise sürümleri için ücretsiz, açık kaynaklı bir uzantıdır. RTVS, [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)için kullanılamaz.
+[R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), Visual Studio [2017 ve Visual Studio 2015](https://www.visualstudio.com/downloads/) [Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) veya üzeri sürümler için Topluluk (ücretsiz), Profesyonel ve Kurumsal sürümleri için ücretsiz, açık kaynak uzantısıdır. RTVS [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)için kullanılamaz.
 
-RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (kod tamamlama) gibi araçlar sunarak r iş akışınızı geliştirir, ggplot2 ve Ggviz, [r Code hata ayıklama](https://docs.microsoft.com/visualstudio/rtvs/debugging)gibi r kitaplıkları aracılığıyla [görselleştirme çizmektedir](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) .
+RTVS, [R Interactive penceresi](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), intellisense (kod tamamlama), ggplot2 ve ggviz, R kodu hata [ayıklama](https://docs.microsoft.com/visualstudio/rtvs/debugging)ve daha fazlası gibi R kitaplıkları aracılığıyla [görselleştirme çizimi](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) gibi araçlar sunarak R iş akışınızı artırır.
 
-## <a name="set-up-your-environment"></a>Ortamınızı kurma
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
-1. [Visual Studio için R araçları](/visualstudio/rtvs/installing-r-tools-for-visual-studio)'i yükler.
+1. [Visual Studio için R Araçlarını yükleyin.](/visualstudio/rtvs/installing-r-tools-for-visual-studio)
 
-    ![Visual Studio 2017 ' de RTVS 'yi yükleme](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
+    ![Visual Studio 2017'de RTV'lerin kurulumu](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. *Veri bilimi ve analitik uygulamalar* iş yükünü seçin, ardından **r dil desteğini**, **r geliştirmesi için çalışma zamanı desteğini**ve **Microsoft R Client** seçenekleri seçin.
+2. Veri *bilimi ve analitik uygulamalar* iş yükünü seçin, ardından **R dil desteği,** **R geliştirme için Runtime desteği**ve Microsoft R **İstemci** seçeneklerini seçin.
 
 3. SSH kimlik doğrulaması için ortak ve özel anahtarlara sahip olmanız gerekir.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Makinenize [ml Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) . ML Server, [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) ve `RxSpark` işlevlerini sağlar.
+4. ML [Server'ı](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) makinenize yükleyin. ML Server [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) ve `RxSpark` işlevleri sağlar.
 
-5. Yerel istemcinizden HDInsight kümenize `RevoScaleR` işlevlerini çalıştırmak için bir işlem bağlamı sağlamak üzere [Putty](https://www.putty.org/) ' i yükle.
+5. Yerel istemcinizden HDInsight kümenize işlevleri `RevoScaleR` çalıştırmak için bir bilgi bağlamı sağlamak için [PuTTY'yi](https://www.putty.org/) yükleyin.
 
-6. R araçları için çalışma alanınız için yeni bir düzen sağlayan Visual Studio ortamınıza Veri Bilimi Ayarları uygulama seçeneğiniz vardır.
-   1. Geçerli Visual Studio ayarlarınızı kaydetmek için **araçlar > içeri ve dışarı aktarma ayarları** komutunu kullanın, ardından **Seçili ortam ayarlarını dışarı aktar** ' ı seçin ve bir dosya adı belirtin. Bu ayarları geri yüklemek için aynı komutu kullanın ve **Seçili ortam ayarlarını Içeri aktar**' ı seçin.
+6. Veri Bilimi Ayarlarını, R araçları için çalışma alanınız için yeni bir düzen sağlayan Visual Studio ortamınıza uygulama seçeneğiniz vardır.
+   1. Geçerli Visual Studio ayarlarınızı kaydetmek **için, Araçlar > Alma ve Dışa Aktarma Ayarları** komutunu kullanın, ardından **seçili ortam ayarlarını dışa** aktar'ı seçin ve bir dosya adı belirtin. Bu ayarları geri yüklemek için aynı komutu kullanın ve **seçili ortam ayarlarını içe aktar'ı**seçin.
 
-   2. **R araçları** menü öğesine gidin ve **veri bilimi ayarları..** . seçeneğini belirleyin.
+   2. **R Tools** menü öğesine gidin ve ardından Veri **Bilimi Ayarları'nı seçin...**.
 
        ![Visual Studio Veri Bilimi Ayarları](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
-      > 1\. adımdaki yaklaşımı kullanarak, **veri bilimi ayarları** komutunu tekrarlamak yerine kişiselleştirilmiş veri bilimcu düzeninizi de kaydedebilir ve geri yükleyebilirsiniz.
+      > Adım 1'deki yaklaşımı kullanarak, **Veri Bilimi Ayarları** komutunu yinelemek yerine kişiselleştirilmiş veri bilimci düzeninizi kaydedebilir ve geri yükleyebilirsiniz.
 
 ## <a name="execute-local-r-methods"></a>Yerel R yöntemlerini yürütme
 
 1. HDInsight ML Hizmetleri kümenizi oluşturun.
-2. [Rtvs uzantısını](https://docs.microsoft.com/visualstudio/rtvs/installation)yükler.
-3. [Örnek ZIP dosyasını](https://github.com/Microsoft/RTVS-docs/archive/master.zip)indirin.
-4. Visual Studio 'da çözümü başlatmak için `examples/Examples.sln` açın.
-5. `1-Getting Started with R.R` dosyasını `A first look at R` çözüm klasöründe açın.
-6. Dosyanın en üstünden başlayarak, her satırı bir kez R Etkileşim penceresine göndermek için CTRL + ENTER tuşlarına basın. Bazı satırlar paketleri yükledikleri sürece biraz zaman alabilir.
-    * Alternatif olarak, R dosyasındaki (CTRL + A) tüm satırları seçebilir, sonra tümünü yürütebilir (CTRL + ENTER) veya araç çubuğunda etkileşimli Yürüt simgesini seçebilirsiniz.
+2. [RTVS uzantısını](https://docs.microsoft.com/visualstudio/rtvs/installation)yükleyin.
+3. Örnekleri [zip dosyası](https://github.com/Microsoft/RTVS-docs/archive/master.zip)indirin.
+4. Visual `examples/Examples.sln` Studio'da çözümü başlatmak için açın.
+5. Dosyayı `1-Getting Started with R.R` çözüm `A first look at R` klasöründe açın.
+6. Dosyanın üst kısmından başlayarak, her satırı teker teker R Interactive penceresine göndermek için Ctrl+Enter tuşuna basın. Bazı satırların paketleri yüklemesi biraz zaman alabilir.
+    * Alternatif olarak, R dosyasındaki (Ctrl+A) tüm satırları seçebilir, ardından tümünü çalıştırabilir (Ctrl+Enter) veya araç çubuğundaki Etkileşimli Yürüt simgesini seçebilirsiniz.
 
-        ![Visual Studio yürütme etkileşimli](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Visual Studio interaktif yürütmek](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
-7. Betikteki tüm satırları çalıştırdıktan sonra şuna benzer bir çıktı görmeniz gerekir:
+7. Komut dosyasındaki tüm satırları çalıştırdıktan sonra, buna benzer bir çıktı görmeniz gerekir:
 
     ![Visual Studio çalışma alanı R araçları](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Bir HDInsight ML Hizmetleri kümesine iş gönderme
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>İşlerini HDInsight ML Hizmetleri kümesine gönderme
 
-PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microsoft R Client kullanarak, yerel istemcinizden HDInsight kümenize dağıtılmış `RevoScaleR` işlevleri çalıştıracak bir işlem bağlamı oluşturabilirsiniz. İşlem bağlamını oluşturmak için `RxSpark` kullanın, Kullanıcı adınızı, Apache Hadoop kümesinin Edge düğümünü, SSH anahtarlarını ve benzerlerini belirtin.
+PuTTY ile donatılmış bir Windows bilgisayarından microsoft ML Server/Microsoft R Client kullanarak, yerel `RevoScaleR` istemcinizden HDInsight kümenize dağıtılmış işlevleri çalıştıracak bir bilgi işlem bağlamı oluşturabilirsiniz. Kullanıcı `RxSpark` adınızı, Apache Hadoop kümesinin kenar düğümünüzü, SSH anahtarlarını vb. belirterek bilgi işlem bağlamını oluşturmak için kullanın.
 
-1. HDInsight üzerindeki ML Hizmetleri kenar düğümü adresi, `CLUSTERNAME` ML Hizmetleri kümenizin adıdır `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+1. HDInsight'taki ML Hizmetleri kenar `CLUSTERNAME-ed-ssh.azurehdinsight.net` düğümü `CLUSTERNAME` adresi, ML Hizmetleri kümenizin adıdır.
 
-1. Aşağıdaki kodu Visual Studio 'daki R Etkileşim penceresine yapıştırarak, kurulum değişkenlerinin değerlerini ortamınızla eşleşecek şekilde değiştirerek.
+1. Aşağıdaki kodu Visual Studio'daki R Interactive penceresine yapıştırarak kurulum değişkenlerinin değerlerini ortamınızla eşleşecek şekilde değiştirin.
 
     ```R
     # Setup variables that connect the compute context to your HDInsight cluster
@@ -96,9 +96,9 @@ PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microso
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![Apache Spark, bağlamı ayarlama](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![bağlamı ayarlayarak apache kıvılcım](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
-1. R Etkileşim penceresinde aşağıdaki komutları yürütün:
+1. R Interactive penceresinde aşağıdaki komutları uygulayın:
 
     ```R
     rxHadoopCommand("version") # should return version information
@@ -108,24 +108,24 @@ PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microso
 
     Aşağıdakine benzer bir çıktı görmeniz gerekir:
 
-    Başarılı ![RX komutu yürütme](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) a
-1. `rxHadoopCopy` `people.json` dosyasını örnek veri klasöründen yeni oluşturulan `/user/RevoShare/newUser` klasörüne başarıyla kopyalamadığını doğrulayın:
+    ![Başarılı rx](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) komut yürütme a
+1. Dosyanın `rxHadoopCopy` `people.json` örnek veri klasöründen yeni oluşturulan `/user/RevoShare/newUser` klasöre başarıyla kopyaladığını doğrulayın:
 
-    1. Azure 'daki HDInsight ML Hizmetleri kümeniz bölmesinden, sol taraftaki menüden **depolama hesapları** ' nı seçin.
+    1. Azure'daki HDInsight ML Hizmetleri küme bölmesinizden, sol menüden **Depolama hesaplarını** seçin.
 
-        ![Azure HDInsight depolama hesapları](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Azure HDInsight Depolama hesapları](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
-    2. Kümenizin varsayılan depolama hesabını seçin ve kapsayıcı/dizin adı ' nı aklınızda yapın.
+    2. Kapsayıcı/dizin adını not ederek kümenizin varsayılan depolama hesabını seçin.
 
-    3. Depolama hesabı bölmesinizdeki sol taraftaki menüden **kapsayıcılar** ' ı seçin.
+    3. Depolama hesabı bölmenizdeki sol menüden **Kapsayıcılar'ı** seçin.
 
-        ![Azure HDInsight depolama kapsayıcıları](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Azure HDInsight Depolama kapsayıcıları](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir*' i ve ardından **Newuser**' ı seçin. `people.json` dosyası `newUser` klasöründe görüntülenmelidir.
+    4. Kümenizin kapsayıcı adını seçin, **kullanıcı** klasörüne göz atın (listenin en altında *daha fazla yükle'yi* tıklatmanız gerekebilir), ardından *RevoShare'i*, sonra **yeni Kullanıcı'yı**seçin. Dosya `people.json` `newUser` klasörde görüntülenmelidir.
 
-        ![HDInsight dosya klasörü konumunu kopyaladı](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![HDInsight kopyalanan dosya klasörü konumu](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
-1. Geçerli Apache Spark bağlamını kullanmayı bitirdikten sonra, onu durdurmanız gerekir. Aynı anda birden çok bağlam çalıştıramazsınız.
+1. Geçerli Apache Spark bağlamını kullanmayı bitirdikten sonra, bunu durdurmanız gerekir. Aynı anda birden çok bağlamı çalıştıramazsınız.
 
     ```R
     rxStopEngine(mySparkCluster)
@@ -133,5 +133,5 @@ PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microso
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight üzerinde ML Hizmetleri için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
-* [Scaler ve parlak r birleştirmek](../hdinsight-hadoop-r-scaler-sparkr.md) hava yolu Uçuş gecikmesi tahminlerinin bir örneğini sağlar.
+* [HDInsight'ta ML Hizmetleri için bilgi işlem bağlam ı seçenekleri](r-server-compute-contexts.md)
+* [ScaleR ve SparkR'ın birleştirilmesi,](../hdinsight-hadoop-r-scaler-sparkr.md) havayolu uçuş gecikme tahminlerine bir örnek sağlar.

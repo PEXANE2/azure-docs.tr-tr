@@ -1,6 +1,6 @@
 ---
-title: Inkerpop özellikleriyle Gremlin uyumluluğu Azure Cosmos DB
-description: Başvuru belgeleri grafik Altyapısı uyumluluk sorunları
+title: TinkerPop özellikleriyle Azure Cosmos DB Gremlin uyumluluğu
+description: Referans belgeleri Grafik motoru uyumluluk sorunları
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,38 +8,38 @@ ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
 ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644741"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin uyumluluğu
-Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) geçiş adımları belirtimini yakından izler, ancak farklılıklar vardır.
+Azure Cosmos DB Graph [motoru, Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) geçiş adımlarını yakından takip eder, ancak farklılıklar vardır.
 
 ## <a name="behavior-differences"></a>Davranış farklılıkları
 
-* Azure Cosmos DB Graph Engine, ınkerpop Gremlin 'ın derinliği ilk kez olacak şekilde, ***ilk*** çapraz geçişi çalıştırır. Bu davranış, Cosmos DB benzer şekilde yatay ölçeklenebilir sistemde daha iyi performans elde eder. 
+* Azure Cosmos DB Graph motoru ***geniş-ilk*** geçiş çalışırken TinkerPop Gremlin önce dir. Bu davranış, Cosmos DB gibi yatay ölçeklenebilir sistemde daha iyi performans sağlar. 
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 
-* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** graf dolaşma işlemlerine yönelik programlama dilinden bağımsız bir belirtimdir. Cosmos DB Graph henüz desteklemiyor. `GremlinClient.SubmitAsync()` kullanın ve çapraz geçişi metin dizesi olarak geçirin.
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** graf dolaşma işlemlerine yönelik programlama dilinden bağımsız bir belirtimdir. Cosmos DB Graph henüz desteklemiyor. Geçişi metin dizesi olarak kullanın `GremlinClient.SubmitAsync()` ve geçirin.
 
-* ***`property(set, 'xyz', 1)`*** kümesi kardinalitesi bugün desteklenmiyor. Bunun yerine `property(list, 'xyz', 1)` kullanın. Daha fazla bilgi için bkz. [ınkerpop Ile köşe özellikleri](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+* ***`property(set, 'xyz', 1)`*** set kardinallik bugün desteklenmez. Bunun yerine `property(list, 'xyz', 1)` kullanın. Daha fazla bilgi için [TinkerPop ile Vertex özelliklerine](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties)bakın.
 
-* ***`atch()`*** , bildirime dayalı model eşleştirmeyi kullanarak grafiklerin sorgulanmasına olanak tanır. Bu özellik kullanılamıyor.
+* ***`atch()`*** açıklayıcı desen eşleştirme kullanarak grafik sorgulama sağlar. Bu özellik kullanılamıyor.
 
-* Köşelerin veya kenarlardaki ***Özellikler olarak nesneler*** desteklenmez. Özellikler yalnızca temel türler veya diziler olabilir.
+* Tepe veya kenarlarındaki ***özellikteki nesneler*** desteklenmez. Özellikler yalnızca temel türler veya diziler olabilir.
 
-* ***Dizi özelliklerine göre sıralama*** desteklenmez `order().by(<array property>)`. Yalnızca temel türlere göre sıralama desteklenir.
+* ***Dizi özelliklerine*** `order().by(<array property>)` göre sıralama desteklenmez. Yalnızca temel türlere göre sıralama desteklenir.
 
-* ***Ilkel olmayan JSON türleri*** desteklenmez. `string`, `number`veya `true`/`false` türlerini kullanın. `null` değerleri desteklenmez. 
+* ***İlkel olmayan JSON türleri*** desteklenmez. Kullanın `string` `number`, `true` / `false` veya türleri. `null`değerler desteklenmez. 
 
-* ***GraphSONv3*** seri hale getirici Şu anda desteklenmiyor. Bağlantı yapılandırmasındaki `GraphSONv2` serileştirici, okuyucu ve yazıcı sınıfları kullanın.
+* ***GraphSONv3*** serializer şu anda desteklenmiyor. Bağlantı `GraphSONv2` yapılandırmasında Serializer, Reader ve Writer sınıflarını kullanın.
 
-* **Lambda ifadeleri ve işlevleri** Şu anda desteklenmemektedir. Buna `.map{<expression>}`, `.by{<expression>}`ve `.filter{<expression>}` işlevleri dahildir. Daha fazla bilgi edinmek ve Gremlin adımlarını kullanarak bunları yeniden yazmayı öğrenmek için [Lambdalar hakkında bir nota](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)bakın.
+* **Lambda ifadeleri ve işlevleri** şu anda desteklenmiyor. `.map{<expression>}`Bu, `.by{<expression>}`, ve `.filter{<expression>}` işlevleri içerir. Daha fazla bilgi edinmek ve Gremlin adımlarını kullanarak bunları nasıl yeniden yazacağız öğrenmek için [Lambdas'a Bir Not](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)bakın.
 
-* Sistemin dağıtılmış doğası nedeniyle ***işlemler*** desteklenmiyor.  Gremlin hesabında uygun tutarlılık modelini "kendi yazınızla okumak" üzere yapılandırın ve çakışan yazmaları çözümlemek için iyimser eşzamanlılık kullanın.
+* ***Hareketler,*** sistemin dağıtılmış yapısı nedeniyle desteklenmez.  Gremlin hesabındauygun tutarlılık modelini "kendi yazılarınızı okumak" için yapılandırın ve çakışan yazıları çözmek için iyimser eşzamanlılık kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Geri bildirim paylaşmak ve takımınızın sizin için önemli olan özelliklere odaklanmasına yardımcı olmak için [Cosmos DB Kullanıcı sesi](https://feedback.azure.com/forums/263030-azure-cosmos-db) sayfasını ziyaret edin.
+* Geri bildirim paylaşmak ve ekibin sizin için önemli olan özelliklere odaklanmasına yardımcı olmak için [Cosmos DB kullanıcı ses](https://feedback.azure.com/forums/263030-azure-cosmos-db) sayfasını ziyaret edin.

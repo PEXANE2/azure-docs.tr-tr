@@ -1,13 +1,13 @@
 ---
-title: Linux 'ta ilk Azure Service Fabric uygulamanızı kullanarak oluşturmaC#
-description: Ve .NET Core 2,0 kullanarak C# bir Service Fabric uygulaması oluşturmayı ve dağıtmayı öğrenin.
+title: "C kullanarak Linux'ta ilk Azure Hizmet Kumaşı uygulamanızı oluşturun #"
+description: C# ve .NET Core 2.0'ı kullanarak Bir Hizmet Kumaşı uygulamasını nasıl oluşturup dağıttığınızı öğrenin.
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458131"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>İlk Azure Service Fabric uygulamanızı oluşturma
@@ -22,7 +22,7 @@ Service Fabric, Linux üzerinde hem .NET Core hem de Java dillerinde hizmet olu�
 ## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce [Linux geliştirme ortamınızı ayarladığınızdan](service-fabric-get-started-linux.md) emin olun. Mac OS X kullanıyorsanız, [Vagrant kullanarak bir sanal makinede Linux one-box ortamı ayarlayabilirsiniz](service-fabric-get-started-mac.md).
 
-[Service Fabric CLI](service-fabric-cli.md)’yı de yüklemeniz gerekir.
+[Ayrıca Servis Kumaş CLI](service-fabric-cli.md) yüklemek isteyeceksiniz
 
 ### <a name="install-and-set-up-the-generators-for-c"></a>C# için oluşturucuları yükleme ve ayarlama
 Service Fabric, Yeoman şablon oluşturucuları kullanarak terminalden Service Fabric uygulamaları oluşturmanıza yardımcı olan yapı iskelesi araçları sağlar. C# için Service Fabric Yeoman şablon oluşturucularını ayarlama amacıyla bu adımları izleyin:
@@ -33,7 +33,7 @@ Service Fabric, Yeoman şablon oluşturucuları kullanarak terminalden Service F
    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
    nvm install node 
    ```
-2. NPM’den makinenize [Yeoman](https://yeoman.io/) şablon oluşturucuyu yükleme
+2. NPM'den makinenize [Yeoman](https://yeoman.io/) şablon jeneratörü yükleyin
 
    ```bash
    npm install -g yo
@@ -89,7 +89,7 @@ Bu komutların parametreleri, uygulama paketi içinde oluşturulmuş bildirimler
 Uygulama dağıtıldığında bir tarayıcı açın ve [http://localhost:19080/Explorer](http://localhost:19080/Explorer) konumundaki [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)'a gidin. Ardından, **Uygulamalar** düğümünü genişletin ve geçerli olarak uygulamanızın türü için bir giriş ve bu türün ilk örneği için başka bir giriş olduğuna dikkat edin.
 
 > [!IMPORTANT]
-> Uygulamayı Azure 'da güvenli bir Linux kümesine dağıtmak için, Service Fabric çalışma zamanı ile uygulamanızı doğrulamak üzere bir sertifika yapılandırmanız gerekir. Bunun yapılması, Reliable Services hizmetlerinizin temel alınan Service Fabric çalışma zamanı API 'Leriyle iletişim kurmasını sağlar. Daha fazla bilgi edinmek için bkz. [Reliable Services uygulamasını Linux kümelerinde çalışacak şekilde yapılandırma](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Uygulamayı Azure'da güvenli bir Linux kümesine dağıtmak için, uygulamanızı Hizmet Kumaşı çalışma süresiyle doğrulamak için bir sertifika yapılandırmanız gerekir. Bunu yapmak, Güvenilir Hizmetler hizmetlerinizin temel Hizmet Dokusu çalışma zamanı API'leri ile iletişim kurmasını sağlar. Daha fazla bilgi için bkz: [Linux kümelerinde çalışacak güvenilir hizmetler uygulamasını yapılandırın.](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Test istemcisini başlatma ve yük devre gerçekleştirme
@@ -97,7 +97,7 @@ Actor projeleri kendi başına bir işlem yapamaz. Bunlar başka bir hizmet veya
 
 1. Actor hizmetinin çıktısını görmek için izleme yardımcı programını kullanarak betiği çalıştırın.
 
-   MAC OS X söz konusu olduğunda, aşağıdaki ek komutları çalıştırarak myactorsvcTestClient klasörünü kapsayıcının içindeki aynı konuma kopyalamanız gerekir.
+   MAC OS X durumunda, aşağıdaki ek komutları çalıştırarak konteyner içinde aynı konuma myactorsvcTestClient klasörü kopyalamanız gerekir.
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: genli
 ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188293"
 ---
 ## <a name="scenario"></a>Senaryo
-Tek bir NIC ile bir VM oluşturulur ve bir sanal ağa bağlı. Üç farklı VM gerektirir *özel* IP adresleri ve iki *genel* IP adresleri. Aşağıdaki IP yapılandırmaları için IP adresleri atanır:
+Tek bir NIC'li bir VM oluşturulur ve sanal ağa bağlanır. VM üç farklı *özel* IP adresi ve iki *genel* IP adresi gerektirir. IP adresleri aşağıdaki IP yapılandırmalarına atanır:
 
-* **Ipconfig-1:** Atayan bir *statik* özel IP adresi ve *statik* genel IP adresi.
-* **Ipconfig-2:** Atayan bir *statik* özel IP adresi ve *statik* genel IP adresi.
-* **Ipconfig-3:** Atayan bir *statik* özel IP adresi ve genel IP adresi yok.
+* **IPConfig-1:** *Statik* özel IP adresi ve *statik* genel IP adresi atar.
+* **IPConfig-2:** *Statik* özel IP adresi ve *statik* genel IP adresi atar.
+* **IPConfig-3:** *Statik* bir özel IP adresi atar ve genel IP adresi atamaz.
   
     ![Birden çok IP adresi](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
-NIC oluşturulduğunda ve VM oluşturulduğunda VM'ye ekli NIC IP yapılandırmaları NIC'ye ilişkilendirilir. Senaryo için kullanılan IP adresleri için çizim türleridir. İhtiyaç duyduğunuz her IP adresi ve atama türleri atayabilirsiniz.
+NIC oluşturulduğunda IP yapılandırmaları NIC ile ilişkilidir ve VM oluşturulduğunda NIC VM'ye bağlanır. Senaryo için kullanılan IP adreslerinin türleri illüstrasyon içindir. İstediğiniz IP adresini ve atama türlerini atayabilirsiniz.
 
 > [!NOTE]
-> Bu makaledeki adımlarda atar ancak tüm IP yapılandırmaları tek bir NIC'ye birden fazla IP yapılandırması multi-NIC VM ağdaki nıc'lerden BİRİNE atayabilirsiniz. Birden çok NIC ile VM oluşturma konusunda bilgi edinmek için [birden çok NIC ile VM oluşturma](../articles/virtual-machines/windows/multiple-nics.md) makalesi.
+> Bu makaledeki adımlar tüm IP yapılandırmalarını tek bir NIC'e atasa da, birden çok NIC VM'de herhangi bir NIC'e birden çok IP yapılandırması atayabilirsiniz. Birden çok NIC'li bir VM nasıl oluşturulacak öğrenmek için, [birden çok NIC'li VM](../articles/virtual-machines/windows/multiple-nics.md) makalesini okuyun.

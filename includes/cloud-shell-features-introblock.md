@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: eef2c762c87a13c62eeb9b017ed43f54835ab16e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188710"
 ---
-Azure Cloud Shell, yönetmek ve Azure kaynaklarını geliştirmek için bir tarayıcı tabanlı kabuk deneyimidir.
+Azure Cloud Shell, Azure kaynaklarını yönetmenizi ve geliştirmenizi sağlayan bir tarayıcı tabanlı kabul deneyimidir.
 
-Cloud Shell, sürüm oluşturma, yükleme ve bir makineyi kendiniz bakımını yapma yükü olmadan Azure kaynaklarını yönetmek için bir tarayıcı erişilebilir, önceden yapılandırılmış bir kabuk deneyimi sunar.
+Cloud Shell, bir makineyi kendiniz yükleme, sürüm ve bakım yükü olmadan Azure kaynaklarını yönetmek için tarayıcıda erişilebilir, önceden yapılandırılmış bir kabuk deneyimi sunar.
 
-İstek başına temelinde makineler cloud Shell'i sağlar ve sonuç olarak makine durumu oturumlarda kalıcı olmaz. Cloud Shell için etkileşimli oturumları kurulu olduğundan, kabuk otomatik olarak 20 dakika işlem yapılmadığında Kabuk sonlandırın.
+Bulut Shell, makineleri istek başına bazda ve sonuç olarak makine durumu olarak oturumlar arasında devam etmez. Cloud Shell etkileşimli oturumlar için üretilmiştir, kabukları 20 dakikalık bir hareketsizlikten sonra otomatik olarak sona erer.

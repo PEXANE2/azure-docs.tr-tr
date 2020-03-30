@@ -1,6 +1,6 @@
 ---
-title: Apache Spark performans-Azure HDInsight GÇ önbelleği (Önizleme)
-description: Azure HDInsight GÇ önbelleği ve Apache Spark performansını geliştirmek için nasıl kullanılacağı hakkında bilgi edinin.
+title: Apache Spark performansı - Azure HDInsight IO Önbellek (Önizleme)
+description: Azure HDInsight IO Önbelleği ve Apache Spark performansını artırmak için nasıl kullanılacağı hakkında bilgi edinin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,73 +8,73 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/23/2019
 ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75494993"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight GÇ önbelleği 'ni kullanarak Apache Spark iş yüklerinin performansını iyileştirme
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight IO Önbelleği'ni kullanarak Apache Spark iş yüklerinin performansını artırın
 
-GÇ önbelleği, Azure HDInsight için Apache Spark işlerin performansını artıran bir veri önbelleğe alma hizmetidir. GÇ önbelleği Ayrıca [Apache TEZ](https://tez.apache.org/) ve [Apache Hive](https://hive.apache.org/) iş yükleri ile birlikte çalışarak [Apache Spark](https://spark.apache.org/) kümelerinde çalıştırılabilir. GÇ önbelleği, RubiX adlı açık kaynaklı bir önbelleğe alma bileşeni kullanır. RubiX, bulut depolama sistemlerinden verilere erişen büyük veri analizi altyapılarıyla birlikte kullanılmak üzere yerel bir disk önbelleğidir. RubiX, önbelleğe alma amacıyla işletim belleği ayırmak yerine katı hal sürücüleri (SSD 'Ler) kullandığından, önbelleğe alma sistemleri arasında benzersizdir. GÇ önbellek hizmeti, kümenin her bir çalışan düğümünde RubiX meta veri sunucularını başlatır ve yönetir. Ayrıca, RubiX önbelleğinin saydam kullanımı için kümenin tüm hizmetlerini yapılandırır.
+IO Cache, Azure HDInsight için Apache Spark işlerinin performansını artıran bir veri önbelleğe alma hizmetidir. IO Önbellek, [Apache Spark](https://spark.apache.org/) kümelerinde çalıştırılabilen [Apache TEZ](https://tez.apache.org/) ve [Apache Hive](https://hive.apache.org/) iş yükleriyle de çalışır. IO Cache, RubiX adında açık kaynak kodlu bir önbelleğe alma bileşeni kullanır. RubiX, bulut depolama sistemlerinden verilere erişen büyük veri analitiği motorları ile kullanılmak üzere kullanılan yerel bir disk önbelleğidir. Önbelleğe alma sistemleri arasında benzersizdir, çünkü önbelleğe alma amacıyla çalışma belleği ayırmak yerine Katı Hal Sürücüleri (SSD'ler) kullanır. IO Önbellek hizmeti, kümenin her alt düğümüzerinde RubiX Meta veri sunucularını başlatur ve yönetir. Ayrıca, RubiX önbelleğinin saydam kullanımı için kümenin tüm hizmetlerini yapılandırır.
 
-Çoğu SSDs, bant genişliğine göre 1 GB 'den daha fazlasını sağlar. Bu bant genişliği, işletim sistemi bellek içi dosya önbelleğinde tamamlanarak, Apache Spark gibi büyük veri işlem işleme altyapılarını yüklemek için yeterli bant genişliği sağlar. İşletim belleği, karışık gibi bellek bağımlı görevleri işlemek Apache Spark için kullanılabilir kalır. İşletim belleğinin dışlamalı kullanımı, Apache Spark en iyi kaynak kullanımı elde etmesine olanak tanır.  
+Çoğu SSD saniyede 1 GByte'dan fazla bant genişliği sağlar. Bellek içi dosya önbelleği yle tamamlanan bu bant genişliği, Apache Spark gibi büyük veri bilgi işlem motorlarını yüklemek için yeterli bant genişliği sağlar. Çalışma belleği, Apache Spark'ın karıştırmalar gibi bellek lere bağlı görevleri işlemesi için kullanılabilir durumda bırakılır. Çalışma belleğinin özel kullanımı, Apache Spark'ın en iyi kaynak kullanımını elde etmesini sağlar.  
 
 > [!Note]  
-> GÇ önbelleği Şu anda bir önbellek bileşeni olarak RubiX kullanıyor, ancak bu durum hizmetin gelecek sürümlerinde değişebilir. Lütfen GÇ önbellek arabirimlerini kullanın ve hiçbir bağımlılığı doğrudan RubiX uygulamasında kullanmayın.
->GÇ önbelleği, şu anda yalnızca Azure BLOB depolama ile desteklenir.
+> IO Cache şu anda önbelleğe alma bileşeni olarak RubiX kullanır, ancak bu hizmetin gelecekteki sürümlerinde değişebilir. Lütfen IO Önbellek arabirimlerini kullanın ve doğrudan RubiX uygulamasına herhangi bir bağımlılık yapmayın.
+>IO Önbellek şu anda yalnızca Azure BLOB Depolama ile desteklenir.
 
-## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight GÇ önbelleğinin avantajları
+## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO Önbelleğinin Avantajları
 
-GÇ önbelleğinin kullanılması, Azure Blob depolamadan veri okuyan işler için bir performans artışı sağlar.
+IO Önbelleğini kullanmak, Azure Blob Depolama'dan verileri okuyan işler için bir performans artışı sağlar.
 
-GÇ önbelleği kullanırken performans artışına bakmak için Spark işleriniz üzerinde herhangi bir değişiklik yapmanız gerekmez. GÇ önbelleği devre dışı bırakıldığında, bu Spark kodu verileri Azure Blob depolamadan uzaktan okur: `spark.read.load('wasbs:///myfolder/data.parquet').count()`. GÇ önbelleği etkinleştirildiğinde, aynı kod satırı, önbelleğe alınan okuma GÇ önbelleğinde neden olur. Aşağıdaki okumalar, veriler SSD 'den yerel olarak okunur. HDInsight kümesindeki çalışan düğümleri yerel olarak eklenmiş, ayrılmış SSD sürücüleriyle donatılmıştır. HDInsight GÇ önbelleği, en düşük gecikme düzeyi ve bant genişliğini en üst düzeye çıkaran önbelleğe alma için bu yerel SSD 'leri kullanır.
+IO Önbellek kullanırken performans artışlarını görmek için Kıvılcım işlerinizde herhangi bir değişiklik yapmak zorunda değilsiniz. IO Önbellek devre dışı bırakıldığında, bu Spark kodu verileri `spark.read.load('wasbs:///myfolder/data.parquet').count()`Azure Blob Depolama'dan uzaktan okur: . IO Önbellek etkinleştirildiğinde, aynı kod satırı IO Önbelleği üzerinden önbelleğe alınmış bir okumaya neden olur. Aşağıdaki okumalarda, veriler SSD'den yerel olarak okunur. HDInsight kümesindeki işçi düğümleri yerel olarak bağlı, özel SSD sürücülerle donatılmıştır. HDInsight IO Önbelleği, önbelleğe alma için bu yerel SSD'leri kullanır, bu da en düşük gecikme düzeyi sağlar ve bant genişliğini en üst düzeye çıkarır.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
-Azure HDInsight GÇ önbelleği, önizleme aşamasında varsayılan olarak devre dışıdır. GÇ önbelleği, 2,3 Apache Spark çalıştıran Azure HDInsight 3.6 + Spark kümelerinde kullanılabilir.  HDInsight 4,0 ' de GÇ önbelleği 'ni etkinleştirmek için aşağıdaki adımları uygulayın:
+Azure HDInsight IO Önbelleği önizlemede varsayılan olarak devre dışı bırakılır. IO Önbellek, Apache Spark 2,3'ü çalıştıran Azure HDInsight 3.6+ Spark kümelerinde kullanılabilir.  HDInsight 4.0'da IO Önbelleğini etkinleştirmek için aşağıdaki adımları yapın:
 
-1. Bir Web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net`' a gidin; burada `CLUSTERNAME` kümenizin adıdır.
+1. Bir web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net`kümenizin adı nerede' `CLUSTERNAME` ye gidin.
 
-1. Sol taraftaki **GÇ önbellek** hizmetini seçin.
+1. Soldaki **IO Önbellek** hizmetini seçin.
 
-1. **Eylemleri** (hdı 3,6 ' de**hizmet eylemleri** ) ve **Etkinleştir**' i seçin.
+1. **Eylemler** (HDI 3.6'daki**Hizmet Eylemleri)** seçin ve **etkinleştirin.**
 
-    ![Ambarı 'nda GÇ önbellek hizmetini etkinleştirme](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Ambarı 'nda GÇ önbellek hizmetini etkinleştirme")
+    ![Ambari'de IO Önbellek hizmetini etkinleştirme](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Ambari'de IO Önbellek hizmetini etkinleştirme")
 
-1. Kümedeki tüm etkilenen hizmetlerin yeniden başlatılmasını onaylayın.
+1. Kümedeki etkilenen tüm hizmetlerin yeniden başlatılmasını onaylayın.
 
 > [!NOTE]  
-> İlerleme çubuğu etkin ' i gösterdiği halde, etkilenen diğer hizmetleri yeniden başlatana kadar GÇ önbelleği gerçekten etkinleştirilmez.
+> İlerleme çubuğu etkinleştirilmiş görünse de, etkilenen diğer hizmetleri yeniden başlatana kadar IO Cache gerçekte etkin değildir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
   
-GÇ önbelleğini etkinleştirdikten sonra Spark işlerini çalıştıran disk alanı hatalarını alabilirsiniz. Bu hatalar, Spark işlemleri sırasında verileri depolamak için yerel disk depolaması da kullandığından oluşur. GÇ önbelleği etkinleştirildikten ve Spark Storage alanı azaltıldıktan sonra Spark 'ın SSD alanı tükeniyor olabilir. GÇ önbelleği tarafından kullanılan alan miktarı varsayılan olarak toplam SSD alanının yarısını alır. GÇ önbelleği için disk alanı kullanımı, ambarı 'nda yapılandırılabilir. Disk alanı hatalarını alırsanız, GÇ önbelleği için kullanılan SSD alanı miktarını azaltın ve hizmeti yeniden başlatın. GÇ önbelleğinin alan kümesini değiştirmek için aşağıdaki adımları uygulayın:
+IO Önbellek etkinleştirdikten sonra Spark işleri çalışan disk alanı hataları alabilirsiniz. Spark, karıştırma işlemleri sırasında verileri depolamak için yerel disk depolamasını da kullandığından bu hatalar oluşur. IO Önbellek etkinleştirildiğinde ve Kıvılcım depolama alanı azaltıldıktan sonra Spark'ın spark alanı tükenebilir. IO Cache tarafından kullanılan alan miktarı varsayılan olarak toplam SSD alanının yarısına eşittir. IO Önbellek için disk alanı kullanımı Ambari'de yapılandırılabilir. Disk alanı hataları alırsanız, IO Önbellek için kullanılan SSD alanı miktarını azaltın ve hizmeti yeniden başlatın. IO Önbellek için alan kümesini değiştirmek için aşağıdaki adımları yapın:
 
-1. Apache ambarı ' **nda, sol taraftaki bu hizmeti seçin** .
+1. Apache Ambari'de soldaki **HDFS** hizmetini seçin.
 
-1. **Configs** ve **Gelişmiş** sekmelerini seçin.
+1. **Configs** ve **Gelişmiş** sekmeleri seçin.
 
-    ![Bir Gelişmiş yapılandırmayı Düzenle](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "Bir Gelişmiş yapılandırmayı Düzenle")
+    ![HDFS Gelişmiş Yapılandırmayı Düzenleme](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "HDFS Gelişmiş Yapılandırmayı Düzenleme")
 
-1. Aşağı kaydırın ve **özel çekirdek sitesi** alanını genişletin.
+1. Aşağı kaydırın ve **Özel çekirdek site** alanını genişletin.
 
-1. **Hadoop. cache. Data. fulllik. Percentage**özelliğini bulun.
+1. özellik **hadoop.cache.data.fullness.percentage**bulun .
 
 1. Kutudaki değeri değiştirin.
 
-    ![GÇ önbelleği tamlık yüzdesini Düzenle](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "GÇ önbelleği tamlık yüzdesini Düzenle")
+    ![IO Önbellek Doluluk Yüzdesi'ni edin](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "IO Önbellek Doluluk Yüzdesi'ni edin")
 
-1. Sağ üst köşedeki **Kaydet** ' i seçin.
+1. Sağ üstte **Kaydet'i** seçin.
 
-1. **Yeniden Başlat** ' ı seçin > **etkilenen tümünü yeniden başlatın**.
+1. Etkilenen Tüm Ünü **Yeniden Başlat'ı** > **Restart All Affected**seçin.
 
-    ![Apache ambarı etkilenen tümünü yeniden başlatır](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Etkilenen tümünü yeniden Başlat")
+    ![Apache Ambari etkilenen tüm yeniden başlatır](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Etkilenen tüm bunları yeniden başlatın")
 
-1. **Tümünü yeniden başlatmayı Onayla**seçeneğini belirleyin.
+1. **Tümünü Yeniden Başlat'ı**Onayla'yı seçin.
 
-Bu işe yaramazsa, GÇ önbelleğini devre dışı bırakın.
+Bu işe yaramazsa, IO Önbelleğini devre dışı edin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bu blog gönderisine yönelik performans kıyaslamaları dahil olmak üzere GÇ önbelleği hakkında daha fazla bilgi edinin: [Apache Spark İşler, HDıNSIGHT GÇ önbelleğiyle hızlanır](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+Bu blog gönderisinde performans kriterleri de dahil olmak üzere IO Önbellek hakkında daha fazla bilgi edinin: [Apache Spark işleri HDInsight IO Önbellek ile 9 kata kadar hız kazanıyor](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

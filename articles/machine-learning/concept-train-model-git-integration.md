@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning için git tümleştirmesi
+title: Azure Machine Learning için Git entegrasyonu
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning yerel bir git deposu ile nasıl tümleştireceğinizi öğrenin. Bir git deposu olan yerel bir dizinden bir eğitim çalıştırıldığında, depo, dal ve geçerli işleme bilgileri çalıştırmanın bir parçası olarak izlenir.
+description: Azure Machine Learning'in yerel bir Git deposuyla nasıl entegre olduğunu öğrenin. Git deposu olan yerel bir dizinden bir eğitim çalıştırırken, repo, şube ve geçerli işleme hakkındaki bilgiler çalıştırmanın bir parçası olarak izlenir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,74 +10,74 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402831"
 ---
-# <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
+# <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için Git entegrasyonu
 
-[Git](https://git-scm.com/) , projelerinize paylaşmanıza ve işbirliği yapmanıza olanak sağlayan popüler bir sürüm denetim sistemidir. 
+[Git,](https://git-scm.com/) projelerinizle paylaşmanıza ve işbirliği yapmanızı sağlayan popüler bir sürüm kontrol sistemidir. 
 
-İşleri izlemek için Git depolarını tamamen destekler. depoları doğrudan paylaşılan çalışma alanı dosya sisteminize kopyalayabilir, yerel iş istasyonunuzda git kullanabilir veya bir CI/CD işlem hattından git kullanabilirsiniz. Azure Machine Learning
+Azure Machine Learning, çalışmaları izlemek için Git depolarını tam olarak destekler - depoları doğrudan paylaşılan çalışma alanı dosya sisteminize klonlayabilir, yerel iş istasyonunuzda Git'i kullanabilir veya Bir CI/CD ardışık kanalından Git'i kullanabilirsiniz.
 
-Azure Machine Learning bir iş gönderilirken, kaynak dosyalar yerel bir git deposunda depolanıyorsa, eğitim sürecinin bir parçası olarak depo hakkında bilgi izlenir.
+Azure Machine Learning'e iş gönderirken, kaynak dosyalar yerel bir git deposunda depolanırsa, repo hakkındaki bilgiler eğitim sürecinin bir parçası olarak izlenir.
 
-Azure Machine Learning, yerel bir git deposundan bilgileri izlediğinden, belirli bir merkezi depoya bağlı değildir. Deponuz GitHub, GitLab, Bitbucket, Azure DevOps veya başka bir git uyumlu hizmetten kopyalanabilir.
+Azure Machine Learning yerel bir git repo'daki bilgileri izlediğinden, belirli bir merkezi depoya bağlı değildir. Deponuz GitHub, GitLab, Bitbucket, Azure DevOps veya git uyumlu başka herhangi bir hizmetten klonlanabilir.
 
-## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git depolarını çalışma alanı dosya sisteminize kopyalama
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Çalışma alanı dosya sisteminize Klon Git depoları
 Azure Machine Learning, çalışma alanındaki tüm kullanıcılar için paylaşılan bir dosya sistemi sağlar.
-Bir Git deposunu bu dosya paylaşımında kopyalamak için bir terminal açmak & bir Işlem örneği oluşturmanız önerilir.
-Terminal açıldıktan sonra tam bir git istemcisine erişiminiz olur ve git CLı deneyimi aracılığıyla Git 'i kopyalayabilir ve bunlarla çalışabilirsiniz.
+Bu dosya paylaşımında bir Git deposunu klonlamak için, bir terminalaçmak & bir Bilgi İşlem Örneği oluşturmanızı öneririz.
+Terminal açıldıktan sonra, tam bir Git istemcisine erişebilirsiniz ve Git CLI deneyimi aracılığıyla git ile klonlayabilir ve çalışabilirsiniz.
 
-Başkalarının doğrudan çalışma dalınızda çakışmalar yapamaması için depoyu kullanıcılar dizininize kopyalamanız önerilir.
+Başkalarının doğrudan çalışma dalınıza çakışmasın diye depoyu kullanıcı dizininize klonlamanızı öneririz.
 
-Kimlik doğrulayabilecek herhangi bir Git deposunu (GitHub, Azure Repos, BitBucket vb.) kopyalayabilirsiniz.
+Doğruluğunu doğrulayabildiğiniz herhangi bir Git deposunu klonlayabilirsiniz (GitHub, Azure Repos, BitBucket, vb.)
 
-Git CLı 'nın nasıl kullanılacağına ilişkin bir kılavuz için [burada buradan okuyun.](https://guides.github.com/introduction/git-handbook/)
+Git CLI nasıl kullanılacağı hakkında bir rehber için, [burada](https://guides.github.com/introduction/git-handbook/)okuyun.
 
-## <a name="track-code-that-comes-from-git-repositories"></a>Git depolarından gelen kodu izleme
+## <a name="track-code-that-comes-from-git-repositories"></a>Git depolarından gelen izleme kodu
 
-Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. `git` komutu geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
+Python SDK veya Machine Learning CLI'den bir eğitim çalışması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. `git` Komut geliştirme ortamınızda varsa, yükleme işlemi dosyaların git deposunda depolanmış olup olmadığını denetlemek için kullanır. Eğer öyleyse, git deposundan gelen bilgiler de eğitim çalışmasının bir parçası olarak yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
 
-| Özellik | Değeri almak için kullanılan git komutu | Açıklama |
+| Özellik | Değeri almak için kullanılan Git komutu | Açıklama |
 | ----- | ----- | ----- |
-| `azureml.git.repository_uri` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
-| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
-| `azureml.git.branch` | `git symbolic-ref --short HEAD` | Çalışma gönderildiğinde etkin dal. |
-| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Çalışma gönderildiğinde etkin dal. |
-| `azureml.git.commit` | `git rev-parse HEAD` | Çalıştırma için gönderilen kodun COMMIT karması. |
-| `mlflow.source.git.commit` | `git rev-parse HEAD` | Çalıştırma için gönderilen kodun COMMIT karması. |
-| `azureml.git.dirty` | `git status --porcelain .` | dal/COMMIT kirli ise `True`; Aksi takdirde, `false`. |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | Deponuzun klonlandığınız URI. |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Deponuzun klonlandığınız URI. |
+| `azureml.git.branch` | `git symbolic-ref --short HEAD` | Çalıştırma gönderildiğinde etkin dal. |
+| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Çalıştırma gönderildiğinde etkin dal. |
+| `azureml.git.commit` | `git rev-parse HEAD` | Çalıştırma için gönderilen kodun işleyen karma. |
+| `mlflow.source.git.commit` | `git rev-parse HEAD` | Çalıştırma için gönderilen kodun işleyen karma. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True`, şube/taahhüt kirliise; aksi `false`takdirde, . |
 
-Bu bilgiler, bir Estimator, Machine Learning işlem hattı veya betik çalıştırması kullanan çalıştırmalar için gönderilir.
+Bu bilgiler, tahminci, makine öğrenimi ardışık hattı veya komut dosyası çalıştırıcı kullanan çalıştırmalar için gönderilir.
 
-Eğitim dosyalarınız geliştirme ortamınızda bir git deposunda bulunmuyorsa veya `git` komutu kullanılamıyorsa, git ile ilgili bilgiler izlenmez.
+Eğitim dosyalarınız geliştirme ortamınızla ilgili bir git deposunda bulunmuyorsa veya `git` komut kullanılamıyorsa, git ile ilgili hiçbir bilgi izlenmez.
 
 > [!TIP]
-> Git komutunun geliştirme ortamınızda kullanılabilir olup olmadığını denetlemek için bir kabuk oturumu, komut istemi, PowerShell veya başka bir komut satırı arabirimi açın ve aşağıdaki komutu yazın:
+> Geliştirme ortamınızda git komutu kullanılabilir olup olmadığını kontrol etmek için bir kabuk oturumu, komut istemi, PowerShell veya diğer komut satırı arabirimi açın ve aşağıdaki komutu yazın:
 >
 > ```
 > git --version
 > ```
 >
-> Yüklüyse ve yolunda `git version 2.4.1`benzer bir yanıt alırsınız. Geliştirme ortamınıza git 'i yükleme hakkında daha fazla bilgi için [Git Web sitesine](https://git-scm.com/)bakın.
+> Yüklüyse ve yolda, `git version 2.4.1`' a benzer bir yanıt alırsınız. Geliştirme ortamınıza git yükleme hakkında daha fazla bilgi için [Git web sitesine](https://git-scm.com/)bakın.
 
-## <a name="view-the-logged-information"></a>Günlüğe kaydedilen bilgileri görüntüleyin
+## <a name="view-the-logged-information"></a>Günlüğe kaydedilen bilgileri görüntüleme
 
-Git bilgileri bir eğitim çalışmasının özelliklerinde depolanır. Azure portal, Python SDK ve CLı kullanarak bu bilgileri görüntüleyebilirsiniz. 
+Git bilgileri, bir eğitim çalışması için özelliklerde depolanır. Bu bilgileri Azure portalı, Python SDK ve CLI'yi kullanarak görüntüleyebilirsiniz. 
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portalında
 
-1. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin.
-1. __Denemeleri__öğesini seçin ve denemeleri birini seçin.
-1. __Çalıştırma numarası__ sütunundan çalıştırmaların birini seçin.
-1. __Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __###azure \___ ile başlayan bağlantıyı seçin.
+1. Azure [portalından](https://portal.azure.com)çalışma alanınızı seçin.
+1. __Denemeler'i__seçin ve ardından denemelerinizden birini seçin.
+1. __RUN NUMBER__ sütunundan bir çalıştırma seçin.
+1. __Günlükleri__seçin ve ardından günlükleri ve __azureml__ __girişlerini__ genişletin. __ ### \_Azure__ile başlayan bağlantıyı seçin.
 
-    ![Portalda # # #_azure girişi](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+    ![Portaldaki ###_azure girişi](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
-Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
+Günlüğe kaydedilen bilgiler aşağıdaki JSON'a benzer bir metin içerir:
 
 ```json
 "properties": {
@@ -98,7 +98,7 @@ Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 
 ### <a name="python-sdk"></a>Python SDK'sı
 
-Bir eğitim çalıştırması gönderdikten sonra bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) nesnesi döndürülür. Bu nesnenin `properties` özniteliği, günlüğe kaydedilen git bilgilerini içerir. Örneğin, aşağıdaki kod, COMMIT karmasını alır:
+Bir eğitim çalışması gönderdikten sonra, [Bir Çalıştır](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) nesnesi döndürülür. `properties` Bu nesnenin özniteliği günlüğe kaydedilmiş git bilgilerini içerir. Örneğin, aşağıdaki kod işleyiş karmasını alır:
 
 ```python
 run.properties['azureml.git.commit']
@@ -106,13 +106,13 @@ run.properties['azureml.git.commit']
 
 ### <a name="cli"></a>CLI
 
-`az ml run` CLı komutu, bir çalıştırıldan özellikleri almak için kullanılabilir. Örneğin, aşağıdaki komut, deney `train-on-amlcompute`adlı denemede son çalıştırmanın özelliklerini döndürür:
+`az ml run` CLI komutu, bir çalışmadan özellikleri almak için kullanılabilir. Örneğin, aşağıdaki komut, aşağıdaki denemede son çalıştırmanın `train-on-amlcompute`özelliklerini döndürür:
 
 ```azurecli-interactive
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Daha fazla bilgi için, [az ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) Reference belgelerine bakın.
+Daha fazla bilgi için [az ml çalıştır referans](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) belgelerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199504"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady ve/veya Widevine dinamik ortak şifreleme kullanma
 
 > [!NOTE]
-> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılar için bkz. [Azure Ücretsiz Deneme](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   > Media Services v2'ye yeni özellikler veya işlevler eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 >   
 
 ## <a name="overview"></a>Genel Bakış
@@ -39,7 +39,7 @@ Widevine lisansları teslim etmenize yardımcı olması için şu Media Services
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
-Daha fazla bilgi için [Axinom](media-services-axinom-integration.md) ve [castLabs](media-services-castlabs-integration.md) ile tümleştirme makalelerine bakın.
+Daha fazla bilgi için, [Axinom](media-services-axinom-integration.md) ve [castLabs](media-services-castlabs-integration.md)ile entegrasyon bakın.
 
 Media Services, anahtar isteğinde bulunan kullanıcıları yetkilendirmenin birden çok yöntemini destekler. İçerik anahtarı yetkilendirme ilkesinin açık veya belirteç kısıtlaması şeklinde bir veya daha fazla yetkilendirme kısıtlaması olabilir. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services, [basit web belirteci](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) ve [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) biçimlerindeki belirteçleri destekler. 
 
@@ -98,17 +98,17 @@ Dinamik şifreleme ile bir grup çoklu bit hızlı MP4 dosyası ya da çoklu bit
 
 Kodlama yönergeleri için bkz. [Media Encoder Standard kullanarak varlık kodlama](media-services-dotnet-encode-with-media-encoder-standard.md).
 
-## <a id="create_contentkey"></a>Bir içerik anahtarı oluşturup kodlanmış varlıkla ilişkilendirme
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>Bir içerik anahtarı oluşturup kodlanmış varlıkla ilişkilendirme
 Media Services’de, içerik anahtarı bir varlığı şifrelerken kullanmak istediğiniz anahtarı içerir.
 
 Daha fazla bilgi için bkz. [İçerik anahtarı oluşturma](media-services-dotnet-create-contentkey.md).
 
-## <a id="configure_key_auth_policy"></a>İçerik anahtarının yetkilendirme ilkesini yapılandırma
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>İçerik anahtarının yetkilendirme ilkesini yapılandırma
 Media Services, anahtar isteğinde bulunan kullanıcıların kimlik doğrulamasını yapmanın birden çok yöntemini destekler. İçerik anahtarı yetkilendirme ilkesini yapılandırmanız gerekir. Anahtarın istemciye teslim edilebilmesi için önce istemcinin (oynatıcı) ilkeyi karşılaması gerekir. İçerik anahtarı yetkilendirme ilkesinin açık veya belirteç kısıtlaması şeklinde bir veya daha fazla yetkilendirme kısıtlaması olabilir.
 
 Daha fazla bilgi edinmek için bkz. [İçerik anahtarı yetkilendirme ilkesi yapılandırma](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption).
 
-## <a id="configure_asset_delivery_policy"></a>Varlık teslim ilkesi yapılandırma
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>Varlık teslim ilkesi yapılandırma
 Varlığınıza ilişkin teslim ilkesini yapılandırın. Varlık teslim ilkesi yapılandırmasının içerdiklerinden bazıları şunlardır:
 
 * DRM lisans edinme URL'si.
@@ -117,7 +117,7 @@ Varlığınıza ilişkin teslim ilkesini yapılandırın. Varlık teslim ilkesi 
 
 Daha fazla bilgi için bkz. [Varlık teslim ilkesi yapılandırma](media-services-dotnet-configure-asset-delivery-policy.md).
 
-## <a id="create_locator"></a>Akış URL’si almak için bir OnDemand akış bulucusu oluşturma
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>Akış URL’si almak için bir OnDemand akış bulucusu oluşturma
 Kullanıcınıza Kesintisiz Akış, DASH veya HLS için akış URL’sini sağlamanız gerekir.
 
 > [!NOTE]
@@ -147,7 +147,7 @@ Akışınızı test etmek için [Azure Media Services Oynatıcısı](https://aka
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
-1. Geliştirme ortamınızı ayarlayın ve app.config dosyanızı [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md) bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun.
+1. Geliştirme ortamınızı ayarlayın ve [.NET ile Medya Hizmetleri geliştirmede](media-services-dotnet-how-to-use.md)açıklandığı gibi app.config dosyasını bağlantı bilgileriyle doldurun.
 
 2. App.config dosyanızda tanımlanan **appSettings**’e aşağıdaki öğeleri ekleyin:
 
@@ -607,7 +607,7 @@ namespace DynamicEncryptionWithDRM
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -620,6 +620,6 @@ namespace DynamicEncryptionWithDRM
 
 * [CENC’yi çoklu DRM ve erişim denetimi ile kullanma](media-services-cenc-with-multidrm-access-control.md)
 * [Media Services ile Widevine paketlemeyi yapılandırma](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
-* [Azure Media Services için Java istemci SDK 'sını kullanmaya başlama](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)
+* [Azure Media Services için Java istemci SDK’sı kullanmaya başlama](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)
 * Media Services için en yeni PHP SDK'sını indirmek üzere, [Packagist deposunda](https://packagist.org/packages/microsoft/windowsazure#v0.5.7) Microsoft/WindowsAzure paketinin 0.5.7 sürümünü arayın. 
 

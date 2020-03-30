@@ -1,6 +1,6 @@
 ---
-title: Office 365 kullanıcılarına bağlanma
-description: Azure Logic Apps kullanarak Office 365 kullanıcı profillerinde profilleri alan ve yöneten görevleri ve iş akışlarını otomatikleştirin
+title: Office 365 Kullanıcılarına Bağlan
+description: Azure Mantık Uygulamaları'nı kullanarak Office 365 Kullanıcıları profillerinde profil alan ve yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,34 +8,34 @@ ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
 ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666865"
 ---
-# <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Office 365 kullanıcıları 'nda profilleri edinme ve yönetme
+# <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Azure Mantık Uygulamalarını kullanarak Office 365 Kullanıcıları'ndaki profilleri edinin ve yönetin
 
-Profilleri almak, kullanıcıları aramak ve daha fazlasını yapmak için Office 365 kullanıcılarına bağlanın. Office 365 kullanıcıları ile şunları yapabilirsiniz:
+Profiller, arama kullanıcıları ve daha fazlasını almak için Office 365 Kullanıcılarına bağlanın. Office 365 Kullanıcıları ile şunları yapabilirsiniz:
 
-* İş akışınızı Office 365 kullanıcılarından aldığınız verilere göre oluşturun. 
-* Doğrudan rapor alan eylemleri, yöneticinin kullanıcı profilini al ve daha fazlasını kullanın. Bu eylemler bir yanıt alır ve daha sonra çıktıyı diğer eylemler için kullanılabilir hale getirir. Örneğin, bir kişinin doğrudan raporlarını alın ve bu bilgileri alıp SQL Azure bir veritabanını güncelleştirin. 
+* İş akışınızı Office 365 Kullanıcılarından aldığınız verilere göre oluşturun. 
+* Doğrudan rapor alan, yöneticinin kullanıcı profilini ve daha fazlasını alan eylemleri kullanın. Bu eylemler bir yanıt alır ve çıktıyı diğer eylemler için kullanılabilir hale getirin. Örneğin, bir kişinin doğrudan raporlarını alın ve ardından bu bilgileri alın ve bir SQL Azure veritabanını güncelleştirin. 
 
-Şimdi bir mantıksal uygulama oluşturarak çalışmaya başlamak için bkz. [mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Şimdi bir mantık uygulaması oluşturarak başlatabilirsiniz, [bkz.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-## <a name="create-a-connection-to-office-365-users"></a>Office 365 kullanıcılarına bağlantı oluşturma
+## <a name="create-a-connection-to-office-365-users"></a>Office 365 Kullanıcıları ile bağlantı oluşturma
 
-Bu bağlayıcıyı Logic Apps 'e eklediğinizde, Azure Logic Apps hesabınıza bağlanabilmesi için Office 365 kullanıcıları hesabınızda oturum açmanız gerekir.
+Bu bağlayıcıyı mantık uygulamalarınıza eklediğinizde, Azure Mantık Uygulamalarının hesabınıza bağlanabilmesi için Office 365 Kullanıcılar hesabınızda oturum açmanız gerekir.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
 > 
 
-Bağlantıyı oluşturduktan sonra, Kullanıcı KIMLIĞI gibi Office 365 kullanıcıları özelliklerini girersiniz. Bu makaledeki **REST API başvurusu** bu özellikleri açıklamaktadır.
+Bağlantıyı oluşturduktan sonra, kullanıcı kimliği gibi Office 365 Users özelliklerini girersiniz. Bu makaledeki **REST API başvurusu** bu özellikleri açıklar.
 
-## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
+## <a name="connector-specific-details"></a>Bağlayıcıya özel ayrıntılar
 
-Bağlayıcının Swagger açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için [bağlayıcının başvuru sayfasını](/connectors/officeusers/)gözden geçirin.
+Bağlayıcının Swagger açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için [bağlayıcının başvuru sayfasını](/connectors/officeusers/)inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

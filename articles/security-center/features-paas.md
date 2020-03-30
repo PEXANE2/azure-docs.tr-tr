@@ -1,6 +1,6 @@
 ---
 title: Desteklenen Azure PaaS kaynakları için Azure Güvenlik Merkezi özellikleri.
-description: Bu sayfada desteklenen Azure PaaS kaynakları için Azure Güvenlik Merkezi özelliklerinin kullanılabilirliği gösterilmektedir.
+description: Bu sayfa, desteklenen Azure PaaS kaynakları için Azure Güvenlik Merkezi özelliklerinin kullanılabilirliğini gösterir.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,45 +14,45 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209369"
 ---
-# Azure PaaS hizmetleri için özellik kapsamı<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS hizmetleri için özellik kapsamı<a name="paas-services"></a>
 
-Aşağıdaki tabloda, desteklenen Azure PaaS kaynakları için Azure Güvenlik Merkezi özelliklerinin kullanılabilirliği gösterilmektedir.
+Aşağıdaki tablo, desteklenen Azure PaaS kaynakları için Azure Güvenlik Merkezi özelliklerinin kullanılabilirliğini gösterir.
 
-|Hizmet|Öneriler (ücretsiz)|Güvenlik uyarıları (Standart)|Güvenlik açığı değerlendirmesi (Standart)|
+|Hizmet|Öneriler (Ücretsiz)|Güvenlik uyarıları (Standart)|Güvenlik açığı değerlendirmesi (Standart)|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
-|Azure Otomasyonu hesabı|✔|-|-|
+|Azure Otomasyon hesabı|✔|-|-|
 |Azure Batch hesabı|✔|-|-|
 |Azure Blob Depolama|✔|✔|-|
 |Redis için Azure Önbelleği|✔|-|-|
 |Azure Cloud Services|✔|-|-|
 |Azure Bilişsel Arama|✔|-|-|
 |Azure Container Kayıt Defteri|-|-|✔|
-|Azure Cosmos DB *|-|✔|-|
+|Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
 |Azure Data Lake Storage|✔|-|-|
-|MySQL için Azure veritabanı *|✔|✔|-|
-|PostgreSQL için Azure veritabanı *|✔|✔|-|
-|Azure Event Hubs ad alanı|✔|-|-|
+|MySQL için Azure Veritabanı*|✔|✔|-|
+|PostgreSQL için Azure Veritabanı*|✔|✔|-|
+|Azure Etkinlik Hub'ları ad alanı|✔|-|-|
 |Azure İşlevleri uygulaması|✔|-|-|
 |Azure Key Vault|✔|✔ *|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
-|Azure SQL veritabanları|✔|✔|✔|
-|Azure Service Bus ad alanı|✔|-|-|
-|Azure Service Fabric hesabı|✔|-|-|
-|Azure depolama hesapları|✔|-|-|
+|Azure SQL Veritabanları|✔|✔|✔|
+|Azure Hizmet Veri Servisi ad alanı|✔|-|-|
+|Azure Hizmet Kumaşı hesabı|✔|-|-|
+|Azure Depolama hesapları|✔|-|-|
 |Azure Stream Analytics|✔|-|-|
-|Azure Aboneliği|✔ * *|✔|-|
-|Azure Sanal Ağ</br> (alt ağlar, NIC 'ler ve ağ güvenlik grupları dahil)|✔|-|-|
+|Azure Aboneliği|✔ **|✔|-|
+|Azure Sanal Ağ</br> (alt ağlar, NIC'ler ve ağ güvenlik grupları dahil)|✔|-|-|
 
-\* bu özellikler Şu anda önizlemede destekleniyor.
+\*Bu özellikler şu anda önizlemede desteklenir.
 
-\*\* Azure Active Directory (Azure AD) önerileri yalnızca standart abonelikler için kullanılabilir.
+\*\*Azure Etkin Dizin (Azure AD) önerileri yalnızca Standart abonelikler için kullanılabilir.

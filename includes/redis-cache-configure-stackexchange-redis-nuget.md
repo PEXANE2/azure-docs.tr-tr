@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: yegu
 ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68286325"
 ---
 .NET uygulamaları, önbellek istemcisi uygulamalarının yapılandırmasını basitleştiren bir NuGet paketi kullanarak Visual Studio’da yapılandırılabilecek **StackExchange.Redis** Cache istemcisi kullanabilir. 
 
 > [!NOTE]
-> Daha fazla bilgi için bkz. [StackExchange. redsıs](https://github.com/StackExchange/StackExchange.Redis) GitHub sayfası ve [redsıs Istemci belgeleri için StackExchange. Azure önbelleği](https://github.com/StackExchange/StackExchange.Redis#documentation).
+> Daha fazla bilgi için [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) GitHub sayfasına ve [Redis istemci belgeleri için StackExchange.Azure Önbelleği sayfasına](https://github.com/StackExchange/StackExchange.Redis#documentation)bakın.
 >
 >
 
@@ -31,10 +31,10 @@ Arama metin kutusuna **StackExchange.Redis** ya da **StackExchange.Redis.StrongN
 
 ![StackExchange.Redis NuGet paketi](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
-NuGet paketi indirir ve istemci uygulamanızı Azure Cache Redis StackExchange.Azure önbelleği için Redis istemcisini ile erişmek için gerekli derleme başvurularını ekler.
+NuGet paketi indirir ve Redis istemcisi için StackExchange.Azure Önbelleği ile Redis için Azure Önbelleğine erişmek için istemci uygulamanız için gerekli montaj başvurularını ekler.
 
 > [!NOTE]
-> Daha önce projenizi StackExchange.Redis kullanacak şekilde yapılandırdıysanız **NuGet Paket Yöneticisi**’nden paket güncelleştirmelerini denetleyebilirsiniz. Denetleyip StackExchange.Redis NuGet paketinin güncelleştirilmiş sürümlerini yüklemek için tıklayın **güncelleştirmeleri** içinde **NuGet Paket Yöneticisi** penceresi. StackExchange.Redis NuGet paketin bir güncelleştirme varsa projenizi güncelleştirilmiş sürüme yükseltebilirsiniz.
+> Daha önce projenizi StackExchange.Redis kullanacak şekilde yapılandırdıysanız **NuGet Paket Yöneticisi**’nden paket güncelleştirmelerini denetleyebilirsiniz. StackExchange.Redis NuGet paketinin güncelleştirilmiş sürümlerini kontrol etmek ve yüklemek için **NuGet Paket Yöneticisi** penceresinde **güncelleştirmeleri** tıklatın. StackExchange.Redis NuGet paketin bir güncelleştirme varsa projenizi güncelleştirilmiş sürüme yükseltebilirsiniz.
 >
 >
 

@@ -1,48 +1,48 @@
 ---
-title: Azure Resource Manager şablonu örnekleri
-description: Farklı yapılandırmalarda Azure Container Instances dağıtmak için Azure Resource Manager şablon örnekleri bulma
+title: Azure Kaynak Yöneticisi şablon örnekleri
+description: Azure Kapsayıcı Örneklerini farklı yapılandırmalarda dağıtmak için Azure Kaynak Yöneticisi şablon örneklerini bulma
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981660"
 ---
-# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances için Azure Resource Manager Şablonlar
+# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Kapsayıcı Örnekleri için Azure Kaynak Yöneticisi şablonları
 
-Aşağıdaki örnek şablonlar çeşitli yapılandırmalarda kapsayıcı örnekleri dağıtır.
+Aşağıdaki örnek şablonlar kapsayıcı örneklerini çeşitli yapılandırmalarda dağıtMaktadır.
 
-Dağıtım seçenekleri için [dağıtım](#deployment) bölümüne bakın. Kendi şablonlarınızı oluşturmak isterseniz, Azure Container Instances [Kaynak Yöneticisi Şablon başvuru][ref] ayrıntıları şablon biçimi ve kullanılabilir özellikleri.
+Dağıtım seçenekleri için [Dağıtım](#deployment) bölümüne bakın. Kendi şablonlarınızı oluşturmak istiyorsanız, Azure Kapsayıcı Örnekleri [Kaynak Yöneticisi şablon başvuru][ref] bilgileri şablon biçimi ve kullanılabilir özellikler.
 
 ## <a name="sample-templates"></a>Örnek şablonlar
 
 | | |
 |-|-|
 | **Uygulamalar** ||
-| [WordPress][app-wp] | Bir bir WordPress web sitesi ve bir kapsayıcı grubunda MySQL veritabanı oluşturur. WordPress sitesi içeriği ve MySQL veritabanı, bir Azure dosya paylaşımında kalıcı hale getirilir. Ayrıca, WordPress 'e genel ağ erişimini açığa çıkarmak için bir uygulama ağ geçidi oluşturur. |
-| [SQL Server ve IIS ile MS NAV][app-nav] | Tam özellikli bir yerleşik Dynamics NAV/Dynamics 365 Business Central ortamıyla tek bir Windows kapsayıcısını dağıtır. |
-| **Dörtten** ||
-| [emptyDir][vol-emptydir] | Bir emptyDir birimini paylaşan iki Linux kapsayıcısı dağıtır. |
-| [gitRepo][vol-gitrepo] | GitHub deposunun klontığı bir Linux kapsayıcısını dağıtır ve onu bir birim olarak takar. |
-| [gizlilikle][vol-secret] | Gizli bir birim olarak bağlanmış bir PFX sertifikası ile Linux kapsayıcısı dağıtır. |
-| **Ağ** ||
-| [UDP tarafından sunulan kapsayıcı][net-udp] | UDP bağlantı noktasını kullanıma sunan bir Windows veya Linux kapsayıcısı dağıtır. |
-| [Ortak IP ile Linux kapsayıcısı][net-publicip] | Genel IP aracılığıyla erişilebilen tek bir Linux kapsayıcısını dağıtır. |
-| [Sanal ağ ile bir kapsayıcı grubu dağıtma (Önizleme)][net-vnet] | Yeni bir sanal ağ, alt ağ, ağ profili ve kapsayıcı grubu dağıtır. |
+| [WordPress][app-wp] | Bir kapsayıcı grubunda bir WordPress web sitesi ve MySQL veritabanı oluşturur. WordPress site içeriği ve MySQL veritabanı, Azure Dosyaları paylaşımına devam etti. Ayrıca WordPress için ortak ağ erişimi ortaya çıkarmak için bir uygulama ağ geçidi oluşturur. |
+| [SQL Server ve IIS ile MS NAV][app-nav] | Tam özellikli bağımsız Dynamics NAV / Dynamics 365 Business Central ortamına sahip tek bir Windows kapsayıcısı dağıtır. |
+| **Birim** ||
+| [emptyDir][vol-emptydir] | BoşDir hacmini paylaşan iki Linux kapsayıcısı dağıtır. |
+| [gitRepo][vol-gitrepo] | Bir GitHub repo klonlar ve bir hacim olarak bağlar bir Linux kapsayıcı dağıtır. |
+| [Gizli][vol-secret] | Gizli bir ses olarak monte edilmiş PFX sertifikasına sahip bir Linux kapsayıcısı dağıtır. |
+| **Ağ Oluşturma** ||
+| [UDP maruz konteyner][net-udp] | UDP bağlantı noktasını ortaya çıkaran bir Windows veya Linux kapsayıcısı dağıtır. |
+| [Kamu IP ile Linux konteyner][net-publicip] | Herkese açık bir IP üzerinden erişilebilen tek bir Linux kapsayıcısı dağıtıyor. |
+| [Sanal ağa sahip bir kapsayıcı grubunu dağıtma (önizleme)][net-vnet] | Yeni bir sanal ağ, alt ağ, ağ profili ve kapsayıcı grubu dağıtıyor. |
 | **Azure kaynakları** ||
-| [Azure depolama hesabı ve dosya paylaşma oluşturma][az-files] | Bir depolama hesabı ve bir Azure dosya paylaşma oluşturmak için bir kapsayıcı örneğinde Azure CLı kullanır.
+| [Azure Depolama hesabı oluşturma ve Dosyalar paylaşımı][az-files] | Bir depolama hesabı ve Azure Dosyaları paylaşımı oluşturmak için kapsayıcı örneğinde Azure CLI'yi kullanır.
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
-Kaynak Yöneticisi şablonlarıyla kaynak dağıtmaya yönelik çeşitli seçenekleriniz vardır:
+Kaynak Yöneticisi şablonlarıyla kaynak dağıtmak için çeşitli seçenekleriniz vardır:
 
 [Azure CLI][deploy-cli]
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure Portal][deploy-portal]
+[Azure portalında][deploy-portal]
 
 [REST API][deploy-rest]
 

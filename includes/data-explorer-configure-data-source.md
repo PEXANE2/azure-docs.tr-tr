@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
 ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78304920"
 ---
 ## <a name="configure-the-data-source"></a>Veri kaynağını yapılandırma
 
-Pano aracınız için bir veri kaynağı olarak Azure Veri Gezgini yapılandırmak için aşağıdaki adımları gerçekleştirirsiniz. Bu bölümde bu adımları daha ayrıntılı bir şekilde ele alacağız:
+Azure Veri Gezgini'ni pano aracınız için veri kaynağı olarak yapılandırmak için aşağıdaki adımları gerçekleştirirsiniz. Bu adımları bu bölümde daha ayrıntılı olarak ele alacağız:
 
-1. Azure Active Directory (Azure AD) hizmet sorumlusu oluşturun. Hizmet sorumlusu, pano aracınız tarafından Azure Veri Gezgini hizmetine erişmek için kullanılır.
+1. Azure Etkin Dizin (Azure AD) hizmet ilkesi oluşturun. Hizmet sorumlusu, Azure Veri Gezgini hizmetine erişmek için pano aracınız tarafından kullanılır.
 
-1. Azure AD hizmet sorumlusunu Azure Veri Gezgini veritabanındaki *görüntüleyiciler* rolüne ekleyin.
+1. Azure Veri Gezgini veritabanındaki *görüntüleyenrolüne* Azure AD hizmet ilkesini ekleyin.
 
-1. Azure AD hizmet sorumlusunun bilgilerine göre Pano aracı bağlantı özelliklerinizi belirtin, ardından bağlantıyı test edin.
+1. Azure AD hizmet sorumlusundaki bilgilere dayanarak pano araç bağlantı özelliklerinizi belirtin ve bağlantıyı test edin.
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Hizmet sorumlusunu [Azure Portal](#azure-portal) veya [Azure CLI](#azure-cli) komut satırı deneyimini kullanarak oluşturabilirsiniz. Kullandığınız yöntemden bağımsız olarak, oluşturulduktan sonra sonraki adımlarda kullanacağınız dört bağlantı özelliği için değerler alırsınız.
+[Azure portalında](#azure-portal) veya [Azure CLI](#azure-cli) komut satırı deneyimini kullanarak hizmet ilkesini oluşturabilirsiniz. Hangi yöntemi kullanırsanız kullanın, oluşturmadan sonra daha sonraki adımlarda kullanacağınız dört bağlantı özelliği için değerler alırsınız.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portalında
 
-1. Hizmet sorumlusu oluşturmak için [Azure Portal belgelerindeki](/azure/active-directory/develop/howto-create-service-principal-portal)yönergeleri izleyin.
+1. Hizmet ilkesini oluşturmak için Azure [portal belgelerindeki](/azure/active-directory/develop/howto-create-service-principal-portal)yönergeleri izleyin.
 
-    1. [Uygulamayı bir role ata](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) bölümünde, Azure Veri Gezgini kümenize bir **okuyucu** rol türü atayın.
+    1. Uygulamayı [bir rol bölümüne atayın,](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) Azure Veri **Reader** Gezgini kümenize bir rol türü Reader atayın.
 
-    1. [Oturum açmak için değerleri Al](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde, adımlarda kapsanan üç özellik değerini kopyalayın: **Dizin KIMLIĞI** (kiracı KIMLIĞI), **uygulama kimliği**ve **parola**.
+    1. Oturum [açma değerleri bölümünde,](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) adımlarda kapsanan üç özellik değerini kopyalayın: **Dizin Kimliği** (kiracı Kimliği), **Uygulama Kimliği**ve **Parola.**
 
-1. Azure portal, **abonelikler** ' i seçin ve ardından hizmet sorumlusunu oluşturduğunuz aboneliğin kimliğini kopyalayın.
+1. Azure portalında, **Abonelikler'i** seçin ve hizmet ilkesini oluşturduğunuz abonelik için kimliği kopyalayın.
 
-    ![Abonelik KIMLIĞI-Portal](media/data-explorer-configure-data-source/subscription-id-portal.png)
+    ![Abonelik Kimliği - portal](media/data-explorer-configure-data-source/subscription-id-portal.png)
 
 #### <a name="azure-cli"></a>Azure CLI
 
-1. Hizmet sorumlusu oluşturun. Uygun bir kapsamı ve `reader`rol türünü ayarlayın.
+1. Bir hizmet ilkesi oluşturun. Uygun bir kapsam ve rol `reader`türü ayarlayın.
 
     ```azurecli
     az ad sp create-for-rbac --name "https://{UrlToYourDashboard}:{PortNumber}" --role "reader" \
                              --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroupName}
     ```
 
-    Daha fazla bilgi için bkz. [Azure CLI Ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli).
+    Daha fazla bilgi için bkz. Azure [CLI ile bir Azure hizmet ilkesi oluştur.](/cli/azure/create-an-azure-service-principal-azure-cli)
 
-1. Komut aşağıdaki gibi bir sonuç kümesi döndürür. Üç özellik değerini kopyalayın: **AppID**, **parola**ve **kiracı**.
+1. Komut aşağıdaki gibi bir sonuç kümesi döndürür. Üç özellik değerlerini kopyalayın: **appID,** **şifre**ve **kiracı**.
 
 
     ```json
@@ -67,50 +67,50 @@ Hizmet sorumlusunu [Azure Portal](#azure-portal) veya [Azure CLI](#azure-cli) ko
     az account list --output table
     ```
 
-    Uygun abonelik KIMLIĞINI kopyalayın.
+    Uygun abonelik kimliğini kopyalayın.
 
-    ![Abonelik KIMLIĞI-CLı](media/data-explorer-configure-data-source/subscription-id-cli.png)
+    ![Abonelik Kimliği - CLI](media/data-explorer-configure-data-source/subscription-id-cli.png)
 
-### <a name="add-the-service-principal-to-the-viewers-role"></a>Hizmet sorumlusunu görüntüleyiciler rolüne ekleyin
+### <a name="add-the-service-principal-to-the-viewers-role"></a>Hizmet ilkesini görüntüleyenrolüne ekleme
 
-Artık bir hizmet sorumlusu olduğuna göre, Azure Veri Gezgini veritabanındaki *görüntüleyiciler* rolüne eklersiniz. Bu görevi Azure portal **izinler** altında veya bir yönetim komutu kullanarak **sorgu** altında gerçekleştirebilirsiniz.
+Artık bir hizmet yöneticiliğiniz olduğuna göre, bunu Azure Veri Gezgini veritabanındaki *görüntüleyenrolüne* eklersiniz. Bu görevi Azure portalında **İzinler** altında veya bir yönetim komutunu kullanarak **Sorgu** altında gerçekleştirebilirsiniz.
 
-#### <a name="azure-portal---permissions"></a>Azure portal Izinleri
+#### <a name="azure-portal---permissions"></a>Azure portalı - İzinler
 
-1. Azure portal Azure Veri Gezgini kümenize gidin.
+1. Azure portalında Azure Veri Gezgini kümenize gidin.
 
-1. **Genel bakış** bölümünde StormEvents örnek verilerinin bulunduğu veritabanını seçin.
+1. Genel **Bakış** bölümünde, StormEvents örnek verileri içeren veritabanını seçin.
 
-    ![Veritabanı Seç](media/data-explorer-configure-data-source/select-database.png)
+    ![Veritabanı seçin](media/data-explorer-configure-data-source/select-database.png)
 
-1. **İzinler** ' i seçin ve ardından **ekleyin**.
+1. **İzinleri** seçin ve **sonra Ekle.**
 
     ![Veritabanı izinleri](media/data-explorer-configure-data-source/database-permissions.png)
 
-1. **Veritabanı Izinleri Ekle**altında, **Görüntüleyici** rolünü seçip **sorumlular**' ı seçin.
+1. **Veritabanı izinleri ekle**altında, **Görüntüleyici** rolünü seçin ve **asılları seçin.**
 
     ![Veritabanı izinleri ekleme](media/data-explorer-configure-data-source/add-permission.png)
 
-1. Oluşturduğunuz hizmet sorumlusu için arama yapın. Sorumluyu seçip öğesini **seçin**.
+1. Oluşturduğunuz hizmet müdürünü arayın. Anaparayı seçin, sonra **seçin.**
 
-    ![Azure portal izinleri yönetme](media/data-explorer-configure-data-source/new-principals.png)
+    ![Azure portalında izinleri yönetme](media/data-explorer-configure-data-source/new-principals.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet'i**seçin.
 
-    ![Azure portal izinleri yönetme](media/data-explorer-configure-data-source/save-permission.png)
+    ![Azure portalında izinleri yönetme](media/data-explorer-configure-data-source/save-permission.png)
 
-#### <a name="management-command---query"></a>Yönetim komutu-sorgu
+#### <a name="management-command---query"></a>Yönetim komutu - Sorgula
 
-1. Azure portal Azure Veri Gezgini kümenize gidin ve **sorgu**' yı seçin.
+1. Azure portalında Azure Veri Gezgini kümenize gidin ve **Sorgula'yı**seçin.
 
     ![Sorgu](media/data-explorer-configure-data-source/query.png)
 
-1. Sorgu penceresinde aşağıdaki komutu çalıştırın. Azure portal veya CLı 'den uygulama KIMLIĞI ve kiracı KIMLIĞINI kullanın.
+1. Sorgu penceresinde aşağıdaki komutu çalıştırın. Azure portalından veya CLI'deki uygulama kimliğini ve kiracı kimliğini kullanın.
 
     ```kusto
     .add database {TestDatabase} viewers ('aadapp={ApplicationID};{TenantID}')
     ```
 
-    Komut aşağıdaki gibi bir sonuç kümesi döndürür. Bu örnekte, ilk satır veritabanında var olan bir kullanıcıya yöneliktir ve ikinci satır, yeni eklenen hizmet sorumlusu içindir.
+    Komut aşağıdaki gibi bir sonuç kümesi döndürür. Bu örnekte, ilk satır veritabanında varolan bir kullanıcı için, ikinci satır ise yeni eklenen hizmet ilkesi içindir.
 
     ![Sonuç kümesi](media/data-explorer-configure-data-source/result-set.png)

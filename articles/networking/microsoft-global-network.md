@@ -1,6 +1,6 @@
 ---
-title: Microsoft küresel ağ-Azure
-description: Microsoft 'un hızlı ve güvenilir küresel ağı nasıl sağladığını açıklar
+title: Microsoft global ağı - Azure
+description: Microsoft'un hızlı ve güvenilir küresel ağını nasıl oluşturduğunu açıklar
 services: networking
 documentationcenter: ''
 author: KumudD
@@ -14,61 +14,61 @@ ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453066"
 ---
 # <a name="microsoft-global-network"></a>Microsoft küresel ağı
 
-Microsoft, dünyanın en büyük omurga ağlarını sahipliğinde ve bu ağlardan birini işletmektedir. Bu küresel ve gelişmiş mimari, 100.000 mil 'tan daha fazla yayılan veri merkezlerimizi ve müşterilerimizi bağlar. 
+Microsoft, dünyanın en büyük omurga ağlarından birine sahip ve çalışır. 100.000 milden fazla yayılan bu küresel ve sofistike mimari, veri merkezlerimizi ve müşterilerimizi birbirine bağlar. 
  
-Dünyanın her gününde, dünyanın dört bir yanındaki müşteriler Microsoft Azure, Bing, Dynamics 365, Office 365, XBox ve diğer birçok kişiye bağlanır ve bu istekleri iletir. Tür ne olursa olsun, müşteriler hizmetlerimizden anında güvenilirlik ve yanıt verme bekler. 
+Dünyanın dört bir yanındaki müşteriler her gün trilyonlarca isteği Microsoft Azure, Bing, Dynamics 365, Office 365, XBox ve diğerlerine bağlar ve iletir. Türü ne olursa olsun, müşteriler hizmetlerimizden anında güvenilirlik ve yanıt beklerler. 
  
-[Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN), harika bir bulut deneyimi sunmanın merkezi bir parçasıdır. Microsoft [veri merkezlerimizi](https://azure.microsoft.com/global-infrastructure/) 54 Azure bölgesinde ve büyük ölçekli Edge düğümlerine bağlamak, dünya çapındaki dünya genelinde, küresel ağımız her türlü talebi karşılamak için kullanılabilirlik, kapasite ve esneklik sunar.
+[Microsoft küresel ağı](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN), harika bir bulut deneyimi sunmanın merkezi bir parçasıdır. Microsoft veri [merkezlerimizi](https://azure.microsoft.com/global-infrastructure/) 54 Azure bölgesine ve dünyanın dört bir yanına stratejik olarak yerleştirilen büyük kenar düğümleri örgüsünü birbirine bağlayan küresel ağımız, her türlü talebi karşılama esnekliği, kullanılabilirlik, kapasite ve esneklik sunar.
 
 ![Microsoft küresel ağı](./media/microsoft-global-network/microsoft-global-wan.png)
  
-## <a name="get-the-premium-cloud-network"></a>Premium bulut ağını al
+## <a name="get-the-premium-cloud-network"></a>Birinci sınıf bulut ağına göz atın
  
-Microsoft Cloud kullandığınızda [mümkün olan en iyi deneyim](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) için kolaylık vardır. Müşteri trafiği, stratejik olarak yerleştirilmiş kenar düğümlerimiz aracılığıyla küresel ağımızı girdiğinde, verileriniz ışığın hızındaki en iyileştirilmiş yollarla hareket eder. Bu, en iyi performans için en iyi gecikme süresini sağlar. Bu kenar düğümleri, 145 ' den fazla konumdaki binlerce bağlantı aracılığıyla 3500 ' den fazla benzersiz Internet iş ortağı (eş) ile birbirine bağlı olarak, bağlantı stratejimizin temelini sağlar. 
+Microsoft bulutu kullandığınızda [mümkün olan en iyi deneyimi](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) tercih etmek kolaydır. Müşteri trafiğinin stratejik olarak yerleştirilmiş kenar düğümlerimiz le küresel ağımıza girdiği andan itibaren verileriniz ışık hızına yakın optimize edilmiş rotalardan geçer. Bu, en iyi performans için en iyi gecikme yi sağlar. Tümü 3500'den fazla benzersiz Internet ortağına (eş) 145'ten fazla noktadaki binlerce bağlantı aracılığıyla birbirine bağlı olan bu kenar düğümleri, ara bağlantı stratejimizin temelini oluşturur. 
  
-Londra 'dan Tokyo 'ya veya Washington DC 'den Los Angeles 'a bağlanıp, ağ performansının gecikmesi ve gecikme süresi, değişim, paket kaybı ve aktarım hızı gibi şeyler tarafından etkilendi.  Microsoft 'ta, aktarım bağlantıları 'nın aksine doğrudan bağlantılar tercih ediyoruz ve kullanırız, bu, Yanıt trafiği simetrik olarak tutar ve sıçramalar ve yolların olabildiğince kısa ve basit olmasını sağlar. 
+İster Londra'dan Tokyo'ya, ister Washington DC'den Los Angeles'a bağlanın, ağ performansı gecikme, gerginlik, paket kaybı ve iş sonu gibi şeylerden etkilenir ve ölçülür.  Microsoft olarak, geçiş bağlantılarıyerine doğrudan ara bağlantıları tercih eder ve kullanırız, bu durum yanıt trafiğini simetrik tutar ve atlamaları, tarafları ve yolları mümkün olduğunca kısa ve basit tutmaya yardımcı olur. 
 
-Örneğin, Londra 'daki bir Kullanıcı Tokyo 'daki bir hizmete erişmeye çalışırsa, Internet trafiği Londra 'daki kenarlarımızın birini, Fransa 'dan Microsoft WAN 'dan, Avrupa ve Hindistan arasındaki Trans-Arabistan yollarımızla, sonra da hizmetin barındırıldığı yerde Japonya 'dan geçer. Yanıt trafiği simetrik. Bu bazen [soğuk Potato yönlendirme](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) olarak adlandırılır. Bu, trafiğin, kapatmadan önce mümkün olduğunca uzun süre Microsoft ağ üzerinde kalması anlamına gelir.  
+Örneğin, Londra'daki bir kullanıcı Tokyo'daki bir hizmete erişmeye çalışırsa, Internet trafiği Londra'daki sınırlarımızdan birine girer, Microsoft WAN üzerinden Fransa üzerinden, Avrupa ve Hindistan arasındaki Trans-Arabistan yollarımız üzerinden ve hizmetin barındırıldığı Japonya'ya gider. Tepki trafiği simetriktir. Bu bazen [soğuk patates yönlendirmesi](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) olarak adlandırılır, bu da biz teslim etmeden önce trafiğin Microsoft ağında mümkün olduğunca uzun süre kaldığı anlamına gelir.  
   
-Bu nedenle, Microsoft hizmetlerini kullanırken herhangi bir ve tüm trafik anlamına gelir. Evet, Microsoft Azure veya sanal makineler, Office 365, XBox, SQL DB, depolama ve sanal ağlar gibi Microsoft Hizmetleri arasındaki veri merkezleri arasındaki tüm trafik, en iyi şekilde emin olmak için küresel ağımızda ve hiçbir şekilde genel Internet üzerinden yönlendirilir performans ve bütünlük.  
+Yani, Microsoft hizmetlerini kullanırken herhangi bir ve tüm trafik anlamına mı geliyor? Evet, veri merkezleri, Microsoft Azure içinde veya Sanal Makineler, Office 365, XBox, SQL DBs, Depolama ve sanal ağlar gibi Microsoft hizmetleri arasındaki tüm trafik, en iyi şekilde sağlamak için genel ağımız içinde ve hiçbir zaman genel Internet üzerinden yönlendirilir performans ve bütünlük.  
  
-Fiber kapasitesinde çok büyük yatırım ve metro, berkik ve denizsel yolların üzerinde çeşitliliğe sahip olmak, bulut ve çevrimiçi hizmetler üstün büyümesinin yanı sıra tutarlı ve yüksek hizmet düzeyini korumamız için çok önemlidir. Küresel ağımızda son eklemeler, [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) alt deniz kablonuz, sektörün, Kbao, Ispanya ve Virginia plaj, Virginia, USA ve New York, ABD ve Dublin, Irlanda ve [yeni çapraz Pasifik (NCP](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) ) arasında, Tokyo, Japonya ve Portland, Oregon ve ABD arasında [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) olan ilk açık satır sistemi (as). 
- 
-
-## <a name="our-network-is-your-network"></a>Ağınız ağınız
-
-Her zaman en iyi performansı elde etmek için, ağa büyük yatırımlarla birlikte iki adet deneyim sunuyoruz. İşletmeler, ağ varlıklarımızın tam avantajlarından yararlanabilir ve en üstte gelişmiş kaplama mimarileri oluşturabilir. 
- 
-Microsoft Azure, müşterilerin ağ gereksinimlerini her yerde hızla ve kolayca oluşturmasına, genişletmelerine ve karşılamasına olanak tanıyan, en zengin hizmet portföyünü ve yeteneklerini sunmaktadır. Bağlantı Hizmetleri ailemiz bölgeler, karma ve bulut içi Noktadan siteye ve siteden siteye mimarilerin yanı sıra genel IP aktarma senaryolarında sanal ağ eşlemesi de yaymaktadır.  Kendi veri merkezini veya ağını Azure 'a bağlamak isteyen kuruluşlar ya da büyük veri alımı veya transit gereksinimlerine sahip müşteriler, [ExpressRoute](../expressroute/expressroute-introduction.md)ve [ExpressRoute Direct](../expressroute/expressroute-erdirect-about.md) , dünyanın dört bir yanındaki eşleme konumlarında doğrudan Microsoft 'un küresel ağı 'Nda 100 GB/sn 'ye kadar bant genişliği sağlar.  
- 
-[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) , HIZMET sağlayıcınızın WAN uygulamasını tamamlamak ve şirket içi sitelerinizi dünya çapında bağlamak üzere tasarlanmıştır. Genel bir işlem çalıştırırsanız, Microsoft Global Network kullanarak tüm genel siteleriniz bağlamak için, tercih ettiğiniz ve yerel hizmet sağlayıcılarınız ile birlikte ExpressRoute Global Reach kullanabilirsiniz. Yeni ağınızı bulutta (WAN) çok sayıda dalı kapsayacak şekilde genişletmek, Azure sanal WAN aracılığıyla, Dallarınızı SDWAN & VPN cihazlarıyla Microsoft küresel ağına sorunsuzca bağlama olanağını (yani, Yerleşik kullanım kolaylığı ve otomatik bağlantı ve yapılandırma yönetimi ile müşteri Içi ekipman veya CPE). 
- 
-[Küresel VNET eşlemesi](../virtual-network/virtual-network-peering-overview.md) , müşterilerin bölgeler arasında iki veya daha fazla Azure sanal ağını sorunsuz bir şekilde bağlanmasına olanak sağlar. Eşlendikten sonra, sanal ağlar bir tane olarak görünür. Eşlenen sanal ağlardaki sanal makineler arasındaki trafik, Microsoft omurga altyapısı aracılığıyla yönlendirilir, ancak aynı sanal ağdaki sanal makineler arasında çok benzer trafik, yalnızca özel IP adresleri üzerinden yönlendirilir. 
+Metro, karasal ve denizaltı yollarında fiber kapasitesi ve çeşitliliğine yapılan büyük yatırımlar, bulut ve çevrimiçi hizmetlerimizin aşırı büyümesini körüklerken tutarlı ve yüksek hizmet düzeyine sahip olmamız açısından çok önemlidir. Küresel ağımıza son eklemeler bizim [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) denizaltı kablosu, sektörün ilk Açık Hat Sistemi (OLS) denizaltı üzerinde, Bilbao, İspanya ve Virginia Beach, Virginia, ABD yanı sıra New York, ABD ve Dublin, İrlanda ve [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) arasında [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) tokyo, Japonya ve Portland, Oregon, ABD arasında. 
  
 
-## <a name="well-managed-using-software-defined-innovation"></a>Yazılım tanımlı yeniliği kullanarak iyi yönetiliyor
+## <a name="our-network-is-your-network"></a>Ağımız sizin ağınızdır
 
-Dünyada önde gelen bulutlardan birini çalıştırırken Microsoft, yüksek performanslı küresel altyapı oluşturma ve yönetme konusunda çok sayıda öngörü ve deneyim kazanmıştır.  
+Her zaman en iyi performansı sağlamak için, ağa yapılan büyük yatırımlarla birlikte 20 yıllık deneyimimizi ortaya koyduk. İşletmeler ağ varlıklarımızdan tam olarak yararlanabilir ve üstte gelişmiş bindirme mimarileri oluşturabilir. 
  
-Sağlam bir işlemsel ilkeler kümesine uyduk: 
+Microsoft Azure, müşterilerin ağ gereksinimlerini her yerde hızlı ve kolay bir şekilde oluşturmasına, genişletmesine ve karşılamasını sağlayan en zengin hizmet ve yetenek portföyünü sunar. Bağlantı hizmetleri ailemiz, bölgeler, karma ve bulut içi noktadan siteye ve siteden siteye mimarilerin yanı sıra küresel IP geçiş senaryoları arasında sanal ağ izleme yi kapsar.  Kendi veri merkezlerini veya ağlarını Azure'a bağlamak isteyen işletmeler veya büyük veri alma veya aktarım gereksinimleri olan müşteriler için [ExpressRoute](../expressroute/expressroute-introduction.md)ve [ExpressRoute Direct,](../expressroute/expressroute-erdirect-about.md) 100 Gbps'ye kadar bant genişliği seçenekleri sunar ve dünya genelindeki konumlarda doğrudan Microsoft'un küresel ağına.  
  
-- Ağın çeşitli katmanlarında, en iyi şekilde kullanılan anahtarlama donanımını kullanın.  
-- Son kullanıcılara sıfır etki ile yeni özellikler dağıtın.  
-- Güncellemeleri, dünyanın her yanında güvenli ve güvenilir bir şekilde kullanıma alın. Hafta yerine saatler.  
-- Bulut ölçekli derin telemetri ve tamamen otomatik hata hafifletme kullanın.  
-- Ağdaki tüm donanım öğelerini denetlemek için Birleşik ve yazılım tanımlı ağ teknolojisini kullanın.  Çoğaltmayı ortadan kaldırma ve başarısızlığı azaltma. 
+[ExpressRoute Global Reach,](../expressroute/expressroute-global-reach.md) servis sağlayıcınızın WAN uygulamasını tamamlamak ve şirket içi sitelerinizi dünya çapında bağlamak için tasarlanmıştır. Küresel bir işlem çalıştırAn ExpressRoute Global Reach'i, Microsoft küresel ağını kullanarak tüm küresel sitelerinizi bağlamak için tercih ettiğiniz ve yerel hizmet sağlayıcılarınızla birlikte kullanabilirsiniz. Buluttaki yeni ağınızı (WAN) çok sayıda şube yi kapsayacak şekilde genişletmek Azure Virtual WAN aracılığıyla gerçekleştirilebilir ve bu da şubelerinizi SDWAN & VPN aygıtları (diğer bir deyişle Müşteri Dayanak Donanımı veya CPE) ile Microsoft global ağına dahili kullanım kolaylığı ve otomatik bağlantı ve yapılandırma yönetimiyle sorunsuz bir şekilde bağlama olanağı sağlar. 
  
-Bu ilkeler, ağın tüm katmanları için geçerlidir: Konak ağ arabiriminden, geçiş dengeleyiciler gibi veri merkezindeki ağ işlevleri, Trafik Mühendisliği platformumuza ve optik ağlarımızla WAN 'a kadar tüm şekilde çalışır.  
+[Global VNet eşleme,](../virtual-network/virtual-network-peering-overview.md) müşterilerin bölgeler arasında iki veya daha fazla Azure sanal ağını sorunsuz bir şekilde bağlamasını sağlar. Bir kez bakıldıktan sonra, sanal ağlar bir olarak görünür. Eşlenen sanal ağlardaki sanal makineler arasındaki trafik, tıpkı trafiğin aynı sanal ağdaki sanal makineler arasında yalnızca özel IP adresleri üzerinden yönlendirilmiş olması gibi Microsoft omurga altyapısı üzerinden yönlendirilir. 
  
-Azure 'un ve ağının üstel büyümesinin sonunda, genel ağ işlemlerini yönetmek için insan ıntuetmesinin artık güvenilemediğini belirten bir noktaya ulaşıldı. Ağ üzerinde uzun, orta ve kısa süreli değişiklikleri doğrulama gereksinimini karşılamak için, üretim ağınızdan daha fazla eşitleniyor ve benzetimi yapmak üzere bir platform geliştirdik. Yansıtılmış ortamlar oluşturma ve milyonlarca simülasyonu çalıştırma özelliği, yazılım ve donanım değişikliklerini ve bunların etkilerini test etmemizi ve bunları üretim platformumuza ve ağınıza işlemeden önce test etmemize olanak sağlar. 
+
+## <a name="well-managed-using-software-defined-innovation"></a>Yazılım tanımlı inovasyon kullanılarak iyi yönetilen
+
+Dünyanın önde gelen bulutlarından birini çalıştıran Microsoft, yüksek performanslı küresel altyapı oluşturma ve yönetme de birçok içgörü ve deneyim kazanmıştır.  
+ 
+Sağlam bir dizi operasyonel ilkeye bağlı kalıyoruz: 
+ 
+- Ağın çeşitli katmanlarında türünün en iyisi anahtarlama donanımını kullanın.  
+- Son kullanıcılara sıfır etkiyle yeni özellikler dağıtın.  
+- Güncellemeleri mümkün olduğunca hızlı bir şekilde filo genelinde güvenli ve güvenilir bir şekilde tamamlayın. Haftalar yerine saatler.  
+- Bulut ölçekli derin telemetri ve tam otomatik hata azaltma dan yararlanın.  
+- Ağdaki tüm donanım öğelerini denetlemek için birleşik ve yazılım tanımlı Ağ teknolojisini kullanın.  Yinelemeyi ortadan kaldırmak ve hataları azaltmak. 
+ 
+Bu ilkeler ağın tüm katmanları için geçerlidir: ana bilgisayar Ağ Arabirimi, anahtarlama platformu, Yük Dengeleyicileri gibi veri merkezindeki ağ fonksiyonları, trafik mühendisliği platformumuz ve optik ağlarımızla WAN'a kadar.  
+ 
+Azure'un ve ağının üstel büyümesi, sonunda insan sezgilerinin küresel ağ işlemlerini yönetmek için artık güvenilemeyecek bir noktaya geldi. Ağdaki uzun, orta ve kısa vadeli değişiklikleri doğrulamak için, üretim ağımızı sentetik olarak yansıtacak ve taklit etmek için bir platform geliştirdik. Yansıtılmış ortamlar oluşturma ve milyonlarca simülasyon çalıştırma becerisi, bunları üretim platformumuza ve ağımıza adamadan önce yazılım ve donanım değişikliklerini ve bunların etkilerini test etmemizi sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure 'da sunulan ağ hizmetleri hakkında daha fazla bilgi edinin](https://azure.microsoft.com/product-categories/networking/)
+- [Azure'da sağlanan ağ hizmetleri hakkında daha fazla bilgi edinin](https://azure.microsoft.com/product-categories/networking/)

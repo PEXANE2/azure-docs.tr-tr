@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde GetCurrentDateTime
-description: Azure Cosmos DB 'de SQL sistem işlevi GetCurrentDateTime hakkında bilgi edinin.
+description: Azure Cosmos DB'de SQL sistem fonksiyonu GetCurrentDateTime hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303911"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- ISO 8601 dizesi olarak geçerli UTC (Eşgüdümlü Evrensel Saat) Tarih ve saati döndürür.
+ Geçerli UTC (Eşgüdümlü Evrensel Saat) tarih ve saatini ISO 8601 dizesi olarak döndürür.
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -23,41 +23,41 @@ ms.locfileid: "78303911"
 GetCurrentDateTime ()
 ```
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Şu biçimdeki `YYYY-MM-DDThh:mm:ss.fffffffZ` şu andaki UTC Tarih ve saat ISO 8601 dize değerini döndürür:
+  Geçerli UTC tarih ve saati ISO 8601 `YYYY-MM-DDThh:mm:ss.fffffffZ` dize değerini aşağıdaki biçimde verir:
   
   |||
   |-|-|
   |YYYY|dört basamaklı yıl|
   |MM|iki basamaklı ay (01 = Ocak, vb.)|
-  |GG|iki basamaklı ayın günü (01 ile 31 arasında)|
-  |T|zaman öğelerinin başlangıcı için signifier|
-  |hh|iki basamaklı saat (00 ile 23 arasında)|
-  |mm|iki basamaklı dakika (00 ila 59)|
-  |ss|iki basamaklı saniyeler (00 ila 59)|
-  |. fffffff|yedi basamaklı kesirli saniye|
-  |Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi||
+  |DD|ayın iki basamaklı günü (01 ile 31 arası)|
+  |T|zaman öğelerinin başlangıcı için işaret|
+  |hh|iki basamaklı saat (00 -23)|
+  |mm|iki basamaklı dakika (00 -59)|
+  |ss|iki basamaklı saniye (00 - 59)|
+  |.fffffff|yedi basamaklı kesirli saniye|
+  |Z|UTC (Eşgüdümlü Evrensel Zaman) tasnörü||
   
-  ISO 8601 biçimi hakkında daha fazla bilgi için bkz. [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+  ISO 8601 formatı hakkında daha fazla bilgi için [ISO_8601 bkz.](https://en.wikipedia.org/wiki/ISO_8601)
 
 ## <a name="remarks"></a>Açıklamalar
 
-  GetCurrentDateTime () belirleyici olmayan bir işlevdir. 
+  GetCurrentDateTime() nondeterministic bir işlevdir. 
   
-  Döndürülen sonuç UTC 'dir.
+  Döndürülen sonuç UTC'dir.
 
-  Duyarlık, 100 nanosaniye değeriyle doğru 7 haneye sahiptir.
+  Hassasiyet, 100 nanosaniye lik bir doğrulukla 7 basamaktır.
 
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, GetCurrentDateTime () yerleşik işlevini kullanarak geçerli UTC Tarih zamanının nasıl alınacağını gösterir.
+  Aşağıdaki örnek, GetCurrentDateTime() yerleşik işlevini kullanarak geçerli UTC Tarih Saatini nasıl elde edilebildiğini gösterir.
   
 ```sql
 SELECT GetCurrentDateTime() AS currentUtcDateTime
 ```  
   
- Örnek bir sonuç kümesi aşağıda verilmiştir.
+ Burada bir örnek sonuç kümesidir.
   
 ```json
 [{
@@ -67,6 +67,6 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Tarih ve saat işlevleri Azure Cosmos DB](sql-query-date-time-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Tarih ve saat fonksiyonları Azure Cosmos DB](sql-query-date-time-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

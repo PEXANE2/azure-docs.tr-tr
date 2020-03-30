@@ -1,6 +1,6 @@
 ---
-title: Linux VM üzerinde PostgreSQL ayarlama
-description: Azure 'daki bir Linux sanal makinesine PostgreSQL yükleme ve yapılandırma hakkında bilgi edinin
+title: Linux VM'de PostgreSQL'i ayarlama
+description: Azure'daki bir Linux sanal makinesine PostgreSQL'i nasıl yükleyip yapılandırılamayı öğrenin
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,55 +15,55 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75747808"
 ---
-# <a name="install-and-configure-postgresql-on-azure"></a>Azure’da PostgreSQL yükleme ve yapılandırma
-PostgreSQL, Oracle ve DB2 ile benzer gelişmiş bir açık kaynaklı veritabanıdır. Tam ACID uyumluluğu, güvenilir işlem işleme ve çok sürümlü eşzamanlılık denetimi gibi kurumsal özellikli özellikler içerir. Ayrıca, ANSI SQL ve SQL/MED gibi standartları destekler (Oracle, MySQL, MongoDB için yabancı veri sarmalayıcıları dahil) ve diğer birçok kişi). 12 yordamsal diller, GıN ve GiST dizinleri, uzamsal veri desteği ve JSON ya da anahtar-değer tabanlı uygulamalar için birden çok NoSQL benzeri Özellik desteğiyle yüksek düzeyde genişletilebilir.
+# <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL'i Azure'da yükleme ve yapılandırma
+PostgreSQL Oracle ve DB2 benzer gelişmiş bir açık kaynak veritabanıdır. Tam ACID uyumluluğu, güvenilir işlem işleme ve çok sürümlü eşzamanlılık denetimi gibi kurumsal kullanıma hazır özellikleri içerir. Ayrıca ANSI SQL ve SQL/MED gibi standartları da destekler (Oracle, MySQL, MongoDB ve diğerleri için yabancı veri ambalajları dahil). 12'den fazla yordam dili, GIN ve GiST dizinleri, uzamsal veri desteği ve JSON veya anahtar değeri tabanlı uygulamalar için birden fazla NoSQL benzeri özellik desteği ile son derece genişletilebilir.
 
-Bu makalede, Linux çalıştıran bir Azure sanal makinesine PostgreSQL yükleme ve yapılandırma hakkında bilgi edineceksiniz.
+Bu makalede, Linux çalıştıran bir Azure sanal makinesine PostgreSQL'i nasıl yükleyeceğinizi ve yapılandıracağınızı öğreneceksiniz.
 
 
-## <a name="install-postgresql"></a>PostgreSQL yükleme
+## <a name="install-postgresql"></a>PostgreSQL Yükle
 > [!NOTE]
-> Bu öğreticiyi tamamlayabilmeniz için zaten Linux çalıştıran bir Azure sanal makineniz olmalıdır. Devam etmeden önce bir Linux VM oluşturmak ve ayarlamak için bkz. [Azure LINUX VM öğreticisi](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Bu öğreticiyi tamamlamak için Linux çalıştıran bir Azure sanal makineniz olması gerekir. Devam etmeden önce bir Linux VM oluşturmak ve kurmak için [Azure Linux VM öğreticisine](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın.
 > 
 > 
 
-Bu durumda, PostgreSQL bağlantı noktası olarak 1999 numaralı bağlantı noktasını kullanın.  
+Bu durumda, PostgreSQL bağlantı noktası olarak 1999 bağlantı noktasını kullanın.  
 
-PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure Linux VM 'yi ilk kez kullanıyorsanız, bir Linux sanal makinesine bağlanmak için PuTTY 'yi nasıl kullanacağınızı öğrenmek için bkz. [Azure 'Da Linux Ile SSH kullanma](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+PuTTY aracılığıyla oluşturduğunuz Linux VM'ye bağlanın. İlk kez bir Azure Linux VM kullanıyorsanız, Linux VM'ye bağlanmak için PuTTY'yi nasıl kullanacağınızı öğrenmek için [Azure'da Linux ile SSH'yi nasıl kullanacağınızı](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) öğrenin.
 
-1. Köke (yönetici) geçiş yapmak için aşağıdaki komutu çalıştırın:
+1. Köke (admin) geçmek için aşağıdaki komutu çalıştırın:
    
         # sudo su -
-2. Bazı dağıtımların PostgreSQL yüklemeden önce yüklemeniz gereken bağımlılıkları vardır. Bu listede sahip olup olmadığınızı denetleyin ve uygun komutu çalıştırın:
+2. Bazı dağıtımlarda PostgreSQL'i yüklemeden önce yüklemeniz gereken bağımlılıklar vardır. Bu listede dağıtım için kontrol edin ve uygun komutu çalıştırın:
    
-   * Red Hat Base Linux:
+   * Red Hat taban Linux:
      
            # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
-   * Temel Linux 'u kaldırma:
+   * Debian temel Linux:
      
             # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y  
    * SUSE Linux:
      
            # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
-3. PostgreSQL ' i kök dizine indirin ve ardından paketi açın:
+3. PostgreSQL'i kök dizinine indirin ve paketin zipini aç:
    
         # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
    
         # tar jxvf  postgresql-9.3.5.tar.bz2
    
-    Yukarıdaki örnek bir örnektir. Daha ayrıntılı indirme adresini [/pub/Source/dizininde](https://ftp.postgresql.org/pub/source/)bulabilirsiniz.
-4. Derlemeyi başlatmak için şu komutları çalıştırın:
+    Yukarıdaki bir örnektir. Daha ayrıntılı indirme adresini [/pub/source/ dizininde](https://ftp.postgresql.org/pub/source/)bulabilirsiniz.
+4. Yapıyı başlatmak için şu komutları çalıştırın:
    
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Belgeler (HTML ve Man sayfaları) ve ek modüller (`contrib`) dahil olmak üzere derlenebilir her şeyi derlemek istiyorsanız aşağıdaki komutu çalıştırın:
+5. Dokümantasyon (HTML ve adam sayfaları) ve ek modüller (`contrib`), bunun yerine aşağıdaki komutu çalıştırın dahil olmak üzere oluşturulabilecek her şeyi oluşturmak istiyorsanız:
    
         # gmake install-world
    
@@ -71,14 +71,14 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
    
         PostgreSQL, contrib, and documentation successfully made. Ready to install.
 
-## <a name="configure-postgresql"></a>PostgreSQL yapılandırma
-1. Seçim PostgreSQL başvurusunu, sürüm numarasını dahil etmek için kısaltmak üzere bir sembolik bağlantı oluşturun:
+## <a name="configure-postgresql"></a>PostgreSQL'i Yapılandırma
+1. (İsteğe bağlı) PostgreSQL başvurularını sürüm numarasını içermeyecek şekilde kısaltmak için sembolik bir bağlantı oluşturun:
    
         # ln -s /opt/postgresql-9.3.5 /opt/pgsql
 2. Veritabanı için bir dizin oluşturun:
    
         # mkdir -p /opt/pgsql_data
-3. Kök olmayan bir kullanıcı oluşturun ve bu kullanıcının profilini değiştirin. Ardından, bu yeni kullanıcıya geçin (örneğimizde *Postgres* adı verilir):
+3. Kök olmayan bir kullanıcı oluşturun ve bu kullanıcının profilini değiştirin. Daha sonra, bu yeni kullanıcıya geçin (örneğimizde *postgres* olarak adlandırılır):
    
         # useradd postgres
    
@@ -87,10 +87,10 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
         # su - postgres
    
    > [!NOTE]
-   > PostgreSQL, güvenlik nedenleriyle veritabanını başlatmak, başlatmak veya kapatmak için kök olmayan bir Kullanıcı kullanır.
+   > Güvenlik nedenleriyle, PostgreSQL veritabanını başlatmak, başlatmak veya kapatmak için kök olmayan bir kullanıcı kullanır.
    > 
    > 
-4. *Bash_profile* dosyasını aşağıdaki komutları girerek düzenleyin. Bu satırlar *bash_profile* dosyasının sonuna eklenecektir:
+4. Aşağıdaki komutları girerek *bash_profile* dosyasını düzenleme. Bu satırlar *bash_profile* dosyasının sonuna eklenir:
    
         cat >> ~/.bash_profile <<EOF
         export PGPORT=1999
@@ -104,21 +104,21 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
         alias rm='rm -i'
         alias ll='ls -lh'
         EOF
-5. *Bash_profile* dosyasını yürütün:
+5. *bash_profile* dosyayı çalıştırın:
    
         $ source .bash_profile
-6. Aşağıdaki komutu kullanarak yüklemenizi doğrulayın:
+6. Yüklemenizi aşağıdaki komutu kullanarak doğrulayın:
    
         $ which psql
    
-    Yüklemeniz başarılı olursa aşağıdaki yanıtı görürsünüz:
+    Yüklemeniz başarılı olursa, aşağıdaki yanıtı görürsünüz:
    
         /opt/pgsql/bin/psql
-7. PostgreSQL sürümünü de denetleyebilirsiniz:
+7. Ayrıca PostgreSQL sürümünü de kontrol edebilirsiniz:
    
         $ psql -V
 
-8. Veritabanını Başlat:
+8. Veritabanını başlatma:
    
         $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
    
@@ -126,7 +126,7 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
 
 ![image](./media/postgresql-install/no1.png)
 
-## <a name="set-up-postgresql"></a>PostgreSQL 'i ayarlama
+## <a name="set-up-postgresql"></a>PostgreSQL'i ayarlama
 <!--    [postgres@ test ~]$ exit -->
 
 Aşağıdaki komutları çalıştırın:
@@ -135,7 +135,7 @@ Aşağıdaki komutları çalıştırın:
 
     # cp linux /etc/init.d/postgresql
 
-/Etc/ınitve d/PostgreSQL dosyasındaki iki değişkeni değiştirin. Ön ek PostgreSQL yükleme yoluna ayarlanır: **/seçenek/pgsql**. PGDATA, PostgreSQL: **/seçenek/pgsql_data**veri depolama yoluna ayarlanır.
+/etc/init.d/postgresql dosyasındaki iki değişkeni değiştirin. Önek PostgreSQL yükleme yoluna ayarlanır: **/opt/pgsql**. PGDATA, PostgreSQL veri depolama yoluna ayarlanmıştır: **/opt/pgsql_data**.
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
@@ -147,11 +147,11 @@ Dosyayı yürütülebilir hale getirmek için değiştirin:
 
     # chmod +x /etc/init.d/postgresql
 
-PostgreSQL 'i Başlat:
+PostgreSQL'i Başlat:
 
     # /etc/init.d/postgresql start
 
-PostgreSQL uç noktasının açık olup olmadığını denetle:
+PostgreSQL'in bitiş noktasının açık olup olmadığını kontrol edin:
 
     # netstat -tunlp|grep 1999
 
@@ -159,38 +159,38 @@ Aşağıdaki çıktıyı görmeniz gerekir:
 
 ![image](./media/postgresql-install/no3.png)
 
-## <a name="connect-to-the-postgres-database"></a>Postgres veritabanına bağlanma
-Postgres kullanıcısına bir kez daha geçin:
+## <a name="connect-to-the-postgres-database"></a>Postgres veritabanına bağlanın
+Bir kez daha postgres kullanıcısına geçin:
 
     # su - postgres
 
-Bir Postgres veritabanı oluşturun:
+Bir Postgres veritabanı oluşturma:
 
     $ createdb events
 
-Yeni oluşturduğunuz olaylar veritabanına bağlanın:
+Az önce oluşturduğunuz olaylar veritabanına bağlanın:
 
     $ psql -d events
 
 ## <a name="create-and-delete-a-postgres-table"></a>Bir Postgres tablosu oluşturma ve silme
-Veritabanına bağlandığınıza göre, burada tablolar oluşturabilirsiniz.
+Artık veritabanına bağlandığınıza göre, veritabanında tablolar oluşturabilirsiniz.
 
 Örneğin, aşağıdaki komutu kullanarak yeni bir örnek Postgres tablosu oluşturun:
 
     CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1), signup_date DATE);
 
-Şu sütun adları ve kısıtlamalarına sahip dört sütunlu bir tablo ayarlamış oldunuz:
+Şimdi aşağıdaki sütun adları ve kısıtlamaları içeren dört sütunlu bir tablo ayarladınız:
 
-1. "Ad" sütunu, VARCHAR komutuyla 20 karakter uzunluğunda olacak şekilde sınırlandırılmıştır.
-2. "Yiyecek" sütunu, her birinin suntıracağını gösterir. VARCHAR, bu metni 30 karakter altında olacak şekilde sınırlandırır.
-3. "Onaylanan" sütunu, kişinin yemeğini getir 'e sahip olup olmadığını kaydeder. Kabul edilebilir değerler şunlardır "Y" ve "N".
-4. "Date" sütunu olaya kaydolduklarında görüntülenir. Postgres, tarihlerin yyyy-aa-gg olarak yazılmasını gerektirir.
+1. "Ad" sütunu VARCHAR komutu ile 20 karakter uzunluğunda olmak üzere sınırlandırılmıştır.
+2. "Gıda" sütunu, her kişinin getireceği gıda maddesini gösterir. VARCHAR bu metnin 30 karakterin altında olmasını sınırlar.
+3. "Onaylanan" sütun, kişinin potluck rsvp'd olup olmadığını kaydeder. Kabul edilebilir değerler "Y" ve "N"dir.
+4. "Tarih" sütunu, etkinliğe ne zaman kaydolduklarını gösterir. Postgres tarihlerin yyyy-mm-dd olarak yazılmasını gerektirir.
 
-Tablonuz başarıyla oluşturulduysa şunları görmeniz gerekir:
+Tablonuz başarıyla oluşturulduysa aşağıdakileri görmeniz gerekir:
 
 ![image](./media/postgresql-install/no4.png)
 
-Ayrıca, aşağıdaki komutu kullanarak tablo yapısını kontrol edebilirsiniz:
+Tablo yapısını aşağıdaki komutu kullanarak da denetleyebilirsiniz:
 
 ![image](./media/postgresql-install/no5.png)
 
@@ -203,7 +203,7 @@ Bu çıkışı görmelisiniz:
 
 ![image](./media/postgresql-install/no6.png)
 
-Tabloya aynı zamanda daha fazla kişi ekleyebilirsiniz. Bazı seçenekler aşağıda verilmiştir veya kendi kendinize oluşturabilirsiniz:
+Masaya birkaç kişi daha ekleyebilirsiniz. Aşağıda bazı seçenekler vardır veya kendi seçeneklerinizi oluşturabilirsiniz:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
 
@@ -212,7 +212,7 @@ Tabloya aynı zamanda daha fazla kişi ekleyebilirsiniz. Bazı seçenekler aşa�
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Tina', 'Salad', 'Y', '2012-04-18');
 
 ### <a name="show-tables"></a>Tabloları göster
-Bir tabloyu göstermek için aşağıdaki komutu kullanın:
+Tabloyu göstermek için aşağıdaki komutu kullanın:
 
     select * from potluck;
 
@@ -230,11 +230,11 @@ Bu, "John" satırındaki tüm bilgileri siler. Çıkış şöyle olur:
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>Tablodaki verileri güncelleştirme
-Bir tablodaki verileri güncelleştirmek için aşağıdaki komutu kullanın. Bu bir tane için, Sandy katıldıklarından emin oldu, bu nedenle RSVP 'yi "N" iken "Y" olarak değiştiririz:
+Tablodaki verileri güncelleştirmek için aşağıdaki komutu kullanın. Bunun için, Sandy onların katıldığını doğruladı, bu yüzden "N" den "Y" için RSVP değişecektir:
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 
 
 ## <a name="get-more-information-about-postgresql"></a>PostgreSQL hakkında daha fazla bilgi alın
-Azure Linux VM 'de PostgreSQL yüklemesini tamamladığınıza göre, bunu Azure 'da kullanmaktan yararlanabilirsiniz. PostgreSQL hakkında daha fazla bilgi edinmek için [PostgreSQL Web sitesini](https://www.postgresql.org/)ziyaret edin.
+PostgreSQL'in azure Linux VM'de yüklenmesini tamamladığınızda, Azure'da kullanmanın keyfini çıkarabilirsiniz. PostgreSQL hakkında daha fazla bilgi edinmek için [PostgreSQL web sitesini](https://www.postgresql.org/)ziyaret edin.
 

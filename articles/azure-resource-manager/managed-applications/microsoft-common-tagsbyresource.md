@@ -1,24 +1,24 @@
 ---
-title: TagsByResource Kullanıcı arabirimi öğesi
-description: Azure portal için Microsoft. Common. TagsByResource Kullanıcı arabirimi öğesini açıklar. Dağıtım sırasında bir kaynağa etiket uygulamak için kullanın.
+title: EtiketlerByResource UI öğesi
+description: Azure portalı için Microsoft.Common.TagsByResource UI öğesini açıklar. Dağıtım sırasında bir kaynağa etiketleri uygulamak için kullanın.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652209"
 ---
-# <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft. Common. TagsByResource Kullanıcı arabirimi öğesi
+# <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft.Common.TagsByResource UI öğesi
 
-Bir dağıtımdaki kaynaklarla [etiketlerin](../management/tag-resources.md) ilişkilendirilmesi için bir denetim.
+[Etiketleri](../management/tag-resources.md) dağıtımdaki kaynaklarla ilişkilendirme denetimi.
 
 ## <a name="ui-sample"></a>UI örneği
 
-![Microsoft. Common. DropDown](./media/managed-application-elements/microsoft.common.tagsbyresource.png)
+![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.tagsbyresource.png)
 
 ## <a name="schema"></a>Şema
 
@@ -49,9 +49,9 @@ Bir dağıtımdaki kaynaklarla [etiketlerin](../management/tag-resources.md) ili
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `resources` dizisindeki en az bir öğe belirtilmelidir.
-- `resources` her öğe tam bir kaynak türü olmalıdır. Bu öğeler **kaynak** açılan menüsünde görünür ve Kullanıcı tarafından taggable.
-- Denetimin çıktısı, bir Azure Resource Manager şablonundaki etiket değerlerinin kolay atanması için biçimlendirilir. Bir şablonda denetimin çıkışını almak için aşağıdaki örnekte gösterildiği gibi şablonunuzda bir parametre ekleyin:
+- `resources` Dizideki en az bir öğe belirtilmelidir.
+- Her `resources` öğe tam nitelikli kaynak türü olmalıdır. Bu öğeler **Kaynak** açılır açılır durumda görünür ve kullanıcı tarafından etiketlenebilir.
+- Denetimin çıktısı, bir Azure Kaynak Yöneticisi şablonundaki etiket değerlerinin kolay atanması için biçimlendirilir. Denetimin çıktısını şablonda almak için şablonunuzda aşağıdaki örnekte gösterildiği gibi bir parametre ekleyin:
 
   ```json
   "parameters": {
@@ -59,7 +59,7 @@ Bir dağıtımdaki kaynaklarla [etiketlerin](../management/tag-resources.md) ili
   }
   ```
 
-  Etiketlenebilir her kaynak için, Etiketler özelliğini bu kaynak türü için parametre değerine atayın:
+  Etiketlenebilen her kaynak için, etiket özelliğini bu kaynak türü için parametre değerine atayın:
 
   ```json
   {
@@ -69,9 +69,9 @@ Bir dağıtımdaki kaynaklarla [etiketlerin](../management/tag-resources.md) ili
     ...
   ```
 
-- TagsByResource parametresine erişirken [IF](../templates/template-functions-logical.md#if) işlevini kullanın. Verilen kaynak türüne hiçbir etiket atanmamışsa boş bir nesne atamanızı sağlar.
+- tagsByResource parametresi'ne erişirken [if](../templates/template-functions-logical.md#if) işlevini kullanın. Verilen kaynak türüne etiket atanmadığınızda boş bir nesne atamanızı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
-- UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).
+- UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
+- UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.

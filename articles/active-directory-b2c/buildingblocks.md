@@ -1,7 +1,7 @@
 ---
 title: BuildingBlocks
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C bir özel ilkenin BuildingBlocks öğesini belirtin.
+description: Azure Active Directory B2C'de özel bir ilkenin BuildingBlocks öğesini belirtin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cf9c333af48e1c148dcd20ccf5ce91b284bd728b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189880"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Buildingblocks** öğesi [TrustFrameworkPolicy](trustframeworkpolicy.md) öğesinin içine eklenir.
+**BuildingBlocks** öğesi [TrustFrameworkPolicy](trustframeworkpolicy.md) öğesinin içine eklenir.
 
 ```XML
 <TrustFrameworkPolicy
@@ -59,23 +59,23 @@ ms.locfileid: "78189880"
  </BuildingBlocks>
 ```
 
-**Buildingblocks** öğesi, tanımlı sırada belirtilmesi gereken aşağıdaki öğeleri içerir:
+**BuildingBlocks** öğesi tanımlanan sırada belirtilmesi gereken aşağıdaki öğeleri içerir:
 
-- [Claimsschema](claimsschema.md) -ilkenin bir parçası olarak başvurulabilen talep türlerini tanımlar. Talep şeması, talep türlerinizi bildirdiğiniz yerdir. Talep türü birçok programlama dilinde bir değişkene benzerdir. Uygulamanızın kullanıcısının verilerini toplamak, sosyal kimlik sağlayıcılarından talepler almak, özel bir REST API veri göndermek ve almak veya özel ilkeniz tarafından kullanılan tüm dahili verileri depolamak için talep türünü kullanabilirsiniz.
+- [ClaimsSchema](claimsschema.md) - İlkenin bir parçası olarak başvurulabilecek talep türlerini tanımlar. İddia şeması, talep türlerinizi beyan ettiğiniz yerdir. Talep türü, birçok programlı dilde bir değişkene benzer. Talep türünü, uygulamanızın kullanıcısından veri toplamak, sosyal kimlik sağlayıcılarından talep almak, özel bir REST API'sinden veri gönderip almak veya özel politikanız tarafından kullanılan dahili verileri depolamak için kullanabilirsiniz.
 
-- [Koşullar ve PredicateValidationsInput](predicates.md) -bir talebe yalnızca düzgün biçimlendirilmiş verilerin girildiğinden emin olmak için bir doğrulama işlemi gerçekleştirmenizi sağlar.
+- [Yüklemler ve YüklemValidationsInput](predicates.md) - Yalnızca doğru biçimlendirilmiş verilerin bir hak talebine girilmesini sağlamak için bir doğrulama işlemi gerçekleştirmenizi sağlar.
 
-- [Claimstransformations](claimstransformations.md) -ilkenizde kullanılabilecek talep dönüştürmelerinin bir listesini içerir.  Talep dönüştürmesi bir talebi diğerine dönüştürür. Talep dönüşümünde, şöyle bir dönüşüm yöntemi belirtirsiniz:
-  - Bir dize talebinin durumunu belirtilen bir şekilde değiştirme. Örneğin, bir dizeyi küçük harfle büyük harfe değiştirme.
-  - İki talebi karşılaştırma ve taleplerin eşleştiğini belirten true ile talep döndürme, aksi takdirde false.
-  - İlkede belirtilen parametreden bir dize talebi oluşturuluyor.
-  - Rastgele sayı oluşturucuyu kullanarak rastgele dize oluşturma.
-  - Talep, belirtilen biçim dizesine göre biçimlendiriliyor. Bu dönüşüm C# `String.Format` yöntemini kullanır.
+- [İddiaDönüşümleri](claimstransformations.md) - İlkinizdeki talep dönüşümlerinin listesini içerir.  Talep dönüştürme, bir talebi diğerine dönüştürür. Talep dönüştürmesinde, aşağıdakiler gibi bir dönüştürme yöntemi belirtirsiniz:
+  - Dize talebinin durumunu belirtilene değiştirme. Örneğin, bir dizeyi küçük harften büyük harfe değiştirme.
+  - İki iddiayı karşılaştırmak ve bir iddiayı doğru olarak iade etmek, iddiaların eşleşip, aksi takdirde yanlış olduğunu gösterir.
+  - İlkede sağlanan parametreden bir dize talebi oluşturma.
+  - Rasgele sayı üreteci kullanarak rasgele bir dize oluşturma.
+  - Bir talebi sağlanan biçim dizesine göre biçimlendirme. Bu dönüştürme C# `String.Format` yöntemini kullanır.
 
-- Inputvalidation-bu öğe, *ve* ile benzer Boole toplamaları gerçekleştirmenize olanak *tanır.*
+- InputValidation - Bu öğe, benzer *ve* *veya*boolean toplama gerçekleştirmenizi sağlar.
 
-- [ContentDefinitions](contentdefinitions.md) -Kullanıcı yolculuğunda kullanmak üzere HTML5 şablonlarının URL 'lerini içerir. Bir özel ilkede, içerik tanımı Kullanıcı yolculuğunda belirtilen bir adım için kullanılan HTML5 sayfa URI 'sini tanımlar. Örneğin, oturum açma veya kaydolma, parola sıfırlama veya hata sayfaları. HTML5 dosyası için LoadUri 'yi geçersiz kılarak görünümü değiştirebilirsiniz. Veya gereksinimlerinize göre yeni içerik tanımları da oluşturabilirsiniz. Bu öğe, yerelleştirme KIMLIĞI kullanılarak yerelleştirilmiş bir kaynak başvurusu içerebilir.
+- [ContentDefinitions](contentdefinitions.md) - Kullanıcı yolculuğunuzda kullanmak üzere HTML5 şablonları için URL'ler içerir. Özel bir ilkede, içerik tanımı, kullanıcı yolculuğunda belirli bir adım için kullanılan HTML5 sayfası URI'yi tanımlar. Örneğin, oturum açma veya kaydolma, parola sıfırlama veya hata sayfaları. HTML5 dosyası için LoadUri'yi geçersiz kılarak görünüm ve his değiştirebilirsiniz. Veya ihtiyaçlarınıza göre yeni içerik tanımları oluşturabilirsiniz. Bu öğe, yerelleştirme kimliği kullanarak yerelleştirilmiş kaynaklar başvurusu içerebilir.
 
-- [Yerelleştirme](localization.md) -birden çok dili desteketmenize olanak tanır. İlkelerde yerelleştirme desteği, bir ilkede desteklenen dillerin listesini ayarlamanıza ve varsayılan bir dil seçmenizi sağlar. Dile özgü dizeler ve koleksiyonlar da desteklenir.
+- [Yerelleştirme](localization.md) - Birden çok dili desteklemenizi sağlar. İlkelerdeki yerelleştirme desteği, bir ilkedeki desteklenen dillerin listesini ayarlamanıza ve varsayılan bir dil seçmenize olanak tanır. Dile özel dizeleri ve koleksiyonları da desteklenir.
 
-- [Displaycontrols](display-controls.md) -sayfada gösterilecek denetimleri tanımlar. Görüntüleme denetimlerinin özel işlevleri vardır ve arka uç doğrulama teknik profilleriyle etkileşime geçin. Görüntüleme denetimleri şu anda **Önizleme**aşamasındadır.
+- [DisplayControls](display-controls.md) - Bir sayfada görüntülenecek denetimleri tanımlar. Ekran denetimleri özel işlevsellik vardır ve arka uç doğrulama teknik profilleri ile etkileşim. Görüntü denetimleri şu anda **önizlemede.**

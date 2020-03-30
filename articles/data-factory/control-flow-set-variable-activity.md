@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory değişken etkinliğini ayarla
-description: Bir Data Factory işlem hattında tanımlanmış var olan bir değişkenin değerini ayarlamak için değişken ayarla etkinliğini nasıl kullanacağınızı öğrenin
+title: Azure Veri Fabrikası'nda Değişken Etkinliği Ayarlama
+description: Veri Fabrikası ardışık hattında tanımlanan varolan bir değişkenin değerini ayarlamak için Değişken Kümesi etkinliğini nasıl kullanacağınızı öğrenin
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,28 +12,28 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: 88500ecbc56b34551a0cbd3ca94727ba4bbcda9f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930654"
 ---
-# <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory değişken etkinliğini ayarla
+# <a name="set-variable-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Değişken Etkinliği Ayarlama
 
-Bir Data Factory işlem hattında tanımlanmış dize, bool veya dizi türünde bir değişkenin değerini ayarlamak için değişken ayarla etkinliğini kullanın.
+Veri Fabrikası ardışık dizisinde tanımlanan String, Bool veya Array türünden varolan bir değişkenin değerini ayarlamak için Değişken Ayarını Ayarla etkinliğini kullanın.
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | Gereklidir
+Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-ad | İşlem hattının etkinlik adı | Yes
+ad | Boru hattındaki etkinliğin adı | Evet
 açıklama | Etkinliğin ne yaptığını açıklayan metin | hayır
-type | Etkinlik türü SetVariable | evet
-değer | Belirtilen değişkeni ayarlamak için kullanılan dize sabiti veya ifade nesnesi değeri | evet
-variableName | Bu etkinlik tarafından ayarlanacak değişkenin adı | evet
+type | Etkinlik Türü SetVariable | evet
+value | Belirtilen değişkeni ayarlamak için kullanılan string literal veya ifade nesnesi değeri | evet
+değişkenAd | Bu etkinlik tarafından ayarlanacak değişkenin adı | evet
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory tarafından desteklenen ilgili bir denetim akışı etkinliği hakkında bilgi edinin: 
+Veri Fabrikası tarafından desteklenen ilgili bir kontrol akışı etkinliği hakkında bilgi edinin: 
 
-- [Değişken ekleme etkinliği](control-flow-append-variable-activity.md)
+- [Değişken Etkinlik Ekleme](control-flow-append-variable-activity.md)

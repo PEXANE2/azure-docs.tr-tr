@@ -5,31 +5,31 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: crdun
 ms.openlocfilehash: 8d7731480b6239c572d39f52b6a0217d2ac48d25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66240253"
 ---
-1. Çözüm dosyasını (.sln) istemci projesindeki gidin ve Visual Studio'yu kullanarak açın.
+1. İstemci projesindeki çözüm dosyasına (.sln) gidin ve Visual Studio'yu kullanarak açın.
 
 2. Visual Studio'da başlatma okunun yanındaki açılır menüden çözüm platformunu (Android, iOS veya Windows) seçin. Yeşil ok üzerindeki açılır menüye tıklayarak belirli bir dağıtım cihazı veya öykünücüyü seçin. Varsayılan Android platformunu ve Ripple öykünücüsünü kullanabilirsiniz. Daha gelişmiş öğreticilerde (anında iletme bildirimleri gibi) desteklenen bir cihazı ve öykünücüyü seçmeniz istenecek.
 
-3. Dosyayı açmak `ToDoActivity.java` bu klasördeki - ZUMOAPPNAME/uygulama/src/main/java/com/örnek/zumoappname. Uygulama adı `ZUMOAPPNAME`.
+3. Bu klasördeki dosyayı `ToDoActivity.java` açın - ZUMOAPPNAME/app/src/main/java/com/example/zumoappname. Uygulama `ZUMOAPPNAME`adı.
 
-4. Git [Azure portalında](https://portal.azure.com/) ve oluşturduğunuz mobil uygulamaya gidin. Üzerinde `Overview` dikey penceresinde mobil uygulamanız için genel bir uç nokta URL'sini arayın. Örnek - sitename my app name "test123" için olacak https://test123.azurewebsites.net.
+4. [Azure portalına](https://portal.azure.com/) gidin ve oluşturduğunuz mobil uygulamaya gidin. Bıçakta, `Overview` mobil uygulamanızın genel bitiş noktası olan URL'ye bakın. Örnek - uygulama adım "test123" için https://test123.azurewebsites.netsite adı olacaktır.
 
-5. Git `index.js` ZUMOAPPNAME/www/js/index.js hem de dosya `onDeviceReady()` yöntemi Değiştir `ZUMOAPPURL` genel uç nokta yukarıdaki parametresiyle.
+5. ZUMOAPPNAME/www/js/index.js adresindeki `index.js` dosyaya `onDeviceReady()` gidin ve `ZUMOAPPURL` yöntem olarak parametreyi yukarıdaki ortak bitiş noktasıyla değiştirin.
 
     `client = new WindowsAzure.MobileServiceClient('ZUMOAPPURL');`
     
-    olur
+    Olur
     
     `client = new WindowsAzure.MobileServiceClient('https://test123.azurewebsites.net');`
     
 6. Cordova uygulamanızı derlemek ve çalıştırmak için F5'e basın veya yeşil oka tıklayın. Öykünücüde ağa erişim isteyen bir güvenlik iletişim kutusu görürseniz erişim isteğini kabul edin.
 
-7. Üzerinde cihazda veya öykünücüde uygulama başlatıldıktan sonra anlamlı bir metin yazın **yeni metin gir**, gibi *öğreticiye* ve ardından **Ekle** düğmesi.
+7. Uygulama cihazda veya emülatörde başlatıldıktan sonra, yeni **metin girin'e** *(öğreticiyi tamamla* ve **ekle** düğmesini tıklatmak gibi) anlamlı metin yazın.
 
 Arka uç, istekten alınan verileri SQL Veritabanı'ndaki TodoItem tablosuna ekler ve yeni depolanan öğeler hakkındaki bilgileri de mobil uygulamaya geri döndürür. Mobil uygulama bu verileri listede görüntüler.
 

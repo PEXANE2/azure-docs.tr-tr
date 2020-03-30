@@ -5,10 +5,10 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: ca2aed5689fe31f47166428503abb9483fc406b4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188515"
 ---
-Azure İzleyici'de izleme Bu çözüm tarafından toplanan veriler kullanılabilir **genel bakış** Azure portalında sayfası. Bu sayfadan açın **Azure İzleyici** tıklayarak menü **daha fazla** altında **Insights** bölümü. Her çözüm bir kutucuk temsil edilir. Bu çözüm tarafından toplanan ayrıntılı veriler için bir kutucuğa tıklayın.
+Bu izleme çözümü tarafından toplanan veriler, Azure portalındaki Azure Monitöre **Genel Bakış** sayfasında kullanılabilir. **Öngörüler** bölümünde **daha fazla** seçeneğini tıklayarak **Azure Monitor** menüsünden bu sayfayı açın. Her çözüm bir kiremit ile temsil edilir. Bu çözüm tarafından toplanan daha ayrıntılı veriler için bir döşemeye tıklayın.

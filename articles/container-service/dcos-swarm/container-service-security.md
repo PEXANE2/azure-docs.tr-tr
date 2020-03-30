@@ -1,6 +1,6 @@
 ---
-title: Kullanım DıŞı Azure Container Service kapsayıcı güvenliği
-description: Azure Container Service ve ilgili Azure hizmetlerinde dağıtılan Docker kapsayıcılarını güvenli hale getirme konuları.
+title: (AmortismanA Uğradı) Azure Kapsayıcı Hizmetinde konteyner güvenliği
+description: Azure Kapsayıcı Hizmeti'nde ve ilgili Azure hizmetlerinde dağıtılan Docker kapsayıcılarının güvenliğini sağlamak için göz önünde bulundurulması gerekenler.
 author: sauryadas
 ms.service: container-service
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: d90d872175febf775e7d0892e133883f1a8ff8a2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552402"
 ---
-# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>Kullanım DıŞı Azure Container Service Docker kapsayıcılarının güvenliğini sağlama
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(AmortismanA Uğradı) Azure Kapsayıcı Hizmetinde Docker kapsayıcılarını güvence altına alma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -53,7 +53,7 @@ Bir uygulama üretime dağıtıldığında, üretim ortamlarında kullanılan g�
 ## <a name="host-level-container-isolation"></a>Konak düzeyinde kapsayıcı yalıtımı
 Bir müşteri Azure kaynaklarına kapsayıcı uygulamaları dağıttığında, bu uygulamalar kaynak gruplarında abonelik düzeyinde dağıtılır ve çok kiracılı değildir. Bu, bir müşteri başkalarıyla bir abonelik paylaşıyorsa, bu durum aynı abonelikte iki dağıtım arasında yerleşik hiçbir sınır olmadığı anlamına gelir. Bu nedenle, kapsayıcı düzeyi güvenliği garanti edilemez. 
 
-Kapsayıcıların konağın (Azure Container Service'de bir kümedeki Azure sanal makinesidir) çekirdeğini ve kaynaklarını paylaştığını anlamak da önemlidir. Bu nedenle, üretimde çalışan kapsayıcılar ayrıcalıklı olmayan kullanıcı modunda çalıştırılmalıdır. Bir kapsayıcı kök ayrıcalıklarıyla çalıştırmak tüm ortamı tehlikeye atabilir. Kapsayıcıda kök düzeyinde erişim olduğunda bilgisayar korsaları, konağa tam kök ayrıcalıklarıyla erişebilir. Kapsayıcıları, salt okunur dosya sistemleri ile çalıştırmak da önemlidir. Bu, güvenliği aşılmış kapsayıcıya erişimi olan birinin dosya sistemine kötü amaçlı betikler yazmasını ve diğer dosyalara erişmesini önler. Benzer şekilde, bir kapsayıcıya ayrılan kaynakları (örneğin bellek, CPU ve ağ bant genişliği) sınırlamak da önemlidir. Bu, kötü amaçlı korsanların kaynakları ele almasını ve kredi kartı dolandırıcılığı veya bit para madenciliği gibi geçersiz etkinlikleri, diğer kapsayıcıların konak veya küme üzerinde çalışmasını engelleyebilecek şekilde engellemesini önlemeye yardımcı olur.
+Kapsayıcıların konağın (Azure Container Service'de bir kümedeki Azure sanal makinesidir) çekirdeğini ve kaynaklarını paylaştığını anlamak da önemlidir. Bu nedenle, üretimde çalışan kapsayıcılar ayrıcalıklı olmayan kullanıcı modunda çalıştırılmalıdır. Bir kapsayıcı kök ayrıcalıklarıyla çalıştırmak tüm ortamı tehlikeye atabilir. Kapsayıcıda kök düzeyinde erişim olduğunda bilgisayar korsaları, konağa tam kök ayrıcalıklarıyla erişebilir. Kapsayıcıları, salt okunur dosya sistemleri ile çalıştırmak da önemlidir. Bu, güvenliği aşılmış kapsayıcıya erişimi olan birinin dosya sistemine kötü amaçlı betikler yazmasını ve diğer dosyalara erişmesini önler. Benzer şekilde, bir kapsayıcıya ayrılan kaynakları (örneğin bellek, CPU ve ağ bant genişliği) sınırlamak da önemlidir. Bu, bilgisayar korsanlarının kaynakları tıkamalarını ve kredi kartı dolandırıcılığı veya bit jeton madenciliği gibi diğer kapsayıcıların ana bilgisayarda veya kümede çalışmasını engelleyebilecek yasadışı etkinlikleri takip etmesini önlemeye yardımcı olur.
 
 ## <a name="orchestrator-considerations"></a>Düzenleyicide dikkat edilmesi gerekenler
 

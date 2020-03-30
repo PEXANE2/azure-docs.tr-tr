@@ -9,18 +9,18 @@ ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d6f56f3500ab9c6b4482d2ade892dfdb46ccacb5
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67503390"
 ---
-Premium dosyalar adlı bir benzersiz depolama hesabı kullanmak **dosya deposundan**. Bu hesap türü yüksek IOPS sahip iş yükleri, yüksek aktarım hızı ile tutarlı düşük gecikme süresi için tasarlanmıştır. Premium dosya depolama, sağlanan paylaşım boyutu ile ölçeklendirilir.
+Premium dosyalar **FileStorage**adlı benzersiz bir depolama hesabı kullanır. Bu hesap türü, yüksek IOPS'li iş yükleri, tutarlı düşük gecikme süreyle yüksek iş yükü için tasarlanmıştır. Sağlanan paylaşım boyutuyla premium dosya depolama ölçekleri.
 
 |Alan  |Hedef  |
 |---------|---------|
-|En fazla sağlanan boyutunu     |100 TiB     |
+|Maksimum sağlanan boyut     |100 TiB     |
 |Paylaşımlar   |Sınırsız  |
-|IOPS     |100,000    |
-|Giriş|4,136 MiB/sn     |
-|Çıkış|6,204 MiB/sn |
+|IOPS     |100.000    |
+|Giriş|4.136 MiB/s     |
+|Çıkış|6.204 MiB/s |

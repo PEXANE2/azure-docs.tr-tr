@@ -1,6 +1,6 @@
 ---
-title: NFS için dışarı aktarma ilkesini yapılandırma birim-Azure NetApp Files
-description: Azure NetApp Files kullanarak bir NFS birimine erişimi denetlemek için, dışa aktarma ilkesinin nasıl yapılandırılacağını açıklar.
+title: NFS hacmi için ihracat ilkesini yapılandırma - Azure NetApp Files
+description: Azure NetApp Dosyalarını kullanarak bir NFS birimine erişimi denetlemek için dışa aktarma ilkesini nasıl yapılandırıştırılabildiğini açıklar
 services: azure-netapp-files
 author: b-juche
 ms.author: b-juche
@@ -9,19 +9,19 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: b96fca3a5627a1c6c96c8db5c1c209a51c5e102a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551567"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>NFS birimine yönelik dışarı aktarma ilkesini yapılandırma
 
-İsteğe bağlı olarak Azure NetApp Files birimine erişimi denetlemek için dışarı aktarma ilkesi yapılandırabilirsiniz. Azure NetApp Files dışarı aktarma ilkesi yalnızca NFS birimlerini destekler.  Hem NFSv3 hem de NFSv4 desteklenir. 
+İsteğe bağlı olarak Azure NetApp Files birimine erişimi denetlemek için dışarı aktarma ilkesi yapılandırabilirsiniz. Azure NetApp Files dışa aktarma ilkesi yalnızca NFS birimlerini destekler.  Hem NFSv3 hem de NFSv4 desteklenir. 
 
 ## <a name="steps"></a>Adımlar 
 
-1.  Azure NetApp Files gezinti bölmesinden **Ilkeyi dışarı aktar** ' a tıklayın. 
+1.  Azure NetApp Dosyaları gezinti bölmesinden Dışa Aktarma **ilkesini** tıklatın. 
 
 2.  İlke kuralını oluşturmak veya dışarı aktarmak için aşağıdaki alanların bilgilerini belirtin:   
     *  **Dizin**   

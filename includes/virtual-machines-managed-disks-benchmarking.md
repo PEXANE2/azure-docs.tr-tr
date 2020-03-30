@@ -9,114 +9,114 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673555"
 ---
-*Önbelleği hazırlanıyor*  
-Salt okunur konak önbelleği disk disk sınırdan daha yüksek IOPS sağlayabilir. Öncelikle bu en yüksek okuma performansı ana bilgisayar önbelleğe almak için bu disk önbelleği sıcak gerekir. Bu aracın Kıyaslama CacheReads birimde artıracak okuma IOs gerçekten ulaştığını önbellek ve diskin değil doğrudan sağlar. Önbellek isabet sayısı sonucu tek önbellekten ek IOPS disk etkin.
+*Önbelleği Isınma*  
+ReadOnly ana bilgisayar önbelleğe sahip disk, disk sınırından daha yüksek IOPS verebilir. Ana bilgisayar önbelleğinden bu maksimum okuma performansını elde etmek için önce bu diskin önbelleğini ısıtmanız gerekir. Bu, Okuma IOs'un, kıyaslama aracının Önbellek hacminde sürmesini, diske doğrudan değil, önbelleğe çarpmasını sağlar. Önbellek isabetleri, tek önbellek etkin diskten ek IOPS ile sonuçlanır.
 
 > [!IMPORTANT]
-> VM her yeniden değerlendirmesi, çalıştırmadan önce önbelleği sıcak gerekir.
+> Karşılaştırma yı çalıştırmadan önce, VM her yeniden başlatılındığında önbelleği ısıtmanız gerekir.
 
 ## <a name="tools"></a>Araçlar
 
-### <a name="iometer"></a>Iometer
+### <a name="iometer"></a>İyometre
 
-[Iometer Aracı'nı indirme](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) VM üzerinde.
+[VM'deki Iometer aracını indirin.](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download)
 
 #### <a name="test-file"></a>Test dosyası
 
-Iometer Kıyaslama test çalıştırması biriminde depolanan bir test dosyası kullanır. Okuma sürücü ve disk ölçmek için bu test dosyası üzerinde IOPS ve aktarım hızı yazar. Bir sağlamadınız Iometer bu test dosyası oluşturur. İobw.tst CacheReads ve NoCacheWrites birimlere adlı bir 200 GB test dosyası oluşturun.
+Iometer, kıyaslama testini çalıştırdığınız birimde depolanan bir test dosyası kullanır. Disk IOPS ve Throughput ölçmek için bu test dosyasıüzerinde Okumave Yazma sürücüler. Iometer, sağlamadıysanız bu test dosyasini oluşturur. Önbellekler ve NoCacheWrites birimlerinde iobw.tst adlı 200 GB'lık bir test dosyası oluşturun.
 
-#### <a name="access-specifications"></a>Erişim belirtimleri
+#### <a name="access-specifications"></a>Erişim özellikleri
 
-Belirtimleri isteği % okuma/yazma g/ç boyutu, % rastgele/sıralı yapılandırılmış Iometer içinde "Access belirtimleri" sekmesini kullanarak. Aşağıda açıklanan senaryoların her biri için bir erişim belirtimini oluşturun. Erişim belirtimleri oluşturun ve "Kaydet" uygun bir ad gibi – RandomWrites\_8K, RandomReads\_8 K. Test senaryosu çalıştırırken karşılık gelen belirtimi seçin.
+Belirtimler, istek IO boyutu, % okuma/yazma, % rasgele/sıralı Iometer'deki "Erişim Özellikleri" sekmesi kullanılarak yapılandırılır. Aşağıda açıklanan senaryoların her biri için bir erişim belirtimi oluşturun. RandomWrites 8K, RandomReads\_\_8K gibi uygun bir adla erişim özellikleri ve "Kaydet" oluşturun. Test senaryosunu çalıştırırken ilgili belirtimi seçin.
 
-Maksimum IOPS, yazma senaryosu için erişim belirtimleri örneği aşağıda gösterilmiştir,  
+Maksimum Yazma IOPS senaryosu için erişim belirtimlerinin bir örneği aşağıda gösterilmiştir,  
     ![Maksimum yazma IOPS için erişim belirtimleri örneği](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
 
-#### <a name="maximum-iops-test-specifications"></a>Maksimum IOPS sınama belirtimleri
+#### <a name="maximum-iops-test-specifications"></a>Maksimum IOPS test özellikleri
 
-Maksimum IOPS göstermek için daha küçük istek boyutu kullanın. 8 K istek boyutu ve rastgele yazma ve okuma özellikleri oluşturun.
+Maksimum IOPs göstermek için, daha küçük istek boyutu kullanın. 8K istek boyutunu kullanın ve Rastgele Yazma ve Okumalar için belirtimler oluşturun.
 
-| Erişim belirtimi | İstek boyutu | Rastgele % | Okuma % |
+| Erişim Belirtimi | İstek boyutu | Rastgele % | Okuma % |
 | --- | --- | --- | --- |
-| RandomWrites\_8 K |8K |100 |0 |
-| RandomReads\_8 K |8K |100 |100 |
+| RandomWrites\_8K |8K |100 |0 |
+| RandomReads\_8K |8K |100 |100 |
 
-#### <a name="maximum-throughput-test-specifications"></a>En fazla aktarım hızı testi belirtimleri
+#### <a name="maximum-throughput-test-specifications"></a>Maksimum iş testi özellikleri
 
-En yüksek aktarım göstermek için istek boyutu daha büyük kullanın. 64 K istek boyutu ve rastgele yazma ve okuma özellikleri oluşturun.
+Maksimum Verimi göstermek için daha büyük istek boyutunu kullanın. 64 K istek boyutunu kullanın ve Rastgele Yazma ve Okumalar için belirtimler oluşturun.
 
-| Erişim belirtimi | İstek boyutu | Rastgele % | Okuma % |
+| Erişim Belirtimi | İstek boyutu | Rastgele % | Okuma % |
 | --- | --- | --- | --- |
-| RandomWrites\_64 K |64 K |100 |0 |
-| RandomReads\_64 K |64 K |100 |100 |
+| RandomWrites\_64K |64 K |100 |0 |
+| RandomReads\_64K |64 K |100 |100 |
 
-#### <a name="run-the-iometer-test"></a>Iometer testi çalıştırın
+#### <a name="run-the-iometer-test"></a>Iometer testini çalıştırın
 
-Önbelleği sıcak için aşağıdaki adımları gerçekleştirin
+Önbelleği ısıtmak için aşağıdaki adımları gerçekleştirin
 
-1. Aşağıda gösterilen değerlerle iki erişim belirtimleri oluşturun
+1. Aşağıda gösterilen değerlerle iki erişim belirtimi oluşturun,
 
-   | Ad | İstek boyutu | Rastgele % | Okuma % |
+   | Adı | İstek boyutu | Rastgele % | Okuma % |
    | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1 MB |100 |0 |
-   | RandomReads\_1 MB |1 MB |100 |100 |
-1. Aşağıdaki parametrelerle önbellek diski başlatma için Iometer testi çalıştırın. Hedef birim ve 128 sıra derinliği için üç çalışan iş parçacıkları kullanın. Test "çalışma zamanı" süresi 2 olarak ayarlayın "Test" Kurulum"sekmesinde saat.
+   | RandomWrites\_1MB |1 MB |100 |0 |
+   | RandomReads\_1MB |1 MB |100 |100 |
+1. Önbellek diskini aşağıdaki parametrelerle başlatmaiçin Iometer testini çalıştırın. Hedef birim ve 128 sıra derinliği için üç alt iş parçacığı kullanın. "Test Kurulumu" sekmesinde testin "Çalışma süresi" süresini 2 saatolarak ayarlayın.
 
-   | Senaryo | Hedef birim | Ad | Duration |
+   | Senaryo | Hedef Hacim | Adı | Süre |
    | --- | --- | --- | --- |
-   | Önbellek diski başlatın |CacheReads |RandomWrites\_1 MB |2 saat |
-1. Önbellek diski aşağıdaki parametrelerle hazırlanıyor için Iometer testi çalıştırın. Hedef birim ve 128 sıra derinliği için üç çalışan iş parçacıkları kullanın. Test "çalışma zamanı" süresi 2 olarak ayarlayın "Test" Kurulum"sekmesinde saat.
+   | Önbellek Diskini Başlatma |ÖnbellekLer |RandomWrites\_1MB |2 saat |
+1. Önbellek diskini aşağıdaki parametrelerle ısıtmak için Iometer testini çalıştırın. Hedef birim ve 128 sıra derinliği için üç alt iş parçacığı kullanın. "Test Kurulumu" sekmesinde testin "Çalışma süresi" süresini 2 saatolarak ayarlayın.
 
-   | Senaryo | Hedef birim | Ad | Duration |
+   | Senaryo | Hedef Hacim | Adı | Süre |
    | --- | --- | --- | --- |
-   | Önbellek diski ısınıyor |CacheReads |RandomReads\_1 MB |2 saat |
+   | Önbellek Diskini Isıt |ÖnbellekLer |RandomReads\_1MB |2 saat |
 
-Önbellek diski warmed sonra aşağıda listelenen test senaryoları ile devam edin. Iometer testi çalıştırmak için en az üç çalışan iş parçacıkları için kullanın. **her** hedef birim. Her iş parçacığı için hedef birimi seçin, sıra derinliğini ayarlayın ve karşılık gelen test senaryosu çalıştırmak için aşağıdaki tabloda gösterildiği gibi kaydedilmiş test belirtimleri birini seçin. Tabloda ayrıca beklenen sonuçları IOPS ve aktarım hızı için bu testleri çalıştırırken gösterir. Tüm senaryolar için 8 KB'lık bir küçük g/ç boyutu ve 128 yüksek sıra derinliğini kullanılır.
+Önbellek diski ısındıktan sonra, aşağıda listelenen test senaryolarına devam edin. Iometer testini çalıştırmak **için, her** hedef birim için en az üç alt iş parçacığı kullanın. Her alt iş parçacığı için hedef birim seçin, sıra derinliğini ayarlayın ve ilgili test senaryosunu çalıştırmak için aşağıdaki tabloda gösterildiği gibi kaydedilen test özelliklerinden birini seçin. Tablo da bu testleri çalıştırırken IOPS ve ThroughPut için beklenen sonuçları gösterir. Tüm senaryolar için, 8 KB küçük bir IO boyutu ve 128 yüksek sıra derinliği kullanılır.
 
-| Test senaryosu | Hedef birim | Ad | Sonuç |
+| Test Senaryosu | Hedef Hacim | Adı | Sonuç |
 | --- | --- | --- | --- |
-| En çok, Okuma IOPS |CacheReads |RandomWrites\_8 K |50.000 IOPS |
-| En çok, Yazma IOPS |NoCacheWrites |RandomReads\_8 K |64.000 IOPS |
-| En çok, Toplam IOPS |CacheReads |RandomWrites\_8 K |100.000 IOPS |
-| NoCacheWrites |RandomReads\_8 K | &nbsp; | &nbsp; |
-| En çok, Okuma MB/sn |CacheReads |RandomWrites\_64 K |524 MB/sn |
-| En çok, Yazma MB/sn |NoCacheWrites |RandomReads\_64 K |524 MB/sn |
-| Birleşik MB/sn |CacheReads |RandomWrites\_64 K |1000 MB/sn |
-| NoCacheWrites |RandomReads\_64 K | &nbsp; | &nbsp; |
+| En çok, IOPS'u Okuyun |ÖnbellekLer |RandomWrites\_8K |50.000 IOPS |
+| En çok, IOPS Yaz |NoCacheWrites |RandomReads\_8K |64.000 IOPS |
+| En çok, Kombine IOPS |ÖnbellekLer |RandomWrites\_8K |100.000 IOPS |
+| NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
+| En çok, MB/sn oku |ÖnbellekLer |RandomWrites\_64K |524 MB/sn |
+| En çok, MB/sn yazın |NoCacheWrites |RandomReads\_64K |524 MB/sn |
+| Kombine MB/sn |ÖnbellekLer |RandomWrites\_64K |1000 MB/sn |
+| NoCacheWrites |RandomReads\_64K | &nbsp; | &nbsp; |
 
-Iometer ekran görüntüleri için toplam IOPS ve aktarım hızı senaryoları test sonuçları aşağıda verilmiştir.
+Aşağıda, birleşik IOPS ve İş Sonu senaryoları için Iometer test sonuçlarının ekran görüntüleri verilmiştir.
 
-#### <a name="combined-reads-and-writes-maximum-iops"></a>Birleştirilmiş okuyan ve yazan maksimum IOPS
+#### <a name="combined-reads-and-writes-maximum-iops"></a>Kombine okuma ve maksimum IOPS yazıyor
 
-![Birleşik okuma ve yazma işlemleri maksimum IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
+![Kombine Okuma ve Maksimum IOPS Yazıyor](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
 
-#### <a name="combined-reads-and-writes-maximum-throughput"></a>Birleştirilmiş okuyan ve yazan en fazla aktarım hızı
+#### <a name="combined-reads-and-writes-maximum-throughput"></a>Kombine okuma ve maksimum verim yazma
 
-![Birleşik okuma ve yazma işlemleri, en fazla aktarım hızı](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
+![Kombine Okuma ve Maksimum Verim Yazma](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
 
-FIO Linux vm'lerinde Kıyaslama depolama için popüler bir araçtır. Bu farklı GÇ boyutları, sıralı seçmek için esneklik veya rastgele okuma ve yazma. Çalışan iş parçacıkları veya belirtilen g/ç işlemleri gerçekleştirmek için işlemleri olarak çoğaltılır. Her iş parçacığı proje dosyalarını kullanarak gerçekleştirmelidir g/ç işlemleri türünü belirtebilirsiniz. Aşağıdaki örneklerde gösterildiği senaryo başına bir proje dosyası oluşturduk. Premium depolama alanında çalışan farklı iş yüklerini karşılaştırılmasıdır bu proje dosyalarındaki belirtimleri değiştirebilirsiniz. Örneklerde standart DS 14 sanal makine çalıştırma kullanıyoruz **Ubuntu**. Aynı Kurulumu Benchmarking bölümün başında açıklanan ve orta Gecikmeli Kıyaslama testleri çalıştırmadan önce önbelleği kullanın.
+FIO, Linux VM'lerinde depolamayı kıyaslamak için popüler bir araçtır. Farklı IO boyutlarını, sıralı veya rasgele okuma ve yazmaları seçme esnekliğine sahiptir. Belirtilen G/Ç işlemlerini gerçekleştirmek için alt iş parçacıkları veya işlemler oluşturur. Her alt iş parçacığının iş dosyalarını kullanarak gerçekleştirmesi gereken G/Ç işlemlerinin türünü belirtebilirsiniz. Aşağıdaki örneklerde gösterilen senaryo başına bir iş dosyası oluşturduk. Bu iş dosyalarındaki özellikleri, Premium Depolama'da çalışan farklı iş yüklerini karşılaştırmak için değiştirebilirsiniz. Örneklerde, **Ubuntu**çalıştıran bir Standart DS 14 VM kullanıyoruz. Kıyaslama bölümünün başında açıklanan aynı kurulumu kullanın ve kıyaslama testlerini çalıştırmadan önce önbelleği ısıtın.
 
-Başlamadan önce [FIO indirme](https://github.com/axboe/fio) ve sanal makinenize yükleyin.
+Başlamadan önce [FIO'ya indirin](https://github.com/axboe/fio) ve sanal makinenize yükleyin.
 
-Ubuntu için aşağıdaki komutu çalıştırın
+Ubuntu için aşağıdaki komutu çalıştırın,
 
 ```
 apt-get install fio
 ```
 
-Yazma işlemleri kullanımını dört çalışan iş parçacıkları ve dört çalışan iş parçacıkları disklerde sürüş okuma işlemleri için kullanıyoruz. Yazma çalışanları "Yok" olarak ayarlanmış önbellek ile 10 disklere sahip "nocache" birimdeki trafiği yönlendirdiği. Okuma çalışanları sahip bir diski önbellek kümesi "Salt okunur" "readcache" birim trafiği yönlendirdiği.
+Yazma işlemlerini sürmek için dört alt iş parçacığı ve disklerde Okuma işlemlerini yönlendirmek için dört alt iş parçacığı kullanırız. Yazma çalışanları, "Yok" olarak ayarlanmış önbellekli 10 diski olan "nocache" biriminde trafik sürüşü yapıyor. Read çalışanları, önbelleği "ReadOnly" olarak ayarlanmış bir diski olan "readcache" biriminde trafiği yönlendiriyor.
 
 #### <a name="maximum-write-iops"></a>Maksimum yazma IOPS
 
-Maksimum yazma IOPS almak için aşağıdaki özelliklerle iş dosyasını oluşturun. "Fiowrite.ini" olarak adlandırın.
+Maksimum Yazma IOPS almak için aşağıdaki özellikleri ile iş dosyası oluşturun. Adını "fiowrite.ini" olarak adlandır.
 
 ```ini
 [global]
@@ -140,24 +140,24 @@ rw=randwrite
 directory=/mnt/nocache
 ```
 
-Önceki bölümlerde ele alınan tasarım ilkelerine uygun olarak izleme önemli şey unutmayın. Bu belirtimler maksimum IOPS desteklemek üzere gerekli olan,  
+Önceki bölümlerde tartışılan tasarım yönergelerine uygun olan aşağıdaki önemli şeyleri izleyin. Bu özellikler maksimum IOPS sürücü için gereklidir,  
 
 * 256 yüksek sıra derinliği.  
-* 8 KB'lık bir küçük blok boyutu.  
-* Birden çok iş parçacığı rastgele yazma işlemlerini gerçekleştirme.
+* 8 KB küçük bir blok boyutu.  
+* Rasgele yazma yapan birden çok iş parçacığı.
 
-30 saniye için FIO test hız kazandırın için aşağıdaki komutu çalıştırın,  
+FIO testini 30 saniye başlatmak için aşağıdaki komutu çalıştırın,  
 
 ```
 sudo fio --runtime 30 fiowrite.ini
 ```
 
-Test çalışırken, sayısını, VM IOPS yazma ve Premium diskleri teslim görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi maksimum, yazma IOPS sınırı 50.000 IOPS DS14 VM sağlıyor.  
-    ![Yazma IOPS VM ve Premium diskleri teslim sayısı](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+Test çalışırken, VM ve Premium disklerin sunduğu IOPS yazma sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, DS14 VM maksimum yazma IOPS limitini 50.000 IOPS olarak teslim ediyor.  
+    ![Yazma IOPS VM ve Premium disklerin sayısı teslim](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
-#### <a name="maximum-read-iops"></a>Maksimum IOPS okuyun
+#### <a name="maximum-read-iops"></a>Maksimum okuma IOPS
 
-Proje dosyası, maksimum okuma IOPS almak için aşağıdaki özelliklerle oluşturun. "Fioread.ini" olarak adlandırın.
+Maksimum Okuma IOPS almak için aşağıdaki özellikleri içeren iş dosyasını oluşturun. Adını "fioread.ini" söyle.
 
 ```ini
 [global]
@@ -181,24 +181,24 @@ rw=randread
 directory=/mnt/readcache
 ```
 
-Önceki bölümlerde ele alınan tasarım ilkelerine uygun olarak izleme önemli şey unutmayın. Bu belirtimler maksimum IOPS desteklemek üzere gerekli olan,
+Önceki bölümlerde tartışılan tasarım yönergelerine uygun olan aşağıdaki önemli şeyleri izleyin. Bu özellikler maksimum IOPS sürücü için gereklidir,
 
 * 256 yüksek sıra derinliği.  
-* 8 KB'lık bir küçük blok boyutu.  
-* Birden çok iş parçacığı rastgele yazma işlemlerini gerçekleştirme.
+* 8 KB küçük bir blok boyutu.  
+* Rasgele yazma yapan birden çok iş parçacığı.
 
-30 saniye için FIO test hız kazandırın için aşağıdaki komutu çalıştırın,
+FIO testini 30 saniye başlatmak için aşağıdaki komutu çalıştırın,
 
 ```
 sudo fio --runtime 30 fioread.ini
 ```
 
-Test çalışırken, VM okuma IOPS sayısı ve Premium diskleri teslim görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi birden fazla 64.000 okuma IOPS DS14 VM sağlıyor. Disk ve önbellek performansı budur.  
+Test çalışırken, VM ve Premium disklerin sunduğu okuma IOPS sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, DS14 VM 64.000'den fazla Read IOPS teslim ediyor. Bu, disk ve önbellek performansının bir birleşimidir.  
     ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
-#### <a name="maximum-read-and-write-iops"></a>En fazla okuma ve yazma IOPS
+#### <a name="maximum-read-and-write-iops"></a>Maksimum okuma ve yazma IOPS
 
-Şunlarla birlikte proje dosyasını oluşturmak en fazla almak için özellikleri birleştirilmiş okuma ve yazma IOPS. "Fioreadwrite.ini" olarak adlandırın.
+En fazla birleştirilmiş Okuma ve Yazma IOPS'yi almak için aşağıdaki belirtimleri içeren iş dosyasını oluşturun. Adını "fioreadwrite.ini" olarak adlandır.
 
 ```ini
 [global]
@@ -239,21 +239,21 @@ directory=/mnt/nocache
 rate_iops=12500
 ```
 
-Önceki bölümlerde ele alınan tasarım ilkelerine uygun olarak izleme önemli şey unutmayın. Bu belirtimler maksimum IOPS desteklemek üzere gerekli olan,
+Önceki bölümlerde tartışılan tasarım yönergelerine uygun olan aşağıdaki önemli şeyleri izleyin. Bu özellikler maksimum IOPS sürücü için gereklidir,
 
-* Yüksek sıra derinliğini 128.  
-* 4 KB'lık bir küçük blok boyutu.  
-* Birden çok iş parçacığı rastgele gerçekleştirme okur ve yazar.
+* 128 yüksek sıra derinliği.  
+* 4 KB küçük bir blok boyutu.  
+* Rasgele okuma ve yazma gerçekleştiren birden çok iş parçacığı.
 
-30 saniye için FIO test hız kazandırın için aşağıdaki komutu çalıştırın,
+FIO testini 30 saniye başlatmak için aşağıdaki komutu çalıştırın,
 
 ```
 sudo fio --runtime 30 fioreadwrite.ini
 ```
 
-Test çalışırken, birleşik okuma sayısı görebilir ve IOPS yazmak VM ve Premium diskler sunma. Aşağıdaki örnekte gösterildiği gibi DS14 VM 100. 000'den fazla birleştirilmiş okuma ve yazma IOPS sağlıyor. Disk ve önbellek performansı budur.  
-    ![Birleşik okuma ve yazma IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
+Test çalışırken, VM ve Premium disklerin sunduğu IOPS'yi birlikte okuma ve yazma sayısını görebilirsiniz. Aşağıdaki örnekte gösterildiği gibi, DS14 VM 100.000'den fazla kombine Okuma ve Yazma IOPS teslim ediyor. Bu, disk ve önbellek performansının bir birleşimidir.  
+    ![Kombine okuma ve yazma IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
 
-#### <a name="maximum-combined-throughput"></a>Maksimum toplam aktarım hızı
+#### <a name="maximum-combined-throughput"></a>Maksimum kombine iş verimi
 
-Okuma ve yazma aktarım hızı üst sınırı almak için birleştirilmiş, daha büyük blok boyutu ve büyük sıra derinliğini okuma ve yazma işlemleri gerçekleştiren birden çok iş parçacığı ile kullanın. Bir blok boyutu 64 KB'ın ve 128 sıra derinliğini kullanabilirsiniz.
+En fazla birleştirilmiş Okuma ve Yazma İş Parçacığı elde etmek için, okuma ve yazma yapan birden çok iş parçacığı yla daha büyük bir blok boyutu ve büyük kuyruk derinliği kullanın. 64 KB blok boyutu ve 128 sıra derinliği kullanabilirsiniz.

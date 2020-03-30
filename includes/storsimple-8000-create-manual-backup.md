@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188446"
 ---
 #### <a name="to-create-a-manual-backup"></a>El ile yedekleme oluşturmak için
@@ -21,7 +21,7 @@ ms.locfileid: "67188446"
 
 3. **Şimdi yedekle** dikey penceresinde aşağıdaki adımları gerçekleştirin:
 
-    1. Uygun seçin **anlık görüntü türü** aşağı açılan listeden: **Yerel** anlık görüntü veya **bulut** anlık görüntü. Yedekleme ve geri yükleme işlemlerinin hızlı olması için yerel anlık görüntüyü, veri dayanıklılığı için bulut anlık görüntüsünü seçin.
+    1. Açılan listeden uygun **Anlık görüntü türü**’nü seçin: **Yerel** anlık görüntü veya **Bulut** anlık görüntüsü. Yedekleme ve geri yükleme işlemlerinin hızlı olması için yerel anlık görüntüyü, veri dayanıklılığı için bulut anlık görüntüsünü seçin.
 
         ![El ile yedekleme oluşturma](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

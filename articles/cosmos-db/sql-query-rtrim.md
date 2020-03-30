@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde RTRIM
-description: Azure Cosmos DB 'de SQL sistem işlevi RTRIM hakkında bilgi edinin.
+description: Azure Cosmos DB'de SQL sistem fonksiyonu RTRIM hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: b740d14315f6d9ba2f1788c56d6b1fcd8945c83e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302092"
 ---
 # <a name="rtrim-azure-cosmos-db"></a>RTRIM (Azure Cosmos DB)
- Sonundaki boşlukları kaldırdıktan sonra bir dize ifadesi döndürür.  
+ İzleyen boşlukları kaldırdıktan sonra dize ifadesini döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,15 +26,15 @@ RTRIM(<str_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr*  
-   Herhangi bir geçerli dize ifade var.  
+   Geçerli bir dize ifadesi dir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir dize ifadesi döndürür.  
+  Dize ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `RTRIM` bir sorgu içinde nasıl kullanılacağını gösterir.  
+  Aşağıdaki örnekte, sorgu `RTRIM` nun içinde nasıl kullanılacağı gösterilmektedir.  
   
 ```sql
 SELECT RTRIM("  abc") AS r1, RTRIM("abc") AS r2, RTRIM("abc   ") AS r3  
@@ -48,10 +48,10 @@ SELECT RTRIM("  abc") AS r1, RTRIM("abc") AS r2, RTRIM("abc   ") AS r3
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

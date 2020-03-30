@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67189058"
 ---
-1. Projeyi Android Studio'da açın.
+1. Android Studio'da projeyi açın.
 
-2. İçinde **Proje Gezgini** Android Studio'da açın `ToDoActivity.java` dosyasını açıp aşağıdaki içeri aktarma deyimlerini ekleyin:
+2. Android Studio'daki **Project Explorer'da** dosyayı `ToDoActivity.java` açın ve aşağıdaki alma bildirimlerini ekleyin:
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -27,7 +27,7 @@ ms.locfileid: "67189058"
     import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
     ```
 
-3. Aşağıdaki yöntemi ekleyin **ToDoActivity** sınıfı:
+3. **ToDoActivity** sınıfına aşağıdaki yöntemi ekleyin:
 
     ```java
     // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -59,20 +59,20 @@ ms.locfileid: "67189058"
     }
     ```
 
-    Bu kod, Google kimlik doğrulama işlemi işlemek için bir yöntem oluşturur. Bir iletişim kutusu, kimliği doğrulanan kullanıcı Kimliğini görüntüler. Başarılı bir kimlik yalnızca geçebilirsiniz.
+    Bu kod, Google kimlik doğrulama işlemini işlemek için bir yöntem oluşturur. İletişim kutusu, kimliği doğrulanan kullanıcının kimliğini görüntüler. Yalnızca başarılı bir kimlik doğrulama üzerinde devam edebilirsiniz.
 
     > [!NOTE]
-    > Google dışında bir kimlik sağlayıcısı kullanıyorsanız, geçirilen değeri değiştirmek **oturum açma** yöntemi aşağıdaki değerlerden biri olarak: _MicrosoftAccount_, _Facebook_, _Twitter_, veya _windowsazureactivedirectory_.
+    > Google dışında bir kimlik sağlayıcısı kullanıyorsanız, **oturum açma** yöntemine geçen değeri aşağıdaki değerlerden biriyle değiştirin: _MicrosoftAccount_, _Facebook_, _Twitter_, veya _windowsazureactivedirectory_.
 
-4. İçinde **onCreate** yöntemini başlatan ve sonra kodu aşağıdaki kod satırını ekleyin `MobileServiceClient` nesne.
+4. **onCreate** yönteminde, `MobileServiceClient` nesneyi anında etkileyen koddan sonra aşağıdaki kod satırını ekleyin.
 
     ```java
     authenticate();
     ```
 
-    Bu çağrı, kimlik doğrulama işlemi başlatır.
+    Bu çağrı kimlik doğrulama işlemini başlatır.
 
-5. Sonra geri kalan kod taşıma `authenticate();` içinde **onCreate** yöntemi yeni bir **createTable** yöntemi:
+5. `authenticate();` **onCreate** yönteminde kalan kodu yeni bir createTable yöntemine **taşıyın:**
 
     ```java
     private void createTable() {
@@ -92,7 +92,7 @@ ms.locfileid: "67189058"
     }
     ```
 
-6. Yeniden yönlendirme works beklendiği gibi emin olmak için aşağıdaki kod parçacığı Ekle `RedirectUrlActivity` için `AndroidManifest.xml`:
+6. Yeniden yönlendirmenin beklendiği gibi çalıştığından `RedirectUrlActivity` emin olmak için `AndroidManifest.xml`aşağıdaki bölümü ekleyin:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -106,7 +106,7 @@ ms.locfileid: "67189058"
     </activity>
     ```
 
-7. Ekleme `redirectUriScheme` için `build.gradle` Android uygulamanızın.
+7. Android `redirectUriScheme` `build.gradle` uygulamanıza ekleyin.
 
     ```gradle
     android {
@@ -123,7 +123,7 @@ ms.locfileid: "67189058"
     }
     ```
 
-8. Ekleme `com.android.support:customtabs:23.0.1` bağımlılıklara, `build.gradle`:
+8. Sizin `com.android.support:customtabs:23.0.1` bağımlılıkları `build.gradle`ekleyin:
 
     ```gradle
     dependencies {
@@ -132,9 +132,9 @@ ms.locfileid: "67189058"
     }
     ```
 
-9. Gelen **çalıştırın** menüsünde tıklatın **uygulamayı çalıştırma** uygulama ve seçilen kimlik sağlayıcınız bir oturum başlatmak için.
+9. **Çalıştır** menüsünden, uygulamayı başlatmak ve seçtiğiniz kimlik sağlayıcıyla oturum kurmak için **Çalıştır uygulamasını** tıklatın.
 
 > [!WARNING]
-> Belirtilen URL düzeni, büyük/küçük harf duyarlıdır. Emin tüm oluşumlarını `{url_scheme_of_you_app}` aynı durumda kullanın.
+> Belirtilen URL Düzeni büyük/küçük harf duyarlıdır. Tüm `{url_scheme_of_you_app}` kullanım durum larının aynı durumda olduğundan emin olun.
 
-Oturumunuz başarıyla açıldıktan sonra uygulama hatasız çalışmalıdır ve arka uç hizmetini sorgulama ve güncelleştirmeler yapmak için veri olması gerekir.
+Başarılı bir şekilde oturum aştığınızda, uygulama hatasız çalışmalı ve arka uç hizmetini sorgulayıp verilerde güncellemeler yapabilmelisin.

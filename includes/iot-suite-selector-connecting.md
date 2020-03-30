@@ -9,73 +9,73 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188807"
 ---
 > [!div class="op_single_selector"]
-> * [Windows üzerinde C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
+> * [Windows'da C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
 > * [Linux üzerinde C](../articles/iot-accelerators/iot-accelerators-connecting-devices-linux.md)
 > * [Raspberry Pi üzerinde C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js (genel)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Raspberry Pi üzerinde Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
-> * [MXChip IOT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
-Bu öğreticide, uygulamanız bir **Soğutucu** Uzaktan izleme için aşağıdaki telemetri gönderen cihaz [Çözüm Hızlandırıcısı](../articles/iot-accelerators/about-iot-accelerators.md):
+Bu eğitimde, Uzaktan İzleme [çözüm hızlandırıcısına](../articles/iot-accelerators/about-iot-accelerators.md)aşağıdaki telemetriyi gönderen bir **Chiller** cihazı uygularsınız:
 
 * Sıcaklık
 * Basınç
 * Nem oranı
 
-Kolaylık olması için örnek telemetri değerleri için kod oluşturur **Soğutucu**. Gerçek algılayıcılar cihazınıza bağlanma ve gerçek telemetri verileri göndererek örneği genişletebilirsiniz.
+Basitlik için **kod, Chiller**için örnek telemetri değerleri oluşturur. Gerçek sensörleri cihazınıza bağlayarak ve gerçek telemetri göndererek numuneyi genişletebilirsiniz.
 
-Örnek cihaz ayrıca:
+Örnek cihaz da:
 
-* Meta veri özelliklerini tanımlamak için çözüme gönderir.
-* Gelen tetiklenen eylemler yanıtlar **cihazları** çözümdeki sayfası.
-* Yapılandırma değişiklikleri yanıtlar göndermek gelen **cihazları** çözümdeki sayfası.
+* Özelliklerini açıklamak için çözüme meta veri gönderir.
+* Çözümdeki **Aygıtlar** sayfasından tetiklenen eylemlere yanıt verir.
+* Çözümdeki **Aygıtlar** sayfasından gönderen yapılandırma değişikliklerine yanıt verir.
 
-Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. Ayrıntılar için bkz [Azure ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/).
+Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Cihazınız için kod yazmadan önce Uzaktan izleme çözüm Hızlandırıcısını dağıtma ve yeni gerçek bir cihaz ekleyin.
+Cihazınız için herhangi bir kod yazmadan önce Uzaktan İzleme çözüm hızlandırıcınızı dağıtın ve çözüme yeni bir gerçek aygıt ekleyin.
 
-### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Uzaktan izleme çözüm Hızlandırıcısını dağıtma
+### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Uzaktan İzleme çözüm hızlandırıcınızı dağıtın
 
-**Soğutucu** Bu öğreticide oluşturduğunuz cihazın gönderdiği verileri örneğine [Uzaktan izleme](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) çözüm Hızlandırıcı. Uzaktan izleme çözüm Hızlandırıcısını zaten Azure hesabınızda hazırlamadıysanız bkz [Uzaktan izleme çözüm Hızlandırıcısını dağıtma](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
+Bu öğreticide oluşturduğunuz **Chiller** aygıtı, uzaktan [izleme](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) çözüm hızlandırıcısının bir örneğine veri gönderir. Azure hesabınızda Uzaktan İzleme çözüm hızlandırıcısını henüz sağlamadıysanız, [bkz.](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
 
-Uzaktan izleme çözümü dağıtım işlemi bittiğinde, bilgisayarınızı **başlatma** çözüm panosunu tarayıcınızda açmak için.
+Uzaktan İzleme çözümü için dağıtım işlemi sona erdiğinde, tarayıcınızdaki çözüm panosunu açmak için **Başlat'ı** tıklatın.
 
-![Çözüm Panosu](media/iot-suite-selector-connecting/dashboard.png)
+![Çözüm panosu](media/iot-suite-selector-connecting/dashboard.png)
 
-### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Cihazınızı Uzaktan izleme çözümü Ekle
+### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Cihazınızı Uzaktan İzleme çözümüne ekleme
 
 > [!NOTE]
-> Çözümünüzde zaten bir cihaz eklediyseniz, bu adımı atlayabilirsiniz. Ancak, sonraki adım, cihaz bağlantısı dizeniz gerektirir. Bir cihazın bağlantı dizesinden alabilirsiniz [Azure portalında](https://portal.azure.com) veya bu adı kullanıyor [az IOT](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI aracı.
+> Çözüme zaten bir aygıt eklediyseniz, bu adımı atlayabilirsiniz. Ancak, bir sonraki adım aygıtınızın bağlantı dizesini gerektirir. Bir aygıtın bağlantı dizesini [Azure portalından](https://portal.azure.com) veya [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI aracını kullanarak alabilirsiniz.
 
-Bir cihazın çözüm hızlandırıcısına bağlamayı için kendini IOT hub'a geçerli kimlik bilgilerini kullanarak tanımlamanız gerekir. Çözüme cihaz eklediğinizde, bu kimlik bilgilerini içeren cihaz bağlantı dizesini kaydetmek olanağına sahiptir. Bu öğreticinin sonraki adımlarında istemci uygulamanıza cihaz bağlantı dizesini içerir.
+Bir aygıtın çözüm hızlandırıcıya bağlanabilmesi için, geçerli kimlik bilgilerini kullanarak kendisini IoT Hub'a tanımlaması gerekir. Aygıtı çözüme eklediğinizde bu kimlik bilgilerini içeren aygıt bağlantı dizesini kaydetme fırsatınız vardır. Aygıt bağlantı dizesini daha sonra bu öğreticiye istemci uygulamanıza eklersiniz.
 
-Uzaktan izleme çözümünüze cihaz eklemek için aşağıdaki adımları tamamlayın **Device Explorer** çözümdeki sayfası:
+Uzaktan İzleme çözümünüze aygıt eklemek için, çözümde **Aygıt Gezgini** sayfasındaaşağıdaki adımları tamamlayın:
 
-1. Seçin **+ yeni cihaz**ve ardından **gerçek** olarak **cihaz türü**:
+1. **+ Yeni aygıtı**seçin ve ardından Aygıt **türü**olarak **Real'i** seçin:
 
     ![Gerçek cihaz ekleme](media/iot-suite-selector-connecting/devicesprovision.png)
 
-1. Girin **fiziksel Soğutucu** olarak cihaz kimliği. Seçin **simetrik anahtar** ve **anahtarları otomatik olarak oluştur** seçenekleri:
+1. Aygıt Kimliği olarak **Fiziksel soğutucu** girin. **Simetrik Anahtar** ve **Otomatik oluşturma anahtarları** seçeneklerini seçin:
 
-    ![Cihaz seçenekleri seçin](media/iot-suite-selector-connecting/devicesoptions.png)
+    ![Aygıt seçeneklerini seçin](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. **Uygula**'yı seçin. Ardından, Not **cihaz kimliği**, **birincil anahtar**, ve **bağlantı dizesi birincil anahtarı** değerleri:
+1. **Uygula**'yı seçin. Ardından **Aygıt Kimliği,** Birincil **Anahtar**ve **Bağlantı dizesi birincil anahtar** değerlerini not edin:
 
     ![Kimlik bilgilerini alma](media/iot-suite-selector-connecting/credentials.png)
 
-Artık gerçek bir cihaz için Uzaktan izleme çözüm Hızlandırıcısını eklendi ve cihaz bağlantı dizesini Not. Aşağıdaki bölümlerde, cihaz bağlantı dizesini çözümünüze bağlanmak için kullandığı istemci uygulaması yürütürsünüz.
+Şimdi Uzaktan İzleme çözüm hızlandırıcısına gerçek bir aygıt eklediniz ve aygıt bağlantı dizesini kaydettiniz. Aşağıdaki bölümlerde, çözümünüze bağlanmak için aygıt bağlantı dizesini kullanan istemci uygulamasını uygularsınız.
 
-İstemci uygulamasının yerleşik uygulayan **Soğutucu** cihaz modeli. Bir çözüm Hızlandırıcı cihaz modeli, bir cihaz hakkında aşağıdakileri belirtir:
+İstemci uygulaması yerleşik **Chiller** aygıt modelini uygular. Çözüm hızlandırıcı aygıt modeli, bir aygıt hakkında aşağıdakileri belirtir:
 
-* Çözüme cihaz raporlarına özellikleri. Örneğin, bir **Soğutucu** cihaz, üretici yazılımı ve konumu hakkında bilgi bildirir.
-* Telemetri türlerini çözüme cihaz gönderir. Örneğin, bir **Soğutucu** sıcaklık ve nem basınç değerlerini cihazı gönderir.
-* Yöntemi cihazda çalıştırılacak çözümden zamanlayabilirsiniz. Örneğin, bir **Soğutucu** cihaz uygulanmalı **yeniden**, **FirmwareUpdate**, **EmergencyValveRelease**, ve  **IncreasePressure** yöntemleri.
+* Aygıtın çözüme bildirdiği özellikler. Örneğin, bir **Chiller** aygıtı yazılım yazılımı ve konumu hakkında bilgi bildirir.
+* Cihazın çözüme gönderdiği telemetri türleri. Örneğin, bir **Chiller** cihazı sıcaklık, nem ve basınç değerleri gönderir.
+* Çözümden aygıtta çalışacak şekilde zamanlayabileceğiniz yöntemler. Örneğin, bir **Chiller** cihazı **Yeniden Başlatma,** **FirmwareUpdate,** **EmergencyValveRelease**ve **IncreasePressure** yöntemlerini uygulamalıdır.

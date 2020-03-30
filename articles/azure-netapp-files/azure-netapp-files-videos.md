@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files videoları | Microsoft Docs
-description: Azure NetApp Files kullanımı ile ilgili tartışmalar içeren videoların başvurularını sağlar.
+title: Azure NetApp Dosyaları videoları | Microsoft Dokümanlar
+description: Azure NetApp Dosyalarını kullanma yla ilgili tartışmalar içeren videolara atıfta bulunur.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: b-juche
 ms.openlocfilehash: aca6899da3c92cca0fd8564da5ec3d1679eb2579
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75890987"
 ---
-# <a name="azure-netapp-files-videos"></a>Azure NetApp Files videoları
-Bu makalede Azure NetApp Files kullanımı hakkında ayrıntılı tartışmalar içeren videolara yönelik başvurular sağlanmaktadır. 
+# <a name="azure-netapp-files-videos"></a>Azure NetApp Dosyaları videoları
+Bu makalede, Azure NetApp Dosyalarını kullanma yla ilgili derinlemesine tartışmalar içeren videolara atıfta bulunulması sağlanmaktadır. 
 
-Azure NetApp Files hakkında daha fazla bilgi edinmenize yardımcı olacak birkaç video mevcuttur:  
+Azure NetApp Dosyaları hakkında daha fazla bilgi edinmenize yardımcı olacak çeşitli videolar mevcuttur:  
 
-* [Microsoft Ignite 2019: en zorlu kurumsal dosya iş yüklerinizi çalıştırın Azure NetApp Files](https://myignite.techcommunity.microsoft.com/sessions/82938?source=sessions) , kullanım örnekleri ve tanıtım dahil olmak üzere Azure NetApp Files kısa bir giriş sağlar ve ardından yetenekler ve yol haritası hakkında daha ayrıntılı bilgi verir.
-* [Kirk Ryan tarafından Azure NetApp Files](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists) , Azure NetApp Files için ayrılmış bir videolar, öğreticiler ve gösteriler dizisidir. 
+* [Microsoft Ignite 2019: Azure NetApp Dosyaları ile en zorlu kurumsal dosya iş yüklerinizi çalıştırın,](https://myignite.techcommunity.microsoft.com/sessions/82938?source=sessions) kullanım durumları ve demo dahil olmak üzere Azure NetApp Dosyalarına kısa bir giriş sağlar ve ardından özellikler ve yol haritası üzerinde daha da derine iner.
+* [Kirk Ryan'ın Azure NetApp Dosyaları konuşmaları,](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists) Azure NetApp Dosyalarına adanmış bir dizi video, öğretici ve gösteridir. 

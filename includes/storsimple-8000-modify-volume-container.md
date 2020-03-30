@@ -5,39 +5,39 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4cffbb1aaa438bac08ec77f576b32a901abacabd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188417"
 ---
 > [!NOTE] 
-> Şifreleme ayarları ve oluşturulduktan sonra bir birim kapsayıcısı ile ilişkili depolama hesabı kimlik bilgilerini değiştiremezsiniz.
+> Şifreleme ayarlarını ve bir birim kapsayıcısıyla ilişkili depolama hesabı kimlik bilgilerini oluşturulduktan sonra değiştiremezsiniz.
 
-#### <a name="to-modify-a-volume-container"></a>Birim kapsayıcısı değiştirmek için
+#### <a name="to-modify-a-volume-container"></a>Birim kapsayıcısını değiştirmek için
 
-1. StorSimple cihaz Yöneticisi hizmetinize gidin ve ardından gidin **Yönetim > birim kapsayıcıları**.
+1. StorSimple Device Manager hizmetinize gidin ve ardından **Yönetim > Birim kapsayıcılarına**gidin.
 
-2. Birim kapsayıcıları tablosal listesinden değiştirmek istediğiniz birim kapsayıcısı seçin. Üzerinde **cihazları** sayfasında cihazı seçin, çift tıklayın ve ardından **birim kapsayıcıları** sekmesi.
+2. Birim kapsayıcıların tabular listesinden, değiştirmek istediğiniz birim kapsayıcısını seçin. **Aygıtlar** sayfasında aygıtı seçin, çift tıklatın ve sonra **Birim kapsayıcıları** sekmesini tıklatın.
 
-2. Birim kapsayıcıları tablosal listesinde, değiştirmek istediğiniz birim kapsayıcısı seçin. Açılan dikey penceresinde **Değiştir** komut çubuğundan.
+2. Birim kapsayıcılarının tabular listesinde, değiştirmek istediğiniz birim kapsayıcısını seçin. Açılan bıçakta, komut çubuğundan **Değiştir'i** tıklatın.
 
-    ![Birim kapsayıcısını Değiştir](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
+    ![Birim kapsayıcıyı değiştirme](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
 
-3. İçinde **değiştirme birim kapsayıcısı** dikey penceresinde aşağıdaki adımları uygulayın:
+3. Birimi **Değiştir kapsayıcı** bıçaklarında aşağıdaki adımları yapın:
    
-   1. Belirtilen sonra adı, şifreleme anahtarını ve birim kapsayıcısı ile ilişkili depolama hesabı değiştirilemez. İlişkili bant genişliği ayarlarını değiştirin.
+   1. Birim kapsayıcısıyla ilişkili ad, şifreleme anahtarı ve depolama hesabı belirtildikten sonra değiştirilemez. İlişkili bant genişliği ayarını değiştirin.
       
-       ![Bant genişliği ayarını değiştirin](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
+       ![Bant genişliği ayarını değiştirme](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
-   2.  **Tamam**'ı tıklatın.
-4. Sonraki sayfada **birim kapsayıcısını Değiştir** iletişim kutusunda:
+   2.  **Tamam**'a tıklayın.
+4. **Birim Kapsayıcıyı Değiştir** iletişim kutusunun sonraki sayfasında:
    
-   1. Aşağı açılan listeden var olan bir bant genişliği şablonu seçin.
-   2. Belirtilen bant genişliği şablonu için zamanlama ayarları gözden geçirin.
-   3. Tıklayın **Kaydet** ve değişiklikleri onaylayın.
+   1. Açılan listeden varolan bant genişliği şablonu seçin.
+   2. Belirtilen bant genişliği şablonu için zamanlama ayarlarını gözden geçirin.
+   3. **Kaydet'i** tıklatın ve değişiklikleri onaylayın.
       
-       ![Değişiklikleri onaylayın](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
+       ![Değişiklikleri onaylama](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
 
-   3. **Birim kapsayıcıları** dikey penceresinde, değişiklikleri yansıtacak şekilde güncelleştirilir.
+   3. **Birim kapsayıcıları** bıçak değişiklikleri yansıtacak şekilde güncelleştirilir.
 

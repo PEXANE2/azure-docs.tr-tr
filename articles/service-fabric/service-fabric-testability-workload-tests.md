@@ -1,29 +1,29 @@
 ---
-title: Azure Service Fabric uygulamalarında hata benzetimi yapma
-description: Azure Service Fabric hizmetlerinizin düzgün ve düzgün olmayan hatalara karşı nasıl sağlamlaştıralınacağını öğrenin.
+title: Azure Hizmet Kumaşı uygulamalarındaki hataları simüle edin
+description: Azure Hizmet Kumaşı hizmetlerinizi zarif ve zarif hatalara karşı nasıl sertleştirmiş olabiliriz hakkında bilgi edinin.
 author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645999"
 ---
-# <a name="simulate-failures-during-service-workloads"></a>Hizmet iş yükleri sırasında hata benzetimleri yapma
-Azure 'daki test Service Fabric senaryoları, geliştiricilerin bireysel hatalarıyla ilgilenme konusunda endişelenmelerine olanak tanır. Ancak, istemci iş yükünün ve hatalarının açık bir şekilde aramasının gerekebileceği senaryolar vardır. İstemci iş yükünün ve hatalarının araya getirilmesi, hata oluştuğunda hizmetin gerçekten bir eylem gerçekleştirmesini sağlar. Test edilebilirlik 'nın sağladığı denetim düzeyi verildiğinde, bunlar iş yükü yürütmesinin kesin noktalarında olabilir. Bu hata, uygulamadaki farklı durumlardaki hataları bulabilir ve kaliteyi iyileştirebilir.
+# <a name="simulate-failures-during-service-workloads"></a>Hizmet iş yükleri sırasında hataları simüle etmek
+Azure Hizmet Kumaşı'ndaki sınayabilirlik senaryoları, geliştiricilerin tek tek hatalarla başa çıkma konusunda endişelenmemelerini sağlar. Ancak, istemci iş yükünün ve hataların açık bir şekilde ayrılmasının gerekli olabileceği senaryolar vardır. İstemci iş yükünün ve hatalarının ayrılması, hata olduğunda hizmetin gerçekten bazı eylemler gerçekleştirmesini sağlar. Sınanabilirliğin sağladığı denetim düzeyi göz önüne alındığında, bunlar iş yükü yürütmesinin kesin noktalarında olabilir. Uygulamada farklı durumlarda hataları bu indüksiyon hataları bulmak ve kalitesini artırabilir.
 
 ## <a name="sample-custom-scenario"></a>Örnek özel senaryo
-Bu test, iş yükünü [düzgün ve düzgün olmayan hatalarla](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)karşılıklı bırakan bir senaryoyu gösterir. Hatalar, hizmet işlemlerinin ortasında veya en iyi sonuçlar için işlem olarak bildirilmelidir.
+Bu test, iş yükünü [zarif ve zarif olmayan hatalarla](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)birbiriyle kesişen bir senaryo gösterir. Hatalar, en iyi sonuçlar için servis işlemlerinin ortasında veya hesaplamada indüklenmelidir.
 
-Dört iş yükü sunan bir hizmetin örneğini ele alalım: A, B, C ve D. her biri bir iş akışı kümesine karşılık gelir ve işlem, depolama ya da bir karıştırma olabilir. Basitlik sağlamak için örneğimizde iş yüklerini Özet olarak ekleyeceğiz. Bu örnekte yürütülen farklı hatalar şunlardır:
+Dört iş yükünü ortaya çıkaran bir hizmet örneğini gözden geçirelim: A, B, C ve D. Her biri bir iş akışı kümesine karşılık gelir ve işlem, depolama veya karışım olabilir. Basitlik adına, örneğimizdeki iş yüklerini özetleyeceğiz. Bu örnekte çalıştırılan farklı hatalar şunlardır:
 
-* RestartNode: makinenin yeniden başlatılmasının benzetimini yapmak için düzgün olmayan hata.
-* RestartDeployedCodePackage: hizmet ana bilgisayar işleminin çökmelerini taklit etmek için düzgün olmayan hata.
-* RemoveReplica: Çoğaltma kaldırma benzetimi için düzgün hata.
-* MovePrimary: Service Fabric yük dengeleyici tarafından tetiklenen çoğaltma hareketlerinin benzetimini yapmak için düzgün hatası.
+* Yeniden Başlatma: Makinenin yeniden başlatılmasını simüle etmek için yapılan ungraceful hatası.
+* Yeniden BaşlaDağıtılanCodePackage: Hizmet ana bilgisayar işlem çökmelerini simüle etmek için ungraceful hata.
+* RemoveReplica: Çoğaltma kaldırma simüle etmek için zarif hata.
+* MovePrimary: Service Fabric yük dengeleyicisi tarafından tetiklenen yineleme hareketlerini simüle etmek için zarif hata.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

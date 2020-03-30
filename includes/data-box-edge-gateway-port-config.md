@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188811"
 ---
-| Bağlantı noktası yok.| Daraltma veya genişletme | Bağlantı noktası kapsamı| Gerekli|   Notlar |   |
+| Liman no.| Veya dışarıda | Bağlantı noktası kapsamı| Gerekli|   Notlar |   |
 |--------|-----|-----|-----------|----------|-----------|
-| TCP 80 (HTTP)|Çıkış|WAN |Hayır|Giden bağlantı noktası, güncelleştirmeleri almak için internet erişimi için kullanılır. <br>Kullanıcı tarafından yapılandırılabilir bir giden web Ara sunucudur. |
-| TCP 443 (HTTPS)|Çıkış|WAN|Evet|Giden bağlantı noktası, bulut veri erişimi için kullanılır.<br>Kullanıcı tarafından yapılandırılabilir bir giden web Ara sunucudur.|
-| UDP 123 (NTP)|Çıkış|WAN|Bazı durumlarda<br>Notlara bakın|Yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız, bu bağlantı noktası gereklidir.  |   
-| UDP 53 (DNS)|Çıkış|WAN|Bazı durumlarda<br>Notlara bakın|Yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız, bu bağlantı noktası gereklidir.<br>Yerel bir DNS sunucusunu kullanmanızı öneririz. |
-| TCP 5985 (WinRM)|Giden/içinde|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası, HTTP üzerinden cihaz uzak PowerShell aracılığıyla bağlanmak için gereklidir.  |
-| UDP 67 (DHCP)|Çıkış|LAN|Bazı durumlarda<br>Notlara bakın|Yalnızca yerel bir DHCP sunucusu kullanıyorsanız bu bağlantı noktası gereklidir.  |
-| TCP 80 (HTTP)|Giden/içinde|LAN|Evet|Bu bağlantı noktasını, yerel yönetim için cihazda yerel kullanıcı Arabirimi için gelen bağlantı noktasıdır. <br>HTTP üzerinden yerel UI erişme, HTTPS için otomatik olarak yönlendirir.  |
-| TCP 443 (HTTPS)|Giden/içinde|LAN|Evet|Bu bağlantı noktasını, yerel yönetim için cihazda yerel kullanıcı Arabirimi için gelen bağlantı noktasıdır. |
-| TCP 445 (SMB)|İçinde|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası, yalnızca SMB bağlanılıyorsa gereklidir. |
-| TCP 2049 (NFS)|İçinde|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası, yalnızca NFS bağlanılıyorsa gereklidir. |
+| TCP 80 (HTTP)|Out|WAN |Hayır|Giden bağlantı noktası güncellemeleri almak için internet erişimi için kullanılır. <br>Giden web proxy kullanıcı yapılandırılabilir. |
+| TCP 443 (HTTPS)|Out|WAN|Evet|Giden bağlantı noktası buluttaki verilere erişmek için kullanılır.<br>Giden web proxy kullanıcı yapılandırılabilir.|
+| UDP 123 (NTP)|Out|WAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası yalnızca internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir.  |   
+| UDP 53 (DNS)|Out|WAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası yalnızca internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir.<br>Yerel bir DNS sunucusu kullanmanızı öneririz. |
+| TCP 5985 (WinRM)|Çıkış/İç|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası, http üzerinden uzaktan PowerShell üzerinden cihaza bağlanmak için gereklidir.  |
+| UDP 67 (DHCP)|Out|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası yalnızca yerel bir DHCP sunucusu kullanıyorsanız gereklidir.  |
+| TCP 80 (HTTP)|Çıkış/İç|LAN|Evet|Bu bağlantı noktası, yerel yönetim için aygıtta yerel UI için gelen bağlantı noktasıdır. <br>HTTP üzerinden yerel UI'ye erişmek otomatik olarak HTTPS'ye yönlendirilecektir.  |
+| TCP 443 (HTTPS)|Çıkış/İç|LAN|Evet|Bu bağlantı noktası, yerel yönetim için aygıtta yerel UI için gelen bağlantı noktasıdır. |
+| TCP 445 (Kobİ)|İçindeki|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası yalnızca SMB üzerinden bağlanıyorsanız gereklidir. |
+| TCP 2049 (NFS)|İçindeki|LAN|Bazı durumlarda<br>Notlara bakın|Bu bağlantı noktası yalnızca NFS üzerinden bağlanıyorsanız gereklidir. |

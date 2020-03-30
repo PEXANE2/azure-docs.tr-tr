@@ -1,59 +1,59 @@
 ---
-title: Azure Işlevleri dağıtım Yuvaları
-description: Azure Işlevleri ile dağıtım yuvaları oluşturmayı ve kullanmayı öğrenin
+title: Azure İşlevler dağıtım yuvaları
+description: Azure İşlevleriyle dağıtım yuvaları oluşturmayı ve kullanmayı öğrenin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769226"
 ---
-# <a name="azure-functions-deployment-slots"></a>Azure Işlevleri dağıtım Yuvaları
+# <a name="azure-functions-deployment-slots"></a>Azure İşlevler dağıtım yuvaları
 
-Azure Işlevleri dağıtım yuvaları, işlev uygulamanızın "yuvalar" adlı farklı örnekleri çalıştırmasına izin verir. Yuvalar, genel kullanıma açık bir uç nokta aracılığıyla kullanıma sunulan farklı ortamlardır. Bir uygulama örneği her zaman üretim yuvasına eşlenir ve isteğe bağlı bir yuvaya atanmış örnekleri takas edebilirsiniz. Uygulamalar hizmet planı altında çalışan işlev uygulamalarının birden çok yuvası olabilir, ancak tüketim planı kapsamında yalnızca bir yuva kullanılabilir.
+Azure İşlevler dağıtım yuvaları, işlev uygulamanızın "yuvalar" adı verilen farklı örnekleri çalıştırmasına olanak tanır. Yuvalar, genel kullanıma açık bir bitiş noktası aracılığıyla ortaya çıkarılan farklı ortamlardır. Bir uygulama örneği her zaman üretim yuvasına eşlenir ve isteğe bağlı olarak yuvaya atanan örnekleri değiştirebilirsiniz. Apps Hizmeti planı altında çalışan işlev uygulamaları birden çok yuvaya sahip olabilir, tüketim planında ise yalnızca bir yuvaya izin verilir.
 
-Aşağıdaki, işlevlerin takas yuvaları tarafından nasıl etkilendiğini yansıtır:
+Aşağıdakiler, işlevlerin takas yuvalarından nasıl etkilendiğini yansıtır:
 
-- Trafik yeniden yönlendirmesi sorunsuz; bir değiştirme nedeniyle hiçbir istek atılamaz.
-- Bir işlev değiştirme sırasında çalışıyorsa, yürütme devam eder ve sonraki Tetikleyiciler, takas edilen uygulama örneğine yönlendirilir.
+- Trafik yönlendirmesi sorunsuzdur; takas nedeniyle hiçbir istek düşürülmez.
+- Bir işlev değiştirme sırasında çalışıyorsa, yürütme devam eder ve sonraki tetikleyiciler değiştirilen uygulama örneğine yönlendirilir.
 
 > [!NOTE]
-> Yuvalar Şu anda Linux tüketim planı için kullanılamaz.
+> Yuvalar şu anda Linux Tüketim planı için kullanılamıyor.
 
-## <a name="why-use-slots"></a>Yuvalar neden kullanılmalıdır?
+## <a name="why-use-slots"></a>Neden yuva kullanıyorsun?
 
-Dağıtım yuvalarını kullanmanın bazı avantajları vardır. Aşağıdaki senaryolar yuvalar için ortak kullanımları anlatmaktadır:
+Dağıtım yuvalarını kullanmanın birçok avantajı vardır. Aşağıdaki senaryolar yuvaları için ortak kullanımları açıklar:
 
-- Farklı **amaçlar Için farklı ortamlar**: farklı yuvaların kullanılması, üretim veya hazırlama yuvasına geçmeden önce uygulama örneklerini ayırt etme fırsatına sahip olmanızı sağlar.
-- **Ön ısıtma**: doğrudan üretime dağıtmak yerine bir yuvaya dağıtım, uygulamanın canlı olmadan önce daha sıcak olmasına olanak sağlar. Ayrıca, yuva kullanımı, HTTP ile tetiklenen iş yükleri için gecikme süresini azaltır. Örnekler, dağıtımdan önce, yeni dağıtılan işlevlerin soğuk başlangıcını azaltan bir şekilde azalmış olur.
-- **Kolay azalma**: bir değiştirme işleminden sonra, daha önce hazırlanmış bir uygulamaya sahip yuva artık önceki üretim uygulamasına sahiptir. Üretim yuvasında takas edilen değişiklikler beklenmediği sürece, "son bilinen iyi örnek örneğinizi" geri almak için değiştirmeyi hemen ters çevirebilirsiniz.
+- **Farklı amaçlar için farklı ortamlar**: Farklı yuvalar kullanmak, üretime veya evreleme yuvasına geçmeden önce uygulama örneklerini ayırt etme fırsatı verir.
+- **Prewarming**: Doğrudan üretim yerine bir yuvaya dağıtım, uygulamanın yayına girmeden önce ısınmasını sağlar. Ayrıca, yuva kullanmak HTTP tarafından tetiklenen iş yüklerinin gecikme süresini azaltır. Örnekler dağıtımdan önce ısıtılır ve bu da yeni dağıtılan işlevlerin soğuk başlangıcını azaltır.
+- **Kolay geri dönüşler**: Üretimle bir takastan sonra, daha önce sahnelenen bir uygulamanın yuvası artık önceki üretim uygulamasına sahip. Üretim yuvasına değiştirilen değişiklikler beklediğiniz gibi değilse, "bilinen son iyi örneğini" geri almak için takası hemen tersine çevirebilirsiniz.
 
-## <a name="swap-operations"></a>Değiştirme işlemleri
+## <a name="swap-operations"></a>Takas işlemleri
 
-Bir değiştirme sırasında, bir yuva kaynak ve diğer hedef olarak değerlendirilir. Kaynak yuva, hedef yuvaya uygulanan uygulamanın örneğine sahiptir. Aşağıdaki adımlar, hedef yuvanın bir değiştirme sırasında kapalı kalma süresi yaşamasını güvence altına almamalıdır:
+Bir takas sırasında, bir yuva kaynak ve diğer hedef olarak kabul edilir. Kaynak yuvası, hedef yuvaya uygulanan uygulama örneğine sahiptir. Aşağıdaki adımlar, hedef yuvasının takas sırasında kapalı kalma süresi yaşamamasını sağlar:
 
-1. **Ayarları Uygula:** Hedef yuvadan alınan ayarlar, kaynak yuvasının tüm örneklerine uygulanır. Örneğin, üretim ayarları hazırlama örneğine uygulanır. Uygulanan ayarlar aşağıdaki kategorileri içerir:
-    - [Yuvaya özgü](#manage-settings) uygulama ayarları ve bağlantı dizeleri (varsa)
+1. **Ayarları uygulayın:** Hedef yuvadaki ayarlar kaynak yuvanın tüm örneklerine uygulanır. Örneğin, üretim ayarları evreleme örneğine uygulanır. Uygulanan ayarlar aşağıdaki kategorileri içerir:
+    - [Yuvaya özel](#manage-settings) uygulama ayarları ve bağlantı dizeleri (varsa)
     - [Sürekli dağıtım](../app-service/deploy-continuous-deployment.md) ayarları (etkinse)
-    - [App Service kimlik doğrulama](../app-service/overview-authentication-authorization.md) ayarları (etkinse)
+    - [Uygulama Hizmeti kimlik doğrulama](../app-service/overview-authentication-authorization.md) ayarları (etkinse)
 
-1. **Yeniden başlatmalar ve kullanılabilirlik Için bekleyin:** Takas, kaynak yuvadaki her örnek için yeniden başlatma işleminin tamamlanmasını ve istekler için kullanılabilir olmasını bekler. Herhangi bir örnek yeniden başlatılamazsa, değiştirme işlemi kaynak yuvada tüm değişiklikleri geri alır ve işlemi sonlandırır.
+1. **Yeniden başlatma ve kullanılabilirlik için bekleyin:** Takas, kaynak yuvasındaki her örneğin yeniden başlatılmasını ve istekler için kullanılabilir olmasını bekler. Herhangi bir örnek yeniden başlatılamazsa, takas işlemi kaynak yuvasındaki tüm değişiklikleri geri değiştirir ve işlemi durdurur.
 
-1. **Yönlendirmeyi güncelleştir:** Kaynak yuvasındaki tüm örnekler başarıyla iyileştirilirken, iki yuva yönlendirme kurallarını değiştirerek takası tamamlar. Bu adımdan sonra, hedef yuva (örneğin, üretim yuvası), kaynak yuvada daha önce çarpımış olan uygulamaya sahiptir.
+1. **Güncelleme yönlendirmesi:** Kaynak yuvasındaki tüm örnekler başarıyla ısıtılırsa, iki yuva yönlendirme kurallarını değiştirerek takası tamamlar. Bu adımdan sonra, hedef yuvası (örneğin, üretim yuvası) daha önce kaynak yuvasında ısınmış bir uygulamaya sahiptir.
 
-1. **Işlemi Yinele:** Artık kaynak yuvasının hedef yuvada daha önce takas öncesi uygulamasına sahip olduğuna göre, tüm ayarları uygulayıp kaynak yuva için örnekleri yeniden başlatarak aynı işlemi gerçekleştirin.
+1. **Yineleme işlemi:** Artık kaynak yuvasında daha önce hedef yuvasında ön takas uygulaması bulunduğuna göre, tüm ayarları uygulayarak ve kaynak yuvası için örnekleri yeniden başlatarak aynı işlemi gerçekleştirin.
 
 Aşağıdaki noktaları göz önünde bulundurun:
 
-- Değiştirme işleminin herhangi bir noktasında, takas edilen uygulamaların başlatılması kaynak yuvada gerçekleşir. Kaynak yuva hazırlanırken, değiştirme işleminin başarılı veya başarısız olmasına bakılmaksızın hedef yuva çevrimiçi kalır.
+- Takas işleminin herhangi bir noktasında, değiştirilen uygulamaların başlatılması kaynak yuvasında gerçekleşir. Kaynak yuvası hazırlanırken, takas başarılı olsun veya başarısız olurken hedef yuvası çevrimiçi kalır.
 
-- Bir hazırlama yuvasını üretim yuvası ile değiştirmek için, üretim yuvasının *her zaman* hedef yuva olduğundan emin olun. Bu şekilde, değiştirme işlemi üretim uygulamanızı etkilemez.
+- Bir evreleme yuvasını üretim yuvasıyla değiştirmek için, üretim yuvasının *her zaman* hedef yuvası olduğundan emin olun. Bu şekilde, takas işlemi üretim uygulamanızı etkilemez.
 
-- *Değiştirme başlatılmadan önce*, olay kaynaklarıyla ilgili ayarların ve bağlamaların [dağıtım yuvası ayarları](#manage-settings) olarak yapılandırılması gerekir. Bu süreyi "yapışkan" olarak işaretlemek, olayların ve çıktıların doğru örneğe yönlendirilmesini sağlar.
+- Bir *takas başlatmadan önce*olay kaynakları ve bağlamalarla ilgili [ayarların dağıtım yuvası ayarları](#manage-settings) olarak yapılandırılması gerekir. Bunları önceden "yapışkan" olarak işaretlemek, olayların ve çıktıların uygun örne yönlendirilmesini sağlar.
 
 ## <a name="manage-settings"></a>Ayarları yönetme
 
@@ -61,128 +61,128 @@ Aşağıdaki noktaları göz önünde bulundurun:
 
 ### <a name="create-a-deployment-setting"></a>Dağıtım ayarı oluşturma
 
-Ayarları, "yapışkan" yapan bir dağıtım ayarı olarak işaretleyebilirsiniz. Yapışkan ayar, uygulama örneğiyle takas etmez.
+Ayarları, "yapışkan" yapan bir dağıtım ayarı olarak işaretleyebilirsiniz. Yapışkan bir ayar uygulama örneği ile değiştirmez.
 
-Bir yuvada bir dağıtım ayarı oluşturursanız, bir değiştirme işleminde yer alan diğer tüm yuvalara aynı ayarı oluşturmayı unutmayın. Bu şekilde, bir ayarın değeri değişmezse, ayar adları yuvalar arasında tutarlı kalır. Bu ad tutarlılığı, kodunuzun tek bir yuvada tanımlanmış ancak başka bir yuvada tanımlanmış bir ayara erişmeyi denememesini sağlar.
+Bir yuvada bir dağıtım ayarı oluşturursanız, takasta yer alan diğer yuvalarda benzersiz bir değere sahip aynı ayarı oluşturduğunuzdan emin olun. Bu şekilde, bir ayarın değeri değişmezken, ayar adları yuvalar arasında tutarlı kalır. Bu ad tutarlılığı, kodunuzun bir yuvada tanımlanan ancak başka bir yuvada tanımlanmamış bir ayara erişmeye çalışmamasını sağlar.
 
-Bir dağıtım ayarı oluşturmak için aşağıdaki adımları kullanın:
+Dağıtım ayarı oluşturmak için aşağıdaki adımları kullanın:
 
-- İşlev uygulamasındaki *yuvalara* gitme
+- İşlev uygulamasında *Ki Yuvalara* gidin
 - Yuva adına tıklayın
-- *Platform özellikleri > genel ayarlar*altında, **yapılandırma** ' ya tıklayın.
-- Geçerli yuvaya göre kontrol etmek istediğiniz ayar adına tıklayın
-- **Dağıtım yuvası ayarı** onay kutusuna tıklayın
-- **Tamam**’a tıklayın.
-- Dikey pencere kaybolduğunda, değişiklikleri korumak için **Kaydet** ' e tıklayın
+- *Genel Ayarlar> Platform Özellikleri*altında **Yapılandırma'ya** tıklayın
+- Geçerli yuvaya yapıştırmak istediğiniz ayar adını tıklatın
+- Dağıtım **yuvası ayar** onay kutusunu tıklatın
+- **Tamam'ı** tıklatın
+- Ayar bıçağı kaybolduktan sonra, değişiklikleri korumak için **Kaydet'i** tıklatın
 
-![Dağıtım yuvası ayarı](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
+![Dağıtım Yuvası Ayarı](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Kurulum
+## <a name="deployment"></a>Dağıtım
 
-Yuva oluşturduğunuzda yuvalar boştur. Uygulamanızı bir yuvaya dağıtmak için [Desteklenen Dağıtım teknolojilerinden](./functions-deployment-technologies.md) herhangi birini kullanabilirsiniz.
+Yuva oluşturduğunuzda yuvalar boştur. Uygulamanızı bir yuvaya dağıtmak için [desteklenen dağıtım teknolojilerinden](./functions-deployment-technologies.md) herhangi birini kullanabilirsiniz.
 
 ## <a name="scaling"></a>Ölçeklendirme
 
-Tüm yuvalar, üretim yuvasında aynı çalışan sayısına göre ölçeklenir.
+Tüm yuvalar, üretim yuvasıyla aynı sayıda işçiye ölçeklendirilir.
 
-- Tüketim planları için yuva, işlev uygulaması ölçeklendirilen şekilde ölçeklendirilir.
-- App Service planlar için, uygulama sabit bir çalışan sayısına göre ölçeklendirilir. Yuvalar, uygulama planıyla aynı sayıda çalışan üzerinde çalışır.
+- Tüketim planları için, işlev uygulaması ölçeklendikçe yuva ölçeklendirilir.
+- Uygulama Hizmeti planları için uygulama, sabit sayıda çalışana ölçeklenir. Yuvalar, uygulama planıyla aynı sayıda çalışanla çalışır.
 
 ## <a name="add-a-slot"></a>Yuva ekleme
 
-[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) aracılığıyla veya Portal aracılığıyla bir yuva ekleyebilirsiniz. Aşağıdaki adımlarda portalda nasıl yeni bir yuva oluşturacağınız gösterilmektedir:
+[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) üzerinden veya portal aracılığıyla bir yuva ekleyebilirsiniz. Aşağıdaki adımlar, portalda nasıl yeni bir yuva oluşturulacak larını gösterir:
 
-1. İşlev uygulamanıza gidin ve *yuvalar*' ın yanındaki **artı** işaretine tıklayın.
+1. Fonksiyon uygulamanıza gidin ve *Yuvaların*yanındaki **artı işaretine** tıklayın.
 
-    ![Azure Işlevleri dağıtım yuvası Ekle](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
+    ![Azure İşlevler dağıtım yuvası ekleme](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
 
-1. Metin kutusuna bir ad girin ve **Oluştur** düğmesine basın.
+1. Textbox'a bir ad girin ve **Oluştur** düğmesine basın.
 
-    ![Azure Işlevleri dağıtım yuvasını Adlandır](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
+    ![Azure İşlevler dağıtım yuvasına ad](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
 
-## <a name="swap-slots"></a>Takas Yuvaları
+## <a name="swap-slots"></a>Takas yuvaları
 
-Yuvaları [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) aracılığıyla veya Portal üzerinden takas edebilirsiniz. Aşağıdaki adımlarda, portalda yuvaların nasıl takas yapılacağı gösterilmektedir:
+[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) üzerinden veya portal üzerinden yuvaları değiştirebilirsiniz. Aşağıdaki adımlar, portaldaki yuvaların nasıl değiştirilebildiğini gösterir:
 
 1. İşlev uygulamasına gidin
-1. Değiştirmek istediğiniz kaynak yuva adına tıklayın
-1. *Genel bakış* sekmesinden **takas** düğmesine tıklayın ![Azure işlevleri dağıtım yuvası ' nı değiştirin](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Değiştirme için yapılandırma ayarlarını doğrulayın ve **takas** ![değiştirme Azure işlevleri dağıtım yuvası ' na tıklayın](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Takas etmek istediğiniz kaynak yuvası adını tıklatın
+1. Genel *Bakış* sekmesinden, **Azure** ![İşlerini Değiştir düğmesini tıklatın](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Takasınız için yapılandırma ayarlarını doğrulayın ve **Takas** ![Azure İşlevleri dağıtım yuvasını tıklatın](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
-Değiştirme işlemi yürütülürken işlem biraz zaman alabilir.
+Takas işlemi yürütülerken işlem bir an sürebilir.
 
-## <a name="roll-back-a-swap"></a>Değiştirme geri alma
+## <a name="roll-back-a-swap"></a>Bir değiş tokuşu geri alma
 
-Bir değiştirme bir hatayla sonuçlanarak veya yalnızca bir değiştirmeyi "geri almak" istiyorsanız, ilk duruma geri alabilirsiniz. Önceden takas durumuna geri dönmek için, değiştirmeyi tersine çevirmek için başka bir takas yapın.
+Bir takas bir hataya neden olursa veya yalnızca bir değiş tokuşu "geri almak" istiyorsanız, ilk duruma geri dönebilirsiniz. Önceden değiştirilen duruma dönmek için, takası tersine çevirmek için başka bir takas yapın.
 
-## <a name="remove-a-slot"></a>Yuva kaldırma
+## <a name="remove-a-slot"></a>Yuvayı kaldırma
 
-Bir yuvayı [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) aracılığıyla veya Portal üzerinden kaldırabilirsiniz. Aşağıdaki adımlarda portalda bir yuvanın nasıl kaldırılacağı gösterilmektedir:
+[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) veya portal aracılığıyla bir yuva kaldırabilirsiniz. Aşağıdaki adımlar, portaldaki bir yuvanın nasıl kaldırılış yapılacağını gösterir:
 
-1. İşlev uygulamasına genel bakış bölümüne gitme
+1. İşlev uygulamasına Genel Bakış'ta gezinin
 
 1. **Sil** düğmesine tıklayın
 
-    ![Azure Işlevleri dağıtım yuvası Ekle](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
+    ![Azure İşlevler dağıtım yuvası ekleme](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
 
 ## <a name="automate-slot-management"></a>Yuva yönetimini otomatikleştirin
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)'yı kullanarak bir yuva için aşağıdaki işlemleri otomatikleştirebilirsiniz:
+Azure [CLI'yi](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)kullanarak, bir yuva için aşağıdaki eylemleri otomatikleştirebilirsiniz:
 
 - [oluşturmaya](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [sil](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
+- [Silmek](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
 - [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [Kur](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [Otomatik takas](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [Takas](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [otomatik takas](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>App Service planını değiştir
+## <a name="change-app-service-plan"></a>Uygulama Hizmeti planını değiştir
 
-App Service planı altında çalışan bir işlev uygulamasıyla, bir yuva için temel alınan App Service planını değiştirme seçeneğiniz vardır.
+Bir Uygulama Hizmeti planı altında çalışan bir işlev uygulamasıyla, bir yuva için temel Uygulama Hizmeti planını değiştirme seçeneğiniz vardır.
 
 > [!NOTE]
-> Tüketim planı kapsamındaki bir yuvanın App Service planını değiştiremezsiniz.
+> Tüketim planı kapsamında bir yuvanın Uygulama Hizmeti planını değiştiremezsiniz.
 
-Bir yuvanın App Service planını değiştirmek için aşağıdaki adımları kullanın:
+Bir yuvanın Uygulama Hizmeti planını değiştirmek için aşağıdaki adımları kullanın:
 
-1. Bir yuvaya gitme
+1. Yuvaya gidin
 
-1. *Platform özellikleri*altında **Tüm ayarlar** ' a tıklayın.
+1. *Platform Özellikleri*altında Tüm **Ayarlar'ı** tıklatın
 
-    ![App Service planını değiştir](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
+    ![Uygulama hizmet planını değiştirme](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
 
-1. **App Service planına** tıklayın
+1. Uygulama **Hizmeti planına** tıklayın
 
-1. Yeni bir App Service planı seçin veya yeni bir plan oluşturun
+1. Yeni bir Uygulama Hizmeti planı seçin veya yeni bir plan oluşturun
 
-1. **Tamam**’a tıklayın.
+1. **Tamam'ı** tıklatın
 
-    ![App Service planını değiştir](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
+    ![Uygulama hizmet planını değiştirme](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure Işlevleri dağıtım yuvaları aşağıdaki sınırlamalara sahiptir:
+Azure İşlevler dağıtım yuvaları aşağıdaki sınırlamalara sahiptir:
 
-- Bir uygulama için kullanılabilen yuvaların sayısı plana bağlıdır. Tüketim planına yalnızca bir dağıtım yuvası izin verilir. App Service plan kapsamında çalışan uygulamalar için ek yuvalar vardır.
-- Bir `AzureWebJobsSecretStorageType` uygulama ayarı `files`eşit olan uygulamalar için bir yuva sıfırlama anahtarlarını değiştirme.
-- Yuvalar, Linux tüketim planı için kullanılamaz.
+- Bir uygulamaiçin kullanılabilen yuva sayısı plana bağlıdır. Tüketim planına yalnızca bir dağıtım yuvası na izin verilir. Uygulama Hizmeti planı kapsamında çalışan uygulamalar için ek yuvalar mevcuttur.
+- Yuva değiştirme, `AzureWebJobsSecretStorageType` uygulama ayarı `files`ile eşit olan uygulamalar için anahtarları sıfırlar.
+- Yuvalar Linux Tüketim planı için kullanılamaz.
 
 ## <a name="support-levels"></a>Destek düzeyleri
 
-Dağıtım yuvaları için iki düzey destek vardır:
+Dağıtım yuvaları için iki destek düzeyi vardır:
 
-- **Genel kullanılabilirlik (GA)** : üretim kullanımı için tam olarak desteklenir ve onaylanır.
-- **Önizleme**: henüz desteklenmiyor, ancak gelecekte GA durumuna ulaşması bekleniyor.
+- **Genel kullanılabilirlik (GA)**: Üretim kullanımı için tam olarak desteklenmiş ve onaylanmıştır.
+- **Önizleme**: Henüz desteklenmedi, ancak gelecekte GA durumuna ulaşması bekleniyor.
 
-| İşletim sistemi/barındırma planı           | Destek düzeyi     |
+| Os/Hosting planı           | Destek düzeyi     |
 | ------------------------- | -------------------- |
-| Windows tüketimi       | Genel kullanılabilirlik |
+| Windows Tüketimi       | Genel kullanılabilirlik |
 | Windows Premium           | Genel kullanılabilirlik  |
-| Windows ayrılmış         | Genel kullanılabilirlik |
-| Linux tüketimi         | Desteklenmeyen          |
+| Windows Özel         | Genel kullanılabilirlik |
+| Linux Tüketimi         | Desteklenmeyen          |
 | Linux Premium             | Genel kullanılabilirlik  |
-| Linux adanmış           | Genel kullanılabilirlik |
+| Linux Adanmış           | Genel kullanılabilirlik |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Işlevlerinde dağıtım teknolojileri](./functions-deployment-technologies.md)
+- [Azure İşlevlerinde Dağıtım teknolojileri](./functions-deployment-technologies.md)

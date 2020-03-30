@@ -15,26 +15,26 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: c194dbeb0183e64535342f8aaf9a770a93b3e332
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75896176"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Sanal makine vCPU kotaları
 
-Sanal makineler ve sanal makine ölçek kümeleri için vCPU kotaları her bir bölgede her bir abonelik için iki katmanda düzenlenir. İlk katman toplam bölgesel vCPU sayısı ve ikinci katman D serisi vCPU 'Lar gibi çeşitli VM boyutu ailesi çekirdekleri. Yeni bir VM 'nin dağıtıldığı her zaman, sanal makine için vCPU 'Lar VM boyut ailesi için vCPU kotasını veya toplam bölgesel vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmez. Ayrıca, bölgedeki toplam sanal makine sayısı için bir kota de vardır. Bu kotaların her biri hakkındaki ayrıntılar, [Azure Portal](https://portal.azure.com) **abonelik** sayfasının **kullanım + kotalar** bölümünde görünebilir veya Azure CLI kullanarak değerleri sorgulayabilirsiniz.
+Sanal makineler ve sanal makine ölçek kümeleri için vCPU kotaları, her bölgedeki her abonelik için iki katmanda düzenlenir. Birinci katman Total Regional vCPUs'dur, ikinci katman ise D serisi vCPUs'lar gibi çeşitli VM boyutundaki aile çekirdekleridir. VM için vCPUs'lar yeni bir VM dağıtıldığında, VM boyutu ailesi veya toplam bölgesel vCPU kotası için vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmeyecektir. Bölgedeki toplam sanal makine sayısı için de bir kota var. Bu kotaların her biriyle ilgili ayrıntılar [Azure portalındaki](https://portal.azure.com) **Abonelik** sayfasının Kullanım **+ kotaları** bölümünde görülebilir veya Azure CLI'yi kullanarak değerleri sorgulayabilirsiniz.
 
 
 ## <a name="check-usage"></a>Kullanımı denetleme
 
-[Az VM List-Usage](/cli/azure/vm)kullanarak kota kullanımınızı kontrol edebilirsiniz.
+[Kota kullanımınızı az vm list-kullanımını](/cli/azure/vm)kullanarak kontrol edebilirsiniz.
 
 ```azurecli-interactive
 az vm list-usage --location "East US" -o table
 ```
 
-Çıktı aşağıdakine benzer görünmelidir:
+Çıkış aşağıdakine benzer olmalıdır:
 
 
 ```
@@ -62,10 +62,10 @@ Premium Storage Managed Disks                  5    10000
 ```
 
 ## <a name="reserved-vm-instances"></a>Ayrılmış VM Örnekleri
-VM boyutu esnekliği olmayan tek bir aboneliğin kapsamına alınmış ayrılmış VM örnekleri, vCPU kotaları için yeni bir boyut ekler. Bu değerler, belirtilen boyutun abonelikte dağıtılabilir olması gereken örneklerinin sayısını anlatır. Kota sisteminde Azure ayırmalarının abonelikte yer aldığından emin olmak için kotanın ayrılmış olduğundan emin olmak için kota sisteminde bir yer tutucu olarak çalışırlar. Örneğin, belirli bir aboneliğin 10 Standard_D1 ayırması varsa Standard_D1 ayırmaları için kullanım limiti 10 olur. Bu, Azure 'un, Standard_D1 örnekleri için kullanılmak üzere toplam bölgesel vCPU kotasında her zaman en az 10 vCPU olduğundan ve Standard_D1 örnekleri için kullanılacak standart D ailesi vCPU kotasında en az 10 vCPU olduğundan emin olmasına neden olur.
+VM boyutu esnekliği olmadan tek bir aboneliğe kapsamına giren Ayrılmış VM Örnekleri, vCPU kotalarına yeni bir boyut katar. Bu değerler, belirtilen boyutun abonelikte dağıtılabilen örnek sayısını açıklar. Azure rezervasyonlarının abonelikte dağıtılabilir olmasını sağlamak için kotanın rezerve edilmesini sağlamak için kota sisteminde yer tutucu olarak çalışırlar. Örneğin, belirli bir abonelikte 10 Standard_D1 rezervasyon varsa, Standard_D1 rezervasyonları için kullanım sınırı 10 olacaktır. Bu, Azure'un Standard_D1 örneğinde kullanılacak Toplam Bölgesel vCPUs kotasında her zaman en az 10 vCPUs bulunmasını ve standart D Ailesi vCPU kotasında Standard_D1 örnek için kullanılmak üzere en az 10 vCPUs bulunmasını sağlamasına neden olur.
 
-Tek bir aboneliği satın almak için kota artışı gerekiyorsa, aboneliğinizde [bir kota artışı isteyebilirsiniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
+Tek Abonelik RI satın almak için kota artışı gerekiyorsa, aboneliğinizde [kota artışı talep](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Faturalandırma ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json).
+Faturalandırma ve kotalar hakkında daha fazla bilgi için [Azure abonelik ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json)bölümüne bakın.

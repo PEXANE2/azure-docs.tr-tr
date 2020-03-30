@@ -1,6 +1,6 @@
 ---
 title: Dinamik veri maskeleme
-description: Dinamik veri maskeleme, SQL veritabanı ve Azure SYNAPSE için ayrıcalıklı olmayan kullanıcılarla maskeleyerek hassas veri pozlamasını kısıtlar
+description: Dinamik veri maskeleme, SQL Veritabanı ve Azure Synapse için ayrıcalıklı olmayan kullanıcılara maskeleyerek hassas veri maruziyetini sınırlar
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -14,52 +14,52 @@ ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
 ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78192923"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için dinamik veri maskeleme
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Veritabanı ve Azure Synapse Analytics için dinamik veri maskeleme
 
-SQL veritabanı dinamik veri maskeleme, hassas veri pozlamasını ayrıcalıklı olmayan kullanıcılarla maskeleyerek kısıtlar. 
+SQL Veritabanı dinamik veri maskeleme, hassas verilerin görünürlüğünü ayrıcalık sahibi olmayan kullanıcılardan gizleyerek sınırlar. 
 
 Dinamik veri maskeleme müşterilerin uygulama katmanını çok az etkileyerek hassas verilerin ne kadarının gösterileceğini belirlemelerini sağlar ve hassas verilere yetkisiz erişimin engellenmesine yardımcı olur. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde gizleyen ancak veritabanındaki verileri değiştirmeyen ilke tabanlı bir güvenlik özelliğidir.
 
-Örneğin, bir çağrı merkezindeki hizmet temsilcisi çağıranları kredi kartı numarasının birkaç basamağıyla tanımlayabilir, ancak bu veri öğeleri hizmet temsilcisine tam olarak gösterilmemelidir. Bir maskeleme kuralı, herhangi bir sorgu sonuç kümesinde herhangi bir kredi kartı numarasının son dört basamağının dışında bir maske kuralı tanımlanabilir. Başka bir örnek olarak, bir geliştiricinin uyumluluk düzenlemelerini ihlal etmeden üretim ortamlarını, sorun giderme amacıyla sorgulayabilmesi için, kişisel olarak tanımlanabilen bilgiler (PII) verilerini korumak üzere uygun bir veri maskesi tanımlanabilir.
+Örneğin, bir çağrı merkezindeki bir servis temsilcisi, arayanları kredi kartı numarasının birkaç hanesiyle tanımlayabilir, ancak bu veri öğeleri hizmet temsilcisine tam olarak maruz kalmalıdır. Herhangi bir sorgunun sonuç kümesindeki herhangi bir kredi kartı numarasının son dört hanesi hariç tümünü maskeleyen bir maskeleme kuralı tanımlanabilir. Başka bir örnek olarak, bir geliştiricinin uyumluluk düzenlemelerini ihlal etmeden sorun giderme amacıyla üretim ortamlarını sorgulayabilmesi için kişisel olarak tanımlanabilir bilgileri (PII) verileri korumak için uygun bir veri maskesi tanımlanabilir.
 
 ## <a name="dynamic-data-masking-basics"></a>Dinamik veri maskeleme temelleri
 
-SQL veritabanı yapılandırma dikey penceresinde veya ayarlar dikey penceresinde dinamik veri maskeleme işlemini seçerek Azure portal dinamik veri maskeleme ilkesi ayarlarsınız. Bu özellik Azure SYNAPSE için Portal kullanılarak ayarlanamıyor (lütfen PowerShell veya REST API kullanın)
+SQL Veritabanı yapılandırma bıçak veya ayarlar bıçak dinamik veri maskeleme işlemi seçerek Azure portalında dinamik bir veri maskeleme ilkesi ayarlayın. Bu özellik Azure Synapse portalı kullanılarak ayarlanamaz (Lütfen Powershell veya REST API'yi kullanın)
 
 ### <a name="dynamic-data-masking-permissions"></a>Dinamik veri maskeleme izinleri
 
-Dinamik veri maskeleme, Azure SQL veritabanı yöneticisi, Sunucu Yöneticisi veya [SQL Güvenlik Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolleri tarafından yapılandırılabilir.
+Dinamik veri maskeleme, Azure SQL Veritabanı yöneticisi, sunucu yöneticisi veya [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolleri tarafından yapılandırılabilir.
 
 ### <a name="dynamic-data-masking-policy"></a>Dinamik veri maskeleme ilkesi
 
-* **Maskeden dışlanan SQL kullanıcıları** -SQL sorgu sonuçlarında maskelenmemiş verileri alan BIR dizi SQL KULLANıCıSı veya AAD kimliği. Yönetici ayrıcalıklarına sahip kullanıcılar her zaman maskelemeden çıkarılır ve herhangi bir maske olmadan özgün verileri görür.
-* **Maskeleme kuralları** -maskelenecek belirlenen alanları ve kullanılan maskeleme işlevini tanımlayan bir kurallar kümesi. Belirlenen alanlar bir veritabanı şeması adı, tablo adı ve sütun adı kullanılarak tanımlanabilir.
-* **Maskeleme işlevleri** -farklı senaryolara yönelik verilerin görünürlüğünü denetleyen bir yöntemler kümesi.
+* **Maskeleme dışında bulunan SQL kullanıcıları** - SQL sorgusu sonuçlarında maskesiz veri alan bir dizi SQL kullanıcısı veya AAD kimlikleri kümesi. Yönetici ayrıcalıklarına sahip kullanıcılar her zaman maskeleme nin dışında tutulur ve orijinal verileri maskesiz olarak görür.
+* **Maskeleme kuralları** - Maskelenecek belirtilen alanları ve kullanılan maskeleme işlevini tanımlayan kurallar kümesi. Belirlenen alanlar bir veritabanı şeması adı, tablo adı ve sütun adı kullanılarak tanımlanabilir.
+* **Maskeleme işlevleri** - Farklı senaryolar için verilerin maruz kalmasını kontrol eden bir yöntem kümesi.
 
-| Maskeleme Işlevi | Maskeleme mantığı |
+| Maskeleme Fonksiyonu | Maskeleme Mantığı |
 | --- | --- |
-| **Varsayılan** |**Belirlenen alanların veri türlerine göre tam maskeleme**<br/><br/>• Alanın boyutu dize veri türleri için 4 karakterden azsa XXXX veya daha az XS kullanın (nchar, ntext, nvarchar).<br/>• Sayısal veri türleri için sıfır değeri kullanın (BigInt, bit, Decimal, INT, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Tarih/saat veri türleri için 01-01-1900 kullanın (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• SQL değişkeni için geçerli türün varsayılan değeri kullanılır.<br/>• XML için \<maskelenmiş/> kullanılır.<br/>• Özel veri türleri (timestamp tablosu, HierarchyID, GUID, binary, Image, varbinary uzamsal türler) için boş bir değer kullanın. |
-| **Kredi kartı** |**Belirlenen alanların son dört basamağını sunan maskeleme yöntemi** ve bir kredi kartı biçiminde önek olarak bir sabit dize ekler.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **E-posta** |**İlk harfi kullanıma sunan maskeleme yöntemi ve** bir e-posta adresi biçiminde bir sabit dize öneki kullanarak etki alanını xxx.com ile değiştirir.<br/><br/>aXX@XXXX.com |
-| **Rastgele sayı** |Maske yöntemi, seçilen sınırlara ve gerçek veri türlerine göre **rastgele bir sayı üretir** . Belirlenen sınırlar eşitse, maskeleme işlevi sabit bir sayıdır.<br/><br/>![gezinti bölmesi](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Özel metin** |**İlk ve son karakterlerin ortaya** çıkardığı ve ortadaki özel bir doldurma dizesi ekleyen maskeleme yöntemi. Özgün dize, gösterilen önek ve sonek değerinden kısaysa, yalnızca doldurma dizesi kullanılır. <br/>önek [Padding] soneki<br/><br/>![gezinti bölmesi](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **Varsayılan** |**Belirlenen alanların veri türlerine göre tam maskeleme**<br/><br/>• Alanın boyutu dize veri türleri (nchar, ntext, nvarchar) için 4 karakterden azise XXXX veya daha az X kullanın.<br/>• Sayısal veri türleri için sıfır değer kullanın (bigint, bit, ondalık, int, para, sayısal, smallint, smallmoney, tinyint, float, real).<br/>• Tarih/saat veri türleri (tarih, datetime2, datetime, datetimeof, smalldatetime, time) için 01-01-1900 kullanın.<br/>• SQL varyantı için geçerli türün varsayılan değeri kullanılır.<br/>• XML için \<maskeli/> belge kullanılır.<br/>• Özel veri türleri (zaman damgası tablosu, hiyerarşiyid, GUID, ikili, görüntü, varbinary uzamsal türleri) için boş bir değer kullanın. |
+| **Kredi kartı** |Belirlenen alanların son dört hanesini ortaya çıkaran ve kredi kartı biçiminde önek olarak sabit bir dize **ekleyen maskeleme yöntemi.**<br/><br/>XXXX-XXXX-XXXX-1234 |
+| **E-posta** |İlk harfi ortaya çıkaran ve etki alanını e-posta adresi biçiminde sabit bir dize öneki kullanarak XXX.com değiştiren **maskeleme yöntemi.**<br/><br/>aXX@XXXX.com |
+| **Rastgele sayı** |Seçilen sınırlara ve gerçek veri türlerine göre **rasgele bir sayı üreten maskeleme yöntemi.** Belirlenen sınırlar eşitse, maskeleme işlevi sabit bir sayıdır.<br/><br/>![Gezinti bölmesi](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
+| **Özel metin** |İlk ve son karakterleri ortaya çıkaran ve ortasına özel bir dolgu dizesi **ekleyen maskeleme yöntemi.** Özgün dize, açıkta kalan önek ve sonekten daha kısaysa, yalnızca dolgu dizesi kullanılır. <br/>önek[doldurma]soneki<br/><br/>![Gezinti bölmesi](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
 <a name="Anchor1"></a>
 
-### <a name="recommended-fields-to-mask"></a>Maskelenmesi önerilen alanlar
+### <a name="recommended-fields-to-mask"></a>Maskelemek için önerilen alanlar
 
-DDM öneriler altyapısı, veritabanınızdaki belirli alanları potansiyel olarak hassas alanlar olarak bayraklar ve bu, maskeleme için iyi adaylar olabilir. Portaldaki dinamik veri maskeleme dikey penceresinde veritabanınız için önerilen sütunları görürsünüz. Yapmanız gereken tek şey, bir veya daha fazla sütun için **maske Ekle** ' ye tıkladıktan sonra bu alanlar için bir maske uygulamak üzere **kaydedilir** .
+DDM öneriler motoru, maskeleme için iyi adaylar olabilir potansiyel olarak hassas alanlar olarak veritabanınızdan belirli alanları bayraklar. Portaldaki Dinamik Veri Maskeleme bıçağında veritabanınız için önerilen sütunları görürsünüz. Tek yapmanız gereken bir veya daha fazla sütun için **Maske Ekle'yi** tıklatın ve sonra bu alanlar için bir maske uygulamak için **Kaydet'i** tıklatın.
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>PowerShell cmdlet 'lerini kullanarak veritabanınız için dinamik veri maskeleme ayarlama
+## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>PowerShell cmdlets kullanarak veritabanınız için dinamik veri maskeleme ayarlayın
 
-Bkz. [Azure SQL veritabanı cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.sql).
+Bkz. [Azure SQL Veritabanı Cmdlets.](https://docs.microsoft.com/powershell/module/az.sql)
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>REST API kullanarak veritabanınız için dinamik veri maskeleme ayarlama
+## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>REST API'yi kullanarak veritabanınız için dinamik veri maskeleme ayarlama
 
-Bkz. [Azure SQL veritabanı işlemleri](https://docs.microsoft.com/rest/api/sql/).
+Bkz. [Azure SQL Veritabanı Işlemleri.](https://docs.microsoft.com/rest/api/sql/)

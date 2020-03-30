@@ -1,62 +1,62 @@
 ---
-title: UI tanım dosyasını test etme
-description: Portal aracılığıyla Azure yönetilen uygulamanızı oluşturmak için kullanıcı deneyiminin nasıl test edileceğini açıklar.
+title: U-UI tanım dosyasını test edin
+description: Azure Yönetilen Uygulamanızı oluşturmak için kullanıcı deneyimini portal üzerinden nasıl sınayarak test ediletilir.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250192"
 ---
-# <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Portal arabiriminizi test etme
+# <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure Yönetilen Uygulamalar için portal arabiriminizi test edin
 
-Yönetilen uygulamanız için [Createuıdefinition. json dosyasını](create-uidefinition-overview.md) oluşturduktan sonra, Kullanıcı deneyimini test etmeniz gerekir. Sınamayı basitleştirmek için, dosyanızı portala yükleyen bir korumalı alan ortamı kullanın. Yönetilen uygulamanızı gerçekten dağıtmanız gerekmez. Korumalı alan, Kullanıcı arabiriminizi geçerli, tam ekran portalı deneyiminde gösterir. Ya da, arabirimi test etmek için bir komut dosyası kullanabilirsiniz. Her iki yaklaşım da bu makalede gösterilmektedir. Korumalı alan, arabirimi önizlemek için önerilen yoldur.
+Yönetilen uygulamanız için [createUiDefinition.json dosyasını oluşturduktan](create-uidefinition-overview.md) sonra, kullanıcı deneyimini test etmeniz gerekir. Testi kolaylaştırmak için, dosyanızı portala yükleyen bir kum havuzu ortamı kullanın. Yönetilen uygulamanızı gerçekten dağıtmanız gerekmez. Kum havuzu, kullanıcı arabiriminizi geçerli tam ekran portal deneyiminde sunar. Veya arabirimi sınamak için bir komut dosyası kullanabilirsiniz. Her iki yaklaşım da bu makalede gösterilmiştir. Zonk alanı, arabirimi önizlemenin önerilen yoludur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Createuıdefinition. JSON** dosyası. Bu dosyaya sahip değilseniz [örnek dosyayı](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)kopyalayın.
+* **CreateUiDefinition.json** dosyası. Bu dosya yoksa, [örnek dosyayı](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)kopyalayın.
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="use-sandbox"></a>Korumalı alanı kullan
+## <a name="use-sandbox"></a>Kum havuzu kullanma
 
-1. [UI tanımı oluştur korumalı alanını](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)açın.
+1. [UI Tanımı Oluştur Sandbox'ı](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)açın.
 
-   ![Korumalı alanı göster](./media/test-createuidefinition/show-sandbox.png)
+   ![Kum havuzugöster](./media/test-createuidefinition/show-sandbox.png)
 
-1. Boş tanımı Createuıdefinition. JSON dosyanızın içeriğiyle değiştirin. **Önizleme**' yi seçin.
+1. Boş tanımı createUiDefinition.json dosyanızın içeriğiyle değiştirin. **Önizleme'yi**seçin.
 
    ![Önizlemeyi seçin](./media/test-createuidefinition/select-preview.png)
 
-1. Oluşturduğunuz form görüntülenir. Kullanıcı deneyiminden ileredebilir ve değerleri doldurabilirsiniz.
+1. Oluşturduğunuz form görüntülenir. Kullanıcı deneyimini gözden geçirip değerleri doldurabilirsiniz.
 
    ![Formu göster](./media/test-createuidefinition/show-ui-form.png)
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-**Önizleme**seçildikten sonra formunuz görünmezse, bir sözdizimi hatası olabilir. Sağ kaydırma çubuğunda kırmızı göstergeyi bulun ve üzerine gelin.
+Önizleme'yi **seçtikten**sonra formunuz görüntülemezse, sözdizimi hatanız olabilir. Sağ kaydırma çubuğundaki kırmızı göstergeye bakın ve ona gidin.
 
-![Sözdizimi göster hatası](./media/test-createuidefinition/show-syntax-error.png)
+![Sözdizimi hatasini göster](./media/test-createuidefinition/show-syntax-error.png)
 
-Formunuz görünmezse ve bunun yerine, bir bulutun simgesini tear ile görürseniz, formunuzda eksik bir özellik gibi bir hata vardır. Web Geliştirici Araçları tarayıcınızda açın. **Konsol** arabiriminiz hakkında önemli iletileri görüntüler.
+Formunuz görüntülenmiyorsa ve bunun yerine gözyaşı damlası olan bir bulut simgesi görüyorsanız, formunuzda eksik özellik gibi bir hata vardır. Tarayıcınızda Web Geliştirici Araçlarını açın. **Konsol** arabiriminiz hakkında önemli iletiler görüntüler.
 
 ![Hatayı göster](./media/test-createuidefinition/show-error.png)
 
-## <a name="use-test-script"></a>Test betiği kullan
+## <a name="use-test-script"></a>Test komut dosyalarını kullanma
 
-Arabiriminizi portalda test etmek için aşağıdaki betiklerin birini yerel makinenize kopyalayın:
+Arabiriminizi portalda test etmek için, aşağıdaki komut dosyalarından birini yerel makinenize kopyalayın:
 
-* [PowerShell dışarıdan yükleme betiği-az Module](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-AzCreateUIDefinition.ps1)
-* [PowerShell dışarıdan yükleme betiği-Azure modülü](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
-* [Azure CLı dışarıdan yükleme betiği](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
+* [PowerShell yan yük komut dosyası - Az Modülü](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-AzCreateUIDefinition.ps1)
+* [PowerShell yan yükleme komut dosyası - Azure Modülü](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
+* [Azure CLI yan yükleme komut dosyası](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
 
-Arabirim dosyanızı portalda görmek için, indirilen komut dosyanızı çalıştırın. Betik, Azure aboneliğinizde bir depolama hesabı oluşturur ve Createuıdefinition. JSON dosyanızı depolama hesabına yükler. Depolama hesabı, betiği ilk kez çalıştırdığınızda veya depolama hesabı silinmişse oluşturulur. Depolama hesabı Azure aboneliğinizde zaten varsa, komut dosyası onu yeniden kullanır. Betik, portalı açar ve dosyanızı depolama hesabından yükler.
+Arayüz dosyanızı portalda görmek için indirilen komut dosyanızı çalıştırın. Komut dosyası, Azure aboneliğinizde bir depolama hesabı oluşturur ve createUiDefinition.json dosyanızı depolama hesabına yükler. Depolama hesabı, komut dosyasını ilk çalıştırdığınızda veya depolama hesabı silinmişse oluşturulur. Azure aboneliğinizde depolama hesabı zaten varsa, komut dosyası hesabı yeniden kullanır. Komut dosyası portalı açar ve dosyanızı depolama hesabından yükler.
 
-Depolama hesabı için bir konum sağlayın ve Createuıdefinition. JSON dosyanıza sahip klasörü belirtin.
+Depolama hesabı için bir konum sağlayın ve createUiDefinition.json dosyanızın bulunduğu klasörü belirtin.
 
 PowerShell için şunu kullanın:
 
@@ -74,7 +74,7 @@ Azure CLI için şunu kullanın:
   -a .\100-Marketplace-Sample
 ```
 
-Createuıdefinition. JSON dosyanız komut dosyasıyla aynı klasörsdakiler ve depolama hesabını zaten oluşturduysanız, bu parametreleri sağlamanız gerekmez.
+createUiDefinition.json dosyanız komut dosyasıyla aynı klasördeyse ve depolama hesabını zaten oluşturduysanız, bu parametreleri sağlamanız gerekmez.
 
 PowerShell için şunu kullanın:
 
@@ -88,20 +88,20 @@ Azure CLI için şunu kullanın:
 ./sideload-createuidef.sh
 ```
 
-Betik, tarayıcınızda yeni bir sekme açar. Bu, portalı yönetilen uygulamayı oluşturmak için arabiriminize göre görüntüler.
+Komut dosyası tarayıcınızda yeni bir sekme açar. Yönetilen uygulamayı oluşturmak için portalı arabiriminiz ile görüntüler.
 
-Alanlar için değerler sağlayın. İşiniz bittiğinde, tarayıcınızın geliştirici araçları konsolunda bulunan şablona geçirilen değerleri görürsünüz.
+Alanlar için değerler sağlayın. Bittiğinde, tarayıcınızın geliştirici araçları konsolunda bulunabilecek şablona geçirilen değerleri görürsünüz.
 
 ![Değerleri göster](./media/test-createuidefinition/show-json.png)
 
-Bu değerleri, dağıtım şablonunuzu test etmek için parametre dosyası olarak kullanabilirsiniz.
+Dağıtım şablonunuzu test etmek için bu değerleri parametre dosyası olarak kullanabilirsiniz.
 
-Portal Özet ekranında askıda kalırsa, çıkış bölümünde bir hata olabilir. Örneğin, mevcut olmayan bir denetime başvurmuş olabilirsiniz. Çıktıdaki bir parametre boşsa, parametre mevcut olmayan bir özelliğe başvuruda bulunabilir. Örneğin, denetime başvuru geçerlidir, ancak özellik başvurusu geçerli değildir.
+Portal özet ekranında asılıysa, çıktı bölümünde bir hata olabilir. Örneğin, var olmayan bir denetime başvuruvermiş olabilirsiniz. Çıktıdaki bir parametre boşsa, parametre var olmayan bir özelliğe başvuruyor olabilir. Örneğin, denetime başvuru geçerlidir, ancak özellik başvurusu geçerli değildir.
 
-## <a name="test-your-solution-files"></a>Çözüm dosyalarınızı test etme
+## <a name="test-your-solution-files"></a>Çözüm dosyalarınızı test edin
 
-Portal Arabiriminizin beklendiği gibi çalıştığını doğruladığınıza göre, Createuıdefinition dosyanızın mainTemplate. JSON dosyanız ile düzgün bir şekilde tümleştirildiğini doğrulamanız zaman alabilir. Createuıdefinition dosyası dahil olmak üzere çözüm dosyalarınızın içeriğini test etmek için bir doğrulama betik testi çalıştırabilirsiniz. Betik JSON sözdizimini doğrular, metin alanlarındaki Regex ifadelerini denetler ve Portal arabiriminin çıkış değerlerinin şablonunuzun parametreleriyle eşleştiğinden emin olur. Bu betiği çalıştırma hakkında bilgi için bkz. [Şablonlar için statik doğrulama denetimlerini çalıştırma](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
+Portal arabiriminizin beklendiği gibi çalıştığını doğruladığınıza göre, createUiDefinition dosyanızın mainTemplate.json dosyanızla düzgün bir şekilde entegre olduğunu doğrulamanın zamanı doldu. CreateUiDefinition dosyası da dahil olmak üzere çözüm dosyalarınızın içeriğini sınamak için bir doğrulama komut dosyası testi çalıştırabilirsiniz. Komut dosyası JSON sözdizimini doğrular, metin alanlarındaki regex ifadelerini denetler ve portal arabiriminin çıktı değerlerinin şablonunuzun parametreleri ile eşleştirdiğinden emin olmasını sağlar. Bu komut dosyalarını çalıştırma hakkında bilgi için [şablonlar için statik doğrulama denetimlerini çalıştır'a](https://github.com/Azure/azure-quickstart-templates/tree/master/test)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Portal arabiriminizi doğruladıktan sonra [Azure yönetilen uygulamanızı Market 'te kullanılabilir](publish-marketplace-app.md)hale getirme hakkında bilgi edinin.
+Portal arabiriminizi doğruladıktan sonra, [Azure yönetilen uygulamanızı Market'te kullanıma sunhakkında](publish-marketplace-app.md)bilgi edinin.

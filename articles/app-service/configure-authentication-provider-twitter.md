@@ -1,62 +1,62 @@
 ---
 title: Twitter kimlik doğrulamasını yapılandırma
-description: Twitter kimlik doğrulamasını App Service uygulamanız için bir kimlik sağlayıcısı olarak nasıl yapılandıracağınızı öğrenin.
+description: App Service uygulamanız için bir kimlik sağlayıcısı olarak Twitter kimlik doğrulamasını nasıl yapılandıracaksınız öğrenin.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
 ms.date: 02/28/2020
 ms.custom: seodec18
 ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78207157"
 ---
-# <a name="configure-your-app-service-app-to-use-twitter-login"></a>App Service uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma
+# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Twitter oturumunu kullanacak şekilde Uygulama Hizmeti uygulamanızı yapılandırın
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Bu makalede, Azure App Service bir kimlik doğrulama sağlayıcısı olarak Twitter kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
+Bu makalede, Azure Uygulama Hizmeti'nin Twitter'ı kimlik doğrulama sağlayıcısı olarak kullanmak üzere nasıl yapılandırılabildiğiniz gösterilmektedir.
 
-Bu makaledeki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresi ve telefon numarası olan bir Twitter hesabına ihtiyacınız vardır. Yeni bir Twitter hesabı oluşturmak için [Twitter.com]adresine gidin.
+Bu makaledeki yordamı tamamlamak için, doğrulanmış bir e-posta adresi ve telefon numarası olan bir Twitter hesabına ihtiyacınız vardır. Yeni bir Twitter hesabı oluşturmak için [twitter.com]gidin.
 
-## <a name="register"> </a>Uygulamanızı Twitter 'a kaydetme
+## <a name="register-your-application-with-twitter"></a><a name="register"> </a>Başvurunuzu Twitter'a kaydedin
 
-1. [Azure portalında] oturum açın ve uygulamanıza gidin. **URL**'nizi kopyalayın. Twitter uygulamanızı yapılandırmak için kullanacaksınız.
-1. [Twitter geliştiricileri] Web sitesine gidin, Twitter hesabı kimlik bilgilerinizle oturum açın ve **uygulama oluştur**' u seçin.
-1. Yeni uygulamanız için **uygulama adı** ve **uygulama açıklaması** girin. Uygulamanızın **URL** 'Sini **Web sitesi URL 'si** alanına yapıştırın. **Geri arama URL 'leri** bölümünde app SERVICE uygulamanızın https URL 'sini girin ve yolu `/.auth/login/twitter/callback`ekleyin. Örneğin, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
-1. Sayfanın alt kısmındaki en az 100 karakter yazarak **Bu uygulamanın nasıl kullanılacağını bize söyleyin**, sonra **Oluştur**' u seçin. Açılır pencerede yeniden **Oluştur** ' a tıklayın. Uygulama ayrıntıları görüntülenir.
-1. **Anahtarlar ve erişim belirteçleri** sekmesini seçin.
+1. [Azure portalında] oturum açın ve uygulamanıza gidin. **URL'nizi**kopyalayın. Twitter uygulamanızı yapılandırmak için kullanırsınız.
+1. [Twitter Geliştiricileri] web sitesine gidin, Twitter hesap kimlik bilgilerinizle oturum açın ve **uygulama oluştur'u**seçin.
+1. Yeni uygulamanız için **Uygulama adını** ve **Uygulama açıklamasını** girin. Uygulamanızın **URL'sini** Web **Sitesi URL** alanına yapıştırın. Geri **Arama URL'leri** bölümünde, Uygulama Hizmeti uygulamanızın HTTPS URL'sini `/.auth/login/twitter/callback`girin ve yolu tamamla. Örneğin, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
+1. Sayfanın alt kısmında, **bu uygulamanın nasıl kullanılacağını bize bildirin**en az 100 karakter yazın, sonra **Oluştur'u**seçin. Açılır pencerede yeniden **Oluştur'u** tıklatın. Uygulama ayrıntıları görüntülenir.
+1. **Anahtarlar ve Erişim Jetonları** sekmesini seçin.
 
-   Şu değerleri bir yere göz önünde oluşturun:
+   Bu değerlere dikkat edin:
    - API anahtarı
-   - API gizli anahtarı
+   - API gizli anahtar
 
    > [!NOTE]
-   > API gizli anahtarı önemli bir güvenlik kimlik bilgileridir. Bu parolayı herkesle paylaşmayın veya uygulamanızla dağıtın.
+   > API gizli anahtarı önemli bir güvenlik kimlik bilgisidir. Bu sırrı kimseyle paylaşmayın veya uygulamanızla dağıtmayın.
 
-## <a name="secrets"> </a>Uygulamanıza Twitter bilgilerini ekleyin
+## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Uygulamanıza Twitter bilgileri ekleyin
 
-1. [Azure portalında]uygulamanıza gidin.
-1. **Kimlik doğrulama ve yetkilendirme** > **ayarları** seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
-1. **Twitter**' ı seçin.
-1. Daha önce edindiğiniz `API key` ve `API secret key` değerlerini yapıştırın.
-1. **Tamam**’ı seçin.
+1. [Azure portalındaki]uygulamanıza gidin.
+1. **Ayarlar** > **Kimlik Doğrulaması / Yetkilendirme'yi**seçin ve Uygulama Hizmeti Kimlik **Doğrulamasının** **Üzerinde**olduğundan emin olun.
+1. **Twitter'ı**seçin.
+1. Daha önce `API key` elde `API secret key` ettiğiniz değerleri ve değerleri yapıştırın.
+1. **Tamam'ı**seçin.
 
-   ![Mobil uygulama Twitter ayarlarının ekran görüntüsü][1]
+   ![Mobil Uygulama Twitter ayarlarıekran görüntüsü][1]
 
-   Varsayılan olarak, App Service kimlik doğrulaması sağlar ancak site içeriğinize ve API 'lerinize yetkili erişimi kısıtlamaz. Uygulama kodunuzda kullanıcıları yetkilendirmelisiniz.
+   Varsayılan olarak, App Service kimlik doğrulaması sağlar, ancak sitenizin içeriğine ve API'lerine yetkili erişimi kısıtlamaz. Uygulama kodunuzdaki kullanıcıları yetkilendirmeniz gerekir.
 
-1. Seçim Sitenize erişimi yalnızca Twitter tarafından kimliği doğrulanan kullanıcılarla kısıtlamak için, isteğin **Twitter**'da **kimlik doğrulaması olmadığında gerçekleştirilecek eylemi** ayarlayın. Bu işlevi ayarladığınızda, uygulamanız tüm isteklerin doğrulanmasını gerektirir. Ayrıca kimlik doğrulaması için tüm kimliği doğrulanmamış istekleri Twitter 'a yönlendirir.
+1. (İsteğe bağlı) Sitenize erişimi yalnızca Twitter tarafından kimlik doğrulaması yapılan kullanıcılarla sınırlamak için, istek **Twitter'da** **kimlik doğrulaması olmadığında Eylem'i harekete** geçirin. Bu işlevselliği ayarladığınızda, uygulamanız tüm isteklerin kimliğinin doğrulanmasını gerektirir. Ayrıca kimlik doğrulama için twitter'a tüm kimlik doğrulama isteklerini yönlendirir.
 
    > [!CAUTION]
-   > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi, genel kullanıma açık bir giriş sayfasına sahip olan uygulamalar için istenmeyebilir. Bu tür uygulamalar için **anonim Isteklere Izin ver (eylem yok)** , uygulamanın kimlik doğrulamanın kendisini el ile başlattığı şekilde tercih edilebilir. Daha fazla bilgi için bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow).
+   > Bu şekilde erişimi kısıtlamak, uygulamanıza yapılan tüm aramalar için geçerlidir ve bu da birçok tek sayfalı uygulamada olduğu gibi herkese açık bir ana sayfaya sahip uygulamalar için isden edilmeyebilir. Bu tür uygulamalar için, uygulamanın kimlik doğrulamayı el ile başlatması için **anonim isteklere izin ver (eylem yok)** tercih edilebilir. Daha fazla bilgi için [kimlik doğrulama akışına](overview-authentication-authorization.md#authentication-flow)bakın.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet'i**seçin.
 
-Artık uygulamanızda kimlik doğrulaması için Twitter kullanmaya hazırsınız.
+Artık uygulamanızda kimlik doğrulama için Twitter'ı kullanmaya hazırsınız.
 
-## <a name="related-content"> </a>Sonraki adımlar
+## <a name="next-steps"></a><a name="related-content"> </a>Sonraki adımlar
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
@@ -67,7 +67,7 @@ Artık uygulamanızda kimlik doğrulaması için Twitter kullanmaya hazırsını
 
 <!-- URLs. -->
 
-[Twitter geliştiricileri]: https://go.microsoft.com/fwlink/p/?LinkId=268300
+[Twitter Geliştiricileri]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
 [Azure portalında]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
