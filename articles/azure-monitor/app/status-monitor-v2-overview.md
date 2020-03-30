@@ -1,49 +1,49 @@
 ---
-title: Azure Application Insights aracısına genel bakış | Microsoft Docs
-description: Application Insights aracısına genel bakış. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: Azure Uygulama Öngörüleri Aracısı'na genel bakış | Microsoft Dokümanlar
+description: Uygulama Öngörüleri Aracısı'na genel bakış. Web sitesini yeniden dağıtmadan web sitesinin performansını izleyin. Şirket içinde, VM'lerde veya Azure'da barındırılan ASP.NET web uygulamalarıyla çalışır.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
 ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275717"
 ---
-# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Izleyici Application Insights aracısını dağıtma
+# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Monitör uygulama istatistikleri aracısı dağıtma
 
 > [!IMPORTANT]
-> Bu kılavuz, Application Insights aracısına ait şirket Içi ve Azure olmayan bulut dağıtımları için önerilir. [Azure sanal makinesi ve sanal makine ölçek kümesi dağıtımları](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)için önerilen yaklaşım aşağıda verilmiştir.
+> Bu kılavuz, Uygulama Öngörüleri Aracısı'nın Şirket içi ve Azure'a uygun olmayan bulut dağıtımları için önerilir. Azure [sanal makine ve sanal makine ölçeği kümesi dağıtımları](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)için önerilen yaklaşım aşağıda veda edinebilirsiniz.
 
-Application Insights Aracısı (eski adıyla Durum İzleyicisi v2) [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)yayımlanmış bir PowerShell modülüdür.
-[Durum İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)yerini alır.
-Telemetri Azure portal, uygulamanızı [izleyebileceğiniz](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) bir şekilde gönderilir.
+Application Insights Agent (eski adıyla Status Monitor V2), [PowerShell Gallery'de](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)yayınlanan bir PowerShell modülüdür.
+[Durum Monitörü'nin](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)yerini alır.
+Telemetri, uygulamanızı [izleyebileceğiniz](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) Azure portalına gönderilir.
 
 > [!NOTE]
-> Modül Şu anda IIS ile barındırılan .NET Web Apps 'in kodsuz kullanacaksınız araçlarını desteklemektedir. ASP.NET Core, Java ve Node. js uygulamalarını işaretlemek için bir SDK kullanın.
+> Modül şu anda yalnızca IIS ile barındırılan .NET web uygulamalarının kodsuz enstrümantasyonunu destekler. Core, Java ve Node.js uygulamalarını ASP.NET bir SDK'yı kullanın.
 
 ## <a name="powershell-gallery"></a>PowerShell Galerisi
 
-Application Insights Aracısı şurada bulunur: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Uygulama Insights Aracısı burada https://www.powershellgallery.com/packages/Az.ApplicationMonitoryer almaktadır: .
 
 ![PowerShell Galerisi](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
 ## <a name="instructions"></a>Yönergeler
-- Kısa kod örneklerini kullanmaya başlamak için Başlarken [yönergelerine](status-monitor-v2-get-started.md) bakın.
-- Nasıl başlatacağınız hakkında ayrıntılı bilgi için bkz. [ayrıntılı yönergeler](status-monitor-v2-detailed-instructions.md) .
+- Kısa kod örnekleriyle başlamak için [başlangıç yönergelerine](status-monitor-v2-get-started.md) bakın.
+- Nasıl başlayacağınız hakkında derin bir dalış için [ayrıntılı talimatlara](status-monitor-v2-detailed-instructions.md) bakın.
 
 ## <a name="powershell-api-reference"></a>PowerShell API başvurusu
-- [Disable-ApplicationInsightsMonitoring](status-monitor-v2-api-disable-monitoring.md)
-- [Disable-ınstrumentationengine](status-monitor-v2-api-disable-instrumentation-engine.md)
+- [Devre Dışı-UygulamaInsightsİzleme](status-monitor-v2-api-disable-monitoring.md)
+- [Devre Dışı Bırakma-InstrumentationEngine](status-monitor-v2-api-disable-instrumentation-engine.md)
 - [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
-- [Enable-ınstrumentationengine](status-monitor-v2-api-enable-instrumentation-engine.md)
-- [Get-Applicationınsiısmonitoringconfig](status-monitor-v2-api-get-config.md)
-- [Get-Applicationınsiısmonitoringstatus](status-monitor-v2-api-get-status.md)
-- [Set-Applicationınsiısmonitoringconfig](status-monitor-v2-api-set-config.md)
-- [Start-Applicationınsiizsmonitoringtrace](status-monitor-v2-api-start-trace.md)
+- [Etkinleştirme-EnstrümantasyonMotoru](status-monitor-v2-api-enable-instrumentation-engine.md)
+- [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
+- [Get-ApplicationInsightsİzlemeDurumu](status-monitor-v2-api-get-status.md)
+- [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
+- [Başlat-UygulamaInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
 ## <a name="troubleshooting"></a>Sorun giderme
 - [Sorun giderme](status-monitor-v2-troubleshoot.md)
@@ -52,22 +52,22 @@ Application Insights Aracısı şurada bulunur: https://www.powershellgallery.co
 
 ## <a name="faq"></a>SSS
 
-- Application Insights Aracısı proxy yüklemelerini destekliyor mu?
+- Application Insights Agent proxy yüklemelerini destekliyor mu?
 
-  *Evet*. Application Insights aracısını indirmek için birden çok yol vardır. Bilgisayarınızda internet erişimi varsa, `-Proxy` parametreleri kullanarak PowerShell Galerisi ekleyebilirsiniz.
-Ayrıca, modülü el ile indirebilir ve bilgisayarınıza yükleyebilir ya da doğrudan kullanabilirsiniz.
-Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-instructions.md)bölümünde açıklanmıştır.
+  *Evet, evet.* Application Insights Agent'ı indirmenin birden çok yolu vardır. Bilgisayarınızda internet erişimi varsa, parametreleri kullanarak `-Proxy` PowerShell Galerisi'ne binebilirsiniz.
+Ayrıca modülü el ile indirebilir ve bilgisayarınıza yükleyebilir veya doğrudan kullanabilirsiniz.
+Bu seçeneklerin her biri [ayrıntılı yönergelerde](status-monitor-v2-detailed-instructions.md)açıklanmıştır.
 
-- Durum İzleyicisi v2 ASP.NET Core uygulamaları destekliyor mu?
+- Status Monitor v2, Core uygulamalarını ASP.NET destekliyor mu?
 
-  *Hayır*. ASP.NET Core uygulamalarının izlenmesini etkinleştirme yönergeleri için, bkz. [ASP.NET Core uygulamalar için Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). ASP.NET Core bir uygulama için StatusMonitor yüklemeniz gerekmez. Bu, ASP.NET Core uygulama IIS 'de barındırıldığında bile geçerlidir.
+  *Hayır, hayır.* ASP.NET Çekirdek uygulamalarının izlenmesini sağlamak için ASP.NET [Temel uygulamalar için Uygulama Öngörüleri](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)bölümüne bakın. ASP.NET Core uygulaması için StatusMonitor'u yüklemenize gerek yoktur. ASP.NET Core uygulaması IIS'de barındırılan olsa bile bu durum geçerlidir.
 
-- Nasıl yaparım?, etkinleştirme başarılı oldu mu?
+- Etkinleştirmenin başarılı olduğunu nasıl doğrulayabilirim?
 
-  - [Get-Applicationınsisofsmonitoringstatus](status-monitor-v2-api-get-status.md) cmdlet 'i, etkinleştirme başarılı olduğunu doğrulamak için kullanılabilir.
-  - Uygulamanızın telemetri gönderip göndermediğine hızlı bir şekilde anlamak için [canlı ölçümleri](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) kullanmanızı öneririz.
+  - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) cmdlet, etkinleştirmenin başarılı olduğunu doğrulamak için kullanılabilir.
+  - Uygulamanızın telemetri gönderip göndermedığını hızlı bir şekilde belirlemek için [Canlı Ölçümler'i](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) kullanmanızı öneririz.
 
-  - Şu anda telemetri gönderen tüm bulut rollerini listelemek için [Log Analytics](../log-query/get-started-portal.md) de kullanabilirsiniz:
+  - Telemetri gönderen tüm bulut rollerini listelemek için [Log Analytics'i](../log-query/get-started-portal.md) de kullanabilirsiniz:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,14 +76,14 @@ Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-
 
 Telemetrinizi görüntüleyin:
 
-* Performansı ve kullanımı izlemek için [ölçümleri](../../azure-monitor/app/metrics-explorer.md) bulun.
-* Sorunları tanılamak için [olayları ve günlükleri arayın](../../azure-monitor/app/diagnostic-search.md) .
-* Daha gelişmiş sorgular için [analiz kullanın](../../azure-monitor/app/analytics.md) .
-* [Panolar oluşturun](../../azure-monitor/app/overview-dashboard.md).
+* Performansı ve kullanımı izlemek için [ölçümleri keşfedin.](../../azure-monitor/app/metrics-explorer.md)
+* Sorunları tanılamak için [olayları ve günlükleri arayın.](../../azure-monitor/app/diagnostic-search.md)
+* Daha gelişmiş sorgular için [Analytics'i kullanın.](../../azure-monitor/app/analytics.md)
+* [Panolar oluşturun.](../../azure-monitor/app/overview-dashboard.md)
 
 Daha fazla telemetri ekleyin:
 
-* Sitenizin canlı kaldığından emin olmak için [Web testleri oluşturun](monitor-web-app-availability.md) .
-* Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
-* İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
+* Sitenizin canlı kalması için [web testleri oluşturun](monitor-web-app-availability.md).
+* Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [web istemcisi telemetrisi ekleyin.](../../azure-monitor/app/javascript.md)
+* İzleme ve günlük aramaları ekleyebilmeniz [için Uygulama Öngörüleri SDK'yı kodunuza ekleyin.](../../azure-monitor/app/asp-net.md)
 

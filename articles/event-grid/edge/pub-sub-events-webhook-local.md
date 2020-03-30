@@ -1,6 +1,6 @@
 ---
-title: Yayımlayın, olaylara yerel olarak abone olun-Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge Event Grid ile Web kancasını kullanarak olaylara yerel olarak abone olma
+title: Yerel olarak etkinliklere abone olun - Azure Event Grid IoT Edge | Microsoft Dokümanlar
+description: IoT Edge'de Event Grid ile Webhook'u kullanarak etkinlikleri yerel olarak yayımlayın, bunlara abone olun
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,54 +10,54 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281008"
 ---
-# <a name="tutorial-publish-subscribe-to-events-locally"></a>Öğretici: yayımlama, olaylara yerel olarak abone olma
+# <a name="tutorial-publish-subscribe-to-events-locally"></a>Öğretici: Yayımla, etkinliklere yerel abone olun
 
-Bu makalede, IoT Edge Event Grid kullanarak olayları yayımlamak ve bunlara abone olmak için gereken tüm adımlarda adım adım açıklanmaktadır.
+Bu makale, IoT Edge'deki Olay Izgarasını kullanarak etkinlikleri yayımlamak ve bunlara abone olmak için gereken tüm adımları size iletebilirsiniz.
 
 > [!NOTE]
-> Azure Event Grid konuları ve abonelikleri hakkında bilgi edinmek için bkz. [Event Grid kavramlar](concepts.md).
+> Azure Olay Izgara konuları ve abonelikleri hakkında bilgi edinmek için [Olay Kılavuz Kavramları'na](concepts.md)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar 
-Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
+## <a name="prerequisites"></a>Ön koşullar 
+Bu öğreticiyi tamamlamak için şunları yapmanız gerekir:
 
-* **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
-* **Azure IoT Hub ve IoT Edge cihazı** -henüz yoksa [Linux](../../iot-edge/quickstart-linux.md) veya [Windows cihazları](../../iot-edge/quickstart.md) için Hızlı Başlangıç bölümündeki adımları izleyin.
+* **Azure aboneliği** - Zaten hesabınız yoksa ücretsiz bir [hesap](https://azure.microsoft.com/free) oluşturun. 
+* **Azure IoT Hub ve IoT Edge aygıtı** - Zaten sahip değilseniz [Linux](../../iot-edge/quickstart-linux.md) veya [Windows aygıtları](../../iot-edge/quickstart.md) için hızlı başlatma adımlarını izleyin.
 
-## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modülünü dağıt
+## <a name="deploy-event-grid-iot-edge-module"></a>Olay Izgara IoT Edge modüllerini dağıtın
 
-IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi IoT Edge Azure Event Grid için çalışır. Bu makalede Azure portal IoT Edge Event Grid dağıtma adımları açıklanmaktadır.
+Modülleri bir IoT Edge aygıtına dağıtmanın çeşitli yolları vardır ve bunların tümü IoT Edge'deki Azure Olay Izgarası için çalışır. Bu makalede, Azure portalından IoT Edge'de Olay Izgarasını dağıtma adımları açıklanmaktadır.
 
 >[!NOTE]
-> Bu öğreticide, Event Grid modülünü kalıcı olmadan dağıtacaksınız. Bu öğreticide oluşturduğunuz tüm konuların ve aboneliklerin, modülü yeniden dağıtırken silineceği anlamına gelir. Kalıcılığı ayarlama hakkında daha fazla bilgi için şu makalelere bakın: [Linux 'ta durumu kalıcı hale](persist-state-linux.md) getirin veya [Windows 'da durumu devam](persist-state-windows.md)ettir. Üretim iş yükleri için Event Grid modülünü Kalıcılık ile yüklemenizi öneririz.
+> Bu eğitimde, Etkinlik Izgara modüllerini kalıcılık olmadan dağıtmış olursunuz. Bu, modülü yeniden dağıttığınızda bu öğreticide oluşturduğunuz tüm konuların ve aboneliklerin silineceği anlamına gelir. Kalıcılığı nasıl düzenesin hakkında daha fazla bilgi için aşağıdaki makalelere bakın: [Linux'ta kalıcı durum](persist-state-linux.md) veya [Windows'da kalıcı durum.](persist-state-windows.md) Üretim iş yükleri için Olay Izgara modüllerini kalıcı olarak yüklemenizi öneririz.
 
 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge cihazınızı seçin
 
-1. [Azure portalda](https://portal.azure.com) oturum açma
-1. IoT Hub gidin.
-1. **Otomatik cihaz yönetimi** bölümündeki menüden **IoT Edge** ' yi seçin. 
-1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın
-1. **Modülleri Ayarlama**'yı seçin. Sayfayı açık tutun. Sonraki bölümde bulunan adımlarla devam edersiniz.
+1. [Azure portalında](https://portal.azure.com) oturum açın
+1. IoT Hub'ınıza gidin.
+1. **Otomatik Aygıt Yönetimi** bölümündeki menüden **IoT Edge'i** seçin. 
+1. Aygıtlar listesinden hedef aygıtın kimliğine tıklayın
+1. **Modülleri Ayarlama**'yı seçin. Sayfayı açık tutun. Sonraki bölümdeki adımlarla devam eceksiniz.
 
-### <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
+### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimini yapılandırma
 
-Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Dağıtım bildirimi, hangi modüllerin dağıtılabildiğini, modüller arasında verilerin nasıl aktığını ve modülün istenilen özelliklerini açıklayan bir JSON belgesidir. Azure portalında, JSON belgesini el ile oluşturmak yerine dağıtım bildirimi oluşturmada size yol gösteren bir sihirbaz vardır.  Üç adımı vardır: **Modülekleme,** **Rotalar belirt**ve **dağıtımı gözden geçirin.**
 
-### <a name="add-modules"></a>Modül Ekle
+### <a name="add-modules"></a>Modül ekle
 
-1. **Dağıtım modülleri** bölümünde **Ekle** ' yi seçin.
-1. Açılan listedeki modül türlerinden **IoT Edge modül** ' ı seçin.
-1. Kapsayıcının adını, görüntüsünü, kapsayıcı oluşturma seçeneklerini belirtin:
+1. Dağıtım **Modülleri** bölümünde Ekle'yi **seçin**
+1. Açılan listedeki modül türlerine göre **IoT Edge Modülünü** seçin
+1. Kapsayıcının adını, görüntüsünü, kapsayıcıyı oluşturma seçeneklerini sağlayın:
 
-   * **Ad**: eventgridmodule
-   * **Görüntü URI 'si**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
-   * **Kapsayıcı oluşturma seçenekleri**:
+   * **Adı**: eventgridmodule
+   * **Resim URI**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Konteyner Oluşturma Seçenekleri**:
 
    [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
 
@@ -77,48 +77,48 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
           }
         }
     ```    
- 1. **Kaydet**’e tıklayın
- 1. Azure Event Grid abone modülünü birlikte dağıtmadan önce eklemek için sonraki bölüme geçin.
+ 1. **Kaydet'i** tıklatın
+ 1. Azure Olay Izgara Abone modüllerini birlikte dağıtmadan önce eklemek için bir sonraki bölüme devam edin.
 
     >[!IMPORTANT]
-    > Bu öğreticide, istemci kimlik doğrulaması devre dışı olarak Event Grid modülünü dağıtacaksınız. Üretim iş yükleri için, istemci kimlik doğrulamasını etkinleştirmenizi öneririz. Event Grid modülünü güvenli şekilde yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md).
+    > Bu eğitimde, istemci kimlik doğrulaması devre dışı bırakılmış Olay Izgara modüllerini dağıtmış olursunuz. Üretim iş yükleri için istemci kimlik doğrulamasını etkinleştirmenizi öneririz. Olay Izgara modüllerini güvenli bir şekilde yapılandırma hakkında daha fazla bilgi için [Güvenlik ve kimlik doğrulama](security-authentication.md)sına bakın.
     > 
-    > Bir Azure VM 'yi uç cihaz olarak kullanıyorsanız, 4438 numaralı bağlantı noktasında gelen trafiğe izin vermek için bir gelen bağlantı noktası kuralı ekleyin. Kuralı ekleme hakkında yönergeler için bkz. [BIR VM 'ye bağlantı noktalarını açma](../../virtual-machines/windows/nsg-quickstart-portal.md).
+    > Kenar aygıtı olarak bir Azure VM kullanıyorsanız, bağlantı noktası 4438'de gelen trafiğine izin vermek için gelen bağlantı noktası kuralını ekleyin. Kuralı ekleme yönergeleri için, [bağlantı noktalarını VM'ye nasıl açacağına](../../virtual-machines/windows/nsg-quickstart-portal.md)bakın.
     
 
-## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid abonesi IoT Edge modülünü dağıtma
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Olay Izgara Abone IoT Edge modüldağıtma
 
-Bu bölümde, olayların sunulabileceği bir olay işleyicisi olarak görev yapacak başka bir IoT modülünün nasıl dağıtılacağı gösterilmektedir.
+Bu bölümde, olayların teslim edilebildiği bir olay işleyicisi olarak hareket edecek başka bir IoT modülü nasıl dağıtılacanız gösterilmektedir.
 
-### <a name="add-modules"></a>Modül Ekle
+### <a name="add-modules"></a>Modül ekle
 
-1. **Dağıtım modülleri** bölümünde yeniden **Ekle** ' yi seçin. 
-1. Açılan listedeki modül türlerinden **IoT Edge modül** ' ı seçin.
-1. Kapsayıcının adını, görüntüsünü ve kapsayıcı oluşturma seçeneklerini belirtin:
+1. Dağıtım **Modülleri** bölümünde yeniden **ekle'yi** seçin. 
+1. Açılan listedeki modül türlerine göre **IoT Edge Modülünü** seçin
+1. Kapsayıcının ad, görüntü ve kapsayıcı oluşturma seçeneklerini sağlayın:
 
    * **Ad**: abone
-   * **Görüntü URI 'si**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
-   * **Kapsayıcı oluşturma seçenekleri**: yok
-1. **Kaydet**’e tıklayın
-1. Yönlendirmeler bölümüne devam etmek için **İleri** 'ye tıklayın
+   * **Resim URI**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Kapsayıcı Oluşturma Seçenekleri**: Yok
+1. **Kaydet'i** tıklatın
+1. Rotalar bölümüne devam etmek için **İleri'yi** tıklatın
 
- ### <a name="setup-routes"></a>Kurulum yolları
+ ### <a name="setup-routes"></a>Kurulum rotaları
 
-Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için **İleri** ' yi seçin.
+Varsayılan yolları tutun ve inceleme bölümüne devam etmek için **Sonraki'ni** seçin
 
-### <a name="submit-the-deployment-request"></a>Dağıtım isteğini gönder
+### <a name="submit-the-deployment-request"></a>Dağıtım isteğini gönderme
 
-1. İnceleme Bölümü, önceki bölümde yaptığınız seçimlere göre oluşturulan JSON dağıtım bildirimini gösterir. Her iki modülü de gördüistediğinizi onaylayın: **eventgridmodule** ve **abone** JSON içinde listelenmiştir. 
-1. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin. Dağıtımı gönderdikten sonra **cihaz** sayfasına dönersiniz.
-1. **Modüller bölümünde**, hem **eventgrid** hem de **abone** modüllerinin listelendiğini doğrulayın. Ve, **dağıtım sırasında belirtilen** ve **cihaz sütunlarının rapor** sütunları **Evet**olarak ayarlandığını doğrulayın.
+1. İnceleme bölümü, önceki bölümdeki seçimlerinize göre oluşturulan JSON dağıtım bildirimini gösterir. Her iki modülü de gördüğünüzü onaylayın: **eventgridmodule** ve JSON'da listelenen **abone.** 
+1. Dağıtım bilgilerinizi gözden geçirin ve **ardından Gönder'i**seçin. Dağıtımı gönderdikten sonra **aygıt** sayfasına geri dönersiniz.
+1. **Modüller bölümünde,** hem **eventgrid** hem de **abone** modüllerinin listeli olduğunu doğrulayın. Ayrıca, **dağıtımda Belirtilen** ve Aygıt Sütunları **Tarafından Bildirilen'in** **Evet**olarak ayarlı olduğunu doğrulayın.
 
-    Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
+    Modülün cihazda başlatılması ve ardından IoT Hub'a rapor edilmesi birkaç dakika sürebilir. Güncelleştirilmiş bir durumu görmek için sayfayı yenileyin.
 
 ## <a name="create-a-topic"></a>Konu başlığı oluşturma
 
-Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir. Azure Event Grid, bir konu, yayımcıların olay gönderebileceği bir uç noktaya başvurur.
+Bir olayın yayımcısı olarak, bir olay ızgarası konusu oluşturmanız gerekir. Azure Olay Idamı'nda bir konu, yayıncıların olayları gönderebileceği bir bitiş noktası anlamına gelir.
 
-1. Aşağıdaki içerikle topic. JSON oluşturun. Yük hakkında daha fazla bilgi için bkz. [API](api.md)Belgelerimiz.
+1. Aşağıdaki içerikle topic.json oluşturun. Yük hakkında ayrıntılı bilgi için [API belgelerimize](api.md)bakın.
 
     ```json
         {
@@ -129,13 +129,13 @@ Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir
         }
     ```
 
-1. Bir olay Kılavuzu konusu oluşturmak için aşağıdaki komutu çalıştırın. HTTP durum kodu `200 OK`görtığınızdan emin olun.
+1. Olay ızgarası konusu oluşturmak için aşağıdaki komutu çalıştırın. HTTP durum kodunun . `200 OK`
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
     ```
 
-1. Konunun başarıyla oluşturulduğunu doğrulamak için şu komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
+1. Konunun başarıyla oluşturulduğunu doğrulamak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -159,11 +159,11 @@ Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir
 
 ## <a name="create-an-event-subscription"></a>Olay aboneliği oluşturma
 
-Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay almak için, ilgilendiğiniz konu başlığı için bir Event Grid aboneliği oluşturmanız gerekir.
+Aboneler bir konuyla yayınlanan etkinlikler için kayıt yaptırabilirler. Herhangi bir etkinliği almak için, ilgi çeken bir konu için bir Olay Izgara aboneliği oluşturmanız gerekir.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Aşağıdaki içerikle Subscription. JSON oluşturun. Yük hakkında daha fazla bilgi için [API belgelerimize](api.md) bakın
+1. Aşağıdaki içerikle subscription.json oluşturun. Yük hakkında ayrıntılı bilgi için [API belgelerimize](api.md) bakın
 
     ```json
         {
@@ -179,13 +179,13 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
     ```
 
     >[!NOTE]
-    > **EndpointType** özelliği, abonenin bir **Web kancası**olduğunu belirtir.  **EndpointUrl** , abonenin olayları dinlediği URL 'yi belirtir. Bu URL, daha önce dağıttığınız Azure abonesi örneğine karşılık gelir.
-2. Konusu için bir abonelik oluşturmak üzere aşağıdaki komutu çalıştırın. HTTP durum kodu `200 OK`görtığınızdan emin olun.
+    > **EndpointType** özelliği, abonenin bir **Webhook**olduğunu belirtir.  **EndpointUrl,** abonenin olayları dinlediği URL'yi belirtir. Bu URL, daha önce dağıtmış olduğunuz Azure Abone örneğine karşılık gelir.
+2. Konu için abonelik oluşturmak için aşağıdaki komutu çalıştırın. HTTP durum kodunun . `200 OK`
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
     ```
-3. Aboneliğin başarıyla oluşturulduğunu doğrulamak için şu komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
+3. Aboneliğin başarıyla oluşturulduğunu doğrulamak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -210,9 +210,9 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
         }
     ```
 
-## <a name="publish-an-event"></a>Olay yayımlama
+## <a name="publish-an-event"></a>Etkinlik yayınlama
 
-1. Aşağıdaki içerikle Event. JSON oluşturun. Yük hakkında daha fazla bilgi için bkz. [API](api.md)Belgelerimiz.
+1. Aşağıdaki içerikle event.json oluşturun. Yük hakkında ayrıntılı bilgi için [API belgelerimize](api.md)bakın.
 
     ```json
         [
@@ -237,16 +237,16 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 ## <a name="verify-event-delivery"></a>Olay teslimini doğrulama
 
-1. IoT Edge sanal makinenizde SSH veya RDP.
-1. Abone günlüklerini denetleyin:
+1. IoT Edge VM'nize SSH veya RDP.
+1. Abone günlüklerini kontrol edin:
 
-    Windows 'ta aşağıdaki komutu çalıştırın:
+    Windows'da aşağıdaki komutu çalıştırın:
 
     ```sh
     docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
-   Linux 'ta aşağıdaki komutu çalıştırın:
+   Linux'ta aşağıdaki komutu çalıştırın:
 
     ```sh
     sudo docker logs subscriber
@@ -282,13 +282,13 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, bir olay Kılavuzu konusu, abonelik ve yayımlanan olaylar oluşturdunuz. Artık temel adımları bildiğinize göre aşağıdaki makalelere bakın: 
+Bu öğreticide, bir olay ızgarası konusu, abonelik ve yayımlanmış olaylar oluşturdunuz. Artık temel adımları bildiğinize göre, aşağıdaki makalelere bakın: 
 
-- IoT Edge Azure Event Grid kullanmayla ilgili sorunları gidermek için bkz. [sorun giderme kılavuzu](troubleshoot.md).
-- [Filtrelerle](advanced-filtering.md)abonelik oluşturun/güncelleştirin.
-- [Linux](persist-state-linux.md) veya [Windows](persist-state-windows.md) üzerinde Event Grid modülünün kalıcılığını etkinleştirme
-- İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleyin
-- Bu [öğreticiyi](pub-sub-events-webhook-cloud.md) izleyerek etkinlikleri Bulutta Azure işlevlerine iletin
-- [IoT Edge BLOB depolama olaylarına tepki verme](react-blob-storage-events-locally.md)
-- [Kenarda konuları ve abonelikleri izleyin](monitor-topics-subscriptions.md)
+- IoT Edge'de Azure Olay Kılavuzu'nu kullanmayla ilgili sorunları gidermek için [Sorun Giderme kılavuzuna](troubleshoot.md)bakın.
+- [Filtrelerle](advanced-filtering.md)abonelik oluşturma/güncelleme.
+- [Linux](persist-state-linux.md) veya Windows'da Olay Izgara modülünün kalıcılığını [etkinleştirme](persist-state-windows.md)
+- İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleme
+- Bu öğreticiyi izleyerek olayları buluttaki Azure [Işlevlerine](pub-sub-events-webhook-cloud.md) iletme
+- [IoT Edge'deki Blob Depolama olaylarına tepki ver](react-blob-storage-events-locally.md)
+- [Konuları ve abonelikleri kenarda izleme](monitor-topics-subscriptions.md)
 

@@ -1,6 +1,6 @@
 ---
-title: SQL TDE Azure Key Vault etkinleştir
-description: Azure SQL veritabanı ve veri ambarını, PowerShell veya CLı kullanarak bekleyen şifreleme için Saydam Veri Şifrelemesi (TDE) kullanmaya başlamak üzere nasıl yapılandıracağınızı öğrenin.
+title: Azure Anahtar Kasası ile SQL TDE'yi etkinleştirme
+description: PowerShell veya CLI kullanarak şifreleme için Saydam Veri Şifreleme (TDE) kullanmaya başlamak için Bir Azure SQL Veritabanı ve Veri Ambarı'nı nasıl yapılandıracak şekilde yapılandırmayı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,76 +11,76 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 87a9db7d320a7d5b35234899c59884bcf2bf4b60
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 81927575b99604e71f7b0920bc3a448f7796f565
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067181"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve CLI: Azure Key Vault'tan müşteri tarafından yönetilen anahtarla Şeffaf Veri Şifrelemesini etkinleştirin
 
-Bu makalede, bir SQL veritabanı veya veri ambarı üzerindeki Saydam Veri Şifrelemesi (TDE) için Azure Key Vault bir anahtarın nasıl kullanılacağı açıklanmaktadır. TDE Azure Key Vault tümleştirme-Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için, [Azure Key Vault 'de müşteri tarafından yönetilen anahtarlarla TDE](transparent-data-encryption-byok-azure-sql.md)sayfasını ziyaret edin. 
+Bu makalede, Bir SQL Veritabanı veya Veri Ambarı'nda Saydam Veri Şifreleme (TDE) için Azure Key Vault'tan (TDE) bir anahtarın nasıl kullanılacağı ele ait. Azure Anahtar Kasası tümleştirmesi ile TDE hakkında daha fazla bilgi edinmek için - Kendi Anahtarınızı Getir (BYOK) Desteğinizi getirin, [Azure Key Vault'ta müşteri tarafından yönetilen anahtarlarla TDE'yi](transparent-data-encryption-byok-azure-sql.md)ziyaret edin. 
 
-## <a name="prerequisites-for-powershell"></a>PowerShell önkoşulları
+## <a name="prerequisites-for-powershell"></a>PowerShell için Ön Koşullar
 
-- Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
-- [Önerilir, ancak Isteğe bağlı] TDE koruyucusu anahtar malzemesinin yerel bir kopyasını oluşturmak için bir donanım güvenlik modülü (HSM) veya yerel anahtar deposu vardır.
-- Azure PowerShell yüklü ve çalışıyor olmanız gerekir.
-- TDE için kullanmak üzere bir Azure Key Vault ve anahtar oluşturun.
-  - [Donanım güvenlik modülü (HSM) ve Key Vault kullanımı için yönergeler](../key-vault/key-vault-hsm-protected-keys.md)
-    - Anahtar Kasası, TDE için aşağıdaki özelliğe sahip olmalıdır:
-  - [geçici-silme](../key-vault/key-vault-ovw-soft-delete.md) ve Temizleme koruması
+- Azure aboneliğiniz olmalı ve bu abonelikte yönetici olmalısınız.
+- [Önerilen ama İsteğe Bağlı] TDE Koruyucu anahtar malzemesinin yerel bir kopyasını oluşturmak için bir donanım güvenlik modülü (HSM) veya yerel anahtar deposuna sahip olun.
+- Azure PowerShell'in yüklü ve çalıştırılan olması gerekir.
+- TDE için kullanmak üzere bir Azure Anahtar Kasası ve Anahtar oluşturun.
+  - [Donanım güvenlik modülü (HSM) ve Key Vault kullanma talimatları](../key-vault/key-vault-hsm-protected-keys.md)
+    - Anahtar kasası TDE için kullanılacak aşağıdaki özelliğe sahip olmalıdır:
+  - [yumuşak silme](../key-vault/key-vault-ovw-soft-delete.md) ve temizleme koruması
 - Anahtar, TDE için kullanılacak aşağıdaki özniteliklere sahip olmalıdır:
-   - Sona erme tarihi yok
-   - Devre dışı değil
-   - Al, *sarmalama tuşu*, *anahtar sarmalama işlemini geri* *alabilir*
+   - Son kullanma tarihi yok
+   - Devre dışı bırakılmadı
+   - *Get,* wrap *tuşu,* *açma tuşu* işlemlerini gerçekleştirebilme
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlets için [AzureRM.Sql'e](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın.
 
-Key Vault hakkında daha fazla bilgi için bkz. [Key Vault PowerShell yönergeleri](../key-vault/quick-create-powershell.md) ve [PowerShell ile geçici silme Key Vault kullanma](../key-vault/key-vault-soft-delete-powershell.md).
+Key Vault hakkında ayrıntılı bilgi için Key [Vault'tan PowerShell talimatlarına](../key-vault/quick-create-powershell.md) bakın ve [PowerShell ile Key Vault yumuşak silme nasıl kullanılır.](../key-vault/key-vault-soft-delete-powershell.md)
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager (RM) modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
+> PowerShell Azure Kaynak Yöneticisi (RM) modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirmeler Az.Sql modülü içindir. AzureRM modülü en az Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecektir.  Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumlulukları hakkında daha fazla bilgi için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az)
 
-## <a name="assign-an-azure-ad-identity-to-your-server"></a>Sunucunuza bir Azure AD kimliği atama
+## <a name="assign-an-azure-ad-identity-to-your-server"></a>Sunucunuza Azure AD kimliği atama
 
-Var olan bir sunucunuz varsa, sunucunuza bir Azure AD kimliği eklemek için aşağıdakileri kullanın:
+Varolan bir sunucunuz varsa, sunucunuza Azure AD kimliği eklemek için aşağıdakileri kullanın:
 
    ```powershell
    $server = Set-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -AssignIdentity
    ```
 
-Sunucu oluşturuyorsanız, sunucu oluşturma sırasında bir Azure AD kimliği eklemek için [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) cmdlet 'ini Tag-Identity ile birlikte kullanın:
+Bir sunucu oluşturuyorsanız, sunucu oluşturma sırasında bir Azure AD kimliği eklemek için -Kimlik etiketine sahip [Yeni-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) cmdlet'i kullanın:
 
    ```powershell
    $server = New-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -Location <RegionName> `
        -ServerName <LogicalServerName> -ServerVersion "12.0" -SqlAdministratorCredentials <PSCredential> -AssignIdentity
    ```
 
-## <a name="grant-key-vault-permissions-to-your-server"></a>Sunucunuza Key Vault izinleri verin
+## <a name="grant-key-vault-permissions-to-your-server"></a>Anahtar Kasa sı izinlerini sunucunuza ver
 
-TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izni vermek üzere [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 'ini kullanın.
+TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izni vermek için [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet'ini kullanın.
 
    ```powershell
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
 
-## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
+## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Anahtar Vault tuşunu sunucuya ekleyin ve TDE Koruyucusu'nu ayarlayın
 
-- Anahtar kasasından anahtar KIMLIĞI almak için [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet 'ini kullanın
-- Anahtarı Key Vault sunucuya eklemek için [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet 'ini kullanın.
-- Anahtarı tüm sunucu kaynaklarının TDE koruyucusu olarak ayarlamak için [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 'ini kullanın.
-- TDE koruyucunun amaçlanan olarak yapılandırıldığını doğrulamak için [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 'ini kullanın.
+- Anahtar kasasından anahtar kimliğini almak için [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet'ini kullanın
+- Anahtar Kasası'ndan sunucuya anahtarı eklemek için [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet'ini kullanın.
+- Tüm sunucu kaynakları için anahtarı TDE koruyucusu olarak ayarlamak için [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet'i kullanın.
+- TDE koruyucunun beklendiği gibi yapılandırıldığını doğrulamak için [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet'i kullanın.
 
 > [!NOTE]
-> Anahtar Kasası adı ve anahtar adının birleşik uzunluğu 94 karakteri aşamaz.
+> Anahtar tonoz adı ve anahtar adı için birleştirilmiş uzunluk 94 karakteri geçemez.
 
 > [!TIP]
-> Key Vault örnek bir keyId: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Key Vault bir örnek KeyId:https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 
 ```powershell
 # add the key from Key Vault to the server
@@ -94,20 +94,20 @@ Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName <SQLDatabas
 Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName>
 ```
 
-## <a name="turn-on-tde"></a>TDE açma
+## <a name="turn-on-tde"></a>TDE'yi aç
 
-TDE ' i açmak için [set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet 'ini kullanın.
+TDE'yi açmak için [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet'i kullanın.
 
 ```powershell
 Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName> -State "Enabled"
 ```
 
-Artık veritabanı veya veri ambarı Key Vault içindeki bir şifreleme anahtarıyla TDE etkinleştirilmiştir.
+Şimdi veritabanı veya veri ambarı TDE Key Vault bir şifreleme anahtarı ile etkin vardır.
 
-## <a name="check-the-encryption-state-and-encryption-activity"></a>Şifreleme durumunu ve şifreleme etkinliğini denetleme
+## <a name="check-the-encryption-state-and-encryption-activity"></a>Şifreleme durumu ve şifreleme etkinliğini denetleme
 
-Bir veritabanı veya veri ambarı için şifreleme ilerleme durumunu denetlemek için, Get [-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) ve [Get-AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) ' y i kullanın.
+Bir veritabanı veya veri ambarı için şifreleme ilerlemesini denetlemek için şifreleme durumunu ve [Get-AzSqlDatabaseTransparentDataEncryptionActivity'i](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) almak için [Get-AzSqlDatabaseTransparentDataEncryption'i](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) kullanın.
 
 ```powershell
 # get the encryption state
@@ -119,26 +119,26 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Gerekli komut satırı arabirimi sürüm 2,0 veya üstünü yüklemek ve Azure aboneliğinize bağlanmak için bkz. [Azure platformlar arası komut satırı arabirimi 2,0 ' ni yükleyip yapılandırma](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Gerekli Komut Satırı Arabirimi sürüm 2.0 veya sonraki sürümü yüklemek ve Azure aboneliğinize bağlanmak için Azure [Çapraz Platform Komut Satırı Arabirimi 2.0'ı yükleyin ve yapılandırın.](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-Key Vault hakkında daha fazla bilgi için bkz. [clı 2,0 kullanarak Key Vault yönetme](../key-vault/key-vault-manage-with-cli2.md) ve [CLI ile geçici silme Key Vault kullanma](../key-vault/key-vault-soft-delete-cli.md).
+Key Vault ile ilgili ayrıntılar için [CLI 2.0 kullanarak Anahtar Kasasını Yönet](../key-vault/key-vault-manage-with-cli2.md) ve [CLI ile Key Vault yumuşak silme nasıl kullanılır.](../key-vault/key-vault-soft-delete-cli.md)
 
-## <a name="assign-an-azure-ad-identity-to-your-server"></a>Sunucunuza bir Azure AD kimliği atama
+## <a name="assign-an-azure-ad-identity-to-your-server"></a>Sunucunuza Azure AD kimliği atama
 
-```powershell
+```azurecli
 # create server (with identity) and database
 az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity
 az sql db create --name <dbname> --server <servername> --resource-group <rgname>
 ```
 
 > [!TIP]
-> "PrincipalId" sunucusunu sunucu oluşturmaktan tutun, bir sonraki adımda Anahtar Kasası izinleri atamak için kullanılan nesne kimliğidir
+> Sunucu oluşturma "principalID" tutun, bir sonraki adımda anahtar kasa izinleri atamak için kullanılan nesne kimliği
 
-## <a name="grant-key-vault-permissions-to-your-server"></a>Sunucunuza Key Vault izinleri verin
+## <a name="grant-key-vault-permissions-to-your-server"></a>Anahtar Kasa sı izinlerini sunucunuza ver
 
-```powershell
+```azurecli
 # create key vault, key and grant permission
 az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
 az keyvault key create --name <keyname> --vault-name <kvname> --protection software
@@ -146,31 +146,31 @@ az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group 
 ```
 
 > [!TIP]
-> Yeni anahtarın anahtar URI 'sini veya keyId değerini bir sonraki adım için tutun, örneğin: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Bir sonraki adım için yeni anahtarın URI veya keyid anahtarını saklayın, örneğin:https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 
-## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
+## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Anahtar Vault tuşunu sunucuya ekleyin ve TDE Koruyucusu'nu ayarlayın
 
-```powershell
+```azurecli
 # add server key and update encryption protector
 az sql server key create --server <servername> --resource-group <rgname> --kid <keyID>
 az sql server tde-key set --server <servername> --server-key-type AzureKeyVault  --resource-group <rgname> --kid <keyID>
 ```
 
 > [!NOTE]
-> Anahtar Kasası adı ve anahtar adının birleşik uzunluğu 94 karakteri aşamaz.
+> Anahtar tonoz adı ve anahtar adı için birleştirilmiş uzunluk 94 karakteri geçemez.
 
-## <a name="turn-on-tde"></a>TDE açma
+## <a name="turn-on-tde"></a>TDE'yi aç
 
-```powershell
+```azurecli
 # enable encryption
 az sql db tde set --database <dbname> --server <servername> --resource-group <rgname> --status Enabled
 ```
 
-Artık veritabanı veya veri ambarı Azure Key Vault içinde müşteri tarafından yönetilen bir şifreleme anahtarıyla TDE etkinleştirilmiştir.
+Artık veritabanı veya veri ambarı, Azure Key Vault'ta müşteri tarafından yönetilen bir şifreleme anahtarıyla TDE'yi etkinleştirmiştir.
 
-## <a name="check-the-encryption-state-and-encryption-activity"></a>Şifreleme durumunu ve şifreleme etkinliğini denetleme
+## <a name="check-the-encryption-state-and-encryption-activity"></a>Şifreleme durumu ve şifreleme etkinliğini denetleme
 
-```powershell
+```azurecli
 # get encryption scan progress
 az sql db tde list-activity --database <dbname> --server <servername> --resource-group <rgname>  
 
@@ -180,54 +180,54 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 * * *
 
-## <a name="useful-powershell-cmdlets"></a>Yararlı PowerShell cmdlet'leri
+## <a name="useful-powershell-cmdlets"></a>Faydalı PowerShell cmdlets
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-- TDE 'yi devre dışı bırakmak için [set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet 'ini kullanın.
+- TDE'yi kapatmak için [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet'i kullanın.
 
    ```powershell
    Set-AzSqlDatabaseTransparentDataEncryption -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName> `
-      -DatabaseName <DatabaseName> -State "Disabled”
+      -DatabaseName <DatabaseName> -State "Disabled"
    ```
 
-- Sunucuya eklenen Key Vault anahtarlarının listesini döndürmek için [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 'ini kullanın.
+- Sunucuya eklenen Anahtar Kasa anahtarlarının listesini döndürmek için [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet'ini kullanın.
 
    ```powershell
    # KeyId is an optional parameter, to return a specific key version
    Get-AzSqlServerKeyVaultKey -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-- Sunucudan bir Key Vault anahtarı kaldırmak için [Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) komutunu kullanın.
+- Sunucudan bir Key Vault anahtarını kaldırmak için [Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) tuşunu kullanın.
 
    ```powershell
    # the key set as the TDE Protector cannot be removed
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- Genel veritabanı ayarları için bkz. [az SQL](/cli/azure/sql).
+- Genel veritabanı ayarları için [az sql'e](/cli/azure/sql)bakın.
 
-- Kasa anahtarı ayarları için bkz. [az SQL Server Key](/cli/azure/sql/server/key).
+- Kasa tuşu ayarları için [az sql server tuşuna](/cli/azure/sql/server/key)bakın.
 
-- TDE ayarları için, bkz. [az SQL Server TDE-Key](/cli/azure/sql/server/tde-key) ve [az SQL DB TDE](/cli/azure/sql/db/tde).
+- TDE ayarları için [az sql server tde-key](/cli/azure/sql/server/tde-key) ve az sql [db tde'ye](/cli/azure/sql/db/tde)bakın.
 
 * * *
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Bir sorun oluşursa, aşağıdakileri denetleyin:
+Bir sorun oluşursa aşağıdakileri denetleyin:
 
-- Anahtar Kasası bulunamazsa, doğru abonelikte olduğunuzdan emin olun.
+- Anahtar kasası bulunamıyorsa, doğru abonelikte olduğunuzdan emin olun.
 
-   # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+   # <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
    ```powershell
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>
@@ -235,11 +235,11 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 
    * * *
 
-- Yeni anahtar sunucuya eklenemezse veya yeni anahtar TDE koruyucusu olarak güncelleştirilemez, aşağıdakileri denetleyin:
-   - Anahtar, bir sona erme tarihi içermemelidir
-   - Anahtar, *Al*, *sarmalama tuşu*ve *sarmalama anahtar* işlemlerini etkin olmalıdır.
+- Sunucuya yeni anahtar eklenemiyorsa veya yeni anahtar TDE Koruyucusu olarak güncelleştirilemiyorsa, aşağıdakileri denetleyin:
+   - Anahtarın son kullanma tarihi olmamalıdır
+   - Anahtar, *get*, *wrap tuşu*ve anahtar işlemlerini *açma* etkin olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Güvenlik gereksinimleriyle uyum sağlamak için bir sunucunun TDE koruyucusunu döndürme hakkında bilgi edinin: [PowerShell kullanarak saydam veri şifrelemesi koruyucusunu döndürün](transparent-data-encryption-byok-azure-sql-key-rotation.md).
-- Güvenlik riskine karşı, riskli olabilecek bir TDE koruyucuyu kaldırmayı öğrenin: [riskli olabilecek bir anahtarı kaldırın](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md).
+- Güvenlik gereksinimlerine uyacak şekilde sunucunun TDE Koruyucusunu nasıl döndürdüğünüzi öğrenin: [PowerShell'i kullanarak Şeffaf Veri Şifreleme koruyucusunu döndürün.](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- Güvenlik riski durumunda, tehlikeye girme potansiyeline karşı bir TDE Koruyucusu'nun nasıl kaldırılış yapılacağını öğrenin: [Tehlikeye girme potansiyeline bağlı bir anahtarı kaldırın.](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)

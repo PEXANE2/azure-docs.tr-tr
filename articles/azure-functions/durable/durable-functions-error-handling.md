@@ -1,27 +1,27 @@
 ---
-title: Dayanıklı İşlevler hataları işleme-Azure
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki hataların nasıl işleneceğini öğrenin.
+title: Dayanıklı İşlevlerde işleme hataları - Azure
+description: Azure İşlevler için Dayanıklı İşlevler uzantısındaki hataları nasıl işleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277862"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler hataları işleme (Azure Işlevleri)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Dayanıklı İşlevlerde (Azure İşlevleri) hataları işleme
 
-Dayanıklı Işlev düzenlemeleri kodda uygulanır ve programlama dilinin yerleşik hata işleme özelliklerini kullanabilir. Organize etmeniz için hata işleme ve dengeleme eklemek için öğrenmeniz gereken yeni kavramlar aslında yoktur. Ancak, bilmeniz gereken birkaç davranış vardır.
+Dayanıklı Fonksiyon orkestrasyonlar kod olarak uygulanır ve programlama dilinin yerleşik hata işleme özelliklerini kullanabilir. Gerçekten sizin orkestrasyonlar içine hata işleme ve tazminat eklemek için öğrenmek için gereken herhangi bir yeni kavramlar yoktur. Ancak, bilmeniz gereken birkaç davranış vardır.
 
-## <a name="errors-in-activity-functions"></a>Etkinlik işlevlerinde hatalar
+## <a name="errors-in-activity-functions"></a>Etkinlik işlevlerindeki hatalar
 
-Bir etkinlik işlevinde oluşturulan herhangi bir özel durum Orchestrator işlevine geri hazırlanır ve bir `FunctionFailedException`olarak oluşturulur. Orchestrator işlevindeki gereksinimlerinize uyan hata işleme ve dengeleme kodu yazabilirsiniz.
+Bir etkinlik işlevine atılan herhangi bir özel durum, orkestratör işlevine `FunctionFailedException`geri döndürülr ve bir . Orkestratör işlevinde ihtiyaçlarınıza uygun hata işleme ve telafi kodu yazabilirsiniz.
 
-Örneğin, bir hesaptan diğerine fonları aktaran aşağıdaki Orchestrator işlevini göz önünde bulundurun:
+Örneğin, bir hesaptan diğerine para aktaran aşağıdaki orkestratör işlevini göz önünde bulundurun:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -60,9 +60,9 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -100,13 +100,13 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-İlk **alacaklı Taccount** işlev çağrısı başarısız olursa, Orchestrator işlevi fontları kaynak hesaba geri alacak şekilde dengeler.
+İlk **CreditAccount** işlev çağrısı başarısız olursa, orkestratör işlevi fonları kaynak hesaba yatırarak telafi eder.
 
-## <a name="automatic-retry-on-failure"></a>Hata durumunda otomatik yeniden deneme
+## <a name="automatic-retry-on-failure"></a>Hatada otomatik yeniden deneme
 
-Etkinlik işlevlerini veya alt düzenleme işlevlerini çağırdığınızda otomatik yeniden deneme ilkesi belirtebilirsiniz. Aşağıdaki örnek, bir işlevi üç kez çağırmaya çalışır ve her yeniden deneme arasında 5 saniye bekler:
+Etkinlik işlevlerini veya alt orkestrasyon işlevlerini çağırdığınızda, otomatik yeniden deneme ilkesi belirtebilirsiniz. Aşağıdaki örnek, bir işlevi en fazla üç kez çağırmayı dener ve her yeniden deneme arasında 5 saniye bekler:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -123,9 +123,9 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -145,20 +145,20 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Önceki örnekteki etkinlik işlevi çağrısı otomatik yeniden deneme ilkesini yapılandırmak için bir parametre alır. Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır:
+Önceki örnekte etkinlik işlevi çağrısı, otomatik yeniden deneme ilkesini yapılandırmak için bir parametre alır. Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır:
 
-* **Deneme sayısı**üst sınırı: en fazla yeniden deneme denemesi sayısı.
-* **İlk yeniden deneme aralığı**: ilk yeniden deneme girişiminden önce beklenecek süre.
-* **Geri dönüşlü katsayı**: geri alma artışının oranını belirlemede kullanılan katsayı. Varsayılan değer 1 ' dir.
-* **En fazla yeniden deneme aralığı**: yeniden deneme girişimleri arasında beklenecek en uzun süre.
-* **Yeniden deneme zaman aşımı**: yeniden denemeler yapmak için harcayabileceğiniz en uzun süre. Varsayılan davranış süresiz olarak yeniden denenecektir.
-* **Tanıtıcı**: bir işlevin yeniden denenip denenmeyeceğini anlamak için Kullanıcı tanımlı geri çağırma belirtilebilir.
+* **Maksimum deneme sayısı**: En fazla yeniden deneme denemesi sayısı.
+* **İlk yeniden deneme aralığı**: İlk yeniden deneme denemesinden önce bekleme süresi.
+* **Geri tepme katsayısı**: Geri tepme artış oranını belirlemek için kullanılan katsayı. Varsayılan olarak 1'dir.
+* **Maksimum yeniden deneme aralığı**: Yeniden deneme denemeleri arasında beklemek için maksimum süre.
+* **Yeniden deneme zaman ayırma**: Yeniden denemeler yaparak harcanacak maksimum zaman miktarıdır. Varsayılan davranış süresiz olarak yeniden denemektir.
+* **Tanıtıcı**: Bir işlevin yeniden denenip denenmemesi gerektiğini belirlemek için kullanıcı tanımlı geri arama belirtilebilir.
 
-## <a name="function-timeouts"></a>İşlev zaman aşımları
+## <a name="function-timeouts"></a>Fonksiyon zaman ları
 
-Bir Orchestrator işlevi içindeki bir işlev çağrısını, tamamlanamayacak kadar uzun sürerse iptal etmek isteyebilirsiniz. Bunu bugün yapmanın doğru yolu, aşağıdaki örnekte olduğu gibi `Task.WhenAny` (.NET) veya `context.df.Task.any` (JavaScript) ile birlikte `context.CreateTimer` (.NET) veya `context.df.createTimer` (JavaScript) kullanarak [dayanıklı bir Zamanlayıcı](durable-functions-timers.md) oluşturmaktır:
+Tamamlanması çok uzun sürüyorsa, bir orkestratör işlevi içindeki bir işlev çağrısını terk etmek isteyebilirsiniz. Bugün bunu yapmanın en uygun yolu, aşağıdaki `context.CreateTimer` örnekte olduğu `context.df.createTimer` gibi (.NET) `Task.WhenAny` veya (JavaScript) ile birlikte (.NET) veya `context.df.Task.any` (JavaScript) kullanarak dayanıklı bir [zamanlayıcı](durable-functions-timers.md) oluşturmaktır:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -189,9 +189,9 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 ```
 
 > [!NOTE]
-> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -218,16 +218,16 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!NOTE]
-> Bu mekanizma, devam eden etkinlik işlevi yürütmeyi gerçekten sonlandırır. Bunun yerine, Orchestrator işlevinin sonucu yok saymasına ve üzerinde hareket etmesine izin verir. Daha fazla bilgi için bkz. [zamanlayıcılar](durable-functions-timers.md#usage-for-timeout) belgeleri.
+> Bu mekanizma aslında devam eden etkinlik işlevi yürütme sona erdirmez. Bunun yerine, sadece orkestratör işlevi sonucu göz ardı etmek ve hareket sağlar. Daha fazla bilgi için [Timers](durable-functions-timers.md#usage-for-timeout) belgelerine bakın.
 
 ## <a name="unhandled-exceptions"></a>İşlenmeyen özel durumlar
 
-Orchestrator işlevi işlenmeyen bir özel durumla başarısız olursa, özel durumun ayrıntıları günlüğe kaydedilir ve örnek `Failed` durumuyla tamamlanır.
+Bir orchestrator işlevi işlenmemiş bir özel durumla başarısız olursa, özel durumun ayrıntıları `Failed` günlüğe kaydedilir ve örnek bir durumla tamamlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dış düzenlemeleri hakkında bilgi edinin](durable-functions-eternal-orchestrations.md)
+> [Ebedi orkestrasyonlar hakkında bilgi edinin](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Sorunları tanılamayı öğrenin](durable-functions-diagnostics.md)
+> [Sorunları nasıl tanılayın öğrenin](durable-functions-diagnostics.md)

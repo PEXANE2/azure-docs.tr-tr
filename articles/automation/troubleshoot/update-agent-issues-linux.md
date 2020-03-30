@@ -1,6 +1,6 @@
 ---
-title: Linux karma Runbook Worker 'ı tanılama-Azure Güncelleştirme Yönetimi
-description: Linux üzerinde Güncelleştirme Yönetimi destekleyen Azure Otomasyonu karma Runbook Worker ile ilgili sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
+title: Linux Hybrid Runbook Worker tanıla - Azure Update Management
+description: Güncelleştirme Yönetimini destekleyen Linux'taki Azure Automation Hybrid Runbook Worker ile ilgili sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -10,81 +10,81 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278304"
 ---
-# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Güncelleştirme Yönetimi için Linux karma Runbook Worker sistem durumunu anlama ve çözme
+# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Güncelleme Yönetimi için Linux Hybrid Runbook Worker sağlık durumunu anlayın ve çözümleyin
 
-Güncelleştirme Yönetimi ' de makinenizin **Ready** olarak görünmemesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır.
+Makinenizin Güncelleştirme Yönetimi'nde **Hazır'ı** göstermemenedeni olabilir. Güncelleştirme Yönetimi'nde, altta yatan sorunu belirlemek için bir Karma Runbook Worker aracısının durumunu denetleyebilirsiniz. Bu makalede, Azure portalından Azure makineleri için sorun giderici nin nasıl çalıştırılacak olduğu ve [çevrimdışı senaryoda](#troubleshoot-offline)Azure olmayan makinelerüzerinde nasıl çalıştırılacakaçık.
 
-Aşağıdaki liste, bir makinenin içinde bulunabileceği üç hazırlık durumlarından oluşan bir durum olabilir:
+Aşağıdaki liste, bir makinenin içinde olabileceği üç hazır durumtur:
 
-* **Kullanıma hazırlanıyor** -karma Runbook Worker dağıtıldı ve en son 1 saatten daha önce görüldü.
-* **Bağlantısı kesik** -karma Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
-* **Yapılandırılmadı** -karma Runbook Worker bulunamadı veya ekleme bitmedi.
-
-> [!NOTE]
-> Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
-
-## <a name="start-the-troubleshooter"></a>Sorun Gidericisi
-
-Azure makinelerinde, portalda **Güncelleştirme Aracısı hazırlığı** sütununda **sorun gider** bağlantısına tıkladığınızda **Güncelleştirme Aracısı sorunlarını gider** sayfası başlatılır. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermeye yönelik çevrimdışı yönergelere bakın.
-
-![VM Listesi Sayfası](../media/update-agent-issues-linux/vm-list.png)
+* **Hazır** - Hybrid Runbook Worker dağıtılır ve en son 1 saatten daha az bir süre önce görülmüştür.
+* **Bağlantısız** - Hybrid Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
+* **Yapılandırılmamış** - Karma Runbook Worker bulunamadı veya onboarding tamamlanmadı.
 
 > [!NOTE]
-> Denetimler VM'nin çalışıyor olması gerekir. VM çalışmıyorsa **VM 'Yi başlatmak**için bir düğme sunulur.
+> Azure portalının gösterdiği yle makinenin geçerli durumu arasında küçük bir gecikme olabilir.
 
-**Güncelleştirme Aracısı sorunlarını gider** sayfasında, sorun gidericiyi başlatmak Için **denetimleri Çalıştır**' a tıklayın. Sorun giderici, bağımlılıkları doğrulamak üzere makinede bir betiği çalıştırmak için [Run komutunu](../../virtual-machines/linux/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimleri sonucunu döndürür.
+## <a name="start-the-troubleshooter"></a>Sorun gidericiyi başlatın
 
-![Sayfa sorunlarını giderme](../media/update-agent-issues-linux/troubleshoot-page.png)
+Azure makineleri için, portaldaki **Temsilciye Hazırlık Durumunu Güncelleştir** sütunundaki **Sorun Giderme** bağlantısını tıklattığınızda **Sorun Giderme Durumu Temsilcisi** sayfası açılır. Azure olmayan makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinenin sorun gidermesini sağlamak için çevrimdışı yönergeleri görün.
 
-Tamamlandığında, sonuçları penceresinde döndürülür. Denetim bölümleri, her bir denetim için arama yapılan bilgiler sağlar.
+![vm liste sayfası](../media/update-agent-issues-linux/vm-list.png)
 
-![Windows Update Aracısı sayfa denetler.](../media/update-agent-issues-linux/update-agent-checks.png)
+> [!NOTE]
+> Denetimler VM'nin çalışmasını gerektirir. VM çalışmıyorsa **VM'yi başlatmak**için bir düğme ile sunulur.
+
+Sorun **Giderme Sorunu Giderme Aracısı** sayfasında, sorun gidericiyi başlatmak için **Denetimleri Çalıştır'ı**tıklatın. Sorun giderici, bağımlılıkları doğrulamak için makinede bir komut dosyası çalıştırmak için [Çalıştır komutunu](../../virtual-machines/linux/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
+
+![Sorun Giderme sayfası](../media/update-agent-issues-linux/troubleshoot-page.png)
+
+Tamamlandığında, sonuçlar pencerede döndürülür. Denetim bölümleri, her çekin ne aradığı hakkında bilgi sağlar.
+
+![Aracı denetimleri sayfasını güncelleştir](../media/update-agent-issues-linux/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Önkoşul denetimleri
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-İşletim sistemi denetimi, karma Runbook Worker 'ın şu Işletim sistemlerinden birini çalıştırıp çalıştırmadığını doğrular:
+İşletim sistemi denetimi, Karma Runbook Worker'ın aşağıdaki İşletim Sistemlerinden birini çalıştırıp çalıştırmayı onaylar:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır. Sınıflandırma tabanlı düzeltme eki uygulama, CentOS 'ın kutudan çıkan güvenlik verilerini döndürmesi için ' yıum ' gerektirir.         |
+|CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır. Sınıflandırma tabanlı yama, CentOS'un kutusundan çıkarıolmayan güvenlik verilerini döndürmek için 'yum' gerektirir.         |
 |Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
-|Ubuntu 14.04 LTS, 16.04 LTS ve 18.04 LTS (x86/x64)      |Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.         |
+|Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 LTS (x86/x64)      |Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.         |
 
-## <a name="monitoring-agent-service-health-checks"></a>İzleme Aracısı hizmeti sistem durumu denetimleri
+## <a name="monitoring-agent-service-health-checks"></a>Ajan hizmeti sağlık kontrollerinin izlenmesi
 
 ### <a name="log-analytics-agent"></a>Log Analytics aracısı
 
-Bu denetim, Linux için Log Analytics aracısının yüklü olmasını sağlar. Nasıl yükleneceğine ilişkin yönergeler için bkz. [Linux için aracıyı yüklemek](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
-).
+Bu denetim, Linux için Log Analytics aracısının yüklü olmasını sağlar. Nasıl yüklenir yönergeleri [için, Linux için aracıyı yükleyin](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+)bakın.
 
-### <a name="log-analytics-agent-status"></a>Log Analytics Aracısı durumu
+### <a name="log-analytics-agent-status"></a>Günlük Analytics aracısı durumu
 
-Bu denetim, Linux için Log Analytics aracısının çalışıyor olmasını sağlar. Aracı çalışmıyorsa, yeniden başlatmayı denemek için aşağıdaki komutu çalıştırabilirsiniz. Aracı sorunlarını giderme hakkında daha fazla bilgi için bkz. [Linux karma Runbook Worker sorunlarını giderme](hybrid-runbook-worker.md#linux)
+Bu denetim, Linux için Log Analytics aracısının çalışmasını sağlar. Aracı çalışmıyorsa, yeniden başlatmayı denemek için aşağıdaki komutu çalıştırabilirsiniz. Aracıyı sorun giderme hakkında daha fazla bilgi için [Linux Hybrid Runbook çalışanı sorun giderme](hybrid-runbook-worker.md#linux)
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
 ```
 
-### <a name="multihoming"></a>Birden çok giriş
+### <a name="multihoming"></a>Multihom
 
-Bu onay, aracıyı birden çok çalışma alanına raporlama olmadığını belirler. Çoklu yönlendirmeyi güncelleştirme yönetimi tarafından desteklenmiyor.
+Bu denetim, aracının birden çok çalışma alanlarına bildirimde olup olmadığını belirler. Çoklu homing Güncelleştirme Yönetimi tarafından desteklenmez.
 
 ### <a name="hybrid-runbook-worker"></a>Karma Runbook Çalışanı
 
-Bu denetim, Linux için Log Analytics aracısının karma Runbook Worker paketine sahip olup olmadığını doğrular. Bu paket çalışacak şekilde güncelleştirme yönetimi için gereklidir.
+Bu denetim, Linux için Log Analytics aracısının Hibrit Runbook Worker paketine sahip olup olmadığını doğrular. Bu paket, Güncelleştirme Yönetimi'nin çalışması için gereklidir.
 
-### <a name="hybrid-runbook-worker-status"></a>Karma Runbook çalışanı durumu
+### <a name="hybrid-runbook-worker-status"></a>Karma Runbook İşçi durumu
 
-Bu onay karma Runbook çalışanı makinede çalıştığından emin olur. Aşağıdaki işlemler, karma Runbook çalışanı düzgün çalışıyorsa mevcut olmalıdır. Daha fazla bilgi için bkz. [Linux için Log Analytics aracısında sorun giderme](hybrid-runbook-worker.md#oms-agent-not-running).
+Bu denetim, Karma Runbook Worker'ın makinede çalışmasını sağlar. Karma Runbook Worker doğru çalışıyorsa aşağıdaki işlemler bulunmalıdır. Daha fazla bilgi edinmek [için Linux için Log Analytics Agent sorun giderme bölümüne](hybrid-runbook-worker.md#oms-agent-not-running)bakın.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -92,39 +92,39 @@ nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
 ```
 
-## <a name="connectivity-checks"></a>Bağlantısı denetimleri
+## <a name="connectivity-checks"></a>Bağlantı denetimleri
 
 ### <a name="general-internet-connectivity"></a>Genel internet bağlantısı
 
-Bu onay, makinenin internet erişimi olduğundan emin olur.
+Bu denetim, makinenin interneterişimi olmasını sağlar.
 
-### <a name="registration-endpoint"></a>Kayıt uç noktası
+### <a name="registration-endpoint"></a>Kayıt bitiş noktası
 
-Bu denetim, karma runbook çalışanının Azure Otomasyonu Log Analytics çalışma alanıyla düzgün şekilde iletişim kurabildiğini belirler.
+Bu denetim, Karma Runbook Worker'ın Azure Otomasyonu ile Log Analytics çalışma alanı yla düzgün bir şekilde iletişim kurabileceğini belirler.
 
-Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı kayıt uç noktası ile iletişim kurmasına izin vermeniz gerekir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy ve güvenlik duvarı yapılandırmaları, Karma Runbook Worker aracısının kayıt bitiş noktasıyla iletişim kurmasına izin vermelidir. Açılacak adres ler ve bağlantı noktaları listesi [için, Karma Çalışanlar için Ağ planlamasına](../automation-hybrid-runbook-worker.md#network-planning) bakın
 
-### <a name="operations-endpoint"></a>İşlemleri uç noktası
+### <a name="operations-endpoint"></a>İşlemler bitiş noktası
 
-Bu onay, aracıyı düzgün bir şekilde iş çalışma zamanı veri hizmeti ile iletişim kurup kuramadığını belirler.
+Bu denetim, aracının İş Çalıştırma Zamanı Veri Hizmeti ile düzgün bir şekilde iletişim kurayıp iletilemeyebileceğini belirler.
 
-Proxy ve güvenlik duvarı yapılandırmaları karma Runbook çalışanı aracı işi çalışma zamanı veri hizmetiyle iletişim kurmasına izin vermeniz gerekir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy ve güvenlik duvarı yapılandırmaları, Karma Runbook Worker aracısının İş Çalıştırma Zamanı Veri Hizmeti ile iletişim kurmasına izin vermelidir. Açılacak adres ler ve bağlantı noktaları listesi [için, Karma Çalışanlar için Ağ planlamasına](../automation-hybrid-runbook-worker.md#network-planning) bakın
 
-### <a name="log-analytics-endpoint-1"></a>Log Analytics uç noktası 1
+### <a name="log-analytics-endpoint-1"></a>Günlük Analytics bitiş noktası 1
 
-Bu onay, makinenizin Log Analytics aracı tarafından gerekli uç noktalarına erişime sahip olduğunu doğrular.
+Bu denetim, makinenizin Log Analytics aracısının ihtiyaç duyduğu uç noktalara erişebiliyor olduğunu doğrular.
 
-### <a name="log-analytics-endpoint-2"></a>Log Analytics uç noktası 2
+### <a name="log-analytics-endpoint-2"></a>Günlük Analytics bitiş noktası 2
 
-Bu onay, makinenizin Log Analytics aracı tarafından gerekli uç noktalarına erişime sahip olduğunu doğrular.
+Bu denetim, makinenizin Log Analytics aracısının ihtiyaç duyduğu uç noktalara erişebiliyor olduğunu doğrular.
 
-### <a name="log-analytics-endpoint-3"></a>Log Analytics uç noktası 3
+### <a name="log-analytics-endpoint-3"></a>Günlük Analytics bitiş noktası 3
 
-Bu onay, makinenizin Log Analytics aracı tarafından gerekli uç noktalarına erişime sahip olduğunu doğrular.
+Bu denetim, makinenizin Log Analytics aracısının ihtiyaç duyduğu uç noktalara erişebiliyor olduğunu doğrular.
 
-## <a name="troubleshoot-offline"></a>Çevrimdışı sorun giderme
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Sorun giderme çevrimdışı
 
-Yerel olarak bir betik çalıştırarak, bir karma Runbook çalışanı üzerinde çevrimdışı sorun gidericisini kullanabilirsiniz. Python betiği, [update_mgmt_health_check. Kopyala](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) betik merkezi 'nde bulunabilir. Bu betiğin çıktının bir örneği aşağıdaki örnekte gösterilmiştir:
+Komut dosyasını yerel olarak çalıştırarak, sorunlu gidericiyi Karma Runbook Çalışanı'nda çevrimdışı olarak kullanabilirsiniz. Python komut dosyası, [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) Script Center bulunabilir. Bu komut dosyasının çıktısının bir örneği aşağıdaki örnekte gösterilmiştir:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2
@@ -179,4 +179,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Karma runbook çalışanlarınız ile ilgili diğer sorunları gidermek için bkz. [sorun giderme-karma runbook çalışanları](hybrid-runbook-worker.md).
+Karma Runbook Çalışanlarınızla ilgili ek sorunları gidermek için [Sorun Giderme - Karma Runbook İşçileri](hybrid-runbook-worker.md)konusuna bakın.

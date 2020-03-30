@@ -1,95 +1,95 @@
 ---
-title: Azure Service Fabric Izleme ve tanılama 'Ya genel bakış
-description: Azure Service Fabric kümeleri, uygulamaları ve hizmetleri için izleme ve tanılama hakkında bilgi edinin.
+title: Azure Hizmet Kumaş İzleme ve Tanılama Genel Bakış
+description: Azure Hizmet Kumaşı kümeleri, uygulamaları ve hizmetleri için izleme ve tanılama hakkında bilgi edinin.
 author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282490"
 ---
-# <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric için izleme ve tanılama
+# <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Hizmet Kumaşı için izleme ve tanılama
 
-Bu makalede, Azure Service Fabric izleme ve tanılama hakkında genel bir bakış sunulmaktadır. İzleme ve tanılama, iş yüklerini herhangi bir bulut ortamında geliştirmek, test etmek ve dağıtmak için önemlidir. Örneğin, uygulamalarınızın nasıl kullanıldığını, Service Fabric platformu tarafından gerçekleştirilen eylemleri, performans sayaçlarıyla kaynak kullanımınızı ve kümenizin genel durumunu izleyebilirsiniz. Sorunları tanılamak ve düzeltmek ve gelecekte oluşmasını önlemek için bu bilgileri kullanabilirsiniz. Sonraki birkaç bölümde, üretim iş yükleri için göz önünde bulundurulması gereken Service Fabric izlemenin her bir alanı kısaca açıklanacaktır. 
+Bu makalede, Azure Hizmet Kumaşı için izleme ve tanılama genel bir bakış sağlar. İzleme ve tanılama, iş yüklerinin herhangi bir bulut ortamında geliştirilmesi, test edilmesi ve dağıtılması açısından önemlidir. Örneğin, uygulamalarınızın nasıl kullanıldığını, Service Fabric platformu tarafından gerçekleştirilen eylemleri, performans sayaçlarıyla kaynak kullanımınızı ve kümenizin genel durumunu izleyebilirsiniz. Bu bilgileri sorunları tanılamak ve düzeltmek ve gelecekte oluşmasını önlemek için kullanabilirsiniz. Sonraki birkaç bölüm, üretim iş yüklerini göz önünde bulundurmak üzere Hizmet Kumaşı izlemenin her alanını kısaca açıklayacaktır. 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="application-monitoring"></a>Uygulama izleme
-Uygulama izleme, uygulamanızın özelliklerinin ve bileşenlerinin nasıl kullanıldığını izler. Kullanıcıları etkileyen sorunların yakalanıp yakalanbileceğinden emin olmak için uygulamalarınızı izlemek istiyorsunuz. Uygulama izlemenin sorumluluğu, uygulamanızın iş mantığıyla benzersiz olduğundan, uygulamayı ve hizmetlerini geliştiren kullanıcılar üzerinde yer alır. Uygulamalarınızı izleme, aşağıdaki senaryolarda yararlı olabilir:
-* Uygulamamda ne kadar trafik yaşanıyor? -Kullanıcı taleplerini karşılamak veya uygulamanızdaki olası bir sorunu gidermek için hizmetlerinizi ölçeklendirmeniz mi gerekiyor?
-* Hizmetmin hizmet çağrıları başarılı ve izleniyor mu?
-* Uygulamamın kullanıcıları tarafından hangi eylemler alınır? -Telemetri toplama gelecekteki Özellik geliştirmeye ve uygulama hatalarına yönelik daha iyi tanılamayı yönlendirebilir
-* Uygulamam işlenmemiş özel durumlar veriyor mu? 
-* Kapsayıcılarım içinde çalışan hizmetlerde neler oluyor?
+Uygulama izleme, uygulamanızın özelliklerinin ve bileşenlerinin nasıl kullanıldığını izler. Kullanıcıları etkileyen sorunların yakalandığından emin olmak için uygulamalarınızı izlemek istiyorsunuz. Uygulama izlemenin sorumluluğu, uygulamanızın iş mantığına özgü olduğu için bir uygulamayı ve hizmetlerini geliştiren kullanıcılara bağlıdır. Uygulamalarınızı izlemek aşağıdaki senaryolarda yararlı olabilir:
+* Uygulamamne ne kadar trafik yaşanıyor? - Hizmetlerinizi kullanıcı taleplerini karşılamak veya uygulamanızdaki olası bir darboğaza çözüm bulmak için ölçeklendirmeniz mi gerekiyor?
+* Servis çağrılarına olan hizmetim başarılı ve izleniyor mu?
+* Uygulamamın kullanıcıları tarafından hangi işlemler yapılır? - Telemetri nin toplanması gelecekteki özellik geliştirme ve uygulama hataları için daha iyi tanılama kılavuzu olabilir
+* Uygulamam işlenmemiş özel durumlar mı? 
+* Konteynerlerimin içinde çalışan hizmetlerde neler oluyor?
 
-Uygulama izlemeye ilişkin harika şeyler, geliştiricilerin uygulamanızın bağlamı dahilinde bulunduğundan beğendikleri araçları ve çerçeveyi kullanabilecekleri bir şeydir! Azure Izleyici ile uygulama izlemeye yönelik Azure çözümü hakkında daha fazla bilgi için [Application Insights Ile olay analizinde](service-fabric-diagnostics-event-analysis-appinsights.md)Application Insights.
-Ayrıca, [bunu .NET uygulamaları için nasıl ayarlayacağız](service-fabric-tutorial-monitoring-aspnet.md)hakkında bir öğretici sunuyoruz. Bu öğreticide, doğru araçların nasıl yükleneceği, uygulamanıza özel telemetri yazmanın bir örneği, uygulama tanılama ve telemetri Azure portal. 
+Uygulama izleme hakkında çok şey geliştiriciler uygulamanızın bağlamında yaşıyor bu yana istedikleri araçları ve çerçeveyi kullanabilirsiniz! Azure Monitor ile uygulama izleme için Azure çözümü hakkında daha fazla bilgi edinebilirsiniz - [Uygulama Öngörüleri ile Etkinlik analizinde Uygulama Öngörüleri.](service-fabric-diagnostics-event-analysis-appinsights.md)
+Ayrıca [.NET Applications için bu kurmak için](service-fabric-tutorial-monitoring-aspnet.md)nasıl bir öğretici var. Bu öğretici, doğru araçları nasıl yükleyip, uygulamanızda özel telemetri yazmak için bir örnek ve Azure portalında uygulama tanılama ve telemetriyi görüntüleme yi geçer. 
 
 
-## <a name="platform-cluster-monitoring"></a>Platform (küme) izleme
-Kullanıcı kodun kendisini yazmasından, ancak Service Fabric platformundan tanılama hakkında ne olduğundan, bir Kullanıcı kendi uygulamalarından hangi telemetrinin geldiğini kontrol ediyor mu? Service Fabric amaçlarından biri, uygulamaların donanım arızalarına dayanıklı tutulması için kullanılır. Bu hedef, platformun sistem hizmetlerinin altyapı sorunlarını algılama ve kümedeki diğer düğümlere hızlı yük devretme iş yüklerini algılama yeteneği aracılığıyla gerçekleştirilir. Ancak, bu durumda sistem hizmetlerinin sorun olması durumunda ne olacak? Ya da bir iş yükünü dağıtmaya veya taşımaya çalışıyorsanız, hizmetlerin yerleştirilme kuralları ihlal edilir mi? Service Fabric, kümenizde etkinlik yapma hakkında bilgi sahibi olduğunuzdan emin olmak için bu ve daha fazlası için tanılama sağlar. Küme izlemeye yönelik bazı örnek senaryolar şunlardır:
+## <a name="platform-cluster-monitoring"></a>Platform (Küme) izleme
+Bir kullanıcı kodu kendisi yazdığından, uygulamadan hangi telemetrinin geldiğini kontrol altında tutuyor, ancak Service Fabric platformundaki tanılamalar ne olacak? Service Fabric'in hedeflerinden biri, uygulamaları donanım hatalarına karşı esnek tutmaktır. Bu hedefe, platformun sistem hizmetlerinin altyapı sorunlarını algılama ve kümedeki diğer düğümlere iş yüklerinin hızla başarısız olması sayesinde ulaşılır. Ama bu özel durumda, ya sistem hizmetleri kendilerini sorunları varsa? Veya bir iş yükünü dağıtmaya veya taşımaya çalışırken, hizmetlerin yerleşimine yönelik kurallar ihlal edilir mi? Service Fabric, kümenizde gerçekleşen etkinlikler hakkında bilgilendirilmenizi sağlamak için bunlar ve daha fazlası için tanılama sağlar. Küme izleme için bazı örnek senaryolar şunlardır:
 
-Service Fabric, kutudan çıkan kapsamlı bir olay kümesi sağlar. Bu [Service Fabric olaylarına](service-fabric-diagnostics-events.md) eventstore veya işlemsel kanal (platform tarafından sunulan olay kanalı) üzerinden erişilebilir. 
+Service Fabric kutunun dışında kapsamlı bir olaylar kümesi sağlar. Bu [Hizmet Kumaşı olaylarına](service-fabric-diagnostics-events.md) EventStore veya operasyonel kanal (platform tarafından açıklanan olay kanalı) üzerinden erişilebilir. 
 
-* Service Fabric olay kanalları-Windows 'Da Service Fabric olaylar, Işletimsel ve veri & mesajlaşma kanalları arasında seçim yapmak için kullanılan bir dizi ilgili `logLevelKeywordFilters` olan tek bir ETW sağlayıcısından edinilebilir-bu, giden Service Fabric olaylarını gerektiği şekilde filtreleyebiliriz. Linux 'ta, Service Fabric olayları LTTng aracılığıyla gelir ve gerektiğinde filtrelenebilir bir depolama tablosuna konur. Bu kanallar, kümenizin durumunu daha iyi anlamak için kullanılabilen, seçkin ve yapılandırılmış olayları içerir. Tanılama, küme oluşturma sırasında varsayılan olarak etkinleştirilir. Bu, gelecekte sorgulama yapmanız için bu kanallara ait olayların gönderildiği bir Azure depolama tablosu oluşturur. 
+* Service Fabric etkinlik kanalları - Windows'da, Service Fabric etkinlikleri, Operasyonel ve `logLevelKeywordFilters` Veri & Mesajlaşma kanalları arasında seçim yapmak için kullanılan bir dizi alakalı tek bir ETW sağlayıcısından edinilebilir - bu, giden Hizmet Kumaşı olaylarını gerektiğinde filtrelenecek şekilde ayırma şeklimizdir. Linux'ta, Service Fabric olayları LTTng aracılığıyla gelir ve gerektiğinde filtrelenebildikleri tek bir Depolama tablosuna konur. Bu kanallar, kümenizin durumunu daha iyi anlamak için kullanılabilecek seçilmiş, yapılandırılmış olaylar içerir. Tanılama varsayılan olarak küme oluşturma zamanında etkinleştirilir ve bu kanallardan gelen olayların gelecekte sorgulanmanız için gönderildiği bir Azure Depolama tablosu oluşturulur. 
 
-* EventStore-EventStore, Service Fabric Explorer ve REST API aracılığıyla kullanılabilir Service Fabric platform olayları sağlayan platform tarafından sunulan bir özelliktir. Düğüm, hizmet, uygulama ve sorgu gibi her bir varlık için kümenizde neler olduğunu bir anlık görüntü görünümünü görebilirsiniz. Eventstore hakkında daha fazla bilgi için de [Eventstore 'A genel bakış konusuna](service-fabric-diagnostics-eventstore.md)bakabilirsiniz.    
+* EventStore - EventStore, Service Fabric Explorer'da ve REST API'de sunulan Service Fabric platform etkinliklerini sağlayan platform tarafından sunulan bir özelliktir. Kümenizde her bir varlık için düğüm, hizmet, uygulama ve sorgu gibi olayın zamanına bağlı olarak neler olup bittiğinin anlık görüntüsünü görebilirsiniz. Ayrıca EventStore Hakkında Daha Fazla Bilgi Için [EventStore'a Genel Bakış'](service-fabric-diagnostics-eventstore.md)ı da edinebilirsiniz.    
 
 ![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
-Verilen Tanılamalar, kutudan gelen kapsamlı bir olay kümesi biçiminde bulunur. Bu [Service Fabric olaylar](service-fabric-diagnostics-events.md) , platform tarafından düğümler, uygulamalar, hizmetler, bölümler vb. gibi farklı varlıklarda gerçekleştirilen eylemleri gösterir. Yukarıdaki son senaryoda, bir düğüm bir daha sona acaksa, platform bir `NodeDown` olayı yayar ve tercih ettiğiniz izleme aracınız tarafından anında bildirim alabilirsiniz. Diğer yaygın örneklerde, yük devretme sırasında `ApplicationUpgradeRollbackStarted` veya `PartitionReconfigured` sayılabilir. **Aynı olaylar hem Windows hem de Linux kümelerinde kullanılabilir.**
+Sağlanan tanılama kutunun dışında olaylar kapsamlı bir dizi şeklindedir. Bu [Hizmet Kumaşı olayları,](service-fabric-diagnostics-events.md) düğümler, Uygulamalar, Hizmetler, Bölümler vb. gibi farklı varlıklarda platform tarafından yapılan eylemleri gösterir. Yukarıdaki son senaryoda, bir düğüm aşağı gitmek olsaydı, platform bir `NodeDown` olay yayar ve seçtiğiniz izleme aracı tarafından hemen haberdar edilebilir. Diğer yaygın `ApplicationUpgradeRollbackStarted` örnekler `PartitionReconfigured` arasında veya bir başarısızlık sırasında yer almaktadır. **Aynı olaylar hem Windows hem de Linux kümelerinde kullanılabilir.**
 
-Olaylar hem Windows hem de Linux 'ta standart kanallar aracılığıyla gönderilir ve bunları destekleyen herhangi bir izleme aracı tarafından okunabilir. Azure Izleyici çözümü Azure Izleyici günlüklerinizi kaydeder. Kümeniz için özel bir işletimsel Pano ve uyarı oluşturabileceğiniz bazı örnek sorgular içeren [Azure izleyici günlükleri tümleştirmemi](service-fabric-diagnostics-event-analysis-oms.md) hakkında daha fazla bilgi edinebilirsiniz. [Platform düzeyi olay ve günlük oluşturma](service-fabric-diagnostics-event-generation-infra.md)konusunda daha fazla küme izleme kavramı mevcuttur.
+Olaylar hem Windows hem de Linux'taki standart kanallar aracılığıyla gönderilir ve bunları destekleyen herhangi bir izleme aracı tarafından okunabilir. Azure Monitor çözümü Azure Monitor günlükleridir. Kümeniz için özel bir çalışma panosu ve uyarılar oluşturabileceğiniz bazı örnek sorgular içeren [Azure Monitor günlükleri tümleştirmemiz](service-fabric-diagnostics-event-analysis-oms.md) hakkında daha fazla bilgi almaktan çekinmeyin. Platform düzeyinde etkinlik ve [günlük oluşturma](service-fabric-diagnostics-event-generation-infra.md)da daha fazla küme izleme konsepti mevcuttur.
 
-### <a name="health-monitoring"></a>Sistem durumunu izleme
-Service Fabric platformu, bir kümedeki varlıkların durumu için Genişletilebilir sistem durumu raporlaması sağlayan bir sistem durumu modeli içerir. Her düğüm, uygulama, hizmet, bölüm, çoğaltma veya örnek, sürekli olarak güncelleştirilebilir bir sistem durumuna sahiptir. Sistem durumu "Tamam", "uyarı" veya "hata" olabilir. Olayları, her bir varlık için sıfatıcı olarak çeşitli varlıklara ve sistem durumuna göre yapılan fiiller olarak Service Fabric düşünün. Belirli bir varlık geçişlerinin sistem durumu her seferinde bir olay da yayınlanır. Bu şekilde, diğer herhangi bir olay gibi, istediğiniz izleme aracında sistem durumu olayları için sorgular ve uyarılar ayarlayabilirsiniz. 
+### <a name="health-monitoring"></a>Sistem durumu izleme
+Service Fabric platformu, kümedeki varlıkların durumu için genişletilebilir sağlık raporlaması sağlayan bir sistem durumu modeli içerir. Her düğüm, uygulama, hizmet, bölüm, yineleme veya örnek, sürekli güncellenebilir bir sistem durumu vardır. Sistem durumu "Tamam", "Uyarı" veya "Hata" olabilir. Service Fabric olaylarını kümenin çeşitli varlıklara yaptığı fiiller ve her varlık için bir sıfat olarak düşünün. Belirli bir varlığın sağlığı her geçişte, bir olay da yayılır. Bu şekilde, diğer olaylar gibi seçtiğiniz izleme aracınızda sağlık olayları için sorgular ve uyarılar ayarlayabilirsiniz. 
 
-Ayrıca, kullanıcıların varlıklar için sistem durumunu geçersiz kılmasına de izin veririz. Uygulamanız bir yükseltmeden sonra doğrulama testleriniz başarısız olursa, uygulamanızın artık sağlıklı olmadığını belirtmek için sistem durumu API 'sini kullanarak Service Fabric sistem durumuna yazabilir ve Service Fabric yükseltmeyi otomatik olarak geri alır! Sistem durumu modeli hakkında daha fazla bilgi için, [Service Fabric sistem durumu izlemeye giriş](service-fabric-health-introduction.md) konusuna bakın
+Ayrıca, kullanıcıların varlıklar için sistem durumunu geçersiz kılmasına bile izin veririz. Uygulamanız bir yükseltmeden geçiyorsa ve doğrulama testlerinde başarısız oluyorsanız, Uygulamanızın artık sağlıklı olmadığını belirtmek için Sağlık API'sini kullanarak Service Fabric Health'e yazabilirsiniz ve Service Fabric yükseltmeyi otomatik olarak geri alacaktır! Sağlık modeli hakkında daha fazla şey için [Service Fabric sağlık izlemesine girişe](service-fabric-health-introduction.md) göz atın
 
 ![SFX sistem durumu panosu](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
 
 ### <a name="watchdogs"></a>Watchdogs
-Genellikle, bir izleme, hizmetler genelinde sistem durumunu ve yüklemeyi, ping uç noktaları ve kümedeki herhangi bir şey için rapor durumunu izleyebilecek ayrı bir hizmettir. Bu, tek bir hizmetin görünümüne göre algılanamayan hataları önlemeye yardımcı olabilir. Watchdogs, Kullanıcı etkileşimi olmadan (örneğin, belirli zaman aralıklarında depolama alanında günlük dosyalarını temizleme), düzeltici eylemleri gerçekleştiren kodu barındırmak için de iyi bir yerdir. Örnek bir izleme hizmeti uygulamasını [buradan](https://github.com/Azure-Samples/service-fabric-watchdog-service)edinebilirsiniz.
+Genellikle, bir izleme örgütü, sağlık ve hizmetler arasında yük, ping uç noktaları ve kümedeki herhangi bir şey için sağlık raporu ayrı bir hizmettir. Bu, tek bir hizmetin görünümüne dayalı olarak algılanmayacak hataları önlemeye yardımcı olabilir. Watchdogs da kullanıcı etkileşimi olmadan iyileştirici eylemler gerçekleştiren kod barındırmak için iyi bir yerdir (örneğin, belirli zaman aralıklarında depolama günlük dosyaları temizleme). [Burada](https://github.com/Azure-Samples/service-fabric-watchdog-service)bir örnek watchdog hizmet uygulaması bulabilirsiniz.
 
 ## <a name="infrastructure-performance-monitoring"></a>Altyapı (performans) izleme
-Artık uygulamanızdaki ve platformdaki tanılamayı kapsadığımıza göre, donanımın beklendiği gibi çalıştığını nasıl anlarım? Temel altyapınızı izlemek, kümenizin durumunu ve kaynak kullanımınızı anlamak için önemli bir bölümüdür. Sistem performansının ölçülmesi, iş yüklerinize bağlı olarak öznel olabilecek birçok faktöre bağlıdır. Bu faktörler genellikle performans sayaçlarıyla ölçülür. Bu performans sayaçları, işletim sistemi, .NET Framework veya Service Fabric platformunun kendisi de dahil olmak üzere çeşitli kaynaklardan gelebilir. Yararlı olabilecek bazı senaryolar şunlardır
+Başvurunuzdaki ve platformdaki tanılamaları ele aldığımıza göre, donanımın beklendiği gibi çalıştığını nasıl bileceğiz? Temel altyapınızı izlemek, kümenizin durumunu ve kaynak kullanımınızı anlamanın önemli bir parçasıdır. Sistem performansını ölçmek, iş yüklerinize bağlı olarak öznel olabilecek birçok etkene bağlıdır. Bu faktörler genellikle performans sayaçları ile ölçülür. Bu performans sayaçları işletim sistemi, .NET çerçevesi veya Service Fabric platformunun kendisi gibi çeşitli kaynaklardan gelebilir. Yararlı olacakları bazı senaryolar
 
-* Donanımım verimli bir şekilde kullanıyorum mi? Donanımınızı %90 CPU veya %10 CPU 'da kullanmak istiyor musunuz? Bu, kümenizi ölçeklendirirken veya uygulamanızın süreçlerini iyileştirirken yararlı bir şekilde sunulur.
-* Altyapı sorunlarını önceden tahmin edebilir miyim? -çok sayıda sorun önünde ani değişiklikler (düşler), bu nedenle sorunları önceden tahmin etmek ve tanılamak için ağ g/ç ve CPU kullanımı gibi performans sayaçlarını kullanabilirsiniz.
+* Donanımımı verimli bir şekilde mi kullanıyorum? Donanımınızı %90 CPU veya %10 CPU'da kullanmak istiyor musunuz? Bu, kümenizi ölçeklerken veya uygulamanızın işlemlerini optimize ederken kullanışlıdır.
+* Altyapı sorunlarını proaktif olarak tahmin edebilir miyim? - Birçok sorun performansan ani değişiklikler (düşüşler) öncesinde, bu nedenle proaktif sorunları tahmin etmek ve tanılamak için ağ G/Ç ve CPU kullanımı gibi performans sayaçları kullanabilirsiniz.
 
-Altyapı düzeyinde toplanması gereken performans sayaçlarının listesi, [performans ölçümlerinde](service-fabric-diagnostics-event-generation-perf.md)bulunabilir. 
+Altyapı düzeyinde toplanması gereken performans sayaçlarının listesi [Performans ölçümlerinde](service-fabric-diagnostics-event-generation-perf.md)bulunabilir. 
 
-Service Fabric Ayrıca, Reliable Services ve aktör programlama modelleri için bir dizi performans sayacı sağlar. Bu modellerden birini kullanıyorsanız, bu performans sayaçları Aktörlerinizin doğru bir şekilde dönmesini ve doğru şekilde işlenmesini veya güvenilir hizmet isteklerinizin yeterince hızlı işlendiğinden emin olmak için bilgi sağlayabilir. Daha fazla bilgi için bkz. Reliable Actors için [güvenilir hizmet uzaktan iletişim](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) ve [performans izleme](service-fabric-reliable-actors-diagnostics.md#performance-counters)için izleme. 
+Service Fabric ayrıca Güvenilir Hizmetler ve Aktörler programlama modelleri için bir dizi performans sayacı da sağlar. Bu modellerden birini kullanıyorsanız, bu performans sayaçları, aktörlerinizin doğru şekilde yukarı ve aşağı döndüklerinden veya güvenilir hizmet isteklerinizin yeterince hızlı ele alındığını sağlamak için bilgi verebilir. Daha fazla bilgi [için, Güvenilir Aktörler için Güvenilir Hizmet Remoting](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) ve [Performans izleme](service-fabric-reliable-actors-diagnostics.md#performance-counters)için Izleme bakın. 
 
-Bunları toplamaya yönelik Azure Izleyici çözümü, platform düzeyi izleme gibi Azure Izleyici günlüklerdir. Uygun performans sayaçlarını toplamak ve bunları Azure Izleyici günlüklerinde görüntülemek için [Log Analytics Aracısı](service-fabric-diagnostics-oms-agent.md) 'nı kullanmanız gerekir.
+Bunları toplamak için Azure Monitor çözümü, platform düzeyinde izleme gibi Azure Monitor günlükleridir. Uygun performans sayaçlarını toplamak ve Azure Monitor günlüklerinde görüntülemek için [Log Analytics aracısını](service-fabric-diagnostics-oms-agent.md) kullanmalısınız.
 
-## <a name="recommended-setup"></a>Önerilen kurulum
-İzleme ve örnek senaryolardaki her bir alanın üzerine gittiğinden, Azure izleme araçlarının bir özeti ve yukarıdaki tüm alanların izlenmesi için gereken ayarlar aşağıda verilmiştir. 
+## <a name="recommended-setup"></a>Önerilen Kurulum
+Artık her izleme ve örnek senaryo alanını ele geçirdiğimiz için, Azure izleme araçlarının bir özetini ve yukarıdaki tüm alanları izlemek için gerekli olan kurulumu burada bulabilirsiniz. 
 
-* [Application Insights](service-fabric-tutorial-monitoring-aspnet.md) ile uygulama izleme
-* [Tanılama Aracısı](service-fabric-diagnostics-event-aggregation-wad.md) ve [Azure izleyici günlükleri](service-fabric-diagnostics-oms-setup.md) ile küme izleme
-* [Azure izleyici günlükleri](service-fabric-diagnostics-oms-agent.md) ile altyapı izleme
+* [Uygulama Öngörüleri](service-fabric-tutorial-monitoring-aspnet.md) ile Uygulama İzleme
+* [Diagnostics Agent](service-fabric-diagnostics-event-aggregation-wad.md) ve [Azure Monitor günlükleriyle](service-fabric-diagnostics-oms-setup.md) küme izleme
+* Azure Monitor [günlükleri](service-fabric-diagnostics-oms-agent.md) ile altyapı izleme
 
-Ayrıca, [burada](service-fabric-diagnostics-oms-setup.md#deploy-azure-monitor-logs-with-azure-resource-manager) bulunan örnek ARM şablonunu kullanarak tüm gerekli kaynakların ve aracıların dağıtımını otomatik hale getirebilirsiniz. 
+Ayrıca, gerekli tüm kaynakların ve aracıların dağıtımını otomatikleştirmek için [burada](service-fabric-diagnostics-oms-setup.md#deploy-azure-monitor-logs-with-azure-resource-manager) bulunan örnek ARM şablonunu kullanabilir ve değiştirebilirsiniz. 
 
 ## <a name="other-logging-solutions"></a>Diğer günlük çözümleri
 
-Önerdiğimiz iki çözüm, [Azure izleyici günlükleri](service-fabric-diagnostics-event-analysis-oms.md) ve [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) Service Fabric ile birlikte tümleştirilmesine sahip olsa da, birçok olay ETW sağlayıcıları aracılığıyla yazılır ve diğer günlük çözümleriyle genişletilebilir. [Elastik yığına](https://www.elastic.co/products) (özellikle bir çevrimdışı ortamda bir küme çalıştırmayı düşünüyorsanız), [dynaTrace](https://www.dynatrace.com/)veya tercih ettiğiniz başka bir platforma da bakmanız gerekir. [Burada](service-fabric-diagnostics-partners.md)bulunan tümleşik iş ortakları listesine ihtiyacımız var.
+Önerdiğimiz iki çözüm, [Azure Monitor günlükleri](service-fabric-diagnostics-event-analysis-oms.md) ve Uygulama [Bilgileri](service-fabric-diagnostics-event-analysis-appinsights.md) Service Fabric ile tümleştirme de oluşturmuş olsa da, birçok etkinlik ETW sağlayıcıları aracılığıyla yazılır ve diğer günlük çözümleriyle genişletilebilir. Ayrıca [Elastik Yığın](https://www.elastic.co/products) (özellikle çevrimdışı bir ortamda bir küme çalıştırmayı düşünüyorsanız), [Dynatrace](https://www.dynatrace.com/)veya tercih ettiğiniz başka bir platformiçine bakmak gerekir. [Burada](service-fabric-diagnostics-partners.md)entegre ortakların bir listesi mevcuttur.
 
-Seçtiğiniz her platformun önemli noktaları, Kullanıcı arabirimi, sorgulama özellikleri, kullanılabilir özel görselleştirmeler ve panolar ve izleme deneyiminizi geliştirmek için sağladıkları ek araçların ne kadar rahat olduğunu içermelidir. 
+Seçtiğiniz herhangi bir platform için önemli noktalar, kullanıcı arabirimi, sorgulama yetenekleri, özel görselleştirmeler ve mevcut panolar ve izleme deneyiminizi geliştirmek için sağladıkları ek araçlar la ne kadar rahat olduğunuzu içermelidir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Uygulamalarınızı işaretleme ile çalışmaya başlamak için bkz. [uygulama düzeyi olay ve günlük oluşturma](service-fabric-diagnostics-event-generation-app.md).
-* [Service Fabric bir ASP.NET Core uygulamasını izleyerek](service-fabric-tutorial-monitoring-aspnet.md)uygulamanız için Application Insights ayarlama adımlarını izleyin.
-* Platformu izleme hakkında daha fazla bilgi edinin ve Service Fabric [Platform düzeyi olay ve günlük oluşturma](service-fabric-diagnostics-event-generation-infra.md)konusunda size sağlar.
-* [Bir küme Için Azure izleyici günlüklerini ayarlama](service-fabric-diagnostics-oms-setup.md) sırasında Service Fabric Ile Azure izleyici günlükleri tümleştirmesini yapılandırma
-* Azure [Service Fabric 'Da Windows kapsayıcıları için izleme ve tanılama](service-fabric-tutorial-monitoring-wincontainers.md)Için Azure izleyici günlüklerini ayarlama hakkında bilgi edinin.
-* [Yaygın senaryoları tanılamada](service-fabric-diagnostics-common-scenarios.md) Service Fabric örnek tanılama sorunlarını ve çözümlerini inceleyin
-* [Service Fabric tanılama iş ortaklarının](service-fabric-diagnostics-partners.md) Service Fabric ile tümleştirilen diğer tanılama ürünlerini inceleyin
-* Azure kaynakları için genel izleme önerileri hakkında bilgi edinin- [En Iyi Yöntemler-izleme ve tanılama](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 
+* Uygulamalarınızı enstrümantize etmeye başlamak için [Uygulama düzeyi etkinliğine ve günlük oluşturma olayına](service-fabric-diagnostics-event-generation-app.md)bakın.
+* Monitor ile uygulamanız için Uygulama Öngörüleri'ni ayarlamak [ve Service Fabric'te ASP.NET Çekirdek uygulamasını tanılamak](service-fabric-tutorial-monitoring-aspnet.md)için gereken adımları gözden geçirin.
+* [Platform düzeyinde etkinlik](service-fabric-diagnostics-event-generation-infra.md)ve günlük oluşturma da Hizmet Kumaşı'nın size sunduğu platformu ve etkinlikleri izleme hakkında daha fazla bilgi edinin.
+* Bir [küme için Azure Monitor günlüklerini Ayarlama'da](service-fabric-diagnostics-oms-setup.md) Hizmet Dokusu ile Azure Monitör günlükleri tümleştirmesini yapılandırın
+* Kapsayıcıları izlemek için Azure Monitor günlüklerini nasıl ayarlayizleyeceğinizi öğrenin - [Azure Hizmet Dokusunda Windows Kapsayıcıları için İzleme ve Tanılama](service-fabric-tutorial-monitoring-wincontainers.md).
+* [Ortak senaryoları tanılamada](service-fabric-diagnostics-common-scenarios.md) Service Fabric ile örnek tanılama sorunlarına ve çözümlerine bakın
+* [Service Fabric diagnostik ortaklarında](service-fabric-diagnostics-partners.md) Servis Kumaşı ile entegre olan diğer tanılama ürünlerine göz atın
+* Azure kaynakları için genel izleme önerileri hakkında bilgi edinin - [En İyi Uygulamalar - İzleme ve tanılama.](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) 

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform için uygulama türleri | Mavisi
-description: Microsoft Identity platform (v 2.0) uç noktası tarafından desteklenen uygulama ve senaryoların türleri.
+title: Microsoft kimlik platformu için uygulama türleri | Azure
+description: Microsoft kimlik platformu (v2.0) bitiş noktası tarafından desteklenen uygulama ve senaryo türleri.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,30 +18,30 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 94cddf097f2a9e51f061909f6bdd3dcd82f18bfe
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262535"
 ---
-# <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
+# <a name="application-types-for-microsoft-identity-platform"></a>Microsoft kimlik platformu için uygulama türleri
 
-Microsoft Identity platform (v 2.0) uç noktası, çeşitli modern uygulama mimarilerinin kimlik doğrulamasını destekler. Bu, endüstri standardı protokoller [OAuth 2,0 veya OpenID Connect](active-directory-v2-protocols.md)' i temel alır. Bu makalede, tercih ettiğiniz dil veya platformdan bağımsız olarak Microsoft Identity platform kullanarak oluşturabileceğiniz uygulama türleri açıklanmaktadır. Bilgiler, [kodla çalışmaya](v2-overview.md#getting-started)başlamadan önce üst düzey senaryoları anlamanıza yardımcı olmak için tasarlanmıştır.
+Microsoft kimlik platformu (v2.0) bitiş noktası, hepsi endüstri standardı protokolleri [OAuth 2.0 veya OpenID Connect'e](active-directory-v2-protocols.md)dayalı olarak çeşitli modern uygulama mimarileri için kimlik doğrulamasını destekler. Bu makalede, tercih ettiğiniz dil veya platformdan bağımsız olarak Microsoft kimlik platformunu kullanarak oluşturabileceğiniz uygulama türleri açıklanmaktadır. Bilgiler, [kodla çalışmaya başlamadan](v2-overview.md#getting-started)önce üst düzey senaryoları anlamanıza yardımcı olmak için tasarlanmıştır.
 
 > [!NOTE]
-> Microsoft Identity platform uç noktası, tüm Azure Active Directory (Azure AD) senaryolarını ve özelliklerini desteklemez. Microsoft Identity platform uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
+> Microsoft kimlik platformu bitiş noktası, tüm Azure Etkin Dizin (Azure AD) senaryolarını ve özelliklerini desteklemez. Microsoft kimlik platformu bitiş noktasını kullanıp kullanmadığınızı belirlemek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 ## <a name="the-basics"></a>Temel bilgiler
 
-Yeni [uygulama kayıtları portalında](https://go.microsoft.com/fwlink/?linkid=2083908)Microsoft Identity platform uç noktasını kullanan her uygulamayı kaydetmeniz gerekir. Uygulama kayıt işlemi, uygulamanız için bu değerleri toplar ve atar:
+Microsoft kimlik platformu bitiş noktasını kullanan her uygulamayı yeni [Uygulama kayıtları portalına](https://go.microsoft.com/fwlink/?linkid=2083908)kaydetmeniz gerekir. Uygulama kayıt işlemi, uygulamanız için bu değerleri toplar ve atar:
 
-* Uygulamanızı benzersiz bir şekilde tanımlayan bir **uygulama (istemci) kimliği**
-* Yanıtları uygulamanıza geri yönlendirmek için kullanabileceğiniz bir **yeniden yönlendirme URI 'si**
-* Desteklenen hesap türleri gibi diğer senaryoya özgü birkaç değer
+* Uygulamanızı benzersiz olarak tanımlayan bir **Uygulama (istemci) kimliği**
+* Yanıtları uygulamanıza yönlendirmek için kullanabileceğiniz bir **Yönlendirme URI**
+* Desteklenen hesap türleri gibi birkaç senaryoya özgü değer
 
-Ayrıntılar için, [bir uygulamayı nasıl kaydedeceğinizi](quickstart-register-app.md)öğrenin.
+Ayrıntılar [için, bir uygulamayı](quickstart-register-app.md)nasıl kaydedin öğrenin.
 
-Uygulama kaydedildikten sonra, uygulama uç noktaya istek göndererek Microsoft Identity platformu ile iletişim kurar. Bu isteklerin ayrıntılarını işleyen açık kaynaklı çerçeveler ve kitaplıklar sunuyoruz. Ayrıca, bu uç noktalara istek oluşturarak kimlik doğrulama mantığını kendiniz uygulama seçeneğiniz de vardır:
+Uygulama kaydedildikten sonra, uygulama son noktaya istekler göndererek Microsoft kimlik platformu ile iletişim kurar. Bu isteklerin ayrıntılarını işleyen açık kaynak çerçeveleri ve kitaplıklar salıyoruz. Ayrıca, bu uç noktalara istekler oluşturarak kimlik doğrulama mantığını kendiniz uygulama seçeneğiniz de vardır:
 
 ```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -50,17 +50,17 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Tek sayfalı uygulamalar (JavaScript)
 
-Birçok modern uygulama, birincil olarak JavaScript 'te yazılmış tek sayfalı bir uygulama ön ucuna sahiptir. Genellikle, angular, tepki veya Vue gibi bir çerçeve kullanılarak yazılmıştır. Microsoft Identity platform uç noktası, [OAuth 2,0 örtük akışını](v2-oauth2-implicit-grant-flow.md)kullanarak bu uygulamaları destekler.
+Birçok modern uygulama öncelikle JavaScript yazılmış bir tek sayfalı uygulama ön uç var. Genellikle, Açısal, React veya Vue gibi bir çerçeve kullanılarak yazılır. Microsoft kimlik platformu bitiş [noktası, OAuth 2.0 örtük akışını](v2-oauth2-implicit-grant-flow.md)kullanarak bu uygulamaları destekler.
 
-Bu akışta, uygulama, herhangi bir sunucudan sunucuya değiş tokuş olmadan belirteçleri doğrudan Microsoft Identity platform yetkilendirme uç noktasından alır. Tüm kimlik doğrulama mantığı ve oturum işleme, ek sayfa yeniden yönlendirmeleri olmadan tamamen JavaScript istemcisinde gerçekleşir.
+Bu akışta, uygulama herhangi bir sunucu-sunucu alışverişi olmadan, bitiş noktası yetkilendirme microsoft kimlik platformudoğrudan belirteçleri alır. Tüm kimlik doğrulama mantığı ve oturum işleme tamamen JavaScript istemcisinde, ekstra sayfa yönlendirmeleri olmadan gerçekleşir.
 
 ![Örtük kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-implicit.svg)
 
-Bu senaryoyu eylemde görmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki tek sayfalı uygulama kodu örneklerinden birini deneyin.
+Bu senaryoyu iş başında görmek için, [Microsoft kimlik platformundaki](v2-overview.md#getting-started) tek sayfalık uygulama kodu örneklerinden birini deneyin.
 
 ## <a name="web-apps"></a>Web uygulamaları
 
-Kullanıcının bir tarayıcıdan eriştiği Web uygulamaları (.NET, PHP, Java, Ruby, Python, node) için Kullanıcı oturum açma için [OpenID Connect](active-directory-v2-protocols.md) kullanabilirsiniz. OpenID Connect 'te, Web uygulaması bir KIMLIK belirteci alır. KIMLIK belirteci, kullanıcının kimliğini doğrulayan ve talep biçiminde kullanıcı hakkında bilgi sağlayan bir güvenlik belirtecidir:
+Kullanıcının tarayıcı üzerinden erişebildiği web uygulamaları (.NET, PHP, Java, Ruby, Python, Node) için [openid connect](active-directory-v2-protocols.md) kullanıcı oturum açmak için kullanabilirsiniz. OpenID Connect'te web uygulaması bir kimlik belirteci alır. Kimlik belirteci, kullanıcının kimliğini doğrulayan ve kullanıcı hakkında talep biçiminde bilgi sağlayan bir güvenlik belirtecidir:
 
 ```JSON
 // Partial raw ID token
@@ -75,21 +75,21 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Microsoft Identity platform uç noktasında kullanılan farklı belirteç türlerinin diğer ayrıntıları, [erişim belirteci](access-tokens.md) başvurusunda ve [id_token başvurusuyla](id-tokens.md) kullanılabilir
+Microsoft kimlik platformu bitiş noktasında kullanılan farklı belirteç türlerinin daha ayrıntılı ayrıntıları [erişim belirteç](access-tokens.md) başvurusu ve [id_token referans](id-tokens.md) mevcuttur
 
-Web sunucusu uygulamalarında, oturum açma kimlik doğrulama akışı şu üst düzey adımları alır:
+Web sunucusu uygulamalarında oturum açma kimlik doğrulama akışı şu üst düzey adımları atar:
 
 ![Web uygulaması kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
-KIMLIK belirtecini Microsoft Identity platform uç noktasından alınan bir ortak imzalama anahtarıyla doğrulayarak kullanıcının kimliğini sağlayabilirsiniz. Sonraki sayfa isteklerinde kullanıcıyı tanımlamak için kullanılabilen bir oturum tanımlama bilgisi ayarlanır.
+Kimlik belirteciyle Microsoft kimlik platformu bitiş noktasından alınan ortak imza anahtarıyla doğrulayarak kullanıcının kimliğini sağlayabilirsiniz. Sonraki sayfa isteklerinde kullanıcıyı tanımlamak için kullanılabilecek bir oturum çerezi ayarlanır.
 
-Bu senaryoyu eylemde görmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki Web uygulaması oturum açma kodu örneklerinden birini deneyin.
+Bu senaryoyu iş başında görmek için, [Microsoft kimlik platformundaki](v2-overview.md#getting-started) web uygulaması oturum açma kodu örneklerinden birini deneyin.
 
-Basit oturum açma 'ya ek olarak, bir Web sunucusu uygulamasının bir REST API gibi başka bir Web hizmetine erişmesi gerekebilir. Bu durumda, Web sunucusu uygulaması, [oauth 2,0 yetkilendirme kodu akışını](active-directory-v2-protocols.md)kullanarak birleştirilmiş bir OpenID Connect ve OAuth 2,0 akışında yer geçirir. Bu senaryo hakkında daha fazla bilgi için [Web uygulamaları ve Web API 'leri ile çalışmaya başlama](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)konusunu okuyun.
+Basit oturum açmanın yanı sıra, bir web sunucusu uygulamasının REST API gibi başka bir web hizmetine erişmeleri gerekebilir. Bu durumda, web sunucusu uygulaması [OAuth 2.0 yetkilendirme kodu akışını](active-directory-v2-protocols.md)kullanarak, birleşik bir OpenID Connect ve OAuth 2.0 akışı yürüter. Bu senaryo hakkında daha fazla bilgi [için, web uygulamaları ve Web API'ları ile başlamak](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)hakkında okuyun.
 
 ## <a name="web-apis"></a>Web API'leri
 
-Uygulamanızın daha fazla Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platform uç noktasını kullanabilirsiniz. Web API 'Leri çeşitli platformlarda ve dillerde uygulanabilir. Bunlar, Azure Işlevleri 'nde HTTP Tetikleyicileri kullanılarak da uygulanabilir. Bir Web API 'si, KIMLIK belirteçleri ve oturum tanımlama bilgileri yerine, verilerini güvenli hale getirmek ve gelen isteklerin kimliğini doğrulamak için bir OAuth 2,0 erişim belirteci kullanır. Bir Web API 'SI çağıranı, bir HTTP isteğinin yetkilendirme üst bilgisine, şunun gibi bir erişim belirteci ekler:
+Uygulamanızın yenilenebilir Web API'si gibi web hizmetlerini güvenli hale getirmek için Microsoft kimlik platformu bitiş noktasını kullanabilirsiniz. Web API'leri çok sayıda platform ve dilde uygulanabilir. Azure İşletmeleri'nde HTTP Tetikleyicileri kullanılarak da uygulanabilirler. Kimlik belirteçleri ve oturum çerezleri yerine, Web API'si verilerini güvence altına almak ve gelen istekleri doğrulamak için Bir OAuth 2.0 erişim belirteci kullanır. Bir Web API'sini arayan kişi, bir HTTP isteğinin yetkilendirme üstbilgisinde aşağıdaki gibi bir erişim belirteci ekler:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -99,32 +99,32 @@ Accept: application/json
 ...
 ```
 
-Web API 'SI, API çağıranın kimliğini doğrulamak ve erişim belirtecinde kodlanmış taleplerden arayan hakkında bilgi ayıklamak için erişim belirtecini kullanır. Microsoft Identity platform uç noktasında kullanılan farklı belirteç türlerinin diğer ayrıntıları, [erişim belirteci](access-tokens.md) başvurusu ve [id_token](id-tokens.md) başvurusu ' nda bulunabilir.
+Web API, API arayanın kimliğini doğrulamak ve erişim belirtecinde kodlanmış olan taleplerden arayan hakkında bilgi ayıklamak için erişim belirteci kullanır. Microsoft kimlik platformu bitiş noktasında kullanılan farklı belirteç türlerinin daha ayrıntılı [ayrıntıları, access token](access-tokens.md) başvurusu ve [id_token](id-tokens.md) başvuruda kullanılabilir.
 
-Bir Web API 'SI, kullanıcıların belirli işlevleri veya verileri kabul etmek veya devre dışı bırakmak için [kapsam](v2-permissions-and-consent.md)olarak da bilinen izinleri verebilir. Çağıran bir uygulamanın bir kapsama izin almaları için, Kullanıcı bir akış sırasında kapsamı kabul etmelidir. Microsoft Identity platform uç noktası kullanıcıdan izin ister ve sonra Web API 'sinin aldığı tüm erişim belirteçlerinde izinleri kaydeder. Web API 'SI her çağrıda aldığı erişim belirteçlerini doğrular ve yetkilendirme denetimleri gerçekleştirir.
+Web API, kullanıcılara [kapsam](v2-permissions-and-consent.md)olarak da bilinen izinleri açığa çıkararak belirli işlevleri veya verileri devre dışı bırakma veya devre dışı bırakma gücü verebilir. Bir arama uygulamasının kapsam için izin alabilmesi için, kullanıcının akış sırasında kapsamı kabul etmesi gerekir. Microsoft kimlik platformu bitiş noktası kullanıcıdan izin ister ve ardından Web API'nın aldığı tüm erişim belirteçlerinde izinleri kaydeder. Web API, her çağrıda aldığı erişim belirteçlerini doğrular ve yetkilendirme denetimleri gerçekleştirir.
 
-Web API 'SI, Web sunucusu uygulamaları, masaüstü ve mobil uygulamalar, tek sayfalı uygulamalar, sunucu tarafı Daemon 'ları ve hatta diğer Web API 'Leri dahil olmak üzere her türden uygulama için erişim belirteçleri alabilir. Bir Web API 'SI için üst düzey akış şöyle görünür:
+Web API'si, web sunucusu uygulamaları, masaüstü ve mobil uygulamalar, tek sayfalı uygulamalar, sunucu tarafındaki daemon'lar ve hatta diğer Web API'leri dahil olmak üzere her tür uygulamadan erişim belirteçleri alabilir. Bir Web API'si için üst düzey akış aşağıdaki gibi görünür:
 
 ![Web API kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-OAuth2 erişim belirteçlerini kullanarak bir Web API 'sinin güvenliğini sağlama hakkında bilgi edinmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki Web API 'si kod örneklerine bakın.
+OAuth2 erişim belirteçlerini kullanarak Bir Web API'sini nasıl güvenli hale getirebilirsiniz öğrenmek için, [Microsoft kimlik platformundaki](v2-overview.md#getting-started) Web API kod örneklerine göz atın.
 
-Çoğu durumda, Web API 'Lerinin Microsoft Identity platform tarafından güvenliği sağlanmış diğer aşağı akış Web API 'Lerine giden istekler de yapması gerekir. Bunu yapmak için Web API 'Leri, Web API 'sinin giden isteklerde kullanılacak başka bir erişim belirtecinin gelen erişim belirtecini değiş tokuş etmesine olanak **tanıyan akışdan** faydalanabilir. Daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0-adına akışı](v2-oauth2-on-behalf-of-flow.md).
+Çoğu durumda, web API'leri de Microsoft kimlik platformu tarafından güvenli diğer downstream web API'lerine giden isteklerde bulunmak gerekir. Bunu yapmak için, web API'ler, web API'nin gelen erişim jetonunu giden isteklerde kullanılmak üzere başka bir erişim belirteciyle değiştirmesine olanak tanıyan **On-Behalf-Of** akışından yararlanabilir. Daha fazla bilgi için [Microsoft kimlik platformu ve OAuth 2.0 On-Behalf-Of akışına](v2-oauth2-on-behalf-of-flow.md)bakın.
 
 ## <a name="mobile-and-native-apps"></a>Mobil ve yerel uygulamalar
 
-Mobil ve Masaüstü uygulamaları gibi cihaza yüklenmiş uygulamalar, genellikle veri depolayan ve Kullanıcı adına işlevler gerçekleştiren arka uç hizmetlerine veya Web API 'Lerine erişmesi gerekir. Bu uygulamalar, [OAuth 2,0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanarak arka uç hizmetleri için oturum açma ve yetkilendirme ekleyebilirler.
+Mobil ve masaüstü uygulamaları gibi aygıtyüklü uygulamaların genellikle verileri depolayan ve kullanıcı adına işlevleri gerçekleştiren arka uç hizmetlere veya Web API'lerine erişmeleri gerekir. Bu [uygulamalar, OAuth 2.0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanarak arka uç hizmetlerine oturum açma ve yetkilendirme ekleyebilir.
 
-Bu akışta, uygulama, Kullanıcı oturum açtığında Microsoft Identity platform uç noktasından bir yetkilendirme kodu alır. Yetkilendirme kodu, uygulamanın oturum açmış olan kullanıcı adına arka uç hizmetlerini çağırma iznini temsil eder. Uygulama, bir OAuth 2,0 erişim belirteci ve yenileme belirteci için arka planda yetkilendirme kodunu değiş tokuş edebilir. Uygulama, HTTP isteklerindeki Web API 'Lerinde kimlik doğrulaması yapmak için erişim belirtecini kullanabilir ve eski erişim belirteçlerinin süre dolduğunda yeni erişim belirteçleri almak için yenileme belirtecini kullanabilir.
+Bu akışta, kullanıcı giriş yaptığında uygulama Microsoft kimlik platformu bitiş noktasından bir yetkilendirme kodu alır. Yetkilendirme kodu, uygulamanın oturum açmış olan kullanıcı adına arka uç hizmetleri arama iznini temsil eder. Uygulama, arka plandaki yetkilendirme kodunu OAuth 2.0 erişim jetonu ve yenileme belirteciyle değiştirebilir. Uygulama, http isteklerinde Web API'lerine kimlik doğrulamak için erişim belirteci'ni kullanabilir ve eski erişim belirteçlerinin süresi dolduğunda yeni erişim belirteçleri almak için yeni belirteci kullanabilir.
 
 ![Yerel uygulama kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-native.svg)
 
-## <a name="daemons-and-server-side-apps"></a>Daemon 'ları ve sunucu tarafı uygulamalar
+## <a name="daemons-and-server-side-apps"></a>Daemons ve sunucu tarafı uygulamaları
 
-Uzun süre çalışan işlemlere sahip olan veya Kullanıcı etkileşimi olmadan çalışan uygulamalar, Web API 'Leri gibi güvenli kaynaklara erişmek için de bir yönteme ihtiyaç duyar. Bu uygulamalar, OAuth 2,0 istemci kimlik bilgileri akışı ile kullanıcının temsilci kimliği yerine uygulamanın kimliğini kullanarak belirteçleri doğrulayabilir ve belirteçlere alabilir. Uygulamanın kimliğini bir istemci gizli dizisi veya sertifikası kullanarak kanıtlayabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Identity platform kullanarak .NET Core Daemon konsol uygulaması](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2).
+Uzun süren süreçleri olan veya kullanıcıyla etkileşim olmadan çalışan uygulamaların, Web API'leri gibi güvenli kaynaklara erişmek için de bir yol göstermesi gerekir. Bu uygulamalar, OAuth 2.0 istemci kimlik bilgileri akışıyla, kullanıcının temsilci kimliği yerine uygulamanın kimliğini kullanarak kimlik doğrulaması yapabilir ve belirteçleri alabilir. Bir istemci sırrı veya sertifika kullanarak uygulamanın kimliğini kanıtlayabilirsiniz. Daha fazla bilgi için [Microsoft kimlik platformlarını kullanarak .NET Core daemon konsol uygulamasına](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)bakın.
 
-Bu akışta, uygulama, erişim elde etmek için `/token` uç noktasıyla doğrudan etkileşime girer:
+Bu akışta, uygulama erişim elde `/token` etmek için bitiş noktası ile doğrudan etkileşime:
 
 ![Daemon uygulaması kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
-Bir Daemon uygulaması oluşturmak için [istemci kimlik bilgileri belgelerine](v2-oauth2-client-creds-grant-flow.md)bakın veya bir [.NET örnek uygulaması](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)deneyin.
+Daemon uygulaması oluşturmak için [istemci kimlik bilgileri belgelerine](v2-oauth2-client-creds-grant-flow.md)bakın veya [bir .NET örnek uygulamasını](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)deneyin.

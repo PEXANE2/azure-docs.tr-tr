@@ -1,6 +1,6 @@
 ---
-title: İzleme ve günlüğe kaydetme Azure Data Box, Azure Data Box Heavy olayları | Microsoft Docs
-description: Azure Data Box ve Azure Data Box Heavy siparişinizin çeşitli aşamalarda olayların nasıl izleneceğini ve günlüğe alınacağını açıklar.
+title: Azure Veri Kutusu, Azure Veri Kutusu Ağır etkinlikleri izleme ve kaydetme| Microsoft Dokümanlar
+description: Azure Veri Kutusu ve Azure Veri Kutusu Ağır siparişinizin çeşitli aşamalarında etkinlikleri nasıl izleyip günlüğe kaydedin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,79 +9,79 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260026"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy için izleme ve olay günlüğü
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Veri Kutunuz ve Azure Veri Kutusu Ağır'ınız için izleme ve olay günlüğü
 
-Bir Data Box veya Data Box Heavy sırası şu adımlardan geçer: sipariş, ayarlama, veri kopyalama, döndürme, Azure 'a yükleme ve doğrulama ve veri Erimi. Siparişteki her adıma karşılık gelen, sıraya erişimi denetlemek, olayları denetlemek, siparişi izlemek ve oluşturulan çeşitli günlükleri yorumlamak için birden çok eylem gerçekleştirebilirsiniz.
+Veri Kutusu veya Veri Kutusu Ağır siparişi aşağıdaki adımlardan geçer: sipariş verme, ayarlama, veri kopyalama, iade, Azure'a yükleme ve doğrulama ve veri silme. Sırayla her adıma karşılık gelir, siparişe erişimi denetlemek, olayları denetlemek, siparişi izlemek ve oluşturulan çeşitli günlükleri yorumlamak için birden çok eylem de yapabilirsiniz.
 
-Aşağıdaki tabloda Data Box veya Data Box Heavy sipariş adımlarının bir özeti ve her adım sırasında sırayı izlemek ve denetlemek için kullanılabilen araçlar gösterilmektedir.
+Aşağıdaki tablo, Veri Kutusu veya Veri Kutusu Ağır sipariş adımlarının bir özetini ve her adımda siparişi izlemek ve denetlemek için kullanılabilen araçları gösterir.
 
-| Data Box sipariş aşaması       | İzlenecek ve denetlenecek araç                                                                        |
+| Veri Kutusu sipariş aşaması       | Takip ve denetim aracı                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Sipariş oluştur               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order)                                                    |
-| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portalı </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
-| Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)                                              |
-| Cihaza veri kopyalama        | Veri kopyası için [ *Error. xml* dosyalarını görüntüle](#view-error-log-during-data-copy)                                                             |
-| Göndermeye hazırlama            | Cihazdaki [bom dosyalarını](#inspect-bom-during-prepare-to-ship) veya bildirim dosyalarını inceleyin                                      |
-| Azure 'a veri yükleme       | Azure veri merkezinde karşıya veri yükleme sırasında oluşan hataları [kopyalama günlüklerini gözden geçirme](#review-copy-log-during-upload-to-azure)                         |
-| Cihazdan veri ernure   | Denetim günlükleri ve sıra geçmişi dahil [, gözetim günlüklerinin zincirini görüntüleme](#get-chain-of-custody-logs-after-data-erasure)                |
+| Sipariş oluşturma               | [RBAC üzerinden siparişte erişim denetimi ayarlama](#set-up-access-control-on-the-order)                                                    |
+| Sipariş işlendi            | [Siparişi izleme](#track-the-order) <ul><li> Azure portalında </li><li> Nakliye taşıyıcı web sitesi </li><li>E-posta bildirimleri</ul> |
+| Cihazı ayarlama              | [Etkinlik günlüklerinde](#query-activity-logs-during-setup) oturum açan aygıt kimlik bilgileri                                              |
+| Aygıta veri kopyalama        | Veri kopyalama için [ *error.xml* dosyalarını görüntüleme](#view-error-log-during-data-copy)                                                             |
+| Göndermeye hazırlama            | [Cihazdaki BOM dosyalarını](#inspect-bom-during-prepare-to-ship) veya bildirim dosyalarını inceleyin                                      |
+| Azure'a veri yükleme       | Azure veri merkezinde veri yükleme sırasında hatalar için [kopyalama günlüklerini gözden geçirme](#review-copy-log-during-upload-to-azure)                         |
+| Cihazdan veri silme   | Denetim günlükleri ve sipariş geçmişi de dahil olmak üzere [gözetim günlükleri zincirini görüntüleme](#get-chain-of-custody-logs-after-data-erasure)                |
 
-Bu makalede, Data Box veya Data Box Heavy sırasını izlemek ve denetlemek için kullanılabilen çeşitli mekanizmalar veya araçların ayrıntıları açıklanmaktadır. Bu makaledeki bilgiler, Data Box ve Data Box Heavy için geçerlidir. Sonraki bölümlerde, Data Box yapılan tüm başvurular Data Box Heavy için de geçerlidir.
+Bu makalede, Veri Kutusu veya Veri Kutusu Ağır siparişizlemek ve denetlemek için çeşitli mekanizmalar veya araçlar ayrıntılı olarak açıklanır. Bu makaledeki bilgiler her ikisi için de geçerlidir, Veri Kutusu ve Veri Kutusu Ağır. Sonraki bölümlerde, Veri Kutusu'na yapılan tüm başvurular Data Box Heavy için de geçerlidir.
 
-## <a name="set-up-access-control-on-the-order"></a>Sıraya göre erişim denetimi ayarlama
+## <a name="set-up-access-control-on-the-order"></a>Siparişte erişim denetimini ayarlama
 
-Sipariş ilk oluşturulduğunda, siparişinizi kimlerin erişebileceğini kontrol edebilirsiniz. Data Box sırasına erişimi denetlemek için çeşitli kapsamlardaki rol tabanlı Access Control (RBAC) rolleri ayarlayın. RBAC rolü, erişim türünü, okuma-yazma, salt okunurdur, okuma-yazma işlemlerini bir işlem alt kümesine belirler.
+Sipariş ilk oluşturulduğunda siparişinize kimlerin erişebileceğini kontrol edebilirsiniz. Veri Kutusu siparişine erişimi denetlemek için çeşitli kapsamlarda Rol tabanlı Erişim Denetimi (RBAC) rolleri ayarlayın. RBAC rolü erişim türünü belirler – okuma-yazma, salt okunur, bir işlem alt kümesine okuma-yazma.
 
-Azure Data Box hizmeti için tanımlanabilir iki rol şunlardır:
+Azure Veri Kutusu hizmeti için tanımlanabilecek iki rol şunlardır:
 
-- **Data Box okuyucu** -kapsam tarafından tanımlanan bir sıraya (ler) salt okuma erişimi vardır. Yalnızca bir siparişin ayrıntılarını görüntüleyebilirler. Depolama hesaplarıyla ilgili diğer ayrıntılara erişemez veya adres gibi sipariş ayrıntılarını düzenleyebilir.
-- **Katkıda bulunan Data Box** -yalnızca *bir depolama hesabına yazma erişimi varsa,* verileri belirli bir depolama hesabına aktarmak için bir sipariş oluşturulabilir. Bir depolama hesabına erişimi yoksa, verileri hesaba kopyalamak için bile Data Box bir sıra oluşturamazlar. Bu rol, depolama hesabı ile ilgili herhangi bir izin tanımlamaz ve depolama hesaplarına erişim verir.  
+- **Veri Kutusu Okuyucu** - kapsamı tarafından tanımlanan bir sipariş(ler) için salt okunur erişim var. Yalnızca siparişin ayrıntılarını görüntüleyebilirler. Depolama hesaplarıyla ilgili diğer ayrıntılara erişemez veya adres ve benzeri sipariş ayrıntılarını düzenemezler.
+- **Veri Kutusu Katılımcısı** - yalnızca bir *depolama hesabına yazma erişimi varsa,* yalnızca belirli bir depolama hesabına veri aktarmak için bir sipariş oluşturabilir. Bir depolama hesabına erişimleri yoksa, verileri hesaba kopyalamak için veri kutusu sırası bile oluşturamaz. Bu rol, Depolama hesabıyla ilgili izinleri tanımlamaz veya depolama hesaplarına erişim izni vermez.  
 
-Erişimi bir siparişle kısıtlamak için şunları yapabilirsiniz:
+Bir siparişe erişimi kısıtlamak için şunları yapabilirsiniz:
 
-- Bir rolü bir sıra düzeyinde atayın. Kullanıcı yalnızca, roller tarafından tanımlanan yalnızca bu Data Box sipariş ve başka hiçbir şey ile etkileşim kurmak üzere bu izinlere sahiptir.
-- Kaynak grubu düzeyinde bir rol atama, kullanıcının bir kaynak grubundaki tüm Data Box emirlerine erişimi vardır.
+- Sipariş düzeyinde bir rol atayın. Kullanıcı, yalnızca belirli Veri Kutusu sırası ile etkileşimde bulunan roller tarafından tanımlanan bu izinlere sahiptir ve başka bir şey yoktur.
+- Kaynak grubu düzeyinde bir rol atayın, kullanıcı bir kaynak grubu içindeki tüm Veri Kutusu siparişlerine erişebilir.
 
-Önerilen RBAC kullanımı hakkında daha fazla bilgi için bkz. [RBAC Için en iyi uygulamalar](../role-based-access-control/overview.md#best-practice-for-using-rbac).
+Önerilen RBAC kullanımı hakkında daha fazla bilgi [için RBAC için en iyi uygulamalara](../role-based-access-control/overview.md#best-practice-for-using-rbac)bakın.
 
 ## <a name="track-the-order"></a>Siparişi izleme
 
-Siparişinizi Azure portal ve sevkiyat taşıyıcısı Web sitesi aracılığıyla izleyebilirsiniz. Data Box sırayı istediğiniz zaman izlemek için aşağıdaki mekanizmalar bulunur:
+Siparişinizi Azure portalı ndan ve gönderi operatörü web sitesinden takip edebilirsiniz. Veri Kutusu siparişini herhangi bir zamanda izlemek için aşağıdaki mekanizmalar devreye sayılmaktadır:
 
-- Cihazın Azure veri merkezinde veya şirket içinde olduğu sırayı izlemek için, Azure portal ' **e genel bakış > Data Box siparişiniz** sayfasına gidin.
+- Aygıt Azure veri merkezinde veya binanızdayken siparişi izlemek için, Azure portalında **Genel Bakış > Veri Kutusu siparişinize** gidin.
 
-    ![Sipariş durumunu görüntüleme ve izleme No](media/data-box-logs/overview-view-status-1.png)
+    ![Sipariş durumunu görüntüleme ve izleme yok](media/data-box-logs/overview-view-status-1.png)
 
-- Cihaz aktarım sırasında sırayı izlemek için, bölgesel taşıyıcı Web sitesine gidin, örneğin, ABD 'deki UPS Web sitesi. Siparişinizin ilişkili izleme numarasını girin.
-- Data Box, siparişin oluşturulduğu sırada belirtilen e-postalara göre her zaman e-posta bildirimleri de gönderir. Tüm Data Box sipariş durumlarının listesi için bkz. [Order Status görüntüleme durumu](data-box-portal-admin.md#view-order-status). Siparişle ilişkili bildirim ayarlarını değiştirmek için bkz. [bildirim ayrıntılarını düzenleme](data-box-portal-admin.md#edit-notification-details).
+- Cihaz geçiş sırasında siparişi izlemek için, örneğin ABD'deki UPS web sitesi gibi bölgesel taşıyıcı web sitesine gidin. Siparişinizle ilişkili izleme numarasını sağlayın.
+- Veri Kutusu, sipariş oluşturulduğunda sağlanan e-postalara bağlı olarak sipariş durumu değiştiğinde e-posta bildirimleri de gönderir. Tüm Veri Kutusu sipariş durumlarının listesi için [bkz.](data-box-portal-admin.md#view-order-status) Siparişle ilişkili bildirim ayarlarını değiştirmek için [bildirim ayrıntılarını düzenle'ye](data-box-portal-admin.md#edit-notification-details)bakın.
 
-## <a name="query-activity-logs-during-setup"></a>Kurulum sırasında sorgu etkinliği günlükleri
+## <a name="query-activity-logs-during-setup"></a>Kurulum sırasında etkinlik günlüklerini sorgula
 
-- Data Box, şirket içinde kilitli bir durumda ulaşır. Azure portal için kullanılabilir cihaz kimlik bilgilerini siparişiniz için kullanabilirsiniz.  
+- Veri Kutunuz binanıza kilitli bir durumda gelir. Siparişiniz için Azure portalında bulunan aygıt kimlik bilgilerini kullanabilirsiniz.  
 
-    Bir Data Box ayarlandığında, cihaz kimlik bilgilerine kimlerin eriştiğini bilmeniz gerekebilir. **Cihaz kimlik bilgileri** dikey penceresine kimin eriştiğini anlamak için etkinlik günlüklerini sorgulayabilirsiniz.  **Cihaz ayrıntılarına > kimlik bilgileri** dikey penceresine erişmeyi içeren herhangi bir eylem, etkinlik günlüklerine `ListCredentials` eylem olarak kaydedilir.
+    Bir Veri Kutusu ayarlandığında, aygıt kimlik bilgilerine kimin eriştedildiğini bilmeniz gerekebilir. **Aygıt kimlik bilgilerine** kimin eriştüğüni bulmak için Etkinlik günlüklerini sorgulayabilirsiniz.  **Aygıt ayrıntılarına > Kimlik Bilgileri** blade'ine erişmesini içeren `ListCredentials` herhangi bir eylem eylem olarak etkinlik günlüklerine kaydedilir.
 
     ![Etkinlik günlüklerini sorgulama](media/data-box-logs/query-activity-log-1.png)
 
-- Data Box her oturum, gerçek zamanlı olarak günlüğe kaydedilir. Ancak, bu bilgiler yalnızca, sipariş başarıyla tamamlandıktan sonra [Denetim günlüklerinde](#audit-logs) kullanılabilir.
+- Veri Kutusu'ndaki her işaret gerçek zamanlı olarak kaydedilir. Ancak, bu bilgiler yalnızca sipariş başarıyla tamamlandıktan sonra [Denetim günlüklerinde](#audit-logs) kullanılabilir.
 
-## <a name="view-error-log-during-data-copy"></a>Veri kopyalama sırasında hata günlüğünü görüntüle
+## <a name="view-error-log-during-data-copy"></a>Veri kopyalama sırasında hata günlüğünü görüntüleme
 
-Data Box veya Data Box Heavy veri kopyalama sırasında, kopyalandığı verilerle ilgili herhangi bir sorun varsa bir hata dosyası oluşturulur.
+Veri Kutusu veya Veri Kutusu Ağır'a kopyalanması sırasında, kopyalanan verilerle ilgili herhangi bir sorun varsa bir hata dosyası oluşturulur.
 
-### <a name="errorxml-file"></a>Error. xml dosyası
+### <a name="errorxml-file"></a>Hata.xml dosyası
 
-Kopyalama işlerinin hatasız bitdiğinizden emin olun. Kopyalama işlemi sırasında hatalar varsa, **Bağlan ve Kopyala** sayfasından günlükleri indirin.
+Kopyalama işlerinin hiçbir hata olmadan tamamlandığından emin olun. Kopyalama işlemi sırasında hatalar varsa, günlükleri **Bağlan ve kopyala** sayfasından indirin.
 
-- 512 bayt olmayan bir dosyayı Data Box bir yönetilen disk klasörüne kopyaladıysanız, dosya hazırlama depolama hesabınıza Sayfa Blobu olarak yüklenmeyecektir. Günlüklerde bir hata görürsünüz. Dosyayı kaldırın ve 512 bayt hizalı bir dosyayı kopyalayın.
-- Bir VHDX veya bir Dinamik VHD veya bir fark kayıt VHD 'SI (Bu dosyalar desteklenmiyorsa) kopyaladıysanız günlüklerde bir hata görürsünüz.
+- Veri Kutunuzdaki yönetilen bir disk klasörüne hizalanmış 512 bayt olmayan bir dosyayı kopyaladıysanız, dosya evreleme depolama hesabınıza sayfa blob olarak yüklenmez. Günlüklerde bir hata görürsünüz. Dosyayı kaldırın ve 512 bayt hizalanmış bir dosyayı kopyalayın.
+- Bir VHDX veya dinamik bir VHD veya farklı bir VHD (bu dosyalar desteklenmez) kopyaladıysanız, günlüklerde bir hata görürsünüz.
 
-Yönetilen disklere kopyalarken farklı hatalar için *Error. xml* örneği aşağıda verilmiştir.
+Burada yönetilen disklere kopyalanırken farklı hatalar için *hata.xml* bir örnektir.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +90,7 @@ Yönetilen disklere kopyalarken farklı hatalar için *Error. xml* örneği aşa
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Sayfa bloblarına kopyalanırken farklı hatalar için *Error. xml* örneği aşağıda verilmiştir.
+Burada *hata.xml* farklı hatalar için bir örnek sayfa blobs kopyalanırken.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +101,7 @@ Sayfa bloblarına kopyalanırken farklı hatalar için *Error. xml* örneği aş
 ```
 
 
-Blok bloblarına kopyalanırken farklı hatalar için *Error. xml* örneği aşağıda verilmiştir.
+Burada blobs engellemek için kopyalama yaparken farklı hatalar için *hata.xml* bir örnektir.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +129,7 @@ Blok bloblarına kopyalanırken farklı hatalar için *Error. xml* örneği aşa
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Azure dosyalarına kopyalanırken farklı hatalar için *Error. xml* dosyasının bir örneği aşağıda verilmiştir.
+Azure Dosyaları'na kopyalanırken farklı hatalar için *hata.xml* örneği aşağıda verilmiştir.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -147,31 +147,31 @@ Azure dosyalarına kopyalanırken farklı hatalar için *Error. xml* dosyasını
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-Yukarıdaki her bir durumda, sonraki adıma geçmeden önce hataları çözün. SMB veya NFS protokolleri aracılığıyla Data Box veri kopyalama sırasında alınan hatalar hakkında daha fazla bilgi için, [sorun giderme Data Box ve Data Box Heavy sorunları](data-box-troubleshoot.md)bölümüne gidin. REST aracılığıyla Data Box veri kopyalama sırasında alınan hatalar hakkında bilgi için, [BLOB depolama sorunlarını Data Box sorun giderme](data-box-troubleshoot-rest.md)bölümüne gidin.
+Yukarıdaki durumların her birinde, bir sonraki adıma geçmeden önce hataları çözümleyin. SMB veya NFS protokolleri aracılığıyla Veri Kutusu'na kopyalanırken alınan hatalar hakkında daha fazla bilgi [için, Sorun Giderme Veri Kutusu ve Veri Kutusu Ağır sorunları'na](data-box-troubleshoot.md)gidin. REST üzerinden Veri Kutusu'na kopyalanırken alınan hatalar hakkında bilgi [için, Sorun Giderme Veri Kutusu Blob depolama sorunları](data-box-troubleshoot-rest.md)'na gidin.
 
-## <a name="inspect-bom-during-prepare-to-ship"></a>Sevk hazırlığı sırasında ürün reçetesini İncele
+## <a name="inspect-bom-during-prepare-to-ship"></a>Gemiye hazırlanma sırasında BOM'u inceleyin
 
-Gönderim hazırlığı sırasında, ürün reçeteleri (BOM) veya bildirim dosyası olarak bilinen dosyaların listesi oluşturulur.
+Gemiye hazırlanma sırasında, Malzeme Faturası (BOM) veya manifesto dosyası olarak bilinen dosyaların bir listesi oluşturulur.
 
-- Gerçek adlara ve Data Box kopyalanan dosya sayısına karşı doğrulamak için bu dosyayı kullanın.
-- Dosyaların gerçek boyutlarına karşı doğrulamak için bu dosyayı kullanın.
-- *Crc64* sıfır olmayan bir dizeye karşılık geldiğini doğrulayın. <!--A null value for crc64 indicates that there was a reparse point error)-->
+- Veri Kutusuna kopyalanan gerçek adları ve dosya sayısını doğrulamak için bu dosyayı kullanın.
+- Dosyaların gerçek boyutlarını doğrulamak için bu dosyayı kullanın.
+- *CRC64'ün* sıfır olmayan bir dizeyle karşılık geldiğini doğrulayın. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-Gönderim hazırlığı sırasında alınan hatalar hakkında daha fazla bilgi için [Data Box sorun giderme ve Data Box Heavy sorunları](data-box-troubleshoot.md)bölümüne gidin.
+Gönderiye hazırlanma sırasında alınan hatalar hakkında daha fazla bilgi [için, Sorun Giderme Veri Kutusu ve Veri Kutusu Ağır sorunları](data-box-troubleshoot.md)na gidin.
 
-### <a name="bom-or-manifest-file"></a>Ürün reçetesi veya bildirim dosyası
+### <a name="bom-or-manifest-file"></a>BOM veya manifesto dosyası
 
-BOM veya manifest dosyası, Data Box cihazına kopyalanan tüm dosyaların listesini içerir. BOM dosyası dosya adlarına ve buna karşılık gelen boyutlara ve sağlama toplamına sahiptir. Blok Blobları, sayfa Blobları, Azure dosyaları, REST API 'Leri aracılığıyla kopyalama için ve Data Box yönetilen disklere kopyalama için ayrı bir BOM dosyası oluşturulur. Sevk hazırlığı sırasında, cihazın yerel Web kullanıcı arabiriminden BOM dosyalarını indirebilirsiniz.
+BOM veya manifest dosyası, Veri Kutusu aygıtına kopyalanan tüm dosyaların listesini içerir. BOM dosyasında dosya adları ve karşılık gelen boyutların yanı sıra çekler vardır. Blok lekeleri, sayfa lekeleri, Azure Dosyaları, REST API'leri üzerinden kopyalamak ve Kopya için Veri Kutusu'ndaki yönetilen diskler için ayrı bir BOM dosyası oluşturulur. Gemiye hazırlanma sırasında cihazın yerel web UI'ından BOM dosyalarını indirebilirsiniz.
 
-Bu dosyalar Ayrıca Data Box cihazda bulunur ve Azure veri merkezinde ilişkili depolama hesabına yüklenir.
+Bu dosyalar ayrıca Veri Kutusu aygıtında da bulunur ve Azure veri merkezindeki ilişkili depolama hesabına yüklenir.
 
-### <a name="bom-file-format"></a>BOM dosyası biçimi
+### <a name="bom-file-format"></a>BOM dosya biçimi
 
-Ürün reçetesi veya bildirim dosyası aşağıdaki genel biçime sahiptir:
+BOM veya manifest dosyası aşağıdaki genel biçimi vardır:
 
 `<file size = "file-size-in-bytes" crc64="cyclic-redundancy-check-string">\folder-path-on-data-box\name-of-file-copied.md</file>`
 
-Bu, veriler Data Box Blok Blobu paylaşımında kopyalandığında oluşturulan bir bildirimin örneğidir.
+Burada, veriler Veri Kutusu'ndaki blok blob paylaşımına kopyalandığında oluşturulan bir bildirim örneği verebilirsiniz.
 
 ```
 <file size="10923" crc64="0x51c78833c90e4e3f">\databox\media\data-box-deploy-copy-data\connect-shares-file-explorer1.png</file>
@@ -191,29 +191,29 @@ Bu, veriler Data Box Blok Blobu paylaşımında kopyalandığında oluşturulan 
 <file size="3220" crc64="0x7257a263c434839a">\databox\data-box-system-requirements.md</file>
 ```
 
-Ürün reçetesi veya bildirim dosyaları da Azure depolama hesabına kopyalanır. Azure 'a yüklenen dosyaların Data Box kopyalanan verilerle eşleştiğini doğrulamak için BOM veya manifest dosyalarını kullanabilirsiniz.
+BOM veya manifesto dosyaları da Azure depolama hesabına kopyalanır. Azure'a yüklenen dosyaların Veri Kutusu'na kopyalanan verilerle eşleştiğinden doğrulamak için BOM veya bildirim dosyalarını kullanabilirsiniz.
 
-## <a name="review-copy-log-during-upload-to-azure"></a>Azure 'a yükleme sırasında kopyalama günlüğü 'nü gözden geçirme
+## <a name="review-copy-log-during-upload-to-azure"></a>Azure'a yükleme sırasında kopyalama günlüğünü gözden geçirme
 
-Azure 'a veri yükleme sırasında bir kopyalama günlüğü oluşturulur.
+Azure'a veri yüklemesırasında bir kopyalama günlüğü oluşturulur.
 
-### <a name="copy-log"></a>Günlüğü Kopyala
+### <a name="copy-log"></a>Günlüğü kopyalama
 
-İşlenen her sıra için, Data Box hizmeti ilişkili depolama hesabında kopyalama günlüğü oluşturur. Kopyalama günlüğü, karşıya yüklenen toplam dosya sayısını ve veri kopyalama sırasında hatalı giden dosya sayısını Azure depolama hesabınıza Data Box.
+İşlenen her sipariş için, Veri Kutusu hizmeti ilişkili depolama hesabında kopya günlüğü oluşturur. Kopyalama günlüğünde yüklenen toplam dosya sayısı ve Veri Kutusu'ndan Azure depolama hesabınıza veri kopyalanması sırasında hata yapan dosya sayısı bulunur.
 
-Azure 'a yükleme sırasında Döngüsel artıklık denetimi (CRC) hesaplaması yapılır. Veri kopyalama işleminden sonra ve veri karşıya yüklemeden sonra CRCs 'Ler karşılaştırılır. CRC uyumsuzluğu, karşılık gelen dosyaların karşıya yüklenemediğini belirtir.
+Azure'a yükleme sırasında Döngüsel Artıklık Denetimi (CRC) hesaplaması yapılır. Veri kopyalamave veri yüklemesinden sonra crcs karşılaştırılır. CRC uyuşmazlığı, ilgili dosyaların yüklenemediğini gösterir.
 
-Varsayılan olarak, Günlükler `copylog`adlı bir kapsayıcıya yazılır. Günlükler aşağıdaki adlandırma kuralına göre saklanır:
+Varsayılan olarak, günlükleri adlı `copylog`bir kapsayıcıya yazılır. Günlükler aşağıdaki adlandırma kuralıyla depolanır:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
-Kopyalama günlüğü yolu Ayrıca portalın **genel bakış** dikey penceresinde de görüntülenir.
+Kopyalama günlüğü yolu da portal için **Genel Bakış** bıçak görüntülenir.
 
-![Tamamlandığında genel bakış dikey penceresine günlük kopyalama yolu](media/data-box-logs/copy-log-path-1.png)
+![Tamamlandığında Genel Bakış bıçağında oturum açma yolu](media/data-box-logs/copy-log-path-1.png)
 
-### <a name="upload-completed-successfully"></a>Karşıya yükleme başarıyla tamamlandı 
+### <a name="upload-completed-successfully"></a>Yükleme başarıyla tamamlandı 
 
-Aşağıdaki örnek, başarıyla tamamlanan Data Box karşıya yükleme için bir kopyalama günlüğünün Genel biçimini açıklar:
+Aşağıdaki örnek, başarıyla tamamlanan bir Veri Kutusu yüklemesi için bir kopyalama günlüğünün genel biçimini açıklar:
 
 ```
 <?xml version="1.0"?>
@@ -224,13 +224,13 @@ Aşağıdaki örnek, başarıyla tamamlanan Data Box karşıya yükleme için bi
 </CopyLog>
 ```
 
-### <a name="upload-completed-with-errors"></a>Karşıya yükleme hatalarla tamamlandı 
+### <a name="upload-completed-with-errors"></a>Hatalarla tamamlanan yükleme 
 
-Azure 'a yükleme, hatalarla da tamamlanabilir.
+Azure'a yükleme de hatalarla tamamlanabilir.
 
-![Hatalar ile tamamlandığında genel bakış dikey penceresine günlük kopyalama yolu](media/data-box-logs/copy-log-path-2.png)
+![Hatalarla tamamlandığında Genel Bakış bıçağında oturum açma yolu](media/data-box-logs/copy-log-path-2.png)
 
-Karşıya yüklemenin hatalarla tamamlandığı bir kopyalama günlüğü örneği aşağıda verilmiştir:
+Yüklemenin hatalarla tamamlandığı bir kopyalama günlüğü örneği aşağıda verilmiştir:
 
 ```xml
 <ErroredEntity Path="iso\samsungssd.iso">
@@ -249,15 +249,15 @@ Karşıya yüklemenin hatalarla tamamlandığı bir kopyalama günlüğü örne�
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
-### <a name="upload-completed-with-warnings"></a>Karşıya yükleme uyarılarla tamamlandı
+### <a name="upload-completed-with-warnings"></a>Uyarılarla tamamlanan yükleme
 
-Verileriniz Azure adlandırma kurallarına uymayan kapsayıcı/BLOB/dosya adları içeriyorsa ve Azure 'a karşıya yükleme, verileri Azure 'a yüklemek üzere değiştirilseydi, Azure 'a yükleme işlemi uyarılarla tamamlanır.
+Azure'a yükleme, verilerinizin Azure adlandırma kurallarına uymayan kapsayıcı/blob/dosya adları varsa ve adları azure'a yüklemek için değiştirildiyse uyarılarla tamamlar.
 
-![Uyarılar ile tamamlandığında genel bakış dikey penceresine günlük kopyalama yolu](media/data-box-logs/copy-log-path-3.png)
+![Uyarılarla tamamlandığında genel bakış bıçağını kopyalama yolu](media/data-box-logs/copy-log-path-3.png)
 
-Azure 'a veri yükleme sırasında Azure adlandırma kurallarıyla uyumlu olmayan kapsayıcıların yeniden adlandırılmadığı bir kopya günlüğü örneği aşağıda verilmiştir.
+Aşağıda, Azure adlandırma kurallarına uymayan kapsayıcıların Azure'a veri yüklemesi sırasında yeniden adlandırılmasının yapıldığı bir kopya günlüğü örneği verilmiştir.
 
-Kapsayıcılar için yeni benzersiz adlar `DataBox-GUID` biçimindedir ve kapsayıcının verileri yeni yeniden adlandırılmış kapsayıcıya konur. Kopyalama günlüğü, kapsayıcının eski ve yeni kapsayıcı adını belirtir.
+Kapsayıcılar için yeni benzersiz adlar biçimindedir `DataBox-GUID` ve kapsayıcının verileri yeni yeniden adlandırılmış kapsayıcıya konur. Kopyalama günlüğü, kapsayıcının eski ve yeni kapsayıcı adını belirtir.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -268,9 +268,9 @@ Kapsayıcılar için yeni benzersiz adlar `DataBox-GUID` biçimindedir ve kapsay
 </ErroredEntity>
 ```
 
-Azure 'a veri yükleme sırasında, Blobların veya Azure adlandırma kurallarıyla uyumlu olmayan dosyaların yeniden adlandırıldığını gösteren bir kopyalama günlüğü örneği aşağıda verilmiştir. Yeni blob veya dosya adları, kapsayıcıya göreli yolun SHA256 özetine dönüştürülür ve hedef türüne göre yola yüklenir. Hedef blok Blobları, sayfa Blobları veya Azure dosyaları olabilir.
+Burada, Azure adlandırma kurallarına uymayan blob'ların veya dosyaların Azure'a veri yüklemesi sırasında yeniden adlandırılmasının yer aldığı bir kopyalama günlüğü örneği verilmiştir. Yeni blob veya dosya adları, kap için göreli yolun SHA256 özetine dönüştürülür ve hedef türüne göre yola yüklenir. Hedef blok lekeleri, sayfa lekeleri veya Azure Dosyaları olabilir.
 
-`copylog`, eski ve yeni blob ya da dosya adını ve Azure 'daki yolu belirtir.
+Eski `copylog` ve yeni blob veya dosya adını ve Azure'daki yolu belirtir.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -291,15 +291,15 @@ Azure 'a veri yükleme sırasında, Blobların veya Azure adlandırma kuralları
 </ErroredEntity>
 ```
 
-## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Veri eriyinden sonra gözetim günlüklerinin zincirini al
+## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Veri silindikten sonra gözaltı günlükleri zincirini alın
 
-NIST SP 800-88 düzeltme 1 yönergelerine göre Data Box disklerden veriler silindikten sonra, gözetim günlüklerinin zinciri kullanılabilir. Bu Günlükler denetim günlüklerini ve sipariş geçmişini içerir. BOM veya manifest dosyaları da denetim günlükleriyle birlikte kopyalanır.
+Veriler NIST SP 800-88 Revizyon 1 yönergeleri uyarınca Veri Kutusu disklerinden silindikten sonra, velayet günlüğü zinciri kullanılabilir. Bu günlükler denetim günlüklerini ve sipariş geçmişini içerir. BOM veya manifesto dosyaları da denetim günlükleri ile kopyalanır.
 
 ### <a name="audit-logs"></a>Denetim günlükleri
 
-Denetim günlükleri Data Box veya Azure veri merkezi 'nin dışında olduğunda Data Box Heavy paylaşımlara erişme ve bunların nasıl çalıştığı hakkında bilgiler içerir. Bu Günlükler şurada bulunur: `storage-account/azuredatabox-chainofcustodylogs`
+Denetim günlükleri, Azure veri merkezinin dışında yken Veri Kutusu veya Veri Kutusu Ağır'daki paylaşımları nasıl açAbilmek ve bu paylaşımlara erişeceklerine ilişkin bilgiler içerir. Bu günlükler şu adreste bulunur:`storage-account/azuredatabox-chainofcustodylogs`
 
-Data Box bir denetim günlüğü örneği aşağıda verilmiştir:
+Aşağıda, veri kutusundan denetim günlüğünün bir örneği verebilirsiniz:
 
 ```
 9/10/2018 8:23:01 PM : The operating system started at system time ‎2018‎-‎09‎-‎10T20:23:01.497758400Z.
@@ -352,17 +352,17 @@ The authentication information fields provide detailed information about this sp
 ```
 
 
-## <a name="download-order-history"></a>İndirme sırası geçmişi
+## <a name="download-order-history"></a>Sipariş geçmişi indirme
 
-Sipariş geçmişi Azure portal kullanılabilir. Sıra tamamlanmadıysa ve cihaz temizleme (disklerden veri ernemi) tamamlandıktan sonra, cihaz sıraınızdan gidip **sipariş ayrıntıları**' na gidin. **Sipariş geçmişi indirme** seçeneği bulunur. Daha fazla bilgi için bkz. [yükleme sırası geçmişi](data-box-portal-admin.md#download-order-history).
+Sipariş geçmişi Azure portalında kullanılabilir. Sipariş tamamlandıysa ve aygıt temizleme (disklerden veri silme) tamamlandıysa, ardından aygıt siparişinize gidin ve **Sipariş ayrıntılarına**gidin. **Sipariş geçmişi indirme** seçeneği bulunur. Daha fazla bilgi için [bkz.](data-box-portal-admin.md#download-order-history)
 
-Sipariş geçmişi boyunca kaydırırsanız şunu görürsünüz:
+Sipariş geçmişinde gezinirseniz, şunları görürsünüz:
 
 - Cihazınız için taşıyıcı izleme bilgileri.
-- *SecureErase* etkinliğine sahip olaylar. Bu olaylar, diskteki verilerin eriyine karşılık gelir.
-- Günlük bağlantılarını Data Box. *Denetim günlükleri*, *kopyalama günlükleri*ve *bom* dosyaları için yollar gösterilir.
+- *SecureErase* etkinliği olan olaylar. Bu olaylar, diskteki verilerin silinmesi ile karşılık gelir.
+- Veri Kutusu günlük bağlantıları. *Denetim günlükleri,* kopyalama *günlükleri*ve *BOM* dosyaları için yollar sunulur.
 
-Azure portal sipariş geçmişi günlüğü örneği aşağıda verilmiştir:
+Azure portalından sipariş geçmişi günlüğünün bir örneği aşağıda veda edebilirsiniz:
 
 ```
 -------------------------------
@@ -413,4 +413,4 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Data Box ve Data Box Heavy ilgili sorunları nasıl giderebileceğinizi](data-box-troubleshoot.md)öğrenin.
+- [Veri Kutunuzdaki ve Veri Kutusu Ağır'ınızdaki sorunları nasıl gidereceklerini](data-box-troubleshoot.md)öğrenin.

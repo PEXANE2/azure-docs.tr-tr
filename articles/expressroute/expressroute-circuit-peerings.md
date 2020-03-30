@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: devreler ve eşleme'
-description: Bu sayfada, ExpressRoute devreleri ve Yönlendirme etki alanları/eşlemesi genel bir bakış sağlar.
+title: 'Azure ExpressRoute: devreler ve akran'
+description: Bu sayfa, ExpressRoute devrelerine ve yönlendirme etki alanlarına/bakmaya genel bir bakış sağlar.
 services: expressroute
 author: mialdrid
 ms.service: expressroute
@@ -8,75 +8,75 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281359"
 ---
-# <a name="expressroute-circuits-and-peering"></a>ExpressRoute bağlantı hatları ve eşleme
+# <a name="expressroute-circuits-and-peering"></a>ExpressRoute devreleri ve eşleme
 
-ExpressRoute bağlantı hatları, şirket içi altyapınızı Microsoft bağlantı sağlayıcısı aracılığıyla bağlanın. Bu makalede, ExpressRoute devreleri ve Yönlendirme etki alanları/eşlemesi anlamanıza yardımcı olur. Aşağıdaki şekilde WAN ile Microsoft arasında bağlantı mantıksal bir gösterimi gösterilmektedir.
+ExpressRoute devreleri, şirket içi altyapınızı bir bağlantı sağlayıcısı aracılığıyla Microsoft'a bağlar. Bu makale, ExpressRoute devrelerini ve yönlendirme etki alanlarını/bakışları anlamanıza yardımcı olur. Aşağıdaki şekil WAN ve Microsoft arasındaki bağlantının mantıksal bir gösterimini gösterir.
 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
-> Azure genel eşlemesi kullanım dışı bırakılmıştır ve yeni ExpressRoute devreleri için kullanılamaz. Yeni devreler, Microsoft eşlemesini ve özel eşlemeyi destekler.  
+> Azure genel bakışları amortismana uğradı ve yeni ExpressRoute devreleri için kullanılamaz. Yeni devreler Microsoft'un eşleneme ve özel bakışdestekler.  
 >
 
-## <a name="circuits"></a>ExpressRoute devreleri
+## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute bağlantı hatları
 
-Bir ExpressRoute bağlantı hattı, şirket içi altyapınızı ve bağlantı sağlayıcı üzerinden Microsoft bulut hizmetleri arasında mantıksal bağlantıyı temsil eder. Birden çok ExpressRoute bağlantı hattına sipariş edebilirsiniz. Her bağlantı hattı aynı veya farklı bölgelerde olabilir ve farklı bağlantı sağlayıcıları aracılığıyla şirket içinde bağlanabilir.
+ExpressRoute devresi, bir bağlantı sağlayıcısı aracılığıyla şirket içi altyapınızla Microsoft bulut hizmetleri arasındaki mantıksal bağlantıyı temsil eder. Birden çok ExpressRoute devresi sipariş edebilirsiniz. Her devre aynı veya farklı bölgelerde olabilir ve farklı bağlantı sağlayıcıları aracılığıyla tesislerinize bağlanabilir.
 
-ExpressRoute bağlantı hatları için herhangi bir fiziksel varlık eşlemeyin. Bir bağlantı hattı GUID hizmet anahtarını (s-anahtar) adlandırılan bir standart tarafından benzersiz şekilde tanımlanır. Hizmet anahtarı yalnızca Microsoft, bağlantı sağlayıcısı ve siz arasında alınıp verilen bilgi parçasıdır. S-key, güvenlik nedenleriyle bir gizli dizi değil. S anahtar ile bir ExpressRoute bağlantı hattı arasında bir 1:1 eşleme vardır.
+ExpressRoute devreleri herhangi bir fiziksel varlıkla eşleşmez. Bir devre, hizmet anahtarı (s-tuşu) olarak adlandırılan standart bir GUID tarafından benzersiz olarak tanımlanır. Hizmet anahtarı, bağlantı sağlayıcısı Microsoft ile sizin aranız arasında değiş tokuş edilen tek bilgidir. S-key güvenlik amacıyla bir sır değildir. ExpressRoute devresi ile s tuşu arasında 1:1 eşleme vardır.
 
-Yeni ExpressRoute bağlantı hatları, iki bağımsız eşlemeler içerebilir: özel eşleme ve Microsoft eşlemesi. Mevcut bir ExpressRoute bağlantı hatları üç eşlemenin içerebilir ancak: Azure genel, Azure özel ve Microsoft. Her eşleme bir BGP oturumu bağımsız, bunların nedenle yüksek kullanılabilirlik için yapılandırılmış her biri çiftidir. 1: n yoktur (1 < = N < = 3) bir ExpressRoute bağlantı hattı arasında eşleme ve Yönlendirme etki alanları. ExpressRoute devresi, herhangi bir, iki veya üç eşlemenin ExpressRoute bağlantı hattı etkin tamamını olabilir.
+Yeni ExpressRoute devreleri iki bağımsız eşleme içerebilir: Özel akranve Microsoft bakış. Mevcut ExpressRoute devreleri üç eşleme içerebilir: Azure Genel, Azure Özel ve Microsoft. Her bir bakış, her biri yüksek kullanılabilirlik için gereksiz olarak yapılandırılan bir çift bağımsız BGP oturumudur. ExpressRoute devresi ile yönlendirme etki alanları arasında 1:N (1 <= N <= 3) eşleme vardır. Bir ExpressRoute devresi, ExpressRoute devresi başına herhangi bir, iki veya üç eşlemenin etkinleştirilmiş olabilir.
 
-Her bağlantı hattı (50 MB/sn, 100 MB/sn, 200 MB/sn, 500 MB/sn, 1 GB/sn, 10 GB/sn) sabit bir bant genişliğine sahip ve bir bağlantı sağlayıcısı ve eşleme konumuna eşlenmiş. Seçtiğiniz bant genişliği tüm bağlantı hattı eşlemeler arasında paylaşılır.
+Her devre sabit bant genişliğine (50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1 Gbps, 10 Gbps) sahiptir ve bir bağlantı sağlayıcısına ve bir eşleme konumuna eşlenir. Seçtiğiniz bant genişliği tüm devre eşlemeleri arasında paylaşılır
 
-### <a name="quotas"></a>Kotalar, sınırlar ve sınırlamalar
+### <a name="quotas-limits-and-limitations"></a><a name="quotas"></a>Kotalar, sınırlar ve sınırlamalar
 
-Her ExpressRoute bağlantı hattı için varsayılan kotaları ve sınırları geçerlidir. Kotalar hakkında güncel bilgiler için [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasına bakın.
+Varsayılan kotalar ve limitler her ExpressRoute devresi için geçerlidir. Kotalarla ilgili güncel bilgiler için [Azure Abonelik ve Hizmet Sınırları, Kotalar ve Kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasına bakın.
 
-## <a name="routingdomains"></a>ExpressRoute eşlemesi
+## <a name="expressroute-peering"></a><a name="routingdomains"></a>ExpressRoute bakış
 
-ExpressRoute bağlantı hattına sahip birden fazla Yönlendirme etki alanları/ilişkili eşlemeleri: Azure genel, Azure özel ve Microsoft. Her eşleme yönlendiricileri çifti üzerinde aynı şekilde yapılandırıldığından (etkin-etkin ya da yük paylaşma yapılandırma) yüksek kullanılabilirlik için. Azure Hizmetleri, IP adresleme düzenlerini göstermek için Azure *genel* ve *Azure özel* olarak kategorize edilir.
+ExpressRoute devresi, onunla ilişkili birden çok yönlendirme etki alanına/eşleme alanına sahiptir: Azure genel, Azure özel ve Microsoft. Her eşleme, yüksek kullanılabilirlik için bir çift yönlendiricide (etkin etkin veya yük paylaşımı yapılandırmasında) aynı şekilde yapılandırılır. Azure hizmetleri, IP adresleme düzenlerini temsil etmek üzere *Azure geneli* ve *Azure özel* olarak sınıflandırılır.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="privatepeering"></a>Azure özel eşleme
+### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure özel eşlemesi
 
-Azure işlem Hizmetleri, yani sanal makineler (Iaas) ve bulut hizmetlerini (PaaS) ve bir sanal ağda dağıtılan üzerinden özel eşleme etki alanına bağlanabilir. Özel Eşleme etki alanı, çekirdek ağınızı Microsoft azure'da güvenilir bir uzantısı olarak kabul edilir. Çekirdek Ağ ve Azure sanal ağları (Vnet) arasında çift yönlü bağlantı ayarlayabilirsiniz. Bu eşleme, sanal makinelere bağlanmak ve bulut Hizmetleri doğrudan üzerinde özel IP adreslerini sağlar.  
+Sanal ağ içinde dağıtılan sanal makineler (IaaS) ve bulut hizmetleri (PaaS) gibi Azure bilgi işlem hizmetleri özel eşleme etki alanı üzerinden bağlanabilir. Özel bakan etki alanı, çekirdek ağınızın Microsoft Azure'a güvenilir bir uzantısı olarak kabul edilir. Çekirdek ağınızla Azure sanal ağlarınız (VNet) arasında çift yönlü bağlantı ayarlayabilirsiniz. Bu bakış, sanal makinelere ve bulut hizmetlerine doğrudan özel IP adreslerine bağlanmanızı sağlar.  
 
-Birden fazla sanal ağ özel eşleme etki alanına bağlanabilir. Sınırlamalar ve sınırlamalar hakkında bilgi edinmek için [SSS sayfasını](expressroute-faqs.md) gözden geçirin. Limitlerde güncel bilgiler için [Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasını ziyaret edebilirsiniz.  Yönlendirme yapılandırması hakkında ayrıntılı bilgi için [yönlendirme](expressroute-routing.md) sayfasına bakın.
+Birden fazla sanal ağı özel eşalan etki alanına bağlayabilirsiniz. Sınırlar ve sınırlamalar hakkında bilgi için [SSS sayfasını](expressroute-faqs.md) inceleyin. Limitler hakkında güncel bilgi almak için [Azure Abonelik ve Hizmet Sınırları, Kotalar ve Kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md) sayfasını ziyaret edebilirsiniz.  Yönlendirme yapılandırması hakkında ayrıntılı bilgi için [Yönlendirme](expressroute-routing.md) sayfasına bakın.
 
-### <a name="microsoftpeering"></a>Microsoft eşlemesi
+### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Microsoft'a bakış
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Microsoft çevrimiçi hizmetler bağlantısı (Office 365 ve Azure PaaS hizmetleri) Microsoft eşlemesi üzerinden gerçekleşir. WAN ve Microsoft cloud services aracılığıyla Microsoft eşleme Yönlendirme etki alanı arasında çift yönlü bağlantı etkinleştiririz. Yalnızca, veya bağlantı sağlayıcınızdan ait genel IP adresleri üzerinden Microsoft bulut hizmetlerine bağlanmak ve tüm tanımlı kurallara uymalıdır. Daha fazla bilgi için bkz. [ExpressRoute önkoşulları](expressroute-prerequisites.md) sayfası.
+Microsoft çevrimiçi hizmetlerine bağlantı (Office 365 ve Azure PaaS hizmetleri) Microsoft'un bakışları aracılığıyla gerçekleşir. Microsoft peering yönlendirme etki alanı aracılığıyla WAN ve Microsoft bulut hizmetleriniz arasında çift yönlü bağlantı sağlarız. Microsoft bulut hizmetlerine yalnızca sizin veya bağlantı sağlayıcınıza ait genel IP adresleri üzerinden bağlanmanız ve tanımlanan tüm kurallara uymanız gerekir. Daha fazla bilgi için [ExpressRoute ön koşullar](expressroute-prerequisites.md) sayfasına bakın.
 
-Desteklenen hizmetler, maliyetler ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [SSS sayfasına](expressroute-faqs.md) bakın. Microsoft eşleme desteği sunan bağlantı sağlayıcılarının listesi hakkında bilgi için bkz. [ExpressRoute konumları](expressroute-locations.md) sayfası.
+Desteklenen hizmetler, maliyetler ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [SSS sayfasına](expressroute-faqs.md) bakın. Microsoft'a bakış desteği sunan bağlantı sağlayıcıları listesinde bilgi için [ExpressRoute Konumları](expressroute-locations.md) sayfasına bakın.
 
-## <a name="peeringcompare"></a>Eşleme karşılaştırması
+## <a name="peering-comparison"></a><a name="peeringcompare"></a>Eşleme karşılaştırması
 
-Aşağıdaki tabloda, üç eşlemenin karşılaştırılır:
+Aşağıdaki tablo üç eşlemeleri karşılaştırır:
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
-ExpressRoute bağlantı hattınızın parçası olarak, bir veya daha fazla Yönlendirme etki alanları sağlayabilir. Bunları tek bir yönlendirme etki alanına birleştirmek istiyorsanız aynı VPN'yi put tüm Yönlendirme etki alanlarını seçebilirsiniz. Sizin de bunları farklı yönlendirme etki alanları, diyagrama benzer yerleştirebilirsiniz. Önerilen yapılandırma özel eşdüzey hizmet sağlama doğrudan çekirdek ağa bağlı ve genel ve Microsoft eşleme bağlantıları için DMZ'NİZDE bağlı olduğu.
+ExpressRoute devrenizin bir parçası olarak yönlendirme etki alanlarından bir veya daha fazlasını etkinleştirebilirsiniz. Tek bir yönlendirme etki alanında birleştirmek istiyorsanız, tüm yönlendirme etki alanlarının aynı VPN'e konmasını seçebilirsiniz. Bunları diyagrama benzer şekilde farklı yönlendirme etki alanlarında da koyabilirsiniz. Önerilen yapılandırma, özel eşlemenin doğrudan çekirdek ağa bağlı olması ve ortak ve Microsoft eşleme bağlantılarının DMZ'nize bağlı olmasıdır.
 
-Her eşleme ayrı BGP oturumları (her eşleme türü için bir çift) gerektirir. BGP oturumu çiftleri yüksek oranda kullanılabilir bir bağlantı sağlar. Katman 2 bağlantı sağlayıcıları bağlanılıyorsa, yapılandırma ve yönlendirme yönetmek için sorumlu olursunuz. ExpressRoute ayarlamaya yönelik [iş akışlarını](expressroute-workflows.md) inceleyerek daha fazla bilgi edinebilirsiniz.
+Her eşleme ayrı BGP oturumları (her eşleme türü için bir çift) gerektirir. BGP oturum çiftleri son derece kullanılabilir bir bağlantı sağlar. Katman 2 bağlantı sağlayıcıları aracılığıyla bağlantı kuruyorsanız, yönlendirmeyi yapılandırmaktan ve yönetmekten siz sorumlusunuz. ExpressRoute'u ayarlamak için [iş akışlarını](expressroute-workflows.md) inceleyerek daha fazla bilgi edinebilirsiniz.
 
-## <a name="health"></a>ExpressRoute durumu
+## <a name="expressroute-health"></a><a name="health"></a>ExpressRoute durumu
 
-ExpressRoute devreleri, [ağ performansı İzleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) kullanarak, sanal ağlar ve bant genişliği kullanımı için kullanılabilir.
+ExpressRoute devreleri kullanılabilirlik, VNet'lere bağlantı ve [Ağ Performans Monitörü](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) kullanılarak bant genişliği kullanımı için izlenebilir.
 
-NPM Azure özel eşleme ve Microsoft eşlemesi izler. Daha fazla bilgi için [gönderimize](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) göz atın.
+NPM, Azure özel eşleme ve Microsoft'un bakış durumunu izler. Daha fazla bilgi için [yazımıza](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir hizmet sağlayıcı bulun. Bkz. [ExpressRoute hizmet sağlayıcıları ve konumları](expressroute-locations.md).
+* Bir hizmet sağlayıcı bulun. Bkz. [ExpressRoute hizmet sağlayıcıları ve konumları.](expressroute-locations.md)
 * Tüm önkoşulların sağlandığından emin olun. Bkz. [ExpressRoute önkoşulları](expressroute-prerequisites.md).
 * ExpressRoute bağlantınızı yapılandırın.
   * [ExpressRoute devreleri oluşturup yönetme](expressroute-howto-circuit-portal-resource-manager.md)

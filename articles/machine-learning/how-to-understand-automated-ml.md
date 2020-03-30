@@ -1,7 +1,7 @@
 ---
 title: Otomatik ML sonuçlarını anlama
 titleSuffix: Azure Machine Learning
-description: Otomatik makine öğrenimi çalışmalarınızın her biri için grafikleri ve ölçümleri görüntüleme ve anlama hakkında bilgi edinin.
+description: Otomatik makine öğrenimi koşularınızın her biri için grafikleri ve ölçümleri nasıl görüntülayacağınızı ve anlayacağınızı öğrenin.
 services: machine-learning
 author: RachelKellam
 ms.author: rakellam
@@ -11,262 +11,262 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283465"
 ---
-# <a name="understand-automated-machine-learning-results"></a>Otomatik makine öğrenimi sonuçlarını anlama
+# <a name="understand-automated-machine-learning-results"></a>Otomatik makine öğrenmesi sonuçlarını anlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, otomatik makine öğrenimi çalışmalarınızın her biri için grafikleri ve ölçümleri görüntüleme ve anlama hakkında bilgi edineceksiniz. 
+Bu makalede, otomatik makine öğrenimi çalıştırmalarınızın her biri için grafikleri ve ölçümleri görüntülemeyi ve anlamayı öğrenirsiniz. 
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 + [Sınıflandırma modelleri için ölçümler, grafikler ve eğriler](#classification)
-+ [Regresyon modelleriyle ilgili ölçümler, grafikler ve grafikler](#regression)
-+ [Model yorumlenebilirliği ve özellik önemi](#explain-model)
++ [Regresyon modelleri için ölçümler, grafikler ve grafikler](#regression)
++ [Model yorumlanabilirliği ve özelliğinin önemi](#explain-model)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* SDK ile ya da Azure Machine Learning Studio 'da otomatik makine öğrenimi çalıştırmak için bir deneme oluşturun.
+* SDK ile veya Azure Machine Learning stüdyosunda otomatik makine öğrenimi çalıştırmanız için bir deneme oluşturun.
 
-    * Bir [sınıflandırma modeli](how-to-auto-train-remote.md) veya [regresyon modeli](tutorial-auto-train-models.md) oluşturmak için SDK 'yı kullanma
-    * Uygun verileri karşıya yükleyerek bir sınıflandırma veya regresyon modeli oluşturmak için [Azure Machine Learning Studio 'yu](how-to-use-automated-ml-for-ml-models.md) kullanın.
+    * Bir [sınıflandırma modeli](how-to-auto-train-remote.md) veya [regresyon modeli](tutorial-auto-train-models.md) oluşturmak için SDK'yı kullanın
+    * Uygun verileri yükleyerek bir sınıflandırma veya regresyon modeli oluşturmak için [Azure Machine Learning stüdyosunu](how-to-use-automated-ml-for-ml-models.md) kullanın.
 
-## <a name="view-the-run"></a>Çalıştırmayı görüntüle
+## <a name="view-the-run"></a>Çalıştırmayı görüntüleyin
 
-Otomatik makine öğrenimi denemesinin çalıştırılmasından sonra, Machine Learning çalışma alanınızda çalıştırmaların bir geçmişi bulunabilir. 
+Otomatik bir makine öğrenme deneyi çalıştırdıktan sonra, makine öğrenimi çalışma alanınızda çalıştırmaların geçmişini bulabilirsiniz. 
 
 1. Çalışma alanınıza gidin.
 
-1. Çalışma alanının sol bölmesinde **denemeleri**' yi seçin.
+1. Çalışma alanının sol panelinde **Denemeler'i**seçin.
 
    ![Deneme menüsünün ekran görüntüsü](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 
-1. Denemeleri listesinde, araştırmak istediğiniz birini seçin.
+1. Denemeler listesinde, keşfetmek istediğinizi seçin.
 
-   [![deneme listesi](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
+   [![Deney listesi](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
-1. Alt tabloda, **Çalıştır**' ı seçin.
+1. Alt tabloda **Çalıştır'ı**seçin.
 
-   [![deneme çalıştırması](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
+   Deneme çalıştır ) [ ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png)
 
-1. Modellerde, daha fazla incelemek istediğiniz modelin **algoritma adını** seçin.
+1. Modellerde, daha fazla keşfetmek istediğiniz modelin **Algoritma adını** seçin.
 
-   [![deneme modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
+   [![Deney modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
-Ayrıca, `RunDetails`[jupi pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)kullandığınızda bir çalıştırma sırasında aynı sonuçları görürsünüz.
+Ayrıca `RunDetails` [Jupyter widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)kullandığınızda bir çalışma sırasında bu aynı sonuçları bakın.
 
-## <a name="classification"></a>Sınıflandırma sonuçları
+## <a name="classification-results"></a><a name="classification"></a>Sınıflandırma sonuçları
 
-Azure Machine Learning otomatik makine öğrenimi özelliklerini kullanarak oluşturduğunuz her sınıflandırma modeli için aşağıdaki ölçümler ve grafikler mevcuttur
+Azure Machine Learning'in otomatik makine öğrenme özelliklerini kullanarak oluşturduğunuz her sınıflandırma modeli için aşağıdaki ölçümler ve grafikler kullanılabilir
 
 + [Ölçümler](#classification-metrics)
 + [Karışıklık matrisi](#confusion-matrix)
-+ [Kesinlik-geri çağırma grafiği](#precision-recall-chart)
-+ [Alıcı işletim özellikleri (veya ROC)](#roc)
-+ [Eğriyi yükselt](#lift-curve)
-+ [Kazanç eğrisi](#gains-curve)
-+ [Ayarlama çizimi](#calibration-plot)
++ [Hassas Geri Çağırma grafiği](#precision-recall-chart)
++ [Alıcı çalışma özellikleri (veya ROC)](#roc)
++ [Kaldırma eğrisi](#lift-curve)
++ [Kazançlar eğrisi](#gains-curve)
++ [Kalibrasyon arsa](#calibration-plot)
 
 ### <a name="classification-metrics"></a>Sınıflandırma ölçümleri
 
-Aşağıdaki ölçümler, bir sınıflandırma görevinin her bir çalıştırma yinelemesinde kaydedilir.
+Aşağıdaki ölçümler, bir sınıflandırma görevi için her çalıştırma yinelemesinde kaydedilir.
 
-Ölçüm|Açıklama|Hesaplama|Ek parametreler
+Ölçüm|Açıklama|Hesaplama|Ekstra Parametreler
 --|--|--|--
-AUC_Macro| AUC alıcı çalıştırma özellikleri eğrisi altında alandır. Her sınıf için AUC aritmetik ortalamasını makrodur.  | [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Ortalama "makrosu" =|
-AUC_Micro| AUC alıcı çalıştırma özellikleri eğrisi altında alandır. Micro, her bir sınıftan doğru pozitif sonuçlar ve hatalı pozitif sonuçlar birleştirilerek Global olarak hesaplanır.| [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Ortalama "micro" =|
-AUC_Weighted  | AUC alıcı çalıştırma özellikleri eğrisi altında alandır. Ağırlıklı her sınıf için her bir sınıftaki doğru örnek sayısı ağırlıklı olarak ağırlıklı aritmetik ortalamadır.| [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Ortalama "ağırlıklı" =
-accuracy|Doğruluk true etiketlerin tam olarak eşleşen tahmin edilen etiketleri yüzdesi ' dir. |[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Yok|
-average_precision_score_macro|Ortalama kesinlik, duyarlık geri çekme eğri Precision bilgisayarlar daha önceki eşiği ağırlık kullanılan bölümden artış ile her Eşikte elde ağırlıklı ortalamasını olarak özetler. Makro, her sınıfın ortalama duyarlık puanının aritmetik ortasıdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Ortalama "makrosu" =|
-average_precision_score_micro|Ortalama kesinlik, duyarlık geri çekme eğri Precision bilgisayarlar daha önceki eşiği ağırlık kullanılan bölümden artış ile her Eşikte elde ağırlıklı ortalamasını olarak özetler. Micro, her kesme sırasında gerçek pozitif sonuçları ve hatalı pozitif sonuçları birleştirerek Global olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Ortalama "micro" =|
-average_precision_score_weighted|Ortalama kesinlik, duyarlık geri çekme eğri Precision bilgisayarlar daha önceki eşiği ağırlık kullanılan bölümden artış ile her Eşikte elde ağırlıklı ortalamasını olarak özetler. Ağırlıklı, her sınıf için Ortalama duyarlık puanının aritmetik ortasıdır ve her bir sınıftaki gerçek örnek sayısı tarafından ağırlıklı olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Ortalama "ağırlıklı" =|
-balanced_accuracy|Dengeli doğruluğu her sınıf için geri çağırma aritmetik ortalamasıdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Ortalama "makrosu" =|
-f1_score_macro|F1 puanı harmonik duyarlık ve geri çağırma ' dir. Makro her sınıf için F1 puanının aritmetik ortalaması anlamına gelir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Ortalama "makrosu" =|
-f1_score_micro|F1 puanı harmonik duyarlık ve geri çağırma ' dir. Mikro, toplam doğru pozitif sonuç sayısı, yanlış negatifler ve hatalı pozitif sonuçlar sayımarak Global olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Ortalama "micro" =|
-f1_score_weighted|F1 puanı harmonik duyarlık ve geri çağırma ' dir. Her sınıf için F1 puanı sınıfı sıklığı Ağırlıklı ortalama|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|Ortalama "ağırlıklı" =|
-log_loss|Bu, bir dayalı sınıflandırıcının tahminlerini verilen doğru etiketlerin olumsuz günlük olma olasılığı olarak tanımlanan (ÇOKTERİMLİ) Lojistik gerileme ve sinir Networks gibi uzantılar içinde kullanılan kayıp işlevidir. {0,1} ile gerçek etiket ve tahmini olasılık YP ile ilgili olan tek bir örnek için, günlük kaybı-log P (YT&#124;YP) =-(YT günlüğü (YP) + (1. YT) günlüğü (1-YP)).|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Yok|
-norm_macro_recall|Normalleştirilmiş makrosu geri çağırma rastgele performans bir puan, 0 ve 1'in bir puan mükemmel performans sahip olacak şekilde normalleştirilmiş makrosu geri çağırma olur. Bu, norm_macro_recall: = (recall_score_macro-R)/(1-R) ile elde edilir; burada R, rastgele tahmine dayalı olarak beklenen recall_score_macro değeridir (örneğin, ikili sınıflandırma için R = 0,5 ve C sınıfı sınıflandırma sorunları için R = (1/C)).|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Average = "makro" |
-precision_score_macro|Duyarlık, doğru şekilde etiketlenmiş pozitif tahmin edilen öğelerin yüzdesidir. Makro her sınıf için Duyarlığın aritmetik ortalaması anlamına gelir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Ortalama "makrosu" =|
-precision_score_micro|Duyarlık, doğru şekilde etiketlenmiş pozitif tahmin edilen öğelerin yüzdesidir. Mikro, toplam doğru pozitif sonuç sayısı ve hatalı pozitif sonuçlar eklenerek Global olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Ortalama "micro" =|
-precision_score_weighted|Duyarlık, doğru şekilde etiketlenmiş pozitif tahmin edilen öğelerin yüzdesidir. Ağırlıklı, her sınıf için duyarlık ortalamasıdır ve her bir sınıftaki doğru örnek sayısına göre ağırlıklı olur.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|Ortalama "ağırlıklı" =|
-recall_score_macro|Hatırlayın, belirli bir sınıfın doğru etiketlenmiş öğelerinin yüzdesidir. Makro her sınıf için geri çekmenin aritmetik ortalaması anlamına gelir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Ortalama "makrosu" =|
-recall_score_micro|Hatırlayın, belirli bir sınıfın doğru etiketlenmiş öğelerinin yüzdesidir. Mikro, toplam doğru pozitif sonuç sayısı, yanlış negatifler ve hatalı pozitif sonuçlar sayımarak Global olarak hesaplanır|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Ortalama "micro" =|
-recall_score_weighted|Hatırlayın, belirli bir sınıfın doğru etiketlenmiş öğelerinin yüzdesidir. Ağırlıklı, her sınıf için geri çekmenin aritmetik ortalamasıdır ve her bir sınıftaki doğru örnek sayısına göre ağırlıklı olur.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|Ortalama "ağırlıklı" =|
-weighted_accuracy|Ağırlıklı doğruluk, her örneğe verilen ağırlığa, bu örneğin true sınıfındaki gerçek örneklerin oranına eşit olan bir doğruluk örneğidir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|Hedef eşit oranda her öğe için söz konusu sınıfın bir vektör sample_weight olduğu|
+AUC_Macro| AUC, Alıcı Nın Çalışma Karakteristik Eğrisi altındaki alandır. Makro, her sınıf için AUC'nin aritmetik ortalamasıdır.  | [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | ortalama="makro"|
+AUC_Micro| AUC, Alıcı Nın Çalışma Karakteristik Eğrisi altındaki alandır. Micro, her sınıftan gerçek pozitif ve yanlış pozitifleri birleştirerek küresel olarak hesaplanır.| [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | ortalama="mikro"|
+AUC_Weighted  | AUC, Alıcı Nın Çalışma Karakteristik Eğrisi altındaki alandır. Ağırlıklı, her sınıf için skorun aritmetik ortalamasıdır ve her sınıftaki gerçek örnek sayısına göre ağırlıklanır.| [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|ortalama="ağırlıklı"
+accuracy|Doğruluk, tahmin edilen etiketlerin gerçek etiketlerle tam olarak eşleşen yüzdesidir. |[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |None|
+average_precision_score_macro|Ortalama kesinlik, her eşikte elde edilen hassasiyetlerin ağırlıklı ortalaması olarak bir hassas geri çağırma eğrisi özetler ve ağırlık olarak kullanılan önceki eşiğe geri çağırmadaki artış. Makro, her sınıfın ortalama kesinlik puanının aritmetik ortalamasıdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|ortalama="makro"|
+average_precision_score_micro|Ortalama kesinlik, her eşikte elde edilen hassasiyetlerin ağırlıklı ortalaması olarak bir hassas geri çağırma eğrisi özetler ve ağırlık olarak kullanılan önceki eşiğe geri çağırmadaki artış. Mikro, her kesimde gerçek pozitif ve yanlış pozitifleri birleştirerek küresel olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|ortalama="mikro"|
+average_precision_score_weighted|Ortalama kesinlik, her eşikte elde edilen hassasiyetlerin ağırlıklı ortalaması olarak bir hassas geri çağırma eğrisi özetler ve ağırlık olarak kullanılan önceki eşiğe geri çağırmadaki artış. Ağırlıklı, her sınıf için ortalama kesinlik puanının aritmetik ortalamasıdır ve her sınıftaki gerçek örnek sayısına göre ağırlıklanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|ortalama="ağırlıklı"|
+balanced_accuracy|Dengeli doğruluk, her sınıf için aritmetik hatırlama ortalamasıdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|ortalama="makro"|
+f1_score_macro|F1 skoru hassas ve hatırlama harmonik ortalamasıdır. Makro, her sınıf için F1 puanının aritmetik ortalamasıdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|ortalama="makro"|
+f1_score_micro|F1 skoru hassas ve hatırlama harmonik ortalamasıdır. Mikro toplam doğru pozitif, yanlış negatifler ve yanlış pozitif sayma küresel olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|ortalama="mikro"|
+f1_score_weighted|F1 skoru hassas ve hatırlama harmonik ortalamasıdır. Her sınıf için F1 puanının sınıf frekansına göre ağırlıklı ortalama|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|ortalama="ağırlıklı"|
+log_loss|Bu, olasılıksal bir sınıflandırıcının öngörüleri göz önüne alındığında gerçek etiketlerin negatif log-olasılığı olarak tanımlanan sinir ağları gibi (multinomial) lojistik regresyon ve uzantılarında kullanılan kayıp işlevidir. Yt = 1'in gerçek {0,1} etiketli yt ve tahmini olasılık yp'si olan tek bir örnek için, günlük kaybı -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp)).|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|None|
+norm_macro_recall|Normalleştirilmiş Makro Geri Çağırma, rasgele performansın 0 puana ve mükemmel performansın 1 puana sahip olması için Makro Geri Çağırma'yı normalleştirmiştir. Bu, norm_macro_recall := (recall_score_macro - R)/(1 - R), R'nin rasgele tahminler için recall_score_macro beklenen değeri olduğu (yani ikili sınıflandırma için R=0.5 ve C sınıfı sınıflandırma problemleri için R=(1/C) ile elde edilir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|ortalama = "makro" |
+precision_score_macro|Kesinlik, doğru etiketlenmiş pozitif tahmin edilen öğelerin yüzdesidir. Makro, her sınıf için hassas aritmetik ortalamasıdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|ortalama="makro"|
+precision_score_micro|Kesinlik, doğru etiketlenmiş pozitif tahmin edilen öğelerin yüzdesidir. Mikro toplam doğru pozitif ve yanlış pozitif sayma tarafından küresel olarak hesaplanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|ortalama="mikro"|
+precision_score_weighted|Kesinlik, doğru etiketlenmiş pozitif tahmin edilen öğelerin yüzdesidir. Ağırlıklı, her sınıf için her sınıf için doğru olan örneklerin sayısına göre ağırlıklanan aritmetik kesinlik ortalamasıdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|ortalama="ağırlıklı"|
+recall_score_macro|Geri çağırma, belirli bir sınıfın doğru etiketlenmiş öğelerinin yüzdesidir. Makro, her sınıf için aritmetik hatırlama ortalamasıdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|ortalama="makro"|
+recall_score_micro|Geri çağırma, belirli bir sınıfın doğru etiketlenmiş öğelerinin yüzdesidir. Mikro toplam doğru pozitif, yanlış negatifler ve yanlış pozitif sayma küresel olarak hesaplanır|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|ortalama="mikro"|
+recall_score_weighted|Geri çağırma, belirli bir sınıfın doğru etiketlenmiş öğelerinin yüzdesidir. Ağırlıklı, her sınıf için her sınıf için aritmetik hatırlama ortalamasıdır ve her sınıftaki gerçek örnek sayısına göre ağırlıklanır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|ortalama="ağırlıklı"|
+weighted_accuracy|Ağırlıklı doğruluk, her bir örneğe verilen ağırlığın, o örneğin gerçek sınıfındaki gerçek örneklerin oranına eşit olduğu doğruluktür.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight, hedefteki her öğe için o sınıfın oranına eşit bir vektördür|
 
 <a name="confusion-matrix"></a>
 
-### <a name="confusion-matrix"></a>Karışıklık Matrisi
+### <a name="confusion-matrix"></a>Karışıklık matrisi
 
 #### <a name="what-is-a-confusion-matrix"></a>Karışıklık matrisi nedir?
-Karışıklık matrisi performansını bir sınıflandırma modeli tanımlamak için kullanılır. Her satır, veri kümenizdeki doğru veya gerçek sınıf örneklerini görüntüler ve her sütun, model tarafından tahmin edilen sınıfın örneklerini temsil eder. 
+Bir sınıflandırma modelinin performansını tanımlamak için bir karışıklık matrisi kullanılır. Her satır, veri kümenizdeki gerçek veya gerçek sınıfın örneklerini görüntüler ve her sütun model tarafından öngörülen sınıfın örneklerini temsil eder. 
 
-#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>Karışıklık matrisi ile otomatikleştirilmiş ML ne yapar?
-Sınıflandırma sorunlar için Azure Machine Learning, bir karışıklık matrisi otomatik olarak oluşturulan her model için sağlar. Her bir karışıklık matrisi için otomatik ML, her tahmin edilen etiketin (sütun), doğru etikete (satır) göre sıklığını gösterir. Rengin daha koyu olması, matrisin o belirli bölümünde bulunan sayının yükseği. 
+#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>Otomatik ML karışıklık matrisi ile ne yapar?
+Sınıflandırma sorunları için Azure Machine Learning, oluşturulmuş her model için otomatik olarak bir karışıklık matrisi sağlar. Her karışıklık matrisi için, otomatik ML her tahmin edilen etiketin (sütunun) sıklığını gerçek etikete (satır) göre gösterir. Renk ne kadar koyusa, matrisin o kısmındaki sayı da o kadar yüksek. 
 
 #### <a name="what-does-a-good-model-look-like"></a>İyi bir model neye benzer?
-Veri kümesinin gerçek değerini, modelin verdiği tahmin edilen değerlerle karşılaştırıyoruz. Bu nedenle, modelin değerlerinin büyük bir kısmında olması halinde, model doğru değeri tahmin ettiğinden makine öğrenimi modellerinin doğruluğu daha yüksektir. Bir modelde sınıf dengesizliği varsa, karışıklık matrisi taraflı bir modeli algılamaya yardımcı olur.
+Veri kümesinin gerçek değerini modelin verdiği öngörülen değerlerle karşılaştırıyoruz. Bu nedenle, makine öğrenimi modelleri, modelin diyagonal boyunca değerlerinin çoğuna sahipse daha yüksek doğruluk sahibidir, yani model doğru değeri tahmin etmiştir. Bir modelde sınıf dengesizliği varsa, karışıklık matrisi önyargılı bir modeli algılamaya yardımcı olur.
 
-##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>Örnek 1: doğruluk doğruluğu düşük olan bir sınıflandırma modeli
-![Doğruluk doğruluğu düşük olan bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
+##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>Örnek 1: Doğruluğu düşük bir sınıflandırma modeli
+![Doğruluğu düşük bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-##### <a name="example-2-a-classification-model-with-high-accuracy"></a>Örnek 2: yüksek doğruluk içeren bir sınıflandırma modeli 
-![Yüksek doğruluk içeren bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
+##### <a name="example-2-a-classification-model-with-high-accuracy"></a>Örnek 2: Yüksek doğrulukta bir sınıflandırma modeli 
+![Yüksek doğrulukta bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
-##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>Örnek 3: model tahminlerde yüksek doğruluk ve yüksek sapma içeren bir sınıflandırma modeli
-![Model tahminlerde yüksek doğruluk ve yüksek sapma içeren bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
+##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>Örnek 3: Model tahminlerinde yüksek doğruluk ve yüksek sapma ile bir sınıflandırma modeli
+![Model tahminlerinde yüksek doğruluk ve yüksek sapma ile bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
 <a name="precision-recall-chart"></a>
-### <a name="precision-recall-chart"></a>Duyarlık geri çekme grafiği
-#### <a name="what-is-a-precision-recall-chart"></a>Duyarlık geri çağırma grafiği nedir?
-Duyarlık geri çağırma eğrisi, bir modelden duyarlık ve geri çağırma arasındaki ilişkiyi gösterir. Duyarlık terimi, bir modelin tüm örnekleri doğru şekilde etiketlemesini temsil eder. Geri çağırma belirli bir etiketi tüm örneklerini bulmak bir sınıflandırıcı özelliği temsil eder.
+### <a name="precision-recall-chart"></a>Hassas geri çağırma grafiği
+#### <a name="what-is-a-precision-recall-chart"></a>Hassas geri çağırma grafiği nedir?
+Hassas geri çekme eğrisi, bir modelden alınan kesinlik ve geri çağırma arasındaki ilişkiyi gösterir. Kesinlik terimi, bir modelin tüm örnekleri doğru etiketleme yeteneğini temsil eder. Geri çağırma, bir sınıflandırıcının belirli bir etiketin tüm örneklerini bulma yeteneğini temsil eder.
 
-#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>Precision geri çekme grafiğiyle otomatik ML ne yapar?
+#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>Otomatik ML hassas geri çağırma grafiği ile ne yapar?
 
-Bu grafiği, duyarlık geri çekme eğrileri kesinlik ve belirli iş sorununuz için geri çağırma arasında kabul edilebilir bir ilişki hangi modelle belirlemek her model için karşılaştırabilirsiniz. Bu grafik, makro ortalama duyarlık geri çekme, mikro ortalama duyarlık geri çekme ve duyarlık-tüm sınıflar için bir model ile ilişkili geri çağırma gösterir. 
+Bu grafikle, belirli iş sorununuzun hassasve geri çağırma arasında kabul edilebilir bir ilişkiye sahip olduğunu belirlemek için her modeliçin hassas geri çağırma eğrilerini karşılaştırabilirsiniz. Bu grafik, Makro Ortalama Hassas Geri Çağırma, Mikro Ortalama Hassas Geri Çağırma ve bir modeliçin tüm sınıflarla ilişkili hassas geri çağırmayı gösterir. 
 
-Makro-ortalama, ölçüyü her sınıftan bağımsız olarak hesaplar ve ardından tüm sınıfları eşit olarak ele alır. Ancak, mikro ortalama, ortalamayı hesaplamak için tüm sınıfların katkılarını toplar. Veri kümesinde sınıf dengesizliği varsa, mikro ortalama tercih edilir.
+Makro ortalama, ölçümü her sınıftan bağımsız olarak hesaplar ve tüm sınıfları eşit olarak ele alan ortalamayı alır. Ancak, mikro-ortalama ortalama hesaplamak için tüm sınıfların katkıları toplar. Veri setinde sınıf dengesizliği varsa mikro ortalama tercih edilir.
 
 #### <a name="what-does-a-good-model-look-like"></a>İyi bir model neye benzer?
-İş sorununun hedefine bağlı olarak, ideal duyarlık geri çağırma eğrisi farklı olabilir. Bazı örnekler aşağıda verilmiştir
+İş sorununun amacına bağlı olarak, ideal hassas geri çağırma eğrisi farklı olabilir. Aşağıda bazı örnekler verilmiştir
 
-##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>Örnek 1: düşük duyarlık ve düşük geri çağırma içeren bir sınıflandırma modeli
-![Düşük duyarlık ve düşük geri çağırma özellikli bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
+##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>Örnek 1: Düşük hassasiyetli ve düşük geri çağırmaya sahip bir sınıflandırma modeli
+![Düşük hassasiyetli ve düşük geri çağırmaya sahip bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
-##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>Örnek 2: ~ %100 duyarlık ve ~ 100% geri çağırma içeren bir sınıflandırma modeli 
-Bir sınıflandırma modelinin yüksek duyarlıklı ve geri çağırma](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
- ![<a name="roc"></a>
+##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>Örnek 2: ~%100 hassas ve ~%100 geri çağırmaile bir sınıflandırma modeli 
+![Bir sınıflandırma modeli yüksek hassasiyet ve hatırlama](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+<a name="roc"></a>
 ### <a name="roc-chart"></a>ROC grafiği
 
 #### <a name="what-is-a-roc-chart"></a>ROC grafiği nedir?
-Özelliği (veya ROC) çalışan ve belirli bir modelde yanlış sınıflandırılmış etiketlerini doğru sınıflandırılmış etiketlerin bir çizim alıcıdır. Eğitim modeller olarak yüksek sapması veri kümeleri üzerinde yanlış pozitif etiketleri gösterme ROC eğrisi daha bilgilendirici olabilir.
+Alıcı çalışma özelliği (veya ROC), belirli bir model için yanlış sınıflandırılan etiketlere karşılık doğru olarak sınıflandırılan etiketlerin çizimidir. ROC eğrisi, yanlış pozitif etiketleri göstermeyeceği için, yüksek önyargılı veri kümelerinde modelleri eğitirken daha az bilgilendirici olabilir.
 
-#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Otomatik ML, ROC grafiğiyle ne yapar?
-Otomatikleştirilen ML, bir modelin tüm sınıflarıyla ilişkili ortalama duyarlık-geri çağırma, mikro ortalama duyarlık-geri çağırma ve duyarlık geri çağırma için makro üretir. 
+#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Otomatik ML ROC grafiği ile ne yapar?
+Otomatik ML Makro Ortalama Hassas-Geri Çağırma, Mikro Ortalama Hassas-Geri Çağırma ve bir model için tüm sınıflarla ilişkili hassas geri çağırma oluşturur. 
 
-Makro-ortalama, ölçüyü her sınıftan bağımsız olarak hesaplar ve ardından tüm sınıfları eşit olarak ele alır. Ancak, mikro ortalama, ortalamayı hesaplamak için tüm sınıfların katkılarını toplar. Veri kümesinde sınıf dengesizliği varsa, mikro ortalama tercih edilir.
+Makro ortalama, ölçümü her sınıftan bağımsız olarak hesaplar ve tüm sınıfları eşit olarak ele alan ortalamayı alır. Ancak, mikro-ortalama ortalama hesaplamak için tüm sınıfların katkıları toplar. Veri setinde sınıf dengesizliği varsa mikro ortalama tercih edilir.
 
 #### <a name="what-does-a-good-model-look-like"></a>İyi bir model neye benzer?
-İdeal olarak, model %100 doğru pozitif oranına yaklaşarak %0 ' dan büyük pozitif oranına yaklaşacaktır. 
+İdeal olarak, model % 100 doğru pozitif oranı ve daha yakın% 0 yanlış pozitif oranı olacaktır. 
 
-##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Örnek 1: düşük doğru etiketlere ve yüksek yanlış etiketlere sahip bir sınıflandırma modeli
-![Düşük doğru etiketlere ve yüksek yanlış etiketlere sahip sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
+##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Örnek 1: Düşük doğru etiketlere ve yüksek yanlış etiketlere sahip bir sınıflandırma modeli
+![Düşük doğru etiketlerve yüksek yanlış etiketlerle sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
 
-##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>Örnek 2: yüksek doğru etiketlere ve düşük yanlış etiketlere sahip bir sınıflandırma modeli
-yüksek doğru etiketlere ve düşük yanlış etiketlere sahip bir sınıflandırma modeli ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>Örnek 2: Yüksek doğru etiketlere ve düşük yanlış etiketlere sahip bir sınıflandırma modeli
+![yüksek doğru etiketleri ve düşük yanlış etiketleri olan bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
 <a name="lift-curve"></a>
-### <a name="lift-chart"></a>Grafiği yükselt
+### <a name="lift-chart"></a>Kaldırma grafiği
 #### <a name="what-is-a-lift-chart"></a>Asansör grafiği nedir?
-Lift grafikleri bir sınıflandırma modeli performansını değerlendirmek için kullanılır. Bu, model olmadan ne kadar daha ne kadar iyi bir model olmadan ne kadar daha fazla beklendiğini gösterir.
-#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Otomatik ML, kaldırma grafiğiyle ne yapar?
-Otomatik olarak bu belirli modelin değeri kazanç görüntülemek için taban çizgisine Azure Machine Learning ile geliştirilmiş modelinin lift karşılaştırabilirsiniz.
+Kaldırma grafikleri bir sınıflandırma modelinin performansını değerlendirmek için kullanılır. Bu doğruluk açısından bir model olmadan karşılaştırıldığında oluşturulan model ile yapmak için ne kadar daha iyi bekleyebilirsiniz gösterir.
+#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Otomatik ML asansör grafiği ile ne yapar?
+Otomatik olarak oluşturulmuş modelin asansörünü, belirli bir modelin değer kazancını görüntülemek için Azure Machine Learning ile taban çizgisiyle karşılaştırabilirsiniz.
 #### <a name="what-does-a-good-model-look-like"></a>İyi bir model neye benzer?
 
-##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>Örnek 1: bir rastgele seçim modelinden daha kötü olan bir sınıflandırma modeli
-![Rastgele seçim modelinden daha kötü olan bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Örnek 2: bir rastgele seçim modelinden daha iyi gerçekleştiren bir sınıflandırma modeli
-daha iyi gerçekleştiren bir sınıflandırma modeli ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
+##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>Örnek 1: Rastgele bir seçim modelinden daha kötü olan bir sınıflandırma modeli
+![Rastgele bir seçim modelinden daha kötü olan bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
+##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Örnek 2: Rasgele bir seçim modelinden daha iyi performans gösteren bir sınıflandırma modeli
+![Daha iyi performans gösteren bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
 <a name="gains-curve"></a>
-### <a name="gains-chart"></a>Kazanç grafiği
+### <a name="gains-chart"></a>Kazançlar grafiği
 #### <a name="what-is-a-gains-chart"></a>Kazanç grafiği nedir?
 
-Kazançlar grafiği her veri bölümü tarafından bir sınıflandırma modeli performansını değerlendirir. Bu, veri kümesinin ne kadar iyi gerçekleştirmesini bekleyebilirsiniz karşı bir rastgele seçim modeli karşılaştırması, her yüzdebirlik dilime gösterir.
+Kazançlar grafiği, bir sınıflandırma modelinin performansını verilerin her bölümüne göre değerlendirir. Veri kümesinin her yüzdelik yüzdesi için, rasgele bir seçim modeline göre ne kadar daha iyi performans gösterebileceğinizi gösterir.
 
-#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Kazançlar grafiği ile otomatikleştirilmiş ML ne yapar?
-İstenen bir erişim modelden karşılık gelen bir yüzdesini kullanarak sınıflandırma kesme seçmenize yardımcı olmak için toplam kazancı grafik kullanın. Bu bilgiler eşlik eden lift grafik sonuçları bakarak başka bir yol sağlar.
+#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Otomatik ML kazanç grafiği ile ne yapar?
+Modelden istenen kazançiçin karşılık gelen bir yüzdeyi kullanarak sınıflandırma kesintisini seçmenize yardımcı olmak için kümülatif kazançlar grafiğini kullanın. Bu bilgiler, eşlik eden kaldırma grafiğindeki sonuçlara başka bir bakış açısı sağlar.
 
 #### <a name="what-does-a-good-model-look-like"></a>İyi bir model neye benzer?
-##### <a name="example-1-a-classification-model-with-minimal-gain"></a>Örnek 1: en az kazanılı bir sınıflandırma modeli
-![en az kazanılı bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
+##### <a name="example-1-a-classification-model-with-minimal-gain"></a>Örnek 1: En az kazançlı bir sınıflandırma modeli
+![en az kazançlı bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-##### <a name="example-2-a-classification-model-with-significant-gain"></a>Örnek 2: önemli kazanç içeren bir sınıflandırma modeli
-önemli miktarda kazanç içeren bir sınıflandırma modeli ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
+##### <a name="example-2-a-classification-model-with-significant-gain"></a>Örnek 2: Önemli kazanıma sahip bir sınıflandırma modeli
+![Önemli kazanç ile bir sınıflandırma modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
 <a name="calibration-plot"></a>
-### <a name="calibration-chart"></a>Ayar grafiği
+### <a name="calibration-chart"></a>Kalibrasyon şeması
 
-#### <a name="what-is-a-calibration-chart"></a>Ayar grafiği nedir?
-Bir ayar çizim, Tahmine dayalı bir modelin güvenle görüntülemek için kullanılır. Bunu, tahmin edilen olasılık ve gerçek olasılık arasındaki ilişkiyi göstererek yapar; burada "olasılık" belirli bir örneğin bazı etiketlerinin altına ait olma olasılığını temsil eder.
-#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Otomatik ML, ayarlama grafiği ile ne yapar?
-Tüm sınıflandırma sorunları ayarlama satır micro-ortalama, makro ortalama ve her sınıfta belirli bir Tahmine dayalı model için gözden geçirebilirsiniz.
+#### <a name="what-is-a-calibration-chart"></a>Kalibrasyon grafiği nedir?
+Bir kalibrasyon çizimi, tahmine dayalı bir modelin güvenini göstermek için kullanılır. Bunu, "olasılık"ın belirli bir örneğin belirli bir etiket altında ait olma olasılığını temsil ettiği öngörülen olasılık ile gerçek olasılık arasındaki ilişkiyi göstererek yapar.
+#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Otomatik ML kalibrasyon grafiği ile ne yapar?
+Tüm sınıflandırma sorunları için, belirli bir tahmin modelinde mikro ortalama, makro ortalama ve her sınıf için kalibrasyon satırını gözden geçirebilirsiniz.
 
-Makro-ortalama, ölçüyü her sınıftan bağımsız olarak hesaplar ve ardından tüm sınıfları eşit olarak ele alır. Ancak, mikro ortalama, ortalamayı hesaplamak için tüm sınıfların katkılarını toplar. 
+Makro ortalama, ölçümü her sınıftan bağımsız olarak hesaplar ve tüm sınıfları eşit olarak ele alan ortalamayı alır. Ancak, mikro-ortalama ortalama hesaplamak için tüm sınıfların katkıları toplar. 
 #### <a name="what-does-a-good-model-look-like"></a>İyi bir model neye benzer?
- İyi kalibre edilmiş bir model y = x satırıyla hizalanır ve bu, tahmine dayalı olarak oldukça önemlidir. Fazla kişiye modeli ile y hizalar = 0 satırı, burada tahmin olasılık mevcuttur ancak gerçek hiç olasılık yoktur. 
+ İyi kalibre edilmiş bir model y=x çizgisiyle hizalanır ve tahminleri oldukça kendinden eminolur. Aşırı kendine güvenen bir model, öngörülen olasılığın mevcut olduğu ancak gerçek bir olasılık olmadığı y=0 çizgisiyle hizalanır. 
 
 
-##### <a name="example-1-a-well-calibrated-model"></a>Örnek 1: iyi kalibre edilmiş bir model
+##### <a name="example-1-a-well-calibrated-model"></a>Örnek 1: İyi kalibre edilmiş bir model
 ![ daha iyi kalibre edilmiş model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-##### <a name="example-2-an-over-confident-model"></a>Örnek 2: daha duyarlı olmayan bir model
-![Daha emin olan bir model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
+##### <a name="example-2-an-over-confident-model"></a>Örnek 2: Kendine fazla güvenen bir model
+![Kendine fazla güvenen bir model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression"></a>Gerileme sonuçları
+## <a name="regression-results"></a><a name="regression"></a>Regresyon sonuçları
 
-Azure Machine Learning otomatik makine öğrenimi özelliklerini kullanarak oluşturduğunuz her regresyon modeli için aşağıdaki ölçümler ve grafikler mevcuttur
+Azure Machine Learning'in otomatik makine öğrenme özelliklerini kullanarak oluşturduğunuz her regresyon modeli için aşağıdaki ölçümler ve grafikler kullanılabilir
 
 + [Ölçümler](#reg-metrics)
-+ [Tahmin edilen ve true](#pvt)
-+ [Fazlalıklar grafiği](#histo)
++ [Öngörülen vs True](#pvt)
++ [Artıkların histogramı](#histo)
 
 
-### <a name="reg-metrics"></a>Gerileme ölçümleri
+### <a name="regression-metrics"></a><a name="reg-metrics"></a>Regresyon ölçümleri
 
-Aşağıdaki ölçümler, bir gerileme veya tahmin görevi için her bir çalıştırma yinelemesinde kaydedilir.
+Aşağıdaki ölçümler, bir regresyon veya tahmin görevi için her çalıştırma yinelemesinde kaydedilir.
 
-|Ölçüm|Açıklama|Hesaplama|Ek parametreler
+|Ölçüm|Açıklama|Hesaplama|Ekstra Parametreler
 --|--|--|--|
-explained_variance|Anlatıldığı farkı, belirli bir veri kümesi çeşitlemesi için matematiksel bir model hesapları oranı ' dir. Sadece, varyans hataları varyansını özgün verilerin içinde azaltma yüzdesi değil. Hataların ortalaması 0 olduğunda anlatıldığı varyansı için eşittir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Yok|
-r2_score|R2 belirleme veya karesi alınmış hataların ortalaması çıkaran bir temel modele kıyasla yüzde azalma katsayısıdır. |[Hesaplama](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Yok|
-spearman_correlation|Spearman bağıntı iki veri kümesi arasındaki ilişkinin monotonicity nonparametric ölçüsüdür. Pearson bağıntı, iki veri kümesini normalde dağıtılmış Spearman bağıntı varsaymaz. Diğer korelasyon katsayısını gibi bunu -1 ve + ile hiçbir bağıntısı olduğunu belirtmek için 0 ile 1 arasında değişiklik gösterir. -1 veya + 1 bağıntılar tam bir monoton ilişki kapsıyor. Pozitif bağıntılar x olarak arttıkça, bu nedenle y yaptığı kapsıyor. Negatif bağıntılar olarak arttıkça, x y azaltır kapsıyor.|[Hesaplama](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Yok|
-mean_absolute_error|Mutlak hata tahmin ile hedef arasındaki farkı mutlak değeri beklenen değeri anlama|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Yok|
-normalized_mean_absolute_error|Veri aralığı tarafından ayrılmış mean Absolute Error normalleştirilmiş ortalama mutlak hata olduğu|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Veri aralığına göre Böl|
-median_absolute_error|Ortalama mutlak hata tahmin ile hedef arasındaki tüm mutlak farkları ortalamasıdır. Aykırı değerleri için bu kayıp sağlamdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Yok|
-normalized_median_absolute_error|Veri aralığı tarafından ayrılmış ortalama mutlak hata normalleştirilmiş ortalama mutlak hata olduğu|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Veri aralığına göre Böl|
-root_mean_squared_error|Kök ortalama karesi alınmış hata hedef ve tahmin arasındaki karesi alınmış Beklenen fark kare köküdür|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Yok|
-normalized_root_mean_squared_error|Normalleştirilmiş kök ortalama karesi alınmış hata kök ortalama karesi alınmış hata veri aralığını tarafından ayrılmış olan|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Veri aralığına göre Böl|
-root_mean_squared_log_error|Kök ortalama karesi alınmış günlük hatadır Logaritmik beklenen karesi alınmış hata kare kökünü|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Yok|
-normalized_root_mean_squared_log_error|Normalleştirilmiş kök ortalama kare günlük hatası, kök ortalama kareler günlük hatası veri aralığına bölünür|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Veri aralığına göre Böl|
+explained_variance|Açıklanan varyans, matematiksel bir modelin belirli bir veri kümesinin varyasyonuna göre hesapladığı orandır. Bu hataların varyansına orijinal verilerin varyansındaki yüzde azalmadır. Hataların ortalaması 0 olduğunda, açıklanan varyanseşittir.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|None|
+r2_score|R2, ortalamayı oluşturan bir temel modelle karşılaştırıldığında, kararlılık katsayısı veya kareli hatalardaki yüzde azalmadır. |[Hesaplama](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|None|
+spearman_correlation|Spearman korelasyon iki veri kümesi arasındaki ilişkinin monotonluk bir parametrik olmayan ölçüsüdür. Pearson korelasyonaksine, Spearman korelasyon her iki veri kümesi normal dağıtılır varsaymaz. Diğer korelasyon katsayıları gibi, bu da -1 ile +1 arasında değişir ve 0 korelasyon anlamına gelmez. -1 veya +1 korelasyonları tam bir monoton ilişki yi ima eder. Pozitif korelasyonlar, x arttıkça y'nin de arttığını ima eder. Negatif korelasyonlar x arttıkça y azalır anlamına dır.|[Hesaplama](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|None|
+mean_absolute_error|Ortalama mutlak hata, hedef ve tahmin arasındaki farkın mutlak değerinin beklenen değeridir|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|None|
+normalized_mean_absolute_error|Normalleştirilmiş ortalama mutlak hata, veri aralığına bölünen Mutlak Hata ortalamasıdır|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Veri aralığına göre bölme|
+median_absolute_error|Ortanca mutlak hata, hedef ve tahmin arasındaki tüm mutlak farklılıkların ortancasidir. Bu kayıp aykırı lar için sağlamdır.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|None|
+normalized_median_absolute_error|Normalleştirilmiş ortanca mutlak hata, veri aralığına bölünen ortanca mutlak hatadır|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|Veri aralığına göre bölme|
+root_mean_squared_error|Kök ortalama kare hata hedef ve tahmin arasındaki beklenen kare farkın kare köküdür|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|None|
+normalized_root_mean_squared_error|Normalleştirilmiş kök ortalama kare hata kök ortalama kare hata veri aralığına bölünür|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Veri aralığına göre bölme|
+root_mean_squared_log_error|Kök ortalama kareli günlük hatası beklenen kare logaritmik hatanın kare köküdür|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|None|
+normalized_root_mean_squared_log_error|Normalleştirilmiş Kök ortalama kareli günlük hatası, veri aralığına bölünen kök ortalama kareli günlük hatasıdır|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Veri aralığına göre bölme|
 
-### <a name="pvt"></a>Tahmin edilen ve gerçek grafik
-#### <a name="what-is-a-predicted-vs-true-chart"></a>Tahmin edilen ve gerçek grafik nedir?
-Tahmin edilen ve true, bir gerileme sorunu için tahmin edilen bir değer ve onun ilişkili doğru değeri arasındaki ilişkiyi gösterir. Bu grafiğin y yakın olarak model performansını ölçmek için kullanılan = x satır tahmin edilen değerler, Tahmine dayalı bir model doğruluğunu daha iyi.
+### <a name="predicted-vs-true-chart"></a><a name="pvt"></a>Öngörülen vs True grafik
+#### <a name="what-is-a-predicted-vs-true-chart"></a>Tahmin edilen ve Doğru grafik nedir?
+Öngörülen ve True, öngörülen değer ile bir gerileme sorunu için ilişkili gerçek değeri arasındaki ilişkiyi gösterir. Bu grafik, tahmin edilen değerlerin y=x çizgisine ne kadar yakın olduğu, tahmine dayalı bir modelin doğruluğu ne kadar iyi olursa, bir modelin performansını ölçmek için kullanılabilir.
 
-#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>Tahmini ve gerçek grafik ile otomatik ML ne yapar?
-Sonrasında her çalıştırma, tahmin edilen bir karşılaştırması için her bir regresyon modeli true grafı görebilirsiniz. Veri gizliliği korumak için değerleri birlikte binned ve her bir depo boyutu, grafik alanı alt kısmında bulunan bir çubuk grafik olarak gösterilir. Tahmine dayalı model hatası kenar boşlukları, model olması gerektiği ideal değerle gösteren açık gölge alanı ile karşılaştırabilirsiniz.
+#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>Otomatik ML, Tahmin edilen ve Gerçek grafikle ne yapar?
+Her çalıştırmadan sonra, her regresyon modeli için tahmin edilen ve gerçek bir grafik görebilirsiniz. Veri gizliliğini korumak için değerler biraraya getirilir ve her depo parçasının boyutu grafik alanının alt kısmında çubuk grafiği olarak gösterilir. Tahmine dayalı modeli, hata marjlarını gösteren daha açık gölge alanıyla, modelin olması gereken yerin ideal değeriyle karşılaştırabilirsiniz.
 
 #### <a name="what-does-a-good-model-look-like"></a>İyi bir model neye benzer?
-##### <a name="example-1-a-classification-model-with-low-accuracy"></a>Örnek 1: düşük doğruluk içeren bir sınıflandırma modeli
-![Tahminlerde düşük doğruluk içeren bir regresyon modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
+##### <a name="example-1-a-classification-model-with-low-accuracy"></a>Örnek 1: Düşük doğrulukta bir sınıflandırma modeli
+![Tahminlerde düşük doğrulukla bir regresyon modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-##### <a name="example-2-a-regression-model-with-high-accuracy"></a>Örnek 2: yüksek doğruluk içeren bir regresyon modeli 
-[tahminlerde yüksek doğruluk içeren bir regresyon modeli ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+##### <a name="example-2-a-regression-model-with-high-accuracy"></a>Örnek 2: Yüksek doğrulukta bir regresyon modeli 
+[![Tahminlerinde yüksek doğruluk la regresyon modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 
-### <a name="histo"></a>Fazlalıklar grafiğinin histogramı
-#### <a name="what-is-a-residuals-chart"></a>Fazlalıklar grafik nedir?
-Bir fazlalığı gözlemlenen y – tahmin edilen y temsil eder. Bir hata ile düşük sapması göstermek için 0 ortalanmış bir bell eğri olarak Kalanlar histogram şeklinde. 
-#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Otomatik ML, resduals grafiği ile ne yapar?
-Otomatik ML, hataların tahmine dayalı olarak dağılımını göstermek için otomatik olarak bir resduals grafiği sağlar.
+### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>Artıklar grafiğinin histogramı
+#### <a name="what-is-a-residuals-chart"></a>Artıklar grafiği nedir?
+Bir kalıntı gözlenen y temsil eder – öngörülen y. Düşük önyargı ile hata payı göstermek için, artıkların histogramı 0 etrafında ortalanmış bir çan eğrisi olarak şekillendirilmelidir. 
+#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Otomatik ML artıklar grafik ile ne yapar?
+Otomatik ML, öngörülerde hataların dağılımını göstermek için otomatik olarak bir artık grafiği sağlar.
 #### <a name="what-does-a-good-model-look-like"></a>İyi bir model neye benzer?
-İyi bir modelde, genellikle bir zil eğrisi veya bir hata olur.
+İyi bir model genellikle sıfır civarında bir çan eğrisi veya hataları olacaktır.
 
-##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Örnek 1: kendi hatalarında sapma içeren bir regresyon modeli
-![Kendi hatalarında sapma ile SA regresyon modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
+##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Örnek 1: Hatalarında yanlılık olan bir regresyon modeli
+![Hatalarında yanlılık olan SA regresyon modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Örnek 2: daha eşit hata dağıtımına sahip bir regresyon modeli
-![Daha eşit hata dağıtımına sahip bir regresyon modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
+##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Örnek 2: Hataların daha eşit dağılımına sahip bir regresyon modeli
+![Hataların daha eşit dağılımına sahip bir regresyon modeli](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="explain-model"></a>Model yorumlenebilirliği ve özellik önemi
-Otomatikleştirilmiş ML, çalışmalarınız için bir makine öğrenimi yorumu panosu sağlar.
-Yorumlu özellikleri [etkinleştirme hakkında daha](how-to-machine-learning-interpretability-automl.md) fazla bilgi için bkz. otomatik ml denemeleri 'da yorumlenebilirliği etkinleştirme.
+## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a>Model yorumlanabilirliği ve özelliğinin önemi
+Otomatik ML, koşularınız için bir makine öğrenimi yorumlanabilirlik panosu sağlar.
+Yorumlanabilirlik özelliklerini etkinleştirme hakkında daha fazla bilgi için, otomatik ML denemelerinde yorumlanabilirliği [etkinleştirme hakkında nasıl dır](how-to-machine-learning-interpretability-automl.md) bilgi edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ Azure Machine Learning 'de [Otomatikleştirilmiş ml](concept-automated-ml.md) hakkında daha fazla bilgi edinin.
-+ [Otomatikleştirilmiş Machine Learning modeli açıklaması](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) örnek not defterlerini deneyin.
++ Azure Machine Learning'de [otomatik ml](concept-automated-ml.md) hakkında daha fazla bilgi edinin.
++ Otomatik [Makine Öğrenimi Modeli Açıklama](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) örnek not defterlerini deneyin.

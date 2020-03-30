@@ -1,105 +1,105 @@
 ---
 title: Azure Veri Paylaşımı rolleri ve gereksinimleri
-description: Azure veri paylaşımının kullanıldığı verileri paylaşmak ve almak için gereken izinler hakkında bilgi edinin.
+description: Azure Veri Paylaşımı'nı kullanarak veri paylaşmak ve almak için gereken izinler hakkında bilgi edinin.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265512"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
-Bu makalede, Azure veri paylaşma hizmeti 'ni kullanarak veri paylaşmak ve almak için gereken roller ve izinler açıklanmaktadır. 
+Bu makalede, Azure Veri Paylaşımı hizmetini kullanarak verileri paylaşmak ve almak için gereken roller ve izinler açıklanmaktadır. 
 
 ## <a name="roles-and-requirements"></a>Roller ve gereksinimler
 
-Azure veri paylaşma hizmeti ile veri sağlayıcısı ile tüketici arasında kimlik bilgileri alışverişi yapmadan veri paylaşabilirsiniz. Azure Data Share hizmeti, Azure veri deposunda kimlik doğrulamak için Yönetilen kimlikler (daha önce Mssıs olarak bilinir) kullanır. 
+Azure Veri Paylaşımı hizmeti yle, veri sağlayıcısı ve tüketici arasında kimlik bilgileri alışverişinde bulunmadan verileri paylaşabilirsiniz. Azure Veri Paylaşımı hizmeti, Azure veri deposuna kimlik doğrulamak için Yönetilen Kimlikler'i (önceden MSIs olarak bilinir) kullanır. 
 
-Azure veri paylaşımının kaynağına ait yönetilen kimliğe Azure veri deposuna erişim verilmesi gerekir. Daha sonra Azure veri paylaşımı hizmeti, anlık görüntü tabanlı paylaşıma yönelik verileri okumak ve yazmak ve yerinde paylaşım için sembolik bağlantı kurmak üzere bu yönetilen kimliği kullanır. 
+Azure Veri Paylaşımı kaynağının yönetilen kimliğine Azure veri deposuna erişim izni verilmesi gerekir. Azure Veri Paylaşımı hizmeti daha sonra bu yönetilen kimliği anlık görüntü tabanlı paylaşım için veri okumak ve yazmak ve yerinde paylaşım için sembolik bağlantı oluşturmak için kullanır. 
 
-Bir Azure veri deposundan veri paylaşmak veya almak için, kullanıcının en azından aşağıdaki izinlere ihtiyacı vardır. SQL tabanlı paylaşım için ek izinler gereklidir.
-* Azure veri deposuna yazma izni. Genellikle, bu izin **katkıda** bulunan rolünde bulunur.
-* Azure veri deposunda rol ataması oluşturma izni. Genellikle, rol atamaları oluşturma izni **sahip** rolü, Kullanıcı erişimi yönetici rolü veya Microsoft. Authorization/role atamaları/yazma izni atanmış özel bir rol içinde bulunur. Veri paylaşımının yönetilen kimliği zaten Azure veri deposuna erişim izni verildiyse, bu izin gerekli değildir. Gerekli rol için aşağıdaki tabloya bakın.
+Bir Azure veri deposundan veri paylaşmak veya almak için, kullanıcının en az aşağıdaki izinlere ihtiyacı vardır. SQL tabanlı paylaşım için ek izinler gereklidir.
+* Azure veri deposuna yazma izni. Genellikle, bu izin **Katılımcı** rolünde bulunur.
+* Azure veri deposunda rol ataması oluşturma izni. Tipik olarak, Yönetici **rolünde,** Kullanıcı Erişim Yöneticisi rolünde veya Microsoft.Authorization/role assignments/write izni atanan özel bir rolde rol atamaları oluşturma izni bulunur. Veri paylaşımı kaynağının yönetilen kimliği azure veri deposuna zaten erişim izni verilmişse, bu izin gerekmez. Gerekli rol için aşağıdaki tabloya bakın.
 
-Aşağıda, veri paylaşımının kaynak yönetimli kimliğine atanan rollerin özeti verilmiştir:
+Aşağıda, Veri Paylaşımı kaynağının yönetilen kimliğine atanan rollerin bir özeti verilmiştir:
 
 | |  |  |
 |---|---|---|
-|**Veri deposu türü**|**Kaynak veri deposu Veri Sağlayıcısı**|**Veri tüketicisi hedef veri deposu**|
-|Azure Blob Depolama| Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
-|Azure Data Lake Gen1 | Sahip | Desteklenmiyor
-|Azure Data Lake Gen2 | Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
-|Azure SQL Server | SQL DB Katılımcısı | SQL DB Katılımcısı
-|Azure Veri Gezgini kümesi | Katılımcı | Katılımcı
+|**Veri Deposu Türü**|**Veri Sağlayıcı Kaynak Veri Deposu**|**Veri Tüketici Hedef Veri Deposu**|
+|Azure Blob Depolama| Depolama Blob Veri Okuyucu | Depolama Blob Veri Katılımcısı
+|Azure Veri Gölü Gen1 | Sahip | Desteklenmiyor
+|Azure Veri Gölü Gen2 | Depolama Blob Veri Okuyucu | Depolama Blob Veri Katılımcısı
+|Azure SQL Sunucusu | SQL DB Katılımcısı | SQL DB Katılımcısı
+|Azure Veri Gezgini Kümesi | Katılımcı | Katılımcı
 |
 
-SQL tabanlı paylaşım için, SQL veritabanı 'nın Azure veri paylaşımı kaynağıyla aynı ada sahip bir dış sağlayıcıdan oluşturulması gerekir. SQL kullanıcısının gerektirdiği iznin özeti aşağıda verilmiştir.
+SQL tabanlı paylaşım için, SQL veritabanındaki bir dış sağlayıcıdan Azure Veri Paylaşımı kaynağıyla aynı ada sahip bir SQL kullanıcısının oluşturulması gerekir. Aşağıda, SQL kullanıcısı tarafından istenen iznin bir özeti verilmiştir.
 
 | |  |  |
 |---|---|---|
-|**SQL veritabanı türü**|**Veri Sağlayıcısı SQL Kullanıcı Izni**|**Veri tüketicisi SQL Kullanıcı Izni**|
+|**SQL Veritabanı Türü**|**Veri Sağlayıcısı SQL Kullanıcı İzni**|**Veri Tüketici SQL Kullanıcı İzni**|
 |Azure SQL Veritabanı | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |Azure Synapse Analytics (eski adı SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |
 
 
 ### <a name="data-provider"></a>Veri sağlayıcısı 
-Azure veri paylaşımında bir veri kümesi eklemek için, sağlayıcı veri paylaşımının kaynağına yönetilen kimliğin kaynak Azure veri deposuna erişim verilmesi gerekir. Örneğin, depolama hesabı durumunda, veri paylaşımının kaynak olarak yönetilen kimliği, Depolama Blobu veri okuyucusu rolüne sahiptir. 
+Azure Veri Paylaşımı'na bir veri kümesi eklemek için, sağlayıcı veri paylaşım kaynağının yönetilen kimliğine kaynak Azure veri deposuna erişim izni verilmesi gerekir. Örneğin, depolama hesabı durumunda, veri paylaşımı kaynağının yönetilen kimliğine Depolama Blob Veri Okuyucu rolü verilir. 
 
-Bu, Kullanıcı Azure portal aracılığıyla veri kümesi eklerken ve Kullanıcı uygun izne sahip olduğunda Azure veri paylaşma hizmeti tarafından otomatik olarak gerçekleştirilir. Örneğin, Kullanıcı Azure veri deposunun sahibidir veya Microsoft. Authorization/role atama/yazma izninin atandığı özel bir rolün üyesidir. 
+Bu işlem, kullanıcı Azure portalı üzerinden veri kümesi eklendiğinde ve kullanıcı uygun izne sahipse Azure Veri Paylaşımı hizmeti tarafından otomatik olarak yapılır. Örneğin, kullanıcı Azure veri deposunun sahibidir veya Microsoft.Authorization/role assignments/write izni atanmış olan özel bir rolün üyesidir. 
 
-Alternatif olarak, Kullanıcı Azure veri deposunun sahibine sahip olabilir. veri paylaşımının kaynak yönetilen kimliğini Azure veri deposuna el ile ekleyin. Bu eylemin veri paylaşma kaynağı başına yalnızca bir kez gerçekleştirilmesi gerekir.
+Alternatif olarak, kullanıcı Azure veri deposunun sahibine sahip olabilir, veri paylaşımı kaynağının yönetilen kimliğini Azure veri deposuna el ile ekleyebilir. Bu eylemin yalnızca veri paylaşımı kaynağı başına bir kez gerçekleştirilmesi gerekir.
 
-Veri paylaşımının yönetilen kimliği için bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
+Veri paylaşımı kaynağının yönetilen kimliği için bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure veri deposuna gidin.
-1. **Access Control (IAM)** seçeneğini belirleyin.
-1. **Rol ataması Ekle**' yi seçin.
-1. *Rol*altında, yukarıdaki rol atama tablosunda bulunan rolü seçin (örneğin, depolama hesabı Için, *Depolama Blobu veri okuyucusu*' nu seçin).
-1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
-1. *Kaydet* düğmesine tıklayın.
+1. **Erişim Denetimi 'ni (IAM)** seçin.
+1. **Rol ataması ekle'yi**seçin.
+1. *Role*altında, yukarıdaki rol atama tablosundaki rolü seçin (örneğin, depolama hesabı için *Depolama Blob Veri Okuyucu'yu*seçin).
+1. *Select*, Azure Veri Paylaşımı kaynağınızın adını yazın.
+1. *Kaydet*'e tıklayın.
 
-SQL tabanlı kaynaklarda, yukarıdaki adımlara ek olarak SQL veritabanı 'nda Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıya *db_datareader* izni verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [verilerinizi paylaşma](share-your-data.md) öğreticisinde bulunabilir. 
+SQL tabanlı kaynaklarda, yukarıdaki adımlara ek olarak, SQL veritabanındaki bir dış sağlayıcıdan Azure Veri Paylaşımı kaynağıyla aynı ada sahip bir SQL kullanıcısının oluşturulması gerekir. Bu *kullanıcıya db_datareader* izni nin verilmesi gerekir. SQL tabanlı paylaşım için diğer ön koşullarla birlikte örnek bir komut [dosyası, veri öğreticinizi paylaş'ta](share-your-data.md) bulunabilir. 
 
 ### <a name="data-consumer"></a>Veri tüketicisi
-Veri almak için, tüketici veri paylaşımının kaynağına ait yönetilen kimliğin hedef Azure veri deposuna erişim verilmesi gerekir. Örneğin, depolama hesabı durumunda, veri paylaşımının kaynak tarafından yönetilen kimliği, Depolama Blobu veri katılımcısı rolüne sahiptir. 
+Veri almak için, tüketici veri paylaşım kaynağının yönetilen kimliğine hedef Azure veri deposuna erişim izni verilmesi gerekir. Örneğin, depolama hesabı durumunda, veri paylaşımı kaynağının yönetilen kimliğine Depolama Blob Veri Katılımcısı rolü verilir. 
 
-Kullanıcı Azure portal aracılığıyla bir hedef veri deposu belirtiyorsa ve Kullanıcı uygun izinlere sahipse, bu, Azure veri paylaşma hizmeti tarafından otomatik olarak gerçekleştirilir. Örneğin, Kullanıcı Azure veri deposunun sahibidir veya Microsoft. Authorization/role atama/yazma izni atanmış özel bir rolün üyesidir. 
+Bu işlem, kullanıcının Azure portalı üzerinden bir hedef veri deposu belirtmesi ve kullanıcının uygun izni varsa Azure Veri Paylaşımı hizmeti tarafından otomatik olarak yapılır. Örneğin, kullanıcı Azure veri deposunun sahibidir veya Microsoft.Authorization/role assignments/write izni atanmış olan özel bir rolün üyesidir. 
 
-Alternatif olarak, Kullanıcı Azure veri deposunun sahibine sahip olabilir. veri paylaşımının kaynak yönetilen kimliğini Azure veri deposuna el ile ekleyin. Bu eylemin veri paylaşma kaynağı başına yalnızca bir kez gerçekleştirilmesi gerekir.
+Alternatif olarak, kullanıcı Azure veri deposunun sahibine sahip olabilir, veri paylaşımı kaynağının yönetilen kimliğini Azure veri deposuna el ile ekleyebilir. Bu eylemin yalnızca veri paylaşımı kaynağı başına bir kez gerçekleştirilmesi gerekir.
 
-Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
+Veri paylaşımı kaynağının yönetilen kimliği için el ile bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure veri deposuna gidin.
-1. **Access Control (IAM)** seçeneğini belirleyin.
-1. **Rol ataması Ekle**' yi seçin.
-1. *Rol*altında, yukarıdaki rol atama tablosunda bulunan rolü seçin (örneğin, depolama hesabı Için, *Depolama Blobu veri okuyucusu*' nu seçin).
-1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
-1. *Kaydet* düğmesine tıklayın.
+1. **Erişim Denetimi 'ni (IAM)** seçin.
+1. **Rol ataması ekle'yi**seçin.
+1. *Role*altında, yukarıdaki rol atama tablosundaki rolü seçin (örneğin, depolama hesabı için *Depolama Blob Veri Okuyucu'yu*seçin).
+1. *Select*, Azure Veri Paylaşımı kaynağınızın adını yazın.
+1. *Kaydet*'e tıklayın.
 
-SQL tabanlı hedefte, yukarıdaki adımlara ek olarak SQL veritabanı 'nda Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izin verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşulların yanı sıra örnek bir betik de [kabul et ve Al](subscribe-to-data-share.md) öğreticisinde bulunabilir. 
+SQL tabanlı hedef için, yukarıdaki adımlara ek olarak, SQL veritabanındaki bir dış sağlayıcıdan Azure Veri Paylaşımı kaynağıyla aynı ada sahip bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izni verilmesi gerekir. SQL tabanlı paylaşım için diğer ön koşullarla birlikte örnek bir komut dosyası [kabul ve veri](subscribe-to-data-share.md) öğretici almak bulunabilir. 
 
-REST API 'Leri kullanarak verileri paylaşıyorsanız, bu rol atamalarını el ile oluşturmanız gerekir. 
+REST API'lerini kullanarak veri paylaşıyorsanız, bu rol atamalarını el ile oluşturmanız gerekir. 
 
-Rol ataması ekleme hakkında daha fazla bilgi edinmek için [Bu belgeye](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)bakın. 
+Rol ataması nasıl ekleyeceğiniz hakkında daha fazla bilgi edinmek için [bu belgelere bakın.](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment) 
 
-## <a name="resource-provider-registration"></a>Kaynak sağlayıcısı kaydı 
+## <a name="resource-provider-registration"></a>Kaynak sağlayıcı kaydı 
 
-Azure kiracınızda Azure Veri Paylaşma davetini ilk kez görüntülemek için, Microsoft. DataShare kaynak sağlayıcısını Azure aboneliğinize el ile kaydetmeniz gerekebilir. Microsoft. DataShare kaynak sağlayıcısını Azure aboneliğinize kaydetmek için aşağıdaki adımları izleyin. Kaynak sağlayıcısını kaydetmek için Azure aboneliğine *katkıda bulunan* erişime ihtiyacınız vardır.
+Azure Veri Paylaşımı davetini Azure kiracınızda ilk kez görüntülemek için Microsoft.DataShare kaynak sağlayıcısını Azure aboneliğinize el ile kaydetmeniz gerekebilir. Microsoft.DataShare kaynak sağlayıcısını Azure Aboneliğinize kaydetmek için aşağıdaki adımları izleyin. Kaynak sağlayıcısını kaydetmek için *Katılımcı'nın* Azure aboneliğine erişmeniz gerekir.
 
-1. Azure portal **abonelikler**' e gidin.
-1. Azure veri paylaşımında kullandığınız aboneliği seçin.
-1. **Kaynak sağlayıcıları**' na tıklayın.
-1. Microsoft. DataShare için arama yapın.
-1. **Kaydol**' a tıklayın.
+1. Azure portalında **Abonelikler'e**gidin.
+1. Azure Veri Paylaşımı için kullandığınız aboneliği seçin.
+1. Kaynak **Sağlayıcıları'na**tıklayın.
+1. Microsoft.DataShare'i arayın.
+1. **Kaydol'u**tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure 'da roller hakkında daha fazla bilgi edinin- [rol tanımlarını anlayın](../role-based-access-control/role-definitions.md)
+- Azure'daki roller hakkında daha fazla bilgi edinin - [Rol tanımlarını anlama](../role-based-access-control/role-definitions.md)
 

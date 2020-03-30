@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak Sybase 'ten veri taşıma
-description: Azure Data Factory kullanarak Sybase veritabanından veri taşıma hakkında bilgi edinin.
+title: Azure Veri Fabrikası'nı kullanarak verileri Sybase'den taşıma
+description: Azure Veri Fabrikası'nı kullanarak Sybase Veritabanı'ndan verileri nasıl taşıyabildiğini öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,104 +13,104 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281255"
 ---
-# <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory kullanarak Sybase 'ten veri taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+# <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Sybase'den taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](data-factory-onprem-sybase-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-sybase.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, [v2 'de Sybase Bağlayıcısı](../connector-sybase.md)' na bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki Sybase konektörüne](../connector-sybase.md)bakın.
 
-Bu makalede, verileri şirket içi bir Sybase veritabanından taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
+Bu makalede, verileri şirket içi Sybase veritabanından taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanmaktadır.
 
-Şirket içi bir Sybase veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir Sybase veri deposundan diğer veri depolarına veri taşımayı destekler, ancak diğer veri depolarından verileri bir Sybase veri deposuna taşımamaktadır. 
+Verileri şirket içi Sybase veri deposundan desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Veri fabrikası şu anda yalnızca bir Sybase veri deposundan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından Sybase veri deposuna taşımak için değildir. 
 
-## <a name="prerequisites"></a>Önkoşullar
-Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi Sybase kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
+## <a name="prerequisites"></a>Ön koşullar
+Veri Fabrikası hizmeti, Veri Yönetimi Ağ Geçidi'ni kullanarak şirket içi Sybase kaynaklarına bağlanmayı destekler. Veri Yönetimi Ağ Geçidi ve ağ geçidini ayarlama yla ilgili adım adım talimatlar hakkında bilgi edinmek için [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında taşınan verileri görün.
 
-Sybase veritabanı bir Azure IaaS VM 'sinde barındırıldığında bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı IaaS sanal makinesine veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
+Sybase veritabanı bir Azure IaaS VM'de barındırılan olsa bile ağ geçidi gereklidir. Ağ geçidi veritabanına bağlanabildiği sürece ağ geçidini veri deposuyla aynı IaaS VM'ye veya farklı bir VM'ye yükleyebilirsiniz.
 
 > [!NOTE]
-> Bağlantı/ağ geçidi ile ilgili sorunları gidermeye yönelik ipuçları için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
+> Sorun giderme bağlantısı/ağ geçidi yle ilgili sorunlarla ilgili ipuçları için [sorun giderme ağ geçidi sorunlarına](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) bakın.
 
-## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
-Sybase veritabanına bağlanmak üzere Veri Yönetimi ağ geçidinin, Veri Yönetimi ağ geçidi ile aynı sisteme [Sybase ıheryer. Data. SQLAnywhere 16 veya üzeri için veri sağlayıcısını](https://go.microsoft.com/fwlink/?linkid=324846) yüklemeniz gerekir. 
+## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve kurulum
+Veri Yönetimi Ağ Geçidi'nin Sybase Veritabanı'na bağlanması için, [Sybase iAnywhere.Data.SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 veya üzeri veri sağlayıcısını Veri Yönetimi Ağ Geçidi ile aynı sisteme yüklemeniz gerekir. 
 
-SAP Sybase SQL her yerde (ASA) 16 ve üzeri sürüm desteklenir; IQ ve ATıCı desteklenmez.
+SAP Sybase SQL Anywhere (ASA) sürüm 16 ve üzeri desteklenir; IQ ve ASE desteklenmez.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
+Farklı araçlar/API'ler kullanarak şirket içi Cassandra veri deposundan veri aktaran bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz. 
 
-- İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md) 
+- Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın. 
 
-Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
-2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. 
-3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. 
+1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
+2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. 
+3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.** 
 
-Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Şirket içi bir Sybase veri deposundan veri kopyalamak için kullanılan Data Factory varlıkların JSON tanımlarına sahip bir örnek için, bkz. [JSON örneği: Bu makalenin verileri Sybase 'Den Azure Blob 'A kopyalama](#json-example-copy-data-from-sybase-to-azure-blob) bölümü. 
+Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız.  Şirket içi Bir Sybase veri deposundan verileri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek [için Bkz. JSON örneği: Verileri Sybase'den Azure Blob bölümüne](#json-example-copy-data-from-sybase-to-azure-blob) kopyalayın. 
 
-Aşağıdaki bölümler, bir Sybase veri deposuna özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümler, Bir Sybase veri deposuna özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
-Aşağıdaki tabloda, Sybase bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+Aşağıdaki tablo, Sybase bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesSybase** olarak ayarlanmalıdır |Yes |
-| sunucu |Sybase sunucusunun adı. |Yes |
-| database |Sybase veritabanının adı. |Yes |
-| şema |Veritabanındaki şemanın adı. |Hayır |
-| authenticationType |Sybase veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
-| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
-| gatewayName |Data Factory hizmetinin şirket içi Sybase veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
+| type |Tür özelliği ayarlanmalıdır: **OnPremisesSybase** |Evet |
+| sunucu |Sybase sunucusunun adı. |Evet |
+| database |Sybase veritabanının adı. |Evet |
+| Şema |Veritabanındaki şemanın adı. |Hayır |
+| authenticationType |Sybase veritabanına bağlanmak için kullanılan kimlik doğrulama türü. Olası değerler şunlardır: Anonim, Temel ve Windows. |Evet |
+| kullanıcı adı |Temel veya Windows kimlik doğrulaması kullanıyorsanız kullanıcı adını belirtin. |Hayır |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. |Hayır |
+| ağ geçidiAdı |Veri Fabrikası hizmetinin şirket içi Sybase veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin & özelliklerin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu, vb.) için benzerdir.
 
-TypeProperties bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable** türündeki veri kümesinin **typeproperties** bölümü (Sybase veri kümesini içerir) aşağıdaki özelliklere sahiptir:
+typeProperties bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Tür İlişkisel Tablo** (Sybase dataset içeren) veri kümesi için **typeProperties** bölümü aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tableName |İlişkili hizmetin başvurduğu Sybase veritabanı örneğindeki tablonun adı. |Hayır ( **Relationalsource** **sorgusu** belirtilmişse) |
+| tableName |Bağlı hizmetin başlettiği Sybase Veritabanı örneğindeki tablonun adı. |Hayır **(RelationalSource** **sorgusu** belirtilirse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik & özelliklerinin tam listesi için bkz. işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesi. Ad, açıklama, giriş ve çıkış tabloları ve ilke gibi özellikler, tüm etkinlik türleri için kullanılabilir.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin & özelliklerinin tam listesi için [bkz.](data-factory-create-pipelines.md) Ad, açıklama, giriş ve çıktı tabloları ve ilke gibi özellikler tüm etkinlik türleri için kullanılabilir.
 
-Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
+Oysa, etkinliğin typeProperties bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişir.
 
-Kaynak, **Relationalsource** türünde olduğunda (Sybase içeren), **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
+Kaynak **RelationalSource** türünden (Sybase'i içerir) olduğunda, **typeProperties** bölümünde aşağıdaki özellikler kullanılabilir:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Hayır ( **veri kümesi** **TableName** belirtilmişse) |
+| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: MyTable'dan * seçin. |Hayır **(veri kümesinin** **tablo adı** belirtilirse) |
 
 
-## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON örneği: Sybase 'ten Azure Blob 'a veri kopyalama
-Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Bu kişiler, verileri Sybase veritabanından Azure Blob depolama alanına kopyalamayı gösterir. Ancak, veriler burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza kopyalanabilir.   
+## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON örneği: Verileri Sybase'den Azure Blob'a kopyalama
+Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir ardışık hat lar oluşturmak için kullanabileceğiniz örnek JSON tanımları sağlar. Sybase veritabanından Azure Blob Depolama'ya verilerin nasıl kopyalanır olduğunu gösterirler. Ancak, veriler Azure Veri Fabrikası'ndaki Kopyalama Etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen lavabolardan herhangi biri için kopyalanabilir.   
 
-Örnek, aşağıdaki Data Factory varlıklarına sahiptir:
+Örnekte aşağıdaki veri fabrikası varlıkları vardır:
 
-1. [OnPremisesSybase](data-factory-onprem-sybase-connector.md#linked-service-properties)türünde bağlı bir hizmet.
-2. [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde beğenilen bir hizmet.
-3. [Relationaltable](data-factory-onprem-sybase-connector.md#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
-5. [Relationalsource](data-factory-onprem-sybase-connector.md#copy-activity-properties) ve [Blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip işlem [hattı](data-factory-create-pipelines.md) .
+1. [OnPremisesSybase](data-factory-onprem-sybase-connector.md#linked-service-properties)türüne bağlı bir hizmet.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde beğenilen bir hizmet.
+3. [İlişkisel Tablo](data-factory-onprem-sybase-connector.md#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
+5. [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan Copy Activity ile [boru hattı.](data-factory-create-pipelines.md)
 
-Örnek, bir sorgu sonucundan verileri her saat bir bloba blob 'a kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
+Örnek, Sybase veritabanındaki bir sorgu sonucundaki verileri her saat başı bir blob'a kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
 
-İlk adım olarak, veri yönetimi ağ geçidini kurun. Yönergeler, [Şirket içi konumlar ve bulut makaleleri arasında hareketli verilerde](data-factory-move-data-between-onprem-and-cloud.md) yer alır.
+İlk adım olarak, veri yönetimi ağ geçidini kur. Yönergeler, [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasındaki hareketli verilerde dir.
 
-**Sybase bağlı hizmeti:**
+**Sybase bağlantılı hizmet:**
 
 ```JSON
 {
@@ -130,7 +130,7 @@ Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-v
 }
 ```
 
-**Azure Blob depolama bağlı hizmeti:**
+**Azure Blob depolama bağlantılı hizmet:**
 
 ```JSON
 {
@@ -146,9 +146,9 @@ Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-v
 
 **Sybase giriş veri kümesi:**
 
-Örnek, Sybase içinde bir "MyTable" tablosu oluşturduğunuzu ve zaman serisi verileri için "timestamp" adlı bir sütun içerdiğini varsayar.
+Örnek, Sybase'de "MyTable" tablosu oluşturduğunuzu varsayar ve zaman serisi verileri için "zaman damgası" adı verilen bir sütun içerir.
 
-"External" olarak ayarlanıyor: true, bu veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasında bir etkinlik tarafından üretilmediğini Data Factory hizmetine bildirir. Bağlı hizmetin **türünün** şu şekilde ayarlandığından emin olun: **relationaltable**.
+"Harici" ayarı: True, Veri Fabrikası hizmetine bu veri kümesinin veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir. Bağlı hizmet in **türünün** şu şekilde ayarlıolduğuna dikkat edin: **RelationalTable**.
 
 ```JSON
 {
@@ -173,9 +173,9 @@ Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-v
 }
 ```
 
-**Azure Blob çıktı veri kümesi:**
+**Azure Blob çıktı veri seti:**
 
-Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
+Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
 
 ```JSON
 {
@@ -233,9 +233,9 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 }
 ```
 
-**Kopyalama etkinliği içeren işlem hattı:**
+**Kopyalama etkinliği olan Boru Hattı:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılan ve saatlik olarak çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, DBA 'daki verileri seçer. Veritabanında Siparişler tablosu.
+Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve saatlik çalışacak şekilde zamanlanan bir Kopyalama Etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **RelationalSource** olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır. **Sorgu** özelliği için belirtilen SQL sorgusu DBA'daki verileri seçer. Veritabanındaki sipariş tablosu.
 
 ```JSON
 {
@@ -282,18 +282,18 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 ```
 
 ## <a name="type-mapping-for-sybase"></a>Sybase için tür eşleme
-[Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi kopyalama etkinliği, aşağıdaki 2 adımlı yaklaşımla kaynak türlerindeki otomatik tür dönüştürmeleri, havuz türlerine uygular:
+[Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, Kopyalama etkinliği aşağıdaki 2 adımlı yaklaşımla kaynak türlerinden lavabo türlerine otomatik tür dönüşümleri gerçekleştirir:
 
-1. Yerel kaynak türlerinden .NET türüne Dönüştür
-2. .NET türünden yerel havuz türüne Dönüştür
+1. Yerel kaynak türlerinden .NET türüne dönüştürme
+2. .NET türünden yerel lavabo türüne dönüştürme
 
-Sybase T-SQL ve T-SQL türlerini destekler. SQL Types 'tan .NET türüne bir eşleme tablosu için bkz. [Azure SQL Bağlayıcısı](data-factory-azure-sql-connector.md) makalesi.
+Sybase, T-SQL ve T-SQL türlerini destekler. SQL türlerinden .NET türüne eşleme tablosu için [Azure SQL Bağlayıcısı](data-factory-azure-sql-connector.md) makalesine bakın.
 
-## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
-Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Sütunları batırmak için harita kaynağı
+Kaynak veri kümesindeki sütunları lavabo veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
 
-## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan yinelenebilir okuma
-İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçları önlemek için yinelenebilirlik aklınızda bulundurun. Azure Data Factory, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılması için bir veri kümesi için yeniden deneme ilkesi de yapılandırabilirsiniz. Bir dilim her iki şekilde yeniden çalıştırıldığında, bir dilimin kaç kez çalıştırıldıklarından bağımsız olarak aynı verilerin okunmasını sağlayın. Bkz. [ilişkisel kaynaklardan tekrarlanabilir okuma](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan tekrarlanabilir okuma
+İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçlardan kaçınmak için tekrarlanabilirliği aklınızda bulundurun. Azure Veri Fabrikası'nda, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılaması için bir veri kümesi için yeniden deneme ilkesini de yapılandırabilirsiniz. Bir dilim her iki şekilde de yeniden çalıştırıldığında, bir dilim kaç kez çalıştırılırsa çalıştırın aynı verilerin okunduğundan emin olmanız gerekir. Bkz. [İlişkisel kaynaklardan tekrarlanabilir okuma.](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
-## <a name="performance-and-tuning"></a>Performans ve ayarlama
-Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .
+## <a name="performance-and-tuning"></a>Performans ve Tuning
+Azure Veri Fabrikası'ndaki veri hareketinin performansını etkileyen önemli faktörler (Kopyalama Etkinliği) ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Etkinlik performansını & Tuning Kılavuzu'na](data-factory-copy-activity-performance.md) bakın.

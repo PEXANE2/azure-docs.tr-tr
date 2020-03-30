@@ -1,38 +1,37 @@
 ---
-title: Eşzamanlılık denetimi | Azure Marketi
-description: Bulut İş Ortağı Portalı yayımlama API 'Leri için eşzamanlılık denetimi stratejileri.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Eşzamanlılık Kontrolü | Azure Marketi
+description: Bulut İş Ortağı Portalı yayımlama API'leri için eşzamanlılık kontrol stratejileri.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 6e2f8922d42e40d14338f06be983d3913b20859d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d0f035d77e74f157b793b9edf3ab5d3494096d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819755"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288657"
 ---
-# <a name="concurrency-control"></a>Eşzamanlılık denetimi
+# <a name="concurrency-control"></a>Eşzamanlılık Kontrolü
 
-Bulut İş Ortağı Portalı yayımlama API 'Lerine yapılan her çağrının, hangi eşzamanlılık denetimi stratejisinin kullanılacağını açıkça belirtmesi gerekir. **IF-Match** üst bilgisinin SAĞLANMASı, HTTP 400 hata yanıtına neden olur. Eşzamanlılık denetimi için iki strateji sunuyoruz.
+Bulut İş Ortağı Portalı yayımlama API'lerine yapılan her çağrıda hangi eşzamanlılık denetim stratejisinin kullanılacağı açıkça belirtilmelidir. **If-Match** üstbilgisinin sağlanamaması, HTTP 400 hata yanıtına neden olur. Eşzamanlılık kontrolü için iki strateji sunuyoruz.
 
--   **İyimser** -güncelleştirmeyi gerçekleştiren istemci, verilerin son okumasından bu yana verilerin değişip değişmediğini doğrular.
--   **Son bir WINS** -istemci, son okuma zamanından bu yana başka bir uygulamanın onu değiştirmediğine bakılmaksızın verileri doğrudan güncelleştirir.
+-   **İyimser** - Güncelleştirmeyi gerçekleştiren istemci, verileri en son okuduğundan beri verilerin değişip değişmediğini doğrular.
+-   **Sonuncusu kazanır** - İstemci, başka bir uygulamanın son okunduk zamana göre değiştirip değiştirmediğine bakılmaksızın verileri doğrudan güncelleştirir.
 
 <a name="optimistic-concurrency-workflow"></a>İyimser eşzamanlılık iş akışı
 -------------------------------
 
-Kaynaklarınızda beklenmedik bir düzenleme yapılyapılmadığını garanti etmek için, aşağıdaki iş akışı ile iyimser eşzamanlılık stratejisini kullanmanızı öneririz.
+Kaynaklarınızda beklenmeyen bir işlem yapılmadığını garanti etmek için aşağıdaki iş akışıyla iyimser eşzamanlılık stratejisini kullanmanızı öneririz.
 
-1.  API 'Leri kullanarak bir varlığı alma. Yanıt, varlığın Şu anda depolanmış sürümünü tanımlayan bir ETag değeri içerir (Yanıt sırasında).
-2.  Güncelleştirme sırasında, zorunlu **IF-Match** istek üst bilgisine aynı ETag değerini ekleyin.
-3.  API, istekte alınan ETag değerini, bir atomik işlem içindeki varlığın geçerli ETag değeri ile karşılaştırır.
-    *   ETag değerleri farklıysa, API bir `412 Precondition Failed` HTTP yanıtı döndürür. Bu hata, istemcinin en son aldığı bu yana başka bir işlemin varlığı güncelleştirdiğini veya istekte belirtilen ETag değerinin yanlış olduğunu gösterir.
-    *  ETag değerleri aynıysa veya **IF-Match** üst bilgisi joker karakteri (`*`) IÇERIYORSA, API istenen işlemi gerçekleştirir. API işlemi ayrıca varlığın depolanan ETag değerini güncelleştirir.
+1.  API'leri kullanarak bir varlık alın. Yanıt, varlığın şu anda depolanan sürümünü tanımlayan bir ETag değeri içerir (yanıt sırasında).
+2.  Güncelleştirme sırasında, zorunlu **If-Match** istek üstbilgisinde aynı ETag değerini ekleyin.
+3.  API, istekte alınan ETag değerini atomik bir işlemdeki varlığın geçerli ETag değeriyle karşılaştırır.
+    *   ETag değerleri farklıysa, API bir `412 Precondition Failed` HTTP yanıtı döndürür. Bu hata, istemci en son alındığı günden beri başka bir işlemin varlığı güncelleştirdiğini veya istekte belirtilen ETag değerinin yanlış olduğunu gösterir.
+    *  ETag değerleri aynıysa veya **If-Match** üstbilgisi joker yıldız karakterini`*`içeriyorsa ( ), API istenen işlemi gerçekleştirir. API işlemi, varlığın depolanan ETag değerini de güncelleştirir.
 
 
 > [!NOTE]
-> **IF-Match** üst bilgisinde joker karakteri (*) BELIRTMEK, API 'nin son bir WINS eşzamanlılık stratejisini kullanarak sonuçlanır. Bu durumda, ETag karşılaştırması gerçekleşmez ve kaynak herhangi bir denetim olmadan güncelleştirilir. 
+> **If-Match** üstbilgisinde joker karakter (*) belirtilmesi, Son bir-kazanç eşzamanlılık stratejisini kullanarak API ile sonuçlanır. Bu durumda, ETag karşılaştırması gerçekleşmez ve kaynak herhangi bir denetim olmadan güncelleştirilir. 

@@ -1,37 +1,37 @@
 ---
-title: Kaynak gruplarını yönetme-Azure CLı
-description: Kaynak gruplarınızı Azure Resource Manager aracılığıyla yönetmek için Azure CLı 'yi kullanın. Kaynak grupları oluşturma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir.
+title: Kaynak gruplarını yönetme - Azure CLI
+description: Kaynak gruplarınızı Azure Kaynak Yöneticisi aracılığıyla yönetmek için Azure CLI'yi kullanın. Kaynak gruplarının nasıl oluşturulup listelenebildiğini ve silineceklerini gösterir.
 author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 7face572f545153ea92efbdb345bbaabda5dd126
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248339"
 ---
-# <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLı kullanarak Azure Resource Manager kaynak gruplarını yönetme
+# <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLI'yi kullanarak Azure Kaynak Yöneticisi kaynak gruplarını yönetme
 
-Azure Kaynak gruplarınızı yönetmek için [Azure Resource Manager](overview.md) Ile Azure CLI 'yi nasıl kullanacağınızı öğrenin. Azure kaynaklarını yönetmek için bkz. Azure [CLI kullanarak Azure kaynaklarını yönetme](manage-resources-cli.md).
+Azure kaynak gruplarınızı yönetmek için [Azure Kaynak Yöneticisi](overview.md) ile Azure CLI'yi nasıl kullanacağınızı öğrenin. Azure kaynaklarını yönetmek için Azure [CLI'yi kullanarak Azure kaynaklarını yönet'e](manage-resources-cli.md)bakın.
 
-Kaynak gruplarını yönetme hakkında diğer makaleler:
+Kaynak gruplarının yönetimi yle ilgili diğer makaleler:
 
-- [Azure portal kullanarak Azure kaynak gruplarını yönetme](manage-resources-portal.md)
-- [Azure PowerShell kullanarak Azure kaynak gruplarını yönetme](manage-resources-powershell.md)
+- [Azure portalını kullanarak Azure kaynak gruplarını yönetme](manage-resources-portal.md)
+- [Azure PowerShell'i kullanarak Azure kaynak gruplarını yönetme](manage-resources-powershell.md)
 
-## <a name="what-is-a-resource-group"></a>Kaynak grubu nedir?
+## <a name="what-is-a-resource-group"></a>Kaynak grubu nedir
 
-Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Kaynak grubu bir çözümün tüm kaynaklarını veya yalnızca grup olarak yönetmek istediğiniz kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınıza siz karar verirsiniz. Genellikle, bunları bir grup olarak kolayca dağıtabilmeniz, güncelleştirebilmeniz ve silebilmeniz için aynı yaşam döngüsünü paylaşan kaynakları ekleyin.
+Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Kaynak grubu bir çözümün tüm kaynaklarını veya yalnızca grup olarak yönetmek istediğiniz kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınıza siz karar verirsiniz. Genel olarak, aynı kaynak grubuna aynı yaşam döngüsünü paylaşan kaynaklar ekleyin, böylece bunları grup olarak kolayca dağıtabilir, güncelleyebilir ve silebilirsiniz.
 
 Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu için bir konum belirttiğinizde meta verilerin nereye depolanacağını belirtirsiniz. Uyumluluk nedeniyle verilerinizin belirli bir bölgeye depolandığından emin olmanız gerekebilir.
 
-Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir konum belirttiğinizde, meta verilerin nerede depolandığını belirtirsiniz.
+Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir konum belirttiğiniz zaman, bu meta verilerin nerede depolandığınızı belirtirsiniz.
 
 ## <a name="create-resource-groups"></a>Kaynak grupları oluşturma
 
-Aşağıdaki CLı betiği bir kaynak grubu oluşturur ve ardından kaynak grubunu gösterir.
+Aşağıdaki CLI komut dosyası bir kaynak grubu oluşturur ve sonra kaynak grubunu gösterir.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -41,15 +41,15 @@ read location &&
 az group create --name $resourceGroupName --location $location
 ```
 
-## <a name="list-resource-groups"></a>Kaynak gruplarını listeleme
+## <a name="list-resource-groups"></a>Kaynak gruplarını listele
 
-Aşağıdaki CLı betiği, aboneliğinizin altındaki kaynak gruplarını listeler.
+Aşağıdaki CLI komut dosyası, aboneliğiniz altındaki kaynak gruplarını listeler.
 
 ```azurecli-interactive
 az group list
 ```
 
-Bir kaynak grubu almak için:
+Bir kaynak grubu elde etmek için:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -59,7 +59,7 @@ az group show --name $resourceGroupName
 
 ## <a name="delete-resource-groups"></a>Kaynak gruplarını silme
 
-Aşağıdaki CLı betiği bir kaynak grubunu siler:
+Aşağıdaki CLI komut dosyası bir kaynak grubunu siler:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -67,29 +67,29 @@ read resourceGroupName &&
 az group delete --name $resourceGroupName
 ```
 
-Kaynakların silinmesini Azure Resource Manager nasıl sipariş Azure Resource Manager hakkında daha fazla bilgi için bkz. [kaynak grubu silme](delete-resource-group.md).
+Azure Kaynak Yöneticisi'nin kaynakların silinmesini nasıl emrettikleri hakkında daha fazla bilgi için Azure [Kaynak Yöneticisi kaynak silme](delete-resource-group.md)bölümüne bakın.
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>Kaynakları var olan bir kaynak grubuna dağıtma
+## <a name="deploy-resources-to-an-existing-resource-group"></a>Kaynakları varolan bir kaynak grubuna dağıtma
 
-Bkz. [kaynakları var olan bir kaynak grubuna dağıtma](manage-resources-cli.md#deploy-resources-to-an-existing-resource-group).
+Bkz. [Kaynakları varolan bir kaynak grubuna dağıt.](manage-resources-cli.md#deploy-resources-to-an-existing-resource-group)
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Kaynak grubu ve kaynakları dağıtma
 
-Kaynak Yöneticisi şablonu kullanarak bir kaynak grubu oluşturabilir ve gruba kaynak dağıtabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubu oluşturma ve kaynakları dağıtma](../templates/deploy-to-subscription.md#resource-group-and-resources).
+Kaynak Yöneticisi şablonu kullanarak bir kaynak grubu oluşturabilir ve kaynakları gruba dağıtabilirsiniz. Daha fazla bilgi için kaynak [grubu oluştur ve kaynakları dağıtı'](../templates/deploy-to-subscription.md#resource-group-and-resources)ya bakın.
 
-## <a name="redeploy-when-deployment-fails"></a>Dağıtım başarısız olduğunda yeniden Dağıt
+## <a name="redeploy-when-deployment-fails"></a>Dağıtım başarısız olduğunda yeniden dağıtma
 
-Bu özellik *hata durumunda geri alma*olarak da bilinir. Daha fazla bilgi için bkz. [dağıtım başarısız olduğunda yeniden dağıtma](../templates/rollback-on-error.md).
+Bu özellik hata *üzerine Rollback*olarak da bilinir. Daha fazla bilgi için [dağıtım başarısız olduğunda Yeniden Dağıt'a](../templates/rollback-on-error.md)bakın.
 
-## <a name="move-to-another-resource-group-or-subscription"></a>Başka bir kaynak grubuna veya aboneliğe taşıma
+## <a name="move-to-another-resource-group-or-subscription"></a>Başka bir kaynak grubuna veya aboneye taşıma
 
-Gruptaki kaynakları başka bir kaynak grubuna taşıyabilirsiniz. Daha fazla bilgi için bkz. [kaynakları taşıma](manage-resources-cli.md#move-resources).
+Gruptaki kaynakları başka bir kaynak grubuna taşıyabilirsiniz. Daha fazla bilgi için [bkz.](manage-resources-cli.md#move-resources)
 
-## <a name="lock-resource-groups"></a>Kaynak gruplarını kilitle
+## <a name="lock-resource-groups"></a>Kaynak gruplarını kilitleme
 
-Kilitleme, kuruluşunuzdaki diğer kullanıcıların Azure aboneliği, kaynak grubu veya kaynak gibi önemli kaynakları yanlışlıkla silmesini veya değiştirmelerini engeller. 
+Kilitleme, kuruluşunuzdaki diğer kullanıcıların Azure aboneliği, kaynak grubu veya kaynak gibi kritik kaynakları yanlışlıkla siler veya değiştirmesini engeller. 
 
-Aşağıdaki betik bir kaynak grubunu kilitleyerek kaynak grubu silinemez.
+Aşağıdaki komut dosyası, kaynak grubunun silinmesin diye bir kaynak grubunu kilitler.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -97,7 +97,7 @@ read resourceGroupName &&
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
 ```
 
-Aşağıdaki betik, bir kaynak grubu için tüm kilitleri alır:
+Aşağıdaki komut dosyası, kaynak grubu için tüm kilitleri alır:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -105,7 +105,7 @@ read resourceGroupName &&
 az lock list --resource-group $resourceGroupName  
 ```
 
-Aşağıdaki betik bir kilidi siler:
+Aşağıdaki komut dosyası bir kilidi siler:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -119,14 +119,14 @@ Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](l
 
 ## <a name="tag-resource-groups"></a>Kaynak gruplarını etiketleme
 
-Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kaynaklarına Etiketler uygulayabilirsiniz. Daha fazla bilgi için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](tag-resources.md#azure-cli).
+Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kaynaklara etiketler uygulayabilirsiniz. Bilgi için Azure [kaynaklarınızı düzenlemek için etiketleri kullanma'ya](tag-resources.md#azure-cli)bakın.
 
-## <a name="export-resource-groups-to-templates"></a>Kaynak gruplarını şablonlara aktarma
+## <a name="export-resource-groups-to-templates"></a>Kaynak gruplarını şablonlara dışa aktarma
 
-Kaynak grubunuzu başarıyla ayarladıktan sonra, kaynak grubunun Kaynak Yöneticisi şablonunu görüntülemek isteyebilirsiniz. Şablonu dışarı aktarmak iki avantaj sunar:
+Kaynak grubunuzu başarıyla ayarladıktan sonra, kaynak grubu için Kaynak Yöneticisi şablonunu görüntülemek isteyebilirsiniz. Şablonu dışa aktarmanın iki avantajı vardır:
 
-- Şablon tüm bütün altyapıyı içerdiğinden çözümün gelecekteki dağıtımlarını otomatikleştirin.
-- Çözümünüzü temsil eden JavaScript Nesne Gösterimi (JSON) bakarak Şablon sözdizimini öğrenin.
+- Şablon tüm altyapıyı içerdiğinden çözümün gelecekteki dağıtımlarını otomatikleştirin.
+- Çözümünüzü temsil eden JavaScript Nesne Gösterimi'ne (JSON) bakarak şablon sözdizimini öğrenin.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -134,21 +134,21 @@ read resourceGroupName &&
 az group export --name $resourceGroupName  
 ```
 
-Betik, şablonu konsolunda görüntüler.  JSON ' ı kopyalayın ve dosya olarak kaydedin.
+Komut dosyası konsolda şablonu görüntüler.  JSON'ı kopyalayın ve dosya olarak kaydedin.
 
-Şablonu dışarı aktar özelliği Azure Data Factory kaynaklarının dışarı aktarılmasını desteklemez. Data Factory kaynaklarını nasıl dışarı aktarabilirsiniz hakkında bilgi edinmek için bkz. [Azure Data Factory veri fabrikasını kopyalama veya](https://aka.ms/exportTemplateViaAdf)kopyalama.
+Dışa aktarma şablonu özelliği Azure Veri Fabrikası kaynaklarını dışa aktarmayı desteklemez. Veri Fabrikası kaynaklarını nasıl dışa aktarabileceğiniz hakkında bilgi edinmek için Azure [Veri Fabrikası'nda veri fabrikasıkopyala veya klonlama'ya](https://aka.ms/exportTemplateViaAdf)bakın.
 
-Klasik dağıtım modeliyle oluşturulan kaynakları dışarı aktarmak için, [bunları Kaynak Yöneticisi dağıtım modeline geçirmeniz](https://aka.ms/migrateclassicresourcetoarm)gerekir.
+Klasik dağıtım modeli yle oluşturulan kaynakları dışa aktarmak [için kaynak yöneticisi dağıtım modeline geçirmeniz](https://aka.ms/migrateclassicresourcetoarm)gerekir.
 
-Daha fazla bilgi için, [Azure Portal ' de tek ve çoklu kaynak verme şablonuna](../templates/export-template-portal.md)bakın.
+Daha fazla bilgi için Azure [portalında şablona tek ve çok kaynak lı dışa aktarma](../templates/export-template-portal.md)bilgisine bakın.
 
 ## <a name="manage-access-to-resource-groups"></a>Kaynak gruplarına erişimi yönetme
 
-[Rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md), Azure'daki kaynaklara erişimi yönetmek için kullanılan sistemdir. Daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-cli.md).
+[Rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md), Azure'daki kaynaklara erişimi yönetmek için kullanılan sistemdir. Daha fazla bilgi için [RBAC ve Azure CLI'yi kullanarak erişimi yönet'e](../../role-based-access-control/role-assignments-cli.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Resource Manager öğrenmek için bkz. [Azure Resource Manager genel bakış](overview.md).
-- Kaynak Yöneticisi Şablon sözdizimini öğrenmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../templates/template-syntax.md).
-- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](/azure/azure-resource-manager/)bölümüne bakın.
-- Azure Resource Manager şablonu şemalarını görüntülemek için bkz. [şablon başvurusu](/azure/templates/).
+- Azure Kaynak Yöneticisi'ni öğrenmek için [Azure Kaynak Yöneticisi'ne genel bakış](overview.md)'a bakın.
+- Kaynak Yöneticisi şablonsözdizimini öğrenmek için [bkz.](../templates/template-syntax.md)
+- Şablonları nasıl geliştireceklerini öğrenmek için [adım adım öğreticilere](/azure/azure-resource-manager/)bakın.
+- Azure Kaynak Yöneticisi şablon şemalarını görüntülemek için [şablon başvurusuna](/azure/templates/)bakın.

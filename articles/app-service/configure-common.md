@@ -1,39 +1,39 @@
 ---
-title: Portalda uygulama yapılandırma
-description: Azure portal bir App Service uygulamasının ortak ayarlarını yapılandırmayı öğrenin. Uygulama ayarları, bağlantı dizeleri, Platform, dil yığını, kapsayıcı vb.
-keywords: Azure App Service, Web uygulaması, uygulama ayarları, ortam değişkenleri
+title: Portaldaki uygulamaları yapılandırma
+description: Azure portalındaki bir Uygulama Hizmeti uygulaması için ortak ayarları yapılandırmayı öğrenin. Uygulama ayarları, bağlantı dizeleri, platform, dil yığını, konteyner, vb.
+keywords: azure uygulama hizmeti, web uygulaması, uygulama ayarları, ortam değişkenleri
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
 ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280176"
 ---
-# <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
+# <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portalında bir Uygulama Hizmeti uygulamasını yapılandırma
 
-Bu konuda, [Azure Portalı]kullanarak Web Apps, mobil arka uç veya API uygulaması için genel ayarların nasıl yapılandırılacağı açıklanmaktadır.
+Bu konu, [Azure portalını]kullanarak web uygulamaları, mobil arka uç veya API uygulaması için ortak ayarların nasıl yapılandırılabildiğini açıklar.
 
 ## <a name="configure-app-settings"></a>Uygulama ayarlarını yapılandırma
 
-App Service, uygulama ayarları, uygulama koduna ortam değişkenleri olarak geçirilen değişkenlerdir. Linux uygulamaları ve özel kapsayıcılar için App Service, kapsayıcıda ortam değişkenini ayarlamak için `--env` bayrağını kullanarak uygulama ayarlarını kapsayıcıya geçirir.
+Uygulama Hizmeti'nde, uygulama ayarları uygulama koduna ortam değişkeni olarak geçirilen değişkenlerdir. Linux uygulamaları ve özel kapsayıcılar için, Uygulama Hizmeti, kapsayıcıdaki ortam değişkenini ayarlamak için `--env` bayrağı kullanarak uygulama ayarlarını kapsayıcıya geçirir.
 
-[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. 
+Azure [portalında,] **App Services'ı**arayın ve seçin ve ardından uygulamanızı seçin. 
 
-![Uygulama Hizmetleri arama](./media/configure-common/search-for-app-services.png)
+![Uygulama Hizmetlerini Ara](./media/configure-common/search-for-app-services.png)
 
-Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
+Uygulamanın sol menüsünde **Yapılandırma** > **Uygulaması ayarlarını**seçin.
 
-![Uygulama ayarları](./media/configure-common/open-ui.png)
+![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
-ASP.NET ve ASP.NET Core geliştiricileri için, App Service uygulama ayarlarının ayarlanması, *Web. config* veya *appSettings. JSON*içinde `<appSettings>` ayarlamak gibidir, ancak App Service içindeki değerler *Web. config* veya *appSettings. JSON*içinde olanları geçersiz kılar. *Web. config* veya *appSettings. JSON*içinde geliştirme ayarlarını (örneğin, yerel MySQL parolası) tutabilir, ancak üretim gizli dizileri (örneğin, Azure MySQL veritabanı parolası) App Service güvenlidir. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
+ASP.NET ve ASP.NET Core geliştiricileri için, Uygulama Hizmeti'ndeki uygulama `<appSettings>` ayarlarını *Web.config* veya *appsettings.json'da*ayarlamak gibidir, ancak App Service'deki değerler *Web.config* veya *appsettings.json'daki*değerleri geçersiz kılar. Geliştirme ayarlarını (örneğin, yerel MySQL parolası) *Web.config* veya *appsettings.json'da*tutabilirsiniz, ancak üretim sırlarını (örneğin, Azure MySQL veritabanı parolası) Uygulama Hizmeti'nde güvende tutabilirsiniz. Yerel hata ayıklama yaptığınızda aynı kod geliştirme ayarlarınızı kullanır ve Azure'a dağıtıldığında üretim sırlarınızı kullanır.
 
-Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişkenleri olarak uygulama ayarlarını alır. Dil yığınına özgü adımlar için bkz.:
+Diğer dil yığınları da aynı şekilde, çalışma zamanında uygulama ayarlarını ortam değişkenleri olarak alır. Dil yığınına özgü adımlar için bkz:
 
-- [ASP.NET Çekirdeği](containers/configure-language-dotnetcore.md#access-environment-variables)
+- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
@@ -41,32 +41,32 @@ Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişke
 - [Ruby](containers/configure-language-ruby.md#access-environment-variables)
 - [Özel kapsayıcılar](containers/configure-custom-container.md#configure-environment-variables)
 
-Uygulama ayarları her zaman (REST-REST) depolandığında şifrelenir.
+Uygulama ayarları her zaman depolandığında şifrelenir (istirahatte şifrelenir).
 
 > [!NOTE]
-> Uygulama ayarları, [Key Vault başvuruları](app-service-key-vault-references.md)kullanılarak [Key Vault](/azure/key-vault/) de çözülebilir.
+> Uygulama ayarları Key Vault [referansları](app-service-key-vault-references.md)kullanılarak [Key Vault'tan](/azure/key-vault/) da çözülebilir.
 
 ### <a name="show-hidden-values"></a>Gizli değerleri göster
 
-Varsayılan olarak, uygulama ayarları için değerler portalda güvenlik için gizlidir. Bir uygulama ayarının gizli değerini görmek için, bu ayarın **değer** alanına tıklayın. Tüm uygulama ayarlarının değerlerini görmek için **değeri göster** düğmesine tıklayın.
+Varsayılan olarak, uygulama ayarlarıiçin değerler güvenlik portalında gizlenir. Bir uygulama ayarının gizli değerini görmek için, bu ayarın **Değer** alanını tıklatın. Tüm uygulama ayarlarının değerlerini görmek için **Değeri Göster** düğmesini tıklatın.
 
-### <a name="add-or-edit"></a>Ekle veya Düzenle
+### <a name="add-or-edit"></a>Ekle veya edin
 
-Yeni bir uygulama ayarı eklemek için **Yeni uygulama ayarı**' na tıklayın. İletişim kutusunda, [ayarı geçerli yuvaya](deploy-staging-slots.md#which-settings-are-swapped)ekleyebilirsiniz.
+Yeni bir uygulama ayarı eklemek için **Yeni uygulama ayarını**tıklatın. İletişim kutusunda, [ayarı geçerli yuvaya yapıştırabilirsiniz.](deploy-staging-slots.md#which-settings-are-swapped)
 
-Bir ayarı düzenlemek için sağ taraftaki **Düzenle** düğmesine tıklayın.
+Bir ayarı ayarlamak için sağ taraftaki **Edit** düğmesini tıklatın.
 
-İşiniz bittiğinde **Güncelleştir**' e tıklayın. **Yapılandırma** sayfasında geri **Kaydet** ' e tıklamasını unutmayın.
+Bittiğinde, **Güncelleştir'i**tıklatın. **Yapılandırma** sayfasında geri **kaydet'i** tıklatmayı unutmayın.
 
 > [!NOTE]
-> Varsayılan bir Linux kapsayıcısında veya özel bir Linux kapsayıcısında, `ApplicationInsights:InstrumentationKey` gibi uygulama ayarı adındaki iç içe geçmiş tüm JSON anahtar yapısının, anahtar adı için `ApplicationInsights__InstrumentationKey` olarak App Service yapılandırılması gerekir. Diğer bir deyişle, tüm `:` `__` (çift alt çizgi) ile değiştirilmelidir.
+> Varsayılan bir Linux kapsayıcısında veya özel bir Linux kapsayıcısında, uygulama ayarı adındaki iç içe `ApplicationInsights__InstrumentationKey` herhangi bir JSON anahtar yapısının, anahtar adı için olduğu gibi App Service'de yapılandırılması `ApplicationInsights:InstrumentationKey` gerekir. Başka bir deyişle, herhangi `:` bir `__` (çift alt çizgi) ile değiştirilmelidir.
 >
 
-### <a name="edit-in-bulk"></a>Toplu olarak Düzenle
+### <a name="edit-in-bulk"></a>Toplu olarak edin
 
-Uygulama ayarlarını toplu olarak eklemek veya düzenlemek için **Gelişmiş Düzenle** düğmesine tıklayın. İşiniz bittiğinde **Güncelleştir**' e tıklayın. **Yapılandırma** sayfasında geri **Kaydet** ' e tıklamasını unutmayın.
+Uygulama ayarlarını toplu olarak eklemek veya yeniden yapmak için **Gelişmiş edit** düğmesini tıklatın. Bittiğinde, **Güncelleştir'i**tıklatın. **Yapılandırma** sayfasında geri **kaydet'i** tıklatmayı unutmayın.
 
-Uygulama ayarları aşağıdaki JSON biçimlendirmesine sahiptir:
+Uygulama ayarlarında aşağıdaki JSON biçimlendirmesi vardır:
 
 ```json
 [
@@ -86,24 +86,24 @@ Uygulama ayarları aşağıdaki JSON biçimlendirmesine sahiptir:
 
 ## <a name="configure-connection-strings"></a>Bağlantı dizelerini yapılandırma
 
-[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
+Azure [portalında,] **App Services'ı**arayın ve seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **Yapılandırma** > **Uygulaması ayarlarını**seçin.
 
-![Uygulama ayarları](./media/configure-common/open-ui.png)
+![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
-ASP.NET ve ASP.NET Core geliştiricileri için, App Service bağlantı dizelerinin, *Web. config*'de `<connectionStrings>` ayarlama gibidir, ancak App Service ' de ayarladığınız değerler *Web. config*'de olanları geçersiz kılar. *Web. config* ve üretim gizli dizileri (ÖRNEĞIN, SQL veritabanı kimlik bilgileri) ' nde güvenli App Service için geliştirme ayarlarını (örneğin, veritabanı dosyası) koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
+ASP.NET ve ASP.NET Core geliştiricileri için, App Service'deki `<connectionStrings>` bağlantı dizeleri ayarlamak *Web.config'de*ayarlanması gibidir, ancak App Service'de belirlediğiniz değerler *Web.config'dekileri*geçersiz kılar. Geliştirme ayarlarını (örneğin, bir veritabanı dosyası) *Web.config'de* ve üretim sırlarını (örneğin, SQL Veritabanı kimlik bilgileri) Uygulama Hizmeti'nde güvenle tutabilirsiniz. Yerel hata ayıklama yaptığınızda aynı kod geliştirme ayarlarınızı kullanır ve Azure'a dağıtıldığında üretim sırlarınızı kullanır.
 
-Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-app-settings) kullanılması daha iyidir, çünkü bağlantı dizeleri değerlere erişmek için değişken anahtarlarında özel biçimlendirme gerektirir. Ancak bir özel durum aşağıda verilmiştir: uygulamanızda bağlantı dizelerini yapılandırırsanız, belirli Azure veritabanı türleri uygulamayla birlikte yedeklenir. Daha fazla bilgi için bkz. [nelerin yedeklenebileceği](manage-backup.md#what-gets-backed-up). Bu otomatik yedeklemeye ihtiyacınız yoksa uygulama ayarları ' nı kullanın.
+Bağlantı dizeleri değerlere erişmek için değişken tuşlarında özel biçimlendirme gerektirdiğinden, diğer dil yığınları için [uygulama ayarlarını](#configure-app-settings) kullanmak daha iyidir. Ancak bir istisna aşağıda dır: Uygulamanızda bağlantı dizelerini yapılandırırsanız, belirli Azure veritabanı türleri uygulamayla birlikte yedeklenir. Daha fazla bilgi için, [nelerin yedeklenir](manage-backup.md#what-gets-backed-up)olduğunu görün. Bu otomatik yedeklemeye ihtiyacınız yoksa, uygulama ayarlarını kullanın.
 
-Çalışma zamanında, bağlantı dizeleri aşağıdaki bağlantı türleri ön eki olan ortam değişkenleri olarak kullanılabilir:
+Çalışma zamanında, bağlantı dizeleri aşağıdaki bağlantı türleri ile önceden belirlenmiş ortam değişkenleri olarak kullanılabilir:
 
-* SQL Server: `SQLCONNSTR_`
-* MySQL: `MYSQLCONNSTR_`
-* SQL veritabanı: `SQLAZURECONNSTR_`
-* Özel: `CUSTOMCONNSTR_`
+* SQL Sunucusu:`SQLCONNSTR_`
+* Mysql:`MYSQLCONNSTR_`
+* SQL Veritabanı:`SQLAZURECONNSTR_`
+* Özel:`CUSTOMCONNSTR_`
 
-Örneğin, *connectionstring1* adlı bir MySQL bağlantı dizesi `MYSQLCONNSTR_connectionString1`ortam değişkeni olarak erişilebilir. Dil yığınına özgü adımlar için bkz.:
+Örneğin, *connectionstring1* adlı bir MySql bağlantı dizesi `MYSQLCONNSTR_connectionString1`ortam değişkeni olarak erişilebilir. Dil yığınına özgü adımlar için bkz:
 
-- [ASP.NET Çekirdeği](containers/configure-language-dotnetcore.md#access-environment-variables)
+- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
@@ -111,28 +111,28 @@ Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-
 - [Ruby](containers/configure-language-ruby.md#access-environment-variables)
 - [Özel kapsayıcılar](containers/configure-custom-container.md#configure-environment-variables)
 
-Bağlantı dizeleri her zaman (REST-REST) depolandığında şifrelenir.
+Bağlantı dizeleri her zaman depolandığında şifrelenir (şifreli-istirahat).
 
 > [!NOTE]
-> Bağlantı dizeleri, [Key Vault başvuruları](app-service-key-vault-references.md)kullanılarak [Key Vault](/azure/key-vault/) de çözülebilir.
+> Bağlantı dizeleri, [Key Vault referansları](app-service-key-vault-references.md)kullanılarak [Key Vault'tan](/azure/key-vault/) da çözülebilir.
 
 ### <a name="show-hidden-values"></a>Gizli değerleri göster
 
-Varsayılan olarak, bağlantı dizeleri için değerler portalda güvenlik için gizlenir. Bir bağlantı dizesinin gizli değerini görmek için bu dizenin **değer** alanına tıklamanız yeterlidir. Tüm bağlantı dizelerinin değerlerini görmek için **değeri göster** düğmesine tıklayın.
+Varsayılan olarak, bağlantı dizeleri için değerler güvenlik için portalda gizlidir. Bağlantı dizesinin gizli bir değerini görmek için, bu dizedeki **Değer** alanını tıklatmanız yeterlidir. Tüm bağlantı dizelerinin değerlerini görmek için **Değeri Göster** düğmesini tıklatın.
 
-### <a name="add-or-edit"></a>Ekle veya Düzenle
+### <a name="add-or-edit"></a>Ekle veya edin
 
-Yeni bağlantı dizesi eklemek için **Yeni bağlantı dizesi**' ne tıklayın. İletişim kutusunda [bağlantı dizesini geçerli yuvaya](deploy-staging-slots.md#which-settings-are-swapped)ekleyebilirsiniz.
+Yeni bir bağlantı dizesi eklemek için **Yeni bağlantı dizesini**tıklatın. İletişim kutusunda, bağlantı [dizesini geçerli yuvaya yapıştırabilirsiniz.](deploy-staging-slots.md#which-settings-are-swapped)
 
-Bir ayarı düzenlemek için sağ taraftaki **Düzenle** düğmesine tıklayın.
+Bir ayarı ayarlamak için sağ taraftaki **Edit** düğmesini tıklatın.
 
-İşiniz bittiğinde **Güncelleştir**' e tıklayın. **Yapılandırma** sayfasında geri **Kaydet** ' e tıklamasını unutmayın.
+Bittiğinde, **Güncelleştir'i**tıklatın. **Yapılandırma** sayfasında geri **kaydet'i** tıklatmayı unutmayın.
 
-### <a name="edit-in-bulk"></a>Toplu olarak Düzenle
+### <a name="edit-in-bulk"></a>Toplu olarak edin
 
-Bağlantı dizelerini toplu olarak eklemek veya düzenlemek için **Gelişmiş Düzenle** düğmesine tıklayın. İşiniz bittiğinde **Güncelleştir**' e tıklayın. **Yapılandırma** sayfasında geri **Kaydet** ' e tıklamasını unutmayın.
+Bağlantı dizelerini toplu olarak eklemek veya tıklatmak için **Gelişmiş edit** düğmesini tıklatın. Bittiğinde, **Güncelleştir'i**tıklatın. **Yapılandırma** sayfasında geri **kaydet'i** tıklatmayı unutmayın.
 
-Bağlantı dizeleri aşağıdaki JSON biçimlendirmesine sahiptir:
+Bağlantı dizeleri aşağıdaki JSON biçimlendirmevar:
 
 ```json
 [
@@ -157,83 +157,83 @@ Bağlantı dizeleri aşağıdaki JSON biçimlendirmesine sahiptir:
 
 ## <a name="configure-general-settings"></a>Genel ayarları yapılandırma
 
-[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **Genel ayarlar**' ı seçin.
+Azure [portalında,] **App Services'ı**arayın ve seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **Configuration** > **General ayarlarını**seçin.
 
 ![Genel ayarlar](./media/configure-common/open-general.png)
 
-Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı ayarlar, [daha yüksek fiyatlandırma katmanlarına kadar ölçeklendirmenizi](manage-scale-up.md)gerektirir.
+Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı [ayarlar, daha yüksek fiyatlandırma katmanlarına kadar ölçeklendirmenizi](manage-scale-up.md)gerektirir.
 
-- **Yığın ayarları**: DIL ve SDK sürümleri dahil olmak üzere uygulamayı çalıştırmak için yazılım yığını. Linux uygulamaları ve özel kapsayıcı uygulamaları için isteğe bağlı bir başlangıç komutu veya dosyası da ayarlayabilirsiniz.
-- **Platform ayarları**: barındırma platformu için aşağıdakiler de dahil olmak üzere ayarları yapılandırmanıza olanak sağlar:
-    - **Bit genişliği: 32**-bit veya 64 bit.
-    - **WebSocket protokolü**: örneğin, [ASP.net signalr] veya [Socket.io](https://socket.io/)için.
-    - **Always on**: hiçbir trafik olmadığında bile uygulamanın yüklü kalmasını sağlayın. Sürekli Web Işleri veya bir CRON ifadesi kullanılarak tetiklenen Web Işleri için gereklidir.
+- **Yığın ayarları**: Dili ve SDK sürümleri ni içeren uygulamayı çalıştırmak için yazılım yığını. Linux uygulamaları ve özel kapsayıcı uygulamaları için isteğe bağlı bir başlatma komutu veya dosya da ayarlayabilirsiniz.
+- **Platform ayarları**: Aşağıdakiler de dahil olmak üzere barındırma platformunun ayarlarını yapılandırmanızı sağlar:
+    - **Bitness**: 32-bit veya 64-bit.
+    - **WebSocket protokolü**: [Örneğin, ASP.NET SignalR] veya [socket.io](https://socket.io/)için.
+    - **Always On**: Trafik olmadığında bile uygulamayı yüklü tutun. Sürekli Web İşleri veya CRON ifadesi kullanılarak tetiklenen Webİşler için gereklidir.
       > [!NOTE]
-      > Always on özelliği ile uç noktasını kontrol edebilirsiniz. Her zaman uygulama köküne bir istek gönderir.
-    - **Yönetilen işlem hattı sürümü**: IIS [ardışık düzen modu]. Daha eski bir IIS sürümü gerektiren eski bir uygulamanız varsa, bunu **Klasik** olarak ayarlayın.
-    - **Http sürümü**: [https/2](https://wikipedia.org/wiki/HTTP/2) protokolü desteğini etkinleştirmek için **2,0** olarak ayarlayın.
+      > Always On özelliği yle bitiş noktasını denetemezsiniz. Her zaman uygulama köküne bir istek gönderir.
+    - **Yönetilen boru hattı sürümü**: IIS [boru hattı modu.] IIS'nin eski bir sürümünü gerektiren eski bir uygulamanız varsa **Klasik** olarak ayarlayın.
+    - **HTTP sürümü**: [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokolü için destek sağlamak için **2.0** olarak ayarlayın.
     > [!NOTE]
-    > Modern tarayıcıların çoğu yalnızca TLS üzerinden HTTP/2 protokolünü destekler, şifrelenmemiş trafik HTTP/1.1 kullanmaya devam eder. İstemci tarayıcılarının uygulamanıza HTTP/2 ile bağlanmasını sağlamak için, [özel DNS adınızı Azure App Service BIR SSL bağlamasıyla güvenli hale](configure-ssl-bindings.md)getirin.
-    - **ARR benzeşimi**: çok örnekli bir dağıtımda, istemcinin oturum süresince aynı örneğe yönlendirildiğinden emin olun. Durum bilgisi olmayan uygulamalar için bu seçeneği **kapalı** olarak ayarlayabilirsiniz.
-- **Hata ayıklama**: [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)veya [Node. js](containers/configure-language-nodejs.md#debug-remotely) uygulamaları için uzaktan hata ayıklamayı etkinleştirin. Bu seçenek, 48 saat sonra otomatik olarak devre dışı bırakır.
-- **Gelen istemci sertifikaları**: [karşılıklı kimlik doğrulamasında](app-service-web-configure-tls-mutual-auth.md)istemci sertifikaları gerektir.
+    > Çoğu modern tarayıcı sadece TLS üzerinden HTTP/2 protokolünü desteklerken, şifrelenmemiş trafik HTTP/1.1'i kullanmaya devam eder. İstemci tarayıcılarının HTTP/2 ile uygulamanıza bağlanmasını sağlamak için, [Azure Uygulama Hizmeti'nde bir SSL bağlama ile özel DNS adınızı güvence altına](configure-ssl-bindings.md)alayın.
+    - **ARR yakınlığı**: Çok örnekli dağıtımda, istemcinin oturumun ömrü boyunca aynı örneğe yönlendirilmesini sağlayın. Bu seçeneği, durum dışı uygulamalar için **Kapatma** olarak ayarlayabilirsiniz.
+- **Hata ayıklama**: [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)veya [Node.js](containers/configure-language-nodejs.md#debug-remotely) uygulamaları için uzaktan hata ayıklama etkinleştirin. Bu seçenek 48 saat sonra otomatik olarak kapanır.
+- **Gelen istemci sertifikaları**: [karşılıklı kimlik doğrulama](app-service-web-configure-tls-mutual-auth.md)istemci sertifikaları gerektirir.
 
 ## <a name="configure-default-documents"></a>Varsayılan belgeleri yapılandırma
 
 Bu ayar yalnızca Windows uygulamaları içindir.
 
-[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **Varsayılan belgeler**' i seçin.
+Azure [portalında,] **App Services'ı**arayın ve seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **Yapılandırma** > **Varsayılanı belgelerini**seçin.
 
 ![Varsayılan belgeler](./media/configure-common/open-documents.png)
 
-Varsayılan belge, bir Web sitesinin kök URL 'sinde görüntülenen Web sayfasıdır. Listedeki ilk eşleşen dosya kullanılır. Yeni bir varsayılan belge eklemek için **Yeni belge**' ye tıklayın. **Kaydet**' e tıklamasını unutmayın.
+Varsayılan belge, bir web sitesinin temel URL'sinde görüntülenen web sayfasıdır. Listedeki ilk eşleşen dosya kullanılır. Yeni varsayılan belge eklemek için **Yeni belgeyi**tıklatın. **Kaydet'i**tıklatmayı unutmayın.
 
-Uygulama, statik içerik sunmak yerine URL 'ye bağlı olarak yönlendiren modüller kullanıyorsa, varsayılan belgelere gerek yoktur.
+Uygulama statik içerik sunyup url'ye dayalı modüller kullanıyorsa, varsayılan belgelere gerek yoktur.
 
 ## <a name="configure-path-mappings"></a>Yol eşlemelerini yapılandırma
 
-[Azure Portalı], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde, **yapılandırma** > **yol eşlemeleri**' ni seçin.
+Azure [portalında,] **App Services'ı**arayın ve seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **Configuration** > **Path eşlemelerini**seçin.
 
 ![Yol eşlemeleri](./media/configure-common/open-path.png)
 
 **Yol eşlemeleri** sayfası, işletim sistemi türüne göre farklı şeyler gösterir.
 
-### <a name="windows-apps-uncontainerized"></a>Windows uygulamaları (Kapsayıcılı olmayan)
+### <a name="windows-apps-uncontainerized"></a>Windows uygulamaları (kaptaslanmamış)
 
-Windows uygulamaları için IIS İşleyici eşlemelerini ve sanal uygulamaları ve dizinleri özelleştirebilirsiniz.
+Windows uygulamaları için IIS işleyicisi eşlemelerini ve sanal uygulamaları ve dizinleri özelleştirebilirsiniz.
 
-İşleyici eşlemeleri belirli dosya uzantılarına yönelik istekleri işlemek için özel betik işlemcileri eklemenize olanak sağlar. Özel bir işleyici eklemek için **yeni işleyici**' ye tıklayın. İşleyiciyi şu şekilde yapılandırın:
+İşleyici eşlemeleri, belirli dosya uzantıları isteklerini işlemek için özel komut dosyası işlemcileri eklemenize izin sağlar. Özel işleyici eklemek için **Yeni işleyiciyi**tıklatın. Işleyiciyi aşağıdaki gibi yapılandırın:
 
-- **Uzantı**. İşlemek istediğiniz *\*. php* veya *Handler. FCGI*gibi dosya uzantısı.
-- **Betik işlemcisi**. Betik işlemcisinin size mutlak yolu. Dosya uzantısıyla eşleşen dosya istekleri betik işlemcisi tarafından işlenir. Uygulamanızın kök dizinine başvurmak için `D:\home\site\wwwroot` yolunu kullanın.
-- **Bağımsız değişkenler**. Betik işlemcisi için isteğe bağlı komut satırı bağımsız değişkenleri.
+- **Uzantısı**. * \*.php* veya *handler.fcgi*gibi işlemek istediğiniz dosya uzantısı.
+- **Komut dosyası işlemci.** Komut dosyası işlemcisinin size mutlak yolu. Dosya uzantısı ile eşleşen dosyalara gelen istekler komut dosyası işlemcisi tarafından işlenir. Uygulamanızın `D:\home\site\wwwroot` kök dizinine başvurmak için yolu kullanın.
+- **Bağımsız değişkenler**. Komut dosyası işlemcisi için isteğe bağlı komut satırı bağımsız değişkenleri.
 
-Her uygulama, kodunuzun varsayılan olarak dağıtıldığı `D:\home\site\wwwroot`eşlenen varsayılan kök yoluna (`/`) sahiptir. Uygulama kökleriniz farklı bir klasörlerde varsa veya deponuzda birden fazla uygulama varsa, sanal uygulamaları ve dizinleri buradan düzenleyebilir veya ekleyebilirsiniz. **Yeni sanal uygulama veya dizin**' e tıklayın.
+Her uygulama, kodunuzun`/`varsayılan olarak `D:\home\site\wwwroot`dağıtıldığı varsayılan kök yolu ( ) eşlenir. Uygulama root'unuz farklı bir klasördeyse veya deponuzda birden fazla uygulama varsa, buraya sanal uygulamaları ve dizinleri dinleyebilir veya ekleyebilirsiniz. **Yeni sanal uygulama veya dizin'i**tıklatın.
 
-Sanal uygulamaları ve dizinleri yapılandırmak için, her bir sanal dizini ve ilgili fiziksel yolunu Web sitesi köküne (`D:\home`) göre belirtin. İsteğe bağlı olarak, bir sanal dizini bir uygulama olarak işaretlemek için **uygulama** onay kutusunu seçebilirsiniz.
+Sanal uygulamaları ve dizinleri yapılandırmak için, her sanal dizin ve web`D:\home`sitesi köküne göre karşılık gelen fiziksel yol belirtin ( ). İsteğe bağlı olarak, sanal bir dizini uygulama olarak işaretlemek için **Uygulama** onay kutusunu seçebilirsiniz.
 
-### <a name="containerized-apps"></a>Kapsayıcılı uygulamalar
+### <a name="containerized-apps"></a>Kapsayıcı uygulamalar
 
-[Kapsayıcılı uygulamanız için özel depolama ekleyebilirsiniz](containers/how-to-serve-content-from-azure-storage.md). Kapsayıcılı uygulamalar tüm Linux uygulamalarını ve Ayrıca App Service çalışan Windows ve Linux özel kapsayıcılarını içerir. **Yeni Azure Storage bağlama** ' ya tıklayın ve özel depolama alanınızı aşağıdaki şekilde yapılandırın:
+Kapsayıcı [uygulamanız için özel depolama alanı ekleyebilirsiniz.](containers/how-to-serve-content-from-azure-storage.md) Kapsayıcı uygulamalar, tüm Linux uygulamalarını ve Uygulama Hizmeti'nde çalışan Windows ve Linux özel kapsayıcılarını içerir. **Yeni Azure Depolama Alanı'nı** tıklatın ve özel depolama alanınızı aşağıdaki gibi yapılandırın:
 
-- **Ad**: görünen ad.
-- **Yapılandırma seçenekleri**: **temel** veya **Gelişmiş**.
-- **Depolama hesapları**: istediğiniz kapsayıcıya sahip depolama hesabı.
-- **Depolama türü**: **Azure Blob 'Ları** veya **Azure dosyaları**.
+- **Adı**: Görüntü adı.
+- **Yapılandırma seçenekleri**: **Temel** veya **Gelişmiş**.
+- **Depolama hesapları**: İstediğinizle kapitalın depo hesabı.
+- **Depolama türü**: **Azure Blobs** veya **Azure Dosyaları**.
   > [!NOTE]
-  > Windows kapsayıcı uygulamaları yalnızca Azure dosyalarını destekler.
-- **Depolama kapsayıcısı**: temel yapılandırma için istediğiniz kapsayıcı.
-- **Paylaşma adı**: Gelişmiş yapılandırma için dosya paylaşımının adı.
+  > Windows kapsayıcı uygulamaları yalnızca Azure Dosyalarını destekler.
+- **Depolama kapsayıcısı**: Temel yapılandırma için istediğiniz kapsayıcı.
+- **Paylaşım adı**: Gelişmiş yapılandırma için dosya paylaşım adı.
 - **Erişim anahtarı**: Gelişmiş yapılandırma için erişim anahtarı.
-- **Bağlama yolu**: özel depolamayı bağlamak için kapsayıcınızda mutlak yol.
+- **Montaj yolu**: Özel depolama monte etmek için konteyner mutlak yol.
 
 Daha fazla bilgi için bkz. [Linux üzerinde App Service'te Azure Depolama'dan içerik sunma](containers/how-to-serve-content-from-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Dil yığını ayarlarını yapılandırma
 
-Linux uygulamaları için bkz.:
+Linux uygulamaları için bkz:
 
-- [ASP.NET Çekirdeği](containers/configure-language-dotnetcore.md)
+- [ASP.NET Core](containers/configure-language-dotnetcore.md)
 - [Node.js](containers/configure-language-nodejs.md)
 - [PHP](containers/configure-language-php.md)
 - [Python](containers/how-to-configure-python.md)
@@ -242,17 +242,17 @@ Linux uygulamaları için bkz.:
 
 ## <a name="configure-custom-containers"></a>Özel kapsayıcıları yapılandırma
 
-Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](containers/configure-custom-container.md)
+Bkz. [Azure Uygulama Hizmeti için özel bir Linux kapsayıcısı yapılandırın](containers/configure-custom-container.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure App Service'te özel etki alanı adını yapılandırma]
 - [Azure App Service’te hazırlık ortamları ayarlama]
 - [Azure App Service'de SSL bağlamasıyla özel DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
-- [Tanılama günlüklerini etkinleştir](troubleshoot-diagnostic-logs.md)
-- [Azure App Service bir uygulamayı ölçeklendirme]
-- [Azure App Service temel bilgileri izleme]
-- [ApplicationHost. xdt ile applicationHost. config ayarlarını değiştirme](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
+- [Tanılama günlüklerini etkinleştirme](troubleshoot-diagnostic-logs.md)
+- [Azure Uygulama Hizmeti'nde bir uygulamayı ölçeklendirin]
+- [Azure Uygulama Hizmeti'nde temel leri izleme]
+- [applicationHost.config ayarlarını applicationHost.xdt ile değiştirin](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 
@@ -261,6 +261,6 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 [Azure App Service'te özel etki alanı adını yapılandırma]: ./app-service-web-tutorial-custom-domain.md
 [Azure App Service’te hazırlık ortamları ayarlama]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
-[Azure App Service temel bilgileri izleme]: ./web-sites-monitor.md
-[ardışık düzen modu]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Azure App Service bir uygulamayı ölçeklendirme]: ./manage-scale-up.md
+[Azure Uygulama Hizmeti'nde temel leri izleme]: ./web-sites-monitor.md
+[boru hattı modu]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[Azure Uygulama Hizmeti'nde bir uygulamayı ölçeklendirin]: ./manage-scale-up.md

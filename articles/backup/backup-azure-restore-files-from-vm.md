@@ -1,134 +1,134 @@
 ---
-title: Azure VM yedeğinden dosya ve klasörleri kurtarma
-description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
+title: Azure VM yedeklemesinden dosya ve klasörleri kurtarma
+description: Bu makalede, bir Azure sanal makine kurtarma noktasından dosya ve klasörleri nasıl kurtarış ediniröğrenin.
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273312"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
-Azure Backup, Azure [sanal makinelerini (VM 'ler) ve diskleri](./backup-azure-arm-restore-vms.md) kurtarma noktaları olarak da BILINEN Azure VM yedeklemelerinden geri yükleme özelliği sağlar. Bu makalede, Azure VM yedeğinden dosya ve klasörlerin nasıl kurtarılacağı açıklanmaktadır. Dosya ve klasörleri geri yükleme yalnızca Kaynak Yöneticisi modeli kullanılarak dağıtılan ve bir kurtarma hizmetleri kasasıyla korunan Azure VM 'Leri için kullanılabilir.
+Azure Yedekleme, kurtarma noktaları olarak da bilinen Azure VM yedeklemelerinden [Azure sanal makinelerini (VM'leri) ve disklerini](./backup-azure-arm-restore-vms.md) geri yükleme olanağı sağlar. Bu makalede, bir Azure VM yedeklemesinden dosya ve klasörlerin nasıl kurtarılacak ları açıklanmaktadır. Dosya ve klasörleri geri getirmek yalnızca Kaynak Yöneticisi modeli kullanılarak dağıtılan ve Kurtarma hizmetleri kasasına karşı korunan Azure VM'leri için kullanılabilir.
 
 > [!NOTE]
-> Bu özellik, Kaynak Yöneticisi modeli kullanılarak dağıtılan ve bir kurtarma hizmetleri kasasıyla korunan Azure sanal makineleri için kullanılabilir.
-> Şifrelenmiş bir VM yedeğinden dosya kurtarma desteklenmez.
+> Bu özellik, Kaynak Yöneticisi modelini kullanarak dağıtılan ve Kurtarma Hizmetleri kasasına karşı korunan Azure VM'leri için kullanılabilir.
+> Şifrelenmiş bir VM yedeklemesinden dosya kurtarma desteklenmez.
 >
 
-## <a name="mount-the-volume-and-copy-files"></a>Birimi bağlama ve dosyaları kopyalama
+## <a name="mount-the-volume-and-copy-files"></a>Ses düzeyini ekleme ve dosyaları kopyalama
 
-Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye gidin ve istediğiniz kurtarma noktasını seçin.
+Kurtarma noktasından dosyaları veya klasörleri geri yüklemek için sanal makineye gidin ve istediğiniz kurtarma noktasını seçin.
 
-1. [Azure Portal](https://portal.Azure.com) oturum açın ve sol bölmede **sanal makineler**' e tıklayın. Sanal makineler listesinden sanal makineyi seçerek bu sanal makinenin panosunu açın.
+1. [Azure portalında](https://portal.Azure.com) oturum açın ve sol bölmede **Sanal makineler'e**tıklayın. Sanal makineler listesinden, sanal makinenin panosunu açmak için sanal makineyi seçin.
 
-2. Sanal makinenin menüsünde, yedekleme panosunu açmak için **Yedekle** ' ye tıklayın.
+2. Sanal makinenin menüsünde, Yedekleme panosunu açmak için **Yedekleme'yi** tıklatın.
 
-    ![Kurtarma Hizmetleri Kasası yedekleme öğesini aç](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
+    ![Kurtarma Hizmetleri kasa yedek öğesi açık](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. Yedekleme panosu menüsünde, **dosya kurtarma**' ya tıklayın.
+3. Yedekleme panosu menüsünde **Dosya Kurtarma'yı**tıklatın.
 
-    ![Dosya Kurtarma düğmesi](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Dosya kurtarma düğmesi](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
-    **Dosya kurtarma** menüsü açılır.
+    **Dosya Kurtarma** menüsü açılır.
 
     ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/file-recovery-blade.png)
 
-4. **Kurtarma noktası seç** açılan menüsünde, istediğiniz dosyaları tutan kurtarma noktasını seçin. Varsayılan olarak, en son kurtarma noktası zaten seçilidir.
+4. Kurtarma **noktası** açılır menüsünden, istediğiniz dosyaları tutan kurtarma noktasını seçin. Varsayılan olarak, en son kurtarma noktası zaten seçilir.
 
-5. Kurtarma noktasından dosya kopyalamak için kullanılan yazılımı indirmek için, **yürütülebilir dosyayı indir** (Windows Azure VM 'ler için) veya **betiği Indir** (Linux Azure VM 'leri için bir Python betiği oluşturulur).
+5. Dosyaları kurtarma noktasından kopyalamak için kullanılan yazılımı indirmek **için, Yürütülebilir'i İndir** (Windows Azure VM'ler için) veya **Download Script'i** (Linux Azure VM'leri için bir python komut dosyası oluşturulur) tıklatın.
 
     ![Oluşturulan parola](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
-    Azure, yürütülebilir dosyayı veya betiği yerel bilgisayara indirir.
+    Azure, yürütülebilir veya komut dosyasını yerel bilgisayara indirir.
 
-    ![yürütülebilir dosya veya betik için indirme iletisi](./media/backup-azure-restore-files-from-vm/run-the-script.png)
+    ![çalıştırılabilir veya komut dosyası için ileti indirme](./media/backup-azure-restore-files-from-vm/run-the-script.png)
 
-    Yürütülebilir dosyayı veya betiği yönetici olarak çalıştırmak için, indirilen dosyayı bilgisayarınıza kaydetmeniz önerilir.
+    Yürütülebilir veya komut dosyasını yönetici olarak çalıştırmak için, indirilen dosyayı bilgisayarınıza kaydetmeniz önerilir.
 
-6. Yürütülebilir dosya veya komut dosyası parola korumalıdır ve parola gerektirir. **Dosya kurtarma** menüsünde, parolayı belleğe yüklemek için Kopyala düğmesine tıklayın.
+6. Yürütülebilir veya komut dosyası parola korumalıdır ve parola gerektirir. Dosya **Kurtarma** menüsünde, parolayı belleğe yüklemek için kopyala düğmesini tıklatın.
 
     ![Oluşturulan parola](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. İndirme konumundan (genellikle Indirmeler klasörü), çalıştırılabilir veya betiğe sağ tıklayın ve yönetici kimlik bilgileriyle çalıştırın. İstendiğinde, parolayı yazın veya parolayı bellekten yapıştırın ve **ENTER**tuşuna basın. Geçerli parola girildikten sonra, komut dosyası kurtarma noktasına bağlanır.
+7. İndirme konumundan (genellikle İndirilenler klasöründen) çalıştırılabilir veya komut dosyasına sağ tıklayın ve Yönetici kimlik bilgileriyle çalıştırın. İstendiğinde, parolayı yazın veya parolayı bellekten yapıştırın ve **Enter**tuşuna basın. Geçerli parola girilen komut dosyası kurtarma noktasına bağlanır.
 
     ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
-8. Linux makinelerinde, bir Python betiği oluşturulur. Bunlardan birinin betiği indirmesi ve ilgili/uyumlu Linux sunucusuna kopyalanması gerekir. ```chmod +x <python file name>```ile yürütmek için izinleri değiştirmeniz gerekebilir. Sonra Python dosyasını ```./<python file name>```çalıştırın.
+8. Linux makineleri için bir python komut dosyası oluşturulur. Bir komut dosyası indirmek ve ilgili / uyumlu Linux sunucusuna kopyalamak gerekir. 'yi yürütmek için izinleri değiştirmeniz ```chmod +x <python file name>```gerekebilir. Daha sonra python ```./<python file name>```dosyasını '' ile çalıştırın.
 
-Betiğin başarıyla çalıştığından emin olmak için [erişim gereksinimleri](#access-requirements) bölümüne bakın.
+Komut dosyasının başarılı bir şekilde çalıştırıldığından emin olmak için [Erişim gereksinimleri](#access-requirements) bölümüne bakın.
 
-### <a name="identifying-volumes"></a>Birimleri tanımlama
+### <a name="identifying-volumes"></a>Birimlerin tanımlanması
 
 #### <a name="for-windows"></a>Windows için
 
-Yürütülebilir dosyayı çalıştırdığınızda, işletim sistemi yeni birimleri takar ve sürücü harfleri atar. Bu sürücülere gözatabilmeniz için Windows Gezgini veya dosya Gezgini ' ni kullanabilirsiniz. Birimlere atanan sürücü harfleri, özgün sanal makineyle aynı harfle bulunmayabilir. Ancak, birim adı korunur. Örneğin, özgün sanal makinedeki birim "veri diski (E:`\`)" ise, bu birim yerel bilgisayara "veri diski (' herhangi bir harf ':`\`) olarak eklenebilir. Dosyalarınız veya klasörünüzü bulana kadar betik çıktısında bahsedilen tüm birimlere göz atabilirsiniz.  
+Çalıştırılabilir çalıştırdığınızda, işletim sistemi yeni birimleri bağlar ve sürücü mektupları atar. Bu sürücülere göz atmak için Windows Gezgini veya Dosya Gezgini'ni kullanabilirsiniz. Birimlere atanan sürücü harfleri, özgün sanal makineyle aynı harfler olmayabilir. Ancak, birim adı korunur. Örneğin, orijinal sanal makinenin hacmi "Veri Diski`\`(E: )" ise, bu birim yerel bilgisayara "Veri Diski ('Herhangi bir harf': )`\`olarak eklenebilir. Dosyalarınızı veya klasörünüzü bulana kadar komut dosyası çıktısında belirtilen tüm birimlere göz atın.  
 
    ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
 #### <a name="for-linux"></a>Linux için
 
-Linux 'ta, kurtarma noktasının birimleri betiğin çalıştırıldığı klasöre bağlanır. Eklenen diskler, birimler ve ilgili bağlama yolları buna göre gösterilir. Bu bağlama yolları kök düzeyinde erişime sahip kullanıcılar tarafından görülebilir. Betik çıktısında belirtilen birimlere göz atabilirsiniz.
+Linux'ta, kurtarma noktasının birimleri komut dosyasının çalıştırıldığı klasöre monte edilir. Ekli diskler, birimler ve karşılık gelen montaj yolları buna göre gösterilir. Bu montaj yolları kök düzeyi erişimi olan kullanıcılar tarafından görülebilir. Komut dosyası çıktısında belirtilen birimlere göz atın.
 
-  ![Linux dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
+  ![Linux Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
-## <a name="closing-the-connection"></a>Bağlantı kapatılıyor
+## <a name="closing-the-connection"></a>Bağlantıyı kapatma
 
-Dosyaları tanımladıktan ve yerel bir depolama konumuna kopyaladıktan sonra ek sürücüleri kaldırın (veya çıkarın). Sürücüleri çıkarmak için, Azure portal **dosya kurtarma** menüsünde, **diskleri**çıkar ' a tıklayın.
+Dosyaları tanımladıktan ve yerel bir depolama konumuna kopyaladıktan sonra, ek sürücüleri kaldırın (veya kaldırın). Sürücülerin sökülmesi için Azure portalındaki **Dosya Kurtarma** menüsünde **Diskleri Sökme'yi**tıklatın.
 
-![Diskleri çıkarın](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
+![Sökme diskleri](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
-Diskler kaldırıldıktan sonra bir ileti alırsınız. Diskleri kaldırabilmeniz için yenilemenin bağlantısının yenilenmesi birkaç dakika sürebilir.
+Diskler söküldükten sonra bir ileti alırsınız. Diskleri kaldırabilmeniz için bağlantının yenilenmesi birkaç dakika sürebilir.
 
-Linux 'ta, kurtarma noktası bağlantısı kapatıldıktan sonra, işletim sistemi ilgili bağlama yollarını otomatik olarak kaldırmaz. Bağlama yolları "yalnız," birimleri olarak bulunur ve görünür, ancak dosyalara erişirken/yazarken bir hata oluşturur. Bunlar el ile kaldırılabilirler. Betiği çalıştırıldığında, önceki kurtarma noktalarından mevcut olan tüm birimleri tanımlar ve izin üzerine temizler.
+Linux'ta, kurtarma noktasına bağlantı kesildikten sonra, işletim sistemi ilgili montaj yollarını otomatik olarak kaldırmaz. Montaj yolları "yetim" birimleri olarak var ve görünür, ancak dosyalara eriştiğinde/yazarken bir hata atmak. Bunlar el ile kaldırılabilir. Komut dosyası, çalıştırıldığında, önceki kurtarma noktalarından var olan bu tür birimleri tanımlar ve onay alınca temizler.
 
-## <a name="special-configurations"></a>Özel yapılandırma
+## <a name="special-configurations"></a>Özel yapılandırmalar
 
 ### <a name="dynamic-disks"></a>Dinamik diskler
 
-Korunan Azure VM 'nin aşağıdaki özelliklerden biri veya her ikisi de varsa, çalıştırılabilir betiği aynı VM 'de çalıştıramazsınız.
+Korumalı Azure VM'de aşağıdaki özelliklerden birine veya her ikisine sahip birimler varsa, çalıştırılabilir komut dosyasını aynı VM'de çalıştıramazsınız.
 
-- Birden çok diske yayılan birimler (yayılmış ve şeritli birimler)
-- Dinamik disklerde hataya dayanıklı birimler (yansıtılmış ve RAID-5 birimleri)
+- Birden çok diski kapsayan birimler (yayılan ve çizgili birimler)
+- Dinamik disklerde hataya dayanıklı hacimler (aynalı ve RAID-5 birimleri)
 
-Bunun yerine, çalıştırılabilir betiği, uyumlu bir işletim sistemi olan başka herhangi bir bilgisayarda çalıştırın.
+Bunun yerine, uyumlu bir işletim sistemi ile başka bir bilgisayarda çalıştırılabilir komut dosyası çalıştırın.
 
-### <a name="windows-storage-spaces"></a>Windows depolama alanları
+### <a name="windows-storage-spaces"></a>Windows Depolama Alanları
 
-Windows depolama alanları, depolamayı sanallaştırmanızı sağlayan bir Windows teknolojisidir. Windows depolama alanları ile sektör standardı diskleri depolama havuzlarına gruplayabilirsiniz. Daha sonra, depolama alanları adı verilen sanal diskler oluşturmak için bu depolama havuzlarındaki kullanılabilir alanı kullanırsınız.
+Windows Depolama Alanları, depolama alanını sanallaştırmanızı sağlayan bir Windows teknolojisidir. Windows Depolama Alanları ile endüstri standardı diskleri depolama havuzlarına gruplayabilirsiniz. Ardından, depolama alanları adı verilen sanal diskler oluşturmak için bu depolama havuzlarında kullanılabilir alanı kullanırsınız.
 
-Korumalı Azure sanal makinesi Windows depolama alanları kullanıyorsa, çalıştırılabilir betiği aynı VM üzerinde çalıştıramazsınız. Bunun yerine, çalıştırılabilir betiği, uyumlu bir işletim sistemi olan diğer herhangi bir makinede çalıştırın.
+Korumalı Azure VM Windows Depolama Alanları kullanıyorsa, çalıştırılabilir komut dosyasını aynı VM'de çalıştıramazsınız. Bunun yerine, uyumlu bir işletim sistemine sahip başka bir makinede çalıştırılabilir komut dosyasını çalıştırın.
 
 ### <a name="lvmraid-arrays"></a>LVM/RAID dizileri
 
-Linux 'ta mantıksal birim Yöneticisi (LVM) ve/veya yazılım RAID dizileri, mantıksal birimleri birden çok disk üzerinde yönetmek için kullanılır. Korunan Linux sanal makinesi LVM ve/veya RAID dizileri kullanıyorsa, betiği aynı VM 'de çalıştıramazsınız. Bunun yerine betiği, uyumlu bir işletim sistemi olan ve korunan VM 'nin dosya sistemini destekleyen diğer bir makinede çalıştırın.
+Linux'ta, Mantıksal birim yöneticisi (LVM) ve/veya yazılım RAID Dizileri, birden çok disk üzerinden mantıksal birimleri yönetmek için kullanılır. Korumalı Linux VM LVM ve/veya RAID Dizileri kullanıyorsa, komut dosyasını aynı VM'de çalıştıramazsınız. Bunun yerine, komut dosyasını uyumlu bir işletim sistemi olan ve korumalı VM'nin dosya sistemini destekleyen başka bir makinede çalıştırın.
 
-Aşağıdaki betik çıktısı, LVM ve/veya RAID dizileri disklerini ve bölüm türüne sahip birimleri görüntüler.
+Aşağıdaki komut dosyası çıktısı LVM ve/veya RAID Dizileri disklerini ve bölüm türündeki birimleri görüntüler.
 
-   ![Linux LVM çıkış menüsü](./media/backup-azure-restore-files-from-vm/linux-LVMOutput.png)
+   ![Linux LVM Çıkış menüsü](./media/backup-azure-restore-files-from-vm/linux-LVMOutput.png)
 
-Bu bölümleri çevrimiçi duruma getirmek için aşağıdaki bölümlerde komutları çalıştırın.
+Bu bölümleri çevrimiçi duruma getirmek için aşağıdaki bölümlerdeki komutları çalıştırın.
 
 #### <a name="for-lvm-partitions"></a>LVM bölümleri için
 
-Fiziksel birim altındaki birim grubu adlarını listelemek için:
+Birim grup adlarını fiziksel bir birim altında listelemek için:
 
 ```bash
 #!/bin/bash
 pvs <volume name as shown above in the script output>
 ```
 
-Bir birim grubundaki tüm mantıksal birimleri, adları ve bunların yollarını listelemek için:
+Tüm mantıksal birimleri, adları ve bunların yollarını bir birim grubundaki listelemek için:
 
 ```bash
 #!/bin/bash
 lvdisplay <volume-group-name from the pvs command's results>
 ```
 
-Mantıksal birimleri tercih ettiğiniz yola bağlamak için:
+Mantıksal birimleri seçtiğiniz yola monte etmek için:
 
 ```bash
 #!/bin/bash
@@ -137,29 +137,29 @@ mount <LV path> </mountpath>
 
 #### <a name="for-raid-arrays"></a>RAID dizileri için
 
-Aşağıdaki komut tüm RAID disklerinin ayrıntılarını görüntüler:
+Aşağıdaki komut tüm raid diskleri hakkındaki ayrıntıları görüntüler:
 
 ```bash
 #!/bin/bash
 mdadm –detail –scan
 ```
 
- İlgili RAID diski `/dev/mdm/<RAID array name in the protected VM>` olarak görüntülenir
+ İlgili RAID diski,`/dev/mdm/<RAID array name in the protected VM>`
 
-RAID diskinde fiziksel birimler varsa bağlama komutunu kullanın:
+RAID diskinin fiziksel birimleri varsa montaj komutunu kullanın:
 
 ```bash
 #!/bin/bash
 mount [RAID Disk Path] [/mountpath]
 ```
 
-RAID diskinde yapılandırılmış başka bir LVM varsa, LVM bölümleri için önceki yordamı kullanın, ancak RAID disk adı yerine birim adını kullanın.
+RAID diskinde yapılandırılan başka bir LVM varsa, LVM bölümleri için önceki yordamı kullanın, ancak RAID Disk adının yerine birim adını kullanın.
 
 ## <a name="system-requirements"></a>Sistem gereksinimleri
 
-### <a name="for-windows-os"></a>Windows işletim sistemi için
+### <a name="for-windows-os"></a>Windows İşletim Sistemi için
 
-Aşağıdaki tabloda sunucu ve bilgisayar işletim sistemleri arasındaki uyumluluk gösterilmektedir. Dosyaları kurtarırken, önceki veya sonraki bir işletim sistemi sürümüne dosya geri yükleme yapamazsınız. Örneğin, bir dosyayı Windows Server 2016 VM 'den Windows Server 2012 veya Windows 8 bilgisayarına geri alamazsınız. Bir VM 'den aynı sunucu işletim sistemine veya uyumlu istemci işletim sistemine dosyaları geri yükleyebilirsiniz.
+Aşağıdaki tablo, sunucu ve bilgisayar işletim sistemleri arasındaki uyumluluğu gösterir. Dosyaları kurtarırken, dosyaları önceki veya gelecekteki bir işletim sistemi sürümüne geri yükleyemezsiniz. Örneğin, bir Dosyayı Windows Server 2016 VM'den Windows Server 2012'ye veya Windows 8 bilgisayarına geri yükleyemezsiniz. Dosyaları VM'den aynı sunucu işletim sistemine veya uyumlu istemci işletim sistemine geri yükleyebilirsiniz.
 
 |Sunucu İşletim Sistemi | Uyumlu istemci işletim sistemi  |
 | --------------- | ---- |
@@ -169,71 +169,71 @@ Aşağıdaki tabloda sunucu ve bilgisayar işletim sistemleri arasındaki uyumlu
 | Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
 
-### <a name="for-linux-os"></a>Linux işletim sistemi için
+### <a name="for-linux-os"></a>Linux OS için
 
-Linux 'ta, dosyaları geri yüklemek için kullanılan bilgisayarın işletim sisteminin korumalı sanal makinenin dosya sistemini desteklemesi gerekir. Betiği çalıştırmak için bir bilgisayar seçerken, bilgisayarın uyumlu bir işletim sistemi olduğundan emin olun ve aşağıdaki tabloda belirtilen sürümlerden birini kullandığından emin olun:
+Linux'ta, dosyaları geri yüklemek için kullanılan bilgisayarın işletim sistemi korumalı sanal makinenin dosya sistemini desteklemelidir. Komut dosyasını çalıştırmak için bir bilgisayar seçerken, bilgisayarın uyumlu bir işletim sistemi olduğundan emin olun ve aşağıdaki tabloda tanımlanan sürümlerden birini kullanır:
 
-|Linux işletim sistemi | Sürümler  |
+|Linux İşletim Sistemi | Sürümler  |
 | --------------- | ---- |
-| Ubuntu | 12,04 ve üzeri |
-| CentOS | 6,5 ve üzeri  |
-| RHEL | 6,7 ve üzeri |
+| Ubuntu | 12.04 ve üzeri |
+| CentOS | 6.5 ve üzeri  |
+| RHEL | 6.7 ve üzeri |
 | Debian | 7 ve üzeri |
-| Oracle Linux | 6,4 ve üzeri |
+| Oracle Linux | 6.4 ve üzeri |
 | SLES | 12 ve üzeri |
-| openSUSE | 42,2 ve üzeri |
+| openSUSE | 42.2 ve üzeri |
 
 > [!NOTE]
-> SLES 12 SP4 işletim sistemine sahip makinelerde dosya kurtarma betiğini çalıştırırken bazı sorunlar bulduk ve SLES ekibiyle araştırıyoruz.
-> Şu anda, dosya kurtarma betiğini çalıştırmak SLES 12 SP2 ve SP3 işletim sistemi sürümleri olan makinelerde çalışmaktadır.
+> Biz SLES 12 SP4 işletim sistemi ile makinelerde dosya kurtarma komut dosyası çalışan bazı sorunlar bulduk ve Biz SLES ekibi ile araştırıyoruz.
+> Şu anda, dosya kurtarma komut dosyası çalışan SLES 12 SP2 ve SP3 işletim sistemi sürümleri ile makineler üzerinde çalışıyor.
 >
 
-Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir şekilde yürütülmesi ve güvenli bir şekilde bağlanmasını gerektirir.
+Komut dosyası, Python ve bash bileşenlerinin yürütmesini ve kurtarma noktasına güvenli bir şekilde bağlanmasını da gerektirir.
 
 |Bileşen | Sürüm  |
 | --------------- | ---- |
-| Bash | 4 ve üzeri |
+| bash | 4 ve üzeri |
 | python | 2.6.6 ve üzeri  |
-| TLS | 1,2 desteklenmelidir  |
+| TLS | 1.2 desteklenmelidir  |
 
 ## <a name="access-requirements"></a>Erişim gereksinimleri
 
-Betiği kısıtlı erişimi olan bir bilgisayarda çalıştırırsanız, erişimi olduğundan emin olun:
+Komut dosyasını kısıtlı erişime sahip bir bilgisayarda çalıştırın, aşağıdakilere erişin
 
 - `download.microsoft.com`
-- Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure genel geos Için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure Çin 21Vianet Için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure ABD kamu Için)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Azure Almanya Için)
+- Kurtarma Hizmeti URL'leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Azure genel geos için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Azure China 21Vianet için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Azure ABD Hükümeti için)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Azure Almanya için)
 - Giden bağlantı noktaları 53 (DNS), 443, 3260
 
 > [!NOTE]
 >
-> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Exampple için: indirilen betik adı \'VMname\'\_\'geoname\'_\'GUID\'ile *başlar ContosoVM_wcus_12345678*
-> - URL <https://pod01-rec2.wcus.backup.windowsazure.com>"
+> - İndirilen komut dosyası dosya adı, URL'de doldurulacak **coğrafi adı** olacaktır. Exampple için: İndirilen komut \'dosyası\'\_\'adı\'VMname geoname _\'GUID\'ile başlar , *ContosoVM_wcus_12345678* gibi
+> - URL olacaktır <https://pod01-rec2.wcus.backup.windowsazure.com>"
 >
 
-Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasına bağlanmasını gerektirir. Bileşenler, betiğin çalıştırıldığı bilgisayarda yoksa, komut dosyası bileşenleri yüklemek için izin ister. Gerekli bileşenleri yüklemeye izin verin.
+Linux için, komut dosyası kurtarma noktasına bağlanmak için 'açık-iscsi' ve 'lshw' bileşenleri gerektirir. Komut dosyasının çalıştırıldığı bilgisayarda bileşenler yoksa, komut dosyası bileşenleri yüklemek için izin ister. Gerekli bileşenleri yüklemek için izin sağlayın.
 
-`download.microsoft.com` erişimi, betiğin çalıştırıldığı makine ve kurtarma noktasındaki veriler arasında güvenli bir kanal oluşturmak için kullanılan bileşenleri indirmek için gereklidir.
+`download.microsoft.com` Komut dosyasının çalıştırıldığı makine ile kurtarma noktasındaki veriler arasında güvenli bir kanal oluşturmak için kullanılan bileşenleri karşıdan yüklemeyapmak için erişim gereklidir.
 
-Betiği, yedeklenen VM ile aynı (veya uyumlu) işletim sistemine sahip herhangi bir makinede çalıştırabilirsiniz. Uyumlu işletim sistemleri için [uyumlu IŞLETIM sistemi tablosuna](backup-azure-restore-files-from-vm.md#system-requirements) bakın. Korumalı Azure sanal makinesi Windows depolama alanları (Windows Azure VM 'Ler için) veya LVM/RAID dizileri (Linux VM 'Ler için) kullanıyorsa, çalıştırılabilir veya betiği aynı sanal makinede çalıştıramazsınız. Bunun yerine, çalıştırılabilir veya betiği, uyumlu bir işletim sistemi olan herhangi bir makinede çalıştırın.
+Komut dosyasını, yedeklenmiş VM ile aynı (veya uyumlu) işletim sistemine sahip herhangi bir makinede çalıştırabilirsiniz. Uyumlu işletim sistemleri için [Uyumlu işletim sistemi tablosuna](backup-azure-restore-files-from-vm.md#system-requirements) bakın. Korumalı Azure sanal makine windows depolama alanlarını (Windows Azure VM'leri için) veya LVM/RAID Dizileri kullanıyorsa (Linux VM'ler için), aynı sanal makinede çalıştırılabilir veya komut dosyası çalıştıramazsınız. Bunun yerine, uyumlu bir işletim sistemine sahip başka bir makinede çalıştırılabilir veya komut dosyasını çalıştırın.
 
-## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemelerinden dosya kurtarma
+## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip Sanal makine yedeklemelerinden dosya kurtarma
 
-Bu bölümde, 16 ' dan fazla diske sahip Azure sanal makinelerinin yedeklemelerinden dosya kurtarmanın nasıl yapılacağı ve her disk boyutunun 32 TB 'den büyük olması açıklanmaktadır.
+Bu bölümde, 16'dan fazla diske sahip azure sanal makinelerin yedeklerinden dosya kurtarma nasıl gerçekleştiriliş gösterilmektedir ve her disk boyutu 32 TB'den büyüktür.
 
-Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda disk (> 16) veya büyük diskler (> 32 TB) kullanıldığında, aşağıdaki eylem noktaları önerilir:
+Dosya kurtarma işlemi yedeklemeden tüm diskleri iliştirdiğinden, çok sayıda disk (>16) veya büyük diskler (her biri > 32 TB) kullanıldığında, aşağıdaki eylem noktaları önerilir:
 
-- Dosya kurtarma için ayrı bir geri yükleme sunucusunu (Azure VM D2v3 VM 'Ler) saklayın. Bunu yalnızca dosya kurtarma için kullanabilir ve gerekli olmadığında kapatabilirsiniz. Özgün makineye geri yükleme, sanal makinenin kendisi üzerinde önemli bir etkiye sahip olacağı için önerilmez.
-- Sonra, dosya kurtarma işleminin başarılı olup olmadığını denetlemek için betiği bir kez çalıştırın.
-- Dosya kurtarma işlemi askıda kalırsa (diskler hiç bağlanmaz veya bağlanmamışsa ancak birimler görünmezse), aşağıdaki adımları gerçekleştirin.
-  - Geri yükleme sunucusu bir Windows sanal makinesi ise:
-    - İşletim sisteminin WS 2012 veya daha yüksek olduğundan emin olun.
-    - Kayıt defteri anahtarlarının geri yükleme sunucusunda aşağıda önerildiği şekilde ayarlandığından ve sunucuyu yeniden başlattığınızdan emin olun. GUID 'nin yanındaki sayı 0001-0005 aralığında değişebilir. Aşağıdaki örnekte, 0,0004. Parametreler bölümüne kadar kayıt defteri anahtarı yolunda ilerleyin.
+- Dosya kurtarma için ayrı bir geri yükleme sunucusu (Azure VM D2v3 VM) tutun. Bunu yalnızca dosya kurtarma için kullanabilir ve gerekli olmadığında kapatabilirsiniz. VM kendisi üzerinde önemli bir etkiye sahip olacağından orijinal makinenin geri kullanılması önerilmez.
+- Ardından, dosya kurtarma işleminin başarılı olup olmadığını denetlemek için komut dosyasını bir kez çalıştırın.
+- Dosya kurtarma işlemi askıda ysa (diskler hiç monte edilmemişse veya monte edilmişlerse ancak birimler görünmüyorsa), aşağıdaki adımları gerçekleştirin.
+  - Geri yükleme sunucusu bir Windows VM ise:
+    - İşletim sistemi WS 2012 veya daha yüksek olduğundan emin olun.
+    - Kayıt defteri anahtarlarının geri yükleme sunucusunda aşağıda önerildiği gibi ayarlandığından emin olun ve sunucuyu yeniden başlatTınız. GUID yanındaki sayı 0001-0005 arasında değişebilir. Aşağıdaki örnekte, 0004. Parametre bölümüne kadar kayıt defteri anahtar yolunda ilerleyin.
 
-    ![iscsi-reg-Key-Changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![iscsi-reg-anahtar-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
@@ -242,68 +242,68 @@ Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda di
 - HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
 ```
 
-- Geri yükleme sunucusu bir Linux sanal makinesi ise:
-  - /Etc/IDL/SCC \ dosya \ dosya & lt; 1} dosyasında, ayarı şu şekilde değiştirin:
-    - Node. Conn [0]. Timeo. noop_out_timeout = 5 ila Node. Conn [0]. Timeo. noop_out_timeout = 30
-- Yukarıdaki değişikliği yaptıktan sonra betiği yeniden çalıştırın. Bu değişikliklerle dosya kurtarmanın başarılı olması oldukça önemlidir.
-- Kullanıcı bir betiği her indirdiğinde, Azure Backup kurtarma noktasını indirme işlemini hazırlama işlemini başlatır. Büyük disklerle bu işlem önemli ölçüde zaman alır. İsteklerin birbirini izleyen bir kopyası varsa, hedef hazırlık bir indirme içine gider. Bu nedenle, Portal/PowerShell/CLı 'dan bir betiği indirmeniz, 20-30 dakika beklemeniz ve sonra çalıştırmanız önerilir. Bu süre içinde, hedefin betikten bağlantı için hazırlanma beklenmektedir.
-- Dosya kurtarmasından sonra, portala geri döndiğinizden emin olun ve birimleri takabileceğiniz kurtarma noktaları için **diskleri** çıkar ' a tıklayın. Temelde, bu adım mevcut tüm işlem/oturumları temizler ve kurtarma olasılığını artırır.
+- Geri yükleme sunucusu bir Linux VM ise:
+  - /etc/iscsi/iscsid.conf dosyasında, ayarı aşağıdakilerden değiştirin:
+    - düğüm.conn[0].timeo.noop_out_timeout = 5 düğüm.conn[0].timeo.noop_out_timeout = 30
+- Yukarıdaki değişikliği yaptıktan sonra, komut dosyasını yeniden çalıştırın. Bu değişikliklerle, dosya kurtarmanın başarılı olması son derece olasıdır.
+- Kullanıcı her komut dosyası indirdinlerinde, Azure Yedekleme kurtarma noktasını karşıdan yüklemeye hazırlama işlemini başlatır. Büyük disklerde bu işlem önemli ölçüde zaman alacaktır. Art arda istek patlamaları varsa, hedef hazırlama bir indirme sarmalına girer. Bu nedenle, Portal/ Powershell / CLI bir komut dosyası indirmek için tavsiye edilir, 20-30 dakika bekleyin (sezgisel) ve sonra çalıştırın. Bu zamana kadar, hedef komut dosyasından bağlantı için hazır olması bekleniyor.
+- Dosya kurtarmadan sonra, portala geri döndüğünüzden ve birim montajı yapamadığınız kurtarma noktaları için **Dağık'ı** tıklattığınızı unutmayın. Esasen, bu adım varolan tüm süreçleri/oturumları temizleyecek ve iyileşme şansını artıracaktır.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Dosyaları sanal makinelerden kurtarırken sorunlarla karşılaşırsanız, daha fazla bilgi için aşağıdaki tabloya bakın.
+Sanal makinelerden dosyaları kurtarırken sorun yaşıyorsanız, ek bilgi için aşağıdaki tabloyu kontrol edin.
 
-| Hata Iletisi/senaryo | Olası neden | Önerilen eylem |
+| Hata İletisi / Senaryo | Muhtemel Neden | Önerilen eylem |
 | ------------------------ | -------------- | ------------------ |
-| Exe çıkışı: *hedefe bağlanılırken özel durum yakalandı* | Betik, kurtarma noktasına erişemiyor    | Makinenin [önceki erişim gereksinimlerini](#access-requirements)yerine getirip getirmediğini denetleyin. |  
-| Exe çıkışı: *hedef, bir iSCSI oturumu aracılığıyla zaten oturum açtı.* | Betik aynı makinede zaten yürütüldü ve sürücüler eklendi | Kurtarma noktasının birimleri zaten eklenmiş. Özgün VM 'nin aynı sürücü harflerine bağlı olmayabilir. Dosya Gezgini 'nde dosyanız için tüm kullanılabilir birimlere göz atabilirsiniz. |
-| Exe çıkışı: *diskler Portal üzerinden çıkartılırsa/12-hr sınırını aştığından bu betik geçersizdir. Portaldan yeni bir komut dosyası indirin.* |    Diskler portaldan çıkarıldı veya 12 saatlik sınır aşıldı | Bu belirli bir exe artık geçersiz ve çalıştırılamaz. Bu kurtarma noktasının dosyalarına erişmek isterseniz, yeni bir exe için portalı ziyaret edin.|
-| Exe 'nin çalıştırıldığı makinede: yeni birimler, çıkarma düğmesine tıklandıktan sonra çıkartılırsa | Makinedeki Iscsı Başlatıcısı, hedefe yönelik bağlantısını yanıt vermiyor/yenilemedi ve önbelleğin saklanması. |  **Çıkarma**' ya tıkladıktan sonra birkaç dakika bekleyin. Yeni birimler çıkartılırsa tüm birimlere göz atabilirsiniz. Tüm birimlere göz atmak başlatıcıyı bağlantıyı yenilemeye zorlar ve birim, diskin kullanılamadığı bir hata iletisiyle çıkarılır.|
-| Exe çıkışı: betik başarıyla çalıştırıldı, ancak "eklenen yeni birimler" betik çıktısında görüntülenmiyor |    Bu geçici bir hatadır    | Birimler zaten eklenmiş durumda. Gezinmek için Explorer 'ı açın. Her seferinde betikleri çalıştırmak için aynı makineyi kullanıyorsanız, makineyi yeniden başlatmayı düşünün ve listenin sonraki exe çalıştırmaları içinde görüntülenmesi gerekir. |
-| Linux 'a özgü: istenen birimleri görüntüleyemeyebilirsiniz | Betiğin çalıştırıldığı makinenin işletim sistemi, korunan sanal makinenin temelindeki dosya sistemini tanımıyor olabilir | Kurtarma noktasının çökme ile tutarlı veya dosya tutarlılığı olup olmadığını denetleyin. Dosya tutarlı ise, işletim sistemi, korunan VM 'nin dosya sistemini algılayan başka bir makinede betiği çalıştırın. |
-| Windows 'a özgü: istenen birimleri görüntüleyemeyebilirsiniz | Diskler takılmış ancak birimler yapılandırılmamış olabilir | Disk Yönetimi ekranından, kurtarma noktasıyla ilgili ek diskleri tanımla. Bu disklerden herhangi biri çevrimdışı durumdaysa, diske sağ tıklayıp **çevrimiçi**' a tıklayarak bunları çevrimiçi duruma getirin.|
+| Exe çıkışı: *Hedefe bağlanırken yakalanan özel durum* | Komut dosyası kurtarma noktasına erişemez    | Makinenin önceki erişim [gereksinimlerini](#access-requirements)karşılayıp karşılmadığını kontrol edin. |  
+| Exe çıkışı: *Hedef zaten bir iSCSI oturumu aracılığıyla giriş yaptı.* | Komut dosyası zaten aynı makinede yürütülmüş ve sürücüler eklenmiş | Kurtarma noktasının birimleri zaten eklenmiş. Orijinal VM'nin aynı sürücü harfleriyle monte edilmeyebilirler. Dosyanız için dosya gezginindeki tüm kullanılabilir birimlere göz atın. |
+| Exe çıkışı: *Diskler portal üzerinden söküldüğü/12 saat sınırını aştığı için bu komut dosyası geçersizdir. Portaldan yeni bir komut dosyası indirin.* |    Diskler portaldan söküldü veya 12 saatlik sınır aşıldı | Bu özel exe şimdi geçersiz ve çalıştırılamaz. Bu kurtarma noktası nın dosyalarına zamanında erişmek istiyorsanız, yeni bir exe için portalı ziyaret edin.|
+| Exe'nin çalıştırıldığı makinede: Sökme düğmesi tıklatıldıktan sonra yeni birimler sökülmüyor | Makinedeki iSCSI başlatıcısı, hedefe olan bağlantısını yanıtlamıyor/yenilemiyor ve önbelleği koruyor. |  **Dismount**tıkladıktan sonra, birkaç dakika bekleyin. Yeni birimler sökülmüyorsa, tüm birimlere göz atın. Tüm birimlere göz atmak başlatıcıyı bağlantıyı yenilemeye zorlar ve birim, diskin kullanılamadığı bir hata iletisiyle sökülür.|
+| Exe çıktısı: Komut dosyası başarılı bir şekilde çalıştırılır, ancak komut dosyası çıktısı üzerinde "Yeni birimler eklenmiş" görüntülenmez |    Bu geçici bir hatadır    | Birimler zaten eklenmiş olacak. Göz atmak için Explorer'ı açın. Komut dosyalarını her seferinde çalıştırmak için aynı makineyi kullanıyorsanız, makineyi yeniden başlatmayı düşünün ve liste sonraki exe çalıştırmalarında görüntülenmelidir. |
+| Linux'a özgü: İstenilen hacimleri görüntüleyeme | Komut dosyasının çalıştırıldığı makinenin işletim sistemi, korumalı VM'nin temel dosya sistemini tanımayabilir | Kurtarma noktasının kilitlenme tutarlı mı yoksa dosya tutarlı mı olup olmadığını denetleyin. Dosya tutarlıysa, komut dosyasını işletim sistemi korumalı VM'nin dosya sistemini tanıyan başka bir makinede çalıştırın. |
+| Windows'a özgü: İstenilen birimleri görüntüleyeme | Diskler eklenmiş olabilir, ancak birimler yapılandırılmamıştır | Disk yönetim ekranından, kurtarma noktasıyla ilgili ek diskleri tanımlayın. Bu disklerden herhangi biri çevrimdışı durumdaysa, diske sağ tıklayarak bunları çevrimiçi getirmeyi deneyin ve **Çevrimiçi'yi**tıklatın.|
 
 ## <a name="security"></a>Güvenlik
 
-Bu bölümde, Azure VM yedeklemelerinden dosya kurtarma uygulamasına yönelik çeşitli güvenlik önlemleri ele alınmıştır.
+Bu bölümde, Azure VM yedeklemelerinden dosya kurtarma uygulaması için alınan çeşitli güvenlik önlemleri açıklanmaktadır.
 
 ### <a name="feature-flow"></a>Özellik akışı
 
-Bu özellik, VM verilerine tüm VM veya VM disklerini geri yükleme veya en az adım sayısı olmadan erişmek üzere oluşturulmuştur. VM verilerine erişim, bir komut dosyası (aşağıda gösterildiği gibi çalıştırıldığında kurtarma birimini bağlar ve tüm güvenlik uygulamalarının temel Stone ' i oluşturur) tarafından sağlanır:
+Bu özellik, VM veya VM disklerinin tamamını geri yüklemeye gerek kalmadan ve minimum adım sayısıyla VM verilerine erişmek için oluşturulmuştür. VM verilerine erişim bir komut dosyası tarafından sağlanır (aşağıda gösterildiği gibi çalıştırıldığında kurtarma hacmibağlanır) ve tüm güvenlik uygulamalarının temel taşını oluşturur:
 
-  ![Güvenlik özelliği akışı](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
+  ![Güvenlik Özellik Akışı](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
 
 ### <a name="security-implementations"></a>Güvenlik uygulamaları
 
-#### <a name="select-recovery-point-who-can-generate-script"></a>Kurtarma noktası seçin (komut dosyası oluşturabilir)
+#### <a name="select-recovery-point-who-can-generate-script"></a>Kurtarma noktasını seçin (komut dosyası oluşturabilirsiniz)
 
-Betik, VM verilerine erişim sağlar. bu nedenle, ilk yerde kimin oluşturabileceği hakkında daha fazla veri düzenlemek önemlidir. Azure portal oturum açmanız ve betiği oluşturmak için [RBAC yetkinizin](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) olması gerekir.
+Komut dosyası VM verilerine erişim sağlar, bu nedenle ilk etapta kimin oluşturabileceğini düzenlemek önemlidir. Azure portalında oturum açmanız ve komut dosyasını oluşturmak için [RBAC yetkili](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) olmanız gerekir.
 
-Dosya kurtarma, VM geri yükleme ve diskleri geri yükleme için gereken yetkilendirme düzeyine ihtiyaç duyuyor. Diğer bir deyişle, yalnızca yetkili kullanıcılar betiği oluşturabileceği VM verilerini görüntüleyebilir.
+Dosya kurtarma VM geri yükleme ve diskler geri yükleme için gerekli yetkilendirme aynı düzeyde gerektirir. Başka bir deyişle, komut dosyasını yalnızca yetkili kullanıcılar VM verilerini görüntüleyebilir.
 
-Oluşturulan betik, Azure Backup hizmeti için resmi Microsoft sertifikası ile imzalanır. Betikle yapılan herhangi bir değişiklik, imzanın bozuk olduğu anlamına gelir ve betiği çalıştırmaya yönelik her türlü girişim işletim sistemi tarafından olası bir risk olarak vurgulanır.
+Oluşturulan komut dosyası, Azure Yedekleme hizmetiiçin resmi Microsoft sertifikasıyla imzalanır. Komut dosyasında herhangi bir kurcalama imza kırık anlamına gelir ve komut dosyası çalıştırmak için herhangi bir girişim işletim sistemi tarafından potansiyel bir risk olarak vurgulanır.
 
-#### <a name="mount-recovery-volume-who-can-run-script"></a>Bağlama kurtarma birimi (betiği çalıştırabilir)
+#### <a name="mount-recovery-volume-who-can-run-script"></a>Kurtarma Dağı hacmi (komut dosyalarını çalıştırabilenler)
 
-Yalnızca bir yönetici betiği çalıştırabilir ve yükseltilmiş modda çalışmalıdır. Betik yalnızca önceden oluşturulmuş bir adım kümesi çalıştırır ve herhangi bir dış kaynaktan girişi kabul etmez.
+Komut dosyasını yalnızca bir Yönetici çalıştırabilir ve komut dosyası nın yükseltilmiş modda çalışması gerekir. Komut dosyası yalnızca önceden oluşturulmuş bir adım kümesini çalıştırıyor ve herhangi bir dış kaynaktan giriş kabul etmiyor.
 
-Betiği çalıştırmak için, yalnızca yetkili kullanıcıya Azure portal veya PowerShell/CLı 'de komut dosyası oluşturma sırasında gösterilen bir parola gerekir. Bu, betiği yükleyen yetkili kullanıcının da betiği çalıştırmasından sorumlu olduğundan emin olmak içindir.
+Komut dosyasını çalıştırmak için, yalnızca Azure portalında veya PowerShell/CLI'de komut dosyası nın üretilmesi sırasında yetkili kullanıcıya gösterilen bir parola gerekir. Bu, komut dosyasını karşıdan yükleyen yetkili kullanıcının da komut dosyasını çalıştırmakla yükümlü olduğundan emin olmak içindir.
 
-#### <a name="browse-files-and-folders"></a>Dosyalara ve klasörlere gözatmaya
+#### <a name="browse-files-and-folders"></a>Dosya ve klasörlere göz atın
 
-Betik, dosyalara ve klasörlere gözatabiliyor olması için makinedeki Iscsı Başlatıcısı 'nı kullanır ve Iscsı hedefi olarak yapılandırılan kurtarma noktasına bağlanır. Burada, biri/tüm bileşenleri taklit etmek için bir veya daha fazla aldatma denedikleri senaryolar hakkında Imagine olabilirsiniz.
+Dosya ve klasörlere göz atmak için komut dosyası makinedeki iSCSI başlatıcısını kullanır ve iSCSI hedefi olarak yapılandırılan kurtarma noktasına bağlanır. Burada, kişinin taklit etmeye/tüm bileşenleri taklit etmeye/sızdırmaya çalıştığı senaryoları hayal edebilirsiniz.
 
-Her bileşenin kimliğini doğrulayabilmesi için karşılıklı CHAP kimlik doğrulama mekanizması kullanıyoruz. Bu, sahte bir başlatıcısının Iscsı hedefine bağlanması ve sahte bir hedefin betiğin çalıştırıldığı makineye bağlanması son derece zor olduğu anlamına gelir.
+Her bileşenin diğerini doğrulaması için ortak bir CHAP kimlik doğrulama mekanizması kullanırız. Bu, sahte bir başlatıcının iSCSI hedefine bağlanmasının ve sahte bir hedefin komut dosyasının çalıştırıldığı makineye bağlanmasının son derece zor olduğu anlamına gelir.
 
-Kurtarma hizmeti ile makine arasındaki veri akışı, TCP üzerinden güvenli bir TLS tüneli oluşturarak korunur (TLS 1,2, betiğin çalıştırıldığı makinede[desteklenmelidir](#system-requirements) ).
+Kurtarma hizmeti ile makine arasındaki veri akışı, TCP üzerinde güvenli bir TLS tüneli inşa edilerek korunur[(TLS 1.2](#system-requirements) komut dosyasının çalıştırıldığı makinede desteklenmelidir).
 
-Üst/yedeklenen sanal makinede bulunan herhangi bir dosya Access Control listesi (ACL), bağlı dosya sisteminde de korunur.
+Üst/yedeklenmiş VM'de bulunan tüm dosya Erişim Denetim Listesi (ACL) monte edilmiş dosya sisteminde de korunur.
 
-Betik, bir kurtarma noktasına salt okunurdur ve yalnızca 12 saat boyunca geçerlidir. Daha önce erişimi kaldırmak istiyorsanız, Azure Portal/PowerShell/CLı oturumunu açın ve söz konusu kurtarma noktası için **çıkarma diskleri** gerçekleştirin. Betik hemen geçersiz kılınır.
+Komut dosyası bir kurtarma noktasına salt okunur erişim sağlar ve yalnızca 12 saat için geçerlidir. Erişimi daha önce kaldırmak istiyorsanız, Azure Portalı/PowerShell/CLI'de oturum açın ve bu kurtarma noktası için **montajdan kaldırma diskleri** gerçekleştirin. Komut dosyası hemen geçersiz kılınacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Dosyaları geri yüklerken oluşan herhangi bir sorun için [sorun giderme](#troubleshooting) bölümüne bakın
-- [PowerShell aracılığıyla dosyaları geri yüklemeyi](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup) öğrenin
-- [Azure CLI aracılığıyla dosyaları geri yüklemeyi](https://docs.microsoft.com/azure/backup/tutorial-restore-files) öğrenin
-- VM geri yüklendikten sonra [yedeklemeleri yönetme](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms) hakkında bilgi edinin
+- Dosyaları geri alırken karşılaşılan sorunlar için [Sorun Giderme](#troubleshooting) bölümüne bakın
+- [Powershell ile dosyaları](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup) nasıl geri yükleyin öğrenin
+- [Azure CLI ile dosyaları](https://docs.microsoft.com/azure/backup/tutorial-restore-files) nasıl geri yükleyin öğrenin
+- VM geri yüklendikten sonra [yedeklemeleri](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms) nasıl yöneteceğimize öğrenin

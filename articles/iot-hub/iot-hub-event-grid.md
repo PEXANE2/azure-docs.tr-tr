@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub ve Event Grid | Microsoft Docs
-description: İşlemleri IoT Hub gerçekleşen eylemlere göre tetiklemek için Azure Event Grid kullanın.
+title: Azure IoT Hub ve Olay Izgara | Microsoft Dokümanlar
+description: IoT Hub'da meydana gelen eylemleri temel alan işlemleri tetiklemek için Azure Olay Ağıt'ı kullanın.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284557"
 ---
-# <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylara tepki verme
+# <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Eylemleri tetiklemek için Olay Izgarasını kullanarak IoT Hub olaylarına tepki verme
 
-Azure IoT Hub, diğer hizmetlere olay bildirimleri gönderebilmek ve aşağı akış süreçlerini tetikleyebilmeniz için Azure Event Grid tümleştirilir. Kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde yanıt vermek için, iş uygulamalarınızı IoT Hub olaylarını dinleyecek şekilde yapılandırın. Örneğin, bir veritabanını güncelleştiren, bir iş bileti oluşturan ve IoT Hub 'ınıza yeni bir IoT cihazı her kaydedildiğinde bir e-posta bildirimi sunan bir uygulama oluşturun.
+Azure IoT Hub, diğer hizmetlere olay bildirimleri gönderebilmeniz ve akış aşağı işlemlerini tetikleyebilmeniz için Azure Etkinlik Ağıt'ı ile tümleşir. Kritik olaylara güvenilir, ölçeklenebilir ve güvenli bir şekilde tepki verebilmeniz için iş uygulamalarınızı IoT Hub olaylarını dinleyecek şekilde yapılandırın.Örneğin, veritabanını güncelleyen, iş cezası oluşturan ve IoT hub'ınıza her yeni Bir IoT aygıtı kaydedilişinde bir e-posta bildirimi sunan bir uygulama oluşturun.
 
-[Azure Event Grid](../event-grid/overview.md) , yayımlama-abonelik modeli kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid Azure [işlevleri](../azure-functions/functions-overview.md) ve [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)gibi Azure hizmetleri için yerleşik desteğe sahiptir ve Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](../event-grid/overview.md).
+[Azure Olay Ağıt,](../event-grid/overview.md) yayımlama-abone etme modelini kullanan tam olarak yönetilen bir olay yönlendirme hizmetidir. Olay Ağı, [Azure İşlevleri](../azure-functions/functions-overview.md) ve [Azure Mantıksal Uygulamaları](../logic-apps/logic-apps-what-are-logic-apps.md)gibi Azure hizmetleri için yerleşik destek sağlar ve web hook'ları kullanarak Azure'a uygun olmayan hizmetlere etkinlik uyarıları sunabilir. Olay Izgarası'nın desteklediği olay işleyicilerinin tam listesi için Azure [Olay Izgarasına giriş bölümüne](../event-grid/overview.md)bakın.
 
-![Azure Event Grid mimarisi](./media/iot-hub-event-grid/event-grid-functional-model.png)
+![Azure Olay Izgara mimarisi](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Event Grid tümleştirme, Event Grid desteklendiği bölgelerde bulunan IoT Hub 'lar için kullanılabilir. Bölgelerin en son listesi için bkz. [Azure Event Grid bir giriş](../event-grid/overview.md).
+Olay Izgara tümleştirmesi, Olay Izgarasının desteklendiği bölgelerde bulunan IoT hub'ları için kullanılabilir. En son bölgeler listesi için [Azure Etkinlik Ağıtı'na giriş bölümüne](../event-grid/overview.md)bakın.
 
 ## <a name="event-types"></a>Olay türleri
 
-IoT Hub aşağıdaki olay türlerini yayınlar:
+IoT Hub aşağıdaki olay türlerini yayımlar:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
-| Microsoft.Devices.DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. |
-| Microsoft. Devices. DeviceConnected | Bir cihaz IoT Hub 'ına bağlandığında yayımlandı. |
-| Microsoft. Devices. DeviceConnected bağlantısı kesildi | Bir cihazın IoT Hub 'ından bağlantısı kesildiğinde yayımlandı. |
-| Microsoft. Devices. Devicetelemetri | Bir IoT Hub 'ına cihaz telemetri iletisi gönderildiğinde yayımlandı |
+| Microsoft.Devices.DeviceCreated | Bir aygıt bir IoT hub'ına kaydedildiğinde yayımlanır. |
+| Microsoft.Devices.DeviceSilindi | Bir aygıt Bir IoT hub'ından silindiğinde yayımlanır. |
+| Microsoft.Devices.DeviceConnected | Bir aygıt bir IoT hub'ına bağlandığında yayımlanır. |
+| Microsoft.Devices.DeviceBağlantısı Kesildi | Aygıtın IoT hub'ından bağlantısı kesildiğinde yayımlanır. |
+| Microsoft.Devices.DeviceTelemetry | Aygıt telemetri iletisi Bir IoT hub'ına gönderildiğinde yayınlandı |
 
-Her bir IoT Hub 'ından yayımlanacak olayları yapılandırmak için Azure portal ya da Azure CLı kullanın. Bir örnek için, [Logic Apps kullanarak öğreticiyi Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme](../event-grid/publish-iot-hub-events-to-logic-apps.md)öğreticisini deneyin.
+Her IoT hub'ından hangi olayların yayımlanmasını sağlamak için Azure portalını veya Azure CLI'yi kullanın. Örneğin, [Logic Apps'ı kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönder'i](../event-grid/publish-iot-hub-events-to-logic-apps.md)deneyin.
 
 ## <a name="event-schema"></a>Olay şeması
 
-IoT Hub olaylar, cihaz yaşam döngünüzün değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliğinin **Microsoft. Devices**ile başlayacağını denetleyerek bir IoT Hub olayı tanımlayabilirsiniz. Event Grid olay özelliklerinin nasıl kullanılacağı hakkında daha fazla bilgi için, bkz. [Event Grid olay şeması](../event-grid/event-schema.md).
+IoT Hub olayları, cihazınızın yaşam döngüsündeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliğinin **Microsoft.Devices**ile başedip başlamadığını denetleyerek bir IoT Hub olayını tanımlayabilirsiniz. Olay Izgara olay özelliklerinin nasıl kullanılacağı hakkında daha fazla bilgi için [Olay Izgara olay şemasına](../event-grid/event-schema.md)bakın.
 
 ### <a name="device-connected-schema"></a>Cihaza bağlı şema
 
-Aşağıdaki örnekte, bir cihaz bağlantılı olayının şeması gösterilmektedir:
+Aşağıdaki örnek, aygıta bağlı bir olayın şemalarını gösterir:
 
 ```json
 [{  
@@ -70,13 +70,13 @@ Aşağıdaki örnekte, bir cihaz bağlantılı olayının şeması gösterilmekt
 }]
 ```
 
-### <a name="device-telemetry-schema"></a>Cihaz telemetri şeması
+### <a name="device-telemetry-schema"></a>Cihaz Telemetri şeması
 
-Cihaz telemetri iletisi, kod [sistemi özelliklerinde](iot-hub-devguide-routing-query-syntax.md#system-properties) **UTF-8** olarak ayarlanan ContentType ve **Application/JSON** olarak ayarlanmış geçerli bir JSON biçiminde olmalıdır. Bu özelliklerin her ikisi de büyük/küçük harfe duyarlıdır. İçerik kodlaması ayarlanmamışsa, IoT Hub iletileri temel 64 kodlu biçimde yazar.
+Cihaz telemetri iletisi, ileti [sistemi özelliklerinde](iot-hub-devguide-routing-query-syntax.md#system-properties) **UTF-8'e** ayarlanmış içerikType **uygulaması/json** ve contentEncoding ile geçerli bir JSON formatında olmalıdır. Bu özelliklerin her ikisi de büyük/küçük harf duyarsız. İçerik kodlaması ayarlanmazsa, IoT Hub iletileri temel 64 kodlanmış biçimde yazar.
 
-Event Grid, uç noktayı Event Grid olarak seçerek cihaz telemetri olaylarını zenginleştirebilirsiniz. Daha fazla bilgi için bkz. [Ileti zenginleştirme genel bakış](iot-hub-message-enrichments-overview.md).
+Aygıt telemetri olaylarını olay ızgarası olarak bitiş noktasını seçerek Olay Izgarası'nda yayımlanmadan önce zenginleştirebilirsiniz. Daha fazla bilgi için [İleti Zenginleştirmelerine Genel Bakış'a](iot-hub-message-enrichments-overview.md)bakın.
 
-Aşağıdaki örnekte bir cihaz telemetri olayının şeması gösterilmektedir:
+Aşağıdaki örnek, bir aygıt telemetri olayının şemagösterir:
 
 ```json
 [{  
@@ -110,9 +110,9 @@ Aşağıdaki örnekte bir cihaz telemetri olayının şeması gösterilmektedir:
 }]
 ```
 
-### <a name="device-created-schema"></a>Cihaz tarafından oluşturulan şema
+### <a name="device-created-schema"></a>Cihaz şema oluşturuldu
 
-Aşağıdaki örnekte, bir cihaz oluşturulan olayının şeması gösterilmektedir:
+Aşağıdaki örnek, oluşturulan bir aygıtın şemalarını gösterir:
 
 ```json
 [{
@@ -160,54 +160,54 @@ Aşağıdaki örnekte, bir cihaz oluşturulan olayının şeması gösterilmekte
 }]
 ```
 
-Her bir özelliğin ayrıntılı açıklaması için, bkz. [IoT Hub için olay şeması Azure Event Grid](../event-grid/event-schema-iot-hub.md).
+Her özelliğin ayrıntılı bir açıklaması [için, IoT Hub için Azure Olay Izgara olay şemasına](../event-grid/event-schema-iot-hub.md)bakın.
 
 ## <a name="filter-events"></a>Olayları filtreleme
 
-IoT Hub olay abonelikleri olayları, cihaz adı olan olay türüne, veri içeriğine ve konuya göre filtreleyebilir.
+IoT Hub etkinlik abonelikleri, olayları olay türüne, veri içeriğine ve cihaz adı olan konuya göre filtreleyebilir.
 
-Event Grid olay türlerinde, konularla ve veri içeriklerinde [filtrelemeye](../event-grid/event-filtering.md) izin vermez. Event Grid aboneliğini oluştururken, seçili IoT olaylarına abone olmayı seçebilirsiniz. Event Grid iş (ön ek) **Ile başlayan** ve (son ek) **ile biten** konu filtreleri. Filtre bir `AND` işleci kullanır, bu nedenle hem önek hem de sonek ile eşleşen bir konuya sahip olaylar aboneye teslim edilir.
+Olay Izgara olay türleri, konular ve veri içeriği [üzerinde filtreleme](../event-grid/event-filtering.md) sağlar. Olay Izgara aboneliğini oluştururken, seçili IoT etkinliklerine abone olmayı seçebilirsiniz. Olay Izgara'daki konu filtreleri, **Ile Başlar** (önek) ve Ends **With** (soneki) eşleşmelerine göre çalışır. Filtre bir `AND` işleç kullanır, bu nedenle hem önek hem de sonekile eşleşen bir özneiçeren olaylar aboneye teslim edilir.
 
-IoT olaylarının konusu şu biçimi kullanır:
+IoT Events konusu biçimini kullanır:
 
 ```json
 devices/{deviceId}
 ```
 
-Event Grid Ayrıca, veri içeriği de dahil olmak üzere her bir olayın özniteliklerine filtrelemeye izin verir. Bu, telemetri iletisinin temel içeriğini hangi olayların dağıttığı seçmenizi sağlar. Örnekleri görüntülemek için lütfen [Gelişmiş filtreleme](../event-grid/event-filtering.md#advanced-filtering) bölümüne bakın. Telemetri ileti gövdesinde filtreleme için, kod [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya göre **UTF-8** olarak ayarlamanız gerekir. Bu özelliklerin her ikisi de büyük/küçük harfe duyarlıdır.
+Olay Izgara da veri içeriği de dahil olmak üzere her olayın öznitelikleri, filtreleme için izin verir. Bu, telemetri iletisinin içeriğine dayalı olarak hangi olayların teslim edileceğini seçmenize olanak tanır. Örnekleri görüntülemek için lütfen [gelişmiş filtreleme](../event-grid/event-filtering.md#advanced-filtering) bakın. Telemetri ileti gövdesinde filtreleme yapmak için, ileti [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)contentType'ı **uygulama/json** ve contentEncoding'i **UTF-8** olarak ayarlamanız gerekir. Bu özelliklerin her ikisi de büyük/küçük harf duyarsız.
 
-DeviceConnected, DeviceConnected, DeviceCreated ve DeviceDeleted gibi telemetri olmayan olaylar için, abonelik oluşturulurken Event Grid filtrelemesi kullanılabilir. Telemetri olayları için, Event Grid ' deki filtrelemeye ek olarak, kullanıcılar da ileti yönlendirme sorgusu üzerinden cihaz iksi, ileti özellikleri ve gövdesinde filtre uygulayabilir. 
+DeviceConnected, DeviceConnected, DeviceCreated ve DeviceDeleted gibi telemetri dışı olaylariçin, abonelik oluşturulurken Olay Izgara filtresi kullanılabilir. Telemetri olayları için, Olay Izgara'daki filtrelemeye ek olarak, kullanıcılar ileti yönlendirme sorgusu aracılığıyla aygıt ikizleri, ileti özellikleri ve gövdeye de filtre uygulayabilir. 
 
-Telemetri olaylarına Event Grid aracılığıyla abone olduğunuzda IoT Hub, veri kaynağı türü cihaz iletilerini Event Grid göndermek için varsayılan bir ileti yolu oluşturur. İleti yönlendirme hakkında daha fazla bilgi için bkz. [IoT Hub Message Routing](iot-hub-devguide-messages-d2c.md). Bu yol, portalda IoT Hub > Ileti yönlendirme altında görünür. Telemetri olayları için oluşturulan örnek aboneliklerin sayısından bağımsız olarak Event Grid yalnızca bir yol oluşturulur. Bu nedenle, farklı filtrelerle birkaç aboneliğe ihtiyacınız varsa, bu sorgularda veya işlecini aynı rotada kullanabilirsiniz. Yolun oluşturulması ve silinmesi, Event Grid aracılığıyla telemetri olaylarının abonelikle denetlenir. IoT Hub Ileti yönlendirmeyi kullanarak Event Grid için bir yol oluşturamaz veya silemezsiniz.
+Olay Izgarası üzerinden telemetri olaylarına abone olduğunuzda, IoT Hub Olay Grid'e veri kaynağı türü aygıt iletileri göndermek için varsayılan bir ileti rotası oluşturur. İleti yönlendirme hakkında daha fazla bilgi için [IoT Hub ileti yönlendirme'ye](iot-hub-devguide-messages-d2c.md)bakın. Bu rota, IoT Hub > İleti Yönlendirme altındaki portalda görünür olacaktır. Telemetri etkinlikleri için oluşturulan EG aboneliklerinin sayısına bakılmaksızın Olay Izgarası'na yalnızca bir rota oluşturulur. Bu nedenle, farklı filtrelere sahip birden fazla aboneliğe ihtiyacınız varsa, bu sorgularda AYNı rotada OR işlecikk kullanabilirsiniz. Rotanın oluşturulması ve silinmesi, Olay Grid üzerinden telemetri olaylarının aboneliği yoluyla denetlenir. IoT Hub İleti Yönlendirme'yi kullanarak Olay Izgarası'na giden bir rota oluşturamaz veya silemezsiniz.
 
-Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirme sorgunuzu](iot-hub-devguide-routing-query-syntax.md)güncelleştirebilirsiniz. Yönlendirme sorgusunun ileti gövdesine yalnızca gövde JSON olduğunda uygulanabileceğini unutmayın. İleti [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)ContentType öğesini **Application/JSON** ve Contentenkodlamaya de **UTF-8** olarak ayarlamanız gerekir.
+Telemetri verileri gönderilmeden önce iletileri filtrelemek için [yönlendirme sorgunuzu](iot-hub-devguide-routing-query-syntax.md)güncelleştirebilirsiniz. Yönlendirme sorgusunun ileti gövdesine yalnızca gövde JSON ise uygulanabileceğini unutmayın. Ayrıca ileti [sistemi özelliklerinde](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)contentType'ı **uygulama/json** ve contentEncoding'i **UTF-8** olarak ayarlamanız gerekir.
 
-## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Cihaz bağlı ve cihaz bağlantısı kesilen olaylar için sınırlamalar
+## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Cihazla bağlandı ve cihaz bağlantısı kesildi olaylarına ilişkin sınırlamalar
 
-Cihaz bağlantısı durum olaylarını almak için, bir cihazın IoT Hub 'ı ile bir ya da bir ' C2D Receive Message ' işlemi yapması gerekir. Ancak, bir cihaz IoT Hub 'a bağlanmak için AMQP protokolünü kullanıyorsa, bir ' C2D Receive Message ' işlemi yapması önerildiğine, aksi takdirde bağlantı durumu bildirimlerinin birkaç dakika geciktirebileceğine unutmayın. Cihazınız MQTT protokolünü kullanıyorsa, IoT Hub C2D bağlantısını açık tutacaktır. AMQP için, C2D bağlantısını, [zaman uyumsuz API 'Yi al](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet), IoT Hub C# SDK için veya [AMQP için cihaz istemcisi](iot-hub-amqp-support.md#device-client)çağırarak açabilirsiniz.
+Aygıt bağlantısı durum olaylarını almak için, bir aygıtın Iot Hub ile bir 'D2C Gönder Telemetri' veya 'C2D İleti Alma' işlemi yapması gerekir. Ancak, bir aygıt Iot Hub'a bağlanmak için AMQP protokolü kullanıyorsa, 'C2D İleti Al' işlemi yapmaları önerilir aksi takdirde bağlantı durumu bildirimleri birkaç dakika gecikebilir. Aygıtınız MQTT protokolü kullanıyorsa, IoT Hub C2D bağlantısını açık tutar. AMQP için, IoT Hub C# SDK için [Async API Al'ı](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)veya [AMQP için aygıt istemcisini](iot-hub-amqp-support.md#device-client)arayarak C2D bağlantısını açabilirsiniz.
 
 Telemetri gönderiyorsanız D2C bağlantısı açıktır. 
 
-Cihaz bağlantısı titreşiyorsa, bu, cihazın en sık bağlandığı ve bağlantılarının kesilmediği anlamına gelir, ancak her bir bağlantı durumunu gönderemeyecektir, ancak titreşme devam ettiğinde, düzenli bir anlık görüntüde alınan geçerli bağlantı durumunu yayımlayacağız. Aynı bağlantı durumu olayını farklı sıra numaralarıyla veya farklı bağlantı durumu olaylarıyla alma, cihaz bağlantı durumunda bir değişiklik olduğu anlamına gelir.
+Aygıt bağlantısı titriyorsa, bu da aygıtın sık sık bağlanıp bağlantılarının kesildiği anlamına geliyorsa, her bir bağlantı durumunu göndermeyiz, ancak titreme devam edene kadar periyodik anlık görüntüde alınan geçerli bağlantı durumunu yayımlayacağız. Farklı sıra numaraları veya farklı bağlantı durumu olayları ile aynı bağlantı durumu olay alma her ikisi de aygıt bağlantı durumunda bir değişiklik olduğu anlamına gelir.
 
-## <a name="tips-for-consuming-events"></a>Olayları tüketme ipuçları
+## <a name="tips-for-consuming-events"></a>Etkinlikleri tüketmek için ipuçları
 
-IoT Hub olaylarını işleyen uygulamalar aşağıdaki önerilen yöntemleri izlemelidir:
+IoT Hub olaylarını işleyen uygulamalar aşağıdaki uygulamaları izlemelidir:
 
-* Birden çok abonelik olayları aynı olay işleyicisine yönlendirmek üzere yapılandırılabilir, bu nedenle olayların belirli bir kaynaktan olduğunu varsaymayın. Beklenen IoT Hub 'ından geldiğinden emin olmak için ileti konusunu her zaman denetleyin.
+* Olayları aynı olay işleyicisine yönlendirmek için birden çok abonelik yapılandırılabilir, bu nedenle olayların belirli bir kaynaktan geldiğini düşünmeyin. Beklediğiniz IoT hub'ından geldiğinden emin olmak için ileti konusunu her zaman denetleyin.
 
-* Aldığınız tüm olayların, beklediği türler olduğunu varsaymayın. İletiyi işlemeden önce her zaman eventType ' i kontrol edin.
+* Aldığınız tüm olayların beklediğiniz türler olduğunu düşünmeyin. İletiyi işlemeden önce her zaman eventType'ı denetleyin.
 
-* İletiler bir gecikmeden veya bir gecikmeden sonra gelebilir. Nesneler hakkındaki bilgilerinizin, cihaz oluşturma veya cihaz silinen olayları için güncel olup olmadığını anlamak için ETag alanını kullanın.
+* İletiler sıradışı veya gecikmeden sonra gelebilir. Nesneler le ilgili bilgilerinizin oluşturulan aygıt veya aygıt silinmiş olaylar için güncel olup olmadığını anlamak için etag alanını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [IoT Hub olaylar öğreticisini deneyin](../event-grid/publish-iot-hub-events-to-logic-apps.md)
+* [IoT Hub etkinlikleri öğreticisini deneyin](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
 * [Cihazla bağlantılı ve bağlantısız olayları nasıl sıralayacağınızı öğrenin](iot-hub-how-to-order-connection-state-events.md)
 
-* [Event Grid hakkında daha fazla bilgi edinin](../event-grid/overview.md)
+* [Olay Izgarası hakkında daha fazla bilgi edinin](../event-grid/overview.md)
 
 * [Yönlendirme IoT Hub olayları ve iletileri arasındaki farkları karşılaştırın](iot-hub-event-grid-routing-comparison.md)
 
-* [Azure haritalar kullanarak IoT uzamsal analizlerini uygulamak için IoT telemetri olaylarını nasıl kullanacağınızı öğrenin](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [Azure Haritalar'ı kullanarak IoT mekansal analitiği uygulamak için IoT telemetri etkinliklerini nasıl kullanacağınızı öğrenin](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)

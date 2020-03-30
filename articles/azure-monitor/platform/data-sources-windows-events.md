@@ -1,74 +1,74 @@
 ---
-title: Azure Izleyici 'de Windows olay günlüklerini toplayın ve çözümleyin | Microsoft Docs
-description: Windows olay günlükleri koleksiyonunun Azure Izleyici tarafından ve oluşturdukları kayıtların ayrıntıları tarafından nasıl yapılandırılacağı açıklanmaktadır.
+title: Azure Monitör'de Windows Event günlüklerini toplama ve analiz edin | Microsoft Dokümanlar
+description: Windows Event günlüklerinin koleksiyonunu Azure Monitor'a göre nasıl yapılandırıştıracaklarını ve oluşturdukları kayıtların ayrıntılarını açıklar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274690"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows olay günlüğü veri kaynakları
-Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından Windows aracılarını kullanarak veri toplamaya yönelik en yaygın [veri kaynaklarından](agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
+# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor'da Windows olay günlüğü veri kaynakları
+Birçok uygulama Windows olay günlüğüne yazdığından, Windows Olay günlükleri Windows aracılarını kullanarak veri toplamak için en yaygın [veri kaynaklarından](agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlükleri belirtmenin yanı sıra Sistem ve Uygulama gibi standart günlüklerden olayları da toplayabilirsiniz.
 
 ![Windows Olayları](media/data-sources-windows-events/overview.png)     
 
-## <a name="configuring-windows-event-logs"></a>Windows olay günlüklerini yapılandırma
-[Gelişmiş ayarlar 'Daki veri menüsünden](agent-data-sources.md#configuring-data-sources)Windows olay günlüklerini yapılandırın.
+## <a name="configuring-windows-event-logs"></a>Windows Event günlüklerini yapılandırma
+[Gelişmiş Ayarlar'da Veri menüsünden](agent-data-sources.md#configuring-data-sources)Windows Event günlüklerini yapılandırın.
 
-Azure Izleyici yalnızca ayarlarda belirtilen Windows olay günlüklerinden olayları toplar.  Günlüğün adına yazıp **+** ' ye tıklayarak bir olay günlüğü ekleyebilirsiniz.  Her günlük için yalnızca seçilen önem derecelerine sahip olaylar toplanır.  Toplamak istediğiniz belirli bir günlüğün önem derecesi ' ni denetleyin.  Olayları filtrelemek için herhangi bir ek ölçüt sağlamazsanız.
+Azure Monitor yalnızca ayarlarda belirtilen Windows olay günlüklerinden olayları toplar.  Günlüğün adını yazıp. **+**  Her günlük için yalnızca seçili öneme sahip olaylar toplanır.  Toplamak istediğiniz belirli günlük için önemlerini denetleyin.  Olayları filtrelemek için ek ölçüt ler sağlayamazsınız.
 
-Bir olay günlüğünün adını yazdığınızda Azure Izleyici, ortak olay günlüğü adları için öneriler sağlar. Eklemek istediğiniz günlük listede görünmezse, yine de günlüğün tam adını yazarak eklemeye devam edebilirsiniz. Olay Görüntüleyicisi 'ni kullanarak günlüğün tam adını bulabilirsiniz. Olay Görüntüleyicisi 'nde, günlük için *Özellikler* sayfasını açın ve dizeyi *tam ad* alanından kopyalayın.
+Bir olay günlüğünün adını yazarken, Azure Monitor sık karşılaşılan olay günlüğü adları için öneriler sağlar. Eklemek istediğiniz günlük listede görünmüyorsa, günlüğün tam adını yazarak ekleyebilirsiniz. Olay görüntüleyicisini kullanarak günlüğün tam adını bulabilirsiniz. Olay görüntüleyicide, günlüğün *Özellikleri* sayfasını açın ve dizeyi *Tam Ad* alanından kopyalayın.
 
 ![Windows olaylarını yapılandırma](media/data-sources-windows-events/configure.png)
 
 > [!NOTE]
-> Windows olay günlüğü 'ndeki kritik olaylar, Azure Izleyici günlüklerinde "hata" önem derecesine sahip olur.
+> Windows olay günlüğündeki kritik olaylar, Azure Monitör Günlükleri'nde "Hata" şiddetine sahip olacaktır.
 
 ## <a name="data-collection"></a>Veri toplama
-Azure Izleyici, olay oluşturulduğu için izlenen bir olay günlüğünden seçilen önem derecesine uyan her olayı toplar.  Aracı, topladığı her olay günlüğündeki yerini kaydeder.  Aracı bir süre çevrimdışı kalırsa, bu olaylar, aracı çevrimdışıyken oluşturulsa bile, son kaldığınız yerden olayları toplar.  Bu olayların, aracı çevrimdışıyken, toplanan olayların üzerine yazılmakta olan olay günlüğü sarılmışsa toplanmaması olası bir olasılık vardır.
+Azure Monitör, olay oluşturulurken izlenen olay günlüğünden seçili önemle eşleşen her olayı toplar.  Aracı, topladığı her olay günlüğündeki yerini kaydeder.  Aracı bir süre çevrimdışı kalırsa, aracı çevrimdışıyken bu olaylar oluşturulsa bile olayları en son kaldığı yerden toplar.  Olay günlüğü, aracı çevrimdışıyken toplanmamış olayların üzerine yazıldığıyla bu olayların toplanmaması için bir potansiyel vardır.
 
 >[!NOTE]
->Azure Izleyici SQL Server tarafından oluşturulan denetim olaylarını toplamıyor- *Klasik* veya *Denetim başarısı* *ile anahtar* sözcük, *0xa0000000000000*anahtar sözcüğünü içeren olay kimliği 18453.
+>Azure Monitor, SQL Server tarafından oluşturulan denetim olaylarını kaynak *MSSQLSERVER'dan* anahtar kelimeler içeren event ID 18453 ile toplamaz - *Klasik* veya *Denetim Başarısı* ve anahtar kelime *0xa00000000000.*
 >
 
 ## <a name="windows-event-records-properties"></a>Windows olay kayıtları özellikleri
-Windows olay kayıtları bir tür **olaya** sahiptir ve aşağıdaki tabloda bulunan özelliklere sahiptir:
+Windows olay kayıtları bir **olay** türüne sahiptir ve aşağıdaki tablodaki özelliklere sahiptir:
 
 | Özellik | Açıklama |
 |:--- |:--- |
 | Bilgisayar |Olayın toplandığı bilgisayarın adı. |
-| EventCategory |Etkinliğin kategorisi. |
-| EventData |Ham biçimdeki tüm olay verileri. |
-| Even |Olay sayısı. |
-| EventLevel |Olayın önem derecesi, sayısal biçimde. |
-| EventLevelName |Metin biçimindeki olayın önem derecesi. |
-| EventLog |Olayın toplandığı olay günlüğünün adı. |
-| ParameterXml |XML biçimindeki olay parametresi değerleri. |
-| ManagementGroupName |System Center Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için bu değer `AOI-<workspace ID>` |
-| RenderedDescription |Parametre değerleriyle olay açıklaması |
-| Kaynak |Etkinliğin kaynağı. |
-| SourceSystem |Olayın toplandığı aracının türü. <br> OpsManager – Windows Aracısı, doğrudan bağlanma veya Operations Manager yönetilen <br> Linux – tüm Linux aracıları  <br> AzureStorage – Azure Tanılama |
-| TimeGenerated |Olayın Windows 'da oluşturulduğu tarih ve saat. |
-| UserName |Olayı günlüğe tutan hesabın Kullanıcı adı. |
+| EtkinlikKategorisi |Etkinliğin kategorisi. |
+| Eventdata |Tüm olay verileri ham formatta. |
+| EventID |Olayın sayısı. |
+| Eventlevel |Sayısal formda olayın şiddeti. |
+| EventLevelName |Metin biçiminde olayın önem derecesi. |
+| Eventlog |Olayın toplandığı olay günlüğünün adı. |
+| ParametreXml |XML formatında olay parametresi değerleri. |
+| ManagementGroupName |System Center Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için bu değer`AOI-<workspace ID>` |
+| RenderedAçıklama |Parametre değerleri ile olay açıklaması |
+| Kaynak |Olayın kaynağı. |
+| SourceSystem |Olayın aracı türü nden toplandı. <br> OpsManager – Windows aracısı, doğrudan bağlanma veya Operasyon Yöneticisi yönetilen <br> Linux – Tüm Linux ajanları  <br> AzureDepolama – Azure Tanılama |
+| TimeGenerated |Olayın Windows'da oluşturulduğu tarih ve saat. |
+| UserName |Olayı günlüğe kaydeden hesabın kullanıcı adı. |
 
-## <a name="log-queries-with-windows-events"></a>Windows olaylarıyla sorguları günlüğe kaydet
-Aşağıdaki tabloda, Windows olay kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
+## <a name="log-queries-with-windows-events"></a>Windows Etkinlikleri ile sorguları günlüğe kaydetme
+Aşağıdaki tablo, Windows Olay kayıtlarını alan günlük sorgularının farklı örneklerini sağlar.
 
 | Sorgu | Açıklama |
 |:---|:---|
 | Olay |Tüm Windows olayları. |
-| EventLevelName = = "Error" adlı olay &#124; |Hata önem derecesine sahip tüm Windows olayları. |
-| Kaynağa &#124; göre olay özetleme sayısı () |Kaynağa göre Windows olay sayısı. |
-| EventLevelName = = "Error" &#124; &#124; ın Count () kaynağını kaynağa göre özetleme olayı |Kaynağa göre Windows hata olaylarının sayısı. |
+| EventLevelName == "hata" olay &#124; |Hata şiddeti ile tüm Windows olayları. |
+| Olay &#124; kaynak tarafından sayım özetlemek() |Windows olaylarının kaynağa göre sayısı. |
+| EventLevelName == "hata" &#124; kaynak tarafından sayım özetlemek olay &#124; |Windows hata olaylarının kaynağa göre sayısı. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Analiz için diğer [veri kaynaklarını](agent-data-sources.md) toplamak üzere Log Analytics yapılandırın.
+* Log Analytics'i analiz için diğer [veri kaynaklarını](agent-data-sources.md) toplamak üzere yapılandırın.
 * Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.  
-* Windows aracılarınızın [performans sayaçlarını toplamayı](data-sources-performance-counters.md) yapılandırın.
+* Windows [aracılarınızdan performans sayaçları koleksiyonunu](data-sources-performance-counters.md) yapılandırın.

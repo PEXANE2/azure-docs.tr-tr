@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory JSON biçimi
-description: Bu konuda Azure Data Factory JSON biçimiyle nasıl ele alınacağını açıklamaktadır.
+title: Azure Veri Fabrikası'nda JSON biçimi
+description: Bu konu, Azure Veri Fabrikası'nda JSON biçimiyle nasıl başa çıkılabildiğini açıklar.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,31 +10,31 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 7dac8d21e3b45307284ece15ca5ddbcc69db909b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260650"
 ---
-# <a name="json-format-in-azure-data-factory"></a>Azure Data Factory JSON biçimi
+# <a name="json-format-in-azure-data-factory"></a>Azure Veri Fabrikası'nda JSON biçimi
 
-**JSON dosyalarını ayrıştırmak veya VERILERI JSON biçimine yazmak**istediğinizde bu makaleye uyun. 
+**JSON dosyalarını ayrışdırmak veya verileri JSON biçimine yazmak**istediğinizde bu makaleyi izleyin. 
 
-JSON biçimi şu bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md) [,,](connector-hdfs.md), [http](connector-http.md)ve [SFTP](connector-sftp.md).
+JSON biçimi aşağıdaki bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Veri Gölü Depolama Gen1](connector-azure-data-lake-store.md), [Azure Veri Gölü Depolama Gen2](connector-azure-data-lake-storage.md), [Azure Dosya Depolama](connector-azure-file-storage.md), Dosya [Sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Bulut Depolama](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), ve [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, JSON veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Datasets](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde JSON veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Veri kümesinin Type özelliği **JSON**olarak ayarlanmalıdır. | Yes      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`altında desteklenen özellikleri vardır. **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
-| encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16IN", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM273", "IBM437", "IBM500", "", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ıSO-2022-KR", "ıSO-8859-1", "ıSO-8859-2", "ıSO-8859-3", "ıSO-8859-4", "ıSO-8859-5", "ıSO-8859-6", "ıSO-8859-7", "ıSO-8859-8", "ıSO-8859-9", "ıSO-8859-13", "ıSO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 "," WINDOWS-1256 "," WINDOWS-1257 "," WINDOWS-1258 ".| Hayır       |
-| compressionCodec | Metin dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **Snappy**veya **lz4**. dosyasını kaydederken kullanmak için. <br>Şu anda kopyalama etkinliği "Snappy" & "lz4" desteklemez.<br>Bu dosyaları açmak ve dosya tabanlı havuz veri deposuna yazmak için kopyalama etkinliğini kullanırken dosyalar şu klasöre ayıklanacaktır: `<path specified in dataset>/<folder named as source zip file>/`. | Hayır       |
-| compressionLevel | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>**en hızlı - :** elde edilen dosya en iyi şekilde sıkıştırılmasa bile sıkıştırma işleminin mümkün olduğunca çabuk olması gerekir.<br>**en iyi**- : işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu. | Hayır       |
+| type             | Veri kümesinin tür özelliği **Json**olarak ayarlanmalıdır. | Evet      |
+| location         | Dosya(lar) konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`desteklenen özellikleri vardır. **Bağlayıcı makalesindeki ayrıntılara bakın -> Dataset özellikleri bölümünde.** | Evet      |
+| encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM437", "IBM5000" IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM011444", "IBM011444", "IBM01145", "IBM01145", "IBM011449", "IBM011449" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Hayır       |
+| sıkıştırmaCodec | Metin dosyalarını okumak/yazmak için kullanılan sıkıştırma codec'i. <br>İzin verilen değerler **bzip2,** **gzip**, **deflate**, **ZipDeflate**, **snappy**, veya **lz4**. dosyayı kaydederken kullanmak için. <br>Not şu anda Kopyalama etkinliği "snappy" & "lz4"u desteklemez.<br>ZipDeflate dosya(lar) decompress ve dosya tabanlı lavabo veri deposuna yazmak için kopyalama etkinliği kullanırken not, dosyalar klasöre ayıklanır: `<path specified in dataset>/<folder named as source zip file>/`. | Hayır       |
+| Compressionlevel | Sıkıştırma oranı. <br>İzin verilen değerler **En Uygun** veya **En Hızlı**değerlerdir.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmamış olsa bile sıkıştırma işlemi mümkün olan en kısa sürede tamamlanmalıdır.<br>- **Optimal**: Sıkıştırma işlemi, operasyonun tamamlanması daha uzun sürse bile en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için [Sıkıştırma Düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusuna bakın. | Hayır       |
 
-Azure Blob depolamada JSON veri kümesinin bir örneği aşağıda verilmiştir:
+Aşağıda Azure Blob Depolama JSON veri kümesi bir örnektir:
 
 ```json
 {
@@ -61,42 +61,42 @@ Azure Blob depolamada JSON veri kümesinin bir örneği aşağıda verilmiştir:
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, JSON kaynağı ve havuzu tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde JSON kaynağı ve lavabo tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="json-as-source"></a>Kaynak olarak JSON
 
-Aşağıdaki özellikler, kopyalama etkinliği ***\*kaynak\**** bölümünde desteklenir.
+Aşağıdaki özellikler kopyalama etkinliği *** \*kaynak\* *** bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Kopyalama etkinliği kaynağının Type özelliği **Jsonsource**olarak ayarlanmalıdır. | Yes      |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, `storeSettings`altında kendi desteklenen okuma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| type          | Kopyalama etkinlik kaynağının türü özelliği **JSONSource**olarak ayarlanmalıdır. | Evet      |
+| mağazaAyarları | Veri deposundan verilerin nasıl okunacaklarına ilişkin özellikler grubu. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen okuma ayarları vardır. **Bağlayıcı makaledeki ayrıntılara bakın -> Etkinlik özelliklerini kopyala bölümünden kopyalayın.** | Hayır       |
 
-### <a name="json-as-sink"></a>Havuz olarak JSON
+### <a name="json-as-sink"></a>JSON lavabo olarak
 
-Aşağıdaki özellikler, kopyalama etkinliği ***\*havuzu\**** bölümünde desteklenir.
+Aşağıdaki özellikler kopyalama etkinliği *** \*lavabo\* *** bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Kopyalama etkinliği kaynağının Type özelliği **Jsonsink**olarak ayarlanmalıdır. | Yes      |
-| formatSettings | Bir özellik grubu. Aşağıdaki **JSON yazma ayarları** tablosuna bakın. | Hayır       |
-| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının `storeSettings`altında kendi desteklenen yazma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| type          | Kopyalama etkinlik kaynağının türü özelliği **JSONSink**olarak ayarlanmalıdır. | Evet      |
+| formatAyarlar | Bir grup özellik. Aşağıdaki **JSON yazma ayarları** tablosuna bakın. | Hayır       |
+| mağazaAyarları | Veri deposuna nasıl veri yazılailgili bir grup özellik. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen yazma ayarları vardır. **Bağlayıcı makaledeki ayrıntılara bakın -> Etkinlik özelliklerini kopyala bölümünden kopyalayın.** | Hayır       |
 
-`formatSettings`altında desteklenen **JSON yazma ayarları** :
+Desteklenen `formatSettings` **JSON altında ayarları yazmak:**
 
 | Özellik      | Açıklama                                                  | Gerekli                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | FormatSettings türü **Jsonwritesettings**olarak ayarlanmalıdır. | Yes                                                   |
+| type          | FormatAyarları türü **JsonWriteSettings**olarak ayarlanmalıdır. | Evet                                                   |
 | filePattern |Her bir JSON dosyasında depolanan verilerin desenini belirtir. İzin verilen değerler: **setOfObjects** ve **arrayOfObjects**. **Varsayılan** değer **setOfObjects** olarak belirlenmiştir. Bu desenler hakkında ayrıntılı bilgi için bkz. [JSON dosyası desenleri](#json-file-patterns). |Hayır |
 
 ### <a name="json-file-patterns"></a>JSON dosyası desenleri
 
-Kopyalama etkinliği, aşağıdaki JSON dosyası desenlerini otomatik olarak algılayabilir ve ayrıştırılabilir. 
+Kopyalama etkinliği, JSON dosyalarının aşağıdaki desenlerini otomatik olarak algılayabilir ve ayrıştırabilir. 
 
 - **1. Tür: setOfObjects**
 
     Her dosya tek bir nesne veya satırlara ayrılmış/bitiştirilmiş birden fazla nesne içerir. 
-    Kopyalama etkinliği havuzunda bu seçenek seçildiğinde, kopyalama etkinliği her satır için her bir nesne (satır için ayrılmış) ile tek bir JSON dosyası üretir.
+    Bu seçenek kopyalama etkinliği lavabosunda seçildiğinde, kopyalama etkinliği satır başına her nesneyle tek bir JSON dosyası üretir (satır sınırlıdır).
 
     * **tek nesne JSON örneği**
 
@@ -183,25 +183,25 @@ Kopyalama etkinliği, aşağıdaki JSON dosyası desenlerini otomatik olarak alg
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
-JSON dosya türleri, eşleme veri akışında hem havuz hem de kaynak olarak kullanılabilir.
+JSON dosya türleri veri akışını eşlemede hem lavabo hem de kaynak olarak kullanılabilir.
 
-### <a name="creating-json-structures-in-a-derived-column"></a>Türetilmiş bir sütunda JSON yapıları oluşturma
+### <a name="creating-json-structures-in-a-derived-column"></a>Türetilmiş sütunda JSON yapıları oluşturma
 
-Türetilmiş sütun ifade Oluşturucusu aracılığıyla veri akışınıza karmaşık bir sütun ekleyebilirsiniz. Türetilmiş sütun dönüşümünde yeni bir sütun ekleyin ve mavi kutuya tıklayarak ifade oluşturucuyu açın. Bir sütunu karmaşık hale getirmek için JSON yapısını el ile girebilir veya UX kullanarak alt sütunları etkileşimli olarak ekleyebilirsiniz.
+Türemiş sütun ifade oluşturucusu aracılığıyla veri akışınıza karmaşık bir sütun ekleyebilirsiniz. Türetilen sütun dönüşümünde, yeni bir sütun ekleyin ve mavi kutuyu tıklatarak ifade oluşturucuyu açın. Sütun karmaşık hale getirmek için JSON yapısını el ile girebilir veya etkileşimli olarak alt sütun eklemek için UX'yi kullanabilirsiniz.
 
-#### <a name="using-the-expression-builder-ux"></a>İfade Oluşturucu UX 'i kullanma
+#### <a name="using-the-expression-builder-ux"></a>İfade oluşturucu UX kullanarak
 
-Çıktı şeması yan bölmesinde bir sütunun üzerine gelin ve artı simgesine tıklayın. Sütunu karmaşık bir tür yapmak için **alt sütun Ekle** ' yi seçin.
+Çıkış şema yan bölmesinde, bir sütunun üzerine gezin ve artı simgesini tıklatın. Sütunu karmaşık bir tür yapmak için **alt sütun ekle'yi** seçin.
 
-![Alt sütun Ekle](media/data-flow/addsubcolumn.png "Alt sütun Ekle")
+![Alt sütun ekleme](media/data-flow/addsubcolumn.png "Alt Sütun Ekle")
 
-Aynı şekilde ek sütunlar ve alt sütunlar ekleyebilirsiniz. Karmaşık olmayan her bir alan için, ifade düzenleyicisine sağa doğru bir ifade eklenebilir.
+Aynı şekilde ek sütunlar ve alt sütunlar ekleyebilirsiniz. Karmaşık olmayan her alan için, ifade düzenleyicisine sağa bir ifade eklenebilir.
 
 ![Karmaşık sütun](media/data-flow/complexcolumn.png "Karmaşık sütun")
 
-#### <a name="entering-the-json-structure-manually"></a>JSON yapısını el ile girme
+#### <a name="entering-the-json-structure-manually"></a>JSON yapısına el ile girme
 
-JSON yapısını el ile eklemek için yeni bir sütun ekleyin ve düzenleyicide ifadeyi girin. İfade aşağıdaki genel biçimi izler:
+El ile Bir JSON yapısı eklemek için yeni bir sütun ekleyin ve düzenleyiciye ifadeyi girin. İfade aşağıdaki genel biçimi izler:
 
 ```
 @(
@@ -212,7 +212,7 @@ JSON yapısını el ile eklemek için yeni bir sütun ekleyin ve düzenleyicide 
 )
 ```
 
-Bu ifade "complexColumn" adlı bir sütun için girilmişse, havuza aşağıdaki JSON olarak yazılır:
+Bu ifade "complexColumn" adlı bir sütun için girildiyse, lavaboya aşağıdaki JSON olarak yazılır:
 
 ```
 {
@@ -225,7 +225,7 @@ Bu ifade "complexColumn" adlı bir sütun için girilmişse, havuza aşağıdaki
 }
 ```
 
-#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Tüm hiyerarşik tanım için örnek el ile betik
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Tam hiyerarşik tanım için örnek el yazısı komut dosyası
 ```
 @(
     title=Title,
@@ -251,15 +251,15 @@ Bu ifade "complexColumn" adlı bir sütun için girilmişse, havuza aşağıdaki
 )
 ```
 
-### <a name="source-format-options"></a>Kaynak Biçim seçenekleri
+### <a name="source-format-options"></a>Kaynak biçimi seçenekleri
 
-Veri akışınızda kaynak olarak JSON veri kümesi kullanmak, beş ek ayar ayarlamanıza olanak sağlar. Bu ayarlar, **kaynak seçenekleri** sekmesindeki **JSON ayarları** Accordion altında bulunabilir.  
+Veri akışınızda kaynak olarak JSON veri kümesini kullanmak, beş ek ayar ayarlamanıza olanak tanır. Bu ayarlar **Kaynak Seçenekleri** sekmesinde **JSON ayarları** akordeon altında bulunabilir.  
 
-![JSON ayarları](media/data-flow/json-settings.png "JSON ayarları")
+![JSON Ayarları](media/data-flow/json-settings.png "JSON Ayarları")
 
 #### <a name="default"></a>Varsayılan
 
-Varsayılan olarak, JSON verileri aşağıdaki biçimde okunurdur.
+Varsayılan olarak, JSON verileri aşağıdaki biçimde okunur.
 
 ```
 { "json": "record 1" }
@@ -269,7 +269,7 @@ Varsayılan olarak, JSON verileri aşağıdaki biçimde okunurdur.
 
 #### <a name="single-document"></a>Tek belge
 
-**Tek belge** seçilirse, eşleme veri akışları her dosyadan bir JSON belgesi okur. 
+**Tek belge** seçilirse, veri akışlarını eşleme her dosyadan bir JSON belgesi ni okur. 
 
 ``` json
 File1.json
@@ -286,9 +286,9 @@ File3.json
 }
 ```
 
-#### <a name="unquoted-column-names"></a>Tırnak işaretleri olmayan sütun adları
+#### <a name="unquoted-column-names"></a>Tırnak içinde sütun adları
 
-**Tırnak Işaretleri olmayan sütun adları** seçiliyse, eşleme veri akışları tırnak IÇINE alınmış JSON sütunlarını okur. 
+**Tırnak içinde sütun adları** seçilirse, veri akışlarını eşlemede tırnak işaretleriyle çevrili olmayan JSON sütunları yer alıyor. 
 
 ```
 { json: "record 1" }
@@ -296,9 +296,9 @@ File3.json
 { json: "record 3" }
 ```
 
-#### <a name="has-comments"></a>Açıklamalar içeriyor
+#### <a name="has-comments"></a>Yorumları var
 
-JSON verilerinde C veya C++ Style yorum ekleme varsa, Select **yorumu vardır** .
+JSON verilerinde C veya C++ stili nde yorum varsa **Var'ın yorumunu** seçin.
 
 ``` json
 { "json": /** comment **/ "record 1" }
@@ -306,9 +306,9 @@ JSON verilerinde C veya C++ Style yorum ekleme varsa, Select **yorumu vardır** 
 { /** comment **/ "json": "record 3" }
 ```
 
-#### <a name="single-quoted"></a>Tek tırnaklı
+#### <a name="single-quoted"></a>Tek alıntı
 
-JSON alanları ve değerleri çift tırnak yerine tek tırnakları kullanıyorsa, **tek tırnak** işareti ' ni seçin.
+JSON alanları ve değerleri çift tırnak yerine tek tırnak işaretleri kullanıyorsa, **tek teklif** seçin.
 
 ```
 { 'json': 'record 1' }
@@ -316,9 +316,9 @@ JSON alanları ve değerleri çift tırnak yerine tek tırnakları kullanıyorsa
 { 'json': 'record 3' }
 ```
 
-#### <a name="backslash-escaped"></a>Ters eğik çizgi kaçışı
+#### <a name="backslash-escaped"></a>Backslash kaçtı
 
-JSON verilerinde karakter kaçış için ters eğik çizgi kullanılırsa **tek tırnak** işareti seçin.
+JSON verilerindeki karakterlerden kaçmak için ters eğik çizgiler kullanılıyorsa **Tek teklif'i** seçin.
 
 ```
 { "json": "record 1" }
@@ -331,4 +331,4 @@ JSON verilerinde karakter kaçış için ters eğik çizgi kullanılırsa **tek 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 - [Veri akışını eşleme](concepts-data-flow-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
-- [GetMetadata etkinliği](control-flow-get-metadata-activity.md)
+- [Meta veri etkinliğini alın](control-flow-get-metadata-activity.md)

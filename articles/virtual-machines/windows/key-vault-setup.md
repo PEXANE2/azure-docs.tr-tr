@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager 'de Windows VM 'Leri için Key Vault ayarlama
-description: Azure Resource Manager bir sanal makine ile kullanmak için Key Vault ayarlama.
+title: Azure Kaynak Yöneticisi'nde Windows VM'ler için Anahtar Kasası ayarlama
+description: Key Vault'u Azure Kaynak Yöneticisi sanal makinesiyle kullanmak üzere nasıl ayarlayın?
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,48 +15,48 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
 ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243152"
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager sanal makineler için Key Vault ayarlama
+# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Kaynak Yöneticisi'nde sanal makineler için Anahtar Kasası'nı ayarlama
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Azure Resource Manager yığınında, gizlilikler/sertifikalar, Key Vault kaynak sağlayıcısı tarafından sağlanmış kaynaklar olarak modellenir. Key Vault hakkında daha fazla bilgi edinmek için bkz. [Azure Key Vault nedir?](../../key-vault/key-vault-overview.md)
+Azure Kaynak Yöneticisi yığınında, sırlar/sertifikalar Key Vault'un kaynak sağlayıcısı tarafından sağlanan kaynaklar olarak modellenir. Key Vault hakkında daha fazla bilgi edinmek için [Azure Anahtar Kasası nedir?](../../key-vault/key-vault-overview.md)
 
 > [!NOTE]
-> 1. Key Vault, Azure Resource Manager sanal makinelerle birlikte kullanılabilmesi için, Key Vault üzerindeki **Enabledfordeployment** özelliğinin true olarak ayarlanması gerekir. Bunu çeşitli istemcilerde yapabilirsiniz.
-> 2. Key Vault sanal makineyle aynı abonelikte ve konumda oluşturulması gerekir.
+> 1. Key Vault'un Azure Kaynak Yöneticisi sanal makineleriyle kullanılabilmesi için Key Vault'taki **EnabledForDeployment** özelliğinin gerçek olarak ayarlanması gerekir. Bunu çeşitli istemcilerde yapabilirsiniz.
+> 2. Anahtar Kasası'nın Sanal Makine ile aynı abonelik te ve konumda oluşturulması gerekir.
 >
 >
 
-## <a name="use-powershell-to-set-up-key-vault"></a>PowerShell kullanarak Key Vault ayarlama
-PowerShell kullanarak bir Anahtar Kasası oluşturmak için bkz. [PowerShell kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](../../key-vault/quick-create-powershell.md).
+## <a name="use-powershell-to-set-up-key-vault"></a>Key Vault'u kurmak için PowerShell'i kullanın
+PowerShell'i kullanarak anahtar kasası oluşturmak [için, PowerShell'i kullanarak Azure Key Vault'tan bir sır elde etme tarihine bakın.](../../key-vault/quick-create-powershell.md)
 
-Yeni Anahtar kasaları için bu PowerShell cmdlet 'ini kullanabilirsiniz:
+Yeni anahtar kasaları için bu PowerShell cmdlet'i kullanabilirsiniz:
 
     New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
-Mevcut Anahtar kasaları için bu PowerShell cmdlet 'ini kullanabilirsiniz:
+Mevcut anahtar kasaları için bu PowerShell cmdlet'i kullanabilirsiniz:
 
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
-## <a name="use-cli-to-set-up-key-vault"></a>CLı kullanarak Key Vault ayarlama
-Komut satırı arabirimini (CLı) kullanarak bir Anahtar Kasası oluşturmak için bkz. [CLI kullanarak Key Vault yönetme](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
+## <a name="use-cli-to-set-up-key-vault"></a>Key Vault'u ayarlamak için CLI'yi kullanın
+Komut satırı arabirimini (CLI) kullanarak bir anahtar kasası oluşturmak için [CLI kullanarak Anahtar Kasasını Yönet'e](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)bakın.
 
-CLı için, dağıtım ilkesini atamadan önce anahtar kasasını oluşturmanız gerekir. Aşağıdaki komutu kullanarak bunu yapabilirsiniz:
+CLI için, dağıtım ilkesini atamadan önce anahtar kasasını oluşturmanız gerekir. Aşağıdaki komutu kullanarak bunu yapabilirsiniz:
 
     az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
     
-Daha sonra Key Vault şablon dağıtımıyla kullanmak üzere etkinleştirmek için aşağıdaki komutu çalıştırın:
+Ardından, şablon dağıtımında kullanılmak üzere Key Vault'u etkinleştirmek için aşağıdaki komutu çalıştırın:
 
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
-## <a name="use-templates-to-set-up-key-vault"></a>Şablonları kullanarak Key Vault ayarlama
-Şablon kullanırken, Key Vault kaynağı için `enabledForDeployment` özelliğini `true` olarak ayarlamanız gerekir.
+## <a name="use-templates-to-set-up-key-vault"></a>Key Vault'u ayarlamak için şablonları kullanma
+Şablon kullanırken, `enabledForDeployment` özelliği Key Vault `true` kaynağıiçin ayarlamanız gerekir.
 
     {
       "type": "Microsoft.KeyVault/vaults",
@@ -70,4 +70,4 @@ Daha sonra Key Vault şablon dağıtımıyla kullanmak üzere etkinleştirmek i�
       }
     }
 
-Şablonları kullanarak bir Anahtar Kasası oluştururken yapılandırabileceğiniz diğer seçenekler için bkz. [Anahtar Kasası oluşturma](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).
+Şablonları kullanarak bir anahtar kasası oluşturduğunuzda yapılandırabileceğiniz diğer seçenekler [için](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)bkz.

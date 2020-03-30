@@ -1,47 +1,46 @@
 ---
-title: API başvurusunu Bulut İş Ortağı Portalı | Azure Marketi
-description: Açıklaması, kullanım önkoşulları ve Market API işlemlerinin listesi.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Bulut İş Ortağı Portalı API Başvurusu | Azure Marketi
+description: Pazar api işlemlerinin açıklaması, kullanımı ön koşullar ve listesi.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b6591e1780d03cbfaff70fbd19ec3dfd274fae79
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 296c667876807bdd05a6281de461df76207b5490
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288555"
 ---
-<a name="cloud-partner-portal-api-reference"></a>Bulut İş Ortağı Portalı API başvurusu
+<a name="cloud-partner-portal-api-reference"></a>Bulut İş Ortağı Portalı API Başvurusu
 ==================================
 
-Bulut İş Ortağı Portalı REST API 'Leri, iş yüklerinin, tekliflerin ve yayımcı profillerinin programlı olarak alınmasına ve işlemesine olanak sağlar. API 'Ler, işlem zamanında doğru izinleri zorlamak için rol tabanlı erişim denetimi (RBAC) kullanır.
+Cloud Partner Portal REST API'leri, iş yüklerinin, tekliflerin ve yayıncı profillerinin programlı olarak alınmasına ve manipüle edilebilmesine olanak tanır. API'ler, işleme zamanında doğru izinleri zorlamak için rol tabanlı erişim denetimini (RBAC) kullanır.
 
-Bu başvuru Bulut İş Ortağı Portalı REST API 'Leri için teknik ayrıntılar sağlar. Bu belgedeki yük örnekleri yalnızca başvuru amaçlıdır ve yeni işlevsellik eklendikçe değişikliğe tabidir.
+Bu başvuru, Bulut İş Ortağı Portalı REST API'leri için teknik ayrıntıları sağlar. Bu belgedeki yük örnekleri yalnızca başvuru amaçlıdır ve yeni işlevler eklendikçe değiştirilebilir.
 
 
-<a name="prerequisites-and-considerations"></a>Önkoşullar ve konular
+<a name="prerequisites-and-considerations"></a>Ön koşullar ve değerlendirmeler
 -------------------------------
 
-API 'Leri kullanmadan önce şunları gözden geçirmeniz gerekir:
+API'leri kullanmadan önce şunları gözden geçirmelisiniz:
 
-- Hesabınıza bir hizmet sorumlusu ekleme ve kimlik doğrulaması için bir Azure Active Directory (Azure AD) erişim belirteci alma hakkında bilgi edinmek için [Önkoşul](./cloud-partner-portal-api-prerequisites.md) makalesi. 
-- İki [eşzamanlılık denetimi](./cloud-partner-portal-api-concurrency-control.md).
-Bu API 'Leri çağırmak için kullanılabilen stratejiler.
-- Sürüm oluşturma ve hata işleme gibi ek API [konuları](./cloud-partner-portal-api-considerations.md).
+- Hesabınıza bir hizmet yöneticisinin nasıl ekleyeceğinizi öğrenmek ve kimlik doğrulama için Azure Etkin Dizin (Azure AD) erişim jetonu almak için [Önkoşullar](./cloud-partner-portal-api-prerequisites.md) makalesi. 
+- İki [eşzamanlılık denetimi.](./cloud-partner-portal-api-concurrency-control.md)
+bu API'leri aramak için stratejiler mevcuttur.
+- Sürüm ve hata işleme gibi ek API [değerlendirmeleri.](./cloud-partner-portal-api-considerations.md)
 
 
 <a name="common-tasks"></a>Genel görevler
 ------------
-Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API 'Ler hakkında bilgi sağlar.
+Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API'leri ayrıntılarıyla anlatır.
 
 
 ### <a name="offers"></a>Teklifler
 
--   [Tüm teklifleri al](./cloud-partner-portal-api-retrieve-offers.md)
+-   [Tüm teklifleri alın](./cloud-partner-portal-api-retrieve-offers.md)
 -   [Belirli bir teklifi alma](./cloud-partner-portal-api-retrieve-specific-offer.md)
 -   [Teklif durumunu alma](./cloud-partner-portal-api-retrieve-offer-status.md)
 -   [Teklif oluşturma](./cloud-partner-portal-api-creating-offer.md)
@@ -58,8 +57,8 @@ Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API 'Ler hakk
 
 ### <a name="other-tasks"></a>Diğer görevler
 
--   [Sanal makine teklifleri için fiyatlandırmayı ayarla](./cloud-partner-portal-api-setting-price.md)
+-   [Sanal makine teklifleri için fiyatlandırma yı ayarlama](./cloud-partner-portal-api-setting-price.md)
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
--   [Kimlik doğrulaması sorunlarını giderme](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)
+-   [Kimlik doğrulama hatalarını giderme](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

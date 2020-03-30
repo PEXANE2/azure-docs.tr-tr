@@ -1,138 +1,138 @@
 ---
-title: Deyimlerdeki işlevler için başvuru kılavuzu
-description: Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevlere yönelik başvuru kılavuzu
+title: İfadelerde işlevler için başvuru kılavuzu
+description: Azure Mantık Uygulamaları ve Güç Otomatikleştirme ifadelerindeki işlevler için başvuru kılavuzu
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283920"
 ---
-# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
+# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Mantık Uygulamaları ve Güç Otomatikleştirme ifadelerinde işlevleri kullanma başvuru kılavuzu
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Güç otomatikleştirmede](https://docs.microsoft.com/flow/getting-started)iş akışı tanımları için bazı [ifadeler](../logic-apps/logic-apps-workflow-definition-language.md#expressions) , iş akışınız çalışmaya başladığında henüz mevcut olmayan çalışma zamanı eylemlerinden değerlerini alır. Bu değerlere başvurmak veya bu deyimlerdeki değerleri işlemek için, [Iş akışı Tanım Dili](../logic-apps/logic-apps-workflow-definition-language.md)tarafından sunulan *işlevleri* kullanabilirsiniz. 
+[Azure Mantık Uygulamaları](../logic-apps/logic-apps-overview.md) ve Güç [Otomatikleştirme'deki](https://docs.microsoft.com/flow/getting-started)iş akışı tanımları için, bazı [ifadeler,](../logic-apps/logic-apps-workflow-definition-language.md#expressions) iş akışınız çalışmaya başladığında henüz var olmayan çalışma zamanı eylemlerinden değerlerini alır. Bu değerlere başvurmak veya bu ifadelerdeki değerleri işlemek için [İş Akışı Tanım Dili](../logic-apps/logic-apps-workflow-definition-language.md)tarafından sağlanan *işlevleri* kullanabilirsiniz. 
 
 > [!NOTE]
-> Bu başvuru sayfası hem Azure Logic Apps hem de güç otomatikleştirme için geçerlidir, ancak Azure Logic Apps belgelerinde görüntülenir. Bu sayfa özellikle Logic Apps 'e başvuruda bulunmasına rağmen, bu işlevler hem akışlar hem de Logic Apps için çalışır. Güç otomatikleştirmede işlevler ve ifadeler hakkında daha fazla bilgi için bkz. [koşullarda Ifadeleri kullanma](https://docs.microsoft.com/flow/use-expressions-in-conditions).
+> Bu başvuru sayfası hem Azure Mantık Uygulamaları hem de Power Automate için geçerlidir, ancak Azure Mantık Uygulamaları belgelerinde görünür. Bu sayfa özellikle mantık uygulamalarına atıfta bulunulsa da, bu işlevler hem akışlar hem de mantık uygulamaları için çalışır. Power Automate'deki işlevler ve ifadeler hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/flow/use-expressions-in-conditions)
 
-Örneğin, topla veya float değerlerinin toplamını istediğinizde, [Add () işlevi](../logic-apps/workflow-definition-language-functions-reference.md#add)gibi matematik işlevlerini kullanarak değerleri hesaplayabilirsiniz. İşlevlerle gerçekleştirebileceğiniz diğer örnek görevler şunlardır:
+Örneğin, tamsayılardan veya floats'tan toplam istediğinizde [add() işlevi](../logic-apps/workflow-definition-language-functions-reference.md#add)gibi matematik işlevlerini kullanarak değerleri hesaplayabilirsiniz. İşlevlerle gerçekleştirebileceğiniz diğer örnek görevler şunlardır:
 
 | Görev | İşlev sözdizimi | Sonuç |
 | ---- | --------------- | ------ |
-| Küçük harfli bir dize döndürür. | toLower (' <*metin*> ') <p>Örneğin: toLower (' Merhaba ') | herkese |
-| Bir genel benzersiz tanımlayıcı (GUID) döndürür. | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
+| Küçük harf biçiminde bir dize döndürün. | toLower('<*metin*>') <p>Örneğin: toLower('Hello') | "merhaba" |
+| Genel olarak benzersiz bir tanımlayıcı (GUID) döndür. | kılavuz() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
 ||||
 
-İşlevleri [genel amaçlarına göre](#ordered-by-purpose)bulmak için aşağıdaki tabloları gözden geçirin. Ya da her işlev hakkında ayrıntılı bilgi için [alfabetik listeye](#alphabetical-list)bakın.
+[Genel amaçlarına göre](#ordered-by-purpose)işlevleri bulmak için aşağıdaki tabloları gözden geçirin. Veya, her işlev hakkında ayrıntılı bilgi [için, alfabetik listeye](#alphabetical-list)bakın.
 
 > [!NOTE]
-> Parametre tanımlarının sözdiziminde, bir parametre sonrasında görünen bir soru işareti (?), parametrenin isteğe bağlı olduğu anlamına gelir.
-> Örneğin bkz. [Getfuturetime ()](#getFutureTime).
+> Parametre tanımları sözdiziminde, parametreden sonra görünen bir soru işareti (?) parametrenin isteğe bağlı olduğu anlamına gelir.
+> Örneğin, [bkz. getFutureTime()](#getFutureTime).
 
-## <a name="functions-in-expressions"></a>Deyimlerdeki işlevler
+## <a name="functions-in-expressions"></a>İfadelerde işlevler
 
-Bir ifadede bir işlevin nasıl kullanılacağını göstermek için bu örnek, `customerName` parametresinden değeri nasıl alabilirim ve bir ifadede [Parameters ()](#parameters) işlevini kullanarak bu değeri `accountName` özelliğine atayabilmenizi gösterir:
+Bir ifadede işlevin nasıl kullanılacağını göstermek için, bu örnek, `customerName` bir ifadedeki `accountName` [parametreleri()](#parameters) işlevini kullanarak bu değeri parametreden nasıl alabileceğinizi ve bu değeri özelliğe nasıl atayabileceğinizi gösterir:
 
 ```json
 "accountName": "@parameters('customerName')"
 ```
 
-Deyimlerde işlevleri kullanabileceğiniz bazı genel yollar şunlardır:
+İfadelerde işlevleri kullanabileceğiniz diğer bazı genel yollar şunlardır:
 
-| Görev | İfadede işlev sözdizimi |
+| Görev | İfadedeki işlev sözdizimi |
 | ---- | -------------------------------- |
-| Öğeyi bir işleve geçirerek bir öğeyle çalışmayı gerçekleştirin. | "\@<*fonksiyonadı*> (<*öğesi*>)" |
-| 1. iç içe `parameters()` işlevini kullanarak *ParameterName*'in değerini alın. </br>2. bu değeri *fonksiyonadı*değerine geçirerek sonuçla birlikte iş gerçekleştirin. | "\@<*fonksiyonadı*> (Parametreler (' <*ParameterName*> '))" |
-| 1. iç içe geçmiş iç işlev *işlevbir*sonucu elde edin. </br>2. sonucu *functionName2*dış işlevine geçirin. | "\@<*functionName2*> (<*fonksiyonadı*> (<*öğe*>))" |
-| 1. Sonuç olarak *fonksiyonadı*'dan elde edin. </br>2. sonucun *PropertyName*özelliğine sahip bir nesne olduğu için, bu özelliğin değerini alın. | "\@<*fonksiyonadı*> (<*öğesi*>). <*PropertyName*>" |
+| Bu öğeyi bir işleve geçirerek bir öğeyle çalışmayı gerçekleştirin. | "\@<*functionName*>(<*öğe*>)" |
+| 1. İç içe geçme `parameters()` işlevini kullanarak *parametreName'nin*değerini alın. </br>2. Bu değeri *functionName'ye*geçirerek sonuçla birlikte iş yapın. | "\@<*functionName*>(parametre('<*parametreName*>')" |
+| 1. İç içe içsel işlev *fonksiyonuAdı'ndan*sonucu alın. </br>2. Sonucu dış fonksiyon *fonksiyonuName2'ye*geçirin. | "\@<*functionName2*>(<*fonksiyonuName*>(<*öğe*>)) |
+| 1. *functionName'den*sonucu alın. </br>2. Sonuç *özelliği özelliği Adı*ile bir nesne olduğu göz önüne alındığında, o özelliğin değerini almak. | "\@<*functionName*>(<*öğe*>).<*özellikName*>" |
 |||
 
-Örneğin, `concat()` işlevi iki veya daha fazla dize değerini parametre olarak alabilir. Bu işlev bu dizeleri tek bir dize olarak birleştirir.
-"Sophia" ve "Owen" gibi dize değişmez değerlerini geçirebilirsiniz, böylece "SophiaOwen" birleştirilmiş bir dize alırsınız:
+Örneğin, `concat()` işlev parametre olarak iki veya daha fazla dize değeri alabilir. Bu işlev, bu dizeleri tek bir dize halinde birleştirir.
+Ya dize literals geçebilir, örneğin, "Sophia" ve "Owen" böylece kombine bir dize olsun, "SophiaOwen":
 
 ```json
 "customerName": "@concat('Sophia', 'Owen')"
 ```
 
-Ya da parametrelerden dize değerleri alabilirsiniz. Bu örnek her `concat()` parametresindeki `parameters()` işlevini ve `firstName` ve `lastName` parametrelerini kullanır. Daha sonra, "SophiaOwen" gibi Birleşik bir dize almanız için ortaya çıkan dizeleri `concat()` işleve geçirirsiniz:
+Veya, parametrelerden dize değerlerini alabilirsiniz. Bu örnek, `parameters()` her `concat()` parametredeki `firstName` işlevi `lastName` ve parametreleri kullanır. Daha sonra, "SophiaOwen" `concat()` gibi birleşik bir dize elde etmek için elde edilen dizeleri işleve geçirirsiniz:
 
 ```json
 "customerName": "@concat(parameters('firstName'), parameters('lastName'))"
 ```
 
-Her iki durumda da örneklerin her ikisi de `customerName` özelliğine atanır.
+Her iki şekilde de, her `customerName` iki örnek de sonucu özelliğe atar.
 
-Genel amaçlarına göre sıralanan kullanılabilir işlevler aşağıda verilmiştir veya [alfabetik sıraya](#alphabetical-list)göre işlevlere gidebilirsiniz.
+Burada genel amaçlarına göre sıralanmış kullanılabilir işlevler veya [alfabetik sıraya](#alphabetical-list)göre işlevleri göz atabilirsiniz.
 
 <a name="ordered-by-purpose"></a>
 <a name="string-functions"></a>
 
 ## <a name="string-functions"></a>Dize işlevleri
 
-Dizelerle çalışmak için, bu dize işlevlerini ve ayrıca bazı [koleksiyon işlevlerini](#collection-functions)kullanabilirsiniz.
-Dize işlevleri yalnızca dizeler üzerinde çalışır.
+Dizeleri ile çalışmak için, bu dize işlevleri ve aynı zamanda bazı [toplama işlevleri](#collection-functions)kullanabilirsiniz.
+Dize işlevleri yalnızca dizeleri üzerinde çalışır.
 
-| String işlevi | Görev |
+| String fonksiyonu | Görev |
 | --------------- | ---- |
-| [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | İki veya daha fazla dizeyi birleştirin ve Birleşik dizeyi döndürün. |
-| [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Bir dizenin belirtilen alt dizeyle bitip bitmediğini denetleyin. |
-| [formatNumber numarası](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Belirtilen biçime göre bir sayı olarak dize döndürün |
-| ['ini](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Bir dize olarak bir genel benzersiz tanımlayıcı (GUID) oluşturun. |
-| [IndexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Bir alt dize için başlangıç konumunu döndürür. |
-| [LastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Alt dizenin son geçtiği başlangıç konumunu döndürür. |
-| [değiştirin](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Bir alt dizeyi belirtilen dizeyle değiştirin ve güncelleştirilmiş dizeyi döndürün. |
-| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Özgün dizedeki belirtilen sınırlayıcı karakteri temel alan daha büyük bir dizeden, virgülle ayrılmış alt dizeler içeren bir dizi döndürür. |
-| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Bir dizenin belirli bir alt dizeyle başlatılıp başlatılmayacağını denetleyin. |
-| [dizeden](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Belirtilen konumdan başlayarak bir dizeden karakter döndürün. |
-| [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Küçük harfli bir dize döndürür. |
-| [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Büyük harfle bir dize döndürür. |
-| [kırpma](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Baştaki ve sondaki boşlukları bir dizeden kaldırın ve güncelleştirilmiş dizeyi döndürün. |
+| [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | İki veya daha fazla dizebirleştirin ve birleştirilmiş dizeyi döndürün. |
+| [Endswith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Bir dize belirtilen sub string ile bitene denetleyin. |
+| [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Belirtilen biçimi temel alan bir sayıyı dize olarak döndürme |
+| [Guıd](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Dize olarak genel olarak benzersiz bir tanımlayıcı (GUID) oluşturun. |
+| [ındexof](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Bir alt dize için başlangıç konumunu döndürün. |
+| [Lastındexof](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Bir alt dizenin son oluşumu için başlangıç konumunu döndürün. |
+| [Değiştirmek](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Bir alt dizeyi belirtilen dizeyle değiştirin ve güncelleştirilmiş dizeyi döndürün. |
+| [Split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Özgün dizedeki belirtilen sınırlayıcı karaktere dayalı daha büyük bir dizeden virgülle ayrılmış alt dizeleri içeren bir dizi döndürün. |
+| [Startswith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Bir dize belirli bir alt dize ile başlayıp başlamadığını denetleyin. |
+| [Dize](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Belirtilen konumdan başlayarak karakterleri bir dizeden döndürün. |
+| [Tolower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Küçük harf biçiminde bir dize döndürün. |
+| [Toupper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Büyük harf biçiminde bir dize döndürün. |
+| [Döşeme](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Satır aralığını ve sondaki beyaz boşluğu bir dizeden kaldırın ve güncelleştirilmiş dizeyi döndürün. |
 |||
 
 <a name="collection-functions"></a>
 
-## <a name="collection-functions"></a>Koleksiyon işlevleri
+## <a name="collection-functions"></a>Toplama işlevleri
 
-Koleksiyonlar, genellikle diziler, dizeler ve bazen sözlüklerle çalışmak için bu koleksiyon işlevlerini kullanabilirsiniz.
+Koleksiyonlarla, genellikle dizilerle, dizeleri ve bazen sözlüklerle çalışmak için bu koleksiyon işlevlerini kullanabilirsiniz.
 
-| Koleksiyon işlevi | Görev |
+| Toplama fonksiyonu | Görev |
 | ------------------- | ---- |
-| [vardır](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin. |
-| [olmamalıdır](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Bir koleksiyonun boş olup olmadığını kontrol edin. |
-| [adı](../logic-apps/workflow-definition-language-functions-reference.md#first) | Bir koleksiyondaki ilk öğeyi döndürür. |
-| [imin](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Belirtilen koleksiyonlar genelinde *yalnızca* ortak öğeler içeren bir koleksiyon döndürür. |
-| [maddesinin](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerinde yinelenen bir eylem içindeyken, eylemin geçerli yinelemesi sırasında dizideki geçerli öğeyi döndürün. |
-| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Bir diziden, belirtilen karakterle ayrılmış olan *Tüm* öğeleri içeren bir dize döndürür. |
-| [soyadına](../logic-apps/workflow-definition-language-functions-reference.md#last) | Bir koleksiyondaki son öğeyi döndürür. |
-| [uzunluklu](../logic-apps/workflow-definition-language-functions-reference.md#length) | Bir dize veya dizideki öğelerin sayısını döndürün. |
-| [Şimdilik](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Öğeleri bir koleksiyonun önünden kaldırın ve *diğer tüm* öğeleri döndürün. |
-| [almanız](../logic-apps/workflow-definition-language-functions-reference.md#take) | Bir koleksiyonun önünden öğe döndürün. |
-| [birleşim](../logic-apps/workflow-definition-language-functions-reference.md#union) | Belirtilen koleksiyonlardaki *Tüm* öğeleri içeren bir koleksiyon döndürür. |
+| [Içerir](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Koleksiyonun belirli bir öğesi olup olmadığını denetleyin. |
+| [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Koleksiyonun boş olup olmadığını kontrol edin. |
+| [Ilk](../logic-apps/workflow-definition-language-functions-reference.md#first) | Koleksiyondaki ilk öğeyi döndürün. |
+| [Kesişim](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Belirtilen koleksiyonlar arasında *yalnızca* ortak öğelere sahip bir koleksiyon döndürün. |
+| [Öğe](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerinde yinelenen bir eylem ini yaparken, eylemin geçerli yinelemesi sırasında dizideki geçerli öğeyi döndürün. |
+| [Katılın](../logic-apps/workflow-definition-language-functions-reference.md#join) | Belirtilen karakterle ayrılmış bir dizideki *tüm* öğeleri içeren bir dize döndürün. |
+| [Son](../logic-apps/workflow-definition-language-functions-reference.md#last) | Koleksiyondaki son öğeyi döndürün. |
+| [Uzun -luğu](../logic-apps/workflow-definition-language-functions-reference.md#length) | Bir dize veya dizideki öğe sayısını döndürün. |
+| [Atlamak](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Öğeleri koleksiyonun önünden kaldırın ve diğer tüm öğeleri iade *edin.* |
+| [almak](../logic-apps/workflow-definition-language-functions-reference.md#take) | Öğeleri koleksiyonun önünden döndürün. |
+| [Birliği](../logic-apps/workflow-definition-language-functions-reference.md#union) | Belirtilen koleksiyonlardan *tüm* öğeleri içeren bir koleksiyon döndürün. |
 |||
 
 <a name="comparison-functions"></a>
 
 ## <a name="logical-comparison-functions"></a>Mantıksal karşılaştırma işlevleri
 
-Koşullara göre çalışmak, değerleri ve ifade sonuçlarını karşılaştırmak veya çeşitli mantık türlerini değerlendirmek için bu mantıksal karşılaştırma işlevlerini kullanabilirsiniz.
-Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
+Koşullarla çalışmak, değerleri ve ifade sonuçlarını karşılaştırmak veya çeşitli mantık türlerini değerlendirmek için bu mantıksal karşılaştırma işlevlerini kullanabilirsiniz.
+Her işlev le ilgili tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
-| Mantıksal karşılaştırma işlevi | Görev |
+| Mantıksal karşılaştırma fonksiyonu | Görev |
 | --------------------------- | ---- |
-| ['](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
-| [eşittir](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
-| [ilerisi](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
-| [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
-| [kullandıysanız](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
-| [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#less) | İlk değerin ikinci değerden küçük olup olmadığını kontrol edin. |
-| [Lessotalals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını kontrol edin. |
-| [başlatılmadı](../logic-apps/workflow-definition-language-functions-reference.md#not) | İfadenin yanlış olup olmadığını denetleyin. |
-| [veya](../logic-apps/workflow-definition-language-functions-reference.md#or) | En az bir ifadenin doğru olup olmadığını denetleyin. |
+| [Ve](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
+| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
+| [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını denetleyin. |
+| [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değerden büyük mü yoksa eşit mi olduğunu denetleyin. |
+| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Bir ifadenin doğru mu yanlış mı olduğunu kontrol edin. Sonuca bağlı olarak, belirli bir değeri döndürün. |
+| [daha az](../logic-apps/workflow-definition-language-functions-reference.md#less) | İlk değerin ikinci değerden küçük olup olmadığını denetleyin. |
+| [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | İlk değerin ikinci değerden küçük mü yoksa eşit mi olduğunu denetleyin. |
+| [Değil](../logic-apps/workflow-definition-language-functions-reference.md#not) | İfadenin yanlış olup olmadığını kontrol edin. |
+| [Veya](../logic-apps/workflow-definition-language-functions-reference.md#or) | En az bir ifadenin doğru olup olmadığını kontrol edin. |
 |||
 
 <a name="conversion-functions"></a>
@@ -140,54 +140,54 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 ## <a name="conversion-functions"></a>Dönüştürme işlevleri
 
 Bir değerin türünü veya biçimini değiştirmek için bu dönüştürme işlevlerini kullanabilirsiniz.
-Örneğin, Boole değerinden bir değeri tamsayı olarak değiştirebilirsiniz.
-Dönüştürme sırasında Logic Apps içerik türlerini nasıl işleyeceğinden ilgili daha fazla bilgi için bkz. [tanıtıcı içerik türleri](../logic-apps/logic-apps-content-type.md).
-Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
+Örneğin, bir değeri Boolean'dan bir tamsayıya değiştirebilirsiniz.
+Logic Apps'ın dönüşüm sırasında içerik türlerini nasıl işlediği hakkında daha fazla bilgi için [bkz.](../logic-apps/logic-apps-content-type.md)
+Her işlev le ilgili tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
 | Dönüştürme işlevi | Görev |
 | ------------------- | ---- |
-| [dizide](../logic-apps/workflow-definition-language-functions-reference.md#array) | Belirtilen tek bir girdiden bir dizi döndürür. Birden çok giriş için bkz. [Createarray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). |
-| [biçiminde](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Bir dize için Base64 kodlamalı sürüm döndürün. |
-| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Base64 ile kodlanmış bir dize için ikili sürümü döndürün. |
-| [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Base64 ile kodlanmış bir dize için dize sürümünü döndürün. |
-| [ý](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
-| [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Bir giriş değeri için Boole sürümü döndürün. |
-| [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Birden çok girişe bir dizi döndürün. |
-| [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Giriş değeri için veri URI 'sini döndürün. |
-| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Bir veri URI 'SI için ikili sürümü döndürün. |
-| [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Bir veri URI 'SI için dize sürümünü döndürün. |
-| [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Base64 ile kodlanmış bir dize için dize sürümünü döndürün. |
-| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Bir veri URI 'SI için ikili sürümü döndürün. |
-| [decodeURIComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Kaçış karakterlerinin kodunu çözülmüş sürümlerle değiştiren bir dize döndürür. |
-| [encodeURIComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | URL-güvenli olmayan karakterlerin yerine kaçış karakterleri içeren bir dize döndürür. |
-| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Giriş değeri için bir kayan nokta numarası döndürür. |
-| ['tir](../logic-apps/workflow-definition-language-functions-reference.md#int) | Bir dize için tamsayı sürümünü döndürün. |
-| [nesnesinde](../logic-apps/workflow-definition-language-functions-reference.md#json) | Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün. |
-| [dizisinde](../logic-apps/workflow-definition-language-functions-reference.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
-| [URIComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek, bir giriş değeri için URI kodlu sürümü döndürün. |
-| [Urıonenttobinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | URI kodlamalı dize için ikili sürümü döndürün. |
-| [Urıonenttostring](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | URI kodlamalı dize için dize sürümünü döndürün. |
-| [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Bir dize için XML sürümünü döndürün. |
+| [Dizi](../logic-apps/workflow-definition-language-functions-reference.md#array) | Belirli bir girişten bir dizi döndürün. Birden çok giriş için [createArray'e](../logic-apps/workflow-definition-language-functions-reference.md#createArray)bakın. |
+| [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Bir dize için base64 kodlanmış sürümü döndürün. |
+| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Base64 kodlanmış bir dize için ikili sürümü döndürün. |
+| [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Base64 kodlanmış bir dize için dize sürümünü döndürün. |
+| [ikili](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
+| [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Giriş değeri için Boolean sürümünü döndürün. |
+| [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Birden çok girişten bir dizi döndürün. |
+| [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Giriş değeri için veri URI'yi döndürün. |
+| [dataUritoBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Bir veri URI için ikili sürümü döndürün. |
+| [dataUritostring](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Veri URI için dize sürümünü döndürün. |
+| [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Base64 kodlanmış bir dize için dize sürümünü döndürün. |
+| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Bir veri URI için ikili sürümü döndürün. |
+| [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Kaçış karakterlerinin yerine deşifre edilmiş sürümlerle bir dize döndürün. |
+| [kodlamaUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | URL'de güvenli olmayan karakterlerin yerine kaçış karakterleri getiren bir dize döndürün. |
+| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Giriş değeri için kayan nokta numarası döndürün. |
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Tamsayı sürümünü bir dize için döndürün. |
+| [Json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün. |
+| [Dize](../logic-apps/workflow-definition-language-functions-reference.md#string) | Giriş değeri için dize sürümünü döndürün. |
+| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | URL'de güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek URI kodlu sürümü giriş değeri için döndürün. |
+| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | URI kodlu bir dize için ikili sürümü döndürün. |
+| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | URI kodlanmış bir dize için dize sürümünü döndürün. |
+| [Xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | XML sürümünü bir dize için döndürün. |
 |||
 
 <a name="math-functions"></a>
 
-## <a name="math-functions"></a>Matematik işlevleri
+## <a name="math-functions"></a>Matematik İşlevleri
 
-Tamsayılar ve float ile çalışmak için, bu matematik işlevlerini kullanabilirsiniz.
-Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
+Tümsek ve yüzer lerle çalışmak için bu matematik işlevlerini kullanabilirsiniz.
+Her işlev le ilgili tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
-| Math işlevi | Görev |
+| Matematik fonksiyonu | Görev |
 | ------------- | ---- |
-| [ekleyemiyorum](../logic-apps/workflow-definition-language-functions-reference.md#add) | İki sayı eklemenin sonucunu döndürür. |
-| [DIV](../logic-apps/workflow-definition-language-functions-reference.md#div) | İki sayının bölünme sonucunu döndürür. |
-| [Biçimlendir](../logic-apps/workflow-definition-language-functions-reference.md#max) | Sayı veya dizi kümesinden en yüksek değeri döndürün. |
-| [Min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Sayı veya dizi kümesinden en düşük değeri döndürün. |
-| [alma](../logic-apps/workflow-definition-language-functions-reference.md#mod) | İki sayıdan ayırarak kalanı döndürün. |
-| [MUL](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Ürünü iki sayıdan çarpmadan döndürün. |
-| [ran](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Belirtilen aralıktan rastgele bir tamsayı döndürür. |
-| [aralığı](../logic-apps/workflow-definition-language-functions-reference.md#range) | Belirtilen tamsayıdan başlayan bir tamsayı dizisi döndürür. |
-| [alt](../logic-apps/workflow-definition-language-functions-reference.md#sub) | İkinci sayının ilk sayıdan çıkarılmadan elde edilen sonucu döndürür. |
+| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | İki sayı ekleyerek sonucu döndürün. |
+| [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Sonucu iki sayıyı bölerek döndürün. |
+| [Max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Bir sayı kümesinden veya diziden en yüksek değeri döndürün. |
+| [Dk](../logic-apps/workflow-definition-language-functions-reference.md#min) | Bir sayı kümesinden veya diziden en düşük değeri döndürün. |
+| [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Kalan sayıyı iki sayıyı bölerek döndürün. |
+| [Mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Ürünü iki sayıyı çarparak döndürün. |
+| [Rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Belirli bir aralıktan rasgele bir tamsayı döndürün. |
+| [Aralığı](../logic-apps/workflow-definition-language-functions-reference.md#range) | Belirtilen bir tamsededen başlayan bir tamsayı dizini döndürün. |
+| [Alt](../logic-apps/workflow-definition-language-functions-reference.md#sub) | İkinci sayıyı ilk sayıdan çıkarmanın sonucunu döndürün. |
 |||
 
 <a name="date-time-functions"></a>
@@ -195,124 +195,124 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 ## <a name="date-and-time-functions"></a>Tarih ve saat işlevleri
 
 Tarih ve saatlerle çalışmak için bu tarih ve saat işlevlerini kullanabilirsiniz.
-Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
+Her işlev le ilgili tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
-| Date veya Time işlevi | Görev |
+| Tarih veya saat fonksiyonu | Görev |
 | --------------------- | ---- |
-| [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Zaman damgasına bir gün sayısı ekleyin. |
-| [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Zaman damgasına bir saat sayısı ekleyin. |
-| [addMinutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Zaman damgasına bir dakika sayısı ekleyin. |
-| [addSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Zaman damgasına bir saniye sayısı ekleyin. |
-| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Zaman damgasına bir dizi zaman birimi ekleyin. Ayrıca bkz. [Getfuturetime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime). |
-| [Convertfromulc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Evrensel Saat (UTC) zaman damgasını hedef saat dilimine dönüştürür. |
-| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Kaynak saat dilimindeki bir zaman damgasını hedef saat dilimine dönüştürür. |
-| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Kaynak saat diliminden bir zaman damgasını Eşgüdümlü Evrensel Saat (UTC) olarak dönüştürür. |
-| [dayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Zaman damgasından ay bileşeninin gününü döndürün. |
-| [dayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Zaman damgasından hafta bileşeninin gününü döndürün. |
-| [dayOfYear](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Zaman damgasından yıl bileşeninin gününü döndürün. |
-| [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Zaman damgasından tarihi döndürün. |
-| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Geçerli zaman damgasını ve belirtilen zaman birimlerini döndürür. Ayrıca bkz. [Addtotime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). |
-| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Geçerli zaman damgasını belirtilen zaman birimleriyle döndürün. Ayrıca bkz. [alt Tractfromtime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). |
-| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Zaman damgası için günün başlangıcını döndürür. |
-| [Saat başı](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Zaman damgası için saatin başlangıcını döndürür. |
-| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Zaman damgası için ayın başlangıcını döndürür. |
-| [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Zaman damgasından birkaç zaman birimi çıkarın. Ayrıca bkz. [Getpasttime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). |
-| [onay](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Belirtilen bir zaman damgası için `ticks` özellik değerini döndürün. |
-| [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Geçerli zaman damgasını bir dize olarak döndürür. |
+| [Adddays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Zaman damgasına birkaç gün ekleyin. |
+| [Addhours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Zaman damgasına birkaç saat ekleyin. |
+| [Addminutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Zaman damgasına birkaç dakika ekleyin. |
+| [Addseconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Zaman damgasına birkaç saniye ekleyin. |
+| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Zaman damgasına birkaç zaman birimi ekleyin. Ayrıca [bkz.](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) |
+| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Evrensel Zaman Eşgüdümlü'nden (UTC) bir zaman damgasını hedef saat dilimine dönüştürün. |
+| [dönüştürmeTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Kaynak saat diliminden bir zaman damgasını hedef saat dilimine dönüştürün. |
+| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Kaynak saat dilimindeki bir zaman damgasını Evrensel Saat Koordinasyonu'na (UTC) dönüştürün. |
+| [günOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Ayın bileşeninin gününü bir zaman damgasından döndürün. |
+| [Dayofweek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Hafta bileşeninin gününü bir zaman damgasından döndürün. |
+| [Dayofyear](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Yıl bileşeninin gününü bir zaman damgasından döndürün. |
+| [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Tarihi bir zaman damgasından döndürün. |
+| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Geçerli zaman damgasını ve belirtilen zaman birimlerini döndürün. Ayrıca [bkz.](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) |
+| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Geçerli zaman damgasını eksi belirtilen zaman birimlerini döndürün. Ayrıca [bkz.](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) |
+| [başlangıçOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Günün başlangıcını bir zaman damgası için döndürün. |
+| [başlangıçOfSaat](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Saat ini saat damgası için saatin başlangıcını iade edin. |
+| [başlangıçOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Zaman damgası için ayın başlangıcını iade edin. |
+| [çıkarmaFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Zaman damgasından birkaç zaman birimi çıkarın. Ayrıca [bakınız GetPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). |
+| [Ticks](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Belirtilen `ticks` bir zaman damgası için özellik değerini döndürün. |
+| [utcŞimdi](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Geçerli zaman damgasını dize olarak döndürün. |
 |||
 
 <a name="workflow-functions"></a>
 
-## <a name="workflow-functions"></a>İş akışı işlevleri
+## <a name="workflow-functions"></a>İş akışı fonksiyonları
 
-Bu iş akışı işlevleri şunları yapmanıza yardımcı olabilir:
+Bu iş akışı işlevleri size yardımcı olabilir:
 
-* Çalışma zamanında bir iş akışı örneği hakkındaki ayrıntıları alın.
-* Logic Apps veya akışlar oluşturmak için kullanılan girişlerle çalışın.
-* Tetikleyiciler ve eylemlerin çıktılarına başvurun.
+* Çalışma zamanında iş akışı örneği hakkında ayrıntılı bilgi alın.
+* Mantık uygulamalarını veya akışlarını anlık olarak anımsamak için kullanılan girişlerle çalışın.
+* Tetikleyicilerden ve eylemlerden çıkan çıktılara başvurun.
 
-Örneğin, bir eylemden çıkışlara başvurabilir ve bu verileri sonraki bir eylemde kullanabilirsiniz.
-Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
+Örneğin, bir eylemden çıktıbaşvuruyapabilir ve bu verileri daha sonraki bir eylemde kullanabilirsiniz.
+Her işlev le ilgili tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
-| Workflow işlevi | Görev |
+| İş akışı işlevi | Görev |
 | ----------------- | ---- |
-| [ön](../logic-apps/workflow-definition-language-functions-reference.md#action) | Çalışma zamanında geçerli eylemin çıkışını veya diğer JSON ad ve değer çiftleriyle değerleri döndürün. Ayrıca bkz. [Eylemler](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
-| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Çalışma zamanında bir eylemin `body` çıkışını döndürün. Ayrıca bkz. [gövde](../logic-apps/workflow-definition-language-functions-reference.md#body). |
-| [Actionçıktılar](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Çalışma zamanında bir eylemin çıktısını döndürün. Bkz. [çıktılar](../logic-apps/workflow-definition-language-functions-reference.md#outputs) ve [Eylemler](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
-| [eylem](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Çalışma zamanında bir eylemin çıkışını veya diğer JSON ad ve-değer çiftleriyle değerleri döndürün. Ayrıca bkz. [eylem](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
-| [bölümü](#body) | Çalışma zamanında bir eylemin `body` çıkışını döndürün. Ayrıca bkz. [Actionbody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
-| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | *Form-Data* veya *form kodlu* eylem çıktılarında anahtar adı ile eşleşen değerlerle bir dizi oluşturun. |
-| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Bir eylemin *form verileri* veya *form kodlu çıktısındaki*anahtar adı ile eşleşen tek bir değer döndürür. |
-| [maddesinin](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerinde yinelenen bir eylem içindeyken, eylemin geçerli yinelemesi sırasında dizideki geçerli öğeyi döndürün. |
-| [öğeler](../logic-apps/workflow-definition-language-functions-reference.md#items) | Bir foreach veya Until döngüsü içindeyken, belirtilen döngüden geçerli öğeyi döndürün.|
-| [Iterationındexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Bir Until döngüsü içindeyken, geçerli yineleme için dizin değerini döndürür. Bu işlevi iç içe kadar, iç içe kadar kullanabilirsiniz. |
-| [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Tetikleyici veya eylem çağıran "geri çağırma URL 'sini" döndürür. |
-| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Bir eylemin birden çok parçaya sahip olan çıkışında belirli bir bölümün gövdesini döndürün. |
-| [çıkışı](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Çalışma zamanında bir eylemin çıktısını döndürün. |
-| [parametreler](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | İş akışı tanımınızda açıklanan parametre için değeri döndürün. |
-| [kaynaklanan](../logic-apps/workflow-definition-language-functions-reference.md#result) | `For_each`, `Until`ve `Scope`gibi belirtilen kapsamlı eylem içindeki tüm eylemlerin giriş ve çıkışlarını geri döndürün. |
-| [Tetikleyicinin](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Çalışma zamanında bir tetikleyicinin çıkışını veya diğer JSON ad ve değer çiftlerinden döndürün. Ayrıca bkz. [Triggerçıktılar](#triggerOutputs) ve [triggerbody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
-| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Çalışma zamanında tetikleyicinin `body` çıkışını döndürün. Bkz. [tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
-| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | *Form-Data* veya *form kodlu* tetikleyici çıktılarında anahtar adı ile eşleşen tek bir değer döndürür. |
-| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Tetikleyicinin çok parçalı çıkışında belirli bir bölümün gövdesini döndürün. |
-| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | *Form-Data* veya *form kodlu* tetikleyici çıktılarında değerleri anahtar adıyla eşleşen bir dizi oluşturun. |
-| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Çalışma zamanında tetikleyicinin çıkışını veya diğer JSON ad ve-değer çiftleriyle değerleri döndürün. Bkz. [tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
-| [değişkenlerinin](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Belirtilen değişken için değeri döndürün. |
-| [akışıyla](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Çalışma zamanı sırasında iş akışı ile ilgili tüm ayrıntıları döndürür. |
+| [Eylem](../logic-apps/workflow-definition-language-functions-reference.md#action) | Geçerli eylemin çıktısını çalışma zamanında veya diğer JSON ad ve değer çiftlerinden gelen değerleri döndürün. Ayrıca [eylemlere](../logic-apps/workflow-definition-language-functions-reference.md#actions)bakın. |
+| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Bir eylemin çıktısını `body` çalışma zamanında döndürün. Ayrıca [bkz.](../logic-apps/workflow-definition-language-functions-reference.md#body) |
+| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Bir eylemin çıktısını çalışma zamanında döndürün. [Çıktıları](../logic-apps/workflow-definition-language-functions-reference.md#outputs) ve [eylemleri](../logic-apps/workflow-definition-language-functions-reference.md#actions)görün. |
+| [Eylem](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Bir eylemin çıktısını çalışma zamanında veya diğer JSON ad ve değer çiftlerinden gelen değerleri döndürün. Ayrıca [eylem](../logic-apps/workflow-definition-language-functions-reference.md#action)bakın.  |
+| [Vücut](#body) | Bir eylemin çıktısını `body` çalışma zamanında döndürün. Ayrıca [bkz. actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
+| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | *Form verileri* veya *form kodlanmış* eylem çıktılarında anahtar adı eşleşen değerlere sahip bir dizi oluşturun. |
+| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Bir eylemin *form verilerinde* veya *form kodlanmış çıktısında*anahtar bir adla eşleşen tek bir değer döndürün. |
+| [Öğe](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerinde yinelenen bir eylem ini yaparken, eylemin geçerli yinelemesi sırasında dizideki geçerli öğeyi döndürün. |
+| [Bileşen](../logic-apps/workflow-definition-language-functions-reference.md#items) | Foreach veya Until döngüsünün içindeyken, geçerli öğeyi belirtilen döngüden döndürün.|
+| [yinelemeEndeksleri](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Bir Until döngüsü içindeyken, geçerli yinelemeiçin dizin değerini döndürün. Bu işlevi iç içe geçen Until döngüleri içinde kullanabilirsiniz. |
+| [listeCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Tetikleyici veya eylem çağıran "geri arama URL'sini" döndürün. |
+| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Birden çok parçadan biri olan bir eylemin çıktısında belirli bir parça için gövdeyi döndürün. |
+| [Çıkış](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Bir eylemin çıktısını çalışma zamanında döndürün. |
+| [Parametre](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | İş akışı tanımınızda açıklanan bir parametrenin değerini döndürün. |
+| [Sonuç](../logic-apps/workflow-definition-language-functions-reference.md#result) | Belirtilen kapsamlı eylem içindeki tüm eylemlerden gelen girdi ve `For_each`çıktıları , , `Until`ve `Scope`. |
+| [Tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Bir tetikleyicinin çıktısını çalışma zamanında veya diğer JSON ad ve değer çiftlerinden döndürün. Ayrıca [bkz.](#triggerOutputs) [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) |
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Çalışma zamanında bir `body` tetikleyicinin çıktısını döndürün. [Bkz. tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
+| [tetikFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | *Form verileri* veya *form kodlanmış* tetikleyici çıktılarında anahtar adı eşleşen tek bir değer döndürün. |
+| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Bir tetikleyicinin çok parçalı çıkışında belirli bir parça için gövdeyi döndürün. |
+| [tetikFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Değerleri *form verileri* veya *form kodlanmış* tetikleyici çıktılarında anahtar adla eşleşen bir dizi oluşturun. |
+| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Bir tetikleyicinin çıktısını çalışma zamanında veya diğer JSON ad ve değer çiftlerinden gelen değerleri döndürün. [Bkz. tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
+| [Değişken](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Belirtilen değişkenin değerini döndürün. |
+| [iş akışı](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Çalışma süresi boyunca iş akışının kendisi hakkındaki tüm ayrıntıları döndürün. |
 |||
 
 <a name="uri-parsing-functions"></a>
 
-## <a name="uri-parsing-functions"></a>URI ayrıştırma işlevleri
+## <a name="uri-parsing-functions"></a>URI ayrışdırma fonksiyonları
 
-Tekdüzen Kaynak tanımlayıcıları (URI 'Ler) ile çalışmak ve bu URI 'Ler için çeşitli özellik değerleri almak için, bu URI ayrıştırma işlevlerini kullanabilirsiniz.
-Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
+Tek tip kaynak tanımlayıcıları (URI) ile çalışmak ve bu URI'ler için çeşitli özellik değerleri elde etmek için bu URI ayrıştırma işlevlerini kullanabilirsiniz.
+Her işlev le ilgili tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
-| URI ayrıştırma işlevi | Görev |
+| URI ayrıştma fonksiyonu | Görev |
 | -------------------- | ---- |
-| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Tekdüzen Kaynak tanımlayıcısı (URI) için `host` değeri döndürün. |
-| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Tekdüzen Kaynak tanımlayıcısı (URI) için `path` değeri döndürün. |
-| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Tekdüzen Kaynak tanımlayıcısı (URI) için `path` ve `query` değerlerini döndürün. |
-| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Tekdüzen Kaynak tanımlayıcısı (URI) için `port` değeri döndürün. |
-| [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Tekdüzen Kaynak tanımlayıcısı (URI) için `query` değeri döndürün. |
-| [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Tekdüzen Kaynak tanımlayıcısı (URI) için `scheme` değeri döndürün. |
+| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Tek `host` tip kaynak tanımlayıcısı (URI) için değeri döndürün. |
+| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Tek `path` tip kaynak tanımlayıcısı (URI) için değeri döndürün. |
+| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Tek `path` tip `query` kaynak tanımlayıcısı (URI) için ve değerleri döndürün. |
+| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Tek `port` tip kaynak tanımlayıcısı (URI) için değeri döndürün. |
+| [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Tek `query` tip kaynak tanımlayıcısı (URI) için değeri döndürün. |
+| [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Tek `scheme` tip kaynak tanımlayıcısı (URI) için değeri döndürün. |
 |||
 
 <a name="manipulation-functions"></a>
 
-## <a name="manipulation-functions-json--xml"></a>İşleme işlevleri: JSON & XML
+## <a name="manipulation-functions-json--xml"></a>Manipülasyon fonksiyonları: JSON & XML
 
 JSON nesneleri ve XML düğümleri ile çalışmak için bu işleme işlevlerini kullanabilirsiniz.
-Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
+Her işlev le ilgili tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
 
-| İşleme işlevi | Görev |
+| Manipülasyon fonksiyonu | Görev |
 | --------------------- | ---- |
-| [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Bir özelliği ve değerini ya da ad-değer çiftini bir JSON nesnesine ekleyin ve güncelleştirilmiş nesneyi döndürün. |
-| [Coalesce](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Bir veya daha fazla parametreden null olmayan ilk değeri döndürün. |
-| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | JSON nesnesinden bir özelliği kaldırın ve güncelleştirilmiş nesneyi döndürün. |
-| [Özellik](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | JSON nesnesinin özelliği için değeri ayarlayın ve güncelleştirilmiş nesneyi döndürün. |
-| [XPath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | XML 'yi bir XPath (XML Path Language) ifadesiyle eşleşen düğümler veya değerler için denetleyin ve eşleşen düğümleri veya değerleri döndürün. |
+| [addÖzellik](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Bir JSON nesnesine bir özellik ve değeri veya ad değeri çifti ekleyin ve güncelleştirilmiş nesneyi döndürün. |
+| [Coalesce](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Bir veya daha fazla parametreden ilk null olmayan değeri döndürün. |
+| [removeÖzellik](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | JSON nesnesinden bir özelliği kaldırın ve güncelleştirilmiş nesneyi döndürün. |
+| [setÖzellik](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | JSON nesnesinin özelliğinin değerini ayarlayın ve güncelleştirilmiş nesneyi döndürün. |
+| [Xpath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | XML'yi, XPath (XML Path Language) ifadesiyle eşleşen düğümler veya değerler için denetleyin ve eşleşen düğümleri veya değerleri döndürün. |
 |||
 
 <a name="alphabetical-list"></a>
 
-## <a name="all-functions---alphabetical-list"></a>Tüm işlevler-alfabetik liste
+## <a name="all-functions---alphabetical-list"></a>Tüm fonksiyonlar - alfabetik liste
 
-Bu bölüm, tüm kullanılabilir işlevleri alfabetik sırayla listeler.
+Bu bölümde, tüm kullanılabilir işlevleri alfabetik sıraya göre listelenmektedir.
 
 <a name="action"></a>
 
 ### <a name="action"></a>action
 
-Çalışma zamanında *geçerli* eylemin çıkışını veya diğer JSON ad ve-değer çiftleriyle bulunan değerleri döndürün, bu da ifadeye atayabilirsiniz.
-Varsayılan olarak, bu işlev tüm eylem nesnesine başvurur, ancak isteğe bağlı olarak değerini istediğiniz bir özelliği belirtebilirsiniz.
-Ayrıca bkz. [Eylemler ()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
+*Geçerli* eylemin çıktısını çalışma zamanında veya bir ifadeye atayabileceğiniz diğer JSON ad ve değer çiftlerinden gelen değerleri döndürün.
+Varsayılan olarak, bu işlev tüm eylem nesnesi başvurur, ancak isteğe bağlı olarak hangi değeri istediğiniz bir özellik belirtebilirsiniz.
+Ayrıca [bkz.](../logic-apps/workflow-definition-language-functions-reference.md#actions)
 
-`action()` işlevini yalnızca şu konumlarda kullanabilirsiniz:
+`action()` İşlevi yalnızca bu yerlerde kullanabilirsiniz:
 
-* Bir Web kancası eyleminin `unsubscribe` özelliği, sonucu özgün `subscribe` isteğinden erişebilirsiniz
-* Bir eylem için `trackedProperties` özelliği
-* Bir eylem için `do-until` döngüsü koşulu
+* Orijinal `unsubscribe` `subscribe` istekten sonuca erişebilmeniz için webhook eylemi için özellik
+* Bir `trackedProperties` eylem için özellik
+* Bir `do-until` eylem için döngü koşulu
 
 ```
 action()
@@ -321,21 +321,21 @@ action().outputs.body.<property>
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*özellik*> | Hayır | Dize | Eylem nesnesinin özelliğinin değeri istediğiniz adı: **Name**, **StartTime**, **bitişsaati**, **girişler**, **çıkışlar**, **durum**, **kod**, **trackingıd**ve **clienttrackingıd**. Azure portal, belirli bir çalıştırma geçmişinin ayrıntılarını inceleyerek bu özellikleri bulabilirsiniz. Daha fazla bilgi için bkz. [REST API-Iş akışı çalıştırma eylemleri](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*Özellik*> | Hayır | Dize | Eylem nesnesinin değerini istediğiniz özelliğinin adı: **ad,** **startTime,** **endTime**, **girişler,** **çıktılar,** **durum,** **kod,** **trackingId**ve **clientTrackingId**. Azure portalında, belirli bir çalışma geçmişinin ayrıntılarını gözden geçirerek bu özellikleri bulabilirsiniz. Daha fazla bilgi için [REST API - İş Akışı Çalıştırma Eylemleri'ne](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)bakın. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | -----| ----------- |
-| <*eylem-çıkış*> | Dize | Geçerli eylem veya özelliğin çıktısı |
+| <*eylem çıktısı*> | Dize | Geçerli eylem veya özellikten çıktı |
 ||||
 
 <a name="actionBody"></a>
 
 ### <a name="actionbody"></a>actionBody
 
-Çalışma zamanında bir eylemin `body` çıkışını döndürün.
-`actions('<actionName>').outputs.body`için toplu değer.
-Bkz. [body ()](#body) ve [Actions ()](#actions).
+Bir eylemin çıktısını `body` çalışma zamanında döndürün.
+Steno `actions('<actionName>').outputs.body`için.
+Bkz. [vücut()](#body) ve [eylemler()](#actions).
 
 ```
 actionBody('<actionName>')
@@ -343,23 +343,23 @@ actionBody('<actionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ActionName*> | Yes | Dize | Eylemin istediğiniz `body` çıkışının adı |
+| <*Actionname*> | Evet | Dize | İstediğiniz eylemin `body` çıktısının adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | -----| ----------- |
-| <*eylem-gövde-çıkış*> | Dize | Belirtilen eylemden `body` çıktısı |
+| <*eylem-gövde çıkışı*> | Dize | Belirtilen `body` eylemden çıktı |
 ||||
 
 *Örnek*
 
-Bu örnek, Twitter eyleminden `body` çıkışını alır `Get user`:
+Bu örnek `body` Twitter eylem `Get user`çıktı alır:
 
 ```
 actionBody('Get_user')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 ```json
 "body": {
@@ -378,9 +378,9 @@ Ve şu sonucu döndürür:
 
 <a name="actionOutputs"></a>
 
-### <a name="actionoutputs"></a>Actionçıktılar
+### <a name="actionoutputs"></a>actionOutputs
 
-Çalışma zamanında bir eylemin çıktısını döndürün.  `actions('<actionName>').outputs`için de toplu olur. Bkz. [Eylemler ()](#actions). `actionOutputs()` işlevi, Logic App Designer 'daki `outputs()` çözümleniyor, bu nedenle `actionOutputs()`yerine [çıktılar ()](#outputs)kullanmayı düşünün. Her iki işlev de aynı şekilde çalışır, ancak `outputs()` tercih edilir.
+Bir eylemin çıktısını çalışma zamanında döndürün.  ve steno `actions('<actionName>').outputs`için . [Bkz. eylemler()](#actions). İşlev `actionOutputs()` Mantık `outputs()` App Designer giderir, bu yüzden çıkışları kullanmayı `actionOutputs()` [düşünün()](#outputs)yerine . Her iki fonksiyon da `outputs()` aynı şekilde çalışsa da tercih edilir.
 
 ```
 actionOutputs('<actionName>')
@@ -388,23 +388,23 @@ actionOutputs('<actionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ActionName*> | Yes | Dize | Eylem için istediğiniz çıkışın adı |
+| <*Actionname*> | Evet | Dize | İstediğiniz eylemin çıktısının adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | -----| ----------- |
-| *çıkış*> < | Dize | Belirtilen eylemden alınan çıkış |
+| <*Çıkış*> | Dize | Belirtilen eylemden çıktı |
 ||||
 
 *Örnek*
 
-Bu örnek, Twitter eyleminin `Get user`çıktısını alır:
+Bu örnek Twitter eylem `Get user`çıktı alır:
 
 ```
 actionOutputs('Get_user')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 ```json
 {
@@ -443,13 +443,13 @@ Ve şu sonucu döndürür:
 
 ### <a name="actions"></a>eylem
 
-Çalışma zamanında bir eylemin çıktısını veya diğer JSON ad ve değer çiftlerinde bulunan değerleri bir ifadeye atayabilirsiniz. Varsayılan olarak, işlev tüm eylem nesnesine başvurur, ancak isteğe bağlı olarak değerini istediğiniz bir özelliği belirtebilirsiniz.
-Toplu sürümler için bkz. [Actionbody ()](#actionBody), [actionçıktılar ()](#actionOutputs)ve [body ()](#body).
-Geçerli eylem için bkz. [eylem ()](#action).
+Bir eylemin çıktısını çalışma zamanında veya bir ifadeye atayabileceğiniz diğer JSON ad ve değer çiftlerinden gelen değerleri döndürün. Varsayılan olarak, işlev tüm eylem nesnesi başvurur, ancak isteğe bağlı olarak istediğiniz değeri olan bir özellik belirtebilirsiniz.
+Steno sürümleri için [actionBody()](#actionBody), [actionOutputs()](#actionOutputs)ve [body()](#body)bakın.
+Geçerli eylem için [bkz.](#action)
 
 > [!NOTE]
-> Daha önce, bir eylemin başka bir eylemden gelen çıktıya göre çalıştığını belirtirken `actions()` işlevini veya `conditions` öğesini kullanabilirsiniz. Ancak, eylemler arasında açık bağımlılıkları bildirmek için, artık bağımlı eylemin `runAfter` özelliğini kullanmanız gerekir.
-> `runAfter` özelliği hakkında daha fazla bilgi edinmek için bkz. [runAfter özelliği ile sorunları yakalama ve işleme](../logic-apps/logic-apps-workflow-definition-language.md).
+> Daha önce, bir `actions()` eylemin başka `conditions` bir eylemden çıktıya dayalı olarak çalıştığını belirtirken işlevi veya öğeyi kullanabilirsiniz. Ancak, eylemler arasındaki bağımlılıkları açıkça bildirmek için artık bağımlı `runAfter` eylemin özelliğini kullanmanız gerekir.
+> Özellik hakkında daha fazla bilgi edinmek için [Catch'e bakın ve runAfter özelliğiyle hataları ele alın.](../logic-apps/logic-apps-workflow-definition-language.md) `runAfter`
 
 ```
 actions('<actionName>')
@@ -458,30 +458,30 @@ actions('<actionName>').outputs.body.<property>
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ActionName*> | Yes | Dize | Çıktısı istediğiniz eylem nesnesinin adı  |
-| <*özellik*> | Hayır | Dize | Eylem nesnesinin özelliğinin değeri istediğiniz adı: **Name**, **StartTime**, **bitişsaati**, **girişler**, **çıkışlar**, **durum**, **kod**, **trackingıd**ve **clienttrackingıd**. Azure portal, belirli bir çalıştırma geçmişinin ayrıntılarını inceleyerek bu özellikleri bulabilirsiniz. Daha fazla bilgi için bkz. [REST API-Iş akışı çalıştırma eylemleri](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*Actionname*> | Evet | Dize | Çıktısını istediğiniz eylem nesnesinin adı  |
+| <*Özellik*> | Hayır | Dize | Eylem nesnesinin değerini istediğiniz özelliğinin adı: **ad,** **startTime,** **endTime**, **girişler,** **çıktılar,** **durum,** **kod,** **trackingId**ve **clientTrackingId**. Azure portalında, belirli bir çalışma geçmişinin ayrıntılarını gözden geçirerek bu özellikleri bulabilirsiniz. Daha fazla bilgi için [REST API - İş Akışı Çalıştırma Eylemleri'ne](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)bakın. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | -----| ----------- |
-| <*eylem-çıkış*> | Dize | Belirtilen eylem veya özelliğin çıktısı |
+| <*eylem çıktısı*> | Dize | Belirtilen eylem veya özellikten çıktı |
 ||||
 
 *Örnek*
 
-Bu örnek, çalışma zamanında `Get user` Twitter eyleminden `status` özellik değerini alır:
+Bu örnek, `status` çalışma zamanında Twitter `Get user` eyleminden özellik değerini alır:
 
 ```
 actions('Get_user').outputs.body.status
 ```
 
-Ve şu sonucu döndürür: `"Succeeded"`
+Ve bu sonucu döndürür:`"Succeeded"`
 
 <a name="add"></a>
 
 ### <a name="add"></a>add
 
-İki sayı eklemenin sonucunu döndürür.
+İki sayı ekleyerek sonucu döndürün.
 
 ```
 add(<summand_1>, <summand_2>)
@@ -489,29 +489,29 @@ add(<summand_1>, <summand_2>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2*> | Yes | Integer, float veya Mixed | Eklenecek numaralar |
+| <*summand_1*>, <*summand_2*> | Evet | Sonda, Float veya karışık | Eklenecek sayılar |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | -----| ----------- |
-| <*sonucu-sum*> | Tamsayı veya kayan | Belirtilen sayıları eklemenin sonucu |
+| <*sonuç toplamı*> | Sonda veya Float | Belirtilen sayıları eklemesonucu |
 ||||
 
 *Örnek*
 
-Bu örnek, belirtilen sayıları ekler:
+Bu örnekte belirtilen sayılar ekleniyor:
 
 ```
 add(1, 1.5)
 ```
 
-Ve şu sonucu döndürür: `2.5`
+Ve bu sonucu döndürür:`2.5`
 
 <a name="addDays"></a>
 
-### <a name="adddays"></a>addDays
+### <a name="adddays"></a>Adddays
 
-Zaman damgasına bir gün sayısı ekleyin.
+Zaman damgasına birkaç gün ekleyin.
 
 ```
 addDays('<timestamp>', <days>, '<format>'?)
@@ -519,14 +519,14 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*gün*> | Yes | Tamsayı | Eklenecek gün sayısının pozitif veya negatif sayısı |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Gün*> | Evet | Tamsayı | Eklenecek olumlu veya negatif gün sayısı |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Zaman damgası artı belirtilen gün sayısı  |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Zaman damgası artı belirtilen gün sayısı  |
 ||||
 
 *Örnek 1*
@@ -537,23 +537,23 @@ Bu örnek, belirtilen zaman damgasına 10 gün ekler:
 addDays('2018-03-15T13:00:00Z', 10)
 ```
 
-Ve şu sonucu döndürür: `"2018-03-25T00:00:0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-25T00:00:0000000Z"`
 
 *Örnek 2*
 
-Bu örnek, belirtilen zaman damgasından beş gün çıkartır:
+Bu örnek, belirtilen zaman damgasından beş gün çıkarır:
 
 ```
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-Ve şu sonucu döndürür: `"2018-03-10T00:00:0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
-### <a name="addhours"></a>addHours
+### <a name="addhours"></a>Addhours
 
-Zaman damgasına bir saat sayısı ekleyin.
+Zaman damgasına birkaç saat ekleyin.
 
 ```
 addHours('<timestamp>', <hours>, '<format>'?)
@@ -561,14 +561,14 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*saat*> | Yes | Tamsayı | Eklenecek saatlerin pozitif veya negatif sayısı |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Saat*> | Evet | Tamsayı | Eklenecek pozitif veya negatif saat sayısı |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Zaman damgası artı belirtilen saat sayısı  |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Zaman damgası artı belirtilen saat sayısı  |
 ||||
 
 *Örnek 1*
@@ -579,23 +579,23 @@ Bu örnek, belirtilen zaman damgasına 10 saat ekler:
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T10:00:0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-15T10:00:0000000Z"`
 
 *Örnek 2*
 
-Bu örnek, belirtilen zaman damgasından beş saati çıkarır:
+Bu örnek, belirtilen zaman damgasından beş saat çıkarır:
 
 ```
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T10:00:0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
-### <a name="addminutes"></a>addMinutes
+### <a name="addminutes"></a>Addminutes
 
-Zaman damgasına bir dakika sayısı ekleyin.
+Zaman damgasına birkaç dakika ekleyin.
 
 ```
 addMinutes('<timestamp>', <minutes>, '<format>'?)
@@ -603,14 +603,14 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*dakika*> | Yes | Tamsayı | Eklenecek pozitif veya negatif dakika sayısı |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Dakika*> | Evet | Tamsayı | Eklenecek dakikaların pozitif veya negatif sayısı |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Zaman damgası artı belirtilen dakika sayısı |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Zaman damgası artı belirtilen dakika sayısı |
 ||||
 
 *Örnek 1*
@@ -621,7 +621,7 @@ Bu örnek, belirtilen zaman damgasına 10 dakika ekler:
 addMinutes('2018-03-15T00:10:00Z', 10)
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T00:20:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-15T00:20:00.0000000Z"`
 
 *Örnek 2*
 
@@ -631,13 +631,13 @@ Bu örnek, belirtilen zaman damgasından beş dakika çıkarır:
 addMinutes('2018-03-15T00:20:00Z', -5)
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T00:15:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
-### <a name="addproperty"></a>addProperty
+### <a name="addproperty"></a>addÖzellik
 
-Bir özelliği ve değerini ya da ad-değer çiftini bir JSON nesnesine ekleyin ve güncelleştirilmiş nesneyi döndürün. Özellik çalışma zamanında zaten varsa, işlev başarısız olur ve bir hata oluşturur.
+Bir JSON nesnesine bir özellik ve değeri veya ad değeri çifti ekleyin ve güncelleştirilmiş nesneyi döndürün. Özellik çalışma zamanında zaten varsa, işlev başarısız olur ve bir hata atar.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -645,14 +645,14 @@ addProperty(<object>, '<property>', <value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *nesne*> < | Yes | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
-| <*özellik*> | Yes | Dize | Eklenecek özelliğin adı |
-| <*değer*> | Yes | Herhangi biri | Özelliğin değeri |
+| <*Nesne*> | Evet | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
+| <*Özellik*> | Evet | Dize | Eklenecek özelliğin adı |
+| <*Değer*> | Evet | Herhangi biri | Özelliğin değeri |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-nesne*> | Nesne | Belirtilen özelliğe sahip güncelleştirilmiş JSON nesnesi |
+| <*güncelleştirilmiş nesne*> | Nesne | Belirtilen özelliği olan güncelleştirilmiş JSON nesnesi |
 ||||
 
 Varolan bir özelliğe bir alt özellik eklemek için şu sözdizimini kullanın:
@@ -663,26 +663,26 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *nesne*> < | Yes | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
-| <*üst özellik*> | Yes | Dize | Alt özellik eklemek istediğiniz üst özelliğin adı |
-| <*alt özellik*> | Yes | Dize | Eklenecek alt özelliğin adı |
-| <*değer*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
+| <*Nesne*> | Evet | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
+| <*üst özellik*> | Evet | Dize | Alt özelliği eklemek istediğiniz ana özelliğin adı |
+| <*çocuk mülkiyeti*> | Evet | Dize | Eklenecek alt özellik için ad |
+| <*Değer*> | Evet | Herhangi biri | Belirtilen özellik için ayarlanan değer |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-nesne*> | Nesne | Özelliği ayarladığınız güncelleştirilmiş JSON nesnesi |
+| <*güncelleştirilmiş nesne*> | Nesne | Özelliğini ayarladığınız güncelleştirilmiş JSON nesnesi |
 ||||
 
 *Örnek 1*
 
-Bu örnek, [JSON ()](#json) işlevi kullanılarak BIR dizeden JSON 'a dönüştürülen bir json nesnesine `middleName` özelliğini ekler. Nesne zaten `firstName` ve `surName` özelliklerini içeriyor. İşlevi belirtilen değeri yeni özelliğe atar ve güncelleştirilmiş nesneyi döndürür:
+Bu örnek, `middleName` [json()](#json) işlevini kullanarak bir dizeden JSON'a dönüştürülen bir JSON nesnesine özellik ekler. Nesne zaten ve `firstName` `surName` özellikleri içerir. İşlev, belirtilen değeri yeni özelliğe atar ve güncelleştirilmiş nesneyi döndürür:
 
 ```
 addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
 ```
 
-Şu anki JSON nesnesi aşağıdadır:
+İşte geçerli JSON nesnesi:
 
 ```json
 {
@@ -691,7 +691,7 @@ addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName',
 }
 ```
 
-Güncelleştirilmiş JSON nesnesi şu şekildedir:
+İşte güncelleştirilmiş JSON nesnesi:
 
 ```json
 {
@@ -703,13 +703,13 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 *Örnek 2*
 
-Bu örnek, [JSON ()](#json) işlevi kullanılarak BIR dizeden JSON 'a dönüştürülen bir JSON nesnesi içindeki var olan `customerName` özelliğine `middleName` alt özelliğini ekler. İşlevi belirtilen değeri yeni özelliğe atar ve güncelleştirilmiş nesneyi döndürür:
+Bu örnek, `middleName` `customerName` [JSON()](#json) işlevini kullanarak bir dizeden JSON'a dönüştürülen bir JSON nesnesindeki varolan özelliğe alt özelliği ekler. İşlev, belirtilen değeri yeni özelliğe atar ve güncelleştirilmiş nesneyi döndürür:
 
 ```
 addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
 ```
 
-Şu anki JSON nesnesi aşağıdadır:
+İşte geçerli JSON nesnesi:
 
 ```json
 {
@@ -720,7 +720,7 @@ addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" }
 }
 ```
 
-Güncelleştirilmiş JSON nesnesi şu şekildedir:
+İşte güncelleştirilmiş JSON nesnesi:
 
 ```json
 {
@@ -734,9 +734,9 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 <a name="addSeconds"></a>
 
-### <a name="addseconds"></a>addSeconds
+### <a name="addseconds"></a>Addseconds
 
-Zaman damgasına bir saniye sayısı ekleyin.
+Zaman damgasına birkaç saniye ekleyin.
 
 ```
 addSeconds('<timestamp>', <seconds>, '<format>'?)
@@ -744,14 +744,14 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*saniye*> | Yes | Tamsayı | Eklenecek pozitif veya negatif saniye sayısı |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Saniye*> | Evet | Tamsayı | Eklenecek pozitif veya negatif saniye sayısı |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Zaman damgası artı belirtilen saniye sayısı  |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Zaman damgası artı belirtilen saniye sayısı  |
 ||||
 
 *Örnek 1*
@@ -762,24 +762,24 @@ Bu örnek, belirtilen zaman damgasına 10 saniye ekler:
 addSeconds('2018-03-15T00:00:00Z', 10)
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T00:00:10.0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-15T00:00:10.0000000Z"`
 
 *Örnek 2*
 
-Bu örnek, beş saniyeyi belirtilen zaman damgasına çıkartır:
+Bu örnek, belirtilen zaman damgasına beş saniye çıkarır:
 
 ```
 addSeconds('2018-03-15T00:00:30Z', -5)
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T00:00:25.0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
 ### <a name="addtotime"></a>addToTime
 
-Zaman damgasına bir dizi zaman birimi ekleyin.
-Ayrıca bkz. [Getfuturetime ()](#getFutureTime).
+Zaman damgasına birkaç zaman birimi ekleyin.
+Ayrıca [bakınız FutureTime()](#getFutureTime).
 
 ```
 addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
@@ -787,15 +787,15 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*aralık*> | Yes | Tamsayı | Eklenecek belirtilen zaman birimi sayısı |
-| <*Timeunit*> | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Aralığı*> | Evet | Tamsayı | Eklenecek belirtilen zaman birimlerinin sayısı |
+| <*zaman Birimi*> | Evet | Dize | *Aralıklı*olarak kullanılacak zaman birimi : "İkinci", "Dakika", "Saat", "Gün", "Hafta", "Ay", "Yıl" |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Zaman damgası artı belirtilen zaman birimi sayısı  |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Zaman damgası artı belirtilen zaman birimi sayısı  |
 ||||
 
 *Örnek 1*
@@ -806,7 +806,7 @@ Bu örnek, belirtilen zaman damgasına bir gün ekler:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-Ve şu sonucu döndürür: `"2018-01-02T00:00:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-01-02T00:00:00.0000000Z"`
 
 *Örnek 2*
 
@@ -816,14 +816,14 @@ Bu örnek, belirtilen zaman damgasına bir gün ekler:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 ```
 
-Ve isteğe bağlı "D" biçimini kullanarak sonucu döndürür: `"Tuesday, January 2, 2018"`
+Ve isteğe bağlı "D" biçimini kullanarak sonucu döndürür:`"Tuesday, January 2, 2018"`
 
 <a name="and"></a>
 
-### <a name="and"></a>ile
+### <a name="and"></a>ve
 
 Tüm ifadelerin doğru olup olmadığını denetleyin.
-Tüm ifadeler doğru olduğunda true, en az bir ifade false olduğunda false döndürün.
+Tüm ifadeler doğru olduğunda doğru döndürün veya en az bir ifade yanlış olduğunda yanlış döndürün.
 
 ```
 and(<expression1>, <expression2>, ...)
@@ -831,17 +831,17 @@ and(<expression1>, <expression2>, ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifade1*>, <*İfade2*>,... | Yes | Boole | Denetlenecek ifadeler |
+| <*ifade1*>, <*ifade2*>, ... | Evet | Boole | Denetlenen ifadeler |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | -----| ----------- |
-| true veya false | Boole | Tüm ifadeler true olduğunda true döndürün. En az bir ifade false olduğunda false döndürün. |
+| true veya false | Boole | Tüm ifadeler doğru olduğunda doğru döndürün. En az bir ifade yanlış olduğunda yanlış döndürün. |
 ||||
 
 *Örnek 1*
 
-Bu örnekler, belirtilen Boolean değerlerinin tümünün doğru olup olmadığını denetler:
+Bu örnekler, belirtilen Boolean değerlerinin hepsinin doğru olup olmadığını denetler:
 
 ```
 and(true, true)
@@ -849,15 +849,15 @@ and(false, true)
 and(false, false)
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları döndürür:
 
-* İlk örnek: her Iki ifade de doğrudur, bu nedenle `true`döndürür.
-* İkinci örnek: bir ifade yanlış, bu nedenle `false`döndürür.
-* Üçüncü örnek: her Iki ifade de false 'dur, bu nedenle `false`döndürür.
+* İlk örnek: Her iki ifade `true`de doğrudur, bu nedenle döndürür.
+* İkinci örnek: Bir ifade yanlıştır, bu nedenle döndürür. `false`
+* Üçüncü örnek: Her iki ifade `false`de yanlış, bu nedenle döndürür.
 
 *Örnek 2*
 
-Bu örnekler, belirtilen ifadelerin tümünün doğru olup olmadığını denetler:
+Bu örnekler, belirtilen ifadelerin hepsinin doğru olup olmadığını denetler:
 
 ```
 and(equals(1, 1), equals(2, 2))
@@ -865,18 +865,18 @@ and(equals(1, 1), equals(1, 2))
 and(equals(1, 2), equals(1, 3))
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları döndürür:
 
-* İlk örnek: her Iki ifade de doğrudur, bu nedenle `true`döndürür.
-* İkinci örnek: bir ifade yanlış, bu nedenle `false`döndürür.
-* Üçüncü örnek: her Iki ifade de false 'dur, bu nedenle `false`döndürür.
+* İlk örnek: Her iki ifade `true`de doğrudur, bu nedenle döndürür.
+* İkinci örnek: Bir ifade yanlıştır, bu nedenle döndürür. `false`
+* Üçüncü örnek: Her iki ifade `false`de yanlış, bu nedenle döndürür.
 
 <a name="array"></a>
 
 ### <a name="array"></a>array
 
-Belirtilen tek bir girdiden bir dizi döndürür.
-Birden çok giriş için bkz. [Createarray ()](#createArray).
+Belirli bir girişten bir dizi döndürün.
+Birden çok giriş için [createArray()](#createArray)bakın.
 
 ```
 array('<value>')
@@ -884,29 +884,29 @@ array('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dizi oluşturmak için dize |
+| <*Değer*> | Evet | Dize | Dizi oluşturmak için dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [<*değeri*>] | Dizi | Belirtilen tek girişi içeren bir dizi |
+| [<*değer*>] | Dizi | Tek belirtilen girişi içeren bir dizi |
 ||||
 
 *Örnek*
 
-Bu örnek, "Hello" dizesinden bir dizi oluşturur:
+Bu örnekte "merhaba" dizesinden bir dizi oluşturulur:
 
 ```
 array('hello')
 ```
 
-Ve şu sonucu döndürür: `["hello"]`
+Ve bu sonucu döndürür:`["hello"]`
 
 <a name="base64"></a>
 
-### <a name="base64"></a>biçiminde
+### <a name="base64"></a>base64
 
-Bir dize için Base64 kodlamalı sürüm döndürün.
+Bir dize için base64 kodlanmış sürümü döndürün.
 
 ```
 base64('<value>')
@@ -914,29 +914,29 @@ base64('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Giriş dizesi |
+| <*Değer*> | Evet | Dize | Giriş dizesi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Base64 dize*> | Dize | Giriş dizesi için Base64 kodlamalı sürüm |
+| <*base64-string*> | Dize | Giriş dizesi için base64 kodlanmış sürüm |
 ||||
 
 *Örnek*
 
-Bu örnek, "Hello" dizesini Base64 kodlamalı bir dizeye dönüştürür:
+Bu örnek, "merhaba" dizesini base64 kodlanmış bir dize dönüştürür:
 
 ```
 base64('hello')
 ```
 
-Ve şu sonucu döndürür: `"aGVsbG8="`
+Ve bu sonucu döndürür:`"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
 ### <a name="base64tobinary"></a>base64ToBinary
 
-Base64 ile kodlanmış bir dize için ikili sürümü döndürün.
+Base64 kodlanmış bir dize için ikili sürümü döndürün.
 
 ```
 base64ToBinary('<value>')
@@ -944,23 +944,23 @@ base64ToBinary('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek Base64 kodlamalı dize |
+| <*Değer*> | Evet | Dize | Dönüştürmek için base64 kodlanmış dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*binary-for-Base64 dize*> | Dize | Base64 ile kodlanmış dizenin ikili sürümü |
+| <*ikili-for-base64-string*> | Dize | Base64 kodlanmış dize için ikili sürüm |
 ||||
 
 *Örnek*
 
-Bu örnek, "aGVsbG8 =" Base64 kodlamalı dizeyi ikili dizeye dönüştürür:
+Bu örnek, "aGVsbG8=" base64 kodlanmış dizeyi ikili bir dize dönüştürür:
 
 ```
 base64ToBinary('aGVsbG8=')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 `"0110000101000111010101100111001101100010010001110011100000111101"`
 
@@ -968,9 +968,9 @@ Ve şu sonucu döndürür:
 
 ### <a name="base64tostring"></a>base64ToString
 
-Base64 ile kodlanmış bir dize için dize sürümünü döndürün ve Base64 dizesinin etkin bir şekilde kodunu çözerek.
-Bu işlevi [decodeBase64 ()](#decodeBase64)yerine kullanın.
-Her iki işlev de aynı şekilde çalışır, ancak `base64ToString()` tercih edilir.
+Base64 kodlanmış bir dize için dize sürümünü döndürün ve base64 dizesini etkili bir şekilde çözün.
+[Base64() decode](#decodeBase64)yerine bu işlevi kullanın.
+Her iki fonksiyon da `base64ToString()` aynı şekilde çalışsa da tercih edilir.
 
 ```
 base64ToString('<value>')
@@ -978,29 +978,29 @@ base64ToString('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Kod çözme için Base64 kodlamalı dize |
+| <*Değer*> | Evet | Dize | Kod çözmek için base64 kodlanmış dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*kodu çözülmüş-Base64 dizesi*> | Dize | Base64 ile kodlanmış bir dize için dize sürümü |
+| <*deşifre-base64-string*> | Dize | Base64 kodlanmış bir dize için dize sürümü |
 ||||
 
 *Örnek*
 
-Bu örnek, "aGVsbG8 =" Base64 kodlamalı dizeyi yalnızca bir dizeye dönüştürür:
+Bu örnek, "aGVsbG8=" base64 kodlanmış dizeyi sadece bir dize dönüştürür:
 
 ```
 base64ToString('aGVsbG8=')
 ```
 
-Ve şu sonucu döndürür: `"hello"`
+Ve bu sonucu döndürür:`"hello"`
 
 <a name="binary"></a>
 
-### <a name="binary"></a>binary
+### <a name="binary"></a>ikili
 
-Dize için ikili sürümü döndürün.
+Bir dize için ikili sürümü döndürün.
 
 ```
 binary('<value>')
@@ -1008,23 +1008,23 @@ binary('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek dize |
+| <*Değer*> | Evet | Dize | Dönüştürülecek dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ikili-değer*> | Dize | Belirtilen dizenin ikili sürümü |
+| <*ikili-giriş-değer*> | Dize | Belirtilen dize için ikili sürüm |
 ||||
 
 *Örnek*
 
-Bu örnek, "Hello" dizesini ikili dizeye dönüştürür:
+Bu örnek, "merhaba" dizesini ikili dizeye dönüştürür:
 
 ```
 binary('hello')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 `"0110100001100101011011000110110001101111"`
 
@@ -1032,9 +1032,9 @@ Ve şu sonucu döndürür:
 
 ### <a name="body"></a>body
 
-Çalışma zamanında bir eylemin `body` çıkışını döndürün.
-`actions('<actionName>').outputs.body`için toplu değer.
-Bkz. [Actionbody ()](#actionBody) ve [Actions ()](#actions).
+Bir eylemin çıktısını `body` çalışma zamanında döndürün.
+Steno `actions('<actionName>').outputs.body`için.
+Bkz. [actionBody()](#actionBody) ve [actions()](#actions).
 
 ```
 body('<actionName>')
@@ -1042,23 +1042,23 @@ body('<actionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ActionName*> | Yes | Dize | Eylemin istediğiniz `body` çıkışının adı |
+| <*Actionname*> | Evet | Dize | İstediğiniz eylemin `body` çıktısının adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | -----| ----------- |
-| <*eylem-gövde-çıkış*> | Dize | Belirtilen eylemden `body` çıktısı |
+| <*eylem-gövde çıkışı*> | Dize | Belirtilen `body` eylemden çıktı |
 ||||
 
 *Örnek*
 
-Bu örnek, `Get user` Twitter eyleminden `body` çıkışını alır:
+Bu örnek, `body` Twitter `Get user` eyleminden çıktı alır:
 
 ```
 body('Get_user')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 ```json
 "body": {
@@ -1087,34 +1087,34 @@ bool(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Herhangi biri | Dönüştürülecek değer |
+| <*Değer*> | Evet | Herhangi biri | Dönüştürülecek değer |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
 | true veya false | Boole | Belirtilen değer için Boolean sürümü |
 ||||
 
 *Örnek*
 
-Bu örnekler, belirtilen değerleri Boole değerlerine dönüştürür:
+Bu örnekler, belirtilen değerleri Boolean değerlerine dönüştürür:
 
 ```
 bool(1)
 bool(0)
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları döndürür:
 
-* İlk örnek: `true`
-* İkinci örnek: `false`
+* İlk örnek:`true`
+* İkinci örnek:`false`
 
 <a name="coalesce"></a>
 
-### <a name="coalesce"></a>coalesce
+### <a name="coalesce"></a>Coalesce
 
-Bir veya daha fazla parametreden null olmayan ilk değeri döndürün.
-Boş dizeler, boş diziler ve boş nesneler null değil.
+Bir veya daha fazla parametreden ilk null olmayan değeri döndürün.
+Boş dizeleri, boş diziler ve boş nesneler null değildir.
 
 ```
 coalesce(<object_1>, <object_2>, ...)
@@ -1122,17 +1122,17 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*>, <*object_2*>,... | Yes | Herhangi biri, türleri karıştırabilirler | Null denetlenecek bir veya daha fazla öğe |
+| <*object_1*>, <*object_2*>, ... | Evet | Herhangi, türleri karıştırabilirsiniz | Null için kontrol etmek için bir veya daha fazla öğe |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ilk-null olmayan öğe*> | Herhangi biri | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null değerini döndürür. |
+| <*ilk-null-öğe*> | Herhangi biri | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null döndürür. |
 ||||
 
 *Örnek*
 
-Bu örnekler, belirtilen değerlerden null olmayan ilk değeri veya tüm değerler null olduğunda null değerini döndürür:
+Bu örnekler, belirtilen değerlerden ilk null olmayan değeri veya tüm değerler null olduğunda null döndürür:
 
 ```
 coalesce(null, true, false)
@@ -1140,17 +1140,17 @@ coalesce(null, 'hello', 'world')
 coalesce(null, null, null)
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları döndürür:
 
-* İlk örnek: `true`
-* İkinci örnek: `"hello"`
-* Üçüncü örnek: `null`
+* İlk örnek:`true`
+* İkinci örnek:`"hello"`
+* Üçüncü örnek:`null`
 
 <a name="concat"></a>
 
-### <a name="concat"></a>Concat
+### <a name="concat"></a>concat
 
-İki veya daha fazla dizeyi birleştirin ve Birleşik dizeyi döndürün.
+İki veya daha fazla dizebirleştirin ve birleştirilmiş dizeyi döndürün.
 
 ```
 concat('<text1>', '<text2>', ...)
@@ -1158,57 +1158,57 @@ concat('<text1>', '<text2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin1*>, <*Metin2*>,... | Yes | Dize | Birleştirilecek en az iki dize |
+| <*metin1*>, <*text2*>, ... | Evet | Dize | Birleştirmek için en az iki dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*text1text2...* > | Dize | Birleşik giriş dizelerinden oluşturulan dize |
+| <*metin1text2...*> | Dize | Birleştirilmiş giriş dizelerinden oluşturulan dize |
 ||||
 
 *Örnek*
 
-Bu örnek, "Hello" ve "World" dizelerini birleştirir:
+Bu örnek, "Merhaba" ve "Dünya" dizelerini birleştirir:
 
 ```
 concat('Hello', 'World')
 ```
 
-Ve şu sonucu döndürür: `"HelloWorld"`
+Ve bu sonucu döndürür:`"HelloWorld"`
 
 <a name="contains"></a>
 
 ### <a name="contains"></a>içerir
 
-Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin.
-Öğe bulunduğunda true, bulunamazsa false döndürün.
-Bu işlev büyük/küçük harfe duyarlıdır.
+Koleksiyonun belirli bir öğesi olup olmadığını denetleyin.
+Öğe bulunduğunda doğru döndürün veya bulunmadığında yanlış döndürün.
+Bu fonksiyon büyük/küçük harf duyarlıdır.
 
 ```
 contains('<collection>', '<value>')
 contains([<collection>], '<value>')
 ```
 
-Özellikle, bu işlev bu koleksiyon türleri üzerinde çalışır:
+Özellikle, bu işlev bu toplama türleri üzerinde çalışır:
 
-* Alt *dize* bulmak için bir *dize*
-* Bir *değer* bulmak için bir *dizi*
-* *Anahtar* bulmak için bir *Sözlük*
+* Bir *alt dize* bulmak için bir *dize*
+* Bir *değeri* bulmak için bir *dizi*
+* Bir *anahtar* bulmak için bir *sözlük*
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *koleksiyon*> < | Yes | Dize, dizi veya sözlük | Denetlenecek koleksiyon |
-| <*değer*> | Yes | Sırasıyla dize, dizi veya sözlük | Bulunacak öğe |
+| <*Koleksiyon*> | Evet | Dize, Dizi veya Sözlük | Denetlenen koleksiyon |
+| <*Değer*> | Evet | String, Array veya Sözlük, sırasıyla | Bulunacak öğe |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | Öğe bulunduğunda true döndürün. Bulunamadığında false döndürün. |
+| true veya false | Boole | Öğe bulunduğunda doğru döndürün. Bulunduğunda yanlış döndürün. |
 ||||
 
 *Örnek 1*
 
-Bu örnek, "World" alt dizesi için "Hello World" dizesini denetler ve true değerini döndürür:
+Bu örnek, "dünya" alt dizesi için "merhaba dünya" dizesini denetler ve doğru döndürür:
 
 ```
 contains('hello world', 'world')
@@ -1216,7 +1216,7 @@ contains('hello world', 'world')
 
 *Örnek 2*
 
-Bu örnek, "Universe" alt dizesi için "Hello World" dizesini denetler ve false döndürür:
+Bu örnek, "evren" alt dizesini "merhaba dünya" dizesini denetler ve yanlış döndürür:
 
 ```
 contains('hello world', 'universe')
@@ -1224,9 +1224,9 @@ contains('hello world', 'universe')
 
 <a name="convertFromUtc"></a>
 
-### <a name="convertfromutc"></a>Convertfromulc
+### <a name="convertfromutc"></a>convertFromUtc
 
-Evrensel Saat (UTC) zaman damgasını hedef saat dilimine dönüştürür.
+Evrensel Zaman Eşgüdümlü'nden (UTC) bir zaman damgasını hedef saat dilimine dönüştürün.
 
 ```
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
@@ -1234,14 +1234,14 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*destinationTimeZone*> | Yes | Dize | Hedef saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*hedefTimeZone*> | Evet | Dize | Hedef saat diliminin adı. Saat dilimi adları için [Microsoft Saat Dilimi Dizin Değerleri'ne](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)bakın, ancak saat dilimi adından herhangi bir noktalama işaretini kaldırmanız gerekebilir. |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*dönüştürüldü-zaman damgası*> | Dize | Zaman damgası hedef saat dilimine dönüştürüldü |
+| <*dönüştürülmüş zaman damgası*> | Dize | Hedef saat dilimine dönüştürülen zaman damgası |
 ||||
 
 *Örnek 1*
@@ -1252,7 +1252,7 @@ Bu örnek, bir zaman damgasını belirtilen saat dilimine dönüştürür:
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 ```
 
-Ve şu sonucu döndürür: `"2018-01-01T00:00:00.0000000"`
+Ve bu sonucu döndürür:`"2018-01-01T00:00:00.0000000"`
 
 *Örnek 2*
 
@@ -1262,13 +1262,13 @@ Bu örnek, bir zaman damgasını belirtilen saat dilimine ve biçime dönüştü
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 ```
 
-Ve şu sonucu döndürür: `"Monday, January 1, 2018"`
+Ve bu sonucu döndürür:`"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
-### <a name="converttimezone"></a>convertTimeZone
+### <a name="converttimezone"></a>dönüştürmeTimeZone
 
-Kaynak saat dilimindeki bir zaman damgasını hedef saat dilimine dönüştürür.
+Kaynak saat diliminden bir zaman damgasını hedef saat dilimine dönüştürün.
 
 ```
 convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
@@ -1276,15 +1276,15 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*sourceTimeZone*> | Yes | Dize | Kaynak saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
-| <*destinationTimeZone*> | Yes | Dize | Hedef saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Sourcetimezone*> | Evet | Dize | Kaynak saat diliminin adı. Saat dilimi adları için [Microsoft Saat Dilimi Dizin Değerleri'ne](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)bakın, ancak saat dilimi adından herhangi bir noktalama işaretini kaldırmanız gerekebilir. |
+| <*hedefTimeZone*> | Evet | Dize | Hedef saat diliminin adı. Saat dilimi adları için [Microsoft Saat Dilimi Dizin Değerleri'ne](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)bakın, ancak saat dilimi adından herhangi bir noktalama işaretini kaldırmanız gerekebilir. |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*dönüştürüldü-zaman damgası*> | Dize | Zaman damgası hedef saat dilimine dönüştürüldü |
+| <*dönüştürülmüş zaman damgası*> | Dize | Hedef saat dilimine dönüştürülen zaman damgası |
 ||||
 
 *Örnek 1*
@@ -1295,23 +1295,23 @@ Bu örnek, kaynak saat dilimini hedef saat dilimine dönüştürür:
 convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 ```
 
-Ve şu sonucu döndürür: `"2018-01-01T00:00:00.0000000"`
+Ve bu sonucu döndürür:`"2018-01-01T00:00:00.0000000"`
 
 *Örnek 2*
 
-Bu örnek, saat dilimini belirtilen saat dilimine ve biçime dönüştürür:
+Bu örnek, bir saat dilimini belirtilen saat dilimine ve biçime dönüştürür:
 
 ```
 convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
 ```
 
-Ve şu sonucu döndürür: `"Monday, January 1, 2018"`
+Ve bu sonucu döndürür:`"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
 ### <a name="converttoutc"></a>convertToUtc
 
-Kaynak saat diliminden bir zaman damgasını Eşgüdümlü Evrensel Saat (UTC) olarak dönüştürür.
+Kaynak saat dilimindeki bir zaman damgasını Evrensel Saat Koordinasyonu'na (UTC) dönüştürün.
 
 ```
 convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
@@ -1319,42 +1319,42 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*sourceTimeZone*> | Yes | Dize | Kaynak saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Sourcetimezone*> | Evet | Dize | Kaynak saat diliminin adı. Saat dilimi adları için [Microsoft Saat Dilimi Dizin Değerleri'ne](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)bakın, ancak saat dilimi adından herhangi bir noktalama işaretini kaldırmanız gerekebilir. |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*dönüştürüldü-zaman damgası*> | Dize | Zaman damgası UTC 'ye dönüştürüldü |
+| <*dönüştürülmüş zaman damgası*> | Dize | ZAMAN damgası UTC'ye dönüştürüldü |
 ||||
 
 *Örnek 1*
 
-Bu örnek, bir zaman damgasını UTC 'ye dönüştürür:
+Bu örnek, bir zaman damgasını UTC'ye dönüştürür:
 
 ```
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 ```
 
-Ve şu sonucu döndürür: `"2018-01-01T08:00:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-01-01T08:00:00.0000000Z"`
 
 *Örnek 2*
 
-Bu örnek, bir zaman damgasını UTC 'ye dönüştürür:
+Bu örnek, bir zaman damgasını UTC'ye dönüştürür:
 
 ```
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 ```
 
-Ve şu sonucu döndürür: `"Monday, January 1, 2018"`
+Ve bu sonucu döndürür:`"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
 ### <a name="createarray"></a>createArray
 
-Birden çok girişe bir dizi döndürün.
-Tek giriş dizileri için bkz. [Array ()](#array).
+Birden çok girişten bir dizi döndürün.
+Tek giriş dizileri için [dizi()](#array)bakın.
 
 ```
 createArray('<object1>', '<object2>', ...)
@@ -1362,12 +1362,12 @@ createArray('<object1>', '<object2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*>,... | Yes | Any, ancak karışık değil | Diziyi oluşturmak için en az iki öğe |
+| <*object1*>, <*object2*>, ... | Evet | Herhangi, ama karışık değil | Diziyi oluşturmak için en az iki öğe |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [<*object1*>, <*object2*>,...] | Dizi | Tüm giriş öğelerinden oluşturulan dizi |
+| [<*object1*>, <*object2*>, ...] | Dizi | Tüm giriş öğelerinden oluşturulan dizi |
 ||||
 
 *Örnek*
@@ -1378,13 +1378,13 @@ Bu örnek, bu girişlerden bir dizi oluşturur:
 createArray('h', 'e', 'l', 'l', 'o')
 ```
 
-Ve şu sonucu döndürür: `["h", "e", "l", "l", "o"]`
+Ve bu sonucu döndürür:`["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
-### <a name="datauri"></a>DataUri
+### <a name="datauri"></a>dataUri
 
-Bir dize için bir veri Tekdüzen Kaynak tanımlayıcısı (URI) döndürün.
+Bir dize için veri tekdüzen kaynak tanımlayıcısı (URI) döndürün.
 
 ```
 dataUri('<value>')
@@ -1392,31 +1392,31 @@ dataUri('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek dize |
+| <*Değer*> | Evet | Dize | Dönüştürülecek dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*veri-urı*> | Dize | Giriş dizesi için veri URI 'SI |
+| <*veri-uri*> | Dize | Giriş dizesi için veri URI |
 ||||
 
 *Örnek*
 
-Bu örnek, "Hello" dizesi için bir veri URI 'SI oluşturur:
+Bu örnek, "merhaba" dizesi için bir veri URI oluşturur:
 
 ```
 dataUri('hello')
 ```
 
-Ve şu sonucu döndürür: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
+Ve bu sonucu döndürür:`"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 <a name="dataUriToBinary"></a>
 
-### <a name="datauritobinary"></a>dataUriToBinary
+### <a name="datauritobinary"></a>dataUritoBinary
 
-Bir veri Tekdüzen Kaynak tanımlayıcısı (URI) için ikili sürüm döndürün.
-[Decodedatauri ()](#decodeDataUri)yerine bu işlevi kullanın.
-Her iki işlev de aynı şekilde çalışır, ancak `dataUriBinary()` tercih edilir.
+Veri üniforması kaynak tanımlayıcısı (URI) için ikili sürümü döndürün.
+Bu işlevi [decodeDataUri()](#decodeDataUri)yerine kullanın.
+Her iki fonksiyon da `dataUriBinary()` aynı şekilde çalışsa da tercih edilir.
 
 ```
 dataUriToBinary('<value>')
@@ -1424,23 +1424,23 @@ dataUriToBinary('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek veri URI 'SI |
+| <*Değer*> | Evet | Dize | Dönüştürmek için veri URI |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*binary-for-Data-uri*> | Dize | Veri URI 'sinin ikili sürümü |
+| <*ikili-for-data-uri*> | Dize | Veri URI için ikili sürümü |
 ||||
 
 *Örnek*
 
-Bu örnek, bu veri URI 'SI için bir ikili sürüm oluşturur:
+Bu örnek, bu veri URI için ikili bir sürüm oluşturur:
 
 ```
 dataUriToBinary('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 `"01100100011000010111010001100001001110100111010001100101011110000111010000101111011100000
 1101100011000010110100101101110001110110110001101101000011000010111001001110011011001010111
@@ -1449,9 +1449,9 @@ Ve şu sonucu döndürür:
 
 <a name="dataUriToString"></a>
 
-### <a name="datauritostring"></a>dataUriToString
+### <a name="datauritostring"></a>dataUritostring
 
-Veri Tekdüzen Kaynak tanımlayıcısı (URI) için dize sürümünü döndürün.
+Veri tekdüzen kaynak tanımlayıcısı (URI) için dize sürümünü döndürün.
 
 ```
 dataUriToString('<value>')
@@ -1459,29 +1459,29 @@ dataUriToString('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek veri URI 'SI |
+| <*Değer*> | Evet | Dize | Dönüştürmek için veri URI |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <- *for-Data-uri> String* | Dize | Veri URI 'SI için dize sürümü |
+| <*string-for-data-uri*> | Dize | Veri URI için dize sürümü |
 ||||
 
 *Örnek*
 
-Bu örnek, bu veri URI 'SI için bir dize oluşturur:
+Bu örnek, bu veri URI için bir dize oluşturur:
 
 ```
 dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-Ve şu sonucu döndürür: `"hello"`
+Ve bu sonucu döndürür:`"hello"`
 
 <a name="dayOfMonth"></a>
 
-### <a name="dayofmonth"></a>dayOfMonth
+### <a name="dayofmonth"></a>günOfMonth
 
-Zaman damgasından ayın gününü döndürür.
+Ayın gününü bir zaman damgasından döndürün.
 
 ```
 dayOfMonth('<timestamp>')
@@ -1489,12 +1489,12 @@ dayOfMonth('<timestamp>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ayın günü*> | Tamsayı | Belirtilen zaman damgasından ayın günü |
+| <*gün-ay*> | Tamsayı | Belirtilen zaman damgasından ayın günü |
 ||||
 
 *Örnek*
@@ -1505,13 +1505,13 @@ Bu örnek, bu zaman damgasından ayın gününün numarasını döndürür:
 dayOfMonth('2018-03-15T13:27:36Z')
 ```
 
-Ve şu sonucu döndürür: `15`
+Ve bu sonucu döndürür:`15`
 
 <a name="dayOfWeek"></a>
 
-### <a name="dayofweek"></a>dayOfWeek
+### <a name="dayofweek"></a>Dayofweek
 
-Zaman damgasından haftanın gününü döndürün.
+Haftanın gününü bir zaman damgasından döndürün.
 
 ```
 dayOfWeek('<timestamp>')
@@ -1519,29 +1519,29 @@ dayOfWeek('<timestamp>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*haftanın günü*> | Tamsayı | Pazar 0, Pazartesi 1, vb. belirtilen zaman damgasından haftanın günü |
+| <*haftanın günü*> | Tamsayı | Pazar 0, Pazartesi 1 ve benzeri belirtilen zaman damgası haftanın günü |
 ||||
 
 *Örnek*
 
-Bu örnek, bu zaman damgasından Haftanın gününün numarasını döndürür:
+Bu örnek, bu zaman damgasından haftanın gününün numarasını döndürür:
 
 ```
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-Ve şu sonucu döndürür: `3`
+Ve bu sonucu döndürür:`3`
 
 <a name="dayOfYear"></a>
 
-### <a name="dayofyear"></a>dayOfYear
+### <a name="dayofyear"></a>Dayofyear
 
-Zaman damgasından yılın gününü döndürür.
+Yılın gününü zaman damgasından döndürün.
 
 ```
 dayOfYear('<timestamp>')
@@ -1549,12 +1549,12 @@ dayOfYear('<timestamp>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*yılın günü*> | Tamsayı | Belirtilen zaman damgasından yılın günü |
+| <*yıl-of-yıl*> | Tamsayı | Belirtilen zaman damgasından yılın günü |
 ||||
 
 *Örnek*
@@ -1565,15 +1565,15 @@ Bu örnek, bu zaman damgasından yılın gün sayısını döndürür:
 dayOfYear('2018-03-15T13:27:36Z')
 ```
 
-Ve şu sonucu döndürür: `74`
+Ve bu sonucu döndürür:`74`
 
 <a name="decodeBase64"></a>
 
 ### <a name="decodebase64"></a>decodeBase64
 
-Base64 ile kodlanmış bir dize için dize sürümünü döndürün ve Base64 dizesinin etkin bir şekilde kodunu çözerek.
-`decodeBase64()`yerine [base64ToString ()](#base64ToString) kullanmayı düşünün.
-Her iki işlev de aynı şekilde çalışır, ancak `base64ToString()` tercih edilir.
+Base64 kodlanmış bir dize için dize sürümünü döndürün ve base64 dizesini etkili bir şekilde çözün.
+Yerine [base64ToString()](#base64ToString) kullanmayı `decodeBase64()`düşünün.
+Her iki fonksiyon da `base64ToString()` aynı şekilde çalışsa da tercih edilir.
 
 ```
 decodeBase64('<value>')
@@ -1581,31 +1581,31 @@ decodeBase64('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Kod çözme için Base64 kodlamalı dize |
+| <*Değer*> | Evet | Dize | Kod çözmek için base64 kodlanmış dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*kodu çözülmüş-Base64 dizesi*> | Dize | Base64 ile kodlanmış bir dize için dize sürümü |
+| <*deşifre-base64-string*> | Dize | Base64 kodlanmış bir dize için dize sürümü |
 ||||
 
 *Örnek*
 
-Bu örnek Base64 kodlamalı dize için bir dize oluşturur:
+Bu örnek, base64 kodlanmış bir dize için bir dize oluşturur:
 
 ```
 decodeBase64('aGVsbG8=')
 ```
 
-Ve şu sonucu döndürür: `"hello"`
+Ve bu sonucu döndürür:`"hello"`
 
 <a name="decodeDataUri"></a>
 
 ### <a name="decodedatauri"></a>decodeDataUri
 
-Bir veri Tekdüzen Kaynak tanımlayıcısı (URI) için ikili sürüm döndürün.
-`decodeDataUri()`yerine [Datauritobinary ()](#dataUriToBinary)kullanmayı düşünün.
-Her iki işlev de aynı şekilde çalışır, ancak `dataUriToBinary()` tercih edilir.
+Veri üniforması kaynak tanımlayıcısı (URI) için ikili sürümü döndürün.
+[DataUriToBinary()](#dataUriToBinary)yerine kullanmayı `decodeDataUri()`düşünün.
+Her iki fonksiyon da `dataUriToBinary()` aynı şekilde çalışsa da tercih edilir.
 
 ```
 decodeDataUri('<value>')
@@ -1613,23 +1613,23 @@ decodeDataUri('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Kodu çözülecek veri URI dizesi |
+| <*Değer*> | Evet | Dize | Çözmeiçin veri URI dizesi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*binary-for-Data-uri*> | Dize | Bir veri URI dizesinin ikili sürümü |
+| <*ikili-for-data-uri*> | Dize | Veri URI dizesi için ikili sürüm |
 ||||
 
 *Örnek*
 
-Bu örnek, bu veri URI 'SI için ikili sürümü döndürür:
+Bu örnek, bu veri URI için ikili sürümünü döndürür:
 
 ```
 decodeDataUri('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 `"01100100011000010111010001100001001110100111010001100101011110000111010000101111011100000
 1101100011000010110100101101110001110110110001101101000011000010111001001110011011001010111
@@ -1638,9 +1638,9 @@ Ve şu sonucu döndürür:
 
 <a name="decodeUriComponent"></a>
 
-### <a name="decodeuricomponent"></a>decodeURIComponent
+### <a name="decodeuricomponent"></a>decodeUriComponent
 
-Kaçış karakterlerinin kodunu çözülmüş sürümlerle değiştiren bir dize döndürür.
+Kaçış karakterlerinin yerine deşifre edilmiş sürümlerle bir dize döndürün.
 
 ```
 decodeUriComponent('<value>')
@@ -1648,30 +1648,30 @@ decodeUriComponent('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Kodu çözülecek kaçış karakterlerine sahip dize |
+| <*Değer*> | Evet | Dize | Çözmek için kaçış karakterleri ile dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*kodu çözülmüş-urı*> | Dize | Kodu çözülen kaçış karakterlerine sahip güncelleştirilmiş dize |
+| <*deşifre-uri*> | Dize | Kodlanmış kaçış karakterleri ile güncelleştirilmiş dize |
 ||||
 
 *Örnek*
 
-Bu örnek, bu dizedeki kaçış karakterlerinin kodunu kodu çözülmüş sürümleriyle değiştirir:
+Bu örnek, bu dizedeki kaçış karakterlerinin yerine deşifre edilmiş sürümlerle değiştirilir:
 
 ```
 decodeUriComponent('http%3A%2F%2Fcontoso.com')
 ```
 
-Ve şu sonucu döndürür: `"https://contoso.com"`
+Ve bu sonucu döndürür:`"https://contoso.com"`
 
 <a name="div"></a>
 
 ### <a name="div"></a>div
 
-İki sayıdan ayırarak tamsayı sonucunu döndürür.
-Kalan sonucu almak için bkz. [mod ()](#mod).
+İki sayıyı bölerek gelen sonda sonucunu döndürün.
+Kalan sonucu almak için [mod()](#mod)bakın.
 
 ```
 div(<dividend>, <divisor>)
@@ -1679,33 +1679,33 @@ div(<dividend>, <divisor>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*bölünen*> | Yes | Tamsayı veya kayan | *Bölen* tarafından bölünecek sayı |
-| *bölen*> < | Yes | Tamsayı veya kayan | *Bölünen bölünen*sayı, ancak 0 olamaz |
+| <*Temettü*> | Evet | Sonda veya Float | *Bölene* bölünecek sayı |
+| <*Bölen*> | Evet | Sonda veya Float | *Temettü*bölen ancak 0 olamaz sayı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*bölüm-sonuç*> | Tamsayı | İlk sayının ikinci sayıya bölünme sonucu tamsayı |
+| <*quotient-sonuç*> | Tamsayı | İlk sayıyı ikinci sayıya bölmenin sonucu |
 ||||
 
 *Örnek*
 
-Her iki örnek de ilk sayıyı ikinci sayıya böler:
+Her iki örnek de birinci sayıyı ikinci sayıya böler:
 
 ```
 div(10, 5)
 div(11, 5)
 ```
 
-Ve şu sonucu döndürür: `2`
+Ve bu sonucu iade edin:`2`
 
 <a name="encodeUriComponent"></a>
 
-### <a name="encodeuricomponent"></a>encodeURIComponent
+### <a name="encodeuricomponent"></a>kodlamaUriComponent
 
-URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek dize için Tekdüzen Kaynak tanımlayıcısı (URI) kodlu bir sürüm döndürün.
-`encodeUriComponent()`yerine [URIComponent ()](#uriComponent)kullanmayı düşünün.
-Her iki işlev de aynı şekilde çalışır, ancak `uriComponent()` tercih edilir.
+URL güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek, tek düzen kaynak tanımlayıcısı (URI) kodlanmış sürümü bir dize için döndürün.
+[uriComponent()](#uriComponent)yerine kullanmayı `encodeUriComponent()`düşünün.
+Her iki fonksiyon da `uriComponent()` aynı şekilde çalışsa da tercih edilir.
 
 ```
 encodeUriComponent('<value>')
@@ -1713,30 +1713,30 @@ encodeUriComponent('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | URI kodlu biçime dönüştürülecek dize |
+| <*Değer*> | Evet | Dize | URI kodlu biçime dönüştürülecek dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*kodlanmış urı*> | Dize | Kaçış karakterleri içeren URI kodlamalı dize |
+| <*kodlanmış-uri*> | Dize | Kaçış karakterleri ile URI kodlanmış dize |
 ||||
 
 *Örnek*
 
-Bu örnek, bu dize için URI kodlu bir sürüm oluşturur:
+Bu örnek, bu dize için URI kodlanmış bir sürüm oluşturur:
 
 ```
 encodeUriComponent('https://contoso.com')
 ```
 
-Ve şu sonucu döndürür: `"http%3A%2F%2Fcontoso.com"`
+Ve bu sonucu döndürür:`"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
-### <a name="empty"></a>boş
+### <a name="empty"></a>empty
 
-Bir koleksiyonun boş olup olmadığını kontrol edin.
-Koleksiyon boş olduğunda true döndürün ya da boş olmadığında false döndürün.
+Koleksiyonun boş olup olmadığını kontrol edin.
+Koleksiyon boşolduğunda doğru döndürün veya boş değilken yanlış döndürün.
 
 ```
 empty('<collection>')
@@ -1745,12 +1745,12 @@ empty([<collection>])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *koleksiyon*> < | Yes | String, array veya Object | Denetlenecek koleksiyon |
+| <*Koleksiyon*> | Evet | Dize, Dizi veya Nesne | Denetlenen koleksiyon |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | Koleksiyon boş olduğunda true döndürün. Boş olmadığında false döndürün. |
+| true veya false | Boole | Koleksiyon boşolduğunda doğru döndürün. Boş değilken yanlış döndürün. |
 ||||
 
 *Örnek*
@@ -1762,18 +1762,18 @@ empty('')
 empty('abc')
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları döndürür:
 
-* İlk örnek: boş bir dizeyi geçirir, bu nedenle işlev `true`döndürür.
-* İkinci örnek: "abc" dizesini geçirir, bu nedenle işlev `false`döndürür.
+* İlk örnek: Boş bir dize `true`geçirir, böylece işlev döndürür.
+* İkinci örnek: "abc" dizesini geçer, böylece işlev döndürür. `false`
 
 <a name="endswith"></a>
 
 ### <a name="endswith"></a>endsWith
 
-Bir dizenin belirli bir alt dizeyle bitip bitmediğini denetleyin.
-Alt dize bulunduğunda true, bulunamazsa false döndürün.
-Bu işlev, büyük/küçük harfe duyarlı değildir.
+Bir dize belirli bir alt dize ile bitene denetleyin.
+Alt dize bulunduğunda doğru döndürün veya bulunmadığında false döndürün.
+Bu işlev büyük/küçük harf duyarlı değildir.
 
 ```
 endsWith('<text>', '<searchText>')
@@ -1781,41 +1781,41 @@ endsWith('<text>', '<searchText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Denetlenecek dize |
-| <*searchtext*> | Yes | Dize | Bulunacak bitiş alt dizesi |
+| <*Metin*> | Evet | Dize | Denetlenen dize |
+| <*searchText*> | Evet | Dize | Bulmak için bitiş alt dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false  | Boole | Bitiş alt dizesi bulunduğunda true döndürün. Bulunamadığında false döndürün. |
+| true veya false  | Boole | Bitiş alt dizesi bulunduğunda doğru döndürün. Bulunduğunda yanlış döndürün. |
 ||||
 
 *Örnek 1*
 
-Bu örnek, "Hello World" dizesinin "World" dizesiyle bitip bitmediğini denetler:
+Bu örnek, "merhaba dünya" dizesinin "dünya" dizesiyle bitip bitmediğini denetler:
 
 ```
 endsWith('hello world', 'world')
 ```
 
-Ve şu sonucu döndürür: `true`
+Ve bu sonucu döndürür:`true`
 
 *Örnek 2*
 
-Bu örnek, "Hello World" dizesinin "Universe" dizesiyle bitip bitmediğini denetler:
+Bu örnek, "merhaba dünya" dizesinin "evren" dizesiyle bitip bitmediğini denetler:
 
 ```
 endsWith('hello world', 'universe')
 ```
 
-Ve şu sonucu döndürür: `false`
+Ve bu sonucu döndürür:`false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>eşittir
+### <a name="equals"></a>equals
 
-Değerlerin, ifadelerin veya nesnelerin eşit olup olmadığını denetleyin.
-Her ikisi de eşdeğer olduğunda true, eşdeğer olmadığında false döndürün.
+Her iki değerin, ifadenin veya nesnenin eşdeğer olup olmadığını denetleyin.
+Her ikisi de eşdeğer olduğunda doğru döndürün veya eşdeğer olmadıklarında yanlış döndürün.
 
 ```
 equals('<object1>', '<object2>')
@@ -1823,12 +1823,12 @@ equals('<object1>', '<object2>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*> | Yes | Türlerini | Karşılaştırılacak değerler, ifadeler veya nesneler |
+| <*object1*>, <*nesne2*> | Evet | Çeşitli | Karşılaştırmak için değerler, ifadeler veya nesneler |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | Her ikisi de eşdeğer olduğunda true döndürün. Eşdeğer olmadığında false döndürün. |
+| true veya false | Boole | Her ikisi de eşdeğer olduğunda doğru döndürün. Eşdeğer olmadığında false döndürün. |
 ||||
 
 *Örnek*
@@ -1840,16 +1840,16 @@ equals(true, 1)
 equals('abc', 'abcd')
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları döndürür:
 
-* İlk örnek: her Iki değer de eşdeğerdir, bu nedenle işlev `true`döndürür.
-* İkinci örnek: her Iki değer de eşdeğer değildir, bu nedenle işlev `false`döndürür.
+* İlk örnek: Her iki değer de `true`eşdeğerdir, bu nedenle işlev döndürür.
+* İkinci örnek: Her iki değer de eşdeğer `false`değildir, bu nedenle işlev döndürür.
 
 <a name="first"></a>
 
-### <a name="first"></a>Adı
+### <a name="first"></a>Ilk
 
-Bir dizeden veya diziden ilk öğeyi döndürür.
+Bir dize veya diziden ilk öğeyi döndürün.
 
 ```
 first('<collection>')
@@ -1858,34 +1858,34 @@ first([<collection>])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *koleksiyon*> < | Yes | Dize veya dizi | İlk öğenin bulunacağı koleksiyon |
+| <*Koleksiyon*> | Evet | Dize veya Dizi | İlk öğeyi bulabileceğiniz koleksiyon |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ilk koleksiyon-öğe*> | Herhangi biri | Koleksiyondaki ilk öğe |
+| <*ilk toplama öğesi*> | Herhangi biri | Koleksiyondaki ilk öğe |
 ||||
 
 *Örnek*
 
-Bu örneklerde, bu koleksiyonlardaki ilk öğe bulunur:
+Bu örnekler, bu koleksiyonlarda ilk öğeyi bulabilirsiniz:
 
 ```
 first('hello')
 first(createArray(0, 1, 2))
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: `"h"`
-* İkinci örnek: `0`
+* İlk örnek:`"h"`
+* İkinci örnek:`0`
 
 <a name="float"></a>
 
 ### <a name="float"></a>float
 
-Kayan noktalı bir sayının dize sürümünü gerçek kayan noktalı sayıya dönüştürür.
-Bu işlevi yalnızca bir uygulamaya özel parametreler geçirirken (örneğin, bir mantıksal uygulama veya Flow) kullanabilirsiniz.
+Kayan nokta sayısı için dize sürümünü gerçek kayan nokta sayısına dönüştürün.
+Bu işlevi yalnızca özel parametreleri bir uygulamaya (örneğin, bir mantık uygulamasına veya akışa) aktarırken kullanabilirsiniz.
 
 ```
 float('<value>')
@@ -1893,12 +1893,12 @@ float('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek geçerli bir kayan noktalı sayı olan dize |
+| <*Değer*> | Evet | Dize | Dönüştürmek için geçerli bir kayan nokta numarası olan dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*kayan değer*> | Float | Belirtilen dize için kayan noktalı sayı |
+| <*float değeri*> | Kayan | Belirtilen dize için kayan nokta numarası |
 ||||
 
 *Örnek*
@@ -1909,7 +1909,7 @@ Bu örnek, bu kayan nokta numarası için bir dize sürümü oluşturur:
 float('10.333')
 ```
 
-Ve şu sonucu döndürür: `10.333`
+Ve bu sonucu döndürür:`10.333`
 
 <a name="formatDateTime"></a>
 
@@ -1923,13 +1923,13 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*yeniden biçimlendirilmiş-zaman damgası*> | Dize | Belirtilen biçimde güncelleştirilmiş zaman damgası |
+| <*reformatted-zaman damgası*> | Dize | Belirtilen biçimde güncelleştirilmiş zaman damgası |
 ||||
 
 *Örnek*
@@ -1940,13 +1940,13 @@ Bu örnek, bir zaman damgasını belirtilen biçime dönüştürür:
 formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T12:00:00"`
+Ve bu sonucu döndürür:`"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
 ### <a name="formdatamultivalues"></a>formDataMultiValues
 
-Bir eylemin *form verileri* veya *form kodlu* çıkışındaki anahtar adı ile eşleşen değerler içeren bir dizi döndürür.
+Bir eylemin *form verilerinde* veya *form kodlanmış* çıktısında anahtar adla eşleşen değerlere sahip bir dizi döndürün.
 
 ```
 formDataMultiValues('<actionName>', '<key>')
@@ -1954,31 +1954,31 @@ formDataMultiValues('<actionName>', '<key>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ActionName*> | Yes | Dize | Çıktısı istediğiniz anahtar değere sahip olan eylem |
-| <*anahtar*> | Yes | Dize | Değerini istediğiniz anahtarın adı |
+| <*Actionname*> | Evet | Dize | Çıktısı istediğiniz anahtar değere sahip eylem |
+| <*Anahtar*> | Evet | Dize | Değeri istediğiniz anahtarın adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [<*dizi-anahtar-değerleri*>] | Dizi | Belirtilen anahtarla eşleşen tüm değerleri içeren bir dizi |
+| [anahtar la <*dizi*>] | Dizi | Belirtilen anahtarla eşleşen tüm değerleri içeren bir dizi |
 ||||
 
 *Örnek*
 
-Bu örnek, belirtilen işlemin form verileri veya form kodlu çıktısındaki "konu" anahtarının değerinden bir dizi oluşturur:
+Bu örnek, belirtilen eylemin form verisindeki veya form kodlanmış çıktısında "Özne" anahtarının değerinden bir dizi oluşturur:
 
 ```
 formDataMultiValues('Send_an_email', 'Subject')
 ```
 
-Ve bir dizideki konu metnini döndürür, örneğin: `["Hello world"]`
+Ve konu metnini bir dizide döndürür, örneğin:`["Hello world"]`
 
 <a name="formDataValue"></a>
 
 ### <a name="formdatavalue"></a>formDataValue
 
-Bir eylemin *form verileri* veya *form kodlu* çıktısındaki anahtar adı ile eşleşen tek bir değer döndürür.
-İşlev birden fazla eşleşme bulursa, işlev bir hata oluşturur.
+Bir eylemin *form verilerinde* veya *form kodlanmış* çıktısında anahtar bir adla eşleşen tek bir değer döndürün.
+İşlev birden fazla eşleşme bulursa, işlev bir hata atar.
 
 ```
 formDataValue('<actionName>', '<key>')
@@ -1986,30 +1986,30 @@ formDataValue('<actionName>', '<key>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ActionName*> | Yes | Dize | Çıktısı istediğiniz anahtar değere sahip olan eylem |
-| <*anahtar*> | Yes | Dize | Değerini istediğiniz anahtarın adı |
+| <*Actionname*> | Evet | Dize | Çıktısı istediğiniz anahtar değere sahip eylem |
+| <*Anahtar*> | Evet | Dize | Değeri istediğiniz anahtarın adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| *anahtar-değer*> < | Dize | Belirtilen anahtardaki değer  |
+| <*anahtar değeri*> | Dize | Belirtilen anahtardaki değer  |
 ||||
 
 *Örnek*
 
-Bu örnek, belirtilen işlemin form verileri veya form kodlu çıktısındaki "konu" anahtarının değerinden bir dize oluşturur:
+Bu örnek, belirtilen eylemin form verisindeki veya form kodlanmış çıktısında "Özne" anahtarının değerinden bir dize oluşturur:
 
 ```
 formDataValue('Send_an_email', 'Subject')
 ```
 
-Ve konu metnini bir dize olarak döndürür, örneğin: `"Hello world"`
+Ve konu metnini bir dize olarak döndürür, örneğin:`"Hello world"`
 
 <a name="formatNumber"></a>
 
-### <a name="formatnumber"></a>formatNumber numarası
+### <a name="formatnumber"></a>formatNumber
 
-Belirtilen biçime dayalı bir dize olarak bir sayı döndürün.
+Bir sayıyı belirtilen biçimi temel alan bir dize olarak döndürün.
 
 ```text
 formatNumber(<number>, <format>, <locale>?)
@@ -2017,27 +2017,27 @@ formatNumber(<number>, <format>, <locale>?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*sayı*> | Yes | Tamsayı veya çift | Biçimlendirmek istediğiniz değer. |
-| <*biçim*> | Yes | Dize | Kullanmak istediğiniz biçimi belirten bir bileşik biçim dizesi. Desteklenen sayısal biçim dizeleri için, `number.ToString(<format>, <locale>)`tarafından desteklenen [Standart sayısal biçim dizeleri](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings)bölümüne bakın. |
-| <*yerel ayar*> | Hayır | Dize | `number.ToString(<format>, <locale>)`tarafından desteklendiği şekilde kullanılacak yerel ayar. Belirtilmemişse, varsayılan değer `en-us`. |
+| <*Numarası*> | Evet | İnteger veya Çift | Biçimlendirmek istediğiniz değer. |
+| <*Biçim*> | Evet | Dize | Kullanmak istediğiniz biçimi belirten bileşik biçim dizesi. Desteklenen sayısal biçim dizeleri için, standart `number.ToString(<format>, <locale>)`sayısal biçim [dizeleri](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), tarafından desteklenen bakın. |
+| <*Yerel ayar*> | Hayır | Dize | Yerel olarak desteklenen olarak `number.ToString(<format>, <locale>)`kullanmak. Belirtilmemişse, varsayılan `en-us`değer . |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*biçimlendirilen sayı*> | Dize | Belirttiğiniz biçimde belirtilen sayı dize olarak. Bu dönüş değerini bir `int` veya `float`çevirebilirsiniz. |
+| <*biçimlendirilmiş sayı*> | Dize | Belirttiğiniz biçimde dize olarak belirtilen sayı. Bu iade değerini bir `int` veya `float`. |
 ||||
 
 *Örnek 1*
 
-`1234567890`sayısını biçimlendirmek istediğinizi varsayalım. Bu örnek, bu sayıyı "1.234.567.890,00" dizesi olarak biçimlendirir.
+Numarayı `1234567890`biçimlendirmek istediğinizi varsayalım. Bu örnek, bu sayıyı "1.234.567.890,00" dizesi olarak biçimlendirin.
 
 ```
 formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 ```
 
-\* Örnek 2 "
+*Örnek 2"
 
-`1234567890`sayısını biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "1.234.567.890, 00" dizesiyle biçimlendirir.
+Numarayı `1234567890`biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "1.234.567.890,00" dizesine biçimlendirin.
 
 ```
 formatNumber(1234567890, '{0:0,0.00}', 'is-is')
@@ -2045,7 +2045,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 
 *Örnek 3*
 
-`17.35`sayısını biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "$17,35" dizesiyle biçimlendirir.
+Numarayı `17.35`biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "$17.35" dizesine biçimlendirin.
 
 ```
 formatNumber(17.36, 'C2')
@@ -2053,7 +2053,7 @@ formatNumber(17.36, 'C2')
 
 *Örnek 4*
 
-`17.35`sayısını biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "17, 35 KR" dizesiyle biçimlendirir.
+Numarayı `17.35`biçimlendirmek istediğinizi varsayalım. Bu örnek, sayıyı "17,35 kr" dizesine biçimlendirin.
 
 ```
 formatNumber(17.36, 'C2', 'is-is')
@@ -2063,7 +2063,7 @@ formatNumber(17.36, 'C2', 'is-is')
 
 ### <a name="getfuturetime"></a>getFutureTime
 
-Geçerli zaman damgasını ve belirtilen zaman birimlerini döndürür.
+Geçerli zaman damgasını ve belirtilen zaman birimlerini döndürün.
 
 ```
 getFutureTime(<interval>, <timeUnit>, <format>?)
@@ -2071,43 +2071,43 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*aralık*> | Yes | Tamsayı | Eklenecek belirtilen zaman birimi sayısı |
-| <*Timeunit*> | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Aralığı*> | Evet | Tamsayı | Eklenecek belirtilen zaman birimlerinin sayısı |
+| <*zaman Birimi*> | Evet | Dize | *Aralıklı*olarak kullanılacak zaman birimi : "İkinci", "Dakika", "Saat", "Gün", "Hafta", "Ay", "Yıl" |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Geçerli zaman damgası ve belirtilen zaman birimi sayısı |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Geçerli zaman damgası artı belirtilen zaman birimi sayısı |
 ||||
 
 *Örnek 1*
 
-Geçerli zaman damgasının "2018-03-01T00:00:00.0000000 Z" olduğunu varsayalım.
+Geçerli zaman damgasının "2018-03-01T00:00:00.000000Z" olduğunu varsayalım.
 Bu örnek, bu zaman damgasına beş gün ekler:
 
 ```
 getFutureTime(5, 'Day')
 ```
 
-Ve şu sonucu döndürür: `"2018-03-06T00:00:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-06T00:00:00.0000000Z"`
 
 *Örnek 2*
 
-Geçerli zaman damgasının "2018-03-01T00:00:00.0000000 Z" olduğunu varsayalım.
+Geçerli zaman damgasının "2018-03-01T00:00:00.000000Z" olduğunu varsayalım.
 Bu örnek beş gün ekler ve sonucu "D" biçimine dönüştürür:
 
 ```
 getFutureTime(5, 'Day', 'D')
 ```
 
-Ve şu sonucu döndürür: `"Tuesday, March 6, 2018"`
+Ve bu sonucu döndürür:`"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
 ### <a name="getpasttime"></a>getPastTime
 
-Geçerli zaman damgasını belirtilen zaman birimleriyle döndürün.
+Geçerli zaman damgasını eksi belirtilen zaman birimlerini döndürün.
 
 ```
 getPastTime(<interval>, <timeUnit>, <format>?)
@@ -2115,44 +2115,44 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*aralık*> | Yes | Tamsayı | Çıkarılacak belirtilen zaman birimi sayısı |
-| <*Timeunit*> | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Aralığı*> | Evet | Tamsayı | Çıkarıiçin belirtilen zaman birimlerinin sayısı |
+| <*zaman Birimi*> | Evet | Dize | *Aralıklı*olarak kullanılacak zaman birimi : "İkinci", "Dakika", "Saat", "Gün", "Hafta", "Ay", "Yıl" |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Geçerli zaman damgası, belirtilen zaman birimi sayısını eksi |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Geçerli zaman damgası eksi belirtilen zaman birimi sayısı |
 ||||
 
 *Örnek 1*
 
-Geçerli zaman damgasının "2018-02-01T00:00:00.0000000 Z" olduğunu varsayalım.
-Bu örnek, zaman damgasından beş gün çıkartır:
+Geçerli zaman damgasının "2018-02-01T00:00:00.000000Z" olduğunu varsayalım.
+Bu örnek, o zaman damgasından beş gün çıkarır:
 
 ```
 getPastTime(5, 'Day')
 ```
 
-Ve şu sonucu döndürür: `"2018-01-27T00:00:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-01-27T00:00:00.0000000Z"`
 
 *Örnek 2*
 
-Geçerli zaman damgasının "2018-02-01T00:00:00.0000000 Z" olduğunu varsayalım.
-Bu örnek beş günü çıkarır ve sonucu "D" biçimine dönüştürür:
+Geçerli zaman damgasının "2018-02-01T00:00:00.000000Z" olduğunu varsayalım.
+Bu örnek beş gün çıkarır ve sonucu "D" biçimine dönüştürür:
 
 ```
 getPastTime(5, 'Day', 'D')
 ```
 
-Ve şu sonucu döndürür: `"Saturday, January 27, 2018"`
+Ve bu sonucu döndürür:`"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
-### <a name="greater"></a>ilerisi
+### <a name="greater"></a>büyüktür
 
-İlk değerin ikinci değerden büyük olup olmadığını kontrol edin.
-İlk değer daha fazla olduğunda true, küçükse false döndürün.
+İlk değerin ikinci değerden büyük olup olmadığını denetleyin.
+İlk değer daha fazla olduğunda doğru döndürün veya daha az olduğunda false döndürün.
 
 ```
 greater(<value>, <compareTo>)
@@ -2161,13 +2161,13 @@ greater('<value>', '<compareTo>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Integer, float veya String | İkinci değerden daha büyük olup olmadığını kontrol etmek için ilk değer |
-| <*CompareTo*> | Yes | Sırasıyla tamsayı, float veya dize | Karşılaştırma değeri |
+| <*Değer*> | Evet | Sonda, Float veya String | İkinci değerden büyük olup olmadığını kontrol etmek için ilk değer |
+| <*compareTo*> | Evet | Sırasıyla, Insalı, Float veya String | Karşılaştırma değeri |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | İlk değer ikinci değerden büyük olduğunda true döndürün. İlk değer ikinci değere eşit veya ondan küçük olduğunda false döndürün. |
+| true veya false | Boole | İlk değer ikinci değerden büyük olduğunda doğru döndürün. İlk değer ikinci değere eşit veya daha az olduğunda yanlış döndürün. |
 ||||
 
 *Örnek*
@@ -2179,17 +2179,17 @@ greater(10, 5)
 greater('apple', 'banana')
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: `true`
-* İkinci örnek: `false`
+* İlk örnek:`true`
+* İkinci örnek:`false`
 
 <a name="greaterOrEquals"></a>
 
 ### <a name="greaterorequals"></a>greaterOrEquals
 
-İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin.
-İlk değer daha büyükse veya eşitse true, ilk değer ise false değerini döndürür.
+İlk değerin ikinci değerden büyük mü yoksa eşit mi olduğunu denetleyin.
+İlk değer büyük veya eşit olduğunda doğru döndürün veya ilk değer daha az olduğunda false döndürün.
 
 ```
 greaterOrEquals(<value>, <compareTo>)
@@ -2198,40 +2198,40 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Integer, float veya String | İkinci değerden büyük veya ona eşit olup olmadığını kontrol etmek için ilk değer |
-| <*CompareTo*> | Yes | Sırasıyla tamsayı, float veya dize | Karşılaştırma değeri |
+| <*Değer*> | Evet | Sonda, Float veya String | İkinci değerden büyük mü yoksa eşit mi olup olmadığını kontrol etmek için ilk değer |
+| <*compareTo*> | Evet | Sırasıyla, Insalı, Float veya String | Karşılaştırma değeri |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | İlk değer ikinci değerden büyük veya bu değere eşit olduğunda true döndürün. İlk değer ikinci değerden küçük olduğunda false döndürün. |
+| true veya false | Boole | İlk değer ikinci değerden büyük veya eşit olduğunda doğru döndürün. İlk değer ikinci değerden küçük olduğunda false döndürün. |
 ||||
 
 *Örnek*
 
-Bu örnekler, ilk değerin ikinci değerden büyük veya eşit olup olmadığını denetler:
+Bu örnekler, ilk değerin ikinci değerden büyük mü yoksa eşit mi olduğunu denetler:
 
 ```
 greaterOrEquals(5, 5)
 greaterOrEquals('apple', 'banana')
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: `true`
-* İkinci örnek: `false`
+* İlk örnek:`true`
+* İkinci örnek:`false`
 
 <a name="guid"></a>
 
-### <a name="guid"></a>guid
+### <a name="guid"></a>Guıd
 
-Dize olarak bir genel benzersiz tanımlayıcı (GUID) oluşturun, örneğin, "c2ecc88d-88c8-4096-912c-d6f2e2b138ce":
+"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" gibi bir dize olarak küresel olarak benzersiz bir tanımlayıcı (GUID) oluşturun:
 
 ```
 guid()
 ```
 
-Ayrıca, GUID için "D" varsayılan biçiminden farklı, kısa çizgi ile ayrılmış 32 basamaklı bir biçim belirleyebilirsiniz.
+Ayrıca, tirelerle ayrılmış 32 basamak olan varsayılan biçim olan "D" dışında GUID için farklı bir biçim belirtebilirsiniz.
 
 ```
 guid('<format>')
@@ -2239,30 +2239,30 @@ guid('<format>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*biçim*> | Hayır | Dize | Döndürülen GUID için tek bir [Biçim belirleyicisi](https://msdn.microsoft.com/library/97af8hh4) . Varsayılan olarak, "D" biçimindedir, ancak "N", "D", "B", "P" veya "X" kullanabilirsiniz. |
+| <*Biçim*> | Hayır | Dize | Döndürülen GUID için tek bir [biçim belirtici.](https://msdn.microsoft.com/library/97af8hh4) Varsayılan olarak, biçim "D"dir, ancak "N", "D", "B", "P" veya "X" kullanabilirsiniz. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*GUID-değer*> | Dize | Rastgele oluşturulmuş bir GUID |
+| <*GUID değeri*> | Dize | Rasgele oluşturulan GUID |
 ||||
 
 *Örnek*
 
-Bu örnek, aynı GUID 'i, kısa çizgi ile ayrılmış ve parantez içine alınmış, 32 basamaklı olarak oluşturur:
+Bu örnek, tirelerle ayrılmış ve parantez içinde ekolarak 32 basamak olarak aynı GUID'i oluşturur:
 
 ```
 guid('P')
 ```
 
-Ve şu sonucu döndürür: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
+Ve bu sonucu döndürür:`"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
 ### <a name="if"></a>if
 
-İfadenin true veya false olduğunu denetleyin.
-Sonuca göre belirtilen değeri döndürün.
+Bir ifadenin doğru mu yanlış mı olduğunu kontrol edin.
+Sonuca bağlı olarak, belirli bir değeri döndürün.
 
 ```
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
@@ -2270,20 +2270,20 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifade*> | Yes | Boole | Denetlenecek ifade |
-| <*Valueiftrue*> | Yes | Herhangi biri | İfade true olduğunda döndürülecek değer |
-| <*Valueiffalse*> | Yes | Herhangi biri | İfade false olduğunda döndürülecek değer |
+| <*Ifa -de*> | Evet | Boole | Denetlenen ifade |
+| <*valueIfTrue*> | Evet | Herhangi biri | İfade doğru olduğunda döndürülecek değer |
+| <*valueIfFalse*> | Evet | Herhangi biri | İfade yanlış olduğunda döndürülecek değer |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*belirtilen-Return-value*> | Herhangi biri | İfadenin true veya false olup olmadığına göre döndürülen belirtilen değer |
+| <*belirtilen-getiri-değer*> | Herhangi biri | İfadenin doğru mu yanlış mı olduğuna bağlı olarak dönen belirtilen değer |
 ||||
 
 *Örnek*
 
-Belirtilen ifade true döndürdüğünden, bu örnek `"yes"` döndürür.
-Aksi takdirde, örnek `"no"`döndürür:
+Belirtilen ifade `"yes"` doğru döndürür, çünkü bu örnek döner.
+Aksi takdirde, `"no"`örnek döndürür:
 
 ```
 if(equals(1, 1), 'yes', 'no')
@@ -2291,10 +2291,10 @@ if(equals(1, 1), 'yes', 'no')
 
 <a name="indexof"></a>
 
-### <a name="indexof"></a>indexOf
+### <a name="indexof"></a>ındexof
 
-Bir alt dize için başlangıç konumu veya dizin değeri döndürün.
-Bu işlev, büyük/küçük harfe duyarlı değildir ve dizinler 0 sayısıyla başlar.
+Bir alt dize için başlangıç konumunu veya dizin değerini döndürün.
+Bu işlev büyük/küçük harf duyarlı değildir ve dizinler 0 sayısıyla başlar.
 
 ```
 indexOf('<text>', '<searchText>')
@@ -2302,30 +2302,30 @@ indexOf('<text>', '<searchText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Bulunacak alt dizenin bulunduğu dize |
-| <*searchtext*> | Yes | Dize | Bulunacak alt dize |
+| <*Metin*> | Evet | Dize | Bulmak için alt dize olan dize |
+| <*searchText*> | Evet | Dize | Bulmak için substring |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Dizin-değer*>| Tamsayı | Belirtilen alt dizenin başlangıç konumu veya dizin değeri. <p>Dize bulunamazsa,-1 sayısını döndürün. |
+| <*dizin değeri*>| Tamsayı | Belirtilen alt dize için başlangıç konumu veya dizin değeri. <p>Dize bulunamazsa, -1 sayısını döndürün. |
 ||||
 
 *Örnek*
 
-Bu örnek, "Hello World" dizesindeki "World" alt dizesi için başlangıç dizini değerini bulur:
+Bu örnekte, "merhaba dünya" dizesinde "dünya" alt dizesinin başlangıç dizin değeri aşağıdakileri bulur:
 
 ```
 indexOf('hello world', 'world')
 ```
 
-Ve şu sonucu döndürür: `6`
+Ve bu sonucu döndürür:`6`
 
 <a name="int"></a>
 
 ### <a name="int"></a>int
 
-Bir dize için tamsayı sürümünü döndürün.
+Tamsayı sürümünü bir dize için döndürün.
 
 ```
 int('<value>')
@@ -2333,12 +2333,12 @@ int('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek dize |
+| <*Değer*> | Evet | Dize | Dönüştürülecek dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*tamsayı-sonuç*> | Tamsayı | Belirtilen dize için tamsayı sürümü |
+| <*sonuç*> | Tamsayı | Belirtilen dize için birsonrakir sürümü |
 ||||
 
 *Örnek*
@@ -2349,27 +2349,27 @@ Bu örnek, "10" dizesi için bir tamsayı sürümü oluşturur:
 int('10')
 ```
 
-Ve şu sonucu döndürür: `10`
+Ve bu sonucu döndürür:`10`
 
 <a name="item"></a>
 
-### <a name="item"></a>maddesinin
+### <a name="item"></a>öğe
 
-Bir dizi üzerinde yinelenen bir eylem içinde kullanıldığında, eylemin geçerli yinelemesi sırasında dizideki geçerli öğeyi döndürün.
-Ayrıca, bu öğenin özelliklerindeki değerleri de alabilirsiniz.
+Bir dizi üzerinde yinelenen bir eylem içinde kullanıldığında, eylemin geçerli yineleme sırasında dizideki geçerli öğeyi döndürün.
+Ayrıca, bu öğenin özelliklerinden değerleri de alabilirsiniz.
 
 ```
 item()
 ```
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*geçerli dizi öğesi*> | Herhangi biri | Eylemin geçerli yinelemesi için dizideki geçerli öğe |
+| <*geçerli dizi-öğe*> | Herhangi biri | Eylemin geçerli yinelemesi için dizideki geçerli öğe |
 ||||
 
 *Örnek*
 
-Bu örnek, bir for-each döngüsünün geçerli yinelemesinde "Send_an_email" eylemi için geçerli iletiden `body` öğesini alır:
+Bu örnek, `body` her döngü için geçerli yineleme içinde "Send_an_email" eylemi için geçerli iletiöğesi alır:
 
 ```
 item().body
@@ -2377,10 +2377,10 @@ item().body
 
 <a name="items"></a>
 
-### <a name="items"></a>items
+### <a name="items"></a>Bileşen
 
-Her bir döngüden geçerli öğeyi her bir döngüde döndürün.
-Bu işlevi For-Each döngüsü içinde kullanın.
+Her döngüdeki geçerli öğeyi her döngüde döndürün.
+Bu işlevi her biri için döngü içinde kullanın.
 
 ```
 items('<loopName>')
@@ -2388,17 +2388,17 @@ items('<loopName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*Loopname*> | Yes | Dize | For-each döngüsünün adı |
+| <*loopName*> | Evet | Dize | For-each döngü için adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| *öğe*> < | Herhangi biri | Belirtilen for-each döngüsünde geçerli döngüdeki öğe |
+| <*Öğe*> | Herhangi biri | Belirtilen her döngüdeki geçerli döngüden öğe |
 ||||
 
 *Örnek*
 
-Bu örnek, geçerli öğeyi belirtilen for-each döngüsünden alır:
+Bu örnek, her biri için belirtilen döngüden geçerli öğeyi alır:
 
 ```
 items('myForEachLoopName')
@@ -2406,9 +2406,9 @@ items('myForEachLoopName')
 
 <a name="iterationIndexes"></a>
 
-### <a name="iterationindexes"></a>Iterationındexes
+### <a name="iterationindexes"></a>yinelemeEndeksleri
 
-Geçerli yinelemenin dizin değerini bir Until döngüsü içinde döndürün. Bu işlevi iç içe kadar, iç içe kadar kullanabilirsiniz. 
+Bir Until döngüsü içindeki geçerli yinelemenin dizin değerini döndürün. Bu işlevi iç içe geçen Until döngüleri içinde kullanabilirsiniz. 
 
 ```
 iterationIndexes('<loopName>')
@@ -2416,17 +2416,17 @@ iterationIndexes('<loopName>')
 
 | Parametre | Gerekli | Tür | Açıklama | 
 | --------- | -------- | ---- | ----------- | 
-| <*Loopname*> | Yes | Dize | Until döngüsünün adı | 
+| <*loopName*> | Evet | Dize | Until döngüsünün adı | 
 ||||| 
 
-| Dönüş değeri | Tür | Açıklama | 
+| Döndürülen değer | Tür | Açıklama | 
 | ------------ | ---- | ----------- | 
-| *dizin*> < | Tamsayı | Geçerli yinelemenin belirtilen Until döngüsü içindeki dizin değeri | 
+| <*Dizin*> | Tamsayı | Belirtilen Until döngüsü içindeki geçerli yinelemenin dizin değeri | 
 |||| 
 
 *Örnek* 
 
-Bu örnek, bir sayaç değişkeni oluşturur ve sayaç değeri beş olana kadar bir Until döngüsü içindeki her yineleme sırasında bu değişkeni bir artırır. Örnek ayrıca her yineleme için geçerli dizini izleyen bir değişken oluşturur. Until döngüsünde, her yineleme sırasında, örnek sayacı artırır ve ardından sayaç değerini geçerli dizin değerine atar ve sonra sayacı artırır. İstediğiniz zaman, geçerli dizin değerini alarak geçerli yineleme numarasını belirleyebilirsiniz.
+Bu örnek, bir Sayaç değişkeni oluşturur ve sayaç değeri beşe ulaşana kadar bir Until döngüsündeki her yineleme sırasında bu değişkeni birer birer birer oluşturur. Örnek, her yineleme için geçerli dizin izleyen bir değişken de oluşturur. Until döngüsünde, her yineleme sırasında, örnek sayacı ve sonra geçerli dizin değerine sayaç değerini atar ve sayaç artışlar. İstediğiniz zaman, geçerli dizin değerini alarak geçerli yineleme numarasını belirleyebilirsiniz.
 
 ```
 {
@@ -2496,7 +2496,7 @@ Bu örnek, bir sayaç değişkeni oluşturur ve sayaç değeri beş olana kadar 
 
 <a name="json"></a>
 
-### <a name="json"></a>nesnesinde
+### <a name="json"></a>json
 
 Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün.
 
@@ -2506,12 +2506,12 @@ json('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | String veya XML | Dönüştürülecek dize veya XML |
+| <*Değer*> | Evet | Dize veya XML | Dönüştürmek için dize veya XML |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*JSON-sonuç*> | JSON yerel türü veya nesnesi | Belirtilen dize veya XML için JSON yerel tür değeri veya nesnesi. Dize null ise, işlev boş bir nesne döndürür. |
+| <*JSON sonucu*> | JSON yerel türü veya nesnesi | Belirtilen dize veya XML için JSON yerel türü değeri veya nesnesi. Dize null ise, işlev boş bir nesne döndürür. |
 ||||
 
 *Örnek 1*
@@ -2522,17 +2522,17 @@ Bu örnek, bu dizeyi JSON değerine dönüştürür:
 json('[1, 2, 3]')
 ```
 
-Ve şu sonucu döndürür: `[1, 2, 3]`
+Ve bu sonucu döndürür:`[1, 2, 3]`
 
 *Örnek 2*
 
-Bu örnek, bu dizeyi JSON öğesine dönüştürür:
+Bu örnek, bu dizeyi JSON'a dönüştürür:
 
 ```
 json('{"fullName": "Sophia Owen"}')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 ```
 {
@@ -2542,13 +2542,13 @@ Ve şu sonucu döndürür:
 
 *Örnek 3*
 
-Bu örnek, bu XML 'i JSON olarak dönüştürür:
+Bu örnek, bu XML'i JSON'a dönüştürür:
 
 ```
 json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 ```json
 {
@@ -2565,11 +2565,11 @@ Ve şu sonucu döndürür:
 
 <a name="intersection"></a>
 
-### <a name="intersection"></a>imin
+### <a name="intersection"></a>Kesişim
 
-Belirtilen koleksiyonlar genelinde *yalnızca* ortak öğeler içeren bir koleksiyon döndürür.
-Sonuçta görünmesi için, bu işleve geçirilen tüm koleksiyonlara bir öğe gelmelidir.
-Bir veya daha fazla öğe aynı ada sahip ise, bu adı taşıyan son öğe sonuçta görüntülenir.
+Belirtilen koleksiyonlar arasında *yalnızca* ortak öğelere sahip bir koleksiyon döndürün.
+Sonuçta görünmesi için, bir öğenin bu işleve geçirilen tüm koleksiyonlarda görünmesi gerekir.
+Bir veya daha fazla öğe aynı ada sahipse, bu ada sahip son öğe sonuçta görünür.
 
 ```
 intersection([<collection1>], [<collection2>], ...)
@@ -2578,29 +2578,29 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*Collection2*>,... | Yes | Dizi veya nesne, ancak her ikisi birden değil | *Yalnızca* ortak öğelerin olmasını istediğiniz Koleksiyonlar |
+| <*collection1*>, <*collection2*>, ... | Evet | Dizi veya Nesne, ancak her ikisi de | Yalnızca ortak öğeleri *istediğiniz* yerden gelen koleksiyonlar |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| *ortak öğeleri* <> | Sırasıyla dizi veya nesne | Belirtilen koleksiyonlar genelinde yalnızca ortak öğelere sahip olan bir koleksiyon |
+| <*ortak öğeler*> | Dizi veya Nesne, sırasıyla | Belirtilen koleksiyonlar arasında yalnızca ortak öğelere sahip bir koleksiyon |
 ||||
 
 *Örnek*
 
-Bu örnek, bu diziler genelinde ortak öğeleri bulur:
+Bu örnek, bu diziler arasında ortak öğeleri bulur:
 
 ```
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-Ve *yalnızca* şu öğeler içeren bir dizi döndürür: `[1, 2]`
+Ve *yalnızca* bu öğeleri içeren bir dizi döndürür:`[1, 2]`
 
 <a name="join"></a>
 
 ### <a name="join"></a>join
 
-Bir dizideki tüm öğeleri içeren ve her karakteri *sınırlayıcı*ile ayrılmış bir dize döndürür.
+Bir dizideki tüm öğeleri içeren ve her karakterin bir *delimiter*ile ayrılmış bir dize döndürün.
 
 ```
 join([<collection>], '<delimiter>')
@@ -2608,30 +2608,30 @@ join([<collection>], '<delimiter>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *koleksiyon*> < | Yes | Dizi | Katılacak öğelere sahip dizi |
-| <*sınırlayıcı*> | Yes | Dize | Elde edilen dizedeki her karakter arasında görünen ayırıcı |
+| <*Koleksiyon*> | Evet | Dizi | Öğelerin birleştirilmesi için dizi |
+| <*Sınırlayıcı*> | Evet | Dize | Elde edilen dizedeki her karakter arasında görünen ayırıcı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*char1*><*sınırlayıcı*><*CHAR2*><*sınırlayıcı*>... | Dize | Belirtilen dizideki tüm öğelerden oluşturulan elde edilen dize |
+| <*char1*><*delimiter*><*char2*><*delimiter*>... | Dize | Belirtilen dizideki tüm öğelerden oluşturulan sonuç dizesi |
 ||||
 
 *Örnek*
 
-Bu örnek, bu dizideki tüm öğelerden belirtilen karakteri sınırlayıcı olarak bir dize oluşturur:
+Bu örnek, delimiter olarak belirtilen karakter ile bu dizideki tüm öğelerden bir dize oluşturur:
 
 ```
 join(createArray('a', 'b', 'c'), '.')
 ```
 
-Ve şu sonucu döndürür: `"a.b.c"`
+Ve bu sonucu döndürür:`"a.b.c"`
 
 <a name="last"></a>
 
 ### <a name="last"></a>Son
 
-Bir koleksiyondaki son öğeyi döndürür.
+Koleksiyondaki son öğeyi döndürün.
 
 ```
 last('<collection>')
@@ -2640,34 +2640,34 @@ last([<collection>])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *koleksiyon*> < | Yes | Dize veya dizi | Son öğenin bulunacağı koleksiyon |
+| <*Koleksiyon*> | Evet | Dize veya Dizi | Son öğeyi bulabileceğiniz koleksiyon |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Son koleksiyon öğesi*> | Sırasıyla dize veya dizi | Koleksiyondaki son öğe |
+| <*son toplama öğesi*> | String veya Array, sırasıyla | Koleksiyondaki son öğe |
 ||||
 
 *Örnek*
 
-Bu örneklerde, bu koleksiyonlardaki son öğe bulunur:
+Bu örnekler, bu koleksiyonlarda son öğeyi bulur:
 
 ```
 last('abcd')
 last(createArray(0, 1, 2, 3))
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları döndürür:
 
-* İlk örnek: `"d"`
-* İkinci örnek: `3`
+* İlk örnek:`"d"`
+* İkinci örnek:`3`
 
 <a name="lastindexof"></a>
 
-### <a name="lastindexof"></a>lastIndexOf
+### <a name="lastindexof"></a>Lastındexof
 
-Bir alt dizenin son oluşumu için başlangıç konumunu veya dizin değerini döndürür.
-Bu işlev, büyük/küçük harfe duyarlı değildir ve dizinler 0 sayısıyla başlar.
+Bir alt dizenin son oluşumu için başlangıç konumunu veya dizin değerini döndürün.
+Bu işlev büyük/küçük harf duyarlı değildir ve dizinler 0 sayısıyla başlar.
 
 ```
 lastIndexOf('<text>', '<searchText>')
@@ -2675,30 +2675,30 @@ lastIndexOf('<text>', '<searchText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Bulunacak alt dizenin bulunduğu dize |
-| <*searchtext*> | Yes | Dize | Bulunacak alt dize |
+| <*Metin*> | Evet | Dize | Bulmak için alt dize olan dize |
+| <*searchText*> | Evet | Dize | Bulmak için substring |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*son dizin-değer*> | Tamsayı | Belirtilen alt dizenin son geçtiği konumun başlangıç konumu veya dizin değeri. <p>Dize bulunamazsa,-1 sayısını döndürün. |
+| <*bitiş-dizin-değer*> | Tamsayı | Belirtilen alt dizenin son oluşumu için başlangıç konumu veya dizin değeri. <p>Dize bulunamazsa, -1 sayısını döndürün. |
 ||||
 
 *Örnek*
 
-Bu örnek, "Hello World" dizesinde "World" alt dizesinin son geçtiği başlangıç dizin değerini bulur:
+Bu örnek, "merhaba dünya" dizesinde "dünya" alt dizesinin son oluşumu için başlangıç dizin değerini bulur:
 
 ```
 lastIndexOf('hello world', 'world')
 ```
 
-Ve şu sonucu döndürür: `6`
+Ve bu sonucu döndürür:`6`
 
 <a name="length"></a>
 
-### <a name="length"></a>{1&gt;length&lt;1}
+### <a name="length"></a>length
 
-Bir koleksiyondaki öğelerin sayısını döndürün.
+Koleksiyondaki öğe sayısını döndürün.
 
 ```
 length('<collection>')
@@ -2707,31 +2707,31 @@ length([<collection>])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *koleksiyon*> < | Yes | Dize veya dizi | Sayılacak öğelerin bulunduğu koleksiyon |
+| <*Koleksiyon*> | Evet | Dize veya Dizi | Saymak için öğeleri ile toplama |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*uzunluğu veya-say*> | Tamsayı | Koleksiyondaki öğelerin sayısı |
+| <*uzunluk veya sayım*> | Tamsayı | Koleksiyondaki öğe sayısı |
 ||||
 
 *Örnek*
 
-Bu örnekler, bu koleksiyonlardaki öğelerin sayısını sayar:
+Bu örnekler, bu koleksiyonlarda öğe sayısını saymak:
 
 ```
 length('abcd')
 length(createArray(0, 1, 2, 3))
 ```
 
-Ve şu sonucu döndürür: `4`
+Ve bu sonucu iade edin:`4`
 
 <a name="less"></a>
 
-### <a name="less"></a>less
+### <a name="less"></a>daha az
 
-İlk değerin ikinci değerden küçük olup olmadığını kontrol edin.
-İlk değer daha az olduğunda true, ilk değer ise false değerini döndürür.
+İlk değerin ikinci değerden küçük olup olmadığını denetleyin.
+İlk değer daha az olduğunda doğru döndürün veya ilk değer daha fazla olduğunda yanlış döndürün.
 
 ```
 less(<value>, <compareTo>)
@@ -2740,13 +2740,13 @@ less('<value>', '<compareTo>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Integer, float veya String | İkinci değerden daha az olup olmadığını kontrol etmek için ilk değer |
-| <*CompareTo*> | Yes | Sırasıyla tamsayı, float veya dize | Karşılaştırma öğesi |
+| <*Değer*> | Evet | Sonda, Float veya String | İkinci değerden daha az olup olmadığını kontrol etmek için ilk değer |
+| <*compareTo*> | Evet | Sırasıyla, Insalı, Float veya String | Karşılaştırma öğesi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | İlk değer ikinci değerden küçük olduğunda true döndürün. İlk değer ikinci değerden daha büyük veya bu değere eşitse false döndürün. |
+| true veya false | Boole | İlk değer ikinci değerden küçük olduğunda doğru döndürün. İlk değer ikinci değere eşit veya daha büyük olduğunda yanlış döndürün. |
 ||||
 
 *Örnek*
@@ -2758,17 +2758,17 @@ less(5, 10)
 less('banana', 'apple')
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: `true`
-* İkinci örnek: `false`
+* İlk örnek:`true`
+* İkinci örnek:`false`
 
 <a name="lessOrEquals"></a>
 
-### <a name="lessorequals"></a>Lessotalals
+### <a name="lessorequals"></a>lessOrEquals
 
-İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını kontrol edin.
-İlk değer küçüktür veya eşitse true, ilk değer ise false değerini döndürür.
+İlk değerin ikinci değerden küçük mü yoksa eşit mi olduğunu denetleyin.
+İlk değer daha az veya eşit olduğunda doğru döndürün veya ilk değer daha fazla olduğunda false döndürün.
 
 ```
 lessOrEquals(<value>, <compareTo>)
@@ -2777,56 +2777,56 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Integer, float veya String | İkinci değere eşit veya ondan küçük olup olmadığını kontrol etmek için ilk değer |
-| <*CompareTo*> | Yes | Sırasıyla tamsayı, float veya dize | Karşılaştırma öğesi |
+| <*Değer*> | Evet | Sonda, Float veya String | İkinci değerden daha az veya eşit olup olmadığını kontrol etmek için ilk değer |
+| <*compareTo*> | Evet | Sırasıyla, Insalı, Float veya String | Karşılaştırma öğesi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false  | Boole | İlk değer ikinci değerden küçük veya bu değere eşit olduğunda true döndürün. İlk değer ikinci değerden büyük olduğunda false döndürün. |
+| true veya false  | Boole | İlk değer ikinci değerden küçük veya eşit olduğunda doğru döndürün. İlk değer ikinci değerden büyük olduğunda false döndürün. |
 ||||
 
 *Örnek*
 
-Bu örnekler, ilk değerin ikinci değerden küçük veya eşit olup olmadığını denetler.
+Bu örnekler, ilk değerin ikinci değerden daha az mı yoksa eşit mi olduğunu denetler.
 
 ```
 lessOrEquals(10, 10)
 lessOrEquals('apply', 'apple')
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: `true`
-* İkinci örnek: `false`
+* İlk örnek:`true`
+* İkinci örnek:`false`
 
 <a name="listCallbackUrl"></a>
 
-### <a name="listcallbackurl"></a>listCallbackUrl
+### <a name="listcallbackurl"></a>listeCallbackUrl
 
-Tetikleyici veya eylem çağıran "geri çağırma URL 'sini" döndürür.
-Bu işlev, yalnızca **Httpweb kancası** ve **Apiconnectionweb kancası** bağlayıcı türleri için Tetikleyiciler ve eylemlerle çalışır, ancak **Manual**, **yinelenme**, **http**ve **apiconnection** türlerini etkilemez.
+Tetikleyici veya eylem çağıran "geri arama URL'sini" döndürün.
+Bu işlev yalnızca **HttpWebhook** ve **ApiConnectionWebhook** bağlayıcı türleri için tetikleyiciler ve eylemlerle çalışır, ancak **El Kitabı,** **Yineleme,** **HTTP**ve **APIConnection** türleri ile çalışmaz.
 
 ```
 listCallbackUrl()
 ```
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*geri arama-URL*> | Dize | Tetikleyici veya eylem için geri çağırma URL 'SI |
+| <*geri arama-URL*> | Dize | Tetikleyici veya eylem için geri arama URL'si |
 ||||
 
 *Örnek*
 
-Bu örnekte, bu işlevin döndürebileceğini örnek bir geri çağırma URL 'SI gösterilmektedir:
+Bu örnek, bu işlevin dönebileceği örnek bir geri arama URL'si gösterir:
 
 `"https://prod-01.westus.logic.azure.com:443/workflows/<*workflow-ID*>/triggers/manual/run?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=<*signature-ID*>"`
 
 <a name="max"></a>
 
-### <a name="max"></a>en büyük
+### <a name="max"></a>max
 
-Bir liste veya diziden en yüksek değeri, her iki uçta da dahil olmak üzere sayı ile döndürün.
+Her iki uçta da dahil olan sayılarla bir listeden veya diziden en yüksek değeri döndürün.
 
 ```
 max(<number1>, <number2>, ...)
@@ -2835,31 +2835,31 @@ max([<number1>, <number2>, ...])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*sayı1*>, <*sayı2*>,... | Yes | Integer, float veya both | En yüksek değeri istediğiniz sayı kümesi |
-| [<*sayı1*>, <*sayı2*>,...] | Yes | Dizi-tamsayı, kayan veya her ikisi | En yüksek değeri istediğiniz sayı dizisi |
+| <*> 1 numara,* *<numara2*>, ... | Evet | Sonda, Float veya her ikisi birden | En yüksek değeri istediğiniz sayı kümesi |
+| [<*sayı1*>, <*sayı2>,* ...] | Evet | Dizi - İnteger, Float veya her ikisi birden | En yüksek değeri istediğiniz sayı dizisi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*en yüksek değer*> | Tamsayı veya kayan | Belirtilen dizideki veya sayı kümesindeki en yüksek değer |
+| <*maksimum değer*> | Sonda veya Float | Belirtilen dizideki veya sayı kümesindeki en yüksek değer |
 ||||
 
 *Örnek*
 
-Bu örnekler, sayı ve dizi kümesinden en yüksek değeri alır:
+Bu örnekler, sayı kümesinden ve diziden en yüksek değeri alır:
 
 ```
 max(1, 2, 3)
 max(createArray(1, 2, 3))
 ```
 
-Ve şu sonucu döndürür: `3`
+Ve bu sonucu iade edin:`3`
 
 <a name="min"></a>
 
-### <a name="min"></a>en küçük
+### <a name="min"></a>min
 
-Sayı veya dizi kümesinden en düşük değeri döndürün.
+Bir sayı kümesinden veya diziden en düşük değeri döndürün.
 
 ```
 min(<number1>, <number2>, ...)
@@ -2868,32 +2868,32 @@ min([<number1>, <number2>, ...])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*sayı1*>, <*sayı2*>,... | Yes | Integer, float veya both | En düşük değeri istediğiniz sayı kümesi |
-| [<*sayı1*>, <*sayı2*>,...] | Yes | Dizi-tamsayı, kayan veya her ikisi | En düşük değeri istediğiniz sayı dizisi |
+| <*> 1 numara,* *<numara2*>, ... | Evet | Sonda, Float veya her ikisi birden | En düşük değeri istediğiniz sayı kümesi |
+| [<*sayı1*>, <*sayı2>,* ...] | Evet | Dizi - İnteger, Float veya her ikisi birden | En düşük değeri istediğiniz sayı dizisi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Minimum değer*> | Tamsayı veya kayan | Belirtilen sayı kümesindeki veya belirtilen dizi üzerinde en düşük değer |
+| <*min değeri*> | Sonda veya Float | Belirtilen sayı kümesindeki veya belirtilen dizideki en düşük değer |
 ||||
 
 *Örnek*
 
-Bu örnekler, sayı ve dizi kümesindeki en düşük değeri alır:
+Bu örnekler, sayı kümesive dizideki en düşük değeri alır:
 
 ```
 min(1, 2, 3)
 min(createArray(1, 2, 3))
 ```
 
-Ve şu sonucu döndürür: `1`
+Ve bu sonucu iade edin:`1`
 
 <a name="mod"></a>
 
-### <a name="mod"></a>alma
+### <a name="mod"></a>mod
 
-İki sayıdan ayırarak kalanı döndürün.
-Tamsayı sonucunu almak için bkz. [div ()](#div).
+Kalan sayıyı iki sayıyı bölerek döndürün.
+İnsteger sonucunu almak için [div()](#div)'ye bakın.
 
 ```
 mod(<dividend>, <divisor>)
@@ -2901,30 +2901,30 @@ mod(<dividend>, <divisor>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*bölünen*> | Yes | Tamsayı veya kayan | *Bölen* tarafından bölünecek sayı |
-| *bölen*> < | Yes | Tamsayı veya kayan | *Bölünen bölünen*sayı, ancak 0 olamaz. |
+| <*Temettü*> | Evet | Sonda veya Float | *Bölene* bölünecek sayı |
+| <*Bölen*> | Evet | Sonda veya Float | *Temettü*bölen ancak 0 olamaz sayı. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*mod-sonuç*> | Tamsayı veya kayan | İlk sayının ikinci sayıya bölünmesiyle kalanı |
+| <*modulo-sonuç*> | Sonda veya Float | İlk sayının ikinci sayıya bölünmesinden kalan |
 ||||
 
 *Örnek*
 
-Bu örnek, ilk sayıyı ikinci sayıya böler:
+Bu örnek, birinci sayıyı ikinci sayıya böler:
 
 ```
 mod(3, 2)
 ```
 
-Ve şu sonucu döndürür: `1`
+Ve bu sonucu iade edin:`1`
 
 <a name="mul"></a>
 
-### <a name="mul"></a>MUL
+### <a name="mul"></a>Mul
 
-Ürünü iki sayıdan çarpmadan döndürün.
+Ürünü iki sayıyı çarparak döndürün.
 
 ```
 mul(<multiplicand1>, <multiplicand2>)
@@ -2932,34 +2932,34 @@ mul(<multiplicand1>, <multiplicand2>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*multiplicand1*> | Yes | Tamsayı veya kayan | *Multiplicand2* ile çarpılacak sayı |
-| <*multiplicand2*> | Yes | Tamsayı veya kayan | *Multiplicand1* Katalan sayı |
+| <*çarpma1*> | Evet | Sonda veya Float | Çarpma sayısı *çarp2* |
+| <*çarpma2*> | Evet | Sonda veya Float | *Çarpanları çarpanları sayısı1* |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ürün-sonuç*> | Tamsayı veya kayan | Ürünün ilk sayıyı ikinci sayı ile çarpılmasıyla |
+| <*ürün sonucu*> | Sonda veya Float | Birinci sayının ikinci sayıyla çarpılmasından elde edilen ürün |
 ||||
 
 *Örnek*
 
-Bu örnekler ikinci sayının ilk numarasını birden çok kez göstermektedir:
+Bu örnekler, birinci sayıyı ikinci sayıya göre birden fazla:
 
 ```
 mul(1, 2)
 mul(1.5, 2)
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: `2`
-* İkinci örnek `3`
+* İlk örnek:`2`
+* İkinci örnek`3`
 
 <a name="multipartBody"></a>
 
 ### <a name="multipartbody"></a>multipartBody
 
-Bir eylemin birden çok parçaya sahip olan çıkışında belirli bir bölümün gövdesini döndürün.
+Birden çok parçadan biri olan bir eylemin çıktısında belirli bir parça için gövdeyi döndürün.
 
 ```
 multipartBody('<actionName>', <index>)
@@ -2967,21 +2967,21 @@ multipartBody('<actionName>', <index>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ActionName*> | Yes | Dize | Birden çok parçaya çıkış içeren eylemin adı |
-| *dizin*> < | Yes | Tamsayı | İstediğiniz bölümün dizin değeri |
+| <*Actionname*> | Evet | Dize | Birden çok parçadan çıktısı olan eylemin adı |
+| <*Dizin*> | Evet | Tamsayı | İstediğinizin dizin değeri |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*gövde*> | Dize | Belirtilen bölüm için gövde |
+| <*Vücut*> | Dize | Belirtilen parçaiçin gövde |
 ||||
 
 <a name="not"></a>
 
 ### <a name="not"></a>not
 
-İfadenin yanlış olup olmadığını denetleyin.
-İfade false olduğunda true, true olduğunda false döndürün.
+İfadenin yanlış olup olmadığını kontrol edin.
+İfade yanlış olduğunda doğru döndürün veya doğru olduğunda false döndürün.
 
 ```json
 not(<expression>)
@@ -2989,12 +2989,12 @@ not(<expression>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifade*> | Yes | Boole | Denetlenecek ifade |
+| <*Ifa -de*> | Evet | Boole | Denetlenen ifade |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | İfade false olduğunda true döndürün. İfade true olduğunda false döndürün. |
+| true veya false | Boole | İfade yanlış olduğunda doğru döndürün. İfade doğru olduğunda yanlış döndürün. |
 ||||
 
 *Örnek 1*
@@ -3006,10 +3006,10 @@ not(false)
 not(true)
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: ifade false 'dur, bu nedenle işlev `true`döndürür.
-* İkinci örnek: ifade true 'dur, bu nedenle işlev `false`döndürür.
+* İlk örnek: İfade yanlışolduğundan işlev `true`döndürür.
+* İkinci örnek: İfade doğrudur, bu `false`nedenle işlev döndürür.
 
 *Örnek 2*
 
@@ -3020,17 +3020,17 @@ not(equals(1, 2))
 not(equals(1, 1))
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: ifade false 'dur, bu nedenle işlev `true`döndürür.
-* İkinci örnek: ifade true 'dur, bu nedenle işlev `false`döndürür.
+* İlk örnek: İfade yanlışolduğundan işlev `true`döndürür.
+* İkinci örnek: İfade doğrudur, bu `false`nedenle işlev döndürür.
 
 <a name="or"></a>
 
 ### <a name="or"></a>or
 
-En az bir ifadenin doğru olup olmadığını denetleyin.
-En az bir ifade true olduğunda true, All false ise false döndürün.
+En az bir ifadenin doğru olup olmadığını kontrol edin.
+En az bir ifade doğru olduğunda doğru döndürün veya tümü yanlış olduğunda yanlış döndürün.
 
 ```
 or(<expression1>, <expression2>, ...)
@@ -3038,47 +3038,47 @@ or(<expression1>, <expression2>, ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifade1*>, <*İfade2*>,... | Yes | Boole | Denetlenecek ifadeler |
+| <*ifade1*>, <*ifade2*>, ... | Evet | Boole | Denetlenen ifadeler |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false | Boole | En az bir ifade true olduğunda true değerini döndürür. Tüm ifadeler false olduğunda false döndürün. |
+| true veya false | Boole | En az bir ifade doğru olduğunda doğru döndürün. Tüm ifadeler yanlış olduğunda false döndürün. |
 ||||
 
 *Örnek 1*
 
-Bu örnekler en az bir ifadenin doğru olup olmadığını denetler:
+Bu örnekler, en az bir ifadenin doğru olup olmadığını denetler:
 
 ```json
 or(true, false)
 or(false, false)
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: en az bir ifade true, bu nedenle işlev `true`döndürüyor.
-* İkinci örnek: her Iki ifade de false 'dur, bu nedenle işlev `false`döndürür.
+* İlk örnek: En az bir ifade doğrudur, bu nedenle işlev döndürür. `true`
+* İkinci örnek: Her iki ifade de `false`yanlışolduğundan işlev geri döner.
 
 *Örnek 2*
 
-Bu örnekler en az bir ifadenin doğru olup olmadığını denetler:
+Bu örnekler, en az bir ifadenin doğru olup olmadığını denetler:
 
 ```json
 or(equals(1, 1), equals(1, 2))
 or(equals(1, 2), equals(1, 3))
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: en az bir ifade true, bu nedenle işlev `true`döndürüyor.
-* İkinci örnek: her Iki ifade de false 'dur, bu nedenle işlev `false`döndürür.
+* İlk örnek: En az bir ifade doğrudur, bu nedenle işlev döndürür. `true`
+* İkinci örnek: Her iki ifade de `false`yanlışolduğundan işlev geri döner.
 
 <a name="outputs"></a>
 
-### <a name="outputs"></a>outputs
+### <a name="outputs"></a>Çıkış
 
-Çalışma zamanında bir eylemin çıkışlarını döndürün. Mantıksal uygulama tasarımcısında `outputs()` olarak çözümlenen `actionOutputs()`yerine bu işlevi kullanın. Her iki işlev de aynı şekilde çalışır, ancak `outputs()` tercih edilir.
+Bir eylemin çıktılarını çalışma zamanında döndürün. Logic App `actionOutputs()` `outputs()` Designer'da çözümlenen bu işlevi yerine kullanın. Her iki fonksiyon da `outputs()` aynı şekilde çalışsa da tercih edilir.
 
 ```
 outputs('<actionName>')
@@ -3086,23 +3086,23 @@ outputs('<actionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ActionName*> | Yes | Dize | Eylem için istediğiniz çıkışın adı |
+| <*Actionname*> | Evet | Dize | İstediğiniz eylemin çıktısının adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | -----| ----------- |
-| *çıkış*> < | Dize | Belirtilen eylemden alınan çıkış |
+| <*Çıkış*> | Dize | Belirtilen eylemden çıktı |
 ||||
 
 *Örnek*
 
-Bu örnek, Twitter eyleminin `Get user`çıktısını alır:
+Bu örnek Twitter eylem `Get user`çıktı alır:
 
 ```
 outputs('Get_user')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 ```json
 {
@@ -3141,7 +3141,7 @@ Ve şu sonucu döndürür:
 
 ### <a name="parameters"></a>parametreler
 
-İş akışı tanımınızda açıklanan parametre için değeri döndürün.
+İş akışı tanımınızda açıklanan bir parametrenin değerini döndürün.
 
 ```
 parameters('<parameterName>')
@@ -3149,17 +3149,17 @@ parameters('<parameterName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*parameterName*> | Yes | Dize | Değerini istediğiniz parametre için ad |
+| <*Parametername*> | Evet | Dize | Değeri istediğiniz parametrenin adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*parametresi-değer*> | Herhangi biri | Belirtilen parametrenin değeri |
+| <*parametre değeri*> | Herhangi biri | Belirtilen parametrenin değeri |
 ||||
 
 *Örnek*
 
-Bu JSON değerinin olduğunu varsayalım:
+Bu JSON değerine sahip olduğunuzu varsayalım:
 
 ```json
 {
@@ -3167,19 +3167,19 @@ Bu JSON değerinin olduğunu varsayalım:
 }
 ```
 
-Bu örnek, belirtilen parametre için değeri alır:
+Bu örnek, belirtilen parametre için değer alır:
 
 ```
 parameters('fullName')
 ```
 
-Ve şu sonucu döndürür: `"Sophia Owen"`
+Ve bu sonucu döndürür:`"Sophia Owen"`
 
 <a name="rand"></a>
 
-### <a name="rand"></a>ran
+### <a name="rand"></a>rand
 
-Yalnızca başlangıç ucunda olan belirtilen aralıktan rastgele bir tamsayı döndürür.
+Yalnızca başlangıç sonunda dahil olan belirli bir aralıktan rasgele bir tamsayı döndürün.
 
 ```
 rand(<minValue>, <maxValue>)
@@ -3187,30 +3187,30 @@ rand(<minValue>, <maxValue>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | Yes | Tamsayı | Aralıktaki en küçük tamsayı |
-| <*maxValue*> | Yes | Tamsayı | İşlevin döndürebilecekleri aralıktaki en yüksek tamsayıyı izleyen tamsayı |
+| <*Minvalue*> | Evet | Tamsayı | Aralıktaki en düşük tümseci |
+| <*Maxvalue*> | Evet | Tamsayı | İşlevin döndürülebileceği aralıktaki en yüksek tümseci izleyen tümseci |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*rastgele sonuç*> | Tamsayı | Belirtilen aralıktan döndürülen rastgele tamsayı |
+| <*rasgele sonuç*> | Tamsayı | Belirtilen aralıktan döndürülen rasgele arayıcı |
 ||||
 
 *Örnek*
 
-Bu örnek, en büyük değer hariç, belirtilen aralıktan rastgele bir tamsayı alır:
+Bu örnek, maksimum değer hariç, belirtilen aralıktan rasgele bir tamsayı alır:
 
 ```
 rand(1, 5)
 ```
 
-Ve sonuç olarak şu numaralardan birini döndürür: `1`, `2`, `3`veya `4`
+Ve sonuç olarak bu sayılardan `1` `2`birini `3`döndürür: , , veya`4`
 
 <a name="range"></a>
 
-### <a name="range"></a>aralığı
+### <a name="range"></a>aralık
 
-Belirtilen tamsayıdan başlayan bir tamsayı dizisi döndürür.
+Belirtilen bir tamsededen başlayan bir tamsayı dizini döndürün.
 
 ```
 range(<startIndex>, <count>)
@@ -3218,30 +3218,30 @@ range(<startIndex>, <count>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*startındex*> | Yes | Tamsayı | İlk öğe olarak diziyi Başlatan bir tamsayı değeri |
-| <*sayı*> | Yes | Tamsayı | Dizideki tamsayıların sayısı |
+| <*Startındex*> | Evet | Tamsayı | Diziyi ilk öğe olarak başlatan bir sonda değeri |
+| <*Sayısı*> | Evet | Tamsayı | Dizideki tümer sayısı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [<*Range-sonuç*>] | Dizi | Belirtilen dizinden başlayan tamsayılar içeren dizi |
+| [<*aralık lı sonuç*>] | Dizi | Belirtilen dizinden başlayan tümseleri içeren dizi |
 ||||
 
 *Örnek*
 
-Bu örnek, belirtilen dizinden başlayan ve belirtilen sayıda tamsayı içeren bir tamsayı dizisi oluşturur:
+Bu örnek, belirtilen dizinten başlayan ve belirtilen tamsayı sayısını içeren bir tamsayı dizisi oluşturur:
 
 ```
 range(1, 4)
 ```
 
-Ve şu sonucu döndürür: `[1, 2, 3, 4]`
+Ve bu sonucu döndürür:`[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
-### <a name="replace"></a>replace
+### <a name="replace"></a>Değiştirmek
 
-Bir alt dizeyi belirtilen dizeyle değiştirin ve sonuç dizesini döndürün. Bu işlev büyük/küçük harfe duyarlıdır.
+Bir alt dizeyi belirtilen dizeyle değiştirin ve sonuç dizesini döndürün. Bu fonksiyon büyük/küçük harf duyarlıdır.
 
 ```
 replace('<text>', '<oldText>', '<newText>')
@@ -3249,31 +3249,31 @@ replace('<text>', '<oldText>', '<newText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Değiştirilecek alt dizenin bulunduğu dize |
-| <*oldtext*> | Yes | Dize | Değiştirilecek alt dize |
-| *newText*> < | Yes | Dize | Değiştirme dizesi |
+| <*Metin*> | Evet | Dize | Değiştirilecek alt dize olan dize |
+| <*oldText*> | Evet | Dize | Değiştirilecek alt dize |
+| <*newText*> | Evet | Dize | Değiştirme dizesi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirildi-metin*> | Dize | Alt dize değiştirildikten sonra güncelleştirilmiş dize <p>Alt dize bulunamazsa, özgün dizeyi döndürün. |
+| <*güncelleştirilmiş metin*> | Dize | Alt dize yi değiştirdikten sonra güncelleştirilmiş dize <p>Alt dize bulunamazsa, özgün dizeyi döndürün. |
 ||||
 
 *Örnek*
 
-Bu örnek "eski" dizesinde "eski" alt dizesini bulur ve "Old" öğesini "New" ile değiştirir:
+Bu örnekte "eski dize"deki "eski" alt dizeyi bulur ve "eski" yerine "yeni" yazar:
 
 ```
 replace('the old string', 'old', 'new')
 ```
 
-Ve şu sonucu döndürür: `"the new string"`
+Ve bu sonucu döndürür:`"the new string"`
 
 <a name="removeProperty"></a>
 
-### <a name="removeproperty"></a>removeProperty
+### <a name="removeproperty"></a>removeÖzellik
 
-Nesnesinden bir özelliği kaldırın ve güncelleştirilmiş nesneyi döndürün. Kaldırmaya çalıştığınız özellik yoksa, işlev orijinal nesneyi döndürür.
+Bir nesneyi kaldırın ve güncelleştirilen nesneyi döndürün. Kaldırmaya çalıştığınız özellik yoksa, işlev özgün nesneyi döndürür.
 
 ```
 removeProperty(<object>, '<property>')
@@ -3281,16 +3281,16 @@ removeProperty(<object>, '<property>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *nesne*> < | Yes | Nesne | Bir özelliği kaldırmak istediğiniz JSON nesnesi |
-| <*özellik*> | Yes | Dize | Kaldırılacak özelliğin adı |
+| <*Nesne*> | Evet | Nesne | Bir özelliği kaldırmak istediğiniz yerden JSON nesnesi |
+| <*Özellik*> | Evet | Dize | Kaldırılacak özelliğin adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-nesne*> | Nesne | Belirtilen özellik olmadan güncelleştirilmiş JSON nesnesi |
+| <*güncelleştirilmiş nesne*> | Nesne | Belirtilen özellik olmadan güncelleştirilmiş JSON nesnesi |
 ||||
 
-Varolan bir özellikten bir alt özelliği kaldırmak için şu sözdizimini kullanın:
+Bir alt özelliği varolan bir özellikten kaldırmak için şu sözdizimini kullanın:
 
 ```
 removeProperty(<object>['<parent-property>'], '<child-property>')
@@ -3298,25 +3298,25 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *nesne*> < | Yes | Nesne | Özelliğini kaldırmak istediğiniz JSON nesnesi |
-| <*üst özellik*> | Yes | Dize | Kaldırmak istediğiniz alt özelliği olan üst özelliğin adı |
-| <*alt özellik*> | Yes | Dize | Kaldırılacak alt özelliğin adı |
+| <*Nesne*> | Evet | Nesne | Özelliğini kaldırmak istediğiniz JSON nesnesi |
+| <*üst özellik*> | Evet | Dize | Kaldırmak istediğiniz alt özelliği olan üst mülkün adı |
+| <*çocuk mülkiyeti*> | Evet | Dize | Kaldırılacak alt özellik adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-nesne*> | Nesne | Alt özelliği kaldırdığınız güncelleştirilmiş JSON nesnesi |
+| <*güncelleştirilmiş nesne*> | Nesne | Kaldırdığınız alt özelliği güncelleştirilmiş JSON nesnesi |
 ||||
 
 *Örnek 1*
 
-Bu örnek, [JSON ()](#json) işlevini kullanarak BIR dizeden JSON 'a dönüştürülen ve güncelleştirilmiş nesneyi döndüren bir json nesnesinden `middleName` özelliğini kaldırır:
+Bu örnek, `middleName` [JSON()](#json) işlevini kullanarak dizeden JSON'a dönüştürülen bir JSON nesnesi özelliğini kaldırır ve güncelleştirilmiş nesneyi döndürür:
 
 ```
 removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
 ```
 
-Şu anki JSON nesnesi aşağıdadır:
+İşte geçerli JSON nesnesi:
 
 ```json
 {
@@ -3326,7 +3326,7 @@ removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "
 }
 ```
 
-Güncelleştirilmiş JSON nesnesi şu şekildedir:
+İşte güncelleştirilmiş JSON nesnesi:
 
 ```json
 {
@@ -3337,13 +3337,13 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 *Örnek 2*
 
-Bu örnek, JSON [()](#json) işlevini kullanarak BIR dizeden JSON 'a dönüştürülen ve güncelleştirilmiş nesneyi döndüren bir json nesnesindeki `customerName` parent özelliğinden `middleName` alt özelliğini kaldırır:
+Bu örnek, `middleName` `customerName` [JSON()](#json) işlevini kullanarak dizeden JSON'a dönüştürülen bir JSON nesnesindeki bir üst özellikteki alt özelliği kaldırır ve güncelleştirilmiş nesneyi döndürür:
 
 ```
 removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
 ```
 
-Şu anki JSON nesnesi aşağıdadır:
+İşte geçerli JSON nesnesi:
 
 ```json
 {
@@ -3355,7 +3355,7 @@ removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "A
 }
 ```
 
-Güncelleştirilmiş JSON nesnesi şu şekildedir:
+İşte güncelleştirilmiş JSON nesnesi:
 
 ```json
 {
@@ -3368,9 +3368,9 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 <a name="result"></a>
 
-### <a name="result"></a>Sonuç
+### <a name="result"></a>sonuç
 
-`For_each`, `Until`veya `Scope` eylemi gibi, belirtilen kapsamlı eylem içindeki tüm eylemlerden gelen giriş ve çıkışları geri döndürün. Bu işlev, özel durumları tanılamanıza ve işleyebilmeniz için başarısız bir eylemden sonuçları döndürmektir. Daha fazla bilgi için bkz. [Içerik al ve hatalara yönelik sonuçlar](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+Belirtilen kapsamlı eylemin içinde bulunan tüm eylemlerin girdi ve çıktılarını `For_each`, `Until`, `Scope` veya eylem gibi döndürün. Bu işlev, özel durumları tanılamak ve işlemek için başarısız bir eylemden sonuçları döndürmenin yararlıdır. Daha fazla bilgi için [bkz.](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)
 
 ```
 result('<scopedActionName>')
@@ -3378,17 +3378,17 @@ result('<scopedActionName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*Scopedadctionname*> | Yes | Dize | Tüm iç eylemlerdeki girişlerin ve çıktıların döndürüleceği kapsamlı eylemin adı |
+| <*scopedActionName*> | Evet | Dize | Tüm iç eylemlerden giriş ve çıktıları döndürmek için kapsamlı eylemin adı |
 ||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*dizi nesnesi*> | Dizi nesnesi | Belirtilen kapsamlı eylem içinde görünen her bir eylemden giriş ve çıkış dizilerini içeren bir dizi |
+| <*dizi nesnesi*> | Dizi nesnesi | Belirtilen kapsamlı eylemin içinde görünen her eylemden giriş ve çıktı dizileri içeren bir dizi |
 ||||
 
 *Örnek*
 
-Bu örnek, `Compose` eyleminde `result()` işlevini kullanarak bir `For_each` döngüsünde içindeki bir HTTP eyleminin her yinelemesinden gelen giriş ve çıkışları döndürür:
+Bu örnek, `For_each` `result()` `Compose` eylemdeki işlevi kullanarak bir döngü içinde bulunan bir HTTP eyleminin her yinelemesinden gelen giriş ve çıktıları döndürür:
 
 ```json
 {
@@ -3421,7 +3421,7 @@ Bu örnek, `Compose` eyleminde `result()` işlevini kullanarak bir `For_each` d�
 }
 ```
 
-Örneğin, Array döndürülen örneği, dış `outputs` nesnesinin, `For_each` eylemi içindeki eylemlerin her yinelemesinden gelen giriş ve çıkışları içermesi gibi görünebilir.
+Örnek döndürülen dizi, dış `outputs` nesnenin `For_each` eylem içindeki eylemlerin her yinelemesinden giriş ve çıktıları içerdiği yerde şu şekilde görünebilir.
 
 ```json
 [
@@ -3489,9 +3489,9 @@ Bu örnek, `Compose` eyleminde `result()` işlevini kullanarak bir `For_each` d�
 
 <a name="setProperty"></a>
 
-### <a name="setproperty"></a>Özellik
+### <a name="setproperty"></a>setÖzellik
 
-JSON nesnesinin özelliği için değeri ayarlayın ve güncelleştirilmiş nesneyi döndürün. Ayarlamayı denerseniz özelliği yoksa, özelliği nesnesine eklenir. Yeni bir özellik eklemek için [AddProperty ()](#addProperty) işlevini kullanın.
+JSON nesnesinin özelliğinin değerini ayarlayın ve güncelleştirilmiş nesneyi döndürün. Ayarlamaya çalıştığınız özellik yoksa, özellik nesneye eklenir. Yeni bir özellik eklemek için [addProperty()](#addProperty) işlevini kullanın.
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3499,12 +3499,12 @@ setProperty(<object>, '<property>', <value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *nesne*> < | Yes | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
-| <*özellik*> | Yes | Dize | Ayarlanacak mevcut veya yeni özelliğin adı |
-| <*değer*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
+| <*Nesne*> | Evet | Nesne | Mülkiyetini ayarlamak istediğiniz JSON nesnesi |
+| <*Özellik*> | Evet | Dize | Ayarlanacak varolan veya yeni özelliğin adı |
+| <*Değer*> | Evet | Herhangi biri | Belirtilen özellik için ayarlanan değer |
 |||||
 
-Alt nesne içindeki alt özelliği ayarlamak için, bunun yerine iç içe `setProperty()` çağrısını kullanın. Aksi takdirde, işlev yalnızca çıkış olarak alt nesneyi döndürür.
+Alt özelliği bir alt nesnede ayarlamak için `setProperty()` iç içe geçen bir çağrı kullanın. Aksi takdirde, işlev çıktı olarak yalnızca alt nesneyi döndürür.
 
 ```
 setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
@@ -3512,26 +3512,26 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *nesne*> < | Yes | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
-| <*üst özellik*> | Yes | Dize | Ayarlamak istediğiniz alt özelliği olan üst özelliğin adı |
-| <*alt özellik*> | Yes | Dize | Ayarlanacak alt özelliğin adı |
-| <*değer*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
+| <*Nesne*> | Evet | Nesne | Mülkiyetini ayarlamak istediğiniz JSON nesnesi |
+| <*üst özellik*> | Evet | Dize | Ayarlamak istediğiniz alt özelliği olan üst mülkün adı |
+| <*çocuk mülkiyeti*> | Evet | Dize | Ayarlanacak alt özellik adı |
+| <*Değer*> | Evet | Herhangi biri | Belirtilen özellik için ayarlanan değer |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-nesne*> | Nesne | Özelliği ayarladığınız güncelleştirilmiş JSON nesnesi |
+| <*güncelleştirilmiş nesne*> | Nesne | Özelliğini ayarladığınız güncelleştirilmiş JSON nesnesi |
 ||||
 
 *Örnek 1*
 
-Bu örnek, [JSON ()](#json) işlevi kullanılarak BIR dizeden JSON 'a dönüştürülen bir json nesnesinde `surName` özelliğini ayarlar. İşlevi belirtilen değeri özelliğine atar ve güncelleştirilmiş nesneyi döndürür:
+Bu örnek, `surName` [JSON()](#json) işlevini kullanarak bir dizeden JSON'a dönüştürülen bir JSON nesnesindeki özelliği ayarlar. İşlev, belirtilen değeri özelliğe atar ve güncelleştirilmiş nesneyi döndürür:
 
 ```
 setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
 ```
 
-Şu anki JSON nesnesi aşağıdadır:
+İşte geçerli JSON nesnesi:
 
 ```json
 {
@@ -3540,7 +3540,7 @@ setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Ha
 }
 ```
 
-Güncelleştirilmiş JSON nesnesi şu şekildedir:
+İşte güncelleştirilmiş JSON nesnesi:
 
 ```json
 {
@@ -3551,13 +3551,13 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 *Örnek 2*
 
-Bu örnek, [JSON ()](#json) işlevi kullanılarak BIR dizeden JSON 'a dönüştürülen bir json nesnesinde `customerName` Parent özelliği için `surName` alt özelliğini ayarlar. İşlevi belirtilen değeri özelliğine atar ve güncelleştirilmiş nesneyi döndürür:
+Bu örnek, `surName` `customerName` [JSON()](#json) işlevini kullanarak bir dizeden JSON'a dönüştürülen bir JSON nesnesindeki alt özelliği ayarlar. İşlev, belirtilen değeri özelliğe atar ve güncelleştirilmiş nesneyi döndürür:
 
 ```
 setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
 ```
 
-Şu anki JSON nesnesi aşağıdadır:
+İşte geçerli JSON nesnesi:
 
 ```json
 {
@@ -3568,7 +3568,7 @@ setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" }
 }
 ```
 
-Güncelleştirilmiş JSON nesnesi şu şekildedir:
+İşte güncelleştirilmiş JSON nesnesi:
 
 ```json
 {
@@ -3581,9 +3581,9 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 <a name="skip"></a>
 
-### <a name="skip"></a>Şimdilik
+### <a name="skip"></a>Atla
 
-Öğeleri bir koleksiyonun önünden kaldırın ve *diğer tüm* öğeleri döndürün.
+Öğeleri koleksiyonun önünden kaldırın ve diğer tüm öğeleri iade *edin.*
 
 ```
 skip([<collection>], <count>)
@@ -3591,30 +3591,30 @@ skip([<collection>], <count>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *koleksiyon*> < | Yes | Dizi | Öğelerini kaldırmak istediğiniz koleksiyon |
-| <*sayı*> | Yes | Tamsayı | En önünde kaldırılacak öğe sayısı için pozitif bir tamsayı |
+| <*Koleksiyon*> | Evet | Dizi | Öğelerini kaldırmak istediğiniz koleksiyon |
+| <*Sayısı*> | Evet | Tamsayı | Önden kaldırılacak öğe sayısı için pozitif bir tamsayı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [<*güncelleştirilmiş-koleksiyon*>] | Dizi | Belirtilen öğeler kaldırıldıktan sonra güncelleştirilmiş koleksiyon |
+| [<*güncelleştirilmiş toplama*>] | Dizi | Belirtilen öğeleri kaldırdıktan sonra güncelleştirilmiş koleksiyon |
 ||||
 
 *Örnek*
 
-Bu örnek, belirtilen dizinin önüne 0 olan bir öğeyi, 0 sayısını kaldırır:
+Bu örnek, belirtilen dizinin önünden bir öğeyi, 0 sayısını kaldırır:
 
 ```
 skip(createArray(0, 1, 2, 3), 1)
 ```
 
-Ve bu diziyi kalan öğelerle birlikte döndürür: `[1,2,3]`
+Ve kalan öğeleri ile bu dizi döndürür:`[1,2,3]`
 
 <a name="split"></a>
 
 ### <a name="split"></a>split
 
-Özgün dizedeki belirtilen sınırlayıcı karaktere göre virgülle ayırarak alt dizeler içeren bir dizi döndürür.
+Özgün dizede belirtilen sınırlayıcı karakteri temel alarak virgülle ayrılmış alt dizeleri içeren bir dizi döndürün.
 
 ```
 split('<text>', '<delimiter>')
@@ -3622,30 +3622,30 @@ split('<text>', '<delimiter>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Özgün dizedeki belirtilen sınırlayıcıya göre alt dizelerdeki ayrı olacak dize |
-| <*sınırlayıcı*> | Yes | Dize | Ayırıcı olarak kullanılacak özgün dizedeki karakter |
+| <*Metin*> | Evet | Dize | Özgün dizede belirtilen sınırlayıcıyı temel alan alt dizeleri ayırmak için dize |
+| <*Sınırlayıcı*> | Evet | Dize | Delimiter olarak kullanılacak orijinal dizedeki karakter |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [<*substring1*>, <*substring2*>,...] | Dizi | Virgülle ayırarak orijinal dizeden alt dizeler içeren bir dizi |
+| [<*substring1*>.<*substring2*>,...] | Dizi | Virgüllerle ayrılmış özgün dizeden alt dizeleri içeren bir dizi |
 ||||
 
 *Örnek*
 
-Bu örnek, belirtilen karakteri sınırlayıcı olarak belirtilen dizeden alt dizeler içeren bir dizi oluşturur:
+Bu örnek, delimiter olarak belirtilen karaktere dayalı olarak belirtilen dizeden alt dizeleri olan bir dizi oluşturur:
 
 ```
 split('a_b_c', '_')
 ```
 
-Ve sonuç olarak bu diziyi döndürür: `["a","b","c"]`
+Ve sonuç olarak bu dizi döndürür:`["a","b","c"]`
 
 <a name="startOfDay"></a>
 
-### <a name="startofday"></a>startOfDay
+### <a name="startofday"></a>başlangıçOfDay
 
-Zaman damgası için günün başlangıcını döndürür.
+Günün başlangıcını bir zaman damgası için döndürün.
 
 ```
 startOfDay('<timestamp>', '<format>'?)
@@ -3653,13 +3653,13 @@ startOfDay('<timestamp>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Belirtilen zaman damgası, ancak günün sıfır saat işaretiyle başlıyor |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Belirtilen zaman damgası ancak gün için sıfır saat işareti başlayarak |
 ||||
 
 *Örnek*
@@ -3670,13 +3670,13 @@ Bu örnek, bu zaman damgası için günün başlangıcını bulur:
 startOfDay('2018-03-15T13:30:30Z')
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T00:00:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
-### <a name="startofhour"></a>Saat başı
+### <a name="startofhour"></a>başlangıçOfSaat
 
-Zaman damgası için saatin başlangıcını döndürür.
+Saat ini saat damgası için saatin başlangıcını iade edin.
 
 ```
 startOfHour('<timestamp>', '<format>'?)
@@ -3684,13 +3684,13 @@ startOfHour('<timestamp>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Belirtilen zaman damgası, ancak saat için sıfır dakikalık işaretten başlayarak |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Belirtilen zaman damgası ancak saat için sıfır dakika işaretinden başlayarak |
 ||||
 
 *Örnek*
@@ -3701,13 +3701,13 @@ Bu örnek, bu zaman damgası için saatin başlangıcını bulur:
 startOfHour('2018-03-15T13:30:30Z')
 ```
 
-Ve şu sonucu döndürür: `"2018-03-15T13:00:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
-### <a name="startofmonth"></a>startOfMonth
+### <a name="startofmonth"></a>başlangıçOfMonth
 
-Zaman damgası için ayın başlangıcını döndürür.
+Zaman damgası için ayın başlangıcını iade edin.
 
 ```
 startOfMonth('<timestamp>', '<format>'?)
@@ -3715,13 +3715,13 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Belirtilen zaman damgası, ancak ayın ilk günü sıfır saat işaretiyle başlıyor |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Belirtilen zaman damgası ancak sıfır saat işareti yle ayın ilk gününde başlayan |
 ||||
 
 *Örnek*
@@ -3732,15 +3732,15 @@ Bu örnek, bu zaman damgası için ayın başlangıcını döndürür:
 startOfMonth('2018-03-15T13:30:30Z')
 ```
 
-Ve şu sonucu döndürür: `"2018-03-01T00:00:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-03-01T00:00:00.0000000Z"`
 
 <a name="startswith"></a>
 
 ### <a name="startswith"></a>startsWith
 
-Bir dizenin belirli bir alt dizeyle başlatılıp başlatılmayacağını denetleyin.
-Alt dize bulunduğunda true, bulunamazsa false döndürün.
-Bu işlev, büyük/küçük harfe duyarlı değildir.
+Bir dize belirli bir alt dize ile başlayıp başlamadığını denetleyin.
+Alt dize bulunduğunda doğru döndürün veya bulunmadığında false döndürün.
+Bu işlev büyük/küçük harf duyarlı değildir.
 
 ```
 startsWith('<text>', '<searchText>')
@@ -3748,34 +3748,34 @@ startsWith('<text>', '<searchText>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Denetlenecek dize |
-| <*searchtext*> | Yes | Dize | Bulunacak başlangıç dizesi |
+| <*Metin*> | Evet | Dize | Denetlenen dize |
+| <*searchText*> | Evet | Dize | Bulmak için başlangıç dizesi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| true veya false  | Boole | Başlangıç alt dizesi bulunduğunda true döndürün. Bulunamadığında false döndürün. |
+| true veya false  | Boole | Başlangıç alt dizesi bulunduğunda doğru döndürün. Bulunduğunda yanlış döndürün. |
 ||||
 
 *Örnek 1*
 
-Bu örnek, "Hello World" dizesinin "Hello" alt dizesiyle başlatılıp başlatılmayacağını denetler:
+Bu örnek, "merhaba dünya" dizesinin "hello" alt dizesiyle başlayıp başlamadığını denetler:
 
 ```
 startsWith('hello world', 'hello')
 ```
 
-Ve şu sonucu döndürür: `true`
+Ve bu sonucu döndürür:`true`
 
 *Örnek 2*
 
-Bu örnek, "Hello World" dizesinin "Greetings" alt dizesiyle başlatılıp başlatılmayacağını denetler:
+Bu örnek, "merhaba dünya" dizesinin "selamlar" alt dizesiyle başlayıp başlamadığını denetler:
 
 ```
 startsWith('hello world', 'greetings')
 ```
 
-Ve şu sonucu döndürür: `false`
+Ve bu sonucu döndürür:`false`
 
 <a name="string"></a>
 
@@ -3789,39 +3789,39 @@ string(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Herhangi biri | Dönüştürülecek değer |
+| <*Değer*> | Evet | Herhangi biri | Dönüştürülecek değer |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*dize-değer*> | Dize | Belirtilen değer için dize sürümü |
+| <*dize değeri*> | Dize | Belirtilen değer için dize sürümü |
 ||||
 
 *Örnek 1*
 
-Bu örnek, bu sayının dize sürümünü oluşturur:
+Bu örnek, bu sayı için dize sürümünü oluşturur:
 
 ```
 string(10)
 ```
 
-Ve şu sonucu döndürür: `"10"`
+Ve bu sonucu döndürür:`"10"`
 
 *Örnek 2*
 
-Bu örnek, belirtilen JSON nesnesi için bir dize oluşturur ve çift tırnak işareti (") için bir çıkış karakteri olarak ters eğik çizgi karakterini (\\) kullanır.
+Bu örnek, belirtilen JSON nesnesi için bir dize oluşturur ve çift tırnak işareti (") için bir kaçış karakteri olarak ters eğik çizgi karakteri (\\) kullanır.
 
 ```
 string( { "name": "Sophie Owen" } )
 ```
 
-Ve şu sonucu döndürür: `"{ \\"name\\": \\"Sophie Owen\\" }"`
+Ve bu sonucu döndürür:`"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
-### <a name="sub"></a>sub
+### <a name="sub"></a>Alt
 
-İkinci sayının ilk sayıdan çıkarılmadan elde edilen sonucu döndürür.
+İkinci sayıyı ilk sayıdan çıkarmanın sonucunu döndürün.
 
 ```
 sub(<minuend>, <subtrahend>)
@@ -3829,30 +3829,30 @@ sub(<minuend>, <subtrahend>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*eksilen*> | Yes | Tamsayı veya kayan | *Çıkarılan* çıkarmak için gereken sayı |
-| <*çıkarılan*> | Yes | Tamsayı veya kayan | *Eksilen* 'ten çıkarılacak sayı |
+| <*minuend*> | Evet | Sonda veya Float | *Subtrahend* çıkarmak için hangi sayı |
+| <*Subtrahend*> | Evet | Sonda veya Float | *Minuend'den* çıkarılabilen sayı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*sonucu*> | Tamsayı veya kayan | İkinci sayının ilk sayıdan çıkarılmadan elde edilen sonuç |
+| <*Sonuç*> | Sonda veya Float | İkinci sayının ilk sayıdan çıkarılarak elde edilen sonuç |
 ||||
 
 *Örnek*
 
-Bu örnek, ikinci sayıyı ilk sayıdan çıkartır:
+Bu örnek, ikinci sayıyı ilk sayıdan çıkarır:
 
 ```
 sub(10.3, .3)
 ```
 
-Ve şu sonucu döndürür: `10`
+Ve bu sonucu döndürür:`10`
 
 <a name="substring"></a>
 
-### <a name="substring"></a>dizeden
+### <a name="substring"></a>Dize
 
-Belirtilen konumdan veya dizinden başlayarak bir dizeden karakter döndürün.
+Belirtilen konumdan başlayarak karakterleri bir dizeden veya dizinden döndürün.
 Dizin değerleri 0 sayısıyla başlar.
 
 ```
@@ -3861,32 +3861,32 @@ substring('<text>', <startIndex>, <length>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Karakterleri istediğiniz dize |
-| <*startındex*> | Yes | Tamsayı | Başlangıç konumu veya dizin değeri olarak kullanmak istediğiniz pozitif bir sayı eşittir veya 0 ' dan büyük bir değer |
-| <*uzunluğu*> | Yes | Tamsayı | Alt dizede istediğiniz pozitif karakter sayısı |
+| <*Metin*> | Evet | Dize | Karakterleri istediğiniz dize |
+| <*Startındex*> | Evet | Tamsayı | Başlangıç pozisyonu veya dizin değeri olarak kullanmak istediğiniz 0'a eşit veya daha büyük pozitif bir sayı |
+| <*Uzun -luğu*> | Evet | Tamsayı | Alt dizede istediğiniz pozitif karakter sayısı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <alt *dize-sonuç*> | Dize | Kaynak dizedeki belirtilen dizin konumunda başlayan, belirtilen sayıda karakter içeren bir alt dize |
+| <*substring sonucu*> | Dize | Kaynak dizedeki belirtilen dizin konumundan başlayarak, belirtilen karakter sayısına sahip bir alt diz |
 ||||
 
 *Örnek*
 
-Bu örnek, 6 dizininden başlayarak belirtilen dizeden beş karakterlik bir alt dize oluşturur:
+Bu örnek, dizin değeri 6 başlayarak, belirtilen dize beş karakterli bir alt dize oluşturur:
 
 ```
 substring('hello world', 6, 5)
 ```
 
-Ve şu sonucu döndürür: `"world"`
+Ve bu sonucu döndürür:`"world"`
 
 <a name="subtractFromTime"></a>
 
-### <a name="subtractfromtime"></a>subtractFromTime
+### <a name="subtractfromtime"></a>çıkarmaFromTime
 
 Zaman damgasından birkaç zaman birimi çıkarın.
-Ayrıca bkz. [Getpasttime](#getPastTime).
+Ayrıca [bakınız GetPastTime](#getPastTime).
 
 ```
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
@@ -3894,42 +3894,42 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgasını içeren dize |
-| <*aralık*> | Yes | Tamsayı | Çıkarılacak belirtilen zaman birimi sayısı |
-| <*Timeunit*> | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgasını içeren dize |
+| <*Aralığı*> | Evet | Tamsayı | Çıkarıiçin belirtilen zaman birimlerinin sayısı |
+| <*zaman Birimi*> | Evet | Dize | *Aralıklı*olarak kullanılacak zaman birimi : "İkinci", "Dakika", "Saat", "Gün", "Hafta", "Ay", "Yıl" |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*güncelleştirilmiş-zaman damgası*> | Dize | Zaman damgası, belirtilen zaman birimi sayısını eksi |
+| <*güncelleştirilmiş zaman damgası*> | Dize | Zaman damgası eksi belirtilen zaman birimleri sayısı |
 ||||
 
 *Örnek 1*
 
-Bu örnek, bir günü bu zaman damgasından çıkarır:
+Bu örnek, bu zaman damgasından bir gün çıkarır:
 
 ```
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-Ve şu sonucu döndürür: `"2018-01-01T00:00:00:0000000Z"`
+Ve bu sonucu döndürür:`"2018-01-01T00:00:00:0000000Z"`
 
 *Örnek 2*
 
-Bu örnek, bir günü bu zaman damgasından çıkarır:
+Bu örnek, bu zaman damgasından bir gün çıkarır:
 
 ```
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D')
 ```
 
-Ve isteğe bağlı "D" biçimini kullanarak bu sonucu döndürür: `"Monday, January, 1, 2018"`
+Ve bu sonucu isteğe bağlı "D" biçimini kullanarak döndürür:`"Monday, January, 1, 2018"`
 
 <a name="take"></a>
 
-### <a name="take"></a>take
+### <a name="take"></a>almak
 
-Bir koleksiyonun önünden öğe döndürün.
+Öğeleri koleksiyonun önünden döndürün.
 
 ```
 take('<collection>', <count>)
@@ -3938,35 +3938,35 @@ take([<collection>], <count>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *koleksiyon*> < | Yes | Dize veya dizi | Öğelerini istediğiniz koleksiyon |
-| <*sayı*> | Yes | Tamsayı | Önünden istediğiniz öğe sayısı için pozitif bir tamsayı |
+| <*Koleksiyon*> | Evet | Dize veya Dizi | Öğeleri istediğiniz koleksiyon |
+| <*Sayısı*> | Evet | Tamsayı | Önden istediğiniz öğe sayısı için pozitif tamsayı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*alt küme*> veya [<*alt kümesi*>] | Sırasıyla dize veya dizi | Özgün koleksiyonun önünden belirtilen sayıda öğe içeren bir dize veya dizi |
+| <*alt kümesi*> veya [<*alt kümesi*>] | String veya Array, sırasıyla | Özgün koleksiyonun önünden alınan belirtilen öğe sayısına sahip bir dize veya dizi |
 ||||
 
 *Örnek*
 
-Bu örneklerde, bu koleksiyonların önüne belirtilen sayıda öğe alınır:
+Bu örnekler, bu koleksiyonların önünden belirtilen öğe sayısını alır:
 
 ```
 take('abcde', 3)
 take(createArray(0, 1, 2, 3, 4), 3)
 ```
 
-Ve şu sonuçları döndürür:
+Ve bu sonuçları iade edin:
 
-* İlk örnek: `"abc"`
-* İkinci örnek: `[0, 1, 2]`
+* İlk örnek:`"abc"`
+* İkinci örnek:`[0, 1, 2]`
 
 <a name="ticks"></a>
 
-### <a name="ticks"></a>onay
+### <a name="ticks"></a>Ticks
 
-Belirtilen bir zaman damgası için `ticks` özellik değerini döndürün.
-*Değer* bir 100-nanosaniyelik aralığıdır.
+Belirtilen `ticks` bir zaman damgası için özellik değerini döndürün.
+*Kene* 100 nanosaniyelik bir aralıktır.
 
 ```
 ticks('<timestamp>')
@@ -3974,19 +3974,19 @@ ticks('<timestamp>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*zaman damgası*> | Yes | Dize | Zaman damgası için dize |
+| <*Zaman damgası*> | Evet | Dize | Zaman damgası için dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ticks-sayı*> | Tamsayı | Belirtilen zaman damgasından bu yana geçen onay işareti sayısı |
+| <*keneler-sayı*> | Tamsayı | Belirtilen zaman damgası beri kene sayısı |
 ||||
 
 <a name="toLower"></a>
 
-### <a name="tolower"></a>toLower
+### <a name="tolower"></a>Tolower
 
-Küçük harfli bir dize döndürür. Dizedeki bir karakter küçük harfli bir sürüme sahip değilse, bu karakter döndürülen dizede değişmeden kalır.
+Küçük harf biçiminde bir dize döndürün. Dizedeki bir karakterin küçük bir sürümü yoksa, bu karakter döndürülen dizede değişmeden kalır.
 
 ```
 toLower('<text>')
@@ -3994,12 +3994,12 @@ toLower('<text>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Küçük harfle döndürülecek dize |
+| <*Metin*> | Evet | Dize | Küçük harf biçiminde döndürülecek dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*küçük harfli metin*> | Dize | Özgün dize küçük harfli biçimde |
+| <*küçük harf-metin*> | Dize | Küçük harf biçiminde orijinal dize |
 ||||
 
 *Örnek*
@@ -4010,13 +4010,13 @@ Bu örnek, bu dizeyi küçük harfe dönüştürür:
 toLower('Hello World')
 ```
 
-Ve şu sonucu döndürür: `"hello world"`
+Ve bu sonucu döndürür:`"hello world"`
 
 <a name="toUpper"></a>
 
-### <a name="toupper"></a>toUpper
+### <a name="toupper"></a>Toupper
 
-Büyük harfle bir dize döndürür. Dizedeki bir karakter büyük bir sürüme sahip değilse, bu karakter döndürülen dizede değişmeden kalır.
+Büyük harf biçiminde bir dize döndürün. Dizedeki bir karakterin büyük harf sürümü yoksa, bu karakter döndürülen dizede değişmeden kalır.
 
 ```
 toUpper('<text>')
@@ -4024,12 +4024,12 @@ toUpper('<text>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Büyük harfle döndürülecek dize |
+| <*Metin*> | Evet | Dize | Büyük harf biçiminde döndürülecek dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| *büyük harf metin*> < | Dize | Büyük harfli özgün dize |
+| <*büyük harf-metin*> | Dize | Büyük harf biçiminde orijinal dize |
 ||||
 
 *Örnek*
@@ -4040,52 +4040,52 @@ Bu örnek, bu dizeyi büyük harfe dönüştürür:
 toUpper('Hello World')
 ```
 
-Ve şu sonucu döndürür: `"HELLO WORLD"`
+Ve bu sonucu döndürür:`"HELLO WORLD"`
 
 <a name="trigger"></a>
 
-### <a name="trigger"></a>Tetikleyicinin
+### <a name="trigger"></a>Tetikleyici
 
-Çalışma zamanında bir tetikleyicinin çıkışını veya diğer JSON ad ve-değer çiftleriyle değerleri bir ifadeye atayabilirsiniz.
+Bir tetikleyicinin çıktısını çalışma zamanında veya bir ifadeye atayabileceğiniz diğer JSON ad ve değer çiftlerinden gelen değerleri döndürün.
 
-* Tetikleyicinin girişlerinin içinde, bu işlev önceki yürütmenin çıktısını döndürür.
+* Bir tetikleyicinin girişlerinin içinde, bu işlev önceki yürütmeden çıktıdöndürür.
 
-* Tetikleyicinin koşulunun içinde, bu işlev geçerli yürütmenin çıktısını döndürür.
+* Bir tetikleyicinin durumu içinde, bu işlev geçerli yürütme çıktısını döndürür.
 
-Varsayılan olarak, işlevi tüm tetikleyici nesnesine başvurur, ancak isteğe bağlı olarak değerini istediğiniz bir özelliği belirtebilirsiniz.
-Ayrıca, bu işlevde toplu sürümler mevcuttur, bkz. [Triggerçıktılar ()](#triggerOutputs) ve [triggerbody ()](#triggerBody).
+Varsayılan olarak, işlev tüm tetikleyici nesneye başvurur, ancak isteğe bağlı olarak istediğiniz değeri olan bir özellik belirtebilirsiniz.
+Ayrıca, bu işlev instentin sürümleri mevcuttur, [triggerOutputs()](#triggerOutputs) ve [triggerBody()](#triggerBody)bakın.
 
 ```
 trigger()
 ```
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*tetikleyicisi-çıkış*> | Dize | Çalışma zamanında bir tetikleyiciden alınan çıkış |
+| <*tetikleme çıkışı*> | Dize | Çalışma zamanında bir tetikleyiciden çıktı |
 ||||
 
 <a name="triggerBody"></a>
 
 ### <a name="triggerbody"></a>triggerBody
 
-Çalışma zamanında tetikleyicinin `body` çıkışını döndürün.
-`trigger().outputs.body`için toplu değer.
-Bkz. [Tetikleyici ()](#trigger).
+Çalışma zamanında bir `body` tetikleyicinin çıktısını döndürün.
+Steno `trigger().outputs.body`için.
+Bkz. [tetikleyici()](#trigger).
 
 ```
 triggerBody()
 ```
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*tetikleyicisi-gövde-çıkış*> | Dize | Tetikleyiciden alınan `body` çıktısı |
+| <*tetik-gövde çıkışı*> | Dize | Tetiğe gelen `body` çıkış |
 ||||
 
 <a name="triggerFormDataMultiValues"></a>
 
-### <a name="triggerformdatamultivalues"></a>triggerFormDataMultiValues
+### <a name="triggerformdatamultivalues"></a>tetikFormDataMultiValues
 
-Tetikleyicisinin *form verileri* veya *form kodlu* çıktıdaki anahtar adı ile eşleşen değerler içeren bir dizi döndürür.
+Tetikleyicinin *form verilerindeki* veya *form kodlanmış* çıktısında anahtar adla eşleşen değerlere sahip bir dizi döndürün.
 
 ```
 triggerFormDataMultiValues('<key>')
@@ -4093,30 +4093,30 @@ triggerFormDataMultiValues('<key>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*anahtar*> | Yes | Dize | Değerini istediğiniz anahtarın adı |
+| <*Anahtar*> | Evet | Dize | Değeri istediğiniz anahtarın adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [<*dizi-anahtar-değerleri*>] | Dizi | Belirtilen anahtarla eşleşen tüm değerleri içeren bir dizi |
+| [anahtar la <*dizi*>] | Dizi | Belirtilen anahtarla eşleşen tüm değerleri içeren bir dizi |
 ||||
 
 *Örnek*
 
-Bu örnek bir RSS tetikleyicisinin form verileri veya form kodlu çıktıda "feedUrl" anahtar değerinden bir dizi oluşturur:
+Bu örnek, bir RSS tetikleyicisinin form verisindeki veya form kodlanmış çıktısındaki "feedUrl" anahtar değerinden bir dizi oluşturur:
 
 ```
 triggerFormDataMultiValues('feedUrl')
 ```
 
-Ve bu diziyi örnek sonuç olarak döndürür: `["http://feeds.reuters.com/reuters/topNews"]`
+Ve bu diziyi örnek bir sonuç olarak döndürür:`["http://feeds.reuters.com/reuters/topNews"]`
 
 <a name="triggerFormDataValue"></a>
 
-### <a name="triggerformdatavalue"></a>triggerFormDataValue
+### <a name="triggerformdatavalue"></a>tetikFormDataValue
 
-Tetikleyicinin *form verileri* veya *form kodlu* çıktıda anahtar adı ile eşleşen tek bir değere sahip bir dize döndürür.
-İşlev birden fazla eşleşme bulursa, işlev bir hata oluşturur.
+Tetikleyicinin *form verilerindeki* veya *form kodlanmış* çıktısında anahtar bir adla eşleşen tek bir değere sahip bir dize döndürün.
+İşlev birden fazla eşleşme bulursa, işlev bir hata atar.
 
 ```
 triggerFormDataValue('<key>')
@@ -4124,29 +4124,29 @@ triggerFormDataValue('<key>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*anahtar*> | Yes | Dize | Değerini istediğiniz anahtarın adı |
+| <*Anahtar*> | Evet | Dize | Değeri istediğiniz anahtarın adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| *anahtar-değer*> < | Dize | Belirtilen anahtardaki değer |
+| <*anahtar değeri*> | Dize | Belirtilen anahtardaki değer |
 ||||
 
 *Örnek*
 
-Bu örnek bir RSS tetikleyicisinin form verileri veya form kodlu çıktıda "feedUrl" anahtar değerinden bir dize oluşturur:
+Bu örnek, bir RSS tetikleyicisinin form verisindeki veya form kodlanmış çıktısındaki "feedUrl" anahtar değerinden bir dize oluşturur:
 
 ```
 triggerFormDataValue('feedUrl')
 ```
 
-Ve bu dizeyi örnek sonuç olarak döndürür: `"http://feeds.reuters.com/reuters/topNews"`
+Ve bu dizeyi örnek bir sonuç olarak döndürür:`"http://feeds.reuters.com/reuters/topNews"`
 
 <a name="triggerMultipartBody"></a>
 
 ### <a name="triggermultipartbody"></a>triggerMultipartBody
 
-Tetikleyicinin çıktısında, birden çok parçaya sahip belirli bir bölümün gövdesini döndürün.
+Birden çok parçadan biri olan bir tetikleyicinin çıkışında belirli bir parça için gövdeyi döndürün.
 
 ```
 triggerMultipartBody(<index>)
@@ -4154,36 +4154,36 @@ triggerMultipartBody(<index>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| *dizin*> < | Yes | Tamsayı | İstediğiniz bölümün dizin değeri |
+| <*Dizin*> | Evet | Tamsayı | İstediğinizin dizin değeri |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*gövde*> | Dize | Tetikleyicinin çok parçalı çıkışında belirtilen bölümün gövdesi |
+| <*Vücut*> | Dize | Bir tetikleyicinin çok parçalı çıkışında belirtilen parçanın gövdesi |
 ||||
 
 <a name="triggerOutputs"></a>
 
 ### <a name="triggeroutputs"></a>triggerOutputs
 
-Çalışma zamanında tetikleyicinin çıkışını veya diğer JSON ad ve-değer çiftleriyle değerleri döndürün.
-`trigger().outputs`için toplu değer.
-Bkz. [Tetikleyici ()](#trigger).
+Bir tetikleyicinin çıktısını çalışma zamanında veya diğer JSON ad ve değer çiftlerinden gelen değerleri döndürün.
+Steno `trigger().outputs`için.
+Bkz. [tetikleyici()](#trigger).
 
 ```
 triggerOutputs()
 ```
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*tetikleyicisi-çıkış*> | Dize | Çalışma zamanında bir tetikleyiciden alınan çıkış  |
+| <*tetikleme çıkışı*> | Dize | Çalışma zamanında bir tetikleyiciden çıktı  |
 ||||
 
 <a name="trim"></a>
 
-### <a name="trim"></a>kırpma
+### <a name="trim"></a>Döşeme
 
-Baştaki ve sondaki boşlukları bir dizeden kaldırın ve güncelleştirilmiş dizeyi döndürün.
+Satır aralığını ve sondaki beyaz boşluğu bir dizeden kaldırın ve güncelleştirilmiş dizeyi döndürün.
 
 ```
 trim('<text>')
@@ -4191,30 +4191,30 @@ trim('<text>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin*> | Yes | Dize | Kaldırılacak öndeki ve sondaki boşluğu olan dize |
+| <*Metin*> | Evet | Dize | Kaldırılacak öncü ve sondaki beyaz alana sahip dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Updatedtext*> | Dize | Baştaki veya sondaki boşluk olmadan özgün dize için güncelleştirilmiş bir sürüm |
+| <*güncelleştirilmişMetin*> | Dize | Boşluk tuşuna girmeden veya beyaz boşluğu izlemeden özgün dize için güncelleştirilmiş bir sürüm |
 ||||
 
 *Örnek*
 
-Bu örnek, "Merhaba Dünya" dizesinden öndeki ve sondaki boşlukları kaldırır:
+Bu örnek, " Hello World " dizesinden satır aralığı ve sondaki beyaz boşluğu kaldırır:
 
 ```
 trim(' Hello World  ')
 ```
 
-Ve şu sonucu döndürür: `"Hello World"`
+Ve bu sonucu döndürür:`"Hello World"`
 
 <a name="union"></a>
 
-### <a name="union"></a>union
+### <a name="union"></a>birleşim
 
-Belirtilen koleksiyonlardaki *Tüm* öğeleri içeren bir koleksiyon döndürür.
-Sonuçta görünmesi için, bu işleve geçirilen herhangi bir koleksiyonda bir öğe görünebilir. Bir veya daha fazla öğe aynı ada sahip ise, bu adı taşıyan son öğe sonuçta görüntülenir.
+Belirtilen koleksiyonlardan *tüm* öğeleri içeren bir koleksiyon döndürün.
+Sonuç olarak görünmesi için, bu işleve geçirilen herhangi bir koleksiyonda bir öğe görünebilir. Bir veya daha fazla öğe aynı ada sahipse, bu ada sahip son öğe sonuçta görünür.
 
 ```
 union('<collection1>', '<collection2>', ...)
@@ -4223,31 +4223,31 @@ union([<collection1>], [<collection2>], ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*Collection2*>,...  | Yes | Dizi veya nesne, ancak her ikisi birden değil | *Tüm* öğeleri istediğiniz yerdeki Koleksiyonlar |
+| <*collection1*>, <*collection2*>, ...  | Evet | Dizi veya Nesne, ancak her ikisi de | *Tüm* öğeleri istediğiniz yerden koleksiyonlar |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Updatedcollection*> | Sırasıyla dizi veya nesne | Belirtilen koleksiyonlardaki tüm öğeleri içeren bir koleksiyon-yinelenen yok |
+| <*updatedCollection*> | Dizi veya Nesne, sırasıyla | Belirtilen koleksiyonlardan tüm öğeleri içeren bir koleksiyon - yineleme yok |
 ||||
 
 *Örnek*
 
-Bu örnek, bu koleksiyonlardaki *Tüm* öğeleri alır:
+Bu örnek, bu koleksiyonlardan *tüm* öğeleri alır:
 
 ```
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 ```
 
-Ve şu sonucu döndürür: `[1, 2, 3, 10, 101]`
+Ve bu sonucu döndürür:`[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
-### <a name="uricomponent"></a>URIComponent
+### <a name="uricomponent"></a>uriComponent
 
-URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek dize için Tekdüzen Kaynak tanımlayıcısı (URI) kodlu bir sürüm döndürün.
-[EncodeURIComponent ()](#encodeUriComponent)yerine bu işlevi kullanın.
-Her iki işlev de aynı şekilde çalışır, ancak `uriComponent()` tercih edilir.
+URL güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek, tek düzen kaynak tanımlayıcısı (URI) kodlanmış sürümü bir dize için döndürün.
+[UriComponent() kodlayerine](#encodeUriComponent)bu işlevi kullanın.
+Her iki fonksiyon da `uriComponent()` aynı şekilde çalışsa da tercih edilir.
 
 ```
 uriComponent('<value>')
@@ -4255,29 +4255,29 @@ uriComponent('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | URI kodlu biçime dönüştürülecek dize |
+| <*Değer*> | Evet | Dize | URI kodlu biçime dönüştürülecek dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*kodlanmış urı*> | Dize | Kaçış karakterleri içeren URI kodlamalı dize |
+| <*kodlanmış-uri*> | Dize | Kaçış karakterleri ile URI kodlanmış dize |
 ||||
 
 *Örnek*
 
-Bu örnek, bu dize için URI kodlu bir sürüm oluşturur:
+Bu örnek, bu dize için URI kodlanmış bir sürüm oluşturur:
 
 ```
 uriComponent('https://contoso.com')
 ```
 
-Ve şu sonucu döndürür: `"http%3A%2F%2Fcontoso.com"`
+Ve bu sonucu döndürür:`"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
-### <a name="uricomponenttobinary"></a>Urıonenttobinary
+### <a name="uricomponenttobinary"></a>uriComponentToBinary
 
-Tekdüzen Kaynak tanımlayıcısı (URI) bileşeni için ikili sürüm döndürün.
+Tek bir kaynak tanımlayıcısı (URI) bileşeni için ikili sürümü döndürün.
 
 ```
 uriComponentToBinary('<value>')
@@ -4285,23 +4285,23 @@ uriComponentToBinary('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek URI kodlamalı dize |
+| <*Değer*> | Evet | Dize | Dönüştürmek için URI kodlanmış dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*binary-kodlamalı urı*> | Dize | URI kodlamalı dize için ikili sürüm. İkili içerik Base64 kodlandı ve `$content`tarafından temsil edilir. |
+| <*ikili-for-kodlanmış-uri*> | Dize | URI kodlanmış dize için ikili sürüm. İkili içerik base64 kodlanır ve `$content`. |
 ||||
 
 *Örnek*
 
-Bu örnek, URI kodlamalı bu dize için ikili sürüm oluşturur:
+Bu örnek, URI kodlanmış bu dize için ikili sürümü oluşturur:
 
 ```
 uriComponentToBinary('http%3A%2F%2Fcontoso.com')
 ```
 
-Ve şu sonucu döndürür:
+Ve bu sonucu döndürür:
 
 `"001000100110100001110100011101000111000000100101001100
 11010000010010010100110010010001100010010100110010010001
@@ -4310,9 +4310,9 @@ Ve şu sonucu döndürür:
 
 <a name="uriComponentToString"></a>
 
-### <a name="uricomponenttostring"></a>Urıonenttostring
+### <a name="uricomponenttostring"></a>uriComponentToString
 
-Tekdüzen Kaynak tanımlayıcısı (URI) kodlu bir dize için dize sürümünü döndürün, URI kodlu dizeyi etkin bir şekilde çözerek.
+Uri kodlu dizeyi etkili bir şekilde çözen tek tip bir kaynak tanımlayıcısı (URI) kodlanmış dize için dize sürümünü döndürün.
 
 ```
 uriComponentToString('<value>')
@@ -4320,29 +4320,29 @@ uriComponentToString('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Kodu çözülecek URI kodlamalı dize |
+| <*Değer*> | Evet | Dize | Decode için URI kodlanmış dize |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*kodu çözülmüş-urı*> | Dize | URI kodlamalı dize için kodu çözülmüş sürüm |
+| <*deşifre-uri*> | Dize | URI kodlanmış dize için kodlanmış sürümü |
 ||||
 
 *Örnek*
 
-Bu örnek, bu URI kodlu dize için kodu çözülmüş dize sürümünü oluşturur:
+Bu örnek, URI tarafından kodlanmış bu dize için deşifre edilmiş dize sürümünü oluşturur:
 
 ```
 uriComponentToString('http%3A%2F%2Fcontoso.com')
 ```
 
-Ve şu sonucu döndürür: `"https://contoso.com"`
+Ve bu sonucu döndürür:`"https://contoso.com"`
 
 <a name="uriHost"></a>
 
 ### <a name="urihost"></a>uriHost
 
-Tekdüzen Kaynak tanımlayıcısı (URI) için `host` değeri döndürün.
+Tek `host` tip kaynak tanımlayıcısı (URI) için değeri döndürün.
 
 ```
 uriHost('<uri>')
@@ -4350,29 +4350,29 @@ uriHost('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı*> | Yes | Dize | `host` değerini istediğiniz URI |
+| <*Urı*> | Evet | Dize | `host` Değer istediğiniz URI |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ana bilgisayar-değer*> | Dize | Belirtilen URI için `host` değeri |
+| <*ana bilgisayar değeri*> | Dize | `host` Belirtilen URI değeri |
 ||||
 
 *Örnek*
 
-Bu örnek, bu URI için `host` değerini bulur:
+Bu örnek, `host` bu URI için değeri bulur:
 
 ```
 uriHost('https://www.localhost.com:8080')
 ```
 
-Ve şu sonucu döndürür: `"www.localhost.com"`
+Ve bu sonucu döndürür:`"www.localhost.com"`
 
 <a name="uriPath"></a>
 
 ### <a name="uripath"></a>uriPath
 
-Tekdüzen Kaynak tanımlayıcısı (URI) için `path` değeri döndürün.
+Tek `path` tip kaynak tanımlayıcısı (URI) için değeri döndürün.
 
 ```
 uriPath('<uri>')
@@ -4380,29 +4380,29 @@ uriPath('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı*> | Yes | Dize | `path` değerini istediğiniz URI |
+| <*Urı*> | Evet | Dize | `path` Değer istediğiniz URI |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Path-değer*> | Dize | Belirtilen URI için `path` değeri. `path` bir değere sahip değilse, "/" karakterini döndürün. |
+| <*yol değeri*> | Dize | `path` Belirtilen URI değeri. Bir `path` değeri yoksa, "/" karakterini döndürün. |
 ||||
 
 *Örnek*
 
-Bu örnek, bu URI için `path` değerini bulur:
+Bu örnek, `path` bu URI için değeri bulur:
 
 ```
 uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-Ve şu sonucu döndürür: `"/catalog/shownew.htm"`
+Ve bu sonucu döndürür:`"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
 ### <a name="uripathandquery"></a>uriPathAndQuery
 
-Tekdüzen Kaynak tanımlayıcısı (URI) için `path` ve `query` değerlerini döndürün.
+Tek `path` tip `query` kaynak tanımlayıcısı (URI) için ve değerleri döndürün.
 
 ```
 uriPathAndQuery('<uri>')
@@ -4410,29 +4410,29 @@ uriPathAndQuery('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı*> | Yes | Dize | `path` ve `query` değerlerini istediğiniz URI |
+| <*Urı*> | Evet | Dize | İstediğinin `path` URI `query` ve değerleri |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Path-Query-value*> | Dize | Belirtilen URI için `path` ve `query` değerleri. `path` bir değer belirtmezse, "/" karakterini döndürün. |
+| <*yol sorgusu-değeri*> | Dize | Belirtilen `path` `query` URI için değerler. Bir `path` değer belirtmiyorsa, "/" karakterini döndürün. |
 ||||
 
 *Örnek*
 
-Bu örnek, bu URI için `path` ve `query` değerlerini bulur:
+Bu örnek, `path` `query` bu URI için değerleri ve değerlerini bulur:
 
 ```
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-Ve şu sonucu döndürür: `"/catalog/shownew.htm?date=today"`
+Ve bu sonucu döndürür:`"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
 ### <a name="uriport"></a>uriPort
 
-Tekdüzen Kaynak tanımlayıcısı (URI) için `port` değeri döndürün.
+Tek `port` tip kaynak tanımlayıcısı (URI) için değeri döndürün.
 
 ```
 uriPort('<uri>')
@@ -4440,29 +4440,29 @@ uriPort('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı*> | Yes | Dize | `port` değerini istediğiniz URI |
+| <*Urı*> | Evet | Dize | `port` Değer istediğiniz URI |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*bağlantı noktası-değer*> | Tamsayı | Belirtilen URI için `port` değeri. `port` bir değer belirtmezse, protokol için varsayılan bağlantı noktasını döndürün. |
+| <*bağlantı noktası değeri*> | Tamsayı | `port` Belirtilen URI değeri. Bir `port` değer belirtmiyorsa, protokol için varsayılan bağlantı noktasını döndürün. |
 ||||
 
 *Örnek*
 
-Bu örnek, bu URI için `port` değerini döndürür:
+Bu örnek, `port` bu URI için değeri döndürür:
 
 ```
 uriPort('http://www.localhost:8080')
 ```
 
-Ve şu sonucu döndürür: `8080`
+Ve bu sonucu döndürür:`8080`
 
 <a name="uriQuery"></a>
 
 ### <a name="uriquery"></a>uriQuery
 
-Tekdüzen Kaynak tanımlayıcısı (URI) için `query` değeri döndürün.
+Tek `query` tip kaynak tanımlayıcısı (URI) için değeri döndürün.
 
 ```
 uriQuery('<uri>')
@@ -4470,29 +4470,29 @@ uriQuery('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı*> | Yes | Dize | `query` değerini istediğiniz URI |
+| <*Urı*> | Evet | Dize | `query` Değer istediğiniz URI |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| *sorgu-değer*> < | Dize | Belirtilen URI için `query` değeri |
+| <*sorgu değeri*> | Dize | `query` Belirtilen URI değeri |
 ||||
 
 *Örnek*
 
-Bu örnek, bu URI için `query` değerini döndürür:
+Bu örnek, `query` bu URI için değeri döndürür:
 
 ```
 uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-Ve şu sonucu döndürür: `"?date=today"`
+Ve bu sonucu döndürür:`"?date=today"`
 
 <a name="uriScheme"></a>
 
-### <a name="urischeme"></a>UriScheme
+### <a name="urischeme"></a>uriScheme
 
-Tekdüzen Kaynak tanımlayıcısı (URI) için `scheme` değeri döndürün.
+Tek `scheme` tip kaynak tanımlayıcısı (URI) için değeri döndürün.
 
 ```
 uriScheme('<uri>')
@@ -4500,74 +4500,74 @@ uriScheme('<uri>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı*> | Yes | Dize | `scheme` değerini istediğiniz URI |
+| <*Urı*> | Evet | Dize | `scheme` Değer istediğiniz URI |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*düzeni-değer*> | Dize | Belirtilen URI için `scheme` değeri |
+| <*şema değeri*> | Dize | `scheme` Belirtilen URI değeri |
 ||||
 
 *Örnek*
 
-Bu örnek, bu URI için `scheme` değerini döndürür:
+Bu örnek, `scheme` bu URI için değeri döndürür:
 
 ```
 uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-Ve şu sonucu döndürür: `"http"`
+Ve bu sonucu döndürür:`"http"`
 
 <a name="utcNow"></a>
 
-### <a name="utcnow"></a>utcNow
+### <a name="utcnow"></a>utcŞimdi
 
-Geçerli zaman damgasını döndürür.
+Geçerli zaman damgasını döndürün.
 
 ```
 utcNow('<format>')
 ```
 
-İsteğe bağlı olarak, <*format*> parametresiyle farklı bir biçim belirtebilirsiniz.
+İsteğe bağlı olarak, <*biçimi*> parametresi ile farklı bir biçim belirtebilirsiniz.
 
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*biçim*> | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
+| <*Biçim*> | Hayır | Dize | Ya tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) ya da özel bir [biçim deseni.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) Zaman damgası için varsayılan [biçim, ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) biçimidir. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
 | <*geçerli zaman damgası*> | Dize | Geçerli tarih ve saat |
 ||||
 
 *Örnek 1*
 
-Bugünün 15 Nisan 2018, 1:00:00 PM 'de olduğunu varsayalım.
-Bu örnekte geçerli zaman damgası alınır:
+Bugün 15 Nisan 2018 saat 13:00'de olduğunu varsayalım.
+Bu örnek, geçerli zaman damgasını alır:
 
 ```
 utcNow()
 ```
 
-Ve şu sonucu döndürür: `"2018-04-15T13:00:00.0000000Z"`
+Ve bu sonucu döndürür:`"2018-04-15T13:00:00.0000000Z"`
 
 *Örnek 2*
 
-Bugünün 15 Nisan 2018, 1:00:00 PM 'de olduğunu varsayalım.
-Bu örnekte, isteğe bağlı "D" biçimini kullanarak geçerli zaman damgası alınır:
+Bugün 15 Nisan 2018 saat 13:00'de olduğunu varsayalım.
+Bu örnek, isteğe bağlı "D" biçimini kullanarak geçerli zaman damgasını alır:
 
 ```
 utcNow('D')
 ```
 
-Ve şu sonucu döndürür: `"Sunday, April 15, 2018"`
+Ve bu sonucu döndürür:`"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
-### <a name="variables"></a>değişkenler
+### <a name="variables"></a>Değişken
 
-Belirtilen değişken için değeri döndürün.
+Belirtilen değişkenin değerini döndürün.
 
 ```
 variables('<variableName>')
@@ -4575,30 +4575,30 @@ variables('<variableName>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*variableName*> | Yes | Dize | Değerini istediğiniz değişkenin adı |
+| <*değişkenAd*> | Evet | Dize | Değeri istediğiniz değişkenin adı |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*değişken değer*> | Herhangi biri | Belirtilen değişkenin değeri |
+| <*değişken değeri*> | Herhangi biri | Belirtilen değişkenin değeri |
 ||||
 
 *Örnek*
 
-"NumItems" değişkeni için geçerli değerin 20 olduğunu varsayalım.
-Bu örnek, bu değişken için tamsayı değerini alır:
+"numItems" değişkeninin geçerli değerinin 20 olduğunu varsayalım.
+Bu örnek, bu değişkenin tamsayı değerini alır:
 
 ```
 variables('numItems')
 ```
 
-Ve şu sonucu döndürür: `20`
+Ve bu sonucu döndürür:`20`
 
 <a name="workflow"></a>
 
 ### <a name="workflow"></a>iş akışı
 
-Çalışma zamanı sırasında iş akışı ile ilgili tüm ayrıntıları döndürür.
+Çalışma süresi boyunca iş akışının kendisi hakkındaki tüm ayrıntıları döndürün.
 
 ```
 workflow().<property>
@@ -4606,12 +4606,12 @@ workflow().<property>
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*özellik*> | Hayır | Dize | Değerini istediğiniz iş akışı özelliğinin adı <p>Bir iş akışı nesnesi şu özelliklere sahiptir: **ad**, **tür**, **kimlik**, **konum**ve **Çalıştır**. **Run** özelliği değeri aynı zamanda şu özelliklere sahip bir nesnedir: **ad**, **tür**ve **kimlik**. |
+| <*Özellik*> | Hayır | Dize | Değeri istediğiniz iş akışı özelliğinin adı <p>İş akışı nesnesi şu özelliklere sahiptir: **ad,** **tür,** **id,** **konum**, ve **çalıştır**. **Run** özellik değeri de bu özelliklere sahip bir nesnedir: **ad**, **tür**, ve **id**. |
 |||||
 
 *Örnek*
 
-Bu örnek, bir iş akışının geçerli çalıştırması için ad döndürür:
+Bu örnek, bir iş akışının geçerli çalışmasının adını döndürür:
 
 ```
 workflow().run.name
@@ -4629,21 +4629,21 @@ xml('<value>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*değer*> | Yes | Dize | Dönüştürülecek JSON nesnesine sahip dize <p>JSON nesnesinin yalnızca bir root özelliği olmalıdır ve bu bir dizi olamaz. <br>Çift tırnak işareti (") için bir çıkış karakteri olarak ters eğik çizgi karakterini (\\) kullanın. |
+| <*Değer*> | Evet | Dize | Dönüştürmek için JSON nesnesi ile dize <p>JSON nesnesinin yalnızca bir kök özelliği olmalıdır, bu da bir dizi olamaz. <br>Çift tırnak işareti\\(") için bir kaçış karakteri olarak ters eğik çizgi karakterini ( ) kullanın. |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*XML-sürümü*> | Nesne | Belirtilen dize veya JSON nesnesi için kodlanmış XML |
+| <*xml versiyonu*> | Nesne | Belirtilen dize veya JSON nesnesi için kodlanmış XML |
 ||||
 
 *Örnek 1*
 
-Bu örnek, bu dize için bir JSON nesnesi içeren XML sürümünü oluşturur:
+Bu örnek, bir JSON nesnesi içeren bu dize için XML sürümünü oluşturur:
 
 `xml(json('{ \"name\": \"Sophia Owen\" }'))`
 
-Ve bu sonuç XML 'sini döndürür:
+Ve bu sonucu XML döndürür:
 
 ```xml
 <name>Sophia Owen</name>
@@ -4651,7 +4651,7 @@ Ve bu sonuç XML 'sini döndürür:
 
 *Örnek 2*
 
-Bu JSON nesnesine sahip olduğunuzu varsayalım:
+Bu JSON nesnesi olduğunu varsayalım:
 
 ```json
 {
@@ -4662,11 +4662,11 @@ Bu JSON nesnesine sahip olduğunuzu varsayalım:
 }
 ```
 
-Bu örnek, bu JSON nesnesini içeren bir dize için XML oluşturur:
+Bu örnek, bu JSON nesnesi içeren bir dize için XML oluşturur:
 
 `xml(json('{\"person\": {\"name\": \"Sophia Owen\", \"city\": \"Seattle\"}}'))`
 
-Ve bu sonuç XML 'sini döndürür:
+Ve bu sonucu XML döndürür:
 
 ```xml
 <person>
@@ -4677,9 +4677,9 @@ Ve bu sonuç XML 'sini döndürür:
 
 <a name="xpath"></a>
 
-### <a name="xpath"></a>XPath
+### <a name="xpath"></a>Xpath
 
-XML 'yi bir XPath (XML Path Language) ifadesiyle eşleşen düğümler veya değerler için denetleyin ve eşleşen düğümleri veya değerleri döndürün. Bir XPath ifadesi veya yalnızca "XPath", XML içeriğindeki düğümleri veya işlem değerlerini seçebilmeniz için bir XML belge yapısında gezinmenize yardımcı olur.
+XML'yi, XPath (XML Path Language) ifadesiyle eşleşen düğümler veya değerler için denetleyin ve eşleşen düğümleri veya değerleri döndürün. XPath ifadesi veya yalnızca "XPath", XML içeriğinde düğümleri veya işlem değerlerini seçebilmeniz için Bir XML belge yapısında gezinmenize yardımcı olur.
 
 ```
 xpath('<xml>', '<xpath>')
@@ -4687,60 +4687,60 @@ xpath('<xml>', '<xpath>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | Yes | Herhangi biri | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
-| <*xpath*> | Yes | Herhangi biri | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
+| <*Xml*> | Evet | Herhangi biri | XPath ifade değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
+| <*Xpath*> | Evet | Herhangi biri | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
 |||||
 
-| Dönüş değeri | Tür | Açıklama |
+| Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*XML düğümü*> | {1&gt;XML&lt;1} | Belirtilen XPath ifadesiyle yalnızca tek bir düğüm eşleştiğinde bir XML düğümü |
-| <*değer*> | Herhangi biri | Belirtilen XPath ifadesiyle yalnızca tek bir değer eşleştiğinde bir XML düğümündeki değer |
-| [<*XML-düğüm1*>, <*xml-Düğüm2*>,...] </br>-veya- </br>[<*değer1*>, <*değer2*>,...] | Dizi | XML düğümleri veya belirtilen XPath ifadesiyle eşleşen değerler içeren bir dizi |
+| <*xml düğümü*> | XML | Yalnızca tek bir düğüm belirtilen XPath ifadesiyle eşleştiğinde bir XML düğümü |
+| <*Değer*> | Herhangi biri | Yalnızca tek bir değer belirtilen XPath ifadesiyle eşleştiğinde XML düğümündeki değer |
+| [<*xml-düğüm1*>, <*xml-düğüm2*>, ...] </br>-veya- </br>[<*değer1*>, <*değeri2*>, ...] | Dizi | XML düğümleri veya değerleri belirtilen XPath ifadesiyle eşleşen bir dizi |
 ||||
 
 *Örnek 1*
 
-Bu örnek, belirtilen bağımsız değişkenlerde `<name></name>` düğümle eşleşen düğümleri bulur ve bu düğüm değerlerini içeren bir dizi döndürür:
+Bu örnek, belirtilen bağımsız `<name></name>` değişkenlerde düğüm eşleşen düğümleri bulur ve bu düğüm değerleri ile bir dizi döndürür:
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
-Bağımsız değişkenler şunlardır:
+İşte argümanlar şunlardır:
 
-* Bu XML içeren "Items" dizesi:
+* Bu XML içeren "öğeler" dizesi:
 
   `"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
 
-  Örnek, "Items" bağımsız değişkeninden XML dizesini almak için [Parameters ()](#parameters) işlevini kullanır, ancak [XML ()](#xml) işlevini kullanarak dizeyi XML biçimine de dönüştürmelidir.
+  Örnek, XML dizesini "öğeler" bağımsız değişkeninden almak için [parametreler()](#parameters) işlevini kullanır, ancak [xml()](#xml) işlevini kullanarak dizeyi XML biçimine dönüştürmesi gerekir.
 
-* Bu XPath ifadesi bir dize olarak geçirilir:
+* Dize olarak geçirilen bu XPath ifadesi:
 
   `"/produce/item/name"`
 
-`<name></name`eşleşen düğümleri içeren sonuç dizisi aşağıda verilmiştir:
+Burada eşleşen `<name></name`düğümleri ile sonuç dizisi:
 
 `[ <name>Gala</name>, <name>Honeycrisp</name> ]`
 
 *Örnek 2*
 
-Örnek 1 ' den sonra bu örnek, `<count></count>` düğümle eşleşen düğümleri bulur ve `sum()` işlevi ile bu düğüm değerlerini ekler:
+Örnek 1'de aşağıdaki örnek, düğümle `<count></count>` eşleşen düğümleri bulur ve bu `sum()` düğüm değerlerini işleve ekler:
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
-Ve şu sonucu döndürür: `30`
+Ve bu sonucu döndürür:`30`
 
 *Örnek 3*
 
-Bu örnekte her iki ifade de, bir ad alanı olan XML içeren belirtilen bağımsız değişkenlerde `<location></location>` düğümle eşleşen düğümleri bulur. 
+Bu örnekte, her iki ifadede de, xml ile ad alanı içeren belirtilen bağımsız değişkenlerde `<location></location>` düğümle eşleşen düğümler bulur. 
 
 > [!NOTE]
 >
-> Kod görünümünde çalışıyorsanız, ters eğik çizgi karakterini (\\) kullanarak çift tırnak işaretini (") kaçış. 
-> Örneğin, bir ifadeyi JSON dizesi olarak serileştirçalıştığınızda kaçış karakterleri kullanmanız gerekir. 
-> Ancak, mantıksal uygulama Tasarımcısı veya ifade Düzenleyicisi 'nde çalışıyorsanız, ters eğik çizgi karakteri temel alınan tanıma göre otomatik olarak eklendiğinden, çift tırnak işaretini atlamanız gerekmez, örneğin:
+> Kod görünümünde çalışıyorsanız, ters eğik çizgi karakterini kullanarak çift tırnak işaretinden (")\\kurtulun . 
+> Örneğin, bir ifadeyi JSON dizesi olarak seri hale getirdiğinizde kaçış karakterlerini kullanmanız gerekir. 
+> Ancak, Logic App Designer veya expression editor'da çalışıyorsanız, örneğin aşağıdakiler gibi ters eğik çizgi karakteri otomatik olarak temel tanıma eklenerek çift tırnak işaretinden kaçmanız gerekmez:
 > 
-> * Kod görünümü: `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+> * Kod görünümü:`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
-> * İfade Düzenleyicisi: `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+> * İfade düzenleyicisi:`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 > 
 > Aşağıdaki örnekler, ifade düzenleyicisine girdiğiniz ifadeler için geçerlidir.
 
@@ -4752,21 +4752,21 @@ Bu örnekte her iki ifade de, bir ad alanı olan XML içeren belirtilen bağıms
 
   `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
 
-Bağımsız değişkenler şunlardır:
+İşte argümanlar şunlardır:
 
-* XML belgesi ad alanını da içeren bu XML, `xmlns="http://contoso.com"`:
+* XML belge ad alanını içeren bu `xmlns="http://contoso.com"`XML:
 
   ```xml
   <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>
   ```
 
-* Burada XPath ifadesi:
+* Ya XPath ifade burada:
 
   * `/*[name()="file"]/*[name()="location"]`
 
   * `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]`
 
-`<location></location>` düğümle eşleşen sonuç düğümü aşağıda verilmiştir:
+Düğümle eşleşen sonuç düğümü `<location></location>` aşağıda veda edebilirsiniz:
 
 ```xml
 <location xmlns="https://contoso.com">Paris</location>
@@ -4774,12 +4774,12 @@ Bağımsız değişkenler şunlardır:
 
 *Örnek 4*
 
-Örnek 3 ' te aşağıdaki örnek, `<location></location>` düğümündeki değeri bulur:
+Örnek 3'te aşağıdaki örnek, `<location></location>` düğümdeki değeri bulur:
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-Ve şu sonucu döndürür: `"Paris"`
+Ve bu sonucu döndürür:`"Paris"`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Iş akışı tanımlama dili](../logic-apps/logic-apps-workflow-definition-language.md) hakkında bilgi edinin
+[İş Akışı Tanımı Dili](../logic-apps/logic-apps-workflow-definition-language.md) hakkında bilgi edinin

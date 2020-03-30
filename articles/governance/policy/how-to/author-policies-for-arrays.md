@@ -1,34 +1,34 @@
 ---
-title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
-description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
+title: Kaynaklardaki dizi özellikleri için yazar ilkeleri
+description: Dizi parametreleri ve dizi dil ifadeleriyle çalışmayı öğrenin, [*] takma adını değerlendirin ve Azure İlkesi tanım kurallarıyla öğeleri ekleyin.
 ms.date: 11/26/2019
 ms.topic: how-to
 ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280670"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarındaki dizi özellikleri için yazar ilkeleri
 
-Azure Resource Manager özellikler genellikle dizeler ve Boole değerleri olarak tanımlanır. Bire çok ilişkisi olduğunda, karmaşık özellikler bunun yerine diziler olarak tanımlanır. Azure Ilkesinde diziler birkaç farklı şekilde kullanılır:
+Azure Kaynak Yöneticisi özellikleri genellikle dizeleri ve booleans olarak tanımlanır. Bir-çok ilişkisi varsa, karmaşık özellikler bunun yerine diziler olarak tanımlanır. Azure İlkesi'nde diziler birkaç farklı şekilde kullanılır:
 
-- Birden çok seçenek sağlamak için bir [tanım parametresinin](../concepts/definition-structure.md#parameters)türü
-- **Ya da** **notın** koşullarını kullanan bir [ilke kuralının](../concepts/definition-structure.md#policy-rule) bir parçası
-- [\[\*\] diğer adını](../concepts/definition-structure.md#understanding-the--alias) değerlendirmek için değerlendiren bir ilke kuralının parçası:
-  - **Hiçbiri**, **Any**veya **Tümü** gibi senaryolar
-  - **Count** ile karmaşık senaryolar
-- Var olan bir diziyi değiştirmek veya eklemek için [ekleme efekti](../concepts/effects.md#append)
+- Bir tanım [parametresi](../concepts/definition-structure.md#parameters)türü , birden fazla seçenek sağlamak için
+- **In'deki** veya **olmayan** koşulları kullanarak bir [ilke kuralının](../concepts/definition-structure.md#policy-rule) bir parçası
+- Diğer [ \[ \* \] adı](../concepts/definition-structure.md#understanding-the--alias) değerlendiren bir ilke kuralının bir bölümü:
+  - **Yok**, **Yok**veya **Tümü** gibi senaryolar
+  - **Sayım** lı karmaşık senaryolar
+- Varolan bir diziyi değiştirmek veya eklemek için [ek efektinde](../concepts/effects.md#append)
 
-Bu makalede Azure Ilkesi tarafından kullanılan her kullanım ele alınmaktadır ve birkaç örnek tanım sunulmaktadır.
+Bu makale, Azure İlkesi'nin her kullanımını kapsar ve birkaç örnek tanım sağlar.
 
 ## <a name="parameter-arrays"></a>Parametre dizileri
 
-### <a name="define-a-parameter-array"></a>Parametre dizisi tanımlama
+### <a name="define-a-parameter-array"></a>Parametre dizilimi tanımlama
 
-Bir parametreyi dizi olarak tanımlamak, birden fazla değer gerektiğinde ilke esnekliği sağlar.
-Bu ilke tanımı, **Allowedlocations** parametresi için tek bir konuma izin verir ve varsayılan olarak _eastus2_:
+Bir parametrenin dizi olarak tanımlanması, birden fazla değer gerektiğinde ilke esnekliği sağlar.
+Bu ilke tanımı, _eastus2_için parametre **izin Konumlar** ve varsayılanlar için herhangi bir tek bir konuma izin verir:
 
 ```json
 "parameters": {
@@ -44,9 +44,9 @@ Bu ilke tanımı, **Allowedlocations** parametresi için tek bir konuma izin ver
 }
 ```
 
-**Tür** _dize_olduğu için, ilke atanırken yalnızca bir değer ayarlanabilir. Bu ilke atanırsa, kapsamdaki kaynaklara yalnızca tek bir Azure bölgesi içinde izin verilir. Çoğu ilke tanımlarının, _eastus2_, _eastus_ve _westus2_gibi onaylanan seçenekler listesi için izin verilmesi gerekir.
+**Türü** _dize_olduğu gibi, ilke atarken yalnızca bir değer ayarlanabilir. Bu ilke atanmışsa, kapsamdaki kaynaklara yalnızca tek bir Azure bölgesinde izin verilir. Çoğu ilke tanımları _eastus2_, _eastus_, ve _westus2_izin gibi onaylanmış seçeneklerin bir listesi için izin vermek gerekir.
 
-Birden çok seçeneğe izin vermek üzere ilke tanımı oluşturmak için _dizi_ **türünü**kullanın. Aynı ilke aşağıdaki gibi yeniden yazılabilir:
+Birden çok seçeneğe izin vermek için ilke tanımını oluşturmak _için dizi_ türünü kullan **type** Aynı ilke aşağıdaki gibi yeniden yazılabilir:
 
 ```json
 "parameters": {
@@ -69,17 +69,17 @@ Birden çok seçeneğe izin vermek üzere ilke tanımı oluşturmak için _dizi_
 ```
 
 > [!NOTE]
-> Bir ilke tanımı kaydedildikten sonra, bir parametresindeki **tür** özelliği değiştirilemez.
+> İlke tanımı kaydedildikten sonra, parametredeki **tür** özelliği değiştirilemez.
 
-Bu yeni parametre tanımı, ilke ataması sırasında birden fazla değer alır. Dizi özelliği tarafından tanımlanan, atama sırasında kullanılabilir olan değerler **önceden tanımlanmış seçenek** listesiyle daha da sınırlıdır. **AllowedValues** kullanımı isteğe bağlıdır.
+Bu yeni parametre tanımı ilke ataması sırasında birden fazla değer alır. Dizi özelliği **izin Verilen Değerler** tanımlandığı için, atama sırasında kullanılabilen değerler önceden tanımlanmış seçenekler listesiyle daha da sınırlıdır. İzin **verilen Değerlerin** kullanımı isteğe bağlıdır.
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Atama sırasında değerleri bir parametre dizisine geçirme
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Atama sırasında değerleri parametre dizilimine geçir
 
-İlke Azure portal aracılığıyla atanırken, _dizi_ **türünde** bir parametre tek bir metin kutusu olarak görüntülenir. İpucu "kullanım" diyor. değerlerini ayırmak için. (örneğin, Londra; New York) ". _Eastus2_, _eastus_ve _westus2_ izin verilen konum değerlerini parametreye geçirmek için aşağıdaki dizeyi kullanın:
+İlkeyi Azure portalı üzerinden atarken, **tür** _dizisi_ parametresi tek bir textbox olarak görüntülenir. İpucu diyor ki "Kullanın ; değerleri ayırmak için. (örneğin Londra; New York)". _Eastus2_, _eastus_ve _westus2'nin_ izin verilen konum değerlerini parametreye geçirmek için aşağıdaki dizeyi kullanın:
 
 `eastus2;eastus;westus2`
 
-Azure CLı, Azure PowerShell veya REST API kullanılırken parametre değerinin biçimi farklıdır. Değerler, parametrenin adını da içeren bir JSON dizesi aracılığıyla geçirilir.
+Azure CLI, Azure PowerShell veya REST API'yi kullanırken parametre değerinin biçimi farklıdır. Değerler, parametrenin adını da içeren bir JSON dizesinde geçirilir.
 
 ```json
 {
@@ -95,16 +95,16 @@ Azure CLı, Azure PowerShell veya REST API kullanılırken parametre değerinin 
 
 Bu dizeyi her SDK ile kullanmak için aşağıdaki komutları kullanın:
 
-- Azure CLı: komut [az Policy atama Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) parametresini parametre **params**
-- Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with Parameter **PolicyParameter**
-- REST API: _PUT_ [oluşturma](/rest/api/resources/policyassignments/create) işleminde, **Properties. Parameters** özelliğinin değeri olarak istek gövdesinin bir parçası olarak
+- Azure CLI: Parametre **paramlarıyla** [az ilke atamasını oluşturma](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) komutu
+- Azure PowerShell: Parametre **PolitikasıParametre** ile Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment)
+- REST API: _PUT_ [PUT'ta,](/rest/api/resources/policyassignments/create) request body'nin bir parçası olarak özelliklerin değeri olarak oluşturma **işlemi.parametreler** özelliği
 
 ## <a name="policy-rules-and-arrays"></a>İlke kuralları ve diziler
 
 ### <a name="array-conditions"></a>Dizi koşulları
 
-_Dizi_
-parametre **türünün** birlikte kullanılabileceği ilke kuralı [Koşulları](../concepts/definition-structure.md#conditions) `in` ve `notIn`sınırlıdır. Aşağıdaki ilke tanımını örnek olarak `equals` koşulu ile gerçekleştirin:
+Bir _dizi_
+parametrenin**type** kullanılabileceğini belirten ilke kuralı `in` [koşulları](../concepts/definition-structure.md#conditions) sınırlıdır ve `notIn`. Bir örnek olarak koşul `equals` ile aşağıdaki ilke tanımı nı ele alalım:
 
 ```json
 {
@@ -132,18 +132,18 @@ parametre **türünün** birlikte kullanılabileceği ilke kuralı [Koşulları]
 }
 ```
 
-Azure portal aracılığıyla bu ilke tanımını oluşturmaya çalışmak, bu hata iletisi gibi bir hataya yol açar:
+Bu ilke tanımını Azure portalı üzerinden oluşturmaya çalışmak, bu hata iletisi gibi bir hataya yol açar:
 
-- "' {GUID} ' ilkesi doğrulama hataları nedeniyle parametreleştirimedi. İlke parametrelerinin doğru tanımlanıp tanımlanmadığından emin olun. ' [Parameters (' allowedLocations ')] ' dil ifadesinin değerlendirme sonucu, ' Array ' türü, beklenen tür ' String '. '. "
+- "'{GUID}' ilkesi doğrulama hataları nedeniyle parametreye alınamadı. Lütfen ilke parametrelerinin doğru tanımlanmış olup olmadığını kontrol edin. İç özel durum 'Dil ifadesinin değerlendirme sonucu '[parameters('allowedLocations')]' türü 'Dizi', beklenen tür 'String'dir.'."
 
-Beklenen koşul **türü** `equals` _dizedir_. **Allowedlocations** **türü** _dizi_olarak tanımlandığından, ilke altyapısı dil ifadesini değerlendirir ve hata oluşturur. `in` ve `notIn` koşulu ile, ilke altyapısı dil ifadesinde **tür** _dizisini_ bekler. Bu hata iletisini çözümlemek için `equals` `in` veya `notIn`olarak değiştirin.
+Beklenen **type** koşul `equals` türü _dizedir._ **AllowedLocations** **tür** _dizisi_olarak tanımlandığından, ilke altyapısı dil ifadesini değerlendirir ve hatayı atar. `in` Ve `notIn` koşulile, ilke altyapısı dil ifadesinde **tür** _dizisini_ bekler. Bu hata iletisini `equals` gidermek `in` için, ya da `notIn`.
 
-### <a name="evaluating-the--alias"></a>[*] Diğer adı değerlendiriliyor
+### <a name="evaluating-the--alias"></a>[*] takma adını değerlendirme
 
-Adına eklenen **\[\*\]** olan diğer adlar **türün** bir _dizi_olduğunu gösterir. **\[\*\]** tüm dizinin değerini değerlendirmek yerine, dizideki her ÖĞEYI mantıksal ve aralarında tek tek değerlendirmek mümkün hale getirir. Her öğe değerlendirmesi için bu üç standart senaryo vardır: _none_, _Any_veya _All_ öğeleri eşleşir. Karmaşık senaryolar için [Count](../concepts/definition-structure.md#count)kullanın.
+Adlarına ** \[ \* ** eklenmiş diğer adlar, **türün** bir _dizi_olduğunu gösterir. Dizinin tamamının değerini değerlendirmek yerine, ** \[ \* ** dizinin her öğesini mantıksal ve aralarında tek tek değerlendirmeyi mümkün kılar. Madde başına bu değerlendirmenin yararlı olduğu üç standart senaryo vardır: _Yok,_ _Any_, veya _Tüm_ öğeler eşleşir. Karmaşık senaryolar [için,](../concepts/definition-structure.md#count)sayı kullanın.
 
-İlke altyapısı **, yalnızca** **IF** kuralı doğru olarak değerlendirildiğinde **etkisini** tetikler.
-Bu olgu, **\[\*\]** dizideki her öğeyi değerlendiren şekilde anlamak için önemlidir.
+İlke **altyapısı, yalnızca** **then** **if** kuralı doğru olarak değerlendirildiğinde efekti tetikler.
+Bu gerçeği dizi her bir unsuru ** \[ \* ** değerlendirir şekilde bağlamında anlamak önemlidir.
 
 Aşağıdaki senaryo tablosu için örnek ilke kuralı:
 
@@ -164,7 +164,7 @@ Aşağıdaki senaryo tablosu için örnek ilke kuralı:
 }
 ```
 
-**Iprules** dizisi aşağıdaki senaryo tablosu için aşağıdaki gibidir:
+**ipRules** dizisi aşağıdaki senaryo tablosu için aşağıdaki gibidir:
 
 ```json
 "ipRules": [
@@ -179,35 +179,35 @@ Aşağıdaki senaryo tablosu için örnek ilke kuralı:
 ]
 ```
 
-Aşağıdaki her bir koşul örneği için `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`ile değiştirin.
+Aşağıdaki her koşul örneği `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`için , .
 
-Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerden oluşan örnek ilke kuralının sonucudur:
+Aşağıdaki sonuçlar, yukarıdaki koşul ve örnek ilke kuralı ve varolan değerlerin dizisini biraraya gelen bir sonucudur:
 
 |Koşul |Sonuç | Senaryo |Açıklama |
 |-|-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Hiçbiri eşleşmiyor |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
-|`{<field>,"notEquals":"10.0.4.1"}` |İlke etkisi |Hiçbiri eşleşmiyor |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _true_ ve etki tetiklenir. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |İlke etkisi |Bir veya daha fazla eşleşme |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir ve bu nedenle **Not al** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Bir veya daha fazla eşleşme |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_değil), bu nedenle etki**tetiklenmez** . |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |İlke etkisi |Tüm eşleşme değil |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir ve bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |İlke etkisi |Tüm eşleşme değil |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nothing |Tüm eşleşme |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Tüm eşleşme |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Hiçbiri eşleşmez |Bir dizi öğesi yanlış olarak değerlendirir (127.0.0.1 != 127.0.0.1) ve bir doğru (127.0.0.1 != 192.168.1.1), böylece **notEquals** durumu _yanlış_ tır ve etkisi tetiklenmez. |
+|`{<field>,"notEquals":"10.0.4.1"}` |İlke etkisi |Hiçbiri eşleşmez |Her iki dizi öğesi de doğru olarak değerlendirir (10.0.4.1 != 127.0.0.1 ve 10.0.4.1 != 192.168.1.1.1) böylece **notEquals** koşulu _doğrudur_ ve etkisi tetiklenir. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |İlke etkisi |Bir veya daha fazla eşleşme |Bir dizi öğesi yanlış olarak değerlendirir (127.0.0.1 != 127.0.0.1) ve bir doğru (127.0.0.1 != 192.168.1.1), böylece **notEquals** durumu _yanlıştır_. Mantıksal işleç doğru olarak değerlendirir _(yanlış_**değil),** böylece etkisi tetiklenir. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Bir veya daha fazla eşleşme |Her iki dizi öğesi de doğru olarak değerlendirilir (10.0.4.1 != 127.0.0.1 ve 10.0.4.1 != 192.168.1.1) olarak değerlendirilir, böylece **notEquals** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirir _(doğru_**değil),** böylece etkisi tetiklenmez. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |İlke etkisi |Tüm eşleşmeler |Bir dizi öğesi doğru olarak değerlendirir (127.0.0.1 == 127.0.0.1) ve bir yanlış (127.0.0.1 == 192.168.1.1), böylece **Eşittir** koşulu _yanlıştır._ Mantıksal işleç doğru olarak değerlendirir _(yanlış_**değil),** böylece etkisi tetiklenir. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |İlke etkisi |Tüm eşleşmeler |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 == 127.0.0.1 ve 10.0.4.1 == 192.168.1.1) yani **Eşittir** koşulu _yanlıştır._ Mantıksal işleç doğru olarak değerlendirir _(yanlış_**değil),** böylece etkisi tetiklenir. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nothing |Tüm maç |Bir dizi öğesi doğru olarak değerlendirir (127.0.0.1 == 127.0.0.1) ve bir yanlış olarak (127.0.0.1 == 192.168.1.1), böylece **Eşittir** koşulu _yanlış_ tır ve efekt tetiklenmez. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Tüm maç |Her iki dizi öğesi de yanlış olarak değerlendirir (10.0.4.1 == 127.0.0.1 ve 10.0.4.1 == 192.168.1.1) bu nedenle **Eşittir** koşulu _yanlıştır_ ve efekt tetiklenmez. |
 
-## <a name="the-append-effect-and-arrays"></a>Ekleme efekti ve dizileri
+## <a name="the-append-effect-and-arrays"></a>Ek efekti ve diziler
 
-**Ayrıntılar. alanının** **\[\*\]** diğer adı olup olmadığı üzerine [ekleme efekti](../concepts/effects.md#append) farklı şekilde davranır.
+[Ek efekti,](../concepts/effects.md#append) **details.field'ın** takma ad ** \[ \* ** olup olmadığına bağlı olarak farklı şekilde değişir.
 
-- Bir **\[\*\]** diğer adı olmadığında, append tüm diziyi **değer** özelliği ile değiştirir
-- Bir **\[\*** diğer adı \], append değeri var olan diziye bir **değer** özelliği ekler veya yeni diziyi oluşturur
+- ** \[ Takma \* ** ad olmadığında, ek tüm diziyi **değer** özelliğiyle değiştirir
+- ** \[ Bir \* ** diğer ad, ek **değer** özelliğini varolan diziye ekler veya yeni dizioluşturur
 
-Daha fazla bilgi için bkz. [append örnekleri](../concepts/effects.md#append-examples).
+Daha fazla bilgi için [ek örneklere](../concepts/effects.md#append-examples)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
+- [Azure İlkesi örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.
-- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
-- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](remediate-resources.md)öğrenin.
-- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.
+- [İlkeleri programlı bir şekilde nasıl oluşturlayacağımı](programmatically-create.md)anlayın.
+- [Uyumlu olmayan kaynakları](remediate-resources.md)nasıl düzelteriz öğrenin.
+- [Azure yönetim gruplarıyla kaynaklarınızı düzenleyin](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu gözden geçirin.

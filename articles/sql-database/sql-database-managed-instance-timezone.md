@@ -1,6 +1,6 @@
 ---
-title: Yönetilen örnek saat dilimleri
-description: Azure SQL veritabanı yönetilen örneği 'nin saat dilimi özellikleri hakkında bilgi edinin
+title: Yönetilen Örnek saat dilimleri
+description: Azure SQL Veritabanı Yönetilen Örneği saat dilimi özellikleri hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -11,46 +11,46 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 09/03/2019
 ms.openlocfilehash: 0dbed3db8e106b9bfe1b48ff2b9bc52840fc4c3a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256100"
 ---
-# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'nde saat dilimleri
+# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı Yönetilen Örneği'nde saat dilimleri
 
-Eşgüdümlü Evrensel Saat (UTC), bulut çözümlerinin veri katmanı için önerilen saat bölgesidir. Azure SQL veritabanı yönetilen örneği Ayrıca, tarih ve saat değerlerini depolayan ve Tarih ve saat işlevlerini belirli bir saat diliminin örtük bağlamıyla çağıran mevcut uygulamaların ihtiyaçlarını karşılamak için bir saat dilimi seçimi sunmaktadır.
+Eşgüdümlü Evrensel Saat (UTC), bulut çözümlerinin veri katmanı için önerilen saat dilimidir. Azure SQL Veritabanı Yönetilen Örneği, tarih ve saat değerlerini depolayan ve tarih ve saat işlevlerini belirli bir saat diliminin örtülü bağlamıyla depolayan varolan uygulamaların gereksinimlerini karşılamak için bir saat dilimi seçeneği de sunar.
 
-[GETDATE ()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) veya clr Code gibi T-SQL işlevleri örnek düzeyinde ayarlanan saat dilimini gözlemler. SQL Server Agent işler, örneğin zaman dilimine göre zamanlamaları da izler.
+[GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) veya CLR kodu gibi T-SQL işlevleri, örnek düzeyinde ayarlanan saat dilimini gözlemler. SQL Server Agent işleri de örneğin saat dilimine göre zamanlamaları izleyin.
 
   >[!NOTE]
-  > Yönetilen örnek, Azure SQL veritabanı 'nın saat dilimi ayarını destekleyen tek dağıtım seçeneğidir. Diğer dağıtım seçenekleri her zaman UTC 'yi izler.
-Tarih ve saat bilgilerini UTC dışı bir saat diliminde yorumlayabilmeniz gerekiyorsa, tek ve havuza alınmış SQL veritabanlarındaki [saat dilimini](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) kullanın.
+  > Yönetilen Örnek, Azure SQL Veritabanı'nın saat dilimi ayarını destekleyen tek dağıtım seçeneğidir. Diğer dağıtım seçenekleri her zaman UTC'yi izler.
+UTC olmayan bir saat diliminde tarih ve saat bilgilerini yorumlamanız [gerekiyorsa, SAAT DILIMI'ni](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) tek ve birleştirilmiş SQL veritabanlarında kullanın.
 
 ## <a name="supported-time-zones"></a>Desteklenen saat dilimleri
 
-Desteklenen bir saat dilimi kümesi, yönetilen örneğin temeldeki işletim sisteminden devralınır. Yeni saat dilimi tanımlarını almak ve var olan değişiklikleri yansıtmak için düzenli olarak güncelleştirilir.
+Desteklenen saat dilimleri kümesi, yönetilen örneğin temel işletim sisteminden devralır. Yeni saat dilimi tanımlarını almak ve varolanlarla yapılan değişiklikleri yansıtmak için düzenli olarak güncelleştirilir.
 
-[Günışığından yararlanma zaman/saat dilimi değişiklikleri ilkesi](https://aka.ms/time) , 2010 ileri 'den geçmiş doğruluğu garanti eder.
+[Gün ışığından yararlanma saati/saat dilimi değişiklikleri politikası,](https://aka.ms/time) 2010'dan itibaren tarihsel doğruluğu garanti eder.
 
-Desteklenen saat dilimlerinin adlarına sahip bir liste, [sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) sistem görünümü aracılığıyla sunulur.
+Desteklenen saat dilimlerinin adlarının yer alan bir listesi [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) sistem görünümünde açıklanır.
 
 ## <a name="set-a-time-zone"></a>Saat dilimi ayarlama
 
-Yönetilen bir örneğin saat dilimi, yalnızca örnek oluşturma sırasında ayarlanabilir. Varsayılan saat dilimi UTC 'dir.
+Yönetilen bir örneğin saat dilimi yalnızca örnek oluşturma sırasında ayarlanabilir. Varsayılan saat dilimi UTC'dir.
 
   >[!NOTE]
-  > Mevcut bir yönetilen Örneğin saat dilimi değiştirilemez.
+  > Varolan yönetilen bir örneğin saat dilimi değiştirilemez.
 
-### <a name="set-the-time-zone-through-the-azure-portal"></a>Saat dilimini Azure portal ile ayarlama
+### <a name="set-the-time-zone-through-the-azure-portal"></a>Azure portalı üzerinden saat dilimini ayarlama
 
 Yeni bir örnek için parametreler girdiğinizde, desteklenen saat dilimleri listesinden bir saat dilimi seçin.
   
-![Örnek oluşturma sırasında bir saat dilimini ayarlama](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
+![Örnek oluşturma sırasında bir saat dilimi ayarlama](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-Örnek oluşturma sırasında saat dilimini ayarlamak için [Kaynak Yöneticisi şablonunuzda](https://aka.ms/sql-mi-create-arm-posh) TimeZoneId özelliğini belirtin.
+Örnek oluşturma sırasında saat dilimini ayarlamak için [Kaynak Yöneticisi şablonunuzda](https://aka.ms/sql-mi-create-arm-posh) saat dilimi özelliğini belirtin.
 
 ```json
 "properties": {
@@ -67,181 +67,181 @@ Yeni bir örnek için parametreler girdiğinizde, desteklenen saat dilimleri lis
 
 ```
 
-TimeZoneId özelliği için desteklenen değerlerin bir listesi Bu makalenin sonunda bulunur.
+Bu makalenin sonunda, timezoneId özelliği için desteklenen değerlerin listesi yer almaktadır.
 
 Belirtilmemişse, saat dilimi UTC olarak ayarlanır.
 
 ## <a name="check-the-time-zone-of-an-instance"></a>Bir örneğin saat dilimini denetleme
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) işlevi, örneğin saat diliminin görünen adını döndürür.
+[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) işlevi, örneğin saat diliminin görüntü adını döndürür.
 
-## <a name="cross-feature-considerations"></a>Özellikler arası konular
+## <a name="cross-feature-considerations"></a>Çapraz özellik hususları
 
-### <a name="restore-and-import"></a>Geri yükleme ve içeri aktarma
+### <a name="restore-and-import"></a>Geri yükleme ve alma
 
-Bir yedekleme dosyasını geri yükleyebilir veya verileri yönetilen bir örneğe veya farklı saat dilimi ayarlarına sahip bir sunucudan içeri aktarabilirsiniz. Bunu dikkatli bir şekilde yaptığınızdan emin olun. Farklı saat dilimi ayarlarına sahip iki SQL Server örneği arasında veri aktarırken olduğu gibi, uygulama davranışını ve sorgu ve raporların sonuçlarını çözümleyin.
+Bir yedekleme dosyasını geri yükleyebilir veya farklı saat dilimi ayarlarına sahip bir örnekten veya sunucudan yönetilen bir örne veri aktarabilirsiniz. Dikkatli olun. Uygulama davranışını ve sorguların ve raporların sonuçlarını analiz edin, tıpkı farklı saat dilimi ayarlarına sahip iki SQL Server örneği arasında veri aktarımı yaptığınızda olduğu gibi.
 
 ### <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
 
-Bir zaman içinde geri yükleme gerçekleştirdiğinizde geri yükleme süresi UTC saati olarak yorumlanır. Bu şekilde, gün ışığından yararlanma süresi ve olası değişiklikleri nedeniyle herhangi bir belirsizlikleri kaçınılmaz.
+Zamanında geri yükleme yaptığınızda, geri yükleme süresi UTC zamanı olarak yorumlanır. Bu şekilde gün ışığından yararlanma saati ve olası değişiklikler nedeniyle herhangi bir belirsizlik önlenir.
 
 ### <a name="auto-failover-groups"></a>Otomatik yük devretme grupları
 
-Bir yük devretme grubundaki birincil ve ikincil bir örnek genelinde aynı saat dilimini kullanmak zorunlu değildir, ancak bunu kesinlikle öneririz.
+Bir başarısız lık grubunda birincil ve ikincil bir örnekte aynı saat dilimini kullanmak zorlanmaz, ancak şiddetle tavsiye ediyoruz.
 
   >[!WARNING]
-  > Yük devretme grubundaki birincil ve ikincil örnek için aynı saat dilimini kullanmanızı önemle tavsiye ederiz. Birincil ve ikincil örneklerin tamamında aynı saat dilimini tutmanın nadir bazı kullanım durumları nedeniyle zorlanmaz. El ile veya otomatik yük devretme durumunda, ikincil örnek orijinal saat dilimini koruyacağını anlamak önemlidir.
+  > Başarısız bir grupta birincil ve ikincil örnek için aynı saat dilimini kullanmanızı şiddetle öneririz. Bazı nadir kullanım örnekleri nedeniyle birincil ve ikincil örnekler arasında aynı saat dilimini tutmak zorlanmaz. Manuel veya otomatik arıza durumunda, ikincil örneğin orijinal saat dilimini koruyacağını anlamak önemlidir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Mevcut yönetilen Örneğin saat dilimi değiştirilemez.
-- SQL Server Agent işlerden başlatılan dış işlemler, örneğin saat dilimini gözlemlemektir.
+- Varolan yönetilen örneğin saat dilimi değiştirilemez.
+- SQL Server Agent işlerinden başlatılan dış işlemler, örneğin saat dilimini gözlemlemez.
 
-## <a name="list-of-supported-time-zones"></a>Desteklenen saat dilimlerinin listesi
+## <a name="list-of-supported-time-zones"></a>Desteklenen saat dilimleri listesi
 
-| **Saat dilimi KIMLIĞI** | **Saat dilimi görünen adı** |
+| **Saat dilimi kimliği** | **Saat dilimi görüntü adı** |
 | --- | --- |
-| Tarih çizgisi standart saati | (UTC-12:00) Uluslararası Tarih Çizgisi Batı |
-| UTC-11 | (UTC-11:00) Eşgüdümlü Evrensel Saat-11 |
-| Aleutian standart saati | (UTC-10:00) Aleutian Adaları |
-| Hawaii dili standart saati | (UTC-10:00) Havai |
-| Marquesas standart saati | (UTC-09:30) Marquesas Adaları |
-| Standart saat | (UTC-09:00) Alaska |
-| UTC-09 | (UTC-09:00) Eşgüdümlü Evrensel Saat-09 |
-| Pasifik Standart Saati (Meksika) | (UTC-08:00) Baja California |
-| UTC-08 | (UTC-08:00) Eşgüdümlü Evrensel Saat-08 |
-| Pasifik standart saati | (UTC-08:00) Pasifik Saati (ABD ve Kanada) |
-| ABD Sıradağlar Standart Saati | (UTC-07:00) Arizona |
-| Sıradağlar Standart Saati (Meksika) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
-| Sıradağlar Standart Saati | (UTC-07:00) Dağ Saati (ABD ve Kanada) |
+| Dateline Standart Saat | (UTC-12:00) Uluslararası Tarih Hattı Batı |
+| UTC-11 | (UTC-11:00) Eşgüdümlü Evrensel Zaman-11 |
+| Aleutian Standart Saati | (UTC-10:00) Aleut Adaları |
+| Hawaii Standart Saati | (UTC-10:00) Hawaii |
+| Marquesas Standart Saati | (UTC-09:30) Marquesas Adaları |
+| Alaska Standart Saati | (UTC-09:00) Alaska |
+| UTC-09 | (UTC-09:00) Eşgüdümlü Evrensel Zaman-09 |
+| Pasifik Standart Saati (Meksika) | (UTC-08:00) Baja Kaliforniya |
+| UTC-08 | (UTC-08:00) Eşgüdümlü Evrensel Zaman-08 |
+| Pasifik Standart Saati | (UTC-08:00) Pasifik Saati (ABD & Kanada) |
+| ABD Dağ Standart Saati | (UTC-07:00) Arizona |
+| Dağ Standart Saati (Meksika) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
+| Dağ Standart Saati | (UTC-07:00) Dağ Saati (ABD & Kanada) |
 | Orta Amerika Standart Saati | (UTC-06:00) Orta Amerika |
-| Merkezi Standart Saati | (UTC-06:00) Merkezi Saat (ABD ve Kanada) |
-| Paskalya Adası standart saati | (UTC-06:00) Paskalya Adası |
-| Merkezi Standart Saati (Meksika) | (UTC-06:00) Guadalajara, Mexico City, Monterrey |
-| Kanada Orta standart saati | (UTC-06:00) Saskatchewan |
-| GA Pasifik standart saati | (UTC-05:00) Bogota, Lima, Tito, RIO Branco |
+| Merkezi Standart Saat | (UTC-06:00) Merkezi Saat (ABD & Kanada) |
+| Paskalya Adası Standart Saati | (UTC-06:00) Paskalya Adası |
+| Merkezi Standart Saat (Meksika) | (UTC-06:00) Guadalajara, Mexico City, Monterrey |
+| Kanada Merkezi Standart Saati | (UTC-06:00) Saskatchewan |
+| SA Pasifik Standart Saati | (UTC-05:00) Bogota, Lima, Quito, Rio Branco |
 | Doğu Standart Saati (Meksika) | (UTC-05:00) Chetumal |
-| Doğu Standart Saati | (UTC-05:00) Doğu Saati (ABD ve Kanada) |
-| Haiti standart saati | (UTC-05:00) Haiti |
-| Küa standart saati | (UTC-05:00) Havana |
+| Doğu Standart Saati | (UTC-05:00) Doğu Saati (ABD & Kanada) |
+| Haiti Standart Saati | (UTC-05:00) Haiti |
+| Küba Standart Saati | (UTC-05:00) Havana |
 | ABD Doğu Standart Saati | (UTC-05:00) Indiana (Doğu) |
-| Turks ve Caicos standart saati | (UTC-05:00) Turks ve Caicos |
-| Paraguay standart saati | (UTC-04:00) Asuncion |
-| Atlantik standart saati | (UTC-04:00) Atlantik Saati (Kanada) |
-| Venezuela standart saati | (UTC-04:00) Karakas |
-| Orta Brezilya Standart Saati | (UTC-04:00) Cuiaba |
-| GA Batı standart saati | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
-| Pasifik GA standart saati | (UTC-04:00) Santiago |
-| Newfoundland standart saati | (UTC-03:30) Newfoundland |
-| Tocantins standart saati | (UTC-03:00) Araguaina |
-| E. Güney Amerika Standart Saati | (UTC-03:00) Brezilya |
-| GA Doğu Standart Saati | (UTC-03:00) Cayenne, Fortaleza |
-| Arjantin Standart Saati | (UTC-03:00) Buenos Aonin şehri |
-| Grönland standart saati | (UTC-03:00) Grönland |
-| Montevideo standart saati | (UTC-03:00) Montevideo |
-| Magalkulvarlar standart saati | (UTC-03:00) Punta Arenas |
-| Saint Pierre standart saati | (UTC-03:00) Saint Pierre ve Miquelon |
-| Bahia standart saati | (UTC-03:00) Salvador |
-| UTC-02 | (UTC-02:00) Eşgüdümlü Evrensel Saat-02 |
-| Orta Atlantik standart saati | (UTC-02:00) Orta Atlantik-eski |
-| Azor Adaları standart saati | (UTC-01:00) Azor Adaları |
-| Cabo Verde standart saati | (UTC-01:00) Cape Verde Adaları |
+| Turks Ve Caicos Standart Saati | (UTC-05:00) Turks ve Caicos Adaları |
+| Paraguay Standart Saati | (UTC-04:00) Öztürk |
+| Atlantik Standart Saati | (UTC-04:00) Atlantik Saati (Kanada) |
+| Venezuela Standart Saati | (UTC-04:00) Caracas |
+| Orta Brezilya Standart Saati | (UTC-04:00) Cuiabá |
+| SA Batı Standart Saati | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
+| Pasifik SA Standart Saati | (UTC-04:00) Santiago |
+| Newfoundland Standart Saati | (UTC-03:30) Newfoundland |
+| Tocantins Standart Saati | (UTC-03:00) Araguaina |
+| E. Güney Amerika Standart Saati | (UTC-03:00) Brasilia |
+| SA Doğu Standart Saati | (UTC-03:00) Cayenne, Fortaleza |
+| Arjantin Standart Saati | (UTC-03:00) Buenos Aires Şehri |
+| Grönland Standart Saati | (UTC-03:00) Grönland |
+| Montevideo Standart Saati | (UTC-03:00) Montevideo |
+| Magallanes Standart Saati | (UTC-03:00) Punta Arenalar |
+| Saint Pierre Standart Saati | (UTC-03:00) Aziz Pierre ve Miquelon |
+| Bahia Standart Saati | (UTC-03:00) Salvador |
+| UTC-02 | (UTC-02:00) Eşgüdümlü Evrensel Zaman-02 |
+| Orta Atlantik Standart Saati | (UTC-02:00) Orta Atlantik - Eski |
+| Azores Standart Saati | (UTC-01:00) Azores |
+| Cape Verde Standart Saati | (UTC-01:00) Cabo Verde. |
 | UTC | (UTC) Eşgüdümlü Evrensel Saat |
-| GMT standart saati | (UTC + 00:00) Dublin, Edinburgh, Lizbon, Londra |
-| Greenwich Standart Saati | (UTC + 00:00) Monrovia, Reykjavik |
-| Anlatımı. Avrupa standart saati | (UTC+01:00) Amsterdam, Berlin, Bern, Roma, Stockholm, Viyana |
-| Orta Avrupa standart saati | (UTC+01:00) Belgrad, Bratislava, Budapeşte, Ljubljana, Prag |
-| Romanya standart saati | (UTC+01:00) Brüksel, Kopenhag, Madrid, Paris |
-| Fas standart saati | (UTC + 01:00) Kazablanka |
-| Sao Tome standart saati | (UTC + 01:00) Sao Tome |
-| Orta Avrupa standart saati | (UTC+01:00) Saraybosna, Üsküp, Varşova, Zagreb |
-| Anlatımı. Orta Afrika standart saati | (UTC+01:00) Orta Batı Afrika |
-| Ürdün Standart Saati | (UTC + 02:00) Amman dili |
-| GTB standart saati | (UTC+02:00) Atina, Bükreş |
+| GMT Standart Saati | (UTC+00:00) Dublin, Edinburgh, Lizbon, Londra |
+| Greenwich Standart Saati | (UTC+00:00) Monrovia, Reykjavik |
+| W. Avrupa Standart Saati | (UTC+01:00) Amsterdam, Berlin, Bern, Roma, Stockholm, Viyana |
+| Orta Avrupa Standart Saati | (UTC+01:00) Belgrad, Bratislava, Budapeşte, Ljubljana, Prag |
+| Romance Standart Zaman | (UTC+01:00) Brüksel, Kopenhag, Madrid, Paris |
+| Fas Standart Saati | (UTC+01:00) Casablanca |
+| Sao Tome Standart Saati | (UTC+01:00) Sao Tome |
+| Orta Avrupa Standart Saati | (UTC+01:00) Saraybosna, Üsküp, Varşova, Zagreb |
+| W. Orta Afrika Standart Saati | (UTC+01:00) Batı Orta Afrika |
+| Ürdün Standart Saati | (UTC+02:00) Amman |
+| GTB Standart Saati | (UTC+02:00) Atina, Bükreş |
 | Orta Doğu Standart Saati | (UTC+02:00) Beyrut |
-| Mısır standart saati | (UTC+02:00) Kahire |
-| E. Avrupa standart saati | (UTC + 02:00) Chisinau |
-| Suriye standart saati | (UTC+02:00) Şam |
-| Batı Bankası standart saati | (UTC + 02:00) Gaza, Hebron |
-| Güney Afrika standart saati | (UTC+02:00) Harare, Pretoria |
-| FLE standart saati | (UTC+02:00) Helsinki, Kiev, Riga, Sofya, Tallinn, Vilnius |
-| İsrail standart saati | (UTC+02:00) Kudüs |
-| Kaliningrad standart saati | (UTC + 02:00) Kaliningrad |
-| Sudan standart saati | (UTC + 02:00) Hartum |
-| Libya standart saati | (UTC + 02:00) Trablus |
-| Namibia Standart Saati | (UTC + 02:00) Wınbir Hoek |
-| Arap standart saati | (UTC+03:00) Bağdat |
-| Türkiye standart saati | (UTC + 03:00) Istanbul |
-| Arap standart saati | (UTC+03:00) Kuveyt, Riyad |
-| Belarus standart saati | (UTC + 03:00) Minsk |
-| Rusça standart saati | (UTC + 03:00) Moskova, St. Petersburg |
-| E. Afrika standart saati | (UTC+03:00) Nairobi |
-| Iran Standart Saati | (UTC+03:30) Tahran |
-| Arabistan standart saati | (UTC+04:00) Abu Dabi, Muscat |
-| Astrahan standart saati | (UTC + 04:00) Astrahan, Ulyanovsk |
-| Azerbaycan standart saati | (UTC+04:00) Bakü |
-| Rusya zaman Bölge 3 | (UTC + 04:00) İzhevsk, Samara |
+| Mısır Standart Saati | (UTC+02:00) Kahire |
+| E. Avrupa Standart Saati | (UTC+02:00) Chisinau |
+| Suriye Standart Saati | (UTC+02:00) Şam |
+| Batı Şeria Standart Saati | (UTC+02:00) Gazze, El Halil |
+| Güney Afrika Standart Saati | (UTC+02:00) Harare, Pretoria |
+| FLE Standart Saati | (UTC+02:00) Helsinki, Kiev, Riga, Sofya, Tallinn, Vilnius |
+| İsrail Standart Saati | (UTC+02:00) Kudüs |
+| Kaliningrad Standart Saati | (UTC+02:00) Kaliningrad |
+| Sudan Standart Saati | (UTC+02:00) Hartum |
+| Libya Standart Saati | (UTC+02:00) Trablus |
+| Namibya Standart Saati | (UTC+02:00) Windhoek |
+| Arapça Standart Saat | (UTC+03:00) Bağdat |
+| Türkiye Standart Saati | (UTC+03:00) Istanbul |
+| Arap Standart Saati | (UTC+03:00) Kuveyt, Riyad |
+| Beyaz Rusya Standart Saati | (UTC+03:00) Minsk |
+| Rusya Standart Saati | (UTC+03:00) Moskova, St. Petersburg |
+| E. Afrika Standart Saati | (UTC+03:00) Nairobi |
+| İran Standart Saati | (UTC+03:30) Tahran |
+| Arap Standart Saati | (UTC+04:00) Abu Dabi, Muscat |
+| Astrakhan Standart Saati | (UTC+04:00) Astrakhan, Ulyanovsk |
+| Azerbaycan Standart Saati | (UTC+04:00) Bakü |
+| Rusya Saat Dilimi 3 | (UTC+04:00) Izhevsk, Samara |
 | Mauritius Standart Saati | (UTC+04:00) Port Louis |
-| Saratov standart saati | (UTC + 04:00) Saratov |
-| Gürcüce standart saati | (UTC+04:00) Tiflis |
-| Volgograd standart saati | (UTC + 04:00) VO |
-| Kafkasya standart saati | (UTC+04:00) Erivan |
-| Afganistan standart saati | (UTC+04:30) Kabil |
-| Batı Asya Standart Saati | (UTC + 05:00) Ashgabat, Taşkent |
-| Ekaterinburg standart saati | (UTC + 05:00) Ekaterinburg |
-| Pakistan standart saati | (UTC+05:00) İslamabad, Karaçi |
-| Hindistan standart saati | (UTC+05:30) Chennai, Kalküta, Mumbai, Yeni Delhi |
-| Sri Lanka standart saati | (UTC+05:30) Sri Jayawardenepura |
-| Nepal standart saati | (UTC+05:45) Katmandu |
+| Saratov Standart Saati | (UTC+04:00) Saratov |
+| Gürcü Standart Saati | (UTC+04:00) Tiflis |
+| Volgograd Standart Saati | (UTC+04:00) Volgograd |
+| Kafkasya Standart Saati | (UTC+04:00) Erivan |
+| Afganistan Standart Saati | (UTC+04:30) Kabil |
+| Batı Asya Standart Saati | (UTC+05:00) Aşkabat, Taşkent |
+| Ekaterinburg Standart Saati | (UTC+05:00) Ekaterinburg |
+| Pakistan Standart Saati | (UTC+05:00) İslamabad, Karaçi |
+| Hindistan Standart Saati | (UTC+05:30) Chennai, Kalküta, Mumbai, Yeni Delhi |
+| Sri Lanka Standart Saati | (UTC+05:30) Sri Jayawardenepura |
+| Nepal Standart Saati | (UTC+05:45) Katmandu |
 | Orta Asya Standart Saati | (UTC+06:00) Astana |
-| Bangladeş standart saati | (UTC+06:00) Dakka |
-| Omsk standart saati | (UTC + 06:00) Omsk |
+| Bangladeş Standart Saati | (UTC+06:00) Dakka |
+| Omsk Standart Saati | (UTC+06:00) Omsk |
 | Myanmar Standart Saati | (UTC+06:30) Yangon (Rangoon) |
-| Doğu Asya Standart Saati | (UTC+07:00) Bangkok, Hanoi, Cakarta |
-| Alday standart saati | (UTC + 07:00) Barnaul, Gorno-Altaysk |
-| Anlatımı. Moğolistan standart saati | (UTC + 07:00) Hovd |
-| Kuzey Asya Standart Saati | (UTC + 07:00) Krasnoyarsk |
-| No. Orta Asya Standart Saati | (UTC+07:00) Novosibirsk |
-| Tomsk standart saati | (UTC + 07:00) Tomsk |
-| Çin standart saati | (UTC+08:00) Pekin, Çongcin, Hong Kong, Urumçi |
-| Kuzey Asya Doğu Standart Saati | (UTC + 08:00) Irkutsk |
-| Singapur standart saati | (UTC+08:00) Kuala Lumpur, Singapur |
-| Anlatımı. Avustralya Standart Saati | (UTC+08:00) Perth |
-| Taipei standart saati | (UTC+08:00) Taipei |
-| Ulanbator standart saati | (UTC+08:00) Ulanbator |
-| Orta Batı Batı standart saati | (UTC + 08:45) Eucla |
-| Transbaıkal standart saati | (UTC + 09:00) Çıta |
-| Tokyo standart saati | (UTC+09:00) Osaka, Sapporo, Tokyo |
-| Kuzey Kore standart saati | (UTC + 09:00) Pyeongyang |
-| Kore standart saati | (UTC+09:00) Seul |
-| Yakutsk standart saati | (UTC + 09:00) Yakutsk |
-| Orta. Avustralya Standart Saati | (UTC+09:30) Adelaide |
-| Orta Avustralya Standart Saati | (UTC+09:30) Darwin |
+| SE Asya Standart Saati | (UTC+07:00) Bangkok, Hanoi, Jakarta |
+| Altay Standart Saati | (UTC+07:00) Barnaul, Gorno-Altaysk |
+| W. Moğolistan Standart Saati | (UTC+07:00) Hovd |
+| Kuzey Asya Standart Saati | (UTC+07:00) Krasnoyarsk |
+| N. Orta Asya Standart Saati | (UTC+07:00) Novosibirsk |
+| Tomsk Standart Saati | (UTC+07:00) Tomsk |
+| Çin Standart Saati | (UTC+08:00) Pekin, Chongqing, Hong Kong, Urumçi |
+| Kuzey Asya Doğu Standart Saati | (UTC+08:00) ırkutsk |
+| Singapur Standart Saati | (UTC+08:00) Kuala Lumpur, Singapur |
+| W. Avustralya Standart Saati | (UTC+08:00) Perth |
+| Taipei Standart Saati | (UTC+08:00) Taipei |
+| Ulaanbaatar Standart Saati | (UTC+08:00) Ulaanbaatar |
+| Aus Merkez W. Standart Saat | (UTC+08:45) Eucla |
+| Transbaikal Standart Saati | (UTC+09:00) Chita |
+| Tokyo Standart Saati | (UTC+09:00) Osaka, Sapporo, Tokyo |
+| Kuzey Kore Standart Saati | (UTC+09:00) Pyongyang |
+| Kore Standart Saati | (UTC+09:00) Seul |
+| Yakutsk Standart Saati | (UTC+09:00) Yakutsk |
+| Cen, ne oldu? Avustralya Standart Saati | (UTC+09:30) Adelaide |
+| AUS Merkezi Standart Saati | (UTC+09:30) Darwin |
 | E. Avustralya Standart Saati | (UTC+10:00) Brisbane |
-| Avustralya Doğu Standart Saati | (UTC+10:00) Kanbera, Melbourne, Sidney |
-| Batı Pasifik standart saati | (UTC+10:00) Guam, Port Moresby |
-| Tazmanya standart saati | (UTC+10:00) Hobart |
-| Vladivostok Standart Saati | (UTC + 10:00) Vladivostok |
-| Lord Howe standart saati | (UTC + 10:30) Lord Howe Adası |
-| Bugane ille standart saati | (UTC + 11:00) Bugane ille Adası |
-| Rusya saat dilimi 10 | (UTC + 11:00) Chokurdakh |
-| Magadan Standart Saati | (UTC + 11:00) Magadan |
-| Norfolk standart saati | (UTC + 11:00) Norfolk Adası |
-| Sakhalin standart saati | (UTC + 11:00) Sakhalin |
-| Orta Pasifik standart saati | (UTC+11:00) Solomon Ad., Yeni Kaledonya |
-| Rusya saat dilimi 11 | (UTC + 12:00) Anadyr, Petropavlovsk-Kamchatsky |
-| Yeni Zelanda standart saati | (UTC+12:00) Auckland, Wellington |
-| UTC + 12 | (UTC+12:00) Eşgüdümlü Evrensel Saat+12 |
-| Fiji standart saati | (UTC+12:00) Fiji |
-| Kamçatstandart saati | (UTC+12:00) Petropavlovsk-Kamchatsky - Eski |
-| Chatham Adaları standart saati | (UTC + 12:45) Chatham Adaları |
-| UTC + 13 | (UTC + 13:00) Eşgüdümlü Evrensel Saat + 13 |
-| Tonga standart saati | (UTC+13:00) Nuku'alofa |
-| Samoa standart saati | (UTC+13:00) Samoa |
-| Line Adaları standart saati | (UTC + 14:00) Kiritimati Adası |
+| AUS Doğu Standart Saati | (UTC+10:00) Canberra, Melbourne, Sidney |
+| Batı Pasifik Standart Saati | (UTC+10:00) Guam, Port Moresby |
+| Tazmanya Standart Saati | (UTC+10:00) Hobart |
+| Vladivostok Standart Saati | (UTC+10:00) Vladivostok |
+| Lord Howe Standart Saati | (UTC+10:30) Lord Howe Adası |
+| Bougainville Standart Saati | (UTC+11:00) Bougainville Adası |
+| Rusya Saat Dilimi 10 | (UTC+11:00) Çokurdakh |
+| Magadan Standart Saati | (UTC+11:00) Magadan |
+| Norfolk Standart Saati | (UTC+11:00) Norfolk Adası |
+| Sakhalin Standart Saati | (UTC+11:00) Sakhalin |
+| Orta Pasifik Standart Saati | (UTC+11:00) Solomon Is., Yeni Kaledonya |
+| Rusya Saat Dilimi 11 | (UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky |
+| Yeni Zelanda Standart Saati | (UTC+12:00) Auckland, Wellington |
+| UTC+12 | (UTC+12:00) Eşgüdümlü Evrensel Zaman+12 |
+| Fiji Standart Saati | (UTC+12:00) Fiji |
+| Kamçatka Standart Saati | (UTC+12:00) Petropavlovsk-Kamchatsky - Eski |
+| Chatham Adaları Standart Saat | (UTC+12:45) Chatham Adaları |
+| UTC+13 | (UTC+13:00) Eşgüdümlü Evrensel Zaman+13 |
+| Tonga Standart Saati | (UTC+13:00) Nuku'alofa |
+| Samoa Standart Saati | (UTC+13:00) Samoa |
+| Line Adaları Standart Saati | (UTC+14:00) Kiritimati Adası |
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [AT saat dılımı (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys. time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

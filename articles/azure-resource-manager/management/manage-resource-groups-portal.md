@@ -1,108 +1,108 @@
 ---
-title: Kaynak gruplarını yönetme-Azure portal
-description: Kaynak gruplarınızı Azure Resource Manager kullanarak yönetmek için Azure portal kullanın. Kaynak grupları oluşturma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir.
+title: Kaynak gruplarını yönetme - Azure portalı
+description: Kaynak gruplarınızı Azure Kaynak Yöneticisi aracılığıyla yönetmek için Azure portalını kullanın. Kaynak gruplarının nasıl oluşturulup listelenebildiğini ve silineceklerini gösterir.
 author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 8087baf7595bfd2497f97fbff4822b356cd1b146
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274573"
 ---
-# <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Resource Manager kaynak gruplarını yönetme
+# <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portalını kullanarak Azure Kaynak Yöneticisi kaynak gruplarını yönetme
 
-Azure Kaynak gruplarınızı yönetmek için [Azure Resource Manager](overview.md) [Azure Portal](https://portal.azure.com) nasıl kullanacağınızı öğrenin. Azure kaynaklarını yönetmek için, bkz. [Azure Portal kullanarak Azure kaynaklarını yönetme](manage-resources-portal.md).
+Azure kaynak gruplarınızı yönetmek için [Azure Kaynak Yöneticisi](overview.md) ile Azure [portalını](https://portal.azure.com) nasıl kullanacağınızı öğrenin. Azure kaynaklarını yönetmek için Azure [portalını kullanarak Azure kaynaklarını yönet'e](manage-resources-portal.md)bakın.
 
-Kaynak gruplarını yönetme hakkında diğer makaleler:
+Kaynak gruplarının yönetimi yle ilgili diğer makaleler:
 
-- [Azure CLı kullanarak Azure kaynak gruplarını yönetme](manage-resources-cli.md)
-- [Azure PowerShell kullanarak Azure kaynak gruplarını yönetme](manage-resources-powershell.md)
+- [Azure CLI'yi kullanarak Azure kaynak gruplarını yönetme](manage-resources-cli.md)
+- [Azure PowerShell'i kullanarak Azure kaynak gruplarını yönetme](manage-resources-powershell.md)
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-is-a-resource-group"></a>Kaynak grubu nedir?
+## <a name="what-is-a-resource-group"></a>Kaynak grubu nedir
 
-Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Kaynak grubu bir çözümün tüm kaynaklarını veya yalnızca grup olarak yönetmek istediğiniz kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınıza siz karar verirsiniz. Genellikle, bunları bir grup olarak kolayca dağıtabilmeniz, güncelleştirebilmeniz ve silebilmeniz için aynı yaşam döngüsünü paylaşan kaynakları ekleyin.
+Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Kaynak grubu bir çözümün tüm kaynaklarını veya yalnızca grup olarak yönetmek istediğiniz kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınıza siz karar verirsiniz. Genel olarak, aynı kaynak grubuna aynı yaşam döngüsünü paylaşan kaynaklar ekleyin, böylece bunları grup olarak kolayca dağıtabilir, güncelleyebilir ve silebilirsiniz.
 
 Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu için bir konum belirttiğinizde meta verilerin nereye depolanacağını belirtirsiniz. Uyumluluk nedeniyle verilerinizin belirli bir bölgeye depolandığından emin olmanız gerekebilir.
 
-Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir konum belirttiğinizde, meta verilerin nerede depolandığını belirtirsiniz.
+Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Kaynak grubu için bir konum belirttiğiniz zaman, bu meta verilerin nerede depolandığınızı belirtirsiniz.
 
 ## <a name="create-resource-groups"></a>Kaynak grupları oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 2. **Kaynak gruplarını** seçin
 
-    ![Kaynak Grubu Ekle](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. **Add (Ekle)** seçeneğini belirleyin.
+    ![kaynak grubu ekleme](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
+3. **Ekle'yi**seçin.
 4. Aşağıdaki değerleri girin:
 
    - **Abonelik**: Azure aboneliğinizi seçin. 
-   - **Kaynak grubu**: yeni bir kaynak grubu adı girin. 
+   - **Kaynak grubu**: Yeni bir kaynak grubu adı girin. 
    - **Bölge**: **Orta ABD**gibi bir Azure konumu seçin.
 
-     ![kaynak grubu oluştur](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
-5. **Gözden geçir + oluştur** ' u seçin
-6. **Oluştur**’u seçin. Bir kaynak grubu oluşturmak birkaç saniye sürer.
-7. Kaynak grubu listesini yenilemek için üstteki menüden **Yenile** ' yi seçin ve ardından yeni oluşturulan kaynak grubunu seçerek dosyayı açın. Ya da üst kısımdaki **bildirim**(zil simgesi) öğesini seçin ve ardından yeni oluşturulan kaynak grubunu açmak için **kaynak grubuna git** ' i seçin.
+     ![kaynak grubu oluşturma](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+5. **İnceleme Seç + Oluştur**
+6. **Oluştur'u**seçin. Bir kaynak grubu oluşturmak birkaç saniye sürer.
+7. Kaynak grubu listesini yenilemek için üst menüden **Yenile'yi** seçin ve ardından açmak için yeni oluşturulan kaynak grubunu seçin. Veya üstten **Bildirim**(çan simgesi) seçin ve ardından yeni oluşturulan kaynak grubunu açmak **için kaynak grubuna git'i** seçin
 
-    ![kaynak grubuna git](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
+    ![kaynak grubuna gitme](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
-## <a name="list-resource-groups"></a>Kaynak gruplarını listeleme
+## <a name="list-resource-groups"></a>Kaynak gruplarını listele
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Kaynak gruplarını listelemek için **kaynak grupları** ' nı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+2. Kaynak gruplarını listelemek için **Kaynak gruplarını** seçin
 
-    ![kaynak gruplarına gözatamıyorum](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
+    ![kaynak gruplarına göz atın](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
 
-3. Kaynak grupları için görüntülenecek bilgileri özelleştirmek için **Sütunları Düzenle**' yi seçin. Aşağıdaki ekran görüntüsünde, ekranda ekleyebileceğiniz ekleme sütunları gösterilmektedir:
+3. Kaynak grupları için görüntülenen bilgileri özelleştirmek için **sütunları edit'i**seçin. Aşağıdaki ekran görüntüsü, ekrana ekleyebileceğiniz ek sütunları gösterir:
 
-## <a name="open-resource-groups"></a>Kaynak gruplarını aç
+## <a name="open-resource-groups"></a>Açık kaynak grupları
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 2. **Kaynak grupları**’nı seçin.
 3. Açmak istediğiniz kaynak grubunu seçin.
 
 ## <a name="delete-resource-groups"></a>Kaynak gruplarını silme
 
-1. Silmek istediğiniz kaynak grubunu açın.  Bkz. [açık kaynak grupları](#open-resource-groups).
+1. Silmek istediğiniz kaynak grubunu açın.  Bkz. [Açık kaynak grupları.](#open-resource-groups)
 2. **Kaynak grubunu sil**'i seçin.
 
-    ![Azure kaynak grubunu sil](./media/manage-resource-groups-portal/delete-group.png)
+    ![azure kaynak grubunu silme](./media/manage-resource-groups-portal/delete-group.png)
 
-Kaynakların silinmesini Azure Resource Manager nasıl sipariş Azure Resource Manager hakkında daha fazla bilgi için bkz. [kaynak grubu silme](delete-resource-group.md).
+Azure Kaynak Yöneticisi'nin kaynakların silinmesini nasıl emrettikleri hakkında daha fazla bilgi için Azure [Kaynak Yöneticisi kaynak silme](delete-resource-group.md)bölümüne bakın.
 
-## <a name="deploy-resources-to-a-resource-group"></a>Kaynakları bir kaynak grubuna dağıtma
+## <a name="deploy-resources-to-a-resource-group"></a>Kaynakları kaynak grubuna dağıtma
 
-Kaynak Yöneticisi şablonu oluşturduktan sonra, Azure kaynaklarınızı dağıtmak için Azure portal kullanabilirsiniz. Şablon oluşturmak için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](../templates/quickstart-create-templates-use-the-portal.md). Portalı kullanarak bir şablon dağıtmak için bkz. [Kaynak Yöneticisi şablonlarıyla kaynak dağıtma ve Azure Portal](../templates/deploy-portal.md).
+Bir Kaynak Yöneticisi şablonu oluşturduktan sonra, Azure kaynaklarınızı dağıtmak için Azure portalını kullanabilirsiniz. Şablon oluşturmak için [Bkz. Hızlı Başlangıç: Azure portalını kullanarak Azure Kaynak Yöneticisi şablonları oluşturun ve dağıtın.](../templates/quickstart-create-templates-use-the-portal.md) Portalı kullanarak şablon dağıtmak için [Kaynak Yöneticisi şablonları ve Azure portalı yla kaynakları dağıt'a](../templates/deploy-portal.md)bakın.
 
-## <a name="move-to-another-resource-group-or-subscription"></a>Başka bir kaynak grubuna veya aboneliğe taşıma
+## <a name="move-to-another-resource-group-or-subscription"></a>Başka bir kaynak grubuna veya aboneye taşıma
 
 Gruptaki kaynakları başka bir kaynak grubuna taşıyabilirsiniz. Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](move-resource-group-and-subscription.md).
 
-## <a name="lock-resource-groups"></a>Kaynak gruplarını kilitle
+## <a name="lock-resource-groups"></a>Kaynak gruplarını kilitleme
 
-Kilitleme, kuruluşunuzdaki diğer kullanıcıların Azure aboneliği, kaynak grubu veya kaynak gibi önemli kaynakları yanlışlıkla silmesini veya değiştirmelerini engeller. 
+Kilitleme, kuruluşunuzdaki diğer kullanıcıların Azure aboneliği, kaynak grubu veya kaynak gibi kritik kaynakları yanlışlıkla siler veya değiştirmesini engeller. 
 
-1. Silmek istediğiniz kaynak grubunu açın.  Bkz. [açık kaynak grupları](#open-resource-groups).
-2. Sol bölmede, **kilitler**' ı seçin.
-3. Kaynak grubuna bir kilit eklemek için **Ekle**' yi seçin.
-4. **Kilit adı**, **Kilit türü**ve **Not**girin. Kilit türleri **salt okunurdur**ve **Delete**' i içerir.
+1. Silmek istediğiniz kaynak grubunu açın.  Bkz. [Açık kaynak grupları.](#open-resource-groups)
+2. Sol bölmede **Kilitler'i**seçin.
+3. Kaynak grubuna kilit eklemek için **Ekle'yi**seçin.
+4. **Kilit adı,** **Kilit türü**ve **Notlar**girin. Kilit türleri **salt okunur**ve **sil'** i içerir.
 
-    ![Azure kaynak grubunu kilitle](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
+    ![azure kaynak grubunu kilitleme](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
 
-Daha fazla bilgi için bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](lock-resources.md).
+Daha fazla bilgi [için, beklenmeyen değişiklikleri önlemek için kaynakları kilitle'ye](lock-resources.md)bakın.
 
 ## <a name="tag-resource-groups"></a>Kaynak gruplarını etiketleme
 
-Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kaynaklarına Etiketler uygulayabilirsiniz. Daha fazla bilgi için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](tag-resources.md#portal).
+Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kaynaklara etiketler uygulayabilirsiniz. Bilgi için Azure [kaynaklarınızı düzenlemek için etiketleri kullanma'ya](tag-resources.md#portal)bakın.
 
-## <a name="export-resource-groups-to-templates"></a>Kaynak gruplarını şablonlara aktarma
+## <a name="export-resource-groups-to-templates"></a>Kaynak gruplarını şablonlara dışa aktarma
 
-Şablonları dışarı aktarma hakkında daha fazla bilgi için bkz. [şablona tek ve çoklu kaynak dışarı aktarma-Portal](../templates/export-template-portal.md).
+Şablonları dışa aktarma hakkında bilgi için [şablona tek ve çok kaynak lı dışa aktarma - Portal' a](../templates/export-template-portal.md)bakın.
 
 ## <a name="manage-access-to-resource-groups"></a>Kaynak gruplarına erişimi yönetme
 
@@ -110,7 +110,7 @@ Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Resource Manager öğrenmek için bkz. [Azure Resource Manager genel bakış](overview.md).
-- Kaynak Yöneticisi Şablon sözdizimini öğrenmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../templates/template-syntax.md).
-- Şablon geliştirmeyi öğrenmek için [adım adım öğreticiler](/azure/azure-resource-manager/)bölümüne bakın.
-- Azure Resource Manager şablonu şemalarını görüntülemek için bkz. [şablon başvurusu](/azure/templates/).
+- Azure Kaynak Yöneticisi'ni öğrenmek için [Azure Kaynak Yöneticisi'ne genel bakış](overview.md)'a bakın.
+- Kaynak Yöneticisi şablonsözdizimini öğrenmek için [bkz.](../templates/template-syntax.md)
+- Şablonları nasıl geliştireceklerini öğrenmek için [adım adım öğreticilere](/azure/azure-resource-manager/)bakın.
+- Azure Kaynak Yöneticisi şablon şemalarını görüntülemek için [şablon başvurusuna](/azure/templates/)bakın.
